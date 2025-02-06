@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Folgen, Meister
+tags: Folgen, Einsteiger
 
 -->
 
@@ -66,18 +66,54 @@ tags: Folgen, Meister
 **Gib** nächsten Glieder der Folge **an**.
 
 
-
 <br>
 
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__
+
+$100 \quad 99 \quad 97 \quad 94 \quad 90 \quad 85 \quad 79 \quad$ [[ 72 ]] $\quad$ [[ 64 ]] $\quad$ [[ 57 ]] \
+
+[[?]] Musterbeschreibung: Es wird von der vorherigen Zahl eine aufsteigende natürliche Zahl subtrahiert.
+
+</div>
+
+
+</section>
+
+
+<br>
 
 
 <section class="flex-container">
 
 <div class="flex-child">
 
-$1 \quad 1 \quad 2 \quad 6 \quad 30 \quad 240 \quad  3120 \quad $ [[ 65520 ]] $\quad$ [[ 2227680 ]] $\quad$ [[ 122522400 ]] \
+__$b)\;\;$__
 
-[[?]] Musterbeschreibung: Die Fibonacci Zahlen werden aufmultipliziert.
+$11 \quad 22 \quad 33 \quad 44 \quad 55 \quad 66 \quad $ [[ 77 ]] $\quad$ [[ 88 ]] $\quad$ [[ 99 ]] \
+
+[[?]] Musterbeschreibung: Die $11$er-Reihe.
+
+</div>
+
+</section>
+
+
+<br>
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$c)\;\;$__
+
+$1 \quad 121 \quad 12321 \quad 1234321 \quad $ [[ 123454321 ]] $\quad$ [[ 12345654321 ]] $\quad$ [[ 1234567654321 ]] \
+
+[[?]] Musterbeschreibung: Es wird immer eine nächst höhere Ziffer in die Mitte eingefügt, sodass die Zahl sich aus den aufsteigenden und absteigenden Ziffern ergibt.
 
 </div>
 

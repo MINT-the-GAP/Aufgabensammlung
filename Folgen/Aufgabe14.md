@@ -75,15 +75,13 @@ tags: Folgen, Meister
 
 <div class="flex-child">
 
-$1 \quad 1 \quad 2 \quad 6 \quad 30 \quad 240 \quad  3120 \quad $ [[ 65520 ]] $\quad$ [[ 2227680 ]] $\quad$ [[ 122522400 ]] \
+$1 \quad 7 \quad 19 \quad 37 \quad 61 \quad 91 \quad 127 \quad $ [[ 169 ]] $\quad$ [[ 217 ]] $\quad$ [[ 271 ]] \
 
-[[?]] Musterbeschreibung: Die Fibonacci Zahlen werden aufmultipliziert.
+[[?]] Musterbeschreibung: Von der kubischen Zahl wird die vorherige kubische Zahl subtrahiert.
 
 </div>
 
 </section>
-
-
 
 <br>
 <br>

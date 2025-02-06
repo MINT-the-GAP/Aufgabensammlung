@@ -73,17 +73,15 @@ tags: Folgen, Meister
 
 <section class="flex-container">
 
-<div class="flex-child">
+<div class="flex-child"> 
 
-$1 \quad 1 \quad 2 \quad 6 \quad 30 \quad 240 \quad  3120 \quad $ [[ 65520 ]] $\quad$ [[ 2227680 ]] $\quad$ [[ 122522400 ]] \
+$0 \quad 1 \quad 6 \quad 15 \quad 28 \quad 45 \quad 66 \quad 91 \quad 120 \quad$ [[ 153 ]] $\quad$ [[ 190 ]] $\quad$ [[ 231 ]] \
 
-[[?]] Musterbeschreibung: Die Fibonacci Zahlen werden aufmultipliziert.
+[[?]] Musterbeschreibung: Der Folgenterm ist $n\cdot(2\cdot n -1)$.
 
 </div>
 
 </section>
-
-
 
 <br>
 <br>

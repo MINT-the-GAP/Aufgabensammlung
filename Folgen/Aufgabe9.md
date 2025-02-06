@@ -73,9 +73,7 @@ tags: Folgen, Fortgeschrittene
 
 <section class="flex-container">
 
-<div class="flex-child">
-
-__$a)\;\;$__
+<div class="flex-child"> 
 
 $0 \quad 3 \quad 8 \quad 15 \quad 24 \quad 35 \quad 48 \quad $ [[ 63 ]] $\quad$ [[ 80 ]] $\quad$ [[ 99 ]] \
 

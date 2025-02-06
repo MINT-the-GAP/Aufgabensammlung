@@ -73,9 +73,7 @@ tags: Folgen, Meister
 
 <section class="flex-container">
 
-<div class="flex-child">
-
-__$a)\;\;$__
+<div class="flex-child"> 
 
 $1 \quad 4 \quad 18 \quad 48 \quad 125 \quad 288 \quad  367 \quad $ [[ 1344 ]] $\quad$ [[ 2754 ]] $\quad$ [[ 5500 ]] \
 
@@ -85,43 +83,6 @@ $1 \quad 4 \quad 18 \quad 48 \quad 125 \quad 288 \quad  367 \quad $ [[ 1344 ]] $
 
 </section>
 
-
-<br>
-
-
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$b)\;\;$__
-
-$0 \quad 1 \quad 6 \quad 15 \quad 28 \quad 45 \quad 66 \quad 91 \quad 120 \quad$ [[ 153 ]] $\quad$ [[ 190 ]] $\quad$ [[ 231 ]] \
-
-[[?]] Musterbeschreibung: Der Folgenterm ist $n\cdot(2\cdot n -1)$.
-
-</div>
-
-</section>
-
-
-<br>
-
-
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$c)\;\;$__
-
-$1 \quad 4 \quad 11 \quad 24 \quad 50 \quad 80 \quad 154 \quad 220 \quad $ [[ 375 ]] $\quad$ [[ 444 ]] $\quad$ [[ 781 ]] \
-
-[[?]] Musterbeschreibung: Die Folge beschreibt, wie viele Teilflächen durch die Diagonalen in einem $n$-Eck entstehen. Startend mit einem Dreieck.
-
-</div>
-
-</section>
 
 <br>
 <br>
