@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Folgen, Übende
+tags: Folgen, Fortgeschrittene
 
 -->
 
@@ -66,7 +66,9 @@ tags: Folgen, Übende
 **Gib** nächsten Glieder der Folge **an**.
 
 
+
 <br>
+
 
 
 <section class="flex-container">
@@ -75,9 +77,9 @@ tags: Folgen, Übende
 
 __$a)\;\;$__
 
-$1 \quad 3 \quad 9 \quad 27 \quad 81 \quad $ [[ 243 ]] $\quad$ [[ 729 ]] $\quad$ [[ 2187 ]] \
+$0 \quad 3 \quad 8 \quad 15 \quad 24 \quad 35 \quad 48 \quad $ [[ 63 ]] $\quad$ [[ 80 ]] $\quad$ [[ 99 ]] \
 
-[[?]] Musterbeschreibung: Die vorherige Zahl wird mit $3$ multipliziert.
+[[?]] Musterbeschreibung: Von den Quadratzahlen wird $1$ subtrahiert.
 
 </div>
 
@@ -94,9 +96,9 @@ $1 \quad 3 \quad 9 \quad 27 \quad 81 \quad $ [[ 243 ]] $\quad$ [[ 729 ]] $\quad$
 
 __$b)\;\;$__
 
-$2 \quad 3 \quad 5 \quad 7 \quad 11 \quad 13 \quad 17 \quad $ [[ 23 ]] $\quad$ [[ 29 ]] $\quad$ [[ 31 ]] \
+$1 \quad 2 \quad 4 \quad 7 \quad 11 \quad 16 \quad 22 \quad 29 \quad 37 \quad$ [[ 46 ]] $\quad$ [[ 56 ]] $\quad$ [[ 67 ]] \
 
-[[?]] Musterbeschreibung: Die aufsteigenden Primzahlen
+[[?]] Musterbeschreibung: Es wird zur vorherigen Zahl eine aufsteigende natürliche Zahl addiert.
 
 </div>
 
@@ -113,12 +115,11 @@ $2 \quad 3 \quad 5 \quad 7 \quad 11 \quad 13 \quad 17 \quad $ [[ 23 ]] $\quad$ [
 
 __$c)\;\;$__
 
-$3 \quad 8 \quad 15 \quad 24 \quad 35 \quad $ [[ 48 ]] $\quad$ [[ 63 ]] $\quad$ [[ 80 ]] 
-\
+$1 \quad 2 \quad 6 \quad 24 \quad 120 \quad 720 \quad $ [[ 5040 ]] $\quad$ [[ 40320 ]] $\quad$ [[ 362880 ]] \
 
-[[?]] Musterbeschreibung: Die Ausgangszahl wird mit der aufsteigenden ungeraden Zahl addiert, startend bei $3$.
+[[?]] Musterbeschreibung: Die vorherige Zahl wird mit der nächsten natürlichen Zahl multipliziert, was auch Fakultät genannt wird $5!=5\cdot 4 \cdot 3 \cdot 2 \cdot 1$.
+
 </div>
-
 
 </section>
 

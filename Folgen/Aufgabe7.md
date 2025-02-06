@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Folgen, Übende
+tags: Folgen, Meister
 
 -->
 
@@ -66,7 +66,9 @@ tags: Folgen, Übende
 **Gib** nächsten Glieder der Folge **an**.
 
 
+
 <br>
+
 
 
 <section class="flex-container">
@@ -75,9 +77,9 @@ tags: Folgen, Übende
 
 __$a)\;\;$__
 
-$1 \quad 3 \quad 9 \quad 27 \quad 81 \quad $ [[ 243 ]] $\quad$ [[ 729 ]] $\quad$ [[ 2187 ]] \
+$1 \quad 1 \quad 2 \quad 6 \quad 30 \quad 240 \quad  3120 \quad $ [[ 65520 ]] $\quad$ [[ 2227680 ]] $\quad$ [[ 122522400 ]] \
 
-[[?]] Musterbeschreibung: Die vorherige Zahl wird mit $3$ multipliziert.
+[[?]] Musterbeschreibung: Die Fibonacci Zahlen werden aufmultipliziert.
 
 </div>
 
@@ -94,9 +96,9 @@ $1 \quad 3 \quad 9 \quad 27 \quad 81 \quad $ [[ 243 ]] $\quad$ [[ 729 ]] $\quad$
 
 __$b)\;\;$__
 
-$2 \quad 3 \quad 5 \quad 7 \quad 11 \quad 13 \quad 17 \quad $ [[ 23 ]] $\quad$ [[ 29 ]] $\quad$ [[ 31 ]] \
+$1 \quad 1 \quad 2 \quad 5 \quad 14 \quad  42 \quad  132 \quad 429 \quad $ [[ 1430 ]] $\quad$ [[ 4862 ]] $\quad$ [[ 16796 ]] \
 
-[[?]] Musterbeschreibung: Die aufsteigenden Primzahlen
+[[?]] Musterbeschreibung: Die Catalan-Zahlen, die die Anzahl von nichtüberlappenden Verbindungen in einem $n$-Eck (Polygon) gemacht werden können.
 
 </div>
 
@@ -113,12 +115,11 @@ $2 \quad 3 \quad 5 \quad 7 \quad 11 \quad 13 \quad 17 \quad $ [[ 23 ]] $\quad$ [
 
 __$c)\;\;$__
 
-$3 \quad 8 \quad 15 \quad 24 \quad 35 \quad $ [[ 48 ]] $\quad$ [[ 63 ]] $\quad$ [[ 80 ]] 
-\
+$1 \quad 7 \quad 19 \quad 37 \quad 61 \quad 91 \quad 127 \quad $ [[ 169 ]] $\quad$ [[ 217 ]] $\quad$ [[ 271 ]] \
 
-[[?]] Musterbeschreibung: Die Ausgangszahl wird mit der aufsteigenden ungeraden Zahl addiert, startend bei $3$.
+[[?]] Musterbeschreibung: Von der kubischen Zahl wird die vorherige kubische Zahl subtrahiert.
+
 </div>
-
 
 </section>
 

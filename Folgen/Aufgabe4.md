@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Folgen, Übende
+tags: Folgen, Experte
 
 -->
 
@@ -66,7 +66,9 @@ tags: Folgen, Übende
 **Gib** nächsten Glieder der Folge **an**.
 
 
+
 <br>
+
 
 
 <section class="flex-container">
@@ -75,9 +77,9 @@ tags: Folgen, Übende
 
 __$a)\;\;$__
 
-$1 \quad 3 \quad 9 \quad 27 \quad 81 \quad $ [[ 243 ]] $\quad$ [[ 729 ]] $\quad$ [[ 2187 ]] \
+$194 \quad 183 \quad 169 \quad 152 \quad 132 \quad 109 \quad $ [[ 83 ]] $\quad$ [[ 57 ]] $\quad$ [[ 28 ]] \
 
-[[?]] Musterbeschreibung: Die vorherige Zahl wird mit $3$ multipliziert.
+[[?]] Musterbeschreibung: Um $3$ wachsender Subtrahend wird vom vorherigen Wert subtrahiert.
 
 </div>
 
@@ -94,9 +96,9 @@ $1 \quad 3 \quad 9 \quad 27 \quad 81 \quad $ [[ 243 ]] $\quad$ [[ 729 ]] $\quad$
 
 __$b)\;\;$__
 
-$2 \quad 3 \quad 5 \quad 7 \quad 11 \quad 13 \quad 17 \quad $ [[ 23 ]] $\quad$ [[ 29 ]] $\quad$ [[ 31 ]] \
+$1 \quad 16 \quad 81 \quad 256 \quad 625 \quad $ [[ 1296 ]] $\quad$ [[ 2401 ]] $\quad$ [[ 4096 ]] \
 
-[[?]] Musterbeschreibung: Die aufsteigenden Primzahlen
+[[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen hoch $4$.
 
 </div>
 
@@ -113,12 +115,11 @@ $2 \quad 3 \quad 5 \quad 7 \quad 11 \quad 13 \quad 17 \quad $ [[ 23 ]] $\quad$ [
 
 __$c)\;\;$__
 
-$3 \quad 8 \quad 15 \quad 24 \quad 35 \quad $ [[ 48 ]] $\quad$ [[ 63 ]] $\quad$ [[ 80 ]] 
-\
+$0 \quad 1 \quad 10 \quad 11 \quad 100 \quad 101 \quad 110 \quad 111 \quad $ [[ 1000 ]] $\quad$ [[ 1001 ]] $\quad$ [[ 1010 ]] \
 
-[[?]] Musterbeschreibung: Die Ausgangszahl wird mit der aufsteigenden ungeraden Zahl addiert, startend bei $3$.
+[[?]] Musterbeschreibung: Die aufsteigenden Zahlen in binär.
+
 </div>
-
 
 </section>
 

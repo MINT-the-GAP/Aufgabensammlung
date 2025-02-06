@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Folgen, Übende
+tags: Folgen, Einsteiger
 
 -->
 
@@ -68,24 +68,23 @@ tags: Folgen, Übende
 
 <br>
 
-
 <section class="flex-container">
 
 <div class="flex-child">
 
 __$a)\;\;$__
 
-$1 \quad 3 \quad 9 \quad 27 \quad 81 \quad $ [[ 243 ]] $\quad$ [[ 729 ]] $\quad$ [[ 2187 ]] \
+$1 \quad 2 \quad 4 \quad 8 \quad 16 \quad 32 \quad 64 \quad$ [[ 128 ]] $\quad$ [[ 256 ]] $\quad$ [[ 512 ]] \
 
-[[?]] Musterbeschreibung: Die vorherige Zahl wird mit $3$ multipliziert.
+[[?]] Musterbeschreibung: Die vorherige Zahl wird mit $2$ multipliziert.
 
 </div>
+
 
 </section>
 
 
 <br>
-
 
 
 <section class="flex-container">
@@ -94,9 +93,9 @@ $1 \quad 3 \quad 9 \quad 27 \quad 81 \quad $ [[ 243 ]] $\quad$ [[ 729 ]] $\quad$
 
 __$b)\;\;$__
 
-$2 \quad 3 \quad 5 \quad 7 \quad 11 \quad 13 \quad 17 \quad $ [[ 23 ]] $\quad$ [[ 29 ]] $\quad$ [[ 31 ]] \
+$5 \quad 10 \quad 15 \quad 20 \quad 25 \quad 30 \quad $ [[ 35 ]] $\quad$ [[ 40 ]] $\quad$ [[ 45 ]] \
 
-[[?]] Musterbeschreibung: Die aufsteigenden Primzahlen
+[[?]] Musterbeschreibung: Die $5$er-Reihe.
 
 </div>
 
@@ -106,21 +105,21 @@ $2 \quad 3 \quad 5 \quad 7 \quad 11 \quad 13 \quad 17 \quad $ [[ 23 ]] $\quad$ [
 <br>
 
 
-
 <section class="flex-container">
 
 <div class="flex-child">
 
 __$c)\;\;$__
 
-$3 \quad 8 \quad 15 \quad 24 \quad 35 \quad $ [[ 48 ]] $\quad$ [[ 63 ]] $\quad$ [[ 80 ]] 
-\
+$7 \quad 19 \quad 31 \quad 43 \quad 55 \quad 67 \quad$ [[ 79 ]] $\quad$ [[ 91 ]] $\quad$ [[ 103 ]] \
 
-[[?]] Musterbeschreibung: Die Ausgangszahl wird mit der aufsteigenden ungeraden Zahl addiert, startend bei $3$.
+[[?]] Musterbeschreibung: Startend bei der $7$ wird zur vorherigen Zahl immer $12$ addiert.
+
 </div>
 
-
 </section>
+
+
 
 <br>
 <br>

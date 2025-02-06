@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Folgen, Übende
+tags: Folgen, Fortgeschrittene
 
 -->
 
@@ -66,7 +66,9 @@ tags: Folgen, Übende
 **Gib** nächsten Glieder der Folge **an**.
 
 
+
 <br>
+
 
 
 <section class="flex-container">
@@ -75,9 +77,9 @@ tags: Folgen, Übende
 
 __$a)\;\;$__
 
-$1 \quad 3 \quad 9 \quad 27 \quad 81 \quad $ [[ 243 ]] $\quad$ [[ 729 ]] $\quad$ [[ 2187 ]] \
+$53 \quad 55 \quad 59 \quad 65 \quad 73 \quad 83 \quad 95 \quad $ [[ 109 ]] $\quad$ [[ 125 ]] $\quad$ [[ 143 ]] \
 
-[[?]] Musterbeschreibung: Die vorherige Zahl wird mit $3$ multipliziert.
+[[?]] Musterbeschreibung: Zur vorherigen Zahl wird die nächst größere gerade Zahl addiert.
 
 </div>
 
@@ -94,9 +96,9 @@ $1 \quad 3 \quad 9 \quad 27 \quad 81 \quad $ [[ 243 ]] $\quad$ [[ 729 ]] $\quad$
 
 __$b)\;\;$__
 
-$2 \quad 3 \quad 5 \quad 7 \quad 11 \quad 13 \quad 17 \quad $ [[ 23 ]] $\quad$ [[ 29 ]] $\quad$ [[ 31 ]] \
+$b \quad D \quad f \quad H \quad j \quad L \quad $ [[ n ]] $\quad$ [[ P ]] $\quad$ [[ r ]] \
 
-[[?]] Musterbeschreibung: Die aufsteigenden Primzahlen
+[[?]] Musterbeschreibung: Immer jeweils der übernächste Buchstabe des Alphabets abwechselnd klein und groß geschrieben.
 
 </div>
 
@@ -113,12 +115,11 @@ $2 \quad 3 \quad 5 \quad 7 \quad 11 \quad 13 \quad 17 \quad $ [[ 23 ]] $\quad$ [
 
 __$c)\;\;$__
 
-$3 \quad 8 \quad 15 \quad 24 \quad 35 \quad $ [[ 48 ]] $\quad$ [[ 63 ]] $\quad$ [[ 80 ]] 
-\
+$542 \quad  \quad 519 \quad 496 \quad 473 \quad 450 \quad 427 \quad 404 \quad $ [[ 381 ]] $\quad$ [[ 358 ]] $\quad$ [[ 335 ]] \
 
-[[?]] Musterbeschreibung: Die Ausgangszahl wird mit der aufsteigenden ungeraden Zahl addiert, startend bei $3$.
+[[?]] Musterbeschreibung: Von der vorherigen Zahl wird $23$ subtrahiert.
+
 </div>
-
 
 </section>
 

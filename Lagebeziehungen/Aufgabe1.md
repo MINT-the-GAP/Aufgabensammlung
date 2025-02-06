@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Folgen, Übende
+tags: Bruchrechnung, Einsteiger
 
 -->
 
@@ -63,10 +63,7 @@ tags: Folgen, Übende
 
 # Aufgabe 1
 
-**Gib** nächsten Glieder der Folge **an**.
-
-
-<br>
+**Gib** den darstellten roten Bruchteil vom Ganzen **an**.
 
 
 <section class="flex-container">
@@ -75,54 +72,38 @@ tags: Folgen, Übende
 
 __$a)\;\;$__
 
-$1 \quad 3 \quad 9 \quad 27 \quad 81 \quad $ [[ 243 ]] $\quad$ [[ 729 ]] $\quad$ [[ 2187 ]] \
+<lia-chart option="{
+  tooltip: {
+    trigger: 'item'
+  },
+  series: [
+  {
+    type: 'pie',
+    radius: '50%',
+    label: {
+      show: false
+    },
+    data: [
+      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
+      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
+      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
+      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
+      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
+      { value: 1,  itemStyle: { color: 'white', borderColor: 'black', borderWidth: 2 } }
+    ],
+    emphasis: {
+      itemStyle: {
+        shadowBlur: 10,
+        shadowOffsetX: 0,
+        shadowColor: 'rgba(0, 0, 0, 0.5)'
+      }
+    }
+  }]
+}"></lia-chart>
 
-[[?]] Musterbeschreibung: Die vorherige Zahl wird mit $3$ multipliziert.
+--> $\frac{\text{[[input:5]]}}{\text{[[input:6]]}}$
 
-</div>
-
-</section>
-
-
-<br>
-
-
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$b)\;\;$__
-
-$2 \quad 3 \quad 5 \quad 7 \quad 11 \quad 13 \quad 17 \quad $ [[ 23 ]] $\quad$ [[ 29 ]] $\quad$ [[ 31 ]] \
-
-[[?]] Musterbeschreibung: Die aufsteigenden Primzahlen
-
-</div>
-
-</section>
-
-
-<br>
-
-
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$c)\;\;$__
-
-$3 \quad 8 \quad 15 \quad 24 \quad 35 \quad $ [[ 48 ]] $\quad$ [[ 63 ]] $\quad$ [[ 80 ]] 
-\
-
-[[?]] Musterbeschreibung: Die Ausgangszahl wird mit der aufsteigenden ungeraden Zahl addiert, startend bei $3$.
 </div>
 
 
 </section>
-
-<br>
-<br>
-<br>
-<br>

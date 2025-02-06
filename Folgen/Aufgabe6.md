@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Folgen, Übende
+tags: Folgen, Einsteiger
 
 -->
 
@@ -68,24 +68,23 @@ tags: Folgen, Übende
 
 <br>
 
-
 <section class="flex-container">
 
 <div class="flex-child">
 
 __$a)\;\;$__
 
-$1 \quad 3 \quad 9 \quad 27 \quad 81 \quad $ [[ 243 ]] $\quad$ [[ 729 ]] $\quad$ [[ 2187 ]] \
+$97 \quad 91 \quad 85 \quad 79 \quad 73 \quad 67 \quad $ [[ 61 ]] $\quad$ [[ 55 ]] $\quad$ [[ 49 ]] \
 
-[[?]] Musterbeschreibung: Die vorherige Zahl wird mit $3$ multipliziert.
+[[?]] Musterbeschreibung: Von der vorherigen Zahl wird $6$ subtrahiert.
 
 </div>
+
 
 </section>
 
 
 <br>
-
 
 
 <section class="flex-container">
@@ -94,9 +93,9 @@ $1 \quad 3 \quad 9 \quad 27 \quad 81 \quad $ [[ 243 ]] $\quad$ [[ 729 ]] $\quad$
 
 __$b)\;\;$__
 
-$2 \quad 3 \quad 5 \quad 7 \quad 11 \quad 13 \quad 17 \quad $ [[ 23 ]] $\quad$ [[ 29 ]] $\quad$ [[ 31 ]] \
+$1 \quad 11 \quad 111 \quad 1111 \quad 11111 \quad $ [[ 111111 ]] $\quad$ [[ 1111111 ]] $\quad$ [[ 11111111 ]] \
 
-[[?]] Musterbeschreibung: Die aufsteigenden Primzahlen
+[[?]] Musterbeschreibung: Die nächste $10$er-Potenz wird zur vorherigen Zahl addiert.
 
 </div>
 
@@ -106,21 +105,21 @@ $2 \quad 3 \quad 5 \quad 7 \quad 11 \quad 13 \quad 17 \quad $ [[ 23 ]] $\quad$ [
 <br>
 
 
-
 <section class="flex-container">
 
 <div class="flex-child">
 
 __$c)\;\;$__
 
-$3 \quad 8 \quad 15 \quad 24 \quad 35 \quad $ [[ 48 ]] $\quad$ [[ 63 ]] $\quad$ [[ 80 ]] 
-\
+$43 \quad 57 \quad 71 \quad 85 \quad 99 \quad 113 \quad$ [[ 127 ]] $\quad$ [[ 141 ]] $\quad$ [[ 155 ]] \
 
-[[?]] Musterbeschreibung: Die Ausgangszahl wird mit der aufsteigenden ungeraden Zahl addiert, startend bei $3$.
+[[?]] Musterbeschreibung: Startend bei der $43$ wird zur vorherigen Zahl immer $14$ addiert.
+
 </div>
 
-
 </section>
+
+
 
 <br>
 <br>

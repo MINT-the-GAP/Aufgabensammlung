@@ -68,24 +68,23 @@ tags: Folgen, Übende
 
 <br>
 
-
 <section class="flex-container">
 
 <div class="flex-child">
 
 __$a)\;\;$__
 
-$1 \quad 3 \quad 9 \quad 27 \quad 81 \quad $ [[ 243 ]] $\quad$ [[ 729 ]] $\quad$ [[ 2187 ]] \
+$1 \quad 1 \quad 2 \quad 3 \quad 5 \quad 8 \quad 13 \quad$ [[ 21 ]] $\quad$ [[ 34 ]] $\quad$ [[ 55 ]] \
 
-[[?]] Musterbeschreibung: Die vorherige Zahl wird mit $3$ multipliziert.
+[[?]] Musterbeschreibung: Die beiden vorherigen Zahlen werden miteinander addiert.
 
 </div>
+
 
 </section>
 
 
 <br>
-
 
 
 <section class="flex-container">
@@ -94,10 +93,9 @@ $1 \quad 3 \quad 9 \quad 27 \quad 81 \quad $ [[ 243 ]] $\quad$ [[ 729 ]] $\quad$
 
 __$b)\;\;$__
 
-$2 \quad 3 \quad 5 \quad 7 \quad 11 \quad 13 \quad 17 \quad $ [[ 23 ]] $\quad$ [[ 29 ]] $\quad$ [[ 31 ]] \
+$1 \quad 4 \quad 9 \quad 16 \quad 25 \quad 36 \quad 49 \quad$ [[ 64 ]] $\quad$ [[ 81 ]] $\quad$ [[ 100 ]] \
 
-[[?]] Musterbeschreibung: Die aufsteigenden Primzahlen
-
+[[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen werden quadriert.
 </div>
 
 </section>
@@ -106,21 +104,21 @@ $2 \quad 3 \quad 5 \quad 7 \quad 11 \quad 13 \quad 17 \quad $ [[ 23 ]] $\quad$ [
 <br>
 
 
-
 <section class="flex-container">
 
 <div class="flex-child">
 
 __$c)\;\;$__
 
-$3 \quad 8 \quad 15 \quad 24 \quad 35 \quad $ [[ 48 ]] $\quad$ [[ 63 ]] $\quad$ [[ 80 ]] 
-\
+$A \quad C \quad E \quad G \quad I \quad K \quad M \quad$ [[ O ]] $\quad$ [[ Q ]] $\quad$ [[ S ]] \
 
-[[?]] Musterbeschreibung: Die Ausgangszahl wird mit der aufsteigenden ungeraden Zahl addiert, startend bei $3$.
+[[?]] Musterbeschreibung: Immer der übernächste Buchstabe des Alphabets
+
 </div>
 
-
 </section>
+
+
 
 <br>
 <br>
