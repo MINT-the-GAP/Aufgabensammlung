@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Einheiten, Länge, Zeit, Masse, sehr leicht
+tags: Einheiten, Länge, Zeit, Masse, Volumen, leicht
 
 -->
 
@@ -63,27 +63,51 @@ tags: Einheiten, Länge, Zeit, Masse, sehr leicht
 
 # Aufgabe 1
 
-**Fülle** die Lücken **aus**.
+**Rechne** in die angebene Einheit **um**.
 
 <br>
 
-__$a)\;\;$__ [[ 1000 ]] Millimeter sind ein Meter. \
 
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__ $1\,\text{m}^3 = $ [[ 1000  ]] $\,\text{dm}^3$ \
+
+</div>
 <br>
+<div class="flex-child">
 
-__$b)\;\;$__ Eine Tonne sind [[ 1000 ]] Kilogramm. \
+__$b)\;\;$__ $7\,\text{t} = $ [[ 7000  ]] $\,\text{kg}$ \
 
+</div>
 <br>
+<div class="flex-child">
 
-__$c)\;\;$__ Ein Dezimeter entsprechen [[ 100  ]] Millimeter. \
+__$c)\;\;$__ $240\,\text{s} = $ [[   4   ]] $\,\text{min}$ \
 
+</div>
 <br>
+<div class="flex-child">
 
-__$d)\;\;$__ Eine Minute besitzt [[ 60   ]] Sekunden. \
+__$d)\;\;$__ $34000\,\text{cm} = $ [[  340  ]] $\,\text{m}$ \
 
+</div>
 <br>
+<div class="flex-child">
 
-__$e)\;\;$__ $10$ Dezimeter sind [[   1  ]] Meter. \
+__$e)\;\;$__ $1\,\text{h} = $ [[ 3600  ]] $\,\text{s}$ \
+
+</div>
+<br>
+<div class="flex-child">
+
+__$f)\;\;$__ $8\,\text{km} = $ [[ 80000 ]] $\,\text{dm}$ \
+
+</div>
+
+
+</section>
 
 <br>
 <br>

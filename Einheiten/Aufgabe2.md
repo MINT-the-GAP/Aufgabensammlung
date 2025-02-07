@@ -63,27 +63,33 @@ tags: Einheiten, Länge, Zeit, Masse, sehr leicht
 
 # Aufgabe 1
 
-**Fülle** die Lücken **aus**.
+**Gib** die Antwort auf die Frage **an**.
 
 <br>
 
-__$a)\;\;$__ [[ 1000 ]] Millimeter sind ein Meter. \
+__$a)\;\;$__ Wie viele Millimeter sind ein Meter? \
+[[1000]]
 
 <br>
 
-__$b)\;\;$__ Eine Tonne sind [[ 1000 ]] Kilogramm. \
+__$b)\;\;$__ Wie viele  sind eine Stunde? \
+[[60  ]]
 
 <br>
 
-__$c)\;\;$__ Ein Dezimeter entsprechen [[ 100  ]] Millimeter. \
+__$c)\;\;$__ Wie viele Meter sind ein Kilometer? \
+[[1000]]
 
 <br>
 
-__$d)\;\;$__ Eine Minute besitzt [[ 60   ]] Sekunden. \
+__$d)\;\;$__ Wie viele Gramm sind ein Kilogramm? \
+[[1000]]
 
 <br>
 
-__$e)\;\;$__ $10$ Dezimeter sind [[   1  ]] Meter. \
+__$e)\;\;$__ Wie viele Stunden sind ein Tag? \
+[[24  ]]
+
 
 <br>
 <br>

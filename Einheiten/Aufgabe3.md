@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Einheiten, Länge, Zeit, Masse, sehr leicht
+tags: Einheiten, Länge, Zeit, Masse, Volumen, sehr leicht
 
 -->
 
@@ -67,23 +67,25 @@ tags: Einheiten, Länge, Zeit, Masse, sehr leicht
 
 <br>
 
-__$a)\;\;$__ [[ 1000 ]] Millimeter sind ein Meter. \
+__$a)\;\;$__ [[  120  ]] Sekunden entsprechen $2$ Minuten. \
 
 <br>
 
-__$b)\;\;$__ Eine Tonne sind [[ 1000 ]] Kilogramm. \
+__$b)\;\;$__ [[ 1000 ]] Milliliter entsprechen ein Liter. \
 
 <br>
 
-__$c)\;\;$__ Ein Dezimeter entsprechen [[ 100  ]] Millimeter. \
+__$c)\;\;$__ Ein Zentimeter entsprechen [[  10  ]] Millimeter. \
 
 <br>
 
-__$d)\;\;$__ Eine Minute besitzt [[ 60   ]] Sekunden. \
+__$d)\;\;$__ Ein Kilogramm entspricht [[ 1000 ]] Milligramm. \
 
 <br>
 
-__$e)\;\;$__ $10$ Dezimeter sind [[   1  ]] Meter. \
+__$e)\;\;$__ [[   1  ]] Dezimeter entspricht $10$ Zentrimeter. \
+
+
 
 <br>
 <br>
