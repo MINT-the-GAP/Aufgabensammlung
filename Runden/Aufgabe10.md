@@ -54,7 +54,8 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Folgen, schwer
+
+tags: Runden, schwer
 
 -->
 
@@ -63,65 +64,14 @@ tags: Folgen, schwer
 
 # Aufgabe 1
 
-**Gib** nächsten Glieder der Folge **an**.
+Gegeben sei eine gerundete Zahl. **Gib** jeweils die kleinste und die größte Zahl **an**, die nach dem Runden zur gegebenen Zahl wird.
 
+<!-- data-type="none" -->
+| gerundete Zahl | wurde gerundete auf | kleinste Zahl |  größte Zahl  |
+|  :----------:  | :-----------------: | :-----------: |  :---------:  |
+|    $6000000$   |  Hunderttausender   | [[ 5950000 ]] | [[ 6049999 ]] |
+|      $100$     |        Zehner       | [[   50   ]]  | [[  149    ]] |
+|    $794000$    |      Tausender      | [[ 793500  ]] | [[ 794499  ]] |
+|      $0$       |      Tausender      | [[ 0       ]] | [[ 499     ]] |
+|      $6400$    |      Hunderter      | [[ 6350    ]] | [[ 6449    ]] |
 
-<br>
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$a)\;\;$__
-
-$1 \quad 8 \quad 27 \quad 64 \quad 125 \quad$ [[ 216 ]] $\quad$ [[ 343 ]] $\quad$ [[ 512 ]] \
-
-[[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen hoch $3$.
-
-</div>
-
-
-</section>
-
-
-<br>
-
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$b)\;\;$__
-
-$3 \quad 5 \quad 8 \quad 11 \quad 16 \quad 19 \quad 24 \quad 27 \quad 32 \quad$ [[ 39 ]] $\quad$ [[ 42 ]] $\quad$ [[ 49 ]] \
-
-[[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen addiert mit den aufsteigenden Primzahlen: $1+2$ dann $2+3$ dann $3+5$ und so weiter.
-
-</div>
-
-</section>
-
-
-<br>
-
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$c)\;\;$__
-
-$1 \quad 5 \quad 14 \quad 30 \quad 55 \quad 91 \quad$ [[ 140 ]] $\quad$ [[ 204 ]] $\quad$ [[ 285 ]] \
-
-[[?]] Musterbeschreibung: Die zuvorige Zahl wird mit der aufsteigenden Quadratzahl startend bei $2$ addiert.
-
-</div>
-
-</section>
-
-
-
-<br>
-<br>
-<br>
-<br>

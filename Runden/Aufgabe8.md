@@ -54,7 +54,8 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Folgen, schwer
+
+tags: Runden, mittel
 
 -->
 
@@ -63,65 +64,14 @@ tags: Folgen, schwer
 
 # Aufgabe 1
 
-**Gib** nächsten Glieder der Folge **an**.
+**Gib** den auf die angegebene Stelle gerundeten Wert in den freien Tabellenfeldern **an**.
 
+<!-- data-type="none" -->
+|   Zahl    |    Zehner     |   Hunderter    |   Tausender    | Zehntausender | Hunderttausender |
+|  :-----:  |    :-----:    |   :-----:      |     :-----:    |   :-----:     |     :-----:      |
+| $278849$  | [[ 278850  ]] |  [[ 278800  ]] | [[ 279000  ]]  |  [[ 280000 ]] |   [[ 300000  ]]  |
+| $67948$   | [[ 67950   ]] |  [[ 67900   ]] | [[ 68000   ]]  |  [[ 70000  ]] |   [[ 100000  ]]  |
+| $126443$  | [[ 126440  ]] |  [[ 126400  ]] | [[ 126000  ]]  |  [[ 130000 ]] |   [[ 100000  ]]  |
+|  $24367$  | [[ 24370   ]] |  [[ 24400   ]] | [[ 24000   ]]  |  [[ 20000  ]] |   [[ 0       ]]  |
+| $2306637$ | [[ 2306640 ]] |  [[ 2306600 ]] | [[ 2307000 ]]  |  [[ 231000 ]] |   [[ 2300000 ]]  |
 
-<br>
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$a)\;\;$__
-
-$1 \quad 8 \quad 27 \quad 64 \quad 125 \quad$ [[ 216 ]] $\quad$ [[ 343 ]] $\quad$ [[ 512 ]] \
-
-[[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen hoch $3$.
-
-</div>
-
-
-</section>
-
-
-<br>
-
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$b)\;\;$__
-
-$3 \quad 5 \quad 8 \quad 11 \quad 16 \quad 19 \quad 24 \quad 27 \quad 32 \quad$ [[ 39 ]] $\quad$ [[ 42 ]] $\quad$ [[ 49 ]] \
-
-[[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen addiert mit den aufsteigenden Primzahlen: $1+2$ dann $2+3$ dann $3+5$ und so weiter.
-
-</div>
-
-</section>
-
-
-<br>
-
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$c)\;\;$__
-
-$1 \quad 5 \quad 14 \quad 30 \quad 55 \quad 91 \quad$ [[ 140 ]] $\quad$ [[ 204 ]] $\quad$ [[ 285 ]] \
-
-[[?]] Musterbeschreibung: Die zuvorige Zahl wird mit der aufsteigenden Quadratzahl startend bei $2$ addiert.
-
-</div>
-
-</section>
-
-
-
-<br>
-<br>
-<br>
-<br>

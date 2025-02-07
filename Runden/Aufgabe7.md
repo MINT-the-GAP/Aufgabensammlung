@@ -54,7 +54,8 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Folgen, schwer
+
+tags: Runden, mittel
 
 -->
 
@@ -63,65 +64,14 @@ tags: Folgen, schwer
 
 # Aufgabe 1
 
-**Gib** nächsten Glieder der Folge **an**.
+**Gib** den auf die angegebene Stelle gerundeten Wert in den freien Tabellenfeldern **an**.
 
+<!-- data-type="none" -->
+|   Zahl    |    Zehner     |   Hunderter    |   Tausender    |   Zehntausender    |   Hunderttausender   |
+|  :-----:  |    :-----:    |   :-----:      |     :-----:    |     :-----:        |       :-----:        |
+| $548062$  | [[ 548060  ]] |  [[ 548100  ]] | [[ 548000  ]]  |    [[ 550000  ]]   |     [[ 500000  ]]    |
+| $48991$   | [[ 48990   ]] |  [[ 49000   ]] | [[ 49000   ]]  |    [[ 50000   ]]   |     [[   0     ]]    |
+| $5184612$ | [[ 5184610 ]] |  [[ 5184600 ]] | [[ 5185000 ]]  |    [[ 5180000 ]]   |     [[ 5200000 ]]    |
+|  $84151$  | [[ 84150   ]] |  [[ 84200   ]] | [[ 84000   ]]  |    [[ 80000   ]]   |     [[ 100000  ]]    |
+| $2504468$ | [[ 2504470 ]] |  [[ 2504500 ]] | [[ 2504000 ]]  |    [[ 2500000 ]]   |     [[ 2500000 ]]    |
 
-<br>
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$a)\;\;$__
-
-$1 \quad 8 \quad 27 \quad 64 \quad 125 \quad$ [[ 216 ]] $\quad$ [[ 343 ]] $\quad$ [[ 512 ]] \
-
-[[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen hoch $3$.
-
-</div>
-
-
-</section>
-
-
-<br>
-
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$b)\;\;$__
-
-$3 \quad 5 \quad 8 \quad 11 \quad 16 \quad 19 \quad 24 \quad 27 \quad 32 \quad$ [[ 39 ]] $\quad$ [[ 42 ]] $\quad$ [[ 49 ]] \
-
-[[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen addiert mit den aufsteigenden Primzahlen: $1+2$ dann $2+3$ dann $3+5$ und so weiter.
-
-</div>
-
-</section>
-
-
-<br>
-
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$c)\;\;$__
-
-$1 \quad 5 \quad 14 \quad 30 \quad 55 \quad 91 \quad$ [[ 140 ]] $\quad$ [[ 204 ]] $\quad$ [[ 285 ]] \
-
-[[?]] Musterbeschreibung: Die zuvorige Zahl wird mit der aufsteigenden Quadratzahl startend bei $2$ addiert.
-
-</div>
-
-</section>
-
-
-
-<br>
-<br>
-<br>
-<br>

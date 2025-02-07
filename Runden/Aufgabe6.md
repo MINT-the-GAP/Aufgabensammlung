@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Folgen, schwer
+tags: Runden, leicht
 
 -->
 
@@ -63,10 +63,8 @@ tags: Folgen, schwer
 
 # Aufgabe 1
 
-**Gib** nächsten Glieder der Folge **an**.
+**Gib** den auf die angegebene Stelle gerundeten Wert **an**.
 
-
-<br>
 
 <section class="flex-container">
 
@@ -74,54 +72,62 @@ tags: Folgen, schwer
 
 __$a)\;\;$__
 
-$1 \quad 8 \quad 27 \quad 64 \quad 125 \quad$ [[ 216 ]] $\quad$ [[ 343 ]] $\quad$ [[ 512 ]] \
-
-[[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen hoch $3$.
+Auf Hunderter: $54164 \approx$ [[54200]]
 
 </div>
 
 
-</section>
-
-
-<br>
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 
 __$b)\;\;$__
 
-$3 \quad 5 \quad 8 \quad 11 \quad 16 \quad 19 \quad 24 \quad 27 \quad 32 \quad$ [[ 39 ]] $\quad$ [[ 42 ]] $\quad$ [[ 49 ]] \
-
-[[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen addiert mit den aufsteigenden Primzahlen: $1+2$ dann $2+3$ dann $3+5$ und so weiter.
+Auf Hunderter: $54164 \approx$ [[54200]]
 
 </div>
 
-</section>
 
 
-<br>
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 
 __$c)\;\;$__
 
-$1 \quad 5 \quad 14 \quad 30 \quad 55 \quad 91 \quad$ [[ 140 ]] $\quad$ [[ 204 ]] $\quad$ [[ 285 ]] \
-
-[[?]] Musterbeschreibung: Die zuvorige Zahl wird mit der aufsteigenden Quadratzahl startend bei $2$ addiert.
+Auf Zehner: $8431 \approx$ [[8430]]
 
 </div>
 
+
+
+
+<div class="flex-child">
+
+__$d)\;\;$__
+
+Auf Millionen: $47081 \approx$ [[0]]
+
+</div>
+
+
+
+
+<div class="flex-child">
+
+__$e)\;\;$__
+
+Auf Hunderter: $94516 \approx$ [[94500]]
+
+</div>
+
+
+
+<div class="flex-child">
+
+__$f)\;\;$__
+
+Auf Zehntausender: $998146 \approx$ [[1000000]]
+
+</div>
+
+
 </section>
-
-
-
-<br>
-<br>
-<br>
-<br>

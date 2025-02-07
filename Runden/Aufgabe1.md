@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Bruchrechnung, Einsteiger
+tags: Runden, sehr leicht
 
 -->
 
@@ -63,7 +63,7 @@ tags: Bruchrechnung, Einsteiger
 
 # Aufgabe 1
 
-**Gib** den darstellten roten Bruchteil vom Ganzen **an**.
+**Gib** den auf Zehner gerundeten Wert **an**.
 
 
 <section class="flex-container">
@@ -72,36 +72,60 @@ tags: Bruchrechnung, Einsteiger
 
 __$a)\;\;$__
 
-<lia-chart option="{
-  tooltip: {
-    trigger: 'item'
-  },
-  series: [
-  {
-    type: 'pie',
-    radius: '50%',
-    label: {
-      show: false
-    },
-    data: [
-      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
-      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
-      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
-      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
-      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
-      { value: 1,  itemStyle: { color: 'white', borderColor: 'black', borderWidth: 2 } }
-    ],
-    emphasis: {
-      itemStyle: {
-        shadowBlur: 10,
-        shadowOffsetX: 0,
-        shadowColor: 'rgba(0, 0, 0, 0.5)'
-      }
-    }
-  }]
-}"></lia-chart>
+$534 \approx$ [[530]]
 
---> $\frac{\text{[[input:5]]}}{\text{[[input:6]]}}$
+</div>
+
+
+
+<div class="flex-child">
+
+__$b)\;\;$__
+
+$119 \approx$ [[120]]
+
+</div>
+
+
+
+
+<div class="flex-child">
+
+__$c)\;\;$__
+
+$346 \approx$ [[350]]
+
+</div>
+
+
+
+
+<div class="flex-child">
+
+__$d)\;\;$__
+
+$971 \approx$ [[970]]
+
+</div>
+
+
+
+
+<div class="flex-child">
+
+__$e)\;\;$__
+
+$289 \approx$ [[290]]
+
+</div>
+
+
+
+<div class="flex-child">
+
+__$f)\;\;$__
+
+$654 \approx$ [[650]]
 
 </div>
 

@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Folgen, Meister
+tags: Folgen, sehr schwer
 
 -->
 
