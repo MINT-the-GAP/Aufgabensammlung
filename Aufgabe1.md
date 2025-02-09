@@ -1,109 +1,56 @@
 <!--
-version:  0.0.1
-
-language: de
-
-@style
-input {
-    text-align: center;
-}
-
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    gap: 20px;
-}
-
-.flex-child {
-    flex: 1;
-    min-width: 350px;
-    margin-right: 20px;
-}
-
-@media (max-width: 400px) {
-    .flex-child {
-        flex: 100%;
-        margin-right: 0;
-    }
-}
-@end
-
-formula: \carry   \textcolor{red}{\scriptsize #1}
-formula: \digit   \rlap{\carry{#1}}\phantom{#2}#2
-formula: \permil  \text{‰}
-
-import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
-import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
-
-script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
-
-@round
-<script>
-  let value = `@input`;
-  if (value.startsWith("@")) {
-    ""
-  } else {
-    value = JSON.parse(value);
-    value = value[0]
-    value = value.replace(/,/g, ".");
-    value = parseFloat(value);
-    value = Math.round(value * Math.pow(10,@1)) / Math.pow(10,@1);
-    value == @0
-  }
-</script>
-@end
-
-tags: Bruchrechnung, Einsteiger
-
+import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main/README.md
 -->
 
+# Math
+
+A = (<script input="range" min="0" max="100" value="50" step="1" default="50" output="A0">
+@input
+</script>,
+<script input="range" min="-100" max="100" value="50" step="1" default="50" output="A1">
+@input
+</script>
+)
+
+B = (<script input="range" min="0" max="100" value="96" step="1" default="96" output="B0">
+@input
+</script>,
+<script input="range" min="-100" max="100" value="27" step="1" default="27" output="B1">
+@input
+</script>
+)
 
 
+C = (<script input="range" min="0" max="100" value="20" step="1" default="20" output="C0">
+@input
+</script>,
+<script input="range" min="-100" max="100" value="20" step="1" default="20" output="C1">
+@input
+</script>
+)
 
-# Aufgabe 1
-
-**Gib** den darstellten roten Bruchteil vom Ganzen **an**.
-
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$a)\;\;$__
-
-<lia-chart option="{
-  tooltip: {
-    trigger: 'item'
-  },
-  series: [
-  {
-    type: 'pie',
-    radius: '50%',
-    label: {
-      show: false
-    },
-    data: [
-      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
-      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
-      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
-      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
-      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
-      { value: 1,  itemStyle: { color: 'white', borderColor: 'black', borderWidth: 2 } }
-    ],
-    emphasis: {
-      itemStyle: {
-        shadowBlur: 10,
-        shadowOffsetX: 0,
-        shadowColor: 'rgba(0, 0, 0, 0.5)'
-      }
-    }
-  }]
-}"></lia-chart>
-
---> $\frac{\text{[[input:5]]}}{\text{[[input:6]]}}$
-
-</div>
+Rotation: 
+<script input="range" min="0" max="360" value="0" step="1" default="0" output="rotation">
+@input
+</script>°
 
 
-</section>
+``` js @GGBScript
+UserAxisLimits(0,150,0,60);
+
+const A = Punkt(@input(`A0`), @input(`A1`), "A");
+const B = Punkt(@input(`B0`), @input(`B1`), "B");
+const C = Punkt(@input(`C0`), @input(`C1`), "C");
+
+const P = Polygon("A", "B", "C");
+
+Farbe(P, "red");
+
+const M = Mittelpunkt(P);
+
+const P2 = Rotation(P, M, @input(`rotation`), "P2");
+
+Farbe("P2", "green");
+
+Kreis(M, 16, "Kreis");
+```
