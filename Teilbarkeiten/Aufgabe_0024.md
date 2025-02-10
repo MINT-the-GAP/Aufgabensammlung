@@ -58,7 +58,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: kgV, ggT, sehr schwer
+tags: kgV, ggT, Vorrangsregeln, schwer
 
 -->
 
@@ -77,25 +77,19 @@ tags: kgV, ggT, sehr schwer
 
 <div class="flex-child">
 
-$a)\;\; \text{kgV}(;) =$ [[    ]]
+$a)\;\; \text{kgV}\left(\text{kgV}(6;7);\text{kgV}(3;5)\right)-\text{kgV}(18;16) =$ [[  66 ]]
 
 </div>
 
 <div class="flex-child">
 
-$b)\;\; \text{kgV}(;) =$ [[    ]]
+$b)\;\; \text{kgV}(17;19) - \text{ggT}\left(128;\text{ggT}(1024;256)\right) =$ [[ 215 ]]
 
 </div>
 
 <div class="flex-child">
 
-$c)\;\; \text{kgV}(;) =$ [[    ]]
-
-</div>
-
-<div class="flex-child">
-
-$d)\;\; \text{kgV}(;) =$ [[    ]]
+$c)\;\; \left(\text{kgV}(24;11) + \text{ggT}(83;91)\right) : \text{ggT}(105;215) =$ [[ 53 ]]
 
 </div>
 
