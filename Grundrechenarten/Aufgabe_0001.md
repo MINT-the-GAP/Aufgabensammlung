@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Bruchrechnung, Einsteiger
+tags: Vokabeln, Grundrechenarten, sehr leicht
 
 -->
 
@@ -63,47 +63,26 @@ tags: Bruchrechnung, Einsteiger
 
 # Aufgabe 1
 
-**Gib** den darstellten roten Bruchteil vom Ganzen **an**.
+**Gib** den Wert des beschriebenen Terms **an**.
 
+<br>
+__$a)\;\;$__ Der Summand $14$ wird mit $19$ addiert.\
+-->[[  33  ]]
+<br>
+<br>
+__$b)\;\;$__ Die Zahl $17$ ist der Minuend, während die Zahl $11$ der Subtrahend ist.\
+-->[[  6   ]]
+<br>
+<br>
+__$c)\;\;$__ Der Quotient wird aus dem Divisor $84$ und dem Dividenden $14$ gebildet.\
+-->[[  6   ]]
+<br>
+<br>
+__$d)\;\;$__ Der Term setzt sich aus den Faktoren $4$, $6$ und $3$ zusammen.\
+-->[[  72  ]]
 
-<section class="flex-container">
+<br>
+<br>
+<br>
+<br>
 
-<div class="flex-child">
-
-__$a)\;\;$__
-
-<lia-chart option="{
-  tooltip: {
-    trigger: 'item'
-  },
-  series: [
-  {
-    type: 'pie',
-    radius: '50%',
-    label: {
-      show: false
-    },
-    data: [
-      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
-      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
-      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
-      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
-      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
-      { value: 1,  itemStyle: { color: 'white', borderColor: 'black', borderWidth: 2 } }
-    ],
-    emphasis: {
-      itemStyle: {
-        shadowBlur: 10,
-        shadowOffsetX: 0,
-        shadowColor: 'rgba(0, 0, 0, 0.5)'
-      }
-    }
-  }]
-}"></lia-chart>
-
---> $\frac{\text{[[input:5]]}}{\text{[[input:6]]}}$
-
-</div>
-
-
-</section>

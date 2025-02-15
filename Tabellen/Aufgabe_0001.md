@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Bruchrechnung, Einsteiger
+tags: Tabelle, Parameter, sehr leicht
 
 -->
 
@@ -63,47 +63,14 @@ tags: Bruchrechnung, Einsteiger
 
 # Aufgabe 1
 
-**Gib** den darstellten roten Bruchteil vom Ganzen **an**.
+**Fülle** die freien Felder der Tabelle **aus**.
 
+<br>
 
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$a)\;\;$__
-
-<lia-chart option="{
-  tooltip: {
-    trigger: 'item'
-  },
-  series: [
-  {
-    type: 'pie',
-    radius: '50%',
-    label: {
-      show: false
-    },
-    data: [
-      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
-      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
-      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
-      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
-      { value: 1,  itemStyle: { color: 'lightcoral', borderColor: 'black', borderWidth: 2  } },
-      { value: 1,  itemStyle: { color: 'white', borderColor: 'black', borderWidth: 2 } }
-    ],
-    emphasis: {
-      itemStyle: {
-        shadowBlur: 10,
-        shadowOffsetX: 0,
-        shadowColor: 'rgba(0, 0, 0, 0.5)'
-      }
-    }
-  }]
-}"></lia-chart>
-
---> $\frac{\text{[[input:5]]}}{\text{[[input:6]]}}$
-
-</div>
-
-
-</section>
+<!-- data-type="none" -->
+|  $a$  |   $b$   |  $a+b$   |  $a \cdot b$ |  $b-a$   | $2 \cdot a$ |
+| :---: | :-----: | :------: | :----------: | :------: | :---------: |
+|   3   |     7   | [[ 10 ]] |   [[  21 ]]  | [[  4 ]] |  [[  6 ]]   |
+|   5   |     6   | [[ 11 ]] |   [[  30 ]]  | [[  1 ]] |  [[ 10 ]]   |
+|   9   |    14   | [[ 23 ]] |   [[ 126 ]]  | [[  5 ]] |  [[ 18 ]]   |
+|   8   |    16   | [[ 24 ]] |   [[ 144 ]]  | [[  8 ]] |  [[ 16 ]]   |

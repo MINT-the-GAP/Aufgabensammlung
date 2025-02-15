@@ -4,10 +4,6 @@ version:  0.0.1
 language: de
 
 @style
-main > *:not(:last-child) {
-  margin-bottom: 3rem;
-}
-
 input {
     text-align: center;
 }
@@ -58,9 +54,10 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Vektoren, Algebra, Skalarprodukt, Vektorprodukt, Betrag, Potenzen, Vorrangsregeln, sehr leicht
+tags: Einheiten, Dezimalzahlen, Länge, Zeit, Masse, Fläche, Volumen, mittel
 
 -->
+
 
 
 
@@ -68,13 +65,25 @@ tags: Vektoren, Algebra, Skalarprodukt, Vektorprodukt, Betrag, Potenzen, Vorrang
 # Aufgabe 1
 
 
-**Entscheide**, ob es sich bei dem Term um einen Vektor, ein Skalar oder einen nicht definierten Ausdruck handelt.
+**Wähle** die passende Einheit **aus**, sodass eine wahre mathematische Aussage entsteht.
+
 <br>
 
-- [[Vektor]       (Skalar)    [nicht definiert]]
-- [    [X]           [ ]             [ ]     ]  $$ \vec{r} \cdot \left( \vec{n} \circ \vec{s}\right) $$
-- [    ( )           (X)             ( )     ]  $$ \lambda{\vec{d}}^{\,2} \cdot \left|\vec{k}\right| $$
-- [    [ ]           [ ]             [X]     ]  $$ \left|\vec{a}\right| \times s \cdot \vec{b} $$
-- [    ( )           (X)             ( )     ]  $$ \left( \vec{z} \times \lambda\vec{x}\right) \circ \vec{c} $$
-- [    [ ]           [ ]             [X]     ]  $$ \dfrac{\vec{u}-\mu \vec{v}}{\vec{u}+\vec{v}} $$
 
+__$a)\;\;$__ $4,4\,$mm$ = 0,0044\,$ [[km|(m)|dm|cm|mm]] \
+<br>
+__$b)\;\;$__ $450\,$min$ = 7,5\,$ [[d|(h)|min|s]] \
+<br>
+__$c)\;\;$__ $0,00025\,$t$ = 250\,$ [[t|kg|(g)|mg]] \
+<br>
+__$d)\;\;$__ $1410000\,$cm$^2 = 0,0141\,$ [[km$^2$|(ha)|m$^2$|dm$^2$|cm$^2$|mm$^2$]] \
+<br>
+__$e)\;\;$__ $0,042\,$km$^3 = 42000\,$ [[km$^3$|(m$^3$)|dm$^3$|cm$^3$|mm$^3$]] \
+<br>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>

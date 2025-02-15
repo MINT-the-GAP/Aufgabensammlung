@@ -4,10 +4,6 @@ version:  0.0.1
 language: de
 
 @style
-main > *:not(:last-child) {
-  margin-bottom: 3rem;
-}
-
 input {
     text-align: center;
 }
@@ -58,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Vektoren, Algebra, Skalarprodukt, Vektorprodukt, Betrag, Potenzen, Vorrangsregeln, sehr leicht
+tags: Bruchrechnung, Zahlenverständnis, Dezimalzahlen sehr leicht
 
 -->
 
@@ -67,14 +63,40 @@ tags: Vektoren, Algebra, Skalarprodukt, Vektorprodukt, Betrag, Potenzen, Vorrang
 
 # Aufgabe 1
 
+**Gib** die durch den Term angezeigte Dezimalzahl **an**.
 
-**Entscheide**, ob es sich bei dem Term um einen Vektor, ein Skalar oder einen nicht definierten Ausdruck handelt.
 <br>
+__$a)\;\;$__ $\dfrac{3}{10}+\dfrac{9}{100} \qquad$  \
+<br>
+--> [[  0,39   ]] 
+<br>
+<br>
+__$b)\;\;$__ $\dfrac{6}{10}+\dfrac{2}{100}+\dfrac{7}{1000} \qquad$  \
+<br>
+--> [[  0,627  ]] 
+<br>
+<br>
+__$c)\;\;$__ $\dfrac{5}{10}+\dfrac{5}{1000} \qquad$  \
+<br>
+--> [[  0,505  ]] 
+<br>
+<br>
+__$d)\;\;$__ $\dfrac{4}{100}+\dfrac{1}{1000} \qquad$  \
+<br>
+--> [[  0,041  ]] 
+<br>
+<br>
+__$e)\;\;$__ $\dfrac{6}{1}+\dfrac{8}{100} \qquad$  \
+<br>
+--> [[  6,08   ]] 
+<br>
+<br>
+__$f)\;\;$__ $\dfrac{5}{1}+\dfrac{4}{100}+\dfrac{7}{10000} \qquad$  \
+<br>
+--> [[  5,0407 ]] 
 
-- [[Vektor]       (Skalar)    [nicht definiert]]
-- [    [X]           [ ]             [ ]     ]  $$ \vec{r} \cdot \left( \vec{n} \circ \vec{s}\right) $$
-- [    ( )           (X)             ( )     ]  $$ \lambda{\vec{d}}^{\,2} \cdot \left|\vec{k}\right| $$
-- [    [ ]           [ ]             [X]     ]  $$ \left|\vec{a}\right| \times s \cdot \vec{b} $$
-- [    ( )           (X)             ( )     ]  $$ \left( \vec{z} \times \lambda\vec{x}\right) \circ \vec{c} $$
-- [    [ ]           [ ]             [X]     ]  $$ \dfrac{\vec{u}-\mu \vec{v}}{\vec{u}+\vec{v}} $$
+<br>
+<br>
+<br>
+<br>
 
