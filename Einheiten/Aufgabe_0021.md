@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Einheiten, Länge, Zeit, Masse, Fläche, Volumen, leicht
+tags: Einheiten, Dezimalzahlen, Länge, Zeit, Masse, Fläche, Volumen, mittel
 
 -->
 
@@ -65,105 +65,21 @@ tags: Einheiten, Länge, Zeit, Masse, Fläche, Volumen, leicht
 # Aufgabe 1
 
 
-**Kreuze** die zutreffenden Antworten auf die Fragen **an**.
+**Wähle** die passende Einheit **aus**, sodass eine wahre mathematische Aussage entsteht.
 
 <br>
 
-<section class="flex-container">
 
-<div class="flex-child">
-
-__$a)\;\;$__ Welche der Volumeninhalte beschreibt den größten Volumeninhalt?
-
-
-- [[ ]] $400000\,$cm$^3$
-- [[X]] $40000\,$dm$^3$
-- [[ ]] $4000\,$l
-- [[ ]] $4\,$m$^3$
-- [[ ]] $40000000\,$mm$^3$
-
+__$a)\;\;$__ $75\,$cm$ = 7,5\,$ [[km|m|(dm)|cm|mm]] \
 <br>
+__$b)\;\;$__ $3\,$h$ = 10800\,$ [[d|h|min|(s)]] \
 <br>
+__$c)\;\;$__ $64000\,$mg$ = 0,064\,$ [[t|(kg)|g|mg]] \
 <br>
-
-</div>
-
-</section>
-
-
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$b)\;\;$__ Welche angegebene Zeit ist die niedrigste?
-
-
-- [[ ]] $1,8\,$h
-- [[ ]] $6400\,$s
-- [[ ]] $5500000\,$ms
-- [[ ]] $0,1\,$d
-- [[X]] $102\,$min
-
+__$d)\;\;$__ $2,5\,$dm$^2 = 25000\,$ [[km$^2$|m$^2$|dm$^2$|cm$^2$|(mm$^2$)]] \
 <br>
+__$e)\;\;$__ $43\,$l$ = 43000\,$ [[km$^3$|m$^3$|dm$^3$|(cm$^3$)|mm$^3$]] \
 <br>
-<br>
-
-</div>
-
-</section>
-
-
-
-
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$c)\;\;$__ Welche angegebenen Längen sind die größten?
-
-
-- [[X]] $248\,$dm
-- [[ ]] $248000\,$mm
-- [[X]] $0,0248\,$km
-- [[ ]] $24,8\,$cm
-- [[ ]] $2,48\,$m
-
-<br>
-<br>
-<br>
-
-</div>
-
-</section>
-
-
-
-
-
-
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$d)\;\;$__ Welche angegebenen Flächen sind die kleinsten?
-
-
-- [[X]] $234\,$dm$^2$
-- [[X]] $2340000\,$mm$^2$
-- [[ ]] $0,0234\,$ha
-- [[X]] $23400\,$cm$^2$
-- [[ ]] $23,4\,$m$^2$
-
-<br>
-<br>
-<br>
-
-</div>
-
-</section>
 
 
 <br>
