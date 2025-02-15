@@ -66,34 +66,34 @@ tags: Bruchrechnung, Zahlenverständnis, Dezimalzahlen, sehr leicht
 **Gib** die durch den Term angezeigte Dezimalzahl **an**.
 
 <br>
-__$a)\;\;$__ $\dfrac{3}{10}+\dfrac{9}{100} \qquad$  \
+__$a)\;\;$__ $\dfrac{1}{10}+\dfrac{5}{100}+\dfrac{2}{100} \qquad$  \
 <br>
---> [[  0,39   ]] 
-<br>
-<br>
-__$b)\;\;$__ $\dfrac{6}{10}+\dfrac{2}{100}+\dfrac{7}{1000} \qquad$  \
-<br>
---> [[  0,627  ]] 
+--> [[  0,152   ]] 
 <br>
 <br>
-__$c)\;\;$__ $\dfrac{5}{10}+\dfrac{5}{1000} \qquad$  \
+__$b)\;\;$__ $\dfrac{8}{10}+\dfrac{9}{100}+\dfrac{3}{1000}+\dfrac{5}{10000} \qquad$  \
 <br>
---> [[  0,505  ]] 
-<br>
-<br>
-__$d)\;\;$__ $\dfrac{4}{100}+\dfrac{1}{1000} \qquad$  \
-<br>
---> [[  0,041  ]] 
+--> [[  0,8935  ]] 
 <br>
 <br>
-__$e)\;\;$__ $\dfrac{6}{1}+\dfrac{8}{100} \qquad$  \
+__$c)\;\;$__ $\dfrac{9}{100}+\dfrac{8}{10000} \qquad$  \
 <br>
---> [[  6,08   ]] 
+--> [[  0,0908  ]] 
 <br>
 <br>
-__$f)\;\;$__ $\dfrac{5}{1}+\dfrac{4}{100}+\dfrac{7}{10000} \qquad$  \
+__$d)\;\;$__ $\dfrac{7}{1000}+\dfrac{9}{10000} \qquad$  \
 <br>
---> [[  5,0407 ]] 
+--> [[  0,0079  ]] 
+<br>
+<br>
+__$e)\;\;$__ $\dfrac{7}{1}+\dfrac{15}{1000} \qquad$  \
+<br>
+--> [[  7,015   ]] 
+<br>
+<br>
+__$f)\;\;$__ $\dfrac{5}{1000}+\dfrac{5}{1000000} \qquad$  \
+<br>
+--> [[  0,005005 ]] 
 
 <br>
 <br>

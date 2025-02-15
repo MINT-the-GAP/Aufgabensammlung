@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Bruchrechnung, Zahlenverständnis, Dezimalzahlen, sehr leicht
+tags: Tabelle, Parameter, sehr leicht
 
 -->
 
@@ -63,40 +63,14 @@ tags: Bruchrechnung, Zahlenverständnis, Dezimalzahlen, sehr leicht
 
 # Aufgabe 1
 
-**Gib** die durch den Term angezeigte Dezimalzahl **an**.
+**Fülle** die freien Felder der Tabelle **aus**.
 
 <br>
-__$a)\;\;$__ $\dfrac{3}{10}+\dfrac{9}{100} \qquad$  \
-<br>
---> [[  0,39   ]] 
-<br>
-<br>
-__$b)\;\;$__ $\dfrac{6}{10}+\dfrac{2}{100}+\dfrac{7}{1000} \qquad$  \
-<br>
---> [[  0,627  ]] 
-<br>
-<br>
-__$c)\;\;$__ $\dfrac{5}{10}+\dfrac{5}{1000} \qquad$  \
-<br>
---> [[  0,505  ]] 
-<br>
-<br>
-__$d)\;\;$__ $\dfrac{4}{100}+\dfrac{1}{1000} \qquad$  \
-<br>
---> [[  0,041  ]] 
-<br>
-<br>
-__$e)\;\;$__ $\dfrac{6}{1}+\dfrac{8}{100} \qquad$  \
-<br>
---> [[  6,08   ]] 
-<br>
-<br>
-__$f)\;\;$__ $\dfrac{5}{1}+\dfrac{4}{100}+\dfrac{7}{10000} \qquad$  \
-<br>
---> [[  5,0407 ]] 
 
-<br>
-<br>
-<br>
-<br>
-
+<!-- data-type="none" -->
+|  $a$  |   $b$   |   $c$   |  $a+c$   |  $c + b$     |  $b : a$ | $2 \cdot a \cdot c$ |
+| :---: | :-----: | :-----: | :------: | :----------: | :------: | :---------: |
+|   4   |     8   |     2   | [[ 6  ]] |   [[  10 ]]  | [[  2 ]] |  [[ 16 ]]   |
+|   6   |    12   |     7   | [[ 13 ]] |   [[  19 ]]  | [[  2 ]] |  [[ 84 ]]   |
+|   5   |    25   |     3   | [[ 8  ]] |   [[  8  ]]  | [[  5 ]] |  [[ 30 ]]   |
+|   9   |    27   |     2   | [[ 11 ]] |   [[  11 ]]  | [[  3 ]] |  [[ 36 ]]   |

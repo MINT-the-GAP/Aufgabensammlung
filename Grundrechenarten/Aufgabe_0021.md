@@ -61,7 +61,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Addition, sehr leicht
+tags: Multiplikation, sehr leicht
 
 -->
 
@@ -70,7 +70,7 @@ tags: Addition, sehr leicht
 
 # Aufgabe 1
 
-Bestimme die fehlenden Felder der Rechenmauer. Hierbei werden zwei benachbarte Felder miteinander addiert und die Summe in dem Feld darüber eingetragen.
+Bestimme die fehlenden Felder der Rechenmauer. Hierbei werden zwei benachbarte Felder miteinander multipliziert und das Produkt in dem Feld darüber eingetragen.
 
 
 
@@ -84,7 +84,7 @@ __$a)\;\;$__
 ``` ascii
                   +-----------------+
                   |                 |
-                  | " [[  14   ]] " |
+                  | " [[  48   ]] " |
                   |                 |
          +--------+--------+--------+--------+
          |                 |                 |
@@ -92,7 +92,7 @@ __$a)\;\;$__
          |                 |                 |
 +--------+--------+--------+--------+--------+--------+
 |                 |                 |                 |
-|      " 4 "      |      " 2 "      |      " 6 "      |
+|      " 3 "      |      " 2 "      |      " 4 "      |
 |                 |                 |                 |
 +--------+--------+--------+--------+--------+--------+                                       
 ```
@@ -110,15 +110,15 @@ __$b)\;\;$__
 ``` ascii
                   +-----------------+
                   |                 |
-                  | " [[  28   ]] " |
+                  | " [[  480  ]] " |
                   |                 |
          +--------+--------+--------+--------+
          |                 |                 |
-         | " [[  12   ]] " | " [[  16   ]] " |
+         | " [[  24   ]] " | " [[  20   ]] " |
          |                 |                 |
 +--------+--------+--------+--------+--------+--------+
 |                 |                 |                 |
-|      " 5 "      |      " 7 "      |      " 9 "      |
+|      " 6 "      |      " 4 "      |      " 5 "      |
 |                 |                 |                 |
 +--------+--------+--------+--------+--------+--------+                                       
 ```

@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Bruchrechnung, Zahlenverständnis, Dezimalzahlen, sehr leicht
+tags: lineare Funktionen, leicht
 
 -->
 
@@ -63,40 +63,79 @@ tags: Bruchrechnung, Zahlenverständnis, Dezimalzahlen, sehr leicht
 
 # Aufgabe 1
 
-**Gib** die durch den Term angezeigte Dezimalzahl **an**.
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -2x-1$. Bestimme die jeweilige fehlende Koordinate der Punkte $A$ und $B$. 
 
 <br>
-__$a)\;\;$__ $\dfrac{3}{10}+\dfrac{9}{100} \qquad$  \
-<br>
---> [[  0,39   ]] 
-<br>
-<br>
-__$b)\;\;$__ $\dfrac{6}{10}+\dfrac{2}{100}+\dfrac{7}{1000} \qquad$  \
-<br>
---> [[  0,627  ]] 
-<br>
-<br>
-__$c)\;\;$__ $\dfrac{5}{10}+\dfrac{5}{1000} \qquad$  \
-<br>
---> [[  0,505  ]] 
-<br>
-<br>
-__$d)\;\;$__ $\dfrac{4}{100}+\dfrac{1}{1000} \qquad$  \
-<br>
---> [[  0,041  ]] 
-<br>
-<br>
-__$e)\;\;$__ $\dfrac{6}{1}+\dfrac{8}{100} \qquad$  \
-<br>
---> [[  6,08   ]] 
-<br>
-<br>
-__$f)\;\;$__ $\dfrac{5}{1}+\dfrac{4}{100}+\dfrac{7}{10000} \qquad$  \
-<br>
---> [[  5,0407 ]] 
+
+--> $A(-2|$ [[  3  ]] $)$ und $B($ [[  6  ]] $|-13)$
 
 <br>
 <br>
 <br>
+
+</div>
+
+</section>
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 3x+2$. Bestimme die jeweilige fehlende Koordinate der Punkte $A$ und $B$. 
+
 <br>
 
+--> $A(-1|$ [[  -1  ]] $)$ und $B($ [[  5  ]] $|17)$
+
+<br>
+<br>
+<br>
+
+</div>
+
+</section>
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$c)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -x+5$. Bestimme die jeweilige fehlende Koordinate der Punkte $A$ und $B$. 
+
+<br>
+
+--> $A(9|$ [[  -4  ]] $)$ und $B($ [[  -3  ]] $|8)$
+
+<br>
+<br>
+<br>
+
+</div>
+
+</section>
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$d)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 4x-6$. Bestimme die jeweilige fehlende Koordinate der Punkte $A$ und $B$. 
+
+<br>
+
+--> $A(7|$ [[  22  ]] $)$ und $B($ [[  -3  ]] $|-18)$
+
+<br>
+<br>
+<br>
+
+</div>
+
+</section>

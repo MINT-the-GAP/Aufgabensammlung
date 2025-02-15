@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Bruchrechnung, Zahlenverständnis, Dezimalzahlen, sehr leicht
+tags: Bruchrechnung, Dezimalzahlen, Zahlenverständnis, sehr leicht
 
 -->
 
@@ -63,37 +63,25 @@ tags: Bruchrechnung, Zahlenverständnis, Dezimalzahlen, sehr leicht
 
 # Aufgabe 1
 
-**Gib** die durch den Term angezeigte Dezimalzahl **an**.
+**Entscheide** welches Relationszeichen eine wahre mathematische Aussage darstellt.
 
 <br>
-__$a)\;\;$__ $\dfrac{3}{10}+\dfrac{9}{100} \qquad$  \
-<br>
---> [[  0,39   ]] 
+__$a)\;\;$__ $\dfrac{1}{4}$ [[($>$)|$=$|$<$]] $0,225$ 
 <br>
 <br>
-__$b)\;\;$__ $\dfrac{6}{10}+\dfrac{2}{100}+\dfrac{7}{1000} \qquad$  \
-<br>
---> [[  0,627  ]] 
+__$b)\;\;$__ $0,375$ [[$>$|($=$)|$<$]] $\dfrac{3}{8}$ 
 <br>
 <br>
-__$c)\;\;$__ $\dfrac{5}{10}+\dfrac{5}{1000} \qquad$  \
-<br>
---> [[  0,505  ]] 
+__$c)\;\;$__ $\dfrac{8}{9}$ [[($>$)|$=$|($<$)]] $0,89$ 
 <br>
 <br>
-__$d)\;\;$__ $\dfrac{4}{100}+\dfrac{1}{1000} \qquad$  \
-<br>
---> [[  0,041  ]] 
+__$d)\;\;$__ $\dfrac{11}{5}$ [[$>$|$=$|($<$)]] $11,5$ 
 <br>
 <br>
-__$e)\;\;$__ $\dfrac{6}{1}+\dfrac{8}{100} \qquad$  \
-<br>
---> [[  6,08   ]] 
+__$e)\;\;$__ $0,45$ [[$>$|($=$)|$<$]] $\dfrac{9}{20}$ 
 <br>
 <br>
-__$f)\;\;$__ $\dfrac{5}{1}+\dfrac{4}{100}+\dfrac{7}{10000} \qquad$  \
-<br>
---> [[  5,0407 ]] 
+__$f)\;\;$__ $\dfrac{1}{3}$ [[($>$)|$=$|$<$]] $0,333$ 
 
 <br>
 <br>
