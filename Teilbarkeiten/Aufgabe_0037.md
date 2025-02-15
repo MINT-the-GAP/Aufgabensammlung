@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Einheiten, Quader, Länge, Volumen, Fläche, leicht
+tags: Teilbarkeiten, Quersumme, sehr leicht
 
 -->
 
@@ -65,111 +65,65 @@ tags: Einheiten, Quader, Länge, Volumen, Fläche, leicht
 # Aufgabe 1
 
 
-**Kreuze** die zutreffenden Antworten auf die Fragen **an**.
+**Gib** den Wert der Quersumme an.
 
 <br>
 
 <section class="flex-container">
-
 <div class="flex-child">
 
-__$a)\;\;$__ Welche der angegebenen Wertepaare beschreibt einen Volumeninhalt eines Quaders von $48\,$cm$^3$?
+__$a)\;\;$__ $75946873$
 
-
-- [[ ]] $a=8\,$cm$\;\;\wedge\;\; b=1\,$cm$\;\;\wedge\;\; c=8\,$cm
-- [[ ]] $a=2\,$cm$\;\;\wedge\;\; b=6\,$cm$\;\;\wedge\;\; c=8\,$cm
-- [[X]] $a=3\,$cm$\;\;\wedge\;\; b=4\,$cm$\;\;\wedge\;\; c=4\,$cm
-- [[X]] $a=4\,$cm$\;\;\wedge\;\; b=2\,$cm$\;\;\wedge\;\; c=6\,$cm
-- [[ ]] $a=4\,$cm$\;\;\wedge\;\; b=6\,$cm$\;\;\wedge\;\; c=3\,$cm
-
+<br>
+--> [[ 49 ]]
 <br>
 <br>
 <br>
 
 </div>
-
 </section>
 
-
-
 <section class="flex-container">
-
 <div class="flex-child">
 
-__$b)\;\;$__ Welche der angegebenen Wertepaare beschreibt den größten Volumeninhalt eines Quaders?
+__$b)\;\;$__ $64838390$
 
-
-- [[ ]] $a=8\,$cm$\;\;\wedge\;\; b=1\,$cm$\;\;\wedge\;\; c=6\,$cm
-- [[ ]] $a=2\,$cm$\;\;\wedge\;\; b=6\,$cm$\;\;\wedge\;\; c=3\,$cm
-- [[ ]] $a=3\,$cm$\;\;\wedge\;\; b=5\,$cm$\;\;\wedge\;\; c=4\,$cm
-- [[ ]] $a=4\,$cm$\;\;\wedge\;\; b=3\,$cm$\;\;\wedge\;\; c=4\,$cm
-- [[X]] $a=4\,$cm$\;\;\wedge\;\; b=6\,$cm$\;\;\wedge\;\; c=3\,$cm
-
-
+<br>
+--> [[ 41 ]]
 <br>
 <br>
 <br>
 
 </div>
-
 </section>
 
-
-
-
-
 <section class="flex-container">
-
 <div class="flex-child">
 
-__$c)\;\;$__ Ein Würfel besitzt einen Volumeninhalt von $64\,$cm$^3$. Wie groß ist die Kantenlänge?
-
-
-- [[ ]] $a=3\,$cm
-- [[X]] $a=4\,$cm
-- [[ ]] $a=6\,$cm
-- [[ ]] $a=8\,$cm
-- [[ ]] $a=16\,$cm
+__$c)\;\;$__ $23758627$
 
 <br>
-<br>
-<br>
-
+--> [[ 40 ]]
 <br>
 <br>
 <br>
 
 </div>
-
 </section>
 
-
-
-
-
-
-
 <section class="flex-container">
-
 <div class="flex-child">
 
-__$d)\;\;$__ Ein Würfel besitzt einen Oberflächeninhalt von $150\,$cm$^2$. Wie groß ist die Kantenlänge?
+__$d)\;\;$__ $32950250$
 
-
-- [[ ]] $a=3\,$cm
-- [[ ]] $a=4\,$cm
-- [[X]] $a=5\,$cm
-- [[ ]] $a=6\,$cm
-- [[ ]] $a=8\,$cm
-
+<br>
+--> [[ 26 ]]
 <br>
 <br>
 <br>
 
 </div>
-
 </section>
-
 
 <br>
 <br>

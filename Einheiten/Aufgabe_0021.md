@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Einheiten, Quader, Länge, Volumen, Fläche, leicht
+tags: Einheiten, Länge, Zeit, Masse, Fläche, Volumen, leicht
 
 -->
 
@@ -73,14 +73,14 @@ tags: Einheiten, Quader, Länge, Volumen, Fläche, leicht
 
 <div class="flex-child">
 
-__$a)\;\;$__ Welche der angegebenen Wertepaare beschreibt einen Volumeninhalt eines Quaders von $48\,$cm$^3$?
+__$a)\;\;$__ Welche der Volumeninhalte beschreibt den größten Volumeninhalt?
 
 
-- [[ ]] $a=8\,$cm$\;\;\wedge\;\; b=1\,$cm$\;\;\wedge\;\; c=8\,$cm
-- [[ ]] $a=2\,$cm$\;\;\wedge\;\; b=6\,$cm$\;\;\wedge\;\; c=8\,$cm
-- [[X]] $a=3\,$cm$\;\;\wedge\;\; b=4\,$cm$\;\;\wedge\;\; c=4\,$cm
-- [[X]] $a=4\,$cm$\;\;\wedge\;\; b=2\,$cm$\;\;\wedge\;\; c=6\,$cm
-- [[ ]] $a=4\,$cm$\;\;\wedge\;\; b=6\,$cm$\;\;\wedge\;\; c=3\,$cm
+- [[ ]] $400000\,$cm$^3$
+- [[X]] $40000\,$dm$^3$
+- [[ ]] $4000\,$l
+- [[ ]] $4\,$m$^3$
+- [[ ]] $40000000\,$mm$^3$
 
 <br>
 <br>
@@ -96,15 +96,14 @@ __$a)\;\;$__ Welche der angegebenen Wertepaare beschreibt einen Volumeninhalt ei
 
 <div class="flex-child">
 
-__$b)\;\;$__ Welche der angegebenen Wertepaare beschreibt den größten Volumeninhalt eines Quaders?
+__$b)\;\;$__ Welche angegebene Zeit ist die niedrigste?
 
 
-- [[ ]] $a=8\,$cm$\;\;\wedge\;\; b=1\,$cm$\;\;\wedge\;\; c=6\,$cm
-- [[ ]] $a=2\,$cm$\;\;\wedge\;\; b=6\,$cm$\;\;\wedge\;\; c=3\,$cm
-- [[ ]] $a=3\,$cm$\;\;\wedge\;\; b=5\,$cm$\;\;\wedge\;\; c=4\,$cm
-- [[ ]] $a=4\,$cm$\;\;\wedge\;\; b=3\,$cm$\;\;\wedge\;\; c=4\,$cm
-- [[X]] $a=4\,$cm$\;\;\wedge\;\; b=6\,$cm$\;\;\wedge\;\; c=3\,$cm
-
+- [[ ]] $1,8\,$h
+- [[ ]] $6400\,$s
+- [[ ]] $5500000\,$ms
+- [[ ]] $0,1\,$d
+- [[X]] $102\,$min
 
 <br>
 <br>
@@ -122,18 +121,14 @@ __$b)\;\;$__ Welche der angegebenen Wertepaare beschreibt den größten Volumeni
 
 <div class="flex-child">
 
-__$c)\;\;$__ Ein Würfel besitzt einen Volumeninhalt von $64\,$cm$^3$. Wie groß ist die Kantenlänge?
+__$c)\;\;$__ Welche angegebenen Längen sind die größten?
 
 
-- [[ ]] $a=3\,$cm
-- [[X]] $a=4\,$cm
-- [[ ]] $a=6\,$cm
-- [[ ]] $a=8\,$cm
-- [[ ]] $a=16\,$cm
-
-<br>
-<br>
-<br>
+- [[X]] $248\,$dm
+- [[ ]] $248000\,$mm
+- [[X]] $0,0248\,$km
+- [[ ]] $24,8\,$cm
+- [[ ]] $2,48\,$m
 
 <br>
 <br>
@@ -153,14 +148,14 @@ __$c)\;\;$__ Ein Würfel besitzt einen Volumeninhalt von $64\,$cm$^3$. Wie groß
 
 <div class="flex-child">
 
-__$d)\;\;$__ Ein Würfel besitzt einen Oberflächeninhalt von $150\,$cm$^2$. Wie groß ist die Kantenlänge?
+__$d)\;\;$__ Welche angegebenen Flächen sind die kleinsten?
 
 
-- [[ ]] $a=3\,$cm
-- [[ ]] $a=4\,$cm
-- [[X]] $a=5\,$cm
-- [[ ]] $a=6\,$cm
-- [[ ]] $a=8\,$cm
+- [[X]] $234\,$dm$^2$
+- [[X]] $2340000\,$mm$^2$
+- [[ ]] $0,0234\,$ha
+- [[X]] $23400\,$cm$^2$
+- [[ ]] $23,4\,$m$^2$
 
 <br>
 <br>

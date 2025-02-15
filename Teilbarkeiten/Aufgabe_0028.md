@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Einheiten, Quader, Länge, Volumen, Fläche, leicht
+tags: Teilbarkeiten, sehr leicht
 
 -->
 
@@ -64,7 +64,6 @@ tags: Einheiten, Quader, Länge, Volumen, Fläche, leicht
 
 # Aufgabe 1
 
-
 **Kreuze** die zutreffenden Antworten auf die Fragen **an**.
 
 <br>
@@ -73,14 +72,14 @@ tags: Einheiten, Quader, Länge, Volumen, Fläche, leicht
 
 <div class="flex-child">
 
-__$a)\;\;$__ Welche der angegebenen Wertepaare beschreibt einen Volumeninhalt eines Quaders von $48\,$cm$^3$?
+__$a)\;\;$__ Welche der folgenden Zahlen ist durch $2$ teilbar?
 
 
-- [[ ]] $a=8\,$cm$\;\;\wedge\;\; b=1\,$cm$\;\;\wedge\;\; c=8\,$cm
-- [[ ]] $a=2\,$cm$\;\;\wedge\;\; b=6\,$cm$\;\;\wedge\;\; c=8\,$cm
-- [[X]] $a=3\,$cm$\;\;\wedge\;\; b=4\,$cm$\;\;\wedge\;\; c=4\,$cm
-- [[X]] $a=4\,$cm$\;\;\wedge\;\; b=2\,$cm$\;\;\wedge\;\; c=6\,$cm
-- [[ ]] $a=4\,$cm$\;\;\wedge\;\; b=6\,$cm$\;\;\wedge\;\; c=3\,$cm
+- [[X]] $952$
+- [[ ]] $843$
+- [[ ]] $657$
+- [[X]] $254$
+- [[X]] $380$
 
 <br>
 <br>
@@ -96,14 +95,14 @@ __$a)\;\;$__ Welche der angegebenen Wertepaare beschreibt einen Volumeninhalt ei
 
 <div class="flex-child">
 
-__$b)\;\;$__ Welche der angegebenen Wertepaare beschreibt den größten Volumeninhalt eines Quaders?
+__$b)\;\;$__ Welche der folgenden Zahlen ist durch $5$ teilbar?
 
 
-- [[ ]] $a=8\,$cm$\;\;\wedge\;\; b=1\,$cm$\;\;\wedge\;\; c=6\,$cm
-- [[ ]] $a=2\,$cm$\;\;\wedge\;\; b=6\,$cm$\;\;\wedge\;\; c=3\,$cm
-- [[ ]] $a=3\,$cm$\;\;\wedge\;\; b=5\,$cm$\;\;\wedge\;\; c=4\,$cm
-- [[ ]] $a=4\,$cm$\;\;\wedge\;\; b=3\,$cm$\;\;\wedge\;\; c=4\,$cm
-- [[X]] $a=4\,$cm$\;\;\wedge\;\; b=6\,$cm$\;\;\wedge\;\; c=3\,$cm
+- [[X]] $325$
+- [[ ]] $621$
+- [[X]] $840$
+- [[ ]] $942$
+- [[ ]] $674$
 
 
 <br>
@@ -122,14 +121,14 @@ __$b)\;\;$__ Welche der angegebenen Wertepaare beschreibt den größten Volumeni
 
 <div class="flex-child">
 
-__$c)\;\;$__ Ein Würfel besitzt einen Volumeninhalt von $64\,$cm$^3$. Wie groß ist die Kantenlänge?
+__$c)\;\;$__ Welche der folgenden Zahlen ist durch $3$ teilbar?
 
 
-- [[ ]] $a=3\,$cm
-- [[X]] $a=4\,$cm
-- [[ ]] $a=6\,$cm
-- [[ ]] $a=8\,$cm
-- [[ ]] $a=16\,$cm
+- [[ ]] $512$
+- [[X]] $360$
+- [[X]] $135$
+- [[ ]] $784$
+- [[X]] $681$
 
 <br>
 <br>
@@ -153,14 +152,14 @@ __$c)\;\;$__ Ein Würfel besitzt einen Volumeninhalt von $64\,$cm$^3$. Wie groß
 
 <div class="flex-child">
 
-__$d)\;\;$__ Ein Würfel besitzt einen Oberflächeninhalt von $150\,$cm$^2$. Wie groß ist die Kantenlänge?
+__$d)\;\;$__ Welche der folgenden Zahlen ist durch $8$ teilbar?
 
 
-- [[ ]] $a=3\,$cm
-- [[ ]] $a=4\,$cm
-- [[X]] $a=5\,$cm
-- [[ ]] $a=6\,$cm
-- [[ ]] $a=8\,$cm
+- [[ ]] $355$
+- [[X]] $464$
+- [[ ]] $789$
+- [[ ]] $388$
+- [[ ]] $639$
 
 <br>
 <br>
@@ -170,6 +169,62 @@ __$d)\;\;$__ Ein Würfel besitzt einen Oberflächeninhalt von $150\,$cm$^2$. Wie
 
 </section>
 
+
+
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$e)\;\;$__ Welche der folgenden Zahlen ist durch $9$ teilbar?
+
+
+- [[X]] $504$
+- [[ ]] $821$
+- [[X]] $927$
+- [[ ]] $487$
+- [[X]] $1017$
+
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+
+</div>
+
+</section>
+
+
+
+
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$f)\;\;$__ Welche der folgenden Zahlen ist durch $4$ teilbar?
+
+
+- [[ ]] $474$
+- [[ ]] $954$
+- [[X]] $796$
+- [[ ]] $326$
+- [[X]] $512$
+
+<br>
+<br>
+<br>
+
+</div>
+
+</section>
 
 <br>
 <br>

@@ -63,6 +63,8 @@ tags: Bruchrechnung, Leicht
 
 # Aufgabe 01
 
+Dann testen wir mal: Ja oder Nein? [[ $\mid$ | $\nmid$ ]]
+
 **Gib** den darstellten roten Bruchteil vom Ganzen **an**.
 
 
