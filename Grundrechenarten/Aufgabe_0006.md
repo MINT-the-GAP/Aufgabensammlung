@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Vokabeln, Grundrechenarten, sehr leicht
+tags: Vokabeln, Grundrechenarten, Vorrangsregeln, mittel
 
 -->
 
@@ -66,20 +66,20 @@ tags: Vokabeln, Grundrechenarten, sehr leicht
 **Gib** den Wert des beschriebenen Terms **an**.
 
 <br>
-__$a)\;\;$__ Der Divisor ist $81$ und der Dividend $27$. \
--->[[  3   ]]
+__$a)\;\;$__ Ein Produkt besteht aus den Summen aus $4$ und $3$ sowie $6$ und $2$. \
+-->[[  144 ]]
 <br>
 <br>
-__$b)\;\;$__ Eine Summe besteht aus den Summanden $12$, $34$ und $26$.\
--->[[  72  ]]
+__$b)\;\;$__ Der Minuend ist die positive Differenz aus $95$ und $33$, während der Subtrahend $27$ ist. \
+-->[[  35  ]]
 <br>
 <br>
-__$c)\;\;$__ Es wird ein Produkt aus $11$ und $12$ gebildet. \
--->[[  132 ]]
+__$c)\;\;$__ Der Divisor ist die Summe aus $41$ und $54$, während der Dividend aus der positiven Differenz aus $83$ und $78$ besteht. \
+-->[[  19  ]]
 <br>
 <br>
-__$d)\;\;$__ Der Subtrahend einer Differenz ist $19$, während der Wert des Miuenden $45$ beträgt.\
--->[[  26  ]]
+__$d)\;\;$__ Die ganzzahligen Quotienten aus $56$ und $8$ sowie $84$ und $12$ werden miteinander multipliziert.\
+-->[[  42  ]]
 
 <br>
 <br>

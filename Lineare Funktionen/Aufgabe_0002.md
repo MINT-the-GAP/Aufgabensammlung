@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Vokabeln, Grundrechenarten, sehr leicht
+tags: lineare Funktionen, leicht
 
 -->
 
@@ -63,26 +63,42 @@ tags: Vokabeln, Grundrechenarten, sehr leicht
 
 # Aufgabe 1
 
-**Gib** den Wert des beschriebenen Terms **an**.
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -2x-1$. Bestimme die jeweilige fehlende Koordinate der Punkte $A$ und $B$. 
 
 <br>
-__$a)\;\;$__ Der Divisor ist $81$ und der Dividend $27$. \
--->[[  3   ]]
-<br>
-<br>
-__$b)\;\;$__ Eine Summe besteht aus den Summanden $12$, $34$ und $26$.\
--->[[  72  ]]
-<br>
-<br>
-__$c)\;\;$__ Es wird ein Produkt aus $11$ und $12$ gebildet. \
--->[[  132 ]]
-<br>
-<br>
-__$d)\;\;$__ Der Subtrahend einer Differenz ist $19$, während der Wert des Miuenden $45$ beträgt.\
--->[[  26  ]]
+
+--> $A(-2|$ [[  3  ]] $)$ und $B($ [[  6  ]] $|-13)$
 
 <br>
 <br>
 <br>
+
+</div>
+
+</section>
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 3x+2$. Bestimme die jeweilige fehlende Koordinate der Punkte $A$ und $B$. 
+
 <br>
+
+--> $A(-1|$ [[  -1  ]] $)$ und $B($ [[  5  ]] $|17)$
+
+<br>
+<br>
+<br>
+
+</div>
+
+</section>
 

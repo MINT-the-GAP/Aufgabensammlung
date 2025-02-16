@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Vokabeln, Grundrechenarten, sehr leicht
+tags: Dezimalzahlen, Bruchrechnung, Negative Zahlen, Zahlenverständnis, mittel
 
 -->
 
@@ -63,23 +63,19 @@ tags: Vokabeln, Grundrechenarten, sehr leicht
 
 # Aufgabe 1
 
-**Gib** den Wert des beschriebenen Terms **an**.
+**Entscheide** welches Relationszeichen eine wahre mathematische Aussage darstellt.
 
 <br>
-__$a)\;\;$__ Der Divisor ist $81$ und der Dividend $27$. \
--->[[  3   ]]
+__$a)\;\;$__ $-0,15$ [[$>$|($=$)|$<$]] $\dfrac{-3}{20}$ 
 <br>
 <br>
-__$b)\;\;$__ Eine Summe besteht aus den Summanden $12$, $34$ und $26$.\
--->[[  72  ]]
+__$b)\;\;$__ $-1,\bar{6}$ [[$>$|$=$|($<$)]] $-1,5$ 
 <br>
 <br>
-__$c)\;\;$__ Es wird ein Produkt aus $11$ und $12$ gebildet. \
--->[[  132 ]]
+__$c)\;\;$__ $\left| -\dfrac{3}{4} \right|$ [[($>$)|$=$|$<$]] $-0,75$ 
 <br>
 <br>
-__$d)\;\;$__ Der Subtrahend einer Differenz ist $19$, während der Wert des Miuenden $45$ beträgt.\
--->[[  26  ]]
+__$d)\;\;$__ $-\dfrac{7}{8}$ [[$>$|$=$|($<$)]] $-\dfrac{7}{9}$ 
 
 <br>
 <br>

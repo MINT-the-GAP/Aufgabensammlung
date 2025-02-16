@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Vokabeln, Grundrechenarten, sehr leicht
+tags: Vokabeln, Grundrechenarten, leicht
 
 -->
 
@@ -66,20 +66,20 @@ tags: Vokabeln, Grundrechenarten, sehr leicht
 **Gib** den Wert des beschriebenen Terms **an**.
 
 <br>
-__$a)\;\;$__ Der Divisor ist $81$ und der Dividend $27$. \
--->[[  3   ]]
+__$a)\;\;$__ Ein Produkt aus $7$ und $8$ wird durch $4$ dividiert.\
+-->[[  14  ]]
 <br>
 <br>
-__$b)\;\;$__ Eine Summe besteht aus den Summanden $12$, $34$ und $26$.\
--->[[  72  ]]
+__$b)\;\;$__ Der Term besteht aus den Faktoren $2$, $6$, $3$ und  $5$.\
+-->[[  180 ]]
 <br>
 <br>
-__$c)\;\;$__ Es wird ein Produkt aus $11$ und $12$ gebildet. \
--->[[  132 ]]
+__$c)\;\;$__ Der Dividend $6$ und der Divisor $78$ bilden ein Produkt mit $8$.\
+-->[[  104 ]]
 <br>
 <br>
-__$d)\;\;$__ Der Subtrahend einer Differenz ist $19$, während der Wert des Miuenden $45$ beträgt.\
--->[[  26  ]]
+__$d)\;\;$__ Der Subtrahend $19$ und der Minuend $73$ bilden eine Differenz, die mit $17$ addiert wird.\
+-->[[  71  ]]
 
 <br>
 <br>

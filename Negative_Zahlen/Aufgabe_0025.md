@@ -61,7 +61,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Addition, Subtraktion, schwer
+tags: Negative Zahlen, Multiplikation, Dvision, schwer
 
 -->
 
@@ -70,7 +70,7 @@ tags: Addition, Subtraktion, schwer
 
 # Aufgabe 1
 
-Bestimme die fehlenden Felder der Rechenmauer. Hierbei werden zwei benachbarte Felder miteinander addiert und die Summe in dem Feld darüber eingetragen.
+Bestimme die fehlenden Felder der Rechenmauer. Hierbei werden zwei benachbarte Felder miteinander multipliziert und das Produkt in dem Feld darüber eingetragen.
 
 
 
@@ -84,19 +84,19 @@ __$a)\;\;$__
 ``` ascii
                            +-----------------+
                            |                 |
-                           |     " 63 "      |
+                           |    " -648 "     |
                            |                 |
                   +--------+--------+--------+--------+
                   |                 |                 |
-                  | " [[  28   ]] " |     " 35 "      |
+                  | " [[  18   ]] " |     " -36 "     |
                   |                 |                 |
          +--------+--------+--------+--------+--------+--------+
          |                 |                 |                 |
-         | " [[  13   ]] " |      " 15 "     | " [[  20   ]] " |
+         | " [[  -3   ]] " |     " -6 "      | " [[   6   ]] " |
          |                 |                 |                 |
 +--------+--------+--------+--------+--------+--------+--------+--------+                                       
 |                 |                 |                 |                 |
-| " [[   7   ]] " |      " 6 "      | " [[   9   ]] " | " [[  11   ]] " |
+| " [[  -1   ]] " |      " 3 "      | " [[   -2  ]] " | " [[   -3  ]] " |
 |                 |                 |                 |                 |
 +--------+--------+--------+--------+--------+--------+--------+--------+                                       
 ```
@@ -114,19 +114,19 @@ __$b)\;\;$__
 ``` ascii
                            +-----------------+
                            |                 |
-                           | " [[ 136   ]] " |
+                           | " [[ -384  ]] " |
                            |                 |
                   +--------+--------+--------+--------+
                   |                 |                 |
-                  |      " 62 "     | " [[  74   ]] " |
+                  |      " 24 "     | " [[  -16  ]] " |
                   |                 |                 |
          +--------+--------+--------+--------+--------+--------+
          |                 |                 |                 |
-         |      " 30 "     | " [[  32   ]] " |      " 42 "     |
+         |      " 6 "      | " [[  4    ]] " |      " -4 "     |
          |                 |                 |                 |
 +--------+--------+--------+--------+--------+--------+--------+--------+                                       
 |                 |                 |                 |                 |
-| " [[  17   ]] " |     " 13 "      | " [[  19   ]] " | " [[  23   ]] " |
+| " [[   -5  ]] " |      " -1 "     | " [[   4   ]] " | " [[   -1  ]] " |
 |                 |                 |                 |                 |
 +--------+--------+--------+--------+--------+--------+--------+--------+                                       
 ```
