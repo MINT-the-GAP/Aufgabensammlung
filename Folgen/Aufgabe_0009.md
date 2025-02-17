@@ -33,35 +33,23 @@ formula: \carry   \textcolor{red}{\scriptsize #1}
 formula: \digit   \rlap{\carry{#1}}\phantom{#2}#2
 formula: \permil  \text{‰}
 
-import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
-@round
-<script>
-  let value = `@input`;
-  if (value.startsWith("@")) {
-    ""
-  } else {
-    value = JSON.parse(value);
-    value = value[0]
-    value = value.replace(/,/g, ".");
-    value = parseFloat(value);
-    value = Math.round(value * Math.pow(10,@1)) / Math.pow(10,@1);
-    value == @0
-  }
-</script>
-@end
 
-tags: Folgen, mittel
+tags: Folgen, mittel, normal, Angeben
+
+comment: Welche Zahl, welches Symbol kommt als nächstes?
+
+author: Martin Lommatzsch
 
 -->
 
 
 
 
-# Aufgabe 1
+# Folgen von Zahlen und Symbolen
 
 **Gib** nächsten Glieder der Folge **an**.
 

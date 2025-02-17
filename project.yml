@@ -97,7 +97,7 @@ collection:
     comment: "todo?"
     grid: true
     collection:
-      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Fl%C3%A4chen/Aufgabe_0001.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Flaechen/Aufgabe_0001.md
         
   - title:  "Folgen"
     comment: "todo?"
@@ -176,8 +176,8 @@ collection:
     comment: "todo?"
     grid: true
     collection:
-      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Lineare%20Funktionen/Aufgabe_0001.md
-      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Lineare%20Funktionen/Aufgabe_0002.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Lineare_Funktionen/Aufgabe_0001.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Lineare_Funktionen/Aufgabe_0002.md
 
   - title:  Logarithmen
     comment: "todo?"
@@ -205,9 +205,9 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Negative_Zahlen/Aufgabe_0009.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Negative_Zahlen/Aufgabe_0010.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Negative_Zahlen/Aufgabe_0011.md
-      #- url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Negative_Zahlen/Aufgabe_0012.md
-      #- url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Negative_Zahlen/Aufgabe_0013.md
-      #- url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Negative_Zahlen/Aufgabe_0014.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Negative_Zahlen/Aufgabe_0012.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Negative_Zahlen/Aufgabe_0013.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Negative_Zahlen/Aufgabe_0014.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Negative_Zahlen/Aufgabe_0015.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Negative_Zahlen/Aufgabe_0016.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Negative_Zahlen/Aufgabe_0017.md
