@@ -54,9 +54,10 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: lineare Funktionen, leicht
+tags: Einheiten, Rechteck, Länge, Fläche, leicht
 
 -->
+
 
 
 
@@ -64,16 +65,22 @@ tags: lineare Funktionen, leicht
 # Aufgabe 1
 
 
+**Kreuze** die zutreffenden Antworten auf die Fragen **an**.
+
+<br>
 
 <section class="flex-container">
 
 <div class="flex-child">
 
-__$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -x+5$. Bestimme die jeweilige fehlende Koordinate der Punkte $A$ und $B$. 
+__$a)\;\;$__ Welche der angegebenen Wertepaare beschreibt einen Flächeninhalt eines Rechtecks von $24\,$cm$^2$?
 
-<br>
 
---> $A(9|$ [[  -4  ]] $)$ und $B($ [[  -3  ]] $|8)$
+- [[X]] $a=8\,$cm$\;\;\wedge\;\; b=3$cm
+- [[ ]] $a=14\,$cm$\;\;\wedge\;\; b=10$cm
+- [[ ]] $a=4\,$cm$\;\;\wedge\;\; b=8$cm
+- [[X]] $a=4\,$cm$\;\;\wedge\;\; b=6$cm
+- [[ ]] $a=9\,$cm$\;\;\wedge\;\; b=3$cm
 
 <br>
 <br>
@@ -84,15 +91,20 @@ __$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -x+5$. Bestimme die jeweil
 </section>
 
 
+
 <section class="flex-container">
 
 <div class="flex-child">
 
-__$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 4x-6$. Bestimme die jeweilige fehlende Koordinate der Punkte $A$ und $B$. 
+__$b)\;\;$__ Welche der angegebenen Wertepaare beschreibt einen Umfang eines Rechtecks von $32\,$cm?
 
-<br>
 
---> $A(7|$ [[  22  ]] $)$ und $B($ [[  -3  ]] $|-18)$
+- [[ ]] $a=12\,$cm$\;\;\wedge\;\; b=20\,$cm
+- [[ ]] $a=4\,$cm$\;\;\wedge\;\; b=8\,$cm
+- [[X]] $a=5\,$cm$\;\;\wedge\;\; b=11\,$cm
+- [[ ]] $a=16\,$cm$\;\;\wedge\;\; b=16\,$cm
+- [[X]] $a=7\,$cm$\;\;\wedge\;\; b=9\,$cm
+
 
 <br>
 <br>
@@ -101,3 +113,12 @@ __$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 4x-6$. Bestimme die jeweil
 </div>
 
 </section>
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>

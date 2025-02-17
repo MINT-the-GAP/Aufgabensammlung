@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: lineare Funktionen, leicht
+tags: Tabelle, Parameter, Negative Zahlen, Vorrangsregeln, leicht
 
 -->
 
@@ -63,42 +63,14 @@ tags: lineare Funktionen, leicht
 
 # Aufgabe 1
 
-
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -2x-1$. Bestimme die jeweilige fehlende Koordinate der Punkte $A$ und $B$. 
+**Fülle** die freien Felder der Tabelle **aus**.
 
 <br>
 
---> $A(-2|$ [[  3  ]] $)$ und $B($ [[  6  ]] $|-13)$
-
-<br>
-<br>
-<br>
-
-</div>
-
-</section>
-
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 3x+2$. Bestimme die jeweilige fehlende Koordinate der Punkte $A$ und $B$. 
-
-<br>
-
---> $A(-1|$ [[  -1  ]] $)$ und $B($ [[  5  ]] $|17)$
-
-<br>
-<br>
-<br>
-
-</div>
-
-</section>
-
+<!-- data-type="none" -->
+|  $t$  |   $k$  |   $d$   |  $ t+k-d $  |  $ t \cdot d $ | $ d - k \cdot t $ |
+| :---: | :----: | :-----: | :------:    | :----------:   | :-----------:     |
+|  5    |   -6   |    8    | [[ -9  ]]   |   [[  40 ]]    |  [[ 38  ]]        |
+|  -8   |   4    |    -6   | [[ -10 ]]   |   [[  48 ]]    |  [[ 18  ]]        |
+|  -4   |   -7   |    9    | [[ -20 ]]   |   [[ -36 ]]    |  [[ -19 ]]        |
+|   3   |   -5   |    -8   | [[ 6   ]]   |   [[ -24 ]]    |  [[ 7   ]]        |

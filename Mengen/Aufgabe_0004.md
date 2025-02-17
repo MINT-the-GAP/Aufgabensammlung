@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Lagebeziehungen, sehr leicht
+tags: Mengen, sehr leicht
 
 -->
 
@@ -63,18 +63,22 @@ tags: Lagebeziehungen, sehr leicht
 
 # Aufgabe 1
 
-**Gib** den darstellten roten Bruchteil vom Ganzen **an**.
+**Wähle** die kleinste Zahlenmenge **aus**, in der die jeweilige Zahl ist.
 
+<br>
+__$a)\;\;$__ $ \frac{12}{4} $ [[$(\mathbb{N})$|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
+<br>
+<br>
+__$b)\;\;$__ $ 0,0001 $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
+<br>
+<br>
+__$c)\;\;$__ $ -\sqrt{9} $ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
+<br>
+<br>
+__$d)\;\;$__ $ -\sqrt[5]{7} $ [[$\mathbb{N}$|$\mathbb{Z}$|$\mathbb{Q}$|($\mathbb{R}$)]] 
 
-<section class="flex-container">
+<br>
+<br>
+<br>
+<br>
 
-<div class="flex-child">
-
-__$a)\;\;$__
- 
- Test: [[(a)|(b)|c]]
-
-</div>
-
-
-</section>

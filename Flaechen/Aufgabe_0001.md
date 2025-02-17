@@ -68,51 +68,7 @@ tags: Einheiten, Rechteck, Länge, Fläche, leicht
 **Kreuze** die zutreffenden Antworten auf die Fragen **an**.
 
 <br>
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$a)\;\;$__ Welche der angegebenen Wertepaare beschreibt einen Flächeninhalt eines Rechtecks von $24\,$cm$^2$?
-
-
-- [[X]] $a=8\,$cm$\;\;\wedge\;\; b=3$cm
-- [[ ]] $a=14\,$cm$\;\;\wedge\;\; b=10$cm
-- [[ ]] $a=4\,$cm$\;\;\wedge\;\; b=8$cm
-- [[X]] $a=4\,$cm$\;\;\wedge\;\; b=6$cm
-- [[ ]] $a=9\,$cm$\;\;\wedge\;\; b=3$cm
-
-<br>
-<br>
-<br>
-
-</div>
-
-</section>
-
-
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$b)\;\;$__ Welche der angegebenen Wertepaare beschreibt einen Umfang eines Rechtecks von $32\,$cm?
-
-
-- [[ ]] $a=12\,$cm$\;\;\wedge\;\; b=20\,$cm
-- [[ ]] $a=4\,$cm$\;\;\wedge\;\; b=8\,$cm
-- [[X]] $a=5\,$cm$\;\;\wedge\;\; b=11\,$cm
-- [[ ]] $a=16\,$cm$\;\;\wedge\;\; b=16\,$cm
-- [[X]] $a=7\,$cm$\;\;\wedge\;\; b=9\,$cm
-
-
-<br>
-<br>
-<br>
-
-</div>
-
-</section>
+ 
 
 
 
@@ -122,7 +78,7 @@ __$b)\;\;$__ Welche der angegebenen Wertepaare beschreibt einen Umfang eines Rec
 
 <div class="flex-child">
 
-__$c)\;\;$__ Welche der angegebenen Wertepaare beschreibt den größten Flächeninhalt eines Rechtecks?
+__$a)\;\;$__ Welche der angegebenen Wertepaare beschreibt den größten Flächeninhalt eines Rechtecks?
 
 
 - [[ ]] $a=5\,$cm$\;\;\wedge\;\; b=6\,$cm
@@ -153,7 +109,7 @@ __$c)\;\;$__ Welche der angegebenen Wertepaare beschreibt den größten Flächen
 
 <div class="flex-child">
 
-__$d)\;\;$__ Welche der angegebenen Wertepaare beschreibt den kleinsten Umfang eines Rechtecks?
+__$b)\;\;$__ Welche der angegebenen Wertepaare beschreibt den kleinsten Umfang eines Rechtecks?
 
 
 - [[X]] $a=5\,$cm$\;\;\wedge\;\; b=6\,$cm

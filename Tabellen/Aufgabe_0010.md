@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Lagebeziehungen, sehr leicht
+tags: Tabelle, Parameter, Negative Zahlen, Vorrangsregeln, leicht
 
 -->
 
@@ -63,18 +63,14 @@ tags: Lagebeziehungen, sehr leicht
 
 # Aufgabe 1
 
-**Gib** den darstellten roten Bruchteil vom Ganzen **an**.
+**Fülle** die freien Felder der Tabelle **aus**.
 
+<br>
 
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$a)\;\;$__
- 
- Test: [[(a)|(b)|c]]
-
-</div>
-
-
-</section>
+<!-- data-type="none" -->
+|  $z$  |   $r$  |   $s$   |  $ z+r\cdot s $  |  $ z+r+2 \cdot s $ | $ |s|\cdot s - r $ |
+| :---: | :----: | :-----: | :---------:      | :----------:       | :-----------:      |
+|  6    |   -5   |   -4    | [[ 26  ]]        |   [[ -7  ]]        |  [[ -11 ]]         |
+|  -8   |   3    |    -6   | [[ -30 ]]        |   [[ -17 ]]        |  [[ -39 ]]         |
+|   -3  |   7    |    -4   | [[ -31 ]]        |   [[ -4  ]]        |  [[ -23 ]]         |
+|   7   |   -9   |    -5   | [[ 52  ]]        |   [[ -12 ]]        |  [[ -16 ]]         |

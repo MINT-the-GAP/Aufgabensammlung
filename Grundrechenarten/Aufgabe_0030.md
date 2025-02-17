@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Lagebeziehungen, sehr leicht
+tags: Vokabeln, Grundrechenarten, Vorrangsregeln, mittel
 
 -->
 
@@ -63,18 +63,19 @@ tags: Lagebeziehungen, sehr leicht
 
 # Aufgabe 1
 
-**Gib** den darstellten roten Bruchteil vom Ganzen **an**.
+**Wähle** die Rechenoperatoren **aus**, sodass die Gleichung eine wahre Aussage widerspiegelt.
 
+<br>
+__$a)\;\;$__ $97$ [[$+$|($-$)|$\cdot$|$:$]] $4$ [[$+$|$-$|($\cdot$)|$:$]] $3$ [[$+$|$-$|($\cdot$)|$:$]] $6 = 25$
+<br>
+<br>
+__$b)\;\;$__ $97$ [[$+$|($-$)|$\cdot$|$:$]] $4$ [[$+$|$-$|($\cdot$)|$:$]] $3$ [[$+$|$-$|($\cdot$)|$:$]] $6 = 25$
+<br>
+<br>
+__$c)\;\;$__ $7$ [[$+$|$-$|($\cdot$)|$:$]] $5$ [[$+$|$-$|($\cdot$)|$:$]] $3$ [[$+$|$-$|$\cdot$|($:$)]] $105 = 1$
 
-<section class="flex-container">
+<br>
+<br>
+<br>
+<br>
 
-<div class="flex-child">
-
-__$a)\;\;$__
- 
- Test: [[(a)|(b)|c]]
-
-</div>
-
-
-</section>

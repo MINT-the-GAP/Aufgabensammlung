@@ -116,61 +116,6 @@ __$b)\;\;$__ Welche der angegebenen Wertepaare beschreibt den größten Volumeni
 
 
 
-
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$c)\;\;$__ Ein Würfel besitzt einen Volumeninhalt von $64\,$cm$^3$. Wie groß ist die Kantenlänge?
-
-
-- [[ ]] $a=3\,$cm
-- [[X]] $a=4\,$cm
-- [[ ]] $a=6\,$cm
-- [[ ]] $a=8\,$cm
-- [[ ]] $a=16\,$cm
-
-<br>
-<br>
-<br>
-
-<br>
-<br>
-<br>
-
-</div>
-
-</section>
-
-
-
-
-
-
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-__$d)\;\;$__ Ein Würfel besitzt einen Oberflächeninhalt von $150\,$cm$^2$. Wie groß ist die Kantenlänge?
-
-
-- [[ ]] $a=3\,$cm
-- [[ ]] $a=4\,$cm
-- [[X]] $a=5\,$cm
-- [[ ]] $a=6\,$cm
-- [[ ]] $a=8\,$cm
-
-<br>
-<br>
-<br>
-
-</div>
-
-</section>
-
-
 <br>
 <br>
 <br>

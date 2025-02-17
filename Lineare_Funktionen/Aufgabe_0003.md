@@ -54,7 +54,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Lagebeziehungen, sehr leicht
+tags: lineare Funktionen, Negative Zahlen, leicht
 
 -->
 
@@ -63,18 +63,42 @@ tags: Lagebeziehungen, sehr leicht
 
 # Aufgabe 1
 
-**Gib** den darstellten roten Bruchteil vom Ganzen **an**.
 
 
 <section class="flex-container">
 
 <div class="flex-child">
 
-__$a)\;\;$__
- 
- Test: [[(a)|(b)|c]]
+__$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -3x+5$. Bestimme die jeweilige fehlende Koordinate der Punkte $A$ und $B$. 
+
+<br>
+
+--> $A(4|$ [[  -7  ]] $)$ und $B($ [[  -2  ]] $|11)$
+
+<br>
+<br>
+<br>
 
 </div>
 
+</section>
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 6x-17$. Bestimme die jeweilige fehlende Koordinate der Punkte $A$ und $B$. 
+
+<br>
+
+--> $A(3|$ [[  1  ]] $)$ und $B($ [[  -4  ]] $|-41)$
+
+<br>
+<br>
+<br>
+
+</div>
 
 </section>
+

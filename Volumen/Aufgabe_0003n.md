@@ -54,27 +54,73 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 </script>
 @end
 
-tags: Lagebeziehungen, sehr leicht
+tags: Quader, Volumen, sehr leicht
 
 -->
 
 
 
 
+
 # Aufgabe 1
 
-**Gib** den darstellten roten Bruchteil vom Ganzen **an**.
 
+**Gib** Anzahl der Würfel aus denen der Quader besteht **an**.
 
+<br>
+ 
 <section class="flex-container">
-
 <div class="flex-child">
 
-__$a)\;\;$__
- 
- Test: [[(a)|(b)|c]]
+__$a)\;\;$__ 
+
+
+```latex  @tikz 
+\begin{tikzpicture} [scale=2.5]
+  \planepartition{{2,2},{2,2}}
+\end{tikzpicture}
+```
+
+--> Es sind [[ 28  ]] Würfel.
+
+<br>
+<br>
+<br>
 
 </div>
-
-
 </section>
+
+
+
+<br>
+ 
+<section class="flex-container">
+<div class="flex-child">
+
+__$b)\;\;$__ 
+
+
+```latex  @tikz 
+\begin{tikzpicture} [scale=2.5]
+  \planepartition{{2,2},{2,2}}
+\end{tikzpicture}
+```
+
+--> Es sind [[ 16  ]] Würfel.
+
+<br>
+<br>
+<br>
+
+</div>
+</section>
+
+
+ 
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
