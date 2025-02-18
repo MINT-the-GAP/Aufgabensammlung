@@ -314,13 +314,15 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0004.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0005.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0006.md
+      
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0001.md
 
 
   - title:  "Differentiation und Integration"
     comment: "In dieser Kachel sind alle Aufgaben zu Differentiation und Integration zu finden."
     grid: true
     collection:
-      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Differentiation_und_Integration/01_Ableitungen/Aufgabe_0001.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0001.md
 
 
   - title:  "Stochastik"
