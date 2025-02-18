@@ -38,12 +38,12 @@ author: Martin Lommatzsch
 
 
 __$a)\;\;$__ $a=24\,$cm $\;\;\wedge\;\; b=15\,$cm
---> [[  78  ]]cm
+--> $u=$[[  78  ]]cm
 
 <br>
 
 __$b)\;\;$__ $a=13\,$cm $\;\;\wedge\;\; b=18\,$cm
---> [[  62  ]]cm
+--> $u=$[[  62  ]]cm
 
 
 

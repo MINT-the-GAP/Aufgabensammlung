@@ -18,9 +18,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Rechteck, Dezimalzahlen, Länge, Fläche, Umfang, leicht, niedrig, Angeben
+tags: Rechteck, Länge, Fläche, leicht, niedrig, Angeben
 
-comment: Berechne den Umfang einer rechteckigen Fläche.
+comment: Der Flächeninhalt einer rechteckigen Fläche ist bekannt, doch eine Seitenlänge fehlt.
 
 author: Martin Lommatzsch
 
@@ -29,21 +29,21 @@ author: Martin Lommatzsch
 
 
 
-# Umfang von Rechtecken
+# Fächeninhalt von Rechtecken
 
 
-**Gib** den Umfang des beschriebenen Rechtecks **an**.
-
-<br>
-
-
-__$a)\;\;$__ $a=4,7\,$dm $\;\;\wedge\;\; b=3,16\,$dm
---> $u=$[[  15,72  ]]dm
+**Gib** die fehlende Seitenlänge **an**.
 
 <br>
 
-__$b)\;\;$__ $a=3,2\,$cm $\;\;\wedge\;\; b=0,054\,$cm
---> $u=$[[  6,508  ]]cm
+
+__$a)\;\;$__ $A=72\,$cm$^2\;\;\wedge\;\; a=9\,$cm
+--> $b=$[[  8   ]]cm
+
+<br>
+
+__$b)\;\;$__ $A=125\,$cm$^2\;\;\wedge\;\; a=5\,$cm
+--> $b=$[[  25  ]]cm
 
 
 
