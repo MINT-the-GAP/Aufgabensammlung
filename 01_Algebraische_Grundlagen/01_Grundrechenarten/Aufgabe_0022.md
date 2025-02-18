@@ -29,7 +29,7 @@ author: Martin Lommatzsch
 
 
 
-# Rechenmauer der Multiplation
+# Rechenmauer der Multiplikation
 
 **Bestimme** die fehlenden Felder der Rechenmauer. Hierbei werden zwei benachbarte Felder miteinander multipliziert und das Produkt in dem Feld darüber eingetragen.
 

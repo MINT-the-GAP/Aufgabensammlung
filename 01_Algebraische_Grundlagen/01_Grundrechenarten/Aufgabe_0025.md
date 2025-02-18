@@ -18,7 +18,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Multiplikation, Dvision, schwer, sehr niedrig, Bestimme
+tags: Multiplikation, Division, schwer, sehr niedrig, Bestimme
 
 comment: Eine Rechenmauer der Multiplikation. Kannst du alle fehlenden Felder ausfüllen?
 
@@ -29,7 +29,7 @@ author: Martin Lommatzsch
 
 
 
-# Rechenmauer der Multiplation
+# Rechenmauer der Multiplikation
 
 
 **Bestimme** die fehlenden Felder der Rechenmauer. Hierbei werden zwei benachbarte Felder miteinander multipliziert und das Produkt in dem Feld darüber eingetragen.

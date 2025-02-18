@@ -267,6 +267,19 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/04_Rechtecke/Aufgabe_0029.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/04_Rechtecke/Aufgabe_0030.md
 
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/05_Winkel/Aufgabe_0001.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/05_Winkel/Aufgabe_0002.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/05_Winkel/Aufgabe_0003.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/05_Winkel/Aufgabe_0004.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/05_Winkel/Aufgabe_0005.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/05_Winkel/Aufgabe_0006.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/05_Winkel/Aufgabe_0007.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/05_Winkel/Aufgabe_0008.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/05_Winkel/Aufgabe_0009.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/05_Winkel/Aufgabe_0010.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/05_Winkel/Aufgabe_0011.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/05_Winkel/Aufgabe_0012.md
+
   - title:  "Funktionen"
     comment: "In dieser Kachel sind alle Aufgaben zu Funktionen zu finden."
     grid: true

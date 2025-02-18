@@ -45,7 +45,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Negative Zahlen, Multiplikation, Dvision, sehr schwer, niedrig, Bestimme
+tags: Negative Zahlen, Multiplikation, Division, sehr schwer, niedrig, Bestimme
 
 comment: Eine Rechenmauer für die Multiplikation mit negativen Zahlen. Fülle alle Felder aus.
 
