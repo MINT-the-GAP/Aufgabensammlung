@@ -69,10 +69,6 @@ __$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -x+5$. Bestimme die jeweil
 
 </div>
 
-</section>
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 

@@ -133,13 +133,6 @@ __$a)\;\;$__
 <br>
 
 </div>
-</section>
-
-
-
-<br>
- 
-<section class="flex-container">
 <div class="flex-child">
 
 __$b)\;\;$__ 

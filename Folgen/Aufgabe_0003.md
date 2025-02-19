@@ -69,13 +69,6 @@ $1 \quad 8 \quad 27 \quad 64 \quad 125 \quad$ [[ 216 ]] $\quad$ [[ 343 ]] $\quad
 </div>
 
 
-</section>
-
-
-<br>
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 
@@ -87,13 +80,6 @@ $3 \quad 5 \quad 8 \quad 11 \quad 16 \quad 19 \quad 24 \quad 27 \quad 32 \quad$ 
 
 </div>
 
-</section>
-
-
-<br>
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 

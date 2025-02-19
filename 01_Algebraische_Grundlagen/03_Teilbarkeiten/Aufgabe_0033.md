@@ -7,6 +7,26 @@ language: de
 input {
     text-align: center;
 }
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.flex-child {
+    flex: 1;
+    min-width: 350px;
+    margin-right: 20px;
+}
+
+@media (max-width: 400px) {
+    .flex-child {
+        flex: 100%;
+        margin-right: 0;
+    }
+}
 @end
 
 formula: \carry   \textcolor{red}{\scriptsize #1}
@@ -36,19 +56,34 @@ author: Martin Lommatzsch
 
 <br>
 
+<section class="flex-container">
+<div class="flex-child">
 __$a)\;\;$__ $8425$ [[ $\mid$ | ($\nmid$) ]] $5$ \
 <br>
+</div>
+<div class="flex-child">
 __$b)\;\;$__ $3609$ [[ $\mid$ | ($\nmid$) ]] $9$ \
 <br>
+</div>
+<div class="flex-child">
 __$c)\;\;$__ $6142$ [[ $\mid$ | ($\nmid$) ]] $2$ \
 <br>
+</div>
+<div class="flex-child">
 __$d)\;\;$__ $3$ [[ ($\mid$) | $\nmid$ ]] $12$ \
 <br>
+</div>
+<div class="flex-child">
 __$e)\;\;$__ $4176$ [[ $\mid$ | ($\nmid$) ]] $4$ \
 <br>
+</div>
+<div class="flex-child">
 __$f)\;\;$__ $2511$ [[ $\mid$ | ($\nmid$) ]] $3$ 
 <br>
 
+</div>
+
+</section>
 
 <br>
 <br>

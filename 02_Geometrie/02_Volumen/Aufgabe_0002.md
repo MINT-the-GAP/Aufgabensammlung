@@ -74,21 +74,8 @@ __$a)\;\;$__ Ein Würfel besitzt einen Volumeninhalt von $64\,$cm$^3$. Wie groß
 <br>
 <br>
 
-<br>
-<br>
-<br>
 
 </div>
-
-</section>
-
-
-
-
-
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 

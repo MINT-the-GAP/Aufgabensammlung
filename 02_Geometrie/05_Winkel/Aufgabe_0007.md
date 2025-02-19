@@ -7,6 +7,26 @@ language: de
 input {
     text-align: center;
 }
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.flex-child {
+    flex: 1;
+    min-width: 350px;
+    margin-right: 20px;
+}
+
+@media (max-width: 400px) {
+    .flex-child {
+        flex: 100%;
+        margin-right: 0;
+    }
+}
 @end
 
 formula: \carry   \textcolor{red}{\scriptsize #1}
@@ -35,17 +55,35 @@ author: Martin Lommatzsch
 **Wähle** die zutreffenden Winkelart **aus**.
 
 <br> 
+<section class="flex-container">
+
+<div class="flex-child">
 __$a)\;\;$__ $\alpha = 74^\circ$ Somit ist $\alpha$ ein [[Nullwinkel|(spitzer Winkel)|rechter Winkel|stumpfer Winkel|gestreckter Winkel|überstumpfer Winkel|voller Winkel]]
 <br> 
+</div>
+
+<div class="flex-child">
 __$b)\;\;$__ $\beta = 164^\circ$ Somit ist $\beta$ ein [[Nullwinkel|spitzer Winkel|rechter Winkel|(stumpfer Winkel)|gestreckter Winkel|überstumpfer Winkel|voller Winkel]]
 <br> 
+</div>
+
+<div class="flex-child">
 __$c)\;\;$__ $\gamma = 354^\circ$ Somit ist $\gamma$ ein [[Nullwinkel|spitzer Winkel|rechter Winkel|stumpfer Winkel|gestreckter Winkel|(überstumpfer Winkel)|voller Winkel]]
 <br> 
+</div>
+
+<div class="flex-child">
 __$d)\;\;$__ $\delta = 44^\circ$ Somit ist $\delta$ ein [[Nullwinkel|(spitzer Winkel)|rechter Winkel|stumpfer Winkel|gestreckter Winkel|überstumpfer Winkel|voller Winkel]]
 <br> 
+</div>
+
+<div class="flex-child">
 __$e)\;\;$__ $\epsilon = 0^\circ$ Somit ist $\epsilon$ ein [[(Nullwinkel)|spitzer Winkel|rechter Winkel|stumpfer Winkel|gestreckter Winkel|überstumpfer Winkel|voller Winkel]]
 
 
+</div>
+
+</section>
 <br>
 <br>
 <br>

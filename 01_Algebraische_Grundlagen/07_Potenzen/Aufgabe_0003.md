@@ -7,6 +7,26 @@ language: de
 input {
     text-align: center;
 }
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.flex-child {
+    flex: 1;
+    min-width: 350px;
+    margin-right: 20px;
+}
+
+@media (max-width: 400px) {
+    .flex-child {
+        flex: 100%;
+        margin-right: 0;
+    }
+}
 @end
 
 formula: \carry   \textcolor{red}{\scriptsize #1}
@@ -36,18 +56,28 @@ author: Martin Lommatzsch
 
 
 
+<section class="flex-container">
+<div class="flex-child">
 __$a)\;\;$__ $4^4 = $ [[  256  ]]
 
+</div>
+<div class="flex-child">
 
 __$b)\;\;$__ $7^3 = $ [[  343  ]]
 
+</div>
+<div class="flex-child">
 
 __$c)\;\;$__ $5^4 = $ [[  625  ]]
 
+</div>
+<div class="flex-child">
 
 __$d)\;\;$__ $3^5 = $ [[  243  ]]
 
 
+</div>
+</section>
 
 
 <br>

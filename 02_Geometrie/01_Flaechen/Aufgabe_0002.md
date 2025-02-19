@@ -75,11 +75,6 @@ __$a)\;\;$__ Welche der angegebenen Wertepaare beschreibt einen Flächeninhalt e
 
 </div>
 
-</section>
-
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 

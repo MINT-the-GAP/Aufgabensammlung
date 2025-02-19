@@ -62,32 +62,32 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ $1\,\text{m}^3 = $ [[ 1000  ]] $\,\text{dm}^3$ \
 
-</div>
 <br>
+</div>
 <div class="flex-child">
 
 __$b)\;\;$__ $7\,\text{t} = $ [[ 7000  ]] $\,\text{kg}$ \
 
-</div>
 <br>
+</div>
 <div class="flex-child">
 
 __$c)\;\;$__ $240\,\text{s} = $ [[   4   ]] $\,\text{min}$ \
 
-</div>
 <br>
+</div>
 <div class="flex-child">
 
 __$d)\;\;$__ $34000\,\text{cm} = $ [[  340  ]] $\,\text{m}$ \
 
-</div>
 <br>
+</div>
 <div class="flex-child">
 
 __$e)\;\;$__ $1\,\text{h} = $ [[ 3600  ]] $\,\text{s}$ \
 
-</div>
 <br>
+</div>
 <div class="flex-child">
 
 __$f)\;\;$__ $8\,\text{km} = $ [[ 80000 ]] $\,\text{dm}$ \

@@ -4,10 +4,33 @@ version:  0.0.1
 language: de
 
 @style
+main > *:not(:last-child) {
+  margin-bottom: 3rem;
+}
+
 input {
     text-align: center;
 }
 
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.flex-child {
+    flex: 1;
+    min-width: 350px;
+    margin-right: 20px;
+}
+
+@media (max-width: 400px) {
+    .flex-child {
+        flex: 100%;
+        margin-right: 0;
+    }
+}
 @end
 
 formula: \carry   \textcolor{red}{\scriptsize #1}
@@ -37,6 +60,9 @@ author: Martin Lommatzsch
 
 
 <br>
+<section class="flex-container">
+
+<div class="flex-child">
 
 __$a)\;\;$__ 910772
 
@@ -46,6 +72,8 @@ __$a)\;\;$__ 910772
 |   [[ 0 ]]   |       [[ 9 ]]      |       [[ 1 ]]     |    [[ 0 ]]   |   [[ 7 ]]  |  [[ 7 ]]  | [[ 2 ]] |
 
 <br>
+</div>
+<div class="flex-child">
 
 __$b)\;\;$__ 1349310
 
@@ -54,6 +82,8 @@ __$b)\;\;$__ 1349310
 | :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
 |   [[ 1 ]]   |       [[ 3 ]]      |       [[ 4 ]]     |    [[ 9 ]]   |   [[ 3 ]]  |  [[ 1 ]]  | [[ 0 ]] |
 <br>
+</div>
+<div class="flex-child">
 
 __$c)\;\;$__ 13792
 
@@ -63,3 +93,6 @@ __$c)\;\;$__ 13792
 |   [[ 0 ]]   |       [[ 0 ]]      |       [[ 1 ]]     |    [[ 3 ]]   |   [[ 7 ]]  |  [[ 9 ]]  | [[ 2 ]] |
 
 
+
+</div>
+</section>

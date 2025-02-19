@@ -4,10 +4,33 @@ version:  0.0.1
 language: de
 
 @style
+main > *:not(:last-child) {
+  margin-bottom: 3rem;
+}
+
 input {
     text-align: center;
 }
 
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.flex-child {
+    flex: 1;
+    min-width: 350px;
+    margin-right: 20px;
+}
+
+@media (max-width: 400px) {
+    .flex-child {
+        flex: 100%;
+        margin-right: 0;
+    }
+}
 @end
 
 formula: \carry   \textcolor{red}{\scriptsize #1}
@@ -34,22 +57,33 @@ author: Martin Lommatzsch
 
 **Gib** die in Sprache dargestellt Zahl in Ziffern **an**.
 
+<section class="flex-container">
+
+<div class="flex-child">
 <br>
 __$a)\;\;$__ Viertausendzweihundertneunundzwanzig  \
 -->[[  4229  ]]
 <br>
+</div>
+<div class="flex-child">
 <br>
 __$b)\;\;$__ Achttausendvier.\
 -->[[  8004  ]]
 <br>
+</div>
+<div class="flex-child">
 <br>
 __$c)\;\;$__ Zweitausendsiebhundertelf.\
 -->[[  2711  ]]
 <br>
+</div>
+<div class="flex-child">
 <br>
 __$d)\;\;$__ Dreihundertneuntausendvierhundertsechsunddreißig.\
 -->[[ 309436 ]]
 
+</div>
+</section>
 <br>
 <br>
 <br>

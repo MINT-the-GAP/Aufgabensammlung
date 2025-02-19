@@ -69,13 +69,6 @@ $97 \quad 91 \quad 85 \quad 79 \quad 73 \quad 67 \quad $ [[ 61 ]] $\quad$ [[ 55 
 </div>
 
 
-</section>
-
-
-<br>
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 
@@ -87,13 +80,6 @@ $1 \quad 11 \quad 111 \quad 1111 \quad 11111 \quad $ [[ 111111 ]] $\quad$ [[ 111
 
 </div>
 
-</section>
-
-
-<br>
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 

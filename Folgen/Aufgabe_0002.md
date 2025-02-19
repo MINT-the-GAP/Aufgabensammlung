@@ -69,13 +69,6 @@ $1 \quad 1 \quad 2 \quad 3 \quad 5 \quad 8 \quad 13 \quad$ [[ 21 ]] $\quad$ [[ 3
 </div>
 
 
-</section>
-
-
-<br>
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 
@@ -86,13 +79,6 @@ $1 \quad 4 \quad 9 \quad 16 \quad 25 \quad 36 \quad 49 \quad$ [[ 64 ]] $\quad$ [
 [[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen werden quadriert.
 </div>
 
-</section>
-
-
-<br>
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 

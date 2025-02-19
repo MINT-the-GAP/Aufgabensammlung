@@ -7,6 +7,26 @@ language: de
 input {
     text-align: center;
 }
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.flex-child {
+    flex: 1;
+    min-width: 350px;
+    margin-right: 20px;
+}
+
+@media (max-width: 400px) {
+    .flex-child {
+        flex: 100%;
+        margin-right: 0;
+    }
+}
 @end
 
 formula: \carry   \textcolor{red}{\scriptsize #1}
@@ -283,21 +303,33 @@ author: Martin Lommatzsch
 ```
 </center>
 
---> [[$f(x)$|$g(x)$|$h(x)$|$k(x)$|($l(x)$)|$m(x)$]] $= -\dfrac{1}{4} \left( x + \dfrac{1}{2} \right)^2 + 3$ \
+<section class="flex-container">
+
+<div class="flex-child">
+[[$f(x)$|$g(x)$|$h(x)$|$k(x)$|($l(x)$)|$m(x)$]] $= -\dfrac{1}{4} \left( x + \dfrac{1}{2} \right)^2 + 3$ \
 <br>
 
 
+</div>
+
+<div class="flex-child">
 
 <br>
---> [[($f(x)$)|$g(x)$|$h(x)$|$k(x)$|$l(x)$|$m(x)$]] $= \left( x + 2 \right)^2 - 2$ \
+[[($f(x)$)|$g(x)$|$h(x)$|$k(x)$|$l(x)$|$m(x)$]] $= \left( x + 2 \right)^2 - 2$ \
 <br>
 
 
+</div>
+
+<div class="flex-child">
 
 <br>
---> [[$f(x)$|($g(x)$)|$h(x)$|$k(x)$|$l(x)$|$m(x)$]] $= -\dfrac{1}{2} \left( x - \dfrac{1}{2} \right)^2 + 1$ \
+[[$f(x)$|($g(x)$)|$h(x)$|$k(x)$|$l(x)$|$m(x)$]] $= -\dfrac{1}{2} \left( x - \dfrac{1}{2} \right)^2 + 1$ \
 <br>
 
+</div>
+
+</section>
 
 
 <br>

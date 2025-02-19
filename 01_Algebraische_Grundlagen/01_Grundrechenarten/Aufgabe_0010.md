@@ -4,8 +4,32 @@ version:  0.0.1
 language: de
 
 @style
+main > *:not(:last-child) {
+  margin-bottom: 3rem;
+}
+
 input {
     text-align: center;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.flex-child {
+    flex: 1;
+    min-width: 350px;
+    margin-right: 20px;
+}
+
+@media (max-width: 400px) {
+    .flex-child {
+        flex: 100%;
+        margin-right: 0;
+    }
 }
 @end
 
@@ -36,6 +60,9 @@ author: Martin Lommatzsch
 
 
 <br>
+<section class="flex-container">
+
+<div class="flex-child">
 
 __$a)\;\;$__ 6449
 
@@ -45,6 +72,8 @@ __$a)\;\;$__ 6449
 |   [[ 0 ]]   |       [[ 0 ]]      |       [[ 0 ]]     |    [[ 6 ]]   |   [[ 4 ]]  |  [[ 4 ]]  | [[ 9 ]] |
 
 <br>
+</div>
+<div class="flex-child">
 
 __$b)\;\;$__ 6459204
 
@@ -53,6 +82,8 @@ __$b)\;\;$__ 6459204
 | :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
 |   [[ 6 ]]   |       [[ 4 ]]      |       [[ 5 ]]     |    [[ 9 ]]   |   [[ 2 ]]  |  [[ 0 ]]  | [[ 4 ]] |
 <br>
+</div>
+<div class="flex-child">
 
 __$c)\;\;$__ 210079
 
@@ -62,3 +93,5 @@ __$c)\;\;$__ 210079
 |   [[ 0 ]]   |       [[ 2 ]]      |       [[ 1 ]]     |    [[ 0 ]]   |   [[ 0 ]]  |  [[ 7 ]]  | [[ 9 ]] |
 
 
+</div>
+</section>

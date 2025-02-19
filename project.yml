@@ -316,6 +316,11 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0006.md
       
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0001.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0002.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0003.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0004.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0005.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0006.md
 
 
   - title:  "Differentiation und Integration"
@@ -348,6 +353,12 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/07_Vektoren/01_Vektoralgebra/Aufgabe_0004.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/07_Vektoren/01_Vektoralgebra/Aufgabe_0005.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/07_Vektoren/01_Vektoralgebra/Aufgabe_0006.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/07_Vektoren/01_Vektoralgebra/Aufgabe_0007.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/07_Vektoren/01_Vektoralgebra/Aufgabe_0008.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/07_Vektoren/01_Vektoralgebra/Aufgabe_0009.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/07_Vektoren/01_Vektoralgebra/Aufgabe_0010.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/07_Vektoren/01_Vektoralgebra/Aufgabe_0011.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/07_Vektoren/01_Vektoralgebra/Aufgabe_0012.md
 
   - title:  "Sonstiges"
     comment: "Hier befinden sich Aufgaben, die nicht in die anderen Kategorien passen."

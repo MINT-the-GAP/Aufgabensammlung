@@ -74,13 +74,6 @@ __$a)\;\;$__ Welche der folgenden Zahlen ist durch $2$ teilbar?
 <br>
 
 </div>
-
-</section>
-
-
-
-<section class="flex-container">
-
 <div class="flex-child">
 
 __$b)\;\;$__ Welche der folgenden Zahlen ist durch $5$ teilbar?
@@ -99,13 +92,6 @@ __$b)\;\;$__ Welche der folgenden Zahlen ist durch $5$ teilbar?
 
 </div>
 
-</section>
-
-
-
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 
@@ -122,21 +108,8 @@ __$c)\;\;$__ Welche der folgenden Zahlen ist durch $3$ teilbar?
 <br>
 <br>
 
-<br>
-<br>
-<br>
-
 </div>
 
-</section>
-
-
-
-
-
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 
@@ -155,14 +128,6 @@ __$d)\;\;$__ Welche der folgenden Zahlen ist durch $8$ teilbar?
 
 </div>
 
-</section>
-
-
-
-
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 
@@ -179,21 +144,8 @@ __$e)\;\;$__ Welche der folgenden Zahlen ist durch $9$ teilbar?
 <br>
 <br>
 
-<br>
-<br>
-<br>
-
 </div>
 
-</section>
-
-
-
-
-
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 

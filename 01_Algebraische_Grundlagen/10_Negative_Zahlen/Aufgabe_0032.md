@@ -7,6 +7,33 @@ language: de
 input {
     text-align: center;
 }
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.flex-child {
+    flex: 1;
+    min-width: 350px;
+    margin-right: 20px;
+}
+
+@media (max-width: 400px) {
+    .flex-child {
+        flex: 100%;
+        margin-right: 0;
+    }
+}
+
+
+.vertical-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    text-align: center;
+}
 @end
 
 formula: \carry   \textcolor{red}{\scriptsize #1}
@@ -103,14 +130,22 @@ author: Martin Lommatzsch
 ```
 </center>
 
+<section class="flex-container">
+<div class="flex-child">
 --> $A($[[ -4  ]]$|$[[  -3 ]]$)$ \
 <br>
+</div>
+<div class="flex-child">
 
 --> $B($[[  3  ]]$|$[[ -1  ]]$)$ \
 <br>
+</div>
+<div class="flex-child">
 
 --> [[  F  ]]$( 2 | -5 )$ \
 <br>
+</div>
+</section>
 <br>
 
 <br>

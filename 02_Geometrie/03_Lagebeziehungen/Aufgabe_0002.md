@@ -3,9 +3,30 @@ version:  0.0.1
 
 language: de
 
+
 @style
 input {
     text-align: center;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.flex-child {
+    flex: 1;
+    min-width: 350px;
+    margin-right: 20px;
+}
+
+@media (max-width: 400px) {
+    .flex-child {
+        flex: 100%;
+        margin-right: 0;
+    }
 }
 @end
 
@@ -34,17 +55,26 @@ author: Martin Lommatzsch
 <br>
 
 
+<section class="flex-container">
+
+<div class="flex-child">
 __$a)\;\;$__ Es gilt: $f \bot g \;\;\wedge\;\; g \bot h \;\;\wedge\;\; h \parallel k \;\;\wedge\;\; h \bot l$ \
 <br>
 --> $g$ [[$\bot$|($\parallel$)]] $l$
 
 <br>
+</div>
+
+<div class="flex-child">
 
 __$b)\;\;$__  Es gilt: $f \bot g \;\;\wedge\;\; g \parallel h \;\;\wedge\;\; h \bot k$ \
 <br>
 --> $f$ [[$\bot$|($\parallel$)]] $k$
 
 
+</div>
+
+</section>
 
 
 

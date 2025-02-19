@@ -71,14 +71,6 @@ $4 \quad 9 \quad 25 \quad 49 \quad 121 \quad 169 \quad 289 \quad $ [[ 361 ]] $\q
 
 </div>
 
-</section>
-
-
-<br>
-
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 
@@ -90,14 +82,6 @@ $1 \quad 5 \quad 14 \quad 30 \quad 55 \quad 91 \quad 140 \quad 204 \quad$ [[ 285
 
 </div>
 
-</section>
-
-
-<br>
-
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 

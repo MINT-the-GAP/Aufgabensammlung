@@ -56,18 +56,33 @@ author: Martin Lommatzsch
 
 <br>
 
+<section class="flex-container">
+
+<div class="flex-child">
 
 __$a)\;\;$__ $4,4\,$mm$ = 0,0044\,$ [[km|(m)|dm|cm|mm]] \
 <br>
+</div>
+<div class="flex-child">
 __$b)\;\;$__ $450\,$min$ = 7,5\,$ [[d|(h)|min|s]] \
 <br>
+</div>
+<div class="flex-child">
 __$c)\;\;$__ $0,00025\,$t$ = 250\,$ [[t|kg|(g)|mg]] \
 <br>
+</div>
+<div class="flex-child">
 __$d)\;\;$__ $1410000\,$cm$^2 = 0,0141\,$ [[km$^2$|(ha)|m$^2$|dm$^2$|cm$^2$|mm$^2$]] \
 <br>
+</div>
+<div class="flex-child">
 __$e)\;\;$__ $0,042\,$km$^3 = 42000\,$ [[km$^3$|(m$^3$)|dm$^3$|cm$^3$|mm$^3$]] \
 <br>
 
+</div>
+
+
+</section>
 
 <br>
 <br>

@@ -68,9 +68,6 @@ __$a)\;\;$__ $75946873$
 <br>
 
 </div>
-</section>
-
-<section class="flex-container">
 <div class="flex-child">
 
 __$b)\;\;$__ $64838390$
@@ -82,9 +79,6 @@ __$b)\;\;$__ $64838390$
 <br>
 
 </div>
-</section>
-
-<section class="flex-container">
 <div class="flex-child">
 
 __$c)\;\;$__ $23758627$
@@ -96,9 +90,6 @@ __$c)\;\;$__ $23758627$
 <br>
 
 </div>
-</section>
-
-<section class="flex-container">
 <div class="flex-child">
 
 __$d)\;\;$__ $32950250$

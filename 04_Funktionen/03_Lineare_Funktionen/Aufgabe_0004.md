@@ -7,6 +7,26 @@ language: de
 input {
     text-align: center;
 }
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.flex-child {
+    flex: 1;
+    min-width: 350px;
+    margin-right: 20px;
+}
+
+@media (max-width: 400px) {
+    .flex-child {
+        flex: 100%;
+        margin-right: 0;
+    }
+}
 @end
 
 formula: \carry   \textcolor{red}{\scriptsize #1}
@@ -71,12 +91,24 @@ Gegeben sei die im Koordinatensystem abgebildeten Graphen. **Ordne** den Funktio
 ```
 
 <br>
+<section class="flex-container">
+
+<div class="flex-child">
 $f(x)=$ [[($x$)|$4 \cdot x$|$2 \cdot x$|$\frac{1}{2} \cdot x$|$\frac{1}{4} \cdot x$|$x+1$|$x+0,5$|$x+\frac{1}{4}$|$2 \cdot x+1$|$\frac{1}{2} \cdot x+1$|$\frac{1}{4} \cdot x+1$]] \
 <br>
+</div>
+
+<div class="flex-child">
 $g(x)=$ [[$x$|$4 \cdot x$|$2 \cdot x$|$\frac{1}{2} \cdot x$|$\frac{1}{4} \cdot x$|$x+1$|$x+0,5$|$x+\frac{1}{4}$|$2 \cdot x+1$|$\frac{1}{2} \cdot x+1$|($\frac{1}{4} \cdot x+1$)]] \
 <br>
+</div>
+
+<div class="flex-child">
 $h(x)=$ [[$x$|$4 \cdot x$|$2 \cdot x$|($\frac{1}{2} \cdot x$)|$\frac{1}{4} \cdot x$|$x+1$|$x+0,5$|$x+\frac{1}{4}$|$2 \cdot x+1$|$\frac{1}{2} \cdot x+1$|$\frac{1}{4} \cdot x+1$]] 
 
+</div>
+
+</section>
 <br>
 <br>
 

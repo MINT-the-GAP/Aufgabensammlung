@@ -3,9 +3,30 @@ version:  0.0.1
 
 language: de
 
+
 @style
 input {
     text-align: center;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.flex-child {
+    flex: 1;
+    min-width: 350px;
+    margin-right: 20px;
+}
+
+@media (max-width: 400px) {
+    .flex-child {
+        flex: 100%;
+        margin-right: 0;
+    }
 }
 @end
 
@@ -37,10 +58,16 @@ author: Martin Lommatzsch
 <br>
 
 
+<section class="flex-container">
+
+<div class="flex-child">
 __$a)\;\;$__ $A=64\,$cm$^2\;\;\wedge\;\; a=16\,$cm
 --> $b=$[[  4  ]]cm
 
 <br>
+</div>
+
+<div class="flex-child">
 
 __$b)\;\;$__ $A=84\,$cm$^2\;\;\wedge\;\; a=6\,$cm
 --> $b=$[[  14  ]]cm
@@ -48,6 +75,9 @@ __$b)\;\;$__ $A=84\,$cm$^2\;\;\wedge\;\; a=6\,$cm
 
 
 
+</div>
+
+</section>
 
 
 

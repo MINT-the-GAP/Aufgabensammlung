@@ -7,6 +7,26 @@ language: de
 input {
     text-align: center;
 }
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.flex-child {
+    flex: 1;
+    min-width: 350px;
+    margin-right: 20px;
+}
+
+@media (max-width: 400px) {
+    .flex-child {
+        flex: 100%;
+        margin-right: 0;
+    }
+}
 @end
 
 formula: \carry   \textcolor{red}{\scriptsize #1}
@@ -36,6 +56,9 @@ author: Martin Lommatzsch
 
 <br>
 
+<section class="flex-container">
+
+<div class="flex-child">
 __$a)\;\;$__
 
 <center>
@@ -72,7 +95,9 @@ __$a)\;\;$__
 --> $\epsilon =$ [[ 45 ]]$^\circ$
 
 <br>
-<br>
+</div>
+
+<div class="flex-child">
 <br>
 
 
@@ -113,6 +138,9 @@ __$b)\;\;$__
 
 --> $\psi =$ [[ 128 ]]$^\circ$
 
+</div>
+
+</section>
 <br>
 <br>
 <br>

@@ -69,13 +69,6 @@ $12 \quad 24 \quad 36 \quad 48 \quad 60 \quad 72 \quad 84 \quad$ [[ 96 ]] $\quad
 </div>
 
 
-</section>
-
-
-<br>
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 
@@ -87,13 +80,6 @@ $1 \quad 12 \quad 123 \quad 1234 \quad 12345 \quad $ [[ 123456 ]] $\quad$ [[ 123
 
 </div>
 
-</section>
-
-
-<br>
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 

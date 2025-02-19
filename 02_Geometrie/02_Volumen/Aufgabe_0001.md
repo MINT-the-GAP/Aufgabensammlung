@@ -74,12 +74,6 @@ __$a)\;\;$__ Welche der angegebenen Wertepaare beschreibt einen Volumeninhalt ei
 
 </div>
 
-</section>
-
-
-
-<section class="flex-container">
-
 <div class="flex-child">
 
 __$b)\;\;$__ Welche der angegebenen Wertepaare beschreibt den größten Volumeninhalt eines Quaders?

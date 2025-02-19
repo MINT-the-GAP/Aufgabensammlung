@@ -69,14 +69,6 @@ $0 \quad 3 \quad 8 \quad 15 \quad 24 \quad 35 \quad 48 \quad $ [[ 63 ]] $\quad$ 
 
 </div>
 
-</section>
-
-
-<br>
-
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 
@@ -88,14 +80,6 @@ $1 \quad 2 \quad 4 \quad 7 \quad 11 \quad 16 \quad 22 \quad 29 \quad 37 \quad$ [
 
 </div>
 
-</section>
-
-
-<br>
-
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 

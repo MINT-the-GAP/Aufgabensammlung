@@ -7,6 +7,26 @@ language: de
 input {
     text-align: center;
 }
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.flex-child {
+    flex: 1;
+    min-width: 350px;
+    margin-right: 20px;
+}
+
+@media (max-width: 400px) {
+    .flex-child {
+        flex: 100%;
+        margin-right: 0;
+    }
+}
 @end
 
 formula: \carry   \textcolor{red}{\scriptsize #1}
@@ -36,6 +56,8 @@ author: Martin Lommatzsch
 
 
 <br>
+<section class="flex-container">
+<div class="flex-child">
 
 __$a)\;\;$__ 
 
@@ -46,6 +68,8 @@ __$a)\;\;$__
 
 --> [[  20,05     ]]
 <br>
+</div>
+<div class="flex-child">
 
 __$b)\;\;$__ 
 
@@ -56,6 +80,8 @@ __$b)\;\;$__
 
 --> [[   0,0002   ]]
 <br>
+</div>
+<div class="flex-child">
 
 __$c)\;\;$__ 
 
@@ -67,3 +93,12 @@ __$c)\;\;$__
 --> [[  720,4704  ]]
 
 
+</div>
+</section>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

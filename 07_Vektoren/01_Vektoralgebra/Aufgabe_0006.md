@@ -42,9 +42,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Vektoren, Abstand, negative Zahlen, Wurzeln, Dezimalzahlen, Potenzen, mittel, sehr niedrig, Berechne
+tags: Vektoren, Abstand, negative Zahlen, Wurzeln, Dezimalzahlen, Potenzen, Runden, leicht, sehr niedrig, Berechne
 
-comment: Wie weit liegen die Punkte im dreidimensionalen Raum auseinander?
+comment: Wie lang ist dieser Vektor?
 
 author: Martin Lommatzsch
 
@@ -53,26 +53,22 @@ author: Martin Lommatzsch
 
 
 
-# Abstand von Punkten
+# Längen von Vektoren
 
 
-**Berechne** den Abstand zwischen den gegebenen Punkten. Gib die Werte falls nötig gerundet auf drei Nachkommastellen an.
+**Berechne** die Länge der gegebenen Vektoren. Gib die Werte falls nötig gerundet auf drei Nachkommastellen an.
 <br>
 
 <section class="flex-container">
 <div class="flex-child">
 
-__$a)\;\;$__ $P\left( 1 | 4 | 5 \right) \;\;\wedge\;\; Q\left( 3 | 1 | 1 \right)$  \
+__$a)\;\;$__ $\vec{a} = \left(\begin{array}{c} -4 \\ 2 \\ 5 \end{array}\right)$  \
 <br>
---> $ d = $ [[  5,385  ]] $LE$
+--> $ \left| \vec{a} \right| = $ [[  6,708  ]] $LE$
 ***************
 $$
  \begin{align*}
-  d=\left| \stackrel{\longrightarrow}{PQ} \right| & = \left| \left(\begin{array}{c} 3 \\ 1 \\ 1 \end{array}\right)  - \left(\begin{array}{c} 1 \\ 4 \\ 5 \end{array}\right)\right| \\
-   & = \left| \left(\begin{array}{c} 2 \\ -3 \\ -4 \end{array}\right) \right| \\
-   &= \sqrt{2^2+3^2+4^2} \\
-   &= \sqrt{29} \\
-   &\approx 5,385 \\
+  \left| \vec{a} \right| = \left| \left(\begin{array}{c} -4 \\ 2 \\ 5 \end{array}\right) \right| = \sqrt{4^2+2^2+5^2} = \sqrt{45} \approx 6,708
  \end{align*}
 $$
 ***************
@@ -80,25 +76,15 @@ $$
 <br>
 <br>
 </div>
-</section>
-
-
-
-
-<section class="flex-container">
 <div class="flex-child">
 
-__$b)\;\;$__ $P\left( 6 | 3 | -2 \right) \;\;\wedge\;\; Q\left( -2 | 3 | -4 \right)$  \
+__$b)\;\;$__ $\vec{a} = \left(\begin{array}{c} 2,5 \\ -1,5 \\ 4 \end{array}\right)$  \
 <br>
---> $ d = $ [[  8,246  ]] $LE$
+--> $ \left| \vec{a} \right| = $ [[  4,950  ]] $LE$
 ***************
 $$
  \begin{align*}
-  d=\left| \stackrel{\longrightarrow}{PQ} \right| & = \left| \left(\begin{array}{c} -2 \\ 3 \\ -4 \end{array}\right)  - \left(\begin{array}{c} 6 \\ 3 \\ -2 \end{array}\right)\right| \\
-   & = \left| \left(\begin{array}{c} -8 \\ 0 \\ -2  \end{array}\right) \right| \\
-   &= \sqrt{8^2+0^2+2^2} \\
-   &= \sqrt{68} \\
-   &\approx 8,246 \\
+  \left| \vec{a} \right| = \left| \left(\begin{array}{c} 2,5 \\ -1,5 \\ 4 \end{array}\right) \right| = \sqrt{2,5^2+1,5^2+4^2} = \sqrt{24,5} \approx 4,950
  \end{align*}
 $$
 ***************
@@ -106,22 +92,15 @@ $$
 <br>
 <br>
 </div>
-</section>
-
-<section class="flex-container">
 <div class="flex-child">
 
-__$c)\;\;$__ $P\left( 5 | -3 | -2 \right) \;\;\wedge\;\; Q\left( -7 | 2 | -5 \right)$  \
+__$c)\;\;$__ $\vec{a} = \left(\begin{array}{c} 3 \\ -2 \\ 7 \end{array}\right)$  \
 <br>
---> $ d = $ [[  13,342  ]] $LE$
+--> $ \left| \vec{a} \right| = $ [[  7,874  ]] $LE$
 ***************
 $$
  \begin{align*}
-  d=\left| \stackrel{\longrightarrow}{QP} \right| & = \left| \left(\begin{array}{c} 5 \\ -3 \\ -2 \end{array}\right)  - \left(\begin{array}{c} -7 \\ 2 \\ -5 \end{array}\right)\right| \\
-   & = \left| \left(\begin{array}{c} 12 \\ -5 \\ 3 \end{array}\right) \right| \\
-   &= \sqrt{12^2+5^2+3^2} \\
-   &= \sqrt{178} \\
-   &\approx 13,342 \\
+  \left| \vec{a} \right| = \left| \left(\begin{array}{c} 3 \\ -2 \\ 7 \end{array}\right) \right| = \sqrt{3^2+2^2+7^2} = \sqrt{ 62} \approx 7,874
  \end{align*}
 $$
 ***************
@@ -129,22 +108,15 @@ $$
 <br>
 <br>
 </div>
-</section>
-
-<section class="flex-container">
 <div class="flex-child">
 
-__$d)\;\;$__ $P\left( -6 | 3 | 1,5 \right) \;\;\wedge\;\; Q\left( -3 | 2 | 4 \right)$  \
+__$d)\;\;$__ $\vec{a} = \left(\begin{array}{c} -4 \\ -5 \\ 1 \end{array}\right)$  \
 <br>
---> $ d = $ [[  4,387  ]] $LE$
+--> $ \left| \vec{a} \right| = $ [[  6,481  ]] $LE$
 ***************
 $$
  \begin{align*}
-  d=\left| \stackrel{\longrightarrow}{PQ} \right| & = \left| \left(\begin{array}{c} -3 \\ 2 \\ 4 \end{array}\right)  - \left(\begin{array}{c} -6 \\ 3 \\ 1,5 \end{array}\right)\right| \\
-   & = \left| \left(\begin{array}{c} 3 \\ -1 \\ 2,5 \end{array}\right) \right| \\
-   &= \sqrt{3^2+1^2+2,5^2} \\
-   &= \sqrt{19,25} \\
-   &\approx 4,387 \\
+  \left| \vec{a} \right| = \left| \left(\begin{array}{c} -4 \\ -5 \\ 1 \end{array}\right) \right| = \sqrt{4^2+5^2+1^2} = \sqrt{42} \approx 6,481
  \end{align*}
 $$
 ***************

@@ -7,6 +7,26 @@ language: de
 input {
     text-align: center;
 }
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.flex-child {
+    flex: 1;
+    min-width: 350px;
+    margin-right: 20px;
+}
+
+@media (max-width: 400px) {
+    .flex-child {
+        flex: 100%;
+        margin-right: 0;
+    }
+}
 @end
 
 formula: \carry   \textcolor{red}{\scriptsize #1}
@@ -35,6 +55,9 @@ author: Martin Lommatzsch
 **Gib** das gesuchte Winkelmaß sowie die Winkelbeziehung zum gegebenen Winkel **an**. Es gilt $f \parallel g$. (Die graphische Darstellung dient zur Orientierung und entspricht nicht den realen Werten.)
 
 <br>
+<section class="flex-container">
+
+<div class="flex-child">
 
 __$a)\;\;$__
 
@@ -66,7 +89,9 @@ __$a)\;\;$__
 --> $\chi =$ [[ 55 ]]$^\circ$ und es handelt sich um die Beziehung eines [[Nebenwinkels|Scheitelwinkels|(Stufenwinkels)|Wechselwinkels]].
 
 <br>
-<br>
+</div>
+
+<div class="flex-child">
 <br>
 
 
@@ -101,6 +126,9 @@ __$b)\;\;$__
 
 --> $\delta =$ [[ 63 ]]$^\circ$ und es handelt sich um die Beziehung eines [[(Nebenwinkels)|Scheitelwinkels|Stufenwinkels|Wechselwinkels]].
 
+</div>
+
+</section>
 <br>
 <br>
 <br>

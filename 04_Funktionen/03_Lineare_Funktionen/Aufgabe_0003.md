@@ -69,10 +69,6 @@ __$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -3x+5$. Bestimme die jewei
 
 </div>
 
-</section>
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 

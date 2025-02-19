@@ -84,15 +84,6 @@ __$a)\;\;$__ Welche der angegebenen Wertepaare beschreibt den größten Flächen
 
 </div>
 
-</section>
-
-
-
-
-
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 

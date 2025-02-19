@@ -86,11 +86,6 @@ __$a)\;\;$__
 ```
 
 </div>
-</section>
-
-
-
-<section class="flex-container">
 <div class="flex-child">
 
 __$b)\;\;$__

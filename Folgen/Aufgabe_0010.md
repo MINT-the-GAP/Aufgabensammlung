@@ -71,14 +71,6 @@ $53 \quad 55 \quad 59 \quad 65 \quad 73 \quad 83 \quad 95 \quad $ [[ 109 ]] $\qu
 
 </div>
 
-</section>
-
-
-<br>
-
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 
@@ -90,14 +82,6 @@ $b \quad D \quad f \quad H \quad j \quad L \quad $ [[ n ]] $\quad$ [[ P ]] $\qua
 
 </div>
 
-</section>
-
-
-<br>
-
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 

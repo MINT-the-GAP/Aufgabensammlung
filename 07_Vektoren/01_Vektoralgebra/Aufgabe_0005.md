@@ -42,7 +42,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Vektoren, Abstand, negative Zahlen, Wurzeln, Dezimalzahlen, Potenzen, leicht, sehr niedrig, Berechne
+tags: Vektoren, Abstand, negative Zahlen, Wurzeln, Dezimalzahlen, Potenzen, Runden, leicht, sehr niedrig, Berechne
 
 comment: Wie lang ist dieser Vektor?
 
@@ -76,11 +76,6 @@ $$
 <br>
 <br>
 </div>
-</section>
-
-
-
-<section class="flex-container">
 <div class="flex-child">
 
 __$b)\;\;$__ $\vec{a} = \left(\begin{array}{c} 2 \\ 2 \\ 1 \end{array}\right)$  \
@@ -97,11 +92,6 @@ $$
 <br>
 <br>
 </div>
-</section>
-
-
-
-<section class="flex-container">
 <div class="flex-child">
 
 __$c)\;\;$__ $\vec{a} = \left(\begin{array}{c} 3 \\ 2 \\ 7 \end{array}\right)$  \
@@ -118,11 +108,6 @@ $$
 <br>
 <br>
 </div>
-</section>
-
-
-
-<section class="flex-container">
 <div class="flex-child">
 
 __$d)\;\;$__ $\vec{a} = \left(\begin{array}{c} -1 \\ 6 \\ -4 \end{array}\right)$  \
@@ -132,48 +117,6 @@ __$d)\;\;$__ $\vec{a} = \left(\begin{array}{c} -1 \\ 6 \\ -4 \end{array}\right)$
 $$
  \begin{align*}
   \left| \vec{a} \right| = \left| \left(\begin{array}{c} -1 \\ 6 \\ -4 \end{array}\right) \right| = \sqrt{1^2+6^2+4^2} = \sqrt{53} \approx 7,280
- \end{align*}
-$$
-***************
-<br>
-<br>
-<br>
-</div>
-</section>
-
-
-
-<section class="flex-container">
-<div class="flex-child">
-
-__$e)\;\;$__ $\vec{a} = \left(\begin{array}{c} -4 \\ 2 \\ 5 \end{array}\right)$  \
-<br>
---> $ \left| \vec{a} \right| = $ [[  6,708  ]] $LE$
-***************
-$$
- \begin{align*}
-  \left| \vec{a} \right| = \left| \left(\begin{array}{c} -4 \\ 2 \\ 5 \end{array}\right) \right| = \sqrt{4^2+2^2+5^2} = \sqrt{45} \approx 6,708
- \end{align*}
-$$
-***************
-<br>
-<br>
-<br>
-</div>
-</section>
-
-
-
-<section class="flex-container">
-<div class="flex-child">
-
-__$f)\;\;$__ $\vec{a} = \left(\begin{array}{c} 2,5 \\ -1,5 \\ 4 \end{array}\right)$  \
-<br>
---> $ \left| \vec{a} \right| = $ [[  4,950  ]] $LE$
-***************
-$$
- \begin{align*}
-  \left| \vec{a} \right| = \left| \left(\begin{array}{c} 2,5 \\ -1,5 \\ 4 \end{array}\right) \right| = \sqrt{2,5^2+1,5^2+4^2} = \sqrt{24,5} \approx 4,950
  \end{align*}
 $$
 ***************

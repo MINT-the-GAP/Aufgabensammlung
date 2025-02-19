@@ -3,12 +3,32 @@ version:  0.0.1
 
 language: de
 
+
 @style
 input {
     text-align: center;
 }
-@end
 
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.flex-child {
+    flex: 1;
+    min-width: 350px;
+    margin-right: 20px;
+}
+
+@media (max-width: 400px) {
+    .flex-child {
+        flex: 100%;
+        margin-right: 0;
+    }
+}
+@end
 formula: \carry   \textcolor{red}{\scriptsize #1}
 formula: \digit   \rlap{\carry{#1}}\phantom{#2}#2
 formula: \permil  \text{‰}
@@ -37,16 +57,25 @@ author: Martin Lommatzsch
 <br>
 
 
+<section class="flex-container">
+
+<div class="flex-child">
 __$a)\;\;$__ $a=0,25\,$dm $\;\;\wedge\;\; b=6\,$mm
 --> $A=$[[  1,5    ]]cm$^2$
 
 <br>
+</div>
+
+<div class="flex-child">
 
 __$b)\;\;$__ $a=5,5\,$dm $\;\;\wedge\;\; b=70\,$cm
 --> $A=$[[  0,385  ]]m$^2$
 
 
 
+</div>
+
+</section>
 
 
 

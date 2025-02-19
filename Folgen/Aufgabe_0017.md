@@ -69,13 +69,6 @@ $100 \quad 99 \quad 97 \quad 94 \quad 90 \quad 85 \quad 79 \quad$ [[ 72 ]] $\qua
 </div>
 
 
-</section>
-
-
-<br>
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 
@@ -87,13 +80,6 @@ $11 \quad 22 \quad 33 \quad 44 \quad 55 \quad 66 \quad $ [[ 77 ]] $\quad$ [[ 88 
 
 </div>
 
-</section>
-
-
-<br>
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 

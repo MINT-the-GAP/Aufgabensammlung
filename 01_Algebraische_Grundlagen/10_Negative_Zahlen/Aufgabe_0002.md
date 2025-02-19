@@ -7,6 +7,26 @@ language: de
 input {
     text-align: center;
 }
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.flex-child {
+    flex: 1;
+    min-width: 350px;
+    margin-right: 20px;
+}
+
+@media (max-width: 400px) {
+    .flex-child {
+        flex: 100%;
+        margin-right: 0;
+    }
+}
 @end
 
 formula: \carry   \textcolor{red}{\scriptsize #1}
@@ -34,17 +54,28 @@ author: Martin Lommatzsch
 **Entscheide** welches Relationszeichen eine wahre mathematische Aussage darstellt.
 
 <br>
+<section class="flex-container">
+<div class="flex-child">
+
 __$a)\;\;$__ $-1$ [[$>$|$=$|($<$)]] $4$ 
 <br>
+</div>
+<div class="flex-child">
 <br>
 __$b)\;\;$__ $-7$ [[($>$)|$=$|$<$]] $-9$ 
 <br>
+</div>
+<div class="flex-child">
 <br>
 __$c)\;\;$__ $-8$ [[$>$|$=$|($<$)]] $8$ 
 <br>
+</div>
+<div class="flex-child">
 <br>
 __$d)\;\;$__ $-5$ [[$>$|$=$|($<$)]] $0$ 
 
+</div>
+</section>
 <br>
 <br>
 <br>

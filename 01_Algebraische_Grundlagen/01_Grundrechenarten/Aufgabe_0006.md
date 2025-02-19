@@ -4,8 +4,32 @@ version:  0.0.1
 language: de
 
 @style
+main > *:not(:last-child) {
+  margin-bottom: 3rem;
+}
+
 input {
     text-align: center;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.flex-child {
+    flex: 1;
+    min-width: 350px;
+    margin-right: 20px;
+}
+
+@media (max-width: 400px) {
+    .flex-child {
+        flex: 100%;
+        margin-right: 0;
+    }
 }
 @end
 
@@ -33,22 +57,33 @@ author: Martin Lommatzsch
 
 **Gib** den Wert des beschriebenen Terms **an**.
 
+<section class="flex-container">
+
+<div class="flex-child">
 <br>
 __$a)\;\;$__ Ein Produkt besteht aus den Summen aus $4$ und $3$ sowie $6$ und $2$. \
 -->[[  144 ]]
 <br>
+</div>
+<div class="flex-child">
 <br>
 __$b)\;\;$__ Der Minuend ist die positive Differenz aus $95$ und $33$, während der Subtrahend $27$ ist. \
 -->[[  35  ]]
 <br>
+</div>
+<div class="flex-child">
 <br>
 __$c)\;\;$__ Der Divisor ist die Summe aus $41$ und $54$, während der Dividend aus der positiven Differenz aus $83$ und $78$ besteht. \
 -->[[  19  ]]
 <br>
+</div>
+<div class="flex-child">
 <br>
 __$d)\;\;$__ Die ganzzahligen Quotienten aus $56$ und $8$ sowie $84$ und $12$ werden miteinander multipliziert.\
 -->[[  42  ]]
 
+</div>
+</section>
 <br>
 <br>
 <br>

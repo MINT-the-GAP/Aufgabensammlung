@@ -7,6 +7,26 @@ language: de
 input {
     text-align: center;
 }
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.flex-child {
+    flex: 1;
+    min-width: 350px;
+    margin-right: 20px;
+}
+
+@media (max-width: 400px) {
+    .flex-child {
+        flex: 100%;
+        margin-right: 0;
+    }
+}
 @end
 
 formula: \carry   \textcolor{red}{\scriptsize #1}
@@ -35,25 +55,41 @@ author: Martin Lommatzsch
 
 <br>
 
+<section class="flex-container">
+
+<div class="flex-child">
+
 __$a)\;\;$__ [[  120  ]] Sekunden entsprechen $2$ Minuten. \
 
 <br>
+</div>
+<div class="flex-child">
 
 __$b)\;\;$__ [[ 1000 ]] Milliliter entsprechen ein Liter. \
 
 <br>
+</div>
+<div class="flex-child">
 
 __$c)\;\;$__ Ein Zentimeter entsprechen [[  10  ]] Millimeter. \
 
 <br>
+</div>
+<div class="flex-child">
 
 __$d)\;\;$__ Ein Kilogramm entspricht [[ 1000 ]] Milligramm. \
 
 <br>
+</div>
+<div class="flex-child">
 
 __$e)\;\;$__ [[   1  ]] Dezimeter entspricht $10$ Zentrimeter. \
 
 
+</div>
+
+
+</section>
 
 <br>
 <br>

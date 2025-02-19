@@ -7,6 +7,26 @@ language: de
 input {
     text-align: center;
 }
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.flex-child {
+    flex: 1;
+    min-width: 350px;
+    margin-right: 20px;
+}
+
+@media (max-width: 400px) {
+    .flex-child {
+        flex: 100%;
+        margin-right: 0;
+    }
+}
 @end
 
 formula: \carry   \textcolor{red}{\scriptsize #1}
@@ -34,17 +54,28 @@ author: Martin Lommatzsch
 **Gib** den Wert des Terms **an**.
 
 <br>
+<section class="flex-container">
+<div class="flex-child">
+
 __$a)\;\;$__ $ -\left( -\left( -\left( -11 \right) \right) \right)=$ [[  11  ]]
 <br>
+</div>
+<div class="flex-child">
 <br>
 __$b)\;\;$__ $-\left( -|-5| \right)=$ [[  5   ]]
 <br>
+</div>
+<div class="flex-child">
 <br>
 __$c)\;\;$__ $ -\left( -\left( -25 \right) \right)=$ [[  -25 ]]
 <br>
+</div>
+<div class="flex-child">
 <br>
 __$d)\;\;$__ $-\left| -\left( -\left( -3 \right) \right) \right|=$ [[  -3  ]]
 
+</div>
+</section>
 <br>
 <br>
 <br>

@@ -73,14 +73,6 @@ $1 \quad 3 \quad 9 \quad 27 \quad 81 \quad $ [[ 243 ]] $\quad$ [[ 729 ]] $\quad$
 
 </div>
 
-</section>
-
-
-<br>
-
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 
@@ -92,14 +84,6 @@ $2 \quad 3 \quad 5 \quad 7 \quad 11 \quad 13 \quad 17 \quad $ [[ 23 ]] $\quad$ [
 
 </div>
 
-</section>
-
-
-<br>
-
-
-
-<section class="flex-container">
 
 <div class="flex-child">
 

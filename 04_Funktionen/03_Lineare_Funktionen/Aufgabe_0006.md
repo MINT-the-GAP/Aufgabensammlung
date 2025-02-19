@@ -7,6 +7,26 @@ language: de
 input {
     text-align: center;
 }
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.flex-child {
+    flex: 1;
+    min-width: 350px;
+    margin-right: 20px;
+}
+
+@media (max-width: 400px) {
+    .flex-child {
+        flex: 100%;
+        margin-right: 0;
+    }
+}
 @end
 
 formula: \carry   \textcolor{red}{\scriptsize #1}
@@ -77,12 +97,24 @@ Gegeben sei die im Koordinatensystem abgebildeten Graphen. **Ordne** den Funktio
 ```
 
 <br>
+<section class="flex-container">
+
+<div class="flex-child">
 $f(x)=$ [[$\frac{1}{3} \cdot x + 1$|$\frac{1}{4} \cdot x + 1$|$\frac{1}{5} \cdot x + 1$|$\frac{1}{8} \cdot x + 1$|($\frac{1}{3} \cdot x + 1.5$)|$\frac{1}{4} \cdot x + 1.5$|$\frac{1}{5} \cdot x + \frac{3}{2}$|$\frac{1}{8} \cdot x + \frac{3}{2}$|$\frac{x}{3} + 3$|$\frac{x}{4} + 3$|$\frac{x}{5} + 3$|$\frac{x}{8} + 3$]] \
 <br>
+</div>
+
+<div class="flex-child">
 $g(x)=$ [[$\frac{1}{3} \cdot x + 1$|$\frac{1}{4} \cdot x + 1$|($\frac{1}{5} \cdot x + 1$)|$\frac{1}{8} \cdot x + 1$|$\frac{1}{3} \cdot x + 1.5$|$\frac{1}{4} \cdot x + 1.5$|$\frac{1}{5} \cdot x + \frac{3}{2}$|$\frac{1}{8} \cdot x + \frac{3}{2}$|$\frac{x}{3} + 3$|$\frac{x}{4} + 3$|$\frac{x}{5} + 3$|$\frac{x}{8} + 3$]] \
 <br>
+</div>
+
+<div class="flex-child">
 $h(x)=$ [[$\frac{1}{3} \cdot x + 1$|$\frac{1}{4} \cdot x + 1$|$\frac{1}{5} \cdot x + 1$|$\frac{1}{8} \cdot x + 1$|$\frac{1}{3} \cdot x + 1.5$|$\frac{1}{4} \cdot x + 1.5$|$\frac{1}{5} \cdot x + \frac{3}{2}$|$\frac{1}{8} \cdot x + \frac{3}{2}$|$\frac{x}{3} + 3$|$\frac{x}{4} + 3$|$\frac{x}{5} + 3$|($\frac{x}{8} + 3$)]] 
 
+</div>
+
+</section>
 <br>
 <br>
 
