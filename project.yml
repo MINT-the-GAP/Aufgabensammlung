@@ -1,10 +1,10 @@
 title: >
   <span style="background-color: rgba(0,106,179,0.75); padding: 5px; color: white">
-    Wochenaufgaben
+    Aufgabensammlung
   </span>
 comment: >
   <span style="color: rgb(0,106,179); background-color: rgba(255,255,255,0.85)">
-    Ein Versuch
+    Projektnamen hier einfügen :-)
   </span>
 logo: https://www.bildung-bedeutet-freiheit.de/dev/wp-content/uploads/2014/06/cropped-BannerHP.png
 
@@ -13,20 +13,15 @@ icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Logo_TU_Bergakad
 footer: >
   Aufgaben erstellt von Martin Lommatzsch
 meta:
-  title: Wochenaufgaben
+  title: Aufgabensammlung
   description: todo
   #image:
 
 collection:
   - html: >
       <p>
-        Die Wochenaufgaben dienen zur Wiederholung von grundlegenden Themen innerhalb des Mathematikunterrichts, welche in vielen Aufgaben im Unterricht in Verbindung mit neuem Lerninhalt vorkommen können.
-        Hierbei werden gut verteilt Aufgaben aus allen vorherigen Jahrgangstufen in unregelmäßigen Abständen aufgegriffen.
-        Auch werden Aufgaben im aktuellen Jahrgang gestellt, sodass diese zur Festigung des Unterrichtsinhaltes dienen können.
-        Falls gesamte Aufgaben nicht lösbar erscheinen, kann dies daran liegen, dass die Lehrer im aktuellen Jahrgang sich für eine andere Abfolge der Themen entschieden haben.
-        Außerdem kann es vorkommen, dass diese Themen schon im vorherigen Schuljahr erlernt, aber wieder vergessen wurden.
-        Aus diesem Grund wird bei generellen Schwierigkeiten bei der Bearbeitung der aktuellen Klassenstufe empfohlen Wochenaufgaben von niedrigeren Klassenstufen zu bearbeiten.
-        Es werden jeden Montag die Aufgaben gewechselt und Beispiellösungen zur vergangenen Woche präsentiert.
+        In dieser Aufgabensammlung sind mehrere Schwierigkeitsgrade, Vernetzungsgrade und Anforderungsbereiche abgedeckt. Sie wird kontinuierlich weiterentwickelt 
+        und bietet eine Vielzahl an Aufgaben für die Sekundarstufe I und II. 
       </p>
   - title:  "Algebraische Grundlagen"
     comment: "In dieser Kachel sind Aufgaben für die Algebraischen Grundlagen zu finden."
@@ -288,6 +283,31 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/05_Winkel/Aufgabe_0011.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/05_Winkel/Aufgabe_0012.md
 
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0001.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0002.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0003.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0004.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0005.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0006.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0007.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0008.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0009.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0010.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0011.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0012.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0013.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0014.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0015.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0016.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0017.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0018.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0019.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0020.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0021.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0022.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0023.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0024.md
+
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/Aufgabe_0001.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/Aufgabe_0002.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/Aufgabe_0003.md
@@ -296,6 +316,14 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/Aufgabe_0006.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/Aufgabe_0007.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/Aufgabe_0008.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/Aufgabe_0009.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/Aufgabe_0010.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/Aufgabe_0011.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/Aufgabe_0012.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/Aufgabe_0013.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/Aufgabe_0014.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/Aufgabe_0015.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/Aufgabe_0016.md
 
   - title:  "Funktionen"
     comment: "In dieser Kachel sind alle Aufgaben zu Funktionen zu finden."
