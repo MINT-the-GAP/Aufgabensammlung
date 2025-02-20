@@ -111,19 +111,19 @@ author: Martin Lommatzsch
 <section class="flex-container">
 
 <div class="flex-child">
---> Der Punkt $A$ liegt an der Stelle $x=$[[  0  ]] \
+ Der Punkt $A$ liegt an der Stelle $x=$[[  0  ]] \
 <br>
 </div>
 
 <div class="flex-child">
 
---> Der Punkt $B$ liegt an der Stelle $x=$[[  7  ]] \
+ Der Punkt $B$ liegt an der Stelle $x=$[[  7  ]] \
 <br>
 </div>
 
 <div class="flex-child">
 
---> Der Punkt $C$ liegt an der Stelle $x=$[[  8  ]] \
+ Der Punkt $C$ liegt an der Stelle $x=$[[  8  ]] \
 <br>
 
 </div>

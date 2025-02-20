@@ -62,7 +62,8 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 __$a)\;\;$__ $A=45\,$cm$^2\;\;\wedge\;\; a=5\,$cm
---> $b=$[[  9  ]]cm
+
+$b=$[[  9  ]]cm
 
 <br>
 </div>
@@ -70,7 +71,8 @@ __$a)\;\;$__ $A=45\,$cm$^2\;\;\wedge\;\; a=5\,$cm
 <div class="flex-child">
 
 __$b)\;\;$__ $A=56\,$cm$^2\;\;\wedge\;\; a=7\,$cm
---> $b=$[[  8  ]]cm
+
+$b=$[[  8  ]]cm
 
 
 

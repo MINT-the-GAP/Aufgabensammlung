@@ -58,6 +58,7 @@ author: Martin Lommatzsch
 <section class="flex-container">
 
 <div class="flex-child">
+<br>
 
 __$a)\;\;$__
 
@@ -90,7 +91,7 @@ __$a)\;\;$__
 ```
 </center>
 
---> $\varphi =$ [[ 43 ]]$^\circ$ und es handelt sich um die Beziehung eines [[Nebenwinkels|Scheitelwinkels|(Stufenwinkels)|Wechselwinkels]].
+$\varphi =$ [[ 43 ]]$^\circ$ und es handelt sich um die Beziehung eines [[Nebenwinkels|Scheitelwinkels|(Stufenwinkels)|Wechselwinkels]].
 
 <br>
 </div>
@@ -132,7 +133,7 @@ __$b)\;\;$__
 ```
 </center>
 
---> $\theta =$ [[ 122 ]]$^\circ$ und es handelt sich um die Beziehung eines [[Nebenwinkels|(Scheitelwinkels)|Stufenwinkels|Wechselwinkels]].
+$\theta =$ [[ 122 ]]$^\circ$ und es handelt sich um die Beziehung eines [[Nebenwinkels|(Scheitelwinkels)|Stufenwinkels|Wechselwinkels]].
 
 </div>
 

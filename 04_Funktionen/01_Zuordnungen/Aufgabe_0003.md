@@ -55,9 +55,6 @@ author: Martin Lommatzsch
 
 <br>
 
-<section class="flex-container">
-
-<div class="flex-child">
 __$a)\;\;$__
 
 <!-- data-type="none" -->
@@ -67,9 +64,6 @@ __$a)\;\;$__
 [[Proportionale|Antiproportionale|(Beliebige)]] Zuordnung.
 
 <br>
-</div>
-
-<div class="flex-child">
 
 __$b)\;\;$__
 
@@ -79,9 +73,7 @@ __$b)\;\;$__
 
 [[Proportionale|(Antiproportionale)|Beliebige]] Zuordnung.
 
-</div>
-
-</section>
+<br>
 <br>
 <br>
 <br>

@@ -123,7 +123,7 @@ __$a)\;\;$__
 ```
 
 <br>
---> Es sind [[ 16  ]] umrandende Strecken.
+Es sind [[ 16  ]] umrandende Strecken.
 
 <br>
 <br>
@@ -258,7 +258,7 @@ __$b)\;\;$__
 ```
 <br>
 
---> Es sind [[ 42  ]] umrandende Strecken.
+Es sind [[ 42  ]] umrandende Strecken.
 
 <br>
 <br>

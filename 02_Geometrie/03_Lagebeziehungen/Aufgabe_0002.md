@@ -60,7 +60,7 @@ author: Martin Lommatzsch
 <div class="flex-child">
 __$a)\;\;$__ Es gilt: $f \bot g \;\;\wedge\;\; g \bot h \;\;\wedge\;\; h \parallel k \;\;\wedge\;\; h \bot l$ \
 <br>
---> $g$ [[$\bot$|($\parallel$)]] $l$
+$g$ [[$\bot$|($\parallel$)]] $l$
 
 <br>
 </div>
@@ -69,7 +69,7 @@ __$a)\;\;$__ Es gilt: $f \bot g \;\;\wedge\;\; g \bot h \;\;\wedge\;\; h \parall
 
 __$b)\;\;$__  Es gilt: $f \bot g \;\;\wedge\;\; g \parallel h \;\;\wedge\;\; h \bot k$ \
 <br>
---> $f$ [[$\bot$|($\parallel$)]] $k$
+$f$ [[$\bot$|($\parallel$)]] $k$
 
 
 </div>

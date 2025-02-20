@@ -56,21 +56,13 @@ author: Martin Lommatzsch
 
 <br>
 
-<section class="flex-container">
-
-<div class="flex-child">
-
 __$a)\;\;$__
 
 $1 \quad 8 \quad 27 \quad 64 \quad 125 \quad$ [[ 216 ]] $\quad$ [[ 343 ]] $\quad$ [[ 512 ]] \
 
 [[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen hoch $3$.
 
-</div>
-
-
-
-<div class="flex-child">
+<br>
 
 __$b)\;\;$__
 
@@ -78,10 +70,7 @@ $3 \quad 5 \quad 8 \quad 11 \quad 16 \quad 19 \quad 24 \quad 27 \quad 32 \quad$ 
 
 [[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen addiert mit den aufsteigenden Primzahlen: $1+2$ dann $2+3$ dann $3+5$ und so weiter.
 
-</div>
-
-
-<div class="flex-child">
+<br>
 
 __$c)\;\;$__
 
@@ -89,9 +78,7 @@ $1 \quad 5 \quad 14 \quad 30 \quad 55 \quad 91 \quad$ [[ 140 ]] $\quad$ [[ 204 ]
 
 [[?]] Musterbeschreibung: Die zuvorige Zahl wird mit der aufsteigenden Quadratzahl startend bei $2$ addiert.
 
-</div>
-
-</section>
+<br>
 
 
 

@@ -57,22 +57,13 @@ author: Martin Lommatzsch
 
 <br>
 
-
-
-<section class="flex-container">
-
-<div class="flex-child">
-
 __$a)\;\;$__
 
 $53 \quad 55 \quad 59 \quad 65 \quad 73 \quad 83 \quad 95 \quad $ [[ 109 ]] $\quad$ [[ 125 ]] $\quad$ [[ 143 ]] \
 
 [[?]] Musterbeschreibung: Zur vorherigen Zahl wird die nächst größere gerade Zahl addiert.
 
-</div>
-
-
-<div class="flex-child">
+<br>
 
 __$b)\;\;$__
 
@@ -80,10 +71,7 @@ $b \quad D \quad f \quad H \quad j \quad L \quad $ [[ n ]] $\quad$ [[ P ]] $\qua
 
 [[?]] Musterbeschreibung: Immer jeweils der übernächste Buchstabe des Alphabets abwechselnd klein und groß geschrieben.
 
-</div>
-
-
-<div class="flex-child">
+<br>
 
 __$c)\;\;$__
 
@@ -91,9 +79,7 @@ $542 \quad  \quad 519 \quad 496 \quad 473 \quad 450 \quad 427 \quad 404 \quad $ 
 
 [[?]] Musterbeschreibung: Von der vorherigen Zahl wird $23$ subtrahiert.
 
-</div>
-
-</section>
+<br>
 
 <br>
 <br>

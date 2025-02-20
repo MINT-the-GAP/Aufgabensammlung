@@ -56,8 +56,6 @@ author: Martin Lommatzsch
 
 
 <br>
-<section class="flex-container">
-<div class="flex-child">
 
 __$a)\;\;$__ 17,054
 
@@ -67,8 +65,6 @@ __$a)\;\;$__ 17,054
 |   [[ 0 ]]   | [[ 1 ]] | [[ 7 ]] |  [[ 0 ]]  |    [[ 5 ]]  |  [[ 4 ]]    |     [[ 0 ]]       |
 
 <br>
-</div>
-<div class="flex-child">
 
 __$b)\;\;$__ 146,7912
 
@@ -76,9 +72,8 @@ __$b)\;\;$__ 146,7912
 |  Hunderter  |  Zehner |  Einer  |  Zehntel  | Hundertstel | Tausendstel |  Zehntausendstel  |
 | :---------: | :-----: | :-----: | :-------: | :---------: | :---------: | :---------------: |
 |   [[ 1 ]]   | [[ 4 ]] | [[ 6 ]] |  [[ 7 ]]  |    [[ 9 ]]  |  [[ 1 ]]    |     [[ 2 ]]       |
+
 <br>
-</div>
-<div class="flex-child">
 
 __$c)\;\;$__ 0,0077
 
@@ -88,8 +83,7 @@ __$c)\;\;$__ 0,0077
 |   [[ 0 ]]   | [[ 0 ]] | [[ 0 ]] |  [[ 0 ]]  |    [[ 0 ]]  |  [[ 7 ]]    |     [[ 7 ]]       |
 
 
-</div>
-</section>
+<br>
 
 <br>
 <br>

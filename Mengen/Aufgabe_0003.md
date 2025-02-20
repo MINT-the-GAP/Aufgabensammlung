@@ -61,6 +61,7 @@ author: Martin Lommatzsch
 
 <section class="flex-container">
 <div class="flex-child">
+<br>
 __$a)\;\;$__ $ 7,23 $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
 <br>
 </div>

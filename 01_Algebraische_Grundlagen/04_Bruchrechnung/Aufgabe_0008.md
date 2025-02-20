@@ -57,16 +57,19 @@ author: Martin Lommatzsch
 
 <section class="flex-container">
 <div class="flex-child">
+<br>
 __$a)\;\;$__ $\dfrac{129}{100} \qquad$  \
 <br>
---> [[  1,29   ]] 
+
+ [[  1,29   ]] 
 <br>
 </div>
 <div class="flex-child">
 <br>
 __$b)\;\;$__ $\dfrac{2}{1}+\dfrac{4}{10}+\dfrac{4}{100} \qquad$  \
 <br>
---> [[  2,44  ]] 
+
+ [[  2,44  ]] 
 <br>
 </div>
 <div class="flex-child">
@@ -80,21 +83,24 @@ __$c)\;\;$__ $\dfrac{3}{10}+\dfrac{8}{10000} \qquad$  \
 <br>
 __$d)\;\;$__ $\dfrac{9}{100}+\dfrac{6}{1000}+\dfrac{11}{1} \qquad$  \
 <br>
---> [[  11,096  ]] 
+
+ [[  11,096  ]] 
 <br>
 </div>
 <div class="flex-child">
 <br>
 __$e)\;\;$__ $\dfrac{3}{1}+\dfrac{49}{1000} \qquad$  \
 <br>
---> [[  3,049   ]] 
+
+ [[  3,049   ]] 
 <br>
 </div>
 <div class="flex-child">
 <br>
 __$f)\;\;$__ $\dfrac{7}{1000000} \qquad$  \
 <br>
---> [[  0,000007 ]] 
+
+ [[  0,000007 ]] 
 
 <br>
 </div>

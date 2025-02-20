@@ -62,7 +62,8 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 __$a)\;\;$__ $g=6\,$dm $\;\;\wedge\;\; h=7\,$dm
---> $A=$[[  210000  ]]mm$^2$
+
+$A=$[[  210000  ]]mm$^2$
 
 <br>
 </div>
@@ -70,7 +71,8 @@ __$a)\;\;$__ $g=6\,$dm $\;\;\wedge\;\; h=7\,$dm
 <div class="flex-child">
 
 __$b)\;\;$__ $g=3\,$km $\;\;\wedge\;\; h=4000\,$m
---> $A=$[[    6    ]]km$^2$
+
+$A=$[[    6    ]]km$^2$
 
 
 

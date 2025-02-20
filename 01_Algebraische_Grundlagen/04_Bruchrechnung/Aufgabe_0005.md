@@ -51,12 +51,12 @@ author: Martin Lommatzsch
 
 # Größe von Brüchen
 
-**Entscheide** welches Relationszeichen eine wahre mathematische Aussage darstellt.
+**Entscheide** welches Relationszeichen eine wahre mathematische Aussage darstellt.\
 
-<br>
 
 <section class="flex-container">
 <div class="flex-child">
+<br>
 __$a)\;\;$__ $\dfrac{8}{9}$ [[($>$)|$=$|$<$]] $\dfrac{2}{3}$ 
 <br>
 </div>

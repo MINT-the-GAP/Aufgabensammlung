@@ -59,6 +59,7 @@ author: Martin Lommatzsch
 <section class="flex-container">
 
 <div class="flex-child">
+<br>
 __$a)\;\;$__
 
 <center>
@@ -92,7 +93,7 @@ __$a)\;\;$__
 ```
 </center>
 
---> $\epsilon =$ [[ 45 ]]$^\circ$
+$\epsilon =$ [[ 45 ]]$^\circ$
 
 <br>
 </div>
@@ -136,7 +137,7 @@ __$b)\;\;$__
 ```
 </center>
 
---> $\psi =$ [[ 128 ]]$^\circ$
+$\psi =$ [[ 128 ]]$^\circ$
 
 </div>
 

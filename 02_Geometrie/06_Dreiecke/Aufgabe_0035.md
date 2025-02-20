@@ -62,7 +62,8 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 __$a)\;\;$__ $g= 8,4\,$cm $\;\;\wedge\;\; h= 1,1\,$dm
---> $A=$[[  0,462  ]]dm$^2$
+
+$A=$[[  0,462  ]]dm$^2$
 
 <br>
 </div>
@@ -70,7 +71,8 @@ __$a)\;\;$__ $g= 8,4\,$cm $\;\;\wedge\;\; h= 1,1\,$dm
 <div class="flex-child">
 
 __$b)\;\;$__ $g= 2,5\,$dm $\;\;\wedge\;\; h= 0,7\,$m
---> $A=$[[  1750  ]]cm$^2$
+
+$A=$[[  1750  ]]cm$^2$
 
 
 

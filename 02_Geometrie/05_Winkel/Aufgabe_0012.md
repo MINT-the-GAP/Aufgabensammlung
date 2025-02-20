@@ -58,6 +58,7 @@ author: Martin Lommatzsch
 <section class="flex-container">
 
 <div class="flex-child">
+<br>
 
 __$a)\;\;$__
 
@@ -107,7 +108,7 @@ __$a)\;\;$__
 ```
 </center>
 
---> $\beta =$ [[ 49 ]]$^\circ$
+$\beta =$ [[ 49 ]]$^\circ$
 
 <br>
 </div>
@@ -164,7 +165,7 @@ __$b)\;\;$__
 ```
 </center>
 
---> $\alpha =$ [[ 116 ]]$^\circ$
+$\alpha =$ [[ 116 ]]$^\circ$
 
 </div>
 

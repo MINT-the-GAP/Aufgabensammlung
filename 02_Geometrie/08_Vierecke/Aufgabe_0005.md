@@ -122,7 +122,7 @@ __$a)\;\;$__
 ```
 </center>
 Es handelt sich um einen symmetrischen Drachen. \
---> $B($[[  4  ]]$|$[[  0  ]]$)$ \
+$B($[[  4  ]]$|$[[  0  ]]$)$ \
 <br>
 </div> 
 
@@ -194,7 +194,7 @@ __$b)\;\;$__
 ```
 </center>
 Es handelt sich um eine Quadrat. \
---> $D($[[  1  ]]$|$[[  6  ]]$)$ \
+$D($[[  1  ]]$|$[[  6  ]]$)$ \
 <br>
 </div> 
 

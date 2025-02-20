@@ -57,6 +57,7 @@ author: Martin Lommatzsch
 
 <section class="flex-container">
 <div class="flex-child">
+<br>
 __$a)\;\;$__ $\dfrac{5}{8}$ [[$>$|$=$|($<$)]] $\dfrac{3}{4}$ 
 <br>
 </div>

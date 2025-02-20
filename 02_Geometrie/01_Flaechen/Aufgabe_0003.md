@@ -91,7 +91,7 @@ __$a)\;\;$__
 \end{tikzpicture}
 ```
 
---> Es sind [[ 15  ]] Flächen.
+Es sind [[ 15  ]] Flächen.
 
 <br>
 <br>
@@ -180,7 +180,7 @@ __$b)\;\;$__
 \end{tikzpicture}
 ```
 
---> Es sind [[ 48  ]] Flächen.
+Es sind [[ 48  ]] Flächen.
 
 <br>
 <br>

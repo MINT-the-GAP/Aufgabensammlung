@@ -55,6 +55,7 @@ author: Martin Lommatzsch
 <br>
 <section class="flex-container">
 <div class="flex-child">
+<br>
 __$a)\;\;$__ $0,75$ [[$>$|$=$|($<$)]] $\dfrac{4}{5}$ 
 <br>
 </div>

@@ -56,31 +56,21 @@ author: Martin Lommatzsch
 
 <br>
 
-<section class="flex-container">
-
-<div class="flex-child">
-
 __$a)\;\;$__
 
 $1 \quad 1 \quad 2 \quad 3 \quad 5 \quad 8 \quad 13 \quad$ [[ 21 ]] $\quad$ [[ 34 ]] $\quad$ [[ 55 ]] \
 
 [[?]] Musterbeschreibung: Die beiden vorherigen Zahlen werden miteinander addiert.
 
-</div>
-
-
-
-<div class="flex-child">
+<br>
 
 __$b)\;\;$__
 
 $1 \quad 4 \quad 9 \quad 16 \quad 25 \quad 36 \quad 49 \quad$ [[ 64 ]] $\quad$ [[ 81 ]] $\quad$ [[ 100 ]] \
 
 [[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen werden quadriert.
-</div>
 
-
-<div class="flex-child">
+<br>
 
 __$c)\;\;$__
 
@@ -88,9 +78,7 @@ $A \quad C \quad E \quad G \quad I \quad K \quad M \quad$ [[ O ]] $\quad$ [[ Q ]
 
 [[?]] Musterbeschreibung: Immer der übernächste Buchstabe des Alphabets
 
-</div>
-
-</section>
+<br>
 
 
 

@@ -122,7 +122,7 @@ __$a)\;\;$__
 ```
 </center>
 Es handelt sich um eine Rechteck. \
---> $B($[[  8  ]]$|$[[  3  ]]$)$ \
+$B($[[  8  ]]$|$[[  3  ]]$)$ \
 <br>
 </div> 
 
@@ -194,7 +194,7 @@ __$b)\;\;$__
 ```
 </center>
 Es handelt sich um einen symmetrischen Drachen. \
---> $B($[[  4  ]]$|$[[  1  ]]$)$ \
+$B($[[  4  ]]$|$[[  1  ]]$)$ \
 <br>
 </div> 
 

@@ -62,7 +62,8 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 __$a)\;\;$__ $A= 1000\,$cm$^2\;\;\wedge\;\; h= 4\,$dm
---> $g=$[[  5  ]]dm
+
+$g=$[[  5  ]]dm
 
 <br>
 </div>
@@ -70,7 +71,8 @@ __$a)\;\;$__ $A= 1000\,$cm$^2\;\;\wedge\;\; h= 4\,$dm
 <div class="flex-child">
 
 __$b)\;\;$__ $A= 4\,$dm$^2\;\;\wedge\;\; g= 16\,$cm
---> $h=$[[  500  ]]mm
+
+$h=$[[  500  ]]mm
 
 
 

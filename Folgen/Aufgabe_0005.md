@@ -56,21 +56,14 @@ author: Martin Lommatzsch
 
 <br>
 
-<section class="flex-container">
-
-<div class="flex-child">
-
 __$a)\;\;$__
 
 $1 \quad 2 \quad 4 \quad 8 \quad 16 \quad 32 \quad 64 \quad$ [[ 128 ]] $\quad$ [[ 256 ]] $\quad$ [[ 512 ]] \
 
 [[?]] Musterbeschreibung: Die vorherige Zahl wird mit $2$ multipliziert.
 
-</div>
 
-
-
-<div class="flex-child">
+<br>
 
 __$b)\;\;$__
 
@@ -78,10 +71,8 @@ $5 \quad 10 \quad 15 \quad 20 \quad 25 \quad 30 \quad $ [[ 35 ]] $\quad$ [[ 40 ]
 
 [[?]] Musterbeschreibung: Die $5$er-Reihe.
 
-</div>
 
-
-<div class="flex-child">
+<br>
 
 __$c)\;\;$__
 
@@ -89,9 +80,7 @@ $7 \quad 19 \quad 31 \quad 43 \quad 55 \quad 67 \quad$ [[ 79 ]] $\quad$ [[ 91 ]]
 
 [[?]] Musterbeschreibung: Startend bei der $7$ wird zur vorherigen Zahl immer $12$ addiert.
 
-</div>
-
-</section>
+<br>
 
 
 

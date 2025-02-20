@@ -58,6 +58,7 @@ author: Martin Lommatzsch
 <section class="flex-container">
 
 <div class="flex-child">
+<br>
 
 __$a)\;\;$__
 
@@ -90,7 +91,7 @@ __$a)\;\;$__
 ```
 </center>
 
---> $\xi =$ [[ 109 ]]$^\circ$ und es handelt sich um die Beziehung eines [[Nebenwinkels|Scheitelwinkels|Stufenwinkels|(Wechselwinkels)]].
+$\xi =$ [[ 109 ]]$^\circ$ und es handelt sich um die Beziehung eines [[Nebenwinkels|Scheitelwinkels|Stufenwinkels|(Wechselwinkels)]].
 
 <br>
 </div>
@@ -130,7 +131,7 @@ __$b)\;\;$__
 ```
 </center>
 
---> $\gamma =$ [[ 34 ]]$^\circ$ und es handelt sich um die Beziehung eines [[Nebenwinkels|(Scheitelwinkels)|Stufenwinkels|Wechselwinkels]].
+$\gamma =$ [[ 34 ]]$^\circ$ und es handelt sich um die Beziehung eines [[Nebenwinkels|(Scheitelwinkels)|Stufenwinkels|Wechselwinkels]].
 
 </div>
 

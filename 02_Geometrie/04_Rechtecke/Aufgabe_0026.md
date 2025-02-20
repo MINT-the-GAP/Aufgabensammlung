@@ -62,7 +62,8 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 __$a)\;\;$__ $A=64\,$cm$^2\;\;\wedge\;\; a=16\,$cm
---> $b=$[[  4  ]]cm
+
+$b=$[[  4  ]]cm
 
 <br>
 </div>
@@ -70,7 +71,8 @@ __$a)\;\;$__ $A=64\,$cm$^2\;\;\wedge\;\; a=16\,$cm
 <div class="flex-child">
 
 __$b)\;\;$__ $A=84\,$cm$^2\;\;\wedge\;\; a=6\,$cm
---> $b=$[[  14  ]]cm
+
+$b=$[[  14  ]]cm
 
 
 

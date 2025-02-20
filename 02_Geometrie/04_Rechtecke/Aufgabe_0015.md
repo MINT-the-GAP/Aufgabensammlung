@@ -62,7 +62,8 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 __$a)\;\;$__ $a=1,3\,$m $\;\;\wedge\;\; b=1,6\,$m
---> $A=$[[  2,08  ]]m$^2$
+
+$A=$[[  2,08  ]]m$^2$
 
 <br>
 </div>
@@ -70,7 +71,8 @@ __$a)\;\;$__ $a=1,3\,$m $\;\;\wedge\;\; b=1,6\,$m
 <div class="flex-child">
 
 __$b)\;\;$__ $a=48\,$cm $\;\;\wedge\;\; b=0,05\,$cm
---> $A=$[[  2,4  ]]cm$^2$
+
+$A=$[[  2,4  ]]cm$^2$
 
 
 </div>

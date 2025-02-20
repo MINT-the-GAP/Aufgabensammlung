@@ -61,24 +61,15 @@ author: Martin Lommatzsch
 <br>
 
 
-<section class="flex-container">
-
-<div class="flex-child">
 
 $a)\;\; \text{kgV}(6;8) + \text{kgV}(5;4) \cdot \text{ggT}(35;63) =$ [[ 164 ]]
 
-</div>
-
-<div class="flex-child">
+<br>
 
 $b)\;\; \text{kgV}(16;12) : \text{ggT}(96;56) - \text{ggT}(15;33) =$ [[  3  ]]
 
-</div>
-
-<div class="flex-child">
+<br>
 
 $c)\;\; \text{kgV}\left(\text{ggT}(45;36);\text{ggT}(24;16)\right) - \text{ggT}(75;100) =$ [[  47 ]]
 
-</div>
-
-</section>
+<br>

@@ -56,6 +56,7 @@ author: Martin Lommatzsch
 <br>
 <section class="flex-container">
 <div class="flex-child">
+<br>
 __$a)\;\;$__ $0,\bar{7}$ [[$>$|($=$)|$<$]] $\dfrac{7}{9}$ 
 <br>
 </div>

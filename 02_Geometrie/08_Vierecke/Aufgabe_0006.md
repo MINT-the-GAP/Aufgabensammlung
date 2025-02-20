@@ -122,7 +122,7 @@ __$a)\;\;$__
 ```
 </center>
 Es handelt sich um eine Raute. \
---> $A($[[  2  ]]$|$[[  3  ]]$)$ \
+$A($[[  2  ]]$|$[[  3  ]]$)$ \
 <br>
 </div> 
 
@@ -194,7 +194,7 @@ __$b)\;\;$__
 ```
 </center>
 Es handelt sich um ein symmetrisches Trapez mit einer Symmetrieachse, die orthogonal zur Stecke $\overline{AB}$ ist. \
---> $D($[[  7  ]]$|$[[  0  ]]$)$ \
+$D($[[  7  ]]$|$[[  0  ]]$)$ \
 <br>
 </div> 
 

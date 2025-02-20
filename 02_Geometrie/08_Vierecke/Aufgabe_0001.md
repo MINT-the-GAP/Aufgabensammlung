@@ -122,7 +122,7 @@ __$a)\;\;$__
 ```
 </center>
 Es handelt sich um ein Parallelogramm. \
---> $D($[[  3  ]]$|$[[  6  ]]$)$ \
+$D($[[  3  ]]$|$[[  6  ]]$)$ \
 <br>
 </div> 
 
@@ -194,7 +194,7 @@ __$b)\;\;$__
 ```
 </center>
 Es handelt sich um eine Raute. \
---> $C($[[  4  ]]$|$[[  9  ]]$)$ \
+$C($[[  4  ]]$|$[[  9  ]]$)$ \
 <br>
 </div> 
 

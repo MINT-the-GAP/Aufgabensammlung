@@ -59,19 +59,10 @@ author: Martin Lommatzsch
 
 <br>
 
-
-<section class="flex-container">
-
-<div class="flex-child">
-
 $a)\;\; \text{kgV}(4;3):\text{ggT}(25;15) + \text{kgV}(8;6):\text{ggT}(45;55) =$ [[  12 ]]
 
-</div>
-
-<div class="flex-child">
+<br>
 
 $b)\;\; \text{ggT}(144;20) \cdot \left( \text{ggT}(400;280;32) + \text{ggT}(256;64;786;152) \right) =$ [[ 40  ]]
 
-</div>
-
-</section>
+<br>

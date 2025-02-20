@@ -64,7 +64,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ $\vec{a} = \left(\begin{array}{c} 2 \\ -9 \\ 1 \end{array}\right)$  \
 <br>
---> $ \left| \vec{a} \right| = $ [[  9,274  ]] $LE$
+ $ \left| \vec{a} \right| = $ [[  9,274  ]] $LE$
 ***************
 $$
  \begin{align*}
@@ -80,7 +80,7 @@ $$
 
 __$b)\;\;$__ $\vec{a} = \left(\begin{array}{c} -6 \\ 2 \\ 3 \end{array}\right)$  \
 <br>
---> $ \left| \vec{a} \right| = $ [[   7    ]] $LE$
+ $ \left| \vec{a} \right| = $ [[   7    ]] $LE$
 ***************
 $$
  \begin{align*}
@@ -96,7 +96,7 @@ $$
 
 __$c)\;\;$__ $\vec{a} = \left(\begin{array}{c} 2,5 \\ 5 \\ -7 \end{array}\right)$  \
 <br>
---> $ \left| \vec{a} \right| = $ [[  8,958  ]] $LE$
+ $ \left| \vec{a} \right| = $ [[  8,958  ]] $LE$
 ***************
 $$
  \begin{align*}
@@ -112,7 +112,7 @@ $$
 
 __$d)\;\;$__ $\vec{a} = \left(\begin{array}{c} 9 \\ -4 \\ -8 \end{array}\right)$  \
 <br>
---> $ \left| \vec{a} \right| = $ [[ 12,689  ]] $LE$
+ $ \left| \vec{a} \right| = $ [[ 12,689  ]] $LE$
 ***************
 $$
  \begin{align*}

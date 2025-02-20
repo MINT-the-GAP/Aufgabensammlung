@@ -61,22 +61,16 @@ author: Martin Lommatzsch
 **Wähle** die Rechenoperatoren **aus**, sodass die Gleichung eine wahre Aussage widerspiegelt.
 
 <br>
-<section class="flex-container">
-<div class="flex-child">
+<br>
 __$a)\;\;$__ $48$ [[$+$|$-$|$\cdot$|($:$)]] $($  [[$+$|($-$)|$\cdot$|$:$]]  $4)$ [[($+$)|$-$|$\cdot$|$:$]] $(-5) = -17$
 <br>
-</div>
-<div class="flex-child">
 <br>
 __$b)\;\;$__ $-14$ [[$+$|($-$)|$\cdot$|$:$]] $12$ [[($+$)|$-$|$\cdot$|$:$]] $(-16) = -42$
 <br>
-</div>
-<div class="flex-child">
 <br>
 __$c)\;\;$__ $-2$ [[$+$|($-$)|$\cdot$|$:$]] $(-7$ [[$+$|$-$|($\cdot$)|$:$]] $(-8)) = -58$
 
-</div>
-</section>
+<br>
 <br>
 <br>
 <br>

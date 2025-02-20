@@ -58,6 +58,7 @@ author: Martin Lommatzsch
 <section class="flex-container">
 
 <div class="flex-child">
+<br>
 
 __$a)\;\;$__
 
@@ -107,7 +108,7 @@ __$a)\;\;$__
 ```
 </center>
 
---> $\gamma =$ [[ 33 ]]$^\circ$
+$\gamma =$ [[ 33 ]]$^\circ$
 
 <br>
 </div>
@@ -164,7 +165,7 @@ __$b)\;\;$__
 ```
 </center>
 
---> $\omega =$ [[ 116 ]]$^\circ$
+$\omega =$ [[ 116 ]]$^\circ$
 
 </div>
 

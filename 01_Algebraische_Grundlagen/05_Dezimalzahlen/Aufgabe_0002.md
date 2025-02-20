@@ -56,6 +56,7 @@ author: Martin Lommatzsch
 <br>
 <section class="flex-container">
 <div class="flex-child">
+<br>
 __$a)\;\;$__ $1,1$ [[$>$|$=$|($<$)]] $\dfrac{4}{3}$ 
 <br>
 </div>

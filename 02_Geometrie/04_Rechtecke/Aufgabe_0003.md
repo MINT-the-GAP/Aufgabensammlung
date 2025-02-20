@@ -62,7 +62,8 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 __$a)\;\;$__ $a=11\,$cm $\;\;\wedge\;\; b=14\,$cm
---> $A=$[[  154  ]]cm$^2$
+
+$A=$[[  154  ]]cm$^2$
 
 <br>
 </div>
@@ -70,7 +71,8 @@ __$a)\;\;$__ $a=11\,$cm $\;\;\wedge\;\; b=14\,$cm
 <div class="flex-child">
 
 __$b)\;\;$__ $a=9\,$cm $\;\;\wedge\;\; b=22\,$cm
---> $A=$[[  198  ]]cm$^2$
+
+$A=$[[  198  ]]cm$^2$
 
 
 

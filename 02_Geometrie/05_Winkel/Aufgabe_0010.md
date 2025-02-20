@@ -59,6 +59,7 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<br>
 __$a)\;\;$__
 
 <center>
@@ -94,7 +95,7 @@ __$a)\;\;$__
 ```
 </center>
 
---> $\nu =$ [[ 128 ]]$^\circ$
+$\nu =$ [[ 128 ]]$^\circ$
 
 <br>
 </div>
@@ -144,7 +145,7 @@ __$b)\;\;$__
 ```
 </center>
 
---> $\tau =$ [[ 109 ]]$^\circ$
+$\tau =$ [[ 109 ]]$^\circ$
 
 </div>
 

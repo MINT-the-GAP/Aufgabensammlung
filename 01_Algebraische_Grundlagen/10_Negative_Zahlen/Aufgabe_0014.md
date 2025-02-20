@@ -57,6 +57,7 @@ author: Martin Lommatzsch
 <section class="flex-container">
 <div class="flex-child">
 
+<br>
 __$a)\;\;$__ $ -\left( -71 \right)=$ [[  71  ]]
 <br>
 </div>

@@ -54,22 +54,14 @@ author: Martin Lommatzsch
 **Gib** nächsten Glieder der Folge **an**.
 
 
-
 <br>
-
-
-
-<section class="flex-container">
-
-<div class="flex-child">
 
 $1 \quad 1 \quad 2 \quad 6 \quad 30 \quad 240 \quad  3120 \quad $ [[ 65520 ]] $\quad$ [[ 2227680 ]] $\quad$ [[ 122522400 ]] \
 
 [[?]] Musterbeschreibung: Die Fibonacci Zahlen werden aufmultipliziert.
 
-</div>
 
-</section>
+<br>
 
 
 

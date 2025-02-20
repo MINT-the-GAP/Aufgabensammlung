@@ -61,7 +61,7 @@ __$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -3x+5$. Bestimme die jewei
 
 <br>
 
---> $A(4|$ [[  -7  ]] $)$ und $B($ [[  -2  ]] $|11)$
+$A(4|$ [[  -7  ]] $)$ und $B($ [[  -2  ]] $|11)$
 
 <br>
 <br>
@@ -76,7 +76,7 @@ __$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 6x-17$. Bestimme die jewei
 
 <br>
 
---> $A(3|$ [[  1  ]] $)$ und $B($ [[  -4  ]] $|-41)$
+$A(3|$ [[  1  ]] $)$ und $B($ [[  -4  ]] $|-41)$
 
 <br>
 <br>

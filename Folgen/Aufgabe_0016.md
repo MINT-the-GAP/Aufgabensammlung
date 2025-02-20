@@ -54,22 +54,13 @@ author: Martin Lommatzsch
 **Gib** nächsten Glieder der Folge **an**.
 
 
-
 <br>
-
-
-
-<section class="flex-container">
-
-<div class="flex-child">
 
 $1 \quad 1 \quad 2 \quad 5 \quad 15 \quad 52 \quad 203 \quad 877 \quad $ [[ 4140 ]] $\quad$ [[ 21147 ]] $\quad$ [[ 115975 ]] \
 
 [[?]] Musterbeschreibung: Die Bell'schen Zahlen beschreiben die Anzahl von Verbindungen in $n$-Ecken.
 
-</div>
-
-</section>
+<br>
 
 <br>
 <br>

@@ -57,6 +57,7 @@ author: Martin Lommatzsch
 <section class="flex-container">
 <div class="flex-child">
 
+<br>
 __$a)\;\;$__ $\text{sgn}(17)=$ [[  +1   ]]
 <br>
 </div>

@@ -56,6 +56,7 @@ author: Martin Lommatzsch
 <br>
 <section class="flex-container">
 <div class="flex-child">
+<br>
 __$a)\;\;$__ $0,78$ [[($>$)|$=$|$<$]] $\dfrac{12}{16}$ 
 <br>
 </div>

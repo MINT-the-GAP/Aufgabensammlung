@@ -60,9 +60,6 @@ author: Martin Lommatzsch
 
 
 <br> 
-<section class="flex-container">
-
-<div class="flex-child">
 
 __$a)\;\;$__
 
@@ -83,8 +80,6 @@ __$a)\;\;$__
 ```
 
 <br> 
-</div>
-<div class="flex-child">
 <br> 
 
 __$b)\;\;$__
@@ -104,10 +99,8 @@ __$b)\;\;$__
 |                 |                 |                 |
 +--------+--------+--------+--------+--------+--------+                                       
 ```
- 
 
-</div>
-</section>
+
 <br>
 <br>
 <br>

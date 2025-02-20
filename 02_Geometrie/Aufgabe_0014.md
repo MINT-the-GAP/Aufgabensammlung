@@ -126,19 +126,19 @@ author: Martin Lommatzsch
 <section class="flex-container">
 
 <div class="flex-child">
---> $A($[[  3,2  ]]$|$[[  -4,6  ]]$)$ \
+ $A($[[  3,2  ]]$|$[[  -4,6  ]]$)$ \
 <br>
 </div>
 
 <div class="flex-child">
 
---> $B($[[  0,4  ]]$|$[[  0,9  ]]$)$ \
+ $B($[[  0,4  ]]$|$[[  0,9  ]]$)$ \
 <br>
 </div>
 
 <div class="flex-child">
 
---> [[  C  ]]$( -1,4 | -1,6 )$ \
+ [[  C  ]]$( -1,4 | -1,6 )$ \
 <br>
 
 </div>

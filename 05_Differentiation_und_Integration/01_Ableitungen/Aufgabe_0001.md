@@ -303,7 +303,7 @@ author: Martin Lommatzsch
 ```
 </center>
 
---> [[ l ]] ist äquivalent zur ersten Ableitung von [[ f ]]. \
+[[ l ]] ist äquivalent zur ersten Ableitung von [[ f ]]. \
 <br>
 <br>
 <br>

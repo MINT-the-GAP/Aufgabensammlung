@@ -62,7 +62,8 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 __$a)\;\;$__ $a=0,2\,$cm $\;\;\wedge\;\; b=1,1\,$dm
---> $A=$[[  220  ]]mm$^2$
+
+$A=$[[  220  ]]mm$^2$
 
 <br>
 </div>
@@ -70,7 +71,8 @@ __$a)\;\;$__ $a=0,2\,$cm $\;\;\wedge\;\; b=1,1\,$dm
 <div class="flex-child">
 
 __$b)\;\;$__ $a=4\,$cm $\;\;\wedge\;\; b=9\,$cm
---> $A=$[[  0,36    ]]dm$^2$
+
+$A=$[[  0,36    ]]dm$^2$
 
 
 

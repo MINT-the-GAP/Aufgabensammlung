@@ -61,7 +61,7 @@ __$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -x+5$. Bestimme die jeweil
 
 <br>
 
---> $A(9|$ [[  -4  ]] $)$ und $B($ [[  -3  ]] $|8)$
+$A(9|$ [[  -4  ]] $)$ und $B($ [[  -3  ]] $|8)$
 
 <br>
 <br>
@@ -76,7 +76,7 @@ __$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 4x-6$. Bestimme die jeweil
 
 <br>
 
---> $A(7|$ [[  22  ]] $)$ und $B($ [[  -3  ]] $|-18)$
+$A(7|$ [[  22  ]] $)$ und $B($ [[  -3  ]] $|-18)$
 
 <br>
 <br>

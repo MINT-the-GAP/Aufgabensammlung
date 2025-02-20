@@ -64,9 +64,6 @@ Bestimme die fehlenden Felder der Rechenmauer. Hierbei werden zwei benachbarte F
 
 <br>
 
-<section class="flex-container">
-<div class="flex-child">
-
 __$a)\;\;$__
 
 ``` ascii
@@ -94,8 +91,7 @@ __$a)\;\;$__
 ```
 
 
-</div>
-<div class="flex-child">
+<br>
 
 __$b)\;\;$__
 
@@ -123,8 +119,7 @@ __$b)\;\;$__
 +--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+                                       
 ```
 
-</div>
-</section>
+<br>
 
 <br>
 <br>

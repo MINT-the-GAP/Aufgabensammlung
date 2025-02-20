@@ -62,7 +62,8 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 __$a)\;\;$__ $a=0,7\,$m $\;\;\wedge\;\; b=2\,$cm
---> $A=$[[  1,4        ]]dm$^2$
+
+$A=$[[  1,4        ]]dm$^2$
 
 <br>
 </div>
@@ -70,7 +71,8 @@ __$a)\;\;$__ $a=0,7\,$m $\;\;\wedge\;\; b=2\,$cm
 <div class="flex-child">
 
 __$b)\;\;$__ $a=15\,$m $\;\;\wedge\;\; b=25\,$m
---> $A=$[[  0,000375   ]]km$^2$
+
+$A=$[[  0,000375   ]]km$^2$
 
 
 

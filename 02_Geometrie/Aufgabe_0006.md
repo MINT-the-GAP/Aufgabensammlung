@@ -118,19 +118,19 @@ author: Martin Lommatzsch
 <section class="flex-container">
 
 <div class="flex-child">
---> $A($[[  3  ]]$|$[[  5  ]]$)$ \
+ $A($[[  3  ]]$|$[[  5  ]]$)$ \
 <br>
 </div>
 
 <div class="flex-child">
 
---> $B($[[  8  ]]$|$[[  2  ]]$)$ \
+ $B($[[  8  ]]$|$[[  2  ]]$)$ \
 <br>
 </div>
 
 <div class="flex-child">
 
---> [[  E  ]]$( 1 | 4 )$ \
+ [[  E  ]]$( 1 | 4 )$ \
 <br>
 
 </div>

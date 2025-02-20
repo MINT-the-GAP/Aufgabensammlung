@@ -126,19 +126,19 @@ author: Martin Lommatzsch
 <section class="flex-container">
 
 <div class="flex-child">
---> $A($[[  1    ]]$|$[[  6,7  ]]$)$ \
+ $A($[[  1    ]]$|$[[  6,7  ]]$)$ \
 <br>
 </div>
 
 <div class="flex-child">
 
---> $B($[[  8,6  ]]$|$[[  4,1  ]]$)$ \
+ $B($[[  8,6  ]]$|$[[  4,1  ]]$)$ \
 <br>
 </div>
 
 <div class="flex-child">
 
---> [[  C  ]]$( 6,6 | 8,6 )$ \
+ [[  C  ]]$( 6,6 | 8,6 )$ \
 <br>
 
 </div>

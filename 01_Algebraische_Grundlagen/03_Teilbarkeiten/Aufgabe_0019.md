@@ -61,30 +61,19 @@ author: Martin Lommatzsch
 <br>
 
 
-<section class="flex-container">
-
-<div class="flex-child">
 
 $a)\;\; \text{kgV}(4;6) + \text{ggT}(55;35) =$ [[ 17  ]]
 
-</div>
+<br>
 
-<div class="flex-child">
+$b)\;\; \text{kgV}\left(6;\text{ggT}(24;33) \right) =$ [[  6  ]]
 
-$b)\;\; \text{kgV}\left(6;ggT(24;33) \right) =$ [[  6  ]]
-
-</div>
-
-<div class="flex-child">
+<br>
 
 $c)\;\; \text{ggT}(45;81) \cdot \text{kgV}(8;6) =$ [[ 216 ]]
 
-</div>
+<br>
 
-<div class="flex-child">
+$d)\;\; \text{ggT}\left( 72 ; \text{kgV}(9;4) \right) =$ [[ 36  ]]
 
-$d)\;\; \text{ggT}\left( 72 ; kgV(9;4) \right) =$ [[ 36  ]]
-
-</div>
-
-</section>
+<br>

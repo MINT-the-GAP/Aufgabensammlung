@@ -57,6 +57,7 @@ author: Martin Lommatzsch
 <section class="flex-container">
 <div class="flex-child">
 
+<br>
 __$a)\;\;$__ $-\dfrac{6}{5}$ [[($>$)|$=$|$<$]] $-\dfrac{17}{10}$ 
 <br>
 </div>

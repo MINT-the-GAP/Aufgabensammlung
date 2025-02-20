@@ -62,7 +62,8 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 __$a)\;\;$__ $a=4,4\,$dm $\;\;\wedge\;\; b=0,1\,$dm
---> $A=$[[  0,44   ]]dm$^2$
+
+$A=$[[  0,44   ]]dm$^2$
 
 <br>
 </div>
@@ -70,7 +71,8 @@ __$a)\;\;$__ $a=4,4\,$dm $\;\;\wedge\;\; b=0,1\,$dm
 <div class="flex-child">
 
 __$b)\;\;$__ $a=3,5\,$mm $\;\;\wedge\;\; b=0,75\,$mm
---> $A=$[[  2,625  ]]mm$^2$
+
+$A=$[[  2,625  ]]mm$^2$
 
 
 </div>

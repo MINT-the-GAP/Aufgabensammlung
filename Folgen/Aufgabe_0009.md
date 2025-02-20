@@ -57,20 +57,11 @@ author: Martin Lommatzsch
 
 <br>
 
-
-
-<section class="flex-container">
-
-<div class="flex-child"> 
-
 $0 \quad 3 \quad 8 \quad 15 \quad 24 \quad 35 \quad 48 \quad $ [[ 63 ]] $\quad$ [[ 80 ]] $\quad$ [[ 99 ]] \
 
 [[?]] Musterbeschreibung: Von den Quadratzahlen wird $1$ subtrahiert.
 
-</div>
-
-
-<div class="flex-child">
+<br>
 
 __$b)\;\;$__
 
@@ -78,10 +69,8 @@ $1 \quad 2 \quad 4 \quad 7 \quad 11 \quad 16 \quad 22 \quad 29 \quad 37 \quad$ [
 
 [[?]] Musterbeschreibung: Es wird zur vorherigen Zahl eine aufsteigende natürliche Zahl addiert.
 
-</div>
 
-
-<div class="flex-child">
+<br>
 
 __$c)\;\;$__
 
@@ -89,9 +78,8 @@ $1 \quad 2 \quad 6 \quad 24 \quad 120 \quad 720 \quad $ [[ 5040 ]] $\quad$ [[ 40
 
 [[?]] Musterbeschreibung: Die vorherige Zahl wird mit der nächsten natürlichen Zahl multipliziert, was auch Fakultät genannt wird $5!=5\cdot 4 \cdot 3 \cdot 2 \cdot 1$.
 
-</div>
 
-</section>
+<br>
 
 <br>
 <br>

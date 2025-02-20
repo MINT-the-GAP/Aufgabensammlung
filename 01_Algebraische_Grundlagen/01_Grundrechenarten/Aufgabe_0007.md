@@ -62,25 +62,29 @@ author: Martin Lommatzsch
 <div class="flex-child">
 <br>
 __$a)\;\;$__ Dreimillionenvierhunderttausendneun  \
--->[[  3400009  ]]
+
+[[  3400009  ]]
 <br>
 </div>
 <div class="flex-child">
 <br>
 __$b)\;\;$__ Neuntausendzweihundertvierundsechsig.\
--->[[    9264   ]]
+
+[[    9264   ]]
 <br>
 </div>
 <div class="flex-child">
 <br>
 __$c)\;\;$__ Zwölftausenddreihundertelf.\
--->[[   12311   ]]
+
+[[   12311   ]]
 <br>
 </div>
 <div class="flex-child">
 <br>
 __$d)\;\;$__ Sechshundertfünfundsiebzigtausendachthundertdreiundachtzig.\
--->[[   675883  ]]
+
+[[   675883  ]]
 
 </div>
 </section>

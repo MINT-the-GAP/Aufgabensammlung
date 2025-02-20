@@ -56,21 +56,14 @@ author: Martin Lommatzsch
 
 <br>
 
-<section class="flex-container">
-
-<div class="flex-child">
-
 __$a)\;\;$__
 
 $97 \quad 91 \quad 85 \quad 79 \quad 73 \quad 67 \quad $ [[ 61 ]] $\quad$ [[ 55 ]] $\quad$ [[ 49 ]] \
 
 [[?]] Musterbeschreibung: Von der vorherigen Zahl wird $6$ subtrahiert.
 
-</div>
 
-
-
-<div class="flex-child">
+<br>
 
 __$b)\;\;$__
 
@@ -78,10 +71,8 @@ $1 \quad 11 \quad 111 \quad 1111 \quad 11111 \quad $ [[ 111111 ]] $\quad$ [[ 111
 
 [[?]] Musterbeschreibung: Die nächste $10$er-Potenz wird zur vorherigen Zahl addiert.
 
-</div>
 
-
-<div class="flex-child">
+<br>
 
 __$c)\;\;$__
 
@@ -89,9 +80,7 @@ $43 \quad 57 \quad 71 \quad 85 \quad 99 \quad 113 \quad$ [[ 127 ]] $\quad$ [[ 14
 
 [[?]] Musterbeschreibung: Startend bei der $43$ wird zur vorherigen Zahl immer $14$ addiert.
 
-</div>
-
-</section>
+<br>
 
 
 

@@ -62,7 +62,8 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 __$a)\;\;$__ $a=0,04\,$km $\;\;\wedge\;\; b=6\,$dm
---> $u=$[[  81,2  ]]m
+
+$u=$[[  81,2  ]]m
 
 <br>
 </div>
@@ -70,7 +71,8 @@ __$a)\;\;$__ $a=0,04\,$km $\;\;\wedge\;\; b=6\,$dm
 <div class="flex-child">
 
 __$b)\;\;$__ $a=1,05\,$m $\;\;\wedge\;\; b=11,3\,$mm
---> $u=$[[ 21,226 ]]dm
+
+$u=$[[ 21,226 ]]dm
 
 
 

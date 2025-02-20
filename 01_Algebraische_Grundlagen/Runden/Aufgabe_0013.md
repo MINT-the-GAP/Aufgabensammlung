@@ -56,6 +56,7 @@ author: Martin Lommatzsch
 <br>
 <section class="flex-container">
 <div class="flex-child">
+<br>
 __$a)\;\;$__ $5,\overline{91} \approx$ [[ 5,919 ]] 
 <br>
 </div>

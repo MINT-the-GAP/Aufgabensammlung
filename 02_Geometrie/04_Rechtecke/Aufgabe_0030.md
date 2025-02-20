@@ -62,7 +62,8 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 __$a)\;\;$__ $u=62\,$cm$\;\;\wedge\;\; a=21\,$cm
---> $b=$[[  10  ]]cm
+
+$b=$[[  10  ]]cm
 
 <br>
 </div>
@@ -70,7 +71,8 @@ __$a)\;\;$__ $u=62\,$cm$\;\;\wedge\;\; a=21\,$cm
 <div class="flex-child">
 
 __$b)\;\;$__ $u=20\,$cm$\;\;\wedge\;\; a=9\,$cm
---> $b=$[[  1  ]]cm
+
+$b=$[[  1  ]]cm
 
 
 

@@ -122,7 +122,7 @@ __$a)\;\;$__
 ```
 </center>
 Es handelt sich um ein Rechteck. \
---> $B($[[  9  ]]$|$[[  7  ]]$)$ \
+$B($[[  9  ]]$|$[[  7  ]]$)$ \
 <br>
 </div> 
 
@@ -194,7 +194,7 @@ __$b)\;\;$__
 ```
 </center>
 Es handelt sich um ein Parallelogramm. \
---> $D($[[  5  ]]$|$[[  8  ]]$)$ \
+$D($[[  5  ]]$|$[[  8  ]]$)$ \
 <br>
 </div> 
 

@@ -62,7 +62,8 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 __$a)\;\;$__ $a=120\,$cm $\;\;\wedge\;\; b=500\,$mm
---> $A=$[[  60  ]]dm$^2$
+
+$A=$[[  60  ]]dm$^2$
 
 <br>
 </div>
@@ -70,7 +71,8 @@ __$a)\;\;$__ $a=120\,$cm $\;\;\wedge\;\; b=500\,$mm
 <div class="flex-child">
 
 __$b)\;\;$__ $a=40\,$dm $\;\;\wedge\;\; b=8\,$m
---> $A=$[[  32  ]]m$^2$
+
+$A=$[[  32  ]]m$^2$
 
 
 

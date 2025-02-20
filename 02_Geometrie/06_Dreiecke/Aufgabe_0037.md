@@ -62,7 +62,8 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 __$a)\;\;$__ $A= 14\,$cm$^2\;\;\wedge\;\; h= 4\,$cm
---> $g=$[[  7  ]]cm
+
+$g=$[[  7  ]]cm
 
 <br>
 </div>
@@ -70,7 +71,8 @@ __$a)\;\;$__ $A= 14\,$cm$^2\;\;\wedge\;\; h= 4\,$cm
 <div class="flex-child">
 
 __$b)\;\;$__ $A= 42\,$cm$^2\;\;\wedge\;\; g= 14\,$cm
---> $h=$[[  6  ]]cm
+
+$h=$[[  6  ]]cm
 
 
 

@@ -57,44 +57,51 @@ author: Martin Lommatzsch
 
 <section class="flex-container">
 <div class="flex-child">
+<br>
 __$a)\;\;$__ $\dfrac{1}{10}+\dfrac{5}{100}+\dfrac{2}{100} \qquad$  \
 <br>
---> [[  0,152   ]] 
+
+ [[  0,152   ]] 
 <br>
 </div>
 <div class="flex-child">
 <br>
 __$b)\;\;$__ $\dfrac{8}{10}+\dfrac{9}{100}+\dfrac{3}{1000}+\dfrac{5}{10000} \qquad$  \
 <br>
---> [[  0,8935  ]] 
+
+ [[  0,8935  ]] 
 <br>
 </div>
 <div class="flex-child">
 <br>
 __$c)\;\;$__ $\dfrac{9}{100}+\dfrac{8}{10000} \qquad$  \
 <br>
---> [[  0,0908  ]] 
+
+ [[  0,0908  ]] 
 <br>
 </div>
 <div class="flex-child">
 <br>
 __$d)\;\;$__ $\dfrac{7}{1000}+\dfrac{9}{10000} \qquad$  \
 <br>
---> [[  0,0079  ]] 
+
+ [[  0,0079  ]] 
 <br>
 </div>
 <div class="flex-child">
 <br>
 __$e)\;\;$__ $\dfrac{7}{1}+\dfrac{15}{1000} \qquad$  \
 <br>
---> [[  7,015   ]] 
+
+ [[  7,015   ]] 
 <br>
 </div>
 <div class="flex-child">
 <br>
 __$f)\;\;$__ $\dfrac{5}{1000}+\dfrac{5}{1000000} \qquad$  \
 <br>
---> [[  0,005005 ]] 
+
+ [[  0,005005 ]] 
 
 <br>
 </div>

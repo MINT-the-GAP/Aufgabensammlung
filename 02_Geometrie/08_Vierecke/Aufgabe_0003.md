@@ -122,7 +122,7 @@ __$a)\;\;$__
 ```
 </center>
 Es handelt sich um ein Quadrat. \
---> $A($[[  6  ]]$|$[[  1  ]]$)$ \
+$A($[[  6  ]]$|$[[  1  ]]$)$ \
 <br>
 </div> 
 
@@ -194,7 +194,7 @@ __$b)\;\;$__
 ```
 </center>
 Es handelt sich um ein symmetrisches Trapez mit einer Symmetrieachse, die orthogonal zur Stecke $\overline{AB}$ ist. \
---> $D($[[  2  ]]$|$[[  8  ]]$)$ \
+$D($[[  2  ]]$|$[[  8  ]]$)$ \
 <br>
 </div> 
 

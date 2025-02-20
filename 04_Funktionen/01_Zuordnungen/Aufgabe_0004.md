@@ -55,27 +55,18 @@ author: Martin Lommatzsch
 
 <br>
 
-<section class="flex-container">
-
-<div class="flex-child">
 __$a)\;\;$__ Jedem Schüler beziehungsweise jeder Schülerin wird eine Klasse zugeordnet.
 
 
 Es handelt sich um eine [[mehrdeutige|(eindeutige)|eineindeutige]] Zuordnung.
 
 <br>
-</div>
-
-<div class="flex-child">
 
 __$b)\;\;$__ Jeder DNA wird ein Mensch zugeordnet.
 
 
 Es handelt sich um eine [[mehrdeutige|eindeutige|(eineindeutige)]] Zuordnung.
 
-</div>
-
-</section>
 <br>
 <br>
 <br>

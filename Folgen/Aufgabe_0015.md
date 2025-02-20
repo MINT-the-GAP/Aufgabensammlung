@@ -57,22 +57,13 @@ author: Martin Lommatzsch
 
 <br>
 
-
-
-<section class="flex-container">
-
-<div class="flex-child">
-
 __$a)$__
 
 $4 \quad 9 \quad 25 \quad 49 \quad 121 \quad 169 \quad 289 \quad $ [[ 361 ]] $\quad$ [[ 529 ]] $\quad$ [[ 841 ]] \
 
 [[?]] Musterbeschreibung: Die Primzahlen werden quadriert.
 
-</div>
-
-
-<div class="flex-child">
+<br>
 
 __$b)$__
 
@@ -80,10 +71,7 @@ $1 \quad 5 \quad 14 \quad 30 \quad 55 \quad 91 \quad 140 \quad 204 \quad$ [[ 285
 
 [[?]] Musterbeschreibung: Die vorherigen Zahlen werden mit den aufsteigenden Quadratzahlen addiert.
 
-</div>
-
-
-<div class="flex-child">
+<br>
 
 __$c)$__
 
@@ -91,9 +79,7 @@ $A \quad Z \quad b \quad y \quad C \quad X \quad d \quad $ [[ w ]] $\quad$ [[ E 
 
 [[?]] Musterbeschreibung: Abwechselnd vom Anfang und Ende des Alphabets wird ein Buchstabe weiter zur Mitte gegangen, nach zwei Buchstaben wird zwischen Groß- und Kleinschreibung gewechselt.
 
-</div>
-
-</section>
+<br>
 
 <br>
 <br>

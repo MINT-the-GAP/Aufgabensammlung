@@ -61,7 +61,7 @@ __$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -2x-1$. Bestimme die jewei
 
 <br>
 
---> $A(-2|$ [[  3  ]] $)$ und $B($ [[  6  ]] $|-13)$
+$A(-2|$ [[  3  ]] $)$ und $B($ [[  6  ]] $|-13)$
 
 <br>
 <br>
@@ -76,7 +76,7 @@ __$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 3x+2$. Bestimme die jeweil
 
 <br>
 
---> $A(-1|$ [[  -1  ]] $)$ und $B($ [[  5  ]] $|17)$
+$A(-1|$ [[  -1  ]] $)$ und $B($ [[  5  ]] $|17)$
 
 <br>
 <br>

@@ -62,7 +62,8 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 __$a)\;\;$__ $a=1,7\,$cm $\;\;\wedge\;\; b=2,03\,$cm $\;\;\wedge\;\; c=1,25\,$cm
---> $u=$[[  5,98  ]]cm
+
+$u=$[[  5,98  ]]cm
 
 <br>
 </div>
@@ -70,7 +71,8 @@ __$a)\;\;$__ $a=1,7\,$cm $\;\;\wedge\;\; b=2,03\,$cm $\;\;\wedge\;\; c=1,25\,$cm
 <div class="flex-child">
 
 __$b)\;\;$__ $a=4,6\,$cm $\;\;\wedge\;\; b=5,74\,$cm $\;\;\wedge\;\; c=2,09\,$cm
---> $u=$[[  12,43  ]]cm
+
+$u=$[[  12,43  ]]cm
 
 
 
