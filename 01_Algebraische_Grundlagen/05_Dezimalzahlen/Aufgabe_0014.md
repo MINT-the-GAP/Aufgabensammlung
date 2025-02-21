@@ -38,9 +38,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Lineare Funktionen, Negative Zahlen, leicht, niedrig, Angeben
+tags: Dezimalzahlen, Zahlenverständnis, sehr leicht, sehr niedrig, Angeben
 
-comment: Welche Koordinate gehört zu diesem Punkt auf der Funktion?
+comment: Wie heißt die Zahl, die genau in der Mitte zwischen den beiden gegebenen Zahlen liegt?
 
 author: Martin Lommatzsch
 
@@ -49,40 +49,39 @@ author: Martin Lommatzsch
 
 
 
-# Punkte auf Funktionen
+# Die Zahl in der Mitte
+
+**Gib** die Zahl als Dezimalzahl **an**, die sich genau in der Mitte zwischen den beiden gegebenen Zahlen befindet.
 
 
+
+<br>
 
 <section class="flex-container">
 
 <div class="flex-child">
-
-__$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -2x-1$. Bestimme die jeweilige fehlende Koordinate der Punkte $A$ und $B$. 
-
-<br>
-
-$A(-2|$ [[  3  ]] $)$ und $B($ [[  6  ]] $|-13)$
-
-<br>
-<br>
-<br>
-
+__$a)\;\;$__ $0$ und $0,7 \quad$ \
+[[ 0,35  ]] 
 </div>
-
-
 <div class="flex-child">
-
-__$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 3x+2$. Bestimme die jeweilige fehlende Koordinate der Punkte $A$ und $B$. 
-
-<br>
-
-$A(-1|$ [[  -1  ]] $)$ und $B($ [[  5  ]] $|17)$
-
-<br>
-<br>
-<br>
-
-</div>
-
+__$b)\;\;$__ $10$ und $21 \quad$ \
+[[ 15,5  ]] 
+</div> 
+<div class="flex-child">
+__$c)\;\;$__ $0,25$ und $1,75 \quad$ \
+[[ 1     ]] 
+</div> 
+<div class="flex-child">
+__$d)\;\;$__ $4,2$ und $0,8 \quad$ \
+[[  2,4  ]] 
+</div> 
 </section>
 
+<br>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

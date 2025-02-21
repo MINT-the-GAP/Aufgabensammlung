@@ -38,7 +38,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: lineare Funktionen, Negative Zahlen, leicht, niedrig, Angeben
+tags: Lineare Funktionen, Negative Zahlen, leicht, niedrig, Angeben
 
 comment: Welche Koordinate gehört zu diesem Punkt auf der Funktion?
 

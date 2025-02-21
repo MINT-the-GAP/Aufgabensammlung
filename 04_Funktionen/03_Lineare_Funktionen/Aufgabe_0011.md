@@ -38,7 +38,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: lineare Funktionen, negative Zahlen, leicht, niedrig, Angeben
+tags: Lineare Funktionen, negative Zahlen, leicht, niedrig, Angeben
 
 comment: Fülle Wertetabellen für lineare Funktionen aus. Achte auf die Vorzeichen.
 
@@ -57,14 +57,11 @@ author: Martin Lommatzsch
 
 
 
-<section class="flex-container">
-
-<div class="flex-child">
-
 __$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -9 x + 11$. 
 
 <br>
 
+<!-- data-type="none" -->
 |   x   |    3      |     -8    |    -2     |    7      |
 | :---: | :-------: | :-------: | :-------: | :-------: |
 |  f(x) | [[ -16 ]] | [[ 83  ]] | [[ 29  ]] | [[ -52 ]] |
@@ -73,15 +70,11 @@ __$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -9 x + 11$.
 <br>
 <br>
 
-</div>
-
-
-<div class="flex-child">
-
 __$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 4 \cdot x - 15$. 
 
 <br>
 
+<!-- data-type="none" -->
 |   x   | [[  4  ]] |     6     | [[  -7 ]] |     -5    |
 | :---: | :-------: | :-------: | :-------: | :-------: |
 |  f(x) |     1     | [[  9  ]] |    13     | [[ -35 ]] |
@@ -89,7 +82,3 @@ __$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 4 \cdot x - 15$.
 <br>
 <br>
 <br>
-
-</div>
-
-</section>

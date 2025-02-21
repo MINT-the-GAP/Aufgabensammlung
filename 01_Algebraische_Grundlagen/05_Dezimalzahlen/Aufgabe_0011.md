@@ -38,7 +38,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Vokabeln,, Dezimalzahlen, Zahlenverständnis, sehr leicht, sehr niedrig, Angeben
+tags: Vokabeln, Dezimalzahlen, Zahlenverständnis, sehr leicht, sehr niedrig, Angeben
 
 comment: Schreibe aus der Stellenwerttafel die Zahl nieder.
 

@@ -18,7 +18,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Baumdiagramm, Binomialverteilung, sehr leicht, sehr niedrig, Bestimme
+tags: Baumdiagramm, Binomialverteilung, sehr leicht, sehr niedrig, Bestimme, Skizziere
 
 comment: Bestimme mithilfe eines Baumdiagramms die Wahrscheinlichkeiten für Ereignisse und Ergebnisse.
 
@@ -38,7 +38,7 @@ In einem Gefäß befinden sich 6 schwarze und 14 weiße Kugeln für drei Ziehung
 <br>
 
 
- __$a) \;\;$__ Erstelle ein Baumdiagramm für den beschriebenen Fall. 
+ __$a) \;\;$__ Skizziere ein Baumdiagramm für den beschriebenen Fall. 
 
 <br>
 

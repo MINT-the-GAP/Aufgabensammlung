@@ -4,6 +4,10 @@ version:  0.0.1
 language: de
 
 @style
+main > *:not(:last-child) {
+  margin-bottom: 3rem;
+}
+
 input {
     text-align: center;
 }
@@ -38,9 +42,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Lineare Funktionen, Negative Zahlen, leicht, niedrig, Angeben
+tags: Spannweite, arithmetisches Mittel, Median, sehr leicht, niedrig, Angeben
 
-comment: Welche Koordinate gehört zu diesem Punkt auf der Funktion?
+comment: Bestimme die Eigenschaften von gegebenen Ergebnismengen.
 
 author: Martin Lommatzsch
 
@@ -49,40 +53,46 @@ author: Martin Lommatzsch
 
 
 
-# Punkte auf Funktionen
+# Eigenschaften von Ergebnismengen
 
-
+Gegeben sei die folgende Ergebnismenge: \
+$\{ 7,8,8,6,11,14,12,12,13,8,10,7,7,11,9 \}$
+<br>
 
 <section class="flex-container">
 
 <div class="flex-child">
-
-__$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -2x-1$. Bestimme die jeweilige fehlende Koordinate der Punkte $A$ und $B$. 
+__$a)\;\;$__ **Gib** die Spannweite **an**.\
+$R=$ [[  8  ]]
+*******************
+$R = x_{max} - x_{min} = 14 - 6 = 8$
+*******************
 
 <br>
-
-$A(-2|$ [[  3  ]] $)$ und $B($ [[  6  ]] $|-13)$
-
-<br>
-<br>
-<br>
-
 </div>
-
-
 <div class="flex-child">
 
-__$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 3x+2$. Bestimme die jeweilige fehlende Koordinate der Punkte $A$ und $B$. 
+__$b)\;\;$__ **Gib** den Median **an**.\
+$\tilde{x}=$ [[  9  ]]
+*******************
+$\{ 6,7,7,7,8,8,8,\textcolor{red}{9},10,11,11,12,12,13,14 \}$
+*******************
 
 <br>
-
-$A(-1|$ [[  -1  ]] $)$ und $B($ [[  5  ]] $|17)$
-
-<br>
-<br>
-<br>
-
 </div>
+<div class="flex-child">
+
+__$c)\;\;$__ **Gib** das arithmetische Mittel gerundet auf drei Nachkommastellen **an**.\
+$\bar{x}=$ [[  9,533  ]]
+
+<br>
+</div> 
 
 </section>
+
+<br>
+<br>
+<br>
+<br>
+
 

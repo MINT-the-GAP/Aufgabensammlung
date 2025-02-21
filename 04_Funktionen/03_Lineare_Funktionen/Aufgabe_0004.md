@@ -38,7 +38,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: lineare Funktionen, Bruchrechnung, sehr leicht, niedrig, Angeben
+tags: Lineare Funktionen, Bruchrechnung, sehr leicht, niedrig, Angeben
 
 comment: Welcher Term passt zu welchem Graphen?
 

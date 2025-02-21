@@ -38,7 +38,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: lineare Funktionen, sehr leicht, sehr niedrig, Angeben
+tags: Lineare Funktionen, sehr leicht, sehr niedrig, Angeben
 
 comment: Fülle Wertetabellen für lineare Funktionen aus.
 
@@ -57,14 +57,12 @@ author: Martin Lommatzsch
 
 
 
-<section class="flex-container">
-
-<div class="flex-child">
 
 __$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 2 \cdot x + 3$. 
 
 <br>
 
+<!-- data-type="none" -->
 |   x   |    1     |     3    |    4     |     7    |
 | :---: | :------: | :------: | :------: | :------: |
 |  f(x) | [[  5 ]] | [[  9 ]] | [[ 11 ]] | [[ 17 ]] |
@@ -73,15 +71,12 @@ __$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 2 \cdot x + 3$.
 <br>
 <br>
 
-</div>
-
-
-<div class="flex-child">
 
 __$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 4 \cdot x - 4$. 
 
 <br>
 
+<!-- data-type="none" -->
 |   x   |    1     | [[  5 ]] |     6    | [[  9 ]] |
 | :---: | :------: | :------: | :------: | :------: |
 |  f(x) | [[  0 ]] |    16    | [[ 20 ]] |    32    |
@@ -89,7 +84,3 @@ __$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 4 \cdot x - 4$.
 <br>
 <br>
 <br>
-
-</div>
-
-</section>

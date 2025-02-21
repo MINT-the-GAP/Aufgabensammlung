@@ -38,7 +38,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: lineare Funktionen, negative Zahlen, leicht, niedrig, Angeben
+tags: Lineare Funktionen, negative Zahlen, leicht, niedrig, Angeben
 
 comment: Fülle Wertetabellen für lineare Funktionen aus. Achte auf die Vorzeichen.
 
@@ -57,14 +57,12 @@ author: Martin Lommatzsch
 
 
 
-<section class="flex-container">
-
-<div class="flex-child">
 
 __$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -2 x + 3$. 
 
 <br>
 
+<!-- data-type="none" -->
 |   x   |    -2     |     4     |    -5     |    7      |
 | :---: | :-------: | :-------: | :-------: | :-------: |
 |  f(x) | [[ 7   ]] | [[ -5  ]] | [[ 13  ]] | [[ -11 ]] |
@@ -73,15 +71,12 @@ __$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -2 x + 3$.
 <br>
 <br>
 
-</div>
-
-
-<div class="flex-child">
 
 __$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -3 \cdot x - 5$. 
 
 <br>
 
+<!-- data-type="none" -->
 |   x   | [[  4  ]] |     6     | [[  -7 ]] |     -5    |
 | :---: | :-------: | :-------: | :-------: | :-------: |
 |  f(x) |    -17    | [[ -23 ]] |    16     | [[  10 ]] |
@@ -89,7 +84,3 @@ __$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -3 \cdot x - 5$.
 <br>
 <br>
 <br>
-
-</div>
-
-</section>

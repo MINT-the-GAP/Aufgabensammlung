@@ -38,9 +38,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Lineare Funktionen, sehr leicht, sehr niedrig, Angeben
+tags: quadratische Funktionen, Negative Zahlen, sehr leicht, niedrig, Angeben
 
-comment: Fülle Wertetabellen für lineare Funktionen aus.
+comment: Fülle Wertetabellen für quadratische Funktionen aus.
 
 author: Martin Lommatzsch
 
@@ -49,7 +49,7 @@ author: Martin Lommatzsch
 
 
 
-# Wertetabellen für lineare Funktionen
+# Wertetabellen für quadratische Funktionen
 
 
 
@@ -58,27 +58,27 @@ author: Martin Lommatzsch
 
 
 
-__$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 8 \cdot x - 9 $. 
+__$a)\;\;$__ Gegeben sei die quadratische Funktion $f(x) = 4x^2 - 6$. 
 
 <br>
 
 <!-- data-type="none" -->
-|   x   |    2     |     5    |    9     |    11    |
-| :---: | :------: | :------: | :------: | :------: |
-|  f(x) | [[ 23 ]] | [[ 31 ]] | [[ 63 ]] | [[ 79 ]] |
+|   x   |    -3     |     -1    |     0     |     2     |
+| :---: | :-------: | :-------: | :-------: | :-------: |
+|  f(x) | [[ 6   ]] | [[  -2 ]] | [[  -6 ]] | [[  10 ]] |
 
 <br>
 <br>
 <br>
 
-__$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 6 \cdot x + 7$. 
+__$b)\;\;$__ Gegeben sei die quadratische Funktion $f(x) = x^2 - 3x $. 
 
 <br>
 
 <!-- data-type="none" -->
-|   x   |    3     | [[  5 ]] |     7    | [[ 14 ]] |
-| :---: | :------: | :------: | :------: | :------: |
-|  f(x) | [[ 25 ]] |    37    | [[ 49 ]] |    91    |
+|   x   |    -4     |      1    |     2     |      6    |
+| :---: | :-------: | :-------: | :-------: | :-------: |
+|  f(x) | [[  28 ]] | [[ -2  ]] | [[ -2  ]] | [[  18 ]] |
 
 <br>
 <br>
