@@ -18,9 +18,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Kontingenztafel, Vierfeldertafel, unbedingte Wahrscheinlichkeit, sehr leicht, sehr niedrig, Angeben
+tags: Binomialverteilung, sehr leicht, sehr niedrig, Angeben
 
-comment: Fülle die Vierfeldertafel für eine unbedingte Wahrscheinlichkeit aus.
+comment: Welcher Term passt zu dem beschriebenen Ereignis?
 
 author: Martin Lommatzsch
 
@@ -29,16 +29,33 @@ author: Martin Lommatzsch
 
 
 
-# unbedingte Vierfeldertafel
+# Ereignisse Termen zuordnen
 
-**Fülle** alle Felder der Kontingenztafel (Vierfeldertafel) für eine unbedingte Wahrscheinlichkeit in relativen Zahlen mit Dezimalzahlen **aus**.
+**Ordne** dem beschriebenen Ereignis einen Term **zu**, der die Wahrscheinlichkeit für das Ereignis beschreibt.
 
 <br>
 
+$I.\;\;\;\; 1- \left( \dfrac{1}{10} \right)^4  $ \
+$II.\;\;\;\; \dfrac{1}{10} \cdot \left( \dfrac{9}{10} \right)^3  $ \
+$III.\;\;\;\; \left( \begin{array}{c} 4 \\ 1 \end{array} \right) \cdot \left( \dfrac{1}{10} \right)^1 \cdot \left( \dfrac{9}{10} \right)^3 $ \
+$IV.\;\;\;\; 1- \left( \dfrac{9}{10} \right)^4$ \
+$V.\;\;\;\; \dfrac{1}{10} \cdot \left( \dfrac{9}{10} \right)^3  $ \
 
-<!-- data-type="none" -->
-|           |     $A$    | $\bar{A}$  |            |
-| :-------: | :--------: | :-------:  | :--------: |
-| $B$       | [[ 0,1  ]] | [[ 0,3  ]] | $0,4$      |
-| $\bar{B}$ | [[ 0,15 ]] | [[ 0,45 ]] | [[ 0,6  ]] |
-|           |   $25\%$   | [[ 0,75 ]] |      1     |
+<br>
+
+__$a)\;\;$__ Beim Drehen eines Glücksrades mit einer Trefferwahrscheinlichkeit von $10\%$ wurde bei vier Versuchen einmal ein Treffer erzielt. Term [[I.|II.|(III.)|IV.|V.]] beschreibt dieses Szenario.
+
+<br>
+
+__$b)\;\;$__ Um den Hauptpreis bei einem Glücksrad mit zehn gleich großen Feldern zu bekommen, müssen alle vier Versuche ein Treffer sein. Term [[(I.)|II.|III.|IV.|V.]] beschreibt dieses Szenario.
+
+<br>
+
+__$c)\;\;$__ Beim Drehen des Glücksrades mit einer Trefferwahrscheinlichkeit von $10\%$ wurden das Ereignis $\{$ Treffer, Nichttreffer, Nichttreffer, Nichttreffer $\}$ festgehalten. Term [[I.|II.|III.|IV.|(V.)]] beschreibt dieses Szenario.
+
+
+<br>
+<br>
+<br>
+<br>
+<br>

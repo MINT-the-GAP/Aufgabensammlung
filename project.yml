@@ -406,6 +406,12 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0004.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0005.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0006.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0007.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0008.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0009.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0010.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0011.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0012.md
       
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0001.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0002.md
@@ -430,6 +436,8 @@ collection:
     comment: "In dieser Kachel sind alle Aufgaben zur Stochastik zu finden."
     grid: true
     collection:
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/02_Baumdiagramme/Aufgabe_0001.md
+
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/03_Kontingenztafeln/Aufgabe_0001.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/03_Kontingenztafeln/Aufgabe_0002.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/03_Kontingenztafeln/Aufgabe_0003.md
@@ -438,6 +446,10 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/03_Kontingenztafeln/Aufgabe_0006.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/03_Kontingenztafeln/Aufgabe_0007.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/03_Kontingenztafeln/Aufgabe_0008.md
+
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/04_Binonmialverteilung/Aufgabe_0001.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/04_Binonmialverteilung/Aufgabe_0002.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/04_Binonmialverteilung/Aufgabe_0003.md
 
   - title:  "Vektoren"
     comment: "Hier sind alle Aufgaben zur Vektorrechnung zu finden."
