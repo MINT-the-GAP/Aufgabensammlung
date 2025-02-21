@@ -49,7 +49,7 @@ author: Martin Lommatzsch
 
 
 
-# Fehlende Punkte von Vierecken
+# Vierecksfläche im Koordinatensystem
 
 
 **Gib** den Flächeninhalt des dargestellten Vierecks **an**.

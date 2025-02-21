@@ -57,6 +57,11 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0028.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0029.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0030.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0031.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0032.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0033.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0034.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0035.md
       
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/03_Teilbarkeiten/Aufgabe_0001.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/03_Teilbarkeiten/Aufgabe_0002.md
@@ -160,6 +165,19 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/08_Einheiten/Aufgabe_0022.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/08_Einheiten/Aufgabe_0023.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/08_Einheiten/Aufgabe_0024.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/08_Einheiten/Aufgabe_0025.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/08_Einheiten/Aufgabe_0026.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/08_Einheiten/Aufgabe_0027.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/08_Einheiten/Aufgabe_0028.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/08_Einheiten/Aufgabe_0029.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/08_Einheiten/Aufgabe_0030.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/08_Einheiten/Aufgabe_0031.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/08_Einheiten/Aufgabe_0032.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/08_Einheiten/Aufgabe_0033.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/08_Einheiten/Aufgabe_0034.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/08_Einheiten/Aufgabe_0035.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/08_Einheiten/Aufgabe_0036.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/08_Einheiten/Aufgabe_0037.md
       
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0001.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0002.md
@@ -269,6 +287,14 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/04_Rechtecke/Aufgabe_0028.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/04_Rechtecke/Aufgabe_0029.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/04_Rechtecke/Aufgabe_0030.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/04_Rechtecke/Aufgabe_0031.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/04_Rechtecke/Aufgabe_0032.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/04_Rechtecke/Aufgabe_0033.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/04_Rechtecke/Aufgabe_0034.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/04_Rechtecke/Aufgabe_0035.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/04_Rechtecke/Aufgabe_0036.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/04_Rechtecke/Aufgabe_0037.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/04_Rechtecke/Aufgabe_0038.md
 
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/05_Winkel/Aufgabe_0001.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/05_Winkel/Aufgabe_0002.md
@@ -325,6 +351,10 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0040.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0041.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0042.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0043.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0044.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0045.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/06_Dreiecke/Aufgabe_0046.md
 
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/08_Vierecke/Aufgabe_0001.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/08_Vierecke/Aufgabe_0002.md
@@ -390,6 +420,10 @@ collection:
     grid: true
     collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0001.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0002.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0003.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0004.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0005.md
 
 
   - title:  "Stochastik"

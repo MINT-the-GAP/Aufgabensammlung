@@ -38,9 +38,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Koordinatensystem, Punkt, Vierecke, Fläche, sehr leicht, niedrig, Angeben
+tags: Koordinatensystem, Punkt, Dreieck, Fläche, sehr leicht, niedrig, Angeben
 
-comment: Im Koodinatensystem ist ein Viereck dargestellt. Bestimme den Flächeninhalt.
+comment: Im Koodinatensystem ist ein Dreieck dargestellt. Bestimme den Flächeninhalt.
 
 author: Martin Lommatzsch
 
@@ -49,10 +49,10 @@ author: Martin Lommatzsch
 
 
 
-# Vierecksfläche im Koordinatensystem
+# Dreiecksfläche im Koordinatensystem
 
 
-**Gib** den Flächeninhalt des dargestellten Vierecks **an**.
+**Gib** den Flächeninhalt des dargestellten Dreiecks **an**.
 
 <br>
 <section class="flex-container">
@@ -103,7 +103,7 @@ __$a)\;\;$__
  
  \draw [ black!100, thick]  (ya) --(o) --  (xa);
 
-   \draw[very thick, red, fill=red!70, opacity=0.4] (4,9)-- (0,7)-- (4,0)-- (8,7) -- (4,9);
+   \draw[very thick, red, fill=red!70, opacity=0.4] (1,8)-- (6,8)-- (5,2)-- (1,8);
 
 	%\draw[thick,color=black, ]  plot[samples=100, domain=-0:4] (\x, {2*\x } ) node[right] {\large $f$};  
   
@@ -111,7 +111,7 @@ __$a)\;\;$__
 
 ```
 </center>
- $A=$[[  36  ]]$FE$ \
+ $A=$[[  15  ]]$FE$ \
 <br>
 </div> 
 
@@ -164,7 +164,7 @@ __$b)\;\;$__
  
  \draw [ black!100, thick]  (ya) --(o) --  (xa);
 
-   \draw[very thick, red, fill=red!70, opacity=0.4] (3,1)-- (4,1)-- (6,10)-- (5,10)-- (3,1);
+   \draw[very thick, red, fill=red!70, opacity=0.4] (5,8)-- (9,8)-- (2,1)-- (5,8);
 
 	%\draw[thick,color=black, ]  plot[samples=100, domain=-0:4] (\x, {2*\x } ) node[right] {\large $f$};  
   
@@ -172,7 +172,7 @@ __$b)\;\;$__
 
 ```
 </center>
- $A=$[[  9   ]]$FE$ \
+ $A=$[[  14  ]]$FE$ \
 <br>
 </div> 
 

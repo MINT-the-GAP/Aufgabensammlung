@@ -49,7 +49,7 @@ author: Martin Lommatzsch
 
 
 
-# Fehlende Punkte von Vierecken
+# Eigenschaften von Vierecken
 
 
 **Wähle** die Vierecksarten **aus**, die die beschriebenen Eigenschaften erfüllen.
