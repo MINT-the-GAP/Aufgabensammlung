@@ -44,7 +44,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 tags: Mengen, sehr leicht, sehr niedrig, Angeben
 
-comment: Was ist die kleinste Zahlenmenge in die diese Zahl passt?
+comment: Was ist die kleinste Zahlenmenge, in die diese Zahl passt?
 
 author: Martin Lommatzsch
 

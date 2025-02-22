@@ -42,9 +42,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Mengen, sehr leicht, sehr niedrig, Angeben
+tags: Mengen, Bruchrechnung, Wurzeln, Potenzen, Dezimalzahlen, Negative Zahlen, Vorrangsregeln, leicht, normal, Angeben
 
-comment: Was ist die kleinste Zahlenmenge, in die diese Zahl passt?
+comment: Was ist die kleinste Zahlenmenge, in die der Wert des Terms passt?
 
 author: Martin Lommatzsch
 
@@ -53,31 +53,31 @@ author: Martin Lommatzsch
 
 
 
-# Kleinste Zahlenmenge
+# Kleinste Zahlenmenge von Termwerten
 
-**Wähle** die kleinste Zahlenmenge **aus**, in der die jeweilige Zahl ist.
+**Wähle** die kleinste Zahlenmenge **aus**, in der der beschriebene Term ist.
 
 <br>
 
 <section class="flex-container">
 <div class="flex-child">
 <br>
-__$a)\;\;$__ $ \frac{12}{4} $ [[$(\mathbb{N})$|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
+__$a)\;\;$__ $ 41:7 + 57:7 \in$ [[$(\mathbb{N})$|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
 <br>
 </div>
 <div class="flex-child">
 <br>
-__$b)\;\;$__ $ 0,0001 $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
+__$b)\;\;$__ $ \sqrt{49}-11,5 \in$ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
 <br>
 </div>
 <div class="flex-child">
 <br>
-__$c)\;\;$__ $ -\sqrt{9} $ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
+__$c)\;\;$__ $ \dfrac{2}{3}-\dfrac{14}{9}-0,\bar{1} \in$ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
 <br>
 </div>
 <div class="flex-child">
 <br>
-__$d)\;\;$__ $ -\sqrt[5]{7} $ [[$\mathbb{N}$|$\mathbb{Z}$|$\mathbb{Q}$|($\mathbb{R}$)]] 
+__$d)\;\;$__ $ \dfrac{8}{7}-\pi  \in$ [[$\mathbb{N}$|$\mathbb{Z}$|$\mathbb{Q}$|($\mathbb{R}$)]] 
 
 </div>
 </section>

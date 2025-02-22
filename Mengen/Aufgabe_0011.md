@@ -44,7 +44,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 tags: Mengen, sehr leicht, sehr niedrig, Angeben
 
-comment: Was ist die kleinste Zahlenmenge, in die diese Zahl passt?
+comment: Was ist die größte oder kleinste Zahl der gegebenen Zahlenmenge?
 
 author: Martin Lommatzsch
 
@@ -53,34 +53,32 @@ author: Martin Lommatzsch
 
 
 
-# Kleinste Zahlenmenge
+# Mengenextrema
 
-**Wähle** die kleinste Zahlenmenge **aus**, in der die jeweilige Zahl ist.
+**Gib** die kleinste beziehungsweise größte Zahl der gegebenen Zahlenmenge **an**. Es gilt $\mathbb{K} \subset \mathbb{N}$.
 
 <br>
 
-<section class="flex-container">
-<div class="flex-child">
 <br>
-__$a)\;\;$__ $ \frac{12}{4} $ [[$(\mathbb{N})$|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
-<br>
-</div>
-<div class="flex-child">
-<br>
-__$b)\;\;$__ $ 0,0001 $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
-<br>
-</div>
-<div class="flex-child">
-<br>
-__$c)\;\;$__ $ -\sqrt{9} $ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
-<br>
-</div>
-<div class="flex-child">
-<br>
-__$d)\;\;$__ $ -\sqrt[5]{7} $ [[$\mathbb{N}$|$\mathbb{Z}$|$\mathbb{Q}$|($\mathbb{R}$)]] 
+__$a)\;\;$__ $ \mathbb{K} = \{ 45,39,48,51,37,52,46,50,47,38,43,46,51,39,40 \} $\
 
-</div>
-</section>
+$\min(\mathbb{K}) = $ [[ 37 ]] \
+$\max(\mathbb{K}) = $ [[ 52 ]] \
+
+<br>
+<br>
+__$b)\;\;$__ $ \mathbb{K} = \{ 34,37,31,32,39,33,34,35,38,32,30,34,39,38,34,33,31 \} $\
+
+$\min(\mathbb{K}) = $ [[ 30 ]] \
+$\max(\mathbb{K}) = $ [[ 39 ]] \
+
+<br>
+<br>
+__$c)\;\;$__ $ \mathbb{K} = \{ 64,67,61,58,60,64,66,68,63,64,60,69,64,65,59,67,68,60 \} $\
+
+$\min(\mathbb{K}) = $ [[ 58 ]] \
+$\max(\mathbb{K}) = $ [[ 69 ]] \
+
 <br>
 <br>
 <br>

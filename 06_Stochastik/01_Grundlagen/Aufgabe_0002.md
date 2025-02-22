@@ -42,9 +42,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Mengen, sehr leicht, sehr niedrig, Angeben
+tags: Spannweite, arithmetisches Mittel, Median, sehr leicht, niedrig, Angeben
 
-comment: Was ist die kleinste Zahlenmenge, in die diese Zahl passt?
+comment: Bestimme die Eigenschaften von gegebenen Ergebnismengen.
 
 author: Martin Lommatzsch
 
@@ -53,36 +53,46 @@ author: Martin Lommatzsch
 
 
 
-# Kleinste Zahlenmenge
+# Eigenschaften von Ergebnismengen
 
-**Wähle** die kleinste Zahlenmenge **aus**, in der die jeweilige Zahl ist.
-
+Gegeben sei die folgende Ergebnismenge: \
+$\{ 83,46,55,64,91,75,61,39,84,55,47 \}$
 <br>
 
 <section class="flex-container">
-<div class="flex-child">
-<br>
-__$a)\;\;$__ $ \frac{12}{4} $ [[$(\mathbb{N})$|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
-<br>
-</div>
-<div class="flex-child">
-<br>
-__$b)\;\;$__ $ 0,0001 $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
-<br>
-</div>
-<div class="flex-child">
-<br>
-__$c)\;\;$__ $ -\sqrt{9} $ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
-<br>
-</div>
-<div class="flex-child">
-<br>
-__$d)\;\;$__ $ -\sqrt[5]{7} $ [[$\mathbb{N}$|$\mathbb{Z}$|$\mathbb{Q}$|($\mathbb{R}$)]] 
 
+<div class="flex-child">
+__$a)\;\;$__ **Gib** die Spannweite **an**.\
+$R=$ [[ 52  ]]
+*******************
+$R = x_{max} - x_{min} = 91 - 39 = 52$
+*******************
+
+<br>
 </div>
+<div class="flex-child">
+
+__$b)\;\;$__ **Gib** den Median **an**.\
+$\tilde{x}=$ [[  61  ]]
+*******************
+$\{ 39,46,47,55,55,\textcolor{red}{61},64,75,83,84,91 \}$
+*******************
+
+<br>
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ **Gib** das arithmetische Mittel gerundet auf drei Nachkommastellen **an**.\
+$\bar{x}=$ [[  63,636  ]]
+
+<br>
+</div> 
+
 </section>
+
 <br>
 <br>
 <br>
 <br>
+
 
