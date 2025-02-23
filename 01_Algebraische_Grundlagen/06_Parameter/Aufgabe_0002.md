@@ -35,7 +35,8 @@ author: Martin Lommatzsch
 
 <br>
 
-<!-- data-type="none" -->
+<!-- data-type="none"
+data-sortable="false" -->
 |  $a$  |   $b$   |   $c$   |  $a+c$   |  $c + b$     |  $b : a$ | $2 \cdot a \cdot c$ |
 | :---: | :-----: | :-----: | :------: | :----------: | :------: | :---------: |
 |   4   |     8   |     2   | [[ 6  ]] |   [[  10 ]]  | [[  2 ]] |  [[ 16 ]]   |

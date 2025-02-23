@@ -61,7 +61,8 @@ __$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -9 x + 11$.
 
 <br>
 
-<!-- data-type="none" -->
+<!-- data-type="none"
+data-sortable="false" -->
 |   x   |    3      |     -8    |    -2     |    7      |
 | :---: | :-------: | :-------: | :-------: | :-------: |
 |  f(x) | [[ -16 ]] | [[ 83  ]] | [[ 29  ]] | [[ -52 ]] |
@@ -74,7 +75,8 @@ __$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 4 \cdot x - 15$.
 
 <br>
 
-<!-- data-type="none" -->
+<!-- data-type="none"
+data-sortable="false" -->
 |   x   | [[  4  ]] |     6     | [[  -7 ]] |     -5    |
 | :---: | :-------: | :-------: | :-------: | :-------: |
 |  f(x) |     1     | [[  9  ]] |    13     | [[ -35 ]] |

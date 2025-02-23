@@ -62,7 +62,8 @@ __$a)\;\;$__ Gegeben sei die quadratische Funktion $f(x) = 4x^2 - 6$.
 
 <br>
 
-<!-- data-type="none" -->
+<!-- data-type="none"
+data-sortable="false" -->
 |   x   |    -3     |     -1    |     0     |     2     |
 | :---: | :-------: | :-------: | :-------: | :-------: |
 |  f(x) | [[ 6   ]] | [[  -2 ]] | [[  -6 ]] | [[  10 ]] |
@@ -75,7 +76,8 @@ __$b)\;\;$__ Gegeben sei die quadratische Funktion $f(x) = x^2 - 3x $.
 
 <br>
 
-<!-- data-type="none" -->
+<!-- data-type="none"
+data-sortable="false" -->
 |   x   |    -4     |      1    |     2     |      6    |
 | :---: | :-------: | :-------: | :-------: | :-------: |
 |  f(x) | [[  28 ]] | [[ -2  ]] | [[ -2  ]] | [[  18 ]] |

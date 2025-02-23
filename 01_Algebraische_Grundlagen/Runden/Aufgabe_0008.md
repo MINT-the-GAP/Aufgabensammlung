@@ -54,7 +54,9 @@ author: Martin Lommatzsch
 
 **Gib** den auf die angegebene Stelle gerundeten Wert in den freien Tabellenfeldern **an**.
 
-<!-- data-type="none" -->
+
+<!-- data-type="none"
+data-sortable="false" -->
 |   Zahl    |    Zehner     |   Hunderter    |   Tausender    | Zehntausender | Hunderttausender |
 |  :-----:  |    :-----:    |   :-----:      |     :-----:    |   :-----:     |     :-----:      |
 | $278849$  | [[ 278850  ]] |  [[ 278800  ]] | [[ 279000  ]]  |  [[ 280000 ]] |   [[ 300000  ]]  |

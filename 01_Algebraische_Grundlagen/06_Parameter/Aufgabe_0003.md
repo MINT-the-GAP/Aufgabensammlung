@@ -35,7 +35,8 @@ author: Martin Lommatzsch
 
 <br>
 
-<!-- data-type="none" -->
+<!-- data-type="none"
+data-sortable="false" -->
 |  $r$  |   $s$   |  $4\cdot s$   |  $r + s$     | $s \cdot s$ | $r \cdot r \cdot r$ |
 | :---: | :-----: | :-----------: | :----------: | :---------: | :---------: |
 |   4   |    6   |    [[ 24 ]]    |   [[ 10 ]]   |  [[ 36  ]]  |  [[ 64  ]]  |

@@ -62,7 +62,8 @@ __$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -2 x + 3$.
 
 <br>
 
-<!-- data-type="none" -->
+<!-- data-type="none"
+data-sortable="false" -->
 |   x   |    -2     |     4     |    -5     |    7      |
 | :---: | :-------: | :-------: | :-------: | :-------: |
 |  f(x) | [[ 7   ]] | [[ -5  ]] | [[ 13  ]] | [[ -11 ]] |
@@ -76,7 +77,8 @@ __$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -3 \cdot x - 5$.
 
 <br>
 
-<!-- data-type="none" -->
+<!-- data-type="none"
+data-sortable="false" -->
 |   x   | [[  4  ]] |     6     | [[  -7 ]] |     -5    |
 | :---: | :-------: | :-------: | :-------: | :-------: |
 |  f(x) |    -17    | [[ -23 ]] |    16     | [[  10 ]] |

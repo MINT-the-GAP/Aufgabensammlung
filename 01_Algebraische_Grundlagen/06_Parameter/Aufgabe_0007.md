@@ -35,7 +35,8 @@ author: Martin Lommatzsch
 
 <br>
 
-<!-- data-type="none" -->
+<!-- data-type="none"
+data-sortable="false" -->
 |  $k$  |   $g$  |   $u$   |  $ (k-g):u $  |  $ k - g \cdot u $ | $ u \cdot u + k \cdot g $ |
 | :---: | :----: | :-----: | :------:      | :----------:       | :-----------:             |
 |   23  |   5    |    3    | [[ 6 ]]       |   [[ 8 ]]          |  [[  124  ]]              |

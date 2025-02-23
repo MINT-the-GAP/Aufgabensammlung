@@ -62,7 +62,8 @@ __$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 8 \cdot x - 9 $.
 
 <br>
 
-<!-- data-type="none" -->
+<!-- data-type="none"
+data-sortable="false" -->
 |   x   |    2     |     5    |    9     |    11    |
 | :---: | :------: | :------: | :------: | :------: |
 |  f(x) | [[ 23 ]] | [[ 31 ]] | [[ 63 ]] | [[ 79 ]] |
@@ -75,7 +76,8 @@ __$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 6 \cdot x + 7$.
 
 <br>
 
-<!-- data-type="none" -->
+<!-- data-type="none"
+data-sortable="false" -->
 |   x   |    3     | [[  5 ]] |     7    | [[ 14 ]] |
 | :---: | :------: | :------: | :------: | :------: |
 |  f(x) | [[ 25 ]] |    37    | [[ 49 ]] |    91    |

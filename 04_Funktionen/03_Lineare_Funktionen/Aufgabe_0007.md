@@ -62,7 +62,8 @@ __$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 2 \cdot x + 3$.
 
 <br>
 
-<!-- data-type="none" -->
+<!-- data-type="none"
+data-sortable="false" -->
 |   x   |    1     |     3    |    4     |     7    |
 | :---: | :------: | :------: | :------: | :------: |
 |  f(x) | [[  5 ]] | [[  9 ]] | [[ 11 ]] | [[ 17 ]] |
@@ -76,7 +77,8 @@ __$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 4 \cdot x - 4$.
 
 <br>
 
-<!-- data-type="none" -->
+<!-- data-type="none"
+data-sortable="false" -->
 |   x   |    1     | [[  5 ]] |     6    | [[  9 ]] |
 | :---: | :------: | :------: | :------: | :------: |
 |  f(x) | [[  0 ]] |    16    | [[ 20 ]] |    32    |

@@ -61,7 +61,8 @@ __$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 7 x - 22$.
 
 <br>
 
-<!-- data-type="none" -->
+<!-- data-type="none"
+data-sortable="false" -->
 |   x   |    -4     |     3     |    9      |   -6      |
 | :---: | :-------: | :-------: | :-------: | :-------: |
 |  f(x) | [[ -50 ]] | [[ -1  ]] | [[ 41  ]] | [[ -64 ]] |
@@ -75,7 +76,8 @@ __$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -8 \cdot x - 14$.
 
 <br>
 
-<!-- data-type="none" -->
+<!-- data-type="none"
+data-sortable="false" -->
 |   x   | [[  4  ]] |     6     | [[  -7 ]] |     -5    |
 | :---: | :-------: | :-------: | :-------: | :-------: |
 |  f(x) |    -46    | [[ -62 ]] |    42     | [[  26 ]] |

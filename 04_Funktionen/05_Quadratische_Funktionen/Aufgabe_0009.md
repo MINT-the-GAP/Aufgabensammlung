@@ -62,7 +62,8 @@ __$a)\;\;$__ Gegeben sei die quadratische Funktion $f(x) = x^2 - 2 x$.
 
 <br>
 
-<!-- data-type="none" -->
+<!-- data-type="none"
+data-sortable="false" -->
 |   x   |    0     |     2    |    3     |     5    |
 | :---: | :------: | :------: | :------: | :------: |
 |  f(x) | [[  0 ]] | [[ 0  ]] | [[ 3  ]] | [[ 15 ]] |
@@ -75,7 +76,8 @@ __$b)\;\;$__ Gegeben sei die quadratische Funktion $f(x) = 3x^2 - 4 $.
 
 <br>
 
-<!-- data-type="none" -->
+<!-- data-type="none"
+data-sortable="false" -->
 |   x   |    2     |    3     |     6    |     8    |
 | :---: | :------: | :------: | :------: | :------: |
 |  f(x) | [[  8 ]] | [[ 23 ]] | [[ 104]] | [[ 188]] |

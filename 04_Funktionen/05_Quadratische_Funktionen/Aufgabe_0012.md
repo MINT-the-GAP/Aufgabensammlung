@@ -62,7 +62,8 @@ __$a)\;\;$__ Gegeben sei die quadratische Funktion $f(x) = -2x^2 + 5x$.
 
 <br>
 
-<!-- data-type="none" -->
+<!-- data-type="none"
+data-sortable="false" -->
 |   x   |    -2     |     -1    |     0     |     2     |
 | :---: | :-------: | :-------: | :-------: | :-------: |
 |  f(x) | [[ -18 ]] | [[  -7 ]] | [[  0 ]]  | [[  2  ]] |
@@ -75,7 +76,8 @@ __$b)\;\;$__ Gegeben sei die quadratische Funktion $f(x) = -3x^2 + 9  $.
 
 <br>
 
-<!-- data-type="none" -->
+<!-- data-type="none"
+data-sortable="false" -->
 |   x   |    -5     |      -2   |     1     |      4    |
 | :---: | :-------: | :-------: | :-------: | :-------: |
 |  f(x) | [[ -66 ]] | [[ -3  ]] | [[  6  ]] | [[ -39 ]] |

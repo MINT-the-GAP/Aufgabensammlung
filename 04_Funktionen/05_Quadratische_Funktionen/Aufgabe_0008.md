@@ -62,7 +62,8 @@ __$a)\;\;$__ Gegeben sei die quadratische Funktion $f(x) = x^2 - x - 2 $.
 
 <br>
 
-<!-- data-type="none" -->
+<!-- data-type="none"
+data-sortable="false" -->
 |   x   |    2     |     4    |    5     |     7    |
 | :---: | :------: | :------: | :------: | :------: |
 |  f(x) | [[  0 ]] | [[ 10 ]] | [[ 18 ]] | [[ 40 ]] |
@@ -76,7 +77,8 @@ __$b)\;\;$__ Gegeben sei die quadratische Funktion $f(x) = x^2 + 4x $.
 
 <br>
 
-<!-- data-type="none" -->
+<!-- data-type="none"
+data-sortable="false" -->
 |   x   |    1     |    4     |     7    |    11    |
 | :---: | :------: | :------: | :------: | :------: |
 |  f(x) | [[  5 ]] | [[ 32 ]] | [[ 77 ]] | [[165 ]] |

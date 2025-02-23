@@ -54,7 +54,9 @@ author: Martin Lommatzsch
 
 Gegeben sei eine gerundete Zahl. **Gib** jeweils die kleinste und die größte Zahl **an**, die nach dem Runden zur gegebenen Zahl wird.
 
-<!-- data-type="none" -->
+
+<!-- data-type="none"
+data-sortable="false" -->
 | gerundete Zahl | wurde gerundete auf | kleinste Zahl |  größte Zahl  |
 |  :----------:  | :-----------------: | :-----------: |  :---------:  |
 |    $445000$    |      Tausender      | [[ 444500  ]] | [[ 445499  ]] |

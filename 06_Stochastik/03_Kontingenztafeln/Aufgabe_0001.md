@@ -36,7 +36,8 @@ author: Martin Lommatzsch
 <br>
 
 
-<!-- data-type="none" -->
+<!-- data-type="none"
+data-sortable="false" -->
 |           |     $A$    | $\bar{A}$  |            |
 | :-------: | :--------: | :-------:  | :--------: |
 | $B$       |   $12\%$   | [[ 0,18 ]] | $0,3$      |

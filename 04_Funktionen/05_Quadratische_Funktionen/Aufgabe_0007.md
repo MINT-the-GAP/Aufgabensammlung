@@ -62,7 +62,8 @@ __$a)\;\;$__ Gegeben sei die quadratische Funktion $f(x) = 2 \cdot x^2 + 3$.
 
 <br>
 
-<!-- data-type="none" -->
+<!-- data-type="none"
+data-sortable="false" -->
 |   x   |    1     |     3    |    4     |     5    |
 | :---: | :------: | :------: | :------: | :------: |
 |  f(x) | [[  5 ]] | [[ 21 ]] | [[ 39 ]] | [[ 53 ]] |
@@ -76,7 +77,8 @@ __$b)\;\;$__ Gegeben sei die quadratische Funktion $f(x) = x^2 + x + 1$.
 
 <br>
 
-<!-- data-type="none" -->
+<!-- data-type="none"
+data-sortable="false" -->
 |   x   |    0     |    2     |     5    |     6    |
 | :---: | :------: | :------: | :------: | :------: |
 |  f(x) | [[  1 ]] | [[  7 ]] | [[ 31 ]] | [[ 43 ]] |
