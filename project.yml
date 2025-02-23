@@ -62,6 +62,21 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0033.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0034.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0035.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0036.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0037.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0038.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0039.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0040.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0041.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0042.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0043.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0044.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0045.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0046.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0047.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0048.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0049.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0050.md
       
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/03_Teilbarkeiten/Aufgabe_0001.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/03_Teilbarkeiten/Aufgabe_0002.md
@@ -144,6 +159,16 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/05_Dezimalzahlen/Aufgabe_0032.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/05_Dezimalzahlen/Aufgabe_0033.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/05_Dezimalzahlen/Aufgabe_0034.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/05_Dezimalzahlen/Aufgabe_0035.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/05_Dezimalzahlen/Aufgabe_0036.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/05_Dezimalzahlen/Aufgabe_0037.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/05_Dezimalzahlen/Aufgabe_0038.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/05_Dezimalzahlen/Aufgabe_0039.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/05_Dezimalzahlen/Aufgabe_0040.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/05_Dezimalzahlen/Aufgabe_0041.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/05_Dezimalzahlen/Aufgabe_0042.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/05_Dezimalzahlen/Aufgabe_0043.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/05_Dezimalzahlen/Aufgabe_0044.md
       
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/06_Parameter/Aufgabe_0001.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/06_Parameter/Aufgabe_0002.md
