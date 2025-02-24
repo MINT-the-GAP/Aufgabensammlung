@@ -42,9 +42,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Terme, Grundrechenarten, Vorrangsregeln, sehr leicht, sehr niedrig, Angeben
+tags: Terme, Dezimalzahlen, Vorrangsregeln, leicht, niedrig, Angeben
 
-comment: Verrechne Schrittweise den Term. Lerne wie Termumformungen niedergeschrieben werden.
+comment: Verrechne Schrittweise den Term. Lerne wie Termumformungen mit Dezimalzahlen niedergeschrieben werden.
 
 author: Martin Lommatzsch
 
@@ -53,7 +53,7 @@ author: Martin Lommatzsch
 
 
 
-# Termeumformen mit Grundrechenarten
+# Termeumformen mit Dezimalzahlen
 
 **Fülle** die Lücken der Rechnung mit den passenden Werten aus **aus**.
 
@@ -62,39 +62,43 @@ author: Martin Lommatzsch
 <div class="flex-child">
 <br>
 __$a)\;\;$__ \
-$\;\;\;\; 82 - 5 \cdot 3 - 6 \cdot 4 $ \
-$= 82 - $ [[ 15 ]] $ - 6 \cdot 4  $ \
-$= [[ 67 ]] $ - 6 \cdot 4  $ \
-$= [[ 67 ]] $ - $[[ 24 ]] \
-$=$ [[ 43 ]] 
+$\;\;\;\; 1,7 + 0,5 \cdot 0,3 + 1,3 \cdot 0,25 $ \
+$= 1,7 +$ [[  0,15   ]] $+ 1,3 \cdot 0,25 $ \
+$= 1,7 +$ [[  0,15   ]] $+$ [[  0,325  ]]  \
+$= 1,7 +$ [[  0,435  ]]   \
+$=$ [[  2,135  ]] 
 <br>
 </div> 
 <div class="flex-child">
 <br>
 __$b)\;\;$__ \
-$\;\;\;\; 144 - ( 8 \cdot 6 + 17)  $ \
-$= 144 - ( $[[ 42 ]]$ + 17)  $ \
-$= 144 - $[[ 59 ]]$  \
-$=$ [[ 85 ]]
+$\;\;\;\; 0,81:0,9 + 5,4:6 + 0,125 \cdot 5 $ \
+$=$ [[  0,9  ]] $+ 5,4:6 + 0,125 \cdot 5 $ \
+$=$ [[  0,9  ]] $+$ [[  0,9  ]] $+ 0,125 \cdot 5 $ \
+$=$ [[  1,8  ]] $+ 0,125 \cdot 5 $ \
+$=$ [[  1,8  ]] $+$ [[ 0,625 ]] \
+$=$ [[ 2,425 ]] 
 <br>
 </div> 
 <div class="flex-child">
 <br>
 __$c)\;\;$__ \
-$\;\;\;\; ( 9 \cdot 5 + 18 ) : 7   $ \
-$= ( $[[ 45 ]] $ + 18 ) : 7   $ \
-$=  $[[ 63 ]] $  : 7   $ \
-$=$ [[ 9 ]] 
+$\;\;\;\; 9,2 - 0,4 \cdot 1,5 \cdot 0,6 - 0,48:0,6 $ \
+$= 9,2 -$ [[  0,6  ]] $\cdot 0,6 - 0,48:0,6 $ \
+$= 9,2 -$ [[ 0,36  ]] $- 0,48:0,6 $ \
+$= $ [[ 8,84 ]] $- 0,48:0,6 $ \
+$= $ [[ 8,84 ]] $-$ [[  0,8  ]] \
+$=$ [[ 8,04 ]] 
 <br>
 </div> 
 <div class="flex-child">
 <br>
 __$d)\;\;$__ \
-$\;\;\;\; 13 + 5 \cdot 7 + 108 : 4  $ \
-$= 13 +$ [[ 35 ]] $+ 108 : 4  $ \
-$= $ [[ 48 ]] $+ 108 : 4  $ \
-$= $ [[ 48 ]] $+$ [[ 27 ]] \
-$=$ [[ 75 ]] 
+$\;\;\;\; (0,12 \cdot 0,4) : 0,08 + 6,5 : 1,3  $ \
+$= $ [[ 0,48 ]] $ : 0,08 + 6,5 : 1,3  $ \
+$= $ [[  6   ]] $ + 6,5 : 1,3  $ \
+$= $ [[  6   ]] $ +$ [[  5   ]] \
+$=$ [[ 11   ]] 
 <br>
 </div> 
 </section>
