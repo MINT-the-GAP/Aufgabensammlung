@@ -638,6 +638,16 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/04_Binomialverteilung/Aufgabe_0001.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/04_Binomialverteilung/Aufgabe_0002.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/04_Binomialverteilung/Aufgabe_0003.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/04_Binomialverteilung/Aufgabe_0004.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/04_Binomialverteilung/Aufgabe_0005.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/04_Binomialverteilung/Aufgabe_0006.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/04_Binomialverteilung/Aufgabe_0007.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/04_Binomialverteilung/Aufgabe_0008.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/04_Binomialverteilung/Aufgabe_0009.md
+
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/05_Hypergeometrische_Verteilung/Aufgabe_0001.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/05_Hypergeometrische_Verteilung/Aufgabe_0002.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/05_Hypergeometrische_Verteilung/Aufgabe_0003.md
 
   - title:  "Vektoren"
     comment: "Hier sind alle Aufgaben zur Vektorrechnung zu finden."

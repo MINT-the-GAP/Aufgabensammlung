@@ -18,9 +18,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Kontingenztafel, Vierfeldertafel, unbedingte Wahrscheinlichkeit, sehr leicht, sehr niedrig, Angeben
+tags: Hypergeometrische Verteilung, Erwartungswert, sehr leicht, sehr niedrig, Angeben
 
-comment: Fülle die Vierfeldertafel für eine unbedingte Wahrscheinlichkeit aus.
+comment: Wie groß wäre der Erwartungswert für die beschriebene Binomialverteilung?
 
 author: Martin Lommatzsch
 
@@ -29,16 +29,31 @@ author: Martin Lommatzsch
 
 
 
-# unbedingte Vierfeldertafel
+# Erwartungswert von hypergeometrischen Verteilungen
 
-**Fülle** alle Felder der Kontingenztafel (Vierfeldertafel) für eine unbedingte Wahrscheinlichkeit in relativen Zahlen mit Dezimalzahlen **aus**.
+**Gib** den Erwartungswert der hypergeometrischen Verteilung **an**.
 
 <br>
 
+__$a)\;\;$__ Bei einem Kartenspiel werden zu Beginn neun Karten gezogen. Insgesamt gibt es acht besonders wertvolle Karten, während die anderen $24$ Karten weniger spielerischen Wert haben. **Gib** den Erwartungswert bezüglich der spielerisch wertvollen Karten **an**.
 
-<!-- data-type="none" -->
-|           |     $A$    | $\bar{A}$  |            |
-| :-------: | :--------: | :-------:  | :--------: |
-| $B$       | [[ 0,1  ]] | [[ 0,3  ]] | $0,4$      |
-| $\bar{B}$ | [[ 0,15 ]] | [[ 0,45 ]] | [[ 0,6  ]] |
-|           |   $25\%$   | [[ 0,75 ]] |      1     |
+$\mu =$ [[  2,25  ]]
+
+<br>
+
+__$b)\;\;$__ In einer Urne befinden sich $13$ grüne und $12$ blaue Kugeln. **Gib** den Erwartungswert der getroffnenen grünen Kugeln **an**, wenn aus der Urne eine Kugel ohne Zurücklegen elfmal hintereinander gezogen wird.
+
+$\mu =$ [[  5,72  ]]
+
+<br>
+
+__$c)\;\;$__ Bei einem Ratespiel werden per Zufallsgenerator insgesamt sechs Zahlen zwischen $1$ und $50$ ausgespuckt, wobei keine doppelten Zahlen ausgegeben werden können. Ein Spieler kann vier Zahlen vorher einloggen. **Gib** den Erwartungswert für die Treffer **an**.
+
+$\mu =$ [[  0,48  ]]
+
+
+<br>
+<br>
+<br>
+<br>
+<br>

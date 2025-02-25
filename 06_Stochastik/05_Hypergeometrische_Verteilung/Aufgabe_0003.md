@@ -18,9 +18,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Kontingenztafel, Vierfeldertafel, unbedingte Wahrscheinlichkeit, sehr leicht, sehr niedrig, Angeben
+tags: Hypergeometrische Verteilung, Erwartungswert, sehr leicht, sehr niedrig, Angeben
 
-comment: Fülle die Vierfeldertafel für eine unbedingte Wahrscheinlichkeit aus.
+comment: Wie groß wäre der Erwartungswert für die beschriebene Binomialverteilung?
 
 author: Martin Lommatzsch
 
@@ -29,16 +29,31 @@ author: Martin Lommatzsch
 
 
 
-# unbedingte Vierfeldertafel
+# Erwartungswert von hypergeometrischen Verteilungen
 
-**Fülle** alle Felder der Kontingenztafel (Vierfeldertafel) für eine unbedingte Wahrscheinlichkeit in relativen Zahlen mit Dezimalzahlen **aus**.
+**Gib** den Erwartungswert der hypergeometrischen Verteilung **an**.
 
 <br>
 
+__$a)\;\;$__ In einer Urne befinden sich $26$ rote und $14$ schwarze Kugeln. **Gib** den Erwartungswert der getroffnenen schwarzen Kugeln **an**, wenn aus der Urne eine Kugel ohne Zurücklegen $13$-mal hintereinander gezogen wird.
 
-<!-- data-type="none" -->
-|           |     $A$    | $\bar{A}$  |            |
-| :-------: | :--------: | :-------:  | :--------: |
-| $B$       | [[ 0,08 ]] | [[ 0,72 ]] | [[ 0,8  ]] |
-| $\bar{B}$ | [[ 0,02 ]] |   $0,18$   | [[ 0,2  ]] |
-|           |   $10\%$   | [[ 0,9  ]] |      1     |
+$\mu =$ [[  4,55  ]]
+
+<br>
+
+__$b)\;\;$__ Auf fünf Stelle bewerben sich $32$ Personen, wovon $12$ männlich sind. Die Stellen werden per Losverfahren vergeben. **Gib** den Erwartungswert für männliche Personen **an**.
+
+$\mu =$ [[  1,875 ]]
+
+<br>
+
+__$c)\;\;$__ Bei einem Kartenspiel werden zu Beginn sechs Karten gezogen. Insgesamt gibt es vier Joker unter den insgesamt $48$ Karten. **Gib** den Erwartungswert bezüglich der Joker **an**.
+
+$\mu =$ [[  0,5   ]]
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
