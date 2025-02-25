@@ -32,7 +32,7 @@ author: Martin Lommatzsch
 # Fragen zum Baumdiagramm
 
 
-In einem Gefäß befinden sich 6 schwarze und 14 weiße Kugeln für drei Ziehungen mit Zurücklegen.
+In einem Gefäß befinden sich 6 schwarze und 14 weiße Kugeln für drei Ziehungen mit Zurücklegen. **Runde** falls nötig auf drei Nachkommastellen.
 
 
 <br>
@@ -125,7 +125,7 @@ In einem Gefäß befinden sich 6 schwarze und 14 weiße Kugeln für drei Ziehung
 <br>
 <br>
 
- __$b) \;\;$__ **Bestimme**, wie hoch ist die Wahrscheinlichkeit bei der ersten Ziehung eine weiße Kugel zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. Runde falls nötig auf drei Nachkommastellen.
+ __$b) \;\;$__ **Bestimme**, wie hoch die Wahrscheinlichkeit ist bei der ersten Ziehung eine weiße Kugel zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. Runde falls nötig auf drei Nachkommastellen.
 
 <br>
 
@@ -142,7 +142,7 @@ $$
 <br>
 <br>
 
- __$c) \;\;$__ **Bestimme**, wie hoch ist die Wahrscheinlichkeit drei schwarze Kugeln hintereinander zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. 
+ __$c) \;\;$__ **Bestimme**, wie hoch die Wahrscheinlichkeit ist drei schwarze Kugeln hintereinander zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. 
 
 <br>
 
@@ -160,13 +160,13 @@ $$
 <br>
 <br>
 
- __$d) \;\;$__ **Bestimme**, wie viele Pfade existieren für die Möglichkeit genau zwei weiße Kugeln zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. 
+ __$d) \;\;$__ **Bestimme**, wie viele Pfade für die Möglichkeit existieren genau zwei weiße Kugeln zu ziehen. 
 
 <br>
 
-[[  3  ]].
+[[  3  ]] 
 *************
-$WWS$, $WSW$ und $SWW$
+WWS, WSW und SWW
 *************
 
 
@@ -174,14 +174,14 @@ $WWS$, $WSW$ und $SWW$
 <br>
 <br>
 
- __$e) \;\;$__ **Bestimme**, wie viele Pfade existieren für die Möglichkeit mindestens eine schwarze Kugel zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. 
+ __$e) \;\;$__ **Bestimme**, wie viele Pfade für die Möglichkeit existieren mindestens eine schwarze Kugel zu ziehen. 
 
 <br>
 
-[[  7  ]].
+[[  7  ]] 
 *************
 $$
-  $WWS$, $WSW$, $SWW$, $WSS$, $SWS$, $SSW$ und $SSS$
+  WWS, WSW, SWW, WSS, SWS, SSW und SSS
 $$
 *************
 
@@ -190,7 +190,7 @@ $$
 <br>
 <br>
 
- __$f) \;\;$__ **Bestimme**, wie hoch ist die Wahrscheinlichkeit mindestens zwei schwarze Kugeln zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. 
+ __$f) \;\;$__ **Bestimme**, wie hoch die Wahrscheinlichkeit ist mindestens zwei schwarze Kugeln zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. 
 
 
 <br>
@@ -209,7 +209,7 @@ $$
 <br>
 <br>
 
- __$g) \;\;$__ **Bestimme**, wie hoch ist die Wahrscheinlichkeit mehr als eine weiße Kugel zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. 
+ __$g) \;\;$__ **Bestimme**, wie hoch die Wahrscheinlichkeit ist mehr als eine weiße Kugel zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. 
 
 <br>
 
@@ -227,7 +227,7 @@ $$
 <br>
 <br>
 
- __$h) \;\;$__ **Bestimme**, wie hoch ist die Wahrscheinlichkeit weniger als zwei weiße Kugeln zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. 
+ __$h) \;\;$__ **Bestimme**, wie hoch die Wahrscheinlichkeit ist weniger als zwei weiße Kugeln zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. 
 
 <br>
 
@@ -245,7 +245,7 @@ $$
 <br>
 <br>
 
- __$i) \;\;$__ **Bestimme**, wie hoch ist die Wahrscheinlichkeit höchstens zwei schwarze Kugel zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. 
+ __$i) \;\;$__ **Bestimme**, wie hoch die Wahrscheinlichkeit ist höchstens zwei schwarze Kugel zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. 
 
 <br>
 
