@@ -390,6 +390,11 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/11_Logarithmen/Aufgabe_0005.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/11_Logarithmen/Aufgabe_0006.md
       
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0001.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0002.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0003.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0004.md
+
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/Runden/Aufgabe_0001.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/Runden/Aufgabe_0002.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/Runden/Aufgabe_0003.md
@@ -558,6 +563,16 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/Aufgabe_0015.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/Aufgabe_0016.md
 
+
+  - title:  "Trigonometrie"
+    comment: "In dieser Kachel sind alle Aufgaben zur Trigonometrie zu finden."
+    grid: true
+    collection:
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/03_Trigonometrie/Aufgabe_0001.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/03_Trigonometrie/Aufgabe_0002.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/03_Trigonometrie/Aufgabe_0003.md
+
+
   - title:  "Funktionen"
     comment: "In dieser Kachel sind alle Aufgaben zu Funktionen zu finden."
     grid: true
@@ -623,6 +638,10 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/01_Grundlagen/Aufgabe_0006.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/01_Grundlagen/Aufgabe_0007.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/01_Grundlagen/Aufgabe_0008.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/01_Grundlagen/Aufgabe_0009.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/01_Grundlagen/Aufgabe_0010.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/01_Grundlagen/Aufgabe_0011.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/01_Grundlagen/Aufgabe_0012.md
 
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/02_Baumdiagramme/Aufgabe_0001.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/02_Baumdiagramme/Aufgabe_0002.md

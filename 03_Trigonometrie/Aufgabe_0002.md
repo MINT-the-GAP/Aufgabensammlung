@@ -67,25 +67,25 @@ __$a)\;\;$__
 \begin{tikzpicture} [scale=1.66]
 
 \begin{scope}[yshift=0cm] 
-  \draw[very thick] (-2,0) -- (2,0) node[midway, below] {\LARGE $f$};
-  \draw[very thick] (2,0) -- (2,3) node[midway, right] {\LARGE $g$};
-  \draw[very thick] (2,3) -- (-2,0)  node[midway, above] {\LARGE $h$};
+  \draw[very thick] (-2,0) -- (2,0) node[midway, below] {\LARGE $b$};
+  \draw[very thick] (2,0) -- (2,3) node[midway, right] {\LARGE $d$};
+  \draw[very thick] (2,3) -- (-2,0)  node[midway, above] {\LARGE $f$};
 
     \draw[very thick] (1.7,0) arc (180:90:0.3);
     \node at (1.875,0.125) {\Large $\cdot$};
 
     \draw[very thick] (-1.4,0) arc (0:37:0.6);
-    \node at (-1.6,0.115) {\Large $\delta$};
+    \node at (-1.6,0.115) {\Large $\alpha$};
 
     \draw[very thick] (2,2.4) arc (270:270-53:0.6);
-    \node at (1.875,2.66) {\Large $\varphi$};
+    \node at (1.875,2.66) {\Large $\chi$};
 \end{scope} 
 
 \end{tikzpicture}
 ```
 </center>
 
-Gleichung: $\quad$  [[($\sin$)|$\cos$|$\tan$|$\text{cot}$]] $(\delta)= \frac{h}{g}$
+Gleichung: $\quad$  [[$\sin$|($\cos$)|$\tan$|$\text{cot}$]] $(\alpha)= \frac{b}{f}$
 
 <br>
 </div>
@@ -100,25 +100,25 @@ __$b)\;\;$__
 \begin{tikzpicture} [scale=1.66]
 
 \begin{scope}[rotate=124] 
-  \draw[very thick] (-2,0) -- (2,0) node[midway, left] {\LARGE $n$};
-  \draw[very thick] (2,0) -- (2,3) node[midway, below] {\LARGE $z$};
-  \draw[very thick] (2,3) -- (-2,0)  node[midway, above] {\LARGE $r$};
+  \draw[very thick] (-2,0) -- (2,0) node[midway, left] {\LARGE $k$};
+  \draw[very thick] (2,0) -- (2,3) node[midway, below] {\LARGE $s$};
+  \draw[very thick] (2,3) -- (-2,0)  node[midway, above] {\LARGE $c$};
 
     \draw[very thick] (1.7,0) arc (180:90:0.3);
     \node at (1.875,0.125) {\Large $\cdot$};
 
     \draw[very thick] (-1.4,0) arc (0:37:0.6);
-    \node at (-1.6,0.115) {\Large $\gamma$};
+    \node at (-1.6,0.115) {\Large $\psi$};
 
     \draw[very thick] (2,2.4) arc (270:270-53:0.6);
-    \node at (1.875,2.66) {\Large $\theta$};
+    \node at (1.875,2.66) {\Large $\epsilon$};
 \end{scope} 
 
 \end{tikzpicture}
 ```
 </center>
 
-Gleichung: $\quad$ $\cos($ [[$z$|($\gamma$)|$\theta$]] $)= \frac{n}{r}$
+Gleichung: $\quad$ [[ s ]]$^2 = $ [[ c ]]$^2 - k^2$
 
 </div>
 
@@ -143,17 +143,17 @@ __$c)\;\;$__
     \node at (1.875,0.125) {\Large $\cdot$};
 
     \draw[very thick] (-1.4,0) arc (0:37:0.6);
-    \node at (-1.6,0.115) {\Large $\xi$};
+    \node at (-1.6,0.115) {\Large $\rho$};
 
     \draw[very thick] (2,2.4) arc (270:270-53:0.6);
-    \node at (1.875,2.66) {\Large $\omega$};
+    \node at (1.875,2.66) {\Large $\nu$};
 \end{scope} 
 
 \end{tikzpicture}
 ```
 </center>
 
-Gleichung: $\quad$  [[$\sin$|$\cos$|($\tan$)|$\text{cot}$]] $(\xi)= \frac{h}{g}$
+Gleichung: $\quad$  [[$\sin$|$\cos$|($\tan$)|($\text{cot}$)]] $(\rho)= \frac{x}{y}$
 
 <br>
 </div>
@@ -176,17 +176,17 @@ __$d)\;\;$__
     \node at (1.875,0.125) {\Large $\cdot$};
 
     \draw[very thick] (-1.4,0) arc (0:37:0.6);
-    \node at (-1.6,0.115) {\Large $\mu$};
+    \node at (-1.6,0.115) {\Large $\beta$};
 
     \draw[very thick] (2,2.4) arc (270:270-53:0.6);
-    \node at (1.875,2.66) {\Large $\kappa$};
+    \node at (1.875,2.66) {\Large $\zeta$};
 \end{scope} 
 
 \end{tikzpicture}
 ```
 </center>
 
-Gleichung: $\quad$ [[ v ]]$^2 = $ [[ k ]]$^2 + p^2$
+Gleichung: $\quad$   $\sin(\zeta)$= [[$\frac{p}{v}$|$\frac{v}{p}$|$\frac{k}{p}$|$\frac{p}{k}$|($\frac{k}{v}$)|$\frac{v}{k}$]]
 
 </div>
 
