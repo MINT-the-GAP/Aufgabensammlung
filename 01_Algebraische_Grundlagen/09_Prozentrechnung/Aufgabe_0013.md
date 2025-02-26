@@ -38,7 +38,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Prozentrechnung, sehr leicht, sehr niedrig, Angeben
+tags: Prozent, sehr leicht, sehr niedrig, Angeben
 
 comment: Wie viel sind zum Beispiel $25\%$ von 4000€? Bestimme den Prozentwert.
 

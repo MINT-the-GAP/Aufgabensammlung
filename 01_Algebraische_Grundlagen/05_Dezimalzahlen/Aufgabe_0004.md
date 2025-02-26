@@ -38,7 +38,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Bruchrechnung, Dezimalzahlen, Periodizitäten, Zahlenverständnis, leicht, niedrig, Angeben
+tags: Bruchrechnung, Dezimalzahlen, Periodizität, Zahlenverständnis, leicht, niedrig, Angeben
 
 comment: Welche Zahl ist größer? Wähle aus.
 
