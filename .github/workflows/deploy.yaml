@@ -1,0 +1,34 @@
+name: Generate WebSite
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  run_exporter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up dependencies
+        run: npm install -g @liascript/exporter
+
+      - name: Check out current repository
+        uses: actions/checkout@v4
+
+      - name: Generate WebSite
+        run: liaex -i project.yml --format project --output index
+
+      - name: Prepare Deployment Directory
+        run: |
+          mkdir -p gh-pages-deploy
+          mv index.html gh-pages-deploy/
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: gh-pages-deploy
