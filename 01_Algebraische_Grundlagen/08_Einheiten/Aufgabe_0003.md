@@ -77,7 +77,7 @@ __$c)\;\;$__ Ein Zentimeter entsprechen [[  10  ]] Millimeter. \
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ Ein Kilogramm entspricht [[ 1000 ]] Milligramm. \
+__$d)\;\;$__ Ein Kilogramm entspricht [[ 1000000 ]] Milligramm. \
 
 <br>
 </div>
