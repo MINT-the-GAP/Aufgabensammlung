@@ -160,7 +160,7 @@ Kommutativgesetz: $2+4=4+2$ oder allgemein $a+b=b+a$.
 
 \draw[->, black!100,thick] (2,-0.4) to[out=340,in=200] (6,-0.4) ; \node at (4,-1.00) {\large$+4$};
 
-\draw[->, black!100,thick] (4,0.3) to[out=20,in=160] (6,0.3) ; \node at (4,0.50) {\large$+2$};
+\draw[->, black!100,thick] (4,0.3) to[out=20,in=160] (6,0.3) ; \node at (5,0.750) {\large$+2$};
 
 \end{tikzpicture} 
 
@@ -178,7 +178,7 @@ Assoziativgesetz: $1+1+4=1+(1+4)$ oder allgemein $a+b+c=(a+b)+c=a+(b+c)$.
 \begin{tikzpicture}[>=latex, scale=2] 
 
   \node at (-0.75,-1.25) {};
-  \node at (7.5, 0.95) {};
+  \node at (7.5, 1.35) {};
 
     \draw[->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
 
@@ -190,10 +190,10 @@ Assoziativgesetz: $1+1+4=1+(1+4)$ oder allgemein $a+b+c=(a+b)+c=a+(b+c)$.
 \draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
 \draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
 
-\draw[->, black!100,thick] (1,-0.4) to[out=340,in=200] (2,-0.4) ; \node at (0.5,-1.00) {\large$+1$};
+\draw[->, black!100,thick] (1,-0.4) to[out=340,in=200] (2,-0.4) ; \node at (1.5,-1.00) {\large$+1$};
 \draw[->, black!100,thick] (2,-0.4) to[out=340,in=200] (6,-0.4) ; \node at (4,-1.00) {\large$+4$};
 
-\draw[->, black!100,thick] (1,0.3) to[out=20,in=160] (6,0.3) ; \node at (3.5,0.50) {\large$+1+4$};
+\draw[->, black!100,thick] (1,0.3) to[out=20,in=160] (6,0.3) ; \node at (3.5,1.00) {\large$+1+4$};
 
 \end{tikzpicture} 
 
@@ -238,8 +238,9 @@ $$
 <br>
 <br>
 
-Im folgenden Video wird das beschriebene nochmal anhand von Beispielen erklärt: 
-!?[Addition](https://www.youtube.com/watch?v=Tn9xv6jSyyI)
+Im folgenden Video wird das beschriebene nochmal anhand von Beispielen erklärt: \
+
+!?[Addition](https://www.youtube.com/watch?v=Tn9xv6jSyyI) \
 
 <br>
 <br>
