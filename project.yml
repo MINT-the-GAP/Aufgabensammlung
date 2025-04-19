@@ -735,6 +735,16 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Mengen/Aufgabe_0013.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Mengen/Aufgabe_0014.md
 
+  - title:  "Erklärungen"
+    comment: "Hier befinden sich Erklärungen."
+    grid: true
+    collection:
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/01_01_01_Addition.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/01_01_02_Subtraktion.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/01_01_03_Multiplikation.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/01_01_04_Division.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/01_01_05_Runden.md
+
   - title:  "Aufgabensets"
     comment: "In dieser Kachel befinden sich zusammengestellte Aufgaben zum Üben für Abschlussprüfungen."
     grid: true
