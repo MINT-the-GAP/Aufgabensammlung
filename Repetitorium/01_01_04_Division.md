@@ -42,15 +42,15 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Erklärung, Addition
+tags: Erklärung, Division
 
-comment: In diesem Abschnitt wird die Addition ausführlich erklärt.
+comment: In diesem Abschnitt wird die Division ausführlich erklärt.
 
 author: Martin Lommatzsch
 
 -->
 
-# Addition
+# Division
 
     {{|>}} Die **Addition** ist die wichtigste Grundrechenart und lässt **Zahlen** größer als Eins überhaupt erst erfassbar werden. Mit der **Addition** werden **Zahlen** zusammengezählt, was immer durch den **Additionsoperator** $+$ beschrieben wird. Der gesamte **Term** ist die sogenannte **Summe**, während der **Wert der Summe** immer auf der anderen Seite eines Gleichheitszeichen $=$ geschrieben wird. \
 
@@ -95,8 +95,8 @@ $$
 <br>
 <br>
 
-Im folgenden Video wird das beschriebene nochmal anhand von Beispielen erklärt: 
-!?[Addition](https://www.youtube.com/watch?v=Tn9xv6jSyyI)
+Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt: 
+!?[Division](https://www.youtube.com/watch?v=KkDMx59XTAs)
 
 <br>
 <br>

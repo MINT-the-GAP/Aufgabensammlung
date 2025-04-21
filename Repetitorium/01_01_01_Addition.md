@@ -52,9 +52,9 @@ author: Martin Lommatzsch
 
 # Addition
 
-    {{|>}} Die **Addition** ist die wichtigste Grundrechenart und lässt **Zahlen** größer als Eins überhaupt erst erfassbar werden, was am **Zahlenstrahl** schnell erkannt werden kann. \
-    
-    
+    {{|>}} Die **Addition** ist die wichtigste Grundrechenart und lässt **Zahlen** größer als Eins überhaupt erst erfassbar werden, was am **Zahlenstrahl** schnell erkannt werden kann. Direkt hier wird schon deutlich, dass die Null das **neutrale Element** der **Addition** ist, da eine **Addition** von Null den **Wert des Terms** nicht verändert: $1+0=1$. \
+
+
 <center>
 
 ```latex  @tikz
@@ -82,9 +82,10 @@ author: Martin Lommatzsch
 
 ```
 </center>
-    
-    
-    {{|>}} Mit der **Addition** werden **Zahlen** zusammengezählt, was immer durch den **Additionsoperator** $+$ beschrieben wird. Der gesamte **Term** ist die sogenannte **Summe**, während der **Wert der Summe** immer auf der anderen Seite eines Gleichheitszeichen $=$ geschrieben wird. \
+
+
+
+    {{|>}} Mit der **Addition** werden **Zahlen** zusammengezählt, was immer durch den **Additionsoperator** $+$ beschrieben wird. Der gesamte **Term** ist die sogenannte **Summe**, während der **Wert der Summe** immer auf der anderen Seite eines **Gleichheitszeichen** $=$ geschrieben wird. \
 
 
 
@@ -138,7 +139,26 @@ $$
     {{|>}} Bei der **Darstellung** am **Zahlenstrahl** wird deutlich, dass die **Addition** das **Assoziativgesetz** sowie das **Kommutativgesetz** erfüllt. \
 
 
-Kommutativgesetz: $2+4=4+2$ oder allgemein $a+b=b+a$.
+**Kommutativgesetz** für die **Additon**: 
+
+$$
+\begin{equation}
+\begin{split} 
+  a+b=b+a   \\
+ \end{split}
+\end{equation}  
+$$
+
+Folgendes Beispiel des **Kommutativgesetzes** ist am **Zahlenstrahl** dargestellt:
+
+$$
+\begin{equation}
+\begin{split} 
+  2+4=4+2   \\
+ \end{split}
+\end{equation}  
+$$
+
 <center>
 
 ```latex  @tikz
@@ -170,7 +190,25 @@ Kommutativgesetz: $2+4=4+2$ oder allgemein $a+b=b+a$.
 
 
 
-Assoziativgesetz: $1+1+4=1+(1+4)$ oder allgemein $a+b+c=(a+b)+c=a+(b+c)$.
+**Assoziativgesetz** für die **Additon**: 
+
+$$
+\begin{equation}
+\begin{split} 
+  a+b+c=(a+b)+c=a+(b+c)   \\
+ \end{split}
+\end{equation}  
+$$
+
+Folgendes Beispiel des **Assoziativgesetzes** ist am **Zahlenstrahl** dargestellt:
+
+$$
+\begin{equation}
+\begin{split} 
+  1+1+4=1+(1+4)   \\
+ \end{split}
+\end{equation}  
+$$  
 <center>
 
 ```latex  @tikz
@@ -212,22 +250,40 @@ Assoziativgesetz: $1+1+4=1+(1+4)$ oder allgemein $a+b+c=(a+b)+c=a+(b+c)$.
 
 <!-- data-type="none" 
 data-sortable="false" -->
-|   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |    |
-| :---------------: | :----------: | :--------: | :-------: | :-----: | :-----: |
-|         $2$         |       $8$      |      $4$     |    $7$      |    $4$    |    1. Summand    |
-|         $3$         |       $7$      |      $3$     |    $5$      |    $3$    |    2. Summand    |
-|         $5$         | $\textcolor{red}{1}5$ |      $7$     | $\textcolor{red}{1}2$ |    $7$    |    Einzelziffersummen    |
-|         $6$         |       $5$      |      $8$     |    $2$      |    $7$    |    Wert der Summe    |
+|  Tausender   |  Hunderter |  Zehner   |  Einer  |    |
+| :----------: | :--------: | :-------: | :-----: | :-----: |
+|       $1$      |      $3$     |    $4$      |    $7$    |    1. Summand    |
+|       $4$      |      $2$     |    $6$      |    $5$    |    2. Summand    |
+|       $5$      |      $5$     | $\textcolor{red}{1}0$ |    $\textcolor{red}{1}2$    |    Einzelziffersummen    |
+|       $5$      |      $6$     |    $1$      |    $2$    |    Wert der Summe    |
 
     {{|>}} Außerhalb der **Stellenwerttafel** wirkt die Rechnung der schriftlichen **Addition** übersichtlicher: \
+
 
 $$
 \begin{equation}
 \begin{split}
-1337&   \\
+ 1347&   \\
++4265& \\ \hline
++\;\;\;\;\textcolor{red}{1}2& \\ 
++\;\;\textcolor{red}{1}0\;\;& \\ 
++\;\;5\;\;\;\;& \\ 
++5\;\;\;\;\;\;& \\ \hline
+5612& \\
+ \end{split}
+\end{equation}  
+$$
+
+
+    {{|>}} Dies kann noch wie folgt verkürzt geschrieben werden: \
+
+$$
+\begin{equation}
+\begin{split}
+1347&   \\
 +4265& \\ 
-	\textcolor{red}{11}\textcolor{white}{0}&  \\ \hline
-5602& \\
+	\textcolor{red}{11}\textcolor{white}{\;\;}&  \\ \hline
+5612& \\
  \end{split}
 \end{equation}  
 $$
@@ -238,7 +294,7 @@ $$
 <br>
 <br>
 
-Im folgenden Video wird das beschriebene nochmal anhand von Beispielen erklärt: \
+Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt: \
 
 !?[Addition](https://www.youtube.com/watch?v=Tn9xv6jSyyI) \
 
