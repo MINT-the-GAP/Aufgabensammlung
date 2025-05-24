@@ -64,7 +64,7 @@ author: Martin Lommatzsch
 <br>
 __$a)\;\;$__
 
-![Kandiszuckerstückchen](https://mint-the-gap.github.io/Aufgabensammlung/pics/circa11.jpg)
+![Kandiszuckerstückchen](https://mint-the-gap.github.io/Aufgabensammlung/blob/4e9135df5f496516555cdf0bc198d4a6f30a5809/pics/circa11.jpg)
 
 [[ 200  ]] Kandiszuckerstückchen
 @Algebrite.check_margin(180,250)
@@ -72,9 +72,9 @@ __$a)\;\;$__
 </div>
 <div class="flex-child">
 <br>
-__$b)\;\;$__ $
+__$b)\;\;$__ 
 
-![getrocknete Mehlwürmer](https://mint-the-gap.github.io/Aufgabensammlung/pics/circa12.jpg)
+![getrocknete Mehlwürmer](https://mint-the-gap.github.io/Aufgabensammlung/blob/4e9135df5f496516555cdf0bc198d4a6f30a5809/pics/circa12.jpg)
 
 [[ 420  ]] getrocknete Mehlwürmer
 @Algebrite.check_margin(390,470)

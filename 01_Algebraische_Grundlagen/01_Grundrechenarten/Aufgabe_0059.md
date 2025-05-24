@@ -64,7 +64,7 @@ author: Martin Lommatzsch
 <br>
 __$a)\;\;$__
 
-![Holzperlen](https://mint-the-gap.github.io/Aufgabensammlung/pics/circa5.jpg)
+![Holzperlen](https://mint-the-gap.github.io/Aufgabensammlung/blob/4e9135df5f496516555cdf0bc198d4a6f30a5809/pics/circa5.jpg)
 
 [[ 380  ]] Holzperlen
 @Algebrite.check_margin(350,410)
@@ -72,9 +72,9 @@ __$a)\;\;$__
 </div>
 <div class="flex-child">
 <br>
-__$b)\;\;$__ $
+__$b)\;\;$__ 
 
-![Holzperlen](https://mint-the-gap.github.io/Aufgabensammlung/pics/circa6.jpg)
+![Holzperlen](https://mint-the-gap.github.io/Aufgabensammlung/blob/4e9135df5f496516555cdf0bc198d4a6f30a5809/pics/circa6.jpg)
 
 [[ 2000 ]] Reiskörner
 @Algebrite.check_margin(1800,2300)

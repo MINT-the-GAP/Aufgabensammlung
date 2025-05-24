@@ -64,7 +64,7 @@ author: Martin Lommatzsch
 <br>
 __$a)\;\;$__
 
-![Erbsen](https://mint-the-gap.github.io/Aufgabensammlung/pics/circa1.jpg)
+![Erbsen](https://mint-the-gap.github.io/Aufgabensammlung/blob/4e9135df5f496516555cdf0bc198d4a6f30a5809/pics/circa1.jpg)
 
 [[ 1250 ]] Erbsen
 @Algebrite.check_margin(1100,1400)
@@ -72,9 +72,9 @@ __$a)\;\;$__
 </div>
 <div class="flex-child">
 <br>
-__$b)\;\;$__ $
+__$b)\;\;$__ 
 
-![Holzperlen](https://mint-the-gap.github.io/Aufgabensammlung/pics/circa2.jpg)
+![Holzperlen](https://github.com/MINT-the-GAP/Aufgabensammlung/blob/4e9135df5f496516555cdf0bc198d4a6f30a5809/pics/circa2.jpg)
 
 [[ 400  ]] Holzperlen
 @Algebrite.check_margin(350,450)

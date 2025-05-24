@@ -64,7 +64,7 @@ author: Martin Lommatzsch
 <br>
 __$a)\;\;$__
 
-![Kandiszuckerstückchen](https://mint-the-gap.github.io/Aufgabensammlung/pics/circa9.jpg)
+![Kandiszuckerstückchen](https://mint-the-gap.github.io/Aufgabensammlung/blob/4e9135df5f496516555cdf0bc198d4a6f30a5809/pics/circa9.jpg)
 
 [[ 600  ]] Kandiszuckerstückchen
 @Algebrite.check_margin(550,725)
@@ -72,9 +72,9 @@ __$a)\;\;$__
 </div>
 <div class="flex-child">
 <br>
-__$b)\;\;$__ $
+__$b)\;\;$__ 
 
-![Erdnusskernstücke](https://mint-the-gap.github.io/Aufgabensammlung/pics/circa10.jpg)
+![Erdnusskernstücke](https://mint-the-gap.github.io/Aufgabensammlung/blob/4e9135df5f496516555cdf0bc198d4a6f30a5809/pics/circa10.jpg)
 
 [[ 280  ]] Erdnusskernstücke
 @Algebrite.check_margin(250,350)

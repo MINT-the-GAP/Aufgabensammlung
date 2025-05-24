@@ -64,7 +64,7 @@ author: Martin Lommatzsch
 <br>
 __$a)\;\;$__
 
-![Linsen](https://mint-the-gap.github.io/Aufgabensammlung/pics/circa7.jpg)
+![Linsen](https://github.com/MINT-the-GAP/Aufgabensammlung/blob/4e9135df5f496516555cdf0bc198d4a6f30a5809/pics/circa7.jpg)
 
 [[ 1200  ]] Linsen
 @Algebrite.check_margin(1100,1350)
@@ -72,9 +72,9 @@ __$a)\;\;$__
 </div>
 <div class="flex-child">
 <br>
-__$b)\;\;$__ $
+__$b)\;\;$__ 
 
-![Puffgerstenkörner](https://mint-the-gap.github.io/Aufgabensammlung/pics/circa8.jpg)
+![Puffgerstenkörner](https://mint-the-gap.github.io/Aufgabensammlung/blob/4e9135df5f496516555cdf0bc198d4a6f30a5809/pics/circa8.jpg)
 
 [[ 1050  ]] Puffgerstenkörner
 @Algebrite.check_margin(950,1250)
