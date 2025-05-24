@@ -75,7 +75,7 @@ __$a)\;\;$__
 <div class="flex-child">
 
 
-__$b)\;\;$__ 
+__$b)\;\;$__
 
 ![Puffgerstenkörner](../pics/circa8.jpg)
 
@@ -83,7 +83,7 @@ __$b)\;\;$__
 @Algebrite.check_margin(950,1250)
 
 
-</div> 
+</div>
 </section>
 
 

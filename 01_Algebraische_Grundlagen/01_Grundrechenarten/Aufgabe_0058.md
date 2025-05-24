@@ -75,7 +75,7 @@ __$a)\;\;$__
 <div class="flex-child">
 
 
-__$b)\;\;$__ 
+__$b)\;\;$__
 
 ![Holzperlen](../pics/circa4.jpg)
 
@@ -83,7 +83,7 @@ __$b)\;\;$__
 @Algebrite.check_margin(250,310)
 
 
-</div> 
+</div>
 </section>
 
 
