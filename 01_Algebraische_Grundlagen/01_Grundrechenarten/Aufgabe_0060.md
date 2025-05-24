@@ -56,33 +56,34 @@ author: Martin Lommatzsch
 
 # Abschätzen von Mengen aus Bildern
 
-**Gib** den ungefähren Wert der abgebildeten Objekte an **an**.
+**Gib** den ungefähren Wert der abgebildeten Objekte **an**.
 
 <section class="flex-container">
 
 <div class="flex-child">
-<br>
+
+
 __$a)\;\;$__
 
-![Linsen](https://github.com/MINT-the-GAP/Aufgabensammlung/blob/4e9135df5f496516555cdf0bc198d4a6f30a5809/pics/circa7.jpg)
+![Linsen](../pics/circa7.jpg)
 
 [[ 1200  ]] Linsen
 @Algebrite.check_margin(1100,1350)
-<br>
+
+
 </div>
 <div class="flex-child">
-<br>
+
+
 __$b)\;\;$__ 
 
-![Puffgerstenkörner](https://mint-the-gap.github.io/Aufgabensammlung/blob/4e9135df5f496516555cdf0bc198d4a6f30a5809/pics/circa8.jpg)
+![Puffgerstenkörner](../pics/circa8.jpg)
 
 [[ 1050  ]] Puffgerstenkörner
 @Algebrite.check_margin(950,1250)
-<br>
+
+
 </div> 
 </section>
-<br>
-<br>
-<br>
-<br>
+
 

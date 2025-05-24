@@ -56,33 +56,34 @@ author: Martin Lommatzsch
 
 # Abschätzen von Mengen aus Bildern
 
-**Gib** den ungefähren Wert der abgebildeten Objekte an **an**.
+**Gib** den ungefähren Wert der abgebildeten Objekte **an**.
 
 <section class="flex-container">
 
 <div class="flex-child">
-<br>
+
+
 __$a)\;\;$__
 
-![Perlen](https://mint-the-gap.github.io/Aufgabensammlung/blob/4e9135df5f496516555cdf0bc198d4a6f30a5809/pics/circa3.jpg)
+![Perlen](../pics/circa3.jpg)
 
 [[ 900  ]] Perlen
 @Algebrite.check_margin(820,980)
-<br>
+
+
 </div>
 <div class="flex-child">
-<br>
+
+
 __$b)\;\;$__ 
 
-![Holzperlen](https://mint-the-gap.github.io/Aufgabensammlung/blob/4e9135df5f496516555cdf0bc198d4a6f30a5809/pics/circa4.jpg)
+![Holzperlen](../pics/circa4.jpg)
 
 [[ 280  ]] Holzperlen
 @Algebrite.check_margin(250,310)
-<br>
+
+
 </div> 
 </section>
-<br>
-<br>
-<br>
-<br>
+
 

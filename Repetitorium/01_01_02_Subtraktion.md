@@ -209,11 +209,6 @@ $$
 <br>
 <br>
 
-Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt: 
-!?[Subtraktion](https://www.youtube.com/watch?v=a2Nwh8npSUo)
+Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:  \
 
-<br>
-<br>
-<br>
-<br>
-<br>
+!?[Subtraktion](https://www.youtube.com/watch?v=a2Nwh8npSUo)
