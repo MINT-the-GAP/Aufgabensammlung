@@ -49,6 +49,7 @@ comment: Kannst du einschätzen wie viele Objekte auf dem Bild abgebildet sind?
 
 author: Martin Lommatzsch
 
+base:   https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/
 -->
 
 
