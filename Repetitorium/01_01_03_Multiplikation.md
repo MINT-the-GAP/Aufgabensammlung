@@ -217,7 +217,7 @@ $$
 +3463 & \\ 
 +3463 & \\ 
 +3463 & \\ 
-	\textcolor{red}{231}\;\;&  \\ \hline
+	\textcolor{red}{231}\hspace{0.5em}&  \\ \hline
 17315& \\
  \end{split}
 \end{equation}  
@@ -227,9 +227,9 @@ $$
 \begin{equation}
 \begin{split}
 3463 \cdot 5 &   \\ \hline
-+\;\;\;\;\;\;15\textcolor{red}{}& \\ 
-+\;\;\;\;30\textcolor{red}{0}& \\ 
-+\;\;20\textcolor{red}{00}& \\ 
++\hspace{0.5em}\hspace{0.5em}\hspace{0.5em}15\textcolor{red}{}& \\ 
++\hspace{0.5em}\hspace{0.5em}30\textcolor{red}{0}& \\ 
++\hspace{0.5em}20\textcolor{red}{00}& \\ 
 +15\textcolor{red}{000}& \\   \hline
 17315& \\
  \end{split}

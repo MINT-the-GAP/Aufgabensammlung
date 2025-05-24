@@ -52,46 +52,64 @@ author: Martin Lommatzsch
 
 # Division
 
-    {{|>}} Die **Addition** ist die wichtigste Grundrechenart und lässt **Zahlen** größer als Eins überhaupt erst erfassbar werden. Mit der **Addition** werden **Zahlen** zusammengezählt, was immer durch den **Additionsoperator** $+$ beschrieben wird. Der gesamte **Term** ist die sogenannte **Summe**, während der **Wert der Summe** immer auf der anderen Seite eines Gleichheitszeichen $=$ geschrieben wird. \
-
+    {{|>}} Die **Division** stellt die umkehrende Frage der **Multiplikation**: "Wie oft passt die Zahl in die andere Zahl?". Bei der **Division** wird der **Dividend** durch den **Divisor** **dividiert**, was immer durch den **Divisionsoperator** $:$ beschrieben wird. Der gesamte **Term** ist der sogenannte **Quotient**, während der **Wert des Quotienten** auf der anderen Seite des **Gleichheitszeichen** $=$ geschrieben wird. \
 
 
 $$
 \begin{equation}
 \begin{split}
-\underbrace{\text{Summand} + \text{Summand}}_{\text{Summe}}  & = \text{Wert der Summe} \\ 
+\underbrace{\text{Dividend} : \text{Divisor}}_{\text{Quotient}}  & = \text{Wert des Quotienten} \\ 
  \end{split}
 \end{equation}  
 $$
+
+    Da es sich um die Umkehrung der **Multiplikation** handelt, sollten auch wiederum alle Zahlen von $0$ bis $81$ beherrscht werden. Diese Umkehrung wird besonders deutlich, wenn die **Multiplikation** wie in dem folgenden Beispiel verwendet wird.
+
+
+
+
+
 
 Als Beispiel mit **Zahlen**:
 
 $$
-\begin{equation}
-\begin{split} 
-  2+4 &= 6   \\
- \end{split}
-\end{equation}  
-$$
 
-
-    {{|>}} Im Beispiel aus Gleichung ist zu sehen, dass die Zwei mit der Vier zusammengezählt wurde, wie es der **Additionsoperator** $+$ (gesprochen "plus") gefordert hat. Für größere **Zahlen** lohnt sich eine Schreibweise, die die **Zahlen**, die **addiert** werden sollen, entsprechtend ihrer Position in der Stellenwerttafel untereinander schreibt. Dabei wird der **Wert des Terms** unter einem Strich ausgerechnet.\
-
-
-$$
-\begin{equation}
+\begin{equation*}
 \begin{split}
-1337&   \\
-+4265& \\ 
-	\textcolor{red}{11}\textcolor{white}{0}&  \\ \hline
-5602& \\
+8123 \cdot 3 &   \\ \hline
++\hspace{0.5em}\hspace{0.5em}\hspace{0.5em}\hspace{0.5em}\textcolor{red}{9}& \\ 
++\hspace{0.5em}\hspace{0.5em}\hspace{0.5em}\textcolor{orange}{6}0& \\ 
++\hspace{0.5em}\hspace{0.5em}\textcolor{green}{3}00& \\ 
++\textcolor{blue}{24}000& \\   \hline
+24369& \\
  \end{split}
-\end{equation}  
+\end{equation*}  
+
+\hspace{5em}
+
+\begin{equation*}
+\begin{split} 
+  24369:3 &= 8123   \\
+  \underline{-\textcolor{blue}{24}} \hspace{0.5em}\hspace{0.5em}\hspace{0.5em}\hspace{0.85em}\hspace{0.5em} &   \\
+  03 \hspace{0.5em}\hspace{0.5em}\hspace{0.85em}\hspace{0.5em} &   \\
+  \underline{-\hspace{0.5em}\textcolor{green}{3}} \hspace{0.5em}\hspace{0.5em}\hspace{0.85em}\hspace{0.5em} &   \\
+  06 \hspace{0.5em}\hspace{0.85em}\hspace{0.5em} &   \\
+  \underline{-\hspace{0.5em}\textcolor{orange}{6}} \hspace{0.5em}\hspace{0.85em}\hspace{0.5em} &   \\
+  09 \hspace{0.85em}\hspace{0.5em} &   \\
+  \underline{-\hspace{0.5em}\textcolor{red}{9}} \hspace{0.85em}\hspace{0.5em} &   \\
+  0 \hspace{0.85em}\hspace{0.5em} &   \\
+ \end{split}
+\end{equation*}  
 $$
 
 
-     {{|>}} Bei dieser Art der Schreibweise, werden die **Zahlen**, die entsprechend ihrer Position in der **Stellenwerttafel** untereinander stehen, einzeln **addiert**. Dabei wird immer bei der **Ziffern** der kleinsten Position in der **Stellenwerttafel** begonnen. Dies ist sind stets die **Ziffern**, die am weitesten rechts bei den **Zahlen** stehen. Wenn die **addierte** Zahl höher ist als Neun, dann wird die Eins der Zehn zur nächsten Zahlenspalte hinzugezählt. Diese Eins wird auch oft Merkeins genannt und ist in der Beispielrechnung rot eingefärbt. Der Vorteil dieser Schreibweise ist es, dass niemals höhere **Zahlen** als $9$ und $9$ **addiert** werden können. Folglich benötigt der Schüler nur ein sehr gutes Zahlenverständnis von der Zahl $0$ bis $18$ um jegliche Additionsaufgabe zu lösen. Falls mehr als zwei **Summanden** (im Beispiel sind $1337$ und $4265$ die **Summanden**) vorkommen ist es immer erlaubt in einer Nebenrechnung zunächst nur zwei **Summanden** zu **addieren** um dann anschließend die **Summe** der ersten beiden **Summanden** mit der nächsten **Summanden** zu verrechnen. \
+    {{|>}} Bei der schriftlichen **Division** wird zunächst gefragt "Wie oft passt der **Divisor** ($3$) in die erste Ziffer des **Dividenden** ($2$)?" Die Antwort wäre "`Null mal"' und somit ist die Null die erste **Ziffer** des **Wert** des **Terms**, dem sogenannten **Quotienten**. Anschließend wir die gefundene **Ziffer** des **Quotienten** mit dem **Divisor** **multipliziert** und dieser **Wert** dieser Rechnung von der ersten **Ziffer** **subtrahiert**. Dann wird die nächste **Ziffer** zur Betrachtung mit nach unten gezogen (im Beispiel die Zahl $4$) und nun die sich danach immer wiederholende Frage "Wie oft passt der **Divisor** in diese Zahl?" gestellt. Die Antwort wird beim **Wert** des **Terms** notiert (im Beispiel $8$) und diese **Ziffer** des **Quotienten** dann wieder **multipliziert** mit dem **Divisor** von der besagten **Zahl** **subtrahiert** und anschließend die nächste **Ziffer** des **Dividenden** zur Betrachtung nach unten gezogen. Dieses Prozedur wiederholt sich solange bis alle **Zahlen** betrachtet wurden. \
 
+
+
+    {{|>}} Bei höheren **Zahlen** im **Divisor** lohnt es sich diesen in zwei **Zahlen** zu zerlegen. So kann zum Beispiel der **Divisor** $72$ in zwei **Divisoren** $8$ und $9$ zerlegt werden. Dann muss zu erst durch eine **Zahl** **dividiert** werden und anschließend der **Quotient** aus der ersten **Division** durch die zweite **Zahl** **dividiert** werden. Da die **Division** mit am zeitaufwendigsten ist, wird später die **Bruchrechnung** eingeführt, welche eine **Division** bis zum **Wert** des **Terms** hin herauszögern kann.
+
+ 
 <br>
 <br>
 

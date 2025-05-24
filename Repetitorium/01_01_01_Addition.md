@@ -265,10 +265,10 @@ $$
 \begin{split}
  1347&   \\
 +4265& \\ \hline
-+\;\;\;\;\textcolor{red}{1}2& \\ 
-+\;\;\textcolor{red}{1}0\;\;& \\ 
-+\;\;5\;\;\;\;& \\ 
-+5\;\;\;\;\;\;& \\ \hline
++\hspace{0.5em}\hspace{0.5em}\textcolor{red}{1}2& \\ 
++\hspace{0.5em}\textcolor{red}{1}0\hspace{0.5em}& \\ 
++\hspace{0.5em}5\hspace{0.5em}\hspace{0.5em}& \\ 
++5\hspace{0.5em}\hspace{0.5em}\hspace{0.5em}& \\ \hline
 5612& \\
  \end{split}
 \end{equation}  
@@ -282,7 +282,7 @@ $$
 \begin{split}
 1347&   \\
 +4265& \\ 
-	\textcolor{red}{11}\textcolor{white}{\;\;}&  \\ \hline
+	\textcolor{red}{11}\hspace{0.5em}\hspace{0.5em}&  \\ \hline
 5612& \\
  \end{split}
 \end{equation}  

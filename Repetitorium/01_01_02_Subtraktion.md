@@ -52,8 +52,7 @@ author: Martin Lommatzsch
 
 # Subtraktion
 
-    {{|>}} Die **Subtraktion** ist die Umkehroperation der **Addition** und wird durch den **Subtraktionsoperator** $-$ (gesprochen "minus") beschrieben. Auch bei der **Subtraktion** ist somit die Null das **neutrale Element** der **Subktration**, da eine **Subktraktion** mit Null den **Wert des Terms** nicht verändert: $1-0=1$. Auf dem Zahlenstrahl wird somit die Richtung der Schritte der Addition von links nach rechts umgekehrt: \
-
+    {{|>}} Die **Subtraktion**<!-- title="Test" --> ist die Umkehroperation der **Addition** und wird durch den **Subtraktionsoperator** $-$ (gesprochen "minus") beschrieben. Auch bei der **Subtraktion** ist somit die Null das **neutrale Element** der **Subktration**, da eine **Subktraktion** mit Null den **Wert des Terms** nicht verändert: $1-0=1$. Auf dem Zahlenstrahl wird somit die Richtung der Schritte der Addition von links nach rechts umgekehrt: \
 
 
 <center>
@@ -123,9 +122,9 @@ $$
 
     \draw[->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
 
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\Large$0$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\LARGE$1$};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\Huge$2$};
 \draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
 \draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
 \draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
@@ -161,7 +160,7 @@ $$
 \begin{split}
  6337&   \\
 -4265& \\ 
-	\textcolor{red}{1}\;\;\;\;&  \\ \hline
+	\textcolor{red}{1}\hspace{0.5em}\hspace{0.5em}&  \\ \hline
 2072& \\
  \end{split}
 \end{equation}  

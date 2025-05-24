@@ -1,6 +1,128 @@
 <!--
+version:  0.0.1
+language: de
+narrator: Deutsch Female
+
+@style
+main > *:not(:last-child) {
+  margin-bottom: 3rem;
+}
+
+input {
+    text-align: center;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.flex-child {
+    flex: 1;
+    min-width: 350px;
+    margin-right: 20px;
+}
+
+@media (max-width: 400px) {
+    .flex-child {
+        flex: 100%;
+        margin-right: 0;
+    }
+}
+@end
+
+formula: \carry   \textcolor{red}{\scriptsize #1}
+formula: \digit   \rlap{\carry{#1}}\phantom{#2}#2
+formula: \permil  \text{‰}
+
+import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
+
+script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
+
+
+import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
+
+
+tags: Erklärung, Addition
+
+comment: In diesem Abschnitt wird die Addition ausführlich erklärt.
+
+author: Martin Lommatzsch
+
+
+
 import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main/README.md
 -->
+
+
+
+
+# Algebrite
+
+
+6 + 6
+
+[[12]]
+@Algebrite.check(12)
+
+---
+
+try different expressions of `x ^ 2 - 1`
+
+[[x ^ 2 - 1]]
+@Algebrite.check(x^2-1)
+
+---
+
+x=[[ 1/3 ]]m
+@Algebrite.check2(1/3,0.001)
+
+---
+
+[[ 5,5 ]] m
+@Algebrite.check_margin(5.1,6.1)
+
+
+
+# Lösungen
+ 
+You have only two trials, without a solution button ;-)
+
+<!--
+  data-max-trials="2"
+  data-solution-button="off"
+  data-randomize
+-->
+[( )] Wrong
+[(X)] Right
+
+
+<!--
+  data-max-trials="4"
+  data-solution-button="2"
+  data-randomize
+-->
+[( )] Wrong
+[(X)] Right
+
+# circuitikz
+ 
+
+
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture} [scale=2, >=latex]
+
+    \draw[thick] (0,0) to [R] (2,0) ; 
+
+\end{tikzpicture}
+
+```
+</center>
 
 # Math
 
