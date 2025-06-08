@@ -21,6 +21,9 @@ jobs:
       - name: Generate WebSite
         run: liaex -i project.yml --format project --output index
 
+      - name: Patch index
+        run: node patch.js
+
       - name: Prepare Deployment Directory
         run: |
           mkdir -p gh-pages-deploy
