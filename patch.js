@@ -1,8 +1,13 @@
 const fs = require('fs')
 const path = require('path')
 
-// Patch-Funktion aus vorheriger Antwort (angepasst für Node.js)
+// Patch-Funktion für index.html
 function patchIndexHtml(html) {
+  html = html.replace(
+    '<option value="" selected>All categories</option>',
+    `<option value="" selected>Alle Kategorien</option>`
+  )
+
   // 1. Entferne Schwierigkeitsgrade aus dem ursprünglichen Dropdown
   const difficultyOptions = [
     'sehr leicht',
@@ -39,104 +44,105 @@ function patchIndexHtml(html) {
   <option value="sehr schwer">sehr schwer</option>
 </select>
 `
-
   html = html.replace(
     /(<select[^>]*id="categorySelect"[^>]*>[\s\S]*?<\/select>)/,
     `$1${difficultyDropdown}`
   )
 
-  // 3. Füge die Filterlogik für das neue Dropdown hinzu (analog zu addCategoryChip)
-  // Füge die Funktion addDifficultyChip ein, falls sie noch nicht existiert
-  if (!/function\s+addDifficultyChip\s*\(/.test(html)) {
-    html = html.replace(
-      /(<\/body>)/i,
-      `<script>
-function addDifficultyChip(value) {
-  // Entferne alle bestehenden Difficulty-Chips
-  const chipsContainer = document.getElementById('chipsContainer');
-  const existing = chipsContainer.querySelectorAll('.difficulty-chip');
-  existing.forEach(e => e.remove());
+  // 3. Ersetze das bisherige Script durch das gewünschte Script
+  html = html.replace(
+    /<script>[\s\S]*?<\/script>/i,
+    `<script>
+      // Globale Variable zum Speichern der ausgewählten Kategorien
+      window.selectedCategories = []
+      window.selectedDifficulty = ''
 
-  if (!value) {
-    filterCards();
-    return;
-  }
+      // Fügt einen Chip hinzu, wenn eine Kategorie gewählt wurde
+      function addCategoryChip(category) {
+        if (!category) return // falls "All categories" gewählt wurde, nichts tun
+        if (window.selectedCategories.indexOf(category) === -1) {
+          window.selectedCategories.push(category)
+          // Option im Select-Menü deaktivieren
+          document.querySelector(
+            '#categorySelect option[value="' + category + '"]'
+          ).disabled = true
+          updateChipsDisplay()
+          filterCards()
+        }
+        // Setze das Select-Element zurück
+        document.getElementById('categorySelect').value = ''
+      }
 
-  // Erstelle Chip
-  const chip = document.createElement('span');
-  chip.className = 'badge rounded-pill bg-primary text-light me-2 difficulty-chip';
-  chip.textContent = value;
-  chip.style.cursor = 'pointer';
-  chip.onclick = function() {
-    chip.remove();
-    document.getElementById('difficultySelect').value = '';
-    filterCards();
-  };
-  chipsContainer.appendChild(chip);
+      function addDifficultyChip(category) {
+        window.selectedDifficulty = category
+        filterCards()
+      }
 
-  filterCards();
-}
+      // Entfernt einen Chip
+      function removeCategoryChip(category) {
+        const index = window.selectedCategories.indexOf(category)
+        if (index > -1) {
+          window.selectedCategories.splice(index, 1)
+          // Option im Select-Menü wieder aktivieren
+          document.querySelector(
+            '#categorySelect option[value="' + category + '"]'
+          ).disabled = false
+          updateChipsDisplay()
+          filterCards()
+        }
+      }
 
-// Patchierte Filterfunktion: filtert nach Kategorie und Schwierigkeitsgrad
-function filterCards() {
-  const category = document.getElementById('categorySelect')?.value;
-  const difficulty = document.getElementById('difficultySelect')?.value;
-  const cards = document.querySelectorAll('.col-sm-6.col-md-4.col-lg-3.mb-3, h6.card-title');
+      // Aktualisiert die Anzeige der Chips
+      function updateChipsDisplay() {
+        const chipsContainer = document.getElementById('chipsContainer')
+        chipsContainer.innerHTML = ''
+        window.selectedCategories.forEach(function (cat) {
+          const chip = document.createElement('span')
+          chip.className = 'badge rounded-pill bg-primary me-2'
+          chip.style.cursor = 'pointer'
+          chip.style.fontSize = '1rem'
+          chip.textContent = cat + ' ×'
+          chip.onclick = function () {
+            removeCategoryChip(cat)
+          }
+          chipsContainer.appendChild(chip)
+        })
+      }
 
-  cards.forEach(card => {
-    let show = true;
-    if (category) {
-      show = Array.from(card.querySelectorAll?.('.badge') ?? []).some(b =>
-        b.textContent.trim().toLowerCase() === category.toLowerCase()
-      );
-    }
-    if (show && difficulty) {
-      show = Array.from(card.querySelectorAll?.('.badge') ?? []).some(b =>
-        b.textContent.trim().toLowerCase() === difficulty.toLowerCase()
-      );
-    }
-    card.style.display = show ? '' : 'none';
-  });
-}
-
-// Patchiere addCategoryChip, damit sie auch filterCards aufruft
-if (typeof addCategoryChip === 'function') {
-  const orig = addCategoryChip;
-  window.addCategoryChip = function(value) {
-    orig(value);
-    filterCards();
-  };
-} else {
-  function addCategoryChip(value) {
-    // Entferne alle bestehenden Category-Chips
-    const chipsContainer = document.getElementById('chipsContainer');
-    const existing = chipsContainer.querySelectorAll('.category-chip');
-    existing.forEach(e => e.remove());
-
-    if (!value) {
-      filterCards();
-      return;
-    }
-
-    // Erstelle Chip
-    const chip = document.createElement('span');
-    chip.className = 'badge rounded-pill bg-success text-light me-2 category-chip';
-    chip.textContent = value;
-    chip.style.cursor = 'pointer';
-    chip.onclick = function() {
-      chip.remove();
-      document.getElementById('categorySelect').value = '';
-      filterCards();
-    };
-    chipsContainer.appendChild(chip);
-
-    filterCards();
-  }
-}
-</script>
-$1`
-    )
-  }
+      function filterCards() {
+        const cards = document.querySelectorAll('div[data-category]')
+        cards.forEach(function (card) {
+          // Falls keine Filterkategorien ausgewählt wurden, zeige alle Karten
+          if (
+            window.selectedCategories.length === 0 &&
+            window.selectedDifficulty === ''
+          ) {
+            card.parentNode.style.display = 'block'
+            return
+          }
+          // Zerlege die im data-Attribut hinterlegten Kategorien
+          const cardCategories = card.dataset.category.split('|')
+          // Prüfe, ob alle ausgewählten Kategorien in der Karte vorhanden sind
+          let show = window.selectedCategories.every(function (cat) {
+            return cardCategories.indexOf(cat) !== -1
+          })
+          if (show) {
+            if (
+              window.selectedDifficulty === '' ||
+              cardCategories.indexOf(window.selectedDifficulty) !== -1
+            ) {
+              // Wenn eine Schwierigkeit ausgewählt ist, prüfe auch diese
+              card.parentNode.style.display = 'block'
+            } else {
+              card.parentNode.style.display = 'none'
+            }
+          } else {
+            card.parentNode.style.display = 'none'
+          }
+        })
+      }
+    </script>`
+  )
 
   return html
 }
