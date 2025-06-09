@@ -28,6 +28,7 @@ jobs:
         run: |
           mkdir -p gh-pages-deploy
           mv index.html gh-pages-deploy/
+          cp -r pics/grad gh-pages-deploy/pic
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

@@ -15,6 +15,11 @@ function patchIndexHtml(html) {
     'mittel',
     'schwer',
     'sehr schwer',
+    'sehr hoch',
+    'hoch',
+    'normal',
+    'niedrig',
+    'sehr niedrig',
   ]
   html = html.replace(
     /(<select[^>]*id="categorySelect"[^>]*>)([\s\S]*?)(<\/select>)/,
@@ -49,6 +54,22 @@ function patchIndexHtml(html) {
     `$1${difficultyDropdown}`
   )
 
+  // 2. Füge ein neues Dropdown für Vernetzungsgrade nach dem Kategorie-Dropdown ein
+  const networkingDropdown = `
+   <select id="networkingSelect" class="form-select mt-2" aria-label="Vernetzungsgrad wählen" onchange="addNetworkingChip(this.value)">
+     <option value="" selected>Alle Vernetzungsgrade</option>
+     <option value="sehr niedrig">sehr niedrig</option>
+     <option value="niedrig">niedrig</option>
+     <option value="normal">normal</option>
+     <option value="hoch">hoch</option>
+     <option value="sehr hoch">sehr hoch</option>
+   </select>
+   `
+  html = html.replace(
+    /(<select[^>]*id="categorySelect"[^>]*>[\s\S]*?<\/select>)/,
+    `$1${networkingDropdown}`
+  )
+
   // 3. Ersetze das bisherige Script durch das gewünschte Script
   html = html.replace(
     /<script>[\s\S]*?<\/script>/i,
@@ -56,6 +77,7 @@ function patchIndexHtml(html) {
       // Globale Variable zum Speichern der ausgewählten Kategorien
       window.selectedCategories = []
       window.selectedDifficulty = ''
+      window.selectedNetworking = ''
 
       // Fügt einen Chip hinzu, wenn eine Kategorie gewählt wurde
       function addCategoryChip(category) {
@@ -75,6 +97,11 @@ function patchIndexHtml(html) {
 
       function addDifficultyChip(category) {
         window.selectedDifficulty = category
+        filterCards()
+      }
+
+      function addNetworkingChip(category) {
+        window.selectedNetworking = category
         filterCards()
       }
 
@@ -115,7 +142,8 @@ function patchIndexHtml(html) {
           // Falls keine Filterkategorien ausgewählt wurden, zeige alle Karten
           if (
             window.selectedCategories.length === 0 &&
-            window.selectedDifficulty === ''
+            window.selectedDifficulty === '' &&
+            window.selectedNetworking === ''
           ) {
             card.parentNode.style.display = 'block'
             return
@@ -128,8 +156,10 @@ function patchIndexHtml(html) {
           })
           if (show) {
             if (
-              window.selectedDifficulty === '' ||
-              cardCategories.indexOf(window.selectedDifficulty) !== -1
+              (window.selectedDifficulty === '' ||
+              cardCategories.indexOf(window.selectedDifficulty) !== -1) &&
+              (window.selectedNetworking === '' ||
+              cardCategories.indexOf(window.selectedNetworking) !== -1)
             ) {
               // Wenn eine Schwierigkeit ausgewählt ist, prüfe auch diese
               card.parentNode.style.display = 'block'
@@ -193,12 +223,43 @@ function patchIndexHtml(html) {
     }
   )
 
+  // 5. Füge Vernetzungsgrad-Bild vor den Kartentitel ein (robust für beliebige Attribute)
+  html = html.replace(
+    /(<div[^>]*data-category="([^"]+)"[^>]*>[\s\S]*?<h6 class="card-title">)([\s\S]*?)(<\/h6>)/g,
+    (match, before, dataCategory, title, h6End) => {
+      const networkingOrder = [
+        ['sehr niedrig', 1],
+        ['niedrig', 2],
+        ['normal', 3],
+        ['hoch', 4],
+        ['sehr hoch', 5],
+      ]
+      let found = null
+      for (const [grad, num] of networkingOrder) {
+        if (dataCategory.split('|').map(s => s.trim()).includes(grad)) {
+          found = num
+          break
+        }
+      }
+      if (found) {
+        return `${before}<img src="pic/${found}.png" style="height: 20px; margin-right: 4px;"> ${title}${h6End}`
+      } else {
+        return match
+      }
+    }
+  )
+
   for (const diff of [
     'sehr leicht',
     'sehr schwer',
     'mittel',
     'leicht',
     'schwer',
+    'sehr hoch',
+    'hoch',
+    'normal',
+    'sehr niedrig',
+    'niedrig',
   ]) {
     // 5. Entferne die Schwierigkeitsgrade aus den Karten
     html = html.replace(
