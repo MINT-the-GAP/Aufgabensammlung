@@ -144,6 +144,72 @@ function patchIndexHtml(html) {
     </script>`
   )
 
+  // 4. Füge Sterne zu jeder Karte anhand des Schwierigkeitsgrads hinzu (jetzt im .card-body)
+  html = html.replace(
+    /(<div class="card-body" style="transform[^>]*>)([\s\S]*?)(<p>([\s\S]*?)(sehr leicht|leicht|mittel|schwer|sehr schwer)([\s\S]*?)<\/p>)/g,
+    (
+      match,
+      cardBodyStart,
+      cardBodyContent,
+      pBlock,
+      beforeDiff,
+      diffText,
+      afterDiff
+    ) => {
+      // Schwierigkeitsgrad bestimmen
+      const difficultyOrder = [
+        ['sehr schwer', 5],
+        ['sehr leicht', 1],
+        ['leicht', 2],
+        ['mittel', 3],
+        ['schwer', 4],
+      ]
+      let found = ['sehr leicht', -1] // Standardwert, falls kein Schwierigkeitsgrad gefunden wird
+      for (const diff of difficultyOrder) {
+        if (pBlock.includes(diff[0])) {
+          found = diff
+          break
+        }
+      }
+
+      if (found[1] === -1) {
+        // Wenn kein Schwierigkeitsgrad gefunden wurde, gib den Inhalt unverändert zurück
+        return match
+      }
+
+      const starsCount = found[1]
+
+      // Sterne-HTML generieren (angepasster Stil)
+      const star = '<span style="color:gold;font-size:1.2em;">★</span>'
+      const starGray = '<span style="color:#ccc;font-size:1.2em;">★</span>'
+      const starsHtml =
+        '<div style="position:absolute;top:8px;right:16px;margin-bottom:57px;">' +
+        star.repeat(starsCount) +
+        starGray.repeat(5 - starsCount) +
+        '</div><br>'
+
+      // Sterne als erstes Element im card-body einfügen
+      return cardBodyStart + starsHtml + cardBodyContent + pBlock
+    }
+  )
+
+  for (const diff of [
+    'sehr leicht',
+    'sehr schwer',
+    'mittel',
+    'leicht',
+    'schwer',
+  ]) {
+    // 5. Entferne die Schwierigkeitsgrade aus den Karten
+    html = html.replace(
+      new RegExp(
+        `<span style="display: inline; white-space: break-spaces;" class="badge rounded-pill bg-light text-dark">${diff}</span>`,
+        'g'
+      ),
+      ''
+    )
+  }
+
   return html
 }
 
