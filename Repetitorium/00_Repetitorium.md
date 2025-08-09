@@ -10,7 +10,7 @@ email:    info@bildung-bedeutet-freiheit.de
 
 tags: Repetitorium
 
-comment: Hier entsteht ein mathematisches Repetitorium in LiaScript. 
+comment: Hier entsteht ein mathematisches Repetitorium in LiaScript. https://mint-the-gap.github.io/Aufgabensammlung/
 
 author: Martin Lommatzsch
  
@@ -113,7 +113,7 @@ Ohne das Verständnis dieser Themenbereiche lassen sich weiterführende Themen n
 
 ## Mengen
 
-Mengen ergänze ich erst später
+Mengen ergänze ich erst später, mal sehen wie das wird
 
 
 
