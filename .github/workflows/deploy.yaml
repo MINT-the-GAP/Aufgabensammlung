@@ -21,10 +21,14 @@ jobs:
       - name: Generate WebSite
         run: liaex -i project.yml --format project --output index
 
+      - name: Patch index
+        run: node patch.js
+
       - name: Prepare Deployment Directory
         run: |
           mkdir -p gh-pages-deploy
           mv index.html gh-pages-deploy/
+          cp -r pics/grad gh-pages-deploy/pic
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
