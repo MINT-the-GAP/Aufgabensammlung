@@ -59,6 +59,15 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
 
 
+# Vernetzte Lücken
+
+Entweder [[  positiv  ]] oder [[  negativ  ]] oder [[  magnetisch  ]]?
+<script>
+@input.map(s => s.toLowerCase()).sort().join() === "magnetisch,negativ,positiv"
+</script>
+
+
+
 # Algebrite
 
 
