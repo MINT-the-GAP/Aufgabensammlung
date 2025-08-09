@@ -70,7 +70,7 @@ Auf Hunderter: $54164 \approx$ [[54200]]
 
 __$b)\;\;$__
 
-Auf Hunderter: $54164 \approx$ [[54200]]
+Auf Hunderttausender: $54164 \approx$ [[100000]]
 
 </div>
 
