@@ -1,10 +1,6 @@
 <!--
 
 
-1060 gehts weiter!
-
-
-
 version:  0.0.1
 language: de
 narrator: Deutsch Female
