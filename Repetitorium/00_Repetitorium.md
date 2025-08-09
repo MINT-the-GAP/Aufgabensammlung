@@ -1,6 +1,5 @@
 <!--
 
-
 version:  0.0.1
 language: de
 narrator: Deutsch Female
@@ -8,7 +7,7 @@ narrator: Deutsch Female
 
 logo:     logo.jpg
 email:    info@bildung-bedeutet-freiheit.de
-date:     09.08.2025
+date:     09/08/2025
 
 tags: Repetitorium
 
