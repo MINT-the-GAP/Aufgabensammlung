@@ -15,8 +15,7 @@ tags: Repetitorium
 comment: Hier entsteht ein mathematisches Repetitorium in LiaScript.
 
 author: Martin Lommatzsch
-
-repository: https://mint-the-gap.github.io/Aufgabensammlung/
+ 
 
 
 @style
