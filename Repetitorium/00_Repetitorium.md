@@ -5,13 +5,12 @@ language: de
 narrator: Deutsch Female
 
 
-logo:     logo.jpg
+logo:     logo.png
 email:    info@bildung-bedeutet-freiheit.de
-date:     09/08/2025
 
 tags: Repetitorium
 
-comment: Hier entsteht ein mathematisches Repetitorium in LiaScript.
+comment: Hier entsteht ein mathematisches Repetitorium in LiaScript. 
 
 author: Martin Lommatzsch
  
