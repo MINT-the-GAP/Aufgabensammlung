@@ -1,7 +1,27 @@
 <!--
+
+
+1060 gehts weiter!
+
+
+
 version:  0.0.1
 language: de
 narrator: Deutsch Female
+
+
+logo:     logo.jpg
+email:    info@bildung-bedeutet-freiheit.de
+date:     09.08.2025
+
+tags: Repetitorium
+
+comment: Hier entsteht ein mathematisches Repetitorium in LiaScript.
+
+author: Martin Lommatzsch
+
+repository: https://mint-the-gap.github.io/Aufgabensammlung/
+
 
 @style
 main > *:not(:last-child) {
@@ -41,17 +61,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
-
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
-
-
-tags: Repetitorium
-
-comment: Hier entsteht ein mathematisches Repetitorium in LiaScript.
-
-author: Martin Lommatzsch
-
-
 
 import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main/README.md
 -->
