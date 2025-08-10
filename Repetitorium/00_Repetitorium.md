@@ -5,7 +5,7 @@ language: de
 narrator: Deutsch Female
 
 
-logo:     logo.png
+logo:     https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/logo.png
 email:    info@bildung-bedeutet-freiheit.de
 
 tags: Repetitorium
@@ -311,7 +311,9 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 ##### Übungsaufgaben - Runden
 
-__Aufgabe 1:__ **Gib** den auf Zehner gerundeten Wert **an**.
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" height="30">  __Aufgabe 1:__ **Gib** den auf Zehner gerundeten Wert **an**.
 
 
 <section class="flex-container">
