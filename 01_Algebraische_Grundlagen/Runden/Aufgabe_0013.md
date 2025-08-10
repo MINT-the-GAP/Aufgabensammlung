@@ -49,7 +49,7 @@ author: Martin Lommatzsch
 
 
 
-# Größenvergleich von ganzen Zahlen
+# Runden von periodischen Dezimalzahlen
 
 **Gib** die Zahl gerundet auf drei Nachkommastellen **an**.
 

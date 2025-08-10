@@ -82,7 +82,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
     {{|>}} Zu jedem Abschnitt gibt es Übungsaufgaben, deren Lösungen im Anhang stehen. Die Aufgaben sind so gestaltet, dass sie das Verständnis überprüfen und vertiefen; sie sollten vollständig bearbeitet und erst danach mit den Lösungen verglichen werden. In der Geometrie werden auch Zeichenaufgaben gestellt, zu denen im Anhang keine fertigen Zeichnungen enthalten sind. Manche Aufgaben erfordern Kenntnisse aus späteren Kapiteln; diese können nach Erwerb des entsprechenden Wissens bearbeitet werden, um vorhandene Kenntnisse zu festigen und zu erweitern. Oft steigert sich der Schwierigkeitsgrad innerhalb einer Aufgabe, sodass binnendifferenzierte Förderung möglich ist und jede Schülerin und jeder Schüler gefordert und gefördert werden kann.
 
-    {{|>}} Alle **fett** markierten Begriffe sind im mathematischen Wörterverzeichnis im Anhang erläutert. Dieser Abschnitt soll den Umgang mit der mathematischen Sprache erleichtern und deren logischen Aufbau verdeutlichen.
+    {{|>}} Alle *leicht schräg/kursiv* markierten Begriffe sind im mathematischen Wörterverzeichnis im Anhang erläutert. Dieser Abschnitt soll den Umgang mit der mathematischen Sprache erleichtern und deren logischen Aufbau verdeutlichen.
 
     {{|>}} Abschließend sei angemerkt, dass in Zukunft deutlich mehr Aufgaben mit Lösungen ergänzt werden, darunter auch solche, die auf weiter hinten behandelten Themen basieren. Hierzu werden Querverweise angegeben, um je nach Vorwissen auch komplexere Aufgaben bearbeiten zu können. Grundsätzlich gilt: Alle fehlerfreien Rechenwege sind zugelassen – entscheidend ist das korrekte Ergebnis.
 
@@ -113,44 +113,298 @@ Ohne das Verständnis dieser Themenbereiche lassen sich weiterführende Themen n
 
 ## Mengen
 
-Mengen ergänze ich erst später, mal sehen wie das wird
+Zahlen können in verschiedene Kategorien, sogenannte *Mengen*, eingeordnet werden.  
+Dabei bilden die sogenannten *natürlichen Zahlen* die Basis aller anderen *Zahlenmengen*,  
+die in der Schule besprochen werden. Die *natürlichen Zahlen* werden durch das Symbol  
+$\mathbb{N}$ beschrieben und beinhalten *Zahlen* wie $0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ...$.  
+
+Die mathematische Schreibweise dazu wäre:  
+$\mathbb{N} = \left\{0,1,2,\dots\right\}$,  
+wobei in den geschweiften *Klammern* $\{\}$ alle *Zahlen* aufgelistet werden, die zur *Zahlenmenge* gehören.  
+
+Oftmals werden die *natürlichen Zahlen* auch ohne Null verwendet und werden im Folgenden als $\mathbb{N}^+$ bezeichnet.  
+Die erste Erweiterung der *natürlichen Zahlen* $\mathbb{N}$ sind die *ganzen Zahlen*  
+$\mathbb{Z} = \{\dots,-2,-1,0,1,2,\dots\}$.  
+
+Bei genauer Betrachtung fällt auf, dass die *natürlichen Zahlen* $\mathbb{N}$ eine *Teilmenge* der ganzen Zahlen $\mathbb{Z}$ sind.  
+Dies wird mit dem *Mengenoperator* $\subset$ ("ist *Teilmenge* von") wie folgt geschrieben:
+
+$$
+\mathbb{N} \subset \mathbb{Z}
+$$
+
+Die Einführung der *ganzen Zahlen* ist bedeutsam, da die *Subtraktion* damit an Wichtigkeit verliert,  
+weil zum Beispiel $-1$ als $+(-1)$ geschrieben werden kann.  
+
+Die Erweiterung der *ganzen Zahlen* $\mathbb{Z}$ sind alle Zahlen, die durch *Brüche* dargestellt werden können.  
+Diese Zahlen werden *rationale Zahlen* genannt:  
+$\mathbb{Q} = \{\dots, -2, -\frac{3}{2}, -1, -\frac{1}{2}, 0, \frac{1}{7}, 1, 2, \frac{34}{15}, \dots\}$.
+
+$$
+\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q}
+$$
+
+Es gibt jedoch auch *Zahlen*, die nicht durch einen *Bruch* dargestellt werden können.  
+Diese werden *reelle Zahlen* $\mathbb{R}$ genannt und umfassen zum Beispiel $\pi, \sqrt{2}$ und $\sqrt{3}$.  
+
+Die letzte Erweiterung der *Zahlenmengen* wird durch die Zahl $i=\sqrt{-1}$ gegeben  
+und führt zu den *komplexen Zahlen* $\mathbb{C}$.  
+*Komplexe Zahlen* werden in der Regel nicht in der Schule besprochen,  
+bieten aber Vorteile bei der Beschreibung von Zusammenhängen in der *Analysis*  
+(*Analysis* ist eines der großen Teilgebiete der Mathematik neben der *Algebra*).
+
+$$
+\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \mathbb{C}
+$$
 
 
+
+### Mengenoperatoren
+
+Es ist möglich *Teilmengen* aufzustellen, dazu werden bestimmte *Mengenoperatoren* wie $\subset$ verwendet.  
+Sei die *Menge* $\mathbb{M} = \{1, 2, 3, 4\}$ und die *Menge* $\mathbb{K} = \{3, 4, 5, 6\}$ gegeben, dann existieren folgende *Mengenoperationen*:  
+
+Die *Vereinigung* $\cup$ wird wie folgt dargestellt:
+
+$$
+\mathbb{M} \cup \mathbb{K} = \{ 1, 2, 3, 4, 5, 6 \} \quad \text{Vereinigung von $\mathbb{M}$ mit $\mathbb{K}$}
+$$
+
+Die *Vereinigung* wird gelesen als:  
+"Alle Zahlen, die sich in $\mathbb{M}$ **oder** in $\mathbb{K}$ befinden."  
+Das bedeutet, dass alle Zahlen der ersten *Menge* $\mathbb{M}$ und alle Zahlen der zweiten *Menge* $\mathbb{K}$ eine neue *Menge* bilden.  
+Das mathematische "oder" unterscheidet sich vom sprachlichen "oder", da es in der Mathematik immer eindeutig dieselbe Bedeutung hat.  
+Falls keine *Schnittmenge* vorhanden ist, sind die beiden *Mengen* *disjunkt*.
+
+<center>
+![Vereinigung von zwei Mengen. Schwarz: $\mathbb{M}$, rot umrandet: $\mathbb{K}$. Die ausgefüllte Fläche zeigt die Vereinigung.](Kap1/Vereinigung.png)
+</center>
+
+
+---
+
+Eine weitere *Mengenoperation* ist der *Durchschnitt* $\cap$:
+
+$$
+\mathbb{M} \cap \mathbb{K} = \{ 3, 4 \} \quad \text{Durchschnitt von $\mathbb{M}$ und $\mathbb{K}$}
+$$
+
+Der *Durchschnitt* wird gelesen als:  
+"Alle Zahlen, die sich in $\mathbb{M}$ **und** in $\mathbb{K}$ befinden."
+
+<center>
+![Durchschnitt von zwei Mengen. Schwarz: $\mathbb{M}$, rot umrandet: $\mathbb{K}$. Die ausgefüllte Fläche zeigt den Durchschnitt.](Kap1/Durchschnitt.png)
+</center>
+
+
+In diesem Fall sind nur die $3$ und die $4$ in der resultierenden *Durchschnittsmenge*.
+
+---
+
+Die letzte wichtige *Mengenoperation* ist die *Differenz* $\setminus$:
+
+$$
+\mathbb{M} \setminus \mathbb{K} = \{ 1, 2 \} \quad \text{Differenz von $\mathbb{M}$ und $\mathbb{K}$}
+$$
+
+Das wird gelesen als:  
+"Alle *Zahlen* von $\mathbb{M}$ ohne die *Zahlen* aus $\mathbb{K}$."
+
+<center>
+![Differenz von $\mathbb{M}$ ohne $\mathbb{K}$. Schwarz: $\mathbb{M}$, rot umrandet: $\mathbb{K}$. Die ausgefüllte Fläche enthält alle Zahlen aus $\mathbb{M}$ ohne die Zahlen, die auch in $\mathbb{K}$ enthalten sind.](Kap1/MohneK.png)
+</center>
+
+
+---
+
+Wenn man die Reihenfolge der *Mengen* umkehrt, ergibt sich ein anderes Bild:
+
+$$
+\mathbb{K} \setminus \mathbb{M} = \{ 5, 6 \} \quad \text{Differenz von $\mathbb{K}$ und $\mathbb{M}$}
+$$
+
+<center>
+![Differenz von $\mathbb{K}$ ohne $\mathbb{M}$. Schwarz: $\mathbb{M}$, rot umrandet: $\mathbb{K}$. Die ausgefüllte Fläche enthält alle Zahlen aus $\mathbb{K}$ ohne die Zahlen, die auch in $\mathbb{M}$ enthalten sind.](Kap1/KohneM.png)
+</center>
+
+
+Es wird deutlich, dass bei der *Differenz* von *Mengen* die Reihenfolge entscheidend ist, während sich der *Durchschnitt* und die *Vereinigung* nicht verändern.
+
+---
+
+Nun, da alle wichtigen *Mengenoperationen* eingeführt wurden, folgen noch einige wichtige mathematische Abkürzungen.  
+Diese können als **Vokabeln** angesehen werden, die jeder kennen sollte.
+
+Wenn eine Zahl ein *Element* einer *Zahlenmenge* ist, wird dies mathematisch so geschrieben:
+
+$$
+4 \in \mathbb{N}
+$$
+
+---
+
+
+Weitere wichtige Abkürzungen der Mathematik werden nun aufgelistet und im Folgenden verwendet:
+
+$$
+\begin{align*}
+\forall & \quad \text{für alle gilt} \\
+\exists & \quad \text{es existiert} \\
+\exists ! & \quad \text{es existiert genau ein} \\
+\wedge & \quad \text{und} \\
+\vee & \quad \text{oder} \\
+\neg & \quad \text{nicht} \\
+:= & \quad \text{definiert als} \\
+\parallel & \quad \text{parallel zu} \\
+\perp & \quad \text{orthogonal (senkrecht) zu} \\
+\measuredangle & \quad \text{Winkelmaß zwischen} \\
+\angle & \quad \text{Winkel zwischen} \\
+\varnothing & \quad \text{leere Menge} \\
+\Rightarrow & \quad \text{daraus folgt} \\
+< & \quad \text{kleiner als} \\
+> & \quad \text{größer als} \\
+\stackrel{!}{=} & \quad \text{setze gleich} \\
+\stackrel{\wedge}{=} & \quad \text{entspricht}
+\end{align*}
+$$
+
+---
+
+So würde der Satz "Die *Menge* $\mathbb{M}$ beinhaltet alle *Zahlen* $x$, die die Bedingung erfüllen, dass sie *Element* der *reellen Zahlen* sind und dass es genau eine *Zahl* $e$ gibt, durch die man $x$ teilen kann, sodass $1$ dabei herauskommt" mathematisch so aussehen: 
+
+
+$$
+\mathbb{M} = \left\{ x \in \mathbb{R} \ \middle| \ \exists ! e \in \mathbb{R} : \frac{x}{e} = 1 \right\}
+$$
+
+
+
+---
+
+
+
+Mittels dieser Abkürzungen ist es möglich, eine *Zahlenmenge* einzuführen, welche von besonderer Bedeutung ist – die *Primzahlen*.  
+Primzahlen sind *natürliche Zahlen* größer als 1, die genau zwei positive Teiler haben: **1** und **sich selbst**.  
+
+Diese *Zahlenmenge* kann wie folgt definiert werden:
+
+$$
+\mathbb{P} = \left\{ p \in \mathbb{N} \ \middle| \ p > 1 \ \wedge \ \nexists n \in \mathbb{N},\ 1 < n < p,\ n \mid p \right\}
+$$
+
+Dabei gilt:  
+
+- $\mathbb{P}$ bezeichnet die *Menge* der *Primzahlen*.  
+- $\mathbb{N}$ bezeichnet die *Menge* der *natürlichen Zahlen*.  
+- $n \mid p$ bedeutet "n teilt p ohne Rest".  
+- $\nexists$ bedeutet "es existiert kein".  
+
+**Interpretation:**  
+Eine *Zahl* $p$ ist genau dann in der *Menge* $\mathbb{P}$, wenn sie größer als 1 ist und es keine *natürliche Zahl* $n$ gibt, die $p$ teilt, außer den *Zahlen* $1$ und $p$ selbst.
+
+
+### Mengengrenzen
+
+
+Das *Supremum* ist definiert als die "kleinste oberste Schranke" einer *Zahlenmenge*,  
+während das *Infimum* als "größte unterste Schranke" definiert ist.  
+
+Sei als Beispiel dazu folgende *Zahlenmenge* aus *natürlichen Zahlen* betrachtet:  
+
+$$
+\mathbb{M} = \left\{ 3,4,5,6,7,8 \right\}
+$$
+
+Dann ergibt sich hieraus folgendes *Infimum* und *Supremum*:
+
+$$
+\begin{align*}
+   \sup  \mathbb{M}  & = 9  \\
+   \inf  \mathbb{M}  & = 2  \\
+   \Rightarrow \quad  2 & < x  < 9 \quad \forall x \in \mathbb{M}
+\end{align*}
+$$
+
+---
+
+Hierbei können dem *Supremum* und *Infimum* *Grenzen* auferlegt werden,  
+sodass das *Supremum* der Menge $\mathbb{M}$ in den *Grenzen*  
+zwischen $3 < x < 6$ und das *Infimum* zwischen $4 < x < 7$ wie folgt geschrieben wird:
+
+$$
+\begin{align*}
+   \sup_{3<x<6}  \mathbb{M}  & = 7  \\
+   \inf_{4<x<7}  \mathbb{M}  & = 3  
+\end{align*}
+$$
+
+---
+
+Die *Grenzen* müssen nicht ausschließlich (*exklusiv*),  
+sondern können auch einschließend (*inklusiv*) sein:
+
+$$
+\begin{align*}
+   \sup  \mathbb{M}  & = 8  \\
+   \inf  \mathbb{M}  & = 3  \\
+   \Rightarrow \quad  3 & \leq x  \leq 8 \quad \forall x \in \mathbb{M}
+\end{align*}
+$$
+
+---
+
+Dabei bildet das *Supremum* die größte *Zahl* der *Menge* und ist gleichzeitig das *Maximum*,  
+während das *Infimum* gleich dem *Minimum* ist.  
+
+Somit ergibt sich für inklusive Grenzen:
+
+$$
+\begin{align*}
+   \sup  \mathbb{M}  & =  \max  \mathbb{M}  \\
+   \inf  \mathbb{M}  & =  \min  \mathbb{M}  
+\end{align*}
+$$
+
+---
+
+> **Hinweis:**  
+> Im folgenden Buch werden die Begriffe *Infimum* und *Supremum* lediglich zur Vollständigkeit erwähnt.  
+> Sie sind nicht essentiell für ein allgemein bildendes Grundlagenverständnis.
 
 
 
 #### Übungsaufgaben zu Mengen
 
 
-Mengen ergänze ich erst später
+Under Construction
 
 
 
 
 ## Algebraische Grundlagen
 
-{{|>}} Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser folgen zu können, müssen die Begrifflichkeiten der **Algebra** geklärt werden. Dazu werden im Laufe dieses Kapitels die wichtigsten mathematischen Vokabeln, Abkürzungen und Rechenvorschriften erläutert.
+{{|>}} Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser folgen zu können, müssen die Begrifflichkeiten der *Algebra* geklärt werden. Dazu werden im Laufe dieses Kapitels die wichtigsten mathematischen Vokabeln, Abkürzungen und Rechenvorschriften erläutert.
 
 
-{{|>}} Der Begriff **Algebra** stammt aus dem Arabischen: al-ǧabr bedeutet so viel wie „das Wiederherstellen“ oder „das Ergänzen“. Geprägt wurde er im 9. Jahrhundert durch den persischen Gelehrten Muḥammad ibn Mūsā al-Ḫwārizmī in seinem Werk al-kitāb al-muḫtaṣar fī ḥisāb al-ǧabr wa’l-muqābala („Das kurzgefasste Buch über die Rechenverfahren durch Ergänzen und Ausgleichen“). Darin systematisierte er die Lösung linearer und quadratischer Gleichungen – ein entscheidender Schritt, um Rechnen mit Unbekannten zu einer eigenen Disziplin zu machen.
+{{|>}} Der Begriff *Algebra* stammt aus dem Arabischen: al-ǧabr bedeutet so viel wie „das Wiederherstellen“ oder „das Ergänzen“. Geprägt wurde er im 9. Jahrhundert durch den persischen Gelehrten Muḥammad ibn Mūsā al-Ḫwārizmī in seinem Werk al-kitāb al-muḫtaṣar fī ḥisāb al-ǧabr wa’l-muqābala („Das kurzgefasste Buch über die Rechenverfahren durch Ergänzen und Ausgleichen“). Darin systematisierte er die Lösung *linearer* und *quadratischer* *Gleichungen* – ein entscheidender Schritt, um Rechnen mit Unbekannten zu einer eigenen Disziplin zu machen.
 
-{{|>}} Die Wurzeln der Algebra reichen jedoch weit zurück: Bereits die Babylonier (um 1800 v. Chr.) lösten quadratische Probleme mit geometrischen Methoden, die Griechen entwickelten Proportionenlehre und Zahlentheorie, und indische Mathematiker führten die symbolische Behandlung von Unbekannten weiter aus. Al-Ḫwārizmīs Werk verband diese Traditionen, prägte den Namen und beeinflusste die Entwicklung der Algebra in Europa nachhaltig, insbesondere nach Übersetzungen ins Lateinische im 12. Jahrhundert.
+{{|>}} Die Wurzeln der *Algebra* reichen jedoch weit zurück: Bereits die Babylonier (um 1800 v. Chr.) lösten quadratische Probleme mit geometrischen Methoden, die Griechen entwickelten Proportionenlehre und Zahlentheorie, und indische Mathematiker führten die symbolische Behandlung von Unbekannten weiter aus. Al-Ḫwārizmīs Werk verband diese Traditionen, prägte den Namen und beeinflusste die Entwicklung der *Algebra* in Europa nachhaltig, insbesondere nach Übersetzungen ins Lateinische im 12. Jahrhundert.
 
 
 
 ### Arithmetik mit natürlichen Zahlen
 
 
-{{|>}}  **Ziffern** sind die einzelnen Zeichen, die zur Darstellung von Zahlen verwendet werden. Im **Dezimalsystem** gibt es genau zehn **Ziffern**:
+{{|>}}  *Ziffern* sind die einzelnen Zeichen, die zur Darstellung von Zahlen verwendet werden. Im *Dezimalsystem* gibt es genau zehn *Ziffern*:
 
 $$
 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
 $$
 
-{{|>}} Eine **Zahl** entsteht erst, wenn eine oder mehrere **Ziffern** in einer bestimmten Anordnung geschrieben werden. Da in unserem Zahlensystem - dem Dezimalsystem - nach der 9 keine weitere neue **Ziffer** kommt muss eine **Zahl** die größer als die 9 ist durch zwei **Ziffern** ausgedrückt werden. Die Position (Stelle) einer **Ziffer** in der **Zahl** bestimmt dabei ihren Wert. Die Stellenwerttafel bildet diese Wertigkeit ab. 
+{{|>}} Eine *Zahl* entsteht erst, wenn eine oder mehrere *Ziffern* in einer bestimmten Anordnung geschrieben werden. Da in unserem Zahlensystem - dem Dezimalsystem - nach der 9 keine weitere neue *Ziffer* kommt muss eine *Zahl* die größer als die 9 ist durch zwei *Ziffern* ausgedrückt werden. Die Position (Stelle) einer *Ziffer* in der *Zahl* bestimmt dabei ihren Wert. Die Stellenwerttafel bildet diese Wertigkeit ab. 
 
 
-{{|>}} Im **Dezimalsystem** basiert jede Stelle auf **Potenzen** der Zahl 10:
+{{|>}} Im *Dezimalsystem* basiert jede Stelle auf *Potenzen* der Zahl 10:
 
 <center>
 <!-- data-type="none" 
@@ -165,7 +419,7 @@ style="width:300px" -->
 
 
 
-{{|>}} Die Zahl $4 583$ besteht aus den Ziffern $4$, $5$, $8$ und $3$.  
+{{|>}} Die Zahl $4 583$ besteht aus den *Ziffern* $4$, $5$, $8$ und $3$.  
 In der Stellenwerttafel:
 
 <center>
@@ -184,7 +438,7 @@ $$
 = 4000 + 500 + 80 + 3
 $$
 
-{{|>}} **Ziffern** sind somit die Bausteine der Zahldarstellung. **Zahlen** entstehen durch Anordnung von Ziffern und Interpretation ihrer Position in einem Stellenwertsystem. Die **Stellenwerttafel** hilft, den Wert jeder Ziffer in einer Zahl zu erkennen.
+{{|>}} *Ziffern* sind somit die Bausteine der Zahldarstellung. *Zahlen* entstehen durch Anordnung von *Ziffern* und Interpretation ihrer Position in einem Stellenwertsystem. Die *Stellenwerttafel* hilft, den Wert jeder Ziffer in einer Zahl zu erkennen.
 
 
 
@@ -196,7 +450,7 @@ $$
 
 
 
-{{|>}} Hinter großen Teilen des Verständnis der Mathematik steht das Wissen, was ein **Term** ist. Bei dem Beispiel 
+{{|>}} Hinter großen Teilen des Verständnis der Mathematik steht das Wissen, was ein *Term* ist. Bei dem Beispiel 
 
 $$
  \begin{equation}
@@ -206,9 +460,9 @@ $$
 \end{equation}  
 $$
 
-{{|>}} handelt es sich um eine **Gleichung** wobei die **Terme** $4+5$ und $3+6$ den gleichen Wert $9$ besitzen. Das **Äquivalenzzeichen** "=" wird oftmals fälschlicherweise als Aufforderung interpretiert, den **Wert des Terms** zu berechnen, doch gibt dieses lediglich die Gleichheit an. 
+{{|>}} handelt es sich um eine *Gleichung* wobei die *Terme* $4+5$ und $3+6$ den gleichen Wert $9$ besitzen. Das *Äquivalenzzeichen* "=" wird oftmals fälschlicherweise als Aufforderung interpretiert, den *Wert des Terms* zu berechnen, doch gibt dieses lediglich die Gleichheit an. 
 
-{{|>}} In einer weiteren Beispielaufgabe stehen drei verschiedene Seillängen mit $3\,$cm, $6\,$cm und $7\,$cm zur Verfügung. Wenn nun der **Term** 
+{{|>}} In einer weiteren Beispielaufgabe stehen drei verschiedene Seillängen mit $3\,$cm, $6\,$cm und $7\,$cm zur Verfügung. Wenn nun der *Term* 
 
 $$
  \begin{equation}
@@ -219,9 +473,9 @@ $$
 $$
 
 
-{{|>}} niedergeschrieben wird, dann können dem **Term** verschiedene Informationen entnommen werden. So ist bekannt, dass viermal das $3\,$cm, fünfmal das $6\,$cm und zweimal das $7\,$cm Seilstück verwendet wurde und dass die Seilstücke zusammen eine **Länge** von $56\,$cm besitzen. Es wird deutlich, dass **Terme** auch ohne ein **Äquivalenzzeichen** niedergeschrieben werden können und dennoch eine Bedeutung besitzen. 
+{{|>}} niedergeschrieben wird, dann können dem *Term* verschiedene Informationen entnommen werden. So ist bekannt, dass viermal das $3\,$cm, fünfmal das $6\,$cm und zweimal das $7\,$cm Seilstück verwendet wurde und dass die Seilstücke zusammen eine *Länge* von $56\,$cm besitzen. Es wird deutlich, dass *Terme* auch ohne ein *Äquivalenzzeichen* niedergeschrieben werden können und dennoch eine Bedeutung besitzen. 
 
-{{|>}} Wenn ein **Term** berechnet werden soll, ist eine systematisches Vorgehen zu empfehlen. Hierbei sollten einzelne Schritte visualisiert werden, sodass ein anderer Betrachter schnell die Rechnung nachvollziehen kann. Dies ist im folgenden Beispiel dargestellt:
+{{|>}} Wenn ein *Term* berechnet werden soll, ist eine systematisches Vorgehen zu empfehlen. Hierbei sollten einzelne Schritte visualisiert werden, sodass ein anderer Betrachter schnell die Rechnung nachvollziehen kann. Dies ist im folgenden Beispiel dargestellt:
 
 $$
  \begin{equation}
@@ -235,9 +489,9 @@ $$
 \end{equation}  
 $$
 
-{{|>}} Deutlich zu erkennen ist, dass nach jeder Rechnung eine neue Zeile begonnen wurde und hierbei die **Äquivalenzzeichen** "=" stets untereinander stehen. Auch sind die **Rechenregeln** (wie **Punkt- vor Strichrechnung** und die Beachtung der **Klammern**) erkennbar, da im ersten Schritt alle **Produktwerte**, anschließend der **Summenwert** in der **Klammer** gefolgt vom **Quotientenwert** und abschließend der **Differenzwert** bestimmt wurde.  
+{{|>}} Deutlich zu erkennen ist, dass nach jeder Rechnung eine neue Zeile begonnen wurde und hierbei die *Äquivalenzzeichen* "=" stets untereinander stehen. Auch sind die *Rechenregeln* (wie *Punkt- vor Strichrechnung* und die Beachtung der *Klammern*) erkennbar, da im ersten Schritt alle *Produktwerte*, anschließend der *Summenwert* in der *Klammer* gefolgt vom *Quotientenwert* und abschließend der *Differenzwert* bestimmt wurde.  
 
-{{|>}} Besonders das strukturierte, systematische und nachvollziehbare Niederschreiben von **Termveränderungen** bietet die Möglichkeit neue Erkenntnisse zu generieren und Auffälligkeiten zu entdecken, was ein wesentlicher Bestandteil der Mathematik ist.
+{{|>}} Besonders das strukturierte, systematische und nachvollziehbare Niederschreiben von *Termveränderungen* bietet die Möglichkeit neue Erkenntnisse zu generieren und Auffälligkeiten zu entdecken, was ein wesentlicher Bestandteil der Mathematik ist.
 
 
 
@@ -252,7 +506,7 @@ $$
 
 #### Runden
 
-    {{|>}} Um Rechnungen mit natürlichen Zahlen $\mathbb{N}$ schnell zu überprüfen lohnt sich die sogenannte Überschlagsrechnung, bei der die Zahlen gerundet werden. Um das **Runden** zu verstehen, muss sich nochmal die Stellenwerttafel vergegenwärtigt werden, da immer bestimmte Stellen betrachtet werden müssen: \
+    {{|>}} Um Rechnungen mit natürlichen Zahlen $\mathbb{N}$ schnell zu überprüfen lohnt sich die sogenannte Überschlagsrechnung, bei der die Zahlen gerundet werden. Um das *Runden* zu verstehen, muss sich nochmal die Stellenwerttafel vergegenwärtigt werden, da immer bestimmte Stellen betrachtet werden müssen: \
 
 
 <center>
@@ -265,7 +519,7 @@ style="width:300px" -->
 </center>
 
 
-    {{|>}} Beim **Runden** wird die in der vorherigen Stelle der betrachtete Stelle der Zahl analysiert. Soll also auf Tausender gerundet werden, muss die Hunderterziffer betrachtet werden. Handelt es sich um eine der Ziffern $\left\{0;1;2;3;4\right\}$ wird die betrachtete Stelle abgerundet - sie bleibt also unverändert. Handelt es sich allerdings um $\left\{5;6;7;8;9\right\}$, dann wird aufgerundet - also an der betrachteten Stelle wir die Ziffer um $1$ erhöht. Dies kann begründet werden, dass die Ziffern $\left\{0;1;2;3;4\right\}$ dichter an einer Null sind als an einer Zehn wie $\left\{5;6;7;8;9\right\}$. \
+    {{|>}} Beim *Runden* wird die in der vorherigen Stelle der betrachtete Stelle der Zahl analysiert. Soll also auf Tausender gerundet werden, muss die Hunderterziffer betrachtet werden. Handelt es sich um eine der Ziffern $\left\{0;1;2;3;4\right\}$ wird die betrachtete Stelle abgerundet - sie bleibt also unverändert. Handelt es sich allerdings um $\left\{5;6;7;8;9\right\}$, dann wird aufgerundet - also an der betrachteten Stelle wir die Ziffer um $1$ erhöht. Dies kann begründet werden, dass die Ziffern $\left\{0;1;2;3;4\right\}$ dichter an einer Null sind als an einer Zehn wie $\left\{5;6;7;8;9\right\}$. \
 
 
 
@@ -313,7 +567,7 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" height="30">  __Aufgabe 1:__ **Gib** den auf Zehner gerundeten Wert **an**.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 1:__ *Gib* den auf Zehner gerundeten Wert *an*.
 
 
 <section class="flex-container">
@@ -321,6 +575,7 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 __$a)\;\;$__
 
+<!-- data-solution-button="5" -->
 $534 \approx$ [[  530  ]]
 
 </div>
@@ -328,6 +583,7 @@ $534 \approx$ [[  530  ]]
 
 __$b)\;\;$__
 
+<!-- data-solution-button="5" -->
 $119 \approx$ [[  120  ]]
 
 </div>
@@ -335,6 +591,7 @@ $119 \approx$ [[  120  ]]
 
 __$c)\;\;$__
 
+<!-- data-solution-button="5" -->
 $346 \approx$ [[  350  ]]
 
 </div>
@@ -342,6 +599,7 @@ $346 \approx$ [[  350  ]]
 
 __$d)\;\;$__
 
+<!-- data-solution-button="5" -->
 $971 \approx$ [[  970  ]]
 
 </div>
@@ -349,6 +607,7 @@ $971 \approx$ [[  970  ]]
 
 __$e)\;\;$__
 
+<!-- data-solution-button="5" -->
 $289 \approx$ [[  290  ]]
 
 </div>
@@ -356,6 +615,7 @@ $289 \approx$ [[  290  ]]
 
 __$f)\;\;$__
 
+<!-- data-solution-button="5" -->
 $654 \approx$ [[  650  ]]
 
 </div>
@@ -364,7 +624,7 @@ $654 \approx$ [[  650  ]]
 
 
 
-__Aufgabe 2:__ **Gib** den auf Hunderter gerundeten Wert **an**.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 2:__ *Gib* den auf Hunderter gerundeten Wert *an*.
 
 
 <section class="flex-container">
@@ -373,6 +633,7 @@ __Aufgabe 2:__ **Gib** den auf Hunderter gerundeten Wert **an**.
 
 __$a)\;\;$__
 
+<!-- data-solution-button="5" -->
 $7664 \approx$ [[7700    ]]
 
 </div>
@@ -383,6 +644,7 @@ $7664 \approx$ [[7700    ]]
 
 __$b)\;\;$__
 
+<!-- data-solution-button="5" -->
 $4467 \approx$ [[4500    ]]
 
 </div>
@@ -394,6 +656,7 @@ $4467 \approx$ [[4500    ]]
 
 __$c)\;\;$__
 
+<!-- data-solution-button="5" -->
 $2454 \approx$ [[2400    ]]
 
 </div>
@@ -405,6 +668,7 @@ $2454 \approx$ [[2400    ]]
 
 __$d)\;\;$__
 
+<!-- data-solution-button="5" -->
 $2163 \approx$ [[2200    ]]
 
 </div>
@@ -416,6 +680,7 @@ $2163 \approx$ [[2200    ]]
 
 __$e)\;\;$__
 
+<!-- data-solution-button="5" -->
 $2389 \approx$ [[2400    ]]
 
 </div>
@@ -426,6 +691,7 @@ $2389 \approx$ [[2400    ]]
 
 __$f)\;\;$__
 
+<!-- data-solution-button="5" -->
 $15314 \approx$ [[15300    ]]
 
 </div>
@@ -437,7 +703,7 @@ $15314 \approx$ [[15300    ]]
 
 
 
-__Aufgabe 3:__ **Gib** den auf Tausender gerundeten Wert **an**.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 3:__ *Gib* den auf Tausender gerundeten Wert *an*.
 
 
 <section class="flex-container">
@@ -446,6 +712,7 @@ __Aufgabe 3:__ **Gib** den auf Tausender gerundeten Wert **an**.
 
 __$a)\;\;$__
 
+<!-- data-solution-button="5" -->
 $78961 \approx$ [[79000    ]]
 
 </div>
@@ -456,6 +723,7 @@ $78961 \approx$ [[79000    ]]
 
 __$b)\;\;$__
 
+<!-- data-solution-button="5" -->
 $18207 \approx$ [[18000    ]]
 
 </div>
@@ -467,6 +735,7 @@ $18207 \approx$ [[18000    ]]
 
 __$c)\;\;$__
 
+<!-- data-solution-button="5" -->
 $138499 \approx$ [[138000    ]]
 
 </div>
@@ -478,6 +747,7 @@ $138499 \approx$ [[138000    ]]
 
 __$d)\;\;$__
 
+<!-- data-solution-button="5" -->
 $316418 \approx$ [[316000    ]]
 
 </div>
@@ -489,6 +759,7 @@ $316418 \approx$ [[316000    ]]
 
 __$e)\;\;$__
 
+<!-- data-solution-button="5" -->
 $218640 \approx$ [[219000    ]]
 
 </div>
@@ -499,6 +770,7 @@ $218640 \approx$ [[219000    ]]
 
 __$f)\;\;$__
 
+<!-- data-solution-button="5" -->
 $450748 \approx$ [[451000    ]]
 
 </div>
@@ -514,7 +786,7 @@ $450748 \approx$ [[451000    ]]
 
 
 
-__Aufgabe 4:__ **Gib** den auf Zehntausender gerundeten Wert **an**.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 4:__ *Gib* den auf Zehntausender gerundeten Wert *an*.
 
 
 <section class="flex-container">
@@ -523,6 +795,7 @@ __Aufgabe 4:__ **Gib** den auf Zehntausender gerundeten Wert **an**.
 
 __$a)\;\;$__
 
+<!-- data-solution-button="5" -->
 $464861 \approx$ [[460000    ]]
 
 </div>
@@ -533,6 +806,7 @@ $464861 \approx$ [[460000    ]]
 
 __$b)\;\;$__
 
+<!-- data-solution-button="5" -->
 $1103486 \approx$ [[1100000    ]]
 
 </div>
@@ -544,6 +818,7 @@ $1103486 \approx$ [[1100000    ]]
 
 __$c)\;\;$__
 
+<!-- data-solution-button="5" -->
 $1586404 \approx$ [[1590000    ]]
 
 </div>
@@ -555,6 +830,7 @@ $1586404 \approx$ [[1590000    ]]
 
 __$d)\;\;$__
 
+<!-- data-solution-button="5" -->
 $3185048 \approx$ [[3190000    ]]
 
 </div>
@@ -566,6 +842,7 @@ $3185048 \approx$ [[3190000    ]]
 
 __$e)\;\;$__
 
+<!-- data-solution-button="5" -->
 $8075604 \approx$ [[8080000    ]]
 
 </div>
@@ -576,6 +853,7 @@ $8075604 \approx$ [[8080000    ]]
 
 __$f)\;\;$__
 
+<!-- data-solution-button="5" -->
 $3446045 \approx$ [[3450000    ]]
 
 </div>
@@ -586,7 +864,7 @@ $3446045 \approx$ [[3450000    ]]
 
 
 
-__Aufgabe 5:__ **Gib** den auf die angegebene Stelle gerundeten Wert **an**.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30"> __Aufgabe 5:__ *Gib* den auf die angegebene Stelle gerundeten Wert *an*.
 
 
 <section class="flex-container">
@@ -595,6 +873,7 @@ __Aufgabe 5:__ **Gib** den auf die angegebene Stelle gerundeten Wert **an**.
 
 __$a)\;\;$__
 
+<!-- data-solution-button="5" -->
 Auf Tausender: $78163 \approx$ [[78000    ]]
 
 </div>
@@ -605,6 +884,7 @@ Auf Tausender: $78163 \approx$ [[78000    ]]
 
 __$b)\;\;$__
 
+<!-- data-solution-button="5" -->
 Auf Zehner: $78163 \approx$ [[78160    ]]
 
 </div>
@@ -616,6 +896,7 @@ Auf Zehner: $78163 \approx$ [[78160    ]]
 
 __$c)\;\;$__
 
+<!-- data-solution-button="5" -->
 Auf Hunderter: $29963 \approx$ [[30000    ]]
 
 </div>
@@ -627,6 +908,7 @@ Auf Hunderter: $29963 \approx$ [[30000    ]]
 
 __$d)\;\;$__
 
+<!-- data-solution-button="5" -->
 Auf Tausender: $499 \approx$ [[    0    ]]
 
 </div>
@@ -638,6 +920,7 @@ Auf Tausender: $499 \approx$ [[    0    ]]
 
 __$e)\;\;$__
 
+<!-- data-solution-button="5" -->
 Auf Zehner: $55164 \approx$ [[55160    ]]
 
 </div>
@@ -648,6 +931,7 @@ Auf Zehner: $55164 \approx$ [[55160    ]]
 
 __$f)\;\;$__
 
+<!-- data-solution-button="5" -->
 Auf Tausender: $854684 \approx$ [[855000    ]]
 
 </div>
@@ -658,7 +942,7 @@ Auf Tausender: $854684 \approx$ [[855000    ]]
 
 
 
-__Aufgabe 6:__ **Gib** den auf die angegebene Stelle gerundeten Wert **an**.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30"> __Aufgabe 6:__ *Gib* den auf die angegebene Stelle gerundeten Wert *an*.
 
 
 <section class="flex-container">
@@ -667,6 +951,7 @@ __Aufgabe 6:__ **Gib** den auf die angegebene Stelle gerundeten Wert **an**.
 
 __$a)\;\;$__
 
+<!-- data-solution-button="5" -->
 Auf Hunderter: $54164 \approx$ [[54200    ]]
 
 </div>
@@ -677,6 +962,7 @@ Auf Hunderter: $54164 \approx$ [[54200    ]]
 
 __$b)\;\;$__
 
+<!-- data-solution-button="5" -->
 Auf Hunderttausender: $54164 \approx$ [[100000    ]]
 
 </div>
@@ -688,6 +974,7 @@ Auf Hunderttausender: $54164 \approx$ [[100000    ]]
 
 __$c)\;\;$__
 
+<!-- data-solution-button="5" -->
 Auf Zehner: $8431 \approx$ [[8430      ]]
 
 </div>
@@ -699,6 +986,7 @@ Auf Zehner: $8431 \approx$ [[8430      ]]
 
 __$d)\;\;$__
 
+<!-- data-solution-button="5" -->
 Auf Millionen: $47081 \approx$ [[    0    ]]
 
 </div>
@@ -710,6 +998,7 @@ Auf Millionen: $47081 \approx$ [[    0    ]]
 
 __$e)\;\;$__
 
+<!-- data-solution-button="5" -->
 Auf Hunderter: $94516 \approx$ [[94500    ]]
 
 </div>
@@ -720,6 +1009,7 @@ Auf Hunderter: $94516 \approx$ [[94500    ]]
 
 __$f)\;\;$__
 
+<!-- data-solution-button="5" -->
 Auf Zehntausender: $998146 \approx$ [[1000000    ]]
 
 </div>
@@ -730,11 +1020,12 @@ Auf Zehntausender: $998146 \approx$ [[1000000    ]]
 
 
 
-__Aufgabe 7:__ **Gib** den auf die angegebene Stelle gerundeten Wert in den freien Tabellenfeldern **an**.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30"> __Aufgabe 7:__ *Gib* den auf die angegebene Stelle gerundeten Wert in den freien Tabellenfeldern *an*.
 
 
 <!-- data-type="none"
-data-sortable="false" -->
+data-sortable="false" 
+data-solution-button="5"-->
 |   Zahl    |    Zehner     |   Hunderter    |   Tausender    |   Zehntausender    |   Hunderttausender   |
 |  :-----:  |    :-----:    |   :-----:      |     :-----:    |     :-----:        |       :-----:        |
 | $548062$  | [[ 548060  ]] |  [[ 548100  ]] | [[ 548000  ]]  |    [[ 550000  ]]   |     [[ 500000  ]]    |
@@ -747,11 +1038,12 @@ data-sortable="false" -->
 
 
 
-__Aufgabe 8:__ **Gib** den auf die angegebene Stelle gerundeten Wert in den freien Tabellenfeldern **an**.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30"> __Aufgabe 8:__ *Gib* den auf die angegebene Stelle gerundeten Wert in den freien Tabellenfeldern *an*.
 
 
 <!-- data-type="none"
-data-sortable="false" -->
+data-sortable="false"  
+data-solution-button="5"-->
 |   Zahl    |    Zehner     |   Hunderter    |   Tausender    | Zehntausender | Hunderttausender |
 |  :-----:  |    :-----:    |   :-----:      |     :-----:    |   :-----:     |     :-----:      |
 | $278849$  | [[ 278850  ]] |  [[ 278800  ]] | [[ 279000  ]]  |  [[ 280000 ]] |   [[ 300000  ]]  |
@@ -763,11 +1055,12 @@ data-sortable="false" -->
 
 
 
-__Aufgabe 9:__ Gegeben sei eine gerundete Zahl. **Gib** jeweils die kleinste und die größte Zahl **an**, die nach dem Runden zur gegebenen Zahl wird.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30"> __Aufgabe 9:__ Gegeben sei eine gerundete Zahl. *Gib* jeweils die kleinste und die größte Zahl *an*, die nach dem Runden zur gegebenen Zahl wird.
 
 
 <!-- data-type="none"
-data-sortable="false" -->
+data-sortable="false"  
+data-solution-button="5"-->
 | gerundete Zahl | wurde gerundete auf | kleinste Zahl |  größte Zahl  |
 |  :----------:  | :-----------------: | :-----------: |  :---------:  |
 |    $445000$    |      Tausender      | [[ 444500  ]] | [[ 445499  ]] |
@@ -779,13 +1072,12 @@ data-sortable="false" -->
 
 
 
-__Aufgabe 10:__ 
-
-Gegeben sei eine gerundete Zahl. **Gib** jeweils die kleinste und die größte Zahl **an**, die nach dem Runden zur gegebenen Zahl wird.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30"> __Aufgabe 10:__ Gegeben sei eine gerundete Zahl. *Gib* jeweils die kleinste und die größte Zahl *an*, die nach dem Runden zur gegebenen Zahl wird.
 
 
 <!-- data-type="none"
-data-sortable="false" -->
+data-sortable="false"  
+data-solution-button="5"-->
 | gerundete Zahl | wurde gerundete auf | kleinste Zahl |  größte Zahl  |
 |  :----------:  | :-----------------: | :-----------: |  :---------:  |
 |    $6000000$   |  Hunderttausender   | [[ 5950000 ]] | [[ 6049999 ]] |
@@ -810,7 +1102,7 @@ data-sortable="false" -->
 
 #### Addition
 
-    {{|>}} Die **Addition** ist die wichtigste Grundrechenart und lässt **Zahlen** größer als Eins überhaupt erst erfassbar werden, was am **Zahlenstrahl** schnell erkannt werden kann. Direkt hier wird schon deutlich, dass die Null das **neutrale Element** der **Addition** ist, da eine **Addition** von Null den **Wert des Terms** nicht verändert: $1+0=1$. \
+    {{|>}} Die *Addition* ist die wichtigste Grundrechenart und lässt *Zahlen* größer als Eins überhaupt erst erfassbar werden, was am *Zahlenstrahl* schnell erkannt werden kann. Direkt hier wird schon deutlich, dass die Null das *neutrale Element* der *Addition* ist, da eine *Addition* von Null den *Wert des Terms* nicht verändert: $1+0=1$. \
 
 
 <center>
@@ -843,7 +1135,7 @@ data-sortable="false" -->
 
 
 
-    {{|>}} Mit der **Addition** werden **Zahlen** zusammengezählt, was immer durch den **Additionsoperator** $+$ beschrieben wird. Der gesamte **Term** ist die sogenannte **Summe**, während der **Wert der Summe** immer auf der anderen Seite eines **Gleichheitszeichen** $=$ geschrieben wird. \
+    {{|>}} Mit der *Addition* werden *Zahlen* zusammengezählt, was immer durch den *Additionsoperator* $+$ beschrieben wird. Der gesamte *Term* ist die sogenannte *Summe*, während der *Wert der Summe* immer auf der anderen Seite eines *Gleichheitszeichen* $=$ geschrieben wird. \
 
 
 
@@ -855,7 +1147,7 @@ $$
 \end{equation}  
 $$
 
-Als Beispiel mit **Zahlen**:
+Als Beispiel mit *Zahlen*:
 
 $$
 \begin{equation}
@@ -866,7 +1158,7 @@ $$
 $$
 
 
-    {{|>}} Im Beispiel aus Gleichung ist zu sehen, dass die Zwei mit der Vier zusammengezählt wurde, wie es der **Additionsoperator** $+$ (gesprochen "plus") gefordert hat. Am **Zahlenstrahl** verdeutlicht wird deutlich, dass vom ersten **Summanden** aus Schritte im **Wert** vom zweiten **Summanden** nach rechts gegangen wird, um beim **Wert der Summe** zu enden. \
+    {{|>}} Im Beispiel aus Gleichung ist zu sehen, dass die Zwei mit der Vier zusammengezählt wurde, wie es der *Additionsoperator* $+$ (gesprochen "plus") gefordert hat. Am *Zahlenstrahl* verdeutlicht wird deutlich, dass vom ersten *Summanden* aus Schritte im *Wert* vom zweiten *Summanden* nach rechts gegangen wird, um beim *Wert der Summe* zu enden. \
 
 <center>
 
@@ -894,10 +1186,10 @@ $$
 ```
 </center>
 
-    {{|>}} Bei der **Darstellung** am **Zahlenstrahl** wird deutlich, dass die **Addition** das **Assoziativgesetz** sowie das **Kommutativgesetz** erfüllt. \
+    {{|>}} Bei der *Darstellung* am *Zahlenstrahl* wird deutlich, dass die *Addition* das *Assoziativgesetz* sowie das *Kommutativgesetz* erfüllt. \
 
 
-**Kommutativgesetz** für die **Additon**: 
+*Kommutativgesetz* für die *Additon*: 
 
 $$
 \begin{equation}
@@ -907,7 +1199,7 @@ $$
 \end{equation}  
 $$
 
-Folgendes Beispiel des **Kommutativgesetzes** ist am **Zahlenstrahl** dargestellt:
+Folgendes Beispiel des *Kommutativgesetzes* ist am *Zahlenstrahl* dargestellt:
 
 $$
 \begin{equation}
@@ -948,7 +1240,7 @@ $$
 
 
 
-**Assoziativgesetz** für die **Additon**: 
+*Assoziativgesetz* für die *Additon*: 
 
 $$
 \begin{equation}
@@ -958,7 +1250,7 @@ $$
 \end{equation}  
 $$
 
-Folgendes Beispiel des **Assoziativgesetzes** ist am **Zahlenstrahl** dargestellt:
+Folgendes Beispiel des *Assoziativgesetzes* ist am *Zahlenstrahl* dargestellt:
 
 $$
 \begin{equation}
@@ -999,7 +1291,7 @@ $$
 
 
 
-    {{|>}} Für größere **Zahlen** lohnt sich eine Schreibweise, die die **Zahlen**, die **addiert** werden sollen, entsprechtend ihrer Position in der Stellenwerttafel untereinander schreibt. Dabei wird der **Wert des Terms** unter einem Strich ausgerechnet.\
+    {{|>}} Für größere *Zahlen* lohnt sich eine Schreibweise, die die *Zahlen*, die *addiert* werden sollen, entsprechtend ihrer Position in der Stellenwerttafel untereinander schreibt. Dabei wird der *Wert des Terms* unter einem Strich ausgerechnet.\
 
 
 
@@ -1015,7 +1307,7 @@ data-sortable="false" -->
 |       $5$      |      $5$     | $\textcolor{red}{1}0$ |    $\textcolor{red}{1}2$    |    Einzelziffersummen    |
 |       $5$      |      $6$     |    $1$      |    $2$    |    Wert der Summe    |
 
-    {{|>}} Außerhalb der **Stellenwerttafel** wirkt die Rechnung der schriftlichen **Addition** übersichtlicher: \
+    {{|>}} Außerhalb der *Stellenwerttafel* wirkt die Rechnung der schriftlichen *Addition* übersichtlicher: \
 
 
 $$
@@ -1047,7 +1339,7 @@ $$
 $$
 
 
-     {{|>}} Bei dieser Art der Schreibweise, werden die **Zahlen**, die entsprechend ihrer Position in der **Stellenwerttafel** untereinander stehen, einzeln **addiert**. Dabei wird immer bei der **Ziffern** der kleinsten Position in der **Stellenwerttafel** begonnen. Dies ist sind stets die **Ziffern**, die am weitesten rechts bei den **Zahlen** stehen. Wenn die **addierte** Zahl höher ist als Neun, dann wird die Eins der Zehn zur nächsten Zahlenspalte hinzugezählt. Diese Eins wird auch oft Merkeins genannt und ist in der Beispielrechnung rot eingefärbt. Der Vorteil dieser Schreibweise ist es, dass niemals höhere **Zahlen** als $9$ und $9$ **addiert** werden können. Folglich benötigt der Schüler nur ein sehr gutes Zahlenverständnis von der Zahl $0$ bis $18$ um jegliche Additionsaufgabe zu lösen. Falls mehr als zwei **Summanden** (im Beispiel sind $1337$ und $4265$ die **Summanden**) vorkommen ist es immer erlaubt in einer Nebenrechnung zunächst nur zwei **Summanden** zu **addieren** um dann anschließend die **Summe** der ersten beiden **Summanden** mit der nächsten **Summanden** zu verrechnen. \
+     {{|>}} Bei dieser Art der Schreibweise, werden die *Zahlen*, die entsprechend ihrer Position in der *Stellenwerttafel* untereinander stehen, einzeln *addiert*. Dabei wird immer bei der *Ziffern* der kleinsten Position in der *Stellenwerttafel* begonnen. Dies ist sind stets die *Ziffern*, die am weitesten rechts bei den *Zahlen* stehen. Wenn die *addierte* Zahl höher ist als Neun, dann wird die Eins der Zehn zur nächsten Zahlenspalte hinzugezählt. Diese Eins wird auch oft Merkeins genannt und ist in der Beispielrechnung rot eingefärbt. Der Vorteil dieser Schreibweise ist es, dass niemals höhere *Zahlen* als $9$ und $9$ *addiert* werden können. Folglich benötigt der Schüler nur ein sehr gutes Zahlenverständnis von der Zahl $0$ bis $18$ um jegliche Additionsaufgabe zu lösen. Falls mehr als zwei *Summanden* (im Beispiel sind $1337$ und $4265$ die *Summanden*) vorkommen ist es immer erlaubt in einer Nebenrechnung zunächst nur zwei *Summanden* zu *addieren* um dann anschließend die *Summe* der ersten beiden *Summanden* mit der nächsten *Summanden* zu verrechnen. \
 
 <br>
 <br>
@@ -1061,7 +1353,226 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 ##### Übungen - Addition
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ *Berechne* den Wert des Terms.
 
+
+<section class="flex-container">
+
+<div class="flex-child">
+$a)\;\;$
+
+<!-- data-solution-button="5"-->
+$3821 + 1347=$[[  5168  ]] 
+</div>
+
+<div class="flex-child">
+$b)\;\;$
+
+<!-- data-solution-button="5"-->
+$5962 + 8912=$[[  14874  ]] 
+</div>
+
+<div class="flex-child">
+$c)\;\;$
+
+<!-- data-solution-button="5"-->
+$2512 + 3246=$[[  5758  ]] 
+</div>
+
+<div class="flex-child">
+$d)\;\;$
+
+<!-- data-solution-button="5"-->
+$2353 + 4636=$[[  6989  ]] 
+</div>
+
+<div class="flex-child">
+$e)\;\;$
+
+<!-- data-solution-button="5"-->
+$4462 + 9543=$[[  14005  ]] 
+</div>
+
+<div class="flex-child">
+$f)\;\;$
+
+<!-- data-solution-button="5"-->
+$4156 + 3737=$[[  7893  ]] 
+</div>
+
+<div class="flex-child">
+$g)\;\;$
+
+<!-- data-solution-button="5"-->
+$9948 + 5499=$[[  15447  ]] 
+</div>
+
+<div class="flex-child">
+$h)\;\;$
+
+<!-- data-solution-button="5"-->
+$4784 + 8377=$[[  13161  ]] 
+</div>
+
+
+<div class="flex-child">
+$i)\;\;$
+
+<!-- data-solution-button="5"-->
+$8437 + 4567=$[[  13004  ]] 
+</div>
+
+</section>
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 2:__ *Berechne* den Wert des Terms.
+
+
+<section class="flex-container">
+<div class="flex-child">
+$a)\;\;$
+
+<!-- data-solution-button="5"-->
+$3821 + 1347=$[[  5168  ]] 
+</div>
+
+<div class="flex-child">
+$b)\;\;$
+
+<!-- data-solution-button="5"-->
+$5962 + 8912=$[[  14874  ]] 
+</div>
+
+<div class="flex-child">
+$c)\;\;$
+
+<!-- data-solution-button="5"-->
+$2512 + 3246=$[[  5758  ]] 
+</div>
+
+<div class="flex-child">
+$d)\;\;$
+
+<!-- data-solution-button="5"-->
+$2353 + 4636=$[[  6989  ]] 
+</div>
+
+<div class="flex-child">
+$e)\;\;$
+
+<!-- data-solution-button="5"-->
+$4462 + 9543=$[[  14005  ]] 
+</div>
+
+<div class="flex-child">
+$f)\;\;$
+
+<!-- data-solution-button="5"-->
+$4156 + 3737=$[[  7893  ]] 
+</div>
+
+<div class="flex-child">
+$g)\;\;$
+
+<!-- data-solution-button="5"-->
+$9948 + 5499=$[[  15447  ]] 
+</div>
+
+<div class="flex-child">
+$h)\;\;$
+
+<!-- data-solution-button="5"-->
+$4784 + 8377=$[[  13161  ]] 
+</div>
+
+<div class="flex-child">
+$i)\;\;$
+
+<!-- data-solution-button="5"-->
+$9745 + 3726=$[[  13471  ]] 
+</div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 3:__ *Berechne* den Wert des Terms.
+
+
+<section class="flex-container">
+<div class="flex-child">
+$a)\;\;$
+
+<!-- data-solution-button="5"-->
+$2634 + 5897=$[[  8531  ]] 
+</div>
+
+<div class="flex-child">
+$b)\;\;$
+
+<!-- data-solution-button="5"-->
+$7185 + 4268=$[[  11453  ]] 
+</div>
+
+<div class="flex-child">
+$c)\;\;$
+
+<!-- data-solution-button="5"-->
+$3492 + 8051=$[[  11543  ]] 
+</div>
+
+<div class="flex-child">
+$d)\;\;$
+
+<!-- data-solution-button="5"-->
+$5924 + 7813=$[[  13737  ]] 
+</div>
+
+<div class="flex-child">
+$e)\;\;$
+
+<!-- data-solution-button="5"-->
+$1847 + 9635=$[[  11482  ]] 
+</div>
+
+<div class="flex-child">
+$f)\;\;$
+
+<!-- data-solution-button="5"-->
+$4076 + 2559=$[[  6635  ]] 
+</div>
+
+<div class="flex-child">
+$g)\;\;$
+
+<!-- data-solution-button="5"-->
+$8321 + 1746=$[[  10067  ]] 
+</div>
+
+<div class="flex-child">
+$h)\;\;$
+
+<!-- data-solution-button="5"-->
+$7560 + 4983=$[[  12543  ]] 
+</div>
+
+<div class="flex-child">
+$i)\;\;$
+
+<!-- data-solution-button="5"-->
+$6214 + 3879=$[[  10093  ]] 
+</div>
+
+</section>
 
 
 
@@ -1070,7 +1581,7 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 #### Subtraktion
 
-    {{|>}} Die **Subtraktion**<!-- title="Test" --> ist die Umkehroperation der **Addition** und wird durch den **Subtraktionsoperator** $-$ (gesprochen "minus") beschrieben. Auch bei der **Subtraktion** ist somit die Null das **neutrale Element** der **Subktration**, da eine **Subktraktion** mit Null den **Wert des Terms** nicht verändert: $1-0=1$. Auf dem Zahlenstrahl wird somit die Richtung der Schritte der Addition von links nach rechts umgekehrt: \
+    {{|>}} Die *Subtraktion*<!-- title="Test" --> ist die Umkehroperation der *Addition* und wird durch den *Subtraktionsoperator* $-$ (gesprochen "minus") beschrieben. Auch bei der *Subtraktion* ist somit die Null das *neutrale Element* der *Subktration*, da eine *Subktraktion* mit Null den *Wert des Terms* nicht verändert: $1-0=1$. Auf dem Zahlenstrahl wird somit die Richtung der Schritte der Addition von links nach rechts umgekehrt: \
 
 
 <center>
@@ -1104,7 +1615,7 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 
 
-    {{|>}} Der gesamte **Term** ist die sogenannte **Differenz**, während der **Wert der Differenz** immer auf der anderen Seite eines **Gleichheitszeichen** $=$ geschrieben wird. Vom **Minuenden** wird dabei der **Subtrahend** abgezogen. \
+    {{|>}} Der gesamte *Term* ist die sogenannte *Differenz*, während der *Wert der Differenz* immer auf der anderen Seite eines *Gleichheitszeichen* $=$ geschrieben wird. Vom *Minuenden* wird dabei der *Subtrahend* abgezogen. \
 
 
 
@@ -1116,7 +1627,7 @@ $$
 \end{equation}  
 $$
 
-Als Beispiel mit **Zahlen**:
+Als Beispiel mit *Zahlen*:
 
 $$
 \begin{equation}
@@ -1156,7 +1667,7 @@ $$
 </center>
 
 
-    {{|>}} Wie schon an den unterschiedlichen Bezeichnungen **Minuend** sowie **Subtrahend** zu erahnen ist, ist die **Subtraktion** wieder **kommutativ** noch **assoziativ**. \
+    {{|>}} Wie schon an den unterschiedlichen Bezeichnungen *Minuend* sowie *Subtrahend* zu erahnen ist, ist die *Subtraktion* wieder *kommutativ* noch *assoziativ*. \
 
 
 $$
@@ -1170,7 +1681,7 @@ $$
 
 
 
-    {{|>}} Auch bei der schriftlichen **Subtraktion** werden die Ziffern startend von der kleinsten Position in der **Stellenwerttafel** bearbeitet. Dabei kann die jeweilige **Ziffer** des **Subtrahenden** größer sein als die des **Minuenden**, wie in der zweiten Ziffernspalte. Hierbei ist die Zahl $6$ statt von der $3$ von der $13$ zu **subtrahieren**. Die dazu geschriebene Zehn muss anschließend von der nächsten Ziffernspalte abgezogen werden, was durch die Merkeins in rot wieder symbolisiert wird.
+    {{|>}} Auch bei der schriftlichen *Subtraktion* werden die Ziffern startend von der kleinsten Position in der *Stellenwerttafel* bearbeitet. Dabei kann die jeweilige *Ziffer* des *Subtrahenden* größer sein als die des *Minuenden*, wie in der zweiten Ziffernspalte. Hierbei ist die Zahl $6$ statt von der $3$ von der $13$ zu *subtrahieren*. Die dazu geschriebene Zehn muss anschließend von der nächsten Ziffernspalte abgezogen werden, was durch die Merkeins in rot wieder symbolisiert wird.
 
 
 $$
@@ -1185,7 +1696,7 @@ $$
 $$
 
 
-    {{|>}} Auch bei der **Subtraktion** kann es vorkommen, dass mehrere **Subtrahenden** vorzufinden sind. Dabei sind zwei Arten von Nebenrechnungen zulässig: Die erste Variante sieht vor, dass die **Subtrahenden** nacheinander vom **Minuenden** **subtrahiert** werden, während die zweite Variante vorsieht, dass die **Subtrahenden** **addiert** werden und anschließend die **Summe** der **Subtrahenden** vom **Minuend** abgezogen werden. 
+    {{|>}} Auch bei der *Subtraktion* kann es vorkommen, dass mehrere *Subtrahenden* vorzufinden sind. Dabei sind zwei Arten von Nebenrechnungen zulässig: Die erste Variante sieht vor, dass die *Subtrahenden* nacheinander vom *Minuenden* *subtrahiert* werden, während die zweite Variante vorsieht, dass die *Subtrahenden* *addiert* werden und anschließend die *Summe* der *Subtrahenden* vom *Minuend* abgezogen werden. 
 
 Beispiele der ersten Variante:
 $$
@@ -1216,7 +1727,7 @@ $$
 $$
 
 
-    {{|>}} Beim schriftlichen **Subtrahieren** kann maximal die **Ziffer** $9$ als **Subtrahend** der einzelnen Spalten auftauchen. Somit ist die größte Zahl von der abgezogen werden kann die $18$. Folglich wird lediglich ein gutes Zahlenverständnis bei der **Subtraktion** von den Zahlen $0$ bis $18$ benötigt. \
+    {{|>}} Beim schriftlichen *Subtrahieren* kann maximal die *Ziffer* $9$ als *Subtrahend* der einzelnen Spalten auftauchen. Somit ist die größte Zahl von der abgezogen werden kann die $18$. Folglich wird lediglich ein gutes Zahlenverständnis bei der *Subtraktion* von den Zahlen $0$ bis $18$ benötigt. \
 
 
 
@@ -1236,13 +1747,238 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ *Berechne* den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+$a)\;\;$
+
+<!-- data-solution-button="5"-->
+$8642 - 3210=$[[  5432  ]] 
+</div>
+
+<div class="flex-child">
+$b)\;\;$
+
+<!-- data-solution-button="5"-->
+$9753 - 6421=$[[  3332  ]] 
+</div>
+
+<div class="flex-child">
+$c)\;\;$
+
+<!-- data-solution-button="5"-->
+$8642 - 4200=$[[  4442  ]] 
+</div>
+
+<div class="flex-child">
+$d)\;\;$
+
+<!-- data-solution-button="5"-->
+$7531 - 4210=$[[  3321  ]] 
+</div>
+
+<div class="flex-child">
+$e)\;\;$
+
+<!-- data-solution-button="5"-->
+$8640 - 4200=$[[  4440  ]] 
+</div>
+
+<div class="flex-child">
+$f)\;\;$
+
+<!-- data-solution-button="5"-->
+$9751 - 6420=$[[  3331  ]] 
+</div>
+
+<div class="flex-child">
+$g)\;\;$
+
+<!-- data-solution-button="5"-->
+$8643 - 4201=$[[  4442  ]] 
+</div>
+
+<div class="flex-child">
+$h)\;\;$
+
+<!-- data-solution-button="5"-->
+$7532 - 4210=$[[  3322  ]] 
+</div>
+
+<div class="flex-child">
+$i)\;\;$
+
+<!-- data-solution-button="5"-->
+$9754 - 6421=$[[  3333  ]] 
+</div>
+
+</section>
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30"> __Aufgabe 2:__ *Berechne* den Wert des Terms.
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+$a)\;\;$
+
+<!-- data-solution-button="5"-->
+$8427 - 3958=$[[  4469  ]] 
+</div>
+
+<div class="flex-child">
+$b)\;\;$
+
+<!-- data-solution-button="5"-->
+$7534 - 2867=$[[  4667  ]] 
+</div>
+
+<div class="flex-child">
+$c)\;\;$
+
+<!-- data-solution-button="5"-->
+$9615 - 4879=$[[  4736  ]] 
+</div>
+
+<div class="flex-child">
+$d)\;\;$
+
+<!-- data-solution-button="5"-->
+$7251 - 3684=$[[  3567  ]] 
+</div>
+
+<div class="flex-child">
+$e)\;\;$
+
+<!-- data-solution-button="5"-->
+$8542 - 4968=$[[  3574  ]] 
+</div>
+
+<div class="flex-child">
+$f)\;\;$
+
+<!-- data-solution-button="5"-->
+$6385 - 2796=$[[  3589  ]] 
+</div>
+
+<div class="flex-child">
+$g)\;\;$
+
+<!-- data-solution-button="5"-->
+$9724 - 6839=$[[  2885  ]] 
+</div>
+
+<div class="flex-child">
+$h)\;\;$
+
+<!-- data-solution-button="5"-->
+$8153 - 4297=$[[  3856  ]] 
+</div>
+
+<div class="flex-child">
+$i)\;\;$
+
+<!-- data-solution-button="5"-->
+$7461 - 3578=$[[  3883  ]] 
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30"> __Aufgabe 3:__ *Berechne* den Wert des Terms.
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+$a)\;\;$
+
+<!-- data-solution-button="5"-->
+$9625 - 3814=$[[  5811  ]] 
+</div>
+
+<div class="flex-child">
+$b)\;\;$
+
+<!-- data-solution-button="5"-->
+$8742 - 5296=$[[  3446  ]] 
+</div>
+
+<div class="flex-child">
+$c)\;\;$
+
+<!-- data-solution-button="5"-->
+$7538 - 2469=$[[  5069  ]] 
+</div>
+
+<div class="flex-child">
+$d)\;\;$
+
+<!-- data-solution-button="5"-->
+$6804 - 3597=$[[  3207  ]] 
+</div>
+
+<div class="flex-child">
+$e)\;\;$
+
+<!-- data-solution-button="5"-->
+$5917 - 2834=$[[  3083  ]] 
+</div>
+
+<div class="flex-child">
+$f)\;\;$
+
+<!-- data-solution-button="5"-->
+$8421 - 5796=$[[  2625  ]] 
+</div>
+
+<div class="flex-child">
+$g)\;\;$
+
+<!-- data-solution-button="5"-->
+$7250 - 4189=$[[  3061  ]] 
+</div>
+
+<div class="flex-child">
+$h)\;\;$
+
+<!-- data-solution-button="5"-->
+$6398 - 2547=$[[  3851  ]] 
+</div>
+
+<div class="flex-child">
+$i)\;\;$
+
+<!-- data-solution-button="5"-->
+$9573 - 6842=$[[  2731  ]] 
+</div>
+
+</section>
+
+
+
+
 
 
 
 #### Multiplikation
 
 
-    {{|>}} Die **Multiplikation** ist die erste abkürzende Schreibweise, die in der Schule eingeführt wird. Dabei wird die zum Beispiel Rechnung $3+3+3+3$ abgekürzt als $4 \cdot 3$ geschrieben, also vier mal die Drei, was durch den **Multiplikationsoperator** $\cdot$ beschrieben wird. Werden also gleichwertige **Summanden** **aufaddiert**, dann kann dies durch die **Multiplikation** im Sinne der Anzahl der **Summanden** mal dem Wert des **Summanden** beschrieben werden. Folglich werden die beiden **Faktoren** miteinander **multipliziert** und bilden ein **Produkt**, während der **Wert des Produkts** auf der anderen Seite des **Gleichheitszeichen** steht.
+    {{|>}} Die *Multiplikation* ist die erste abkürzende Schreibweise, die in der Schule eingeführt wird. Dabei wird die zum Beispiel Rechnung $3+3+3+3$ abgekürzt als $4 \cdot 3$ geschrieben, also vier mal die Drei, was durch den *Multiplikationsoperator* $\cdot$ beschrieben wird. Werden also gleichwertige *Summanden* *aufaddiert*, dann kann dies durch die *Multiplikation* im Sinne der Anzahl der *Summanden* mal dem Wert des *Summanden* beschrieben werden. Folglich werden die beiden *Faktoren* miteinander *multipliziert* und bilden ein *Produkt*, während der *Wert des Produkts* auf der anderen Seite des *Gleichheitszeichen* steht.
 
 
 $$
@@ -1255,7 +1991,7 @@ $$
 
 
 
-Als Beispiel mit **Zahlen**:
+Als Beispiel mit *Zahlen*:
 
 $$
 \begin{equation}
@@ -1265,7 +2001,7 @@ $$
 \end{equation}  
 $$
 
-    {{|>}} Am Beispiel kann schon erkannt werden, dass die Anzahl der gleichwertigen **Summanden** und der Wert des **Summanden** vertauscht werden kann. \
+    {{|>}} Am Beispiel kann schon erkannt werden, dass die Anzahl der gleichwertigen *Summanden* und der Wert des *Summanden* vertauscht werden kann. \
 
 
 $$
@@ -1277,7 +2013,7 @@ $$
 \end{equation}  
 $$
 
-    {{|>}} Diese Rechnung kann ebenfalls geometrisch interpretiert werden, in dem mehrfache Schrittfolgen gleicher Werte am **Zahlenstrahl** vollzogen oder eine zweidimensionale **rechteckige** Anordnung von **Einheitsflächen** betrachtet wird. Beide Interpretationen werden am Beispiel $2 \cdot 4$ dargestellt: \
+    {{|>}} Diese Rechnung kann ebenfalls geometrisch interpretiert werden, in dem mehrfache Schrittfolgen gleicher Werte am *Zahlenstrahl* vollzogen oder eine zweidimensionale *rechteckige* Anordnung von *Einheitsflächen* betrachtet wird. Beide Interpretationen werden am Beispiel $2 \cdot 4$ dargestellt: \
 
 
 
@@ -1369,10 +2105,10 @@ $$
 </center>
 
 
-    {{|>}} Es wird deutlich, dass die **Multiplikation** das **Assoziativgesetz** sowie das **Kommutativgesetz** erfüllt. \
+    {{|>}} Es wird deutlich, dass die *Multiplikation* das *Assoziativgesetz* sowie das *Kommutativgesetz* erfüllt. \
 
 
-**Kommutativgesetz** für die **Multiplikation**: 
+*Kommutativgesetz* für die *Multiplikation*: 
 
 $$
 \begin{equation}
@@ -1383,7 +2119,7 @@ $$
 $$
 
 
-**Assoziativgesetz** für die **Multiplikation**: 
+*Assoziativgesetz* für die *Multiplikation*: 
 
 $$
 \begin{equation}
@@ -1394,7 +2130,7 @@ $$
 $$
 
 
-    {{|>}} Die schriftliche **Multiplikation** sieht Zahlen von $0$ bis $9 \cdot 9 = 81$ vor, da auch hier die einzelnen **Ziffern** der Zahl nacheinander bearbeitet werden. Die **Multiplikation** kann in mehreren Schritten aus der **Addition** heraus eingeführt werden. Hierbei wird das Beispiel $3463 \cdot 5$ betrachtet:  \
+    {{|>}} Die schriftliche *Multiplikation* sieht Zahlen von $0$ bis $9 \cdot 9 = 81$ vor, da auch hier die einzelnen *Ziffern* der Zahl nacheinander bearbeitet werden. Die *Multiplikation* kann in mehreren Schritten aus der *Addition* heraus eingeführt werden. Hierbei wird das Beispiel $3463 \cdot 5$ betrachtet:  \
 
 
 
@@ -1438,7 +2174,7 @@ $$
 
 
 
-    {{|>}} Hierbei wird deutlich, dass die Schreibweisen sich verkürzen, sodass bei der dritten Variante die Merkzahlen im **Index** der Ziffern des ersten **Faktors** geschrieben wurden. Dies ist nicht mehr übersichtlich genug, wenn beide **Faktoren** über mehrere Ziffern verfügen, sodass dann die Merkzahlen entweder seperat niedergeschrieben oder im Kopf behalten werden müssen. \
+    {{|>}} Hierbei wird deutlich, dass die Schreibweisen sich verkürzen, sodass bei der dritten Variante die Merkzahlen im *Index* der Ziffern des ersten *Faktors* geschrieben wurden. Dies ist nicht mehr übersichtlich genug, wenn beide *Faktoren* über mehrere Ziffern verfügen, sodass dann die Merkzahlen entweder seperat niedergeschrieben oder im Kopf behalten werden müssen. \
 
 
 $$
@@ -1453,13 +2189,13 @@ $$
 $$
 
 
-    {{|>}} Aus der Gleichung ist zu erkennen, dass die $2$ auf die Zahl $7$ wirkt und danach auf die $3$. Dabei wird die Zehn der Rechnung $2 \cdot 7 = 14$ mit zur nächsten Ziffer von rechts gezählt. Das Ergebnis wird so notiert, dass die am weitest stehende **Ziffer** direkt unter der betrachten Zahl steht (im Beispiel unter der $2$). Anschließend wird dies mit der nächsten **Ziffer**, hier die Drei, wiederholt. Die untereinander geschriebenen Zahlen werden dann **addiert**, sodass sich der Wert des **Terms** ergibt. \
+    {{|>}} Aus der Gleichung ist zu erkennen, dass die $2$ auf die Zahl $7$ wirkt und danach auf die $3$. Dabei wird die Zehn der Rechnung $2 \cdot 7 = 14$ mit zur nächsten Ziffer von rechts gezählt. Das Ergebnis wird so notiert, dass die am weitest stehende *Ziffer* direkt unter der betrachten Zahl steht (im Beispiel unter der $2$). Anschließend wird dies mit der nächsten *Ziffer*, hier die Drei, wiederholt. Die untereinander geschriebenen Zahlen werden dann *addiert*, sodass sich der Wert des *Terms* ergibt. \
 
 
 
 
 
-    {{|>}} Da die **Multiplikation** die abkürzende Schreibweise der **Addition** von gleichwertigen **Summanden** ist, ergibt sich daraus die erste **Vorrangsregel**: Punktrechnungen werden vor Strichrechnungen durchgeführt. \
+    {{|>}} Da die *Multiplikation* die abkürzende Schreibweise der *Addition* von gleichwertigen *Summanden* ist, ergibt sich daraus die erste *Vorrangsregel*: Punktrechnungen werden vor Strichrechnungen durchgeführt. \
 
 $$
 \begin{equation}
@@ -1486,6 +2222,223 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ *Berechne* den Wert des Terms.
+
+<section class="flex-container">
+
+<div class="flex-child">
+$a)\;\;$
+
+<!-- data-solution-button="5"-->
+$3245 \cdot 7=$[[  22715  ]] 
+</div>
+
+<div class="flex-child">
+$b)\;\;$
+
+<!-- data-solution-button="5"-->
+$4862 \cdot 9=$[[  43758  ]] 
+</div>
+
+<div class="flex-child">
+$c)\;\;$
+
+<!-- data-solution-button="5"-->
+$7513 \cdot 4=$[[  30052  ]] 
+</div>
+
+<div class="flex-child">
+$d)\;\;$
+
+<!-- data-solution-button="5"-->
+$6294 \cdot 6=$[[  37764  ]] 
+</div>
+
+<div class="flex-child">
+$e)\;\;$
+
+<!-- data-solution-button="5"-->
+$5921 \cdot 8=$[[  47368  ]] 
+</div>
+
+<div class="flex-child">
+$f)\;\;$
+
+<!-- data-solution-button="5"-->
+$8472 \cdot 5=$[[  42360  ]] 
+</div>
+
+<div class="flex-child">
+$g)\;\;$
+
+<!-- data-solution-button="5"-->
+$4386 \cdot 3=$[[  13158  ]] 
+</div>
+
+<div class="flex-child">
+$h)\;\;$
+
+<!-- data-solution-button="5"-->
+$7154 \cdot 2=$[[  14308  ]] 
+</div>
+
+<div class="flex-child">
+$i)\;\;$
+
+<!-- data-solution-button="5"-->
+$9643 \cdot 7=$[[  67501  ]] 
+</div>
+
+</section>
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 2:__ *Berechne* den Wert des Terms.
+
+<section class="flex-container">
+
+<div class="flex-child">
+$a)\;\;$
+
+<!-- data-solution-button="5"-->
+$3245 \cdot 12=$[[  38940  ]] 
+</div>
+
+<div class="flex-child">
+$b)\;\;$
+
+<!-- data-solution-button="5"-->
+$4862 \cdot 27=$[[  131274  ]] 
+</div>
+
+<div class="flex-child">
+$c)\;\;$
+
+<!-- data-solution-button="5"-->
+$7513 \cdot 34=$[[  255442  ]] 
+</div>
+
+<div class="flex-child">
+$d)\;\;$
+
+<!-- data-solution-button="5"-->
+$6294 \cdot 46=$[[  289524  ]] 
+</div>
+
+<div class="flex-child">
+$e)\;\;$
+
+<!-- data-solution-button="5"-->
+$5921 \cdot 53=$[[  313813  ]] 
+</div>
+
+<div class="flex-child">
+$f)\;\;$
+
+<!-- data-solution-button="5"-->
+$8472 \cdot 65=$[[  550680  ]] 
+</div>
+
+<div class="flex-child">
+$g)\;\;$
+
+<!-- data-solution-button="5"-->
+$4386 \cdot 72=$[[  315792  ]] 
+</div>
+
+<div class="flex-child">
+$h)\;\;$
+
+<!-- data-solution-button="5"-->
+$7154 \cdot 84=$[[  600936  ]] 
+</div>
+
+<div class="flex-child">
+$i)\;\;$
+
+<!-- data-solution-button="5"-->
+$9643 \cdot 91=$[[  877513  ]] 
+</div>
+
+</section>
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 3:__ *Berechne* den Wert des Terms.
+
+<section class="flex-container">
+
+<div class="flex-child">
+$a)\;\;$
+
+<!-- data-solution-button="5"-->
+$324 \cdot 187=$[[  60588  ]] 
+</div>
+
+<div class="flex-child">
+$b)\;\;$
+
+<!-- data-solution-button="5"-->
+$486 \cdot 273=$[[  132678  ]] 
+</div>
+
+<div class="flex-child">
+$c)\;\;$
+
+<!-- data-solution-button="5"-->
+$751 \cdot 342=$[[  256782  ]] 
+</div>
+
+<div class="flex-child">
+$d)\;\;$
+
+<!-- data-solution-button="5"-->
+$629 \cdot 468=$[[  294372  ]] 
+</div>
+
+<div class="flex-child">
+$e)\;\;$
+
+<!-- data-solution-button="5"-->
+$592 \cdot 531=$[[  314952  ]] 
+</div>
+
+<div class="flex-child">
+$f)\;\;$
+
+<!-- data-solution-button="5"-->
+$847 \cdot 659=$[[  558173  ]] 
+</div>
+
+<div class="flex-child">
+$g)\;\;$
+
+<!-- data-solution-button="5"-->
+$438 \cdot 726=$[[  318228  ]] 
+</div>
+
+<div class="flex-child">
+$h)\;\;$
+
+<!-- data-solution-button="5"-->
+$715 \cdot 843=$[[  602145  ]] 
+</div>
+
+<div class="flex-child">
+$i)\;\;$
+
+<!-- data-solution-button="5"-->
+$964 \cdot 917=$[[  883388  ]] 
+</div>
+
+</section>
+
+
 
 
 
@@ -1493,7 +2446,7 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 #### Division
 
-    {{|>}} Die **Division** stellt die umkehrende Frage der **Multiplikation**: "Wie oft passt die Zahl in die andere Zahl?". Bei der **Division** wird der **Dividend** durch den **Divisor** **dividiert**, was immer durch den **Divisionsoperator** $:$ beschrieben wird. Der gesamte **Term** ist der sogenannte **Quotient**, während der **Wert des Quotienten** auf der anderen Seite des **Gleichheitszeichen** $=$ geschrieben wird. \
+    {{|>}} Die *Division* stellt die umkehrende Frage der *Multiplikation*: "Wie oft passt die Zahl in die andere Zahl?". Bei der *Division* wird der *Dividend* durch den *Divisor* *dividiert*, was immer durch den *Divisionsoperator* $:$ beschrieben wird. Der gesamte *Term* ist der sogenannte *Quotient*, während der *Wert des Quotienten* auf der anderen Seite des *Gleichheitszeichen* $=$ geschrieben wird. \
 
 
 $$
@@ -1504,14 +2457,14 @@ $$
 \end{equation}  
 $$
 
-    Da es sich um die Umkehrung der **Multiplikation** handelt, sollten auch wiederum alle Zahlen von $0$ bis $81$ beherrscht werden. Diese Umkehrung wird besonders deutlich, wenn die **Multiplikation** wie in dem folgenden Beispiel verwendet wird.
+    Da es sich um die Umkehrung der *Multiplikation* handelt, sollten auch wiederum alle Zahlen von $0$ bis $81$ beherrscht werden. Diese Umkehrung wird besonders deutlich, wenn die *Multiplikation* wie in dem folgenden Beispiel verwendet wird.
 
 
 
 
 
 
-Als Beispiel mit **Zahlen**:
+Als Beispiel mit *Zahlen*:
 
 $$
 
@@ -1544,11 +2497,11 @@ $$
 $$
 
 
-    {{|>}} Bei der schriftlichen **Division** wird zunächst gefragt "Wie oft passt der **Divisor** ($3$) in die erste Ziffer des **Dividenden** ($2$)?" Die Antwort wäre "`Null mal"' und somit ist die Null die erste **Ziffer** des **Wert** des **Terms**, dem sogenannten **Quotienten**. Anschließend wir die gefundene **Ziffer** des **Quotienten** mit dem **Divisor** **multipliziert** und dieser **Wert** dieser Rechnung von der ersten **Ziffer** **subtrahiert**. Dann wird die nächste **Ziffer** zur Betrachtung mit nach unten gezogen (im Beispiel die Zahl $4$) und nun die sich danach immer wiederholende Frage "Wie oft passt der **Divisor** in diese Zahl?" gestellt. Die Antwort wird beim **Wert** des **Terms** notiert (im Beispiel $8$) und diese **Ziffer** des **Quotienten** dann wieder **multipliziert** mit dem **Divisor** von der besagten **Zahl** **subtrahiert** und anschließend die nächste **Ziffer** des **Dividenden** zur Betrachtung nach unten gezogen. Dieses Prozedur wiederholt sich solange bis alle **Zahlen** betrachtet wurden. \
+    {{|>}} Bei der schriftlichen *Division* wird zunächst gefragt "Wie oft passt der *Divisor* ($3$) in die erste Ziffer des *Dividenden* ($2$)?" Die Antwort wäre "`Null mal"' und somit ist die Null die erste *Ziffer* des *Wert* des *Terms*, dem sogenannten *Quotienten*. Anschließend wir die gefundene *Ziffer* des *Quotienten* mit dem *Divisor* *multipliziert* und dieser *Wert* dieser Rechnung von der ersten *Ziffer* *subtrahiert*. Dann wird die nächste *Ziffer* zur Betrachtung mit nach unten gezogen (im Beispiel die Zahl $4$) und nun die sich danach immer wiederholende Frage "Wie oft passt der *Divisor* in diese Zahl?" gestellt. Die Antwort wird beim *Wert* des *Terms* notiert (im Beispiel $8$) und diese *Ziffer* des *Quotienten* dann wieder *multipliziert* mit dem *Divisor* von der besagten *Zahl* *subtrahiert* und anschließend die nächste *Ziffer* des *Dividenden* zur Betrachtung nach unten gezogen. Dieses Prozedur wiederholt sich solange bis alle *Zahlen* betrachtet wurden. \
 
 
 
-    {{|>}} Bei höheren **Zahlen** im **Divisor** lohnt es sich diesen in zwei **Zahlen** zu zerlegen. So kann zum Beispiel der **Divisor** $72$ in zwei **Divisoren** $8$ und $9$ zerlegt werden. Dann muss zu erst durch eine **Zahl** **dividiert** werden und anschließend der **Quotient** aus der ersten **Division** durch die zweite **Zahl** **dividiert** werden. Da die **Division** mit am zeitaufwendigsten ist, wird später die **Bruchrechnung** eingeführt, welche eine **Division** bis zum **Wert** des **Terms** hin herauszögern kann.
+    {{|>}} Bei höheren *Zahlen* im *Divisor* lohnt es sich diesen in zwei *Zahlen* zu zerlegen. So kann zum Beispiel der *Divisor* $72$ in zwei *Divisoren* $8$ und $9$ zerlegt werden. Dann muss zu erst durch eine *Zahl* *dividiert* werden und anschließend der *Quotient* aus der ersten *Division* durch die zweite *Zahl* *dividiert* werden. Da die *Division* mit am zeitaufwendigsten ist, wird später die *Bruchrechnung* eingeführt, welche eine *Division* bis zum *Wert* des *Terms* hin herauszögern kann.
 
  
 <br>
@@ -1563,10 +2516,245 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ *Berechne* den Wert des Terms.
+
+
+<section class="flex-container">
+
+
+<div class="flex-child">
+$a)\;\;$
+
+<!-- data-solution-button="5"-->
+$8424 : 4=$[[  2106  ]] 
+</div>
+
+<div class="flex-child">
+$b)\;\;$
+
+<!-- data-solution-button="5"-->
+$9360 : 6=$[[  1560  ]] 
+</div>
+
+<div class="flex-child">
+$c)\;\;$
+
+<!-- data-solution-button="5"-->
+$7280 : 5=$[[  1456  ]] 
+</div>
+
+<div class="flex-child">
+$d)\;\;$
+
+<!-- data-solution-button="5"-->
+$8643 : 3=$[[  2881  ]] 
+</div>
+
+<div class="flex-child">
+$e)\;\;$
+
+<!-- data-solution-button="5"-->
+$9152 : 8=$[[  1144  ]] 
+</div>
+
+<div class="flex-child">
+$f)\;\;$
+
+<!-- data-solution-button="5"-->
+$6727 : 7=$[[  961  ]] 
+</div>
+
+<div class="flex-child">
+$g)\;\;$
+
+<!-- data-solution-button="5"-->
+$7944 : 4=$[[  1986  ]] 
+</div>
+
+<div class="flex-child">
+$h)\;\;$
+
+<!-- data-solution-button="5"-->
+$8580 : 5=$[[  1716  ]] 
+</div>
+
+<div class="flex-child">
+$i)\;\;$
+
+<!-- data-solution-button="5"-->
+$9990 : 9=$[[  1110  ]] 
+</div>
+
+
+
+</section>
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 2:__ *Berechne* den Wert des Terms.
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+$a)\;\;$
+
+<!-- data-solution-button="5"-->
+$85344 : 8=$[[  10668  ]] 
+</div>
+
+<div class="flex-child">
+$b)\;\;$
+
+<!-- data-solution-button="5"-->
+$91872 : 9=$[[  10208  ]] 
+</div>
+
+<div class="flex-child">
+$c)\;\;$
+
+<!-- data-solution-button="5"-->
+$76440 : 6=$[[  12740  ]] 
+</div>
+
+<div class="flex-child">
+$d)\;\;$
+
+<!-- data-solution-button="5"-->
+$84270 : 7=$[[  12039  ]] 
+</div>
+
+<div class="flex-child">
+$e)\;\;$
+
+<!-- data-solution-button="5"-->
+$69336 : 4=$[[  17334  ]] 
+</div>
+
+<div class="flex-child">
+$f)\;\;$
+
+<!-- data-solution-button="5"-->
+$92448 : 8=$[[  11556  ]] 
+</div>
+
+<div class="flex-child">
+$g)\;\;$
+
+<!-- data-solution-button="5"-->
+$81648 : 3=$[[  27216  ]] 
+</div>
+
+<div class="flex-child">
+$h)\;\;$
+
+<!-- data-solution-button="5"-->
+$73584 : 6=$[[  12264  ]] 
+</div>
+
+<div class="flex-child">
+$i)\;\;$
+
+<!-- data-solution-button="5"-->
+$88209 : 9=$[[  9801  ]] 
+</div>
+
+</section>
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30"> __Aufgabe 3:__ *Berechne* den Wert des Terms.
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+$a)\;\;$
+
+<!-- data-solution-button="5"-->
+$87552 : 16=$[[  5472  ]] 
+</div>
+
+<div class="flex-child">
+$b)\;\;$
+
+<!-- data-solution-button="5"-->
+$94248 : 18=$[[  5236  ]] 
+</div>
+
+<div class="flex-child">
+$c)\;\;$
+
+<!-- data-solution-button="5"-->
+$86184 : 24=$[[  3591  ]] 
+</div>
+
+<div class="flex-child">
+$d)\;\;$
+
+<!-- data-solution-button="5"-->
+$91584 : 27=$[[  3392  ]] 
+</div>
+
+<div class="flex-child">
+$e)\;\;$
+
+<!-- data-solution-button="5"-->
+$88452 : 36=$[[  2457  ]] 
+</div>
+
+<div class="flex-child">
+$f)\;\;$
+
+<!-- data-solution-button="5"-->
+$97632 : 28=$[[  3480  ]] 
+</div>
+
+<div class="flex-child">
+$g)\;\;$
+
+<!-- data-solution-button="5"-->
+$89424 : 45=$[[  1987  ]] 
+</div>
+
+<div class="flex-child">
+$h)\;\;$
+
+<!-- data-solution-button="5"-->
+$98784 : 48=$[[  2058  ]] 
+</div>
+
+<div class="flex-child">
+$i)\;\;$
+
+<!-- data-solution-button="5"-->
+$91854 : 54=$[[  1701  ]] 
+</div>
+
+</section>
+
+
+
+
+
+
+
 
 
 ##### Übungen - Arithmetik mit natürlichen Zahlen
 
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+
+
+
+<!-- data-solution-button="5"-->
+
+<section class="flex-container">
+
+
+
+</section>
 
 
 
@@ -1580,7 +2768,16 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
 
+
+<!-- data-solution-button="5"-->
+
+<section class="flex-container">
+
+
+
+</section>
 
 
 ### Bruchrechnung
@@ -1591,7 +2788,16 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
 
+
+<!-- data-solution-button="5"-->
+
+<section class="flex-container">
+
+
+
+</section>
 
 
 
@@ -1606,25 +2812,25 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 
 
-
-
-
-__Aufgabe 1:__ **Gib** die Zahl gerundet auf drei Nachkommastellen **an**.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ *Gib* die Zahl gerundet auf drei Nachkommastellen *an*.
 
 <br>
 <section class="flex-container">
 <div class="flex-child">
 <br>
+<!-- data-solution-button="5"-->
 __$a)\;\;$__ $0,\overline{6} \approx$ [[ 0,667 ]] 
 <br>
 </div>
 <div class="flex-child">
 <br>
+<!-- data-solution-button="5"-->
 __$b)\;\;$__ $4,\overline{2} \approx$ [[ 4,222 ]] 
 <br>
 </div>
 <div class="flex-child">
 <br>
+<!-- data-solution-button="5"-->
 __$c)\;\;$__ $1,\overline{633} \approx$ [[ 1,634 ]] 
 
 </div>
@@ -1635,22 +2841,27 @@ __$c)\;\;$__ $1,\overline{633} \approx$ [[ 1,634 ]]
 
 
 
-__Aufgabe 2:__ **Gib** die Zahl gerundet auf drei Nachkommastellen **an**.
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 2:__ *Gib* die Zahl gerundet auf drei Nachkommastellen *an*.
 
 <br>
 <section class="flex-container">
 <div class="flex-child">
 <br>
+<!-- data-solution-button="5"-->
 __$a)\;\;$__ $0,\overline{8} \approx$ [[ 0,889 ]] 
 <br>
 </div>
 <div class="flex-child">
 <br>
+<!-- data-solution-button="5"-->
 __$b)\;\;$__ $1,\overline{35} \approx$ [[ 1,354 ]] 
 <br>
 </div>
 <div class="flex-child">
 <br>
+<!-- data-solution-button="5"-->
 __$c)\;\;$__ $7,\overline{645891} \approx$ [[ 7,646 ]] 
 
 </div>
@@ -1661,22 +2872,25 @@ __$c)\;\;$__ $7,\overline{645891} \approx$ [[ 7,646 ]]
 
 
 
-__Aufgabe 3:__ **Gib** die Zahl gerundet auf drei Nachkommastellen **an**.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 3:__ *Gib* die Zahl gerundet auf drei Nachkommastellen *an*.
 
 <br>
 <section class="flex-container">
 <div class="flex-child">
 <br>
+<!-- data-solution-button="5"-->
 __$a)\;\;$__ $5,\overline{91} \approx$ [[ 5,919 ]] 
 <br>
 </div>
 <div class="flex-child">
 <br>
+<!-- data-solution-button="5"-->
 __$b)\;\;$__ $2,\overline{7} \approx$ [[ 2,778 ]] 
 <br>
 </div>
 <div class="flex-child">
 <br>
+<!-- data-solution-button="5"-->
 __$c)\;\;$__ $0,\overline{45} \approx$ [[ 0,455 ]] 
 
 </div>
@@ -1686,22 +2900,25 @@ __$c)\;\;$__ $0,\overline{45} \approx$ [[ 0,455 ]]
 
 
 
-__Aufgabe 4:__ **Gib** die Zahl gerundet auf drei Nachkommastellen **an**.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 4:__ *Gib* die Zahl gerundet auf drei Nachkommastellen *an*.
 
 <br>
 <section class="flex-container">
 <div class="flex-child">
 <br>
+<!-- data-solution-button="5"-->
 __$a)\;\;$__ $0,\overline{9} \approx$ [[  1,000 ]] 
 <br>
 </div>
 <div class="flex-child">
 <br>
+<!-- data-solution-button="5"-->
 __$b)\;\;$__ $13,\overline{97} \approx$ [[ 13,980 ]] 
 <br>
 </div>
 <div class="flex-child">
 <br>
+<!-- data-solution-button="5"-->
 __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]] 
 
 </div>
@@ -1719,6 +2936,17 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+
+
+<!-- data-solution-button="5"-->
+
+<section class="flex-container">
+
+
+
+</section>
+
 
 
 
@@ -1732,6 +2960,17 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+
+
+<!-- data-solution-button="5"-->
+
+<section class="flex-container">
+
+
+
+</section>
+
 
 ### Prozentrechnung
 
@@ -1742,6 +2981,17 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+
+<!-- data-solution-button="5"-->
+
+<section class="flex-container">
+
+
+
+</section>
+
+
 
 ### Negative Zahlen
 
@@ -1749,6 +2999,17 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 #### Übungen - Negative Zahlen
 
 
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+
+
+<!-- data-solution-button="5"-->
+
+<section class="flex-container">
+
+
+
+</section>
 
 
 
@@ -1759,6 +3020,17 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+
+
+<!-- data-solution-button="5"-->
+
+<section class="flex-container">
+
+
+
+</section>
+
 ### Distributivgesetz
 
 
@@ -1766,6 +3038,17 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 #### Übungen - Distributivgesetz
 
 
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+
+
+<!-- data-solution-button="5"-->
+
+<section class="flex-container">
+
+
+
+</section>
 
 
 
@@ -1777,6 +3060,17 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+
+
+<!-- data-solution-button="5"-->
+
+<section class="flex-container">
+
+
+
+</section>
+
 
 ### Logarithmen
 
@@ -1784,6 +3078,17 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 #### Übungen - Logarithmen
 
 
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+
+
+<!-- data-solution-button="5"-->
+
+<section class="flex-container">
+
+
+
+</section>
 
 ### Äquivalenzumformung
 
@@ -1793,6 +3098,17 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+
+
+<!-- data-solution-button="5"-->
+
+<section class="flex-container">
+
+
+
+</section>
+
 
 ### Quadratische Ergänzung
 
@@ -1801,6 +3117,17 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+
+
+<!-- data-solution-button="5"-->
+
+<section class="flex-container">
+
+
+
+</section>
+
 
 ### Substitution
 
@@ -1808,6 +3135,17 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 #### Übungen - Substitution
 
 
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+
+
+<!-- data-solution-button="5"-->
+
+<section class="flex-container">
+
+
+
+</section>
 
 
 
@@ -1819,12 +3157,34 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+
+<!-- data-solution-button="5"-->
+
+<section class="flex-container">
+
+
+
+</section>
+
+
 ### Ungleichungen
 
 
 #### Übungen - Ungleichungen
 
 
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+
+
+<!-- data-solution-button="5"-->
+
+<section class="flex-container">
+
+
+
+</section>
 
 
 
@@ -1835,6 +3195,17 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+
+
+<!-- data-solution-button="5"-->
+
+<section class="flex-container">
+
+
+
+</section>
+
 
 
 ### Zahlensysteme
@@ -1842,6 +3213,17 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 #### Übungen - Zahlensysteme
 
 
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+
+
+<!-- data-solution-button="5"-->
+
+<section class="flex-container">
+
+
+
+</section>
 
 
 ### Einheiten
@@ -1851,6 +3233,17 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+
+
+<!-- data-solution-button="5"-->
+
+<section class="flex-container">
+
+
+
+</section>
+
 ### Verhältnisse
 
 
@@ -1858,5 +3251,32 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+
+
+
+<!-- data-solution-button="5"-->
+
+<section class="flex-container">
+
+
+
+</section>
+
+
 ### Gemischte Aufgaben
 
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+
+
+
+<!-- data-solution-button="5"-->
+
+<section class="flex-container">
+
+
+
+</section>
