@@ -376,7 +376,436 @@ $$
 #### Übungsaufgaben zu Mengen
 
 
-Under Construction
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 1:__ **Wähle** die kleinste Zahlenmenge **aus**, in der die jeweilige Zahl ist.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$a)\;\;$__ $ -4 $ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$b)\;\;$__ $ 6 $ [[($\mathbb{N}$)|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$c)\;\;$__ $ 0,03 $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$d)\;\;$__ $ \frac{7}{8} $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
+
+</div>
+</section>
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 2:__ **Wähle** die kleinste Zahlenmenge **aus**, in der die jeweilige Zahl ist.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$a)\;\;$__ $ -\frac{3}{7} $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$b)\;\;$__ $ \sqrt{3} $ [[$\mathbb{N}$|$\mathbb{Z}$|$\mathbb{Q}$|($\mathbb{R}$)]] 
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$c)\;\;$__ $ 13^2 $ [[($\mathbb{N}$)|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$d)\;\;$__ $ -7 $ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
+
+</div>
+</section>
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 3:__ **Wähle** die kleinste Zahlenmenge **aus**, in der die jeweilige Zahl ist.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$a)\;\;$__ $ 7,23 $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$b)\;\;$__ $ -2 $ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$c)\;\;$__ $ \pi $ [[$\mathbb{N}$|$\mathbb{Z}$|$\mathbb{Q}$|($\mathbb{R}$)]] 
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$d)\;\;$__ $ 3,\bar{3} $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
+
+</div>
+</section>
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 4:__ **Wähle** die kleinste Zahlenmenge **aus**, in der die jeweilige Zahl ist.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$a)\;\;$__ $ \frac{12}{4} $ [[$(\mathbb{N})$|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$b)\;\;$__ $ 0,0001 $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$c)\;\;$__ $ -\sqrt{9} $ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$d)\;\;$__ $ -\sqrt[5]{7} $ [[$\mathbb{N}$|$\mathbb{Z}$|$\mathbb{Q}$|($\mathbb{R}$)]] 
+
+</div>
+</section>
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  __Aufgabe 5:__ **Wähle** die kleinste Zahlenmenge **aus**, in der der beschriebene Term ist.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$a)\;\;$__ $ 41:7 + 57:7 \in$ [[$(\mathbb{N})$|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$b)\;\;$__ $ \sqrt{49}-11,5 \in$ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$c)\;\;$__ $ \dfrac{2}{3}-\dfrac{14}{9}-0,\bar{1} \in$ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$d)\;\;$__ $ \dfrac{8}{7}-\pi  \in$ [[$\mathbb{N}$|$\mathbb{Z}$|$\mathbb{Q}$|($\mathbb{R}$)]] 
+
+</div>
+</section>
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  __Aufgabe 6:__ **Wähle** die kleinste Zahlenmenge **aus**, in der der beschriebene Term ist.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$a)\;\;$__ $ \dfrac{3}{8} + 1,625 \in$ [[($\mathbb{N}$)|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$b)\;\;$__ $ (-5)^3-\sqrt{81} \in$ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$c)\;\;$__ $ \dfrac{7}{3}+\dfrac{8}{7} \in$ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$d)\;\;$__ $ \pi^0-4 \in$ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
+
+</div>
+</section>
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  __Aufgabe 7:__ **Wähle** die kleinste Zahlenmenge **aus**, in der der beschriebene Term ist.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$a)\;\;$__ $ \sqrt{2^5-3^2} \in$ [[$\mathbb{N}$|$\mathbb{Z}$|$\mathbb{Q}$|($\mathbb{R}$)]] 
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$b)\;\;$__ $ \dfrac{\sqrt{8}+\sqrt{18}}{\sqrt{2}} \in$ [[($\mathbb{N}$)|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$c)\;\;$__ $ 0,15-\dfrac{23}{20} \in$ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$d)\;\;$__ $ 1,\bar{4} + 0,\bar{5} \in$ [[($\mathbb{N}$)|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
+
+</div>
+</section>
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  __Aufgabe 8:__ **Wähle** die kleinste Zahlenmenge **aus**, in der der beschriebene Term ist.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$a)\;\;$__ $ -4^3+(-3)^4 \in$ [[($\mathbb{N}$)|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$b)\;\;$__ $ \left(\sqrt{7}+\sqrt{11}\right)^2 \in$ [[$\mathbb{N}$|$\mathbb{Z}$|$\mathbb{Q}$|($\mathbb{R}$)]] 
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$c)\;\;$__ $ 8-\sqrt{6,25} \in$ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$d)\;\;$__ $ -0,45+\sqrt{0,25}+\dfrac{19}{20} \in$ [[($\mathbb{N}$)|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
+
+</div>
+</section>
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 9:__ **Gib** die kleinste beziehungsweise größte Zahl der gegebenen Zahlenmenge **an**. Es gilt $\mathbb{K} \subset \mathbb{N}$.
+
+
+
+
+__$a)\;\;$__ $ \mathbb{K} = \{ 15,28,17,34,26,24,14,32,29,22 \} $\
+
+$\min(\mathbb{K}) = $ [[ 14 ]] \
+$\max(\mathbb{K}) = $ [[ 34 ]] \
+
+
+__$b)\;\;$__ $ \mathbb{K} = \{ 21,24,28,24,26,25,23,24,19,25,27,29,21,22,26 \} $\
+
+
+$\min(\mathbb{K}) = $ [[ 19 ]] \
+$\max(\mathbb{K}) = $ [[ 29 ]] \
+
+
+
+__$c)\;\;$__ $ \mathbb{K} = \{ 14,19,16,15,17,15,18,9,19,11,13,17 \} $\
+
+
+$\min(\mathbb{K}) = $ [[  9 ]] \
+$\max(\mathbb{K}) = $ [[ 19 ]] \
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 10:__ **Gib** die kleinste beziehungsweise größte Zahl der gegebenen Zahlenmenge **an**. Es gilt $\mathbb{K} \subset \mathbb{N}$.
+
+
+__$a)\;\;$__ $ \mathbb{K} = \{ 83,46,55,64,91,75,61,39,84,55,47 \} $\
+
+
+$\min(\mathbb{K}) = $ [[ 39 ]] \
+$\max(\mathbb{K}) = $ [[ 91 ]] \
+
+
+
+__$b)\;\;$__ $ \mathbb{K} = \{ 56,54,55,56,57,55,56,54,53,58,55,56,54,52,56,57 \} $\
+
+
+$\min(\mathbb{K}) = $ [[ 52 ]] \
+$\max(\mathbb{K}) = $ [[ 58 ]] \
+
+
+
+__$c)\;\;$__ $ \mathbb{K} = \{ 29,33,28,31,35,24,36,32,28,27,35,34,29,30,35 \} $\
+
+
+$\min(\mathbb{K}) = $ [[ 24 ]] \
+$\max(\mathbb{K}) = $ [[ 36 ]] \
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 11:__ **Gib** die kleinste beziehungsweise größte Zahl der gegebenen Zahlenmenge **an**. Es gilt $\mathbb{K} \subset \mathbb{N}$.
+
+
+__$a)\;\;$__ $ \mathbb{K} = \{ 45,39,48,51,37,52,46,50,47,38,43,46,51,39,40 \} $\
+
+
+$\min(\mathbb{K}) = $ [[ 37 ]] \
+$\max(\mathbb{K}) = $ [[ 52 ]] \
+
+
+__$b)\;\;$__ $ \mathbb{K} = \{ 34,37,31,32,39,33,34,35,38,32,30,34,39,38,34,33,31 \} $\
+
+
+$\min(\mathbb{K}) = $ [[ 30 ]] \
+$\max(\mathbb{K}) = $ [[ 39 ]] \
+
+
+__$c)\;\;$__ $ \mathbb{K} = \{ 64,67,61,58,60,64,66,68,63,64,60,69,64,65,59,67,68,60 \} $\
+
+
+$\min(\mathbb{K}) = $ [[ 58 ]] \
+$\max(\mathbb{K}) = $ [[ 69 ]] \
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 12:__ **Gib** die obere beziehungsweise untere Schranke der gegebenen Zahlenmenge **an**. Es gilt $\mathbb{K} \subset \mathbb{N}$.
+
+
+__$a)\;\;$__ $ \mathbb{K} = \{ 15,28,17,34,26,24,14,32,29,22 \} $\
+
+
+$\inf(\mathbb{K}) = $ [[ 13 ]] \
+$\sup(\mathbb{K}) = $ [[ 35 ]] \
+
+
+__$b)\;\;$__ $ \mathbb{K} = \{ 21,24,28,24,26,25,23,24,19,25,27,29,21,22,26 \} $\
+
+
+$\inf(\mathbb{K}) = $ [[ 18 ]] \
+$\sup(\mathbb{K}) = $ [[ 30 ]] \
+
+
+__$c)\;\;$__ $ \mathbb{K} = \{ 14,19,16,15,17,15,18,9,19,11,13,17 \} $\
+
+
+$\inf(\mathbb{K}) = $ [[  8 ]] \
+$\sup(\mathbb{K}) = $ [[ 20 ]] \
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 13:__ **Gib** die kleinste beziehungsweise größte Zahl der gegebenen Zahlenmenge **an**. Es gilt $\mathbb{K} \subset \mathbb{N}$.
+
+
+__$a)\;\;$__ $ \mathbb{K} = \{ 83,46,55,64,91,75,61,39,84,55,47 \} $\
+
+
+$\inf(\mathbb{K}) = $ [[ 38 ]] \
+$\sup(\mathbb{K}) = $ [[ 92 ]] \
+
+
+__$b)\;\;$__ $ \mathbb{K} = \{ 56,54,55,56,57,55,56,54,53,58,55,56,54,52,56,57 \} $\
+
+
+$\inf(\mathbb{K}) = $ [[ 51 ]] \
+$\sup(\mathbb{K}) = $ [[ 59 ]] \
+
+
+__$c)\;\;$__ $ \mathbb{K} = \{ 29,33,28,31,35,24,36,32,28,27,35,34,29,30,35 \} $\
+
+
+$\inf(\mathbb{K}) = $ [[ 26 ]] \
+$\sup(\mathbb{K}) = $ [[ 37 ]] \
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 14:__ **Gib** die kleinste beziehungsweise größte Zahl der gegebenen Zahlenmenge **an**. Es gilt $\mathbb{K} \subset \mathbb{N}$.
+
+
+__$a)\;\;$__ $ \mathbb{K} = \{ 45,39,48,51,37,52,46,50,47,38,43,46,51,39,40 \} $\
+
+
+$\inf(\mathbb{K}) = $ [[ 36 ]] \
+$\sup(\mathbb{K}) = $ [[ 53 ]] \
+
+
+__$b)\;\;$__ $ \mathbb{K} = \{ 34,37,31,32,39,33,34,35,38,32,30,34,39,38,34,33,31 \} $\
+
+
+$\inf(\mathbb{K}) = $ [[ 29 ]] \
+$\sup(\mathbb{K}) = $ [[ 40 ]] \
+
+
+__$c)\;\;$__ $ \mathbb{K} = \{ 64,67,61,58,60,64,66,68,63,64,60,69,64,65,59,67,68,60 \} $\
+
+
+$\inf(\mathbb{K}) = $ [[ 57 ]] \
+$\sup(\mathbb{K}) = $ [[ 70 ]] \
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 1:__ 
+
+
+
+
 
 
 
@@ -553,8 +982,8 @@ $$
 
 
 
-<br>
-<br>
+
+
 
 Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:  \
 
@@ -1341,8 +1770,8 @@ $$
 
      {{|>}} Bei dieser Art der Schreibweise, werden die *Zahlen*, die entsprechend ihrer Position in der *Stellenwerttafel* untereinander stehen, einzeln *addiert*. Dabei wird immer bei der *Ziffern* der kleinsten Position in der *Stellenwerttafel* begonnen. Dies ist sind stets die *Ziffern*, die am weitesten rechts bei den *Zahlen* stehen. Wenn die *addierte* Zahl höher ist als Neun, dann wird die Eins der Zehn zur nächsten Zahlenspalte hinzugezählt. Diese Eins wird auch oft Merkeins genannt und ist in der Beispielrechnung rot eingefärbt. Der Vorteil dieser Schreibweise ist es, dass niemals höhere *Zahlen* als $9$ und $9$ *addiert* werden können. Folglich benötigt der Schüler nur ein sehr gutes Zahlenverständnis von der Zahl $0$ bis $18$ um jegliche Additionsaufgabe zu lösen. Falls mehr als zwei *Summanden* (im Beispiel sind $1337$ und $4265$ die *Summanden*) vorkommen ist es immer erlaubt in einer Nebenrechnung zunächst nur zwei *Summanden* zu *addieren* um dann anschließend die *Summe* der ersten beiden *Summanden* mit der nächsten *Summanden* zu verrechnen. \
 
-<br>
-<br>
+
+
 
 Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt: \
 
@@ -1735,8 +2164,8 @@ $$
 
 
 
-<br>
-<br>
+
+
 
 Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:  \
 
@@ -2208,8 +2637,8 @@ $$
 $$
 
 
-<br>
-<br>
+
+
 
 Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:  \
 
@@ -2504,8 +2933,8 @@ $$
     {{|>}} Bei höheren *Zahlen* im *Divisor* lohnt es sich diesen in zwei *Zahlen* zu zerlegen. So kann zum Beispiel der *Divisor* $72$ in zwei *Divisoren* $8$ und $9$ zerlegt werden. Dann muss zu erst durch eine *Zahl* *dividiert* werden und anschließend der *Quotient* aus der ersten *Division* durch die zweite *Zahl* *dividiert* werden. Da die *Division* mit am zeitaufwendigsten ist, wird später die *Bruchrechnung* eingeführt, welche eine *Division* bis zum *Wert* des *Terms* hin herauszögern kann.
 
  
-<br>
-<br>
+
+
 
 Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:  \
 
@@ -2748,6 +3177,11 @@ $91854 : 54=$[[  1701  ]]
 
 
 
+
+
+
+
+
 <!-- data-solution-button="5"-->
 
 <section class="flex-container">
@@ -2814,22 +3248,22 @@ $91854 : 54=$[[  1701  ]]
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ *Gib* die Zahl gerundet auf drei Nachkommastellen *an*.
 
-<br>
+
 <section class="flex-container">
 <div class="flex-child">
-<br>
+
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $0,\overline{6} \approx$ [[ 0,667 ]] 
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 <!-- data-solution-button="5"-->
 __$b)\;\;$__ $4,\overline{2} \approx$ [[ 4,222 ]] 
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 <!-- data-solution-button="5"-->
 __$c)\;\;$__ $1,\overline{633} \approx$ [[ 1,634 ]] 
 
@@ -2845,22 +3279,22 @@ __$c)\;\;$__ $1,\overline{633} \approx$ [[ 1,634 ]]
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 2:__ *Gib* die Zahl gerundet auf drei Nachkommastellen *an*.
 
-<br>
+
 <section class="flex-container">
 <div class="flex-child">
-<br>
+
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $0,\overline{8} \approx$ [[ 0,889 ]] 
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 <!-- data-solution-button="5"-->
 __$b)\;\;$__ $1,\overline{35} \approx$ [[ 1,354 ]] 
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 <!-- data-solution-button="5"-->
 __$c)\;\;$__ $7,\overline{645891} \approx$ [[ 7,646 ]] 
 
@@ -2874,22 +3308,22 @@ __$c)\;\;$__ $7,\overline{645891} \approx$ [[ 7,646 ]]
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 3:__ *Gib* die Zahl gerundet auf drei Nachkommastellen *an*.
 
-<br>
+
 <section class="flex-container">
 <div class="flex-child">
-<br>
+
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $5,\overline{91} \approx$ [[ 5,919 ]] 
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 <!-- data-solution-button="5"-->
 __$b)\;\;$__ $2,\overline{7} \approx$ [[ 2,778 ]] 
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 <!-- data-solution-button="5"-->
 __$c)\;\;$__ $0,\overline{45} \approx$ [[ 0,455 ]] 
 
@@ -2902,22 +3336,22 @@ __$c)\;\;$__ $0,\overline{45} \approx$ [[ 0,455 ]]
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 4:__ *Gib* die Zahl gerundet auf drei Nachkommastellen *an*.
 
-<br>
+
 <section class="flex-container">
 <div class="flex-child">
-<br>
+
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $0,\overline{9} \approx$ [[  1,000 ]] 
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 <!-- data-solution-button="5"-->
 __$b)\;\;$__ $13,\overline{97} \approx$ [[ 13,980 ]] 
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 <!-- data-solution-button="5"-->
 __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]] 
 
@@ -3280,3 +3714,8 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 </section>
+
+
+
+
+

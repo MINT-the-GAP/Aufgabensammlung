@@ -192,3 +192,99 @@ Kreis(M, 16, "Kreis");
 <!-- data-type="none"
 data-sortable="false" 
 data-orientation="vertical|horizontal"-->
+
+
+
+
+### Energieabrechnung im Makerspace
+
+Das Jugendzentrum „FutureLab“ betreibt einen Makerspace, in dem Besucherinnen und Besucher Maschinen wie 3D-Drucker, Lasercutter und CNC-Fräsen nutzen können, um eigene Projekte zu verwirklichen. Da diese Geräte teilweise über längere Zeit laufen und einen hohen Stromverbrauch haben, muss das FutureLab eine faire und transparente Abrechnung sicherstellen. Um den Energieverbrauch einfach kalkulieren zu können, hat das Jugendzentrum einen speziellen Stromtarif mit dem Namen „Standard“ eingeführt:
+
+- Grundgebühr: **48,00 € pro Monat**
+- Strompreis: **1,30 € pro kWh**
+
+
+---
+
+__$a)\;\;$__   
+Bestimme den Ordinatenabschnitt und die Steigung der linearen Funktion $K(x)$,
+die den Standardtarif beschreibt.
+Gib den Funktionsterm $K(x)$ an.
+
+---
+
+__$b)\;\;$__  
+Trage den Punkt für $x=0$ und $x=20$ in ein Koordinatensystem ein und zeichne die Gerade $K(x)$ für den Bereich $0 \leq x \leq 50$.
+
+---
+
+__$c)\;\;$__  
+Das „EcoLab“ im gleichen Gebäude hat den Tarif
+$$
+K_{\text{Eco}}(x) = 40 + 2,20\,x
+$$
+Berechne den Schnittpunkt der beiden Tarife rechnerisch.
+
+---
+
+__$d)\;\;$__ 
+Stelle die Differenzfunktion $D(x) = K(x) - K_{\text{Eco}}(x)$ auf und
+bestimme den Verbrauchsbereich, in dem der Standardtarif günstiger ist.
+
+---
+
+__$e)\;\;$__  
+Bestimme den Funktionsterm einer Geraden, die genau durch die beiden Punkte
+$P(15 \ \text{kWh}, \ 71,50 \ \text{€})$ und
+$Q(35 \ \text{kWh}, \ 113,50 \ \text{€})$ verläuft.
+
+---
+
+__$f)\;\;$__   
+Drei Teams (A, B, C) nutzen den Makerspace im Mai:
+
+- Team A: $18$ kWh
+- Team B: $26$ kWh
+- Team C: $21$ kWh
+
+Die Gesamtkosten werden nach dem Standardtarif berechnet und proportional zum Verbrauch aufgeteilt.
+Berechne die Kostenanteile jedes Teams auf zwei Nachkommastellen genau.
+
+---
+
+__$g)\;\;$__  
+Ein neuer Anbieter berechnet
+$$
+K_{\text{Neu}}(x) = \frac{9}{4}x + 35
+$$
+
+I. Vergleiche die Steigung mit der von $K(x)$.  
+
+II. Bestimme den Schnittpunkt von $K_{\text{Neu}}$ und $K(x)$ rechnerisch.  
+
+III. Bestimme den Verbrauchsbereich, in dem $K_{\text{Neu}}$ günstiger ist.
+
+---
+
+__$h)\;\;$__  
+Der Makerspace testet einen stückweise definierten Tarif:
+
+- bis einschließlich $25$ kWh: $1,80$ €/kWh $+\,45,00$ € Grundgebühr
+- ab $26$ kWh: $1,50$ €/kWh $+\,45,00$ € Grundgebühr
+
+I. Stelle die Funktionsgleichungen beider Abschnitte auf.  
+
+II. Zeichne den Graphen für $0 \le x \le 50$.  
+
+III. Bestimme, ab welchem Verbrauch dieser Tarif günstiger ist als der Standardtarif.
+
+---
+
+__$i)\;\;$__  
+Ein Förderprogramm übernimmt alle Kosten oberhalb eines Verbrauchs von $30$ kWh.
+Formuliere den effektiven Tarif $K_{\text{Förder}}(x)$ als Funktion mit $\min$-Operator:
+$$
+K_{\text{Förder}}(x) = K(\min(x,30))
+$$
+Vergleiche grafisch mit $K(x)$ und interpretiere den Unterschied.
+
