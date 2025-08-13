@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 -->
 
-# Arithmetik mit natürlichen Zahlen
+# Ziffern und Zahlen
 
 
 {{|>}}  *Ziffern* sind die einzelnen Zeichen, die zur Darstellung von Zahlen verwendet werden. Im *Dezimalsystem* gibt es genau zehn *Ziffern*:

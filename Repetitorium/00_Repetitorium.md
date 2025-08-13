@@ -803,40 +803,40 @@ $\sup(\mathbb{K}) = $ [[ 70 ]] \
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 15:__ **Gib** die Vereinigung der beiden gegebenen Mengen $\mathbb{K}$ und $\mathbb{M}$ **an**.
  
-__$a)\;\;$__ $ \mathbb{K} = \{ 1,5,6,9 \} $\ und \mathbb{M} = \{ 3,4,6,8 \} $\
+__$a)\;\;$__ $ \mathbb{K} = \{ 1,5,6,9 \} $  und $\mathbb{M} = \{ 3,4,6,8 \} $ 
 
 <!-- data-solution-button="5" -->
-$\mathbb{K} \cup \mathbb{M} =  $ [[   {1,3,4,5,6,8,9}   ]] $  $\ 
+$\mathbb{K} \cup \mathbb{M} =  $ [[   {1,3,4,5,6,8,9}   ]]  
  
-__$b)\;\;$__ $  \mathbb{K} = \{ 1,2,3,4,5,6,7 \} $\ und \mathbb{M} = \{ 1,2,3,5,7 \} $\
+__$b)\;\;$__ $  \mathbb{K} = \{ 1,2,3,4,5,6,7 \} $  und $\mathbb{M} = \{ 1,2,3,5,7 \} $ 
 
 <!-- data-solution-button="5" -->
-$\mathbb{K} \cup \mathbb{M} =  $ [[   {1,2,3,4,5,6,7}   ]] $  $\ 
+$\mathbb{K} \cup \mathbb{M} =  $ [[   {1,2,3,4,5,6,7}   ]] 
  
-__$c)\;\;$__ $  \mathbb{K} = \{ 5,7,9,11 \} $\ und \mathbb{M} = \{ 4,5,8,10 \} $\
+__$c)\;\;$__ $  \mathbb{K} = \{ 5,7,9,11 \} $  und $\mathbb{M} = \{ 4,5,8,10 \} $ 
 
 <!-- data-solution-button="5" -->
-$\mathbb{K} \cup \mathbb{M} =  $ [[   {4,5,7,8,9,10,11}   ]] $  $\ 
+$\mathbb{K} \cup \mathbb{M} =  $ [[   {4,5,7,8,9,10,11}   ]]  
 
 
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 16:__ **Gib** die Vereinigung der beiden gegebenen Mengen $\mathbb{K}$ und $\mathbb{M}$ **an**.
  
-__$a)\;\;$__ $ \mathbb{K} = \{ 2,3,5,6,8 \} $\ und \mathbb{M} = \{ 1,2,4,5,7,8 \} $\
+__$a)\;\;$__ $ \mathbb{K} = \{ 2,3,5,6,8 \} $  und $\mathbb{M} = \{ 1,2,4,5,7,8 \} $ 
 
 <!-- data-solution-button="5" -->
-$\mathbb{K} \cup \mathbb{M} =  $ [[   {1,2,3,4,5,6,7,8}   ]] $  $\ 
+$\mathbb{K} \cup \mathbb{M} =  $ [[   {1,2,3,4,5,6,7,8}   ]]  
  
-__$b)\;\;$__ $  \mathbb{K} = \{ 3,6,9 \} $\ und \mathbb{M} = \{ 2,3,5,6,8 \} $\
+__$b)\;\;$__ $  \mathbb{K} = \{ 3,6,9 \} $  und $\mathbb{M} = \{ 2,3,5,6,8 \} $ 
 
 <!-- data-solution-button="5" -->
-$\mathbb{K} \cup \mathbb{M} =  $ [[      {2,3,5,6,8,9}    ]] $  $\ 
+$\mathbb{K} \cup \mathbb{M} =  $ [[      {2,3,5,6,8,9}    ]]  
  
-__$c)\;\;$__ $  \mathbb{K} = \{ 1,3,5,7,9 \} $\ und \mathbb{M} = \{ 3,4,5,6,7 \} $\
+__$c)\;\;$__ $  \mathbb{K} = \{ 1,3,5,7,9 \} $  und $\mathbb{M} = \{ 3,4,5,6,7 \} $ 
 
 <!-- data-solution-button="5" -->
-$\mathbb{K} \cup \mathbb{M} =  $ [[   {1,3,4,5,6,7,9}     ]] $  $\ 
+$\mathbb{K} \cup \mathbb{M} =  $ [[   {1,3,4,5,6,7,9}     ]]  
 
 
 
@@ -845,42 +845,42 @@ $\mathbb{K} \cup \mathbb{M} =  $ [[   {1,3,4,5,6,7,9}     ]] $  $\
 **Gib** den Durchschnitt der beiden gegebenen Mengen $\mathbb{K}$ und $\mathbb{M}$ **an**.
 
 
-__$a)\;\;$__ $ \mathbb{K} = \{ 1,5,6,9 \} $\ und \mathbb{M} = \{ 3,4,6,8 \} $\
+__$a)\;\;$__ $ \mathbb{K} = \{ 1,5,6,9 \} $  und $\mathbb{M} = \{ 3,4,6,8 \} $ 
 
 <!-- data-solution-button="5" -->
-$\mathbb{K} \cap \mathbb{M} =  $ [[   {6}           ]] $  $\ 
+$\mathbb{K} \cap \mathbb{M} =  $ [[   {6}           ]]  
 
 
-__$b)\;\;$__ $  \mathbb{K} = \{ 1,2,3,4,5,6,7 \} $\ und \mathbb{M} = \{ 1,2,3,5,7 \} $\
-
-<!-- data-solution-button="5" -->
-$\mathbb{K} \cap \mathbb{M} =  $ [[   {1,2,3,5,7}   ]] $  $\ 
-
-
-__$c)\;\;$__ $  \mathbb{K} = \{ 5,7,9,11 \} $\ und \mathbb{M} = \{ 4,5,8,10 \} $\
+__$b)\;\;$__ $  \mathbb{K} = \{ 1,2,3,4,5,6,7 \} $  und $\mathbb{M} = \{ 1,2,3,5,7 \} $ 
 
 <!-- data-solution-button="5" -->
-$\mathbb{K} \cap \mathbb{M} =  $ [[   {}            ]] $  $\ 
+$\mathbb{K} \cap \mathbb{M} =  $ [[   {1,2,3,5,7}   ]]  
+
+
+__$c)\;\;$__ $  \mathbb{K} = \{ 5,7,9,11 \} $  und $\mathbb{M} = \{ 4,5,8,10 \} $ 
+
+<!-- data-solution-button="5" -->
+$\mathbb{K} \cap \mathbb{M} =  $ [[   {}            ]]  
 
 
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 18:__ **Gib** die Vereinigung der beiden gegebenen Mengen $\mathbb{K}$ und $\mathbb{M}$ **an**.
 
-__$a)\;\;$__ $ \mathbb{K} = \{ 2,3,5,6,8 \} $\ und \mathbb{M} = \{ 1,2,4,5,7,8 \} $\
+__$a)\;\;$__ $ \mathbb{K} = \{ 2,3,5,6,8 \} $  und $\mathbb{M} = \{ 1,2,4,5,7,8 \} $ 
 
 <!-- data-solution-button="5" -->
-$\mathbb{K} \cap \mathbb{M} =  $ [[   {2,5,8}   ]] $  $\ 
+$\mathbb{K} \cap \mathbb{M} =  $ [[   {2,5,8}   ]] 
 
-__$b)\;\;$__ $  \mathbb{K} = \{ 3,6,9 \} $\ und \mathbb{M} = \{ 2,3,5,6,8 \} $\
-
-<!-- data-solution-button="5" -->
-$\mathbb{K} \cap \mathbb{M} =  $ [[    {3,6}    ]] $  $\ 
-
-__$c)\;\;$__ $  \mathbb{K} = \{ 1,3,5,7,9 \} $\ und \mathbb{M} = \{ 3,4,5,6,7 \} $\
+__$b)\;\;$__ $  \mathbb{K} = \{ 3,6,9 \} $  und $\mathbb{M} = \{ 2,3,5,6,8 \} $ 
 
 <!-- data-solution-button="5" -->
-$\mathbb{K} \cap \mathbb{M} =  $ [[   {3,5,7}   ]] $  $\ 
+$\mathbb{K} \cap \mathbb{M} =  $ [[    {3,6}    ]]  
+
+__$c)\;\;$__ $  \mathbb{K} = \{ 1,3,5,7,9 \} $  und $\mathbb{M} = \{ 3,4,5,6,7 \} $ 
+
+<!-- data-solution-button="5" -->
+$\mathbb{K} \cap \mathbb{M} =  $ [[   {3,5,7}   ]]  
 
 
 
@@ -888,51 +888,51 @@ $\mathbb{K} \cap \mathbb{M} =  $ [[   {3,5,7}   ]] $  $\
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 19:__ 
 **Gib** die Differenz der beiden gegebenen Mengen $\mathbb{K}$ und $\mathbb{M}$ **an**.
 
-__$a)\;\;$__ $ \mathbb{K} = \{ 1,5,6,9 \} $\ und \mathbb{M} = \{ 3,4,6,8 \} $\
+__$a)\;\;$__ $ \mathbb{K} = \{ 1,5,6,9 \} $ und $\mathbb{M} = \{ 3,4,6,8 \} $ 
 
 <!-- data-solution-button="5" -->
-$\mathbb{K} \setminus \mathbb{M} =  $ [[   {3,4,8}   ]] $  $\ 
+$\mathbb{K} \setminus \mathbb{M} =  $ [[   {3,4,8}   ]]  
 
-__$b)\;\;$__ $  \mathbb{K} = \{ 1,2,3,4,5,6,7 \} $\ und \mathbb{M} = \{ 1,2,3,5,7 \} $\
-
-<!-- data-solution-button="5" -->
-$\mathbb{K} \setminus \mathbb{M} =  $ [[   {}        ]] $  $\ 
-
-__$c)\;\;$__ $  \mathbb{K} = \{ 5,7,9,11 \} $\ und \mathbb{M} = \{ 4,5,8,10 \} $\
+__$b)\;\;$__ $  \mathbb{K} = \{ 1,2,3,4,5,6,7 \} $  und $\mathbb{M} = \{ 1,2,3,5,7 \} $ 
 
 <!-- data-solution-button="5" -->
-$\mathbb{K} \setminus \mathbb{M} =  $ [[   {5,7,9,11}   ]] $  $\ 
+$\mathbb{K} \setminus \mathbb{M} =  $ [[   {}        ]]  
 
-__$d)\;\;$__ $  \mathbb{K} = \{ 5,7,9,11 \} $\ und \mathbb{M} = \{ 4,5,8,10 \} $\
+__$c)\;\;$__ $  \mathbb{K} = \{ 5,7,9,11 \} $  und $\mathbb{M} = \{ 4,5,8,10 \} $ 
 
 <!-- data-solution-button="5" -->
-$\mathbb{M} \setminus \mathbb{K} =  $ [[   {4,5,8,10}   ]] $  $\ 
+$\mathbb{K} \setminus \mathbb{M} =  $ [[   {5,7,9,11}   ]]  
+
+__$d)\;\;$__ $  \mathbb{K} = \{ 5,7,9,11 \} $  und $\mathbb{M} = \{ 4,5,8,10 \} $ 
+
+<!-- data-solution-button="5" -->
+$\mathbb{M} \setminus \mathbb{K} =  $ [[   {4,5,8,10}   ]]  
 
 
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 20:__ **Gib** die Differenz der beiden gegebenen Mengen $\mathbb{K}$ und $\mathbb{M}$ **an**.
 
-__$a)\;\;$__ $ \mathbb{K} = \{ 2,3,5,6,8 \} $\ und \mathbb{M} = \{ 1,2,4,5,7,8 \} $\
+__$a)\;\;$__ $ \mathbb{K} = \{ 2,3,5,6,8 \} $  und $\mathbb{M} = \{ 1,2,4,5,7,8 \} $ 
 
 <!-- data-solution-button="5" -->
-$\mathbb{K} \setminus \mathbb{M} =  $ [[   {1,4,7}   ]] $  $\ 
+$\mathbb{K} \setminus \mathbb{M} =  $ [[   {1,4,7}   ]]   
 
-__$b)\;\;$__ $  \mathbb{K} = \{ 3,6,9 \} $\ und \mathbb{M} = \{ 2,3,5,6,8 \} $\
-
-<!-- data-solution-button="5" -->
-$\mathbb{K} \setminus \mathbb{M} =  $ [[  {2,5,8}    ]] $  $\ 
-
-__$c)\;\;$__ $  \mathbb{K} = \{ 1,3,5,7,9 \} $\ und \mathbb{M} = \{ 3,4,5,6,7 \} $\
+__$b)\;\;$__ $  \mathbb{K} = \{ 3,6,9 \} $  und $\mathbb{M} = \{ 2,3,5,6,8 \} $ 
 
 <!-- data-solution-button="5" -->
-$\mathbb{K} \setminus \mathbb{M} =  $ [[   {4,6}     ]] $  $\ 
+$\mathbb{K} \setminus \mathbb{M} =  $ [[  {2,5,8}    ]]  
 
-
-__$d)\;\;$__ $  \mathbb{K} = \{ 1,3,5,7,9 \} $\ und \mathbb{M} = \{ 3,4,5,6,7 \} $\
+__$c)\;\;$__ $  \mathbb{K} = \{ 1,3,5,7,9 \} $  und $\mathbb{M} = \{ 3,4,5,6,7 \} $ 
 
 <!-- data-solution-button="5" -->
-$\mathbb{M} \setminus \mathbb{K} =  $ [[   {1,9}     ]] $  $\ 
+$\mathbb{K} \setminus \mathbb{M} =  $ [[   {4,6}     ]] 
+
+
+__$d)\;\;$__ $  \mathbb{K} = \{ 1,3,5,7,9 \} $  und $\mathbb{M} = \{ 3,4,5,6,7 \} $ 
+
+<!-- data-solution-button="5" -->
+$\mathbb{M} \setminus \mathbb{K} =  $ [[   {1,9}     ]]  
 
 
 
@@ -1033,13 +1033,16 @@ __$d)\;\;$__   $  \text{sup}  \left( \left(  \mathbb{L} \cup  \mathbb{M} \right)
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/4.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  __Aufgabe 26:__ Gegebenen sind die Mengen $\mathbb{M}= \{ 1,2,3,6 \}$, $\mathbb{L} = \{ 4,5,7,9 \} $  und $\mathbb{K} = \{ 3,4,6,8,9 \}$.
 
+<!-- data-solution-button="5" -->
 __$a)\;\;$__  **Bestimme** das resultierende Mengenelement. $  \left(  \mathbb{L} \cup \mathbb{K}  \right) \setminus \left(  \mathbb{L} \cap \mathbb{K}  \right)  := \mathbb{L} \Delta \mathbb{K}  = $ [[   {3,5,6,7,8}   ]] 
 
+<!-- data-solution-button="5" -->
 __$b)\;\;$__  Im Aufgabenteil $a)$ wurde der Mengenoperator der symmetrischen Differenz $\Delta$ definiert. **Bestimme** das resultierende Mengenelement.  $  \mathbb{M} \Delta \mathbb{K} =  $ [[  {1,2,4,8,9}    ]] 
 
-__$c)\;\;$__  Skizziere über Mengenkreise $ \mathbb{M} \Delta \mathbb{K} $. 
+__$c)\;\;$__  Skizziere $ \mathbb{M} \Delta \mathbb{K} $ über Mengenkreise. 
 
 [[!]]
+<script>true</script>
 **************************************
 
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap1/Aufgabe27.png)
@@ -3415,12 +3418,11 @@ $91854 : 54=$[[  1701  ]]
 ##### Übungen - Arithmetik mit natürlichen Zahlen
 
 
+??[](https://bildung-bedeutet-freiheit.de/viervieren/index.html)
+
+
+
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
-
-
-
-
-
 
 
 
@@ -3431,6 +3433,9 @@ $91854 : 54=$[[  1701  ]]
 
 
 </section>
+
+
+
 
 
 
