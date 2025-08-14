@@ -379,7 +379,8 @@ $$
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 1:__ **Wähle** die kleinste Zahlenmenge **aus**, in der die jeweilige Zahl ist.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ **Wähle** die kleinste Zahlenmenge **aus**, in der die jeweilige Zahl ist.
 
 
 
@@ -411,7 +412,8 @@ __$d)\;\;$__ $ \frac{7}{8} $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb
 </section>
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 2:__ **Wähle** die kleinste Zahlenmenge **aus**, in der die jeweilige Zahl ist.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 2:__ **Wähle** die kleinste Zahlenmenge **aus**, in der die jeweilige Zahl ist.
 
 
 
@@ -444,7 +446,8 @@ __$d)\;\;$__ $ -7 $ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 3:__ **Wähle** die kleinste Zahlenmenge **aus**, in der die jeweilige Zahl ist.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 3:__ **Wähle** die kleinste Zahlenmenge **aus**, in der die jeweilige Zahl ist.
 
 
 
@@ -477,7 +480,8 @@ __$d)\;\;$__ $ 3,\bar{3} $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 4:__ **Wähle** die kleinste Zahlenmenge **aus**, in der die jeweilige Zahl ist.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 4:__ **Wähle** die kleinste Zahlenmenge **aus**, in der die jeweilige Zahl ist.
 
 
 
@@ -510,7 +514,8 @@ __$d)\;\;$__ $ -\sqrt[5]{7} $ [[$\mathbb{N}$|$\mathbb{Z}$|$\mathbb{Q}$|($\mathbb
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  __Aufgabe 5:__ **Wähle** die kleinste Zahlenmenge **aus**, in der der beschriebene Term ist.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 5:__ **Wähle** die kleinste Zahlenmenge **aus**, in der der beschriebene Term ist.
 
 
 
@@ -543,7 +548,8 @@ __$d)\;\;$__ $ \dfrac{8}{7}-\pi  \in$ [[$\mathbb{N}$|$\mathbb{Z}$|$\mathbb{Q}$|(
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  __Aufgabe 6:__ **Wähle** die kleinste Zahlenmenge **aus**, in der der beschriebene Term ist.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 6:__ **Wähle** die kleinste Zahlenmenge **aus**, in der der beschriebene Term ist.
 
 
 
@@ -576,7 +582,8 @@ __$d)\;\;$__ $ \pi^0-4 \in$ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  __Aufgabe 7:__ **Wähle** die kleinste Zahlenmenge **aus**, in der der beschriebene Term ist.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 7:__ **Wähle** die kleinste Zahlenmenge **aus**, in der der beschriebene Term ist.
 
 
 
@@ -609,7 +616,8 @@ __$d)\;\;$__ $ 1,\bar{4} + 0,\bar{5} \in$ [[($\mathbb{N}$)|$\mathbb{Z}$|$\mathbb
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  __Aufgabe 8:__ **Wähle** die kleinste Zahlenmenge **aus**, in der der beschriebene Term ist.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 8:__ **Wähle** die kleinste Zahlenmenge **aus**, in der der beschriebene Term ist.
 
 
 
@@ -642,7 +650,8 @@ __$d)\;\;$__ $ -0,45+\sqrt{0,25}+\dfrac{19}{20} \in$ [[($\mathbb{N}$)|$\mathbb{Z
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 9:__ **Gib** die kleinste beziehungsweise größte Zahl der gegebenen Zahlenmenge **an**. Es gilt $\mathbb{K} \subset \mathbb{N}$.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 9:__ **Gib** die kleinste beziehungsweise größte Zahl der gegebenen Zahlenmenge **an**. Es gilt $\mathbb{K} \subset \mathbb{N}$.
 
 
 
@@ -669,7 +678,8 @@ $\max(\mathbb{K}) = $ [[ 19 ]] \
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 10:__ **Gib** die kleinste beziehungsweise größte Zahl der gegebenen Zahlenmenge **an**. Es gilt $\mathbb{K} \subset \mathbb{N}$.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 10:__ **Gib** die kleinste beziehungsweise größte Zahl der gegebenen Zahlenmenge **an**. Es gilt $\mathbb{K} \subset \mathbb{N}$.
 
 
 __$a)\;\;$__ $ \mathbb{K} = \{ 83,46,55,64,91,75,61,39,84,55,47 \} $\
@@ -697,7 +707,8 @@ $\max(\mathbb{K}) = $ [[ 36 ]] \
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 11:__ **Gib** die kleinste beziehungsweise größte Zahl der gegebenen Zahlenmenge **an**. Es gilt $\mathbb{K} \subset \mathbb{N}$.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 11:__ **Gib** die kleinste beziehungsweise größte Zahl der gegebenen Zahlenmenge **an**. Es gilt $\mathbb{K} \subset \mathbb{N}$.
 
 
 __$a)\;\;$__ $ \mathbb{K} = \{ 45,39,48,51,37,52,46,50,47,38,43,46,51,39,40 \} $\
@@ -722,7 +733,8 @@ $\max(\mathbb{K}) = $ [[ 69 ]] \
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 12:__ **Gib** die obere beziehungsweise untere Schranke der gegebenen Zahlenmenge **an**. Es gilt $\mathbb{K} \subset \mathbb{N}$.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 12:__ **Gib** die obere beziehungsweise untere Schranke der gegebenen Zahlenmenge **an**. Es gilt $\mathbb{K} \subset \mathbb{N}$.
 
 
 __$a)\;\;$__ $ \mathbb{K} = \{ 15,28,17,34,26,24,14,32,29,22 \} $\
@@ -747,7 +759,8 @@ $\sup(\mathbb{K}) = $ [[ 20 ]] \
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 13:__ **Gib** die kleinste beziehungsweise größte Zahl der gegebenen Zahlenmenge **an**. Es gilt $\mathbb{K} \subset \mathbb{N}$.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 13:__ **Gib** die kleinste beziehungsweise größte Zahl der gegebenen Zahlenmenge **an**. Es gilt $\mathbb{K} \subset \mathbb{N}$.
 
 
 __$a)\;\;$__ $ \mathbb{K} = \{ 83,46,55,64,91,75,61,39,84,55,47 \} $\
@@ -774,7 +787,8 @@ $\sup(\mathbb{K}) = $ [[ 37 ]] \
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 14:__ **Gib** die kleinste beziehungsweise größte Zahl der gegebenen Zahlenmenge **an**. Es gilt $\mathbb{K} \subset \mathbb{N}$.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 14:__ **Gib** die kleinste beziehungsweise größte Zahl der gegebenen Zahlenmenge **an**. Es gilt $\mathbb{K} \subset \mathbb{N}$.
 
 
 __$a)\;\;$__ $ \mathbb{K} = \{ 45,39,48,51,37,52,46,50,47,38,43,46,51,39,40 \} $\
@@ -801,7 +815,8 @@ $\sup(\mathbb{K}) = $ [[ 70 ]] \
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 15:__ **Gib** die Vereinigung der beiden gegebenen Mengen $\mathbb{K}$ und $\mathbb{M}$ **an**.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 15:__ **Gib** die Vereinigung der beiden gegebenen Mengen $\mathbb{K}$ und $\mathbb{M}$ **an**.
  
 __$a)\;\;$__ $ \mathbb{K} = \{ 1,5,6,9 \} $  und $\mathbb{M} = \{ 3,4,6,8 \} $ 
 
@@ -821,7 +836,8 @@ $\mathbb{K} \cup \mathbb{M} =  $ [[   {4,5,7,8,9,10,11}   ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 16:__ **Gib** die Vereinigung der beiden gegebenen Mengen $\mathbb{K}$ und $\mathbb{M}$ **an**.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 16:__ **Gib** die Vereinigung der beiden gegebenen Mengen $\mathbb{K}$ und $\mathbb{M}$ **an**.
  
 __$a)\;\;$__ $ \mathbb{K} = \{ 2,3,5,6,8 \} $  und $\mathbb{M} = \{ 1,2,4,5,7,8 \} $ 
 
@@ -841,7 +857,8 @@ $\mathbb{K} \cup \mathbb{M} =  $ [[   {1,3,4,5,6,7,9}     ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 17:__ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 17:__ 
 **Gib** den Durchschnitt der beiden gegebenen Mengen $\mathbb{K}$ und $\mathbb{M}$ **an**.
 
 
@@ -865,7 +882,8 @@ $\mathbb{K} \cap \mathbb{M} =  $ [[   {}            ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 18:__ **Gib** die Vereinigung der beiden gegebenen Mengen $\mathbb{K}$ und $\mathbb{M}$ **an**.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 18:__ **Gib** die Vereinigung der beiden gegebenen Mengen $\mathbb{K}$ und $\mathbb{M}$ **an**.
 
 __$a)\;\;$__ $ \mathbb{K} = \{ 2,3,5,6,8 \} $  und $\mathbb{M} = \{ 1,2,4,5,7,8 \} $ 
 
@@ -885,7 +903,8 @@ $\mathbb{K} \cap \mathbb{M} =  $ [[   {3,5,7}   ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 19:__ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 19:__ 
 **Gib** die Differenz der beiden gegebenen Mengen $\mathbb{K}$ und $\mathbb{M}$ **an**.
 
 __$a)\;\;$__ $ \mathbb{K} = \{ 1,5,6,9 \} $ und $\mathbb{M} = \{ 3,4,6,8 \} $ 
@@ -911,7 +930,8 @@ $\mathbb{M} \setminus \mathbb{K} =  $ [[   {4,5,8,10}   ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 20:__ **Gib** die Differenz der beiden gegebenen Mengen $\mathbb{K}$ und $\mathbb{M}$ **an**.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 20:__ **Gib** die Differenz der beiden gegebenen Mengen $\mathbb{K}$ und $\mathbb{M}$ **an**.
 
 __$a)\;\;$__ $ \mathbb{K} = \{ 2,3,5,6,8 \} $  und $\mathbb{M} = \{ 1,2,4,5,7,8 \} $ 
 
@@ -937,7 +957,8 @@ $\mathbb{M} \setminus \mathbb{K} =  $ [[   {1,9}     ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  __Aufgabe 21:__ **Gib** die resultierende Menge **an**. Gegebenen sind die Mengen $\mathbb{M}= \{ 2,3,5,6,8 \}$, $\mathbb{L} = \{ 3,6,9 \} $  und $\mathbb{K} = \{ 1,3,5,7,9 \}$.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 21:__ **Gib** die resultierende Menge **an**. Gegebenen sind die Mengen $\mathbb{M}= \{ 2,3,5,6,8 \}$, $\mathbb{L} = \{ 3,6,9 \} $  und $\mathbb{K} = \{ 1,3,5,7,9 \}$.
 
 <!-- data-solution-button="5" -->
 __$a)\;\;$__  $ \left(\mathbb{K} \setminus \mathbb{M}\right) \cup \mathbb{L} =  $     [[   {1,3,6,7,9}   ]]    
@@ -953,7 +974,8 @@ __$c)\;\;$__    $\mathbb{K} \cup  \left( \mathbb{L} \setminus \mathbb{M} \right)
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  __Aufgabe 22:__ **Gib** die resultierende Menge **an**. Gegebenen sind die Mengen $\mathbb{M}= \{ 1,4,7,8 \}$, $\mathbb{L} = \{ 1,5,8,9 \} $  und $\mathbb{K} = \{ 2,4,8,9 \}$.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 22:__ **Gib** die resultierende Menge **an**. Gegebenen sind die Mengen $\mathbb{M}= \{ 1,4,7,8 \}$, $\mathbb{L} = \{ 1,5,8,9 \} $  und $\mathbb{K} = \{ 2,4,8,9 \}$.
 
 
 <!-- data-solution-button="5" -->
@@ -974,7 +996,8 @@ __$c)\;\;$__   $ \left( \mathbb{L} \cap \mathbb{K}  \right) \cup \mathbb{M} =  $
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  __Aufgabe 23:__ **Gib** die resultierende Menge **an**. Gegebenen sind die Mengen $\mathbb{M}= \{ 2,6,7,8,9 \}$, $\mathbb{L} = \{ 1,2,4,6,8 \} $  und $\mathbb{K} = \{ 2,3,4,9 \}$.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 23:__ **Gib** die resultierende Menge **an**. Gegebenen sind die Mengen $\mathbb{M}= \{ 2,6,7,8,9 \}$, $\mathbb{L} = \{ 1,2,4,6,8 \} $  und $\mathbb{K} = \{ 2,3,4,9 \}$.
 
 
 <!-- data-solution-button="5" -->
@@ -991,7 +1014,8 @@ __$c)\;\;$__ $  \left( \mathbb{K} \cap  \mathbb{L} \right) \cap  \mathbb{M} =  $
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  __Aufgabe 24:__ **Bestimme** das resultierende Mengenelement. Gegebenen sind die Mengen $\mathbb{M}= \{ 1,4,7,8 \}$, $\mathbb{L} = \{ 1,5,8,9 \} $  und $\mathbb{K} = \{ 2,4,8,9 \}$.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 24:__ **Bestimme** das resultierende Mengenelement. Gegebenen sind die Mengen $\mathbb{M}= \{ 1,4,7,8 \}$, $\mathbb{L} = \{ 1,5,8,9 \} $  und $\mathbb{K} = \{ 2,4,8,9 \}$.
 
 __$a)\;\;$__   $  \text{sup} \left(  \mathbb{K} \cap \mathbb{M}  \right) =  $                                      [[   8   ]] 
 
@@ -1005,7 +1029,8 @@ __$d)\;\;$__   $  \text{min} \left(  \mathbb{M} \setminus \left( \mathbb{L} \cup
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  __Aufgabe 25:__ **Bestimme** das resultierende Mengenelement. Gegebenen sind die Mengen $\mathbb{M}= \{ 1,4,7,8 \}$, $\mathbb{L} = \{ 1,5,8,9 \} $  und $\mathbb{K} = \{ 2,4,8,9 \}$.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 25:__ **Bestimme** das resultierende Mengenelement. Gegebenen sind die Mengen $\mathbb{M}= \{ 1,4,7,8 \}$, $\mathbb{L} = \{ 1,5,8,9 \} $  und $\mathbb{K} = \{ 2,4,8,9 \}$.
 
 __$a)\;\;$__   $  \text{inf} \left(  \mathbb{L} \cup \mathbb{M}  \right) =  $                                    [[   1   ]] 
 
@@ -1018,7 +1043,8 @@ __$d)\;\;$__   $  \text{max} \left( \left(  \mathbb{M} \cap \mathbb{K}  \right) 
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  __Aufgabe 26:__ **Bestimme** das resultierende Mengenelement. Gegebenen sind die Mengen $\mathbb{M}= \{ 2,6,7,8,9 \}$, $\mathbb{L} = \{ 1,2,4,6,8 \} $  und $\mathbb{K} = \{ 2,3,4,9 \}$.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 26:__ **Bestimme** das resultierende Mengenelement. Gegebenen sind die Mengen $\mathbb{M}= \{ 2,6,7,8,9 \}$, $\mathbb{L} = \{ 1,2,4,6,8 \} $  und $\mathbb{K} = \{ 2,3,4,9 \}$.
 
 __$a)\;\;$__   $  \text{min} \left(  \mathbb{K} \setminus \mathbb{L}  \right) =  $ [[   3   ]] 
 
@@ -1031,7 +1057,8 @@ __$d)\;\;$__   $  \text{sup}  \left( \left(  \mathbb{L} \cup  \mathbb{M} \right)
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/4.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  __Aufgabe 26:__ Gegebenen sind die Mengen $\mathbb{M}= \{ 1,2,3,6 \}$, $\mathbb{L} = \{ 4,5,7,9 \} $  und $\mathbb{K} = \{ 3,4,6,8,9 \}$.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/4.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 26:__ Gegebenen sind die Mengen $\mathbb{M}= \{ 1,2,3,6 \}$, $\mathbb{L} = \{ 4,5,7,9 \} $  und $\mathbb{K} = \{ 3,4,6,8,9 \}$.
 
 <!-- data-solution-button="5" -->
 __$a)\;\;$__  **Bestimme** das resultierende Mengenelement. $  \left(  \mathbb{L} \cup \mathbb{K}  \right) \setminus \left(  \mathbb{L} \cap \mathbb{K}  \right)  := \mathbb{L} \Delta \mathbb{K}  = $ [[   {3,5,6,7,8}   ]] 
@@ -1113,6 +1140,358 @@ $$
 $$
 
 {{|>}} *Ziffern* sind somit die Bausteine der Zahldarstellung. *Zahlen* entstehen durch Anordnung von *Ziffern* und Interpretation ihrer Position in einem Stellenwertsystem. Die *Stellenwerttafel* hilft, den Wert jeder Ziffer in einer Zahl zu erkennen.
+
+
+
+
+
+##### Übungsaufgaben zu Ziffern und Zahlen
+
+
+<!-- Grund0007 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ **Gib** die in Sprache dargestellt Zahl in Ziffern **an**.
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$a)\;\;$__ Dreimillionenvierhunderttausendneun  \
+[[  3400009  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$b)\;\;$__ Neuntausendzweihundertvierundsechsig.\
+[[    9264   ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$c)\;\;$__ Zwölftausenddreihundertelf.\
+[[   12311   ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$d)\;\;$__ Sechshundertfünfundsiebzigtausendachthundertdreiundachtzig.\
+[[   675883  ]]
+
+</div>
+</section>   
+
+
+
+
+
+
+<!-- Grund0008 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 2:__ **Gib** die in Sprache dargestellt Zahl in Ziffern **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$a)\;\;$__ Viertausendzweihundertneunundzwanzig  \
+[[  4229  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$b)\;\;$__ Achttausendvier.\
+[[  8004  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$c)\;\;$__ Zweitausendsiebhundertelf.\
+[[  2711  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" -->
+__$d)\;\;$__ Dreihundertneuntausendvierhundertsechsunddreißig.\
+[[ 309436 ]]
+
+</div>
+</section>
+
+
+
+
+
+
+
+<!-- Grund0009 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 3:__ **Sortiere** die Zahlen in die Stellenwerttafel **ein**. (Falls an einer Stelle nichts eingetragen werden soll, trage eine $0$ ein.)
+
+
+
+
+__$a)\;\;$__ 835069
+
+<!-- data-type="none" data-solution-button="5" -->
+|  Millioner  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
+| :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
+|   [[ 0 ]]   |       [[ 8 ]]      |       [[ 3 ]]     |    [[ 5 ]]   |   [[ 0 ]]  |  [[ 6 ]]  | [[ 9 ]] |
+
+
+
+__$b)\;\;$__ 9841631
+
+<!-- data-type="none" data-solution-button="5" -->
+|  Millioner  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
+| :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
+|   [[ 9 ]]   |       [[ 8 ]]      |       [[ 4 ]]     |    [[ 1 ]]   |   [[ 6 ]]  |  [[ 3 ]]  | [[ 1 ]] |
+
+
+
+__$c)\;\;$__ 620551
+
+<!-- data-type="none" data-solution-button="5" -->
+|  Millioner  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
+| :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
+|   [[ 0 ]]   |       [[ 6 ]]      |       [[ 2 ]]     |    [[ 0 ]]   |   [[ 5 ]]  |  [[ 5 ]]  | [[ 1 ]] |
+
+
+
+
+
+
+
+
+
+<!-- Grund0010 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 4__ **Sortiere** die Zahlen in die Stellenwerttafel **ein**. (Falls an einer Stelle nichts eingetragen werden soll, trage eine $0$ ein.)
+
+
+
+
+
+__$a)\;\;$__ 6449
+
+<!-- data-type="none"  data-solution-button="5" -->
+|  Millioner  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
+| :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
+|   [[ 0 ]]   |       [[ 0 ]]      |       [[ 0 ]]     |    [[ 6 ]]   |   [[ 4 ]]  |  [[ 4 ]]  | [[ 9 ]] |
+
+
+__$b)\;\;$__ 6459204
+
+<!-- data-type="none"  data-solution-button="5" -->
+|  Millioner  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
+| :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
+|   [[ 6 ]]   |       [[ 4 ]]      |       [[ 5 ]]     |    [[ 9 ]]   |   [[ 2 ]]  |  [[ 0 ]]  | [[ 4 ]] |
+
+
+
+__$c)\;\;$__ 210079
+
+<!-- data-type="none"  data-solution-button="5" -->
+|  Millioner  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
+| :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
+|   [[ 0 ]]   |       [[ 2 ]]      |       [[ 1 ]]     |    [[ 0 ]]   |   [[ 0 ]]  |  [[ 7 ]]  | [[ 9 ]] |
+
+
+
+
+
+
+<!-- Grund0011 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 5__ **Sortiere** die Zahlen in die Stellenwerttafel **ein**. (Falls an einer Stelle nichts eingetragen werden soll, trage eine $0$ ein.)
+
+
+
+
+
+__$a)\;\;$__ 910772
+
+<!-- data-type="none"  data-solution-button="5" -->
+|  Millioner  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
+| :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
+|   [[ 0 ]]   |       [[ 9 ]]      |       [[ 1 ]]     |    [[ 0 ]]   |   [[ 7 ]]  |  [[ 7 ]]  | [[ 2 ]] |
+
+
+
+
+__$b)\;\;$__ 1349310
+
+<!-- data-type="none"  data-solution-button="5" -->
+|  Millioner  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
+| :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
+|   [[ 1 ]]   |       [[ 3 ]]      |       [[ 4 ]]     |    [[ 9 ]]   |   [[ 3 ]]  |  [[ 1 ]]  | [[ 0 ]] |
+
+
+__$c)\;\;$__ 13792
+
+<!-- data-type="none"  data-solution-button="5" -->
+|  Millioner  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
+| :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
+|   [[ 0 ]]   |       [[ 0 ]]      |       [[ 1 ]]     |    [[ 3 ]]   |   [[ 7 ]]  |  [[ 9 ]]  | [[ 2 ]] |
+
+
+
+
+
+<!-- Grund0012 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 6__ **Gib** die Zahlen, die durch die Ziffern in der Stellenwerttafel dargestellt sind **an**.
+
+
+
+
+
+
+__$a)\;\;$__ 
+
+<!-- data-type="none" -->
+|  Millioner  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
+| :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
+|             |         4          |         0         |      0       |     7      |     5     |    2    |
+
+
+<!-- data-solution-button="5" -->
+[[   400752  ]]
+
+
+
+__$b)\;\;$__ 
+
+<!-- data-type="none" -->
+|  Millioner  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
+| :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
+|      3      |          8         |         5         |      1       |     1      |     6     |    7    |
+
+
+<!-- data-solution-button="5" -->
+ [[  3851167  ]]
+
+
+
+__$c)\;\;$__ 
+
+<!-- data-type="none" -->
+|  Millioner  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
+| :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
+|             |                    |          7        |       5      |     0      |     0     |     9   |
+
+
+<!-- data-solution-button="5" -->
+ [[   75009   ]]
+
+
+
+
+
+
+<!-- Grund0013 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 7__ **Gib** die Zahlen, die durch die Ziffern in der Stellenwerttafel dargestellt sind **an**.
+
+
+
+
+
+__$a)\;\;$__ 
+
+<!-- data-type="none" -->
+|  Millioner  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
+| :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
+|      4      |         0          |         2         |      1       |     6      |     3     |    9    |
+
+
+<!-- data-solution-button="5" -->
+ [[  4021639  ]]
+ 
+
+__$b)\;\;$__ 
+
+<!-- data-type="none" -->
+|  Millioner  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
+| :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
+|             |                    |         2         |      8       |     0      |     4     |    5    |
+
+
+<!-- data-solution-button="5" -->
+ [[   28045   ]]
+ 
+
+__$c)\;\;$__ 
+
+<!-- data-type="none" -->
+|  Millioner  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
+| :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
+|             |         4          |          0        |       2      |     1      |     4     |     7   |
+
+
+<!-- data-solution-button="5" -->
+ [[  402147   ]]
+
+
+
+
+
+
+<!-- Grund0014 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 8__ **Gib** die Zahlen, die durch die Ziffern in der Stellenwerttafel dargestellt sind **an**.
+
+
+
+
+
+__$a)\;\;$__ 
+
+<!-- data-type="none" -->
+|  Millioner  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
+| :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
+|      17     |         2          |         4         |      1       |     0      |     0     |    7    |
+
+
+<!-- data-solution-button="5" -->
+ [[  17241007  ]]
+ 
+
+__$b)\;\;$__ 
+
+<!-- data-type="none" -->
+|  Millioner  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
+| :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
+|             |          1         |         17        |      4       |     5      |     12    |    4    |
+
+
+<!-- data-solution-button="5" -->
+ [[   274624  ]]
+ 
+
+__$c)\;\;$__ 
+
+<!-- data-type="none" -->
+|  Millioner  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
+| :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
+|             |                    |        287        |       0      |     24     |     0     |   117   |
+
+
+<!-- data-solution-button="5" -->
+ [[  2872517  ]]
+
+
+
+
+
+
+
 
 
 
@@ -1241,7 +1620,8 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  __Aufgabe 1:__ *Gib* den auf Zehner gerundeten Wert *an*.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ *Gib* den auf Zehner gerundeten Wert *an*.
 
 
 <section class="flex-container">
@@ -1298,7 +1678,8 @@ $654 \approx$ [[  650  ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 2:__ *Gib* den auf Hunderter gerundeten Wert *an*.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 2:__ *Gib* den auf Hunderter gerundeten Wert *an*.
 
 
 <section class="flex-container">
@@ -1377,7 +1758,8 @@ $15314 \approx$ [[15300    ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 3:__ *Gib* den auf Tausender gerundeten Wert *an*.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 3:__ *Gib* den auf Tausender gerundeten Wert *an*.
 
 
 <section class="flex-container">
@@ -1460,7 +1842,8 @@ $450748 \approx$ [[451000    ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 4:__ *Gib* den auf Zehntausender gerundeten Wert *an*.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 4:__ *Gib* den auf Zehntausender gerundeten Wert *an*.
 
 
 <section class="flex-container">
@@ -1538,7 +1921,8 @@ $3446045 \approx$ [[3450000    ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30"> __Aufgabe 5:__ *Gib* den auf die angegebene Stelle gerundeten Wert *an*.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 5:__ *Gib* den auf die angegebene Stelle gerundeten Wert *an*.
 
 
 <section class="flex-container">
@@ -1616,7 +2000,8 @@ Auf Tausender: $854684 \approx$ [[855000    ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30"> __Aufgabe 6:__ *Gib* den auf die angegebene Stelle gerundeten Wert *an*.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 6:__ *Gib* den auf die angegebene Stelle gerundeten Wert *an*.
 
 
 <section class="flex-container">
@@ -1694,7 +2079,8 @@ Auf Zehntausender: $998146 \approx$ [[1000000    ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30"> __Aufgabe 7:__ *Gib* den auf die angegebene Stelle gerundeten Wert in den freien Tabellenfeldern *an*.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 7:__ *Gib* den auf die angegebene Stelle gerundeten Wert in den freien Tabellenfeldern *an*.
 
 
 <!-- data-type="none"
@@ -1712,7 +2098,8 @@ data-solution-button="5"-->
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30"> __Aufgabe 8:__ *Gib* den auf die angegebene Stelle gerundeten Wert in den freien Tabellenfeldern *an*.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 8:__ *Gib* den auf die angegebene Stelle gerundeten Wert in den freien Tabellenfeldern *an*.
 
 
 <!-- data-type="none"
@@ -1729,7 +2116,8 @@ data-solution-button="5"-->
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30"> __Aufgabe 9:__ Gegeben sei eine gerundete Zahl. *Gib* jeweils die kleinste und die größte Zahl *an*, die nach dem Runden zur gegebenen Zahl wird.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 9:__ Gegeben sei eine gerundete Zahl. *Gib* jeweils die kleinste und die größte Zahl *an*, die nach dem Runden zur gegebenen Zahl wird.
 
 
 <!-- data-type="none"
@@ -1746,7 +2134,8 @@ data-solution-button="5"-->
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30"> __Aufgabe 10:__ Gegeben sei eine gerundete Zahl. *Gib* jeweils die kleinste und die größte Zahl *an*, die nach dem Runden zur gegebenen Zahl wird.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 10:__ Gegeben sei eine gerundete Zahl. *Gib* jeweils die kleinste und die größte Zahl *an*, die nach dem Runden zur gegebenen Zahl wird.
 
 
 <!-- data-type="none"
@@ -2027,7 +2416,8 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 ##### Übungen - Addition
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ *Berechne* den Wert des Terms.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ *Berechne* den Wert des Terms.
 
 
 <section class="flex-container">
@@ -2101,7 +2491,8 @@ $8437 + 4567=$[[  13004  ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 2:__ *Berechne* den Wert des Terms.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 2:__ *Berechne* den Wert des Terms.
 
 
 <section class="flex-container">
@@ -2179,7 +2570,8 @@ $9745 + 3726=$[[  13471  ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 3:__ *Berechne* den Wert des Terms.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 3:__ *Berechne* den Wert des Terms.
 
 
 <section class="flex-container">
@@ -2421,7 +2813,8 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ *Berechne* den Wert des Terms.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ *Berechne* den Wert des Terms.
 
 
 
@@ -2496,7 +2889,8 @@ $9754 - 6421=$[[  3333  ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30"> __Aufgabe 2:__ *Berechne* den Wert des Terms.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 2:__ *Berechne* den Wert des Terms.
 
 
 <section class="flex-container">
@@ -2573,7 +2967,8 @@ $7461 - 3578=$[[  3883  ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30"> __Aufgabe 3:__ *Berechne* den Wert des Terms.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 3:__ *Berechne* den Wert des Terms.
 
 
 <section class="flex-container">
@@ -2896,7 +3291,8 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ *Berechne* den Wert des Terms.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ *Berechne* den Wert des Terms.
 
 <section class="flex-container">
 
@@ -2970,7 +3366,8 @@ $9643 \cdot 7=$[[  67501  ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 2:__ *Berechne* den Wert des Terms.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 2:__ *Berechne* den Wert des Terms.
 
 <section class="flex-container">
 
@@ -3043,7 +3440,8 @@ $9643 \cdot 91=$[[  877513  ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 3:__ *Berechne* den Wert des Terms.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 3:__ *Berechne* den Wert des Terms.
 
 <section class="flex-container">
 
@@ -3190,7 +3588,8 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ *Berechne* den Wert des Terms.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ *Berechne* den Wert des Terms.
 
 
 <section class="flex-container">
@@ -3265,7 +3664,8 @@ $9990 : 9=$[[  1110  ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 2:__ *Berechne* den Wert des Terms.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 2:__ *Berechne* den Wert des Terms.
 
 
 <section class="flex-container">
@@ -3337,7 +3737,8 @@ $88209 : 9=$[[  9801  ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30"> __Aufgabe 3:__ *Berechne* den Wert des Terms.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 3:__ *Berechne* den Wert des Terms.
 
 
 <section class="flex-container">
@@ -3418,11 +3819,2817 @@ $91854 : 54=$[[  1701  ]]
 ##### Übungen - Arithmetik mit natürlichen Zahlen
 
 
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ **Gib** den Wert des beschriebenen Terms **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ Der Summand $14$ wird mit $19$ addiert.\
+[[  33  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ Die Zahl $17$ ist der Minuend, während die Zahl $11$ der Subtrahend ist.\
+[[  6   ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ Der Quotient wird aus dem Divisor $84$ und dem Dividenden $14$ gebildet.\
+[[  6   ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ Der Term besteht aus den Faktoren $4$, $6$ und $3$.\
+[[  72  ]]
+</div>
+</section>
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 2:__ **Gib** den Wert des beschriebenen Terms **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ Der Divisor ist $81$ und der Dividend $27$. \
+[[  3   ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ Eine Summe besteht aus den Summanden $12$, $34$ und $26$.\
+[[  72  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ Es wird ein Produkt aus $11$ und $12$ gebildet. \
+[[  132 ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ Der Subtrahend einer Differenz ist $19$, während der Wert des Miuenden $45$ beträgt.\
+[[  26  ]]
+
+</div>
+</section>
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 3:__ **Gib** den Wert des beschriebenen Terms **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ Von der Summe aus $44$ und $18$ wird $29$ subtrahiert.\
+[[  33  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ Der ganzzahlige Quotient besteht aus den Zahlen $5$ und $70$.\
+[[  14  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ Das Produkt der Zahlen $9$ und $4$ wird mit $5$ multipliziert.\
+[[  180 ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ Die positive Differenz aus $38$ und $57$ wird um $14$ addiert.\
+[[  33  ]]
+
+</div>
+</section>
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 4:__ **Gib** den Wert des beschriebenen Terms **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ Ein Produkt aus $7$ und $8$ wird durch $4$ dividiert.\
+[[  14  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ Der Term besteht aus den Faktoren $2$, $6$, $3$ und  $5$.\
+[[  180 ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ Der Dividend $6$ und der Divisor $78$ bilden ein Produkt mit $8$.\
+[[  104 ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ Der Subtrahend $19$ und der Minuend $73$ bilden eine Differenz, die mit $17$ addiert wird.\
+[[  71  ]]
+
+</div>
+</section>
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 5:__ **Gib** den Wert des beschriebenen Terms **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ Die positive Differenz aus $23$ und $47$ wird mit $4$ multipliziert. \
+[[  96  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ Der Term ist ein Quotient mit dem Dividenden $7$, während der Divisor sich aus der Summe von $23$ und $33$ bildet. \
+[[  8   ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ Die Summanden $13$, $54$ und $23$ werden mit $11$ multipliziert. \
+[[  990 ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ Die Summe aus $8$ und $7$ wird mit der Differenz aus dem Minuenden $19$ und den Subtrahenden $14$ multipliziert. \
+[[  75  ]]
+
+</div>
+</section>
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 6:__ **Gib** den Wert des beschriebenen Terms **an**. 
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ Ein Produkt besteht aus den Summen aus $4$ und $3$ sowie $6$ und $2$. \
+[[  144 ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ Der Minuend ist die positive Differenz aus $95$ und $33$, während der Subtrahend $27$ ist. \
+[[  35  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ Der Divisor ist die Summe aus $41$ und $54$, während der Dividend aus der positiven Differenz aus $83$ und $78$ besteht. \
+[[  19  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ Die ganzzahligen Quotienten aus $56$ und $8$ sowie $84$ und $12$ werden miteinander multipliziert.\
+[[  42  ]]
+
+</div>
+</section>
+
+
+
+
+
+
+<!-- Grund0015 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 7:__ **Bestimme** die fehlenden Felder der Rechenmauer. Hierbei werden zwei benachbarte Felder miteinander addiert und die Summe in dem Feld darüber eingetragen.
+
+
+
+
+
+__$a)\;\;$__
+
+<!-- data-solution-button="5"-->
+``` ascii
+                  +-----------------+
+                  |                 |
+                  | " [[  14   ]] " |
+                  |                 |
+         +--------+--------+--------+--------+
+         |                 |                 |
+         | " [[   6   ]] " | " [[   8   ]] " |
+         |                 |                 |
++--------+--------+--------+--------+--------+--------+
+|                 |                 |                 |
+|      " 4 "      |      " 2 "      |      " 6 "      |
+|                 |                 |                 |
++--------+--------+--------+--------+--------+--------+                                       
+```
+
+
+
+__$b)\;\;$__
+
+<!-- data-solution-button="5"-->
+``` ascii
+                  +-----------------+
+                  |                 |
+                  | " [[  28   ]] " |
+                  |                 |
+         +--------+--------+--------+--------+
+         |                 |                 |
+         | " [[  12   ]] " | " [[  16   ]] " |
+         |                 |                 |
++--------+--------+--------+--------+--------+--------+
+|                 |                 |                 |
+|      " 5 "      |      " 7 "      |      " 9 "      |
+|                 |                 |                 |
++--------+--------+--------+--------+--------+--------+                                       
+```
+
+
+
+
+<!-- Grund0016 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 8:__ **Bestimme** die fehlenden Felder der Rechenmauer. Hierbei werden zwei benachbarte Felder miteinander addiert und die Summe in dem Feld darüber eingetragen.
+
+
+
+
+__$a)\;\;$__
+
+<!-- data-solution-button="5"-->
+``` ascii
+                  +-----------------+
+                  |                 |
+                  | " [[  71   ]] " |
+                  |                 |
+         +--------+--------+--------+--------+
+         |                 |                 |
+         | " [[  33   ]] " | " [[   38  ]] " |
+         |                 |                 |
++--------+--------+--------+--------+--------+--------+
+|                 |                 |                 |
+|      " 12 "     |      " 21 "     |      " 17 "     |
+|                 |                 |                 |
++--------+--------+--------+--------+--------+--------+                                       
+```
+
+
+
+__$b)\;\;$__
+
+<!-- data-solution-button="5"-->
+``` ascii
+                  +-----------------+
+                  |                 |
+                  | " [[  161  ]] " |
+                  |                 |
+         +--------+--------+--------+--------+
+         |                 |                 |
+         | " [[  94   ]] " | " [[  67   ]] " |
+         |                 |                 |
++--------+--------+--------+--------+--------+--------+
+|                 |                 |                 |
+|      " 51 "     |      " 43"      |      " 24 "     |
+|                 |                 |                 |
++--------+--------+--------+--------+--------+--------+                                       
+```
+
+
+
+
+<!-- Grund0017 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 9:__ **Bestimme** die fehlenden Felder der Rechenmauer. Hierbei werden zwei benachbarte Felder miteinander addiert und die Summe in dem Feld darüber eingetragen.
+
+
+
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__
+
+``` ascii
+                  +-----------------+
+                  |                 |
+                  | " [[  44   ]] " |
+                  |                 |
+         +--------+--------+--------+--------+
+         |                 |                 |
+         | " [[   19  ]] " |      " 25 "     |
+         |                 |                 |
++--------+--------+--------+--------+--------+--------+
+|                 |                 |                 |
+|      " 11 "     |      " 8 "      | " [[  17   ]] " |
+|                 |                 |                 |
++--------+--------+--------+--------+--------+--------+                                       
+```
+
+
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__
+
+``` ascii
+                  +-----------------+
+                  |                 |
+                  |     " 82 "      |
+                  |                 |
+         +--------+--------+--------+--------+
+         |                 |                 |
+         | " [[  45   ]] " |     " 37 "      |
+         |                 |                 |
++--------+--------+--------+--------+--------+--------+
+|                 |                 |                 |
+| " [[  21   ]] " | " [[  24   ]] " |      " 13 "     |
+|                 |                 |                 |
++--------+--------+--------+--------+--------+--------+                                       
+```
+
+
+
+<!-- Grund0018 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 10:__ **Bestimme** die fehlenden Felder der Rechenmauer. Hierbei werden zwei benachbarte Felder miteinander addiert und die Summe in dem Feld darüber eingetragen.
+
+
+
+
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__
+
+``` ascii
+                  +-----------------+
+                  |                 |
+                  |     " 73 "      |
+                  |                 |
+         +--------+--------+--------+--------+
+         |                 |                 |
+         | " [[  36   ]] " |     " 37 "      |
+         |                 |                 |
++--------+--------+--------+--------+--------+--------+
+|                 |                 |                 |
+|     " 17 "      | " [[  19   ]] " | " [[  18   ]] " |
+|                 |                 |                 |
++--------+--------+--------+--------+--------+--------+                                       
+```
+
+
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__
+
+``` ascii
+                  +-----------------+
+                  |                 |
+                  |     " 98 "      |
+                  |                 |
+         +--------+--------+--------+--------+
+         |                 |                 |
+         |     " 41 "      | " [[  57   ]] " |
+         |                 |                 |
++--------+--------+--------+--------+--------+--------+
+|                 |                 |                 |
+|     " 28 "      | " [[  13   ]] " | " [[  44   ]] " |
+|                 |                 |                 |
++--------+--------+--------+--------+--------+--------+                                       
+```
+
+
+
+<!-- Grund0019 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 11:__ **Bestimme** die fehlenden Felder der Rechenmauer. Hierbei werden zwei benachbarte Felder miteinander addiert und die Summe in dem Feld darüber eingetragen.
+
+
+
+
+__$a)\;\;$__
+
+<!-- data-solution-button="5"-->
+``` ascii
+                           +-----------------+
+                           |                 |
+                           |     " 63 "      |
+                           |                 |
+                  +--------+--------+--------+--------+
+                  |                 |                 |
+                  | " [[  28   ]] " |     " 35 "      |
+                  |                 |                 |
+         +--------+--------+--------+--------+--------+--------+
+         |                 |                 |                 |
+         | " [[  13   ]] " |      " 15 "     | " [[  20   ]] " |
+         |                 |                 |                 |
++--------+--------+--------+--------+--------+--------+--------+--------+                                       
+|                 |                 |                 |                 |
+| " [[   7   ]] " |      " 6 "      | " [[   9   ]] " | " [[  11   ]] " |
+|                 |                 |                 |                 |
++--------+--------+--------+--------+--------+--------+--------+--------+                                       
+```
+
+
+
+__$b)\;\;$__
+
+<!-- data-solution-button="5"-->
+``` ascii
+                           +-----------------+
+                           |                 |
+                           | " [[ 136   ]] " |
+                           |                 |
+                  +--------+--------+--------+--------+
+                  |                 |                 |
+                  |      " 62 "     | " [[  74   ]] " |
+                  |                 |                 |
+         +--------+--------+--------+--------+--------+--------+
+         |                 |                 |                 |
+         |      " 30 "     | " [[  32   ]] " |      " 42 "     |
+         |                 |                 |                 |
++--------+--------+--------+--------+--------+--------+--------+--------+                                       
+|                 |                 |                 |                 |
+| " [[  17   ]] " |     " 13 "      | " [[  19   ]] " | " [[  23   ]] " |
+|                 |                 |                 |                 |
++--------+--------+--------+--------+--------+--------+--------+--------+                                       
+```
+
+
+
+<!-- Grund0020 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/5.png" width="120" height="30">  \
+__Aufgabe 12:__ **Bestimme** die fehlenden Felder der Rechenmauer. Hierbei werden zwei benachbarte Felder miteinander addiert und die Summe in dem Feld darüber eingetragen.
+
+
+
+
+
+__$a)\;\;$__
+
+<!-- data-solution-button="5"-->
+``` ascii
+                                    +-----------------+
+                                    |                 |
+                                    |     " 155 "     |
+                                    |                 |
+                           +--------+--------+--------+--------+
+                           |                 |                 |
+                           | " [[  67   ]] " |     " 88 "      |
+                           |                 |                 |
+                  +--------+--------+--------+--------+--------+--------+
+                  |                 |                 |                 |
+                  | " [[  32   ]] " |      " 35 "     | " [[  53   ]] " |
+                  |                 |                 |                 |
+         +--------+--------+--------+--------+--------+--------+--------+--------+                                       
+         |                 |                 |                 |                 |
+         | " [[  19   ]] " |     " 13 "      | " [[  22   ]] " |     " 31 "      |
+         |                 |                 |                 |                 |
++--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+                                       
+|                 |                 |                 |                 |                 |
+| " [[  12   ]] " |      " 7 "      | " [[   5   ]] " | " [[  17   ]] " | " [[  14   ]] " |
+|                 |                 |                 |                 |                 |
++--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+                                       
+```
+
+
+
+__$b)\;\;$__
+
+<!-- data-solution-button="5"-->
+``` ascii
+                                    +-----------------+
+                                    |                 |
+                                    |     " 181 "     |
+                                    |                 |
+                           +--------+--------+--------+--------+
+                           |                 |                 |
+                           | " [[  87   ]] " | " [[  94   ]] " |
+                           |                 |                 |
+                  +--------+--------+--------+--------+--------+--------+
+                  |                 |                 |                 |
+                  | " [[  40   ]] " |     " 47 "      | " [[  47   ]] " |
+                  |                 |                 |                 |
+         +--------+--------+--------+--------+--------+--------+--------+--------+                                       
+         |                 |                 |                 |                 |
+         | " [[  19   ]] " | " [[  21   ]] " |     " 26 "      | " [[  21   ]] " |
+         |                 |                 |                 |                 |
++--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+                                       
+|                 |                 |                 |                 |                 |
+| " [[  10   ]] " |      " 9 "      | " [[  12   ]] " | " [[  14   ]] " |      " 7 "      |
+|                 |                 |                 |                 |                 |
++--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+                                       
+```
+
+
+
+<!-- Grund0021 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 13:__ **Bestimme** die fehlenden Felder der Rechenmauer. Hierbei werden zwei benachbarte Felder miteinander multipliziert und das Produkt in dem Feld darüber eingetragen.
+
+
+
+
+
+__$a)\;\;$__
+
+<!-- data-solution-button="5"-->
+``` ascii
+                  +-----------------+
+                  |                 |
+                  | " [[  48   ]] " |
+                  |                 |
+         +--------+--------+--------+--------+
+         |                 |                 |
+         | " [[   6   ]] " | " [[   8   ]] " |
+         |                 |                 |
++--------+--------+--------+--------+--------+--------+
+|                 |                 |                 |
+|      " 3 "      |      " 2 "      |      " 4 "      |
+|                 |                 |                 |
++--------+--------+--------+--------+--------+--------+                                       
+```
+
+
+
+__$b)\;\;$__
+
+<!-- data-solution-button="5"-->
+``` ascii
+                  +-----------------+
+                  |                 |
+                  | " [[  480  ]] " |
+                  |                 |
+         +--------+--------+--------+--------+
+         |                 |                 |
+         | " [[  24   ]] " | " [[  20   ]] " |
+         |                 |                 |
++--------+--------+--------+--------+--------+--------+
+|                 |                 |                 |
+|      " 6 "      |      " 4 "      |      " 5 "      |
+|                 |                 |                 |
++--------+--------+--------+--------+--------+--------+                                       
+```
+
+
+
+<!-- Grund0022 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 14:__ **Bestimme** die fehlenden Felder der Rechenmauer. Hierbei werden zwei benachbarte Felder miteinander multipliziert und das Produkt in dem Feld darüber eingetragen.
+
+
+
+
+
+__$a)\;\;$__
+
+<!-- data-solution-button="5"-->
+``` ascii
+                  +-----------------+
+                  |                 |
+                  | " [[ 1792  ]] " |
+                  |                 |
+         +--------+--------+--------+--------+
+         |                 |                 |
+         | " [[  56   ]] " | " [[   32  ]] " |
+         |                 |                 |
++--------+--------+--------+--------+--------+--------+
+|                 |                 |                 |
+|      " 7 "      |      " 8 "      |      " 4 "      |
+|                 |                 |                 |
++--------+--------+--------+--------+--------+--------+                                       
+```
+
+
+
+__$b)\;\;$__
+
+<!-- data-solution-button="5"-->
+``` ascii
+                  +-----------------+
+                  |                 |
+                  | " [[  2646 ]] " |
+                  |                 |
+         +--------+--------+--------+--------+
+         |                 |                 |
+         | " [[  42   ]] " | " [[  63   ]] " |
+         |                 |                 |
++--------+--------+--------+--------+--------+--------+
+|                 |                 |                 |
+|      " 6 "      |      " 7"       |      " 9 "      |
+|                 |                 |                 |
++--------+--------+--------+--------+--------+--------+                                       
+```
+
+
+
+<!-- Grund0023 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 15:__ **Bestimme** die fehlenden Felder der Rechenmauer. Hierbei werden zwei benachbarte Felder miteinander multipliziert und das Produkt in dem Feld darüber eingetragen.
+
+
+
+
+__$a)\;\;$__
+
+<!-- data-solution-button="5"-->
+``` ascii
+                  +-----------------+
+                  |                 |
+                  | " [[  288  ]] " |
+                  |                 |
+         +--------+--------+--------+--------+
+         |                 |                 |
+         | " [[   24  ]] " |      " 12 "     |
+         |                 |                 |
++--------+--------+--------+--------+--------+--------+
+|                 |                 |                 |
+|      " 6 "      |      " 4 "      | " [[   3   ]] " |
+|                 |                 |                 |
++--------+--------+--------+--------+--------+--------+                                       
+```
+
+
+
+__$b)\;\;$__
+
+<!-- data-solution-button="5"-->
+``` ascii
+                  +-----------------+
+                  |                 |
+                  | " [[ 1620  ]] " |
+                  |                 |
+         +--------+--------+--------+--------+
+         |                 |                 |
+         | " [[  30   ]] " |     " 54 "      |
+         |                 |                 |
++--------+--------+--------+--------+--------+--------+
+|                 |                 |                 |
+|      " 5 "      | " [[   6   ]] " |      " 9 "      |
+|                 |                 |                 |
++--------+--------+--------+--------+--------+--------+                                       
+```
+
+
+
+<!-- Grund0024 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 16:__ **Bestimme** die fehlenden Felder der Rechenmauer. Hierbei werden zwei benachbarte Felder miteinander multipliziert und das Produkt in dem Feld darüber eingetragen.
+
+
+
+
+
+__$a)\;\;$__
+
+<!-- data-solution-button="5"-->
+``` ascii
+                  +-----------------+
+                  |                 |
+                  |      " 0 "      |
+                  |                 |
+         +--------+--------+--------+--------+
+         |                 |                 |
+         | " [[   0   ]] " |     " 156 "     |
+         |                 |                 |
++--------+--------+--------+--------+--------+--------+
+|                 |                 |                 |
+| " [[   0   ]] " |     " 12 "      | " [[  13   ]] " |
+|                 |                 |                 |
++--------+--------+--------+--------+--------+--------+                                       
+```
+
+
+
+__$b)\;\;$__
+
+<!-- data-solution-button="5"-->
+``` ascii
+                  +-----------------+
+                  |                 |
+                  |     " 168 "     |
+                  |                 |
+         +--------+--------+--------+--------+
+         |                 |                 |
+         |     " 12 "      | " [[  14   ]] " |
+         |                 |                 |
++--------+--------+--------+--------+--------+--------+
+|                 |                 |                 |
+|     " 6  "      | " [[   2   ]] " | " [[   7   ]] " |
+|                 |                 |                 |
++--------+--------+--------+--------+--------+--------+                                       
+```
+
+
+
+
+<!-- Grund0025 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 17:__ **Bestimme** die fehlenden Felder der Rechenmauer. Hierbei werden zwei benachbarte Felder miteinander multipliziert und das Produkt in dem Feld darüber eingetragen.
+
+
+
+
+
+
+__$a)\;\;$__
+
+<!-- data-solution-button="5"-->
+``` ascii
+                           +-----------------+
+                           |                 |
+                           |     " 864 "     |
+                           |                 |
+                  +--------+--------+--------+--------+
+                  |                 |                 |
+                  | " [[  12   ]] " |     " 72 "      |
+                  |                 |                 |
+         +--------+--------+--------+--------+--------+--------+
+         |                 |                 |                 |
+         | " [[   2   ]] " |      " 6 "      | " [[  12   ]] " |
+         |                 |                 |                 |
++--------+--------+--------+--------+--------+--------+--------+--------+                                       
+|                 |                 |                 |                 |
+| " [[   1   ]] " |      " 2 "      | " [[   3   ]] " | " [[   4   ]] " |
+|                 |                 |                 |                 |
++--------+--------+--------+--------+--------+--------+--------+--------+                                       
+```
+
+
+
+
+__$b)\;\;$__
+
+<!-- data-solution-button="5"-->
+``` ascii
+                           +-----------------+
+                           |                 |
+                           | " [[ 108   ]] " |
+                           |                 |
+                  +--------+--------+--------+--------+
+                  |                 |                 |
+                  |      " 18 "     | " [[   6   ]] " |
+                  |                 |                 |
+         +--------+--------+--------+--------+--------+--------+
+         |                 |                 |                 |
+         |      " 6 "      | " [[  3    ]] " |      " 2  "     |
+         |                 |                 |                 |
++--------+--------+--------+--------+--------+--------+--------+--------+                                       
+|                 |                 |                 |                 |
+| " [[   2   ]] " |      " 3 "      | " [[   1   ]] " | " [[   2   ]] " |
+|                 |                 |                 |                 |
++--------+--------+--------+--------+--------+--------+--------+--------+                                       
+```
+
+
+
+<!-- Grund0026 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/5.png" width="120" height="30">  \
+__Aufgabe 18:__ **Bestimme** die fehlenden Felder der Rechenmauer. Hierbei werden zwei benachbarte Felder miteinander multipliziert und das Produkt in dem Feld darüber eingetragen.
+
+
+
+
+
+
+__$a)\;\;$__
+
+<!-- data-solution-button="5"-->
+``` ascii
+                                    +-----------------+
+                                    |                 |
+                                    |   " 23328 "     |
+                                    |                 |
+                           +--------+--------+--------+--------+
+                           |                 |                 |
+                           | " [[  432  ]] " |     " 54 "      |
+                           |                 |                 |
+                  +--------+--------+--------+--------+--------+--------+
+                  |                 |                 |                 |
+                  | " [[  24   ]] " |      " 18 "     |  " [[  3   ]] " |
+                  |                 |                 |                 |
+         +--------+--------+--------+--------+--------+--------+--------+--------+                                       
+         |                 |                 |                 |                 |
+         | " [[   4   ]] " |      " 6 "      | " [[   3   ]] " |      " 1 "      |
+         |                 |                 |                 |                 |
++--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+                                       
+|                 |                 |                 |                 |                 |
+| " [[   2   ]] " |      " 2 "      | " [[   3   ]] " | " [[   1   ]] " | " [[   1   ]] " |
+|                 |                 |                 |                 |                 |
++--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+                                       
+```
+
+
+
+__$b)\;\;$__
+
+<!-- data-solution-button="5"-->
+``` ascii
+                                    +-----------------+
+                                    |                 |
+                                    | " [[   0   ]] " |
+                                    |                 |
+                           +--------+--------+--------+--------+
+                           |                 |                 |
+                           | " [[  960  ]] " | " [[   0   ]] " |
+                           |                 |                 |
+                  +--------+--------+--------+--------+--------+--------+
+                  |                 |                 |                 |
+                  |     " 24 "      |     " 40 "      | " [[   0   ]] " |
+                  |                 |                 |                 |
+         +--------+--------+--------+--------+--------+--------+--------+--------+                                       
+         |                 |                 |                 |                 |
+         | " [[   6   ]] " | " [[   4   ]] " |     " 10 "      | " [[   0   ]] " |
+         |                 |                 |                 |                 |
++--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+                                       
+|                 |                 |                 |                 |                 |
+| " [[   3   ]] " |      " 2 "      | " [[   2   ]] " | " [[   5   ]] " |      " 0 "      |
+|                 |                 |                 |                 |                 |
++--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+                                       
+```
+
+
+
+
+
+<!-- Grund0027 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 19:__ **Wähle** die Rechenoperatoren **aus**, sodass die Gleichung eine wahre Aussage widerspiegelt.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $8$ [[$+$|($-$)|$\cdot$|$:$]] $2$ [[$+$|$-$|($\cdot$)|$:$]] $3 = 2$
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $5$ [[$+$|$-$|($\cdot$)|$:$]] $4$ [[($+$)|$-$|$\cdot$|$:$]] $8$ [[$+$|$-$|($\cdot$)|$:$]] $7 = 76$
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $48$ [[$+$|$-$|$\cdot$|($:$)]] $8$ [[$+$|($-$)|$\cdot$|$:$]] $5 = 1$
+
+</div>
+</section>
+
+
+
+
+
+
+<!-- Grund0028 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 20:__ **Wähle** die Rechenoperatoren **aus**, sodass die Gleichung eine wahre Aussage widerspiegelt.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $8$ [[$+$|($-$)|$\cdot$|$:$]] $2$ [[$+$|$-$|($\cdot$)|$:$]] $3 = 2$
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $5$ [[$+$|$-$|($\cdot$)|$:$]] $4$ [[($+$)|$-$|$\cdot$|$:$]] $8$ [[$+$|$-$|($\cdot$)|$:$]] $7 = 76$
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $48$ [[$+$|$-$|$\cdot$|($:$)]] $8$ [[$+$|($-$)|$\cdot$|$:$]] $5 = 1$
+
+</div>
+</section>
+
+
+
+
+<!-- Grund0029 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 21:__ **Wähle** die Rechenoperatoren **aus**, sodass die Gleichung eine wahre Aussage widerspiegelt.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $26$ [[$+$|($-$)|$\cdot$|$:$]] $12$ [[($+$)|$-$|$\cdot$|$:$]] $7 = 218$
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $96$ [[$+$|$-$|$\cdot$|($:$)]] $8$ [[($+$)|$-$|$\cdot$|$:$]] $45$ [[$+$|$-$|$\cdot$|($:$)]] $9 = 17$
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $4$ [[$+$|$-$|($\cdot$)|$:$]] $3$ [[$+$|$-$|($\cdot$)|$:$]] $5$ [[$+$|($-$)|$\cdot$|$:$]] $13 = 47$
+
+</div>
+</section>
+
+
+
+
+<!-- Grund0030 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 22:__ **Wähle** die Rechenoperatoren **aus**, sodass die Gleichung eine wahre Aussage widerspiegelt.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $97$ [[$+$|($-$)|$\cdot$|$:$]] $4$ [[$+$|$-$|($\cdot$)|$:$]] $3$ [[$+$|$-$|($\cdot$)|$:$]] $6 = 25$
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $97$ [[$+$|($-$)|$\cdot$|$:$]] $4$ [[$+$|$-$|($\cdot$)|$:$]] $3$ [[$+$|$-$|($\cdot$)|$:$]] $6 = 25$
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $7$ [[$+$|$-$|($\cdot$)|$:$]] $5$ [[$+$|$-$|($\cdot$)|$:$]] $3$ [[$+$|$-$|$\cdot$|($:$)]] $105 = 1$
+
+</div>
+</section>
+
+
+
+
+<!-- Grund0031 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 23:__ **Gib** die korrekte Bezeichnung in Fachsprache für den rot markierten Teil **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $ \textcolor{red}{5} \cdot 3 = 15$ \
+[[    Faktor          ]]
+
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $ \textcolor{red}{5 + 6} = 11 $ \
+[[    Summe           ]]
+
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $ 85:\textcolor{red}{13} = 5$ \
+[[        Dividend    ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $ 27-12 = \textcolor{red}{15}$ \
+[[ Wert der Differenz ]]
+
+</div>
+</section>
+
+
+<!-- Grund0032 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 24:__ **Gib** die korrekte Bezeichnung in Fachsprache für den rot markierten Teil **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $ \textcolor{red}{7} + 9 = 16$ \
+[[    Summand         ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $ \textcolor{red}{9}-7 = 2 $ \
+[[    Minuend         ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $ \textcolor{red}{55}:11 = 11$ \
+[[        Divisor     ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $ 16 = \textcolor{red}{2 \cdot 8}$ \
+[[          Produkt   ]]
+
+</div>
+</section>
+
+
+<!-- Grund0033 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 25:__ **Gib** die korrekte Bezeichnung in Fachsprache für den rot markierten Teil **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $ 9 \cdot 6 = \textcolor{red}{54}$ \
+[[ Wert des Produkts  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $ \textcolor{red}{18:6} = 3 $ \
+[[    Quotient        ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $ 63-\textcolor{red}{34} = 29$ \
+[[      Subtrahend    ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $ 32 = \textcolor{red}{72-40}$ \
+[[          Differenz ]]
+
+</div>
+</section>
+
+
+<!-- Grund0034 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 26:__ **Gib** die korrekte Bezeichnung in Fachsprache für den rot markierten Teil **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $ \textcolor{red}{5} - 3 = 2$ \
+[[    Minuend         ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $ \textcolor{red}{7 \cdot 3} = 21 $ \
+[[    Produkt         ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $ 45:9=\textcolor{red}{5}$ \
+[[ Wer des Quotienten ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $ \textcolor{red}{15}+12 = 27$ \
+[[      Summand       ]]
+
+</div>
+</section>
+
+
+<!-- Grund0035 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 27:__ **Gib** die korrekte Bezeichnung in Fachsprache für den rot markierten Teil **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $ \textcolor{red}{18+24} = 42$ \
+[[    Summe          ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $ \textcolor{red}{12} \cdot 7 = 84 $ \
+[[       Faktor      ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $ \textcolor{red}{36} = 24+12$ \
+[[ Wert der Summe    ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $ \textcolor{red}{63-48}=15$ \
+[[         Differenz ]]
+
+</div>
+</section>
+
+
+<!-- Grund0036 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 28:__ **Gib** den Wert für die rot markierte Stelle auf dem Zahlenstrahl **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (7.5, 0.5) {};
+
+    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
+\draw[-, red!100,ultra thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[   5   ]]
+
+</div> 
+
+<div class="flex-child">
+
+__$b)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (7.5, 0.5) {};
+
+    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
+\draw[-, red!100,ultra thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$45$}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$60$}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[  15   ]]
+
+</div> 
+
+<div class="flex-child">
+
+__$c)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (7.5, 0.5) {};
+
+    \draw[ ->, black!100, thick] (-0.5,0) --  (6.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$14$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$18$};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
+\draw[-, red!100,ultra thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$38$}; 
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[   30  ]]
+
+</div> 
+
+<div class="flex-child">
+
+__$d)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (7.5, 0.5) {};
+
+    \draw[ ->, black!100, thick] (-0.5,0)  --  (6.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$120$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$156$}; 
+\draw[-, red!100,ultra thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$192$}; 
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[  168  ]]
+
+</div> 
+</section>
+
+
+
+
+<!-- Grund0037 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 29:__ **Gib** den Wert für die rot markierte Stelle auf dem Zahlenstrahl **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (7.5, 0.5) {};
+
+    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$8$};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$16$};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
+\draw[-, red!100,ultra thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[   48  ]]
+
+</div> 
+
+<div class="flex-child">
+
+__$b)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (7.5, 0.5) {};
+
+    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
+\draw[-, red!100,ultra thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$150$}; 
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[  100  ]]
+
+</div> 
+
+<div class="flex-child">
+
+__$c)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (7.5, 0.5) {};
+
+    \draw[ ->, black!100, thick] (-0.5,0) --  (6.5,0) node[right] {\large$x$};
+
+\draw[-, red!100,ultra thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$77$}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$110$}; 
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[   44  ]]
+
+</div> 
+
+<div class="flex-child">
+
+__$d)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (7.5, 0.5) {};
+
+    \draw[ ->, black!100, thick] (-0.5,0)  --  (6.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$72$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
+\draw[-, red!100,ultra thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$120$}; 
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[  104  ]]
+
+</div> 
+</section>
+
+
+<!-- Grund0038 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 30:__ **Gib** den Wert für die rot markierte Stelle auf dem Zahlenstrahl **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (7.5, 0.5) {};
+
+    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$5$};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$10$};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
+\draw[-, red!100,ultra thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[   30  ]]
+
+</div> 
+
+<div class="flex-child">
+
+__$b)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (7.5, 0.5) {};
+
+    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
+\draw[-, red!100,ultra thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$56$}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[  42   ]]
+
+
+</div> 
+
+<div class="flex-child">
+
+__$c)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (7.5, 0.5) {};
+
+    \draw[ ->, black!100, thick] (-0.5,0) --  (6.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$27$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
+\draw[-, red!100,ultra thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$33$}; 
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[   31  ]]
+
+</div> 
+
+<div class="flex-child">
+
+__$d)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (7.5, 0.5) {};
+
+    \draw[ ->, black!100, thick] (-0.5,0)  --  (6.5,0) node[right] {\large$x$};
+
+\draw[-, red!100,ultra thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$116$}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$128$}; 
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[  104  ]]
+
+</div> 
+</section>
+
+
+
+ 
+<!-- Grund0039 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 31:__ **Gib** den Wert für die rot markierte Stelle auf dem Zahlenstrahl **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (7.5, 0.5) {};
+
+    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$3$};
+\draw[-, red!100,ultra thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$12$}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[   6   ]]
+
+</div> 
+
+<div class="flex-child">
+
+__$b)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (7.5, 0.5) {};
+
+    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$51$}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
+\draw[-, red!100,ultra thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$102$}; 
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[  102  ]]
+
+</div> 
+
+<div class="flex-child">
+
+__$c)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (7.5, 0.5) {};
+
+    \draw[ ->, black!100, thick] (-0.5,0) --  (6.5,0) node[right] {\large$x$};
+
+\draw[-, red!100,ultra thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ 57$}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ 66$}; 
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[   48  ]]
+
+</div> 
+
+<div class="flex-child">
+
+__$d)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (7.5, 0.5) {};
+
+    \draw[ ->, black!100, thick] (-0.5,0)  --  (6.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ 16$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
+\draw[-, red!100,ultra thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$96$}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[   48  ]]
+
+</div> 
+</section>
+
+ 
+<!-- Grund0040 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 32:__ **Gib** den Wert für die rot markierte Stelle auf dem Zahlenstrahl **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (7.5, 0.5) {};
+
+    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$7$};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
+\draw[-, red!100,ultra thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$42 $}; 
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[  35   ]]
+
+</div> 
+
+<div class="flex-child">
+
+__$b)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (7.5, 0.5) {};
+
+    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
+\draw[-, red!100,ultra thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ 78$}; 
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[  39   ]]
+
+</div> 
+
+<div class="flex-child">
+
+__$c)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (7.5, 0.5) {};
+
+    \draw[ ->, black!100, thick] (-0.5,0) --  (6.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$34$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$36$};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
+\draw[-, red!100,ultra thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[   46  ]]
+
+</div> 
+
+<div class="flex-child">
+
+__$d)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (7.5, 0.5) {};
+
+    \draw[ ->, black!100, thick] (-0.5,0)  --  (6.5,0) node[right] {\large$x$};
+
+\draw[-, red!100,ultra thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ 45$};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ 61$}; 
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[   37  ]]
+
+</div> 
+</section>
+
+
+
+
+
+<!-- Grund0041 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 33:__ **Gib** den Wert des Terms **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $ 65:7 - 16:7 =$ [[  7  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $ 23:9 + 58:9 =$ [[  9  ]]
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Grund0042 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 34:__ **Gib** den Wert des Terms **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $ 29:11 + 70:11 =$ [[  9  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $ 74:8 - 26:8 =$ [[  6  ]]
+
+</div>
+</section>
+
+
+
+
+
+
+
+<!-- Grund0043 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 35:__ **Gib** den Wert des Terms **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $ 75:13 + 55:13 =$ [[  10  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $ 148:12 + 64:12 =$ [[  7  ]]
+
+</div>
+</section>
+
+
+
+
+
+
+
+<!-- Grund0044 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 36:__ **Gib** den Wert des Terms **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $ 71:5 + 24:5 =$ [[  19  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $ 47:4 - 23:4 =$ [[  6  ]]
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+<!-- Grund0045 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 37:__ **Gib** den am Zahlenstrahl dargestellten Term **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (9.5, 1.5) {};
+
+    \draw[|->, black!100, thick] (0,0) --  (8.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
+\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$7$}; 
+\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$8$}; 
+
+\draw[thick, ->] (2,0.25)  to[out=20,in=160] (5,0.25);
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[  2+3   ]] $= 5$
+
+</div>
+
+<div class="flex-child">
+
+__$b)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (9.5, 1.5) {};
+
+    \draw[|->, black!100, thick] (0,0) --  (8.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
+\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$7$}; 
+\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$8$}; 
+
+\draw[thick, ->] (1,0.25)  to[out=20,in=160] (7,0.25);
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[  1+6   ]] $= 7$
+
+</div>
+</section>
+
+
+
+
+
+
+
+<!-- Grund0046 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 38:__ **Gib** den am Zahlenstrahl dargestellten Term **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (9.5, 1.5) {};
+
+    \draw[|->, black!100, thick] (0,0) --  (8.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
+\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$7$}; 
+\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$8$}; 
+
+\draw[thick, ->] (5,0.25)  to[out=20,in=160] (7,0.25);
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[  5+2   ]] $= 7$
+
+</div>
+
+<div class="flex-child">
+
+__$b)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (9.5, 1.5) {};
+
+    \draw[|->, black!100, thick] (0,0) --  (8.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
+\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$7$}; 
+\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$8$}; 
+
+\draw[thick, ->] (3,0.25)  to[out=20,in=160] (8,0.25);
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[  3+5   ]] $= 8$
+
+</div>
+</section>
+
+
+
+
+
+
+
+<!-- Grund0047 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 39:__ **Gib** den am Zahlenstrahl dargestellten Term **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (9.5, 1.5) {};
+
+    \draw[|->, black!100, thick] (0,0) --  (8.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
+\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$7$}; 
+\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$8$}; 
+
+\draw[thick, ->] (1,0.25)  to[out=20,in=160] (4,0.25);
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[  1+3   ]] $= 4$
+
+</div>
+
+<div class="flex-child">
+
+__$b)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (9.5, 1.5) {};
+
+    \draw[|->, black!100, thick] (0,0) --  (8.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
+\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$7$}; 
+\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$8$}; 
+
+\draw[thick, ->] (6,0.25)  to[out=20,in=160] (8,0.25);
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[  6+2   ]] $= 8$
+
+</div>
+</section>
+
+
+
+
+
+
+
+<!-- Grund0048 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 40:__ **Gib** den am Zahlenstrahl dargestellten Term **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (9.5, 1.5) {};
+
+    \draw[|->, black!100, thick] (0,0) --  (8.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
+\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$7$}; 
+\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$8$}; 
+
+\draw[thick, ->] (7,0.25)  to[out=160,in=20] (2,0.25);
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[  7-5   ]] $= 2$
+
+</div>
+
+<div class="flex-child">
+
+__$b)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (9.5, 1.5) {};
+
+    \draw[|->, black!100, thick] (0,0) --  (8.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
+\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$7$}; 
+\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$8$}; 
+
+\draw[thick, ->] (8,0.25)  to[out=160,in=20] (1,0.25);
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[  8-7   ]] $= 1$
+
+</div>
+</section>
+
+
+
+
+
+
+
+<!-- Grund0049 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 41:__ **Gib** den am Zahlenstrahl dargestellten Term **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (9.5, 1.5) {};
+
+    \draw[|->, black!100, thick] (0,0) --  (8.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
+\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$7$}; 
+\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$8$}; 
+
+\draw[thick, ->] (6,0.25)  to[out=160,in=20] (5,0.25);
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[  6-1   ]] $= 5$
+
+</div>
+
+<div class="flex-child">
+
+__$b)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (9.5, 1.5) {};
+
+    \draw[|->, black!100, thick] (0,0) --  (8.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
+\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$7$}; 
+\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$8$}; 
+
+\draw[thick, ->] (7,0.25)  to[out=160,in=20] (3,0.25);
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[  7-4   ]] $= 3$
+
+</div>
+</section>
+
+
+
+
+
+
+
+<!-- Grund0050 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 42:__ **Gib** den am Zahlenstrahl dargestellten Term **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (9.5, 1.5) {};
+
+    \draw[|->, black!100, thick] (0,0) --  (8.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
+\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$7$}; 
+\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$8$}; 
+
+\draw[thick, ->] (8,0.25)  to[out=160,in=20] (2,0.25);
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[  8-6   ]] $= 2$
+
+</div>
+
+<div class="flex-child">
+<br>
+__$b)\;\;$__ 
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[>=latex, scale=1] 
+
+  \node at (-0.75,-0.75) {};
+  \node at (9.5, 1.5) {};
+
+    \draw[|->, black!100, thick] (0,0) --  (8.5,0) node[right] {\large$x$};
+
+\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
+\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
+\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
+\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
+\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
+\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
+\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
+\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$7$}; 
+\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$8$}; 
+
+\draw[thick, ->] (3,0.25)  to[out=160,in=20] (0,0.25);
+
+\end{tikzpicture}
+
+```
+</center>
+
+<!-- data-solution-button="5"-->
+[[  3-3   ]] $= 0$
+
+</div>
+</section>
+
+
+
+
+
+
+
+<!-- Grund0051 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 43:__ **Gib** den Wert des Terms **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  7 \cdot 8 - 14  =$ [[  42  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $ 2 + 3 \cdot 9  =$ [[  29  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  4 \cdot  5 + 6 \cdot 3  =$ [[  38  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  72 : 9 + 15  =$ [[  23  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  48 - 36:4  =$ [[  39  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $ 41:7 + 15:7  =$ [[  56  ]]
+
+</div>
+</section>
+
+
+
+
+
+
+
+<!-- Grund0052 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 44:__ **Gib** den Wert des Terms **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  7 \cdot 4 - 3 \cdot 6 =$ [[  10  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  14 \cdot 9 + 6  =$ [[  130  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  7 + 3 \cdot 17  =$ [[  58  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $ 55:5 - 42:6  =$ [[  4  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  11 \cdot 25 - 144:18  =$ [[  267  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $ 16 \cdot 5 - 51   =$ [[  29  ]]
+
+</div>
+</section>
+
+
+
+
+
+
+
+<!-- Grund0053 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 45:__ **Gib** den Wert des Terms **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $ 6 \cdot 4 \cdot 3  - 33 =$ [[  39  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $ 83 - 5 \cdot 9  =$ [[  38  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $ 63 : 7 + 75:5  =$ [[  24  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $ 5 \cdot 7 + 32:8  =$ [[  39  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $ (24+36) \cdot 3  =$ [[  180  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  (2 + 9) \cdot ( 16 - 7)  =$ [[  99  ]]
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+<!-- Grund0054 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 46:__ **Gib** den Wert des Terms **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $ 2 \cdot (8 + 3) - 5  =$ [[  17  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $ 17 \cdot 4 + 35  =$ [[  103  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  84:14 + 65:13  =$ [[  11  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $ 58 - 4 \cdot 8  =$ [[  26  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $ 47:8 + 41:8  =$ [[  11  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  5 \cdot 7 \cdot 3  - 9 =$ [[  96  ]]
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+<!-- Grund0055 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 47:__ **Gib** den Wert des Terms **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $ 96:8 + 3 \cdot 5  =$ [[  27  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $ (9 + 2 \cdot 4) \cdot 3 =$ [[  51  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $ 6 \cdot 9 - 5 \cdot 5  =$ [[  38  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $ 13 + 7 \cdot 8  =$ [[  69  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $ 73 - 13 \cdot 4  =$ [[  21  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $ 108:12 + 85:5  =$ [[  26  ]]
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+<!-- Grund0056 -->
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 48:__ **Gib** den Wert des Terms **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  105:5 - 4 \cdot 3  =$ [[  9  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $ 63 - 3 \cdot 9  =$ [[  36  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $ 8 \cdot 9 + 6 \cdot 7  =$ [[  112  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $ 24 + 6 \cdot 14  =$ [[  108  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $ 53:8 + 19:8  =$ [[  9  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $ 124 - 15 \cdot 7  =$ [[  19  ]]
+
+</div>
+</section>
+
+
+
+
+
+
+
 ??[](https://bildung-bedeutet-freiheit.de/viervieren/index.html)
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+
 
 
 
@@ -3449,7 +6656,8 @@ $91854 : 54=$[[  1701  ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ 
 
 
 <!-- data-solution-button="5"-->
@@ -3469,7 +6677,8 @@ $91854 : 54=$[[  1701  ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ 
 
 
 <!-- data-solution-button="5"-->
@@ -3493,7 +6702,8 @@ $91854 : 54=$[[  1701  ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ *Gib* die Zahl gerundet auf drei Nachkommastellen *an*.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
+__Aufgabe 1:__ *Gib* die Zahl gerundet auf drei Nachkommastellen *an*.
 
 
 <section class="flex-container">
@@ -3524,7 +6734,8 @@ __$c)\;\;$__ $1,\overline{633} \approx$ [[ 1,634 ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 2:__ *Gib* die Zahl gerundet auf drei Nachkommastellen *an*.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 2:__ *Gib* die Zahl gerundet auf drei Nachkommastellen *an*.
 
 
 <section class="flex-container">
@@ -3553,7 +6764,8 @@ __$c)\;\;$__ $7,\overline{645891} \approx$ [[ 7,646 ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 3:__ *Gib* die Zahl gerundet auf drei Nachkommastellen *an*.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 3:__ *Gib* die Zahl gerundet auf drei Nachkommastellen *an*.
 
 
 <section class="flex-container">
@@ -3581,7 +6793,8 @@ __$c)\;\;$__ $0,\overline{45} \approx$ [[ 0,455 ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 4:__ *Gib* die Zahl gerundet auf drei Nachkommastellen *an*.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 4:__ *Gib* die Zahl gerundet auf drei Nachkommastellen *an*.
 
 
 <section class="flex-container">
@@ -3617,7 +6830,8 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ 
 
 
 <!-- data-solution-button="5"-->
@@ -3641,7 +6855,8 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ 
 
 
 <!-- data-solution-button="5"-->
@@ -3662,7 +6877,8 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ 
 
 <!-- data-solution-button="5"-->
 
@@ -3681,7 +6897,8 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ 
 
 
 <!-- data-solution-button="5"-->
@@ -3701,7 +6918,8 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ 
 
 
 <!-- data-solution-button="5"-->
@@ -3720,7 +6938,8 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ 
 
 
 <!-- data-solution-button="5"-->
@@ -3741,7 +6960,8 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ 
 
 
 <!-- data-solution-button="5"-->
@@ -3760,7 +6980,8 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ 
 
 
 <!-- data-solution-button="5"-->
@@ -3779,7 +7000,8 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ 
 
 
 <!-- data-solution-button="5"-->
@@ -3798,7 +7020,8 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ 
 
 
 <!-- data-solution-button="5"-->
@@ -3817,7 +7040,8 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ 
 
 
 <!-- data-solution-button="5"-->
@@ -3838,7 +7062,8 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ 
 
 <!-- data-solution-button="5"-->
 
@@ -3856,7 +7081,8 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ 
 
 
 <!-- data-solution-button="5"-->
@@ -3876,7 +7102,8 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ 
 
 
 <!-- data-solution-button="5"-->
@@ -3895,7 +7122,8 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ 
 
 
 <!-- data-solution-button="5"-->
@@ -3914,7 +7142,8 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ 
 
 
 <!-- data-solution-button="5"-->
@@ -3932,7 +7161,8 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ 
 
 
 
@@ -3950,7 +7180,8 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> __Aufgabe 1:__ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ 
 
 
 
