@@ -7648,13 +7648,1135 @@ $$
 
 
 
-<!-- data-solution-button="5"-->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 13:__ **Berechne** den Lösungswert für die Unbekannte.
+
+
+
 
 <section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  3x-7 = 8 - 2x $ \
+$x$ = [[  3   ]]
+************
+$$
+\begin{align*}
+3x-7 & = 8 - 2x  \quad \left| +7  \right. \\
+3x    & = 15 -2x  \quad \left| +2x  \right.  \\
+5x    & = 15  \quad \left| :5  \right.  \\
+x    & = 3   \\
+\end{align*}
+$$
+************
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__  $ 3x - 2 = 2x + 1 $ \
+$x$ = [[  3  ]]
+************
+$$
+\begin{align*}
+3x - 2 &= 2x + 1 \quad \left| -2x \right. \\
+x - 2 &= 1 \quad \left| +2 \right. \\
+x &= 3
+\end{align*}
+$$
+************
 
 
+</div>
+<div class="flex-child">
 
+<!-- data-solution-button="5"-->
+__$c)\;\;$__    $ 5x + 3 = 2x + 18 $ \
+$x$ = [[  5  ]]
+************
+$$
+\begin{align*}
+5x + 3 &= 2x + 18 \quad \left| -2x \right. \\
+3x + 3 &= 18 \quad \left| -3 \right. \\
+3x &= 15 \quad \left| :3 \right. \\
+x &= 5
+\end{align*}
+$$
+************
+
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__  $ 4x - 4 = 2x + 10 $ \
+$x$ = [[  7  ]]
+************
+$$
+\begin{align*}
+4x - 4 &= 2x + 10 \quad \left| -2x \right. \\
+2x - 4 &= 10 \quad \left| +4 \right. \\
+2x &= 14 \quad \left| :2 \right. \\
+x &= 7
+\end{align*}
+$$
+************
+
+
+</div>
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 14:__ **Berechne** den Lösungswert für die Unbekannte.
+
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__  $ 4x + 5 = 3x + 14 $ \
+$x$ = [[  9  ]]
+************
+$$
+\begin{align*}
+4x + 5 &= 3x + 14 \quad \left| -3x \right. \\
+x + 5 &= 14 \quad \left| -5 \right. \\
+x &= 9
+\end{align*}
+$$
+************
+
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__  $ 7x - 4 = 3x + 16 $ \
+$x$ = [[  5  ]]
+************
+$$
+\begin{align*}
+7x - 4 &= 3x + 16 \quad \left| -3x \right. \\
+4x - 4 &= 16 \quad \left| +4 \right. \\
+4x &= 20 \quad \left| :4 \right. \\
+x &= 5
+\end{align*}
+$$
+************
+
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__   $ 6x - 8 = 2x + 20 $ \
+$x$ = [[  7  ]]
+************
+$$
+\begin{align*}
+6x - 8 &= 2x + 20 \quad \left| -2x \right. \\
+4x - 8 &= 20 \quad \left| +8 \right. \\
+4x &= 28 \quad \left| :4 \right. \\
+x &= 7
+\end{align*}
+$$
+************
+
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__  $ 10x - 12 = 4x + 24 $ \
+$x$ = [[  6  ]]
+************
+$$
+\begin{align*}
+10x - 12 &= 4x + 24 \quad \left| -4x \right. \\
+6x - 12 &= 24 \quad \left| +12 \right. \\
+6x &= 36 \quad \left| :6 \right. \\
+x &= 6
+\end{align*}
+$$
+************
+
+
+</div>
+</section>
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 15:__ **Berechne** den Lösungswert für die Unbekannte.
+
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $ 2x - 8 = 3x - 10 $ \
+$x$ = [[  2  ]]
+************
+$$
+\begin{align*}
+2x - 8 &= 3x - 10 \quad \left| -2x \right. \\
+-8 &= x - 10 \quad \left| +10 \right. \\
+2 &= x
+\end{align*}
+$$
+************
+
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__  $ 5x - 12 = 3x + 6 \;$ \
+$x$ = [[  9  ]]
+************
+$$
+\begin{align*}
+5x - 12 &= 3x + 6 \quad \left| -3x \right. \\
+2x - 12 &= 6 \quad \left| +12 \right. \\
+2x &= 18 \quad \left| :2 \right. \\
+x &= 9
+\end{align*}
+$$
+************
+
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__   $ 3x + 12 = 5x - 2 $ \
+$x$ = [[  7  ]]
+************
+$$
+\begin{align*}
+3x + 12 &= 5x - 2 \quad \left| -3x \right. \\
+12 &= 2x - 2 \quad \left| +2 \right. \\
+14 &= 2x \quad \left| :2 \right. \\
+x &= 7
+\end{align*}
+$$
+************
+
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__  $ 8x - 5 = 3x + 20 $ \
+$x$ = [[  5  ]]
+************
+$$
+\begin{align*}
+8x - 5 &= 3x + 20 \quad \left| -3x \right. \\
+5x - 5 &= 20 \quad \left| +5 \right. \\
+5x &= 25 \quad \left| :5 \right. \\
+x &= 5
+\end{align*}
+$$
+************
+
+
+</div>
+</section>
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 16:__ **Berechne** den Lösungswert für die Unbekannte.
+
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $ 2x + 10 = 4x - 6 $ \
+$x$ = [[  8  ]]
+************
+$$
+\begin{align*}
+2x + 10 &= 4x - 6 \quad \left| -2x \right. \\
+10 &= 2x - 6 \quad \left| +6 \right. \\
+16 &= 2x \quad \left| :2 \right. \\
+x &= 8
+\end{align*}
+$$
+************
+
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__  $ \;9x - 15 = 6x + 12 \;$ \
+$x$ = [[  9  ]]
+************
+$$
+\begin{align*}
+9x - 15 &= 6x + 12 \quad \left| -6x \right. \\
+3x - 15 &= 12 \quad \left| +15 \right. \\
+3x &= 27 \quad \left| :3 \right. \\
+x &= 9
+\end{align*}
+$$
+************
+
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__   $ 2x + 14 = 3x + 5 $ \
+$x$ = [[  9  ]]
+************
+$$
+\begin{align*}
+2x + 14 &= 3x + 5 \quad \left| -2x \right. \\
+14 &= x + 5 \quad \left| -5 \right. \\
+9 &= x
+\end{align*}
+$$
+************
+
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__  $ 7x - 9 = 2x + 16 \;$ \
+$x$ = [[  5  ]]
+************
+$$
+\begin{align*}
+7x - 9 &= 2x + 16 \quad \left| -2x \right. \\
+5x - 9 &= 16 \quad \left| +9 \right. \\
+5x &= 25 \quad \left| :5 \right. \\
+x &= 5
+\end{align*}
+$$
+************
+
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 17:__ **Berechne** den Lösungswert für die Unbekannte.
+
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  2x + 4 + 9 = 6x - 3 - 7 $ \
+$x$ = [[  4  ]]
+************
+$$
+\begin{align*}
+2x + 4 + 9 &= 6x - 3 - 7 \\
+2x + 13 &= 6x - 10 \quad \left| +10 \right. \\
+2x + 23 &= 6x  \quad \left| -2x \right. \\
+23 &= 4x \quad \left| :4 \right. \\
+x &= 4
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  3x + 5 + x = 2x + 17 - x $ \
+$x$ = [[  3  ]]
+************
+$$
+\begin{align*}
+3x + 5 + x &= 2x + 17 - x \\
+4x + 5 &= x + 17 \quad \left| -x \right. \\
+3x + 5 &= 17 \quad \left| -5 \right. \\
+3x &= 12 \quad \left| :3 \right. \\
+x &= 3
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  5x - 7 + 2x = 3x + 13 $ \
+$x$ = [[  5  ]]
+************
+$$
+\begin{align*}
+5x - 7 + 2x &= 3x + 13 \\
+7x - 7 &= 3x + 13 \quad \left| -3x \right. \\
+4x - 7 &= 13 \quad \left| +7 \right. \\
+4x &= 20 \quad \left| :4 \right. \\
+x &= 5
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  2x + 4 + 9x = 6x - 3 - 7 $ \
+$x$ = [[  2  ]]
+************
+$$
+\begin{align*}
+2x + 4 + 9x &= 6x - 3 - 7 \\
+11x + 4 &= 6x - 10 \quad \left| -6x \right. \\
+5x + 4 &= -10 \quad \left| -4 \right. \\
+5x &= -14 \quad \left| :(-5) \right. \\
+x &= 2
+\end{align*}
+$$
+************
+</div>
+</section>
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 18:__ **Berechne** den Lösungswert für die Unbekannte.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  4x + 6 - 2x + 3 = x + 17 $ \
+$x$ = [[  4  ]]
+************
+$$
+\begin{align*} 
+4x + 6 - 2x + 3 &= x + 17  \\
+2x + 9 &= x + 17 \quad \left| -x \right. \\
+x + 9 &= 17 \quad \left| -9 \right. \\
+x &= 8
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  6x - 5 + 2x = 3x + 25 $ \
+$x$ = [[  6  ]]
+************
+$$
+\begin{align*}
+ 6x - 5 + 2x &= 3x + 25 \\
+8x - 5 &= 3x + 25 \quad \left| -3x \right. \\
+5x - 5 &= 25 \quad \left| +5 \right. \\
+5x &= 30 \quad \left| :5 \right. \\
+x &= 6
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  7x + 3 - 2x = 4x + 8 $ \
+$x$ = [[  1  ]]
+************
+$$
+\begin{align*}
+7x + 3 - 2x &= 4x + 8 \\
+5x + 3 &= 4x + 8 \quad \left| -4x \right. \\
+x + 3 &= 8 \quad \left| -3 \right. \\
+x &= 5
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  9x - 4 + x = 5x + 26 $ \
+$x$ = [[  6  ]]
+************
+$$
+\begin{align*}
+9x - 4 + x &= 5x + 26 \\
+10x - 4 &= 5x + 26 \quad \left| -5x \right. \\
+5x - 4 &= 26 \quad \left| +4 \right. \\
+5x &= 30 \quad \left| :5 \right. \\
+x &= 6
+\end{align*}
+$$
+************
+</div>
+</section>
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 19:__ **Berechne** den Lösungswert für die Unbekannte.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  4(2x-3) = 2x + 10 $ \
+$x$ = [[  2  ]]
+************
+$$
+\begin{align*}
+4(2x-3) &= 2x + 10 \\
+8x - 12 &= 2x + 10 \quad \left| -2x \right. \\
+6x - 12 &= 10 \quad \left| +12 \right. \\
+6x &= 22 \quad \left| :6 \right. \\
+x &= 2
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  3(2x+4) = x + 19 $ \
+$x$ = [[  5  ]]
+************
+$$
+\begin{align*}
+3(2x+4) &= x + 19 \\
+6x + 12 &= x + 19 \quad \left| -x \right. \\
+5x + 12 &= 19 \quad \left| -12 \right. \\
+5x &= 7 \quad \left| :5 \right. \\
+x &= 5
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  2(3x-1) + 5 = 4x + 7 $ \
+$x$ = [[  2  ]]
+************
+$$
+\begin{align*}
+2(3x-1) + 5 &= 4x + 7 \\
+6x - 2 + 5 &= 4x + 7 \\
+6x + 3 &= 4x + 7 \quad \left| -4x \right. \\
+2x + 3 &= 7 \quad \left| -3 \right. \\
+2x &= 4 \quad \left| :2 \right. \\
+x &= 2
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  5(x+2) - 3 = 2x + 12 $ \
+$x$ = [[  3  ]]
+************
+$$
+\begin{align*}
+5(x+2) - 3 &= 2x + 12 \\
+5x + 10 - 3 &= 2x + 12 \\
+5x + 7 &= 2x + 12 \quad \left| -2x \right. \\
+3x + 7 &= 12 \quad \left| -7 \right. \\
+3x &= 5 \quad \left| :3 \right. \\
+x &= 3
+\end{align*}
+$$
+************
+</div>
+</section>
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 20:__ **Berechne** den Lösungswert für die Unbekannte.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  2(4x-5) = 3x + 13 $ \
+$x$ = [[  3  ]]
+************
+$$
+\begin{align*}
+2(4x-5) &= 3x + 13 \\
+8x - 10 &= 3x + 13 \quad \left| -3x \right. \\
+5x - 10 &= 13 \quad \left| +10 \right. \\
+5x &= 23 \quad \left| :5 \right. \\
+x &= 3
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  3(2x+1) = 4x + 11 $ \
+$x$ = [[  2  ]]
+************
+$$
+\begin{align*}
+3(2x+1) &= 4x + 11 \\
+6x + 3 &= 4x + 11 \quad \left| -4x \right. \\
+2x + 3 &= 11 \quad \left| -3 \right. \\
+2x &= 8 \quad \left| :2 \right. \\
+x &= 4
+\end{align*}
+$$
+************
+
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  2(5x-4) = 3x + 14 $ \
+$x$ = [[  2  ]]
+************
+$$
+\begin{align*}
+2(5x-4) &= 3x + 14 \\
+10x - 8 &= 3x + 14 \quad \left| -3x \right. \\
+7x - 8 &= 14 \quad \left| +8 \right. \\
+7x &= 22 \quad \left| :7 \right. \\
+x &= 2
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  7(x-2) + 1 = 3x + 8 $ \
+$x$ = [[  3  ]]
+************
+$$
+\begin{align*}
+ 7(x-2) + 1 &= 3x + 8 \\
+7x - 14 + 1 &= 3x + 8 \\
+7x - 13 &= 3x + 8 \quad \left| -3x \right. \\
+4x - 13 &= 8 \quad \left| +13 \right. \\
+4x &= 21 \quad \left| :4 \right. \\
+x &= 3
+\end{align*}
+$$
+************
+</div>
+</section>
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 21:__ **Berechne** den Lösungswert für die Unbekannte.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  3x - 7 = \dfrac{1}{2}x + 5 $ \
+$x$ = [[  24/5  ]]
+@Algebrite.check(24/5)
+************
+$$
+\begin{align*}
+3x - 7 &= \dfrac{1}{2}x + 5 \quad \left| -\dfrac{1}{2}x \right. \\
+\dfrac{5}{2}x - 7 &= 5 \quad \left| +7 \right. \\
+\dfrac{5}{2}x &= 12 \quad \left| :\dfrac{5}{2} \right. \\
+x &= \dfrac{24}{5}
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  4x + 3 = 2x - \dfrac{5}{2} $ \
+$x$ = [[  -11/4  ]]
+@Algebrite.check(-11/4)
+************
+$$
+\begin{align*}
+4x + 3 &= 2x - \dfrac{5}{2} \quad \left| -2x \right. \\
+2x + 3 &= -\dfrac{5}{2} \quad \left| -3 \right. \\
+2x &= -\dfrac{5}{2} - \dfrac{6}{2} \\
+2x &= -\dfrac{11}{2} \quad \left| :2 \right. \\
+x &= -\dfrac{11}{4}
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{5}{3}x - 4 = x + 2 $ \
+$x$ = [[  18  ]]
+@Algebrite.check(18)
+************
+$$
+\begin{align*}
+\dfrac{5}{3}x - 4 &= x + 2 \quad \left| -x \right. \\
+\dfrac{2}{3}x - 4 &= 2 \quad \left| +4 \right. \\
+\dfrac{2}{3}x &= 6 \quad \left| :\dfrac{2}{3} \right. \\
+x &= 18
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $ 5(x-1) = 3x + \dfrac{7}{3}$ \
+$x$ = [[  11/3  ]]
+@Algebrite.check(11/3)
+************
+$$
+\begin{align*}
+5(x-1) &= 3x + \dfrac{7}{3} \\
+5x - 5 &= 3x + \dfrac{7}{3} \quad \left| -3x \right. \\
+2x - 5 &= \dfrac{7}{3} \quad \left| +5 \right. \\
+2x &= \dfrac{7}{3} + \dfrac{15}{3} \\
+2x &= \dfrac{22}{3} \quad \left| :2 \right. \\
+x &= \dfrac{11}{3}
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  2\left(x + \dfrac{3}{2}\right) = \dfrac{1}{2}x + 5 $ \
+$x$ = [[  4/3  ]]
+@Algebrite.check(4/3)
+************
+$$
+\begin{align*}
+ 2\left(x + \dfrac{3}{2}\right) &= \dfrac{1}{2}x + 5 \\
+2x + 3 &= \dfrac{1}{2}x + 5 \quad \left| -\dfrac{1}{2}x \right. \\
+\dfrac{3}{2}x + 3 &= 5 \quad \left| -3 \right. \\
+\dfrac{3}{2}x &= 2 \quad \left| :\dfrac{3}{2} \right. \\
+x &= \dfrac{4}{3}
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{2}{3}(3x+6) = x - 2 $ \
+$x$ = [[  -6  ]]
+@Algebrite.check(-6)
+************
+$$
+\begin{align*}
+\dfrac{2}{3}(3x+6) &= x - 2  \\
+2x + 4 &= x - 2 \quad \left| -x \right. \\
+x + 4 &= -2 \quad \left| -4 \right. \\
+x &= -6
+\end{align*}
+$$
+************
+</div>
+</section>
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 22:__ **Berechne** den Lösungswert für die Unbekannte.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $ \; 7x + \dfrac{1}{2} = 3x - \dfrac{7}{2} \;$ \
+$x$ = [[  -1  ]]
+@Algebrite.check(-1)
+************
+$$
+\begin{align*}
+7x + \dfrac{1}{2} &= 3x - \dfrac{7}{2} \quad \left| -3x \right. \\
+4x + \dfrac{1}{2} &= -\dfrac{7}{2} \quad \left| -\dfrac{1}{2} \right. \\
+4x &= -\dfrac{8}{2} \\
+4x &= -4 \quad \left| :4 \right. \\
+x &= -1
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $ \; 2x - \dfrac{7}{3} = \dfrac{1}{3}x + 5 \;$ \
+$x$ = [[  22/5  ]]
+@Algebrite.check(22/5)
+************
+$$
+\begin{align*}
+2x - \dfrac{7}{3} &= \dfrac{1}{3}x + 5 \quad \left| -\dfrac{1}{3}x \right. \\
+\dfrac{5}{3}x - \dfrac{7}{3} &= 5 \quad \left| +\dfrac{7}{3} \right. \\
+\dfrac{5}{3}x &= \dfrac{15}{3} + \dfrac{7}{3} \\
+\dfrac{5}{3}x &= \dfrac{22}{3} \quad \left| :\dfrac{5}{3} \right. \\
+x &= \dfrac{22}{5}
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $ \; \dfrac{3}{2}x + 4 = \dfrac{5}{4}x - 2 \;$ \
+$x$ = [[  -24  ]]
+@Algebrite.check(-24)
+************
+$$
+\begin{align*}
+\dfrac{3}{2}x + 4 &= \dfrac{5}{4}x - 2 \\
+\dfrac{6}{4}x + 4 &= \dfrac{5}{4}x - 2 \quad \left| -\dfrac{5}{4}x \right. \\
+\dfrac{1}{4}x + 4 &= -2 \quad \left| -4 \right. \\
+\dfrac{1}{4}x &= -6 \quad \left| :\dfrac{1}{4} \right. \\
+x &= -24
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $ 2(x-3) = \dfrac{1}{2}x - 1 $ \
+$x$ = [[  10/3  ]]
+@Algebrite.check(10/3)
+************
+$$
+\begin{align*}
+2(x-3) &= \dfrac{1}{2}x - 1  \\
+2x - 3\cdot 2 &= \dfrac{1}{2}x - 1 \\
+2x - 6 &= \dfrac{1}{2}x - 1 \quad \left| -\dfrac{1}{2}x \right. \\
+\dfrac{3}{2}x - 6 &= -1 \quad \left| +6 \right. \\
+\dfrac{3}{2}x &= 5 \quad \left| :\dfrac{3}{2} \right. \\
+x &= \dfrac{10}{3}
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $ 3(x+2) - \dfrac{5}{2} = 2x $ \
+$x$ = [[  -7/2  ]]
+@Algebrite.check(-7/2)
+************
+$$
+\begin{align*}
+ 3(x+2) - \dfrac{5}{2} &= 2x  \\
+3x + 6 - \dfrac{5}{2} &= 2x \\
+3x + \dfrac{12}{2} - \dfrac{5}{2} &= 2x \\
+3x + \dfrac{7}{2} &= 2x \quad \left| -2x \right. \\
+x + \dfrac{7}{2} &= 0 \quad \left| -\dfrac{7}{2} \right. \\
+x &= -\dfrac{7}{2}
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{3}{4}(2x-1) = x + \dfrac{1}{2} $ \
+$x$ = [[  5/2  ]]
+@Algebrite.check(5/2)
+************
+$$
+\begin{align*}
+\dfrac{3}{4}(2x-1) &= x + \dfrac{1}{2} \\
+\dfrac{3}{2}x - \dfrac{3}{4} &= x + \dfrac{1}{2} \quad \left| -x \right. \\
+\dfrac{1}{2}x - \dfrac{3}{4} &= \dfrac{1}{2} \quad \left| +\dfrac{3}{4} \right. \\
+\dfrac{1}{2}x &= \dfrac{5}{4} \quad \left| :\dfrac{1}{2} \right. \\
+x &= \dfrac{5}{2}
+\end{align*}
+$$
+************
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 23:__ **Berechne** den Lösungswert für die Unbekannte.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  2x + 3x - 7 = x + 5 $ \
+$x$ = [[  3  ]]
+@Algebrite.check(3)
+************
+$$
+\begin{align*}
+2x + 3x - 7 &= x + 5 \\
+5x - 7 &= x + 5 \quad \left| -x \right. \\
+4x - 7 &= 5 \quad \left| +7 \right. \\
+4x &= 12 \quad \left| :4 \right. \\
+x &= 3
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  4(2x-3) = 5x + 1 $ \
+$x$ = [[  13/3  ]]
+@Algebrite.check(13/3)
+************
+$$
+\begin{align*}
+4(2x-3) &= 5x + 1 \\
+8x - 12 &= 5x + 1 \quad \left| -5x \right. \\
+3x - 12 &= 1 \quad \left| +12 \right. \\
+3x &= 13 \quad \left| :3 \right. \\
+x &= \dfrac{13}{3}
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{3}{2}x - 5 = \dfrac{1}{2}x + 4 $ \
+$x$ = [[  9  ]]
+@Algebrite.check(9)
+************
+$$
+\begin{align*}
+\dfrac{3}{2}x - 5 &= \dfrac{1}{2}x + 4 \quad \left| -\dfrac{1}{2}x \right. \\
+x - 5 &= 4 \quad \left| +5 \right. \\
+x &= 9
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  5x + 2 - x = \dfrac{1}{3}x - 7 $ \
+$x$ = [[  -27/11  ]]
+@Algebrite.check(-27/11)
+************
+$$
+\begin{align*}
+5x + 2 - x &= \dfrac{1}{3}x - 7 \\
+4x + 2 &= \dfrac{1}{3}x - 7 \quad \left| -\dfrac{1}{3}x \right. \\
+\dfrac{11}{3}x + 2 &= -7 \quad \left| -2 \right. \\
+\dfrac{11}{3}x &= -9 \quad \left| :\dfrac{11}{3} \right. \\
+x &= -\dfrac{27}{11}
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  2(3x+4) - x = 7x - 10 $ \
+$x$ = [[  6  ]]
+@Algebrite.check(6)
+************
+$$
+\begin{align*}
+2(3x+4) - x &= 7x - 10 \\
+6x + 8 - x &= 7x - 10 \\
+5x + 8 &= 7x - 10 \quad \left| -5x \right. \\
+8 &= 2x - 10 \quad \left| +10 \right. \\
+18 &= 2x \quad \left| :2 \right. \\
+x &= 6
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{5}{4}x + 7 = \dfrac{3}{2}x - 1 $ \
+$x$ = [[  16  ]]
+@Algebrite.check(16)
+************
+$$
+\begin{align*}
+\dfrac{5}{4}x + 7 &= \dfrac{3}{2}x - 1 \\
+\dfrac{5}{4}x + 7 &= \dfrac{6}{4}x - 1 \quad \left| -\dfrac{5}{4}x \right. \\
+7 &= \dfrac{1}{4}x - 1 \quad \left| +1 \right. \\
+8 &= \dfrac{1}{4}x \quad \left| :\dfrac{1}{4} \right. \\
+x &= 16
+\end{align*}
+$$
+************
+</div>
+</section>
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 24:__ **Berechne** den Lösungswert für die Unbekannte.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  4x - 3 = \dfrac{1}{2}x + 9 $ \
+$x$ = [[  24/7  ]]
+@Algebrite.check(24/7)
+************
+$$
+\begin{align*}
+4x - 3 &= \dfrac{1}{2}x + 9 \quad \left| -\dfrac{1}{2}x \right. \\
+\left(4 - \dfrac{1}{2}\right)x - 3 &= 9 \\
+\dfrac{7}{2}x - 3 &= 9 \quad \left| +3 \right. \\
+\dfrac{7}{2}x &= 12 \quad \left| :\dfrac{7}{2} \right. \\
+x &= \dfrac{24}{7}
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  3(2x+1) - 4 = x + 5 $ \
+$x$ = [[  6/5  ]]
+@Algebrite.check(6/5)
+************
+$$
+\begin{align*}
+3(2x+1) - 4 &= x + 5 \\
+6x + 3 - 4 &= x + 5 \\
+6x - 1 &= x + 5 \quad \left| -x \right. \\
+5x - 1 &= 5 \quad \left| +1 \right. \\
+5x &= 6 \quad \left| :5 \right. \\
+x &= \dfrac{6}{5}
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{1}{3}x - 2 = \dfrac{3}{5}x + 1 $ \
+$x$ = [[  -45/4  ]]
+@Algebrite.check(-45/4)
+************
+$$
+\begin{align*}
+\dfrac{1}{3}x - 2 &= \dfrac{3}{5}x + 1 \quad \left| -\dfrac{3}{5}x \right. \\
+\left(\dfrac{1}{3} - \dfrac{3}{5}\right)x - 2 &= 1 \\
+-\dfrac{4}{15}x - 2 &= 1 \quad \left| +2 \right. \\
+-\dfrac{4}{15}x &= 3 \quad \left| \cdot(-1) \right. \\
+\dfrac{4}{15}x &= -3 \quad \left| :\dfrac{4}{15} \right. \\
+x &= -\dfrac{45}{4}
+\end{align*}
+$$
+************
+
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  2x + 5 = \dfrac{4}{3}x - 1 $ \
+$x$ = [[  -9  ]]
+@Algebrite.check(-9)
+************
+$$
+\begin{align*}
+2x + 5 &= \dfrac{4}{3}x - 1 \quad \left| -\dfrac{4}{3}x \right. \\
+\left(2 - \dfrac{4}{3}\right)x + 5 &= -1 \\
+\dfrac{2}{3}x + 5 &= -1 \quad \left| -5 \right. \\
+\dfrac{2}{3}x &= -6 \quad \left| :\dfrac{2}{3} \right. \\
+x &= -9
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{5}{4}x - 3 = 2 - \dfrac{1}{2}x $ \
+$x$ = [[  20/7  ]]
+@Algebrite.check(20/7)
+************
+$$
+\begin{align*}
+\dfrac{5}{4}x - 3 &= 2 - \dfrac{1}{2}x \quad \left| +\dfrac{1}{2}x \right. \\
+\left(\dfrac{5}{4} + \dfrac{1}{2}\right)x - 3 &= 2 \\
+\dfrac{7}{4}x - 3 &= 2 \quad \left| +3 \right. \\
+\dfrac{7}{4}x &= 5 \quad \left| :\dfrac{7}{4} \right. \\
+x &= \dfrac{20}{7}
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  2\left(x - \dfrac{3}{2}\right) + \dfrac{1}{3} = \dfrac{5}{3}x - 1 $ \
+$x$ = [[  5  ]]
+@Algebrite.check(5)
+************
+$$
+\begin{align*}
+2 \left(x - \dfrac{3}{2}\right) + \dfrac{1}{3} &= \dfrac{5}{3}x - 1 \\
+2x - 3 + \dfrac{1}{3} &= \dfrac{5}{3}x - 1 \\
+2x - \dfrac{8}{3} &= \dfrac{5}{3}x - 1 \quad \left| -\dfrac{5}{3}x \right. \\
+\left(2 - \dfrac{5}{3}\right)x - \dfrac{8}{3} &= -1 \\
+\dfrac{1}{3}x - \dfrac{8}{3} &= -1 \quad \left| +\dfrac{8}{3} \right. \\
+\dfrac{1}{3}x &= \dfrac{5}{3} \quad \left| :\dfrac{1}{3} \right. \\
+x &= 5
+\end{align*}
+$$
+************
+</div>
+</section>
+
+
+
+
+
+
+
+
+
 
 
 ### Quadratische Ergänzung

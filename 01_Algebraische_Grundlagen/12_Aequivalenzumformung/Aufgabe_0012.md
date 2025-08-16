@@ -44,7 +44,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
 
-tags: Äquivalenzumformung, sehr leicht, sehr niedrig, Angeben, 
+tags: Äquivalenzumformung, sehr leicht, sehr niedrig, Berechnen, 
 
 comment: Führe eine kurze Äquivalenzumformung aus.
 
@@ -55,7 +55,7 @@ author: Martin Lommatzsch
 
 
 
-# Lückentext zur Äquivalenzumformung
+# Kurze Äquivalenzumformung
 
 
 **Berechne** den Lösungswert für die Unbekannte.

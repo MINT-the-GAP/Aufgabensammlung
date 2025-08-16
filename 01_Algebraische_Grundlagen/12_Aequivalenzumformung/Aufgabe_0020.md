@@ -43,8 +43,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
 
-
-tags: Äquivalenzumformung, leicht, sehr niedrig, Berechnen, 
+tags: Äquivalenzumformung, Distributivgesetz, leicht, niedrig, Berechnen, 
 
 comment: Führe eine Äquivalenzumformung mit natürlichen Zahlen aus.
 
@@ -55,86 +54,78 @@ author: Martin Lommatzsch
 
 
 
-# Äquivalenzumformung mit natürlichen Zahlen
+# Einfache Äquivalenzumformung
+
 
 **Berechne** den Lösungswert für die Unbekannte.
-
 
 
 
 <section class="flex-container">
 <div class="flex-child">
 
-
-__$a)\;\;$__ $  3x-7 = 8 - 2x $ \
-$x$ = [[  3   ]]
-************
-$$
-\begin{align*}
-3x-7 & = 8 - 2x  \quad \left| +7  \right. \\
-3x    & = 15 -2x  \quad \left| +2x  \right.  \\
-5x    & = 15  \quad \left| :5  \right.  \\
-x    & = 3   \\
-\end{align*}
-$$
-************
-
-</div>
-<div class="flex-child">
-
-
-__$b)\;\;$__  $ 3x - 2 = 2x + 1 $ \
+__$a)\;\;$__ $  2(4x-5) = 3x + 13 $ \
 $x$ = [[  3  ]]
 ************
 $$
 \begin{align*}
-3x - 2 &= 2x + 1 \quad \left| -2x \right. \\
-x - 2 &= 1 \quad \left| +2 \right. \\
+2(4x-5) &= 3x + 13 \\
+8x - 10 &= 3x + 13 \quad \left| -3x \right. \\
+5x - 10 &= 13 \quad \left| +10 \right. \\
+5x &= 23 \quad \left| :5 \right. \\
 x &= 3
 \end{align*}
 $$
 ************
-
-
 </div>
 <div class="flex-child">
 
-
-__$c)\;\;$__    $ 5x + 3 = 2x + 18 $ \
-$x$ = [[  5  ]]
+__$b)\;\;$__ $  3(2x+1) = 4x + 11 $ \
+$x$ = [[  2  ]]
 ************
 $$
 \begin{align*}
-5x + 3 &= 2x + 18 \quad \left| -2x \right. \\
-3x + 3 &= 18 \quad \left| -3 \right. \\
-3x &= 15 \quad \left| :3 \right. \\
-x &= 5
+3(2x+1) &= 4x + 11 \\
+6x + 3 &= 4x + 11 \quad \left| -4x \right. \\
+2x + 3 &= 11 \quad \left| -3 \right. \\
+2x &= 8 \quad \left| :2 \right. \\
+x &= 4
 \end{align*}
 $$
 ************
 
-
 </div>
 <div class="flex-child">
 
-
-__$d)\;\;$__  $ 4x - 4 = 2x + 10 $ \
-$x$ = [[  7  ]]
+__$c)\;\;$__ $  2(5x-4) = 3x + 14 $ \
+$x$ = [[  2  ]]
 ************
 $$
 \begin{align*}
-4x - 4 &= 2x + 10 \quad \left| -2x \right. \\
-2x - 4 &= 10 \quad \left| +4 \right. \\
-2x &= 14 \quad \left| :2 \right. \\
-x &= 7
+2(5x-4) &= 3x + 14 \\
+10x - 8 &= 3x + 14 \quad \left| -3x \right. \\
+7x - 8 &= 14 \quad \left| +8 \right. \\
+7x &= 22 \quad \left| :7 \right. \\
+x &= 2
 \end{align*}
 $$
 ************
+</div>
+<div class="flex-child">
 
-
+__$d)\;\;$__ $  7(x-2) + 1 = 3x + 8 $ \
+$x$ = [[  3  ]]
+************
+$$
+\begin{align*}
+ 7(x-2) + 1 &= 3x + 8 \\
+7x - 14 + 1 &= 3x + 8 \\
+7x - 13 &= 3x + 8 \quad \left| -3x \right. \\
+4x - 13 &= 8 \quad \left| +13 \right. \\
+4x &= 21 \quad \left| :4 \right. \\
+x &= 3
+\end{align*}
+$$
+************
 </div>
 </section>
-
-
-
-

@@ -43,8 +43,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
 
-
-tags: Äquivalenzumformung, leicht, sehr niedrig, Berechnen, 
+tags: Äquivalenzumformung, leicht, niedrig, Berechnen, 
 
 comment: Führe eine Äquivalenzumformung mit natürlichen Zahlen aus.
 
@@ -55,86 +54,79 @@ author: Martin Lommatzsch
 
 
 
-# Äquivalenzumformung mit natürlichen Zahlen
+# Einfache Äquivalenzumformung
+
+
+
 
 **Berechne** den Lösungswert für die Unbekannte.
-
-
 
 
 <section class="flex-container">
 <div class="flex-child">
 
-
-__$a)\;\;$__ $  3x-7 = 8 - 2x $ \
-$x$ = [[  3   ]]
+__$a)\;\;$__ $  2x + 4 + 9 = 6x - 3 - 7 $ \
+$x$ = [[  4  ]]
 ************
 $$
 \begin{align*}
-3x-7 & = 8 - 2x  \quad \left| +7  \right. \\
-3x    & = 15 -2x  \quad \left| +2x  \right.  \\
-5x    & = 15  \quad \left| :5  \right.  \\
-x    & = 3   \\
+2x + 4 + 9 &= 6x - 3 - 7 \\
+2x + 13 &= 6x - 10 \quad \left| +10 \right. \\
+2x + 23 &= 6x  \quad \left| -2x \right. \\
+23 &= 4x \quad \left| :4 \right. \\
+x &= 4
 \end{align*}
 $$
 ************
-
 </div>
 <div class="flex-child">
 
-
-__$b)\;\;$__  $ 3x - 2 = 2x + 1 $ \
+__$b)\;\;$__ $  3x + 5 + x = 2x + 17 - x $ \
 $x$ = [[  3  ]]
 ************
 $$
 \begin{align*}
-3x - 2 &= 2x + 1 \quad \left| -2x \right. \\
-x - 2 &= 1 \quad \left| +2 \right. \\
+3x + 5 + x &= 2x + 17 - x \\
+4x + 5 &= x + 17 \quad \left| -x \right. \\
+3x + 5 &= 17 \quad \left| -5 \right. \\
+3x &= 12 \quad \left| :3 \right. \\
 x &= 3
 \end{align*}
 $$
 ************
-
-
 </div>
 <div class="flex-child">
 
-
-__$c)\;\;$__    $ 5x + 3 = 2x + 18 $ \
+__$c)\;\;$__ $  5x - 7 + 2x = 3x + 13 $ \
 $x$ = [[  5  ]]
 ************
 $$
 \begin{align*}
-5x + 3 &= 2x + 18 \quad \left| -2x \right. \\
-3x + 3 &= 18 \quad \left| -3 \right. \\
-3x &= 15 \quad \left| :3 \right. \\
+5x - 7 + 2x &= 3x + 13 \\
+7x - 7 &= 3x + 13 \quad \left| -3x \right. \\
+4x - 7 &= 13 \quad \left| +7 \right. \\
+4x &= 20 \quad \left| :4 \right. \\
 x &= 5
 \end{align*}
 $$
 ************
-
-
 </div>
 <div class="flex-child">
 
-
-__$d)\;\;$__  $ 4x - 4 = 2x + 10 $ \
-$x$ = [[  7  ]]
+__$d)\;\;$__ $  2x + 4 + 9x = 6x - 3 - 7 $ \
+$x$ = [[  2  ]]
 ************
 $$
 \begin{align*}
-4x - 4 &= 2x + 10 \quad \left| -2x \right. \\
-2x - 4 &= 10 \quad \left| +4 \right. \\
-2x &= 14 \quad \left| :2 \right. \\
-x &= 7
+2x + 4 + 9x &= 6x - 3 - 7 \\
+11x + 4 &= 6x - 10 \quad \left| -6x \right. \\
+5x + 4 &= -10 \quad \left| -4 \right. \\
+5x &= -14 \quad \left| :(-5) \right. \\
+x &= 2
 \end{align*}
 $$
 ************
-
-
 </div>
 </section>
-
-
 
 

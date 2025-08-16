@@ -43,8 +43,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
 
-
-tags: Äquivalenzumformung, leicht, sehr niedrig, Berechnen, 
+tags: Äquivalenzumformung, Distributivgesetz, leicht, niedrig, Berechnen, 
 
 comment: Führe eine Äquivalenzumformung mit natürlichen Zahlen aus.
 
@@ -55,86 +54,78 @@ author: Martin Lommatzsch
 
 
 
-# Äquivalenzumformung mit natürlichen Zahlen
+# Einfache Äquivalenzumformung
+
 
 **Berechne** den Lösungswert für die Unbekannte.
-
 
 
 
 <section class="flex-container">
 <div class="flex-child">
 
-
-__$a)\;\;$__ $  3x-7 = 8 - 2x $ \
-$x$ = [[  3   ]]
+__$a)\;\;$__ $  4(2x-3) = 2x + 10 $ \
+$x$ = [[  2  ]]
 ************
 $$
 \begin{align*}
-3x-7 & = 8 - 2x  \quad \left| +7  \right. \\
-3x    & = 15 -2x  \quad \left| +2x  \right.  \\
-5x    & = 15  \quad \left| :5  \right.  \\
-x    & = 3   \\
+4(2x-3) &= 2x + 10 \\
+8x - 12 &= 2x + 10 \quad \left| -2x \right. \\
+6x - 12 &= 10 \quad \left| +12 \right. \\
+6x &= 22 \quad \left| :6 \right. \\
+x &= 2
 \end{align*}
 $$
 ************
-
 </div>
 <div class="flex-child">
 
-
-__$b)\;\;$__  $ 3x - 2 = 2x + 1 $ \
-$x$ = [[  3  ]]
-************
-$$
-\begin{align*}
-3x - 2 &= 2x + 1 \quad \left| -2x \right. \\
-x - 2 &= 1 \quad \left| +2 \right. \\
-x &= 3
-\end{align*}
-$$
-************
-
-
-</div>
-<div class="flex-child">
-
-
-__$c)\;\;$__    $ 5x + 3 = 2x + 18 $ \
+__$b)\;\;$__ $  3(2x+4) = x + 19 $ \
 $x$ = [[  5  ]]
 ************
 $$
 \begin{align*}
-5x + 3 &= 2x + 18 \quad \left| -2x \right. \\
-3x + 3 &= 18 \quad \left| -3 \right. \\
-3x &= 15 \quad \left| :3 \right. \\
+3(2x+4) &= x + 19 \\
+6x + 12 &= x + 19 \quad \left| -x \right. \\
+5x + 12 &= 19 \quad \left| -12 \right. \\
+5x &= 7 \quad \left| :5 \right. \\
 x &= 5
 \end{align*}
 $$
 ************
-
-
 </div>
 <div class="flex-child">
 
-
-__$d)\;\;$__  $ 4x - 4 = 2x + 10 $ \
-$x$ = [[  7  ]]
+__$c)\;\;$__ $  2(3x-1) + 5 = 4x + 7 $ \
+$x$ = [[  2  ]]
 ************
 $$
 \begin{align*}
-4x - 4 &= 2x + 10 \quad \left| -2x \right. \\
-2x - 4 &= 10 \quad \left| +4 \right. \\
-2x &= 14 \quad \left| :2 \right. \\
-x &= 7
+2(3x-1) + 5 &= 4x + 7 \\
+6x - 2 + 5 &= 4x + 7 \\
+6x + 3 &= 4x + 7 \quad \left| -4x \right. \\
+2x + 3 &= 7 \quad \left| -3 \right. \\
+2x &= 4 \quad \left| :2 \right. \\
+x &= 2
 \end{align*}
 $$
 ************
+</div>
+<div class="flex-child">
 
-
+__$d)\;\;$__ $  5(x+2) - 3 = 2x + 12 $ \
+$x$ = [[  3  ]]
+************
+$$
+\begin{align*}
+5(x+2) - 3 &= 2x + 12 \\
+5x + 10 - 3 &= 2x + 12 \\
+5x + 7 &= 2x + 12 \quad \left| -2x \right. \\
+3x + 7 &= 12 \quad \left| -7 \right. \\
+3x &= 5 \quad \left| :3 \right. \\
+x &= 3
+\end{align*}
+$$
+************
 </div>
 </section>
-
-
-
-

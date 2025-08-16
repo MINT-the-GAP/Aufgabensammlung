@@ -43,8 +43,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
 
-
-tags: Äquivalenzumformung, leicht, sehr niedrig, Berechnen, 
+tags: Äquivalenzumformung, leicht, niedrig, Berechnen, 
 
 comment: Führe eine Äquivalenzumformung mit natürlichen Zahlen aus.
 
@@ -55,86 +54,79 @@ author: Martin Lommatzsch
 
 
 
-# Äquivalenzumformung mit natürlichen Zahlen
+# Einfache Äquivalenzumformung
+
+
+
+
 
 **Berechne** den Lösungswert für die Unbekannte.
-
 
 
 
 <section class="flex-container">
 <div class="flex-child">
 
-
-__$a)\;\;$__ $  3x-7 = 8 - 2x $ \
-$x$ = [[  3   ]]
+__$a)\;\;$__ $  4x + 6 - 2x + 3 = x + 17 $ \
+$x$ = [[  4  ]]
 ************
 $$
-\begin{align*}
-3x-7 & = 8 - 2x  \quad \left| +7  \right. \\
-3x    & = 15 -2x  \quad \left| +2x  \right.  \\
-5x    & = 15  \quad \left| :5  \right.  \\
-x    & = 3   \\
+\begin{align*} 
+4x + 6 - 2x + 3 &= x + 17  \\
+2x + 9 &= x + 17 \quad \left| -x \right. \\
+x + 9 &= 17 \quad \left| -9 \right. \\
+x &= 8
 \end{align*}
 $$
 ************
-
 </div>
 <div class="flex-child">
 
-
-__$b)\;\;$__  $ 3x - 2 = 2x + 1 $ \
-$x$ = [[  3  ]]
+__$b)\;\;$__ $  6x - 5 + 2x = 3x + 25 $ \
+$x$ = [[  6  ]]
 ************
 $$
 \begin{align*}
-3x - 2 &= 2x + 1 \quad \left| -2x \right. \\
-x - 2 &= 1 \quad \left| +2 \right. \\
-x &= 3
+ 6x - 5 + 2x &= 3x + 25 \\
+8x - 5 &= 3x + 25 \quad \left| -3x \right. \\
+5x - 5 &= 25 \quad \left| +5 \right. \\
+5x &= 30 \quad \left| :5 \right. \\
+x &= 6
 \end{align*}
 $$
 ************
-
-
 </div>
 <div class="flex-child">
 
-
-__$c)\;\;$__    $ 5x + 3 = 2x + 18 $ \
-$x$ = [[  5  ]]
+__$c)\;\;$__ $  7x + 3 - 2x = 4x + 8 $ \
+$x$ = [[  1  ]]
 ************
 $$
 \begin{align*}
-5x + 3 &= 2x + 18 \quad \left| -2x \right. \\
-3x + 3 &= 18 \quad \left| -3 \right. \\
-3x &= 15 \quad \left| :3 \right. \\
+7x + 3 - 2x &= 4x + 8 \\
+5x + 3 &= 4x + 8 \quad \left| -4x \right. \\
+x + 3 &= 8 \quad \left| -3 \right. \\
 x &= 5
 \end{align*}
 $$
 ************
-
-
 </div>
 <div class="flex-child">
 
-
-__$d)\;\;$__  $ 4x - 4 = 2x + 10 $ \
-$x$ = [[  7  ]]
+__$d)\;\;$__ $  9x - 4 + x = 5x + 26 $ \
+$x$ = [[  6  ]]
 ************
 $$
 \begin{align*}
-4x - 4 &= 2x + 10 \quad \left| -2x \right. \\
-2x - 4 &= 10 \quad \left| +4 \right. \\
-2x &= 14 \quad \left| :2 \right. \\
-x &= 7
+9x - 4 + x &= 5x + 26 \\
+10x - 4 &= 5x + 26 \quad \left| -5x \right. \\
+5x - 4 &= 26 \quad \left| +4 \right. \\
+5x &= 30 \quad \left| :5 \right. \\
+x &= 6
 \end{align*}
 $$
 ************
-
-
 </div>
 </section>
-
-
 
 
