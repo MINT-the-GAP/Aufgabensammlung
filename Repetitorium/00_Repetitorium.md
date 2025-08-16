@@ -1555,6 +1555,7 @@ $$
 
 
 Streichholz Term angeben
+Waagen Terme angeben
 
 
 
@@ -7132,7 +7133,7 @@ x_{1,2} & = \pm \dfrac{\sqrt{4a-5}}{2}
   \end{align*}
 $$
 
-{{|>}} In dem gezeigten Beispiel wäre ein Änkündigungsstrich mit einer angedeuteten *Wurzel* nicht korrekt, da die *Definitionsmenge* halbiert wird. Aus diesem Grund wurde dies auch nicht im ersten Schritt niedergeschrieben.
+{{|>}} In dem gezeigten Beispiel wäre ein *Ankündigungsstrich* mit einer angedeuteten *Wurzel* nicht korrekt, da die *Definitionsmenge* halbiert wird. Aus diesem Grund wurde dies auch nicht im ersten Schritt niedergeschrieben.
 
 
 
@@ -7267,6 +7268,65 @@ $x=$ [[  3  ]] Streichhölzer
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 5:__ **Bestimme** die Massenwert des Massestückchens $x$.
+
+
+<!-- style="width:600px" data-solution-button="5" -->
+__$a)\;\;$__ ![](Kap2/waage1a.png)  
+$x=$ [[  5    ]] kg
+
+<!-- style="width:600px" data-solution-button="5" -->
+__$b)\;\;$__ ![](Kap2/waage1d.png)  
+$x=$ [[  2    ]] kg
+
+<!-- style="width:600px" data-solution-button="5" -->
+__$c)\;\;$__ ![](Kap2/waage1g.png)  
+$x=$ [[  0,75  ]] kg
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 6:__ **Bestimme** die Massenwert des Massestückchens $x$.
+
+
+<!-- style="width:600px" data-solution-button="5" -->
+__$a)\;\;$__ ![](Kap2/waage1b.png)  
+$x=$ [[  3    ]] kg
+
+<!-- style="width:600px" data-solution-button="5" -->
+__$b)\;\;$__ ![](Kap2/waage1e.png)  
+$x=$ [[  2    ]] kg
+
+<!-- style="width:600px" data-solution-button="5" -->
+__$c)\;\;$__ ![](Kap2/waage1h.png)  
+$x=$ [[  1,83  ]] kg
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 7:__ **Bestimme** die Massenwert des Massestückchens $x$.
+
+
+<!-- style="width:600px" data-solution-button="5" -->
+__$a)\;\;$__ ![](Kap2/waage1c.png)  
+$x=$ [[  4    ]] kg
+
+<!-- style="width:600px" data-solution-button="5" -->
+__$b)\;\;$__ ![](Kap2/waage1f.png)  
+$x=$ [[  5    ]] kg
+
+<!-- style="width:600px" data-solution-button="5" -->
+__$c)\;\;$__ ![](Kap2/waage1i.png)  
+$x=$ [[  1,56  ]] kg
 
 
 
@@ -7275,13 +7335,310 @@ $x=$ [[  3  ]] Streichhölzer
 
 
 
-waage, Gleichung + Wert
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 8:__ Im Folgenden ist eine Äquivalenzumformung dargestellt und das Vorgehen ist in einem Lückentext beschrieben. **Fülle** die Lücken **aus**.
+
+$$
+\begin{align*}
+  11+6 \cdot x & = 3 + 8 \cdot x  \quad \left|  -3  \right. \\
+  8 + 6 \cdot x & = 8 \cdot x  \quad \left|  -6x  \right. \\
+  8  & = 2 \cdot x  \quad \left|  : 2  \right. \\
+  4  & = x   \\
+\end{align*}
+$$
+
+$$
+\begin{align*}
+  11+6 \cdot 4 & = 3 + 8 \cdot 4   \\
+  11 + 24 & = 3 + 32  \\
+  35  & = 35   \\
+\end{align*}
+$$
+
+<!-- data-solution-button="5" -->
+Um die Gleichung zu sortieren, wird zu nächst auf beiden Seiten des Gleichungszeichen [[  -3  ]] gerechnet. Anschließend wird $-6x$ auf [[     beiden Seiten des Gleichheitszeichen     ]] gerechnet, sodass alles, was mit der Variable $x$ multipliziert ist, auf einer Seite des Gleichheitszeichen ist und alles andere auf der anderen Seite. Abschließend wird durch den Vorfaktor [[  2  ]] [[  dividiert  ]]. Nachdem die [[  Lösung  ]] der Gleichung gefunden wurde, wird die [[  Probe  ]] durchgeführt, indem die Lösung für $x$ in die [[  Gleichung  ]] vom Anfang eingesetzt wird. Ist auf beiden Seiten des Gleichheitszeichen der gleiche Wert, dann ist die Lösung korrekt.
 
 
-Lückentext
 
 
-Stumpf
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 9:__ Im Folgenden ist eine Äquivalenzumformung dargestellt und das Vorgehen ist in einem Lückentext beschrieben. **Fülle** die Lücken **aus**.
+
+
+$$
+\begin{align*}
+  \dfrac{3}{x-2} & = \dfrac{4}{3x+7}    \quad \left|  \cdot (x-2)  \right. \\
+  3 & = \dfrac{4}{3x+7} (x-2)    \quad \left|  \cdot (3x+7) \right. \\
+  3(3x+7) & = 4 (x-2)      \\
+  9x+21 & = 4x-8     \quad \left| -4x \right.     \\
+  5x+21 & = -8     \quad \left| -21 \right.     \\
+  5x  & = -29     \quad \left| :5 \right.     \\
+  x  & = -\dfrac{29}{5}       \\
+\end{align*}
+$$
+
+
+<!-- data-solution-button="5" -->
+Bei dieser Gleichung steht die gesuchte Unbekannte auf beiden Seiten des Gleichheitszeichen im [[  Nenner  ]]. Um dies aufzuheben wird mit $(x-2)$ und dann mit $(3x+7)$ auf beiden Seiten des Gleichheitszeichen [[  multipliziert  ]]. Die [[  Klammern  ]] sind dabei wichtig, aufgrund der Regel: Punkt- vor [[  Strichrechnung  ]]. Anschließend wird das [[  Distributivgesetz  ]] benutzt, um die Klammern aufzulösen. Nun wird die Gleichung mit der Strichrechnung sortiert, indem erst $-4x$ und dann [[  -21  ]] auf beiden Seiten des Gleichheitszeichen gerechnet wird. Abschließend wird durch den [[  Vorfaktor  ]] $5$ dividiert.
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 10:__ Im Folgenden ist eine Äquivalenzumformung dargestellt und das Vorgehen ist in einem Lückentext beschrieben. **Fülle** die Lücken **aus**.
+
+
+$$
+\begin{align*}
+  \dfrac{3}{5}x - 4 & = \dfrac{2}{7} + x    \quad \left|  + 4  \right. \\
+  \dfrac{3}{5}x   & = \dfrac{30}{7} + x    \quad \left|  -x  \right. \\
+  -\dfrac{2}{5}x   & = \dfrac{30}{7}    \quad \left|  \cdot 5  \right. \\
+  -2x   & = \dfrac{150}{7}    \quad \left|  : 2  \right. \\
+  -x   & = \dfrac{75}{7}    \quad \left|  \cdot (-1)  \right. \\
+  x   & = -\dfrac{75}{7}     \\
+\end{align*}
+$$
+
+<!-- data-solution-button="5" -->
+Als erstes wird die Gleichung sortiert, indem auf [[  beiden Seiten  ]] des Gleichheitszeichen $+4$ gerechnet wird. Anschließend wird [[  -x  ]] auf beiden Seiten des [[  Gleichheitszeichen  ]] gerechnet, sodass in den nächsten Schritten nur noch die Punktrechnung zum Einsatz kommen kann. Der Vorfaktor stückweise entfernt. Zu nächst wird [[ mit   ]] $5$ [[  multipliziert  ]], dann nächst wird [[ durch ]] $2$ [[  dividiert      ]]. Das Vorzeichen wird abschließend noch mit der [[  Multiplikation  ]] mit $(-1)$ von der Unbekannten gelöst.
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 11:__ **Berechne** den Lösungswert für die Unbekannte.
+
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  x - 4 = 9 $ \
+$x$ = [[  13  ]]
+************
+$$
+\begin{align*}
+x - 4 & = 9 \quad \left| +4  \right. \\
+x   & = 13  \\
+\end{align*}
+$$
+************
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  4 \cdot x = 36$ \
+$x$ =  [[  9   ]]
+************
+$$
+\begin{align*}
+4 \cdot x & = 36 \quad \left| : 4  \right. \\
+x   & = 9  \\
+\end{align*}
+$$
+************
+
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  7 = \dfrac{x}{6}  $ \
+$x$ =  [[  42  ]]
+************
+$$
+\begin{align*}
+7 & = \dfrac{x}{6} \quad \left| \cdot 6  \right. \\
+42   & = x  \\
+\end{align*}
+$$
+************
+
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $ 3 = x - 5 $ \
+$x$ =  [[  8   ]]
+************
+$$
+\begin{align*}
+3 & = x - 5 \quad \left| +5  \right. \\
+8   & = x  \\
+\end{align*}
+$$
+************
+
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  x + 8  = 13 $ \
+$x$ =  [[  5   ]]
+************
+$$
+\begin{align*}
+x+8 & = 13 \quad \left| -8  \right. \\
+x   & = 5  \\
+\end{align*}
+$$
+************
+
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  64 = 4 \cdot x  $ \
+$x$ =  [[  16  ]]
+************
+$$
+\begin{align*}
+64 & = 4x \quad \left| :4  \right. \\
+16 & = x  \\
+\end{align*}
+$$
+************
+
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 12:__ **Berechne** den Lösungswert für die Unbekannte.
+
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  72 = 8 \cdot x $ \
+$x$ = [[  9   ]]
+************
+$$
+\begin{align*}
+72 & = 8 \cdot x  \quad \left| : 8  \right. \\
+9   & = x  \\
+\end{align*}
+$$
+************
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{x}{7} = 5 $ \
+$x$ =  [[  35  ]]
+************
+$$
+\begin{align*}
+\dfrac{x}{7} & = 5 \quad \left| \cdot 7  \right. \\
+x   & = 35  \\
+\end{align*}
+$$
+************
+
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  x + 7 = 19  $ \
+$x$ =  [[  12  ]]
+************
+$$
+\begin{align*}
+x + 7 & = 19 \quad \left|  -7  \right. \\
+x   & = 12  \\
+\end{align*}
+$$
+************
+
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $ 17 = x - 8 $ \
+$x$ =  [[  25  ]]
+************
+$$
+\begin{align*}
+17 & = x - 8 \quad \left| +8  \right. \\
+25   & = x  \\
+\end{align*}
+$$
+************
+
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  7x = 84 $ \
+$x$ =  [[  12  ]]
+************
+$$
+\begin{align*}
+7x & = 84 \quad \left| :7  \right. \\
+x   & = 12  \\
+\end{align*}
+$$
+************
+
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  3 = \dfrac{x}{17}  $ \
+$x$ =  [[  51  ]]
+************
+$$
+\begin{align*}
+3 & = \dfrac{x}{17} \quad \left| \cdot 17  \right. \\
+51 & = x  \\
+\end{align*}
+$$
+************
+
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
