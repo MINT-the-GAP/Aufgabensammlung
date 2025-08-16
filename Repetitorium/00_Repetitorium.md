@@ -8775,6 +8775,1061 @@ $$
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 25:__ **Berechne** den Lösungswert für die Unbekannte.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{5}{x-1} = \dfrac{10}{x+1} $ \
+$x$ = [[  3  ]]
+************
+$$
+\begin{align*}
+\dfrac{5}{x-1} &= \dfrac{10}{x+1} \quad \left| \cdot(x-1) \right. \\
+5 &= \dfrac{10(x-1)}{x+1} \quad \left| \cdot(x+1) \right. \\
+5(x+1) &= 10(x-1) \\
+5x+5 &= 10x-10 \quad \left| -5x \right. \\
+5 &= 5x - 10 \quad \left| +10 \right. \\
+15 &= 5x \quad \left| :5 \right. \\
+x &= 3
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{6}{x+1} = \dfrac{9}{2x+1} $ \
+$x$ = [[  1  ]]
+************
+$$
+\begin{align*}
+\dfrac{6}{x+1} &= \dfrac{9}{2x+1} \quad \left| \cdot(x+1) \right. \\
+6 &= \dfrac{9(x+1)}{2x+1} \quad \left| \cdot(2x+1) \right. \\
+6(2x+1) &= 9(x+1) \\
+12x+6 &= 9x+9 \quad \left| -9x \right. \\
+3x+6 &= 9 \quad \left| -6 \right. \\
+3x &= 3 \quad \left| :3 \right. \\
+x &= 1
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{9}{2x-1} = \dfrac{3}{x-4} $ \
+$x$ = [[  11  ]]
+************
+$$
+\begin{align*}
+\dfrac{9}{2x-1} &= \dfrac{3}{x-4} \quad \left| \cdot(2x-1) \right. \\
+9 &= \dfrac{3(2x-1)}{x-4} \quad \left| \cdot(x-4) \right. \\
+9(x-4) &= 3(2x-1) \\
+9x-36 &= 6x-3 \quad \left| -6x \right. \\
+3x-36 &= -3 \quad \left| +36 \right. \\
+3x &= 33 \quad \left| :3 \right. \\
+x &= 11
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{12}{x+3} = \dfrac{8}{x+1} $ \
+$x$ = [[  3  ]]
+************
+$$
+\begin{align*}
+\dfrac{12}{x+3} &= \dfrac{8}{x+1} \quad \left| \cdot(x+3) \right. \\
+12 &= \dfrac{8(x+3)}{x+1} \quad \left| \cdot(x+1) \right. \\
+12(x+1) &= 8(x+3) \\
+12x+12 &= 8x+24 \quad \left| -8x \right. \\
+4x+12 &= 24 \quad \left| -12 \right. \\
+4x &= 12 \quad \left| :4 \right. \\
+x &= 3
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{3}{x+1} = \dfrac{7}{x+5} $ \
+$x$ = [[  2  ]]
+************
+$$
+\begin{align*}
+\dfrac{3}{x+1} &= \dfrac{7}{x+5} \quad \left| \cdot(x+1) \right. \\
+3 &= \dfrac{7(x+1)}{x+5} \quad \left| \cdot(x+5) \right. \\
+3(x+5) &= 7(x+1) \\
+3x+15 &= 7x+7 \quad \left| -3x \right. \\
+15 &= 4x+7 \quad \left| -7 \right. \\
+8 &= 4x \quad \left| :4 \right. \\
+x &= 2
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{6}{x+2} = \dfrac{11}{2x+3} $ \
+$x$ = [[  4  ]]
+************
+$$
+\begin{align*}
+\dfrac{6}{x+2} &= \dfrac{11}{2x+3} \quad \left| \cdot(x+2) \right. \\
+6 &= \dfrac{11(x+2)}{2x+3} \quad \left| \cdot(2x+3) \right. \\
+6(2x+3) &= 11(x+2) \\
+12x+18 &= 11x+22 \quad \left| -11x \right. \\
+x+18 &= 22 \quad \left| -18 \right. \\
+x &= 4
+\end{align*}
+$$
+************
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 26:__ **Berechne** den Lösungswert für die Unbekannte.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{6}{x-2} = \dfrac{18}{x+4} $ \
+$x$ = [[  5  ]]
+************
+$$
+\begin{align*}
+\dfrac{6}{x-2} &= \dfrac{18}{x+4} \quad \left| \cdot(x-2) \right. \\
+6 &= \dfrac{18(x-2)}{x+4} \quad \left| \cdot(x+4) \right. \\
+6(x+4) &= 18(x-2) \\
+6x + 24 &= 18x - 36 \quad \left| -6x \right. \\
+24 &= 12x - 36 \quad \left| +36 \right. \\
+60 &= 12x \quad \left| :12 \right. \\
+x &= 5
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{9}{2x+5} = \dfrac{3}{x+1} $ \
+$x$ = [[  2  ]]
+************
+$$
+\begin{align*}
+\dfrac{9}{2x+5} &= \dfrac{3}{x+1} \quad \left| \cdot(2x+5) \right. \\
+9 &= \dfrac{3(2x+5)}{x+1} \quad \left| \cdot(x+1) \right. \\
+9(x+1) &= 3(2x+5) \\
+9x + 9 &= 6x + 15 \quad \left| -6x \right. \\
+3x + 9 &= 15 \quad \left| -9 \right. \\
+3x &= 6 \quad \left| :3 \right. \\
+x &= 2
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{7}{x+3} = \dfrac{11}{3x-1} $ \
+$x$ = [[  4  ]]
+************
+$$
+\begin{align*}
+\dfrac{7}{x+3} &= \dfrac{11}{3x-1} \quad \left| \cdot(x+3) \right. \\
+7 &= \dfrac{11(x+3)}{3x-1} \quad \left| \cdot(3x-1) \right. \\
+7(3x-1) &= 11(x+3) \\
+21x - 7 &= 11x + 33 \quad \left| -11x \right. \\
+10x - 7 &= 33 \quad \left| +7 \right. \\
+10x &= 40 \quad \left| :10 \right. \\
+x &= 4
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{3}{x} = \dfrac{9}{4x-3} $ \
+$x$ = [[  3  ]]
+************
+$$
+\begin{align*}
+\dfrac{3}{x} &= \dfrac{9}{4x-3} \quad \left| \cdot x \right. \\
+3 &= \dfrac{9x}{4x-3} \quad \left| \cdot(4x-3) \right. \\
+3(4x-3) &= 9x \\
+12x - 9 &= 9x \quad \left| -9x \right. \\
+3x - 9 &= 0 \quad \left| +9 \right. \\
+3x &= 9 \quad \left| :3 \right. \\
+x &= 3
+\end{align*}
+$$
+************
+
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{3}{x-1} = \dfrac{13}{2x+5} $ \
+$x$ = [[  4  ]]
+************
+$$
+\begin{align*}
+\dfrac{3}{x-1} &= \dfrac{13}{2x+5} \quad \left| \cdot(x-1) \right. \\
+3 &= \dfrac{13(x-1)}{2x+5} \quad \left| \cdot(2x+5) \right. \\
+3(2x+5) &= 13(x-1) \\
+6x + 15 &= 13x - 13 \quad \left| -6x \right. \\
+15 &= 7x - 13 \quad \left| +13 \right. \\
+28 &= 7x \quad \left| :7 \right. \\
+x &= 4
+\end{align*}
+$$
+************
+
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{8}{3x+2} = \dfrac{9}{x+7} $ \
+$x$ = [[  2  ]]
+************
+$$
+\begin{align*}
+\dfrac{8}{3x+2} &= \dfrac{9}{x+7} \quad \left| \cdot(3x+2) \right. \\
+8 &= \dfrac{9(3x+2)}{x+7} \quad \left| \cdot(x+7) \right. \\
+8(x+7) &= 9(3x+2) \\
+8x + 56 &= 27x + 18 \quad \left| -8x \right. \\
+56 &= 19x + 18 \quad \left| -18 \right. \\
+38 &= 19x \quad \left| :19 \right. \\
+x &= 2
+\end{align*}
+$$
+************
+</div>
+</section>
+
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/4.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 27:__ **Berechne** den Lösungswert für die Unbekannte.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{5}{x-2} = \dfrac{7}{3x+1} $ \
+$x$ = [[  -19/8  ]]
+@Algebrite.check(-19/8)
+************
+$$
+\begin{align*}
+\dfrac{5}{x-2} &= \dfrac{7}{3x+1} \quad \left| \cdot(x-2) \right. \\
+5 &= \dfrac{7(x-2)}{3x+1} \quad \left| \cdot(3x+1) \right. \\
+5(3x+1) &= 7(x-2) \\
+15x + 5 &= 7x - 14 \quad \left| -7x \right. \\
+8x + 5 &= -14 \quad \left| -5 \right. \\
+8x &= -19 \quad \left| :8 \right. \\
+x &= \dfrac{-19}{8}
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{4}{2x-3} = \dfrac{3}{x+5} $ \
+$x$ = [[  29/2  ]]
+@Algebrite.check(29/2)
+************
+$$
+\begin{align*}
+\dfrac{4}{2x-3} &= \dfrac{3}{x+5} \quad \left| \cdot(2x-3) \right. \\
+4 &= \dfrac{3(2x-3)}{x+5} \quad \left| \cdot(x+5) \right. \\
+4(x+5) &= 3(2x-3) \\
+4x + 20 &= 6x - 9 \quad \left| -4x \right. \\
+20 &= 2x - 9 \quad \left| +9 \right. \\
+29 &= 2x \quad \left| :2 \right. \\
+x &= \dfrac{29}{2}
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{9}{x+4} = \dfrac{2}{x-1} $ \
+$x$ = [[  17/7  ]]
+@Algebrite.check(17/7)
+************
+$$
+\begin{align*}
+\dfrac{9}{x+4} &= \dfrac{2}{x-1} \quad \left| \cdot(x+4) \right. \\
+9 &= \dfrac{2(x+4)}{x-1} \quad \left| \cdot(x-1) \right. \\
+9(x-1) &= 2(x+4) \\
+9x - 9 &= 2x + 8 \quad \left| -2x \right. \\
+7x - 9 &= 8 \quad \left| +9 \right. \\
+7x &= 17 \quad \left| :7 \right. \\
+x &= \dfrac{17}{7}
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{7}{3x-2} = \dfrac{5}{x+6} $ \
+$x$ = [[  13/2  ]]
+@Algebrite.check(13/2)
+************
+$$
+\begin{align*}
+\dfrac{7}{3x-2} &= \dfrac{5}{x+6} \quad \left| \cdot(3x-2) \right. \\
+7 &= \dfrac{5(3x-2)}{x+6} \quad \left| \cdot(x+6) \right. \\
+7(x+6) &= 5(3x-2) \\
+7x + 42 &= 15x - 10 \quad \left| -7x \right. \\
+42 &= 8x - 10 \quad \left| +10 \right. \\
+52 &= 8x \quad \left| :8 \right. \\
+x &= \dfrac{13}{2}
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $ \; -\dfrac{3}{x+2} = \dfrac{6}{2x-1} \;$ \
+$x$ = [[  -3/4  ]]
+@Algebrite.check(-3/4)
+************
+$$
+\begin{align*}
+-\dfrac{3}{x+2} &= \dfrac{6}{2x-1} \quad \left| \cdot(x+2) \right. \\
+-3 &= \dfrac{6(x+2)}{2x-1} \quad \left| \cdot(2x-1) \right. \\
+-3(2x-1) &= 6(x+2) \\
+-6x + 3 &= 6x + 12 \quad \left| +6x \right. \\
+3 &= 12x + 12 \quad \left| -12 \right. \\
+-9 &= 12x \quad \left| :12 \right. \\
+x &= -\dfrac{3}{4}
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{5}{x-4} = -\dfrac{10}{3x+2} $ \
+$x$ = [[  6/5  ]]
+@Algebrite.check(6/5)
+************
+$$
+\begin{align*}
+\dfrac{5}{x-4} &= -\dfrac{10}{3x+2} \quad \left| \cdot(x-4) \right. \\
+5 &= -\,\dfrac{10(x-4)}{3x+2} \quad \left| \cdot(3x+2) \right. \\
+5(3x+2) &= -10(x-4) \\
+15x + 10 &= -10x + 40 \quad \left| +10x \right. \\
+25x + 10 &= 40 \quad \left| -10 \right. \\
+25x &= 30 \quad \left| :25 \right. \\
+x &= \dfrac{6}{5}
+\end{align*}
+$$
+************
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 28:__ **Berechne** den Lösungswert für die Unbekannte.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{5}{x-2} = \dfrac{3}{2x+1} $ \
+$x$ = [[  -11/7  ]]
+@Algebrite.check(11/7)
+************
+$$
+\begin{align*}
+\dfrac{5}{x-2} &= \dfrac{3}{2x+1} \quad \left| \cdot(x-2) \right. \\
+5 &= \dfrac{3(x-2)}{2x+1} \quad \left| \cdot(2x+1) \right. \\
+5(2x+1) &= 3(x-2) \\
+10x + 5 &= 3x - 6 \quad \left| -3x \right. \\
+7x + 5 &= -6 \quad \left| -5 \right. \\
+7x &= -11 \quad \left| :7 \right. \\
+x &= -\dfrac{11}{7}
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{7}{x+3} = \dfrac{2}{x-1} $ \
+$x$ = [[  13/5  ]]
+@Algebrite.check(13/5)
+************
+$$
+\begin{align*}
+\dfrac{7}{x+3} &= \dfrac{2}{x-1} \quad \left| \cdot(x+3) \right. \\
+7 &= \dfrac{2(x+3)}{x-1} \quad \left| \cdot(x-1) \right. \\
+7(x-1) &= 2(x+3) \\
+7x - 7 &= 2x + 6 \quad \left| -2x \right. \\
+5x - 7 &= 6 \quad \left| +7 \right. \\
+5x &= 13 \quad \left| :5 \right. \\
+x &= \dfrac{13}{5}
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{4}{2x-3} = \dfrac{9}{x+6} $ \
+$x$ = [[  51/14  ]]
+@Algebrite.check(51/14)
+************
+$$
+\begin{align*}
+\dfrac{4}{2x-3} &= \dfrac{9}{x+6} \quad \left| \cdot(2x-3) \right. \\
+4 &= \dfrac{9(2x-3)}{x+6} \quad \left| \cdot(x+6) \right. \\
+4(x+6) &= 9(2x-3) \\
+4x + 24 &= 18x - 27 \quad \left| -4x \right. \\
+24 &= 14x - 27 \quad \left| +27 \right. \\
+51 &= 14x \quad \left| :14 \right. \\
+x &= \dfrac{51}{14}
+\end{align*}
+$$
+************
+
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{3}{x-4} = \dfrac{5}{2x+7} $ \
+$x$ = [[  -41  ]]
+@Algebrite.check(-41)
+************
+$$
+\begin{align*}
+\dfrac{3}{x-4} &= \dfrac{5}{2x+7} \quad \left| \cdot(x-4) \right. \\
+3 &= \dfrac{5(x-4)}{2x+7} \quad \left| \cdot(2x+7) \right. \\
+3(2x+7) &= 5(x-4) \\
+6x + 21 &= 5x - 20 \quad \left| -5x \right. \\
+x + 21 &= -20 \quad \left| -21 \right. \\
+x &= -41
+\end{align*}
+$$
+************
+
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{2}{x+5} = \dfrac{7}{3x-2} $ \
+$x$ = [[  -39  ]]
+@Algebrite.check(-39)
+************
+$$
+\begin{align*}
+\dfrac{2}{x+5} &= \dfrac{7}{3x-2} \quad \left| \cdot(x+5) \right. \\
+2 &= \dfrac{7(x+5)}{3x-2} \quad \left| \cdot(3x-2) \right. \\
+2(3x-2) &= 7(x+5) \\
+6x - 4 &= 7x + 35 \quad \left| -6x \right. \\
+-4 &= x + 35 \quad \left| -35 \right. \\
+-39 &= x \\
+x &= -39
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{5}{x-1} = \dfrac{8}{x+6} $ \
+$x$ = [[  38/3  ]]
+@Algebrite.check(38/3)
+************
+$$
+\begin{align*}
+\dfrac{5}{x-1} &= \dfrac{8}{x+6} \quad \left| \cdot(x-1) \right. \\
+5 &= \dfrac{8(x-1)}{x+6} \quad \left| \cdot(x+6) \right. \\
+5(x+6) &= 8(x-1) \\
+5x + 30 &= 8x - 8 \quad \left| -5x \right. \\
+30 &= 3x - 8 \quad \left| +8 \right. \\
+38 &= 3x \quad \left| :3 \right. \\
+x &= \dfrac{38}{3}
+\end{align*}
+$$
+************
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/4.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 29:__ **Berechne** den Lösungswert für die fehlende Größe.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  T = m g h \;\;$  mit $\;\;m=8 \;\;\wedge\;\; g=10 \;\;\wedge\;\; T=480$ \
+$h$ = [[  6  ]]
+************
+$$
+\begin{align*}
+T &= m g h \quad \left| : (mg) \right. \\
+h &= \dfrac{T}{m g} \\ 
+h &= \dfrac{480}{8\cdot 10} \\
+h &= \dfrac{480}{80}  \\
+h &=   6 \\ 
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $ \dfrac{G\,M\,m}{r} = F\;\;$  mit $\;\;F=50 \;\;\wedge\;\; r=8 \;\;\wedge\;\; m=2 \;\;\wedge\;\; G=\dfrac{1}{10}$ \
+$M$ = [[  2000  ]]
+************
+$$
+\begin{align*}
+\dfrac{G M m}{r} &= F \quad \left| \cdot r \right. \\
+G\,M\,m &= F r \quad \left| : (Gm) \right. \\
+M &= \dfrac{F r}{G m} \\ 
+M &= \dfrac{50\cdot 8}{\left(\dfrac{1}{10}\right)\cdot 2} \\
+M &= \dfrac{400}{\dfrac{1}{5}} \\
+M &= 2000 \\ 
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{V}{A} - a = a + V  \;\;$  mit $\;\; V=36 \;\;\wedge\;\; A=7$ \
+$a$ = [[  -108/7  ]]
+@Algebrite.check(-108/7)
+************
+$$
+\begin{align*}
+\dfrac{V}{A} - a &= a + V \quad \left| +a \right. \\
+\dfrac{V}{A} &= 2a + V \quad \left| -V \right. \\
+\dfrac{V}{A} - V &= 2a \quad \left| :2 \right. \\
+a &= \dfrac{1}{2} \left(\dfrac{V}{A} - V\right) \\
+a &= \dfrac{1}{2} \left(\dfrac{36}{7} - 36\right) \\
+a &= \dfrac{1}{2} \left(\dfrac{36}{7} - \dfrac{252}{7}\right) \\
+a &= \dfrac{1}{2} \left(-\dfrac{216}{7}\right) \\
+a &= -\dfrac{108}{7} \\ 
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $   0 = \dfrac{1}{2} d r - d s a  \;\;$  mit $\;\;d=3 \;\;\wedge\;\; s=5 \;\;\wedge\;\; a=2$ \
+$r$ = [[  20  ]]
+************
+$$
+\begin{align*}
+0 &= d \left(\dfrac{1}{2}r - s a\right) \quad \left| :d  \right. \\
+0 &= \dfrac{1}{2}r - s a \quad \left| + s a \right. \\
+\dfrac{1}{2}r &= s a \quad \left| \cdot 2 \right. \\
+r &= 2 s a \\
+r &= 2\cdot 5 \cdot 2 \\
+r & = 20 
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $   m n + p o = m z \;\;$  mit $\;\; m=2 \;\;\wedge\;\; p=\dfrac{3}{2} \;\;\wedge\;\; z=3 \;\;\wedge\;\; n=\dfrac{5}{4}$ \
+$o$ = [[  7/3  ]]
+@Algebrite.check(7/3)
+************
+$$
+\begin{align*}
+m n + p o &= m z \quad \left| -mn \right. \\
+p o &= m(z-n) \quad \left| :p \right. \\
+o &= \dfrac{m(z-n)}{p} \\ 
+o &= \dfrac{2 \left(3 - \dfrac{5}{4}\right)}{\dfrac{3}{2}} \\ 
+o &= \dfrac{2 \left(\dfrac{12}{4} - \dfrac{5}{4}\right)}{\dfrac{3}{2}} \\ 
+o &= \dfrac{2\cdot \dfrac{7}{4}}{\dfrac{3}{2}} \\ 
+o &=  \dfrac{7}{2} : \dfrac{3}{2}  \\ 
+o &= \dfrac{7}{2}\cdot \dfrac{2}{3} \\ 
+o &= \dfrac{7}{3} \\ 
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  m n + p o = m z - p q \;\;$  mit $\;\; m=\dfrac{1}{100} \;\;\wedge\;\;  p=8 \;\;\wedge\;\;  z=\dfrac{21}{5} \;\;\wedge\;\;  n=12 \;\;\wedge\;\;  q=\dfrac{3}{8}$ \
+$o$ = [[  -1539/4000  ]]
+@Algebrite.check(-1539/4000)
+************
+$$
+\begin{align*}
+mn + po &= mz - pq \quad \left| -mn \right. \\
+po &= m(z-n) - pq \quad \left| :p \right. \\
+o &= \dfrac{m(z-n)}{p} - q \\ 
+o &= \dfrac{\dfrac{1}{100}\!\left(\dfrac{21}{5} - 12\right)}{8} - \dfrac{3}{8} \\
+o &= \dfrac{\dfrac{1}{100}\!\left(\dfrac{21}{5} - \dfrac{60}{5}\right)}{8} - \dfrac{3}{8} \\
+o &= \dfrac{\dfrac{1}{100}\!\left(-\dfrac{39}{5}\right)}{8} - \dfrac{3}{8} \\ 
+o &= \dfrac{-\dfrac{39}{500}}{8} - \dfrac{3}{8} \\
+o &= -\dfrac{39}{4000} - \dfrac{3}{8} \\ 
+o &= -\dfrac{39}{4000} - \dfrac{1500}{4000} \\ 
+o &= -\dfrac{1539}{4000} \\ 
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$g)\;\;$__ $   0 = \dfrac{1}{2} d r - d s a  \;\;$  mit $\;\; r=\dfrac{5}{2} \;\;\wedge\;\;  s=\dfrac{1}{4} \;\;\wedge\;\;  a=\dfrac{7}{8}$ \
+$d$ = [[  0  ]]
+************
+$$
+\begin{align*}
+0 &= d \left(\dfrac{1}{2}r - s a\right) \\
+\dfrac{1}{2}r - s a &= \dfrac{1}{2}\cdot \dfrac{5}{2} - \dfrac{1}{4}\cdot \dfrac{7}{8} \\ 
+&= \dfrac{5}{4} - \dfrac{7}{32} \\ 
+&= \dfrac{40-7}{32} \\ 
+&= \dfrac{33}{32} \neq 0 \\ 
+\Rightarrow\;& \text{Damit die Gleichung }  \left(\dfrac{1}{2}r - s a\right) \text{ gilt, muss } d=0 \text{ sein.} \\
+d &= 0 \\ 
+\end{align*}
+$$
+************
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 30:__ **Berechne** den Lösungswert für die fehlende Größe.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $   F = m a \;\;$  mit $\;\;a=2 \;\;\wedge\;\; F=30$ \
+$m$ = [[  15  ]]
+************
+$$
+\begin{align*}
+F &= m a \quad \left| :a \right. \\
+m &= \dfrac{F}{a} \\ 
+m &= \dfrac{30}{2}  \\
+m &= 15  \\
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $   U - T = \dfrac{1}{2} v \;\;$  mit $\;\; v=5 \;\;\wedge\;\; U=7$ \
+$T$ = [[  9/2  ]]
+@Algebrite.check(9/2)
+************
+$$
+\begin{align*}
+U - T &= \dfrac{1}{2} v \quad \left| -U \right. \\
+-T &= \dfrac{1}{2} v - U \quad \left| \cdot (-1) \right. \\
+T &= U - \dfrac{1}{2}v \\ 
+T &= 7 - \dfrac{1}{2}\cdot 5  \\
+T &= 7 - \dfrac{5}{2}  \\
+T &= \dfrac{14}{2} - \dfrac{5}{2}  \\
+T &= \dfrac{9}{2} \\
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $   r = 2x + 2y + z \;\;$  mit $\;\; r=12 \;\;\wedge\;\; x=0,4 \;\;\wedge\;\; z=1,5$ \
+$y$ = [[  21/10  ]]
+@Algebrite.check(21/10)
+************
+$$
+\begin{align*}
+r &= 2x + 2y + z \quad \left| -2x  \right. \\
+r -2x &=  2y + z \quad \left|  - z \right. \\
+r - 2x - z &= 2y \quad \left| :2 \right. \\
+y &= \dfrac{r - 2x - z}{2} \\ 
+y &= \dfrac{12 - 2\cdot 0,4 - 1,5}{2} \\
+y &= \dfrac{12 - 0,8 - 1,5}{2} \\
+y &= \dfrac{9,7}{2} \\
+y &= \dfrac{97}{20} \\
+y &= \dfrac{21}{10} \\
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $   pV = \dfrac{3}{2}kNT \;\;$  mit $\;\; N=100 \;\;\wedge\;\; k=5 \;\;\wedge\;\; p=30 \;\;\wedge\;\; V=20$ \
+$T$ = [[  4/5  ]]
+@Algebrite.check(4/5)
+************
+$$
+\begin{align*}
+pV &= \dfrac{3}{2}kNT \quad \left| : \left(\dfrac{3}{2}kN\right) \right. \\
+T &= \dfrac{pV}{\dfrac{3}{2}kN} \\ 
+T &= \dfrac{30\cdot 20}{\dfrac{3}{2}\cdot 5 \cdot 100} \\
+T &= \dfrac{600}{750}  \\
+T &= \dfrac{4}{5}  \\ 
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $   8ab - c = cb + b \;\; $  mit $ \;\; b=3 \;\;\wedge\;\; c=0,75 $ \
+$a$ = [[  1/4  ]]
+@Algebrite.check(1/4)
+************
+$$
+\begin{align*}
+8ab - c &= cb + b \quad \left| +c \right. \\
+8ab &= cb + b + c \quad \left| : (8b) \right. \\
+a &= \dfrac{cb + b + c}{8b} \\ 
+a &= \dfrac{0,75\cdot 3 + 3 + 0,75}{8\cdot 3} \\
+a &= \dfrac{2,25 + 3 + 0,75}{24} \\
+a &= \dfrac{6}{24} \\
+a &= \dfrac{1}{4} \\
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $   G\dfrac{M m}{r} = F \;\;$  mit $\;\; F=120 \;\;\wedge\;\; M=4,5 \;\;\wedge\;\; m=9,5 \;\;\wedge\;\; G=1,2 $ \
+$r$ = [[  4275/10000  ]]
+@Algebrite.check(4275/10000)
+************
+$$
+\begin{align*}
+\dfrac{G M m}{r} &= F \quad \left| \cdot r \right. \\
+G M m &= F r \quad \left| :F \right. \\
+r &= \dfrac{G M m}{F} \\ 
+r &= \dfrac{1,2\cdot 4,5 \cdot 9,5}{120}  \\
+r &= \dfrac{51,3}{120}  \\
+r &= 0,4275  \\
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$g)\;\;$__ $  \dfrac{A}{B} = \dfrac{C}{D} \;\;$  mit $\;\; A=0,2 \;\;\wedge\;\; B=0,5 \;\;\wedge\;\; C=6$ \
+$D$ = [[  15  ]]
+************
+$$
+\begin{align*}
+\dfrac{A}{B} &= \dfrac{C}{D} \quad \left| \cdot D \right. \\
+\dfrac{A}{B}D &= C \quad \left| \cdot B \right. \\
+AD &= BC \quad \left| :A \right. \\
+D &= \dfrac{B C}{A} \\ 
+D &= \dfrac{0,5\cdot 6}{0,2}  \\
+D &= \dfrac{3}{0,2}  \\
+D &= 15
+\end{align*}
+$$
+************
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/4.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 31:__ **Berechne** den Lösungswert für die fehlende Größe.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  2a + b = c \;\;$  mit $\;\; b=4a \;\;\wedge\;\; c=24$ \
+$a$ = [[  4  ]]
+************
+$$
+\begin{align*}
+2a + b &= c \\
+2a + 4a &= 24  \\
+6a &= 24 \quad \left| :6 \right. \\
+a &= 4 \\
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  x + 6y = y + 9z \;\;$  mit $\;\; y=4 \;\;\wedge\;\; x=4z$ \
+$z$ = [[  4  ]]
+************
+$$
+\begin{align*}
+x + 6y &= y + 9z \\
+4z + 6\cdot 4 &= 4 + 9z \\
+4z + 24 &= 4 + 9z \quad \left| -4z \right. \\
+24 &= 4 + 5z \quad \left| -4 \right. \\
+20 &= 5z \quad \left| :5 \right. \\
+z &= 4 \\
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  11k + 2r = 5t + c \;\;$  mit $\;\; r=6 \;\;\wedge\;\; t=6 \;\;\wedge\;\; c=4k$ \
+$k$ = [[  18/7  ]]
+@Algebrite.check(18/7)
+************
+$$
+\begin{align*}
+11k + 2r &= 5t + c \\
+11k + 2\cdot 6 &= 5\cdot 6 + 4k \\
+11k + 12 &= 30 + 4k \quad \left| -4k \right. \\
+7k + 12 &= 30 \quad \left| -12 \right. \\
+7k &= 18 \quad \left| :7 \right. \\
+k &= \dfrac{18}{7} \\
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $   5n + 3m + 9s = n\cdot m + a \;\;$  mit $\;\; n=3 \;\;\wedge\;\; m=6 \;\;\wedge\;\; a=17s$ \
+$s$ = [[  15/8  ]]
+@Algebrite.check(15/8)
+************
+$$
+\begin{align*}
+5n + 3m + 9s &= n m + a \\
+5\cdot 3 + 3\cdot 6 + 9s &= 3\cdot 6 + 17s \\
+15 + 18 + 9s &= 18 + 17s \quad \left| -18 \right. \\
+15 + 9s &= 17s \quad \left| -9s \right. \\
+15 &= 8s \quad \left| :8 \right. \\
+s &= \dfrac{15}{8} \\
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  r + t = u + v \;\;$  mit $\;\; r=2+u \;\;\wedge\;\; t=7+6u \;\;\wedge\;\; v=19+2u$ \
+$u$ = [[  5/2  ]]
+@Algebrite.check(5/2)
+************
+$$
+\begin{align*}
+r + t &= u + v \\
+(2+u) + (7+6u) &= u + (19+2u) \\
+9 + 7u &= 19 + 3u \quad \left| -3u \right. \\
+9 + 4u &= 19 \quad \left| -9 \right. \\
+4u &= 10 \quad \left| :4 \right. \\
+u &= \dfrac{5}{2} \\
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $   5(c+6)+5t = 4(r+n) \;\;$  mit $\;\; c=5t+3 \;\;\wedge\;\; r=2t+2 \;\;\wedge\;\; n=4t+3$ \
+$t$ = [[  -25/6  ]]
+@Algebrite.check(-25/6)
+************
+$$
+\begin{align*}
+5(c+6)+5t &= 4(r+n) \\
+5\left((5t+3)+6\right)+5t &= 4\left((2t+2)+(4t+3)\right) \\
+5(5t+9)+5t &= 4(6t+5) \\
+25t + 45 + 5t &= 24t + 20 \quad \left| -24t \right. \\
+6t + 45 &= 20 \quad \left| -45 \right. \\
+6t &= -25 \quad \left| :6 \right. \\
+t &= -\dfrac{25}{6}  \\
+\end{align*}
+$$
+************
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/4.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 32:__ **Berechne** den Lösungswert für die fehlende Größe.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  3a + 2b = c + 4 \;\;$  mit $\;\; b = a - 5 \;\;\wedge\;\; c = 2a - 1$ \
+$a$ = [[  13/3  ]]
+@Algebrite.check(13/3)
+************
+$$
+\begin{align*}
+3a + 2b &= c + 4 \\
+3a + 2(a-5) &= (2a-1) + 4 \\
+3a + 2a - 10 &= 2a + 3 \quad \left| -2a \right. \\
+3a - 10 &= 3 \quad \left| +10 \right. \\
+3a &= 13 \quad \left| :3 \right. \\
+a &= \dfrac{13}{3} \\
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $   x + 6y = y + 9z \;\;$  mit $\;\; y = 2x - 1 \;\;\wedge\;\; z = x + 2$ \
+$x$ = [[  23/2  ]]
+@Algebrite.check(23/2)
+************
+$$
+\begin{align*}
+x + 6y &= y + 9z \\
+x + 6(2x-1) &= (2x-1) + 9(x+2) \\
+x + 12x - 6 &= 2x - 1 + 9x + 18 \\
+13x - 6 &= 11x + 17 \quad \left| -11x \right. \\
+2x - 6 &= 17 \quad \left| +6 \right. \\
+2x &= 23 \quad \left| :2 \right. \\
+x &= \dfrac{23}{2} \\
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $   r + t = u + v \;\;$  mit $\;\; r = 1 + 3u \;\;\wedge\;\; t = 2u - 4 \;\;\wedge\;\; v = 5u - 2$ \
+$u$ = [[  -1  ]]
+@Algebrite.check(-1)
+************
+$$
+\begin{align*}
+r + t &= u + v \\
+(1+3u) + (2u-4) &= u + (5u-2) \\
+5u - 3 &= 6u - 2 \quad \left| -5u \right. \\
+-3 &= u - 2 \quad \left| +2 \right. \\
+-1 &= u \\
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $   5n + 3m + 9s = n m + a \;\;$  mit $\;\; n=2 \;\;\wedge\;\; m = 4s + 1 \;\;\wedge\;\; a = s - 5$ \
+$s$ = [[  -4/3  ]]
+@Algebrite.check(-4/3)
+************
+$$
+\begin{align*}
+5n + 3m + 9s &= n m + a \\
+5\cdot 2 + 3(4s+1) + 9s &= 2(4s+1) + (s-5) \\
+10 + 12s + 3 + 9s &= 8s + 2 + s - 5 \\
+21s + 13 &= 9s - 3 \quad \left| -9s \right. \\
+12s + 13 &= -3 \quad \left| -13 \right. \\
+12s &= -16 \quad \left| :12 \right. \\
+s &= -\dfrac{4}{3} \\
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $ \; 5(c+6) + 5t = 4(r + n) \;$  mit $\,c = 2t - 1 \;\;\wedge\;\; r = t + 3 \;\;\wedge\;\; n = 3t + 5$ \
+$t$ = [[  -7  ]]
+@Algebrite.check(-7)
+************
+$$
+\begin{align*}
+5(c+6) + 5t &= 4(r+n) \\
+5\left((2t-1)+6\right) + 5t &= 4\left((t+3)+(3t+5)\right) \\
+5(2t+5) + 5t &= 4(4t+8) \\
+10t + 25 + 5t &= 16t + 32 \quad \left| -15t \right. \\
+25 &= t + 32 \quad \left| -32 \right. \\
+-7 &= t \\
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $   r + s = t \;\;$  mit $\;\; s = 2r + 1 \;\;\wedge\;\;  t = 2s + 3$ \
+$r$ = [[  -4  ]]
+@Algebrite.check(-4)
+************
+$$
+\begin{align*}
+r + s &= t \\
+r + (2r+1) &= 2(2r+1) + 3 \\
+3r + 1 &= 4r + 2 + 3 = 4r + 5 \quad \left| -3r \right. \\
+1 &= r + 5 \quad \left| -5 \right. \\
+-4 &= r \\
+\end{align*}
+$$
+************
+</div>
+</section>
+
+
+
+
+
+
+
+
+
 
 
 

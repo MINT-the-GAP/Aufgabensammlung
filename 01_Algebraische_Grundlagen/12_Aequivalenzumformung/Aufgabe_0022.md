@@ -43,6 +43,8 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
 
+import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
+
 tags: Äquivalenzumformung, Distributivgesetz, Bruchrechnung, negative Zahlen, mittel, normal, Berechnen, 
 
 comment: Führe eine Äquivalenzumformung mit rationalen Zahlen aus.
