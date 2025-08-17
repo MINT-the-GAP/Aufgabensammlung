@@ -45,9 +45,10 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 
 
-tags: Repetitorium
 
-comment: Hier entsteht ein mathematisches Repetitorium in LiaScript.
+tags: Materialsammlung
+
+comment: Hier entsteht eine mathematische Materialsammlung in LiaScript für die 5. Klasse an Gymnasien in Sachsen.
 
 author: Martin Lommatzsch
 
@@ -59,8 +60,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
 
 
-# Klasse 5 - Mathematik in Sachsen
-
+# Mathematik Klasse 5 - Gymnasium - Sachsen
 
 
 

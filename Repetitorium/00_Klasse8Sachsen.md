@@ -45,9 +45,9 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 
 
-tags: Repetitorium
+tags: Materialsammlung
 
-comment: Hier entsteht ein mathematisches Repetitorium in LiaScript.
+comment: Hier entsteht eine mathematische Materialsammlung in LiaScript für die 8. Klasse an Gymnasien in Sachsen.
 
 author: Martin Lommatzsch
 
@@ -59,4 +59,4 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
 
 
-# Vernetzte Lücken
+# Mathematik Klasse 8 - Gymnasium - Sachsen
