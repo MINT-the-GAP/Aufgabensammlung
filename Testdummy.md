@@ -94,6 +94,11 @@ x=[[ 1/3 ]]m
 @Algebrite.check_margin(5.1,6.1)
 
 
+---
+
+
+[[x ^ 2 - 1 = 2x]]
+@Algebrite.check_expression(x^2-1-2x=0)
 
 # Lösungen
  

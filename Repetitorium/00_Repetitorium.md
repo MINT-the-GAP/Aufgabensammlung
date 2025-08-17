@@ -1548,6 +1548,7 @@ $$
 
 
 
+!?[Termumformung](https://www.youtube.com/watch?v=u9272jlewms)
 
 
 ##### Übungen - Terme und Gleichungen
@@ -1621,7 +1622,7 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 
 
-##### Übungsaufgaben - Runden
+##### Übungen - Runden
 
 
 
@@ -6677,6 +6678,9 @@ __Aufgabe 1:__
 ### Bruchrechnung
 
 
+!?[Bruchrechnung](https://www.youtube.com/watch?v=E0jIuLBRPBg)
+
+
 
 #### Übungen - Bruchrechnung
 
@@ -6831,6 +6835,8 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
+
+
 #### Übungen - Parameter
 
 
@@ -6854,6 +6860,7 @@ __Aufgabe 1:__
 ### Einsetzungsverfahren
 
 
+!?[Einsetzen](https://www.youtube.com/watch?v=oCzl1Sasf4M)
 
 
 #### Übungen - Einsetzungsverfahren
@@ -6898,6 +6905,11 @@ __Aufgabe 1:__
 ### Negative Zahlen
 
 
+
+!?[Negative Zahlen](https://www.youtube.com/watch?v=Yt03b6sbMLM)
+
+
+
 #### Übungen - Negative Zahlen
 
 
@@ -6937,6 +6949,7 @@ __Aufgabe 1:__
 
 ### Distributivgesetz
 
+!?[Distributivgesetz](https://www.youtube.com/watch?v=tSawKXhm714)
 
 
 #### Übungen - Distributivgesetz
@@ -6959,6 +6972,10 @@ __Aufgabe 1:__
 
 
 ### Potenzen
+
+
+!?[Potenzgesetze](https://www.youtube.com/watch?v=g1zLW9FsglU)
+
 
 
 #### Übungen - Potenzen
@@ -7168,7 +7185,7 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 1:__ In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich viele Streichhölzer. Auf jeder Seite des Gleichheitszeichen befindet sich die selbe Anzahl an Streichhölzern. **Bestimme** bei allen drei Streichholzschachtelgleichungen wie viele Streichhölzer sich in einer Schachtel befinden.
+__Aufgabe 1:__ In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich viele Streichhölzer. Auf jeder Seite des Gleichheitszeichen befindet sich die selbe Anzahl an Streichhölzern. **Bestimme** bei allen Streichholzschachtelgleichungen wie viele Streichhölzer sich in einer Schachtel befinden.
 
 <!-- style="width:600px" data-solution-button="5" -->
 __$a)\;\;$__ ![](Kap2/streichholz1a.png)  
@@ -7193,7 +7210,7 @@ $x=$ [[  3  ]] Streichhölzer
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 2:__ In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich viele Streichhölzer. Auf jeder Seite des Gleichheitszeichen befindet sich die selbe Anzahl an Streichhölzern. **Bestimme** bei allen drei Streichholzschachtelgleichungen wie viele Streichhölzer sich in einer Schachtel befinden.
+__Aufgabe 2:__ In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich viele Streichhölzer. Auf jeder Seite des Gleichheitszeichen befindet sich die selbe Anzahl an Streichhölzern. **Bestimme** bei allen Streichholzschachtelgleichungen wie viele Streichhölzer sich in einer Schachtel befinden.
 
 <!-- style="width:600px" data-solution-button="5" -->
 __$a)\;\;$__ ![](Kap2/streichholz1e.png)  
@@ -7220,7 +7237,7 @@ $x=$ [[  5  ]] Streichhölzer
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 3:__ In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich viele Streichhölzer. Auf jeder Seite des Gleichheitszeichen befindet sich die selbe Anzahl an Streichhölzern. **Bestimme** bei allen drei Streichholzschachtelgleichungen wie viele Streichhölzer sich in einer Schachtel befinden.
+__Aufgabe 3:__ In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich viele Streichhölzer. Auf jeder Seite des Gleichheitszeichen befindet sich die selbe Anzahl an Streichhölzern. **Bestimme** bei allen Streichholzschachtelgleichungen wie viele Streichhölzer sich in einer Schachtel befinden.
 
 <!-- style="width:600px" data-solution-button="5" -->
 __$a)\;\;$__ ![](Kap2/streichholz1i.png)  
@@ -7247,7 +7264,7 @@ $x=$ [[  2  ]] Streichhölzer
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 4:__ In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich viele Streichhölzer. Auf jeder Seite des Gleichheitszeichen befindet sich die selbe Anzahl an Streichhölzern. **Bestimme** bei allen drei Streichholzschachtelgleichungen wie viele Streichhölzer sich in einer Schachtel befinden.
+__Aufgabe 4:__ In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich viele Streichhölzer. Auf jeder Seite des Gleichheitszeichen befindet sich die selbe Anzahl an Streichhölzern. **Bestimme** bei allen Streichholzschachtelgleichungen wie viele Streichhölzer sich in einer Schachtel befinden.
 
 <!-- style="width:600px" data-solution-button="5" -->
 __$a)\;\;$__ ![](Kap2/streichholz1m.png)  
@@ -9837,6 +9854,10 @@ $$
 ### Quadratische Ergänzung
 
 
+
+!?[Quadratische Ergänzung](https://www.youtube.com/watch?v=8QRKPmR82jQ)
+
+
 #### Übungen - Quadratische Ergänzung
 
 
@@ -9865,13 +9886,23 @@ __Aufgabe 1:__
 __Aufgabe 1:__ 
 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-button="5" -->
 
 <section class="flex-container">
 
 
 
 </section>
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9879,20 +9910,1020 @@ __Aufgabe 1:__
 ### Gleichungssysteme
 
 
+
+
+
+
+
+
+
+
+
+
 #### Übungen - Gleichungssysteme
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich viele Streichhölzer, gleiches gilt für die $y$-Schachteln und $z$-Schachteln. Auf jeder Seite des Gleichheitszeichen befindet sich die gleiche Anzahl an Streichhölzern. **Bestimme** bei allen Gleichungssystemen wie viele Streichhölzer sich in den einzelnen $x$-, $y$- und $z$-Schachteln befinden.
+
+
+
+<!-- style="width:600px"  data-solution-button="5"-->
+__$a)\;\;$__ ![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem1a.png)  
+$x=$ [[  1  ]] Streichhölzer
+$y=$ [[  4  ]] Streichhölzer
+
+<!-- style="width:600px"  data-solution-button="5"-->
+__$b)\;\;$__ ![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem2a.png)  
+$x=$ [[  2  ]] Streichhölzer
+$y=$ [[  6  ]] Streichhölzer
+
+<!-- style="width:600px"  data-solution-button="5"-->
+__$c)\;\;$__ ![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem3a.png)  
+$x=$ [[  3  ]] Streichhölzer
+$y=$ [[  5  ]] Streichhölzer
+
+<!-- style="width:600px"  data-solution-button="5"-->
+__$d)\;\;$__ ![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem4a.png)  
+$x=$ [[  1  ]] Streichhölzer
+$y=$ [[  7  ]] Streichhölzer
+$z=$ [[  2  ]] Streichhölzer
+
+
+
 
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 1:__ 
+__Aufgabe 2:__ In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich viele Streichhölzer, gleiches gilt für die $y$-Schachteln und $z$-Schachteln. Auf jeder Seite des Gleichheitszeichen befindet sich die gleiche Anzahl an Streichhölzern. **Bestimme** bei allen Gleichungssystemen wie viele Streichhölzer sich in den einzelnen $x$-, $y$- und $z$-Schachteln befinden.
 
-<!-- data-solution-button="5"-->
+
+
+
+<!-- style="width:600px"  data-solution-button="5"-->
+__$a)\;\;$__ ![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem1b.png)  
+$x=$ [[  2  ]] Streichhölzer
+$y=$ [[  12 ]] Streichhölzer
+
+<!-- style="width:600px"  data-solution-button="5"-->
+__$b)\;\;$__ ![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem2b.png)  
+$x=$ [[  2   ]] Streichhölzer
+$y=$ [[  3   ]] Streichhölzer
+
+<!-- style="width:600px"  data-solution-button="5"-->
+__$c)\;\;$__ ![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem3b.png)  
+$x=$ [[  1  ]] Streichhölzer
+$y=$ [[  2  ]] Streichhölzer
+
+<!-- style="width:600px"  data-solution-button="5"-->
+__$d)\;\;$__ ![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem4b.png)  
+$x=$ [[  2  ]] Streichhölzer
+$y=$ [[  6  ]] Streichhölzer
+$z=$ [[  4  ]] Streichhölzer
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 3:__ **Gib** das verwendete Lösungsverfahren **an**.
+
+
+
 
 <section class="flex-container">
+<div class="flex-child">
+__$a)\;\;$__ 
+$$
+\begin{align*}
+I.& \qquad 2x + y = 11 \\
+II.& \qquad 3x - y = 4 \\ \hline
+I.+II.& \qquad (2x+3x) + (y-y) = 11+4 \\
+& \qquad 5x = 15 \quad \left| :5 \right. \\
+& \qquad x = 3 \\
+x \cap I.& \qquad 2\cdot 3 + y = 11 \\
+& \qquad 6 + y = 11 \quad \left| -6 \right. \\
+& \qquad y = 5
+\end{align*}
+$$
 
+<!-- data-solution-button="2"-->
+[[Einsetzungsverfahren|Gleichsetzungsverfahren|(Additionsverfahren)]]
+</div>
+<div class="flex-child">
+__$b)\;\;$__ 
+$$
+\begin{align*}
+I.& \qquad 3x + 2y = 16 \\  
+II.& \qquad x - y = 2  \\  \hline
+II. &\qquad x - y = 2 \quad \left| -x \right. \\
+&\qquad -y = 2 - x \quad \left| \cdot(-1) \right. \\
+&\qquad y = x - 2 \\ \hline
+I. \cap II. &\qquad 3x + 2(x-2) = 16 \\
+&\qquad 3x + 2x - 4 = 16 \\
+&\qquad 5x - 4 = 16 \quad \left| +4 \right. \\
+&\qquad 5x = 20 \quad \left| :5 \right. \\
+&\qquad x = 4 \\
+x \cap II. &\qquad y = 4 - 2 = 2
+\end{align*}
+$$
 
+<!-- data-solution-button="2"-->
+[[(Einsetzungsverfahren)|Gleichsetzungsverfahren|Additionsverfahren]]
+</div>
+<div class="flex-child">
+__$c)\;\;$__ 
+$$
+\begin{align*}
+I.& \qquad 4x - y = 10 \\  
+II.& \qquad 2x + 3y = 12  \\  \hline
+I. &\qquad 4x - y = 10 \quad \left| -4x \right. \\
+&\qquad -y = 10 - 4x \quad \left| \cdot(-1) \right. \\
+&\qquad y = 4x - 10 \\ \hline
+I. \cap II. &\qquad 2x + 3(4x - 10) = 12 \\
+&\qquad 2x + 12x - 30 = 12 \\
+&\qquad 14x - 30 = 12 \quad \left| +30 \right. \\
+&\qquad 14x = 42 \quad \left| :14 \right. \\
+&\qquad x = 3 \\
+x \cap I. &\qquad 4\cdot 3 - y = 10 \\
+&\qquad 12 - y = 10 \quad \left| -12 \right. \\
+&\qquad -y = -2 \quad \left| \cdot(-1) \right. \\
+&\qquad y = 2
+\end{align*}
+$$
 
+<!-- data-solution-button="2"-->
+[[(Einsetzungsverfahren)|Gleichsetzungsverfahren|Additionsverfahren]]
+</div>
+<div class="flex-child">
+__$d)\;\;$__ 
+$$
+\begin{align*}
+I. &\qquad 2x + y = 11 \quad \left| -2x \right. \\
+II. &\qquad x + 2y = 13 \quad \left| -x \right. \\ \hline
+I. &\qquad y = 11 - 2x \\
+II. &\qquad 2y = 13 - x \quad \left| :2 \right. \\
+II. &\qquad y = \dfrac{13 - x}{2} \\[4pt]
+I. \cap II. &\qquad 11 - 2x = \dfrac{13 - x}{2} \\
+&\qquad 2(11 - 2x) = 13 - x \\
+&\qquad 22 - 4x = 13 - x \quad \left| -13 \right. \\
+&\qquad 9 - 4x = -x \quad \left| +4x \right. \\
+&\qquad 9 = 3x \quad \left| :3 \right. \\
+&\qquad x = 3 \\
+x \cap I. &\qquad 2\cdot 3 + y = 11 \\
+&\qquad 6 + y = 11 \quad \left| -6 \right. \\
+&\qquad y = 5
+\end{align*}
+$$
+
+<!-- data-solution-button="2"-->
+[[Einsetzungsverfahren|(Gleichsetzungsverfahren)|Additionsverfahren]]
+</div>
+<div class="flex-child">
+__$e)\;\;$__ 
+$$
+\begin{align*}
+I.& \qquad 4x + 2y = 20 \\  
+II.& \qquad 3x + y = 11  \\ \hline
+II.& \qquad 3x + y = 11 \quad \left|\cdot 2 \right. \\
+& \qquad 6x + 2y = 22 \\ 
+I.& \qquad 4x + 2y = 20 \\ \hline
+(II.-I.)& \qquad (6x-4x) + (2y-2y) = 22-20 \\
+& \qquad 2x = 2 \quad \left| :2 \right. \\
+& \qquad x = 1 \\
+x \cap II.& \qquad 3\cdot 1 + y = 11 \\
+& \qquad 3 + y = 11 \quad \left| -3 \right. \\
+& \qquad y = 8
+\end{align*}
+$$
+
+<!-- data-solution-button="2"-->
+[[Einsetzungsverfahren|Gleichsetzungsverfahren|(Additionsverfahren)]]
+</div>
+<div class="flex-child">
+__$f)\;\;$__ 
+$$
+\begin{align*}
+I. &\qquad 3x - y = 2 \quad \left| -3x \right. \\
+II.&\qquad x + 2y = 17 \quad \left| -x \right. \\ \hline
+I. &\qquad -y = 2 - 3x \quad \left| \cdot(-1) \right. \\
+I. &\qquad y = 3x - 2 \\
+II.&\qquad 2y = 17 - x \quad \left| :2 \right. \\
+II.&\qquad y = \dfrac{17 - x}{2} \\ 
+I. \cap II. &\qquad 3x - 2 = \dfrac{17 - x}{2} \\
+&\qquad 2(3x - 2) = 17 - x \\
+&\qquad 6x - 4 = 17 - x \quad \left| +x \right. \\
+&\qquad 7x - 4 = 17 \quad \left| +4 \right. \\
+&\qquad 7x = 21 \quad \left| :7 \right. \\
+&\qquad x = 3 \\
+x \cap I. &\qquad 3\cdot 3 - y = 2 \\
+&\qquad 9 - y = 2 \quad \left| -9 \right. \\
+&\qquad -y = -7 \quad \left| \cdot(-1) \right. \\
+&\qquad y = 7
+\end{align*}
+$$
+
+<!-- data-solution-button="2"-->
+[[Einsetzungsverfahren|(Gleichsetzungsverfahren)|Additionsverfahren]]
+</div>
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 4:__ **Gib** das verwendete Lösungsverfahren **an**.
+
+
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+__$a)\;\;$__ 
+$$
+\begin{align*}
+I.& \qquad 3x + y = 16 \\  
+II.& \qquad x + 4y = 9   \\ \hline
+I. &\qquad 3x + y = 16 \quad \left| -3x \right. \\
+&\qquad y = 16 - 3x \\ \hline
+I. \cap II. &\qquad x + 4(16 - 3x) = 9 \\
+&\qquad x + 64 - 12x = 9 \\
+&\qquad -11x + 64 = 9 \quad \left| -64 \right. \\
+&\qquad -11x = -55 \quad \left| :(-11) \right. \\
+&\qquad x = 5 \\
+x \cap I. &\qquad 3\cdot 5 + y = 16 \\
+&\qquad 15 + y = 16 \quad \left| -15 \right. \\
+&\qquad y = 1
+\end{align*}
+$$
+
+<!-- data-solution-button="2"-->
+[[(Einsetzungsverfahren)|Gleichsetzungsverfahren|Additionsverfahren]]
+</div>
+<div class="flex-child">
+__$b)\;\;$__ 
+$$
+\begin{align*}
+I.& \qquad 5x + 2y = 19 \\
+II.& \qquad 2x + 3y = 17 \\ \hline
+I.& \qquad 5x + 2y = 19 \quad \left|\cdot 3 \right. \\
+& \qquad 15x + 6y = 57 \\
+II.& \qquad 2x + 3y = 17 \quad \left|\cdot 2 \right. \\
+& \qquad 4x + 6y = 34 \\ \hline
+(I.-II.)& \qquad (15x-4x) + (6y-6y) = 57-34 \\
+& \qquad 11x = 23 \quad \left| :11 \right. \\
+& \qquad x = 2 \\
+x \cap II.& \qquad 2\cdot 2 + 3y = 17 \\
+& \qquad 4 + 3y = 17 \quad \left| -4 \right. \\
+& \qquad 3y = 13 \quad \left| :3 \right. \\
+& \qquad y = 5
+\end{align*}
+$$
+
+<!-- data-solution-button="2"-->
+[[Einsetzungsverfahren|Gleichsetzungsverfahren|(Additionsverfahren)]]
+</div>
+<div class="flex-child">
+__$c)\;\;$__ 
+$$
+\begin{align*}
+I. &\qquad 5x + 2y = 26 \quad \left| -5x \right. \\
+II.&\qquad 3x - y = 9 \quad \left| -3x \right. \\ \hline
+I. &\qquad 2y = 26 - 5x \quad \left| :2 \right. \\
+I. &\qquad y = \dfrac{26 - 5x}{2} \\
+II.&\qquad -y = 9 - 3x \quad \left| \cdot(-1) \right. \\
+II.&\qquad y = 3x - 9 \\[4pt]
+I. \cap II. &\qquad \dfrac{26 - 5x}{2} = 3x - 9 \\
+&\qquad 26 - 5x = 6x - 18 \\
+&\qquad 26 + 18 = 6x + 5x \\
+&\qquad 44 = 11x \quad \left| :11 \right. \\
+&\qquad x = 4 \\
+x \cap II. &\qquad 3\cdot 4 - y = 9 \\
+&\qquad 12 - y = 9 \quad \left| -12 \right. \\
+&\qquad -y = -3 \quad \left| \cdot(-1) \right. \\
+&\qquad y = 3
+\end{align*}
+$$
+
+<!-- data-solution-button="2"-->
+[[Einsetzungsverfahren|(Gleichsetzungsverfahren)|Additionsverfahren]]
+</div>
+<div class="flex-child">
+__$d)\;\;$__ 
+$$
+\begin{align*}
+I. &\qquad 3x + y = 11 \quad \left| -3x \right. \\
+II.&\qquad 2x + 3y = 19 \quad \left| -2x \right. \\ \hline
+I. &\qquad y = 11 - 3x \\
+II.&\qquad 3y = 19 - 2x \quad \left| :3 \right. \\
+II.&\qquad y = \dfrac{19 - 2x}{3} \\[4pt]
+I. \cap II. &\qquad 11 - 3x = \dfrac{19 - 2x}{3} \\
+&\qquad 3(11 - 3x) = 19 - 2x \\
+&\qquad 33 - 9x = 19 - 2x \quad \left| -19 \right. \\
+&\qquad 14 - 9x = -2x \quad \left| +9x \right. \\
+&\qquad 14 = 7x \quad \left| :7 \right. \\
+&\qquad x = 2 \\
+x \cap I. &\qquad 3\cdot 2 + y = 11 \\
+&\qquad 6 + y = 11 \quad \left| -6 \right. \\
+&\qquad y = 5
+\end{align*}
+$$
+
+<!-- data-solution-button="2"-->
+[[Einsetzungsverfahren|(Gleichsetzungsverfahren)|Additionsverfahren]]
+</div>
+<div class="flex-child">
+__$e)\;\;$__ 
+$$
+\begin{align*}
+I.& \qquad 2x + y = 10 \\  
+II.& \qquad x + 3y = 15   \\ \hline
+II. &\qquad x + 3y = 15 \quad \left| -3y \right. \\
+&\qquad x = 15 - 3y \\ \hline
+I. \cap II. &\qquad 2(15 - 3y) + y = 10 \\
+&\qquad 30 - 6y + y = 10 \\
+&\qquad -5y = -20 \quad \left| :(-5) \right. \\
+&\qquad y = 4 \\
+y \cap II. &\qquad x + 3\cdot 4 = 15 \\
+&\qquad x + 12 = 15 \quad \left| -12 \right. \\
+&\qquad x = 3
+\end{align*}
+$$
+
+<!-- data-solution-button="2"-->
+[[(Einsetzungsverfahren)|Gleichsetzungsverfahren|Additionsverfahren]]
+</div>
+<div class="flex-child">
+__$f)\;\;$__ 
+$$
+\begin{align*}
+I.& \qquad x + 4y = 22 \quad \left|\cdot 2 \right. \\
+& \qquad 2x + 8y = 44 \\
+II.& \qquad 2x + 3y = 19 \\ \hline
+(I.-II.)& \qquad (2x-2x) + (8y-3y) = 44-19 \\
+& \qquad 5y = 25 \quad \left| :5 \right. \\
+& \qquad y = 5 \\
+y \cap I.& \qquad x + 4\cdot 5 = 22 \\
+& \qquad x + 20 = 22 \quad \left| -20 \right. \\
+& \qquad x = 2
+\end{align*}
+$$
+
+<!-- data-solution-button="2"-->
+[[Einsetzungsverfahren|Gleichsetzungsverfahren|(Additionsverfahren)]]
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 5:__ **Fülle** alle Lücken des Lückentextes **aus**, der die präsentierte Musterlösung zum gegebenen Gleichungssystem beschreibt.
+
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+__$a)\;\;$__ 
+$$
+\begin{align*}
+I.& \qquad 3x - y = 13 \\  
+II.& \qquad x + 4y = 13  \\ \hline
+I. &\qquad 3x - y = 13 \quad \left| -3x \right. \\
+&\qquad -y = 13 - 3x \quad \left| \cdot(-1) \right. \\
+&\qquad y = 3x - 13 \\ \hline
+I. \cap II. &\qquad x + 4(3x - 13) = 13 \\
+&\qquad x + 12x - 52 = 13 \\
+&\qquad 13x - 52 = 13 \quad \left| +52 \right. \\
+&\qquad 13x = 65 \quad \left| :13 \right. \\
+&\qquad x = 5 \\
+x \cap I. &\qquad 3\cdot 5 - y = 13 \\
+&\qquad 15 - y = 13 \quad \left| -15 \right. \\
+&\qquad -y = -2 \quad \left| \cdot(-1) \right. \\
+&\qquad y = 2
+\end{align*}
+$$
+
+<!-- data-solution-button="5"-->
+Um das [[   Gleichungssystem   ]] zu lösen, wird das [[    Einsetzungsverfahren    ]] angewendet.  
+Zunächst wird eine der beiden [[   Gleichungen   ]] gewählt, hier die erste, und nach [[  y  ]] umgestellt.  
+Aus $3x - y = 13$ folgt durch Umformen, dass $y = 3x - 13$. Diesen Ausdruck setzen wir in die zweite [[  Gleichung  ]] ein.  
+Dadurch entsteht $x + 4(3x - 13) =$ [[  13  ]]. Nach dem [[  Ausmultiplizieren  ]] der Klammern ergibt sich $x + 12x - 52 = 13$, was sich zu $13x - 52 = 13$ zusammenfassen lässt. Wird $52$ auf beiden Seiten [[ addiert ]], so folgt $13x = 65$. Abschließend muss durch $13$ dividiert werden. Zum Schluss wird $x=5$ in die [[  erste  ]] Gleichung [[  eingesetzt ]], sodass $y = 2$ resultiert.  
+
+</div>
+<div class="flex-child">
+__$b)\;\;$__ 
+$$
+\begin{align*}
+I. &\qquad 3x + 2y = 17 \\
+II. &\qquad 5x - y = 11 \\ \hline
+II. &\qquad 5x - y = 11 \quad \left| \cdot 2 \right. \\
+II.\cdot 2 &\qquad 10x - 2y = 22 \\
+I. &\qquad 3x + 2y = 17 \\ \hline
+I. + (II.\cdot 2)\, &\qquad (3x+10x) + (2y-2y) = 17 + 22 \\
+&\qquad 13x = 39 \quad \left| :13 \right. \\
+&\qquad x = 3 \\
+x \cap II.\, &\qquad 5\cdot 3 - y = 11 \\
+&\qquad 15 - y = 11 \quad \left| -15 \right. \\
+&\qquad -y = -4 \quad \left| \cdot(-1) \right. \\
+&\qquad y = 4
+\end{align*}
+$$
+
+<!-- data-solution-button="5"-->
+Um das [[   Gleichungssystem   ]] zu lösen, wird das [[   Additionsverfahren   ]] angewendet.
+Dazu wird zunächst die [[   zweite   ]] Gleichung so umgeformt, dass die Variable $y$ in beiden Gleichungen mit entgegengesetzten [[ Vorzeichen ]] auftritt.
+Deshalb wird  die zweite Gleichung mit [[  2  ]] multiplizieren und es ergibt sich $10x - 2y = 22$.
+Nun können wir diese Gleichung mit der [[   ersten   ]] addieren. Dabei fällt die Variable [[  y  ]] weg und es bleibt $13x = 39$.
+Wird nun durch [[   13   ]] geteilt, so ergibt sich $x = 3$.
+Dieser Wert wird anschließend in die [[   zweite   ]] Gleichung eingesetzt: $5\cdot 3 - y = 11$.
+Nach dem Umformen folgt $15 - y = 11$, und nach Subtraktion von [[ 15 ]] ergibt sich $-y = -4$.
+Durch Multiplikation mit [[ -1 ]] ergibt sich schließlich $y = 4$.
+
+</div>
+<div class="flex-child">
+__$c)\;\;$__ 
+$$
+\begin{align*}
+I. &\qquad 4x - y = 13 \quad \left| -4x \right. \\
+II.&\qquad x + 2y = 10 \quad \left| -x \right. \\ \hline
+I. &\qquad -y = 13 - 4x \quad \left| \cdot(-1) \right. \\
+I. &\qquad y = 4x - 13 \\
+II.&\qquad 2y = 10 - x \quad \left| :2 \right. \\
+II.&\qquad y = \dfrac{10 - x}{2} \\[4pt]
+I. \cap II. &\qquad 4x - 13 = \dfrac{10 - x}{2} \\
+&\qquad 2(4x - 13) = 10 - x \\
+&\qquad 8x - 26 = 10 - x \quad \left| +x \right. \\
+&\qquad 9x - 26 = 10 \quad \left| +26 \right. \\
+&\qquad 9x = 36 \quad \left| :9 \right. \\
+&\qquad x = 4 \\
+x \cap I. &\qquad 4\cdot 4 - y = 13 \\
+&\qquad 16 - y = 13 \quad \left| -16 \right. \\
+&\qquad -y = -3 \quad \left| \cdot(-1) \right. \\
+&\qquad y = 3
+\end{align*}
+$$
+
+
+<!-- data-solution-button="5"-->
+Zur Lösung des [[   Gleichungssystems   ]] wird das [[   Gleichsetzungsverfahren   ]] angewendet.
+Zunächst wird die [[   erste   ]] Gleichung nach $y$ aufgelöst und es ergibt sich $y = 4x - 13$.
+Anschließend wird die [[   zweite   ]] Gleichung ebenfalls nach $y$ umgeformt, sodass $y = \dfrac{10 - x}{2}$ resultiert.
+Beide Terme für [[  y  ]] werden nun [[   gleichgesetzt   ]], wodurch $4x - 13 = \dfrac{10 - x}{2}$ entsteht.
+Nach dem [[   Ausmultiplizieren   ]] folgt $8x - 26 = 10 - x$.
+Durch [[  Addition  ]] von [[  x  ]] auf beiden Seiten ergibt sich $9x - 26 = 10$.
+Nach Addition von [[  26  ]] resultiert $9x = 36$.
+Durch [[  Division  ]] mit $9$ folgt $x = 4$.
+Der Wert für $x$ wird schließlich in die [[  erste  ]] Gleichung [[  eingesetzt  ]], sodass $y = 3$ bestimmt wird.
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 6:__ **Fülle** alle Lücken des Lückentextes **aus**, der die präsentierte Musterlösung zum gegebenen Gleichungssystem beschreibt.
+
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+__$a)\;\;$__ 
+$$
+\begin{align*}
+I. &\qquad 5x + y = 22 \quad \left| -5x \right. \\
+II.&\qquad 2x - y = -1 \quad \left| -2x \right. \\ \hline
+I. &\qquad y = 22 - 5x \\
+II.&\qquad -y = -1 - 2x \quad \left| \cdot(-1) \right. \\
+II.&\qquad y = 2x + 1 \\[4pt]
+I. \cap II. &\qquad 22 - 5x = 2x + 1 \\
+&\qquad 22 - 1 = 2x + 5x \\
+&\qquad 21 = 7x \quad \left| :7 \right. \\
+&\qquad x = 3 \\
+x \cap I. &\qquad 5\cdot 3 + y = 22 \\
+&\qquad 15 + y = 22 \quad \left| -15 \right. \\
+&\qquad y = 7
+\end{align*}
+$$
+
+<!-- data-solution-button="5"-->
+Zur Lösung des [[   Gleichungssystems   ]] wird das [[   Gleichsetzungsverfahren   ]] angewendet.
+Zunächst wird die [[   erste   ]] Gleichung nach $y$ aufgelöst und es ergibt sich $y = 22 - 5x$.
+Anschließend wird die [[   zweite   ]] Gleichung nach $y$ umgeformt, sodass $y = 2x + 1$ resultiert.
+Die beiden Terme für [[   y   ]] werden [[   gleichgesetzt   ]], wodurch $22 - 5x = 2x + 1$ entsteht.
+Nach dem [[  Zusammenfassen  ]] folgt $21 = 7x$.
+Durch Division mit [[   7   ]] ergibt sich $x = 3$.
+Der Wert für $x$ wird in die [[   erste   ]] Gleichung [[   eingesetzt  ]], sodass $y = 7$ bestimmt wird.
+
+
+</div>
+<div class="flex-child">
+__$b)\;\;$__ 
+$$
+\begin{align*}
+I.& \qquad 5x + y = 26 \\  
+II.& \qquad 2x + 3y = 26   \\ \hline
+I. &\qquad 5x + y = 26 \quad \left| -5x \right. \\
+&\qquad y = 26 - 5x \\ \hline
+I. \cap II. &\qquad 2x + 3(26 - 5x) = 26 \\
+&\qquad 2x + 78 - 15x = 26 \\
+&\qquad -13x + 78 = 26 \quad \left| -78 \right. \\
+&\qquad -13x = -52 \quad \left| :(-13) \right. \\
+&\qquad x = 4 \\
+x \cap I. &\qquad 5\cdot 4 + y = 26 \\
+&\qquad 20 + y = 26 \quad \left| -20 \right. \\
+&\qquad y = 6
+\end{align*}
+$$
+
+<!-- data-solution-button="5"-->
+Zur Lösung des [[   Gleichungssystems   ]] wird das [[   Einsetzungsverfahren   ]] angewendet.
+Zuerst wird die [[   erste   ]] Gleichung nach $y$ umgestellt, sodass $y = 26 - 5x$ entsteht.
+Dieser Ausdruck wird in die zweite [[  Gleichung  ]] eingesetzt, wodurch $2x + 3(26 - 5x) = 26$ gebildet wird.
+Nach dem [[   Ausmultiplizieren   ]] der Klammer ergibt sich $2x + 78 - 15x = 26$.
+Dies lässt sich zu $-13x + 78 = 26$ [[   zusammenfassen   ]].
+Durch [[  Subtraktion  ]] von [[ 78 ]] auf beiden Seiten folgt $-13x = -52$.
+Durch Division mit [[  -13  ]] wird $x = 4$ erhalten.
+Der Wert für $x$ wird in die [[   erste  ]] Gleichung [[   eingesetzt   ]], sodass schließlich $y = 6$ bestimmt wird.
+
+
+</div>
+<div class="flex-child">
+__$c)\;\;$__ 
+$$
+\begin{align*}
+I. &\qquad 2x + 3y = 23 \\
+II. &\qquad 4x - y = 11 \\ \hline
+II. &\qquad 4x - y = 11 \quad \left| \cdot 3 \right. \\
+II.\cdot 3 &\qquad 12x - 3y = 33 \\
+I. &\qquad 2x + 3y = 23 \\ \hline
+(II.\cdot 3) + I.\, &\qquad (12x+2x) + (-3y+3y) = 33 + 23 \\
+&\qquad 14x = 56 \quad \left| :14 \right. \\
+&\qquad x = 4 \\
+x \cap II.\, &\qquad 4\cdot 4 - y = 11 \\
+&\qquad 16 - y = 11 \quad \left| -16 \right. \\
+&\qquad -y = -5 \quad \left| \cdot(-1) \right. \\
+&\qquad y = 5
+\end{align*}
+$$
+
+<!-- data-solution-button="5"-->
+Zur Lösung des [[   Gleichungssystems   ]] wird das [[   Additionsverfahren   ]] angewendet.
+Zuerst wird die zweite Gleichung mit [[  3  ]] [[  multipliziert  ]], sodass $12x - 3y = 33$ entsteht.
+Nun wird diese Gleichung mit der ersten [[  addiert  ]]. Dabei fallen die Teile mit $y$ weg und es bleibt $14x = 56$.
+Durch [[  Division  ]] mit [[  14  ]] ergibt sich $x = 4$.
+Der erhaltene Wert wird in die zweite [[  Gleichung  ]] [[   eingesetzt   ]], woraus $16 - y = 11$ folgt.
+Durch [[  Subtraktion  ]] von [[  16  ]] auf beiden Seiten ergibt sich $-y = -5$.
+Durch [[  Multiplikation  ]] mit [[  -1  ]] wird schließlich $y = 5$ bestimmt.
+
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 7:__ **Berechne** die Lösungen des gegebenen Gleichungssystems.
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 2x + y = 11 \\  
+II.& \qquad x + 3y = 13  
+\end{align*}
+$$  
+$x$ = [[  4  ]]  und  $y$ = [[  3  ]]
+************
+$$
+\begin{align*}
+I. &\qquad 2x + y = 11 \quad \left| -2x  \right. \\
+II. &\qquad x + 3y = 13    \\ \hline
+I. &\qquad y = 11 - 2x \\  
+I. \cap II.  &\qquad x + 3(11-2x) = 13   \\
+& \qquad x + 33 - 6x = 13 \quad \left| -33 \right. \\
+& \qquad -5x = -20 \quad \left| :(-5) \right. \\
+& \qquad x = 4 \\
+x \cap I. &\qquad 2\cdot 4 + y = 11 \\
+& \qquad 8 + y = 11 \quad \left| -8 \right. \\
+& \qquad y = 3
+\end{align*}
+$$
+************
+
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 3x + 2y = 19 \\  
+II.& \qquad 2x + y  = 12  
+\end{align*}
+$$  
+$x$ = [[  5  ]]  und  $y$ = [[  2  ]]
+************
+$$
+\begin{align*}
+I. & \qquad 3x + 2y = 19 \\
+II. & \qquad 2x + y  = 12 \quad \left| -2x \right. \\ \hline
+II. &  \qquad y = 12 - 2x \\ 
+I.\cap II. & \qquad 3x + 2(12 - 2x) = 19 \\
+&  \qquad 3x + 24 - 4x = 19 \\
+&  \qquad -x + 24 = 19 \quad \left| -24 \right. \\
+&  \qquad-x = -5 \quad \left| \cdot(-1) \right. \\
+&  \qquad x = 5 \\
+x\cap II. &  \qquad 2\cdot 5 + y = 12 \\
+&  \qquad 10 + y = 12 \quad \left| -10 \right. \\
+&  \qquad y = 2
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad x + y &= 9 \\  
+II.& \qquad 2x - y &= 3  
+\end{align*}
+$$  
+$x$ = [[  4  ]]  und  $y$ = [[  5  ]]
+************
+$$
+\begin{align*}
+I.\ &\qquad x + y = 9 \quad \left| -x \right. \\
+II.\ &\qquad 2x - y = 3 \\ \hline
+I.\ &\qquad y = 9 - x \\
+I.\cap II.\ &\qquad 2x - (9 - x) = 3 \\
+&\qquad 2x - 9 + x = 3 \\
+&\qquad 3x - 9 = 3 \quad \left| +9 \right. \\
+&\qquad 3x = 12 \quad \left| :3 \right. \\
+&\qquad x = 4 \\
+x\cap I.\ &\qquad 4 + y = 9 \quad \left| -4 \right. \\
+&\qquad y = 5
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 4x - y &= 7 \\  
+II.& \qquad x + 2y &= 13  
+\end{align*}
+$$  
+$x$ = [[  3  ]]  und  $y$ = [[  5  ]]
+************
+$$
+\begin{align*}
+I.\ &\qquad 4x - y = 7 \quad \left| -4x \right. \\
+II.\ &\qquad x + 2y = 13 \\ \hline
+I.\ &\qquad -y = 7 - 4x \quad \left| \cdot(-1) \right. \\
+I.\ &\qquad y = 4x - 7 \\
+I.\cap II.\ &\qquad x + 2(4x - 7) = 13 \\
+&\qquad x + 8x - 14 = 13 \\
+&\qquad 9x - 14 = 13 \quad \left| +14 \right. \\
+&\qquad 9x = 27 \quad \left| :9 \right. \\
+&\qquad x = 3 \\
+x\cap I.\ &\qquad 4\cdot 3 - y = 7 \\
+&\qquad 12 - y = 7 \quad \left| -12 \right. \\
+&\qquad -y = -5 \quad \left| \cdot(-1) \right. \\
+&\qquad y = 5
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 3x + y &= 16 \\  
+II.& \qquad 2x + 3y &= 20  
+\end{align*}
+$$  
+$x$ = [[  4  ]]  und  $y$ = [[  4  ]]
+************
+$$
+\begin{align*}
+I.\ &\qquad 3x + y = 16 \quad \left| -3x \right. \\
+II.\ &\qquad 2x + 3y = 20 \\ \hline
+I.\ &\qquad y = 16 - 3x \\
+I.\cap II.\ &\qquad 2x + 3(16 - 3x) = 20 \\
+&\qquad 2x + 48 - 9x = 20 \\
+&\qquad -7x + 48 = 20 \quad \left| -48 \right. \\
+&\qquad -7x = -28 \quad \left| :(-7) \right. \\
+&\qquad x = 4 \\
+x\cap I.  &\qquad 3\cdot 4 + y = 16 \\
+&\qquad 12 + y = 16 \quad \left| -12 \right. \\
+&\qquad y = 4
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 4x + y &= 24 \\  
+II.& \qquad x + 2y &= 13  
+\end{align*}
+$$  
+$x$ = [[  5  ]]  und  $y$ = [[  4  ]]
+************
+$$
+\begin{align*}
+I.\qquad &\ 4x + y = 24 \quad \left| -4x \right. \\
+II.\qquad &\ x + 2y = 13 \\ \hline
+I.\qquad &\ y = 24 - 4x \\
+I.\cap II.\ &\qquad x + 2(24 - 4x) = 13 \\
+&\qquad x + 48 - 8x = 13 \\
+&\qquad -7x + 48 = 13 \quad \left| -48 \right. \\
+&\qquad -7x = -35 \quad \left| :(-7) \right. \\
+&\qquad x = 5 \\
+x\cap I.  &\qquad 4\cdot 5 + y = 24 \\
+&\qquad 20 + y = 24 \quad \left| -20 \right. \\
+&\qquad y = 4
+\end{align*}
+$$
+************
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 8:__ **Berechne** die Lösungen des gegebenen Gleichungssystems.
+
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 3x + y = 14 \\  
+II.& \qquad x + 2y = 10  
+\end{align*}
+$$  
+$x$ = [[  2  ]]  und  $y$ = [[  4  ]]
+************
+$$
+\begin{align*}
+I. &\qquad 3x + y = 14 \quad \left| -3x \right. \\
+II. &\qquad x + 2y = 10 \\ \hline
+I. &\qquad y = 14 - 3x \\
+I. \cap II. &\qquad x + 2(14 - 3x) = 10 \\
+&\qquad x + 28 - 6x = 10 \quad \left| -28 \right. \\
+&\qquad -5x = -18 \quad \left| :(-5) \right. \\
+&\qquad x = 2 \\
+x \cap I. &\qquad 3\cdot 2 + y = 14 \\
+&\qquad 6 + y = 14 \quad \left| -6 \right. \\
+&\qquad y = 8
+\end{align*}
+$$
+************
+
+</div>
+<div class="flex-child">
+__$b)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 4x - y = 7 \\  
+II.& \qquad x + 3y = 19  
+\end{align*}
+$$  
+$x$ = [[  4  ]]  und  $y$ = [[  5  ]]
+************
+$$
+\begin{align*}
+I. &\qquad 4x - y = 7 \quad \left| -4x \right. \\
+II. &\qquad x + 3y = 19 \\ \hline
+I. &\qquad -y = 7 - 4x \quad \left| \cdot(-1) \right. \\
+I. &\qquad y = 4x - 7 \\
+I. \cap II. &\qquad x + 3(4x - 7) = 19 \\
+&\qquad x + 12x - 21 = 19 \\
+&\qquad 13x - 21 = 19 \quad \left| +21 \right. \\
+&\qquad 13x = 40 \quad \left| :13 \right. \\
+&\qquad x = 4 \\
+x \cap I. &\qquad 4\cdot 4 - y = 7 \\
+&\qquad 16 - y = 7 \quad \left| -16 \right. \\
+&\qquad -y = -9 \quad \left| \cdot(-1) \right. \\
+&\qquad y = 9
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 2x + 3y = 18 \\  
+II.& \qquad x - y = 1  
+\end{align*}
+$$  
+$x$ = [[  3  ]]  und  $y$ = [[  2  ]]
+************
+$$
+\begin{align*}
+II. &\qquad x - y = 1 \quad \left| -x \right. \\
+I.  &\qquad 2x + 3y = 18 \\ \hline
+II. &\qquad -y = 1 - x \quad \left| \cdot(-1) \right. \\
+II. &\qquad y = x - 1 \\
+I. \cap II. &\qquad 2x + 3(x - 1) = 18 \\
+&\qquad 2x + 3x - 3 = 18 \\
+&\qquad 5x - 3 = 18 \quad \left| +3 \right. \\
+&\qquad 5x = 21 \quad \left| :5 \right. \\
+&\qquad x = 3 \\
+x \cap II. &\qquad y = 3 - 1 \\
+&\qquad y = 2
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 5x + 2y = 20 \\  
+II.& \qquad 3x - y = 4  
+\end{align*}
+$$  
+$x$ = [[  2  ]]  und  $y$ = [[  5  ]]
+************
+$$
+\begin{align*}
+II. &\qquad 3x - y = 4 \quad \left| -3x \right. \\
+I.  &\qquad 5x + 2y = 20 \\ \hline
+II. &\qquad -y = 4 - 3x \quad \left| \cdot(-1) \right. \\
+II. &\qquad y = 3x - 4 \\
+I. \cap II. &\qquad 5x + 2(3x - 4) = 20 \\
+&\qquad 5x + 6x - 8 = 20 \\
+&\qquad 11x - 8 = 20 \quad \left| +8 \right. \\
+&\qquad 11x = 28 \quad \left| :11 \right. \\
+&\qquad x = 2 \\
+x \cap II. &\qquad y = 3\cdot 2 - 4 \\
+&\qquad y = 6 - 4 = 2
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 2x + y = 10 \\  
+II.& \qquad 4x - y = 6  
+\end{align*}
+$$  
+$x$ = [[  2  ]]  und  $y$ = [[  6  ]]
+************
+$$
+\begin{align*}
+I. &\qquad 2x + y = 10 \quad \left| -2x \right. \\
+II. &\qquad 4x - y = 6 \\ \hline
+I. &\qquad y = 10 - 2x \\
+I. \cap II. &\qquad 4x - (10 - 2x) = 6 \\
+&\qquad 4x - 10 + 2x = 6 \\
+&\qquad 6x - 10 = 6 \quad \left| +10 \right. \\
+&\qquad 6x = 16 \quad \left| :6 \right. \\
+&\qquad x = 2 \\
+x \cap I. &\qquad 2\cdot 2 + y = 10 \\
+&\qquad 4 + y = 10 \quad \left| -4 \right. \\
+&\qquad y = 6
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 3x + 2y = 22 \\  
+II.& \qquad x + y = 7  
+\end{align*}
+$$  
+$x$ = [[  4  ]]  und  $y$ = [[  3  ]]
+************
+$$
+\begin{align*}
+II. &\qquad x + y = 7 \quad \left| -x \right. \\
+I.  &\qquad 3x + 2y = 22 \\ \hline
+II. &\qquad y = 7 - x \\
+I. \cap II. &\qquad 3x + 2(7 - x) = 22 \\
+&\qquad 3x + 14 - 2x = 22 \\
+&\qquad x + 14 = 22 \quad \left| -14 \right. \\
+&\qquad x = 8 \\
+x \cap II. &\qquad 8 + y = 7 \quad \left| -8 \right. \\
+&\qquad y = -1
+\end{align*}
+$$
+************
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ### Ungleichungen
@@ -10013,6 +11044,18 @@ __Aufgabe 1:__
 
 
 </section>
+
+
+
+
+## Weiteres
+
+!?[Lagebeziehung](https://www.youtube.com/watch?v=CGrkv0Jj3dE)
+!?[Rechteck](https://www.youtube.com/watch?v=wl7edZWZew0)
+
+!?[Operatorenalgebra](https://www.youtube.com/watch?v=quQtPwW04B0)
+!?[Graphische Differentiation](https://www.youtube.com/watch?v=ChaN4YkErPw)
+!?[Integration](https://www.youtube.com/watch?v=ppdwq_KDMoE)
 
 
 
