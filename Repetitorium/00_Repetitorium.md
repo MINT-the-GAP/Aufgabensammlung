@@ -9920,6 +9920,21 @@ __Aufgabe 1:__
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #### Übungen - Gleichungssysteme
 
 
@@ -10909,6 +10924,628 @@ $$
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 9:__ **Berechne** die Lösungen des gegebenen Gleichungssystems.
+
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad x + y + z = 12 \\  
+II.& \qquad 2x - y + z = 8 \\  
+III.& \qquad x + 2y - z = 1  
+\end{align*}
+$$  
+$x$ = [[  2  ]], $y$ = [[  3  ]], $z$ = [[  7  ]]
+************
+$$
+\begin{align*}
+I.& \qquad x + y + z = 12 \\  
+II.& \qquad 2x - y + z = 8 \\  
+III.& \qquad x + 2y - z = 1  \\  \hline
+I. &\qquad x + y + z = 12 \quad \left| -x - y \right. \\
+&\qquad z = 12 - x - y \\ \hline
+I. \cap II.\; &\qquad 2x - y + (12 - x - y) = 8 \\
+&\qquad x - 2y + 12 = 8 \quad \left| -12 \right. \\
+&\qquad x - 2y = -4   \quad \left| +2y \right. \\
+&\qquad x = 2y -4  \\ 
+I. \cap III.\; &\qquad x + 2y - (12 - x - y) = 1 \\
+&\qquad 2x + 3y - 12 = 1 \quad \left| +12 \right. \\
+&\qquad 2x + 3y = 13 \\ \hline
+\left( I. \cap II. \right)  \cap \left(  I. \cap III. \right)\;  &\qquad x = 2y - 4 \\
+ &\qquad 2(2y-4) + 3y = 13 \\
+&\qquad 4y - 8 + 3y = 13 \\
+&\qquad 7y = 21 \quad \left| :7 \right. \\
+&\qquad y = 3 \\
+y \cap \left( I. \cap II. \right)  &\qquad  x = 2y-4 = 2 \cdot 3-4 = 2 \\
+\left( x \wedge y \right) \cap  I. &\qquad  z = 12 - 2 - 3 = 7
+\end{align*}
+$$
+************
+
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad x + y + z = 10 \\  
+II.& \qquad 2x - y + z = 9 \\  
+III.& \qquad x + 3y - z = 4  
+\end{align*}
+$$  
+$x$ = [[  3  ]], $y$ = [[  2  ]], $z$ = [[  5  ]]
+************
+$$
+\begin{align*}
+I.& \qquad x + y + z = 10 \\  
+II.& \qquad 2x - y + z = 9 \\  
+III.& \qquad x + 3y - z = 4  \\  \hline
+I. &\qquad x + y + z = 10 \quad \left| -x - y \right. \\
+&\qquad z = 10 - x - y \\ \hline
+I. \cap II.\; &\qquad 2x - y + (10 - x - y) = 9 \\
+&\qquad x - 2y + 10 = 9 \quad \left| -10 \right. \\
+&\qquad x - 2y = -1 \quad \left| +2y \right. \\
+&\qquad x = 2y - 1 \\ 
+I. \cap III.\; &\qquad x + 3y - (10 - x - y) = 4 \\
+&\qquad 2x + 4y - 10 = 4 \quad \left| +10 \right. \\
+&\qquad 2x + 4y = 14 \\ \hline
+\left( I. \cap II. \right)  \cap \left(  I. \cap III. \right)\;  &\qquad x = 2y - 1 \\
+ &\qquad 2(2y-1) + 4y = 14 \\
+&\qquad 4y - 2 + 4y = 14 \\
+&\qquad 8y = 16 \quad \left| :8 \right. \\
+&\qquad y = 2 \\
+y \cap \left( I. \cap II. \right)  &\qquad  x = 2y-1 = 2\cdot 2 - 1 = 3 \\
+\left( x \wedge y \right) \cap  I. &\qquad  z = 10 - 3 - 2 = 5
+\end{align*}
+$$
+************
+
+
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 2x + y + z = 15 \\  
+II.& \qquad x + 2y + 3z = 24 \\  
+III.& \qquad 3x - y + z = 17  
+\end{align*}
+$$  
+$x$ = [[  4  ]], $y$ = [[  1  ]], $z$ = [[  6  ]]
+************
+$$
+\begin{align*}
+I.& \qquad 2x + y + z = 15 \\  
+II.& \qquad x + 2y + 3z = 24 \\  
+III.& \qquad 3x - y + z = 17  \\  \hline
+I. &\qquad 2x + y + z = 15 \quad \left| -2x - z \right. \\
+&\qquad y = 15 - 2x - z \\
+III. &\qquad 3x - y + z = 17 \quad \left| -3x - z \right. \\
+&\qquad -y = 17 - 3x - z \quad \left| \cdot(-1) \right. \\
+&\qquad y = 3x + z - 17 \\ \hline
+I = III\; &\qquad 15 - 2x - z = 3x + z - 17 \\
+&\qquad 32 = 5x + 2z \quad (A) \\
+I \cap II\; &\qquad x + 2(15 - 2x - z) + 3z = 24 \\
+&\qquad x + 30 - 4x - 2z + 3z = 24 \\
+&\qquad -3x + z + 30 = 24 \quad \left| -30 \right. \\
+&\qquad z = 3x - 6 \quad (B) \\ \hline
+(A) \cap (B)\; &\qquad 32 = 5x + 2(3x - 6) \\
+&\qquad 32 = 11x - 12 \quad \left| +12 \right. \\
+&\qquad 44 = 11x \quad \left| :11 \right. \\
+&\qquad x = 4,\;\; z = 3\cdot 4 - 6 = 6, \;\; y = 15 - 2\cdot 4 - 6 = 1
+\end{align*}
+$$
+************
+
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad x + 2y + z = 16 \\  
+II.& \qquad 2x + y - z = 11 \\  
+III.& \qquad x - y + 2z = 7  
+\end{align*}
+$$  
+$x$ = [[  5  ]], $y$ = [[  4  ]], $z$ = [[  3  ]]
+************
+$$
+\begin{align*}
+I.& \qquad x + 2y + z = 16 \\  
+II.& \qquad 2x + y - z = 11 \\  
+III.& \qquad x - y + 2z = 7  \\  \hline
+I.+II.\; &\qquad (x+2y+z) + (2x+y-z) = 16 + 11 \\
+&\qquad 3x + 3y = 27 \quad \left| :3 \right. \\
+&\qquad x + y = 9 \quad (A) \\
+I.\cdot 2 \; &\qquad 2x + 4y + 2z = 32 \\
+(I.\cdot 2) - III.\; &\qquad (2x - x) + (4y - (-y)) + (2z - 2z) = 32 - 7 \\
+&\qquad x + 5y = 25 \quad (B) \\ \hline
+(A) &\qquad x = 9 - y \\
+(A) \cap (B) &\qquad (9 - y) + 5y = 25 \\
+&\qquad 4y + 9 = 25 \quad \left| -9 \right. \\
+&\qquad 4y = 16 \quad \left| :4 \right. \\
+&\qquad y = 4,\;\; x = 9 - 4 = 5,\;\; z: \; 5 + 2\cdot 4 + z = 16 \Rightarrow z = 3
+\end{align*}
+$$
+************
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 10:__ **Berechne** die Lösungen des gegebenen Gleichungssystems.
+
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad x + y + z = 11 \\  
+II.& \qquad 2x - y + z = 13 \\  
+III.& \qquad x + 2y - z = 0  
+\end{align*}
+$$  
+$x$ = [[  4  ]], $y$ = [[  1  ]], $z$ = [[  6  ]]
+************
+$$
+\begin{align*}
+I.& \qquad x + y + z = 11 \\  
+II.& \qquad 2x - y + z = 13 \\  
+III.& \qquad x + 2y - z = 0  \\  \hline
+I. &\qquad x + y + z = 11 \quad \left| -x - y \right. \\
+&\qquad z = 11 - x - y \\ \hline
+I. \cap II.\; &\qquad 2x - y + (11 - x - y) = 13 \\
+&\qquad x - 2y + 11 = 13 \quad \left| -11 \right. \\
+&\qquad x - 2y = 2 \quad \left| +2y \right. \\
+&\qquad x = 2y + 2 \\ 
+I. \cap III.\; &\qquad x + 2y - (11 - x - y) = 0 \\
+&\qquad 2x + 3y - 11 = 0 \quad \left| +11 \right. \\
+&\qquad 2x + 3y = 11 \\ \hline
+\left( I. \cap II. \right)  \cap \left(  I. \cap III. \right)\;  &\qquad x = 2y + 2 \\
+&\qquad 2(2y+2) + 3y = 11 \\
+&\qquad 4y + 4 + 3y = 11 \\
+&\qquad 7y = 7 \quad \left| :7 \right. \\
+&\qquad y = 1 \\
+y \cap \left( I. \cap II. \right)  &\qquad  x = 2y+2 = 2 \cdot 1 + 2 = 4 \\
+\left( x \wedge y \right) \cap  I. &\qquad  z = 11 - 4 - 1 = 6
+\end{align*}
+$$
+************
+
+
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad x + y + z = 12 \\  
+II.& \qquad 2x + y - z = 7 \\  
+III.& \qquad x + 3y + z = 22  
+\end{align*}
+$$  
+$x$ = [[  3  ]], $y$ = [[  5  ]], $z$ = [[  4  ]]
+************
+$$
+\begin{align*}
+I.& \qquad x + y + z = 12 \\  
+II.& \qquad 2x + y - z = 7 \\  
+III.& \qquad x + 3y + z = 22  \\  \hline
+III. - I.\; &\qquad (x+3y+z) - (x+y+z) = 22 - 12 \\
+&\qquad 2y = 10 \quad \left| :2 \right. \\
+&\qquad y = 5 \\ \hline
+I. + II.\; &\qquad (x+y+z) + (2x+y-z) = 12 + 7 \\
+&\qquad 3x + 2y = 19 \\
+y \cap (I.+II.)\; &\qquad 3x + 2\cdot 5 = 19 \\
+&\qquad 3x + 10 = 19 \quad \left| -10 \right. \\
+&\qquad 3x = 9 \quad \left| :3 \right. \\
+&\qquad x = 3 \\ \hline
+\left( x \wedge y \right) \cap I.\; &\qquad 3 + 5 + z = 12 \\
+&\qquad z = 12 - 8 = 4
+\end{align*}
+$$
+************
+
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad x + y + z = 13 \\  
+II.& \qquad 2x - y + z = 13 \\  
+III.& \qquad x + 3y - z = 3  
+\end{align*}
+$$  
+$x$ = [[  4  ]], $y$ = [[  2  ]], $z$ = [[  7  ]]
+************
+$$
+\begin{align*}
+I.& \qquad x + y + z = 13 \\  
+II.& \qquad 2x - y + z = 13 \\  
+III.& \qquad x + 3y - z = 3  \\  \hline
+I. &\qquad x + y + z = 13 \quad \left| -x - y \right. \\
+&\qquad z = 13 - x - y \\ \hline
+I. \cap II.\; &\qquad 2x - y + (13 - x - y) = 13 \\
+&\qquad x - 2y + 13 = 13 \quad \left| -13 \right. \\
+&\qquad x - 2y = 0 \quad \left| +2y \right. \\
+&\qquad x = 2y \\ 
+I. \cap III.\; &\qquad x + 3y - (13 - x - y) = 3 \\
+&\qquad 2x + 4y - 13 = 3 \quad \left| +13 \right. \\
+&\qquad 2x + 4y = 16 \\ \hline
+\left( I. \cap II. \right)  \cap \left(  I. \cap III. \right)\;  &\qquad x = 2y \\
+ &\qquad 2(2y) + 4y = 16 \\
+&\qquad 4y + 4y = 16 \\
+&\qquad 8y = 16 \quad \left| :8 \right. \\
+&\qquad y = 2 \\
+y \cap \left( I. \cap II. \right)  &\qquad  x = 2y = 2 \cdot 2 = 4 \\
+\left( x \wedge y \right) \cap  I. &\qquad  z = 13 - 4 - 2 = 7
+\end{align*}
+$$
+************
+
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad x + y + z = 14 \\  
+II.& \qquad 2x + y - z = 10 \\  
+III.& \qquad x + 2y + 3z = 27  
+\end{align*}
+$$  
+$x$ = [[  6  ]], $y$ = [[  3  ]], $z$ = [[  5  ]]
+************
+$$
+\begin{align*}
+I.& \qquad x + y + z = 14 \\  
+II.& \qquad 2x + y - z = 10 \\  
+III.& \qquad x + 2y + 3z = 27  \\  \hline
+I. &\qquad x + y + z = 14 \quad \left| -x - y \right. \\
+&\qquad z = 14 - x - y \\ \hline
+I. \cap II.\; &\qquad 2x + y - (14 - x - y) = 10 \\
+&\qquad 3x + 2y - 14 = 10 \quad \left| +14 \right. \\
+&\qquad 3x + 2y = 24 \quad (A) \\ 
+I. \cap III.\; &\qquad x + 2y + 3(14 - x - y) = 27 \\
+&\qquad x + 2y + 42 - 3x - 3y = 27 \\
+&\qquad -2x - y + 42 = 27 \quad \left| -42 \right. \\
+&\qquad -2x - y = -15 \quad \left| \cdot(-1) \right. \\
+&\qquad 2x + y = 15 \quad (B) \\ \hline
+(B)\cdot 2\; &\qquad 4x + 2y = 30 \\
+\big((B)\cdot 2\big) - (A)\; &\qquad (4x - 3x) + (2y - 2y) = 30 - 24 \\
+&\qquad x = 6 \\
+x \cap (B)\; &\qquad 2\cdot 6 + y = 15 \;\Rightarrow\; y = 3 \\
+\left( x \wedge y \right) \cap  I. &\qquad  z = 14 - 6 - 3 = 5
+\end{align*}
+$$
+************
+
+</div>
+</section>
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 11:__ **Berechne** die Lösungen des gegebenen Gleichungssystems mit dem Additionsverfahren.
+
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad x + y + z = 9 \\  
+II.& \qquad 2x - y + z = 8 \\  
+III.& \qquad x + 3y - z = 5  
+\end{align*}
+$$  
+$x$ = [[  3  ]], $y$ = [[  2  ]], $z$ = [[  4  ]]
+************
+$$
+\begin{align*}
+I.& \qquad x + y + z = 9 \\
+II.& \qquad 2x - y + z = 8 \\
+III.& \qquad x + 3y - z = 5 \\ \hline
+\text{(Eliminiere } z\text{): } I.+III.& \qquad (x+x) + (y+3y) + (z - z) = 9 + 5 \\
+& \qquad 2x + 4y = 14 \quad (A) \\
+II.+III.& \qquad (2x+x) + (-y+3y) + (z - z) = 8 + 5 \\
+& \qquad 3x + 2y = 13 \quad (B) \\ \hline
+2\cdot (B) - (A)\!:& \qquad (6x+4y) - (2x+4y) = 26 - 14 \\
+& \qquad 4x = 12 \quad \left| :4 \right. \\
+& \qquad x = 3 \\
+x \cap (A):& \qquad 2\cdot 3 + 4y = 14 \\
+& \qquad 6 + 4y = 14 \quad \left| -6 \right. \\
+& \qquad 4y = 8 \quad \left| :4 \right. \\
+& \qquad y = 2 \\
+(x \wedge y) \cap I.:& \qquad 3 + 2 + z = 9 \\
+& \qquad z = 4
+\end{align*}
+$$
+************
+
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 2x + y + z = 16 \\  
+II.& \qquad x + 2y - z = 5 \\  
+III.& \qquad 3x - y + 2z = 19  
+\end{align*}
+$$  
+$x$ = [[  4  ]], $y$ = [[  3  ]], $z$ = [[  5  ]]
+************
+$$
+\begin{align*}
+I.& \qquad 2x + y + z = 16 \\
+II.& \qquad x + 2y - z = 5 \\
+III.& \qquad 3x - y + 2z = 19 \\ \hline
+\text{(Eliminiere } z\text{): } I.+II.& \qquad (2x+x) + (y+2y) + (z - z) = 16 + 5 \\
+& \qquad 3x + 3y = 21 \quad (A) \\ 
+III. + 2\cdot II.& \qquad (3x+2x) + (-y+4y) + (2z - 2z) = 19 + 10 \\
+& \qquad 5x + 3y = 29 \quad (B) \\ \hline
+(B) - (A)& \qquad (5x+3y) - (3x+3y) = 29 - 21 \\
+& \qquad 2x = 8 \quad \left| :2 \right. \\
+& \qquad x = 4 \\
+x \cap (A):& \qquad 3\cdot 4 + 3y = 21 \\
+& \qquad 12 + 3y = 21 \quad \left| -12 \right. \\
+& \qquad 3y = 9 \quad \left| :3 \right. \\
+& \qquad y = 3 \\
+(x \wedge y) \cap I.:& \qquad 2\cdot 4 + 3 + z = 16 \\
+& \qquad 8 + 3 + z = 16 \\
+& \qquad z = 5
+\end{align*}
+$$
+************
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad x + y + z = 11 \\  
+II.& \qquad 2x + 3y - z = 11 \\  
+III.& \qquad 3x - y + 2z = 12  
+\end{align*}
+$$  
+$x$ = [[  2  ]], $y$ = [[  4  ]], $z$ = [[  5  ]]
+************
+$$
+\begin{align*}
+I.& \qquad x + y + z = 11 \\
+II.& \qquad 2x + 3y - z = 11 \\
+III.& \qquad 3x - y + 2z = 12 \\ \hline
+\text{(Eliminiere } z\text{): } I.+II.& \qquad (x+2x) + (y+3y) + (z - z) = 11 + 11 \\
+& \qquad 3x + 4y = 22 \quad (A) \\[6pt]
+\text{(Eliminiere } z\text{): } III.+2\cdot II.& \qquad (3x+4x) + (-y+6y) + (2z - 2z) = 12 + 22 \\
+& \qquad 7x + 5y = 34 \quad (B) \\ \hline
+(B)\cdot 4 - (A)\cdot 5\!:& \qquad (28x-15x) + (20y-20y) = 136 - 110 \\
+& \qquad 13x = 26 \quad \left| :13 \right. \\
+& \qquad x = 2 \\[6pt]
+x \cap (A):& \qquad 3\cdot 2 + 4y = 22 \\
+& \qquad 6 + 4y = 22 \quad \left| -6 \right. \\
+& \qquad 4y = 16 \quad \left| :4 \right. \\
+& \qquad y = 4 \\[6pt]
+(x \wedge y) \cap I.:& \qquad 2 + 4 + z = 11 \;\Rightarrow\; z = 5
+\end{align*}
+$$
+************
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad x + y + z = 13 \\  
+II.& \qquad 3x + y - z = 11 \\  
+III.& \qquad 2x + 3y + z = 22  
+\end{align*}
+$$  
+$x$ = [[  5  ]], $y$ = [[  2  ]], $z$ = [[  6  ]]
+************
+$$
+\begin{align*}
+I.& \qquad x + y + z = 13 \\
+II.& \qquad 3x + y - z = 11 \\
+III.& \qquad 2x + 3y + z = 22 \\ \hline
+\text{(Eliminiere } z\text{): } I.+II.& \qquad (x+3x) + (y+y) + (z - z) = 13 + 11 \\
+& \qquad 4x + 2y = 24 \quad \left| :2 \right. \\
+& \qquad 2x + y = 12 \quad (A) \\[6pt]
+\text{(Eliminiere } z\text{): } III.-I.& \qquad (2x - x) + (3y - y) + (z - z) = 22 - 13 \\
+& \qquad x + 2y = 9 \quad (B) \\ \hline
+2\cdot(B) - (A)\!:& \qquad (2x+4y) - (2x+y) = 18 - 12 \\
+& \qquad 3y = 6 \quad \left| :3 \right. \\
+& \qquad y = 2 \\[6pt]
+y \cap (A):& \qquad 2x + 2 = 12 \quad \left| -2 \right. \\
+& \qquad 2x = 10 \quad \left| :2 \right. \\
+& \qquad x = 5 \\[6pt]
+(x \wedge y) \cap I.:& \qquad 5 + 2 + z = 13 \;\Rightarrow\; z = 6
+\end{align*}
+$$
+************
+
+
+</div>
+</section>
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 12:__ **Berechne** die Lösungen des gegebenen Gleichungssystems mit dem Additionsverfahren.
+
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad x + y + z = 11 \\  
+II.& \qquad 2x + 3y - z = 7 \\  
+III.& \qquad 3x - y + 2z = 15  
+\end{align*}
+$$  
+$x$ = [[  2  ]], $y$ = [[  3  ]], $z$ = [[  6  ]]
+************
+$$
+\begin{align*}
+I.& \qquad x + y + z = 11 \\
+II.& \qquad 2x + 3y - z = 7 \\
+III.& \qquad 3x - y + 2z = 15 \\ \hline
+\text{(Eliminiere } z\text{): } I.+II.& \qquad (x+2x) + (y+3y) + (z - z) = 11 + 7 \\
+& \qquad 3x + 4y = 18 \quad (A) \\[6pt]
+\text{(Eliminiere } z\text{): } III.-2\cdot I.& \qquad (3x-2x) + (-y-2y) + (2z-2z) = 15 - 22 \\
+& \qquad x - 3y = -7 \quad (B) \\ \hline
+(A) - 3\cdot (B)\!:& \qquad (3x-3x) + (4y-(-9y)) = 18 - (-21) \\
+& \qquad 13y = 39 \quad \left| :13 \right. \\
+& \qquad y = 3 \\[6pt]
+y \cap (B):& \qquad x - 3\cdot 3 = -7 \;\Rightarrow\; x = 2 \\[6pt]
+(x \wedge y) \cap I.:& \qquad 2 + 3 + z = 11 \;\Rightarrow\; z = 6
+\end{align*}
+$$
+************
+
+
+</div>
+<div class="flex-child">
+
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad x + y + z = 13 \\  
+II.& \qquad 2x + y - z = 1 \\  
+III.& \qquad x + 2y + 3z = 30  
+\end{align*}
+$$  
+$x$ = [[  4  ]], $y$ = [[  1  ]], $z$ = [[  8  ]]
+************
+$$
+\begin{align*}
+I.& \qquad x + y + z = 13 \\
+II.& \qquad 2x + y - z = 1 \\
+III.& \qquad x + 2y + 3z = 30 \\ \hline
+\text{(Eliminiere } z\text{): } I.+II.& \qquad (x+2x) + (y+y) + (z - z) = 13 + 1 \\
+& \qquad 3x + 2y = 14 \quad (A) \\[6pt]
+\text{(Eliminiere } z\text{): } (III.+II.) - 2\cdot I.& \qquad (3x-2x) + (3y-2y) + (2z-2z) = 31 - 26 \\
+& \qquad x + y = 5 \quad (B) \\ \hline
+2\cdot (B) - (A)\!:& \qquad (2x+2y) - (3x+2y) = 10 - 14 \\
+& \qquad -x = -4 \;\Rightarrow\; x = 4 \\[6pt]
+x \cap (B):& \qquad 4 + y = 5 \;\Rightarrow\; y = 1 \\[6pt]
+(x \wedge y) \cap I.:& \qquad 4 + 1 + z = 13 \;\Rightarrow\; z = 8
+\end{align*}
+$$
+************
+
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad x + y + z = 9 \\  
+II.& \qquad 2x - y + z = 4 \\  
+III.& \qquad 3x + y - z = 11  
+\end{align*}
+$$  
+$x$ = [[  3  ]], $y$ = [[  4  ]], $z$ = [[  2  ]]
+************
+$$
+\begin{align*}
+I.& \qquad x + y + z = 9 \\
+II.& \qquad 2x - y + z = 4 \\
+III.& \qquad 3x + y - z = 11 \\ \hline
+\text{(Eliminiere } z\text{): } II.+III.\; &\qquad (2x+3x) + (-y+y) + (z - z) = 4 + 11 \\
+&\qquad 5x = 15 \quad \left| :5 \right. \\
+&\qquad x = 3 \\[6pt]
+\text{(Eliminiere } z\text{): } I.-II.\; &\qquad (x-2x) + (y - (-y)) + (z - z) = 9 - 4 \\
+&\qquad -x + 2y = 5 \quad (A) \\[6pt]
+x \cap (A)\; &\qquad -3 + 2y = 5 \quad \left| +3 \right. \\
+&\qquad 2y = 8 \quad \left| :2 \right. \\
+&\qquad y = 4 \\[6pt]
+(x \wedge y) \cap I.\; &\qquad 3 + 4 + z = 9 \\
+&\qquad z = 2
+\end{align*}
+$$
+************
+
+
+</div>
+<div class="flex-child">
+
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad x + 2y + z = 18 \\  
+II.& \qquad 3x - y + z = 7 \\  
+III.& \qquad 2x + 3y - z = 13  
+\end{align*}
+$$  
+$x$ = [[  2  ]], $y$ = [[  5  ]], $z$ = [[  6  ]]
+************
+$$
+\begin{align*}
+I.& \qquad x + 2y + z = 18 \\
+II.& \qquad 3x - y + z = 7 \\
+III.& \qquad 2x + 3y - z = 13 \\ \hline
+\text{(Eliminiere } z\text{): } II.+III.\; &\qquad (3x+2x) + (-y+3y) + (z - z) = 7 + 13 \\
+&\qquad 5x + 2y = 20 \quad (A) \\[6pt]
+\text{(Eliminiere } z\text{): } I.-II.\; &\qquad (x-3x) + (2y - (-y)) + (z - z) = 18 - 7 \\
+&\qquad -2x + 3y = 11 \quad (B) \\ \hline
+(A)\cdot 3 - (B)\cdot 2\; &\qquad (15x+6y) - (-4x+6y) = 60 - 22 \\
+&\qquad 19x = 38 \quad \left| :19 \right. \\
+&\qquad x = 2 \\[6pt]
+x \cap (A)\; &\qquad 5\cdot 2 + 2y = 20 \\
+&\qquad 10 + 2y = 20 \quad \left| -10 \right. \\
+&\qquad 2y = 10 \quad \left| :2 \right. \\
+&\qquad y = 5 \\[6pt]
+(x \wedge y) \cap I.\; &\qquad 2 + 2\cdot 5 + z = 18 \\
+&\qquad 12 + z = 18 \quad \left| -12 \right. \\
+&\qquad z = 6
+\end{align*}
+$$
+************
+
+</div>
+</section>
 
 
 
