@@ -13348,7 +13348,6 @@
             }
         </script>
         <link rel="icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Logo_TU_Bergakademie_Freiberg.svg/242px-Logo_TU_Bergakademie_Freiberg.svg.png">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script>
       // Globale Variable zum Speichern der ausgewählten Kategorien
@@ -13467,7 +13466,7 @@
 </span>
 
                             </p>
-                            <select id="categorySelect" class="form-select" aria-label="Default select example" onchange="addCategoryChip(this.value)">
+                            <select class="form-select" aria-label="Default select example" onchange="window.blur(this.value)">
                                 <option value="" selected>Alle Kategorien</option>
                                 <option value=""></option>
                                 <option value="ableitungen">ableitungen</option>
@@ -13510,25 +13509,25 @@
                                 <option value="grafisches ableiten">grafisches ableiten</option>
                                 <option value="grenzwerte">grenzwerte</option>
                                 <option value="grundrechenarten">grundrechenarten</option>
-                                
+                                <option value="hoch">hoch</option>
                                 <option value="hypergeometrische verteilung">hypergeometrische verteilung</option>
                                 <option value="infimum">infimum</option>
                                 <option value="kgv">kgv</option>
                                 <option value="kontingenztafel">kontingenztafel</option>
                                 <option value="koordinatensystem">koordinatensystem</option>
                                 <option value="lagebeziehung">lagebeziehung</option>
-                                
+                                <option value="leicht">leicht</option>
                                 <option value="lineare funktionen">lineare funktionen</option>
                                 <option value="logarithmen">logarithmen</option>
                                 <option value="länge">länge</option>
                                 <option value="masse">masse</option>
                                 <option value="median">median</option>
                                 <option value="mengen">mengen</option>
-                                
+                                <option value="mittel">mittel</option>
                                 <option value="multiplikation">multiplikation</option>
                                 <option value="negative zahlen">negative zahlen</option>
-                                
-                                
+                                <option value="niedrig">niedrig</option>
+                                <option value="normal">normal</option>
                                 <option value="parameter">parameter</option>
                                 <option value="periodizität">periodizität</option>
                                 <option value="potenzen">potenzen</option>
@@ -13543,11 +13542,11 @@
                                 <option value="repetitorium">repetitorium</option>
                                 <option value="runden">runden</option>
                                 <option value="scheitelpunktsform">scheitelpunktsform</option>
-                                
-                                
+                                <option value="schwer">schwer</option>
+                                <option value="sehr leicht">sehr leicht</option>
                                 <option value="sehr leicht sehr">sehr leicht sehr</option>
-                                
-                                
+                                <option value="sehr niedrig">sehr niedrig</option>
+                                <option value="sehr schwer">sehr schwer</option>
                                 <option value="signum">signum</option>
                                 <option value="skalarprodukt">skalarprodukt</option>
                                 <option value="skizziere">skizziere</option>
@@ -13584,25 +13583,6 @@
                                 <option value="äquivalenzumformung">äquivalenzumformung</option>
                                 <option value="überschlagen">überschlagen</option>
                             </select>
-   <select id="networkingSelect" class="form-select mt-2" aria-label="Vernetzungsgrad wählen" onchange="addNetworkingChip(this.value)">
-     <option value="" selected>Alle Vernetzungsgrade</option>
-     <option value="sehr niedrig">sehr niedrig</option>
-     <option value="niedrig">niedrig</option>
-     <option value="normal">normal</option>
-     <option value="hoch">hoch</option>
-     <option value="sehr hoch">sehr hoch</option>
-   </select>
-   
-<select id="difficultySelect" class="form-select mt-2" aria-label="Schwierigkeitsgrad wählen" onchange="addDifficultyChip(this.value)">
-  <option value="" selected>Alle Schwierigkeitsgrade</option>
-  <option value="sehr leicht">sehr leicht</option>
-  <option value="leicht">leicht</option>
-  <option value="mittel">mittel</option>
-  <option value="schwer">schwer</option>
-  <option value="sehr schwer">sehr schwer</option>
-</select>
-
-                            <div id="chipsContainer" class="mt-3"></div>
                         </div>
                     </div>
                 </section>
