@@ -58,21 +58,20 @@ author: Martin Lommatzsch
 
 **Gib** den Wert des Terms **an**.
 
-<br>
+
 
 
 $a)\;\; \text{kgV}(15;35):\text{ggT}(42;91) =$ [[  15 ]]
 
-<br>
+
 
 $b)\;\; \text{ggT}(72;132) \cdot \text{ggT}(105;45) =$ [[  60 ]]
 
-<br>
+
 
 $c)\;\; \text{kgV}\left(\text{ggT}(14;49);\text{ggT}(256;36)\right) =$ [[ 28  ]]
 
-<br>
+
 
 $d)\;\; \text{ggT}\left(\text{kgV}(8;6);\text{kgV}(16;12)\right)  =$ [[ 12  ]]
 
-<br>

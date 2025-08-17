@@ -57,12 +57,11 @@ author: Martin Lommatzsch
 
 **Gib** den Wert des Terms **an**.
 
-<br>
+
 
 $a)\;\; \text{kgV}(4;3):\text{ggT}(25;15) + \text{kgV}(8;6):\text{ggT}(45;55) =$ [[  12 ]]
 
-<br>
+
 
 $b)\;\; \text{ggT}(144;20) \cdot \left( \text{ggT}(400;280;32) + \text{ggT}(256;64;786;152) \right) =$ [[ 40  ]]
 
-<br>

@@ -54,7 +54,7 @@ author: Martin Lommatzsch
 
 **Kreuze** die zutreffenden Antworten auf die Fragen **an**.
 
-<br>
+
 
 <section class="flex-container">
 
@@ -69,9 +69,9 @@ __$a)\;\;$__ Welche der folgenden Zahlen ist durch $2$ teilbar?
 - [[X]] $254$
 - [[X]] $380$
 
-<br>
-<br>
-<br>
+
+
+
 
 </div>
 <div class="flex-child">
@@ -86,9 +86,9 @@ __$b)\;\;$__ Welche der folgenden Zahlen ist durch $5$ teilbar?
 - [[ ]] $674$
 
 
-<br>
-<br>
-<br>
+
+
+
 
 </div>
 
@@ -104,9 +104,9 @@ __$c)\;\;$__ Welche der folgenden Zahlen ist durch $3$ teilbar?
 - [[ ]] $784$
 - [[X]] $681$
 
-<br>
-<br>
-<br>
+
+
+
 
 </div>
 
@@ -122,9 +122,9 @@ __$d)\;\;$__ Welche der folgenden Zahlen ist durch $8$ teilbar?
 - [[ ]] $388$
 - [[ ]] $639$
 
-<br>
-<br>
-<br>
+
+
+
 
 </div>
 
@@ -140,9 +140,9 @@ __$e)\;\;$__ Welche der folgenden Zahlen ist durch $9$ teilbar?
 - [[ ]] $487$
 - [[X]] $1017$
 
-<br>
-<br>
-<br>
+
+
+
 
 </div>
 
@@ -158,16 +158,15 @@ __$f)\;\;$__ Welche der folgenden Zahlen ist durch $4$ teilbar?
 - [[ ]] $326$
 - [[X]] $512$
 
-<br>
-<br>
-<br>
+
+
+
 
 </div>
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

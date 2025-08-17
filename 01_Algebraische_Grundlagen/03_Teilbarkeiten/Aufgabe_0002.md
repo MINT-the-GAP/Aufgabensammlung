@@ -58,7 +58,7 @@ author: Martin Lommatzsch
 
 **Gib** den Wert des Terms **an**.
 
-<br>
+
 
 
 <section class="flex-container">

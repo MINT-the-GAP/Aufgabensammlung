@@ -54,39 +54,38 @@ author: Martin Lommatzsch
 
 **Entscheide**, ob die es sich um einen Teiler $\mid$ oder keinem Teiler $\nmid$ der Zahl handelt.
 
-<br>
+
 
 <section class="flex-container">
 <div class="flex-child">
 __$a)\;\;$__ $8$ [[ ($\mid$) | $\nmid$ ]] $1416$ \
-<br>
+
 </div>
 <div class="flex-child">
 __$b)\;\;$__ $9$ [[ $\mid$ | ($\nmid$) ]] $6707$ \
-<br>
+
 </div>
 <div class="flex-child">
 __$c)\;\;$__ $6$ [[ ($\mid$) | $\nmid$ ]] $8424$ \
-<br>
+
 </div>
 <div class="flex-child">
 __$d)\;\;$__ $10$ [[ ($\mid$) | $\nmid$ ]] $9200$ \
-<br>
+
 </div>
 <div class="flex-child">
 __$e)\;\;$__ $4$ [[ $\mid$ | ($\nmid$) ]] $9846$ \
-<br>
+
 </div>
 <div class="flex-child">
 __$f)\;\;$__ $7$ [[ ($\mid$) | $\nmid$ ]] $7098$ 
-<br>
+
 
 </div>
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

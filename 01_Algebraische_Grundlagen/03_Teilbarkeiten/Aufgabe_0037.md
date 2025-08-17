@@ -54,57 +54,36 @@ author: Martin Lommatzsch
 
 **Gib** den Wert der Quersumme **an**.
 
-<br>
+
 
 <section class="flex-container">
 <div class="flex-child">
 
-__$a)\;\;$__ $75946873$
-
-<br>
---> [[ 49 ]]
-<br>
-<br>
-<br>
+__$a)\;\;$__ $z= 75946873$ \
+$Q(z) =$ [[ 49 ]]
 
 </div>
 <div class="flex-child">
 
-__$b)\;\;$__ $64838390$
-
-<br>
---> [[ 41 ]]
-<br>
-<br>
-<br>
+__$b)\;\;$__ $z= 64838390$ \
+$Q(z) =$ [[ 41 ]]
 
 </div>
 <div class="flex-child">
 
-__$c)\;\;$__ $23758627$
-
-<br>
---> [[ 40 ]]
-<br>
-<br>
-<br>
+__$c)\;\;$__ $z= 23758627$ \
+$Q(z) =$ [[ 40 ]]
 
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ $32950250$
-
-<br>
---> [[ 26 ]]
-<br>
-<br>
-<br>
+__$d)\;\;$__ $z= 32950250$ \
+$Q(z) =$ [[ 26 ]]
 
 </div>
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
