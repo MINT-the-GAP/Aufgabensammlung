@@ -55,7 +55,7 @@ author: Martin Lommatzsch
 
 
 
-<br>
+
 
 <section class="flex-container">
 
@@ -77,11 +77,10 @@ __$d)\;\;$__ $11$ und $-7 \quad$ \
 </div> 
 </section>
 
-<br>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+
+

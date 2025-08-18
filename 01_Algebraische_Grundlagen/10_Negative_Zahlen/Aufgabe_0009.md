@@ -53,32 +53,32 @@ author: Martin Lommatzsch
 
 **Gib** den Wert des Terms **an**.
 
-<br>
+
 <section class="flex-container">
 <div class="flex-child">
 
-<br>
+
 __$a)\;\;$__ $|-9|=$ [[  9   ]]
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ $\text{sgn}(-5)=$ [[  -1  ]]
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$c)\;\;$__ $\text{sgn}(85)=$ [[  +1  ]]
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$d)\;\;$__ $|72|=$ [[  72  ]]
 
 </div>
 </section>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

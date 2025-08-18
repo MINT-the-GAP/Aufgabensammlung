@@ -58,11 +58,11 @@ author: Martin Lommatzsch
 
 # Rechenmauer mit Vorzeichen der Multiplikation
 
-Bestimme die fehlenden Felder der Rechenmauer. Hierbei werden zwei benachbarte Felder miteinander multipliziert und das Produkt in dem Feld darüber eingetragen.
+**Bestimme** die fehlenden Felder der Rechenmauer. Hierbei werden zwei benachbarte Felder miteinander multipliziert und das Produkt in dem Feld darüber eingetragen.
 
 
 
-<br>
+
 
 __$a)\;\;$__
 
@@ -91,7 +91,7 @@ __$a)\;\;$__
 ```
 
 
-<br>
+
 
 __$b)\;\;$__
 
@@ -119,12 +119,11 @@ __$b)\;\;$__
 +--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+                                       
 ```
 
-<br>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+
+
+

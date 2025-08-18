@@ -51,34 +51,34 @@ author: Martin Lommatzsch
 
 # Größenvergleich von ganzen Zahlen
 
-**Entscheide** welches Relationszeichen eine wahre mathematische Aussage darstellt.
+**Entscheide**, welches Relationszeichen eine wahre mathematische Aussage darstellt.
 
-<br>
+
 <section class="flex-container">
 <div class="flex-child">
 
-<br>
+
 __$a)\;\;$__ $-6$ [[($>$)|$=$|$<$]] $-8$ 
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ $-3$ [[$>$|$=$|($<$)]] $3$ 
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$c)\;\;$__ $-15$ [[$>$|($=$)|$<$]] $-|-15|$ 
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$d)\;\;$__ $-1$ [[$>$|$=$|($<$)]] $0$ 
 
 </div>
 </section>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

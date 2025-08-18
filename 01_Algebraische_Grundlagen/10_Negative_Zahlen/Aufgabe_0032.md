@@ -61,7 +61,7 @@ author: Martin Lommatzsch
 
 **Gib** die Stelle der angegebenen Punkte **an**.
 
-<br>
+
 
 <center>
 
@@ -132,28 +132,28 @@ author: Martin Lommatzsch
 
 <section class="flex-container">
 <div class="flex-child">
---> $A($[[ -4  ]]$|$[[  -3 ]]$)$ \
-<br>
+
+$A($[[ -4  ]]$|$[[  -3 ]]$)$ \
+
 </div>
 <div class="flex-child">
 
---> $B($[[  3  ]]$|$[[ -1  ]]$)$ \
-<br>
+$B($[[  3  ]]$|$[[ -1  ]]$)$ \
+
 </div>
 <div class="flex-child">
 
---> [[  F  ]]$( 2 | -5 )$ \
-<br>
+[[  F  ]]$( 2 | -5 )$ \
+
 </div>
 </section>
-<br>
-
-<br>
-<br>
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+
+
+
+
