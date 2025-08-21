@@ -38,9 +38,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Bruchrechnung, sehr leicht, sehr niedrig, Angeben
+tags: Bruchrechnung, Addition, sehr leicht, sehr niedrig, Berechne
 
-comment: Wie viel sind zum Beispiel $\frac{1}{4}$ von 4000€? Bestimme den Anteilswert.
+comment: Addiere verwandte Brüche.
 
 author: Martin Lommatzsch
 
@@ -49,44 +49,115 @@ author: Martin Lommatzsch
 
 
 
-# Anteilsweise mit Bruchanteilen
+# Addition von Brüchen
 
-**Gib** den beschriebenen Anteilswert **an**.
 
-<br>
+
+
+**Berechne** den Wert des Terms.
+
+
 
 <section class="flex-container">
+
 <div class="flex-child">
-<br>
-__$a)\;\;$__ Wie viel sind $\dfrac{1}{7}$ von $84\,$€?  \
-<br>
- [[  12  ]]€
-<br>
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{1}{2} + \dfrac{1}{8} = $ [[  5/8  ]]
+@Algebrite.check(5/8)
+************
+$$
+\begin{align*}
+\dfrac{1}{2} + \dfrac{1}{8} & = \dfrac{1 \cdot 4}{2 \cdot 4} + \dfrac{1}{8}  \\
+ & = \dfrac{4}{8} + \dfrac{1}{8}  \\
+ & = \dfrac{4+1}{8}  \\
+ & = \dfrac{5}{8} \\
+\end{align*}
+$$
+************
 </div>
 <div class="flex-child">
-<br>
-__$b)\;\;$__ Wie viel sind $\dfrac{8}{3}$ von $45\,$min?  \
-<br>
- [[  120  ]]min
-<br>
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{1}{3} + \dfrac{1}{6} = $ [[  1/2  ]]
+@Algebrite.check(1/2)
+************
+$$
+\begin{align*}
+\dfrac{1}{3} + \dfrac{1}{6} & = \dfrac{1 \cdot 2}{3 \cdot 2} + \dfrac{1}{6}  \\
+ & = \dfrac{2}{6} + \dfrac{1}{6}  \\
+ & = \dfrac{2+1}{6}  \\
+ & = \dfrac{3}{6} = \dfrac{1}{2} \\
+\end{align*}
+$$
+************
 </div>
+
 <div class="flex-child">
-<br>
-__$c)\;\;$__ Wie viel sind $\dfrac{3}{5}$ von $8000\,$dm$^2$?  \
-<br>
- [[  4800  ]]dm$^2$
-<br>
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{2}{5} + \dfrac{1}{10} = $ [[  1/2  ]]
+@Algebrite.check(1/2)
+************
+$$
+\begin{align*}
+\dfrac{2}{5} + \dfrac{1}{10} & = \dfrac{2 \cdot 2}{5 \cdot 2} + \dfrac{1}{10}  \\
+ & = \dfrac{4}{10} + \dfrac{1}{10}  \\
+ & = \dfrac{4+1}{10}  \\
+ & = \dfrac{5}{10} = \dfrac{1}{2} \\
+\end{align*}
+$$
+************
 </div>
+
 <div class="flex-child">
-<br>
-__$d)\;\;$__ Wie viel sind $\dfrac{5}{12}$ von $144\,$l?  \
-<br>
- [[  60  ]]l
-<br>
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{3}{4} + \dfrac{1}{8} = $ [[  7/8  ]]
+@Algebrite.check(7/8)
+************
+$$
+\begin{align*}
+\dfrac{3}{4} + \dfrac{1}{8} & = \dfrac{3 \cdot 2}{4 \cdot 2} + \dfrac{1}{8}  \\
+ & = \dfrac{6}{8} + \dfrac{1}{8}  \\
+ & = \dfrac{6+1}{8}  \\
+ & = \dfrac{7}{8} \\
+\end{align*}
+$$
+************
 </div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{5}{6} + \dfrac{1}{12} = $ [[  11/12  ]]
+@Algebrite.check(11/12)
+************
+$$
+\begin{align*}
+\dfrac{5}{6} + \dfrac{1}{12} & = \dfrac{5 \cdot 2}{6 \cdot 2} + \dfrac{1}{12}  \\
+ & = \dfrac{10}{12} + \dfrac{1}{12}  \\
+ & = \dfrac{10+1}{12}  \\
+ & = \dfrac{11}{12} \\
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{7}{10} + \dfrac{1}{5} = $ [[  9/10  ]]
+@Algebrite.check(9/10)
+************
+$$
+\begin{align*}
+\dfrac{7}{10} + \dfrac{1}{5} & = \dfrac{7}{10} + \dfrac{1 \cdot 2}{5 \cdot 2}  \\
+ & = \dfrac{7}{10} + \dfrac{2}{10}  \\
+ & = \dfrac{7+2}{10}  \\
+ & = \dfrac{9}{10} \\
+\end{align*}
+$$
+************
+</div>
+
 </section>
 
-<br>
-<br>
-<br>
+
+
+
 

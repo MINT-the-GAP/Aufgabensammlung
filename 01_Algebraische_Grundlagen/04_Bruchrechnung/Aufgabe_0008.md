@@ -38,9 +38,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Bruchrechnung, Zahlenverständnis, Dezimalzahlen, sehr leicht, sehr niedrig, Angeben
+tags: Bruchrechnung, Zahlenverständnis, leicht, sehr niedrig, Angeben
 
-comment: Eine Summe von Brüchen als Dezimalzahl? Schreib sie nieder.
+comment: Welcher Bruch ist größer?
 
 author: Martin Lommatzsch
 
@@ -49,64 +49,47 @@ author: Martin Lommatzsch
 
 
 
-# Darstellungswechsel vom Bruch zur Dezimalzahl
+# Größe von Brüchen
 
-**Gib** die durch den Term angezeigte Dezimalzahl **an**.
+**Entscheide** welches Relationszeichen eine wahre mathematische Aussage darstellt.
 
-<br>
+
 
 <section class="flex-container">
 <div class="flex-child">
-<br>
-__$a)\;\;$__ $\dfrac{129}{100} \qquad$  \
-<br>
 
- [[  1,29   ]] 
-<br>
+__$a)\;\;$__ $\dfrac{7}{10}$ [[$>$|$=$|($<$)]] $\dfrac{9}{10}$ 
+
 </div>
 <div class="flex-child">
-<br>
-__$b)\;\;$__ $\dfrac{2}{1}+\dfrac{4}{10}+\dfrac{4}{100} \qquad$  \
-<br>
 
- [[  2,44  ]] 
-<br>
+__$b)\;\;$__ $\dfrac{8}{5}$ [[$>$|$=$|($<$)]] $\dfrac{7}{4}$ 
+
 </div>
 <div class="flex-child">
-<br>
-__$c)\;\;$__ $\dfrac{3}{10}+\dfrac{8}{10000} \qquad$  \
-<br>
---> [[  0,3008  ]] 
-<br>
+
+__$c)\;\;$__ $\dfrac{2}{3}$ [[($>$)|$=$|$<$]] $\dfrac{3}{7}$ 
+
 </div>
 <div class="flex-child">
-<br>
-__$d)\;\;$__ $\dfrac{9}{100}+\dfrac{6}{1000}+\dfrac{11}{1} \qquad$  \
-<br>
 
- [[  11,096  ]] 
-<br>
+__$d)\;\;$__ $\dfrac{36}{27}$ [[$>$|($=$)|$<$]] $\dfrac{4}{3}$ 
+
 </div>
 <div class="flex-child">
-<br>
-__$e)\;\;$__ $\dfrac{3}{1}+\dfrac{49}{1000} \qquad$  \
-<br>
 
- [[  3,049   ]] 
-<br>
+__$e)\;\;$__ $\dfrac{17}{20}$ [[($>$)|$=$|$<$]] $\dfrac{7}{8}$ 
+
 </div>
 <div class="flex-child">
-<br>
-__$f)\;\;$__ $\dfrac{7}{1000000} \qquad$  \
-<br>
 
- [[  0,000007 ]] 
+__$f)\;\;$__ $\dfrac{11}{9}$ [[($>$)|$=$|$<$]] $\dfrac{8}{7}$ 
 
-<br>
+
 </div>
 </section>
 
-<br>
-<br>
-<br>
+
+
+
 

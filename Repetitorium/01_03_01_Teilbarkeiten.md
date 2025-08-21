@@ -44,7 +44,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 tags: Erklärung, Teilbarkeiten, kgV, ggT, Teilermengen, Vielfachmengen
 
-comment: In diesem Abschnitt wird das Lösen von Ungleichungen ausführlich erklärt.
+comment: In diesem Abschnitt werden die Teilbarkeitsregeln und deren Anwendungen erklärt.
 
 author: Martin Lommatzsch
 

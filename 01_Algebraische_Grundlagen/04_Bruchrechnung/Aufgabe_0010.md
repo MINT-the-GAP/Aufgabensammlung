@@ -38,9 +38,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Bruchrechnung, sehr leicht, sehr niedrig, Angeben
+tags: Bruchrechnung, Zahlenverständnis, leicht, sehr niedrig, Angeben
 
-comment: Wie viel sind zum Beispiel $\frac{1}{4}$ von 4000€? Bestimme den Anteilswert.
+comment: Welcher Bruch ist größer?
 
 author: Martin Lommatzsch
 
@@ -49,44 +49,46 @@ author: Martin Lommatzsch
 
 
 
-# Anteilsweise mit Bruchanteilen
+# Größe von Brüchen
 
-**Gib** den beschriebenen Anteilswert **an**.
+**Entscheide** welches Relationszeichen eine wahre mathematische Aussage darstellt.\
 
-<br>
 
 <section class="flex-container">
 <div class="flex-child">
-<br>
-__$a)\;\;$__ Wie viel sind $\dfrac{3}{10}$ von $90\,$€?  \
-<br>
- [[  27  ]]€
-<br>
+
+__$a)\;\;$__ $\dfrac{8}{9}$ [[($>$)|$=$|$<$]] $\dfrac{2}{3}$ 
+
 </div>
 <div class="flex-child">
-<br>
-__$b)\;\;$__ Wie viel sind $\dfrac{7}{4}$ von $840\,$kg?  \
-<br>
- [[  147  ]]kg
-<br>
+
+__$b)\;\;$__ $\dfrac{9}{24}$ [[$>$|($=$)|$<$]] $\dfrac{3}{8}$ 
+
 </div>
 <div class="flex-child">
-<br>
-__$c)\;\;$__ Wie viel sind $\dfrac{2}{3}$ von $6\,$m$^3$?  \
-<br>
- [[  4  ]]m$^3$
-<br>
+
+__$c)\;\;$__ $\dfrac{12}{11}$ [[($>$)|$=$|$<$]] $\dfrac{11}{12}$ 
+
 </div>
 <div class="flex-child">
-<br>
-__$d)\;\;$__ Wie viel sind $\dfrac{11}{6}$ von $240\,$l?  \
-<br>
- [[  440  ]]l
-<br>
+
+__$d)\;\;$__ $\dfrac{5}{6}$ [[($>$)|$=$|$<$]] $\dfrac{7}{10}$ 
+
+</div>
+<div class="flex-child">
+
+__$e)\;\;$__ $\dfrac{13}{25}$ [[($>$)|$=$|$<$]] $\dfrac{27}{61}$ 
+
+</div>
+<div class="flex-child">
+
+__$f)\;\;$__ $\dfrac{17}{6}$ [[$>$|$=$|($<$)]] $\dfrac{22}{7}$ 
+
+
 </div>
 </section>
 
-<br>
-<br>
-<br>
+
+
+
 

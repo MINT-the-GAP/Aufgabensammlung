@@ -38,9 +38,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Bruchrechnung, Zahlenverständnis, leicht, sehr niedrig, Angeben
+tags: Bruchrechnung, sehr leicht, sehr niedrig, Angeben
 
-comment: Welcher Bruch ist größer?
+comment: Welcher Nenner und welcher Zähler ist dargestellt?
 
 author: Martin Lommatzsch
 
@@ -49,47 +49,185 @@ author: Martin Lommatzsch
 
 
 
-# Größe von Brüchen
+# Brüche erkennen
 
-**Entscheide** welches Relationszeichen eine wahre mathematische Aussage darstellt.
+**Gib** den Nenner und Zähler des jeweiligen dargestellten Bruchs **an**. (Es ist der jeweilige graue Anteil gefragt.)
 
-<br>
+
 
 <section class="flex-container">
-<div class="flex-child">
-<br>
-__$a)\;\;$__ $\dfrac{5}{8}$ [[$>$|$=$|($<$)]] $\dfrac{3}{4}$ 
-<br>
-</div>
-<div class="flex-child">
-<br>
-__$b)\;\;$__ $\dfrac{9}{7}$ [[($>$)|$=$|$<$]] $\dfrac{8}{9}$ 
-<br>
-</div>
-<div class="flex-child">
-<br>
-__$c)\;\;$__ $\dfrac{15}{60}$ [[$>$|($=$)|$<$]] $\dfrac{3}{12}$ 
-<br>
-</div>
-<div class="flex-child">
-<br>
-__$d)\;\;$__ $\dfrac{5}{9}$ [[$>$|$=$|($<$)]] $\dfrac{4}{7}$ 
-<br>
-</div>
-<div class="flex-child">
-<br>
-__$e)\;\;$__ $\dfrac{12}{5}$ [[$>$|$=$|($<$)]] $\dfrac{11}{4}$ 
-<br>
-</div>
-<div class="flex-child">
-<br>
-__$f)\;\;$__ $\dfrac{7}{11}$ [[($>$)|$=$|$<$]] $\dfrac{5}{9}$ 
 
-<br>
+<div class="flex-child">
+
+__$a)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha31.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  3  ]] \
+Nenner: [[  4  ]] 
+
 </div>
+<div class="flex-child">
+
+__$b)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha32.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  5  ]] \
+Nenner: [[ 12  ]] 
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha33.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  7  ]] \
+Nenner: [[ 16  ]] 
+
+</div>
+<div class="flex-child">
+
+__$d)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha34.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  12 ]] \
+Nenner: [[  16 ]] 
+
+</div>
+<div class="flex-child">
+
+__$e)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha35.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  5  ]] \
+Nenner: [[  6  ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$f)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha36.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  8  ]] \
+Nenner: [[ 16  ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$g)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha37.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  6  ]] \
+Nenner: [[  6  ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$h)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha38.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  2  ]] \
+Nenner: [[  8  ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$i)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha39.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  8  ]] \
+Nenner: [[  12 ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$j)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha40.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  0  ]] \
+Nenner: [[  16 ]] 
+
+</div>
+
 </section>
 
-<br>
-<br>
-<br>
+
+
+
+
+
 

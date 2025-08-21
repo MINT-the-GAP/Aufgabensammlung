@@ -38,9 +38,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Bruchrechnung, Zahlenverständnis, Dezimalzahlen, sehr leicht, sehr niedrig, Angeben
+tags: Bruchrechnung, Zahlenverständnis, sehr leicht, sehr niedrig, Angeben
 
-comment: Eine Summe von Brüchen als Dezimalzahl? Schreib sie nieder.
+comment: Welcher Bruch ist größer?
 
 author: Martin Lommatzsch
 
@@ -49,65 +49,47 @@ author: Martin Lommatzsch
 
 
 
-# Darstellungswechsel vom Bruch zur Dezimalzahl
+# Größe von Brüchen
 
-**Gib** die durch den Term angezeigte Dezimalzahl **an**.
+**Entscheide** welches Relationszeichen eine wahre mathematische Aussage darstellt.
 
-<br>
+
 
 <section class="flex-container">
 <div class="flex-child">
-<br>
-__$a)\;\;$__ $\dfrac{1}{10}+\dfrac{5}{100}+\dfrac{2}{100} \qquad$  \
-<br>
 
- [[  0,152   ]] 
-<br>
+__$a)\;\;$__ $\dfrac{2}{5}$ [[$>$|($=$)|$<$]] $\dfrac{4}{10}$ 
+
 </div>
 <div class="flex-child">
-<br>
-__$b)\;\;$__ $\dfrac{8}{10}+\dfrac{9}{100}+\dfrac{3}{1000}+\dfrac{5}{10000} \qquad$  \
-<br>
 
- [[  0,8935  ]] 
-<br>
+__$b)\;\;$__ $\dfrac{3}{8}$ [[($>$)|$=$|$<$]] $\dfrac{1}{2}$ 
+
 </div>
 <div class="flex-child">
-<br>
-__$c)\;\;$__ $\dfrac{9}{100}+\dfrac{8}{10000} \qquad$  \
-<br>
 
- [[  0,0908  ]] 
-<br>
+__$c)\;\;$__ $\dfrac{5}{15}$ [[$>$|($=$)|$<$]] $\dfrac{2}{6}$ 
+
 </div>
 <div class="flex-child">
-<br>
-__$d)\;\;$__ $\dfrac{7}{1000}+\dfrac{9}{10000} \qquad$  \
-<br>
 
- [[  0,0079  ]] 
-<br>
+__$d)\;\;$__ $\dfrac{5}{3}$ [[($>$)|$=$|$<$]] $\dfrac{7}{4}$ 
+
 </div>
 <div class="flex-child">
-<br>
-__$e)\;\;$__ $\dfrac{7}{1}+\dfrac{15}{1000} \qquad$  \
-<br>
 
- [[  7,015   ]] 
-<br>
+__$e)\;\;$__ $\dfrac{17}{100}$ [[$>$|$=$|($<$)]] $\dfrac{2}{10}$ 
+
 </div>
 <div class="flex-child">
-<br>
-__$f)\;\;$__ $\dfrac{5}{1000}+\dfrac{5}{1000000} \qquad$  \
-<br>
 
- [[  0,005005 ]] 
+__$f)\;\;$__ $\dfrac{7}{6}$ [[$>$|$=$|($<$)]] $\dfrac{4}{3}$ 
 
-<br>
+
 </div>
 </section>
 
-<br>
-<br>
-<br>
+
+
+
 

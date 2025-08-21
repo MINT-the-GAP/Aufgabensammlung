@@ -38,9 +38,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Bruchrechnung, sehr leicht, sehr niedrig, Angeben
+tags: Bruchrechnung, Zahlenverständnis, leicht, sehr niedrig, Angeben
 
-comment: Wie viel sind zum Beispiel $\frac{1}{4}$ von 4000€? Bestimme den Anteilswert.
+comment: Welcher Bruch ist größer?
 
 author: Martin Lommatzsch
 
@@ -49,44 +49,47 @@ author: Martin Lommatzsch
 
 
 
-# Anteilsweise mit Bruchanteilen
+# Größe von Brüchen
 
-**Gib** den beschriebenen Anteilswert **an**.
+**Entscheide** welches Relationszeichen eine wahre mathematische Aussage darstellt.
 
-<br>
+
 
 <section class="flex-container">
 <div class="flex-child">
-<br>
-__$a)\;\;$__ Wie viel sind $\dfrac{4}{5}$ von $2500\,$kg?  \
-<br>
- [[  2000  ]]kg
-<br>
+
+__$a)\;\;$__ $\dfrac{5}{8}$ [[$>$|$=$|($<$)]] $\dfrac{3}{4}$ 
+
 </div>
 <div class="flex-child">
-<br>
-__$b)\;\;$__ Wie viel sind $\dfrac{5}{9}$ von $180\,$cm?  \
-<br>
- [[  100  ]]cm
-<br>
+
+__$b)\;\;$__ $\dfrac{9}{7}$ [[($>$)|$=$|$<$]] $\dfrac{8}{9}$ 
+
 </div>
 <div class="flex-child">
-<br>
-__$c)\;\;$__ Wie viel sind $\dfrac{1}{4}$ von $300\,$min?  \
-<br>
- [[  75  ]]min
-<br>
+
+__$c)\;\;$__ $\dfrac{15}{60}$ [[$>$|($=$)|$<$]] $\dfrac{3}{12}$ 
+
 </div>
 <div class="flex-child">
-<br>
-__$d)\;\;$__ Wie viel sind $\dfrac{6}{7}$ von $42\,$m?  \
-<br>
- [[  36  ]]m
-<br>
+
+__$d)\;\;$__ $\dfrac{5}{9}$ [[$>$|$=$|($<$)]] $\dfrac{4}{7}$ 
+
+</div>
+<div class="flex-child">
+
+__$e)\;\;$__ $\dfrac{12}{5}$ [[$>$|$=$|($<$)]] $\dfrac{11}{4}$ 
+
+</div>
+<div class="flex-child">
+
+__$f)\;\;$__ $\dfrac{7}{11}$ [[($>$)|$=$|$<$]] $\dfrac{5}{9}$ 
+
+
 </div>
 </section>
 
-<br>
-<br>
-<br>
+
+
+
 

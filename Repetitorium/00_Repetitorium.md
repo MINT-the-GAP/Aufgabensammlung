@@ -2568,6 +2568,7 @@ data-solution-button="5"-->
 
 \end{tikzpicture} 
 
+
 ```
 </center>
 
@@ -9433,6 +9434,409 @@ $b)\;\; \text{ggT}\left(\text{kgV}(8;7);84;105\right) + \text{ggT}\left(\text{kg
 ### Bruchrechnung
 
 
+
+
+
+
+{{|>}} Ein *Bruch* setzt sich aus seinem *Nenner*, der definiert in wie viele gleichgroße Teile ein Ganzes unterteilt wird, und den *Zähler*, der beschreibt wie viele Teile vom *Nenner* tatsächlich vorzufinden sind ($\text{Bruch} = \frac{\text{Zähler}}{\text{Nenner}}$). Sprachlich lässt sich der *Bruch* von den Bruchteil zurückführen, welcher eine Anteil von etwas beschreibt und am besten geometrisch veranschaulicht werden kann: 
+
+
+<center>
+
+```latex  @tikz
+
+\begin{tikzpicture}[scale=1,>=latex]
+
+\begin{scope}[xshift=0cm]
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); 
+\foreach \n in {90,180,270,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
+\draw[thick] (0,0) circle (1cm);  
+\end{scope}
+ 
+
+\begin{scope}[xshift=6cm]
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:300:1) -- (0,0); 
+\foreach \n in {60,120,...,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:60:1) -- (0,0); } 
+\draw[thick] (0,0) circle (1cm);  
+\end{scope}
+ 
+
+\end{tikzpicture}
+
+```
+</center>
+
+
+{{|>}} Hierbei ist im linken Teil der Abbildung ein Viertel vom gesamten *Kreis* markiert, was daran erkannt werden kann, dass der *Kreis* in vier Teile unterteilt wurde und dabei ein Teil eingefärbt wurde. Im rechten Teil der Abbildung gibt es eine Unterteilung in sechs Stücke von denen fünf markiert sind. 
+
+
+
+{{|>}} Mittels *Brüchen* kann man die gleiche Zahl auf verschiedene Arten darstellen, so ist $\frac{1}{2}$ das Gleiche wie $\frac{2}{4}$. Wenn der *Nenner* erhöht wird spricht man vom *Erweitern*. Bei einer Verkleinerung des *Nenners* wird vom *Kürzen* gesprochen. 
+Dabei muss beachtet werden, dass der *Bruchstrich* nichts weiter als ein *Divisionsoperator* darstellt:
+
+
+$$
+\begin{align*}
+& 3 : 4 = \frac{3}{4} \;\; .  \\
+\end{align*}
+$$
+
+
+{{|>}} Beim *Erweitern* werden *Zähler* und *Nenner* mit der Zahl *multipliziert* mit der man den *Bruch* *erweitern* möchte. Im folgenden Beispiel wird der *Bruch* im ersten Schritt mit zwei und danach mit vier *erweitert*. 
+
+
+$$
+\begin{align*}
+& \quad \frac{1}{2} = \frac{2}{4} = \frac{8}{16}   \\
+\end{align*}
+$$
+ 
+
+<center>
+
+```latex  @tikz
+\begin{tikzpicture}[scale=1,>=latex]
+
+\begin{scope}[xshift=0cm]
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (-90:1)  arc (-90:90:1) -- (0,0); 
+\foreach \n in {180,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (-90:1)  arc (-90:90:1) -- (0,0); } 
+\draw[thick] (0,0) circle (1cm); 
+\node at (1.5,0) {$=$};	
+\end{scope}
+
+\begin{scope}[xshift=3cm]
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (-90:1)  arc (-90:90:1) -- (0,0); 
+\foreach \n in {90,180,270,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (-90:1)  arc (-90:90:1) -- (0,0); } 
+\draw[thick] (0,0) circle (1cm); 
+\node at (1.5,0) {$=$};	
+\end{scope}
+
+\begin{scope}[xshift=6cm]
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (-90:1)  arc (-90:90:1) -- (0,0); 
+\foreach \n in {45,90,...,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (-90:1)  arc (-90:90:1) -- (0,0); } 
+\draw[thick] (0,0) circle (1cm);  
+\end{scope}
+ 
+
+\end{tikzpicture}
+
+```
+</center>
+
+
+
+
+{{|>}} Beim *Kürzen* werden *Zähler* und *Nenner* durch die Zahl *dividiert* mit der man den *Bruch* *kürzen* möchte. Im folgenden Beispiel wird der *Bruch* im ersten Schritt mit zwei und danach mit acht *erweitert*. 
+
+ 
+
+$$
+\begin{align*}
+& \quad \frac{6}{18} = \frac{2}{6} =  \frac{1}{3}   \\
+\end{align*}
+$$
+ 
+
+ 
+
+<center>
+
+```latex  @tikz
+\begin{tikzpicture}[scale=1,>=latex]
+
+\begin{scope}[xshift=0cm]
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:120:1) -- (0,0); 
+\foreach \n in {120,240,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:120:1) -- (0,0); } 
+\draw[thick] (0,0) circle (1cm); 
+\end{scope}
+
+\begin{scope}[xshift=-3cm]
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:120:1) -- (0,0); 
+\foreach \n in {60,120,...,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:120:1) -- (0,0); } 
+\draw[thick] (0,0) circle (1cm); 
+\node at (1.5,0) {$=$};	
+\end{scope}
+
+\begin{scope}[xshift=-6cm]
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:120:1) -- (0,0); 
+\foreach \n in {20,40,...,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:120:1) -- (0,0); } 
+\draw[thick] (0,0) circle (1cm); 
+\node at (1.5,0) {$=$};	 
+\end{scope}
+ 
+
+\end{tikzpicture}
+
+```
+</center>
+
+
+{{|>}} Bei der *Addition* beziehungsweise der *Subtraktion* von *Brüchen* müssen die *Nenner* der beteiligten *Brüche* so *erweitert* oder *gekürzt* werden, dass sie gleich sind. Dann können die *Zähler* verrechnet werden. Um immer einen gemeinsamen *Nenner* zu finden, kann man den ersten *Bruch* mit dem *Nenner* des zweiten *Bruch* und den zweiten *Bruch* mit dem *Nenner* des ersten *Bruchs* *erweitern* (wie im Subtraktionsbeispiel gezeigt) oder der *Nenner* auf das *kleinste gemeinsame Vielfache* gebracht.
+
+ 
+
+
+$$
+\begin{align*}
+& \quad \frac{1}{4} + \frac{1}{2}  = \frac{1}{4} + \frac{1 \cdot 2}{2 \cdot 2} =  \frac{1}{4} + \frac{2}{4} = \frac{1+2}{4} = \frac{3}{4}  \;\;\;\\ 
+\end{align*}
+$$
+
+
+<center>
+
+```latex  @tikz
+\begin{tikzpicture}[scale=1,>=latex]
+
+\begin{scope}[xshift=0cm]
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); 
+\foreach \n in {90,180,270,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
+\draw[thick] (0,0) circle (1cm); 
+\node at (1.5,0) {$+$};	
+\end{scope}
+
+\begin{scope}[xshift=3cm]
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:-180:1) -- (0,0); 
+\foreach \n in {180,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:180:1) -- (0,0); } 
+\draw[thick] (0,0) circle (1cm); 
+\node at (1.5,0) {$=$};	
+\end{scope}
+ 
+
+\begin{scope}[xshift=6cm]
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); 
+\foreach \n in {90,180,270,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
+\draw[thick] (0,0) circle (1cm); 
+\node at (1.5,0) {$+$};	
+\end{scope}
+
+\begin{scope}[xshift=9cm]
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:-180:1) -- (0,0); 
+\foreach \n in {90,180,270,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
+\draw[thick] (0,0) circle (1cm); 
+\node at (1.5,0) {$=$};	
+\end{scope}
+
+\begin{scope}[xshift=12cm]
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); 
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:-180:1) -- (0,0); 
+\foreach \n in {90,180,270,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
+\draw[thick] (0,0) circle (1cm);  
+\end{scope}
+ 
+ 
+
+\end{tikzpicture}
+
+```
+</center>
+
+
+
+$$
+\begin{align*}
+& \quad \frac{3}{4} - \frac{1}{6}  = \frac{3\cdot 6 }{4\cdot 6 } - \frac{1\cdot 4}{6\cdot 4}  =  \frac{18}{24} - \frac{4}{24} = \frac{18-4}{24} = \frac{14}{24} = \frac{7}{12}   \\
+& \quad \frac{3}{4} - \frac{1}{6}  = \frac{3\cdot 3 }{4\cdot 3 } - \frac{1\cdot 2}{6\cdot 2}  =  \frac{9}{12} - \frac{2}{12} = \frac{9-2}{12} =  \frac{7}{12}   \\
+\end{align*}
+$$
+
+
+ 
+
+
+
+<center>
+
+```latex  @tikz
+\begin{tikzpicture}[scale=1,>=latex]
+
+\begin{scope}[xshift=0cm]
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); 
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:-180:1) -- (0,0); 
+\foreach \n in {90,180,270,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
+\draw[thick] (0,0) circle (1cm);  
+\node at (1.5,0) {$-$};	
+\end{scope} 
+
+\begin{scope}[xshift=3cm]
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (180:1)  arc (180:240:1) -- (0,0); 
+\foreach \n in {60,120,...,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:120:1) -- (0,0); } 
+\draw[thick] (0,0) circle (1cm); 
+\node at (1.5,0) {$=$};	 
+\end{scope} 
+
+\begin{scope}[xshift=6cm]
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); 
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:-180:1) -- (0,0); 
+\foreach \n in {30,60,...,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:30:1) -- (0,0); } 
+\draw[thick] (0,0) circle (1cm);  
+\node at (1.5,0) {$-$};	
+\end{scope} 
+
+\begin{scope}[xshift=9cm]
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (180:1)  arc (180:240:1) -- (0,0); 
+\foreach \n in {30,60,...,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:30:1) -- (0,0); } 
+\draw[thick] (0,0) circle (1cm); 
+\node at (1.5,0) {$=$};	 
+\end{scope} 
+ 
+
+\begin{scope}[xshift=12cm]
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (240:1)  arc (240:450:1) -- (0,0); 
+\foreach \n in {30,60,...,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:30:1) -- (0,0); } 
+\draw[thick] (0,0) circle (1cm);  
+\end{scope} 
+
+\end{tikzpicture}
+
+```
+</center>
+
+
+
+{{|>}} Bei der *Multiplikation* von *Brüchen*, werden die *Nenner* miteinander *multipliziert* und bilden so den neuen *Nenner*. Auch die *Zähler* werden miteinander *multipliziert*.
+
+
+
+$$
+\begin{align*}
+& \quad \frac{1}{4} \cdot \frac{1}{2}  =   \frac{1 \cdot 1}{4 \cdot 2} = \frac{1}{8}  \;\;\;\\
+\end{align*}
+$$
+
+
+{{|>}} Am besten kann die *Multiplikation* von *Brüchen* daran veranschaulicht werden, dass zuvor immer von einem *Ganzen* der Bruchteil bestimmt wurde, während bei der *Multiplikation* von zwei *Brüchen* der *Anteil* von einem *Anteil* bestimmt werden soll.
+
+
+<center>
+
+```latex  @tikz
+\begin{tikzpicture}[scale=1,>=latex]
+
+\begin{scope}[xshift=-3.5cm]
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:180:1) -- (0,0);  
+\foreach \n in {0,180} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:180:1) -- (0,0); } 
+\draw[thick] (0,0) circle (1cm);  
+\node at (0,-1.66666) {$\dfrac{1}{2}$};	
+\node at (1.75,0) {$\longrightarrow$};	
+\end{scope}  
+
+\begin{scope}[xshift=0cm]
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:180:1) -- (0,0);  
+\foreach \n in {90} { \draw[opacity=0.5,rotate=\n-90] (0,0) -- (0:1)  arc (0:180:1) -- (0,0); }  
+\node at (0,-1.66666) {$\dfrac{1}{2}$};	
+\node at (1.75,0) {$\longrightarrow$};	
+\end{scope}  
+
+\begin{scope}[xshift=3.5cm]
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:180:1) -- (0,0);  
+\foreach \n in {90,180} { \draw[opacity=0.5,rotate=\n-90] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
+\foreach \n in {45,90,135} { \draw[opacity=0.5,rotate=\n,dashed] (0,0) -- (0:1)  arc (0:45:1) -- (0,0); }   
+\node at (0,-1.66666) {$\dfrac{4}{8}$ };	
+\node at (1.75,0) {$\longrightarrow$};	
+\end{scope}  
+
+\begin{scope}[xshift=7cm]
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:45:1) -- (0,0);  
+\foreach \n in {90,180} { \draw[opacity=0.5,rotate=\n-90] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
+\foreach \n in {45,90,135} { \draw[opacity=0.5,rotate=\n,dashed] (0,0) -- (0:1)  arc (0:45:1) -- (0,0); }   
+\node at (0,-1.66666) {$\dfrac{1}{4}$ von $\dfrac{4}{8}$ };	
+\node at (1.75,0) {$\longrightarrow$};	
+\end{scope}  
+
+\begin{scope}[xshift=10.5cm]
+\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:45:1) -- (0,0);  
+\foreach \n in {90,180,270,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
+\foreach \n in {45,90,135} { \draw[opacity=0.5,rotate=\n,dashed] (0,0) -- (0:1)  arc (0:45:1) -- (0,0); }  
+\draw[thick] (0,0) circle (1cm);  
+\node at (0,-1.66666) {$\dfrac{1}{4}$ von $\dfrac{1}{2} = \dfrac{1}{8}$ };	 
+\end{scope}  
+
+
+
+\end{tikzpicture}
+
+```
+</center>
+
+
+{{|>}} Bei der *Division* muss man mit dem *Kehrwert*, also der Vertauschung von *Nenner* und *Zähler* des *Divisors*, *multiplizieren*. Durch die Fragestellung "`Wie oft passt $\frac{1}{2}$ in die Zwei?"' wird bei der bereits bekannten Antwort auf die Frage die zugrunde liegende Rechnung deutlich.
+
+ 
+$$
+\begin{align*}
+& \quad 2 : \frac{1}{2}  =  \frac{2}{1} : \frac{1}{2}  =  \frac{2}{1} \cdot \frac{2}{1}  =  \frac{2 \cdot 2}{1 \cdot 1} = \frac{4}{1} = 4  \;\;\;\\
+& \quad \frac{1}{4} : \frac{1}{2}  =  \frac{1}{4} \cdot \frac{2}{1}  =  \frac{1 \cdot 2}{4 \cdot 1} = \frac{2}{4} = \frac{1}{2}  \;\;\;\\
+\end{align*}
+$$
+
+
+
+{{|>}} Ferner gilt bei Berücksichtigung von *Parametern* oder *Variablen*:
+
+ 
+$$
+\begin{align*}
+\frac{a}{b}  &= \frac{a  }{b  } \cdot 1 = \frac{a  }{b  }  \cdot \frac{n}{n} = \frac{a \cdot n}{ b  \cdot n} \quad\qquad\quad\;\;  \text{Erweitern} \\
+\frac{a \cdot n}{ b  \cdot n} &= \frac{a  }{b  }  \cdot \frac{n}{n} = \frac{a  }{b  } \cdot 1  = \frac{a}{b}  \quad\qquad\qquad\;\;\; \text{Kürzen} \\
+\frac{a}{b} + \frac{c}{d} &= \frac{a \cdot d}{b \cdot d} + \frac{c \cdot b}{d \cdot b} = \frac{a \cdot d + c \cdot  b}{ d  \cdot b} \quad\quad\, \text{Addition} \\
+\frac{a}{b} - \frac{c}{d} &= \frac{a \cdot d}{b \cdot d} - \frac{c \cdot b}{d \cdot b} = \frac{a \cdot d - c \cdot  b}{ d  \cdot b} \quad\quad\, \text{Subtraktion} \\
+\frac{a}{b} \cdot \frac{c}{d} &= \frac{a \cdot c }{ d \cdot b} \quad\qquad\qquad\qquad\qquad\qquad \text{Multiplikation} \\
+\frac{a}{b} : \frac{c}{d} &= \frac{a}{b} \cdot \frac{d}{c} = \frac{a \cdot d }{ c \cdot b} \quad\qquad\qquad\qquad\;\;\; \text{Division} \\
+\end{align*}
+$$
+
+
+
+{{|>}} Im den folgenden Abschnitten wird der Malpunkt zwischen einer Zahl und einem *Parameter* beziehungsweise einer *Variablen* oder zwischen *Parametern* beziehungsweise *Variablen* selbst nicht mehr notiert, es sei denn dieser ist zum Verständnis von besonderer Bedeutung. Aus diesem Grund soll auch auf die Schreibweise für *gemischte Brüche* vollständig verzichtet werden, da in dieser Schreibweise $\frac{13}{6} = 2 \frac{1}{6} = 2 + \frac{1}{6}$ das *Additionszeichen* eingespart wird. Sobald das *Multiplikationszeichen* durch eine Konvention im Unterricht fallen gelassen wird, würde es zu Verwirrungen und Missverständnissen kommen, sodass entweder $2 \frac{1}{6} = 2 + \frac{1}{6}$  oder $2 \frac{1}{6} = 2 \cdot \frac{1}{6}$ gilt. Ein *Bruch* der in einen *gemischten Bruc*h (*gemischte Zahl*) überführt werden kann wird auch *unechter Bruch* genannt. Dieses Buch orientiert sich an der Konvention, welche in der höheren Mathematik verwendet wird. Deswegen sollte auf die Schreibweise von *gemischten Brüchen* vollständig verzichtet werden und ausschließlich nur eine einzige Konvention - die des Weglassens des *Multiplikationsoperators* - verwendet werden.
+
+
+
+
+
+{{|>}} Da es auch zu sogenannten *Doppelbrüchen* kommen kann, sollte der Umgang hiermit geschult werden. Hierbei werden lediglich die unterschiedlichen Schreibweisen des *Divisionsoperators* ausgenutzt, sodass sich Regeln für die *Doppelbrüche* offenbaren. 
+
+
+$$
+\begin{align*}
+\dfrac{\left(\dfrac{a}{b}\right)}{\left(\dfrac{c}{d}\right)} & = \dfrac{a}{b}: \dfrac{c}{d} = \dfrac{a}{b} \cdot  \dfrac{d}{c}  =   \dfrac{a \cdot d}{b \cdot c}  \\
+\end{align*}
+$$
+
+
+{{|>}} Aus dem Beispiel geht hervor, dass der *Nenner* des *Zählerbruchs* $b$ insgesamt in den *Nenner* rutscht, während der *Zähler* des *Nennerbruchs* $c$ im *Nenner* bleibt, wohingegen der *Nenner* des *Nennerbruchs* $d$ in den *Zähler* wandert. Dieses Verhalten lässt sich noch weiter verallgemeinern, wenn *Mehrfachbrüche* betrachtet werden. Hierbei sind die *Klammern* lediglich um zu verdeutlichen, welcher *Bruchstrich* mehr Gewichtung besitzt. Es ist nicht nötig bei *Doppelbrüchen* mit *Klammern* zu agieren, allerdings sollte für die Übersicht dennoch manchmal nicht auf Klammern verzichtet werden. 
+
+
+
+$$
+\begin{align*}
+\dfrac{\left[\dfrac{  \left(\dfrac{a}{b}\right)  }{  \left(\dfrac{c}{d}\right)  }\right]}{\left[\dfrac{ \left(\dfrac{e}{f}\right)   }{  \left(\dfrac{g}{h}\right)  }\right]} & = \left[ \dfrac{ \left( \dfrac{a}{b}\right)  }{  \left(\dfrac{c}{d}\right)  } \right]:  \left[\dfrac{ \left(\dfrac{e}{f}\right)   }{  \left(\dfrac{g}{h}\right)  }\right]=    \left[\dfrac{a}{b}   :  \dfrac{c}{d}\right]    :  \left[ \dfrac{e}{f}  :  \dfrac{g}{h} \right] =    \left[\dfrac{a}{b}   \cdot  \dfrac{d}{c}\right]    :  \left[ \dfrac{e}{f}   \cdot  \dfrac{h}{g} \right] \\
+&=    \dfrac{a \cdot d}{b \cdot c}      :  \dfrac{e \cdot h}{f \cdot g}  =    \dfrac{a \cdot d}{b \cdot c}      \cdot   \dfrac{f \cdot g}{e \cdot h}       =    \dfrac{a \cdot d  \cdot f \cdot g}{b \cdot c  \cdot e \cdot h}      \\
+\end{align*}
+$$
+
+
+
+{{|>}} Es wird deutlich, dass *Parameter* die in einer geraden Anzahl im *Nenner* vorkommen in der eleganteren Endschreibweise im *Zähler* zu finden sind, während die ungerade Anzahl von *Nennerpositionen* eine Endposition im *Nenner* ergibt. (Beispiele hierzu: $h$ befindet sich im Hauptbruch im *Nenner*, im ersten Nebenbruch im *Nenner* und diesem *Bruch* auch im *Nenner*, sodass $h$ drei *Nennerpositionen* besitzt und somit auch im *Nenner* bleibt. $d$ befindet sich im Hauptbruch im *Zähler*, anschließend im *Nenner* und dort wiederum im *Nenner*, sodass zwei *Nennerpositionen* gezählt werden können und somit $d$ die Endposition im *Zähler* besitzt.) 
+
+
+
+{{|>}} Zur *Bruchrechnung* ist anzumerken, dass es nicht möglich ist durch die Zahl Null zu *dividieren*. Diese *Rechenoperation* würde jeder Logik widersprechen und ist damit in der Mathematik nicht vorgesehen. Es existieren Beschreibungen, welche sich damit beschäftigen was in der unmittelbaren Umgebung dieser nicht definierten *Rechenoperation* geschieht und welche im Abschnitt "*Grenzwerte*" und "*Komplexe Zahlen*" vorgestellt werden. 
+
+
+
+
+ 
+
+
+
+
+
+
+
+Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:  \
+
+
 !?[Bruchrechnung](https://www.youtube.com/watch?v=E0jIuLBRPBg)
 
 
@@ -9440,18 +9844,4020 @@ $b)\;\; \text{ggT}\left(\text{kgV}(8;7);84;105\right) + \text{ggT}\left(\text{kg
 #### Übungen - Bruchrechnung
 
 
+<!--  Bruchrechnung 0001  -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 1:__ 
+__Aufgabe 1:__ **Gib** den Nenner und Zähler des jeweiligen dargestellten Bruchs **an**. (Es ist der jeweilige graue Anteil gefragt.)
 
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha1.png)
+
+</center>
 
 <!-- data-solution-button="5"-->
+Zähler: [[  1  ]] \
+Nenner: [[  4  ]] 
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha2.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  4  ]] \
+Nenner: [[  16 ]] 
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha3.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  6  ]] \
+Nenner: [[ 16  ]] 
+
+</div>
+<div class="flex-child">
+
+__$d)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha4.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  8  ]] \
+Nenner: [[  16 ]] 
+
+</div>
+<div class="flex-child">
+
+__$e)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha5.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  12 ]] \
+Nenner: [[  16 ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$f)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha6.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  4  ]] \
+Nenner: [[ 16  ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$g)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha7.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  1  ]] \
+Nenner: [[  3  ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$h)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha8.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  2  ]] \
+Nenner: [[  9  ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$i)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha9.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  16 ]] \
+Nenner: [[  32 ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$j)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha10.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  3  ]] \
+Nenner: [[  6  ]] 
+
+</div>
+
+</section>
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0002  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 2:__ **Gib** den Nenner und Zähler des jeweiligen dargestellten Bruchs **an**. (Es ist der jeweilige graue Anteil gefragt.)
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha11.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  4  ]] \
+Nenner: [[  8  ]] 
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha12.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  1  ]] \
+Nenner: [[  8  ]] 
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha13.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  5  ]] \
+Nenner: [[ 16  ]] 
+
+</div>
+<div class="flex-child">
+
+__$d)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha14.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  1  ]] \
+Nenner: [[  1  ]] 
+
+</div>
+<div class="flex-child">
+
+__$e)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha15.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  2  ]] \
+Nenner: [[  3  ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$f)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha16.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[ 13  ]] \
+Nenner: [[ 16  ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$g)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha17.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  0  ]] \
+Nenner: [[  1  ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$h)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha18.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  5  ]] \
+Nenner: [[  8  ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$i)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha19.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  5  ]] \
+Nenner: [[  12 ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$j)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha20.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  1  ]] \
+Nenner: [[  16 ]] 
+
+</div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0003  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 3:__ **Gib** den Nenner und Zähler des jeweiligen dargestellten Bruchs **an**. (Es ist der jeweilige graue Anteil gefragt.)
+
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha21.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[ 18  ]] \
+Nenner: [[ 64  ]] 
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha22.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  4  ]] \
+Nenner: [[  9  ]] 
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha23.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[ 10  ]] \
+Nenner: [[ 36  ]] 
+
+</div>
+<div class="flex-child">
+
+__$d)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha24.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  4  ]] \
+Nenner: [[  12 ]] 
+
+</div>
+<div class="flex-child">
+
+__$e)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha25.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  16 ]] \
+Nenner: [[  64 ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$f)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha26.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  6  ]] \
+Nenner: [[ 24  ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$g)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha27.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  1  ]] \
+Nenner: [[  6  ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$h)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha28.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  6  ]] \
+Nenner: [[ 18  ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$i)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha29.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  10 ]] \
+Nenner: [[  32 ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$j)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha30.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  9  ]] \
+Nenner: [[  12 ]] 
+
+</div>
+
+</section>
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0004  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 4:__ **Gib** den Nenner und Zähler des jeweiligen dargestellten Bruchs **an**. (Es ist der jeweilige graue Anteil gefragt.)
+
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha31.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  3  ]] \
+Nenner: [[  4  ]] 
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha32.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  5  ]] \
+Nenner: [[ 12  ]] 
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha33.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  7  ]] \
+Nenner: [[ 16  ]] 
+
+</div>
+<div class="flex-child">
+
+__$d)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha34.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  12 ]] \
+Nenner: [[  16 ]] 
+
+</div>
+<div class="flex-child">
+
+__$e)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha35.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  5  ]] \
+Nenner: [[  6  ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$f)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha36.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  8  ]] \
+Nenner: [[ 16  ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$g)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha37.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  6  ]] \
+Nenner: [[  6  ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$h)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha38.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  2  ]] \
+Nenner: [[  8  ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$i)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha39.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  8  ]] \
+Nenner: [[  12 ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$j)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](Kap2/brucha40.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  0  ]] \
+Nenner: [[  16 ]] 
+
+</div>
+
+</section>
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0005  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 5:__ **Gib** den Nenner und Zähler des jeweiligen dargestellten Bruchs **an**. (Es ist der jeweilige graue Anteil gefragt.)
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__
+
+<center>
+
+<!-- style="width:400px" -->
+![](Kap2/brucha41.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  3  ]] \
+Nenner: [[  8  ]] 
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__
+
+<center>
+
+<!-- style="width:400px" -->
+![](Kap2/brucha42.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  1  ]] \
+Nenner: [[  2  ]] 
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__
+
+<center>
+
+<!-- style="width:400px" -->
+![](Kap2/brucha43.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  1  ]] \
+Nenner: [[  4  ]] 
+
+</div>
+<div class="flex-child">
+
+__$d)\;\;$__
+
+<center>
+
+<!-- style="width:400px" -->
+![](Kap2/brucha44.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  5  ]] \
+Nenner: [[  8  ]] 
+
+</div>
+<div class="flex-child">
+
+__$e)\;\;$__
+
+<center>
+
+<!-- style="width:400px" -->
+![](Kap2/brucha45.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  7  ]] \
+Nenner: [[ 16  ]] 
+
+</div>
+
+<div class="flex-child">
+
+__$f)\;\;$__
+
+<center>
+
+<!-- style="width:400px" -->
+![](Kap2/brucha46.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+Zähler: [[  1  ]] \
+Nenner: [[  8  ]] 
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0006  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 6:__ **Entscheide** welches Relationszeichen eine wahre mathematische Aussage darstellt.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+__$a)\;\;$__ $\dfrac{1}{5}$ [[$>$|$=$|($<$)]] $\dfrac{1}{3}$ 
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__ $\dfrac{5}{10}$ [[$>$|($=$)|$<$]] $\dfrac{1}{2}$ 
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ $\dfrac{4}{7}$ [[($>$)|$=$|$<$]] $\dfrac{3}{7}$ 
+
+</div>
+<div class="flex-child">
+
+__$d)\;\;$__ $\dfrac{3}{4}$ [[($>$)|$=$|$<$]] $\dfrac{4}{8}$ 
+
+</div>
+<div class="flex-child">
+
+__$e)\;\;$__ $\dfrac{3}{20}$ [[$>$|$=$|($<$)]] $\dfrac{3}{8}$ 
+
+</div>
+<div class="flex-child">
+
+__$f)\;\;$__ $\dfrac{9}{8}$ [[($>$)|$=$|$<$]] $\dfrac{7}{7}$ 
+
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0007  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 7:__ **Entscheide** welches Relationszeichen eine wahre mathematische Aussage darstellt.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+__$a)\;\;$__ $\dfrac{2}{5}$ [[$>$|($=$)|$<$]] $\dfrac{4}{10}$ 
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__ $\dfrac{3}{8}$ [[($>$)|$=$|$<$]] $\dfrac{1}{2}$ 
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ $\dfrac{5}{15}$ [[$>$|($=$)|$<$]] $\dfrac{2}{6}$ 
+
+</div>
+<div class="flex-child">
+
+__$d)\;\;$__ $\dfrac{5}{3}$ [[($>$)|$=$|$<$]] $\dfrac{7}{4}$ 
+
+</div>
+<div class="flex-child">
+
+__$e)\;\;$__ $\dfrac{17}{100}$ [[$>$|$=$|($<$)]] $\dfrac{2}{10}$ 
+
+</div>
+<div class="flex-child">
+
+__$f)\;\;$__ $\dfrac{7}{6}$ [[$>$|$=$|($<$)]] $\dfrac{4}{3}$ 
+
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0008  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 8:__ **Entscheide** welches Relationszeichen eine wahre mathematische Aussage darstellt.
+
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+__$a)\;\;$__ $\dfrac{7}{10}$ [[$>$|$=$|($<$)]] $\dfrac{9}{10}$ 
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__ $\dfrac{8}{5}$ [[$>$|$=$|($<$)]] $\dfrac{7}{4}$ 
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ $\dfrac{2}{3}$ [[($>$)|$=$|$<$]] $\dfrac{3}{7}$ 
+
+</div>
+<div class="flex-child">
+
+__$d)\;\;$__ $\dfrac{36}{27}$ [[$>$|($=$)|$<$]] $\dfrac{4}{3}$ 
+
+</div>
+<div class="flex-child">
+
+__$e)\;\;$__ $\dfrac{17}{20}$ [[($>$)|$=$|$<$]] $\dfrac{7}{8}$ 
+
+</div>
+<div class="flex-child">
+
+__$f)\;\;$__ $\dfrac{11}{9}$ [[($>$)|$=$|$<$]] $\dfrac{8}{7}$ 
+
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0009  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 9:__ **Entscheide** welches Relationszeichen eine wahre mathematische Aussage darstellt.
+
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+__$a)\;\;$__ $\dfrac{5}{8}$ [[$>$|$=$|($<$)]] $\dfrac{3}{4}$ 
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__ $\dfrac{9}{7}$ [[($>$)|$=$|$<$]] $\dfrac{8}{9}$ 
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ $\dfrac{15}{60}$ [[$>$|($=$)|$<$]] $\dfrac{3}{12}$ 
+
+</div>
+<div class="flex-child">
+
+__$d)\;\;$__ $\dfrac{5}{9}$ [[$>$|$=$|($<$)]] $\dfrac{4}{7}$ 
+
+</div>
+<div class="flex-child">
+
+__$e)\;\;$__ $\dfrac{12}{5}$ [[$>$|$=$|($<$)]] $\dfrac{11}{4}$ 
+
+</div>
+<div class="flex-child">
+
+__$f)\;\;$__ $\dfrac{7}{11}$ [[($>$)|$=$|$<$]] $\dfrac{5}{9}$ 
+
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0010  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 10:__ **Entscheide** welches Relationszeichen eine wahre mathematische Aussage darstellt.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+__$a)\;\;$__ $\dfrac{8}{9}$ [[($>$)|$=$|$<$]] $\dfrac{2}{3}$ 
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__ $\dfrac{9}{24}$ [[$>$|($=$)|$<$]] $\dfrac{3}{8}$ 
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ $\dfrac{12}{11}$ [[($>$)|$=$|$<$]] $\dfrac{11}{12}$ 
+
+</div>
+<div class="flex-child">
+
+__$d)\;\;$__ $\dfrac{5}{6}$ [[($>$)|$=$|$<$]] $\dfrac{7}{10}$ 
+
+</div>
+<div class="flex-child">
+
+__$e)\;\;$__ $\dfrac{13}{25}$ [[($>$)|$=$|$<$]] $\dfrac{27}{61}$ 
+
+</div>
+<div class="flex-child">
+
+__$f)\;\;$__ $\dfrac{17}{6}$ [[$>$|$=$|($<$)]] $\dfrac{22}{7}$ 
+
+
+</div>
+</section>
+
+
+
+
+
+
+<!--  Bruchrechnung 0011  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 11:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{1}{2} + \dfrac{1}{8} = $ [[  5/8  ]]
+@Algebrite.check(5/8)
+************
+$$
+\begin{align*}
+\dfrac{1}{2} + \dfrac{1}{8} & = \dfrac{1 \cdot 4}{2 \cdot 4} + \dfrac{1}{8}  \\
+ & = \dfrac{4}{8} + \dfrac{1}{8}  \\
+ & = \dfrac{4+1}{8}  \\
+ & = \dfrac{5}{8} \\
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{1}{3} + \dfrac{1}{6} = $ [[  1/2  ]]
+@Algebrite.check(1/2)
+************
+$$
+\begin{align*}
+\dfrac{1}{3} + \dfrac{1}{6} & = \dfrac{1 \cdot 2}{3 \cdot 2} + \dfrac{1}{6}  \\
+ & = \dfrac{2}{6} + \dfrac{1}{6}  \\
+ & = \dfrac{2+1}{6}  \\
+ & = \dfrac{3}{6} = \dfrac{1}{2} \\
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{2}{5} + \dfrac{1}{10} = $ [[  1/2  ]]
+@Algebrite.check(1/2)
+************
+$$
+\begin{align*}
+\dfrac{2}{5} + \dfrac{1}{10} & = \dfrac{2 \cdot 2}{5 \cdot 2} + \dfrac{1}{10}  \\
+ & = \dfrac{4}{10} + \dfrac{1}{10}  \\
+ & = \dfrac{4+1}{10}  \\
+ & = \dfrac{5}{10} = \dfrac{1}{2} \\
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{3}{4} + \dfrac{1}{8} = $ [[  7/8  ]]
+@Algebrite.check(7/8)
+************
+$$
+\begin{align*}
+\dfrac{3}{4} + \dfrac{1}{8} & = \dfrac{3 \cdot 2}{4 \cdot 2} + \dfrac{1}{8}  \\
+ & = \dfrac{6}{8} + \dfrac{1}{8}  \\
+ & = \dfrac{6+1}{8}  \\
+ & = \dfrac{7}{8} \\
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{5}{6} + \dfrac{1}{12} = $ [[  11/12  ]]
+@Algebrite.check(11/12)
+************
+$$
+\begin{align*}
+\dfrac{5}{6} + \dfrac{1}{12} & = \dfrac{5 \cdot 2}{6 \cdot 2} + \dfrac{1}{12}  \\
+ & = \dfrac{10}{12} + \dfrac{1}{12}  \\
+ & = \dfrac{10+1}{12}  \\
+ & = \dfrac{11}{12} \\
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{7}{10} + \dfrac{1}{5} = $ [[  9/10  ]]
+@Algebrite.check(9/10)
+************
+$$
+\begin{align*}
+\dfrac{7}{10} + \dfrac{1}{5} & = \dfrac{7}{10} + \dfrac{1 \cdot 2}{5 \cdot 2}  \\
+ & = \dfrac{7}{10} + \dfrac{2}{10}  \\
+ & = \dfrac{7+2}{10}  \\
+ & = \dfrac{9}{10} \\
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0012  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 12:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{3}{14} + \dfrac{1}{7} = $ [[  5/14  ]]
+@Algebrite.check(5/14)
+************
+$$
+\begin{align*}
+\dfrac{3}{14} + \dfrac{1}{7} &= \dfrac{3}{14} + \dfrac{1 \cdot 2}{7 \cdot 2} \\
+&= \dfrac{3}{14} + \dfrac{2}{14} \\
+&= \dfrac{5}{14}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{1}{9} + \dfrac{1}{3} = $ [[  4/9  ]]
+@Algebrite.check(4/9)
+************
+$$
+\begin{align*}
+\dfrac{1}{9} + \dfrac{1}{3} &= \dfrac{1}{9} + \dfrac{1 \cdot 3}{3 \cdot 3} \\
+&= \dfrac{1}{9} + \dfrac{3}{9} \\
+&= \dfrac{4}{9}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{7}{8} + \dfrac{1}{4} = $ [[  9/8  ]]
+@Algebrite.check(9/8)
+************
+$$
+\begin{align*}
+\dfrac{7}{8} + \dfrac{1}{4} &= \dfrac{7}{8} + \dfrac{1 \cdot 2}{4 \cdot 2} \\
+&= \dfrac{7}{8} + \dfrac{2}{8} \\
+&= \dfrac{9}{8}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{13}{20} + \dfrac{1}{5} = $ [[  17/20  ]]
+@Algebrite.check(17/20)
+************
+$$
+\begin{align*}
+\dfrac{13}{20} + \dfrac{1}{5} &= \dfrac{13}{20} + \dfrac{1 \cdot 4}{5 \cdot 4} \\
+&= \dfrac{13}{20} + \dfrac{4}{20} \\
+&= \dfrac{17}{20}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{4}{15} + \dfrac{1}{5} = $ [[  7/15  ]]
+@Algebrite.check(7/15)
+************
+$$
+\begin{align*}
+\dfrac{4}{15} + \dfrac{1}{5} &= \dfrac{4}{15} + \dfrac{1 \cdot 3}{5 \cdot 3} \\
+&= \dfrac{4}{15} + \dfrac{3}{15} \\
+&= \dfrac{7}{15}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{11}{28} + \dfrac{1}{14} = $ [[  13/28  ]]
+@Algebrite.check(13/28)
+************
+$$
+\begin{align*}
+\dfrac{11}{28} + \dfrac{1}{14} &= \dfrac{11}{28} + \dfrac{1 \cdot 2}{14 \cdot 2} \\
+&= \dfrac{11}{28} + \dfrac{2}{28} \\
+&= \dfrac{13}{28}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0013  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 12:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{5}{12} + \dfrac{1}{6} = $ [[  7/12  ]]
+@Algebrite.check(7/12)
+************
+$$
+\begin{align*}
+\dfrac{5}{12} + \dfrac{1}{6} &= \dfrac{5}{12} + \dfrac{1 \cdot 2}{6 \cdot 2} \\
+&= \dfrac{5}{12} + \dfrac{2}{12} \\
+&= \dfrac{7}{12}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{9}{16} + \dfrac{1}{8} = $ [[  11/16  ]]
+@Algebrite.check(11/16)
+************
+$$
+\begin{align*}
+\dfrac{9}{16} + \dfrac{1}{8} &= \dfrac{9}{16} + \dfrac{1 \cdot 2}{8 \cdot 2} \\
+&= \dfrac{9}{16} + \dfrac{2}{16} \\
+&= \dfrac{11}{16}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{5}{18} + \dfrac{1}{9} = $ [[  7/18  ]]
+@Algebrite.check(7/18)
+************
+$$
+\begin{align*}
+\dfrac{5}{18} + \dfrac{1}{9} &= \dfrac{5}{18} + \dfrac{1 \cdot 2}{9 \cdot 2} \\
+&= \dfrac{5}{18} + \dfrac{2}{18} \\
+&= \dfrac{7}{18}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{15}{28} + \dfrac{1}{7} = $ [[  19/28  ]]
+@Algebrite.check(19/28)
+************
+$$
+\begin{align*}
+\dfrac{15}{28} + \dfrac{1}{7} &= \dfrac{15}{28} + \dfrac{1 \cdot 4}{7 \cdot 4} \\
+&= \dfrac{15}{28} + \dfrac{4}{28} \\
+&= \dfrac{19}{28}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{8}{21} + \dfrac{1}{7} = $ [[  11/21  ]]
+@Algebrite.check(11/21)
+************
+$$
+\begin{align*}
+\dfrac{8}{21} + \dfrac{1}{7} &= \dfrac{8}{21} + \dfrac{1 \cdot 3}{7 \cdot 3} \\
+&= \dfrac{8}{21} + \dfrac{3}{21} \\
+&= \dfrac{11}{21}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{16}{30} + \dfrac{1}{10} = $ [[  19/30  ]]
+@Algebrite.check(22/30)
+************
+$$
+\begin{align*}
+\dfrac{16}{30} + \dfrac{1}{10} &= \dfrac{16}{30} + \dfrac{1 \cdot 3}{10 \cdot 3} \\
+&= \dfrac{16}{30} + \dfrac{3}{30} \\
+&= \dfrac{19}{30}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0014  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 14:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{5}{12} + \dfrac{1}{6} = $ [[  7/12  ]]
+@Algebrite.check(7/12)
+************
+$$
+\begin{align*}
+\dfrac{5}{12} + \dfrac{1}{6} &= \dfrac{5}{12} + \dfrac{1 \cdot 2}{6 \cdot 2} \\
+&= \dfrac{5}{12} + \dfrac{2}{12} \\
+&= \dfrac{7}{12}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{11}{15} + \dfrac{2}{5} = $ [[  17/15  ]]
+@Algebrite.check(17/15)
+************
+$$
+\begin{align*}
+\dfrac{11}{15} + \dfrac{2}{5} &= \dfrac{11}{15} + \dfrac{2 \cdot 3}{5 \cdot 3} \\
+&= \dfrac{11}{15} + \dfrac{6}{15} \\
+&= \dfrac{17}{15}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{5}{21} + \dfrac{2}{7} = $ [[  11/21  ]]
+@Algebrite.check(11/21)
+************
+$$
+\begin{align*}
+\dfrac{5}{21} + \dfrac{2}{7} &= \dfrac{5}{21} + \dfrac{2 \cdot 3}{7 \cdot 3} \\
+&= \dfrac{5}{21} + \dfrac{6}{21} \\
+&= \dfrac{11}{21}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{5}{18} + \dfrac{1}{9} = $ [[  7/18  ]]
+@Algebrite.check(7/18)
+************
+$$
+\begin{align*}
+\dfrac{5}{18} + \dfrac{1}{9} &= \dfrac{5}{18} + \dfrac{1 \cdot 2}{9 \cdot 2} \\
+&= \dfrac{5}{18} + \dfrac{2}{18} \\
+&= \dfrac{7}{18}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{3}{28} + \dfrac{2}{7} = $ [[  11/28  ]]
+@Algebrite.check(11/28)
+************
+$$
+\begin{align*}
+\dfrac{3}{28} + \dfrac{2}{7} &= \dfrac{3}{28} + \dfrac{2 \cdot 4}{7 \cdot 4} \\
+&= \dfrac{3}{28} + \dfrac{8}{28} \\
+&= \dfrac{11}{28}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{3}{20} + \dfrac{1}{2} = $ [[  13/20  ]]
+@Algebrite.check(13/20)
+************
+$$
+\begin{align*}
+\dfrac{3}{20} + \dfrac{1}{2} &= \dfrac{3}{20} + \dfrac{1 \cdot 10}{2 \cdot 10} \\
+&= \dfrac{3}{20} + \dfrac{10}{20} \\
+&= \dfrac{13}{20}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0015  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 15:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  3 + \dfrac{5}{11} = $ [[  38/11  ]]
+@Algebrite.check(38/11)
+************
+$$
+\begin{align*}
+3 + \dfrac{5}{11} &= \dfrac{3 \cdot 11}{1 \cdot 11} + \dfrac{5}{11} \\
+&= \dfrac{33}{11} + \dfrac{5}{11} \\
+&= \dfrac{33+5}{11} \\
+&= \dfrac{38}{11}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  1 + \dfrac{7}{12} = $ [[  19/12  ]]
+@Algebrite.check(19/12)
+************
+$$
+\begin{align*}
+1 + \dfrac{7}{12} &= \dfrac{1 \cdot 12}{1 \cdot 12} + \dfrac{7}{12} \\
+&= \dfrac{12}{12} + \dfrac{7}{12} \\
+&= \dfrac{12+7}{12} \\
+&= \dfrac{19}{12}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  4 + \dfrac{2}{9} = $ [[  38/9  ]]
+@Algebrite.check(38/9)
+************
+$$
+\begin{align*}
+4 + \dfrac{2}{9} &= \dfrac{4 \cdot 9}{1 \cdot 9} + \dfrac{2}{9} \\
+&= \dfrac{36}{9} + \dfrac{2}{9} \\
+&= \dfrac{36+2}{9} \\
+&= \dfrac{38}{9}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  5 + \dfrac{3}{14} = $ [[  73/14  ]]
+@Algebrite.check(73/14)
+************
+$$
+\begin{align*}
+5 + \dfrac{3}{14} &= \dfrac{5 \cdot 14}{1 \cdot 14} + \dfrac{3}{14} \\
+&= \dfrac{70}{14} + \dfrac{3}{14} \\
+&= \dfrac{70+3}{14} \\
+&= \dfrac{73}{14}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  2 + \dfrac{11}{15} = $ [[  41/15  ]]
+@Algebrite.check(41/15)
+************
+$$
+\begin{align*}
+2 + \dfrac{11}{15} &= \dfrac{2 \cdot 15}{1 \cdot 15} + \dfrac{11}{15} \\
+&= \dfrac{30}{15} + \dfrac{11}{15} \\
+&= \dfrac{30+11}{15} \\
+&= \dfrac{41}{15}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  6 + \dfrac{1}{8} = $ [[  49/8  ]]
+@Algebrite.check(49/8)
+************
+$$
+\begin{align*}
+6 + \dfrac{1}{8} &= \dfrac{6 \cdot 8}{1 \cdot 8} + \dfrac{1}{8} \\
+&= \dfrac{48}{8} + \dfrac{1}{8} \\
+&= \dfrac{48+1}{8} \\
+&= \dfrac{49}{8}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0016  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 16:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  7 + \dfrac{3}{10} = $ [[  73/10  ]]
+@Algebrite.check(73/10)
+************
+$$
+\begin{align*}
+7 + \dfrac{3}{10} &= \dfrac{7 \cdot 10}{1 \cdot 10} + \dfrac{3}{10} \\
+&= \dfrac{70}{10} + \dfrac{3}{10} \\
+&= \dfrac{70+3}{10} \\
+&= \dfrac{73}{10}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  2 + \dfrac{9}{13} = $ [[  35/13  ]]
+@Algebrite.check(35/13)
+************
+$$
+\begin{align*}
+2 + \dfrac{9}{13} &= \dfrac{2 \cdot 13}{1 \cdot 13} + \dfrac{9}{13} \\
+&= \dfrac{26}{13} + \dfrac{9}{13} \\
+&= \dfrac{26+9}{13} \\
+&= \dfrac{35}{13}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  5 + \dfrac{4}{9} = $ [[  49/9  ]]
+@Algebrite.check(49/9)
+************
+$$
+\begin{align*}
+5 + \dfrac{4}{9} &= \dfrac{5 \cdot 9}{1 \cdot 9} + \dfrac{4}{9} \\
+&= \dfrac{45}{9} + \dfrac{4}{9} \\
+&= \dfrac{45+4}{9} \\
+&= \dfrac{49}{9}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  8 + \dfrac{7}{12} = $ [[  103/12  ]]
+@Algebrite.check(103/12)
+************
+$$
+\begin{align*}
+8 + \dfrac{7}{12} &= \dfrac{8 \cdot 12}{1 \cdot 12} + \dfrac{7}{12} \\
+&= \dfrac{96}{12} + \dfrac{7}{12} \\
+&= \dfrac{96+7}{12} \\
+&= \dfrac{103}{12}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  3 + \dfrac{5}{14} = $ [[  47/14  ]]
+@Algebrite.check(47/14)
+************
+$$
+\begin{align*}
+3 + \dfrac{5}{14} &= \dfrac{3 \cdot 14}{1 \cdot 14} + \dfrac{5}{14} \\
+&= \dfrac{42}{14} + \dfrac{5}{14} \\
+&= \dfrac{42+5}{14} \\
+&= \dfrac{47}{14}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  4 + \dfrac{11}{15} = $ [[  71/15  ]]
+@Algebrite.check(71/15)
+************
+$$
+\begin{align*}
+4 + \dfrac{11}{15} &= \dfrac{4 \cdot 15}{1 \cdot 15} + \dfrac{11}{15} \\
+&= \dfrac{60}{15} + \dfrac{11}{15} \\
+&= \dfrac{60+11}{15} \\
+&= \dfrac{71}{15}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0017  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 17:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{7}{8} - \dfrac{1}{4} = $ [[  5/8  ]]
+@Algebrite.check(5/8)
+************
+$$
+\begin{align*}
+\dfrac{7}{8} - \dfrac{1}{4} &= \dfrac{7}{8} - \dfrac{1 \cdot 2}{4 \cdot 2} \\
+&= \dfrac{7}{8} - \dfrac{2}{8} \\
+&= \dfrac{7-2}{8} \\
+&= \dfrac{5}{8}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{13}{12} - \dfrac{1}{6} = $ [[  11/12  ]]
+@Algebrite.check(11/12)
+************
+$$
+\begin{align*}
+\dfrac{13}{12} - \dfrac{1}{6} &= \dfrac{13}{12} - \dfrac{1 \cdot 2}{6 \cdot 2} \\
+&= \dfrac{13}{12} - \dfrac{2}{12} \\
+&= \dfrac{13-2}{12} \\
+&= \dfrac{11}{12}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{9}{10} - \dfrac{1}{5} = $ [[  7/10  ]]
+@Algebrite.check(7/10)
+************
+$$
+\begin{align*}
+\dfrac{9}{10} - \dfrac{1}{5} &= \dfrac{9}{10} - \dfrac{1 \cdot 2}{5 \cdot 2} \\
+&= \dfrac{9}{10} - \dfrac{2}{10} \\
+&= \dfrac{9-2}{10} \\
+&= \dfrac{7}{10}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{13}{14} - \dfrac{2}{7} = $ [[  11/14  ]]
+@Algebrite.check(11/14)
+************
+$$
+\begin{align*}
+\dfrac{13}{14} - \dfrac{2}{7} &= \dfrac{13}{14} - \dfrac{2 \cdot 2}{7 \cdot 2} \\
+&= \dfrac{13}{14} - \dfrac{4}{14} \\
+&= \dfrac{13-4}{14} \\
+&= \dfrac{11}{14}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{15}{18} - \dfrac{1}{9} = $ [[  13/18  ]]
+@Algebrite.check(13/18)
+************
+$$
+\begin{align*}
+\dfrac{15}{18} - \dfrac{1}{9} &= \dfrac{15}{18} - \dfrac{1 \cdot 2}{9 \cdot 2} \\
+&= \dfrac{15}{18} - \dfrac{2}{18} \\
+&= \dfrac{15-2}{18} \\
+&= \dfrac{13}{18}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{24}{20} - \dfrac{1}{4} = $ [[  19/20  ]]
+@Algebrite.check(19/20)
+************
+$$
+\begin{align*}
+\dfrac{24}{20} - \dfrac{1}{4} &= \dfrac{19}{20} - \dfrac{1 \cdot 5}{4 \cdot 5} \\
+&= \dfrac{24}{20} - \dfrac{5}{20} \\
+&= \dfrac{24-5}{20} \\
+&= \dfrac{19}{20}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0018  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 18:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{5}{6} - \dfrac{1}{3} = $ [[  1/2  ]]
+@Algebrite.check(1/2)
+************
+$$
+\begin{align*}
+\dfrac{5}{6} - \dfrac{1}{3} &= \dfrac{5}{6} - \dfrac{1 \cdot 2}{3 \cdot 2} \\
+&= \dfrac{5}{6} - \dfrac{2}{6} \\
+&= \dfrac{5-2}{6} \\
+&= \dfrac{3}{6} \\
+&= \dfrac{1}{2}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{7}{10} - \dfrac{1}{5} = $ [[  1/2  ]]
+@Algebrite.check(1/2)
+************
+$$
+\begin{align*}
+\dfrac{7}{10} - \dfrac{1}{5} &= \dfrac{7}{10} - \dfrac{1 \cdot 2}{5 \cdot 2} \\
+&= \dfrac{7}{10} - \dfrac{2}{10} \\
+&= \dfrac{7-2}{10} \\
+&= \dfrac{5}{10} \\
+&= \dfrac{1}{2}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{11}{12} - \dfrac{1}{4} = $ [[  2/3  ]]
+@Algebrite.check(2/3)
+************
+$$
+\begin{align*}
+\dfrac{11}{12} - \dfrac{1}{4} &= \dfrac{11}{12} - \dfrac{1 \cdot 3}{4 \cdot 3} \\
+&= \dfrac{11}{12} - \dfrac{3}{12} \\
+&= \dfrac{11-3}{12} \\
+&= \dfrac{8}{12} \\
+&= \dfrac{2}{3}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{13}{15} - \dfrac{1}{5} = $ [[  2/3  ]]
+@Algebrite.check(2/3)
+************
+$$
+\begin{align*}
+\dfrac{13}{15} - \dfrac{1}{5} &= \dfrac{13}{15} - \dfrac{1 \cdot 3}{5 \cdot 3} \\
+&= \dfrac{13}{15} - \dfrac{3}{15} \\
+&= \dfrac{13-3}{15} \\
+&= \dfrac{10}{15} \\
+&= \dfrac{2}{3}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{17}{18} - \dfrac{2}{9} = $ [[  13/18  ]]
+@Algebrite.check(13/18)
+************
+$$
+\begin{align*}
+\dfrac{17}{18} - \dfrac{2}{9} &= \dfrac{17}{18} - \dfrac{2 \cdot 2}{9 \cdot 2} \\
+&= \dfrac{17}{18} - \dfrac{4}{18} \\
+&= \dfrac{17-4}{18} \\
+&= \dfrac{13}{18}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{19}{20} - \dfrac{1}{10} = $ [[  17/20  ]]
+@Algebrite.check(17/20)
+************
+$$
+\begin{align*}
+\dfrac{19}{20} - \dfrac{1}{10} &= \dfrac{19}{20} - \dfrac{1 \cdot 2}{10 \cdot 2} \\
+&= \dfrac{19}{20} - \dfrac{2}{20} \\
+&= \dfrac{19-2}{20} \\
+&= \dfrac{17}{20}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0019  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 19:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{7}{8} - \dfrac{1}{4} = $ [[  5/8  ]]
+@Algebrite.check(5/8)
+************
+$$
+\begin{align*}
+\dfrac{7}{8} - \dfrac{1}{4} &= \dfrac{7}{8} - \dfrac{1 \cdot 2}{4 \cdot 2} \\
+&= \dfrac{7}{8} - \dfrac{2}{8} \\
+&= \dfrac{7-2}{8} \\
+&= \dfrac{5}{8}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{9}{10} - \dfrac{2}{5} = $ [[  1/2  ]]
+@Algebrite.check(1/2)
+************
+$$
+\begin{align*}
+\dfrac{9}{10} - \dfrac{2}{5} &= \dfrac{9}{10} - \dfrac{2 \cdot 2}{5 \cdot 2} \\
+&= \dfrac{9}{10} - \dfrac{4}{10} \\
+&= \dfrac{9-4}{10} \\
+&= \dfrac{5}{10} \\
+&= \dfrac{1}{2}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{11}{12} - \dfrac{5}{6} = $ [[  1/4  ]]
+@Algebrite.check(1/4)
+************
+$$
+\begin{align*}
+\dfrac{11}{12} - \dfrac{5}{6} &= \dfrac{11}{12} - \dfrac{5 \cdot 2}{6 \cdot 2} \\
+&= \dfrac{11}{12} - \dfrac{10}{12} \\
+&= \dfrac{11-10}{12} \\
+&= \dfrac{1}{12}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{13}{15} - \dfrac{2}{5} = $ [[  7/15  ]]
+@Algebrite.check(7/15)
+************
+$$
+\begin{align*}
+\dfrac{13}{15} - \dfrac{2}{5} &= \dfrac{13}{15} - \dfrac{2 \cdot 3}{5 \cdot 3} \\
+&= \dfrac{13}{15} - \dfrac{6}{15} \\
+&= \dfrac{13-6}{15} \\
+&= \dfrac{7}{15}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{19}{18} - \dfrac{4}{9} = $ [[  11/18  ]]
+@Algebrite.check(11/18)
+************
+$$
+\begin{align*}
+\dfrac{19}{18} - \dfrac{4}{9} &= \dfrac{19}{18} - \dfrac{4 \cdot 2}{9 \cdot 2} \\
+&= \dfrac{19}{18} - \dfrac{8}{18} \\
+&= \dfrac{19-8}{18} \\
+&= \dfrac{11}{18} \\
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{19}{20} - \dfrac{3}{10} = $ [[  13/20  ]]
+@Algebrite.check(13/20)
+************
+$$
+\begin{align*}
+\dfrac{19}{20} - \dfrac{3}{10} &= \dfrac{19}{20} - \dfrac{3 \cdot 2}{10 \cdot 2} \\
+&= \dfrac{19}{20} - \dfrac{6}{20} \\
+&= \dfrac{19-6}{20} \\
+&= \dfrac{13}{20}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0020  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 20:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{13}{18} - \dfrac{1}{9} = $ [[  11/18  ]]
+@Algebrite.check(11/18)
+************
+$$
+\begin{align*}
+\dfrac{13}{18} - \dfrac{1}{9} &= \dfrac{13}{18} - \dfrac{1 \cdot 2}{9 \cdot 2} \\
+&= \dfrac{13}{18} - \dfrac{2}{18} \\
+&= \dfrac{13-2}{18} \\
+&= \dfrac{11}{18}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{11}{20} - \dfrac{1}{5} = $ [[  7/20  ]]
+@Algebrite.check(7/20)
+************
+$$
+\begin{align*}
+\dfrac{11}{20} - \dfrac{1}{5} &= \dfrac{11}{20} - \dfrac{1 \cdot 4}{5 \cdot 4} \\
+&= \dfrac{11}{20} - \dfrac{4}{20} \\
+&= \dfrac{11-4}{20} \\
+&= \dfrac{7}{20}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{11}{14} - \dfrac{1}{7} = $ [[  9/14  ]]
+@Algebrite.check(9/14)
+************
+$$
+\begin{align*}
+\dfrac{11}{14} - \dfrac{1}{7} &= \dfrac{11}{14} - \dfrac{1 \cdot 2}{7 \cdot 2} \\
+&= \dfrac{11}{14} - \dfrac{2}{14} \\
+&= \dfrac{11-2}{14} \\
+&= \dfrac{9}{14}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{7}{15} - \dfrac{1}{5} = $ [[  4/15  ]]
+@Algebrite.check(4/15)
+************
+$$
+\begin{align*}
+\dfrac{7}{15} - \dfrac{1}{5} &= \dfrac{7}{15} - \dfrac{1 \cdot 3}{5 \cdot 3} \\
+&= \dfrac{7}{15} - \dfrac{3}{15} \\
+&= \dfrac{7-3}{15} \\
+&= \dfrac{4}{15}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{11}{16} - \dfrac{1}{8} = $ [[  9/16  ]]
+@Algebrite.check(9/16)
+************
+$$
+\begin{align*}
+\dfrac{11}{16} - \dfrac{1}{8} &= \dfrac{11}{16} - \dfrac{1 \cdot 2}{8 \cdot 2} \\
+&= \dfrac{11}{16} - \dfrac{2}{16} \\
+&= \dfrac{11-2}{16} \\
+&= \dfrac{9}{16}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{7}{9} - \dfrac{1}{3} = $ [[  4/9  ]]
+@Algebrite.check(4/9)
+************
+$$
+\begin{align*}
+\dfrac{7}{9} - \dfrac{1}{3} &= \dfrac{7}{9} - \dfrac{1 \cdot 3}{3 \cdot 3} \\
+&= \dfrac{7}{9} - \dfrac{3}{9} \\
+&= \dfrac{7-3}{9} \\
+&= \dfrac{4}{9}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0021  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 21:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  2 - \dfrac{3}{5} = $ [[  7/5  ]]
+@Algebrite.check(7/5)
+************
+$$
+\begin{align*}
+2 - \dfrac{3}{5} &= \dfrac{2 \cdot 5}{1 \cdot 5} - \dfrac{3}{5} \\
+&= \dfrac{10}{5} - \dfrac{3}{5} \\
+&= \dfrac{10-3}{5} \\
+&= \dfrac{7}{5}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  3 - \dfrac{7}{8} = $ [[  17/8  ]]
+@Algebrite.check(17/8)
+************
+$$
+\begin{align*}
+3 - \dfrac{7}{8} &= \dfrac{3 \cdot 8}{1 \cdot 8} - \dfrac{7}{8} \\
+&= \dfrac{24}{8} - \dfrac{7}{8} \\
+&= \dfrac{24-7}{8} \\
+&= \dfrac{17}{8}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{19}{6} - 2 = $ [[  7/6  ]]
+@Algebrite.check(7/6)
+************
+$$
+\begin{align*}
+\dfrac{19}{6} - 2 &= \dfrac{19}{6} - \dfrac{2 \cdot 6}{1 \cdot 6} \\
+&= \dfrac{19}{6} - \dfrac{12}{6} \\
+&= \dfrac{19-12}{6} \\
+&= \dfrac{7}{6}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  4 - \dfrac{9}{10} = $ [[  31/10  ]]
+@Algebrite.check(31/10)
+************
+$$
+\begin{align*}
+4 - \dfrac{9}{10} &= \dfrac{4 \cdot 10}{1 \cdot 10} - \dfrac{9}{10} \\
+&= \dfrac{40}{10} - \dfrac{9}{10} \\
+&= \dfrac{40-9}{10} \\
+&= \dfrac{31}{10}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{17}{4} - 3 = $ [[  5/4  ]]
+@Algebrite.check(5/4)
+************
+$$
+\begin{align*}
+\dfrac{17}{4} - 3 &= \dfrac{17}{4} - \dfrac{3 \cdot 4}{1 \cdot 4} \\
+&= \dfrac{17}{4} - \dfrac{12}{4} \\
+&= \dfrac{17-12}{4} \\
+&= \dfrac{5}{4}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  5 - \dfrac{11}{12} = $ [[  49/12  ]]
+@Algebrite.check(49/12)
+************
+$$
+\begin{align*}
+5 - \dfrac{11}{12} &= \dfrac{5 \cdot 12}{1 \cdot 12} - \dfrac{11}{12} \\
+&= \dfrac{60}{12} - \dfrac{11}{12} \\
+&= \dfrac{60-11}{12} \\
+&= \dfrac{49}{12}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0022  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 22:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  3 - \dfrac{2}{9} = $ [[  25/9  ]]
+@Algebrite.check(25/9)
+************
+$$
+\begin{align*}
+3 - \dfrac{2}{9} &= \dfrac{3 \cdot 9}{1 \cdot 9} - \dfrac{2}{9} \\
+&= \dfrac{27}{9} - \dfrac{2}{9} \\
+&= \dfrac{27-2}{9} \\
+&= \dfrac{25}{9}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{11}{6} - 1 = $ [[  5/6  ]]
+@Algebrite.check(5/6)
+************
+$$
+\begin{align*}
+\dfrac{11}{6} - 1 &= \dfrac{11}{6} - \dfrac{1 \cdot 6}{1 \cdot 6} \\
+&= \dfrac{11}{6} - \dfrac{6}{6} \\
+&= \dfrac{11-6}{6} \\
+&= \dfrac{5}{6}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  7 - \dfrac{5}{12} = $ [[  79/12  ]]
+@Algebrite.check(79/12)
+************
+$$
+\begin{align*}
+7 - \dfrac{5}{12} &= \dfrac{7 \cdot 12}{1 \cdot 12} - \dfrac{5}{12} \\
+&= \dfrac{84}{12} - \dfrac{5}{12} \\
+&= \dfrac{84-5}{12} \\
+&= \dfrac{79}{12}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{9}{5} - 1 = $ [[  4/5  ]]
+@Algebrite.check(4/5)
+************
+$$
+\begin{align*}
+\dfrac{9}{5} - 1 &= \dfrac{9}{5} - \dfrac{1 \cdot 5}{1 \cdot 5} \\
+&= \dfrac{9}{5} - \dfrac{5}{5} \\
+&= \dfrac{9-5}{5} \\
+&= \dfrac{4}{5}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  4 - \dfrac{7}{16} = $ [[  57/16  ]]
+@Algebrite.check(57/16)
+************
+$$
+\begin{align*}
+4 - \dfrac{7}{16} &= \dfrac{4 \cdot 16}{1 \cdot 16} - \dfrac{7}{16} \\
+&= \dfrac{64}{16} - \dfrac{7}{16} \\
+&= \dfrac{64-7}{16} \\
+&= \dfrac{57}{16}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{13}{8} - 1 = $ [[  5/8  ]]
+@Algebrite.check(5/8)
+************
+$$
+\begin{align*}
+\dfrac{13}{8} - 1 &= \dfrac{13}{8} - \dfrac{1 \cdot 8}{1 \cdot 8} \\
+&= \dfrac{13}{8} - \dfrac{8}{8} \\
+&= \dfrac{13-8}{8} \\
+&= \dfrac{5}{8}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0023  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 23:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{2}{5} + \dfrac{3}{4} = $ [[  23/20  ]]
+@Algebrite.check(23/20)
+************
+$$
+\begin{align*}
+\dfrac{2}{5} + \dfrac{3}{4}
+&= \dfrac{2\cdot 4}{5\cdot 4} + \dfrac{3\cdot 5}{4\cdot 5} \\
+&= \dfrac{8}{20} + \dfrac{15}{20} \\
+&= \dfrac{8+15}{20} \\
+&= \dfrac{23}{20}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{3}{7} + \dfrac{2}{3} = $ [[  23/21  ]]
+@Algebrite.check(23/21)
+************
+$$
+\begin{align*}
+\dfrac{3}{7} + \dfrac{2}{3}
+&= \dfrac{3\cdot 3}{7\cdot 3} + \dfrac{2\cdot 7}{3\cdot 7} \\
+&= \dfrac{9}{21} + \dfrac{14}{21} \\
+&= \dfrac{9+14}{21} \\
+&= \dfrac{23}{21}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{5}{6} + \dfrac{1}{4} = $ [[  13/12  ]]
+@Algebrite.check(13/12)
+************
+$$
+\begin{align*}
+\dfrac{5}{6} + \dfrac{1}{4}
+&= \dfrac{5\cdot 2}{6\cdot 2} + \dfrac{1\cdot 3}{4\cdot 3} \\
+&= \dfrac{10}{12} + \dfrac{3}{12} \\
+&= \dfrac{10+3}{12} \\
+&= \dfrac{13}{12}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{4}{9} + \dfrac{2}{5} = $ [[  38/45  ]]
+@Algebrite.check(38/45)
+************
+$$
+\begin{align*}
+\dfrac{4}{9} + \dfrac{2}{5}
+&= \dfrac{4\cdot 5}{9\cdot 5} + \dfrac{2\cdot 9}{5\cdot 9} \\
+&= \dfrac{20}{45} + \dfrac{18}{45} \\
+&= \dfrac{20+18}{45} \\
+&= \dfrac{38}{45}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{1}{3} + \dfrac{4}{7} = $ [[  19/21  ]]
+@Algebrite.check(19/21)
+************
+$$
+\begin{align*}
+\dfrac{1}{3} + \dfrac{4}{7}
+&= \dfrac{1\cdot 7}{3\cdot 7} + \dfrac{4\cdot 3}{7\cdot 3} \\
+&= \dfrac{7}{21} + \dfrac{12}{21} \\
+&= \dfrac{7+12}{21} \\
+&= \dfrac{19}{21}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{2}{7} + \dfrac{3}{8} = $ [[  37/56  ]]
+@Algebrite.check(37/56)
+************
+$$
+\begin{align*}
+\dfrac{2}{7} + \dfrac{3}{8}
+&= \dfrac{2\cdot 8}{7\cdot 8} + \dfrac{3\cdot 7}{8\cdot 7} \\
+&= \dfrac{16}{56} + \dfrac{21}{56} \\
+&= \dfrac{16+21}{56} \\
+&= \dfrac{37}{56}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+<!--  Bruchrechnung 0024  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 24:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{3}{4} + \dfrac{2}{9} = $ [[  35/36  ]]
+@Algebrite.check(35/36)
+************
+$$
+\begin{align*}
+\dfrac{3}{4} + \dfrac{2}{9}
+&= \dfrac{3\cdot 9}{4\cdot 9} + \dfrac{2\cdot 4}{9\cdot 4} \\
+&= \dfrac{27}{36} + \dfrac{8}{36} \\
+&= \dfrac{27+8}{36} \\
+&= \dfrac{35}{36}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{5}{6} + \dfrac{2}{7} = $ [[  47/42  ]]
+@Algebrite.check(47/42)
+************
+$$
+\begin{align*}
+\dfrac{5}{6} + \dfrac{2}{7}
+&= \dfrac{5\cdot 7}{6\cdot 7} + \dfrac{2\cdot 6}{7\cdot 6} \\
+&= \dfrac{35}{42} + \dfrac{12}{42} \\
+&= \dfrac{35+12}{42} \\
+&= \dfrac{47}{42}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{2}{5} + \dfrac{3}{8} = $ [[  31/40  ]]
+@Algebrite.check(31/40)
+************
+$$
+\begin{align*}
+\dfrac{2}{5} + \dfrac{3}{8}
+&= \dfrac{2\cdot 8}{5\cdot 8} + \dfrac{3\cdot 5}{8\cdot 5} \\
+&= \dfrac{16}{40} + \dfrac{15}{40} \\
+&= \dfrac{16+15}{40} \\
+&= \dfrac{31}{40}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{1}{6} + \dfrac{4}{10} = $ [[  17/30  ]]
+@Algebrite.check(17/30)
+************
+$$
+\begin{align*}
+\dfrac{1}{6} + \dfrac{4}{10}
+&= \dfrac{1\cdot 5}{6\cdot 5} + \dfrac{4\cdot 3}{10\cdot 3} \\
+&= \dfrac{5}{30} + \dfrac{12}{30} \\
+&= \dfrac{5+12}{30} \\
+&= \dfrac{17}{30}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{4}{7} + \dfrac{2}{9} = $ [[  50/63  ]]
+@Algebrite.check(50/63)
+************
+$$
+\begin{align*}
+\dfrac{4}{7} + \dfrac{2}{9}
+&= \dfrac{4\cdot 9}{7\cdot 9} + \dfrac{2\cdot 7}{9\cdot 7} \\
+&= \dfrac{36}{63} + \dfrac{14}{63} \\
+&= \dfrac{36+14}{63} \\
+&= \dfrac{50}{63}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{3}{8} + \dfrac{5}{12} = $ [[  29/24  ]]
+@Algebrite.check(29/24)
+************
+$$
+\begin{align*}
+\dfrac{3}{8} + \dfrac{5}{12}
+&= \dfrac{3\cdot 3}{8\cdot 3} + \dfrac{5\cdot 2}{12\cdot 2} \\
+&= \dfrac{9}{24} + \dfrac{10}{24} \\
+&= \dfrac{9+10}{24} \\
+&= \dfrac{19}{24}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+<!--  Bruchrechnung 0025  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 25:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{5}{6} - \dfrac{1}{4} = $ [[  7/12  ]]
+@Algebrite.check(7/12)
+************
+$$
+\begin{align*}
+\dfrac{5}{6} - \dfrac{1}{4}
+&= \dfrac{5\cdot 2}{6\cdot 2} - \dfrac{1\cdot 3}{4\cdot 3} \\
+&= \dfrac{10}{12} - \dfrac{3}{12} \\
+&= \dfrac{10-3}{12} \\
+&= \dfrac{7}{12}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{7}{8} - \dfrac{1}{6} = $ [[  17/24  ]]
+@Algebrite.check(17/24)
+************
+$$
+\begin{align*}
+\dfrac{7}{8} - \dfrac{1}{6}
+&= \dfrac{7\cdot 3}{8\cdot 3} - \dfrac{1\cdot 4}{6\cdot 4} \\
+&= \dfrac{21}{24} - \dfrac{4}{24} \\
+&= \dfrac{21-4}{24} \\
+&= \dfrac{17}{24}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{4}{5} - \dfrac{1}{10} = $ [[  7/10  ]]
+@Algebrite.check(7/10)
+************
+$$
+\begin{align*}
+\dfrac{4}{5} - \dfrac{1}{10}
+&= \dfrac{4\cdot 2}{5\cdot 2} - \dfrac{1}{10} \\
+&= \dfrac{8}{10} - \dfrac{1}{10} \\
+&= \dfrac{8-1}{10} \\
+&= \dfrac{7}{10}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{9}{10} - \dfrac{2}{15} = $ [[  23/30  ]]
+@Algebrite.check(19/30)
+************
+$$
+\begin{align*}
+\dfrac{9}{10} - \dfrac{2}{15}
+&= \dfrac{9\cdot 3}{10\cdot 3} - \dfrac{2\cdot 2}{15\cdot 2} \\
+&= \dfrac{27}{30} - \dfrac{4}{30} \\
+&= \dfrac{27-4}{30} \\
+&= \dfrac{23}{30}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{11}{12} - \dfrac{3}{8} = $ [[  13/24  ]]
+@Algebrite.check(13/24)
+************
+$$
+\begin{align*}
+\dfrac{11}{12} - \dfrac{3}{8}
+&= \dfrac{11\cdot 2}{12\cdot 2} - \dfrac{3\cdot 3}{8\cdot 3} \\
+&= \dfrac{22}{24} - \dfrac{9}{24} \\
+&= \dfrac{22-9}{24} \\
+&= \dfrac{13}{24}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{7}{9} - \dfrac{2}{15} = $ [[  23/45  ]]
+@Algebrite.check(23/45)
+************
+$$
+\begin{align*}
+\dfrac{7}{9} - \dfrac{2}{15}
+&= \dfrac{7\cdot 5}{9\cdot 5} - \dfrac{2\cdot 3}{15\cdot 3} \\
+&= \dfrac{35}{45} - \dfrac{6}{45} \\
+&= \dfrac{35-6}{45} \\
+&= \dfrac{29}{45}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+<!--  Bruchrechnung 0026  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 26:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{5}{7} - \dfrac{1}{14} = $ [[  9/14  ]]
+@Algebrite.check(9/14)
+************
+$$
+\begin{align*}
+\dfrac{5}{7} - \dfrac{1}{14}
+&= \dfrac{5\cdot 2}{7\cdot 2} - \dfrac{1}{14} \\
+&= \dfrac{10}{14} - \dfrac{1}{14} \\
+&= \dfrac{10-1}{14} \\
+&= \dfrac{9}{14}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{3}{8} - \dfrac{1}{16} = $ [[  5/16  ]]
+@Algebrite.check(5/16)
+************
+$$
+\begin{align*}
+\dfrac{3}{8} - \dfrac{1}{16}
+&= \dfrac{3\cdot 2}{8\cdot 2} - \dfrac{1}{16} \\
+&= \dfrac{6}{16} - \dfrac{1}{16} \\
+&= \dfrac{6-1}{16} \\
+&= \dfrac{5}{16}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{13}{20} - \dfrac{1}{10} = $ [[  11/20  ]]
+@Algebrite.check(11/20)
+************
+$$
+\begin{align*}
+\dfrac{13}{20} - \dfrac{1}{10}
+&= \dfrac{13}{20} - \dfrac{1\cdot 2}{10\cdot 2} \\
+&= \dfrac{13}{20} - \dfrac{2}{20} \\
+&= \dfrac{13-2}{20} \\
+&= \dfrac{11}{20}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{8}{21} - \dfrac{1}{7} = $ [[  5/21  ]]
+@Algebrite.check(5/21)
+************
+$$
+\begin{align*}
+\dfrac{8}{21} - \dfrac{1}{7}
+&= \dfrac{8}{21} - \dfrac{1\cdot 3}{7\cdot 3} \\
+&= \dfrac{8}{21} - \dfrac{3}{21} \\
+&= \dfrac{8-3}{21} \\
+&= \dfrac{5}{21}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{7}{12} - \dfrac{1}{6} = $ [[  5/12  ]]
+@Algebrite.check(5/12)
+************
+$$
+\begin{align*}
+\dfrac{7}{12} - \dfrac{1}{6}
+&= \dfrac{7}{12} - \dfrac{1\cdot 2}{6\cdot 2} \\
+&= \dfrac{7}{12} - \dfrac{2}{12} \\
+&= \dfrac{7-2}{12} \\
+&= \dfrac{5}{12}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{4}{9} - \dfrac{1}{27} = $ [[  11/27  ]]
+@Algebrite.check(11/27)
+************
+$$
+\begin{align*}
+\dfrac{4}{9} - \dfrac{1}{27}
+&= \dfrac{4\cdot 3}{9\cdot 3} - \dfrac{1}{27} \\
+&= \dfrac{12}{27} - \dfrac{1}{27} \\
+&= \dfrac{12-1}{27} \\
+&= \dfrac{11}{27}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0027  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 27:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{3}{10} + \dfrac{1}{5} = $ [[  1/2  ]]
+@Algebrite.check(1/2)
+************
+$$
+\begin{align*}
+\dfrac{3}{10} + \dfrac{1}{5}
+&= \dfrac{3}{10} + \dfrac{1\cdot 2}{5\cdot 2} \\
+&= \dfrac{3}{10} + \dfrac{2}{10} \\
+&= \dfrac{3+2}{10} \\
+&= \dfrac{5}{10} \;=\; \dfrac{1}{2}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{7}{9} - \dfrac{1}{6} = $ [[  11/18  ]]
+@Algebrite.check(11/18)
+************
+$$
+\begin{align*}
+\dfrac{7}{9} - \dfrac{1}{6}
+&= \dfrac{7\cdot 2}{9\cdot 2} - \dfrac{1\cdot 3}{6\cdot 3} \\
+&= \dfrac{14}{18} - \dfrac{3}{18} \\
+&= \dfrac{14-3}{18} \\
+&= \dfrac{11}{18}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{4}{15} + \dfrac{2}{9} = $ [[  22/45  ]]
+@Algebrite.check(22/45)
+************
+$$
+\begin{align*}
+\dfrac{4}{15} + \dfrac{2}{9}
+&= \dfrac{4\cdot 3}{15\cdot 3} + \dfrac{2\cdot 5}{9\cdot 5} \\
+&= \dfrac{12}{45} + \dfrac{10}{45} \\
+&= \dfrac{12+10}{45} \\
+&= \dfrac{22}{45}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{7}{10} - \dfrac{3}{20} = $ [[  11/20  ]]
+@Algebrite.check(11/20)
+************
+$$
+\begin{align*}
+\dfrac{7}{10} - \dfrac{3}{20}
+&= \dfrac{7\cdot 2}{10\cdot 2} - \dfrac{3}{20} \\
+&= \dfrac{14}{20} - \dfrac{3}{20} \\
+&= \dfrac{14-3}{20} \\
+&= \dfrac{11}{20}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{2}{3} + \dfrac{4}{9} = $ [[  10/9  ]]
+@Algebrite.check(10/9)
+************
+$$
+\begin{align*}
+\dfrac{2}{3} + \dfrac{4}{9}
+&= \dfrac{2\cdot 3}{3\cdot 3} + \dfrac{4}{9} \\
+&= \dfrac{6}{9} + \dfrac{4}{9} \\
+&= \dfrac{6+4}{9} \\
+&= \dfrac{10}{9}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{5}{12} - \dfrac{1}{18} = $ [[  13/36  ]]
+@Algebrite.check(13/36)
+************
+$$
+\begin{align*}
+\dfrac{5}{12} - \dfrac{1}{18}
+&= \dfrac{5\cdot 3}{12\cdot 3} - \dfrac{1\cdot 2}{18\cdot 2} \\
+&= \dfrac{15}{36} - \dfrac{2}{36} \\
+&= \dfrac{15-2}{36} \\
+&= \dfrac{13}{36}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+
+
+
+<!--  Bruchrechnung 0028  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 28:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{3}{8} + \dfrac{5}{12} = $ [[  19/24  ]]
+@Algebrite.check(19/24)
+************
+$$
+\begin{align*}
+\dfrac{3}{8} + \dfrac{5}{12}
+&= \dfrac{3\cdot 3}{8\cdot 3} + \dfrac{5\cdot 2}{12\cdot 2} \\
+&= \dfrac{9}{24} + \dfrac{10}{24} \\
+&= \dfrac{19}{24}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{7}{9} - \dfrac{2}{15} = $ [[  29/45  ]]
+@Algebrite.check(29/45)
+************
+$$
+\begin{align*}
+\dfrac{7}{9} - \dfrac{2}{15}
+&= \dfrac{7\cdot 5}{9\cdot 5} - \dfrac{2\cdot 3}{15\cdot 3} \\
+&= \dfrac{35}{45} - \dfrac{6}{45} \\
+&= \dfrac{29}{45}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{5}{6} + \dfrac{7}{18} = $ [[  11/9  ]]
+@Algebrite.check(11/9)
+************
+$$
+\begin{align*}
+\dfrac{5}{6} + \dfrac{7}{18}
+&= \dfrac{5\cdot 3}{6\cdot 3} + \dfrac{7}{18} \\
+&= \dfrac{15}{18} + \dfrac{7}{18} \\
+&= \dfrac{22}{18} \\
+&= \dfrac{11}{9}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{11}{20} - \dfrac{1}{10} = $ [[  9/20  ]]
+@Algebrite.check(9/20)
+************
+$$
+\begin{align*}
+\dfrac{11}{20} - \dfrac{1}{10}
+&= \dfrac{11}{20} - \dfrac{1\cdot 2}{10\cdot 2} \\
+&= \dfrac{11}{20} - \dfrac{2}{20} \\
+&= \dfrac{9}{20}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{2}{7} + \dfrac{3}{14} = $ [[  1/2  ]]
+@Algebrite.check(1/2)
+************
+$$
+\begin{align*}
+\dfrac{2}{7} + \dfrac{3}{14}
+&= \dfrac{2\cdot 2}{7\cdot 2} + \dfrac{3}{14} \\
+&= \dfrac{4}{14} + \dfrac{3}{14} \\
+&= \dfrac{7}{14} \\
+&= \dfrac{1}{2}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{9}{16} - \dfrac{1}{8} = $ [[  7/16  ]]
+@Algebrite.check(7/16)
+************
+$$
+\begin{align*}
+\dfrac{9}{16} - \dfrac{1}{8}
+&= \dfrac{9}{16} - \dfrac{1\cdot 2}{8\cdot 2} \\
+&= \dfrac{9}{16} - \dfrac{2}{16} \\
+&= \dfrac{7}{16}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+<!--  Bruchrechnung 0029  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 29:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{5}{12} + \dfrac{1}{4} = $ [[  2/3  ]]
+@Algebrite.check(2/3)
+************
+$$
+\begin{align*}
+\dfrac{5}{12} + \dfrac{1}{4}
+&= \dfrac{5}{12} + \dfrac{1\cdot 3}{4\cdot 3} \\
+&= \dfrac{5}{12} + \dfrac{3}{12} \\
+&= \dfrac{5+3}{12} \\
+&= \dfrac{8}{12} \\
+&= \dfrac{2}{3}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{4}{15} + \dfrac{1}{6} = $ [[  13/30  ]]
+@Algebrite.check(13/30)
+************
+$$
+\begin{align*}
+\dfrac{4}{15} + \dfrac{1}{6}
+&= \dfrac{4\cdot 2}{15\cdot 2} + \dfrac{1\cdot 5}{6\cdot 5} \\
+&= \dfrac{8}{30} + \dfrac{5}{30} \\
+&= \dfrac{8+5}{30} \\
+&= \dfrac{13}{30}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{11}{18} - \dfrac{1}{6} = $ [[  4/9  ]]
+@Algebrite.check(4/9)
+************
+$$
+\begin{align*}
+\dfrac{11}{18} - \dfrac{1}{6}
+&= \dfrac{11}{18} - \dfrac{1\cdot 3}{6\cdot 3} \\
+&= \dfrac{11}{18} - \dfrac{3}{18} \\
+&= \dfrac{11-3}{18} \\
+&= \dfrac{8}{18} \\
+&= \dfrac{4}{9}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{3}{10} + \dfrac{2}{5} = $ [[  7/10  ]]
+@Algebrite.check(7/10)
+************
+$$
+\begin{align*}
+\dfrac{3}{10} + \dfrac{2}{5}
+&= \dfrac{3}{10} + \dfrac{2\cdot 2}{5\cdot 2} \\
+&= \dfrac{3}{10} + \dfrac{4}{10} \\
+&= \dfrac{3+4}{10} \\
+&= \dfrac{7}{10}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{5}{8} + \dfrac{3}{12} = $ [[  7/8  ]]
+@Algebrite.check(7/8)
+************
+$$
+\begin{align*}
+\dfrac{5}{8} + \dfrac{3}{12}
+&= \dfrac{5\cdot 3}{8\cdot 3} + \dfrac{3\cdot 2}{12\cdot 2} \\
+&= \dfrac{15}{24} + \dfrac{6}{24} \\
+&= \dfrac{15+6}{24} \\
+&= \dfrac{21}{24} \\
+&= \dfrac{7}{8}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{7}{12} - \dfrac{1}{8} = $ [[  11/24  ]]
+@Algebrite.check(11/24)
+************
+$$
+\begin{align*}
+\dfrac{7}{12} - \dfrac{1}{8}
+&= \dfrac{7\cdot 2}{12\cdot 2} - \dfrac{1\cdot 3}{8\cdot 3} \\
+&= \dfrac{14}{24} - \dfrac{3}{24} \\
+&= \dfrac{14-3}{24} \\
+&= \dfrac{11}{24}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+<!--  Bruchrechnung 0030  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 30:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{4}{9} + \dfrac{5}{12} = $ [[  31/36  ]]
+@Algebrite.check(31/36)
+************
+$$
+\begin{align*}
+\dfrac{4}{9} + \dfrac{5}{12}
+&= \dfrac{4\cdot 4}{9\cdot 4} + \dfrac{5\cdot 3}{12\cdot 3} \\
+&= \dfrac{16}{36} + \dfrac{15}{36} \\
+&= \dfrac{31}{36}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{7}{10} - \dfrac{1}{4} = $ [[  9/20  ]]
+@Algebrite.check(9/20)
+************
+$$
+\begin{align*}
+\dfrac{7}{10} - \dfrac{1}{4}
+&= \dfrac{7\cdot 2}{10\cdot 2} - \dfrac{1\cdot 5}{4\cdot 5} \\
+&= \dfrac{14}{20} - \dfrac{5}{20} \\
+&= \dfrac{9}{20}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{3}{8} + \dfrac{7}{12} = $ [[  23/24  ]]
+@Algebrite.check(23/24)
+************
+$$
+\begin{align*}
+\dfrac{3}{8} + \dfrac{7}{12}
+&= \dfrac{3\cdot 3}{8\cdot 3} + \dfrac{7\cdot 2}{12\cdot 2} \\
+&= \dfrac{9}{24} + \dfrac{14}{24} \\
+&= \dfrac{23}{24}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{11}{18} - \dfrac{5}{12} = $ [[  7/36  ]]
+@Algebrite.check(7/36)
+************
+$$
+\begin{align*}
+\dfrac{11}{18} - \dfrac{5}{12}
+&= \dfrac{11\cdot 2}{18\cdot 2} - \dfrac{5\cdot 3}{12\cdot 3} \\
+&= \dfrac{22}{36} - \dfrac{15}{36} \\
+&= \dfrac{7}{36}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{5}{14} + \dfrac{9}{21} = $ [[  33/42  ]]
+@Algebrite.check(33/42)
+************
+$$
+\begin{align*}
+\dfrac{5}{14} + \dfrac{9}{21}
+&= \dfrac{5\cdot 3}{14\cdot 3} + \dfrac{9\cdot 2}{21\cdot 2} \\
+&= \dfrac{15}{42} + \dfrac{18}{42} \\
+&= \dfrac{33}{42} \\
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{13}{20} - \dfrac{3}{8} = $ [[  11/40  ]]
+@Algebrite.check(11/40)
+************
+$$
+\begin{align*}
+\dfrac{13}{20} - \dfrac{3}{8}
+&= \dfrac{13\cdot 2}{20\cdot 2} - \dfrac{3\cdot 5}{8\cdot 5} \\
+&= \dfrac{26}{40} - \dfrac{15}{40} \\
+&= \dfrac{11}{40}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+
+<!--  Bruchrechnung 0031  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 31:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{2}{7} \cdot 5 = $ [[  10/7  ]]
+@Algebrite.check(10/7)
+************
+$$
+\begin{align*}
+\dfrac{2}{7} \cdot 5 &= \dfrac{2}{7} \cdot \dfrac{5}{1} \\
+&= \dfrac{2 \cdot 5}{7 \cdot 1} \\
+&= \dfrac{10}{7}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{5}{9} \cdot 4 = $ [[  20/9  ]]
+@Algebrite.check(20/9)
+************
+$$
+\begin{align*}
+\dfrac{5}{9} \cdot 4 &= \dfrac{5}{9} \cdot \dfrac{4}{1} \\
+&= \dfrac{5 \cdot 4}{9 \cdot 1} \\
+&= \dfrac{20}{9}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{7}{11} \cdot 3 = $ [[  21/11  ]]
+@Algebrite.check(21/11)
+************
+$$
+\begin{align*}
+\dfrac{7}{11} \cdot 3 &= \dfrac{7}{11} \cdot \dfrac{3}{1} \\
+&= \dfrac{7 \cdot 3}{11 \cdot 1} \\
+&= \dfrac{21}{11}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{4}{13} \cdot 6 = $ [[  24/13  ]]
+@Algebrite.check(24/13)
+************
+$$
+\begin{align*}
+\dfrac{4}{13} \cdot 6 &= \dfrac{4}{13} \cdot \dfrac{6}{1} \\
+&= \dfrac{4 \cdot 6}{13 \cdot 1} \\
+&= \dfrac{24}{13}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{5}{14} \cdot 5 = $ [[  25/14  ]]
+@Algebrite.check(25/14)
+************
+$$
+\begin{align*}
+\dfrac{5}{14} \cdot 5 &= \dfrac{5}{14} \cdot \dfrac{5}{1} \\
+&= \dfrac{5 \cdot 5}{14 \cdot 1} \\
+&= \dfrac{25}{14}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$g)\;\;$__ $  \dfrac{9}{25} \cdot 7 = $ [[  63/25  ]]
+@Algebrite.check(63/25)
+************
+$$
+\begin{align*}
+\dfrac{9}{25} \cdot 7 &= \dfrac{9}{25} \cdot \dfrac{7}{1} \\
+&= \dfrac{9 \cdot 7}{25 \cdot 1} \\
+&= \dfrac{63}{25}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0032  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 32:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{3}{8} \cdot 5 = $ [[  15/8  ]]
+@Algebrite.check(15/8)
+************
+$$
+\begin{align*}
+\dfrac{3}{8} \cdot 5 &= \dfrac{3}{8} \cdot \dfrac{5}{1} \\
+&= \dfrac{3 \cdot 5}{8 \cdot 1} \\
+&= \dfrac{15}{8}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{7}{12} \cdot 4 = $ [[  7/4  ]]
+@Algebrite.check(7/4)
+************
+$$
+\begin{align*}
+\dfrac{7}{12} \cdot 4 &= \dfrac{7}{12} \cdot \dfrac{4}{1} \\
+&= \dfrac{7 \cdot 4}{12 \cdot 1} \\
+&= \dfrac{28}{12} \\
+&= \dfrac{7}{4}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{2}{9} \cdot 7 = $ [[  14/9  ]]
+@Algebrite.check(14/9)
+************
+$$
+\begin{align*}
+\dfrac{2}{9} \cdot 7 &= \dfrac{2}{9} \cdot \dfrac{7}{1} \\
+&= \dfrac{2 \cdot 7}{9 \cdot 1} \\
+&= \dfrac{14}{9}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{11}{15} \cdot 3 = $ [[  33/15  ]]
+@Algebrite.check(33/15)
+************
+$$
+\begin{align*}
+\dfrac{11}{15} \cdot 3 &= \dfrac{11}{15} \cdot \dfrac{3}{1} \\
+&= \dfrac{11 \cdot 3}{15 \cdot 1} \\
+&= \dfrac{33}{15}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{6}{17} \cdot 5 = $ [[  30/17  ]]
+@Algebrite.check(30/17)
+************
+$$
+\begin{align*}
+\dfrac{6}{17} \cdot 5 &= \dfrac{6}{17} \cdot \dfrac{5}{1} \\
+&= \dfrac{6 \cdot 5}{17 \cdot 1} \\
+&= \dfrac{30}{17}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{8}{19} \cdot 2 = $ [[  16/19  ]]
+@Algebrite.check(16/19)
+************
+$$
+\begin{align*}
+\dfrac{8}{19} \cdot 2 &= \dfrac{8}{19} \cdot \dfrac{2}{1} \\
+&= \dfrac{8 \cdot 2}{19 \cdot 1} \\
+&= \dfrac{16}{19}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0033  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 33:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{3}{4} : 2 = $ [[  3/8  ]]
+@Algebrite.check(3/8)
+************
+$$
+\begin{align*}
+\dfrac{3}{4} : 2 &= \dfrac{3}{4} : \dfrac{2}{1} \\
+&= \dfrac{3}{4} \cdot \dfrac{1}{2} \\
+&= \dfrac{3 \cdot 1}{4 \cdot 2} \\
+&= \dfrac{3}{8}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{5}{6} : 5 = $ [[  1/6  ]]
+@Algebrite.check(1/6)
+************
+$$
+\begin{align*}
+\dfrac{5}{6} : 5 &= \dfrac{5}{6} : \dfrac{5}{1} \\
+&= \dfrac{5}{6} \cdot \dfrac{1}{5} \\
+&= \dfrac{5 \cdot 1}{6 \cdot 5} \\
+&= \dfrac{1}{6}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{7}{8} : 7 = $ [[  1/8  ]]
+@Algebrite.check(1/8)
+************
+$$
+\begin{align*}
+\dfrac{7}{8} : 7 &= \dfrac{7}{8} : \dfrac{7}{1} \\
+&= \dfrac{7}{8} \cdot \dfrac{1}{7} \\
+&= \dfrac{7 \cdot 1}{8 \cdot 7} \\
+&= \dfrac{1}{8}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{9}{10} : 3 = $ [[  3/10  ]]
+@Algebrite.check(3/10)
+************
+$$
+\begin{align*}
+\dfrac{9}{10} : 3 &= \dfrac{9}{10} : \dfrac{3}{1} \\
+&= \dfrac{9}{10} \cdot \dfrac{1}{3} \\
+&= \dfrac{9 \cdot 1}{10 \cdot 3} \\
+&= \dfrac{9}{30} \\
+&= \dfrac{3}{10}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{4}{9} : 2 = $ [[  2/9  ]]
+@Algebrite.check(2/9)
+************
+$$
+\begin{align*}
+\dfrac{4}{9} : 2 &= \dfrac{4}{9} : \dfrac{2}{1} \\
+&= \dfrac{4}{9} \cdot \dfrac{1}{2} \\
+&= \dfrac{4 \cdot 1}{9 \cdot 2} \\
+&= \dfrac{4}{18} \\
+&= \dfrac{2}{9}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{10}{11} : 5 = $ [[  2/11  ]]
+@Algebrite.check(2/11)
+************
+$$
+\begin{align*}
+\dfrac{10}{11} : 5 &= \dfrac{10}{11} : \dfrac{5}{1} \\
+&= \dfrac{10}{11} \cdot \dfrac{1}{5} \\
+&= \dfrac{10 \cdot 1}{11 \cdot 5} \\
+&= \dfrac{10}{55} \\
+&= \dfrac{2}{11}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0034  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 34:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $ \dfrac{5}{12} : 5 = $ [[  1/12  ]]
+@Algebrite.check(1/12)
+************
+$$
+\begin{align*}
+\dfrac{5}{12} : 5
+&= \dfrac{5}{12} : \dfrac{5}{1} \\
+&= \dfrac{5}{12} \cdot \dfrac{1}{5} \\
+&= \dfrac{5 \cdot 1}{12 \cdot 5} \\
+&= \dfrac{5}{60}
+= \dfrac{1}{12}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $ \dfrac{7}{15} : 3 = $ [[  7/45  ]]
+@Algebrite.check(7/45)
+************
+$$
+\begin{align*}
+\dfrac{7}{15} : 3
+&= \dfrac{7}{15} : \dfrac{3}{1} \\
+&= \dfrac{7}{15} \cdot \dfrac{1}{3} \\
+&= \dfrac{7 \cdot 1}{15 \cdot 3} \\
+&= \dfrac{7}{45}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $ \dfrac{9}{14} : 6 = $ [[  3/28  ]]
+@Algebrite.check(3/28)
+************
+$$
+\begin{align*}
+\dfrac{9}{14} : 6
+&= \dfrac{9}{14} : \dfrac{6}{1} \\
+&= \dfrac{9}{14} \cdot \dfrac{1}{6} \\
+&= \dfrac{9 \cdot 1}{14 \cdot 6} \\
+&= \dfrac{9}{84}
+= \dfrac{3}{28}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $ \dfrac{11}{18} : 2 = $ [[  11/36  ]]
+@Algebrite.check(11/36)
+************
+$$
+\begin{align*}
+\dfrac{11}{18} : 2
+&= \dfrac{11}{18} : \dfrac{2}{1} \\
+&= \dfrac{11}{18} \cdot \dfrac{1}{2} \\
+&= \dfrac{11 \cdot 1}{18 \cdot 2} \\
+&= \dfrac{11}{36}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $ \dfrac{8}{9} : 4 = $ [[  2/9  ]]
+@Algebrite.check(2/9)
+************
+$$
+\begin{align*}
+\dfrac{8}{9} : 4
+&= \dfrac{8}{9} : \dfrac{4}{1} \\
+&= \dfrac{8}{9} \cdot \dfrac{1}{4} \\
+&= \dfrac{8 \cdot 1}{9 \cdot 4} \\
+&= \dfrac{8}{36}
+= \dfrac{2}{9}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $ \dfrac{13}{20} : 5 = $ [[  13/100  ]]
+@Algebrite.check(13/100)
+************
+$$
+\begin{align*}
+\dfrac{13}{20} : 5
+&= \dfrac{13}{20} : \dfrac{5}{1} \\
+&= \dfrac{13}{20} \cdot \dfrac{1}{5} \\
+&= \dfrac{13 \cdot 1}{20 \cdot 5} \\
+&= \dfrac{13}{100}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0035  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 35:__ **Berechne** den Wert des Terms.
+
+
 
 <section class="flex-container">
 
 
+</section>
+
+
+
+
+<!--  Bruchrechnung 0036  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 36:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
 
 </section>
+
+
+
+
+<!--  Bruchrechnung 0037  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 37:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+
+</section>
+
+
+
+
+<!--  Bruchrechnung 0038  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 38:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+
+</section>
+
+
+
+
+<!--  Bruchrechnung 0039  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 39:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+
+</section>
+
+
+
+
+<!--  Bruchrechnung 0040  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 40:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+
+</section>
+
+
+
+
+<!--  Bruchrechnung 0041  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 41:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+
+</section>
+
+
+
+
+<!--  Bruchrechnung 0042  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 42:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9558,6 +13964,11 @@ __Aufgabe 1:__
 
 
 
+
+<!-- Runden 0011 -->
+
+
+
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 1:__ *Gib* die Zahl gerundet auf drei Nachkommastellen *an*.
 
@@ -9588,6 +13999,7 @@ __$c)\;\;$__ $1,\overline{633} \approx$ [[ 1,634 ]]
 
 
 
+<!-- Runden 0012 -->
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
@@ -9618,6 +14030,7 @@ __$c)\;\;$__ $7,\overline{645891} \approx$ [[ 7,646 ]]
 
 
 
+<!-- Runden 0013 -->
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
@@ -9647,6 +14060,7 @@ __$c)\;\;$__ $0,\overline{45} \approx$ [[ 0,455 ]]
 
 
 
+<!-- Runden 0014 -->
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
@@ -10123,7 +14537,7 @@ __Aufgabe 1:__
 
 
 
-{{|>}} Die *negativen Zahlen* erweitern die *Zahlenmenge* der *natürlichen Zahlen* $\mathbb{N}$ \footnote{$\mathbb{N}=\left\{0,1,2,3,4,...\right\}$} zu den *ganzen Zahlen* $\mathbb{Z} = \left\{-2 , -1 , 0 , 1 , 2\right\}$, indem die *Subtraktion* mit der *Addition* vereinheitlicht wird. Dabei gehört der *Subtraktionsoperator* nun als *Vorzeichen* zu der Zahl dazu.
+{{|>}} Die *negativen Zahlen* erweitern die *Zahlenmenge* der *natürlichen Zahlen* $\mathbb{N}$ zu den *ganzen Zahlen* $\mathbb{Z} = \left\{-2 , -1 , 0 , 1 , 2\right\}$, indem die *Subtraktion* mit der *Addition* vereinheitlicht wird. Dabei gehört der *Subtraktionsoperator* nun als *Vorzeichen* zu der Zahl dazu.
 
 
 
@@ -10234,6 +14648,7 @@ $$
 
 
 
+Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:  \
 
 
 !?[Negative Zahlen](https://www.youtube.com/watch?v=Yt03b6sbMLM)
