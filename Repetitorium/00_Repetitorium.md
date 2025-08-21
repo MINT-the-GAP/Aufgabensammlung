@@ -13726,13 +13726,102 @@ $$
 <!--  Bruchrechnung 0035  -->
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 35:__ **Berechne** den Wert des Terms.
 
 
 
 <section class="flex-container">
 
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{2}{3} \cdot \dfrac{5}{7} = $ [[  10/21  ]]
+@Algebrite.check(10/21)
+************
+$$
+\begin{align*}
+\dfrac{2}{3} \cdot \dfrac{5}{7}
+&= \dfrac{2 \cdot 5}{3 \cdot 7} \\
+&= \dfrac{10}{21}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{3}{4} \cdot \dfrac{5}{7} = $ [[  15/28  ]]
+@Algebrite.check(15/28)
+************
+$$
+\begin{align*}
+\dfrac{3}{4} \cdot \dfrac{5}{7}
+&= \dfrac{3 \cdot 5}{4 \cdot 7} \\
+&= \dfrac{15}{28}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{4}{9} \cdot \dfrac{5}{7} = $ [[  20/63  ]]
+@Algebrite.check(20/63)
+************
+$$
+\begin{align*}
+\dfrac{4}{9} \cdot \dfrac{5}{7}
+&= \dfrac{4 \cdot 5}{9 \cdot 7} \\
+&= \dfrac{20}{63}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{5}{8} \cdot \dfrac{7}{9} = $ [[  35/72  ]]
+@Algebrite.check(35/72)
+************
+$$
+\begin{align*}
+\dfrac{5}{8} \cdot \dfrac{7}{9}
+&= \dfrac{5 \cdot 7}{8 \cdot 9} \\
+&= \dfrac{35}{72}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{3}{10} \cdot \dfrac{7}{11} = $ [[  21/110  ]]
+@Algebrite.check(21/110)
+************
+$$
+\begin{align*}
+\dfrac{3}{10} \cdot \dfrac{7}{11}
+&= \dfrac{3 \cdot 7}{10 \cdot 11} \\
+&= \dfrac{21}{110}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{5}{12} \cdot \dfrac{7}{13} = $ [[  35/156  ]]
+@Algebrite.check(35/156)
+************
+$$
+\begin{align*}
+\dfrac{5}{12} \cdot \dfrac{7}{13}
+&= \dfrac{5 \cdot 7}{12 \cdot 13} \\
+&= \dfrac{35}{156}
+\end{align*}
+$$
+************
+</div>
 
 </section>
 
@@ -13742,13 +13831,102 @@ __Aufgabe 35:__ **Berechne** den Wert des Terms.
 <!--  Bruchrechnung 0036  -->
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 36:__ **Berechne** den Wert des Terms.
 
 
 
 <section class="flex-container">
 
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{2}{5} \cdot \dfrac{3}{7} = $ [[  6/35  ]]
+@Algebrite.check(6/35)
+************
+$$
+\begin{align*}
+\dfrac{2}{5} \cdot \dfrac{3}{7}
+&= \dfrac{2 \cdot 3}{5 \cdot 7} \\
+&= \dfrac{6}{35}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{2}{9} \cdot \dfrac{5}{7} = $ [[  10/63  ]]
+@Algebrite.check(10/63)
+************
+$$
+\begin{align*}
+\dfrac{2}{9} \cdot \dfrac{5}{7}
+&= \dfrac{2 \cdot 5}{9 \cdot 7} \\
+&= \dfrac{10}{63}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{7}{11} \cdot \dfrac{2}{9} = $ [[  14/99  ]]
+@Algebrite.check(14/99)
+************
+$$
+\begin{align*}
+\dfrac{7}{11} \cdot \dfrac{2}{9}
+&= \dfrac{7 \cdot 2}{11 \cdot 9} \\
+&= \dfrac{14}{99}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{5}{14} \cdot \dfrac{3}{11} = $ [[  15/154  ]]
+@Algebrite.check(15/154)
+************
+$$
+\begin{align*}
+\dfrac{5}{14} \cdot \dfrac{3}{11}
+&= \dfrac{5 \cdot 3}{14 \cdot 11} \\
+&= \dfrac{15}{154}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{3}{10} \cdot \dfrac{7}{13} = $ [[  21/130  ]]
+@Algebrite.check(21/130)
+************
+$$
+\begin{align*}
+\dfrac{3}{10} \cdot \dfrac{7}{13}
+&= \dfrac{3 \cdot 7}{10 \cdot 13} \\
+&= \dfrac{21}{130}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{8}{15} \cdot \dfrac{7}{11} = $ [[  56/165  ]]
+@Algebrite.check(56/165)
+************
+$$
+\begin{align*}
+\dfrac{8}{15} \cdot \dfrac{7}{11}
+&= \dfrac{8 \cdot 7}{15 \cdot 11} \\
+&= \dfrac{56}{165}
+\end{align*}
+$$
+************
+</div>
 
 </section>
 
@@ -13758,15 +13936,109 @@ __Aufgabe 36:__ **Berechne** den Wert des Terms.
 <!--  Bruchrechnung 0037  -->
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 37:__ **Berechne** den Wert des Terms.
 
 
 
 <section class="flex-container">
 
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $  \dfrac{3}{8} \cdot \dfrac{5}{7} = $ [[  15/56  ]]
+@Algebrite.check(15/56)
+************
+$$
+\begin{align*}
+\dfrac{3}{8} \cdot \dfrac{5}{7}
+&= \dfrac{3 \cdot 5}{8 \cdot 7} \\
+&= \dfrac{15}{56}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $  \dfrac{11}{9} \cdot \dfrac{7}{10} = $ [[  77/90  ]]
+@Algebrite.check(28/90)
+************
+$$
+\begin{align*}
+\dfrac{11}{9} \cdot \dfrac{7}{10}
+&= \dfrac{11 \cdot 7}{9 \cdot 10} \\
+&= \dfrac{77}{90}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $  \dfrac{2}{11} \cdot \dfrac{9}{13} = $ [[  18/143  ]]
+@Algebrite.check(18/143)
+************
+$$
+\begin{align*}
+\dfrac{2}{11} \cdot \dfrac{9}{13}
+&= \dfrac{2 \cdot 9}{11 \cdot 13} \\
+&= \dfrac{18}{143}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $  \dfrac{5}{12} \cdot \dfrac{7}{8} = $ [[  35/96  ]]
+@Algebrite.check(35/96)
+************
+$$
+\begin{align*}
+\dfrac{5}{12} \cdot \dfrac{7}{8}
+&= \dfrac{5 \cdot 7}{12 \cdot 8} \\
+&= \dfrac{35}{96}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $  \dfrac{5}{13} \cdot \dfrac{5}{14} = $ [[  25/182  ]]
+@Algebrite.check(30/182)
+************
+$$
+\begin{align*}
+\dfrac{5}{13} \cdot \dfrac{5}{14}
+&= \dfrac{5 \cdot 5}{13 \cdot 14} \\
+&= \dfrac{25}{182}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $  \dfrac{7}{15} \cdot \dfrac{4}{11} = $ [[  28/165  ]]
+@Algebrite.check(28/165)
+************
+$$
+\begin{align*}
+\dfrac{7}{15} \cdot \dfrac{4}{11}
+&= \dfrac{7 \cdot 4}{15 \cdot 11} \\
+&= \dfrac{28}{165}
+\end{align*}
+$$
+************
+</div>
 
 </section>
+
+
+
+
+
 
 
 
@@ -13775,12 +14047,60 @@ __Aufgabe 37:__ **Berechne** den Wert des Terms.
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 38:__ **Berechne** den Wert des Terms.
+__Aufgabe 38:__ **Gib** den Kehrwert **an**.
 
 
 
 <section class="flex-container">
 
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $ \dfrac{4}{5} \;\;\Rightarrow\;\; $ [[  5/4  ]] 
+@Algebrite.check(5/4)
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $ \dfrac{9}{7} \;\;\Rightarrow\;\; $ [[  7/9  ]] 
+@Algebrite.check(7/9)
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $ \dfrac{8}{3} \;\;\Rightarrow\;\; $ [[  3/8  ]] 
+@Algebrite.check(3/8)
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $ \dfrac{11}{4} \;\;\Rightarrow\;\; $ [[  4/11  ]] 
+@Algebrite.check(4/11)
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $ \dfrac{7}{13} \;\;\Rightarrow\;\; $ [[  13/7  ]] 
+@Algebrite.check(13/7)
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $ \dfrac{8}{5} \;\;\Rightarrow\;\; $ [[  5/8  ]] 
+@Algebrite.check(5/8)
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$g)\;\;$__ $ \dfrac{9}{4} \;\;\Rightarrow\;\; $ [[  4/9  ]] 
+@Algebrite.check(4/9)
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$h)\;\;$__ $ \dfrac{23}{12} \;\;\Rightarrow\;\; $ [[  12/23  ]] 
+@Algebrite.check(12/23)
+</div>
 
 </section>
 
@@ -13791,14 +14111,66 @@ __Aufgabe 38:__ **Berechne** den Wert des Terms.
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 39:__ **Berechne** den Wert des Terms.
+__Aufgabe 39:__ **Gib** den Kehrwert **an**.
+
 
 
 
 <section class="flex-container">
 
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $ \dfrac{8}{17} \;\;\Rightarrow\;\; $ [[  17/8  ]] 
+@Algebrite.check(17/8)
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $ \dfrac{5}{11} \;\;\Rightarrow\;\; $ [[  11/5  ]] 
+@Algebrite.check(11/5)
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $ \dfrac{6}{7} \;\;\Rightarrow\;\; $ [[  7/6  ]] 
+@Algebrite.check(7/6)
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $ \dfrac{12}{13} \;\;\Rightarrow\;\; $ [[  13/12  ]] 
+@Algebrite.check(13/12)
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ $ \dfrac{21}{83} \;\;\Rightarrow\;\; $ [[  83/21  ]] 
+@Algebrite.check(83/21)
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ $ \dfrac{25}{19} \;\;\Rightarrow\;\; $ [[  19/25  ]] 
+@Algebrite.check(19/25)
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$g)\;\;$__ $ \dfrac{8}{13} \;\;\Rightarrow\;\; $ [[  13/8  ]] 
+@Algebrite.check(13/8)
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$h)\;\;$__ $ \dfrac{51}{23} \;\;\Rightarrow\;\; $ [[  23/51  ]] 
+@Algebrite.check(23/51)
+</div>
 
 </section>
+
+
+
 
 
 
@@ -13806,7 +14178,7 @@ __Aufgabe 39:__ **Berechne** den Wert des Terms.
 <!--  Bruchrechnung 0040  -->
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 40:__ **Berechne** den Wert des Terms.
 
 
@@ -13822,7 +14194,7 @@ __Aufgabe 40:__ **Berechne** den Wert des Terms.
 <!--  Bruchrechnung 0041  -->
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 41:__ **Berechne** den Wert des Terms.
 
 
@@ -13838,7 +14210,7 @@ __Aufgabe 41:__ **Berechne** den Wert des Terms.
 <!--  Bruchrechnung 0042  -->
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 42:__ **Berechne** den Wert des Terms.
 
 
@@ -13851,6 +14223,294 @@ __Aufgabe 42:__ **Berechne** den Wert des Terms.
 
 
 
+<!--  Bruchrechnung 0043  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 43:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+
+</section>
+
+
+
+
+<!--  Bruchrechnung 0044  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 44:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+
+</section>
+
+
+
+
+<!--  Bruchrechnung 0045  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 45:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+
+</section>
+
+
+
+
+<!--  Bruchrechnung 0046  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 46:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+
+</section>
+
+
+
+
+<!--  Bruchrechnung 0047  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 47:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+
+</section>
+
+
+
+
+<!--  Bruchrechnung 0048  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 48:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+
+</section>
+
+
+
+
+<!--  Bruchrechnung 0049  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 49:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+
+</section>
+
+
+
+
+<!--  Bruchrechnung 0050  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 50:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+
+</section>
+
+
+
+
+<!--  Bruchrechnung 0051  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 51:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+
+</section>
+
+
+
+
+<!--  Bruchrechnung 0052  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 52:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+
+</section>
+
+
+
+
+<!--  Bruchrechnung 0053  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 53:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+
+</section>
+
+
+
+
+<!--  Bruchrechnung 0054  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 54:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+
+</section>
+
+
+
+
+<!--  Bruchrechnung 0055  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 55:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+
+</section>
+
+
+
+
+<!--  Bruchrechnung 0056  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 56:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+
+</section>
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0057  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 57:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+
+</section>
+
+
+
+
+<!--  Bruchrechnung 0058  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 58:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+
+</section>
+
+
+
+
+<!--  Bruchrechnung 0059  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 59:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+
+</section>
+
+
+
+
+<!--  Bruchrechnung 0060  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 60:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+
+</section>
 
 
 

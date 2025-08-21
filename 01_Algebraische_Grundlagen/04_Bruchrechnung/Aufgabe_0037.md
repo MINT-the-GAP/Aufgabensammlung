@@ -52,7 +52,6 @@ author: Martin Lommatzsch
 # Multiplikation von Brüchen
 
 
-
 **Berechne** den Wert des Terms.
 
 
@@ -61,14 +60,14 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $  \dfrac{2}{3} \cdot \dfrac{5}{7} = $ [[  10/21  ]]
-@Algebrite.check(10/21)
+__$a)\;\;$__ $  \dfrac{3}{8} \cdot \dfrac{5}{7} = $ [[  15/56  ]]
+@Algebrite.check(15/56)
 ************
 $$
 \begin{align*}
-\dfrac{2}{3} \cdot \dfrac{5}{7}
-&= \dfrac{2 \cdot 5}{3 \cdot 7} \\
-&= \dfrac{10}{21}
+\dfrac{3}{8} \cdot \dfrac{5}{7}
+&= \dfrac{3 \cdot 5}{8 \cdot 7} \\
+&= \dfrac{15}{56}
 \end{align*}
 $$
 ************
@@ -76,14 +75,14 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $  \dfrac{3}{4} \cdot \dfrac{5}{7} = $ [[  15/28  ]]
-@Algebrite.check(15/28)
+__$b)\;\;$__ $  \dfrac{11}{9} \cdot \dfrac{7}{10} = $ [[  77/90  ]]
+@Algebrite.check(28/90)
 ************
 $$
 \begin{align*}
-\dfrac{3}{4} \cdot \dfrac{5}{7}
-&= \dfrac{3 \cdot 5}{4 \cdot 7} \\
-&= \dfrac{15}{28}
+\dfrac{11}{9} \cdot \dfrac{7}{10}
+&= \dfrac{11 \cdot 7}{9 \cdot 10} \\
+&= \dfrac{77}{90}
 \end{align*}
 $$
 ************
@@ -91,14 +90,14 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $  \dfrac{4}{9} \cdot \dfrac{5}{7} = $ [[  20/63  ]]
-@Algebrite.check(20/63)
+__$c)\;\;$__ $  \dfrac{2}{11} \cdot \dfrac{9}{13} = $ [[  18/143  ]]
+@Algebrite.check(18/143)
 ************
 $$
 \begin{align*}
-\dfrac{4}{9} \cdot \dfrac{5}{7}
-&= \dfrac{4 \cdot 5}{9 \cdot 7} \\
-&= \dfrac{20}{63}
+\dfrac{2}{11} \cdot \dfrac{9}{13}
+&= \dfrac{2 \cdot 9}{11 \cdot 13} \\
+&= \dfrac{18}{143}
 \end{align*}
 $$
 ************
@@ -106,14 +105,14 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $  \dfrac{5}{8} \cdot \dfrac{7}{9} = $ [[  35/72  ]]
-@Algebrite.check(35/72)
+__$d)\;\;$__ $  \dfrac{5}{12} \cdot \dfrac{7}{8} = $ [[  35/96  ]]
+@Algebrite.check(35/96)
 ************
 $$
 \begin{align*}
-\dfrac{5}{8} \cdot \dfrac{7}{9}
-&= \dfrac{5 \cdot 7}{8 \cdot 9} \\
-&= \dfrac{35}{72}
+\dfrac{5}{12} \cdot \dfrac{7}{8}
+&= \dfrac{5 \cdot 7}{12 \cdot 8} \\
+&= \dfrac{35}{96}
 \end{align*}
 $$
 ************
@@ -121,14 +120,14 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $  \dfrac{3}{10} \cdot \dfrac{7}{11} = $ [[  21/110  ]]
-@Algebrite.check(21/110)
+__$e)\;\;$__ $  \dfrac{5}{13} \cdot \dfrac{5}{14} = $ [[  25/182  ]]
+@Algebrite.check(30/182)
 ************
 $$
 \begin{align*}
-\dfrac{3}{10} \cdot \dfrac{7}{11}
-&= \dfrac{3 \cdot 7}{10 \cdot 11} \\
-&= \dfrac{21}{110}
+\dfrac{5}{13} \cdot \dfrac{5}{14}
+&= \dfrac{5 \cdot 5}{13 \cdot 14} \\
+&= \dfrac{25}{182}
 \end{align*}
 $$
 ************
@@ -136,20 +135,22 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$f)\;\;$__ $  \dfrac{5}{12} \cdot \dfrac{7}{13} = $ [[  35/156  ]]
-@Algebrite.check(35/156)
+__$f)\;\;$__ $  \dfrac{7}{15} \cdot \dfrac{4}{11} = $ [[  28/165  ]]
+@Algebrite.check(28/165)
 ************
 $$
 \begin{align*}
-\dfrac{5}{12} \cdot \dfrac{7}{13}
-&= \dfrac{5 \cdot 7}{12 \cdot 13} \\
-&= \dfrac{35}{156}
+\dfrac{7}{15} \cdot \dfrac{4}{11}
+&= \dfrac{7 \cdot 4}{15 \cdot 11} \\
+&= \dfrac{28}{165}
 \end{align*}
 $$
 ************
 </div>
 
 </section>
+
+
 
 
 
