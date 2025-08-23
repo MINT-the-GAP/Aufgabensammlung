@@ -37,6 +37,10 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
+import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
+
+import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main/README.md
+
 
 tags: Bruchrechnung, Multiplikation, sehr leicht, sehr niedrig, Berechne
 

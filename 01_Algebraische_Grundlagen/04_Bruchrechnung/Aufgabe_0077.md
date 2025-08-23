@@ -51,6 +51,7 @@ author: Martin Lommatzsch
 
 # Anteilsweise mit Bruchanteilen
 
+
 **Gib** den beschriebenen Anteilswert **an**.
 
 
