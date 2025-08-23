@@ -71,7 +71,7 @@ __$a)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb19.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb19.png)
 
 </center>
 
@@ -88,7 +88,7 @@ __$b)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb20.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb20.png)
 
 </center>
 
@@ -105,7 +105,7 @@ __$c)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb21.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb21.png)
 
 </center>
 
@@ -122,7 +122,7 @@ __$d)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb22.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb22.png)
 
 </center>
 
@@ -139,7 +139,7 @@ __$e)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb23.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb23.png)
 
 </center>
 
@@ -156,7 +156,7 @@ __$f)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb24.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb24.png)
 
 </center>
 

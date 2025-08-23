@@ -65,7 +65,7 @@ author: Martin Lommatzsch
 <center>
 
 <!-- style="width:500px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruch100.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruch100.png)
 
 </center>
 

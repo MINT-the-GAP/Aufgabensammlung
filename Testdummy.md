@@ -293,3 +293,147 @@ K_{\text{Förder}}(x) = K(\min(x,30))
 $$
 Vergleiche grafisch mit $K(x)$ und interpretiere den Unterschied.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+In der Schulküche werden Soßen in Batches angesetzt.  
+Pro Batch werden $\dfrac{3}{7}\,\text{l}$ Tomatenbasis und $\dfrac{5}{12}\,\text{l}$ Gemüsefond gemischt.  
+Beim Köcheln verdampft je Batch $\dfrac{1}{9}$ der Batch-Summe (also von Tomatenbasis plus Fond).  
+Es werden insgesamt zehn Batches zubereitet. Anschließend verwirft die Qualitätskontrolle $\dfrac{1}{8}$ der bis dahin vorhandenen Gesamtmenge.  
+Zum Schluss wird das Ergebnis noch mit Wasser verdünnt, und zwar um $\dfrac{1}{15}$ des ursprünglich geplanten Gesamtvolumens (ohne Verluste), also von zehn Batch-Summen.  
+**Berechne** das schließlich vorhandene Soßenvolumen.  
+
+
+<!-- data-solution-button="5"-->
+[[  1349/189  ]] l
+@Algebrite.check(1349/189)
+************
+$$
+\begin{align*}
+\text{Batch-Summe:}\quad
+& \dfrac{3}{7}\,\text{l} + \dfrac{5}{12}\,\text{l}
+= \left(\dfrac{36}{84} + \dfrac{35}{84}\right)\text{l}
+= \dfrac{71}{84}\,\text{l} \\[6pt]
+\text{Nach Verdampfen je Batch:}\quad
+& \left(1-\dfrac{1}{9}\right)\cdot \dfrac{71}{84}\,\text{l}
+= \dfrac{8}{9}\cdot \dfrac{71}{84}\,\text{l}
+= \dfrac{142}{189}\,\text{l} \\[6pt]
+\text{Nach 10 Batches:}\quad
+& 10\cdot \dfrac{142}{189}\,\text{l}
+= \dfrac{1420}{189}\,\text{l} \\[6pt]
+\text{QC verwirft } \dfrac{1}{8}:\quad
+& \left(1-\dfrac{1}{8}\right)\cdot \dfrac{1420}{189}\,\text{l}
+= \dfrac{7}{8}\cdot \dfrac{1420}{189}\,\text{l}
+= \dfrac{355}{54}\,\text{l} \\[6pt]
+\text{Verdünnung (vom Plan-Volumen):}\quad
+& \dfrac{1}{15}\cdot \left(10\cdot \dfrac{71}{84}\right)\text{l}
+= \dfrac{1}{15}\cdot \dfrac{710}{84}\,\text{l}
+= \dfrac{71}{126}\,\text{l} \\[6pt]
+\text{Endvolumen:}\quad
+& \dfrac{355}{54}\,\text{l} + \dfrac{71}{126}\,\text{l}
+= \dfrac{2485}{378}\,\text{l} + \dfrac{213}{378}\,\text{l}
+= \dfrac{2698}{378}\,\text{l}
+= \dfrac{1349}{189}\,\text{l}
+\end{align*}
+$$
+************

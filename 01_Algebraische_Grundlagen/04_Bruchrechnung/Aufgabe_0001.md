@@ -64,7 +64,7 @@ __$a)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha1.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha1.png)
 
 </center>
 
@@ -80,7 +80,7 @@ __$b)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha2.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha2.png)
 
 </center>
 
@@ -96,7 +96,7 @@ __$c)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha3.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha3.png)
 
 </center>
 
@@ -112,7 +112,7 @@ __$d)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha4.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha4.png)
 
 </center>
 
@@ -128,7 +128,7 @@ __$e)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha5.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha5.png)
 
 </center>
 
@@ -145,7 +145,7 @@ __$f)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha6.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha6.png)
 
 </center>
 
@@ -162,7 +162,7 @@ __$g)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha7.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha7.png)
 
 </center>
 
@@ -179,7 +179,7 @@ __$h)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha8.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha8.png)
 
 </center>
 
@@ -196,7 +196,7 @@ __$i)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha9.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha9.png)
 
 </center>
 
@@ -213,7 +213,7 @@ __$j)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha10.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha10.png)
 
 </center>
 

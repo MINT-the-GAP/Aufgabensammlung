@@ -17948,8 +17948,8 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $  \dfrac{6}{8} \cdot \dfrac{2}{3}  \cdot \dfrac{20}{9}  \cdot \dfrac{15}{2} \cdot \dfrac{7}{3} \cdot \dfrac{18}{5} = $ [[    ]]
-@Algebrite.check()
+__$d)\;\;$__ $  \dfrac{6}{8} \cdot \dfrac{2}{3}  \cdot \dfrac{20}{9}  \cdot \dfrac{15}{2} \cdot \dfrac{7}{3} \cdot \dfrac{18}{5} = $ [[  70  ]]
+@Algebrite.check(70)
 ************
 $$
 \begin{align*}
@@ -19324,7 +19324,7 @@ __$a)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb1.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb1.png)
 
 </center>
 
@@ -19341,7 +19341,7 @@ __$b)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb2.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb2.png)
 
 </center>
 
@@ -19358,7 +19358,7 @@ __$c)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb3.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb3.png)
 
 </center>
 
@@ -19375,7 +19375,7 @@ __$d)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb4.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb4.png)
 
 </center>
 
@@ -19392,7 +19392,7 @@ __$e)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb5.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb5.png)
 
 </center>
 
@@ -19409,7 +19409,7 @@ __$f)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb6.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb6.png)
 
 </center>
 
@@ -19441,7 +19441,7 @@ __$a)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb7.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb7.png)
 
 </center>
 
@@ -19458,7 +19458,7 @@ __$b)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb8.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb8.png)
 
 </center>
 
@@ -19475,7 +19475,7 @@ __$c)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb9.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb9.png)
 
 </center>
 
@@ -19492,7 +19492,7 @@ __$d)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb10.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb10.png)
 
 </center>
 
@@ -19509,7 +19509,7 @@ __$e)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb11.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb11.png)
 
 </center>
 
@@ -19526,7 +19526,7 @@ __$f)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb12.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb12.png)
 
 </center>
 
@@ -19564,7 +19564,7 @@ __$a)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb13.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb13.png)
 
 </center>
 
@@ -19581,7 +19581,7 @@ __$b)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb14.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb14.png)
 
 </center>
 
@@ -19598,7 +19598,7 @@ __$c)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb15.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb15.png)
 
 </center>
 
@@ -19615,7 +19615,7 @@ __$d)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb16.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb16.png)
 
 </center>
 
@@ -19632,7 +19632,7 @@ __$e)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb17.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb17.png)
 
 </center>
 
@@ -19649,7 +19649,7 @@ __$f)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb18.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb18.png)
 
 </center>
 
@@ -19681,7 +19681,7 @@ __$a)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb19.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb19.png)
 
 </center>
 
@@ -19698,7 +19698,7 @@ __$b)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb20.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb20.png)
 
 </center>
 
@@ -19715,7 +19715,7 @@ __$c)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb21.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb21.png)
 
 </center>
 
@@ -19732,7 +19732,7 @@ __$d)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb22.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb22.png)
 
 </center>
 
@@ -19749,7 +19749,7 @@ __$e)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb23.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb23.png)
 
 </center>
 
@@ -19766,7 +19766,7 @@ __$f)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb24.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb24.png)
 
 </center>
 
@@ -19798,7 +19798,7 @@ __$a)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb25.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb25.png)
 
 </center>
 
@@ -19815,7 +19815,7 @@ __$b)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb26.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb26.png)
 
 </center>
 
@@ -19832,7 +19832,7 @@ __$c)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb27.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb27.png)
 
 </center>
 
@@ -19849,7 +19849,7 @@ __$d)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb28.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb28.png)
 
 </center>
 
@@ -19884,7 +19884,7 @@ __$a)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb29.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb29.png)
 
 </center>
 
@@ -19901,7 +19901,7 @@ __$b)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb30.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb30.png)
 
 </center>
 
@@ -19918,7 +19918,7 @@ __$c)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb31.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb31.png)
 
 </center>
 
@@ -19935,7 +19935,7 @@ __$d)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb32.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb32.png)
 
 </center>
 
@@ -19968,7 +19968,7 @@ __$a)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb33.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb33.png)
 
 </center>
 
@@ -19985,7 +19985,7 @@ __$b)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb34.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb34.png)
 
 </center>
 
@@ -20002,7 +20002,7 @@ __$c)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb35.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb35.png)
 
 </center>
 
@@ -20019,7 +20019,7 @@ __$d)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb36.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb36.png)
 
 </center>
 
@@ -20052,7 +20052,7 @@ __$a)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb37.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb37.png)
 
 </center>
 
@@ -20069,7 +20069,7 @@ __$b)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb38.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb38.png)
 
 </center>
 
@@ -20086,7 +20086,7 @@ __$c)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb39.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb39.png)
 
 </center>
 
@@ -20103,7 +20103,7 @@ __$d)\;\;$__
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb40.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb40.png)
 
 </center>
 
@@ -21064,7 +21064,7 @@ __$a)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $20\,$m$^2$.
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc1.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc1.png)
 
 </center>
 
@@ -21081,7 +21081,7 @@ __$b)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $80\,$m$^2$.
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc2.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc2.png)
 
 </center>
 
@@ -21098,7 +21098,7 @@ __$c)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $120\,$m$^2$.
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc3.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc3.png)
 
 </center>
 
@@ -21115,7 +21115,7 @@ __$d)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $240\,$m$^2$.
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc4.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc4.png)
 
 </center>
 
@@ -21132,7 +21132,7 @@ __$e)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $200\,$m$^2$.
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc5.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc5.png)
 
 </center>
 
@@ -21149,7 +21149,7 @@ __$f)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $60\,$m$^2$.
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc6.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc6.png)
 
 </center>
 
@@ -21187,7 +21187,7 @@ __$a)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $90\,$m$^2$.
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc7.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc7.png)
 
 </center>
 
@@ -21204,7 +21204,7 @@ __$b)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $96\,$m$^2$.
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc8.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc8.png)
 
 </center>
 
@@ -21221,7 +21221,7 @@ __$c)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $81\,$m$^2$.
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc9.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc9.png)
 
 </center>
 
@@ -21238,7 +21238,7 @@ __$d)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $560\,$m$^2$.
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc10.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc10.png)
 
 </center>
 
@@ -21255,7 +21255,7 @@ __$e)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $126\,$m$^2$.
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc11.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc11.png)
 
 </center>
 
@@ -21272,7 +21272,7 @@ __$f)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $192\,$m$^2$.
 <center>
 
 <!-- style="width:150px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc12.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc12.png)
 
 </center>
 
@@ -21302,7 +21302,7 @@ __Aufgabe 99:__ **Gib** die Antwort auf die Fragen zu jeder Darstellung **an**.
 <center>
 
 <!-- style="width:500px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruch99.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruch99.png)
 
 </center>
 
@@ -21371,7 +21371,7 @@ __Aufgabe 100:__ **Gib** die Antwort auf die Fragen zu jeder Darstellung **an**.
 <center>
 
 <!-- style="width:500px" -->
-![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruch100.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruch100.png)
 
 </center>
 
@@ -21443,11 +21443,2030 @@ __$III\;\;$__ [[  9/20  ]]
 
 
 
+
+
+
+
 <!--  Bruchrechnung 0101  -->
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 101:__ 
+__Aufgabe 101:__ Eine Pizza wird in $16$ gleich große Stücke geteilt. $\dfrac{3}{8}$ der Pizza werden gegessen.  
+**Bestimme**, wie viele Stücke das sind. 
+
+<!-- data-solution-button="5"-->
+[[  6  ]]
+@Algebrite.check(6)
+************
+$$
+\dfrac{3}{8}\cdot 16 &= \dfrac{3}{8}\cdot \dfrac{16}{1}  \\
+  & = \dfrac{48}{8}  \\
+  & = 48:8  \\
+  & = 6
+$$
+************
+
+
+
+
+
+<!--  Bruchrechnung 0102  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 102:__ Ein Wasserkanister fasst $12$ Liter Wasser. Es wird $\dfrac{1}{3}$ des Wassers entnommen.  
+**Bestimme**, wie viele Liter entnommen werden.  \
+
+<!-- data-solution-button="5"-->
+[[  4  ]] l
+@Algebrite.check(4)
+************
+$$
+\dfrac{1}{3}\cdot 12\,\text{l} & = \dfrac{1}{3} \cdot  \dfrac{12}{1}\,\text{l} \\
+ & = \dfrac{12}{3}\,\text{l} \\
+  & = 12\,\text{l}:3 \\
+  & = 4\,\text{l}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0103  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 103:__ Ein Weg ist $9$ km lang. Mit dem Fahrrad werden $\dfrac{2}{3}$ gefahren, der Rest wird zu Fuß zurückgelegt.  
+**Bestimme**, wie viele Kilometer zu Fuß gegangen werden.  
+
+<!-- data-solution-button="5"-->
+[[  3  ]] km
+@Algebrite.check(3)
+************
+$$
+ 9\,\text{km} - \dfrac{2}{3}\cdot 9\,\text{km} & = 9\,\text{km} - \dfrac{2}{3}\cdot  \dfrac{9}{1}\,\text{km} \\
+ & = 9\,\text{km} - \dfrac{18}{3}\,\text{km} \\
+ & = 9\,\text{km} - 6\,\text{km} \\
+ & = 3\,\text{km}
+$$
+************
+
+
+
+
+
+
+<!--  Bruchrechnung 0104  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 104:__ Ein Kuchen hat eine Masse von $2\,$kg. Davon bleiben $\dfrac{1}{4}$ übrig.  
+**Bestimme** die Masse des restlichen Kuchens.  
+
+<!-- data-solution-button="5"-->
+[[  1/2  ]] kg
+@Algebrite.check(1/2)
+************
+$$
+\dfrac{1}{4}\cdot 2\,\text{kg} = \dfrac{2}{4}\,\text{kg} = \dfrac{1}{2}\,\text{kg}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0105  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 105:__ Ein Behälter enthält $18$ Liter Saft. Davon werden $\dfrac{3}{6}$ ausgeschänkt.  
+**Bestimme**, wie viele Liter im Behälter verbleiben. 
+
+<!-- data-solution-button="5"-->
+[[  9  ]] l
+************
+$$
+18\,\text{l} - \dfrac{3}{6}\cdot 18\,\text{l}
+= 18\,\text{l} - \dfrac{3}{6}\cdot \dfrac{18}{1}\,\text{l}
+= 18\,\text{l} - \dfrac{54}{6}\,\text{l}
+= 18\,\text{l} - 9\,\text{l}
+= 9\,\text{l}
+$$
+************
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0106  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 106:__ Eine Strecke ist $15$ km lang. Davon werden $\dfrac{2}{5}$ mit dem Bus zurückgelegt, der Rest zu Fuß.  
+**Bestimme**, wie viele Kilometer zu Fuß gegangen werden.  
+
+<!-- data-solution-button="5"-->
+[[  9  ]] km
+************
+$$
+15\,\text{km} - \dfrac{2}{5}\cdot 15\,\text{km}
+= 15\,\text{km} - \dfrac{2}{5}\cdot \dfrac{15}{1}\,\text{km}
+= 15\,\text{km} - \dfrac{30}{5}\,\text{km}
+= 15\,\text{km} - 6\,\text{km}
+= 9\,\text{km}
+$$
+************
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0107  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 107:__ Ein Rechteck hat eine Seite von $20$ cm. Die zweite Seite beträgt $\dfrac{2}{5}$ der ersten.  
+**Bestimme** die Länge der zweiten Seite.  
+
+<!-- data-solution-button="5"-->
+[[  8  ]] cm
+************
+$$
+\dfrac{2}{5}\cdot 20\,\text{cm}
+= \dfrac{2}{5}\cdot \dfrac{20}{1}\,\text{cm}
+= \dfrac{40}{5}\,\text{cm}
+= 8\,\text{cm}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0108  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 108:__ Ein Geldbetrag von $30$ € steht zur Verfügung. Es werden $\dfrac{1}{6}$ davon ausgegeben.  
+**Bestimme**, wie viele Euro übrig bleiben. 
+
+[[  25  ]] €
+************
+$$
+30\,\text{€} - \dfrac{1}{6}\cdot 30\,\text{€}
+= 30\,\text{€} - \dfrac{1}{6}\cdot \dfrac{30}{1}\,\text{€}
+= 30\,\text{€} - \dfrac{30}{6}\,\text{€}
+= 30\,\text{€} - 5\,\text{€}
+= 25\,\text{€}
+$$
+************
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0109  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 109:__ Eine Arbeitszeit beträgt $90$ Minuten. Davon sind $\dfrac{3}{10}$ Pause.  
+**Bestimme**, wie viele Minuten gearbeitet werden. 
+
+<!-- data-solution-button="5"-->
+[[  63  ]] min
+************
+$$
+90\,\text{min} - \dfrac{3}{10}\cdot 90\,\text{min}
+= 90\,\text{min} - \dfrac{3}{10}\cdot \dfrac{90}{1}\,\text{min}
+= 90\,\text{min} - \dfrac{270}{10}\,\text{min}
+= 90\,\text{min} - 27\,\text{min}
+= 63\,\text{min}
+$$
+************
+
+
+
+
+
+
+<!--  Bruchrechnung 0110  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 110:__ Für ein Rezept werden $\dfrac{3}{8}$ eines Mehlsacks mit $4$ kg Inhalt benötigt.  
+**Bestimme** die benötigte Mehlmenge als Bruch in kg. 
+
+<!-- data-solution-button="5"-->
+[[  3/2  ]] kg
+@Algebrite.check(3/2)
+************
+$$
+\dfrac{3}{8}\cdot 4\,\text{kg}
+= \dfrac{3}{8}\cdot \dfrac{4}{1}\,\text{kg}
+= \dfrac{12}{8}\,\text{kg}
+= \dfrac{3}{2}\,\text{kg}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0111  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 111:__ Ein Wasserbecken fasst $200$ Liter. Es ist zu $\dfrac{7}{10}$ gefüllt.  
+**Bestimme**, wie viele Liter Wasser im Becken sind.  
+
+<!-- data-solution-button="5"-->
+[[  140  ]] l
+************
+$$
+\dfrac{7}{10}\cdot 200\,\text{l}
+= \dfrac{7}{10}\cdot \dfrac{200}{1}\,\text{l}
+= \dfrac{1400}{10}\,\text{l}
+= 140\,\text{l}
+$$
+************
+
+
+
+
+
+
+<!--  Bruchrechnung 0112  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 112:__ Eine Trainingsrunde beträgt $8$ km. Bereits $\dfrac{1}{4}$ der Strecke sind geschafft.  
+**Bestimme**, wie viele Kilometer noch zu laufen sind. 
+
+<!-- data-solution-button="5"-->
+[[  6  ]] km
+************
+$$
+8\,\text{km} - \dfrac{1}{4}\cdot 8\,\text{km}
+= 8\,\text{km} - \dfrac{1}{4}\cdot \dfrac{8}{1}\,\text{km}
+= 8\,\text{km} - \dfrac{8}{4}\,\text{km}
+= 8\,\text{km} - 2\,\text{km}
+= 6\,\text{km}
+$$
+************
+
+
+
+
+
+
+<!--  Bruchrechnung 0113  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 113:__ Ein Tank enthält $60$ Liter Benzin. Davon werden $\dfrac{2}{5}$ verbraucht.  
+**Bestimme**, wie viele Liter übrig bleiben. 
+
+<!-- data-solution-button="5"-->
+[[ 36 ]] l
+************
+$$
+60\,\text{l} - \dfrac{2}{5}\cdot 60\,\text{l} = 60\,\text{l} - \dfrac{120}{5} = 60\,\text{l} - 24\,\text{l} = 36\,\text{l}
+$$
+************
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0114  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 114:__ Ein Rechteck hat eine Seitenlänge von $12$ cm. Die andere Seitenlänge beträgt $\dfrac{3}{4}$ davon.  
+**Bestimme** die zweite Seitenlänge. 
+
+<!-- data-solution-button="5"-->
+[[ 9 ]] cm
+************
+$$
+\dfrac{3}{4}\cdot 12\,\text{cm} = \dfrac{36}{4}\,\text{cm} = 9\,\text{cm}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0115  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 115:__ Ein Läufer hat eine Strecke von $18$ km zurückzulegen. Am Vormittag läuft er $\dfrac{5}{9}$ der Strecke.  
+**Bestimme**, wie viele Kilometer am Nachmittag noch zu laufen sind. 
+
+<!-- data-solution-button="5"-->
+[[ 8 ]] km
+************
+$$
+18\,\text{km} - \dfrac{5}{9}\cdot 18\,\text{km} = 18\,\text{km} - 10\,\text{km} = 8\,\text{km}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0116  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 116:__ Ein Wassertank fasst $250$ Liter. Er ist zu $\dfrac{3}{10}$ gefüllt.  
+**Bestimme**, wie viele Liter sich im Tank befinden. 
+
+<!-- data-solution-button="5"-->
+[[ 75 ]] l
+************
+$$
+\dfrac{3}{10}\cdot 250\,\text{l} = \dfrac{750}{10}\,\text{l} = 75\,\text{l}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0117  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 117:__ Ein Seil ist $24$ m lang. Es wird $\dfrac{5}{8}$ der Länge benötigt.  
+**Bestimme** die benötigte Seillänge.  
+
+<!-- data-solution-button="5"-->
+[[  15  ]] m
+************
+$$
+\dfrac{5}{8}\cdot 24\,\text{m}
+= \dfrac{5}{8}\cdot \dfrac{24}{1}\,\text{m}
+= \dfrac{120}{8}\,\text{m}
+= 120\,\text{m}:8
+= 15\,\text{m}
+$$
+************
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0118  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 118:__ Eine Strecke ist $18$ cm lang. Davon werden $\dfrac{2}{3}$ markiert, der Rest bleibt unmarkiert.  
+**Bestimme** die unmarkierte Länge.  
+
+<!-- data-solution-button="5"-->
+[[  6  ]] cm
+@Algebrite.check(6)
+************
+$$
+18\,\text{cm} - \dfrac{2}{3}\cdot 18\,\text{cm}
+= 18\,\text{cm} - \dfrac{2}{3}\cdot \dfrac{18}{1}\,\text{cm}
+= 18\,\text{cm} - \dfrac{36}{3}\,\text{cm}
+= 18\,\text{cm} - 12\,\text{cm}
+= 6\,\text{cm}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0119  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 119:__ Ein Budget umfasst $50$ €. Davon werden $\dfrac{3}{5}$ verplant.  
+**Bestimme** den verbleibenden Betrag.  
+
+<!-- data-solution-button="5"-->
+[[  20  ]] €
+************
+$$
+50\,\text{€} - \dfrac{3}{5}\cdot 50\,\text{€}
+= 50\,\text{€} - \dfrac{3}{5}\cdot \dfrac{50}{1}\,\text{€}
+= 50\,\text{€} - \dfrac{150}{5}\,\text{€}
+= 50\,\text{€} - 30\,\text{€}
+= 20\,\text{€}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0120  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 120:__ Die Fläche eines Rechtecks beträgt $40\,\text{cm}^2$. Ein Anteil von $\dfrac{3}{8}$ wird farbig markiert.  
+**Bestimme** die markierte Fläche. 
+
+<!-- data-solution-button="5"-->
+[[  15  ]] cm^2
+************
+$$
+\dfrac{3}{8}\cdot 40\,\text{cm}^2
+= \dfrac{3}{8}\cdot \dfrac{40}{1}\,\text{cm}^2
+= \dfrac{120}{8}\,\text{cm}^2
+= 120\,\text{cm}^2:8
+= 15\,\text{cm}^2
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0121  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 121:__ Eine Übung dauert $80$ Minuten. Die Aufwärmphase umfasst $\dfrac{3}{8}$ der Gesamtzeit.  
+**Berechne** die Dauer der Aufwärmphase. 
+
+<!-- data-solution-button="5"-->
+[[  30  ]] min
+************
+$$
+\dfrac{3}{8}\cdot 80\,\text{min}
+= \dfrac{3}{8}\cdot \dfrac{80}{1}\,\text{min}
+= \dfrac{240}{8}\,\text{min}
+= 30\,\text{min}
+$$
+************
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0122  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 122:__ Ein Reissack enthält $6$ kg. Für ein Projekt wird $\dfrac{5}{12}$ des Inhalts benötigt.  
+**Bestimme** die benötigte Masse als Bruch.  
+
+<!-- data-solution-button="5"-->
+[[  5/2  ]] kg
+@Algebrite.check(5/2)
+************
+$$
+\dfrac{5}{12}\cdot 6\,\text{kg}
+= \dfrac{5}{12}\cdot \dfrac{6}{1}\,\text{kg}
+= \dfrac{30}{12}\,\text{kg}
+= 30\,\text{kg}:12
+= \dfrac{5}{2}\,\text{kg}
+$$
+************
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0123  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 123:__ In der Werkhalle liegt eine Papierrolle von $30\,\text{m}$ Länge bereit. Für einen Zuschnitt wird ein Anteil von $\dfrac{3}{10}$ der Rolle verwendet.  
+**Bestimme** die Länge des zugeschnittenen Stücks. 
+
+<!-- data-solution-button="5"-->
+[[  9  ]] m
+************
+$$
+\dfrac{3}{10}\cdot 30\,\text{m}
+= \dfrac{3}{10}\cdot \dfrac{30}{1}\,\text{m}
+= \dfrac{90}{10}\,\text{m}
+= 9\,\text{m}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0124  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 124:__ Ein Vorratstank enthält zu Beginn $48\,\text{l}$ Wasser. Am Vormittag werden $\dfrac{3}{8}$ des Inhalts verwendet, am Nachmittag danach $\dfrac{1}{4}$ des verbleibenden Inhalts.  
+**Berechne** das Restvolumen im Tank.  
+
+<!-- data-solution-button="5"-->
+[[  45/2  ]] l
+@Algebrite.check(45/2)
+************
+$$
+\begin{align*}
+\text{Vormittag:}\quad & \dfrac{3}{8}\cdot 48\,\text{l}
+= \dfrac{144}{8}\,\text{l}
+= 18\,\text{l} \\
+\text{Rest 1:}\quad & 48\,\text{l} - 18\,\text{l} = 30\,\text{l} \\
+\text{Nachmittag:}\quad & \dfrac{1}{4}\cdot 30\,\text{l}
+= \dfrac{30}{4}\,\text{l}
+= \dfrac{15}{2}\,\text{l} \\
+\text{Endrest:}\quad & 30\,\text{l} - \dfrac{15}{2}\,\text{l}
+= \dfrac{60}{2}\,\text{l} - \dfrac{15}{2}\,\text{l}
+= \dfrac{45}{2}\,\text{l}
+\end{align*}
+$$
+************
+
+
+
+
+
+<!--  Bruchrechnung 0125  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 125:__ Ein rechteckiger Garten besitzt eine Länge von $18\,\text{m}$. Die Breite beträgt $\dfrac{3}{4}$ der Länge. Für ein Blumenbeet wird ein Anteil von $\dfrac{2}{5}$ der gesamten Fläche genutzt.  
+**Berechne** die Fläche des Blumenbeets.  \
+
+<!-- data-solution-button="5"-->
+[[  486/5  ]] m$^2$
+@Algebrite.check(486/5)
+************
+$$
+\begin{align*}
+\text{Breite:}\quad & \dfrac{3}{4}\cdot 18\,\text{m}
+= \dfrac{54}{4}\,\text{m}
+= \dfrac{27}{2}\,\text{m} \\
+\text{Fläche ges.:}\quad & 18\,\text{m}\cdot \dfrac{27}{2}\,\text{m}
+= \dfrac{486}{2}\,\text{m}^2
+= 243\,\text{m}^2 \\
+\text{Beet:}\quad & \dfrac{2}{5}\cdot 243\,\text{m}^2
+= \dfrac{486}{5}\,\text{m}^2
+\end{align*}
+$$
+************
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0126  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 126:__ Für die Reinigung steht eine $5\,\text{l}$-Kanisterlösung bereit. Zuerst verschüttet sich $\dfrac{3}{10}$ des Inhalts, danach wird $\dfrac{1}{4}$ der **verbleibenden** Menge für die Gerätepflege genutzt.  
+**Berechne** das restliche Volumen im Kanister. 
+
+<!-- data-solution-button="5"-->
+[[  21/8  ]] l
+@Algebrite.check(21/8)
+************
+$$
+\begin{align*}
+\text{Verschüttet:}\quad & \dfrac{3}{10}\cdot 5\,\text{l}
+= \dfrac{15}{10}\,\text{l}
+= \dfrac{3}{2}\,\text{l} \\
+\text{Rest 1:}\quad & 5\,\text{l} - \dfrac{3}{2}\,\text{l}
+= \dfrac{10}{2}\,\text{l} - \dfrac{3}{2}\,\text{l}
+= \dfrac{7}{2}\,\text{l} \\
+\text{Verbrauch:}\quad & \dfrac{1}{4}\cdot \dfrac{7}{2}\,\text{l}
+= \dfrac{7}{8}\,\text{l} \\
+\text{Endrest:}\quad & \dfrac{7}{2}\,\text{l} - \dfrac{7}{8}\,\text{l}
+= \dfrac{28}{8}\,\text{l} - \dfrac{7}{8}\,\text{l}
+= \dfrac{21}{8}\,\text{l}
+\end{align*}
+$$
+************
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0127  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 127:__ In einer Bibliothek werden neue Bücher geliefert. Insgesamt kommen $40$ Exemplare an.  
+Am Vormittag wird $\dfrac{1}{5}$ der Bücher sofort in die Regale einsortiert.  
+Am Nachmittag wird von den übrigen Büchern erneut die Hälfte in die Regale gestellt.  
+**Bestimme**, wie viele Bücher am Ende des Tages noch nicht einsortiert sind.  
+
+<!-- data-solution-button="5"-->
+[[  12  ]]
+************
+$$
+\text{Vormittag:}\quad \dfrac{1}{5}\cdot 40 = 8 \quad \Rightarrow \; 40-8 = 32 \text{ Bücher übrig} \\
+\text{Nachmittag:}\quad \dfrac{1}{2}\cdot 32 = 16 \quad \Rightarrow \; 32-16 = 16 \text{ Bücher übrig}
+$$
+************
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0128  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 128:__ Ein Markthändler bringt $24$ Kisten Obst auf den Wochenmarkt.  
+Am Vormittag verkauft er $\dfrac{2}{3}$ seiner Kisten. Danach beschließt er, von den verbleibenden Kisten $\dfrac{1}{4}$ an eine Nachbarhändlerin abzugeben.  
+**Bestimme**, wie viele Kisten er schließlich noch selbst behalten kann. 
+
+<!-- data-solution-button="5"-->
+[[  4  ]]
+************
+$$
+\text{Verkauf:}\quad \dfrac{2}{3}\cdot 24 = 16 \quad \Rightarrow \; 24-16=8 \text{ Kisten übrig} \\
+\text{Abgabe:}\quad \dfrac{1}{4}\cdot 8 = 2 \quad \Rightarrow \; 8-2=6 \text{ Kisten übrig}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0129  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 129:__ Ein rechteckiger Sportplatz hat eine Länge von $30\,\text{m}$. Die Breite beträgt $\dfrac{2}{3}$ dieser Länge.  
+Von der gesamten Fläche soll für ein Turnier nur $\dfrac{5}{6}$ genutzt werden, der Rest wird gesperrt.  
+**Bestimme**, wie groß die gesperrte Fläche ist. 
+
+<!-- data-solution-button="5"-->
+[[  100  ]] m^2
+************
+$$
+\text{Breite:}\quad \dfrac{2}{3}\cdot 30\,\text{m} = 20\,\text{m} \\
+\text{Gesamtfläche:}\quad 30\,\text{m}\cdot 20\,\text{m} = 600\,\text{m}^2 \\
+\text{Turnierfläche:}\quad \dfrac{5}{6}\cdot 600 = 500\,\text{m}^2 \\
+\text{Gesperrt:}\quad 600-500 = 100\,\text{m}^2
+$$
+************
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0130  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 130:__ Ein Wasserbecken fasst insgesamt $120\,\text{l}$. Am Morgen wird es nur zu $\dfrac{2}{5}$ gefüllt.  
+Im Laufe des Tages werden zusätzlich $\dfrac{1}{4}$ des **vollen Beckens** nachgefüllt.  
+**Bestimme**, wie viele Liter Wasser am Abend im Becken sind. 
+
+<!-- data-solution-button="5"-->
+[[  76  ]] l
+************
+$$
+\text{Morgenfüllung:}\quad \dfrac{2}{5}\cdot 120 = 48\,\text{l} \\
+\text{Nachfüllung:}\quad \dfrac{1}{4}\cdot 120 = 30\,\text{l} \\
+\text{Gesamt:}\quad 48\,\text{l} + 30\,\text{l} = 78\,\text{l}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0131  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 131:__ Eine Schulklasse soll neue Hefte bekommen. Insgesamt werden $60$ Hefte geliefert.  
+Zuerst verteilt die Lehrerin $\dfrac{1}{3}$ der Hefte an die Schülerinnen.  
+Von den verbleibenden Heften werden später $\dfrac{1}{2}$ an die Schüler verteilt.  
+**Bestimme**, wie viele Hefte am Ende noch übrig bleiben. 
+
+<!-- data-solution-button="5"-->
+[[  20  ]] Hefte
+************
+$$
+\text{Erste Verteilung:}\quad \dfrac{1}{3}\cdot 60 = 20 \quad \Rightarrow \; 60-20=40 \text{ Hefte} \\
+\text{Zweite Verteilung:}\quad \dfrac{1}{2}\cdot 40 = 20 \quad \Rightarrow \; 40-20=20 \text{ Hefte} \\
+\text{Rest: } 20 \text{ Hefte}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0132  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 132:__ Ein rechteckiger Garten ist $24\,\text{m}$ lang. Die Breite beträgt $\dfrac{5}{8}$ der Länge.  
+Für ein Schulfest wird $\dfrac{3}{4}$ der gesamten Gartenfläche genutzt.  
+**Bestimme**, wie viele Quadratmeter nicht genutzt werden. 
+
+<!-- data-solution-button="5"-->
+[[  90  ]] m$^2$
+************
+$$
+\text{Breite:}\quad \dfrac{5}{8}\cdot 24 = 15\,\text{m} \\
+\text{Fläche:}\quad 24\cdot 15 = 360\,\text{m}^2 \\
+\text{Nutzung:}\quad \dfrac{3}{4}\cdot 360 = 270\,\text{m}^2 \\
+\text{Nicht genutzt: } 360-270 = 90\,\text{m}^2
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0133  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 133:__ Eine Obstkiste wiegt $48\,\text{kg}$. Darin befinden sich Äpfel und Birnen.  
+Die Äpfel machen $\dfrac{5}{12}$ der gesamten Masse aus. Von den restlichen Kilogramm entfallen $\dfrac{2}{3}$ auf Birnen.  
+**Bestimme**, wie viele Kilogramm Obst weder Äpfel noch Birnen sind. 
+
+<!-- data-solution-button="5"-->
+[[  10  ]] kg
+************
+$$
+\text{Äpfel:}\quad \dfrac{5}{12}\cdot 48 = 20\,\text{kg} \\
+\text{Rest:}\quad 48-20 = 28\,\text{kg} \\
+\text{Birnen:}\quad \dfrac{2}{3}\cdot 28 = 18\,\text{kg} \\
+\text{Sonstiges: } 28-18 = 10\,\text{kg}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0134  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 134:__ Ein Zug fährt $180\,\text{km}$. Auf der ersten Teilstrecke werden $\dfrac{2}{5}$ der Gesamtlänge zurückgelegt.  
+Von der verbleibenden Strecke werden anschließend nochmals $\dfrac{3}{4}$ gefahren.  
+**Bestimme**, wie viele Kilometer am Ende noch übrig sind. 
+
+<!-- data-solution-button="5"-->
+[[  27  ]] km
+************
+$$
+\text{Erste Strecke:}\quad \dfrac{2}{5}\cdot 180 = 72\,\text{km} \quad \Rightarrow \; 180-72=108\,\text{km} \\
+\text{Zweite Strecke:}\quad \dfrac{3}{4}\cdot 108 = 81\,\text{km} \quad \Rightarrow \; 108-81=27\,\text{km} \\
+\text{Rest: } 27\,\text{km}
+$$
+************
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0135  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 135:__ Eine Schulbibliothek besitzt $240$ Bücher. Davon sind $\dfrac{3}{8}$ Romane.  
+Von den verbleibenden Büchern sind $\dfrac{2}{5}$ Sachbücher, der Rest sind Zeitschriften.  
+**Bestimme**, wie viele Zeitschriften es gibt. 
+
+<!-- data-solution-button="5"-->
+[[  90  ]] Zeitschriften
+************
+$$
+\text{Romane: } \dfrac{3}{8}\cdot 240 = 90 \\
+\text{Rest: } 240 - 90 = 150 \\
+\text{Sachbücher: } \dfrac{2}{5}\cdot 150 = 60 \\
+\text{Zeitschriften: } 150 - 60 = 90
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0136  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 136:__ Ein Schwimmbecken fasst $120\,\text{m}^3$ Wasser.  
+Zunächst wird es zu $\dfrac{5}{6}$ gefüllt.  
+Dann werden $\dfrac{3}{10}$ des gefüllten Wassers wieder abgelassen.  
+**Bestimme**, wie viele Kubikmeter Wasser nun im Becken sind. 
+
+<!-- data-solution-button="5"-->
+[[  70  ]] m$^3$
+************
+$$
+\text{Gefüllt: } \dfrac{5}{6}\cdot 120 = 100\,\text{m}^3 \\
+\text{Abgelassen: } \dfrac{3}{10}\cdot 100 = 30\,\text{m}^3 \\
+\text{Rest: } 100-30 = 70\,\text{m}^3
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0137  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 137:__ Ein rechteckiges Grundstück ist $48\,\text{m}$ lang und $\dfrac{3}{4}$ so breit.  
+Von der Fläche wird ein Teil als Garten angelegt, der $\dfrac{2}{3}$ der Gesamtfläche einnimmt.  
+**Bestimme**, wie groß die Gartenfläche ist. 
+
+<!-- data-solution-button="5"-->
+[[  576  ]] m$^2$
+************
+$$
+\text{Breite: } \dfrac{3}{4}\cdot 48 = 36\,\text{m} \\
+\text{Fläche: } 48\cdot 36 = 1728\,\text{m}^2 \\
+\text{Gartenfläche: } \dfrac{2}{3}\cdot 1728 = 576\,\text{m}^2
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0138  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 138:__ Ein Vorratssilo enthält $90\,\text{kg}$ Getreide.  
+Davon werden zunächst $\dfrac{2}{9}$ verfüttert.  
+Von der verbleibenden Menge werden dann $\dfrac{3}{5}$ für den Verkauf abgefüllt.  
+**Bestimme**, wie viele Kilogramm Getreide am Ende noch im Silo verbleiben. 
+
+<!-- data-solution-button="5"-->
+[[  30  ]] kg
+************
+$$
+\text{Verfüttert: } \dfrac{2}{9}\cdot 90 = 20\,\text{kg} \\
+\text{Rest: } 90-20 = 70\,\text{kg} \\
+\text{Verkauf: } \dfrac{3}{5}\cdot 70 = 42\,\text{kg} \\
+\text{Endbestand: } 70-42 = 28\,\text{kg}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0139  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 139:__ In der Schulküche wird eine große Suppenportion vorbereitet. Ein Kessel enthält zu Beginn $36\,\text{l}$ Brühe.  
+In der ersten Pause werden $\dfrac{2}{9}$ der gesamten Brühe ausgegeben.  
+In der zweiten Pause werden anschließend $\dfrac{3}{8}$ der verbleibenden Brühe ausgegeben.  
+**Berechne** das Restvolumen im Kessel nach der zweiten Pause. 
+
+<!-- data-solution-button="5"-->
+[[  35/2  ]] l
+@Algebrite.check(35/2)
+************
+$$
+\begin{align*}
+\text{1. Ausgabe:}\quad & \dfrac{2}{9}\cdot 36\,\text{l}
+= \dfrac{2}{9}\cdot \dfrac{36}{1}\,\text{l}
+= \dfrac{72}{9}\,\text{l}
+= 8\,\text{l} \\[4pt]
+\text{Rest 1:}\quad & 36\,\text{l} - 8\,\text{l} = 28\,\text{l} \\[4pt]
+\text{2. Ausgabe:}\quad & \dfrac{3}{8}\cdot 28\,\text{l}
+= \dfrac{3}{8}\cdot \dfrac{28}{1}\,\text{l}
+= \dfrac{84}{8}\,\text{l}
+= \dfrac{21}{2}\,\text{l} \\[4pt]
+\text{Rest ges.:}\quad & 28\,\text{l} - \dfrac{21}{2}\,\text{l}
+= \dfrac{56}{2}\,\text{l} - \dfrac{21}{2}\,\text{l}
+= \dfrac{35}{2}\,\text{l}
+\end{align*}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0140  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 140:__ In der Backstube steht ein Mehlsack mit $24\,\text{kg}$.  
+Am Vormittag werden für Teiglinge $\dfrac{3}{8}$ der Gesamtmasse verbraucht.  
+Am Nachmittag wird für eine zweite Charge die Hälfte der verbleibenden Masse genutzt.  
+**Berechne** die am Ende noch vorhandene Mehlmenge als Bruch. 
+
+<!-- data-solution-button="5"-->
+[[  15/2  ]] kg
+@Algebrite.check(15/2)
+************
+$$
+\begin{align*}
+\text{Vormittag:}\quad & \dfrac{3}{8}\cdot 24\,\text{kg}
+= \dfrac{72}{8}\,\text{kg}
+= 9\,\text{kg} \\[4pt]
+\text{Rest 1:}\quad & 24\,\text{kg} - 9\,\text{kg} = 15\,\text{kg} \\[4pt]
+\text{Nachmittag:}\quad & \dfrac{1}{2}\cdot 15\,\text{kg}
+= \dfrac{15}{2}\,\text{kg} \\[4pt]
+\text{Rest ges.:}\quad & 15\,\text{kg} - \dfrac{15}{2}\,\text{kg}
+= \dfrac{30}{2}\,\text{kg} - \dfrac{15}{2}\,\text{kg}
+= \dfrac{15}{2}\,\text{kg}
+\end{align*}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0141  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 141__ Für einen Schulgarten wird eine rechteckige Fläche abgesteckt. Die Länge beträgt $18\,\text{m}$, die Breite ist $\dfrac{7}{12}$ der Länge.  
+Zunächst werden für Beete $\dfrac{2}{3}$ der gesamten Rasenfläche vorgesehen.  
+Von der verbleibenden Fläche wird anschließend $\dfrac{1}{5}$ für Wege reserviert.  
+**Berechne** die am Ende nutzbare Gartenfläche. 
+
+<!-- data-solution-button="5"-->
+[[  252/5  ]] m^2
+@Algebrite.check(252/5)
+************
+$$
+\begin{align*}
+\text{Breite:}\quad & \dfrac{7}{12}\cdot 18\,\text{m}
+= \dfrac{7}{12}\cdot \dfrac{18}{1}\,\text{m}
+= \dfrac{126}{12}\,\text{m}
+= \dfrac{21}{2}\,\text{m} \\[4pt]
+\text{Gesamtfläche:}\quad & 18\,\text{m}\cdot \dfrac{21}{2}\,\text{m}
+= \dfrac{378}{2}\,\text{m}^2
+= 189\,\text{m}^2 \\[4pt]
+\text{Beete:}\quad & \dfrac{2}{3}\cdot 189\,\text{m}^2
+= 126\,\text{m}^2 \\[4pt]
+\text{Rest 1:}\quad & 189\,\text{m}^2 - 126\,\text{m}^2
+= 63\,\text{m}^2 \\[4pt]
+\text{Wege:}\quad & \dfrac{1}{5}\cdot 63\,\text{m}^2
+= \dfrac{63}{5}\,\text{m}^2 \\[4pt]
+\text{Nutzfläche:}\quad & 63\,\text{m}^2 - \dfrac{63}{5}\,\text{m}^2
+= \dfrac{315}{5}\,\text{m}^2 - \dfrac{63}{5}\,\text{m}^2
+= \dfrac{252}{5}\,\text{m}^2
+\end{align*}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0142  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 142:__ Für ein Technikprojekt steht ein Budget von $85\,\text{€}$ zur Verfügung.  
+Zunächst werden für Materialien $\dfrac{3}{10}$ des Budgets ausgegeben.  
+Später erhält die Gruppe eine Rückerstattung in Höhe von $\dfrac{1}{8}$ des **gesamten** Budgets (Gutschrift).  
+**Berechne** den am Ende verfügbare Betrag als Bruch. 
+
+<!-- data-solution-button="5"-->
+[[  561/8  ]] €
+@Algebrite.check(561/8)
+************
+$$
+\begin{align*}
+\text{Ausgabe:}\quad & \dfrac{3}{10}\cdot 85\,\text{€}
+= \dfrac{255}{10}\,\text{€}
+= \dfrac{51}{2}\,\text{€} \\[4pt]
+\text{Rest nach Kauf:}\quad & 85\,\text{€} - \dfrac{51}{2}\,\text{€}
+= \dfrac{170}{2}\,\text{€} - \dfrac{51}{2}\,\text{€}
+= \dfrac{119}{2}\,\text{€} \\[4pt]
+\text{Gutschrift:}\quad & \dfrac{1}{8}\cdot 85\,\text{€}
+= \dfrac{85}{8}\,\text{€} \\[4pt]
+\text{Endbetrag:}\quad & \dfrac{119}{2}\,\text{€} + \dfrac{85}{8}\,\text{€}
+= \dfrac{476}{8}\,\text{€} + \dfrac{85}{8}\,\text{€}
+= \dfrac{561}{8}\,\text{€}
+\end{align*}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0143  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 143:__ In einer Textilwerkstatt liegt eine Stoffrolle mit $50\,\text{m}$ Länge bereit.  
+Zunächst wird ein Anteil von $\dfrac{3}{5}$ der gesamten Rolle für Vorhänge zugeschnitten.  
+Aus der **verbleibenden** Stoffmenge wird anschließend noch $\dfrac{1}{4}$ für Tischdecken verwendet.  
+**Berechne** die am Ende übrig bleibende Stofflänge. 
+
+<!-- data-solution-button="5"-->
+[[  15  ]] m
+@Algebrite.check(15)
+************
+$$
+\begin{align*}
+\text{Erster Zuschnitt:}\;& \dfrac{3}{5}\cdot 50\,\text{m}
+= \dfrac{150}{5}\,\text{m}
+= 30\,\text{m} \\
+\text{Rest 1:}\;& 50\,\text{m} - 30\,\text{m} = 20\,\text{m} \\
+\text{Zweiter Zuschnitt:}\;& \dfrac{1}{4}\cdot 20\,\text{m}
+= 5\,\text{m} \\
+\text{Endrest:}\;& 20\,\text{m} - 5\,\text{m} = 15\,\text{m}
+\end{align*}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0144  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 144:__ In einem Labor steht ein Kanister mit $25\,\text{l}$ Desinfektionslösung.  
+Zunächst werden $\dfrac{3}{10}$ der **gesamten** Menge entnommen.  
+Am Abend wird eine feste Nachfüllmenge von $\dfrac{1}{8}$ des **vollen** Kanisters wieder aufgefüllt.  
+**Berechne** das Flüssigkeitsvolumen im Kanister am Ende des Tages als Bruch. 
+
+<!-- data-solution-button="5"-->
+[[  165/8  ]] l
+@Algebrite.check(165/8)
+************
+$$
+\begin{align*}
+\text{Entnahme:}\;& \dfrac{3}{10}\cdot 25\,\text{l}
+= \dfrac{75}{10}\,\text{l}
+= \dfrac{15}{2}\,\text{l} \\[4pt]
+\text{Rest nach Entnahme:}\;& 25\,\text{l} - \dfrac{15}{2}\,\text{l}
+= \dfrac{50}{2}\,\text{l} - \dfrac{15}{2}\,\text{l}
+= \dfrac{35}{2}\,\text{l} \\[4pt]
+\text{Nachfüllung (fest):}\;& \dfrac{1}{8}\cdot 25\,\text{l}
+= \dfrac{25}{8}\,\text{l} \\[4pt]
+\text{Endmenge:}\;& \dfrac{35}{2}\,\text{l} + \dfrac{25}{8}\,\text{l}
+= \dfrac{140}{8}\,\text{l} + \dfrac{25}{8}\,\text{l}
+= \dfrac{165}{8}\,\text{l}
+\end{align*}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0145  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 145:__ Für eine Ausstellungsfläche wird eine Holzplatte als Rechteck verwendet.  
+Die Länge beträgt $32\,\text{cm}$, die Breite ist $\dfrac{5}{12}$ der Länge.  
+Von der gesamten Fläche wird zunächst $\dfrac{3}{8}$ für Befestigungen reserviert.  
+Von der **verbleibenden** Fläche wird anschließend $\dfrac{1}{3}$ farbig lackiert.  
+**Berechne** die am Ende **nicht** lackierte Nutzfläche als Bruch. 
+
+<!-- data-solution-button="5"-->
+[[  1600/9  ]] cm^2
+@Algebrite.check(1600/9)
+************
+$$
+\begin{align*}
+\text{Breite:}\;& \dfrac{5}{12}\cdot 32\,\text{cm}
+= \dfrac{160}{12}\,\text{cm}
+= \dfrac{40}{3}\,\text{cm} \\[4pt]
+\text{Gesamtfläche:}\;& 32\,\text{cm}\cdot \dfrac{40}{3}\,\text{cm}
+= \dfrac{1280}{3}\,\text{cm}^2 \\[6pt]
+\text{Reserviert:}\;& \dfrac{3}{8}\cdot \dfrac{1280}{3}\,\text{cm}^2
+= \dfrac{1280}{8}\,\text{cm}^2
+= 160\,\text{cm}^2 \\[4pt]
+\text{Rest 1:}\;& \dfrac{1280}{3}\,\text{cm}^2 - 160\,\text{cm}^2
+= \dfrac{1280-480}{3}\,\text{cm}^2
+= \dfrac{800}{3}\,\text{cm}^2 \\[6pt]
+\text{Lackiert:}\;& \dfrac{1}{3}\cdot \dfrac{800}{3}\,\text{cm}^2
+= \dfrac{800}{9}\,\text{cm}^2 \\[4pt]
+\text{Nicht lackiert:}\;& \dfrac{800}{3}\,\text{cm}^2 - \dfrac{800}{9}\,\text{cm}^2
+= \dfrac{2400-800}{9}\,\text{cm}^2
+= \dfrac{1600}{9}\,\text{cm}^2
+\end{align*}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0146  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 146:__ Eine Buslinie hat eine Tagesetappe von $54\,\text{km}$.  
+Am Morgen werden $\dfrac{4}{9}$ der Gesamtdistanz gefahren.  
+Von der **verbleibenden** Strecke wird nach der Pause nochmals $\dfrac{5}{12}$ zurückgelegt.  
+**Berechne** die am Ende noch ausstehende Strecke als Bruch. 
+
+<!-- data-solution-button="5"-->
+[[  35/2  ]] km
+@Algebrite.check(35/2)
+************
+$$
+\begin{align*}
+\text{Morgens:}\;& \dfrac{4}{9}\cdot 54\,\text{km}
+= \dfrac{216}{9}\,\text{km}
+= 24\,\text{km} \\[4pt]
+\text{Rest 1:}\;& 54\,\text{km} - 24\,\text{km} = 30\,\text{km} \\[6pt]
+\text{Nach der Pause:}\;& \dfrac{5}{12}\cdot 30\,\text{km}
+= \dfrac{150}{12}\,\text{km}
+= \dfrac{25}{2}\,\text{km} \\[4pt]
+\text{Endrest:}\;& 30\,\text{km} - \dfrac{25}{2}\,\text{km}
+= \dfrac{60}{2}\,\text{km} - \dfrac{25}{2}\,\text{km}
+= \dfrac{35}{2}\,\text{km}
+\end{align*}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0147  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 147:__ In einer Werkstatt sollen identische Musterstücke aus Stoff vorbereitet werden.  
+Pro Musterstück werden $\dfrac{2}{3}\,\text{m}$ Stoff für die Fläche und zusätzlich $\dfrac{1}{4}\,\text{m}$ für Säume benötigt.  
+Es werden $3$ Musterstücke gefertigt; anschließend wird für eine Probe noch $\dfrac{1}{2}\,\text{m}$ Stoff bereitgelegt.  
+**Berechne** die gesamte Stofflänge. 
+
+<!-- data-solution-button="5"-->
+[[  13/4  ]] m
+@Algebrite.check(13/4)
+************
+$$
+\begin{align*}
+\text{Term:}\quad & 3\cdot\Big(\dfrac{2}{3}\,\text{m}+\dfrac{1}{4}\,\text{m}\Big)+\dfrac{1}{2}\,\text{m} \\[4pt]
+\text{(Distributivgesetz)}\quad & = 3\cdot\dfrac{2}{3}\,\text{m} + 3\cdot\dfrac{1}{4}\,\text{m} + \dfrac{1}{2}\,\text{m} \\
+&= 2\,\text{m} + \dfrac{3}{4}\,\text{m} + \dfrac{1}{2}\,\text{m}
+= 2\,\text{m} + \Big(\dfrac{3}{4}+\dfrac{2}{4}\Big)\text{m} \\
+&= 2\,\text{m} + \dfrac{5}{4}\,\text{m}
+= \dfrac{8}{4}\,\text{m} + \dfrac{5}{4}\,\text{m}
+= \dfrac{13}{4}\,\text{m}
+\end{align*}
+$$
+************
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0148  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 148:__ In einem Labor werden Reinigungsmischungen angesetzt.  
+Eine Mischung besteht aus $\dfrac{3}{8}\,\text{l}$ Lösung A und $\dfrac{1}{4}\,\text{l}$ Lösung B.  
+Es werden $6$ Mischungen hergestellt; danach werden für Tests $\dfrac{2}{3}\,\text{l}$ des **Gesamtergebnisses** entnommen.  
+**Bestimme** die verbleibende Flüssigkeitsmenge. 
+
+<!-- data-solution-button="5"-->
+[[  37/12  ]] l
+@Algebrite.check(37/12)
+************
+$$
+\begin{align*}
+\text{Term:}\quad & 6\cdot\Big(\dfrac{3}{8}\,\text{l}+\dfrac{1}{4}\,\text{l}\Big)-\dfrac{2}{3}\,\text{l} \\[4pt]
+\text{(Distributivgesetz)}\quad & = 6\cdot\dfrac{3}{8}\,\text{l} + 6\cdot\dfrac{1}{4}\,\text{l} - \dfrac{2}{3}\,\text{l} \\
+&= \dfrac{18}{8}\,\text{l} + \dfrac{6}{4}\,\text{l} - \dfrac{2}{3}\,\text{l}
+= \dfrac{9}{4}\,\text{l} + \dfrac{3}{2}\,\text{l} - \dfrac{2}{3}\,\text{l} \\
+&= \Big(\dfrac{9}{4}+\dfrac{6}{4}\Big)\text{l} - \dfrac{2}{3}\,\text{l}
+= \dfrac{15}{4}\,\text{l} - \dfrac{2}{3}\,\text{l} \\
+&= \dfrac{45}{12}\,\text{l} - \dfrac{8}{12}\,\text{l}
+= \dfrac{37}{12}\,\text{l}
+\end{align*}
+$$
+************
+
+
+
+
+
+
+<!--  Bruchrechnung 0149  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 149:__ Für ein Ausstellungsmodell werden Rahmen gebaut.  
+Jeder Rahmen benötigt $\dfrac{3}{2}\,\text{m}$ Leisten für die langen Kanten und $\dfrac{3}{4}\,\text{m}$ für die kurzen Kanten.  
+Beim Anpassen fällt pro Rahmen Verschnitt von $\dfrac{1}{6}\,\text{m}$ an, der von der benötigten Länge abgezogen wird.  
+Es werden $4$ identische Rahmen gefertigt.  
+**Berechne** die gesamte tatsächlich benötigte Leistenlänge. 
+
+<!-- data-solution-button="5"-->
+[[  25/3  ]] m
+@Algebrite.check(25/3)
+************
+$$
+\begin{align*}
+\text{Term:}\quad & 4\cdot\Big( \big(\dfrac{3}{2}+\dfrac{3}{4}\big)\text{ m} - \dfrac{1}{6}\,\text{m} \Big) \\[4pt]
+\text{Klammer:}\quad & \dfrac{3}{2}+\dfrac{3}{4}=\dfrac{6}{4}+\dfrac{3}{4}=\dfrac{9}{4} \\
+&\Rightarrow \; 4\cdot\Big(\dfrac{9}{4}\,\text{m} - \dfrac{1}{6}\,\text{m}\Big)
+= 4\cdot\Big(\dfrac{27}{12}-\dfrac{2}{12}\Big)\text{ m} \\
+&= 4\cdot\dfrac{25}{12}\,\text{m}
+= \dfrac{100}{12}\,\text{m}
+= \dfrac{25}{3}\,\text{m}
+\end{align*}
+$$
+************
+
+
+
+
+
+
+<!--  Bruchrechnung 0150  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 150:__ Ein modularer Garten besteht aus drei identischen Beeten.  
+Jedes Beet setzt sich aus einer Hauptfläche mit Breite $\dfrac{4}{5}\,\text{m}$ und einer Seitenfläche mit Breite $\dfrac{1}{2}\,\text{m}$ zusammen; die Länge beträgt jeweils $6\,\text{m}$.  
+Aus ästhetischen Gründen bleibt je Beet ein Randstreifen von $\dfrac{1}{10}$ der jeweiligen **Beetfläche** unbepflanzt.  
+**Berechne** die gesamte bepflanzte Fläche der drei Beete. 
+
+<!-- data-solution-button="5"-->
+[[  1053/50  ]] m$^2$
+@Algebrite.check(1053/50)
+************
+$$
+\begin{align*}
+\text{Beetfläche:}\quad & 6\,\text{m}\cdot\Big(\dfrac{4}{5}\,\text{m}+\dfrac{1}{2}\,\text{m}\Big)
+= 6\cdot\Big(\dfrac{4}{5}+\dfrac{1}{2}\Big)\text{ m}^2 \\[2pt]
+&= 6\cdot\Big(\dfrac{8}{10}+\dfrac{5}{10}\Big)\text{ m}^2
+= 6\cdot\dfrac{13}{10}\,\text{m}^2
+= \dfrac{78}{10}\,\text{m}^2
+= \dfrac{39}{5}\,\text{m}^2 \\[6pt]
+\text{Bepflanzt je Beet:}\quad & \Big(1-\dfrac{1}{10}\Big)\cdot\dfrac{39}{5}
+= \dfrac{9}{10}\cdot\dfrac{39}{5}
+= \dfrac{351}{50}\,\text{m}^2 \\[6pt]
+\text{Gesamt (3 Beete):}\quad & 3\cdot\dfrac{351}{50}
+= \dfrac{1053}{50}\,\text{m}^2
+\end{align*}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0151  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 151:__ Für eine Ausstellung werden vier identische Rahmen gebaut.  
+Je Rahmen werden zunächst $\dfrac{5}{6}\,\text{m}$ Leisten für die langen Kanten und $\dfrac{1}{3}\,\text{m}$ für die kurzen Kanten benötigt.  
+Zusätzlich wird pro Rahmen ein Verschnitt von $\dfrac{1}{8}$ der je Rahmen benötigten Leistenlänge einkalkuliert.  
+Am Ende bleiben insgesamt $\dfrac{1}{2}\,\text{m}$ Rest übrig, der abgezogen wird.  
+**Berechne** die gesamte tatsächlich benötigte Leistenlänge.  
+
+
+<!-- data-solution-button="5"-->
+[[  19/4  ]] m
+@Algebrite.check(19/4)
+************
+$$
+\begin{align*}
+\text{Basis je Rahmen:}\quad 
+&\left(\dfrac{5}{6} + \dfrac{1}{3}\right)\,\text{m}
+= \left(\dfrac{5}{6} + \dfrac{2}{6}\right)\,\text{m}
+= \dfrac{7}{6}\,\text{m} \\[4pt]
+\text{Mit Verschnitt je Rahmen:}\quad
+&\left(1+\dfrac{1}{8}\right)\cdot \dfrac{7}{6}\,\text{m}
+= \dfrac{9}{8}\cdot \dfrac{7}{6}\,\text{m}
+= \dfrac{63}{48}\,\text{m}
+= \dfrac{21}{16}\,\text{m} \\[6pt]
+\text{Für 4 Rahmen:}\quad 
+&4\cdot \dfrac{21}{16}\,\text{m} 
+= \dfrac{84}{16}\,\text{m}
+= \dfrac{21}{4}\,\text{m} \\[6pt]
+\text{Abzug Rest:}\quad 
+&\dfrac{21}{4}\,\text{m} - \dfrac{1}{2}\,\text{m}
+= \dfrac{21}{4}\,\text{m} - \dfrac{2}{4}\,\text{m}
+= \dfrac{19}{4}\,\text{m}
+\end{align*}
+$$
+************
+
+
+
+
+
+
+<!--  Bruchrechnung 0152  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 152:__ In einem Labor werden Mischungen angesetzt.  
+Eine \emph{Mischung} besteht aus $\dfrac{3}{5}\,\text{l}$ Lösung A und $\dfrac{1}{4}\,\text{l}$ Lösung B.  
+Es werden sieben Mischungen hergestellt. Anschließend werden $\dfrac{2}{7}$ der gesamten hergestellten Menge zur Kalibrierung entnommen, danach werden noch $\dfrac{1}{3}\,\text{l}$ destilliertes Wasser zugegeben.  
+**Berechne** das endgültige Volumen.  
+
+
+<!-- data-solution-button="5"-->
+[[  55/12  ]] l
+@Algebrite.check(55/12)
+************
+$$
+\begin{align*}
+\text{Summe je Mischung:}\quad 
+&\left(\dfrac{3}{5}+\dfrac{1}{4}\right)\,\text{l}
+= \left(\dfrac{12}{20}+\dfrac{5}{20}\right)\,\text{l}
+= \dfrac{17}{20}\,\text{l} \\[4pt]
+\text{Gesamt vor Entnahme:}\quad 
+&7\cdot \dfrac{17}{20}\,\text{l}
+= \dfrac{119}{20}\,\text{l} \\[6pt]
+\text{Kalibrier-Entnahme:}\quad 
+&\dfrac{2}{7}\cdot \dfrac{119}{20}\,\text{l}
+= \dfrac{238}{140}\,\text{l}
+= \dfrac{17}{10}\,\text{l} \\[6pt]
+\text{Nach Entnahme:}\quad 
+&\dfrac{119}{20}\,\text{l} - \dfrac{17}{10}\,\text{l}
+= \dfrac{119}{20}\,\text{l} - \dfrac{34}{20}\,\text{l}
+= \dfrac{85}{20}\,\text{l}
+= \dfrac{17}{4}\,\text{l} \\[6pt]
+\text{Zugabe Wasser:}\quad 
+&\dfrac{17}{4}\,\text{l} + \dfrac{1}{3}\,\text{l}
+= \dfrac{51}{12}\,\text{l} + \dfrac{4}{12}\,\text{l}
+= \dfrac{55}{12}\,\text{l}
+\end{align*}
+$$
+************
+
+
+
+
+
+
+<!--  Bruchrechnung 0153  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 153:__ Für eine Sammelaktion bringt jede der \textbf{8} Klassen denselben Beitrag:  
+pro Klasse $\left(\dfrac{3}{5}\,\text{kg} + \dfrac{1}{4}\,\text{kg}\right)$ Papier.  
+Von der gesamten eingesammelten Masse wird anschließend $\dfrac{1}{5}$ direkt recycelt.  
+Der verbleibende Rest wird gleichmäßig auf sechs Kisten verteilt.  
+**Berechne** die Masse pro Kiste als Bruch. 
+
+
+<!-- data-solution-button="5"-->
+[[  68/75  ]] kg
+@Algebrite.check(68/75)
+************
+$$
+\begin{align*}
+\text{Pro Klasse:}\quad 
+&\left(\dfrac{3}{5}+\dfrac{1}{4}\right)\,\text{kg}
+= \left(\dfrac{12}{20}+\dfrac{5}{20}\right)\,\text{kg}
+= \dfrac{17}{20}\,\text{kg} \\[4pt]
+\text{Gesamt:}\quad 
+&8\cdot \dfrac{17}{20}\,\text{kg}
+= \dfrac{136}{20}\,\text{kg}
+= \dfrac{34}{5}\,\text{kg} \\[6pt]
+\text{Nach Recycling:}\quad 
+&\left(1-\dfrac{1}{5}\right)\cdot \dfrac{34}{5}\,\text{kg}
+= \dfrac{4}{5}\cdot \dfrac{34}{5}\,\text{kg}
+= \dfrac{136}{25}\,\text{kg} \\[6pt]
+\text{Gleichmäßig auf 6 Kisten:}\quad 
+&\dfrac{136}{25}\,\text{kg} : 6
+= \dfrac{136}{25}\,\text{kg} \cdot \dfrac{1}{6}
+= \dfrac{136}{150}\,\text{kg}
+= \dfrac{68}{75}\,\text{kg}
+\end{align*}
+$$
+************
+
+
+
+
+
+
+<!--  Bruchrechnung 0154  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 154:__ In einer Druckerei werden großformatige Plakate produziert. Für jedes Plakat werden $\dfrac{7}{10}\,\text{m}^2$ Papier für die Druckfläche und zusätzlich $\dfrac{1}{8}\,\text{m}^2$ als Rand verwendet.  
+Es werden insgesamt acht Plakate hergestellt. Nach dem Zuschneiden gehen $\dfrac{3}{20}$ der gesamten bisher verwendeten Fläche als Verschnitt verloren.  
+Anschließend muss wegen eines Fehldrucks noch einmal $\dfrac{1}{4}\,\text{m}^2$ nachgedruckt werden.  
+**Berechne** die schließlich verbrauchte Papierfläche. 
+
+
+<!-- data-solution-button="5"-->
+[[  293/50  ]] m$^2$
+@Algebrite.check(293/50)
+************
+$$
+\begin{align*}
+\text{Term:}\quad 
+&\left[\,8\cdot\left(\dfrac{7}{10}+\dfrac{1}{8}\right)\right]\cdot\left(1-\dfrac{3}{20}\right)\;+\;\dfrac{1}{4}\;\;\text{m}^2 \\[6pt]
+\text{Pro Plakat:}\quad 
+&\left(\dfrac{7}{10}+\dfrac{1}{8}\right)
+= \left(\dfrac{28}{40}+\dfrac{5}{40}\right)
+= \dfrac{33}{40} \\[6pt]
+\text{Für 8 Plakate:}\quad 
+&8\cdot\dfrac{33}{40}
+= \dfrac{264}{40}
+= \dfrac{33}{5} \\[6pt]
+\text{Nach Verschnitt:}\quad 
+&\dfrac{33}{5}\cdot\left(1-\dfrac{3}{20}\right)
+= \dfrac{33}{5}\cdot\dfrac{17}{20}
+= \dfrac{561}{100} \\[6pt]
+\text{Nachdruck addieren:}\quad 
+&\dfrac{561}{100} + \dfrac{1}{4}
+= \dfrac{561}{100} + \dfrac{25}{100}
+= \dfrac{586}{100}
+= \dfrac{293}{50} \\[4pt]
+&\Rightarrow\;\; \dfrac{293}{50}\,\text{m}^2
+\end{align*}
+$$
+************
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0155  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/5.png" width="120" height="30">  \
+__Aufgabe 155:__ Für eine Materialserie werden identische Stoff-Kits vorbereitet.  
+Je Kit werden $\dfrac{7}{12}\,\text{m}$ Stoff für die Außenflächen und $\dfrac{3}{8}\,\text{m}$ für das Innenfutter bereitgelegt.  
+Pro Kit fällt zusätzlich Verschnitt in Höhe von $\dfrac{1}{6}$ der Kit-Grundlänge an (die Kit-Grundlänge ist die Summe aus Außen- und Innenanteil).  
+Es werden fünf Kits gefertigt. Zusätzlich werden drei Teststreifen geschnitten, wobei jeder Teststreifen $\dfrac{1}{4}$ der Kit-Grundlänge entspricht (ohne Verschnitt).  
+Von der bis dahin vorbereiteten Gesamtlänge werden anschließend $\dfrac{2}{15}$ zurückgegeben. Zum Abschluss kommen $\dfrac{1}{5}\,\text{m}$ aus Restbeständen dazu.  
+**Berechne** die schließlich benötigte Stofflänge. 
+
+
+<!-- data-solution-button="5"-->
+[[  4897/864  ]] m
+@Algebrite.check(4897/864)
+************
+$$
+\begin{align*}
+\text{Kit-Grundlänge:}\quad 
+& \dfrac{7}{12}\,\text{m}+\dfrac{3}{8}\,\text{m}
+= \dfrac{14}{24}\,\text{m}+\dfrac{9}{24}\,\text{m}
+= \dfrac{23}{24}\,\text{m} \\[6pt]
+\text{Verschnitt je Kit:}\quad 
+& \dfrac{1}{6}\cdot \dfrac{23}{24}\,\text{m}
+= \dfrac{23}{144}\,\text{m} \\[6pt]
+\text{Je Kit inkl. Verschnitt:}\quad 
+& \dfrac{23}{24}\,\text{m}+\dfrac{23}{144}\,\text{m}
+= \dfrac{161}{144}\,\text{m} \\[6pt]
+\text{Fünf Kits:}\quad 
+& 5\cdot\dfrac{161}{144}\,\text{m}
+= \dfrac{805}{144}\,\text{m} \\[6pt]
+\text{Drei Teststreifen:}\quad 
+& 3\cdot\left(\dfrac{1}{4}\cdot\dfrac{23}{24}\right)\,\text{m}
+= 3\cdot\dfrac{23}{96}\,\text{m}
+= \dfrac{23}{32}\,\text{m} \\[6pt]
+\text{Zwischensumme:}\quad 
+& \dfrac{805}{144}\,\text{m}+\dfrac{23}{32}\,\text{m}
+= \dfrac{1817}{288}\,\text{m} \\[6pt]
+\text{Rückgabe:}\quad 
+& \left(1-\dfrac{2}{15}\right)\cdot\dfrac{1817}{288}\,\text{m}
+= \dfrac{13}{15}\cdot\dfrac{1817}{288}\,\text{m}
+= \dfrac{23621}{4320}\,\text{m} \\[6pt]
+\text{Restbestand hinzu:}\quad 
+& \dfrac{23621}{4320}\,\text{m}+\dfrac{1}{5}\,\text{m}
+= \dfrac{23621}{4320}\,\text{m}+\dfrac{864}{4320}\,\text{m} \\[4pt]
+&= \dfrac{24485}{4320}\,\text{m}
+= \dfrac{4897}{864}\,\text{m}
+\end{align*}
+$$
+************
+
+
+
+
+
+
+<!--  Bruchrechnung 0156  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/5.png" width="120" height="30">  \
+__Aufgabe 156:__ Für eine Laborreihe werden Mischungen angesetzt.  
+Pro Dose werden $\dfrac{2}{3}\,\text{l}$ Grundlösung und $\dfrac{3}{10}\,\text{l}$ Zusatzlösung kombiniert.  
+Beim Ansetzen geht je Dose $\dfrac{1}{12}$ der Mischsumme als Verlust ab (die Mischsumme ist $\dfrac{2}{3}\,\text{l}+\dfrac{3}{10}\,\text{l}$).  
+Es werden sechs Dosen hergestellt. Danach wird $\dfrac{3}{8}$ der bis dahin vorhandenen Gesamtmenge für Tests entnommen.  
+Zum Schluss werden pro hergestellter Dose nochmals $\dfrac{1}{5}\,\text{l}$ destilliertes Wasser zugegeben.  
+**Bestimme** das endgültige Volumen. 
+
+
+
+<!-- data-solution-button="5"-->
+[[  2171/480  ]] l
+@Algebrite.check(2171/480)
+************
+$$
+\begin{align*}
+\text{Mischsumme je Dose:}\quad
+& \dfrac{2}{3}\,\text{l}+\dfrac{3}{10}\,\text{l}
+= \dfrac{20}{30}\,\text{l}+\dfrac{9}{30}\,\text{l}
+= \dfrac{29}{30}\,\text{l} \\[6pt]
+\text{Verlust je Dose:}\quad
+& \dfrac{1}{12}\cdot\dfrac{29}{30}\,\text{l}
+= \dfrac{29}{360}\,\text{l} \\[6pt]
+\text{Je Dose nach Verlust:}\quad
+& \left(\dfrac{29}{30}-\dfrac{29}{360}\right)\,\text{l}
+= \dfrac{319}{360}\,\text{l} \\[6pt]
+\text{Sechs Dosen:}\quad
+& 6\cdot\dfrac{319}{360}\,\text{l}
+= \dfrac{319}{60}\,\text{l} \\[6pt]
+\text{Entnahme Tests:}\quad
+& \left(1-\dfrac{3}{8}\right)\cdot\dfrac{319}{60}\,\text{l}
+= \dfrac{5}{8}\cdot\dfrac{319}{60}\,\text{l}
+= \dfrac{319}{96}\,\text{l} \\[6pt]
+\text{Zugabe Wasser:}\quad
+& 6\cdot\dfrac{1}{5}\,\text{l}
+= \dfrac{6}{5}\,\text{l}
+= \dfrac{576}{480}\,\text{l} \\[6pt]
+\text{Endvolumen:}\quad
+& \dfrac{319}{96}\,\text{l} + \dfrac{6}{5}\,\text{l}
+= \dfrac{1595}{480}\,\text{l} + \dfrac{576}{480}\,\text{l}
+= \dfrac{2171}{480}\,\text{l}
+\end{align*}
+$$
+************
+
+
+
+<!--  Bruchrechnung 0157  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/5.png" width="120" height="30">  \
+__Aufgabe 157:__ Für eine Kleinserie werden identische Montagesets vorbereitet.  
+Pro Set werden für die Grundplatte $\dfrac{3}{4}\,\text{m}$ Metallleiste und für die Verstärkung $\dfrac{2}{5}\,\text{m}$ zusätzlich benötigt.  
+Je Set kommt ein Verstärkungszuschlag in Höhe von $\dfrac{1}{6}$ der Set-Grundlänge (Summe aus Grundplatte und Verstärkung) hinzu.  
+Es werden sechs Sets fertiggestellt. Anschließend werden $\dfrac{2}{9}$ der bis dahin insgesamt verwendeten Länge als Ausschuss verworfen.  
+Zum Schluss können $\dfrac{1}{4}\,\text{m}$ aus Reststücken wiederverwendet werden (werden addiert).  
+**Berechne** die schließlich benötigte Leistenlänge.  
+
+<!-- data-solution-button="5"-->
+[[  293/45  ]] m
+@Algebrite.check(293/45)
+************
+$$
+\begin{align*}
+\text{Set-Grundlänge:}\quad
+& \dfrac{3}{4}\,\text{m} + \dfrac{2}{5}\,\text{m}
+= \left(\dfrac{15}{20}+\dfrac{8}{20}\right)\text{m}
+= \dfrac{23}{20}\,\text{m} \\[6pt]
+\text{Zuschlag je Set:}\quad
+& \dfrac{1}{6}\cdot \dfrac{23}{20}\,\text{m}
+= \dfrac{23}{120}\,\text{m} \\[6pt]
+\text{Summe je Set:}\quad
+& \dfrac{23}{20}\,\text{m} + \dfrac{23}{120}\,\text{m}
+= \left(\dfrac{138}{120}+\dfrac{23}{120}\right)\text{m}
+= \dfrac{161}{120}\,\text{m} \\[6pt]
+\text{Vor Ausschuss (6 Sets):}\quad
+& 6\cdot \dfrac{161}{120}\,\text{m}
+= \dfrac{161}{20}\,\text{m} \\[6pt]
+\text{Nach Ausschuss:}\quad
+& \left(1-\dfrac{2}{9}\right)\cdot \dfrac{161}{20}\,\text{m}
+= \dfrac{7}{9}\cdot \dfrac{161}{20}\,\text{m}
+= \dfrac{1127}{180}\,\text{m} \\[6pt]
+\text{Reststücke addieren:}\quad
+& \dfrac{1127}{180}\,\text{m} + \dfrac{1}{4}\,\text{m}
+= \dfrac{1127}{180}\,\text{m} + \dfrac{45}{180}\,\text{m}
+= \dfrac{1172}{180}\,\text{m}
+= \dfrac{293}{45}\,\text{m}
+\end{align*}
+$$
+************
+
+
+
+<!--  Bruchrechnung 0158  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/5.png" width="120" height="30">  \
+__Aufgabe 158:__ Für einen Schulhof wird eine rechteckige Aktionsfläche angelegt.  
+Die Länge beträgt $27\,\text{m}$, die Breite ist $\dfrac{2}{3}$ der Länge.  
+Zuerst werden für Spielfelder $\dfrac{5}{12}$ der gesamten Fläche markiert.  
+Von der verbleibenden Fläche werden anschließend $\dfrac{3}{7}$ als Rasen angelegt.  
+Zum Schluss wird ein Materialschuppen aufgebaut, der $\dfrac{1}{8}$ der Gesamtfläche beansprucht.  
+**Berechne** die am Ende frei nutzbare Fläche (ohne Spielfelder, ohne Rasen, ohne Schuppen). 
+
+<!-- data-solution-button="5"-->
+[[  405/4  ]] m$^2$
+@Algebrite.check(405/4)
+************
+$$
+\begin{align*}
+\text{Breite:}\quad
+& \dfrac{2}{3}\cdot 27\,\text{m}
+= 18\,\text{m} \\[4pt]
+\text{Gesamtfläche:}\quad
+& 27\,\text{m}\cdot 18\,\text{m}
+= 486\,\text{m}^2 \\[6pt]
+\text{Spielfelder:}\quad
+& \dfrac{5}{12}\cdot 486\,\text{m}^2
+= \dfrac{5}{12}\cdot \dfrac{486}{1}\,\text{m}^2
+= \dfrac{2430}{12}\,\text{m}^2
+= \dfrac{405}{2}\,\text{m}^2 \\[6pt]
+\text{Rest 1:}\quad
+& 486\,\text{m}^2 - \dfrac{405}{2}\,\text{m}^2
+= \dfrac{972}{2}\,\text{m}^2 - \dfrac{405}{2}\,\text{m}^2
+= \dfrac{567}{2}\,\text{m}^2 \\[6pt]
+\text{Rasen:}\quad
+& \dfrac{3}{7}\cdot \dfrac{567}{2}\,\text{m}^2
+= \dfrac{1701}{14}\,\text{m}^2 \\[6pt]
+\text{Rest 2:}\quad
+& \dfrac{567}{2}\,\text{m}^2 - \dfrac{1701}{14}\,\text{m}^2
+= \left(\dfrac{3969}{14}-\dfrac{1701}{14}\right)\text{m}^2
+= \dfrac{2268}{14}\,\text{m}^2
+= 162\,\text{m}^2 \\[6pt]
+\text{Schuppen:}\quad
+& \dfrac{1}{8}\cdot 486\,\text{m}^2
+= \dfrac{243}{4}\,\text{m}^2 \\[6pt]
+\text{Frei nutzbar:}\quad
+& 162\,\text{m}^2 - \dfrac{243}{4}\,\text{m}^2
+= \dfrac{648}{4}\,\text{m}^2 - \dfrac{243}{4}\,\text{m}^2
+= \dfrac{405}{4}\,\text{m}^2
+\end{align*}
+$$
+************
+
+
+
+
+<!--  Bruchrechnung 0159  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/5.png" width="120" height="30">  \
+__Aufgabe 159:__ Für eine Veranstaltung wird eine rechteckige Halle vorbereitet.  
+Die Länge beträgt $ 25\,\text{m} $, die Breite ist $ \dfrac{4}{5} $ der Länge. Zunächst wird eine Sicherheitszone von $ \dfrac{3}{10} $ der Gesamtfläche abgesperrt (nicht begehbar).  
+Von der anschließend verbleibenden Fläche werden Schutzmatten auf $ \dfrac{2}{3} $ ausgelegt (ebenfalls nicht begehbar).  
+Zum Schluss blockiert eine Bühne $ \dfrac{1}{5} $ der Gesamtfläche.  
+**Berechne** die am Ende frei begehbare Fläche.  \
+
+<!-- data-solution-button="5"-->
+[[  50/3  ]] m$^2$
+@Algebrite.check(50/3)
+************
+$$
+\begin{align*}
+\text{Breite:}&\quad \dfrac{4}{5}\cdot 25\,\text{m} = 20\,\text{m} \\[4pt]
+\text{Gesamtfläche:}&\quad 25\,\text{m}\cdot 20\,\text{m} = 500\,\text{m}^2 \\[6pt]
+\text{Sicherheitszone:}&\quad \dfrac{3}{10}\cdot 500\,\text{m}^2 = 150\,\text{m}^2 \\[4pt]
+\text{Rest 1:}&\quad 500\,\text{m}^2 - 150\,\text{m}^2 = 350\,\text{m}^2 \\[6pt]
+\text{Matten (vom Rest 1):}&\quad \dfrac{2}{3}\cdot 350\,\text{m}^2
+= \dfrac{700}{3}\,\text{m}^2 \\[6pt]
+\text{Rest 2:}&\quad 350\,\text{m}^2 - \dfrac{700}{3}\,\text{m}^2
+= \dfrac{1050}{3}\,\text{m}^2 - \dfrac{700}{3}\,\text{m}^2
+= \dfrac{350}{3}\,\text{m}^2 \\[6pt]
+\text{Bühne (von Gesamt):}&\quad \dfrac{1}{5}\cdot 500\,\text{m}^2 = 100\,\text{m}^2 = \dfrac{300}{3}\,\text{m}^2 \\[6pt]
+\text{Frei begehbar:}&\quad \dfrac{350}{3}\,\text{m}^2 - \dfrac{300}{3}\,\text{m}^2
+= \dfrac{50}{3}\,\text{m}^2
+\end{align*}
+$$
+************
+
+
+
+<!--  Bruchrechnung 0160  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/5.png" width="120" height="30">  \
+__Aufgabe 160:__ Für eine Regalanlage werden identische Fachböden vorbereitet.  
+Je Fachboden werden $\dfrac{4}{9}\,\text{m}$ Leiste für die Auflage und $\dfrac{5}{12}\,\text{m}$ für die Rückwand zugeschnitten.  
+Zusätzlich wird pro Fachboden eine Verstärkung in Höhe von $\dfrac{1}{8}$ der Fachboden-Summe (Auflage plus Rückwand) angebracht.  
+Es werden elf Fachböden hergestellt. Danach fällt beim Endbeschnitt ein Verlust von $\dfrac{1}{11}$ der bis dahin verwendeten Gesamtlänge an.  
+Zum Schluss werden noch zwei Zusatzleisten zu je $\dfrac{3}{20}\,\text{m}$ ergänzt.  
+**Berechne** die schließlich benötigte Leistenlänge.  
+
+
+<!-- data-solution-button="5"-->
+[[  799/80  ]] m
+@Algebrite.check(799/80)
+************
+$$
+\begin{align*}
+\text{Fachboden-Summe:}\quad
+& \dfrac{4}{9}\,\text{m} + \dfrac{5}{12}\,\text{m}
+= \left(\dfrac{16}{36} + \dfrac{15}{36}\right)\text{m}
+= \dfrac{31}{36}\,\text{m} \\[6pt]
+\text{Mit Verstärkung je Fachboden:}\quad
+& \left(1+\dfrac{1}{8}\right)\cdot \dfrac{31}{36}\,\text{m}
+= \dfrac{9}{8}\cdot \dfrac{31}{36}\,\text{m}
+= \dfrac{31}{32}\,\text{m} \\[6pt]
+\text{Für 11 Fachböden:}\quad
+& 11\cdot \dfrac{31}{32}\,\text{m}
+= \dfrac{341}{32}\,\text{m} \\[6pt]
+\text{Endbeschnitt (Verlust } \dfrac{1}{11}\text{):}\quad
+& \left(1-\dfrac{1}{11}\right)\cdot \dfrac{341}{32}\,\text{m}
+= \dfrac{10}{11}\cdot \dfrac{341}{32}\,\text{m}
+= \dfrac{155}{16}\,\text{m} \\[6pt]
+\text{Zusatzleisten:}\quad
+& 2\cdot \dfrac{3}{20}\,\text{m}
+= \dfrac{3}{10}\,\text{m} \\[6pt]
+\text{Endlänge:}\quad
+& \dfrac{155}{16}\,\text{m} + \dfrac{3}{10}\,\text{m}
+= \dfrac{775}{80}\,\text{m} + \dfrac{24}{80}\,\text{m}
+= \dfrac{799}{80}\,\text{m}
+\end{align*}
+$$
+************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -31829,22 +33848,22 @@ __Aufgabe 1:__ In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich vi
 
 
 <!-- style="width:600px"  data-solution-button="5"-->
-__$a)\;\;$__ ![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem1a.png)  
+__$a)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem1a.png)  
 $x=$ [[  1  ]] Streichhölzer
 $y=$ [[  4  ]] Streichhölzer
 
 <!-- style="width:600px"  data-solution-button="5"-->
-__$b)\;\;$__ ![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem2a.png)  
+__$b)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem2a.png)  
 $x=$ [[  2  ]] Streichhölzer
 $y=$ [[  6  ]] Streichhölzer
 
 <!-- style="width:600px"  data-solution-button="5"-->
-__$c)\;\;$__ ![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem3a.png)  
+__$c)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem3a.png)  
 $x=$ [[  3  ]] Streichhölzer
 $y=$ [[  5  ]] Streichhölzer
 
 <!-- style="width:600px"  data-solution-button="5"-->
-__$d)\;\;$__ ![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem4a.png)  
+__$d)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem4a.png)  
 $x=$ [[  1  ]] Streichhölzer
 $y=$ [[  7  ]] Streichhölzer
 $z=$ [[  2  ]] Streichhölzer
@@ -31861,22 +33880,22 @@ __Aufgabe 2:__ In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich vi
 
 
 <!-- style="width:600px"  data-solution-button="5"-->
-__$a)\;\;$__ ![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem1b.png)  
+__$a)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem1b.png)  
 $x=$ [[  2  ]] Streichhölzer
 $y=$ [[  12 ]] Streichhölzer
 
 <!-- style="width:600px"  data-solution-button="5"-->
-__$b)\;\;$__ ![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem2b.png)  
+__$b)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem2b.png)  
 $x=$ [[  2   ]] Streichhölzer
 $y=$ [[  3   ]] Streichhölzer
 
 <!-- style="width:600px"  data-solution-button="5"-->
-__$c)\;\;$__ ![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem3b.png)  
+__$c)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem3b.png)  
 $x=$ [[  1  ]] Streichhölzer
 $y=$ [[  2  ]] Streichhölzer
 
 <!-- style="width:600px"  data-solution-button="5"-->
-__$d)\;\;$__ ![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem4b.png)  
+__$d)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem4b.png)  
 $x=$ [[  2  ]] Streichhölzer
 $y=$ [[  6  ]] Streichhölzer
 $z=$ [[  4  ]] Streichhölzer
