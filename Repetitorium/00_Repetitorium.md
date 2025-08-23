@@ -19311,12 +19311,113 @@ __$d)\;\;$__ Wie viel sind $\dfrac{3}{20}$ von $500\,$€?  \
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 81:__ **Berechne** den Wert des Terms.
+__Aufgabe 81:__ **Gib** den dargestellten Bruch **an**. (Es ist der jeweilige graue Anteil gefragt.)
 
 
 
 <section class="flex-container">
 
+<div class="flex-child">
+
+__$a)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb1.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  10/32  ]]
+@Algebrite.check(10/32)
+
+</div>
+
+<div class="flex-child">
+
+__$b)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb2.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  3/8  ]]
+@Algebrite.check(3/8)
+
+</div>
+
+<div class="flex-child">
+
+__$c)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb3.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  14/32  ]]
+@Algebrite.check(14/32)
+
+</div>
+
+<div class="flex-child">
+
+__$d)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb4.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  8/19  ]]
+@Algebrite.check(8/19)
+
+</div>
+
+<div class="flex-child">
+
+__$e)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb5.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  4/12  ]]
+@Algebrite.check(4/12)
+
+</div>
+
+<div class="flex-child">
+
+__$f)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb6.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  5/12  ]]
+@Algebrite.check(5/12)
+
+</div>
 
 </section>
 
@@ -19327,14 +19428,121 @@ __Aufgabe 81:__ **Berechne** den Wert des Terms.
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 82:__ **Berechne** den Wert des Terms.
+__Aufgabe 82:__ **Gib** den dargestellten Bruch **an**. (Es ist der jeweilige graue Anteil gefragt.)
 
 
 
 <section class="flex-container">
 
+<div class="flex-child">
+
+__$a)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb7.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  9/21  ]]
+@Algebrite.check(9/21)
+
+</div>
+
+<div class="flex-child">
+
+__$b)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb8.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  3/6  ]]
+@Algebrite.check(3/6)
+
+</div>
+
+<div class="flex-child">
+
+__$c)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb9.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  11/24  ]]
+@Algebrite.check(11/24)
+
+</div>
+
+<div class="flex-child">
+
+__$d)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb10.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  7/16  ]]
+@Algebrite.check(7/16)
+
+</div>
+
+<div class="flex-child">
+
+__$e)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb11.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  4/16  ]]
+@Algebrite.check(4/16)
+
+</div>
+
+<div class="flex-child">
+
+__$f)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb12.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  5/6  ]]
+@Algebrite.check(5/6)
+
+</div>
 
 </section>
+
+
+
+
+
+
 
 
 
@@ -19343,12 +19551,113 @@ __Aufgabe 82:__ **Berechne** den Wert des Terms.
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 83:__ **Berechne** den Wert des Terms.
+__Aufgabe 83:__ **Gib** den dargestellten Bruch **an**. (Es ist der jeweilige graue Anteil gefragt.)
 
 
 
 <section class="flex-container">
 
+<div class="flex-child">
+
+__$a)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb13.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  5/18  ]]
+@Algebrite.check(5/18)
+
+</div>
+
+<div class="flex-child">
+
+__$b)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb14.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  2/3  ]]
+@Algebrite.check(2/3)
+
+</div>
+
+<div class="flex-child">
+
+__$c)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb15.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  32/72  ]]
+@Algebrite.check(32/72)
+
+</div>
+
+<div class="flex-child">
+
+__$d)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb16.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  4/9  ]]
+@Algebrite.check(4/9)
+
+</div>
+
+<div class="flex-child">
+
+__$e)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb17.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  4/12  ]]
+@Algebrite.check(4/12)
+
+</div>
+
+<div class="flex-child">
+
+__$f)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb18.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  1/6  ]]
+@Algebrite.check(1/6)
+
+</div>
 
 </section>
 
@@ -19359,12 +19668,113 @@ __Aufgabe 83:__ **Berechne** den Wert des Terms.
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 84:__ **Berechne** den Wert des Terms.
+__Aufgabe 84:__ **Gib** den dargestellten Bruch **an**. (Es ist der jeweilige graue Anteil gefragt.)
 
 
 
 <section class="flex-container">
 
+<div class="flex-child">
+
+__$a)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb19.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  11/25  ]]
+@Algebrite.check(11/25)
+
+</div>
+
+<div class="flex-child">
+
+__$b)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb20.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  14/37  ]]
+@Algebrite.check(14/37)
+
+</div>
+
+<div class="flex-child">
+
+__$c)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb21.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  9/14  ]]
+@Algebrite.check(9/14)
+
+</div>
+
+<div class="flex-child">
+
+__$d)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb22.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  13/37  ]]
+@Algebrite.check(13/37)
+
+</div>
+
+<div class="flex-child">
+
+__$e)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb23.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  9/14  ]]
+@Algebrite.check(9/14)
+
+</div>
+
+<div class="flex-child">
+
+__$f)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb24.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  6/9  ]]
+@Algebrite.check(6/9)
+
+</div>
 
 </section>
 
@@ -19375,14 +19785,84 @@ __Aufgabe 84:__ **Berechne** den Wert des Terms.
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 85:__ **Berechne** den Wert des Terms.
+__Aufgabe 85:__ **Gib** den dargestellten Bruch **an**. (Es ist der jeweilige graue Anteil gefragt.)
 
 
 
 <section class="flex-container">
 
+<div class="flex-child">
+
+__$a)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb25.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  2/6  ]]
+@Algebrite.check(2/6)
+
+</div>
+
+<div class="flex-child">
+
+__$b)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb26.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  5/12  ]]
+@Algebrite.check(5/12)
+
+</div>
+
+<div class="flex-child">
+
+__$c)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb27.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  1/4  ]]
+@Algebrite.check(1/4)
+
+</div>
+
+<div class="flex-child">
+
+__$d)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb28.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  5/8  ]]
+@Algebrite.check(5/8)
+
+</div>
 
 </section>
+
+
+
 
 
 
@@ -19391,14 +19871,82 @@ __Aufgabe 85:__ **Berechne** den Wert des Terms.
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 86:__ **Berechne** den Wert des Terms.
+__Aufgabe 86:__ **Gib** den dargestellten Bruch **an**. (Es ist der jeweilige graue Anteil gefragt.)
 
 
 
 <section class="flex-container">
 
+<div class="flex-child">
+
+__$a)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb29.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  1/2  ]]
+@Algebrite.check(1/2)
+
+</div>
+
+<div class="flex-child">
+
+__$b)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb30.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  1/3  ]]
+@Algebrite.check(1/3)
+
+</div>
+
+<div class="flex-child">
+
+__$c)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb31.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  3/4  ]]
+@Algebrite.check(3/4)
+
+</div>
+
+<div class="flex-child">
+
+__$d)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb32.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  10/24  ]]
+@Algebrite.check(10/24)
+
+</div>
 
 </section>
+
 
 
 
@@ -19407,14 +19955,82 @@ __Aufgabe 86:__ **Berechne** den Wert des Terms.
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 87:__ **Berechne** den Wert des Terms.
+__Aufgabe 87:__ **Gib** den dargestellten Bruch **an**. (Es ist der jeweilige graue Anteil gefragt.)
 
 
 
 <section class="flex-container">
 
+<div class="flex-child">
+
+__$a)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb33.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  1/4  ]]
+@Algebrite.check(1/4)
+
+</div>
+
+<div class="flex-child">
+
+__$b)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb34.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  11/30  ]]
+@Algebrite.check(11/30)
+
+</div>
+
+<div class="flex-child">
+
+__$c)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb35.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  2/5  ]]
+@Algebrite.check(2/5)
+
+</div>
+
+<div class="flex-child">
+
+__$d)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb36.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  19/40  ]]
+@Algebrite.check(19/40)
+
+</div>
 
 </section>
+
 
 
 
@@ -19423,14 +20039,84 @@ __Aufgabe 87:__ **Berechne** den Wert des Terms.
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 88:__ **Berechne** den Wert des Terms.
+__Aufgabe 88:__ **Gib** den dargestellten Bruch **an**. (Es ist der jeweilige graue Anteil gefragt.)
 
 
 
 <section class="flex-container">
 
+<div class="flex-child">
+
+__$a)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb37.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  1/6  ]]
+@Algebrite.check(1/6)
+
+</div>
+
+<div class="flex-child">
+
+__$b)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb38.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  5/12  ]]
+@Algebrite.check(5/12)
+
+</div>
+
+<div class="flex-child">
+
+__$c)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb39.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  4/15  ]]
+@Algebrite.check(4/15)
+
+</div>
+
+<div class="flex-child">
+
+__$d)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb40.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  11/15  ]]
+@Algebrite.check(11/15)
+
+</div>
 
 </section>
+
+
+
 
 
 
@@ -19439,13 +20125,112 @@ __Aufgabe 88:__ **Berechne** den Wert des Terms.
 <!--  Bruchrechnung 0089  -->
 
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 89:__ **Berechne** den Wert des Terms.
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 89:__ **Berechne** den Wert des Terms hinter der Fragestellung.
 
 
 
 <section class="flex-container">
 
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ Wie viel sind $\dfrac{7}{12}$ von $54\,$kg?  \
+[[  63/2  ]]kg
+************
+$$
+\begin{align*}
+\dfrac{7}{12}\cdot 54\;\text{kg}
+&= \dfrac{7\cdot 54}{12}\;\text{kg} \\
+&= \dfrac{7\cdot \,9}{2}\;\text{kg} \\
+&= \dfrac{63}{2}\;\text{kg}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ Wie viel sind $\dfrac{5}{6}$ von $49\,$m$^2$?  \
+[[  245/6  ]]m$^2$
+************
+$$
+\begin{align*}
+\dfrac{5}{6}\cdot 49\;\text{m$^2$}
+&= \dfrac{5\cdot 49}{6}\;\text{m$^2$} \\
+&= \dfrac{245}{6}\;\text{m$^2$} 
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ Wie viel sind $\dfrac{9}{8}$ von $20\,$h?  \
+[[  45/2  ]]h
+************
+$$
+\begin{align*}
+\dfrac{9}{8}\cdot 20\;\text{h}
+&= \dfrac{9\cdot 20}{8}\;\text{h} \\
+&= \dfrac{9\cdot \,5}{2}\;\text{h} \\
+&= \dfrac{45}{2}\;\text{h}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ Wie viel sind $\dfrac{13}{15}$ von $36\,$kg?  \
+[[  156/5  ]]kg
+************
+$$
+\begin{align*}
+\dfrac{13}{15}\cdot 36\;\text{kg}
+&= \dfrac{13\cdot 36}{15}\;\text{kg} \\
+&= \dfrac{13\cdot 12}{5}\;\text{kg} \\
+&= \dfrac{156}{5}\;\text{kg}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ Wie viel sind $\dfrac{3}{7}$ von $85\,$min?  \
+[[  255/7  ]]min
+************
+$$
+\begin{align*}
+\dfrac{3}{7}\cdot 85\;\text{min}
+&= \dfrac{3\cdot 85}{7}\;\text{min} \\
+&= \dfrac{255}{7}\;\text{min} 
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ Wie viel sind $\dfrac{17}{12}$ von $18\,$m?  \
+[[  51/2  ]]m
+************
+$$
+\begin{align*}
+\dfrac{17}{12}\cdot 18\;\text{m}
+&= \dfrac{17\cdot 18}{12}\;\text{m} \\
+&= \dfrac{17\cdot \,3}{2}\;\text{m} \\
+&= \dfrac{51}{2}\;\text{m}
+\end{align*}
+$$
+************
+</div>
 
 </section>
 
@@ -19455,15 +20240,1216 @@ __Aufgabe 89:__ **Berechne** den Wert des Terms.
 <!--  Bruchrechnung 0090  -->
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 90:__ **Berechne** den Wert des Terms hinter der Fragestellung.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ Wie viel sind $\dfrac{7}{12}$ von $50\,$kg?  \
+[[  175/6  ]]kg
+************
+$$
+\begin{align*}
+\dfrac{7}{12}\cdot 50
+&= \dfrac{7\cdot 50}{12} \\
+&= \dfrac{350}{12} \\
+&= \dfrac{175}{6}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ Wie viel sind $\dfrac{9}{14}$ von $25\,$l?  \
+[[  225/14  ]]l
+************
+$$
+\begin{align*}
+\dfrac{9}{14}\cdot 25
+&= \dfrac{9\cdot 25}{14} \\
+&= \dfrac{225}{14}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ Wie viel sind $\dfrac{11}{15}$ von $40\,$m?  \
+[[  88/3  ]]m
+************
+$$
+\begin{align*}
+\dfrac{11}{15}\cdot 40
+&= \dfrac{11\cdot 40}{15} \\
+&= \dfrac{440}{15} \\
+&= \dfrac{88}{3}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ Wie viel sind $\dfrac{5}{9}$ von $22\,$cm?  \
+[[  110/9  ]]cm
+************
+$$
+\begin{align*}
+\dfrac{5}{9}\cdot 22
+&= \dfrac{5\cdot 22}{9} \\
+&= \dfrac{110}{9}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ Wie viel sind $\dfrac{13}{16}$ von $18\,$kg?  \
+[[  117/8  ]]kg
+************
+$$
+\begin{align*}
+\dfrac{13}{16}\cdot 18
+&= \dfrac{13\cdot 18}{16} \\
+&= \dfrac{234}{16} \\
+&= \dfrac{117}{8}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ Wie viel sind $\dfrac{7}{20}$ von $33\,$m?  \
+[[  231/20  ]]m
+************
+$$
+\begin{align*}
+\dfrac{7}{20}\cdot 33
+&= \dfrac{7\cdot 33}{20} \\
+&= \dfrac{231}{20}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+<!--  Bruchrechnung 0091  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 91:__ **Berechne** den Wert des Terms hinter der Fragestellung.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ Wie viel sind $\dfrac{7}{4}$ von $\dfrac{5}{6}$ von $36\,$€?  \
+[[  105/2  ]]€
+************
+$$
+\begin{align*}
+\dfrac{7}{4}\cdot\dfrac{5}{6}\cdot 36
+&= \dfrac{7\cdot5\cdot36}{4\cdot6}
+= \dfrac{35\cdot36}{24}
+= \dfrac{35\cdot 3}{2}
+= \dfrac{105}{2}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ Wie viel sind $\dfrac{9}{8}$ von $\dfrac{2}{3}$ von $45\,$kg?  \
+[[  135/4  ]]kg
+************
+$$
+\begin{align*}
+\dfrac{9}{8}\cdot\dfrac{2}{3}\cdot 45
+&= \dfrac{9\cdot2\cdot45}{8\cdot3}
+= \dfrac{810}{24}
+= \dfrac{135}{4}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ Wie viel sind $\dfrac{4}{5}$ von $\dfrac{7}{9}$ von $80\,$min?  \
+[[  448/9  ]]min
+************
+$$
+\begin{align*}
+\dfrac{4}{5}\cdot\dfrac{7}{9}\cdot 80
+&= \dfrac{4\cdot7\cdot80}{5\cdot9}
+= \dfrac{2240}{45}
+= \dfrac{448}{9}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ Wie viel sind $\dfrac{11}{12}$ von $\dfrac{3}{5}$ von $95\,$l?  \
+[[  209/4  ]]l
+************
+$$
+\begin{align*}
+\dfrac{11}{12}\cdot\dfrac{3}{5}\cdot 95
+&= \dfrac{11\cdot3\cdot95}{12\cdot5}
+= \dfrac{3135}{60}
+= \dfrac{209}{4}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ Wie viel sind $\dfrac{5}{6}$ von $\dfrac{7}{8}$ von $64\,$m?  \
+[[  140/3  ]]m
+************
+$$
+\begin{align*}
+\dfrac{5}{6}\cdot\dfrac{7}{8}\cdot 64
+&= \dfrac{5\cdot7\cdot64}{6\cdot8}
+= \dfrac{2240}{48}
+= \dfrac{140}{3}
+\end{align*}
+$$
+************
+</div>
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ Wie viel sind $\dfrac{7}{5}$ von $\dfrac{3}{8}$ von $50\,$€?  \
+[[  105/4  ]]€
+************
+$$
+\begin{align*}
+\dfrac{7}{5}\cdot\dfrac{3}{8}\cdot 50
+&= \dfrac{7\cdot3\cdot50}{5\cdot8}
+= \dfrac{1050}{40}
+= \dfrac{105}{4}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+<!--  Bruchrechnung 0092  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 92:__ **Berechne** den Wert des Terms hinter der Fragestellung.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ Wie viel sind $\dfrac{7}{4}$ von $\dfrac{2}{3}$ von $35\,$€?  \
+[[  245/6  ]]€
+@Algebrite.check(245/6)
+************
+$$
+\begin{align*}
+\dfrac{7}{4}\cdot\dfrac{2}{3}\cdot 35
+&= \dfrac{7\cdot 2 \cdot 35}{4\cdot 3} \\
+&= \dfrac{490}{12} \\
+&= \dfrac{245}{6}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ Wie viel sind $\dfrac{9}{8}$ von $\dfrac{2}{5}$ von $55\,$kg?  \
+[[  99/4  ]]kg
+@Algebrite.check(99/4)
+************
+$$
+\begin{align*}
+\dfrac{9}{8}\cdot\dfrac{2}{5}\cdot 55
+&= \dfrac{9\cdot 2 \cdot 55}{8\cdot 5} \\
+&= \dfrac{990}{40} \\
+&= \dfrac{99}{4}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ Wie viel sind $\dfrac{11}{12}$ von $\dfrac{5}{7}$ von $80\,$l?  \
+[[  1100/21  ]]l
+@Algebrite.check(1100/21)
+************
+$$
+\begin{align*}
+\dfrac{11}{12}\cdot\dfrac{5}{7}\cdot 80
+&= \dfrac{11\cdot 5 \cdot 80}{12\cdot 7} \\
+&= \dfrac{4400}{84} \\
+&= \dfrac{1100}{21}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ Wie viel sind $\dfrac{5}{6}$ von $\dfrac{7}{9}$ von $65\,$m?  \
+[[  2275/54  ]]m
+@Algebrite.check(2275/54)
+************
+$$
+\begin{align*}
+\dfrac{5}{6}\cdot\dfrac{7}{9}\cdot 65
+&= \dfrac{5\cdot 7 \cdot 65}{6\cdot 9} \\
+&= \dfrac{2275}{54}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ Wie viel sind $\dfrac{4}{5}$ von $\dfrac{3}{8}$ von $96\,$min?  \
+[[  144/5  ]]min
+@Algebrite.check(144/5)
+************
+$$
+\begin{align*}
+\dfrac{4}{5}\cdot\dfrac{3}{8}\cdot 96
+&= \dfrac{4\cdot 3 \cdot 96}{5\cdot 8} \\
+&= \dfrac{1152}{40} \\
+&= \dfrac{144}{5}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ Wie viel sind $\dfrac{13}{10}$ von $\dfrac{3}{4}$ von $30\,$€?  \
+[[  117/4  ]]€
+@Algebrite.check(117/4)
+************
+$$
+\begin{align*}
+\dfrac{13}{10}\cdot\dfrac{3}{4}\cdot 30
+&= \dfrac{13\cdot 3 \cdot 30}{10\cdot 4} \\
+&= \dfrac{1170}{40} \\
+&= \dfrac{117}{4}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+<!--  Bruchrechnung 0093  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 93:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ 
+$ \dfrac{ \left( \dfrac{3}{4} + \dfrac{1}{6} \right) }{ \left( \dfrac{5}{8} - \dfrac{1}{4} \right) } = $ [[  22/9  ]]
+@Algebrite.check(22/9)
+************
+$$
+\begin{align*}
+\dfrac{ \left( \dfrac{3}{4} + \dfrac{1}{6} \right) }{ \left( \dfrac{5}{8} - \dfrac{1}{4} \right) }
+&= \dfrac{ \left( \dfrac{9}{12} + \dfrac{2}{12} \right) }{ \left( \dfrac{5}{8} - \dfrac{2}{8} \right) } \\
+&= \dfrac{ \dfrac{11}{12} }{ \dfrac{3}{8} }
+= \dfrac{11}{12} : \dfrac{3}{8}
+= \dfrac{11}{12} \cdot \dfrac{8}{3} \\
+&= \dfrac{88}{36}
+= \dfrac{22}{9}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ 
+$ \dfrac{ \left( \dfrac{5}{6} - \dfrac{1}{3} \right) }{ \left( \dfrac{2}{5} + \dfrac{1}{10} \right) } = $ [[  1  ]]
+@Algebrite.check(1)
+************
+$$
+\begin{align*}
+\dfrac{ \left( \dfrac{5}{6} - \dfrac{1}{3} \right) }{ \left( \dfrac{2}{5} + \dfrac{1}{10} \right) }
+&= \dfrac{ \left( \dfrac{5}{6} - \dfrac{2}{6} \right) }{ \left( \dfrac{4}{10} + \dfrac{1}{10} \right) } \\
+&= \dfrac{ \dfrac{3}{6} }{ \dfrac{5}{10} }
+= \dfrac{ \dfrac{1}{2} }{ \dfrac{1}{2} }
+= 1
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ 
+$ \dfrac{ \left( \dfrac{3}{5} \cdot \dfrac{10}{9} \right) }{ \left( \dfrac{7}{12} : \dfrac{7}{18} \right) } = $ [[  4/9  ]]
+@Algebrite.check(4/9)
+************
+$$
+\begin{align*}
+\dfrac{ \left( \dfrac{3}{5} \cdot \dfrac{10}{9} \right) }{ \left( \dfrac{7}{12} : \dfrac{7}{18} \right) }
+&= \dfrac{ \dfrac{30}{45} }{ \left( \dfrac{7}{12} \cdot \dfrac{18}{7} \right) } \\
+&= \dfrac{ \dfrac{2}{3} }{ \dfrac{18}{12} }
+= \dfrac{ \dfrac{2}{3} }{ \dfrac{3}{2} }
+= \dfrac{2}{3} \cdot \dfrac{2}{3}
+= \dfrac{4}{9}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ 
+$ \dfrac{ \left( \dfrac{4}{7} + \dfrac{5}{14} \right) }{ \left( \dfrac{3}{5} + \dfrac{1}{10} \right) } = $ [[  65/49  ]]
+@Algebrite.check(65/49)
+************
+$$
+\begin{align*}
+\dfrac{ \left( \dfrac{4}{7} + \dfrac{5}{14} \right) }{ \left( \dfrac{3}{5} + \dfrac{1}{10} \right) }
+&= \dfrac{ \left( \dfrac{8}{14} + \dfrac{5}{14} \right) }{ \left( \dfrac{6}{10} + \dfrac{1}{10} \right) } \\
+&= \dfrac{ \dfrac{13}{14} }{ \dfrac{7}{10} }
+= \dfrac{13}{14} : \dfrac{7}{10}
+= \dfrac{13}{14} \cdot \dfrac{10}{7} \\
+&= \dfrac{130}{98}
+= \dfrac{65}{49}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ 
+$ \dfrac{ \left( \dfrac{9}{8} - \dfrac{1}{16} \right) }{ \left( \dfrac{3}{4} + \dfrac{1}{6} \right) } = $ [[  51/44  ]]
+@Algebrite.check(51/44)
+************
+$$
+\begin{align*}
+\dfrac{ \left( \dfrac{9}{8} - \dfrac{1}{16} \right) }{ \left( \dfrac{3}{4} + \dfrac{1}{6} \right) }
+&= \dfrac{ \left( \dfrac{18}{16} - \dfrac{1}{16} \right) }{ \left( \dfrac{9}{12} + \dfrac{2}{12} \right) } \\
+&= \dfrac{ \dfrac{17}{16} }{ \dfrac{11}{12} }
+= \dfrac{17}{16} : \dfrac{11}{12}
+= \dfrac{17}{16} \cdot \dfrac{12}{11} \\
+&= \dfrac{204}{176}
+= \dfrac{51}{44}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ 
+$ \dfrac{ \left( \dfrac{2}{3} : \dfrac{5}{9} \right) }{ \left( \dfrac{7}{10} - \dfrac{1}{5} \right) } = $ [[  12/5  ]]
+@Algebrite.check(12/5)
+************
+$$
+\begin{align*}
+\dfrac{ \left( \dfrac{2}{3} : \dfrac{5}{9} \right) }{ \left( \dfrac{7}{10} - \dfrac{1}{5} \right) }
+&= \dfrac{ \left( \dfrac{2}{3} \cdot \dfrac{9}{5} \right) }{ \left( \dfrac{7}{10} - \dfrac{2}{10} \right) } \\
+&= \dfrac{ \dfrac{18}{15} }{ \dfrac{5}{10} }
+= \dfrac{ \dfrac{6}{5} }{ \dfrac{1}{2} }
+= \dfrac{6}{5} \cdot 2
+= \dfrac{12}{5}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+<!--  Bruchrechnung 0094  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 94:__ **Berechne** den Wert des Terms.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ 
+$ \dfrac{ \left( \dfrac{3}{5} + \dfrac{1}{10} \right) }{ \left( \dfrac{7}{12} - \dfrac{1}{4} \right) } = $ [[  21/10  ]]
+@Algebrite.check(21/10)
+************
+$$
+\begin{align*}
+\dfrac{ \left( \dfrac{3}{5} + \dfrac{1}{10} \right) }{ \left( \dfrac{7}{12} - \dfrac{1}{4} \right) }
+&= \dfrac{ \left( \dfrac{6}{10} + \dfrac{1}{10} \right) }{ \left( \dfrac{7}{12} - \dfrac{3}{12} \right) } \\
+&= \dfrac{ \dfrac{7}{10} }{ \dfrac{4}{12} }
+= \dfrac{7}{10} : \dfrac{4}{12}
+= \dfrac{7}{10} \cdot \dfrac{12}{4} \\
+&= \dfrac{84}{40}
+= \dfrac{21}{10}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ 
+$ \dfrac{ \left( \dfrac{5}{8} - \dfrac{1}{16} \right) }{ \left( \dfrac{2}{3} + \dfrac{1}{6} \right) } = $ [[  27/40  ]]
+@Algebrite.check(27/40)
+************
+$$
+\begin{align*}
+\dfrac{ \left( \dfrac{5}{8} - \dfrac{1}{16} \right) }{ \left( \dfrac{2}{3} + \dfrac{1}{6} \right) }
+&= \dfrac{ \left( \dfrac{10}{16} - \dfrac{1}{16} \right) }{ \left( \dfrac{4}{6} + \dfrac{1}{6} \right) } \\
+&= \dfrac{ \dfrac{9}{16} }{ \dfrac{5}{6} }
+= \dfrac{9}{16} : \dfrac{5}{6}
+= \dfrac{9}{16} \cdot \dfrac{6}{5} \\
+&= \dfrac{54}{80}
+= \dfrac{27}{40}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ 
+$ \dfrac{ \left( \dfrac{4}{9} + \dfrac{1}{3} \right) }{ \left( \dfrac{7}{10} : \dfrac{7}{5} \right) } = $ [[  14/9  ]]
+@Algebrite.check(14/9)
+************
+$$
+\begin{align*}
+\dfrac{ \left( \dfrac{4}{9} + \dfrac{1}{3} \right) }{ \left( \dfrac{7}{10} : \dfrac{7}{5} \right) }
+&= \dfrac{ \left( \dfrac{4}{9} + \dfrac{3}{9} \right) }{ \left( \dfrac{7}{10} \cdot \dfrac{5}{7} \right) } \\
+&= \dfrac{ \dfrac{7}{9} }{ \dfrac{5}{10} }
+= \dfrac{7}{9} : \dfrac{1}{2}
+= \dfrac{7}{9} \cdot 2 \\
+&= \dfrac{14}{9}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ 
+$ \dfrac{ \left( \dfrac{5}{6} : \dfrac{5}{12} \right) }{ \left( \dfrac{1}{2} + \dfrac{1}{3} \right) } = $ [[  12/5  ]]
+@Algebrite.check(12/5)
+************
+$$
+\begin{align*}
+\dfrac{ \left( \dfrac{5}{6} : \dfrac{5}{12} \right) }{ \left( \dfrac{1}{2} + \dfrac{1}{3} \right) }
+&= \dfrac{ \left( \dfrac{5}{6} \cdot \dfrac{12}{5} \right) }{ \left( \dfrac{3}{6} + \dfrac{2}{6} \right) } \\
+&= \dfrac{ 2 }{ \dfrac{5}{6} }
+= 2 : \dfrac{5}{6}
+= 2 \cdot \dfrac{6}{5} \\
+&= \dfrac{12}{5}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$e)\;\;$__ 
+$ \dfrac{ \left( \dfrac{9}{10} - \dfrac{2}{5} \right) }{ \left( \dfrac{1}{4} \cdot \dfrac{8}{3} \right) } = $ [[  3/4  ]]
+@Algebrite.check(3/4)
+************
+$$
+\begin{align*}
+\dfrac{ \left( \dfrac{9}{10} - \dfrac{2}{5} \right) }{ \left( \dfrac{1}{4} \cdot \dfrac{8}{3} \right) }
+&= \dfrac{ \left( \dfrac{9}{10} - \dfrac{4}{10} \right) }{ \left( \dfrac{8}{12} \right) } \\
+&= \dfrac{ \dfrac{1}{2} }{ \dfrac{2}{3} }
+= \dfrac{1}{2} : \dfrac{2}{3}
+= \dfrac{1}{2} \cdot \dfrac{3}{2} \\
+&= \dfrac{3}{4}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$f)\;\;$__ 
+$ \dfrac{ \left( \dfrac{7}{8} + \dfrac{1}{16} \right) }{ \left( \dfrac{3}{5} - \dfrac{1}{10} \right) } = $ [[  15/8  ]]
+@Algebrite.check(15/8)
+************
+$$
+\begin{align*}
+\dfrac{ \left( \dfrac{7}{8} + \dfrac{1}{16} \right) }{ \left( \dfrac{3}{5} - \dfrac{1}{10} \right) }
+&= \dfrac{ \left( \dfrac{14}{16} + \dfrac{1}{16} \right) }{ \left( \dfrac{6}{10} - \dfrac{1}{10} \right) } \\
+&= \dfrac{ \dfrac{15}{16} }{ \dfrac{5}{10} }
+= \dfrac{15}{16} : \dfrac{1}{2}
+= \dfrac{15}{16} \cdot 2 \\
+&= \dfrac{15}{8}
+\end{align*}
+$$
+************
+</div>
+
+</section>
+
+
+
+<!--  Bruchrechnung 0095  -->
+
+
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 90:__ **Berechne** den Wert des Terms.
+__Aufgabe 95:__ **Gib** die Zahl **an**, die $x$ sein muss, sodass die Brüche gleichwertig sind.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ 
+$ \dfrac{ 3 }{ 5 } = \dfrac{ 21 }{ x }  $ \
+$x = $ [[  35  ]]
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__  
+$ \dfrac{ 4 }{ 7 } = \dfrac{ x }{ 21 } $ \
+$x = $ [[  12  ]]
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__  
+$ \dfrac{ x }{ 8 } = \dfrac{ 9 }{ 12 } $ \
+$x = $ [[  6  ]]
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__  
+$ \dfrac{ 5 }{ x } = \dfrac{ 15 }{ 18 } $ \
+$x = $ [[  6  ]]
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__  
+$ \dfrac{ 11 }{ 22 } = \dfrac{ x }{ 6 } $ \
+$x = $ [[  3  ]]
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__  
+$ \dfrac{ 7 }{ x } = \dfrac{ 14 }{ 20 } $ \
+$x = $ [[  10  ]]
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__  
+$ \dfrac{ 8 }{ 12 } = \dfrac{ 2 }{ x } $ \
+$x = $ [[  3  ]]
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$g)\;\;$__  
+$ \dfrac{ x }{ 15 } = \dfrac{ 6 }{ 10 } $ \
+$x = $ [[  9  ]]
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$h)\;\;$__  
+$ \dfrac{ 3 }{ 9 } = \dfrac{ 4 }{ x } $ \
+$x = $ [[  12  ]]
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$i)\;\;$__  
+$ \dfrac{ x }{ 18 } = \dfrac{ 5 }{ 9 } $ \
+$x = $ [[  10  ]]
+</div>
+
+</section>
+
+
+
+<!--  Bruchrechnung 0096  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 96:__ **Gib** die Zahl **an**, die $x$ sein muss, sodass die Brüche gleichwertig sind.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__  
+$ \dfrac{ 2 }{ 3 } = \dfrac{ x }{ 12 } $ \
+$x = $ [[  8  ]]
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__  
+$ \dfrac{ 7 }{ x } = \dfrac{ 14 }{ 30 } $ \
+$x = $ [[  15  ]]
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__  
+$ \dfrac{ x }{ 9 } = \dfrac{ 5 }{ 15 } $ \
+$x = $ [[  3  ]]
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__  
+$ \dfrac{ 6 }{ 8 } = \dfrac{ x }{ 20 } $ \
+$x = $ [[  15  ]]
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__  
+$ \dfrac{ x }{ 14 } = \dfrac{ 9 }{ 21 } $ \
+$x = $ [[  6  ]]
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__  
+$ \dfrac{ 10 }{ x } = \dfrac{ 15 }{ 12 } $ \
+$x = $ [[  8  ]]
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$g)\;\;$__  
+$ \dfrac{ x }{ 5 } = \dfrac{ 12 }{ 15 } $ \
+$x = $ [[  4  ]]
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$h)\;\;$__  
+$ \dfrac{ 8 }{ 20 } = \dfrac{ x }{ 25 } $ \
+$x = $ [[  10  ]]
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$i)\;\;$__  
+$ \dfrac{ x }{ 16 } = \dfrac{ 9 }{ 24 } $ \
+$x = $ [[  6  ]]
+</div>
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$j)\;\;$__  
+$ \dfrac{ 4 }{ x } = \dfrac{ 6 }{ 18 } $ \
+$x = $ [[  12  ]]
+</div>
+
+</section>
+
+
+
+<!--  Bruchrechnung 0097  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 97:__ **Bestimme** den farbigen Anteil an der Gesamtfläche. 
 
 
 
 <section class="flex-container">
 
 
+<div class="flex-child">
+
+__$a)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $20\,$m$^2$.
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc1.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+rot: [[  6  ]] m$^2$
+blau: [[  4  ]] m$^2$
+violett: [[  4  ]] m$^2$
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $80\,$m$^2$.
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc2.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+rot: [[  48  ]] m$^2$
+blau: [[  4   ]] m$^2$
+violett: [[  12  ]] m$^2$
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $120\,$m$^2$.
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc3.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+rot: [[  18  ]] m$^2$
+blau: [[  45  ]] m$^2$
+violett: [[  27  ]] m$^2$
+
+</div>
+<div class="flex-child">
+
+__$d)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $240\,$m$^2$.
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc4.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+rot: [[  105 ]] m$^2$
+blau: [[  27  ]] m$^2$
+violett: [[  45  ]] m$^2$
+
+</div>
+<div class="flex-child">
+
+__$e)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $200\,$m$^2$.
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc5.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+rot: [[  35  ]] m$^2$
+blau: [[  45  ]] m$^2$
+violett: [[  15  ]] m$^2$
+
+</div>
+<div class="flex-child">
+
+__$f)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $60\,$m$^2$.
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc6.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+rot: [[  9  ]] m$^2$
+blau: [[  12 ]] m$^2$
+violett: [[  6  ]] m$^2$
+
+</div>
+
 </section>
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0098  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 98:__ **Bestimme** den farbigen Anteil an der Gesamtfläche. 
+
+
+
+<section class="flex-container">
+
+
+<div class="flex-child">
+
+__$a)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $90\,$m$^2$.
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc7.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+rot: [[  5  ]] m$^2$
+blau: [[  50 ]] m$^2$
+violett: [[ 25  ]] m$^2$
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $96\,$m$^2$.
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc8.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+rot: [[  4   ]] m$^2$
+blau: [[  20  ]] m$^2$
+violett: [[  10  ]] m$^2$
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $81\,$m$^2$.
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc9.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+rot: [[  21  ]] m$^2$
+blau: [[  12  ]] m$^2$
+violett: [[  42  ]] m$^2$
+
+</div>
+<div class="flex-child">
+
+__$d)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $560\,$m$^2$.
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc10.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+rot: [[  98  ]] m$^2$
+blau: [[  126 ]] m$^2$
+violett: [[  42  ]] m$^2$
+
+</div>
+<div class="flex-child">
+
+__$e)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $126\,$m$^2$.
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc11.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+rot: [[  40  ]] m$^2$
+blau: [[  24  ]] m$^2$
+violett: [[  32  ]] m$^2$
+
+</div>
+<div class="flex-child">
+
+__$f)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $192\,$m$^2$.
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc12.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+rot: [[  60  ]] m$^2$
+blau: [[  36  ]] m$^2$
+violett: [[  60  ]] m$^2$
+
+</div>
+
+</section>
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0099  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 99:__ **Gib** die Antwort auf die Fragen zu jeder Darstellung **an**.
+
+
+<center>
+
+<!-- style="width:500px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruch99.png)
+
+</center>
+
+
+__$a)\;\;$__ Das jeweilige Rechteck wird durch die gestrichelten Linien in wie viele Teile geteilt?  \\
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$I\;\;$__ [[  5  ]]
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$II\;\;$__ [[  4  ]]
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$III\;\;$__ [[  3  ]]
+</div>
+</section>
+
+__$b)\;\;$__ Das jeweilige Rechteck wird durch die gepunkteten Linien in wie viele Teile geteilt?  \\
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$I\;\;$__ [[  3  ]]
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$II\;\;$__ [[  4  ]]
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$III\;\;$__ [[  6  ]]
+</div>
+</section>
+
+__$c)\;\;$__ Das jeweilige Rechteck wird durch die gestrichelten und die gepunkteten Linien in wie viele Teile geteilt?  \\
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$I\;\;$__ [[  15  ]]
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$II\;\;$__ [[  16  ]]
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$III\;\;$__ [[  18  ]]
+</div>
+</section>
+
+
+
+<!--  Bruchrechnung 0100  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 100:__ **Gib** die Antwort auf die Fragen zu jeder Darstellung **an**.
+
+
+
+<center>
+
+<!-- style="width:500px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruch100.png)
+
+</center>
+
+
+
+__$a)\;\;$__ Welcher Bruchanteil des jeweiligen Rechteck ist farbig markiert?  \\
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$I\;\;$__ [[  1/3  ]]
+@Algebrite.check(1/3)
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$II\;\;$__ [[  3/4  ]]
+@Algebrite.check(3/4)
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$III\;\;$__ [[  3/5  ]]
+@Algebrite.check(3/5)
+</div>
+</section>
+
+__$b)\;\;$__ Welcher Bruchanteil der farbigen Markierung ist bläulich markiert?  \\
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$I\;\;$__ [[  2/3  ]]
+@Algebrite.check(2/3)
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$II\;\;$__ [[  1/6  ]]
+@Algebrite.check(1/6)
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$III\;\;$__ [[  3/4  ]]
+@Algebrite.check(3/4)
+</div>
+</section>
+
+__$c)\;\;$__ Welcher Bruchanteil der jeweiligen Rechteck ist bläulich markiert?  \\
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$I\;\;$__ [[  2/9  ]]
+@Algebrite.check(2/9)
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$II\;\;$__ [[  3/24 ]]
+@Algebrite.check(3/24)
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$III\;\;$__ [[  9/20  ]]
+@Algebrite.check(9/20)
+</div>
+</section>
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0101  -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 101:__ 
+
+
 
 
 

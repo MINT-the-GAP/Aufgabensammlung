@@ -43,9 +43,9 @@ import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.m
 import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main/README.md
 
 
-tags: Bruchrechnung, Division, Multiplikation, mittel, niedrig, Berechnen
+tags: Bruchrechnung, Zahlenverständnis, sehr leicht, sehr niedrig, Angeben
 
-comment: Division und Multiplikation mit drei Brüche.
+comment: Eine Fläche wurde in Bruchanteile unterteilt. Beantworte die Fragen dazu.
 
 author: Martin Lommatzsch
 
@@ -54,10 +54,68 @@ author: Martin Lommatzsch
 
 
 
-# Testsssss
+# Bruchunterteilung einer Fläche
 
 
+**Gib** die Antwort auf die Fragen zu jeder Darstellung **an**.
 
 
+<center>
 
+<!-- style="width:500px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruch99.png)
+
+</center>
+
+
+__$a)\;\;$__ Das jeweilige Rechteck wird durch die gestrichelten Linien in wie viele Teile geteilt?  \\
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$I\;\;$__ [[  5  ]]
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$II\;\;$__ [[  4  ]]
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$III\;\;$__ [[  3  ]]
+</div>
+</section>
+
+__$b)\;\;$__ Das jeweilige Rechteck wird durch die gepunkteten Linien in wie viele Teile geteilt?  \\
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$I\;\;$__ [[  3  ]]
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$II\;\;$__ [[  4  ]]
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$III\;\;$__ [[  6  ]]
+</div>
+</section>
+
+__$c)\;\;$__ Das jeweilige Rechteck wird durch die gestrichelten und die gepunkteten Linien in wie viele Teile geteilt?  \\
+
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$I\;\;$__ [[  15  ]]
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$II\;\;$__ [[  16  ]]
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$III\;\;$__ [[  18  ]]
+</div>
+</section>
 

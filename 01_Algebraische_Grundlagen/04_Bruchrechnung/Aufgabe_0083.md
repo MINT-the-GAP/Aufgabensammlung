@@ -43,9 +43,10 @@ import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.m
 import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main/README.md
 
 
-tags: Bruchrechnung, Division, Multiplikation, mittel, niedrig, Berechnen
 
-comment: Division und Multiplikation mit drei Brüche.
+tags: Bruchrechnung, sehr leicht, sehr niedrig, Angeben
+
+comment: Welcher Bruch ist dargestellt?
 
 author: Martin Lommatzsch
 
@@ -54,11 +55,117 @@ author: Martin Lommatzsch
 
 
 
-# Division und Multiplikation mit Brüchen
+# Brüche erkennen
+
+**Gib** den dargestellten Bruch **an**. (Es ist der jeweilige graue Anteil gefragt.)
 
 
 
+<section class="flex-container">
 
+<div class="flex-child">
+
+__$a)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb13.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  5/18  ]]
+@Algebrite.check(5/18)
+
+</div>
+
+<div class="flex-child">
+
+__$b)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb14.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  2/3  ]]
+@Algebrite.check(2/3)
+
+</div>
+
+<div class="flex-child">
+
+__$c)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb15.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  32/72  ]]
+@Algebrite.check(32/72)
+
+</div>
+
+<div class="flex-child">
+
+__$d)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb16.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  4/9  ]]
+@Algebrite.check(4/9)
+
+</div>
+
+<div class="flex-child">
+
+__$e)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb17.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  4/12  ]]
+@Algebrite.check(4/12)
+
+</div>
+
+<div class="flex-child">
+
+__$f)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb18.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  1/6  ]]
+@Algebrite.check(1/6)
+
+</div>
+
+</section>
 
 
 

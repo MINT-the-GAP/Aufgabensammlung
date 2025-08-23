@@ -43,9 +43,10 @@ import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.m
 import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main/README.md
 
 
-tags: Bruchrechnung, Division, Multiplikation, mittel, niedrig, Berechnen
 
-comment: Division und Multiplikation mit drei Brüche.
+tags: Bruchrechnung, sehr leicht, sehr niedrig, Angeben
+
+comment: Welcher Bruch ist dargestellt?
 
 author: Martin Lommatzsch
 
@@ -54,10 +55,82 @@ author: Martin Lommatzsch
 
 
 
-# Testsssss
+# Brüche erkennen
+
+**Gib** den dargestellten Bruch **an**. (Es ist der jeweilige graue Anteil gefragt.)
 
 
 
+<section class="flex-container">
 
+<div class="flex-child">
+
+__$a)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb25.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  2/6  ]]
+@Algebrite.check(2/6)
+
+</div>
+
+<div class="flex-child">
+
+__$b)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb26.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  5/12  ]]
+@Algebrite.check(5/12)
+
+</div>
+
+<div class="flex-child">
+
+__$c)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb27.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  1/4  ]]
+@Algebrite.check(1/4)
+
+</div>
+
+<div class="flex-child">
+
+__$d)\;\;$__
+
+<center>
+
+<!-- style="width:150px" -->
+![](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb28.png)
+
+</center>
+
+<!-- data-solution-button="5"-->
+[[  5/8  ]]
+@Algebrite.check(5/8)
+
+</div>
+
+</section>
 
 
