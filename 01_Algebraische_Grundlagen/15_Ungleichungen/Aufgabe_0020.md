@@ -47,7 +47,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
 
 
-tags: Bruchrechnung, Mengen, negative Zahlen, Bruchrechnung, Distributivgesetz, schwer, hoch, Berechnen
+tags: Ungleichungen, Bruchrechnung, Mengen, negative Zahlen, Bruchrechnung, Distributivgesetz, schwer, hoch, Berechnen
 
 comment: Die Lösungsmenge braucht noch einen Wert, findest du diesen? Achte auf die Mengen und Vorzeichen.
 

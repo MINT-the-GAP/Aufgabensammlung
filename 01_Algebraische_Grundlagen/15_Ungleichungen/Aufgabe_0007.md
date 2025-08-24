@@ -44,7 +44,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
 
 
-tags: Bruchrechnung, Mengen, leicht, niedrig, Bestimmen
+tags: Ungleichungen, Bruchrechnung, Mengen, leicht, niedrig, Bestimmen
 
 comment: Die Lösungsmenge braucht noch einen Wert, findest du diesen?
 

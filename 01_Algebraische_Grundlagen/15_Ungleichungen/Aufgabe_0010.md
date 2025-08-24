@@ -44,7 +44,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
 
 
-tags: Bruchrechnung, negative Zahlen, leicht, niedrig, Angeben
+tags: Ungleichungen, Bruchrechnung, negative Zahlen, leicht, niedrig, Angeben
 
 comment: Die Lösungsmenge braucht noch einen Wert, findest du diesen? Achte auf die Vorzeichen.
 
