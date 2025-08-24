@@ -21307,7 +21307,8 @@ __Aufgabe 99:__ **Gib** die Antwort auf die Fragen zu jeder Darstellung **an**.
 </center>
 
 
-__$a)\;\;$__ Das jeweilige Rechteck wird durch die gestrichelten Linien in wie viele Teile geteilt?  \
+__$a)\;\;$__ Das jeweilige Rechteck wird durch die gestrichelten Linien in wie viele Teile geteilt? 
+
 
 <section class="flex-container">
 <div class="flex-child">
@@ -21324,7 +21325,8 @@ __$III\;\;$__ [[  3  ]]
 </div>
 </section>
 
-__$b)\;\;$__ Das jeweilige Rechteck wird durch die gepunkteten Linien in wie viele Teile geteilt?  \
+__$b)\;\;$__ Das jeweilige Rechteck wird durch die gepunkteten Linien in wie viele Teile geteilt? 
+
 
 <section class="flex-container">
 <div class="flex-child">
@@ -21341,7 +21343,8 @@ __$III\;\;$__ [[  6  ]]
 </div>
 </section>
 
-__$c)\;\;$__ Das jeweilige Rechteck wird durch die gestrichelten und die gepunkteten Linien in wie viele Teile geteilt?  \
+__$c)\;\;$__ Das jeweilige Rechteck wird durch die gestrichelten und die gepunkteten Linien in wie viele Teile geteilt? 
+
 
 <section class="flex-container">
 <div class="flex-child">
@@ -21377,7 +21380,8 @@ __Aufgabe 100:__ **Gib** die Antwort auf die Fragen zu jeder Darstellung **an**.
 
 
 
-__$a)\;\;$__ Welcher Bruchanteil des jeweiligen Rechteck ist farbig markiert?  \
+__$a)\;\;$__ Welcher Bruchanteil des jeweiligen Rechteck ist farbig markiert?
+
 
 <section class="flex-container">
 <div class="flex-child">
@@ -21397,7 +21401,8 @@ __$III\;\;$__ [[  3/5  ]]
 </div>
 </section>
 
-__$b)\;\;$__ Welcher Bruchanteil der farbigen Markierung ist bläulich markiert?  \
+__$b)\;\;$__ Welcher Bruchanteil der farbigen Markierung ist bläulich markiert?
+
 
 <section class="flex-container">
 <div class="flex-child">
@@ -21417,7 +21422,8 @@ __$III\;\;$__ [[  3/4  ]]
 </div>
 </section>
 
-__$c)\;\;$__ Welcher Bruchanteil der jeweiligen Rechteck ist bläulich markiert?  \
+__$c)\;\;$__ Welcher Bruchanteil der jeweiligen Rechteck ist bläulich markiert? 
+
 
 <section class="flex-container">
 <div class="flex-child">
@@ -21475,7 +21481,8 @@ $$
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 __Aufgabe 102:__ Ein Wasserkanister fasst $12$ Liter Wasser. Es wird $\dfrac{1}{3}$ des Wassers entnommen.  
-**Bestimme**, wie viele Liter entnommen werden.  \
+**Bestimme**, wie viele Liter entnommen werden. 
+
 
 <!-- data-solution-button="5"-->
 [[  4  ]] l
@@ -21950,7 +21957,7 @@ __Aufgabe 120:__ Die Fläche eines Rechtecks beträgt $40\,\text{cm}^2$. Ein Ant
 **Bestimme** die markierte Fläche. 
 
 <!-- data-solution-button="5"-->
-[[  15  ]] cm^2
+[[  15  ]] cm$^2$
 ************
 $$
 \dfrac{3}{8}\cdot 40\,\text{cm}^2

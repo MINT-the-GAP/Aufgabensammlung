@@ -58,7 +58,8 @@ author: Martin Lommatzsch
 # Textaufgabe Bruchrechnung - Wasserkanister
 
 Ein Wasserkanister fasst $12$ Liter Wasser. Es wird $\dfrac{1}{3}$ des Wassers entnommen.  
-**Bestimme**, wie viele Liter entnommen werden.  \
+**Bestimme**, wie viele Liter entnommen werden. 
+
 
 <!-- data-solution-button="5"-->
 [[  4  ]] l

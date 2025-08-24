@@ -62,7 +62,7 @@ Die Fläche eines Rechtecks beträgt $40\,\text{cm}^2$. Ein Anteil von $\dfrac{3
 **Berechne** die markierte Fläche. 
 
 <!-- data-solution-button="5"-->
-[[  15  ]] cm^2
+[[  15  ]] cm$^2$
 ************
 $$
 \dfrac{3}{8}\cdot 40\,\text{cm}^2
