@@ -23593,6 +23593,20 @@ __Aufgabe 161:__ **Bestimme** die richtige Reihenfolge der Dominos.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #### Übungen - Dezimalzahlen
 
 
