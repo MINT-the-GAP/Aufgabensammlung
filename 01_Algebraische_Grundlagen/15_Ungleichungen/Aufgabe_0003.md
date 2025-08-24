@@ -46,7 +46,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
 tags: Bruchrechnung, sehr leicht, sehr niedrig, Angeben
 
-comment: Welcher Bruch ist dargestellt?
+comment: Die Lösungsmenge braucht noch einen Wert, findest du diesen?
 
 author: Martin Lommatzsch
 
@@ -55,82 +55,50 @@ author: Martin Lommatzsch
 
 
 
-# Brüche erkennen
+# Lösungsmengen von Ungleichungen
 
-**Gib** den dargestellten Bruch **an**. (Es ist der jeweilige graue Anteil gefragt.)
+
+
+
+
+**Gib** den gesuchten Wert innerhalb der Lösungsmenge, die die Ungleichung beschreibt, **an**.
 
 
 
 <section class="flex-container">
-
 <div class="flex-child">
-
-__$a)\;\;$__
-
-<center>
-
-<!-- style="width:400px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb25.png)
-
-</center>
+__$a)\;\;$__ $4x < 20$ 
 
 <!-- data-solution-button="5"-->
-[[  2/6  ]]
-@Algebrite.check(2/6)
-
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x < $   [[  5  ]]   $\left.   \right\}$
 </div>
 
 <div class="flex-child">
-
-__$b)\;\;$__
-
-<center>
-
-<!-- style="width:400px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb26.png)
-
-</center>
+__$b)\;\;$__  $x : 5 \geq 2$ 
 
 <!-- data-solution-button="5"-->
-[[  5/12  ]]
-@Algebrite.check(5/12)
-
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  10  ]]   $\left.   \right\}$
 </div>
 
 <div class="flex-child">
-
-__$c)\;\;$__
-
-<center>
-
-<!-- style="width:400px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb27.png)
-
-</center>
+__$c)\;\;$__  $\dfrac{x}{5} \leq 6$ 
 
 <!-- data-solution-button="5"-->
-[[  1/4  ]]
-@Algebrite.check(1/4)
-
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  30  ]]   $\left.   \right\}$
 </div>
 
 <div class="flex-child">
-
-__$d)\;\;$__
-
-<center>
-
-<!-- style="width:400px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb28.png)
-
-</center>
+__$d)\;\;$__  $ x - 3 > 12$ 
 
 <!-- data-solution-button="5"-->
-[[  5/8  ]]
-@Algebrite.check(5/8)
-
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x > $   [[  15  ]]   $\left.   \right\}$
 </div>
-
 </section>
+
+
+
+
+
+
 
 

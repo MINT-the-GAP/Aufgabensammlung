@@ -62,7 +62,7 @@ Eine Pizza wird in $16$ gleich große Stücke geteilt. $\dfrac{3}{8}$ der Pizza 
 **Bestimme**, wie viele Stücke das sind. 
 
 <!-- data-solution-button="5"-->
-[[  6  ]]
+ [[  6  ]] 
 @Algebrite.check(6)
 ************
 $$
