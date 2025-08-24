@@ -19883,7 +19883,7 @@ __$a)\;\;$__
 
 <center>
 
-<!-- style="width:150px" -->
+<!-- style="width:400px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb29.png)
 
 </center>
@@ -19900,7 +19900,7 @@ __$b)\;\;$__
 
 <center>
 
-<!-- style="width:150px" -->
+<!-- style="width:400px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb30.png)
 
 </center>
@@ -19917,7 +19917,7 @@ __$c)\;\;$__
 
 <center>
 
-<!-- style="width:150px" -->
+<!-- style="width:400px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb31.png)
 
 </center>
@@ -19934,7 +19934,7 @@ __$d)\;\;$__
 
 <center>
 
-<!-- style="width:150px" -->
+<!-- style="width:400px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb32.png)
 
 </center>
@@ -21064,7 +21064,7 @@ __$a)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $20\,$m$^2$.
 <center>
 
 <!-- style="width:150px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc1.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Bruchc1.png)
 
 </center>
 
@@ -21081,7 +21081,7 @@ __$b)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $80\,$m$^2$.
 <center>
 
 <!-- style="width:150px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc2.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Bruchc2.png)
 
 </center>
 
@@ -21098,7 +21098,7 @@ __$c)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $120\,$m$^2$.
 <center>
 
 <!-- style="width:150px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc3.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Bruchc3.png)
 
 </center>
 
@@ -21115,7 +21115,7 @@ __$d)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $240\,$m$^2$.
 <center>
 
 <!-- style="width:150px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc4.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Bruchc4.png)
 
 </center>
 
@@ -21132,7 +21132,7 @@ __$e)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $200\,$m$^2$.
 <center>
 
 <!-- style="width:150px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc5.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Bruchc5.png)
 
 </center>
 
@@ -21149,7 +21149,7 @@ __$f)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $60\,$m$^2$.
 <center>
 
 <!-- style="width:150px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc6.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Bruchc6.png)
 
 </center>
 
@@ -21187,7 +21187,7 @@ __$a)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $90\,$m$^2$.
 <center>
 
 <!-- style="width:150px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc7.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Bruchc7.png)
 
 </center>
 
@@ -21204,7 +21204,7 @@ __$b)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $96\,$m$^2$.
 <center>
 
 <!-- style="width:150px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc8.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Bruchc8.png)
 
 </center>
 
@@ -21221,7 +21221,7 @@ __$c)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $81\,$m$^2$.
 <center>
 
 <!-- style="width:150px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc9.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Bruchc9.png)
 
 </center>
 
@@ -21238,7 +21238,7 @@ __$d)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $560\,$m$^2$.
 <center>
 
 <!-- style="width:150px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc10.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Bruchc10.png)
 
 </center>
 
@@ -21255,7 +21255,7 @@ __$e)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $126\,$m$^2$.
 <center>
 
 <!-- style="width:150px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc11.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Bruchc11.png)
 
 </center>
 
@@ -21272,7 +21272,7 @@ __$f)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $192\,$m$^2$.
 <center>
 
 <!-- style="width:150px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchc12.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Bruchc12.png)
 
 </center>
 
@@ -21301,13 +21301,13 @@ __Aufgabe 99:__ **Gib** die Antwort auf die Fragen zu jeder Darstellung **an**.
 
 <center>
 
-<!-- style="width:500px" -->
+<!-- style="width:750px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruch99.png)
 
 </center>
 
 
-__$a)\;\;$__ Das jeweilige Rechteck wird durch die gestrichelten Linien in wie viele Teile geteilt?  \\
+__$a)\;\;$__ Das jeweilige Rechteck wird durch die gestrichelten Linien in wie viele Teile geteilt?  \
 
 <section class="flex-container">
 <div class="flex-child">
@@ -21324,7 +21324,7 @@ __$III\;\;$__ [[  3  ]]
 </div>
 </section>
 
-__$b)\;\;$__ Das jeweilige Rechteck wird durch die gepunkteten Linien in wie viele Teile geteilt?  \\
+__$b)\;\;$__ Das jeweilige Rechteck wird durch die gepunkteten Linien in wie viele Teile geteilt?  \
 
 <section class="flex-container">
 <div class="flex-child">
@@ -21341,7 +21341,7 @@ __$III\;\;$__ [[  6  ]]
 </div>
 </section>
 
-__$c)\;\;$__ Das jeweilige Rechteck wird durch die gestrichelten und die gepunkteten Linien in wie viele Teile geteilt?  \\
+__$c)\;\;$__ Das jeweilige Rechteck wird durch die gestrichelten und die gepunkteten Linien in wie viele Teile geteilt?  \
 
 <section class="flex-container">
 <div class="flex-child">
@@ -21370,14 +21370,14 @@ __Aufgabe 100:__ **Gib** die Antwort auf die Fragen zu jeder Darstellung **an**.
 
 <center>
 
-<!-- style="width:500px" -->
+<!-- style="width:750px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruch100.png)
 
 </center>
 
 
 
-__$a)\;\;$__ Welcher Bruchanteil des jeweiligen Rechteck ist farbig markiert?  \\
+__$a)\;\;$__ Welcher Bruchanteil des jeweiligen Rechteck ist farbig markiert?  \
 
 <section class="flex-container">
 <div class="flex-child">
@@ -21397,7 +21397,7 @@ __$III\;\;$__ [[  3/5  ]]
 </div>
 </section>
 
-__$b)\;\;$__ Welcher Bruchanteil der farbigen Markierung ist bläulich markiert?  \\
+__$b)\;\;$__ Welcher Bruchanteil der farbigen Markierung ist bläulich markiert?  \
 
 <section class="flex-container">
 <div class="flex-child">
@@ -21417,7 +21417,7 @@ __$III\;\;$__ [[  3/4  ]]
 </div>
 </section>
 
-__$c)\;\;$__ Welcher Bruchanteil der jeweiligen Rechteck ist bläulich markiert?  \\
+__$c)\;\;$__ Welcher Bruchanteil der jeweiligen Rechteck ist bläulich markiert?  \
 
 <section class="flex-container">
 <div class="flex-child">
@@ -22154,7 +22154,7 @@ Am Nachmittag wird von den übrigen Büchern erneut die Hälfte in die Regale ge
 **Bestimme**, wie viele Bücher am Ende des Tages noch nicht einsortiert sind.  
 
 <!-- data-solution-button="5"-->
-[[  12  ]]
+ [[  12  ]] 
 ************
 $$
 \text{Vormittag:}\quad \dfrac{1}{5}\cdot 40 = 8 \quad \Rightarrow \; 40-8 = 32 \text{ Bücher übrig} \\
@@ -22176,7 +22176,7 @@ Am Vormittag verkauft er $\dfrac{2}{3}$ seiner Kisten. Danach beschließt er, vo
 **Bestimme**, wie viele Kisten er schließlich noch selbst behalten kann. 
 
 <!-- data-solution-button="5"-->
-[[  4  ]]
+ [[  4  ]] 
 ************
 $$
 \text{Verkauf:}\quad \dfrac{2}{3}\cdot 24 = 16 \quad \Rightarrow \; 24-16=8 \text{ Kisten übrig} \\
@@ -22207,7 +22207,7 @@ Von der gesamten Fläche soll für ein Turnier nur $\dfrac{5}{6}$ genutzt werden
 **Bestimme**, wie groß die gesperrte Fläche ist. 
 
 <!-- data-solution-button="5"-->
-[[  100  ]] m^2
+[[  100  ]] m$^2$
 ************
 $$
 \text{Breite:}\quad \dfrac{2}{3}\cdot 30\,\text{m} = 20\,\text{m} \\
@@ -23350,7 +23350,8 @@ __Aufgabe 159:__ Für eine Veranstaltung wird eine rechteckige Halle vorbereitet
 Die Länge beträgt $ 25\,\text{m} $, die Breite ist $ \dfrac{4}{5} $ der Länge. Zunächst wird eine Sicherheitszone von $ \dfrac{3}{10} $ der Gesamtfläche abgesperrt (nicht begehbar).  
 Von der anschließend verbleibenden Fläche werden Schutzmatten auf $ \dfrac{2}{3} $ ausgelegt (ebenfalls nicht begehbar).  
 Zum Schluss blockiert eine Bühne $ \dfrac{1}{5} $ der Gesamtfläche.  
-**Berechne** die am Ende frei begehbare Fläche.  \
+**Berechne** die am Ende frei begehbare Fläche. 
+
 
 <!-- data-solution-button="5"-->
 [[  50/3  ]] m$^2$
@@ -23423,10 +23424,13 @@ $$
 
 
 
+<!--  Bruchrechnung noch keine  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 161:__ **Bestimme** die richtige Reihenfolge der Dominos.
 
 
-
-
+??[](https://www.bildung-bedeutet-freiheit.de/GeoGebra/Dominoes-Demo.html)
 
 
 
@@ -24037,12 +24041,29 @@ __Aufgabe 1:__
 
 
 
+
+
+
 #### Übungen - Prozentrechnung
 
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 1:__ 
+__Aufgabe 1:__ Fülle die fehlenden Felder aus.
+
+
+
+??[](https://www.bildung-bedeutet-freiheit.de/GeoGebra/Downloadbalken.html)
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 2:__ Fülle die fehlenden Felder aus.
+
+
+
+??[](https://www.bildung-bedeutet-freiheit.de/GeoGebra/DreisatzL.html)
+
 
 <!-- data-solution-button="5"-->
 

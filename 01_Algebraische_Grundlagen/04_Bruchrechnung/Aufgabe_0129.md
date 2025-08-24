@@ -65,7 +65,7 @@ Von der gesamten Fläche soll für ein Turnier nur $\dfrac{5}{6}$ genutzt werden
 **Bestimme**, wie groß die gesperrte Fläche ist. 
 
 <!-- data-solution-button="5"-->
-[[  100  ]] m^2
+[[  100  ]] m$^2$
 ************
 $$
 \text{Breite:}\quad \dfrac{2}{3}\cdot 30\,\text{m} = 20\,\text{m} \\

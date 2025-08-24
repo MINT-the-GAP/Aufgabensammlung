@@ -70,7 +70,7 @@ __$a)\;\;$__
 
 <center>
 
-<!-- style="width:150px" -->
+<!-- style="width:400px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb29.png)
 
 </center>
@@ -87,7 +87,7 @@ __$b)\;\;$__
 
 <center>
 
-<!-- style="width:150px" -->
+<!-- style="width:400px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb30.png)
 
 </center>
@@ -104,7 +104,7 @@ __$c)\;\;$__
 
 <center>
 
-<!-- style="width:150px" -->
+<!-- style="width:400px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb31.png)
 
 </center>
@@ -121,7 +121,7 @@ __$d)\;\;$__
 
 <center>
 
-<!-- style="width:150px" -->
+<!-- style="width:400px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb32.png)
 
 </center>

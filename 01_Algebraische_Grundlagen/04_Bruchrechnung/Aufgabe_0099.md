@@ -62,13 +62,13 @@ author: Martin Lommatzsch
 
 <center>
 
-<!-- style="width:500px" -->
+<!-- style="width:750px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruch99.png)
 
 </center>
 
 
-__$a)\;\;$__ Das jeweilige Rechteck wird durch die gestrichelten Linien in wie viele Teile geteilt?  \\
+__$a)\;\;$__ Das jeweilige Rechteck wird durch die gestrichelten Linien in wie viele Teile geteilt?  \
 
 <section class="flex-container">
 <div class="flex-child">
@@ -85,7 +85,7 @@ __$III\;\;$__ [[  3  ]]
 </div>
 </section>
 
-__$b)\;\;$__ Das jeweilige Rechteck wird durch die gepunkteten Linien in wie viele Teile geteilt?  \\
+__$b)\;\;$__ Das jeweilige Rechteck wird durch die gepunkteten Linien in wie viele Teile geteilt?  \
 
 <section class="flex-container">
 <div class="flex-child">
@@ -102,7 +102,7 @@ __$III\;\;$__ [[  6  ]]
 </div>
 </section>
 
-__$c)\;\;$__ Das jeweilige Rechteck wird durch die gestrichelten und die gepunkteten Linien in wie viele Teile geteilt?  \\
+__$c)\;\;$__ Das jeweilige Rechteck wird durch die gestrichelten und die gepunkteten Linien in wie viele Teile geteilt?  \
 
 <section class="flex-container">
 <div class="flex-child">

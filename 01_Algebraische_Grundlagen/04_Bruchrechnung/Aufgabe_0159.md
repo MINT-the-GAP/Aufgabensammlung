@@ -62,7 +62,8 @@ Für eine Veranstaltung wird eine rechteckige Halle vorbereitet.
 Die Länge beträgt $ 25\,\text{m} $, die Breite ist $ \dfrac{4}{5} $ der Länge. Zunächst wird eine Sicherheitszone von $ \dfrac{3}{10} $ der Gesamtfläche abgesperrt (nicht begehbar).  
 Von der anschließend verbleibenden Fläche werden Schutzmatten auf $ \dfrac{2}{3} $ ausgelegt (ebenfalls nicht begehbar).  
 Zum Schluss blockiert eine Bühne $ \dfrac{1}{5} $ der Gesamtfläche.  
-**Berechne** die am Ende frei begehbare Fläche.  \
+**Berechne** die am Ende frei begehbare Fläche. 
+
 
 <!-- data-solution-button="5"-->
 [[  50/3  ]] m$^2$

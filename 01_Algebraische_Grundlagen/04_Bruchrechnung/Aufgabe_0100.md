@@ -64,14 +64,14 @@ author: Martin Lommatzsch
 
 <center>
 
-<!-- style="width:500px" -->
+<!-- style="width:750px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruch100.png)
 
 </center>
 
 
 
-__$a)\;\;$__ Welcher Bruchanteil des jeweiligen Rechteck ist farbig markiert?  \\
+__$a)\;\;$__ Welcher Bruchanteil des jeweiligen Rechteck ist farbig markiert?  \
 
 <section class="flex-container">
 <div class="flex-child">
@@ -91,7 +91,7 @@ __$III\;\;$__ [[  3/5  ]]
 </div>
 </section>
 
-__$b)\;\;$__ Welcher Bruchanteil der farbigen Markierung ist bläulich markiert?  \\
+__$b)\;\;$__ Welcher Bruchanteil der farbigen Markierung ist bläulich markiert?  \
 
 <section class="flex-container">
 <div class="flex-child">
@@ -111,7 +111,7 @@ __$III\;\;$__ [[  3/4  ]]
 </div>
 </section>
 
-__$c)\;\;$__ Welcher Bruchanteil der jeweiligen Rechteck ist bläulich markiert?  \\
+__$c)\;\;$__ Welcher Bruchanteil der jeweiligen Rechteck ist bläulich markiert?  \
 
 <section class="flex-container">
 <div class="flex-child">
