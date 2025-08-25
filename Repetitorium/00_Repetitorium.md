@@ -206,30 +206,30 @@ Ohne das Verständnis dieser Themenbereiche lassen sich weiterführende Themen n
 
 ## Mengen
 
-Zahlen können in verschiedene Kategorien, sogenannte *Mengen*, eingeordnet werden.  
+{{|>}} Zahlen können in verschiedene Kategorien, sogenannte *Mengen*, eingeordnet werden.  
 Dabei bilden die sogenannten *natürlichen Zahlen* die Basis aller anderen *Zahlenmengen*,  
 die in der Schule besprochen werden. Die *natürlichen Zahlen* werden durch das Symbol  
 $\mathbb{N}$ beschrieben und beinhalten *Zahlen* wie $0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ...$.  
 
-Die mathematische Schreibweise dazu wäre:  
+{{|>}} Die mathematische Schreibweise dazu wäre:  
 $\mathbb{N} = \left\{0,1,2,\dots\right\}$,  
 wobei in den geschweiften *Klammern* $\{\}$ alle *Zahlen* aufgelistet werden, die zur *Zahlenmenge* gehören.  
 
-Oftmals werden die *natürlichen Zahlen* auch ohne Null verwendet und werden im Folgenden als $\mathbb{N}^+$ bezeichnet.  
+{{|>}} Oftmals werden die *natürlichen Zahlen* auch ohne Null verwendet und werden im Folgenden als $\mathbb{N}^+$ bezeichnet.  
 Die erste Erweiterung der *natürlichen Zahlen* $\mathbb{N}$ sind die *ganzen Zahlen*  
 $\mathbb{Z} = \{\dots,-2,-1,0,1,2,\dots\}$.  
 
-Bei genauer Betrachtung fällt auf, dass die *natürlichen Zahlen* $\mathbb{N}$ eine *Teilmenge* der ganzen Zahlen $\mathbb{Z}$ sind.  
+{{|>}} Bei genauer Betrachtung fällt auf, dass die *natürlichen Zahlen* $\mathbb{N}$ eine *Teilmenge* der ganzen Zahlen $\mathbb{Z}$ sind.  
 Dies wird mit dem *Mengenoperator* $\subset$ ("ist *Teilmenge* von") wie folgt geschrieben:
 
 $$
 \mathbb{N} \subset \mathbb{Z}
 $$
 
-Die Einführung der *ganzen Zahlen* ist bedeutsam, da die *Subtraktion* damit an Wichtigkeit verliert,  
+{{|>}} Die Einführung der *ganzen Zahlen* ist bedeutsam, da die *Subtraktion* damit an Wichtigkeit verliert,  
 weil zum Beispiel $-1$ als $+(-1)$ geschrieben werden kann.  
 
-Die Erweiterung der *ganzen Zahlen* $\mathbb{Z}$ sind alle Zahlen, die durch *Brüche* dargestellt werden können.  
+{{|>}} Die Erweiterung der *ganzen Zahlen* $\mathbb{Z}$ sind alle Zahlen, die durch *Brüche* dargestellt werden können.  
 Diese Zahlen werden *rationale Zahlen* genannt:  
 $\mathbb{Q} = \{\dots, -2, -\frac{3}{2}, -1, -\frac{1}{2}, 0, \frac{1}{7}, 1, 2, \frac{34}{15}, \dots\}$.
 
@@ -237,10 +237,10 @@ $$
 \mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q}
 $$
 
-Es gibt jedoch auch *Zahlen*, die nicht durch einen *Bruch* dargestellt werden können.  
+{{|>}} Es gibt jedoch auch *Zahlen*, die nicht durch einen *Bruch* dargestellt werden können.  
 Diese werden *reelle Zahlen* $\mathbb{R}$ genannt und umfassen zum Beispiel $\pi, \sqrt{2}$ und $\sqrt{3}$.  
 
-Die letzte Erweiterung der *Zahlenmengen* wird durch die Zahl $i=\sqrt{-1}$ gegeben  
+{{|>}} Die letzte Erweiterung der *Zahlenmengen* wird durch die Zahl $i=\sqrt{-1}$ gegeben  
 und führt zu den *komplexen Zahlen* $\mathbb{C}$.  
 *Komplexe Zahlen* werden in der Regel nicht in der Schule besprochen,  
 bieten aber Vorteile bei der Beschreibung von Zusammenhängen in der *Analysis*  
@@ -254,16 +254,16 @@ $$
 
 ### Mengenoperatoren
 
-Es ist möglich *Teilmengen* aufzustellen, dazu werden bestimmte *Mengenoperatoren* wie $\subset$ verwendet.  
+{{|>}} Es ist möglich *Teilmengen* aufzustellen, dazu werden bestimmte *Mengenoperatoren* wie $\subset$ verwendet.  
 Sei die *Menge* $\mathbb{M} = \{1, 2, 3, 4\}$ und die *Menge* $\mathbb{K} = \{3, 4, 5, 6\}$ gegeben, dann existieren folgende *Mengenoperationen*:  
 
-Die *Vereinigung* $\cup$ wird wie folgt dargestellt:
+{{|>}} Die *Vereinigung* $\cup$ wird wie folgt dargestellt:
 
 $$
 \mathbb{M} \cup \mathbb{K} = \{ 1, 2, 3, 4, 5, 6 \} \quad \text{Vereinigung von $\mathbb{M}$ mit $\mathbb{K}$}
 $$
 
-Die *Vereinigung* wird gelesen als:  
+{{|>}} Die *Vereinigung* wird gelesen als:  
 "Alle Zahlen, die sich in $\mathbb{M}$ **oder** in $\mathbb{K}$ befinden."  
 Das bedeutet, dass alle Zahlen der ersten *Menge* $\mathbb{M}$ und alle Zahlen der zweiten *Menge* $\mathbb{K}$ eine neue *Menge* bilden.  
 Das mathematische "oder" unterscheidet sich vom sprachlichen "oder", da es in der Mathematik immer eindeutig dieselbe Bedeutung hat.  
@@ -276,13 +276,13 @@ Falls keine *Schnittmenge* vorhanden ist, sind die beiden *Mengen* *disjunkt*.
 
 ---
 
-Eine weitere *Mengenoperation* ist der *Durchschnitt* $\cap$:
+{{|>}} Eine weitere *Mengenoperation* ist der *Durchschnitt* $\cap$:
 
 $$
 \mathbb{M} \cap \mathbb{K} = \{ 3, 4 \} \quad \text{Durchschnitt von $\mathbb{M}$ und $\mathbb{K}$}
 $$
 
-Der *Durchschnitt* wird gelesen als:  
+{{|>}} Der *Durchschnitt* wird gelesen als:  
 "Alle Zahlen, die sich in $\mathbb{M}$ **und** in $\mathbb{K}$ befinden."
 
 <center>
@@ -290,17 +290,17 @@ Der *Durchschnitt* wird gelesen als:
 </center>
 
 
-In diesem Fall sind nur die $3$ und die $4$ in der resultierenden *Durchschnittsmenge*.
+{{|>}} In diesem Fall sind nur die $3$ und die $4$ in der resultierenden *Durchschnittsmenge*.
 
 ---
 
-Die letzte wichtige *Mengenoperation* ist die *Differenz* $\setminus$:
+{{|>}} Die letzte wichtige *Mengenoperation* ist die *Differenz* $\setminus$:
 
 $$
 \mathbb{M} \setminus \mathbb{K} = \{ 1, 2 \} \quad \text{Differenz von $\mathbb{M}$ und $\mathbb{K}$}
 $$
 
-Das wird gelesen als:  
+{{|>}} Das wird gelesen als:  
 "Alle *Zahlen* von $\mathbb{M}$ ohne die *Zahlen* aus $\mathbb{K}$."
 
 <center>
@@ -310,7 +310,7 @@ Das wird gelesen als:
 
 ---
 
-Wenn man die Reihenfolge der *Mengen* umkehrt, ergibt sich ein anderes Bild:
+{{|>}} Wenn man die Reihenfolge der *Mengen* umkehrt, ergibt sich ein anderes Bild:
 
 $$
 \mathbb{K} \setminus \mathbb{M} = \{ 5, 6 \} \quad \text{Differenz von $\mathbb{K}$ und $\mathbb{M}$}
@@ -321,14 +321,14 @@ $$
 </center>
 
 
-Es wird deutlich, dass bei der *Differenz* von *Mengen* die Reihenfolge entscheidend ist, während sich der *Durchschnitt* und die *Vereinigung* nicht verändern.
+{{|>}} Es wird deutlich, dass bei der *Differenz* von *Mengen* die Reihenfolge entscheidend ist, während sich der *Durchschnitt* und die *Vereinigung* nicht verändern.
 
 ---
 
-Nun, da alle wichtigen *Mengenoperationen* eingeführt wurden, folgen noch einige wichtige mathematische Abkürzungen.  
+{{|>}} Nun, da alle wichtigen *Mengenoperationen* eingeführt wurden, folgen noch einige wichtige mathematische Abkürzungen.  
 Diese können als **Vokabeln** angesehen werden, die jeder kennen sollte.
 
-Wenn eine Zahl ein *Element* einer *Zahlenmenge* ist, wird dies mathematisch so geschrieben:
+{{|>}} Wenn eine Zahl ein *Element* einer *Zahlenmenge* ist, wird dies mathematisch so geschrieben:
 
 $$
 4 \in \mathbb{N}
@@ -337,7 +337,7 @@ $$
 ---
 
 
-Weitere wichtige Abkürzungen der Mathematik werden nun aufgelistet und im Folgenden verwendet:
+{{|>}} Weitere wichtige Abkürzungen der Mathematik werden nun aufgelistet und im Folgenden verwendet:
 
 $$
 \begin{align*}
@@ -363,7 +363,7 @@ $$
 
 ---
 
-So würde der Satz "Die *Menge* $\mathbb{M}$ beinhaltet alle *Zahlen* $x$, die die Bedingung erfüllen, dass sie *Element* der *reellen Zahlen* sind und dass es genau eine *Zahl* $e$ gibt, durch die man $x$ teilen kann, sodass $1$ dabei herauskommt" mathematisch so aussehen: 
+{{|>}} So würde der Satz "Die *Menge* $\mathbb{M}$ beinhaltet alle *Zahlen* $x$, die die Bedingung erfüllen, dass sie *Element* der *reellen Zahlen* sind und dass es genau eine *Zahl* $e$ gibt, durch die man $x$ teilen kann, sodass $1$ dabei herauskommt" mathematisch so aussehen: 
 
 
 $$
@@ -376,10 +376,10 @@ $$
 
 
 
-Mittels dieser Abkürzungen ist es möglich, eine *Zahlenmenge* einzuführen, welche von besonderer Bedeutung ist – die *Primzahlen*.  
+{{|>}} Mittels dieser Abkürzungen ist es möglich, eine *Zahlenmenge* einzuführen, welche von besonderer Bedeutung ist – die *Primzahlen*.  
 Primzahlen sind *natürliche Zahlen* größer als 1, die genau zwei positive Teiler haben: **1** und **sich selbst**.  
 
-Diese *Zahlenmenge* kann wie folgt definiert werden:
+{{|>}} Diese *Zahlenmenge* kann wie folgt definiert werden:
 
 $$
 \mathbb{P} = \left\{ p \in \mathbb{N} \ \middle| \ p > 1 \ \wedge \ \nexists n \in \mathbb{N},\ 1 < n < p,\ n \mid p \right\}
@@ -392,23 +392,23 @@ Dabei gilt:
 - $n \mid p$ bedeutet "n teilt p ohne Rest".  
 - $\nexists$ bedeutet "es existiert kein".  
 
-**Interpretation:**  
+{{|>}} **Interpretation:**  
 Eine *Zahl* $p$ ist genau dann in der *Menge* $\mathbb{P}$, wenn sie größer als 1 ist und es keine *natürliche Zahl* $n$ gibt, die $p$ teilt, außer den *Zahlen* $1$ und $p$ selbst.
 
 
 ### Mengengrenzen
 
 
-Das *Supremum* ist definiert als die "kleinste oberste Schranke" einer *Zahlenmenge*,  
+{{|>}} Das *Supremum* ist definiert als die "kleinste oberste Schranke" einer *Zahlenmenge*,  
 während das *Infimum* als "größte unterste Schranke" definiert ist.  
 
-Sei als Beispiel dazu folgende *Zahlenmenge* aus *natürlichen Zahlen* betrachtet:  
+{{|>}} Sei als Beispiel dazu folgende *Zahlenmenge* aus *natürlichen Zahlen* betrachtet:  
 
 $$
 \mathbb{M} = \left\{ 3,4,5,6,7,8 \right\}
 $$
 
-Dann ergibt sich hieraus folgendes *Infimum* und *Supremum*:
+{{|>}} Dann ergibt sich hieraus folgendes *Infimum* und *Supremum*:
 
 $$
 \begin{align*}
@@ -420,7 +420,7 @@ $$
 
 ---
 
-Hierbei können dem *Supremum* und *Infimum* *Grenzen* auferlegt werden,  
+{{|>}} Hierbei können dem *Supremum* und *Infimum* *Grenzen* auferlegt werden,  
 sodass das *Supremum* der Menge $\mathbb{M}$ in den *Grenzen*  
 zwischen $3 < x < 6$ und das *Infimum* zwischen $4 < x < 7$ wie folgt geschrieben wird:
 
@@ -433,7 +433,7 @@ $$
 
 ---
 
-Die *Grenzen* müssen nicht ausschließlich (*exklusiv*),  
+{{|>}} Die *Grenzen* müssen nicht ausschließlich (*exklusiv*),  
 sondern können auch einschließend (*inklusiv*) sein:
 
 $$
@@ -446,7 +446,7 @@ $$
 
 ---
 
-Dabei bildet das *Supremum* die größte *Zahl* der *Menge* und ist gleichzeitig das *Maximum*,  
+{{|>}} Dabei bildet das *Supremum* die größte *Zahl* der *Menge* und ist gleichzeitig das *Maximum*,  
 während das *Infimum* gleich dem *Minimum* ist.  
 
 Somit ergibt sich für inklusive Grenzen:
@@ -460,7 +460,7 @@ $$
 
 ---
 
-> **Hinweis:**  
+> {{|>}} **Hinweis:**  
 > Im folgenden Buch werden die Begriffe *Infimum* und *Supremum* lediglich zur Vollständigkeit erwähnt.  
 > Sie sind nicht essentiell für ein allgemein bildendes Grundlagenverständnis.
 
@@ -33439,20 +33439,26 @@ __$f)\;\;$__ $ -0,56:(-0,7) =$ [[  0,8  ]]
 
 
 
-### Wichtige Rechengesetze
+### Kommutativ- und Assoziativgesetz
 
 Under Construction:
+
 
 Kommutativgesetz
 
 Assoziativgesetz
+
+### Distributivgesetz
+
+Under Construction:
+
 
 Distributivgesetz
 
 !?[Distributivgesetz](https://www.youtube.com/watch?v=tSawKXhm714)
 
 
-#### Übungen - Wichtige Rechengesetze
+#### Übungen - Kommutativ-, Assoziativ- und Distributivgesetz
 
 
 
@@ -36733,9 +36739,11 @@ $$
 
 ### Quadratische Ergänzung
 
-
+Under Construction
 
 !?[Quadratische Ergänzung](https://www.youtube.com/watch?v=8QRKPmR82jQ)
+
+ mit Substitution
 
 
 #### Übungen - Quadratische Ergänzung
@@ -36753,136 +36761,6 @@ __Aufgabe 1:__
 
 
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Substitution
-
-
-#### Übungen - Substitution
-
-
-
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 1:__ 
-
-
-<!-- data-solution-button="5" -->
-
-<section class="flex-container">
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -37091,23 +36969,23 @@ __Aufgabe 1:__ In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich vi
 
 <!-- style="width:600px"  data-solution-button="5"-->
 __$a)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem1a.png)  
-$x=$ [[  1  ]] Streichhölzer
+$x=$ [[  1  ]] Streichhölzer \
 $y=$ [[  4  ]] Streichhölzer
 
 <!-- style="width:600px"  data-solution-button="5"-->
 __$b)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem2a.png)  
-$x=$ [[  2  ]] Streichhölzer
+$x=$ [[  2  ]] Streichhölzer \
 $y=$ [[  6  ]] Streichhölzer
 
 <!-- style="width:600px"  data-solution-button="5"-->
 __$c)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem3a.png)  
-$x=$ [[  3  ]] Streichhölzer
+$x=$ [[  3  ]] Streichhölzer \
 $y=$ [[  5  ]] Streichhölzer
 
 <!-- style="width:600px"  data-solution-button="5"-->
 __$d)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem4a.png)  
-$x=$ [[  1  ]] Streichhölzer
-$y=$ [[  7  ]] Streichhölzer
+$x=$ [[  1  ]] Streichhölzer \
+$y=$ [[  7  ]] Streichhölzer \
 $z=$ [[  2  ]] Streichhölzer
 
 
@@ -37123,23 +37001,23 @@ __Aufgabe 2:__ In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich vi
 
 <!-- style="width:600px"  data-solution-button="5"-->
 __$a)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem1b.png)  
-$x=$ [[  2  ]] Streichhölzer
+$x=$ [[  2  ]] Streichhölzer \
 $y=$ [[  12 ]] Streichhölzer
 
 <!-- style="width:600px"  data-solution-button="5"-->
 __$b)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem2b.png)  
-$x=$ [[  2   ]] Streichhölzer
+$x=$ [[  2   ]] Streichhölzer \
 $y=$ [[  3   ]] Streichhölzer
 
 <!-- style="width:600px"  data-solution-button="5"-->
 __$c)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem3b.png)  
-$x=$ [[  1  ]] Streichhölzer
+$x=$ [[  1  ]] Streichhölzer \
 $y=$ [[  2  ]] Streichhölzer
 
 <!-- style="width:600px"  data-solution-button="5"-->
 __$d)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem4b.png)  
-$x=$ [[  2  ]] Streichhölzer
-$y=$ [[  6  ]] Streichhölzer
+$x=$ [[  2  ]] Streichhölzer \
+$y=$ [[  6  ]] Streichhölzer \
 $z=$ [[  4  ]] Streichhölzer
 
 
@@ -40799,6 +40677,11 @@ $$
 
 
 ### Fakultäten und Binomialkoeffizienten
+
+Under Construction
+
+Fakultäten
+Binomialkoeffizienten
 
 
 #### Übungen - Fakultäten und Binomialkoeffizienten

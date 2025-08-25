@@ -62,23 +62,23 @@ In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich viele Streichhöl
 
 <!-- style="width:600px" -->
 __$a)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem1b.png)  
-$x=$ [[  2  ]] Streichhölzer
+$x=$ [[  2  ]] Streichhölzer \
 $y=$ [[  12 ]] Streichhölzer
 
 <!-- style="width:600px" -->
 __$b)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem2b.png)  
-$x=$ [[  2   ]] Streichhölzer
+$x=$ [[  2   ]] Streichhölzer \
 $y=$ [[  3   ]] Streichhölzer
 
 <!-- style="width:600px" -->
 __$c)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem3b.png)  
-$x=$ [[  1  ]] Streichhölzer
+$x=$ [[  1  ]] Streichhölzer \
 $y=$ [[  2  ]] Streichhölzer
 
 <!-- style="width:600px" -->
 __$d)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem4b.png)  
-$x=$ [[  2  ]] Streichhölzer
-$y=$ [[  6  ]] Streichhölzer
+$x=$ [[  2  ]] Streichhölzer \
+$y=$ [[  6  ]] Streichhölzer \
 $z=$ [[  4  ]] Streichhölzer
 
 
