@@ -100,8 +100,8 @@ $$
 <div class="flex-child">
 
 __$c)\;\;$__ $   r = 2x + 2y + z \;\;$  mit $\;\; r=12 \;\;\wedge\;\; x=0,4 \;\;\wedge\;\; z=1,5$ \
-$y$ = [[  21/10  ]]
-@Algebrite.check(21/10)
+$y$ = [[  97/20  ]]
+@Algebrite.check(97/20)
 ************
 $$
 \begin{align*}
@@ -113,7 +113,6 @@ y &= \dfrac{12 - 2\cdot 0,4 - 1,5}{2} \\
 y &= \dfrac{12 - 0,8 - 1,5}{2} \\
 y &= \dfrac{9,7}{2} \\
 y &= \dfrac{97}{20} \\
-y &= \dfrac{21}{10} \\
 \end{align*}
 $$
 ************

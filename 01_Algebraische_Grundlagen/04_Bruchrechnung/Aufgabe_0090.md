@@ -67,6 +67,7 @@ author: Martin Lommatzsch
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ Wie viel sind $\dfrac{7}{12}$ von $50\,$kg?  \
 [[  175/6  ]]kg
+@Algebrite.check(175/6)
 ************
 $$
 \begin{align*}
@@ -85,6 +86,7 @@ $$
 <!-- data-solution-button="5"-->
 __$b)\;\;$__ Wie viel sind $\dfrac{9}{14}$ von $25\,$l?  \
 [[  225/14  ]]l
+@Algebrite.check(225/14)
 ************
 $$
 \begin{align*}
@@ -102,6 +104,7 @@ $$
 <!-- data-solution-button="5"-->
 __$c)\;\;$__ Wie viel sind $\dfrac{11}{15}$ von $40\,$m?  \
 [[  88/3  ]]m
+@Algebrite.check(88/3)
 ************
 $$
 \begin{align*}
@@ -120,6 +123,7 @@ $$
 <!-- data-solution-button="5"-->
 __$d)\;\;$__ Wie viel sind $\dfrac{5}{9}$ von $22\,$cm?  \
 [[  110/9  ]]cm
+@Algebrite.check(110/9)
 ************
 $$
 \begin{align*}
@@ -137,6 +141,7 @@ $$
 <!-- data-solution-button="5"-->
 __$e)\;\;$__ Wie viel sind $\dfrac{13}{16}$ von $18\,$kg?  \
 [[  117/8  ]]kg
+@Algebrite.check(117/8)
 ************
 $$
 \begin{align*}
@@ -155,6 +160,7 @@ $$
 <!-- data-solution-button="5"-->
 __$f)\;\;$__ Wie viel sind $\dfrac{7}{20}$ von $33\,$m?  \
 [[  231/20  ]]m
+@Algebrite.check(231/20)
 ************
 $$
 \begin{align*}

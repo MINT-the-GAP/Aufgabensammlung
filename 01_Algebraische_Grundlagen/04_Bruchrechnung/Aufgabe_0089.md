@@ -68,6 +68,7 @@ author: Martin Lommatzsch
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ Wie viel sind $\dfrac{7}{12}$ von $54\,$kg?  \
 [[  63/2  ]]kg
+@Algebrite.check(63/2)
 ************
 $$
 \begin{align*}
@@ -85,6 +86,7 @@ $$
 <!-- data-solution-button="5"-->
 __$b)\;\;$__ Wie viel sind $\dfrac{5}{6}$ von $49\,$m$^2$?  \
 [[  245/6  ]]m$^2$
+@Algebrite.check(245/6)
 ************
 $$
 \begin{align*}
@@ -101,6 +103,7 @@ $$
 <!-- data-solution-button="5"-->
 __$c)\;\;$__ Wie viel sind $\dfrac{9}{8}$ von $20\,$h?  \
 [[  45/2  ]]h
+@Algebrite.check(45/2)
 ************
 $$
 \begin{align*}
@@ -118,6 +121,7 @@ $$
 <!-- data-solution-button="5"-->
 __$d)\;\;$__ Wie viel sind $\dfrac{13}{15}$ von $36\,$kg?  \
 [[  156/5  ]]kg
+@Algebrite.check(156/5)
 ************
 $$
 \begin{align*}
@@ -135,6 +139,7 @@ $$
 <!-- data-solution-button="5"-->
 __$e)\;\;$__ Wie viel sind $\dfrac{3}{7}$ von $85\,$min?  \
 [[  255/7  ]]min
+@Algebrite.check(255/7)
 ************
 $$
 \begin{align*}
@@ -151,6 +156,7 @@ $$
 <!-- data-solution-button="5"-->
 __$f)\;\;$__ Wie viel sind $\dfrac{17}{12}$ von $18\,$m?  \
 [[  51/2  ]]m
+@Algebrite.check(51/2)
 ************
 $$
 \begin{align*}

@@ -20173,6 +20173,7 @@ __Aufgabe 89:__ **Berechne** den Wert des Terms hinter der Fragestellung.
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ Wie viel sind $\dfrac{7}{12}$ von $54\,$kg?  \
 [[  63/2  ]]kg
+@Algebrite.check(63/2)
 ************
 $$
 \begin{align*}
@@ -20190,6 +20191,7 @@ $$
 <!-- data-solution-button="5"-->
 __$b)\;\;$__ Wie viel sind $\dfrac{5}{6}$ von $49\,$m$^2$?  \
 [[  245/6  ]]m$^2$
+@Algebrite.check(245/6)
 ************
 $$
 \begin{align*}
@@ -20206,6 +20208,7 @@ $$
 <!-- data-solution-button="5"-->
 __$c)\;\;$__ Wie viel sind $\dfrac{9}{8}$ von $20\,$h?  \
 [[  45/2  ]]h
+@Algebrite.check(45/2)
 ************
 $$
 \begin{align*}
@@ -20223,6 +20226,7 @@ $$
 <!-- data-solution-button="5"-->
 __$d)\;\;$__ Wie viel sind $\dfrac{13}{15}$ von $36\,$kg?  \
 [[  156/5  ]]kg
+@Algebrite.check(156/5)
 ************
 $$
 \begin{align*}
@@ -20240,6 +20244,7 @@ $$
 <!-- data-solution-button="5"-->
 __$e)\;\;$__ Wie viel sind $\dfrac{3}{7}$ von $85\,$min?  \
 [[  255/7  ]]min
+@Algebrite.check(255/7)
 ************
 $$
 \begin{align*}
@@ -20256,6 +20261,7 @@ $$
 <!-- data-solution-button="5"-->
 __$f)\;\;$__ Wie viel sind $\dfrac{17}{12}$ von $18\,$m?  \
 [[  51/2  ]]m
+@Algebrite.check(51/2)
 ************
 $$
 \begin{align*}
@@ -20269,6 +20275,7 @@ $$
 </div>
 
 </section>
+
 
 
 
@@ -20287,6 +20294,7 @@ __Aufgabe 90:__ **Berechne** den Wert des Terms hinter der Fragestellung.
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ Wie viel sind $\dfrac{7}{12}$ von $50\,$kg?  \
 [[  175/6  ]]kg
+@Algebrite.check(175/6)
 ************
 $$
 \begin{align*}
@@ -20305,6 +20313,7 @@ $$
 <!-- data-solution-button="5"-->
 __$b)\;\;$__ Wie viel sind $\dfrac{9}{14}$ von $25\,$l?  \
 [[  225/14  ]]l
+@Algebrite.check(225/14)
 ************
 $$
 \begin{align*}
@@ -20322,6 +20331,7 @@ $$
 <!-- data-solution-button="5"-->
 __$c)\;\;$__ Wie viel sind $\dfrac{11}{15}$ von $40\,$m?  \
 [[  88/3  ]]m
+@Algebrite.check(88/3)
 ************
 $$
 \begin{align*}
@@ -20340,6 +20350,7 @@ $$
 <!-- data-solution-button="5"-->
 __$d)\;\;$__ Wie viel sind $\dfrac{5}{9}$ von $22\,$cm?  \
 [[  110/9  ]]cm
+@Algebrite.check(110/9)
 ************
 $$
 \begin{align*}
@@ -20357,6 +20368,7 @@ $$
 <!-- data-solution-button="5"-->
 __$e)\;\;$__ Wie viel sind $\dfrac{13}{16}$ von $18\,$kg?  \
 [[  117/8  ]]kg
+@Algebrite.check(117/8)
 ************
 $$
 \begin{align*}
@@ -20375,6 +20387,7 @@ $$
 <!-- data-solution-button="5"-->
 __$f)\;\;$__ Wie viel sind $\dfrac{7}{20}$ von $33\,$m?  \
 [[  231/20  ]]m
+@Algebrite.check(231/20)
 ************
 $$
 \begin{align*}
@@ -20387,6 +20400,7 @@ $$
 </div>
 
 </section>
+
 
 
 
@@ -20405,6 +20419,7 @@ __Aufgabe 91:__ **Berechne** den Wert des Terms hinter der Fragestellung.
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ Wie viel sind $\dfrac{7}{4}$ von $\dfrac{5}{6}$ von $36\,$€?  \
 [[  105/2  ]]€
+@Algebrite.check(105/2)
 ************
 $$
 \begin{align*}
@@ -20423,6 +20438,7 @@ $$
 <!-- data-solution-button="5"-->
 __$b)\;\;$__ Wie viel sind $\dfrac{9}{8}$ von $\dfrac{2}{3}$ von $45\,$kg?  \
 [[  135/4  ]]kg
+@Algebrite.check(135/4)
 ************
 $$
 \begin{align*}
@@ -20440,6 +20456,7 @@ $$
 <!-- data-solution-button="5"-->
 __$c)\;\;$__ Wie viel sind $\dfrac{4}{5}$ von $\dfrac{7}{9}$ von $80\,$min?  \
 [[  448/9  ]]min
+@Algebrite.check(448/9)
 ************
 $$
 \begin{align*}
@@ -20457,6 +20474,7 @@ $$
 <!-- data-solution-button="5"-->
 __$d)\;\;$__ Wie viel sind $\dfrac{11}{12}$ von $\dfrac{3}{5}$ von $95\,$l?  \
 [[  209/4  ]]l
+@Algebrite.check(209/4)
 ************
 $$
 \begin{align*}
@@ -20474,6 +20492,7 @@ $$
 <!-- data-solution-button="5"-->
 __$e)\;\;$__ Wie viel sind $\dfrac{5}{6}$ von $\dfrac{7}{8}$ von $64\,$m?  \
 [[  140/3  ]]m
+@Algebrite.check(140/3)
 ************
 $$
 \begin{align*}
@@ -20491,6 +20510,7 @@ $$
 <!-- data-solution-button="5"-->
 __$f)\;\;$__ Wie viel sind $\dfrac{7}{5}$ von $\dfrac{3}{8}$ von $50\,$€?  \
 [[  105/4  ]]€
+@Algebrite.check(105/4)
 ************
 $$
 \begin{align*}
@@ -20504,6 +20524,11 @@ $$
 </div>
 
 </section>
+
+
+
+
+
 
 
 
@@ -27204,125 +27229,11 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
-### Parameter
-
-
-
-
-
-#### Übungen - Parameter
-
-
-
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 1:__ 
-
-
-<!-- data-solution-button="5"-->
-
-<section class="flex-container">
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Einsetzungsverfahren
+
+Under Construction:
+
+Parameter $\Rightarrow$ Einsetzen
 
 
 !?[Einsetzen](https://www.youtube.com/watch?v=oCzl1Sasf4M)
@@ -27343,6 +27254,20 @@ __Aufgabe 1:__
 
 
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -33514,128 +33439,20 @@ __$f)\;\;$__ $ -0,56:(-0,7) =$ [[  0,8  ]]
 
 
 
-### Assoziativ- und Kommutativgesetz
+### Wichtige Rechengesetze
 
+Under Construction:
 
-#### Übungen - Assoziativ- und Kommutativgesetz
+Kommutativgesetz
 
+Assoziativgesetz
 
-
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 1:__ 
-
-
-<!-- data-solution-button="5"-->
-
-<section class="flex-container">
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Distributivgesetz
+Distributivgesetz
 
 !?[Distributivgesetz](https://www.youtube.com/watch?v=tSawKXhm714)
 
 
-#### Übungen - Distributivgesetz
+#### Übungen - Wichtige Rechengesetze
 
 
 
@@ -33650,6 +33467,10 @@ __Aufgabe 1:__
 
 
 </section>
+
+
+
+
 
 
 
@@ -36464,8 +36285,8 @@ $$
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$c)\;\;$__ $   r = 2x + 2y + z \;\;$  mit $\;\; r=12 \;\;\wedge\;\; x=0,4 \;\;\wedge\;\; z=1,5$ \
-$y$ = [[  21/10  ]]
-@Algebrite.check(21/10)
+$y$ = [[  97/20  ]]
+@Algebrite.check(97/20)
 ************
 $$
 \begin{align*}
@@ -36477,7 +36298,6 @@ y &= \dfrac{12 - 2\cdot 0,4 - 1,5}{2} \\
 y &= \dfrac{12 - 0,8 - 1,5}{2} \\
 y &= \dfrac{9,7}{2} \\
 y &= \dfrac{97}{20} \\
-y &= \dfrac{21}{10} \\
 \end{align*}
 $$
 ************
