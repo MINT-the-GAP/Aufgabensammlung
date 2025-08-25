@@ -65,16 +65,16 @@ author: Martin Lommatzsch
 <section class="flex-container">
 <div class="flex-child">
 
-__$a)\;\;$__ $  2x + 4 + 9 = 6x - 3 - 7 $ \
-$x$ = [[  4  ]]
+__$a)\;\;$__ $  2x + 5 + 9 = 6x - 3 - 7 $ \
+$x$ = [[  6  ]]
 ************
 $$
 \begin{align*}
-2x + 4 + 9 &= 6x - 3 - 7 \\
-2x + 13 &= 6x - 10 \quad \left| +10 \right. \\
-2x + 23 &= 6x  \quad \left| -2x \right. \\
-23 &= 4x \quad \left| :4 \right. \\
-x &= 4
+2x + 5 + 9 &= 6x - 3 - 7 \\
+2x + 14 &= 6x - 10 \quad \left| +10 \right. \\
+2x + 24 &= 6x  \quad \left| -2x \right. \\
+24 &= 4x \quad \left| :4 \right. \\
+x &= 6
 \end{align*}
 $$
 ************

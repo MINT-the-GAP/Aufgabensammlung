@@ -53,41 +53,41 @@ author: Martin Lommatzsch
 
 **Entscheide** welches Relationszeichen eine wahre mathematische Aussage darstellt.
 
-<br>
+
 <section class="flex-container">
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ $\dfrac{1}{4}$ [[($>$)|$=$|$<$]] $0,225$ 
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ $0,375$ [[$>$|($=$)|$<$]] $\dfrac{3}{8}$ 
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$c)\;\;$__ $\dfrac{8}{9}$ [[($>$)|$=$|($<$)]] $0,89$ 
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$d)\;\;$__ $\dfrac{11}{5}$ [[$>$|$=$|($<$)]] $11,5$ 
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$e)\;\;$__ $0,45$ [[$>$|($=$)|$<$]] $\dfrac{9}{20}$ 
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$f)\;\;$__ $\dfrac{1}{3}$ [[($>$)|$=$|$<$]] $0,333$ 
 
 </div>
 </section>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

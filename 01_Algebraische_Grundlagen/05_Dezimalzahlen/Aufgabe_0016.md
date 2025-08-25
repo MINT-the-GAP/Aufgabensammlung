@@ -60,7 +60,7 @@ author: Martin Lommatzsch
 <section class="flex-container">
 
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ 
 <center>
 
@@ -86,11 +86,11 @@ __$a)\;\;$__
 ```
 </center>
 [[  1,25  ]]
-<br>
+
 </div> 
 
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ 
 <center>
 
@@ -116,11 +116,11 @@ __$b)\;\;$__
 ```
 </center>
 [[  0,75  ]]
-<br>
+
 </div> 
 
 <div class="flex-child">
-<br>
+
 __$c)\;\;$__ 
 <center>
 
@@ -146,11 +146,11 @@ __$c)\;\;$__
 ```
 </center>
 [[  3,28  ]]
-<br>
+
 </div> 
 
 <div class="flex-child">
-<br>
+
 __$d)\;\;$__ 
 <center>
 
@@ -176,11 +176,11 @@ __$d)\;\;$__
 ```
 </center>
 [[  0,25  ]]
-<br>
+
 </div> 
 </section>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

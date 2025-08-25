@@ -58,34 +58,70 @@ author: Martin Lommatzsch
 <section class="flex-container">
 <div class="flex-child">
 
-__$a)\;\;$__ Wie viel sind $\dfrac{9}{4}$ von $72\,$kg?  \
 
+__$a)\;\;$__ Wie viel sind $\dfrac{9}{4}$ von $72\,$kg?  \
  [[  162  ]]kg
+***************
+$$
+\begin{align*}
+  \dfrac{9}{4} \cdot 72\,\text{kg} & = \dfrac{9 \cdot 72}{4} \,\text{kg} \\
+  & = 9 \cdot 18 \,\text{kg} 
+  & = 162 \,\text{kg} 
+\end{align*}
+$$
+***************
 
 </div>
 <div class="flex-child">
+
 
 __$b)\;\;$__ Wie viel sind $\dfrac{7}{10}$ von $120\,$kg?  \
-
  [[  84  ]]kg
+***************
+$$
+\begin{align*}
+  \dfrac{7}{10} \cdot 120\,\text{kg} & = \dfrac{7 \cdot 12}{10} \,\text{kg} \\
+  & = 7 \cdot 12 \,\text{kg} 
+  & = 84 \,\text{kg} 
+\end{align*}
+$$
+***************
 
 </div>
 <div class="flex-child">
+
 
 __$c)\;\;$__ Wie viel sind $\dfrac{1}{8}$ von $480\,$m?  \
-
  [[  60  ]]m
+***************
+$$
+\begin{align*}
+  \dfrac{1}{8} \cdot 480\,\text{m} & = \dfrac{480}{8} \,\text{m} \\
+  & = 480 : 8 \,\text{m} 
+  & = 60 \,\text{m} 
+\end{align*}
+$$
+***************
 
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ Wie viel sind $\dfrac{3}{20}$ von $500\,$€?  \
 
+__$d)\;\;$__ Wie viel sind $\dfrac{3}{20}$ von $500\,$€?  \
  [[  75  ]]€
+***************
+$$
+\begin{align*}
+  \dfrac{3}{20} \cdot 500\,\text{€} & = \dfrac{3 \cdot 500}{20} \,\text{€} \\
+  & = \dfrac{3 \cdot 50}{2} \,\text{€} 
+  & = 3 \cdot 25 \,\text{€} 
+  & = 75 \,\text{€} 
+\end{align*}
+$$
+***************
 
 </div>
 </section>
-
 
 
 

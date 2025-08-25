@@ -46,7 +46,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
 tags: Bruchrechnung, Sachaufgabe, leicht, niedrig, Berechnen
 
-comment: Löse eine Sachaufgabe mit einer Reinigung mittels der Bruchrechnung.
+comment: Löse eine Sachaufgabe mit einer Reinigungslösung mittels der Bruchrechnung.
 
 author: Martin Lommatzsch
 
@@ -55,7 +55,7 @@ author: Martin Lommatzsch
 
 
 
-# Textaufgabe Bruchrechnung - Reinigung
+# Textaufgabe Bruchrechnung - Reinigungslösung
 
 
 

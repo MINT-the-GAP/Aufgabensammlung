@@ -60,28 +60,28 @@ author: Martin Lommatzsch
 <section class="flex-container">
 
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ $ 5,8\bar{7} - 0,\bar{7} =$ [[  5,1  ]]
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ $ 3,\bar{8} \cdot 0,9 =$ [[  2,78  ]]
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$c)\;\;$__ $ 5,\bar{6} : 0,\bar{8} =$ [[  6,375  ]]
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$d)\;\;$__ $ 1,7\bar{3}+0,\bar{6} =$ [[  2,4  ]]
-<br>
+
 </div> 
 </section>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

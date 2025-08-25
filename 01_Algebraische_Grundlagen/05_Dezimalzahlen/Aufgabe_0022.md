@@ -60,38 +60,38 @@ author: Martin Lommatzsch
 <section class="flex-container">
 
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ $ 4,7+ 3,41=$ [[  8,11  ]]
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ $ 1,56+ 2,85=$ [[  4,41  ]]
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$c)\;\;$__ $ 0,85+ 2,846=$ [[  3,696  ]]
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$d)\;\;$__ $ 3,45+ 2,97=$ [[  6,42  ]]
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$e)\;\;$__ $ 8,43+ 0,76=$ [[  9,19  ]]
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
-__$f)\;\;$__ $2,748 + 0,494=$ [[  3,242  ]]
-<br>
+
+__$f)\;\;$__ $ 2,748 + 0,494=$ [[  3,242  ]]
+
 </div> 
 </section>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

@@ -68,7 +68,7 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 __$a)\;\;$__ $  4x + 6 - 2x + 3 = x + 17 $ \
-$x$ = [[  4  ]]
+$x$ = [[  8  ]]
 ************
 $$
 \begin{align*} 

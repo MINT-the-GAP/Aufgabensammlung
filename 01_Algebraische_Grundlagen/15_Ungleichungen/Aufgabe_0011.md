@@ -60,9 +60,6 @@ author: Martin Lommatzsch
 
 
 
-**Bestimme** den gesuchten Wert innerhalb der Lösungsmenge, die die Ungleichung beschreibt.
-
-
 
 **Bestimme** den gesuchten Wert innerhalb der Lösungsmenge, die die Ungleichung beschreibt.
 

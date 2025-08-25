@@ -76,7 +76,7 @@ __$b)\;\;$__ $\dfrac{2}{1}+\dfrac{4}{10}+\dfrac{4}{100} \qquad$  \
 
 __$c)\;\;$__ $\dfrac{3}{10}+\dfrac{8}{10000} \qquad$  \
 
---> [[  0,3008  ]] 
+  [[  0,3008  ]] 
 
 </div>
 <div class="flex-child">
