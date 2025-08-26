@@ -34924,7 +34924,7 @@ $$
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$c)\;\;$__ $  7x + 3 - 2x = 4x + 8 $ \
-$x$ = [[  1  ]]
+$x$ = [[  5  ]]
 ************
 $$
 \begin{align*}
@@ -34966,7 +34966,8 @@ __Aufgabe 19:__ **Berechne** den Lösungswert für die Unbekannte.
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $  4(2x-3) = 2x + 10 $ \
-$x$ = [[  2  ]]
+$x$ = [[  11/3  ]]
+@Algebrite.check(11/3)
 ************
 $$
 \begin{align*}
@@ -34974,7 +34975,7 @@ $$
 8x - 12 &= 2x + 10 \quad \left| -2x \right. \\
 6x - 12 &= 10 \quad \left| +12 \right. \\
 6x &= 22 \quad \left| :6 \right. \\
-x &= 2
+x &= \dfrac{11}{3}
 \end{align*}
 $$
 ************
@@ -34982,7 +34983,8 @@ $$
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$b)\;\;$__ $  3(2x+4) = x + 19 $ \
-$x$ = [[  5  ]]
+$x$ = [[  7/5  ]]
+@Algebrite.check(7/5)
 ************
 $$
 \begin{align*}
@@ -34990,7 +34992,7 @@ $$
 6x + 12 &= x + 19 \quad \left| -x \right. \\
 5x + 12 &= 19 \quad \left| -12 \right. \\
 5x &= 7 \quad \left| :5 \right. \\
-x &= 5
+x &= \dfrac{7}{5}
 \end{align*}
 $$
 ************
@@ -35015,7 +35017,8 @@ $$
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$d)\;\;$__ $  5(x+2) - 3 = 2x + 12 $ \
-$x$ = [[  3  ]]
+$x$ = [[  5/3  ]]
+@Algebrite.check(5/3)
 ************
 $$
 \begin{align*}
@@ -35024,7 +35027,7 @@ $$
 5x + 7 &= 2x + 12 \quad \left| -2x \right. \\
 3x + 7 &= 12 \quad \left| -7 \right. \\
 3x &= 5 \quad \left| :3 \right. \\
-x &= 3
+x &= \dfrac{5}{3}
 \end{align*}
 $$
 ************
@@ -37002,7 +37005,7 @@ __Aufgabe 2:__ In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich vi
 <!-- style="width:600px"  data-solution-button="5"-->
 __$a)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem1b.png)  
 $x=$ [[  2  ]] Streichhölzer \
-$y=$ [[  12 ]] Streichhölzer
+$y=$ [[  6  ]] Streichhölzer
 
 <!-- style="width:600px"  data-solution-button="5"-->
 __$b)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem2b.png)  
@@ -39525,14 +39528,14 @@ $$
 __$d)\;\;$__ $-2x - 8 > 0$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \leq $   [[  -5  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  -5  ]]   $\left.   \right\}$
 @Algebrite.check(-5)
 ******************
 $$
 \begin{align*}
 -2x - 8 &> 0 \quad \left| +8 \right. \\
 -2x &> 8 \quad \left| :(-2) \right. \\
-x &< -4 \;\;\Rightarrow\;\; x \leq -5 \text{ für } \mathbb{N? nein, hier } \mathbb{Z}
+x &< -4 \;\;\Rightarrow\;\; x \leq -5 \text{ für } \mathbb{Z}
 \end{align*}
 $$
 ******************

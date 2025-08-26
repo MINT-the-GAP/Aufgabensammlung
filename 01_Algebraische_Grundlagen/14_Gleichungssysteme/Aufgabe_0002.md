@@ -63,7 +63,7 @@ In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich viele Streichhöl
 <!-- style="width:600px" -->
 __$a)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem1b.png)  
 $x=$ [[  2  ]] Streichhölzer \
-$y=$ [[  12 ]] Streichhölzer
+$y=$ [[  6  ]] Streichhölzer
 
 <!-- style="width:600px" -->
 __$b)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem2b.png)  

@@ -119,14 +119,14 @@ $$
 __$d)\;\;$__ $-2x - 8 > 0$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \leq $   [[  -5  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  -5  ]]   $\left.   \right\}$
 @Algebrite.check(-5)
 ******************
 $$
 \begin{align*}
 -2x - 8 &> 0 \quad \left| +8 \right. \\
 -2x &> 8 \quad \left| :(-2) \right. \\
-x &< -4 \;\;\Rightarrow\;\; x \leq -5 \text{ für } \mathbb{N? nein, hier } \mathbb{Z}
+x &< -4 \;\;\Rightarrow\;\; x \leq -5 \text{ für } \mathbb{Z}
 \end{align*}
 $$
 ******************

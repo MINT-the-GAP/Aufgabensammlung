@@ -61,11 +61,13 @@ author: Martin Lommatzsch
 
 
 
+
 <section class="flex-container">
 <div class="flex-child">
-
+<!-- data-solution-button="5"-->
 __$a)\;\;$__ $  4(2x-3) = 2x + 10 $ \
-$x$ = [[  2  ]]
+$x$ = [[  11/3  ]]
+@Algebrite.check(11/3)
 ************
 $$
 \begin{align*}
@@ -73,15 +75,16 @@ $$
 8x - 12 &= 2x + 10 \quad \left| -2x \right. \\
 6x - 12 &= 10 \quad \left| +12 \right. \\
 6x &= 22 \quad \left| :6 \right. \\
-x &= 2
+x &= \dfrac{11}{3}
 \end{align*}
 $$
 ************
 </div>
 <div class="flex-child">
-
+<!-- data-solution-button="5"-->
 __$b)\;\;$__ $  3(2x+4) = x + 19 $ \
-$x$ = [[  5  ]]
+$x$ = [[  7/5  ]]
+@Algebrite.check(7/5)
 ************
 $$
 \begin{align*}
@@ -89,13 +92,13 @@ $$
 6x + 12 &= x + 19 \quad \left| -x \right. \\
 5x + 12 &= 19 \quad \left| -12 \right. \\
 5x &= 7 \quad \left| :5 \right. \\
-x &= 5
+x &= \dfrac{7}{5}
 \end{align*}
 $$
 ************
 </div>
 <div class="flex-child">
-
+<!-- data-solution-button="5"-->
 __$c)\;\;$__ $  2(3x-1) + 5 = 4x + 7 $ \
 $x$ = [[  2  ]]
 ************
@@ -112,9 +115,10 @@ $$
 ************
 </div>
 <div class="flex-child">
-
+<!-- data-solution-button="5"-->
 __$d)\;\;$__ $  5(x+2) - 3 = 2x + 12 $ \
-$x$ = [[  3  ]]
+$x$ = [[  5/3  ]]
+@Algebrite.check(5/3)
 ************
 $$
 \begin{align*}
@@ -123,7 +127,7 @@ $$
 5x + 7 &= 2x + 12 \quad \left| -2x \right. \\
 3x + 7 &= 12 \quad \left| -7 \right. \\
 3x &= 5 \quad \left| :3 \right. \\
-x &= 3
+x &= \dfrac{5}{3}
 \end{align*}
 $$
 ************
