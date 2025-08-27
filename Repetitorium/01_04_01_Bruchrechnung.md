@@ -151,16 +151,17 @@ $$
 
 {{|>}} Beim *Kürzen* werden *Zähler* und *Nenner* durch die Zahl *dividiert* mit der man den *Bruch* *kürzen* möchte. Im folgenden Beispiel wird der *Bruch* im ersten Schritt mit zwei und danach mit acht *erweitert*. 
 
- 
+
+
 
 $$
 \begin{align*}
 & \quad \frac{6}{18} = \frac{2}{6} =  \frac{1}{3}   \\
 \end{align*}
 $$
- 
 
- 
+
+
 
 <center>
 
@@ -192,6 +193,8 @@ $$
 
 ```
 </center>
+
+
 
 
 {{|>}} Bei der *Addition* beziehungsweise der *Subtraktion* von *Brüchen* müssen die *Nenner* der beteiligten *Brüche* so *erweitert* oder *gekürzt* werden, dass sie gleich sind. Dann können die *Zähler* verrechnet werden. Um immer einen gemeinsamen *Nenner* zu finden, kann man den ersten *Bruch* mit dem *Nenner* des zweiten *Bruch* und den zweiten *Bruch* mit dem *Nenner* des ersten *Bruchs* *erweitern* (wie im Subtraktionsbeispiel gezeigt) oder der *Nenner* auf das *kleinste gemeinsame Vielfache* gebracht.

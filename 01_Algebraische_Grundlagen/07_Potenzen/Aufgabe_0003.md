@@ -38,7 +38,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Potenzen, sehr leicht sehr, niedrig, Angeben
+tags: Potenzen, sehr leicht, sehr niedrig, Angeben
 
 comment: Gib den Wert einer Potenz an.
 
@@ -80,10 +80,10 @@ __$d)\;\;$__ $3^5 = $ [[  243  ]]
 </section>
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+
+
  
