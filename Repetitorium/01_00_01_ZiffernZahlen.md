@@ -53,7 +53,10 @@ author: Martin Lommatzsch
 # Ziffern und Zahlen
 
 
-{{|>}}  *Ziffern* sind die einzelnen Zeichen, die zur Darstellung von Zahlen verwendet werden. Im *Dezimalsystem* gibt es genau zehn *Ziffern*:
+{{|>}}
+*******************************
+
+*Ziffern* sind die einzelnen Zeichen, die zur Darstellung von Zahlen verwendet werden. Im *Dezimalsystem* gibt es genau zehn *Ziffern*:
 
 $$
 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
@@ -98,3 +101,5 @@ $$
 
 {{|>}} *Ziffern* sind somit die Bausteine der Zahldarstellung. *Zahlen* entstehen durch Anordnung von *Ziffern* und Interpretation ihrer Position in einem Stellenwertsystem. Die *Stellenwerttafel* hilft, den Wert jeder Ziffer in einer Zahl zu erkennen.
 
+
+*******************************

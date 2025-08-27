@@ -54,6 +54,8 @@ author: Martin Lommatzsch
 
 
 
+{{|>}}
+*******************************
 
 
 
@@ -100,3 +102,5 @@ $$
 
 {{|>}} Besonders das strukturierte, systematische und nachvollziehbare Niederschreiben von *Termveränderungen* bietet die Möglichkeit neue Erkenntnisse zu generieren und Auffälligkeiten zu entdecken, was ein wesentlicher Bestandteil der Mathematik ist.
 
+
+*******************************

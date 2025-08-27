@@ -65,6 +65,8 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 # Repetitorium der Mathematik
 
 
+{{|>}}
+*******************************
 
 > "Die Bildung kommt nicht vom Lesen, sondern vom Nachdenken über das Gelesene." \
 -Carl Hilty
@@ -87,13 +89,16 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
     {{|>}} Abschließend sei angemerkt, dass in Zukunft deutlich mehr Aufgaben mit Lösungen ergänzt werden, darunter auch solche, die auf weiter hinten behandelten Themen basieren. Hierzu werden Querverweise angegeben, um je nach Vorwissen auch komplexere Aufgaben bearbeiten zu können. Grundsätzlich gilt: Alle fehlerfreien Rechenwege sind zugelassen – entscheidend ist das korrekte Ergebnis.
 
 
-> Diese Version kann inhaltliche und sprachliche Tippfehler enthalten und hat somit keinen Anspruch auf Richtigkeit. Außerdem kann nicht gewährleistet werden, dass der "Lehrplan" jedes Bundeslandes abgedeckt ist.
+> {{|>}} Diese Version kann inhaltliche und sprachliche Tippfehler enthalten und hat somit keinen Anspruch auf Richtigkeit. Außerdem kann nicht gewährleistet werden, dass der "Lehrplan" jedes Bundeslandes abgedeckt ist.
+*******************************
 
 
 ## Wichtige Hinweise
 
 
 
+{{|>}}
+*******************************
 
 Einige Themengebiete der Mathematik sind besonders essentiell für ein grundlegendes Verständnis der Mathematik. In diesem Buch werden nach der Einführung diese Themen immer wieder in Aufgaben oder Erklärungen vorkommen. Die Themen sind in der nachfolgenden Auflistung nach Wichtigkeit geordnet. In Klammern sind die Themenbereich beschrieben, die mit dem zentralen Thema direkt verknüpft sind:
 
@@ -107,6 +112,8 @@ Einige Themengebiete der Mathematik sind besonders essentiell für ein grundlege
  
 Ohne das Verständnis dieser Themenbereiche lassen sich weiterführende Themen nur schwer erschließen. Wenn diese Themen nicht verinnerlicht wurden, sollten diese weiter erschlossen werden, da im Kern nahezu alle Aufgaben letztendlich auf diesen Grundprinzipien basieren.
 
+
+*******************************
 
 
 
@@ -206,7 +213,12 @@ Ohne das Verständnis dieser Themenbereiche lassen sich weiterführende Themen n
 
 ## Mengen
 
-{{|>}} Zahlen können in verschiedene Kategorien, sogenannte *Mengen*, eingeordnet werden.  
+
+
+{{|>}}
+*******************************
+
+Zahlen können in verschiedene Kategorien, sogenannte *Mengen*, eingeordnet werden.  
 Dabei bilden die sogenannten *natürlichen Zahlen* die Basis aller anderen *Zahlenmengen*,  
 die in der Schule besprochen werden. Die *natürlichen Zahlen* werden durch das Symbol  
 $\mathbb{N}$ beschrieben und beinhalten *Zahlen* wie $0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ...$.  
@@ -252,9 +264,16 @@ $$
 
 
 
+*******************************
+
+
 ### Mengenoperatoren
 
-{{|>}} Es ist möglich *Teilmengen* aufzustellen, dazu werden bestimmte *Mengenoperatoren* wie $\subset$ verwendet.  
+
+{{|>}}
+*******************************
+
+Es ist möglich *Teilmengen* aufzustellen, dazu werden bestimmte *Mengenoperatoren* wie $\subset$ verwendet.  
 Sei die *Menge* $\mathbb{M} = \{1, 2, 3, 4\}$ und die *Menge* $\mathbb{K} = \{3, 4, 5, 6\}$ gegeben, dann existieren folgende *Mengenoperationen*:  
 
 {{|>}} Die *Vereinigung* $\cup$ wird wie folgt dargestellt:
@@ -396,10 +415,20 @@ Dabei gilt:
 Eine *Zahl* $p$ ist genau dann in der *Menge* $\mathbb{P}$, wenn sie größer als 1 ist und es keine *natürliche Zahl* $n$ gibt, die $p$ teilt, außer den *Zahlen* $1$ und $p$ selbst.
 
 
+*******************************
+
+
+
 ### Mengengrenzen
 
 
-{{|>}} Das *Supremum* ist definiert als die "kleinste oberste Schranke" einer *Zahlenmenge*,  
+
+{{|>}}
+*******************************
+
+
+
+Das *Supremum* ist definiert als die "kleinste oberste Schranke" einer *Zahlenmenge*,  
 während das *Infimum* als "größte unterste Schranke" definiert ist.  
 
 {{|>}} Sei als Beispiel dazu folgende *Zahlenmenge* aus *natürlichen Zahlen* betrachtet:  
@@ -463,6 +492,13 @@ $$
 > {{|>}} **Hinweis:**  
 > Im folgenden Buch werden die Begriffe *Infimum* und *Supremum* lediglich zur Vollständigkeit erwähnt.  
 > Sie sind nicht essentiell für ein allgemein bildendes Grundlagenverständnis.
+
+
+
+
+*******************************
+
+
 
 
 
@@ -1269,6 +1305,9 @@ __$c)\;\;$__  Skizziere $ \mathbb{M} \Delta \mathbb{K} $ über Mengenkreise.
 
 ## Algebraische Grundlagen
 
+{{|>}}
+*******************************
+
 {{|>}} Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser folgen zu können, müssen die Begrifflichkeiten der *Algebra* geklärt werden. Dazu werden im Laufe dieses Kapitels die wichtigsten mathematischen Vokabeln, Abkürzungen und Rechenvorschriften erläutert.
 
 
@@ -1276,12 +1315,17 @@ __$c)\;\;$__  Skizziere $ \mathbb{M} \Delta \mathbb{K} $ über Mengenkreise.
 
 {{|>}} Die Wurzeln der *Algebra* reichen jedoch weit zurück: Bereits die Babylonier (um 1800 v. Chr.) lösten quadratische Probleme mit geometrischen Methoden, die Griechen entwickelten Proportionenlehre und Zahlentheorie, und indische Mathematiker führten die symbolische Behandlung von Unbekannten weiter aus. Al-Ḫwārizmīs Werk verband diese Traditionen, prägte den Namen und beeinflusste die Entwicklung der *Algebra* in Europa nachhaltig, insbesondere nach Übersetzungen ins Lateinische im 12. Jahrhundert.
 
+*******************************
+
 
 
 ### Arithmetik mit natürlichen Zahlen
 
 
-{{|>}}  *Ziffern* sind die einzelnen Zeichen, die zur Darstellung von Zahlen verwendet werden. Im *Dezimalsystem* gibt es genau zehn *Ziffern*:
+{{|>}}
+*******************************
+
+*Ziffern* sind die einzelnen Zeichen, die zur Darstellung von Zahlen verwendet werden. Im *Dezimalsystem* gibt es genau zehn *Ziffern*:
 
 $$
 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
@@ -1327,6 +1371,7 @@ $$
 {{|>}} *Ziffern* sind somit die Bausteine der Zahldarstellung. *Zahlen* entstehen durch Anordnung von *Ziffern* und Interpretation ihrer Position in einem Stellenwertsystem. Die *Stellenwerttafel* hilft, den Wert jeder Ziffer in einer Zahl zu erkennen.
 
 
+*******************************
 
 
 
@@ -1778,6 +1823,9 @@ __$c)\;\;$__
 
 
 
+{{|>}}
+*******************************
+
 
 
 {{|>}} Hinter großen Teilen des Verständnis der Mathematik steht das Wissen, was ein *Term* ist. Bei dem Beispiel 
@@ -1824,8 +1872,10 @@ $$
 {{|>}} Besonders das strukturierte, systematische und nachvollziehbare Niederschreiben von *Termveränderungen* bietet die Möglichkeit neue Erkenntnisse zu generieren und Auffälligkeiten zu entdecken, was ein wesentlicher Bestandteil der Mathematik ist.
 
 
+*******************************
 
-!?[Termumformung](https://www.youtube.com/watch?v=u9272jlewms)
+
+
 
 
 ##### Übungen - Terme und Gleichungen
@@ -1842,7 +1892,14 @@ Waagen Terme angeben
 
 #### Runden
 
-    {{|>}} Um Rechnungen mit natürlichen Zahlen $\mathbb{N}$ schnell zu überprüfen lohnt sich die sogenannte Überschlagsrechnung, bei der die Zahlen gerundet werden. Um das *Runden* zu verstehen, muss sich nochmal die Stellenwerttafel vergegenwärtigt werden, da immer bestimmte Stellen betrachtet werden müssen: \
+
+
+{{|>}}
+*******************************
+
+
+
+Um Rechnungen mit natürlichen Zahlen $\mathbb{N}$ schnell zu überprüfen lohnt sich die sogenannte Überschlagsrechnung, bei der die Zahlen gerundet werden. Um das **Runden** zu verstehen, muss sich nochmal die Stellenwerttafel vergegenwärtigt werden, da immer bestimmte Stellen betrachtet werden müssen: \
 
 
 <center>
@@ -1855,7 +1912,7 @@ style="width:300px" -->
 </center>
 
 
-    {{|>}} Beim *Runden* wird die in der vorherigen Stelle der betrachtete Stelle der Zahl analysiert. Soll also auf Tausender gerundet werden, muss die Hunderterziffer betrachtet werden. Handelt es sich um eine der Ziffern $\left\{0;1;2;3;4\right\}$ wird die betrachtete Stelle abgerundet - sie bleibt also unverändert. Handelt es sich allerdings um $\left\{5;6;7;8;9\right\}$, dann wird aufgerundet - also an der betrachteten Stelle wir die Ziffer um $1$ erhöht. Dies kann begründet werden, dass die Ziffern $\left\{0;1;2;3;4\right\}$ dichter an einer Null sind als an einer Zehn wie $\left\{5;6;7;8;9\right\}$. \
+    {{|>}} Beim **Runden** wird die in der vorherigen Stelle der betrachtete Stelle der Zahl analysiert. Soll also auf Tausender gerundet werden, muss die Hunderterziffer betrachtet werden. Handelt es sich um eine der Ziffern $\left\{0;1;2;3;4\right\}$ wird die betrachtete Stelle abgerundet - sie bleibt also unverändert. Handelt es sich allerdings um $\left\{5;6;7;8;9\right\}$, dann wird aufgerundet - also an der betrachteten Stelle wir die Ziffer um $1$ erhöht. Dies kann begründet werden, dass die Ziffern $\left\{0;1;2;3;4\right\}$ dichter an einer Null sind als an einer Zehn wie $\left\{5;6;7;8;9\right\}$. \
 
 
 
@@ -1890,12 +1947,12 @@ $$
 
 
 
-
-
 Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:  \
 
 !?[Runden](https://www.youtube.com/watch?v=lkKLXE5FFes)
 
+
+*******************************
 
 
 
@@ -2540,7 +2597,14 @@ data-solution-button="5"-->
 
 #### Addition
 
-    {{|>}} Die *Addition* ist die wichtigste Grundrechenart und lässt *Zahlen* größer als Eins überhaupt erst erfassbar werden, was am *Zahlenstrahl* schnell erkannt werden kann. Direkt hier wird schon deutlich, dass die Null das *neutrale Element* der *Addition* ist, da eine *Addition* von Null den *Wert des Terms* nicht verändert: $1+0=1$. \
+
+
+
+{{|>}}
+*******************************
+
+
+ Die **Addition** ist die wichtigste Grundrechenart und lässt **Zahlen** größer als Eins überhaupt erst erfassbar werden, was am **Zahlenstrahl** schnell erkannt werden kann. Direkt hier wird schon deutlich, dass die Null das **neutrale Element** der **Addition** ist, da eine **Addition** von Null den **Wert des Terms** nicht verändert: $1+0=1$. \
 
 
 <center>
@@ -2568,13 +2632,12 @@ data-solution-button="5"-->
 
 \end{tikzpicture} 
 
-
 ```
 </center>
 
 
 
-    {{|>}} Mit der *Addition* werden *Zahlen* zusammengezählt, was immer durch den *Additionsoperator* $+$ beschrieben wird. Der gesamte *Term* ist die sogenannte *Summe*, während der *Wert der Summe* immer auf der anderen Seite eines *Gleichheitszeichen* $=$ geschrieben wird. \
+    {{|>}} Mit der **Addition** werden **Zahlen** zusammengezählt, was immer durch den **Additionsoperator** $+$ beschrieben wird. Der gesamte **Term** ist die sogenannte **Summe**, während der **Wert der Summe** immer auf der anderen Seite eines **Gleichheitszeichen** $=$ geschrieben wird. \
 
 
 
@@ -2586,7 +2649,7 @@ $$
 \end{equation}  
 $$
 
-Als Beispiel mit *Zahlen*:
+Als Beispiel mit **Zahlen**:
 
 $$
 \begin{equation}
@@ -2597,7 +2660,7 @@ $$
 $$
 
 
-    {{|>}} Im Beispiel aus Gleichung ist zu sehen, dass die Zwei mit der Vier zusammengezählt wurde, wie es der *Additionsoperator* $+$ (gesprochen "plus") gefordert hat. Am *Zahlenstrahl* verdeutlicht wird deutlich, dass vom ersten *Summanden* aus Schritte im *Wert* vom zweiten *Summanden* nach rechts gegangen wird, um beim *Wert der Summe* zu enden. \
+    {{|>}} Im Beispiel aus Gleichung ist zu sehen, dass die Zwei mit der Vier zusammengezählt wurde, wie es der **Additionsoperator** $+$ (gesprochen "plus") gefordert hat. Am **Zahlenstrahl** verdeutlicht wird deutlich, dass vom ersten **Summanden** aus Schritte im **Wert** vom zweiten **Summanden** nach rechts gegangen wird, um beim **Wert der Summe** zu enden. \
 
 <center>
 
@@ -2625,10 +2688,10 @@ $$
 ```
 </center>
 
-    {{|>}} Bei der *Darstellung* am *Zahlenstrahl* wird deutlich, dass die *Addition* das *Assoziativgesetz* sowie das *Kommutativgesetz* erfüllt. \
+    {{|>}} Bei der **Darstellung** am **Zahlenstrahl** wird deutlich, dass die **Addition** das **Assoziativgesetz** sowie das **Kommutativgesetz** erfüllt. \
 
 
-*Kommutativgesetz* für die *Additon*: 
+**Kommutativgesetz** für die **Additon**: 
 
 $$
 \begin{equation}
@@ -2638,7 +2701,7 @@ $$
 \end{equation}  
 $$
 
-Folgendes Beispiel des *Kommutativgesetzes* ist am *Zahlenstrahl* dargestellt:
+Folgendes Beispiel des **Kommutativgesetzes** ist am **Zahlenstrahl** dargestellt:
 
 $$
 \begin{equation}
@@ -2679,7 +2742,7 @@ $$
 
 
 
-*Assoziativgesetz* für die *Additon*: 
+**Assoziativgesetz** für die **Additon**: 
 
 $$
 \begin{equation}
@@ -2689,7 +2752,7 @@ $$
 \end{equation}  
 $$
 
-Folgendes Beispiel des *Assoziativgesetzes* ist am *Zahlenstrahl* dargestellt:
+Folgendes Beispiel des **Assoziativgesetzes** ist am **Zahlenstrahl** dargestellt:
 
 $$
 \begin{equation}
@@ -2730,7 +2793,7 @@ $$
 
 
 
-    {{|>}} Für größere *Zahlen* lohnt sich eine Schreibweise, die die *Zahlen*, die *addiert* werden sollen, entsprechtend ihrer Position in der Stellenwerttafel untereinander schreibt. Dabei wird der *Wert des Terms* unter einem Strich ausgerechnet.\
+    {{|>}} Für größere **Zahlen** lohnt sich eine Schreibweise, die die **Zahlen**, die **addiert** werden sollen, entsprechtend ihrer Position in der Stellenwerttafel untereinander schreibt. Dabei wird der **Wert des Terms** unter einem Strich ausgerechnet.\
 
 
 
@@ -2746,7 +2809,7 @@ data-sortable="false" -->
 |       $5$      |      $5$     | $\textcolor{red}{1}0$ |    $\textcolor{red}{1}2$    |    Einzelziffersummen    |
 |       $5$      |      $6$     |    $1$      |    $2$    |    Wert der Summe    |
 
-    {{|>}} Außerhalb der *Stellenwerttafel* wirkt die Rechnung der schriftlichen *Addition* übersichtlicher: \
+    {{|>}} Außerhalb der **Stellenwerttafel** wirkt die Rechnung der schriftlichen **Addition** übersichtlicher: \
 
 
 $$
@@ -2764,7 +2827,7 @@ $$
 $$
 
 
-    {{|>}} Dies kann noch wie folgt verkürzt geschrieben werden: \
+{{|>}} Dies kann noch wie folgt verkürzt geschrieben werden: \
 
 $$
 \begin{equation}
@@ -2778,8 +2841,7 @@ $$
 $$
 
 
-     {{|>}} Bei dieser Art der Schreibweise, werden die *Zahlen*, die entsprechend ihrer Position in der *Stellenwerttafel* untereinander stehen, einzeln *addiert*. Dabei wird immer bei der *Ziffern* der kleinsten Position in der *Stellenwerttafel* begonnen. Dies ist sind stets die *Ziffern*, die am weitesten rechts bei den *Zahlen* stehen. Wenn die *addierte* Zahl höher ist als Neun, dann wird die Eins der Zehn zur nächsten Zahlenspalte hinzugezählt. Diese Eins wird auch oft Merkeins genannt und ist in der Beispielrechnung rot eingefärbt. Der Vorteil dieser Schreibweise ist es, dass niemals höhere *Zahlen* als $9$ und $9$ *addiert* werden können. Folglich benötigt der Schüler nur ein sehr gutes Zahlenverständnis von der Zahl $0$ bis $18$ um jegliche Additionsaufgabe zu lösen. Falls mehr als zwei *Summanden* (im Beispiel sind $1337$ und $4265$ die *Summanden*) vorkommen ist es immer erlaubt in einer Nebenrechnung zunächst nur zwei *Summanden* zu *addieren* um dann anschließend die *Summe* der ersten beiden *Summanden* mit der nächsten *Summanden* zu verrechnen. \
-
+{{|>}} Bei dieser Art der Schreibweise, werden die **Zahlen**, die entsprechend ihrer Position in der **Stellenwerttafel** untereinander stehen, einzeln **addiert**. Dabei wird immer bei der **Ziffern** der kleinsten Position in der **Stellenwerttafel** begonnen. Dies ist sind stets die **Ziffern**, die am weitesten rechts bei den **Zahlen** stehen. Wenn die **addierte** Zahl höher ist als Neun, dann wird die Eins der Zehn zur nächsten Zahlenspalte hinzugezählt. Diese Eins wird auch oft Merkeins genannt und ist in der Beispielrechnung rot eingefärbt. Der Vorteil dieser Schreibweise ist es, dass niemals höhere **Zahlen** als $9$ und $9$ **addiert** werden können. Folglich benötigt der Schüler nur ein sehr gutes Zahlenverständnis von der Zahl $0$ bis $18$ um jegliche Additionsaufgabe zu lösen. Falls mehr als zwei **Summanden** (im Beispiel sind $1337$ und $4265$ die **Summanden**) vorkommen ist es immer erlaubt in einer Nebenrechnung zunächst nur zwei **Summanden** zu **addieren** um dann anschließend die **Summe** der ersten beiden **Summanden** mit der nächsten **Summanden** zu verrechnen. \
 
 
 
@@ -2788,6 +2850,7 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 !?[Addition](https://www.youtube.com/watch?v=Tn9xv6jSyyI)
 
 
+*******************************
 
 
 ##### Übungen - Addition
@@ -3115,7 +3178,11 @@ $6214 + 3879=$[[  10093  ]]
 
 #### Subtraktion
 
-    {{|>}} Die *Subtraktion*<!-- title="Test" --> ist die Umkehroperation der *Addition* und wird durch den *Subtraktionsoperator* $-$ (gesprochen "minus") beschrieben. Auch bei der *Subtraktion* ist somit die Null das *neutrale Element* der *Subktration*, da eine *Subktraktion* mit Null den *Wert des Terms* nicht verändert: $1-0=1$. Auf dem Zahlenstrahl wird somit die Richtung der Schritte der Addition von links nach rechts umgekehrt: \
+
+{{|>}}
+*******************************
+
+Die **Subtraktion** ist die Umkehroperation der **Addition** und wird durch den **Subtraktionsoperator** $-$ (gesprochen "minus") beschrieben. Auch bei der **Subtraktion** ist somit die Null das **neutrale Element** der **Subktration**, da eine **Subktraktion** mit Null den **Wert des Terms** nicht verändert: $1-0=1$. Auf dem Zahlenstrahl wird somit die Richtung der Schritte der Addition von links nach rechts umgekehrt: \
 
 
 <center>
@@ -3149,7 +3216,7 @@ $6214 + 3879=$[[  10093  ]]
 
 
 
-    {{|>}} Der gesamte *Term* ist die sogenannte *Differenz*, während der *Wert der Differenz* immer auf der anderen Seite eines *Gleichheitszeichen* $=$ geschrieben wird. Vom *Minuenden* wird dabei der *Subtrahend* abgezogen. \
+    {{|>}} Der gesamte **Term** ist die sogenannte **Differenz**, während der **Wert der Differenz** immer auf der anderen Seite eines **Gleichheitszeichen** $=$ geschrieben wird. Vom **Minuenden** wird dabei der **Subtrahend** abgezogen. \
 
 
 
@@ -3161,7 +3228,7 @@ $$
 \end{equation}  
 $$
 
-Als Beispiel mit *Zahlen*:
+Als Beispiel mit **Zahlen**:
 
 $$
 \begin{equation}
@@ -3201,7 +3268,7 @@ $$
 </center>
 
 
-    {{|>}} Wie schon an den unterschiedlichen Bezeichnungen *Minuend* sowie *Subtrahend* zu erahnen ist, ist die *Subtraktion* wieder *kommutativ* noch *assoziativ*. \
+    {{|>}} Wie schon an den unterschiedlichen Bezeichnungen **Minuend** sowie **Subtrahend** zu erahnen ist, ist die **Subtraktion** wieder **kommutativ** noch **assoziativ**. \
 
 
 $$
@@ -3215,7 +3282,7 @@ $$
 
 
 
-    {{|>}} Auch bei der schriftlichen *Subtraktion* werden die Ziffern startend von der kleinsten Position in der *Stellenwerttafel* bearbeitet. Dabei kann die jeweilige *Ziffer* des *Subtrahenden* größer sein als die des *Minuenden*, wie in der zweiten Ziffernspalte. Hierbei ist die Zahl $6$ statt von der $3$ von der $13$ zu *subtrahieren*. Die dazu geschriebene Zehn muss anschließend von der nächsten Ziffernspalte abgezogen werden, was durch die Merkeins in rot wieder symbolisiert wird.
+    {{|>}} Auch bei der schriftlichen **Subtraktion** werden die Ziffern startend von der kleinsten Position in der **Stellenwerttafel** bearbeitet. Dabei kann die jeweilige **Ziffer** des **Subtrahenden** größer sein als die des **Minuenden**, wie in der zweiten Ziffernspalte. Hierbei ist die Zahl $6$ statt von der $3$ von der $13$ zu **subtrahieren**. Die dazu geschriebene Zehn muss anschließend von der nächsten Ziffernspalte abgezogen werden, was durch die Merkeins in rot wieder symbolisiert wird.
 
 
 $$
@@ -3230,7 +3297,7 @@ $$
 $$
 
 
-    {{|>}} Auch bei der *Subtraktion* kann es vorkommen, dass mehrere *Subtrahenden* vorzufinden sind. Dabei sind zwei Arten von Nebenrechnungen zulässig: Die erste Variante sieht vor, dass die *Subtrahenden* nacheinander vom *Minuenden* *subtrahiert* werden, während die zweite Variante vorsieht, dass die *Subtrahenden* *addiert* werden und anschließend die *Summe* der *Subtrahenden* vom *Minuend* abgezogen werden. 
+    {{|>}} Auch bei der **Subtraktion** kann es vorkommen, dass mehrere **Subtrahenden** vorzufinden sind. Dabei sind zwei Arten von Nebenrechnungen zulässig: Die erste Variante sieht vor, dass die **Subtrahenden** nacheinander vom **Minuenden** **subtrahiert** werden, während die zweite Variante vorsieht, dass die **Subtrahenden** **addiert** werden und anschließend die **Summe** der **Subtrahenden** vom **Minuend** abgezogen werden. 
 
 Beispiele der ersten Variante:
 $$
@@ -3261,11 +3328,7 @@ $$
 $$
 
 
-    {{|>}} Beim schriftlichen *Subtrahieren* kann maximal die *Ziffer* $9$ als *Subtrahend* der einzelnen Spalten auftauchen. Somit ist die größte Zahl von der abgezogen werden kann die $18$. Folglich wird lediglich ein gutes Zahlenverständnis bei der *Subtraktion* von den Zahlen $0$ bis $18$ benötigt. \
-
-
-
-
+    {{|>}} Beim schriftlichen **Subtrahieren** kann maximal die **Ziffer** $9$ als **Subtrahend** der einzelnen Spalten auftauchen. Somit ist die größte Zahl von der abgezogen werden kann die $18$. Folglich wird lediglich ein gutes Zahlenverständnis bei der **Subtraktion** von den Zahlen $0$ bis $18$ benötigt. \
 
 
 
@@ -3275,6 +3338,12 @@ $$
 Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:  \
 
 !?[Subtraktion](https://www.youtube.com/watch?v=a2Nwh8npSUo)
+
+
+*******************************
+
+
+
 
 
 ##### Übungen - Subtraktion
@@ -3607,7 +3676,11 @@ $9573 - 6842=$[[  2731  ]]
 #### Multiplikation
 
 
-    {{|>}} Die *Multiplikation* ist die erste abkürzende Schreibweise, die in der Schule eingeführt wird. Dabei wird die zum Beispiel Rechnung $3+3+3+3$ abgekürzt als $4 \cdot 3$ geschrieben, also vier mal die Drei, was durch den *Multiplikationsoperator* $\cdot$ beschrieben wird. Werden also gleichwertige *Summanden* *aufaddiert*, dann kann dies durch die *Multiplikation* im Sinne der Anzahl der *Summanden* mal dem Wert des *Summanden* beschrieben werden. Folglich werden die beiden *Faktoren* miteinander *multipliziert* und bilden ein *Produkt*, während der *Wert des Produkts* auf der anderen Seite des *Gleichheitszeichen* steht.
+{{|>}}
+*******************************
+
+
+Die **Multiplikation** ist die erste abkürzende Schreibweise, die in der Schule eingeführt wird. Dabei wird die zum Beispiel Rechnung $3+3+3+3$ abgekürzt als $4 \cdot 3$ geschrieben, also vier mal die Drei, was durch den **Multiplikationsoperator** $\cdot$ beschrieben wird. Werden also gleichwertige **Summanden** **aufaddiert**, dann kann dies durch die **Multiplikation** im Sinne der Anzahl der **Summanden** mal dem Wert des **Summanden** beschrieben werden. Folglich werden die beiden **Faktoren** miteinander **multipliziert** und bilden ein **Produkt**, während der **Wert des Produkts** auf der anderen Seite des **Gleichheitszeichen** steht.
 
 
 $$
@@ -3620,7 +3693,7 @@ $$
 
 
 
-Als Beispiel mit *Zahlen*:
+Als Beispiel mit **Zahlen**:
 
 $$
 \begin{equation}
@@ -3630,7 +3703,7 @@ $$
 \end{equation}  
 $$
 
-    {{|>}} Am Beispiel kann schon erkannt werden, dass die Anzahl der gleichwertigen *Summanden* und der Wert des *Summanden* vertauscht werden kann. \
+    {{|>}} Am Beispiel kann schon erkannt werden, dass die Anzahl der gleichwertigen **Summanden** und der Wert des **Summanden** vertauscht werden kann. \
 
 
 $$
@@ -3642,7 +3715,7 @@ $$
 \end{equation}  
 $$
 
-    {{|>}} Diese Rechnung kann ebenfalls geometrisch interpretiert werden, in dem mehrfache Schrittfolgen gleicher Werte am *Zahlenstrahl* vollzogen oder eine zweidimensionale *rechteckige* Anordnung von *Einheitsflächen* betrachtet wird. Beide Interpretationen werden am Beispiel $2 \cdot 4$ dargestellt: \
+    {{|>}} Diese Rechnung kann ebenfalls geometrisch interpretiert werden, in dem mehrfache Schrittfolgen gleicher Werte am **Zahlenstrahl** vollzogen oder eine zweidimensionale **rechteckige** Anordnung von **Einheitsflächen** betrachtet wird. Beide Interpretationen werden am Beispiel $2 \cdot 4$ dargestellt: \
 
 
 
@@ -3734,10 +3807,10 @@ $$
 </center>
 
 
-    {{|>}} Es wird deutlich, dass die *Multiplikation* das *Assoziativgesetz* sowie das *Kommutativgesetz* erfüllt. \
+    {{|>}} Es wird deutlich, dass die **Multiplikation** das **Assoziativgesetz** sowie das **Kommutativgesetz** erfüllt. \
 
 
-*Kommutativgesetz* für die *Multiplikation*: 
+**Kommutativgesetz** für die **Multiplikation**: 
 
 $$
 \begin{equation}
@@ -3748,7 +3821,7 @@ $$
 $$
 
 
-*Assoziativgesetz* für die *Multiplikation*: 
+**Assoziativgesetz** für die **Multiplikation**: 
 
 $$
 \begin{equation}
@@ -3759,7 +3832,7 @@ $$
 $$
 
 
-    {{|>}} Die schriftliche *Multiplikation* sieht Zahlen von $0$ bis $9 \cdot 9 = 81$ vor, da auch hier die einzelnen *Ziffern* der Zahl nacheinander bearbeitet werden. Die *Multiplikation* kann in mehreren Schritten aus der *Addition* heraus eingeführt werden. Hierbei wird das Beispiel $3463 \cdot 5$ betrachtet:  \
+    {{|>}} Die schriftliche **Multiplikation** sieht Zahlen von $0$ bis $9 \cdot 9 = 81$ vor, da auch hier die einzelnen **Ziffern** der Zahl nacheinander bearbeitet werden. Die **Multiplikation** kann in mehreren Schritten aus der **Addition** heraus eingeführt werden. Hierbei wird das Beispiel $3463 \cdot 5$ betrachtet:  \
 
 
 
@@ -3803,7 +3876,7 @@ $$
 
 
 
-    {{|>}} Hierbei wird deutlich, dass die Schreibweisen sich verkürzen, sodass bei der dritten Variante die Merkzahlen im *Index* der Ziffern des ersten *Faktors* geschrieben wurden. Dies ist nicht mehr übersichtlich genug, wenn beide *Faktoren* über mehrere Ziffern verfügen, sodass dann die Merkzahlen entweder seperat niedergeschrieben oder im Kopf behalten werden müssen. \
+    {{|>}} Hierbei wird deutlich, dass die Schreibweisen sich verkürzen, sodass bei der dritten Variante die Merkzahlen im **Index** der Ziffern des ersten **Faktors** geschrieben wurden. Dies ist nicht mehr übersichtlich genug, wenn beide **Faktoren** über mehrere Ziffern verfügen, sodass dann die Merkzahlen entweder seperat niedergeschrieben oder im Kopf behalten werden müssen. \
 
 
 $$
@@ -3818,13 +3891,13 @@ $$
 $$
 
 
-    {{|>}} Aus der Gleichung ist zu erkennen, dass die $2$ auf die Zahl $7$ wirkt und danach auf die $3$. Dabei wird die Zehn der Rechnung $2 \cdot 7 = 14$ mit zur nächsten Ziffer von rechts gezählt. Das Ergebnis wird so notiert, dass die am weitest stehende *Ziffer* direkt unter der betrachten Zahl steht (im Beispiel unter der $2$). Anschließend wird dies mit der nächsten *Ziffer*, hier die Drei, wiederholt. Die untereinander geschriebenen Zahlen werden dann *addiert*, sodass sich der Wert des *Terms* ergibt. \
+    {{|>}} Aus der Gleichung ist zu erkennen, dass die $2$ auf die Zahl $7$ wirkt und danach auf die $3$. Dabei wird die Zehn der Rechnung $2 \cdot 7 = 14$ mit zur nächsten Ziffer von rechts gezählt. Das Ergebnis wird so notiert, dass die am weitest stehende **Ziffer** direkt unter der betrachten Zahl steht (im Beispiel unter der $2$). Anschließend wird dies mit der nächsten **Ziffer**, hier die Drei, wiederholt. Die untereinander geschriebenen Zahlen werden dann **addiert**, sodass sich der Wert des **Terms** ergibt. \
 
 
 
 
 
-    {{|>}} Da die *Multiplikation* die abkürzende Schreibweise der *Addition* von gleichwertigen *Summanden* ist, ergibt sich daraus die erste *Vorrangsregel*: Punktrechnungen werden vor Strichrechnungen durchgeführt. \
+    {{|>}} Da die **Multiplikation** die abkürzende Schreibweise der **Addition** von gleichwertigen **Summanden** ist, ergibt sich daraus die erste **Vorrangsregel**: Punktrechnungen werden vor Strichrechnungen durchgeführt. \
 
 $$
 \begin{equation}
@@ -3843,6 +3916,11 @@ $$
 Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:  \
 
 !?[Multiplikation](https://www.youtube.com/watch?v=Gh4Zfdlq7K0)
+
+
+*******************************
+
+
 
 
 
@@ -4170,7 +4248,12 @@ $964 \cdot 917=$[[  883388  ]]
 
 #### Division
 
-    {{|>}} Die *Division* stellt die umkehrende Frage der *Multiplikation*: "Wie oft passt die Zahl in die andere Zahl?". Bei der *Division* wird der *Dividend* durch den *Divisor* *dividiert*, was immer durch den *Divisionsoperator* $:$ beschrieben wird. Der gesamte *Term* ist der sogenannte *Quotient*, während der *Wert des Quotienten* auf der anderen Seite des *Gleichheitszeichen* $=$ geschrieben wird. \
+
+{{|>}}
+*******************************
+
+
+Die **Division** stellt die umkehrende Frage der **Multiplikation**: "Wie oft passt die Zahl in die andere Zahl?". Bei der **Division** wird der **Dividend** durch den **Divisor** **dividiert**, was immer durch den **Divisionsoperator** $:$ beschrieben wird. Der gesamte **Term** ist der sogenannte **Quotient**, während der **Wert des Quotienten** auf der anderen Seite des **Gleichheitszeichen** $=$ geschrieben wird. \
 
 
 $$
@@ -4181,14 +4264,14 @@ $$
 \end{equation}  
 $$
 
-    Da es sich um die Umkehrung der *Multiplikation* handelt, sollten auch wiederum alle Zahlen von $0$ bis $81$ beherrscht werden. Diese Umkehrung wird besonders deutlich, wenn die *Multiplikation* wie in dem folgenden Beispiel verwendet wird.
+Da es sich um die Umkehrung der **Multiplikation** handelt, sollten auch wiederum alle Zahlen von $0$ bis $81$ beherrscht werden. Diese Umkehrung wird besonders deutlich, wenn die **Multiplikation** wie in dem folgenden Beispiel verwendet wird.
 
 
 
 
 
 
-Als Beispiel mit *Zahlen*:
+Als Beispiel mit **Zahlen**:
 
 $$
 
@@ -4221,19 +4304,22 @@ $$
 $$
 
 
-    {{|>}} Bei der schriftlichen *Division* wird zunächst gefragt "Wie oft passt der *Divisor* ($3$) in die erste Ziffer des *Dividenden* ($2$)?" Die Antwort wäre "`Null mal"' und somit ist die Null die erste *Ziffer* des *Wert* des *Terms*, dem sogenannten *Quotienten*. Anschließend wir die gefundene *Ziffer* des *Quotienten* mit dem *Divisor* *multipliziert* und dieser *Wert* dieser Rechnung von der ersten *Ziffer* *subtrahiert*. Dann wird die nächste *Ziffer* zur Betrachtung mit nach unten gezogen (im Beispiel die Zahl $4$) und nun die sich danach immer wiederholende Frage "Wie oft passt der *Divisor* in diese Zahl?" gestellt. Die Antwort wird beim *Wert* des *Terms* notiert (im Beispiel $8$) und diese *Ziffer* des *Quotienten* dann wieder *multipliziert* mit dem *Divisor* von der besagten *Zahl* *subtrahiert* und anschließend die nächste *Ziffer* des *Dividenden* zur Betrachtung nach unten gezogen. Dieses Prozedur wiederholt sich solange bis alle *Zahlen* betrachtet wurden. \
+
+{{|>}} Bei der schriftlichen **Division** wird zunächst gefragt "Wie oft passt der **Divisor** ($3$) in die erste Ziffer des **Dividenden** ($2$)?" Die Antwort wäre "`Null mal"' und somit ist die Null die erste **Ziffer** des **Wert** des **Terms**, dem sogenannten **Quotienten**. Anschließend wir die gefundene **Ziffer** des **Quotienten** mit dem **Divisor** **multipliziert** und dieser **Wert** dieser Rechnung von der ersten **Ziffer** **subtrahiert**. Dann wird die nächste **Ziffer** zur Betrachtung mit nach unten gezogen (im Beispiel die Zahl $4$) und nun die sich danach immer wiederholende Frage "Wie oft passt der **Divisor** in diese Zahl?" gestellt. Die Antwort wird beim **Wert** des **Terms** notiert (im Beispiel $8$) und diese **Ziffer** des **Quotienten** dann wieder **multipliziert** mit dem **Divisor** von der besagten **Zahl** **subtrahiert** und anschließend die nächste **Ziffer** des **Dividenden** zur Betrachtung nach unten gezogen. Dieses Prozedur wiederholt sich solange bis alle **Zahlen** betrachtet wurden. \
 
 
 
-    {{|>}} Bei höheren *Zahlen* im *Divisor* lohnt es sich diesen in zwei *Zahlen* zu zerlegen. So kann zum Beispiel der *Divisor* $72$ in zwei *Divisoren* $8$ und $9$ zerlegt werden. Dann muss zu erst durch eine *Zahl* *dividiert* werden und anschließend der *Quotient* aus der ersten *Division* durch die zweite *Zahl* *dividiert* werden. Da die *Division* mit am zeitaufwendigsten ist, wird später die *Bruchrechnung* eingeführt, welche eine *Division* bis zum *Wert* des *Terms* hin herauszögern kann.
+{{|>}} Bei höheren **Zahlen** im **Divisor** lohnt es sich diesen in zwei **Zahlen** zu zerlegen. So kann zum Beispiel der **Divisor** $72$ in zwei **Divisoren** $8$ und $9$ zerlegt werden. Dann muss zu erst durch eine **Zahl** **dividiert** werden und anschließend der **Quotient** aus der ersten **Division** durch die zweite **Zahl** **dividiert** werden. Da die **Division** mit am zeitaufwendigsten ist, wird später die **Bruchrechnung** eingeführt, welche eine **Division** bis zum **Wert** des **Terms** hin herauszögern kann.
 
  
-
-
+ 
 
 Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:  \
 
 !?[Division](https://www.youtube.com/watch?v=KkDMx59XTAs)
+
+
+*******************************
 
 
 ##### Übungen - Division
@@ -7488,10 +7574,12 @@ __$f)\;\;$__ $ 124 - 15 \cdot 7  =$ [[  19  ]]
 
 
 
+{{|>}}
+********************************
 
 
 
-{{|>}} Die Untersuchung von Zahlen auf ihre *Teilbarkeit*, lässt den Umgang mit großen Zahlen verbessern. Besonders in der Informatik ist die Zerlegung von Zahlen in ihre *Faktoren* und sogar auf ihre elementarsten *Faktoren*, den *Primzahlen*, von besonderer Bedeutung. Folgende Regeln, um *Teiler* zu ermitteln, existieren:
+Die Untersuchung von Zahlen auf ihre *Teilbarkeit*, lässt den Umgang mit großen Zahlen verbessern. Besonders in der Informatik ist die Zerlegung von Zahlen in ihre *Faktoren* und sogar auf ihre elementarsten *Faktoren*, den *Primzahlen*, von besonderer Bedeutung. Folgende Regeln, um *Teiler* zu ermitteln, existieren:
 
 
 
@@ -7615,7 +7703,7 @@ $$
 
 
 
-{{|>}} • *Größter gemeinsamer Teiler*: Um *Brüche* effektiv zu *kürzen*, kann in mehreren Schritten auf die *Teilbarkeitsregeln* zurückgegriffen werden oder mit dem *größten gemeinsamen Teiler* das *Kürzen* auf einen einzigen Schritt reduziert werden, wobei die *Teilbarkeitsregeln* in diesem Buch einen höheren Stellenwert besitzen werden. Zur Notation wieder einige Beispiele:
+{{|>}} • *Größter gemeinsamer Teiler*: Um *Brüche* effektiv zu *kürzen*, kann in mehreren Schritten auf die *Teilbarkeitsregeln* zurückgegriffen werden oder mit dem *größten gemeinsamen Teiler* das *Kürzen* auf einen einzigen Schritt reduziert werden, wobei die *Teilbarkeitsregeln* in diesem Buch einen höheren Stellenwert besitzen werden.   Zur Notation wieder einige Beispiele:
 
 
 
@@ -7647,12 +7735,7 @@ $$
 
 
 
-
-
-
-
-
-
+********************************
 
 
 
@@ -9436,9 +9519,14 @@ $b)\;\; \text{ggT}\left(\text{kgV}(8;7);84;105\right) + \text{ggT}\left(\text{kg
 
 
 
+{{|>}}
+********************************
 
 
-{{|>}} Ein *Bruch* setzt sich aus seinem *Nenner*, der definiert in wie viele gleichgroße Teile ein Ganzes unterteilt wird, und den *Zähler*, der beschreibt wie viele Teile vom *Nenner* tatsächlich vorzufinden sind ($\text{Bruch} = \frac{\text{Zähler}}{\text{Nenner}}$). Sprachlich lässt sich der *Bruch* von den Bruchteil zurückführen, welcher eine Anteil von etwas beschreibt und am besten geometrisch veranschaulicht werden kann: 
+
+
+
+Ein *Bruch* setzt sich aus seinem *Nenner*, der definiert in wie viele gleichgroße Teile ein Ganzes unterteilt wird, und den *Zähler*, der beschreibt wie viele Teile vom *Nenner* tatsächlich vorzufinden sind ($\text{Bruch} = \frac{\text{Zähler}}{\text{Nenner}}$). Sprachlich lässt sich der *Bruch* von den Bruchteil zurückführen, welcher eine Anteil von etwas beschreibt und am besten geometrisch veranschaulicht werden kann: 
 
 
 <center>
@@ -9826,7 +9914,7 @@ $$
 
 
 
- 
+
 
 
 
@@ -9838,6 +9926,11 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 
 !?[Bruchrechnung](https://www.youtube.com/watch?v=E0jIuLBRPBg)
+
+
+
+********************************
+
 
 
 
@@ -23645,9 +23738,11 @@ __Aufgabe 161:__ **Bestimme** die richtige Reihenfolge der Dominos.
 
 
 
+{{|>}}
+********************************
 
 
-{{|>}} Um **Brüche** in **Dezimalzahlen** umzuwandeln bedarf es der schriftlichen **Division** oder eines guten Zahlengefühls. Anhand eines Beispiels soll ersteres verdeutlicht werden.  
+Um **Brüche** in **Dezimalzahlen** umzuwandeln bedarf es der schriftlichen **Division** oder eines guten Zahlengefühls. Anhand eines Beispiels soll ersteres verdeutlicht werden.  
 
 
 $$
@@ -23901,11 +23996,7 @@ $$
 
 
 
-
-
-
-
-
+********************************
 
 
 
@@ -27229,31 +27320,321 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 
-### Einsetzungsverfahren
+### Variablen und Einsetzungsverfahren
 
-Under Construction:
 
-Parameter $\Rightarrow$ Einsetzen
+
+
+
+
+{{|>}}
+*******************************
+
+
+
+
+**Variablen** sind Platzhalter hinter denen sich jede mögliche Zahl verbergen kann. Jeder **Variable** gehört einer **Zahlenmenge** an und kann somit jede beliebige Zahl aus dieser **Menge** darstellen. Das bedeutet, dass Rechnungen mit **Variablen** für alle möglichen Zahlen} Gültigkeit besitzen. Eine **Variable** wird mit einem Buchstaben oder einem anderen beliebigen Symbol gekennzeichnet. Somit kann die Abkürzung der **Addition**, also die **Multiplikation**, wie folgt dargestellt:
+
+
+$$
+\begin{align*}
+a + a = 2 \cdot a \;\; .
+\end{align*}
+$$
+
+{{|>}} Die **Gleichung** für jede Zahl für $a$ Gültigkeit. Ebenso kann auch die **Subtraktion** einer Zahl von sich selbst mit **Variablen** dargestellt werden: 
+
+
+
+$$
+\begin{align*}
+a - a = 0 \;\; .
+\end{align*}
+$$
+
+{{|>}} Besitzt eine **Variable** einen Namen wie $a$, dann unterscheidet dieser sich von einer anderen **Variable** $b$. Beide **Variablen** können nicht zusammengefasst werden und auch ihr Name $a$ und $b$ wechseln. In bestimmten Fällen, kann es vorkommen, dass **Variablen** nach ihrer Bestimmung den gleichen Wert haben können. 
+
+{{|>}} 
+Beim Rechnen mit **Variablen** (oder später auch **Parameter**) ist es wichtig zu beachten, dass nur gleiche **Produkte** von **Variablen** zusammengefasst werden können. Dazu einige Beispiele:
+
+
+
+$$
+\begin{align*}
+4a + 3a + 5b + 6b & = 7a + 11b \;\; , \\
+4ab + 3a + 5ab + 6b & = 3a + 9ab +6b \;\; , \\
+3aa + 5ab - aa + 2b - 3ab + 4b & = 2aa + 2ab + 6b \;\; . \\ 
+\end{align*}
+$$
+
+
+{{|>}} Bei diesem Zusammenfassen von **Termen** müssen die vorgestellten Regeln beachtet werden. **Terme** sind dabei Teile von **Gleichungen** auf einer Seite eines **Äquivalenzzeichens**. 
+
+
+
+
+{{|>}} Das **Einsetzungsverfahren** wird oftmals mit **Gleichungssystemen** in Verbindung gebracht, allerdings ist das dahinter liegende Prinzip von fundamentalerer Bedeutung für den Umgang mit mathematischem und naturwissenschaftlichem Wissen. Bei diesem Verfahren wird entweder für einen **Parameter**, einer **Variable** oder einen **Term**  eine Zahl oder einem weiterführender **Term** eingesetzt, sodass es generell zu einer Vereinfachung, einer Beispielrechnung oder der Reduzierung von unbekannten Größen kommt. Dabei ist ein **Parameter** ein Platzhalter für eine Zahl (oftmals werden $a,b,c,d$ als **Parameter** verwendet), während die **Variable** der Platzhalter für eine veränderliche Zahl (oftmals werden $x,y,z$ als **Variable** verwendet) ist und ein **Term** ein ganzer Abschnitt einer Rechenanweisung (zum Beispiel $5\cdot x \cdot a$ wäre ein **Term**).
+
+
+{{|>}} Als Beispiel für das **Einsetzen** von Zahlen soll das **Erweitern** bei der **Bruchrechnung** dienen. Hierbei soll gelten, dass für $a$ der **Wert** $2$, für $b$ der **Wert** 3 und für den **Erweiterungsparameter** $n$ die Zahl $4$ eingesetzt werden soll.
+
+
+
+$$
+\begin{align*}
+\frac{a}{b}  &= \frac{a  }{b  } \cdot 1 = \frac{a  }{b  }  \cdot \frac{n}{n} = \frac{a \cdot n}{ b  \cdot n} \quad \text{mit: } a=2\\
+\Rightarrow \frac{2}{b}  &= \frac{2  }{b  } \cdot 1 = \frac{2  }{b  }  \cdot \frac{n}{n} = \frac{2 \cdot n}{ b  \cdot n} \quad \text{mit: } b=3\\
+\Rightarrow \frac{2}{3}  &= \frac{2  }{3  } \cdot 1 = \frac{2  }{3  }  \cdot \frac{n}{n} = \frac{2 \cdot n}{ 3  \cdot n} \quad \text{mit: } n=4\\
+\Rightarrow \frac{2}{3}  &= \frac{2  }{3  } \cdot 1 = \frac{2  }{3  }  \cdot \frac{4}{4} = \frac{2 \cdot 4}{ 3  \cdot 4} = \frac{8}{12} \\
+\end{align*}
+$$
+
+{{|>}} Wie bereits oben schon erwähnt wurde, ist dieses Verfahren auch mit **Termen** möglich.
+
+
+$$
+\begin{align*}
+a+b & = c \qquad \text{mit: } a = d-e+f \\
+\Rightarrow d-e+f+b & = c \qquad \text{mit: } c = e-f-d \\
+\Rightarrow d-e+f+b & = e-f-d   \\
+\end{align*}
+$$
+
+{{|>}} Generell sollte beim **Einsetzen** von Ausdrücken der einzusetzende **Term** in **Klammern** geschrieben werden, da es sonst unter anderem zu **Vorzeichenfehler** oder Ähnlichem kommen kann. Hierzu einige Beispiele:
+
+
+
+$$
+\begin{align*}
+a-b &  \qquad \text{mit: } b = d+e \;\; \Rightarrow \;\; \text{richtig:}\;  a-(d+e) = a - d - e  \;;\; \text{falsch:}\;a-d+e   \\ 
+a^2 &  \qquad \text{mit: } a = -b \;\; \Rightarrow \;\; \text{richtig:}\;  (-b)^2 = b^2 \;;\; \text{falsch:}\;-b^2   \\ 
+\end{align*}
+$$
+
+{{|>}} Folglich sollten alle **Einsetzungen** mit **Klammern** unternommen werden und nach dem **Einsetzen** auf die Notwendigkeit der **Klammern** geschaut werden. Hierdurch entsteht schnell ein Gefühl, wann die **Klammern** unabdingbar werden.
+
+
 
 
 !?[Einsetzen](https://www.youtube.com/watch?v=oCzl1Sasf4M)
 
+*******************************
 
-#### Übungen - Einsetzungsverfahren
 
 
+
+
+
+
+#### Übungen - Variablen und Einsetzungsverfahren
+
+
+
+<!-- Parameter 0001 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 1:__ 
-
-
-<!-- data-solution-button="5"-->
-
-<section class="flex-container">
+__Aufgabe 1:__ **Fülle** die freien Felder der Tabelle **aus**.
 
 
 
-</section>
+<!-- data-type="none"
+data-sortable="false" data-solution-button="5"-->
+|  $a$  |   $b$   |  $a+b$   |  $a \cdot b$ |  $b-a$   | $2 \cdot a$ |
+| :---: | :-----: | :------: | :----------: | :------: | :---------: |
+|   3   |     7   | [[ 10 ]] |   [[  21 ]]  | [[  4 ]] |  [[  6 ]]   |
+|   5   |     6   | [[ 11 ]] |   [[  30 ]]  | [[  1 ]] |  [[ 10 ]]   |
+|   9   |    14   | [[ 23 ]] |   [[ 126 ]]  | [[  5 ]] |  [[ 18 ]]   |
+|   8   |    16   | [[ 24 ]] |   [[ 144 ]]  | [[  8 ]] |  [[ 16 ]]   |
+
+
+
+
+
+<!-- Parameter 0002 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 2:__ **Fülle** die freien Felder der Tabelle **aus**.
+
+
+
+<!-- data-type="none"
+data-sortable="false" data-solution-button="5"-->
+|  $a$  |   $b$   |   $c$   |  $a+c$   |  $c + b$     |  $b : a$ | $2 \cdot a \cdot c$ |
+| :---: | :-----: | :-----: | :------: | :----------: | :------: | :---------: |
+|   4   |     8   |     2   | [[ 6  ]] |   [[  10 ]]  | [[  2 ]] |  [[ 16 ]]   |
+|   6   |    12   |     7   | [[ 13 ]] |   [[  19 ]]  | [[  2 ]] |  [[ 84 ]]   |
+|   5   |    25   |     3   | [[ 8  ]] |   [[  8  ]]  | [[  5 ]] |  [[ 30 ]]   |
+|   9   |    27   |     2   | [[ 11 ]] |   [[  11 ]]  | [[  3 ]] |  [[ 36 ]]   |
+
+
+
+
+
+<!-- Parameter 0003 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 3:__ **Fülle** die freien Felder der Tabelle **aus**.
+
+
+
+<!-- data-type="none"
+data-sortable="false" data-solution-button="5"-->
+|  $r$  |   $s$   |  $4\cdot s$   |  $r + s$     | $s \cdot s$ | $r \cdot r \cdot r$ |
+| :---: | :-----: | :-----------: | :----------: | :---------: | :---------: |
+|   4   |    6   |    [[ 24 ]]    |   [[ 10 ]]   |  [[ 36  ]]  |  [[ 64  ]]  |
+|   3   |    4   |    [[ 16 ]]    |   [[ 7  ]]   |  [[ 16  ]]  |  [[ 27  ]]  |
+|   6   |    8   |    [[ 32 ]]    |   [[ 14 ]]   |  [[ 64  ]]  |  [[ 216 ]]  |
+|   5   |    11  |    [[ 44 ]]    |   [[ 16 ]]   |  [[ 121 ]]  |  [[ 125 ]]  |
+
+
+
+
+
+
+<!-- Parameter 0004 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 4:__ **Fülle** die freien Felder der Tabelle **aus**.
+
+
+
+<!-- data-type="none"
+data-sortable="false" data-solution-button="5" -->
+|  $u$  |   $v$   |   $x$   |  $v-u$   |  $v - x$     | $u \cdot x$  | $v \cdot x$ |
+| :---: | :-----: | :-----: | :------: | :----------: | :---------:  | :---------: |
+|   7   |    28   |     5   | [[ 21 ]] |   [[  23 ]]  |  [[  35  ]]  |  [[ 140 ]]  |
+|   3   |    13   |     2   | [[ 10 ]] |   [[  11 ]]  |  [[  39  ]]  |  [[ 26  ]]  |
+|   9   |    18   |     3   | [[ 9  ]] |   [[  15 ]]  |  [[  162 ]]  |  [[ 54  ]]  |
+|   4   |    22   |     8   | [[ 18 ]] |   [[  14 ]]  |  [[  88  ]]  |  [[ 176 ]]  |
+
+
+
+
+
+
+<!-- Parameter 0005 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 5:__ **Fülle** die freien Felder der Tabelle **aus**.
+
+
+
+<!-- data-type="none"
+data-sortable="false" 
+data-solution-button="5" -->
+|  $a$  |   $c$  |   $r$   |  $a\cdot c - r$  |  $ r + a \cdot c$ | $(r+c)\cdot a$ |
+| :---: | :----: | :-----: | :------:         | :----------:      | :-----------:  |
+|   8   |    7   |     6   | [[ 50 ]]         |   [[ 62 ]]        |  [[  104  ]]   |
+|   6   |    5   |     8   | [[ 22 ]]         |   [[ 38 ]]        |  [[  78  ]]    |
+|   4   |    9   |     3   | [[ 33 ]]         |   [[ 39 ]]        |  [[  48  ]]    |
+|   9   |    3   |     5   | [[ 22 ]]         |   [[ 33 ]]        |  [[  135  ]]   |
+
+
+
+
+
+<!-- Parameter 0006 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 6:__ **Fülle** die freien Felder der Tabelle **aus**.
+
+
+
+<!-- data-type="none"
+data-sortable="false" 
+data-solution-button="5" -->
+|  $z$  |   $x$  |   $n$   |  $n - x - z$  |  $ n - x \cdot z$ | $ n - 4 \cdot z$ |
+| :---: | :----: | :-----: | :------:      | :----------:      | :-----------:    |
+|   8   |    6   |    96   | [[ 82 ]]      |   [[ 40 ]]        |  [[  64  ]]      |
+|   12  |    5   |    84   | [[ 67 ]]      |   [[ 24 ]]        |  [[  36  ]]      |
+|   3   |    14  |    67   | [[ 50 ]]      |   [[ 25 ]]        |  [[  55  ]]      |
+|   7   |    9   |    79   | [[ 63 ]]      |   [[ 16 ]]        |  [[  51  ]]      |
+
+
+
+
+
+<!-- Parameter 0007 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 7:__ **Fülle** die freien Felder der Tabelle **aus**.
+
+
+
+<!-- data-type="none"
+data-sortable="false" 
+data-solution-button="5" -->
+|  $k$  |   $g$  |   $u$   |  $ (k-g):u $  |  $ k - g \cdot u $ | $ u \cdot u + k \cdot g $ |
+| :---: | :----: | :-----: | :------:      | :----------:       | :-----------:             |
+|   23  |   5    |    3    | [[ 6 ]]       |   [[ 8 ]]          |  [[  124  ]]              |
+|   21  |   7    |    2    | [[ 7 ]]       |   [[ 7 ]]          |  [[  151  ]]              |
+|   54  |   9    |    5    | [[ 9 ]]       |   [[ 9 ]]          |  [[  511  ]]              |
+|   57  |   13   |    4    | [[ 11 ]]      |   [[ 4 ]]          |  [[  757  ]]              |
+
+
+
+
+
+<!-- Parameter 0008 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 8:__ **Fülle** die freien Felder der Tabelle **aus**.
+
+
+
+<!-- data-type="none"
+data-sortable="false"
+data-solution-button="5" -->
+|  $t$  |   $k$  |   $d$   |  $ t+k-d $  |  $ t \cdot d $ | $ d - k \cdot t $ |
+| :---: | :----: | :-----: | :------:    | :----------:   | :-----------:     |
+|  5    |   -6   |    8    | [[ -9  ]]   |   [[  40 ]]    |  [[ 38  ]]        |
+|  -8   |   4    |    -6   | [[ -10 ]]   |   [[  48 ]]    |  [[ 18  ]]        |
+|  -4   |   -7   |    9    | [[ -20 ]]   |   [[ -36 ]]    |  [[ -19 ]]        |
+|   3   |   -5   |    -8   | [[ 6   ]]   |   [[ -24 ]]    |  [[ 7   ]]        |
+
+
+
+
+
+<!-- Parameter 0009 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 9:__ **Fülle** die freien Felder der Tabelle **aus**.
+
+
+
+<!-- data-type="none"
+data-sortable="false"
+data-solution-button="5" -->
+|  $a$  |   $c$  |   $e$   |  $ e \cdot e - c $  |  $ |a|-|c| $ | $ a \cdot c \cdot e $ |
+| :---: | :----: | :-----: | :------------:      | :----------: | :-------------------: |
+|   -2  |    -7  |    -4   | [[ 23 ]]            |   [[ -5 ]]   |  [[ -56  ]]           |
+|   4   |   -9   |    3    | [[ 18 ]]            |   [[ -5 ]]   |  [[ -108 ]]           |
+|   -5  |   4    |   -2    | [[ 0  ]]            |   [[ 1  ]]   |  [[ 40   ]]           |
+|   -7  |   -5   |    9    | [[ 86 ]]            |   [[ 2  ]]   |  [[ 315  ]]           |
+
+
+
+
+
+<!-- Parameter 0010 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 10:__ **Fülle** die freien Felder der Tabelle **aus**.
+
+
+
+<!-- data-type="none"
+data-sortable="false"
+data-solution-button="5" -->
+|  $z$  |   $r$  |   $s$   |  $ z+r\cdot s $  |  $ z+r+2 \cdot s $ | $ |s|\cdot s - r $ |
+| :---: | :----: | :-----: | :---------:      | :----------:       | :-----------:      |
+|  6    |   -5   |   -4    | [[ 26  ]]        |   [[ -7  ]]        |  [[ -11 ]]         |
+|  -8   |   3    |    -6   | [[ -30 ]]        |   [[ -17 ]]        |  [[ -39 ]]         |
+|   -3  |   7    |    -4   | [[ -31 ]]        |   [[ -4  ]]        |  [[ -23 ]]         |
+|   7   |   -9   |    -5   | [[ 52  ]]        |   [[ -12 ]]        |  [[ -16 ]]         |
+
+
 
 
 
@@ -27365,6 +27746,12 @@ __Aufgabe 1:__
 ### Prozentrechnung
 
 
+{{|>}}
+*******************************
+
+Under Construction
+
+*******************************
 
 
 
@@ -27497,9 +27884,12 @@ __Aufgabe 2:__ Fülle die fehlenden Felder aus.
 
 
 
+{{|>}}
+********************************
 
 
-{{|>}} Die *negativen Zahlen* erweitern die *Zahlenmenge* der *natürlichen Zahlen* $\mathbb{N}$ zu den *ganzen Zahlen* $\mathbb{Z} = \left\{-2 , -1 , 0 , 1 , 2\right\}$, indem die *Subtraktion* mit der *Addition* vereinheitlicht wird. Dabei gehört der *Subtraktionsoperator* nun als *Vorzeichen* zu der Zahl dazu.
+
+Die *negativen Zahlen* erweitern die *Zahlenmenge* der *natürlichen Zahlen* $\mathbb{N}$ zu den *ganzen Zahlen* $\mathbb{Z} = \left\{-2 , -1 , 0 , 1 , 2\right\}$, indem die *Subtraktion* mit der *Addition* vereinheitlicht wird. Dabei gehört der *Subtraktionsoperator* nun als *Vorzeichen* zu der Zahl dazu.
 
 
 
@@ -27610,11 +28000,14 @@ $$
 
 
 
-Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:  \
 
 
 !?[Negative Zahlen](https://www.youtube.com/watch?v=Yt03b6sbMLM)
 
+
+
+
+********************************
 
 
 #### Übungen - Negative Zahlen
@@ -33441,6 +33834,10 @@ __$f)\;\;$__ $ -0,56:(-0,7) =$ [[  0,8  ]]
 
 ### Kommutativ- und Assoziativgesetz
 
+
+{{|>}}
+*******************************
+
 Under Construction:
 
 
@@ -33448,7 +33845,14 @@ Kommutativgesetz
 
 Assoziativgesetz
 
+
+*******************************
+
 ### Distributivgesetz
+
+
+{{|>}}
+*******************************
 
 Under Construction:
 
@@ -33456,6 +33860,9 @@ Under Construction:
 Distributivgesetz
 
 !?[Distributivgesetz](https://www.youtube.com/watch?v=tSawKXhm714)
+
+
+*******************************
 
 
 #### Übungen - Kommutativ-, Assoziativ- und Distributivgesetz
@@ -33576,8 +33983,15 @@ __Aufgabe 1:__
 ### Potenzen
 
 
+{{|>}}
+*******************************
+
+Under Construction
+
+
 !?[Potenzgesetze](https://www.youtube.com/watch?v=g1zLW9FsglU)
 
+*******************************
 
 
 #### Übungen - Potenzen
@@ -33696,7 +34110,16 @@ __Aufgabe 1:__
 ### Logarithmen
 
 
+{{|>}}
+*******************************
+
+Under Construction
+
+*******************************
+
+
 #### Übungen - Logarithmen
+
 
 
 
@@ -33814,7 +34237,12 @@ __Aufgabe 1:__
 
 
 
-{{|>}} Die *Äquivalenzumformung* stellt die Basis für den Erkenntniserwerb und steht als selbstverständliches Vorwissen aller Schüler im Zentrum des naturwissenschaftlichen Unterrichts. Letztendlich versteckt sich hinter diesem Wort nur die Bedingung, dass auf beiden Seiten des *Äquivalenzzeichens* "=" immer die gleichen *Operationen* durchgeführt werden müssen. Dabei wird hinter dem *Kommandostrich* oder *Ankündigungsstrich* "$\left|\right.$" hinter der umzuformenden *Gleichung* die nachfolgende *Operation* angegeben.
+{{|>}}
+********************************
+
+
+
+Die *Äquivalenzumformung* stellt die Basis für den Erkenntniserwerb und steht als selbstverständliches Vorwissen aller Schüler im Zentrum des naturwissenschaftlichen Unterrichts. Letztendlich versteckt sich hinter diesem Wort nur die Bedingung, dass auf beiden Seiten des *Äquivalenzzeichens* "=" immer die gleichen *Operationen* durchgeführt werden müssen. Dabei wird hinter dem *Kommandostrich* oder *Ankündigungsstrich* "$\left|\right.$" hinter der umzuformenden *Gleichung* die nachfolgende *Operation* angegeben.
 
 
 $$
@@ -33959,10 +34387,7 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 
 
-
-
-
-
+********************************
 
 
 
@@ -36742,12 +37167,18 @@ $$
 
 ### Quadratische Ergänzung
 
+
+{{|>}}
+*******************************
+
 Under Construction
 
 !?[Quadratische Ergänzung](https://www.youtube.com/watch?v=8QRKPmR82jQ)
 
  mit Substitution
 
+
+*******************************
 
 #### Übungen - Quadratische Ergänzung
 
@@ -36860,9 +37291,12 @@ __Aufgabe 1:__
 
 
 
+{{|>}}
+********************************
 
 
-{{|>}} Nicht jede *Gleichung* besitzt nur eine *Unbekannte*, sondern oftmals mehrere. Mit der richtigen Anzahl von *Randbedingungen* an diese *Gleichung* können alle *Unbekannten* mittels eines *Gleichungssystem* bestimmt werden. Sei ein allgemeines *Gleichungssystem* mit zwei Unbekannten als Beispiel gegeben:
+
+Nicht jede *Gleichung* besitzt nur eine *Unbekannte*, sondern oftmals mehrere. Mit der richtigen Anzahl von *Randbedingungen* an diese *Gleichung* können alle *Unbekannten* mittels eines *Gleichungssystem* bestimmt werden. Sei ein allgemeines *Gleichungssystem* mit zwei Unbekannten als Beispiel gegeben:
 
 $$
 \begin{align*}
@@ -36950,7 +37384,7 @@ $$
 
 
 
-
+********************************
 
 
 
@@ -38682,8 +39116,11 @@ $$
 
 
 
+{{|>}}
+********************************
 
-{{|>}} *Ungleichungen* beschreiben meistens Sachverhalte, bei denen vor allem die Grenzen entscheidend sind. So gibt es insgesamt vier Bedingungen:
+
+*Ungleichungen* beschreiben meistens Sachverhalte, bei denen vor allem die Grenzen entscheidend sind. So gibt es insgesamt vier Bedingungen:
 
 
 
@@ -38736,9 +39173,7 @@ $$
 {{|>}} Die Darstellung der Lösung als *Intervall* kann im Abschnitt "Intervalle" nachgeschlagen werden.
 
 
-
-
-
+********************************
 
 
 
@@ -40681,10 +41116,17 @@ $$
 
 ### Fakultäten und Binomialkoeffizienten
 
+
+{{|>}}
+*******************************
+
 Under Construction
 
 Fakultäten
 Binomialkoeffizienten
+
+
+*******************************
 
 
 #### Übungen - Fakultäten und Binomialkoeffizienten
@@ -40801,6 +41243,17 @@ __Aufgabe 1:__
 
 ### Zahlensysteme
 
+
+{{|>}}
+*******************************
+
+Under Construction
+
+*******************************
+
+
+
+
 #### Übungen - Zahlensysteme
 
 
@@ -40913,6 +41366,14 @@ __Aufgabe 1:__
 ### Einheiten
 
 
+
+{{|>}}
+*******************************
+
+Under Construction
+
+*******************************
+
 #### Übungen - Einheiten
 
 
@@ -41022,6 +41483,16 @@ __Aufgabe 1:__
 
 
 ### Verhältnisse
+
+
+
+
+{{|>}}
+*******************************
+
+Under Construction
+
+*******************************
 
 
 #### Übungen - Verhältnisse

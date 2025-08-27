@@ -52,7 +52,11 @@ author: Martin Lommatzsch
 
 # Subtraktion
 
-    {{|>}} Die **Subtraktion**<!-- title="Test" --> ist die Umkehroperation der **Addition** und wird durch den **Subtraktionsoperator** $-$ (gesprochen "minus") beschrieben. Auch bei der **Subtraktion** ist somit die Null das **neutrale Element** der **Subktration**, da eine **Subktraktion** mit Null den **Wert des Terms** nicht verändert: $1-0=1$. Auf dem Zahlenstrahl wird somit die Richtung der Schritte der Addition von links nach rechts umgekehrt: \
+
+{{|>}}
+*******************************
+
+Die **Subtraktion** ist die Umkehroperation der **Addition** und wird durch den **Subtraktionsoperator** $-$ (gesprochen "minus") beschrieben. Auch bei der **Subtraktion** ist somit die Null das **neutrale Element** der **Subktration**, da eine **Subktraktion** mit Null den **Wert des Terms** nicht verändert: $1-0=1$. Auf dem Zahlenstrahl wird somit die Richtung der Schritte der Addition von links nach rechts umgekehrt: \
 
 
 <center>
@@ -205,10 +209,9 @@ $$
 
 
 
-
-<br>
-<br>
-
 Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:  \
 
 !?[Subtraktion](https://www.youtube.com/watch?v=a2Nwh8npSUo)
+
+
+*******************************

@@ -55,9 +55,11 @@ author: Martin Lommatzsch
 
 
 
+{{|>}}
+********************************
 
 
-{{|>}} *Ungleichungen* beschreiben meistens Sachverhalte, bei denen vor allem die Grenzen entscheidend sind. So gibt es insgesamt vier Bedingungen:
+*Ungleichungen* beschreiben meistens Sachverhalte, bei denen vor allem die Grenzen entscheidend sind. So gibt es insgesamt vier Bedingungen:
 
 
 
@@ -110,3 +112,4 @@ $$
 {{|>}} Die Darstellung der Lösung als *Intervall* kann im Abschnitt "Intervalle" nachgeschlagen werden.
 
 
+********************************

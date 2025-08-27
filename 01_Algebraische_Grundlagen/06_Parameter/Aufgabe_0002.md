@@ -33,7 +33,7 @@ author: Martin Lommatzsch
 
 **Fülle** die freien Felder der Tabelle **aus**.
 
-<br>
+
 
 <!-- data-type="none"
 data-sortable="false" -->

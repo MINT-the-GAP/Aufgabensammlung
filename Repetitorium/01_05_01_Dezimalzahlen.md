@@ -55,11 +55,11 @@ author: Martin Lommatzsch
 # Dezimalzahlen
 
 
+{{|>}}
+********************************
 
 
-
-
-{{|>}} Um **Brüche** in **Dezimalzahlen** umzuwandeln bedarf es der schriftlichen **Division** oder eines guten Zahlengefühls. Anhand eines Beispiels soll ersteres verdeutlicht werden.  
+Um **Brüche** in **Dezimalzahlen** umzuwandeln bedarf es der schriftlichen **Division** oder eines guten Zahlengefühls. Anhand eines Beispiels soll ersteres verdeutlicht werden.  
 
 
 $$
@@ -312,3 +312,5 @@ $$
 
 
 
+
+********************************
