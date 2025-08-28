@@ -54,6 +54,7 @@ author: Martin Lommatzsch
 
 
 
+
 {{|>}}
 ********************************
 
@@ -66,27 +67,9 @@ Ein *Bruch* setzt sich aus seinem *Nenner*, der definiert in wie viele gleichgro
 
 <center>
 
-```latex  @tikz
+<!-- style="width:750px" -->
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/eBruch1.png)
 
-\begin{tikzpicture}[scale=1,>=latex]
-
-\begin{scope}[xshift=0cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); 
-\foreach \n in {90,180,270,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm);  
-\end{scope}
- 
-
-\begin{scope}[xshift=6cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:300:1) -- (0,0); 
-\foreach \n in {60,120,...,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:60:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm);  
-\end{scope}
- 
-
-\end{tikzpicture}
-
-```
 </center>
 
 
@@ -115,35 +98,12 @@ $$
 $$
  
 
+
 <center>
 
-```latex  @tikz
-\begin{tikzpicture}[scale=1,>=latex]
+<!-- style="width:750px" -->
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/eBruch2.png)
 
-\begin{scope}[xshift=0cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (-90:1)  arc (-90:90:1) -- (0,0); 
-\foreach \n in {180,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (-90:1)  arc (-90:90:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm); 
-\node at (1.5,0) {$=$};	
-\end{scope}
-
-\begin{scope}[xshift=3cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (-90:1)  arc (-90:90:1) -- (0,0); 
-\foreach \n in {90,180,270,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (-90:1)  arc (-90:90:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm); 
-\node at (1.5,0) {$=$};	
-\end{scope}
-
-\begin{scope}[xshift=6cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (-90:1)  arc (-90:90:1) -- (0,0); 
-\foreach \n in {45,90,...,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (-90:1)  arc (-90:90:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm);  
-\end{scope}
- 
-
-\end{tikzpicture}
-
-```
 </center>
 
 
@@ -151,8 +111,7 @@ $$
 
 {{|>}} Beim *Kürzen* werden *Zähler* und *Nenner* durch die Zahl *dividiert* mit der man den *Bruch* *kürzen* möchte. Im folgenden Beispiel wird der *Bruch* im ersten Schritt mit zwei und danach mit acht *erweitert*. 
 
-
-
+ 
 
 $$
 \begin{align*}
@@ -163,38 +122,13 @@ $$
 
 
 
+
 <center>
 
-```latex  @tikz
-\begin{tikzpicture}[scale=1,>=latex]
+<!-- style="width:750px" -->
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/eBruch3.png)
 
-\begin{scope}[xshift=0cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:120:1) -- (0,0); 
-\foreach \n in {120,240,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:120:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm); 
-\end{scope}
-
-\begin{scope}[xshift=-3cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:120:1) -- (0,0); 
-\foreach \n in {60,120,...,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:120:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm); 
-\node at (1.5,0) {$=$};	
-\end{scope}
-
-\begin{scope}[xshift=-6cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:120:1) -- (0,0); 
-\foreach \n in {20,40,...,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:120:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm); 
-\node at (1.5,0) {$=$};	 
-\end{scope}
- 
-
-\end{tikzpicture}
-
-```
 </center>
-
-
 
 
 {{|>}} Bei der *Addition* beziehungsweise der *Subtraktion* von *Brüchen* müssen die *Nenner* der beteiligten *Brüche* so *erweitert* oder *gekürzt* werden, dass sie gleich sind. Dann können die *Zähler* verrechnet werden. Um immer einen gemeinsamen *Nenner* zu finden, kann man den ersten *Bruch* mit dem *Nenner* des zweiten *Bruch* und den zweiten *Bruch* mit dem *Nenner* des ersten *Bruchs* *erweitern* (wie im Subtraktionsbeispiel gezeigt) oder der *Nenner* auf das *kleinste gemeinsame Vielfache* gebracht.
@@ -209,52 +143,12 @@ $$
 $$
 
 
+
 <center>
 
-```latex  @tikz
-\begin{tikzpicture}[scale=1,>=latex]
+<!-- style="width:750px" -->
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/eBruch4.png)
 
-\begin{scope}[xshift=0cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); 
-\foreach \n in {90,180,270,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm); 
-\node at (1.5,0) {$+$};	
-\end{scope}
-
-\begin{scope}[xshift=3cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:-180:1) -- (0,0); 
-\foreach \n in {180,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:180:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm); 
-\node at (1.5,0) {$=$};	
-\end{scope}
- 
-
-\begin{scope}[xshift=6cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); 
-\foreach \n in {90,180,270,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm); 
-\node at (1.5,0) {$+$};	
-\end{scope}
-
-\begin{scope}[xshift=9cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:-180:1) -- (0,0); 
-\foreach \n in {90,180,270,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm); 
-\node at (1.5,0) {$=$};	
-\end{scope}
-
-\begin{scope}[xshift=12cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); 
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:-180:1) -- (0,0); 
-\foreach \n in {90,180,270,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm);  
-\end{scope}
- 
- 
-
-\end{tikzpicture}
-
-```
 </center>
 
 
@@ -267,55 +161,16 @@ $$
 $$
 
 
- 
+
+
 
 
 
 <center>
 
-```latex  @tikz
-\begin{tikzpicture}[scale=1,>=latex]
+<!-- style="width:750px" -->
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/eBruch5.png)
 
-\begin{scope}[xshift=0cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); 
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:-180:1) -- (0,0); 
-\foreach \n in {90,180,270,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm);  
-\node at (1.5,0) {$-$};	
-\end{scope} 
-
-\begin{scope}[xshift=3cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (180:1)  arc (180:240:1) -- (0,0); 
-\foreach \n in {60,120,...,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:120:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm); 
-\node at (1.5,0) {$=$};	 
-\end{scope} 
-
-\begin{scope}[xshift=6cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); 
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:-180:1) -- (0,0); 
-\foreach \n in {30,60,...,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:30:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm);  
-\node at (1.5,0) {$-$};	
-\end{scope} 
-
-\begin{scope}[xshift=9cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (180:1)  arc (180:240:1) -- (0,0); 
-\foreach \n in {30,60,...,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:30:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm); 
-\node at (1.5,0) {$=$};	 
-\end{scope} 
- 
-
-\begin{scope}[xshift=12cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (240:1)  arc (240:450:1) -- (0,0); 
-\foreach \n in {30,60,...,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:30:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm);  
-\end{scope} 
-
-\end{tikzpicture}
-
-```
 </center>
 
 
@@ -334,55 +189,12 @@ $$
 {{|>}} Am besten kann die *Multiplikation* von *Brüchen* daran veranschaulicht werden, dass zuvor immer von einem *Ganzen* der Bruchteil bestimmt wurde, während bei der *Multiplikation* von zwei *Brüchen* der *Anteil* von einem *Anteil* bestimmt werden soll.
 
 
+
 <center>
 
-```latex  @tikz
-\begin{tikzpicture}[scale=1,>=latex]
+<!-- style="width:750px" -->
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/eBruch6.png)
 
-\begin{scope}[xshift=-3.5cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:180:1) -- (0,0);  
-\foreach \n in {0,180} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:180:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm);  
-\node at (0,-1.66666) {$\dfrac{1}{2}$};	
-\node at (1.75,0) {$\longrightarrow$};	
-\end{scope}  
-
-\begin{scope}[xshift=0cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:180:1) -- (0,0);  
-\foreach \n in {90} { \draw[opacity=0.5,rotate=\n-90] (0,0) -- (0:1)  arc (0:180:1) -- (0,0); }  
-\node at (0,-1.66666) {$\dfrac{1}{2}$};	
-\node at (1.75,0) {$\longrightarrow$};	
-\end{scope}  
-
-\begin{scope}[xshift=3.5cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:180:1) -- (0,0);  
-\foreach \n in {90,180} { \draw[opacity=0.5,rotate=\n-90] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
-\foreach \n in {45,90,135} { \draw[opacity=0.5,rotate=\n,dashed] (0,0) -- (0:1)  arc (0:45:1) -- (0,0); }   
-\node at (0,-1.66666) {$\dfrac{4}{8}$ };	
-\node at (1.75,0) {$\longrightarrow$};	
-\end{scope}  
-
-\begin{scope}[xshift=7cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:45:1) -- (0,0);  
-\foreach \n in {90,180} { \draw[opacity=0.5,rotate=\n-90] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
-\foreach \n in {45,90,135} { \draw[opacity=0.5,rotate=\n,dashed] (0,0) -- (0:1)  arc (0:45:1) -- (0,0); }   
-\node at (0,-1.66666) {$\dfrac{1}{4}$ von $\dfrac{4}{8}$ };	
-\node at (1.75,0) {$\longrightarrow$};	
-\end{scope}  
-
-\begin{scope}[xshift=10.5cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:45:1) -- (0,0);  
-\foreach \n in {90,180,270,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
-\foreach \n in {45,90,135} { \draw[opacity=0.5,rotate=\n,dashed] (0,0) -- (0:1)  arc (0:45:1) -- (0,0); }  
-\draw[thick] (0,0) circle (1cm);  
-\node at (0,-1.66666) {$\dfrac{1}{4}$ von $\dfrac{1}{2} = \dfrac{1}{8}$ };	 
-\end{scope}  
-
-
-
-\end{tikzpicture}
-
-```
 </center>
 
 

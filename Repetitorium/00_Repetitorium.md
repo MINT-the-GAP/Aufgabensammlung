@@ -9531,27 +9531,9 @@ Ein *Bruch* setzt sich aus seinem *Nenner*, der definiert in wie viele gleichgro
 
 <center>
 
-```latex  @tikz
+<!-- style="width:750px" -->
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/eBruch1.png)
 
-\begin{tikzpicture}[scale=1,>=latex]
-
-\begin{scope}[xshift=0cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); 
-\foreach \n in {90,180,270,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm);  
-\end{scope}
- 
-
-\begin{scope}[xshift=6cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:300:1) -- (0,0); 
-\foreach \n in {60,120,...,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:60:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm);  
-\end{scope}
- 
-
-\end{tikzpicture}
-
-```
 </center>
 
 
@@ -9580,35 +9562,12 @@ $$
 $$
  
 
+
 <center>
 
-```latex  @tikz
-\begin{tikzpicture}[scale=1,>=latex]
+<!-- style="width:750px" -->
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/eBruch2.png)
 
-\begin{scope}[xshift=0cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (-90:1)  arc (-90:90:1) -- (0,0); 
-\foreach \n in {180,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (-90:1)  arc (-90:90:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm); 
-\node at (1.5,0) {$=$};	
-\end{scope}
-
-\begin{scope}[xshift=3cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (-90:1)  arc (-90:90:1) -- (0,0); 
-\foreach \n in {90,180,270,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (-90:1)  arc (-90:90:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm); 
-\node at (1.5,0) {$=$};	
-\end{scope}
-
-\begin{scope}[xshift=6cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (-90:1)  arc (-90:90:1) -- (0,0); 
-\foreach \n in {45,90,...,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (-90:1)  arc (-90:90:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm);  
-\end{scope}
- 
-
-\end{tikzpicture}
-
-```
 </center>
 
 
@@ -9623,39 +9582,16 @@ $$
 & \quad \frac{6}{18} = \frac{2}{6} =  \frac{1}{3}   \\
 \end{align*}
 $$
- 
 
- 
+
+
+
 
 <center>
 
-```latex  @tikz
-\begin{tikzpicture}[scale=1,>=latex]
+<!-- style="width:750px" -->
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/eBruch3.png)
 
-\begin{scope}[xshift=0cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:120:1) -- (0,0); 
-\foreach \n in {120,240,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:120:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm); 
-\end{scope}
-
-\begin{scope}[xshift=-3cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:120:1) -- (0,0); 
-\foreach \n in {60,120,...,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:120:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm); 
-\node at (1.5,0) {$=$};	
-\end{scope}
-
-\begin{scope}[xshift=-6cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:120:1) -- (0,0); 
-\foreach \n in {20,40,...,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:120:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm); 
-\node at (1.5,0) {$=$};	 
-\end{scope}
- 
-
-\end{tikzpicture}
-
-```
 </center>
 
 
@@ -9671,52 +9607,12 @@ $$
 $$
 
 
+
 <center>
 
-```latex  @tikz
-\begin{tikzpicture}[scale=1,>=latex]
+<!-- style="width:750px" -->
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/eBruch4.png)
 
-\begin{scope}[xshift=0cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); 
-\foreach \n in {90,180,270,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm); 
-\node at (1.5,0) {$+$};	
-\end{scope}
-
-\begin{scope}[xshift=3cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:-180:1) -- (0,0); 
-\foreach \n in {180,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:180:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm); 
-\node at (1.5,0) {$=$};	
-\end{scope}
- 
-
-\begin{scope}[xshift=6cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); 
-\foreach \n in {90,180,270,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm); 
-\node at (1.5,0) {$+$};	
-\end{scope}
-
-\begin{scope}[xshift=9cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:-180:1) -- (0,0); 
-\foreach \n in {90,180,270,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm); 
-\node at (1.5,0) {$=$};	
-\end{scope}
-
-\begin{scope}[xshift=12cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); 
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:-180:1) -- (0,0); 
-\foreach \n in {90,180,270,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm);  
-\end{scope}
- 
- 
-
-\end{tikzpicture}
-
-```
 </center>
 
 
@@ -9729,55 +9625,16 @@ $$
 $$
 
 
- 
+
+
 
 
 
 <center>
 
-```latex  @tikz
-\begin{tikzpicture}[scale=1,>=latex]
+<!-- style="width:750px" -->
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/eBruch5.png)
 
-\begin{scope}[xshift=0cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); 
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:-180:1) -- (0,0); 
-\foreach \n in {90,180,270,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm);  
-\node at (1.5,0) {$-$};	
-\end{scope} 
-
-\begin{scope}[xshift=3cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (180:1)  arc (180:240:1) -- (0,0); 
-\foreach \n in {60,120,...,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:120:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm); 
-\node at (1.5,0) {$=$};	 
-\end{scope} 
-
-\begin{scope}[xshift=6cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); 
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:-180:1) -- (0,0); 
-\foreach \n in {30,60,...,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:30:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm);  
-\node at (1.5,0) {$-$};	
-\end{scope} 
-
-\begin{scope}[xshift=9cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (180:1)  arc (180:240:1) -- (0,0); 
-\foreach \n in {30,60,...,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:30:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm); 
-\node at (1.5,0) {$=$};	 
-\end{scope} 
- 
-
-\begin{scope}[xshift=12cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (240:1)  arc (240:450:1) -- (0,0); 
-\foreach \n in {30,60,...,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:30:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm);  
-\end{scope} 
-
-\end{tikzpicture}
-
-```
 </center>
 
 
@@ -9796,55 +9653,12 @@ $$
 {{|>}} Am besten kann die *Multiplikation* von *Brüchen* daran veranschaulicht werden, dass zuvor immer von einem *Ganzen* der Bruchteil bestimmt wurde, während bei der *Multiplikation* von zwei *Brüchen* der *Anteil* von einem *Anteil* bestimmt werden soll.
 
 
+
 <center>
 
-```latex  @tikz
-\begin{tikzpicture}[scale=1,>=latex]
+<!-- style="width:750px" -->
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/eBruch6.png)
 
-\begin{scope}[xshift=-3.5cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:180:1) -- (0,0);  
-\foreach \n in {0,180} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:180:1) -- (0,0); } 
-\draw[thick] (0,0) circle (1cm);  
-\node at (0,-1.66666) {$\dfrac{1}{2}$};	
-\node at (1.75,0) {$\longrightarrow$};	
-\end{scope}  
-
-\begin{scope}[xshift=0cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:180:1) -- (0,0);  
-\foreach \n in {90} { \draw[opacity=0.5,rotate=\n-90] (0,0) -- (0:1)  arc (0:180:1) -- (0,0); }  
-\node at (0,-1.66666) {$\dfrac{1}{2}$};	
-\node at (1.75,0) {$\longrightarrow$};	
-\end{scope}  
-
-\begin{scope}[xshift=3.5cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:180:1) -- (0,0);  
-\foreach \n in {90,180} { \draw[opacity=0.5,rotate=\n-90] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
-\foreach \n in {45,90,135} { \draw[opacity=0.5,rotate=\n,dashed] (0,0) -- (0:1)  arc (0:45:1) -- (0,0); }   
-\node at (0,-1.66666) {$\dfrac{4}{8}$ };	
-\node at (1.75,0) {$\longrightarrow$};	
-\end{scope}  
-
-\begin{scope}[xshift=7cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:45:1) -- (0,0);  
-\foreach \n in {90,180} { \draw[opacity=0.5,rotate=\n-90] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
-\foreach \n in {45,90,135} { \draw[opacity=0.5,rotate=\n,dashed] (0,0) -- (0:1)  arc (0:45:1) -- (0,0); }   
-\node at (0,-1.66666) {$\dfrac{1}{4}$ von $\dfrac{4}{8}$ };	
-\node at (1.75,0) {$\longrightarrow$};	
-\end{scope}  
-
-\begin{scope}[xshift=10.5cm]
-\draw[thick,fill=red,opacity=0.5] (0,0) -- (0:1)  arc (0:45:1) -- (0,0);  
-\foreach \n in {90,180,270,360} { \draw[opacity=0.5,rotate=\n] (0,0) -- (0:1)  arc (0:90:1) -- (0,0); } 
-\foreach \n in {45,90,135} { \draw[opacity=0.5,rotate=\n,dashed] (0,0) -- (0:1)  arc (0:45:1) -- (0,0); }  
-\draw[thick] (0,0) circle (1cm);  
-\node at (0,-1.66666) {$\dfrac{1}{4}$ von $\dfrac{1}{2} = \dfrac{1}{8}$ };	 
-\end{scope}  
-
-
-
-\end{tikzpicture}
-
-```
 </center>
 
 
@@ -9934,7 +9748,7 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 
 
-#### Übungen - Bruchrechnung
+#### Übungen Teil 1 - Bruchrechnung Aufgabe 1 bis 19
 
 
 <!--  Bruchrechnung 0001  -->
@@ -12080,6 +11894,9 @@ $$
 
 
 
+
+
+#### Übungen Teil 2 - Bruchrechnung Aufgabe 20 bis 39
 
 
 
@@ -14265,6 +14082,9 @@ __$h)\;\;$__ $ \dfrac{51}{23} \;\;\Rightarrow\;\; $ [[  23/51  ]]
 
 
 
+
+
+#### Übungen Teil 3 - Bruchrechnung Aufgabe 40 bis 59
 
 
 
@@ -16746,6 +16566,9 @@ $$
 
 
 
+
+
+#### Übungen Teil 7 - Bruchrechnung Aufgabe 60 bis 79
 
 
 
@@ -19354,6 +19177,10 @@ __$d)\;\;$__ Wie viel sind $\dfrac{5}{12}$ von $144\,$l?  \
 
 
 
+#### Übungen Teil 5 - Bruchrechnung Aufgabe 80 bis 99
+
+
+
 <!--  Bruchrechnung 0080  -->
 
 
@@ -21517,6 +21344,12 @@ __$III\;\;$__ [[  18  ]]
 
 
 
+
+
+#### Übungen Teil 6 - Bruchrechnung Aufgabe 100 bis 119
+
+
+
 <!--  Bruchrechnung 0100  -->
 
 
@@ -22099,6 +21932,9 @@ $$
 
 
 
+
+
+#### Übungen Teil 7 - Bruchrechnung Aufgabe 120 bis 139
 
 
 
@@ -22687,6 +22523,7 @@ $$
 
 
 
+#### Übungen Teil 8 - Bruchrechnung Aufgabe 140 bis 160
 
 
 
