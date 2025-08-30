@@ -2611,7 +2611,7 @@ data-solution-button="5"-->
 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Addi1.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Addi1.png)
 
 </center>
 
@@ -2646,7 +2646,7 @@ $$
 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Addi2.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Addi2.png)
 
 </center>
 
@@ -2679,7 +2679,7 @@ $$
 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Addi3.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Addi3.png)
 
 </center>
 
@@ -2709,7 +2709,7 @@ $$
 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Addi4.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Addi4.png)
 
 </center>
 
@@ -3110,7 +3110,7 @@ Die **Subtraktion** ist die Umkehroperation der **Addition** und wird durch den 
 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Subt1.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Subt1.png)
 
 </center>
 
@@ -3146,7 +3146,7 @@ $$
 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Subt2.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Subt2.png)
 
 </center>
 
@@ -3604,13 +3604,13 @@ $$
 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Mult1.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Mult1.png)
 
 </center>
 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Mult2.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Mult2.png)
 
 </center>
 

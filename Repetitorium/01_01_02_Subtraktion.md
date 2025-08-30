@@ -61,7 +61,7 @@ Die **Subtraktion** ist die Umkehroperation der **Addition** und wird durch den 
 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Subt1.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Subt1.png)
 
 </center>
 
@@ -97,7 +97,7 @@ $$
 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Subt2.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Subt2.png)
 
 </center>
 

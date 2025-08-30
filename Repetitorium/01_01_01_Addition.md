@@ -65,7 +65,7 @@ author: Martin Lommatzsch
 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Addi1.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Addi1.png)
 
 </center>
 
@@ -100,7 +100,7 @@ $$
 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Addi2.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Addi2.png)
 
 </center>
 
@@ -133,7 +133,7 @@ $$
 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Addi3.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Addi3.png)
 
 </center>
 
@@ -163,7 +163,7 @@ $$
 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Addi4.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Addi4.png)
 
 </center>
 
