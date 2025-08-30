@@ -32713,12 +32713,165 @@ __$d)\;\;$__ $ -8^3 = $ [[  -512  ]]
 ### Logarithmen
 
 
+
+
 {{|>}}
-*******************************
+********************************
 
-Under Construction
 
-*******************************
+
+Da die **Potenzen** eingeführt wurden, sollte auch eine Rechenvorschrift eingeführt werden um den **Exponenten** zu bestimmen. Diese wird **Logarithmus** genannt, welche folgende Frage in mathematischer Art und Weise stellt: "`Die **Basis** und der **Wert** des **Terms** seien bekannt, welchen **Wert** muss der **Exponent** haben?"'
+
+
+
+$$
+\begin{align*}
+a^c = b  \Leftrightarrow c = \log_a (b) \\  
+\end{align*}
+$$
+
+
+{{|>}} Gelesen wird $\log_a (b)$ als "`der **Logarithmus** von $b$ zur **Basis** $a$"'. Der **Logarithmus** bildet somit die **Umkehrfunktion** zur **Exponentialfunktion**. 
+
+{{|>}} Da der **Logarithmus** wie auch andere **Funktionen** besonders häufig ein **triviales Argument** besitzen (**triviales Argument**: $\log_4(x)$, nicht **triviales Argument**: $\log_4(2x-3)$), werden die **Klammern** um das **Argument** in einer Konvention oftmals weggelassen: $\log_a(b)=\log_a b$, während die **Klammern** bei komplexeren **Argumenten** bestehen bleiben: $\log_a(b+c)$. Generell ist nicht zu empfehlen, die **Klammern** wegzulassen, da sie den **Funktionscharakter** betonen.
+
+
+
+{{|>}} Wie für die **Potenzen** gelten auch für die **Logarithmen** Regeln, welche sich aus den **Potenzgesetzen** ableiten lassen.
+
+
++ {{|>}} Da der **Logarithmus** die **Umkehrfunktion** der **Exponentialfunktion** ist, gilt:
+
+
+$$
+\begin{align*}
+ a^0 = 1 \;\; \Leftrightarrow \;\; & \log_a (1) = 0 \\
+\end{align*}
+$$
+
+
++ {{|>}} Da der **Logarithmus** die **Umkehrfunktion** der **Exponentialfunktion** ist, gilt:
+
+
+$$
+\begin{align*}
+ a^1 = a \;\; \Leftrightarrow \;\; & \log_a (a) = 1 \\
+\end{align*}
+$$
+
++ {{|>}} Da der **Logarithmus** die **Umkehrfunktion** der **Exponentialfunktion** ist, heben sich diese gegenseitig auf: $k^{\log_k(x)} = \log_k(k^x) = x$.
+
+
+$$
+\begin{align*}
+  & a^{\log_a (n)} = n \\
+\end{align*}
+$$
+
+
++ {{|>}} Analog zur **Multiplikation** mit gleicher **Basis** ergibt sich aus dem dazugehörigen **Potenzgesetz** das **Logarithmengesetz**:
+
+
+$$
+\begin{align*}
+   a^n \cdot a^m &= a^{( n + m )} \\
+  \log_a \left( a^n \cdot a^m \right) &=\log_a \left( a^{( n + m )} \right)  \\
+  \log_a \left( a^n \cdot a^m \right) &= n + m   \\
+\end{align*}
+$$
+
+
+{{|>}} Mit $u=a^m$ und $v=a^n$ **substituiert** ergibt sich $\log_a(u) = m$ und $\log_a(v) = n$, sodass sich der vorherige Ausdruck durch das **Einsetzen** verändert:
+
+
+$$
+\begin{align*}
+  \log_a \left( a^n \cdot a^m \right) &=  n + m    \\
+  \log_a \left( a^{\log_a(u)} \cdot a^{\log_a(v)} \right) &=  \log_a(u)  +  \log_a(v)   \\
+   \log_a (u \cdot v) &= \log_a(u)  +  \log_a(v)  \\
+\end{align*}
+$$
+
+
++ {{|>}} Analog zum vorherig gefundenen **Logarithmusgesetz** ergibt sich bei der **Division**:
+
+
+$$
+\begin{align*}
+  &   \log_a \left( \frac{n}{m} \right) = \log_a (n) - \log_a (m) \\
+\end{align*}
+$$
+
++ {{|>}} Die Fortsetzung der vorherigen Regeln liefert bei der **Substitution** $u = m$ und $\log_a(v) = n$:
+
+
+$$
+\begin{align*}
+    \left(a^n\right)^m &= a^{nm} \\
+  \log_a  \left(  \left(a^n\right)^m \right) &= \log_a  \left( a^{nm} \right) \\
+  \log_a  \left(  \left(a^n\right)^m \right) &=  n   m   \\ 
+  \log_a  \left(  \left(a^{\log_a(v)}\right)^u \right) &=  \log_a(v)   u   \\ 
+   \log_a \left(v^u\right) &= u \log_a(v) \\
+\end{align*}
+$$
+
+
++ {{|>}} Wie auch bei der **Exponentialfunktion** kann die **Basis** gewechselt werden, indem das zuvor gefundene **Logarithmusgesetz** genutzt wird:
+
+
+$$
+\begin{align*}
+    a^{\log_a (b)} & =  b  \\
+  \log_c \left(  a^{\log_a (b)}  \right) & = \log_c (b)  \\
+  \log_a (b) \cdot \log_c \left(  a  \right) & = \log_c (b) \quad \left| :\log_a (b)   \right. \\
+   \log_a c &= \frac{\log_b c}{ \log_b a} \\
+\end{align*}
+$$
+
+
+
+
+{{|>}} Zusammengefasst haben sich folgende **Logarithmengesetze** finden lassen:
+
+
+
+
+
+$$
+\begin{align*}
+   \log_a (n \cdot m) &= \log_a (n) + \log_a (m) \\
+    \log_a \frac{n}{m} &= \log_a (n) - \log_a (m) \\
+   \log_a (n^m) &=m \cdot \log_a (n) \\
+   a^{\log_a n} &= n \\
+   \log_a (n) &= \frac{\log_b (n)}{ \log_b (a)} \\
+   \log_a (a) &= 1 \\
+   \log_a (1) &= 0 \\
+\end{align*}
+$$
+
+
+{{|>}} Dabei werden folgende Abkürzungen für bestimme **Werte** der **Basis** verwendet: 
+
+
+
+$$
+\begin{align*}
+   \log_{10} (n) &= \lg (n) \\
+   \log_2 (n) &= \text{lb } (n) \\
+   \log_e (n) &= \ln (n) \;\; ,\\
+\end{align*}
+$$
+
+{{|>}} wobei $e=2,718281...$ die **Euler'sche Zahl** ist, welche eine **Basis** mit besonderer Bedeutung in der Mathematik und den Naturwissenschaften darstellt, deren Bedeutung im Kapitel der "**Funktionen**" im Abschnitt der "**Exponentialfunktionen**" und bei der "**Differentiation**" noch gerecht wird.
+
+
+
+
+
+********************************
+
+
+
 
 
 #### Übungen - Logarithmen
@@ -33195,7 +33348,8 @@ $$
 \end{align*}
 $$
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-show-partial-solution -->
 Um die Gleichung zu sortieren, wird zu nächst auf beiden Seiten des Gleichungszeichen [[  -3  ]] gerechnet. Anschließend wird $-6x$ auf [[     beiden Seiten des Gleichheitszeichen     ]] gerechnet, sodass alles, was mit der Variable $x$ multipliziert ist, auf einer Seite des Gleichheitszeichen ist und alles andere auf der anderen Seite. Abschließend wird durch den Vorfaktor [[  2  ]] [[  dividiert  ]]. Nachdem die [[  Lösung  ]] der Gleichung gefunden wurde, wird die [[  Probe  ]] durchgeführt, indem die Lösung für $x$ in die [[  Gleichung  ]] vom Anfang eingesetzt wird. Ist auf beiden Seiten des Gleichheitszeichen der gleiche Wert, dann ist die Lösung korrekt.
 
 
@@ -33218,7 +33372,8 @@ $$
 $$
 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-show-partial-solution -->
 Bei dieser Gleichung steht die gesuchte Unbekannte auf beiden Seiten des Gleichheitszeichen im [[  Nenner  ]]. Um dies aufzuheben wird mit $(x-2)$ und dann mit $(3x+7)$ auf beiden Seiten des Gleichheitszeichen [[  multipliziert  ]]. Die [[  Klammern  ]] sind dabei wichtig, aufgrund der Regel: Punkt- vor [[  Strichrechnung  ]]. Anschließend wird das [[  Distributivgesetz  ]] benutzt, um die Klammern aufzulösen. Nun wird die Gleichung mit der Strichrechnung sortiert, indem erst $-4x$ und dann [[  -21  ]] auf beiden Seiten des Gleichheitszeichen gerechnet wird. Abschließend wird durch den [[  Vorfaktor  ]] $5$ dividiert.
 
 
@@ -33240,7 +33395,8 @@ $$
 \end{align*}
 $$
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-show-partial-solution -->
 Als erstes wird die Gleichung sortiert, indem auf [[  beiden Seiten  ]] des Gleichheitszeichen $+4$ gerechnet wird. Anschließend wird [[  -x  ]] auf beiden Seiten des [[  Gleichheitszeichen  ]] gerechnet, sodass in den nächsten Schritten nur noch die Punktrechnung zum Einsatz kommen kann. Der Vorfaktor stückweise entfernt. Zu nächst wird [[ mit   ]] $5$ [[  multipliziert  ]], dann nächst wird [[ durch ]] $2$ [[  dividiert      ]]. Das Vorzeichen wird abschließend noch mit der [[  Multiplikation  ]] mit $(-1)$ von der Unbekannten gelöst.
 
 
@@ -34269,7 +34425,7 @@ __Aufgabe 22:__ **Berechne** den Lösungswert für die Unbekannte.
 <section class="flex-container">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $ \; 7x + \dfrac{1}{2} = 3x - \dfrac{7}{2} \;$ \
+__$a)\;\;$__ $ \; 7x + \dfrac{1}{2} = 3x - \dfrac{7}{2} \;$ \
 $x$ = [[  -1  ]]
 @Algebrite.check(-1)
 ************
@@ -34286,7 +34442,7 @@ $$
 </div>
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $ \; 2x - \dfrac{7}{3} = \dfrac{1}{3}x + 5 \;$ \
+__$b)\;\;$__ $ \; 2x - \dfrac{7}{3} = \dfrac{1}{3}x + 5 \;$ \
 $x$ = [[  22/5  ]]
 @Algebrite.check(22/5)
 ************
@@ -34303,7 +34459,7 @@ $$
 </div>
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$f)\;\;$__ $ \; \dfrac{3}{2}x + 4 = \dfrac{5}{4}x - 2 \;$ \
+__$c)\;\;$__ $ \; \dfrac{3}{2}x + 4 = \dfrac{5}{4}x - 2 \;$ \
 $x$ = [[  -24  ]]
 @Algebrite.check(-24)
 ************
@@ -35774,11 +35930,156 @@ $$
 {{|>}}
 *******************************
 
-Under Construction
+Das Ziel bei einer **quadratischen Ergänzung** ist es, eine Gleichung so umzuformen, dass man die **binomischen Formeln** ausnutzen kann um die **Potenz** der **Variable** zu reduzieren. Als erklärendes Beispiel soll diese allgemeine **Gleichung**, welche auch allgemeines **Polynom** zweiter **Ordnung** oder **quadratische Gleichung** genannt wird, dienen (Auf die Eigenschaften von **Polynome** und explizit **quadratische Termen** wird im Kapitel "**Funktionen**" genauer eingegangen.):
+
+
+$$
+\begin{align*}
+& a x^2 + b x + c = 0    \\
+\end{align*}
+$$
+ 
+
+{{|>}} Diese Form erinnert an die so genannte erste **binomische Formel** $(x+d)^2 = x^2 + 2dx + d^2$. Aus diesem Grund wird der **Vorfaktor** (**Koeffizient**) $a$ des **quadratischen Terms** $a x^2$ über **Äquivalenzumformung** entfernt.
+
+
+$$
+\begin{align*}
+& a x^2 + b x + c = 0  \qquad \left| : a \right.\\
+&  x^2 + \frac{b}{a} x + \frac{c}{a} = 0  \\
+\end{align*}
+$$
+ 
+
+
+{{|>}} Durch direktes gegenüberstellen der **Terme** können bestimmte Bedingungen an die **Vorfaktoren** geknüpft werden, sodass die künstliche Generierung einer **Binomischen Formel** möglich wird, dies wird **Koeffizientenvergleich** genannt. Generell wird der **Koeffizientenvergleich** immer angewendet, wenn eine **Gleichheit** von **Vorfaktoren** zu einer erheblichen Vereinfachung eines Problems dienen könnte.
+
+
+$$
+\begin{align*}
+&  x^2 + \textcolor{red}{\frac{b}{a}} x + \frac{c}{a} = 0  \\
+&  x^2 + \textcolor{red}{2 d} x + d^2 = 0  \\
+\end{align*}
+$$
+ 
+
+{{|>}} Durch den **Koeffizientenvergleich** der rot markierten **Vorfaktoren**, kann folgende Bedingung aufgestellt werden: $\frac{b}{a}  = 2d$ und so der **Parameter** $d$  als $\frac{b}{2a}$ bestimmt werden. Da die zu lösende **Gleichung** noch kein $d^2$ beherbergt, muss dieses durch eine *Addition* hinzugefügt werden. Anschließend werden alle **Terme** die nicht zu einer **Binomischen Formel** gehören auf die andere Seite des **Gleichheitszeichens** gebracht: 
+
+
+$$
+\begin{align*}
+&  x^2 + \frac{b}{a} x + \frac{c}{a} = 0  \qquad \left| + \left(\frac{b}{2a}\right)^2 \right.\\
+&  x^2 + \frac{b}{a} x + \left(\frac{b}{2a}\right)^2 + \frac{c}{a} =  \left(\frac{b}{2a}\right)^2  \qquad \left| -  \frac{c}{a} \right.\\
+&  x^2 + \frac{b}{a} x + \left(\frac{b}{2a}\right)^2  =  \left(\frac{b}{2a}\right)^2  -  \frac{c}{a}  \\
+\end{align*}
+$$
+
+
+{{|>}} Nach genauerer Betrachtung ist festzustellen, dass auf der linken Seite des **Gleichheitszeichen** die **erste binomische Formel** vorzufinden ist. Nach der Ersetzung fällt auf, dass die **quadratische Potenz** und die **lineare Potenz** in der **Variablen** $x$ verschmolzen sind. Um nun nach der **Variable** restlos aufzulösen, muss auf beiden Seiten des **Gleichheitszeichens** die **Wurzel** gezogen werden, da dies die **Umkehrfunktion** zum **Quadrieren** ist. Dabei ist zu beachten, dass es eine negative und eine positive **Lösung** gibt, da zum Beispiel $2^2 = (-2)^2$ ist.
+ 
+
+
+
+$$
+\begin{align*}
+&  \underbrace{x^2 + \frac{b}{a} x + \left(\frac{b}{2a}\right)^2}_{= \left(x+\frac{b}{2a}\right)^2}  =  \left(\frac{b}{2a}\right)^2  -  \frac{c}{a}  \\
+&  \left(x+\frac{b}{2a}\right)^2  =  \left(\frac{b}{2a}\right)^2  -  \frac{c}{a} \qquad  \\ 
+&  x_{1,2}+\frac{b}{2a}  = \pm \sqrt{\left(\frac{b}{2a}\right)^2  -  \frac{c}{a}} \qquad \left|  -\frac{b}{2a} \right.\\ 
+&  x_{1,2}  = - \frac{b}{2a} \pm \sqrt{\left(\frac{b}{2a}\right)^2  -  \frac{c}{a}} \\ 
+\end{align*}
+$$
+ 
+
+{{|>}} Nach einer Umbenennung der **Parameter** $p=\frac{b}{a}$ und $q=\frac{c}{a}$ erkennt man, dass die so genannte **p-q-Formel** hergeleitet wurde, welche sich lediglich durch die Umbenennung der **Parameter** von der sogenannten **Mitternachtsformel** aus der vorherigen **Gleichung** unterscheidet: 
+
+
+$$
+\begin{align*}
+& x^2 + p x + q =0 \\ 
+& \Rightarrow x_{1,2}  = - \frac{p}{2} \pm \sqrt{\left(\frac{p}{2}\right)^2  - q} \\ 
+\end{align*}
+$$
+
+
+{{|>}} Um Zeit in bestimmten Klausur- oder Unterrichtssituationen zu sparen, empfiehlt es sich die **p-q-Formel** zu verwenden, dennoch sollte von ihrer Benutzung abgeraten werden, denn in der höheren Mathematik (siehe Kapitel "**Differentiation** und **Integration**") sind viele Aufgaben nur noch mittels der **quadratischen Ergänzung** effektiv zu lösen. 
+
+{{|>}} Die Zahl unten rechts von zum Beispiel $x_1$ wird **Index** genannt. Ein **Index** hat keine genauere mathematische Bedeutung, allerdings kann darüber eine zusätzliche Information mitgegeben werden. So bedeutet $x_{1,2}$, dass zwei spezielle **Werte** für $x$ vorliegen, die die **Gleichung** lösen würden. Oftmals wird auch $x_0$ vorgefunden und steht für einen speziellen **konstanten** **Wert**. Folglich gibt der **Index** nur genauer an, welche Bedeutung genau dieser **Wert** der **Variable** oder des **Parameters** besitzt.
+
+
+{{|>}} Wenn bei einer **Gleichung** in offensichtliches **Produkt** mit einer **quadratischen Gleichung** vorliegt, lohnt es sich **auszuklammern**
+
+
+
+$$
+\begin{align*}
+& a x^3 + b x^2 + c x = 0 \\
+\Rightarrow & x \cdot \left( a x^2 + b x + c  \right) = 0  \;\; , \\
+\end{align*}
+$$
+ 
+
+{{|>}} sodass das die **Faktoren** des **Produkts** separiert betrachtet werden können, denn es gilt nach wie vor der **Satz des Nullprodukts**: Wenn einer der **Faktoren** gleich Null ist, dann ist das gesamte **Produkt** gleich Null.
+
+
+$$
+\begin{align*}
+& \underbrace{x}_{\stackrel{!}{=} 0} \cdot \underbrace{\left( a x^2 + b x + c  \right)}_{\stackrel{!}{=} 0} = 0 \Rightarrow x_1=0 \\ 
+\Rightarrow &  a x^2 + b x + c    = 0 \\ 
+\end{align*}
+$$
+ 
+
+
+
+{{|>}} Ab diesem Zeitpunkt kann die restliche **Gleichung** mit der **quadratischen Ergänzung** gelöst werden. Das **Ausklammerungsverfahren** funktioniert nicht nur bei höheren **Polynomen**, sondern immer, wenn aus allen Bestandteilen der **Gleichung** **ausgeklammert** werden kann. So ist es möglich bei einigen **Gleichungen** die **Lösungen** direkt abzulesen. 
+
+
+$$
+\begin{align*}
+& x^2 - 6 x = x (x - 6) \Rightarrow x_1 = 0 \wedge x_2 = 6 \\
+\end{align*}
+$$
+ 
+
+{{|>}} Aus diesem Grund lohnt es sich nicht immer **Klammern** aus zu **multiplizieren**. 
+
+
+
+{{|>}} Bei jeder Rechnung ist es dem Rechnenden freigestellt Abkürzungen einzuführen. Dieser Prozess wird **Substitution** genannt. Im folgenden Beispiel wird die **Summe** innerhalb der **Klammer** **substituiert**: 
+
+
+
+$$
+\begin{align*}
+&\left( x + a \right)^2 \qquad \text{mit: } y := x+a \\
+&=y^2 \\
+\end{align*}
+$$
+
+
+
+{{|>}} Dabei ist es wichtig zu beachten, dass bei der **Substitution** ersetzten **Variablen** vollständig eliminiert werden.
+
+
+$$
+\begin{align*}
+&\left( x + a \right)^2 \cdot x \qquad \text{mit: } y := x+a \; \Rightarrow \; x = y-a \\
+&=y^2 \cdot (y-a) = y^3 - a\cdot y^2 \\
+\end{align*}
+$$
+
+
+
+{{|>}} Jede **Substitution** ist zulässig. Wichtig wird dieser Prozess besonders wenn komplexere Aufgaben dadurch wesentlich vereinfacht werden können. Aus diesem Grund wird im Kapitel "**Differentiation** und **Integration**" nochmal besonders auf die **Substitution** eingegangen.
+
+
+
+
+
+Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt: \
 
 !?[Quadratische Ergänzung](https://www.youtube.com/watch?v=8QRKPmR82jQ)
 
- mit Substitution
 
 
 *******************************
@@ -36075,9 +36376,6 @@ __Aufgabe 3:__ **Gib** das verwendete Lösungsverfahren **an**.
 
 
 
-
-<section class="flex-container">
-<div class="flex-child">
 __$a)\;\;$__ 
 $$
 \begin{align*}
@@ -36094,8 +36392,8 @@ $$
 
 <!-- data-solution-button="2"-->
 [[Einsetzungsverfahren|Gleichsetzungsverfahren|(Additionsverfahren)]]
-</div>
-<div class="flex-child">
+
+
 __$b)\;\;$__ 
 $$
 \begin{align*}
@@ -36115,8 +36413,8 @@ $$
 
 <!-- data-solution-button="2"-->
 [[(Einsetzungsverfahren)|Gleichsetzungsverfahren|Additionsverfahren]]
-</div>
-<div class="flex-child">
+
+
 __$c)\;\;$__ 
 $$
 \begin{align*}
@@ -36139,8 +36437,8 @@ $$
 
 <!-- data-solution-button="2"-->
 [[(Einsetzungsverfahren)|Gleichsetzungsverfahren|Additionsverfahren]]
-</div>
-<div class="flex-child">
+
+
 __$d)\;\;$__ 
 $$
 \begin{align*}
@@ -36163,8 +36461,8 @@ $$
 
 <!-- data-solution-button="2"-->
 [[Einsetzungsverfahren|(Gleichsetzungsverfahren)|Additionsverfahren]]
-</div>
-<div class="flex-child">
+
+
 __$e)\;\;$__ 
 $$
 \begin{align*}
@@ -36184,8 +36482,8 @@ $$
 
 <!-- data-solution-button="2"-->
 [[Einsetzungsverfahren|Gleichsetzungsverfahren|(Additionsverfahren)]]
-</div>
-<div class="flex-child">
+
+
 __$f)\;\;$__ 
 $$
 \begin{align*}
@@ -36210,8 +36508,8 @@ $$
 
 <!-- data-solution-button="2"-->
 [[Einsetzungsverfahren|(Gleichsetzungsverfahren)|Additionsverfahren]]
-</div>
-</section>
+
+
 
 
 
@@ -36231,8 +36529,6 @@ __Aufgabe 4:__ **Gib** das verwendete Lösungsverfahren **an**.
 
 
 
-<section class="flex-container">
-<div class="flex-child">
 __$a)\;\;$__ 
 $$
 \begin{align*}
@@ -36253,8 +36549,8 @@ $$
 
 <!-- data-solution-button="2"-->
 [[(Einsetzungsverfahren)|Gleichsetzungsverfahren|Additionsverfahren]]
-</div>
-<div class="flex-child">
+
+
 __$b)\;\;$__ 
 $$
 \begin{align*}
@@ -36276,8 +36572,8 @@ $$
 
 <!-- data-solution-button="2"-->
 [[Einsetzungsverfahren|Gleichsetzungsverfahren|(Additionsverfahren)]]
-</div>
-<div class="flex-child">
+
+
 __$c)\;\;$__ 
 $$
 \begin{align*}
@@ -36301,8 +36597,8 @@ $$
 
 <!-- data-solution-button="2"-->
 [[Einsetzungsverfahren|(Gleichsetzungsverfahren)|Additionsverfahren]]
-</div>
-<div class="flex-child">
+
+
 __$d)\;\;$__ 
 $$
 \begin{align*}
@@ -36325,8 +36621,8 @@ $$
 
 <!-- data-solution-button="2"-->
 [[Einsetzungsverfahren|(Gleichsetzungsverfahren)|Additionsverfahren]]
-</div>
-<div class="flex-child">
+
+
 __$e)\;\;$__ 
 $$
 \begin{align*}
@@ -36346,8 +36642,8 @@ $$
 
 <!-- data-solution-button="2"-->
 [[(Einsetzungsverfahren)|Gleichsetzungsverfahren|Additionsverfahren]]
-</div>
-<div class="flex-child">
+
+
 __$f)\;\;$__ 
 $$
 \begin{align*}
@@ -36365,8 +36661,7 @@ $$
 
 <!-- data-solution-button="2"-->
 [[Einsetzungsverfahren|Gleichsetzungsverfahren|(Additionsverfahren)]]
-</div>
-</section>
+
 
 
 
@@ -36383,8 +36678,7 @@ __Aufgabe 5:__ **Fülle** alle Lücken des Lückentextes **aus**, der die präse
 
 
 
-<section class="flex-container">
-<div class="flex-child">
+
 __$a)\;\;$__ 
 $$
 \begin{align*}
@@ -36405,14 +36699,14 @@ x \cap I. &\qquad 3\cdot 5 - y = 13 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-button="5" data-show-partial-solution -->
 Um das [[   Gleichungssystem   ]] zu lösen, wird das [[    Einsetzungsverfahren    ]] angewendet.  
 Zunächst wird eine der beiden [[   Gleichungen   ]] gewählt, hier die erste, und nach [[  y  ]] umgestellt.  
 Aus $3x - y = 13$ folgt durch Umformen, dass $y = 3x - 13$. Diesen Ausdruck setzen wir in die zweite [[  Gleichung  ]] ein.  
 Dadurch entsteht $x + 4(3x - 13) =$ [[  13  ]]. Nach dem [[  Ausmultiplizieren  ]] der Klammern ergibt sich $x + 12x - 52 = 13$, was sich zu $13x - 52 = 13$ zusammenfassen lässt. Wird $52$ auf beiden Seiten [[ addiert ]], so folgt $13x = 65$. Abschließend muss durch $13$ dividiert werden. Zum Schluss wird $x=5$ in die [[  erste  ]] Gleichung [[  eingesetzt ]], sodass $y = 2$ resultiert.  
 
-</div>
-<div class="flex-child">
+
+
 __$b)\;\;$__ 
 $$
 \begin{align*}
@@ -36431,7 +36725,7 @@ x \cap II.\, &\qquad 5\cdot 3 - y = 11 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-button="5" data-show-partial-solution -->
 Um das [[   Gleichungssystem   ]] zu lösen, wird das [[   Additionsverfahren   ]] angewendet.
 Dazu wird zunächst die [[   zweite   ]] Gleichung so umgeformt, dass die Variable $y$ in beiden Gleichungen mit entgegengesetzten [[ Vorzeichen ]] auftritt.
 Deshalb wird  die zweite Gleichung mit [[  2  ]] multiplizieren und es ergibt sich $10x - 2y = 22$.
@@ -36441,8 +36735,8 @@ Dieser Wert wird anschließend in die [[   zweite   ]] Gleichung eingesetzt: $5\
 Nach dem Umformen folgt $15 - y = 11$, und nach Subtraktion von [[ 15 ]] ergibt sich $-y = -4$.
 Durch Multiplikation mit [[ -1 ]] ergibt sich schließlich $y = 4$.
 
-</div>
-<div class="flex-child">
+
+
 __$c)\;\;$__ 
 $$
 \begin{align*}
@@ -36466,7 +36760,7 @@ x \cap I. &\qquad 4\cdot 4 - y = 13 \\
 $$
 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-button="5" data-show-partial-solution -->
 Zur Lösung des [[   Gleichungssystems   ]] wird das [[   Gleichsetzungsverfahren   ]] angewendet.
 Zunächst wird die [[   erste   ]] Gleichung nach $y$ aufgelöst und es ergibt sich $y = 4x - 13$.
 Anschließend wird die [[   zweite   ]] Gleichung ebenfalls nach $y$ umgeformt, sodass $y = \dfrac{10 - x}{2}$ resultiert.
@@ -36477,8 +36771,8 @@ Nach Addition von [[  26  ]] resultiert $9x = 36$.
 Durch [[  Division  ]] mit $9$ folgt $x = 4$.
 Der Wert für $x$ wird schließlich in die [[  erste  ]] Gleichung [[  eingesetzt  ]], sodass $y = 3$ bestimmt wird.
 
-</div>
-</section>
+
+
 
 
 
@@ -36498,8 +36792,6 @@ __Aufgabe 6:__ **Fülle** alle Lücken des Lückentextes **aus**, der die präse
 
 
 
-<section class="flex-container">
-<div class="flex-child">
 __$a)\;\;$__ 
 $$
 \begin{align*}
@@ -36518,7 +36810,7 @@ x \cap I. &\qquad 5\cdot 3 + y = 22 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-button="5" data-show-partial-solution -->
 Zur Lösung des [[   Gleichungssystems   ]] wird das [[   Gleichsetzungsverfahren   ]] angewendet.
 Zunächst wird die [[   erste   ]] Gleichung nach $y$ aufgelöst und es ergibt sich $y = 22 - 5x$.
 Anschließend wird die [[   zweite   ]] Gleichung nach $y$ umgeformt, sodass $y = 2x + 1$ resultiert.
@@ -36528,8 +36820,8 @@ Durch Division mit [[   7   ]] ergibt sich $x = 3$.
 Der Wert für $x$ wird in die [[   erste   ]] Gleichung [[   eingesetzt  ]], sodass $y = 7$ bestimmt wird.
 
 
-</div>
-<div class="flex-child">
+
+
 __$b)\;\;$__ 
 $$
 \begin{align*}
@@ -36548,7 +36840,7 @@ x \cap I. &\qquad 5\cdot 4 + y = 26 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-button="5" data-show-partial-solution -->
 Zur Lösung des [[   Gleichungssystems   ]] wird das [[   Einsetzungsverfahren   ]] angewendet.
 Zuerst wird die [[   erste   ]] Gleichung nach $y$ umgestellt, sodass $y = 26 - 5x$ entsteht.
 Dieser Ausdruck wird in die zweite [[  Gleichung  ]] eingesetzt, wodurch $2x + 3(26 - 5x) = 26$ gebildet wird.
@@ -36559,8 +36851,8 @@ Durch Division mit [[  -13  ]] wird $x = 4$ erhalten.
 Der Wert für $x$ wird in die [[   erste  ]] Gleichung [[   eingesetzt   ]], sodass schließlich $y = 6$ bestimmt wird.
 
 
-</div>
-<div class="flex-child">
+
+
 __$c)\;\;$__ 
 $$
 \begin{align*}
@@ -36579,7 +36871,7 @@ x \cap II.\, &\qquad 4\cdot 4 - y = 11 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-button="5" data-show-partial-solution -->
 Zur Lösung des [[   Gleichungssystems   ]] wird das [[   Additionsverfahren   ]] angewendet.
 Zuerst wird die zweite Gleichung mit [[  3  ]] [[  multipliziert  ]], sodass $12x - 3y = 33$ entsteht.
 Nun wird diese Gleichung mit der ersten [[  addiert  ]]. Dabei fallen die Teile mit $y$ weg und es bleibt $14x = 56$.
@@ -36589,8 +36881,6 @@ Durch [[  Subtraktion  ]] von [[  16  ]] auf beiden Seiten ergibt sich $-y = -5$
 Durch [[  Multiplikation  ]] mit [[  -1  ]] wird schließlich $y = 5$ bestimmt.
 
 
-</div>
-</section>
 
 
 

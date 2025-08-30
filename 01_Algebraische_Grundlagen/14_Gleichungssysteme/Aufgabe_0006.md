@@ -60,9 +60,6 @@ author: Martin Lommatzsch
 
 
 
-
-<section class="flex-container">
-<div class="flex-child">
 __$a)\;\;$__ 
 $$
 \begin{align*}
@@ -81,7 +78,7 @@ x \cap I. &\qquad 5\cdot 3 + y = 22 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-button="5" data-show-partial-solution -->
 Zur Lösung des [[   Gleichungssystems   ]] wird das [[   Gleichsetzungsverfahren   ]] angewendet.
 Zunächst wird die [[   erste   ]] Gleichung nach $y$ aufgelöst und es ergibt sich $y = 22 - 5x$.
 Anschließend wird die [[   zweite   ]] Gleichung nach $y$ umgeformt, sodass $y = 2x + 1$ resultiert.
@@ -91,8 +88,8 @@ Durch Division mit [[   7   ]] ergibt sich $x = 3$.
 Der Wert für $x$ wird in die [[   erste   ]] Gleichung [[   eingesetzt  ]], sodass $y = 7$ bestimmt wird.
 
 
-</div>
-<div class="flex-child">
+
+
 __$b)\;\;$__ 
 $$
 \begin{align*}
@@ -111,7 +108,7 @@ x \cap I. &\qquad 5\cdot 4 + y = 26 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-button="5" data-show-partial-solution -->
 Zur Lösung des [[   Gleichungssystems   ]] wird das [[   Einsetzungsverfahren   ]] angewendet.
 Zuerst wird die [[   erste   ]] Gleichung nach $y$ umgestellt, sodass $y = 26 - 5x$ entsteht.
 Dieser Ausdruck wird in die zweite [[  Gleichung  ]] eingesetzt, wodurch $2x + 3(26 - 5x) = 26$ gebildet wird.
@@ -122,8 +119,8 @@ Durch Division mit [[  -13  ]] wird $x = 4$ erhalten.
 Der Wert für $x$ wird in die [[   erste  ]] Gleichung [[   eingesetzt   ]], sodass schließlich $y = 6$ bestimmt wird.
 
 
-</div>
-<div class="flex-child">
+
+
 __$c)\;\;$__ 
 $$
 \begin{align*}
@@ -142,7 +139,7 @@ x \cap II.\, &\qquad 4\cdot 4 - y = 11 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-button="5" data-show-partial-solution -->
 Zur Lösung des [[   Gleichungssystems   ]] wird das [[   Additionsverfahren   ]] angewendet.
 Zuerst wird die zweite Gleichung mit [[  3  ]] [[  multipliziert  ]], sodass $12x - 3y = 33$ entsteht.
 Nun wird diese Gleichung mit der ersten [[  addiert  ]]. Dabei fallen die Teile mit $y$ weg und es bleibt $14x = 56$.
@@ -150,8 +147,4 @@ Durch [[  Division  ]] mit [[  14  ]] ergibt sich $x = 4$.
 Der erhaltene Wert wird in die zweite [[  Gleichung  ]] [[   eingesetzt   ]], woraus $16 - y = 11$ folgt.
 Durch [[  Subtraktion  ]] von [[  16  ]] auf beiden Seiten ergibt sich $-y = -5$.
 Durch [[  Multiplikation  ]] mit [[  -1  ]] wird schließlich $y = 5$ bestimmt.
-
-
-</div>
-</section>
 

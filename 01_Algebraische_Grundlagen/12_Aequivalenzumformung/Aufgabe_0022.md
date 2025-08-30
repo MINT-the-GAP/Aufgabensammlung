@@ -68,7 +68,7 @@ author: Martin Lommatzsch
 <section class="flex-container">
 <div class="flex-child">
 
-__$d)\;\;$__ $ \; 7x + \dfrac{1}{2} = 3x - \dfrac{7}{2} \;$ \
+__$a)\;\;$__ $ \; 7x + \dfrac{1}{2} = 3x - \dfrac{7}{2} \;$ \
 $x$ = [[  -1  ]]
 @Algebrite.check(-1)
 ************
@@ -85,7 +85,7 @@ $$
 </div>
 <div class="flex-child">
 
-__$e)\;\;$__ $ \; 2x - \dfrac{7}{3} = \dfrac{1}{3}x + 5 \;$ \
+__$b)\;\;$__ $ \; 2x - \dfrac{7}{3} = \dfrac{1}{3}x + 5 \;$ \
 $x$ = [[  22/5  ]]
 @Algebrite.check(22/5)
 ************
@@ -102,7 +102,7 @@ $$
 </div>
 <div class="flex-child">
 
-__$f)\;\;$__ $ \; \dfrac{3}{2}x + 4 = \dfrac{5}{4}x - 2 \;$ \
+__$c)\;\;$__ $ \; \dfrac{3}{2}x + 4 = \dfrac{5}{4}x - 2 \;$ \
 $x$ = [[  -24  ]]
 @Algebrite.check(-24)
 ************

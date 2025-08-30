@@ -62,8 +62,6 @@ author: Martin Lommatzsch
 
 
 
-<section class="flex-container">
-<div class="flex-child">
 __$a)\;\;$__ 
 $$
 \begin{align*}
@@ -80,8 +78,8 @@ $$
 
 <!-- data-solution-button="2"-->
 [[Einsetzungsverfahren|Gleichsetzungsverfahren|(Additionsverfahren)]]
-</div>
-<div class="flex-child">
+
+
 __$b)\;\;$__ 
 $$
 \begin{align*}
@@ -101,8 +99,8 @@ $$
 
 <!-- data-solution-button="2"-->
 [[(Einsetzungsverfahren)|Gleichsetzungsverfahren|Additionsverfahren]]
-</div>
-<div class="flex-child">
+
+
 __$c)\;\;$__ 
 $$
 \begin{align*}
@@ -125,8 +123,8 @@ $$
 
 <!-- data-solution-button="2"-->
 [[(Einsetzungsverfahren)|Gleichsetzungsverfahren|Additionsverfahren]]
-</div>
-<div class="flex-child">
+
+
 __$d)\;\;$__ 
 $$
 \begin{align*}
@@ -149,8 +147,8 @@ $$
 
 <!-- data-solution-button="2"-->
 [[Einsetzungsverfahren|(Gleichsetzungsverfahren)|Additionsverfahren]]
-</div>
-<div class="flex-child">
+
+
 __$e)\;\;$__ 
 $$
 \begin{align*}
@@ -170,8 +168,8 @@ $$
 
 <!-- data-solution-button="2"-->
 [[Einsetzungsverfahren|Gleichsetzungsverfahren|(Additionsverfahren)]]
-</div>
-<div class="flex-child">
+
+
 __$f)\;\;$__ 
 $$
 \begin{align*}
@@ -196,6 +194,4 @@ $$
 
 <!-- data-solution-button="2"-->
 [[Einsetzungsverfahren|(Gleichsetzungsverfahren)|Additionsverfahren]]
-</div>
-</section>
 

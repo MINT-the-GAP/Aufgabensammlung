@@ -60,8 +60,7 @@ author: Martin Lommatzsch
 
 
 
-<section class="flex-container">
-<div class="flex-child">
+
 __$a)\;\;$__ 
 $$
 \begin{align*}
@@ -82,14 +81,14 @@ x \cap I. &\qquad 3\cdot 5 - y = 13 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-button="5" data-show-partial-solution -->
 Um das [[   Gleichungssystem   ]] zu lösen, wird das [[    Einsetzungsverfahren    ]] angewendet.  
 Zunächst wird eine der beiden [[   Gleichungen   ]] gewählt, hier die erste, und nach [[  y  ]] umgestellt.  
 Aus $3x - y = 13$ folgt durch Umformen, dass $y = 3x - 13$. Diesen Ausdruck setzen wir in die zweite [[  Gleichung  ]] ein.  
 Dadurch entsteht $x + 4(3x - 13) =$ [[  13  ]]. Nach dem [[  Ausmultiplizieren  ]] der Klammern ergibt sich $x + 12x - 52 = 13$, was sich zu $13x - 52 = 13$ zusammenfassen lässt. Wird $52$ auf beiden Seiten [[ addiert ]], so folgt $13x = 65$. Abschließend muss durch $13$ dividiert werden. Zum Schluss wird $x=5$ in die [[  erste  ]] Gleichung [[  eingesetzt ]], sodass $y = 2$ resultiert.  
 
-</div>
-<div class="flex-child">
+
+
 __$b)\;\;$__ 
 $$
 \begin{align*}
@@ -108,7 +107,7 @@ x \cap II.\, &\qquad 5\cdot 3 - y = 11 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-button="5" data-show-partial-solution -->
 Um das [[   Gleichungssystem   ]] zu lösen, wird das [[   Additionsverfahren   ]] angewendet.
 Dazu wird zunächst die [[   zweite   ]] Gleichung so umgeformt, dass die Variable $y$ in beiden Gleichungen mit entgegengesetzten [[ Vorzeichen ]] auftritt.
 Deshalb wird  die zweite Gleichung mit [[  2  ]] multiplizieren und es ergibt sich $10x - 2y = 22$.
@@ -118,8 +117,8 @@ Dieser Wert wird anschließend in die [[   zweite   ]] Gleichung eingesetzt: $5\
 Nach dem Umformen folgt $15 - y = 11$, und nach Subtraktion von [[ 15 ]] ergibt sich $-y = -4$.
 Durch Multiplikation mit [[ -1 ]] ergibt sich schließlich $y = 4$.
 
-</div>
-<div class="flex-child">
+
+
 __$c)\;\;$__ 
 $$
 \begin{align*}
@@ -143,7 +142,7 @@ x \cap I. &\qquad 4\cdot 4 - y = 13 \\
 $$
 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-button="5" data-show-partial-solution -->
 Zur Lösung des [[   Gleichungssystems   ]] wird das [[   Gleichsetzungsverfahren   ]] angewendet.
 Zunächst wird die [[   erste   ]] Gleichung nach $y$ aufgelöst und es ergibt sich $y = 4x - 13$.
 Anschließend wird die [[   zweite   ]] Gleichung ebenfalls nach $y$ umgeformt, sodass $y = \dfrac{10 - x}{2}$ resultiert.
@@ -153,10 +152,3 @@ Durch [[  Addition  ]] von [[  x  ]] auf beiden Seiten ergibt sich $9x - 26 = 10
 Nach Addition von [[  26  ]] resultiert $9x = 36$.
 Durch [[  Division  ]] mit $9$ folgt $x = 4$.
 Der Wert für $x$ wird schließlich in die [[  erste  ]] Gleichung [[  eingesetzt  ]], sodass $y = 3$ bestimmt wird.
-
-</div>
-</section>
-
-
-
-

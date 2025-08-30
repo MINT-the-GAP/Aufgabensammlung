@@ -70,22 +70,21 @@ $ XI.   \;\; x^2-10x+25 $ \
 $ XII.  \;\; x^2-5x+10 $ \
 </div>
 
-<br>
+
 
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__  $  (x+2)^2  =$ [[I.|II.|III.|IV.|V.|VI.|VII.|VIII.|IX.|(X.)|XI.|XII.]]
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__  $  (x-4)^2  =$ [[I.|II.|III.|IV.|(V.)|VI.|VII.|VIII.|IX.|X.|XI.|XII.]]
-<br>
+
 </div> 
 </section>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+
