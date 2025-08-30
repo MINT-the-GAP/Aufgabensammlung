@@ -5663,6 +5663,11 @@ __Aufgabe 28:__ **Gib** den Wert für die rot markierte Stelle auf dem Zahlenstr
 __$a)\;\;$__ 
 <center>
 
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund36_1.png)
+
+</center>
+<center>
+
 ```latex  @tikz
 
 \begin{tikzpicture}[>=latex, scale=1] 
