@@ -121,7 +121,7 @@ $$
 \end{align*}
 $$
 
-i
+
 {{|>}} Die besondere Bedeutung und die Konsequenzen des **Kommutators** werden im Kapitel "**Differentiation** und **Integration**" weiter ausgeführt. Während die **Klammern** im nächsten Unterabschnitt genaustens erklärt werden
 
 
