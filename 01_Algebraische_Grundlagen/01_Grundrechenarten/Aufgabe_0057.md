@@ -65,7 +65,7 @@ base:   https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/hea
 
 __$a)\;\;$__
 
-![Erbsen](../pics/circa1.jpg)
+![Erbsen](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa1.jpg)
 
 [[ 1250 ]] Erbsen
 @Algebrite.check_margin(1100,1400)
@@ -75,7 +75,7 @@ __$a)\;\;$__
 
 __$b)\;\;$__
 
-![Holzperlen](../pics/circa2.jpg)
+![Holzperlen](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa2.jpg)
 
 [[ 400  ]] Holzperlen
 @Algebrite.check_margin(350,450)

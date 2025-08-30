@@ -66,7 +66,7 @@ base:   https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/hea
 
 __$a)\;\;$__
 
-![Linsen](../pics/circa7.jpg)
+![Linsen](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa7.jpg)
 
 [[ 1200  ]] Linsen
 @Algebrite.check_margin(1100,1350)
@@ -78,7 +78,7 @@ __$a)\;\;$__
 
 __$b)\;\;$__
 
-![Puffgerstenkörner](../pics/circa8.jpg)
+![Puffgerstenkörner](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa8.jpg)
 
 [[ 1050  ]] Puffgerstenkörner
 @Algebrite.check_margin(950,1250)

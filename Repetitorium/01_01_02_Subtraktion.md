@@ -61,31 +61,11 @@ Die **Subtraktion** ist die Umkehroperation der **Addition** und wird durch den 
 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Subt1.png)
 
-\begin{tikzpicture}[>=latex, scale=2] 
-
-  \node at (-0.75,-1.25) {};
-  \node at (7.5, 0.95) {};
-
-    \draw[->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
-
-\draw[->, black!100,thick] (5,0.3) to[out=160,in=20] (4,0.3) ; \node at (4.5,0.5) {\large$-1$};
-\draw[->, black!100,thick] (4,0.3) to[out=160,in=20] (3,0.3) ; \node at (3.5,0.5) {\large$-1$};
-\draw[->, black!100,thick] (3,0.3) to[out=160,in=20] (2,0.3) ; \node at (2.5,0.5) {\large$-1$};
-
-\end{tikzpicture} 
-
-```
 </center>
+
+
 
 
 
@@ -117,28 +97,8 @@ $$
 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Subt2.png)
 
-\begin{tikzpicture}[>=latex, scale=2] 
-
-  \node at (-0.75,-1.25) {};
-  \node at (7.5, 0.95) {};
-
-    \draw[->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\Large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\LARGE$1$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\Huge$2$};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
-
-\draw[->, black!100,thick] (5,0.3) to[out=160,in=20] (2,0.3) ; \node at (3.5,0.75) {\large$-3$};
-
-\end{tikzpicture} 
-
-```
 </center>
 
 
@@ -215,3 +175,4 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 
 *******************************
+

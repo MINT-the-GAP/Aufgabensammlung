@@ -66,7 +66,7 @@ base:   https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/hea
 
 __$a)\;\;$__
 
-![Kandiszuckerstückchen](../pics/circa11.jpg)
+![Kandiszuckerstückchen](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa11.jpg)
 
 [[ 200  ]] Kandiszuckerstückchen
 @Algebrite.check_margin(180,250)
@@ -78,7 +78,7 @@ __$a)\;\;$__
 
 __$b)\;\;$__
 
-![getrocknete Mehlwürmer](../pics/circa12.jpg)
+![getrocknete Mehlwürmer](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa12.jpg)
 
 [[ 420  ]] getrocknete Mehlwürmer
 @Algebrite.check_margin(390,470)

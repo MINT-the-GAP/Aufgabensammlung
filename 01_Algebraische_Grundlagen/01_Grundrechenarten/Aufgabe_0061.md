@@ -65,7 +65,7 @@ base:   https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/hea
 
 __$a)\;\;$__
 
-![Kandiszuckerstückchen](../pics/circa9.jpg)
+![Kandiszuckerstückchen](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa9.jpg)
 
 [[ 600  ]] Kandiszuckerstückchen
 @Algebrite.check_margin(550,725)
@@ -77,7 +77,7 @@ __$a)\;\;$__
 
 __$b)\;\;$__
 
-![Erdnusskernstücke](../pics/circa10.jpg)
+![Erdnusskernstücke](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa10.jpg)
 
 [[ 280  ]] Erdnusskernstücke
 @Algebrite.check_margin(250,350)
