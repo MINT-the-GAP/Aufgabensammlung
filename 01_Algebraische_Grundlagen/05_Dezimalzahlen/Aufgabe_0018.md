@@ -64,27 +64,10 @@ author: Martin Lommatzsch
 __$a)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi19_1.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$0,\bar{6}$};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
+<!-- data-solution-button="5"-->
 [[   2   ]]
 
 </div> 
@@ -94,27 +77,10 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi19_2.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, red!100,ultra thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$0,2 $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
+<!-- data-solution-button="5"-->
 [[  0,04  ]]
 
 </div> 
@@ -124,27 +90,10 @@ __$b)\;\;$__
 __$c)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi19_3.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$1,4 $};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$1,88 $}; 
-
-\end{tikzpicture}
-
-```
 </center>
+<!-- data-solution-button="5"-->
 [[  1,72  ]]
 
 </div> 
@@ -154,33 +103,11 @@ __$c)\;\;$__
 __$d)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi19_4.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0)  --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$1,12$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$1,14 $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
+<!-- data-solution-button="5"-->
 [[  1,136  ]]
 
 </div> 
 </section>
-
-
-
-
-

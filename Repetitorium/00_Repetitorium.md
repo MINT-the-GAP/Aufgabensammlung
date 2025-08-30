@@ -5666,29 +5666,6 @@ __$a)\;\;$__
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund36_1.png)
 
 </center>
-<center>
-
-```latex  @tikz
-
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
-</center>
 
 <!-- data-solution-button="5"-->
 [[   5   ]]
@@ -5700,26 +5677,8 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund36_2.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, red!100,ultra thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$45$}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$60$}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -5732,26 +5691,8 @@ __$b)\;\;$__
 __$c)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund36_3.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$14$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$18$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$38$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -5764,26 +5705,8 @@ __$c)\;\;$__
 __$d)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund36_4.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0)  --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$120$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$156$}; 
-\draw[-, red!100,ultra thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$192$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -5806,26 +5729,8 @@ __Aufgabe 29:__ **Gib** den Wert für die rot markierte Stelle auf dem Zahlenstr
 __$a)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund37_1.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$8$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$16$};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -5838,26 +5743,8 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund37_2.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$150$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -5870,26 +5757,8 @@ __$b)\;\;$__
 __$c)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund37_3.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, red!100,ultra thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$77$}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$110$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -5902,26 +5771,8 @@ __$c)\;\;$__
 __$d)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund37_4.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0)  --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$72$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$120$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -5942,26 +5793,8 @@ __Aufgabe 30:__ **Gib** den Wert für die rot markierte Stelle auf dem Zahlenstr
 __$a)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund38_1.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$5$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$10$};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -5974,26 +5807,8 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund38_2.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, red!100,ultra thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$56$}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -6007,26 +5822,8 @@ __$b)\;\;$__
 __$c)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund38_3.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$27$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$33$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -6039,26 +5836,8 @@ __$c)\;\;$__
 __$d)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund38_4.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0)  --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, red!100,ultra thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$116$}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$128$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -6081,26 +5860,8 @@ __Aufgabe 31:__ **Gib** den Wert für die rot markierte Stelle auf dem Zahlenstr
 __$a)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund39_1.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$3$};
-\draw[-, red!100,ultra thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$12$}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -6113,26 +5874,8 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund39_2.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$51$}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$102$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -6145,26 +5888,8 @@ __$b)\;\;$__
 __$c)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund39_3.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, red!100,ultra thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ 57$}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ 66$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -6177,26 +5902,8 @@ __$c)\;\;$__
 __$d)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund39_4.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0)  --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ 16$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, red!100,ultra thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$96$}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -6217,26 +5924,8 @@ __Aufgabe 32:__ **Gib** den Wert für die rot markierte Stelle auf dem Zahlenstr
 __$a)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund40_1.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$7$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$42 $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -6249,26 +5938,8 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund40_2.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, red!100,ultra thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ 78$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -6281,26 +5952,8 @@ __$b)\;\;$__
 __$c)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund40_3.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$34$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$36$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -6313,26 +5966,8 @@ __$c)\;\;$__
 __$d)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund40_4.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0)  --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, red!100,ultra thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ 45$};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ 61$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -6465,30 +6100,8 @@ __Aufgabe 37:__ **Gib** den am Zahlenstrahl dargestellten Term **an**.
 __$a)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund45_1.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 1.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$7$}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$8$}; 
-
-\draw[thick, ->] (2,0.25)  to[out=20,in=160] (5,0.25);
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -6501,30 +6114,8 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund45_2.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 1.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$7$}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$8$}; 
-
-\draw[thick, ->] (1,0.25)  to[out=20,in=160] (7,0.25);
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -6550,30 +6141,8 @@ __Aufgabe 38:__ **Gib** den am Zahlenstrahl dargestellten Term **an**.
 __$a)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund46_1.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 1.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$7$}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$8$}; 
-
-\draw[thick, ->] (5,0.25)  to[out=20,in=160] (7,0.25);
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -6586,30 +6155,8 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund46_2.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 1.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$7$}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$8$}; 
-
-\draw[thick, ->] (3,0.25)  to[out=20,in=160] (8,0.25);
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -6635,30 +6182,8 @@ __Aufgabe 39:__ **Gib** den am Zahlenstrahl dargestellten Term **an**.
 __$a)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund47_1.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 1.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$7$}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$8$}; 
-
-\draw[thick, ->] (1,0.25)  to[out=20,in=160] (4,0.25);
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -6671,30 +6196,8 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund47_2.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 1.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$7$}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$8$}; 
-
-\draw[thick, ->] (6,0.25)  to[out=20,in=160] (8,0.25);
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -6720,30 +6223,8 @@ __Aufgabe 40:__ **Gib** den am Zahlenstrahl dargestellten Term **an**.
 __$a)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund48_1.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 1.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$7$}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$8$}; 
-
-\draw[thick, ->] (7,0.25)  to[out=160,in=20] (2,0.25);
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -6756,30 +6237,8 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund48_2.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 1.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$7$}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$8$}; 
-
-\draw[thick, ->] (8,0.25)  to[out=160,in=20] (1,0.25);
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -6805,30 +6264,8 @@ __Aufgabe 41:__ **Gib** den am Zahlenstrahl dargestellten Term **an**.
 __$a)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund49_1.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 1.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$7$}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$8$}; 
-
-\draw[thick, ->] (6,0.25)  to[out=160,in=20] (5,0.25);
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -6841,30 +6278,8 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund49_2.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 1.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$7$}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$8$}; 
-
-\draw[thick, ->] (7,0.25)  to[out=160,in=20] (3,0.25);
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -6890,30 +6305,8 @@ __Aufgabe 42:__ **Gib** den am Zahlenstrahl dargestellten Term **an**.
 __$a)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund50_1.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 1.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$7$}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$8$}; 
-
-\draw[thick, ->] (8,0.25)  to[out=160,in=20] (2,0.25);
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -6926,30 +6319,8 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund50_2.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 1.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$3$}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$4$}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$5$}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$6$}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$7$}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$8$}; 
-
-\draw[thick, ->] (3,0.25)  to[out=160,in=20] (0,0.25);
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"-->
@@ -24341,26 +23712,8 @@ __Aufgabe 16:__ **Gib** den Wert für die rot markierte Stelle auf dem Zahlenstr
 __$a)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi16_1.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ 1$}; 
-\draw[-, red!100,ultra thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 <!-- data-solution-button="5"-->
 [[  1,25  ]]
@@ -24372,26 +23725,8 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi16_2.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, red!100,ultra thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$4,5 $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 <!-- data-solution-button="5"-->
 [[  0,75  ]]
@@ -24403,26 +23738,8 @@ __$b)\;\;$__
 __$c)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi16_3.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$3,2$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$3,22 $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$38$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 <!-- data-solution-button="5"-->
 [[  3,28  ]]
@@ -24434,26 +23751,8 @@ __$c)\;\;$__
 __$d)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi16_4.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0)  --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0,21$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ 0,27$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 <!-- data-solution-button="5"-->
 [[  0,25  ]]
@@ -24478,26 +23777,8 @@ __Aufgabe 17:__ **Gib** den Wert für die rot markierte Stelle auf dem Zahlenstr
 __$a)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi17_1.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$1$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$2$};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 <!-- data-solution-button="5"-->
 [[   5   ]]
@@ -24509,26 +23790,8 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi17_2.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ 0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, red!100,ultra thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ 3$}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 <!-- data-solution-button="5"-->
 [[  2,25   ]]
@@ -24540,26 +23803,8 @@ __$b)\;\;$__
 __$c)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi17_3.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$1,6$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ 1,85 $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$38$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 <!-- data-solution-button="5"-->
 [[  1,975  ]]
@@ -24571,26 +23816,8 @@ __$c)\;\;$__
 __$d)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi17_4.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0)  --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$2,5$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$3$}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 <!-- data-solution-button="5"-->
 [[  3,25  ]]
@@ -24617,26 +23844,8 @@ __Aufgabe 18:__ **Gib** den Wert für die rot markierte Stelle auf dem Zahlenstr
 __$a)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi19_1.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$0,\bar{6}$};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 <!-- data-solution-button="5"-->
 [[   2   ]]
@@ -24648,26 +23857,8 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi19_2.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, red!100,ultra thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$0,2 $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 <!-- data-solution-button="5"-->
 [[  0,04  ]]
@@ -24679,26 +23870,8 @@ __$b)\;\;$__
 __$c)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi19_3.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$1,4 $};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$1,88 $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 <!-- data-solution-button="5"-->
 [[  1,72  ]]
@@ -24710,26 +23883,8 @@ __$c)\;\;$__
 __$d)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi19_4.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0)  --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$1,12$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$1,14 $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 <!-- data-solution-button="5"-->
 [[  1,136  ]]
@@ -29061,72 +28216,12 @@ __$c)\;\;$__ $-2$ [[$+$|($-$)|$\cdot$|$:$]] $(-7$ [[$+$|$-$|($\cdot$)|$:$]] $(-8
 __Aufgabe 31:__ **Gib** die Stelle der angegebenen Punkte **an**.
 
 
-
 <center>
 
-```latex  @tikz
 
-\begin{tikzpicture} [scale=1.25, >=latex]
+<!-- style="height:1000px" -->
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ31.png)
 
-\draw[black!70, step=5mm,   thin, dashed] (-5,-5) grid (5,5);  
-\draw[black!70, step=10mm,   thin] (-5,-5) grid (5,5);
-
-  \coordinate (ya) at (0,-5.25);
-  \coordinate (xa) at (-5.25,0);
-  \coordinate (o) at (0,0);
-  \coordinate (y) at (0,5.25);
-  \coordinate (x) at (5.25,0);
-  
-    \draw[<->, black!100, thick] (y) node[above] {\large $y$} -- (0,0) --  (x) node[right]   {\large $x$};
-
-\draw[-, black!100, thin]  (0,0.1) -- (0,-0.1) node[below=0.25cm,left] {\Large 0};
-\draw[-, black!100, thin]  (1,0.1) -- (1,-0.1) node[below] {\Large 1};
-\draw[-, black!100, thin]  (2,0.1) -- (2,-0.1) node[below] {\Large 2};
-\draw[-, black!100, thin]  (3,0.1) -- (3,-0.1) node[below] {\Large 3};
-\draw[-, black!100, thin]  (4,0.1) -- (4,-0.1) node[below] {\Large 4};
-\draw[-, black!100, thin]  (5,0.1) -- (5,-0.1) node[below] {\Large 5};
-\draw[-, black!100, thin]  (0.1,1) -- (-0.1,1) node[left] {\Large 1};
-\draw[-, black!100, thin]  (0.1,2) -- (-0.1,2) node[left] {\Large 2};
-\draw[-, black!100, thin]  (0.1,3) -- (-0.1,3) node[left] {\Large 3};
-\draw[-, black!100, thin]  (0.1,4) -- (-0.1,4) node[left] {\Large 4};
-\draw[-, black!100, thin]  (0.1,5) -- (-0.1,5) node[left] {\Large 5};
-
-\draw[-, black!100, thin]  (-1,0.1) -- (-1,-0.1) node[below] {\Large -1};
-\draw[-, black!100, thin]  (-2,0.1) -- (-2,-0.1) node[below] {\Large -2};
-\draw[-, black!100, thin]  (-3,0.1) -- (-3,-0.1) node[below] {\Large -3};
-\draw[-, black!100, thin]  (-4,0.1) -- (-4,-0.1) node[below] {\Large -4};
-\draw[-, black!100, thin]  (-5,0.1) -- (-5,-0.1) node[below] {\Large -5};
-\draw[-, black!100, thin]  (0.1,-1) -- (-0.1,-1) node[left] {\Large -1};
-\draw[-, black!100, thin]  (0.1,-2) -- (-0.1,-2) node[left] {\Large -2};
-\draw[-, black!100, thin]  (0.1,-3) -- (-0.1,-3) node[left] {\Large -3};
-\draw[-, black!100, thin]  (0.1,-4) -- (-0.1,-4) node[left] {\Large -4};
-\draw[-, black!100, thin]  (0.1,-5) -- (-0.1,-5) node[left] {\Large -5};
- 
- \draw [ black!100, thick]  (ya) --(o) --  (xa);
-
-  \coordinate[label=center:\LARGE$\times$] (a) at (-4+0.03,2-0.02);
-  \node[below right] at (-4,2) {\LARGE $A$};
-
-  \coordinate[label=center:\LARGE$\times$] (b) at (-5+0.03,-3-0.02);
-  \node[below right] at (-5,-3) {\LARGE $B$};
-
-  \coordinate[label=center:\LARGE$\times$] (c) at (-3+0.03,-1-0.02);
-  \node[below right] at (-3,-1) {\LARGE $C$};
-
-  \coordinate[label=center:\LARGE$\times$] (d) at (-3+0.03,1-0.02);
-  \node[below right] at (-3,1) {\LARGE $D$};
-
-  \coordinate[label=center:\LARGE$\times$] (e) at (3+0.03,-1-0.02);
-  \node[below right] at (3,-1) {\LARGE $E$};
-
-  \coordinate[label=center:\LARGE$\times$] (f) at (3+0.03,1-0.02);
-  \node[below right] at (3,1) {\LARGE $F$};
-
-	%\draw[thick,color=black, ]  plot[samples=100, domain=-0:4] (\x, {2*\x } ) node[right] {\large $f$};  
-  
-\end{tikzpicture}
-
-```
 </center>
 
 <section class="flex-container">
@@ -29158,72 +28253,12 @@ $B($[[  -5 ]]$|$[[  -3  ]]$)$ \
 __Aufgabe 32:__ **Gib** die Stelle der angegebenen Punkte **an**.
 
 
-
 <center>
 
-```latex  @tikz
 
-\begin{tikzpicture} [scale=1.25, >=latex]
+<!-- style="height:1000px" -->
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ32.png)
 
-\draw[black!70, step=5mm,   thin, dashed] (-5,-5) grid (5,5);  
-\draw[black!70, step=10mm,   thin] (-5,-5) grid (5,5);
-
-  \coordinate (ya) at (0,-5.25);
-  \coordinate (xa) at (-5.25,0);
-  \coordinate (o) at (0,0);
-  \coordinate (y) at (0,5.25);
-  \coordinate (x) at (5.25,0);
-  
-    \draw[<->, black!100, thick] (y) node[above] {\large $y$} -- (0,0) --  (x) node[right]   {\large $x$};
-
-\draw[-, black!100, thin]  (0,0.1) -- (0,-0.1) node[below=0.25cm,left] {\Large 0};
-\draw[-, black!100, thin]  (1,0.1) -- (1,-0.1) node[below] {\Large 1};
-\draw[-, black!100, thin]  (2,0.1) -- (2,-0.1) node[below] {\Large 2};
-\draw[-, black!100, thin]  (3,0.1) -- (3,-0.1) node[below] {\Large 3};
-\draw[-, black!100, thin]  (4,0.1) -- (4,-0.1) node[below] {\Large 4};
-\draw[-, black!100, thin]  (5,0.1) -- (5,-0.1) node[below] {\Large 5};
-\draw[-, black!100, thin]  (0.1,1) -- (-0.1,1) node[left] {\Large 1};
-\draw[-, black!100, thin]  (0.1,2) -- (-0.1,2) node[left] {\Large 2};
-\draw[-, black!100, thin]  (0.1,3) -- (-0.1,3) node[left] {\Large 3};
-\draw[-, black!100, thin]  (0.1,4) -- (-0.1,4) node[left] {\Large 4};
-\draw[-, black!100, thin]  (0.1,5) -- (-0.1,5) node[left] {\Large 5};
-
-\draw[-, black!100, thin]  (-1,0.1) -- (-1,-0.1) node[below] {\Large -1};
-\draw[-, black!100, thin]  (-2,0.1) -- (-2,-0.1) node[below] {\Large -2};
-\draw[-, black!100, thin]  (-3,0.1) -- (-3,-0.1) node[below] {\Large -3};
-\draw[-, black!100, thin]  (-4,0.1) -- (-4,-0.1) node[below] {\Large -4};
-\draw[-, black!100, thin]  (-5,0.1) -- (-5,-0.1) node[below] {\Large -5};
-\draw[-, black!100, thin]  (0.1,-1) -- (-0.1,-1) node[left] {\Large -1};
-\draw[-, black!100, thin]  (0.1,-2) -- (-0.1,-2) node[left] {\Large -2};
-\draw[-, black!100, thin]  (0.1,-3) -- (-0.1,-3) node[left] {\Large -3};
-\draw[-, black!100, thin]  (0.1,-4) -- (-0.1,-4) node[left] {\Large -4};
-\draw[-, black!100, thin]  (0.1,-5) -- (-0.1,-5) node[left] {\Large -5};
- 
- \draw [ black!100, thick]  (ya) --(o) --  (xa);
-
-  \coordinate[label=center:\LARGE$\times$] (a) at (-4+0.03,-3-0.02);
-  \node[below right] at (-4,-3) {\LARGE $A$};
-
-  \coordinate[label=center:\LARGE$\times$] (b) at (3+0.03,-1-0.02);
-  \node[below right] at (3,-1) {\LARGE $B$};
-
-  \coordinate[label=center:\LARGE$\times$] (c) at (4+0.03,4-0.02);
-  \node[below right] at (4,4) {\LARGE $C$};
-
-  \coordinate[label=center:\LARGE$\times$] (d) at (-1+0.03,-2-0.02);
-  \node[below right] at (-1,-2) {\LARGE $D$};
-
-  \coordinate[label=center:\LARGE$\times$] (e) at (-3+0.03,4-0.02);
-  \node[below right] at (-3,4) {\LARGE $E$};
-
-  \coordinate[label=center:\LARGE$\times$] (f) at (2+0.03,-5-0.02);
-  \node[below right] at (2,-5) {\LARGE $F$};
-
-	%\draw[thick,color=black, ]  plot[samples=100, domain=-0:4] (\x, {2*\x } ) node[right] {\large $f$};  
-  
-\end{tikzpicture}
-
-```
 </center>
 
 <section class="flex-container">
@@ -29259,70 +28294,12 @@ __Aufgabe 33:__ **Gib** die Stelle der angegebenen Punkte **an**.
 
 <center>
 
-```latex  @tikz
 
-\begin{tikzpicture} [scale=1.25, >=latex]
+<!-- style="height:1000px" -->
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ33.png)
 
-\draw[black!70, step=5mm,   thin, dashed] (-5,-5) grid (5,5);  
-\draw[black!70, step=10mm,   thin] (-5,-5) grid (5,5);
-
-  \coordinate (ya) at (0,-5.25);
-  \coordinate (xa) at (-5.25,0);
-  \coordinate (o) at (0,0);
-  \coordinate (y) at (0,5.25);
-  \coordinate (x) at (5.25,0);
-  
-    \draw[<->, black!100, thick] (y) node[above] {\large $y$} -- (0,0) --  (x) node[right]   {\large $x$};
-
-\draw[-, black!100, thin]  (0,0.1) -- (0,-0.1) node[below=0.25cm,left] {\Large 0};
-\draw[-, black!100, thin]  (1,0.1) -- (1,-0.1) node[below] {\Large 1};
-\draw[-, black!100, thin]  (2,0.1) -- (2,-0.1) node[below] {\Large 2};
-\draw[-, black!100, thin]  (3,0.1) -- (3,-0.1) node[below] {\Large 3};
-\draw[-, black!100, thin]  (4,0.1) -- (4,-0.1) node[below] {\Large 4};
-\draw[-, black!100, thin]  (5,0.1) -- (5,-0.1) node[below] {\Large 5};
-\draw[-, black!100, thin]  (0.1,1) -- (-0.1,1) node[left] {\Large 1};
-\draw[-, black!100, thin]  (0.1,2) -- (-0.1,2) node[left] {\Large 2};
-\draw[-, black!100, thin]  (0.1,3) -- (-0.1,3) node[left] {\Large 3};
-\draw[-, black!100, thin]  (0.1,4) -- (-0.1,4) node[left] {\Large 4};
-\draw[-, black!100, thin]  (0.1,5) -- (-0.1,5) node[left] {\Large 5};
-
-\draw[-, black!100, thin]  (-1,0.1) -- (-1,-0.1) node[below] {\Large -1};
-\draw[-, black!100, thin]  (-2,0.1) -- (-2,-0.1) node[below] {\Large -2};
-\draw[-, black!100, thin]  (-3,0.1) -- (-3,-0.1) node[below] {\Large -3};
-\draw[-, black!100, thin]  (-4,0.1) -- (-4,-0.1) node[below] {\Large -4};
-\draw[-, black!100, thin]  (-5,0.1) -- (-5,-0.1) node[below] {\Large -5};
-\draw[-, black!100, thin]  (0.1,-1) -- (-0.1,-1) node[left] {\Large -1};
-\draw[-, black!100, thin]  (0.1,-2) -- (-0.1,-2) node[left] {\Large -2};
-\draw[-, black!100, thin]  (0.1,-3) -- (-0.1,-3) node[left] {\Large -3};
-\draw[-, black!100, thin]  (0.1,-4) -- (-0.1,-4) node[left] {\Large -4};
-\draw[-, black!100, thin]  (0.1,-5) -- (-0.1,-5) node[left] {\Large -5};
- 
- \draw [ black!100, thick]  (ya) --(o) --  (xa);
-
-  \coordinate[label=center:\LARGE$\times$] (a) at (3+0.03,-2-0.02);
-  \node[below right] at (3,-2) {\LARGE $A$};
-
-  \coordinate[label=center:\LARGE$\times$] (b) at (-4+0.03,2-0.02);
-  \node[below right] at (-4,2) {\LARGE $B$};
-
-  \coordinate[label=center:\LARGE$\times$] (c) at (3+0.03,4-0.02);
-  \node[below right] at (3,4) {\LARGE $C$};
-
-  \coordinate[label=center:\LARGE$\times$] (d) at (-1+0.03,-5-0.02);
-  \node[below right] at (-1,-5) {\LARGE $D$};
-
-  \coordinate[label=center:\LARGE$\times$] (e) at (-5+0.03,1-0.02);
-  \node[below right] at (-5,1) {\LARGE $E$};
-
-  \coordinate[label=center:\LARGE$\times$] (f) at (-1+0.03,5-0.02);
-  \node[below right] at (-1,5) {\LARGE $F$};
-
-	%\draw[thick,color=black, ]  plot[samples=100, domain=-0:4] (\x, {2*\x } ) node[right] {\large $f$};  
-  
-\end{tikzpicture}
-
-```
 </center>
+
 
 <section class="flex-container">
 <div class="flex-child">
@@ -29354,72 +28331,15 @@ __Aufgabe 34:__ **Gib** die Stelle der angegebenen Punkte **an**.
 
 
 
+
 <center>
 
-```latex  @tikz
 
-\begin{tikzpicture} [scale=1.25, >=latex]
+<!-- style="height:1000px" -->
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ34.png)
 
-\draw[black!70, step=5mm,   thin, dashed] (-5,-5) grid (5,5);  
-\draw[black!70, step=10mm,   thin] (-5,-5) grid (5,5);
-
-  \coordinate (ya) at (0,-5.25);
-  \coordinate (xa) at (-5.25,0);
-  \coordinate (o) at (0,0);
-  \coordinate (y) at (0,5.25);
-  \coordinate (x) at (5.25,0);
-  
-    \draw[<->, black!100, thick] (y) node[above] {\large $y$} -- (0,0) --  (x) node[right]   {\large $x$};
-
-\draw[-, black!100, thin]  (0,0.1) -- (0,-0.1) node[below=0.25cm,left] {\Large 0};
-\draw[-, black!100, thin]  (1,0.1) -- (1,-0.1) node[below] {\Large 1};
-\draw[-, black!100, thin]  (2,0.1) -- (2,-0.1) node[below] {\Large 2};
-\draw[-, black!100, thin]  (3,0.1) -- (3,-0.1) node[below] {\Large 3};
-\draw[-, black!100, thin]  (4,0.1) -- (4,-0.1) node[below] {\Large 4};
-\draw[-, black!100, thin]  (5,0.1) -- (5,-0.1) node[below] {\Large 5};
-\draw[-, black!100, thin]  (0.1,1) -- (-0.1,1) node[left] {\Large 1};
-\draw[-, black!100, thin]  (0.1,2) -- (-0.1,2) node[left] {\Large 2};
-\draw[-, black!100, thin]  (0.1,3) -- (-0.1,3) node[left] {\Large 3};
-\draw[-, black!100, thin]  (0.1,4) -- (-0.1,4) node[left] {\Large 4};
-\draw[-, black!100, thin]  (0.1,5) -- (-0.1,5) node[left] {\Large 5};
-
-\draw[-, black!100, thin]  (-1,0.1) -- (-1,-0.1) node[below] {\Large -1};
-\draw[-, black!100, thin]  (-2,0.1) -- (-2,-0.1) node[below] {\Large -2};
-\draw[-, black!100, thin]  (-3,0.1) -- (-3,-0.1) node[below] {\Large -3};
-\draw[-, black!100, thin]  (-4,0.1) -- (-4,-0.1) node[below] {\Large -4};
-\draw[-, black!100, thin]  (-5,0.1) -- (-5,-0.1) node[below] {\Large -5};
-\draw[-, black!100, thin]  (0.1,-1) -- (-0.1,-1) node[left] {\Large -1};
-\draw[-, black!100, thin]  (0.1,-2) -- (-0.1,-2) node[left] {\Large -2};
-\draw[-, black!100, thin]  (0.1,-3) -- (-0.1,-3) node[left] {\Large -3};
-\draw[-, black!100, thin]  (0.1,-4) -- (-0.1,-4) node[left] {\Large -4};
-\draw[-, black!100, thin]  (0.1,-5) -- (-0.1,-5) node[left] {\Large -5};
- 
- \draw [ black!100, thick]  (ya) --(o) --  (xa);
-
-  \coordinate[label=center:\LARGE$\times$] (a) at (2+0.03,-5-0.02);
-  \node[below right] at (2,-5) {\LARGE $A$};
-
-  \coordinate[label=center:\LARGE$\times$] (b) at (-3+0.03,-1-0.02);
-  \node[below right] at (-3,-1) {\LARGE $B$};
-
-  \coordinate[label=center:\LARGE$\times$] (c) at (4+0.03,2-0.02);
-  \node[below right] at (4,2) {\LARGE $C$};
-
-  \coordinate[label=center:\LARGE$\times$] (d) at (1+0.03,-3-0.02);
-  \node[below right] at (1,-3) {\LARGE $D$};
-
-  \coordinate[label=center:\LARGE$\times$] (e) at (-5+0.03,4-0.02);
-  \node[below right] at (-5,4) {\LARGE $E$};
-
-  \coordinate[label=center:\LARGE$\times$] (f) at (-2+0.03,-1-0.02);
-  \node[below right] at (-2,-1) {\LARGE $F$};
-
-	%\draw[thick,color=black, ]  plot[samples=100, domain=-0:4] (\x, {2*\x } ) node[right] {\large $f$};  
-  
-\end{tikzpicture}
-
-```
 </center>
+
 
 <section class="flex-container">
 <div class="flex-child">
@@ -29676,28 +28596,8 @@ __Aufgabe 41:__ **Gib** den Wert für die rot markierte Stelle auf dem Zahlenstr
 __$a)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ41_1.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$-9$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$-1$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"--> 
@@ -29710,28 +28610,8 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ41_2.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ $};
-\draw[-, red!100,ultra thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$-8$}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$4$}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"--> 
@@ -29744,28 +28624,8 @@ __$b)\;\;$__
 __$c)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ41_3.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$-16$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$ 8$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"--> 
@@ -29778,30 +28638,9 @@ __$c)\;\;$__
 __$d)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ41_4.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ -75$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ -45$}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
-
 <!-- data-solution-button="5"--> 
 [[  -25  ]]
 
@@ -29825,28 +28664,8 @@ __Aufgabe 42:__ **Gib** den Wert für die rot markierte Stelle auf dem Zahlenstr
 __$a)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ42_1.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, red!100,ultra thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$1$}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$6$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"--> 
@@ -29859,28 +28678,8 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ42_2.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ $};
-\draw[-, red!100,ultra thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$0$}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$12$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"--> 
@@ -29893,28 +28692,8 @@ __$b)\;\;$__
 __$c)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ42_3.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$-24$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$-6$}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"--> 
@@ -29927,28 +28706,8 @@ __$c)\;\;$__
 __$d)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ42_4.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"--> 
@@ -29974,28 +28733,8 @@ __Aufgabe 43:__ **Gib** den Wert für die rot markierte Stelle auf dem Zahlenstr
 __$a)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ43_1.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$-44$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$5$}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"--> 
@@ -30008,28 +28747,8 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ43_2.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, red!100,ultra thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$34$}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$85$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"--> 
@@ -30042,28 +28761,8 @@ __$b)\;\;$__
 __$c)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ43_3.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$-54$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$-27$}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"--> 
@@ -30076,30 +28775,9 @@ __$c)\;\;$__
 __$d)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ43_4.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, red!100,ultra thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ -14$}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$42$}; 
-
-\end{tikzpicture}
-
-```
 </center>
-
 <!-- data-solution-button="5"--> 
 [[  -70  ]]
 
@@ -30124,28 +28802,8 @@ __Aufgabe 44:__ **Gib** den Wert für die rot markierte Stelle auf dem Zahlenstr
 __$a)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ44_1.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$-1,5$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$1,5$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"--> 
@@ -30158,28 +28816,8 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ44_2.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ $};
-\draw[-, red!100,ultra thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$-0,4$};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$0,5$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"--> 
@@ -30192,28 +28830,8 @@ __$b)\;\;$__
 __$c)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ44_3.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$-5,7$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$-5,525$}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"--> 
@@ -30226,28 +28844,8 @@ __$c)\;\;$__
 __$d)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ44_4.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, red!100,ultra thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$-8,05$}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$0,2$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"--> 
@@ -30275,28 +28873,8 @@ __Aufgabe 45:__ **Gib** den Wert für die rot markierte Stelle auf dem Zahlenstr
 __$a)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ45_1.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$-8$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$-2,5$}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"--> 
@@ -30309,28 +28887,8 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ45_2.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$-1,3$};
-\draw[-, red!100,ultra thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$-0,25$}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"--> 
@@ -30343,28 +28901,8 @@ __$b)\;\;$__
 __$c)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ45_3.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$-6,35$};
-\draw[-, red!100,ultra thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$2,4$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"--> 
@@ -30377,28 +28915,8 @@ __$c)\;\;$__
 __$d)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ45_4.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, red!100,ultra thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$-1,125$}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$3,25$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"--> 
@@ -30426,30 +28944,9 @@ __Aufgabe 46:__ **Gib** den Wert für die rot markierte Stelle auf dem Zahlenstr
 __$a)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ46_1.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$-0,8$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$0,6$}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
-
 <!-- data-solution-button="5"--> 
 [[  0,2  ]]
 
@@ -30460,28 +28957,8 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ46_2.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$-3,6$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$-2,475$}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"--> 
@@ -30494,28 +28971,8 @@ __$b)\;\;$__
 __$c)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ46_3.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$-9$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, red!100,ultra thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$-8$}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"--> 
@@ -30528,28 +28985,8 @@ __$c)\;\;$__
 __$d)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ46_4.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$-7,5$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$-2,25$}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
 
 <!-- data-solution-button="5"--> 
@@ -33843,34 +32280,12 @@ $$
 
 
 
+
 <center>
 
-```latex  @tikz
-	 \begin{tikzpicture}[scale=1.5]
-    \coordinate[label=below left:$$] (AHA) at (5,5);
-    \coordinate[label=below left:$$] (AHB) at (-1,-1);
-    \coordinate[label=below left:$$] (A) at (0,0);
-    \coordinate[label=below left:$$] (B) at (4,0);
-    \coordinate[label=below left:$$] (C) at (4,4);
-    \coordinate[label=below left:$$] (D) at (0,4);
-    \coordinate[label=below left:$$] (E) at (0,3);
-    \coordinate[label=below left:$$] (F) at (3,4);
-    \coordinate[label=below left:$$] (G) at (3,0);
-    \coordinate[label=below left:$$] (H) at (4,3);
-    \coordinate[label=below left:$$] (Z) at (3,3);
-	 \draw[very thick] (A) -- (B)-- (C)-- (D)--(A);
-	 \draw[very thick] (A) -- (E)  node[midway, left] {$a$};
-	 \draw[very thick] (C) -- (F)  node[midway, above] {$b$};
-	 \draw[very thick] (D) -- (E)  node[midway, left] {$b$};
-	 \draw[very thick] (F) -- (D)  node[midway, above] {$a$};
-	 \draw[fill=green,opacity=0.35] (A) -- (E)-- (Z)-- (G)--(A); 
-	 \draw[fill=blue,opacity=0.35] (D) -- (E)-- (Z)-- (F)--(D); 
-	 \draw[fill=red,opacity=0.35] (C) -- (H)-- (Z)-- (F)--(C); 
-	 \draw[fill=orange,opacity=0.35] (B) -- (G)-- (Z)-- (H)--(B); 
-  \end{tikzpicture}
+<!-- style="width:500px" -->
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Potenzer.png)
 
-
-```
 </center>
 
 

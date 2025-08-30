@@ -64,29 +64,11 @@ author: Martin Lommatzsch
 __$a)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ44_1.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$-1,5$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$1,5$}; 
-
-\end{tikzpicture}
-
-```
 </center>
+
+<!-- data-solution-button="5"--> 
 [[  0,375  ]]
 
 </div> 
@@ -96,29 +78,11 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ44_2.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ $};
-\draw[-, red!100,ultra thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$-0,4$};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$0,5$}; 
-
-\end{tikzpicture}
-
-```
 </center>
+
+<!-- data-solution-button="5"--> 
 [[  -0,55   ]]
 
 </div> 
@@ -128,29 +92,11 @@ __$b)\;\;$__
 __$c)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ44_3.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$-5,7$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$-5,525$}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
+
+<!-- data-solution-button="5"--> 
 [[  -5,6  ]]
 
 </div> 
@@ -160,34 +106,12 @@ __$c)\;\;$__
 __$d)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ44_4.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (9.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (8.5,0) node[right] {\large$x$};
-
-\draw[-, red!100,ultra thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$-8,05$}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 7,0.1) -- ( 7,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 8,0.1) -- ( 8,-0.1) node[below] {\large$0,2$}; 
-
-\end{tikzpicture}
-
-```
 </center>
+
+<!-- data-solution-button="5"--> 
 [[  -21,8  ]]
 
 </div> 
 </section>
-
-
-
-

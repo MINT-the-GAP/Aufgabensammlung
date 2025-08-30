@@ -60,127 +60,58 @@ author: Martin Lommatzsch
 <section class="flex-container">
 
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund40_1.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$7$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$42 $}; 
-
-\end{tikzpicture}
-
-```
 </center>
+
+<!-- data-solution-button="5"-->
 [[  35   ]]
-<br>
+
 </div> 
 
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund40_2.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, red!100,ultra thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ 78$}; 
-
-\end{tikzpicture}
-
-```
 </center>
+
+<!-- data-solution-button="5"-->
 [[  39   ]]
-<br>
+
 </div> 
 
 <div class="flex-child">
-<br>
+
 __$c)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund40_3.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$34$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$36$};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
+
+<!-- data-solution-button="5"-->
 [[   46  ]]
-<br>
+
 </div> 
 
 <div class="flex-child">
-<br>
+
 __$d)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund40_4.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0)  --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, red!100,ultra thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ 45$};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ 61$}; 
-
-\end{tikzpicture}
-
-```
 </center>
+
+<!-- data-solution-button="5"-->
 [[   37  ]]
-<br>
+
 </div> 
 </section>
-<br>
-<br>
-<br>
-<br>
-

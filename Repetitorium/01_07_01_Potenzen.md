@@ -257,35 +257,11 @@ $$
 
 
 
-
 <center>
 
-```latex  @tikz
-	 \begin{tikzpicture}[scale=1.5]
-    \coordinate[label=below left:$$] (AHA) at (5,5);
-    \coordinate[label=below left:$$] (AHB) at (-1,-1);
-    \coordinate[label=below left:$$] (A) at (0,0);
-    \coordinate[label=below left:$$] (B) at (4,0);
-    \coordinate[label=below left:$$] (C) at (4,4);
-    \coordinate[label=below left:$$] (D) at (0,4);
-    \coordinate[label=below left:$$] (E) at (0,3);
-    \coordinate[label=below left:$$] (F) at (3,4);
-    \coordinate[label=below left:$$] (G) at (3,0);
-    \coordinate[label=below left:$$] (H) at (4,3);
-    \coordinate[label=below left:$$] (Z) at (3,3);
-	 \draw[very thick] (A) -- (B)-- (C)-- (D)--(A);
-	 \draw[very thick] (A) -- (E)  node[midway, left] {$a$};
-	 \draw[very thick] (C) -- (F)  node[midway, above] {$b$};
-	 \draw[very thick] (D) -- (E)  node[midway, left] {$b$};
-	 \draw[very thick] (F) -- (D)  node[midway, above] {$a$};
-	 \draw[fill=green,opacity=0.35] (A) -- (E)-- (Z)-- (G)--(A); 
-	 \draw[fill=blue,opacity=0.35] (D) -- (E)-- (Z)-- (F)--(D); 
-	 \draw[fill=red,opacity=0.35] (C) -- (H)-- (Z)-- (F)--(C); 
-	 \draw[fill=orange,opacity=0.35] (B) -- (G)-- (Z)-- (H)--(B); 
-  \end{tikzpicture}
+<!-- style="width:500px" -->
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Potenzer.png)
 
-
-```
 </center>
 
 

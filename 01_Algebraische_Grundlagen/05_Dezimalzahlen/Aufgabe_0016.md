@@ -64,27 +64,10 @@ author: Martin Lommatzsch
 __$a)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi16_1.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ 1$}; 
-\draw[-, red!100,ultra thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ $}; 
-
-\end{tikzpicture}
-
-```
 </center>
+<!-- data-solution-button="5"-->
 [[  1,25  ]]
 
 </div> 
@@ -94,27 +77,10 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi16_2.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[|->, black!100, thick] (0,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0$};
-\draw[-, red!100,ultra thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$4,5 $}; 
-
-\end{tikzpicture}
-
-```
 </center>
+<!-- data-solution-button="5"-->
 [[  0,75  ]]
 
 </div> 
@@ -124,27 +90,10 @@ __$b)\;\;$__
 __$c)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi16_3.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0) --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$3,2$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$3,22 $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$38$}; 
-
-\end{tikzpicture}
-
-```
 </center>
+<!-- data-solution-button="5"-->
 [[  3,28  ]]
 
 </div> 
@@ -154,33 +103,11 @@ __$c)\;\;$__
 __$d)\;\;$__ 
 <center>
 
-```latex  @tikz
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi16_4.png)
 
-\begin{tikzpicture}[>=latex, scale=1] 
-
-  \node at (-0.75,-0.75) {};
-  \node at (7.5, 0.5) {};
-
-    \draw[ ->, black!100, thick] (-0.5,0)  --  (6.5,0) node[right] {\large$x$};
-
-\draw[-, black!100,thick]  ( 0,0.1) -- ( 0,-0.1) node[below] {\large$0,21$};
-\draw[-, black!100,thick]  ( 1,0.1) -- ( 1,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 2,0.1) -- ( 2,-0.1) node[below] {\large$ $};
-\draw[-, black!100,thick]  ( 3,0.1) -- ( 3,-0.1) node[below] {\large$ $}; 
-\draw[-, red!100,ultra thick]  ( 4,0.1) -- ( 4,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 5,0.1) -- ( 5,-0.1) node[below] {\large$ $}; 
-\draw[-, black!100,thick]  ( 6,0.1) -- ( 6,-0.1) node[below] {\large$ 0,27$}; 
-
-\end{tikzpicture}
-
-```
 </center>
+<!-- data-solution-button="5"-->
 [[  0,25  ]]
 
 </div> 
 </section>
-
-
-
-
-

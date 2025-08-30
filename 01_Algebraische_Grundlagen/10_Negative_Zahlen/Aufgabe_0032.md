@@ -65,69 +65,10 @@ author: Martin Lommatzsch
 
 <center>
 
-```latex  @tikz
 
-\begin{tikzpicture} [scale=1.25, >=latex]
+<!-- style="height:1000px" -->
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ32.png)
 
-\draw[black!70, step=5mm,   thin, dashed] (-5,-5) grid (5,5);  
-\draw[black!70, step=10mm,   thin] (-5,-5) grid (5,5);
-
-  \coordinate (ya) at (0,-5.25);
-  \coordinate (xa) at (-5.25,0);
-  \coordinate (o) at (0,0);
-  \coordinate (y) at (0,5.25);
-  \coordinate (x) at (5.25,0);
-  
-    \draw[<->, black!100, thick] (y) node[above] {\large $y$} -- (0,0) --  (x) node[right]   {\large $x$};
-
-\draw[-, black!100, thin]  (0,0.1) -- (0,-0.1) node[below=0.25cm,left] {\Large 0};
-\draw[-, black!100, thin]  (1,0.1) -- (1,-0.1) node[below] {\Large 1};
-\draw[-, black!100, thin]  (2,0.1) -- (2,-0.1) node[below] {\Large 2};
-\draw[-, black!100, thin]  (3,0.1) -- (3,-0.1) node[below] {\Large 3};
-\draw[-, black!100, thin]  (4,0.1) -- (4,-0.1) node[below] {\Large 4};
-\draw[-, black!100, thin]  (5,0.1) -- (5,-0.1) node[below] {\Large 5};
-\draw[-, black!100, thin]  (0.1,1) -- (-0.1,1) node[left] {\Large 1};
-\draw[-, black!100, thin]  (0.1,2) -- (-0.1,2) node[left] {\Large 2};
-\draw[-, black!100, thin]  (0.1,3) -- (-0.1,3) node[left] {\Large 3};
-\draw[-, black!100, thin]  (0.1,4) -- (-0.1,4) node[left] {\Large 4};
-\draw[-, black!100, thin]  (0.1,5) -- (-0.1,5) node[left] {\Large 5};
-
-\draw[-, black!100, thin]  (-1,0.1) -- (-1,-0.1) node[below] {\Large -1};
-\draw[-, black!100, thin]  (-2,0.1) -- (-2,-0.1) node[below] {\Large -2};
-\draw[-, black!100, thin]  (-3,0.1) -- (-3,-0.1) node[below] {\Large -3};
-\draw[-, black!100, thin]  (-4,0.1) -- (-4,-0.1) node[below] {\Large -4};
-\draw[-, black!100, thin]  (-5,0.1) -- (-5,-0.1) node[below] {\Large -5};
-\draw[-, black!100, thin]  (0.1,-1) -- (-0.1,-1) node[left] {\Large -1};
-\draw[-, black!100, thin]  (0.1,-2) -- (-0.1,-2) node[left] {\Large -2};
-\draw[-, black!100, thin]  (0.1,-3) -- (-0.1,-3) node[left] {\Large -3};
-\draw[-, black!100, thin]  (0.1,-4) -- (-0.1,-4) node[left] {\Large -4};
-\draw[-, black!100, thin]  (0.1,-5) -- (-0.1,-5) node[left] {\Large -5};
- 
- \draw [ black!100, thick]  (ya) --(o) --  (xa);
-
-  \coordinate[label=center:\LARGE$\times$] (a) at (-4+0.03,-3-0.02);
-  \node[below right] at (-4,-3) {\LARGE $A$};
-
-  \coordinate[label=center:\LARGE$\times$] (b) at (3+0.03,-1-0.02);
-  \node[below right] at (3,-1) {\LARGE $B$};
-
-  \coordinate[label=center:\LARGE$\times$] (c) at (4+0.03,4-0.02);
-  \node[below right] at (4,4) {\LARGE $C$};
-
-  \coordinate[label=center:\LARGE$\times$] (d) at (-1+0.03,-2-0.02);
-  \node[below right] at (-1,-2) {\LARGE $D$};
-
-  \coordinate[label=center:\LARGE$\times$] (e) at (-3+0.03,4-0.02);
-  \node[below right] at (-3,4) {\LARGE $E$};
-
-  \coordinate[label=center:\LARGE$\times$] (f) at (2+0.03,-5-0.02);
-  \node[below right] at (2,-5) {\LARGE $F$};
-
-	%\draw[thick,color=black, ]  plot[samples=100, domain=-0:4] (\x, {2*\x } ) node[right] {\large $f$};  
-  
-\end{tikzpicture}
-
-```
 </center>
 
 <section class="flex-container">
