@@ -64,9 +64,10 @@ author: Martin Lommatzsch
 __$a)\;\;$__ 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi19_1.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi18_1.png)
 
 </center>
+
 <!-- data-solution-button="5"-->
 [[   2   ]]
 
@@ -77,9 +78,10 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi19_2.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi18_2.png)
 
 </center>
+
 <!-- data-solution-button="5"-->
 [[  0,04  ]]
 
@@ -90,9 +92,10 @@ __$b)\;\;$__
 __$c)\;\;$__ 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi19_3.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi18_3.png)
 
 </center>
+
 <!-- data-solution-button="5"-->
 [[  1,72  ]]
 
@@ -103,9 +106,10 @@ __$c)\;\;$__
 __$d)\;\;$__ 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi19_4.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi18_4.png)
 
 </center>
+
 <!-- data-solution-button="5"-->
 [[  1,136  ]]
 

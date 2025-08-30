@@ -21709,7 +21709,7 @@ $$
 
 
 
-#### Übungen Teil 8 - Bruchrechnung Aufgabe 140 bis 160
+#### Übungen Teil 8 - Bruchrechnung Aufgabe 140 bis 162
 
 
 
@@ -22608,10 +22608,106 @@ $$
 
 
 
+
+<!--  Bruchrechnung 0161  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/5.png" width="120" height="30">  \
+__Aufgabe 161:__ **Sortiere** die Brüche nach ihrer Größe.
+
+
+
+<!-- data-solution-button="5" 
+data-randomize="true" -->
+__$a)\;\;$__
+[->[($\dfrac{4}{3 }$)]] $<$ 
+[->[($\dfrac{11}{8}$)]] $<$ 
+[->[($\dfrac{9}{5 }$)]] $<$ 
+[->[($\dfrac{13}{6 }$)]] $<$ 
+[->[($\dfrac{23}{8 }$)]] $<$ 
+[->[($\dfrac{13}{4 }$)]]
+
+
+
+<!-- data-solution-button="5" 
+data-randomize="true" -->
+__$b)\;\;$__
+[->[($\dfrac{3}{10 }$)]] $<$ 
+[->[($\dfrac{3}{4 }$)]] $<$ 
+[->[($\dfrac{6}{7 }$)]] $<$ 
+[->[($\dfrac{6}{5 }$)]] $<$ 
+[->[($\dfrac{5}{3 }$)]] $<$ 
+[->[($\dfrac{17}{9 }$)]]
+
+
+
+<!-- data-solution-button="5" 
+data-randomize="true" -->
+__$c)\;\;$__
+[->[($\dfrac{2}{9 }$)]] $<$ 
+[->[($\dfrac{3}{11}$)]] $<$ 
+[->[($\dfrac{2}{7 }$)]] $<$ 
+[->[($\dfrac{3}{5 }$)]] $<$ 
+[->[($\dfrac{2}{3 }$)]] $<$ 
+[->[($\dfrac{5}{6 }$)]]
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0162  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/5.png" width="120" height="30">  \
+__Aufgabe 162:__ **Sortiere** die Brüche nach ihrer Größe.
+
+
+
+<!-- data-solution-button="5" 
+data-randomize="true" -->
+__$a)\;\;$__
+[->[($\dfrac{3}{7}$)]] $<$ 
+[->[($\dfrac{3}{5}$)]] $<$ 
+[->[($\dfrac{7}{8}$)]] $<$ 
+[->[($\dfrac{3}{2}$)]] $<$ 
+[->[($\dfrac{5}{3}$)]] $<$ 
+[->[($\dfrac{7}{4}$)]]
+
+
+
+<!-- data-solution-button="5" 
+data-randomize="true" -->
+__$b)\;\;$__
+[->[($\dfrac{2}{11}$)]] $<$ 
+[->[($\dfrac{1}{3}$)]] $<$ 
+[->[($\dfrac{5}{12}$)]] $<$ 
+[->[($\dfrac{5}{8}$)]] $<$ 
+[->[($\dfrac{7}{10}$)]] $<$ 
+[->[($\dfrac{8}{9}$)]]
+
+
+
+<!-- data-solution-button="5" 
+data-randomize="true" -->
+__$c)\;\;$__
+[->[($\dfrac{2}{5}$)]] $<$ 
+[->[($\dfrac{7}{12}$)]] $<$ 
+[->[($\dfrac{2}{3}$)]] $<$ 
+[->[($\dfrac{7}{9}$)]] $<$ 
+[->[($\dfrac{7}{6}$)]] $<$ 
+[->[($\dfrac{8}{7}$)]]
+
+
+
+
+
+
+
 <!--  Bruchrechnung noch keine  -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
-__Aufgabe 161:__ **Bestimme** die richtige Reihenfolge der Dominos.
+__Aufgabe 163:__ **Bestimme** die richtige Reihenfolge der Dominos.
 
 
 ??[](https://www.bildung-bedeutet-freiheit.de/GeoGebra/Dominoes-Demo.html)
@@ -23715,6 +23811,7 @@ __$a)\;\;$__
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi16_1.png)
 
 </center>
+
 <!-- data-solution-button="5"-->
 [[  1,25  ]]
 
@@ -23728,6 +23825,7 @@ __$b)\;\;$__
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi16_2.png)
 
 </center>
+
 <!-- data-solution-button="5"-->
 [[  0,75  ]]
 
@@ -23741,6 +23839,7 @@ __$c)\;\;$__
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi16_3.png)
 
 </center>
+
 <!-- data-solution-button="5"-->
 [[  3,28  ]]
 
@@ -23754,6 +23853,7 @@ __$d)\;\;$__
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi16_4.png)
 
 </center>
+
 <!-- data-solution-button="5"-->
 [[  0,25  ]]
 
@@ -23780,6 +23880,7 @@ __$a)\;\;$__
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi17_1.png)
 
 </center>
+
 <!-- data-solution-button="5"-->
 [[   5   ]]
 
@@ -23793,6 +23894,7 @@ __$b)\;\;$__
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi17_2.png)
 
 </center>
+
 <!-- data-solution-button="5"-->
 [[  2,25   ]]
 
@@ -23806,6 +23908,7 @@ __$c)\;\;$__
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi17_3.png)
 
 </center>
+
 <!-- data-solution-button="5"-->
 [[  1,975  ]]
 
@@ -23819,6 +23922,7 @@ __$d)\;\;$__
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi17_4.png)
 
 </center>
+
 <!-- data-solution-button="5"-->
 [[  3,25  ]]
 
@@ -23844,9 +23948,10 @@ __Aufgabe 18:__ **Gib** den Wert für die rot markierte Stelle auf dem Zahlenstr
 __$a)\;\;$__ 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi19_1.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi18_1.png)
 
 </center>
+
 <!-- data-solution-button="5"-->
 [[   2   ]]
 
@@ -23857,9 +23962,10 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi19_2.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi18_2.png)
 
 </center>
+
 <!-- data-solution-button="5"-->
 [[  0,04  ]]
 
@@ -23870,9 +23976,10 @@ __$b)\;\;$__
 __$c)\;\;$__ 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi19_3.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi18_3.png)
 
 </center>
+
 <!-- data-solution-button="5"-->
 [[  1,72  ]]
 
@@ -23883,9 +23990,10 @@ __$c)\;\;$__
 __$d)\;\;$__ 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi19_4.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi18_4.png)
 
 </center>
+
 <!-- data-solution-button="5"-->
 [[  1,136  ]]
 
@@ -31924,32 +32032,208 @@ __$f)\;\;$__ $ -0,56:(-0,7) =$ [[  0,8  ]]
 ### Kommutativ- und Assoziativgesetz
 
 
+
 {{|>}}
 *******************************
 
-Under Construction:
+
+Das **Assoziativ**- und das **Kommutativgesetz** helfen beim Rechnen den Überblick selbst über sehr komplex wirkende Sachverhalte zu behalten und sollten deswegen bekannt sein. In diesem Abschnitt werden diese beiden Gesetz und ihre Auswirkungen auf die Mathematik besprochen. Auch wird nochmals motiviert, warum es lohnend sein kann mit **Brüchen** und **negativen Zahlen** zu arbeiten. 
 
 
-Kommutativgesetz
+<h2>Kommutator</h2>
 
-Assoziativgesetz
+{{|>}} Das **Kommutativgesetz** besagt, dass die Vertauschung von Zahlen, **Parametern** oder **Variablen** bei einer Rechenoperation keinen Einfluss auf den **Wert des Terms** hat. Zur Überprüfung des **Kommutativgesetzes** dient der **Kommutator**, welcher folgende definierte Rechenanweisung ist:
+
+
+
+$$
+\begin{align*}
+\left[a,b\right] = a \cdot b - b \cdot a \\
+\end{align*}
+$$
+
+{{|>}} Ist der **Kommutator** gleich Null, so gilt, dass $a\cdot b = b \cdot a$ ist. Wenn man nun Zahlen für die **Parameter** $a$ und $b$ einsetzt, so ist die Gültigkeit des **Kommutativgesetzes** intuitiv zu erkennen: 
+
+
+$$
+\begin{align*}
+\left[2,3\right] = 2 \cdot 3 - 3 \cdot 2 = 6 -6 = 0 \\
+\end{align*}
+$$
+
+{{|>}} Der allgemeine **Kommutator** ist für die **Multiplikation** definiert - wenn nun das **Kommutativgesetz** zum Beispiel für die **Addition** überprüft werden soll, wird am Komma des **Kommutator** gekennzeichnet welcher **Operator** untersucht wird. 
+
+
+
+$$
+\begin{align*}
+\left[a,_+b\right] & = a + b - b + a  \\ 
+\left[2,_+3\right] & = 2 + 3 - 3 + 2 = 5 -5 = 0  \\
+\end{align*}
+$$
+
+{{|>}} Es wird deutlich, dass ohne die Einführung der **ganzen Zahlen** $\mathbb{Z}$ und der **Bruchrechnung** und somit die Verallgemeinerung von **Addition** mit **Subtraktion** sowie der **Multiplikation** mit der **Division**, dass **Kommutativgesetz** nicht für die **Subtraktion** und **Division** gelten würde. 
+
+
+
+$$
+\begin{align*}
+\left[a,_-b\right] & = a - b - b - a \neq 0 \\ 
+\left[2,_-3\right] & = 2 - 3 - 3 - 2 \neq 0 \\ 
+\left[a,_:b\right] & = a : b - b : a \neq 0 \\ 
+\left[2,_:3\right] & = 2 : 3 - 3 : 2 \neq 0 \\
+\end{align*}
+$$
+
+{{|>}} Durch die Einführung **ganzen Zahlen** $\mathbb{Z}$ und der **Bruchrechnung** verändert sich die vorherigen **Gleichungen** zu:
+
+
+
+$$
+\begin{align*}
+\left[a,_+-b\right] & = (a + (-b)) - (-b + a) = 0 \\ 
+\left[3,_+-2\right] & = (3 + (- 2)) - (-2 + 3) = 1 - 1 = 0 \\ 
+\left[a,\frac{1}{b}\right] & = a \cdot \frac{1}{b} - \frac{1}{b} \cdot a =  \frac{a}{b}- \frac{a}{b}  = 0 \\ 
+\left[2,\frac{1}{3}\right] & = 2 \cdot \frac{1}{3}  - \frac{1}{3} \cdot 2 =  \frac{2}{3}- \frac{2}{3} = 0 \\
+\end{align*}
+$$
+
+i
+{{|>}} Die besondere Bedeutung und die Konsequenzen des **Kommutators** werden im Kapitel "**Differentiation** und **Integration**" weiter ausgeführt. Während die **Klammern** im nächsten Unterabschnitt genaustens erklärt werden
+
+
+
+<h2>Assoziativgesetz</h2>
+
+{{|>}} Das **Assoziativgesetz** besagt, dass die Reihenfolge bei einer Rechnung keine Relevanz besitzen darf. So macht es zum Beispiel keinen Unterschied bei der **Addition** oder **Multiplikation** von drei Zahlen, welche zuerst verrechnet werden.
+
+
+
+$$
+\begin{align*}
+a + b + c & = (a+b)+c = a + (b+c) = b + (a + c) \\
+a \cdot b \cdot c & = (a\cdot b)\cdot c = a \cdot (b\cdot c) = b \cdot (a \cdot c)  \\
+\end{align*}
+$$
+
+{{|>}} Die Reihenfolge in den vorherigen **Gleichung** wird beschrieben durch die **Klammern**, welche angeben welche Rechnung zu erst vollzogen werden soll. Das jeweils letzte **Gleichheitszeichen** konnte nur durch die Vertauschung der geschriebenen Reihenfolge der **Parameter** $a,b$ und $c$, also dem **Kommutativgesetz**, geschrieben werden. Erneut zeigt sich, dass die Verallgemeinerung von **Addition** mit **Subtraktion** sowie **Multiplikation** mit **Division** seine Vorteile hat, denn die **Rechenoperatoren** der **Subtraktion** und der **Division** sind nicht **assoziativ**: 
+
+
+
+$$
+\begin{align*}
+(a-b)-c & \neq a - (b-c)  \\
+ (a : b): c &\neq a : (b: c)   \\
+\end{align*}
+$$
+
+{{|>}} Allerdings gilt durch die Einführung der **ganzen Zahlen** $\mathbb{Z}$ und des **Bruchrechnens**, dass der **Subtraktionsoperator** umgeschrieben werden kann in $- = + (-1)$ sowie der **Divisionsoperator** mit nur seltenen Ausnahmen aus dem mathematischen Gebrauch verschwindet.
+
+
 
 
 *******************************
+
+
+
+
+
+
+
+
+
+
 
 ### Distributivgesetz
 
 
+
 {{|>}}
 *******************************
 
-Under Construction:
+
+Wenn eine Rechnung mehr als nur einen **Rechenoperator** beinhaltet, dann lohnt es sich **Klammern** zu verwenden, um den Überblick zu behalten oder auf bestimmte Sachverhalte aufmerksam zu machen. Im engeren Sinne ist die Rechnung mit **Klammern** auf die **Multiplikation** reduzierbar. Dabei wirkt der außenstehende **Faktor** auf jeden **Summanden** innerhalb der **Klammer**:
 
 
-Distributivgesetz
+
+$$
+\begin{align*}
+a \cdot (b + c) & = a \cdot b + a \cdot c  \\
+16 = 2 \cdot 8  = 2 \cdot (3 + 5) & =  2 \cdot 3 + 2 \cdot 5 = 6 + 10 = 16   \\
+\end{align*}
+$$
+
+{{|>}} Das Beispiel aus der vorherigen **Gleichung** zeigt, wie der **Faktor** auf die **Summanden** innerhalb der **Klammern** wirkt und somit der gleiche **Wert des Terms** produziert, wie die **Multiplikation** des **Faktors** mit der **Summe** der **Klammer**. Dieses Verfahren mit der **Klammersetzung** wird **Distributivgesetz** genannt. Das **Distributivgesetz** kann anhand eines zusammengesetzten **Rechtecks** aus anderen **Rechtecken** visualisiert werden. 
+
+
+
+<center>
+
+<!-- style="width:750px" -->
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Distributiv1.png)
+
+</center>
+
+
+{{|>}} Wobei der **Flächeninhalt** des gesamten **Rechtecks** einmal direkt über $A=a(b+c)$ oder über die **Addition** der beiden kleineren **Rechtecke** $A=A_1+A_2=ab+ac$ berechnet werden kann. 
+
+
+{{|>}} Bei der Verrechnung von **Subtraktionsoperatoren** mit einer **Klammer** gilt, dass das vorgestellte Minus lediglich eine verkürzte Schreibweise von $(-1)\cdot$ ist: 
+
+
+$$
+\begin{align*}
+- (b + c) & = (-1) \cdot ( b +  c ) = (-1) \cdot b + (-1) \cdot c = - b - c\\
+\end{align*}
+$$
+
+{{|>}} Auch **Terme** von **Summen** können miteinander **multipliziert** werden: 
+
+
+
+$$
+\begin{align*}
+(a + b) \cdot (c + d) & = a \cdot (c + d) + b \cdot (c + d) = a \cdot c + a \cdot d + b \cdot c + b \cdot d \\
+\end{align*}
+$$
+
+{{|>}} In der vorherigen **Gleichung** wirken zu erst die **Summanden** der ersten **Klammer** auf die zweite **Klammer**, sodass dann die zweite **Klammer** wie in **Gleichung** (\ref{eqn:1.5.1}) **ausmultipliziert** werden kann. Es wird auch ersichtlich, dass die Schreibweise mit den **Klammern** wesentlich kürzer ist. Das **Ausmultiplizieren** ist trotz der verkürzten **Klammerschreibweise** oftmals von Vorteil. 
+
+Die **Klammersetzung** ist nicht nur ein Bestandteil einer verkürzten Schreibweise, sondern auch von fundamentaler Bedeutung bei komplexeren **Einsetzungsverfahren**. So sei zum Beispiel $a = g+h$ und soll in die folgende Gleichung eingesetzt werden. 
+
+
+$$
+\begin{align*}
+a \cdot d = (g+h)\cdot d = g \cdot d + h \cdot d \\
+\end{align*}
+$$
+
+{{|>}} Wie die vorherige Gleichung zeigt, sollte bei einer Ersetzung der eingesetzte **Term** am besten prophylaktisch umklammert werden, um Fehler zu vermeiden. Erst nach einer Reflexion der **Gleichung** sollten dann die **Klammern**, wenn möglich, fallen gelassen werden.  
+
+
+
+
+
+
+{{|>}} Allerdings sollte auch die **Umkehrung** des **Ausmultiplizierens**, das **Ausklammern**, beherrscht werden, da es oftmals die Übersicht verbessert, wie in diesem Beispiel:  
+
+
+
+$$
+\begin{align*}
+a \cdot b + a \cdot c + a \cdot d + a \cdot e + a \cdot f + g = a \cdot (b+c+d+e+f) +g   \\
+\end{align*}
+$$
+
+{{|>}} Die vorherige Gleichung zeigt, dass der **Faktor** $a$, welcher sich in vielen **Summanden** befindet, **ausgeklammert** wurde um die Übersicht zu verbessern. Generell gilt, dass man gleiche **Vorfaktoren** bei **Summen** **ausklammern** kann.
+
+
+
+
+
+
 
 !?[Distributivgesetz](https://www.youtube.com/watch?v=tSawKXhm714)
-
 
 *******************************
 
@@ -36087,18 +36371,106 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 #### Übungen - Quadratische Ergänzung
 
 
+<!-- QuadErg 0001 -->
+
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 1:__ 
-
-
-<!-- data-solution-button="5"-->
+__Aufgabe 1:__ **Ordne** den Termen einen äquivalenten Term **zu**.
 
 <section class="flex-container">
+<div class="flex-child">
 
+<!-- data-solution-button="5" 
+data-randomize="true" -->
+__$a)\;\;$__  $  (x-2)^2  =$ [->[($x^2-4x+4$)|$x^2+8x+16$|$x^2-2x+1$|$x^2+3x+9$|$x^2-8x+16$|$x^2+10x+25$|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|$x^2-10x+25$|$x^2-5x+10$]]
 
+</div>
+<div class="flex-child">
 
+<!-- data-solution-button="5" 
+data-randomize="true" -->
+__$b)\;\;$__  $  (x+5)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|$x^2-2x+1$|$x^2+3x+9$|$x^2-8x+16$|($x^2+10x+25$)|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|$x^2-10x+25$|$x^2-5x+10$]]
+
+</div> 
 </section>
+
+
+
+<!-- QuadErg 0002 -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 2:__ **Ordne** den Termen einen äquivalenten Term **zu**.
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5" 
+data-randomize="true" -->
+__$a)\;\;$__  $  (x+4)^2  =$ [->[$x^2-4x+4$|($x^2+8x+16$)|$x^2-2x+1$|$x^2+3x+9$|$x^2-8x+16$|$x^2+10x+25$|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|$x^2-10x+25$|$x^2-5x+10$]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" 
+data-randomize="true" -->
+__$b)\;\;$__  $  (x+1)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|$x^2-2x+1$|$x^2+3x+9$|$x^2-8x+16$|$x^2+10x+25$|($x^2+2x+1$)|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|$x^2-10x+25$|$x^2-5x+10$]]
+
+</div> 
+</section>
+
+
+<!-- QuadErg 0003 -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 3:__ **Ordne** den Termen einen äquivalenten Term **zu**.
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5" 
+data-randomize="true" -->
+__$a)\;\;$__  $  (x-5)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|$x^2-2x+1$|$x^2+3x+9$|$x^2-8x+16$|$x^2+10x+25$|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|($x^2-10x+25$)|$x^2-5x+10$]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" 
+data-randomize="true" -->
+__$b)\;\;$__  $  (x-1)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|($x^2-2x+1$)|$x^2+3x+9$|$x^2-8x+16$|$x^2+10x+25$|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|$x^2-10x+25$|$x^2-5x+10$]]
+
+</div> 
+</section>
+
+
+
+
+<!-- QuadErg 0004 -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 4:__ **Ordne** den Termen einen äquivalenten Term **zu**.
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5" 
+data-randomize="true" -->
+__$a)\;\;$__  $  (x+2)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|$x^2-2x+1$|$x^2+3x+9$|$x^2-8x+16$|$x^2+10x+25$|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|($x^2+4x+4$)|$x^2-10x+25$|$x^2-5x+10$]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" 
+data-randomize="true" -->
+__$b)\;\;$__  $  (x-4)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|$x^2-2x+1$|$x^2+3x+9$|($x^2-8x+16$)|$x^2+10x+25$|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|$x^2-10x+25$|$x^2-5x+10$]]
+
+</div> 
+</section>
+
 
 
 

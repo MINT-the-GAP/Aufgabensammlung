@@ -50,36 +50,20 @@ author: Martin Lommatzsch
 
 # Äquivalenz von quadratischen Termen
 
-**Ordne** den Termen einen äquivalenten Term zu **zu**.
+**Ordne** den Termen einen äquivalenten Term **zu**.
+
 
 <section class="flex-container">
 <div class="flex-child">
-$ I.    \;\; x^2-4x+4 $ \
-$ II.   \;\; x^2+8x+16 $ \
-$ III.  \;\; x^2-2x+1 $ \
-$ IV.   \;\; x^2+3x+9 $ \
-$ V.    \;\; x^2-8x+16 $ \
-$ VI.   \;\; x^2+10x+25 $ \
-</div>
-<div class="flex-child">
-$ VII.  \;\; x^2+2x+1 $ \
-$ VIII. \;\; x^2-3x+9 $ \
-$ IX.   \;\; x^2+5x+10 $ \
-$ X.    \;\; x^2+4x+4 $ \
-$ XI.   \;\; x^2-10x+25 $ \
-$ XII.  \;\; x^2-5x+10 $ \
-</div>
 
-
-
-<div class="flex-child">
-
-__$a)\;\;$__  $  (x+4)^2  =$ [[I.|(II.)|III.|IV.|V.|VI.|VII.|VIII.|IX.|X.|XI.|XII.]]
+<!-- data-randomize="true"  -->
+__$a)\;\;$__  $  (x+4)^2  =$ [->[$x^2-4x+4$|($x^2+8x+16$)|$x^2-2x+1$|$x^2+3x+9$|$x^2-8x+16$|$x^2+10x+25$|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|$x^2-10x+25$|$x^2-5x+10$]]
 
 </div>
 <div class="flex-child">
 
-__$b)\;\;$__  $  (x+1)^2  =$ [[I.|II.|III.|IV.|V.|VI.|(VII.)|VIII.|IX.|X.|XI.|XII.]]
+<!-- data-randomize="true"  -->
+__$b)\;\;$__  $  (x+1)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|$x^2-2x+1$|$x^2+3x+9$|$x^2-8x+16$|$x^2+10x+25$|($x^2+2x+1$)|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|$x^2-10x+25$|$x^2-5x+10$]]
 
 </div> 
 </section>

@@ -67,6 +67,7 @@ __$a)\;\;$__
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi16_1.png)
 
 </center>
+
 <!-- data-solution-button="5"-->
 [[  1,25  ]]
 
@@ -80,6 +81,7 @@ __$b)\;\;$__
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi16_2.png)
 
 </center>
+
 <!-- data-solution-button="5"-->
 [[  0,75  ]]
 
@@ -93,6 +95,7 @@ __$c)\;\;$__
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi16_3.png)
 
 </center>
+
 <!-- data-solution-button="5"-->
 [[  3,28  ]]
 
@@ -106,6 +109,7 @@ __$d)\;\;$__
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi16_4.png)
 
 </center>
+
 <!-- data-solution-button="5"-->
 [[  0,25  ]]
 
