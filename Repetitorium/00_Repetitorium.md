@@ -28219,7 +28219,7 @@ __Aufgabe 31:__ **Gib** die Stelle der angegebenen Punkte **an**.
 <center>
 
 
-<!-- style="height:1000px" -->
+<!-- style="width:1000px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ31.png)
 
 </center>
@@ -28256,7 +28256,7 @@ __Aufgabe 32:__ **Gib** die Stelle der angegebenen Punkte **an**.
 <center>
 
 
-<!-- style="height:1000px" -->
+<!-- style="width:1000px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ32.png)
 
 </center>
@@ -28295,7 +28295,7 @@ __Aufgabe 33:__ **Gib** die Stelle der angegebenen Punkte **an**.
 <center>
 
 
-<!-- style="height:1000px" -->
+<!-- style="width:1000px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ33.png)
 
 </center>
@@ -28335,7 +28335,7 @@ __Aufgabe 34:__ **Gib** die Stelle der angegebenen Punkte **an**.
 <center>
 
 
-<!-- style="height:1000px" -->
+<!-- style="width:1000px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ34.png)
 
 </center>

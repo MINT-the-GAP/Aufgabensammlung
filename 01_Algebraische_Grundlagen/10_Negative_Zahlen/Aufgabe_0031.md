@@ -66,7 +66,7 @@ author: Martin Lommatzsch
 <center>
 
 
-<!-- style="height:1000px" -->
+<!-- style="width:1000px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ31.png)
 
 </center>
