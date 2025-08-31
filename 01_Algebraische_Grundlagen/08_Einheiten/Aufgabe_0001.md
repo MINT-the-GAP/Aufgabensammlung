@@ -53,7 +53,7 @@ author: Martin Lommatzsch
 
 **Fülle** die Lücken **aus**.
 
-<br>
+
 
 <section class="flex-container">
 
@@ -61,25 +61,25 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ [[ 1000 ]] Millimeter sind ein Meter. \
 
-<br>
+
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ Eine Tonne sind [[ 1000 ]] Kilogramm. \
 
-<br>
+
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ Ein Dezimeter entsprechen [[ 100  ]] Millimeter. \
 
-<br>
+
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ Eine Minute besitzt [[ 60   ]] Sekunden. \
 
-<br>
+
 </div>
 <div class="flex-child">
 
@@ -89,8 +89,7 @@ __$e)\;\;$__ $10$ Dezimeter sind [[   1  ]] Meter. \
 
 
 </section>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

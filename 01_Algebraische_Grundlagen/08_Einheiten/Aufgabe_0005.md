@@ -53,7 +53,7 @@ author: Martin Lommatzsch
 
 **Rechne** in die angebene Einheit **um**.
 
-<br>
+
 
 
 <section class="flex-container">
@@ -62,44 +62,43 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ $1\,\text{m}^3 = $ [[ 1000  ]] $\,\text{dm}^3$ \
 
-<br>
+
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ $7\,\text{t} = $ [[ 7000  ]] $\,\text{kg}$ \
 
-<br>
+
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ $240\,\text{s} = $ [[   4   ]] $\,\text{min}$ \
 
-<br>
+
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ $34000\,\text{cm} = $ [[  340  ]] $\,\text{m}$ \
 
-<br>
+
 </div>
 <div class="flex-child">
 
 __$e)\;\;$__ $1\,\text{h} = $ [[ 3600  ]] $\,\text{s}$ \
 
-<br>
+
 </div>
 <div class="flex-child">
 
 __$f)\;\;$__ $8\,\text{km} = $ [[ 80000 ]] $\,\text{dm}$ \
 
-<br>
+
 </div>
 
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

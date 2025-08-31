@@ -54,7 +54,7 @@ author: Martin Lommatzsch
 
 **Rechne** alles in die angegebene Einheit **um**.
 
-<br>
+
 
 
 <section class="flex-container">
@@ -64,31 +64,31 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $3\,\text{dm}^3 = $ [[   3000    ]] $\,\text{ml}$ \
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$b)\;\;$__ $80\,\text{cl} = $ [[    800    ]] $\,\text{ml}$ \
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$c)\;\;$__ $410000\,\text{dm}^3 = $ [[    410    ]] $\,\text{m}^3$ \
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$d)\;\;$__ $9500000000\,\text{cm}^3 = $ [[    9500   ]] $\,\text{m}^3$ \
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$e)\;\;$__ $120\,\text{l} = $ [[ 120000000 ]] $\,\text{mm}^3$ \
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$f)\;\;$__ $50000\,\text{l} = $ [[     50     ]] $\,\text{cm}^3$ \
@@ -98,8 +98,7 @@ __$f)\;\;$__ $50000\,\text{l} = $ [[     50     ]] $\,\text{cm}^3$ \
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

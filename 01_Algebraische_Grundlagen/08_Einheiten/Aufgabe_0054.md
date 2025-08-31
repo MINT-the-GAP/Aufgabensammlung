@@ -54,38 +54,37 @@ author: Martin Lommatzsch
 
 **Wähle** die passende Einheit **aus**, sodass die Differenz zwischen den beiden angegebenen Werten die kleinste ist.
 
-<br>
+
 
 <section class="flex-container">
 
 <div class="flex-child">
 
 __$a)\;\;$__ $4\,$m und $ 19\,$ [[km|m|dm|cm|mm]] \
-<br>
+
 </div>
 <div class="flex-child">
 __$b)\;\;$__ $4\,$s und $ 19\,$ [[d|h|min|s|ms]] \
-<br>
+
 </div>
 <div class="flex-child">
 __$c)\;\;$__ $4\,$g$ = 4\,$ [[t|kg|g|mg]] \
-<br>
+
 </div>
 <div class="flex-child">
 __$d)\;\;$__ $4\,$m und $ 19\,$ [[km|m|dm|cm|mm]] \
-<br>
+
 </div>
 <div class="flex-child">
 __$e)\;\;$__ $4\,$m und $ 19\,$ [[km|m|dm|cm|mm]] \
-<br>
+
 
 </div>
 
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

@@ -54,38 +54,37 @@ author: Martin Lommatzsch
 
 **Wähle** die passende Einheit **aus**, sodass eine wahre mathematische Aussage entsteht.
 
-<br>
+
 
 <section class="flex-container">
 
 <div class="flex-child">
 
 __$a)\;\;$__ $0,01275\,$km$ = 127,5\,$ [[km|m|(dm)|cm|mm]] \
-<br>
+
 </div>
 <div class="flex-child">
 __$b)\;\;$__ $450000\,$ml$ = 0,45\,$ [[km$^3$|(m$^3$)|dm$^3$|cm$^3$|mm$^3$]] \
-<br>
+
 </div>
 <div class="flex-child">
 __$c)\;\;$__ $1200000\,$mm$ = 1,2\,$ [[(km)|m|dm|cm|mm]] \
-<br>
+
 </div>
 <div class="flex-child">
 __$d)\;\;$__ $0,0053\,$ha$ = 530000\,$ [[km$^2$|ha|m$^2$|dm$^2$|(cm$^2$)|mm$^2$]] \
-<br>
+
 </div>
 <div class="flex-child">
 __$e)\;\;$__ $0,0654\,$m$ = 65,4\,$ [[km|m|dm|cm|(mm)]] \
-<br>
+
 
 </div>
 
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

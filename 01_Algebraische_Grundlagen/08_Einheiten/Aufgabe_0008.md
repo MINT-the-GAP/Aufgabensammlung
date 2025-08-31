@@ -53,7 +53,7 @@ author: Martin Lommatzsch
 
 **Gib** die Antwort **an**.
 
-<br>
+
 
 
 <section class="flex-container">
@@ -64,35 +64,35 @@ __$a)\;\;$__ Wie viel Zeit ist von 12:30$\,$Uhr bis 15:40$\,$Uhr vergangen? \
 [[   3   ]] $\,\text{h}$ und [[   10  ]] $\,\text{min}$
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$b)\;\;$__ Wie viel Zeit ist von 09:15$\,$Uhr bis 17:40$\,$Uhr vergangen? \
 [[   8   ]] $\,\text{h}$ und [[   25  ]] $\,\text{min}$
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$c)\;\;$__ Wie viel Zeit ist von 7:05$\,$Uhr bis 14:20$\,$Uhr vergangen? \
 [[   7   ]] $\,\text{h}$ und [[   15  ]] $\,\text{min}$
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$d)\;\;$__ Wie viel Zeit ist von 10:40$\,$Uhr bis 19:30$\,$Uhr vergangen? \
 [[   8   ]] $\,\text{h}$ und [[   50  ]] $\,\text{min}$
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$e)\;\;$__ Wie viel Zeit ist von 05:50$\,$Uhr bis 21:20$\,$Uhr vergangen? \
 [[  15   ]] $\,\text{h}$ und [[   30  ]] $\,\text{min}$
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$f)\;\;$__ Wie viel Zeit ist von 07:25$\,$Uhr bis 18:40$\,$Uhr vergangen? \
@@ -103,8 +103,7 @@ __$f)\;\;$__ Wie viel Zeit ist von 07:25$\,$Uhr bis 18:40$\,$Uhr vergangen? \
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

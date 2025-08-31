@@ -53,50 +53,49 @@ author: Martin Lommatzsch
 
 **Gib** die Antwort auf die Frage **an**.
 
-<br>
+
 
 <section class="flex-container">
 
 <div class="flex-child">
 
 __$a)\;\;$__ Wie viele Millimeter sind ein Meter? \
-[[1000]]
+[[1000]] mm
 
-<br>
+
 </div>
 <div class="flex-child">
 
-__$b)\;\;$__ Wie viele  sind eine Stunde? \
-[[60  ]]
+__$b)\;\;$__ Wie viele Minuten sind eine Stunde? \
+[[60  ]] min
 
-<br>
+
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ Wie viele Meter sind ein Kilometer? \
-[[1000]]
+[[1000]] m
 
-<br>
+
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ Wie viele Gramm sind ein Kilogramm? \
-[[1000]]
+[[1000]] g
 
-<br>
+
 </div>
 <div class="flex-child">
 
 __$e)\;\;$__ Wie viele Stunden sind ein Tag? \
-[[24  ]]
+[[24  ]] h
 
 </div>
 
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

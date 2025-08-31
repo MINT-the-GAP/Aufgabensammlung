@@ -55,7 +55,7 @@ author: Martin Lommatzsch
 
 **Rechne** in die angebene Einheit **um**.
 
-<br>
+
 
 
 <section class="flex-container">
@@ -65,31 +65,31 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $4\,\text{d} = $ [[   96   ]] $\,\text{h}$ \
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$b)\;\;$__ $22\,\text{min} = $ [[  1320  ]] $\,\text{s}$ \
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$c)\;\;$__ $44\,\text{s} = $ [[  44000 ]] $\,\text{ms}$ \
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$d)\;\;$__ $6\,\text{h} = $ [[ 216000 ]] $\,\text{s}$ \
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$e)\;\;$__ $420\,\text{s} = $ [[    7   ]] $\,\text{min}$ \
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$f)\;\;$__ $8\,\text{min} = $ [[  480   ]] $\,\text{s}$ \
@@ -99,8 +99,7 @@ __$f)\;\;$__ $8\,\text{min} = $ [[  480   ]] $\,\text{s}$ \
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

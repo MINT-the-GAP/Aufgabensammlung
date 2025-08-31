@@ -54,38 +54,37 @@ author: Martin Lommatzsch
 
 **Wähle** das passende Relationszeichen **aus**, sodass eine wahre mathematische Aussage entsteht.
 
-<br>
+
 
 <section class="flex-container">
 
 <div class="flex-child">
 
 __$a)\;\;$__ $ \dfrac{4}{3}\,$dm [[($>$)|$=$|$<$]] $ = 1,3\,$cm \
-<br>
+
 </div>
 <div class="flex-child">
 __$b)\;\;$__ $ 0,00225\,$t [[$>$|$=$|($<$)]] $ = \dfrac{90}{4}\,$kg \
-<br>
+
 </div>
 <div class="flex-child">
 __$c)\;\;$__ $ \dfrac{7}{24}\,$min [[$>$|($=$)|$<$]] $ = 17,5\,$s \
-<br>
+
 </div>
 <div class="flex-child">
 __$d)\;\;$__ $ 0,0001\bar{9}\,$km [[$>$|($=$)|$<$]] $ = 0,2\,$dm \
-<br>
+
 </div>
 <div class="flex-child">
 __$e)\;\;$__ $ 1,7\,$dm [[($>$)|$=$|$<$]] $ = \dfrac{3}{20}\,$m \
-<br>
+
 
 </div>
 
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

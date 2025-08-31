@@ -54,7 +54,7 @@ author: Martin Lommatzsch
 
 **Rechne** in die angebene Einheit **um**.
 
-<br>
+
 
 
 <section class="flex-container">
@@ -64,31 +64,31 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $3\,\text{m} = $ [[  300  ]] $\,\text{cm}$ \
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$b)\;\;$__ $12\,\text{m} = $ [[  120  ]] $\,\text{dm}$ \
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$c)\;\;$__ $8000\,\text{mm} = $ [[   8   ]] $\,\text{m}$ \
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$d)\;\;$__ $17\,\text{m} = $ [[ 17000 ]] $\,\text{mm}$ \
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$e)\;\;$__ $5000\,\text{m} = $ [[   5   ]] $\,\text{km}$ \
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$f)\;\;$__ $37\,\text{dm} = $ [[  370  ]] $\,\text{cm}$ \
@@ -98,8 +98,7 @@ __$f)\;\;$__ $37\,\text{dm} = $ [[  370  ]] $\,\text{cm}$ \
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

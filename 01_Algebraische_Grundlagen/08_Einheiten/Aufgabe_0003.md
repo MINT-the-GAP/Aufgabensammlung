@@ -53,7 +53,7 @@ author: Martin Lommatzsch
 
 **Fülle** die Lücken **aus**.
 
-<br>
+
 
 <section class="flex-container">
 
@@ -61,25 +61,25 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ [[  120  ]] Sekunden entsprechen $2$ Minuten. \
 
-<br>
+
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ [[ 1000 ]] Milliliter entsprechen ein Liter. \
 
-<br>
+
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ Ein Zentimeter entsprechen [[  10  ]] Millimeter. \
 
-<br>
+
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ Ein Kilogramm entspricht [[ 1000000 ]] Milligramm. \
 
-<br>
+
 </div>
 <div class="flex-child">
 
@@ -91,8 +91,8 @@ __$e)\;\;$__ [[   1  ]] Dezimeter entspricht $10$ Zentrimeter. \
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+

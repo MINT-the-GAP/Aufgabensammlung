@@ -53,7 +53,7 @@ author: Martin Lommatzsch
 
 **Gib** die Antwort **an**.
 
-<br>
+
 
 
 <section class="flex-container">
@@ -64,35 +64,35 @@ __$a)\;\;$__ Wie viele Minuten sind von 10:30$\,$Uhr bis 13:30$\,$Uhr vergangen?
 [[  180  ]] $\,\text{min}$
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$b)\;\;$__ Wie viele Minuten sind von 06:20$\,$Uhr bis 8:40$\,$Uhr vergangen? \
 [[  140  ]] $\,\text{min}$
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$c)\;\;$__ Wie viele Minuten sind von 18:15$\,$Uhr bis 23:30$\,$Uhr vergangen? \
 [[  315  ]] $\,\text{min}$
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$d)\;\;$__ Wie viele Minuten sind von 08:10$\,$Uhr bis 15:45$\,$Uhr vergangen? \
 [[  455  ]] $\,\text{min}$
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$e)\;\;$__ Wie viele Minuten sind von 01:00$\,$Uhr bis 14:22$\,$Uhr vergangen? \
 [[  802  ]] $\,\text{min}$
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$f)\;\;$__ Wie viele Minuten sind von 07:50$\,$Uhr bis 11:17$\,$Uhr vergangen? \
@@ -103,8 +103,7 @@ __$f)\;\;$__ Wie viele Minuten sind von 07:50$\,$Uhr bis 11:17$\,$Uhr vergangen?
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

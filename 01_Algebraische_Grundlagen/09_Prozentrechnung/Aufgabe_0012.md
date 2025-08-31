@@ -53,40 +53,40 @@ author: Martin Lommatzsch
 
 **Gib** den beschriebenen Prozentwert **an**.
 
-<br>
+
 
 <section class="flex-container">
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ Wie viel sind $80\%$ von $50\,$€?  \
-<br>
+
  [[  40  ]]€
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ Wie viel sind $125\%$ von $300\,$€?  \
-<br>
+
  [[  375  ]]€
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$c)\;\;$__ Wie viel sind $400\%$ von $125\,$€?  \
-<br>
+
  [[  500  ]]€
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$d)\;\;$__ Wie viel sind $7\%$ von $900\,$€?  \
-<br>
+
  [[  63  ]]€
-<br>
+
 </div>
 </section>
 
-<br>
-<br>
-<br>
+
+
+
 

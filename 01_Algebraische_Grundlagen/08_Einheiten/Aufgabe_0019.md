@@ -54,7 +54,7 @@ author: Martin Lommatzsch
 
 **Rechne** alles in die angegebene Einheit **um**.
 
-<br>
+
 
 
 <section class="flex-container">
@@ -64,31 +64,31 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $750000\,\text{m}^2 = $ [[      75      ]] $\,\text{ha}$ \
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$b)\;\;$__ $7\,\text{km}^2 = $ [[ 70000000000 ]] $\,\text{cm}^2$ \
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$c)\;\;$__ $8000\,\text{ha} = $ [[      80      ]] $\,\text{a}$ \
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$d)\;\;$__ $20000\,\text{km}^2 = $ [[      200     ]] $\,\text{ha}$ \
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$e)\;\;$__ $2000000000000\,\text{mm}^2 = $ [[       2      ]] $\,\text{km}^2$ \
 
 </div>
-<br>
+
 <div class="flex-child">
 
 __$f)\;\;$__ $180\,\text{km}^2 = $ [[ 18000000000 ]] $\,\text{dm}^2$ \
@@ -98,8 +98,7 @@ __$f)\;\;$__ $180\,\text{km}^2 = $ [[ 18000000000 ]] $\,\text{dm}^2$ \
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

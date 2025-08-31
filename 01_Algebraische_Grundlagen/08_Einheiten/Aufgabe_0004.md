@@ -53,7 +53,7 @@ author: Martin Lommatzsch
 
 **Rechne** in die angebene Einheit **um**.
 
-<br>
+
 
 
 <section class="flex-container">
@@ -62,44 +62,43 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ $9\,\text{m} = $ [[ 900   ]] $\,\text{cm}$ \
 
-<br>
+
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ $85000\,\text{g} = $ [[ 85    ]] $\,\text{kg}$ \
 
-<br>
+
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ $3\,\text{h} = $ [[ 180   ]] $\,\text{min}$ \
 
-<br>
+
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ $5000\,\text{mm} = $ [[  50   ]] $\,\text{dm}$ \
 
-<br>
+
 </div>
 <div class="flex-child">
 
 __$e)\;\;$__ $1\,\text{m}^2 = $ [[  100  ]] $\,\text{dm}^2$ \
 
-<br>
+
 </div>
 <div class="flex-child">
 
 __$f)\;\;$__ $3600\,\text{h} = $ [[   1   ]] $\,\text{s}$ \
 
-<br>
+
 </div>
 
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
