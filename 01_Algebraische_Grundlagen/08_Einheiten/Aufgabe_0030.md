@@ -60,23 +60,23 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $ \dfrac{7}{50}\,$dm [[($>$)|$=$|$<$]] $ = \dfrac{7}{5}\,$mm \
+__$a)\;\;$__ $ \dfrac{7}{50}\,$dm [[($>$)|$=$|$<$]] $\dfrac{7}{5}\,$mm \
 
 </div>
 <div class="flex-child">
-__$b)\;\;$__ $ \dfrac{1}{6}\,$h [[$>$|($=$)|$<$]] $ = \dfrac{4200}{7}\,$s \
+__$b)\;\;$__ $ \dfrac{1}{6}\,$h [[$>$|($=$)|$<$]] $\dfrac{4200}{7}\,$s \
 
 </div>
 <div class="flex-child">
-__$c)\;\;$__ $ \dfrac{250}{3}\,$mm [[$>$|($=$)|$<$]] $ = \dfrac{5}{6}\,$dm \
+__$c)\;\;$__ $ \dfrac{250}{3}\,$mm [[$>$|($=$)|$<$]] $\dfrac{5}{6}\,$dm \
 
 </div>
 <div class="flex-child">
-__$d)\;\;$__ $ \dfrac{12}{9}\,$kg [[$>$|$=$|($<$)]] $ = \dfrac{5000}{3}\,$g \
+__$d)\;\;$__ $ \dfrac{12}{9}\,$kg [[$>$|$=$|($<$)]] $\dfrac{5000}{3}\,$g \
 
 </div>
 <div class="flex-child">
-__$e)\;\;$__ $ \dfrac{5}{6}\,$min [[($>$)|$=$|$<$]] $ = \dfrac{125}{3}\,$s \
+__$e)\;\;$__ $ \dfrac{5}{6}\,$min [[($>$)|$=$|$<$]] $\dfrac{125}{3}\,$s \
 
 
 </div>

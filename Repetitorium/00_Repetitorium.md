@@ -43325,31 +43325,31 @@ __Aufgabe 25:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $ 21\,$t [[$>$|($=$)|$<$]] $ = 21000\,$kg \
+__$a)\;\;$__ $ 21\,$t [[$>$|($=$)|$<$]] $  21000\,$kg \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $ 56\,$dm [[$>$|$=$|($<$)]] $ = 5820\,$mm \
+__$b)\;\;$__ $ 56\,$dm [[$>$|$=$|($<$)]] $  5820\,$mm \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $ 7\,$min [[($>$)|$=$|$<$]] $ = 400\,$s \
+__$c)\;\;$__ $ 7\,$min [[($>$)|$=$|$<$]] $  400\,$s \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $ 4\,$m [[($>$)|$=$|$<$]] $ = 3570\,$mm \
+__$d)\;\;$__ $ 4\,$m [[($>$)|$=$|$<$]] $  3570\,$mm \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $ 14\,$cm$^2$ [[($>$)|$=$|$<$]] $ = 140\,$mm$^2$ \
+__$e)\;\;$__ $ 14\,$cm$^2$ [[($>$)|$=$|$<$]] $  140\,$mm$^2$ \
 
 
 </div>
@@ -43374,31 +43374,31 @@ __Aufgabe 26:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $ 764\,$mm [[$>$|$=$|($<$)]] $ = 2\,$m \
+__$a)\;\;$__ $ 764\,$mm [[$>$|$=$|($<$)]] $  2\,$m \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $ 150\,$kg [[($>$)|$=$|$<$]] $ = 95000\,$g \
+__$b)\;\;$__ $ 150\,$kg [[($>$)|$=$|$<$]] $  95000\,$g \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $ 3\,$l [[$>$|($=$)|$<$]] $ = 3000\,$cm$^3$ \
+__$c)\;\;$__ $ 3\,$l [[$>$|($=$)|$<$]] $  3000\,$cm$^3$ \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $ 180\,$min [[$>$|$=$|($<$)]] $ = 4\,$h \
+__$d)\;\;$__ $ 180\,$min [[$>$|$=$|($<$)]] $  4\,$h \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $ 6\,$min [[$>$|$=$|($<$)]] $ = 3000\,$s \
+__$e)\;\;$__ $ 6\,$min [[$>$|$=$|($<$)]] $  3000\,$s \
 
 
 </div>
@@ -43423,31 +43423,31 @@ __Aufgabe 27:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $ 450\,$min [[($>$)|$=$|$<$]] $ = 7\,$h \
+__$a)\;\;$__ $ 450\,$min [[($>$)|$=$|$<$]] $  7\,$h \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $ 600\,$kg [[$>$|$=$|($<$)]] $ = 3\,$t \
+__$b)\;\;$__ $ 600\,$kg [[$>$|$=$|($<$)]] $  3\,$t \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $ 25\,$dm [[($>$)|$=$|$<$]] $ = 2\,$m \
+__$c)\;\;$__ $ 25\,$dm [[($>$)|$=$|$<$]] $  2\,$m \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $ 84000\,$mm [[$>$|($=$)|$<$]] $ = 840\,$dm \
+__$d)\;\;$__ $ 84000\,$mm [[$>$|($=$)|$<$]] $  840\,$dm \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $ 50\,$dm$^2$ [[$>$|($=$)|$<$]] $ = 500000\,$mm$^2$ \
+__$e)\;\;$__ $ 50\,$dm$^2$ [[$>$|($=$)|$<$]] $  500000\,$mm$^2$ \
 
 
 </div>
@@ -43472,31 +43472,31 @@ __Aufgabe 28:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $ 5\,$h [[($>$)|$=$|$<$]] $ = 15000\,$s \
+__$a)\;\;$__ $ 5\,$h [[($>$)|$=$|$<$]] $  15000\,$s \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $ 120\,$m [[$>$|$=$|($<$)]] $ = 840000\,$cm \
+__$b)\;\;$__ $ 120\,$m [[$>$|$=$|($<$)]] $  840000\,$cm \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $ 10800\,$s [[$>$|($=$)|$<$]] $ = 3\,$h \
+__$c)\;\;$__ $ 10800\,$s [[$>$|($=$)|$<$]] $  3\,$h \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $ 12\,$dm$^3$ [[($>$)|$=$|$<$]] $ = 9000\,$cm$^3$ \
+__$d)\;\;$__ $ 12\,$dm$^3$ [[($>$)|$=$|$<$]] $  9000\,$cm$^3$ \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $ 800000\,$mg [[$>$|$=$|($<$)]] $ = 2\,$kg \
+__$e)\;\;$__ $ 800000\,$mg [[$>$|$=$|($<$)]] $  2\,$kg \
 
 
 </div>
@@ -43521,31 +43521,31 @@ __Aufgabe 29:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $ \dfrac{7}{8}\,$kg [[($>$)|$=$|$<$]] $ = \dfrac{1000}{2}\,$g \
+__$a)\;\;$__ $ \dfrac{7}{8}\,$kg [[($>$)|$=$|$<$]] $  \dfrac{1000}{2}\,$g \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $ \dfrac{4}{5}\,$min [[$>$|($=$)|$<$]] $ = \dfrac{36}{3}\,$s \
+__$b)\;\;$__ $ \dfrac{4}{5}\,$min [[$>$|($=$)|$<$]] $  \dfrac{36}{3}\,$s \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $ \dfrac{40}{7}\,$m [[($>$)|$=$|$<$]] $ = \dfrac{4}{70}\,$dm \
+__$c)\;\;$__ $ \dfrac{40}{7}\,$m [[($>$)|$=$|$<$]] $  \dfrac{4}{70}\,$dm \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $ \dfrac{8}{9}\,cm$ [[$>$|($=$)|$<$]] $ = \dfrac{80}{9}\,$mm \
+__$d)\;\;$__ $ \dfrac{8}{9}\,cm$ [[$>$|($=$)|$<$]] $  \dfrac{80}{9}\,$mm \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $ \dfrac{8}{3}\,$mm [[($>$)|$=$|$<$]] $ = \dfrac{8}{300}\,$cm \
+__$e)\;\;$__ $ \dfrac{8}{3}\,$mm [[($>$)|$=$|$<$]] $  \dfrac{8}{300}\,$cm \
 
 
 </div>
@@ -43572,31 +43572,31 @@ __Aufgabe 30:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $ \dfrac{7}{50}\,$dm [[($>$)|$=$|$<$]] $ = \dfrac{7}{5}\,$mm \
+__$a)\;\;$__ $ \dfrac{7}{50}\,$dm [[($>$)|$=$|$<$]] $  \dfrac{7}{5}\,$mm \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $ \dfrac{1}{6}\,$h [[$>$|($=$)|$<$]] $ = \dfrac{4200}{7}\,$s \
+__$b)\;\;$__ $ \dfrac{1}{6}\,$h [[$>$|($=$)|$<$]] $  \dfrac{4200}{7}\,$s \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $ \dfrac{250}{3}\,$mm [[$>$|($=$)|$<$]] $ = \dfrac{5}{6}\,$dm \
+__$c)\;\;$__ $ \dfrac{250}{3}\,$mm [[$>$|($=$)|$<$]] $  \dfrac{5}{6}\,$dm \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $ \dfrac{12}{9}\,$kg [[$>$|$=$|($<$)]] $ = \dfrac{5000}{3}\,$g \
+__$d)\;\;$__ $ \dfrac{12}{9}\,$kg [[$>$|$=$|($<$)]] $  \dfrac{5000}{3}\,$g \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $ \dfrac{5}{6}\,$min [[($>$)|$=$|$<$]] $ = \dfrac{125}{3}\,$s \
+__$e)\;\;$__ $ \dfrac{5}{6}\,$min [[($>$)|$=$|$<$]] $  \dfrac{125}{3}\,$s \
 
 
 </div>
@@ -43623,31 +43623,31 @@ __Aufgabe 31:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $ \dfrac{3}{2}\,$h [[($>$)|$=$|$<$]] $ = \dfrac{125}{4}\,$min \
+__$a)\;\;$__ $ \dfrac{3}{2}\,$h [[($>$)|$=$|$<$]] $  \dfrac{125}{4}\,$min \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $ \dfrac{3}{400}\,$m [[$>$|$=$|($<$)]] $ = \dfrac{300}{4}\,mm$ \
+__$b)\;\;$__ $ \dfrac{3}{400}\,$m [[$>$|$=$|($<$)]] $  \dfrac{300}{4}\,mm$ \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $ \dfrac{8}{3}\,$min [[$>$|($=$)|$<$]] $ = \dfrac{320}{2}\,$s \
+__$c)\;\;$__ $ \dfrac{8}{3}\,$min [[$>$|($=$)|$<$]] $  \dfrac{320}{2}\,$s \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $ \dfrac{300}{7}\,$kg [[($>$)|$=$|$<$]] $ = \dfrac{3}{700}\,$g \
+__$d)\;\;$__ $ \dfrac{300}{7}\,$kg [[($>$)|$=$|$<$]] $  \dfrac{3}{700}\,$g \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $ \dfrac{5}{40}\,$dm [[$>$|$=$|($<$)]] $ = \dfrac{500}{4}\,$mm \
+__$e)\;\;$__ $ \dfrac{5}{40}\,$dm [[$>$|$=$|($<$)]] $  \dfrac{500}{4}\,$mm \
 
 
 </div>
@@ -43674,31 +43674,31 @@ __Aufgabe 32:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $ 0,25\,$min [[$>$|($=$)|$<$]] $ = 15\,$s \
+__$a)\;\;$__ $ 0,25\,$min [[$>$|($=$)|$<$]] $  15\,$s \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $ 0,023\,$m [[$>$|$=$|($<$)]] $ = 23\,$cm \
+__$b)\;\;$__ $ 0,023\,$m [[$>$|$=$|($<$)]] $  23\,$cm \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $ 62,5\,$kg [[($>$)|$=$|$<$]] $ = 0,00625\,$t \
+__$c)\;\;$__ $ 62,5\,$kg [[($>$)|$=$|$<$]] $  0,00625\,$t \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $ 45\,$min [[($>$)|$=$|$<$]] $ = 0,45\,$h \
+__$d)\;\;$__ $ 45\,$min [[($>$)|$=$|$<$]] $  0,45\,$h \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $ 3,4\,$cm [[$>$|$=$|($<$)]] $ = 0,34\,$m \
+__$e)\;\;$__ $ 3,4\,$cm [[$>$|$=$|($<$)]] $  0,34\,$m \
 
 
 </div>
@@ -43724,31 +43724,31 @@ __Aufgabe 33:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $ 2,5\,$h [[$>$|$=$|($<$)]] $ = 250\,$min \
+__$a)\;\;$__ $ 2,5\,$h [[$>$|$=$|($<$)]] $  250\,$min \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $ 240\,$mm [[$>$|($=$)|$<$]] $ = 0,24\,$m \
+__$b)\;\;$__ $ 240\,$mm [[$>$|($=$)|$<$]] $  0,24\,$m \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $ 0,0014\,$km [[($>$)|$=$|$<$]] $ = 63\,$cm \
+__$c)\;\;$__ $ 0,0014\,$km [[($>$)|$=$|$<$]] $  63\,$cm \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $ 310\,$mg [[($>$)|$=$|$<$]] $ = 0,00026\,$kg \
+__$d)\;\;$__ $ 310\,$mg [[($>$)|$=$|$<$]] $  0,00026\,$kg \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $ 80\,$min [[($>$)|$=$|$<$]] $ = 1,33\,$h \
+__$e)\;\;$__ $ 80\,$min [[($>$)|$=$|$<$]] $  1,33\,$h \
 
 
 </div>
@@ -43774,31 +43774,31 @@ __Aufgabe 34:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $ 1,2\,$min [[($>$)|$=$|$<$]] $ = 80\,$s \
+__$a)\;\;$__ $ 1,2\,$min [[($>$)|$=$|$<$]] $  80\,$s \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $ 4,5\,$dm [[($>$)|$=$|$<$]] $ = 45\,$mm \
+__$b)\;\;$__ $ 4,5\,$dm [[($>$)|$=$|$<$]] $  45\,$mm \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $ 0,025\,$kg [[($>$)|$=$|$<$]] $ = 25\,$mg \
+__$c)\;\;$__ $ 0,025\,$kg [[($>$)|$=$|$<$]] $  25\,$mg \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $ 100\,$min [[$>$|($=$)|$<$]] $ = 1,4\,$h \
+__$d)\;\;$__ $ 100\,$min [[$>$|($=$)|$<$]] $  1,4\,$h \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $ 0,0689\,$m [[($>$)|$=$|$<$]] $ = 6,89\,$mm \
+__$e)\;\;$__ $ 0,0689\,$m [[($>$)|$=$|$<$]] $  6,89\,$mm \
 
 
 </div>
@@ -43824,31 +43824,31 @@ __Aufgabe 35:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $ 0,\bar{3}\,$kg [[($>$)|$=$|$<$]] $ = 300\,$g \
+__$a)\;\;$__ $ 0,\bar{3}\,$kg [[($>$)|$=$|$<$]] $  300\,$g \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $ \dfrac{5}{7}\,$min [[($>$)|$=$|$<$]] $ = 0,5\,$min \
+__$b)\;\;$__ $ \dfrac{5}{7}\,$min [[($>$)|$=$|$<$]] $  0,5\,$min \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $ 12,5\,$mm [[$>$|$=$|($<$)]] $ = \dfrac{1}{8}\,$m \
+__$c)\;\;$__ $ 12,5\,$mm [[$>$|$=$|($<$)]] $  \dfrac{1}{8}\,$m \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $ 0,04\,$m [[$>$|$=$|($<$)]] $ = \dfrac{2}{5}\,dm$ \
+__$d)\;\;$__ $ 0,04\,$m [[$>$|$=$|($<$)]] $  \dfrac{2}{5}\,dm$ \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $ \dfrac{5}{600}\,$h [[$>$|($=$)|$<$]] $ = 0,5\,$min \
+__$e)\;\;$__ $ \dfrac{5}{600}\,$h [[$>$|($=$)|$<$]] $  0,5\,$min \
 
 
 </div>
@@ -43874,31 +43874,31 @@ __Aufgabe 36:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $ \dfrac{4}{3}\,$dm [[($>$)|$=$|$<$]] $ = 1,3\,$cm \
+__$a)\;\;$__ $ \dfrac{4}{3}\,$dm [[($>$)|$=$|$<$]] $  1,3\,$cm \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $ 0,00225\,$t [[$>$|$=$|($<$)]] $ = \dfrac{90}{4}\,$kg \
+__$b)\;\;$__ $ 0,00225\,$t [[$>$|$=$|($<$)]] $  \dfrac{90}{4}\,$kg \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $ \dfrac{7}{24}\,$min [[$>$|($=$)|$<$]] $ = 17,5\,$s \
+__$c)\;\;$__ $ \dfrac{7}{24}\,$min [[$>$|($=$)|$<$]] $  17,5\,$s \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $ 0,0001\bar{9}\,$km [[$>$|($=$)|$<$]] $ = 0,2\,$dm \
+__$d)\;\;$__ $ 0,0001\bar{9}\,$km [[$>$|($=$)|$<$]] $  0,2\,$dm \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $ 1,7\,$dm [[($>$)|$=$|$<$]] $ = \dfrac{3}{20}\,$m \
+__$e)\;\;$__ $ 1,7\,$dm [[($>$)|$=$|$<$]] $  \dfrac{3}{20}\,$m \
 
 
 </div>
@@ -43924,31 +43924,31 @@ __Aufgabe 37:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $ 2,3\,$min [[$>$|$=$|($<$)]] $ = \dfrac{23}{60}\,$h \
+__$a)\;\;$__ $ 2,3\,$min [[$>$|$=$|($<$)]] $  \dfrac{23}{60}\,$h \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $ \dfrac{7}{400}\,$dm [[($>$)|$=$|$<$]] $ = 0,175\,$mm \
+__$b)\;\;$__ $ \dfrac{7}{400}\,$dm [[($>$)|$=$|$<$]] $  0,175\,$mm \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $ \dfrac{500}{3}\,$cm [[$>$|$=$|($<$)]] $ = 1,67\,$m \
+__$c)\;\;$__ $ \dfrac{500}{3}\,$cm [[$>$|$=$|($<$)]] $  1,67\,$m \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $ 2,4\,$kg [[$>$|$=$|($<$)]] $ = \dfrac{3}{1000}\,$t \
+__$d)\;\;$__ $ 2,4\,$kg [[$>$|$=$|($<$)]] $  \dfrac{3}{1000}\,$t \
 
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $ \dfrac{4000}{9}\,$mm [[$>$|($=$)|$<$]] $ = 0,\bar{4}\,$m \
+__$e)\;\;$__ $ \dfrac{4000}{9}\,$mm [[$>$|($=$)|$<$]] $  0,\bar{4}\,$m \
 
 
 </div>
@@ -44057,13 +44057,57 @@ __$e)\;\;$__ $ \dfrac{4000}{9}\,$mm [[$>$|($=$)|$<$]] $ = 0,\bar{4}\,$m \
 
 
 
-
 {{|>}}
-*******************************
+********************************
 
-Under Construction
 
-*******************************
+Ein **Verhältnis** lässt sich durch einen **Bruch** oder einer **Division** darstellen. **Verhältnisse** werden benutzt, um **Vergrößerungen** oder **Verkleinerungen** zu verdeutlichen.
+
+
+
+$$
+\begin{align*}
+\frac{1}{4}	 =								1 &: 4 \qquad \text{Verkleinerung} \\
+\frac{4}{1}  =   							4 &: 1 \qquad \text{Vergrößerung} \\
+\end{align*}
+$$
+
+
+
+{{|>}} Diese Form von **Verhältnissen** wird bei Karten "**Maßstab**" genannt. Dabei ist die erste Zahl immer die Darstellung auf der Karte, während die zweite Zahl die dazugehörige **Strecke** in der Natur widerspiegelt. So wäre bei einem **Maßstab** von $1:1000$ ein gemessener Meter auf der Karte in der Natur $1000\,$m. 
+**Verhältnisse** werden auch in vielen anderen Bereichen, wie der Chemie und beim Kochen, verwendet. Dabei werden **Verhältnisgleichungen** benötigt:
+
+
+$$
+\begin{align*}
+\frac{4}{500\,\text{g}}	 =	\frac{3}{x}		\;\;,					 \\ 
+\end{align*}
+$$
+
+
+
+{{|>}} wobei das Beispiel so interpretiert werden kann, dass für vier Personen $500\,$g benötigt werden und nun die Menge für drei Personen bestimmt werden soll, dabei gilt das **Verhältnis** $\dfrac{4}{500\,\text{g}} = 1 : 125\,$g (pro Person $125\,$g), sodass die $125\,$g nur mit der Anzahl der Personen **multipliziert** werden muss (wie es durch **Äquivalenzumformung** ebenso bestimmt wird). 
+
+
+{{|>}} Des Weiteren kann ein **Verhältnis** benutzt werden, um zum Beispiel zu verdeutlichen, dass auf jedes Sauerstoffmolekül $O_2$ eine gewisse **Anzahl** $\#$ von Stickstoffmolekülen $N_2$ kommen, wenn Luft aus unserer Atmosphäre betrachtet wird:
+
+
+$$
+\begin{align*}
+\frac{\#(O_2)}{21\%}	 =	\frac{\#(N_2)}{78\%}	\;\Rightarrow\; \frac{78\% \#(O_2)}{21\%} = \#(N_2)  	\;\Rightarrow\; 3,714  \#(O_2)  \approx \#(N_2) 	\;\Rightarrow\;  3,714 : 1   \;\;,					 \\ 
+\end{align*}
+$$
+
+
+
+{{|>}} wobei die Information, welche Zahl zu welcher **Größe** gehört, angegeben werden sollte.
+
+{{|>}} Generell lässt sich festhalten, dass **Verhältnisgleichungen** eine **Gleichheit** von **Quotienten** beschreiben und die allgemeine Form $\dfrac{a}{b} = \dfrac{c}{d}$ besitzen. **Verhältnisse** werden oftmals bei **Streckungen** und **Ähnlichkeiten**  sowie bei der **Berechnung** von **Strahlensatz**- und **Trigonometrieaufgaben** vorkommen.
+
+
+
+********************************
+
 
 
 #### Übungen - Verhältnisse
