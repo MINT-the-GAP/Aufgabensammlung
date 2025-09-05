@@ -36726,7 +36726,7 @@ $$
 
 
 
-<!-- Äquivalenzumformung 0032 -->
+<!-- quivalenzumformung 0032 -->
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/4.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
@@ -36851,7 +36851,7 @@ $$
 
 
 
-<!-- Äquivalenzumformung 0033 -->
+<!-- quivalenzumformung 0033 -->
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
@@ -36895,7 +36895,7 @@ Deutung: Für $x<4$ ist Pass A günstiger; für $x>4$ ist Pass B günstiger.
 
 
 
-<!-- Äquivalenzumformung 0034 -->
+<!-- quivalenzumformung 0034 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 34:__ Zwei Schüler sammeln Sticker für ein Album. Die betrachtete Schülerin startet mit sechs Stickern. Jeden Tag fügt sie drei weitere Sticker hinzu. Der betrachtete Schüler beginnt mit 18 Stickern, bekommt aber pro Tag nur ein weiteren Sticker. **Berechne**, nach wie vielen Tagen beide gleich viele Sticker haben.
@@ -36935,7 +36935,7 @@ Nach 6 Tagen haben beide gleich viele Sticker. Für $x<6$ hat der Schüler mehr;
 
 
 
-<!-- Äquivalenzumformung 0035 -->
+<!-- quivalenzumformung 0035 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 35:__ Ein Behälter wird täglich mit vier Litern Wasser aufgefüllt. Zu Beginn sind bereits zwei Liter enthalten. Ein zweiter Behälter enthält anfangs 14 Liter Wasser, verliert jedoch jeden Tag einen Liter. **Berechne**, nach wie vielen Tagen beide Behälter gleich viel Wasser enthalten.
@@ -36978,7 +36978,7 @@ Deutung: Nach $\dfrac{12}{5}\approx 2{,}4$ Tagen haben beide Behälter gleich vi
 
 
 
-<!-- Äquivalenzumformung 0036 -->
+<!-- quivalenzumformung 0036 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 36:__ Ein Auto fährt mit einer konstanten Geschwindigkeit von $60\,\dfrac{\text{km}}{\text{h}}$ los.  
@@ -37017,7 +37017,7 @@ Deutung: Nach 6 Stunden Fahrzeit des ersten Autos bzw. nach 4 Stunden des zweite
 
 
 
-<!-- Äquivalenzumformung 0037 -->
+<!-- quivalenzumformung 0037 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 37:__ In einem Copyshop kann zwischen zwei Bezahlmodellen gewählt werden. In Modell A fällt eine einmalige Grundgebühr von 0,75 € an; jede Kopie kostet zusätzlich 0,30 €. In Modell B beträgt die einmalige Grundgebühr 3,75 €, dafür kostet jede Kopie nur 0,15 €. **Berechne**, nach wie vielen Kopien die Gesamtkosten beider Modelle genau gleich sind.
@@ -37061,7 +37061,7 @@ Deutung: Für $x<20$ ist Modell A günstiger; für $x>20$ ist Modell B günstige
 
 
 
-<!-- Äquivalenzumformung 0038 -->
+<!-- quivalenzumformung 0038 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 __Aufgabe 38:__ Ein Becken wird pro Minute um 0,75 Liter aufgefüllt; zu Beginn sind 2,5 Liter enthalten.  
@@ -37106,7 +37106,7 @@ Nach $\dfrac{19}{5}\approx 3,8$ Minuten ist der Füllstand in beiden Becken glei
 
 
 
-<!-- Äquivalenzumformung 0039 -->
+<!-- quivalenzumformung 0039 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 __Aufgabe 39:__ Eine gesuchte Zahl wird verdreifacht und anschließend um fünf verringert.  
@@ -37151,7 +37151,7 @@ Deutung: Die gesuchte Zahl ist $\dfrac{24}{5}=4{,}8$.
 
 
 
-<!-- Äquivalenzumformung 0040 -->
+<!-- quivalenzumformung 0040 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 __Aufgabe 40:__ In zwei Räumen ändert sich die Temperatur gleichmäßig: 
@@ -37199,7 +37199,7 @@ Deutung: Nach $\dfrac{16}{3}\approx 5{,}3$ Stunden haben beide Räume $24^\circ\
 
 
 
-<!-- Äquivalenzumformung 0041 -->
+<!-- quivalenzumformung 0041 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 __Aufgabe 41:__ Ein Anstieg beginnt auf 820 m und gewinnt pro Minute 9 m an Höhe.  
@@ -37246,7 +37246,7 @@ Deutung: Nach $\dfrac{62}{3}\approx 20{,}7$ Minuten liegen beide bei 1006 m Höh
 
 
 
-<!-- Äquivalenzumformung 0042 -->
+<!-- quivalenzumformung 0042 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 __Aufgabe 42:__ Zwei Pflanzen wachsen in gleichmäßiger Höhe pro Woche.  
@@ -37287,6 +37287,407 @@ $$
 
 
 Deutung: Nach $\dfrac{44}{5} \approx 8{,}8$ Wochen sind beide Pflanzen gleich hoch ($\dfrac{284}{5} = 56{,}8$ cm).
+
+************
+
+
+
+
+
+
+<!-- quivalenzumformung 0043 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 43:__ Auf zwei Förderbändern liegen Kisten.  
+Auf Band 1 liegen zu Beginn 18 Kisten, und pro Minute kommen 1,25 Kisten dazu.  
+Auf Band 2 liegen zu Beginn 44 Kisten, und pro Minute werden 1,75 Kisten abtransportiert.  
+**Berechne**, nach wie vielen Minuten auf beiden Bändern gleich viele Kisten liegen.
+
+
+<!-- data-solution-button="5"-->
+$x$ = [[  26/3  ]]
+@Algebrite.check(26/3)
+************
+$$
+\textbf{Gleichung aus dem Text:}\quad 
+\dfrac{5}{4}x + 18 \;\stackrel{!}{=}\; 44 - \dfrac{7}{4}x
+$$
+
+$$
+\begin{align*}
+\dfrac{5}{4}x + 18 &= 44 - \dfrac{7}{4}x \quad \left|\, +\dfrac{7}{4}x \right.\\[2pt]
+\left(\dfrac{5}{4} + \dfrac{7}{4}\right)x + 18 &= 44 \quad \left|\, -18 \right.\\[2pt]
+\dfrac{12}{4}x &= 26 \quad \left|\, :\dfrac{12}{4} \right.\\[2pt]
+3x &= 26 \quad \left|\, :3 \right.\\[2pt]
+x &= \dfrac{26}{3}
+\end{align*}
+$$
+
+$$
+\begin{align*}
+\textbf{Probe:}\quad 
+&\underbrace{\dfrac{5}{4}\cdot\dfrac{26}{3} + 18}_{\text{Band 1}}
+= \dfrac{130}{12} + \dfrac{216}{12}
+= \dfrac{346}{12}
+= \dfrac{173}{6}   \\
+&\quad\text{und}\quad   \\
+&\underbrace{44 - \dfrac{7}{4}\cdot\dfrac{26}{3}}_{\text{Band 2}}
+= \dfrac{264}{6} - \dfrac{91}{6}
+= \dfrac{173}{6}
+\end{align*}
+$$
+
+
+Deutung: Nach $\dfrac{26}{3}\approx 8{,}7$  Minuten liegen auf beiden Bändern gleich viele Kisten ($\dfrac{173}{6}\approx 28{,}8$ Kisten).
+
+************
+
+
+
+
+
+
+<!-- quivalenzumformung 0044 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 44:__ Im Wartebereich eines Bahnhofs stehen zwei Sitzplätze mit Steckdosen.  
+Ein Smartphone wird an eine Schnellladestation angeschlossen. Zu Beginn zeigt es 22 Prozent Akkustand und gewinnt pro Minute 1,5 Prozentpunkte hinzu.  
+Das andere Smartphone läuft ohne Netzteil mit einem grafikintensiven Spiel. Es startet bei 94 Prozent und verliert pro Minute 2 Prozentpunkte.  
+**Berechne**, nach wie vielen Minuten beide Geräte den gleichen Akkustand anzeigen.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  144/7  ]]
+@Algebrite.check(144/7)
+************
+$$
+\textbf{Gleichung aus dem Text:}\quad 
+\dfrac{3}{2}x + 22 \;\stackrel{!}{=}\; 94 - 2x
+$$
+
+$$
+\begin{align*}
+\dfrac{3}{2}x + 22 &= 94 - 2x \quad \left|\, +2x \right.\\[2pt]
+\left(\dfrac{3}{2} + 2\right)x + 22 &= 94 \quad \left|\, -22 \right.\\[2pt]
+\dfrac{7}{2}x &= 72 \quad \left|\, :\dfrac{7}{2} \right.\\[2pt]
+x &= 72 \cdot \dfrac{2}{7} \;=\; \dfrac{144}{7}
+\end{align*}
+$$
+
+$$
+\begin{align*}
+\textbf{Probe:}\quad 
+&\underbrace{\dfrac{3}{2}\cdot \dfrac{144}{7} + 22}_{\text{Ladegerät}}
+= \dfrac{216}{7} + \dfrac{154}{7}
+= \dfrac{370}{7}   \\
+&\quad\text{und}\quad   \\
+&\underbrace{94 - 2\cdot \dfrac{144}{7}}_{\text{ohne Netzteil}}
+= \dfrac{658}{7} - \dfrac{288}{7}
+= \dfrac{370}{7}
+\end{align*}
+$$
+
+
+Deutung: Nach $\dfrac{144}{7}\approx 20{,}6$ Minuten zeigen beide etwa $\dfrac{370}{7}\approx 52{,}9\,\% Akkustand.
+
+************
+
+
+
+
+
+<!-- quivalenzumformung 0045 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 45:__ Im Neubau eines Museums werden die Aufzüge im Probebetrieb getestet.  
+Ein Aufzug startet in der Tiefgarage Ebene −3 und fährt gleichmäßig nach oben; die Anzeige steigt dabei pro Minute um 1,5 Ebenen.  
+Der andere Aufzug startet im 9. Obergeschoss und fährt gleichmäßig nach unten; die Anzeige sinkt pro Minute um 2 Ebenen.  
+Die Höhenanzeige der Aufzüge kann auch Zwischenwerte zwischen zwei Ebenen anzeigen.  
+**Berechne**, nach wie vielen Minuten beide Aufzüge auf gleicher Höhe sind.
+
+
+
+<!-- data-solution-button="5"-->
+$x$ = [[  24/7  ]]
+@Algebrite.check(24/7)
+************
+$$
+\textbf{Gleichung aus dem Text:}\quad 
+\dfrac{3}{2}x - 3 \;\stackrel{!}{=}\; 9 - 2x
+$$
+
+$$
+\begin{align*}
+\dfrac{3}{2}x - 3 &= 9 - 2x \quad \left|\, +2x \right.\\[2pt]
+\left(\dfrac{3}{2} + 2\right)x - 3 &= 9 \quad \left|\, +3 \right.\\[2pt]
+\dfrac{7}{2}x &= 12 \quad \left|\, :\dfrac{7}{2} \right.\\[2pt]
+x &= 12 \cdot \dfrac{2}{7} \;=\; \dfrac{24}{7}
+\end{align*}
+$$
+
+$$
+\begin{align*}
+\textbf{Probe:}\quad 
+&\underbrace{-3 + \dfrac{3}{2}\cdot\dfrac{24}{7}}_{\text{Aufzug aus der Tiefgarage}}
+= -\dfrac{21}{7} + \dfrac{36}{7}
+= \dfrac{15}{7}
+&\quad\text{und}\quad
+&\underbrace{9 - 2\cdot\dfrac{24}{7}}_{\text{Aufzug von oben}}
+= \dfrac{63}{7} - \dfrac{48}{7}
+= \dfrac{15}{7}
+\end{align*}
+$$
+
+
+Deutung: Nach $\dfrac{24}{7}\approx 3{,}43$ Minuten sind beide auf gleicher Höhe, nämlich bei $\dfrac{15}{7}\approx 2{,}14$ Ebenen über dem Erdgeschoss (zwischen 2. und 3. OG).
+
+************
+
+
+
+
+
+
+
+<!-- quivalenzumformung 0046 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 46:__ Im großen Schaubecken werden zwei Tauchroboter getestet.  
+Der erste startet 60 m unter der Wasseroberfläche und steigt gleichmäßig pro Minute um 3 m auf.  
+Der zweite startet 10 m unter der Wasseroberfläche und taucht gleichmäßig pro Minute um 2,5 m weiter ab.  
+**Berechne**, nach wie vielen Minuten beide Roboter in der gleichen Tiefe sind.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  100/11  ]]
+@Algebrite.check(100/11)
+************
+$$
+\textbf{Gleichung aus dem Text:}\quad 
+3x - 60 \;\stackrel{!}{=}\; -10 - \dfrac{5}{2}x
+$$
+
+$$
+\begin{align*}
+3x - 60 &= -10 - \dfrac{5}{2}x \quad \left|\, +\dfrac{5}{2}x \right.\\[2pt]
+\left(3 + \dfrac{5}{2}\right)x - 60 &= -10 \quad \left|\, +60 \right.\\[2pt]
+\dfrac{11}{2}x &= 50 \quad \left|\, :\dfrac{11}{2} \right.\\[2pt]
+x &= 50 \cdot \dfrac{2}{11} \;=\; \dfrac{100}{11}
+\end{align*}
+$$
+
+$$
+\begin{align*}
+\textbf{Probe:}\quad 
+&\underbrace{-60 + 3\cdot \dfrac{100}{11}}_{\text{1. Roboter}}
+= -\dfrac{660}{11} + \dfrac{300}{11}
+= -\dfrac{360}{11}
+&\quad\text{und}\quad
+&\underbrace{-10 - \dfrac{5}{2}\cdot \dfrac{100}{11}}_{\text{2. Roboter}}
+= -\dfrac{110}{11} - \dfrac{250}{11}
+= -\dfrac{360}{11}
+\end{align*}
+$$
+
+
+Deutung: Nach $\dfrac{100}{11}\approx 9{,}09$ Minuten befinden sich beide in derselben Tiefe: $-\dfrac{360}{11}\approx -32{,}73$ m (also $32{,}73$ m unter der Oberfläche).
+
+
+************
+
+
+
+
+
+<!-- quivalenzumformung 0047 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 47:__ Vor der Abendshow gibt es zwei Eingänge mit separaten Warteschlangen.  
+Am Nord-Eingang stehen zu Beginn 40 Personen. Pro Minute werden im Durchschnitt 2,5 Personen eingelassen, gleichzeitig kommen 1,25 Personen neu dazu.  
+Am Süd-Eingang warten zunächst 64 Personen. Pro Minute werden 3,5 Personen eingelassen, während 1 Person pro Minute neu ankommt.  
+Die Anzeigen der Ordner werden im Mittel über mehrere Minuten gemessen.  
+**Berechne**, nach wie vielen Minuten beide Schlangen **gleich lang** sind.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  96/5  ]]
+@Algebrite.check(96/5)
+************
+$$
+\textbf{Gleichung aus dem Text:}\quad 
+40 - \dfrac{5}{4}x \;\stackrel{!}{=}\; 64 - \dfrac{5}{2}x
+$$
+
+$$
+\begin{align*}
+40 - \dfrac{5}{4}x &= 64 - \dfrac{5}{2}x \quad \left|\, +\dfrac{5}{2}x \right.\\[2pt]
+40 + \left(\dfrac{5}{2} - \dfrac{5}{4}\right)x &= 64 \quad \left|\, -40 \right.\\[2pt]
+\left(\dfrac{10}{4} - \dfrac{5}{4}\right)x &= 24 \quad \Rightarrow \quad \dfrac{5}{4}x = 24 \quad \left|\, :\dfrac{5}{4} \right.\\[2pt]
+x &= 24 \cdot \dfrac{4}{5} \;=\; \dfrac{96}{5}
+\end{align*}
+$$
+
+$$
+\begin{align*}
+\textbf{Probe:}\quad 
+&\underbrace{40 - \dfrac{5}{4}\cdot\dfrac{96}{5}}_{\text{Nord-Eingang}}
+= 40 - \dfrac{96}{4}
+= 40 - 24
+= 16   \\
+&\quad\text{und}\quad   \\
+&\underbrace{64 - \dfrac{5}{2}\cdot\dfrac{96}{5}}_{\text{Süd-Eingang}}
+= 64 - \dfrac{96}{2}
+= 64 - 48
+= 16
+\end{align*}
+$$
+
+
+Deutung: Nach $\dfrac{96}{5}\approx 19{,}2$ Minuten sind beide Schlangen gleich lang (je 16 Personen). Vorher ist die Schlange am Süd-Eingang länger, danach die am Nord-Eingang.
+
+************
+
+
+
+
+<!-- Äquivalenzumformung 0048 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/5.png" width="120" height="30">  \
+__Aufgabe 48:__ In einer großen Versuchshalle werden zwei Drohnen auf einer geraden Linie getestet.  
+Der Boden ist mit einer Skala markiert: 0 m liegt in der Hallenmitte.  
+Die erste Drohne startet 50 m links vom Mittelpunkt und fliegt gleichmäßig nach rechts; pro Sekunde legt sie 2,8 m zurück.  
+Die zweite Drohne steht anfangs 130 m rechts vom Mittelpunkt, hebt aber erst 15 Sekunden später ab und fliegt dann gleichmäßig nach links mit 1,6 m pro Sekunde.  
+**Berechne**, nach wie vielen Sekunden (ab Start der ersten Drohne) beide Drohnen an derselben Position sind.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  510/11  ]]
+@Algebrite.check(510/11)
+************
+$$
+\textbf{Gleichung aus dem Text:}\quad 
+-50 + \dfrac{14}{5}x \;\stackrel{!}{=}\; 130 - \dfrac{8}{5}\,\bigl(x - 15\bigr)
+$$
+
+$$
+\begin{align*}
+-50 + \dfrac{14}{5}x &= 130 - \dfrac{8}{5}x + \dfrac{8}{5}\cdot 15 \\[2pt]
+-50 + \dfrac{14}{5}x &= 130 + 24 - \dfrac{8}{5}x \quad \left|\, +\dfrac{8}{5}x \right.  \\[2pt]
+\left(\dfrac{14}{5} + \dfrac{8}{5}\right)x - 50 &= 154 \quad \left|\, +50 \right.\\[2pt]
+\dfrac{22}{5}x &= 204 \quad \left|\, :\dfrac{22}{5} \right.\\[2pt]
+x &= 204 \cdot \dfrac{5}{22} \;=\; \dfrac{510}{11}
+\end{align*}
+$$
+
+$$
+\begin{align*}
+\textbf{Probe:}\quad 
+&\underbrace{-50 + \dfrac{14}{5}\cdot \dfrac{510}{11}}_{\text{1. Drohne}}
+= -\dfrac{550}{11} + \dfrac{1428}{11}
+= \dfrac{878}{11}    \\
+&\quad\text{und}\quad    \\
+&\underbrace{130 - \dfrac{8}{5}\!\left(\dfrac{510}{11} - 15\right)}_{\text{2. Drohne}}
+= \dfrac{1430}{11} - \dfrac{552}{11}
+= \dfrac{878}{11}
+\end{align*}
+$$
+
+
+Deutung: Nach $\dfrac{510}{11}\approx 46{,}36$ s treffen sich beide bei $\dfrac{878}{11}\approx 79{,}82$ m rechts vom Mittelpunkt. Die zweite Drohne war dabei $\dfrac{510}{11}-15=\dfrac{345}{11}\approx 31{,}36$ s in der Luft.
+************
+
+
+
+
+
+<!-- Äquivalenzumformung 0049 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/5.png" width="120" height="30">  \
+__Aufgabe 49:__ Im Kaminzimmer stehen zwei Kerzen auf dem Kaminsims.  
+Die erste Kerze wird um 18:00 Uhr angezündet; sie ist anfangs 36 cm lang und wird pro Stunde um 1,2 cm kürzer.  
+Die zweite Kerze ist anfangs 24 cm lang, wird aber erst fünf Stunden später angezündet; sie brennt dann langsamer und verliert pro Stunde 0,3 cm.  
+**Berechne**, nach wie vielen Stunden seit dem Anzünden der ersten Kerze beide Kerzen gleich lang sind.  
+
+
+<!-- data-solution-button="5"-->
+$x$ = [[  35/3  ]]
+@Algebrite.check(35/3)
+************
+$$
+\textbf{Gleichung aus dem Text:}\quad 
+36 - \dfrac{6}{5}x \;\stackrel{!}{=}\; 24 - \dfrac{3}{10}\,\bigl(x - 5\bigr)
+$$
+
+$$
+\begin{align*}
+36 - \dfrac{6}{5}x &= 24 - \dfrac{3}{10}x + \dfrac{3}{2} \\[2pt]
+36 - \dfrac{6}{5}x &= \dfrac{51}{2} - \dfrac{3}{10}x \quad \left|\, +\dfrac{6}{5}x \right.\\[2pt]
+36 &= \dfrac{51}{2} + \left(\dfrac{6}{5} - \dfrac{3}{10}\right)x 
+= \dfrac{51}{2} + \dfrac{9}{10}x \quad \left|\, -\dfrac{51}{2} \right.\\[2pt]
+36 - \dfrac{51}{2} &= \dfrac{9}{10}x 
+\quad\Rightarrow\quad -\dfrac{21}{2} = \dfrac{9}{10}x \quad \left|\, :\dfrac{9}{10} \right.\\[2pt]
+x &= -\dfrac{21}{2}\cdot \dfrac{10}{9} = \dfrac{105}{9} = \dfrac{35}{3}
+\end{align*}
+$$
+
+$$
+\begin{align*}
+\textbf{Probe:}\quad 
+&\underbrace{36 - \dfrac{6}{5}\cdot \dfrac{35}{3}}_{\text{1. Kerze}}
+= 36 - 14 = 22    \\
+&\quad\text{und}\quad   \\
+&\underbrace{24 - \dfrac{3}{10}\!\left(\dfrac{35}{3} - 5\right)}_{\text{2. Kerze}}
+= 24 - \dfrac{3}{10}\cdot \dfrac{20}{3}
+= 24 - 2 = 22
+\end{align*}
+$$
+
+Deutung: Nach $\dfrac{35}{3} \approx 11{,}7$ Stunden (also gegen 05:40 Uhr) sind beide Kerzen 22 cm lang.
+************
+
+
+
+
+
+<!-- Äquivalenzumformung 0050 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/5.png" width="120" height="30">  \
+__Aufgabe 50:__ Entlang einer geraden Küstenlinie steht ein Leuchtturm als Nullpunkt der Entfernungsskala.  
+Ein Schnellzug A startet 55 km westlich des Leuchtturms und fährt ostwärts mit $110\,\dfrac{\text{km}}{\text{h}}$.  
+Ein Regionalzug B befindet sich 145 km östlich des Leuchtturms, fährt aber erst 15 Minuten später westwärts mit $80\,\dfrac{\text{km}}{\text{h}}$ los.  
+**Berechne**, nach wie vielen Stunden seit Abfahrt von Zug A beide Züge an derselben Position relativ zum Leuchtturm sind.  
+
+
+<!-- data-solution-button="5"-->
+$x$ = [[  22/19  ]]
+@Algebrite.check(22/19)
+************
+$$
+\textbf{Gleichung aus dem Text:}\quad 
+-55 + 110x \;\stackrel{!}{=}\; 145 - 80\,\bigl(x - \tfrac{1}{4}\bigr)
+$$
+
+$$
+\begin{align*}
+-55 + 110x &= 145 - 80x + 20 \quad \\[2pt]
+-55 + 110x &= 165 - 80x \quad \left|\, +80x \right.\\[2pt]
+-55 + 190x &= 165 \quad \left|\, +55 \right.\\[2pt]
+190x &= 220 \quad \left|\, :190 \right.\\[2pt]
+x &= \dfrac{22}{19}
+\end{align*}
+$$
+
+$$
+\begin{align*}
+\textbf{Probe:}\quad 
+&\underbrace{-55 + 110\cdot \dfrac{22}{19}}_{\text{Zug A}}
+= -\dfrac{1045}{19} + \dfrac{2420}{19}
+= \dfrac{1375}{19}    \\
+&\quad\text{und}\quad    \\
+&\underbrace{145 - 80\!\left(\dfrac{22}{19} - \dfrac{1}{4}\right)}_{\text{Zug B}}
+= \dfrac{2755}{19} - \dfrac{1380}{19}
+= \dfrac{1375}{19}
+\end{align*}
+$$
+
+
+Deutung: Nach $\dfrac{22}{19}\approx 1{,}16$ Stunden (ca. 69,5 Minuten) treffen sich die Züge $\dfrac{1375}{19}\approx 72{,}4$ km östlich vom Leuchtturm.
 
 ************
 
