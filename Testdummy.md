@@ -45,16 +45,84 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 
 
-tags: Erklärung, Addition
+tags: 
 
-comment: In diesem Abschnitt wird die Addition ausführlich erklärt.
+comment: 
 
-author: Martin Lommatzsch
+author: 
 
 
 
 import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main/README.md
 -->
+
+
+
+# Zahlenstrahl
+
+
+
+
+# Koordinatensystem
+
+# Downloadbalken
+
+
+
+> Klicke/ziehe den Balken auf **77 %** und drücke **Prüfen**.
+
+<div>
+  <progress id="prog77" value="0" max="100" style="width:33%; transform:scale(3); position:relative; left:calc(100% / 3); margin-bottom:1rem">0%</progress>
+</div>
+
+<script>
+(() => {
+  const bar = document.getElementById('prog77');
+  if (!bar) return;
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+  function setValue(val) {
+    const max = Number(bar.max) || 100;
+    const v = clamp(Math.round(val), 0, max);
+    bar.value = v;
+    bar.textContent = v + '%'; // Fallback-Anzeige
+  }
+  function handlePointer(clientX) {
+    const rect = bar.getBoundingClientRect();
+    const frac = (clientX - rect.left) / rect.width;
+    setValue(frac * (bar.max || 100));
+  }
+
+  // Klick & Drag
+  bar.addEventListener('click', (e) => handlePointer(e.clientX));
+  let dragging = false;
+  bar.addEventListener('mousedown', (e) => { dragging = true; handlePointer(e.clientX); e.preventDefault(); });
+  window.addEventListener('mousemove', (e) => { if (dragging) handlePointer(e.clientX); });
+  window.addEventListener('mouseup',   () => { dragging = false; });
+
+  // Anfangswert
+  setValue(bar.value || 0);
+})();
+</script>
+
+<!-- Optional: Anzahl Fehlversuche bis "Auflösen"-Button -->
+<!-- data-solution-button="3" -->
+
+```js
+// LiaScript prüft nur das Rückgabe-Ergebnis dieses Snippets.
+// Gib TRUE zurück, wenn der Balken exakt 77 ist, sonst FALSE.
+(() => {
+  const bar = document.getElementById('prog77');
+  return !!bar && Number(bar.value) === 77;
+})()
+```
+
+
+
+
+
+
+
 
 
 
@@ -65,17 +133,166 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
 
 
-
-
-
-
-
-
-
 Entweder [[  positiv  ]] oder [[  negativ  ]] oder [[  magnetisch  ]]?
 <script>
 @input.map(s => s.toLowerCase()).sort().join() === "magnetisch,negativ,positiv"
 </script>
+
+
+# Dominos Bruch
+
+Test:
+
+__Aufgabe 1:__ **Ordne** die Dominosteine in der richtigen Reihenfolge **an**.
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$a)\;\;$__ $\dfrac{5}{6}$ 
+ [->[$\left. \boxed{ = \dfrac{2}{3} + \dfrac{1}{6}} \right\| \boxed{ \dfrac{4}{5} \cdot \dfrac{3}{2}}  $]]
+ [->[$\left. \boxed{ =  \dfrac{3}{4} - \dfrac{3}{20} } \right\|\boxed{ \dfrac{9}{7} : \dfrac{3}{4}  }  $]]
+ [->[$\left. \boxed{ =  \dfrac{36}{56} \cdot \dfrac{8}{3} } \right\|\boxed{ \dfrac{5}{8} + \dfrac{1}{2} }  $]]
+ [->[$\left. \boxed{ =  \dfrac{3}{4} \cdot \dfrac{3}{2} } \right\|\boxed{ \dfrac{7}{10} - \dfrac{1}{2} }  $]]
+$= \dfrac{1}{5}$
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$b)\;\;$__ $\dfrac{1}{5}$ 
+ [->[$\left. \boxed{ =  \dfrac{8}{15} : \dfrac{8}{3} } \right\|\boxed{ \dfrac{8}{9} \cdot \dfrac{15}{24} }  $]]
+ [->[$\left. \boxed{ =  \dfrac{2}{3} - \dfrac{1}{9} } \right\|\boxed{ \dfrac{5}{12} + \dfrac{3}{4} }  $]]
+ [->[$\left. \boxed{ =  \dfrac{11}{6} - \dfrac{2}{3} } \right\|\boxed{ \dfrac{7}{8} \cdot \dfrac{6}{21} }  $]]
+ [->[$\left. \boxed{ =  \dfrac{7}{12} - \dfrac{1}{4} } \right\|\boxed{ \dfrac{6}{5} - \dfrac{3}{4} }  $]]  
+$= \dfrac{9}{20}$
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$c)\;\;$__ $\dfrac{5}{6}$ 
+ [->[$\left. \boxed{ = \dfrac{2}{3} + \dfrac{1}{6}} \right\| \boxed{ \dfrac{4}{5} \cdot \dfrac{3}{2}}  $]]
+ [->[$\left. \boxed{ =  \dfrac{3}{4} + \dfrac{9}{20} } \right\|\boxed{ \dfrac{9}{7} : \dfrac{3}{4}  }  $]]
+ [->[$\left. \boxed{ =  \dfrac{36}{56} \cdot \dfrac{8}{3} } \right\|\boxed{ \dfrac{5}{8} + \dfrac{1}{2} }  $]]
+ [->[$\left. \boxed{ =  \dfrac{3}{4} \cdot \dfrac{3}{2} } \right\|\boxed{ \dfrac{7}{10} - \dfrac{1}{2} }  $]]
+$= \dfrac{1}{5}$
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$d)\;\;$__ $\dfrac{7}{12}$
+ [->[$\left. \boxed{ = \dfrac{1}{3} + \dfrac{1}{4}} \right\| \boxed{ \dfrac{14}{15} \cdot \dfrac{5}{14}} $]]
+ [->[$\left. \boxed{ = \dfrac{5}{6} - \dfrac{1}{2}} \right\| \boxed{ \dfrac{2}{5} + \dfrac{1}{15}} $]]
+ [->[$\left. \boxed{ = \dfrac{7}{5} \cdot \dfrac{1}{3}} \right\| \boxed{ \dfrac{11}{12} - \dfrac{1}{4}} $]]
+ [->[$\left. \boxed{ = \dfrac{4}{9} : \dfrac{2}{3}} \right\| \boxed{ \dfrac{5}{6} - \dfrac{1}{3}} $]]
+$= \dfrac{1}{2}$
+
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$e)\;\;$__ $\dfrac{3}{4}$
+ [->[$\left. \boxed{ = \dfrac{1}{2} + \dfrac{1}{4}} \right\| \boxed{ \dfrac{9}{8} : \dfrac{5}{4}} $]]
+ [->[$\left. \boxed{ = \dfrac{3}{2} - \dfrac{3}{5}} \right\| \boxed{ \dfrac{3}{4} \cdot \dfrac{8}{9}} $]]
+ [->[$\left. \boxed{ = \dfrac{5}{6} - \dfrac{1}{6}} \right\| \boxed{ \dfrac{7}{8} - \dfrac{1}{4}} $]]
+ [->[$\left. \boxed{ = \dfrac{5}{4} : \dfrac{2}{1}} \right\| \boxed{ \dfrac{1}{3} + \dfrac{5}{12}} $]]
+$= \dfrac{3}{4}$
+
+
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$f)\;\;$__ $\dfrac{4}{7}$
+ [->[$\left. \boxed{ = \dfrac{6}{7} - \dfrac{2}{7}} \right\| \boxed{ \dfrac{5}{6} \cdot \dfrac{3}{5}} $]]
+ [->[$\left. \boxed{ = \dfrac{3}{4} : \dfrac{3}{2}} \right\| \boxed{ \dfrac{9}{10} : \dfrac{3}{1}} $]]
+ [->[$\left. \boxed{ = \dfrac{1}{2} - \dfrac{1}{5}} \right\| \boxed{ \dfrac{7}{12} + \dfrac{1}{6}} $]]
+ [->[$\left. \boxed{ = \dfrac{3}{2} : \dfrac{2}{1}} \right\| \boxed{ \dfrac{15}{28} - \dfrac{5}{28}} $]]
+$= \dfrac{5}{14}$
+
+
+
+
+
+
+
+__Aufgabe 1:__ **Ordne** die Dominosteine in der richtigen Reihenfolge **an**.
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$a)\;\;$__  $\dfrac{3}{5}$
+ [->[$\left. \boxed{ = \dfrac{1}{2} + \dfrac{1}{10}} \right\| \boxed{ \dfrac{12}{7} \cdot \dfrac{7}{18}} $]]
+ [->[$\left. \boxed{ = \dfrac{5}{6} - \dfrac{1}{6}} \right\| \boxed{ \dfrac{9}{8} : \dfrac{3}{2}} $]]
+ [->[$\left. \boxed{ = \dfrac{1}{2} + \dfrac{1}{4}} \right\| \boxed{ \dfrac{3}{5} \cdot \dfrac{3}{2}} $]]
+ [->[$\left. \boxed{ = \dfrac{9}{5} : \dfrac{2}{1}} \right\| \boxed{ \dfrac{7}{6} - \dfrac{1}{6}} $]]
+ [->[$\left. \boxed{ = \dfrac{12}{16} \cdot \dfrac{4}{3}} \right\| \boxed{ \dfrac{3}{4} : \dfrac{1}{2}} $]]
+ [->[$\left. \boxed{ = \dfrac{3}{5} \cdot \dfrac{5}{2}} \right\| \boxed{ \dfrac{2}{3} + \dfrac{1}{6}} $]]
+$= \dfrac{5}{6}$
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$b)\;\;$__ $\dfrac{4}{9}$
+ [->[$\left. \boxed{ = \dfrac{2}{3} \cdot \dfrac{2}{3}} \right\| \boxed{ \dfrac{7}{5} - \dfrac{2}{5}} $]]
+ [->[$\left. \boxed{ = \dfrac{5}{8} + \dfrac{3}{8}} \right\| \boxed{ \dfrac{10}{7} : \dfrac{5}{7}} $]]
+ [->[$\left. \boxed{ = \dfrac{7}{3} - \dfrac{1}{3}} \right\| \boxed{ \dfrac{9}{8} + \dfrac{3}{8}} $]]
+ [->[$\left. \boxed{ = \dfrac{5}{6} + \dfrac{2}{3}} \right\| \boxed{ \dfrac{2}{3} + \dfrac{2}{3}} $]]
+ [->[$\left. \boxed{ = \dfrac{8}{9} : \dfrac{2}{3}} \right\| \boxed{ \dfrac{11}{12} + \dfrac{1}{4}} $]]
+ [->[$\left. \boxed{ = \dfrac{7}{9} : \dfrac{2}{3}} \right\| \boxed{ \dfrac{3}{4} - \dfrac{1}{4}} $]]
+$= \dfrac{1}{2}$
+
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$c)\;\;$__ $\dfrac{3}{8}$
+ [->[$\left. \boxed{ = \dfrac{1}{2} - \dfrac{1}{8}} \right\| \boxed{ \dfrac{3}{4} \cdot \dfrac{3}{4}} $]]
+ [->[$\left. \boxed{ = \dfrac{1}{2} + \dfrac{1}{16}} \right\| \boxed{ \dfrac{5}{12} + \dfrac{1}{3}} $]]
+ [->[$\left. \boxed{ = \dfrac{3}{2} \cdot \dfrac{1}{2}} \right\| \boxed{ \dfrac{5}{8} + \dfrac{5}{16}} $]]
+ [->[$\left. \boxed{ = \dfrac{3}{4} + \dfrac{3}{16}} \right\| \boxed{ \dfrac{5}{6} - \dfrac{5}{12}} $]]
+ [->[$\left. \boxed{ = \dfrac{1}{3} + \dfrac{1}{12}} \right\| \boxed{ \dfrac{1}{6} + \dfrac{1}{2}} $]]
+ [->[$\left. \boxed{ = \dfrac{4}{3} : \dfrac{2}{1}} \right\| \boxed{ \dfrac{7}{3} : \dfrac{3}{1}} $]]
+$= \dfrac{7}{9}$
+
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$d)\;\;$__ $\dfrac{4}{9}$
+ [->[$\left. \boxed{ = \dfrac{1}{3} + \dfrac{1}{9}} \right\| \boxed{ \dfrac{8}{9} : \dfrac{4}{3}} $]]
+ [->[$\left. \boxed{ = \dfrac{5}{6} - \dfrac{1}{6}} \right\| \boxed{ \dfrac{1}{2} + \dfrac{1}{8}} $]]
+ [->[$\left. \boxed{ = \dfrac{5}{4} \cdot \dfrac{1}{2}} \right\| \boxed{ \dfrac{1}{2} + \dfrac{1}{10}} $]]
+ [->[$\left. \boxed{ = \dfrac{9}{10} : \dfrac{3}{2}} \right\| \boxed{ 1 - \dfrac{1}{8}} $]]
+ [->[$\left. \boxed{ = \dfrac{7}{4} : \dfrac{2}{1}} \right\| \boxed{ \dfrac{3}{4} - \dfrac{1}{3}} $]]
+ [->[$\left. \boxed{ = \dfrac{1}{4} + \dfrac{1}{6}} \right\| \boxed{ \dfrac{8}{9} : \dfrac{4}{3}} $]]
+$= \dfrac{2}{3}$
+
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$e)\;\;$__ $\dfrac{5}{14}$
+ [->[$\left. \boxed{ = \dfrac{3}{7} - \dfrac{1}{14}} \right\| \boxed{ \dfrac{3}{2} : \dfrac{2}{1}} $]]
+ [->[$\left. \boxed{ = 1 - \dfrac{1}{4}} \right\| \boxed{ \dfrac{7}{3} : \dfrac{2}{1}} $]]
+ [->[$\left. \boxed{ = 1 + \dfrac{1}{6}} \right\| \boxed{ \dfrac{5}{4} : \dfrac{2}{1}} $]]
+ [->[$\left. \boxed{ = \dfrac{1}{2} + \dfrac{1}{8}} \right\| \boxed{ \dfrac{3}{5} + \dfrac{3}{10}} $]]
+ [->[$\left. \boxed{ = 1 - \dfrac{1}{10}} \right\| \boxed{ \dfrac{9}{7} : \dfrac{3}{1}} $]]
+ [->[$\left. \boxed{ = \dfrac{6}{7} : \dfrac{2}{1}} \right\| \boxed{ \dfrac{2}{3} - \dfrac{1}{6}} $]]
+$= \dfrac{1}{2}$
+
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$f)\;\;$__ $\dfrac{5}{18}$
+ [->[$\left. \boxed{ = \dfrac{2}{9} + \dfrac{1}{18}} \right\| \boxed{ \dfrac{7}{6} : \dfrac{2}{1}} $]]
+ [->[$\left. \boxed{ = \dfrac{1}{3} + \dfrac{1}{4}} \right\| \boxed{ \dfrac{5}{4} : \dfrac{2}{1}} $]]
+ [->[$\left. \boxed{ = \dfrac{5}{4} \cdot \dfrac{1}{2}} \right\| \boxed{ \dfrac{3}{4} + \dfrac{1}{6}} $]]
+ [->[$\left. \boxed{ = 1 - \dfrac{1}{12}} \right\| \boxed{ \dfrac{8}{9} : \dfrac{4}{3}} $]]
+ [->[$\left. \boxed{ = \dfrac{4}{3} : \dfrac{2}{1}} \right\| \boxed{ \dfrac{7}{3} : \dfrac{3}{1}} $]]
+ [->[$\left. \boxed{ = 1 - \dfrac{2}{9}} \right\| \boxed{ \dfrac{1}{2} + \dfrac{2}{9}} $]]
+$= \dfrac{13}{18}$
+
+
+
+
 
 
 

@@ -36726,6 +36726,7 @@ $$
 
 
 
+<!-- Äquivalenzumformung 0032 -->
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/4.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
@@ -36847,6 +36848,447 @@ $$
 
 
 
+
+
+
+<!-- Äquivalenzumformung 0033 -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 33:__ In einem Sportzentrum kann zwischen zwei Trainingspässen gewählt werden. Die Variante A sieht eine einmalige Kartengebühr 0,50 € vor, wobeid 4,00 € pro Training noch verlangt werden. Im Pass B belaufen sich die einmaligen Kartengebühren auf 6,50 € und ein Training wird mit 2,50 € berechnet. **Berechne**, nach wie vielen Trainings sind die Gesamtkosten beider Pässe genau gleich.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  4  ]]
+@Algebrite.check(4)
+************
+$$
+\textbf{Gleichung aus dem Text:}\quad 
+4x + \dfrac{1}{2} \;\stackrel{!}{=}\; \dfrac{5}{2}x + \dfrac{13}{2}
+$$
+
+$$
+\begin{align*}
+4x + \dfrac{1}{2} &= \dfrac{5}{2}x + \dfrac{13}{2} \quad \left|\, -\dfrac{5}{2}x \right.\\[2pt]
+\left(4-\dfrac{5}{2}\right)x + \dfrac{1}{2} &= \dfrac{13}{2} \quad \left|\, -\dfrac{1}{2} \right.\\[2pt]
+\dfrac{3}{2}x &= 6 \quad \left|\, :\dfrac{3}{2} \right.\\[2pt]
+x &= 4
+\end{align*}
+$$
+
+$$
+\begin{align*}
+\textbf{Probe:}\quad 
+\underbrace{4\cdot4 + \dfrac{1}{2}}_{\text{Pass A}} = 16,5\ \text{€}
+\quad\text{und}\quad
+\underbrace{\dfrac{5}{2}\cdot4 + \dfrac{13}{2}}_{\text{Pass B}} = 10 + 6,5 = 16,5\ \text{€}\
+\end{align*}
+$$
+
+
+Deutung: Für $x<4$ ist Pass A günstiger; für $x>4$ ist Pass B günstiger.
+
+************
+
+
+
+
+
+
+
+<!-- Äquivalenzumformung 0034 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 34:__ Zwei Schüler sammeln Sticker für ein Album. Die betrachtete Schülerin startet mit sechs Stickern. Jeden Tag fügt sie drei weitere Sticker hinzu. Der betrachtete Schüler beginnt mit 18 Stickern, bekommt aber pro Tag nur ein weiteren Sticker. **Berechne**, nach wie vielen Tagen beide gleich viele Sticker haben.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  6  ]]
+@Algebrite.check(6)
+************
+$$
+\textbf{Gleichung aus dem Text:}\quad 
+3x + 6 \;\stackrel{!}{=}\; x + 18
+$$
+
+$$
+\begin{align*}
+3x + 6 &= x + 18 \quad \left|\, -x \right.\\[2pt]
+2x + 6 &= 18 \quad \left|\, -6 \right.\\[2pt]
+2x &= 12 \quad \left|\, :2 \right.\\[2pt]
+x &= 6
+\end{align*}
+$$
+
+$$
+\begin{align*}
+\textbf{Probe:}\quad 
+\underbrace{3\cdot 6 + 6}_{\text{Schülerin}} = 24
+\quad\text{und}\quad
+\underbrace{1\cdot 6 + 18}_{\text{Schüler}} = 24
+\end{align*}
+$$
+
+
+Deutung:
+Nach 6 Tagen haben beide gleich viele Sticker. Für $x<6$ hat der Schüler mehr; für $x>6$ hat die Schülerin mehr.
+************
+
+
+
+
+<!-- Äquivalenzumformung 0035 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 35:__ Ein Behälter wird täglich mit vier Litern Wasser aufgefüllt. Zu Beginn sind bereits zwei Liter enthalten. Ein zweiter Behälter enthält anfangs 14 Liter Wasser, verliert jedoch jeden Tag einen Liter. **Berechne**, nach wie vielen Tagen beide Behälter gleich viel Wasser enthalten.
+
+
+
+<!-- data-solution-button="5"-->
+$x$ = [[  3  ]]
+@Algebrite.check(3)
+************
+$$
+\textbf{Gleichung aus dem Text:}\quad 
+4x + 2 \;\stackrel{!}{=}\; 14 - x
+$$
+
+$$
+\begin{align*}
+4x + 2 &= 14 - x \quad \left|\, +x \right.\\[2pt]
+5x + 2 &= 14 \quad \left|\, -2 \right.\\[2pt]
+5x &= 12 \quad \left|\, :5 \right.\\[2pt]
+x &= \dfrac{12}{5}
+\end{align*}
+$$
+
+$$
+\begin{align*}
+\textbf{Probe:}\quad 
+&\underbrace{4\cdot \dfrac{12}{5} + 2}_{\text{1. Behälter}} 
+= \dfrac{48}{5} + \dfrac{10}{5} = \dfrac{58}{5} = 11,6   \\
+&\quad\text{und}\quad    \\
+\underbrace{14 - \dfrac{12}{5}}_{\text{2. Behälter}}
+&= \dfrac{70}{5} - \dfrac{12}{5} = \dfrac{58}{5} = 11,6
+\end{align*}
+$$
+
+
+Deutung: Nach $\dfrac{12}{5}\approx 2{,}4$ Tagen haben beide Behälter gleich viel Wasser.
+************
+
+
+
+
+<!-- Äquivalenzumformung 0036 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 36:__ Ein Auto fährt mit einer konstanten Geschwindigkeit von $60\,\dfrac{\text{km}}{\text{h}}$ los.  
+Ein zweites Auto startet zwei Stunden später, ist aber schneller und fährt mit $90\,\dfrac{\text{km}}{\text{h}}$.  
+**Berechne**, nach wie vielen Stunden beide Autos die gleiche Strecke zurückgelegt haben.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  6  ]]
+@Algebrite.check(6)
+************
+$$
+\textbf{Gleichung aus dem Text:}\quad 
+60x \;\stackrel{!}{=}\; 90(x - 2)
+$$
+
+$$
+\begin{align*}
+60x &= 90x - 180 \quad \left|\, -90x \right.\\[2pt]
+-30x &= -180 \quad \left|\, :(-30) \right.\\[2pt]
+x &= 6
+\end{align*}
+$$
+
+$$
+\begin{align*}
+\textbf{Probe:}\quad 
+&\underbrace{60\cdot 6}_{\text{1. Auto}} = 360\ \text{km} \\
+&\quad\text{und}\quad \\
+&\underbrace{90\cdot (6-2)}_{\text{2. Auto}} = 90\cdot 4 = 360\ \text{km}
+\end{align*}
+$$
+
+Deutung: Nach 6 Stunden Fahrzeit des ersten Autos bzw. nach 4 Stunden des zweiten Autos haben beide die gleiche Strecke zurückgelegt.
+************
+
+
+
+
+<!-- Äquivalenzumformung 0037 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 37:__ In einem Copyshop kann zwischen zwei Bezahlmodellen gewählt werden. In Modell A fällt eine einmalige Grundgebühr von 0,75 € an; jede Kopie kostet zusätzlich 0,30 €. In Modell B beträgt die einmalige Grundgebühr 3,75 €, dafür kostet jede Kopie nur 0,15 €. **Berechne**, nach wie vielen Kopien die Gesamtkosten beider Modelle genau gleich sind.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  20  ]]
+@Algebrite.check(20)
+************
+$$
+\textbf{Gleichung aus dem Text:}\quad 
+\dfrac{3}{10}x + \dfrac{3}{4} \;\stackrel{!}{=}\; \dfrac{3}{20}x + \dfrac{15}{4}
+$$
+
+$$
+\begin{align*}
+\dfrac{3}{10}x + \dfrac{3}{4} &= \dfrac{3}{20}x + \dfrac{15}{4} \quad \left|\, -\dfrac{3}{20}x \right.\\[2pt]
+\left(\dfrac{3}{10}-\dfrac{3}{20}\right)x + \dfrac{3}{4} &= \dfrac{15}{4} \quad \left|\, -\dfrac{3}{4} \right.\\[2pt]
+\dfrac{3}{20}x &= \dfrac{12}{4} = 3 \quad \left|\, :\dfrac{3}{20} \right.\\[2pt]
+x &= 20
+\end{align*}
+$$
+
+$$
+\begin{align*}
+\textbf{Probe:}\quad 
+\underbrace{\dfrac{3}{10}\cdot 20 + \dfrac{3}{4}}_{\text{Modell A}}
+= 6 + 0,75
+= 6,75\ \text{€}
+\quad\text{und}\quad
+\underbrace{\dfrac{3}{20}\cdot 20 + \dfrac{15}{4}}_{\text{Modell B}}
+= 3 + 3,75
+= 6,75\ \text{€}
+\end{align*}
+$$
+
+
+
+Deutung: Für $x<20$ ist Modell A günstiger; für $x>20$ ist Modell B günstiger.
+************
+
+
+
+
+<!-- Äquivalenzumformung 0038 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 38:__ Ein Becken wird pro Minute um 0,75 Liter aufgefüllt; zu Beginn sind 2,5 Liter enthalten.  
+Ein zweites Becken enthält anfangs 7,25 Liter, dabei werden pro Minute 0,5 Liter abgelassen.  
+**Berechne**, nach wie vielen Minuten beide Becken gleich viel Wasser enthalten.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  19/5  ]]
+@Algebrite.check(19/5)
+************
+$$
+\textbf{Gleichung aus dem Text:}\quad 
+\dfrac{3}{4}x + \dfrac{5}{2} \;\stackrel{!}{=}\; \dfrac{29}{4} - \dfrac{1}{2}x
+$$
+
+$$
+\begin{align*}
+\dfrac{3}{4}x + \dfrac{5}{2} &= \dfrac{29}{4} - \dfrac{1}{2}x \quad \left|\, +\dfrac{1}{2}x \right.\\[2pt]
+\left(\dfrac{3}{4}+\dfrac{1}{2}\right)x + \dfrac{5}{2} &= \dfrac{29}{4} \quad \left|\, -\dfrac{5}{2} \right.\\[2pt]
+\dfrac{5}{4}x &= \dfrac{29}{4} - \dfrac{10}{4} = \dfrac{19}{4} \quad \left|\, :\dfrac{5}{4} \right.\\[2pt]
+x &= \dfrac{19}{4}\cdot\dfrac{4}{5} = \dfrac{19}{5}
+\end{align*}
+$$
+
+$$
+\begin{align*}
+\textbf{Probe:}\quad 
+&\underbrace{\dfrac{3}{4}\cdot\dfrac{19}{5} + \dfrac{5}{2}}_{\text{1. Becken}}
+= \dfrac{57}{20} + \dfrac{50}{20}
+= \dfrac{107}{20}  \\
+&\quad\text{und}\quad  \\
+&\underbrace{\dfrac{29}{4} - \dfrac{1}{2}\cdot\dfrac{19}{5}}_{\text{2. Becken}}
+= \dfrac{145}{20} - \dfrac{38}{20}
+= \dfrac{107}{20}
+\end{align*}
+$$
+
+Deutung:
+Nach $\dfrac{19}{5}\approx 3,8$ Minuten ist der Füllstand in beiden Becken gleich ( $\dfrac{107}{20}=5,35$ Liter)
+************
+
+
+
+
+<!-- Äquivalenzumformung 0039 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 39:__ Eine gesuchte Zahl wird verdreifacht und anschließend um fünf verringert.  
+Nimmt man stattdessen von derselben Zahl die Hälfte und addiert sieben, so entsteht derselbe Wert.  
+**Berechne** die gesuchte Zahl.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  24/5  ]]
+@Algebrite.check(24/5)
+************
+$$
+\textbf{Gleichung aus dem Text:}\quad 
+3x - 5 \;\stackrel{!}{=}\; \dfrac{1}{2}x + 7
+$$
+
+$$
+\begin{align*}
+3x - 5 &= \dfrac{1}{2}x + 7 \quad \left|\, -\dfrac{1}{2}x \right.\\[2pt]
+\left(3 - \dfrac{1}{2}\right)x - 5 &= 7 \quad \left|\, +5 \right.\\[2pt]
+\dfrac{5}{2}x &= 12 \quad \left|\, :\dfrac{5}{2} \right.\\[2pt]
+x &= 12\cdot \dfrac{2}{5} = \dfrac{24}{5}
+\end{align*}
+$$
+
+$$
+\begin{align*}
+\textbf{Probe:}\quad 
+&\underbrace{3\cdot \dfrac{24}{5} - 5}_{\text{linke Seite}}
+= \dfrac{72}{5} - \dfrac{25}{5}
+= \dfrac{47}{5}   \\
+&\quad\text{und}\quad   \\
+&\underbrace{\dfrac{1}{2}\cdot \dfrac{24}{5} + 7}_{\text{rechte Seite}}
+= \dfrac{12}{5} + \dfrac{35}{5}
+= \dfrac{47}{5}
+\end{align*}
+$$
+
+
+Deutung: Die gesuchte Zahl ist $\dfrac{24}{5}=4{,}8$.
+************
+
+
+
+
+<!-- Äquivalenzumformung 0040 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 40:__ In zwei Räumen ändert sich die Temperatur gleichmäßig: 
+In Raum 1 ist es anfangs 16 °C und die Temperatur steigt pro Stunde um 1,5 °C.  
+In Raum 2 ist es anfangs 28 °C und die Temperatur sinkt pro Stunde um 0,75 °C.  
+**Berechne**, nach wie vielen Stunden beide Räume die gleiche Temperatur haben.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  16/3  ]]
+@Algebrite.check(16/3)
+************
+$$
+\textbf{Gleichung aus dem Text:}\quad 
+\dfrac{3}{2}x + 16 \;\stackrel{!}{=}\; 28 - \dfrac{3}{4}x
+$$
+
+$$
+\begin{align*}
+\dfrac{3}{2}x + 16 &= 28 - \dfrac{3}{4}x \quad \left|\, +\dfrac{3}{4}x \right.\\[2pt]
+\left(\dfrac{3}{2} + \dfrac{3}{4}\right)x + 16 &= 28 \quad \left|\, -16 \right.\\[2pt]
+\dfrac{9}{4}x &= 12 \quad \left|\, :\dfrac{9}{4} \right.\\[2pt]
+x &= 12 \cdot \dfrac{4}{9} \;=\; \dfrac{16}{3}
+\end{align*}
+$$
+
+$$
+\begin{align*}
+\textbf{Probe:}\quad 
+&\underbrace{16 + \dfrac{3}{2}\cdot \dfrac{16}{3}}_{\text{Raum 1}}
+= 16 + 8
+= 24^\circ\mathrm{C}  \\
+&\quad\text{und}\quad  \\
+&\underbrace{28 - \dfrac{3}{4}\cdot \dfrac{16}{3}}_{\text{Raum 2}}
+= 28 - 4
+= 24^\circ\mathrm{C}
+\end{align*}
+$$
+
+
+Deutung: Nach $\dfrac{16}{3}\approx 5{,}3$ Stunden haben beide Räume $24^\circ\mathrm{C}$.
+************
+
+
+
+
+
+
+<!-- Äquivalenzumformung 0041 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 41:__ Ein Anstieg beginnt auf 820 m und gewinnt pro Minute 9 m an Höhe.  
+Ein Abstieg startet gleichzeitig auf 1130 m und verliert pro Minute 6 m an Höhe.  
+**Berechne**, nach wie vielen Minuten beide Routen auf gleicher Höhe sind.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  62/3  ]]
+@Algebrite.check(62/3)
+************
+$$
+\textbf{Gleichung aus dem Text:}\quad 
+9x + 820 \;\stackrel{!}{=}\; 1130 - 6x
+$$
+
+$$
+\begin{align*}
+9x + 820 &= 1130 - 6x \quad \left|\, +6x \right.\\[2pt]
+15x + 820 &= 1130 \quad \left|\, -820 \right.\\[2pt]
+15x &= 310 \quad \left|\, :15 \right.\\[2pt]
+x &= \dfrac{310}{15} \;=\; \dfrac{62}{3}
+\end{align*}
+$$
+
+$$
+\begin{align*}
+\textbf{Probe:}\quad 
+&\underbrace{9\cdot \dfrac{62}{3} + 820}_{\text{Aufstieg}}
+= 3\cdot 62 + 820
+= 186 + 820
+= 1006\ \text{m} \\
+&\quad\text{und}\quad \\
+&\underbrace{1130 - 6\cdot \dfrac{62}{3}}_{\text{Abstieg}}
+= 1130 - 2\cdot 62
+= 1130 - 124
+= 1006\ \text{m}
+\end{align*}
+$$
+
+
+Deutung: Nach $\dfrac{62}{3}\approx 20{,}7$ Minuten liegen beide bei 1006 m Höhe.
+
+************
+
+
+
+<!-- Äquivalenzumformung 0042 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 42:__ Zwei Pflanzen wachsen in gleichmäßiger Höhe pro Woche.  
+Die erste Pflanze ist zu Beginn 26 cm hoch und wächst jede Woche um 3,5 cm.  
+Die zweite Pflanze ist anfangs 48 cm hoch und wächst pro Woche um 1 cm.  
+**Berechne**, nach wie vielen Wochen beide Pflanzen gleich hoch sind.
+
+
+
+<!-- data-solution-button="5"-->
+$x$ = [[  44/5  ]]
+@Algebrite.check(44/5)
+************
+$$
+\textbf{Gleichung aus dem Text:}\quad 
+\dfrac{7}{2}x + 26 \;\stackrel{!}{=}\; x + 48
+$$
+
+$$
+\begin{align*}
+\dfrac{7}{2}x + 26 &= x + 48 \quad \left|\, -x \right.\\[2pt]
+\left(\dfrac{7}{2} - 1\right)x + 26 &= 48 \quad \left|\, -26 \right.\\[2pt]
+\dfrac{5}{2}x &= 22 \quad \left|\, :\dfrac{5}{2} \right.\\[2pt]
+x &= 22 \cdot \dfrac{2}{5} \;=\; \dfrac{44}{5}
+\end{align*}
+$$
+
+$$
+\textbf{Probe:}\quad 
+\underbrace{\dfrac{7}{2}\cdot \dfrac{44}{5} + 26}_{\text{1. Pflanze}}
+= \dfrac{154}{5} + \dfrac{130}{5}
+= \dfrac{284}{5}
+\quad\text{und}\quad
+\underbrace{48 + \dfrac{44}{5}}_{\text{2. Pflanze}}
+= \dfrac{240}{5} + \dfrac{44}{5}
+= \dfrac{284}{5}
+$$
+
+
+Deutung: Nach $\dfrac{44}{5} \approx 8{,}8$ Wochen sind beide Pflanzen gleich hoch ($\dfrac{284}{5} = 56{,}8$ cm).
+
+************
 
 
 

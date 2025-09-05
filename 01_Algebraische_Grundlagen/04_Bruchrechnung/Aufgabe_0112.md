@@ -44,7 +44,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
 
 
-tags: Bruchrechnung, Sachaufgabe,  leicht, sehr niedrig, Bestimmen
+tags: Bruchrechnung, Sachaufgabe, leicht, sehr niedrig, Bestimmen
 
 comment: Löse eine Sachaufgabe mit einer Trainingsrunde mittels der Bruchrechnung.
 
