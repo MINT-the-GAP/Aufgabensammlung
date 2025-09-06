@@ -73,10 +73,10 @@ __$a)\;\;$__ Wie viel sind $\dfrac{7}{4}$ von $\dfrac{2}{3}$ von $35\,$€?  \
 ************
 $$
 \begin{align*}
-\dfrac{7}{4}\cdot\dfrac{2}{3}\cdot 35
-&= \dfrac{7\cdot 2 \cdot 35}{4\cdot 3} \\
-&= \dfrac{490}{12} \\
-&= \dfrac{245}{6}
+\dfrac{7}{4}\cdot\dfrac{2}{3}\cdot 35\,\text{€}
+&= \dfrac{7\cdot 2 \cdot 35\,\text{€}}{4\cdot 3} \\
+&= \dfrac{490}{12}\,\text{€} \\
+&= \dfrac{245}{6}\,\text{€}
 \end{align*}
 $$
 ************
@@ -92,10 +92,10 @@ __$b)\;\;$__ Wie viel sind $\dfrac{9}{8}$ von $\dfrac{2}{5}$ von $55\,$kg?  \
 ************
 $$
 \begin{align*}
-\dfrac{9}{8}\cdot\dfrac{2}{5}\cdot 55
-&= \dfrac{9\cdot 2 \cdot 55}{8\cdot 5} \\
-&= \dfrac{990}{40} \\
-&= \dfrac{99}{4}
+\dfrac{9}{8}\cdot\dfrac{2}{5}\cdot 55\,\text{kg}
+&= \dfrac{9\cdot 2 \cdot 55}{8\cdot 5}\,\text{kg} \\
+&= \dfrac{990}{40}\,\text{kg} \\
+&= \dfrac{99}{4}\,\text{kg}
 \end{align*}
 $$
 ************
@@ -111,10 +111,10 @@ __$c)\;\;$__ Wie viel sind $\dfrac{11}{12}$ von $\dfrac{5}{7}$ von $80\,$l?  \
 ************
 $$
 \begin{align*}
-\dfrac{11}{12}\cdot\dfrac{5}{7}\cdot 80
-&= \dfrac{11\cdot 5 \cdot 80}{12\cdot 7} \\
-&= \dfrac{4400}{84} \\
-&= \dfrac{1100}{21}
+\dfrac{11}{12}\cdot\dfrac{5}{7}\cdot 80\,\text{l}
+&= \dfrac{11\cdot 5 \cdot 80\,\text{l}}{12\cdot 7} \\
+&= \dfrac{4400}{84} \,\text{l} \\
+&= \dfrac{1100}{21}\,\text{l}
 \end{align*}
 $$
 ************
@@ -130,9 +130,9 @@ __$d)\;\;$__ Wie viel sind $\dfrac{5}{6}$ von $\dfrac{7}{9}$ von $65\,$m?  \
 ************
 $$
 \begin{align*}
-\dfrac{5}{6}\cdot\dfrac{7}{9}\cdot 65
-&= \dfrac{5\cdot 7 \cdot 65}{6\cdot 9} \\
-&= \dfrac{2275}{54}
+\dfrac{5}{6}\cdot\dfrac{7}{9}\cdot 65\,\text{m}
+&= \dfrac{5\cdot 7 \cdot 65\,\text{m}}{6\cdot 9} \\
+&= \dfrac{2275}{54}\,\text{m}
 \end{align*}
 $$
 ************
@@ -148,10 +148,10 @@ __$e)\;\;$__ Wie viel sind $\dfrac{4}{5}$ von $\dfrac{3}{8}$ von $96\,$min?  \
 ************
 $$
 \begin{align*}
-\dfrac{4}{5}\cdot\dfrac{3}{8}\cdot 96
-&= \dfrac{4\cdot 3 \cdot 96}{5\cdot 8} \\
-&= \dfrac{1152}{40} \\
-&= \dfrac{144}{5}
+\dfrac{4}{5}\cdot\dfrac{3}{8}\cdot 96\,\text{min}
+&= \dfrac{4\cdot 3 \cdot 96\,\text{min}}{5\cdot 8} \\
+&= \dfrac{1152}{40}\,\text{min} \\
+&= \dfrac{144}{5}\,\text{min}
 \end{align*}
 $$
 ************
@@ -167,10 +167,10 @@ __$f)\;\;$__ Wie viel sind $\dfrac{13}{10}$ von $\dfrac{3}{4}$ von $30\,$€?  \
 ************
 $$
 \begin{align*}
-\dfrac{13}{10}\cdot\dfrac{3}{4}\cdot 30
-&= \dfrac{13\cdot 3 \cdot 30}{10\cdot 4} \\
-&= \dfrac{1170}{40} \\
-&= \dfrac{117}{4}
+\dfrac{13}{10}\cdot\dfrac{3}{4}\cdot 30\,\text{€}
+&= \dfrac{13\cdot 3 \cdot 30\,\text{€}}{10\cdot 4} \\
+&= \dfrac{1170}{40}\,\text{€} \\
+&= \dfrac{117}{4}\,\text{€}
 \end{align*}
 $$
 ************

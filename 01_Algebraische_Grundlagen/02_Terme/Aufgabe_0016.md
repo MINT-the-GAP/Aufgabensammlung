@@ -55,12 +55,12 @@ author: Martin Lommatzsch
 
 # Termeumformen mit negativen Dezimalzahlen
 
-**Fülle** die Lücken der Rechnung mit den passenden Werten aus **aus**.
+**Gib** die Werte in den Lücken der Rechnung **an**.
 
 <section class="flex-container">
 
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ \
 $\;\;\;\; (-0,63:0,9-0,25) : (-0,05) + 2,5 \cdot (-6,5)   $ \
 $= ($ [[  -0,7   ]]$-0,25) : (-0,05) + 2,5 \cdot (-6,5)   $ \
@@ -68,42 +68,42 @@ $= $ [[  -0,95  ]]$ : (-0,05) + 2,5 \cdot (-6,5)   $ \
 $= $ [[  19     ]]$  + 2,5 \cdot (-6,5)   $ \
 $= $ [[  19     ]]$  + $[[ (-16,25) ]] \
 $=$ [[ 3,75    ]] 
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ \
 $\;\;\;\; -0,7 : 0,125 + 3,2 \cdot (-0,125) - 2,8 $ \
 $=$ [[   -5,6  ]] $ + 3,2 \cdot (-0,125) - 2,8 $ \
 $=$ [[   -5,6  ]] $ + $ [[ (-0,4)  ]] $ - 2,8 $ \
 $=$ [[   -6    ]] $ - 2,8 $ \
 $=$ [[  -8,8   ]] 
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$c)\;\;$__ \
 $\;\;\;\; -(-2,1 \cdot 0,4 +1,25) : 0,5 - 1,1 $ \
 $= -( $ [[  0,84  ]] $ +1,25) : 0,5 - 1,1 $ \
 $= -( $ [[  2,19  ]] $) : 0,5 - 1,1 $ \
 $= $ [[ -4,38  ]] $ - 1,1 $ \
 $=$ [[ -5,48  ]] 
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$d)\;\;$__ \
 $\;\;\;\; -0,225: (-1,5) + 0,8 \cdot (-4) \cdot 0,375 $ \
 $=  $ [[  0,15  ]] $ + 0,8 \cdot (-4) \cdot 0,375 $ \
 $=  $ [[  0,15  ]] $ + $ [[ (-3,2) ]] $ \cdot 0,375 $ \
 $=  $ [[  0,15  ]] $ + $ [[ (-1,2) ]]  \
 $=$   [[ -1,05  ]] 
-<br>
+
 </div> 
 </section>
 
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

@@ -71,10 +71,10 @@ __$a)\;\;$__ Wie viel sind $\dfrac{7}{12}$ von $50\,$kg?  \
 ************
 $$
 \begin{align*}
-\dfrac{7}{12}\cdot 50
-&= \dfrac{7\cdot 50}{12} \\
-&= \dfrac{350}{12} \\
-&= \dfrac{175}{6}
+\dfrac{7}{12}\cdot 50\,\text{kg}
+&= \dfrac{7\cdot 50\,\text{kg}}{12} \\
+&= \dfrac{350}{12}\,\text{kg} \\
+&= \dfrac{175}{6}\,\text{kg}
 \end{align*}
 $$
 ************
@@ -90,9 +90,9 @@ __$b)\;\;$__ Wie viel sind $\dfrac{9}{14}$ von $25\,$l?  \
 ************
 $$
 \begin{align*}
-\dfrac{9}{14}\cdot 25
-&= \dfrac{9\cdot 25}{14} \\
-&= \dfrac{225}{14}
+\dfrac{9}{14}\cdot 25\,\text{l}
+&= \dfrac{9\cdot 25}{14}\,\text{l} \\
+&= \dfrac{225}{14}\,\text{l}
 \end{align*}
 $$
 ************
@@ -108,10 +108,10 @@ __$c)\;\;$__ Wie viel sind $\dfrac{11}{15}$ von $40\,$m?  \
 ************
 $$
 \begin{align*}
-\dfrac{11}{15}\cdot 40
-&= \dfrac{11\cdot 40}{15} \\
-&= \dfrac{440}{15} \\
-&= \dfrac{88}{3}
+\dfrac{11}{15}\cdot 40\,\text{m}
+&= \dfrac{11\cdot 40\,\text{m}}{15} \\
+&= \dfrac{440}{15}\,\text{m} \\
+&= \dfrac{88}{3}\,\text{m}
 \end{align*}
 $$
 ************
@@ -127,9 +127,9 @@ __$d)\;\;$__ Wie viel sind $\dfrac{5}{9}$ von $22\,$cm?  \
 ************
 $$
 \begin{align*}
-\dfrac{5}{9}\cdot 22
-&= \dfrac{5\cdot 22}{9} \\
-&= \dfrac{110}{9}
+\dfrac{5}{9}\cdot 22\,\text{cm}
+&= \dfrac{5\cdot 22\,\text{cm}}{9} \\
+&= \dfrac{110}{9}\,\text{cm}
 \end{align*}
 $$
 ************
@@ -145,10 +145,10 @@ __$e)\;\;$__ Wie viel sind $\dfrac{13}{16}$ von $18\,$kg?  \
 ************
 $$
 \begin{align*}
-\dfrac{13}{16}\cdot 18
-&= \dfrac{13\cdot 18}{16} \\
-&= \dfrac{234}{16} \\
-&= \dfrac{117}{8}
+\dfrac{13}{16}\cdot 18\,\text{kg}
+&= \dfrac{13\cdot 18\,\text{kg}}{16} \\
+&= \dfrac{234}{16} \,\text{kg}\\
+&= \dfrac{117}{8}\,\text{kg}
 \end{align*}
 $$
 ************
@@ -164,9 +164,9 @@ __$f)\;\;$__ Wie viel sind $\dfrac{7}{20}$ von $33\,$m?  \
 ************
 $$
 \begin{align*}
-\dfrac{7}{20}\cdot 33
-&= \dfrac{7\cdot 33}{20} \\
-&= \dfrac{231}{20}
+\dfrac{7}{20}\cdot 33\,\text{m}
+&= \dfrac{7\cdot 33\,\text{m}}{20} \\
+&= \dfrac{231}{20}\,\text{m}
 \end{align*}
 $$
 ************

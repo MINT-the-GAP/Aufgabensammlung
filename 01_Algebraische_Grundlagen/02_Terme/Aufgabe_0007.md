@@ -55,12 +55,12 @@ author: Martin Lommatzsch
 
 # Termeumformen mit ganzen Zahlen
 
-**Fülle** die Lücken der Rechnung mit den passenden Werten aus **aus**.
+**Gib** die Werte in den Lücken der Rechnung **an**.
 
 <section class="flex-container">
 
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ \
 $\;\;\;\; 44 - 2 \cdot (13 - 5 \cdot (3 + 2 \cdot (-4)) ) $ \
 $= 44 - 2 \cdot (13 - 5 \cdot (3 +$ [[ (-8)  ]] $ ) ) $ \
@@ -69,42 +69,42 @@ $= 44 - 2 \cdot (13 - ($ [[ (-25) ]] $  )) $ \
 $= 44 - 2 \cdot $ [[   38  ]] $  $ \
 $= 44 - $ [[   76  ]] $  $ \
 $=$ [[  -32  ]] 
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ \
 $\;\;\;\; -45 + (-3) \cdot (-8) - 92: (-4) $ \
 $= -45 +$ [[   24  ]] $- 92: (-4) $ \
 $= -45 +$ [[   24  ]] $-$ [[ (-23) ]]   \
 $= -45 +$ [[   47  ]] $ \
 $=$ [[   2   ]] 
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$c)\;\;$__ \
 $\;\;\;\; -4 \cdot (-3) + 5 \cdot (-9) - 74 $ \
 $= -4 \cdot (-3) +$ [[ (-45)  ]] $ - 74 $ \
 $= -4 \cdot (-3) +$ [[ (-119) ]] \
 $=$ [[   12   ]] $+$ [[ (-119) ]] \
 $=$ [[ -107   ]] 
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$d)\;\;$__ \
 $\;\;\;\; -(-56 : (-2)) : (-7) - (-14) $ \
 $= -(-56 : (-2)) : (-7) + $ [[ 14   ]] \
 $= -($ [[ 28   ]] $) : (-7) + $ [[ 14   ]] \
 $= $ [[  4   ]] $  + $ [[ 14   ]] \
 $=$ [[ 18   ]] 
-<br>
+
 </div> 
 </section>
 
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

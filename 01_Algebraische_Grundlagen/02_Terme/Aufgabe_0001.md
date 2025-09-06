@@ -55,49 +55,49 @@ author: Martin Lommatzsch
 
 # Termeumformen mit Grundrechenarten
 
-**Fülle** die Lücken der Rechnung mit den passenden Werten aus **aus**.
+**Gib** die Werte in den Lücken Lücken der Rechnung **an**.
 
 <section class="flex-container">
 
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ \
 $\;\;\;\; 13 \cdot 5 + 14 $ \
 $=$ [[ 65 ]] $  + 14 $ \
 $=$ [[ 79 ]] 
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ \
 $\;\;\;\; 75 - 7 \cdot 5 + 23  $ \
 $=  75 - $ [[ 35 ]] $  + 23 $ \
 $=$ [[ 40 ]]  $  + 23 $ \
 $=$ [[ 63 ]]
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$c)\;\;$__ \
 $\;\;\;\; 65 : 13 + 85 : 5   $ \
 $=$ $ 65 : 13 +$ [[ 17 ]]  \
 $=$ [[  5 ]] $+$ [[ 17 ]]  \
 $=$ [[ 22 ]] 
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$d)\;\;$__ \
 $\;\;\;\; 9 \cdot 8 - 12 \cdot 4  $ \
 $=$ [[ 72 ]] $ - 12 \cdot 4  $ \
 $=$ [[ 72 ]] $-$ [[ 48 ]] \
 $=$ [[ 24 ]] 
-<br>
+
 </div> 
 </section>
 
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

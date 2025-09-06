@@ -127,6 +127,15 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
 
 
+# Inline-Effekt Algebrite?
+
+
+P( [[ 3/4 ]] | [[ 2/5 ]] )
+
+
+P( [[ 3/4 ]] @Algebrite.check(3/4) | [[ 2/5 ]] @Algebrite.check(2/5) )
+
+
 # Vernetzte Lücken
 
 

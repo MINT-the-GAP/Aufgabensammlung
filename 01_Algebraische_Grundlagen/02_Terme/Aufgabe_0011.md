@@ -55,12 +55,12 @@ author: Martin Lommatzsch
 
 # Termeumformen mit Dezimalzahlen
 
-**Fülle** die Lücken der Rechnung mit den passenden Werten aus **aus**.
+**Gib** die Werte in den Lücken der Rechnung **an**.
 
 <section class="flex-container">
 
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ \
 $\;\;\;\; 3,5 \cdot 2,5 - 0,8 \cdot 1,2 - 0,875 \cdot 1,6 $ \
 $=$ [[ 8,75 ]] $ - 0,8 \cdot 1,2 - 0,875 \cdot 1,6 $ \
@@ -68,10 +68,10 @@ $=$ [[ 8,75 ]] $ - $ [[ 0,95 ]] $ - 0,875 \cdot 1,6 $ \
 $=$ [[ 7,8  ]] $ - 0,875 \cdot 1,6 $ \
 $=$ [[ 7,8  ]] $ -$ [[ 1,4  ]] \
 $=$ [[ 6,4  ]] 
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ \
 $\;\;\;\; 0,25 \cdot 0,8 \cdot 5,2 + 0,6 \cdot 5,5 - 2,75 $ \
 $= $ [[ 0,2  ]] $ \cdot 5,2 + 0,6 \cdot 5,5 - 2,75 $ \
@@ -79,20 +79,20 @@ $= $ [[ 1,3  ]] $ + 0,6 \cdot 5,5 - 2,75 $ \
 $= $ [[ 1,3  ]] $ + $ [[ 3,3  ]] $ - 2,75 $ \
 $= $ [[ 4,6  ]] $ - 2,75 $ \
 $=$ [[ 1,85 ]] 
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$c)\;\;$__ \
 $\;\;\;\; 9,87-2,3-0,45-0,37-1,87 $ \
 $= $ [[ 7,57  ]] $ -0,45-0,37-1,87 $ \
 $= $ [[ 7,12  ]] $ -0,37-1,87 $ \
 $= $ [[ 6,75  ]] $ -1,87 $ \
 $=$ [[ 4,88  ]] 
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$d)\;\;$__ \
 $\;\;\;\; 0,75 \cdot (1,6 - 0,4 \cdot 0,8) + 0,9 \cdot 1,5 $ \
 $= 0,75 \cdot (1,6 - $ [[ 0,32  ]] $) + 0,9 \cdot 1,5 $ \
@@ -100,12 +100,12 @@ $= 0,75 \cdot $ [[ 1,28  ]] $ + 0,9 \cdot 1,5 $ \
 $= $ [[ 0,96  ]] $ + 0,9 \cdot 1,5 $ \
 $= $ [[ 0,96  ]] $ + $ [[ 1,35  ]] \
 $=$ [[ 2,31  ]] 
-<br>
+
 </div> 
 </section>
 
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

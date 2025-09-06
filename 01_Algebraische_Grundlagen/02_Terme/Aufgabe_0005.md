@@ -55,31 +55,31 @@ author: Martin Lommatzsch
 
 # Termeumformen mit ganzen Zahlen
 
-**Fülle** die Lücken der Rechnung mit den passenden Werten aus **aus**.
+**Gib** die Werte in den Lücken der Rechnung **an**.
 
 <section class="flex-container">
 
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ \
 $\;\;\;\; -2 \cdot 7 + 8 \cdot (-3) - 34 $ \
 $=$ [[ -14   ]] $ + $ [[ (-24) ]] $ - 34 $ \
 $=$ [[ -38   ]] $ - 34 $ \
 $=$ [[ -72   ]] 
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ \
 $\;\;\;\; -34-75:5-12 \cdot (-9) $ \
 $= -34-75:5-$ [[ (-108) ]]  \
 $= -34-$[[ 15    ]]$+$ [[ 108    ]]  \
 $= -34+$[[ 93    ]]  \
 $=$ [[ 59    ]] 
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$c)\;\;$__ \
 $\;\;\;\; 85:(-5) + (-4) \cdot (-3) \cdot (-5) - 44 $ \
 $=$ [[ -17   ]] $ + (-4) \cdot (-3) \cdot (-5) - 44 $ \
@@ -87,22 +87,22 @@ $=$ [[ -17   ]] $ + $ [[ 12    ]] $ \cdot (-5) - 44 $ \
 $=$ [[ -17   ]] $ + $ [[ (-60) ]] $ - 44 $ \
 $=$ [[ -77   ]] $ - 44 $ \
 $=$ [[ -121  ]] 
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$d)\;\;$__ \
 $\;\;\;\; - ( 3 - (-5) \cdot 7 + 23 ) + 54 $ \
 $= - ( 3 - $  [[ (-35) ]]  $ + 23 ) + 54 $ \
 $= - ( $ [[   -9  ]]  $  ) + 54 $ \
 $=$   [[   9  ]]  $  + 54 $ \
 $=$ [[  63  ]] 
-<br>
+
 </div> 
 </section>
 
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

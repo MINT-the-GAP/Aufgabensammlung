@@ -55,42 +55,42 @@ author: Martin Lommatzsch
 
 # Termeumformen mit ganzen Zahlen
 
-**Fülle** die Lücken der Rechnung mit den passenden Werten aus **aus**.
+**Gib** die Werte in den Lücken der Rechnung **an**.
 
 <section class="flex-container">
 
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ \
 $\;\;\;\; - 5 \cdot (-9) - 46 + 11 \cdot (-4) $ \
 $= $ [[  45   ]] $ - 46 + 11 \cdot (-4) $ \
 $= $ [[  -1   ]] $ + 11 \cdot (-4) $ \
 $= $ [[  -1   ]] $ + $ [[ (-44) ]]   \
 $=$ [[  -45  ]] 
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ \
 $\;\;\;\; -92 + 7 \cdot (-4) - 144 : (-4) $ \
 $= -92 +$ [[ (-28) ]] $ - 144 : (-4) $ \
 $= $ [[ -120 ]] $ - 144 : (-4) $ \
 $= $ [[ -120 ]] $ -$ [[ (-36) ]]  \
 $=$ [[ -84  ]] 
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$c)\;\;$__ \
 $\;\;\;\; -3 \cdot (-4) \cdot (-2) \cdot (-5) : (-6) $ \
 $=$ [[  24  ]] $ \cdot (-2) \cdot (-5) : (-6) $ \
 $=$ [[ -48  ]] $ \cdot (-5) : (-6) $ \
 $=$ [[ 240  ]] $ : (-6) $ \
 $=$ [[ -40 ]] 
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$d)\;\;$__ \
 $\;\;\;\; -8 \cdot (-7) - 4 \cdot (-3) + 72:(-8) $ \
 $=$ [[  56   ]] $- 4 \cdot (-3) + 72:(-8) $ \
@@ -99,12 +99,12 @@ $=$ [[  56   ]] $+$ [[   12  ]]$ + 72:(-8) $ \
 $=$ [[  68   ]] $ + 72:(-8) $ \
 $=$ [[  68   ]] $ +$  [[  (-9) ]] \
 $=$ [[  59   ]] 
-<br>
+
 </div> 
 </section>
 
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

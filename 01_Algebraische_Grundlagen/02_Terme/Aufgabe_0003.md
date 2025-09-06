@@ -55,32 +55,32 @@ author: Martin Lommatzsch
 
 # Termeumformen mit Grundrechenarten
 
-**Fülle** die Lücken der Rechnung mit den passenden Werten aus **aus**.
+**Gib** die Werte in den Lücken der Rechnung **an**.
 
 <section class="flex-container">
 
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ \
 $\;\;\;\; 20 + 2 \cdot 3 \cdot 4 \cdot 5 $ \
 $= 20 +$ [[  6  ]] $\cdot 4 \cdot 5 $ \
 $= 20 +$ [[ 24  ]] $ \cdot 5 $ \
 $= 20 +$ [[ 120 ]]   \
 $=$ [[ 140 ]] 
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ \
 $\;\;\;\; 187 - 17 - 31 -25 - 41  $ \
 $=$ [[ 160 ]]  $  - 31 -25 - 41 $ \
 $=$ [[ 129 ]]  $   -25 - 41 $ \
 $=$ [[ 104 ]]  $    - 41 $ \
 $=$ [[ 63 ]]
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$c)\;\;$__ \
 $\;\;\;\; 81 : 3 + 105 : 5 + 6 \cdot 4  $ \
 $=$ $ 81 : 3 + 105 : 5 +$ [[ 24 ]]  \
@@ -88,21 +88,21 @@ $=$ $ 81 : 3 +$ [[ 21 ]] $+$ [[ 24 ]]  \
 $=$ $ 81 : 3 +$ [[ 45 ]]  \
 $=$ [[ 27 ]] $+$ [[ 45 ]]  \
 $=$ [[ 72 ]] 
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$d)\;\;$__ \
 $\;\;\;\; 11 \cdot 7 - 17 \cdot 3  $ \
 $=$ [[ 77 ]] $ - 17 \cdot 3  $ \
 $=$ [[ 77 ]] $-$ [[ 51 ]] \
 $=$ [[ 26 ]] 
-<br>
+
 </div> 
 </section>
 
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

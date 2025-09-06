@@ -55,12 +55,12 @@ author: Martin Lommatzsch
 
 # Termeumformen mit negativen Dezimalzahlen
 
-**Fülle** die Lücken der Rechnung mit den passenden Werten aus **aus**.
+**Gib** die Werte in den Lücken der Rechnung **an**.
 
 <section class="flex-container">
 
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ \
 $\;\;\;\; - 1,6 \cdot 4,25 - 0,85:0,5 + 1,25 \cdot 0,6 $ \
 $= - 1,6 \cdot 4,25 - 0,85:0,5 + $ [[ 0,75   ]]  \
@@ -68,10 +68,10 @@ $= - 1,6 \cdot 4,25 - $ [[ 1,3   ]] $ + $ [[ 0,75   ]]  \
 $= - 1,6 \cdot 4,25 - $ [[ 0,65  ]]  \
 $=$ [[ -6,8  ]] $- $ [[ 0,65 ]]  \
 $=$ [[ -7,45 ]] 
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ \
 $\;\;\;\; -0,75 \cdot 5,8 - 0,7 \cdot 2,5 + 1,2 \cdot 0,9 $ \
 $=$ [[ -4,35 ]] $ - 0,7 \cdot 2,5 + 1,2 \cdot 0,9 $ \
@@ -79,20 +79,20 @@ $=$ [[ -4,35 ]] $ - $ [[  1,75 ]] $ + 1,2 \cdot 0,9 $ \
 $=$ [[ -6,1  ]]  $ + 1,2 \cdot 0,9 $ \
 $=$ [[ -6,1  ]]  $ + $ [[  1,08 ]] \
 $=$ [[ -5,02 ]] 
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$c)\;\;$__ \
 $\;\;\;\; 1,6 \cdot (-0,25) \cdot 2,5 - 6,3 : 70 $ \
 $= 1,6 \cdot $ [[ (-0,625) ]] $ - 6,3 : 70 $ \
 $= $ [[  -1,08   ]] $ - 6,3 : 70 $ \
 $= $ [[  -1,08   ]] $ - $ [[   0,09   ]] \
 $=$ [[  -1,17   ]] 
-<br>
+
 </div> 
 <div class="flex-child">
-<br>
+
 __$d)\;\;$__ \
 $\;\;\;\; -(-0,7 \cdot 0,2):0,25 + 0,8 \cdot (-4,5)  $ \
 $= -($[[ -0,14   ]]$):0,25 + 0,8 \cdot (-4,5)  $ \
@@ -100,12 +100,12 @@ $=$ [[  0,14   ]]$:0,25 + 0,8 \cdot (-4,5)  $ \
 $=$ [[  0,56   ]] $+ 0,8 \cdot (-4,5)  $ \
 $=$ [[  0,56   ]] $+ $ [[ (-0,36) ]] \
 $=$ [[ 0,2     ]] 
-<br>
+
 </div> 
 </section>
 
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 
