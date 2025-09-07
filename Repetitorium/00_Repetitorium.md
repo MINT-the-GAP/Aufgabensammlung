@@ -77,8 +77,22 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
 
 
+{{|>}} Das Wort „Mathematik“ geht auf das griechische mathema zurück, was so viel bedeutet wie „das, was man lernt“ oder „die Wissenschaft des Lernens“. Schon dieser Ursprung deutet an, dass Mathematik immer eng mit Erkenntnis und Bildung verbunden war. Während die frühen Hochkulturen in Mesopotamien, Ägypten oder China praktische Verfahren entwickelten, etwa zum Rechnen mit großen Zahlen, zum Planen von Bauwerken oder zur Berechnung des Kalenders, gingen die Griechen einen Schritt weiter: Sie suchten nach allgemeinen Regeln und Beweisen. Mathematik wurde zur Wissenschaft, die nicht nur praktische Aufgaben löst, sondern auch grundlegende Strukturen und Muster sichtbar macht.
 
-    {{|>}} Dieses Repetitorium der Mathematik ist aus der Motivation heraus entstanden, den naturwissenschaftlichen Unterricht an Schulen zu erleichtern. Die ersten Kapitel führen grundlegende mathematische „Vokabeln“, Zahleneigenschaften, Rechenoperationen und gebräuchliche Abkürzungen ein. Da viele Schülerinnen und Schüler durch die gesellschaftlich verbreitete Meinung, Mathematik und Naturwissenschaften seien „schwierig“, zu Ausreden und geringerer Leistungsbereitschaft neigen, soll in diesem Buch bewusst auf die Einfachheit und Klarheit der mathematischen Sprache hingewiesen werden. Diese Einfachheit erschließt sich jedoch oft erst nach der Schulzeit: Mathematik lebt von eindeutig definierten Begriffen, deren Abkürzungen und Symbolen. Anders als in Sprachen wie Deutsch oder Englisch ergibt sich ihre Bedeutung nicht erst aus dem Satzkontext. Zudem gibt es in der Mathematik im Gegensatz zu anderen Sprachen keine Ausnahmen von den Regeln.
+
+{{|>}} Bis heute prägt uns dieses doppelte Gesicht der Mathematik: Einerseits ist sie ein Werkzeug, mit dem wir Probleme in Naturwissenschaft, Technik oder Wirtschaft bewältigen. Andererseits ist sie eine Sprache der Strukturen, die unabhängig von der Wirklichkeit gilt. Ob in der Algebra, Geometrie oder Stochastik – Mathematik lädt uns ein, Zusammenhänge zu entdecken, präzise zu denken und die Welt aus einer besonderen Perspektive zu betrachten.
+*******************************
+
+
+## Wichtige Hinweise
+
+
+
+
+{{|>}}
+*******************************
+
+    Dieses Repetitorium der Mathematik ist aus der Motivation heraus entstanden, den naturwissenschaftlichen Unterricht an Schulen zu erleichtern. Die ersten Kapitel führen grundlegende mathematische „Vokabeln“, Zahleneigenschaften, Rechenoperationen und gebräuchliche Abkürzungen ein. Da viele Schülerinnen und Schüler durch die gesellschaftlich verbreitete Meinung, Mathematik und Naturwissenschaften seien „schwierig“, zu Ausreden und geringerer Leistungsbereitschaft neigen, soll in diesem Buch bewusst auf die Einfachheit und Klarheit der mathematischen Sprache hingewiesen werden. Diese Einfachheit erschließt sich jedoch oft erst nach der Schulzeit: Mathematik lebt von eindeutig definierten Begriffen, deren Abkürzungen und Symbolen. Anders als in Sprachen wie Deutsch oder Englisch ergibt sich ihre Bedeutung nicht erst aus dem Satzkontext. Zudem gibt es in der Mathematik im Gegensatz zu anderen Sprachen keine Ausnahmen von den Regeln.
 
     {{|>}} Das Buch versteht sich als Leitfaden für den Mathematikunterricht und als Wiederholungswerkzeug für die naturwissenschaftlichen Fächer. Es wird kontinuierlich weiterentwickelt und am Verständnis der Lernenden ausgerichtet. Zum Verständnis genügt der sichere Umgang mit Zahlen und Grundrechenarten, sodass das Werk für alle Schülerinnen und Schüler weiterführender Schulen geeignet ist. Es wird deutlich, dass mathematisches Verständnis eng mit der korrekten Verwendung definierter Begriffe verbunden ist. Daher sollte jede eingeführte „Vokabel“ verinnerlicht werden.
 
@@ -90,15 +104,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
 
 > {{|>}} Diese Version kann inhaltliche und sprachliche Tippfehler enthalten und hat somit keinen Anspruch auf Richtigkeit. Außerdem kann nicht gewährleistet werden, dass der "Lehrplan" jedes Bundeslandes abgedeckt ist.
-*******************************
 
 
-## Wichtige Hinweise
-
-
-
-{{|>}}
-*******************************
+$\; $
 
 Einige Themengebiete der Mathematik sind besonders essentiell für ein grundlegendes Verständnis der Mathematik. In diesem Buch werden nach der Einführung diese Themen immer wieder in Aufgaben oder Erklärungen vorkommen. Die Themen sind in der nachfolgenden Auflistung nach Wichtigkeit geordnet. In Klammern sind die Themenbereich beschrieben, die mit dem zentralen Thema direkt verknüpft sind:
 
@@ -29102,11 +29110,185 @@ __$d)\;\;$__ Wie viel sind $45\%$ von $6000\,$€?  \
 
 
 
+<!-- Prozent 9900 -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 15:__ **Bestimme** den Wert der dargestellten Lücke. Klicke danach gerne auf "Neue Aufgabe", um eine weitere Aufgabe zu erhalten.
+
+
+<script input="submit" output="Aufgabe" default="Neue Aufgabe" modify="false">
+  if (!window.randomMath) { window.randomMath = 0 }
+  "Neue Aufgabe " + window.randomMath++
+</script>
+
+---
+
+<script run-once modify="false">
+// @input(`Aufgabe`)
+// Zufällige Prozentzahl (10 bis 90 in 10er-Schritten)
+const percentage = (Math.floor(Math.random() * 9) + 1) * 10;
+// Zufällige Basiszahl (zwischen 50 und 500, in 50er-Schritten)
+const base = (Math.floor(Math.random() * 10) + 1) * 50;
+// Berechnung des Ergebnisses
+const result = Math.round((percentage / 100) * base);
+
+// Auswahl einer Zahl zur Markierung (0 => Prozentsatz, 1 => Basis, 2 => Ergebnis)
+const markedNumber = Math.floor(Math.random() * 3);
+let problem = ""
+
+if (markedNumber === 0) {
+  // Prozentsatz unbekannt
+  problem = `[[ ${percentage} ]] % von ${base} = ${result}`;
+} else if (markedNumber === 1) {
+  // Basis unbekannt
+  problem = `${percentage}% von [[ ${base} ]] = ${result}`
+} else {
+  // Ergebnis unbekannt
+  problem = `${percentage}% von ${base} = [[ ${result} ]]`
+}
+
+// Lösungsschritte vereinfacht und in einem aligned-Block
+let solution = "***************\n\n";
+
+if (markedNumber === 0) {
+  // Prozentsatz x ist unbekannt: x% von base = result
+  // => x/100 = result/base => x = (result * 100)/base
+  const xVal = (result * 100) / base;
+  solution += `$$
+    \\begin{aligned}
+      \\frac{x}{100} &= \\frac{${result}}{${base}} \\\\[5mm]
+      x&=\\frac{${result} \\cdot 100}{${base}} \\\\[5mm]
+      x&=${xVal}
+    \\end{aligned}
+    $$\n\n`;
+} else if (markedNumber === 1) {
+  // Basis x ist unbekannt: percentage% von x = result
+  // => percentage/100 = result/x => x = (result * 100)/percentage
+  const xVal = (result * 100) / percentage;
+  solution += `$$
+    \\begin{aligned}
+      \\frac{${percentage}}{100}&=\\frac{${result}}{x} \\\\[5mm]
+      x&=\\frac{${result} \\cdot 100}{${percentage}} \\\\[5mm]
+        x&=${xVal}
+    \\end{aligned}
+    $$\n\n`;
+} else {
+  // Ergebnis x ist unbekannt: percentage% von base = x
+  // => percentage/100 = x/base => x = (percentage * base)/100
+  const xVal = Math.round((percentage * base) / 100);
+  solution += `$$
+    \\begin{aligned}
+      \\frac{${percentage}}{100}&=\\frac{x}{${base}} \\\\[5mm]
+      x&=\\frac{${percentage} \\cdot ${base}}{100} \\\\[5mm]
+      x&=${xVal}
+    \\end{aligned}
+    $$\n\n`;
+}
+
+solution += "***************";
+
+"LIASCRIPT: \n " + problem + "\n" + solution;
+</script>
+
+
+
+
+
+
+
+
+
+<!-- Prozent 9901 -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 16:__ **Bestimme** den Wert der dargestellten Lücke. Klicke danach gerne auf "Neue Aufgabe", um eine weitere Aufgabe zu erhalten.
+
+
+
+
+<script input="submit" output="Aufgabe" default="Neue Aufgabe" modify="false">
+  if (!window.randomMath) { window.randomMath = 0 }
+  "Neue Aufgabe " + window.randomMath++
+</script>
+
+---
+
+<script run-once modify="false">
+// @input(`Aufgabe`)
+// Zufällige Prozentzahl (10 bis 990 in 2er-Schritten)
+const percentage = (Math.floor(Math.random() * 99) + 1) * 2;
+// Zufällige Basiszahl (zwischen 50 und 500, in 50er-Schritten)
+const base = (Math.floor(Math.random() * 200) + 1) * 50;
+// Berechnung des Ergebnisses
+const result = Math.round((percentage / 100) * base);
+
+// Auswahl einer Zahl zur Markierung (0 => Prozentsatz, 1 => Basis, 2 => Ergebnis)
+const markedNumber = Math.floor(Math.random() * 3);
+let problem = ""
+
+if (markedNumber === 0) {
+  // Prozentsatz unbekannt
+  problem = `[[ ${percentage} ]] % von ${base} = ${result}`;
+} else if (markedNumber === 1) {
+  // Basis unbekannt
+  problem = `${percentage}% von [[ ${base} ]] = ${result}`
+} else {
+  // Ergebnis unbekannt
+  problem = `${percentage}% von ${base} = [[ ${result} ]]`
+}
+
+// Lösungsschritte vereinfacht und in einem aligned-Block
+let solution = "***************\n\n";
+
+if (markedNumber === 0) {
+  // Prozentsatz x ist unbekannt: x% von base = result
+  // => x/100 = result/base => x = (result * 100)/base
+  const xVal = (result * 100) / base;
+  solution += `$$
+    \\begin{aligned}
+      \\frac{x}{100} &= \\frac{${result}}{${base}} \\\\[5mm]
+      x&=\\frac{${result} \\cdot 100}{${base}} \\\\[5mm]
+      x&=${xVal}
+    \\end{aligned}
+    $$\n\n`;
+} else if (markedNumber === 1) {
+  // Basis x ist unbekannt: percentage% von x = result
+  // => percentage/100 = result/x => x = (result * 100)/percentage
+  const xVal = (result * 100) / percentage;
+  solution += `$$
+    \\begin{aligned}
+      \\frac{${percentage}}{100}&=\\frac{${result}}{x} \\\\[5mm]
+      x&=\\frac{${result} \\cdot 100}{${percentage}} \\\\[5mm]
+        x&=${xVal}
+    \\end{aligned}
+    $$\n\n`;
+} else {
+  // Ergebnis x ist unbekannt: percentage% von base = x
+  // => percentage/100 = x/base => x = (percentage * base)/100
+  const xVal = Math.round((percentage * base) / 100);
+  solution += `$$
+    \\begin{aligned}
+      \\frac{${percentage}}{100}&=\\frac{x}{${base}} \\\\[5mm]
+      x&=\\frac{${percentage} \\cdot ${base}}{100} \\\\[5mm]
+      x&=${xVal}
+    \\end{aligned}
+    $$\n\n`;
+}
+
+solution += "***************";
+
+"LIASCRIPT: \n " + problem + "\n" + solution;
+</script>
+
+
+
 
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 15:__ 
+__Aufgabe 17:__ 
 
 
 ??[](https://www.bildung-bedeutet-freiheit.de/GeoGebra/Downloadbalken.html)
@@ -29114,7 +29296,7 @@ __Aufgabe 15:__
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 16:__ 
+__Aufgabe 18:__ 
 
 
 
@@ -47033,18 +47215,591 @@ __Aufgabe 1:__
 
 
 
-## Weiteres
 
+
+## Geometrie
+
+
+{{|>}}
+**************************
+Die *Geometrie* gehört zu den ältesten Bereichen der Mathematik. Schon vor tausenden von Jahren mussten Menschen *Flächen* vermessen, Felder abgrenzen oder Bauwerke planen – Aufgaben, die ohne geometrisches Wissen kaum zu lösen gewesen wären. Das Wort „*Geometrie*“ stammt aus dem Griechischen und bedeutet wörtlich „Erdmessung“ (geo = Erde, metrein = messen). Ursprünglich diente sie also ganz praktisch dazu, Land zu vermessen, beispielsweise nach den jährlichen Nilüberschwemmungen im alten Ägypten.
+
+
+{{|>}} Doch bald entwickelte sich aus diesen praktischen Anfängen eine eigene Wissenschaft: Griechische Mathematiker wie Thales oder Euklid begannen, allgemeine Regeln und Beweise aufzustellen. Besonders Euklids „*Elemente*“ prägten über Jahrhunderte unser Verständnis von *Geometrie* und machten sie zu einem systematischen Gebiet der Mathematik.
+
+
+{{|>}} Heute umfasst die *Geometrie* weit mehr als nur das Vermessen von *Längen*, *Flächen* oder *Körpern*. Sie hilft uns, Formen zu verstehen, Zusammenhänge zwischen *Figuren* zu entdecken und Strukturen zu beschreiben – von einfachen *Dreiecken* bis hin zu modernen Anwendungen in Architektur, Technik oder Computergrafik. *Geometrie* verbindet Anschauung und Logik und eröffnet damit einen Zugang zu einem der anschaulichsten und zugleich grundlegendsten Teile der Mathematik.
+**************************
+
+
+### Zahlenstrahl
+
+Under Construction
+
+### Winkel
 
 Under Construction
 
 
 !?[Lagebeziehung](https://www.youtube.com/watch?v=CGrkv0Jj3dE)
+
+
+### Winkelbeziehungen
+
+Under Construction
+
+### Fläche und Volumen
+
+Under Construction
+
 !?[Rechteck](https://www.youtube.com/watch?v=wl7edZWZew0)
 
+### Dreiecke
+
+Under Construction
+
+### Symmetrien und Spiegelungen
+
+Under Construction
+
+### Streckungen und Drehungen
+
+Under Construction
+
+### Kongruenz und Ähnlichkeit
+
+Under Construction
+
+### Strahlensatz
+
+Under Construction
+
+### Vierecke
+
+Under Construction
+
+### Kreise
+
+Under Construction
+
+### Prismen und Spitzkörper
+
+Under Construction
+
+### Kugeln
+
+Under Construction
+
+### Tangenten und Sekanten
+
+Under Construction
+
+### Zirkelkonstruktionen
+
+Under Construction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Funktionen
+
+
+{{|>}}
+****************************
+Das Wort „*Funktion*“ stammt vom lateinischen fungi, was so viel bedeutet wie „verrichten“ oder „ausführen“. In der Mathematik beschreibt eine *Funktion* eine *eindeutige* *Zuordnung*: Jedem Eingangswert wird genau ein Ausgangswert zugeordnet. Diese Idee ist erstaunlich einfach, aber von grundlegender Bedeutung.
+
+{{|>}} Die Vorstellung, Größen in Abhängigkeit voneinander zu betrachten, entstand aus praktischen Fragen: Wie hängt der Weg eines fahrenden Autos von der Zeit ab? Wie verändert sich der *Flächeninhalt* eines *Quadrats*, wenn die *Seitenlänge* wächst? Solche Zusammenhänge lassen sich durch *Funktionen* beschreiben. Bereits im 17. Jahrhundert tauchte der Begriff in der Arbeit von Leibniz und anderen Mathematikern auf; später machte Leonhard Euler die Funktionsschreibweise allgemein verständlich und nutzbar.
+
+{{|>}} Heute bilden *Funktionen* das Rückgrat vieler mathematischer Gebiete. Sie erlauben uns, Abhängigkeiten in Formeln, Tabellen oder Graphen darzustellen und damit Strukturen sichtbar zu machen. Ob lineare Zusammenhänge, Wachstumsmodelle oder komplizierte nichtlineare Systeme – die Arbeit mit Funktionen ist ein zentrales Werkzeug, um die Welt mathematisch zu erfassen und zu erklären.
+****************************
+
+
+
+### Koordinatensystem
+
+Under Construction
+
+### Diagramme
+
+Under Construction
+
+### Wertetabellen
+
+Under Construction
+
+### Proportional und Antiproportional
+
+Under Construction
+
+### Lineare Funktionen
+
+Under Construction
+
+### Stufenfunktionen
+
+Under Construction
+
+### Quadratische Funktionen
+
+Under Construction
+
+### Verschiebungen von Funktionen
+
+Under Construction
+
+### Umkehrfunktionen
+
+Under Construction
+
+### Hyperbeln
+
+Under Construction
+
+### Grenzwerte
+
+Under Construction
+
+### Polynomfunktionen
+
+Under Construction
+
+### Reihen
+
+Under Construction
+
+### Gebrochen rationale Funktionen
+
+Under Construction
+
+### Trigonometische Funktionen
+
+Under Construction
+
+### Trigonometrische Identitäten
+
+Under Construction
+
+### Exponentialfunktionen
+
+Under Construction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Trignometrie
+
+Under Construction
+
+
+
+
+
+
+
+
+## Beweisverfahren
+
+Under Construction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Differentiation und Integration
+
+
+{{|>}}
+****************************
+Der Begriff „*Analysis*“ kommt aus dem Griechischen und bedeutet „Auflösung“ oder „Zerlegung“. Gemeint ist damit das Untersuchen und Zerlegen von Problemen in kleinere, verständliche Teile. Die Wurzeln der *Analysis* reichen zurück in die Antike, doch erst im 17. Jahrhundert entstand das Gebiet, wie wir es heute kennen. Damals entwickelten Isaac Newton und Gottfried Wilhelm Leibniz nahezu gleichzeitig die Infinitesimalrechnung – ein Werkzeug, mit dem man unendlich kleine Änderungen erfassen und damit Bewegung, Wachstum und Veränderung mathematisch beschreiben kann.
+
+{{|>}} Die Analysis beschäftigt sich mit Funktionen, Grenzwerten, Ableitungen und Integralen. Sie erlaubt es uns, Kurvenverläufe zu untersuchen, Geschwindigkeiten zu bestimmen oder Flächeninhalte und Volumina zu berechnen. Darüber hinaus ist sie die Sprache der modernen Naturwissenschaften: Ohne Analysis wären die Gesetze der Physik, die Modelle der Biologie oder die Berechnungen in der Technik kaum vorstellbar.
+
+{{|>}} So verbindet die Analysis praktische Anwendungen mit tiefer theoretischer Bedeutung. Sie eröffnet einen Zugang zur Welt des Wandels – und zeigt, wie Mathematik hilft, Dynamik und Veränderung zu verstehen.
+****************************
+
+
+
+### Operatorenalgebra
+
 !?[Operatorenalgebra](https://www.youtube.com/watch?v=quQtPwW04B0)
+
+Under Construction
+
+### Differentiationsregeln
+
 !?[Graphische Differentiation](https://www.youtube.com/watch?v=ChaN4YkErPw)
+
+Under Construction
+
+### Taylorentwicklung
+
+Under Construction
+
+### Tangentengleichung
+
+Under Construction
+
+### Integration
+
+Under Construction
+
 !?[Integration](https://www.youtube.com/watch?v=ppdwq_KDMoE)
+
+### Integrationsregeln
+
+Under Construction
+
+### Partielle Differentiation
+
+Under Construction
+
+### Extrema
+
+Under Construction
+
+### Wendepunkte
+
+Under Construction
+
+### Monotonie
+
+Under Construction
+
+### Konvex und konkav
+
+Under Construction
+
+### Kurvendiskussion
+
+Under Construction
+
+### Kurvenrekonstruktion
+
+Under Construction
+
+### Funktionsscharen
+
+Under Construction
+
+### Extremwertprobleme
+
+Under Construction
+
+### Rotationskörper
+
+Under Construction
+
+### Differentialkoeffizient
+
+Under Construction
+
+### Ober- und Untersumme
+
+Under Construction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Stochastik
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30">
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30">
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30">
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30">
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew5.png" width="30" height="30">
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30">
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb1.png" width="30" height="30">
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30">
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb3.png" width="30" height="30">
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30">
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30">
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb6.png" width="30" height="30">
+
+
+Under Construction
+
+### Kombinatorik
+
+Under Construction
+
+### Baumdiagramme
+
+Under Construction
+
+### Kontingenztafeln
+
+Under Construction
+
+### Bedingte Wahrscheinlichkeiten
+
+Under Construction
+
+### Binomialverteilung
+
+Under Construction
+
+### Hypergeometrische Verteilung
+
+Under Construction
+
+### Normalverteilungen
+
+Under Construction
+
+### Weitere Verteilungen
+
+Under Construction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Vektoren
+
+Under Construction
+
+### Eigenschaften von Vektoren
+
+Under Construction
+
+### Skalarprodukt
+
+Under Construction
+
+### Matrizen
+
+Under Construction
+
+### Gauß-Jordan-Verfahren
+
+Under Construction
+
+### Kreuzprodukt
+
+Under Construction
+
+### Vektorielle Geraden
+
+Under Construction
+
+### Vektorielle Ebenen
+
+Under Construction
+
+### Wechsel von Darstellungsformen
+
+Under Construction
+
+### Vektorielle Geometrie
+
+Under Construction
+
+### Vektorielle Schnitte
+
+Under Construction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Komplexe Zahlen
+
+Under Construction
+
+### Grundrechenarten mit komplexen Zahlen
+
+Under Construction
+
+### Komplexe Matrizen
+
+Under Construction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
