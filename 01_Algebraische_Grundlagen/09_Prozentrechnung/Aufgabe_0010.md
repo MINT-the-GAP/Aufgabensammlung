@@ -61,7 +61,7 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $ \dfrac{7}{4} =$ [[  1,75  ]]%
+__$a)\;\;$__ $ \dfrac{7}{4} =$ [[  175  ]]%
 
 </div> 
 <div class="flex-child">

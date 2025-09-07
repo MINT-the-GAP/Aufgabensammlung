@@ -60,7 +60,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Wie viel sind $20\%$ von $4500\,$€?  \
 
- [[  1800  ]]€
+ [[  900  ]]€
 
 </div>
 <div class="flex-child">

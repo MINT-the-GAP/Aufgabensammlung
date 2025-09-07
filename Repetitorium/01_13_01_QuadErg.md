@@ -55,9 +55,9 @@ author: Martin Lommatzsch
 
 
 {{|>}}
-*******************************
+*********************
 
-Das Ziel bei einer **quadratischen Ergänzung** ist es, eine Gleichung so umzuformen, dass man die **binomischen Formeln** ausnutzen kann um die **Potenz** der **Variable** zu reduzieren. Als erklärendes Beispiel soll diese allgemeine **Gleichung**, welche auch allgemeines **Polynom** zweiter **Ordnung** oder **quadratische Gleichung** genannt wird, dienen (Auf die Eigenschaften von **Polynome** und explizit **quadratische Termen** wird im Kapitel "**Funktionen**" genauer eingegangen.):
+Das Ziel bei einer *quadratischen Ergänzung* ist es, eine Gleichung so umzuformen, dass man die *binomischen Formeln* ausnutzen kann um die *Potenz* der *Variable* zu reduzieren. Als erklärendes Beispiel soll diese allgemeine *Gleichung*, welche auch allgemeines *Polynom* zweiter *Ordnung* oder *quadratische Gleichung* genannt wird, dienen (Auf die Eigenschaften von *Polynome* und explizit *quadratische Termen* wird im Kapitel "*Funktionen*" genauer eingegangen.):
 
 
 $$
@@ -67,7 +67,7 @@ $$
 $$
  
 
-{{|>}} Diese Form erinnert an die so genannte erste **binomische Formel** $(x+d)^2 = x^2 + 2dx + d^2$. Aus diesem Grund wird der **Vorfaktor** (**Koeffizient**) $a$ des **quadratischen Terms** $a x^2$ über **Äquivalenzumformung** entfernt.
+{{|>}} Diese Form erinnert an die so genannte erste *binomische Formel* $(x+d)^2 = x^2 + 2dx + d^2$. Aus diesem Grund wird der *Vorfaktor* (*Koeffizient*) $a$ des *quadratischen Terms* $a x^2$ über *Äquivalenzumformung* entfernt.
 
 
 $$
@@ -79,7 +79,7 @@ $$
  
 
 
-{{|>}} Durch direktes gegenüberstellen der **Terme** können bestimmte Bedingungen an die **Vorfaktoren** geknüpft werden, sodass die künstliche Generierung einer **Binomischen Formel** möglich wird, dies wird **Koeffizientenvergleich** genannt. Generell wird der **Koeffizientenvergleich** immer angewendet, wenn eine **Gleichheit** von **Vorfaktoren** zu einer erheblichen Vereinfachung eines Problems dienen könnte.
+{{|>}} Durch direktes gegenüberstellen der *Terme* können bestimmte Bedingungen an die *Vorfaktoren* geknüpft werden, sodass die künstliche Generierung einer *Binomischen Formel* möglich wird, dies wird *Koeffizientenvergleich* genannt. Generell wird der *Koeffizientenvergleich* immer angewendet, wenn eine *Gleichheit* von *Vorfaktoren* zu einer erheblichen Vereinfachung eines Problems dienen könnte.
 
 
 $$
@@ -90,7 +90,7 @@ $$
 $$
  
 
-{{|>}} Durch den **Koeffizientenvergleich** der rot markierten **Vorfaktoren**, kann folgende Bedingung aufgestellt werden: $\frac{b}{a}  = 2d$ und so der **Parameter** $d$  als $\frac{b}{2a}$ bestimmt werden. Da die zu lösende **Gleichung** noch kein $d^2$ beherbergt, muss dieses durch eine *Addition* hinzugefügt werden. Anschließend werden alle **Terme** die nicht zu einer **Binomischen Formel** gehören auf die andere Seite des **Gleichheitszeichens** gebracht: 
+{{|>}} Durch den *Koeffizientenvergleich* der rot markierten *Vorfaktoren*, kann folgende Bedingung aufgestellt werden: $\frac{b}{a}  = 2d$ und so der *Parameter* $d$  als $\frac{b}{2a}$ bestimmt werden. Da die zu lösende *Gleichung* noch kein $d^2$ beherbergt, muss dieses durch eine *Addition* hinzugefügt werden. Anschließend werden alle *Terme* die nicht zu einer *Binomischen Formel* gehören auf die andere Seite des *Gleichheitszeichens* gebracht: 
 
 
 $$
@@ -102,7 +102,7 @@ $$
 $$
 
 
-{{|>}} Nach genauerer Betrachtung ist festzustellen, dass auf der linken Seite des **Gleichheitszeichen** die **erste binomische Formel** vorzufinden ist. Nach der Ersetzung fällt auf, dass die **quadratische Potenz** und die **lineare Potenz** in der **Variablen** $x$ verschmolzen sind. Um nun nach der **Variable** restlos aufzulösen, muss auf beiden Seiten des **Gleichheitszeichens** die **Wurzel** gezogen werden, da dies die **Umkehrfunktion** zum **Quadrieren** ist. Dabei ist zu beachten, dass es eine negative und eine positive **Lösung** gibt, da zum Beispiel $2^2 = (-2)^2$ ist.
+{{|>}} Nach genauerer Betrachtung ist festzustellen, dass auf der linken Seite des *Gleichheitszeichen* die *erste binomische Formel* vorzufinden ist. Nach der Ersetzung fällt auf, dass die *quadratische Potenz* und die *lineare Potenz* in der *Variablen* $x$ verschmolzen sind. Um nun nach der *Variable* restlos aufzulösen, muss auf beiden Seiten des *Gleichheitszeichens* die *Wurzel* gezogen werden, da dies die *Umkehrfunktion* zum *Quadrieren* ist. Dabei ist zu beachten, dass es eine negative und eine positive *Lösung* gibt, da zum Beispiel $2^2 = (-2)^2$ ist.
  
 
 
@@ -117,7 +117,7 @@ $$
 $$
  
 
-{{|>}} Nach einer Umbenennung der **Parameter** $p=\frac{b}{a}$ und $q=\frac{c}{a}$ erkennt man, dass die so genannte **p-q-Formel** hergeleitet wurde, welche sich lediglich durch die Umbenennung der **Parameter** von der sogenannten **Mitternachtsformel** aus der vorherigen **Gleichung** unterscheidet: 
+{{|>}} Nach einer Umbenennung der *Parameter* $p=\frac{b}{a}$ und $q=\frac{c}{a}$ erkennt man, dass die so genannte *p-q-Formel* hergeleitet wurde, welche sich lediglich durch die Umbenennung der *Parameter* von der sogenannten *Mitternachtsformel* aus der vorherigen *Gleichung* unterscheidet: 
 
 
 $$
@@ -128,12 +128,12 @@ $$
 $$
 
 
-{{|>}} Um Zeit in bestimmten Klausur- oder Unterrichtssituationen zu sparen, empfiehlt es sich die **p-q-Formel** zu verwenden, dennoch sollte von ihrer Benutzung abgeraten werden, denn in der höheren Mathematik (siehe Kapitel "**Differentiation** und **Integration**") sind viele Aufgaben nur noch mittels der **quadratischen Ergänzung** effektiv zu lösen. 
+{{|>}} Um Zeit in bestimmten Klausur- oder Unterrichtssituationen zu sparen, empfiehlt es sich die *p-q-Formel* zu verwenden, dennoch sollte von ihrer Benutzung abgeraten werden, denn in der höheren Mathematik (siehe Kapitel "*Differentiation* und *Integration*") sind viele Aufgaben nur noch mittels der *quadratischen Ergänzung* effektiv zu lösen. 
 
-{{|>}} Die Zahl unten rechts von zum Beispiel $x_1$ wird **Index** genannt. Ein **Index** hat keine genauere mathematische Bedeutung, allerdings kann darüber eine zusätzliche Information mitgegeben werden. So bedeutet $x_{1,2}$, dass zwei spezielle **Werte** für $x$ vorliegen, die die **Gleichung** lösen würden. Oftmals wird auch $x_0$ vorgefunden und steht für einen speziellen **konstanten** **Wert**. Folglich gibt der **Index** nur genauer an, welche Bedeutung genau dieser **Wert** der **Variable** oder des **Parameters** besitzt.
+{{|>}} Die Zahl unten rechts von zum Beispiel $x_1$ wird *Index* genannt. Ein *Index* hat keine genauere mathematische Bedeutung, allerdings kann darüber eine zusätzliche Information mitgegeben werden. So bedeutet $x_{1,2}$, dass zwei spezielle *Werte* für $x$ vorliegen, die die *Gleichung* lösen würden. Oftmals wird auch $x_0$ vorgefunden und steht für einen speziellen *konstanten* *Wert*. Folglich gibt der *Index* nur genauer an, welche Bedeutung genau dieser *Wert* der *Variable* oder des *Parameters* besitzt.
 
 
-{{|>}} Wenn bei einer **Gleichung** in offensichtliches **Produkt** mit einer **quadratischen Gleichung** vorliegt, lohnt es sich **auszuklammern**
+{{|>}} Wenn bei einer *Gleichung* in offensichtliches *Produkt* mit einer *quadratischen Gleichung* vorliegt, lohnt es sich *auszuklammern*
 
 
 
@@ -145,7 +145,7 @@ $$
 $$
  
 
-{{|>}} sodass das die **Faktoren** des **Produkts** separiert betrachtet werden können, denn es gilt nach wie vor der **Satz des Nullprodukts**: Wenn einer der **Faktoren** gleich Null ist, dann ist das gesamte **Produkt** gleich Null.
+{{|>}} sodass das die *Faktoren* des *Produkts* separiert betrachtet werden können, denn es gilt nach wie vor der *Satz des Nullprodukts*: Wenn einer der *Faktoren* gleich Null ist, dann ist das gesamte *Produkt* gleich Null.
 
 
 $$
@@ -158,7 +158,7 @@ $$
 
 
 
-{{|>}} Ab diesem Zeitpunkt kann die restliche **Gleichung** mit der **quadratischen Ergänzung** gelöst werden. Das **Ausklammerungsverfahren** funktioniert nicht nur bei höheren **Polynomen**, sondern immer, wenn aus allen Bestandteilen der **Gleichung** **ausgeklammert** werden kann. So ist es möglich bei einigen **Gleichungen** die **Lösungen** direkt abzulesen. 
+{{|>}} Ab diesem Zeitpunkt kann die restliche *Gleichung* mit der *quadratischen Ergänzung* gelöst werden. Das *Ausklammerungsverfahren* funktioniert nicht nur bei höheren *Polynomen*, sondern immer, wenn aus allen Bestandteilen der *Gleichung* *ausgeklammert* werden kann. So ist es möglich bei einigen *Gleichungen* die *Lösungen* direkt abzulesen. 
 
 
 $$
@@ -168,11 +168,11 @@ $$
 $$
  
 
-{{|>}} Aus diesem Grund lohnt es sich nicht immer **Klammern** aus zu **multiplizieren**. 
+{{|>}} Aus diesem Grund lohnt es sich nicht immer *Klammern* aus zu *multiplizieren*. 
 
 
 
-{{|>}} Bei jeder Rechnung ist es dem Rechnenden freigestellt Abkürzungen einzuführen. Dieser Prozess wird **Substitution** genannt. Im folgenden Beispiel wird die **Summe** innerhalb der **Klammer** **substituiert**: 
+{{|>}} Bei jeder Rechnung ist es dem Rechnenden freigestellt Abkürzungen einzuführen. Dieser Prozess wird *Substitution* genannt. Im folgenden Beispiel wird die *Summe* innerhalb der *Klammer* *substituiert*: 
 
 
 
@@ -185,7 +185,7 @@ $$
 
 
 
-{{|>}} Dabei ist es wichtig zu beachten, dass bei der **Substitution** ersetzten **Variablen** vollständig eliminiert werden.
+{{|>}} Dabei ist es wichtig zu beachten, dass bei der *Substitution* ersetzten *Variablen* vollständig eliminiert werden.
 
 
 $$
@@ -197,7 +197,7 @@ $$
 
 
 
-{{|>}} Jede **Substitution** ist zulässig. Wichtig wird dieser Prozess besonders wenn komplexere Aufgaben dadurch wesentlich vereinfacht werden können. Aus diesem Grund wird im Kapitel "**Differentiation** und **Integration**" nochmal besonders auf die **Substitution** eingegangen.
+{{|>}} Jede *Substitution* ist zulässig. Wichtig wird dieser Prozess besonders wenn komplexere Aufgaben dadurch wesentlich vereinfacht werden können. Aus diesem Grund wird im Kapitel "*Differentiation* und *Integration*" nochmal besonders auf die *Substitution* eingegangen.
 
 
 
@@ -209,4 +209,4 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 
 
-*******************************
+*********************

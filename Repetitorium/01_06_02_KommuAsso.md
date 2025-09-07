@@ -57,15 +57,15 @@ author: Martin Lommatzsch
 
 
 {{|>}}
-*******************************
+***************************
 
 
-Das **Assoziativ**- und das **Kommutativgesetz** helfen beim Rechnen den Überblick selbst über sehr komplex wirkende Sachverhalte zu behalten und sollten deswegen bekannt sein. In diesem Abschnitt werden diese beiden Gesetz und ihre Auswirkungen auf die Mathematik besprochen. Auch wird nochmals motiviert, warum es lohnend sein kann mit **Brüchen** und **negativen Zahlen** zu arbeiten. 
+Das *Assoziativ*- und das *Kommutativgesetz* helfen beim Rechnen den Überblick selbst über sehr komplex wirkende Sachverhalte zu behalten und sollten deswegen bekannt sein. In diesem Abschnitt werden diese beiden Gesetz und ihre Auswirkungen auf die Mathematik besprochen. Auch wird nochmals motiviert, warum es lohnend sein kann mit *Brüchen* und *negativen Zahlen* zu arbeiten. 
 
 
 <h2>Kommutator</h2>
 
-{{|>}} Das **Kommutativgesetz** besagt, dass die Vertauschung von Zahlen, **Parametern** oder **Variablen** bei einer Rechenoperation keinen Einfluss auf den **Wert des Terms** hat. Zur Überprüfung des **Kommutativgesetzes** dient der **Kommutator**, welcher folgende definierte Rechenanweisung ist:
+{{|>}} Das *Kommutativgesetz* besagt, dass die Vertauschung von Zahlen, *Parametern* oder *Variablen* bei einer Rechenoperation keinen Einfluss auf den *Wert des Terms* hat. Zur Überprüfung des *Kommutativgesetzes* dient der *Kommutator*, welcher folgende definierte Rechenanweisung ist:
 
 
 
@@ -75,7 +75,7 @@ $$
 \end{align*}
 $$
 
-{{|>}} Ist der **Kommutator** gleich Null, so gilt, dass $a\cdot b = b \cdot a$ ist. Wenn man nun Zahlen für die **Parameter** $a$ und $b$ einsetzt, so ist die Gültigkeit des **Kommutativgesetzes** intuitiv zu erkennen: 
+{{|>}} Ist der *Kommutator* gleich Null, so gilt, dass $a\cdot b = b \cdot a$ ist. Wenn man nun Zahlen für die *Parameter* $a$ und $b$ einsetzt, so ist die Gültigkeit des *Kommutativgesetzes* intuitiv zu erkennen: 
 
 
 $$
@@ -84,7 +84,7 @@ $$
 \end{align*}
 $$
 
-{{|>}} Der allgemeine **Kommutator** ist für die **Multiplikation** definiert - wenn nun das **Kommutativgesetz** zum Beispiel für die **Addition** überprüft werden soll, wird am Komma des **Kommutator** gekennzeichnet welcher **Operator** untersucht wird. 
+{{|>}} Der allgemeine *Kommutator* ist für die *Multiplikation* definiert - wenn nun das *Kommutativgesetz* zum Beispiel für die *Addition* überprüft werden soll, wird am Komma des *Kommutator* gekennzeichnet welcher *Operator* untersucht wird. 
 
 
 
@@ -95,7 +95,7 @@ $$
 \end{align*}
 $$
 
-{{|>}} Es wird deutlich, dass ohne die Einführung der **ganzen Zahlen** $\mathbb{Z}$ und der **Bruchrechnung** und somit die Verallgemeinerung von **Addition** mit **Subtraktion** sowie der **Multiplikation** mit der **Division**, dass **Kommutativgesetz** nicht für die **Subtraktion** und **Division** gelten würde. 
+{{|>}} Es wird deutlich, dass ohne die Einführung der *ganzen Zahlen* $\mathbb{Z}$ und der *Bruchrechnung* und somit die Verallgemeinerung von *Addition* mit *Subtraktion* sowie der *Multiplikation* mit der *Division*, dass *Kommutativgesetz* nicht für die *Subtraktion* und *Division* gelten würde. 
 
 
 
@@ -108,7 +108,7 @@ $$
 \end{align*}
 $$
 
-{{|>}} Durch die Einführung **ganzen Zahlen** $\mathbb{Z}$ und der **Bruchrechnung** verändert sich die vorherigen **Gleichungen** zu:
+{{|>}} Durch die Einführung *ganzen Zahlen* $\mathbb{Z}$ und der *Bruchrechnung* verändert sich die vorherigen *Gleichungen* zu:
 
 
 
@@ -122,13 +122,13 @@ $$
 $$
 
 
-{{|>}} Die besondere Bedeutung und die Konsequenzen des **Kommutators** werden im Kapitel "**Differentiation** und **Integration**" weiter ausgeführt. Während die **Klammern** im nächsten Unterabschnitt genaustens erklärt werden
+{{|>}} Die besondere Bedeutung und die Konsequenzen des *Kommutators* werden im Kapitel "*Differentiation* und *Integration*" weiter ausgeführt. Während die *Klammern* im nächsten Unterabschnitt genaustens erklärt werden
 
 
 
 <h2>Assoziativgesetz</h2>
 
-{{|>}} Das **Assoziativgesetz** besagt, dass die Reihenfolge bei einer Rechnung keine Relevanz besitzen darf. So macht es zum Beispiel keinen Unterschied bei der **Addition** oder **Multiplikation** von drei Zahlen, welche zuerst verrechnet werden.
+{{|>}} Das *Assoziativgesetz* besagt, dass die Reihenfolge bei einer Rechnung keine Relevanz besitzen darf. So macht es zum Beispiel keinen Unterschied bei der *Addition* oder *Multiplikation* von drei Zahlen, welche zuerst verrechnet werden.
 
 
 
@@ -139,7 +139,7 @@ a \cdot b \cdot c & = (a\cdot b)\cdot c = a \cdot (b\cdot c) = b \cdot (a \cdot 
 \end{align*}
 $$
 
-{{|>}} Die Reihenfolge in den vorherigen **Gleichung** wird beschrieben durch die **Klammern**, welche angeben welche Rechnung zu erst vollzogen werden soll. Das jeweils letzte **Gleichheitszeichen** konnte nur durch die Vertauschung der geschriebenen Reihenfolge der **Parameter** $a,b$ und $c$, also dem **Kommutativgesetz**, geschrieben werden. Erneut zeigt sich, dass die Verallgemeinerung von **Addition** mit **Subtraktion** sowie **Multiplikation** mit **Division** seine Vorteile hat, denn die **Rechenoperatoren** der **Subtraktion** und der **Division** sind nicht **assoziativ**: 
+{{|>}} Die Reihenfolge in den vorherigen *Gleichung* wird beschrieben durch die *Klammern*, welche angeben welche Rechnung zu erst vollzogen werden soll. Das jeweils letzte *Gleichheitszeichen* konnte nur durch die Vertauschung der geschriebenen Reihenfolge der *Parameter* $a,b$ und $c$, also dem *Kommutativgesetz*, geschrieben werden. Erneut zeigt sich, dass die Verallgemeinerung von *Addition* mit *Subtraktion* sowie *Multiplikation* mit *Division* seine Vorteile hat, denn die *Rechenoperatoren* der *Subtraktion* und der *Division* sind nicht *assoziativ*: 
 
 
 
@@ -150,11 +150,11 @@ $$
 \end{align*}
 $$
 
-{{|>}} Allerdings gilt durch die Einführung der **ganzen Zahlen** $\mathbb{Z}$ und des **Bruchrechnens**, dass der **Subtraktionsoperator** umgeschrieben werden kann in $- = + (-1)$ sowie der **Divisionsoperator** mit nur seltenen Ausnahmen aus dem mathematischen Gebrauch verschwindet.
+{{|>}} Allerdings gilt durch die Einführung der *ganzen Zahlen* $\mathbb{Z}$ und des *Bruchrechnens*, dass der *Subtraktionsoperator* umgeschrieben werden kann in $- = + (-1)$ sowie der *Divisionsoperator* mit nur seltenen Ausnahmen aus dem mathematischen Gebrauch verschwindet.
 
 
 
 
-*******************************
+***************************
 
 

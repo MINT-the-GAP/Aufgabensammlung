@@ -55,9 +55,9 @@ author: Martin Lommatzsch
 
 
 {{|>}}
-********************************
+***************************
 
-Ohne **Einheiten** haben wissenschaftliche Aussagen (außer in der Mathematik) keine Bedeutung. Um Verwirrungen zwischen den verschiedenen **Einheiten** zu vermeiden, wurde das **SI-Einheitensystem** für alltägliche Phänomene eingeführt. Das **SI-Einheitensystem** besitzt sieben **Grundeinheiten**, aus denen alle anderen **Einheiten** zusammengesetzt werden können. In der mathematischen Beschreibung von Phänomenen verändert die Wahl der **Einheiten** nahezu alles. Aus diesem Grund sollte immer mit **SI-Einheiten** gerechnet werden, solange kein anderes **Einheitensystem** für eine Beschreibung explizit gefordert ist. Die **SI-Einheiten** sind in der nachfolgenden Tabelle aufgelistet, wobei in die zweite Spalte die üblich gewählte **Parameternamen** zur **Größe** angegeben sind.
+Ohne *Einheiten* haben wissenschaftliche Aussagen (außer in der Mathematik) keine Bedeutung. Um Verwirrungen zwischen den verschiedenen *Einheiten* zu vermeiden, wurde das *SI-Einheitensystem* für alltägliche Phänomene eingeführt. Das *SI-Einheitensystem* besitzt sieben *Grundeinheiten*, aus denen alle anderen *Einheiten* zusammengesetzt werden können. In der mathematischen Beschreibung von Phänomenen verändert die Wahl der *Einheiten* nahezu alles. Aus diesem Grund sollte immer mit *SI-Einheiten* gerechnet werden, solange kein anderes *Einheitensystem* für eine Beschreibung explizit gefordert ist. Die *SI-Einheiten* sind in der nachfolgenden Tabelle aufgelistet, wobei in die zweite Spalte die üblich gewählte *Parameternamen* zur *Größe* angegeben sind.
 
 
 
@@ -73,7 +73,7 @@ Ohne **Einheiten** haben wissenschaftliche Aussagen (außer in der Mathematik) k
 
 
 
-{{|>}} Oftmals kommen die **SI-Einheiten** mit einem Präfix vor. Diese sind nur Abkürzungen hinter denen sich lediglich Nullen verstecken. Statt eines Präfix kann einfach die dazugehörige Zahl eingesetzt werden (z.B.: k $= 1000$). Eine Übersichtsliste:
+{{|>}} Oftmals kommen die *SI-Einheiten* mit einem Präfix vor. Diese sind nur Abkürzungen hinter denen sich lediglich Nullen verstecken. Statt eines Präfix kann einfach die dazugehörige Zahl eingesetzt werden (z.B.: k $= 1000$). Eine Übersichtsliste:
 
 
 
@@ -107,7 +107,7 @@ Ohne **Einheiten** haben wissenschaftliche Aussagen (außer in der Mathematik) k
 
 
 
-{{|>}} **Einheiten** behaftete **Größen** können nur mit **Größen** **addiert** oder **subtrahiert** werden, wenn diese die gleiche **Einheit** besitzen, somit ist eine **Einheit** ähnlich wie ein **Parameter** zu behandeln, welcher allerdings nur eine Sinnbedeutung besitzt. 
+{{|>}} *Einheiten* behaftete *Größen* können nur mit *Größen* *addiert* oder *subtrahiert* werden, wenn diese die gleiche *Einheit* besitzen, somit ist eine *Einheit* ähnlich wie ein *Parameter* zu behandeln, welcher allerdings nur eine Sinnbedeutung besitzt. 
 
 
 
@@ -121,7 +121,7 @@ $$
 
 
 
-{{|>}} alle **Einheiten** werden stets hinter der Zahl geschrieben. Präfixe wie Millimeter mm für Verwirrung sorgen könnten, da der Buchstabe mehrere Bedeutungen zugesprochen bekommt. Meistens wird die genaue Bedeutung allerdings im Zusammenhang der Rechnung klar. Da **Gleichungen** teilweise nur eine Aussagekraft in bestimmten **Einheiten** besitzen, werden Variablen mit diesen gekennzeichnet:
+{{|>}} alle *Einheiten* werden stets hinter der Zahl geschrieben. Präfixe wie Millimeter mm für Verwirrung sorgen könnten, da der Buchstabe mehrere Bedeutungen zugesprochen bekommt. Meistens wird die genaue Bedeutung allerdings im Zusammenhang der Rechnung klar. Da *Gleichungen* teilweise nur eine Aussagekraft in bestimmten *Einheiten* besitzen, werden Variablen mit diesen gekennzeichnet:
 
 
 $$
@@ -132,11 +132,11 @@ $$
 
 
 
-{{|>}} wobei die eckigen **Klammern** die zu wählende **Einheit** für die **Variable** beherbergen.
+{{|>}} wobei die eckigen *Klammern* die zu wählende *Einheit* für die *Variable* beherbergen.
 
 
 
-{{|>}} Bei einigen **Einheiten** existieren trotz der flächendeckenden Einführung des **Dezimalsystems** nach der französischen Revolution nach wie vor Besonderheiten. So konnte sich bei der Zeit das **Dezimalsystem** nicht durchsetzen, sodass $1\,\text{y}=1\,\text{a} = 365\,\text{d} \;;\; 1\,\text{d} = 24\,\text{h}  \;;\; 1\,\text{h} = 60\,\text{min}  \;;\; 1\,\text{min} = 60\,\text{s} $ gilt. Hierbei wurde ein Kalenderjahr $1\,$a gewählt, während das Bankenjahr nur $360$ Tage besitzt. Durch die Bewegung der Erde um die Sonne ist genau ein Jahr physikalisch mit $1\,\text{a}\approx 365,25636\,\text{d}$ definiert, sodass in guter Näherung lediglich das Schaltjahr mit betrachtet wird $1\,\text{a} = 365,25\,\text{d}$. In der Regel wird mit dem Kalenderjahr gerechnet.  Bei der Masse muss beachtet werden, dass Kilogramm $1\,\text{kg}$ die **SI-Einheit** ist und dass eine Tonne $\,\text{1t} = 1000\,\text{kg}$ entspricht und dass in der deutschsprachigen Region zwei Pfund einem Kilogramm entsprechen. Bei den **Flächen** sind noch "Ar" ($1\,\text{a} = 100\,\text{m}^2$) und Hektar ($1\,\text{ha} = 10000\,\text{m}^2$) zu erwähnen. Für **Volumina** gilt die Definition für einen Liter $1\,\text{dm}^3 = 1\,\text{l}$. 
+{{|>}} Bei einigen *Einheiten* existieren trotz der flächendeckenden Einführung des *Dezimalsystems* nach der französischen Revolution nach wie vor Besonderheiten. So konnte sich bei der Zeit das *Dezimalsystem* nicht durchsetzen, sodass $1\,\text{y}=1\,\text{a} = 365\,\text{d} \;;\; 1\,\text{d} = 24\,\text{h}  \;;\; 1\,\text{h} = 60\,\text{min}  \;;\; 1\,\text{min} = 60\,\text{s} $ gilt. Hierbei wurde ein Kalenderjahr $1\,$a gewählt, während das Bankenjahr nur $360$ Tage besitzt. Durch die Bewegung der Erde um die Sonne ist genau ein Jahr physikalisch mit $1\,\text{a}\approx 365,25636\,\text{d}$ definiert, sodass in guter Näherung lediglich das Schaltjahr mit betrachtet wird $1\,\text{a} = 365,25\,\text{d}$. In der Regel wird mit dem Kalenderjahr gerechnet.  Bei der Masse muss beachtet werden, dass Kilogramm $1\,\text{kg}$ die *SI-Einheit* ist und dass eine Tonne $\,\text{1t} = 1000\,\text{kg}$ entspricht und dass in der deutschsprachigen Region zwei Pfund einem Kilogramm entsprechen. Bei den *Flächen* sind noch "Ar" ($1\,\text{a} = 100\,\text{m}^2$) und Hektar ($1\,\text{ha} = 10000\,\text{m}^2$) zu erwähnen. Für *Volumina* gilt die Definition für einen Liter $1\,\text{dm}^3 = 1\,\text{l}$. 
 
 
 {{|>}} So können für einheitenbehafteten Größen eine Umrechnungstabelle erstellt werden. 
@@ -158,12 +158,12 @@ $$
 
 
 
-{{|>}} Andere **Einheiten** als die **SI-Einheiten** sind meistens zusammengesetzte **Einheiten**, welche als Abkürzung eingeführt wurden. Die wichtigsten zusammengesetzten **Einheiten** sind von oft vorkommenden **Größen** der Physik. (Hier sind nur **Größen** aufgelistet, welche in späteren Übungsaufgaben mit Bezug zu **Einheitenrechnungen** verwendet werden könnten.) 
+{{|>}} Andere *Einheiten* als die *SI-Einheiten* sind meistens zusammengesetzte *Einheiten*, welche als Abkürzung eingeführt wurden. Die wichtigsten zusammengesetzten *Einheiten* sind von oft vorkommenden *Größen* der Physik. (Hier sind nur *Größen* aufgelistet, welche in späteren Übungsaufgaben mit Bezug zu *Einheitenrechnungen* verwendet werden könnten.) 
 
 
 
 {{|>}} 
-****************************************************
+*************************************
 
 Kraft $F$ in $1\,\text{N} = 1\,\dfrac{\text{m} \cdot \text{kg}}{\text{s}^2}$ 
 
@@ -222,11 +222,11 @@ Boltzmann-Konstante $k_B \approx 1,38064852 \,\dfrac{\text{J} }{\text{K}} $
 
 Plancksches Wirkungsquantum $\hbar \approx 1,05447800 \cdot 10^{-34} \,\text{J} \cdot \text{s} $ 
 
-***************************************
+*******************************
 
 
 
-{{|>}} Mittels einer **Einheitenrechnung** lassen sich **Gleichungen** auf ihre Richtigkeit überprüfen. Dazu werden die **Einheiten** der **Größen** der **Gleichung** statt den **Parametern** und **Variablen** niedergeschrieben. Wenn auf beiden Seiten der **Gleichung** die gleiche **Einheit** nachgewiesen werden kann, ist dies ein Indiz für die Richtigkeit der **Gleichung**. Außerdem können so **Umrechnungsfaktoren** von Präfixen mit berücksichtigt werden.
+{{|>}} Mittels einer *Einheitenrechnung* lassen sich *Gleichungen* auf ihre Richtigkeit überprüfen. Dazu werden die *Einheiten* der *Größen* der *Gleichung* statt den *Parametern* und *Variablen* niedergeschrieben. Wenn auf beiden Seiten der *Gleichung* die gleiche *Einheit* nachgewiesen werden kann, ist dies ein Indiz für die Richtigkeit der *Gleichung*. Außerdem können so *Umrechnungsfaktoren* von Präfixen mit berücksichtigt werden.
 
 
 
@@ -243,4 +243,4 @@ $$
 
 
 
-********************************
+***************************

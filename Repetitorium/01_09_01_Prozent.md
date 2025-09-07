@@ -55,11 +55,11 @@ author: Martin Lommatzsch
 
 
 {{|>}}
-********************************
+**********************
 
 
 
-Die **Prozentrechnung** ist von besonderer Bedeutung in der heutigen Gesellschaft, dabei versteckt sich hinter ihr nur der **Bruch** $\frac{1}{100}$. Denn **pro cent** bedeutet übersetzt nicht viel mehr als pro hundert. Aus diesem **Bruch** heraus hat sich historisch dann das **Prozentzeichen** $\%$ entwickelt. Der rechnerische Umgang ist durch das Ersetzen von $\%$ durch $\frac{1}{100}$ gegeben. Während für **Promille** sich ebenfalls ein abkürzendes Zeichen entwickelt hat: $1 \text{\permil} = \frac{1}{1000}$.
+Die *Prozentrechnung* ist von besonderer Bedeutung in der heutigen Gesellschaft, dabei versteckt sich hinter ihr nur der *Bruch* $\frac{1}{100}$. Denn *pro cent* bedeutet übersetzt nicht viel mehr als pro hundert. Aus diesem *Bruch* heraus hat sich historisch dann das *Prozentzeichen* $\%$ entwickelt. Der rechnerische Umgang ist durch das Ersetzen von $\%$ durch $\frac{1}{100}$ gegeben. Während für *Promille* sich ebenfalls ein abkürzendes Zeichen entwickelt hat: $1 \text{\permil} = \frac{1}{1000}$.
 
 
 
@@ -69,7 +69,7 @@ $$
 $$
 
 
-Auch andere Rechnungen sind auf diesen Fakt reduzierbar: Sei ein Kapital von $1000$\,\euro\; mit einem **Zinssatz** von $4\%$ pro Jahr angelegt, wie hoch wären die **Zinsen** nach einem Jahr? Diese Frage kann leicht dargestellt werden als: 
+Auch andere Rechnungen sind auf diesen Fakt reduzierbar: Sei ein Kapital von $1000$\,\euro\; mit einem *Zinssatz* von $4\%$ pro Jahr angelegt, wie hoch wären die *Zinsen* nach einem Jahr? Diese Frage kann leicht dargestellt werden als: 
 
 
 
@@ -81,7 +81,7 @@ $$
 
 
 
-Der **Dreisatz** zur Frage "`Wie viel sind 4\% von 300?"' gestaltet sich als:
+Der *Dreisatz* zur Frage "`Wie viel sind 4\% von 300?"' gestaltet sich als:
 
 
 
@@ -93,7 +93,7 @@ $$
  \end{align*}
 $$
 
-Allerdings ist der **Dreisatz** durch das Wissen, dass $\% = \frac{1}{100}$ ist, wie folgt verkürzt durchzuführen: 
+Allerdings ist der *Dreisatz* durch das Wissen, dass $\% = \frac{1}{100}$ ist, wie folgt verkürzt durchzuführen: 
 
 
 
@@ -104,10 +104,10 @@ $$
  \end{align*}
 $$
 
-wobei in der vorherigen **Gleichung** die Zwischenschritte weggelassen werden könnten, da $\frac{300}{100}$ und $3 \cdot 4$ nicht von besonderer Schwierigkeit sind.
+wobei in der vorherigen *Gleichung* die Zwischenschritte weggelassen werden könnten, da $\frac{300}{100}$ und $3 \cdot 4$ nicht von besonderer Schwierigkeit sind.
 
 
-Ein anderer Aspekt bei der **Prozentrechnung** ist die **Normierung**. Die **Normierung** beschreibt die Rechnung wie viel ein **Prozent** darstellen. Sei zum Beispiel eine **Menge** von $250000$ gegeben, dann kann jede **Teilmenge** (zum Beispiel $46972$) mit dem **Kehrwert** der **Menge** **multipliziert** und somit **normiert** werden.  
+Ein anderer Aspekt bei der *Prozentrechnung* ist die *Normierung*. Die *Normierung* beschreibt die Rechnung wie viel ein *Prozent* darstellen. Sei zum Beispiel eine *Menge* von $250000$ gegeben, dann kann jede *Teilmenge* (zum Beispiel $46972$) mit dem *Kehrwert* der *Menge* *multipliziert* und somit *normiert* werden.  
 
 
 $$
@@ -116,7 +116,7 @@ $$
  \end{align*}
 $$
 
-Somit entspricht die **Teilmenge** insgesamt $18,7888 \%$ der **Gesamtmenge**. Es gibt verschiedene Formen der **Normierung** neben der **Normierung** auf $100\%$, welche in diesem Abschnitt vorgestellt wurde.
+Somit entspricht die *Teilmenge* insgesamt $18,7888 \%$ der *Gesamtmenge*. Es gibt verschiedene Formen der *Normierung* neben der *Normierung* auf $100\%$, welche in diesem Abschnitt vorgestellt wurde.
 
 Da des öfteren nach bestimmten Vokabeln gefragt wird, sollen diese noch am Ende vorgestellt werden:
 
@@ -128,12 +128,12 @@ W = p\left[\%\right] G = \frac{p}{100} G \;\; , \\
  \end{align*}
 $$
 
-wobei $G$ der **Grundwert**, $W$ der **Prozentwert**, $p$ der **Prozentfuß** oder **Prozentzahl** und $p[\%]$ der **Prozentsatz** ist. (Beispiel: Der **Prozentsatz** muss in **Prozent** angegeben werden $p[\%] = 5\%$, während hier die **Prozentzahl** durch $p=5$ gegeben ist, sodass $p[\%] = \frac{p}{100}$ gilt.) \\
+wobei $G$ der *Grundwert*, $W$ der *Prozentwert*, $p$ der *Prozentfuß* oder *Prozentzahl* und $p[\%]$ der *Prozentsatz* ist. (Beispiel: Der *Prozentsatz* muss in *Prozent* angegeben werden $p[\%] = 5\%$, während hier die *Prozentzahl* durch $p=5$ gegeben ist, sodass $p[\%] = \frac{p}{100}$ gilt.) \\
 
 
 
 		
-Füllt man diese **Gleichung** mit einer Bedeutung bezüglich Geldanlagen werden oftmals andere **Variablennamen** verwendet, während das mathematische Vorgehen unverändert bleibt:		
+Füllt man diese *Gleichung* mit einer Bedeutung bezüglich Geldanlagen werden oftmals andere *Variablennamen* verwendet, während das mathematische Vorgehen unverändert bleibt:		
 
 
 $$
@@ -143,7 +143,7 @@ Z & = K \frac{p}{100}  \;\; , \\
  \end{align*}
 $$
 
-wobei $Z$ für Zinsen und $K$ für das **Kapital** steht. Anhang von Geldanlagen kann schnell verdeutlicht werden, wie dramatisch sich ein stetiges **relatives Wachstum** auswirkt, denn ein **Wachstum** um einen festen relativen **Wert** wird auch **exponentielles Wachstum** genannt. Hier soll ein Beispiel dienen: Ein **Kapital** von $K_0 = 5000$\EUR{} soll für $4$ Jahre zu einem **Jahreszinssatz** von $p\left[\%\right]=10\%$ angelegt werden. Das bedeutet, dass nach jedem Jahr ein neues **Grundkapital** betrachtet werden muss, da die **Zinsen** **addiert** werden:
+wobei $Z$ für Zinsen und $K$ für das *Kapital* steht. Anhang von Geldanlagen kann schnell verdeutlicht werden, wie dramatisch sich ein stetiges *relatives Wachstum* auswirkt, denn ein *Wachstum* um einen festen relativen *Wert* wird auch *exponentielles Wachstum* genannt. Hier soll ein Beispiel dienen: Ein *Kapital* von $K_0 = 5000$\EUR{} soll für $4$ Jahre zu einem *Jahreszinssatz* von $p\left[\%\right]=10\%$ angelegt werden. Das bedeutet, dass nach jedem Jahr ein neues *Grundkapital* betrachtet werden muss, da die *Zinsen* *addiert* werden:
 
 
 $$
@@ -178,7 +178,7 @@ $$
  \end{align*}
 $$
 
-wobei $q$ der **Wachstumsfaktor** ist. Aus der verkürzten **Darstellung** eines Jahres, kann eine **Gleichung** für $n$ Jahre entwickelt werden, hierfür wird zunächst eine Kapitalentwicklung über $3$ Jahre betrachtet:
+wobei $q$ der *Wachstumsfaktor* ist. Aus der verkürzten *Darstellung* eines Jahres, kann eine *Gleichung* für $n$ Jahre entwickelt werden, hierfür wird zunächst eine Kapitalentwicklung über $3$ Jahre betrachtet:
 
 
 
@@ -192,7 +192,7 @@ $$
  \end{align*}
 $$
 
-Allerdings werden bei Vertragskündigung nicht immer volle Jahre verrechnet, sodass die $n$ Jahre auf Monate, Wochen oder Tage umgerechnet werden müssen. Hierbei ist zu beachten, dass Banken (und in der Wirtschaft) nur mit $360$ statt $\approx 365,249$ Tagen pro Jahr rechnet wird. In der Finanzwelt werden auch monatlich oder täglich Zinsen berechnet, sodass sich die **Gleichung**, die für Jahre gilt, für den **Zinssatz** $p$ noch angepasst werden muss.
+Allerdings werden bei Vertragskündigung nicht immer volle Jahre verrechnet, sodass die $n$ Jahre auf Monate, Wochen oder Tage umgerechnet werden müssen. Hierbei ist zu beachten, dass Banken (und in der Wirtschaft) nur mit $360$ statt $\approx 365,249$ Tagen pro Jahr rechnet wird. In der Finanzwelt werden auch monatlich oder täglich Zinsen berechnet, sodass sich die *Gleichung*, die für Jahre gilt, für den *Zinssatz* $p$ noch angepasst werden muss.
 
 
 
@@ -214,4 +214,4 @@ wobei $m$ für die Anzahl der Monate und $t$ für die Anzahl der Tage stehen.
 
 
 
-********************************
+**********************

@@ -56,10 +56,10 @@ author: Martin Lommatzsch
 
 
 {{|>}}
-********************************
+***************************
 
 
-Einige Abkürzungen werden oft bei der **Wahrscheinlichkeitsrechnung** sowie bei **Reihendarstellungen** verwendet. Zu diesen zählen **Fakultäten** und **Binominalkoeffizienten**. So kann zum Beispiel die Rechnung 
+Einige Abkürzungen werden oft bei der *Wahrscheinlichkeitsrechnung* sowie bei *Reihendarstellungen* verwendet. Zu diesen zählen *Fakultäten* und *Binominalkoeffizienten*. So kann zum Beispiel die Rechnung 
 
 
 $$
@@ -68,7 +68,7 @@ $$
 \end{align*}
 $$
 
-{{|>}} abgekürzt werden, durch den sogenannten **Fakultätsoperator** $!$:
+{{|>}} abgekürzt werden, durch den sogenannten *Fakultätsoperator* $!$:
 
 
 $$
@@ -79,7 +79,7 @@ $$
 $$
 
 
-{{|>}} Dabei ist die **Fakultät** so definiert, dass $0! := 1$ gilt. Da oftmals **Fakultäten** in **Brüchen** vorkommen, sollte das **Kürzen** sowie andere Rechenregeln von **Fakultäten** bekannt sein. Außerdem unterliegt der **Fakultätsoperator** nicht dem **Distributiv**-, **Assoziativ**- und **Kommutativgesetz**, da er ausschließlich nach links wirkt und auch nur auf den **Wert** einer **Klammer**, die links von ihm steht.
+{{|>}} Dabei ist die *Fakultät* so definiert, dass $0! := 1$ gilt. Da oftmals *Fakultäten* in *Brüchen* vorkommen, sollte das *Kürzen* sowie andere Rechenregeln von *Fakultäten* bekannt sein. Außerdem unterliegt der *Fakultätsoperator* nicht dem *Distributiv*-, *Assoziativ*- und *Kommutativgesetz*, da er ausschließlich nach links wirkt und auch nur auf den *Wert* einer *Klammer*, die links von ihm steht.
 
 
 
@@ -96,7 +96,7 @@ $$
 
 
 
-{{|>}}  Einige Konstellationen mit der **Fakultät** kommen besonders häufig vor. Die am häufigsten vorkommende Anordnung von **Fakultäten** wird **Binomialkoeffizient** genannt und ist definiert durch:
+{{|>}}  Einige Konstellationen mit der *Fakultät* kommen besonders häufig vor. Die am häufigsten vorkommende Anordnung von *Fakultäten* wird *Binomialkoeffizient* genannt und ist definiert durch:
 
 
 
@@ -108,9 +108,9 @@ $$
 
 
 
-{{|>}} Generell sollte der Umgang mit neuen Abkürzungen, die neu eingeführt wurden, geübt werden, da in der Mathematik noch viele weitere Abkürzungen warten. So werden zum Beispiel im Kapitel "**Reihen**" weitere oft vorkommende Abkürzungen eingeführt.
+{{|>}} Generell sollte der Umgang mit neuen Abkürzungen, die neu eingeführt wurden, geübt werden, da in der Mathematik noch viele weitere Abkürzungen warten. So werden zum Beispiel im Kapitel "*Reihen*" weitere oft vorkommende Abkürzungen eingeführt.
 
 
 
 
-********************************
+***************************

@@ -57,10 +57,10 @@ author: Martin Lommatzsch
 
 
 {{|>}}
-*******************************
+*********************
 
 
-Wie schon zuvor wurden viele Rechenmethoden und neue Eigenschaften eingeführt, um die Übersicht oder Handhabung von rechnerischen Ausdrücken zu vereinfachen. Aus dem selben Grund wird die **Potenz** eingeführt, welche als verkürzte Schreibweise der wiederholten **Multiplikation** eines stets gleichwertigen **Faktors** dient. 
+Wie schon zuvor wurden viele Rechenmethoden und neue Eigenschaften eingeführt, um die Übersicht oder Handhabung von rechnerischen Ausdrücken zu vereinfachen. Aus dem selben Grund wird die *Potenz* eingeführt, welche als verkürzte Schreibweise der wiederholten *Multiplikation* eines stets gleichwertigen *Faktors* dient. 
 
 
 $$
@@ -72,7 +72,7 @@ a \cdot a \cdot a \cdot a \cdot a  & = a^5\\
 $$
 
 
-{{|>}} Für **Potenzen** gelten Rechenregeln, welche schnell erklärt werden können, wenn der abkürzende Charakter wie in vorherigen **Gleichung** verinnerlicht wurde. Im Folgenden soll eine Regel gezeigt und dann begründet werden, dass diese gilt (außer die Regel ist intuitiv).
+{{|>}} Für *Potenzen* gelten Rechenregeln, welche schnell erklärt werden können, wenn der abkürzende Charakter wie in vorherigen *Gleichung* verinnerlicht wurde. Im Folgenden soll eine Regel gezeigt und dann begründet werden, dass diese gilt (außer die Regel ist intuitiv).
 
 
 
@@ -85,7 +85,7 @@ $$
 
 
 
-{{|>}} Aus der Bedingung, dass $\frac{a}{a}=1$ sein muss und mit der Regel aus vorherigen **Gleichung** ergibt sich daraus, dass $a^1 \cdot \frac{1}{a} = a^0 = 1$ sein muss. Hieraus ergibt sich: 
+{{|>}} Aus der Bedingung, dass $\frac{a}{a}=1$ sein muss und mit der Regel aus vorherigen *Gleichung* ergibt sich daraus, dass $a^1 \cdot \frac{1}{a} = a^0 = 1$ sein muss. Hieraus ergibt sich: 
 
 
 
@@ -97,7 +97,7 @@ a^{-1} &= \frac{1}{a}   \\
 $$
 
 
-{{|>}} Des Weiteren kann abgleitet werden, dass Rechnungen mit **Potenzen** nicht **assoziativ** sind:
+{{|>}} Des Weiteren kann abgleitet werden, dass Rechnungen mit *Potenzen* nicht *assoziativ* sind:
 
 
 
@@ -123,11 +123,11 @@ $$
 
 
 
-{{|>}} gilt, wobei $\sqrt{a}$ die **Wurzel** von $a$ genannt wird. Die **Wurzel** habt die **Potenz** $^2$ auf, wie in vorherigen **Gleichung** zu sehen ist.
+{{|>}} gilt, wobei $\sqrt{a}$ die *Wurzel* von $a$ genannt wird. Die *Wurzel* habt die *Potenz* $^2$ auf, wie in vorherigen *Gleichung* zu sehen ist.
 
 
 
-{{|>}} Somit gelten zusammengefasst folgende Regeln für die **Potenzrechnung**:
+{{|>}} Somit gelten zusammengefasst folgende Regeln für die *Potenzrechnung*:
 
 
 
@@ -146,14 +146,14 @@ $$
 
 
 
-{{|>}} Abschließend ist noch zu erwähnen, dass bei dem Ausdruck $a^n$ es sich bei $a$ um die **Basis** und bei $n$ um den **Exponenten** handelt.
+{{|>}} Abschließend ist noch zu erwähnen, dass bei dem Ausdruck $a^n$ es sich bei $a$ um die *Basis* und bei $n$ um den *Exponenten* handelt.
 
 
 
 
-<h2> **Wurzeln** </h2>
+<h2> *Wurzeln* </h2>
 
-{{|>}} **Wurzeln** sind die **Umkehroperationen** zum **Potenzieren**. Somit steht hinter der sogenannten **Quadratwurzel** der Zahl $z$ ($\sqrt{z}$) die Frage: "`Welche Zahl ergibt mit sich selbst **multipliziert** die Zahl $z$?"' Hierzu lohnt es sich einige Zahlen zum **Quadrat** (zum Beispiel: $8^2 = 64$) zu kennen, um direkt ein Wert einer **Wurzel** zu erkennen. Da es nicht nur die **Quadratwurzel** der Zahl $z$ ($\sqrt{z} = z^{\frac{1}{2}}$) gibt, sondern auch noch höhere Werte des **Nenners** im **Exponenten**, lohnt es sich stets die jeweilige **Wurzel** als **Potenz** zu schreiben.
+{{|>}} *Wurzeln* sind die *Umkehroperationen* zum *Potenzieren*. Somit steht hinter der sogenannten *Quadratwurzel* der Zahl $z$ ($\sqrt{z}$) die Frage: "`Welche Zahl ergibt mit sich selbst *multipliziert* die Zahl $z$?"' Hierzu lohnt es sich einige Zahlen zum *Quadrat* (zum Beispiel: $8^2 = 64$) zu kennen, um direkt ein Wert einer *Wurzel* zu erkennen. Da es nicht nur die *Quadratwurzel* der Zahl $z$ ($\sqrt{z} = z^{\frac{1}{2}}$) gibt, sondern auch noch höhere Werte des *Nenners* im *Exponenten*, lohnt es sich stets die jeweilige *Wurzel* als *Potenz* zu schreiben.
 
 
 
@@ -166,10 +166,10 @@ $$
 $$
 
 
-{{|>}} Es gibt ein schriftliches Verfahren eine **Wurzel** zu ziehen, allerdings bedarf es einer aufwendigeren Erklärung, welche in einem eigenen Teil vorgenommen wird, da die Schüler heutzutage oftmals bei der Einführung der **Wurzel** mit dem Taschenrechner arbeiten, wird vorerst das schriftliche **Wurzelziehverfahren** ausgespart.
+{{|>}} Es gibt ein schriftliches Verfahren eine *Wurzel* zu ziehen, allerdings bedarf es einer aufwendigeren Erklärung, welche in einem eigenen Teil vorgenommen wird, da die Schüler heutzutage oftmals bei der Einführung der *Wurzel* mit dem Taschenrechner arbeiten, wird vorerst das schriftliche *Wurzelziehverfahren* ausgespart.
 
 
-{{|>}} Außerdem bleibt anzumerken, dass **Wurzeln** aus **negativen Zahlen** erst im Kapitel "**Komplexe Zahlen**" eingeführt werden. Bis zu diesem Zeitpunkt sind Berechnungen von **Wurzeln** aus **negativen Zahlen** nicht vorgesehen. Folglich sind Rechnungen in denen **Wurzeln** aus **negativen Zahlen** vorkommen ein Hinweis darauf, dass Rechenfehler aufgetreten sind. 
+{{|>}} Außerdem bleibt anzumerken, dass *Wurzeln* aus *negativen Zahlen* erst im Kapitel "*Komplexe Zahlen*" eingeführt werden. Bis zu diesem Zeitpunkt sind Berechnungen von *Wurzeln* aus *negativen Zahlen* nicht vorgesehen. Folglich sind Rechnungen in denen *Wurzeln* aus *negativen Zahlen* vorkommen ein Hinweis darauf, dass Rechenfehler aufgetreten sind. 
 
 
 
@@ -177,7 +177,7 @@ $$
 <h2> 10er-Potenzen </h2>
 
 
-{{|>}} Von allen **Potenzen** haben **2er-Potenzen** $2^n$ in der Informatik und die **10er-Potenzen** $10^n$ eine besonders wichtige Funktion inne. Grade in der Physik werden besonders große Größen mit besonders kleinen verrechnet. Die daraus resultierenden Werte sollen dann wieder in einer Größe angegeben werden, die dem Menschen zur Vorstellung genügen. Deswegen werden viele Größen mit Hilfe der **10er-Potenzen** umgerechnet. Für diese gilt:
+{{|>}} Von allen *Potenzen* haben *2er-Potenzen* $2^n$ in der Informatik und die *10er-Potenzen* $10^n$ eine besonders wichtige Funktion inne. Grade in der Physik werden besonders große Größen mit besonders kleinen verrechnet. Die daraus resultierenden Werte sollen dann wieder in einer Größe angegeben werden, die dem Menschen zur Vorstellung genügen. Deswegen werden viele Größen mit Hilfe der *10er-Potenzen* umgerechnet. Für diese gilt:
 
 
 
@@ -189,10 +189,10 @@ $$
 $$
 
 
-{{|>}} Jede **Einheit** ist meistens mit einer sprachlichen Abkürzung verbunden, so steht bei $1\,$cm das "centi" für $\frac{1}{100} = 10^{-2}$. Eine Tabelle mit der Auflistung vieler dieser Abkürzungen und ihre Bedeutung als **10er-Potenz** befinden sich im Kapitel zu den **Einheiten**. 
+{{|>}} Jede *Einheit* ist meistens mit einer sprachlichen Abkürzung verbunden, so steht bei $1\,$cm das "centi" für $\frac{1}{100} = 10^{-2}$. Eine Tabelle mit der Auflistung vieler dieser Abkürzungen und ihre Bedeutung als *10er-Potenz* befinden sich im Kapitel zu den *Einheiten*. 
 
 
-{{|>}} Während für alle **Einheiten** k für Kilo also Tausend steht, steht dies sprachlich bei der Einheit Byte B auch für Tausend. Allerdings versteckt sich hier durch den Fakt, dass Computer nur die $0$ (Nein) und die $1$ (Ja) kennen, eine andere Zahl: 
+{{|>}} Während für alle *Einheiten* k für Kilo also Tausend steht, steht dies sprachlich bei der Einheit Byte B auch für Tausend. Allerdings versteckt sich hier durch den Fakt, dass Computer nur die $0$ (Nein) und die $1$ (Ja) kennen, eine andere Zahl: 
 
 
 
@@ -206,7 +206,7 @@ $$
 $$
 
 
-{{|>}} Bei der **Einheitenumrechnung** ist das Verständnis von **10er-Potenz** von elementarer Bedeutung, da 
+{{|>}} Bei der *Einheitenumrechnung* ist das Verständnis von *10er-Potenz* von elementarer Bedeutung, da 
 
 
 
@@ -219,7 +219,7 @@ $$
 $$
 
 
-{{|>}} gilt. Dahinter verstecken sich sprachliche Abkürzungen, die mit **potenziert** werden $100\,\text{cm}^2 = 100 (\,\text{cm})^2 =100 \,\text{c}^2\,\text{m}^2 = 10^2 \frac{1}{10^2} \,\text{m}^2 = 1\,\text{m}^2$. Die Schreibweise für $1\,\text{cm}^2$ ist wieder nichts weiter als eine Konvention zur Abkürzung für $1 (\,\text{cm})^2$. Wie die vorherige Gleichung zeigt, gibt der **Exponent** der **Einheit** an, mit welcher Zahl die Anzahl der Null der Standardumrechnung **multipliziert** wird:  
+{{|>}} gilt. Dahinter verstecken sich sprachliche Abkürzungen, die mit *potenziert* werden $100\,\text{cm}^2 = 100 (\,\text{cm})^2 =100 \,\text{c}^2\,\text{m}^2 = 10^2 \frac{1}{10^2} \,\text{m}^2 = 1\,\text{m}^2$. Die Schreibweise für $1\,\text{cm}^2$ ist wieder nichts weiter als eine Konvention zur Abkürzung für $1 (\,\text{cm})^2$. Wie die vorherige Gleichung zeigt, gibt der *Exponent* der *Einheit* an, mit welcher Zahl die Anzahl der Null der Standardumrechnung *multipliziert* wird:  
 
 
 
@@ -232,15 +232,15 @@ $$
 $$
 
 
-{{|>}} Der **Koeffizient** einer **10er-Potenz**, wie bei $3,24 \cdot 10^5$ wird auch **Mantisse** genannt.
+{{|>}} Der *Koeffizient* einer *10er-Potenz*, wie bei $3,24 \cdot 10^5$ wird auch *Mantisse* genannt.
 
 
 
 
-<h2> **Binomische Lehrsätze** </h2>
+<h2> *Binomische Lehrsätze* </h2>
 
 
-{{|>}} Mit Hilfe der **Potenzen** können auch die **Summen** **potenziert** werden: 
+{{|>}} Mit Hilfe der *Potenzen* können auch die *Summen* *potenziert* werden: 
 
 
 
@@ -253,7 +253,7 @@ $$
 $$
 
 
-{{|>}} Die drei **Gleichungen** werden **Binomische Gleichungen** (oftmals auch eher abwertend Binomische Formeln) genannt, welche aus dem **Binomischen Lehrsatz** als spezielle Form kommen, und werden in der Beschreibung der Natur immer wieder vorgefunden und nicht zu Letzt deswegen im Mathematik und naturwissenschaftlichen Unterricht in Klausur- und Übungsaufgaben verwendet. Die **Binomische Gleichungen** können anhand eines **Quadrats**, welches in vier **Flächen** unterteilt wurde, visualisieren. 
+{{|>}} Die drei *Gleichungen* werden *Binomische Gleichungen* (oftmals auch eher abwertend Binomische Formeln) genannt, welche aus dem *Binomischen Lehrsatz* als spezielle Form kommen, und werden in der Beschreibung der Natur immer wieder vorgefunden und nicht zu Letzt deswegen im Mathematik und naturwissenschaftlichen Unterricht in Klausur- und Übungsaufgaben verwendet. Die *Binomische Gleichungen* können anhand eines *Quadrats*, welches in vier *Flächen* unterteilt wurde, visualisieren. 
 
 
 
@@ -268,7 +268,7 @@ $$
 
 
 
-{{|>}} Generell kann man diese **Binomischen Lehrsätze** noch für jede **Potenz** verallgemeinern, dazu dient das sogenannt **Pascal'sche Dreieck**, welches die **Vorfaktoren** wiedergibt.
+{{|>}} Generell kann man diese *Binomischen Lehrsätze* noch für jede *Potenz* verallgemeinern, dazu dient das sogenannt *Pascal'sche Dreieck*, welches die *Vorfaktoren* wiedergibt.
 
 
 
@@ -285,7 +285,7 @@ data-sortable="false" -->
 
 
 
-{{|>}} Dabei pflanzen sich die **Vorfaktoren** (sogenannte **Koeffizienten**) so weiter fort in dem die benachbarten **Koeffizienten** **aufaddiert** werden. Die **Potenzen** der ersten **Variable** startet stets mit der höchsten Zahl im **Exponenten** und nimmt bei jedem weiteren **Summanden** ab, während die **Potenz** der zweiten **Variable** im **Exponenten** zunimmt. Die **Vorfaktoren**, welche sich im **Pascal'schen Dreieck** befinden, werden im Kapitel "**Wahrscheinlichkeitsrechnung**" durch die sogenannten **Binomialkoeffizienten** erneut auftauchen und nochmals erläutert.
+{{|>}} Dabei pflanzen sich die *Vorfaktoren* (sogenannte *Koeffizienten*) so weiter fort in dem die benachbarten *Koeffizienten* *aufaddiert* werden. Die *Potenzen* der ersten *Variable* startet stets mit der höchsten Zahl im *Exponenten* und nimmt bei jedem weiteren *Summanden* ab, während die *Potenz* der zweiten *Variable* im *Exponenten* zunimmt. Die *Vorfaktoren*, welche sich im *Pascal'schen Dreieck* befinden, werden im Kapitel "*Wahrscheinlichkeitsrechnung*" durch die sogenannten *Binomialkoeffizienten* erneut auftauchen und nochmals erläutert.
 
 
 
@@ -293,11 +293,11 @@ data-sortable="false" -->
 !?[Potenzgesetze](https://www.youtube.com/watch?v=g1zLW9FsglU)
 
 
-Weitere **Koeffizienten** können aus dem **Pascal'schen Dreieck** entnommen werden:
+Weitere *Koeffizienten* können aus dem *Pascal'schen Dreieck* entnommen werden:
 
 
 
-<h2> **Pascal'sches Dreieck** </h2>
+<h2> *Pascal'sches Dreieck* </h2>
 
 $$
 \begin{align*} 1 \\ \end{align*}
@@ -348,4 +348,4 @@ $$
 \begin{align*} 1  \quad  15 \quad 105 \quad 455 \quad 1365 \quad 3003 \quad 5005 \quad 6435 \quad 6435 \quad 5005 \quad 3003 \quad 1365 \quad 455 \quad 105 \quad 15 \quad 1 \\ \end{align*}
 $$
 
-*******************************
+*********************

@@ -54,11 +54,11 @@ author: Martin Lommatzsch
 
 
 {{|>}}
-********************************
+**********************
 
 
 
-Da die **Potenzen** eingeführt wurden, sollte auch eine Rechenvorschrift eingeführt werden um den **Exponenten** zu bestimmen. Diese wird **Logarithmus** genannt, welche folgende Frage in mathematischer Art und Weise stellt: "`Die **Basis** und der **Wert** des **Terms** seien bekannt, welchen **Wert** muss der **Exponent** haben?"'
+Da die *Potenzen* eingeführt wurden, sollte auch eine Rechenvorschrift eingeführt werden um den *Exponenten* zu bestimmen. Diese wird *Logarithmus* genannt, welche folgende Frage in mathematischer Art und Weise stellt: "`Die *Basis* und der *Wert* des *Terms* seien bekannt, welchen *Wert* muss der *Exponent* haben?"'
 
 
 
@@ -69,16 +69,16 @@ a^c = b  \Leftrightarrow c = \log_a (b) \\
 $$
 
 
-{{|>}} Gelesen wird $\log_a (b)$ als "`der **Logarithmus** von $b$ zur **Basis** $a$"'. Der **Logarithmus** bildet somit die **Umkehrfunktion** zur **Exponentialfunktion**. 
+{{|>}} Gelesen wird $\log_a (b)$ als "`der *Logarithmus* von $b$ zur *Basis* $a$"'. Der *Logarithmus* bildet somit die *Umkehrfunktion* zur *Exponentialfunktion*. 
 
-{{|>}} Da der **Logarithmus** wie auch andere **Funktionen** besonders häufig ein **triviales Argument** besitzen (**triviales Argument**: $\log_4(x)$, nicht **triviales Argument**: $\log_4(2x-3)$), werden die **Klammern** um das **Argument** in einer Konvention oftmals weggelassen: $\log_a(b)=\log_a b$, während die **Klammern** bei komplexeren **Argumenten** bestehen bleiben: $\log_a(b+c)$. Generell ist nicht zu empfehlen, die **Klammern** wegzulassen, da sie den **Funktionscharakter** betonen.
-
-
-
-{{|>}} Wie für die **Potenzen** gelten auch für die **Logarithmen** Regeln, welche sich aus den **Potenzgesetzen** ableiten lassen.
+{{|>}} Da der *Logarithmus* wie auch andere *Funktionen* besonders häufig ein *triviales Argument* besitzen (*triviales Argument*: $\log_4(x)$, nicht *triviales Argument*: $\log_4(2x-3)$), werden die *Klammern* um das *Argument* in einer Konvention oftmals weggelassen: $\log_a(b)=\log_a b$, während die *Klammern* bei komplexeren *Argumenten* bestehen bleiben: $\log_a(b+c)$. Generell ist nicht zu empfehlen, die *Klammern* wegzulassen, da sie den *Funktionscharakter* betonen.
 
 
-+ {{|>}} Da der **Logarithmus** die **Umkehrfunktion** der **Exponentialfunktion** ist, gilt:
+
+{{|>}} Wie für die *Potenzen* gelten auch für die *Logarithmen* Regeln, welche sich aus den *Potenzgesetzen* ableiten lassen.
+
+
++ {{|>}} Da der *Logarithmus* die *Umkehrfunktion* der *Exponentialfunktion* ist, gilt:
 
 
 $$
@@ -88,7 +88,7 @@ $$
 $$
 
 
-+ {{|>}} Da der **Logarithmus** die **Umkehrfunktion** der **Exponentialfunktion** ist, gilt:
++ {{|>}} Da der *Logarithmus* die *Umkehrfunktion* der *Exponentialfunktion* ist, gilt:
 
 
 $$
@@ -97,7 +97,7 @@ $$
 \end{align*}
 $$
 
-+ {{|>}} Da der **Logarithmus** die **Umkehrfunktion** der **Exponentialfunktion** ist, heben sich diese gegenseitig auf: $k^{\log_k(x)} = \log_k(k^x) = x$.
++ {{|>}} Da der *Logarithmus* die *Umkehrfunktion* der *Exponentialfunktion* ist, heben sich diese gegenseitig auf: $k^{\log_k(x)} = \log_k(k^x) = x$.
 
 
 $$
@@ -107,7 +107,7 @@ $$
 $$
 
 
-+ {{|>}} Analog zur **Multiplikation** mit gleicher **Basis** ergibt sich aus dem dazugehörigen **Potenzgesetz** das **Logarithmengesetz**:
++ {{|>}} Analog zur *Multiplikation* mit gleicher *Basis* ergibt sich aus dem dazugehörigen *Potenzgesetz* das *Logarithmengesetz*:
 
 
 $$
@@ -119,7 +119,7 @@ $$
 $$
 
 
-{{|>}} Mit $u=a^m$ und $v=a^n$ **substituiert** ergibt sich $\log_a(u) = m$ und $\log_a(v) = n$, sodass sich der vorherige Ausdruck durch das **Einsetzen** verändert:
+{{|>}} Mit $u=a^m$ und $v=a^n$ *substituiert* ergibt sich $\log_a(u) = m$ und $\log_a(v) = n$, sodass sich der vorherige Ausdruck durch das *Einsetzen* verändert:
 
 
 $$
@@ -131,7 +131,7 @@ $$
 $$
 
 
-+ {{|>}} Analog zum vorherig gefundenen **Logarithmusgesetz** ergibt sich bei der **Division**:
++ {{|>}} Analog zum vorherig gefundenen *Logarithmusgesetz* ergibt sich bei der *Division*:
 
 
 $$
@@ -140,7 +140,7 @@ $$
 \end{align*}
 $$
 
-+ {{|>}} Die Fortsetzung der vorherigen Regeln liefert bei der **Substitution** $u = m$ und $\log_a(v) = n$:
++ {{|>}} Die Fortsetzung der vorherigen Regeln liefert bei der *Substitution* $u = m$ und $\log_a(v) = n$:
 
 
 $$
@@ -154,7 +154,7 @@ $$
 $$
 
 
-+ {{|>}} Wie auch bei der **Exponentialfunktion** kann die **Basis** gewechselt werden, indem das zuvor gefundene **Logarithmusgesetz** genutzt wird:
++ {{|>}} Wie auch bei der *Exponentialfunktion* kann die *Basis* gewechselt werden, indem das zuvor gefundene *Logarithmusgesetz* genutzt wird:
 
 
 $$
@@ -169,7 +169,7 @@ $$
 
 
 
-{{|>}} Zusammengefasst haben sich folgende **Logarithmengesetze** finden lassen:
+{{|>}} Zusammengefasst haben sich folgende *Logarithmengesetze* finden lassen:
 
 
 
@@ -188,7 +188,7 @@ $$
 $$
 
 
-{{|>}} Dabei werden folgende Abkürzungen für bestimme **Werte** der **Basis** verwendet: 
+{{|>}} Dabei werden folgende Abkürzungen für bestimme *Werte* der *Basis* verwendet: 
 
 
 
@@ -200,10 +200,10 @@ $$
 \end{align*}
 $$
 
-{{|>}} wobei $e=2,718281...$ die **Euler'sche Zahl** ist, welche eine **Basis** mit besonderer Bedeutung in der Mathematik und den Naturwissenschaften darstellt, deren Bedeutung im Kapitel der "**Funktionen**" im Abschnitt der "**Exponentialfunktionen**" und bei der "**Differentiation**" noch gerecht wird.
+{{|>}} wobei $e=2,718281...$ die *Euler'sche Zahl* ist, welche eine *Basis* mit besonderer Bedeutung in der Mathematik und den Naturwissenschaften darstellt, deren Bedeutung im Kapitel der "*Funktionen*" im Abschnitt der "*Exponentialfunktionen*" und bei der "*Differentiation*" noch gerecht wird.
 
 
 
 
 
-********************************
+**********************

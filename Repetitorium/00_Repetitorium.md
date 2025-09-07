@@ -2832,11 +2832,11 @@ $=$   [[ -1,05  ]]
 
 
 {{|>}}
-*******************************
+***************************
 
 
 
-Um Rechnungen mit natürlichen Zahlen $\mathbb{N}$ schnell zu überprüfen lohnt sich die sogenannte Überschlagsrechnung, bei der die Zahlen gerundet werden. Um das **Runden** zu verstehen, muss sich nochmal die Stellenwerttafel vergegenwärtigt werden, da immer bestimmte Stellen betrachtet werden müssen: \
+Um Rechnungen mit natürlichen Zahlen $\mathbb{N}$ schnell zu überprüfen lohnt sich die sogenannte Überschlagsrechnung, bei der die Zahlen gerundet werden. Um das *Runden* zu verstehen, muss sich nochmal die Stellenwerttafel vergegenwärtigt werden, da immer bestimmte Stellen betrachtet werden müssen: \
 
 
 <center>
@@ -2849,7 +2849,7 @@ style="width:300px" -->
 </center>
 
 
-    {{|>}} Beim **Runden** wird die in der vorherigen Stelle der betrachtete Stelle der Zahl analysiert. Soll also auf Tausender gerundet werden, muss die Hunderterziffer betrachtet werden. Handelt es sich um eine der Ziffern $\left\{0;1;2;3;4\right\}$ wird die betrachtete Stelle abgerundet - sie bleibt also unverändert. Handelt es sich allerdings um $\left\{5;6;7;8;9\right\}$, dann wird aufgerundet - also an der betrachteten Stelle wir die Ziffer um $1$ erhöht. Dies kann begründet werden, dass die Ziffern $\left\{0;1;2;3;4\right\}$ dichter an einer Null sind als an einer Zehn wie $\left\{5;6;7;8;9\right\}$. \
+    {{|>}} Beim *Runden* wird die in der vorherigen Stelle der betrachtete Stelle der Zahl analysiert. Soll also auf Tausender gerundet werden, muss die Hunderterziffer betrachtet werden. Handelt es sich um eine der Ziffern $\left\{0;1;2;3;4\right\}$ wird die betrachtete Stelle abgerundet - sie bleibt also unverändert. Handelt es sich allerdings um $\left\{5;6;7;8;9\right\}$, dann wird aufgerundet - also an der betrachteten Stelle wir die Ziffer um $1$ erhöht. Dies kann begründet werden, dass die Ziffern $\left\{0;1;2;3;4\right\}$ dichter an einer Null sind als an einer Zehn wie $\left\{5;6;7;8;9\right\}$. \
 
 
 
@@ -2889,7 +2889,7 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 !?[Runden](https://www.youtube.com/watch?v=lkKLXE5FFes)
 
 
-*******************************
+***************************
 
 
 
@@ -3538,10 +3538,10 @@ data-solution-button="5"-->
 
 
 {{|>}}
-*******************************
+***************************
 
 
- Die **Addition** ist die wichtigste Grundrechenart und lässt **Zahlen** größer als Eins überhaupt erst erfassbar werden, was am **Zahlenstrahl** schnell erkannt werden kann. Direkt hier wird schon deutlich, dass die Null das **neutrale Element** der **Addition** ist, da eine **Addition** von Null den **Wert des Terms** nicht verändert: $1+0=1$. \
+ Die *Addition* ist die wichtigste Grundrechenart und lässt *Zahlen* größer als Eins überhaupt erst erfassbar werden, was am *Zahlenstrahl* schnell erkannt werden kann. Direkt hier wird schon deutlich, dass die Null das *neutrale Element* der *Addition* ist, da eine *Addition* von Null den *Wert des Terms* nicht verändert: $1+0=1$. \
 
 
 
@@ -3554,7 +3554,7 @@ data-solution-button="5"-->
 
 
 
-    {{|>}} Mit der **Addition** werden **Zahlen** zusammengezählt, was immer durch den **Additionsoperator** $+$ beschrieben wird. Der gesamte **Term** ist die sogenannte **Summe**, während der **Wert der Summe** immer auf der anderen Seite eines **Gleichheitszeichen** $=$ geschrieben wird. \
+    {{|>}} Mit der *Addition* werden *Zahlen* zusammengezählt, was immer durch den *Additionsoperator* $+$ beschrieben wird. Der gesamte *Term* ist die sogenannte *Summe*, während der *Wert der Summe* immer auf der anderen Seite eines *Gleichheitszeichen* $=$ geschrieben wird. \
 
 
 
@@ -3566,7 +3566,7 @@ $$
 \end{equation}  
 $$
 
-Als Beispiel mit **Zahlen**:
+Als Beispiel mit *Zahlen*:
 
 $$
 \begin{equation}
@@ -3577,7 +3577,7 @@ $$
 $$
 
 
-    {{|>}} Im Beispiel aus Gleichung ist zu sehen, dass die Zwei mit der Vier zusammengezählt wurde, wie es der **Additionsoperator** $+$ (gesprochen "plus") gefordert hat. Am **Zahlenstrahl** verdeutlicht wird deutlich, dass vom ersten **Summanden** aus Schritte im **Wert** vom zweiten **Summanden** nach rechts gegangen wird, um beim **Wert der Summe** zu enden. \
+    {{|>}} Im Beispiel aus Gleichung ist zu sehen, dass die Zwei mit der Vier zusammengezählt wurde, wie es der *Additionsoperator* $+$ (gesprochen "plus") gefordert hat. Am *Zahlenstrahl* verdeutlicht wird deutlich, dass vom ersten *Summanden* aus Schritte im *Wert* vom zweiten *Summanden* nach rechts gegangen wird, um beim *Wert der Summe* zu enden. \
 
 
 
@@ -3589,10 +3589,10 @@ $$
 
 
 
-    {{|>}} Bei der **Darstellung** am **Zahlenstrahl** wird deutlich, dass die **Addition** das **Assoziativgesetz** sowie das **Kommutativgesetz** erfüllt. \
+    {{|>}} Bei der *Darstellung* am *Zahlenstrahl* wird deutlich, dass die *Addition* das *Assoziativgesetz* sowie das *Kommutativgesetz* erfüllt. \
 
 
-**Kommutativgesetz** für die **Additon**: 
+*Kommutativgesetz* für die *Additon*: 
 
 $$
 \begin{equation}
@@ -3602,7 +3602,7 @@ $$
 \end{equation}  
 $$
 
-Folgendes Beispiel des **Kommutativgesetzes** ist am **Zahlenstrahl** dargestellt:
+Folgendes Beispiel des *Kommutativgesetzes* ist am *Zahlenstrahl* dargestellt:
 
 $$
 \begin{equation}
@@ -3623,7 +3623,7 @@ $$
 
 
 
-**Assoziativgesetz** für die **Additon**: 
+*Assoziativgesetz* für die *Additon*: 
 
 $$
 \begin{equation}
@@ -3633,7 +3633,7 @@ $$
 \end{equation}  
 $$
 
-Folgendes Beispiel des **Assoziativgesetzes** ist am **Zahlenstrahl** dargestellt:
+Folgendes Beispiel des *Assoziativgesetzes* ist am *Zahlenstrahl* dargestellt:
 
 $$
 \begin{equation}
@@ -3653,7 +3653,7 @@ $$
 
 
 
-    {{|>}} Für größere **Zahlen** lohnt sich eine Schreibweise, die die **Zahlen**, die **addiert** werden sollen, entsprechtend ihrer Position in der Stellenwerttafel untereinander schreibt. Dabei wird der **Wert des Terms** unter einem Strich ausgerechnet.\
+    {{|>}} Für größere *Zahlen* lohnt sich eine Schreibweise, die die *Zahlen*, die *addiert* werden sollen, entsprechtend ihrer Position in der Stellenwerttafel untereinander schreibt. Dabei wird der *Wert des Terms* unter einem Strich ausgerechnet.\
 
 
 
@@ -3669,7 +3669,7 @@ data-sortable="false" -->
 |       $5$      |      $5$     | $\textcolor{red}{1}0$ |    $\textcolor{red}{1}2$    |    Einzelziffersummen    |
 |       $5$      |      $6$     |    $1$      |    $2$    |    Wert der Summe    |
 
-    {{|>}} Außerhalb der **Stellenwerttafel** wirkt die Rechnung der schriftlichen **Addition** übersichtlicher: \
+    {{|>}} Außerhalb der *Stellenwerttafel* wirkt die Rechnung der schriftlichen *Addition* übersichtlicher: \
 
 
 $$
@@ -3701,7 +3701,7 @@ $$
 $$
 
 
-{{|>}} Bei dieser Art der Schreibweise, werden die **Zahlen**, die entsprechend ihrer Position in der **Stellenwerttafel** untereinander stehen, einzeln **addiert**. Dabei wird immer bei der **Ziffern** der kleinsten Position in der **Stellenwerttafel** begonnen. Dies ist sind stets die **Ziffern**, die am weitesten rechts bei den **Zahlen** stehen. Wenn die **addierte** Zahl höher ist als Neun, dann wird die Eins der Zehn zur nächsten Zahlenspalte hinzugezählt. Diese Eins wird auch oft Merkeins genannt und ist in der Beispielrechnung rot eingefärbt. Der Vorteil dieser Schreibweise ist es, dass niemals höhere **Zahlen** als $9$ und $9$ **addiert** werden können. Folglich benötigt der Schüler nur ein sehr gutes Zahlenverständnis von der Zahl $0$ bis $18$ um jegliche Additionsaufgabe zu lösen. Falls mehr als zwei **Summanden** (im Beispiel sind $1337$ und $4265$ die **Summanden**) vorkommen ist es immer erlaubt in einer Nebenrechnung zunächst nur zwei **Summanden** zu **addieren** um dann anschließend die **Summe** der ersten beiden **Summanden** mit der nächsten **Summanden** zu verrechnen. \
+{{|>}} Bei dieser Art der Schreibweise, werden die *Zahlen*, die entsprechend ihrer Position in der *Stellenwerttafel* untereinander stehen, einzeln *addiert*. Dabei wird immer bei der *Ziffern* der kleinsten Position in der *Stellenwerttafel* begonnen. Dies ist sind stets die *Ziffern*, die am weitesten rechts bei den *Zahlen* stehen. Wenn die *addierte* Zahl höher ist als Neun, dann wird die Eins der Zehn zur nächsten Zahlenspalte hinzugezählt. Diese Eins wird auch oft Merkeins genannt und ist in der Beispielrechnung rot eingefärbt. Der Vorteil dieser Schreibweise ist es, dass niemals höhere *Zahlen* als $9$ und $9$ *addiert* werden können. Folglich benötigt der Schüler nur ein sehr gutes Zahlenverständnis von der Zahl $0$ bis $18$ um jegliche Additionsaufgabe zu lösen. Falls mehr als zwei *Summanden* (im Beispiel sind $1337$ und $4265$ die *Summanden*) vorkommen ist es immer erlaubt in einer Nebenrechnung zunächst nur zwei *Summanden* zu *addieren* um dann anschließend die *Summe* der ersten beiden *Summanden* mit der nächsten *Summanden* zu verrechnen. \
 
 
 
@@ -3710,7 +3710,7 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 !?[Addition](https://www.youtube.com/watch?v=Tn9xv6jSyyI)
 
 
-*******************************
+***************************
 
 
 ##### Übungen - Addition
@@ -4040,9 +4040,9 @@ $6214 + 3879=$[[  10093  ]]
 
 
 {{|>}}
-*******************************
+*********************
 
-Die **Subtraktion** ist die Umkehroperation der **Addition** und wird durch den **Subtraktionsoperator** $-$ (gesprochen "minus") beschrieben. Auch bei der **Subtraktion** ist somit die Null das **neutrale Element** der **Subktration**, da eine **Subktraktion** mit Null den **Wert des Terms** nicht verändert: $1-0=1$. Auf dem Zahlenstrahl wird somit die Richtung der Schritte der Addition von links nach rechts umgekehrt: \
+Die *Subtraktion* ist die Umkehroperation der *Addition* und wird durch den *Subtraktionsoperator* $-$ (gesprochen "minus") beschrieben. Auch bei der *Subtraktion* ist somit die Null das *neutrale Element* der *Subktration*, da eine *Subktraktion* mit Null den *Wert des Terms* nicht verändert: $1-0=1$. Auf dem Zahlenstrahl wird somit die Richtung der Schritte der Addition von links nach rechts umgekehrt: \
 
 
 <center>
@@ -4056,7 +4056,7 @@ Die **Subtraktion** ist die Umkehroperation der **Addition** und wird durch den 
 
 
 
-    {{|>}} Der gesamte **Term** ist die sogenannte **Differenz**, während der **Wert der Differenz** immer auf der anderen Seite eines **Gleichheitszeichen** $=$ geschrieben wird. Vom **Minuenden** wird dabei der **Subtrahend** abgezogen. \
+    {{|>}} Der gesamte *Term* ist die sogenannte *Differenz*, während der *Wert der Differenz* immer auf der anderen Seite eines *Gleichheitszeichen* $=$ geschrieben wird. Vom *Minuenden* wird dabei der *Subtrahend* abgezogen. \
 
 
 
@@ -4068,7 +4068,7 @@ $$
 \end{equation}  
 $$
 
-Als Beispiel mit **Zahlen**:
+Als Beispiel mit *Zahlen*:
 
 $$
 \begin{equation}
@@ -4088,7 +4088,7 @@ $$
 </center>
 
 
-    {{|>}} Wie schon an den unterschiedlichen Bezeichnungen **Minuend** sowie **Subtrahend** zu erahnen ist, ist die **Subtraktion** wieder **kommutativ** noch **assoziativ**. \
+    {{|>}} Wie schon an den unterschiedlichen Bezeichnungen *Minuend* sowie *Subtrahend* zu erahnen ist, ist die *Subtraktion* wieder *kommutativ* noch *assoziativ*. \
 
 
 $$
@@ -4102,7 +4102,7 @@ $$
 
 
 
-    {{|>}} Auch bei der schriftlichen **Subtraktion** werden die Ziffern startend von der kleinsten Position in der **Stellenwerttafel** bearbeitet. Dabei kann die jeweilige **Ziffer** des **Subtrahenden** größer sein als die des **Minuenden**, wie in der zweiten Ziffernspalte. Hierbei ist die Zahl $6$ statt von der $3$ von der $13$ zu **subtrahieren**. Die dazu geschriebene Zehn muss anschließend von der nächsten Ziffernspalte abgezogen werden, was durch die Merkeins in rot wieder symbolisiert wird.
+    {{|>}} Auch bei der schriftlichen *Subtraktion* werden die Ziffern startend von der kleinsten Position in der *Stellenwerttafel* bearbeitet. Dabei kann die jeweilige *Ziffer* des *Subtrahenden* größer sein als die des *Minuenden*, wie in der zweiten Ziffernspalte. Hierbei ist die Zahl $6$ statt von der $3$ von der $13$ zu *subtrahieren*. Die dazu geschriebene Zehn muss anschließend von der nächsten Ziffernspalte abgezogen werden, was durch die Merkeins in rot wieder symbolisiert wird.
 
 
 $$
@@ -4117,7 +4117,7 @@ $$
 $$
 
 
-    {{|>}} Auch bei der **Subtraktion** kann es vorkommen, dass mehrere **Subtrahenden** vorzufinden sind. Dabei sind zwei Arten von Nebenrechnungen zulässig: Die erste Variante sieht vor, dass die **Subtrahenden** nacheinander vom **Minuenden** **subtrahiert** werden, während die zweite Variante vorsieht, dass die **Subtrahenden** **addiert** werden und anschließend die **Summe** der **Subtrahenden** vom **Minuend** abgezogen werden. 
+    {{|>}} Auch bei der *Subtraktion* kann es vorkommen, dass mehrere *Subtrahenden* vorzufinden sind. Dabei sind zwei Arten von Nebenrechnungen zulässig: Die erste Variante sieht vor, dass die *Subtrahenden* nacheinander vom *Minuenden* *subtrahiert* werden, während die zweite Variante vorsieht, dass die *Subtrahenden* *addiert* werden und anschließend die *Summe* der *Subtrahenden* vom *Minuend* abgezogen werden. 
 
 Beispiele der ersten Variante:
 $$
@@ -4148,7 +4148,7 @@ $$
 $$
 
 
-    {{|>}} Beim schriftlichen **Subtrahieren** kann maximal die **Ziffer** $9$ als **Subtrahend** der einzelnen Spalten auftauchen. Somit ist die größte Zahl von der abgezogen werden kann die $18$. Folglich wird lediglich ein gutes Zahlenverständnis bei der **Subtraktion** von den Zahlen $0$ bis $18$ benötigt. \
+    {{|>}} Beim schriftlichen *Subtrahieren* kann maximal die *Ziffer* $9$ als *Subtrahend* der einzelnen Spalten auftauchen. Somit ist die größte Zahl von der abgezogen werden kann die $18$. Folglich wird lediglich ein gutes Zahlenverständnis bei der *Subtraktion* von den Zahlen $0$ bis $18$ benötigt. \
 
 
 
@@ -4160,7 +4160,7 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 !?[Subtraktion](https://www.youtube.com/watch?v=a2Nwh8npSUo)
 
 
-*******************************
+*********************
 
 
 
@@ -4497,10 +4497,10 @@ $9573 - 6842=$[[  2731  ]]
 
 
 {{|>}}
-*******************************
+*********************
 
 
-Die **Multiplikation** ist die erste abkürzende Schreibweise, die in der Schule eingeführt wird. Dabei wird die zum Beispiel Rechnung $3+3+3+3$ abgekürzt als $4 \cdot 3$ geschrieben, also vier mal die Drei, was durch den **Multiplikationsoperator** $\cdot$ beschrieben wird. Werden also gleichwertige **Summanden** **aufaddiert**, dann kann dies durch die **Multiplikation** im Sinne der Anzahl der **Summanden** mal dem Wert des **Summanden** beschrieben werden. Folglich werden die beiden **Faktoren** miteinander **multipliziert** und bilden ein **Produkt**, während der **Wert des Produkts** auf der anderen Seite des **Gleichheitszeichen** steht.
+Die *Multiplikation* ist die erste abkürzende Schreibweise, die in der Schule eingeführt wird. Dabei wird die zum Beispiel Rechnung $3+3+3+3$ abgekürzt als $4 \cdot 3$ geschrieben, also vier mal die Drei, was durch den *Multiplikationsoperator* $\cdot$ beschrieben wird. Werden also gleichwertige *Summanden* *aufaddiert*, dann kann dies durch die *Multiplikation* im Sinne der Anzahl der *Summanden* mal dem Wert des *Summanden* beschrieben werden. Folglich werden die beiden *Faktoren* miteinander *multipliziert* und bilden ein *Produkt*, während der *Wert des Produkts* auf der anderen Seite des *Gleichheitszeichen* steht.
 
 
 $$
@@ -4513,7 +4513,7 @@ $$
 
 
 
-Als Beispiel mit **Zahlen**:
+Als Beispiel mit *Zahlen*:
 
 $$
 \begin{equation}
@@ -4523,7 +4523,7 @@ $$
 \end{equation}  
 $$
 
-    {{|>}} Am Beispiel kann schon erkannt werden, dass die Anzahl der gleichwertigen **Summanden** und der Wert des **Summanden** vertauscht werden kann. \
+    {{|>}} Am Beispiel kann schon erkannt werden, dass die Anzahl der gleichwertigen *Summanden* und der Wert des *Summanden* vertauscht werden kann. \
 
 
 $$
@@ -4535,7 +4535,9 @@ $$
 \end{equation}  
 $$
 
-    {{|>}} Diese Rechnung kann ebenfalls geometrisch interpretiert werden, in dem mehrfache Schrittfolgen gleicher Werte am **Zahlenstrahl** vollzogen oder eine zweidimensionale **rechteckige** Anordnung von **Einheitsflächen** betrachtet wird. Beide Interpretationen werden am Beispiel $2 \cdot 4$ dargestellt: \
+    {{|>}} Diese Rechnung kann ebenfalls geometrisch interpretiert werden, in dem mehrfache Schrittfolgen gleicher Werte am *Zahlenstrahl* vollzogen oder eine zweidimensionale *rechteckige* Anordnung von *Einheitsflächen* betrachtet wird. Beide Interpretationen werden am Beispiel $2 \cdot 4$ dargestellt: \
+
+
 
 
 
@@ -4554,10 +4556,10 @@ $$
 
 
 
-    {{|>}} Es wird deutlich, dass die **Multiplikation** das **Assoziativgesetz** sowie das **Kommutativgesetz** erfüllt. \
+    {{|>}} Es wird deutlich, dass die *Multiplikation* das *Assoziativgesetz* sowie das *Kommutativgesetz* erfüllt. \
 
 
-**Kommutativgesetz** für die **Multiplikation**: 
+*Kommutativgesetz* für die *Multiplikation*: 
 
 $$
 \begin{equation}
@@ -4568,7 +4570,7 @@ $$
 $$
 
 
-**Assoziativgesetz** für die **Multiplikation**: 
+*Assoziativgesetz* für die *Multiplikation*: 
 
 $$
 \begin{equation}
@@ -4579,7 +4581,7 @@ $$
 $$
 
 
-    {{|>}} Die schriftliche **Multiplikation** sieht Zahlen von $0$ bis $9 \cdot 9 = 81$ vor, da auch hier die einzelnen **Ziffern** der Zahl nacheinander bearbeitet werden. Die **Multiplikation** kann in mehreren Schritten aus der **Addition** heraus eingeführt werden. Hierbei wird das Beispiel $3463 \cdot 5$ betrachtet:  \
+    {{|>}} Die schriftliche *Multiplikation* sieht Zahlen von $0$ bis $9 \cdot 9 = 81$ vor, da auch hier die einzelnen *Ziffern* der Zahl nacheinander bearbeitet werden. Die *Multiplikation* kann in mehreren Schritten aus der *Addition* heraus eingeführt werden. Hierbei wird das Beispiel $3463 \cdot 5$ betrachtet:  \
 
 
 
@@ -4623,7 +4625,7 @@ $$
 
 
 
-    {{|>}} Hierbei wird deutlich, dass die Schreibweisen sich verkürzen, sodass bei der dritten Variante die Merkzahlen im **Index** der Ziffern des ersten **Faktors** geschrieben wurden. Dies ist nicht mehr übersichtlich genug, wenn beide **Faktoren** über mehrere Ziffern verfügen, sodass dann die Merkzahlen entweder seperat niedergeschrieben oder im Kopf behalten werden müssen. \
+    {{|>}} Hierbei wird deutlich, dass die Schreibweisen sich verkürzen, sodass bei der dritten Variante die Merkzahlen im *Index* der Ziffern des ersten *Faktors* geschrieben wurden. Dies ist nicht mehr übersichtlich genug, wenn beide *Faktoren* über mehrere Ziffern verfügen, sodass dann die Merkzahlen entweder seperat niedergeschrieben oder im Kopf behalten werden müssen. \
 
 
 $$
@@ -4638,13 +4640,13 @@ $$
 $$
 
 
-    {{|>}} Aus der Gleichung ist zu erkennen, dass die $2$ auf die Zahl $7$ wirkt und danach auf die $3$. Dabei wird die Zehn der Rechnung $2 \cdot 7 = 14$ mit zur nächsten Ziffer von rechts gezählt. Das Ergebnis wird so notiert, dass die am weitest stehende **Ziffer** direkt unter der betrachten Zahl steht (im Beispiel unter der $2$). Anschließend wird dies mit der nächsten **Ziffer**, hier die Drei, wiederholt. Die untereinander geschriebenen Zahlen werden dann **addiert**, sodass sich der Wert des **Terms** ergibt. \
+    {{|>}} Aus der Gleichung ist zu erkennen, dass die $2$ auf die Zahl $7$ wirkt und danach auf die $3$. Dabei wird die Zehn der Rechnung $2 \cdot 7 = 14$ mit zur nächsten Ziffer von rechts gezählt. Das Ergebnis wird so notiert, dass die am weitest stehende *Ziffer* direkt unter der betrachten Zahl steht (im Beispiel unter der $2$). Anschließend wird dies mit der nächsten *Ziffer*, hier die Drei, wiederholt. Die untereinander geschriebenen Zahlen werden dann *addiert*, sodass sich der Wert des *Terms* ergibt. \
 
 
 
 
 
-    {{|>}} Da die **Multiplikation** die abkürzende Schreibweise der **Addition** von gleichwertigen **Summanden** ist, ergibt sich daraus die erste **Vorrangsregel**: Punktrechnungen werden vor Strichrechnungen durchgeführt. \
+    {{|>}} Da die *Multiplikation* die abkürzende Schreibweise der *Addition* von gleichwertigen *Summanden* ist, ergibt sich daraus die erste *Vorrangsregel*: Punktrechnungen werden vor Strichrechnungen durchgeführt. \
 
 $$
 \begin{equation}
@@ -4665,7 +4667,7 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 !?[Multiplikation](https://www.youtube.com/watch?v=Gh4Zfdlq7K0)
 
 
-*******************************
+*********************
 
 
 
@@ -4997,10 +4999,10 @@ $964 \cdot 917=$[[  883388  ]]
 
 
 {{|>}}
-*******************************
+*********************
 
 
-Die **Division** stellt die umkehrende Frage der **Multiplikation**: "Wie oft passt die Zahl in die andere Zahl?". Bei der **Division** wird der **Dividend** durch den **Divisor** **dividiert**, was immer durch den **Divisionsoperator** $:$ beschrieben wird. Der gesamte **Term** ist der sogenannte **Quotient**, während der **Wert des Quotienten** auf der anderen Seite des **Gleichheitszeichen** $=$ geschrieben wird. \
+Die *Division* stellt die umkehrende Frage der *Multiplikation*: "Wie oft passt die Zahl in die andere Zahl?". Bei der *Division* wird der *Dividend* durch den *Divisor* *dividiert*, was immer durch den *Divisionsoperator* $:$ beschrieben wird. Der gesamte *Term* ist der sogenannte *Quotient*, während der *Wert des Quotienten* auf der anderen Seite des *Gleichheitszeichen* $=$ geschrieben wird. \
 
 
 $$
@@ -5011,14 +5013,14 @@ $$
 \end{equation}  
 $$
 
-Da es sich um die Umkehrung der **Multiplikation** handelt, sollten auch wiederum alle Zahlen von $0$ bis $81$ beherrscht werden. Diese Umkehrung wird besonders deutlich, wenn die **Multiplikation** wie in dem folgenden Beispiel verwendet wird.
+Da es sich um die Umkehrung der *Multiplikation* handelt, sollten auch wiederum alle Zahlen von $0$ bis $81$ beherrscht werden. Diese Umkehrung wird besonders deutlich, wenn die *Multiplikation* wie in dem folgenden Beispiel verwendet wird.
 
 
 
 
 
 
-Als Beispiel mit **Zahlen**:
+Als Beispiel mit *Zahlen*:
 
 $$
 
@@ -5052,11 +5054,11 @@ $$
 
 
 
-{{|>}} Bei der schriftlichen **Division** wird zunächst gefragt "Wie oft passt der **Divisor** ($3$) in die erste Ziffer des **Dividenden** ($2$)?" Die Antwort wäre "`Null mal"' und somit ist die Null die erste **Ziffer** des **Wert** des **Terms**, dem sogenannten **Quotienten**. Anschließend wir die gefundene **Ziffer** des **Quotienten** mit dem **Divisor** **multipliziert** und dieser **Wert** dieser Rechnung von der ersten **Ziffer** **subtrahiert**. Dann wird die nächste **Ziffer** zur Betrachtung mit nach unten gezogen (im Beispiel die Zahl $4$) und nun die sich danach immer wiederholende Frage "Wie oft passt der **Divisor** in diese Zahl?" gestellt. Die Antwort wird beim **Wert** des **Terms** notiert (im Beispiel $8$) und diese **Ziffer** des **Quotienten** dann wieder **multipliziert** mit dem **Divisor** von der besagten **Zahl** **subtrahiert** und anschließend die nächste **Ziffer** des **Dividenden** zur Betrachtung nach unten gezogen. Dieses Prozedur wiederholt sich solange bis alle **Zahlen** betrachtet wurden. \
+{{|>}} Bei der schriftlichen *Division* wird zunächst gefragt "Wie oft passt der *Divisor* ($3$) in die erste Ziffer des *Dividenden* ($2$)?" Die Antwort wäre "`Null mal"' und somit ist die Null die erste *Ziffer* des *Wert* des *Terms*, dem sogenannten *Quotienten*. Anschließend wir die gefundene *Ziffer* des *Quotienten* mit dem *Divisor* *multipliziert* und dieser *Wert* dieser Rechnung von der ersten *Ziffer* *subtrahiert*. Dann wird die nächste *Ziffer* zur Betrachtung mit nach unten gezogen (im Beispiel die Zahl $4$) und nun die sich danach immer wiederholende Frage "Wie oft passt der *Divisor* in diese Zahl?" gestellt. Die Antwort wird beim *Wert* des *Terms* notiert (im Beispiel $8$) und diese *Ziffer* des *Quotienten* dann wieder *multipliziert* mit dem *Divisor* von der besagten *Zahl* *subtrahiert* und anschließend die nächste *Ziffer* des *Dividenden* zur Betrachtung nach unten gezogen. Dieses Prozedur wiederholt sich solange bis alle *Zahlen* betrachtet wurden. \
 
 
 
-{{|>}} Bei höheren **Zahlen** im **Divisor** lohnt es sich diesen in zwei **Zahlen** zu zerlegen. So kann zum Beispiel der **Divisor** $72$ in zwei **Divisoren** $8$ und $9$ zerlegt werden. Dann muss zu erst durch eine **Zahl** **dividiert** werden und anschließend der **Quotient** aus der ersten **Division** durch die zweite **Zahl** **dividiert** werden. Da die **Division** mit am zeitaufwendigsten ist, wird später die **Bruchrechnung** eingeführt, welche eine **Division** bis zum **Wert** des **Terms** hin herauszögern kann.
+{{|>}} Bei höheren *Zahlen* im *Divisor* lohnt es sich diesen in zwei *Zahlen* zu zerlegen. So kann zum Beispiel der *Divisor* $72$ in zwei *Divisoren* $8$ und $9$ zerlegt werden. Dann muss zu erst durch eine *Zahl* *dividiert* werden und anschließend der *Quotient* aus der ersten *Division* durch die zweite *Zahl* *dividiert* werden. Da die *Division* mit am zeitaufwendigsten ist, wird später die *Bruchrechnung* eingeführt, welche eine *Division* bis zum *Wert* des *Terms* hin herauszögern kann.
 
  
  
@@ -5066,7 +5068,7 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 !?[Division](https://www.youtube.com/watch?v=KkDMx59XTAs)
 
 
-*******************************
+*********************
 
 
 ##### Übungen - Division
@@ -23794,10 +23796,10 @@ __Aufgabe 163:__ **Bestimme** die richtige Reihenfolge der Dominos.
 
 
 {{|>}}
-********************************
+**********************
 
 
-Um **Brüche** in **Dezimalzahlen** umzuwandeln bedarf es der schriftlichen **Division** oder eines guten Zahlengefühls. Anhand eines Beispiels soll ersteres verdeutlicht werden.  
+Um *Brüche* in *Dezimalzahlen* umzuwandeln bedarf es der schriftlichen *Division* oder eines guten Zahlengefühls. Anhand eines Beispiels soll ersteres verdeutlicht werden.  
 
 
 $$
@@ -23815,11 +23817,11 @@ $$
 $$
 
 
-{{|>}} An der **Gleichung** ist zu erkennen, wie jeder **Bruch** in eine **Dezimalzahl** umgewandelt werden kann. Dabei wird bei der schriftlichen **Divisionsrechnung** nach jeder **Subtraktion**  eine Nachkommastellennull nach unten gezogen, sodass die Rechnung fortgesetzt werden kann bis kein **Rest** mehr existiert, eine **Periodizität** wie bei $\dfrac{1}{3} = 0,3333333333... = 0,\bar{3}$ festgestellt wird oder eine genauere **Dezimalzahl** nicht mehr erforderlich ist. Da im Allgemeinen bekannt ist, dass $\dfrac{3}{3}=1$ ist, soll hier an dieser Stelle des Buchs folgende Festlegung zur **Periodizität** gelten: $3 \cdot 0,\bar{3} = 0,\bar{9} := 1$. Diese Festlegung kann auch bewiesen werden, was allerdings hier den Rahmen des Buches sprengen würde. 
+{{|>}} An der *Gleichung* ist zu erkennen, wie jeder *Bruch* in eine *Dezimalzahl* umgewandelt werden kann. Dabei wird bei der schriftlichen *Divisionsrechnung* nach jeder *Subtraktion*  eine Nachkommastellennull nach unten gezogen, sodass die Rechnung fortgesetzt werden kann bis kein *Rest* mehr existiert, eine *Periodizität* wie bei $\dfrac{1}{3} = 0,3333333333... = 0,\bar{3}$ festgestellt wird oder eine genauere *Dezimalzahl* nicht mehr erforderlich ist. Da im Allgemeinen bekannt ist, dass $\dfrac{3}{3}=1$ ist, soll hier an dieser Stelle des Buchs folgende Festlegung zur *Periodizität* gelten: $3 \cdot 0,\bar{3} = 0,\bar{9} := 1$. Diese Festlegung kann auch bewiesen werden, was allerdings hier den Rahmen des Buches sprengen würde. 
 
-{{|>}} Die maximale **Periodenlänge** ist gegeben durch den **Nenner** des **Bruches** $a$, welcher zur **Dezimalbruchdarstellung** gehört. Dabei hat die maximal mögliche **Periodenlänge** (Anzahl der Ziffern bevor sich die Reihenfolge der Zahlen wiederholt) $a-1$ Ziffern lang. Hierbei muss beachtet werden, dass die **Periodenlänge** auch kleiner als die maximale **Periodenlänge** sein kann.  
+{{|>}} Die maximale *Periodenlänge* ist gegeben durch den *Nenner* des *Bruches* $a$, welcher zur *Dezimalbruchdarstellung* gehört. Dabei hat die maximal mögliche *Periodenlänge* (Anzahl der Ziffern bevor sich die Reihenfolge der Zahlen wiederholt) $a-1$ Ziffern lang. Hierbei muss beachtet werden, dass die *Periodenlänge* auch kleiner als die maximale *Periodenlänge* sein kann.  
 
-{{|>}} Um **Brüche** in eine **Dezimaldarstellung** zu bringen besteht auch die Möglichkeit den **Bruch** so zu **Erweitern**, dass dieser eine **Zehnerpotenz** bildet ($10,\; 100,\; 1000,\; 10000,\;...$), um anschließend nur das Komma im **Zähler** an die richtige Stelle zu setzen. Dabei geben die Nullen im **Nenner** an, wie **Nachkommastellen** existieren.
+{{|>}} Um *Brüche* in eine *Dezimaldarstellung* zu bringen besteht auch die Möglichkeit den *Bruch* so zu *Erweitern*, dass dieser eine *Zehnerpotenz* bildet ($10,\; 100,\; 1000,\; 10000,\;...$), um anschließend nur das Komma im *Zähler* an die richtige Stelle zu setzen. Dabei geben die Nullen im *Nenner* an, wie *Nachkommastellen* existieren.
 
 
 $$
@@ -23829,7 +23831,7 @@ $$
 $$
 
 
-{{|>}} Im Allgemeinen sollte auf eine Umwandlung in **Dezimalzahlen** verzichtet werden, da die **Darstellung** durch einen **Bruch** meistens, das weitere Vorgehen vereinfacht. Die **Darstellung** einer Zahl als **Bruch** ist dabei eine Schreibweise, welche eine Rechnung fordert, aber sie nicht ausführt. So kann zum Beispiel durch das Erhalten von **Bruchdarstellungen** folgende Rechnung leichter durchgeführt werden als in der **Dezimalzahlendarstellung**, welche im direkten Vergleich darunter zu finden ist. (Bei dieser Rechnung werden **Klammern** verwendet, deren Bedeutung genaustens im Abschnitt "Klammersetzung" besprochen werden. Für diese Rechnung gilt, dass die Rechnung in der **Klammer** zu erst ausgeführt werden soll.) 
+{{|>}} Im Allgemeinen sollte auf eine Umwandlung in *Dezimalzahlen* verzichtet werden, da die *Darstellung* durch einen *Bruch* meistens, das weitere Vorgehen vereinfacht. Die *Darstellung* einer Zahl als *Bruch* ist dabei eine Schreibweise, welche eine Rechnung fordert, aber sie nicht ausführt. So kann zum Beispiel durch das Erhalten von *Bruchdarstellungen* folgende Rechnung leichter durchgeführt werden als in der *Dezimalzahlendarstellung*, welche im direkten Vergleich darunter zu finden ist. (Bei dieser Rechnung werden *Klammern* verwendet, deren Bedeutung genaustens im Abschnitt "Klammersetzung" besprochen werden. Für diese Rechnung gilt, dass die Rechnung in der *Klammer* zu erst ausgeführt werden soll.) 
 
 
 
@@ -23846,13 +23848,13 @@ $$
 $$
 
 
-{{|>}} Die Gleichung zeigt, dass die Rechnung mit den **Brüchen** zwar länger erscheint, aber vollständig im Kopf durchgeführt werden kann. Während die Rechnungen mit den **Dezimalzahlen** vielen Menschen nur mit Taschenrechner gelingen und dabei noch die Problematik der **Periodizität** bei der Eingabe in den Taschenrechner besteht, sodass als Lösung $0,499999999$ auf dem Taschenrechnerdisplay angezeigt wird. Diese Lösung wäre nicht richtig und durch das **Runden** de Lösung bekommt der Schüler oftmals den Eindruck, dass solche Rechnungen nicht ohne Taschenrechner schaffbar seien. Aus diesem Grund lohnt es sich besonders bei **Divisionsaufgaben** die **Dezimalzahlen** in **Brüche** zu überführen.
+{{|>}} Die Gleichung zeigt, dass die Rechnung mit den *Brüchen* zwar länger erscheint, aber vollständig im Kopf durchgeführt werden kann. Während die Rechnungen mit den *Dezimalzahlen* vielen Menschen nur mit Taschenrechner gelingen und dabei noch die Problematik der *Periodizität* bei der Eingabe in den Taschenrechner besteht, sodass als Lösung $0,499999999$ auf dem Taschenrechnerdisplay angezeigt wird. Diese Lösung wäre nicht richtig und durch das *Runden* de Lösung bekommt der Schüler oftmals den Eindruck, dass solche Rechnungen nicht ohne Taschenrechner schaffbar seien. Aus diesem Grund lohnt es sich besonders bei *Divisionsaufgaben* die *Dezimalzahlen* in *Brüche* zu überführen.
 
 
 
 
 
-{{|>}} Viele **Dezimalzahlen** lassen sich als **Brüche** darstellen, hierbei wird der **Stellenwert** der einzeln Ziffern mit der Ziffer multipliziert und anschließend die einzelnen **Brüche** **aufaddiert**.
+{{|>}} Viele *Dezimalzahlen* lassen sich als *Brüche* darstellen, hierbei wird der *Stellenwert* der einzeln Ziffern mit der Ziffer multipliziert und anschließend die einzelnen *Brüche* *aufaddiert*.
 
 
 
@@ -23865,12 +23867,12 @@ $$
 
 
 
-{{|>}} Wobei deutlich wird, dass der **Stellenwert** der letzten Ziffer entscheiden für den resultierenden **Nenner** ist. Anschließend sollte stets geguckt werden ob das **Kürzen** der **Brüche** möglich ist. 
+{{|>}} Wobei deutlich wird, dass der *Stellenwert* der letzten Ziffer entscheiden für den resultierenden *Nenner* ist. Anschließend sollte stets geguckt werden ob das *Kürzen* der *Brüche* möglich ist. 
 
 
 
 
-{{|>}} **Periodizitäten** lassen sich auch als **Bruch** darstellen, hierbei wird der **Darstellungswechsel** zwischen Neunteln und dessen **Dezimalzahldarstellung** betrachtet:
+{{|>}} *Periodizitäten* lassen sich auch als *Bruch* darstellen, hierbei wird der *Darstellungswechsel* zwischen Neunteln und dessen *Dezimalzahldarstellung* betrachtet:
 
 
 
@@ -23894,7 +23896,7 @@ $$
 
 
 
-{{|>}} Somit kann für **Periodizitäten** mit mehreren Ziffern auch die Beteiligung von Neunteln geschlussfolgert werden:
+{{|>}} Somit kann für *Periodizitäten* mit mehreren Ziffern auch die Beteiligung von Neunteln geschlussfolgert werden:
 
 
 
@@ -23924,7 +23926,7 @@ $$
 
 
 
-{{|>}} **Dezimalzahlen**, die nicht als **Bruch** dargestellt werden können sind **irrationale Zahlen** $\mathbb{I}$ (Zahlen die nicht durch einen **Bruch** dargestellt werden können). Beispiele hierfür sind:
+{{|>}} *Dezimalzahlen*, die nicht als *Bruch* dargestellt werden können sind *irrationale Zahlen* $\mathbb{I}$ (Zahlen die nicht durch einen *Bruch* dargestellt werden können). Beispiele hierfür sind:
 
 
 
@@ -23938,10 +23940,10 @@ $$
 $$
 
 
-{{|>}} Die Rechnung mit **Dezimalzahlen** verhält sich ähnlich wie mit **Natürlichen Zahlen**, wobei im Wesentlichen die Position des Kommas beachtet werden muss.
+{{|>}} Die Rechnung mit *Dezimalzahlen* verhält sich ähnlich wie mit *Natürlichen Zahlen*, wobei im Wesentlichen die Position des Kommas beachtet werden muss.
 
 
-{{|>}} • **Addition** und **Subtraktion**: Bei der schriftlichen **Addition** sowie der **Subtraktion** müssen die Kommata untereinander stehen. Im folgenden Beispiel $13,37+42,6587$ werden zum ersten **Summanden** zwei weitere **Nachkommastellen** in blau hinzugefügt $13,37=13,37\textcolor{blue}{00}$, um mehr Übersicht zu gewährleisten.
+{{|>}} • *Addition* und *Subtraktion*: Bei der schriftlichen *Addition* sowie der *Subtraktion* müssen die Kommata untereinander stehen. Im folgenden Beispiel $13,37+42,6587$ werden zum ersten *Summanden* zwei weitere *Nachkommastellen* in blau hinzugefügt $13,37=13,37\textcolor{blue}{00}$, um mehr Übersicht zu gewährleisten.
 
 
 
@@ -23955,7 +23957,7 @@ $$
 $$
 
 
-{{|>}} • **Multiplikation**: Bei der **Multiplikation** von **Dezimalzahlen** bietet es sich ein **Darstellungswechsel** in die **Bruchdarstellung** an, da so die normale schriftliche **Multiplikation** durch geführt werden kann. 
+{{|>}} • *Multiplikation*: Bei der *Multiplikation* von *Dezimalzahlen* bietet es sich ein *Darstellungswechsel* in die *Bruchdarstellung* an, da so die normale schriftliche *Multiplikation* durch geführt werden kann. 
 
 
 
@@ -23969,11 +23971,11 @@ $$
 $$
 
 
-{{|>}} Hieraus wird auch die folgende Regel ersichtlich: "Die Anzahl der **Nachkommastellen** aller **Faktoren** ergibt die Anzahl der **Nachkommastellen** des **Werts des Produkts**."
+{{|>}} Hieraus wird auch die folgende Regel ersichtlich: "Die Anzahl der *Nachkommastellen* aller *Faktoren* ergibt die Anzahl der *Nachkommastellen* des *Werts des Produkts*."
 
 
 
-{{|>}} • **Division**: Bei der **Division** von **Dezimalzahlen** bietet es sich ein **Darstellungswechsel** in die **Bruchdarstellung** an, da so die normale schriftliche **Division** durch geführt werden kann. 
+{{|>}} • *Division*: Bei der *Division* von *Dezimalzahlen* bietet es sich ein *Darstellungswechsel* in die *Bruchdarstellung* an, da so die normale schriftliche *Division* durch geführt werden kann. 
 
 
 
@@ -23989,7 +23991,7 @@ $$
 $$
 
 
-{{|>}} Wobei auch wieder eine Regel ersichtlich wird: "Die Kommata dürfen im **Divisor** und **Dividenden** gleichmäßig verschoben werden. Um eine schriftliche **Division** durch zu führen ist es ratsam kein Komma im **Dividenden** zu besitzen."
+{{|>}} Wobei auch wieder eine Regel ersichtlich wird: "Die Kommata dürfen im *Divisor* und *Dividenden* gleichmäßig verschoben werden. Um eine schriftliche *Division* durch zu führen ist es ratsam kein Komma im *Dividenden* zu besitzen."
 
 
 
@@ -23998,7 +24000,7 @@ $$
 
 
 
-{{|>}} Das Prinzip **Runden** unterliegt auch bei den **Dezimalzahlen** klaren Regeln, wie auch schon bei den **natürlichen Zahlen**. So gilt, wenn die Stelle hinter der **gerundet** werden soll größer als vier ist, dann wird **aufgerundet**. Beim **Aufrunden** wird die Ziffer an der **gerundet** wird um eins erhöht. Andernfalls wird **abgerundet** und die Ziffer bleibt unangetastet.
+{{|>}} Das Prinzip *Runden* unterliegt auch bei den *Dezimalzahlen* klaren Regeln, wie auch schon bei den *natürlichen Zahlen*. So gilt, wenn die Stelle hinter der *gerundet* werden soll größer als vier ist, dann wird *aufgerundet*. Beim *Aufrunden* wird die Ziffer an der *gerundet* wird um eins erhöht. Andernfalls wird *abgerundet* und die Ziffer bleibt unangetastet.
 
 
 
@@ -24013,7 +24015,7 @@ $$
 
 
 
-{{|>}} Das Prinzip des **Rundens** ist wichtig, da bei vielen Rechnungen in der Lösung viele **Nachkommastellen** auftreten. Aus diesem Grund gilt stillschweigend die Konvention, dass immer auf zwei **Nachkommastellen** gerundet wird, außer es ist anders angegeben.
+{{|>}} Das Prinzip des *Rundens* ist wichtig, da bei vielen Rechnungen in der Lösung viele *Nachkommastellen* auftreten. Aus diesem Grund gilt stillschweigend die Konvention, dass immer auf zwei *Nachkommastellen* gerundet wird, außer es ist anders angegeben.
 
 
 
@@ -24025,7 +24027,7 @@ $$
 
 
 
-{{|>}} Dieses Verfahren zur Umwandlung von **Brüchen** in **Dezimalzahlen** ist in erster Linie nützlich um **Prozentwerte** auszurechnen, was detaillierter im Abschnitt "Prozentrechnung" beschrieben wird. Es ist ratsam für jeden Schüler, wenn jede mögliche Rechnung mit **Brüchen** bewältigt wird, da die **Bruchrechnung** mit zunehmenden Umfang der Mathematik an Bedeutung gewinnt. Aus diesem Grund befindet sich im Folgenden noch eine Auflistung einiger besonders oft vorkommenden **Brüche** und ihrer **Dezimalszahldarstellung**. Wichtig zu erwähnen bleibt, dass nicht jede **Dezimalzahl** als eine **Bruchzahl** dargestellt werden kann.
+{{|>}} Dieses Verfahren zur Umwandlung von *Brüchen* in *Dezimalzahlen* ist in erster Linie nützlich um *Prozentwerte* auszurechnen, was detaillierter im Abschnitt "Prozentrechnung" beschrieben wird. Es ist ratsam für jeden Schüler, wenn jede mögliche Rechnung mit *Brüchen* bewältigt wird, da die *Bruchrechnung* mit zunehmenden Umfang der Mathematik an Bedeutung gewinnt. Aus diesem Grund befindet sich im Folgenden noch eine Auflistung einiger besonders oft vorkommenden *Brüche* und ihrer *Dezimalszahldarstellung*. Wichtig zu erwähnen bleibt, dass nicht jede *Dezimalzahl* als eine *Bruchzahl* dargestellt werden kann.
 
 
 
@@ -24051,7 +24053,7 @@ $$
 
 
 
-********************************
+**********************
 
 
 
@@ -27179,12 +27181,12 @@ __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]]
 
 
 {{|>}}
-*******************************
+*********************
 
 
 
 
-**Variablen** sind Platzhalter hinter denen sich jede mögliche Zahl verbergen kann. Jeder **Variable** gehört einer **Zahlenmenge** an und kann somit jede beliebige Zahl aus dieser **Menge** darstellen. Das bedeutet, dass Rechnungen mit **Variablen** für alle möglichen Zahlen} Gültigkeit besitzen. Eine **Variable** wird mit einem Buchstaben oder einem anderen beliebigen Symbol gekennzeichnet. Somit kann die Abkürzung der **Addition**, also die **Multiplikation**, wie folgt dargestellt:
+*Variablen* sind Platzhalter hinter denen sich jede mögliche Zahl verbergen kann. Jeder *Variable* gehört einer *Zahlenmenge* an und kann somit jede beliebige Zahl aus dieser *Menge* darstellen. Das bedeutet, dass Rechnungen mit *Variablen* für alle möglichen Zahlen} Gültigkeit besitzen. Eine *Variable* wird mit einem Buchstaben oder einem anderen beliebigen Symbol gekennzeichnet. Somit kann die Abkürzung der *Addition*, also die *Multiplikation*, wie folgt dargestellt:
 
 
 $$
@@ -27193,7 +27195,7 @@ a + a = 2 \cdot a \;\; .
 \end{align*}
 $$
 
-{{|>}} Die **Gleichung** für jede Zahl für $a$ Gültigkeit. Ebenso kann auch die **Subtraktion** einer Zahl von sich selbst mit **Variablen** dargestellt werden: 
+{{|>}} Die *Gleichung* für jede Zahl für $a$ Gültigkeit. Ebenso kann auch die *Subtraktion* einer Zahl von sich selbst mit *Variablen* dargestellt werden: 
 
 
 
@@ -27203,10 +27205,10 @@ a - a = 0 \;\; .
 \end{align*}
 $$
 
-{{|>}} Besitzt eine **Variable** einen Namen wie $a$, dann unterscheidet dieser sich von einer anderen **Variable** $b$. Beide **Variablen** können nicht zusammengefasst werden und auch ihr Name $a$ und $b$ wechseln. In bestimmten Fällen, kann es vorkommen, dass **Variablen** nach ihrer Bestimmung den gleichen Wert haben können. 
+{{|>}} Besitzt eine *Variable* einen Namen wie $a$, dann unterscheidet dieser sich von einer anderen *Variable* $b$. Beide *Variablen* können nicht zusammengefasst werden und auch ihr Name $a$ und $b$ wechseln. In bestimmten Fällen, kann es vorkommen, dass *Variablen* nach ihrer Bestimmung den gleichen Wert haben können. 
 
 {{|>}} 
-Beim Rechnen mit **Variablen** (oder später auch **Parameter**) ist es wichtig zu beachten, dass nur gleiche **Produkte** von **Variablen** zusammengefasst werden können. Dazu einige Beispiele:
+Beim Rechnen mit *Variablen* (oder später auch *Parameter*) ist es wichtig zu beachten, dass nur gleiche *Produkte* von *Variablen* zusammengefasst werden können. Dazu einige Beispiele:
 
 
 
@@ -27219,15 +27221,15 @@ $$
 $$
 
 
-{{|>}} Bei diesem Zusammenfassen von **Termen** müssen die vorgestellten Regeln beachtet werden. **Terme** sind dabei Teile von **Gleichungen** auf einer Seite eines **Äquivalenzzeichens**. 
+{{|>}} Bei diesem Zusammenfassen von *Termen* müssen die vorgestellten Regeln beachtet werden. *Terme* sind dabei Teile von *Gleichungen* auf einer Seite eines *Äquivalenzzeichens*. 
 
 
 
 
-{{|>}} Das **Einsetzungsverfahren** wird oftmals mit **Gleichungssystemen** in Verbindung gebracht, allerdings ist das dahinter liegende Prinzip von fundamentalerer Bedeutung für den Umgang mit mathematischem und naturwissenschaftlichem Wissen. Bei diesem Verfahren wird entweder für einen **Parameter**, einer **Variable** oder einen **Term**  eine Zahl oder einem weiterführender **Term** eingesetzt, sodass es generell zu einer Vereinfachung, einer Beispielrechnung oder der Reduzierung von unbekannten Größen kommt. Dabei ist ein **Parameter** ein Platzhalter für eine Zahl (oftmals werden $a,b,c,d$ als **Parameter** verwendet), während die **Variable** der Platzhalter für eine veränderliche Zahl (oftmals werden $x,y,z$ als **Variable** verwendet) ist und ein **Term** ein ganzer Abschnitt einer Rechenanweisung (zum Beispiel $5\cdot x \cdot a$ wäre ein **Term**).
+{{|>}} Das *Einsetzungsverfahren* wird oftmals mit *Gleichungssystemen* in Verbindung gebracht, allerdings ist das dahinter liegende Prinzip von fundamentalerer Bedeutung für den Umgang mit mathematischem und naturwissenschaftlichem Wissen. Bei diesem Verfahren wird entweder für einen *Parameter*, einer *Variable* oder einen *Term*  eine Zahl oder einem weiterführender *Term* eingesetzt, sodass es generell zu einer Vereinfachung, einer Beispielrechnung oder der Reduzierung von unbekannten Größen kommt. Dabei ist ein *Parameter* ein Platzhalter für eine Zahl (oftmals werden $a,b,c,d$ als *Parameter* verwendet), während die *Variable* der Platzhalter für eine veränderliche Zahl (oftmals werden $x,y,z$ als *Variable* verwendet) ist und ein *Term* ein ganzer Abschnitt einer Rechenanweisung (zum Beispiel $5\cdot x \cdot a$ wäre ein *Term*).
 
 
-{{|>}} Als Beispiel für das **Einsetzen** von Zahlen soll das **Erweitern** bei der **Bruchrechnung** dienen. Hierbei soll gelten, dass für $a$ der **Wert** $2$, für $b$ der **Wert** 3 und für den **Erweiterungsparameter** $n$ die Zahl $4$ eingesetzt werden soll.
+{{|>}} Als Beispiel für das *Einsetzen* von Zahlen soll das *Erweitern* bei der *Bruchrechnung* dienen. Hierbei soll gelten, dass für $a$ der *Wert* $2$, für $b$ der *Wert* 3 und für den *Erweiterungsparameter* $n$ die Zahl $4$ eingesetzt werden soll.
 
 
 
@@ -27240,7 +27242,7 @@ $$
 \end{align*}
 $$
 
-{{|>}} Wie bereits oben schon erwähnt wurde, ist dieses Verfahren auch mit **Termen** möglich.
+{{|>}} Wie bereits oben schon erwähnt wurde, ist dieses Verfahren auch mit *Termen* möglich.
 
 
 $$
@@ -27251,7 +27253,7 @@ a+b & = c \qquad \text{mit: } a = d-e+f \\
 \end{align*}
 $$
 
-{{|>}} Generell sollte beim **Einsetzen** von Ausdrücken der einzusetzende **Term** in **Klammern** geschrieben werden, da es sonst unter anderem zu **Vorzeichenfehler** oder Ähnlichem kommen kann. Hierzu einige Beispiele:
+{{|>}} Generell sollte beim *Einsetzen* von Ausdrücken der einzusetzende *Term* in *Klammern* geschrieben werden, da es sonst unter anderem zu *Vorzeichenfehler* oder Ähnlichem kommen kann. Hierzu einige Beispiele:
 
 
 
@@ -27262,15 +27264,14 @@ a^2 &  \qquad \text{mit: } a = -b \;\; \Rightarrow \;\; \text{richtig:}\;  (-b)^
 \end{align*}
 $$
 
-{{|>}} Folglich sollten alle **Einsetzungen** mit **Klammern** unternommen werden und nach dem **Einsetzen** auf die Notwendigkeit der **Klammern** geschaut werden. Hierdurch entsteht schnell ein Gefühl, wann die **Klammern** unabdingbar werden.
+{{|>}} Folglich sollten alle *Einsetzungen* mit *Klammern* unternommen werden und nach dem *Einsetzen* auf die Notwendigkeit der *Klammern* geschaut werden. Hierdurch entsteht schnell ein Gefühl, wann die *Klammern* unabdingbar werden.
 
 
 
 
 !?[Einsetzen](https://www.youtube.com/watch?v=oCzl1Sasf4M)
 
-*******************************
-
+*********************
 
 
 
@@ -27599,11 +27600,11 @@ data-solution-button="5" -->
 
 
 {{|>}}
-********************************
+**********************
 
 
 
-Die **Prozentrechnung** ist von besonderer Bedeutung in der heutigen Gesellschaft, dabei versteckt sich hinter ihr nur der **Bruch** $\frac{1}{100}$. Denn **pro cent** bedeutet übersetzt nicht viel mehr als pro hundert. Aus diesem **Bruch** heraus hat sich historisch dann das **Prozentzeichen** $\%$ entwickelt. Der rechnerische Umgang ist durch das Ersetzen von $\%$ durch $\frac{1}{100}$ gegeben. Während für **Promille** sich ebenfalls ein abkürzendes Zeichen entwickelt hat: $1 \text{\permil} = \frac{1}{1000}$.
+Die *Prozentrechnung* ist von besonderer Bedeutung in der heutigen Gesellschaft, dabei versteckt sich hinter ihr nur der *Bruch* $\frac{1}{100}$. Denn *pro cent* bedeutet übersetzt nicht viel mehr als pro hundert. Aus diesem *Bruch* heraus hat sich historisch dann das *Prozentzeichen* $\%$ entwickelt. Der rechnerische Umgang ist durch das Ersetzen von $\%$ durch $\frac{1}{100}$ gegeben. Während für *Promille* sich ebenfalls ein abkürzendes Zeichen entwickelt hat: $1 \text{\permil} = \frac{1}{1000}$.
 
 
 
@@ -27613,7 +27614,7 @@ $$
 $$
 
 
-Auch andere Rechnungen sind auf diesen Fakt reduzierbar: Sei ein Kapital von $1000$\,\euro\; mit einem **Zinssatz** von $4\%$ pro Jahr angelegt, wie hoch wären die **Zinsen** nach einem Jahr? Diese Frage kann leicht dargestellt werden als: 
+Auch andere Rechnungen sind auf diesen Fakt reduzierbar: Sei ein Kapital von $1000$\,\euro\; mit einem *Zinssatz* von $4\%$ pro Jahr angelegt, wie hoch wären die *Zinsen* nach einem Jahr? Diese Frage kann leicht dargestellt werden als: 
 
 
 
@@ -27625,7 +27626,7 @@ $$
 
 
 
-Der **Dreisatz** zur Frage "`Wie viel sind 4\% von 300?"' gestaltet sich als:
+Der *Dreisatz* zur Frage "`Wie viel sind 4\% von 300?"' gestaltet sich als:
 
 
 
@@ -27637,7 +27638,7 @@ $$
  \end{align*}
 $$
 
-Allerdings ist der **Dreisatz** durch das Wissen, dass $\% = \frac{1}{100}$ ist, wie folgt verkürzt durchzuführen: 
+Allerdings ist der *Dreisatz* durch das Wissen, dass $\% = \frac{1}{100}$ ist, wie folgt verkürzt durchzuführen: 
 
 
 
@@ -27648,10 +27649,10 @@ $$
  \end{align*}
 $$
 
-wobei in der vorherigen **Gleichung** die Zwischenschritte weggelassen werden könnten, da $\frac{300}{100}$ und $3 \cdot 4$ nicht von besonderer Schwierigkeit sind.
+wobei in der vorherigen *Gleichung* die Zwischenschritte weggelassen werden könnten, da $\frac{300}{100}$ und $3 \cdot 4$ nicht von besonderer Schwierigkeit sind.
 
 
-Ein anderer Aspekt bei der **Prozentrechnung** ist die **Normierung**. Die **Normierung** beschreibt die Rechnung wie viel ein **Prozent** darstellen. Sei zum Beispiel eine **Menge** von $250000$ gegeben, dann kann jede **Teilmenge** (zum Beispiel $46972$) mit dem **Kehrwert** der **Menge** **multipliziert** und somit **normiert** werden.  
+Ein anderer Aspekt bei der *Prozentrechnung* ist die *Normierung*. Die *Normierung* beschreibt die Rechnung wie viel ein *Prozent* darstellen. Sei zum Beispiel eine *Menge* von $250000$ gegeben, dann kann jede *Teilmenge* (zum Beispiel $46972$) mit dem *Kehrwert* der *Menge* *multipliziert* und somit *normiert* werden.  
 
 
 $$
@@ -27660,7 +27661,7 @@ $$
  \end{align*}
 $$
 
-Somit entspricht die **Teilmenge** insgesamt $18,7888 \%$ der **Gesamtmenge**. Es gibt verschiedene Formen der **Normierung** neben der **Normierung** auf $100\%$, welche in diesem Abschnitt vorgestellt wurde.
+Somit entspricht die *Teilmenge* insgesamt $18,7888 \%$ der *Gesamtmenge*. Es gibt verschiedene Formen der *Normierung* neben der *Normierung* auf $100\%$, welche in diesem Abschnitt vorgestellt wurde.
 
 Da des öfteren nach bestimmten Vokabeln gefragt wird, sollen diese noch am Ende vorgestellt werden:
 
@@ -27672,12 +27673,12 @@ W = p\left[\%\right] G = \frac{p}{100} G \;\; , \\
  \end{align*}
 $$
 
-wobei $G$ der **Grundwert**, $W$ der **Prozentwert**, $p$ der **Prozentfuß** oder **Prozentzahl** und $p[\%]$ der **Prozentsatz** ist. (Beispiel: Der **Prozentsatz** muss in **Prozent** angegeben werden $p[\%] = 5\%$, während hier die **Prozentzahl** durch $p=5$ gegeben ist, sodass $p[\%] = \frac{p}{100}$ gilt.) \\
+wobei $G$ der *Grundwert*, $W$ der *Prozentwert*, $p$ der *Prozentfuß* oder *Prozentzahl* und $p[\%]$ der *Prozentsatz* ist. (Beispiel: Der *Prozentsatz* muss in *Prozent* angegeben werden $p[\%] = 5\%$, während hier die *Prozentzahl* durch $p=5$ gegeben ist, sodass $p[\%] = \frac{p}{100}$ gilt.) \\
 
 
 
 		
-Füllt man diese **Gleichung** mit einer Bedeutung bezüglich Geldanlagen werden oftmals andere **Variablennamen** verwendet, während das mathematische Vorgehen unverändert bleibt:		
+Füllt man diese *Gleichung* mit einer Bedeutung bezüglich Geldanlagen werden oftmals andere *Variablennamen* verwendet, während das mathematische Vorgehen unverändert bleibt:		
 
 
 $$
@@ -27687,7 +27688,7 @@ Z & = K \frac{p}{100}  \;\; , \\
  \end{align*}
 $$
 
-wobei $Z$ für Zinsen und $K$ für das **Kapital** steht. Anhang von Geldanlagen kann schnell verdeutlicht werden, wie dramatisch sich ein stetiges **relatives Wachstum** auswirkt, denn ein **Wachstum** um einen festen relativen **Wert** wird auch **exponentielles Wachstum** genannt. Hier soll ein Beispiel dienen: Ein **Kapital** von $K_0 = 5000$\EUR{} soll für $4$ Jahre zu einem **Jahreszinssatz** von $p\left[\%\right]=10\%$ angelegt werden. Das bedeutet, dass nach jedem Jahr ein neues **Grundkapital** betrachtet werden muss, da die **Zinsen** **addiert** werden:
+wobei $Z$ für Zinsen und $K$ für das *Kapital* steht. Anhang von Geldanlagen kann schnell verdeutlicht werden, wie dramatisch sich ein stetiges *relatives Wachstum* auswirkt, denn ein *Wachstum* um einen festen relativen *Wert* wird auch *exponentielles Wachstum* genannt. Hier soll ein Beispiel dienen: Ein *Kapital* von $K_0 = 5000$\EUR{} soll für $4$ Jahre zu einem *Jahreszinssatz* von $p\left[\%\right]=10\%$ angelegt werden. Das bedeutet, dass nach jedem Jahr ein neues *Grundkapital* betrachtet werden muss, da die *Zinsen* *addiert* werden:
 
 
 $$
@@ -27722,7 +27723,7 @@ $$
  \end{align*}
 $$
 
-wobei $q$ der **Wachstumsfaktor** ist. Aus der verkürzten **Darstellung** eines Jahres, kann eine **Gleichung** für $n$ Jahre entwickelt werden, hierfür wird zunächst eine Kapitalentwicklung über $3$ Jahre betrachtet:
+wobei $q$ der *Wachstumsfaktor* ist. Aus der verkürzten *Darstellung* eines Jahres, kann eine *Gleichung* für $n$ Jahre entwickelt werden, hierfür wird zunächst eine Kapitalentwicklung über $3$ Jahre betrachtet:
 
 
 
@@ -27736,7 +27737,7 @@ $$
  \end{align*}
 $$
 
-Allerdings werden bei Vertragskündigung nicht immer volle Jahre verrechnet, sodass die $n$ Jahre auf Monate, Wochen oder Tage umgerechnet werden müssen. Hierbei ist zu beachten, dass Banken (und in der Wirtschaft) nur mit $360$ statt $\approx 365,249$ Tagen pro Jahr rechnet wird. In der Finanzwelt werden auch monatlich oder täglich Zinsen berechnet, sodass sich die **Gleichung**, die für Jahre gilt, für den **Zinssatz** $p$ noch angepasst werden muss.
+Allerdings werden bei Vertragskündigung nicht immer volle Jahre verrechnet, sodass die $n$ Jahre auf Monate, Wochen oder Tage umgerechnet werden müssen. Hierbei ist zu beachten, dass Banken (und in der Wirtschaft) nur mit $360$ statt $\approx 365,249$ Tagen pro Jahr rechnet wird. In der Finanzwelt werden auch monatlich oder täglich Zinsen berechnet, sodass sich die *Gleichung*, die für Jahre gilt, für den *Zinssatz* $p$ noch angepasst werden muss.
 
 
 
@@ -27758,7 +27759,7 @@ wobei $m$ für die Anzahl der Monate und $t$ für die Anzahl der Tage stehen.
 
 
 
-********************************
+**********************
 
 
 
@@ -27833,7 +27834,7 @@ __$c)\;\;$__ $ 0,0649 =$ [[  6,49  ]]%
 </div> 
 <div class="flex-child">
 
-__$d)\;\;$__ $ 644,1 =$ [[  66410  ]]%
+__$d)\;\;$__ $ 644,1 =$ [[  64410  ]]%
 
 </div> 
 <div class="flex-child">
@@ -28152,7 +28153,7 @@ __Aufgabe 10:__ **Gib** den Wert des Terms als Prozentzahl **an**.
 
 <div class="flex-child">
 
-__$a)\;\;$__ $ \dfrac{7}{4} =$ [[  1,75  ]]%
+__$a)\;\;$__ $ \dfrac{7}{4} =$ [[  175  ]]%
 
 </div> 
 <div class="flex-child">
@@ -28196,7 +28197,7 @@ __Aufgabe 11:__ **Gib** den beschriebenen Prozentwert **an**.
 
 __$a)\;\;$__ Wie viel sind $20\%$ von $4500\,$€?  \
 
- [[  1800  ]]€
+ [[  900  ]]€
 
 </div>
 <div class="flex-child">
@@ -33710,15 +33711,15 @@ __$f)\;\;$__ $ -0,56:(-0,7) =$ [[  0,8  ]]
 
 
 {{|>}}
-*******************************
+***************************
 
 
-Das **Assoziativ**- und das **Kommutativgesetz** helfen beim Rechnen den Überblick selbst über sehr komplex wirkende Sachverhalte zu behalten und sollten deswegen bekannt sein. In diesem Abschnitt werden diese beiden Gesetz und ihre Auswirkungen auf die Mathematik besprochen. Auch wird nochmals motiviert, warum es lohnend sein kann mit **Brüchen** und **negativen Zahlen** zu arbeiten. 
+Das *Assoziativ*- und das *Kommutativgesetz* helfen beim Rechnen den Überblick selbst über sehr komplex wirkende Sachverhalte zu behalten und sollten deswegen bekannt sein. In diesem Abschnitt werden diese beiden Gesetz und ihre Auswirkungen auf die Mathematik besprochen. Auch wird nochmals motiviert, warum es lohnend sein kann mit *Brüchen* und *negativen Zahlen* zu arbeiten. 
 
 
 <h2>Kommutator</h2>
 
-{{|>}} Das **Kommutativgesetz** besagt, dass die Vertauschung von Zahlen, **Parametern** oder **Variablen** bei einer Rechenoperation keinen Einfluss auf den **Wert des Terms** hat. Zur Überprüfung des **Kommutativgesetzes** dient der **Kommutator**, welcher folgende definierte Rechenanweisung ist:
+{{|>}} Das *Kommutativgesetz* besagt, dass die Vertauschung von Zahlen, *Parametern* oder *Variablen* bei einer Rechenoperation keinen Einfluss auf den *Wert des Terms* hat. Zur Überprüfung des *Kommutativgesetzes* dient der *Kommutator*, welcher folgende definierte Rechenanweisung ist:
 
 
 
@@ -33728,7 +33729,7 @@ $$
 \end{align*}
 $$
 
-{{|>}} Ist der **Kommutator** gleich Null, so gilt, dass $a\cdot b = b \cdot a$ ist. Wenn man nun Zahlen für die **Parameter** $a$ und $b$ einsetzt, so ist die Gültigkeit des **Kommutativgesetzes** intuitiv zu erkennen: 
+{{|>}} Ist der *Kommutator* gleich Null, so gilt, dass $a\cdot b = b \cdot a$ ist. Wenn man nun Zahlen für die *Parameter* $a$ und $b$ einsetzt, so ist die Gültigkeit des *Kommutativgesetzes* intuitiv zu erkennen: 
 
 
 $$
@@ -33737,7 +33738,7 @@ $$
 \end{align*}
 $$
 
-{{|>}} Der allgemeine **Kommutator** ist für die **Multiplikation** definiert - wenn nun das **Kommutativgesetz** zum Beispiel für die **Addition** überprüft werden soll, wird am Komma des **Kommutator** gekennzeichnet welcher **Operator** untersucht wird. 
+{{|>}} Der allgemeine *Kommutator* ist für die *Multiplikation* definiert - wenn nun das *Kommutativgesetz* zum Beispiel für die *Addition* überprüft werden soll, wird am Komma des *Kommutator* gekennzeichnet welcher *Operator* untersucht wird. 
 
 
 
@@ -33748,7 +33749,7 @@ $$
 \end{align*}
 $$
 
-{{|>}} Es wird deutlich, dass ohne die Einführung der **ganzen Zahlen** $\mathbb{Z}$ und der **Bruchrechnung** und somit die Verallgemeinerung von **Addition** mit **Subtraktion** sowie der **Multiplikation** mit der **Division**, dass **Kommutativgesetz** nicht für die **Subtraktion** und **Division** gelten würde. 
+{{|>}} Es wird deutlich, dass ohne die Einführung der *ganzen Zahlen* $\mathbb{Z}$ und der *Bruchrechnung* und somit die Verallgemeinerung von *Addition* mit *Subtraktion* sowie der *Multiplikation* mit der *Division*, dass *Kommutativgesetz* nicht für die *Subtraktion* und *Division* gelten würde. 
 
 
 
@@ -33761,7 +33762,7 @@ $$
 \end{align*}
 $$
 
-{{|>}} Durch die Einführung **ganzen Zahlen** $\mathbb{Z}$ und der **Bruchrechnung** verändert sich die vorherigen **Gleichungen** zu:
+{{|>}} Durch die Einführung *ganzen Zahlen* $\mathbb{Z}$ und der *Bruchrechnung* verändert sich die vorherigen *Gleichungen* zu:
 
 
 
@@ -33775,13 +33776,13 @@ $$
 $$
 
 
-{{|>}} Die besondere Bedeutung und die Konsequenzen des **Kommutators** werden im Kapitel "**Differentiation** und **Integration**" weiter ausgeführt. Während die **Klammern** im nächsten Unterabschnitt genaustens erklärt werden
+{{|>}} Die besondere Bedeutung und die Konsequenzen des *Kommutators* werden im Kapitel "*Differentiation* und *Integration*" weiter ausgeführt. Während die *Klammern* im nächsten Unterabschnitt genaustens erklärt werden
 
 
 
 <h2>Assoziativgesetz</h2>
 
-{{|>}} Das **Assoziativgesetz** besagt, dass die Reihenfolge bei einer Rechnung keine Relevanz besitzen darf. So macht es zum Beispiel keinen Unterschied bei der **Addition** oder **Multiplikation** von drei Zahlen, welche zuerst verrechnet werden.
+{{|>}} Das *Assoziativgesetz* besagt, dass die Reihenfolge bei einer Rechnung keine Relevanz besitzen darf. So macht es zum Beispiel keinen Unterschied bei der *Addition* oder *Multiplikation* von drei Zahlen, welche zuerst verrechnet werden.
 
 
 
@@ -33792,7 +33793,7 @@ a \cdot b \cdot c & = (a\cdot b)\cdot c = a \cdot (b\cdot c) = b \cdot (a \cdot 
 \end{align*}
 $$
 
-{{|>}} Die Reihenfolge in den vorherigen **Gleichung** wird beschrieben durch die **Klammern**, welche angeben welche Rechnung zu erst vollzogen werden soll. Das jeweils letzte **Gleichheitszeichen** konnte nur durch die Vertauschung der geschriebenen Reihenfolge der **Parameter** $a,b$ und $c$, also dem **Kommutativgesetz**, geschrieben werden. Erneut zeigt sich, dass die Verallgemeinerung von **Addition** mit **Subtraktion** sowie **Multiplikation** mit **Division** seine Vorteile hat, denn die **Rechenoperatoren** der **Subtraktion** und der **Division** sind nicht **assoziativ**: 
+{{|>}} Die Reihenfolge in den vorherigen *Gleichung* wird beschrieben durch die *Klammern*, welche angeben welche Rechnung zu erst vollzogen werden soll. Das jeweils letzte *Gleichheitszeichen* konnte nur durch die Vertauschung der geschriebenen Reihenfolge der *Parameter* $a,b$ und $c$, also dem *Kommutativgesetz*, geschrieben werden. Erneut zeigt sich, dass die Verallgemeinerung von *Addition* mit *Subtraktion* sowie *Multiplikation* mit *Division* seine Vorteile hat, denn die *Rechenoperatoren* der *Subtraktion* und der *Division* sind nicht *assoziativ*: 
 
 
 
@@ -33803,12 +33804,12 @@ $$
 \end{align*}
 $$
 
-{{|>}} Allerdings gilt durch die Einführung der **ganzen Zahlen** $\mathbb{Z}$ und des **Bruchrechnens**, dass der **Subtraktionsoperator** umgeschrieben werden kann in $- = + (-1)$ sowie der **Divisionsoperator** mit nur seltenen Ausnahmen aus dem mathematischen Gebrauch verschwindet.
+{{|>}} Allerdings gilt durch die Einführung der *ganzen Zahlen* $\mathbb{Z}$ und des *Bruchrechnens*, dass der *Subtraktionsoperator* umgeschrieben werden kann in $- = + (-1)$ sowie der *Divisionsoperator* mit nur seltenen Ausnahmen aus dem mathematischen Gebrauch verschwindet.
 
 
 
 
-*******************************
+***************************
 
 
 
@@ -33825,10 +33826,10 @@ $$
 
 
 {{|>}}
-*******************************
+*********************
 
 
-Wenn eine Rechnung mehr als nur einen **Rechenoperator** beinhaltet, dann lohnt es sich **Klammern** zu verwenden, um den Überblick zu behalten oder auf bestimmte Sachverhalte aufmerksam zu machen. Im engeren Sinne ist die Rechnung mit **Klammern** auf die **Multiplikation** reduzierbar. Dabei wirkt der außenstehende **Faktor** auf jeden **Summanden** innerhalb der **Klammer**:
+Wenn eine Rechnung mehr als nur einen *Rechenoperator* beinhaltet, dann lohnt es sich *Klammern* zu verwenden, um den Überblick zu behalten oder auf bestimmte Sachverhalte aufmerksam zu machen. Im engeren Sinne ist die Rechnung mit *Klammern* auf die *Multiplikation* reduzierbar. Dabei wirkt der außenstehende *Faktor* auf jeden *Summanden* innerhalb der *Klammer*:
 
 
 
@@ -33839,7 +33840,7 @@ a \cdot (b + c) & = a \cdot b + a \cdot c  \\
 \end{align*}
 $$
 
-{{|>}} Das Beispiel aus der vorherigen **Gleichung** zeigt, wie der **Faktor** auf die **Summanden** innerhalb der **Klammern** wirkt und somit der gleiche **Wert des Terms** produziert, wie die **Multiplikation** des **Faktors** mit der **Summe** der **Klammer**. Dieses Verfahren mit der **Klammersetzung** wird **Distributivgesetz** genannt. Das **Distributivgesetz** kann anhand eines zusammengesetzten **Rechtecks** aus anderen **Rechtecken** visualisiert werden. 
+{{|>}} Das Beispiel aus der vorherigen *Gleichung* zeigt, wie der *Faktor* auf die *Summanden* innerhalb der *Klammern* wirkt und somit der gleiche *Wert des Terms* produziert, wie die *Multiplikation* des *Faktors* mit der *Summe* der *Klammer*. Dieses Verfahren mit der *Klammersetzung* wird *Distributivgesetz* genannt. Das *Distributivgesetz* kann anhand eines zusammengesetzten *Rechtecks* aus anderen *Rechtecken* visualisiert werden. 
 
 
 
@@ -33851,10 +33852,10 @@ $$
 </center>
 
 
-{{|>}} Wobei der **Flächeninhalt** des gesamten **Rechtecks** einmal direkt über $A=a(b+c)$ oder über die **Addition** der beiden kleineren **Rechtecke** $A=A_1+A_2=ab+ac$ berechnet werden kann. 
+{{|>}} Wobei der *Flächeninhalt* des gesamten *Rechtecks* einmal direkt über $A=a(b+c)$ oder über die *Addition* der beiden kleineren *Rechtecke* $A=A_1+A_2=ab+ac$ berechnet werden kann. 
 
 
-{{|>}} Bei der Verrechnung von **Subtraktionsoperatoren** mit einer **Klammer** gilt, dass das vorgestellte Minus lediglich eine verkürzte Schreibweise von $(-1)\cdot$ ist: 
+{{|>}} Bei der Verrechnung von *Subtraktionsoperatoren* mit einer *Klammer* gilt, dass das vorgestellte Minus lediglich eine verkürzte Schreibweise von $(-1)\cdot$ ist: 
 
 
 $$
@@ -33863,7 +33864,7 @@ $$
 \end{align*}
 $$
 
-{{|>}} Auch **Terme** von **Summen** können miteinander **multipliziert** werden: 
+{{|>}} Auch *Terme* von *Summen* können miteinander *multipliziert* werden: 
 
 
 
@@ -33873,9 +33874,9 @@ $$
 \end{align*}
 $$
 
-{{|>}} In der vorherigen **Gleichung** wirken zu erst die **Summanden** der ersten **Klammer** auf die zweite **Klammer**, sodass dann die zweite **Klammer** wie in **Gleichung** (\ref{eqn:1.5.1}) **ausmultipliziert** werden kann. Es wird auch ersichtlich, dass die Schreibweise mit den **Klammern** wesentlich kürzer ist. Das **Ausmultiplizieren** ist trotz der verkürzten **Klammerschreibweise** oftmals von Vorteil. 
+{{|>}} In der vorherigen *Gleichung* wirken zu erst die *Summanden* der ersten *Klammer* auf die zweite *Klammer*, sodass dann die zweite *Klammer* wie in *Gleichung* (\ref{eqn:1.5.1}) *ausmultipliziert* werden kann. Es wird auch ersichtlich, dass die Schreibweise mit den *Klammern* wesentlich kürzer ist. Das *Ausmultiplizieren* ist trotz der verkürzten *Klammerschreibweise* oftmals von Vorteil. 
 
-Die **Klammersetzung** ist nicht nur ein Bestandteil einer verkürzten Schreibweise, sondern auch von fundamentaler Bedeutung bei komplexeren **Einsetzungsverfahren**. So sei zum Beispiel $a = g+h$ und soll in die folgende Gleichung eingesetzt werden. 
+Die *Klammersetzung* ist nicht nur ein Bestandteil einer verkürzten Schreibweise, sondern auch von fundamentaler Bedeutung bei komplexeren *Einsetzungsverfahren*. So sei zum Beispiel $a = g+h$ und soll in die folgende Gleichung eingesetzt werden. 
 
 
 $$
@@ -33884,14 +33885,14 @@ a \cdot d = (g+h)\cdot d = g \cdot d + h \cdot d \\
 \end{align*}
 $$
 
-{{|>}} Wie die vorherige Gleichung zeigt, sollte bei einer Ersetzung der eingesetzte **Term** am besten prophylaktisch umklammert werden, um Fehler zu vermeiden. Erst nach einer Reflexion der **Gleichung** sollten dann die **Klammern**, wenn möglich, fallen gelassen werden.  
+{{|>}} Wie die vorherige Gleichung zeigt, sollte bei einer Ersetzung der eingesetzte *Term* am besten prophylaktisch umklammert werden, um Fehler zu vermeiden. Erst nach einer Reflexion der *Gleichung* sollten dann die *Klammern*, wenn möglich, fallen gelassen werden.  
 
 
 
 
 
 
-{{|>}} Allerdings sollte auch die **Umkehrung** des **Ausmultiplizierens**, das **Ausklammern**, beherrscht werden, da es oftmals die Übersicht verbessert, wie in diesem Beispiel:  
+{{|>}} Allerdings sollte auch die *Umkehrung* des *Ausmultiplizierens*, das *Ausklammern*, beherrscht werden, da es oftmals die Übersicht verbessert, wie in diesem Beispiel:  
 
 
 
@@ -33901,7 +33902,7 @@ a \cdot b + a \cdot c + a \cdot d + a \cdot e + a \cdot f + g = a \cdot (b+c+d+e
 \end{align*}
 $$
 
-{{|>}} Die vorherige Gleichung zeigt, dass der **Faktor** $a$, welcher sich in vielen **Summanden** befindet, **ausgeklammert** wurde um die Übersicht zu verbessern. Generell gilt, dass man gleiche **Vorfaktoren** bei **Summen** **ausklammern** kann.
+{{|>}} Die vorherige Gleichung zeigt, dass der *Faktor* $a$, welcher sich in vielen *Summanden* befindet, *ausgeklammert* wurde um die Übersicht zu verbessern. Generell gilt, dass man gleiche *Vorfaktoren* bei *Summen* *ausklammern* kann.
 
 
 
@@ -33911,7 +33912,7 @@ $$
 
 !?[Distributivgesetz](https://www.youtube.com/watch?v=tSawKXhm714)
 
-*******************************
+*********************
 
 
 #### Übungen - Kommutativ-, Assoziativ- und Distributivgesetz
@@ -34039,10 +34040,10 @@ Potenzen und Wurzeln
 
 
 {{|>}}
-*******************************
+*********************
 
 
-Wie schon zuvor wurden viele Rechenmethoden und neue Eigenschaften eingeführt, um die Übersicht oder Handhabung von rechnerischen Ausdrücken zu vereinfachen. Aus dem selben Grund wird die **Potenz** eingeführt, welche als verkürzte Schreibweise der wiederholten **Multiplikation** eines stets gleichwertigen **Faktors** dient. 
+Wie schon zuvor wurden viele Rechenmethoden und neue Eigenschaften eingeführt, um die Übersicht oder Handhabung von rechnerischen Ausdrücken zu vereinfachen. Aus dem selben Grund wird die *Potenz* eingeführt, welche als verkürzte Schreibweise der wiederholten *Multiplikation* eines stets gleichwertigen *Faktors* dient. 
 
 
 $$
@@ -34054,7 +34055,7 @@ a \cdot a \cdot a \cdot a \cdot a  & = a^5\\
 $$
 
 
-{{|>}} Für **Potenzen** gelten Rechenregeln, welche schnell erklärt werden können, wenn der abkürzende Charakter wie in vorherigen **Gleichung** verinnerlicht wurde. Im Folgenden soll eine Regel gezeigt und dann begründet werden, dass diese gilt (außer die Regel ist intuitiv).
+{{|>}} Für *Potenzen* gelten Rechenregeln, welche schnell erklärt werden können, wenn der abkürzende Charakter wie in vorherigen *Gleichung* verinnerlicht wurde. Im Folgenden soll eine Regel gezeigt und dann begründet werden, dass diese gilt (außer die Regel ist intuitiv).
 
 
 
@@ -34067,7 +34068,7 @@ $$
 
 
 
-{{|>}} Aus der Bedingung, dass $\frac{a}{a}=1$ sein muss und mit der Regel aus vorherigen **Gleichung** ergibt sich daraus, dass $a^1 \cdot \frac{1}{a} = a^0 = 1$ sein muss. Hieraus ergibt sich: 
+{{|>}} Aus der Bedingung, dass $\frac{a}{a}=1$ sein muss und mit der Regel aus vorherigen *Gleichung* ergibt sich daraus, dass $a^1 \cdot \frac{1}{a} = a^0 = 1$ sein muss. Hieraus ergibt sich: 
 
 
 
@@ -34079,7 +34080,7 @@ a^{-1} &= \frac{1}{a}   \\
 $$
 
 
-{{|>}} Des Weiteren kann abgleitet werden, dass Rechnungen mit **Potenzen** nicht **assoziativ** sind:
+{{|>}} Des Weiteren kann abgleitet werden, dass Rechnungen mit *Potenzen* nicht *assoziativ* sind:
 
 
 
@@ -34105,11 +34106,11 @@ $$
 
 
 
-{{|>}} gilt, wobei $\sqrt{a}$ die **Wurzel** von $a$ genannt wird. Die **Wurzel** habt die **Potenz** $^2$ auf, wie in vorherigen **Gleichung** zu sehen ist.
+{{|>}} gilt, wobei $\sqrt{a}$ die *Wurzel* von $a$ genannt wird. Die *Wurzel* habt die *Potenz* $^2$ auf, wie in vorherigen *Gleichung* zu sehen ist.
 
 
 
-{{|>}} Somit gelten zusammengefasst folgende Regeln für die **Potenzrechnung**:
+{{|>}} Somit gelten zusammengefasst folgende Regeln für die *Potenzrechnung*:
 
 
 
@@ -34128,14 +34129,14 @@ $$
 
 
 
-{{|>}} Abschließend ist noch zu erwähnen, dass bei dem Ausdruck $a^n$ es sich bei $a$ um die **Basis** und bei $n$ um den **Exponenten** handelt.
+{{|>}} Abschließend ist noch zu erwähnen, dass bei dem Ausdruck $a^n$ es sich bei $a$ um die *Basis* und bei $n$ um den *Exponenten* handelt.
 
 
 
 
-<h2> **Wurzeln** </h2>
+<h2> *Wurzeln* </h2>
 
-{{|>}} **Wurzeln** sind die **Umkehroperationen** zum **Potenzieren**. Somit steht hinter der sogenannten **Quadratwurzel** der Zahl $z$ ($\sqrt{z}$) die Frage: "`Welche Zahl ergibt mit sich selbst **multipliziert** die Zahl $z$?"' Hierzu lohnt es sich einige Zahlen zum **Quadrat** (zum Beispiel: $8^2 = 64$) zu kennen, um direkt ein Wert einer **Wurzel** zu erkennen. Da es nicht nur die **Quadratwurzel** der Zahl $z$ ($\sqrt{z} = z^{\frac{1}{2}}$) gibt, sondern auch noch höhere Werte des **Nenners** im **Exponenten**, lohnt es sich stets die jeweilige **Wurzel** als **Potenz** zu schreiben.
+{{|>}} *Wurzeln* sind die *Umkehroperationen* zum *Potenzieren*. Somit steht hinter der sogenannten *Quadratwurzel* der Zahl $z$ ($\sqrt{z}$) die Frage: "`Welche Zahl ergibt mit sich selbst *multipliziert* die Zahl $z$?"' Hierzu lohnt es sich einige Zahlen zum *Quadrat* (zum Beispiel: $8^2 = 64$) zu kennen, um direkt ein Wert einer *Wurzel* zu erkennen. Da es nicht nur die *Quadratwurzel* der Zahl $z$ ($\sqrt{z} = z^{\frac{1}{2}}$) gibt, sondern auch noch höhere Werte des *Nenners* im *Exponenten*, lohnt es sich stets die jeweilige *Wurzel* als *Potenz* zu schreiben.
 
 
 
@@ -34148,10 +34149,10 @@ $$
 $$
 
 
-{{|>}} Es gibt ein schriftliches Verfahren eine **Wurzel** zu ziehen, allerdings bedarf es einer aufwendigeren Erklärung, welche in einem eigenen Teil vorgenommen wird, da die Schüler heutzutage oftmals bei der Einführung der **Wurzel** mit dem Taschenrechner arbeiten, wird vorerst das schriftliche **Wurzelziehverfahren** ausgespart.
+{{|>}} Es gibt ein schriftliches Verfahren eine *Wurzel* zu ziehen, allerdings bedarf es einer aufwendigeren Erklärung, welche in einem eigenen Teil vorgenommen wird, da die Schüler heutzutage oftmals bei der Einführung der *Wurzel* mit dem Taschenrechner arbeiten, wird vorerst das schriftliche *Wurzelziehverfahren* ausgespart.
 
 
-{{|>}} Außerdem bleibt anzumerken, dass **Wurzeln** aus **negativen Zahlen** erst im Kapitel "**Komplexe Zahlen**" eingeführt werden. Bis zu diesem Zeitpunkt sind Berechnungen von **Wurzeln** aus **negativen Zahlen** nicht vorgesehen. Folglich sind Rechnungen in denen **Wurzeln** aus **negativen Zahlen** vorkommen ein Hinweis darauf, dass Rechenfehler aufgetreten sind. 
+{{|>}} Außerdem bleibt anzumerken, dass *Wurzeln* aus *negativen Zahlen* erst im Kapitel "*Komplexe Zahlen*" eingeführt werden. Bis zu diesem Zeitpunkt sind Berechnungen von *Wurzeln* aus *negativen Zahlen* nicht vorgesehen. Folglich sind Rechnungen in denen *Wurzeln* aus *negativen Zahlen* vorkommen ein Hinweis darauf, dass Rechenfehler aufgetreten sind. 
 
 
 
@@ -34159,7 +34160,7 @@ $$
 <h2> 10er-Potenzen </h2>
 
 
-{{|>}} Von allen **Potenzen** haben **2er-Potenzen** $2^n$ in der Informatik und die **10er-Potenzen** $10^n$ eine besonders wichtige Funktion inne. Grade in der Physik werden besonders große Größen mit besonders kleinen verrechnet. Die daraus resultierenden Werte sollen dann wieder in einer Größe angegeben werden, die dem Menschen zur Vorstellung genügen. Deswegen werden viele Größen mit Hilfe der **10er-Potenzen** umgerechnet. Für diese gilt:
+{{|>}} Von allen *Potenzen* haben *2er-Potenzen* $2^n$ in der Informatik und die *10er-Potenzen* $10^n$ eine besonders wichtige Funktion inne. Grade in der Physik werden besonders große Größen mit besonders kleinen verrechnet. Die daraus resultierenden Werte sollen dann wieder in einer Größe angegeben werden, die dem Menschen zur Vorstellung genügen. Deswegen werden viele Größen mit Hilfe der *10er-Potenzen* umgerechnet. Für diese gilt:
 
 
 
@@ -34171,10 +34172,10 @@ $$
 $$
 
 
-{{|>}} Jede **Einheit** ist meistens mit einer sprachlichen Abkürzung verbunden, so steht bei $1\,$cm das "centi" für $\frac{1}{100} = 10^{-2}$. Eine Tabelle mit der Auflistung vieler dieser Abkürzungen und ihre Bedeutung als **10er-Potenz** befinden sich im Kapitel zu den **Einheiten**. 
+{{|>}} Jede *Einheit* ist meistens mit einer sprachlichen Abkürzung verbunden, so steht bei $1\,$cm das "centi" für $\frac{1}{100} = 10^{-2}$. Eine Tabelle mit der Auflistung vieler dieser Abkürzungen und ihre Bedeutung als *10er-Potenz* befinden sich im Kapitel zu den *Einheiten*. 
 
 
-{{|>}} Während für alle **Einheiten** k für Kilo also Tausend steht, steht dies sprachlich bei der Einheit Byte B auch für Tausend. Allerdings versteckt sich hier durch den Fakt, dass Computer nur die $0$ (Nein) und die $1$ (Ja) kennen, eine andere Zahl: 
+{{|>}} Während für alle *Einheiten* k für Kilo also Tausend steht, steht dies sprachlich bei der Einheit Byte B auch für Tausend. Allerdings versteckt sich hier durch den Fakt, dass Computer nur die $0$ (Nein) und die $1$ (Ja) kennen, eine andere Zahl: 
 
 
 
@@ -34188,7 +34189,7 @@ $$
 $$
 
 
-{{|>}} Bei der **Einheitenumrechnung** ist das Verständnis von **10er-Potenz** von elementarer Bedeutung, da 
+{{|>}} Bei der *Einheitenumrechnung* ist das Verständnis von *10er-Potenz* von elementarer Bedeutung, da 
 
 
 
@@ -34201,7 +34202,7 @@ $$
 $$
 
 
-{{|>}} gilt. Dahinter verstecken sich sprachliche Abkürzungen, die mit **potenziert** werden $100\,\text{cm}^2 = 100 (\,\text{cm})^2 =100 \,\text{c}^2\,\text{m}^2 = 10^2 \frac{1}{10^2} \,\text{m}^2 = 1\,\text{m}^2$. Die Schreibweise für $1\,\text{cm}^2$ ist wieder nichts weiter als eine Konvention zur Abkürzung für $1 (\,\text{cm})^2$. Wie die vorherige Gleichung zeigt, gibt der **Exponent** der **Einheit** an, mit welcher Zahl die Anzahl der Null der Standardumrechnung **multipliziert** wird:  
+{{|>}} gilt. Dahinter verstecken sich sprachliche Abkürzungen, die mit *potenziert* werden $100\,\text{cm}^2 = 100 (\,\text{cm})^2 =100 \,\text{c}^2\,\text{m}^2 = 10^2 \frac{1}{10^2} \,\text{m}^2 = 1\,\text{m}^2$. Die Schreibweise für $1\,\text{cm}^2$ ist wieder nichts weiter als eine Konvention zur Abkürzung für $1 (\,\text{cm})^2$. Wie die vorherige Gleichung zeigt, gibt der *Exponent* der *Einheit* an, mit welcher Zahl die Anzahl der Null der Standardumrechnung *multipliziert* wird:  
 
 
 
@@ -34214,15 +34215,15 @@ $$
 $$
 
 
-{{|>}} Der **Koeffizient** einer **10er-Potenz**, wie bei $3,24 \cdot 10^5$ wird auch **Mantisse** genannt.
+{{|>}} Der *Koeffizient* einer *10er-Potenz*, wie bei $3,24 \cdot 10^5$ wird auch *Mantisse* genannt.
 
 
 
 
-<h2> **Binomische Lehrsätze** </h2>
+<h2> *Binomische Lehrsätze* </h2>
 
 
-{{|>}} Mit Hilfe der **Potenzen** können auch die **Summen** **potenziert** werden: 
+{{|>}} Mit Hilfe der *Potenzen* können auch die *Summen* *potenziert* werden: 
 
 
 
@@ -34235,9 +34236,7 @@ $$
 $$
 
 
-{{|>}} Die drei **Gleichungen** werden **Binomische Gleichungen** (oftmals auch eher abwertend Binomische Formeln) genannt, welche aus dem **Binomischen Lehrsatz** als spezielle Form kommen, und werden in der Beschreibung der Natur immer wieder vorgefunden und nicht zu Letzt deswegen im Mathematik und naturwissenschaftlichen Unterricht in Klausur- und Übungsaufgaben verwendet. Die **Binomische Gleichungen** können anhand eines **Quadrats**, welches in vier **Flächen** unterteilt wurde, visualisieren. 
-
-
+{{|>}} Die drei *Gleichungen* werden *Binomische Gleichungen* (oftmals auch eher abwertend Binomische Formeln) genannt, welche aus dem *Binomischen Lehrsatz* als spezielle Form kommen, und werden in der Beschreibung der Natur immer wieder vorgefunden und nicht zu Letzt deswegen im Mathematik und naturwissenschaftlichen Unterricht in Klausur- und Übungsaufgaben verwendet. Die *Binomische Gleichungen* können anhand eines *Quadrats*, welches in vier *Flächen* unterteilt wurde, visualisieren. 
 
 
 
@@ -34252,7 +34251,7 @@ $$
 
 
 
-{{|>}} Generell kann man diese **Binomischen Lehrsätze** noch für jede **Potenz** verallgemeinern, dazu dient das sogenannt **Pascal'sche Dreieck**, welches die **Vorfaktoren** wiedergibt.
+{{|>}} Generell kann man diese *Binomischen Lehrsätze* noch für jede *Potenz* verallgemeinern, dazu dient das sogenannt *Pascal'sche Dreieck*, welches die *Vorfaktoren* wiedergibt.
 
 
 
@@ -34269,7 +34268,7 @@ data-sortable="false" -->
 
 
 
-{{|>}} Dabei pflanzen sich die **Vorfaktoren** (sogenannte **Koeffizienten**) so weiter fort in dem die benachbarten **Koeffizienten** **aufaddiert** werden. Die **Potenzen** der ersten **Variable** startet stets mit der höchsten Zahl im **Exponenten** und nimmt bei jedem weiteren **Summanden** ab, während die **Potenz** der zweiten **Variable** im **Exponenten** zunimmt. Die **Vorfaktoren**, welche sich im **Pascal'schen Dreieck** befinden, werden im Kapitel "**Wahrscheinlichkeitsrechnung**" durch die sogenannten **Binomialkoeffizienten** erneut auftauchen und nochmals erläutert.
+{{|>}} Dabei pflanzen sich die *Vorfaktoren* (sogenannte *Koeffizienten*) so weiter fort in dem die benachbarten *Koeffizienten* *aufaddiert* werden. Die *Potenzen* der ersten *Variable* startet stets mit der höchsten Zahl im *Exponenten* und nimmt bei jedem weiteren *Summanden* ab, während die *Potenz* der zweiten *Variable* im *Exponenten* zunimmt. Die *Vorfaktoren*, welche sich im *Pascal'schen Dreieck* befinden, werden im Kapitel "*Wahrscheinlichkeitsrechnung*" durch die sogenannten *Binomialkoeffizienten* erneut auftauchen und nochmals erläutert.
 
 
 
@@ -34277,12 +34276,11 @@ data-sortable="false" -->
 !?[Potenzgesetze](https://www.youtube.com/watch?v=g1zLW9FsglU)
 
 
-
-<h2> **Pascal'sches Dreieck** </h2>
-
-Weitere **Koeffizienten** können aus dem **Pascal'schen Dreieck** entnommen werden:
+Weitere *Koeffizienten* können aus dem *Pascal'schen Dreieck* entnommen werden:
 
 
+
+<h2> *Pascal'sches Dreieck* </h2>
 
 $$
 \begin{align*} 1 \\ \end{align*}
@@ -34333,7 +34331,7 @@ $$
 \begin{align*} 1  \quad  15 \quad 105 \quad 455 \quad 1365 \quad 3003 \quad 5005 \quad 6435 \quad 6435 \quad 5005 \quad 3003 \quad 1365 \quad 455 \quad 105 \quad 15 \quad 1 \\ \end{align*}
 $$
 
-*******************************
+*********************
 
 
 
@@ -34676,11 +34674,11 @@ __$d)\;\;$__ $ -8^3 = $ [[  -512  ]]
 
 
 {{|>}}
-********************************
+**********************
 
 
 
-Da die **Potenzen** eingeführt wurden, sollte auch eine Rechenvorschrift eingeführt werden um den **Exponenten** zu bestimmen. Diese wird **Logarithmus** genannt, welche folgende Frage in mathematischer Art und Weise stellt: "`Die **Basis** und der **Wert** des **Terms** seien bekannt, welchen **Wert** muss der **Exponent** haben?"'
+Da die *Potenzen* eingeführt wurden, sollte auch eine Rechenvorschrift eingeführt werden um den *Exponenten* zu bestimmen. Diese wird *Logarithmus* genannt, welche folgende Frage in mathematischer Art und Weise stellt: "`Die *Basis* und der *Wert* des *Terms* seien bekannt, welchen *Wert* muss der *Exponent* haben?"'
 
 
 
@@ -34691,16 +34689,16 @@ a^c = b  \Leftrightarrow c = \log_a (b) \\
 $$
 
 
-{{|>}} Gelesen wird $\log_a (b)$ als "`der **Logarithmus** von $b$ zur **Basis** $a$"'. Der **Logarithmus** bildet somit die **Umkehrfunktion** zur **Exponentialfunktion**. 
+{{|>}} Gelesen wird $\log_a (b)$ als "`der *Logarithmus* von $b$ zur *Basis* $a$"'. Der *Logarithmus* bildet somit die *Umkehrfunktion* zur *Exponentialfunktion*. 
 
-{{|>}} Da der **Logarithmus** wie auch andere **Funktionen** besonders häufig ein **triviales Argument** besitzen (**triviales Argument**: $\log_4(x)$, nicht **triviales Argument**: $\log_4(2x-3)$), werden die **Klammern** um das **Argument** in einer Konvention oftmals weggelassen: $\log_a(b)=\log_a b$, während die **Klammern** bei komplexeren **Argumenten** bestehen bleiben: $\log_a(b+c)$. Generell ist nicht zu empfehlen, die **Klammern** wegzulassen, da sie den **Funktionscharakter** betonen.
-
-
-
-{{|>}} Wie für die **Potenzen** gelten auch für die **Logarithmen** Regeln, welche sich aus den **Potenzgesetzen** ableiten lassen.
+{{|>}} Da der *Logarithmus* wie auch andere *Funktionen* besonders häufig ein *triviales Argument* besitzen (*triviales Argument*: $\log_4(x)$, nicht *triviales Argument*: $\log_4(2x-3)$), werden die *Klammern* um das *Argument* in einer Konvention oftmals weggelassen: $\log_a(b)=\log_a b$, während die *Klammern* bei komplexeren *Argumenten* bestehen bleiben: $\log_a(b+c)$. Generell ist nicht zu empfehlen, die *Klammern* wegzulassen, da sie den *Funktionscharakter* betonen.
 
 
-+ {{|>}} Da der **Logarithmus** die **Umkehrfunktion** der **Exponentialfunktion** ist, gilt:
+
+{{|>}} Wie für die *Potenzen* gelten auch für die *Logarithmen* Regeln, welche sich aus den *Potenzgesetzen* ableiten lassen.
+
+
++ {{|>}} Da der *Logarithmus* die *Umkehrfunktion* der *Exponentialfunktion* ist, gilt:
 
 
 $$
@@ -34710,7 +34708,7 @@ $$
 $$
 
 
-+ {{|>}} Da der **Logarithmus** die **Umkehrfunktion** der **Exponentialfunktion** ist, gilt:
++ {{|>}} Da der *Logarithmus* die *Umkehrfunktion* der *Exponentialfunktion* ist, gilt:
 
 
 $$
@@ -34719,7 +34717,7 @@ $$
 \end{align*}
 $$
 
-+ {{|>}} Da der **Logarithmus** die **Umkehrfunktion** der **Exponentialfunktion** ist, heben sich diese gegenseitig auf: $k^{\log_k(x)} = \log_k(k^x) = x$.
++ {{|>}} Da der *Logarithmus* die *Umkehrfunktion* der *Exponentialfunktion* ist, heben sich diese gegenseitig auf: $k^{\log_k(x)} = \log_k(k^x) = x$.
 
 
 $$
@@ -34729,7 +34727,7 @@ $$
 $$
 
 
-+ {{|>}} Analog zur **Multiplikation** mit gleicher **Basis** ergibt sich aus dem dazugehörigen **Potenzgesetz** das **Logarithmengesetz**:
++ {{|>}} Analog zur *Multiplikation* mit gleicher *Basis* ergibt sich aus dem dazugehörigen *Potenzgesetz* das *Logarithmengesetz*:
 
 
 $$
@@ -34741,7 +34739,7 @@ $$
 $$
 
 
-{{|>}} Mit $u=a^m$ und $v=a^n$ **substituiert** ergibt sich $\log_a(u) = m$ und $\log_a(v) = n$, sodass sich der vorherige Ausdruck durch das **Einsetzen** verändert:
+{{|>}} Mit $u=a^m$ und $v=a^n$ *substituiert* ergibt sich $\log_a(u) = m$ und $\log_a(v) = n$, sodass sich der vorherige Ausdruck durch das *Einsetzen* verändert:
 
 
 $$
@@ -34753,7 +34751,7 @@ $$
 $$
 
 
-+ {{|>}} Analog zum vorherig gefundenen **Logarithmusgesetz** ergibt sich bei der **Division**:
++ {{|>}} Analog zum vorherig gefundenen *Logarithmusgesetz* ergibt sich bei der *Division*:
 
 
 $$
@@ -34762,7 +34760,7 @@ $$
 \end{align*}
 $$
 
-+ {{|>}} Die Fortsetzung der vorherigen Regeln liefert bei der **Substitution** $u = m$ und $\log_a(v) = n$:
++ {{|>}} Die Fortsetzung der vorherigen Regeln liefert bei der *Substitution* $u = m$ und $\log_a(v) = n$:
 
 
 $$
@@ -34776,7 +34774,7 @@ $$
 $$
 
 
-+ {{|>}} Wie auch bei der **Exponentialfunktion** kann die **Basis** gewechselt werden, indem das zuvor gefundene **Logarithmusgesetz** genutzt wird:
++ {{|>}} Wie auch bei der *Exponentialfunktion* kann die *Basis* gewechselt werden, indem das zuvor gefundene *Logarithmusgesetz* genutzt wird:
 
 
 $$
@@ -34791,7 +34789,7 @@ $$
 
 
 
-{{|>}} Zusammengefasst haben sich folgende **Logarithmengesetze** finden lassen:
+{{|>}} Zusammengefasst haben sich folgende *Logarithmengesetze* finden lassen:
 
 
 
@@ -34810,7 +34808,7 @@ $$
 $$
 
 
-{{|>}} Dabei werden folgende Abkürzungen für bestimme **Werte** der **Basis** verwendet: 
+{{|>}} Dabei werden folgende Abkürzungen für bestimme *Werte* der *Basis* verwendet: 
 
 
 
@@ -34822,13 +34820,13 @@ $$
 \end{align*}
 $$
 
-{{|>}} wobei $e=2,718281...$ die **Euler'sche Zahl** ist, welche eine **Basis** mit besonderer Bedeutung in der Mathematik und den Naturwissenschaften darstellt, deren Bedeutung im Kapitel der "**Funktionen**" im Abschnitt der "**Exponentialfunktionen**" und bei der "**Differentiation**" noch gerecht wird.
+{{|>}} wobei $e=2,718281...$ die *Euler'sche Zahl* ist, welche eine *Basis* mit besonderer Bedeutung in der Mathematik und den Naturwissenschaften darstellt, deren Bedeutung im Kapitel der "*Funktionen*" im Abschnitt der "*Exponentialfunktionen*" und bei der "*Differentiation*" noch gerecht wird.
 
 
 
 
 
-********************************
+**********************
 
 
 
@@ -38731,9 +38729,9 @@ Deutung: Nach $\dfrac{22}{19}\approx 1{,}16$ Stunden (ca. 69,5 Minuten) treffen 
 
 
 {{|>}}
-*******************************
+*********************
 
-Das Ziel bei einer **quadratischen Ergänzung** ist es, eine Gleichung so umzuformen, dass man die **binomischen Formeln** ausnutzen kann um die **Potenz** der **Variable** zu reduzieren. Als erklärendes Beispiel soll diese allgemeine **Gleichung**, welche auch allgemeines **Polynom** zweiter **Ordnung** oder **quadratische Gleichung** genannt wird, dienen (Auf die Eigenschaften von **Polynome** und explizit **quadratische Termen** wird im Kapitel "**Funktionen**" genauer eingegangen.):
+Das Ziel bei einer *quadratischen Ergänzung* ist es, eine Gleichung so umzuformen, dass man die *binomischen Formeln* ausnutzen kann um die *Potenz* der *Variable* zu reduzieren. Als erklärendes Beispiel soll diese allgemeine *Gleichung*, welche auch allgemeines *Polynom* zweiter *Ordnung* oder *quadratische Gleichung* genannt wird, dienen (Auf die Eigenschaften von *Polynome* und explizit *quadratische Termen* wird im Kapitel "*Funktionen*" genauer eingegangen.):
 
 
 $$
@@ -38743,7 +38741,7 @@ $$
 $$
  
 
-{{|>}} Diese Form erinnert an die so genannte erste **binomische Formel** $(x+d)^2 = x^2 + 2dx + d^2$. Aus diesem Grund wird der **Vorfaktor** (**Koeffizient**) $a$ des **quadratischen Terms** $a x^2$ über **Äquivalenzumformung** entfernt.
+{{|>}} Diese Form erinnert an die so genannte erste *binomische Formel* $(x+d)^2 = x^2 + 2dx + d^2$. Aus diesem Grund wird der *Vorfaktor* (*Koeffizient*) $a$ des *quadratischen Terms* $a x^2$ über *Äquivalenzumformung* entfernt.
 
 
 $$
@@ -38755,7 +38753,7 @@ $$
  
 
 
-{{|>}} Durch direktes gegenüberstellen der **Terme** können bestimmte Bedingungen an die **Vorfaktoren** geknüpft werden, sodass die künstliche Generierung einer **Binomischen Formel** möglich wird, dies wird **Koeffizientenvergleich** genannt. Generell wird der **Koeffizientenvergleich** immer angewendet, wenn eine **Gleichheit** von **Vorfaktoren** zu einer erheblichen Vereinfachung eines Problems dienen könnte.
+{{|>}} Durch direktes gegenüberstellen der *Terme* können bestimmte Bedingungen an die *Vorfaktoren* geknüpft werden, sodass die künstliche Generierung einer *Binomischen Formel* möglich wird, dies wird *Koeffizientenvergleich* genannt. Generell wird der *Koeffizientenvergleich* immer angewendet, wenn eine *Gleichheit* von *Vorfaktoren* zu einer erheblichen Vereinfachung eines Problems dienen könnte.
 
 
 $$
@@ -38766,7 +38764,7 @@ $$
 $$
  
 
-{{|>}} Durch den **Koeffizientenvergleich** der rot markierten **Vorfaktoren**, kann folgende Bedingung aufgestellt werden: $\frac{b}{a}  = 2d$ und so der **Parameter** $d$  als $\frac{b}{2a}$ bestimmt werden. Da die zu lösende **Gleichung** noch kein $d^2$ beherbergt, muss dieses durch eine *Addition* hinzugefügt werden. Anschließend werden alle **Terme** die nicht zu einer **Binomischen Formel** gehören auf die andere Seite des **Gleichheitszeichens** gebracht: 
+{{|>}} Durch den *Koeffizientenvergleich* der rot markierten *Vorfaktoren*, kann folgende Bedingung aufgestellt werden: $\frac{b}{a}  = 2d$ und so der *Parameter* $d$  als $\frac{b}{2a}$ bestimmt werden. Da die zu lösende *Gleichung* noch kein $d^2$ beherbergt, muss dieses durch eine *Addition* hinzugefügt werden. Anschließend werden alle *Terme* die nicht zu einer *Binomischen Formel* gehören auf die andere Seite des *Gleichheitszeichens* gebracht: 
 
 
 $$
@@ -38778,7 +38776,7 @@ $$
 $$
 
 
-{{|>}} Nach genauerer Betrachtung ist festzustellen, dass auf der linken Seite des **Gleichheitszeichen** die **erste binomische Formel** vorzufinden ist. Nach der Ersetzung fällt auf, dass die **quadratische Potenz** und die **lineare Potenz** in der **Variablen** $x$ verschmolzen sind. Um nun nach der **Variable** restlos aufzulösen, muss auf beiden Seiten des **Gleichheitszeichens** die **Wurzel** gezogen werden, da dies die **Umkehrfunktion** zum **Quadrieren** ist. Dabei ist zu beachten, dass es eine negative und eine positive **Lösung** gibt, da zum Beispiel $2^2 = (-2)^2$ ist.
+{{|>}} Nach genauerer Betrachtung ist festzustellen, dass auf der linken Seite des *Gleichheitszeichen* die *erste binomische Formel* vorzufinden ist. Nach der Ersetzung fällt auf, dass die *quadratische Potenz* und die *lineare Potenz* in der *Variablen* $x$ verschmolzen sind. Um nun nach der *Variable* restlos aufzulösen, muss auf beiden Seiten des *Gleichheitszeichens* die *Wurzel* gezogen werden, da dies die *Umkehrfunktion* zum *Quadrieren* ist. Dabei ist zu beachten, dass es eine negative und eine positive *Lösung* gibt, da zum Beispiel $2^2 = (-2)^2$ ist.
  
 
 
@@ -38793,7 +38791,7 @@ $$
 $$
  
 
-{{|>}} Nach einer Umbenennung der **Parameter** $p=\frac{b}{a}$ und $q=\frac{c}{a}$ erkennt man, dass die so genannte **p-q-Formel** hergeleitet wurde, welche sich lediglich durch die Umbenennung der **Parameter** von der sogenannten **Mitternachtsformel** aus der vorherigen **Gleichung** unterscheidet: 
+{{|>}} Nach einer Umbenennung der *Parameter* $p=\frac{b}{a}$ und $q=\frac{c}{a}$ erkennt man, dass die so genannte *p-q-Formel* hergeleitet wurde, welche sich lediglich durch die Umbenennung der *Parameter* von der sogenannten *Mitternachtsformel* aus der vorherigen *Gleichung* unterscheidet: 
 
 
 $$
@@ -38804,12 +38802,12 @@ $$
 $$
 
 
-{{|>}} Um Zeit in bestimmten Klausur- oder Unterrichtssituationen zu sparen, empfiehlt es sich die **p-q-Formel** zu verwenden, dennoch sollte von ihrer Benutzung abgeraten werden, denn in der höheren Mathematik (siehe Kapitel "**Differentiation** und **Integration**") sind viele Aufgaben nur noch mittels der **quadratischen Ergänzung** effektiv zu lösen. 
+{{|>}} Um Zeit in bestimmten Klausur- oder Unterrichtssituationen zu sparen, empfiehlt es sich die *p-q-Formel* zu verwenden, dennoch sollte von ihrer Benutzung abgeraten werden, denn in der höheren Mathematik (siehe Kapitel "*Differentiation* und *Integration*") sind viele Aufgaben nur noch mittels der *quadratischen Ergänzung* effektiv zu lösen. 
 
-{{|>}} Die Zahl unten rechts von zum Beispiel $x_1$ wird **Index** genannt. Ein **Index** hat keine genauere mathematische Bedeutung, allerdings kann darüber eine zusätzliche Information mitgegeben werden. So bedeutet $x_{1,2}$, dass zwei spezielle **Werte** für $x$ vorliegen, die die **Gleichung** lösen würden. Oftmals wird auch $x_0$ vorgefunden und steht für einen speziellen **konstanten** **Wert**. Folglich gibt der **Index** nur genauer an, welche Bedeutung genau dieser **Wert** der **Variable** oder des **Parameters** besitzt.
+{{|>}} Die Zahl unten rechts von zum Beispiel $x_1$ wird *Index* genannt. Ein *Index* hat keine genauere mathematische Bedeutung, allerdings kann darüber eine zusätzliche Information mitgegeben werden. So bedeutet $x_{1,2}$, dass zwei spezielle *Werte* für $x$ vorliegen, die die *Gleichung* lösen würden. Oftmals wird auch $x_0$ vorgefunden und steht für einen speziellen *konstanten* *Wert*. Folglich gibt der *Index* nur genauer an, welche Bedeutung genau dieser *Wert* der *Variable* oder des *Parameters* besitzt.
 
 
-{{|>}} Wenn bei einer **Gleichung** in offensichtliches **Produkt** mit einer **quadratischen Gleichung** vorliegt, lohnt es sich **auszuklammern**
+{{|>}} Wenn bei einer *Gleichung* in offensichtliches *Produkt* mit einer *quadratischen Gleichung* vorliegt, lohnt es sich *auszuklammern*
 
 
 
@@ -38821,7 +38819,7 @@ $$
 $$
  
 
-{{|>}} sodass das die **Faktoren** des **Produkts** separiert betrachtet werden können, denn es gilt nach wie vor der **Satz des Nullprodukts**: Wenn einer der **Faktoren** gleich Null ist, dann ist das gesamte **Produkt** gleich Null.
+{{|>}} sodass das die *Faktoren* des *Produkts* separiert betrachtet werden können, denn es gilt nach wie vor der *Satz des Nullprodukts*: Wenn einer der *Faktoren* gleich Null ist, dann ist das gesamte *Produkt* gleich Null.
 
 
 $$
@@ -38834,7 +38832,7 @@ $$
 
 
 
-{{|>}} Ab diesem Zeitpunkt kann die restliche **Gleichung** mit der **quadratischen Ergänzung** gelöst werden. Das **Ausklammerungsverfahren** funktioniert nicht nur bei höheren **Polynomen**, sondern immer, wenn aus allen Bestandteilen der **Gleichung** **ausgeklammert** werden kann. So ist es möglich bei einigen **Gleichungen** die **Lösungen** direkt abzulesen. 
+{{|>}} Ab diesem Zeitpunkt kann die restliche *Gleichung* mit der *quadratischen Ergänzung* gelöst werden. Das *Ausklammerungsverfahren* funktioniert nicht nur bei höheren *Polynomen*, sondern immer, wenn aus allen Bestandteilen der *Gleichung* *ausgeklammert* werden kann. So ist es möglich bei einigen *Gleichungen* die *Lösungen* direkt abzulesen. 
 
 
 $$
@@ -38844,11 +38842,11 @@ $$
 $$
  
 
-{{|>}} Aus diesem Grund lohnt es sich nicht immer **Klammern** aus zu **multiplizieren**. 
+{{|>}} Aus diesem Grund lohnt es sich nicht immer *Klammern* aus zu *multiplizieren*. 
 
 
 
-{{|>}} Bei jeder Rechnung ist es dem Rechnenden freigestellt Abkürzungen einzuführen. Dieser Prozess wird **Substitution** genannt. Im folgenden Beispiel wird die **Summe** innerhalb der **Klammer** **substituiert**: 
+{{|>}} Bei jeder Rechnung ist es dem Rechnenden freigestellt Abkürzungen einzuführen. Dieser Prozess wird *Substitution* genannt. Im folgenden Beispiel wird die *Summe* innerhalb der *Klammer* *substituiert*: 
 
 
 
@@ -38861,7 +38859,7 @@ $$
 
 
 
-{{|>}} Dabei ist es wichtig zu beachten, dass bei der **Substitution** ersetzten **Variablen** vollständig eliminiert werden.
+{{|>}} Dabei ist es wichtig zu beachten, dass bei der *Substitution* ersetzten *Variablen* vollständig eliminiert werden.
 
 
 $$
@@ -38873,7 +38871,7 @@ $$
 
 
 
-{{|>}} Jede **Substitution** ist zulässig. Wichtig wird dieser Prozess besonders wenn komplexere Aufgaben dadurch wesentlich vereinfacht werden können. Aus diesem Grund wird im Kapitel "**Differentiation** und **Integration**" nochmal besonders auf die **Substitution** eingegangen.
+{{|>}} Jede *Substitution* ist zulässig. Wichtig wird dieser Prozess besonders wenn komplexere Aufgaben dadurch wesentlich vereinfacht werden können. Aus diesem Grund wird im Kapitel "*Differentiation* und *Integration*" nochmal besonders auf die *Substitution* eingegangen.
 
 
 
@@ -38885,7 +38883,16 @@ Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:
 
 
 
-*******************************
+*********************
+
+
+
+
+
+
+
+
+
 
 #### Übungen - Quadratische Ergänzung
 
@@ -42901,11 +42908,14 @@ $$
 ### Fakultäten und Binomialkoeffizienten
 
 
+
+
+
 {{|>}}
-********************************
+***************************
 
 
-Einige Abkürzungen werden oft bei der **Wahrscheinlichkeitsrechnung** sowie bei **Reihendarstellungen** verwendet. Zu diesen zählen **Fakultäten** und **Binominalkoeffizienten**. So kann zum Beispiel die Rechnung 
+Einige Abkürzungen werden oft bei der *Wahrscheinlichkeitsrechnung* sowie bei *Reihendarstellungen* verwendet. Zu diesen zählen *Fakultäten* und *Binominalkoeffizienten*. So kann zum Beispiel die Rechnung 
 
 
 $$
@@ -42914,7 +42924,7 @@ $$
 \end{align*}
 $$
 
-{{|>}} abgekürzt werden, durch den sogenannten **Fakultätsoperator** $!$:
+{{|>}} abgekürzt werden, durch den sogenannten *Fakultätsoperator* $!$:
 
 
 $$
@@ -42925,7 +42935,7 @@ $$
 $$
 
 
-{{|>}} Dabei ist die **Fakultät** so definiert, dass $0! := 1$ gilt. Da oftmals **Fakultäten** in **Brüchen** vorkommen, sollte das **Kürzen** sowie andere Rechenregeln von **Fakultäten** bekannt sein. Außerdem unterliegt der **Fakultätsoperator** nicht dem **Distributiv**-, **Assoziativ**- und **Kommutativgesetz**, da er ausschließlich nach links wirkt und auch nur auf den **Wert** einer **Klammer**, die links von ihm steht.
+{{|>}} Dabei ist die *Fakultät* so definiert, dass $0! := 1$ gilt. Da oftmals *Fakultäten* in *Brüchen* vorkommen, sollte das *Kürzen* sowie andere Rechenregeln von *Fakultäten* bekannt sein. Außerdem unterliegt der *Fakultätsoperator* nicht dem *Distributiv*-, *Assoziativ*- und *Kommutativgesetz*, da er ausschließlich nach links wirkt und auch nur auf den *Wert* einer *Klammer*, die links von ihm steht.
 
 
 
@@ -42942,7 +42952,7 @@ $$
 
 
 
-{{|>}}  Einige Konstellationen mit der **Fakultät** kommen besonders häufig vor. Die am häufigsten vorkommende Anordnung von **Fakultäten** wird **Binomialkoeffizient** genannt und ist definiert durch:
+{{|>}}  Einige Konstellationen mit der *Fakultät* kommen besonders häufig vor. Die am häufigsten vorkommende Anordnung von *Fakultäten* wird *Binomialkoeffizient* genannt und ist definiert durch:
 
 
 
@@ -42954,12 +42964,18 @@ $$
 
 
 
-{{|>}} Generell sollte der Umgang mit neuen Abkürzungen, die neu eingeführt wurden, geübt werden, da in der Mathematik noch viele weitere Abkürzungen warten. So werden zum Beispiel im Kapitel "**Reihen**" weitere oft vorkommende Abkürzungen eingeführt.
+{{|>}} Generell sollte der Umgang mit neuen Abkürzungen, die neu eingeführt wurden, geübt werden, da in der Mathematik noch viele weitere Abkürzungen warten. So werden zum Beispiel im Kapitel "*Reihen*" weitere oft vorkommende Abkürzungen eingeführt.
 
 
 
 
-********************************
+***************************
+
+
+
+
+
+
 
 
 #### Übungen - Fakultäten und Binomialkoeffizienten
@@ -43081,12 +43097,12 @@ __Aufgabe 1:__
 
 
 {{|>}}
-********************************
+***************************
 
 
 
 
-Neben der verschiedenen Schreibweisen der Zahlen in den jeweiligen Sprachen existieren auch noch verschiedene **Zahlensysteme**. Besonders in der Informatik werden neben dem **Dezimalsystem** (10er-System) auch das **Dualsystem** (2er-System), **Oktalsystem** (8er-System) und das **Hexadezimalsystem** (16er-System) verwendet. In diesem Abschnitt werden die Systeme und die oftmals benutzen **römischen Zahlen** vorgestellt. 
+Neben der verschiedenen Schreibweisen der Zahlen in den jeweiligen Sprachen existieren auch noch verschiedene *Zahlensysteme*. Besonders in der Informatik werden neben dem *Dezimalsystem* (10er-System) auch das *Dualsystem* (2er-System), *Oktalsystem* (8er-System) und das *Hexadezimalsystem* (16er-System) verwendet. In diesem Abschnitt werden die Systeme und die oftmals benutzen *römischen Zahlen* vorgestellt. 
 
 
 <h2> Die Geschichte der Zwölf </h2>
@@ -43095,19 +43111,19 @@ Neben der verschiedenen Schreibweisen der Zahlen in den jeweiligen Sprachen exis
 
 {{|>}} Da Stunden eine sehr große Zeitdauer sind, wurde kleinere Zeitdauern mit der einen Hand im 12er-System gezählt und mit den Fingern (dieses mal inklusive Daumen) an der anderen Hand vermerkt. Aus diesem Grund haben Stunden 60 Minuten und Minuten 60 Sekunden, da $12 \cdot 5 = 60$.
 
-{{|>}} Die damaligen Astronomen waren auch in der Landwirtschaft tätig und konnten durch ihre Beobachtungen herausfinden, dass der Mond seinen Zyklus nach rund 28 Tagen (einen Monat) durchläuft. Dies wurde als göttliches Zeichen gewertet, da ein Mensch ja vier Finger zum Zählen besitzt. Hieraus sind die Wochen entstanden, da ein Mondzyklus durch die Fingeranzahl **dividierbar** ist. Somit wurde die Zahl Sieben wie auch die Zahl Drei aufgrund der Anzahl der Fingerglieder pro Finger als magisch erklärt.
+{{|>}} Die damaligen Astronomen waren auch in der Landwirtschaft tätig und konnten durch ihre Beobachtungen herausfinden, dass der Mond seinen Zyklus nach rund 28 Tagen (einen Monat) durchläuft. Dies wurde als göttliches Zeichen gewertet, da ein Mensch ja vier Finger zum Zählen besitzt. Hieraus sind die Wochen entstanden, da ein Mondzyklus durch die Fingeranzahl *dividierbar* ist. Somit wurde die Zahl Sieben wie auch die Zahl Drei aufgrund der Anzahl der Fingerglieder pro Finger als magisch erklärt.
 
-{{|>}} Die Astronomen beobachteten, dass ein Jahr aus rund 13 Monaten bestehen müsste ($13 \cdot 12 = 364$), was nicht sein dürfe, da die $13$ nunmal die Unglückszahl sei. Aus diesem Grund wurden die unwichtigen Monate mit ein paar Extratagen versehen. Der Februar, der mit seinem Ende den Frühling einläutet, erhielt somit keine Extratage und galt als Ende des Jahres. Dies kann auch an den Bezeichnungen der Monate fest gemacht werden: ***Sept***ember (7. Monat), ***Okto***ber (8. Monat), ***Nov***ember (9. Monat), ***Dez***ember (10. Monat). Die Astronomen stellten auch fest, dass am 21. Dezember die Sonnendauer wieder zunahm, was als Geburt des Licht- bzw. Sonnengottes oder aber als Sieg über die Dunkelheit interpretiert wurde. Da dieser mystifizierte Tag jedoch keinerlei Verbindung zur Zwölf hatte, wurden die Monate sowie dieser Tag leicht verschoben - an den 24.12, da die 24 die Zeit eines Tages symbolisiert und durch 12 **teilbar** ist. 
+{{|>}} Die Astronomen beobachteten, dass ein Jahr aus rund 13 Monaten bestehen müsste ($13 \cdot 12 = 364$), was nicht sein dürfe, da die $13$ nunmal die Unglückszahl sei. Aus diesem Grund wurden die unwichtigen Monate mit ein paar Extratagen versehen. Der Februar, der mit seinem Ende den Frühling einläutet, erhielt somit keine Extratage und galt als Ende des Jahres. Dies kann auch an den Bezeichnungen der Monate fest gemacht werden: ***Sept***ember (7. Monat), ***Okto***ber (8. Monat), ***Nov***ember (9. Monat), ***Dez***ember (10. Monat). Die Astronomen stellten auch fest, dass am 21. Dezember die Sonnendauer wieder zunahm, was als Geburt des Licht- bzw. Sonnengottes oder aber als Sieg über die Dunkelheit interpretiert wurde. Da dieser mystifizierte Tag jedoch keinerlei Verbindung zur Zwölf hatte, wurden die Monate sowie dieser Tag leicht verschoben - an den 24.12, da die 24 die Zeit eines Tages symbolisiert und durch 12 *teilbar* ist. 
 
-{{|>}} Auch das **Winkelmaß** kann hierüber erklärt werden: Die beiden Formen **Kreis** und **gleichseitiges Dreieck** gelten in vielen Kulturen als Perfektionsdarstellung. Eine volle Merkhand stellt die Zahl 60 dar, sodass bei einem gleichseitigen Dreieck dieses Winkelmaß dreimal vorkommt. Die Verbindung zwischen Kreis und gleichseitigem Dreieck offenbart dann die $360^\circ$, da ein gleichmäßiges Hexagon, bestehend aus sechs **gleichseitigen Dreiecken**, mit seinen **Eckpunkten** auf einer **Kreislinie** liegt, was eine Verbindung zur Sechs anmuten lässt. 
+{{|>}} Auch das *Winkelmaß* kann hierüber erklärt werden: Die beiden Formen *Kreis* und *gleichseitiges Dreieck* gelten in vielen Kulturen als Perfektionsdarstellung. Eine volle Merkhand stellt die Zahl 60 dar, sodass bei einem gleichseitigen Dreieck dieses Winkelmaß dreimal vorkommt. Die Verbindung zwischen Kreis und gleichseitigem Dreieck offenbart dann die $360^\circ$, da ein gleichmäßiges Hexagon, bestehend aus sechs *gleichseitigen Dreiecken*, mit seinen *Eckpunkten* auf einer *Kreislinie* liegt, was eine Verbindung zur Sechs anmuten lässt. 
 
-{{|>}} Da die Zeit die für uns Menschen wichtigste Größe ist und ihre **Einheit** stets mit Göttlichkeiten in Verbindung gebracht wird, konnte sich eine demokratisch legitimierte neue **Einheit** mit einfacheren Umrechnungen nicht durchsetzen. Durch den göttlichen Deutungsbezug bei **Kreisen** und **gleichseitigen Dreiecken** konnte sich ebenfalls keine **Winkelmaßeinheit** durchsetzen, die leichter zu verrechnen ist.
+{{|>}} Da die Zeit die für uns Menschen wichtigste Größe ist und ihre *Einheit* stets mit Göttlichkeiten in Verbindung gebracht wird, konnte sich eine demokratisch legitimierte neue *Einheit* mit einfacheren Umrechnungen nicht durchsetzen. Durch den göttlichen Deutungsbezug bei *Kreisen* und *gleichseitigen Dreiecken* konnte sich ebenfalls keine *Winkelmaßeinheit* durchsetzen, die leichter zu verrechnen ist.
 
 
 <h2> Römische Zahlen </h2>
 
 
-{{|>}} Da die **römischen Zahlen** immer wieder mal im Alltag vorkommen, ist in der folgenden Tabelle eine Übersetzung der Symbole gegeben, sodass römische Zahlen in die arabischen üblichen Ziffern übersetzt werden können:
+{{|>}} Da die *römischen Zahlen* immer wieder mal im Alltag vorkommen, ist in der folgenden Tabelle eine Übersetzung der Symbole gegeben, sodass römische Zahlen in die arabischen üblichen Ziffern übersetzt werden können:
 
 
 
@@ -43156,16 +43172,16 @@ style="width:500px" -->
 </center>
 
 
-{{|>}} Bei der Vinculum-Schreibweise wurde lediglich ein Strich über die Zahl gesetzt, was eine **Multiplikation** mit $1000$ entsprach $\bar{I} = M$, sodass die Anzahl der Striche darüber entscheidend war. Auch die anderen Schreibweisen beschäftigten sich mit der **Multiplikation** mit $1000$, allerdings boten die arabische Zahlenzeichen eine wesentlich einfachere Schreibweise, was dazu führte das sich auch diese durchsetzten. 
+{{|>}} Bei der Vinculum-Schreibweise wurde lediglich ein Strich über die Zahl gesetzt, was eine *Multiplikation* mit $1000$ entsprach $\bar{I} = M$, sodass die Anzahl der Striche darüber entscheidend war. Auch die anderen Schreibweisen beschäftigten sich mit der *Multiplikation* mit $1000$, allerdings boten die arabische Zahlenzeichen eine wesentlich einfachere Schreibweise, was dazu führte das sich auch diese durchsetzten. 
 
 
 
 <h2> Dualsystem </h2>
 
 
-{{|>}} Das **Dualsystem** besteht aus den Zahlen $1$ und $0$, also "Ja" und "Nein". Aus diesem System, dem System der **binäre Zahlen**, ergibt sich eine gesamte algebraische Kategorie, die sogenannte **Bool'sche Algebra**. Auf diesem Zahlensystem beruht die gesamte Informatik, da es technisch aufgrund der Transistoren entweder ein Signal weitergeleitet wird oder eben nicht.
+{{|>}} Das *Dualsystem* besteht aus den Zahlen $1$ und $0$, also "Ja" und "Nein". Aus diesem System, dem System der *binäre Zahlen*, ergibt sich eine gesamte algebraische Kategorie, die sogenannte *Bool'sche Algebra*. Auf diesem Zahlensystem beruht die gesamte Informatik, da es technisch aufgrund der Transistoren entweder ein Signal weitergeleitet wird oder eben nicht.
 
-{{|>}} Um Zahlen aus diesem System in das **Dezimalsystem** umzurechnen, kann eine **Gleichung** verwendet werden, welche hier anhand eines Beispiels illustriert ist:
+{{|>}} Um Zahlen aus diesem System in das *Dezimalsystem* umzurechnen, kann eine *Gleichung* verwendet werden, welche hier anhand eines Beispiels illustriert ist:
 
 
 $$
@@ -43177,7 +43193,7 @@ $$
 $$
 
 
-{{|>}} Um vom **Dezimalsystem** in das **Dualsystem** zu wechseln, benötigt es der **Division**, wobei der **Rest** den jeweiligen Zahleneintrag darstellt, während mit dem **Quotienten** weiter gerechnet wird, bis der **Quotient** Null wird. 
+{{|>}} Um vom *Dezimalsystem* in das *Dualsystem* zu wechseln, benötigt es der *Division*, wobei der *Rest* den jeweiligen Zahleneintrag darstellt, während mit dem *Quotienten* weiter gerechnet wird, bis der *Quotient* Null wird. 
 
 
 
@@ -43193,12 +43209,12 @@ $$
 \end{align*}
 $$
 
-{{|>}} Bei anderen **Zahlensystemen** muss bei dieser Rechnung der **Divisor** durch die jeweilige **Zahlensystembasis** (hier $2$) ausgetauscht werden.
+{{|>}} Bei anderen *Zahlensystemen* muss bei dieser Rechnung der *Divisor* durch die jeweilige *Zahlensystembasis* (hier $2$) ausgetauscht werden.
 
 
 <h2> Oktalsystem </h2>
 
-{{|>}}  Ähnlich wie beim **Dualsystem** werden im **Oktalsystem** die Zahlen allerdings von $0$ bis $7$ pro Ziffernstelle gezählt:
+{{|>}}  Ähnlich wie beim *Dualsystem* werden im *Oktalsystem* die Zahlen allerdings von $0$ bis $7$ pro Ziffernstelle gezählt:
 
 
 $$
@@ -43211,12 +43227,12 @@ $$
 
 
 
-{{|>}} In Informatik ergeben sich $8bit$ zu $1byte$, sodass bei kleinsten Informationsmengen oftmals auf das **Oktalsystem** zurückgegriffen wird. 
+{{|>}} In Informatik ergeben sich $8bit$ zu $1byte$, sodass bei kleinsten Informationsmengen oftmals auf das *Oktalsystem* zurückgegriffen wird. 
 
 
 <h2> Hexadezimalsystem </h2>
 
-{{|>}} Farben werden in der Informatik meistens mit einem **Hexadezimalcode** angegeben. Hierbei wird von $0$ bis $F$ gezählt, wobei das $F$ einer $15$ entspricht. Bei der Umrechnung kann wieder die schon im **Dual**- und **Oktalsystem** vorgestellt **Gleichung** verwendet werden:
+{{|>}} Farben werden in der Informatik meistens mit einem *Hexadezimalcode* angegeben. Hierbei wird von $0$ bis $F$ gezählt, wobei das $F$ einer $15$ entspricht. Bei der Umrechnung kann wieder die schon im *Dual*- und *Oktalsystem* vorgestellt *Gleichung* verwendet werden:
 
 
 
@@ -43229,7 +43245,7 @@ $$
 $$
 
 
-{{|>}} Die folgende Tabelle soll dazu dienen, um eine Gesamtübersicht über die Zusammenhänge der **Zahlensysteme** zu bekommen.
+{{|>}} Die folgende Tabelle soll dazu dienen, um eine Gesamtübersicht über die Zusammenhänge der *Zahlensysteme* zu bekommen.
 
 
 
@@ -43268,7 +43284,8 @@ style="width:500px" -->
 
 
 
-********************************
+***************************
+
 
 
 
@@ -43391,9 +43408,9 @@ __Aufgabe 1:__
 
 
 {{|>}}
-********************************
+***************************
 
-Ohne **Einheiten** haben wissenschaftliche Aussagen (außer in der Mathematik) keine Bedeutung. Um Verwirrungen zwischen den verschiedenen **Einheiten** zu vermeiden, wurde das **SI-Einheitensystem** für alltägliche Phänomene eingeführt. Das **SI-Einheitensystem** besitzt sieben **Grundeinheiten**, aus denen alle anderen **Einheiten** zusammengesetzt werden können. In der mathematischen Beschreibung von Phänomenen verändert die Wahl der **Einheiten** nahezu alles. Aus diesem Grund sollte immer mit **SI-Einheiten** gerechnet werden, solange kein anderes **Einheitensystem** für eine Beschreibung explizit gefordert ist. Die **SI-Einheiten** sind in der nachfolgenden Tabelle aufgelistet, wobei in die zweite Spalte die üblich gewählte **Parameternamen** zur **Größe** angegeben sind.
+Ohne *Einheiten* haben wissenschaftliche Aussagen (außer in der Mathematik) keine Bedeutung. Um Verwirrungen zwischen den verschiedenen *Einheiten* zu vermeiden, wurde das *SI-Einheitensystem* für alltägliche Phänomene eingeführt. Das *SI-Einheitensystem* besitzt sieben *Grundeinheiten*, aus denen alle anderen *Einheiten* zusammengesetzt werden können. In der mathematischen Beschreibung von Phänomenen verändert die Wahl der *Einheiten* nahezu alles. Aus diesem Grund sollte immer mit *SI-Einheiten* gerechnet werden, solange kein anderes *Einheitensystem* für eine Beschreibung explizit gefordert ist. Die *SI-Einheiten* sind in der nachfolgenden Tabelle aufgelistet, wobei in die zweite Spalte die üblich gewählte *Parameternamen* zur *Größe* angegeben sind.
 
 
 
@@ -43409,7 +43426,7 @@ Ohne **Einheiten** haben wissenschaftliche Aussagen (außer in der Mathematik) k
 
 
 
-{{|>}} Oftmals kommen die **SI-Einheiten** mit einem Präfix vor. Diese sind nur Abkürzungen hinter denen sich lediglich Nullen verstecken. Statt eines Präfix kann einfach die dazugehörige Zahl eingesetzt werden (z.B.: k $= 1000$). Eine Übersichtsliste:
+{{|>}} Oftmals kommen die *SI-Einheiten* mit einem Präfix vor. Diese sind nur Abkürzungen hinter denen sich lediglich Nullen verstecken. Statt eines Präfix kann einfach die dazugehörige Zahl eingesetzt werden (z.B.: k $= 1000$). Eine Übersichtsliste:
 
 
 
@@ -43443,7 +43460,7 @@ Ohne **Einheiten** haben wissenschaftliche Aussagen (außer in der Mathematik) k
 
 
 
-{{|>}} **Einheiten** behaftete **Größen** können nur mit **Größen** **addiert** oder **subtrahiert** werden, wenn diese die gleiche **Einheit** besitzen, somit ist eine **Einheit** ähnlich wie ein **Parameter** zu behandeln, welcher allerdings nur eine Sinnbedeutung besitzt. 
+{{|>}} *Einheiten* behaftete *Größen* können nur mit *Größen* *addiert* oder *subtrahiert* werden, wenn diese die gleiche *Einheit* besitzen, somit ist eine *Einheit* ähnlich wie ein *Parameter* zu behandeln, welcher allerdings nur eine Sinnbedeutung besitzt. 
 
 
 
@@ -43457,7 +43474,7 @@ $$
 
 
 
-{{|>}} alle **Einheiten** werden stets hinter der Zahl geschrieben. Präfixe wie Millimeter mm für Verwirrung sorgen könnten, da der Buchstabe mehrere Bedeutungen zugesprochen bekommt. Meistens wird die genaue Bedeutung allerdings im Zusammenhang der Rechnung klar. Da **Gleichungen** teilweise nur eine Aussagekraft in bestimmten **Einheiten** besitzen, werden Variablen mit diesen gekennzeichnet:
+{{|>}} alle *Einheiten* werden stets hinter der Zahl geschrieben. Präfixe wie Millimeter mm für Verwirrung sorgen könnten, da der Buchstabe mehrere Bedeutungen zugesprochen bekommt. Meistens wird die genaue Bedeutung allerdings im Zusammenhang der Rechnung klar. Da *Gleichungen* teilweise nur eine Aussagekraft in bestimmten *Einheiten* besitzen, werden Variablen mit diesen gekennzeichnet:
 
 
 $$
@@ -43468,11 +43485,11 @@ $$
 
 
 
-{{|>}} wobei die eckigen **Klammern** die zu wählende **Einheit** für die **Variable** beherbergen.
+{{|>}} wobei die eckigen *Klammern* die zu wählende *Einheit* für die *Variable* beherbergen.
 
 
 
-{{|>}} Bei einigen **Einheiten** existieren trotz der flächendeckenden Einführung des **Dezimalsystems** nach der französischen Revolution nach wie vor Besonderheiten. So konnte sich bei der Zeit das **Dezimalsystem** nicht durchsetzen, sodass $1\,\text{y}=1\,\text{a} = 365\,\text{d} \;;\; 1\,\text{d} = 24\,\text{h}  \;;\; 1\,\text{h} = 60\,\text{min}  \;;\; 1\,\text{min} = 60\,\text{s} $ gilt. Hierbei wurde ein Kalenderjahr $1\,$a gewählt, während das Bankenjahr nur $360$ Tage besitzt. Durch die Bewegung der Erde um die Sonne ist genau ein Jahr physikalisch mit $1\,\text{a}\approx 365,25636\,\text{d}$ definiert, sodass in guter Näherung lediglich das Schaltjahr mit betrachtet wird $1\,\text{a} = 365,25\,\text{d}$. In der Regel wird mit dem Kalenderjahr gerechnet.  Bei der Masse muss beachtet werden, dass Kilogramm $1\,\text{kg}$ die **SI-Einheit** ist und dass eine Tonne $\,\text{1t} = 1000\,\text{kg}$ entspricht und dass in der deutschsprachigen Region zwei Pfund einem Kilogramm entsprechen. Bei den **Flächen** sind noch "Ar" ($1\,\text{a} = 100\,\text{m}^2$) und Hektar ($1\,\text{ha} = 10000\,\text{m}^2$) zu erwähnen. Für **Volumina** gilt die Definition für einen Liter $1\,\text{dm}^3 = 1\,\text{l}$. 
+{{|>}} Bei einigen *Einheiten* existieren trotz der flächendeckenden Einführung des *Dezimalsystems* nach der französischen Revolution nach wie vor Besonderheiten. So konnte sich bei der Zeit das *Dezimalsystem* nicht durchsetzen, sodass $1\,\text{y}=1\,\text{a} = 365\,\text{d} \;;\; 1\,\text{d} = 24\,\text{h}  \;;\; 1\,\text{h} = 60\,\text{min}  \;;\; 1\,\text{min} = 60\,\text{s} $ gilt. Hierbei wurde ein Kalenderjahr $1\,$a gewählt, während das Bankenjahr nur $360$ Tage besitzt. Durch die Bewegung der Erde um die Sonne ist genau ein Jahr physikalisch mit $1\,\text{a}\approx 365,25636\,\text{d}$ definiert, sodass in guter Näherung lediglich das Schaltjahr mit betrachtet wird $1\,\text{a} = 365,25\,\text{d}$. In der Regel wird mit dem Kalenderjahr gerechnet.  Bei der Masse muss beachtet werden, dass Kilogramm $1\,\text{kg}$ die *SI-Einheit* ist und dass eine Tonne $\,\text{1t} = 1000\,\text{kg}$ entspricht und dass in der deutschsprachigen Region zwei Pfund einem Kilogramm entsprechen. Bei den *Flächen* sind noch "Ar" ($1\,\text{a} = 100\,\text{m}^2$) und Hektar ($1\,\text{ha} = 10000\,\text{m}^2$) zu erwähnen. Für *Volumina* gilt die Definition für einen Liter $1\,\text{dm}^3 = 1\,\text{l}$. 
 
 
 {{|>}} So können für einheitenbehafteten Größen eine Umrechnungstabelle erstellt werden. 
@@ -43494,12 +43511,12 @@ $$
 
 
 
-{{|>}} Andere **Einheiten** als die **SI-Einheiten** sind meistens zusammengesetzte **Einheiten**, welche als Abkürzung eingeführt wurden. Die wichtigsten zusammengesetzten **Einheiten** sind von oft vorkommenden **Größen** der Physik. (Hier sind nur **Größen** aufgelistet, welche in späteren Übungsaufgaben mit Bezug zu **Einheitenrechnungen** verwendet werden könnten.) 
+{{|>}} Andere *Einheiten* als die *SI-Einheiten* sind meistens zusammengesetzte *Einheiten*, welche als Abkürzung eingeführt wurden. Die wichtigsten zusammengesetzten *Einheiten* sind von oft vorkommenden *Größen* der Physik. (Hier sind nur *Größen* aufgelistet, welche in späteren Übungsaufgaben mit Bezug zu *Einheitenrechnungen* verwendet werden könnten.) 
 
 
 
 {{|>}} 
-****************************************************
+*************************************
 
 Kraft $F$ in $1\,\text{N} = 1\,\dfrac{\text{m} \cdot \text{kg}}{\text{s}^2}$ 
 
@@ -43558,11 +43575,11 @@ Boltzmann-Konstante $k_B \approx 1,38064852 \,\dfrac{\text{J} }{\text{K}} $
 
 Plancksches Wirkungsquantum $\hbar \approx 1,05447800 \cdot 10^{-34} \,\text{J} \cdot \text{s} $ 
 
-***************************************
+*******************************
 
 
 
-{{|>}} Mittels einer **Einheitenrechnung** lassen sich **Gleichungen** auf ihre Richtigkeit überprüfen. Dazu werden die **Einheiten** der **Größen** der **Gleichung** statt den **Parametern** und **Variablen** niedergeschrieben. Wenn auf beiden Seiten der **Gleichung** die gleiche **Einheit** nachgewiesen werden kann, ist dies ein Indiz für die Richtigkeit der **Gleichung**. Außerdem können so **Umrechnungsfaktoren** von Präfixen mit berücksichtigt werden.
+{{|>}} Mittels einer *Einheitenrechnung* lassen sich *Gleichungen* auf ihre Richtigkeit überprüfen. Dazu werden die *Einheiten* der *Größen* der *Gleichung* statt den *Parametern* und *Variablen* niedergeschrieben. Wenn auf beiden Seiten der *Gleichung* die gleiche *Einheit* nachgewiesen werden kann, ist dies ein Indiz für die Richtigkeit der *Gleichung*. Außerdem können so *Umrechnungsfaktoren* von Präfixen mit berücksichtigt werden.
 
 
 
@@ -43576,7 +43593,10 @@ $$
 
 
 
-********************************
+
+
+
+***************************
 
 
 
@@ -45738,6 +45758,61 @@ __$e)\;\;$__ $ \dfrac{4000}{9}\,$mm [[$>$|($=$)|$<$]] $  0,\bar{4}\,$m \
 
 
 
+<!-- Einheiten 0038 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 38:__ **Sortiere** das die Kacheln nach Größe und **ordne** sie der passenden Größe zu.
+
+
+
+<!-- data-randomize="true"  
+data-solution-button="5" 
+data-show-partial-solution -->
+Masse: [->[($\dfrac{3}{8}$ t)]]  $>$ [->[($\dfrac{2000}{6}$ kg)]] $>$ [->[($333$ kg)]] $>$ [->[($3 \cdot 10^6$ g)]]  \
+Zeit:  [->[($250$ min)]] $>$ [->[(14640$ s)]] $>$ [->[($4,1$ h)]] $>$ [->[($120^2$ s)]]  \
+Länge: [->[($37$ dm)]] $>$ [->[($\dfrac{1}{5}$ m)]] $>$ [->[($195$ mm)]] $>$ [->[($17,5$ cm)]]  \
+Fläche: [->[($0,025 \ \text{a}$)]] $>$ [->[($\tfrac{3}{5} \ \text{m}^2$)]] $>$ [->[($2700 \ \text{cm}^2$)]] $>$ [->[($2,5 \cdot 10^3 \ \text{cm}^2$)]] \
+Volumen: [->[($\dfrac{3}{50} \ \text{m}^3$)]] $>$ [->[($12 \ \text{l}$)]] $>$ [->[($1,2 \cdot 10^4 \ \text{cm}^3$)]] $>$ [->[($11,8  \ \text{dm}^3$)]] \
+
+
+
+
+<!-- Einheiten 0039 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 39:__ **Sortiere** das die Kacheln nach Größe und **ordne** sie der passenden Größe zu.
+
+
+
+
+<!-- data-randomize="true"  
+data-solution-button="5" 
+data-show-partial-solution -->
+Masse:  [->[($\dfrac{13}{25}\ \text{t}$)]] $>$ [->[($5{,}1\cdot 10^5\ \text{g}$)]] $>$ [->[($4{,}95\cdot 10^2\ \text{kg}$)]] $>$ [->[($0{,}48\ \text{t}$)]]  \
+Zeit:   [->[($2{,}11\ \text{h}$)]] $>$ [->[($7{,}55\cdot 10^3\ \text{s}$)]] $>$ [->[($125\ \text{min}$)]] $>$ [->[($7{,}35\cdot 10^3\ \text{s}$)]]  \
+Länge:  [->[($2{,}01\ \text{m}$)]] $>$ [->[($2{,}0\cdot 10^3\ \text{mm}$)]] $>$ [->[($\dfrac{1995}{10}\ \text{cm}$)]] $>$ [->[($19{,}9\ \text{dm}$)]]  \
+Fläche: [->[($0{,}031\ \text{a}$)]] $>$ [->[($3{,}08\ \text{m}^2$)]] $>$ [->[($3{,}06\cdot 10^4\ \text{cm}^2$)]] $>$ [->[($304\ \text{dm}^2$)]]  \
+Volumen:[->[($1{,}5\cdot 10^{-2}\ \text{m}^3$)]] $>$ [->[($1{,}49\cdot 10^4\ \text{cm}^3$)]] $>$ [->[($14{,}8\ \text{dm}^3$)]] $>$ [->[($14{,}7\ \text{l}$)]]  \
+
+
+
+
+<!-- Einheiten 0040 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 40:__ **Sortiere** das die Kacheln nach Größe und **ordne** sie der passenden Größe zu.
+
+
+
+<!-- data-randomize="true"  
+data-solution-button="5" 
+data-show-partial-solution -->
+Masse:  [->[($0{,}62\ \text{t}$)]] $>$ [->[($6,15\cdot 10^2\ \text{kg}$)]] $>$ [->[($\dfrac{12400}{20}\ \text{kg}$)]] $>$ [->[($615000\ \text{g}$)]]  \
+Zeit:   [->[($9{,}1\cdot 10^3\ \text{s}$)]] $>$ [->[($152\ \text{min}$)]] $>$ [->[($2,55\ \text{h}$)]] $>$ [->[($9100\ \text{s}$)]]  \
+Länge:  [->[($5{,}05\ \text{m}$)]] $>$ [->[($50{,}3\ \text{dm}$)]] $>$ [->[($504\ \text{cm}$)]] $>$ [->[($5,04\cdot 10^3\ \text{mm}$)]]  \
+Fläche: [->[($0{,}042\ \text{a}$)]] $>$ [->[($4200\ \text{dm}^2$)]] $>$ [->[($4,18\cdot 10^4\ \text{cm}^2$)]] $>$ [->[($4,19\ \text{m}^2$)]]  \
+Volumen:[->[($2,1\cdot 10^{-2}\ \text{m}^3$)]] $>$ [->[($21,2\ \text{l}$)]] $>$ [->[($2,11\cdot 10^4\ \text{cm}^3$)]] $>$ [->[($21,0\ \text{dm}^3$)]]  \
+
 
 
 
@@ -45837,10 +45912,10 @@ __$e)\;\;$__ $ \dfrac{4000}{9}\,$mm [[$>$|($=$)|$<$]] $  0,\bar{4}\,$m \
 
 
 {{|>}}
-********************************
+***************************
 
 
-Ein **Verhältnis** lässt sich durch einen **Bruch** oder einer **Division** darstellen. **Verhältnisse** werden benutzt, um **Vergrößerungen** oder **Verkleinerungen** zu verdeutlichen.
+Ein *Verhältnis* lässt sich durch einen *Bruch* oder einer *Division* darstellen. *Verhältnisse* werden benutzt, um *Vergrößerungen* oder *Verkleinerungen* zu verdeutlichen.
 
 
 
@@ -45853,8 +45928,8 @@ $$
 
 
 
-{{|>}} Diese Form von **Verhältnissen** wird bei Karten "**Maßstab**" genannt. Dabei ist die erste Zahl immer die Darstellung auf der Karte, während die zweite Zahl die dazugehörige **Strecke** in der Natur widerspiegelt. So wäre bei einem **Maßstab** von $1:1000$ ein gemessener Meter auf der Karte in der Natur $1000\,$m. 
-**Verhältnisse** werden auch in vielen anderen Bereichen, wie der Chemie und beim Kochen, verwendet. Dabei werden **Verhältnisgleichungen** benötigt:
+{{|>}} Diese Form von *Verhältnissen* wird bei Karten "*Maßstab*" genannt. Dabei ist die erste Zahl immer die Darstellung auf der Karte, während die zweite Zahl die dazugehörige *Strecke* in der Natur widerspiegelt. So wäre bei einem *Maßstab* von $1:1000$ ein gemessener Meter auf der Karte in der Natur $1000\,$m. 
+*Verhältnisse* werden auch in vielen anderen Bereichen, wie der Chemie und beim Kochen, verwendet. Dabei werden *Verhältnisgleichungen* benötigt:
 
 
 $$
@@ -45865,10 +45940,10 @@ $$
 
 
 
-{{|>}} wobei das Beispiel so interpretiert werden kann, dass für vier Personen $500\,$g benötigt werden und nun die Menge für drei Personen bestimmt werden soll, dabei gilt das **Verhältnis** $\dfrac{4}{500\,\text{g}} = 1 : 125\,$g (pro Person $125\,$g), sodass die $125\,$g nur mit der Anzahl der Personen **multipliziert** werden muss (wie es durch **Äquivalenzumformung** ebenso bestimmt wird). 
+{{|>}} wobei das Beispiel so interpretiert werden kann, dass für vier Personen $500\,$g benötigt werden und nun die Menge für drei Personen bestimmt werden soll, dabei gilt das *Verhältnis* $\dfrac{4}{500\,\text{g}} = 1 : 125\,$g (pro Person $125\,$g), sodass die $125\,$g nur mit der Anzahl der Personen *multipliziert* werden muss (wie es durch *Äquivalenzumformung* ebenso bestimmt wird). 
 
 
-{{|>}} Des Weiteren kann ein **Verhältnis** benutzt werden, um zum Beispiel zu verdeutlichen, dass auf jedes Sauerstoffmolekül $O_2$ eine gewisse **Anzahl** $\#$ von Stickstoffmolekülen $N_2$ kommen, wenn Luft aus unserer Atmosphäre betrachtet wird:
+{{|>}} Des Weiteren kann ein *Verhältnis* benutzt werden, um zum Beispiel zu verdeutlichen, dass auf jedes Sauerstoffmolekül $O_2$ eine gewisse *Anzahl* $\#$ von Stickstoffmolekülen $N_2$ kommen, wenn Luft aus unserer Atmosphäre betrachtet wird:
 
 
 $$
@@ -45879,13 +45954,13 @@ $$
 
 
 
-{{|>}} wobei die Information, welche Zahl zu welcher **Größe** gehört, angegeben werden sollte.
+{{|>}} wobei die Information, welche Zahl zu welcher *Größe* gehört, angegeben werden sollte.
 
-{{|>}} Generell lässt sich festhalten, dass **Verhältnisgleichungen** eine **Gleichheit** von **Quotienten** beschreiben und die allgemeine Form $\dfrac{a}{b} = \dfrac{c}{d}$ besitzen. **Verhältnisse** werden oftmals bei **Streckungen** und **Ähnlichkeiten**  sowie bei der **Berechnung** von **Strahlensatz**- und **Trigonometrieaufgaben** vorkommen.
+{{|>}} Generell lässt sich festhalten, dass *Verhältnisgleichungen* eine *Gleichheit* von *Quotienten* beschreiben und die allgemeine Form $\dfrac{a}{b} = \dfrac{c}{d}$ besitzen. *Verhältnisse* werden oftmals bei *Streckungen* und *Ähnlichkeiten*  sowie bei der *Berechnung* von *Strahlensatz*- und *Trigonometrieaufgaben* vorkommen.
 
 
 
-********************************
+***************************
 
 
 

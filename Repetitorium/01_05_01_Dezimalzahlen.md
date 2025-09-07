@@ -56,10 +56,10 @@ author: Martin Lommatzsch
 
 
 {{|>}}
-********************************
+**********************
 
 
-Um **Brüche** in **Dezimalzahlen** umzuwandeln bedarf es der schriftlichen **Division** oder eines guten Zahlengefühls. Anhand eines Beispiels soll ersteres verdeutlicht werden.  
+Um *Brüche* in *Dezimalzahlen* umzuwandeln bedarf es der schriftlichen *Division* oder eines guten Zahlengefühls. Anhand eines Beispiels soll ersteres verdeutlicht werden.  
 
 
 $$
@@ -77,11 +77,11 @@ $$
 $$
 
 
-{{|>}} An der **Gleichung** ist zu erkennen, wie jeder **Bruch** in eine **Dezimalzahl** umgewandelt werden kann. Dabei wird bei der schriftlichen **Divisionsrechnung** nach jeder **Subtraktion**  eine Nachkommastellennull nach unten gezogen, sodass die Rechnung fortgesetzt werden kann bis kein **Rest** mehr existiert, eine **Periodizität** wie bei $\dfrac{1}{3} = 0,3333333333... = 0,\bar{3}$ festgestellt wird oder eine genauere **Dezimalzahl** nicht mehr erforderlich ist. Da im Allgemeinen bekannt ist, dass $\dfrac{3}{3}=1$ ist, soll hier an dieser Stelle des Buchs folgende Festlegung zur **Periodizität** gelten: $3 \cdot 0,\bar{3} = 0,\bar{9} := 1$. Diese Festlegung kann auch bewiesen werden, was allerdings hier den Rahmen des Buches sprengen würde. 
+{{|>}} An der *Gleichung* ist zu erkennen, wie jeder *Bruch* in eine *Dezimalzahl* umgewandelt werden kann. Dabei wird bei der schriftlichen *Divisionsrechnung* nach jeder *Subtraktion*  eine Nachkommastellennull nach unten gezogen, sodass die Rechnung fortgesetzt werden kann bis kein *Rest* mehr existiert, eine *Periodizität* wie bei $\dfrac{1}{3} = 0,3333333333... = 0,\bar{3}$ festgestellt wird oder eine genauere *Dezimalzahl* nicht mehr erforderlich ist. Da im Allgemeinen bekannt ist, dass $\dfrac{3}{3}=1$ ist, soll hier an dieser Stelle des Buchs folgende Festlegung zur *Periodizität* gelten: $3 \cdot 0,\bar{3} = 0,\bar{9} := 1$. Diese Festlegung kann auch bewiesen werden, was allerdings hier den Rahmen des Buches sprengen würde. 
 
-{{|>}} Die maximale **Periodenlänge** ist gegeben durch den **Nenner** des **Bruches** $a$, welcher zur **Dezimalbruchdarstellung** gehört. Dabei hat die maximal mögliche **Periodenlänge** (Anzahl der Ziffern bevor sich die Reihenfolge der Zahlen wiederholt) $a-1$ Ziffern lang. Hierbei muss beachtet werden, dass die **Periodenlänge** auch kleiner als die maximale **Periodenlänge** sein kann.  
+{{|>}} Die maximale *Periodenlänge* ist gegeben durch den *Nenner* des *Bruches* $a$, welcher zur *Dezimalbruchdarstellung* gehört. Dabei hat die maximal mögliche *Periodenlänge* (Anzahl der Ziffern bevor sich die Reihenfolge der Zahlen wiederholt) $a-1$ Ziffern lang. Hierbei muss beachtet werden, dass die *Periodenlänge* auch kleiner als die maximale *Periodenlänge* sein kann.  
 
-{{|>}} Um **Brüche** in eine **Dezimaldarstellung** zu bringen besteht auch die Möglichkeit den **Bruch** so zu **Erweitern**, dass dieser eine **Zehnerpotenz** bildet ($10,\; 100,\; 1000,\; 10000,\;...$), um anschließend nur das Komma im **Zähler** an die richtige Stelle zu setzen. Dabei geben die Nullen im **Nenner** an, wie **Nachkommastellen** existieren.
+{{|>}} Um *Brüche* in eine *Dezimaldarstellung* zu bringen besteht auch die Möglichkeit den *Bruch* so zu *Erweitern*, dass dieser eine *Zehnerpotenz* bildet ($10,\; 100,\; 1000,\; 10000,\;...$), um anschließend nur das Komma im *Zähler* an die richtige Stelle zu setzen. Dabei geben die Nullen im *Nenner* an, wie *Nachkommastellen* existieren.
 
 
 $$
@@ -91,7 +91,7 @@ $$
 $$
 
 
-{{|>}} Im Allgemeinen sollte auf eine Umwandlung in **Dezimalzahlen** verzichtet werden, da die **Darstellung** durch einen **Bruch** meistens, das weitere Vorgehen vereinfacht. Die **Darstellung** einer Zahl als **Bruch** ist dabei eine Schreibweise, welche eine Rechnung fordert, aber sie nicht ausführt. So kann zum Beispiel durch das Erhalten von **Bruchdarstellungen** folgende Rechnung leichter durchgeführt werden als in der **Dezimalzahlendarstellung**, welche im direkten Vergleich darunter zu finden ist. (Bei dieser Rechnung werden **Klammern** verwendet, deren Bedeutung genaustens im Abschnitt "Klammersetzung" besprochen werden. Für diese Rechnung gilt, dass die Rechnung in der **Klammer** zu erst ausgeführt werden soll.) 
+{{|>}} Im Allgemeinen sollte auf eine Umwandlung in *Dezimalzahlen* verzichtet werden, da die *Darstellung* durch einen *Bruch* meistens, das weitere Vorgehen vereinfacht. Die *Darstellung* einer Zahl als *Bruch* ist dabei eine Schreibweise, welche eine Rechnung fordert, aber sie nicht ausführt. So kann zum Beispiel durch das Erhalten von *Bruchdarstellungen* folgende Rechnung leichter durchgeführt werden als in der *Dezimalzahlendarstellung*, welche im direkten Vergleich darunter zu finden ist. (Bei dieser Rechnung werden *Klammern* verwendet, deren Bedeutung genaustens im Abschnitt "Klammersetzung" besprochen werden. Für diese Rechnung gilt, dass die Rechnung in der *Klammer* zu erst ausgeführt werden soll.) 
 
 
 
@@ -108,13 +108,13 @@ $$
 $$
 
 
-{{|>}} Die Gleichung zeigt, dass die Rechnung mit den **Brüchen** zwar länger erscheint, aber vollständig im Kopf durchgeführt werden kann. Während die Rechnungen mit den **Dezimalzahlen** vielen Menschen nur mit Taschenrechner gelingen und dabei noch die Problematik der **Periodizität** bei der Eingabe in den Taschenrechner besteht, sodass als Lösung $0,499999999$ auf dem Taschenrechnerdisplay angezeigt wird. Diese Lösung wäre nicht richtig und durch das **Runden** de Lösung bekommt der Schüler oftmals den Eindruck, dass solche Rechnungen nicht ohne Taschenrechner schaffbar seien. Aus diesem Grund lohnt es sich besonders bei **Divisionsaufgaben** die **Dezimalzahlen** in **Brüche** zu überführen.
+{{|>}} Die Gleichung zeigt, dass die Rechnung mit den *Brüchen* zwar länger erscheint, aber vollständig im Kopf durchgeführt werden kann. Während die Rechnungen mit den *Dezimalzahlen* vielen Menschen nur mit Taschenrechner gelingen und dabei noch die Problematik der *Periodizität* bei der Eingabe in den Taschenrechner besteht, sodass als Lösung $0,499999999$ auf dem Taschenrechnerdisplay angezeigt wird. Diese Lösung wäre nicht richtig und durch das *Runden* de Lösung bekommt der Schüler oftmals den Eindruck, dass solche Rechnungen nicht ohne Taschenrechner schaffbar seien. Aus diesem Grund lohnt es sich besonders bei *Divisionsaufgaben* die *Dezimalzahlen* in *Brüche* zu überführen.
 
 
 
 
 
-{{|>}} Viele **Dezimalzahlen** lassen sich als **Brüche** darstellen, hierbei wird der **Stellenwert** der einzeln Ziffern mit der Ziffer multipliziert und anschließend die einzelnen **Brüche** **aufaddiert**.
+{{|>}} Viele *Dezimalzahlen* lassen sich als *Brüche* darstellen, hierbei wird der *Stellenwert* der einzeln Ziffern mit der Ziffer multipliziert und anschließend die einzelnen *Brüche* *aufaddiert*.
 
 
 
@@ -127,12 +127,12 @@ $$
 
 
 
-{{|>}} Wobei deutlich wird, dass der **Stellenwert** der letzten Ziffer entscheiden für den resultierenden **Nenner** ist. Anschließend sollte stets geguckt werden ob das **Kürzen** der **Brüche** möglich ist. 
+{{|>}} Wobei deutlich wird, dass der *Stellenwert* der letzten Ziffer entscheiden für den resultierenden *Nenner* ist. Anschließend sollte stets geguckt werden ob das *Kürzen* der *Brüche* möglich ist. 
 
 
 
 
-{{|>}} **Periodizitäten** lassen sich auch als **Bruch** darstellen, hierbei wird der **Darstellungswechsel** zwischen Neunteln und dessen **Dezimalzahldarstellung** betrachtet:
+{{|>}} *Periodizitäten* lassen sich auch als *Bruch* darstellen, hierbei wird der *Darstellungswechsel* zwischen Neunteln und dessen *Dezimalzahldarstellung* betrachtet:
 
 
 
@@ -156,7 +156,7 @@ $$
 
 
 
-{{|>}} Somit kann für **Periodizitäten** mit mehreren Ziffern auch die Beteiligung von Neunteln geschlussfolgert werden:
+{{|>}} Somit kann für *Periodizitäten* mit mehreren Ziffern auch die Beteiligung von Neunteln geschlussfolgert werden:
 
 
 
@@ -186,7 +186,7 @@ $$
 
 
 
-{{|>}} **Dezimalzahlen**, die nicht als **Bruch** dargestellt werden können sind **irrationale Zahlen** $\mathbb{I}$ (Zahlen die nicht durch einen **Bruch** dargestellt werden können). Beispiele hierfür sind:
+{{|>}} *Dezimalzahlen*, die nicht als *Bruch* dargestellt werden können sind *irrationale Zahlen* $\mathbb{I}$ (Zahlen die nicht durch einen *Bruch* dargestellt werden können). Beispiele hierfür sind:
 
 
 
@@ -200,10 +200,10 @@ $$
 $$
 
 
-{{|>}} Die Rechnung mit **Dezimalzahlen** verhält sich ähnlich wie mit **Natürlichen Zahlen**, wobei im Wesentlichen die Position des Kommas beachtet werden muss.
+{{|>}} Die Rechnung mit *Dezimalzahlen* verhält sich ähnlich wie mit *Natürlichen Zahlen*, wobei im Wesentlichen die Position des Kommas beachtet werden muss.
 
 
-{{|>}} • **Addition** und **Subtraktion**: Bei der schriftlichen **Addition** sowie der **Subtraktion** müssen die Kommata untereinander stehen. Im folgenden Beispiel $13,37+42,6587$ werden zum ersten **Summanden** zwei weitere **Nachkommastellen** in blau hinzugefügt $13,37=13,37\textcolor{blue}{00}$, um mehr Übersicht zu gewährleisten.
+{{|>}} • *Addition* und *Subtraktion*: Bei der schriftlichen *Addition* sowie der *Subtraktion* müssen die Kommata untereinander stehen. Im folgenden Beispiel $13,37+42,6587$ werden zum ersten *Summanden* zwei weitere *Nachkommastellen* in blau hinzugefügt $13,37=13,37\textcolor{blue}{00}$, um mehr Übersicht zu gewährleisten.
 
 
 
@@ -217,7 +217,7 @@ $$
 $$
 
 
-{{|>}} • **Multiplikation**: Bei der **Multiplikation** von **Dezimalzahlen** bietet es sich ein **Darstellungswechsel** in die **Bruchdarstellung** an, da so die normale schriftliche **Multiplikation** durch geführt werden kann. 
+{{|>}} • *Multiplikation*: Bei der *Multiplikation* von *Dezimalzahlen* bietet es sich ein *Darstellungswechsel* in die *Bruchdarstellung* an, da so die normale schriftliche *Multiplikation* durch geführt werden kann. 
 
 
 
@@ -231,11 +231,11 @@ $$
 $$
 
 
-{{|>}} Hieraus wird auch die folgende Regel ersichtlich: "Die Anzahl der **Nachkommastellen** aller **Faktoren** ergibt die Anzahl der **Nachkommastellen** des **Werts des Produkts**."
+{{|>}} Hieraus wird auch die folgende Regel ersichtlich: "Die Anzahl der *Nachkommastellen* aller *Faktoren* ergibt die Anzahl der *Nachkommastellen* des *Werts des Produkts*."
 
 
 
-{{|>}} • **Division**: Bei der **Division** von **Dezimalzahlen** bietet es sich ein **Darstellungswechsel** in die **Bruchdarstellung** an, da so die normale schriftliche **Division** durch geführt werden kann. 
+{{|>}} • *Division*: Bei der *Division* von *Dezimalzahlen* bietet es sich ein *Darstellungswechsel* in die *Bruchdarstellung* an, da so die normale schriftliche *Division* durch geführt werden kann. 
 
 
 
@@ -251,7 +251,7 @@ $$
 $$
 
 
-{{|>}} Wobei auch wieder eine Regel ersichtlich wird: "Die Kommata dürfen im **Divisor** und **Dividenden** gleichmäßig verschoben werden. Um eine schriftliche **Division** durch zu führen ist es ratsam kein Komma im **Dividenden** zu besitzen."
+{{|>}} Wobei auch wieder eine Regel ersichtlich wird: "Die Kommata dürfen im *Divisor* und *Dividenden* gleichmäßig verschoben werden. Um eine schriftliche *Division* durch zu führen ist es ratsam kein Komma im *Dividenden* zu besitzen."
 
 
 
@@ -260,7 +260,7 @@ $$
 
 
 
-{{|>}} Das Prinzip **Runden** unterliegt auch bei den **Dezimalzahlen** klaren Regeln, wie auch schon bei den **natürlichen Zahlen**. So gilt, wenn die Stelle hinter der **gerundet** werden soll größer als vier ist, dann wird **aufgerundet**. Beim **Aufrunden** wird die Ziffer an der **gerundet** wird um eins erhöht. Andernfalls wird **abgerundet** und die Ziffer bleibt unangetastet.
+{{|>}} Das Prinzip *Runden* unterliegt auch bei den *Dezimalzahlen* klaren Regeln, wie auch schon bei den *natürlichen Zahlen*. So gilt, wenn die Stelle hinter der *gerundet* werden soll größer als vier ist, dann wird *aufgerundet*. Beim *Aufrunden* wird die Ziffer an der *gerundet* wird um eins erhöht. Andernfalls wird *abgerundet* und die Ziffer bleibt unangetastet.
 
 
 
@@ -275,7 +275,7 @@ $$
 
 
 
-{{|>}} Das Prinzip des **Rundens** ist wichtig, da bei vielen Rechnungen in der Lösung viele **Nachkommastellen** auftreten. Aus diesem Grund gilt stillschweigend die Konvention, dass immer auf zwei **Nachkommastellen** gerundet wird, außer es ist anders angegeben.
+{{|>}} Das Prinzip des *Rundens* ist wichtig, da bei vielen Rechnungen in der Lösung viele *Nachkommastellen* auftreten. Aus diesem Grund gilt stillschweigend die Konvention, dass immer auf zwei *Nachkommastellen* gerundet wird, außer es ist anders angegeben.
 
 
 
@@ -287,7 +287,7 @@ $$
 
 
 
-{{|>}} Dieses Verfahren zur Umwandlung von **Brüchen** in **Dezimalzahlen** ist in erster Linie nützlich um **Prozentwerte** auszurechnen, was detaillierter im Abschnitt "Prozentrechnung" beschrieben wird. Es ist ratsam für jeden Schüler, wenn jede mögliche Rechnung mit **Brüchen** bewältigt wird, da die **Bruchrechnung** mit zunehmenden Umfang der Mathematik an Bedeutung gewinnt. Aus diesem Grund befindet sich im Folgenden noch eine Auflistung einiger besonders oft vorkommenden **Brüche** und ihrer **Dezimalszahldarstellung**. Wichtig zu erwähnen bleibt, dass nicht jede **Dezimalzahl** als eine **Bruchzahl** dargestellt werden kann.
+{{|>}} Dieses Verfahren zur Umwandlung von *Brüchen* in *Dezimalzahlen* ist in erster Linie nützlich um *Prozentwerte* auszurechnen, was detaillierter im Abschnitt "Prozentrechnung" beschrieben wird. Es ist ratsam für jeden Schüler, wenn jede mögliche Rechnung mit *Brüchen* bewältigt wird, da die *Bruchrechnung* mit zunehmenden Umfang der Mathematik an Bedeutung gewinnt. Aus diesem Grund befindet sich im Folgenden noch eine Auflistung einiger besonders oft vorkommenden *Brüche* und ihrer *Dezimalszahldarstellung*. Wichtig zu erwähnen bleibt, dass nicht jede *Dezimalzahl* als eine *Bruchzahl* dargestellt werden kann.
 
 
 
@@ -313,4 +313,4 @@ $$
 
 
 
-********************************
+**********************

@@ -57,12 +57,12 @@ author: Martin Lommatzsch
 
 
 {{|>}}
-********************************
+***************************
 
 
 
 
-Neben der verschiedenen Schreibweisen der Zahlen in den jeweiligen Sprachen existieren auch noch verschiedene **Zahlensysteme**. Besonders in der Informatik werden neben dem **Dezimalsystem** (10er-System) auch das **Dualsystem** (2er-System), **Oktalsystem** (8er-System) und das **Hexadezimalsystem** (16er-System) verwendet. In diesem Abschnitt werden die Systeme und die oftmals benutzen **römischen Zahlen** vorgestellt. 
+Neben der verschiedenen Schreibweisen der Zahlen in den jeweiligen Sprachen existieren auch noch verschiedene *Zahlensysteme*. Besonders in der Informatik werden neben dem *Dezimalsystem* (10er-System) auch das *Dualsystem* (2er-System), *Oktalsystem* (8er-System) und das *Hexadezimalsystem* (16er-System) verwendet. In diesem Abschnitt werden die Systeme und die oftmals benutzen *römischen Zahlen* vorgestellt. 
 
 
 <h2> Die Geschichte der Zwölf </h2>
@@ -71,19 +71,19 @@ Neben der verschiedenen Schreibweisen der Zahlen in den jeweiligen Sprachen exis
 
 {{|>}} Da Stunden eine sehr große Zeitdauer sind, wurde kleinere Zeitdauern mit der einen Hand im 12er-System gezählt und mit den Fingern (dieses mal inklusive Daumen) an der anderen Hand vermerkt. Aus diesem Grund haben Stunden 60 Minuten und Minuten 60 Sekunden, da $12 \cdot 5 = 60$.
 
-{{|>}} Die damaligen Astronomen waren auch in der Landwirtschaft tätig und konnten durch ihre Beobachtungen herausfinden, dass der Mond seinen Zyklus nach rund 28 Tagen (einen Monat) durchläuft. Dies wurde als göttliches Zeichen gewertet, da ein Mensch ja vier Finger zum Zählen besitzt. Hieraus sind die Wochen entstanden, da ein Mondzyklus durch die Fingeranzahl **dividierbar** ist. Somit wurde die Zahl Sieben wie auch die Zahl Drei aufgrund der Anzahl der Fingerglieder pro Finger als magisch erklärt.
+{{|>}} Die damaligen Astronomen waren auch in der Landwirtschaft tätig und konnten durch ihre Beobachtungen herausfinden, dass der Mond seinen Zyklus nach rund 28 Tagen (einen Monat) durchläuft. Dies wurde als göttliches Zeichen gewertet, da ein Mensch ja vier Finger zum Zählen besitzt. Hieraus sind die Wochen entstanden, da ein Mondzyklus durch die Fingeranzahl *dividierbar* ist. Somit wurde die Zahl Sieben wie auch die Zahl Drei aufgrund der Anzahl der Fingerglieder pro Finger als magisch erklärt.
 
-{{|>}} Die Astronomen beobachteten, dass ein Jahr aus rund 13 Monaten bestehen müsste ($13 \cdot 12 = 364$), was nicht sein dürfe, da die $13$ nunmal die Unglückszahl sei. Aus diesem Grund wurden die unwichtigen Monate mit ein paar Extratagen versehen. Der Februar, der mit seinem Ende den Frühling einläutet, erhielt somit keine Extratage und galt als Ende des Jahres. Dies kann auch an den Bezeichnungen der Monate fest gemacht werden: ***Sept***ember (7. Monat), ***Okto***ber (8. Monat), ***Nov***ember (9. Monat), ***Dez***ember (10. Monat). Die Astronomen stellten auch fest, dass am 21. Dezember die Sonnendauer wieder zunahm, was als Geburt des Licht- bzw. Sonnengottes oder aber als Sieg über die Dunkelheit interpretiert wurde. Da dieser mystifizierte Tag jedoch keinerlei Verbindung zur Zwölf hatte, wurden die Monate sowie dieser Tag leicht verschoben - an den 24.12, da die 24 die Zeit eines Tages symbolisiert und durch 12 **teilbar** ist. 
+{{|>}} Die Astronomen beobachteten, dass ein Jahr aus rund 13 Monaten bestehen müsste ($13 \cdot 12 = 364$), was nicht sein dürfe, da die $13$ nunmal die Unglückszahl sei. Aus diesem Grund wurden die unwichtigen Monate mit ein paar Extratagen versehen. Der Februar, der mit seinem Ende den Frühling einläutet, erhielt somit keine Extratage und galt als Ende des Jahres. Dies kann auch an den Bezeichnungen der Monate fest gemacht werden: ***Sept***ember (7. Monat), ***Okto***ber (8. Monat), ***Nov***ember (9. Monat), ***Dez***ember (10. Monat). Die Astronomen stellten auch fest, dass am 21. Dezember die Sonnendauer wieder zunahm, was als Geburt des Licht- bzw. Sonnengottes oder aber als Sieg über die Dunkelheit interpretiert wurde. Da dieser mystifizierte Tag jedoch keinerlei Verbindung zur Zwölf hatte, wurden die Monate sowie dieser Tag leicht verschoben - an den 24.12, da die 24 die Zeit eines Tages symbolisiert und durch 12 *teilbar* ist. 
 
-{{|>}} Auch das **Winkelmaß** kann hierüber erklärt werden: Die beiden Formen **Kreis** und **gleichseitiges Dreieck** gelten in vielen Kulturen als Perfektionsdarstellung. Eine volle Merkhand stellt die Zahl 60 dar, sodass bei einem gleichseitigen Dreieck dieses Winkelmaß dreimal vorkommt. Die Verbindung zwischen Kreis und gleichseitigem Dreieck offenbart dann die $360^\circ$, da ein gleichmäßiges Hexagon, bestehend aus sechs **gleichseitigen Dreiecken**, mit seinen **Eckpunkten** auf einer **Kreislinie** liegt, was eine Verbindung zur Sechs anmuten lässt. 
+{{|>}} Auch das *Winkelmaß* kann hierüber erklärt werden: Die beiden Formen *Kreis* und *gleichseitiges Dreieck* gelten in vielen Kulturen als Perfektionsdarstellung. Eine volle Merkhand stellt die Zahl 60 dar, sodass bei einem gleichseitigen Dreieck dieses Winkelmaß dreimal vorkommt. Die Verbindung zwischen Kreis und gleichseitigem Dreieck offenbart dann die $360^\circ$, da ein gleichmäßiges Hexagon, bestehend aus sechs *gleichseitigen Dreiecken*, mit seinen *Eckpunkten* auf einer *Kreislinie* liegt, was eine Verbindung zur Sechs anmuten lässt. 
 
-{{|>}} Da die Zeit die für uns Menschen wichtigste Größe ist und ihre **Einheit** stets mit Göttlichkeiten in Verbindung gebracht wird, konnte sich eine demokratisch legitimierte neue **Einheit** mit einfacheren Umrechnungen nicht durchsetzen. Durch den göttlichen Deutungsbezug bei **Kreisen** und **gleichseitigen Dreiecken** konnte sich ebenfalls keine **Winkelmaßeinheit** durchsetzen, die leichter zu verrechnen ist.
+{{|>}} Da die Zeit die für uns Menschen wichtigste Größe ist und ihre *Einheit* stets mit Göttlichkeiten in Verbindung gebracht wird, konnte sich eine demokratisch legitimierte neue *Einheit* mit einfacheren Umrechnungen nicht durchsetzen. Durch den göttlichen Deutungsbezug bei *Kreisen* und *gleichseitigen Dreiecken* konnte sich ebenfalls keine *Winkelmaßeinheit* durchsetzen, die leichter zu verrechnen ist.
 
 
 <h2> Römische Zahlen </h2>
 
 
-{{|>}} Da die **römischen Zahlen** immer wieder mal im Alltag vorkommen, ist in der folgenden Tabelle eine Übersetzung der Symbole gegeben, sodass römische Zahlen in die arabischen üblichen Ziffern übersetzt werden können:
+{{|>}} Da die *römischen Zahlen* immer wieder mal im Alltag vorkommen, ist in der folgenden Tabelle eine Übersetzung der Symbole gegeben, sodass römische Zahlen in die arabischen üblichen Ziffern übersetzt werden können:
 
 
 
@@ -132,16 +132,16 @@ style="width:500px" -->
 </center>
 
 
-{{|>}} Bei der Vinculum-Schreibweise wurde lediglich ein Strich über die Zahl gesetzt, was eine **Multiplikation** mit $1000$ entsprach $\bar{I} = M$, sodass die Anzahl der Striche darüber entscheidend war. Auch die anderen Schreibweisen beschäftigten sich mit der **Multiplikation** mit $1000$, allerdings boten die arabische Zahlenzeichen eine wesentlich einfachere Schreibweise, was dazu führte das sich auch diese durchsetzten. 
+{{|>}} Bei der Vinculum-Schreibweise wurde lediglich ein Strich über die Zahl gesetzt, was eine *Multiplikation* mit $1000$ entsprach $\bar{I} = M$, sodass die Anzahl der Striche darüber entscheidend war. Auch die anderen Schreibweisen beschäftigten sich mit der *Multiplikation* mit $1000$, allerdings boten die arabische Zahlenzeichen eine wesentlich einfachere Schreibweise, was dazu führte das sich auch diese durchsetzten. 
 
 
 
 <h2> Dualsystem </h2>
 
 
-{{|>}} Das **Dualsystem** besteht aus den Zahlen $1$ und $0$, also "Ja" und "Nein". Aus diesem System, dem System der **binäre Zahlen**, ergibt sich eine gesamte algebraische Kategorie, die sogenannte **Bool'sche Algebra**. Auf diesem Zahlensystem beruht die gesamte Informatik, da es technisch aufgrund der Transistoren entweder ein Signal weitergeleitet wird oder eben nicht.
+{{|>}} Das *Dualsystem* besteht aus den Zahlen $1$ und $0$, also "Ja" und "Nein". Aus diesem System, dem System der *binäre Zahlen*, ergibt sich eine gesamte algebraische Kategorie, die sogenannte *Bool'sche Algebra*. Auf diesem Zahlensystem beruht die gesamte Informatik, da es technisch aufgrund der Transistoren entweder ein Signal weitergeleitet wird oder eben nicht.
 
-{{|>}} Um Zahlen aus diesem System in das **Dezimalsystem** umzurechnen, kann eine **Gleichung** verwendet werden, welche hier anhand eines Beispiels illustriert ist:
+{{|>}} Um Zahlen aus diesem System in das *Dezimalsystem* umzurechnen, kann eine *Gleichung* verwendet werden, welche hier anhand eines Beispiels illustriert ist:
 
 
 $$
@@ -153,7 +153,7 @@ $$
 $$
 
 
-{{|>}} Um vom **Dezimalsystem** in das **Dualsystem** zu wechseln, benötigt es der **Division**, wobei der **Rest** den jeweiligen Zahleneintrag darstellt, während mit dem **Quotienten** weiter gerechnet wird, bis der **Quotient** Null wird. 
+{{|>}} Um vom *Dezimalsystem* in das *Dualsystem* zu wechseln, benötigt es der *Division*, wobei der *Rest* den jeweiligen Zahleneintrag darstellt, während mit dem *Quotienten* weiter gerechnet wird, bis der *Quotient* Null wird. 
 
 
 
@@ -169,12 +169,12 @@ $$
 \end{align*}
 $$
 
-{{|>}} Bei anderen **Zahlensystemen** muss bei dieser Rechnung der **Divisor** durch die jeweilige **Zahlensystembasis** (hier $2$) ausgetauscht werden.
+{{|>}} Bei anderen *Zahlensystemen* muss bei dieser Rechnung der *Divisor* durch die jeweilige *Zahlensystembasis* (hier $2$) ausgetauscht werden.
 
 
 <h2> Oktalsystem </h2>
 
-{{|>}}  Ähnlich wie beim **Dualsystem** werden im **Oktalsystem** die Zahlen allerdings von $0$ bis $7$ pro Ziffernstelle gezählt:
+{{|>}}  Ähnlich wie beim *Dualsystem* werden im *Oktalsystem* die Zahlen allerdings von $0$ bis $7$ pro Ziffernstelle gezählt:
 
 
 $$
@@ -187,12 +187,12 @@ $$
 
 
 
-{{|>}} In Informatik ergeben sich $8bit$ zu $1byte$, sodass bei kleinsten Informationsmengen oftmals auf das **Oktalsystem** zurückgegriffen wird. 
+{{|>}} In Informatik ergeben sich $8bit$ zu $1byte$, sodass bei kleinsten Informationsmengen oftmals auf das *Oktalsystem* zurückgegriffen wird. 
 
 
 <h2> Hexadezimalsystem </h2>
 
-{{|>}} Farben werden in der Informatik meistens mit einem **Hexadezimalcode** angegeben. Hierbei wird von $0$ bis $F$ gezählt, wobei das $F$ einer $15$ entspricht. Bei der Umrechnung kann wieder die schon im **Dual**- und **Oktalsystem** vorgestellt **Gleichung** verwendet werden:
+{{|>}} Farben werden in der Informatik meistens mit einem *Hexadezimalcode* angegeben. Hierbei wird von $0$ bis $F$ gezählt, wobei das $F$ einer $15$ entspricht. Bei der Umrechnung kann wieder die schon im *Dual*- und *Oktalsystem* vorgestellt *Gleichung* verwendet werden:
 
 
 
@@ -205,7 +205,7 @@ $$
 $$
 
 
-{{|>}} Die folgende Tabelle soll dazu dienen, um eine Gesamtübersicht über die Zusammenhänge der **Zahlensysteme** zu bekommen.
+{{|>}} Die folgende Tabelle soll dazu dienen, um eine Gesamtübersicht über die Zusammenhänge der *Zahlensysteme* zu bekommen.
 
 
 
@@ -244,4 +244,4 @@ style="width:500px" -->
 
 
 
-********************************
+***************************
