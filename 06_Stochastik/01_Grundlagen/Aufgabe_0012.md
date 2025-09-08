@@ -42,9 +42,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Wahrscheinlichkeit, sehr leicht, sehr niedrig, Angeben
+tags: Häufigkeit, Chance, Wahrscheinlichkeit, leicht, niedrig, Angeben
 
-comment: Gib die Wahrscheinlichkeit für das beschriebene Szenario an.
+comment: Es wird aus einer Urne gezogen. Kannst du die Chance, die Häufigkeit oder die Wahrscheinlichkeit angeben?
 
 author: Martin Lommatzsch
 
@@ -53,32 +53,107 @@ author: Martin Lommatzsch
 
 
 
-# Wahrscheinlichkeiten angeben
-
-**Gib** die Wahrscheinlichkeit für das beschriebene Szenario **an**. 
+# Betrachtung von Urnen
 
 
-
-__$a)\;\;$__ In einer Urne befinden sich $25$ rote und $15$ grüne Kugeln. **Gib** die Wahrscheinlichkeit in Prozent **an** eine rote Kugel zu ziehen.
-
-$p=$ [[ 62,5 ]]$\%$ 
+In den dargestellten Gefäßen befinden sich Kugeln unterschiedlicher Farben. 
 
 
+<section class="flex-container">
 
-__$b)\;\;$__ Ein Glücksrad ist in gleich große Segmente unterteilt. Dabei sind $24$ Felder blau, $36$ Felder gelb und $15$ Felder schwarz. **Gib** die Wahrscheinlichkeit in Prozent **an**, dass beim Drehen des Glücksrades ein blaues Feld resultiert.
+<div class="flex-child">
+__$a)\;\;$__ 
 
-$p=$ [[ 32   ]]$\%$ 
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne1.png)
+
+**Gib** die absolute Häufigkeit der roten Kugeln **an**.\
+$\#(R)=$ [[  7  ]]
+
+**Gib** die relative Häufigkeit der blauen Kugeln **an**.\
+$p(B)=$ [[ 15/22  ]]
+@Algebrite.check(15/22)
+
+**Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
+$P(R)=$ [[ 7/22  ]]
+@Algebrite.check(7/22)
+
+**Gib** die Chance **an**, eine rote Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  7:15  ]]
+
+
+</div>
+
+<div class="flex-child">
+__$b)\;\;$__ 
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne2.png)
+
+**Gib** die absolute Häufigkeit der roten Kugeln **an**.\
+$\#(R)=$ [[  5  ]]
+
+**Gib** die relative Häufigkeit der blauen Kugeln **an**.\
+$p(B)=$ [[ 12/17  ]]
+@Algebrite.check(12/17)
+
+**Gib** die Wahrscheinlichkeit **an**, eine blaue Kugel zu ziehen.\
+$P(R)=$ [[ 12/17  ]]
+@Algebrite.check(12/17)
+
+**Gib** die Chance **an**, eine rote Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  5:12  ]]
+
+
+</div>
+
+<div class="flex-child">
+__$c)\;\;$__ 
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne3.png)
+
+**Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
+$\#(R)=$ [[  6  ]]
+
+**Gib** die relative Häufigkeit der roten Kugeln **an**.\
+$p(B)=$ [[ 6/12  ]]
+@Algebrite.check(6/12)
+
+**Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
+$P(R)=$ [[ 6/12  ]]
+@Algebrite.check(7/22)
+
+**Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  1:1  ]]
+
+
+</div>
+
+<div class="flex-child">
+__$d)\;\;$__ 
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne4.png)
+
+**Gib** die absolute Häufigkeit der roten Kugeln **an**.\
+$\#(R)=$ [[  10  ]]
+
+**Gib** die relative Häufigkeit der roten Kugeln **an**.\
+$p(B)=$ [[  10/25  ]]
+@Algebrite.check(10/25)
+
+**Gib** die Wahrscheinlichkeit **an**, eine blaue Kugel zu ziehen.\
+$P(R)=$ [[  15/25  ]]
+@Algebrite.check(15/25)
+
+**Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  3:2  ]]
+
+
+</div>
+
+</section>
 
 
 
-__$c)\;\;$__ In einer Packung Streichhölzer sind beim Anzünden durch ein und dieselbe Person $5$ zerbrochen, während $35$ heil blieben. **Gib** die Wahrscheinlichkeit in Prozent **an**, dass ein Streichholz beim Anzünden durch diese Person zerbricht.
-
-$p=$ [[ 12,5  ]]$\%$ 
 
 
-<br>
-<br>
-<br>
-<br>
 
 

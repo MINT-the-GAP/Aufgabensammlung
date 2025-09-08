@@ -43909,21 +43909,130 @@ $$
 #### Übungen - Fakultäten und Binomialkoeffizienten
 
 
-Under Construction
+
+
+<!-- Fakul 0001 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 1:__ 
-
-
-<!-- data-solution-button="5"-->
+__Aufgabe 1:__ **Gib** den Wert des Terms **an**
 
 <section class="flex-container">
-
-
 <div class="flex-child">
-</div>
 
+__$a)\;\;$__ $ 5! = $ [[ 120  ]]
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__ $ 7! = $ [[ 5040 ]]
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ $ \dfrac{ 9! }{ 7! } = $ [[  72  ]]
+
+</div>
+<div class="flex-child">
+
+__$d)\;\;$__ $ \dfrac{ 8! }{ 5! \cdot 3! } = $ [[ 56   ]]
+
+</div>
 </section>
+
+
+
+
+
+<!-- Fakul 0002 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 2:__ **Gib** den Wert des Terms **an**
+
+<section class="flex-container">
+<div class="flex-child">
+
+__$a)\;\;$__ $ 4! = $ [[ 24  ]]
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__ $ 6! = $ [[ 720 ]]
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ $ \dfrac{ 15! }{ 13! } = $ [[  105  ]]
+
+</div>
+<div class="flex-child">
+
+__$d)\;\;$__ $ \dfrac{ 12! }{ 7! \cdot 4! \cdot 3! } = $ [[ 660  ]]
+
+</div>
+</section>
+
+
+
+
+<!-- Fakul 0003 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 3:__ **Gib** den Wert des Terms **an**
+
+<section class="flex-container">
+<div class="flex-child">
+
+__$a)\;\;$__ $  \left( \begin{array}{c} 4 \\ 3 \end{array} \right) = $ [[  4  ]]
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__ $  \left( \begin{array}{c} 6 \\ 0 \end{array} \right) = $ [[  1  ]]
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ $  \left( \begin{array}{c} 8 \\ 2 \end{array} \right) = $ [[  28  ]]
+
+</div>
+<div class="flex-child">
+
+__$d)\;\;$__ $  \left( \begin{array}{c} 7 \\ 4 \end{array} \right) = $ [[  35  ]]
+
+</div>
+</section>
+
+
+
+
+<!-- Fakul 0004 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 4:__ **Gib** den Wert des Terms **an**
+
+<section class="flex-container">
+<div class="flex-child">
+
+__$a)\;\;$__ $  \left( \begin{array}{c} 6 \\ 5 \end{array} \right) = $ [[  6  ]]
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__ $  \left( \begin{array}{c} 9 \\ 7 \end{array} \right) = $ [[  36  ]]
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ $  \left( \begin{array}{c} 5 \\ 3 \end{array} \right) = $ [[  10  ]]
+
+</div>
+<div class="flex-child">
+
+__$d)\;\;$__ $  \left( \begin{array}{c} 7 \\ 2 \end{array} \right) = $ [[  21  ]]
+
+</div>
+</section>
+
 
 
 
@@ -47610,21 +47719,1350 @@ Under Construction
 
 ## Stochastik
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30">
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30">
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30">
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30">
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew5.png" width="30" height="30">
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30">
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb1.png" width="30" height="30">
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30">
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb3.png" width="30" height="30">
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30">
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30">
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb6.png" width="30" height="30">
+
+{{|>}}
+*******************************
+Das Wort „*Stochastik*“ geht auf das griechische stochastikos zurück und bedeutet so viel wie „treffend raten“ oder „vermuten“. Schon dieser Ursprung deutet darauf hin, dass es hier um den Umgang mit Zufall und Unsicherheit geht. Während die *Geometrie* oder *Analysis* feste Strukturen und eindeutige Ergebnisse liefern, beschäftigt sich die *Stochastik* mit dem, was nicht vorhersagbar ist – zumindest nicht im Detail.
+
+{{|>}} Erste Ideen zu Wahrscheinlichkeiten entstanden im 17. Jahrhundert, als Mathematiker wie Blaise Pascal und Pierre de Fermat Fragen aus dem Glücksspiel untersuchten. Sie legten damit den Grundstein für die Wahrscheinlichkeitsrechnung. Später kamen die *Statistik* und die *Kombinatorik* hinzu. Zusammen bilden sie die moderne *Stochastik*, die heute weit über Würfel und Karten hinausgeht.
+
+{{|>}} Ob Wettervorhersagen, medizinische Studien, Verkehrsplanung oder künstliche Intelligenz – überall dort, wo viele mögliche Ausgänge denkbar sind, liefert die *Stochastik* Methoden, um mit *Unsicherheit* umzugehen und fundierte Entscheidungen zu treffen. Sie zeigt uns, dass Zufall nicht nur Chaos bedeutet, sondern auch in Mustern und *Wahrscheinlichkeiten* erfasst werden kann.
+*******************************
 
 
-Under Construction
+
+
+### Grundgrößen der Wahrscheinlichkeit
+
+
+
+
+{{|>}}
+***************************
+
+Die *Wahrscheinlichkeitsrechnung* basiert darauf, dass die Ergebnisse in *Verhältnissen* ($2:3$ "Zwei zu Drei") oder in *Prozentwerten* $25\% $ angeben werden. Beide dieser Angabearten basieren auf der *Bruchrechnung*. Folglich kann aus den *Verhältnissen* der *Prozentwert* bestimmt werden, da es sich um einen *Bruch* in einer Schreibweise mit dem *Divisionsoperator* handelt. Hierbei ist zu beachten, dass bei der *Chance*, der Doppelpunkt anders als die *Division* interpretiert wird. Allerdings ist zu beachten, dass die erste *Darstellung* die sogenannte *Chance* ist, während die zweite *Darstellung* die *relative Häufigkeit* genannt wird. Bei der *Chance* ist die *Summe* der beiden Zahlen die gesamte *absolute Häufigkeit*, während diese bei der *relativen Häufigkeit* als *ungekürzten Nenner* zu finden ist. So ergibt sich für die *Chance*: 
+
+$$
+\begin{align*}
+&\text{Anzahl der Treffer Ereignis 1} : \text{Anzahl der Treffer Ereignis 2}  \\
+&\;\;\Rightarrow\;\; \text{Gesamtanzahl}= \text{Anzahl der Treffer Ereignis 1} + \text{Anzahl der Treffer Ereignis 2} \;\; . \\
+\end{align*}
+$$
+
+
+{{|>}} Da die *Chance* nur schwer intuitiv einzuschätzen ist, wird in der Regel auf die *relative Häufigkeit* zurückgegriffen, welche oft in der *prozentualen* *Darstellung* zu finden ist. Für die *relative Häufigkeit* $p$ gilt:
+
+$$
+\begin{align*}
+\text{relative Häufigkeit} = \frac{\text{Anzahl der Treffer}}{\text{Gesamtanzahl}}  \;\; . \\
+\end{align*}
+$$
+
+
+
+{{|>}} Durch die Reduktion auf Treffer eines *Ereignisses* $E$ kann somit immer ein alleiniges *Gegenereignis* $\bar{E}$ - also keine Treffer - definiert werden, sodass die *Wahrscheinlichkeiten* $P$ der beiden *Ereignisse* sich stets zu $100\%$ *aufaddieren*: 
+
+
+$$
+\begin{align*}
+100\%=P(E) + P(\bar{E})  \;\; . \\
+\end{align*}
+$$
+
+
+{{|>}} Ein *Ereignis* kann immer auf das Ziehen von Kugeln aus einer Urne übersetzt werden, sodass im folgenden Abschnitt zunächst die verschiedenen Anordnungen von Kugeln - der *Kombinatorik* - und anschließend das Ziehen von Kugeln thematisiert wird. 
+
+
+
+
+
+{{|>}} Zuvor müssen die Begriffe "*Ereignis*" und "*Ergebnis*" und die daraus abgeleiteten Größen betrachtet werden. Dies ist am besten an zwei Würfeln dar zu stellen. So ist der *Ergebnisraum* $\Omega$ hier als *Summe* der angezeigten Augen zu betrachten, sodass $\Omega=\left\{2;3;4;5;6;7;8;9;10;11;12\right\}$ ist. Nun können die *Ergebnisse* aus verschiedene *Ereignisse* resultieren, so kann zum Beispiel das *Ergebnis* $4$ durch die *Ereignisse* $\Sigma_4 = \left\{  \left\{ \right.\right.$  <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> ; <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb3.png" width="30" height="30"> $ \left. \right\} ; \left\{ \right. $ <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30"> $ \left. \right\} ; \left\{  \right. $ <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb1.png" width="30" height="30"> $\left.\left. \right\}\right\}$ dargestellt werden.  
+
+
+
+{{|>}} Je nach Bezug können unterschiedliche *Mittelwerte* $\bar{x}$ existieren, allerdings wird hier in diesem Buch ausschließlich der *arithmetische Mittelwert* verwendet, welcher durch die *Summe* der *Ergebnisse* *dividiert* durch die Anzahl der *Ergebnisse* gegeben ist: 
+
+
+
+$$
+\begin{align*}
+\bar{x}_{arithm} = \frac{1}{n} \sum\limits_{k=1}^{n} x_k  \;\; . \\
+\end{align*}
+$$
+
+
+{{|>}} Um *Ergebnissmengen*, also zum Beispiel Messdaten, zu bewerten, ist oftmals auch die *Spannweite* $R$ von Interesse, welche lediglich die Distanz zwischen den maximalen und minimalen *Wert* der *Ergebnissemenge* beschreibt. Die *Spannweite* bildet das einfachste *Streumaß*:
+
+
+$$
+\begin{align*}
+R   = x_{max} - x_{min}  \;\; . \\
+\end{align*}
+$$
+
+
+
+***************************
+
+
+
+
+
+
+
+
+
+#### Übungen - Grundgrößen der Wahrscheinlichkeit
+
+
+
+<!-- Chance 0001 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ **Gib** die Spannweite **an**.
+
+
+
+__$a)\;\;$__ Gegeben sei die folgende Ergebnismenge: 
+$\{$ <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> 
+$\}$
+
+<!-- data-solution-button="5" -->
+$R=$ [[  3  ]]
+*******************
+$R = x_{max} - x_{min} = 4 - 1 = 3$
+*******************
+
+
+
+
+
+
+
+
+
+__$b)\;\;$__ Gegeben sei die folgende Ergebnismenge: 
+$\{ \{$ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb3.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30"> 
+$\} \}$
+
+<!-- data-solution-button="5" -->
+$R=$ [[  5  ]]
+*******************
+$R = x_{max} - x_{min} = 9 - 4 = 5$
+*******************
+
+
+
+
+__$c)\;\;$__ Gegeben sei die folgende Ergebnismenge: 
+$\{ \{$ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew5.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb3.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb3.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb6.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew5.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew5.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb1.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> 
+$\} \}$
+
+<!-- data-solution-button="5" -->
+$R=$ [[  8  ]]
+*******************
+$R = x_{max} - x_{min} = 11 - 3 = 8$
+*******************
+
+
+
+
+
+
+<!-- Chance 0002 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 2:__ **Gib** die Spannweite **an**.
+
+
+
+__$a)\;\;$__ Gegeben sei die folgende Ergebnismenge: 
+$\{$ <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew5.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew5.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> 
+$\}$
+
+<!-- data-solution-button="5" -->
+$R=$ [[  5  ]]
+*******************
+$R = x_{max} - x_{min} = 6 - 2 = 5$
+*******************
+
+
+
+
+
+
+
+
+
+__$b)\;\;$__ Gegeben sei die folgende Ergebnismenge: 
+$\{ \{$ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb6.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew5.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb3.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> 
+$\} \}$
+
+<!-- data-solution-button="5" -->
+$R=$ [[  0  ]]
+*******************
+$R = x_{max} - x_{min} = 8 - 8 = 0$
+*******************
+
+
+
+
+__$c)\;\;$__ Gegeben sei die folgende Ergebnismenge: 
+$\{ \{$ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb3.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb1.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew5.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb6.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb3.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb6.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb3.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb1.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew5.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew5.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> 
+$\} \}$
+
+<!-- data-solution-button="5" -->
+$R=$ [[  9  ]]
+*******************
+$R = x_{max} - x_{min} = 12 - 3 = 9$
+*******************
+
+
+
+
+
+
+<!-- Chance 0003 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 3:__ **Gib** den Median **an**.
+
+
+
+__$a)\;\;$__ Gegeben sei die folgende Ergebnismenge: 
+$\{$ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew5.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew5.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> 
+$\}$
+
+<!-- data-solution-button="5" -->
+$\tilde{x}=$ [[  4  ]]
+*******************
+$\{ 1;1;1;2;3;\textcolor{red}{4};4;5;5;6;6 \}$
+*******************
+
+
+
+
+
+
+
+
+
+__$b)\;\;$__ Gegeben sei die folgende Ergebnismenge: 
+$\{ \{$ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew5.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb3.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb3.png" width="30" height="30"> 
+$\} \}$
+
+<!-- data-solution-button="5" -->
+$\tilde{x}=$ [[  7  ]]
+*******************
+$\{ 4;5;6;\textcolor{red}{7};8;9;9 \}$
+*******************
+
+
+
+
+__$c)\;\;$__ Gegeben sei die folgende Ergebnismenge: 
+$\{ \{$ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew5.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb6.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb1.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb1.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb1.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew5.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb6.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> 
+$\} \}$
+
+
+<!-- data-solution-button="5" -->
+$\tilde{x}=$ [[  7  ]]
+*******************
+$\{ 2;3;4;6;7;\textcolor{red}{7};8;10;11;11;11 \}$
+*******************
+
+
+
+<!-- Chance 0004 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 4:__ **Gib** den Median **an**.
+
+
+
+__$a)\;\;$__ Gegeben sei die folgende Ergebnismenge: 
+$\{$ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew5.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> 
+$\}$
+
+<!-- data-solution-button="5" -->
+$\tilde{x}=$ [[  2  ]]
+*******************
+$\{ 1;1;1;1;2;\textcolor{red}{2};4;4;5;6;6 \}$
+*******************
+
+
+
+
+
+
+
+
+
+__$b)\;\;$__ Gegeben sei die folgende Ergebnismenge: 
+$\{ \{$ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb1.png" width="30" height="30"> 
+$\} \}$
+
+
+<!-- data-solution-button="5" -->
+$\tilde{x}=$ [[  7  ]]
+*******************
+$\{ 6;7;7;\textcolor{red}{7};7;7;10; \}$
+*******************
+
+
+
+
+__$c)\;\;$__ Gegeben sei die folgende Ergebnismenge: 
+$\{ \{$ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb3.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb1.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb6.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb1.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew5.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb1.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb1.png" width="30" height="30"> 
+$\} \}$
+
+
+<!-- data-solution-button="5" -->
+$\tilde{x}=$ [[  7  ]]
+*******************
+$\{ 2;3;4;4;7;\textcolor{red}{7};7;8;9;9;12  \}$
+*******************
+
+
+
+<!-- Chance 0005 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 5:__ **Gib** das arithmetisches Mittel **an**.
+
+
+
+__$a)\;\;$__ Gegeben sei die folgende Ergebnismenge: 
+$\{$ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew5.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew5.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> 
+$\}$
+
+<!-- data-solution-button="5" -->
+$\bar{x}=$ [[  3,9  ]]
+@Algebrite.check(39/10)
+*******************
+$\bar{x} = \dfrac{2+3+1+4+5+4+5+6+3+6}{10}$
+*******************
+
+
+
+
+
+
+
+
+
+__$b)\;\;$__ Gegeben sei die folgende Ergebnismenge: 
+$\{ \{$ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb3.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb6.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb1.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> 
+$\} \}$
+
+
+<!-- data-solution-button="5" -->
+$\bar{x}=$ [[  7,125  ]]
+@Algebrite.check(57/8)
+*******************
+$\bar{x} = \dfrac{7+8+4+9+10+10+9+3+7}{8}$
+*******************
+
+
+
+
+__$c)\;\;$__ Gegeben sei die folgende Ergebnismenge: 
+$\{ \{$ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb1.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb3.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb1.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30"> 
+$\} \}$
+
+
+
+<!-- data-solution-button="5" -->
+$\bar{x}=$ [[  6,6  ]]
+@Algebrite.check(66/10)
+*******************
+$\bar{x} = \dfrac{9+4+6+8+5+4+6+10+9+5}{10}$
+*******************
+
+
+
+
+
+<!-- Chance 0006 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 6:__ **Gib** das arithmetisches Mittel **an**.
+
+
+
+__$a)\;\;$__ Gegeben sei die folgende Ergebnismenge: 
+$\{$ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew5.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> 
+$\}$
+
+<!-- data-solution-button="5" -->
+$\bar{x}=$ [[  2,7  ]]
+@Algebrite.check(27/10)
+*******************
+$\bar{x} = \dfrac{2+4+1+2+4+1+5+6+1+1}{10}$
+*******************
+
+
+
+
+
+
+
+
+
+__$b)\;\;$__ Gegeben sei die folgende Ergebnismenge: 
+$\{ \{$ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew5.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> 
+$\} \}$
+
+
+<!-- data-solution-button="5" -->
+$\bar{x}=$ [[  7,25  ]]
+@Algebrite.check(58/8)
+*******************
+$\bar{x} = \dfrac{6+7+6+7+9+7+5+11}{8}$
+*******************
+
+
+
+
+__$c)\;\;$__ Gegeben sei die folgende Ergebnismenge: 
+$\{ \{$ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb6.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew4.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb6.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb1.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30"> $ \} ; \{ $ 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> ; 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> 
+$\} \}$
+
+
+
+<!-- data-solution-button="5" -->
+$\bar{x}=$ [[  7,6  ]]
+@Algebrite.check(76/10)
+*******************
+$\bar{x} = \dfrac{12+6+9+12+7+4+8+7+5+6}{10}$
+*******************
+
+
+
+
+
+
+<!-- Chance 0007 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 7:__ Gegeben sei die folgende Ergebnismenge: \
+$\{ 7,8,8,6,11,14,12,12,13,8,10,7,7,11,9 \}$
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+__$a)\;\;$__ **Gib** die Spannweite **an**.\
+$R=$ [[  8  ]]
+*******************
+$R = x_{max} - x_{min} = 14 - 6 = 8$
+*******************
+
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__ **Gib** den Median **an**.\
+$\tilde{x}=$ [[  9  ]]
+*******************
+$\{ 6,7,7,7,8,8,8,\textcolor{red}{9},10,11,11,12,12,13,14 \}$
+*******************
+
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ **Gib** das arithmetische Mittel gerundet auf drei Nachkommastellen **an**.\
+$\bar{x}=$ [[  9,533  ]]
+
+
+</div> 
+
+</section>
+
+
+<!-- Chance 0008 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 8:__ Gegeben sei die folgende Ergebnismenge: \
+$\{ 83,46,55,64,91,75,61,39,84,55,47 \}$
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+__$a)\;\;$__ **Gib** die Spannweite **an**.\
+$R=$ [[ 52  ]]
+*******************
+$R = x_{max} - x_{min} = 91 - 39 = 52$
+*******************
+
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__ **Gib** den Median **an**.\
+$\tilde{x}=$ [[  61  ]]
+*******************
+$\{ 39,46,47,55,55,\textcolor{red}{61},64,75,83,84,91 \}$
+*******************
+
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ **Gib** das arithmetische Mittel gerundet auf drei Nachkommastellen **an**.\
+$\bar{x}=$ [[  63,636  ]]
+
+
+</div> 
+
+</section>
+
+
+<!-- Chance 0009 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 9:__ Gegeben sei die folgende Ergebnismenge: \
+$\{ 56,54,55,56,57,55,56,54,53,58,55,56,54,52,56,57 \}$
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+__$a)\;\;$__ **Gib** die Spannweite **an**.\
+$R=$ [[  6  ]]
+*******************
+$R = x_{max} - x_{min} = 58 - 52 = 8$
+*******************
+
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__ **Gib** den Median **an**.\
+$\tilde{x}=$ [[ 55  ]]
+*******************
+$\{ 52,53,54,54,54,55,55,\textcolor{red}{55},56,56,56,56,57,57,58  \}$
+*******************
+
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ **Gib** das arithmetische Mittel **an**.\
+$\bar{x}=$ [[  51,6  ]]
+
+
+</div> 
+
+</section>
+
+
+<!-- Chance 0010 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 10:__ Gegeben sei die folgende Ergebnismenge: \
+$\{ 29,33,28,31,35,24,36,32,28,27,35,34,29,30,35 \}$
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+__$a)\;\;$__ **Gib** die Spannweite **an**.\
+$R=$ [[ 12  ]]
+*******************
+$R = x_{max} - x_{min} = 36 - 24 = 12$
+*******************
+
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__ **Gib** den Median **an**.\
+$\tilde{x}=$ [[ 31  ]]
+*******************
+$\{ 24,27,28,28,29,29,30,\textcolor{red}{31},32,33,34,35,35,35,36 \}$
+*******************
+
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ **Gib** das arithmetische Mittel gerundet auf drei Nachkommastellen **an**.\
+$\bar{x}=$ [[  33,067  ]]
+
+
+</div> 
+
+</section>
+
+
+
+<!-- Chance 0011 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 11:__ In den dargestellten Gefäßen befinden sich Kugeln unterschiedlicher Farben. 
+
+<section class="flex-container">
+
+<div class="flex-child">
+__$a)\;\;$__ 
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne5.png)
+
+**Gib** die absolute Häufigkeit der roten Kugeln **an**.\
+$\#(R)=$ [[  4  ]]
+
+**Gib** die relative Häufigkeit der blauen Kugeln **an**.\
+$p(B)=$ [[ 25/29  ]]
+@Algebrite.check(25/29)
+
+**Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
+$P(R)=$ [[  4/29  ]]
+@Algebrite.check(4/29)
+
+**Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  25:4  ]]
+
+
+</div>
+
+<div class="flex-child">
+__$b)\;\;$__ 
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne6.png)
+
+**Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
+$\#(R)=$ [[  6  ]]
+
+**Gib** die relative Häufigkeit der blauen Kugeln **an**.\
+$p(B)=$ [[  6/13  ]]
+@Algebrite.check(6/13)
+
+**Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
+$P(R)=$ [[  7/13  ]]
+@Algebrite.check(7/13)
+
+**Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  7:6  ]]
+
+
+</div>
+
+<div class="flex-child">
+__$c)\;\;$__ 
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne7.png)
+
+**Gib** die absolute Häufigkeit der roten Kugeln **an**.\
+$\#(R)=$ [[  7  ]]
+
+**Gib** die relative Häufigkeit der roten Kugeln **an**.\
+$p(B)=$ [[  7/23  ]]
+@Algebrite.check(7/23)
+
+**Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
+$P(R)=$ [[  7/23  ]]
+@Algebrite.check(7/23)
+
+**Gib** die Chance **an**, eine rote Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  7:16  ]]
+
+
+</div>
+
+<div class="flex-child">
+__$d)\;\;$__ 
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne8.png)
+
+**Gib** die absolute Häufigkeit der roten Kugeln **an**.\
+$\#(R)=$ [[  5  ]]
+
+**Gib** die relative Häufigkeit der blauen Kugeln **an**.\
+$p(B)=$ [[  27/32  ]]
+@Algebrite.check(27/32)
+
+**Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
+$P(R)=$ [[  5/32  ]]
+@Algebrite.check(5/32)
+
+**Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  27:5  ]]
+
+
+</div>
+
+</section>
+
+
+
+<!-- Chance 0012 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 12:__ In den dargestellten Gefäßen befinden sich Kugeln unterschiedlicher Farben. 
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+__$a)\;\;$__ 
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne1.png)
+
+**Gib** die absolute Häufigkeit der roten Kugeln **an**.\
+$\#(R)=$ [[  7  ]]
+
+**Gib** die relative Häufigkeit der blauen Kugeln **an**.\
+$p(B)=$ [[ 15/22  ]]
+@Algebrite.check(15/22)
+
+**Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
+$P(R)=$ [[ 7/22  ]]
+@Algebrite.check(7/22)
+
+**Gib** die Chance **an**, eine rote Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  7:15  ]]
+
+
+</div>
+
+<div class="flex-child">
+__$b)\;\;$__ 
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne2.png)
+
+**Gib** die absolute Häufigkeit der roten Kugeln **an**.\
+$\#(R)=$ [[  5  ]]
+
+**Gib** die relative Häufigkeit der blauen Kugeln **an**.\
+$p(B)=$ [[ 12/17  ]]
+@Algebrite.check(12/17)
+
+**Gib** die Wahrscheinlichkeit **an**, eine blaue Kugel zu ziehen.\
+$P(R)=$ [[ 12/17  ]]
+@Algebrite.check(12/17)
+
+**Gib** die Chance **an**, eine rote Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  5:12  ]]
+
+
+</div>
+
+<div class="flex-child">
+__$c)\;\;$__ 
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne3.png)
+
+**Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
+$\#(R)=$ [[  6  ]]
+
+**Gib** die relative Häufigkeit der roten Kugeln **an**.\
+$p(B)=$ [[ 6/12  ]]
+@Algebrite.check(6/12)
+
+**Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
+$P(R)=$ [[ 6/12  ]]
+@Algebrite.check(7/22)
+
+**Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  1:1  ]]
+
+
+</div>
+
+<div class="flex-child">
+__$d)\;\;$__ 
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne4.png)
+
+**Gib** die absolute Häufigkeit der roten Kugeln **an**.\
+$\#(R)=$ [[  10  ]]
+
+**Gib** die relative Häufigkeit der roten Kugeln **an**.\
+$p(B)=$ [[  10/25  ]]
+@Algebrite.check(10/25)
+
+**Gib** die Wahrscheinlichkeit **an**, eine blaue Kugel zu ziehen.\
+$P(R)=$ [[  15/25  ]]
+@Algebrite.check(15/25)
+
+**Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  3:2  ]]
+
+
+</div>
+
+</section>
+
+
+
+<!-- Chance 0013 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 13:__ In den dargestellten Gefäßen befinden sich Kugeln unterschiedlicher Farben. 
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+__$a)\;\;$__ 
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne9.png)
+
+**Gib** die absolute Häufigkeit der roten Kugeln **an**.\
+$\#(R)=$ [[  8  ]]
+
+**Gib** die relative Häufigkeit der blauen Kugeln **an**.\
+$p(B)=$ [[ 11/23  ]]
+@Algebrite.check(11/23)
+
+**Gib** die Wahrscheinlichkeit **an**, eine grüne Kugel zu ziehen.\
+$P(R)=$ [[ 4/23  ]]
+@Algebrite.check(4/23)
+
+**Gib** die Chance **an**, eine rote Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  8:15  ]]
+
+
+</div>
+
+<div class="flex-child">
+__$b)\;\;$__ 
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne10.png)
+
+**Gib** die absolute Häufigkeit der grünen Kugeln **an**.\
+$\#(R)=$ [[  4  ]]
+
+**Gib** die relative Häufigkeit der blauen Kugeln **an**.\
+$p(B)=$ [[  4/10  ]]
+@Algebrite.check(4/10)
+
+**Gib** die Wahrscheinlichkeit **an**, eine grüne Kugel zu ziehen.\
+$P(R)=$ [[  4/10  ]]
+@Algebrite.check(4/10)
+
+**Gib** die Chance **an**, eine rote Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  1:4  ]]
+
+
+</div>
+
+<div class="flex-child">
+__$c)\;\;$__ 
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne11.png)
+
+**Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
+$\#(R)=$ [[  9  ]]
+
+**Gib** die relative Häufigkeit der grüne Kugeln **an**.\
+$p(B)=$ [[  7/23  ]]
+@Algebrite.check(7/23)
+
+**Gib** die Wahrscheinlichkeit **an**, eine blaue Kugel zu ziehen.\
+$P(R)=$ [[  9/23  ]]
+@Algebrite.check(9/23)
+
+**Gib** die Chance **an**, eine grüne Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  7:16  ]]
+
+
+</div>
+
+<div class="flex-child">
+__$d)\;\;$__ 
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne12.png)
+
+**Gib** die absolute Häufigkeit der grünen Kugeln **an**.\
+$\#(R)=$ [[  6  ]]
+
+**Gib** die relative Häufigkeit der roten Kugeln **an**.\
+$p(B)=$ [[  2/5  ]]
+@Algebrite.check(2/5)
+
+**Gib** die Wahrscheinlichkeit **an**, eine grüne Kugel zu ziehen.\
+$P(R)=$ [[  3/5  ]]
+@Algebrite.check(3/5)
+
+**Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  1:4  ]]
+
+
+</div>
+
+</section>
+
+
+
+<!-- Chance 0014 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 14:__ In den dargestellten Gefäßen befinden sich Kugeln unterschiedlicher Farben. 
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+__$a)\;\;$__ 
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne13.png)
+
+**Gib** die absolute Häufigkeit der roten Kugeln **an**.\
+$\#(R)=$ [[  6  ]]
+
+**Gib** die relative Häufigkeit der grünen Kugeln **an**.\
+$p(B)=$ [[ 7/24  ]]
+@Algebrite.check(7/24)
+
+**Gib** die Wahrscheinlichkeit **an**, eine grüne Kugel zu ziehen.\
+$P(R)=$ [[  7/24  ]]
+@Algebrite.check(7/24)
+
+**Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  8:15  ]]
+
+
+</div>
+
+<div class="flex-child">
+__$b)\;\;$__
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne14.png)
+
+**Gib** die absolute Häufigkeit der grünen Kugeln **an**.\
+$\#(R)=$ [[  9  ]]
+
+**Gib** die relative Häufigkeit der blauen Kugeln **an**.\
+$p(B)=$ [[  8/23  ]]
+@Algebrite.check(8/23)
+
+**Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
+$P(R)=$ [[  6/23  ]]
+@Algebrite.check(6/23)
+
+**Gib** die Chance **an**, eine grüne Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  9:14  ]]
+
+
+</div>
+
+<div class="flex-child">
+__$c)\;\;$__
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne15.png)
+
+**Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
+$\#(R)=$ [[  9  ]]
+
+**Gib** die relative Häufigkeit der roten Kugeln **an**.\
+$p(B)=$ [[  10/23  ]]
+@Algebrite.check(10/23)
+
+**Gib** die Wahrscheinlichkeit **an**, eine grüne Kugel zu ziehen.\
+$P(R)=$ [[  4/23  ]]
+@Algebrite.check(4/23)
+
+**Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  9:14  ]]
+
+
+</div>
+
+<div class="flex-child">
+__$d)\;\;$__ 
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne16.png)
+
+**Gib** die absolute Häufigkeit der grünen Kugeln **an**.\
+$\#(R)=$ [[  10  ]]
+
+**Gib** die relative Häufigkeit der roten Kugeln **an**.\
+$p(B)=$ [[  8/27  ]]
+@Algebrite.check(8/27)
+
+**Gib** die Wahrscheinlichkeit **an**, eine blaue Kugel zu ziehen.\
+$P(R)=$ [[  9/27  ]]
+@Algebrite.check(9/27)
+
+**Gib** die Chance **an**, eine grüne Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  4:19  ]]
+
+
+</div>
+
+</section>
+
+
+
+<!-- Chance 0015 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 15:__ 
+
+
+<!-- Chance 0016 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 16:__ 
+
+
+<!-- Chance 0017 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 17:__ 
+
+
+<!-- Chance 0018 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 18:__ 
+
+
+<!-- Chance 0019 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 19:__ 
+
+
+<!-- Chance 0020 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 20:__ 
+
+
+<!-- Chance 0021 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 21:__ 
+
+
+<!-- Chance 0022 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 22:__ 
+
+
+<!-- Chance 0023 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 23:__ 
+
+
+<!-- Chance 0024 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 24:__ 
+
+
+
+
+
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
 
 ### Kombinatorik
 

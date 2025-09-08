@@ -42,9 +42,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Wahrscheinlichkeit, sehr leicht, sehr niedrig, Angeben
+tags: Spannweite, arithmetisches Mittel, Median, sehr leicht, niedrig, Angeben
 
-comment: Gib die Wahrscheinlichkeit für das beschriebene Szenario an.
+comment: Bestimme die Eigenschaften von gegebenen Ergebnismengen.
 
 author: Martin Lommatzsch
 
@@ -52,33 +52,46 @@ author: Martin Lommatzsch
 
 
 
+# Eigenschaften von Ergebnismengen
 
-# Wahrscheinlichkeiten angeben
-
-**Gib** die Wahrscheinlichkeit für das beschriebene Szenario **an**. 
-
-
-
-__$a)\;\;$__ In einer Urne befinden sich $17$ grüne und $23$ rote Kugeln. **Gib** die Wahrscheinlichkeit in Prozent **an** eine rote Kugel zu ziehen.
-
-$p=$ [[ 57,5 ]]$\%$ 
+Gegeben sei die folgende Ergebnismenge: \
+$\{ 29,33,28,31,35,24,36,32,28,27,35,34,29,30,35 \}$
 
 
+<section class="flex-container">
 
-__$b)\;\;$__ Ein Glücksrad ist in gleich große Segmente unterteilt. Dabei sind $9$ Felder gelb, $5$ Felder blau und $6$ Felder geld. **Gib** die Wahrscheinlichkeit in Prozent **an**, dass beim Drehen des Glücksrades ein gelbes Feld resultiert.
-
-$p=$ [[  45  ]]$\%$ 
-
-
-
-__$c)\;\;$__ Bei einem Kartenspiel mit $32$ Karten sind $4$ Asse. **Gib** die Wahrscheinlichkeit in Prozent **an** ein Ass als erste Karte zu ziehen.
-
-$p=$ [[ 12,5 ]]$\%$ 
+<div class="flex-child">
+__$a)\;\;$__ **Gib** die Spannweite **an**.\
+$R=$ [[ 12  ]]
+*******************
+$R = x_{max} - x_{min} = 36 - 24 = 12$
+*******************
 
 
-<br>
-<br>
-<br>
-<br>
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__ **Gib** den Median **an**.\
+$\tilde{x}=$ [[ 31  ]]
+*******************
+$\{ 24,27,28,28,29,29,30,\textcolor{red}{31},32,33,34,35,35,35,36 \}$
+*******************
+
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ **Gib** das arithmetische Mittel gerundet auf drei Nachkommastellen **an**.\
+$\bar{x}=$ [[  33,067  ]]
+
+
+</div> 
+
+</section>
+
+
+
+
+
 
 

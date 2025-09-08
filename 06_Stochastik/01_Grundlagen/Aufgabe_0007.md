@@ -42,9 +42,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Binomialkoeffizient, sehr leicht, sehr niedrig, Angeben
+tags: Spannweite, arithmetisches Mittel, Median, sehr leicht, niedrig, Angeben
 
-comment: Gib den Wert des Terms mit Binomialkoeffizienten an.
+comment: Bestimme die Eigenschaften von gegebenen Ergebnismengen.
 
 author: Martin Lommatzsch
 
@@ -53,36 +53,46 @@ author: Martin Lommatzsch
 
 
 
-# Rechnen mit Binomialkoeffizienten
+# Eigenschaften von Ergebnismengen
 
-**Gib** den Wert des Terms **an**
+Gegeben sei die folgende Ergebnismenge: \
+$\{ 7,8,8,6,11,14,12,12,13,8,10,7,7,11,9 \}$
+
 
 <section class="flex-container">
-<div class="flex-child">
 
-__$a)\;\;$__ $  \left( \begin{array}{c} 4 \\ 3 \end{array} \right) = $ [[  4  ]]
+<div class="flex-child">
+__$a)\;\;$__ **Gib** die Spannweite **an**.\
+$R=$ [[  8  ]]
+*******************
+$R = x_{max} - x_{min} = 14 - 6 = 8$
+*******************
+
 
 </div>
 <div class="flex-child">
 
-__$b)\;\;$__ $  \left( \begin{array}{c} 6 \\ 0 \end{array} \right) = $ [[  1  ]]
+__$b)\;\;$__ **Gib** den Median **an**.\
+$\tilde{x}=$ [[  9  ]]
+*******************
+$\{ 6,7,7,7,8,8,8,\textcolor{red}{9},10,11,11,12,12,13,14 \}$
+*******************
+
 
 </div>
 <div class="flex-child">
 
-__$c)\;\;$__ $  \left( \begin{array}{c} 8 \\ 2 \end{array} \right) = $ [[  28  ]]
+__$c)\;\;$__ **Gib** das arithmetische Mittel gerundet auf drei Nachkommastellen **an**.\
+$\bar{x}=$ [[  9,533  ]]
 
-</div>
-<div class="flex-child">
 
-__$d)\;\;$__ $  \left( \begin{array}{c} 7 \\ 4 \end{array} \right) = $ [[  35  ]]
+</div> 
 
-</div>
 </section>
 
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 
 

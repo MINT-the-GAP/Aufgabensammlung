@@ -61,6 +61,7 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/01_15_01_Ungleichungen.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/01_16_01_FakulBinomial.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/01_17_01_Zahlensysteme.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/07_01_01_ChanceWahr.md
 
   - title:  "Algebraische Grundlagen"
     comment: "In dieser Kachel sind Aufgaben für die Algebraischen Grundlagen zu finden."
@@ -692,6 +693,11 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/15_Ungleichungen/Aufgabe_0019.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/15_Ungleichungen/Aufgabe_0020.md
 
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/16_FakulBinomial/Aufgabe_0001.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/16_FakulBinomial/Aufgabe_0002.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/16_FakulBinomial/Aufgabe_0003.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/16_FakulBinomial/Aufgabe_0004.md
+
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/Runden/Aufgabe_0001.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/Runden/Aufgabe_0002.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/Runden/Aufgabe_0003.md
@@ -942,6 +948,16 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/01_Grundlagen/Aufgabe_0013.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/01_Grundlagen/Aufgabe_0014.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/01_Grundlagen/Aufgabe_0015.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/01_Grundlagen/Aufgabe_0016.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/01_Grundlagen/Aufgabe_0017.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/01_Grundlagen/Aufgabe_0018.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/01_Grundlagen/Aufgabe_0019.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/01_Grundlagen/Aufgabe_0020.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/01_Grundlagen/Aufgabe_0021.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/01_Grundlagen/Aufgabe_0022.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/01_Grundlagen/Aufgabe_0023.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/01_Grundlagen/Aufgabe_0024.md
+      - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/01_Grundlagen/Aufgabe_0025.md
 
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/02_Baumdiagramme/Aufgabe_0001.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/02_Baumdiagramme/Aufgabe_0002.md

@@ -42,9 +42,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Fakultät, Bruchrechnung, leicht, niedrig, Bestimme
+tags: Häufigkeit, Chance, Wahrscheinlichkeit, mittel, niedrig, Angeben
 
-comment: Bestimme die Anzahl der Permutationen für das beschriebene Szenario.
+comment: Es wird aus einer Urne gezogen. Kannst du die Chance, die Häufigkeit oder die Wahrscheinlichkeit angeben?
 
 author: Martin Lommatzsch
 
@@ -53,42 +53,107 @@ author: Martin Lommatzsch
 
 
 
-# Permutationsanzahl bestimmen
-
-<br>
-
-__$a)\;\;$__ Es gibt $7$ unterschiedliche Kugeln. **Bestimme** die Anzahl der Permutationen.
-
-[[  5040   ]] 
-**********
-$7! = 5040$
-**********
-
-<br>
-
-__$b)\;\;$__ Es gibt $4$ rote und $2$ blaue Kugeln. **Bestimme** die Anzahl der Permutationen.
-
-[[  15     ]] 
-**********
-$\dfrac{6!}{4!2!} = 15$
-**********
+# Betrachtung von Urnen
 
 
-<br>
-
-__$c)\;\;$__ Es gibt $6$ rote, $2$ grüne und $2$ blaue Kugeln. **Bestimme** die Anzahl der Permutationen.
-
-[[  1260   ]] 
-**********
-$\dfrac{10!}{6!2!2!} = 1260$
-**********
+In den dargestellten Gefäßen befinden sich Kugeln unterschiedlicher Farben. 
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<section class="flex-container">
+
+<div class="flex-child">
+__$a)\;\;$__ 
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne13.png)
+
+**Gib** die absolute Häufigkeit der roten Kugeln **an**.\
+$\#(R)=$ [[  6  ]]
+
+**Gib** die relative Häufigkeit der grünen Kugeln **an**.\
+$p(B)=$ [[ 7/24  ]]
+@Algebrite.check(7/24)
+
+**Gib** die Wahrscheinlichkeit **an**, eine grüne Kugel zu ziehen.\
+$P(R)=$ [[  7/24  ]]
+@Algebrite.check(7/24)
+
+**Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  8:15  ]]
+
+
+</div>
+
+<div class="flex-child">
+__$b)\;\;$__
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne14.png)
+
+**Gib** die absolute Häufigkeit der grünen Kugeln **an**.\
+$\#(R)=$ [[  9  ]]
+
+**Gib** die relative Häufigkeit der blauen Kugeln **an**.\
+$p(B)=$ [[  8/23  ]]
+@Algebrite.check(8/23)
+
+**Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
+$P(R)=$ [[  6/23  ]]
+@Algebrite.check(6/23)
+
+**Gib** die Chance **an**, eine grüne Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  9:14  ]]
+
+
+</div>
+
+<div class="flex-child">
+__$c)\;\;$__
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne15.png)
+
+**Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
+$\#(R)=$ [[  9  ]]
+
+**Gib** die relative Häufigkeit der roten Kugeln **an**.\
+$p(B)=$ [[  10/23  ]]
+@Algebrite.check(10/23)
+
+**Gib** die Wahrscheinlichkeit **an**, eine grüne Kugel zu ziehen.\
+$P(R)=$ [[  4/23  ]]
+@Algebrite.check(4/23)
+
+**Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  9:14  ]]
+
+
+</div>
+
+<div class="flex-child">
+__$d)\;\;$__ 
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne16.png)
+
+**Gib** die absolute Häufigkeit der grünen Kugeln **an**.\
+$\#(R)=$ [[  10  ]]
+
+**Gib** die relative Häufigkeit der roten Kugeln **an**.\
+$p(B)=$ [[  8/27  ]]
+@Algebrite.check(8/27)
+
+**Gib** die Wahrscheinlichkeit **an**, eine blaue Kugel zu ziehen.\
+$P(R)=$ [[  9/27  ]]
+@Algebrite.check(9/27)
+
+**Gib** die Chance **an**, eine grüne Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  4:19  ]]
+
+
+</div>
+
+</section>
+
+
+
+
+
 
 
