@@ -42,9 +42,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Spannweite, arithmetisches Mittel, Median, sehr leicht, niedrig, Angeben
+tags: Chance, Wahrscheinlichkeit, sehr leicht, sehr niedrig, Angeben
 
-comment: Bestimme die Eigenschaften von gegebenen Ergebnismengen.
+comment: Welche Wahrscheinlichkeit versteckt sich hinter dieser Chance?
 
 author: Martin Lommatzsch
 
@@ -53,44 +53,54 @@ author: Martin Lommatzsch
 
 
 
-# Eigenschaften von Ergebnismengen
+# Chance und Wahrscheinlichkeit
 
-Gegeben sei die folgende Ergebnismenge: \
-$\{ 29,33,28,31,35,24,36,32,28,27,35,34,29,30,35 \}$
+
+
+
+**Gib** die angegebene Chance als Wahrscheinlichkeit **an**.
 
 
 <section class="flex-container">
 
 <div class="flex-child">
-__$a)\;\;$__ **Gib** die Spannweite **an**.\
-$R=$ [[ 12  ]]
-*******************
-$R = x_{max} - x_{min} = 36 - 24 = 12$
-*******************
+__$a)\;\;$__ Die Chance wird mit $1:5$ angegeben.
 
-
+$p=$[[ 1/6 ]]
+@Algebrite.check(1/6)
 </div>
 <div class="flex-child">
+__$b)\;\;$__ Die Chance wird mit $4:5$ angegeben.
 
-__$b)\;\;$__ **Gib** den Median **an**.\
-$\tilde{x}=$ [[ 31  ]]
-*******************
-$\{ 24,27,28,28,29,29,30,\textcolor{red}{31},32,33,34,35,35,35,36 \}$
-*******************
-
-
+$p=$[[ 4/9 ]]
+@Algebrite.check(4/9)
 </div>
 <div class="flex-child">
+__$c)\;\;$__ Die Chance wird mit $18:11$ angegeben.
 
-__$c)\;\;$__ **Gib** das arithmetische Mittel gerundet auf drei Nachkommastellen **an**.\
-$\bar{x}=$ [[  33,067  ]]
+$p=$[[ 18/29 ]]
+@Algebrite.check(18/29)
+</div>
+<div class="flex-child">
+__$d)\;\;$__ Die Chance wird mit $13:2$ angegeben.
 
+$p=$[[ 13/15 ]]
+@Algebrite.check(13/15)
+</div>
+<div class="flex-child">
+__$e)\;\;$__ Die Chance wird mit $4:81$ angegeben.
 
-</div> 
+$p=$[[ 4/85 ]]
+@Algebrite.check(4/85)
+</div>
+<div class="flex-child">
+__$f)\;\;$__ Die Chance wird mit $7:111$ angegeben.
+
+$p=$[[ 7/118 ]]
+@Algebrite.check(7/118)
+</div>
 
 </section>
-
-
 
 
 

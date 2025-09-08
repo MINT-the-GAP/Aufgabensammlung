@@ -48434,6 +48434,8 @@ $\{ 7,8,8,6,11,14,12,12,13,8,10,7,7,11,9 \}$
 <section class="flex-container">
 
 <div class="flex-child">
+
+<!-- data-solution-button="5" -->
 __$a)\;\;$__ **Gib** die Spannweite **an**.\
 $R=$ [[  8  ]]
 *******************
@@ -48444,6 +48446,7 @@ $R = x_{max} - x_{min} = 14 - 6 = 8$
 </div>
 <div class="flex-child">
 
+<!-- data-solution-button="5" -->
 __$b)\;\;$__ **Gib** den Median **an**.\
 $\tilde{x}=$ [[  9  ]]
 *******************
@@ -48454,6 +48457,7 @@ $\{ 6,7,7,7,8,8,8,\textcolor{red}{9},10,11,11,12,12,13,14 \}$
 </div>
 <div class="flex-child">
 
+<!-- data-solution-button="5" -->
 __$c)\;\;$__ **Gib** das arithmetische Mittel gerundet auf drei Nachkommastellen **an**.\
 $\bar{x}=$ [[  9,533  ]]
 
@@ -48473,6 +48477,8 @@ $\{ 83,46,55,64,91,75,61,39,84,55,47 \}$
 <section class="flex-container">
 
 <div class="flex-child">
+
+<!-- data-solution-button="5" -->
 __$a)\;\;$__ **Gib** die Spannweite **an**.\
 $R=$ [[ 52  ]]
 *******************
@@ -48483,6 +48489,7 @@ $R = x_{max} - x_{min} = 91 - 39 = 52$
 </div>
 <div class="flex-child">
 
+<!-- data-solution-button="5" -->
 __$b)\;\;$__ **Gib** den Median **an**.\
 $\tilde{x}=$ [[  61  ]]
 *******************
@@ -48493,6 +48500,7 @@ $\{ 39,46,47,55,55,\textcolor{red}{61},64,75,83,84,91 \}$
 </div>
 <div class="flex-child">
 
+<!-- data-solution-button="5" -->
 __$c)\;\;$__ **Gib** das arithmetische Mittel gerundet auf drei Nachkommastellen **an**.\
 $\bar{x}=$ [[  63,636  ]]
 
@@ -48512,6 +48520,8 @@ $\{ 56,54,55,56,57,55,56,54,53,58,55,56,54,52,56,57 \}$
 <section class="flex-container">
 
 <div class="flex-child">
+
+<!-- data-solution-button="5" -->
 __$a)\;\;$__ **Gib** die Spannweite **an**.\
 $R=$ [[  6  ]]
 *******************
@@ -48523,6 +48533,8 @@ $R = x_{max} - x_{min} = 58 - 52 = 8$
 <div class="flex-child">
 
 __$b)\;\;$__ **Gib** den Median **an**.\
+
+<!-- data-solution-button="5" -->
 $\tilde{x}=$ [[ 55  ]]
 *******************
 $\{ 52,53,54,54,54,55,55,\textcolor{red}{55},56,56,56,56,57,57,58  \}$
@@ -48532,6 +48544,7 @@ $\{ 52,53,54,54,54,55,55,\textcolor{red}{55},56,56,56,56,57,57,58  \}$
 </div>
 <div class="flex-child">
 
+<!-- data-solution-button="5" -->
 __$c)\;\;$__ **Gib** das arithmetische Mittel **an**.\
 $\bar{x}=$ [[  51,6  ]]
 
@@ -48551,6 +48564,8 @@ $\{ 29,33,28,31,35,24,36,32,28,27,35,34,29,30,35 \}$
 <section class="flex-container">
 
 <div class="flex-child">
+
+<!-- data-solution-button="5" -->
 __$a)\;\;$__ **Gib** die Spannweite **an**.\
 $R=$ [[ 12  ]]
 *******************
@@ -48561,6 +48576,7 @@ $R = x_{max} - x_{min} = 36 - 24 = 12$
 </div>
 <div class="flex-child">
 
+<!-- data-solution-button="5" -->
 __$b)\;\;$__ **Gib** den Median **an**.\
 $\tilde{x}=$ [[ 31  ]]
 *******************
@@ -48571,6 +48587,7 @@ $\{ 24,27,28,28,29,29,30,\textcolor{red}{31},32,33,34,35,35,35,36 \}$
 </div>
 <div class="flex-child">
 
+<!-- data-solution-button="5" -->
 __$c)\;\;$__ **Gib** das arithmetische Mittel gerundet auf drei Nachkommastellen **an**.\
 $\bar{x}=$ [[  33,067  ]]
 
@@ -48593,17 +48610,21 @@ __$a)\;\;$__
 
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne5.png)
 
+<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  4  ]]
 
+<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der blauen Kugeln **an**.\
 $p(B)=$ [[ 25/29  ]]
 @Algebrite.check(25/29)
 
+<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
 $P(R)=$ [[  4/29  ]]
 @Algebrite.check(4/29)
 
+<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R)=$ [[  25:4  ]]
 
@@ -48615,17 +48636,21 @@ __$b)\;\;$__
 
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne6.png)
 
+<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
 $\#(R)=$ [[  6  ]]
 
+<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der blauen Kugeln **an**.\
 $p(B)=$ [[  6/13  ]]
 @Algebrite.check(6/13)
 
+<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
 $P(R)=$ [[  7/13  ]]
 @Algebrite.check(7/13)
 
+<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R)=$ [[  7:6  ]]
 
@@ -48637,17 +48662,21 @@ __$c)\;\;$__
 
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne7.png)
 
+<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  7  ]]
 
+<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der roten Kugeln **an**.\
 $p(B)=$ [[  7/23  ]]
 @Algebrite.check(7/23)
 
+<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
 $P(R)=$ [[  7/23  ]]
 @Algebrite.check(7/23)
 
+<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine rote Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R)=$ [[  7:16  ]]
 
@@ -48659,17 +48688,21 @@ __$d)\;\;$__
 
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne8.png)
 
+<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  5  ]]
 
+<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der blauen Kugeln **an**.\
 $p(B)=$ [[  27/32  ]]
 @Algebrite.check(27/32)
 
+<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
 $P(R)=$ [[  5/32  ]]
 @Algebrite.check(5/32)
 
+<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R)=$ [[  27:5  ]]
 
@@ -48693,17 +48726,21 @@ __$a)\;\;$__
 
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne1.png)
 
+<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  7  ]]
 
+<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der blauen Kugeln **an**.\
 $p(B)=$ [[ 15/22  ]]
 @Algebrite.check(15/22)
 
+<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
 $P(R)=$ [[ 7/22  ]]
 @Algebrite.check(7/22)
 
+<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine rote Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R)=$ [[  7:15  ]]
 
@@ -48715,17 +48752,21 @@ __$b)\;\;$__
 
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne2.png)
 
+<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  5  ]]
 
+<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der blauen Kugeln **an**.\
 $p(B)=$ [[ 12/17  ]]
 @Algebrite.check(12/17)
 
+<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine blaue Kugel zu ziehen.\
 $P(R)=$ [[ 12/17  ]]
 @Algebrite.check(12/17)
 
+<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine rote Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R)=$ [[  5:12  ]]
 
@@ -48737,17 +48778,21 @@ __$c)\;\;$__
 
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne3.png)
 
+<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
 $\#(R)=$ [[  6  ]]
 
+<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der roten Kugeln **an**.\
 $p(B)=$ [[ 6/12  ]]
 @Algebrite.check(6/12)
 
+<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
 $P(R)=$ [[ 6/12  ]]
 @Algebrite.check(7/22)
 
+<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R)=$ [[  1:1  ]]
 
@@ -48759,17 +48804,21 @@ __$d)\;\;$__
 
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne4.png)
 
+<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  10  ]]
 
+<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der roten Kugeln **an**.\
 $p(B)=$ [[  10/25  ]]
 @Algebrite.check(10/25)
 
+<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine blaue Kugel zu ziehen.\
 $P(R)=$ [[  15/25  ]]
 @Algebrite.check(15/25)
 
+<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R)=$ [[  3:2  ]]
 
@@ -48794,17 +48843,21 @@ __$a)\;\;$__
 
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne9.png)
 
+<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  8  ]]
 
+<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der blauen Kugeln **an**.\
 $p(B)=$ [[ 11/23  ]]
 @Algebrite.check(11/23)
 
+<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine grüne Kugel zu ziehen.\
 $P(R)=$ [[ 4/23  ]]
 @Algebrite.check(4/23)
 
+<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine rote Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R)=$ [[  8:15  ]]
 
@@ -48816,17 +48869,21 @@ __$b)\;\;$__
 
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne10.png)
 
+<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der grünen Kugeln **an**.\
 $\#(R)=$ [[  4  ]]
 
+<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der blauen Kugeln **an**.\
 $p(B)=$ [[  4/10  ]]
 @Algebrite.check(4/10)
 
+<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine grüne Kugel zu ziehen.\
 $P(R)=$ [[  4/10  ]]
 @Algebrite.check(4/10)
 
+<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine rote Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R)=$ [[  1:4  ]]
 
@@ -48838,17 +48895,21 @@ __$c)\;\;$__
 
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne11.png)
 
+<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
 $\#(R)=$ [[  9  ]]
 
+<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der grüne Kugeln **an**.\
 $p(B)=$ [[  7/23  ]]
 @Algebrite.check(7/23)
 
+<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine blaue Kugel zu ziehen.\
 $P(R)=$ [[  9/23  ]]
 @Algebrite.check(9/23)
 
+<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine grüne Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R)=$ [[  7:16  ]]
 
@@ -48860,17 +48921,21 @@ __$d)\;\;$__
 
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne12.png)
 
+<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der grünen Kugeln **an**.\
 $\#(R)=$ [[  6  ]]
 
+<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der roten Kugeln **an**.\
 $p(B)=$ [[  2/5  ]]
 @Algebrite.check(2/5)
 
+<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine grüne Kugel zu ziehen.\
 $P(R)=$ [[  3/5  ]]
 @Algebrite.check(3/5)
 
+<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R)=$ [[  1:4  ]]
 
@@ -48894,17 +48959,21 @@ __$a)\;\;$__
 
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne13.png)
 
+<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  6  ]]
 
+<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der grünen Kugeln **an**.\
 $p(B)=$ [[ 7/24  ]]
 @Algebrite.check(7/24)
 
+<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine grüne Kugel zu ziehen.\
 $P(R)=$ [[  7/24  ]]
 @Algebrite.check(7/24)
 
+<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R)=$ [[  8:15  ]]
 
@@ -48916,17 +48985,21 @@ __$b)\;\;$__
 
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne14.png)
 
+<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der grünen Kugeln **an**.\
 $\#(R)=$ [[  9  ]]
 
+<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der blauen Kugeln **an**.\
 $p(B)=$ [[  8/23  ]]
 @Algebrite.check(8/23)
 
+<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
 $P(R)=$ [[  6/23  ]]
 @Algebrite.check(6/23)
 
+<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine grüne Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R)=$ [[  9:14  ]]
 
@@ -48938,17 +49011,21 @@ __$c)\;\;$__
 
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne15.png)
 
+<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
 $\#(R)=$ [[  9  ]]
 
+<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der roten Kugeln **an**.\
 $p(B)=$ [[  10/23  ]]
 @Algebrite.check(10/23)
 
+<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine grüne Kugel zu ziehen.\
 $P(R)=$ [[  4/23  ]]
 @Algebrite.check(4/23)
 
+<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R)=$ [[  9:14  ]]
 
@@ -48960,17 +49037,21 @@ __$d)\;\;$__
 
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne16.png)
 
+<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der grünen Kugeln **an**.\
 $\#(R)=$ [[  10  ]]
 
+<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der roten Kugeln **an**.\
 $p(B)=$ [[  8/27  ]]
 @Algebrite.check(8/27)
 
+<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine blaue Kugel zu ziehen.\
 $P(R)=$ [[  9/27  ]]
 @Algebrite.check(9/27)
 
+<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine grüne Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R)=$ [[  4:19  ]]
 
@@ -48984,74 +49065,341 @@ $R(R)=$ [[  4:19  ]]
 <!-- Chance 0015 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 15:__ 
+__Aufgabe 15:__ **Gib** die angegebene Chance als Wahrscheinlichkeit **an**.
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+__$a)\;\;$__ Die Chance wird mit $2:3$ angegeben.
+
+<!-- data-solution-button="5" -->
+$p=$[[ 2/5 ]]
+@Algebrite.check(2/5)
+</div>
+<div class="flex-child">
+__$b)\;\;$__ Die Chance wird mit $5:2$ angegeben.
+
+<!-- data-solution-button="5" -->
+$p=$[[ 5/7 ]]
+@Algebrite.check(5/7)
+</div>
+<div class="flex-child">
+__$c)\;\;$__ Die Chance wird mit $11:9$ angegeben.
+
+<!-- data-solution-button="5" -->
+$p=$[[ 11/20 ]]
+@Algebrite.check(11/20)
+</div>
+<div class="flex-child">
+__$d)\;\;$__ Die Chance wird mit $17:23$ angegeben.
+
+<!-- data-solution-button="5" -->
+$p=$[[ 17/40 ]]
+@Algebrite.check(17/40)
+</div>
+<div class="flex-child">
+__$e)\;\;$__ Die Chance wird mit $1:22$ angegeben.
+
+<!-- data-solution-button="5" -->
+$p=$[[ 1/23 ]]
+@Algebrite.check(1/23)
+</div>
+<div class="flex-child">
+__$f)\;\;$__ Die Chance wird mit $45:2$ angegeben.
+
+<!-- data-solution-button="5" -->
+$p=$[[ 45/47 ]]
+@Algebrite.check(45/47)
+</div>
+
+</section>
 
 
 <!-- Chance 0016 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 16:__ 
+__Aufgabe 16:__ **Gib** die angegebene Chance als Wahrscheinlichkeit **an**.
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+__$a)\;\;$__ Die Chance wird mit $1:5$ angegeben.
+
+<!-- data-solution-button="5" -->
+$p=$[[ 1/6 ]]
+@Algebrite.check(1/6)
+</div>
+<div class="flex-child">
+__$b)\;\;$__ Die Chance wird mit $4:5$ angegeben.
+
+<!-- data-solution-button="5" -->
+$p=$[[ 4/9 ]]
+@Algebrite.check(4/9)
+</div>
+<div class="flex-child">
+__$c)\;\;$__ Die Chance wird mit $18:11$ angegeben.
+
+<!-- data-solution-button="5" -->
+$p=$[[ 18/29 ]]
+@Algebrite.check(18/29)
+</div>
+<div class="flex-child">
+__$d)\;\;$__ Die Chance wird mit $13:2$ angegeben.
+
+<!-- data-solution-button="5" -->
+$p=$[[ 13/15 ]]
+@Algebrite.check(13/15)
+</div>
+<div class="flex-child">
+__$e)\;\;$__ Die Chance wird mit $4:81$ angegeben.
+
+<!-- data-solution-button="5" -->
+$p=$[[ 4/85 ]]
+@Algebrite.check(4/85)
+</div>
+<div class="flex-child">
+__$f)\;\;$__ Die Chance wird mit $7:111$ angegeben.
+
+<!-- data-solution-button="5" -->
+$p=$[[ 7/118 ]]
+@Algebrite.check(7/118)
+</div>
+
+</section>
+
+
+
+
 
 
 <!-- Chance 0017 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 17:__ 
+__Aufgabe 17:__ **Gib** die Wahrscheinlichkeit für das beschriebene Szenario **an**.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__ Eine ideale Münze wird hochgeworfen. Beim Aufkommen liegt die Kopf-Seite oben.
+
+<!-- data-solution-button="5" -->
+$p=$[[  1/2  ]]
+@Algebrite.check(1/2)
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__ Mit einem idealen sechsseitigen Würfel wird gewürfelt. Nach dem Wurf ist die 4 oben.
+
+<!-- data-solution-button="5" -->
+$p=$[[  1/6  ]]
+@Algebrite.check(1/6)
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ Mit einem idealen zwanzigseitigen Würfel wird gewürfelt. Nach dem Wurf ist keine 13 oben.
+
+<!-- data-solution-button="5" -->
+$p=$[[  19/20  ]]
+@Algebrite.check(19/20)
+</div>
+<div class="flex-child">
+
+__$d)\;\;$__ Ein Glücksrad ist in 25 gleichgroße Flächen eingeteilt. Zwei dieser Flächen sind rot und es kommt auf einer roten Fläche zum Stoppen.
+
+<!-- data-solution-button="5" -->
+$p=$[[  2/25  ]]
+@Algebrite.check(2/25)
+</div>
+<div class="flex-child">
+
+__$e)\;\;$__ Ein Glücksrad ist in 10 gleichgroße unterschiedlich gefärbte Flächen eingeteilt. Das Rad kommt auf einer orangen Fläche zum Stoppen.
+
+<!-- data-solution-button="5" -->
+$p=$[[  1/10  ]]
+@Algebrite.check(1/10)
+</div>
+</section>
+
+
+
+
 
 
 <!-- Chance 0018 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 18:__ 
+__Aufgabe 18:__ **Gib** die Wahrscheinlichkeit für das beschriebene Szenario **an**.
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__ Mit einem idealen achtsseitigen Würfel wird gewürfelt. Nach dem Wurf ist die 7 oben.
+
+<!-- data-solution-button="5" -->
+$p=$[[  1/8  ]]
+@Algebrite.check(1/8)
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__ Ein Glücksrad ist in vier gleichgroße unterschiedlich gefärbte Flächen eingeteilt. Das Rad kommt auf einer blauen Fläche zum Stoppen.
+
+<!-- data-solution-button="5" -->
+$p=$[[  1/4  ]]
+@Algebrite.check(1/4)
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ In einer Losbox befinden sich 3 Gewinnlose und 7 Nieten. Es wird eine Niete gezogen.
+
+<!-- data-solution-button="5" -->
+$p=$[[  7/10  ]]
+@Algebrite.check(7/10)
+</div>
+<div class="flex-child">
+
+__$d)\;\;$__ Mit einem idealen zwölfseitigen Würfel wird gewürfelt. Nach dem Wurf ist keine 13 oben.
+
+<!-- data-solution-button="5" -->
+$p=$[[  1  ]]
+@Algebrite.check(1)
+</div>
+<div class="flex-child">
+
+__$e)\;\;$__ Mit einem idealen vierseitigen Würfel wird gewürfelt. Nach dem Wurf liegt eine Primzahl oben.
+
+<!-- data-solution-button="5" -->
+$p=$[[  1/2  ]]
+@Algebrite.check(1/2)
+</div>
+</section>
+
+
+
+
+
 
 
 <!-- Chance 0019 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 19:__ 
+__Aufgabe 19:__ **Gib** die Wahrscheinlichkeit für das beschriebene Szenario **an**. 
+
+
+
+__$a)\;\;$__ In einer Urne befinden sich $24$ blaue, $18$ grüne und $8$ rote Kugeln. **Gib** die Wahrscheinlichkeit in Prozent **an** eine grüne Kugel zu ziehen.
+
+<!-- data-solution-button="5" -->
+$p=$ [[ 36  ]]$\%$ 
+
+
+
+__$b)\;\;$__ Ein Glücksrad ist in gleich große Segmente unterteilt. Dabei sind $5$ Felder rot, $13$ Felder weiß und $7$ Felder schwarz. **Gib** die Wahrscheinlichkeit in Prozent **an**, dass beim Drehen des Glücksrades ein rotes Feld resultiert.
+
+<!-- data-solution-button="5" -->
+$p=$ [[ 20  ]]$\%$ 
+
+
+
+__$c)\;\;$__ Bei einer Stichprobe im Supermarkt von $125$ Produkten waren $4$ fehlerhaft. **Gib** die Wahrscheinlichkeit in Prozent **an** ein fehlerhaftes Produkt zu kaufen.
+
+<!-- data-solution-button="5" -->
+$p=$ [[ 3,2 ]]$\%$ 
 
 
 <!-- Chance 0020 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 20:__ 
+__Aufgabe 20:__ **Gib** die Wahrscheinlichkeit für das beschriebene Szenario **an**. 
+
+
+
+__$a)\;\;$__ In einer Urne befinden sich $17$ grüne und $23$ rote Kugeln. **Gib** die Wahrscheinlichkeit in Prozent **an** eine rote Kugel zu ziehen.
+
+<!-- data-solution-button="5" -->
+$p=$ [[ 57,5 ]]$\%$ 
+
+
+
+__$b)\;\;$__ Ein Glücksrad ist in gleich große Segmente unterteilt. Dabei sind $9$ Felder gelb, $5$ Felder blau und $6$ Felder geld. **Gib** die Wahrscheinlichkeit in Prozent **an**, dass beim Drehen des Glücksrades ein gelbes Feld resultiert.
+
+<!-- data-solution-button="5" -->
+$p=$ [[  45  ]]$\%$ 
+
+
+
+__$c)\;\;$__ Bei einem Kartenspiel mit $32$ Karten sind $4$ Asse. **Gib** die Wahrscheinlichkeit in Prozent **an** ein Ass als erste Karte zu ziehen.
+
+<!-- data-solution-button="5" -->
+$p=$ [[ 12,5 ]]$\%$ 
+
+
+
 
 
 <!-- Chance 0021 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 21:__ 
+__Aufgabe 21:__ **Gib** die Wahrscheinlichkeit für das beschriebene Szenario **an**. 
+
+
+
+__$a)\;\;$__ In einer Urne befinden sich $9$ weiße, $22$ gelbe und $29$ schwarze Kugeln. **Gib** die Wahrscheinlichkeit in Prozent **an** eine weiße Kugel zu ziehen.
+
+<!-- data-solution-button="5" -->
+$p=$ [[  15   ]]$\%$ 
+
+
+
+__$b)\;\;$__ Ein Glücksrad ist in gleich große Segmente unterteilt. Dabei sind $17$ Felder rot und $63$ Felder schwarz. **Gib** die Wahrscheinlichkeit in Prozent **an**, dass beim Drehen des Glücksrades ein schwarzes Feld resultiert.
+
+<!-- data-solution-button="5" -->
+$p=$ [[ 78,75 ]]$\%$ 
+
+
+
+__$c)\;\;$__ Eine Reißzwecke wurde $70$-mal hochgeworfen und landete $49$-mal auf der Seite. **Gib** die Wahrscheinlichkeit in Prozent **an**, dass die Reißzwecke nicht auf der Seite landet.
+
+<!-- data-solution-button="5" -->
+$p=$ [[  30   ]]$\%$ 
+
 
 
 <!-- Chance 0022 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 22:__ 
-
-
-<!-- Chance 0023 -->
-
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 23:__ 
-
-
-<!-- Chance 0024 -->
-
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-__Aufgabe 24:__ 
+__Aufgabe 22:__ **Gib** die Wahrscheinlichkeit für das beschriebene Szenario **an**. 
 
 
 
+__$a)\;\;$__ In einer Urne befinden sich $25$ rote und $15$ grüne Kugeln. **Gib** die Wahrscheinlichkeit in Prozent **an** eine rote Kugel zu ziehen.
+
+<!-- data-solution-button="5" -->
+$p=$ [[ 62,5 ]]$\%$ 
+
+
+
+__$b)\;\;$__ Ein Glücksrad ist in gleich große Segmente unterteilt. Dabei sind $24$ Felder blau, $36$ Felder gelb und $15$ Felder schwarz. **Gib** die Wahrscheinlichkeit in Prozent **an**, dass beim Drehen des Glücksrades ein blaues Feld resultiert.
+
+<!-- data-solution-button="5" -->
+$p=$ [[ 32   ]]$\%$ 
+
+
+
+__$c)\;\;$__ In einer Packung Streichhölzer sind beim Anzünden durch ein und dieselbe Person $5$ zerbrochen, während $35$ heil blieben. **Gib** die Wahrscheinlichkeit in Prozent **an**, dass ein Streichholz beim Anzünden durch diese Person zerbricht.
+
+<!-- data-solution-button="5" -->
+$p=$ [[ 12,5  ]]$\%$ 
 
 
 
 
-
-<section class="flex-container">
-<div class="flex-child">
-
-</div>
-</section>
 
 
 
@@ -49066,7 +49414,284 @@ __Aufgabe 24:__
 
 ### Kombinatorik
 
+
+
+
+
+
+{{|>}}
+***************************
+Die *Kombinatorik* ist ein Teilgebiet der Mathematik, welches sich mit der *Abzählbarkeit* bei *diskreten* Prozessen wie dem Anordnen von Kugeln beschäftigt. In diesem Buch wird im Wesentlichen nur auf die Aspekte eingegangen, die für ein Verständnis der grundlegenden *stochastischen* und *statistischen* Grundlagen benötigt werden.  Aus diesem Grund soll die Anordnungsmöglichkeit von unterschiedlich farbigen Kugeln nach ihrer Anzahl der Startpunkt sein. Um $0$ unterschiedliche Kugeln anzuordnen gibt es nur eine Anordnungsmöglichkeit, da nichts anzuordnen ebenfalls eine Anordnung ist und somit den Ausgangspunkt jeglicher Betrachtung bildet. In der folgenden Abbildung sind alle Anordnungen von Kugeln mit wachsender Anzahl (bis $n=4$) dargestellt, wobei die Anordnung von oben nach unten betrachtet werden muss, während die jeweiligen Blöcke $n$ darstellten und bei $n=0$ starten.
+
+
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/kombi1.png)
+
+
+
+{{|>}} Erkennbar wird, dass die Anzahl der Anordnungen, die sogenannten *Permutationen*, kontinuierlich ansteigen. Auch wird deutlich, dass bei der Anordnung für $n=3$	die Elemente von $n=2$ und bei der Anordnung für $n=4$	die Elemente von $n=3$ wiederzufinden sind, was durch die gestrichelten Linien gezeigt wird. Die Gesamtanzahl der *Permutationen* kann durch die *Fakultät* beschrieben werden. Dies lässt sich Anhand des Beispiels für $n=4$ begründen, da also für die erste Kugel vier Optionen zur Auswahl stehen, danach können für die gewählte Kugel an der zweiten Position aus drei Optionen gewählt werden, danach aus zwei Optionen und abschließend nur noch aus einer Option, sodass sich $4 \cdot 3 \cdot 2 \cdot 1 = 4!$ *Permutationen* ergeben. 
+
+
+{{|>}} Werden die *Permutationen* von mehreren Kugeln gleicher Farbe betrachtet, werden die *Permutationen*, die eine Wiederholung darstellen nicht extra gewertet.
+
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/kombi2.png)
+
+
+{{|>}} In dem gezeigten Beispiel sind vier Kugeln zu sehen, welche nur auf die Farben rot und blau beschränkt sind. Von links nach rechts wächst in den Blöcken die Anzahl der blauen Kugeln. Deutlich zu erkennen ist, dass es stets einen Block mehr gibt als die *Gesamtanzahl* der Kugeln. Auch die *Symmetrie* ist gut zu erkennen, da es keinen Unterschied in der Anzahl der *Permutationen* macht, welche Kugel welche Farbe hat, sondern lediglich die *Differenz* zwischen den roten und blauen Kugeln. Da allerdings bei $n=4$ Kugeln generell $24$ *Permutationen* bestehen, müssen die *Permutationen* der jeweiligen Blöcke durch eine stets gleiche Rechenoperation im Bezug zur Anzahl der jeweiligen Farbe erzeugt werden. Dies ist möglich, wenn durch die Anzahl der *Permutationen* gleicher Farbe *dividiert* wird, was bei zwei Farben auch durch den *Binominialkoeffizienten* dargestellt wird:
+
+
+$$
+\begin{align*}
+\dfrac{4!}{4! \cdot 0!} = 1 \qquad \dfrac{4!}{3! \cdot 1!} = 4 \qquad \dfrac{4!}{2! \cdot 2!} = 6 \qquad \dfrac{4!}{1! \cdot 3!} = 4 \qquad \dfrac{4!}{0! \cdot 4!} = 1
+\end{align*}
+$$
+
+
+{{|>}} Dies kann durch die *Anzahlfunktion* $\#$ wie folgt verallgemeinert werden: 
+
+
+$$
+\begin{align*}
+\# P &= \frac{\#K!}{\#F_1!\#F_2!...\#F_N!} = \frac{\#K!}{\prod\limits_{i=1}^N\#F_i!} \;\; , \\
+\end{align*}
+$$
+
+
+{{|>}} wobei die Anzahl der *Permutationen* $\#P$ gegeben ist durch die *Fakultät* der Anzahl aller Kugeln $\#K$ *dividiert* durch das *Produkt* der Anzahl der jeweiligen farbigen Kugeln $\#F_1$. Dabei gibt der *Index* die Farbe an und $N$ die gesamte Anzahl aller Farben. 
+
+
+{{|>}} Ähnlich wie bei der wachsenden Anzahl von Kugeln mit neuen Farben, kann auch die Umkehrung betrachtet werden, bei der die Anzahl der unterschiedlichen farbigen Kugeln und deren Maximalanzahl gegeben ist. Im folgenden alle Anordnungsoptionen für zwei Farben mit unterschiedlicher Maximalanzahl von Kugeln $n$. 
+
+
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/kombi3.png)
+
+{{|>}} Für drei Farben mit unterschiedlicher Maximalanzahl von Kugeln $n$ ergibt sich das folgende Bild:	
+
+
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/kombi4.png)
+
+
+{{|>}} Für vier Farben mit unterschiedlicher Maximalanzahl von Kugeln $n$ ergibt sich das folgende Bild:	
+
+
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/kombi5.png)
+
+
+{{|>}} Dies Muster lässt sich vorsetzen, sodass sich für $n=5$ die Anordnungsoptionen $1 \stackrel{\cdot 5}{\longrightarrow} 5 \stackrel{\cdot 4}{\longrightarrow} 20 \stackrel{\cdot 3}{\longrightarrow} 60 \stackrel{\cdot 2}{\longrightarrow} 120 \stackrel{\cdot 1}{\longrightarrow} 120 $	 und für $n=6$ die Anordnungsoptionen $1 \stackrel{\cdot 6}{\longrightarrow} 6 \stackrel{\cdot 5}{\longrightarrow} 30 \stackrel{\cdot 4}{\longrightarrow} 120 \stackrel{\cdot 3}{\longrightarrow} 360 \stackrel{\cdot 2}{\longrightarrow} 720   \stackrel{\cdot 1}{\longrightarrow} 720 $	ergeben. \\
+
+
+
+{{|>}} Generell gilt, dass bei Aufzeichnen von Kombinationen (oder Anordnungsmöglichkeiten) ein Schema überlegt werden sollte, da es sonst zu Dopplungen kommen kann oder gar Anordnungsoptionen übersehen werden können. Aus diesem Grund empfiehlt es sich, dass zunächst das erste Element (hier Kugelfarbe) festgesetzt wird, dann das zweite und so weiter. Ist eine erste Anordnung gefunden, sollten die letzten beiden Elemente vertauscht werden. Anschließend die letzten drei Elemente, wobei es sich empfiehlt, das drittletzte Element nur einmal zu wechseln bis die beiden letzten Elemente wieder vertauscht wurden. Dies kann auch als *Baumdiagramm* dargestellt werden: 
+
+
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/kombi6.png)
+
+
+{{|>}} wobei von den vier Anfangspfaden aus Platzgründen nur einer dargestellt wurde. 
+
+
+
+{{|>}} Werden Kugeln aus einer Urne gezogen, handelt es sich um ein *Zufallsexperiment* und die *Ereignisse* können in Treffer und Nichttreffer einsortiert werden, sodass in der Regel nur zwei *Ereignisse* betrachten werden müssen. In der folgenden Darstellung sind mit $n$ die Anzahl der Ziehungen nach unten aufgetragen, während alle möglichen *Ergebnisse* der Ziehungen in Blöcken gleicher *Häufigkeit* in den jeweiligen Zeilen visualisiert sind. 
+	
+
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/kombi7.png)
+
+
+
+{{|>}} 
+***************************
+Deutlich zu erkennen ist, dass die Anzahl der möglichen *Ergebnisse* mit dem *Quadrat* der Anzahl der Ziehungen zunimmt. Auch sind die verschiedenen *Permutationen* für die gleichen *Häufigkeiten* zu erkennen, sodass dies als die Anzahl der *Pfade*, die unter Vernachlässigung der Reihenfolge zum gleichen *Ergebnis* führen angesehen werden kann. Die jeweiligen *Permutationsmöglichkeiten* sind bei den *Baumdiagrammen* gegeben durch die *Binomialkoeffzienten*, welche schon aus dem Kapitel "`Algebraische Grundlagen"' bekannt sind. So kann bei zwei Farben die Anzahl der *Pfade* darüber bestimmt werden, indem das *Pascal'sche Dreieck* betrachtet wird. Für mehr Farben ergeben sich auch mehr mögliche *Permutationen*. Die verschiedenen *Permutationen* für die jeweiligen *Pfade* bei mehreren Farben können über die *Reihe*
+
+
+$$
+\begin{align*}
+\left(\sum_{i=1}^{N} F_i \right)^n \;\; , \\
+\end{align*}
+$$
+
+
+ wobei $n$ der Anzahl der Ziehungen entspricht.
+
+***************************
+
+
+
+
+
+***************************
+
+
+
+
+
+
+
+
+
+
+
+#### Übung - Kombinatorik
+
 Under Construction
+
+
+<!-- Chance 0023 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 1:__ **Bestimme** die Anzahl der Permutationen.
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__ Es gibt $6$ unterschiedliche Kugeln. 
+
+<!-- data-solution-button="5" -->
+[[  720    ]] 
+**********
+$6! = 720$
+**********
+
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__ Es gibt $5$ rote und $3$ blaue Kugeln. 
+
+<!-- data-solution-button="5" -->
+[[  56     ]] 
+**********
+$\dfrac{8!}{5!3!} = 56$
+**********
+
+
+</div>
+<div class="flex-child">
+
+
+__$c)\;\;$__ Es gibt $9$ rote und $3$ blaue Kugeln. 
+
+<!-- data-solution-button="5" -->
+[[  220    ]] 
+**********
+$\dfrac{12!}{6!3!} = 220$
+**********
+
+</div>
+</section>
+
+
+
+
+
+
+<!-- Chance 0024 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 2:__ **Bestimme** die Anzahl der Permutationen.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__ Es gibt $7$ unterschiedliche Kugeln. 
+
+<!-- data-solution-button="5" -->
+[[  5040   ]] 
+**********
+$7! = 5040$
+**********
+
+</div>
+<div class="flex-child">
+
+
+__$b)\;\;$__ Es gibt $4$ rote und $2$ blaue Kugeln.
+
+<!-- data-solution-button="5" -->
+[[  15     ]] 
+**********
+$\dfrac{6!}{4!2!} = 15$
+**********
+
+
+</div>
+<div class="flex-child">
+
+
+__$c)\;\;$__ Es gibt $6$ rote, $2$ grüne und $2$ blaue Kugeln.
+
+<!-- data-solution-button="5" -->
+[[  1260   ]] 
+**********
+$\dfrac{10!}{6!2!2!} = 1260$
+**********
+
+
+</div>
+</section>
+
+
+
+
+
+<!-- Chance 0025 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 3:__ **Bestimme** die Anzahl der Permutationen.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__ Es gibt $5$ unterschiedliche Kugeln. 
+
+<!-- data-solution-button="5" -->
+[[  120    ]] 
+**********
+$6! = 720$
+**********
+
+</div>
+<div class="flex-child">
+
+
+__$b)\;\;$__ Es gibt $13$ rote und $2$ blaue Kugeln.
+
+<!-- data-solution-button="5" -->
+[[  105    ]] 
+**********
+$\dfrac{15!}{13!2!} = 105$
+**********
+
+
+</div>
+<div class="flex-child">
+
+
+__$c)\;\;$__ Es gibt $1$ rote, $2$ grüne und $9$ blaue Kugeln.
+
+<!-- data-solution-button="5" -->
+[[   660   ]] 
+**********
+$\dfrac{12!}{9!2!1!} = 660$
+**********
+
+</div>
+</section>
+
+
+
+
 
 ### Baumdiagramme
 

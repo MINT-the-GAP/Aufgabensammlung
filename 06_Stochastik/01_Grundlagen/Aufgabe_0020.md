@@ -76,9 +76,9 @@ __$c)\;\;$__ Bei einem Kartenspiel mit $32$ Karten sind $4$ Asse. **Gib** die Wa
 $p=$ [[ 12,5 ]]$\%$ 
 
 
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 
 

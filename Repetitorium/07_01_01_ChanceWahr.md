@@ -42,15 +42,15 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Erklärung, Fakultät, Binomialkoeffizient
+tags: Erklärung, Chance, Wahrscheinlichkeit, Häufigkeit, Median, arithmetische Mittelwert, Spannweite
 
-comment: In diesem Abschnitt werden Fakultäten und Binomialkoeffizienten ausführlich erklärt.
+comment: In diesem Abschnitt werden die Grundlagen der Stochastik ausführlich erklärt.
 
 author: Martin Lommatzsch
 
 -->
 
-# Fakultäten und Binomialkoeffizienten
+# Grundlagen der Stochastik
 
 
 

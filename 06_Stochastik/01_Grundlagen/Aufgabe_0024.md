@@ -55,18 +55,25 @@ author: Martin Lommatzsch
 
 # Permutationsanzahl bestimmen
 
-<br>
 
-__$a)\;\;$__ Es gibt $7$ unterschiedliche Kugeln. **Bestimme** die Anzahl der Permutationen.
+**Bestimme** die Anzahl der Permutationen.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__ Es gibt $7$ unterschiedliche Kugeln. 
 
 [[  5040   ]] 
 **********
 $7! = 5040$
 **********
 
-<br>
+</div>
+<div class="flex-child">
 
-__$b)\;\;$__ Es gibt $4$ rote und $2$ blaue Kugeln. **Bestimme** die Anzahl der Permutationen.
+
+__$b)\;\;$__ Es gibt $4$ rote und $2$ blaue Kugeln.
 
 [[  15     ]] 
 **********
@@ -74,9 +81,11 @@ $\dfrac{6!}{4!2!} = 15$
 **********
 
 
-<br>
+</div>
+<div class="flex-child">
 
-__$c)\;\;$__ Es gibt $6$ rote, $2$ grüne und $2$ blaue Kugeln. **Bestimme** die Anzahl der Permutationen.
+
+__$c)\;\;$__ Es gibt $6$ rote, $2$ grüne und $2$ blaue Kugeln.
 
 [[  1260   ]] 
 **********
@@ -84,11 +93,13 @@ $\dfrac{10!}{6!2!2!} = 1260$
 **********
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+</div>
+</section>
+
+
+
+
+
+
 
 

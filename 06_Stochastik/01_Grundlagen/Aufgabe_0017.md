@@ -42,9 +42,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Spannweite, arithmetisches Mittel, Median, sehr leicht, niedrig, Angeben
+tags: Wahrscheinlichkeit, sehr leicht, sehr niedrig, Angeben
 
-comment: Bestimme die Eigenschaften von gegebenen Ergebnismengen.
+comment: Welcher Wahrscheinlichkeitswert ist hier beschrieben?
 
 author: Martin Lommatzsch
 
@@ -53,45 +53,46 @@ author: Martin Lommatzsch
 
 
 
-# Eigenschaften von Ergebnismengen
+# Wahrscheinlichkeiten angeben
 
-Gegeben sei die folgende Ergebnismenge: \
-$\{ 29,33,28,31,35,24,36,32,28,27,35,34,29,30,35 \}$
+
+**Gib** die Wahrscheinlichkeit für das beschriebene Szenario **an**.
+
 
 
 <section class="flex-container">
 
 <div class="flex-child">
-__$a)\;\;$__ **Gib** die Spannweite **an**.\
-$R=$ [[ 12  ]]
-*******************
-$R = x_{max} - x_{min} = 36 - 24 = 12$
-*******************
+__$a)\;\;$__ Eine ideale Münze wird hochgeworfen. Beim Aufkommen liegt die Kopf-Seite oben.
 
-
+$p=$[[  1/2  ]]
+@Algebrite.check(1/2)
 </div>
 <div class="flex-child">
+__$b)\;\;$__ Mit einem idealen sechsseitigen Würfel wird gewürfelt. Nach dem Wurf ist die 4 oben.
 
-__$b)\;\;$__ **Gib** den Median **an**.\
-$\tilde{x}=$ [[ 31  ]]
-*******************
-$\{ 24,27,28,28,29,29,30,\textcolor{red}{31},32,33,34,35,35,35,36 \}$
-*******************
-
-
+$p=$[[  1/6  ]]
+@Algebrite.check(1/6)
 </div>
 <div class="flex-child">
+__$c)\;\;$__ Mit einem idealen zwanzigseitigen Würfel wird gewürfelt. Nach dem Wurf ist keine 13 oben.
 
-__$c)\;\;$__ **Gib** das arithmetische Mittel gerundet auf drei Nachkommastellen **an**.\
-$\bar{x}=$ [[  33,067  ]]
+$p=$[[  19/20  ]]
+@Algebrite.check(19/20)
+</div>
+<div class="flex-child">
+__$d)\;\;$__ Ein Glücksrad ist in 25 gleichgroße Flächen eingeteilt. Zwei dieser Flächen sind rot und es kommt auf einer roten Fläche zum Stoppen.
 
+$p=$[[  2/25  ]]
+@Algebrite.check(2/25)
+</div>
+<div class="flex-child">
+__$e)\;\;$__ Ein Glücksrad ist in 10 gleichgroße unterschiedlich gefärbte Flächen eingeteilt. Das Rad kommt auf einer orangen Fläche zum Stoppen.
 
-</div> 
-
+$p=$[[  1/10  ]]
+@Algebrite.check(1/10)
+</div>
 </section>
-
-
-
 
 
 

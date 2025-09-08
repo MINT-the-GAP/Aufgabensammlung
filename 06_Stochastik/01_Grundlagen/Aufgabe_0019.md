@@ -76,9 +76,9 @@ __$c)\;\;$__ Bei einer Stichprobe im Supermarkt von $125$ Produkten waren $4$ fe
 $p=$ [[ 3,2 ]]$\%$ 
 
 
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 
 

@@ -55,18 +55,26 @@ author: Martin Lommatzsch
 
 # Permutationsanzahl bestimmen
 
-<br>
 
-__$a)\;\;$__ Es gibt $6$ unterschiedliche Kugeln. **Bestimme** die Anzahl der Permutationen.
+**Bestimme** die Anzahl der Permutationen.
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__ Es gibt $6$ unterschiedliche Kugeln. 
 
 [[  720    ]] 
 **********
 $6! = 720$
 **********
 
-<br>
 
-__$b)\;\;$__ Es gibt $5$ rote und $3$ blaue Kugeln. **Bestimme** die Anzahl der Permutationen.
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__ Es gibt $5$ rote und $3$ blaue Kugeln. 
 
 [[  56     ]] 
 **********
@@ -74,21 +82,25 @@ $\dfrac{8!}{5!3!} = 56$
 **********
 
 
-<br>
+</div>
+<div class="flex-child">
 
-__$c)\;\;$__ Es gibt $9$ rote und $3$ blaue Kugeln. **Bestimme** die Anzahl der Permutationen.
+
+__$c)\;\;$__ Es gibt $9$ rote und $3$ blaue Kugeln. 
 
 [[  220    ]] 
 **********
 $\dfrac{12!}{6!3!} = 220$
 **********
 
+</div>
+</section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+
+
 
 

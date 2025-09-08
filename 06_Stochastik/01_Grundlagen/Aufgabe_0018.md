@@ -42,9 +42,10 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Spannweite, arithmetisches Mittel, Median, sehr leicht, niedrig, Angeben
 
-comment: Bestimme die Eigenschaften von gegebenen Ergebnismengen.
+tags: Wahrscheinlichkeit, sehr leicht, sehr niedrig, Angeben
+
+comment: Welcher Wahrscheinlichkeitswert ist hier beschrieben?
 
 author: Martin Lommatzsch
 
@@ -53,43 +54,45 @@ author: Martin Lommatzsch
 
 
 
-# Eigenschaften von Ergebnismengen
+# Wahrscheinlichkeiten angeben
 
-Gegeben sei die folgende Ergebnismenge: \
-$\{ 29,33,28,31,35,24,36,32,28,27,35,34,29,30,35 \}$
+
+**Gib** die Wahrscheinlichkeit für das beschriebene Szenario **an**.
 
 
 <section class="flex-container">
 
 <div class="flex-child">
-__$a)\;\;$__ **Gib** die Spannweite **an**.\
-$R=$ [[ 12  ]]
-*******************
-$R = x_{max} - x_{min} = 36 - 24 = 12$
-*******************
+__$a)\;\;$__ Mit einem idealen achtsseitigen Würfel wird gewürfelt. Nach dem Wurf ist die 7 oben.
 
-
+$p=$[[  1/8  ]]
+@Algebrite.check(1/8)
 </div>
 <div class="flex-child">
+__$b)\;\;$__ Ein Glücksrad ist in vier gleichgroße unterschiedlich gefärbte Flächen eingeteilt. Das Rad kommt auf einer blauen Fläche zum Stoppen.
 
-__$b)\;\;$__ **Gib** den Median **an**.\
-$\tilde{x}=$ [[ 31  ]]
-*******************
-$\{ 24,27,28,28,29,29,30,\textcolor{red}{31},32,33,34,35,35,35,36 \}$
-*******************
-
-
+$p=$[[  1/4  ]]
+@Algebrite.check(1/4)
 </div>
 <div class="flex-child">
+__$c)\;\;$__ In einer Losbox befinden sich 3 Gewinnlose und 7 Nieten. Es wird eine Niete gezogen.
 
-__$c)\;\;$__ **Gib** das arithmetische Mittel gerundet auf drei Nachkommastellen **an**.\
-$\bar{x}=$ [[  33,067  ]]
+$p=$[[  7/10  ]]
+@Algebrite.check(7/10)
+</div>
+<div class="flex-child">
+__$d)\;\;$__ Mit einem idealen zwölfseitigen Würfel wird gewürfelt. Nach dem Wurf ist keine 13 oben.
 
+$p=$[[  1  ]]
+@Algebrite.check(1)
+</div>
+<div class="flex-child">
+__$e)\;\;$__ Mit einem idealen vierseitigen Würfel wird gewürfelt. Nach dem Wurf liegt eine Primzahl oben.
 
-</div> 
-
+$p=$[[  1/2  ]]
+@Algebrite.check(1/2)
+</div>
 </section>
-
 
 
 

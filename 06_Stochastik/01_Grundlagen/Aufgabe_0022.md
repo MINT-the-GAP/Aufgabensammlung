@@ -76,9 +76,9 @@ __$c)\;\;$__ In einer Packung Streichhölzer sind beim Anzünden durch ein und d
 $p=$ [[ 12,5  ]]$\%$ 
 
 
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 
 

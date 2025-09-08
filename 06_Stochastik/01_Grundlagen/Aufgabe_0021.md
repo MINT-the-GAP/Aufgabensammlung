@@ -76,9 +76,9 @@ __$c)\;\;$__ Eine Reißzwecke wurde $70$-mal hochgeworfen und landete $49$-mal a
 $p=$ [[  30   ]]$\%$ 
 
 
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 
 
