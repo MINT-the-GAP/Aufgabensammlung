@@ -62,7 +62,7 @@ author: Martin Lommatzsch
 
 
 Ein Kartenspiel besteht aus grünen und blauen Karten. Insgesamt sind es 28 Karten. Jede grüne Karte zählt 3 Punkte, jede blaue Karte 5 Punkte. Zusammen ergeben alle Karten 112 Punkte.  
-Berechne die Anzahl der grünen und der blauen Karten.
+**Berechne** die Anzahl der grünen und der blauen Karten.
 
 <!-- data-solution-button="5"-->
 $x$ = [[  14  ]] und $y$ = [[  14  ]]

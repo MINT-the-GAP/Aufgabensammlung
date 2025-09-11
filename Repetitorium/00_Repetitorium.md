@@ -42450,7 +42450,7 @@ $$
 <!-- Gleichungssysteme 0017 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
-__Aufgabe 17:__ Beim Schulfest verkauft die betrachtet Klasse Kuchenstücke und Waffeln. Am Ende stehen insgesamt 26 verkaufte Teile auf der Liste. Ein Kuchenstück kostet 2 €, eine Waffel 3 €. Zusammen wurden 62 € eingenommen. Berechne, wie viele Kuchenstücke und wie viele Waffeln verkauft wurden.
+__Aufgabe 17:__ Beim Schulfest verkauft die betrachtet Klasse Kuchenstücke und Waffeln. Am Ende stehen insgesamt 26 verkaufte Teile auf der Liste. Ein Kuchenstück kostet 2 €, eine Waffel 3 €. Zusammen wurden 62 € eingenommen. **Berechne**, wie viele Kuchenstücke und wie viele Waffeln verkauft wurden.
 
 
 
@@ -42480,7 +42480,7 @@ Es wurden 16 Kuchenstücke und 10 Waffeln verkauft.
 <!-- Gleichungssysteme 0018 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
-__Aufgabe 18:__ Beim Klassenflohmarkt verkauft die betrachte Klasse Postkarten und Lesezeichen. Insgesamt wurden 34 Artikel verkauft. Eine Postkarte kostet 1 €, ein Lesezeichen 2 €. Am Ende zählen die Schüler:innen 44 € Einnahmen. Berechne, wie viele Postkarten und wie viele Lesezeichen verkauft wurden.
+__Aufgabe 18:__ Beim Klassenflohmarkt verkauft die betrachte Klasse Postkarten und Lesezeichen. Insgesamt wurden 34 Artikel verkauft. Eine Postkarte kostet 1 €, ein Lesezeichen 2 €. Am Ende zählen die Schüler:innen 44 € Einnahmen. **Berechne**, wie viele Postkarten und wie viele Lesezeichen verkauft wurden.
 
 
 <!-- data-solution-button="5"-->
@@ -42509,7 +42509,7 @@ Es wurden 24 Postkarten und 10 Lesezeichen verkauft.
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 19:__ Auf einem Parkplatz stehen insgesamt 28 Fahrzeuge. Darunter befinden sich Autos und Motorräder. Zusammen haben alle Fahrzeuge 80 Räder.  
-Berechne die Anzahl der Autos und Motorräder.
+**Berechne** die Anzahl der Autos und Motorräder.
 
 <!-- data-solution-button="5"-->
 $x$ = [[  12  ]] und $y$ = [[  16  ]]
@@ -42537,7 +42537,7 @@ Es stehen 12 Autos und 16 Motorräder auf dem Parkplatz.
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 20:__ Auf einem Innenhof stehen Bänke: einige sind 2er-Bänke, andere 3er-Bänke. Insgesamt sind es 22 Bänke mit zusammen 56 Sitzplätzen.  
-Berechne die Anzahl der 2er-Bänke und der 3er-Bänke.
+**Berechne** die Anzahl der 2er-Bänke und der 3er-Bänke.
 
 <!-- data-solution-button="5"-->
 $x$ = [[  10  ]] und $y$ = [[  12  ]]
@@ -42565,7 +42565,7 @@ Es gibt 10 2er-Bänke und 12 3er-Bänke.
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 21:__ Auf einer Weide sind Hühner und Ziegen. Insgesamt zählst du 21 Tiere. Zusammen haben die Tiere 62 Beine.  
-Berechne die Anzahl der Hühner und der Ziegen.
+**Berechne** die Anzahl der Hühner und der Ziegen.
 
 <!-- data-solution-button="5"-->
 $x$ = [[  11  ]] und $y$ = [[  10  ]]
@@ -42592,7 +42592,7 @@ Es gibt 11 Hühner und 10 Ziegen.
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 22:__ Ein Kartenspiel besteht aus grünen und blauen Karten. Insgesamt sind es 28 Karten. Jede grüne Karte zählt 3 Punkte, jede blaue Karte 5 Punkte. Zusammen ergeben alle Karten 112 Punkte.  
-Berechne die Anzahl der grünen und der blauen Karten.
+**Berechne** die Anzahl der grünen und der blauen Karten.
 
 <!-- data-solution-button="5"-->
 $x$ = [[  14  ]] und $y$ = [[  14  ]]
@@ -42617,10 +42617,387 @@ Es gibt 14 grüne und 14 blaue Karten.
 
 
 
-<!-- Gleichungssysteme 00 -->
+
+
+<!-- Gleichungssysteme 0023 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
-__Aufgabe :__ 
+__Aufgabe 23:__ Zwei Tätigkeiten werden an einem Tag erledigt. Zusammen beträgt die Arbeitszeit 8 Stunden. Die eine Tätigkeit wird mit 12 € pro Stunde vergütet, die andere mit 8 € pro Stunde. Insgesamt werden 85 € ausgezahlt.  
+**Berechne** die gearbeiteten Stunden der beiden Tätigkeiten.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  21/4  ]] und $y$ = [[  11/4  ]]
+@Algebrite.check([ 21/4; 11/4 ])
+************
+Bezeichne mit $x$ die Stunden der höher vergüteten Tätigkeit $\left( 12\, \dfrac{\text{€}}{\text{h}} \right)$ und mit $y$ die Stunden der anderen Tätigkeit $\left( 8\, \dfrac{\text{€}}{\text{h}} \right)$.
+$$
+\begin{align*}
+I.& \qquad x + y = 8 \\
+II.& \qquad 12x + 8y = 85 \\ \hline
+8\cdot I:& \qquad 8x + 8y = 64 \\[4pt]
+II - (8\cdot I):& \qquad (12x + 8y) - (8x + 8y) = 85 - 64 \\
+& \qquad 4x = 21 \;\Rightarrow\; x = \dfrac{21}{4} \\[6pt]
+x \cap I:& \qquad \dfrac{21}{4} + y = 8 
+\;\Rightarrow\; y = 8 - \dfrac{21}{4} 
+= \dfrac{32 - 21}{4} 
+= \dfrac{11}{4}
+\end{align*}
+$$
+Die Arbeitszeiten betragen $\dfrac{21}{4}$ h und $\dfrac{11}{4}$ h.
+************
+
+<!-- Gleichungssysteme 0024 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 24:__ Zwei Geräte laufen an einem Tag zusammen 5 Stunden. Gerät A kostet pro Stunde 1,40 €, Gerät B pro Stunde 0,90 €. Am Ende betragen die Gesamtkosten 6,70 €.  
+**Berechne** die Laufzeiten beider Geräte.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  22/5  ]] und $y$ = [[  3/5  ]]
+@Algebrite.check([ 22/5; 3/5 ])
+************
+Bezeichne mit $x$ die Laufzeit von Gerät A (in Stunden) und mit $y$ die Laufzeit von Gerät B.
+$$
+\begin{align*}
+I.& \qquad x + y = 5 \\
+II.& \qquad 1{,}4x + 0{,}9y = 6{,}7 \\ \hline
+\text{Zehnfaches von } II\!:& \qquad 14x + 9y = 67 \\
+9\cdot I\!:& \qquad 9x + 9y = 45 \\ \hline
+(14x{+}9y) - (9x{+}9y):& \qquad 5x = 22 \;\Rightarrow\; x = \dfrac{22}{5} \\[6pt]
+x \cap I:& \qquad \dfrac{22}{5} + y = 5 \;\Rightarrow\; y = 5 - \dfrac{22}{5} = \dfrac{3}{5}
+\end{align*}
+$$
+Die Laufzeiten betragen $ \dfrac{22}{5}\,\text{h} $ und $ \dfrac{3}{5}\,\text{h} $.
+************
+
+
+
+<!-- Gleichungssysteme 0025 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 25:__ Ein Mensch legt an einem Tag eine Strecke zurück: Einen Teil fährt der Mensch mit dem Fahrrad $\left(15 \,\dfrac{\text{km}}{\text{h}} \right)$, den anderen geht dieser zu Fuß $\left(5 \,\dfrac{\text{km}}{\text{h}} \right)$. Insgesamt ist der Mensch 3 Stunden unterwegs und die Strecke ist 24 km lang.  
+**Berechne** die Zeitanteile der beiden Abschnitte.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  9/10  ]] und $y$ = [[  21/10  ]]
+@Algebrite.check([ 9/10; 21/10 ])
+************
+Bezeichne mit $x$ die Fahrzeit mit dem Fahrrad (in Stunden) und mit $y$ die Gehzeit.
+$$
+\begin{align*}
+I.& \qquad x + y = 3 \\
+II.& \qquad 15x + 5y = 24 \\ \hline
+5\cdot I:& \qquad 5x + 5y = 15 \\ \hline
+II - (5\cdot I):& \qquad (15x + 5y) - (5x + 5y) = 24 - 15 \\
+& \qquad 10x = 9 \;\Rightarrow\; x = \dfrac{9}{10} \\[6pt]
+x \cap I:& \qquad \dfrac{9}{10} + y = 3 
+\;\Rightarrow\; y = 3 - \dfrac{9}{10} 
+= \dfrac{30 - 9}{10} 
+= \dfrac{21}{10}
+\end{align*}
+$$
+Die Zeiten betragen $\dfrac{9}{10}\,\text{h}$ (Fahrrad) und $\dfrac{21}{10}\,\text{h}$ (zu Fuß).
+************
+
+
+
+
+
+
+<!-- Gleichungssysteme 0026 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 26:__ Ein Mensch bearbeitet an einem Nachmittag zwei Textkapitel. Insgesamt arbeitet dieser 5 Stunden. Beim ersten Kapitel schafft er 60 Seiten pro Stunde, beim zweiten 40 Seiten pro Stunde. Am Ende hast der Mensch zusammen 255 Seiten bearbeitet.  
+**Berechne** die Arbeitszeiten für beide Kapitel.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  11/4  ]] und $y$ = [[  9/4  ]]
+@Algebrite.check([ 11/4; 9/4 ])
+************
+Bezeichne mit $x$ die Zeit am ersten Kapitel (in Stunden) und mit $y$ die Zeit am zweiten Kapitel.
+$$
+\begin{align*}
+I.& \qquad x + y = 5 \\
+II.& \qquad 60x + 40y = 255 \\ \hline
+40\cdot I\!:& \qquad 40x + 40y = 200 \\ \hline
+II - (40\cdot I)\!:& \qquad (60x + 40y) - (40x + 40y) = 255 - 200 \\
+& \qquad 20x = 55 \;\Rightarrow\; x = \dfrac{55}{20} = \dfrac{11}{4} \\[6pt]
+x \cap I\!:& \qquad \dfrac{11}{4} + y = 5 
+\;\Rightarrow\; y = 5 - \dfrac{11}{4} 
+= \dfrac{20 - 11}{4} 
+= \dfrac{9}{4}
+\end{align*}
+$$
+Die Arbeitszeiten betragen $ \dfrac{11}{4}\,\text{h}$ (erstes Kapitel) und $ \dfrac{9}{4}\,\text{h}$ (zweites Kapitel).
+************
+
+
+
+<!-- Gleichungssysteme 0027 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 27:__ In einem Kassenfach liegen 1-€, 2-€ und 50-Cent-Münzen. Insgesamt sind es 30 Münzen. Der Gesamtwert beträgt 33 €. Außerdem gibt es zwei 50-Cent-Münzen weniger als 1-€-Münzen.  
+**Berechne** die Anzahl der 1-€, 2-€ und 50-Cent-Münzen.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  12  ]], $y$ = [[  8  ]] und $z$ = [[  10  ]]
+@Algebrite.check([ 12; 8; 10 ])
+************
+Bezeichne mit $x$ die Anzahl der 1-€-Münzen, mit $y$ die Anzahl der 2-€-Münzen und mit $z$ die Anzahl der 50-Cent-Münzen.
+$$
+\begin{align*}
+I.& \qquad x + y + z = 30 \\
+II.& \qquad 100x + 200y + 50z = 3300 \\
+III.& \qquad z = x - 2 \\ \hline
+I \cap III:& \qquad x + y + (x - 2) = 30 \\
+& \qquad 2x + y = 32 \quad \text{(IV)} \\[6pt]
+II \cap III:& \qquad 100x + 200y + 50(x - 2) = 3300 \\
+& \qquad 150x + 200y = 3400 \quad \left| :50 \right. \\
+& \qquad 3x + 4y = 68 \quad \text{(V)} \\ \hline
+\text{Aus (IV):}& \qquad y = 32 - 2x \\[6pt]
+\text{In (V):}& \qquad 3x + 4(32 - 2x) = 68 \\
+& \qquad 3x + 128 - 8x = 68 \\
+& \qquad -5x = -60 \;\Rightarrow\; x = 12 \\[6pt]
+\text{Dann:}& \qquad y = 32 - 2\cdot 12 = 8 \\
+& \qquad z = x - 2 = 10
+\end{align*}
+$$
+Es liegen $12$ Stück 1-€-Münzen, $8$ Stück 2-€-Münzen und $10$ Stück 50-Cent-Münzen im Kassenfach.
+************
+
+
+
+
+<!-- Gleichungssysteme 0028 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 28:__ Bei einer Veranstaltung werden drei Ticketarten verkauft: Einzeltickets zu 2 €, Tagestickets zu 5 € und ermäßigte Tickets zu 3 €. Insgesamt werden 24 Tickets verkauft und der Umsatz beträgt 78 €. Außerdem gibt es vier ermäßigte Tickets weniger als Einzeltickets.  
+**Berechne** die Anzahl der drei Ticketarten.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  10  ]], $y$ = [[  8  ]] und $z$ = [[  6  ]]
+@Algebrite.check([ 10; 8; 6 ])
+************
+Bezeichne mit $x$ die Anzahl der Einzeltickets, mit $y$ die Anzahl der Tagestickets und mit $z$ die Anzahl der ermäßigten Tickets.
+$$
+\begin{align*}
+I.& \qquad x + y + z = 24 \\
+II.& \qquad 2x + 5y + 3z = 78 \\
+III.& \qquad z = x - 4 \\ \hline
+I \cap III:& \qquad x + y + (x - 4) = 24 \\
+& \qquad 2x + y = 28 \quad \text{(IV)} \\[6pt]
+II \cap III:& \qquad 2x + 5y + 3(x - 4) = 78 \\
+& \qquad 5x + 5y = 90 \quad \left| :5 \right. \\
+& \qquad x + y = 18 \quad \text{(V)} \\ \hline
+(IV) - (V):& \qquad (2x + y) - (x + y) = 28 - 18 \\
+& \qquad x = 10 \\[6pt]
+\text{Dann:}& \qquad y = 18 - 10 = 8,\quad z = x - 4 = 6
+\end{align*}
+$$
+Es wurden $10$ Einzeltickets, $8$ Tagestickets und $6$ ermäßigte Tickets verkauft.
+************
+
+
+
+<!-- Gleichungssysteme 0029 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 29:__ In einem Klassenzimmer sind Stühle aus Holz, Kunststoff und Metall aufgestellt. Insgesamt gibt es 36 Stühle. Die Holzstühle wiegen jeweils 5 kg, die Kunststoffstühle 3 kg und die Metallstühle 7 kg. Zusammen beträgt das Gewicht aller Stühle 180 kg. Außerdem sind doppelt so viele Kunststoffstühle vorhanden wie Metallstühle.  
+**Berechne** die Anzahl der Holz-, Kunststoff- und Metallstühle.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  12  ]], $y$ = [[  16  ]] und $z$ = [[  8  ]]
+@Algebrite.check([ 12; 16; 8 ])
+************
+Bezeichne mit $x$ die Anzahl der Holzstühle, mit $y$ die Anzahl der Kunststoffstühle und mit $z$ die Anzahl der Metallstühle.
+$$
+\begin{align*}
+I.& \qquad x + y + z = 36 \\
+II.& \qquad 5x + 3y + 7z = 180 \\
+III.& \qquad y = 2z \\ \hline
+I \cap III:& \qquad x + 2z + z = 36 \\
+& \qquad x + 3z = 36 \quad \text{(IV)} \\[6pt]
+II \cap III:& \qquad 5x + 3(2z) + 7z = 180 \\
+& \qquad 5x + 6z + 7z = 180 \\
+& \qquad 5x + 13z = 180 \quad \text{(V)} \\ \hline
+\text{Aus (IV):}& \qquad x = 36 - 3z \\[6pt]
+\text{In (V):}& \qquad 5(36 - 3z) + 13z = 180 \\
+& \qquad 180 - 15z + 13z = 180 \\
+& \qquad -2z = 0 \;\Rightarrow\; z = 0 \;\; \text{(Fehler!)} 
+\end{align*}
+$$
+
+
+
+<!-- Gleichungssysteme 0030 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 30:__ Du planst in einer Woche Einheiten in drei Ausdauersportarten: Laufen, Radfahren und Schwimmen. Insgesamt absolvierst du 14 Einheiten. Pro Laufeinheit rechnest du mit 500 kcal, pro Radeinheit mit 300 kcal und pro Schwimmeinheit mit 200 kcal. Zusammen ergeben sich 4900 kcal. Außerdem fährst du doppelt so oft Rad wie du schwimmst.  
+**Berechne** die Anzahl der Einheiten in den drei Sportarten.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  5  ]], $y$ = [[  6  ]] und $z$ = [[  3  ]]
+@Algebrite.check([ 5; 6; 3 ])
+************
+Bezeichne mit $x$ die Anzahl der Laufeinheiten, mit $y$ die Anzahl der Radeinheiten und mit $z$ die Anzahl der Schwimmeinheiten.
+$$
+\begin{align*}
+I.& \qquad x + y + z = 14 \\
+II.& \qquad 500x + 300y + 200z = 4900 \\
+III.& \qquad y = 2z \\ \hline
+I \cap III:& \qquad x + 2z + z = 14 \\
+& \qquad x + 3z = 14 \quad \text{(IV)} \\[6pt]
+II \cap III:& \qquad 500x + 300(2z) + 200z = 4900 \\
+& \qquad 500x + 800z = 4900 \quad \text{(V)} \\ \hline
+\text{Aus (IV):}& \qquad x = 14 - 3z \\[6pt]
+\text{In (V):}& \qquad 500(14 - 3z) + 800z = 4900 \\
+& \qquad 7000 - 1500z + 800z = 4900 \\
+& \qquad -700z = -2100 \;\Rightarrow\; z = 3 \\[6pt]
+\text{Dann:}& \qquad y = 2z = 6,\quad x = 14 - 3\cdot 3 = 5
+\end{align*}
+$$
+Es ergeben sich $5$ Laufeinheiten, $6$ Radeinheiten und $3$ Schwimmeinheiten.
+************
+
+
+
+
+<!-- Gleichungssysteme 0031 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 31:__ Es werden drei elektrische Geräte mit den Leistungen $1{,}2\,\text{kW}$, $0{,}9\,\text{kW}$ und $0{,}6\,\text{kW}$ verwendet. Zusammen laufen sie $5$ Stunden. Insgesamt werden $5{,}1\,\text{kWh}$ zugeführt. Außerdem läuft das zweite Gerät eine halbe Stunde länger als das erste.  
+**Berechne** die Laufzeiten der drei Geräte.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  13/6  ]], $y$ = [[  8/3  ]] und $z$ = [[  1/6  ]]
+@Algebrite.check([ 13/6; 8/3; 1/6 ])
+************
+Bezeichne mit $x$ die Laufzeit des ersten Geräts ($1{,}2\,\text{kW}$), mit $y$ die Laufzeit des zweiten Geräts ($0{,}9\,\text{kW}$) und mit $z$ die Laufzeit des dritten Geräts ($0{,}6\,\text{kW}$).
+$$
+\begin{align*}
+I.& \qquad x + y + z = 5 \\
+II.& \qquad 1{,}2x + 0{,}9y + 0{,}6z = 5{,}1 \\
+III.& \qquad y = x + \dfrac{1}{2} \\ \hline
+\text{Zehnfaches von } II\!:& \qquad 12x + 9y + 6z = 51 \\[6pt]
+\text{Aus } I \text{ und } III\!:& \qquad x + (x + \dfrac{1}{2}) + z = 5 \\
+& \qquad 2x + z = \dfrac{9}{2} \quad \text{(IV)} \\[6pt]
+\text{Setze } y = x + \dfrac{1}{2} \text{ in } (10\cdot II)\!:& \qquad 12x + 9\!\left(x + \dfrac{1}{2}\right) + 6z = 51 \\
+& \qquad 21x + 6z = \dfrac{93}{2} \quad \left| \cdot 2 \right. \\
+& \qquad 42x + 12z = 93 \quad \text{(V)} \\ \hline
+\text{Aus (IV):}& \qquad 2x + z = \dfrac{9}{2} \;\Rightarrow\; 12x + 6z = 27 \quad \text{(VI)} \\[6pt]
+\text{(V) } - 2\cdot\text{(VI):}& \qquad (42x + 12z) - (24x + 12z) = 93 - 54 \\
+& \qquad 18x = 39 \;\Rightarrow\; x = \dfrac{13}{6} \\[6pt]
+\text{Dann:}& \qquad y = x + \dfrac{1}{2} = \dfrac{13}{6} + \dfrac{3}{6} = \dfrac{8}{3} \\[6pt]
+I:& \qquad z = 5 - x - y = 5 - \dfrac{13}{6} - \dfrac{8}{3} = \dfrac{1}{6}
+\end{align*}
+$$
+Die Laufzeiten betragen $ \dfrac{13}{6}\,\text{h}$, $ \dfrac{8}{3}\,\text{h}$ und $ \dfrac{1}{6}\,\text{h}$.
+************
+
+
+
+
+<!-- Gleichungssysteme 0032 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 32:__ Drei Maschinen produzieren Teile. Zusammen laufen sie 5 Stunden. Pro Stunde fertigen sie $12$, $18$ bzw. $30$ Teile. Insgesamt entstehen $79$ Teile. Außerdem läuft die zweite Maschine eine halbe Stunde länger als die erste.  
+**Berechne** die Laufzeiten der drei Maschinen.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  13/6  ]], $y$ = [[  8/3  ]] und $z$ = [[  1/6  ]]
+@Algebrite.check([ 13/6; 8/3; 1/6 ])
+************
+Bezeichne mit $x$ die Laufzeit der ersten Maschine (in Stunden), mit $y$ die der zweiten und mit $z$ die der dritten.
+$$
+\begin{align*}
+I.& \qquad x + y + z = 5 \\
+II.& \qquad 12x + 18y + 30z = 79 \\
+III.& \qquad y = x + \dfrac{1}{2} \\ \hline
+I \cap III:& \qquad x + \left(x + \dfrac{1}{2}\right) + z = 5 \\
+& \qquad 2x + z = \dfrac{9}{2} \quad \text{(IV)} \\[6pt]
+II \cap III:& \qquad 12x + 18\!\left(x + \dfrac{1}{2}\right) + 30z = 79 \\
+& \qquad 30x + 30z = 70 \quad \left| :10 \right. \\
+& \qquad 3x + 3z = 7 \quad \text{(V)} \\ \hline
+\text{Aus (IV):}& \qquad z = \dfrac{9}{2} - 2x \\[6pt]
+\text{In (V):}& \qquad 3x + 3\!\left(\dfrac{9}{2} - 2x\right) = 7 \\
+& \qquad 3x + \dfrac{27}{2} - 6x = 7 \\
+& \qquad -3x = 7 - \dfrac{27}{2} = -\dfrac{13}{2} \\
+& \qquad x = \dfrac{13}{6} \\[6pt]
+\text{Dann:}& \qquad y = x + \dfrac{1}{2} = \dfrac{13}{6} + \dfrac{3}{6} = \dfrac{8}{3}, \\
+& \qquad z = \dfrac{9}{2} - 2\cdot \dfrac{13}{6} = \dfrac{27}{6} - \dfrac{26}{6} = \dfrac{1}{6}
+\end{align*}
+$$
+Die Laufzeiten betragen $ \dfrac{13}{6}\,\text{h}$, $ \dfrac{8}{3}\,\text{h}$ und $ \dfrac{1}{6}\,\text{h}$.
+************
+
+
+
+
+
+<!-- Gleichungssysteme 0033 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 33:__ Es werden drei Fruchtsäfte mit unterschiedlichen Zuckergehalten gemischt: Saft A enthält $120\,\text{g}$ Zucker je Liter, Saft B $80\,\text{g}$ je Liter und Saft C $50\,\text{g}$ je Liter. Insgesamt werden $9$ Liter gemischt. Der Gesamtzuckergehalt beträgt $815\,\text{g}$. Außerdem wird von Saft B einen halben Liter mehr als von Saft A verwendet.  
+**Berechne** die Literanteile der drei Säfte.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  7/2  ]], $y$ = [[  4  ]] und $z$ = [[  3/2  ]]
+@Algebrite.check([ 7/2; 4; 3/2 ])
+************
+Bezeichne mit $x$ die Liter von Saft A, mit $y$ die Liter von Saft B und mit $z$ die Liter von Saft C.
+$$
+\begin{align*}
+I.& \qquad x + y + z = 9 \\
+II.& \qquad 120x + 80y + 50z = 815 \\
+III.& \qquad y = x + \dfrac{1}{2} \\ \hline
+I \cap III:& \qquad x + \left(x + \dfrac{1}{2}\right) + z = 9 \\
+& \qquad 2x + z = \dfrac{17}{2} \quad \text{(IV)} \\[6pt]
+II \cap III:& \qquad 120x + 80\!\left(x + \dfrac{1}{2}\right) + 50z = 815 \\
+& \qquad 200x + 50z = 815 - 40 = 775 \quad \left| :25 \right. \\
+& \qquad 8x + 2z = 31 \quad \text{(V)} \\ \hline
+(V) - 2\cdot(IV):& \qquad (8x + 2z) - (4x + 2z) = 31 - 17 \\
+& \qquad 4x = 14 \;\Rightarrow\; x = \dfrac{7}{2} \\[6pt]
+III:& \qquad y = x + \dfrac{1}{2} = \dfrac{7}{2} + \dfrac{1}{2} = 4 \\[6pt]
+I:& \qquad z = 9 - x - y = 9 - \dfrac{7}{2} - 4 = \dfrac{3}{2}
+\end{align*}
+$$
+Die Anteile betragen $ \dfrac{7}{2}\,\text{L}$ (Saft A), $4\,\text{L}$ (Saft B) und $ \dfrac{3}{2}\,\text{L}$ (Saft C).
+************
+
+
+
+
+<!-- Gleichungssysteme 0034 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 34:__ Für eine Nussmischung werden Mandeln (6 €/kg), Erdnüsse (4 €/kg) und Cashews (10 €/kg) gemischt. Insgesamt entstehen $ \dfrac{15}{2}\,\text{kg} $ Mischung. Der Materialwert beträgt 47 €. Außerdem werden um ein halbes Kilogramm mehr Erdnüsse als Mandeln verwendet.  
+**Berechne** die eingesetzten Kilogramm der drei Sorten.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  5/2  ]], $y$ = [[  3  ]] und $z$ = [[  2  ]]
+@Algebrite.check([ 5/2; 3; 2 ])
+************
+Bezeichne mit $x$ die Kilogramm Mandeln, mit $y$ die Kilogramm Erdnüsse und mit $z$ die Kilogramm Cashews.
+$$
+\begin{align*}
+I.& \qquad x + y + z = \dfrac{15}{2} \\
+II.& \qquad 6x + 4y + 10z = 47 \\
+III.& \qquad y = x + \dfrac{1}{2} \\ \hline
+I \cap III:& \qquad x + \left(x + \dfrac{1}{2}\right) + z = \dfrac{15}{2} \\
+& \qquad 2x + z = 7 \quad \text{(IV)} \\[6pt]
+II \cap III:& \qquad 6x + 4\!\left(x + \dfrac{1}{2}\right) + 10z = 47 \\
+& \qquad 10x + 2 + 10z = 47 \\
+& \qquad 10x + 10z = 45 \quad \left| :5 \right. \\
+& \qquad 2x + 2z = 9 \quad \text{(V)} \\ \hline
+\text{(V)} - 2\cdot\text{(IV)}:& \qquad (2x + 2z) - (4x + 2z) = 9 - 14 \\
+& \qquad -2x = -5 \;\Rightarrow\; x = \dfrac{5}{2} \\[6pt]
+III:& \qquad y = x + \dfrac{1}{2} = \dfrac{5}{2} + \dfrac{1}{2} = 3 \\[6pt]
+IV:& \qquad 2\cdot \dfrac{5}{2} + z = 7 \;\Rightarrow\; 5 + z = 7 \;\Rightarrow\; z = 2
+\end{align*}
+$$
+Es werden $ \dfrac{5}{2}\,\text{kg} $ Mandeln, $ 3\,\text{kg} $ Erdnüsse und $ 2\,\text{kg} $ Cashews verwendet.
+************
+
 
 
 

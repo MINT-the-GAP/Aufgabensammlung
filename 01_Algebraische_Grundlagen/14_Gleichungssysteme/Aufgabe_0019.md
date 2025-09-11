@@ -61,7 +61,7 @@ author: Martin Lommatzsch
 
 
 Auf einem Parkplatz stehen insgesamt 28 Fahrzeuge. Darunter befinden sich Autos und Motorräder. Zusammen haben alle Fahrzeuge 80 Räder.  
-Berechne die Anzahl der Autos und Motorräder.
+**Berechne** die Anzahl der Autos und Motorräder.
 
 <!-- data-solution-button="5"-->
 $x$ = [[  12  ]] und $y$ = [[  16  ]]
