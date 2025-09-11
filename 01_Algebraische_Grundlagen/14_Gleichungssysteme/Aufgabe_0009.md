@@ -33,6 +33,9 @@ input {
 }
 @end
 
+
+
+
 formula: \carry   \textcolor{red}{\scriptsize #1}
 formula: \digit   \rlap{\carry{#1}}\phantom{#2}#2
 formula: \permil  \text{‰}

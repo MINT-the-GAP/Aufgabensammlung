@@ -62,6 +62,7 @@ In den dargestellten Gefäßen befinden sich Kugeln unterschiedlicher Farben.
 <div class="flex-child">
 __$a)\;\;$__ 
 
+<!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne5.png)
 
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
@@ -84,6 +85,7 @@ $R(R)=$ [[  25:4  ]]
 <div class="flex-child">
 __$b)\;\;$__ 
 
+<!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne6.png)
 
 **Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
@@ -106,6 +108,7 @@ $R(R)=$ [[  7:6  ]]
 <div class="flex-child">
 __$c)\;\;$__ 
 
+<!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne7.png)
 
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
@@ -128,6 +131,7 @@ $R(R)=$ [[  7:16  ]]
 <div class="flex-child">
 __$d)\;\;$__ 
 
+<!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne8.png)
 
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\

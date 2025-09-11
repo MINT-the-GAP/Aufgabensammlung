@@ -61,6 +61,12 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 # Zahlenstrahl
 
 
+$x=\;$ [[ 2/5 ]] $\;\;\wedge\;\; y=$  [[ 5/7 ]] $\;\;\wedge\;\; z=$  [[ 3/4 ]]
+@Algebrite.check([ 2/5; 5/7; 3/4 ])
+
+
+
+
 
 
 # Koordinatensystem

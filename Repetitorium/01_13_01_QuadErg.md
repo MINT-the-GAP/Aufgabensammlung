@@ -203,10 +203,6 @@ $$
 
 
 
-Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt: \
-
-!?[Quadratische Ergänzung](https://www.youtube.com/watch?v=8QRKPmR82jQ)
-
 
 
 *********************

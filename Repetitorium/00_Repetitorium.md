@@ -13,7 +13,7 @@ tags: Repetitorium
 comment: Hier entsteht ein mathematisches Repetitorium in LiaScript. https://mint-the-gap.github.io/Aufgabensammlung/
 
 author: Martin Lommatzsch
- 
+
 
 
 @style
@@ -50,11 +50,14 @@ formula: \carry   \textcolor{red}{\scriptsize #1}
 formula: \digit   \rlap{\carry{#1}}\phantom{#2}#2
 formula: \permil  \text{‰}
 
+
+
 import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
+        https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
 import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main/README.md
 -->
@@ -2892,9 +2895,6 @@ $$
 
 
 
-Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:  \
-
-!?[Runden](https://www.youtube.com/watch?v=lkKLXE5FFes)
 
 
 ***************************
@@ -3713,9 +3713,6 @@ $$
 
 
 
-Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt: \
-
-!?[Addition](https://www.youtube.com/watch?v=Tn9xv6jSyyI)
 
 
 ***************************
@@ -4161,11 +4158,6 @@ $$
 
 
 
-
-
-Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:  \
-
-!?[Subtraktion](https://www.youtube.com/watch?v=a2Nwh8npSUo)
 
 
 *********************
@@ -4670,9 +4662,6 @@ $$
 
 
 
-Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:  \
-
-!?[Multiplikation](https://www.youtube.com/watch?v=Gh4Zfdlq7K0)
 
 
 *********************
@@ -5073,7 +5062,6 @@ $$
 
 Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:  \
 
-!?[Division](https://www.youtube.com/watch?v=KkDMx59XTAs)
 
 
 *********************
@@ -10615,10 +10603,6 @@ $$
 
 
 
-Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:  \
-
-
-!?[Bruchrechnung](https://www.youtube.com/watch?v=E0jIuLBRPBg)
 
 
 
@@ -23401,7 +23385,7 @@ $$
 
 
 
-#### Übungen Teil 8 - Bruchrechnung Aufgabe 140 bis 162
+#### Übungen Teil 8 - Bruchrechnung Aufgabe 140 bis 165
 
 
 
@@ -24396,10 +24380,160 @@ __$c)\;\;$__
 
 
 
+<!--  Bruchrechnung 0163  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 163:__ Höre die Tonspur an und **gib** den Wert des beschriebenen Terms **an**.
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__ 
+
+{{|> Deutsch Female}}
+<!-- style="position: absolute; left: -9999px;" -->
+Ich habe zwei Siebtel und bekomme drei Siebtel hinzu.
+
+<!-- data-solution-button="5"-->
+[[  5/7  ]] 
+@Algebrite.check(5/7)
+
+
+</div>
+
+<div class="flex-child">
+
+__$b)\;\;$__ 
+
+{{|> Deutsch Female}}
+<!-- style="position: absolute; left: -9999px;" -->
+Was habe ich, wenn ich sieben Neuntel und vier Neuntel habe?
+
+<!-- data-solution-button="5"-->
+[[  11/9  ]] 
+@Algebrite.check(11/9)
+
+
+</div>
+
+<div class="flex-child">
+
+__$c)\;\;$__ 
+
+{{|> Deutsch Female}}
+<!-- style="position: absolute; left: -9999px;" -->
+Zu meinen drei Achtel kommen zwei Achtel hinzu.
+
+<!-- data-solution-button="5"-->
+[[  5/8  ]] 
+@Algebrite.check(5/8)
+
+
+</div>
+
+<div class="flex-child">
+
+__$d)\;\;$__ 
+
+{{|> Deutsch Female}}
+<!-- style="position: absolute; left: -9999px;" -->
+Ich habe ein Drittel und noch ein Drittel.
+
+<!-- data-solution-button="5"-->
+[[  2/3  ]] 
+@Algebrite.check(2/3)
+
+
+</div>
+
+</section>
+
+
+
+
+
+
+<!--  Bruchrechnung 0164  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 164:__ Höre die Tonspur an und **gib** den Wert des beschriebenen Terms **an**.
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+__$a)\;\;$__ 
+
+{{|> Deutsch Female}}
+<!-- style="position: absolute; left: -9999px;" -->
+Zu meinen drei Elftel werden vier Elftel hinzugefügt.
+
+<!-- data-solution-button="5"-->
+[[  7/11  ]] 
+@Algebrite.check(7/11)
+
+
+</div>
+
+<div class="flex-child">
+
+__$b)\;\;$__ 
+
+{{|> Deutsch Female}}
+<!-- style="position: absolute; left: -9999px;" -->
+Ich habe drei Zehntel und nochmal vier Zehntel.
+
+<!-- data-solution-button="5"-->
+[[  7/10  ]] 
+@Algebrite.check(7/10)
+
+
+</div>
+
+<div class="flex-child">
+
+__$c)\;\;$__ 
+
+{{|> Deutsch Female}}
+<!-- style="position: absolute; left: -9999px;" -->
+Zu meinen ein Sechstel, zu denen vier Sechstel hinzukommen.
+
+<!-- data-solution-button="5"-->
+[[  5/6  ]] 
+@Algebrite.check(5/6)
+
+
+</div>
+
+<div class="flex-child">
+
+__$d)\;\;$__ 
+
+{{|> Deutsch Female}}
+<!-- style="position: absolute; left: -9999px;" -->
+Was habe ich, wenn ich fünf Zwölftel und sechs Zwölftel habe?
+
+<!-- data-solution-button="5"-->
+[[  11/12  ]] 
+@Algebrite.check(11/12)
+
+
+</div>
+
+</section>
+
+
+
+
+
+
 <!--  Bruchrechnung noch keine  -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
-__Aufgabe 163:__ **Bestimme** die richtige Reihenfolge der Dominos.
+__Aufgabe 165:__ **Bestimme** die richtige Reihenfolge der Dominos.
 
 
 ??[](https://www.bildung-bedeutet-freiheit.de/GeoGebra/Dominoes-Demo.html)
@@ -28023,8 +28157,6 @@ $$
 
 
 
-!?[Einsetzen](https://www.youtube.com/watch?v=oCzl1Sasf4M)
-
 *********************
 
 
@@ -29521,8 +29653,6 @@ $$
 
 
 
-
-!?[Negative Zahlen](https://www.youtube.com/watch?v=Yt03b6sbMLM)
 
 
 
@@ -34838,7 +34968,6 @@ $$
 
 
 
-!?[Distributivgesetz](https://www.youtube.com/watch?v=tSawKXhm714)
 
 *********************
 
@@ -35201,7 +35330,6 @@ data-sortable="false" -->
 
 
 
-!?[Potenzgesetze](https://www.youtube.com/watch?v=g1zLW9FsglU)
 
 
 Weitere *Koeffizienten* können aus dem *Pascal'schen Dreieck* entnommen werden:
@@ -36020,12 +36148,6 @@ $$
 
 
 
-
-
-
-Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:  \
-
-!?[Äquivalenzumformung](https://www.youtube.com/watch?v=55z4hWAx8Q0)
 
 
 
@@ -36887,9 +37009,11 @@ __Aufgabe 17:__ **Berechne** den Lösungswert für die Unbekannte.
 
 <section class="flex-container">
 <div class="flex-child">
+
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $  2x + 5 + 9 = 6x - 3 - 7 $ \
 $x$ = [[  6  ]]
+@Algebrite.check(6)
 ************
 $$
 \begin{align*}
@@ -36903,9 +37027,11 @@ $$
 ************
 </div>
 <div class="flex-child">
+
 <!-- data-solution-button="5"-->
 __$b)\;\;$__ $  3x + 5 + x = 2x + 17 - x $ \
-$x$ = [[  3  ]]
+$x$ = [[  4  ]]
+@Algebrite.check(4)
 ************
 $$
 \begin{align*}
@@ -36913,15 +37039,17 @@ $$
 4x + 5 &= x + 17 \quad \left| -x \right. \\
 3x + 5 &= 17 \quad \left| -5 \right. \\
 3x &= 12 \quad \left| :3 \right. \\
-x &= 3
+x &= 4
 \end{align*}
 $$
 ************
 </div>
 <div class="flex-child">
+
 <!-- data-solution-button="5"-->
 __$c)\;\;$__ $  5x - 7 + 2x = 3x + 13 $ \
 $x$ = [[  5  ]]
+@Algebrite.check(5)
 ************
 $$
 \begin{align*}
@@ -36935,9 +37063,11 @@ $$
 ************
 </div>
 <div class="flex-child">
+
 <!-- data-solution-button="5"-->
 __$d)\;\;$__ $  2x + 4 + 9x = 6x - 3 - 7 $ \
 $x$ = [[  2  ]]
+@Algebrite.check(2)
 ************
 $$
 \begin{align*}
@@ -39805,11 +39935,6 @@ $$
 
 
 
-Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt: \
-
-!?[Quadratische Ergänzung](https://www.youtube.com/watch?v=8QRKPmR82jQ)
-
-
 
 *********************
 
@@ -41582,6 +41707,7 @@ $$
 </section>
 
 
+<!-- Gleichungssysteme 0012 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 12:__ **Berechne** die Lösungen des gegebenen Gleichungssystems mit dem Additionsverfahren.
@@ -41731,10 +41857,770 @@ $$
 
 
 
+<!-- Gleichungssysteme 0013 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 13:__ 
+<section class="flex-container">
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 3x + 2y = 7 \\  
+II.& \qquad 4x - y = 1  
+\end{align*}
+$$  
+$x$ = [[  9/11  ]] und  $y$ = [[  25/11  ]] 
+@Algebrite.check([ 9/11; 25/11 ])
+************
+$$
+\begin{align*}
+I.& \qquad 3x + 2y = 7 \\  
+II.& \qquad 4x - y = 1   \\ \hline
+II. &\qquad 4x - y = 1 \quad \left| -4x \right. \\
+&\qquad -y = 1 - 4x \quad \left| \cdot(-1) \right. \\
+&\qquad y = 4x - 1 \\ \hline
+I. \cap II. &\qquad 3x + 2(4x - 1) = 7 \\
+&\qquad 3x + 8x - 2 = 7 \\
+&\qquad 11x - 2 = 7 \quad \left| +2 \right. \\
+&\qquad 11x = 9 \quad \left| :11 \right. \\
+&\qquad x = \dfrac{9}{11} \\[6pt]
+x \cap II. &\qquad 4 \cdot \dfrac{9}{11} - y = 1 \\
+&\qquad \dfrac{36}{11} - y = 1 \quad \left| -\dfrac{36}{11} \right. \\
+&\qquad -y = 1 - \dfrac{36}{11} = -\dfrac{25}{11} \quad \left| \cdot(-1) \right. \\
+&\qquad y = \dfrac{25}{11}
+\end{align*}
+$$
+************
+
+</div>
+<div class="flex-child">
+
+
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 5x - 2y = 3 \\  
+II.& \qquad x + 3y = 8  
+\end{align*}
+$$  
+$x$ = [[  25/17  ]] und  $y$ = [[  37/17  ]] 
+@Algebrite.check([ 25/17; 37/17 ])
+************
+$$
+\begin{align*}
+I.& \qquad 5x - 2y = 3 \\  
+II.& \qquad x + 3y = 8  \\ \hline
+II. &\qquad x + 3y = 8 \quad \left| -3y \right. \\
+&\qquad x = 8 - 3y \\ \hline
+I. \cap II. &\qquad 5(8 - 3y) - 2y = 3 \\
+&\qquad 40 - 15y - 2y = 3 \\
+&\qquad 40 - 17y = 3 \quad \left| -40 \right. \\
+&\qquad -17y = -37 \quad \left| :(-17) \right. \\
+&\qquad y = \dfrac{37}{17} \\[6pt]
+y \cap II. &\qquad x + 3\cdot \dfrac{37}{17} = 8 \\
+&\qquad x + \dfrac{111}{17} = 8 \quad \left| -\dfrac{111}{17} \right. \\
+&\qquad x = \dfrac{136}{17} - \dfrac{111}{17} = \dfrac{25}{17}
+\end{align*}
+$$
+************
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 2x + y = -1 \\  
+II.& \qquad 3x - 2y = -16  
+\end{align*}
+$$  
+$x$ = [[  -18/7  ]]  und  $y$ = [[  29/7  ]] 
+@Algebrite.check([ -18/7; 29/7 ])
+************
+$$
+\begin{align*}
+I.& \qquad 2x + y = -1 \\  
+II.& \qquad 3x - 2y = -16  \\ \hline
+I. &\qquad 2x + y = -1 \quad \left| -2x \right. \\
+&\qquad y = -1 - 2x \\ \hline
+I. \cap II.\; &\qquad 3x - 2(-1 - 2x) = -16 \\
+&\qquad 3x + 2 + 4x = -16 \\
+&\qquad 7x + 2 = -16 \quad \left| -2 \right. \\
+&\qquad 7x = -18 \quad \left| :7 \right. \\
+&\qquad x = -\dfrac{18}{7} \\[6pt]
+x \cap I.\; &\qquad 2\!\left(-\dfrac{18}{7}\right) + y = -1 \\
+&\qquad -\dfrac{36}{7} + y = -1 \quad \left| +\dfrac{36}{7} \right. \\
+&\qquad y = -\dfrac{7}{7} + \dfrac{36}{7} = \dfrac{29}{7}
+\end{align*}
+$$
+************
+
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 4x + 3y = 7 \\  
+II.& \qquad 2x - y = -5  
+\end{align*}
+$$  
+$x$ = [[  -2/5  ]]   und  $y$ = [[  13/5  ]] 
+@Algebrite.check([ -2/5; 13/5 ])
+************
+$$
+\begin{align*}
+I.& \qquad 4x + 3y = 7 \\  
+II.& \qquad 2x - y = -5   \\ \hline
+II.& \qquad 2x - y = -5 \quad \left| -2x \right. \\
+&\qquad -y = -5 - 2x \quad \left| \cdot(-1) \right. \\
+&\qquad y = 5 + 2x \\ \hline
+I. \cap II.\; &\qquad 4x + 3(5 + 2x) = 7 \\
+&\qquad 4x + 15 + 6x = 7 \\
+&\qquad 10x + 15 = 7 \quad \left| -15 \right. \\
+&\qquad 10x = -8 \quad \left| :10 \right. \\
+&\qquad x = -\dfrac{2}{5} \\[6pt]
+x \cap II.\; &\qquad 2\!\left(-\dfrac{2}{5}\right) - y = -5 \\
+&\qquad -\dfrac{4}{5} - y = -5 \quad \left| +\dfrac{4}{5} \right. \\
+&\qquad -y = -\dfrac{21}{5} \quad \left| \cdot(-1) \right. \\
+&\qquad y = \dfrac{21}{5} = \dfrac{13}{5}
+\end{align*}
+$$
+************
+
+</div>
+</section>
 
 
 
 
+
+
+
+
+
+
+
+<!-- Gleichungssysteme 0014 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 14:__ **Berechne** die Lösungen des gegebenen Gleichungssystems.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 2x + 3y = 7 \\  
+II.& \qquad 5x - y = 4  
+\end{align*}
+$$  
+$x$ = [[  19/17  ]] und  $y$ = [[  23/17  ]] 
+@Algebrite.check([ 19/17; 23/17 ])
+************
+$$
+\begin{align*}
+I.& \qquad 2x + 3y = 7 \\  
+II.& \qquad 5x - y = 4  \\ \hline
+II.& \qquad 5x - y = 4 \quad \left| -5x \right. \\
+& \qquad -y = 4 - 5x \quad \left| \cdot(-1) \right. \\
+& \qquad y = 5x - 4 \\ \hline
+I. \cap II.& \qquad 2x + 3(5x - 4) = 7 \\
+& \qquad 2x + 15x - 12 = 7 \\
+& \qquad 17x - 12 = 7 \quad \left| +12 \right. \\
+& \qquad 17x = 19 \quad \left| :17 \right. \\
+& \qquad x = \dfrac{19}{17} \\[6pt]
+x \cap II.& \qquad y = 5\cdot \dfrac{19}{17} - 4 \\
+& \qquad = \dfrac{95}{17} - \dfrac{68}{17} = \dfrac{27}{17} 
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 3x - 2y = 1 \\  
+II.& \qquad 4x + y = 7  
+\end{align*}
+$$  
+$x$ = [[  3/2  ]] und  $y$ = [[  1  ]] 
+@Algebrite.check([ 3/2; 1 ])
+************
+$$
+\begin{align*}
+I.& \qquad 3x - 2y = 1 \\  
+II.& \qquad 4x + y = 7  \\ \hline
+II.& \qquad 4x + y = 7 \quad \left| -4x \right. \\
+& \qquad y = 7 - 4x \\ \hline
+I. \cap II.& \qquad 3x - 2(7 - 4x) = 1 \\
+& \qquad 3x - 14 + 8x = 1 \\
+& \qquad 11x - 14 = 1 \quad \left| +14 \right. \\
+& \qquad 11x = 15 \quad \left| :11 \right. \\
+& \qquad x = \dfrac{15}{11} \\[6pt]
+x \cap II.& \qquad y = 7 - 4\cdot \dfrac{15}{11} \\
+& \qquad = \dfrac{77}{11} - \dfrac{60}{11} = \dfrac{17}{11}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 5x + 2y = 8 \\  
+II.& \qquad 3x - y = 2  
+\end{align*}
+$$  
+$x$ = [[  12/13  ]] und  $y$ = [[  14/13  ]] 
+@Algebrite.check([ 12/13; 14/13 ])
+************
+$$
+\begin{align*}
+I.& \qquad 5x + 2y = 8 \\  
+II.& \qquad 3x - y = 2  \\ \hline
+II.& \qquad 3x - y = 2 \quad \left| -3x \right. \\
+& \qquad -y = 2 - 3x \quad \left| \cdot(-1) \right. \\
+& \qquad y = 3x - 2 \\ \hline
+I. \cap II.& \qquad 5x + 2(3x - 2) = 8 \\
+& \qquad 5x + 6x - 4 = 8 \\
+& \qquad 11x - 4 = 8 \quad \left| +4 \right. \\
+& \qquad 11x = 12 \quad \left| :11 \right. \\
+& \qquad x = \dfrac{12}{11} \\[6pt]
+x \cap II.& \qquad y = 3\cdot \dfrac{12}{11} - 2 \\
+& \qquad = \dfrac{36}{11} - \dfrac{22}{11} = \dfrac{14}{11}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 7x - 3y = 5 \\  
+II.& \qquad 2x + y = 4  
+\end{align*}
+$$  
+$x$ = [[  17/13  ]] und  $y$ = [[  34/13  ]] 
+@Algebrite.check([ 17/13; 34/13 ])
+************
+$$
+\begin{align*}
+I.& \qquad 7x - 3y = 5 \\  
+II.& \qquad 2x + y = 4  \\ \hline
+II.& \qquad 2x + y = 4 \quad \left| -2x \right. \\
+& \qquad y = 4 - 2x \\ \hline
+I. \cap II.& \qquad 7x - 3(4 - 2x) = 5 \\
+& \qquad 7x - 12 + 6x = 5 \\
+& \qquad 13x - 12 = 5 \quad \left| +12 \right. \\
+& \qquad 13x = 17 \quad \left| :13 \right. \\
+& \qquad x = \dfrac{17}{13} \\[6pt]
+x \cap II.& \qquad y = 4 - 2\cdot \dfrac{17}{13} \\
+& \qquad = \dfrac{52}{13} - \dfrac{34}{13} = \dfrac{18}{13}
+\end{align*}
+$$
+************
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gleichungssysteme 0015 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 15:__ **Berechne** die Lösungen des gegebenen Gleichungssystems.
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$a)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 12x + 12y + 12z = 5 \\
+II.& \qquad 24x - 12y + 36z = -23 \\
+III.& \qquad -3x + 12y - 6z = 11
+\end{align*}
+$$
+$x$ = [[  1/2  ]],  $y$ = [[  2/3  ]]  und  $z$ = [[  -3/4  ]]
+@Algebrite.check([ 1/2; 2/3; -3/4 ])
+************
+$$
+\begin{align*}
+I.& \qquad 12x + 12y + 12z = 5 \\
+II.& \qquad 24x - 12y + 36z = -23 \\
+III.& \qquad -3x + 12y - 6z = 11 \\ \hline
+IV := I + II:&\qquad 36x + 0y + 48z = -18 \quad \left| :6 \right. \\
+IV: &\qquad 6x + 8z = -3 \\[6pt]
+V := I - III:&\qquad 15x + 0y + 18z = -6 \quad \left| :3 \right. \\
+V:&\qquad 5x + 6z = -2 \\[6pt]
+IV\cdot 5:&\qquad 30x + 40z = -15 \\
+V\cdot 6:&\qquad 30x + 36z = -12 \\ \hline
+IV\cdot 5 - V\cdot 6 &\qquad 4z = -3 \;\Rightarrow\; z = -\dfrac{3}{4} \\[6pt]
+z \cap V:&\qquad 5x + 6\left(-\dfrac{3}{4}\right) = -2 \\
+&\qquad 5x - \dfrac{9}{2} = -2 \;\Rightarrow\; 5x = \dfrac{5}{2} \;\Rightarrow\; x = \dfrac{1}{2} \\[6pt]
+z,x \cap I:&\qquad 12\cdot\dfrac{1}{2} + 12y + 12\cdot\left(-\dfrac{3}{4}\right) = 5 \\
+&\qquad 6 + 12y - 9 = 5 \;\Rightarrow\; 12y = 8 \;\Rightarrow\; y = \dfrac{2}{3}
+\end{align*}
+$$
+************
+</div>
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$b)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 14x + 6y + 6z = 7 \\
+II.& \qquad 7x - 3y + 12z = 15 \\
+III.& \qquad -21x + 12y - 6z = -22
+\end{align*}
+$$
+$x$ = [[  3/7  ]],  $y$ = [[  -2/3  ]]  und  $z$ = [[  5/6  ]]
+@Algebrite.check([ 3/7; -2/3; 5/6 ])
+************
+$$
+\begin{align*}
+I.& \qquad 14x + 6y + 6z = 7 \\
+II.& \qquad 7x - 3y + 12z = 15 \\
+III.& \qquad -21x + 12y - 6z = -22 \\ \hline
+IV := I + 2\cdot II:& \qquad 28x + 0y + 30z = 37 \\
+& \qquad \Rightarrow\; 28x + 30z = 37 \\[6pt]
+V := 2\cdot I - III:& \qquad 49x + 0y + 18z = 36 \\
+& \qquad \Rightarrow\; 49x + 18z = 36 \\[6pt]
+(IV)\cdot 7:& \qquad 196x + 210z = 259 \\
+(V)\cdot 4:& \qquad 196x + 72z = 144 \\ \hline
+(IV)\cdot 7 - (V)\cdot 4:& \qquad 138z = 115 \;\Rightarrow\; z = \dfrac{115}{138} = \dfrac{5}{6} \\[6pt]
+z \cap V:& \qquad 49x + 18\cdot \dfrac{5}{6} = 36 \;\Rightarrow\; 49x + 15 = 36 \;\Rightarrow\; x = \dfrac{21}{49} = \dfrac{3}{7} \\[6pt]
+z,x \cap II:& \qquad 7\cdot \dfrac{3}{7} - 3y + 12\cdot \dfrac{5}{6} = 15 \\
+& \qquad 3 - 3y + 10 = 15 \;\Rightarrow\; -3y = 2 \;\Rightarrow\; y = -\dfrac{2}{3}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$c)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 6x + 8y + 5z = 10 \\
+II.& \qquad 9x - 4y + 10z = -4 \\
+III.& \qquad -12x + 12y - 15z = 13
+\end{align*}
+$$
+$x$ = [[  -1/3  ]],  $y$ = [[  5/4  ]]  und  $z$ = [[  2/5  ]]
+@Algebrite.check([ -1/3; 5/4; 2/5 ])
+************
+$$
+\begin{align*}
+I.& \qquad 6x + 8y + 5z = 10 \\
+II.& \qquad 9x - 4y + 10z = -4 \\
+III.& \qquad -12x + 12y - 15z = 13 \\ \hline
+IV := I + 2\cdot II:& \qquad 24x + 0y + 25z = 2 \\
+& \qquad \Rightarrow\; 24x + 25z = 2 \\[6pt]
+V := 3\cdot I - 2\cdot III:& \qquad 42x + 0y + 45z = 4 \\
+& \qquad \Rightarrow\; 42x + 45z = 4 \\[6pt]
+(IV)\cdot 7:& \qquad 168x + 175z = 14 \\
+(V)\cdot 4:& \qquad 168x + 180z = 16 \\ \hline
+(V)\cdot 4 - (IV)\cdot 7:& \qquad 5z = 2 \;\Rightarrow\; z = \dfrac{2}{5} \\[6pt]
+z \cap IV:& \qquad 24x + 25\cdot \dfrac{2}{5} = 2 \;\Rightarrow\; 24x + 10 = 2 \;\Rightarrow\; 24x = -8 \;\Rightarrow\; x = -\dfrac{1}{3} \\[6pt]
+z,x \cap I:& \qquad 6\cdot \left(-\dfrac{1}{3}\right) + 8y + 5\cdot \dfrac{2}{5} = 10 \\
+& \qquad -2 + 8y + 2 = 10 \;\Rightarrow\; 8y = 10 \;\Rightarrow\; y = \dfrac{5}{4}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$d)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 9x + 6y + 3z = 3 \\
+II.& \qquad 18x - 12y + 6z = 26 \\
+III.& \qquad -9x + 12y - 15z = -22
+\end{align*}
+$$
+$x$ = [[  7/9  ]],  $y$ = [[  -5/6  ]]  und  $z$ = [[  1/3  ]]
+@Algebrite.check([ 7/9; -5/6; 1/3 ])
+************
+$$
+\begin{align*}
+I.& \qquad 9x + 6y + 3z = 3 \\
+II.& \qquad 18x - 12y + 6z = 26 \\
+III.& \qquad -9x + 12y - 15z = -22 \\ \hline
+IV := 2\cdot I + II:& \qquad 36x + 0y + 12z = 32 \quad \left| :4 \right. \\
+IV:& \qquad 9x + 3z = 8 \\[6pt]
+V := 2\cdot I - III:& \qquad 27x + 0y + 21z = 28 \\
+& \qquad \Rightarrow\; 27x + 21z = 28 \\[6pt]
+(IV)\cdot 3:& \qquad 27x + 9z = 24 \\ \hline
+V - (IV)\cdot 3:& \qquad 12z = 4 \;\Rightarrow\; z = \dfrac{1}{3} \\[6pt]
+z \cap IV:& \qquad 9x + 3\cdot \dfrac{1}{3} = 8 \;\Rightarrow\; 9x + 1 = 8 \;\Rightarrow\; 9x = 7 \;\Rightarrow\; x = \dfrac{7}{9} \\[6pt]
+z,x \cap I:& \qquad 9\cdot \dfrac{7}{9} + 6y + 3\cdot \dfrac{1}{3} = 3 \\
+& \qquad 7 + 6y + 1 = 3 \;\Rightarrow\; 6y = -5 \;\Rightarrow\; y = -\dfrac{5}{6}
+\end{align*}
+$$
+************
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+<!-- Gleichungssysteme 0016 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
+__Aufgabe 16:__ **Berechne** die Lösungen des gegebenen Gleichungssystems.
+
+
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$e)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 8x + 6y + 5z = 6 \\
+II.& \qquad 4x - 6y + 10z = -3 \\
+III.& \qquad -4x + 12y - 30z = 13
+\end{align*}
+$$
+$x$ = [[  3/4  ]],  $y$ = [[  1/3  ]]  und  $z$ = [[  -2/5  ]]
+@Algebrite.check([ 3/4; 1/3; -2/5 ])
+************
+$$
+\begin{align*}
+I.& \qquad 8x + 6y + 5z = 6 \\
+II.& \qquad 4x - 6y + 10z = -3 \\
+III.& \qquad -4x + 12y - 30z = 13 \\ \hline
+IV := I + II:&\qquad 12x + 15z = 3 \\[6pt]
+V := 2\cdot I - III:&\qquad 20x + 40z = -1 \\[6pt]
+(IV)\cdot 5 \;+\; (V)\cdot(-3):&\qquad -45z = 18 \;\Rightarrow\; z = -\dfrac{2}{5} \\[6pt]
+z \cap IV:&\qquad 12x + 15\!\left(-\dfrac{2}{5}\right) = 3 \;\Rightarrow\; 12x - 6 = 3 \;\Rightarrow\; x = \dfrac{3}{4} \\[6pt]
+z,x \cap I:&\qquad 8\cdot\dfrac{3}{4} + 6y + 5\!\left(-\dfrac{2}{5}\right) = 6 \;\Rightarrow\; 6 + 6y - 2 = 6 \;\Rightarrow\; y = \dfrac{1}{3}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$f)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 6x + 8y + 9z = 9 \\
+II.& \qquad 12x - 8y + 3z = -10 \\
+III.& \qquad -6x + 16y - 12z = 7
+\end{align*}
+$$
+$x$ = [[  -1/2  ]],  $y$ = [[  3/4  ]]  und  $z$ = [[  2/3  ]]
+@Algebrite.check([ -1/2; 3/4; 2/3 ])
+************
+$$
+\begin{align*}
+I.& \qquad 6x + 8y + 9z = 9 \\
+II.& \qquad 12x - 8y + 3z = -10 \\
+III.& \qquad -6x + 16y - 12z = 7 \\ \hline
+IV := I + II:&\qquad 18x + 12z = -1 \\[6pt]
+V := 2\cdot I - III:&\qquad 18x + 30z = 11 \\[6pt]
+V - IV:&\qquad 18z = 12 \;\Rightarrow\; z = \dfrac{2}{3} \\[6pt]
+z \cap IV:&\qquad 18x + 12\!\left(\dfrac{2}{3}\right) = -1 \;\Rightarrow\; 18x + 8 = -1 \;\Rightarrow\; x = -\dfrac{1}{2} \\[6pt]
+x,z \cap I:&\qquad 6\!\left(-\dfrac{1}{2}\right) + 8y + 9\!\left(\dfrac{2}{3}\right) = 9 \;\Rightarrow\; -3 + 8y + 6 = 9 \;\Rightarrow\; y = \dfrac{3}{4}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$g)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 9x + 6y + 3z = 7 \\
+II.& \qquad 12x - 6y + 6z = 15 \\
+III.& \qquad -9x + 12y - 15z = -19
+\end{align*}
+$$
+$x$ = [[  5/6  ]],  $y$ = [[  -1/3  ]]  und  $z$ = [[  1/2  ]]
+@Algebrite.check([ 5/6; -1/3; 1/2 ])
+************
+$$
+\begin{align*}
+I.& \qquad 9x + 6y + 3z = 7 \\
+II.& \qquad 12x - 6y + 6z = 15 \\
+III.& \qquad -9x + 12y - 15z = -19 \\ \hline
+IV := I + II:&\qquad 21x + 9z = 22 \\[6pt]
+V := 2\cdot I - III:&\qquad 27x + 21z = 33 \\[6pt]
+(IV)\cdot 7 \;+\; (V)\cdot(-3):&\qquad 66x = 55 \;\Rightarrow\; x = \dfrac{5}{6} \\[6pt]
+x \cap IV:&\qquad 21\!\left(\dfrac{5}{6}\right) + 9z = 22 \;\Rightarrow\; \dfrac{105}{6} + 9z = 22 \;\Rightarrow\; 9z = \dfrac{9}{2} \;\Rightarrow\; z = \dfrac{1}{2} \\[6pt]
+x,z \cap I:&\qquad 9\!\left(\dfrac{5}{6}\right) + 6y + 3\!\left(\dfrac{1}{2}\right) = 7 \;\Rightarrow\; \dfrac{15}{2} + 6y + \dfrac{3}{2} = 7 \;\Rightarrow\; 6y = -2 \;\Rightarrow\; y = -\dfrac{1}{3}
+\end{align*}
+$$
+************
+</div>
+
+
+<div class="flex-child">
+<!-- data-solution-button="5"-->
+__$h)\;\;$__  
+$$
+\begin{align*}
+I.& \qquad 5x + 10y + 4z = 8 \\
+II.& \qquad 15x - 10y + 8z = -3 \\
+III.& \qquad -5x + 20y - 12z = 15
+\end{align*}
+$$
+$x$ = [[  2/5  ]],  $y$ = [[  7/10  ]]  und  $z$ = [[  -1/4  ]]
+@Algebrite.check([ 2/5; 7/10; -1/4 ])
+************
+$$
+\begin{align*}
+I.& \qquad 5x + 10y + 4z = 8 \\
+II.& \qquad 15x - 10y + 8z = -3 \\
+III.& \qquad -5x + 20y - 12z = 15 \\ \hline
+IV := I + II:&\qquad 20x + 12z = 5 \\[6pt]
+V := 2\cdot I - III:&\qquad 15x + 20z = 1 \\[6pt]
+(IV)\cdot 5 \;+\; (V)\cdot(-3):&\qquad 55x = 22 \;\Rightarrow\; x = \dfrac{2}{5} \\[6pt]
+x \cap IV:&\qquad 20\!\left(\dfrac{2}{5}\right) + 12z = 5 \;\Rightarrow\; 8 + 12z = 5 \;\Rightarrow\; z = -\dfrac{1}{4} \\[6pt]
+x,z \cap I:&\qquad 5\!\left(\dfrac{2}{5}\right) + 10y + 4\!\left(-\dfrac{1}{4}\right) = 8 \;\Rightarrow\; 2 + 10y - 1 = 8 \;\Rightarrow\; y = \dfrac{7}{10}
+\end{align*}
+$$
+************
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- Gleichungssysteme 0017 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 17:__ Beim Schulfest verkauft die betrachtet Klasse Kuchenstücke und Waffeln. Am Ende stehen insgesamt 26 verkaufte Teile auf der Liste. Ein Kuchenstück kostet 2 €, eine Waffel 3 €. Zusammen wurden 62 € eingenommen. Berechne, wie viele Kuchenstücke und wie viele Waffeln verkauft wurden.
+
+
+
+<!-- data-solution-button="5"-->
+$x$ = [[  16  ]] und $y$ = [[  10  ]] 
+@Algebrite.check([ 16; 10 ])
+************
+Bezeichne mit $x$ die Anzahl der Kuchenstücke und mit $y$ die Anzahl der Waffeln.
+$$
+\begin{align*}
+I.& \qquad x + y = 26 \\
+II.& \qquad 2x + 3y = 62  \\ \hline
+I.& \qquad x + y = 26 \quad \left| \cdot 2 \right. \\
+& \qquad 2x + 2y = 52 \\ \hline
+II. - 2\cdot I:& \qquad (2x + 3y) - (2x + 2y) = 62 - 52 \\
+& \qquad y = 10 \\[6pt]
+y \cap I:& \qquad x + 10 = 26 \quad \left| -10 \right. \\
+& \qquad x = 16
+\end{align*}
+$$
+Es wurden 16 Kuchenstücke und 10 Waffeln verkauft.
+************
+
+
+
+
+<!-- Gleichungssysteme 0018 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 18:__ Beim Klassenflohmarkt verkauft die betrachte Klasse Postkarten und Lesezeichen. Insgesamt wurden 34 Artikel verkauft. Eine Postkarte kostet 1 €, ein Lesezeichen 2 €. Am Ende zählen die Schüler:innen 44 € Einnahmen. Berechne, wie viele Postkarten und wie viele Lesezeichen verkauft wurden.
+
+
+<!-- data-solution-button="5"-->
+$x$ = [[  24  ]] und $y$ = [[  10  ]]
+@Algebrite.check([ 24; 10 ])
+************
+Bezeichne mit $x$ die Anzahl der Postkarten und mit $y$ die Anzahl der Lesezeichen.
+$$
+\begin{align*}
+I.& \qquad x + y = 34 \\
+II.& \qquad x + 2y = 44 \\ \hline
+2\cdot I:& \qquad 2x + 2y = 68 \\[4pt]
+(2\cdot I) - II:& \qquad (2x + 2y) - (x + 2y) = 68 - 44 \\
+& \qquad x = 24 \\[6pt]
+x \cap I:& \qquad 24 + y = 34 \quad \left| -24 \right. \\
+& \qquad y = 10
+\end{align*}
+$$
+Es wurden 24 Postkarten und 10 Lesezeichen verkauft.
+************
+
+
+
+
+<!-- Gleichungssysteme 0019 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 19:__ Auf einem Parkplatz stehen insgesamt 28 Fahrzeuge. Darunter befinden sich Autos und Motorräder. Zusammen haben alle Fahrzeuge 80 Räder.  
+Berechne die Anzahl der Autos und Motorräder.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  12  ]] und $y$ = [[  16  ]]
+@Algebrite.check([ 12; 16 ])
+************
+Bezeichnen wir mit $x$ die Anzahl der Autos und mit $y$ die Anzahl der Motorräder.
+$$
+\begin{align*}
+I.& \qquad x + y = 28 \\
+II.& \qquad 4x + 2y = 80 \\ \hline
+II.& \qquad 4x + 2y = 80 \quad \left| :2 \right. \\
+& \qquad 2x + y = 40 \\[6pt]
+(2x + y) - (x + y):& \qquad x = 12 \\[6pt]
+x \cap I:& \qquad 12 + y = 28 \;\Rightarrow\; y = 16
+\end{align*}
+$$
+Es stehen 12 Autos und 16 Motorräder auf dem Parkplatz.
+************
+
+
+
+
+
+<!-- Gleichungssysteme 0020 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 20:__ Auf einem Innenhof stehen Bänke: einige sind 2er-Bänke, andere 3er-Bänke. Insgesamt sind es 22 Bänke mit zusammen 56 Sitzplätzen.  
+Berechne die Anzahl der 2er-Bänke und der 3er-Bänke.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  10  ]] und $y$ = [[  12  ]]
+@Algebrite.check([ 10; 12 ])
+************
+Bezeichne mit $x$ die Anzahl der 2er-Bänke und mit $y$ die Anzahl der 3er-Bänke.
+$$
+\begin{align*}
+I.& \qquad x + y = 22 \\
+II.& \qquad 2x + 3y = 56 \\ \hline
+I.& \qquad x + y = 22 \quad \left| \cdot 2 \right. \\
+& \qquad 2x + 2y = 44 \\ \hline
+II. - 2\cdot I:& \qquad (2x + 3y) - (2x + 2y) = 56 - 44 \\
+& \qquad y = 12 \\[6pt]
+y \cap I:& \qquad x + 12 = 22 \quad \left| -12 \right. \\
+& \qquad x = 10
+\end{align*}
+$$
+Es gibt 10 2er-Bänke und 12 3er-Bänke.
+************
+
+
+
+<!-- Gleichungssysteme 0021 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 21:__ Auf einer Weide sind Hühner und Ziegen. Insgesamt zählst du 21 Tiere. Zusammen haben die Tiere 62 Beine.  
+Berechne die Anzahl der Hühner und der Ziegen.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  11  ]] und $y$ = [[  10  ]]
+@Algebrite.check([ 11; 10 ])
+************
+Bezeichne mit $x$ die Anzahl der Hühner (je 2 Beine) und mit $y$ die Anzahl der Ziegen (je 4 Beine).
+$$
+\begin{align*}
+I.& \qquad x + y = 21 \\
+II.& \qquad 2x + 4y = 62 \\ \hline
+II.& \qquad 2x + 4y = 62 \quad \left| :2 \right. \\
+& \qquad x + 2y = 31 \\ \hline
+(x + 2y) - (x + y):& \qquad y = 10 \\[6pt]
+y \cap I:& \qquad x + 10 = 21 \quad \left| -10 \right. \\
+& \qquad x = 11
+\end{align*}
+$$
+Es gibt 11 Hühner und 10 Ziegen.
+************
+
+
+
+<!-- Gleichungssysteme 0022 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 22:__ Ein Kartenspiel besteht aus grünen und blauen Karten. Insgesamt sind es 28 Karten. Jede grüne Karte zählt 3 Punkte, jede blaue Karte 5 Punkte. Zusammen ergeben alle Karten 112 Punkte.  
+Berechne die Anzahl der grünen und der blauen Karten.
+
+<!-- data-solution-button="5"-->
+$x$ = [[  14  ]] und $y$ = [[  14  ]]
+@Algebrite.check([ 14; 14 ])
+************
+Bezeichne mit $x$ die Anzahl der grünen Karten (3 Punkte) und mit $y$ die Anzahl der blauen Karten (5 Punkte).
+$$
+\begin{align*}
+I.& \qquad x + y = 28 \\
+II.& \qquad 3x + 5y = 112 \\ \hline
+I.& \qquad x + y = 28 \quad \left| \cdot 3 \right. \\
+& \qquad 3x + 3y = 84 \\ \hline
+II. - 3\cdot I:& \qquad (3x + 5y) - (3x + 3y) = 112 - 84 \\
+& \qquad 2y = 28 \quad \left| :2 \right. \\
+& \qquad y = 14 \\[6pt]
+y \cap I:& \qquad x + 14 = 28 \quad \left| -14 \right. \\
+& \qquad x = 14
+\end{align*}
+$$
+Es gibt 14 grüne und 14 blaue Karten.
+************
+
+
+
+<!-- Gleichungssysteme 00 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe :__ 
 
 
 
@@ -47350,7 +48236,6 @@ Under Construction
 Under Construction
 
 
-!?[Lagebeziehung](https://www.youtube.com/watch?v=CGrkv0Jj3dE)
 
 
 ### Winkelbeziehungen
@@ -47360,8 +48245,6 @@ Under Construction
 ### Fläche und Volumen
 
 Under Construction
-
-!?[Rechteck](https://www.youtube.com/watch?v=wl7edZWZew0)
 
 ### Dreiecke
 
@@ -47605,13 +48488,11 @@ Der Begriff „*Analysis*“ kommt aus dem Griechischen und bedeutet „Auflösu
 
 ### Operatorenalgebra
 
-!?[Operatorenalgebra](https://www.youtube.com/watch?v=quQtPwW04B0)
 
 Under Construction
 
 ### Differentiationsregeln
 
-!?[Graphische Differentiation](https://www.youtube.com/watch?v=ChaN4YkErPw)
 
 Under Construction
 
@@ -47627,7 +48508,6 @@ Under Construction
 
 Under Construction
 
-!?[Integration](https://www.youtube.com/watch?v=ppdwq_KDMoE)
 
 ### Integrationsregeln
 
@@ -47799,6 +48679,8 @@ $$
 R   = x_{max} - x_{min}  \;\; . \\
 \end{align*}
 $$
+
+{{|>}} Auch der *Median* $\tilde{x}$ ist eine wichtige Größe zur Erfassung von Daten. Um den *Median* $\tilde{x}$ zu bestimmen, werden die Werte einer *Ergebnismenge* sotiert, wobei der Wert der die Anzahl der Werte mittig in zwei gleichgroße Anzahlbereiche teilt. Liegen zwei Werte direkt in der Mitte, wird das *arithmetische Mittel* zwischen diesen beiden Werten gebildet.
 
 
 
@@ -48608,6 +49490,7 @@ __Aufgabe 11:__ In den dargestellten Gefäßen befinden sich Kugeln unterschiedl
 <div class="flex-child">
 __$a)\;\;$__ 
 
+<!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne5.png)
 
 <!-- data-solution-button="5" -->
@@ -48634,6 +49517,7 @@ $R(R)=$ [[  25:4  ]]
 <div class="flex-child">
 __$b)\;\;$__ 
 
+<!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne6.png)
 
 <!-- data-solution-button="5" -->
@@ -48660,6 +49544,7 @@ $R(R)=$ [[  7:6  ]]
 <div class="flex-child">
 __$c)\;\;$__ 
 
+<!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne7.png)
 
 <!-- data-solution-button="5" -->
@@ -48686,6 +49571,7 @@ $R(R)=$ [[  7:16  ]]
 <div class="flex-child">
 __$d)\;\;$__ 
 
+<!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne8.png)
 
 <!-- data-solution-button="5" -->
@@ -48724,6 +49610,7 @@ __Aufgabe 12:__ In den dargestellten Gefäßen befinden sich Kugeln unterschiedl
 <div class="flex-child">
 __$a)\;\;$__ 
 
+<!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne1.png)
 
 <!-- data-solution-button="5" -->
@@ -48750,6 +49637,7 @@ $R(R)=$ [[  7:15  ]]
 <div class="flex-child">
 __$b)\;\;$__ 
 
+<!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne2.png)
 
 <!-- data-solution-button="5" -->
@@ -48776,6 +49664,7 @@ $R(R)=$ [[  5:12  ]]
 <div class="flex-child">
 __$c)\;\;$__ 
 
+<!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne3.png)
 
 <!-- data-solution-button="5" -->
@@ -48802,6 +49691,7 @@ $R(R)=$ [[  1:1  ]]
 <div class="flex-child">
 __$d)\;\;$__ 
 
+<!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne4.png)
 
 <!-- data-solution-button="5" -->
@@ -48841,6 +49731,7 @@ __Aufgabe 13:__ In den dargestellten Gefäßen befinden sich Kugeln unterschiedl
 <div class="flex-child">
 __$a)\;\;$__ 
 
+<!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne9.png)
 
 <!-- data-solution-button="5" -->
@@ -48867,6 +49758,7 @@ $R(R)=$ [[  8:15  ]]
 <div class="flex-child">
 __$b)\;\;$__ 
 
+<!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne10.png)
 
 <!-- data-solution-button="5" -->
@@ -48893,6 +49785,7 @@ $R(R)=$ [[  1:4  ]]
 <div class="flex-child">
 __$c)\;\;$__ 
 
+<!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne11.png)
 
 <!-- data-solution-button="5" -->
@@ -48919,6 +49812,7 @@ $R(R)=$ [[  7:16  ]]
 <div class="flex-child">
 __$d)\;\;$__ 
 
+<!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne12.png)
 
 <!-- data-solution-button="5" -->
@@ -48957,6 +49851,7 @@ __Aufgabe 14:__ In den dargestellten Gefäßen befinden sich Kugeln unterschiedl
 <div class="flex-child">
 __$a)\;\;$__ 
 
+<!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne13.png)
 
 <!-- data-solution-button="5" -->
@@ -48983,6 +49878,7 @@ $R(R)=$ [[  8:15  ]]
 <div class="flex-child">
 __$b)\;\;$__
 
+<!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne14.png)
 
 <!-- data-solution-button="5" -->
@@ -49009,6 +49905,7 @@ $R(R)=$ [[  9:14  ]]
 <div class="flex-child">
 __$c)\;\;$__
 
+<!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne15.png)
 
 <!-- data-solution-button="5" -->
@@ -49035,6 +49932,8 @@ $R(R)=$ [[  9:14  ]]
 <div class="flex-child">
 __$d)\;\;$__ 
 
+
+<!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne16.png)
 
 <!-- data-solution-button="5" -->
@@ -49694,6 +50593,8 @@ $\dfrac{12!}{9!2!1!} = 660$
 
 
 ### Baumdiagramme
+
+Von Prinzip dann überleiten
 
 Under Construction
 

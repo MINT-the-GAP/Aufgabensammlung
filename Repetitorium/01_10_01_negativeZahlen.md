@@ -171,8 +171,6 @@ $$
 
 
 
-!?[Negative Zahlen](https://www.youtube.com/watch?v=Yt03b6sbMLM)
-
 
 
 

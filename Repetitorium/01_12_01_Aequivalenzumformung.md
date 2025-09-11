@@ -198,9 +198,6 @@ $$
 
 
 
-Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:  \
-
-!?[Äquivalenzumformung](https://www.youtube.com/watch?v=55z4hWAx8Q0)
 
 
 

@@ -272,10 +272,6 @@ $$
 
 
 
-Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:  \
-
-
-!?[Bruchrechnung](https://www.youtube.com/watch?v=E0jIuLBRPBg)
 
 
 

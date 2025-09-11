@@ -41,9 +41,10 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
+import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 
 
-tags: Gleichungssysteme, mittel, normal, Berechnen
+tags: Gleichungssysteme, Bruchrechnung, negative Zahlen, mittel, normal, Berechnen
 
 comment: Löse Gleichungssysteme mit rationalen Zahlen.
 
@@ -75,10 +76,13 @@ I.& \qquad 3x + 2y = 7 \\
 II.& \qquad 4x - y = 1  
 \end{align*}
 $$  
-$x$ = [[  9/11  ]] @Algebrite.check(9/11) und  $y$ = [[  25/11  ]] @Algebrite.check(25/11)
+$x$ = [[  9/11  ]] und  $y$ = [[  25/11  ]] 
+@Algebrite.check([ 9/11; 25/11 ])
 ************
 $$
 \begin{align*}
+I.& \qquad 3x + 2y = 7 \\  
+II.& \qquad 4x - y = 1   \\ \hline
 II. &\qquad 4x - y = 1 \quad \left| -4x \right. \\
 &\qquad -y = 1 - 4x \quad \left| \cdot(-1) \right. \\
 &\qquad y = 4x - 1 \\ \hline
@@ -108,10 +112,13 @@ I.& \qquad 5x - 2y = 3 \\
 II.& \qquad x + 3y = 8  
 \end{align*}
 $$  
-$x$ = [[  25/17  ]]  @Algebrite.check(25/17)  und  $y$ = [[  37/17  ]]  @Algebrite.check(37/17)
+$x$ = [[  25/17  ]] und  $y$ = [[  37/17  ]] 
+@Algebrite.check([ 25/17; 37/17 ])
 ************
 $$
 \begin{align*}
+I.& \qquad 5x - 2y = 3 \\  
+II.& \qquad x + 3y = 8  \\ \hline
 II. &\qquad x + 3y = 8 \quad \left| -3y \right. \\
 &\qquad x = 8 - 3y \\ \hline
 I. \cap II. &\qquad 5(8 - 3y) - 2y = 3 \\
@@ -137,10 +144,13 @@ I.& \qquad 2x + y = -1 \\
 II.& \qquad 3x - 2y = -16  
 \end{align*}
 $$  
-$x$ = [[  -18/7  ]]  @Algebrite.check(-18/7) und  $y$ = [[  29/7  ]]   @Algebrite.check(29/7)
+$x$ = [[  -18/7  ]]  und  $y$ = [[  29/7  ]] 
+@Algebrite.check([ -18/7; 29/7 ])
 ************
 $$
 \begin{align*}
+I.& \qquad 2x + y = -1 \\  
+II.& \qquad 3x - 2y = -16  \\ \hline
 I. &\qquad 2x + y = -1 \quad \left| -2x \right. \\
 &\qquad y = -1 - 2x \\ \hline
 I. \cap II.\; &\qquad 3x - 2(-1 - 2x) = -16 \\
@@ -160,17 +170,20 @@ $$
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$b)\;\;$__  
+__$d)\;\;$__  
 $$
 \begin{align*}
 I.& \qquad 4x + 3y = 7 \\  
 II.& \qquad 2x - y = -5  
 \end{align*}
 $$  
-$x$ = [[  -2/5  ]]  @Algebrite.check(-2/5) und  $y$ = [[  13/5  ]] @Algebrite.check(13/5)
+$x$ = [[  -2/5  ]]   und  $y$ = [[  13/5  ]] 
+@Algebrite.check([ -2/5; 13/5 ])
 ************
 $$
 \begin{align*}
+I.& \qquad 4x + 3y = 7 \\  
+II.& \qquad 2x - y = -5   \\ \hline
 II.& \qquad 2x - y = -5 \quad \left| -2x \right. \\
 &\qquad -y = -5 - 2x \quad \left| \cdot(-1) \right. \\
 &\qquad y = 5 + 2x \\ \hline

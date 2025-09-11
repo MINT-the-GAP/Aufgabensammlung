@@ -118,9 +118,5 @@ $$
  
  
 
-Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:  \
-
-!?[Division](https://www.youtube.com/watch?v=KkDMx59XTAs)
-
 
 *********************

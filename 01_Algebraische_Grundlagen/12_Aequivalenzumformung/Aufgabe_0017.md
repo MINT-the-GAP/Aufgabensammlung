@@ -65,8 +65,10 @@ author: Martin Lommatzsch
 <section class="flex-container">
 <div class="flex-child">
 
+<!-- data-solution-button="5"-->
 __$a)\;\;$__ $  2x + 5 + 9 = 6x - 3 - 7 $ \
 $x$ = [[  6  ]]
+@Algebrite.check(6)
 ************
 $$
 \begin{align*}
@@ -81,8 +83,10 @@ $$
 </div>
 <div class="flex-child">
 
+<!-- data-solution-button="5"-->
 __$b)\;\;$__ $  3x + 5 + x = 2x + 17 - x $ \
-$x$ = [[  3  ]]
+$x$ = [[  4  ]]
+@Algebrite.check(4)
 ************
 $$
 \begin{align*}
@@ -90,15 +94,17 @@ $$
 4x + 5 &= x + 17 \quad \left| -x \right. \\
 3x + 5 &= 17 \quad \left| -5 \right. \\
 3x &= 12 \quad \left| :3 \right. \\
-x &= 3
+x &= 4
 \end{align*}
 $$
 ************
 </div>
 <div class="flex-child">
 
+<!-- data-solution-button="5"-->
 __$c)\;\;$__ $  5x - 7 + 2x = 3x + 13 $ \
 $x$ = [[  5  ]]
+@Algebrite.check(5)
 ************
 $$
 \begin{align*}
@@ -113,8 +119,10 @@ $$
 </div>
 <div class="flex-child">
 
+<!-- data-solution-button="5"-->
 __$d)\;\;$__ $  2x + 4 + 9x = 6x - 3 - 7 $ \
 $x$ = [[  2  ]]
+@Algebrite.check(2)
 ************
 $$
 \begin{align*}
@@ -128,5 +136,4 @@ $$
 ************
 </div>
 </section>
-
 

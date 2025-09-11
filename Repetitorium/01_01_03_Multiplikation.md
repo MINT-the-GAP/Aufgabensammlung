@@ -219,9 +219,5 @@ $$
 
 
 
-Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt:  \
-
-!?[Multiplikation](https://www.youtube.com/watch?v=Gh4Zfdlq7K0)
-
 
 *********************

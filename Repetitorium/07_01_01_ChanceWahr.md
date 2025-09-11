@@ -122,6 +122,8 @@ $$
 
 
 
+{{|>}} Auch der *Median* $\tilde{x}$ ist eine wichtige Größe zur Erfassung von Daten. Um den *Median* $\tilde{x}$ zu bestimmen, werden die Werte einer *Ergebnismenge* sotiert, wobei der Wert der die Anzahl der Werte mittig in zwei gleichgroße Anzahlbereiche teilt. Liegen zwei Werte direkt in der Mitte, wird das *arithmetische Mittel* zwischen diesen beiden Werten gebildet.
+
 
 
 

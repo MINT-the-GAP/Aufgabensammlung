@@ -141,8 +141,6 @@ $$
 
 
 
-!?[Distributivgesetz](https://www.youtube.com/watch?v=tSawKXhm714)
-
 *********************
 
 

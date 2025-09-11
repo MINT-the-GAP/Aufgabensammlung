@@ -290,7 +290,6 @@ data-sortable="false" -->
 
 
 
-!?[Potenzgesetze](https://www.youtube.com/watch?v=g1zLW9FsglU)
 
 
 Weitere *Koeffizienten* können aus dem *Pascal'schen Dreieck* entnommen werden:

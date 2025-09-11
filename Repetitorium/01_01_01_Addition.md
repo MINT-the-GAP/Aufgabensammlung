@@ -222,9 +222,6 @@ $$
 
 
 
-Im folgenden Video wird das Beschriebene nochmal anhand von Beispielen erklärt: \
-
-!?[Addition](https://www.youtube.com/watch?v=Tn9xv6jSyyI)
 
 
 ***************************
