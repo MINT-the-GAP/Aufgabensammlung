@@ -51,6 +51,10 @@ formula: \digit   \rlap{\carry{#1}}\phantom{#2}#2
 formula: \permil  \text{‰}
 
 
+
+
+
+
 @onload
 window.segments = window.segments || {}
 
@@ -125,6 +129,11 @@ if (segments > 1) {
 `
 </script>
 
+
+
+
+
+
 <script run-once modify="false" input="range" output="segments-@0" value="1" min="1" max="32" input-always-active>
 if (!segments["@0"] || @input != segments["@0"].length) {
   segments["@0"] = Array(@input).fill(false);
@@ -143,6 +152,12 @@ if (!segments["@0"] || @input != segments["@0"].length) {
 
 
 
+
+
+
+
+
+
 import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
@@ -151,6 +166,8 @@ import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.m
         https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
 import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main/README.md
+
+
 -->
 
 

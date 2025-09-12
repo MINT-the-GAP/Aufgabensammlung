@@ -1,4 +1,15 @@
 <!--
+version:  0.0.1
+language: de
+narrator: Deutsch Female
+
+tags: 
+
+comment: 
+
+author: Martin Lommatzsch, André Dietrich
+
+
 
 
 @style
@@ -30,6 +41,13 @@ input {
     }
 }
 @end
+
+
+
+
+
+
+
 
 
 @onload
@@ -122,6 +140,15 @@ if (!segments["@0"] || @input != segments["@0"].length) {
 
 
 
+
+
+
+
+
+
+
+
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 import: https://raw.githubusercontent.com/LiaTemplates/mermaid_template/0.1.4/README.md
@@ -147,7 +174,6 @@ formula: \permil  \text{‰}
 
 
 -->
-
 
 
 # Aufgabensammlung
