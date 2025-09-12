@@ -45,9 +45,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
 
 
-tags: Ungleichungen, Sachaufgabe, leicht, niedrig, Berechnen
+tags: Ungleichungen, Mengen, negative Zahlen, Bruchrechnung, Sachaufgabe, mittel, normal, Berechnen
 
-comment: Löse eine Sachaufgabe zu mithilfe von Ungleichungen.
+comment: Löse eine Sachaufgabe zur Temperatur im Kühlraum mithilfe von Ungleichungen.
 
 author: Martin Lommatzsch
 
@@ -56,7 +56,22 @@ author: Martin Lommatzsch
 
 
 
-# Textaufgabe Ungleichungen - 
+# Textaufgabe Ungleichungen - Temperatur im Kühlraum
 
 
+Ein Kühlraum hat zu Beginn eine Temperatur von $-6^\circ\mathrm{C}$. Durch Aufheizen steigt die Temperatur pro Stunde um $0,75^\circ\mathrm{C}$.  
+**Berechne** die kleinste natürliche Zahl $x$ (Stunden), sodass die Temperatur mindestens $2^\circ\mathrm{C}$ beträgt.
 
+<!-- data-solution-button="5"-->
+$\mathbb{L} = \{ x \in \mathbb{N} \;|\; x \geq $ [[ 11 ]] $\}$
+@Algebrite.check(11)
+******************
+$$
+\begin{align*}
+-6 + \dfrac{3}{4}x &\ge 2 \quad \left| \; +6 \; \right. \\
+\dfrac{3}{4}x &\ge 8 \quad \left| \; :\dfrac{3}{4} \; \right. \\
+x &\ge \dfrac{32}{3} \\[4pt]
+\Rightarrow\;\; \mathbb{N}\text{:}\quad x &\ge 11
+\end{align*}
+$$
+******************

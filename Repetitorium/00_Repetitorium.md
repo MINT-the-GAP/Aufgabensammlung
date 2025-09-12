@@ -45810,6 +45810,91 @@ $$
 
 
 
+<!-- Ungleichungen 0025 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 25:__ Ein Kühlraum hat zu Beginn eine Temperatur von $-6^\circ\mathrm{C}$. Durch Aufheizen steigt die Temperatur pro Stunde um $0,75^\circ\mathrm{C}$.  
+**Bestimme** die kleinste natürliche Zahl $x$ (Stunden), sodass die Temperatur mindestens $2^\circ\mathrm{C}$ beträgt.
+
+<!-- data-solution-button="5"-->
+$\mathbb{L} = \{ x \in \mathbb{N} \;|\; x \geq $ [[ 11 ]] $\}$
+@Algebrite.check(11)
+******************
+$$
+\begin{align*}
+-6 + \dfrac{3}{4}x &\ge 2 \quad \left| \; +6 \; \right. \\
+\dfrac{3}{4}x &\ge 8 \quad \left| \; :\dfrac{3}{4} \; \right. \\
+x &\ge \dfrac{32}{3} \\[4pt]
+\Rightarrow\;\; \mathbb{N}\text{:}\quad x &\ge 11
+\end{align*}
+$$
+******************
+
+
+<!-- Ungleichungen 0026 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 26:__ Ein Konto weist zu Beginn einen Saldo von $-1200\,\mathrm{€}$ auf. Durch regelmäßige Einzahlungen erhöht sich der Saldo pro Woche um $450\,\mathrm{€}$.  
+**Berechne** die Anzahl der Wochen, sodass der Saldo mindestens $300\,\mathrm{€}$ beträgt.
+
+<!-- data-solution-button="5"-->
+$\mathbb{L} = \{ x \in \mathbb{R} \;|\; x \geq $ [[ 10/3 ]] $\}$
+@Algebrite.check(10/3)
+******************
+$$
+\begin{align*}
+-1200 + 450x &\geq 300 \quad \left| \; +1200 \; \right. \\
+450x &\geq 1500 \quad \left| \; :450 \; \right. \\
+x &\geq \dfrac{1500}{450} \;=\; \dfrac{30}{9} \;=\; \dfrac{10}{3} \\
+\end{align*}
+$$
+******************
+
+
+<!-- Ungleichungen 0027 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 27:__ Ein Wassertank enthält anfangs $30\,\mathrm{l}$. Durch ein Leck verliert der Tank pro Minute $\dfrac{7}{4}\,\mathrm{l}$.  
+**Berechne** die Anzahl der Minuten, sodass der Inhalt höchstens $20\,\mathrm{l}$ beträgt.
+
+<!-- data-solution-button="5"-->
+$\mathbb{L} = \{ x \in \mathbb{R} \;|\; x \geq $ [[ 40/7 ]] $\}$
+@Algebrite.check(40/7)
+******************
+$$
+\begin{align*}
+30 - \dfrac{7}{4}x &\le 20 \quad \left| \; -30 \; \right. \\
+-\dfrac{7}{4}x &\le -10 \quad \left| \; \cdot(-1) \; \right. \\
+\dfrac{7}{4}x &\ge 10 \quad \left| \; :\dfrac{7}{4} \; \right. \\
+x &\ge \dfrac{40}{7} \\[4pt]
+\end{align*}
+$$
+******************
+
+
+<!-- Ungleichungen 0028 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 28:__ Ein Regal fasst maximal $50$ Bücher. Zu Beginn stehen bereits $18$ Bücher darin. Jede neue Lieferung enthält $\dfrac{11}{3}$ Bücher im Durchschnitt (z. B. durch wechselnde Buchmengen pro Paket).  
+**Berechne** die Anzahl der Lieferungen $x$, sodass die Kapazität des Regals überschritten wird.
+
+<!-- data-solution-button="5"-->
+$\mathbb{L} = \{ x \in \mathbb{N} \;|\; x \geq $ [[ 9 ]] $\}$
+@Algebrite.check(9)
+******************
+$$
+\begin{align*}
+18 + \dfrac{11}{3}x &> 50 \quad \left| \; -18 \; \right. \\
+\dfrac{11}{3}x &> 32 \quad \left| \; :\dfrac{11}{3} \; \right. \\
+x &> \dfrac{96}{11} \\[4pt]
+\Rightarrow\;\; \mathbb{N}\text{:}\quad x &\ge 9
+\end{align*}
+$$
+******************
+
+
+
+
 
 
 

@@ -45,9 +45,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
 
 
-tags: Ungleichungen, Sachaufgabe, leicht, niedrig, Berechnen
+tags: Ungleichungen, Mengen, negative Zahlen, Bruchrechnung, Sachaufgabe, schwer, normal, Berechnen
 
-comment: Löse eine Sachaufgabe zu mithilfe von Ungleichungen.
+comment: Löse eine Sachaufgabe zu einem Bücherregal mithilfe von Ungleichungen.
 
 author: Martin Lommatzsch
 
@@ -56,7 +56,7 @@ author: Martin Lommatzsch
 
 
 
-# Textaufgabe Ungleichungen - 
+# Textaufgabe Ungleichungen - Bücherregal
 
 
 
