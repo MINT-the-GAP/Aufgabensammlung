@@ -12,36 +12,6 @@ author: Martin Lommatzsch, André Dietrich
 
 
 
-@style
-main > *:not(:last-child) {
-  margin-bottom: 3rem;
-}
-
-input {
-    text-align: center;
-}
-
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    gap: 20px;
-}
-
-.flex-child {
-    flex: 1;
-    min-width: 350px;
-    margin-right: 20px;
-}
-
-@media (max-width: 400px) {
-    .flex-child {
-        flex: 100%;
-        margin-right: 0;
-    }
-}
-@end
-
 
 
 
@@ -147,24 +117,51 @@ if (!segments["@0"] || @input != segments["@0"].length) {
 
 
 
+eingabe: <script input="number" input-always-active modify="false" value="0" default="0">@input</script>
 
 
-import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
-import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
-import: https://raw.githubusercontent.com/LiaTemplates/mermaid_template/0.1.4/README.md
-
-script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-import: https://raw.githubusercontent.com/liaTemplates/ABCjs/main/README.md
-        https://raw.githubusercontent.com/LiaTemplates/Speech-Recognition-Quiz/refs/heads/main/README.md
-        https://raw.githubusercontent.com/liaTemplates/AVR8js/main/README.md
-        https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
-        https://raw.githubusercontent.com/LiaTemplates/mec2/main/README.md
-        https://raw.githubusercontent.com/LiaTemplates/CollaborativeDrawing/main/README.md
-        https://raw.githubusercontent.com/LiaTemplates/SpreadSheet/refs/heads/main/README.md
-        https://github.com/LiaTemplates/PeriodicTable/blob/main/README.md
-        https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main/README.md
+
+
+
+
+
+
+
+
+@komma: @komma_(@uid,`@0`,`@1`)
+
+@komma_
+<input
+  data-id="lia-quiz-@0"
+  class="lia-input lia-quiz__input"
+  style="margin-bottom: 2rem"
+  value="@1">
+
+[[!]]
+<script>
+const eingabe = document.querySelector('[data-id="lia-quiz-@0"]').value.toLocaleLowerCase().replace(/\s+/g,"")
+
+eingabe == "@2".toLocaleLowerCase().replace(/\s+/g,"")
+</script>
+@end
+
+
+
+
+
+
+
+
+
+
+vorlesen: {|>}{<span style="position: absolute; left: -10000px">@0</span>} [[  @0  ]]
+
+
+
+
+
 
 
 

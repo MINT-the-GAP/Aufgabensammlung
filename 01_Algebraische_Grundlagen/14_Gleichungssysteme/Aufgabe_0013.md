@@ -68,6 +68,7 @@ author: Martin Lommatzsch
 
 <section class="flex-container">
 <div class="flex-child">
+
 <!-- data-solution-button="5"-->
 __$a)\;\;$__  
 $$
@@ -75,7 +76,7 @@ $$
 I.& \qquad 3x + 2y = 7 \\  
 II.& \qquad 4x - y = 1  
 \end{align*}
-$$  
+$$
 $x$ = [[  9/11  ]] und  $y$ = [[  25/11  ]] 
 @Algebrite.check([ 9/11; 25/11 ])
 ************

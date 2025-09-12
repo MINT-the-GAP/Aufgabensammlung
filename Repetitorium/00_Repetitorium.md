@@ -23493,7 +23493,7 @@ $$
 
 
 
-#### Übungen Teil 8 - Bruchrechnung Aufgabe 140 bis 165
+#### Übungen Teil 8 - Bruchrechnung Aufgabe 140 bis 159
 
 
 
@@ -24344,6 +24344,8 @@ $$
 ************
 
 
+#### Übungen Teil 9 - Bruchrechnung Aufgabe 160 bis 171
+
 
 <!--  Bruchrechnung 0160  -->
 
@@ -24638,10 +24640,537 @@ Was habe ich, wenn ich fünf Zwölftel und sechs Zwölftel habe?
 
 
 
+
+<!--  Bruchrechnung 0165  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 165:__ **Ordne** die Dominosteine in der richtigen Reihenfolge **an**.
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$a)\;\;$__ $\dfrac{5}{6}$ 
+ [->[$\left. \boxed{ = \dfrac{2}{3} + \dfrac{1}{6}} \right\| \boxed{ \dfrac{4}{5} \cdot \dfrac{3}{2}}  $]]
+ [->[$\left. \boxed{ =  \dfrac{3}{4} - \dfrac{3}{20} } \right\|\boxed{ \dfrac{9}{7} : \dfrac{3}{4}  }  $]]
+ [->[$\left. \boxed{ =  \dfrac{36}{56} \cdot \dfrac{8}{3} } \right\|\boxed{ \dfrac{5}{8} + \dfrac{1}{2} }  $]]
+ [->[$\left. \boxed{ =  \dfrac{3}{4} \cdot \dfrac{3}{2} } \right\|\boxed{ \dfrac{7}{10} - \dfrac{1}{2} }  $]]
+$= \dfrac{1}{5}$
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$b)\;\;$__ $\dfrac{1}{5}$ 
+ [->[$\left. \boxed{ =  \dfrac{8}{15} : \dfrac{8}{3} } \right\|\boxed{ \dfrac{8}{9} \cdot \dfrac{15}{24} }  $]]
+ [->[$\left. \boxed{ =  \dfrac{2}{3} - \dfrac{1}{9} } \right\|\boxed{ \dfrac{5}{12} + \dfrac{3}{4} }  $]]
+ [->[$\left. \boxed{ =  \dfrac{11}{6} - \dfrac{2}{3} } \right\|\boxed{ \dfrac{7}{8} \cdot \dfrac{6}{21} }  $]]
+ [->[$\left. \boxed{ =  \dfrac{7}{12} - \dfrac{1}{4} } \right\|\boxed{ \dfrac{6}{5} - \dfrac{3}{4} }  $]]  
+$= \dfrac{9}{20}$
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$c)\;\;$__ $\dfrac{5}{6}$ 
+ [->[$\left. \boxed{ = \dfrac{2}{3} + \dfrac{1}{6}} \right\| \boxed{ \dfrac{4}{5} \cdot \dfrac{3}{2}}  $]]
+ [->[$\left. \boxed{ =  \dfrac{3}{4} + \dfrac{9}{20} } \right\|\boxed{ \dfrac{9}{7} : \dfrac{3}{4}  }  $]]
+ [->[$\left. \boxed{ =  \dfrac{36}{56} \cdot \dfrac{8}{3} } \right\|\boxed{ \dfrac{5}{8} + \dfrac{1}{2} }  $]]
+ [->[$\left. \boxed{ =  \dfrac{3}{4} \cdot \dfrac{3}{2} } \right\|\boxed{ \dfrac{7}{10} - \dfrac{1}{2} }  $]]
+$= \dfrac{1}{5}$
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$d)\;\;$__ $\dfrac{7}{12}$
+ [->[$\left. \boxed{ = \dfrac{1}{3} + \dfrac{1}{4}} \right\| \boxed{ \dfrac{14}{15} \cdot \dfrac{5}{14}} $]]
+ [->[$\left. \boxed{ = \dfrac{5}{6} - \dfrac{1}{2}} \right\| \boxed{ \dfrac{2}{5} + \dfrac{1}{15}} $]]
+ [->[$\left. \boxed{ = \dfrac{7}{5} \cdot \dfrac{1}{3}} \right\| \boxed{ \dfrac{11}{12} - \dfrac{1}{4}} $]]
+ [->[$\left. \boxed{ = \dfrac{4}{9} : \dfrac{2}{3}} \right\| \boxed{ \dfrac{5}{6} - \dfrac{1}{3}} $]]
+$= \dfrac{1}{2}$
+
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$e)\;\;$__ $\dfrac{3}{4}$
+ [->[$\left. \boxed{ = \dfrac{1}{2} + \dfrac{1}{4}} \right\| \boxed{ \dfrac{9}{8} : \dfrac{5}{4}} $]]
+ [->[$\left. \boxed{ = \dfrac{3}{2} - \dfrac{3}{5}} \right\| \boxed{ \dfrac{3}{4} \cdot \dfrac{8}{9}} $]]
+ [->[$\left. \boxed{ = \dfrac{5}{6} - \dfrac{1}{6}} \right\| \boxed{ \dfrac{7}{8} - \dfrac{1}{4}} $]]
+ [->[$\left. \boxed{ = \dfrac{5}{4} : \dfrac{2}{1}} \right\| \boxed{ \dfrac{1}{3} + \dfrac{5}{12}} $]]
+$= \dfrac{3}{4}$
+
+
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$f)\;\;$__ $\dfrac{4}{7}$
+ [->[$\left. \boxed{ = \dfrac{6}{7} - \dfrac{2}{7}} \right\| \boxed{ \dfrac{5}{6} \cdot \dfrac{3}{5}} $]]
+ [->[$\left. \boxed{ = \dfrac{3}{4} : \dfrac{3}{2}} \right\| \boxed{ \dfrac{9}{10} : \dfrac{3}{1}} $]]
+ [->[$\left. \boxed{ = \dfrac{1}{2} - \dfrac{1}{5}} \right\| \boxed{ \dfrac{7}{12} + \dfrac{1}{6}} $]]
+ [->[$\left. \boxed{ = \dfrac{3}{2} : \dfrac{2}{1}} \right\| \boxed{ \dfrac{15}{28} - \dfrac{5}{28}} $]]
+$= \dfrac{5}{14}$
+
+
+
+
+
+<!--  Bruchrechnung 0166  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 166:__ **Ordne** die Dominosteine in der richtigen Reihenfolge **an**.
+
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$a)\;\;$__ $\dfrac{3}{4}$ 
+ [->[$\left. \boxed{ = \dfrac{1}{2} + \dfrac{1}{4}} \right\| \boxed{ \dfrac{5}{4} : \dfrac{5}{2}}  $]]
+ [->[$\left. \boxed{ =  \dfrac{3}{6}} \right\|\boxed{ \dfrac{3}{5} + \dfrac{1}{10}}  $]]
+ [->[$\left. \boxed{ =  \dfrac{14}{20}} \right\|\boxed{ \dfrac{7}{8} : \dfrac{7}{12}}  $]]
+ [->[$\left. \boxed{ =  \dfrac{9}{6}} \right\|\boxed{ 1 - \dfrac{1}{3}}  $]]
+$= \dfrac{2}{3}$
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$b)\;\;$__ $\dfrac{2}{5}$ 
+ [->[$\left. \boxed{ =  \dfrac{4}{10}} \right\|\boxed{ \dfrac{3}{2} \cdot \dfrac{2}{5}}  $]]
+ [->[$\left. \boxed{ =  \dfrac{6}{10}} \right\|\boxed{ \dfrac{9}{4} : \dfrac{3}{2}}  $]]
+ [->[$\left. \boxed{ =  \dfrac{12}{8}} \right\|\boxed{ 1 - \dfrac{1}{3}}  $]]
+ [->[$\left. \boxed{ =  \dfrac{4}{6}} \right\|\boxed{ \dfrac{1}{2} + \dfrac{1}{3}}  $]]
+$= \dfrac{5}{6}$
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$c)\;\;$__ $\dfrac{7}{10}$ 
+ [->[$\left. \boxed{ = \dfrac{1}{2} + \dfrac{1}{5}} \right\| \boxed{ \dfrac{3}{4} : \dfrac{3}{2}}  $]]
+ [->[$\left. \boxed{ =  \dfrac{2}{4}} \right\|\boxed{ \dfrac{9}{8} : \dfrac{3}{2}}  $]]
+ [->[$\left. \boxed{ =  \dfrac{6}{8}} \right\|\boxed{ \dfrac{3}{2} : \dfrac{3}{1}}  $]]
+ [->[$\left. \boxed{ =  \dfrac{5}{10}} \right\|\boxed{ \dfrac{1}{2} : \dfrac{2}{1}}  $]]
+$= \dfrac{1}{4}$
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$d)\;\;$__ $\dfrac{5}{12}$
+ [->[$\left. \boxed{ = \dfrac{10}{24}} \right\| \boxed{ \dfrac{3}{2} - \dfrac{5}{6}} $]]
+ [->[$\left. \boxed{ = \dfrac{8}{12}} \right\| \boxed{ \dfrac{7}{4} - \dfrac{5}{6}} $]]
+ [->[$\left. \boxed{ = \dfrac{22}{24}} \right\| \boxed{ \dfrac{11}{8} : \dfrac{11}{12}} $]]
+ [->[$\left. \boxed{ = \dfrac{9}{6}} \right\| \boxed{ \dfrac{7}{3} : \dfrac{3}{1}} $]]
+$= \dfrac{7}{9}$
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$e)\;\;$__ $\dfrac{4}{9}$
+ [->[$\left. \boxed{ = \dfrac{1}{3} + \dfrac{1}{9}} \right\| \boxed{ \dfrac{8}{3} : \dfrac{4}{1}} $]]
+ [->[$\left. \boxed{ = \dfrac{6}{9}} \right\| \boxed{ \dfrac{3}{5} + \dfrac{1}{4}} $]]
+ [->[$\left. \boxed{ = \dfrac{51}{60}} \right\| \boxed{ \dfrac{17}{10} : \dfrac{17}{24}} $]]
+ [->[$\left. \boxed{ = \dfrac{24}{10}} \right\| \boxed{ \dfrac{5}{6} - \dfrac{5}{12}} $]]
+$= \dfrac{5}{12}$
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$f)\;\;$__ $\dfrac{2}{7}$
+ [->[$\left. \boxed{ = \dfrac{4}{14}} \right\| \boxed{ \dfrac{9}{8} : \dfrac{15}{8}} $]]
+ [->[$\left. \boxed{ = \dfrac{6}{10}} \right\| \boxed{ \dfrac{7}{6} - \dfrac{1}{3}} $]]
+ [->[$\left. \boxed{ = \dfrac{10}{12}} \right\| \boxed{ \dfrac{9}{5} - \dfrac{3}{10}} $]]
+ [->[$\left. \boxed{ = \dfrac{12}{8}} \right\| \boxed{ \dfrac{9}{5} : \dfrac{3}{1}} $]]
+$= \dfrac{3}{5}$
+
+
+
+
+
+<!--  Bruchrechnung 0167  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 167:__ **Ordne** die Dominosteine in der richtigen Reihenfolge **an**.
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$a)\;\;$__  $\dfrac{3}{5}$
+ [->[$\left. \boxed{ = \dfrac{1}{2} + \dfrac{1}{10}} \right\| \boxed{ \dfrac{12}{7} \cdot \dfrac{7}{18}} $]]
+ [->[$\left. \boxed{ = \dfrac{5}{6} - \dfrac{1}{6}} \right\| \boxed{ \dfrac{9}{8} : \dfrac{3}{2}} $]]
+ [->[$\left. \boxed{ = \dfrac{1}{2} + \dfrac{1}{4}} \right\| \boxed{ \dfrac{3}{5} \cdot \dfrac{3}{2}} $]]
+ [->[$\left. \boxed{ = \dfrac{9}{5} : \dfrac{2}{1}} \right\| \boxed{ \dfrac{7}{6} - \dfrac{1}{6}} $]]
+ [->[$\left. \boxed{ = \dfrac{12}{16} \cdot \dfrac{4}{3}} \right\| \boxed{ \dfrac{3}{4} : \dfrac{1}{2}} $]]
+ [->[$\left. \boxed{ = \dfrac{3}{5} \cdot \dfrac{5}{2}} \right\| \boxed{ \dfrac{2}{3} + \dfrac{1}{6}} $]]
+$= \dfrac{5}{6}$
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$b)\;\;$__ $\dfrac{4}{9}$
+ [->[$\left. \boxed{ = \dfrac{2}{3} \cdot \dfrac{2}{3}} \right\| \boxed{ \dfrac{7}{5} - \dfrac{2}{5}} $]]
+ [->[$\left. \boxed{ = \dfrac{5}{8} + \dfrac{3}{8}} \right\| \boxed{ \dfrac{10}{7} : \dfrac{5}{7}} $]]
+ [->[$\left. \boxed{ = \dfrac{7}{3} - \dfrac{1}{3}} \right\| \boxed{ \dfrac{9}{8} + \dfrac{3}{8}} $]]
+ [->[$\left. \boxed{ = \dfrac{5}{6} + \dfrac{2}{3}} \right\| \boxed{ \dfrac{2}{3} + \dfrac{2}{3}} $]]
+ [->[$\left. \boxed{ = \dfrac{8}{9} : \dfrac{2}{3}} \right\| \boxed{ \dfrac{11}{12} + \dfrac{1}{4}} $]]
+ [->[$\left. \boxed{ = \dfrac{7}{9} : \dfrac{2}{3}} \right\| \boxed{ \dfrac{3}{4} - \dfrac{1}{4}} $]]
+$= \dfrac{1}{2}$
+
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$c)\;\;$__ $\dfrac{3}{8}$
+ [->[$\left. \boxed{ = \dfrac{1}{2} - \dfrac{1}{8}} \right\| \boxed{ \dfrac{3}{4} \cdot \dfrac{3}{4}} $]]
+ [->[$\left. \boxed{ = \dfrac{1}{2} + \dfrac{1}{16}} \right\| \boxed{ \dfrac{5}{12} + \dfrac{1}{3}} $]]
+ [->[$\left. \boxed{ = \dfrac{3}{2} \cdot \dfrac{1}{2}} \right\| \boxed{ \dfrac{5}{8} + \dfrac{5}{16}} $]]
+ [->[$\left. \boxed{ = \dfrac{3}{4} + \dfrac{3}{16}} \right\| \boxed{ \dfrac{5}{6} - \dfrac{5}{12}} $]]
+ [->[$\left. \boxed{ = \dfrac{1}{3} + \dfrac{1}{12}} \right\| \boxed{ \dfrac{1}{6} + \dfrac{1}{2}} $]]
+ [->[$\left. \boxed{ = \dfrac{4}{3} : \dfrac{2}{1}} \right\| \boxed{ \dfrac{7}{3} : \dfrac{3}{1}} $]]
+$= \dfrac{7}{9}$
+
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$d)\;\;$__ $\dfrac{4}{9}$
+ [->[$\left. \boxed{ = \dfrac{1}{3} + \dfrac{1}{9}} \right\| \boxed{ \dfrac{8}{9} : \dfrac{4}{3}} $]]
+ [->[$\left. \boxed{ = \dfrac{5}{6} - \dfrac{1}{6}} \right\| \boxed{ \dfrac{1}{2} + \dfrac{1}{8}} $]]
+ [->[$\left. \boxed{ = \dfrac{5}{4} \cdot \dfrac{1}{2}} \right\| \boxed{ \dfrac{1}{2} + \dfrac{1}{10}} $]]
+ [->[$\left. \boxed{ = \dfrac{9}{10} : \dfrac{3}{2}} \right\| \boxed{ 1 - \dfrac{1}{8}} $]]
+ [->[$\left. \boxed{ = \dfrac{7}{4} : \dfrac{2}{1}} \right\| \boxed{ \dfrac{3}{4} - \dfrac{1}{3}} $]]
+ [->[$\left. \boxed{ = \dfrac{1}{4} + \dfrac{1}{6}} \right\| \boxed{ \dfrac{8}{9} : \dfrac{4}{3}} $]]
+$= \dfrac{2}{3}$
+
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$e)\;\;$__ $\dfrac{5}{14}$
+ [->[$\left. \boxed{ = \dfrac{3}{7} - \dfrac{1}{14}} \right\| \boxed{ \dfrac{3}{2} : \dfrac{2}{1}} $]]
+ [->[$\left. \boxed{ = 1 - \dfrac{1}{4}} \right\| \boxed{ \dfrac{7}{3} : \dfrac{2}{1}} $]]
+ [->[$\left. \boxed{ = 1 + \dfrac{1}{6}} \right\| \boxed{ \dfrac{5}{4} : \dfrac{2}{1}} $]]
+ [->[$\left. \boxed{ = \dfrac{1}{2} + \dfrac{1}{8}} \right\| \boxed{ \dfrac{3}{5} + \dfrac{3}{10}} $]]
+ [->[$\left. \boxed{ = 1 - \dfrac{1}{10}} \right\| \boxed{ \dfrac{9}{7} : \dfrac{3}{1}} $]]
+ [->[$\left. \boxed{ = \dfrac{6}{7} : \dfrac{2}{1}} \right\| \boxed{ \dfrac{2}{3} - \dfrac{1}{6}} $]]
+$= \dfrac{1}{2}$
+
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$f)\;\;$__ $\dfrac{5}{18}$
+ [->[$\left. \boxed{ = \dfrac{2}{9} + \dfrac{1}{18}} \right\| \boxed{ \dfrac{7}{6} : \dfrac{2}{1}} $]]
+ [->[$\left. \boxed{ = \dfrac{1}{3} + \dfrac{1}{4}} \right\| \boxed{ \dfrac{5}{4} : \dfrac{2}{1}} $]]
+ [->[$\left. \boxed{ = \dfrac{5}{4} \cdot \dfrac{1}{2}} \right\| \boxed{ \dfrac{3}{4} + \dfrac{1}{6}} $]]
+ [->[$\left. \boxed{ = 1 - \dfrac{1}{12}} \right\| \boxed{ \dfrac{8}{9} : \dfrac{4}{3}} $]]
+ [->[$\left. \boxed{ = \dfrac{4}{3} : \dfrac{2}{1}} \right\| \boxed{ \dfrac{7}{3} : \dfrac{3}{1}} $]]
+ [->[$\left. \boxed{ = 1 - \dfrac{2}{9}} \right\| \boxed{ \dfrac{1}{2} + \dfrac{2}{9}} $]]
+$= \dfrac{13}{18}$
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0168  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 168:__ **Ordne** die Dominosteine in der richtigen Reihenfolge **an**.
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$a)\;\;$__  $\dfrac{2}{3}$
+ [->[$\left. \boxed{ = \dfrac{4}{6}} \right\| \boxed{ \dfrac{7}{8} - \dfrac{5}{24}} $]]
+ [->[$\left. \boxed{ = \dfrac{16}{24}} \right\| \boxed{ \dfrac{4}{5} \cdot \dfrac{5}{6}} $]]
+ [->[$\left. \boxed{ = \dfrac{2}{3} + \dfrac{1}{12}} \right\| \boxed{ \dfrac{9}{10} : \dfrac{3}{2}} $]]
+ [->[$\left. \boxed{ = \dfrac{3}{5}} \right\| \boxed{ \dfrac{5}{9} + \dfrac{2}{9}} $]]
+ [->[$\left. \boxed{ = \dfrac{7}{6} - \dfrac{1}{2}} \right\| \boxed{ \dfrac{5}{12} + \dfrac{11}{12}} $]]
+ [->[$\left. \boxed{ = \dfrac{1}{2} + \dfrac{1}{6}} \right\| \boxed{ \dfrac{3}{2} : \dfrac{9}{4}} $]]
+$= \dfrac{5}{6}$
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$b)\;\;$__  $\dfrac{3}{7}$
+ [->[$\left. \boxed{ = \dfrac{6}{14}} \right\| \boxed{ \dfrac{9}{8} : \dfrac{21}{16}} $]]
+ [->[$\left. \boxed{ = \dfrac{24}{32}} \right\| \boxed{ \dfrac{7}{5} - \dfrac{2}{5}} $]]
+ [->[$\left. \boxed{ = \dfrac{12}{20}} \right\| \boxed{ \dfrac{3}{4} \cdot \dfrac{2}{5}} $]]
+ [->[$\left. \boxed{ = \dfrac{6}{10}} \right\| \boxed{ \dfrac{4}{3} - \dfrac{1}{3}} $]]
+ [->[$\left. \boxed{ = \dfrac{3}{3}} \right\| \boxed{ 1 - \dfrac{1}{6}} $]]
+ [->[$\left. \boxed{ = \dfrac{5}{6}} \right\| \boxed{ \dfrac{2}{3} + \dfrac{1}{6}} $]]
+$= \dfrac{2}{3}$
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$c)\;\;$__  $\dfrac{5}{12}$
+ [->[$\left. \boxed{ = \dfrac{10}{24}} \right\| \boxed{ \dfrac{3}{4} - \dfrac{1}{6}} $]]
+ [->[$\left. \boxed{ = \dfrac{7}{12}} \right\| \boxed{ \dfrac{7}{3} : \dfrac{4}{3}} $]]
+ [->[$\left. \boxed{ = \dfrac{21}{12} : \dfrac{7}{6}} \right\| \boxed{ \dfrac{2}{5} + \dfrac{3}{10}} $]]
+ [->[$\left. \boxed{ = \dfrac{7}{10}} \right\| \boxed{ \dfrac{1}{2} + \dfrac{1}{5}} $]]
+ [->[$\left. \boxed{ = \dfrac{9}{18}} \right\| \boxed{ \dfrac{2}{3} \cdot \dfrac{3}{3}} $]]
+ [->[$\left. \boxed{ = \dfrac{1}{2}} \right\| \boxed{ \dfrac{3}{4} - \dfrac{1}{4}} $]]
+$= \dfrac{3}{4}$
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$d)\;\;$__  $\dfrac{2}{9}$
+ [->[$\left. \boxed{ = \dfrac{4}{18}} \right\| \boxed{ \dfrac{7}{6} - \dfrac{5}{18}} $]]
+ [->[$\left. \boxed{ = \dfrac{21}{18} - \dfrac{5}{18}} \right\| \boxed{ \dfrac{8}{5} \cdot \dfrac{5}{12}} $]]
+ [->[$\left. \boxed{ = \dfrac{40}{60}} \right\| \boxed{ \dfrac{10}{15}} $]]
+ [->[$\left. \boxed{ = \dfrac{2}{3}} \right\| \boxed{ \dfrac{1}{3} + \dfrac{1}{3}} $]]
+ [->[$\left. \boxed{ = \dfrac{12}{18}} \right\| \boxed{ \dfrac{2}{3} : \dfrac{3}{2}} $]]
+ [->[$\left. \boxed{ = \dfrac{8}{12}} \right\| \boxed{ \dfrac{2}{4} + \dfrac{2}{6}} $]]
+$= \dfrac{4}{6}$
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$e)\;\;$__  $\dfrac{7}{8}$
+ [->[$\left. \boxed{ = 1 - \dfrac{1}{8}} \right\| \boxed{ \dfrac{3}{2} \cdot \dfrac{7}{12}} $]]
+ [->[$\left. \boxed{ = \dfrac{21}{24}} \right\| \boxed{ \dfrac{9}{10} - \dfrac{3}{20}} $]]
+ [->[$\left. \boxed{ = \dfrac{15}{20}} \right\| \boxed{ \dfrac{3}{4}} $]]
+ [->[$\left. \boxed{ = \dfrac{6}{8}} \right\| \boxed{ \dfrac{5}{6} \cdot \dfrac{9}{10}} $]]
+ [->[$\left. \boxed{ = \dfrac{45}{60}} \right\| \boxed{ \dfrac{3}{4} : \dfrac{6}{5}} $]]
+ [->[$\left. \boxed{ = \dfrac{15}{20} : \dfrac{6}{5}} \right\| \boxed{ \dfrac{1}{2} + \dfrac{1}{4}} $]]
+$= \dfrac{3}{4}$
+
+
+<!-- data-randomize="true"  
+data-solution-button="5"  -->
+__$f)\;\;$__  $\dfrac{5}{16}$
+ [->[$\left. \boxed{ = \dfrac{10}{32}} \right\| \boxed{ \dfrac{1}{2} - \dfrac{3}{16}} $]]
+ [->[$\left. \boxed{ = \dfrac{5}{16}} \right\| \boxed{ \dfrac{3}{8} + \dfrac{7}{16}} $]]
+ [->[$\left. \boxed{ = \dfrac{13}{16}} \right\| \boxed{ \dfrac{13}{12} : \dfrac{13}{16}} $]]
+ [->[$\left. \boxed{ = \dfrac{16}{12}} \right\| \boxed{ \dfrac{4}{3}} $]]
+ [->[$\left. \boxed{ = \dfrac{12}{9}} \right\| \boxed{ \dfrac{2}{3} + \dfrac{2}{9}} $]]
+ [->[$\left. \boxed{ = \dfrac{8}{9}} \right\| \boxed{ \dfrac{7}{9} + \dfrac{1}{9}} $]]
+$= 1$
+
+
+
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0169  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 169:__ **Gib** den Wert der Terme **an**. Achte dabei auf die Muster dieser Permanenzreihe.
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5" 
+data-show-partial-solution -->
+__$a)\;\;$__ \
+$4 \cdot 4 =$ [[  16 ]] \
+ \
+$4 \cdot 2 =$ [[  8  ]] \
+ \
+$4 \cdot 1 =$ [[  4  ]] \
+ \
+$4 \cdot \dfrac{1}{2} =$ [[  2  ]] \
+ \
+$4 \cdot \dfrac{1}{4} =$ [[  1  ]] \
+ \
+$4 \cdot \dfrac{1}{8} =$ [[ 1/2 ]] \
+ \
+$4 \cdot \dfrac{1}{16} =$ [[ 1/4 ]] \
+@Algebrite.check([ 16;8;4;2;1;1/2;1/4 ])
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" 
+data-show-partial-solution -->
+__$b)\;\;$__ \
+$24 \cdot 8 =$ [[  192 ]] \
+ \
+$24 \cdot 4 =$ [[  96  ]] \
+ \
+$24 \cdot 2 =$ [[  48  ]] \
+ \
+$24 \cdot 1 =$ [[  24  ]] \
+ \
+$24 \cdot \dfrac{1}{2} =$ [[  12  ]] \
+ \
+$24 \cdot \dfrac{1}{4} =$ [[   6  ]] \
+ \
+$24 \cdot \dfrac{1}{8} =$ [[  3   ]] \
+@Algebrite.check([ 192;96;48;24;12;6;3 ])
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" 
+data-show-partial-solution -->
+__$c)\;\;$__ \
+$27 \cdot \dfrac{1}{81} =$ [[  1/3 ]] \
+ \
+$27 \cdot \dfrac{1}{27} =$ [[  1   ]] \
+ \
+$27 \cdot \dfrac{1}{9} =$ [[  3   ]] \
+ \
+$27 \cdot \dfrac{1}{3} =$ [[  9   ]] \
+ \
+$27 \cdot 1 =$ [[  27  ]] \
+ \
+$27 \cdot 3 =$ [[  81  ]] \
+ \
+$27 \cdot 9 =$ [[ 243  ]] \
+@Algebrite.check([ 1/3;1;3;9;27;81;243 ])
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" 
+data-show-partial-solution -->
+__$d)\;\;$__ \
+$10 \cdot 100 =$ [[  1000  ]] \
+ \
+$10 \cdot 10 =$  [[  100   ]] \
+ \
+$10 \cdot 1 =$                [[  10    ]] \
+ \
+$10 \cdot \dfrac{1}{10} =$    [[  1     ]] \
+ \
+$10 \cdot \dfrac{1}{100} =$   [[  1/10  ]] \
+ \
+$10 \cdot \dfrac{1}{1000} =$  [[ 1/100  ]] \
+ \
+$10 \cdot \dfrac{1}{10000} =$ [[ 1/1000 ]] \
+@Algebrite.check([ 1000;100;10;1;1/10;1/100;1/1000 ])
+</div>
+
+</section>
+
+
+
+
+
+
+
+<!--  Bruchrechnung 0170  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 170:__ **Gib** den Wert der Terme **an**. Achte dabei auf die Muster dieser Permanenzreihe.
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5" 
+data-show-partial-solution -->
+__$a)\;\;$__ \
+$4 : 4 =$ [[  1 ]] \
+ \
+$4 : 2 =$ [[  2  ]] \
+ \
+$4 : 1 =$ [[  4  ]] \
+ \
+$4 : \dfrac{1}{2} =$ [[  8  ]] \
+ \
+$4 : \dfrac{1}{4} =$ [[  16 ]] \
+ \
+$4 : \dfrac{1}{8} =$ [[  32 ]] \
+ \
+$4 : \dfrac{1}{16} =$ [[ 64  ]] \
+@Algebrite.check([ 1;2;4;8;16;32;64 ])
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" 
+data-show-partial-solution -->
+__$b)\;\;$__ \
+$24 : 8 =$ [[  3  ]] \
+ \
+$24 : 4 =$ [[  6  ]] \
+ \
+$24 : 2 =$ [[  12  ]] \
+ \
+$24 : 1 =$ [[  24  ]] \
+ \
+$24 : \dfrac{1}{2} =$ [[  48  ]] \
+ \
+$24 : \dfrac{1}{4} =$ [[  96  ]] \
+ \
+$24 : \dfrac{1}{8} =$ [[  192 ]] \
+@Algebrite.check([ 3;6;12;24;48;96;192 ])
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" 
+data-show-partial-solution -->
+__$c)\;\;$__ \
+$27 : \dfrac{1}{9} =$ [[  243   ]] \
+ \
+$27 : \dfrac{1}{3} =$ [[  81   ]] \
+ \
+$27 : 1 =$ [[  27  ]] \
+ \
+$27 : 3 =$ [[  9   ]] \
+ \
+$27 : 9 =$ [[ 3    ]] \
+ \
+$27 : 27 =$ [[  1   ]] \
+ \
+$27 : 81 =$ [[ 1/3  ]] \
+@Algebrite.check([ 243;81;27;9;3;1;1/3 ])
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" 
+data-show-partial-solution -->
+__$d)\;\;$__ \
+$10 : 100 =$              [[  1/10  ]] \
+ \
+$10 : 10 =$               [[  1     ]] \
+ \
+$10 : 1 =$                [[  10    ]] \
+ \
+$10 : \dfrac{1}{10} =$    [[  100   ]] \
+ \
+$10 : \dfrac{1}{100} =$   [[  1000  ]] \
+ \
+$10 : \dfrac{1}{1000} =$  [[ 10000  ]] \
+ \
+$10 : \dfrac{1}{10000} =$ [[ 100000 ]] \
+@Algebrite.check([ 1/10;1;10;100;1000;10000;100000 ])
+</div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--  Bruchrechnung noch keine  -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
-__Aufgabe 165:__ **Bestimme** die richtige Reihenfolge der Dominos.
+__Aufgabe 171:__ **Bestimme** die richtige Reihenfolge der Dominos.
 
 
 ??[](https://www.bildung-bedeutet-freiheit.de/GeoGebra/Dominoes-Demo.html)
@@ -41968,9 +42497,12 @@ $$
 <!-- Gleichungssysteme 0013 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
-__Aufgabe 13:__ 
+__Aufgabe 13:__ **Berechne** die Lösungen des gegebenen Gleichungssystems.
+
+
 <section class="flex-container">
 <div class="flex-child">
+
 <!-- data-solution-button="5"-->
 __$a)\;\;$__  
 $$
@@ -41978,7 +42510,7 @@ $$
 I.& \qquad 3x + 2y = 7 \\  
 II.& \qquad 4x - y = 1  
 \end{align*}
-$$  
+$$
 $x$ = [[  9/11  ]] und  $y$ = [[  25/11  ]] 
 @Algebrite.check([ 9/11; 25/11 ])
 ************
@@ -45186,6 +45718,93 @@ $$
 
 
 
+<!-- Ungleichungen 0021 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 21:__ Tarif A kostet 8 € Grundpreis und 3 € je GB. Tarif B kostet 2 € Grundpreis und 5 € je GB.  
+**Berechne**, ab welchem Datenvolumen $x$ (in GB) Tarif A nicht teurer als Tarif B ist.
+
+<!-- data-solution-button="5"-->
+$\mathbb{L} = \{ x \in \mathbb{N} \;|\; x \geq $ [[ 3 ]] $\}$
+@Algebrite.check(3)
+******************
+$$
+\begin{align*}
+8 + 3x &\leq 2 + 5x \\
+8 - 2 &\leq 5x - 3x \quad \left|\, -2,\,-3x \right. \\
+6 &\leq 2x \quad \left|\, :2 \right. \\
+x &\geq 3
+\end{align*}
+$$
+******************
+
+
+
+
+<!-- Ungleichungen 0022 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 22:__ Für ein Schulfest werden gleich viele Wasser- und Saftflaschen beschafft. Eine Wasserflasche kostet 2 €, eine Saftflasche 6 €.  
+**Berechne** die kleinste natürliche Zahl $x$ (Flaschen je Sorte), sodass mindestens 40 € ausgegeben werden.
+
+<!-- data-solution-button="5"-->
+$\mathbb{L} = \{ x \in \mathbb{N} \;|\; x \geq $ [[ 5 ]] $\}$
+@Algebrite.check(5)
+******************
+$$
+\begin{align*}
+2x + 6x &\geq 40 \\
+8x &\geq 40 \quad \left|\, :8 \right. \\
+x &\geq 5
+\end{align*}
+$$
+******************
+
+
+
+
+<!-- Ungleichungen 0023 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 23:__ Für eine Veranstaltung stehen bereits 12 Stühle bereit. Pro zusätzlich aufgestellter Reihe kommen 5 Stühle hinzu.  
+**Berechne** die kleinste natürliche Zahl $x$ (zusätzliche Reihen), sodass insgesamt mindestens 47 Stühle vorhanden sind.
+
+<!-- data-solution-button="5"-->
+$\mathbb{L} = \{ x \in \mathbb{N} \;|\; x \geq $ [[ 7 ]] $\}$
+@Algebrite.check(7)
+******************
+$$
+\begin{align*}
+12 + 5x &\geq 47 \\
+5x &\geq 47 - 12 \quad \left|\, -12 \right. \\
+5x &\geq 35 \quad \left|\, :5 \right. \\
+x &\geq 7
+\end{align*}
+$$
+******************
+
+
+
+
+<!-- Ungleichungen 0024 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 24:__ Für Arbeitsblätter werden bereits 9 Kopien bereitgehalten. Ein zusätzliches Bündel enthält 12 Kopien.  
+**Berechne** die kleinste natürliche Zahl $x$ (zusätzliche Bündel), sodass insgesamt mindestens 81 Kopien vorliegen.
+
+<!-- data-solution-button="5"-->
+$\mathbb{L} = \{ x \in \mathbb{N} \;|\; x \geq $ [[ 6 ]] $\}$
+@Algebrite.check(6)
+******************
+$$
+\begin{align*}
+9 + 12x &\geq 81 \\
+12x &\geq 81 - 9 \quad \left|\, -9 \right. \\
+12x &\geq 72 \quad \left|\, :12 \right. \\
+x &\geq 6
+\end{align*}
+$$
+******************
 
 
 
