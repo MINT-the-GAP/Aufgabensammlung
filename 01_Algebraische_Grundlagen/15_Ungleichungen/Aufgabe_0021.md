@@ -68,8 +68,9 @@ $\mathbb{L} = \{ x \in \mathbb{N} \;|\; x \geq $ [[ 3 ]] $\}$
 ******************
 $$
 \begin{align*}
-8 + 3x &\leq 2 + 5x \\
-8 - 2 &\leq 5x - 3x \quad \left|\, -2,\,-3x \right. \\
+8 + 3x &\leq 2 + 5x \quad \left|\, -2 \right.
+8 -2 + 3x &\leq 2 + 5x \quad \left|\, -3x \right.
+8 - 2 &\leq 5x - 3x  \\
 6 &\leq 2x \quad \left|\, :2 \right. \\
 x &\geq 3
 \end{align*}

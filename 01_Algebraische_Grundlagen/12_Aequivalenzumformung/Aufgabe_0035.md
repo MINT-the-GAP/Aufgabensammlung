@@ -65,8 +65,8 @@ Ein zweiter Behälter enthält anfangs 14 Liter Wasser, verliert jedoch jeden Ta
 **Berechne**, nach wie vielen Tagen beide Behälter gleich viel Wasser enthalten.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  3  ]]
-@Algebrite.check(3)
+$x$ = [[  12/5  ]]
+@Algebrite.check(12/5)
 ************
 $$
 \textbf{Gleichung aus dem Text:}\quad 
@@ -94,5 +94,5 @@ $$
 $$
 
 
-Deutung: Nach $\dfrac{12}{5}\approx 2{,}4$ Tagen haben beide Behälter gleich viel Wasser.
+Deutung: Nach $\dfrac{12}{5} = 2{,}4$ Tagen haben beide Behälter gleich viel Wasser.
 ************

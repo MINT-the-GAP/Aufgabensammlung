@@ -20024,6 +20024,7 @@ __Aufgabe 77:__ **Gib** den beschriebenen Anteilswert **an**.
 
 __$a)\;\;$__ Wie viel sind $\dfrac{4}{5}$ von $2500\,$kg?  \
 
+<!-- data-solution-button="5"-->
  [[  2000  ]]kg
 
 </div>
@@ -20031,6 +20032,7 @@ __$a)\;\;$__ Wie viel sind $\dfrac{4}{5}$ von $2500\,$kg?  \
 
 __$b)\;\;$__ Wie viel sind $\dfrac{5}{9}$ von $180\,$cm?  \
 
+<!-- data-solution-button="5"-->
  [[  100  ]]cm
 
 </div>
@@ -20038,6 +20040,7 @@ __$b)\;\;$__ Wie viel sind $\dfrac{5}{9}$ von $180\,$cm?  \
 
 __$c)\;\;$__ Wie viel sind $\dfrac{1}{4}$ von $300\,$min?  \
 
+<!-- data-solution-button="5"-->
  [[  75  ]]min
 
 </div>
@@ -20045,6 +20048,7 @@ __$c)\;\;$__ Wie viel sind $\dfrac{1}{4}$ von $300\,$min?  \
 
 __$d)\;\;$__ Wie viel sind $\dfrac{6}{7}$ von $42\,$m?  \
 
+<!-- data-solution-button="5"-->
  [[  36  ]]m
 
 </div>
@@ -20069,6 +20073,7 @@ __Aufgabe 78:__ **Gib** den beschriebenen Anteilswert **an**.
 
 __$a)\;\;$__ Wie viel sind $\dfrac{3}{10}$ von $90\,$€?  \
 
+<!-- data-solution-button="5"-->
  [[  27  ]]€
 
 </div>
@@ -20076,6 +20081,7 @@ __$a)\;\;$__ Wie viel sind $\dfrac{3}{10}$ von $90\,$€?  \
 
 __$b)\;\;$__ Wie viel sind $\dfrac{7}{4}$ von $840\,$kg?  \
 
+<!-- data-solution-button="5"-->
  [[  147  ]]kg
 
 </div>
@@ -20083,6 +20089,7 @@ __$b)\;\;$__ Wie viel sind $\dfrac{7}{4}$ von $840\,$kg?  \
 
 __$c)\;\;$__ Wie viel sind $\dfrac{2}{3}$ von $6\,$m$^3$?  \
 
+<!-- data-solution-button="5"-->
  [[  4  ]]m$^3$
 
 </div>
@@ -20090,6 +20097,7 @@ __$c)\;\;$__ Wie viel sind $\dfrac{2}{3}$ von $6\,$m$^3$?  \
 
 __$d)\;\;$__ Wie viel sind $\dfrac{11}{6}$ von $240\,$l?  \
 
+<!-- data-solution-button="5"-->
  [[  440  ]]l
 
 </div>
@@ -20116,6 +20124,7 @@ __Aufgabe 79:__ **Gib** den beschriebenen Anteilswert **an**.
 
 __$a)\;\;$__ Wie viel sind $\dfrac{1}{7}$ von $84\,$€?  \
 
+<!-- data-solution-button="5"-->
  [[  12  ]]€
 
 </div>
@@ -20123,6 +20132,7 @@ __$a)\;\;$__ Wie viel sind $\dfrac{1}{7}$ von $84\,$€?  \
 
 __$b)\;\;$__ Wie viel sind $\dfrac{8}{3}$ von $45\,$min?  \
 
+<!-- data-solution-button="5"-->
  [[  120  ]]min
 
 </div>
@@ -20130,6 +20140,7 @@ __$b)\;\;$__ Wie viel sind $\dfrac{8}{3}$ von $45\,$min?  \
 
 __$c)\;\;$__ Wie viel sind $\dfrac{3}{5}$ von $8000\,$dm$^2$?  \
 
+<!-- data-solution-button="5"-->
  [[  4800  ]]dm$^2$
 
 </div>
@@ -20137,6 +20148,7 @@ __$c)\;\;$__ Wie viel sind $\dfrac{3}{5}$ von $8000\,$dm$^2$?  \
 
 __$d)\;\;$__ Wie viel sind $\dfrac{5}{12}$ von $144\,$l?  \
 
+<!-- data-solution-button="5"-->
  [[  60  ]]l
 
 </div>
@@ -39484,7 +39496,7 @@ $$
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
-__Aufgabe 33:__ In einem Sportzentrum kann zwischen zwei Trainingspässen gewählt werden. Die Variante A sieht eine einmalige Kartengebühr 0,50 € vor, wobeid 4,00 € pro Training noch verlangt werden. Im Pass B belaufen sich die einmaligen Kartengebühren auf 6,50 € und ein Training wird mit 2,50 € berechnet. **Berechne**, nach wie vielen Trainings sind die Gesamtkosten beider Pässe genau gleich.
+__Aufgabe 33:__ In einem Sportzentrum kann zwischen zwei Trainingspässen gewählt werden. Die Variante A sieht eine einmalige Kartengebühr 0,50 € vor, wobei 4,00 € pro Training noch verlangt werden. Im Pass B belaufen sich die einmaligen Kartengebühren auf 6,50 € und ein Training wird mit 2,50 € berechnet. **Berechne**, nach wie vielen Trainings die Gesamtkosten beider Pässe genau gleich sind.
 
 <!-- data-solution-button="5"-->
 $x$ = [[  4  ]]
@@ -39572,8 +39584,8 @@ __Aufgabe 35:__ Ein Behälter wird täglich mit vier Litern Wasser aufgefüllt. 
 
 
 <!-- data-solution-button="5"-->
-$x$ = [[  3  ]]
-@Algebrite.check(3)
+$x$ = [[  12/5  ]]
+@Algebrite.check(12/5)
 ************
 $$
 \textbf{Gleichung aus dem Text:}\quad 
@@ -39601,7 +39613,7 @@ $$
 $$
 
 
-Deutung: Nach $\dfrac{12}{5}\approx 2{,}4$ Tagen haben beide Behälter gleich viel Wasser.
+Deutung: Nach $\dfrac{12}{5} = 2{,}4$ Tagen haben beide Behälter gleich viel Wasser.
 ************
 
 
@@ -40904,7 +40916,7 @@ $y=$ [[  4  ]] Streichhölzer
 <!-- style="width:600px"  data-solution-button="5"-->
 __$b)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem2a.png)  
 $x=$ [[  2  ]] Streichhölzer \
-$y=$ [[  6  ]] Streichhölzer
+$y=$ [[ 12  ]] Streichhölzer
 
 <!-- style="width:600px"  data-solution-button="5"-->
 __$c)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem3a.png)  
@@ -45730,8 +45742,9 @@ $\mathbb{L} = \{ x \in \mathbb{N} \;|\; x \geq $ [[ 3 ]] $\}$
 ******************
 $$
 \begin{align*}
-8 + 3x &\leq 2 + 5x \\
-8 - 2 &\leq 5x - 3x \quad \left|\, -2,\,-3x \right. \\
+8 + 3x &\leq 2 + 5x \quad \left|\, -2 \right.
+8 -2 + 3x &\leq 2 + 5x \quad \left|\, -3x \right.
+8 - 2 &\leq 5x - 3x  \\
 6 &\leq 2x \quad \left|\, :2 \right. \\
 x &\geq 3
 \end{align*}

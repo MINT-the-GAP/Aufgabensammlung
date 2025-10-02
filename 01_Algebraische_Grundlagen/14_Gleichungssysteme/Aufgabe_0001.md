@@ -68,7 +68,7 @@ $y=$ [[  4  ]] Streichhölzer
 <!-- style="width:600px" -->
 __$b)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem2a.png)  
 $x=$ [[  2  ]] Streichhölzer \
-$y=$ [[  6  ]] Streichhölzer
+$y=$ [[ 12  ]] Streichhölzer
 
 <!-- style="width:600px" -->
 __$c)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem3a.png)  
