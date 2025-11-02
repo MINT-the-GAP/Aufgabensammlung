@@ -15155,8 +15155,8 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$f)\;\;$__ $  \dfrac{8}{21} : \dfrac{4}{9} = $ [[  18/7  ]]
-@Algebrite.check(18/7)
+__$f)\;\;$__ $  \dfrac{8}{21} : \dfrac{4}{9} = $ [[  6/7  ]]
+@Algebrite.check(6/7)
 ************
 $$
 \begin{align*}
@@ -15164,7 +15164,7 @@ $$
 &= \dfrac{8}{21} \cdot \dfrac{9}{4} \\
 &= \dfrac{8 \cdot 9}{21 \cdot 4} \\
 &= \dfrac{72}{84} \\
-&= \dfrac{18}{7}
+&= \dfrac{6}{7}
 \end{align*}
 $$
 ************
@@ -15272,8 +15272,8 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$f)\;\;$__ $  \dfrac{10}{21} : \dfrac{5}{14} = $ [[  28/15  ]]
-@Algebrite.check(28/15)
+__$f)\;\;$__ $  \dfrac{10}{21} : \dfrac{5}{14} = $ [[  4/3  ]]
+@Algebrite.check(4/3)
 ************
 $$
 \begin{align*}
@@ -15281,7 +15281,7 @@ $$
 &= \dfrac{10}{21} \cdot \dfrac{14}{5} \\
 &= \dfrac{10 \cdot 14}{21 \cdot 5} \\
 &= \dfrac{140}{105} \\
-&= \dfrac{28}{15}
+&= \dfrac{4}{3}
 \end{align*}
 $$
 ************
@@ -15355,7 +15355,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $  \dfrac{7}{18} : \dfrac{14}{27} = $ [[  27/36  ]] = [[  3/4  ]]
+__$d)\;\;$__ $  \dfrac{7}{18} : \dfrac{14}{27} = $ [[  3/4  ]]
 @Algebrite.check(3/4)
 ************
 $$
@@ -15469,15 +15469,15 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $  \dfrac{10}{21} : \dfrac{5}{14} = $ [[  28/15  ]]
-@Algebrite.check(28/15)
+__$d)\;\;$__ $  \dfrac{10}{21} : \dfrac{5}{14} = $ [[  4/3  ]]
+@Algebrite.check(4/3)
 ************
 $$
 \begin{align*}
 \dfrac{10}{21} : \dfrac{5}{14}
 &= \dfrac{10}{21} \cdot \dfrac{14}{5} \\
 &= \dfrac{140}{105} \\
-&= \dfrac{28}{15}
+&= \dfrac{4}{3}
 \end{align*}
 $$
 ************
@@ -20022,34 +20022,34 @@ __Aufgabe 77:__ **Gib** den beschriebenen Anteilswert **an**.
 <section class="flex-container">
 <div class="flex-child">
 
-__$a)\;\;$__ Wie viel sind $\dfrac{4}{5}$ von $2500\,$kg?  \
+__$a)\;\;$__ Wie viel sind $\dfrac{4}{5}$ von $2500\,$kg?  
 
 <!-- data-solution-button="5"-->
- [[  2000  ]]kg
+[[  2000  ]]kg
 
 </div>
 <div class="flex-child">
 
-__$b)\;\;$__ Wie viel sind $\dfrac{5}{9}$ von $180\,$cm?  \
+__$b)\;\;$__ Wie viel sind $\dfrac{5}{9}$ von $180\,$cm?  
 
 <!-- data-solution-button="5"-->
- [[  100  ]]cm
+[[  100  ]]cm
 
 </div>
 <div class="flex-child">
 
-__$c)\;\;$__ Wie viel sind $\dfrac{1}{4}$ von $300\,$min?  \
+__$c)\;\;$__ Wie viel sind $\dfrac{1}{4}$ von $300\,$min?  
 
 <!-- data-solution-button="5"-->
- [[  75  ]]min
+[[  75  ]]min
 
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ Wie viel sind $\dfrac{6}{7}$ von $42\,$m?  \
+__$d)\;\;$__ Wie viel sind $\dfrac{6}{7}$ von $42\,$m?  
 
 <!-- data-solution-button="5"-->
- [[  36  ]]m
+[[  36  ]]m
 
 </div>
 </section>
@@ -20071,34 +20071,34 @@ __Aufgabe 78:__ **Gib** den beschriebenen Anteilswert **an**.
 <section class="flex-container">
 <div class="flex-child">
 
-__$a)\;\;$__ Wie viel sind $\dfrac{3}{10}$ von $90\,$€?  \
+__$a)\;\;$__ Wie viel sind $\dfrac{3}{10}$ von $90\,$€?  
 
 <!-- data-solution-button="5"-->
- [[  27  ]]€
+[[  27  ]]€
 
 </div>
 <div class="flex-child">
 
-__$b)\;\;$__ Wie viel sind $\dfrac{7}{4}$ von $840\,$kg?  \
+__$b)\;\;$__ Wie viel sind $\dfrac{7}{4}$ von $840\,$kg?  
 
 <!-- data-solution-button="5"-->
- [[  147  ]]kg
+[[  147  ]]kg
 
 </div>
 <div class="flex-child">
 
-__$c)\;\;$__ Wie viel sind $\dfrac{2}{3}$ von $6\,$m$^3$?  \
+__$c)\;\;$__ Wie viel sind $\dfrac{2}{3}$ von $6\,$m$^3$?  
 
 <!-- data-solution-button="5"-->
- [[  4  ]]m$^3$
+[[  4  ]]m$^3$
 
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ Wie viel sind $\dfrac{11}{6}$ von $240\,$l?  \
+__$d)\;\;$__ Wie viel sind $\dfrac{11}{6}$ von $240\,$l?  
 
 <!-- data-solution-button="5"-->
- [[  440  ]]l
+[[  440  ]]l
 
 </div>
 </section>
@@ -20122,34 +20122,34 @@ __Aufgabe 79:__ **Gib** den beschriebenen Anteilswert **an**.
 <section class="flex-container">
 <div class="flex-child">
 
-__$a)\;\;$__ Wie viel sind $\dfrac{1}{7}$ von $84\,$€?  \
+__$a)\;\;$__ Wie viel sind $\dfrac{1}{7}$ von $84\,$€?  
 
 <!-- data-solution-button="5"-->
- [[  12  ]]€
+[[  12  ]]€
 
 </div>
 <div class="flex-child">
 
-__$b)\;\;$__ Wie viel sind $\dfrac{8}{3}$ von $45\,$min?  \
+__$b)\;\;$__ Wie viel sind $\dfrac{8}{3}$ von $45\,$min?  
 
 <!-- data-solution-button="5"-->
- [[  120  ]]min
+[[  120  ]]min
 
 </div>
 <div class="flex-child">
 
-__$c)\;\;$__ Wie viel sind $\dfrac{3}{5}$ von $8000\,$dm$^2$?  \
+__$c)\;\;$__ Wie viel sind $\dfrac{3}{5}$ von $8000\,$dm$^2$?  
 
 <!-- data-solution-button="5"-->
- [[  4800  ]]dm$^2$
+[[  4800  ]]dm$^2$
 
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ Wie viel sind $\dfrac{5}{12}$ von $144\,$l?  \
+__$d)\;\;$__ Wie viel sind $\dfrac{5}{12}$ von $144\,$l?  
 
 <!-- data-solution-button="5"-->
- [[  60  ]]l
+[[  60  ]]l
 
 </div>
 </section>
@@ -44071,14 +44071,14 @@ $\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x > $   [[  15  ]]   $\left.   \r
 __$e)\;\;$__  $2x \geq 14$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x > $   [[  7  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x > $   [[  6  ]]   $\left.   \right\}$
 </div>
 
 <div class="flex-child">
 __$f)\;\;$__  $\dfrac{x}{9} \geq 2$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x > $   [[  18  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x > $   [[  17  ]]   $\left.   \right\}$
 </div>
 
 </section>

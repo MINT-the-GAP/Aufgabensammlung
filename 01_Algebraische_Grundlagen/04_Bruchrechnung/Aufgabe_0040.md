@@ -150,8 +150,8 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$f)\;\;$__ $  \dfrac{8}{21} : \dfrac{4}{9} = $ [[  18/7  ]]
-@Algebrite.check(18/7)
+__$f)\;\;$__ $  \dfrac{8}{21} : \dfrac{4}{9} = $ [[  6/7  ]]
+@Algebrite.check(6/7)
 ************
 $$
 \begin{align*}
@@ -159,7 +159,7 @@ $$
 &= \dfrac{8}{21} \cdot \dfrac{9}{4} \\
 &= \dfrac{8 \cdot 9}{21 \cdot 4} \\
 &= \dfrac{72}{84} \\
-&= \dfrac{18}{7}
+&= \dfrac{6}{7}
 \end{align*}
 $$
 ************

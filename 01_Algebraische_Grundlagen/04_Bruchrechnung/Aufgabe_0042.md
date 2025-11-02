@@ -120,7 +120,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $  \dfrac{7}{18} : \dfrac{14}{27} = $ [[  27/36  ]] = [[  3/4  ]]
+__$d)\;\;$__ $  \dfrac{7}{18} : \dfrac{14}{27} = $ [[  3/4  ]]
 @Algebrite.check(3/4)
 ************
 $$

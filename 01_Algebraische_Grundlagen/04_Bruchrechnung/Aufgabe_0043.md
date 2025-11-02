@@ -113,15 +113,15 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $  \dfrac{10}{21} : \dfrac{5}{14} = $ [[  28/15  ]]
-@Algebrite.check(28/15)
+__$d)\;\;$__ $  \dfrac{10}{21} : \dfrac{5}{14} = $ [[  4/3  ]]
+@Algebrite.check(4/3)
 ************
 $$
 \begin{align*}
 \dfrac{10}{21} : \dfrac{5}{14}
 &= \dfrac{10}{21} \cdot \dfrac{14}{5} \\
 &= \dfrac{140}{105} \\
-&= \dfrac{28}{15}
+&= \dfrac{4}{3}
 \end{align*}
 $$
 ************
