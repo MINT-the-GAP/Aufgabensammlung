@@ -62,12 +62,13 @@ Die Äpfel machen $\dfrac{5}{12}$ der gesamten Masse aus. Von den restlichen Kil
 **Bestimme**, wie viele Kilogramm Obst weder Äpfel noch Birnen sind. 
 
 <!-- data-solution-button="5"-->
-[[  10  ]] kg
+[[  28/3  ]] kg
+@Algebrite.check(28/3)
 ************
 $$
 \text{Äpfel:}\quad \dfrac{5}{12}\cdot 48 = 20\,\text{kg} \\
 \text{Rest:}\quad 48-20 = 28\,\text{kg} \\
-\text{Birnen:}\quad \dfrac{2}{3}\cdot 28 = 18\,\text{kg} \\
-\text{Sonstiges: } 28-18 = 10\,\text{kg}
+\text{Birnen:}\quad \dfrac{2}{3}\cdot 28 = \dfrac{56}{3}\,\text{kg} \\
+\text{Sonstiges: } 28-\dfrac{56}{3} = \dfrac{28}{3}\,\text{kg}
 $$
 ************

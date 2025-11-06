@@ -64,7 +64,7 @@ Von der verbleibenden Menge werden dann $\dfrac{3}{5}$ für den Verkauf abgefül
 **Bestimme**, wie viele Kilogramm Getreide am Ende noch im Silo verbleiben. 
 
 <!-- data-solution-button="5"-->
-[[  30  ]] kg
+[[  28  ]] kg
 ************
 $$
 \text{Verfüttert: } \dfrac{2}{9}\cdot 90 = 20\,\text{kg} \\

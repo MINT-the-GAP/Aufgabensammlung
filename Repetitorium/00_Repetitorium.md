@@ -17539,7 +17539,7 @@ $$
 
 
 
-#### Übungen Teil 7 - Bruchrechnung Aufgabe 60 bis 79
+#### Übungen Teil 4 - Bruchrechnung Aufgabe 60 bis 79
 
 
 
@@ -21214,15 +21214,15 @@ $$
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ Wie viel sind $\dfrac{9}{14}$ von $25\,$l?  \
-[[  225/14  ]]l
+__$b)\;\;$__ Wie viel sind $\dfrac{9}{14}$ von $25\,\ell$?  \
+[[  225/14  ]] $\ell$
 @Algebrite.check(225/14)
 ************
 $$
 \begin{align*}
-\dfrac{9}{14}\cdot 25\,\text{l}
-&= \dfrac{9\cdot 25}{14}\,\text{l} \\
-&= \dfrac{225}{14}\,\text{l}
+\dfrac{9}{14}\cdot 25\,\ell
+&= \dfrac{9\cdot 25}{14}\,\ell \\
+&= \dfrac{225}{14}\,\ell
 \end{align*}
 $$
 ************
@@ -21375,16 +21375,16 @@ $$
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ Wie viel sind $\dfrac{11}{12}$ von $\dfrac{3}{5}$ von $95\,$l?  \
-[[  209/4  ]]l
+__$d)\;\;$__ Wie viel sind $\dfrac{11}{12}$ von $\dfrac{3}{5}$ von $95\,\ell$?  \
+[[  209/4  ]] $\ell$
 @Algebrite.check(209/4)
 ************
 $$
 \begin{align*}
-\dfrac{11}{12}\cdot\dfrac{3}{5}\cdot 95\,\text{l}
-&= \dfrac{11\cdot 3\cdot 95\,\text{l}}{12\cdot 5} 
-= \dfrac{3135}{60}\,\text{l}
-= \dfrac{209}{4}\,\text{l}
+\dfrac{11}{12}\cdot\dfrac{3}{5}\cdot 95\,\ell
+&= \dfrac{11\cdot 3\cdot 95\,\ell}{12\cdot 5} 
+= \dfrac{3135}{60}\,\ell
+= \dfrac{209}{4}\,\ell
 \end{align*}
 $$
 ************
@@ -21485,16 +21485,16 @@ $$
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ Wie viel sind $\dfrac{11}{12}$ von $\dfrac{5}{7}$ von $80\,$l?  \
-[[  1100/21  ]]l
+__$c)\;\;$__ Wie viel sind $\dfrac{11}{12}$ von $\dfrac{5}{7}$ von $80\,\ell$?  \
+[[  1100/21  ]] $\ell$
 @Algebrite.check(1100/21)
 ************
 $$
 \begin{align*}
-\dfrac{11}{12}\cdot\dfrac{5}{7}\cdot 80\,\text{l}
-&= \dfrac{11\cdot 5 \cdot 80\,\text{l}}{12\cdot 7} \\
-&= \dfrac{4400}{84} \,\text{l} \\
-&= \dfrac{1100}{21}\,\text{l}
+\dfrac{11}{12}\cdot\dfrac{5}{7}\cdot 80\,\ell
+&= \dfrac{11\cdot 5 \cdot 80\,\ell}{12\cdot 7} \\
+&= \dfrac{4400}{84} \,\ell \\
+&= \dfrac{1100}{21}\,\ell
 \end{align*}
 $$
 ************
@@ -23034,7 +23034,7 @@ $$
 <!--  Bruchrechnung 0124  -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
-__Aufgabe 124:__ Ein Vorratstank enthält zu Beginn $48\,\text{l}$ Wasser. Am Vormittag werden $\dfrac{3}{8}$ des Inhalts verwendet, am Nachmittag danach $\dfrac{1}{4}$ des verbleibenden Inhalts.  
+__Aufgabe 124:__ Ein Vorratstank enthält zu Beginn $48\,\ell$ Wasser. Am Vormittag werden $\dfrac{3}{8}$ des Inhalts verwendet, am Nachmittag danach $\dfrac{1}{4}$ des verbleibenden Inhalts.  
 **Berechne** das Restvolumen im Tank.  
 
 <!-- data-solution-button="5"-->
@@ -23043,16 +23043,16 @@ __Aufgabe 124:__ Ein Vorratstank enthält zu Beginn $48\,\text{l}$ Wasser. Am Vo
 ************
 $$
 \begin{align*}
-\text{Vormittag:}\quad & \dfrac{3}{8}\cdot 48\,\text{l}
-= \dfrac{144}{8}\,\text{l}
-= 18\,\text{l} \\
-\text{Rest 1:}\quad & 48\,\text{l} - 18\,\text{l} = 30\,\text{l} \\
-\text{Nachmittag:}\quad & \dfrac{1}{4}\cdot 30\,\text{l}
-= \dfrac{30}{4}\,\text{l}
-= \dfrac{15}{2}\,\text{l} \\
-\text{Endrest:}\quad & 30\,\text{l} - \dfrac{15}{2}\,\text{l}
-= \dfrac{60}{2}\,\text{l} - \dfrac{15}{2}\,\text{l}
-= \dfrac{45}{2}\,\text{l}
+\text{Vormittag:}\quad & \dfrac{3}{8}\cdot 48\,\ell
+= \dfrac{144}{8}\,\ell
+= 18\,\ell \\
+\text{Rest 1:}\quad & 48\,\ell - 18\,\ell = 30\,\ell \\
+\text{Nachmittag:}\quad & \dfrac{1}{4}\cdot 30\,\ell
+= \dfrac{30}{4}\,\ell
+= \dfrac{15}{2}\,\ell \\
+\text{Endrest:}\quad & 30\,\ell - \dfrac{15}{2}\,\ell
+= \dfrac{60}{2}\,\ell - \dfrac{15}{2}\,\ell
+= \dfrac{45}{2}\,\ell
 \end{align*}
 $$
 ************
@@ -23094,7 +23094,7 @@ $$
 <!--  Bruchrechnung 0126  -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
-__Aufgabe 126:__ Für die Reinigung steht eine $5\,\text{l}$-Kanisterlösung bereit. Zuerst verschüttet sich $\dfrac{3}{10}$ des Inhalts, danach wird $\dfrac{1}{4}$ der **verbleibenden** Menge für die Gerätepflege genutzt.  
+__Aufgabe 126:__ Für die Reinigung steht eine $5\,\ell$-Kanisterlösung bereit. Zuerst verschüttet sich $\dfrac{3}{10}$ des Inhalts, danach wird $\dfrac{1}{4}$ der verbleibenden Menge für die Gerätepflege genutzt.  
 **Berechne** das restliche Volumen im Kanister. 
 
 <!-- data-solution-button="5"-->
@@ -23103,17 +23103,17 @@ __Aufgabe 126:__ Für die Reinigung steht eine $5\,\text{l}$-Kanisterlösung ber
 ************
 $$
 \begin{align*}
-\text{Verschüttet:}\quad & \dfrac{3}{10}\cdot 5\,\text{l}
-= \dfrac{15}{10}\,\text{l}
-= \dfrac{3}{2}\,\text{l} \\
-\text{Rest 1:}\quad & 5\,\text{l} - \dfrac{3}{2}\,\text{l}
-= \dfrac{10}{2}\,\text{l} - \dfrac{3}{2}\,\text{l}
-= \dfrac{7}{2}\,\text{l} \\
-\text{Verbrauch:}\quad & \dfrac{1}{4}\cdot \dfrac{7}{2}\,\text{l}
-= \dfrac{7}{8}\,\text{l} \\
-\text{Endrest:}\quad & \dfrac{7}{2}\,\text{l} - \dfrac{7}{8}\,\text{l}
-= \dfrac{28}{8}\,\text{l} - \dfrac{7}{8}\,\text{l}
-= \dfrac{21}{8}\,\text{l}
+\text{Verschüttet:}\quad & \dfrac{3}{10}\cdot 5\,\ell
+= \dfrac{15}{10}\,\ell
+= \dfrac{3}{2}\,\ell \\
+\text{Rest 1:}\quad & 5\,\ell - \dfrac{3}{2}\,\ell
+= \dfrac{10}{2}\,\ell - \dfrac{3}{2}\,\ell
+= \dfrac{7}{2}\,\ell \\
+\text{Verbrauch:}\quad & \dfrac{1}{4}\cdot \dfrac{7}{2}\,\ell
+= \dfrac{7}{8}\,\ell \\
+\text{Endrest:}\quad & \dfrac{7}{2}\,\ell - \dfrac{7}{8}\,\ell
+= \dfrac{28}{8}\,\ell - \dfrac{7}{8}\,\ell
+= \dfrac{21}{8}\,\ell
 \end{align*}
 $$
 ************
@@ -23133,7 +23133,7 @@ Am Nachmittag wird von den übrigen Büchern erneut die Hälfte in die Regale ge
 **Bestimme**, wie viele Bücher am Ende des Tages noch nicht einsortiert sind.  
 
 <!-- data-solution-button="5"-->
- [[  12  ]] 
+ [[  16  ]] 
 ************
 $$
 \text{Vormittag:}\quad \dfrac{1}{5}\cdot 40 = 8 \quad \Rightarrow \; 40-8 = 32 \text{ Bücher übrig} \\
@@ -23155,7 +23155,7 @@ Am Vormittag verkauft er $\dfrac{2}{3}$ seiner Kisten. Danach beschließt er, vo
 **Bestimme**, wie viele Kisten er schließlich noch selbst behalten kann. 
 
 <!-- data-solution-button="5"-->
- [[  4  ]] 
+ [[  6  ]] 
 ************
 $$
 \text{Verkauf:}\quad \dfrac{2}{3}\cdot 24 = 16 \quad \Rightarrow \; 24-16=8 \text{ Kisten übrig} \\
@@ -23207,17 +23207,17 @@ $$
 <!--  Bruchrechnung 0130  -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
-__Aufgabe 130:__ Ein Wasserbecken fasst insgesamt $120\,\text{l}$. Am Morgen wird es nur zu $\dfrac{2}{5}$ gefüllt.  
+__Aufgabe 130:__ Ein Wasserbecken fasst insgesamt $120\,\ell$. Am Morgen wird es nur zu $\dfrac{2}{5}$ gefüllt.  
 Im Laufe des Tages werden zusätzlich $\dfrac{1}{4}$ des **vollen Beckens** nachgefüllt.  
 **Bestimme**, wie viele Liter Wasser am Abend im Becken sind. 
 
 <!-- data-solution-button="5"-->
-[[  76  ]] l
+[[  78  ]] $\ell$
 ************
 $$
-\text{Morgenfüllung:}\quad \dfrac{2}{5}\cdot 120 = 48\,\text{l} \\
-\text{Nachfüllung:}\quad \dfrac{1}{4}\cdot 120 = 30\,\text{l} \\
-\text{Gesamt:}\quad 48\,\text{l} + 30\,\text{l} = 78\,\text{l}
+\text{Morgenfüllung:}\quad \dfrac{2}{5}\cdot 120 = 48\,\ell \\
+\text{Nachfüllung:}\quad \dfrac{1}{4}\cdot 120 = 30\,\ell \\
+\text{Gesamt:}\quad 48\,\ell + 30\,\ell = 78\,\ell
 $$
 ************
 
@@ -23302,13 +23302,14 @@ Die Äpfel machen $\dfrac{5}{12}$ der gesamten Masse aus. Von den restlichen Kil
 **Bestimme**, wie viele Kilogramm Obst weder Äpfel noch Birnen sind. 
 
 <!-- data-solution-button="5"-->
-[[  10  ]] kg
+[[  28/3  ]] kg
+@Algebrite.check(28/3)
 ************
 $$
 \text{Äpfel:}\quad \dfrac{5}{12}\cdot 48 = 20\,\text{kg} \\
 \text{Rest:}\quad 48-20 = 28\,\text{kg} \\
-\text{Birnen:}\quad \dfrac{2}{3}\cdot 28 = 18\,\text{kg} \\
-\text{Sonstiges: } 28-18 = 10\,\text{kg}
+\text{Birnen:}\quad \dfrac{2}{3}\cdot 28 = \dfrac{56}{3}\,\text{kg} \\
+\text{Sonstiges: } 28-\dfrac{56}{3} = \dfrac{28}{3}\,\text{kg}
 $$
 ************
 
@@ -23442,7 +23443,7 @@ Von der verbleibenden Menge werden dann $\dfrac{3}{5}$ für den Verkauf abgefül
 **Bestimme**, wie viele Kilogramm Getreide am Ende noch im Silo verbleiben. 
 
 <!-- data-solution-button="5"-->
-[[  30  ]] kg
+[[  28  ]] kg
 ************
 $$
 \text{Verfüttert: } \dfrac{2}{9}\cdot 90 = 20\,\text{kg} \\
@@ -23469,7 +23470,7 @@ $$
 <!--  Bruchrechnung 0139  -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
-__Aufgabe 139:__ In der Schulküche wird eine große Suppenportion vorbereitet. Ein Kessel enthält zu Beginn $36\,\text{l}$ Brühe.  
+__Aufgabe 139:__ In der Schulküche wird eine große Suppenportion vorbereitet. Ein Kessel enthält zu Beginn $36\,\ell$ Brühe.  
 In der ersten Pause werden $\dfrac{2}{9}$ der gesamten Brühe ausgegeben.  
 In der zweiten Pause werden anschließend $\dfrac{3}{8}$ der verbleibenden Brühe ausgegeben.  
 **Berechne** das Restvolumen im Kessel nach der zweiten Pause. 
@@ -23480,18 +23481,18 @@ In der zweiten Pause werden anschließend $\dfrac{3}{8}$ der verbleibenden Brüh
 ************
 $$
 \begin{align*}
-\text{1. Ausgabe:}\quad & \dfrac{2}{9}\cdot 36\,\text{l}
-= \dfrac{2}{9}\cdot \dfrac{36}{1}\,\text{l}
-= \dfrac{72}{9}\,\text{l}
-= 8\,\text{l} \\[4pt]
-\text{Rest 1:}\quad & 36\,\text{l} - 8\,\text{l} = 28\,\text{l} \\[4pt]
-\text{2. Ausgabe:}\quad & \dfrac{3}{8}\cdot 28\,\text{l}
-= \dfrac{3}{8}\cdot \dfrac{28}{1}\,\text{l}
-= \dfrac{84}{8}\,\text{l}
-= \dfrac{21}{2}\,\text{l} \\[4pt]
-\text{Rest ges.:}\quad & 28\,\text{l} - \dfrac{21}{2}\,\text{l}
-= \dfrac{56}{2}\,\text{l} - \dfrac{21}{2}\,\text{l}
-= \dfrac{35}{2}\,\text{l}
+\text{1. Ausgabe:}\quad & \dfrac{2}{9}\cdot 36\,\ell
+= \dfrac{2}{9}\cdot \dfrac{36}{1}\,\ell
+= \dfrac{72}{9}\,\ell
+= 8\,\ell \\[4pt]
+\text{Rest 1:}\quad & 36\,\ell - 8\,\ell = 28\,\ell \\[4pt]
+\text{2. Ausgabe:}\quad & \dfrac{3}{8}\cdot 28\,\ell
+= \dfrac{3}{8}\cdot \dfrac{28}{1}\,\ell
+= \dfrac{84}{8}\,\ell
+= \dfrac{21}{2}\,\ell \\[4pt]
+\text{Rest ges.:}\quad & 28\,\ell - \dfrac{21}{2}\,\ell
+= \dfrac{56}{2}\,\ell - \dfrac{21}{2}\,\ell
+= \dfrac{35}{2}\,\ell
 \end{align*}
 $$
 ************
@@ -23684,9 +23685,9 @@ $$
 <!--  Bruchrechnung 0144  -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
-__Aufgabe 144:__ In einem Labor steht ein Kanister mit $25\,\text{l}$ Desinfektionslösung.  
-Zunächst werden $\dfrac{3}{10}$ der **gesamten** Menge entnommen.  
-Am Abend wird eine feste Nachfüllmenge von $\dfrac{1}{8}$ des **vollen** Kanisters wieder aufgefüllt.  
+__Aufgabe 144:__ In einem Labor steht ein Kanister mit $25\,\ell$ Desinfektionslösung.  
+Zunächst werden $\dfrac{3}{10}$ der gesamten Menge entnommen.  
+Am Abend wird eine feste Nachfüllmenge von $\dfrac{1}{8}$ des vollen Kanisters wieder aufgefüllt.  
 **Berechne** das Flüssigkeitsvolumen im Kanister am Ende des Tages als Bruch. 
 
 <!-- data-solution-button="5"-->
@@ -23695,17 +23696,17 @@ Am Abend wird eine feste Nachfüllmenge von $\dfrac{1}{8}$ des **vollen** Kanist
 ************
 $$
 \begin{align*}
-\text{Entnahme:}\;& \dfrac{3}{10}\cdot 25\,\text{l}
-= \dfrac{75}{10}\,\text{l}
-= \dfrac{15}{2}\,\text{l} \\[4pt]
-\text{Rest nach Entnahme:}\;& 25\,\text{l} - \dfrac{15}{2}\,\text{l}
-= \dfrac{50}{2}\,\text{l} - \dfrac{15}{2}\,\text{l}
-= \dfrac{35}{2}\,\text{l} \\[4pt]
-\text{Nachfüllung (fest):}\;& \dfrac{1}{8}\cdot 25\,\text{l}
-= \dfrac{25}{8}\,\text{l} \\[4pt]
-\text{Endmenge:}\;& \dfrac{35}{2}\,\text{l} + \dfrac{25}{8}\,\text{l}
-= \dfrac{140}{8}\,\text{l} + \dfrac{25}{8}\,\text{l}
-= \dfrac{165}{8}\,\text{l}
+\text{Entnahme:}\;& \dfrac{3}{10}\cdot 25\,\ell
+= \dfrac{75}{10}\,\ell
+= \dfrac{15}{2}\,\ell \\[4pt]
+\text{Rest nach Entnahme:}\;& 25\,\ell - \dfrac{15}{2}\,\ell
+= \dfrac{50}{2}\,\ell - \dfrac{15}{2}\,\ell
+= \dfrac{35}{2}\,\ell \\[4pt]
+\text{Nachfüllung (fest):}\;& \dfrac{1}{8}\cdot 25\,\ell
+= \dfrac{25}{8}\,\ell \\[4pt]
+\text{Endmenge:}\;& \dfrac{35}{2}\,\ell + \dfrac{25}{8}\,\ell
+= \dfrac{140}{8}\,\ell + \dfrac{25}{8}\,\ell
+= \dfrac{165}{8}\,\ell
 \end{align*}
 $$
 ************
@@ -23847,8 +23848,8 @@ $$
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
 __Aufgabe 148:__ In einem Labor werden Reinigungsmischungen angesetzt.  
-Eine Mischung besteht aus $\dfrac{3}{8}\,\text{l}$ Lösung A und $\dfrac{1}{4}\,\text{l}$ Lösung B.  
-Es werden $6$ Mischungen hergestellt; danach werden für Tests $\dfrac{2}{3}\,\text{l}$ des **Gesamtergebnisses** entnommen.  
+Eine Mischung besteht aus $\dfrac{3}{8}\,\ell$ Lösung A und $\dfrac{1}{4}\,\ell$ Lösung B.  
+Es werden $6$ Mischungen hergestellt; danach werden für Tests $\dfrac{2}{3}\,\ell$ des **Gesamtergebnisses** entnommen.  
 **Bestimme** die verbleibende Flüssigkeitsmenge. 
 
 <!-- data-solution-button="5"-->
@@ -23857,14 +23858,14 @@ Es werden $6$ Mischungen hergestellt; danach werden für Tests $\dfrac{2}{3}\,\t
 ************
 $$
 \begin{align*}
-\text{Term:}\quad & 6\cdot\Big(\dfrac{3}{8}\,\text{l}+\dfrac{1}{4}\,\text{l}\Big)-\dfrac{2}{3}\,\text{l} \\[4pt]
-\text{(Distributivgesetz)}\quad & = 6\cdot\dfrac{3}{8}\,\text{l} + 6\cdot\dfrac{1}{4}\,\text{l} - \dfrac{2}{3}\,\text{l} \\
-&= \dfrac{18}{8}\,\text{l} + \dfrac{6}{4}\,\text{l} - \dfrac{2}{3}\,\text{l}
-= \dfrac{9}{4}\,\text{l} + \dfrac{3}{2}\,\text{l} - \dfrac{2}{3}\,\text{l} \\
-&= \Big(\dfrac{9}{4}+\dfrac{6}{4}\Big)\text{l} - \dfrac{2}{3}\,\text{l}
-= \dfrac{15}{4}\,\text{l} - \dfrac{2}{3}\,\text{l} \\
-&= \dfrac{45}{12}\,\text{l} - \dfrac{8}{12}\,\text{l}
-= \dfrac{37}{12}\,\text{l}
+\text{Term:}\quad & 6\cdot\Big(\dfrac{3}{8}\,\ell+\dfrac{1}{4}\,\ell\Big)-\dfrac{2}{3}\,\ell \\[4pt]
+\text{(Distributivgesetz)}\quad & = 6\cdot\dfrac{3}{8}\,\ell + 6\cdot\dfrac{1}{4}\,\ell - \dfrac{2}{3}\,\ell \\
+&= \dfrac{18}{8}\,\ell + \dfrac{6}{4}\,\ell - \dfrac{2}{3}\,\ell
+= \dfrac{9}{4}\,\ell + \dfrac{3}{2}\,\ell - \dfrac{2}{3}\,\ell \\
+&= \Big(\dfrac{9}{4}+\dfrac{6}{4}\Big)\ell - \dfrac{2}{3}\,\ell
+= \dfrac{15}{4}\,\ell - \dfrac{2}{3}\,\ell \\
+&= \dfrac{45}{12}\,\ell - \dfrac{8}{12}\,\ell
+= \dfrac{37}{12}\,\ell
 \end{align*}
 $$
 ************
@@ -23994,8 +23995,8 @@ $$
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
 __Aufgabe 152:__ In einem Labor werden Mischungen angesetzt.  
-Eine \emph{Mischung} besteht aus $\dfrac{3}{5}\,\text{l}$ Lösung A und $\dfrac{1}{4}\,\text{l}$ Lösung B.  
-Es werden sieben Mischungen hergestellt. Anschließend werden $\dfrac{2}{7}$ der gesamten hergestellten Menge zur Kalibrierung entnommen, danach werden noch $\dfrac{1}{3}\,\text{l}$ destilliertes Wasser zugegeben.  
+Eine \emph{Mischung} besteht aus $\dfrac{3}{5}\,\ell$ Lösung A und $\dfrac{1}{4}\,\ell$ Lösung B.  
+Es werden sieben Mischungen hergestellt. Anschließend werden $\dfrac{2}{7}$ der gesamten hergestellten Menge zur Kalibrierung entnommen, danach werden noch $\dfrac{1}{3}\,\ell$ destilliertes Wasser zugegeben.  
 **Berechne** das endgültige Volumen.  
 
 
@@ -24006,25 +24007,25 @@ Es werden sieben Mischungen hergestellt. Anschließend werden $\dfrac{2}{7}$ der
 $$
 \begin{align*}
 \text{Summe je Mischung:}\quad 
-&\left(\dfrac{3}{5}+\dfrac{1}{4}\right)\,\text{l}
-= \left(\dfrac{12}{20}+\dfrac{5}{20}\right)\,\text{l}
-= \dfrac{17}{20}\,\text{l} \\[4pt]
+&\left(\dfrac{3}{5}+\dfrac{1}{4}\right)\,\ell
+= \left(\dfrac{12}{20}+\dfrac{5}{20}\right)\,\ell
+= \dfrac{17}{20}\,\ell \\[4pt]
 \text{Gesamt vor Entnahme:}\quad 
-&7\cdot \dfrac{17}{20}\,\text{l}
-= \dfrac{119}{20}\,\text{l} \\[6pt]
+&7\cdot \dfrac{17}{20}\,\ell
+= \dfrac{119}{20}\,\ell \\[6pt]
 \text{Kalibrier-Entnahme:}\quad 
-&\dfrac{2}{7}\cdot \dfrac{119}{20}\,\text{l}
-= \dfrac{238}{140}\,\text{l}
-= \dfrac{17}{10}\,\text{l} \\[6pt]
+&\dfrac{2}{7}\cdot \dfrac{119}{20}\,\ell
+= \dfrac{238}{140}\,\ell
+= \dfrac{17}{10}\,\ell \\[6pt]
 \text{Nach Entnahme:}\quad 
-&\dfrac{119}{20}\,\text{l} - \dfrac{17}{10}\,\text{l}
-= \dfrac{119}{20}\,\text{l} - \dfrac{34}{20}\,\text{l}
-= \dfrac{85}{20}\,\text{l}
-= \dfrac{17}{4}\,\text{l} \\[6pt]
+&\dfrac{119}{20}\,\ell - \dfrac{17}{10}\,\ell
+= \dfrac{119}{20}\,\ell - \dfrac{34}{20}\,\ell
+= \dfrac{85}{20}\,\ell
+= \dfrac{17}{4}\,\ell \\[6pt]
 \text{Zugabe Wasser:}\quad 
-&\dfrac{17}{4}\,\text{l} + \dfrac{1}{3}\,\text{l}
-= \dfrac{51}{12}\,\text{l} + \dfrac{4}{12}\,\text{l}
-= \dfrac{55}{12}\,\text{l}
+&\dfrac{17}{4}\,\ell + \dfrac{1}{3}\,\ell
+= \dfrac{51}{12}\,\ell + \dfrac{4}{12}\,\ell
+= \dfrac{55}{12}\,\ell
 \end{align*}
 $$
 ************
@@ -24179,46 +24180,47 @@ $$
 <!--  Bruchrechnung 0156  -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/5.png" width="120" height="30">  \
-__Aufgabe 156:__ Für eine Laborreihe werden Mischungen angesetzt.  
-Pro Dose werden $\dfrac{2}{3}\,\text{l}$ Grundlösung und $\dfrac{3}{10}\,\text{l}$ Zusatzlösung kombiniert.  
-Beim Ansetzen geht je Dose $\dfrac{1}{12}$ der Mischsumme als Verlust ab (die Mischsumme ist $\dfrac{2}{3}\,\text{l}+\dfrac{3}{10}\,\text{l}$).  
+__Aufgabe 156:__ 
+Für eine Laborreihe werden Mischungen angesetzt.  
+Pro Dose werden $\dfrac{2}{3}\,\ell$ Grundlösung und $\dfrac{3}{10}\,\ell$ Zusatzlösung kombiniert.  
+Beim Ansetzen geht je Dose $\dfrac{1}{12}$ der Mischsumme als Verlust ab (die Mischsumme ist $\dfrac{2}{3}\,\ell+\dfrac{3}{10}\,\ell$).  
 Es werden sechs Dosen hergestellt. Danach wird $\dfrac{3}{8}$ der bis dahin vorhandenen Gesamtmenge für Tests entnommen.  
-Zum Schluss werden pro hergestellter Dose nochmals $\dfrac{1}{5}\,\text{l}$ destilliertes Wasser zugegeben.  
+Zum Schluss werden pro hergestellter Dose nochmals $\dfrac{1}{5}\,\ell$ destilliertes Wasser zugegeben.  
 **Bestimme** das endgültige Volumen. 
 
 
 
 <!-- data-solution-button="5"-->
-[[  2171/480  ]] l
+[[  2171/480  ]] $\ell$
 @Algebrite.check(2171/480)
 ************
 $$
 \begin{align*}
 \text{Mischsumme je Dose:}\quad
-& \dfrac{2}{3}\,\text{l}+\dfrac{3}{10}\,\text{l}
-= \dfrac{20}{30}\,\text{l}+\dfrac{9}{30}\,\text{l}
-= \dfrac{29}{30}\,\text{l} \\[6pt]
+& \dfrac{2}{3}\,\ell+\dfrac{3}{10}\,\ell
+= \dfrac{20}{30}\,\ell+\dfrac{9}{30}\,\ell
+= \dfrac{29}{30}\,\ell \\[6pt]
 \text{Verlust je Dose:}\quad
-& \dfrac{1}{12}\cdot\dfrac{29}{30}\,\text{l}
-= \dfrac{29}{360}\,\text{l} \\[6pt]
+& \dfrac{1}{12}\cdot\dfrac{29}{30}\,\ell
+= \dfrac{29}{360}\,\ell \\[6pt]
 \text{Je Dose nach Verlust:}\quad
-& \left(\dfrac{29}{30}-\dfrac{29}{360}\right)\,\text{l}
-= \dfrac{319}{360}\,\text{l} \\[6pt]
+& \left(\dfrac{29}{30}-\dfrac{29}{360}\right)\,\ell
+= \dfrac{319}{360}\,\ell \\[6pt]
 \text{Sechs Dosen:}\quad
-& 6\cdot\dfrac{319}{360}\,\text{l}
-= \dfrac{319}{60}\,\text{l} \\[6pt]
+& 6\cdot\dfrac{319}{360}\,\ell
+= \dfrac{319}{60}\,\ell \\[6pt]
 \text{Entnahme Tests:}\quad
-& \left(1-\dfrac{3}{8}\right)\cdot\dfrac{319}{60}\,\text{l}
-= \dfrac{5}{8}\cdot\dfrac{319}{60}\,\text{l}
-= \dfrac{319}{96}\,\text{l} \\[6pt]
+& \left(1-\dfrac{3}{8}\right)\cdot\dfrac{319}{60}\,\ell
+= \dfrac{5}{8}\cdot\dfrac{319}{60}\,\ell
+= \dfrac{319}{96}\,\ell \\[6pt]
 \text{Zugabe Wasser:}\quad
-& 6\cdot\dfrac{1}{5}\,\text{l}
-= \dfrac{6}{5}\,\text{l}
-= \dfrac{576}{480}\,\text{l} \\[6pt]
+& 6\cdot\dfrac{1}{5}\,\ell
+= \dfrac{6}{5}\,\ell
+= \dfrac{576}{480}\,\ell \\[6pt]
 \text{Endvolumen:}\quad
-& \dfrac{319}{96}\,\text{l} + \dfrac{6}{5}\,\text{l}
-= \dfrac{1595}{480}\,\text{l} + \dfrac{576}{480}\,\text{l}
-= \dfrac{2171}{480}\,\text{l}
+& \dfrac{319}{96}\,\ell + \dfrac{6}{5}\,\ell
+= \dfrac{1595}{480}\,\ell + \dfrac{576}{480}\,\ell
+= \dfrac{2171}{480}\,\ell
 \end{align*}
 $$
 ************

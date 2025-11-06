@@ -58,7 +58,7 @@ author: Martin Lommatzsch
 # Textaufgabe Bruchrechnung - Flüssigkeitsvolumen
 
 
-In einem Labor steht ein Kanister mit $25\,\text{l}$ Desinfektionslösung.  
+In einem Labor steht ein Kanister mit $25\,\ell$ Desinfektionslösung.  
 Zunächst werden $\dfrac{3}{10}$ der gesamten Menge entnommen.  
 Am Abend wird eine feste Nachfüllmenge von $\dfrac{1}{8}$ des vollen Kanisters wieder aufgefüllt.  
 **Berechne** das Flüssigkeitsvolumen im Kanister am Ende des Tages als Bruch. 
@@ -69,17 +69,17 @@ Am Abend wird eine feste Nachfüllmenge von $\dfrac{1}{8}$ des vollen Kanisters 
 ************
 $$
 \begin{align*}
-\text{Entnahme:}\;& \dfrac{3}{10}\cdot 25\,\text{l}
-= \dfrac{75}{10}\,\text{l}
-= \dfrac{15}{2}\,\text{l} \\[4pt]
-\text{Rest nach Entnahme:}\;& 25\,\text{l} - \dfrac{15}{2}\,\text{l}
-= \dfrac{50}{2}\,\text{l} - \dfrac{15}{2}\,\text{l}
-= \dfrac{35}{2}\,\text{l} \\[4pt]
-\text{Nachfüllung (fest):}\;& \dfrac{1}{8}\cdot 25\,\text{l}
-= \dfrac{25}{8}\,\text{l} \\[4pt]
-\text{Endmenge:}\;& \dfrac{35}{2}\,\text{l} + \dfrac{25}{8}\,\text{l}
-= \dfrac{140}{8}\,\text{l} + \dfrac{25}{8}\,\text{l}
-= \dfrac{165}{8}\,\text{l}
+\text{Entnahme:}\;& \dfrac{3}{10}\cdot 25\,\ell
+= \dfrac{75}{10}\,\ell
+= \dfrac{15}{2}\,\ell \\[4pt]
+\text{Rest nach Entnahme:}\;& 25\,\ell - \dfrac{15}{2}\,\ell
+= \dfrac{50}{2}\,\ell - \dfrac{15}{2}\,\ell
+= \dfrac{35}{2}\,\ell \\[4pt]
+\text{Nachfüllung (fest):}\;& \dfrac{1}{8}\cdot 25\,\ell
+= \dfrac{25}{8}\,\ell \\[4pt]
+\text{Endmenge:}\;& \dfrac{35}{2}\,\ell + \dfrac{25}{8}\,\ell
+= \dfrac{140}{8}\,\ell + \dfrac{25}{8}\,\ell
+= \dfrac{165}{8}\,\ell
 \end{align*}
 $$
 ************

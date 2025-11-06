@@ -64,7 +64,7 @@ Am Nachmittag wird von den übrigen Büchern erneut die Hälfte in die Regale ge
 **Bestimme**, wie viele Bücher am Ende des Tages noch nicht einsortiert sind.  
 
 <!-- data-solution-button="5"-->
- [[  12  ]] 
+ [[  16  ]] 
 ************
 $$
 \text{Vormittag:}\quad \dfrac{1}{5}\cdot 40 = 8 \quad \Rightarrow \; 40-8 = 32 \text{ Bücher übrig} \\

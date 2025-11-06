@@ -84,15 +84,15 @@ $$
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ Wie viel sind $\dfrac{9}{14}$ von $25\,$l?  \
-[[  225/14  ]]l
+__$b)\;\;$__ Wie viel sind $\dfrac{9}{14}$ von $25\,\ell$?  \
+[[  225/14  ]] $\ell$
 @Algebrite.check(225/14)
 ************
 $$
 \begin{align*}
-\dfrac{9}{14}\cdot 25\,\text{l}
-&= \dfrac{9\cdot 25}{14}\,\text{l} \\
-&= \dfrac{225}{14}\,\text{l}
+\dfrac{9}{14}\cdot 25\,\ell
+&= \dfrac{9\cdot 25}{14}\,\ell \\
+&= \dfrac{225}{14}\,\ell
 \end{align*}
 $$
 ************

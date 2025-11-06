@@ -59,16 +59,16 @@ author: Martin Lommatzsch
 # Textaufgabe Bruchrechnung - Wasserbecken
 
 
-Ein Wasserbecken fasst insgesamt $120\,\text{l}$. Am Morgen wird es nur zu $\dfrac{2}{5}$ gefüllt.  
+Ein Wasserbecken fasst insgesamt $120\,\ell$. Am Morgen wird es nur zu $\dfrac{2}{5}$ gefüllt.  
 Im Laufe des Tages werden zusätzlich $\dfrac{1}{4}$ des **vollen Beckens** nachgefüllt.  
 **Bestimme**, wie viele Liter Wasser am Abend im Becken sind. 
 
 <!-- data-solution-button="5"-->
-[[  76  ]] l
+[[  78  ]] $\ell$
 ************
 $$
-\text{Morgenfüllung:}\quad \dfrac{2}{5}\cdot 120 = 48\,\text{l} \\
-\text{Nachfüllung:}\quad \dfrac{1}{4}\cdot 120 = 30\,\text{l} \\
-\text{Gesamt:}\quad 48\,\text{l} + 30\,\text{l} = 78\,\text{l}
+\text{Morgenfüllung:}\quad \dfrac{2}{5}\cdot 120 = 48\,\ell \\
+\text{Nachfüllung:}\quad \dfrac{1}{4}\cdot 120 = 30\,\ell \\
+\text{Gesamt:}\quad 48\,\ell + 30\,\ell = 78\,\ell
 $$
 ************

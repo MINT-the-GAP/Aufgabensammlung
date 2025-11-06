@@ -56,7 +56,7 @@ author: Martin Lommatzsch
 
 # Textaufgabe Bruchrechnung - Suppenportion
 
-In der Schulküche wird eine große Suppenportion vorbereitet. Ein Kessel enthält zu Beginn $36\,\text{l}$ Brühe.  
+In der Schulküche wird eine große Suppenportion vorbereitet. Ein Kessel enthält zu Beginn $36\,\ell$ Brühe.  
 In der ersten Pause werden $\dfrac{2}{9}$ der gesamten Brühe ausgegeben.  
 In der zweiten Pause werden anschließend $\dfrac{3}{8}$ der verbleibenden Brühe ausgegeben.  
 **Berechne** das Restvolumen im Kessel nach der zweiten Pause. 
@@ -67,18 +67,18 @@ In der zweiten Pause werden anschließend $\dfrac{3}{8}$ der verbleibenden Brüh
 ************
 $$
 \begin{align*}
-\text{1. Ausgabe:}\quad & \dfrac{2}{9}\cdot 36\,\text{l}
-= \dfrac{2}{9}\cdot \dfrac{36}{1}\,\text{l}
-= \dfrac{72}{9}\,\text{l}
-= 8\,\text{l} \\[4pt]
-\text{Rest 1:}\quad & 36\,\text{l} - 8\,\text{l} = 28\,\text{l} \\[4pt]
-\text{2. Ausgabe:}\quad & \dfrac{3}{8}\cdot 28\,\text{l}
-= \dfrac{3}{8}\cdot \dfrac{28}{1}\,\text{l}
-= \dfrac{84}{8}\,\text{l}
-= \dfrac{21}{2}\,\text{l} \\[4pt]
-\text{Rest ges.:}\quad & 28\,\text{l} - \dfrac{21}{2}\,\text{l}
-= \dfrac{56}{2}\,\text{l} - \dfrac{21}{2}\,\text{l}
-= \dfrac{35}{2}\,\text{l}
+\text{1. Ausgabe:}\quad & \dfrac{2}{9}\cdot 36\,\ell
+= \dfrac{2}{9}\cdot \dfrac{36}{1}\,\ell
+= \dfrac{72}{9}\,\ell
+= 8\,\ell \\[4pt]
+\text{Rest 1:}\quad & 36\,\ell - 8\,\ell = 28\,\ell \\[4pt]
+\text{2. Ausgabe:}\quad & \dfrac{3}{8}\cdot 28\,\ell
+= \dfrac{3}{8}\cdot \dfrac{28}{1}\,\ell
+= \dfrac{84}{8}\,\ell
+= \dfrac{21}{2}\,\ell \\[4pt]
+\text{Rest ges.:}\quad & 28\,\ell - \dfrac{21}{2}\,\ell
+= \dfrac{56}{2}\,\ell - \dfrac{21}{2}\,\ell
+= \dfrac{35}{2}\,\ell
 \end{align*}
 $$
 ************

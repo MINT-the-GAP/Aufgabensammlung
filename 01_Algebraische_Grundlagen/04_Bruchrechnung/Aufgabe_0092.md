@@ -105,16 +105,16 @@ $$
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ Wie viel sind $\dfrac{11}{12}$ von $\dfrac{5}{7}$ von $80\,$l?  \
-[[  1100/21  ]]l
+__$c)\;\;$__ Wie viel sind $\dfrac{11}{12}$ von $\dfrac{5}{7}$ von $80\,\ell$?  \
+[[  1100/21  ]] $\ell$
 @Algebrite.check(1100/21)
 ************
 $$
 \begin{align*}
-\dfrac{11}{12}\cdot\dfrac{5}{7}\cdot 80\,\text{l}
-&= \dfrac{11\cdot 5 \cdot 80\,\text{l}}{12\cdot 7} \\
-&= \dfrac{4400}{84} \,\text{l} \\
-&= \dfrac{1100}{21}\,\text{l}
+\dfrac{11}{12}\cdot\dfrac{5}{7}\cdot 80\,\ell
+&= \dfrac{11\cdot 5 \cdot 80\,\ell}{12\cdot 7} \\
+&= \dfrac{4400}{84} \,\ell \\
+&= \dfrac{1100}{21}\,\ell
 \end{align*}
 $$
 ************

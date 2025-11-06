@@ -121,16 +121,16 @@ $$
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ Wie viel sind $\dfrac{11}{12}$ von $\dfrac{3}{5}$ von $95\,$l?  \
-[[  209/4  ]]l
+__$d)\;\;$__ Wie viel sind $\dfrac{11}{12}$ von $\dfrac{3}{5}$ von $95\,\ell$?  \
+[[  209/4  ]] $\ell$
 @Algebrite.check(209/4)
 ************
 $$
 \begin{align*}
-\dfrac{11}{12}\cdot\dfrac{3}{5}\cdot 95\,\text{l}
-&= \dfrac{11\cdot 3\cdot 95\,\text{l}}{12\cdot 5} 
-= \dfrac{3135}{60}\,\text{l}
-= \dfrac{209}{4}\,\text{l}
+\dfrac{11}{12}\cdot\dfrac{3}{5}\cdot 95\,\ell
+&= \dfrac{11\cdot 3\cdot 95\,\ell}{12\cdot 5} 
+= \dfrac{3135}{60}\,\ell
+= \dfrac{209}{4}\,\ell
 \end{align*}
 $$
 ************

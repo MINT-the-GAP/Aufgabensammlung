@@ -59,7 +59,7 @@ author: Martin Lommatzsch
 # Textaufgabe Bruchrechnung - Vorratstank
 
 
-Ein Vorratstank enthält zu Beginn $48\,\text{l}$ Wasser. Am Vormittag werden $\dfrac{3}{8}$ des Inhalts verwendet, am Nachmittag danach $\dfrac{1}{4}$ des verbleibenden Inhalts.  
+Ein Vorratstank enthält zu Beginn $48\,\ell$ Wasser. Am Vormittag werden $\dfrac{3}{8}$ des Inhalts verwendet, am Nachmittag danach $\dfrac{1}{4}$ des verbleibenden Inhalts.  
 **Berechne** das Restvolumen im Tank.  
 
 <!-- data-solution-button="5"-->
@@ -68,17 +68,16 @@ Ein Vorratstank enthält zu Beginn $48\,\text{l}$ Wasser. Am Vormittag werden $\
 ************
 $$
 \begin{align*}
-\text{Vormittag:}\quad & \dfrac{3}{8}\cdot 48\,\text{l}
-= \dfrac{144}{8}\,\text{l}
-= 18\,\text{l} \\
-\text{Rest 1:}\quad & 48\,\text{l} - 18\,\text{l} = 30\,\text{l} \\
-\text{Nachmittag:}\quad & \dfrac{1}{4}\cdot 30\,\text{l}
-= \dfrac{30}{4}\,\text{l}
-= \dfrac{15}{2}\,\text{l} \\
-\text{Endrest:}\quad & 30\,\text{l} - \dfrac{15}{2}\,\text{l}
-= \dfrac{60}{2}\,\text{l} - \dfrac{15}{2}\,\text{l}
-= \dfrac{45}{2}\,\text{l}
+\text{Vormittag:}\quad & \dfrac{3}{8}\cdot 48\,\ell
+= \dfrac{144}{8}\,\ell
+= 18\,\ell \\
+\text{Rest 1:}\quad & 48\,\ell - 18\,\ell = 30\,\ell \\
+\text{Nachmittag:}\quad & \dfrac{1}{4}\cdot 30\,\ell
+= \dfrac{30}{4}\,\ell
+= \dfrac{15}{2}\,\ell \\
+\text{Endrest:}\quad & 30\,\ell - \dfrac{15}{2}\,\ell
+= \dfrac{60}{2}\,\ell - \dfrac{15}{2}\,\ell
+= \dfrac{45}{2}\,\ell
 \end{align*}
 $$
-************
 

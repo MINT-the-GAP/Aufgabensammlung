@@ -59,26 +59,26 @@ author: Martin Lommatzsch
 
 
 
-Für die Reinigung steht eine $5\,\text{l}$-Kanisterlösung bereit. Zuerst verschüttet sich $\dfrac{3}{10}$ des Inhalts, danach wird $\dfrac{1}{4}$ der **verbleibenden** Menge für die Gerätepflege genutzt.  
+Für die Reinigung steht eine $5\,\ell$-Kanisterlösung bereit. Zuerst verschüttet sich $\dfrac{3}{10}$ des Inhalts, danach wird $\dfrac{1}{4}$ der verbleibenden Menge für die Gerätepflege genutzt.  
 **Berechne** das restliche Volumen im Kanister. 
 
 <!-- data-solution-button="5"-->
-[[  21/8  ]] l
+[[  21/8  ]] $\ell$
 @Algebrite.check(21/8)
 ************
 $$
 \begin{align*}
-\text{Verschüttet:}\quad & \dfrac{3}{10}\cdot 5\,\text{l}
-= \dfrac{15}{10}\,\text{l}
-= \dfrac{3}{2}\,\text{l} \\
-\text{Rest 1:}\quad & 5\,\text{l} - \dfrac{3}{2}\,\text{l}
-= \dfrac{10}{2}\,\text{l} - \dfrac{3}{2}\,\text{l}
-= \dfrac{7}{2}\,\text{l} \\
-\text{Verbrauch:}\quad & \dfrac{1}{4}\cdot \dfrac{7}{2}\,\text{l}
-= \dfrac{7}{8}\,\text{l} \\
-\text{Endrest:}\quad & \dfrac{7}{2}\,\text{l} - \dfrac{7}{8}\,\text{l}
-= \dfrac{28}{8}\,\text{l} - \dfrac{7}{8}\,\text{l}
-= \dfrac{21}{8}\,\text{l}
+\text{Verschüttet:}\quad & \dfrac{3}{10}\cdot 5\,\ell
+= \dfrac{15}{10}\,\ell
+= \dfrac{3}{2}\,\ell \\
+\text{Rest 1:}\quad & 5\,\ell - \dfrac{3}{2}\,\ell
+= \dfrac{10}{2}\,\ell - \dfrac{3}{2}\,\ell
+= \dfrac{7}{2}\,\ell \\
+\text{Verbrauch:}\quad & \dfrac{1}{4}\cdot \dfrac{7}{2}\,\ell
+= \dfrac{7}{8}\,\ell \\
+\text{Endrest:}\quad & \dfrac{7}{2}\,\ell - \dfrac{7}{8}\,\ell
+= \dfrac{28}{8}\,\ell - \dfrac{7}{8}\,\ell
+= \dfrac{21}{8}\,\ell
 \end{align*}
 $$
 ************

@@ -59,8 +59,8 @@ author: Martin Lommatzsch
 
 
 In einem Labor werden Reinigungsmischungen angesetzt.  
-Eine Mischung besteht aus $\dfrac{3}{8}\,\text{l}$ Lösung A und $\dfrac{1}{4}\,\text{l}$ Lösung B.  
-Es werden $6$ Mischungen hergestellt; danach werden für Tests $\dfrac{2}{3}\,\text{l}$ des **Gesamtergebnisses** entnommen.  
+Eine Mischung besteht aus $\dfrac{3}{8}\,\ell$ Lösung A und $\dfrac{1}{4}\,\ell$ Lösung B.  
+Es werden $6$ Mischungen hergestellt; danach werden für Tests $\dfrac{2}{3}\,\ell$ des **Gesamtergebnisses** entnommen.  
 **Bestimme** die verbleibende Flüssigkeitsmenge. 
 
 <!-- data-solution-button="5"-->
@@ -69,14 +69,14 @@ Es werden $6$ Mischungen hergestellt; danach werden für Tests $\dfrac{2}{3}\,\t
 ************
 $$
 \begin{align*}
-\text{Term:}\quad & 6\cdot\Big(\dfrac{3}{8}\,\text{l}+\dfrac{1}{4}\,\text{l}\Big)-\dfrac{2}{3}\,\text{l} \\[4pt]
-\text{(Distributivgesetz)}\quad & = 6\cdot\dfrac{3}{8}\,\text{l} + 6\cdot\dfrac{1}{4}\,\text{l} - \dfrac{2}{3}\,\text{l} \\
-&= \dfrac{18}{8}\,\text{l} + \dfrac{6}{4}\,\text{l} - \dfrac{2}{3}\,\text{l}
-= \dfrac{9}{4}\,\text{l} + \dfrac{3}{2}\,\text{l} - \dfrac{2}{3}\,\text{l} \\
-&= \Big(\dfrac{9}{4}+\dfrac{6}{4}\Big)\text{l} - \dfrac{2}{3}\,\text{l}
-= \dfrac{15}{4}\,\text{l} - \dfrac{2}{3}\,\text{l} \\
-&= \dfrac{45}{12}\,\text{l} - \dfrac{8}{12}\,\text{l}
-= \dfrac{37}{12}\,\text{l}
+\text{Term:}\quad & 6\cdot\Big(\dfrac{3}{8}\,\ell+\dfrac{1}{4}\,\ell\Big)-\dfrac{2}{3}\,\ell \\[4pt]
+\text{(Distributivgesetz)}\quad & = 6\cdot\dfrac{3}{8}\,\ell + 6\cdot\dfrac{1}{4}\,\ell - \dfrac{2}{3}\,\ell \\
+&= \dfrac{18}{8}\,\ell + \dfrac{6}{4}\,\ell - \dfrac{2}{3}\,\ell
+= \dfrac{9}{4}\,\ell + \dfrac{3}{2}\,\ell - \dfrac{2}{3}\,\ell \\
+&= \Big(\dfrac{9}{4}+\dfrac{6}{4}\Big)\ell - \dfrac{2}{3}\,\ell
+= \dfrac{15}{4}\,\ell - \dfrac{2}{3}\,\ell \\
+&= \dfrac{45}{12}\,\ell - \dfrac{8}{12}\,\ell
+= \dfrac{37}{12}\,\ell
 \end{align*}
 $$
 ************
