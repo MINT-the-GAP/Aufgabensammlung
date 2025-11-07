@@ -62,13 +62,13 @@ Ein Wasserkanister fasst $12$ Liter Wasser. Es wird $\dfrac{1}{3}$ des Wassers e
 
 
 <!-- data-solution-button="5"-->
-[[  4  ]] l
+[[  4  ]] $\ell$
 @Algebrite.check(4)
 ************
 $$
-\dfrac{1}{3}\cdot 12\,\text{l} & = \dfrac{1}{3} \cdot  \dfrac{12}{1}\,\text{l} \\
- & = \dfrac{12}{3}\,\text{l} \\
-  & = 12\,\text{l}:3 \\
-  & = 4\,\text{l}
+\dfrac{1}{3}\cdot 12\,\ell & = \dfrac{1}{3} \cdot  \dfrac{12}{1}\,\ell \\
+ & = \dfrac{12}{3}\,\ell \\
+  & = 12\,\ell:3 \\
+  & = 4\,\ell
 $$
 ************

@@ -61,6 +61,12 @@ window.segments = window.segments || {}
 window.toggleSegments = function (uid, i) {
   segments[uid][i] = !segments[uid][i]
 }
+
+window.rects    = window.rects    || {}
+window.rectDims = window.rectDims || {}
+
+window.toggleRect = function (uid, i) {
+  rects[uid][i] = !rects[uid][i]}
 @end
 
 @circleQuiz: @circleQuiz_(@uid,@0)
@@ -147,6 +153,155 @@ if (!segments["@0"] || @input != segments["@0"].length) {
 @1 === ((window.segments["@0"].filter(i => i).length) / window.segments["@0"].length)
 </script>
 @end
+
+
+
+
+
+
+
+
+
+
+
+@rectQuiz: @rectQuiz_(@uid,@0)
+
+@rectQuiz_
+<script modify="false">
+/*
+  WICHTIG:
+  - Rows/Cols kommen NUR aus window.rectDims['@0'].
+  - Die folgenden zwei Dummy-Zeilen dienen ausschließlich als REAKTIONS-TRIGGER,
+    damit LiaScript das SVG neu rendert, wenn die Slider bewegt werden.
+    Sie werden NICHT als Datenquelle verwendet.
+*/
+const _rowsTrigger = @input(`rows-@0`);
+const _colsTrigger = @input(`cols-@0`);
+
+/* Quelle der Wahrheit: globale Variable */
+const dims = window.rectDims['@0'] || { rows: 1, cols: 1 };
+const rows = Math.max(1, +dims.rows || 1);
+const cols = Math.max(1, +dims.cols || 1);
+
+const W = 300, H = 300, padding = 8;
+const usableW = W - 2*padding, usableH = H - 2*padding;
+
+
+const bgFill     = "white";      // Hintergrundfarbe der Fläche
+const lineColor  = "black";  // Linienfarbe
+const cellFill   = "orange";    // Füllfarbe aktiver Zellen
+const cellGap    = 0;            // Lücke zwischen Zellen (px)
+
+const rw = usableW / cols;
+const rh = usableH / rows;
+
+/* Auswahlarray-Größe absichern */
+const total = rows * cols;
+if (!window.rects['@0'] || window.rects['@0'].length !== total) {
+  window.rects['@0'] = Array(total).fill(false);
+}
+
+let gridRects = "";
+let gridLines = "";
+
+/* Zellen (anklickbar) */
+for (let r = 0; r < rows; r++) {
+  for (let c = 0; c < cols; c++) {
+    const i = r*cols + c;
+    const x = padding + c*rw + cellGap/2;
+    const y = padding + r*rh + cellGap/2;
+    const w = rw - cellGap;
+    const h = rh - cellGap;
+
+    const isActive = window.rects['@0'][i];
+
+    gridRects += `
+      <rect class="cell@0 ${isActive ? 'active' : ''}"
+            x="${x}" y="${y}" width="${Math.max(0,w)}" height="${Math.max(0,h)}"
+            onclick="this.classList.toggle('active'); toggleRect('@0', ${i});">
+      </rect>
+    `;
+  }
+}
+
+/* Gitterlinien */
+for (let r = 0; r <= rows; r++) {
+  const y = padding + r*rh;
+  gridLines += `<line x1="${padding}" y1="${y}" x2="${W-padding}" y2="${y}" stroke="${lineColor}" stroke-width="2"/>`;
+}
+for (let c = 0; c <= cols; c++) {
+  const x = padding + c*rw;
+  gridLines += `<line x1="${x}" y1="${padding}" x2="${x}" y2="${H-padding}" stroke="${lineColor}" stroke-width="2"/>`;
+}
+
+`HTML:
+<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"
+     style="--line:${lineColor}; --cell:${cellFill}">
+  <style>
+    .cell@0 { fill: transparent; cursor: pointer; }
+    .cell@0.active { fill: var(--cell); }
+  </style>
+
+  <rect x="0" y="0" width="${W}" height="${H}" fill="${bgFill}" stroke="${lineColor}" stroke-width="2"/>
+  ${gridRects}
+  ${gridLines}
+</svg>
+`
+</script>
+
+<script run-once modify="false" input="range" output="rows-@0" value="1" min="1" max="20" input-always-active>
+/* Initialisieren, falls nötig */
+window.rectDims = window.rectDims || {};
+const current = window.rectDims['@0'] || { rows: 1, cols: 1 };
+const newRows = Math.max(1, +@input || 1);
+const cols    = Math.max(1, +current.cols || 1);
+
+window.rectDims['@0'] = { rows: newRows, cols };
+
+/* Auswahlarray-Größe anpassen */
+window.rects = window.rects || {};
+const total = newRows * cols;
+if (!window.rects['@0'] || window.rects['@0'].length !== total) {
+  window.rects['@0'] = Array(total).fill(false);
+}
+
+/* @input zurückgeben (Anzeige im UI), aber NICHT als Logikquelle genutzt */
+@input
+</script>
+
+<script run-once modify="false" input="range" output="cols-@0" value="1" min="1" max="20" input-always-active>
+window.rectDims = window.rectDims || {};
+const current = window.rectDims['@0'] || { rows: 1, cols: 1 };
+const newCols = Math.max(1, +@input || 1);
+const rows    = Math.max(1, +current.rows || 1);
+
+window.rectDims['@0'] = { rows, cols: newCols };
+
+/* Auswahlarray-Größe anpassen */
+window.rects = window.rects || {};
+const total = rows * newCols;
+if (!window.rects['@0'] || window.rects['@0'].length !== total) {
+  window.rects['@0'] = Array(total).fill(false);
+}
+
+/* @input zurückgeben (Anzeige im UI), aber NICHT als Logikquelle genutzt */
+@input
+</script>
+
+[[!]]
+<script>
+@1 === (
+  (window.rects["@0"].filter(i => i).length) /
+  Math.max(1, window.rects["@0"].length)
+)
+</script>
+@end
+
+
+
+
+
+
 
 
 
@@ -20095,10 +20250,10 @@ __$c)\;\;$__ Wie viel sind $\dfrac{2}{3}$ von $6\,$m$^3$?
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ Wie viel sind $\dfrac{11}{6}$ von $240\,$l?  
+__$d)\;\;$__ Wie viel sind $\dfrac{11}{6}$ von $240\,\ell$?  
 
 <!-- data-solution-button="5"-->
-[[  440  ]]l
+[[  440  ]] $\ell$
 
 </div>
 </section>
@@ -20146,10 +20301,10 @@ __$c)\;\;$__ Wie viel sind $\dfrac{3}{5}$ von $8000\,$dm$^2$?
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ Wie viel sind $\dfrac{5}{12}$ von $144\,$l?  
+__$d)\;\;$__ Wie viel sind $\dfrac{5}{12}$ von $144\,\ell$?  
 
 <!-- data-solution-button="5"-->
-[[  60  ]]l
+[[  60  ]] $\ell$
 
 </div>
 </section>
@@ -22454,14 +22609,14 @@ __Aufgabe 102:__ Ein Wasserkanister fasst $12$ Liter Wasser. Es wird $\dfrac{1}{
 
 
 <!-- data-solution-button="5"-->
-[[  4  ]] l
+[[  4  ]] $\ell$
 @Algebrite.check(4)
 ************
 $$
-\dfrac{1}{3}\cdot 12\,\text{l} & = \dfrac{1}{3} \cdot  \dfrac{12}{1}\,\text{l} \\
- & = \dfrac{12}{3}\,\text{l} \\
-  & = 12\,\text{l}:3 \\
-  & = 4\,\text{l}
+\dfrac{1}{3}\cdot 12\,\ell & = \dfrac{1}{3} \cdot  \dfrac{12}{1}\,\ell \\
+ & = \dfrac{12}{3}\,\ell \\
+  & = 12\,\ell:3 \\
+  & = 4\,\ell
 $$
 ************
 
@@ -22534,14 +22689,14 @@ __Aufgabe 105:__ Ein Behälter enthält $18$ Liter Saft. Davon werden $\dfrac{3}
 **Bestimme**, wie viele Liter im Behälter verbleiben. 
 
 <!-- data-solution-button="5"-->
-[[  9  ]] l
+[[  9  ]] $\ell$
 ************
 $$
-18\,\text{l} - \dfrac{3}{6}\cdot 18\,\text{l}
-= 18\,\text{l} - \dfrac{3}{6}\cdot \dfrac{18}{1}\,\text{l}
-= 18\,\text{l} - \dfrac{54}{6}\,\text{l}
-= 18\,\text{l} - 9\,\text{l}
-= 9\,\text{l}
+18\,\ell - \dfrac{3}{6}\cdot 18\,\ell
+= 18\,\ell - \dfrac{3}{6}\cdot \dfrac{18}{1}\,\ell
+= 18\,\ell - \dfrac{54}{6}\,\ell
+= 18\,\ell - 9\,\ell
+= 9\,\ell
 $$
 ************
 
@@ -22702,13 +22857,13 @@ __Aufgabe 111:__ Ein Wasserbecken fasst $200$ Liter. Es ist zu $\dfrac{7}{10}$ g
 **Bestimme**, wie viele Liter Wasser im Becken sind.  
 
 <!-- data-solution-button="5"-->
-[[  140  ]] l
+[[  140  ]] $\ell$
 ************
 $$
-\dfrac{7}{10}\cdot 200\,\text{l}
-= \dfrac{7}{10}\cdot \dfrac{200}{1}\,\text{l}
-= \dfrac{1400}{10}\,\text{l}
-= 140\,\text{l}
+\dfrac{7}{10}\cdot 200\,\ell
+= \dfrac{7}{10}\cdot \dfrac{200}{1}\,\ell
+= \dfrac{1400}{10}\,\ell
+= 140\,\ell
 $$
 ************
 
@@ -22748,10 +22903,10 @@ __Aufgabe 113:__ Ein Tank enthält $60$ Liter Benzin. Davon werden $\dfrac{2}{5}
 **Bestimme**, wie viele Liter übrig bleiben. 
 
 <!-- data-solution-button="5"-->
-[[ 36 ]] l
+[[ 36 ]] $\ell$
 ************
 $$
-60\,\text{l} - \dfrac{2}{5}\cdot 60\,\text{l} = 60\,\text{l} - \dfrac{120}{5} = 60\,\text{l} - 24\,\text{l} = 36\,\text{l}
+60\,\ell - \dfrac{2}{5}\cdot 60\,\ell = 60\,\ell - \dfrac{120}{5} = 60\,\ell - 24\,\ell = 36\,\ell
 $$
 ************
 
@@ -22818,10 +22973,10 @@ __Aufgabe 116:__ Ein Wassertank fasst $250$ Liter. Er ist zu $\dfrac{3}{10}$ gef
 **Bestimme**, wie viele Liter sich im Tank befinden. 
 
 <!-- data-solution-button="5"-->
-[[ 75 ]] l
+[[ 75 ]] $\ell$
 ************
 $$
-\dfrac{3}{10}\cdot 250\,\text{l} = \dfrac{750}{10}\,\text{l} = 75\,\text{l}
+\dfrac{3}{10}\cdot 250\,\ell = \dfrac{750}{10}\,\ell = 75\,\ell
 $$
 ************
 
@@ -23038,7 +23193,7 @@ __Aufgabe 124:__ Ein Vorratstank enthält zu Beginn $48\,\ell$ Wasser. Am Vormit
 **Berechne** das Restvolumen im Tank.  
 
 <!-- data-solution-button="5"-->
-[[  45/2  ]] l
+[[  45/2  ]] $\ell$
 @Algebrite.check(45/2)
 ************
 $$
@@ -23098,7 +23253,7 @@ __Aufgabe 126:__ Für die Reinigung steht eine $5\,\ell$-Kanisterlösung bereit.
 **Berechne** das restliche Volumen im Kanister. 
 
 <!-- data-solution-button="5"-->
-[[  21/8  ]] l
+[[  21/8  ]] $\ell$
 @Algebrite.check(21/8)
 ************
 $$
@@ -23476,7 +23631,7 @@ In der zweiten Pause werden anschließend $\dfrac{3}{8}$ der verbleibenden Brüh
 **Berechne** das Restvolumen im Kessel nach der zweiten Pause. 
 
 <!-- data-solution-button="5"-->
-[[  35/2  ]] l
+[[  35/2  ]]  $\ell$
 @Algebrite.check(35/2)
 ************
 $$
@@ -23691,7 +23846,7 @@ Am Abend wird eine feste Nachfüllmenge von $\dfrac{1}{8}$ des vollen Kanisters 
 **Berechne** das Flüssigkeitsvolumen im Kanister am Ende des Tages als Bruch. 
 
 <!-- data-solution-button="5"-->
-[[  165/8  ]] l
+[[  165/8  ]]  $\ell$
 @Algebrite.check(165/8)
 ************
 $$
@@ -23853,7 +24008,7 @@ Es werden $6$ Mischungen hergestellt; danach werden für Tests $\dfrac{2}{3}\,\e
 **Bestimme** die verbleibende Flüssigkeitsmenge. 
 
 <!-- data-solution-button="5"-->
-[[  37/12  ]] l
+[[  37/12  ]]  $\ell$
 @Algebrite.check(37/12)
 ************
 $$
@@ -24001,7 +24156,7 @@ Es werden sieben Mischungen hergestellt. Anschließend werden $\dfrac{2}{7}$ der
 
 
 <!-- data-solution-button="5"-->
-[[  55/12  ]] l
+[[  55/12  ]]  $\ell$
 @Algebrite.check(55/12)
 ************
 $$
@@ -24358,7 +24513,7 @@ $$
 ************
 
 
-#### Übungen Teil 9 - Bruchrechnung Aufgabe 160 bis 171
+#### Übungen Teil 9 - Bruchrechnung Aufgabe 160 bis 175
 
 
 <!--  Bruchrechnung 0160  -->
@@ -25173,6 +25328,258 @@ $10 : \dfrac{1}{10000} =$ [[ 100000 ]] \
 
 
 
+<!--  Bruchrechnung 0171  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 171:__ **Stelle** die passende Teilung der Fläche **ein** und **markiere** den passenden Anteil, sodass der Bruch dargestellt wird.
+
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+__$a)\;\;$__ $\dfrac{4}{5}$
+
+
+@circleQuiz(4/5)
+
+</div>
+<div class="flex-child">
+__$b)\;\;$__ $\dfrac{7}{11}$
+
+
+@circleQuiz(7/11)
+
+</div>
+<div class="flex-child">
+__$c)\;\;$__ $\dfrac{13}{15}$
+
+
+@circleQuiz(13/15)
+
+</div>
+<div class="flex-child">
+__$d)\;\;$__ $\dfrac{11}{24}$
+
+
+@circleQuiz(11/24)
+
+</div>
+<div class="flex-child">
+__$e)\;\;$__ $\dfrac{17}{29}$
+
+
+@circleQuiz(17/29)
+
+</div>
+<div class="flex-child">
+__$f)\;\;$__ $\dfrac{7}{32}$
+
+
+@circleQuiz(7/32)
+
+</div>
+
+</section>
+
+
+
+<!--  Bruchrechnung 0172  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 172:__ **Stelle** die passende Teilung der Fläche **ein** und **markiere** den passenden Anteil, sodass der Bruch dargestellt wird.
+
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+__$a)\;\;$__ $\dfrac{7}{8}$
+
+
+@circleQuiz(7/8)
+
+</div>
+<div class="flex-child">
+__$b)\;\;$__ $\dfrac{2}{13}$
+
+
+@circleQuiz(2/13)
+
+</div>
+<div class="flex-child">
+__$c)\;\;$__ $\dfrac{4}{17}$
+
+
+@circleQuiz(4/17)
+
+</div>
+<div class="flex-child">
+__$d)\;\;$__ $\dfrac{15}{22}$
+
+
+@circleQuiz(15/22)
+
+</div>
+<div class="flex-child">
+__$e)\;\;$__ $\dfrac{3}{20}$
+
+
+@circleQuiz(3/20)
+
+</div>
+<div class="flex-child">
+__$f)\;\;$__ $\dfrac{8}{19}$
+
+
+@circleQuiz(8/19)
+
+</div>
+
+</section>
+
+
+
+<!--  Bruchrechnung 0173  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 173:__ **Stelle** die passende Teilung der Fläche **ein** und **markiere** den passenden Anteil, sodass der Bruch dargestellt wird.
+
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+__$a)\;\;$__ $\dfrac{7}{10}$
+
+
+@rectQuiz(7/10)
+
+
+
+</div>
+<div class="flex-child">
+__$b)\;\;$__ $\dfrac{11}{15}$
+
+
+@rectQuiz(11/15)
+
+
+</div>
+<div class="flex-child">
+__$c)\;\;$__ $\dfrac{17}{24}$
+
+@rectQuiz(17/24)
+
+
+
+</div>
+<div class="flex-child">
+__$d)\;\;$__ $\dfrac{5}{9}$
+
+@rectQuiz(5/9)
+
+
+
+</div>
+<div class="flex-child">
+__$e)\;\;$__ $\dfrac{19}{28}$
+
+
+@rectQuiz(19/28)
+
+
+</div>
+<div class="flex-child">
+__$f)\;\;$__ $\dfrac{7}{45}$
+
+
+@rectQuiz(7/45)
+
+
+</div>
+
+</section>
+
+
+
+<!--  Bruchrechnung 0174  -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 174:__ **Stelle** die passende Teilung der Fläche **ein** und **markiere** den passenden Anteil, sodass der Bruch dargestellt wird.
+
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+__$a)\;\;$__ $\dfrac{11}{18}$
+
+
+@rectQuiz(11/18)
+
+
+</div>
+<div class="flex-child">
+__$b)\;\;$__ $\dfrac{23}{42}$
+
+@rectQuiz(23/42)
+
+
+
+</div>
+<div class="flex-child">
+__$c)\;\;$__ $\dfrac{5}{72}$
+
+
+@rectQuiz(5/72)
+
+
+</div>
+<div class="flex-child">
+__$d)\;\;$__ $\dfrac{13}{36}$
+
+
+@rectQuiz(13/36)
+
+
+</div>
+<div class="flex-child">
+__$e)\;\;$__ $\dfrac{9}{70}$
+
+
+@rectQuiz(9/70)
+
+
+</div>
+<div class="flex-child">
+__$f)\;\;$__ $\dfrac{7}{150}$
+
+@rectQuiz(7/150)
+
+
+
+</div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -25184,7 +25591,7 @@ $10 : \dfrac{1}{10000} =$ [[ 100000 ]] \
 <!--  Bruchrechnung noch keine  -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
-__Aufgabe 171:__ **Bestimme** die richtige Reihenfolge der Dominos.
+__Aufgabe 175:__ **Bestimme** die richtige Reihenfolge der Dominos.
 
 
 ??[](https://www.bildung-bedeutet-freiheit.de/GeoGebra/Dominoes-Demo.html)
@@ -35905,7 +36312,7 @@ $$
 \begin{align*}
 1\,\text{dm} &= 10\,\text{cm} = 10^1\,\text{cm} \\
 1\,\text{dm}^2 &= 1\,\text{dm} \cdot 1\,\text{dm} =10\,\text{cm} \cdot 10\,\text{cm} = 100\,\text{cm}^2 = 10^2 \,\text{cm}^2\\
-1\,\text{dm}^3 &= 1\,\text{dm} \cdot 1\,\text{dm}\cdot 1\,\text{dm} =10\,\text{cm} \cdot 10\,\text{cm} \cdot 10\,\text{cm} = 1000\,\text{cm}^3 = 10^3 \,\text{cm}^3 := 1 \,\text{l} \\
+1\,\text{dm}^3 &= 1\,\text{dm} \cdot 1\,\text{dm}\cdot 1\,\text{dm} =10\,\text{cm} \cdot 10\,\text{cm} \cdot 10\,\text{cm} = 1000\,\text{cm}^3 = 10^3 \,\text{cm}^3 := 1 \,\ell \\
 \end{align*}
 $$
 
@@ -43615,7 +44022,7 @@ III:& \qquad y = x + \dfrac{1}{2} = \dfrac{7}{2} + \dfrac{1}{2} = 4 \\[6pt]
 I:& \qquad z = 9 - x - y = 9 - \dfrac{7}{2} - 4 = \dfrac{3}{2}
 \end{align*}
 $$
-Die Anteile betragen $ \dfrac{7}{2}\,\text{L}$ (Saft A), $4\,\text{L}$ (Saft B) und $ \dfrac{3}{2}\,\text{L}$ (Saft C).
+Die Anteile betragen $ \dfrac{7}{2}\,\ell$ (Saft A), $4\,\ell$ (Saft B) und $ \dfrac{3}{2}\,\ell$ (Saft C).
 ************
 
 
@@ -46616,7 +47023,7 @@ $$
 
 
 
-{{|>}} Bei einigen *Einheiten* existieren trotz der flächendeckenden Einführung des *Dezimalsystems* nach der französischen Revolution nach wie vor Besonderheiten. So konnte sich bei der Zeit das *Dezimalsystem* nicht durchsetzen, sodass $1\,\text{y}=1\,\text{a} = 365\,\text{d} \;;\; 1\,\text{d} = 24\,\text{h}  \;;\; 1\,\text{h} = 60\,\text{min}  \;;\; 1\,\text{min} = 60\,\text{s} $ gilt. Hierbei wurde ein Kalenderjahr $1\,$a gewählt, während das Bankenjahr nur $360$ Tage besitzt. Durch die Bewegung der Erde um die Sonne ist genau ein Jahr physikalisch mit $1\,\text{a}\approx 365,25636\,\text{d}$ definiert, sodass in guter Näherung lediglich das Schaltjahr mit betrachtet wird $1\,\text{a} = 365,25\,\text{d}$. In der Regel wird mit dem Kalenderjahr gerechnet.  Bei der Masse muss beachtet werden, dass Kilogramm $1\,\text{kg}$ die *SI-Einheit* ist und dass eine Tonne $\,\text{1t} = 1000\,\text{kg}$ entspricht und dass in der deutschsprachigen Region zwei Pfund einem Kilogramm entsprechen. Bei den *Flächen* sind noch "Ar" ($1\,\text{a} = 100\,\text{m}^2$) und Hektar ($1\,\text{ha} = 10000\,\text{m}^2$) zu erwähnen. Für *Volumina* gilt die Definition für einen Liter $1\,\text{dm}^3 = 1\,\text{l}$. 
+{{|>}} Bei einigen *Einheiten* existieren trotz der flächendeckenden Einführung des *Dezimalsystems* nach der französischen Revolution nach wie vor Besonderheiten. So konnte sich bei der Zeit das *Dezimalsystem* nicht durchsetzen, sodass $1\,\text{y}=1\,\text{a} = 365\,\text{d} \;;\; 1\,\text{d} = 24\,\text{h}  \;;\; 1\,\text{h} = 60\,\text{min}  \;;\; 1\,\text{min} = 60\,\text{s} $ gilt. Hierbei wurde ein Kalenderjahr $1\,$a gewählt, während das Bankenjahr nur $360$ Tage besitzt. Durch die Bewegung der Erde um die Sonne ist genau ein Jahr physikalisch mit $1\,\text{a}\approx 365,25636\,\text{d}$ definiert, sodass in guter Näherung lediglich das Schaltjahr mit betrachtet wird $1\,\text{a} = 365,25\,\text{d}$. In der Regel wird mit dem Kalenderjahr gerechnet.  Bei der Masse muss beachtet werden, dass Kilogramm $1\,\text{kg}$ die *SI-Einheit* ist und dass eine Tonne $\,\text{1t} = 1000\,\text{kg}$ entspricht und dass in der deutschsprachigen Region zwei Pfund einem Kilogramm entsprechen. Bei den *Flächen* sind noch "Ar" ($1\,\text{a} = 100\,\text{m}^2$) und Hektar ($1\,\text{ha} = 10000\,\text{m}^2$) zu erwähnen. Für *Volumina* gilt die Definition für einen Liter $1\,\text{dm}^3 = 1\,\ell$. 
 
 
 {{|>}} So können für einheitenbehafteten Größen eine Umrechnungstabelle erstellt werden. 
@@ -47865,7 +48272,7 @@ __$a)\;\;$__ $20\,\text{dm}^3 = $ [[   20000000  ]] $\,\text{mm}^3$ \
 
 
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $49\,\text{dm}^3 = $ [[     49     ]] $\,\text{l}$ \
+__$b)\;\;$__ $49\,\text{dm}^3 = $ [[     49     ]] $\,\ell$ \
 
 </div>
 
@@ -47873,7 +48280,7 @@ __$b)\;\;$__ $49\,\text{dm}^3 = $ [[     49     ]] $\,\text{l}$ \
 
 
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $51\,\text{l} = $ [[     51000  ]] $\,\text{ml}$ \
+__$c)\;\;$__ $51\,\ell = $ [[     51000  ]] $\,\text{m}\ell$ \
 
 </div>
 
@@ -47897,7 +48304,7 @@ __$e)\;\;$__ $8000000\,\text{cm}^3 = $ [[    8000    ]] $\,\text{dm}^3$ \
 
 
 <!-- data-solution-button="5"-->
-__$f)\;\;$__ $117\,\text{l} = $ [[   117000   ]] $\,\text{cm}^3$ \
+__$f)\;\;$__ $117\,\ell = $ [[   117000   ]] $\,\text{cm}^3$ \
 
 </div>
 
@@ -48020,7 +48427,7 @@ __$d)\;\;$__ $9500000000\,\text{cm}^3 = $ [[    9500   ]] $\,\text{m}^3$ \
 
 
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $120\,\text{l} = $ [[ 120000000 ]] $\,\text{mm}^3$ \
+__$e)\;\;$__ $120\,\ell = $ [[ 120000000 ]] $\,\text{mm}^3$ \
 
 </div>
 
@@ -48028,7 +48435,7 @@ __$e)\;\;$__ $120\,\text{l} = $ [[ 120000000 ]] $\,\text{mm}^3$ \
 
 
 <!-- data-solution-button="5"-->
-__$f)\;\;$__ $50000\,\text{l} = $ [[     50     ]] $\,\text{cm}^3$ \
+__$f)\;\;$__ $50000\,\ell = $ [[     50     ]] $\,\text{cm}^3$ \
 
 </div>
 
@@ -48899,7 +49306,7 @@ Masse: [->[($\dfrac{3}{8}$ t)]]  $>$ [->[($\dfrac{2000}{6}$ kg)]] $>$ [->[($333$
 Zeit:  [->[($250$ min)]] $>$ [->[(14640$ s)]] $>$ [->[($4,1$ h)]] $>$ [->[($120^2$ s)]]  \
 Länge: [->[($37$ dm)]] $>$ [->[($\dfrac{1}{5}$ m)]] $>$ [->[($195$ mm)]] $>$ [->[($17,5$ cm)]]  \
 Fläche: [->[($0,025 \ \text{a}$)]] $>$ [->[($\tfrac{3}{5} \ \text{m}^2$)]] $>$ [->[($2700 \ \text{cm}^2$)]] $>$ [->[($2,5 \cdot 10^3 \ \text{cm}^2$)]] \
-Volumen: [->[($\dfrac{3}{50} \ \text{m}^3$)]] $>$ [->[($12 \ \text{l}$)]] $>$ [->[($1,2 \cdot 10^4 \ \text{cm}^3$)]] $>$ [->[($11,8  \ \text{dm}^3$)]] \
+Volumen: [->[($\dfrac{3}{50} \ \text{m}^3$)]] $>$ [->[($12 \ \ell$)]] $>$ [->[($1,2 \cdot 10^4 \ \text{cm}^3$)]] $>$ [->[($11,8  \ \text{dm}^3$)]] \
 
 
 
@@ -48919,7 +49326,7 @@ Masse:  [->[($\dfrac{13}{25}\ \text{t}$)]] $>$ [->[($5{,}1\cdot 10^5\ \text{g}$)
 Zeit:   [->[($2{,}11\ \text{h}$)]] $>$ [->[($7{,}55\cdot 10^3\ \text{s}$)]] $>$ [->[($125\ \text{min}$)]] $>$ [->[($7{,}35\cdot 10^3\ \text{s}$)]]  \
 Länge:  [->[($2{,}01\ \text{m}$)]] $>$ [->[($2{,}0\cdot 10^3\ \text{mm}$)]] $>$ [->[($\dfrac{1995}{10}\ \text{cm}$)]] $>$ [->[($19{,}9\ \text{dm}$)]]  \
 Fläche: [->[($0{,}031\ \text{a}$)]] $>$ [->[($3{,}08\ \text{m}^2$)]] $>$ [->[($3{,}06\cdot 10^4\ \text{cm}^2$)]] $>$ [->[($304\ \text{dm}^2$)]]  \
-Volumen:[->[($1{,}5\cdot 10^{-2}\ \text{m}^3$)]] $>$ [->[($1{,}49\cdot 10^4\ \text{cm}^3$)]] $>$ [->[($14{,}8\ \text{dm}^3$)]] $>$ [->[($14{,}7\ \text{l}$)]]  \
+Volumen:[->[($1{,}5\cdot 10^{-2}\ \text{m}^3$)]] $>$ [->[($1{,}49\cdot 10^4\ \text{cm}^3$)]] $>$ [->[($14{,}8\ \text{dm}^3$)]] $>$ [->[($14{,}7\ \ell$)]]  \
 
 
 
@@ -48938,7 +49345,7 @@ Masse:  [->[($0{,}62\ \text{t}$)]] $>$ [->[($6,15\cdot 10^2\ \text{kg}$)]] $>$ [
 Zeit:   [->[($9{,}1\cdot 10^3\ \text{s}$)]] $>$ [->[($152\ \text{min}$)]] $>$ [->[($2,55\ \text{h}$)]] $>$ [->[($9100\ \text{s}$)]]  \
 Länge:  [->[($5{,}05\ \text{m}$)]] $>$ [->[($50{,}3\ \text{dm}$)]] $>$ [->[($504\ \text{cm}$)]] $>$ [->[($5,04\cdot 10^3\ \text{mm}$)]]  \
 Fläche: [->[($0{,}042\ \text{a}$)]] $>$ [->[($4200\ \text{dm}^2$)]] $>$ [->[($4,18\cdot 10^4\ \text{cm}^2$)]] $>$ [->[($4,19\ \text{m}^2$)]]  \
-Volumen:[->[($2,1\cdot 10^{-2}\ \text{m}^3$)]] $>$ [->[($21,2\ \text{l}$)]] $>$ [->[($2,11\cdot 10^4\ \text{cm}^3$)]] $>$ [->[($21,0\ \text{dm}^3$)]]  \
+Volumen:[->[($2,1\cdot 10^{-2}\ \text{m}^3$)]] $>$ [->[($21,2\ \ell$)]] $>$ [->[($2,11\cdot 10^4\ \text{cm}^3$)]] $>$ [->[($21,0\ \text{dm}^3$)]]  \
 
 
 

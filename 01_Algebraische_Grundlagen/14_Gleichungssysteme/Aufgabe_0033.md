@@ -84,7 +84,7 @@ III:& \qquad y = x + \dfrac{1}{2} = \dfrac{7}{2} + \dfrac{1}{2} = 4 \\[6pt]
 I:& \qquad z = 9 - x - y = 9 - \dfrac{7}{2} - 4 = \dfrac{3}{2}
 \end{align*}
 $$
-Die Anteile betragen $ \dfrac{7}{2}\,\text{L}$ (Saft A), $4\,\text{L}$ (Saft B) und $ \dfrac{3}{2}\,\text{L}$ (Saft C).
+Die Anteile betragen $ \dfrac{7}{2}\,\ell$ (Saft A), $4\,\ell$ (Saft B) und $ \dfrac{3}{2}\,\ell$ (Saft C).
 ************
 
 

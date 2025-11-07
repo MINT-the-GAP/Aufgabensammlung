@@ -64,7 +64,7 @@ Am Abend wird eine feste Nachfüllmenge von $\dfrac{1}{8}$ des vollen Kanisters 
 **Berechne** das Flüssigkeitsvolumen im Kanister am Ende des Tages als Bruch. 
 
 <!-- data-solution-button="5"-->
-[[  165/8  ]] l
+[[  165/8  ]]  $\ell$
 @Algebrite.check(165/8)
 ************
 $$

@@ -304,8 +304,6 @@ author: Martin Lommatzsch
 # Brüche darstellen
 
 
-
-
 **Stelle** die passende Teilung der Fläche **ein** und **markiere** den passenden Anteil, sodass der Bruch dargestellt wird.
 
 
@@ -314,45 +312,51 @@ author: Martin Lommatzsch
 <section class="flex-container">
 
 <div class="flex-child">
-__$a)\;\;$__ $\dfrac{7}{8}$
+__$a)\;\;$__ $\dfrac{11}{18}$
 
 
-@circleQuiz(7/8)
+@rectQuiz(11/18)
+
 
 </div>
 <div class="flex-child">
-__$b)\;\;$__ $\dfrac{2}{13}$
+__$b)\;\;$__ $\dfrac{23}{42}$
+
+@rectQuiz(23/42)
 
 
-@circleQuiz(2/13)
-
-</div>
-<div class="flex-child">
-__$c)\;\;$__ $\dfrac{4}{17}$
-
-
-@circleQuiz(4/17)
 
 </div>
 <div class="flex-child">
-__$d)\;\;$__ $\dfrac{15}{22}$
+__$c)\;\;$__ $\dfrac{5}{72}$
 
 
-@circleQuiz(15/22)
+@rectQuiz(5/72)
+
 
 </div>
 <div class="flex-child">
-__$e)\;\;$__ $\dfrac{3}{20}$
+__$d)\;\;$__ $\dfrac{13}{36}$
 
 
-@circleQuiz(3/20)
+@rectQuiz(13/36)
+
 
 </div>
 <div class="flex-child">
-__$f)\;\;$__ $\dfrac{8}{19}$
+__$e)\;\;$__ $\dfrac{9}{70}$
 
 
-@circleQuiz(8/19)
+@rectQuiz(9/70)
+
+
+</div>
+<div class="flex-child">
+__$f)\;\;$__ $\dfrac{7}{150}$
+
+@rectQuiz(7/150)
+
+
 
 </div>
 

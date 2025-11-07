@@ -66,7 +66,7 @@ Es werden sieben Mischungen hergestellt. Anschließend werden $\dfrac{2}{7}$ der
 
 
 <!-- data-solution-button="5"-->
-[[  55/12  ]] l
+[[  55/12  ]]  $\ell$
 @Algebrite.check(55/12)
 ************
 $$

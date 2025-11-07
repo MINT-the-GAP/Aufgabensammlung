@@ -62,13 +62,13 @@ Ein Behälter enthält $18$ Liter Saft. Davon werden $\dfrac{3}{6}$ ausgeschänk
 **Bestimme**, wie viele Liter im Behälter verbleiben. 
 
 <!-- data-solution-button="5"-->
-[[  9  ]] l
+[[  9  ]] $\ell$
 ************
 $$
-18\,\text{l} - \dfrac{3}{6}\cdot 18\,\text{l}
-= 18\,\text{l} - \dfrac{3}{6}\cdot \dfrac{18}{1}\,\text{l}
-= 18\,\text{l} - \dfrac{54}{6}\,\text{l}
-= 18\,\text{l} - 9\,\text{l}
-= 9\,\text{l}
+18\,\ell - \dfrac{3}{6}\cdot 18\,\ell
+= 18\,\ell - \dfrac{3}{6}\cdot \dfrac{18}{1}\,\ell
+= 18\,\ell - \dfrac{54}{6}\,\ell
+= 18\,\ell - 9\,\ell
+= 9\,\ell
 $$
 ************

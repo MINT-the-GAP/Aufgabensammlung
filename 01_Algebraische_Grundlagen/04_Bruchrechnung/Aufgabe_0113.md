@@ -62,9 +62,9 @@ Ein Tank enthält $60$ Liter Benzin. Davon werden $\dfrac{2}{5}$ verbraucht.
 **Bestimme**, wie viele Liter übrig bleiben. 
 
 <!-- data-solution-button="5"-->
-[[ 36 ]] l
+[[ 36 ]] $\ell$
 ************
 $$
-60\,\text{l} - \dfrac{2}{5}\cdot 60\,\text{l} = 60\,\text{l} - \dfrac{120}{5} = 60\,\text{l} - 24\,\text{l} = 36\,\text{l}
+60\,\ell - \dfrac{2}{5}\cdot 60\,\ell = 60\,\ell - \dfrac{120}{5} = 60\,\ell - 24\,\ell = 36\,\ell
 $$
 ************

@@ -214,7 +214,7 @@ $$
 \begin{align*}
 1\,\text{dm} &= 10\,\text{cm} = 10^1\,\text{cm} \\
 1\,\text{dm}^2 &= 1\,\text{dm} \cdot 1\,\text{dm} =10\,\text{cm} \cdot 10\,\text{cm} = 100\,\text{cm}^2 = 10^2 \,\text{cm}^2\\
-1\,\text{dm}^3 &= 1\,\text{dm} \cdot 1\,\text{dm}\cdot 1\,\text{dm} =10\,\text{cm} \cdot 10\,\text{cm} \cdot 10\,\text{cm} = 1000\,\text{cm}^3 = 10^3 \,\text{cm}^3 := 1 \,\text{l} \\
+1\,\text{dm}^3 &= 1\,\text{dm} \cdot 1\,\text{dm}\cdot 1\,\text{dm} =10\,\text{cm} \cdot 10\,\text{cm} \cdot 10\,\text{cm} = 1000\,\text{cm}^3 = 10^3 \,\text{cm}^3 := 1 \,\ell \\
 \end{align*}
 $$
 

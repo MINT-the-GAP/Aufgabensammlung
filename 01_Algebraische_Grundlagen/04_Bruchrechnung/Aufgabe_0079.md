@@ -79,9 +79,9 @@ __$c)\;\;$__ Wie viel sind $\dfrac{3}{5}$ von $8000\,$dm$^2$?  \
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ Wie viel sind $\dfrac{5}{12}$ von $144\,$l?  \
+__$d)\;\;$__ Wie viel sind $\dfrac{5}{12}$ von $144\,\ell$?  \
 
- [[  60  ]]l
+ [[  60  ]] $\ell$
 
 </div>
 </section>

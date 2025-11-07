@@ -64,7 +64,7 @@ Es werden $6$ Mischungen hergestellt; danach werden für Tests $\dfrac{2}{3}\,\e
 **Bestimme** die verbleibende Flüssigkeitsmenge. 
 
 <!-- data-solution-button="5"-->
-[[  37/12  ]] l
+[[  37/12  ]]  $\ell$
 @Algebrite.check(37/12)
 ************
 $$

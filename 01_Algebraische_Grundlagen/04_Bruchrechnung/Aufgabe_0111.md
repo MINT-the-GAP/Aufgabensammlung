@@ -61,12 +61,12 @@ Ein Wasserbecken fasst $200$ Liter. Es ist zu $\dfrac{7}{10}$ gefüllt.
 **Bestimme**, wie viele Liter Wasser im Becken sind.  
 
 <!-- data-solution-button="5"-->
-[[  140  ]] l
+[[  140  ]] $\ell$
 ************
 $$
-\dfrac{7}{10}\cdot 200\,\text{l}
-= \dfrac{7}{10}\cdot \dfrac{200}{1}\,\text{l}
-= \dfrac{1400}{10}\,\text{l}
-= 140\,\text{l}
+\dfrac{7}{10}\cdot 200\,\ell
+= \dfrac{7}{10}\cdot \dfrac{200}{1}\,\ell
+= \dfrac{1400}{10}\,\ell
+= 140\,\ell
 $$
 ************

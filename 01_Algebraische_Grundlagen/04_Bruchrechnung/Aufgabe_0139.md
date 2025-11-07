@@ -62,7 +62,7 @@ In der zweiten Pause werden anschließend $\dfrac{3}{8}$ der verbleibenden Brüh
 **Berechne** das Restvolumen im Kessel nach der zweiten Pause. 
 
 <!-- data-solution-button="5"-->
-[[  35/2  ]] l
+[[  35/2  ]]  $\ell$
 @Algebrite.check(35/2)
 ************
 $$

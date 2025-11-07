@@ -79,9 +79,9 @@ __$c)\;\;$__ Wie viel sind $\dfrac{2}{3}$ von $6\,$m$^3$?  \
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ Wie viel sind $\dfrac{11}{6}$ von $240\,$l?  \
+__$d)\;\;$__ Wie viel sind $\dfrac{11}{6}$ von $240\,\ell$?  \
 
- [[  440  ]]l
+ [[  440  ]] $\ell$
 
 </div>
 </section>
