@@ -326,6 +326,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
 
 
+#### Übungsaufgaben zur Bruchrechnung 1 bis 10
+
+
 
 
 
