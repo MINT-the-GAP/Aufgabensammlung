@@ -561,6 +561,131 @@ $964 \cdot 917=$[[  883388  ]]
 
 
 
+<!-- Grund 9907 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 4:__ **Bestimme** den Wert der dargestellten Lücke. Klicke danach gerne auf "Neue Aufgabe", um eine weitere Aufgabe zu erhalten.
+
+
+
+<script input="submit" output="Aufgabe" default="Neue Aufgabe" modify="false">
+  if (!window._mult3x1_tick) { window._mult3x1_tick = 1 } else { window._mult3x1_tick++; }
+  "Neue Aufgabe " + window._mult3x1_tick
+</script>
+
+---
+
+<script modify="false">
+// @input(`Aufgabe`)
+
+const ri = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+// Zufall: dreistelliger und einstelliger Faktor
+const A = ri(100, 999);
+const B = ri(2, 9);
+const P = A * B;
+
+// Aufgabe: TeX für Rechnung, Eingabefeld außerhalb
+const problem = `$${A} \\cdot ${B} =$ [[ ${P} ]]`;
+
+// Lösung im Align-Stil
+function multiplicationAlign(a, b, p) {
+  const digits = String(a).split('').map(d => parseInt(d));
+  let lines = [];
+
+  // Einer
+  let prod = digits[2] * b;
+  lines.push(`+\\hspace{0.5em}\\hspace{0.5em}\\hspace{0.5em}${prod}& \\\\`);
+
+  // Zehner
+  prod = digits[1] * b;
+  lines.push(`+\\hspace{0.5em}\\hspace{0.5em}${prod}\\textcolor{red}{0}& \\\\`);
+
+  // Hunderter
+  prod = digits[0] * b;
+  lines.push(`+\\hspace{0.5em}${prod}\\textcolor{red}{00}& \\\\`);
+
+  return `$$
+\\begin{align*}
+ ${a} \\cdot ${b}& \\\\ \\hline
+ ${lines.join('\n')}
+ \\hline
+ ${p}& \\\\
+\\end{align*}
+$$`;
+}
+
+// Versteckte Lösung
+let solution = '***************';
+solution += '\n' + multiplicationAlign(A, B, P);
+solution += '\n***************';
+
+// Ausgabe
+"LIASCRIPT:\n" + problem + "\n" + solution;
+</script>
+
+
+
+
+<!-- Grund 9908 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 5:__ **Bestimme** den Wert der dargestellten Lücke. Klicke danach gerne auf "Neue Aufgabe", um eine weitere Aufgabe zu erhalten.
+
+
+
+<script input="submit" output="Aufgabe" default="Neue Aufgabe" modify="false">
+  if (!window._mult3x3_tick) { window._mult3x3_tick = 1 } else { window._mult3x3_tick++; }
+  "Neue Aufgabe " + window._mult3x3_tick
+</script>
+
+---
+
+<script modify="false">
+// @input(`Aufgabe`)
+
+// Zufall: beide Faktoren dreistellig
+const ri = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+const A = ri(100, 999);
+const B = ri(100, 999);
+const P = A * B;
+
+// Aufgabe: TeX links, Eingabefeld rechts (außerhalb der TeX-Umgebung)
+const problem = `$${A} \\cdot ${B} = $ [[ ${P} ]]`;
+
+// Lösung im Align-Stil
+function multiplicationAlign(a, b, p) {
+  const [h, z, e] = String(b).padStart(3, '0').split('').map(x => parseInt(x, 10));
+  const prodE = a * e;   // Einer-Teilprodukt
+  const prodZ = a * z;   // Zehner-Teilprodukt
+  const prodH = a * h;   // Hunderter-Teilprodukt
+
+  return `$$
+\\begin{align*}
+ ${a} \\cdot \\textcolor{orange}{${h}}\\textcolor{green}{${z}}\\textcolor{blue}{${e}}& \\\\ \\hline
+ \\textcolor{blue}{${prodE}}& \\\\
+ +\\textcolor{green}{${prodZ}}\\textcolor{red}{0}& \\\\
+ +\\textcolor{orange}{${prodH}}\\textcolor{red}{00}& \\\\ \\hline
+ ${p}& \\\\
+\\end{align*}
+$$`;
+}
+
+// Versteckte Lösung
+let solution = '***************';
+solution += '\n' + multiplicationAlign(A, B, P);
+solution += '\n***************';
+
+// Ausgabe
+"LIASCRIPT:\n" + problem + "\n" + solution;
+</script>
+
+
+
+
+
+
+
 
 
 

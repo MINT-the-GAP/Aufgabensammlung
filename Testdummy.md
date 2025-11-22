@@ -320,6 +320,35 @@ if (!window.rects['@0'] || window.rects['@0'].length !== total) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Zahlenstrahl
 
 
