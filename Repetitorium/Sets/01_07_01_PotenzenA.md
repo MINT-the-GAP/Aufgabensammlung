@@ -5,12 +5,6 @@ language: de
 narrator: Deutsch Female
 
 
-logo:     https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/logo.png
-email:    info@bildung-bedeutet-freiheit.de
-
-tags: Repetitorium
-
-comment: Hier entsteht ein mathematisches Repetitorium in LiaScript. https://mint-the-gap.github.io/Aufgabensammlung/
 
 author: Martin Lommatzsch
 
@@ -331,6 +325,250 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
 
 
-#### Übungsaufgaben zu Mengen 1 bis 10
+#### Übungsaufgaben zu Potenzen 1 bis 10
+
+
+
+
+
+
+
+<!-- Potenzen 0001 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ **Gib** den Wert des Terms **an**.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $5^3 = $ [[  125  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $3^4 = $ [[  81   ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $2^5 = $ [[  32   ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $11^3 = $ [[ 1331 ]]
+
+</div>
+</section>
+
+
+
+
+
+<!-- Potenzen 0002 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 2:__ **Gib** den Wert des Terms **an**.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $10^5 = $ [[ 100000 ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $2^11 = $ [[  2048  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $6^3 = $ [[  216   ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $13^2 = $ [[ 169 ]]
+
+
+
+</div>
+</section>
+
+
+
+<!-- Potenzen 0003 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 3:__ **Gib** den Wert des Terms **an**.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $4^4 = $ [[  256  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $7^3 = $ [[  343  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $5^4 = $ [[  625  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $3^5 = $ [[  243  ]]
+
+
+</div>
+</section>
+
+
+
+<!-- Potenzen 0004 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 4:__ **Gib** den Wert des Terms **an**.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $-2^4 = $ [[  -16  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $(-4)^4 = $ [[  256  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $(-5)^3 = $ [[ -125  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $-4^3 = $ [[ -64  ]]
+
+
+
+</div>
+</section>
+
+
+
+<!-- Potenzen 0005 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 5:__ **Gib** den Wert des Terms **an**.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $-10^3 = $ [[ -1000 ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $-10^2 = $ [[  -100  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $(-10)^3 = $ [[  -1000   ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $(-10)^4 = $ [[ 10000 ]]
+
+
+</div>
+</section>
+
+
+
+
+<!-- Potenzen 0006 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 6:__ **Gib** den Wert des Terms **an**.
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$a)\;\;$__ $(-2)^7 = $ [[  -128  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$b)\;\;$__ $-3^5 = $ [[  -243  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$c)\;\;$__ $(-5)^4 = $ [[  625  ]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5"-->
+__$d)\;\;$__ $ -8^3 = $ [[  -512  ]]
+
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

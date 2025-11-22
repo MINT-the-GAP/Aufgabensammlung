@@ -5,13 +5,6 @@ language: de
 narrator: Deutsch Female
 
 
-logo:     https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/logo.png
-email:    info@bildung-bedeutet-freiheit.de
-
-tags: Repetitorium
-
-comment: Hier entsteht ein mathematisches Repetitorium in LiaScript. https://mint-the-gap.github.io/Aufgabensammlung/
-
 author: Martin Lommatzsch
 
 

@@ -5,12 +5,6 @@ language: de
 narrator: Deutsch Female
 
 
-logo:     https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/logo.png
-email:    info@bildung-bedeutet-freiheit.de
-
-tags: Repetitorium
-
-comment: Hier entsteht ein mathematisches Repetitorium in LiaScript. https://mint-the-gap.github.io/Aufgabensammlung/
 
 author: Martin Lommatzsch
 
@@ -331,6 +325,149 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
 
 
-#### Übungsaufgaben zu Mengen 1 bis 10
+#### Übungsaufgaben zu Fakultäten und Binomialkoeffzienten 1 bis 10
+
+
+
+
+
+<!-- Fakul 0001 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ **Gib** den Wert des Terms **an**
+
+<section class="flex-container">
+<div class="flex-child">
+
+__$a)\;\;$__ $ 5! = $ [[ 120  ]]
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__ $ 7! = $ [[ 5040 ]]
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ $ \dfrac{ 9! }{ 7! } = $ [[  72  ]]
+
+</div>
+<div class="flex-child">
+
+__$d)\;\;$__ $ \dfrac{ 8! }{ 5! \cdot 3! } = $ [[ 56   ]]
+
+</div>
+</section>
+
+
+
+
+
+<!-- Fakul 0002 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 2:__ **Gib** den Wert des Terms **an**
+
+<section class="flex-container">
+<div class="flex-child">
+
+__$a)\;\;$__ $ 4! = $ [[ 24  ]]
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__ $ 6! = $ [[ 720 ]]
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ $ \dfrac{ 15! }{ 13! } = $ [[  105  ]]
+
+</div>
+<div class="flex-child">
+
+__$d)\;\;$__ $ \dfrac{ 12! }{ 7! \cdot 4! \cdot 3! } = $ [[ 660  ]]
+
+</div>
+</section>
+
+
+
+
+<!-- Fakul 0003 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 3:__ **Gib** den Wert des Terms **an**
+
+<section class="flex-container">
+<div class="flex-child">
+
+__$a)\;\;$__ $  \left( \begin{array}{c} 4 \\ 3 \end{array} \right) = $ [[  4  ]]
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__ $  \left( \begin{array}{c} 6 \\ 0 \end{array} \right) = $ [[  1  ]]
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ $  \left( \begin{array}{c} 8 \\ 2 \end{array} \right) = $ [[  28  ]]
+
+</div>
+<div class="flex-child">
+
+__$d)\;\;$__ $  \left( \begin{array}{c} 7 \\ 4 \end{array} \right) = $ [[  35  ]]
+
+</div>
+</section>
+
+
+
+
+<!-- Fakul 0004 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 4:__ **Gib** den Wert des Terms **an**
+
+<section class="flex-container">
+<div class="flex-child">
+
+__$a)\;\;$__ $  \left( \begin{array}{c} 6 \\ 5 \end{array} \right) = $ [[  6  ]]
+
+</div>
+<div class="flex-child">
+
+__$b)\;\;$__ $  \left( \begin{array}{c} 9 \\ 7 \end{array} \right) = $ [[  36  ]]
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ $  \left( \begin{array}{c} 5 \\ 3 \end{array} \right) = $ [[  10  ]]
+
+</div>
+<div class="flex-child">
+
+__$d)\;\;$__ $  \left( \begin{array}{c} 7 \\ 2 \end{array} \right) = $ [[  21  ]]
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

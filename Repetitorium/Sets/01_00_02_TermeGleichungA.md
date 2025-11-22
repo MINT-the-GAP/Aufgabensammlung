@@ -5,12 +5,6 @@ language: de
 narrator: Deutsch Female
 
 
-logo:     https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/logo.png
-email:    info@bildung-bedeutet-freiheit.de
-
-tags: Repetitorium
-
-comment: Hier entsteht ein mathematisches Repetitorium in LiaScript. https://mint-the-gap.github.io/Aufgabensammlung/
 
 author: Martin Lommatzsch
 
@@ -331,6 +325,946 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
 
 
-#### Übungsaufgaben zu Mengen 1 bis 10
+#### Übungsaufgaben zu Terme und Gleichungen 1 bis 10
+
+
+
+
+<!-- Terme 0001 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ **Gib** die Werte in den Lücken der Rechnung **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$a)\;\;$__ \
+$\;\;\;\; 13 \cdot 5 + 14 $ \
+$=$ [[ 65 ]] $  + 14 $ \
+$=$ [[ 79 ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$b)\;\;$__ \
+$\;\;\;\; 75 - 7 \cdot 5 + 23  $ \
+$=  75 - $ [[ 35 ]] $  + 23 $ \
+$=$ [[ 40 ]]  $  + 23 $ \
+$=$ [[ 63 ]]
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$c)\;\;$__ \
+$\;\;\;\; 65 : 13 + 85 : 5   $ \
+$=$ $ 65 : 13 +$ [[ 17 ]]  \
+$=$ [[  5 ]] $+$ [[ 17 ]]  \
+$=$ [[ 22 ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$d)\;\;$__ \
+$\;\;\;\; 9 \cdot 8 - 12 \cdot 4  $ \
+$=$ [[ 72 ]] $ - 12 \cdot 4  $ \
+$=$ [[ 72 ]] $-$ [[ 48 ]] \
+$=$ [[ 24 ]] 
+
+</div> 
+</section>
+
+
+<!-- Terme 0002 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 2:__ **Gib** die Werte in den Lücken der Rechnung **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$a)\;\;$__ \
+$\;\;\;\; 72:16 + 26 + 22 $ \
+$=$ [[ 4 ]] $ + 26 + 22  $ \
+$=$ [[ 30 ]] $ + 22  $ \
+$=$ [[ 52 ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$b)\;\;$__ \
+$\;\;\;\; 5 \cdot 9 + 6 \cdot 7 + 2 $ \
+$= $ [[ 45 ]] $ + 6 \cdot 7 + 2$ \
+$=$ [[ 45 ]]  $+$ [[ 42 ]] $+ 2$  \
+$=$ [[ 87 ]]  $+ 2$  \
+$=$ [[ 89 ]]
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$c)\;\;$__ \
+$\;\;\;\; 34 + 64 + 25 + 21   $ \
+$=$ $ 34 + 64 + $ [[ 46 ]]  \
+$=$ $ 34 +$ [[ 110 ]]  \
+$=$ [[ 144 ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$d)\;\;$__ \
+$\;\;\;\; 7 \cdot 3 \cdot ( 14 - 2 \cdot 4 ) $ \
+$= 7 \cdot 3 \cdot ( 14 -$ [[  8 ]] $) $ \
+$= 7 \cdot 3 \cdot$  [[  6 ]]  \
+$= 7 \cdot $  [[  18 ]] \
+$=$ [[ 126 ]] 
+
+</div> 
+</section>
+
+
+<!-- Terme 0003 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 3:__ **Gib** die Werte in den Lücken der Rechnung **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$a)\;\;$__ \
+$\;\;\;\; 20 + 2 \cdot 3 \cdot 4 \cdot 5 $ \
+$= 20 +$ [[  6  ]] $\cdot 4 \cdot 5 $ \
+$= 20 +$ [[ 24  ]] $ \cdot 5 $ \
+$= 20 +$ [[ 120 ]]   \
+$=$ [[ 140 ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$b)\;\;$__ \
+$\;\;\;\; 187 - 17 - 31 -25 - 41  $ \
+$=$ [[ 160 ]]  $  - 31 -25 - 41 $ \
+$=$ [[ 129 ]]  $   -25 - 41 $ \
+$=$ [[ 104 ]]  $    - 41 $ \
+$=$ [[ 63 ]]
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$c)\;\;$__ \
+$\;\;\;\; 81 : 3 + 105 : 5 + 6 \cdot 4  $ \
+$=$ $ 81 : 3 + 105 : 5 +$ [[ 24 ]]  \
+$=$ $ 81 : 3 +$ [[ 21 ]] $+$ [[ 24 ]]  \
+$=$ $ 81 : 3 +$ [[ 45 ]]  \
+$=$ [[ 27 ]] $+$ [[ 45 ]]  \
+$=$ [[ 72 ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$d)\;\;$__ \
+$\;\;\;\; 11 \cdot 7 - 17 \cdot 3  $ \
+$=$ [[ 77 ]] $ - 17 \cdot 3  $ \
+$=$ [[ 77 ]] $-$ [[ 51 ]] \
+$=$ [[ 26 ]] 
+
+</div> 
+</section>
+
+<!-- Terme 0004 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 4:__ **Gib** die Werte in den Lücken der Rechnung **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$a)\;\;$__ \
+$\;\;\;\; 82 - 5 \cdot 3 - 6 \cdot 4 $ \
+$= 82 - $ [[ 15 ]] $ - 6 \cdot 4  $ \
+$= [[ 67 ]] $ - 6 \cdot 4  $ \
+$= [[ 67 ]] $ - $[[ 24 ]] \
+$=$ [[ 43 ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$b)\;\;$__ \
+$\;\;\;\; 144 - ( 8 \cdot 6 + 17)  $ \
+$= 144 - ( $[[ 42 ]]$ + 17)  $ \
+$= 144 - $[[ 59 ]]$  \
+$=$ [[ 85 ]]
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$c)\;\;$__ \
+$\;\;\;\; ( 9 \cdot 5 + 18 ) : 7   $ \
+$= ( $[[ 45 ]] $ + 18 ) : 7   $ \
+$=  $[[ 63 ]] $  : 7   $ \
+$=$ [[ 9 ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$d)\;\;$__ \
+$\;\;\;\; 13 + 5 \cdot 7 + 108 : 4  $ \
+$= 13 +$ [[ 35 ]] $+ 108 : 4  $ \
+$= $ [[ 48 ]] $+ 108 : 4  $ \
+$= $ [[ 48 ]] $+$ [[ 27 ]] \
+$=$ [[ 75 ]] 
+
+</div> 
+</section>
+
+<!-- Terme 0005 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 5:__ **Gib** die Werte in den Lücken der Rechnung **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$a)\;\;$__ \
+$\;\;\;\; -2 \cdot 7 + 8 \cdot (-3) - 34 $ \
+$=$ [[ -14   ]] $ + $ [[ (-24) ]] $ - 34 $ \
+$=$ [[ -38   ]] $ - 34 $ \
+$=$ [[ -72   ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$b)\;\;$__ \
+$\;\;\;\; -34-75:5-12 \cdot (-9) $ \
+$= -34-75:5-$ [[ (-108) ]]  \
+$= -34-$[[ 15    ]]$+$ [[ 108    ]]  \
+$= -34+$[[ 93    ]]  \
+$=$ [[ 59    ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$c)\;\;$__ \
+$\;\;\;\; 85:(-5) + (-4) \cdot (-3) \cdot (-5) - 44 $ \
+$=$ [[ -17   ]] $ + (-4) \cdot (-3) \cdot (-5) - 44 $ \
+$=$ [[ -17   ]] $ + $ [[ 12    ]] $ \cdot (-5) - 44 $ \
+$=$ [[ -17   ]] $ + $ [[ (-60) ]] $ - 44 $ \
+$=$ [[ -77   ]] $ - 44 $ \
+$=$ [[ -121  ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$d)\;\;$__ \
+$\;\;\;\; - ( 3 - (-5) \cdot 7 + 23 ) + 54 $ \
+$= - ( 3 - $  [[ (-35) ]]  $ + 23 ) + 54 $ \
+$= - ( $ [[   -9  ]]  $  ) + 54 $ \
+$=$   [[   9  ]]  $  + 54 $ \
+$=$ [[  63  ]] 
+
+</div> 
+</section>
+
+
+<!-- Terme 0006 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 6:__ **Gib** die Werte in den Lücken der Rechnung **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$a)\;\;$__ \
+$\;\;\;\; - 5 \cdot (-9) - 46 + 11 \cdot (-4) $ \
+$= $ [[  45   ]] $ - 46 + 11 \cdot (-4) $ \
+$= $ [[  -1   ]] $ + 11 \cdot (-4) $ \
+$= $ [[  -1   ]] $ + $ [[ (-44) ]]   \
+$=$ [[  -45  ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$b)\;\;$__ \
+$\;\;\;\; -92 + 7 \cdot (-4) - 144 : (-4) $ \
+$= -92 +$ [[ (-28) ]] $ - 144 : (-4) $ \
+$= $ [[ -120 ]] $ - 144 : (-4) $ \
+$= $ [[ -120 ]] $ -$ [[ (-36) ]]  \
+$=$ [[ -84  ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$c)\;\;$__ \
+$\;\;\;\; -3 \cdot (-4) \cdot (-2) \cdot (-5) : (-6) $ \
+$=$ [[  24  ]] $ \cdot (-2) \cdot (-5) : (-6) $ \
+$=$ [[ -48  ]] $ \cdot (-5) : (-6) $ \
+$=$ [[ 240  ]] $ : (-6) $ \
+$=$ [[ -40 ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$d)\;\;$__ \
+$\;\;\;\; -8 \cdot (-7) - 4 \cdot (-3) + 72:(-8) $ \
+$=$ [[  56   ]] $- 4 \cdot (-3) + 72:(-8) $ \
+$=$ [[  56   ]] $-$ [[ (-12) ]]$ + 72:(-8) $ \
+$=$ [[  56   ]] $+$ [[   12  ]]$ + 72:(-8) $ \
+$=$ [[  68   ]] $ + 72:(-8) $ \
+$=$ [[  68   ]] $ +$  [[  (-9) ]] \
+$=$ [[  59   ]] 
+
+</div> 
+</section>
+
+
+
+
+
+
+
+
+<!-- Terme 0007 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 7:__ **Gib** die Werte in den Lücken der Rechnung **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$a)\;\;$__ \
+$\;\;\;\; 44 - 2 \cdot (13 - 5 \cdot (3 + 2 \cdot (-4)) ) $ \
+$= 44 - 2 \cdot (13 - 5 \cdot (3 +$ [[ (-8)  ]] $ ) ) $ \
+$= 44 - 2 \cdot (13 - 5 \cdot ($ [[  -5   ]] $ ) ) $ \
+$= 44 - 2 \cdot (13 - ($ [[ (-25) ]] $  )) $ \
+$= 44 - 2 \cdot $ [[   38  ]] $  $ \
+$= 44 - $ [[   76  ]] $  $ \
+$=$ [[  -32  ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$b)\;\;$__ \
+$\;\;\;\; -45 + (-3) \cdot (-8) - 92: (-4) $ \
+$= -45 +$ [[   24  ]] $- 92: (-4) $ \
+$= -45 +$ [[   24  ]] $-$ [[ (-23) ]]   \
+$= -45 +$ [[   47  ]] $ \
+$=$ [[   2   ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$c)\;\;$__ \
+$\;\;\;\; -4 \cdot (-3) + 5 \cdot (-9) - 74 $ \
+$= -4 \cdot (-3) +$ [[ (-45)  ]] $ - 74 $ \
+$= -4 \cdot (-3) +$ [[ (-119) ]] \
+$=$ [[   12   ]] $+$ [[ (-119) ]] \
+$=$ [[ -107   ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$d)\;\;$__ \
+$\;\;\;\; -(-56 : (-2)) : (-7) - (-14) $ \
+$= -(-56 : (-2)) : (-7) + $ [[ 14   ]] \
+$= -($ [[ 28   ]] $) : (-7) + $ [[ 14   ]] \
+$= $ [[  4   ]] $  + $ [[ 14   ]] \
+$=$ [[ 18   ]] 
+
+</div> 
+</section>
+
+
+
+
+
+
+
+
+<!-- Terme 0008 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 8:__ **Gib** die Werte in den Lücken der Rechnung **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$a)\;\;$__ \
+$\;\;\;\; -7 \cdot (-47 + 2 \cdot (-4) \cdot (-6) ) $ \
+$= -7 \cdot (-47 + 2 \cdot $ [[  24  ]] $) $ \
+$= -7 \cdot (-47 +$ [[  48  ]] $) $ \
+$= -7 \cdot $ [[   1  ]]  \
+$=$ [[  -7  ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$b)\;\;$__ \
+$\;\;\;\; -65-(-25)-42+8 \cdot (-6) $ \
+$= -65-(-25)-42+ $ [[ (-48) ]] \
+$= -65-(-25)-$ [[   90  ]] \
+$= -65+$[[   25  ]]$-$ [[   90  ]] \
+$= -65-$[[   65  ]] \
+$=$ [[  -130 ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$c)\;\;$__ \
+$\;\;\;\; -(-45:(-9) - 54:(-6)) \cdot (-2) $ \
+$= -($ [[   5   ]] $ - 54:(-6)) \cdot (-2) $ \
+$= -($ [[   5   ]] $ + $ [[   9   ]] $) \cdot (-2) $ \
+$= -$ [[  14   ]] $ \cdot (-2) $ \
+$=$ [[  28   ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$d)\;\;$__ \
+$\;\;\;\; -(-6 \cdot (-5) \cdot 4) : (-8) - 13 \cdot 11 $ \
+$= -($ [[  30   ]] $\cdot 4) : (-8) - 13 \cdot 11 $ \
+$= -($ [[  120  ]] $) : (-8) - 13 \cdot 11 $ \
+$= $ [[   15  ]]  $- 13 \cdot 11 $ \
+$= $ [[   15  ]]  $-$ [[  143  ]]   \
+$=$  [[ -128  ]] 
+
+</div> 
+</section>
+
+
+
+
+
+
+
+
+<!-- Terme 0009 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 9:__ **Gib** die Werte in den Lücken der Rechnung **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$a)\;\;$__ \
+$\;\;\;\; 1,7 + 0,5 \cdot 0,3 + 1,3 \cdot 0,25 $ \
+$= 1,7 +$ [[  0,15   ]] $+ 1,3 \cdot 0,25 $ \
+$= 1,7 +$ [[  0,15   ]] $+$ [[  0,325  ]]  \
+$= 1,7 +$ [[  0,435  ]]   \
+$=$ [[  2,135  ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$b)\;\;$__ \
+$\;\;\;\; 0,81:0,9 + 5,4:6 + 0,125 \cdot 5 $ \
+$=$ [[  0,9  ]] $+ 5,4:6 + 0,125 \cdot 5 $ \
+$=$ [[  0,9  ]] $+$ [[  0,9  ]] $+ 0,125 \cdot 5 $ \
+$=$ [[  1,8  ]] $+ 0,125 \cdot 5 $ \
+$=$ [[  1,8  ]] $+$ [[ 0,625 ]] \
+$=$ [[ 2,425 ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$c)\;\;$__ \
+$\;\;\;\; 9,2 - 0,4 \cdot 1,5 \cdot 0,6 - 0,48:0,6 $ \
+$= 9,2 -$ [[  0,6  ]] $\cdot 0,6 - 0,48:0,6 $ \
+$= 9,2 -$ [[ 0,36  ]] $- 0,48:0,6 $ \
+$= $ [[ 8,84 ]] $- 0,48:0,6 $ \
+$= $ [[ 8,84 ]] $-$ [[  0,8  ]] \
+$=$ [[ 8,04 ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$d)\;\;$__ \
+$\;\;\;\; (0,12 \cdot 0,4) : 0,08 + 6,5 : 1,3  $ \
+$= $ [[ 0,48 ]] $ : 0,08 + 6,5 : 1,3  $ \
+$= $ [[  6   ]] $ + 6,5 : 1,3  $ \
+$= $ [[  6   ]] $ +$ [[  5   ]] \
+$=$ [[ 11   ]] 
+
+</div> 
+</section>
+
+
+
+
+
+
+
+
+<!-- Terme 0010 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 10:__ **Gib** die Werte in den Lücken der Rechnung **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$a)\;\;$__ \
+$\;\;\;\; 1,4 \cdot 6 - 0,4 \cdot 0,7 - 1,69:1,3 $ \
+$=$ [[  8,4  ]] $- 0,4 \cdot 0,7 - 1,69:1,3 $ \
+$=$ [[  8,4  ]] $-$ [[  0,28 ]] $- 1,69:1,3 $ \
+$=$ [[  8,12 ]] $- 1,69:1,3 $ \
+$=$ [[  8,12 ]] $-$ [[  1,3  ]] \
+$=$ [[ 7,82 ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$b)\;\;$__ \
+$\;\;\;\; 1,8 \cdot 0,4 + 0,75 \cdot 6,4 - 0,125 \cdot 0,96 $ \
+$= 1,8 \cdot 0,4 +$ [[  4,8   ]] $- 0,125 \cdot 0,96 $ \
+$= 1,8 \cdot 0,4 +$ [[  4,8   ]] $-$ [[  0,16  ]] \
+$= 1,8 \cdot 0,4 +$ [[  4,64  ]] \
+$=$ [[  0,72  ]] $+$ [[  4,64  ]] \
+$=$ [[  5,36  ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$c)\;\;$__ \
+$\;\;\;\; (3,4 - 1,4 \cdot 1,6) \cdot 0,5 + 2,1 \cdot 0,75  $ \
+$= (3,4 - $ [[ 2,24  ]] $) \cdot 0,5 + 2,1 \cdot 0,75  $ \
+$=$ [[ 1,16  ]] $ \cdot 0,5 + 2,1 \cdot 0,75  $ \
+$=$ [[ 0,58  ]] $ + 2,1 \cdot 0,75  $ \
+$=$ [[ 0,58  ]] $ + $ [[ 15,75 ]] \
+$=$ [[ 16,33 ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$d)\;\;$__ \
+$\;\;\;\; (0,056:0,7) \cdot 2,5 + (0,42 : 0,6) \cdot 1,5  $ \
+$= $ [[ 0,08 ]] $ \cdot 2,5 + (0,42 : 0,6) \cdot 1,5  $ \
+$= $ [[ 0,2  ]] $ + (0,42 : 0,6) \cdot 1,5  $ \
+$= $ [[ 0,2  ]] $ +$ [[ 0,7  ]] $\cdot 1,5  $ \
+$= $ [[ 0,2  ]] $ +$ [[ 1,05 ]]  \
+$=$ [[ 1,25 ]] 
+
+</div> 
+</section>
+
+
+
+
+
+
+#### Übungsaufgaben zu Terme und Gleichungen 11 bis 20
+
+
+
+<!-- Terme 0011 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 11:__ **Gib** die Werte in den Lücken der Rechnung **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$a)\;\;$__ \
+$\;\;\;\; 3,5 \cdot 2,5 - 0,8 \cdot 1,2 - 0,875 \cdot 1,6 $ \
+$=$ [[ 8,75 ]] $ - 0,8 \cdot 1,2 - 0,875 \cdot 1,6 $ \
+$=$ [[ 8,75 ]] $ - $ [[ 0,95 ]] $ - 0,875 \cdot 1,6 $ \
+$=$ [[ 7,8  ]] $ - 0,875 \cdot 1,6 $ \
+$=$ [[ 7,8  ]] $ -$ [[ 1,4  ]] \
+$=$ [[ 6,4  ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$b)\;\;$__ \
+$\;\;\;\; 0,25 \cdot 0,8 \cdot 5,2 + 0,6 \cdot 5,5 - 2,75 $ \
+$= $ [[ 0,2  ]] $ \cdot 5,2 + 0,6 \cdot 5,5 - 2,75 $ \
+$= $ [[ 1,3  ]] $ + 0,6 \cdot 5,5 - 2,75 $ \
+$= $ [[ 1,3  ]] $ + $ [[ 3,3  ]] $ - 2,75 $ \
+$= $ [[ 4,6  ]] $ - 2,75 $ \
+$=$ [[ 1,85 ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$c)\;\;$__ \
+$\;\;\;\; 9,87-2,3-0,45-0,37-1,87 $ \
+$= $ [[ 7,57  ]] $ -0,45-0,37-1,87 $ \
+$= $ [[ 7,12  ]] $ -0,37-1,87 $ \
+$= $ [[ 6,75  ]] $ -1,87 $ \
+$=$ [[ 4,88  ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$d)\;\;$__ \
+$\;\;\;\; 0,75 \cdot (1,6 - 0,4 \cdot 0,8) + 0,9 \cdot 1,5 $ \
+$= 0,75 \cdot (1,6 - $ [[ 0,32  ]] $) + 0,9 \cdot 1,5 $ \
+$= 0,75 \cdot $ [[ 1,28  ]] $ + 0,9 \cdot 1,5 $ \
+$= $ [[ 0,96  ]] $ + 0,9 \cdot 1,5 $ \
+$= $ [[ 0,96  ]] $ + $ [[ 1,35  ]] \
+$=$ [[ 2,31  ]] 
+
+</div> 
+</section>
+
+
+
+
+
+
+
+
+<!-- Terme 0012 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 12:__ **Gib** die Werte in den Lücken der Rechnung **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$a)\;\;$__ \
+$\;\;\;\; 0,84 : 0,7 + 2,54 + 1,75 \cdot 4,8 $ \
+$=$ [[  1,2  ]] $ + 2,54 + 1,75 \cdot 4,8 $ \
+$=$ [[ 3,74  ]] $ + 1,75 \cdot 4,8 $ \
+$=$ [[ 3,74  ]] $ + $ [[ 8,4   ]] \
+$=$ [[ 12,14 ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$b)\;\;$__ \
+$\;\;\;\; 1,25 \cdot 0,4 \cdot 7,5 + 3,4 \cdot 3,5 \cdot 0,1 $ \
+$=$ [[ 0,5  ]] $ \cdot 7,5 + 3,4 \cdot 3,5 \cdot 0,1 $ \
+$=$ [[ 3,75 ]] $ + 3,4 \cdot 3,5 \cdot 0,1 $ \
+$=$ [[ 3,75 ]] $ + $ [[ 11,9 ]] $ \cdot 0,1 $ \
+$=$ [[ 3,75 ]] $ + $ [[ 1,19 ]]  \
+$=$ [[ 4,94 ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$c)\;\;$__ \
+$\;\;\;\; 9,4 \cdot 0,25 + 1,4 \cdot 0,45 + 0,375 $ \
+$= $ [[ 2,3   ]] $ + 1,4 \cdot 0,45 + 0,375 $ \
+$= $ [[ 2,3   ]] $ + $ [[ 0,63  ]] $ + 0,375 $ \
+$= $ [[ 2,93  ]] $ + 0,375 $ \
+$=$  [[ 3,305 ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$d)\;\;$__ \
+$\;\;\;\; 1,75 \cdot 2,4 + 5,31 - 2,56 : 16 $ \
+$=$ [[  4,2  ]] $ + 5,31 - 2,56 : 16 $ \
+$=$ [[  9,51 ]] $ - 2,56 : 16 $ \
+$=$ [[  9,51 ]] $ -$ [[  0,16 ]] \
+$=$ [[  9,35 ]] 
+
+</div> 
+</section>
+
+
+
+
+
+
+
+
+<!-- Terme 0013 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 13:__ **Gib** die Werte in den Lücken der Rechnung **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$a)\;\;$__ \
+$\;\;\;\; - 1,6 \cdot 4,25 - 0,85:0,5 + 1,25 \cdot 0,6 $ \
+$= - 1,6 \cdot 4,25 - 0,85:0,5 + $ [[ 0,75   ]]  \
+$= - 1,6 \cdot 4,25 - $ [[ 1,3   ]] $ + $ [[ 0,75   ]]  \
+$= - 1,6 \cdot 4,25 - $ [[ 0,65  ]]  \
+$=$ [[ -6,8  ]] $- $ [[ 0,65 ]]  \
+$=$ [[ -7,45 ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$b)\;\;$__ \
+$\;\;\;\; -0,75 \cdot 5,8 - 0,7 \cdot 2,5 + 1,2 \cdot 0,9 $ \
+$=$ [[ -4,35 ]] $ - 0,7 \cdot 2,5 + 1,2 \cdot 0,9 $ \
+$=$ [[ -4,35 ]] $ - $ [[  1,75 ]] $ + 1,2 \cdot 0,9 $ \
+$=$ [[ -6,1  ]]  $ + 1,2 \cdot 0,9 $ \
+$=$ [[ -6,1  ]]  $ + $ [[  1,08 ]] \
+$=$ [[ -5,02 ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$c)\;\;$__ \
+$\;\;\;\; 1,6 \cdot (-0,25) \cdot 2,5 - 6,3 : 70 $ \
+$= 1,6 \cdot $ [[ (-0,625) ]] $ - 6,3 : 70 $ \
+$= $ [[  -1,08   ]] $ - 6,3 : 70 $ \
+$= $ [[  -1,08   ]] $ - $ [[   0,09   ]] \
+$=$ [[  -1,17   ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$d)\;\;$__ \
+$\;\;\;\; -(-0,7 \cdot 0,2):0,25 + 0,8 \cdot (-4,5)  $ \
+$= -($[[ -0,14   ]]$):0,25 + 0,8 \cdot (-4,5)  $ \
+$=$ [[  0,14   ]]$:0,25 + 0,8 \cdot (-4,5)  $ \
+$=$ [[  0,56   ]] $+ 0,8 \cdot (-4,5)  $ \
+$=$ [[  0,56   ]] $+ $ [[ (-0,36) ]] \
+$=$ [[ 0,2     ]] 
+
+</div> 
+</section>
+
+
+
+
+
+
+
+
+<!-- Terme 0014 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 14:__ **Gib** die Werte in den Lücken der Rechnung **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$a)\;\;$__ \
+$\;\;\;\; -(-7,2:(-4)):20 - 0,4 \cdot 0,125 $ \
+$= -($ [[  1,8  ]] $):20 - 0,4 \cdot 0,125 $ \
+$= $ [[ -1,8  ]] $:20 - 0,4 \cdot 0,125 $ \
+$= $ [[ -0,09 ]] $ - 0,4 \cdot 0,125 $ \
+$= $ [[ -0,09 ]] $ - $ [[  3,2  ]]  \
+$=$ [[ -3,29 ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$b)\;\;$__ \
+$\;\;\;\; 0,65:5 - 0,4 \cdot 1,7 - 0,7 : 0,2 $ \
+$=$ [[  0,13  ]] $ - 0,4 \cdot 1,7 - 0,7 : 0,2 $ \
+$=$ [[  0,13  ]] $ - $ [[  0,68  ]] $ - 0,7 : 0,2 $ \
+$=$ [[ -0,55  ]] $ - 0,7 : 0,2 $ \
+$=$ [[ -0,55  ]] $ - $ [[  0,14  ]]  \
+$=$ [[ -0,69  ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$c)\;\;$__ \
+$\;\;\;\; 1,7 \cdot (-0,75) + (-0,85 : 1,7) \cdot (-3,5)   $ \
+$=$ [[ -0,975 ]] $ + (-0,85 : 1,7) \cdot (-3,5)   $ \
+$=$ [[ -0,975 ]] $ + $ ([[  -0,5  ]]) $ \cdot (-3,5)   \
+$=$ [[ -0,975 ]] $ + $ [[  1,75  ]] $  \
+$=$ [[  0,775 ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$d)\;\;$__ \
+$\;\;\;\; (1,9:(-0,25) - 4,2 \cdot 0,25) \cdot (-1,5) $ \
+$= ($ [[  -7,6   ]] $ - 4,2 \cdot 0,25) \cdot (-1,5) $ \
+$= ($ [[  -7,6   ]] $ - $ [[  1,05   ]] $) \cdot (-1,5) $ \
+$= $ [[ -8,65   ]] $ \cdot (-1,5) $ \
+$=$ [[  12,975 ]] 
+
+</div> 
+</section>
+
+
+
+
+
+
+
+
+<!-- Terme 0015 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
+__Aufgabe 15:__ **Gib** die Werte in den Lücken der Rechnung **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$a)\;\;$__ \
+$\;\;\;\;   -0,8 \cdot (-0,3) - 1,4 \cdot (-0,75) + 2,25$  \
+$=$ [[ 0,24 ]] $ - 1,4 \cdot (-0,75) + 2,25 $ \
+$=$ [[   0,24  ]] $ - $ [[ (-1,05) ]] $ + 2,25 $ \
+$=$ [[   1,29  ]] $ + 2,25 $ \
+$=$ [[   3,54  ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$b)\;\;$__ \
+$\;\;\;\; -0,15 : 0,2 + 0,7 \cdot (-2,1) - 2,3 $ \
+$=$ [[  -0,75  ]] $ + 0,7 \cdot (-2,1) - 2,3 $ \
+$=$ [[  -0,75  ]] $ + $ [[ (-1,47) ]] $ - 2,3 $ \
+$=$ [[  -2,22 ]] $ - 2,3 $ \
+$=$ [[ -4,52  ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$c)\;\;$__ \
+$\;\;\;\; (1,44 : 0,8 -2,5) \cdot 0,7 - 0,85 $ \
+$= ($ [[   1,6  ]]  $ -2,5) \cdot 0,7 - 0,85 $ \
+$= $  [[  -0,9  ]]  $  \cdot 0,7 - 0,85 $ \
+$= $  [[  -0,63 ]]  $ - 0,85 $ \
+$=$   [[  -1,48 ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$d)\;\;$__ \
+$\;\;\;\; (0,12 : (-0,125) - 5,2 \cdot 0,25) : (-0,1) $ \
+$=($ [[  -0,96  ]] $ - 5,2 \cdot 0,25) : (-0,1) $ \
+$=($ [[  -0,96  ]] $ - $ [[  -2,3   ]] $) : (-0,1) $ \
+$= $ [[  -3,26  ]] $ : (-0,1) $ \
+$=$ [[  -32,6  ]] 
+
+</div> 
+</section>
+
+
+
+
+
+
+
+
+<!-- Terme 0016 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/31.png" width="120" height="30">  \
+__Aufgabe 16:__ **Gib** die Werte in den Lücken der Rechnung **an**.
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$a)\;\;$__ \
+$\;\;\;\; (-0,63:0,9-0,25) : (-0,05) + 2,5 \cdot (-6,5)   $ \
+$= ($ [[  -0,7   ]]$-0,25) : (-0,05) + 2,5 \cdot (-6,5)   $ \
+$= $ [[  -0,95  ]]$ : (-0,05) + 2,5 \cdot (-6,5)   $ \
+$= $ [[  19     ]]$  + 2,5 \cdot (-6,5)   $ \
+$= $ [[  19     ]]$  + $[[ (-16,25) ]] \
+$=$ [[ 3,75    ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$b)\;\;$__ \
+$\;\;\;\; -0,7 : 0,125 + 3,2 \cdot (-0,125) - 2,8 $ \
+$=$ [[   -5,6  ]] $ + 3,2 \cdot (-0,125) - 2,8 $ \
+$=$ [[   -5,6  ]] $ + $ [[ (-0,4)  ]] $ - 2,8 $ \
+$=$ [[   -6    ]] $ - 2,8 $ \
+$=$ [[  -8,8   ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$c)\;\;$__ \
+$\;\;\;\; -(-2,1 \cdot 0,4 +1,25) : 0,5 - 1,1 $ \
+$= -( $ [[  0,84  ]] $ +1,25) : 0,5 - 1,1 $ \
+$= -( $ [[  2,19  ]] $) : 0,5 - 1,1 $ \
+$= $ [[ -4,38  ]] $ - 1,1 $ \
+$=$ [[ -5,48  ]] 
+
+</div> 
+<div class="flex-child">
+
+<!-- data-solution-button="5" data-show-partial-solution -->
+__$d)\;\;$__ \
+$\;\;\;\; -0,225: (-1,5) + 0,8 \cdot (-4) \cdot 0,375 $ \
+$=  $ [[  0,15  ]] $ + 0,8 \cdot (-4) \cdot 0,375 $ \
+$=  $ [[  0,15  ]] $ + $ [[ (-3,2) ]] $ \cdot 0,375 $ \
+$=  $ [[  0,15  ]] $ + $ [[ (-1,2) ]]  \
+$=$   [[ -1,05  ]] 
+
+</div> 
+</section>
+
 
 

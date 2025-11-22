@@ -5,12 +5,6 @@ language: de
 narrator: Deutsch Female
 
 
-logo:     https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/logo.png
-email:    info@bildung-bedeutet-freiheit.de
-
-tags: Repetitorium
-
-comment: Hier entsteht ein mathematisches Repetitorium in LiaScript. https://mint-the-gap.github.io/Aufgabensammlung/
 
 author: Martin Lommatzsch
 
@@ -331,6 +325,112 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
 
 
-#### Übungsaufgaben zu Mengen 1 bis 10
+#### Übungsaufgaben zur Quadratischen Ergänzung 1 bis 10
+
+
+
+
+<!-- QuadErg 0001 -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ **Ordne** den Termen einen äquivalenten Term **zu**.
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5" 
+data-randomize="true" -->
+__$a)\;\;$__  $  (x-2)^2  =$ [->[($x^2-4x+4$)|$x^2+8x+16$|$x^2-2x+1$|$x^2+3x+9$|$x^2-8x+16$|$x^2+10x+25$|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|$x^2-10x+25$|$x^2-5x+10$]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" 
+data-randomize="true" -->
+__$b)\;\;$__  $  (x+5)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|$x^2-2x+1$|$x^2+3x+9$|$x^2-8x+16$|($x^2+10x+25$)|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|$x^2-10x+25$|$x^2-5x+10$]]
+
+</div> 
+</section>
+
+
+
+<!-- QuadErg 0002 -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 2:__ **Ordne** den Termen einen äquivalenten Term **zu**.
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5" 
+data-randomize="true" -->
+__$a)\;\;$__  $  (x+4)^2  =$ [->[$x^2-4x+4$|($x^2+8x+16$)|$x^2-2x+1$|$x^2+3x+9$|$x^2-8x+16$|$x^2+10x+25$|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|$x^2-10x+25$|$x^2-5x+10$]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" 
+data-randomize="true" -->
+__$b)\;\;$__  $  (x+1)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|$x^2-2x+1$|$x^2+3x+9$|$x^2-8x+16$|$x^2+10x+25$|($x^2+2x+1$)|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|$x^2-10x+25$|$x^2-5x+10$]]
+
+</div> 
+</section>
+
+
+<!-- QuadErg 0003 -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 3:__ **Ordne** den Termen einen äquivalenten Term **zu**.
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5" 
+data-randomize="true" -->
+__$a)\;\;$__  $  (x-5)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|$x^2-2x+1$|$x^2+3x+9$|$x^2-8x+16$|$x^2+10x+25$|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|($x^2-10x+25$)|$x^2-5x+10$]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" 
+data-randomize="true" -->
+__$b)\;\;$__  $  (x-1)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|($x^2-2x+1$)|$x^2+3x+9$|$x^2-8x+16$|$x^2+10x+25$|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|$x^2-10x+25$|$x^2-5x+10$]]
+
+</div> 
+</section>
+
+
+
+
+<!-- QuadErg 0004 -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 4:__ **Ordne** den Termen einen äquivalenten Term **zu**.
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- data-solution-button="5" 
+data-randomize="true" -->
+__$a)\;\;$__  $  (x+2)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|$x^2-2x+1$|$x^2+3x+9$|$x^2-8x+16$|$x^2+10x+25$|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|($x^2+4x+4$)|$x^2-10x+25$|$x^2-5x+10$]]
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-button="5" 
+data-randomize="true" -->
+__$b)\;\;$__  $  (x-4)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|$x^2-2x+1$|$x^2+3x+9$|($x^2-8x+16$)|$x^2+10x+25$|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|$x^2-10x+25$|$x^2-5x+10$]]
+
+</div> 
+</section>
+
+
+
 
 

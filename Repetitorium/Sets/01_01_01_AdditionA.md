@@ -5,12 +5,6 @@ language: de
 narrator: Deutsch Female
 
 
-logo:     https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/logo.png
-email:    info@bildung-bedeutet-freiheit.de
-
-tags: Repetitorium
-
-comment: Hier entsteht ein mathematisches Repetitorium in LiaScript. https://mint-the-gap.github.io/Aufgabensammlung/
 
 author: Martin Lommatzsch
 
@@ -331,6 +325,233 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
 
 
-#### Übungsaufgaben zu Mengen 1 bis 10
+#### Übungsaufgaben zur Addition 1 bis 10
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 1:__ *Berechne* den Wert des Terms.
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+$a)\;\;$
+
+<!-- data-solution-button="5"-->
+$3821 + 1347=$[[  5168  ]] 
+</div>
+
+<div class="flex-child">
+$b)\;\;$
+
+<!-- data-solution-button="5"-->
+$5962 + 8912=$[[  14874  ]] 
+</div>
+
+<div class="flex-child">
+$c)\;\;$
+
+<!-- data-solution-button="5"-->
+$2512 + 3246=$[[  5758  ]] 
+</div>
+
+<div class="flex-child">
+$d)\;\;$
+
+<!-- data-solution-button="5"-->
+$2353 + 4636=$[[  6989  ]] 
+</div>
+
+<div class="flex-child">
+$e)\;\;$
+
+<!-- data-solution-button="5"-->
+$4462 + 9543=$[[  14005  ]] 
+</div>
+
+<div class="flex-child">
+$f)\;\;$
+
+<!-- data-solution-button="5"-->
+$4156 + 3737=$[[  7893  ]] 
+</div>
+
+<div class="flex-child">
+$g)\;\;$
+
+<!-- data-solution-button="5"-->
+$9948 + 5499=$[[  15447  ]] 
+</div>
+
+<div class="flex-child">
+$h)\;\;$
+
+<!-- data-solution-button="5"-->
+$4784 + 8377=$[[  13161  ]] 
+</div>
+
+
+<div class="flex-child">
+$i)\;\;$
+
+<!-- data-solution-button="5"-->
+$8437 + 4567=$[[  13004  ]] 
+</div>
+
+</section>
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 2:__ *Berechne* den Wert des Terms.
+
+
+<section class="flex-container">
+<div class="flex-child">
+$a)\;\;$
+
+<!-- data-solution-button="5"-->
+$3821 + 1347=$[[  5168  ]] 
+</div>
+
+<div class="flex-child">
+$b)\;\;$
+
+<!-- data-solution-button="5"-->
+$5962 + 8912=$[[  14874  ]] 
+</div>
+
+<div class="flex-child">
+$c)\;\;$
+
+<!-- data-solution-button="5"-->
+$2512 + 3246=$[[  5758  ]] 
+</div>
+
+<div class="flex-child">
+$d)\;\;$
+
+<!-- data-solution-button="5"-->
+$2353 + 4636=$[[  6989  ]] 
+</div>
+
+<div class="flex-child">
+$e)\;\;$
+
+<!-- data-solution-button="5"-->
+$4462 + 9543=$[[  14005  ]] 
+</div>
+
+<div class="flex-child">
+$f)\;\;$
+
+<!-- data-solution-button="5"-->
+$4156 + 3737=$[[  7893  ]] 
+</div>
+
+<div class="flex-child">
+$g)\;\;$
+
+<!-- data-solution-button="5"-->
+$9948 + 5499=$[[  15447  ]] 
+</div>
+
+<div class="flex-child">
+$h)\;\;$
+
+<!-- data-solution-button="5"-->
+$4784 + 8377=$[[  13161  ]] 
+</div>
+
+<div class="flex-child">
+$i)\;\;$
+
+<!-- data-solution-button="5"-->
+$9745 + 3726=$[[  13471  ]] 
+</div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+__Aufgabe 3:__ *Berechne* den Wert des Terms.
+
+
+<section class="flex-container">
+<div class="flex-child">
+$a)\;\;$
+
+<!-- data-solution-button="5"-->
+$2634 + 5897=$[[  8531  ]] 
+</div>
+
+<div class="flex-child">
+$b)\;\;$
+
+<!-- data-solution-button="5"-->
+$7185 + 4268=$[[  11453  ]] 
+</div>
+
+<div class="flex-child">
+$c)\;\;$
+
+<!-- data-solution-button="5"-->
+$3492 + 8051=$[[  11543  ]] 
+</div>
+
+<div class="flex-child">
+$d)\;\;$
+
+<!-- data-solution-button="5"-->
+$5924 + 7813=$[[  13737  ]] 
+</div>
+
+<div class="flex-child">
+$e)\;\;$
+
+<!-- data-solution-button="5"-->
+$1847 + 9635=$[[  11482  ]] 
+</div>
+
+<div class="flex-child">
+$f)\;\;$
+
+<!-- data-solution-button="5"-->
+$4076 + 2559=$[[  6635  ]] 
+</div>
+
+<div class="flex-child">
+$g)\;\;$
+
+<!-- data-solution-button="5"-->
+$8321 + 1746=$[[  10067  ]] 
+</div>
+
+<div class="flex-child">
+$h)\;\;$
+
+<!-- data-solution-button="5"-->
+$7560 + 4983=$[[  12543  ]] 
+</div>
+
+<div class="flex-child">
+$i)\;\;$
+
+<!-- data-solution-button="5"-->
+$6214 + 3879=$[[  10093  ]] 
+</div>
+
+</section>
+
 
 
