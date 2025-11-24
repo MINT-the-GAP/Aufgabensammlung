@@ -56,6 +56,9 @@ author: Martin Lommatzsch
 # Betrachtung von Urnen
 
 
+
+<!-- Stochastik Grundlagen 0028 -->
+
 In den dargestellten Gefäßen befinden sich Kugeln unterschiedlicher Farben. 
 
 
@@ -67,19 +70,26 @@ __$a)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne23.png)
 
-**Gib** die absolute Häufigkeit der roten Kugeln **an**.\
-$\#(R)=$ [[  6  ]]
+**Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
+$\#(B)=$ [[  9  ]]
 
-**Gib** die relative Häufigkeit der grünen Kugeln **an**.\
-$p(B)=$ [[ 7/24  ]]
-@Algebrite.check(7/24)
+**Gib** die relative Häufigkeit der nicht grauen Kugeln **an**.\
+$p(\bar{G})=$ [[ 13/19  ]]
+@Algebrite.check(13/19)
 
-**Gib** die Wahrscheinlichkeit **an**, eine grüne Kugel zu ziehen.\
-$P(R)=$ [[  7/24  ]]
-@Algebrite.check(7/24)
+**Gib** die Wahrscheinlichkeit **an**, eine blaue Kugel zu ziehen.\
+$P(R)=$ [[  9/19  ]]
+@Algebrite.check(9/19)
 
-**Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
-$R(R)=$ [[  8:15  ]]
+**Gib** die Chance **an**, eine violette oder graue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(\bar{B})=$ [[  10:9  ]]
+
+**Gib** die Wahrscheinlichkeit **an**, eine blaue oder graue Kugel zu ziehen.\
+$P(B \cup G)=$ [[  15/19  ]]
+@Algebrite.check(15/19)
+
+**Gib** die Chance **an**, eine violette Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(V)=$ [[  4:15  ]]
 
 
 </div>
@@ -91,18 +101,26 @@ __$b)\;\;$__
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne24.png)
 
 **Gib** die absolute Häufigkeit der grünen Kugeln **an**.\
-$\#(R)=$ [[  9  ]]
+$\#(G)=$ [[  10  ]]
 
-**Gib** die relative Häufigkeit der blauen Kugeln **an**.\
-$p(B)=$ [[  8/23  ]]
-@Algebrite.check(8/23)
+**Gib** die relative Häufigkeit der orangen Kugeln **an**.\
+$p(O)=$ [[  5/20  ]]
+@Algebrite.check(5/20)
 
-**Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
-$P(R)=$ [[  6/23  ]]
-@Algebrite.check(6/23)
+**Gib** die Wahrscheinlichkeit **an**, keine rote Kugel zu ziehen.\
+$P(\bar{R})=$ [[  15/20  ]]
+@Algebrite.check(15/20)
 
 **Gib** die Chance **an**, eine grüne Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
-$R(R)=$ [[  9:14  ]]
+$R(G)=$ [[  10:10  ]]
+
+**Gib** die Wahrscheinlichkeit **an**, eine orange oder grüne Kugel zu ziehen.\
+$P(O \cup G)=$ [[  15/20  ]]
+@Algebrite.check(15/20)
+
+**Gib** die Wahrscheinlichkeit **an**, keine grüne Kugel zu ziehen.\
+$P(\bar{G})=$ [[  10/20  ]]
+@Algebrite.check(10/20)
 
 
 </div>
@@ -113,19 +131,26 @@ __$c)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne25.png)
 
-**Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
-$\#(R)=$ [[  9  ]]
+**Gib** die absolute Häufigkeit der violetten und grauen Kugeln **an**.\
+$\#(V \cup G)=$ [[  11  ]]
 
-**Gib** die relative Häufigkeit der roten Kugeln **an**.\
-$p(B)=$ [[  10/23  ]]
-@Algebrite.check(10/23)
+**Gib** die relative Häufigkeit der blauen Kugeln **an**.\
+$p(B)=$ [[  8/22  ]]
+@Algebrite.check(8/22)
 
-**Gib** die Wahrscheinlichkeit **an**, eine grüne Kugel zu ziehen.\
-$P(R)=$ [[  4/23  ]]
-@Algebrite.check(4/23)
+**Gib** die Wahrscheinlichkeit **an**, keine grüne Kugel zu ziehen.\
+$P(G \cup B \cup V)=$ [[  19/22  ]]
+@Algebrite.check(19/22)
 
-**Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
-$R(R)=$ [[  9:14  ]]
+**Gib** die Chance **an**, eine graue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(R)=$ [[  7:15  ]]
+
+**Gib** die Wahrscheinlichkeit **an**, keine violette oder blaue Kugel zu ziehen.\
+$P(\bar{B} \cup \bar{V})=$ [[  11/22  ]]
+@Algebrite.check(11/22)
+
+**Gib** die Chance **an**, keine violette Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
+$R(\bar{V})=$ [[  19:3  ]]
 
 
 </div>

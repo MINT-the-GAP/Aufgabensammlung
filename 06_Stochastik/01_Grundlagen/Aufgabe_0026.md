@@ -56,6 +56,10 @@ author: Martin Lommatzsch
 # Betrachtung von Urnen
 
 
+
+<!-- Stochastik Grundlagen 0026 -->
+
+
 In den dargestellten Gefäßen befinden sich Kugeln unterschiedlicher Farben. 
 
 
