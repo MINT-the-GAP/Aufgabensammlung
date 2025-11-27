@@ -487,8 +487,8 @@ Ohne das Verständnis dieser Themenbereiche lassen sich weiterführende Themen n
 
 ## Mengen
 
-- Link [Erklärungen zu Mengen](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/00_00_01_Mengen.md)
-- Link [Übungsaufgaben zu Mengen](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/00_00_01_MengenA.md)
+- Link [Erklärungen zu Mengen](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/00_00_01_Mengen.md)
+- Link [Übungsaufgaben zu Mengen](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/00_00_01_MengenA.md)
 
 
 
@@ -517,16 +517,16 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 <h3> 1. Zahlen und Ziffern </h3>
 
 
-- Link [Erklärungen zu Zahlen und Ziffern](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_00_01_ZiffernZahlen.md)
-- Link [Übungsaufgaben zu Zahlen und Ziffern](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_00_01_ZiffernZahlenA.md)
+- Link [Erklärungen zu Zahlen und Ziffern](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_00_01_ZiffernZahlen.md)
+- Link [Übungsaufgaben zu Zahlen und Ziffern](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_00_01_ZiffernZahlenA.md)
 
 ---
 
 
 <h3> 2. Terme und Gleichungen </h3>
 
-- Link [Erklärungen zu Termen und Gleichungen](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_00_02_TermeGleichung.md)
-- Link [Übungsaufgaben zu Termen und Gleichungen](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_00_02_TermeGleichungA.md)
+- Link [Erklärungen zu Termen und Gleichungen](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_00_02_TermeGleichung.md)
+- Link [Übungsaufgaben zu Termen und Gleichungen](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_00_02_TermeGleichungA.md)
 
 
 ---
@@ -534,8 +534,8 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 
 <h3> 3. Runden </h3>
 
-- Link [Erklärungen zum Runden](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_01_05_Runden.md)
-- Link [Übungsaufgaben zum Runden](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_01_05_RundenA.md)
+- Link [Erklärungen zum Runden](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_01_05_Runden.md)
+- Link [Übungsaufgaben zum Runden](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_01_05_RundenA.md)
 
 
 ---
@@ -543,8 +543,8 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 
 <h3> 4. Addition </h3>
 
-- Link [Erklärungen zur Addition](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_01_01_Addition.md)
-- Link [Übungsaufgaben zur Addition](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_01_01_AdditionA.md)
+- Link [Erklärungen zur Addition](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_01_01_Addition.md)
+- Link [Übungsaufgaben zur Addition](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_01_01_AdditionA.md)
 
 
 ---
@@ -552,8 +552,8 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 
 <h3> 5. Subtraktion </h3>
 
-- Link [Erklärungen zur Subtraktion](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_01_02_Subtraktion.md)
-- Link [Übungsaufgaben zur Subtraktion](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_01_02_SubtraktionA.md)
+- Link [Erklärungen zur Subtraktion](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_01_02_Subtraktion.md)
+- Link [Übungsaufgaben zur Subtraktion](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_01_02_SubtraktionA.md)
 
 
 ---
@@ -561,8 +561,8 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 
 <h3> 6. Multiplikation </h3>
 
-- Link [Erklärungen zur Multiplikation](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_01_03_Multiplikation.md)
-- Link [Übungsaufgaben zur Multiplikation](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_01_03_MultiplikationA.md)
+- Link [Erklärungen zur Multiplikation](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_01_03_Multiplikation.md)
+- Link [Übungsaufgaben zur Multiplikation](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_01_03_MultiplikationA.md)
 
 
 ---
@@ -570,15 +570,15 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 
 <h3> 7. Division </h3>
 
-- Link [Erklärungen zur Division](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_01_04_Division.md)
-- Link [Übungsaufgaben zur Division](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_01_04_DivisionA.md)
+- Link [Erklärungen zur Division](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_01_04_Division.md)
+- Link [Übungsaufgaben zur Division](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_01_04_DivisionA.md)
 
 
 ---
 
 <h3> 8. Grundrechenarten </h3>
 
-- Link [Übungsaufgaben zu Grundrechenarten](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_01_06_MixA.md)
+- Link [Übungsaufgaben zu Grundrechenarten](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_01_06_MixA.md)
 
 
 ---
@@ -586,8 +586,8 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 
 <h3> 9. Teilbarkeiten </h3>
 
-- Link [Erklärungen zu Teilbarkeiten](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_03_01_Teilbarkeiten.md)
-- Link [Übungsaufgaben zu Teilbarkeiten](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_03_01_TeilbarkeitenA.md)
+- Link [Erklärungen zu Teilbarkeiten](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_03_01_Teilbarkeiten.md)
+- Link [Übungsaufgaben zu Teilbarkeiten](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_03_01_TeilbarkeitenA.md)
 
 
 
@@ -599,8 +599,8 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 <h3> 10. Bruchrechnung </h3>
 
 
-- Link [Erklärungen zur Bruchrechnung](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_04_01_Bruchrechnung.md)
-- Link [Übungsaufgaben zur Bruchrechnung](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_04_01_BruchrechnungA.md)
+- Link [Erklärungen zur Bruchrechnung](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_04_01_Bruchrechnung.md)
+- Link [Übungsaufgaben zur Bruchrechnung](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_04_01_BruchrechnungA.md)
 
 
 ---
@@ -610,8 +610,8 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 <h3> 11. Dezimalzahlen </h3>
 
 
-- Link [Erklärungen zu Dezimalzahlen](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_04_01_Bruchrechnung.md)
-- Link [Übungsaufgaben zu Dezimalzahlen](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_04_01_BruchrechnungA.md)
+- Link [Erklärungen zu Dezimalzahlen](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_04_01_Bruchrechnung.md)
+- Link [Übungsaufgaben zu Dezimalzahlen](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_04_01_BruchrechnungA.md)
 
 
 ---
@@ -621,8 +621,8 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 
 
 
-- Link [Erklärungen zu Variablen und zum Einsetzungsverfahren](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_06_01_Einsetzen.md)
-- Link [Übungsaufgaben zu Variablen und zum Einsetzungsverfahren](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_06_01_EinsetzenA.md)
+- Link [Erklärungen zu Variablen und zum Einsetzungsverfahren](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_06_01_Einsetzen.md)
+- Link [Übungsaufgaben zu Variablen und zum Einsetzungsverfahren](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_06_01_EinsetzenA.md)
 
 
 ---
@@ -633,8 +633,8 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 
 
 
-- Link [Erklärungen zur Prozentrechnung](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_09_01_Prozent.md)
-- Link [Übungsaufgaben zur Prozentrechnung](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_09_01_ProzentA.md)
+- Link [Erklärungen zur Prozentrechnung](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_09_01_Prozent.md)
+- Link [Übungsaufgaben zur Prozentrechnung](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_09_01_ProzentA.md)
 
 
 ---
@@ -644,8 +644,8 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 <h3> 14. Negative Zahlen </h3>
 
 
-- Link [Erklärungen zu negativen Zahlen](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_10_01_negativeZahlen.md)
-- Link [Übungsaufgaben zu negativen Zahlen](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_10_01_negativeZahlenA.md)
+- Link [Erklärungen zu negativen Zahlen](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_10_01_negativeZahlen.md)
+- Link [Übungsaufgaben zu negativen Zahlen](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_10_01_negativeZahlenA.md)
 
 
 
@@ -656,7 +656,7 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 
 <h3> 15. Kommutativ- und Assoziativgesetz </h3>
 
-- Link [Erklärungen zum Kommutativ- und Assoziativgesetz](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_06_02_KommuAsso.md)
+- Link [Erklärungen zum Kommutativ- und Assoziativgesetz](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_06_02_KommuAsso.md)
 
 
 ---
@@ -664,7 +664,7 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 
 <h3> 16. Distributivgesetz </h3>
 
-- Link [Erklärungen zum Distributivgesetz](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_06_03_Distributiv.md)
+- Link [Erklärungen zum Distributivgesetz](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_06_03_Distributiv.md)
 
 
 
@@ -675,8 +675,8 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 <h3> 17. Potenzen und Wurzeln </h3>
 
 
-- Link [Erklärungen zu Potenzen und Wurzeln](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_07_01_Potenzen.md)
-- Link [Übungsaufgaben zu Potenzen und Wurzeln](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_07_01_PotenzenA.md)
+- Link [Erklärungen zu Potenzen und Wurzeln](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_07_01_Potenzen.md)
+- Link [Übungsaufgaben zu Potenzen und Wurzeln](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_07_01_PotenzenA.md)
 
 
 
@@ -685,7 +685,7 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 
 <h3> 18. Logarithmen </h3>
 
-- Link [Erklärungen zum Distributivgesetz](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_11_01_Logarithmen.md)
+- Link [Erklärungen zum Distributivgesetz](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_11_01_Logarithmen.md)
 
 
 
@@ -697,8 +697,8 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 <h3> 19. Äquivalenzumformung </h3>
 
 
-- Link [Erklärungen zur Äquivalenzumformung](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_12_01_Aequivalenzumformung.md)
-- Link [Übungsaufgaben zur Äquivalenzumformung](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_12_01_AequivalenzumformungA.md)
+- Link [Erklärungen zur Äquivalenzumformung](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_12_01_Aequivalenzumformung.md)
+- Link [Übungsaufgaben zur Äquivalenzumformung](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_12_01_AequivalenzumformungA.md)
 
 
 
@@ -710,8 +710,8 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 <h3> 20. Quadratische Ergänzung </h3>
 
 
-- Link [Erklärungen zur Quadratische Ergänzung](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_13_01_QuadErg.md)
-- Link [Übungsaufgaben zur Quadratische Ergänzung](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_13_01_QuadErgA.md)
+- Link [Erklärungen zur Quadratische Ergänzung](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_13_01_QuadErg.md)
+- Link [Übungsaufgaben zur Quadratische Ergänzung](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_13_01_QuadErgA.md)
 
 
 
@@ -726,8 +726,8 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 <h3> 21. Gleichungssysteme </h3>
 
 
-- Link [Erklärungen zu Gleichungssysteme](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_14_01_Gleichungssysteme.md)
-- Link [Übungsaufgaben zu Gleichungssysteme](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_14_01_GleichungssystemeA.md)
+- Link [Erklärungen zu Gleichungssysteme](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_14_01_Gleichungssysteme.md)
+- Link [Übungsaufgaben zu Gleichungssysteme](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_14_01_GleichungssystemeA.md)
 
 
 
@@ -740,8 +740,8 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 <h3> 22. Ungleichungen </h3>
 
 
-- Link [Erklärungen zu Ungleichungen](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_15_01_Ungleichungen.md)
-- Link [Übungsaufgaben zu Ungleichungen](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_15_01_UngleichungenA.md)
+- Link [Erklärungen zu Ungleichungen](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_15_01_Ungleichungen.md)
+- Link [Übungsaufgaben zu Ungleichungen](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_15_01_UngleichungenA.md)
 
 
 ---
@@ -751,8 +751,8 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 <h3> 23. Fakultäten und Binomialkoeffizienten </h3>
 
 
-- Link [Erklärungen zu Fakultäten und Binomialkoeffizienten](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_16_01_FakulBinomial.md)
-- Link [Übungsaufgaben zu Fakultäten und Binomialkoeffizienten](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_16_01_FakulBinomialA.md)
+- Link [Erklärungen zu Fakultäten und Binomialkoeffizienten](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_16_01_FakulBinomial.md)
+- Link [Übungsaufgaben zu Fakultäten und Binomialkoeffizienten](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_16_01_FakulBinomialA.md)
 
 
 
@@ -764,7 +764,7 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 <h3> 24. Zahlensysteme </h3>
 
 
-- Link [Erklärungen zu Fakultäten und Binomialkoeffizienten](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_17_01_Zahlensysteme.md)
+- Link [Erklärungen zu Fakultäten und Binomialkoeffizienten](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_17_01_Zahlensysteme.md)
 
 
 
@@ -775,8 +775,8 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 <h3> 25. Einheiten </h3>
 
 
-- Link [Erklärungen zu Einheiten](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_08_01_Einheiten.md)
-- Link [Übungsaufgaben zu Einheiten](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_08_01_EinheitenA.md)
+- Link [Erklärungen zu Einheiten](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_08_01_Einheiten.md)
+- Link [Übungsaufgaben zu Einheiten](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_08_01_EinheitenA.md)
 
 
 
@@ -787,7 +787,7 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 <h3> 26. Verhältnisse </h3>
 
 
-- Link [Erklärungen zu Verhältnissen](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_04_02_Verhaltnisse.md)
+- Link [Erklärungen zu Verhältnissen](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_04_02_Verhaltnisse.md)
 
 
 
@@ -993,8 +993,8 @@ Das Wort „*Stochastik*“ geht auf das griechische stochastikos zurück und be
 <h3> 1. Grundgrößen der Wahrscheinlichkeit </h3>
 
 
-- Link [Erklärungen zu Grundgrößen der Wahrscheinlichkeit](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_01_01_ChanceWahr.md)
-- Link [Übungsaufgaben zu Grundgrößen der Wahrscheinlichkeit](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/07_01_01_ChanceWahrA.md)
+- Link [Erklärungen zu Grundgrößen der Wahrscheinlichkeit](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_01_01_ChanceWahr.md)
+- Link [Übungsaufgaben zu Grundgrößen der Wahrscheinlichkeit](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/07_01_01_ChanceWahrA.md)
 
 
 
@@ -1004,8 +1004,8 @@ Das Wort „*Stochastik*“ geht auf das griechische stochastikos zurück und be
 <h3> 2. Kombinatorik </h3>
 
 
-- Link [Erklärungen zur Kombinatorik](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_01_02_Kombinatorik.md)
-- Link [Übungsaufgaben zur Kombinatorik](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/07_01_02_KombinatorikA.md)
+- Link [Erklärungen zur Kombinatorik](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_01_02_Kombinatorik.md)
+- Link [Übungsaufgaben zur Kombinatorik](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/07_01_02_KombinatorikA.md)
 
 
 
@@ -1015,7 +1015,7 @@ Das Wort „*Stochastik*“ geht auf das griechische stochastikos zurück und be
 <h3> 3. Baumdiagramme </h3>
 
 
-- Link [Erklärungen zum "Von"-Prinzip](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_02_02_VonPrinzip.md)
+- Link [Erklärungen zum "Von"-Prinzip](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_02_02_VonPrinzip.md)
 
 
 

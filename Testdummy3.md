@@ -38,6 +38,28 @@ input {
         margin-right: 0;
     }
 }
+
+.tree2 {
+  position: relative;
+  width: 520px;
+  height: 260px;
+  margin: 1em auto;
+  font-family: sans-serif;
+}
+
+/* SVG als Hintergrund-Layer */
+.tree2 svg {
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+}
+
+/* Labels & Eingabefelder oben drauf */
+.tree2 .tree-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  font-size: 0.9rem;
+}
 @end
 
 
@@ -60,6 +82,67 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/hea
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 -->
+
+
+
+
+# Baumdiagramm
+
+
+
+<div class="tree2">
+
+<!-- Baumstruktur als SVG -->
+<svg viewBox="0 0 100 60">
+  <!-- erste Stufe -->
+  <line x1="50" y1="10" x2="25" y2="25" stroke="black" />
+  <line x1="50" y1="10" x2="75" y2="25" stroke="black" />
+  <!-- zweite Stufe links -->
+  <line x1="25" y1="25" x2="15" y2="50" stroke="black" />
+  <line x1="25" y1="25" x2="35" y2="50" stroke="black" />
+  <!-- zweite Stufe rechts -->
+  <line x1="75" y1="25" x2="65" y2="50" stroke="black" />
+  <line x1="75" y1="25" x2="85" y2="50" stroke="black" />
+</svg>
+
+<!-- Knotenbeschriftungen -->
+<span class="tree-node" style="left:50%; top:10%;">Start</span>
+
+<span class="tree-node" style="left:25%; top:25%;">$A$</span>
+<span class="tree-node" style="left:75%; top:25%;">$\bar{A}$</span>
+
+<span class="tree-node" style="left:15%; top:50%;">$B \mid A$</span>
+<span class="tree-node" style="left:35%; top:50%;">$\bar{B} \mid A$</span>
+
+<span class="tree-node" style="left:65%; top:50%;">$B \mid \bar{A}$</span>
+<span class="tree-node" style="left:85%; top:50%;">$\bar{B} \mid \bar{A}$</span>
+
+<!-- Eingabefelder für die Wahrscheinlichkeiten auf den Ästen -->
+<span class="tree-node" style="left:33%; top:18%;">
+  $P(A) = $ [[ 0.4 ]]
+</span>
+
+<span class="tree-node" style="left:67%; top:18%;">
+  $P(\bar{A}) = $ [[ 0.6 ]]
+</span>
+
+<span class="tree-node" style="left:20%; top:40%;">
+  $P(B \mid A) = $ [[ 0.3 ]]
+</span>
+
+<span class="tree-node" style="left:30%; top:40%;">
+  $P(\bar{B} \mid A) = $ [[ 0.7 ]]
+</span>
+
+<span class="tree-node" style="left:70%; top:40%;">
+  $P(B \mid \bar{A}) = $ [[ 0.2 ]]
+</span>
+
+<span class="tree-node" style="left:80%; top:40%;">
+  $P(\bar{B} \mid \bar{A}) = $ [[ 0.8 ]]
+</span>
+
+</div>
 
 
 
