@@ -42,9 +42,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-tags: Erklärung, Kombinatorik
+tags: Erklärung, Baumdiagramm
 
-comment: In diesem Abschnitt wird Kombinatorik ausführlich erklärt.
+comment: In diesem Abschnitt wird aus der Geometrie eines Quadrats das Baumdiagramm ausführlich abgeleitet.
 
 author: Martin Lommatzsch
 
@@ -60,18 +60,18 @@ author: Martin Lommatzsch
 
 Es wird ein *Quadrat* mit der *Kantenlänge* $1\,$m betrachtet:
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/von1.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/von1.PNG)
 
 {{|>}} Dieses *Quadrat* wird nun in *Anteile* zerschnitten.  Die gestrichelten Linien geben den Schnitt an und die *Brüche* die *Verhältnisse* dieser Teilung. Nach einer Teilung wird das resultierende *Rechteck* betrachtet und mit dem *prozentualen* *Anteil* vom *Ausgangsflächeninhalt* beschrieben.
 
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/von2.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/von2.PNG)
 
 {{|>}} Es fällt auf, dass die beiden *Flächeninhalte* *aufaddiert* wieder den *Ausgangsflächeninhalt* ergeben: $A_0 = A_l + A_r$. Dabei ist der *Flächeninhalt* $A_l$ (*Flächeninhalt* links) ein Viertel **vom** *Ursprungsflächeninhalt* $A_0$, also $A_l = \frac{1}{4} \cdot A_0 $. Nun sollen die beiden *Rechtecke* nochmal geteilt werden:
 
 
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/von3.png)
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/von3.PNG)
 
 
 {{|>}} Nun betrachtet man die vier *Flächeninhalte* nach dem zweiten Zerschneiden:
@@ -105,9 +105,15 @@ Das Ganze ist auch als *Distributivgesetz* mit einer Teilung darstellbar:
 
 
 
+<section class="flex-container">
+<div class="flex-child">
 
-<!-- style="width:400px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/von4.png)
+<!-- style="width:300px" -->
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/von4.PNG)
+
+
+</div>
+<div class="flex-child">
 
 $$
 \begin{align*}
@@ -117,13 +123,23 @@ $$
 $$
 
 
+</div>
+<div class="flex-child">
+</div>
+</section>
+
 oder mit zwei Teilungen:
 
 
-<!-- style="width:400px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/von5.png)
+<section class="flex-container">
+<div class="flex-child">
+
+<!-- style="width:300px" -->
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/von5.PNG)
 
 
+</div>
+<div class="flex-child">
 
 $$
 \begin{align*}
@@ -134,7 +150,10 @@ $$
 \end{align*}
 $$
 
-
+</div>
+<div class="flex-child">
+</div>
+</section>
 
 
 

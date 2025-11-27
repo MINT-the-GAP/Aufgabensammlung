@@ -1010,6 +1010,13 @@ Das Wort „*Stochastik*“ geht auf das griechische stochastikos zurück und be
 
 
 
+---
+
+<h3> 3. Baumdiagramme </h3>
+
+
+- Link [Erklärungen zum "Von"-Prinzip](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_02_02_VonPrinzip.md)
+
 
 
 
