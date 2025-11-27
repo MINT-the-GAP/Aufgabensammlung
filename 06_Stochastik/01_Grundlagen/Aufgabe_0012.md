@@ -98,7 +98,7 @@ $p(B)=$ [[ 12/17  ]]
 @Algebrite.check(12/17)
 
 **Gib** die Wahrscheinlichkeit **an**, eine blaue Kugel zu ziehen.\
-$P(R)=$ [[ 12/17  ]]
+$P(B)=$ [[ 12/17  ]]
 @Algebrite.check(12/17)
 
 **Gib** die Chance **an**, eine rote Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
@@ -114,10 +114,10 @@ __$c)\;\;$__
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne3.png)
 
 **Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
-$\#(R)=$ [[  6  ]]
+$\#(B)=$ [[  6  ]]
 
 **Gib** die relative Häufigkeit der roten Kugeln **an**.\
-$p(B)=$ [[ 6/12  ]]
+$p(R)=$ [[ 6/12  ]]
 @Algebrite.check(6/12)
 
 **Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
@@ -125,7 +125,7 @@ $P(R)=$ [[ 6/12  ]]
 @Algebrite.check(7/22)
 
 **Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
-$R(R)=$ [[  1:1  ]]
+$R(B)=$ [[  6:6  ]]
 
 
 </div>
@@ -140,15 +140,15 @@ __$d)\;\;$__
 $\#(R)=$ [[  10  ]]
 
 **Gib** die relative Häufigkeit der roten Kugeln **an**.\
-$p(B)=$ [[  10/25  ]]
+$p(R)=$ [[  10/25  ]]
 @Algebrite.check(10/25)
 
 **Gib** die Wahrscheinlichkeit **an**, eine blaue Kugel zu ziehen.\
-$P(R)=$ [[  15/25  ]]
+$P(B)=$ [[  15/25  ]]
 @Algebrite.check(15/25)
 
 **Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
-$R(R)=$ [[  3:2  ]]
+$R(B)=$ [[  15:25  ]]
 
 
 </div>

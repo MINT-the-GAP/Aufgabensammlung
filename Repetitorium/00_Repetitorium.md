@@ -787,7 +787,7 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 <h3> 26. Verhältnisse </h3>
 
 
-- Link [Erklärungen zu Fakultäten und Binomialkoeffizienten](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_04_02_Verhaltnisse.md)
+- Link [Erklärungen zu Verhältnissen](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_04_02_Verhaltnisse.md)
 
 
 

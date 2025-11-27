@@ -89,7 +89,7 @@ __$b)\;\;$__
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne6.png)
 
 **Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
-$\#(R)=$ [[  6  ]]
+$\#(B)=$ [[  6  ]]
 
 **Gib** die relative Häufigkeit der blauen Kugeln **an**.\
 $p(B)=$ [[  6/13  ]]
@@ -100,7 +100,7 @@ $P(R)=$ [[  7/13  ]]
 @Algebrite.check(7/13)
 
 **Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
-$R(R)=$ [[  7:6  ]]
+$R(B)=$ [[  7:6  ]]
 
 
 </div>
@@ -115,7 +115,7 @@ __$c)\;\;$__
 $\#(R)=$ [[  7  ]]
 
 **Gib** die relative Häufigkeit der roten Kugeln **an**.\
-$p(B)=$ [[  7/23  ]]
+$p(R)=$ [[  7/23  ]]
 @Algebrite.check(7/23)
 
 **Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
@@ -146,7 +146,7 @@ $P(R)=$ [[  5/32  ]]
 @Algebrite.check(5/32)
 
 **Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
-$R(R)=$ [[  27:5  ]]
+$R(B)=$ [[  27:5  ]]
 
 
 </div>

@@ -78,7 +78,7 @@ $p(B)=$ [[ 11/23  ]]
 @Algebrite.check(11/23)
 
 **Gib** die Wahrscheinlichkeit **an**, eine grüne Kugel zu ziehen.\
-$P(R)=$ [[ 4/23  ]]
+$P(G)=$ [[ 4/23  ]]
 @Algebrite.check(4/23)
 
 **Gib** die Chance **an**, eine rote Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
@@ -94,18 +94,18 @@ __$b)\;\;$__
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne10.png)
 
 **Gib** die absolute Häufigkeit der grünen Kugeln **an**.\
-$\#(R)=$ [[  4  ]]
+$\#(G)=$ [[  4  ]]
 
 **Gib** die relative Häufigkeit der blauen Kugeln **an**.\
 $p(B)=$ [[  4/10  ]]
 @Algebrite.check(4/10)
 
 **Gib** die Wahrscheinlichkeit **an**, eine grüne Kugel zu ziehen.\
-$P(R)=$ [[  4/10  ]]
+$P(G)=$ [[  4/10  ]]
 @Algebrite.check(4/10)
 
 **Gib** die Chance **an**, eine rote Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
-$R(R)=$ [[  1:4  ]]
+$R(R)=$ [[  2:8  ]]
 
 
 </div>
@@ -117,18 +117,18 @@ __$c)\;\;$__
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne11.png)
 
 **Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
-$\#(R)=$ [[  9  ]]
+$\#(B)=$ [[  9  ]]
 
 **Gib** die relative Häufigkeit der grüne Kugeln **an**.\
-$p(B)=$ [[  7/23  ]]
+$p(G)=$ [[  7/23  ]]
 @Algebrite.check(7/23)
 
 **Gib** die Wahrscheinlichkeit **an**, eine blaue Kugel zu ziehen.\
-$P(R)=$ [[  9/23  ]]
+$P(B)=$ [[  9/23  ]]
 @Algebrite.check(9/23)
 
 **Gib** die Chance **an**, eine grüne Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
-$R(R)=$ [[  7:16  ]]
+$R(G)=$ [[  7:16  ]]
 
 
 </div>
@@ -140,18 +140,18 @@ __$d)\;\;$__
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne12.png)
 
 **Gib** die absolute Häufigkeit der grünen Kugeln **an**.\
-$\#(R)=$ [[  6  ]]
+$\#(G)=$ [[  6  ]]
 
 **Gib** die relative Häufigkeit der roten Kugeln **an**.\
-$p(B)=$ [[  2/5  ]]
+$p(R)=$ [[  2/5  ]]
 @Algebrite.check(2/5)
 
 **Gib** die Wahrscheinlichkeit **an**, eine grüne Kugel zu ziehen.\
-$P(R)=$ [[  3/5  ]]
+$P(G)=$ [[  3/5  ]]
 @Algebrite.check(3/5)
 
 **Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
-$R(R)=$ [[  1:4  ]]
+$R(B)=$ [[  3:12  ]]
 
 
 </div>

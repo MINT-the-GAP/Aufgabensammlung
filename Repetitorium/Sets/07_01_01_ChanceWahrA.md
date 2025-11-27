@@ -1043,24 +1043,22 @@ $R=$ [[  6  ]]
 $R = x_{max} - x_{min} = 58 - 52 = 8$
 *******************
 
-
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
 __$b)\;\;$__ **Gib** den Median **an**.\
-$\tilde{x}=$ [[ 55  ]]
+$\tilde{x}=$ [[ 55,5  ]]
 *******************
-$\{ 52,53,54,54,54,55,55,\textcolor{red}{55},56,56,56,56,57,57,58  \}$
+$\{ 52,53,54,54,54,55,55,\textcolor{red}{55},\textcolor{red}{56},56,56,56,56,57,57,58  \}$
 *******************
 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
 __$c)\;\;$__ **Gib** das arithmetische Mittel **an**.\
-$\bar{x}=$ [[  51,6  ]]
+$\bar{x}=$ [[  55,25  ]]
+
 
 
 </div> 
@@ -1123,6 +1121,7 @@ $\bar{x}=$ [[  33,067  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 11:__ In den dargestellten Gefäßen befinden sich Kugeln unterschiedlicher Farben. 
 
+
 <section class="flex-container">
 
 <div class="flex-child">
@@ -1131,21 +1130,17 @@ __$a)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne5.png)
 
-<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  4  ]]
 
-<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der blauen Kugeln **an**.\
 $p(B)=$ [[ 25/29  ]]
 @Algebrite.check(25/29)
 
-<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
 $P(R)=$ [[  4/29  ]]
 @Algebrite.check(4/29)
 
-<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R)=$ [[  25:4  ]]
 
@@ -1158,23 +1153,19 @@ __$b)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne6.png)
 
-<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
-$\#(R)=$ [[  6  ]]
+$\#(B)=$ [[  6  ]]
 
-<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der blauen Kugeln **an**.\
 $p(B)=$ [[  6/13  ]]
 @Algebrite.check(6/13)
 
-<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
 $P(R)=$ [[  7/13  ]]
 @Algebrite.check(7/13)
 
-<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
-$R(R)=$ [[  7:6  ]]
+$R(B)=$ [[  7:6  ]]
 
 
 </div>
@@ -1185,21 +1176,17 @@ __$c)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne7.png)
 
-<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  7  ]]
 
-<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der roten Kugeln **an**.\
-$p(B)=$ [[  7/23  ]]
+$p(R)=$ [[  7/23  ]]
 @Algebrite.check(7/23)
 
-<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
 $P(R)=$ [[  7/23  ]]
 @Algebrite.check(7/23)
 
-<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine rote Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R)=$ [[  7:16  ]]
 
@@ -1212,23 +1199,19 @@ __$d)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne8.png)
 
-<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  5  ]]
 
-<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der blauen Kugeln **an**.\
 $p(B)=$ [[  27/32  ]]
 @Algebrite.check(27/32)
 
-<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
 $P(R)=$ [[  5/32  ]]
 @Algebrite.check(5/32)
 
-<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
-$R(R)=$ [[  27:5  ]]
+$R(B)=$ [[  27:5  ]]
 
 
 </div>
@@ -1237,10 +1220,14 @@ $R(R)=$ [[  27:5  ]]
 
 
 
+
+
 <!-- Chance 0012 -->
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 12:__ In den dargestellten Gefäßen befinden sich Kugeln unterschiedlicher Farben. 
+
+
 
 
 <section class="flex-container">
@@ -1251,21 +1238,17 @@ __$a)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne1.png)
 
-<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  7  ]]
 
-<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der blauen Kugeln **an**.\
 $p(B)=$ [[ 15/22  ]]
 @Algebrite.check(15/22)
 
-<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
 $P(R)=$ [[ 7/22  ]]
 @Algebrite.check(7/22)
 
-<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine rote Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R)=$ [[  7:15  ]]
 
@@ -1278,21 +1261,17 @@ __$b)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne2.png)
 
-<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  5  ]]
 
-<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der blauen Kugeln **an**.\
 $p(B)=$ [[ 12/17  ]]
 @Algebrite.check(12/17)
 
-<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine blaue Kugel zu ziehen.\
-$P(R)=$ [[ 12/17  ]]
+$P(B)=$ [[ 12/17  ]]
 @Algebrite.check(12/17)
 
-<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine rote Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R)=$ [[  5:12  ]]
 
@@ -1305,23 +1284,19 @@ __$c)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne3.png)
 
-<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
-$\#(R)=$ [[  6  ]]
+$\#(B)=$ [[  6  ]]
 
-<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der roten Kugeln **an**.\
-$p(B)=$ [[ 6/12  ]]
+$p(R)=$ [[ 6/12  ]]
 @Algebrite.check(6/12)
 
-<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
 $P(R)=$ [[ 6/12  ]]
 @Algebrite.check(7/22)
 
-<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
-$R(R)=$ [[  1:1  ]]
+$R(B)=$ [[  6:6  ]]
 
 
 </div>
@@ -1332,28 +1307,34 @@ __$d)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne4.png)
 
-<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  10  ]]
 
-<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der roten Kugeln **an**.\
-$p(B)=$ [[  10/25  ]]
+$p(R)=$ [[  10/25  ]]
 @Algebrite.check(10/25)
 
-<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine blaue Kugel zu ziehen.\
-$P(R)=$ [[  15/25  ]]
+$P(B)=$ [[  15/25  ]]
 @Algebrite.check(15/25)
 
-<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
-$R(R)=$ [[  3:2  ]]
+$R(B)=$ [[  15:25  ]]
 
 
 </div>
 
 </section>
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1372,21 +1353,17 @@ __$a)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne9.png)
 
-<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  8  ]]
 
-<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der blauen Kugeln **an**.\
 $p(B)=$ [[ 11/23  ]]
 @Algebrite.check(11/23)
 
-<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine grüne Kugel zu ziehen.\
-$P(R)=$ [[ 4/23  ]]
+$P(G)=$ [[ 4/23  ]]
 @Algebrite.check(4/23)
 
-<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine rote Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R)=$ [[  8:15  ]]
 
@@ -1399,23 +1376,19 @@ __$b)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne10.png)
 
-<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der grünen Kugeln **an**.\
-$\#(R)=$ [[  4  ]]
+$\#(G)=$ [[  4  ]]
 
-<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der blauen Kugeln **an**.\
 $p(B)=$ [[  4/10  ]]
 @Algebrite.check(4/10)
 
-<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine grüne Kugel zu ziehen.\
-$P(R)=$ [[  4/10  ]]
+$P(G)=$ [[  4/10  ]]
 @Algebrite.check(4/10)
 
-<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine rote Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
-$R(R)=$ [[  1:4  ]]
+$R(R)=$ [[  2:8  ]]
 
 
 </div>
@@ -1426,23 +1399,19 @@ __$c)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne11.png)
 
-<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
-$\#(R)=$ [[  9  ]]
+$\#(B)=$ [[  9  ]]
 
-<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der grüne Kugeln **an**.\
-$p(B)=$ [[  7/23  ]]
+$p(G)=$ [[  7/23  ]]
 @Algebrite.check(7/23)
 
-<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine blaue Kugel zu ziehen.\
-$P(R)=$ [[  9/23  ]]
+$P(B)=$ [[  9/23  ]]
 @Algebrite.check(9/23)
 
-<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine grüne Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
-$R(R)=$ [[  7:16  ]]
+$R(G)=$ [[  7:16  ]]
 
 
 </div>
@@ -1453,23 +1422,19 @@ __$d)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne12.png)
 
-<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der grünen Kugeln **an**.\
-$\#(R)=$ [[  6  ]]
+$\#(G)=$ [[  6  ]]
 
-<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der roten Kugeln **an**.\
-$p(B)=$ [[  2/5  ]]
+$p(R)=$ [[  2/5  ]]
 @Algebrite.check(2/5)
 
-<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine grüne Kugel zu ziehen.\
-$P(R)=$ [[  3/5  ]]
+$P(G)=$ [[  3/5  ]]
 @Algebrite.check(3/5)
 
-<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
-$R(R)=$ [[  1:4  ]]
+$R(B)=$ [[  3:12  ]]
 
 
 </div>
@@ -1484,6 +1449,8 @@ $R(R)=$ [[  1:4  ]]
 __Aufgabe 14:__ In den dargestellten Gefäßen befinden sich Kugeln unterschiedlicher Farben. 
 
 
+
+
 <section class="flex-container">
 
 <div class="flex-child">
@@ -1492,23 +1459,19 @@ __$a)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne13.png)
 
-<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  6  ]]
 
-<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der grünen Kugeln **an**.\
-$p(B)=$ [[ 7/24  ]]
+$p(G)=$ [[ 7/24  ]]
 @Algebrite.check(7/24)
 
-<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine grüne Kugel zu ziehen.\
-$P(R)=$ [[  7/24  ]]
+$P(G)=$ [[  7/24  ]]
 @Algebrite.check(7/24)
 
-<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
-$R(R)=$ [[  8:15  ]]
+$R(B)=$ [[  11:13  ]]
 
 
 </div>
@@ -1519,23 +1482,19 @@ __$b)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne14.png)
 
-<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der grünen Kugeln **an**.\
-$\#(R)=$ [[  9  ]]
+$\#(G)=$ [[  9  ]]
 
-<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der blauen Kugeln **an**.\
 $p(B)=$ [[  8/23  ]]
 @Algebrite.check(8/23)
 
-<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
 $P(R)=$ [[  6/23  ]]
 @Algebrite.check(6/23)
 
-<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine grüne Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
-$R(R)=$ [[  9:14  ]]
+$R(G)=$ [[  9:14  ]]
 
 
 </div>
@@ -1546,23 +1505,19 @@ __$c)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne15.png)
 
-<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
-$\#(R)=$ [[  9  ]]
+$\#(B)=$ [[  9  ]]
 
-<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der roten Kugeln **an**.\
 $p(B)=$ [[  10/23  ]]
 @Algebrite.check(10/23)
 
-<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine grüne Kugel zu ziehen.\
-$P(R)=$ [[  4/23  ]]
+$P(G)=$ [[  4/23  ]]
 @Algebrite.check(4/23)
 
-<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
-$R(R)=$ [[  9:14  ]]
+$R(B)=$ [[  9:14  ]]
 
 
 </div>
@@ -1570,32 +1525,29 @@ $R(R)=$ [[  9:14  ]]
 <div class="flex-child">
 __$d)\;\;$__ 
 
-
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne16.png)
 
-<!-- data-solution-button="5" -->
 **Gib** die absolute Häufigkeit der grünen Kugeln **an**.\
-$\#(R)=$ [[  10  ]]
+$\#(G)=$ [[  10  ]]
 
-<!-- data-solution-button="5" -->
 **Gib** die relative Häufigkeit der roten Kugeln **an**.\
-$p(B)=$ [[  8/27  ]]
+$p(R)=$ [[  8/27  ]]
 @Algebrite.check(8/27)
 
-<!-- data-solution-button="5" -->
 **Gib** die Wahrscheinlichkeit **an**, eine blaue Kugel zu ziehen.\
-$P(R)=$ [[  9/27  ]]
+$P(B)=$ [[  9/27  ]]
 @Algebrite.check(9/27)
 
-<!-- data-solution-button="5" -->
 **Gib** die Chance **an**, eine grüne Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
-$R(R)=$ [[  4:19  ]]
+$R(G)=$ [[  10:17  ]]
 
 
 </div>
 
 </section>
+
+
 
 
 
