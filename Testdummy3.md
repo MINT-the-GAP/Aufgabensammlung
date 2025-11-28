@@ -10,57 +10,6 @@ comment:
 author: Martin Lommatzsch
 
 
-@style
-main > *:not(:last-child) {
-  margin-bottom: 3rem;
-}
-
-input {
-    text-align: center;
-}
-
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    gap: 20px;
-}
-
-.flex-child {
-    flex: 1;
-    min-width: 350px;
-    margin-right: 20px;
-}
-
-@media (max-width: 400px) {
-    .flex-child {
-        flex: 100%;
-        margin-right: 0;
-    }
-}
-
-.tree2 {
-  position: relative;
-  width: 520px;
-  height: 260px;
-  margin: 1em auto;
-  font-family: sans-serif;
-}
-
-/* SVG als Hintergrund-Layer */
-.tree2 svg {
-  position: absolute;
-  inset: 0; /* top:0; right:0; bottom:0; left:0; */
-}
-
-/* Labels & Eingabefelder oben drauf */
-.tree2 .tree-node {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  white-space: nowrap;
-  font-size: 0.9rem;
-}
-@end
 
 
 
@@ -81,6 +30,102 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/hea
 
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
+
+
+@style
+
+.tree2 {
+  position: relative;
+  width: 800px;
+  height: 480px;
+  margin: 1em auto;
+  font-family: sans-serif;
+}
+
+/* SVG-Layer */
+.tree2 svg {
+  position: absolute;
+  inset: 0;
+}
+
+/* Knoten-Beschriftungen (Start, A, ¬A, ...) */
+.tree2 .tree-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* Pfad-Container: wird gedreht und positioniert */
+.tree2 .tree-edge {
+  position: absolute;
+  display: inline-block;
+  transform-origin: 50% 0%;   /* Anker: oben, mittig */
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* Rotationen für die Pfade – Kopf bleibt an left/top */
+.tree2 .edge-l1-left  { transform: translate(-50%, 0%) rotate(-40deg); }
+.tree2 .edge-l1-right { transform: translate(-50%, 0%) rotate( 40deg); }
+
+/* 2. Stufe: stärker geneigt */
+.tree2 .edge-l2-left  { transform: translate(-50%, 0%) rotate(-64deg); }
+.tree2 .edge-l2-right { transform: translate(-50%, 0%) rotate( 64deg); }
+
+/* Eine „Zeile“ aus Label + Quiz, die nicht umbrechen darf,
+   aber in einem festen Kasten steckt */
+.tree2 .tree-line {
+  display: inline-block;
+  width: 9em;            /* Breite des „Pfad-Kastens“ */
+  text-align: center;
+  white-space: nowrap;    /* P(...) = [[...]] bleibt immer in EINER Zeile */
+}
+
+/* LiaScript-Quiz: innerhalb der 11em-Box; hier darf UMBROCH passieren */
+.tree2 .tree-line .lia-quiz {
+  display: inline-block;
+  max-width: 80%;               /* nicht breiter als tree-line */
+  white-space: normal !important;/* bricht Zeilen innerhalb des Quiz */
+  text-align: center;
+}
+
+/* Eingabefeld im Pfad etwas größer und schmal */
+.tree2 .tree-line .lia-quiz .lia-input {
+  font-size: 1.5rem;
+  width: 3em;
+}
+
+/* Prüfen-/Auflösen-Buttons etwas kleiner */
+.tree2 .tree-line .lia-quiz .lia-btn {
+  font-size: 0.8rem;
+}
+
+/* Aufklapp-Feedbacktext: an die Linienbreite angepasst */
+.tree2 .tree-line .lia-quiz span,
+.tree2 .tree-line .lia-quiz p {
+  display: block !important;
+  max-width: 100%;               /* orientiert sich an der 11em-Box */
+  white-space: normal !important;/* Text darf umbrechen */
+  word-wrap: break-word;
+  font-size: 0.8rem;
+  line-height: 1.1;
+  margin-top: 0.2em;
+  text-align: center;
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
 -->
 
 
@@ -92,117 +137,133 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 <div class="tree2">
 
-<!-- Baumstruktur als SVG -->
-<svg viewBox="0 0 100 60">
-  <!-- erste Stufe -->
-  <line x1="50" y1="10" x2="25" y2="25" stroke="black" />
-  <line x1="50" y1="10" x2="75" y2="25" stroke="black" />
-  <!-- zweite Stufe links -->
-  <line x1="25" y1="25" x2="15" y2="50" stroke="black" />
-  <line x1="25" y1="25" x2="35" y2="50" stroke="black" />
-  <!-- zweite Stufe rechts -->
-  <line x1="75" y1="25" x2="65" y2="50" stroke="black" />
-  <line x1="75" y1="25" x2="85" y2="50" stroke="black" />
+
+<svg viewBox="0 0 100 70">
+
+  <defs>
+    <!-- Latex-ähnliche Pfeilspitze, innen weiß, schwarz umrandet -->
+    <marker id="arrow-white" markerWidth="10" markerHeight="10"
+            refX="7" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3.5 L0,7 z"
+            fill="white" stroke="black" stroke-width="0.6" />
+    </marker>
+  </defs>
+
+  <!-- 1. Stufe: Start -> A und Start -> ¬A -->
+  <!-- schwarze Linien leicht gekürzt -->
+  <line x1="50" y1="10" x2="25.78" y2="29.38"
+        stroke="black" stroke-width="1" stroke-linecap="butt" />
+  <line x1="50" y1="10" x2="25" y2="30"
+        stroke="white" stroke-width="0.5" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <line x1="50" y1="10" x2="74.22" y2="29.38"
+        stroke="black" stroke-width="1" stroke-linecap="butt" />
+  <line x1="50" y1="10" x2="75" y2="30"
+        stroke="white" stroke-width="0.5" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+
+  <!-- 2. Stufe links: A -> B|A und A -> ¬B|A -->
+  <line x1="25" y1="35" x2="10.45" y2="64.11"
+        stroke="black" stroke-width="1" stroke-linecap="butt" />
+  <line x1="25" y1="35" x2="10" y2="65"
+        stroke="white" stroke-width="0.5" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <line x1="25" y1="35" x2="39.55" y2="64.11"
+        stroke="black" stroke-width="1" stroke-linecap="butt" />
+  <line x1="25" y1="35" x2="40" y2="65"
+        stroke="white" stroke-width="0.5" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- 2. Stufe rechts: ¬A -> B|¬A und ¬A -> ¬B|¬A -->
+  <line x1="75" y1="35" x2="60.45" y2="64.11"
+        stroke="black" stroke-width="1" stroke-linecap="butt" />
+  <line x1="75" y1="35" x2="60" y2="65"
+        stroke="white" stroke-width="0.5" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <line x1="75" y1="35" x2="89.55" y2="64.11"
+        stroke="black" stroke-width="1" stroke-linecap="butt" />
+  <line x1="75" y1="35" x2="90" y2="65"
+        stroke="white" stroke-width="0.5" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
 </svg>
 
-<!-- Knotenbeschriftungen -->
-<span class="tree-node" style="left:50%; top:10%;">Start</span>
 
-<span class="tree-node" style="left:25%; top:25%;">$A$</span>
-<span class="tree-node" style="left:75%; top:25%;">$\bar{A}$</span>
 
-<span class="tree-node" style="left:15%; top:50%;">$B \mid A$</span>
-<span class="tree-node" style="left:35%; top:50%;">$\bar{B} \mid A$</span>
+  <span class="tree-node" style="left:50%; top:12.3%;"> <big>Start</big> </span>
 
-<span class="tree-node" style="left:65%; top:50%;">$B \mid \bar{A}$</span>
-<span class="tree-node" style="left:85%; top:50%;">$\bar{B} \mid \bar{A}$</span>
 
-<!-- Eingabefelder für die Wahrscheinlichkeiten auf den Ästen -->
-<span class="tree-node" style="left:33%; top:18%;">
-  $P(A) = $ [[ 0.4 ]]
+  <span class="tree-node" style="left:25%; top:55%;">
+    $P(A)$
+  </span>
+  <span class="tree-node" style="left:75%; top:55%;">
+    $P(\bar{A})$
+  </span>
+
+
+  <span class="tree-node" style="left:10%; top:113%;">
+    $P(B \cap A)$
+  </span>
+  <span class="tree-node" style="left:40%; top:113%;">
+    $P(\bar{B} \cap A)$
+  </span>
+
+  <span class="tree-node" style="left:60%; top:113%;">
+    $P(B \cap \bar{A})$
+  </span>
+  <span class="tree-node" style="left:90%; top:113%;">
+    $P(\bar{B} \cap \bar{A})$
+  </span>
+
+
+
+
+
+<span class="tree-edge edge-l1-left" style="left:35.25%; top:28%;">
+<span class="tree-line">
+  $P(A) =$ [[ 0.4 ]]
+</span>
 </span>
 
-<span class="tree-node" style="left:67%; top:18%;">
-  $P(\bar{A}) = $ [[ 0.6 ]]
+<span class="tree-edge edge-l1-right" style="left:64.5%; top:28%;">
+<span class="tree-line">
+  $P(\bar{A}) =$ [[ 0.6 ]]
+</span>
 </span>
 
-<span class="tree-node" style="left:20%; top:40%;">
-  $P(B \mid A) = $ [[ 0.3 ]]
+<span class="tree-edge edge-l2-left" style="left:14%; top:80%;">
+<span class="tree-line">
+  $P(B \mid A) =$ [[ 0.3 ]]
+</span>
 </span>
 
-<span class="tree-node" style="left:30%; top:40%;">
-  $P(\bar{B} \mid A) = $ [[ 0.7 ]]
+<span class="tree-edge edge-l2-right" style="left:35.5%; top:80%;">
+<span class="tree-line">
+  $P(\bar{B} \mid A) =$ [[ 0.7 ]]
+</span>
 </span>
 
-<span class="tree-node" style="left:70%; top:40%;">
-  $P(B \mid \bar{A}) = $ [[ 0.2 ]]
+<span class="tree-edge edge-l2-left" style="left:64%; top:80%;">
+<span class="tree-line">
+  $P(B \mid \bar{A}) =$ [[ 0.2 ]]
+</span>
 </span>
 
-<span class="tree-node" style="left:80%; top:40%;">
-  $P(\bar{B} \mid \bar{A}) = $ [[ 0.8 ]]
+<span class="tree-edge edge-l2-right" style="left:85.5%; top:80%;">
+<span class="tree-line">
+  $P(\bar{B} \mid \bar{A}) =$ [[ 0.8 ]]
+</span>
 </span>
 
+
+
+
 </div>
 
 
 
-# Brüche markieren
-
-
-
-Teile den Kreis mittels des Schieberegler passend ein und markiere durch klicken den angegeben Bruchteil.
-
-
-<section class="flex-container">
-
-<div class="flex-child">
-__$a)\;\;$__ $\dfrac{2}{7}$
-
-<!-- data-solution-button="5"-->
-@circleQuiz(2/7)
-
-</div>
-
-<div class="flex-child">
-__$b)\;\;$__ $\dfrac{8}{9}$
-
-<!-- data-solution-button="5"-->
-@circleQuiz(8/9)
-
-</div>
-
-<div class="flex-child">
-__$c)\;\;$__ $\dfrac{3}{5}$
-
-<!-- data-solution-button="5"-->
-@circleQuiz(3/5)
-
-</div>
-
-<div class="flex-child">
-__$d)\;\;$__ $\dfrac{3}{8}$
-
-<!-- data-solution-button="5"-->
-@circleQuiz(3/8)
-
-</div>
-
-<div class="flex-child">
-__$e)\;\;$__ $\dfrac{5}{12}$
-
-<!-- data-solution-button="5"-->
-@circleQuiz(5/12)
-
-</div>
-
-<div class="flex-child">
-__$f)\;\;$__ $\dfrac{3}{20}$
-
-
-<!-- data-solution-button="5"-->
-@circleQuiz(3/20)
-
-</div>
-
-</section>
 
