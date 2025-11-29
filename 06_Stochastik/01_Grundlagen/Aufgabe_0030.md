@@ -71,6 +71,12 @@ __$a)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne29.png)
 
+
+</div>
+<div class="flex-child">
+
+
+
 **Gib** die absolute Häufigkeit der nicht grauen Kugeln **an**.\
 $\#(\bar{G})=$ [[  11  ]]
 
@@ -94,12 +100,24 @@ $P(B)=$ [[  4/14  ]]
 
 
 </div>
+</section>
+
+
+---
+
+
+<section class="flex-container">
 
 <div class="flex-child">
 __$b)\;\;$__
 
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne30.png)
+
+
+</div>
+<div class="flex-child">
+
 
 **Gib** die absolute Häufigkeit der violetten Kugeln **an**.\
 $\#(V)=$ [[  4  ]]
@@ -124,12 +142,24 @@ $R(R)=$ [[  14:5  ]]
 
 
 </div>
+</section>
+
+---
+
+
+
+<section class="flex-container">
 
 <div class="flex-child">
 __$c)\;\;$__
 
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne31.png)
+
+
+</div>
+<div class="flex-child">
+
 
 **Gib** die absolute Häufigkeit der nicht orangen Kugeln **an**.\
 $\#(\bar{O})=$ [[  23  ]]

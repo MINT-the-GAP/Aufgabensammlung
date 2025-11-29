@@ -1130,6 +1130,9 @@ __$a)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne5.png)
 
+</div>
+<div class="flex-child">
+
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  4  ]]
 
@@ -1146,12 +1149,19 @@ $R(R)=$ [[  25:4  ]]
 
 
 </div>
+</section>
 
+---
+
+<section class="flex-container">
 <div class="flex-child">
 __$b)\;\;$__ 
 
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne6.png)
+
+</div>
+<div class="flex-child">
 
 **Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
 $\#(B)=$ [[  6  ]]
@@ -1169,12 +1179,22 @@ $R(B)=$ [[  7:6  ]]
 
 
 </div>
+</section>
 
+---
+
+
+<section class="flex-container">
 <div class="flex-child">
 __$c)\;\;$__ 
 
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne7.png)
+
+
+
+</div>
+<div class="flex-child">
 
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  7  ]]
@@ -1193,11 +1213,22 @@ $R(R)=$ [[  7:16  ]]
 
 </div>
 
+</section>
+
+---
+
+
+<section class="flex-container">
 <div class="flex-child">
 __$d)\;\;$__ 
 
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne8.png)
+
+
+
+</div>
+<div class="flex-child">
 
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  5  ]]
@@ -1238,6 +1269,11 @@ __$a)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne1.png)
 
+
+</div>
+<div class="flex-child">
+
+
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  7  ]]
 
@@ -1254,12 +1290,24 @@ $R(R)=$ [[  7:15  ]]
 
 
 </div>
+</section>
+
+
+---
+
+
+<section class="flex-container">
 
 <div class="flex-child">
 __$b)\;\;$__ 
 
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne2.png)
+
+
+</div>
+<div class="flex-child">
+
 
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  5  ]]
@@ -1277,12 +1325,24 @@ $R(R)=$ [[  5:12  ]]
 
 
 </div>
+</section>
+
+
+---
+
+
+<section class="flex-container">
 
 <div class="flex-child">
 __$c)\;\;$__ 
 
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne3.png)
+
+
+</div>
+<div class="flex-child">
+
 
 **Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
 $\#(B)=$ [[  6  ]]
@@ -1300,12 +1360,24 @@ $R(B)=$ [[  6:6  ]]
 
 
 </div>
+</section>
+
+
+---
+
+
+<section class="flex-container">
 
 <div class="flex-child">
 __$d)\;\;$__ 
 
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne4.png)
+
+
+</div>
+<div class="flex-child">
+
 
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  10  ]]
@@ -1353,6 +1425,11 @@ __$a)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne9.png)
 
+
+</div>
+<div class="flex-child">
+
+
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  8  ]]
 
@@ -1369,12 +1446,24 @@ $R(R)=$ [[  8:15  ]]
 
 
 </div>
+</section>
+
+
+---
+
+
+<section class="flex-container">
 
 <div class="flex-child">
 __$b)\;\;$__ 
 
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne10.png)
+
+
+</div>
+<div class="flex-child">
+
 
 **Gib** die absolute Häufigkeit der grünen Kugeln **an**.\
 $\#(G)=$ [[  4  ]]
@@ -1392,12 +1481,24 @@ $R(R)=$ [[  2:8  ]]
 
 
 </div>
+</section>
+
+
+---
+
+
+<section class="flex-container">
 
 <div class="flex-child">
 __$c)\;\;$__ 
 
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne11.png)
+
+
+</div>
+<div class="flex-child">
+
 
 **Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
 $\#(B)=$ [[  9  ]]
@@ -1415,12 +1516,24 @@ $R(G)=$ [[  7:16  ]]
 
 
 </div>
+</section>
+
+
+---
+
+
+<section class="flex-container">
 
 <div class="flex-child">
 __$d)\;\;$__ 
 
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne12.png)
+
+
+</div>
+<div class="flex-child">
+
 
 **Gib** die absolute Häufigkeit der grünen Kugeln **an**.\
 $\#(G)=$ [[  6  ]]
@@ -1459,6 +1572,11 @@ __$a)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne13.png)
 
+
+</div>
+<div class="flex-child">
+
+
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  6  ]]
 
@@ -1475,12 +1593,24 @@ $R(B)=$ [[  11:13  ]]
 
 
 </div>
+</section>
+
+
+---
+
+
+<section class="flex-container">
 
 <div class="flex-child">
 __$b)\;\;$__
 
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne14.png)
+
+
+</div>
+<div class="flex-child">
+
 
 **Gib** die absolute Häufigkeit der grünen Kugeln **an**.\
 $\#(G)=$ [[  9  ]]
@@ -1498,12 +1628,24 @@ $R(G)=$ [[  9:14  ]]
 
 
 </div>
+</section>
+
+
+---
+
+
+<section class="flex-container">
 
 <div class="flex-child">
 __$c)\;\;$__
 
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne15.png)
+
+
+</div>
+<div class="flex-child">
+
 
 **Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
 $\#(B)=$ [[  9  ]]
@@ -1521,12 +1663,24 @@ $R(B)=$ [[  9:14  ]]
 
 
 </div>
+</section>
+
+
+---
+
+
+<section class="flex-container">
 
 <div class="flex-child">
 __$d)\;\;$__ 
 
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne16.png)
+
+
+</div>
+<div class="flex-child">
+
 
 **Gib** die absolute Häufigkeit der grünen Kugeln **an**.\
 $\#(G)=$ [[  10  ]]
@@ -1913,6 +2067,11 @@ __$a)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne17.png)
 
+
+</div>
+<div class="flex-child">
+
+
 **Gib** die absolute Häufigkeit der grünen Kugeln **an**.\
 $\#(G)=$ [[  5  ]]
 
@@ -1936,12 +2095,24 @@ $R(R \cup B)=$ [[  10:8  ]]
 
 
 </div>
+</section>
+
+
+---
+
+
+<section class="flex-container">
 
 <div class="flex-child">
 __$b)\;\;$__
 
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne18.png)
+
+
+</div>
+<div class="flex-child">
+
 
 **Gib** die absolute Häufigkeit der violette Kugeln **an**.\
 $\#(V)=$ [[  6  ]]
@@ -1966,12 +2137,24 @@ $R(O \cup V)=$ [[  9:11  ]]
 
 
 </div>
+</section>
+
+---
+
+
+
+<section class="flex-container">
 
 <div class="flex-child">
 __$c)\;\;$__
 
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne19.png)
+
+
+</div>
+<div class="flex-child">
+
 
 
 **Gib** die relative Häufigkeit der violetten und grünen Kugeln **an**.\
@@ -2026,6 +2209,11 @@ __$a)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne20.png)
 
+
+</div>
+<div class="flex-child">
+
+
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  5  ]]
 
@@ -2050,12 +2238,24 @@ $P(R \cup B \cup G)=$ [[  15/20  ]]
 
 
 </div>
+</section>
+
+---
+
+
+
+<section class="flex-container">
 
 <div class="flex-child">
 __$b)\;\;$__
 
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne21.png)
+
+
+</div>
+<div class="flex-child">
+
 
 **Gib** die absolute Häufigkeit der orange Kugeln **an**.\
 $\#(O)=$ [[  7  ]]
@@ -2081,12 +2281,24 @@ $P(\bar{V} \cup \bar{B})=$ [[  11/22  ]]
 
 
 </div>
+</section>
+
+
+---
+
+
+<section class="flex-container">
 
 <div class="flex-child">
 __$c)\;\;$__
 
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne22.png)
+
+
+</div>
+<div class="flex-child">
+
 
 **Gib** die absolute Häufigkeit der blauen und orangen Kugeln **an**.\
 $\#(B \cup O)=$ [[  10  ]]
@@ -2141,6 +2353,11 @@ __$a)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne23.png)
 
+
+</div>
+<div class="flex-child">
+
+
 **Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
 $\#(B)=$ [[  9  ]]
 
@@ -2164,12 +2381,24 @@ $R(V)=$ [[  4:15  ]]
 
 
 </div>
+</section>
+
+---
+
+
+
+<section class="flex-container">
 
 <div class="flex-child">
 __$b)\;\;$__
 
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne24.png)
+
+
+</div>
+<div class="flex-child">
+
 
 **Gib** die absolute Häufigkeit der grünen Kugeln **an**.\
 $\#(G)=$ [[  10  ]]
@@ -2195,12 +2424,24 @@ $P(\bar{G})=$ [[  10/20  ]]
 
 
 </div>
+</section>
+
+
+---
+
+
+<section class="flex-container">
 
 <div class="flex-child">
 __$c)\;\;$__
 
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne25.png)
+
+
+</div>
+<div class="flex-child">
+
 
 **Gib** die absolute Häufigkeit der violetten und grauen Kugeln **an**.\
 $\#(V \cup G)=$ [[  11  ]]
@@ -2250,6 +2491,11 @@ __$a)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne26.png)
 
+
+</div>
+<div class="flex-child">
+
+
 **Gib** die absolute Häufigkeit der orangen Kugeln **an**.\
 $\#(O)=$ [[  4  ]]
 
@@ -2274,12 +2520,24 @@ $P(\bar{R} \cup \bar{O})=$ [[  17/24  ]]
 
 
 </div>
+</section>
+
+
+---
+
+
+<section class="flex-container">
 
 <div class="flex-child">
 __$b)\;\;$__
 
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne27.png)
+
+
+</div>
+<div class="flex-child">
+
 
 **Gib** die absolute Häufigkeit der orangen Kugeln **an**.\
 $\#(O)=$ [[  3  ]]
@@ -2305,12 +2563,24 @@ $p(B \cup R)=$ [[  13/22  ]]
 
 
 </div>
+</section>
+
+
+---
+
+
+<section class="flex-container">
 
 <div class="flex-child">
 __$c)\;\;$__
 
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne28.png)
+
+
+</div>
+<div class="flex-child">
+
 
 **Gib** die absolute Häufigkeit der grauen Kugeln **an**.\
 $\#(G)=$ [[  3  ]]
@@ -2365,6 +2635,11 @@ __$a)\;\;$__
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne29.png)
 
+
+</div>
+<div class="flex-child">
+
+
 **Gib** die absolute Häufigkeit der nicht grauen Kugeln **an**.\
 $\#(\bar{G})=$ [[  11  ]]
 
@@ -2388,12 +2663,24 @@ $P(B)=$ [[  4/14  ]]
 
 
 </div>
+</section>
+
+
+---
+
+
+<section class="flex-container">
 
 <div class="flex-child">
 __$b)\;\;$__
 
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne30.png)
+
+
+</div>
+<div class="flex-child">
+
 
 **Gib** die absolute Häufigkeit der violetten Kugeln **an**.\
 $\#(V)=$ [[  4  ]]
@@ -2418,12 +2705,23 @@ $R(R)=$ [[  14:5  ]]
 
 
 </div>
+</section>
+
+
+---
+
+
+<section class="flex-container">
 
 <div class="flex-child">
 __$c)\;\;$__
 
 <!-- style="width:350px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne31.png)
+
+
+</div>
+<div class="flex-child">
 
 **Gib** die absolute Häufigkeit der nicht orangen Kugeln **an**.\
 $\#(\bar{O})=$ [[  23  ]]

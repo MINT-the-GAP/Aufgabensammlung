@@ -1016,6 +1016,7 @@ Das Wort „*Stochastik*“ geht auf das griechische stochastikos zurück und be
 
 
 - Link [Erklärungen zum "Von"-Prinzip](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_02_02_VonPrinzip.md)
+- Link [Erklärungen zu Baumdiagrammen und bedingter Wahrscheinlichkeit](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_02_01_Baumdiagramme.md)
 
 
 
