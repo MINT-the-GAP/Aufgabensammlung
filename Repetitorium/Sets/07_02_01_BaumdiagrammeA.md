@@ -2296,3 +2296,1601 @@ $$
 
 
 
+
+
+
+
+
+
+<!-- Baumdiagramme 0003 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 9:__ In einem Gefäß befinden sich 5 schwarze (S), 7 grüne (G) und 11 weiße (W) Kugeln für zwei Ziehungen mit Zurücklegen.
+
+
+
+
+
+ __$a) \;\;$__ **Skizziere** ein Baumdiagramm für den beschriebenen Fall. 
+
+
+
+[[!]]
+<script>true</script>
+*************
+
+
+
+
+<!-- data-group="true" data-show-partial-solution="true"
+     data-text-solved="Richtig!" data-text-failed="Falsch!"
+     data-text-resolved="Aufgelöst!" -->
+<svg class="tree3" viewBox="70 0 850 700">
+
+  <defs>
+    <!-- Latex-ähnliche Pfeilspitze, innen weiß, schwarz umrandet -->
+    <marker id="arrow-white" markerWidth="10" markerHeight="10"
+            refX="7" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3.5 L0,7 z"
+            fill="white" stroke="black" stroke-width="0.6" />
+    </marker>
+  </defs>
+
+  <!-- =======================
+       Kanten des Baumdiagramms
+       3 Ausgänge: S, G, W
+       und je 3 Folgezweige
+       ======================= -->
+
+  <!-- Startknoten: (120, 360) -->
+
+  <!-- 1. Stufe: Start -> S (etwas höher gesetzt) -->
+  <line x1="120" y1="360" x2="320" y2="150"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="120" y1="360" x2="320" y2="150"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- 1. Stufe: Start -> G (Mitte) -->
+  <line x1="120" y1="360" x2="320" y2="360"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="120" y1="360" x2="320" y2="360"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- 1. Stufe: Start -> W (etwas tiefer gesetzt) -->
+  <line x1="120" y1="360" x2="320" y2="570"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="120" y1="360" x2="320" y2="570"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+
+  <!-- 2. Stufe: je 3 Ausgänge von S, G, W, mit größeren Abständen:
+       S-Kinder: y =  60, 150, 240
+       G-Kinder: y = 300, 360, 420
+       W-Kinder: y = 480, 570, 660
+  -->
+
+  <!-- Von S (320,150) zu (650, 60), (650,150), (650,240) -->
+
+  <!-- S -> S | S -->
+  <line x1="435" y1="150" x2="650" y2="60"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="150" x2="650" y2="60"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- S -> G | S -->
+  <line x1="435" y1="150" x2="650" y2="150"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="150" x2="650" y2="150"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- S -> W | S -->
+  <line x1="435" y1="150" x2="650" y2="240"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="150" x2="650" y2="240"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+
+  <!-- Von G (320,360) zu (650,300), (650,360), (650,420) -->
+
+  <!-- G -> S | G -->
+  <line x1="435" y1="360" x2="650" y2="300"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="360" x2="650" y2="300"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- G -> G | G -->
+  <line x1="435" y1="360" x2="650" y2="360"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="360" x2="650" y2="360"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- G -> W | G -->
+  <line x1="435" y1="360" x2="650" y2="420"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="360" x2="650" y2="420"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+
+  <!-- Von W (320,570) zu (650,480), (650,570), (650,660) -->
+
+  <!-- W -> S | W -->
+  <line x1="435" y1="570" x2="650" y2="480"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="570" x2="650" y2="480"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- W -> G | W -->
+  <line x1="435" y1="570" x2="650" y2="570"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="570" x2="650" y2="570"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- W -> W | W -->
+  <line x1="435" y1="570" x2="650" y2="660"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="570" x2="650" y2="660"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+
+  <!-- =======================
+       Knoten-Beschriftungen
+       ======================= -->
+
+  <!-- Start -->
+  <foreignObject x="35" y="345" width="120" height="50">
+    <big><big><b>Start</b></big></big>
+  </foreignObject>
+
+  <!-- 1. Stufe: P(S), P(G), P(W) am Knoten -->
+  <foreignObject x="295" y="140" width="160" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(S) = \frac{5}{23} $ 
+  </foreignObject>
+
+  <foreignObject x="295" y="350" width="160" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G) = \frac{7}{23} $ 
+  </foreignObject>
+
+  <foreignObject x="295" y="560" width="160" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(W) = \frac{11}{23} $ 
+  </foreignObject>
+
+
+  <!-- 2. Stufe: Knoten-Beschriftungen (S/G/W-Bereiche am Ende der Zweige) -->
+
+  <!-- Aus S kommend: S,S / G,S / W,S -->
+  <foreignObject x="630" y="50" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(S \cap S) = \frac{5}{23} \cdot \frac{5}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="630" y="140" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G \cap S) = \frac{5}{23} \cdot \frac{7}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="630" y="230" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(W \cap S) = \frac{5}{23} \cdot \frac{11}{23}$ 
+  </foreignObject>
+
+  <!-- Aus G kommend: S,G / G,G / W,G -->
+  <foreignObject x="630" y="290" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(S \cap G) = \frac{7}{23} \cdot \frac{5}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="630" y="350" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G \cap G) = \frac{7}{23} \cdot \frac{7}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="630" y="410" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(W \cap G) = \frac{}{23} \cdot \frac{11}{23}$ 
+  </foreignObject>
+
+  <!-- Aus W kommend: S,W / G,W / W,W -->
+  <foreignObject x="630" y="470" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(S \cap W) = \frac{11}{23} \cdot \frac{5}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="630" y="560" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G \cap W) = \frac{11}{23} \cdot \frac{7}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="630" y="650" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(W \cap W) = \frac{11}{23} \cdot \frac{11}{23}$ 
+  </foreignObject>
+
+
+  <!-- ===================================
+       Pfad-Beschriftungen mit Eingabefeld
+       passend zur Linienneigung
+       =================================== -->
+
+  <!-- 1. Stufe: P(S), P(G), P(W) auf den Pfaden -->
+
+  <!-- Start -> S, Mittelpunkt ca. (220,255), Winkel ~ -45° -->
+  <foreignObject x="160" y="228" width="130" height="80"
+                 transform="rotate(-50 220 255)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(S) = \frac{5}{23} $ 
+  </foreignObject>
+
+  <!-- Start -> G, Mittelpunkt (220,360), horizontal -->
+  <foreignObject x="170" y="330" width="130" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G) = \frac{7}{23} $ 
+  </foreignObject>
+
+  <!-- Start -> W, Mittelpunkt ca. (220,465), Winkel ~ +45° -->
+  <foreignObject x="130" y="435" width="140" height="80"
+                 transform="rotate(45 220 465)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(W) = \frac{11}{23} $ 
+  </foreignObject>
+
+
+  <!-- 2. Stufe: Pfad-Beschriftungen von S aus -->
+  <!-- Mittelpunkte:
+       S->S|S: (485,105), S->G|S: (485,150), S->W|S: (485,195)
+  -->
+
+  <foreignObject x="490" y="100" width="150" height="80"
+                 transform="rotate(-25 485 105)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(S \mid S) = \frac{5}{23} \cdot \frac{5}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="490" y="155" width="150" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G \mid S) = \frac{5}{23} \cdot \frac{7}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="490" y="175" width="150" height="80"
+                 transform="rotate(25 485 195)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(W \mid S) = \frac{5}{23} \cdot \frac{11}{23}$ 
+  </foreignObject>
+
+
+  <!-- 2. Stufe: Pfad-Beschriftungen von G aus -->
+  <!-- Mittelpunkte:
+       G->S|G: (485,330), G->G|G: (485,360), G->W|G: (485,390)
+  -->
+
+  <foreignObject x="490" y="315" width="150" height="80"
+                 transform="rotate(-15 485 330)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(S \mid G) = \frac{5}{23} \cdot \frac{7}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="490" y="364" width="150" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G \mid G) = \frac{7}{23} \cdot \frac{7}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="490" y="380" width="150" height="80"
+                 transform="rotate(15 485 390)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(W \mid G) = \frac{7}{23} \cdot \frac{11}{23}$ 
+  </foreignObject>
+
+
+  <!-- 2. Stufe: Pfad-Beschriftungen von W aus -->
+  <!-- Mittelpunkte:
+       W->S|W: (485,525), W->G|W: (485,570), W->W|W: (485,615)
+  -->
+
+  <foreignObject x="490" y="523" width="150" height="80"
+                 transform="rotate(-25 485 525)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(S \mid W) = \frac{11}{23} \cdot \frac{5}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="490" y="572" width="150" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G \mid W) = \frac{11}{23} \cdot \frac{7}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="490" y="592" width="150" height="80"
+                 transform="rotate(25 485 615)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(W \mid W) = \frac{11}{23} \cdot \frac{11}{23}$ 
+  </foreignObject>
+
+</svg>
+
+
+
+
+*************
+
+
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+
+
+
+ __$b) \;\;$__ **Bestimme**, wie hoch die Wahrscheinlichkeit ist bei der ersten Ziehung eine grüne Kugel zu ziehen. Gib die Wahrscheinlichkeit in Prozent an.
+
+
+
+[[  30,435  ]]$\%$.
+@Algebrite.check2(700/23,0.001)
+*************
+$$
+\begin{align*}
+   \frac{7}{23} & \approx 30,435\%
+\end{align*}
+$$
+*************
+
+
+
+
+</div>
+<div class="flex-child">
+
+
+
+ __$c) \;\;$__ **Bestimme**, wie hoch die Wahrscheinlichkeit ist erst eine schwarze dann eine weiße Kugel hintereinander zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. 
+
+
+
+[[  10,397  ]]$\%$.
+@Algebrite.check2(5500/529,0.001)
+*************
+$$
+\begin{align*}
+   \frac{5}{23} \cdot \frac{11}{23} \approx 10,397\%
+\end{align*}
+$$
+*************
+
+
+
+
+</div>
+<div class="flex-child">
+
+
+
+
+ __$d) \;\;$__ **Bestimme**, wie viele Pfade für die Möglichkeit existieren genau eine weiße und eine grüne Kugeln zu ziehen. 
+
+
+
+[[   1   ]] 
+@Algebrite.check(1)
+*************
+WW
+*************
+
+
+
+
+</div>
+<div class="flex-child">
+
+
+
+
+ __$e) \;\;$__ **Bestimme**, wie viele Pfade für die Möglichkeit existieren mindestens eine schwarze Kugel zu ziehen. 
+
+
+
+[[   3   ]] 
+@Algebrite.check(3)
+*************
+$$
+  SS, SW, SG
+$$
+*************
+
+
+
+
+</div>
+<div class="flex-child">
+
+
+
+
+ __$f) \;\;$__ **Bestimme**, wie viele Pfade für die Möglichkeit existieren von jeder Kugel eine zu ziehen, wenn drei mal gezogen würde. 
+
+
+
+
+[[   6   ]] 
+@Algebrite.check(6)
+*************
+$$
+  SGW, SWG, WSG, GSW, GWS, WGS
+$$
+*************
+
+
+
+
+</div>
+<div class="flex-child">
+
+
+
+
+ __$g) \;\;$__ **Bestimme**, wie hoch die Wahrscheinlichkeit ist jede Kugelfarbe bei drei Ziehungen mit Zurücklegen einmal zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. 
+
+
+
+[[  18,986  ]]$\%$.
+@Algebrite.check2(231000/12167,0.001)
+*************
+$$
+\begin{align*}
+6 \cdot \frac{5}{23} \cdot \frac{7}{23} \cdot \frac{11}{23} \approx 18,986 \%
+\end{align*}
+$$
+*************
+
+
+
+
+</div>
+<div class="flex-child">
+
+
+
+
+ __$h) \;\;$__ **Bestimme**, wie hoch die Wahrscheinlichkeit bei drei Ziehungen mit Zurücklegen ist, bei der erst eine schwarze, dann eine grüne und abschließend eine weiße Kugel zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. 
+
+
+
+[[   3,164  ]]$\%$.
+@Algebrite.check2(38500/12167,0.001)
+*************
+$$
+\begin{align*}
+   \frac{5}{23} \cdot \frac{7}{23} \cdot \frac{11}{23} \approx 3,164\%
+\end{align*}
+$$
+*************
+
+
+
+
+</div>
+<div class="flex-child">
+
+
+
+
+ __$i) \;\;$__ **Bestimme**, wie hoch die Wahrscheinlichkeit bei drei Ziehungen mit Zurücklegen ist höchstens zwei schwarze Kugel zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. 
+
+
+
+[[  86,241  ]]$\%$.
+@Algebrite.check2(1049300/12167,0.001)
+*************
+$$
+\begin{align*}
+  1 -  \left(\frac{7}{23}\right)^3 -  \left(\frac{11}{23}\right)^3 \approx 86,241 \%
+\end{align*}
+$$
+*************
+
+
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+<!-- Baumdiagramme 0004 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 10:__ In einem Gefäß befinden sich 8 rote (R), 3 grüne (G) und 12 blaue (B) Kugeln für zwei Ziehungen ohne Zurücklegen. 
+
+
+
+
+
+ __$a) \;\;$__ **Skizziere** ein Baumdiagramm für den beschriebenen Fall. 
+
+
+
+[[!]]
+<script>true</script>
+*************
+
+
+
+
+
+<!-- data-group="true" data-show-partial-solution="true"
+     data-text-solved="Richtig!" data-text-failed="Falsch!"
+     data-text-resolved="Aufgelöst!" -->
+<svg class="tree3" viewBox="70 0 850 700">
+
+  <defs>
+    <!-- Latex-ähnliche Pfeilspitze, innen weiß, schwarz umrandet -->
+    <marker id="arrow-white" markerWidth="10" markerHeight="10"
+            refX="7" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3.5 L0,7 z"
+            fill="white" stroke="black" stroke-width="0.6" />
+    </marker>
+  </defs>
+
+  <!-- =======================
+       Kanten des Baumdiagramms
+       3 Ausgänge: S, G, W
+       und je 3 Folgezweige
+       ======================= -->
+
+  <!-- Startknoten: (120, 360) -->
+
+  <!-- 1. Stufe: Start -> S (etwas höher gesetzt) -->
+  <line x1="120" y1="360" x2="320" y2="150"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="120" y1="360" x2="320" y2="150"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- 1. Stufe: Start -> G (Mitte) -->
+  <line x1="120" y1="360" x2="320" y2="360"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="120" y1="360" x2="320" y2="360"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- 1. Stufe: Start -> W (etwas tiefer gesetzt) -->
+  <line x1="120" y1="360" x2="320" y2="570"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="120" y1="360" x2="320" y2="570"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+
+  <!-- 2. Stufe: je 3 Ausgänge von S, G, W, mit größeren Abständen:
+       S-Kinder: y =  60, 150, 240
+       G-Kinder: y = 300, 360, 420
+       W-Kinder: y = 480, 570, 660
+  -->
+
+  <!-- Von S (320,150) zu (650, 60), (650,150), (650,240) -->
+
+  <!-- S -> S | S -->
+  <line x1="435" y1="150" x2="650" y2="60"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="150" x2="650" y2="60"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- S -> G | S -->
+  <line x1="435" y1="150" x2="650" y2="150"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="150" x2="650" y2="150"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- S -> W | S -->
+  <line x1="435" y1="150" x2="650" y2="240"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="150" x2="650" y2="240"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+
+  <!-- Von G (320,360) zu (650,300), (650,360), (650,420) -->
+
+  <!-- G -> S | G -->
+  <line x1="435" y1="360" x2="650" y2="300"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="360" x2="650" y2="300"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- G -> G | G -->
+  <line x1="435" y1="360" x2="650" y2="360"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="360" x2="650" y2="360"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- G -> W | G -->
+  <line x1="435" y1="360" x2="650" y2="420"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="360" x2="650" y2="420"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+
+  <!-- Von W (320,570) zu (650,480), (650,570), (650,660) -->
+
+  <!-- W -> S | W -->
+  <line x1="435" y1="570" x2="650" y2="480"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="570" x2="650" y2="480"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- W -> G | W -->
+  <line x1="435" y1="570" x2="650" y2="570"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="570" x2="650" y2="570"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- W -> W | W -->
+  <line x1="435" y1="570" x2="650" y2="660"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="570" x2="650" y2="660"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+
+  <!-- =======================
+       Knoten-Beschriftungen
+       ======================= -->
+
+  <!-- Start -->
+  <foreignObject x="35" y="345" width="120" height="50">
+    <big><big><b>Start</b></big></big>
+  </foreignObject>
+
+  <!-- 1. Stufe: P(S), P(G), P(W) am Knoten -->
+  <foreignObject x="295" y="140" width="160" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(R) = \frac{8}{23} $ 
+  </foreignObject>
+
+  <foreignObject x="295" y="350" width="160" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G) = \frac{3}{23} $ 
+  </foreignObject>
+
+  <foreignObject x="295" y="560" width="160" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(B) = \frac{12}{23} $ 
+  </foreignObject>
+
+
+  <!-- 2. Stufe: Knoten-Beschriftungen (S/G/W-Bereiche am Ende der Zweige) -->
+
+  <!-- Aus S kommend: S,S / G,S / W,S -->
+  <foreignObject x="630" y="50" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(R \cap R) = \frac{7}{22} \cdot \frac{8}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="630" y="140" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G \cap R) = \frac{3}{22} \cdot \frac{8}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="630" y="230" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(B \cap R) = \frac{12}{22} \cdot \frac{8}{23}$ 
+  </foreignObject>
+
+  <!-- Aus G kommend: S,G / G,G / W,G -->
+  <foreignObject x="630" y="290" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(R \cap G) = \frac{8}{22} \cdot \frac{3}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="630" y="350" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G \cap G) = \frac{2}{22} \cdot \frac{3}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="630" y="410" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(B \cap G) = \frac{3}{22} \cdot \frac{12}{23}$ 
+  </foreignObject>
+
+  <!-- Aus W kommend: S,W / G,W / W,W -->
+  <foreignObject x="630" y="470" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(R \cap B) = \frac{8}{22} \cdot \frac{12}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="630" y="560" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G \cap B) = \frac{12}{22} \cdot \frac{3}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="630" y="650" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(B \cap B) = \frac{11}{22} \cdot \frac{12}{23}$ 
+  </foreignObject>
+
+
+  <!-- ===================================
+       Pfad-Beschriftungen mit Eingabefeld
+       passend zur Linienneigung
+       =================================== -->
+
+  <!-- 1. Stufe: P(S), P(G), P(W) auf den Pfaden -->
+
+  <!-- Start -> S, Mittelpunkt ca. (220,255), Winkel ~ -45° -->
+  <foreignObject x="160" y="228" width="130" height="80"
+                 transform="rotate(-50 220 255)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(R) = \frac{8}{23} $ 
+  </foreignObject>
+
+  <!-- Start -> G, Mittelpunkt (220,360), horizontal -->
+  <foreignObject x="170" y="330" width="130" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G) = \frac{3}{23} $ 
+  </foreignObject>
+
+  <!-- Start -> W, Mittelpunkt ca. (220,465), Winkel ~ +45° -->
+  <foreignObject x="130" y="435" width="140" height="80"
+                 transform="rotate(45 220 465)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(B) = \frac{12}{23} $ 
+  </foreignObject>
+
+
+  <!-- 2. Stufe: Pfad-Beschriftungen von S aus -->
+  <!-- Mittelpunkte:
+       S->S|S: (485,105), S->G|S: (485,150), S->W|S: (485,195)
+  -->
+
+  <foreignObject x="490" y="100" width="150" height="80"
+                 transform="rotate(-25 485 105)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(R \mid R) = \frac{7}{22} \cdot \frac{8}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="490" y="155" width="150" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G \mid R) = \frac{3}{22} \cdot \frac{8}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="490" y="175" width="150" height="80"
+                 transform="rotate(25 485 195)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(B \mid R) = \frac{12}{22} \cdot \frac{8}{23}$ 
+  </foreignObject>
+
+
+  <!-- 2. Stufe: Pfad-Beschriftungen von G aus -->
+  <!-- Mittelpunkte:
+       G->S|G: (485,330), G->G|G: (485,360), G->W|G: (485,390)
+  -->
+
+  <foreignObject x="490" y="315" width="150" height="80"
+                 transform="rotate(-15 485 330)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(R \mid G) = \frac{8}{22} \cdot \frac{3}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="490" y="364" width="150" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G \mid G) = \frac{3}{22} \cdot \frac{2}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="490" y="380" width="150" height="80"
+                 transform="rotate(15 485 390)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(B \mid G) = \frac{12}{22} \cdot \frac{3}{23}$ 
+  </foreignObject>
+
+
+  <!-- 2. Stufe: Pfad-Beschriftungen von W aus -->
+  <!-- Mittelpunkte:
+       W->S|W: (485,525), W->G|W: (485,570), W->W|W: (485,615)
+  -->
+
+  <foreignObject x="490" y="523" width="150" height="80"
+                 transform="rotate(-25 485 525)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(R \mid B) = \frac{8}{22} \cdot \frac{12}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="490" y="572" width="150" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G \mid B) = \frac{3}{22} \cdot \frac{12}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="490" y="592" width="150" height="80"
+                 transform="rotate(25 485 615)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(B \mid B) = \frac{11}{22} \cdot \frac{12}{23}$ 
+  </foreignObject>
+
+</svg>
+
+
+
+*************
+
+
+
+<section class="flex-container">
+<div class="flex-child">
+
+
+
+ __$b) \;\;$__ **Bestimme**, wie hoch die Wahrscheinlichkeit ist bei der ersten Ziehung eine blaue Kugel zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. 
+
+
+
+[[  52,174  ]]$\%$.
+@Algebrite.check2(1200/23,0.001)
+*************
+$$
+\begin{align*}
+   \frac{12}{23} & \approx 52,174\%
+\end{align*}
+$$
+*************
+
+
+</div>
+<div class="flex-child">
+
+
+
+ __$c) \;\;$__ **Bestimme**, wie hoch die Wahrscheinlichkeit ist zwei grüne Kugel hintereinander zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. 
+
+
+
+[[   1,189  ]]$\%$.
+@Algebrite.check2(300/253,0.001)
+*************
+$$
+\begin{align*}
+   \frac{3}{23} \cdot \frac{2}{22} \approx 1,189\%
+\end{align*}
+$$
+*************
+
+
+
+</div>
+<div class="flex-child">
+
+
+
+ __$d) \;\;$__ **Bestimme**, wie viele Pfade bei drei Ziehungen für die Möglichkeit existieren von jeder Farbe eine Kugel zu ziehen. 
+
+
+
+[[   6   ]] 
+@Algebrite.check(6)
+*************
+RBG, RGB, BGR, BRG, GBR, GRB
+*************
+
+
+</div>
+<div class="flex-child">
+
+
+
+
+ __$e) \;\;$__ **Bestimme**, wie viele Pfade bei drei Ziehungen für die Möglichkeit existieren eine Farbe zweimal zu ziehen. 
+
+
+
+[[   18  ]] 
+@Algebrite.check2(18)
+*************
+$$
+  RRG, RGR, GRR, RRB, RBR, BRR, BBG, BGB, GBB, BBR, BRB, RBB, GGR, GRG, RGG, GGB, GBG, BGG 
+$$
+*************
+
+
+
+</div>
+<div class="flex-child">
+
+
+
+ __$f) \;\;$__ **Bestimme**, wie hoch die Wahrscheinlichkeit bei zwei Ziehungen ohne Zurücklegen ist zwei blaue Kugeln zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. 
+
+
+
+
+[[  26,087  ]]$\%$.
+@Algebrite.check2(600/23,0.001)
+*************
+$$
+  \frac{12 \cdot 11}{23 \cdot 22} \approx 26,087 \%
+$$
+*************
+
+
+
+</div>
+<div class="flex-child">
+
+
+
+ __$g) \;\;$__ **Bestimme**, wie hoch die Wahrscheinlichkeit bei drei Ziehungen ohne Zurücklegen ist mehr als eine rote Kugel zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. 
+
+
+
+[[  11,067  ]]$\%$.
+@Algebrite.check2(2800/253,0.001)
+*************
+$$
+\begin{align*}
+\frac{8}{23} \cdot \frac{7}{22} \approx 11,067 \%
+\end{align*}
+$$
+*************
+
+
+
+</div>
+<div class="flex-child">
+
+
+
+ __$h) \;\;$__ **Bestimme**, wie hoch die Wahrscheinlichkeit bei zwei Ziehungen ohne Zurücklegen ist weniger als zwei grüne Kugeln zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. 
+
+
+
+[[  98,814  ]]$\%$.
+@Algebrite.check2(2500/253,0.001)
+*************
+$$
+\begin{align*}
+  1-  \frac{3}{23} \cdot \frac{2}{22} \approx 98,814\%
+\end{align*}
+$$
+*************
+
+
+
+</div>
+<div class="flex-child">
+
+
+
+ __$i) \;\;$__ **Bestimme**, wie hoch die Wahrscheinlichkeit bei zwei Ziehungen ohne Zurücklegen ist höchstens zwei rote Kugel zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. 
+
+
+
+[[  100  ]]$\%$.
+*************
+Alle Optionen sind zulässig.
+*************
+
+
+
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Übungsaufgaben zu Baumdiagrammen 11 bis 20
+
+
+
+
+
+
+
+
+
+
+<!-- Baumdiagramme 0005 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 11:__ Beim folgenden Baumdiagramm ist ein Szenario dargestellt, indem rote (R), blaue (B), grüne (G), weiße (W) und schwarze (S) Kugeln vorkommen. Löse alle Teilaufgaben. 
+
+
+
+
+
+
+
+
+<center>
+
+<!-- data-group="true" data-show-partial-solution="true"  data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!" -->
+<svg class="tree2" viewBox="0 0 480 300">
+
+  <defs>
+    <!-- Latex-ähnliche Pfeilspitze, innen weiß, schwarz umrandet -->
+    <marker id="arrow-white" markerWidth="10" markerHeight="10"
+            refX="7" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3.5 L0,7 z"
+            fill="white" stroke="black" stroke-width="0.6" />
+    </marker>
+  </defs>
+
+  <!-- =======================
+       Kanten des Baumdiagramms
+       ======================= -->
+
+  <!-- 1. Stufe: Start -> A und Start -> ¬A -->
+  <line x1="200" y1="40" x2="103.12" y2="117.52"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="200" y1="40" x2="100" y2="120"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <line x1="200" y1="40" x2="296.88" y2="117.52"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="200" y1="40" x2="300" y2="120"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- 2. Stufe links: A -> B|A und A -> ¬B|A -->
+  <line x1="100" y1="140" x2="41.8" y2="256.44"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="100" y1="140" x2="40" y2="260"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <line x1="100" y1="140" x2="158.2" y2="256.44"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="100" y1="140" x2="160" y2="260"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- 2. Stufe rechts: ¬A -> B|¬A und ¬A -> ¬B|¬A -->
+  <line x1="300" y1="140" x2="241.8" y2="256.44"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="300" y1="140" x2="240" y2="260"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <line x1="300" y1="140" x2="358.2" y2="256.44"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="300" y1="140" x2="360" y2="260"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+
+  <!-- =======================
+       Knoten-Beschriftungen
+       ======================= -->
+
+  <!-- Start (ungekippt, im Zentrum oben) -->
+  <foreignObject x="168" y="12" width="64" height="40">
+    <b><big><big>Start</big></big></b>
+  </foreignObject>
+
+  <!-- Knoten der 1. Stufe: P(A), P(¬A) -->
+  <foreignObject x="76" y="122" width="48" height="40">
+    $\frac{7}{20}$
+  </foreignObject>
+
+  <foreignObject x="276" y="122" width="48" height="40">
+    $\frac{13}{20}$
+  </foreignObject>
+
+  <!-- Blattknoten: P(B ∩ A), … -->
+  <foreignObject x="12" y="265" width="56" height="40">
+    $28\%$
+  </foreignObject>
+
+  <foreignObject x="132" y="265" width="56" height="40">
+    $7\%$
+  </foreignObject>
+
+  <foreignObject x="212" y="265" width="56" height="40">
+    $48,75\%$
+  </foreignObject>
+
+  <foreignObject x="332" y="265" width="56" height="40">
+    $16,25\%$    
+  </foreignObject>
+
+
+  <!-- ===================================
+       Pfad-Beschriftungen mit Eingabefeld
+       (Boxen um den Pfad-Mittelpunkt zentriert)
+       =================================== -->
+
+  <!-- 1. Stufe: P(A), Pfad-Mittelpunkt (150,80) -->
+  <foreignObject x="90" y="60" width="120" height="60"
+                 transform="rotate(-40 150 80)">
+    <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
+    $P(R) $ 
+  </foreignObject>
+
+  <!-- 1. Stufe: P(¬A), Pfad-Mittelpunkt (250,80) -->
+  <foreignObject x="190" y="60" width="120" height="60"
+                 transform="rotate(40 250 80)">
+    <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
+    $P(B) $
+  </foreignObject>
+
+
+  <!-- 2. Stufe links: P(B|A), Pfad-Mittelpunkt (70,200) -->
+  <foreignObject x="10" y="170" width="120" height="60"
+                 transform="rotate(-64 79 195)">
+    <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
+    $P(R \mid R) $ 
+  </foreignObject>
+
+  <!-- 2. Stufe links: P(¬B|A), Pfad-Mittelpunkt (130,200) -->
+  <foreignObject x="70" y="170" width="120" height="60"
+                 transform="rotate(64 121 195)">
+    <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
+    $P(G \mid R) $ 
+  </foreignObject>
+
+
+  <!-- 2. Stufe rechts: P(B|¬A), Pfad-Mittelpunkt (270,200) -->
+  <foreignObject x="210" y="170" width="120" height="60"
+                 transform="rotate(-64 279 195)">
+    <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
+    $P(S \mid B) $ 
+  </foreignObject>
+
+  <!-- 2. Stufe rechts: P(¬B|¬A), Pfad-Mittelpunkt (330,200) -->
+  <foreignObject x="270" y="170" width="120" height="60"
+                 transform="rotate(64 321 195)">
+    <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
+    $P(W \mid B) $
+  </foreignObject>
+
+</svg>
+
+</center>
+
+
+
+
+__$a) \;\;$__ **Fülle** die Lücken im Lückentext **aus**.
+
+<!-- data-show-partial-solution="true" -->
+Wenn bei der ersten Ziehung eine [[ blaue  ]] Kugel gezogen wurde, wird in der zweiten Ziehung aus der Urne mit den [[ weißen ]] und schwarzen Kugeln gezogen. Wird hingegen bei der ersten Ziehung eine [[ rote   ]] Kugel gezogen, dann wird in der zweiten Ziehung aus einer Urne mit [[ roten  ]] und grünen Kugeln gezogen.
+
+
+
+__$b) \;\;$__ **Bestimme** die Wahrscheinlichkeit eine grüne Kugel zu ziehen.
+
+[[ 20    ]]$\%$.
+@Algebrite.check2(20,0.001)
+
+
+
+__$c) \;\;$__ **Bestimme** die Wahrscheinlichkeit eine schwarze Kugel zu ziehen.
+
+[[ 75    ]]$\%$.
+@Algebrite.check2(75,0.001)
+
+
+
+
+
+
+
+<!-- Baumdiagramme 0006 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 12:__ Beim folgenden Baumdiagramm ist ein Szenario dargestellt, indem rote (R), pinke (P), blaue (B), grüne (G), weiße (W) und schwarze (S) Kugeln vorkommen. Löse alle Teilaufgaben. 
+
+
+
+
+
+
+
+
+<center>
+
+
+<!-- data-group="true" data-show-partial-solution="true"  data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!" -->
+<svg class="tree2" viewBox="0 0 480 300">
+
+  <defs>
+    <!-- Latex-ähnliche Pfeilspitze, innen weiß, schwarz umrandet -->
+    <marker id="arrow-white" markerWidth="10" markerHeight="10"
+            refX="7" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3.5 L0,7 z"
+            fill="white" stroke="black" stroke-width="0.6" />
+    </marker>
+  </defs>
+
+  <!-- =======================
+       Kanten des Baumdiagramms
+       ======================= -->
+
+  <!-- 1. Stufe: Start -> A und Start -> ¬A -->
+  <line x1="200" y1="40" x2="103.12" y2="117.52"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="200" y1="40" x2="100" y2="120"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <line x1="200" y1="40" x2="296.88" y2="117.52"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="200" y1="40" x2="300" y2="120"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- 2. Stufe links: A -> B|A und A -> ¬B|A -->
+  <line x1="100" y1="140" x2="41.8" y2="256.44"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="100" y1="140" x2="40" y2="260"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <line x1="100" y1="140" x2="158.2" y2="256.44"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="100" y1="140" x2="160" y2="260"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- 2. Stufe rechts: ¬A -> B|¬A und ¬A -> ¬B|¬A -->
+  <line x1="300" y1="140" x2="241.8" y2="256.44"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="300" y1="140" x2="240" y2="260"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <line x1="300" y1="140" x2="358.2" y2="256.44"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="300" y1="140" x2="360" y2="260"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+
+  <!-- =======================
+       Knoten-Beschriftungen
+       ======================= -->
+
+  <!-- Start (ungekippt, im Zentrum oben) -->
+  <foreignObject x="168" y="12" width="64" height="40">
+    <b><big><big>Start</big></big></b>
+  </foreignObject>
+
+  <!-- Knoten der 1. Stufe: P(A), P(¬A) -->
+  <foreignObject x="76" y="122" width="48" height="40">
+    $\frac{4}{25}$
+  </foreignObject>
+
+  <foreignObject x="276" y="122" width="48" height="40">
+    $\frac{21}{25}$
+  </foreignObject>
+
+  <!-- Blattknoten: P(B ∩ A), … -->
+  <foreignObject x="12" y="265" width="56" height="40">
+    $14,4\%$
+  </foreignObject>
+
+  <foreignObject x="132" y="265" width="56" height="40">
+    $1,6\%$
+  </foreignObject>
+
+  <foreignObject x="212" y="265" width="56" height="40">
+    $33,6\%$
+  </foreignObject>
+
+  <foreignObject x="332" y="265" width="56" height="40">
+    $50,4\%$    
+  </foreignObject>
+
+
+  <!-- ===================================
+       Pfad-Beschriftungen mit Eingabefeld
+       (Boxen um den Pfad-Mittelpunkt zentriert)
+       =================================== -->
+
+  <!-- 1. Stufe: P(A), Pfad-Mittelpunkt (150,80) -->
+  <foreignObject x="90" y="60" width="120" height="60"
+                 transform="rotate(-40 150 80)">
+    <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
+    $P(P) $ 
+  </foreignObject>
+
+  <!-- 1. Stufe: P(¬A), Pfad-Mittelpunkt (250,80) -->
+  <foreignObject x="190" y="60" width="120" height="60"
+                 transform="rotate(40 250 80)">
+    <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
+    $P(S) $
+  </foreignObject>
+
+
+  <!-- 2. Stufe links: P(B|A), Pfad-Mittelpunkt (70,200) -->
+  <foreignObject x="10" y="170" width="120" height="60"
+                 transform="rotate(-64 79 195)">
+    <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
+    $P(R \mid P) $ 
+  </foreignObject>
+
+  <!-- 2. Stufe links: P(¬B|A), Pfad-Mittelpunkt (130,200) -->
+  <foreignObject x="70" y="170" width="120" height="60"
+                 transform="rotate(64 121 195)">
+    <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
+    $P(G \mid P) $ 
+  </foreignObject>
+
+
+  <!-- 2. Stufe rechts: P(B|¬A), Pfad-Mittelpunkt (270,200) -->
+  <foreignObject x="210" y="170" width="120" height="60"
+                 transform="rotate(-64 279 195)">
+    <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
+    $P(B \mid S) $ 
+  </foreignObject>
+
+  <!-- 2. Stufe rechts: P(¬B|¬A), Pfad-Mittelpunkt (330,200) -->
+  <foreignObject x="270" y="170" width="120" height="60"
+                 transform="rotate(64 321 195)">
+    <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
+    $P(W \mid S) $
+  </foreignObject>
+
+</svg>
+
+</center>
+
+
+
+
+__$a) \;\;$__ **Fülle** die Lücken im Lückentext **aus**.
+
+<!-- data-show-partial-solution="true" -->
+Wenn bei der ersten Ziehung eine [[ pinke    ]] Kugel gezogen wurde, wird in der zweiten Ziehung aus der Urne mit den [[ roten    ]] und grünen Kugeln gezogen. Wird hingegen bei der ersten Ziehung eine [[ schwarze ]] Kugel gezogen, dann wird in der zweiten Ziehung aus einer Urne mit [[ blauen   ]] und weißen Kugeln gezogen.
+
+
+
+__$b) \;\;$__ **Bestimme** die Wahrscheinlichkeit eine rote Kugel zu ziehen.
+
+[[ 90    ]]$\%$.
+@Algebrite.check2(90,0.001)
+
+
+
+__$c) \;\;$__ **Bestimme** die Wahrscheinlichkeit eine weiße Kugel zu ziehen.
+
+[[ 60    ]]$\%$.
+@Algebrite.check2(60,0.001)
+
+
+
+
+
+
+
+
+
+<!-- Baumdiagramme 0007 -->
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+__Aufgabe 13:__ Beim folgenden Baumdiagramm ist ein Szenario dargestellt, indem rote (R), pinke (P), blaue (B), grüne (G), weiße (W) und schwarze (S) Kugeln vorkommen. Löse alle Teilaufgaben.
+
+
+
+
+
+
+
+
+<center>
+
+
+<!-- data-group="true" data-show-partial-solution="true"  data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!" -->
+<svg class="tree2" viewBox="0 0 480 300">
+
+  <defs>
+    <!-- Latex-ähnliche Pfeilspitze, innen weiß, schwarz umrandet -->
+    <marker id="arrow-white" markerWidth="10" markerHeight="10"
+            refX="7" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3.5 L0,7 z"
+            fill="white" stroke="black" stroke-width="0.6" />
+    </marker>
+  </defs>
+
+  <!-- =======================
+       Kanten des Baumdiagramms
+       ======================= -->
+
+  <!-- 1. Stufe: Start -> A und Start -> ¬A -->
+  <line x1="200" y1="40" x2="103.12" y2="117.52"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="200" y1="40" x2="100" y2="120"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <line x1="200" y1="40" x2="296.88" y2="117.52"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="200" y1="40" x2="300" y2="120"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- 2. Stufe links: A -> B|A und A -> ¬B|A -->
+  <line x1="100" y1="140" x2="41.8" y2="256.44"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="100" y1="140" x2="40" y2="260"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <line x1="100" y1="140" x2="158.2" y2="256.44"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="100" y1="140" x2="160" y2="260"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- 2. Stufe rechts: ¬A -> B|¬A und ¬A -> ¬B|¬A -->
+  <line x1="300" y1="140" x2="241.8" y2="256.44"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="300" y1="140" x2="240" y2="260"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <line x1="300" y1="140" x2="358.2" y2="256.44"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="300" y1="140" x2="360" y2="260"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+
+  <!-- =======================
+       Knoten-Beschriftungen
+       ======================= -->
+
+  <!-- Start (ungekippt, im Zentrum oben) -->
+  <foreignObject x="168" y="12" width="64" height="40">
+    <b><big><big>Start</big></big></b>
+  </foreignObject>
+
+  <!-- Knoten der 1. Stufe: P(A), P(¬A) -->
+  <foreignObject x="76" y="122" width="48" height="40">
+    $\frac{7}{10}$
+  </foreignObject>
+
+  <foreignObject x="276" y="122" width="48" height="40">
+    $\frac{3}{10}$
+  </foreignObject>
+
+  <!-- Blattknoten: P(B ∩ A), … -->
+  <foreignObject x="12" y="265" width="56" height="40">
+    $42\%$
+  </foreignObject>
+
+  <foreignObject x="132" y="265" width="56" height="40">
+    $28\%$
+  </foreignObject>
+
+  <foreignObject x="212" y="265" width="56" height="40">
+    $26,25\%$
+  </foreignObject>
+
+  <foreignObject x="332" y="265" width="56" height="40">
+    $3,75\%$    
+  </foreignObject>
+
+
+  <!-- ===================================
+       Pfad-Beschriftungen mit Eingabefeld
+       (Boxen um den Pfad-Mittelpunkt zentriert)
+       =================================== -->
+
+  <!-- 1. Stufe: P(A), Pfad-Mittelpunkt (150,80) -->
+  <foreignObject x="90" y="60" width="120" height="60"
+                 transform="rotate(-40 150 80)">
+    <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
+    $P(G) $ 
+  </foreignObject>
+
+  <!-- 1. Stufe: P(¬A), Pfad-Mittelpunkt (250,80) -->
+  <foreignObject x="190" y="60" width="120" height="60"
+                 transform="rotate(40 250 80)">
+    <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
+    $P(W) $
+  </foreignObject>
+
+
+  <!-- 2. Stufe links: P(B|A), Pfad-Mittelpunkt (70,200) -->
+  <foreignObject x="10" y="170" width="120" height="60"
+                 transform="rotate(-64 79 195)">
+    <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
+    $P(S \mid G) $ 
+  </foreignObject>
+
+  <!-- 2. Stufe links: P(¬B|A), Pfad-Mittelpunkt (130,200) -->
+  <foreignObject x="70" y="170" width="120" height="60"
+                 transform="rotate(64 121 195)">
+    <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
+    $P(B \mid G) $ 
+  </foreignObject>
+
+
+  <!-- 2. Stufe rechts: P(B|¬A), Pfad-Mittelpunkt (270,200) -->
+  <foreignObject x="210" y="170" width="120" height="60"
+                 transform="rotate(-64 279 195)">
+    <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
+    $P(P \mid W) $ 
+  </foreignObject>
+
+  <!-- 2. Stufe rechts: P(¬B|¬A), Pfad-Mittelpunkt (330,200) -->
+  <foreignObject x="270" y="170" width="120" height="60"
+                 transform="rotate(64 321 195)">
+    <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
+    $P(R \mid W) $
+  </foreignObject>
+
+</svg>
+
+</center>
+
+
+
+
+__$a) \;\;$__ **Fülle** die Lücken im Lückentext **aus**.
+
+<!-- data-show-partial-solution="true" -->
+Wenn bei der ersten Ziehung eine [[ grüne     ]] Kugel gezogen wurde, wird in der zweiten Ziehung aus der Urne mit den [[ schwarzen ]] und blauen Kugeln gezogen. Wird hingegen bei der ersten Ziehung eine [[  weiße    ]] Kugel gezogen, dann wird in der zweiten Ziehung aus einer Urne mit [[ pinken    ]] und roten Kugeln gezogen.
+
+
+
+__$b) \;\;$__ **Bestimme** die Wahrscheinlichkeit eine blaue Kugel zu ziehen.
+
+[[ 40    ]]$\%$.
+@Algebrite.check2(40,0.001)
+
+
+
+__$c) \;\;$__ **Bestimme** die Wahrscheinlichkeit eine pinke Kugel zu ziehen.
+
+[[ 87,5  ]]$\%$.
+@Algebrite.check2(87.5,0.001)
+
+
+
+
+
+
+
+
+
+
+
+

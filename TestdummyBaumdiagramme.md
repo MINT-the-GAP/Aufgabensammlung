@@ -655,3 +655,328 @@ svg.tree2 foreignObject button {
 
 </svg>
 
+
+
+
+
+
+
+
+
+
+
+
+
+# Baumdiagramm 3er 2stufig
+
+
+
+
+
+
+
+<!-- data-group="true" data-show-partial-solution="true"
+     data-text-solved="Richtig!" data-text-failed="Falsch!"
+     data-text-resolved="Aufgelöst!" -->
+<svg class="tree3" viewBox="70 0 850 700">
+
+  <defs>
+    <!-- Latex-ähnliche Pfeilspitze, innen weiß, schwarz umrandet -->
+    <marker id="arrow-white" markerWidth="10" markerHeight="10"
+            refX="7" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3.5 L0,7 z"
+            fill="white" stroke="black" stroke-width="0.6" />
+    </marker>
+  </defs>
+
+  <!-- =======================
+       Kanten des Baumdiagramms
+       3 Ausgänge: S, G, W
+       und je 3 Folgezweige
+       ======================= -->
+
+  <!-- Startknoten: (120, 360) -->
+
+  <!-- 1. Stufe: Start -> S (etwas höher gesetzt) -->
+  <line x1="120" y1="360" x2="320" y2="150"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="120" y1="360" x2="320" y2="150"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- 1. Stufe: Start -> G (Mitte) -->
+  <line x1="120" y1="360" x2="320" y2="360"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="120" y1="360" x2="320" y2="360"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- 1. Stufe: Start -> W (etwas tiefer gesetzt) -->
+  <line x1="120" y1="360" x2="320" y2="570"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="120" y1="360" x2="320" y2="570"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+
+  <!-- 2. Stufe: je 3 Ausgänge von S, G, W, mit größeren Abständen:
+       S-Kinder: y =  60, 150, 240
+       G-Kinder: y = 300, 360, 420
+       W-Kinder: y = 480, 570, 660
+  -->
+
+  <!-- Von S (320,150) zu (650, 60), (650,150), (650,240) -->
+
+  <!-- S -> S | S -->
+  <line x1="435" y1="150" x2="650" y2="60"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="150" x2="650" y2="60"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- S -> G | S -->
+  <line x1="435" y1="150" x2="650" y2="150"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="150" x2="650" y2="150"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- S -> W | S -->
+  <line x1="435" y1="150" x2="650" y2="240"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="150" x2="650" y2="240"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+
+  <!-- Von G (320,360) zu (650,300), (650,360), (650,420) -->
+
+  <!-- G -> S | G -->
+  <line x1="435" y1="360" x2="650" y2="300"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="360" x2="650" y2="300"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- G -> G | G -->
+  <line x1="435" y1="360" x2="650" y2="360"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="360" x2="650" y2="360"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- G -> W | G -->
+  <line x1="435" y1="360" x2="650" y2="420"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="360" x2="650" y2="420"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+
+  <!-- Von W (320,570) zu (650,480), (650,570), (650,660) -->
+
+  <!-- W -> S | W -->
+  <line x1="435" y1="570" x2="650" y2="480"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="570" x2="650" y2="480"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- W -> G | W -->
+  <line x1="435" y1="570" x2="650" y2="570"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="570" x2="650" y2="570"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- W -> W | W -->
+  <line x1="435" y1="570" x2="650" y2="660"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="570" x2="650" y2="660"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+
+  <!-- =======================
+       Knoten-Beschriftungen
+       ======================= -->
+
+  <!-- Start -->
+  <foreignObject x="35" y="345" width="120" height="50">
+    <big><big><b>Start</b></big></big>
+  </foreignObject>
+
+  <!-- 1. Stufe: P(S), P(G), P(W) am Knoten -->
+  <foreignObject x="295" y="140" width="160" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(S) =$ [[  0  ]]
+  </foreignObject>
+
+  <foreignObject x="295" y="350" width="160" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G) =$ [[  0  ]]
+  </foreignObject>
+
+  <foreignObject x="295" y="560" width="160" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(W) =$ [[  0  ]]
+  </foreignObject>
+
+
+  <!-- 2. Stufe: Knoten-Beschriftungen (S/G/W-Bereiche am Ende der Zweige) -->
+
+  <!-- Aus S kommend: S,S / G,S / W,S -->
+  <foreignObject x="630" y="50" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(S \cap S) =$ [[  0  ]]
+  </foreignObject>
+
+  <foreignObject x="630" y="140" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G \cap S) =$ [[  0  ]]
+  </foreignObject>
+
+  <foreignObject x="630" y="230" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(W \cap S) =$ [[  0  ]]
+  </foreignObject>
+
+  <!-- Aus G kommend: S,G / G,G / W,G -->
+  <foreignObject x="630" y="290" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(S \cap G) =$ [[  0  ]]
+  </foreignObject>
+
+  <foreignObject x="630" y="350" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G \cap G) =$ [[  0  ]]
+  </foreignObject>
+
+  <foreignObject x="630" y="410" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(W \cap G) =$ [[  0  ]]
+  </foreignObject>
+
+  <!-- Aus W kommend: S,W / G,W / W,W -->
+  <foreignObject x="630" y="470" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(S \cap W) =$ [[  0  ]]
+  </foreignObject>
+
+  <foreignObject x="630" y="560" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G \cap W) =$ [[  0  ]]
+  </foreignObject>
+
+  <foreignObject x="630" y="650" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(W \cap W) =$ [[  0  ]]
+  </foreignObject>
+
+
+  <!-- ===================================
+       Pfad-Beschriftungen mit Eingabefeld
+       passend zur Linienneigung
+       =================================== -->
+
+  <!-- 1. Stufe: P(S), P(G), P(W) auf den Pfaden -->
+
+  <!-- Start -> S, Mittelpunkt ca. (220,255), Winkel ~ -45° -->
+  <foreignObject x="160" y="228" width="130" height="80"
+                 transform="rotate(-50 220 255)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(S) =$ [[  0  ]]
+  </foreignObject>
+
+  <!-- Start -> G, Mittelpunkt (220,360), horizontal -->
+  <foreignObject x="170" y="330" width="130" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G) =$ [[  0  ]]
+  </foreignObject>
+
+  <!-- Start -> W, Mittelpunkt ca. (220,465), Winkel ~ +45° -->
+  <foreignObject x="130" y="435" width="140" height="80"
+                 transform="rotate(45 220 465)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(W) =$ [[  0  ]]
+  </foreignObject>
+
+
+  <!-- 2. Stufe: Pfad-Beschriftungen von S aus -->
+  <!-- Mittelpunkte:
+       S->S|S: (485,105), S->G|S: (485,150), S->W|S: (485,195)
+  -->
+
+  <foreignObject x="490" y="100" width="150" height="80"
+                 transform="rotate(-25 485 105)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(S \mid S) =$ [[  0  ]]
+  </foreignObject>
+
+  <foreignObject x="490" y="155" width="150" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G \mid S) =$ [[  0  ]]
+  </foreignObject>
+
+  <foreignObject x="490" y="175" width="150" height="80"
+                 transform="rotate(25 485 195)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(W \mid S) =$ [[  0  ]]
+  </foreignObject>
+
+
+  <!-- 2. Stufe: Pfad-Beschriftungen von G aus -->
+  <!-- Mittelpunkte:
+       G->S|G: (485,330), G->G|G: (485,360), G->W|G: (485,390)
+  -->
+
+  <foreignObject x="490" y="315" width="150" height="80"
+                 transform="rotate(-15 485 330)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(S \mid G) =$ [[  0  ]]
+  </foreignObject>
+
+  <foreignObject x="490" y="364" width="150" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G \mid G) =$ [[  0  ]]
+  </foreignObject>
+
+  <foreignObject x="490" y="380" width="150" height="80"
+                 transform="rotate(15 485 390)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(W \mid G) =$ [[  0  ]]
+  </foreignObject>
+
+
+  <!-- 2. Stufe: Pfad-Beschriftungen von W aus -->
+  <!-- Mittelpunkte:
+       W->S|W: (485,525), W->G|W: (485,570), W->W|W: (485,615)
+  -->
+
+  <foreignObject x="490" y="523" width="150" height="80"
+                 transform="rotate(-25 485 525)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(S \mid W) =$ [[  0  ]]
+  </foreignObject>
+
+  <foreignObject x="490" y="572" width="150" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G \mid W) =$ [[  0  ]]
+  </foreignObject>
+
+  <foreignObject x="490" y="592" width="150" height="80"
+                 transform="rotate(25 485 615)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(W \mid W) =$ [[  0  ]]
+  </foreignObject>
+
+</svg>
+
+
+
+
+
+
+
+
+

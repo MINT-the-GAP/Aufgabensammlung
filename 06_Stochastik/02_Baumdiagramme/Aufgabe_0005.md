@@ -184,7 +184,7 @@ author: Martin Lommatzsch
 # Bedingte Wahrscheinlichkeit am Baumdiagramm
 
 
-Beim folgenden Baumdiagramm ist ein Szenario dargestellt, indem rote (R), blaue (B), grüne (G), weiße (W) und schwarze (S) Kugeln vorkommen. Löse alle Teilaufgaben. **Runde** falls nötig auf drei Nachkommastellen.
+Beim folgenden Baumdiagramm ist ein Szenario dargestellt, indem rote (R), blaue (B), grüne (G), weiße (W) und schwarze (S) Kugeln vorkommen. Löse alle Teilaufgaben. 
 
 
 
@@ -194,45 +194,150 @@ Beim folgenden Baumdiagramm ist ein Szenario dargestellt, indem rote (R), blaue 
 
 
 <center>
-```latex  @tikz 
-\begin{tikzpicture}[scale=1,>=latex]	
-		\node (F) at (0,1)  {\Large Start};
-		\draw[->, thick] (0.5,0) -- (2.5,-2);
-		\node[rotate=0] (1) at (2.5,-1)  {\Large $B$}; %rechts	
-		
-		\draw[->, thick] (-0.5,0) -- (-2.5,-2);
-		\node[rotate=0] (2) at (-2.5,-1)  {\Large $R$}; %links
-		
-		
-		\node (A1) at (-3,-2.5)  {\Large $\frac{7}{20}$};
-		\node (B2) at (3,-2.5)  {\Large $\frac{13}{20}$};
-		
-		\draw[->, thick] (-3.5,-3) -- (-5,-5)  ; %A11 %linkslinks
-		\node[rotate=0] (22) at (-5,-4)  {\Large $R | R $ }; %linkslinks	
 
-		\draw[->, thick] (-3,-3) -- (-2,-5) ; %B21 %rechtslinks
-		\node[rotate=0] (12) at (-1.65,-4)  {\Large $G | R  $  }; %rechtslinks
+<!-- data-group="true" data-show-partial-solution="true"  data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!" -->
+<svg class="tree2" viewBox="0 0 480 300">
+
+  <defs>
+    <!-- Latex-ähnliche Pfeilspitze, innen weiß, schwarz umrandet -->
+    <marker id="arrow-white" markerWidth="10" markerHeight="10"
+            refX="7" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3.5 L0,7 z"
+            fill="white" stroke="black" stroke-width="0.6" />
+    </marker>
+  </defs>
+
+  <!-- =======================
+       Kanten des Baumdiagramms
+       ======================= -->
+
+  <!-- 1. Stufe: Start -> A und Start -> ¬A -->
+  <line x1="200" y1="40" x2="103.12" y2="117.52"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="200" y1="40" x2="100" y2="120"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <line x1="200" y1="40" x2="296.88" y2="117.52"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="200" y1="40" x2="300" y2="120"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- 2. Stufe links: A -> B|A und A -> ¬B|A -->
+  <line x1="100" y1="140" x2="41.8" y2="256.44"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="100" y1="140" x2="40" y2="260"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <line x1="100" y1="140" x2="158.2" y2="256.44"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="100" y1="140" x2="160" y2="260"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- 2. Stufe rechts: ¬A -> B|¬A und ¬A -> ¬B|¬A -->
+  <line x1="300" y1="140" x2="241.8" y2="256.44"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="300" y1="140" x2="240" y2="260"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <line x1="300" y1="140" x2="358.2" y2="256.44"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="300" y1="140" x2="360" y2="260"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
 
 
-		\draw[->, thick] (3,-3) -- (2,-5)  ; %B22 %linksrechts
-		\node[rotate=0] (21) at (1.65,-4)  {\Large $S | B $  }; %linksrechts	
+  <!-- =======================
+       Knoten-Beschriftungen
+       ======================= -->
 
-		\draw[->, thick] (3.5,-3) -- (5,-5)   ; %A12 %rechtsrechts
-		\node[rotate=0] (11) at (5,-4)  {\Large $  W | B $  }; %rechtsrechts	
-		
-		
-		\node (A11) at (-5.5,-6)  {\Large $28\%$}; %linkslinks
-		\node (A12) at (-2,-6)  {\Large $7\%$}; %linksrechts
-		\node (B22) at (2,-6)  {\Large $48,75\%$}; %rechtslinks
-		\node (B21) at (5.5,-6)  {\Large $16,25\%$}; %rechtsrechts 
+  <!-- Start (ungekippt, im Zentrum oben) -->
+  <foreignObject x="168" y="12" width="64" height="40">
+    <b><big><big>Start</big></big></b>
+  </foreignObject>
 
-		
-		%\node (A11) at (-5.5,-6)  {\Large $\frac{7}{20} \cdot \frac{4}{5}$}; %linkslinks
-		%\node (A12) at (-2,-6)  {\Large $\frac{7}{20} \cdot \frac{1}{5} $}; %linksrechts
-		%\node (B22) at (2,-6)  {\Large $\frac{13}{20} \cdot \frac{3}{4}$}; %rechtslinks
-		%\node (B21) at (5.5,-6)  {\Large $\frac{13}{20} \cdot \frac{1}{4}$}; %rechtsrechts 
-\end{tikzpicture} 
-```
+  <!-- Knoten der 1. Stufe: P(A), P(¬A) -->
+  <foreignObject x="76" y="122" width="48" height="40">
+    $\frac{7}{20}$
+  </foreignObject>
+
+  <foreignObject x="276" y="122" width="48" height="40">
+    $\frac{13}{20}$
+  </foreignObject>
+
+  <!-- Blattknoten: P(B ∩ A), … -->
+  <foreignObject x="12" y="265" width="56" height="40">
+    $28\%$
+  </foreignObject>
+
+  <foreignObject x="132" y="265" width="56" height="40">
+    $7\%$
+  </foreignObject>
+
+  <foreignObject x="212" y="265" width="56" height="40">
+    $48,75\%$
+  </foreignObject>
+
+  <foreignObject x="332" y="265" width="56" height="40">
+    $16,25\%$    
+  </foreignObject>
+
+
+  <!-- ===================================
+       Pfad-Beschriftungen mit Eingabefeld
+       (Boxen um den Pfad-Mittelpunkt zentriert)
+       =================================== -->
+
+  <!-- 1. Stufe: P(A), Pfad-Mittelpunkt (150,80) -->
+  <foreignObject x="90" y="60" width="120" height="60"
+                 transform="rotate(-40 150 80)">
+    <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
+    $P(R) $ 
+  </foreignObject>
+
+  <!-- 1. Stufe: P(¬A), Pfad-Mittelpunkt (250,80) -->
+  <foreignObject x="190" y="60" width="120" height="60"
+                 transform="rotate(40 250 80)">
+    <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
+    $P(B) $
+  </foreignObject>
+
+
+  <!-- 2. Stufe links: P(B|A), Pfad-Mittelpunkt (70,200) -->
+  <foreignObject x="10" y="170" width="120" height="60"
+                 transform="rotate(-64 79 195)">
+    <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
+    $P(R \mid R) $ 
+  </foreignObject>
+
+  <!-- 2. Stufe links: P(¬B|A), Pfad-Mittelpunkt (130,200) -->
+  <foreignObject x="70" y="170" width="120" height="60"
+                 transform="rotate(64 121 195)">
+    <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
+    $P(G \mid R) $ 
+  </foreignObject>
+
+
+  <!-- 2. Stufe rechts: P(B|¬A), Pfad-Mittelpunkt (270,200) -->
+  <foreignObject x="210" y="170" width="120" height="60"
+                 transform="rotate(-64 279 195)">
+    <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
+    $P(S \mid B) $ 
+  </foreignObject>
+
+  <!-- 2. Stufe rechts: P(¬B|¬A), Pfad-Mittelpunkt (330,200) -->
+  <foreignObject x="270" y="170" width="120" height="60"
+                 transform="rotate(64 321 195)">
+    <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
+    $P(W \mid B) $
+  </foreignObject>
+
+</svg>
+
 </center>
 
 
@@ -240,19 +345,22 @@ Beim folgenden Baumdiagramm ist ein Szenario dargestellt, indem rote (R), blaue 
 
 __$a) \;\;$__ **Fülle** die Lücken im Lückentext **aus**.
 
+<!-- data-show-partial-solution="true" -->
 Wenn bei der ersten Ziehung eine [[ blaue  ]] Kugel gezogen wurde, wird in der zweiten Ziehung aus der Urne mit den [[ weißen ]] und schwarzen Kugeln gezogen. Wird hingegen bei der ersten Ziehung eine [[ rote   ]] Kugel gezogen, dann wird in der zweiten Ziehung aus einer Urne mit [[ roten  ]] und grünen Kugeln gezogen.
 
 
 
 __$b) \;\;$__ **Bestimme** die Wahrscheinlichkeit eine grüne Kugel zu ziehen.
 
-[[ 20    ]]%
+[[ 20    ]]$\%$.
+@Algebrite.check2(20,0.001)
 
 
 
 __$c) \;\;$__ **Bestimme** die Wahrscheinlichkeit eine schwarze Kugel zu ziehen.
 
-[[ 75    ]]%
+[[ 75    ]]$\%$.
+@Algebrite.check2(75,0.001)
 
 
 

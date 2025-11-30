@@ -170,7 +170,7 @@ script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
         https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
-tags: Baumdiagramm, Hypergeometrische Verteilung, sehr leicht, sehr niedrig, Bestimme, Skizziere
+tags: Baumdiagramm, Hypergeometrische Verteilung, leicht, niedrig, Bestimme, Skizziere
 
 comment: Bestimme mithilfe eines Baumdiagramms die Wahrscheinlichkeiten für Ereignisse und Ergebnisse.
 
@@ -183,7 +183,7 @@ author: Martin Lommatzsch
 
 # Fragen zum Baumdiagramm
 
-In einem Gefäß befinden sich 8 rote (R), 3 grüne (G) und 12 blaue (B) Kugeln für zwei Ziehungen ohne Zurücklegen. **Runde** falls nötig auf drei Nachkommastellen.
+In einem Gefäß befinden sich 8 rote (R), 3 grüne (G) und 12 blaue (B) Kugeln für zwei Ziehungen ohne Zurücklegen. 
 
 
 
@@ -197,78 +197,324 @@ In einem Gefäß befinden sich 8 rote (R), 3 grüne (G) und 12 blaue (B) Kugeln 
 <script>true</script>
 *************
 
-<center>
-```latex  @tikz 
-\begin{tikzpicture}[scale=1,>=latex]
-		
-	  \node (F) at (0,1)  {Start};
-		\draw[->, thick] (0.5,0) -- (5.5,-2);
-	  \node[rotate=335] (1) at (4.5,-1)  {R\,$\frac{8}{23}$}; %rechts	
-		
-		\draw[->, thick] (-0.5,0) -- (-5.5,-2);
-	  \node[rotate=15] (2) at (-4.5,-1)  {B\,$\frac{12}{23}$}; %links
-		
-		\draw[->, thick] (-0,0) -- (-0,-2);
-	  \node[rotate=90] (3) at (-0.66,-1)  {G\,$\frac{3}{23}$}; %mitte
-		
-	  \node (A1) at (-6,-2.5)  {$\frac{12}{23}$};
-		\node (B2) at (6,-2.5)  {$\frac{8}{23}$};
-		\node (M1) at (0,-2.5)  {$\frac{3}{23}$};
-		 
-		
-		\draw[->, thick] (6.25,-3) -- (9,-5)   ; %A12 %rechtsrechts
-		\node[rotate=315] (11) at (8.1,-4)  {R}; %rechtsrechts			
-		\node[rotate=270] (B21) at (9,-6)  {$\frac{8}{23} \cdot \frac{7}{22}$}; %rechtsrechts
-		 
-		\draw[->, thick] (5.75,-3) -- (5.5,-5)  ; %B22 %rechtslinks
-		\node[rotate=315] (12) at (7,-4)  {G}; %rechtslinks	
-	  \node[rotate=270] (A12) at (5.5,-6)  {$\frac{8}{23} \cdot \frac{12}{22}$}; %rechtslinks
-		 
-		\draw[->, thick] (6,-3) -- (7.25,-5)  ; %B22 %rechtsmitte
-		\node[rotate=315] (13) at (6,-4)  {B}; %rechtsmitte	
-	  \node[rotate=270] (M12) at (7.25,-6)  {$\frac{8}{23} \cdot \frac{3}{22}$}; %rechtsmitte
-		
-				
-		\draw[->, thick] (-6.25,-3) -- (-9,-5)   ; %A12 %linksrechts
-		\node[rotate=55] (21) at (-8.1,-4)  {B}; %linksrechts			
-		\node[rotate=270] (B22) at (-9,-6)  {$\frac{12}{23} \cdot \frac{11}{22}$}; %linksrechts
-		
-		\draw[->, thick] (-6,-3) -- (-7.25,-5)  ; %B22 %linksmitte
-		\node[rotate=55] (23) at (-6,-4)  {R}; %linksmitte	
-	  \node[rotate=270] (M22) at (-7.25,-6)  {$\frac{12}{23} \cdot \frac{3}{22}$}; %linksmitte
-		 
-		\draw[->, thick] (-5.75,-3) -- (-5.5,-5)  ; %B22 %linkslinks
-		\node[rotate=55] (22) at (-7,-4)  {G}; %linkslinks	
-	  \node[rotate=270] (A22) at (-5.5,-6)  {$\frac{12}{23} \cdot \frac{8}{22}$}; %linkslinks
-		
-				
-		\draw[->, thick] (0.25,-3) -- (2,-5)   ; %A12 %linksrechts
-		\node[rotate=315] (21) at (1.5,-4)  {R}; %linksrechts			
-		\node[rotate=270] (B22) at (2,-6)  {$\frac{3}{23} \cdot \frac{8}{22}$}; %linksrechts
-		
-		\draw[->, thick] (-0,-3) -- (-0,-5)  ; %B22 %linksmitte
-		\node[rotate=90] (23) at (-0.5,-4)  {G}; %linksmitte	
-	  \node[rotate=270] (M22) at (0,-6)  {$\frac{3}{23} \cdot \frac{2}{22}$}; %linksmitte
-		 
-		\draw[->, thick] (-0.25,-3) -- (-2,-5)  ; %B22 %linkslinks
-		\node[rotate=55] (22) at (-1.5,-4)  {B}; %linkslinks	
-	  \node[rotate=270] (A22) at (-2,-6)  {$\frac{3}{23} \cdot \frac{12}{22}$}; %linkslinks
-\end{tikzpicture} 
-```
-</center>
+
+
+
+
+<!-- data-group="true" data-show-partial-solution="true"
+     data-text-solved="Richtig!" data-text-failed="Falsch!"
+     data-text-resolved="Aufgelöst!" -->
+<svg class="tree3" viewBox="70 0 850 700">
+
+  <defs>
+    <!-- Latex-ähnliche Pfeilspitze, innen weiß, schwarz umrandet -->
+    <marker id="arrow-white" markerWidth="10" markerHeight="10"
+            refX="7" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3.5 L0,7 z"
+            fill="white" stroke="black" stroke-width="0.6" />
+    </marker>
+  </defs>
+
+  <!-- =======================
+       Kanten des Baumdiagramms
+       3 Ausgänge: S, G, W
+       und je 3 Folgezweige
+       ======================= -->
+
+  <!-- Startknoten: (120, 360) -->
+
+  <!-- 1. Stufe: Start -> S (etwas höher gesetzt) -->
+  <line x1="120" y1="360" x2="320" y2="150"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="120" y1="360" x2="320" y2="150"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- 1. Stufe: Start -> G (Mitte) -->
+  <line x1="120" y1="360" x2="320" y2="360"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="120" y1="360" x2="320" y2="360"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- 1. Stufe: Start -> W (etwas tiefer gesetzt) -->
+  <line x1="120" y1="360" x2="320" y2="570"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="120" y1="360" x2="320" y2="570"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+
+  <!-- 2. Stufe: je 3 Ausgänge von S, G, W, mit größeren Abständen:
+       S-Kinder: y =  60, 150, 240
+       G-Kinder: y = 300, 360, 420
+       W-Kinder: y = 480, 570, 660
+  -->
+
+  <!-- Von S (320,150) zu (650, 60), (650,150), (650,240) -->
+
+  <!-- S -> S | S -->
+  <line x1="435" y1="150" x2="650" y2="60"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="150" x2="650" y2="60"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- S -> G | S -->
+  <line x1="435" y1="150" x2="650" y2="150"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="150" x2="650" y2="150"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- S -> W | S -->
+  <line x1="435" y1="150" x2="650" y2="240"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="150" x2="650" y2="240"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+
+  <!-- Von G (320,360) zu (650,300), (650,360), (650,420) -->
+
+  <!-- G -> S | G -->
+  <line x1="435" y1="360" x2="650" y2="300"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="360" x2="650" y2="300"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- G -> G | G -->
+  <line x1="435" y1="360" x2="650" y2="360"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="360" x2="650" y2="360"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- G -> W | G -->
+  <line x1="435" y1="360" x2="650" y2="420"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="360" x2="650" y2="420"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+
+  <!-- Von W (320,570) zu (650,480), (650,570), (650,660) -->
+
+  <!-- W -> S | W -->
+  <line x1="435" y1="570" x2="650" y2="480"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="570" x2="650" y2="480"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- W -> G | W -->
+  <line x1="435" y1="570" x2="650" y2="570"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="570" x2="650" y2="570"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+  <!-- W -> W | W -->
+  <line x1="435" y1="570" x2="650" y2="660"
+        stroke="black" stroke-width="3.5" stroke-linecap="butt" />
+  <line x1="435" y1="570" x2="650" y2="660"
+        stroke="white" stroke-width="2.25" stroke-linecap="butt"
+        marker-end="url(#arrow-white)" />
+
+
+  <!-- =======================
+       Knoten-Beschriftungen
+       ======================= -->
+
+  <!-- Start -->
+  <foreignObject x="35" y="345" width="120" height="50">
+    <big><big><b>Start</b></big></big>
+  </foreignObject>
+
+  <!-- 1. Stufe: P(S), P(G), P(W) am Knoten -->
+  <foreignObject x="295" y="140" width="160" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(R) = \frac{8}{23} $ 
+  </foreignObject>
+
+  <foreignObject x="295" y="350" width="160" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G) = \frac{3}{23} $ 
+  </foreignObject>
+
+  <foreignObject x="295" y="560" width="160" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(B) = \frac{12}{23} $ 
+  </foreignObject>
+
+
+  <!-- 2. Stufe: Knoten-Beschriftungen (S/G/W-Bereiche am Ende der Zweige) -->
+
+  <!-- Aus S kommend: S,S / G,S / W,S -->
+  <foreignObject x="630" y="50" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(R \cap R) = \frac{7}{22} \cdot \frac{8}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="630" y="140" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G \cap R) = \frac{3}{22} \cdot \frac{8}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="630" y="230" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(B \cap R) = \frac{12}{22} \cdot \frac{8}{23}$ 
+  </foreignObject>
+
+  <!-- Aus G kommend: S,G / G,G / W,G -->
+  <foreignObject x="630" y="290" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(R \cap G) = \frac{8}{22} \cdot \frac{3}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="630" y="350" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G \cap G) = \frac{2}{22} \cdot \frac{3}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="630" y="410" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(B \cap G) = \frac{3}{22} \cdot \frac{12}{23}$ 
+  </foreignObject>
+
+  <!-- Aus W kommend: S,W / G,W / W,W -->
+  <foreignObject x="630" y="470" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(R \cap B) = \frac{8}{22} \cdot \frac{12}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="630" y="560" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G \cap B) = \frac{12}{22} \cdot \frac{3}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="630" y="650" width="200" height="60">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(B \cap B) = \frac{11}{22} \cdot \frac{12}{23}$ 
+  </foreignObject>
+
+
+  <!-- ===================================
+       Pfad-Beschriftungen mit Eingabefeld
+       passend zur Linienneigung
+       =================================== -->
+
+  <!-- 1. Stufe: P(S), P(G), P(W) auf den Pfaden -->
+
+  <!-- Start -> S, Mittelpunkt ca. (220,255), Winkel ~ -45° -->
+  <foreignObject x="160" y="228" width="130" height="80"
+                 transform="rotate(-50 220 255)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(R) = \frac{8}{23} $ 
+  </foreignObject>
+
+  <!-- Start -> G, Mittelpunkt (220,360), horizontal -->
+  <foreignObject x="170" y="330" width="130" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G) = \frac{3}{23} $ 
+  </foreignObject>
+
+  <!-- Start -> W, Mittelpunkt ca. (220,465), Winkel ~ +45° -->
+  <foreignObject x="130" y="435" width="140" height="80"
+                 transform="rotate(45 220 465)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(B) = \frac{12}{23} $ 
+  </foreignObject>
+
+
+  <!-- 2. Stufe: Pfad-Beschriftungen von S aus -->
+  <!-- Mittelpunkte:
+       S->S|S: (485,105), S->G|S: (485,150), S->W|S: (485,195)
+  -->
+
+  <foreignObject x="490" y="100" width="150" height="80"
+                 transform="rotate(-25 485 105)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(R \mid R) = \frac{7}{22} \cdot \frac{8}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="490" y="155" width="150" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G \mid R) = \frac{3}{22} \cdot \frac{8}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="490" y="175" width="150" height="80"
+                 transform="rotate(25 485 195)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(B \mid R) = \frac{12}{22} \cdot \frac{8}{23}$ 
+  </foreignObject>
+
+
+  <!-- 2. Stufe: Pfad-Beschriftungen von G aus -->
+  <!-- Mittelpunkte:
+       G->S|G: (485,330), G->G|G: (485,360), G->W|G: (485,390)
+  -->
+
+  <foreignObject x="490" y="315" width="150" height="80"
+                 transform="rotate(-15 485 330)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(R \mid G) = \frac{8}{22} \cdot \frac{3}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="490" y="364" width="150" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G \mid G) = \frac{3}{22} \cdot \frac{2}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="490" y="380" width="150" height="80"
+                 transform="rotate(15 485 390)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(B \mid G) = \frac{12}{22} \cdot \frac{3}{23}$ 
+  </foreignObject>
+
+
+  <!-- 2. Stufe: Pfad-Beschriftungen von W aus -->
+  <!-- Mittelpunkte:
+       W->S|W: (485,525), W->G|W: (485,570), W->W|W: (485,615)
+  -->
+
+  <foreignObject x="490" y="523" width="150" height="80"
+                 transform="rotate(-25 485 525)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(R \mid B) = \frac{8}{22} \cdot \frac{12}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="490" y="572" width="150" height="80">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(G \mid B) = \frac{3}{22} \cdot \frac{12}{23}$ 
+  </foreignObject>
+
+  <foreignObject x="490" y="592" width="150" height="80"
+                 transform="rotate(25 485 615)">
+    <!-- data-text-solved="Richtig!" data-text-failed="Falsch!" data-text-resolved="Aufgelöst!" -->
+    $P(B \mid B) = \frac{11}{22} \cdot \frac{12}{23}$ 
+  </foreignObject>
+
+</svg>
+
+
 
 *************
 
 
 
+<section class="flex-container">
+<div class="flex-child">
 
 
 
- __$b) \;\;$__ **Bestimme**, wie hoch die Wahrscheinlichkeit ist bei der ersten Ziehung eine blaue Kugel zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. Runde falls nötig auf drei Nachkommastellen.
+ __$b) \;\;$__ **Bestimme**, wie hoch die Wahrscheinlichkeit ist bei der ersten Ziehung eine blaue Kugel zu ziehen. Gib die Wahrscheinlichkeit in Prozent an. 
 
 
 
 [[  52,174  ]]$\%$.
+@Algebrite.check2(1200/23,0.001)
 *************
 $$
 \begin{align*}
@@ -278,6 +524,8 @@ $$
 *************
 
 
+</div>
+<div class="flex-child">
 
 
 
@@ -286,6 +534,7 @@ $$
 
 
 [[   1,189  ]]$\%$.
+@Algebrite.check2(300/253,0.001)
 *************
 $$
 \begin{align*}
@@ -296,6 +545,8 @@ $$
 
 
 
+</div>
+<div class="flex-child">
 
 
 
@@ -304,11 +555,14 @@ $$
 
 
 [[   6   ]] 
+@Algebrite.check(6)
 *************
 RBG, RGB, BGR, BRG, GBR, GRB
 *************
 
 
+</div>
+<div class="flex-child">
 
 
 
@@ -318,6 +572,7 @@ RBG, RGB, BGR, BRG, GBR, GRB
 
 
 [[   18  ]] 
+@Algebrite.check2(18)
 *************
 $$
   RRG, RGR, GRR, RRB, RBR, BRR, BBG, BGB, GBB, BBR, BRB, RBB, GGR, GRG, RGG, GGB, GBG, BGG 
@@ -326,6 +581,8 @@ $$
 
 
 
+</div>
+<div class="flex-child">
 
 
 
@@ -334,7 +591,8 @@ $$
 
 
 
-[[  26,087  ]]\% 
+[[  26,087  ]]$\%$.
+@Algebrite.check2(600/23,0.001)
 *************
 $$
   \frac{12 \cdot 11}{23 \cdot 22} \approx 26,087 \%
@@ -343,6 +601,8 @@ $$
 
 
 
+</div>
+<div class="flex-child">
 
 
 
@@ -351,6 +611,7 @@ $$
 
 
 [[  11,067  ]]$\%$.
+@Algebrite.check2(2800/253,0.001)
 *************
 $$
 \begin{align*}
@@ -361,6 +622,8 @@ $$
 
 
 
+</div>
+<div class="flex-child">
 
 
 
@@ -369,6 +632,7 @@ $$
 
 
 [[  98,814  ]]$\%$.
+@Algebrite.check2(2500/253,0.001)
 *************
 $$
 \begin{align*}
@@ -379,6 +643,8 @@ $$
 
 
 
+</div>
+<div class="flex-child">
 
 
 
@@ -391,8 +657,11 @@ $$
 Alle Optionen sind zulässig.
 *************
 
- 
 
+
+
+</div>
+</section>
 
 
 
