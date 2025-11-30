@@ -610,8 +610,8 @@ Um den naturwissenschaftlichen Unterricht und mathematischen Erklärungen besser
 <h3> 11. Dezimalzahlen </h3>
 
 
-- Link [Erklärungen zu Dezimalzahlen](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_04_01_Bruchrechnung.md)
-- Link [Übungsaufgaben zu Dezimalzahlen](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_04_01_BruchrechnungA.md)
+- Link [Erklärungen zu Dezimalzahlen](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/01_05_01_Dezimalzahlen.md)
+- Link [Übungsaufgaben zu Dezimalzahlen](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/01_05_01_DezimalzahlenA.md)
 
 
 ---
@@ -1018,6 +1018,18 @@ Das Wort „*Stochastik*“ geht auf das griechische stochastikos zurück und be
 - Link [Erklärungen zum "Von"-Prinzip](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_02_02_VonPrinzip.md)
 - Link [Erklärungen zu Baumdiagrammen und bedingter Wahrscheinlichkeit](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_02_01_Baumdiagramme.md)
 - Link [Aufgaben zu Baumdiagrammen und bedingter Wahrscheinlichkeit](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/07_02_01_BaumdiagrammeA.md)
+
+
+
+---
+
+
+<h3> 4. Kontingenztafeln </h3>
+
+
+
+- Link [Erklärungen zu Kontingenztafeln, Vierfeldertafeln und zur bedingten Wahrscheinlichkeit](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_03_01_Kontingenztafeln.md)
+
 
 
 
