@@ -167,6 +167,7 @@ svg.tree2 foreignObject button {
 
 **Aufgabe 1:** Fülle alle Felder des Baumdiagramms aus.
 
+
 <!-- data-group="true" data-show-partial-solution="true"
      data-text-solved="Richtig!" data-text-failed="Falsch!"
      data-text-resolved="Aufgelöst!" -->

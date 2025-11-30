@@ -752,7 +752,10 @@ Das Prinzip einer unbedingten Wahrscheinlichkeit lässt sich am besten an einem 
 
 
 
+<center>
+<!-- style="width:400px" -->
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/bedingt1.PNG)
+</center>
 
 
 Im gewählten Beispiel sind blaue $B$ und grüne Kreise $\bar{B}$ gezeichnet, wobei einige Kreise noch einen roten Kreis $R$ sich beherbergen. Folgende *relativen Häufigkeiten* sind zu erkennen: \
