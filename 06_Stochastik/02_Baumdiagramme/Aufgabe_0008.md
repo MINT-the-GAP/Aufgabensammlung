@@ -259,33 +259,27 @@ author: Martin Lommatzsch
   <!-- Knoten der 1. Stufe: P(A), P(¬A) -->
   <foreignObject x="76" y="122" width="90" height="40">
     $P(A) = $ [[  1/5  ]]
-    @Algebrite.check(1/5)
   </foreignObject>
 
   <foreignObject x="276" y="122" width="90" height="40">
     $P(\bar{A}) = $  [[  4/5  ]] 
-    @Algebrite.check(4/5)
   </foreignObject>
 
   <!-- Blattknoten: P(B ∩ A), … -->
   <foreignObject x="12" y="265" width="60" height="50">
     $P(B \cap A) \\ = $ [[   1/20  ]]
-    @Algebrite.check(1/20)
   </foreignObject>
 
   <foreignObject x="132" y="265" width="60" height="50">
     $P(\bar{B} \cap A) \\ = $  [[   3/20  ]]
-    @Algebrite.check(3/20)
   </foreignObject>
 
   <foreignObject x="212" y="265" width="60" height="50">
     $P(B \cap \bar{A}) \\ = $ [[   1/5   ]]
-    @Algebrite.check(1/5)
   </foreignObject>
 
   <foreignObject x="332" y="265" width="60" height="50">
     $P(\bar{B} \cap \bar{A}) \\ = $  [[   3/5   ]]
-    @Algebrite.check(3/5)
   </foreignObject>
 
 
@@ -339,24 +333,14 @@ author: Martin Lommatzsch
   </foreignObject>
 
 </svg>
+@Algebrite.check([ 1/5 ; 4/5 ; 1/20 ; 3/20 ; 1/5 ; 3/5 ])
 
 
 
 
-Test 3/4: [[ 3/4 ]] 
-@Algebrite.check(3/4)
 
 
 
-<svg  viewBox="0 0 200 1000">
-
-  <!-- 2. Stufe rechts: P(¬B|¬A), Pfad-Mittelpunkt (330,200) -->
-  <foreignObject x="40" y="20" width="120" height="80">
-    Test 3/4: [[ 3/4 ]] 
-    @Algebrite.check(3/4)
-  </foreignObject>
-
-</svg>
 
 
 

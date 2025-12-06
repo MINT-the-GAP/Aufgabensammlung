@@ -17,6 +17,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
+import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
+        https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
 
 tags: Kontingenztafel, Vierfeldertafel, bedingte Wahrscheinlichkeit, leicht, sehr niedrig, Angeben
 
@@ -31,11 +34,11 @@ author: Martin Lommatzsch
 
 # Bedingte Wahrscheinlichkeit aus einer Vierfeldertafel
 
-<br>
+
 Gegeben sei die folgende Vierfeldertafel.
 
 
-<br>
+
 
 <!-- data-type="none"
 data-sortable="false" -->
@@ -45,21 +48,23 @@ data-sortable="false" -->
 | $\bar{B}$ |    0,14    |    0,06    |    0,20    |
 |           |    0,25    |    0,75    |      1     |
 
-<br>
+
 
 __$a)\;\;$__  **Bestimme** aus den Werten der Vierfeldertafel den Wert für $P(A|\bar{B})=P_{\bar{B}}(A)$ in Prozent. Runde falls nötig auf drei Nachkommastellen.
-<br>
-$P(A|\bar{B})=P_{\bar{B}}(A) = $ [[ 70    ]] $\%$ 
+
+$P(A|\bar{B})=P_{\bar{B}}(A) = $ [[ 70    ]] $\%$  
+@Algebrite.check(70/100)
 *************
 $P(A|\bar{B})=P_{\bar{B}}(A) = \dfrac{ P(A \cap \bar{B}) }{ P(\bar{B}) } = \dfrac{0,14}{0,20} = 70\%$
 *************
 
 
-<br>
+
 
 __$b)\;\;$__  **Bestimme** aus den Werten der Vierfeldertafel den Wert für $P(\bar{B}|\bar{A})=P_{\bar{A}}(\bar{B})$ in Prozent. Runde falls nötig auf drei Nachkommastellen.
-<br>
-$P(\bar{B}|\bar{A})=P_{\bar{A}}(\bar{B}) = $ [[ 8     ]] $\%$ 
+
+$P(\bar{B}|\bar{A})=P_{\bar{A}}(\bar{B}) = $ [[ 8     ]] $\%$  
+@Algebrite.check(8/100)
 *************
 $P(\bar{B}|\bar{A})=P_{\bar{A}}(\bar{B}) = \dfrac{ P(\bar{B} \cap \bar{A}) }{ P(\bar{A}) } = \dfrac{0,06}{0,75} = 8\%$
 *************
@@ -67,20 +72,20 @@ $P(\bar{B}|\bar{A})=P_{\bar{A}}(\bar{B}) = \dfrac{ P(\bar{B} \cap \bar{A}) }{ P(
 
 
 
-<br>
+
 
 __$c)\;\;$__  **Bestimme** aus den Werten der Vierfeldertafel den Wert für $P(B|A)=P_{A}(B)$ in Prozent. Runde falls nötig auf drei Nachkommastellen.
-<br>
+
 $P(B|A)=P_{A}(B) = $ [[ 44    ]] $\%$ 
+ @Algebrite.check(44/100)
 *************
 $P(B|A)=P_{A}(B) = \dfrac{ P(B \cap A) }{ P(A) } = \dfrac{0,11}{0,25} = 44\%$
 *************
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+
+

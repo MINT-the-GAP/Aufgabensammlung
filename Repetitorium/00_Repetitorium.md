@@ -1033,6 +1033,28 @@ Das Wort „*Stochastik*“ geht auf das griechische stochastikos zurück und be
 
 
 
+---
+
+
+<h3> 5. Binomialverteilungen </h3>
+
+
+---
+
+
+<h3> 6. Hypergeometrische Verteilungen </h3>
+
+---
+
+
+<h3> 7. Gauß-Verteilungen </h3>
+
+
+---
+
+
+<h3> 8. Gemischte Übungen zur Stochastik </h3>
+
 
 
 

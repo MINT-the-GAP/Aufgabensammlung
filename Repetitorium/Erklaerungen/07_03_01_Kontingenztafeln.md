@@ -900,8 +900,8 @@ Das *Baumdiagramm* wird nicht selten als *Kontingenztafel* dargestellt,
 <center>
  |  |  |  |  | 
 |  |  $A$  |   $\bar{A}$  | 	 | 
-| $B$		 |  $P(A \cap B) =  \\ P_A(B) \cdot P(A)$   |   $P(\bar{A} \cap B) = \\ P_A(B) \cdot P(\bar{A})$   | 	$P(B)= \\P(A \cap B)+P(\bar{A} \cap B)$ | 
-| $\bar{B}$		 |  $P(A \cap \bar{B}) = \\ P_A(B) \cdot P(\bar{B})$  |  $P(\bar{A} \cap \bar{B}) = \\ P_A(\bar{B}) \cdot P(\bar{A})$   | 	$P(\bar{B})=  \\P(A \cap \bar{B})+P(\bar{A} \cap \bar{B})$	 | 
+| $B$		 |  $P(A \cap B) =  \\ P_A(B) \cdot P(A) = \\ P(B \mid A) \cdot P(A)$   |   $P(\bar{A} \cap B) = \\ P_{\bar{A}}(B) \cdot P(\bar{A}) = \\ P(B \mid \bar{A}) \cdot P(\bar{A})$   | 	$P(B)= \\P(A \cap B)+P(\bar{A} \cap B)$ | 
+| $\bar{B}$		 |  $P(A \cap \bar{B}) = \\ P_A(\bar{B}) \cdot P(A) = \\ P(\bar{B} \mid A) \cdot P(A)$  |  $P(\bar{A} \cap \bar{B}) = \\ P_{\bar{A}}(\bar{B}) \cdot P(\bar{A})= \\ P(\bar{B} \mid \bar{A}) \cdot P(\bar{A})$   | 	$P(\bar{B})=  \\P(A \cap \bar{B})+P(\bar{A} \cap \bar{B})$	 | 
 |  |  $P(A)= \\P(A \cap B)+P(A \cap \bar{B})$   |   $P(\bar{A})= \\ P(\bar{A} \cap B)+P(\bar{A} \cap \bar{B})$   | 		$1=P(A)+P(\bar{A}) \\ =P(B)+P(\bar{B})$	 | 
 
 </center>

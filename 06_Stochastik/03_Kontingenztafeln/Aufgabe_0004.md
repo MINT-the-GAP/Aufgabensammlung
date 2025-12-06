@@ -17,6 +17,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
+import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
+        https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
 
 tags: Kontingenztafel, Vierfeldertafel, unbedingte Wahrscheinlichkeit, sehr leicht, sehr niedrig, Angeben
 
@@ -31,15 +34,15 @@ author: Martin Lommatzsch
 
 # unbedingte Vierfeldertafel
 
-**Fülle** alle Felder der Kontingenztafel (Vierfeldertafel) für eine unbedingte Wahrscheinlichkeit in relativen Zahlen mit Dezimalzahlen **aus**.
+**Fülle** alle Felder der Kontingenztafel (Vierfeldertafel) für eine unbedingte Wahrscheinlichkeit in relativen Zahlen **aus**.
 
-<br>
+
 
 
 <!-- data-type="none"
 data-sortable="false" -->
 |           |     $A$    | $\bar{A}$  |            |
 | :-------: | :--------: | :-------:  | :--------: |
-| $B$       | [[ 0,03 ]] | [[ 0,57 ]] | [[ 0,6  ]] |
-| $\bar{B}$ |   $2\%$    |   $0,38$   | [[ 0,4  ]] |
-|           | [[ 0,05 ]] | [[ 0,95 ]] |      1     |
+| $B$       | [[ 0,03 ]] @Algebrite.check(3/100) | [[ 0,57 ]] @Algebrite.check(57/100) | [[ 0,6  ]] @Algebrite.check(60/100) |
+| $\bar{B}$ |   $2\%$    |   $0,38$   | [[ 0,4  ]] @Algebrite.check(40/100) |
+|           | [[ 0,05 ]] @Algebrite.check(5/100) | [[ 0,95 ]] @Algebrite.check(95/100) |      1     |

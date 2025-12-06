@@ -261,7 +261,6 @@ author: Martin Lommatzsch
   <!-- Knoten der 1. Stufe: P(A), P(¬A) -->
   <foreignObject x="76" y="122" width="90" height="40">
     $P(A) = $ [[  5/8  ]]
-    @Algebrite.check(5/8)
   </foreignObject>
 
   <foreignObject x="276" y="122" width="90" height="40">
@@ -271,22 +270,18 @@ author: Martin Lommatzsch
   <!-- Blattknoten: P(B ∩ A), … -->
   <foreignObject x="12" y="265" width="60" height="50">
     $P(B \cap A) \\ = $  [[   1/2  ]]
-    @Algebrite.check(1/2)
   </foreignObject>
 
   <foreignObject x="132" y="265" width="60" height="50">
     $P(\bar{B} \cap A) \\ = $  [[   3/8  ]]
-    @Algebrite.check(3/8)
   </foreignObject>
 
   <foreignObject x="212" y="265" width="60" height="50">
     $P(B \cap \bar{A}) \\ = $ [[   3/20  ]]
-    @Algebrite.check(1/10)
   </foreignObject>
 
   <foreignObject x="332" y="265" width="60" height="50">
     $P(\bar{B} \cap \bar{A}) \\ = $  [[  9/40  ]]
-    @Algebrite.check(1/2)
   </foreignObject>
 
 
@@ -307,7 +302,6 @@ author: Martin Lommatzsch
                  transform="rotate(40 250 80)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(\bar{A}) = $ [[  3/8  ]] 
-    @Algebrite.check(3/8)
   </foreignObject>
 
 
@@ -323,7 +317,6 @@ author: Martin Lommatzsch
                  transform="rotate(64 121 195)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(\bar{B} \mid A) =  $ [[  3/5  ]]
-    @Algebrite.check(3/5)
   </foreignObject>
 
 
@@ -342,8 +335,6 @@ author: Martin Lommatzsch
   </foreignObject>
 
 </svg>
-
-
-
+@Algebrite.check([ 5/8 ; 1/2 ; 3/8 ; 3/20 ; 9/40 ; 3/8 ; 3/5 ])
 
 

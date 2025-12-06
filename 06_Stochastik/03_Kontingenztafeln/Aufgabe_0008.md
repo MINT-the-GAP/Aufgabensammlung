@@ -17,6 +17,9 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
+import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
+        https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
 
 tags: Kontingenztafel, Vierfeldertafel, bedingte Wahrscheinlichkeit, sehr leicht, sehr niedrig, Angeben
 
@@ -33,13 +36,13 @@ author: Martin Lommatzsch
 
 **Fülle** alle Felder der Kontingenztafel (Vierfeldertafel) für eine bedingte Wahrscheinlichkeit in relativen Zahlen mit Dezimalzahlen **aus**.
 
-<br>
+
 
 
 <!-- data-type="none"
 data-sortable="false" -->
 |           |     $A$    | $\bar{A}$  |            |
 | :-------: | :--------: | :-------:  | :--------: |
-| $B$       | [[ 0,09 ]] |    0,78    |    0,87    |
-| $\bar{B}$ | [[ 0,02 ]] | [[ 0,11 ]] | [[ 0,13 ]] |
-|           |    0,11    | [[ 0,89 ]] |      1     |
+| $B$       | [[ 0,09 ]] @Algebrite.check(9/100) |    0,78    |    0,87    |
+| $\bar{B}$ | [[ 0,02 ]] @Algebrite.check(2/100) | [[ 0,11 ]] @Algebrite.check(11/100) | [[ 0,13 ]] @Algebrite.check(13/100) |
+|           |    0,11    | [[ 0,89 ]] @Algebrite.check(89/100) |      1     |

@@ -2158,15 +2158,15 @@ __$c)\;\;$__
 
 
 **Gib** die relative Häufigkeit der violetten und grünen Kugeln **an**.\
-$p(V \cup G)=$ [[  9/22  ]]
-@Algebrite.check(9/22)
+$p(V \cup G)=$ [[  7/22  ]]
+@Algebrite.check(7/22)
 
 **Gib** die Wahrscheinlichkeit **an**, keine grüne oder blaue Kugel zu ziehen.\
-$P(\bar{G} \cup \bar{B})=$ [[  16/22  ]]
+$P(\bar{G} \cup \bar{B})=$ [[  13/22  ]]
 @Algebrite.check(16/22)
 
 **Gib** die Chance **an**, eine blaue oder violette Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
-$R(V \cup B)=$ [[  10:12  ]]
+$R(V \cup B)=$ [[  11:11  ]]
 
 **Gib** die Wahrscheinlichkeit **an**, eine rote oder grüne Kugel zu ziehen.\
 $P(R \cup G)=$ [[  7/22  ]]
@@ -2177,7 +2177,7 @@ $P(O \cup B \cup V) =$ [[  15/22  ]]
 @Algebrite.check(15/22)
 
 **Gib** die Chance **an**, keine rote oder violette Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
-$R(\bar{R} \cup \bar{V})=$ [[  11:11  ]]
+$R(\bar{R} \cup \bar{V})=$ [[  13:9  ]]
 
 
 </div>

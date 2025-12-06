@@ -259,12 +259,10 @@ author: Martin Lommatzsch
   <!-- Knoten der 1. Stufe: P(A), P(¬A) -->
   <foreignObject x="76" y="122" width="90" height="40">
     $P(A) = $ [[  1/6  ]]
-    @Algebrite.check(1/6)
   </foreignObject>
 
   <foreignObject x="276" y="122" width="90" height="40">
     $P(\bar{A}) =  $  [[  5/6  ]] 
-    @Algebrite.check(5/6)
   </foreignObject>
 
   <!-- Blattknoten: P(B ∩ A), … -->
@@ -274,7 +272,6 @@ author: Martin Lommatzsch
 
   <foreignObject x="132" y="265" width="60" height="50">
     $P(\bar{B} \cap A) \\ = $  [[  1/15  ]]
-    @Algebrite.check(1/15)
   </foreignObject>
 
   <foreignObject x="212" y="265" width="60" height="50">
@@ -283,7 +280,6 @@ author: Martin Lommatzsch
 
   <foreignObject x="332" y="265" width="60" height="50">
     $P(\bar{B} \cap \bar{A}) \\ = $  [[  1/12  ]]
-    @Algebrite.check(1/12)
   </foreignObject>
 
 
@@ -297,7 +293,6 @@ author: Martin Lommatzsch
                  transform="rotate(-40 150 80)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(A) =  $ [[  1/6  ]] 
-    @Algebrite.check(1/6)
   </foreignObject>
 
   <!-- 1. Stufe: P(¬A), Pfad-Mittelpunkt (250,80) -->
@@ -313,7 +308,6 @@ author: Martin Lommatzsch
                  transform="rotate(-64 79 195)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(B \mid A) =  $ [[  3/5  ]]
-    @Algebrite.check(3/5)
   </foreignObject>
 
   <!-- 2. Stufe links: P(¬B|A), Pfad-Mittelpunkt (130,200) -->
@@ -321,7 +315,6 @@ author: Martin Lommatzsch
                  transform="rotate(64 121 195)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(\bar{B} \mid A) =  $[[  2/5  ]]
-    @Algebrite.check(2/5)
   </foreignObject>
 
 
@@ -330,7 +323,6 @@ author: Martin Lommatzsch
                  transform="rotate(-64 279 195)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(B \mid \bar{A}) =$   [[  9/10  ]]
-    @Algebrite.check(9/10)
   </foreignObject>
 
   <!-- 2. Stufe rechts: P(¬B|¬A), Pfad-Mittelpunkt (330,200) -->
@@ -338,10 +330,10 @@ author: Martin Lommatzsch
                  transform="rotate(64 321 195)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(\bar{B} \mid \bar{A}) =$   [[  1/10  ]]
-    @Algebrite.check(1/10)
   </foreignObject>
 
 </svg>
+@Algebrite.check([ 1/6 ; 5/6 ; 1/15 ; 1/12 ; 1/6 ; 3/5 ; 2/5 ; 9/10 ; 1/10 ])
 
 
 

@@ -270,33 +270,27 @@ __Aufgabe 1:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
   <!-- Knoten der 1. Stufe: P(A), P(¬A) -->
   <foreignObject x="76" y="122" width="90" height="40">
     $P(A) = $ [[  1/5  ]]
-    @Algebrite.check(1/5)
   </foreignObject>
 
   <foreignObject x="276" y="122" width="90" height="40">
     $P(\bar{A}) = $  [[  4/5  ]] 
-    @Algebrite.check(4/5)
   </foreignObject>
 
   <!-- Blattknoten: P(B ∩ A), … -->
   <foreignObject x="12" y="265" width="60" height="50">
     $P(B \cap A) \\ = $ [[   1/20  ]]
-    @Algebrite.check(1/20)
   </foreignObject>
 
   <foreignObject x="132" y="265" width="60" height="50">
     $P(\bar{B} \cap A) \\ = $  [[   3/20  ]]
-    @Algebrite.check(3/20)
   </foreignObject>
 
   <foreignObject x="212" y="265" width="60" height="50">
     $P(B \cap \bar{A}) \\ = $ [[   1/5   ]]
-    @Algebrite.check(1/5)
   </foreignObject>
 
   <foreignObject x="332" y="265" width="60" height="50">
     $P(\bar{B} \cap \bar{A}) \\ = $  [[   3/5   ]]
-    @Algebrite.check(3/5)
   </foreignObject>
 
 
@@ -350,6 +344,10 @@ __Aufgabe 1:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
   </foreignObject>
 
 </svg>
+@Algebrite.check([ 1/5 ; 4/5 ; 1/20 ; 3/20 ; 1/5 ; 3/5 ])
+
+
+
 
 
 
@@ -438,7 +436,6 @@ __Aufgabe 2:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
   <!-- Knoten der 1. Stufe: P(A), P(¬A) -->
   <foreignObject x="76" y="122" width="90" height="40">
     $P(A) = $ [[  5/8  ]]
-    @Algebrite.check(5/8)
   </foreignObject>
 
   <foreignObject x="276" y="122" width="90" height="40">
@@ -448,22 +445,18 @@ __Aufgabe 2:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
   <!-- Blattknoten: P(B ∩ A), … -->
   <foreignObject x="12" y="265" width="60" height="50">
     $P(B \cap A) \\ = $  [[   1/2  ]]
-    @Algebrite.check(1/2)
   </foreignObject>
 
   <foreignObject x="132" y="265" width="60" height="50">
     $P(\bar{B} \cap A) \\ = $  [[   3/8  ]]
-    @Algebrite.check(3/8)
   </foreignObject>
 
   <foreignObject x="212" y="265" width="60" height="50">
     $P(B \cap \bar{A}) \\ = $ [[   3/20  ]]
-    @Algebrite.check(1/10)
   </foreignObject>
 
   <foreignObject x="332" y="265" width="60" height="50">
     $P(\bar{B} \cap \bar{A}) \\ = $  [[  9/40  ]]
-    @Algebrite.check(1/2)
   </foreignObject>
 
 
@@ -484,7 +477,6 @@ __Aufgabe 2:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
                  transform="rotate(40 250 80)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(\bar{A}) = $ [[  3/8  ]] 
-    @Algebrite.check(3/8)
   </foreignObject>
 
 
@@ -500,7 +492,6 @@ __Aufgabe 2:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
                  transform="rotate(64 121 195)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(\bar{B} \mid A) =  $ [[  3/5  ]]
-    @Algebrite.check(3/5)
   </foreignObject>
 
 
@@ -519,6 +510,8 @@ __Aufgabe 2:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
   </foreignObject>
 
 </svg>
+@Algebrite.check([ 5/8 ; 1/2 ; 3/8 ; 3/20 ; 9/40 ; 3/8 ; 3/5 ])
+
 
 
 
@@ -601,7 +594,6 @@ __Aufgabe 3:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
   <!-- Knoten der 1. Stufe: P(A), P(¬A) -->
   <foreignObject x="76" y="122" width="90" height="40">
     $P(A) = $ [[  0,9  ]]
-    @Algebrite.check(9/10)
   </foreignObject>
 
   <foreignObject x="276" y="122" width="90" height="40">
@@ -611,12 +603,10 @@ __Aufgabe 3:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
   <!-- Blattknoten: P(B ∩ A), … -->
   <foreignObject x="12" y="265" width="60" height="50">
     $P(B \cap A) \\ = $ [[  3/5  ]]
-    @Algebrite.check(3/5)
   </foreignObject>
 
   <foreignObject x="132" y="265" width="60" height="50">
     $P(\bar{B} \cap A) \\ = $  [[  3/10  ]]
-    @Algebrite.check(3/10)
   </foreignObject>
 
   <foreignObject x="212" y="265" width="60" height="50">
@@ -625,7 +615,6 @@ __Aufgabe 3:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
 
   <foreignObject x="332" y="265" width="60" height="50">
     $P(\bar{B} \cap \bar{A}) \\ = $  [[  3/40  ]]
-    @Algebrite.check(3/40)
   </foreignObject>
 
 
@@ -639,7 +628,6 @@ __Aufgabe 3:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
                  transform="rotate(-40 150 80)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(A) =  $  [[  9/10  ]] 
-    @Algebrite.check(9/10)
   </foreignObject>
 
   <!-- 1. Stufe: P(¬A), Pfad-Mittelpunkt (250,80) -->
@@ -647,7 +635,6 @@ __Aufgabe 3:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
                  transform="rotate(40 250 80)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(\bar{A}) =$ [[  1/10  ]] 
-    @Algebrite.check(1/10)
   </foreignObject>
 
 
@@ -656,7 +643,6 @@ __Aufgabe 3:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
                  transform="rotate(-64 79 195)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(B \mid A) =  $  [[  2/3  ]]
-    @Algebrite.check(2/3)
   </foreignObject>
 
   <!-- 2. Stufe links: P(¬B|A), Pfad-Mittelpunkt (130,200) -->
@@ -672,7 +658,6 @@ __Aufgabe 3:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
                  transform="rotate(-64 279 195)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(B \mid \bar{A}) =$   [[  1/4  ]]
-    @Algebrite.check(1/4)
   </foreignObject>
 
   <!-- 2. Stufe rechts: P(¬B|¬A), Pfad-Mittelpunkt (330,200) -->
@@ -680,10 +665,15 @@ __Aufgabe 3:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
                  transform="rotate(64 321 195)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(\bar{B} \mid \bar{A}) =$   [[  3/4  ]]
-    @Algebrite.check(3/4)
   </foreignObject>
 
 </svg>
+@Algebrite.check([ 9/10 ; 3/5 ; 3/10 ; 3/40 ; 9/10 ; 1/10 ; 2/3 ; 1/4 ; 3/4 ])
+
+
+
+
+
 
 
 
@@ -766,7 +756,6 @@ __Aufgabe 4:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
   <!-- Knoten der 1. Stufe: P(A), P(¬A) -->
   <foreignObject x="76" y="122" width="90" height="40">
     $P(A) = $ [[  3/10  ]]
-    @Algebrite.check(3/10)
   </foreignObject>
 
   <foreignObject x="276" y="122" width="90" height="40">
@@ -776,12 +765,10 @@ __Aufgabe 4:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
   <!-- Blattknoten: P(B ∩ A), … -->
   <foreignObject x="12" y="265" width="60" height="50">
     $P(B \cap A) \\ = $ [[   1/5   ]]
-    @Algebrite.check(1/5)
   </foreignObject>
 
   <foreignObject x="132" y="265" width="60" height="50">
     $P(\bar{B} \cap A) \\ = $  [[   1/10  ]]
-    @Algebrite.check(1/10)
   </foreignObject>
 
   <foreignObject x="212" y="265" width="60" height="50">
@@ -790,7 +777,6 @@ __Aufgabe 4:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
 
   <foreignObject x="332" y="265" width="60" height="50">
     $P(\bar{B} \cap \bar{A}) \\ = $  [[   1/2   ]]
-    @Algebrite.check(1/2)
   </foreignObject>
 
 
@@ -811,7 +797,6 @@ __Aufgabe 4:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
                  transform="rotate(40 250 80)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(\bar{A}) =$ [[  7/10  ]] 
-    @Algebrite.check(7/10)
   </foreignObject>
 
 
@@ -835,7 +820,6 @@ __Aufgabe 4:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
                  transform="rotate(-64 279 195)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(B \mid \bar{A}) =$   [[   2/7   ]]
-    @Algebrite.check(2/7)
   </foreignObject>
 
   <!-- 2. Stufe rechts: P(¬B|¬A), Pfad-Mittelpunkt (330,200) -->
@@ -843,10 +827,11 @@ __Aufgabe 4:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
                  transform="rotate(64 321 195)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(\bar{B} \mid \bar{A}) =$   [[   5/7   ]]
-    @Algebrite.check(5/7)
   </foreignObject>
 
 </svg>
+@Algebrite.check([ 1/2 ; 1/10 ; 1/5 ; 3/10 ; 7/10 ; 2/7 ; 5/7 ])
+
 
 
 
@@ -936,7 +921,6 @@ __Aufgabe 5:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
   <!-- Knoten der 1. Stufe: P(A), P(¬A) -->
   <foreignObject x="76" y="122" width="90" height="40">
     $P(A) = $ [[  7/8  ]]
-    @Algebrite.check(7/8)
   </foreignObject>
 
   <foreignObject x="276" y="122" width="90" height="40">
@@ -946,22 +930,18 @@ __Aufgabe 5:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
   <!-- Blattknoten: P(B ∩ A), … -->
   <foreignObject x="12" y="265" width="60" height="50">
     $P(B \cap A) \\ = $ [[  7/10  ]]
-    @Algebrite.check(7/10)
   </foreignObject>
 
   <foreignObject x="132" y="265" width="60" height="50">
     $P(\bar{B} \cap A) \\ = $  [[  7/40  ]]
-    @Algebrite.check(7/40)
   </foreignObject>
 
   <foreignObject x="212" y="265" width="60" height="50">
     $P(B \cap \bar{A}) \\ = $  [[  1/32  ]]
-    @Algebrite.check(1/32)
   </foreignObject>
 
   <foreignObject x="332" y="265" width="60" height="50">
     $P(\bar{B} \cap \bar{A}) \\ = $  [[  3/32  ]]
-    @Algebrite.check(3/32)
   </foreignObject>
 
 
@@ -975,7 +955,6 @@ __Aufgabe 5:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
                  transform="rotate(-40 150 80)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(A) =  $ [[  7/8  ]]
-    @Algebrite.check(7/8)
   </foreignObject>
 
   <!-- 1. Stufe: P(¬A), Pfad-Mittelpunkt (250,80) -->
@@ -983,7 +962,6 @@ __Aufgabe 5:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
                  transform="rotate(40 250 80)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(\bar{A}) =$ [[  1/8  ]] 
-    @Algebrite.check(1/8)
   </foreignObject>
 
 
@@ -999,7 +977,6 @@ __Aufgabe 5:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
                  transform="rotate(64 121 195)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(\bar{B} \mid A) =  $[[   1/5   ]]
-    @Algebrite.check(1/5)
   </foreignObject>
 
 
@@ -1008,7 +985,6 @@ __Aufgabe 5:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
                  transform="rotate(-64 279 195)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(B \mid \bar{A}) =$   [[   1/4   ]]
-    @Algebrite.check(1/4)
   </foreignObject>
 
   <!-- 2. Stufe rechts: P(¬B|¬A), Pfad-Mittelpunkt (330,200) -->
@@ -1019,6 +995,8 @@ __Aufgabe 5:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
   </foreignObject>
 
 </svg>
+@Algebrite.check([ 7/8 ; 7/10 ; 7/40 ; 1/32 ; 3/32 ; 7/8 ; 1/8 ; 1/5 ; 1/4 ])
+
 
 
 
@@ -1109,12 +1087,10 @@ __Aufgabe 6:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
   <!-- Knoten der 1. Stufe: P(A), P(¬A) -->
   <foreignObject x="76" y="122" width="90" height="40">
     $P(A) = $ [[  1/6  ]]
-    @Algebrite.check(1/6)
   </foreignObject>
 
   <foreignObject x="276" y="122" width="90" height="40">
     $P(\bar{A}) =  $  [[  5/6  ]] 
-    @Algebrite.check(5/6)
   </foreignObject>
 
   <!-- Blattknoten: P(B ∩ A), … -->
@@ -1124,7 +1100,6 @@ __Aufgabe 6:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
 
   <foreignObject x="132" y="265" width="60" height="50">
     $P(\bar{B} \cap A) \\ = $  [[  1/15  ]]
-    @Algebrite.check(1/15)
   </foreignObject>
 
   <foreignObject x="212" y="265" width="60" height="50">
@@ -1133,7 +1108,6 @@ __Aufgabe 6:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
 
   <foreignObject x="332" y="265" width="60" height="50">
     $P(\bar{B} \cap \bar{A}) \\ = $  [[  1/12  ]]
-    @Algebrite.check(1/12)
   </foreignObject>
 
 
@@ -1147,7 +1121,6 @@ __Aufgabe 6:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
                  transform="rotate(-40 150 80)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(A) =  $ [[  1/6  ]] 
-    @Algebrite.check(1/6)
   </foreignObject>
 
   <!-- 1. Stufe: P(¬A), Pfad-Mittelpunkt (250,80) -->
@@ -1163,7 +1136,6 @@ __Aufgabe 6:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
                  transform="rotate(-64 79 195)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(B \mid A) =  $ [[  3/5  ]]
-    @Algebrite.check(3/5)
   </foreignObject>
 
   <!-- 2. Stufe links: P(¬B|A), Pfad-Mittelpunkt (130,200) -->
@@ -1171,7 +1143,6 @@ __Aufgabe 6:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
                  transform="rotate(64 121 195)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(\bar{B} \mid A) =  $[[  2/5  ]]
-    @Algebrite.check(2/5)
   </foreignObject>
 
 
@@ -1180,7 +1151,6 @@ __Aufgabe 6:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
                  transform="rotate(-64 279 195)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(B \mid \bar{A}) =$   [[  9/10  ]]
-    @Algebrite.check(9/10)
   </foreignObject>
 
   <!-- 2. Stufe rechts: P(¬B|¬A), Pfad-Mittelpunkt (330,200) -->
@@ -1188,10 +1158,12 @@ __Aufgabe 6:__ **Gib** die im gezeigten Baumdiagramm fehlen Werte **an**.
                  transform="rotate(64 321 195)">
     <!-- data-text-solved="Richtig!"  data-text-failed="Falsch!"  data-text-resolved="Aufgelöst!"  -->
     $P(\bar{B} \mid \bar{A}) =$   [[  1/10  ]]
-    @Algebrite.check(1/10)
   </foreignObject>
 
 </svg>
+@Algebrite.check([ 1/6 ; 5/6 ; 1/15 ; 1/12 ; 1/6 ; 3/5 ; 2/5 ; 9/10 ; 1/10 ])
+
+
 
 
 
