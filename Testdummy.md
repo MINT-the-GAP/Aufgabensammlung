@@ -373,77 +373,6 @@ if (!window.rects['@0'] || window.rects['@0'].length !== total) {
 
 
 
-# Koordinatensystem
-
-# Downloadbalken
-
-
-
-> Klicke/ziehe den Balken auf **77 %** und drücke **Prüfen**.
-
-<div>
-  <progress id="prog77" value="0" max="100" style="width:33%; transform:scale(3); position:relative; left:calc(100% / 3); margin-bottom:1rem">0%</progress>
-</div>
-
-<script>
-(() => {
-  const bar = document.getElementById('prog77');
-  if (!bar) return;
-
-  const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
-  function setValue(val) {
-    const max = Number(bar.max) || 100;
-    const v = clamp(Math.round(val), 0, max);
-    bar.value = v;
-    bar.textContent = v + '%'; // Fallback-Anzeige
-  }
-  function handlePointer(clientX) {
-    const rect = bar.getBoundingClientRect();
-    const frac = (clientX - rect.left) / rect.width;
-    setValue(frac * (bar.max || 100));
-  }
-
-  // Klick & Drag
-  bar.addEventListener('click', (e) => handlePointer(e.clientX));
-  let dragging = false;
-  bar.addEventListener('mousedown', (e) => { dragging = true; handlePointer(e.clientX); e.preventDefault(); });
-  window.addEventListener('mousemove', (e) => { if (dragging) handlePointer(e.clientX); });
-  window.addEventListener('mouseup',   () => { dragging = false; });
-
-  // Anfangswert
-  setValue(bar.value || 0);
-})();
-</script>
-
-<!-- Optional: Anzahl Fehlversuche bis "Auflösen"-Button -->
-<!-- data-solution-button="3" -->
-
-```js
-// LiaScript prüft nur das Rückgabe-Ergebnis dieses Snippets.
-// Gib TRUE zurück, wenn der Balken exakt 77 ist, sonst FALSE.
-(() => {
-  const bar = document.getElementById('prog77');
-  return !!bar && Number(bar.value) === 77;
-})()
-```
-
-
-
-
-
-
-
-
-
-
-
-# Inline-Effekt Algebrite?
-
-
-P( [[ 3/4 ]] | [[ 2/5 ]] )
-
-
-P( [[ 3/4 ]] @Algebrite.check(3/4) | [[ 2/5 ]] @Algebrite.check(2/5) )
 
 
 # Vernetzte Lücken
@@ -480,8 +409,25 @@ try different expressions of `x ^ 2 - 1`
 
 ---
 
-x=[[ 1/3 ]]m
+x=[[ 1/3 ]] m
 @Algebrite.check2(1/3,0.001)
+
+---
+
+44,444
+
+x=[[ 44,444 ]] m
+@Algebrite.check2(44.44,0.1)
+
+---
+
+Inline 3/4 und 2/5
+
+P( [[ 3/4 ]] | [[ 2/5 ]] )
+@Algebrite.check([ 3/4 ; 2/5 ])
+
+P( [[ 3/4 ]] | [[ 2/5 ]] )
+@Algebrite.check2([ 3/4 ; 2/5 ] , [ 0.01 ; 0.1 ])
 
 ---
 
