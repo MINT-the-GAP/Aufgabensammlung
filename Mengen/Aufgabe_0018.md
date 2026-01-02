@@ -57,25 +57,21 @@ author: Martin Lommatzsch
 
 **Gib** die Durchschnitt der beiden gegebenen Mengen $\mathbb{K}$ und $\mathbb{M}$ **an**.
 
-<br>
-
-<br>
-__$a)\;\;$__ $ \mathbb{K} = \{ 2,3,5,6,8 \} $\ und \mathbb{M} = \{ 1,2,4,5,7,8 \} $\
-
-$\mathbb{K} \cap \mathbb{M} =  $ [[   {2,5,8}   ]] $  $\ 
-
-<br>
-<br>
-__$b)\;\;$__ $  \mathbb{K} = \{ 3,6,9 \} $\ und \mathbb{M} = \{ 2,3,5,6,8 \} $\
-
-$\mathbb{K} \cap \mathbb{M} =  $ [[    {3,6}    ]] $  $\ 
-
-<br>
-<br>
-__$c)\;\;$__ $  \mathbb{K} = \{ 1,3,5,7,9 \} $\ und \mathbb{M} = \{ 3,4,5,6,7 \} $\
-
-$\mathbb{K} \cap \mathbb{M} =  $ [[   {3,5,7}   ]] $  $\ 
 
 
+__$a)\;\;$__ $ \mathbb{K} = \{ 2,3,5,6,8 \} $  und $\mathbb{M} = \{ 1,2,4,5,7,8 \} $ 
+
+<!-- data-solution-button="5" -->
+$\mathbb{K} \cup \mathbb{M} =  $ [[   {2,3,4,5,6,7,8}   ]] 
+
+__$b)\;\;$__ $  \mathbb{K} = \{ 3,6,9 \} $  und $\mathbb{M} = \{ 2,3,5,6,8 \} $ 
+
+<!-- data-solution-button="5" -->
+$\mathbb{K} \cup \mathbb{M} =  $ [[    {2,3,5,6,8,9}    ]]  
+
+__$c)\;\;$__ $  \mathbb{K} = \{ 1,3,5,7,9 \} $  und $\mathbb{M} = \{ 3,4,5,6,7 \} $ 
+
+<!-- data-solution-button="5" -->
+$\mathbb{K} \cup \mathbb{M} =  $ [[   {1,3,4,5,6,7,9}   ]]  
 
 

@@ -57,32 +57,32 @@ author: Martin Lommatzsch
 
 **Wähle** die kleinste Zahlenmenge **aus**, in der die jeweilige Zahl ist.
 
-<br>
+
 
 <section class="flex-container">
 <div class="flex-child">
-<br>
-__$a)\;\;$__ $ -4 $ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
-<br>
+
+__$a)\;\;$__ $ -4  \in $ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
+
 </div>
 <div class="flex-child">
-<br>
-__$b)\;\;$__ $ 6 $ [[($\mathbb{N}$)|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
-<br>
+
+__$b)\;\;$__ $ 6  \in $ [[($\mathbb{N}$)|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
+
 </div>
 <div class="flex-child">
-<br>
-__$c)\;\;$__ $ 0,03 $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
-<br>
+
+__$c)\;\;$__ $ 0,03  \in $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
+
 </div>
 <div class="flex-child">
-<br>
-__$d)\;\;$__ $ \frac{7}{8} $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
+
+__$d)\;\;$__ $ \frac{7}{8}  \in $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
 
 </div>
 </section>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

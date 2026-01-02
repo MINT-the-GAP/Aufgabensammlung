@@ -57,32 +57,32 @@ author: Martin Lommatzsch
 
 **Wähle** die kleinste Zahlenmenge **aus**, in der der beschriebene Term ist.
 
-<br>
+
 
 <section class="flex-container">
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ $ -4^3+(-3)^4 \in$ [[($\mathbb{N}$)|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ $ \left(\sqrt{7}+\sqrt{11}\right)^2 \in$ [[$\mathbb{N}$|$\mathbb{Z}$|$\mathbb{Q}$|($\mathbb{R}$)]] 
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$c)\;\;$__ $ 8-\sqrt{6,25} \in$ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$d)\;\;$__ $ -0,45+\sqrt{0,25}+\dfrac{19}{20} \in$ [[($\mathbb{N}$)|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
 
 </div>
 </section>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

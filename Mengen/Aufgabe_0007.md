@@ -57,32 +57,32 @@ author: Martin Lommatzsch
 
 **Wähle** die kleinste Zahlenmenge **aus**, in der der beschriebene Term ist.
 
-<br>
+
 
 <section class="flex-container">
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ $ \sqrt{2^5-3^2} \in$ [[$\mathbb{N}$|$\mathbb{Z}$|$\mathbb{Q}$|($\mathbb{R}$)]] 
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ $ \dfrac{\sqrt{8}+\sqrt{18}}{\sqrt{2}} \in$ [[($\mathbb{N}$)|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$c)\;\;$__ $ 0,15-\dfrac{23}{20} \in$ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$d)\;\;$__ $ 1,\bar{4} + 0,\bar{5} \in$ [[($\mathbb{N}$)|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
 
 </div>
 </section>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

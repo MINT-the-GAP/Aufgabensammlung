@@ -57,30 +57,30 @@ author: Martin Lommatzsch
 
 **Gib** die Differenz der beiden gegebenen Mengen $\mathbb{K}$ und $\mathbb{M}$ **an**.
 
-<br>
 
-<br>
+
+
 __$a)\;\;$__ $ \mathbb{K} = \{ 1,5,6,9 \} $\ und \mathbb{M} = \{ 3,4,6,8 \} $\
 
-$\mathbb{K} \setminus \mathbb{M} =  $ [[   {3,4,8}   ]] $  $\ 
+$\mathbb{M} \setminus \mathbb{K} =  $ [[   {3,4,8}   ]] $  $\ 
 
-<br>
-<br>
+
+
 __$b)\;\;$__ $  \mathbb{K} = \{ 1,2,3,4,5,6,7 \} $\ und \mathbb{M} = \{ 1,2,3,5,7 \} $\
 
-$\mathbb{K} \setminus \mathbb{M} =  $ [[   {}        ]] $  $\ 
+$\mathbb{M} \setminus \mathbb{K} =  $ [[   {}        ]] $  $\ 
 
-<br>
-<br>
+
+
 __$c)\;\;$__ $  \mathbb{K} = \{ 5,7,9,11 \} $\ und \mathbb{M} = \{ 4,5,8,10 \} $\
 
 $\mathbb{K} \setminus \mathbb{M} =  $ [[   {5,7,9,11}   ]] $  $\ 
 
-<br>
-<br>
+
+
 __$d)\;\;$__ $  \mathbb{K} = \{ 5,7,9,11 \} $\ und \mathbb{M} = \{ 4,5,8,10 \} $\
 
-$\mathbb{M} \setminus \mathbb{K} =  $ [[   {4,5,8,10}   ]] $  $\ 
+$\mathbb{M} \setminus \mathbb{K} =  $ [[   {7,9,11}   ]] $  $\ 
 
 
 

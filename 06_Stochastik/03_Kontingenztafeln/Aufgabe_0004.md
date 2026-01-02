@@ -39,10 +39,13 @@ author: Martin Lommatzsch
 
 
 
-<!-- data-type="none"
-data-sortable="false" -->
+<!-- data-type="none" 
+     data-sortable="false"
+     data-group="true" 
+     data-show-partial-solution="true" -->
 |           |     $A$    | $\bar{A}$  |            |
 | :-------: | :--------: | :-------:  | :--------: |
-| $B$       | [[ 0,03 ]] @Algebrite.check(3/100) | [[ 0,57 ]] @Algebrite.check(57/100) | [[ 0,6  ]] @Algebrite.check(60/100) |
-| $\bar{B}$ |   $2\%$    |   $0,38$   | [[ 0,4  ]] @Algebrite.check(40/100) |
-|           | [[ 0,05 ]] @Algebrite.check(5/100) | [[ 0,95 ]] @Algebrite.check(95/100) |      1     |
+| $B$       | [[ 0,03 ]] | [[ 0,57 ]] | [[ 0,6  ]] |
+| $\bar{B}$ |   $2\%$    |   $0,38$   | [[ 0,4  ]] |
+|           | [[ 0,05 ]] | [[ 0,95 ]] |      1     |
+@Algebrite.check([ 3/100; 57/100; 60/100; 40/100; 5/100; 95/100 ])

@@ -57,32 +57,32 @@ author: Martin Lommatzsch
 
 **Wähle** die kleinste Zahlenmenge **aus**, in der die jeweilige Zahl ist.
 
-<br>
+
 
 <section class="flex-container">
 <div class="flex-child">
-<br>
-__$a)\;\;$__ $ \frac{12}{4} $ [[$(\mathbb{N})$|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
-<br>
+
+__$a)\;\;$__ $ \frac{12}{4} \in  $ [[$(\mathbb{N})$|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
+
 </div>
 <div class="flex-child">
-<br>
-__$b)\;\;$__ $ 0,0001 $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
-<br>
+
+__$b)\;\;$__ $ 0,0001  \in $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
+
 </div>
 <div class="flex-child">
-<br>
-__$c)\;\;$__ $ -\sqrt{9} $ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
-<br>
+
+__$c)\;\;$__ $ -\sqrt{9}  \in $ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
+
 </div>
 <div class="flex-child">
-<br>
-__$d)\;\;$__ $ -\sqrt[5]{7} $ [[$\mathbb{N}$|$\mathbb{Z}$|$\mathbb{Q}$|($\mathbb{R}$)]] 
+
+__$d)\;\;$__ $ -\sqrt[5]{7}  \in $ [[$\mathbb{N}$|$\mathbb{Z}$|$\mathbb{Q}$|($\mathbb{R}$)]] 
 
 </div>
 </section>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

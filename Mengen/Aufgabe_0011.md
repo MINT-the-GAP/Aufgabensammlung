@@ -57,30 +57,30 @@ author: Martin Lommatzsch
 
 **Gib** die kleinste beziehungsweise größte Zahl der gegebenen Zahlenmenge **an**. Es gilt $\mathbb{K} \subset \mathbb{N}$.
 
-<br>
 
-<br>
+
+
 __$a)\;\;$__ $ \mathbb{K} = \{ 45,39,48,51,37,52,46,50,47,38,43,46,51,39,40 \} $\
 
 $\min(\mathbb{K}) = $ [[ 37 ]] \
 $\max(\mathbb{K}) = $ [[ 52 ]] \
 
-<br>
-<br>
+
+
 __$b)\;\;$__ $ \mathbb{K} = \{ 34,37,31,32,39,33,34,35,38,32,30,34,39,38,34,33,31 \} $\
 
 $\min(\mathbb{K}) = $ [[ 30 ]] \
 $\max(\mathbb{K}) = $ [[ 39 ]] \
 
-<br>
-<br>
+
+
 __$c)\;\;$__ $ \mathbb{K} = \{ 64,67,61,58,60,64,66,68,63,64,60,69,64,65,59,67,68,60 \} $\
 
 $\min(\mathbb{K}) = $ [[ 58 ]] \
 $\max(\mathbb{K}) = $ [[ 69 ]] \
 
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 
