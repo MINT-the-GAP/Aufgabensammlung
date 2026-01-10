@@ -60,32 +60,32 @@ author: Martin Lommatzsch
 <section class="flex-container">
 
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ Ein Produkt aus $7$ und $8$ wird durch $4$ dividiert.\
 [[  14  ]]
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ Der Term besteht aus den Faktoren $2$, $6$, $3$ und  $5$.\
 [[  180 ]]
-<br>
+
 </div>
 <div class="flex-child">
-<br>
-__$c)\;\;$__ Der Dividend $6$ und der Divisor $78$ bilden ein Produkt mit $8$.\
+
+__$c)\;\;$__ Der Divisor $6$ und der Dividend $78$ bilden ein Produkt mit $8$.\
 [[  104 ]]
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$d)\;\;$__ Der Subtrahend $19$ und der Minuend $73$ bilden eine Differenz, die mit $17$ addiert wird.\
 [[  71  ]]
 
 </div>
 </section>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

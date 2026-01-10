@@ -60,18 +60,18 @@ author: Martin Lommatzsch
 <section class="flex-container">
 
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ $ 65:7 - 16:7 =$ [[  7  ]]
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ $ 23:9 + 58:9 =$ [[  9  ]]
-<br>
+
 </div>
 </section>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

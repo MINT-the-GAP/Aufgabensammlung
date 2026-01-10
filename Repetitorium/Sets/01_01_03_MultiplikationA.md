@@ -506,7 +506,7 @@ $486 \cdot 273=$[[  132678  ]]
 $c)\;\;$
 
 <!-- data-solution-button="5"-->
-$751 \cdot 342=$[[  256782  ]] 
+$751 \cdot 342=$[[  256842  ]] 
 </div>
 
 <div class="flex-child">
@@ -520,7 +520,7 @@ $629 \cdot 468=$[[  294372  ]]
 $e)\;\;$
 
 <!-- data-solution-button="5"-->
-$592 \cdot 531=$[[  314952  ]] 
+$592 \cdot 531=$[[  314352  ]] 
 </div>
 
 <div class="flex-child">
@@ -534,21 +534,21 @@ $847 \cdot 659=$[[  558173  ]]
 $g)\;\;$
 
 <!-- data-solution-button="5"-->
-$438 \cdot 726=$[[  318228  ]] 
+$438 \cdot 726=$[[  317988  ]] 
 </div>
 
 <div class="flex-child">
 $h)\;\;$
 
 <!-- data-solution-button="5"-->
-$715 \cdot 843=$[[  602145  ]] 
+$715 \cdot 843=$[[  602745  ]] 
 </div>
 
 <div class="flex-child">
 $i)\;\;$
 
 <!-- data-solution-button="5"-->
-$964 \cdot 917=$[[  883388  ]] 
+$964 \cdot 917=$[[  883988  ]] 
 </div>
 
 </section>

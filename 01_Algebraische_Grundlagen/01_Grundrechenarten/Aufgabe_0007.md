@@ -61,14 +61,14 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 <br>
-__$a)\;\;$__ Dreimillionenvierhunderttausendneun  \
+__$a)\;\;$__ Dreimillionenvierhunderttausendneun.  \
 
 [[  3400009  ]]
 <br>
 </div>
 <div class="flex-child">
 <br>
-__$b)\;\;$__ Neuntausendzweihundertvierundsechsig.\
+__$b)\;\;$__ Neuntausendzweihundertvierundsechszig.\
 
 [[    9264   ]]
 <br>

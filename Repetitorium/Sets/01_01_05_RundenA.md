@@ -445,7 +445,7 @@ $2163 \approx$ [[2200    ]]
 __$e)\;\;$__
 
 <!-- data-solution-button="5" -->
-$2389 \approx$ [[2400    ]]
+$2389 \approx$ [[2500    ]]
 
 </div>
 
@@ -816,11 +816,11 @@ data-sortable="false"
 data-solution-button="5"-->
 |   Zahl    |    Zehner     |   Hunderter    |   Tausender    | Zehntausender | Hunderttausender |
 |  :-----:  |    :-----:    |   :-----:      |     :-----:    |   :-----:     |     :-----:      |
-| $278849$  | [[ 278850  ]] |  [[ 278800  ]] | [[ 279000  ]]  |  [[ 280000 ]] |   [[ 300000  ]]  |
-| $67948$   | [[ 67950   ]] |  [[ 67900   ]] | [[ 68000   ]]  |  [[ 70000  ]] |   [[ 100000  ]]  |
-| $126443$  | [[ 126440  ]] |  [[ 126400  ]] | [[ 126000  ]]  |  [[ 130000 ]] |   [[ 100000  ]]  |
-|  $24367$  | [[ 24370   ]] |  [[ 24400   ]] | [[ 24000   ]]  |  [[ 20000  ]] |   [[ 0       ]]  |
-| $2306637$ | [[ 2306640 ]] |  [[ 2306600 ]] | [[ 2307000 ]]  |  [[ 231000 ]] |   [[ 2300000 ]]  |
+| $278849$  | [[ 278850  ]] |  [[ 278800  ]] | [[ 279000  ]]  | [[ 280000  ]] |   [[ 300000  ]]  |
+| $67948$   | [[ 67950   ]] |  [[ 67900   ]] | [[ 68000   ]]  | [[ 70000   ]] |   [[ 100000  ]]  |
+| $126443$  | [[ 126440  ]] |  [[ 126400  ]] | [[ 126000  ]]  | [[ 130000  ]] |   [[ 100000  ]]  |
+|  $24367$  | [[ 24370   ]] |  [[ 24400   ]] | [[ 24000   ]]  | [[ 20000   ]] |   [[ 0       ]]  |
+| $2306637$ | [[ 2306640 ]] |  [[ 2306600 ]] | [[ 2307000 ]]  | [[ 2310000 ]] |   [[ 2300000 ]]  |
 
 
 
@@ -832,7 +832,7 @@ __Aufgabe 9:__ Gegeben sei eine gerundete Zahl. *Gib* jeweils die kleinste und d
 <!-- data-type="none"
 data-sortable="false"  
 data-solution-button="5"-->
-| gerundete Zahl | wurde gerundete auf | kleinste Zahl |  größte Zahl  |
+| gerundete Zahl | wurde gerundet auf | kleinste Zahl |  größte Zahl  |
 |  :----------:  | :-----------------: | :-----------: |  :---------:  |
 |    $445000$    |      Tausender      | [[ 444500  ]] | [[ 445499  ]] |
 |      $1700$    |      Hunderter      | [[   1650  ]] | [[ 1749    ]] |
@@ -850,10 +850,10 @@ __Aufgabe 10:__ Gegeben sei eine gerundete Zahl. *Gib* jeweils die kleinste und 
 <!-- data-type="none"
 data-sortable="false"  
 data-solution-button="5"-->
-| gerundete Zahl | wurde gerundete auf | kleinste Zahl |  größte Zahl  |
+| gerundete Zahl | wurde gerundet auf | kleinste Zahl |  größte Zahl  |
 |  :----------:  | :-----------------: | :-----------: |  :---------:  |
 |    $6000000$   |  Hunderttausender   | [[ 5950000 ]] | [[ 6049999 ]] |
-|      $100$     |        Zehner       | [[   50   ]]  | [[  149    ]] |
+|      $100$     |        Zehner       | [[   95   ]]  | [[  104    ]] |
 |    $794000$    |      Tausender      | [[ 793500  ]] | [[ 794499  ]] |
 |      $0$       |      Tausender      | [[ 0       ]] | [[ 499     ]] |
 |      $6400$    |      Hunderter      | [[ 6350    ]] | [[ 6449    ]] |

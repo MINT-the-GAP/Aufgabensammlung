@@ -57,7 +57,7 @@ Gegeben sei eine gerundete Zahl. **Gib** jeweils die kleinste und die größte Z
 
 <!-- data-type="none"
 data-sortable="false" -->
-| gerundete Zahl | wurde gerundete auf | kleinste Zahl |  größte Zahl  |
+| gerundete Zahl | wurde gerundet auf | kleinste Zahl |  größte Zahl  |
 |  :----------:  | :-----------------: | :-----------: |  :---------:  |
 |    $445000$    |      Tausender      | [[ 444500  ]] | [[ 445499  ]] |
 |      $1700$    |      Hunderter      | [[   1650  ]] | [[ 1749    ]] |

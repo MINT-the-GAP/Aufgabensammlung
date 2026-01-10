@@ -57,10 +57,10 @@ Gegeben sei eine gerundete Zahl. **Gib** jeweils die kleinste und die größte Z
 
 <!-- data-type="none"
 data-sortable="false" -->
-| gerundete Zahl | wurde gerundete auf | kleinste Zahl |  größte Zahl  |
+| gerundete Zahl | wurde gerundet auf | kleinste Zahl |  größte Zahl  |
 |  :----------:  | :-----------------: | :-----------: |  :---------:  |
 |    $6000000$   |  Hunderttausender   | [[ 5950000 ]] | [[ 6049999 ]] |
-|      $100$     |        Zehner       | [[   50   ]]  | [[  149    ]] |
+|      $100$     |        Zehner       | [[   95   ]]  | [[  104    ]] |
 |    $794000$    |      Tausender      | [[ 793500  ]] | [[ 794499  ]] |
 |      $0$       |      Tausender      | [[ 0       ]] | [[ 499     ]] |
 |      $6400$    |      Hunderter      | [[ 6350    ]] | [[ 6449    ]] |

@@ -413,63 +413,63 @@ __Aufgabe 2:__ *Berechne* den Wert des Terms.
 $a)\;\;$
 
 <!-- data-solution-button="5"-->
-$3821 + 1347=$[[  5168  ]] 
+$6843 + 2179=$[[  9022  ]] 
 </div>
 
 <div class="flex-child">
 $b)\;\;$
 
 <!-- data-solution-button="5"-->
-$5962 + 8912=$[[  14874  ]] 
+$5396 + 7684=$[[  13080  ]] 
 </div>
 
 <div class="flex-child">
 $c)\;\;$
 
 <!-- data-solution-button="5"-->
-$2512 + 3246=$[[  5758  ]] 
+$8127 + 4568=$[[  12695  ]] 
 </div>
 
 <div class="flex-child">
 $d)\;\;$
 
 <!-- data-solution-button="5"-->
-$2353 + 4636=$[[  6989  ]] 
+$4735 + 6891=$[[  11626  ]] 
 </div>
 
 <div class="flex-child">
 $e)\;\;$
 
 <!-- data-solution-button="5"-->
-$4462 + 9543=$[[  14005  ]] 
+$9264 + 1378=$[[  10642  ]] 
 </div>
 
 <div class="flex-child">
 $f)\;\;$
 
 <!-- data-solution-button="5"-->
-$4156 + 3737=$[[  7893  ]] 
+$3589 + 9426=$[[  13015  ]] 
 </div>
 
 <div class="flex-child">
 $g)\;\;$
 
 <!-- data-solution-button="5"-->
-$9948 + 5499=$[[  15447  ]] 
+$7042 + 5837=$[[  12879  ]] 
 </div>
 
 <div class="flex-child">
 $h)\;\;$
 
 <!-- data-solution-button="5"-->
-$4784 + 8377=$[[  13161  ]] 
+$8659 + 2493=$[[  11152  ]] 
 </div>
 
 <div class="flex-child">
 $i)\;\;$
 
 <!-- data-solution-button="5"-->
-$9745 + 3726=$[[  13471  ]] 
+$1917 + 8742=$[[  10659  ]] 
 </div>
 
 </section>

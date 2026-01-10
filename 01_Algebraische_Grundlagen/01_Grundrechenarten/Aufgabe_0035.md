@@ -60,32 +60,32 @@ author: Martin Lommatzsch
 <section class="flex-container">
 
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ $ \textcolor{red}{18+24} = 42$ \
 [[    Summe          ]]
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ $ \textcolor{red}{12} \cdot 7 = 84 $ \
 [[       Faktor      ]]
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$c)\;\;$__ $ \textcolor{red}{36} = 24+12$ \
 [[ Wert der Summe    ]]
 
 </div>
 <div class="flex-child">
-<br>
+
 __$d)\;\;$__ $ \textcolor{red}{63-48}=15$ \
 [[         Differenz ]]
 
 </div>
 </section>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

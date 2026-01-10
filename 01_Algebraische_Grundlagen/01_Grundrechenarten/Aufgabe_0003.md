@@ -60,32 +60,32 @@ author: Martin Lommatzsch
 <section class="flex-container">
 
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ Von der Summe aus $44$ und $18$ wird $29$ subtrahiert.\
 [[  33  ]]
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ Der ganzzahlige Quotient besteht aus den Zahlen $5$ und $70$.\
 [[  14  ]]
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$c)\;\;$__ Das Produkt der Zahlen $9$ und $4$ wird mit $5$ multipliziert.\
 [[  180 ]]
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$d)\;\;$__ Die positive Differenz aus $38$ und $57$ wird um $14$ addiert.\
 [[  33  ]]
 
 </div>
 </section>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

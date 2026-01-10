@@ -59,17 +59,17 @@ author: Martin Lommatzsch
 <section class="flex-container">
 
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ $ 75:13 + 55:13 =$ [[  10  ]]
-<br>
+
 </div>
 <div class="flex-child">
-<br>
-__$b)\;\;$__ $ 148:12 + 64:12 =$ [[  7  ]]
-<br>
+
+__$b)\;\;$__ $ 148:12 - 64:12 =$ [[  7  ]]
+
 </div>
 </section>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

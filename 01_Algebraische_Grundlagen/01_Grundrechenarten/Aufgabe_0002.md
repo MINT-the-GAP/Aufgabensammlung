@@ -60,32 +60,32 @@ author: Martin Lommatzsch
 <section class="flex-container">
 
 <div class="flex-child">
-<br>
-__$a)\;\;$__ Der Divisor ist $81$ und der Dividend $27$. \
+
+__$a)\;\;$__ Der Dividend ist $81$ und der Divisor $27$. \
 [[  3   ]]
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ Eine Summe besteht aus den Summanden $12$, $34$ und $26$.\
 [[  72  ]]
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$c)\;\;$__ Es wird ein Produkt aus $11$ und $12$ gebildet. \
 [[  132 ]]
-<br>
+
 </div>
 <div class="flex-child">
-<br>
-__$d)\;\;$__ Der Subtrahend einer Differenz ist $19$, während der Wert des Miuenden $45$ beträgt.\
+
+__$d)\;\;$__ Der Subtrahend einer Differenz ist $19$, während der Wert des Minuenden $45$ beträgt.\
 [[  26  ]]
 
 </div>
 </section>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

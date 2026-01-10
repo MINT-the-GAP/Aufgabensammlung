@@ -61,7 +61,7 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 <br>
-__$a)\;\;$__ Viertausendzweihundertneunundzwanzig  \
+__$a)\;\;$__ Viertausendzweihundertneunundzwanzig.  \
 
 [[  4229  ]]
 <br>

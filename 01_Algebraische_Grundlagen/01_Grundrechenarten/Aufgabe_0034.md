@@ -60,32 +60,32 @@ author: Martin Lommatzsch
 <section class="flex-container">
 
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ $ \textcolor{red}{5} - 3 = 2$ \
 [[    Minuend         ]]
-<br>
-</div>
-<div class="flex-child">
-<br>
-__$b)\;\;$__ $ \textcolor{red}{7 \cdot 3} = 21 $ \
-[[    Produkt         ]]
-<br>
-</div>
-<div class="flex-child">
-<br>
-__$c)\;\;$__ $ 45:9=\textcolor{red}{5}$ \
-[[ Wer des Quotienten ]]
 
 </div>
 <div class="flex-child">
-<br>
+
+__$b)\;\;$__ $ \textcolor{red}{7 \cdot 3} = 21 $ \
+[[    Produkt         ]]
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ $ 45:9=\textcolor{red}{5}$ \
+[[ Wert des Quotienten ]]
+
+</div>
+<div class="flex-child">
+
 __$d)\;\;$__ $ \textcolor{red}{15}+12 = 27$ \
 [[      Summand       ]]
 
 </div>
 </section>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

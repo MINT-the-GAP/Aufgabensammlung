@@ -60,32 +60,32 @@ author: Martin Lommatzsch
 <section class="flex-container">
 
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ Der Summand $14$ wird mit $19$ addiert.\
 [[  33  ]]
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ Die Zahl $17$ ist der Minuend, während die Zahl $11$ der Subtrahend ist.\
 [[  6   ]]
-<br>
+
 </div>
 <div class="flex-child">
-<br>
-__$c)\;\;$__ Der Quotient wird aus dem Divisor $84$ und dem Dividenden $14$ gebildet.\
+
+__$c)\;\;$__ Der Quotient wird aus dem Dividenden $84$ und dem Divisor $14$ gebildet.\
 [[  6   ]]
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$d)\;\;$__ Der Term besteht aus den Faktoren $4$, $6$ und $3$.\
 [[  72  ]]
 </div>
 </section>
 
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

@@ -60,32 +60,32 @@ author: Martin Lommatzsch
 <section class="flex-container">
 
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ $ \textcolor{red}{5} \cdot 3 = 15$ \
 [[    Faktor          ]]
-<br>
-</div>
-<div class="flex-child">
-<br>
-__$b)\;\;$__ $ \textcolor{red}{5 + 6} = 11 $ \
-[[    Summe           ]]
-<br>
-</div>
-<div class="flex-child">
-<br>
-__$c)\;\;$__ $ 85:\textcolor{red}{13} = 5$ \
-[[        Dividend    ]]
 
 </div>
 <div class="flex-child">
-<br>
+
+__$b)\;\;$__ $ \textcolor{red}{5 + 6} = 11 $ \
+[[    Summe           ]]
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ $ 85:\textcolor{red}{13} = 5$ \
+[[        Divisor    ]]
+
+</div>
+<div class="flex-child">
+
 __$d)\;\;$__ $ 27-12 = \textcolor{red}{15}$ \
 [[ Wert der Differenz ]]
 
 </div>
 </section>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

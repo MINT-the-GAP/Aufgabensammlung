@@ -60,32 +60,32 @@ author: Martin Lommatzsch
 <section class="flex-container">
 
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ $ \textcolor{red}{7} + 9 = 16$ \
 [[    Summand         ]]
-<br>
-</div>
-<div class="flex-child">
-<br>
-__$b)\;\;$__ $ \textcolor{red}{9}-7 = 2 $ \
-[[    Minuend         ]]
-<br>
-</div>
-<div class="flex-child">
-<br>
-__$c)\;\;$__ $ \textcolor{red}{55}:11 = 11$ \
-[[        Divisor     ]]
 
 </div>
 <div class="flex-child">
-<br>
+
+__$b)\;\;$__ $ \textcolor{red}{9}-7 = 2 $ \
+[[    Minuend         ]]
+
+</div>
+<div class="flex-child">
+
+__$c)\;\;$__ $ \textcolor{red}{55}:11 = 11$ \
+[[        Dividend     ]]
+
+</div>
+<div class="flex-child">
+
 __$d)\;\;$__ $ 16 = \textcolor{red}{2 \cdot 8}$ \
 [[          Produkt   ]]
 
 </div>
 </section>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
 

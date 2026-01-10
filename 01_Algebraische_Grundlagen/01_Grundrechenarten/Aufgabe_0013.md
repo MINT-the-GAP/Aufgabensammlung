@@ -64,7 +64,7 @@ author: Martin Lommatzsch
 __$a)\;\;$__ 
 
 <!-- data-type="none" -->
-|  Millioner  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
+|  Millionener  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
 | :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
 |      4      |         0          |         2         |      1       |     6      |     3     |    9    |
 
@@ -75,7 +75,7 @@ __$a)\;\;$__
 __$b)\;\;$__ 
 
 <!-- data-type="none" -->
-|  Millioner  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
+|  Millionener  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
 | :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
 |             |                    |         2         |      8       |     0      |     4     |    5    |
 
@@ -86,7 +86,7 @@ __$b)\;\;$__
 __$c)\;\;$__ 
 
 <!-- data-type="none" -->
-|  Millioner  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
+|  Millionener  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
 | :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
 |             |         4          |          0        |       2      |     1      |     4     |     7   |
 
