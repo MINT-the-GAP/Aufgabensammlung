@@ -402,6 +402,13 @@ Entweder [[  positiv  ]] oder [[  negativ  ]] oder [[  magnetisch  ]]?
 
 ---
 
+0.4?
+
+[[0,4]]
+@Algebrite.check(0.4)
+
+---
+
 try different expressions of `x ^ 2 - 1`
 
 [[x ^ 2 - 1]]

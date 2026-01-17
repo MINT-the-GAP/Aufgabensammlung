@@ -611,6 +611,7 @@ __$a)\;\;$__ $ \mathbb{K} = \{ 15,28,17,34,26,24,14,32,29,22 \} $\
 
 $\min(\mathbb{K}) = $ [[ 14 ]] \
 $\max(\mathbb{K}) = $ [[ 34 ]] \
+@Algebrite.check([ 14 ; 34 ])
 
 
 __$b)\;\;$__ $ \mathbb{K} = \{ 21,24,28,24,26,25,23,24,19,25,27,29,21,22,26 \} $\
@@ -618,6 +619,7 @@ __$b)\;\;$__ $ \mathbb{K} = \{ 21,24,28,24,26,25,23,24,19,25,27,29,21,22,26 \} $
 
 $\min(\mathbb{K}) = $ [[ 19 ]] \
 $\max(\mathbb{K}) = $ [[ 29 ]] \
+@Algebrite.check([ 19 ; 29 ])
 
 
 
@@ -626,6 +628,7 @@ __$c)\;\;$__ $ \mathbb{K} = \{ 14,19,16,15,17,15,18,9,19,11,13,17 \} $\
 
 $\min(\mathbb{K}) = $ [[  9 ]] \
 $\max(\mathbb{K}) = $ [[ 19 ]] \
+@Algebrite.check([ 9 ; 19 ])
 
 
 
@@ -638,6 +641,7 @@ __$a)\;\;$__ $ \mathbb{K} = \{ 83,46,55,64,91,75,61,39,84,55,47 \} $\
 
 $\min(\mathbb{K}) = $ [[ 39 ]] \
 $\max(\mathbb{K}) = $ [[ 91 ]] \
+@Algebrite.check([ 39 ; 91 ])
 
 
 
@@ -646,6 +650,7 @@ __$b)\;\;$__ $ \mathbb{K} = \{ 56,54,55,56,57,55,56,54,53,58,55,56,54,52,56,57 \
 
 $\min(\mathbb{K}) = $ [[ 52 ]] \
 $\max(\mathbb{K}) = $ [[ 58 ]] \
+@Algebrite.check([ 52 ; 58 ])
 
 
 
@@ -654,6 +659,7 @@ __$c)\;\;$__ $ \mathbb{K} = \{ 29,33,28,31,35,24,36,32,28,27,35,34,29,30,35 \} $
 
 $\min(\mathbb{K}) = $ [[ 24 ]] \
 $\max(\mathbb{K}) = $ [[ 36 ]] \
+@Algebrite.check([ 24 ; 36 ])
 
 
 
@@ -671,6 +677,7 @@ __$a)\;\;$__ $ \mathbb{K} = \{ 45,39,48,51,37,52,46,50,47,38,43,46,51,39,40 \} $
 
 $\min(\mathbb{K}) = $ [[ 37 ]] \
 $\max(\mathbb{K}) = $ [[ 52 ]] \
+@Algebrite.check([ 37 ; 52 ])
 
 
 __$b)\;\;$__ $ \mathbb{K} = \{ 34,37,31,32,39,33,34,35,38,32,30,34,39,38,34,33,31 \} $\
@@ -678,6 +685,7 @@ __$b)\;\;$__ $ \mathbb{K} = \{ 34,37,31,32,39,33,34,35,38,32,30,34,39,38,34,33,3
 
 $\min(\mathbb{K}) = $ [[ 30 ]] \
 $\max(\mathbb{K}) = $ [[ 39 ]] \
+@Algebrite.check([ 30 ; 39 ])
 
 
 __$c)\;\;$__ $ \mathbb{K} = \{ 64,67,61,58,60,64,66,68,63,64,60,69,64,65,59,67,68,60 \} $\
@@ -685,6 +693,7 @@ __$c)\;\;$__ $ \mathbb{K} = \{ 64,67,61,58,60,64,66,68,63,64,60,69,64,65,59,67,6
 
 $\min(\mathbb{K}) = $ [[ 58 ]] \
 $\max(\mathbb{K}) = $ [[ 69 ]] \
+@Algebrite.check([ 58 ; 69 ])
 
 
 
@@ -697,6 +706,7 @@ __$a)\;\;$__ $ \mathbb{K} = \{ 15,28,17,34,26,24,14,32,29,22 \} $\
 
 $\inf(\mathbb{K}) = $ [[ 14 ]] \
 $\sup(\mathbb{K}) = $ [[ 34 ]] \
+@Algebrite.check([ 14 ; 34 ])
 
 
 __$b)\;\;$__ $ \mathbb{K} = \{ 21,24,28,24,26,25,23,24,19,25,27,29,21,22,26 \} $\
@@ -704,6 +714,7 @@ __$b)\;\;$__ $ \mathbb{K} = \{ 21,24,28,24,26,25,23,24,19,25,27,29,21,22,26 \} $
 
 $\inf(\mathbb{K}) = $ [[ 19 ]] \
 $\sup(\mathbb{K}) = $ [[ 29 ]] \
+@Algebrite.check([ 19 ; 29 ])
 
 
 __$c)\;\;$__ $ \mathbb{K} = \{ 14,19,16,15,17,15,18,9,19,11,13,17 \} $\
@@ -711,6 +722,7 @@ __$c)\;\;$__ $ \mathbb{K} = \{ 14,19,16,15,17,15,18,9,19,11,13,17 \} $\
 
 $\inf(\mathbb{K}) = $ [[  9 ]] \
 $\sup(\mathbb{K}) = $ [[ 19 ]] \
+@Algebrite.check([ 9 ; 19 ])
 
 
 
@@ -723,6 +735,7 @@ __$a)\;\;$__ $ \mathbb{K} = \{ 83,46,55,64,91,75,61,39,84,55,47 \} $\
 
 $\inf(\mathbb{K}) = $ [[ 39 ]] \
 $\sup(\mathbb{K}) = $ [[ 91 ]] \
+@Algebrite.check([ 39 ; 91 ])
 
 
 __$b)\;\;$__ $ \mathbb{K} = \{ 56,54,55,56,57,55,56,54,53,58,55,56,54,52,56,57 \} $\
@@ -730,13 +743,15 @@ __$b)\;\;$__ $ \mathbb{K} = \{ 56,54,55,56,57,55,56,54,53,58,55,56,54,52,56,57 \
 
 $\inf(\mathbb{K}) = $ [[ 52 ]] \
 $\sup(\mathbb{K}) = $ [[ 58 ]] \
+@Algebrite.check([ 52 ; 58 ])
 
 
 __$c)\;\;$__ $ \mathbb{K} = \{ 29,33,28,31,35,24,36,32,28,27,35,34,29,30,35 \} $\
 
 
-$\inf(\mathbb{K}) = $ [[ 27 ]] \
+$\inf(\mathbb{K}) = $ [[ 24 ]] \
 $\sup(\mathbb{K}) = $ [[ 36 ]] \
+@Algebrite.check([ 24 ; 36 ])
 
 
 
@@ -751,6 +766,7 @@ __$a)\;\;$__ $ \mathbb{K} = \{ 45,39,48,51,37,52,46,50,47,38,43,46,51,39,40 \} $
 
 $\inf(\mathbb{K}) = $ [[ 37 ]] \
 $\sup(\mathbb{K}) = $ [[ 52 ]] \
+@Algebrite.check([ 37 ; 52 ])
 
 
 __$b)\;\;$__ $ \mathbb{K} = \{ 34,37,31,32,39,33,34,35,38,32,30,34,39,38,34,33,31 \} $\
@@ -758,6 +774,7 @@ __$b)\;\;$__ $ \mathbb{K} = \{ 34,37,31,32,39,33,34,35,38,32,30,34,39,38,34,33,3
 
 $\inf(\mathbb{K}) = $ [[ 30 ]] \
 $\sup(\mathbb{K}) = $ [[ 39 ]] \
+@Algebrite.check([ 30 ; 39 ])
 
 
 __$c)\;\;$__ $ \mathbb{K} = \{ 64,67,61,58,60,64,66,68,63,64,60,69,64,65,59,67,68,60 \} $\
@@ -765,6 +782,7 @@ __$c)\;\;$__ $ \mathbb{K} = \{ 64,67,61,58,60,64,66,68,63,64,60,69,64,65,59,67,6
 
 $\inf(\mathbb{K}) = $ [[ 56 ]] \
 $\sup(\mathbb{K}) = $ [[ 69 ]] \
+@Algebrite.check([ 56 ; 69 ])
 
 
 
@@ -987,12 +1005,16 @@ __$c)\;\;$__ $  \left( \mathbb{K} \cap  \mathbb{L} \right) \cap  \mathbb{M} =  $
 __Aufgabe 24:__ **Bestimme** das resultierende Mengenelement. Gegebenen sind die Mengen $\mathbb{M}= \{ 1,4,7,8 \}$, $\mathbb{L} = \{ 1,5,8,9 \} $  und $\mathbb{K} = \{ 2,4,8,9 \}$.
 
 __$a)\;\;$__   $  \text{sup} \left(  \mathbb{K} \cap \mathbb{M}  \right) =  $                                      [[   8   ]] 
+@Algebrite.check(8)
 
 __$b)\;\;$__   $  \text{max} \left(  \mathbb{L} \setminus \mathbb{M}  \right) =  $                                 [[  9    ]] 
+@Algebrite.check(9)
 
 __$c)\;\;$__   $  \text{inf} \left(  \mathbb{K} \cup \mathbb{M}  \right) =  $                                      [[   1   ]] 
+@Algebrite.check(1)
 
 __$d)\;\;$__   $  \text{min} \left(  \mathbb{M} \setminus \left( \mathbb{L} \cup  \mathbb{K}  \right) \right) =  $ [[   7   ]] 
+@Algebrite.check(7)
 
 
 
@@ -1002,12 +1024,16 @@ __$d)\;\;$__   $  \text{min} \left(  \mathbb{M} \setminus \left( \mathbb{L} \cup
 __Aufgabe 25:__ **Bestimme** das resultierende Mengenelement. Gegebenen sind die Mengen $\mathbb{M}= \{ 1,4,7,8 \}$, $\mathbb{L} = \{ 1,5,8,9 \} $  und $\mathbb{K} = \{ 2,4,8,9 \}$.
 
 __$a)\;\;$__   $  \text{inf} \left(  \mathbb{L} \cup \mathbb{M}  \right) =  $                                    [[   1   ]] 
+@Algebrite.check(1)
 
 __$b)\;\;$__   $  \text{min} \left(  \mathbb{K} \setminus \mathbb{L}  \right) =  $                               [[  2    ]] 
+@Algebrite.check(2)
 
 __$c)\;\;$__   $  \text{sup}  \left(  \mathbb{L} \cap \mathbb{M}  \right) =  $                                   [[   8   ]] 
+@Algebrite.check(8)
 
 __$d)\;\;$__   $  \text{max} \left( \left(  \mathbb{M} \cap \mathbb{K}  \right)  \cap \mathbb{L}  \right) =  $   [[   8   ]] 
+@Algebrite.check(8)
 
 
 
@@ -1016,12 +1042,16 @@ __$d)\;\;$__   $  \text{max} \left( \left(  \mathbb{M} \cap \mathbb{K}  \right) 
 __Aufgabe 26:__ **Bestimme** das resultierende Mengenelement. Gegebenen sind die Mengen $\mathbb{M}= \{ 2,6,7,8,9 \}$, $\mathbb{L} = \{ 1,2,4,6,8 \} $  und $\mathbb{K} = \{ 2,3,4,9 \}$.
 
 __$a)\;\;$__   $  \text{min} \left(  \mathbb{K} \setminus \mathbb{L}  \right) =  $ [[   3   ]] 
+@Algebrite.check(3)
 
 __$b)\;\;$__   $  \text{max} \left(  \mathbb{K} \cup \mathbb{M}  \right) =  $ [[   9   ]] 
+@Algebrite.check(9)
 
 __$c)\;\;$__   $  \text{inf} \left(  \mathbb{L} \cap \mathbb{M}  \right) =  $ [[   2   ]] 
+@Algebrite.check(2)
 
 __$d)\;\;$__   $  \text{sup}  \left( \left(  \mathbb{L} \cup  \mathbb{M} \right)  \cap \mathbb{K}  \right) =  $ [[   9   ]] 
+@Algebrite.check(9)
 
 
 

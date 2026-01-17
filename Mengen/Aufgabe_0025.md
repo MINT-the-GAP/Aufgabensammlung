@@ -38,6 +38,8 @@ formula: \digit   \rlap{\carry{#1}}\phantom{#2}#2
 formula: \permil  \text{‰}
 
 import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
+import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
+        https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
@@ -58,12 +60,16 @@ author: Martin Lommatzsch
 **Bestimme** das resultierende Mengenelement. Gegebenen sind die Mengen $\mathbb{M}= \{ 1,4,7,8 \}$, $\mathbb{L} = \{ 1,5,8,9 \} $  und $\mathbb{K} = \{ 2,4,8,9 \}$.
 
 __$a)\;\;$__   $  \text{inf} \left(  \mathbb{L} \cup \mathbb{M}  \right) =  $                                    [[   1   ]] 
+@Algebrite.check(1)
 
 __$b)\;\;$__   $  \text{min} \left(  \mathbb{K} \setminus \mathbb{L}  \right) =  $                               [[  2    ]] 
+@Algebrite.check(2)
 
 __$c)\;\;$__   $  \text{sup}  \left(  \mathbb{L} \cap \mathbb{M}  \right) =  $                                   [[   8   ]] 
+@Algebrite.check(8)
 
 __$d)\;\;$__   $  \text{max} \left( \left(  \mathbb{M} \cap \mathbb{K}  \right)  \cap \mathbb{L}  \right) =  $   [[   8   ]] 
+@Algebrite.check(8)
 
 
 

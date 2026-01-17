@@ -38,6 +38,8 @@ formula: \digit   \rlap{\carry{#1}}\phantom{#2}#2
 formula: \permil  \text{‰}
 
 import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
+import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
+        https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
@@ -64,6 +66,7 @@ __$a)\;\;$__ $ \mathbb{K} = \{ 45,39,48,51,37,52,46,50,47,38,43,46,51,39,40 \} $
 
 $\min(\mathbb{K}) = $ [[ 37 ]] \
 $\max(\mathbb{K}) = $ [[ 52 ]] \
+@Algebrite.check([ 37 ; 52 ])
 
 
 
@@ -71,6 +74,7 @@ __$b)\;\;$__ $ \mathbb{K} = \{ 34,37,31,32,39,33,34,35,38,32,30,34,39,38,34,33,3
 
 $\min(\mathbb{K}) = $ [[ 30 ]] \
 $\max(\mathbb{K}) = $ [[ 39 ]] \
+@Algebrite.check([ 30 ; 39 ])
 
 
 
@@ -78,6 +82,7 @@ __$c)\;\;$__ $ \mathbb{K} = \{ 64,67,61,58,60,64,66,68,63,64,60,69,64,65,59,67,6
 
 $\min(\mathbb{K}) = $ [[ 58 ]] \
 $\max(\mathbb{K}) = $ [[ 69 ]] \
+@Algebrite.check([ 58 ; 69 ])
 
 
 

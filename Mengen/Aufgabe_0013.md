@@ -38,6 +38,8 @@ formula: \digit   \rlap{\carry{#1}}\phantom{#2}#2
 formula: \permil  \text{‰}
 
 import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
+import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
+        https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
@@ -67,6 +69,7 @@ __$a)\;\;$__ $ \mathbb{K} = \{ 83,46,55,64,91,75,61,39,84,55,47 \} $\
 
 $\inf(\mathbb{K}) = $ [[ 39 ]] \
 $\sup(\mathbb{K}) = $ [[ 91 ]] \
+@Algebrite.check([ 39 ; 91 ])
 
 
 __$b)\;\;$__ $ \mathbb{K} = \{ 56,54,55,56,57,55,56,54,53,58,55,56,54,52,56,57 \} $\
@@ -74,13 +77,15 @@ __$b)\;\;$__ $ \mathbb{K} = \{ 56,54,55,56,57,55,56,54,53,58,55,56,54,52,56,57 \
 
 $\inf(\mathbb{K}) = $ [[ 52 ]] \
 $\sup(\mathbb{K}) = $ [[ 58 ]] \
+@Algebrite.check([ 52 ; 58 ])
 
 
 __$c)\;\;$__ $ \mathbb{K} = \{ 29,33,28,31,35,24,36,32,28,27,35,34,29,30,35 \} $\
 
 
-$\inf(\mathbb{K}) = $ [[ 27 ]] \
+$\inf(\mathbb{K}) = $ [[ 24 ]] \
 $\sup(\mathbb{K}) = $ [[ 36 ]] \
+@Algebrite.check([ 24 ; 36 ])
 
 
 
