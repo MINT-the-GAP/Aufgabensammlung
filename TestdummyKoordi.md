@@ -88,24 +88,26 @@ import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.m
 
 
 
-@onload
-// globaler Speicher für Punkte
-window.__points = window.__points || {};
 
-// erzeugt (falls noch nicht vorhanden) einen Punkt mit Name `name`
-window.ensurePoint = function (name) {
-  const board = window.__board;
+@onload
+window.__boards = window.__boards || {};          // id -> board
+window.__points = window.__points || {};          // boardId -> { name -> point }
+
+window.ensurePoint = function (boardId, name) {
+  const board = window.__boards && window.__boards[boardId];
   if (!board) return;
 
-  // existiert schon -> nur kurzes Feedback
-  if (window.__points[name] && window.__points[name].elType === 'point') {
-    window.__points[name].setAttribute({ strokeWidth: 4 });
-    setTimeout(() => window.__points[name].setAttribute({ strokeWidth: 2 }), 250);
+  window.__points[boardId] = window.__points[boardId] || {};
+
+  // existiert schon auf diesem Board -> Feedback
+  if (window.__points[boardId][name] && window.__points[boardId][name].elType === 'point') {
+    window.__points[boardId][name].setAttribute({ strokeWidth: 4 });
+    setTimeout(() => window.__points[boardId][name].setAttribute({ strokeWidth: 2 }), 250);
     board.update();
     return;
   }
 
-  // zufällige Startposition in [0,1) x [0,1)
+  // Start zufällig in [0,1) x [0,1)
   const x0 = Math.random();
   const y0 = Math.random();
 
@@ -118,37 +120,26 @@ window.ensurePoint = function (name) {
     fixed: false
   });
 
-  // Infobox nur für diesen Punkt aus
   pt.setAttribute({ showInfobox: false, showInfoBox: false });
-
-  // optional: Infobox auch bei Hover wegdrücken
   pt.on('over', function () { board.infobox && board.infobox.hide && board.infobox.hide(); });
   pt.on('out',  function () { board.infobox && board.infobox.hide && board.infobox.hide(); });
 
-  window.__points[name] = pt;
+  window.__points[boardId][name] = pt;
   board.update();
 };
 
 window.ensurePointFromSpec = function (spec) {
-  const name = (String(spec).split(';')[0] || '').trim();
-  if (!name) return;
-  window.ensurePoint(name);
-};
-
-window.checkPointFromSpec = function (spec, eps) {
-  eps = (typeof eps === 'number') ? eps : 0.05;
-
+  // spec: "boardId;Name;tx;ty"
   const parts = String(spec).split(';');
-  const name = (parts[0] || '').trim();
-  const tx = parseFloat((parts[1] || '').replace(',', '.'));
-  const ty = parseFloat((parts[2] || '').replace(',', '.'));
-
-  const pt = window.__points && window.__points[name];
-  if (!pt || Number.isNaN(tx) || Number.isNaN(ty)) return false;
-
-  return Math.abs(pt.X() - tx) < eps && Math.abs(pt.Y() - ty) < eps;
+  const boardId = (parts[0] || '').trim();
+  const name    = (parts[1] || '').trim();
+  if (!boardId || !name) return;
+  window.ensurePoint(boardId, name);
 };
 @end
+
+
+
 
 @ErzeugePunkt: @ErzeugePunkt_(@uid,@0)
 
@@ -157,8 +148,10 @@ window.checkPointFromSpec = function (spec, eps) {
 
 <script run-once="true" modify="false">
   (function () {
+    // spec: "boardId;Name;tx;ty"
     const spec = '@1';
-    const name = (spec.split(';')[0] || '').trim();
+    const parts = String(spec).split(';');
+    const name = (parts[1] || '').trim();
     const btn  = document.getElementById('btn-@0');
     if (btn && name) btn.textContent = name + ' erzeugen';
   })();
@@ -170,11 +163,12 @@ window.checkPointFromSpec = function (spec, eps) {
   const spec = '@1';
   const parts = String(spec).split(';');
 
-  const name = (parts[0] || '').trim();
-  const tx = parseFloat((parts[1] || '').replace(',', '.'));
-  const ty = parseFloat((parts[2] || '').replace(',', '.'));
+  const boardId = (parts[0] || '').trim();
+  const name    = (parts[1] || '').trim();
+  const tx = parseFloat((parts[2] || '').replace(',', '.'));
+  const ty = parseFloat((parts[3] || '').replace(',', '.'));
 
-  const pt = window.__points && window.__points[name];
+  const pt = window.__points && window.__points[boardId] && window.__points[boardId][name];
   const eps = 0.05;
 
   const ok = !!pt
@@ -186,6 +180,7 @@ window.checkPointFromSpec = function (spec, eps) {
   ok
 </script>
 @end
+
 
 
 
@@ -239,7 +234,8 @@ board = JXG.JSXGraph.initBoard(jxgbox, {
   }
 });
 
-window.__board = board;
+window.__boards = window.__boards || {};
+window.__boards['Aufgabe1'] = board;
 
 
 ```
@@ -252,7 +248,7 @@ window.__board = board;
 
 Ziehe den Punkt $P$ auf die Koordinaten $(2|3)$.
 
-@ErzeugePunkt(P;2;3)
+@ErzeugePunkt(Aufgabe1;P;2;3)
 
 </div>
 
@@ -260,7 +256,7 @@ Ziehe den Punkt $P$ auf die Koordinaten $(2|3)$.
 
 Ziehe den Punkt $A$ auf die Koordinaten $(1|4)$.
 
-@ErzeugePunkt(A;1;4)
+@ErzeugePunkt(Aufgabe1;A;1;4)
 
 </div>
 
@@ -268,7 +264,91 @@ Ziehe den Punkt $A$ auf die Koordinaten $(1|4)$.
 
 Ziehe den Punkt $B$ auf die Koordinaten $(6|2)$.
 
-@ErzeugePunkt(B;6;2)
+@ErzeugePunkt(Aufgabe1;B;6;2)
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+``` javascript @JSX.Graph
+// Board
+board = JXG.JSXGraph.initBoard(jxgbox, {
+  axis: true,
+  boundingbox: [-1, 5, 7, -1],
+  keepaspectratio: true,
+  defaultAxes: {
+    x: { 
+      strokeColor: 'black',
+      strokeWidth: 2.5,  
+      ticks: { insertTicks: false, ticksDistance: 1, minorTicks: 9, drawLabels: true, label: { fontSize: 18 } } },
+    y: {  
+      strokeColor: 'black',
+      strokeWidth: 2.5,  
+      ticks: { insertTicks: false, ticksDistance: 1, minorTicks: 9, drawLabels: true, label: { fontSize: 18 } } }
+  },
+  // Raster konfigurieren: Major solide, Minor gestrichelt
+  grid: {
+    majorStep: 'auto',        // übernimmt die Schrittweite der Achsen (=> 1)
+    minorElements: 'auto',    // übernimmt die Anzahl Minor-Ticks (=> 4)
+    includeBoundaries: true,
+    forceSquare: true,        // gleiche Metrik in x und y
+
+    major: {                  // durchgezogene Linien bei ganzen Zahlen
+      face: 'line',
+      strokeColor: '#999',
+      strokeWidth: 1.5,
+      dash: 0,
+      drawZero: true
+    },
+    minor: {                  // gestrichelte Hilfslinien dazwischen
+      face: 'line',
+      strokeColor: '#999',
+      strokeWidth: 1,
+      dash: 1,
+      drawZero: true
+    }
+  }
+});
+
+window.__boards = window.__boards || {};
+window.__boards['Aufgabe2'] = board;
+
+
+```
+
+
+
+<section class="flex-container">
+
+<div class="flex-child">
+
+Ziehe den Punkt $Q$ auf die Koordinaten $(7|0)$.
+
+@ErzeugePunkt(Aufgabe2;Q;7;0)
+
+</div>
+
+<div class="flex-child">
+
+Ziehe den Punkt $A$ auf die Koordinaten $(2|4)$.
+
+@ErzeugePunkt(Aufgabe2;A;2;4)
+
+</div>
+
+<div class="flex-child">
+
+Ziehe den Punkt $B$ auf die Koordinaten $(5|4)$.
+
+@ErzeugePunkt(Aufgabe2;B;5;4)
 
 </div>
 
