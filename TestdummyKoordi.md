@@ -38,10 +38,48 @@ input {
 
 
 
-.check-only input[type="number"],
-.check-only input {
-  display: none !important;
+
+
+/* Quiz/Check NICHT über volle Breite ziehen (nur dort, wo class="check-only" gesetzt ist) */
+.check-only {
+  display: inline-block !important;
+  width: auto !important;
+  max-width: max-content !important;
+  text-align: left !important;
 }
+
+/* sehr defensiv: typische LiaScript-Wrapper ebenfalls auf "shrink" */
+.check-only .lia-quiz,
+.check-only .lia-input,
+.check-only .lia-solution,
+.check-only .lia-quiz__controls,
+.check-only .lia-quiz__solution {
+  display: inline-block !important;
+  width: auto !important;
+  max-width: max-content !important;
+  float: none !important;
+  text-align: left !important;
+}
+
+/* In diesem Check-Block ALLE Eingabeelemente ausblenden, nur Button bleibt */
+.check-only input,
+.check-only textarea,
+.check-only select {
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+}
+
+
+.check-only button {
+  float: none !important;
+  margin-left: 0 !important;
+}
+
 @end
 
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
@@ -49,6 +87,105 @@ import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.m
 
 
 
+
+@onload
+// globaler Speicher für Punkte
+window.__points = window.__points || {};
+
+// erzeugt (falls noch nicht vorhanden) einen Punkt mit Name `name`
+window.ensurePoint = function (name) {
+  const board = window.__board;
+  if (!board) return;
+
+  // existiert schon -> nur kurzes Feedback
+  if (window.__points[name] && window.__points[name].elType === 'point') {
+    window.__points[name].setAttribute({ strokeWidth: 4 });
+    setTimeout(() => window.__points[name].setAttribute({ strokeWidth: 2 }), 250);
+    board.update();
+    return;
+  }
+
+  // zufällige Startposition in [0,1) x [0,1)
+  const x0 = Math.random();
+  const y0 = Math.random();
+
+  const pt = board.create('point', [x0, y0], {
+    name: name,
+    face: 'x',
+    size: 6,
+    strokeColor: 'purple',
+    fillColor: 'purple',
+    fixed: false
+  });
+
+  // Infobox nur für diesen Punkt aus
+  pt.setAttribute({ showInfobox: false, showInfoBox: false });
+
+  // optional: Infobox auch bei Hover wegdrücken
+  pt.on('over', function () { board.infobox && board.infobox.hide && board.infobox.hide(); });
+  pt.on('out',  function () { board.infobox && board.infobox.hide && board.infobox.hide(); });
+
+  window.__points[name] = pt;
+  board.update();
+};
+
+window.ensurePointFromSpec = function (spec) {
+  const name = (String(spec).split(';')[0] || '').trim();
+  if (!name) return;
+  window.ensurePoint(name);
+};
+
+window.checkPointFromSpec = function (spec, eps) {
+  eps = (typeof eps === 'number') ? eps : 0.05;
+
+  const parts = String(spec).split(';');
+  const name = (parts[0] || '').trim();
+  const tx = parseFloat((parts[1] || '').replace(',', '.'));
+  const ty = parseFloat((parts[2] || '').replace(',', '.'));
+
+  const pt = window.__points && window.__points[name];
+  if (!pt || Number.isNaN(tx) || Number.isNaN(ty)) return false;
+
+  return Math.abs(pt.X() - tx) < eps && Math.abs(pt.Y() - ty) < eps;
+};
+@end
+
+@ErzeugePunkt: @ErzeugePunkt_(@uid,@0)
+
+@ErzeugePunkt_
+<button id="btn-@0" class="lia-btn" onclick="window.ensurePointFromSpec('@1')">Punkt erzeugen</button>
+
+<script run-once="true" modify="false">
+  (function () {
+    const spec = '@1';
+    const name = (spec.split(';')[0] || '').trim();
+    const btn  = document.getElementById('btn-@0');
+    if (btn && name) btn.textContent = name + ' erzeugen';
+  })();
+</script>
+
+<!-- class="check-only" -->
+[[ 0 ]]
+<script modify="false">
+  const spec = '@1';
+  const parts = String(spec).split(';');
+
+  const name = (parts[0] || '').trim();
+  const tx = parseFloat((parts[1] || '').replace(',', '.'));
+  const ty = parseFloat((parts[2] || '').replace(',', '.'));
+
+  const pt = window.__points && window.__points[name];
+  const eps = 0.05;
+
+  const ok = !!pt
+    && !Number.isNaN(tx)
+    && !Number.isNaN(ty)
+    && Math.abs(pt.X() - tx) < eps
+    && Math.abs(pt.Y() - ty) < eps;
+
+  ok
+</script>
+@end
 
 
 
@@ -72,11 +209,11 @@ board = JXG.JSXGraph.initBoard(jxgbox, {
     x: { 
       strokeColor: 'black',
       strokeWidth: 2.5,  
-      ticks: { insertTicks: false, ticksDistance: 1, minorTicks: 4, drawLabels: true, label: { fontSize: 18 } } },
+      ticks: { insertTicks: false, ticksDistance: 1, minorTicks: 9, drawLabels: true, label: { fontSize: 18 } } },
     y: {  
       strokeColor: 'black',
       strokeWidth: 2.5,  
-      ticks: { insertTicks: false, ticksDistance: 1, minorTicks: 4, drawLabels: true, label: { fontSize: 18 } } }
+      ticks: { insertTicks: false, ticksDistance: 1, minorTicks: 9, drawLabels: true, label: { fontSize: 18 } } }
   },
   // Raster konfigurieren: Major solide, Minor gestrichelt
   grid: {
@@ -102,131 +239,38 @@ board = JXG.JSXGraph.initBoard(jxgbox, {
   }
 });
 
-
-// Punkt P(2|3) als Kreuz
-var P = board.create('point', [2, 3], {
-  name: 'P',
-  face: 'x',        // Kreuzsymbol
-  size: 6,          // Dicke/Größe
-  strokeColor: 'purple',
-  fillColor: 'purple',
-  fixed: false       // nicht verschiebbar
-});
-P.setAttribute({
-  showInfobox: false,   // aktuelle Schreibweise
-});
-// Optional: verhindert, dass beim Hover doch kurz eine Infobox aufpoppt
-P.on('over', function () { board.infobox && board.infobox.hide && board.infobox.hide(); });
-P.on('out',  function () { board.infobox && board.infobox.hide && board.infobox.hide(); });
-// Für den LiaScript-Check global verfügbar machen:
-window.__P = P;
 window.__board = board;
 
-
-
-
-// Punkt Q(2|3) als Kreuz
-var Q = board.create('point', [3, 3], {
-  name: 'Q',
-  face: 'x',        // Kreuzsymbol
-  size: 6,          // Dicke/Größe
-  strokeColor: 'purple',
-  fillColor: 'purple',
-  fixed: false       // nicht verschiebbar
-});
-Q.setAttribute({
-  showInfobox: false,   // aktuelle Schreibweise
-});
-// Optional: verhindert, dass beim Hover doch kurz eine Infobox aufpoppt
-Q.on('over', function () { board.infobox && board.infobox.hide && board.infobox.hide(); });
-Q.on('out',  function () { board.infobox && board.infobox.hide && board.infobox.hide(); });
-// Für den LiaScript-Check global verfügbar machen:
-window.__Q = Q;
-window.__board = board;
-
-
-// Punkt A(2|3) als Kreuz
-var A = board.create('point', [2.5, 3], {
-  name: 'A',
-  face: 'x',        // Kreuzsymbol
-  size: 6,          // Dicke/Größe
-  strokeColor: 'purple',
-  fillColor: 'purple',
-  fixed: false       // nicht verschiebbar
-});
-A.setAttribute({
-  showInfobox: false,   // aktuelle Schreibweise
-});
-// Optional: verhindert, dass beim Hover doch kurz eine Infobox aufpoppt
-A.on('over', function () { board.infobox && board.infobox.hide && board.infobox.hide(); });
-A.on('out',  function () { board.infobox && board.infobox.hide && board.infobox.hide(); });
-// Für den LiaScript-Check global verfügbar machen:
-window.__A = A;
-window.__board = board;
 
 ```
 
 
 
 <section class="flex-container">
+
 <div class="flex-child">
 
-Ziehe den Punkt $P$ auf die Koordinaten $(4|1)$.
+Ziehe den Punkt $P$ auf die Koordinaten $(2|3)$.
 
-<div class="check-only">
-[[ 0 ]] 
-<script>
-  const P = window.__P;
-  const eps = 0.05;
-
-  const ok = !!P
-    && Math.abs(P.X() - 4) < eps
-    && Math.abs(P.Y() - 1) < eps;
-
-  ok
-</script>
-</div>
+@ErzeugePunkt(P;2;3)
 
 </div>
+
 <div class="flex-child">
 
+Ziehe den Punkt $A$ auf die Koordinaten $(1|4)$.
 
-Ziehe den Punkt $Q$ auf die Koordinaten $(6|3)$.
-
-<div class="check-only">
-[[ 0 ]] 
-<script>
-  const Q = window.__Q;
-  const eps = 0.05;
-
-  const ok = !!Q
-    && Math.abs(Q.X() - 6) < eps
-    && Math.abs(Q.Y() - 3) < eps;
-
-  ok
-</script>
-</div>
+@ErzeugePunkt(A;1;4)
 
 </div>
+
 <div class="flex-child">
 
+Ziehe den Punkt $B$ auf die Koordinaten $(6|2)$.
 
-Ziehe den Punkt $A$ auf die Koordinaten $(5|0)$.
-
-<div class="check-only">
-[[ 0 ]] 
-<script>
-  const A = window.__A;
-  const eps = 0.05;
-
-  const ok = !!A
-    && Math.abs(A.X() - 6) < eps
-    && Math.abs(A.Y() - 3) < eps;
-
-  ok
-</script>
-</div>
-
+@ErzeugePunkt(B;6;2)
 
 </div>
+
+
 </section>
