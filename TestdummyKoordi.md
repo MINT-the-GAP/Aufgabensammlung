@@ -215,6 +215,7 @@ window.ensurePoint = function (boardId, name) {
   if (ROOT.__points[boardId][name] && ROOT.__points[boardId][name].elType === 'point') {
     ROOT.__points[boardId][name].setAttribute({ strokeWidth: 4 });
     setTimeout(() => ROOT.__points[boardId][name].setAttribute({ strokeWidth: 2 }), 250);
+    try { window.__applyPointLabelTheme && window.__applyPointLabelTheme(boardId); } catch (e) {}
     board.update();
     return true;
   }
@@ -222,8 +223,18 @@ window.ensurePoint = function (boardId, name) {
   const x0 = Math.random();
   const y0 = Math.random();
 
+  const labelCol = (window.__neutralAutoColor ? window.__neutralAutoColor() : '#000');
+
   const pt = board.create('point', [x0, y0], {
     name: name,
+    withLabel: true,                 // <- wichtig: Label aktiv halten
+    label: {                         // <- Label-Farben (Text)
+      strokeColor: labelCol,
+      fillColor:   labelCol,
+      highlightStrokeColor: labelCol,
+      highlightFillColor:   labelCol
+    },
+
     face: 'x',
     size: 6,
     strokeColor: 'purple',
@@ -231,11 +242,25 @@ window.ensurePoint = function (boardId, name) {
     fixed: false
   });
 
+  // sehr defensiv: manche JSXGraph-Versionen brauchen das am Label-Objekt direkt
+  try {
+    if (pt.label && typeof pt.label.setAttribute === 'function') {
+      pt.label.setAttribute({
+        strokeColor: labelCol,
+        fillColor:   labelCol,
+        highlightStrokeColor: labelCol,
+        highlightFillColor:   labelCol
+      });
+    }
+  } catch (e) {}
+
+
   pt.setAttribute({ showInfobox: false, showInfoBox: false });
   pt.on('over', () => { board.infobox && board.infobox.hide && board.infobox.hide(); });
   pt.on('out',  () => { board.infobox && board.infobox.hide && board.infobox.hide(); });
 
   ROOT.__points[boardId][name] = pt;
+  try { window.__applyPointLabelTheme && window.__applyPointLabelTheme(boardId); } catch (e) {}
   board.update();
   return true;
 };
@@ -607,6 +632,68 @@ window.__recolorNeutralAutoLabels = window.__recolorNeutralAutoLabels || functio
 };
 
 
+window.__applyPointLabelTheme = window.__applyPointLabelTheme || function (boardId) {
+  const ROOT = window.__ROOT || window;
+  const col  = (window.__neutralAutoColor ? window.__neutralAutoColor() : '#000');
+
+  const pts = ROOT.__points && ROOT.__points[boardId];
+  if (!pts) return;
+
+  Object.values(pts).forEach(pt => {
+    if (!pt || typeof pt.setAttribute !== 'function') return;
+
+    // Label-Defaults am Punkt
+    try {
+      pt.setAttribute({
+        label: {
+          strokeColor: col,
+          fillColor: col,
+          highlightStrokeColor: col,
+          highlightFillColor: col
+        }
+      });
+    } catch (e) {}
+
+    // Direkt am Label-Objekt (je nach JSXGraph-Version entscheidend)
+    try {
+      if (pt.label && typeof pt.label.setAttribute === 'function') {
+        pt.label.setAttribute({
+          strokeColor: col,
+          fillColor: col,
+          highlightStrokeColor: col,
+          highlightFillColor: col
+        });
+      }
+    } catch (e) {}
+  });
+
+  // redraw
+  try {
+    const b = ROOT.__boards && ROOT.__boards[boardId];
+    if (b) b.update();
+  } catch (e) {}
+};
+
+
+
+(function () {
+  const applyAll = () => {
+    const ROOT = window.__ROOT || window;
+    Object.keys(ROOT.__points || {}).forEach(bid => {
+      try { window.__applyPointLabelTheme(bid); } catch (e) {}
+    });
+  };
+
+  applyAll(); // initial
+
+  try {
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    if (mq && typeof mq.addEventListener === 'function') mq.addEventListener('change', applyAll);
+    else if (mq && typeof mq.addListener === 'function') mq.addListener(applyAll);
+  } catch (e) {}
+})();
+
+
 
 @end
 
@@ -619,15 +706,27 @@ window.__recolorNeutralAutoLabels = window.__recolorNeutralAutoLabels || functio
 <button id="btn-@0" class="lia-btn" onclick="window.ensurePointFromSpec('@1')">Punkt erzeugen</button>
 
 <script run-once="true" modify="false">
-  (function () {
-    // spec: "boardId;Name;tx;ty"
-    const spec = '@1';
-    const parts = String(spec).split(';');
-    const name = (parts[1] || '').trim();
-    const btn  = document.getElementById('btn-@0');
-    if (btn && name) btn.textContent = name + ' erzeugen';
-  })();
+(function(){
+  const btn = document.getElementById('btn-@0');
+  if (!btn) return;
+
+  const apply = () => {
+    const c = (window.__neutralAutoColor ? window.__neutralAutoColor() : '#000');
+    btn.style.color = c;
+    // optional, aber meist sinnvoll (passt zum Text):
+    btn.style.borderColor = c;
+  };
+
+  apply();
+
+  try {
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    if (mq && typeof mq.addEventListener === 'function') mq.addEventListener('change', apply);
+    else if (mq && typeof mq.addListener === 'function') mq.addListener(apply);
+  } catch (e) {}
+})();
 </script>
+
 
 <!-- class="check-only" data-solution-button="off"-->
 [[ 0 ]]
@@ -659,16 +758,27 @@ window.__recolorNeutralAutoLabels = window.__recolorNeutralAutoLabels || functio
 @ErzeugePunktGraph_
 <button id="btnG-@0" class="lia-btn" onclick="window.ensurePointFromSpec('@1')">Punkt erzeugen</button>
 
-<script modify="false">
-  (function () {
-    // @1 = "boardId;Name;targetKey;eps"
-    const spec  = '@1';
-    const parts = String(spec).split(';').map(s => String(s).trim());
-    const name  = parts[1] || '';
-    const btn   = document.getElementById('btnG-@0');
-    if (btn && name) btn.textContent = name + ' erzeugen';
-  })();
+<script run-once="true" modify="false">
+(function(){
+  const btn = document.getElementById('btnG-@0');
+  if (!btn) return;
+
+  const apply = () => {
+    const c = (window.__neutralAutoColor ? window.__neutralAutoColor() : '#000');
+    btn.style.color = c;
+    btn.style.borderColor = c;
+  };
+
+  apply();
+
+  try {
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    if (mq && typeof mq.addEventListener === 'function') mq.addEventListener('change', apply);
+    else if (mq && typeof mq.addListener === 'function') mq.addListener(apply);
+  } catch (e) {}
+})();
 </script>
+
 
 <!-- class="check-only" data-solution-button="off"-->
 [[ 0 ]]
@@ -700,6 +810,35 @@ window.__recolorNeutralAutoLabels = window.__recolorNeutralAutoLabels || functio
   <button id="autoChk-@0" class="lia-btn" onclick="window.checkAutoPointsFromSpec('@1','@0')">Prüfen</button>
   <span id="autoMsg-@0" style="margin-left: 12px;"></span>
 </div>
+
+<script run-once="true" modify="false">
+(function(){
+  const btnAdd = document.getElementById('autoAdd-@0');
+  const btnChk = document.getElementById('autoChk-@0');
+
+  const apply = () => {
+    const c = (window.__neutralAutoColor ? window.__neutralAutoColor() : '#000');
+
+    [btnAdd, btnChk].forEach(b => {
+      if (!b) return;
+      b.style.color = c;
+      b.style.borderColor = c;
+    });
+
+    // ganz wichtig: bereits erzeugte, neutrale Labels anpassen (nicht grün/rot!)
+    if (window.__recolorNeutralAutoLabels) window.__recolorNeutralAutoLabels();
+  };
+
+  apply();
+
+  try {
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    if (mq && typeof mq.addEventListener === 'function') mq.addEventListener('change', apply);
+    else if (mq && typeof mq.addListener === 'function') mq.addListener(apply);
+  } catch (e) {}
+})();
+</script>
+
 @end
 
 
