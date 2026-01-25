@@ -544,12 +544,24 @@ window.addAutoPointFromSpec = function (spec, uid) {
 
 window.checkAutoPointsFromSpec = function (spec, uid) {
   const ROOT = window.__ROOT || window;
-  const parts = String(spec).split(';').map(s => String(s).trim());
 
-  const boardId = parts[0] || '';
-  const key     = parts[1] || '';
-  let eps       = parseFloat(String(parts[2] || '').replace(',', '.'));
-  if (Number.isNaN(eps)) eps = 0.15;
+  // Neue Spec-Auswertung (mit optionaler 2. Grenze)
+  const parsed = (window.__parseAutoPointSpec)
+    ? window.__parseAutoPointSpec(spec)
+    : (function(){
+        // Fallback, falls __parseAutoPointSpec aus irgendeinem Grund fehlt
+        const parts = String(spec).split(';').map(s => String(s).trim());
+        const boardId = parts[0] || '';
+        const key     = parts[1] || '';
+        let epsGreen  = parseFloat(String(parts[2] || '').replace(',', '.'));
+        if (Number.isNaN(epsGreen)) epsGreen = 0.15;
+        let epsOrange = parseFloat(String(parts[3] || '').replace(',', '.'));
+        if (Number.isNaN(epsOrange)) epsOrange = 0.30;
+        epsOrange = Math.max(epsOrange, epsGreen);
+        return { boardId, key, epsGreen, epsOrange };
+      })();
+
+  const { boardId, key, epsGreen, epsOrange } = parsed;
 
   const msg = document.getElementById('autoMsg-' + uid);
 
@@ -566,16 +578,18 @@ window.checkAutoPointsFromSpec = function (spec, uid) {
 
   if (msg) {
     const partsHtml = names.map(n => {
-      const ok  = window.isPointOnTargetFunction(boardId, n, key, eps);
-      const col = ok ? 'green' : 'red';
+      const okGreen  = window.isPointOnTargetFunction(boardId, n, key, epsGreen);
+      const okOrange = !okGreen && window.isPointOnTargetFunction(boardId, n, key, epsOrange);
+
+      const col = okGreen ? 'green' : (okOrange ? 'orange' : 'red');
       return `<span style="color:${col}; font-weight:600;">\\(${n}\\)</span>`;
     });
 
     msg.innerHTML = partsHtml.join(', ');
-
     setTimeout(() => { try { ROOT.__typeset(msg); } catch (e) {} }, 0);
   }
 };
+
 
 
 
@@ -801,7 +815,6 @@ window.__applyPointLabelTheme = window.__applyPointLabelTheme || function (board
 
 
 
-
 @AutoPunkteGraph: @AutoPunkteGraph_(@uid,@0)
 
 @AutoPunkteGraph_
@@ -839,10 +852,102 @@ window.__applyPointLabelTheme = window.__applyPointLabelTheme || function (board
 })();
 </script>
 
+<script run-once="true" modify="false">
+/**
+ * Spec-Format:
+ *   boardId;key;epsGreen;epsOrange
+ *
+ * Beispiele:
+ *   @AutoPunkteGraph(Aufgabe1;graph1;0.15;0.3)
+ *   @AutoPunkteGraph(Aufgabe1;graph1)              -> epsGreen=0.15, epsOrange=0.30
+ *   @AutoPunkteGraph(Aufgabe1;graph1;0.2)          -> epsGreen=0.2,  epsOrange=0.30
+ */
+(function(){
+  // Nur definieren, wenn nicht schon vorhanden
+  if (window.__parseAutoPointSpec) return;
+
+  window.__parseAutoPointSpec = function(spec){
+    const parts = String(spec).split(';').map(s => String(s).trim());
+
+    const boardId = parts[0] || '';
+    const key     = parts[1] || '';
+
+    let epsGreen = parseFloat(String(parts[2] || '').replace(',', '.'));
+    if (Number.isNaN(epsGreen)) epsGreen = 0.15;
+
+    let epsOrange = parseFloat(String(parts[3] || '').replace(',', '.'));
+    if (Number.isNaN(epsOrange)) epsOrange = 0.30;
+
+    // Sicherheit: Orange darf nicht strenger sein als Grün
+    epsOrange = Math.max(epsOrange, epsGreen);
+
+    return { boardId, key, epsGreen, epsOrange };
+  };
+})();
+</script>
+
+
 @end
 
 
 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Koordinatensysteme - Aufgabe 1 - Punkte
@@ -1431,11 +1536,81 @@ window.__boards['Aufgabe1'] = board;
 
 Ziehe Punkte auf den Graphen der Funktion $f(x) = \dfrac{1}{4}x+2$.
 
-@AutoPunkteGraph(Aufgabe1;graph1;0.03)
+@AutoPunkteGraph(Aufgabe1;graph1;0.05;0.2)
 
 </div>
 
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2028,6 +2203,43 @@ Ziehe den Punkt $Q$ irgendwo auf den Graphen der Funktion $f(x)=2 x - 3$
 </div>
 
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
