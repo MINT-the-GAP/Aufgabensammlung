@@ -1683,7 +1683,7 @@ if (board.containerObj) {
 
 
 
-# Koordinatensysteme - Aufgabe 1 - Graph bewegen - Gerade / lineare Funktion
+# Koordinatensysteme - Aufgabe 2 - Graph bewegen - Parabeln
 
 
 
@@ -2625,6 +2625,990 @@ function endDrag(evt) {
 }
 
 // Listener: CAPTURE
+if (board.containerObj) {
+  board.containerObj.addEventListener('pointerdown', onPointerDown, { capture: true, passive: false });
+  board.containerObj.addEventListener('pointermove', onPointerMove, { capture: true, passive: false });
+  board.containerObj.addEventListener('pointerup', endDrag,        { capture: true, passive: false });
+  board.containerObj.addEventListener('pointercancel', endDrag,    { capture: true, passive: false });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Koordinatensysteme - Aufgabe 3 - Graph bewegen - Exponentialfunktion
+
+
+
+Bitte einmal die Farbthemes und zwischen Lightmode und Darkmode wechseln.
+
+
+
+
+<div style="max-width: 1000px;">
+
+``` javascript @JSX.Graph
+
+function __getGridColor(fallback = '#0b5fff') {
+  try {
+    const doc = (window.parent && window.parent.document) ? window.parent.document : document;
+    const win = (window.parent && window.parent.getComputedStyle) ? window.parent : window;
+
+    // 1) Wenn du später mal --grid-color nutzt, wird das automatisch bevorzugt
+    const v = win.getComputedStyle(doc.documentElement).getPropertyValue('--grid-color').trim();
+    if (v) return v;
+
+    // 2) Sonst Button-Farbe nehmen
+    const btn = doc.querySelector('.lia-btn');
+    if (btn) {
+      const cs = win.getComputedStyle(btn);
+      const bg = cs.backgroundColor;
+      if (bg && bg !== 'rgba(0, 0, 0, 0)') return bg;
+      if (cs.color) return cs.color;
+    }
+  } catch (e) {}
+
+  return fallback;
+}
+
+// Board-Grid-Farbe live nachziehen
+function __watchGridColor(board, intervalMs = 400) {
+  let last = '';
+
+  setInterval(() => {
+    const c = __getGridColor('#0b5fff');
+    if (!c || c === last) return;
+    last = c;
+
+    // 1) Optionen setzen (für zukünftige Rebuilds)
+    try {
+      if (board && board.options && board.options.grid) {
+        if (board.options.grid.major) board.options.grid.major.strokeColor = c;
+        if (board.options.grid.minor) board.options.grid.minor.strokeColor = c;
+      }
+    } catch (e) {}
+
+    // 2) EXISTIERENDE Grid-Objekte einfärben (entscheidend!)
+    try {
+      if (board && board.grids && board.grids.length) {
+        board.grids.forEach(g => {
+          if (g && typeof g.setAttribute === 'function') {
+            g.setAttribute({ strokeColor: c });
+          }
+        });
+      }
+
+      if (board && board.objectsList && board.objectsList.length) {
+        board.objectsList.forEach(o => {
+          if (!o || typeof o.setAttribute !== 'function') return;
+          if (o.elType === 'grid' || (typeof JXG !== 'undefined' && o.type === JXG.OBJECT_TYPE_GRID)) {
+            o.setAttribute({ strokeColor: c });
+          }
+        });
+      }
+    } catch (e) {}
+
+    // 3) Redraw
+    try {
+      if (board && typeof board.fullUpdate === 'function') board.fullUpdate();
+      else if (board) board.update();
+    } catch (e) {}
+
+  }, intervalMs);
+}
+
+const btnColor = __getGridColor('#0b5fff');
+
+// Board HIER DIE KOORDINATEN
+// Board HIER DIE KOORDINATEN
+// Board HIER DIE KOORDINATEN
+// Board HIER DIE KOORDINATEN
+// Board HIER DIE KOORDINATEN
+// Board HIER DIE KOORDINATEN
+// Board HIER DIE KOORDINATEN
+// Board HIER DIE KOORDINATEN
+var board = JXG.JSXGraph.initBoard(jxgbox, {
+  axis: true,
+  showNavigation: true,
+  showCopyright: false,
+  boundingbox: [-1, 5, 7, -1],
+  keepaspectratio: true,
+
+  zoom: {
+    enabled: true,
+    wheel: true,
+    needShift: false,
+    factorX: 1.15,
+    factorY: 1.15
+  },
+
+  pan: {
+    enabled: true,
+    needShift: false,
+    needTwoFingers: false
+  },
+
+  defaultAxes: {
+    x: {
+      strokeColor: 'black',
+      strokeWidth: 2.5,
+      ticks: {
+        insertTicks: false,
+        ticksDistance: 1,
+        strokeWidth: 3,
+        minorTicks: 9,         
+        drawLabels: true,
+        label: { fontSize: 18 }
+      }
+    },
+    y: {
+      strokeColor: 'black',
+      strokeWidth: 2.5,
+      ticks: {
+        insertTicks: false,
+        ticksDistance: 1,
+        strokeWidth: 3,
+        minorTicks: 9,        
+        drawLabels: true,
+        label: { fontSize: 18 }
+      }
+    }
+  },
+
+  grid: {
+    majorStep: 'auto',                
+    minorElements: 'auto',          
+    includeBoundaries: true,
+    forceSquare: true,
+
+    major: {
+      face: 'line',
+      strokeColor: btnColor,
+      strokeWidth: 1.5,          
+      dash: 0,
+      drawZero: true
+    },
+    minor: {
+      face: 'line',
+      strokeColor: btnColor,
+      strokeWidth: 1,         
+      dash: 1,
+      drawZero: false             // <<< spart Linien
+    }
+  }
+});
+
+
+
+
+(function enableAdaptiveMinorGrid(board) {
+  if (!board) return;
+
+  function pxPerUnitX() {
+    const bb = board.getBoundingBox();        // [xmin, ymax, xmax, ymin]
+    const xmin = bb[0], xmax = bb[2];
+    const w = board.canvasWidth || board.canvasWidth || board.containerObj.clientWidth;
+    return w / Math.max(1e-9, (xmax - xmin));
+  }
+
+  let lastShow = null;
+
+  function update() {
+    const ppu = pxPerUnitX();
+
+    // Schwelle: unter 55px pro Einheit -> minor off
+    const showMinor = ppu >= 100;
+
+    if (showMinor === lastShow) return;
+    lastShow = showMinor;
+
+    // Setze Minor-Gitterlinien effektiv unsichtbar oder sichtbar
+    try {
+      if (board.grids && board.grids.length) {
+        board.grids.forEach(g => {
+          if (!g || typeof g.setAttribute !== 'function') return;
+
+          // Heuristik: Minor-Grids sind oft "dashed" oder strokeWidth==0.8 etc.
+          // Wir schalten alle grids mit dash==1 (dein Minor) aus/an:
+          const isMinor = (g.visProp && (g.visProp.dash == 1 || g.visProp.strokeWidth <= 1));
+          if (isMinor) g.setAttribute({ visible: showMinor });
+        });
+      }
+    } catch (e) {}
+
+    board.update();
+  }
+
+  // Beim Zoomen/Pannen triggern
+  board.on('boundingbox', update);
+
+  // initial
+  update();
+})(board);
+
+
+// =========================================================
+// Board ins gemeinsame ROOT registrieren
+// =========================================================
+const ROOT = (function () {
+  try { let w = window; while (w.parent && w.parent !== w) w = w.parent; return w; }
+  catch (e) { return window; }
+})();
+
+ROOT.__boards = ROOT.__boards || {};
+ROOT.__boards['Aufgabe1'] = board;
+
+// Pending Points nachziehen (falls vorher geklickt)
+ROOT.__pendingPointSpecs = ROOT.__pendingPointSpecs || [];
+ROOT.__pendingPointSpecs = ROOT.__pendingPointSpecs.filter(spec => {
+  const parts = String(spec).split(';').map(s => String(s).trim());
+  const bid  = parts[0];
+  const name = parts[1];
+
+  if (bid === 'Aufgabe1' && name) {
+    if (ROOT.ensurePoint) ROOT.ensurePoint(bid, name);
+    else if (window.ensurePoint) window.ensurePoint(bid, name);
+    return false; // aus Queue entfernen
+  }
+  return true;
+});
+
+
+; (function () {
+  var r;
+  try { r = (typeof ROOT !== 'undefined') ? ROOT : null; } catch (e) { r = null; }
+  if (!r || typeof r.flushPendingAutoAdds !== 'function') return;
+
+  // mini-delay, damit JSXGraph wirklich vollständig steht
+  setTimeout(function () {
+    try {
+      r.flushPendingAutoAdds('Aufgabe1');
+    } catch (e) {
+      // bewusst still
+    }
+  }, 0);
+})();
+
+
+
+function __isDarkTheme() {
+  try {
+    const doc = (window.parent && window.parent.document) ? window.parent.document : document;
+    const win = (window.parent && window.parent.getComputedStyle) ? window.parent : window;
+
+    // bevorzugt: body, sonst documentElement
+    const el = doc.body || doc.documentElement;
+    const bg = win.getComputedStyle(el).backgroundColor;
+
+    // bg ist typischerweise "rgb(r,g,b)" oder "rgba(r,g,b,a)"
+    const m = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+    if (!m) return false;
+
+    const r = parseInt(m[1], 10);
+    const g = parseInt(m[2], 10);
+    const b = parseInt(m[3], 10);
+
+    // relative Luminanz (0..255) – Schwelle ~ 128
+    const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    return lum < 128;
+  } catch (e) {
+    return false;
+  }
+}
+
+
+function __neutralAutoColor() {
+  return __isDarkTheme() ? '#fff' : '#000';
+}
+
+function __recolorNeutralAutoLabels() {
+  const col = __neutralAutoColor();
+  document.querySelectorAll('span.autoNameNeutral').forEach(el => {
+    // Nur neutrale Labels anfassen (nicht grün/rot aus dem Check)
+    el.style.color = col;
+  });
+}
+
+
+
+function __applyNavColors(board) {
+  if (!board || !board.containerObj) return;
+
+  // JSXGraph legt die Navigation innerhalb des Board-Containers an
+  const nav = board.containerObj.querySelector('.JXG_navigation');
+  if (!nav) return;
+
+  const isDark = __isDarkTheme();
+  const col = isDark ? '#fff' : '#000';
+
+  // Navigation-Grundstil
+  nav.style.color = col;
+  nav.style.background = 'transparent';
+
+  // Links/Buttons/Spans explizit einfärben
+  nav.querySelectorAll('a, button, span').forEach(el => {
+    el.style.color = col;
+    el.style.borderColor = col;
+    el.style.background = 'transparent';
+    el.style.boxShadow = 'none';
+  });
+
+  // SVG-Icons (falls JSXGraph SVG nutzt)
+  nav.querySelectorAll('svg, svg *').forEach(el => {
+    el.style.fill = col;
+    el.style.stroke = col;
+  });
+
+  // IMG-Icons (falls JSXGraph Bilder nutzt)
+  nav.querySelectorAll('img').forEach(img => {
+    img.style.filter = isDark ? 'invert(1)' : 'none';
+  });
+}
+
+// einmal anwenden (nach initBoard)
+__applyNavColors(board);
+
+// bei Mode-Wechsel nachziehen
+try {
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
+  if (mq && typeof mq.addEventListener === 'function') {
+    mq.addEventListener('change', () => __applyNavColors(board));
+  } else if (mq && typeof mq.addListener === 'function') {
+    mq.addListener(() => __applyNavColors(board));
+  }
+} catch (e) {}
+
+
+function __applyAxisColors(board) {
+  if (!board) return;
+
+  const isDark = __isDarkTheme();
+  const col = isDark ? '#fff' : '#000';
+
+  // 0) WICHTIG: Defaults für zukünftig neu erzeugte Tick-Labels setzen
+  // (damit beim Rauszoomen neue Zahlen direkt korrekt gefärbt werden)
+  try {
+    board.options = board.options || {};
+    board.options.defaultAxes = board.options.defaultAxes || {};
+    ['x', 'y'].forEach(axKey => {
+      board.options.defaultAxes[axKey] = board.options.defaultAxes[axKey] || {};
+      board.options.defaultAxes[axKey].ticks = board.options.defaultAxes[axKey].ticks || {};
+      board.options.defaultAxes[axKey].ticks.label = board.options.defaultAxes[axKey].ticks.label || {};
+
+      board.options.defaultAxes[axKey].strokeColor = col;
+      board.options.defaultAxes[axKey].ticks.strokeColor = col;
+
+      // Diese beiden sind für die Ziffern entscheidend:
+      board.options.defaultAxes[axKey].ticks.label.strokeColor = col;
+      board.options.defaultAxes[axKey].ticks.label.fillColor   = col;
+    });
+  } catch (e) {}
+
+  // Helfer: beliebige JSXGraph-Objekte einfärben
+  const paint = (obj) => {
+    if (!obj || typeof obj.setAttribute !== 'function') return;
+    try {
+      obj.setAttribute({
+        strokeColor: col,
+        highlightStrokeColor: col,
+        fillColor: col,
+        highlightFillColor: col
+      });
+    } catch (e) {}
+  };
+
+  // 1) Achsen + Ticks + Tick-Labels (existierende)
+  try {
+    if (board.defaultAxes) {
+      paint(board.defaultAxes.x);
+      paint(board.defaultAxes.y);
+
+      const paintTicks = (axis) => {
+        if (!axis) return;
+
+        // Achsen-VisProps (wirkt oft auf neu erzeugte Ticks/Labels)
+        try {
+          axis.setAttribute({ strokeColor: col, highlightStrokeColor: col });
+        } catch (e) {}
+
+        // Standard-Ticks (häufig axis.defaultTicks)
+        if (axis.defaultTicks) {
+          paint(axis.defaultTicks);
+
+          // Label-Default am Tick-Objekt selbst nachziehen
+          try {
+            axis.defaultTicks.setAttribute({
+              strokeColor: col,
+              highlightStrokeColor: col
+            });
+            if (axis.defaultTicks.visProp && axis.defaultTicks.visProp.label) {
+              axis.defaultTicks.visProp.label.strokeColor = col;
+              axis.defaultTicks.visProp.label.fillColor   = col;
+            }
+          } catch (e) {}
+
+          if (axis.defaultTicks.labels && axis.defaultTicks.labels.length) {
+            axis.defaultTicks.labels.forEach(paint);
+          }
+        }
+
+        // Manche Versionen: axis.ticks als Array
+        if (axis.ticks && axis.ticks.length) {
+          axis.ticks.forEach(t => {
+            paint(t);
+            // Tick-Label-Defaults am Tick nachziehen
+            try {
+              if (t.visProp && t.visProp.label) {
+                t.visProp.label.strokeColor = col;
+                t.visProp.label.fillColor   = col;
+              }
+            } catch (e) {}
+            if (t.labels && t.labels.length) t.labels.forEach(paint);
+          });
+        }
+
+        // Manche Versionen: axis.getTicks()
+        if (typeof axis.getTicks === 'function') {
+          (axis.getTicks() || []).forEach(t => {
+            paint(t);
+            try {
+              if (t.visProp && t.visProp.label) {
+                t.visProp.label.strokeColor = col;
+                t.visProp.label.fillColor   = col;
+              }
+            } catch (e) {}
+            if (t.labels && t.labels.length) t.labels.forEach(paint);
+          });
+        }
+      };
+
+      paintTicks(board.defaultAxes.x);
+      paintTicks(board.defaultAxes.y);
+    }
+  } catch (e) {}
+
+  // 2) Fallback: Tick-Labels werden je nach Version als Textobjekte geführt.
+  // Wir färben NUR Texte, die sehr wahrscheinlich Tick-Labels sind, um nicht alle Texte (z.B. Punktnamen) zu erwischen.
+  try {
+    if (board.objectsList && board.objectsList.length) {
+      board.objectsList.forEach(o => {
+        if (!o || o.elType !== 'text') return;
+
+        // Heuristiken für Tick-Labels:
+        // - Tick-Labels sind fast immer "fixed"
+        // - und haben häufig sehr kurze Inhalte (Zahlen)
+        // - und sind nicht "label" eines beliebigen Punktes (die sind oft an ein parent gekoppelt)
+        const txt = (typeof o.getText === 'function') ? String(o.getText()) : (o.plaintext ? String(o.plaintext) : '');
+        const looksNumeric = /^[\s\-+]*\d+([.,]\d+)?\s*$/.test(txt);
+
+        const isFixed = (o.visProp && (o.visProp.fixed === true || o.visProp.isfixed === true));
+        if (looksNumeric && isFixed) paint(o);
+      });
+    }
+  } catch (e) {}
+
+  // 3) Redraw
+  try {
+    if (typeof board.fullUpdate === 'function') board.fullUpdate();
+    else board.update();
+  } catch (e) {}
+}
+
+// einmal anwenden
+__applyAxisColors(board);
+
+// NEU: bei jedem Zoom/Pan (boundingbox ändert sich) Achsen/Ticks/Labels nachfärben
+try {
+  board.on('boundingbox', () => __applyAxisColors(board));
+} catch (e) {}
+
+// Optional (aber sinnvoll): auch nach Board-Resize einmal nachziehen
+try {
+  board.on('resize', () => __applyAxisColors(board));
+} catch (e) {}
+
+
+
+// einmal anwenden
+__applyAxisColors(board);
+
+
+function __applyBoardFrame(board) {
+  if (!board || !board.containerObj) return;
+
+  const isDark = __isDarkTheme();
+  const col = isDark ? '#fff' : '#000';
+
+  // Rahmen um das Koordinatensystem
+  board.containerObj.style.border = `2px solid ${col}`;
+  board.containerObj.style.borderRadius = '8px';     // optional
+  board.containerObj.style.boxSizing = 'border-box';
+}
+
+// einmal anwenden
+__applyBoardFrame(board);
+
+
+
+// bei Mode-Wechsel nachziehen (gleiches Event wie Navigation nutzen)
+try {
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
+  const handler = () => {
+    __applyNavColors(board);
+    __applyAxisColors(board);
+  };
+
+  if (mq && typeof mq.addEventListener === 'function') mq.addEventListener('change', handler);
+  else if (mq && typeof mq.addListener === 'function') mq.addListener(handler);
+} catch (e) {}
+
+
+
+try {
+  if (board && board.grids && board.grids.length) {
+    board.grids.forEach(g => g && g.setAttribute && g.setAttribute({ strokeColor: btnColor }));
+  }
+} catch (e) {}
+
+
+if (board && board.containerObj) {
+  board.containerObj.style.background = 'transparent';
+}
+
+let __lastDark = null;
+
+setInterval(() => {
+  const nowDark = __isDarkTheme();
+  if (nowDark === __lastDark) return;
+  __lastDark = nowDark;
+
+  __applyNavColors(board);
+  __applyAxisColors(board);
+  __applyBoardFrame(board);
+
+  try { window.__recolorNeutralAutoLabels && window.__recolorNeutralAutoLabels(); } catch (e) {}
+}, 300);
+
+
+
+// Grid-Farbe automatisch an Button-Farbe koppeln
+__watchGridColor(board, 400);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   DRAGGABLE EXPONENTIAL FUNCTION (Translation per Mouse)
+   - Klick nahe am Graphen -> ziehen
+   - Anzeige: f(x) = a * b^(x-h) + k   (Translationsform)
+   - Overlay: Checkbox "Funktionsterm anzeigen"
+   - Robust: Overlay-Klicks blockieren Drag/Pan, Pan wird beim Drag deaktiviert
+   ========================================================= */
+
+// Basisfunktion: y = a * b^(x - h0) + k0
+// (du kannst a,b,h0,k0 frei wählen; b > 0, b != 1)
+const a  = 1.0;
+const b  = 1.5;
+const h0 = 0.0;
+const k0 = 0.0;
+
+// Verschiebung (in Weltkoordinaten)
+let dx = 0;
+let dy = 0;
+
+// Sichtfenster-Grenzen dynamisch
+const xmin = () => board.getBoundingBox()[0];
+const xmax = () => board.getBoundingBox()[2];
+
+// verschobene Funktion: y = a * b^(x - (h0+dx)) + (k0+dy)
+function fShift(x) {
+  const h = h0 + dx;
+  const k = k0 + dy;
+  return a * Math.pow(b, (x - h)) + k;
+}
+
+// Graph erzeugen (dynamischer Bereich)
+const graph = board.create('functiongraph', [fShift, xmin, xmax], {
+  strokeWidth: 3,
+  strokeColor: '#b41f65',
+  doAdvancedPlot: false,
+  numberPointsLow: 40,
+  numberPointsHigh: 180,
+  highlight: false
+});
+
+// DE-Format
+function __fmtDE(num, digits = 3) {
+  const v = Math.round(num * Math.pow(10, digits)) / Math.pow(10, digits);
+  return new Intl.NumberFormat('de-DE', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: digits
+  }).format(v);
+}
+
+// Gleichungstext bauen: f(x) = a·b^(x-h) + k
+function __buildEqText() {
+  const h = h0 + dx;
+  const k = k0 + dy;
+
+  const aDE = __fmtDE(a, 3);
+  const bDE = __fmtDE(b, 3);
+  const hDE = __fmtDE(Math.abs(h), 3);
+  const kDE = __fmtDE(Math.abs(k), 3);
+
+  const signH = (h >= 0) ? '- ' : '+ ';
+  const signK = (k >= 0) ? '+ ' : '- ';
+
+  // Für Lesbarkeit: b^(x - h) statt b^(x-h)
+  return `f(x) = ${aDE}·${bDE}^(x ${signH}${hDE}) ${signK}${kDE}`;
+}
+
+/* =========================================================
+   CHECKBOX-OVERLAY: Funktionsterm anzeigen + dynamischer Term
+   ========================================================= */
+
+let __eqWrap = null;
+let __eqCb   = null;
+let __eqLbl  = null;
+let __eqSpan = null;
+
+function __applyEqTheme() {
+  if (!__eqWrap) return;
+
+  const isDark = __isDarkTheme();
+  const col = isDark ? '#fff' : '#000';
+  const bg  = isDark ? 'rgba(0,0,0,0.65)' : 'rgba(255,255,255,0.85)';
+  const brd = isDark ? '1px solid rgba(255,255,255,0.25)' : '1px solid rgba(0,0,0,0.20)';
+
+  __eqWrap.style.color = col;
+  __eqWrap.style.background = bg;
+  __eqWrap.style.border = brd;
+  __eqWrap.style.backdropFilter = 'blur(2px)';
+
+  if (__eqLbl)  __eqLbl.style.color  = col;
+  if (__eqSpan) __eqSpan.style.color = col;
+
+  if (__eqCb) __eqCb.style.accentColor = col;
+}
+
+function __updateEqUI() {
+  if (!__eqSpan) return;
+  try {
+    __eqSpan.textContent = __buildEqText();
+  } catch (e) {
+    __eqSpan.textContent = 'f(x) = …';
+  }
+}
+
+function __syncEqToggle() {
+  if (!__eqCb || !__eqLbl || !__eqSpan) return;
+
+  __updateEqUI();
+
+  if (__eqCb.checked) {
+    __eqLbl.style.display  = 'none';
+    __eqSpan.style.display = '';
+  } else {
+    __eqLbl.style.display  = '';
+    __eqSpan.style.display = 'none';
+  }
+}
+
+function __shieldFromJXG(e) {
+  e.stopPropagation();
+  if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
+}
+
+function __ensureEqUI() {
+  if (__eqWrap || !board || !board.containerObj) return;
+
+  try {
+    const pos = board.containerObj.style.position;
+    if (!pos || pos === 'static') board.containerObj.style.position = 'relative';
+  } catch (e) {}
+
+  __eqWrap = document.createElement('div');
+  __eqWrap.style.position = 'absolute';
+  __eqWrap.style.left = '10px';
+  __eqWrap.style.top  = '10px';
+  __eqWrap.style.zIndex = '9999';
+  __eqWrap.style.display = 'flex';
+  __eqWrap.style.alignItems = 'center';
+  __eqWrap.style.gap = '10px';
+  __eqWrap.style.padding = '6px 10px';
+  __eqWrap.style.borderRadius = '8px';
+  __eqWrap.style.userSelect = 'none';
+  __eqWrap.style.pointerEvents = 'auto';
+  __eqWrap.style.fontSize = '18px';
+  __eqWrap.style.lineHeight = '1.2';
+
+  __eqCb = document.createElement('input');
+  __eqCb.type = 'checkbox';
+  __eqCb.checked = false;
+
+  __eqLbl = document.createElement('span');
+  __eqLbl.textContent = 'Funktionsterm anzeigen';
+  __eqLbl.style.cursor = 'pointer';
+  __eqLbl.style.fontWeight = '600';
+
+  __eqLbl.addEventListener('click', (e) => {
+    __shieldFromJXG(e);
+    __eqCb.checked = !__eqCb.checked;
+    __syncEqToggle();
+  }, { capture: true });
+
+  __eqSpan = document.createElement('span');
+  __eqSpan.style.whiteSpace = 'nowrap';
+  __eqSpan.style.fontWeight = '700';
+  __eqSpan.style.display = 'none';
+
+  __eqWrap.appendChild(__eqCb);
+  __eqWrap.appendChild(__eqLbl);
+  __eqWrap.appendChild(__eqSpan);
+
+  board.containerObj.appendChild(__eqWrap);
+
+  __eqCb.addEventListener('change', (e) => { __shieldFromJXG(e); __syncEqToggle(); }, { capture: true });
+  __eqCb.addEventListener('click',  (e) => { __shieldFromJXG(e); __syncEqToggle(); }, { capture: true });
+
+  [
+    'pointerdown','pointerup','pointermove','pointercancel',
+    'mousedown','mouseup','mousemove','touchstart','touchend','touchmove'
+  ].forEach(type => __eqWrap.addEventListener(type, __shieldFromJXG, { capture: true, passive: true }));
+
+  __eqWrap.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    __shieldFromJXG(e);
+  }, { capture: true, passive: false });
+
+  __applyEqTheme();
+  __syncEqToggle();
+}
+
+__ensureEqUI();
+
+let __lastEqDark = null;
+setInterval(() => {
+  const d = __isDarkTheme();
+  if (d === __lastEqDark) return;
+  __lastEqDark = d;
+  __applyEqTheme();
+}, 250);
+
+function __isEqUIEvent(evt) {
+  return !!(
+    __eqWrap &&
+    evt &&
+    evt.target &&
+    (__eqWrap === evt.target || __eqWrap.contains(evt.target))
+  );
+}
+
+/* ---------------------------------------------------------
+   Drag-Mechanik: DOM Pointer-Events (CAPTURE!)
+   --------------------------------------------------------- */
+
+let dragging = false;
+let startMouse = null;
+let startDx = 0;
+let startDy = 0;
+
+let panWasEnabled = null;
+
+if (board.containerObj) {
+  board.containerObj.style.touchAction = 'none';
+  board.containerObj.style.userSelect  = 'none';
+  board.containerObj.style.cursor      = 'default';
+}
+
+function usrCoordsDOM(evt) {
+  if (typeof board.getUsrCoordsOfMouse === 'function') return board.getUsrCoordsOfMouse(evt);
+
+  const rect = board.containerObj.getBoundingClientRect();
+  const px = evt.clientX - rect.left;
+  const py = evt.clientY - rect.top;
+
+  const bb = board.getBoundingBox(); // [xmin, ymax, xmax, ymin]
+  const x = bb[0] + (px / rect.width)  * (bb[2] - bb[0]);
+  const y = bb[1] - (py / rect.height) * (bb[1] - bb[3]);
+  return [x, y];
+}
+
+function hitTest(p) {
+  const x = p[0], y = p[1];
+  if (!isFinite(x) || !isFinite(y)) return false;
+
+  const y0 = fShift(x);
+
+  const bb = board.getBoundingBox();
+  const ySpan = Math.max(1e-9, (bb[1] - bb[3]));
+  const eps = ySpan / 28; // Exponential: etwas toleranter, weil steil werden kann
+
+  return Math.abs(y - y0) <= eps;
+}
+
+let rafPending = false;
+function requestUpdate() {
+  if (rafPending) return;
+  rafPending = true;
+  requestAnimationFrame(() => {
+    rafPending = false;
+    board.update();
+    __updateEqUI();
+  });
+}
+
+function setCapture(evt) {
+  try {
+    if (board.containerObj?.setPointerCapture && evt.pointerId != null) {
+      board.containerObj.setPointerCapture(evt.pointerId);
+    }
+  } catch (e) {}
+}
+function releaseCapture(evt) {
+  try {
+    if (board.containerObj?.releasePointerCapture && evt.pointerId != null) {
+      board.containerObj.releasePointerCapture(evt.pointerId);
+    }
+  } catch (e) {}
+}
+
+function setPanEnabled(enabled) {
+  try { board.setAttribute({ pan: { enabled: !!enabled } }); } catch (e) {}
+  try { if (board.attr && board.attr.pan) board.attr.pan.enabled = !!enabled; } catch (e) {}
+}
+
+function onPointerDown(evt) {
+  if (__isEqUIEvent(evt)) return;
+  if (evt.pointerType === 'mouse' && evt.button !== 0) return;
+
+  const p = usrCoordsDOM(evt);
+  if (!hitTest(p)) return;
+
+  dragging = true;
+  startMouse = p;
+  startDx = dx;
+  startDy = dy;
+
+  try { panWasEnabled = !!(board.attr && board.attr.pan && board.attr.pan.enabled); }
+  catch (e) { panWasEnabled = null; }
+  setPanEnabled(false);
+
+  if (board.containerObj) board.containerObj.style.cursor = 'grabbing';
+
+  setCapture(evt);
+
+  evt.preventDefault();
+  evt.stopPropagation();
+  if (typeof evt.stopImmediatePropagation === 'function') evt.stopImmediatePropagation();
+}
+
+function onPointerMove(evt) {
+  if (!dragging) return;
+
+  const p = usrCoordsDOM(evt);
+  if (!isFinite(p[0]) || !isFinite(p[1])) return;
+
+  dx = startDx + (p[0] - startMouse[0]);
+  dy = startDy + (p[1] - startMouse[1]);
+
+  requestUpdate();
+
+  evt.preventDefault();
+  evt.stopPropagation();
+  if (typeof evt.stopImmediatePropagation === 'function') evt.stopImmediatePropagation();
+}
+
+function endDrag(evt) {
+  if (!dragging) return;
+
+  dragging = false;
+  startMouse = null;
+
+  if (panWasEnabled !== null) setPanEnabled(panWasEnabled);
+  panWasEnabled = null;
+
+  if (board.containerObj) board.containerObj.style.cursor = 'default';
+
+  releaseCapture(evt);
+
+  if (evt) {
+    evt.preventDefault();
+    evt.stopPropagation();
+    if (typeof evt.stopImmediatePropagation === 'function') evt.stopImmediatePropagation();
+  }
+}
+
 if (board.containerObj) {
   board.containerObj.addEventListener('pointerdown', onPointerDown, { capture: true, passive: false });
   board.containerObj.addEventListener('pointermove', onPointerMove, { capture: true, passive: false });
