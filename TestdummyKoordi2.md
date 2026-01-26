@@ -421,163 +421,6 @@ window.isPointOnTargetFunction = window.isPointOnTargetFunction || function (boa
 
 
 
-// =========================================================
-// FIX: Target/Point-Checks konsequent über ROOT-Store
-// =========================================================
-window.setTargetFunction = function (boardId, key, fn) {
-  const ROOT = window.__ROOT || window;
-  ROOT.__targets = ROOT.__targets || {};
-  ROOT.__targets[boardId] = ROOT.__targets[boardId] || {};
-  ROOT.__targets[boardId][key] = fn;
-};
-
-window.isPointOnTargetFunction = function (boardId, pointName, key, epsY = 0.15) {
-  const ROOT = window.__ROOT || window;
-
-  const pt = ROOT.__points && ROOT.__points[boardId] && ROOT.__points[boardId][pointName];
-  const fn = ROOT.__targets && ROOT.__targets[boardId] && ROOT.__targets[boardId][key];
-
-  if (!pt || typeof fn !== 'function') return false;
-
-  const x = pt.X();
-  const y = pt.Y();
-  const y0 = fn(x);
-
-  if (!isFinite(y0)) return false;
-  return Math.abs(y - y0) <= epsY;
-};
-
-
-// =========================================================
-// @AutoPunkteGraph – Store + Namensgenerator + Actions
-// =========================================================
-ROOT.__autoPts = ROOT.__autoPts || {};             // boardId -> {counter, names:[]}
-ROOT.__pendingAutoAdds = ROOT.__pendingAutoAdds || []; // falls Button vor Board klickt
-
-function __autoLabel(i) {
-  // A..Z, A',B',..Z', A'',...
-  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const base = letters[i % 26];
-  const k = Math.floor(i / 26);
-  return base + (k > 0 ? "'".repeat(k) : "");
-}
-
-function __randInBBox(board) {
-  // Gewünschter Startbereich: 0 <= x < 1 und 0 <= y < 1
-  const x = Math.random();   // in [0,1)
-  const y = Math.random();   // in [0,1)
-  return [x, y];
-}
-
-// optional: wenn Punkt erzeugt wurde, aber Board war noch nicht da
-ROOT.flushPendingAutoAdds = ROOT.flushPendingAutoAdds || function (boardId) {
-  const board = ROOT.__boards && ROOT.__boards[boardId];
-  if (!board) return;
-
-  ROOT.__pendingAutoAdds = (ROOT.__pendingAutoAdds || []).filter(item => {
-    if (item.boardId !== boardId) return true;
-
-    // Punkt erzeugen/positionieren
-    window.ensurePoint(item.boardId, item.name);
-    const pt = ROOT.__points && ROOT.__points[item.boardId] && ROOT.__points[item.boardId][item.name];
-    if (pt && item.xy) {
-      try { pt.moveTo(item.xy, 0); } catch (e) {}
-      try { board.update(); } catch (e) {}
-    }
-    return false;
-  });
-};
-
-function __initAuto(boardId) {
-  ROOT.__autoPts[boardId] = ROOT.__autoPts[boardId] || { counter: 0, names: [] };
-  return ROOT.__autoPts[boardId];
-}
-
-// spec: "boardId;targetKey;eps"
-window.addAutoPointFromSpec = function (spec, uid) {
-  const ROOT = window.__ROOT || window;
-  const parts = String(spec).split(';').map(s => String(s).trim());
-
-  const boardId = parts[0] || '';
-  if (!boardId) return;
-
-  const state = __initAuto(boardId);
-  const name = __autoLabel(state.counter++);
-  state.names.push(name);
-
-  const msg = document.getElementById('autoMsg-' + uid);
-
-  const board = ROOT.__boards && ROOT.__boards[boardId];
-  if (!board) {
-    // Board noch nicht registriert -> merken
-    ROOT.__pendingAutoAdds.push({ boardId, name, xy: null });
-    if (msg) {
-      msg.textContent = `(${name}) vorgemerkt (Board lädt noch ...)`;
-      msg.style.color = __neutralAutoColor();
-    }
-    return;
-  }
-
-  // Punkt erzeugen (zufällige Position im Sichtfenster)
-  window.ensurePoint(boardId, name);
-
-  const pt = ROOT.__points && ROOT.__points[boardId] && ROOT.__points[boardId][name];
-  if (pt) {
-    const xy = __randInBBox(board);
-    try { pt.moveTo(xy, 0); } catch (e) {}
-    try { board.update(); } catch (e) {}
-  }
-  if (msg) {
-    const html = state.names
-      .map(n => `<span class="autoNameNeutral" style="font-weight:600; color:${window.__neutralAutoColor()};">\\(${n}\\)</span>`)
-      .join(', ');
-
-    msg.innerHTML = html;
-
-    setTimeout(() => {
-      try { ROOT.__typeset(msg); } catch (e) {}
-      try { window.__recolorNeutralAutoLabels(); } catch (e) {}
-    }, 0);
-  }
-};
-
-
-window.checkAutoPointsFromSpec = function (spec, uid) {
-  const ROOT = window.__ROOT || window;
-  const parts = String(spec).split(';').map(s => String(s).trim());
-
-  const boardId = parts[0] || '';
-  const key     = parts[1] || '';
-  let eps       = parseFloat(String(parts[2] || '').replace(',', '.'));
-  if (Number.isNaN(eps)) eps = 0.15;
-
-  const msg = document.getElementById('autoMsg-' + uid);
-
-  const state = ROOT.__autoPts && ROOT.__autoPts[boardId];
-  const names = (state && state.names) ? state.names.slice() : [];
-
-  if (!names.length) {
-    if (msg) {
-      msg.textContent = 'Noch keine Punkte erzeugt.';
-      msg.style.color = '';
-    }
-    return;
-  }
-
-  if (msg) {
-    const partsHtml = names.map(n => {
-      const ok  = window.isPointOnTargetFunction(boardId, n, key, eps);
-      const col = ok ? 'green' : 'red';
-      return `<span style="color:${col}; font-weight:600;">\\(${n}\\)</span>`;
-    });
-
-    msg.innerHTML = partsHtml.join(', ');
-
-    setTimeout(() => { try { ROOT.__typeset(msg); } catch (e) {} }, 0);
-  }
-};
-
-
 
 // =========================================================
 // MathJax helper: typeset im ROOT/parent (wichtig bei Lia/JSXGraph)
@@ -700,152 +543,63 @@ window.__applyPointLabelTheme = window.__applyPointLabelTheme || function (board
 
 
 
-@ErzeugePunkt: @ErzeugePunkt_(@uid,@0)
-
-@ErzeugePunkt_
-<button id="btn-@0" class="lia-btn" onclick="window.ensurePointFromSpec('@1')">Punkt erzeugen</button>
-
-<script run-once="true" modify="false">
-(function(){
-  const btn = document.getElementById('btn-@0');
-  if (!btn) return;
-
-  const apply = () => {
-    const c = (window.__neutralAutoColor ? window.__neutralAutoColor() : '#000');
-    btn.style.color = c;
-    // optional, aber meist sinnvoll (passt zum Text):
-    btn.style.borderColor = c;
-  };
-
-  apply();
-
-  try {
-    const mq = window.matchMedia('(prefers-color-scheme: dark)');
-    if (mq && typeof mq.addEventListener === 'function') mq.addEventListener('change', apply);
-    else if (mq && typeof mq.addListener === 'function') mq.addListener(apply);
-  } catch (e) {}
-})();
-</script>
-
-
-<!-- class="check-only" data-solution-button="off"-->
-[[ 0 ]]
-<script modify="false">
-  const spec = '@1';
-  const parts = String(spec).split(';');
-
-  const boardId = (parts[0] || '').trim();
-  const name    = (parts[1] || '').trim();
-  const tx = parseFloat((parts[2] || '').replace(',', '.'));
-  const ty = parseFloat((parts[3] || '').replace(',', '.'));
-
-  const pt = window.__points && window.__points[boardId] && window.__points[boardId][name];
-  const eps = 0.05;
-
-  const ok = !!pt
-    && !Number.isNaN(tx)
-    && !Number.isNaN(ty)
-    && Math.abs(pt.X() - tx) < eps
-    && Math.abs(pt.Y() - ty) < eps;
-
-  ok
-</script>
-@end
-
-
-@ErzeugePunktGraph: @ErzeugePunktGraph_(@uid,@0)
-
-@ErzeugePunktGraph_
-<button id="btnG-@0" class="lia-btn" onclick="window.ensurePointFromSpec('@1')">Punkt erzeugen</button>
-
-<script run-once="true" modify="false">
-(function(){
-  const btn = document.getElementById('btnG-@0');
-  if (!btn) return;
-
-  const apply = () => {
-    const c = (window.__neutralAutoColor ? window.__neutralAutoColor() : '#000');
-    btn.style.color = c;
-    btn.style.borderColor = c;
-  };
-
-  apply();
-
-  try {
-    const mq = window.matchMedia('(prefers-color-scheme: dark)');
-    if (mq && typeof mq.addEventListener === 'function') mq.addEventListener('change', apply);
-    else if (mq && typeof mq.addListener === 'function') mq.addListener(apply);
-  } catch (e) {}
-})();
-</script>
-
-
-<!-- class="check-only" data-solution-button="off"-->
-[[ 0 ]]
-<script modify="false">
-  // @1 = "boardId;Name;targetKey;eps"
-  const spec  = '@1';
-  const parts = String(spec).split(';').map(s => String(s).trim());
-
-  const boardId = parts[0] || '';
-  const name    = parts[1] || '';
-  const key     = parts[2] || '';
-
-  let eps = parseFloat(String(parts[3] || '').replace(',', '.'));
-  if (Number.isNaN(eps)) eps = 0.15;
-
-  const ok = window.isPointOnTargetFunction(boardId, name, key, eps);
-  ok
-</script>
-@end
-
-
-
-
-@AutoPunkteGraph: @AutoPunkteGraph_(@uid,@0)
-
-@AutoPunkteGraph_
-<div>
-  <button id="autoAdd-@0" class="lia-btn" onclick="window.addAutoPointFromSpec('@1','@0')">Punkt hinzufügen</button>
-  <button id="autoChk-@0" class="lia-btn" onclick="window.checkAutoPointsFromSpec('@1','@0')">Prüfen</button>
-  <span id="autoMsg-@0" style="margin-left: 12px;"></span>
-</div>
-
-<script run-once="true" modify="false">
-(function(){
-  const btnAdd = document.getElementById('autoAdd-@0');
-  const btnChk = document.getElementById('autoChk-@0');
-
-  const apply = () => {
-    const c = (window.__neutralAutoColor ? window.__neutralAutoColor() : '#000');
-
-    [btnAdd, btnChk].forEach(b => {
-      if (!b) return;
-      b.style.color = c;
-      b.style.borderColor = c;
-    });
-
-    // ganz wichtig: bereits erzeugte, neutrale Labels anpassen (nicht grün/rot!)
-    if (window.__recolorNeutralAutoLabels) window.__recolorNeutralAutoLabels();
-  };
-
-  apply();
-
-  try {
-    const mq = window.matchMedia('(prefers-color-scheme: dark)');
-    if (mq && typeof mq.addEventListener === 'function') mq.addEventListener('change', apply);
-    else if (mq && typeof mq.addListener === 'function') mq.addListener(apply);
-  } catch (e) {}
-})();
-</script>
-
-@end
-
-
 -->
 
 
-# Koordinatensysteme - Aufgabe 1 - Punkte
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Koordinatensysteme - Aufgabe 1 - Graph bewegen - Gerade / lineare Funktion
 
 
 
@@ -936,7 +690,7 @@ const btnColor = __getGridColor('#0b5fff');
 // Board HIER DIE KOORDINATEN
 // Board HIER DIE KOORDINATEN
 // Board HIER DIE KOORDINATEN
-board = JXG.JSXGraph.initBoard(jxgbox, {
+var board = JXG.JSXGraph.initBoard(jxgbox, {
   axis: true,
   showNavigation: true,
   showCopyright: false,
@@ -1405,37 +1159,6 @@ __watchGridColor(board, 400);
 
 
 
-// Beispiel-Zielkurve: y = 0.25*x + 2
-const f1 = (x) => 0.25*x + 2;
-
-ROOT.__targets = ROOT.__targets || {};
-ROOT.__targets['Aufgabe1'] = ROOT.__targets['Aufgabe1'] || {};
-ROOT.__targets['Aufgabe1']['graph1'] = f1;
-
-// Ziel registrieren
-window.setTargetFunction('Aufgabe1', 'graph1', f1);
-
-
-window.__boards = window.__boards || {};
-window.__boards['Aufgabe1'] = board;
-
-
-```
-
-</div>
-
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-Ziehe Punkte auf den Graphen der Funktion $f(x) = \dfrac{1}{4}x+2$.
-
-@AutoPunkteGraph(Aufgabe1;graph1;0.03)
-
-</div>
-
-</section>
 
 
 
@@ -1444,7 +1167,6 @@ Ziehe Punkte auf den Graphen der Funktion $f(x) = \dfrac{1}{4}x+2$.
 
 
 
-# Koordinatensysteme - Aufgabe 2 - Punkte und Graphen
 
 
 
@@ -1452,546 +1174,427 @@ Ziehe Punkte auf den Graphen der Funktion $f(x) = \dfrac{1}{4}x+2$.
 
 
 
-<div style="max-width: 1000px;">
 
-``` javascript @JSX.Graph
 
-function __getGridColor(fallback = '#0b5fff') {
-  try {
-    const doc = (window.parent && window.parent.document) ? window.parent.document : document;
-    const win = (window.parent && window.parent.getComputedStyle) ? window.parent : window;
 
-    // 1) Wenn du später mal --grid-color nutzt, wird das automatisch bevorzugt
-    const v = win.getComputedStyle(doc.documentElement).getPropertyValue('--grid-color').trim();
-    if (v) return v;
 
-    // 2) Sonst Button-Farbe nehmen
-    const btn = doc.querySelector('.lia-btn');
-    if (btn) {
-      const cs = win.getComputedStyle(btn);
-      const bg = cs.backgroundColor;
-      if (bg && bg !== 'rgba(0, 0, 0, 0)') return bg;
-      if (cs.color) return cs.color;
-    }
-  } catch (e) {}
 
-  return fallback;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   DRAGGABLE LINEAR FUNCTIONGRAPH (Translation per Mouse)
+   - Klick nahe am Graphen -> ziehen
+   - Gleichung wird aktualisiert
+   - Robust: DOM Pointer-Events im CAPTURE, Pan wird sauber blockiert
+   ========================================================= */
+
+// Basisfunktion: y = m x + b0
+const m  = 1.25;
+const b0 = 0.5;
+
+// Verschiebung (in Weltkoordinaten)
+let dx = 0;
+let dy = 0;
+
+// Sichtfenster-Grenzen dynamisch
+const xmin = () => board.getBoundingBox()[0];
+const xmax = () => board.getBoundingBox()[2];
+
+// verschobene Funktion: y = m(x - dx) + b0 + dy
+function fShift(x) {
+  return m * (x - dx) + b0 + dy;
 }
 
-// Board-Grid-Farbe live nachziehen
-function __watchGridColor(board, intervalMs = 400) {
-  let last = '';
+// Graph erzeugen (dynamischer Bereich)
+// WICHTIG: highlight AUS, damit beim Hover nichts "explodiert"
+const graph = board.create('functiongraph', [fShift, xmin, xmax], {
+  strokeWidth: 3,
+  strokeColor: '#b41f65',
+  doAdvancedPlot: false,
+  numberPointsLow: 20,
+  numberPointsHigh: 100,
+  highlight: false
+});
 
-  setInterval(() => {
-    const c = __getGridColor('#0b5fff');
-    if (!c || c === last) return;
-    last = c;
-
-    // 1) Optionen setzen (für zukünftige Rebuilds)
-    try {
-      if (board && board.options && board.options.grid) {
-        if (board.options.grid.major) board.options.grid.major.strokeColor = c;
-        if (board.options.grid.minor) board.options.grid.minor.strokeColor = c;
-      }
-    } catch (e) {}
-
-    // 2) EXISTIERENDE Grid-Objekte einfärben (entscheidend!)
-    try {
-      if (board && board.grids && board.grids.length) {
-        board.grids.forEach(g => {
-          if (g && typeof g.setAttribute === 'function') {
-            g.setAttribute({ strokeColor: c });
-          }
-        });
-      }
-
-      if (board && board.objectsList && board.objectsList.length) {
-        board.objectsList.forEach(o => {
-          if (!o || typeof o.setAttribute !== 'function') return;
-          if (o.elType === 'grid' || (typeof JXG !== 'undefined' && o.type === JXG.OBJECT_TYPE_GRID)) {
-            o.setAttribute({ strokeColor: c });
-          }
-        });
-      }
-    } catch (e) {}
-
-    // 3) Redraw
-    try {
-      if (board && typeof board.fullUpdate === 'function') board.fullUpdate();
-      else if (board) board.update();
-    } catch (e) {}
-
-  }, intervalMs);
+// Hilfsfunktion: aktuelle Gleichung (nach Translation)
+// f(x) = m x + (b0 + dy - m dx)
+function currentIntercept() {
+  return b0 + dy - m * dx;
 }
 
-const btnColor = __getGridColor('#0b5fff');
-
-// Board HIER DIE KOORDINATEN
-// Board HIER DIE KOORDINATEN
-// Board HIER DIE KOORDINATEN
-// Board HIER DIE KOORDINATEN
-// Board HIER DIE KOORDINATEN
-// Board HIER DIE KOORDINATEN
-// Board HIER DIE KOORDINATEN
-// Board HIER DIE KOORDINATEN
-// Board HIER DIE KOORDINATEN
-
-board = JXG.JSXGraph.initBoard(jxgbox, {
-  axis: true,
-  showNavigation: true,
-  showCopyright: false,
-  boundingbox: [-1, 5, 10, -1],
-  keepaspectratio: true,
-
-  zoom: {
-    enabled: true,
-    wheel: true,
-    needShift: false,
-    factorX: 1.15,
-    factorY: 1.15
-  },
-
-  pan: {
-    enabled: true,
-    needShift: false,
-    needTwoFingers: false
-  },
-
-  defaultAxes: {
-    x: {
-      strokeColor: 'black',
-      strokeWidth: 2.5,
-      ticks: {
-        insertTicks: false,
-        ticksDistance: 1,
-        strokeWidth: 3,
-        minorTicks: 9,         
-        drawLabels: true,
-        label: { fontSize: 18 }
-      }
-    },
-    y: {
-      strokeColor: 'black',
-      strokeWidth: 2.5,
-      ticks: {
-        insertTicks: false,
-        ticksDistance: 1,
-        strokeWidth: 3,
-        minorTicks: 9,        
-        drawLabels: true,
-        label: { fontSize: 18 }
-      }
-    }
-  },
-
-  grid: {
-    majorStep: 'auto',                
-    minorElements: 'auto',          
-    includeBoundaries: true,
-    forceSquare: true,
-
-    major: {
-      face: 'line',
-      strokeColor: btnColor,
-      strokeWidth: 1.5,          
-      dash: 0,
-      drawZero: true
-    },
-    minor: {
-      face: 'line',
-      strokeColor: btnColor,
-      strokeWidth: 1,         
-      dash: 1,
-      drawZero: false             // <<< spart Linien
-    }
-  }
-});
+function __fmtDE(num, digits = 3) {
+  const v = Math.round(num * Math.pow(10, digits)) / Math.pow(10, digits);
+  return new Intl.NumberFormat('de-DE', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: digits
+  }).format(v);
+}
 
 
 
 
-(function enableAdaptiveMinorGrid(board) {
-  if (!board) return;
-
-  function pxPerUnitX() {
-    const bb = board.getBoundingBox();        // [xmin, ymax, xmax, ymin]
-    const xmin = bb[0], xmax = bb[2];
-    const w = board.canvasWidth || board.canvasWidth || board.containerObj.clientWidth;
-    return w / Math.max(1e-9, (xmax - xmin));
-  }
-
-  let lastShow = null;
-
-  function update() {
-    const ppu = pxPerUnitX();
-
-    // Schwelle: unter 55px pro Einheit -> minor off
-    const showMinor = ppu >= 100;
-
-    if (showMinor === lastShow) return;
-    lastShow = showMinor;
-
-    // Setze Minor-Gitterlinien effektiv unsichtbar oder sichtbar
-    try {
-      if (board.grids && board.grids.length) {
-        board.grids.forEach(g => {
-          if (!g || typeof g.setAttribute !== 'function') return;
-
-          // Heuristik: Minor-Grids sind oft "dashed" oder strokeWidth==0.8 etc.
-          // Wir schalten alle grids mit dash==1 (dein Minor) aus/an:
-          const isMinor = (g.visProp && (g.visProp.dash == 1 || g.visProp.strokeWidth <= 1));
-          if (isMinor) g.setAttribute({ visible: showMinor });
-        });
-      }
-    } catch (e) {}
-
-    board.update();
-  }
-
-  // Beim Zoomen/Pannen triggern
-  board.on('boundingbox', update);
-
-  // initial
-  update();
-})(board);
 
 
-// =========================================================
-// Board ins gemeinsame ROOT registrieren
-// =========================================================
-const ROOT = (function () {
-  try { let w = window; while (w.parent && w.parent !== w) w = w.parent; return w; }
-  catch (e) { return window; }
-})();
+/* =========================================================
+   CHECKBOX-OVERLAY: Funktionsterm anzeigen + dynamischer Term
+   (robust: keine getElementById-IDs, keine Abhängigkeit von jxgbox)
+   ========================================================= */
 
-ROOT.__boards = ROOT.__boards || {};
-ROOT.__boards['Aufgabe2'] = board;
+let __eqWrap = null;
+let __eqCb   = null;
+let __eqLbl  = null;
+let __eqSpan = null;
 
-// Pending Points nachziehen (falls vorher geklickt)
-ROOT.__pendingPointSpecs = ROOT.__pendingPointSpecs || [];
-ROOT.__pendingPointSpecs = ROOT.__pendingPointSpecs.filter(spec => {
-  const parts = String(spec).split(';').map(s => String(s).trim());
-  const bid = parts[0], name = parts[1];
-  if (bid === 'Aufgabe2' && name) {
-    // ensurePoint liegt im ROOT? -> über ROOT.window? meistens im gleichen Top-Level verfügbar.
-    // Sicher: direkt im ROOT aufrufen, falls vorhanden.
-    if (ROOT.ensurePoint) ROOT.ensurePoint(bid, name);
-    else if (window.ensurePoint) window.ensurePoint(bid, name);
-    return false;
-  }
-  return true;
-});
+// DE-Format
+function __fmtDE(num, digits = 3) {
+  const v = Math.round(num * Math.pow(10, digits)) / Math.pow(10, digits);
+  return new Intl.NumberFormat('de-DE', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: digits
+  }).format(v);
+}
 
+function __buildEqText() {
+  const b = currentIntercept();        // nutzt m,b0,dx,dy
+  const mDE = __fmtDE(m, 3);
+  const bDE = __fmtDE(Math.abs(b), 3);
+  const sign = (b >= 0) ? '+ ' : '- ';
+  return `f(x) = ${mDE}x ${sign}${bDE}`;
+}
 
-function __isDarkTheme() {
+function __applyEqTheme() {
+  if (!__eqWrap) return;
+
+  const isDark = __isDarkTheme();
+  const col = isDark ? '#fff' : '#000';
+  const bg  = isDark ? 'rgba(0,0,0,0.65)' : 'rgba(255,255,255,0.85)';
+  const brd = isDark ? '1px solid rgba(255,255,255,0.25)' : '1px solid rgba(0,0,0,0.20)';
+
+  __eqWrap.style.color = col;
+  __eqWrap.style.background = bg;
+  __eqWrap.style.border = brd;
+  __eqWrap.style.backdropFilter = 'blur(2px)';
+
+  if (__eqLbl)  __eqLbl.style.color  = col;
+  if (__eqSpan) __eqSpan.style.color = col;
+
+  if (__eqCb) __eqCb.style.accentColor = col;
+}
+
+function __updateEqUI() {
+  if (!__eqSpan) return;
   try {
-    const doc = (window.parent && window.parent.document) ? window.parent.document : document;
-    const win = (window.parent && window.parent.getComputedStyle) ? window.parent : window;
-
-    // bevorzugt: body, sonst documentElement
-    const el = doc.body || doc.documentElement;
-    const bg = win.getComputedStyle(el).backgroundColor;
-
-    // bg ist typischerweise "rgb(r,g,b)" oder "rgba(r,g,b,a)"
-    const m = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
-    if (!m) return false;
-
-    const r = parseInt(m[1], 10);
-    const g = parseInt(m[2], 10);
-    const b = parseInt(m[3], 10);
-
-    // relative Luminanz (0..255) – Schwelle ~ 128
-    const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-    return lum < 128;
+    __eqSpan.textContent = __buildEqText();
   } catch (e) {
-    return false;
+    __eqSpan.textContent = 'f(x) = …';
   }
 }
 
+function __syncEqToggle() {
+  if (!__eqCb || !__eqLbl || !__eqSpan) return;
 
-function __applyNavColors(board) {
-  if (!board || !board.containerObj) return;
+  __updateEqUI();
 
-  // JSXGraph legt die Navigation innerhalb des Board-Containers an
-  const nav = board.containerObj.querySelector('.JXG_navigation');
-  if (!nav) return;
-
-  const isDark = __isDarkTheme();
-  const col = isDark ? '#fff' : '#000';
-
-  // Navigation-Grundstil
-  nav.style.color = col;
-  nav.style.background = 'transparent';
-
-  // Links/Buttons/Spans explizit einfärben
-  nav.querySelectorAll('a, button, span').forEach(el => {
-    el.style.color = col;
-    el.style.borderColor = col;
-    el.style.background = 'transparent';
-    el.style.boxShadow = 'none';
-  });
-
-  // SVG-Icons (falls JSXGraph SVG nutzt)
-  nav.querySelectorAll('svg, svg *').forEach(el => {
-    el.style.fill = col;
-    el.style.stroke = col;
-  });
-
-  // IMG-Icons (falls JSXGraph Bilder nutzt)
-  nav.querySelectorAll('img').forEach(img => {
-    img.style.filter = isDark ? 'invert(1)' : 'none';
-  });
-}
-
-// einmal anwenden (nach initBoard)
-__applyNavColors(board);
-
-// bei Mode-Wechsel nachziehen
-try {
-  const mq = window.matchMedia('(prefers-color-scheme: dark)');
-  if (mq && typeof mq.addEventListener === 'function') {
-    mq.addEventListener('change', () => __applyNavColors(board));
-  } else if (mq && typeof mq.addListener === 'function') {
-    mq.addListener(() => __applyNavColors(board));
+  if (__eqCb.checked) {
+    __eqLbl.style.display  = 'none';
+    __eqSpan.style.display = '';
+  } else {
+    __eqLbl.style.display  = '';
+    __eqSpan.style.display = 'none';
   }
-} catch (e) {}
-
-
-function __applyAxisColors(board) {
-  if (!board) return;
-
-  const isDark = __isDarkTheme();
-  const col = isDark ? '#fff' : '#000';
-
-  // 0) WICHTIG: Defaults für zukünftig neu erzeugte Tick-Labels setzen
-  // (damit beim Rauszoomen neue Zahlen direkt korrekt gefärbt werden)
-  try {
-    board.options = board.options || {};
-    board.options.defaultAxes = board.options.defaultAxes || {};
-    ['x', 'y'].forEach(axKey => {
-      board.options.defaultAxes[axKey] = board.options.defaultAxes[axKey] || {};
-      board.options.defaultAxes[axKey].ticks = board.options.defaultAxes[axKey].ticks || {};
-      board.options.defaultAxes[axKey].ticks.label = board.options.defaultAxes[axKey].ticks.label || {};
-
-      board.options.defaultAxes[axKey].strokeColor = col;
-      board.options.defaultAxes[axKey].ticks.strokeColor = col;
-
-      // Diese beiden sind für die Ziffern entscheidend:
-      board.options.defaultAxes[axKey].ticks.label.strokeColor = col;
-      board.options.defaultAxes[axKey].ticks.label.fillColor   = col;
-    });
-  } catch (e) {}
-
-  // Helfer: beliebige JSXGraph-Objekte einfärben
-  const paint = (obj) => {
-    if (!obj || typeof obj.setAttribute !== 'function') return;
-    try {
-      obj.setAttribute({
-        strokeColor: col,
-        highlightStrokeColor: col,
-        fillColor: col,
-        highlightFillColor: col
-      });
-    } catch (e) {}
-  };
-
-  // 1) Achsen + Ticks + Tick-Labels (existierende)
-  try {
-    if (board.defaultAxes) {
-      paint(board.defaultAxes.x);
-      paint(board.defaultAxes.y);
-
-      const paintTicks = (axis) => {
-        if (!axis) return;
-
-        // Achsen-VisProps (wirkt oft auf neu erzeugte Ticks/Labels)
-        try {
-          axis.setAttribute({ strokeColor: col, highlightStrokeColor: col });
-        } catch (e) {}
-
-        // Standard-Ticks (häufig axis.defaultTicks)
-        if (axis.defaultTicks) {
-          paint(axis.defaultTicks);
-
-          // Label-Default am Tick-Objekt selbst nachziehen
-          try {
-            axis.defaultTicks.setAttribute({
-              strokeColor: col,
-              highlightStrokeColor: col
-            });
-            if (axis.defaultTicks.visProp && axis.defaultTicks.visProp.label) {
-              axis.defaultTicks.visProp.label.strokeColor = col;
-              axis.defaultTicks.visProp.label.fillColor   = col;
-            }
-          } catch (e) {}
-
-          if (axis.defaultTicks.labels && axis.defaultTicks.labels.length) {
-            axis.defaultTicks.labels.forEach(paint);
-          }
-        }
-
-        // Manche Versionen: axis.ticks als Array
-        if (axis.ticks && axis.ticks.length) {
-          axis.ticks.forEach(t => {
-            paint(t);
-            // Tick-Label-Defaults am Tick nachziehen
-            try {
-              if (t.visProp && t.visProp.label) {
-                t.visProp.label.strokeColor = col;
-                t.visProp.label.fillColor   = col;
-              }
-            } catch (e) {}
-            if (t.labels && t.labels.length) t.labels.forEach(paint);
-          });
-        }
-
-        // Manche Versionen: axis.getTicks()
-        if (typeof axis.getTicks === 'function') {
-          (axis.getTicks() || []).forEach(t => {
-            paint(t);
-            try {
-              if (t.visProp && t.visProp.label) {
-                t.visProp.label.strokeColor = col;
-                t.visProp.label.fillColor   = col;
-              }
-            } catch (e) {}
-            if (t.labels && t.labels.length) t.labels.forEach(paint);
-          });
-        }
-      };
-
-      paintTicks(board.defaultAxes.x);
-      paintTicks(board.defaultAxes.y);
-    }
-  } catch (e) {}
-
-  // 2) Fallback: Tick-Labels werden je nach Version als Textobjekte geführt.
-  // Wir färben NUR Texte, die sehr wahrscheinlich Tick-Labels sind, um nicht alle Texte (z.B. Punktnamen) zu erwischen.
-  try {
-    if (board.objectsList && board.objectsList.length) {
-      board.objectsList.forEach(o => {
-        if (!o || o.elType !== 'text') return;
-
-        // Heuristiken für Tick-Labels:
-        // - Tick-Labels sind fast immer "fixed"
-        // - und haben häufig sehr kurze Inhalte (Zahlen)
-        // - und sind nicht "label" eines beliebigen Punktes (die sind oft an ein parent gekoppelt)
-        const txt = (typeof o.getText === 'function') ? String(o.getText()) : (o.plaintext ? String(o.plaintext) : '');
-        const looksNumeric = /^[\s\-+]*\d+([.,]\d+)?\s*$/.test(txt);
-
-        const isFixed = (o.visProp && (o.visProp.fixed === true || o.visProp.isfixed === true));
-        if (looksNumeric && isFixed) paint(o);
-      });
-    }
-  } catch (e) {}
-
-  // 3) Redraw
-  try {
-    if (typeof board.fullUpdate === 'function') board.fullUpdate();
-    else board.update();
-  } catch (e) {}
 }
 
-// einmal anwenden
-__applyAxisColors(board);
-
-// NEU: bei jedem Zoom/Pan (boundingbox ändert sich) Achsen/Ticks/Labels nachfärben
-try {
-  board.on('boundingbox', () => __applyAxisColors(board));
-} catch (e) {}
-
-// Optional (aber sinnvoll): auch nach Board-Resize einmal nachziehen
-try {
-  board.on('resize', () => __applyAxisColors(board));
-} catch (e) {}
-
-
-// einmal anwenden
-__applyAxisColors(board);
-
-
-
-
-function __applyBoardFrame(board) {
-  if (!board || !board.containerObj) return;
-
-  const isDark = __isDarkTheme();
-  const col = isDark ? '#fff' : '#000';
-
-  // Rahmen um das Koordinatensystem
-  board.containerObj.style.border = `2px solid ${col}`;
-  board.containerObj.style.borderRadius = '8px';     // optional
-  board.containerObj.style.boxSizing = 'border-box';
+// Klicks im Overlay sollen niemals JSXGraph-Drag/Pan triggern
+function __shieldFromJXG(e) {
+  // KEIN preventDefault für pointer/mouse, sonst toggelt Checkbox je nach Browser/Setup nicht sauber
+  e.stopPropagation();
+  if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
 }
 
-// einmal anwenden
-__applyBoardFrame(board);
+function __ensureEqUI() {
+  if (__eqWrap || !board || !board.containerObj) return;
 
-// bei Mode-Wechsel nachziehen (gleiches Event wie Navigation nutzen)
-try {
-  const mq = window.matchMedia('(prefers-color-scheme: dark)');
-  const handler = () => {
-    __applyNavColors(board);
-    __applyAxisColors(board);
-  };
+  // Container positionierbar machen
+  try {
+    const pos = board.containerObj.style.position;
+    if (!pos || pos === 'static') board.containerObj.style.position = 'relative';
+  } catch (e) {}
 
-  if (mq && typeof mq.addEventListener === 'function') mq.addEventListener('change', handler);
-  else if (mq && typeof mq.addListener === 'function') mq.addListener(handler);
-} catch (e) {}
+  __eqWrap = document.createElement('div');
+  __eqWrap.style.position = 'absolute';
+  __eqWrap.style.left = '10px';
+  __eqWrap.style.top  = '10px';
+  __eqWrap.style.zIndex = '9999';
+  __eqWrap.style.display = 'flex';
+  __eqWrap.style.alignItems = 'center';
+  __eqWrap.style.gap = '10px';
+  __eqWrap.style.padding = '6px 10px';
+  __eqWrap.style.borderRadius = '8px';
+  __eqWrap.style.userSelect = 'none';
+  __eqWrap.style.pointerEvents = 'auto';
+  __eqWrap.style.fontSize = '18px';
+  __eqWrap.style.lineHeight = '1.2';
 
+  __eqCb = document.createElement('input');
+  __eqCb.type = 'checkbox';
+  __eqCb.checked = false;
 
+  __eqLbl = document.createElement('span');
+  __eqLbl.textContent = 'Funktionsterm anzeigen';
+  __eqLbl.style.cursor = 'pointer';
+  __eqLbl.style.fontWeight = '600';
 
-try {
-  if (board && board.grids && board.grids.length) {
-    board.grids.forEach(g => g && g.setAttribute && g.setAttribute({ strokeColor: btnColor }));
-  }
-} catch (e) {}
+  // Label klickbar machen (ohne for/id)
+  __eqLbl.addEventListener('click', (e) => {
+    __shieldFromJXG(e);
+    __eqCb.checked = !__eqCb.checked;
+    __syncEqToggle();
+  }, { capture: true });
 
+  __eqSpan = document.createElement('span');
+  __eqSpan.style.whiteSpace = 'nowrap';
+  __eqSpan.style.fontWeight = '700';
+  __eqSpan.style.display = 'none';
 
-if (board && board.containerObj) {
-  board.containerObj.style.background = 'transparent';
+  __eqWrap.appendChild(__eqCb);
+  __eqWrap.appendChild(__eqLbl);
+  __eqWrap.appendChild(__eqSpan);
+
+  board.containerObj.appendChild(__eqWrap);
+
+  // Checkbox-Events
+  __eqCb.addEventListener('change', (e) => { __shieldFromJXG(e); __syncEqToggle(); }, { capture: true });
+  __eqCb.addEventListener('click',  (e) => { __shieldFromJXG(e); __syncEqToggle(); }, { capture: true });
+
+  // Alles im Overlay gegen JSXGraph abschirmen
+  [
+    'pointerdown','pointerup','pointermove','pointercancel',
+    'mousedown','mouseup','mousemove','touchstart','touchend','touchmove'
+  ].forEach(type => __eqWrap.addEventListener(type, __shieldFromJXG, { capture: true, passive: true }));
+
+  // Wheel: Zoom blocken, wenn Maus über dem Overlay ist
+  __eqWrap.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    __shieldFromJXG(e);
+  }, { capture: true, passive: false });
+
+  __applyEqTheme();
+  __syncEqToggle();
 }
 
-let __lastDark = null;
+// initial
+__ensureEqUI();
 
+// Theme regelmäßig nachziehen
+let __lastEqDark = null;
 setInterval(() => {
-  const nowDark = __isDarkTheme();
-  if (nowDark === __lastDark) return;
-  __lastDark = nowDark;
+  const d = __isDarkTheme();
+  if (d === __lastEqDark) return;
+  __lastEqDark = d;
+  __applyEqTheme();
+}, 250);
 
-  __applyNavColors(board);
-  __applyAxisColors(board);
-  __applyBoardFrame(board);
-
-  try { window.__recolorNeutralAutoLabels && window.__recolorNeutralAutoLabels(); } catch (e) {}
-}, 300);
-
-
-// Grid-Farbe automatisch an Button-Farbe koppeln
-__watchGridColor(board, 400);
+/* =========================================================
+   ENDE CHECKBOX-OVERLAY
+   ========================================================= */
 
 
-// Beispiel-Zielkurve: y = 0.5*x - 1
-const f1 = (x) => 0.5*x - 1;
-const f2 = x => 0.5*x + 1;
-const f3 = x => 2*x - 3;
-
-ROOT.__targets = ROOT.__targets || {};
-ROOT.__targets['Aufgabe2'] = ROOT.__targets['Aufgabe2'] || {};
-ROOT.__targets['Aufgabe2']['graph1'] = f1;
-ROOT.__targets['Aufgabe2']['graph2'] = f2;
-ROOT.__targets['Aufgabe2']['graph3'] = f3;
-
-// Ziel registrieren
-window.setTargetFunction('Aufgabe2', 'graph1', f1);
-window.setTargetFunction('Aufgabe2', 'graph2', f2);
-window.setTargetFunction('Aufgabe2', 'graph3', f3);
+// =========================================================
+// WICHTIG: Guard für Drag-Mechanik (damit Overlay-Klicks nicht ziehen)
+// =========================================================
+function __isEqUIEvent(evt) {
+  return !!(
+    __eqWrap &&
+    evt &&
+    evt.target &&
+    (__eqWrap === evt.target || __eqWrap.contains(evt.target))
+  );
+}
 
 
 
 
-window.__boards = window.__boards || {};
-window.__boards['Aufgabe2'] = board;
+
+
+/* ---------------------------------------------------------
+   Drag-Mechanik: DOM Pointer-Events (CAPTURE!)
+   --------------------------------------------------------- */
+
+let dragging = false;
+let startMouse = null;  // [x,y] in Weltkoordinaten
+let startDx = 0;
+let startDy = 0;
+
+// Pan-Zustand merken
+let panWasEnabled = null;
+
+// Container vorbereiten (Browser-Gesten aus)
+if (board.containerObj) {
+  board.containerObj.style.touchAction = 'none';
+  board.containerObj.style.userSelect  = 'none';
+  board.containerObj.style.cursor      = 'default';
+}
+
+// Event -> Userkoordinaten
+function usrCoordsDOM(evt) {
+  if (typeof board.getUsrCoordsOfMouse === 'function') return board.getUsrCoordsOfMouse(evt);
+
+  const rect = board.containerObj.getBoundingClientRect();
+  const px = evt.clientX - rect.left;
+  const py = evt.clientY - rect.top;
+
+  const bb = board.getBoundingBox(); // [xmin, ymax, xmax, ymin]
+  const x = bb[0] + (px / rect.width)  * (bb[2] - bb[0]);
+  const y = bb[1] - (py / rect.height) * (bb[1] - bb[3]);
+  return [x, y];
+}
+
+// Hit-Test: nahe am Graphen?
+function hitTest(p) {
+  const x = p[0], y = p[1];
+  if (!isFinite(x) || !isFinite(y)) return false;
+
+  const y0 = fShift(x);
+
+  const bb = board.getBoundingBox();
+  const ySpan = Math.max(1e-9, (bb[1] - bb[3]));
+  const eps = ySpan / 45; // greifbarer als vorher
+
+  return Math.abs(y - y0) <= eps;
+}
+
+// throttling gegen Lag
+let rafPending = false;
+function requestUpdate() {
+  if (rafPending) return;
+  rafPending = true;
+  requestAnimationFrame(() => {
+    rafPending = false;
+    board.update();
+    __updateEqUI();
+  });
+}
+
+// Pointer capture
+function setCapture(evt) {
+  try {
+    if (board.containerObj?.setPointerCapture && evt.pointerId != null) {
+      board.containerObj.setPointerCapture(evt.pointerId);
+    }
+  } catch (e) {}
+}
+function releaseCapture(evt) {
+  try {
+    if (board.containerObj?.releasePointerCapture && evt.pointerId != null) {
+      board.containerObj.releasePointerCapture(evt.pointerId);
+    }
+  } catch (e) {}
+}
+
+// Pan wirklich deaktivieren (hart)
+function setPanEnabled(enabled) {
+  try {
+    // JSXGraph akzeptiert setAttribute
+    board.setAttribute({ pan: { enabled: !!enabled } });
+  } catch (e) {}
+  try {
+    // Fallback: direkt in attr
+    if (board.attr && board.attr.pan) board.attr.pan.enabled = !!enabled;
+  } catch (e) {}
+}
+
+// START
+function onPointerDown(evt) {
+  if (__isEqUIEvent(evt)) return; 
+  if (evt.pointerType === 'mouse' && evt.button !== 0) return;
+
+  const p = usrCoordsDOM(evt);
+  if (!hitTest(p)) return;
+
+  dragging = true;
+  startMouse = p;
+  startDx = dx;
+  startDy = dy;
+
+  // Pan aus (und Zustand merken)
+  try {
+    panWasEnabled = !!(board.attr && board.attr.pan && board.attr.pan.enabled);
+  } catch (e) { panWasEnabled = null; }
+  setPanEnabled(false);
+
+  if (board.containerObj) board.containerObj.style.cursor = 'grabbing';
+
+  setCapture(evt);
+
+  // Entscheidend: JSXGraph-Handler unterbinden
+  evt.preventDefault();
+  evt.stopPropagation();
+  if (typeof evt.stopImmediatePropagation === 'function') evt.stopImmediatePropagation();
+}
+
+// MOVE
+function onPointerMove(evt) {
+  if (!dragging) return;
+
+  const p = usrCoordsDOM(evt);
+  if (!isFinite(p[0]) || !isFinite(p[1])) return;
+
+  dx = startDx + (p[0] - startMouse[0]);
+  dy = startDy + (p[1] - startMouse[1]);
+
+  requestUpdate();
+
+  evt.preventDefault();
+  evt.stopPropagation();
+  if (typeof evt.stopImmediatePropagation === 'function') evt.stopImmediatePropagation();
+}
+
+// END
+function endDrag(evt) {
+  if (!dragging) return;
+
+  dragging = false;
+  startMouse = null;
+
+  // Pan sicher zurück
+  if (panWasEnabled !== null) setPanEnabled(panWasEnabled);
+  panWasEnabled = null;
+
+  if (board.containerObj) board.containerObj.style.cursor = 'default';
+
+  releaseCapture(evt);
+
+  if (evt) {
+    evt.preventDefault();
+    evt.stopPropagation();
+    if (typeof evt.stopImmediatePropagation === 'function') evt.stopImmediatePropagation();
+  }
+}
+
+// Listener: CAPTURE-PHASE, damit wir VOR JSXGraph drankommen
+if (board.containerObj) {
+  board.containerObj.addEventListener('pointerdown', onPointerDown, { capture: true, passive: false });
+  board.containerObj.addEventListener('pointermove', onPointerMove, { capture: true, passive: false });
+  board.containerObj.addEventListener('pointerup', endDrag,        { capture: true, passive: false });
+  board.containerObj.addEventListener('pointercancel', endDrag,    { capture: true, passive: false });
+}
 
 
 ```
@@ -2001,39 +1604,90 @@ window.__boards['Aufgabe2'] = board;
 
 
 
-<section class="flex-container">
-
-<div class="flex-child">
-
-Ziehe den Punkt $Q$ irgendwo auf den Graphen der Funktion $f(x)=\dfrac{1}{2} x - 1$
-
-@ErzeugePunktGraph(Aufgabe2;Q;graph1;0.03)
-
-</div>
-
-<div class="flex-child">
-
-Ziehe den Punkt $Q$ irgendwo auf den Graphen der Funktion $f(x)=\dfrac{1}{2} x + 1$
-
-@ErzeugePunktGraph(Aufgabe2;A;graph2;0.03)
-
-</div>
-
-<div class="flex-child">
-
-Ziehe den Punkt $Q$ irgendwo auf den Graphen der Funktion $f(x)=2 x - 3$
-
-@ErzeugePunktGraph(Aufgabe2;B;graph3;0.03)
-
-</div>
-
-</section>
 
 
 
 
-# Koordinatensysteme - Aufgabe 3 - Punkte abfragen
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Koordinatensysteme - Aufgabe 1 - Graph bewegen - Gerade / lineare Funktion
+
+
+
+Bitte einmal die Farbthemes und zwischen Lightmode und Darkmode wechseln.
 
 
 
@@ -2118,8 +1772,9 @@ const btnColor = __getGridColor('#0b5fff');
 // Board HIER DIE KOORDINATEN
 // Board HIER DIE KOORDINATEN
 // Board HIER DIE KOORDINATEN
-
-board = JXG.JSXGraph.initBoard(jxgbox, {
+// Board HIER DIE KOORDINATEN
+// Board HIER DIE KOORDINATEN
+var board = JXG.JSXGraph.initBoard(jxgbox, {
   axis: true,
   showNavigation: true,
   showCopyright: false,
@@ -2248,22 +1903,39 @@ const ROOT = (function () {
 })();
 
 ROOT.__boards = ROOT.__boards || {};
-ROOT.__boards['Aufgabe3'] = board;
+ROOT.__boards['Aufgabe1'] = board;
 
 // Pending Points nachziehen (falls vorher geklickt)
 ROOT.__pendingPointSpecs = ROOT.__pendingPointSpecs || [];
 ROOT.__pendingPointSpecs = ROOT.__pendingPointSpecs.filter(spec => {
   const parts = String(spec).split(';').map(s => String(s).trim());
-  const bid = parts[0], name = parts[1];
-  if (bid === 'Aufgabe3' && name) {
-    // ensurePoint liegt im ROOT? -> über ROOT.window? meistens im gleichen Top-Level verfügbar.
-    // Sicher: direkt im ROOT aufrufen, falls vorhanden.
+  const bid  = parts[0];
+  const name = parts[1];
+
+  if (bid === 'Aufgabe1' && name) {
     if (ROOT.ensurePoint) ROOT.ensurePoint(bid, name);
     else if (window.ensurePoint) window.ensurePoint(bid, name);
-    return false;
+    return false; // aus Queue entfernen
   }
   return true;
 });
+
+
+; (function () {
+  var r;
+  try { r = (typeof ROOT !== 'undefined') ? ROOT : null; } catch (e) { r = null; }
+  if (!r || typeof r.flushPendingAutoAdds !== 'function') return;
+
+  // mini-delay, damit JSXGraph wirklich vollständig steht
+  setTimeout(function () {
+    try {
+      r.flushPendingAutoAdds('Aufgabe1');
+    } catch (e) {
+      // bewusst still
+    }
+  }, 0);
+})();
+
 
 
 function __isDarkTheme() {
@@ -2290,6 +1962,20 @@ function __isDarkTheme() {
     return false;
   }
 }
+
+
+function __neutralAutoColor() {
+  return __isDarkTheme() ? '#fff' : '#000';
+}
+
+function __recolorNeutralAutoLabels() {
+  const col = __neutralAutoColor();
+  document.querySelectorAll('span.autoNameNeutral').forEach(el => {
+    // Nur neutrale Labels anfassen (nicht grün/rot aus dem Check)
+    el.style.color = col;
+  });
+}
+
 
 
 function __applyNavColors(board) {
@@ -2489,10 +2175,9 @@ try {
 } catch (e) {}
 
 
+
 // einmal anwenden
 __applyAxisColors(board);
-
-
 
 
 function __applyBoardFrame(board) {
@@ -2509,6 +2194,8 @@ function __applyBoardFrame(board) {
 
 // einmal anwenden
 __applyBoardFrame(board);
+
+
 
 // bei Mode-Wechsel nachziehen (gleiches Event wie Navigation nutzen)
 try {
@@ -2550,78 +2237,417 @@ setInterval(() => {
 }, 300);
 
 
+
 // Grid-Farbe automatisch an Button-Farbe koppeln
 __watchGridColor(board, 400);
 
 
 
-window.__boards = window.__boards || {};
-window.__boards['Aufgabe3'] = board;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   DRAGGABLE PARABOLA (Translation per Mouse)
+   - Klick nahe an der Parabel -> ziehen
+   - Anzeige: f(x) = a(x-h)^2 + k (Scheitelpunktform)
+   - Overlay: Checkbox "Funktionsterm anzeigen"
+   - Robust: Overlay-Klicks blockieren Drag/Pan, Pan wird beim Drag deaktiviert
+   ========================================================= */
+
+// Basisparabel: y = a(x - h0)^2 + k0
+// (du kannst a,h0,k0 frei wählen)
+const a  = 1.0;
+const h0 = 2.0;
+const k0 = 1.0;
+
+// Verschiebung (in Weltkoordinaten)
+let dx = 0;
+let dy = 0;
+
+// Sichtfenster-Grenzen dynamisch
+const xmin = () => board.getBoundingBox()[0];
+const xmax = () => board.getBoundingBox()[2];
+
+// verschobene Parabel: y = a(x - (h0+dx))^2 + (k0+dy)
+function fShift(x) {
+  const h = h0 + dx;
+  const k = k0 + dy;
+  return a * Math.pow(x - h, 2) + k;
+}
+
+// Graph erzeugen (dynamischer Bereich)
+const graph = board.create('functiongraph', [fShift, xmin, xmax], {
+  strokeWidth: 3,
+  strokeColor: '#b41f65',
+  doAdvancedPlot: false,
+  numberPointsLow: 30,
+  numberPointsHigh: 120,
+  highlight: false
+});
+
+// DE-Format
+function __fmtDE(num, digits = 3) {
+  const v = Math.round(num * Math.pow(10, digits)) / Math.pow(10, digits);
+  return new Intl.NumberFormat('de-DE', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: digits
+  }).format(v);
+}
+
+// Gleichungstext (Scheitelpunktform) bauen
+function __buildEqText() {
+  const h = h0 + dx;
+  const k = k0 + dy;
+
+  const aDE = __fmtDE(a, 3);
+  const hDE = __fmtDE(Math.abs(h), 3);
+  const kDE = __fmtDE(Math.abs(k), 3);
+
+  // (x - h) bzw (x + h)
+  const signH = (h >= 0) ? '- ' : '+ ';
+  const signK = (k >= 0) ? '+ ' : '- ';
+
+  return `f(x) = ${aDE}(x ${signH}${hDE})² ${signK}${kDE}`;
+}
+
+/* =========================================================
+   CHECKBOX-OVERLAY: Funktionsterm anzeigen + dynamischer Term
+   (robust: keine IDs, keine Abhängigkeit von jxgbox)
+   ========================================================= */
+
+let __eqWrap = null;
+let __eqCb   = null;
+let __eqLbl  = null;
+let __eqSpan = null;
+
+function __applyEqTheme() {
+  if (!__eqWrap) return;
+
+  const isDark = __isDarkTheme();
+  const col = isDark ? '#fff' : '#000';
+  const bg  = isDark ? 'rgba(0,0,0,0.65)' : 'rgba(255,255,255,0.85)';
+  const brd = isDark ? '1px solid rgba(255,255,255,0.25)' : '1px solid rgba(0,0,0,0.20)';
+
+  __eqWrap.style.color = col;
+  __eqWrap.style.background = bg;
+  __eqWrap.style.border = brd;
+  __eqWrap.style.backdropFilter = 'blur(2px)';
+
+  if (__eqLbl)  __eqLbl.style.color  = col;
+  if (__eqSpan) __eqSpan.style.color = col;
+
+  if (__eqCb) __eqCb.style.accentColor = col;
+}
+
+function __updateEqUI() {
+  if (!__eqSpan) return;
+  try {
+    __eqSpan.textContent = __buildEqText();
+  } catch (e) {
+    __eqSpan.textContent = 'f(x) = …';
+  }
+}
+
+function __syncEqToggle() {
+  if (!__eqCb || !__eqLbl || !__eqSpan) return;
+
+  __updateEqUI();
+
+  if (__eqCb.checked) {
+    __eqLbl.style.display  = 'none';
+    __eqSpan.style.display = '';
+  } else {
+    __eqLbl.style.display  = '';
+    __eqSpan.style.display = 'none';
+  }
+}
+
+// Klicks im Overlay sollen niemals JSXGraph-Drag/Pan triggern
+function __shieldFromJXG(e) {
+  e.stopPropagation();
+  if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
+}
+
+function __ensureEqUI() {
+  if (__eqWrap || !board || !board.containerObj) return;
+
+  try {
+    const pos = board.containerObj.style.position;
+    if (!pos || pos === 'static') board.containerObj.style.position = 'relative';
+  } catch (e) {}
+
+  __eqWrap = document.createElement('div');
+  __eqWrap.style.position = 'absolute';
+  __eqWrap.style.left = '10px';
+  __eqWrap.style.top  = '10px';
+  __eqWrap.style.zIndex = '9999';
+  __eqWrap.style.display = 'flex';
+  __eqWrap.style.alignItems = 'center';
+  __eqWrap.style.gap = '10px';
+  __eqWrap.style.padding = '6px 10px';
+  __eqWrap.style.borderRadius = '8px';
+  __eqWrap.style.userSelect = 'none';
+  __eqWrap.style.pointerEvents = 'auto';
+  __eqWrap.style.fontSize = '18px';
+  __eqWrap.style.lineHeight = '1.2';
+
+  __eqCb = document.createElement('input');
+  __eqCb.type = 'checkbox';
+  __eqCb.checked = false;
+
+  __eqLbl = document.createElement('span');
+  __eqLbl.textContent = 'Funktionsterm anzeigen';
+  __eqLbl.style.cursor = 'pointer';
+  __eqLbl.style.fontWeight = '600';
+
+  // Label klickbar machen (ohne for/id)
+  __eqLbl.addEventListener('click', (e) => {
+    __shieldFromJXG(e);
+    __eqCb.checked = !__eqCb.checked;
+    __syncEqToggle();
+  }, { capture: true });
+
+  __eqSpan = document.createElement('span');
+  __eqSpan.style.whiteSpace = 'nowrap';
+  __eqSpan.style.fontWeight = '700';
+  __eqSpan.style.display = 'none';
+
+  __eqWrap.appendChild(__eqCb);
+  __eqWrap.appendChild(__eqLbl);
+  __eqWrap.appendChild(__eqSpan);
+
+  board.containerObj.appendChild(__eqWrap);
+
+  __eqCb.addEventListener('change', (e) => { __shieldFromJXG(e); __syncEqToggle(); }, { capture: true });
+  __eqCb.addEventListener('click',  (e) => { __shieldFromJXG(e); __syncEqToggle(); }, { capture: true });
+
+  [
+    'pointerdown','pointerup','pointermove','pointercancel',
+    'mousedown','mouseup','mousemove','touchstart','touchend','touchmove'
+  ].forEach(type => __eqWrap.addEventListener(type, __shieldFromJXG, { capture: true, passive: true }));
+
+  __eqWrap.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    __shieldFromJXG(e);
+  }, { capture: true, passive: false });
+
+  __applyEqTheme();
+  __syncEqToggle();
+}
+
+// initial
+__ensureEqUI();
+
+// Theme regelmäßig nachziehen
+let __lastEqDark = null;
+setInterval(() => {
+  const d = __isDarkTheme();
+  if (d === __lastEqDark) return;
+  __lastEqDark = d;
+  __applyEqTheme();
+}, 250);
+
+/* =========================================================
+   Guard für Drag-Mechanik (damit Overlay-Klicks nicht ziehen)
+   ========================================================= */
+function __isEqUIEvent(evt) {
+  return !!(
+    __eqWrap &&
+    evt &&
+    evt.target &&
+    (__eqWrap === evt.target || __eqWrap.contains(evt.target))
+  );
+}
+
+/* ---------------------------------------------------------
+   Drag-Mechanik: DOM Pointer-Events (CAPTURE!)
+   --------------------------------------------------------- */
+
+let dragging = false;
+let startMouse = null;  // [x,y] in Weltkoordinaten
+let startDx = 0;
+let startDy = 0;
+
+// Pan-Zustand merken
+let panWasEnabled = null;
+
+// Container vorbereiten
+if (board.containerObj) {
+  board.containerObj.style.touchAction = 'none';
+  board.containerObj.style.userSelect  = 'none';
+  board.containerObj.style.cursor      = 'default';
+}
+
+// Event -> Userkoordinaten
+function usrCoordsDOM(evt) {
+  if (typeof board.getUsrCoordsOfMouse === 'function') return board.getUsrCoordsOfMouse(evt);
+
+  const rect = board.containerObj.getBoundingClientRect();
+  const px = evt.clientX - rect.left;
+  const py = evt.clientY - rect.top;
+
+  const bb = board.getBoundingBox(); // [xmin, ymax, xmax, ymin]
+  const x = bb[0] + (px / rect.width)  * (bb[2] - bb[0]);
+  const y = bb[1] - (py / rect.height) * (bb[1] - bb[3]);
+  return [x, y];
+}
+
+// Hit-Test: nahe am Graphen?
+function hitTest(p) {
+  const x = p[0], y = p[1];
+  if (!isFinite(x) || !isFinite(y)) return false;
+
+  const y0 = fShift(x);
+
+  const bb = board.getBoundingBox();
+  const ySpan = Math.max(1e-9, (bb[1] - bb[3]));
+  const eps = ySpan / 35;  // Parabel: etwas "greifbarer" als bei Gerade
+
+  return Math.abs(y - y0) <= eps;
+}
+
+// throttling gegen Lag
+let rafPending = false;
+function requestUpdate() {
+  if (rafPending) return;
+  rafPending = true;
+  requestAnimationFrame(() => {
+    rafPending = false;
+    board.update();
+    __updateEqUI();
+  });
+}
+
+// Pointer capture
+function setCapture(evt) {
+  try {
+    if (board.containerObj?.setPointerCapture && evt.pointerId != null) {
+      board.containerObj.setPointerCapture(evt.pointerId);
+    }
+  } catch (e) {}
+}
+function releaseCapture(evt) {
+  try {
+    if (board.containerObj?.releasePointerCapture && evt.pointerId != null) {
+      board.containerObj.releasePointerCapture(evt.pointerId);
+    }
+  } catch (e) {}
+}
+
+// Pan hart schalten
+function setPanEnabled(enabled) {
+  try { board.setAttribute({ pan: { enabled: !!enabled } }); } catch (e) {}
+  try { if (board.attr && board.attr.pan) board.attr.pan.enabled = !!enabled; } catch (e) {}
+}
+
+// START
+function onPointerDown(evt) {
+  if (__isEqUIEvent(evt)) return;
+  if (evt.pointerType === 'mouse' && evt.button !== 0) return;
+
+  const p = usrCoordsDOM(evt);
+  if (!hitTest(p)) return;
+
+  dragging = true;
+  startMouse = p;
+  startDx = dx;
+  startDy = dy;
+
+  try { panWasEnabled = !!(board.attr && board.attr.pan && board.attr.pan.enabled); }
+  catch (e) { panWasEnabled = null; }
+  setPanEnabled(false);
+
+  if (board.containerObj) board.containerObj.style.cursor = 'grabbing';
+
+  setCapture(evt);
+
+  evt.preventDefault();
+  evt.stopPropagation();
+  if (typeof evt.stopImmediatePropagation === 'function') evt.stopImmediatePropagation();
+}
+
+// MOVE
+function onPointerMove(evt) {
+  if (!dragging) return;
+
+  const p = usrCoordsDOM(evt);
+  if (!isFinite(p[0]) || !isFinite(p[1])) return;
+
+  dx = startDx + (p[0] - startMouse[0]);
+  dy = startDy + (p[1] - startMouse[1]);
+
+  requestUpdate();
+
+  evt.preventDefault();
+  evt.stopPropagation();
+  if (typeof evt.stopImmediatePropagation === 'function') evt.stopImmediatePropagation();
+}
+
+// END
+function endDrag(evt) {
+  if (!dragging) return;
+
+  dragging = false;
+  startMouse = null;
+
+  if (panWasEnabled !== null) setPanEnabled(panWasEnabled);
+  panWasEnabled = null;
+
+  if (board.containerObj) board.containerObj.style.cursor = 'default';
+
+  releaseCapture(evt);
+
+  if (evt) {
+    evt.preventDefault();
+    evt.stopPropagation();
+    if (typeof evt.stopImmediatePropagation === 'function') evt.stopImmediatePropagation();
+  }
+}
+
+// Listener: CAPTURE
+if (board.containerObj) {
+  board.containerObj.addEventListener('pointerdown', onPointerDown, { capture: true, passive: false });
+  board.containerObj.addEventListener('pointermove', onPointerMove, { capture: true, passive: false });
+  board.containerObj.addEventListener('pointerup', endDrag,        { capture: true, passive: false });
+  board.containerObj.addEventListener('pointercancel', endDrag,    { capture: true, passive: false });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ```
 
 </div>
-
-
-
-
-<section class="flex-container">
-
-
-<section class="flex-container">
-
-<div class="flex-child">
-
-Ziehe den Punkt $P$ auf die Koordinaten $(2|3)$.
-
-@ErzeugePunkt(Aufgabe3;P;2;3)
-
-</div>
-
-
-
-<div class="flex-child">
-
-Ziehe den Punkt $A$ auf die Koordinaten $(1|4)$.
-
-@ErzeugePunkt(Aufgabe3;A;1;4)
-
-</div>
-
-<div class="flex-child">
-
-Ziehe den Punkt $B$ auf die Koordinaten $(6|2)$.
-
-@ErzeugePunkt(Aufgabe3;B;6;2)
-
-</div>
-
-<div class="flex-child">
-
-Ziehe den Punkt $C$ auf die Koordinaten $(3|1)$.
-
-@ErzeugePunkt(Aufgabe3;C;3;1)
-
-</div>
-
-<div class="flex-child">
-
-Ziehe den Punkt $D$ auf die Koordinaten $(0|4)$.
-
-@ErzeugePunkt(Aufgabe3;D;0;4)
-
-</div>
-
-<div class="flex-child">
-
-Ziehe den Punkt $E$ auf die Koordinaten $(6|4)$.
-
-@ErzeugePunkt(Aufgabe3;E;6;4)
-
-</div>
-
-</section>
-
-
-</section>
