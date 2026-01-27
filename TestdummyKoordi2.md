@@ -603,7 +603,7 @@ window.__applyPointLabelTheme = window.__applyPointLabelTheme || function (board
 
 
 
-Bitte einmal die Farbthemes und zwischen Lightmode und Darkmode wechseln.
+Bitte einmal die Farbthemes und zwischen Lightmode und Darkmode wechseln. Man kann den Graphen mit der Maus bewegen.
 
 
 
