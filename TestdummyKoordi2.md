@@ -1318,8 +1318,8 @@ function __renderTeXInto(el, tex) {
 // --- WICHTIG: liefert jetzt TeX (inline)
 function __buildEqTeX() {
   const b = currentIntercept();
-  const mDE = __fmtDE(m, 3);
-  const bDE = __fmtDE(Math.abs(b), 3);
+  const mDE = __fmtDE(m, 2);
+  const bDE = __fmtDE(Math.abs(b), 2);
   const sign = (b >= 0) ? '+' : '-';
 
   // reiner TeX-String (ohne \( \) oder $$ $$)
@@ -2538,9 +2538,9 @@ function __buildEqText() {
   const h = h0 + dx;
   const k = k0 + dy;
 
-  const aDE = __fmtDE(a, 3);
-  const hDE = __fmtDE(Math.abs(h), 3);
-  const kDE = __fmtDE(Math.abs(k), 3);
+  const aDE = __fmtDE(a, 2);
+  const hDE = __fmtDE(Math.abs(h), 2);
+  const kDE = __fmtDE(Math.abs(k), 2);
 
   // (x - h) bzw (x + h)
   const signH = (h >= 0) ? '- ' : '+ ';
@@ -3703,11 +3703,11 @@ function __buildEqText() {
   const h = h0 + dx;
   const k = k0 + dy;
 
-  const aDE = __fmtDE(a, 3);
-  const bDE = __fmtDE(b, 3);
-  const cDE = __fmtDE(c, 3);
-  const hDE = __fmtDE(Math.abs(h), 3);
-  const kDE = __fmtDE(Math.abs(k), 3);
+  const aDE = __fmtDE(a, 2);
+  const bDE = __fmtDE(b, 2);
+  const cDE = __fmtDE(c, 2);
+  const hDE = __fmtDE(Math.abs(h), 2);
+  const kDE = __fmtDE(Math.abs(k), 2);
 
   const signH = (h >= 0) ? '- ' : '+ ';
   const signK = (k >= 0) ? '+ ' : '- ';
