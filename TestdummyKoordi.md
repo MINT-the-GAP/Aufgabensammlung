@@ -1033,6 +1033,10 @@ function __watchGridColor(board, intervalMs = 400) {
 
 const btnColor = __getGridColor('#0b5fff');
 
+JXG.Options.text.useMathJax = true;
+
+
+
 // Board HIER DIE KOORDINATEN
 // Board HIER DIE KOORDINATEN
 // Board HIER DIE KOORDINATEN
@@ -1066,6 +1070,9 @@ board = JXG.JSXGraph.initBoard(jxgbox, {
     x: {
       strokeColor: 'black',
       strokeWidth: 2.5,
+    name: '\(x\,\text{in}\,[m]\)',
+    withLabel: true,
+    label: { position: 'rt', offset: [-50, -25], fontSize: 18 },
       ticks: {
         insertTicks: false,
         ticksDistance: 1,
@@ -1078,6 +1085,9 @@ board = JXG.JSXGraph.initBoard(jxgbox, {
     y: {
       strokeColor: 'black',
       strokeWidth: 2.5,
+    name: '\(y\,\text{in}\,[m]\)',
+    withLabel: true,
+    label: { position: 'rt', offset: [15, 0], fontSize: 18 },
       ticks: {
         insertTicks: false,
         ticksDistance: 1,
@@ -1115,50 +1125,190 @@ board = JXG.JSXGraph.initBoard(jxgbox, {
 
 
 
-(function enableAdaptiveMinorGrid(board) {
+
+/* =========================================================
+   ADAPTIVE AXES + GRID (auto tick distance + grid rebuild)
+   - passt bei Zoom/Pan automatisch:
+     * ticksDistance (1-2-5-10 …)
+     * minorTicks
+     * label fontSize / drawLabels
+     * Grid majorStep + minorElements
+   ========================================================= */
+
+(function adaptiveAxesAndGrid(board) {
   if (!board) return;
 
-  function pxPerUnitX() {
-    const bb = board.getBoundingBox();        // [xmin, ymax, xmax, ymin]
-    const xmin = bb[0], xmax = bb[2];
-    const w = board.canvasWidth || board.canvasWidth || board.containerObj.clientWidth;
-    return w / Math.max(1e-9, (xmax - xmin));
+  // --- "nice number" für Tick-Abstände: 1,2,5 * 10^k
+  function niceStep(raw) {
+    if (!isFinite(raw) || raw <= 0) return 1;
+    const exp = Math.floor(Math.log10(raw));
+    const f = raw / Math.pow(10, exp);
+    let nf;
+    if (f <= 1) nf = 1;
+    else if (f <= 2) nf = 2;
+    else if (f <= 5) nf = 5;
+    else nf = 10;
+    return nf * Math.pow(10, exp);
   }
 
-  let lastShow = null;
+  function pxPerUnitX() {
+    const bb = board.getBoundingBox(); // [xmin, ymax, xmax, ymin]
+    const w = board.containerObj ? board.containerObj.clientWidth : (board.canvasWidth || 600);
+    return w / Math.max(1e-9, (bb[2] - bb[0]));
+  }
 
-  function update() {
-    const ppu = pxPerUnitX();
+  function pxPerUnitY() {
+    const bb = board.getBoundingBox();
+    const h = board.containerObj ? board.containerObj.clientHeight : (board.canvasHeight || 400);
+    return h / Math.max(1e-9, (bb[1] - bb[3]));
+  }
 
-    // Schwelle: unter 55px pro Einheit -> minor off
-    const showMinor = ppu >= 100;
+  // --- Grid sauber neu bauen (weil majorStep/minorElements nicht in jeder JSXGraph-Version "live" wirken)
+  function rebuildGrid(stepX, stepY, minorX, minorY) {
+    const color = (window.readLiaBtnColor ? window.readLiaBtnColor('#0b5fff') : '#0b5fff');
 
-    if (showMinor === lastShow) return;
-    lastShow = showMinor;
-
-    // Setze Minor-Gitterlinien effektiv unsichtbar oder sichtbar
+    // existierende Grids entfernen
     try {
       if (board.grids && board.grids.length) {
-        board.grids.forEach(g => {
-          if (!g || typeof g.setAttribute !== 'function') return;
-
-          // Heuristik: Minor-Grids sind oft "dashed" oder strokeWidth==0.8 etc.
-          // Wir schalten alle grids mit dash==1 (dein Minor) aus/an:
-          const isMinor = (g.visProp && (g.visProp.dash == 1 || g.visProp.strokeWidth <= 1));
-          if (isMinor) g.setAttribute({ visible: showMinor });
+        board.grids.slice().forEach(g => {
+          try { board.removeObject(g); } catch (e) {}
         });
       }
     } catch (e) {}
 
-    board.update();
+    // neues Grid anlegen
+    try {
+      board.create('grid', [], {
+        majorStep: [stepX, stepY],
+        minorElements: [minorX, minorY],
+        includeBoundaries: true,
+        forceSquare: true,
+
+        major: {
+          face: 'line',
+          strokeColor: color,
+          strokeWidth: 1.5,
+          dash: 0,
+          drawZero: true
+        },
+        minor: {
+          face: 'line',
+          strokeColor: color,
+          strokeWidth: 1,
+          dash: 1,
+          drawZero: false
+        }
+      });
+    } catch (e) {}
+
+    // danach ggf. direkt Theme-Farbe/Axis-Farbe nachziehen
+    try { window.applyGridColor && window.applyGridColor(board, color); } catch (e) {}
+    try { window.__applyAxisColors && window.__applyAxisColors(board); } catch (e) {}
   }
 
-  // Beim Zoomen/Pannen triggern
-  board.on('boundingbox', update);
+  // --- Achsenticks live anpassen
+  function setAxisTicks(axisKey, step, minorTicks, fontSize, drawLabels) {
+    try {
+      const ax = board.defaultAxes && board.defaultAxes[axisKey];
+      if (!ax) return;
+
+      // Defaults für neu entstehende Ticks/Labels
+      board.options = board.options || {};
+      board.options.defaultAxes = board.options.defaultAxes || {};
+      board.options.defaultAxes[axisKey] = board.options.defaultAxes[axisKey] || {};
+      board.options.defaultAxes[axisKey].ticks = board.options.defaultAxes[axisKey].ticks || {};
+      board.options.defaultAxes[axisKey].ticks.label = board.options.defaultAxes[axisKey].ticks.label || {};
+
+      board.options.defaultAxes[axisKey].ticks.ticksDistance = step;
+      board.options.defaultAxes[axisKey].ticks.minorTicks    = minorTicks;
+      board.options.defaultAxes[axisKey].ticks.drawLabels    = !!drawLabels;
+      board.options.defaultAxes[axisKey].ticks.label.fontSize = fontSize;
+
+      // existierende Tick-Objekte aktualisieren
+      const t = ax.defaultTicks;
+      if (t && typeof t.setAttribute === 'function') {
+        t.setAttribute({
+          ticksDistance: step,
+          minorTicks: minorTicks,
+          drawLabels: !!drawLabels,
+          label: { fontSize: fontSize }
+        });
+      }
+    } catch (e) {}
+  }
+
+  // --- Zustand, damit wir nicht dauernd neu bauen
+  let lastSig = '';
+
+  function computeAndApply() {
+    const ppuX = pxPerUnitX();
+    const ppuY = pxPerUnitY();
+
+    // Ziel: ca. 90px pro Major-Tick
+    const targetPx = 90;
+
+    const rawStepX = targetPx / Math.max(1e-9, ppuX);
+    const rawStepY = targetPx / Math.max(1e-9, ppuY);
+
+    const stepX = niceStep(rawStepX);
+    const stepY = niceStep(rawStepY);
+
+    // Minor-Logik: je größer der Step / je kleiner ppu, desto weniger Minor
+    const minorX = (ppuX < 25 || stepX >= 10) ? 0 : (stepX >= 5 ? 4 : 9);
+    const minorY = (ppuY < 25 || stepY >= 10) ? 0 : (stepY >= 5 ? 4 : 9);
+
+    // Label-Logik: bei zu wenig Pixel pro Einheit Labels verkleinern / ausblenden
+    let font = 18;
+    let draw = true;
+    const ppuMin = Math.min(ppuX, ppuY);
+    if (ppuMin < 35) font = 14;
+    if (ppuMin < 25) font = 12;
+    if (ppuMin < 16) draw = 10;
+
+    // Signatur – nur anwenden, wenn sich wirklich was geändert hat
+    const sig = [stepX, stepY, minorX, minorY, font, draw].join('|');
+    if (sig === lastSig) return;
+    lastSig = sig;
+
+    // Achsen
+    setAxisTicks('x', stepX, minorX, font, draw);
+    setAxisTicks('y', stepY, minorY, font, draw);
+
+    // Grid (neu bauen)
+    rebuildGrid(stepX, stepY, minorX, minorY);
+
+    try {
+      if (typeof board.fullUpdate === 'function') board.fullUpdate();
+      else board.update();
+    } catch (e) {}
+  }
+
+  // --- throttle über rAF, sonst boundingbox spammt hart
+  let raf = 0;
+  function schedule() {
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      raf = 0;
+      computeAndApply();
+    });
+  }
+
+  board.on('boundingbox', schedule);
+  try { board.on('resize', schedule); } catch (e) {}
 
   // initial
-  update();
+  computeAndApply();
 })(board);
+
+
+
+
+
+
+
+
+
+
 
 
 // =========================================================
@@ -1334,8 +1484,8 @@ function __applyAxisColors(board) {
   // 1) Achsen + Ticks + Tick-Labels (existierende)
   try {
     if (board.defaultAxes) {
-      paint(board.defaultAxes.x);
-      paint(board.defaultAxes.y);
+      if (board.defaultAxes.x && board.defaultAxes.x.label) paint(board.defaultAxes.x.label);
+      if (board.defaultAxes.y && board.defaultAxes.y.label) paint(board.defaultAxes.y.label);
 
       const paintTicks = (axis) => {
         if (!axis) return;
@@ -1701,6 +1851,10 @@ function __watchGridColor(board, intervalMs = 400) {
 
 const btnColor = __getGridColor('#0b5fff');
 
+JXG.Options.text.useMathJax = true;
+
+
+
 // Board HIER DIE KOORDINATEN
 // Board HIER DIE KOORDINATEN
 // Board HIER DIE KOORDINATEN
@@ -1736,6 +1890,9 @@ board = JXG.JSXGraph.initBoard(jxgbox, {
     x: {
       strokeColor: 'black',
       strokeWidth: 2.5,
+    name: '\(x\,\text{in}\,[m]\)',
+    withLabel: true,
+    label: { position: 'rt', offset: [-50, -25], fontSize: 18 },
       ticks: {
         insertTicks: false,
         ticksDistance: 1,
@@ -1748,6 +1905,9 @@ board = JXG.JSXGraph.initBoard(jxgbox, {
     y: {
       strokeColor: 'black',
       strokeWidth: 2.5,
+    name: '\(y\,\text{in}\,[m]\)',
+    withLabel: true,
+    label: { position: 'rt', offset: [15, 0], fontSize: 18 },
       ticks: {
         insertTicks: false,
         ticksDistance: 1,
@@ -1785,50 +1945,188 @@ board = JXG.JSXGraph.initBoard(jxgbox, {
 
 
 
-(function enableAdaptiveMinorGrid(board) {
+/* =========================================================
+   ADAPTIVE AXES + GRID (auto tick distance + grid rebuild)
+   - passt bei Zoom/Pan automatisch:
+     * ticksDistance (1-2-5-10 …)
+     * minorTicks
+     * label fontSize / drawLabels
+     * Grid majorStep + minorElements
+   ========================================================= */
+
+(function adaptiveAxesAndGrid(board) {
   if (!board) return;
 
-  function pxPerUnitX() {
-    const bb = board.getBoundingBox();        // [xmin, ymax, xmax, ymin]
-    const xmin = bb[0], xmax = bb[2];
-    const w = board.canvasWidth || board.canvasWidth || board.containerObj.clientWidth;
-    return w / Math.max(1e-9, (xmax - xmin));
+  // --- "nice number" für Tick-Abstände: 1,2,5 * 10^k
+  function niceStep(raw) {
+    if (!isFinite(raw) || raw <= 0) return 1;
+    const exp = Math.floor(Math.log10(raw));
+    const f = raw / Math.pow(10, exp);
+    let nf;
+    if (f <= 1) nf = 1;
+    else if (f <= 2) nf = 2;
+    else if (f <= 5) nf = 5;
+    else nf = 10;
+    return nf * Math.pow(10, exp);
   }
 
-  let lastShow = null;
+  function pxPerUnitX() {
+    const bb = board.getBoundingBox(); // [xmin, ymax, xmax, ymin]
+    const w = board.containerObj ? board.containerObj.clientWidth : (board.canvasWidth || 600);
+    return w / Math.max(1e-9, (bb[2] - bb[0]));
+  }
 
-  function update() {
-    const ppu = pxPerUnitX();
+  function pxPerUnitY() {
+    const bb = board.getBoundingBox();
+    const h = board.containerObj ? board.containerObj.clientHeight : (board.canvasHeight || 400);
+    return h / Math.max(1e-9, (bb[1] - bb[3]));
+  }
 
-    // Schwelle: unter 55px pro Einheit -> minor off
-    const showMinor = ppu >= 100;
+  // --- Grid sauber neu bauen (weil majorStep/minorElements nicht in jeder JSXGraph-Version "live" wirken)
+  function rebuildGrid(stepX, stepY, minorX, minorY) {
+    const color = (window.readLiaBtnColor ? window.readLiaBtnColor('#0b5fff') : '#0b5fff');
 
-    if (showMinor === lastShow) return;
-    lastShow = showMinor;
-
-    // Setze Minor-Gitterlinien effektiv unsichtbar oder sichtbar
+    // existierende Grids entfernen
     try {
       if (board.grids && board.grids.length) {
-        board.grids.forEach(g => {
-          if (!g || typeof g.setAttribute !== 'function') return;
-
-          // Heuristik: Minor-Grids sind oft "dashed" oder strokeWidth==0.8 etc.
-          // Wir schalten alle grids mit dash==1 (dein Minor) aus/an:
-          const isMinor = (g.visProp && (g.visProp.dash == 1 || g.visProp.strokeWidth <= 1));
-          if (isMinor) g.setAttribute({ visible: showMinor });
+        board.grids.slice().forEach(g => {
+          try { board.removeObject(g); } catch (e) {}
         });
       }
     } catch (e) {}
 
-    board.update();
+    // neues Grid anlegen
+    try {
+      board.create('grid', [], {
+        majorStep: [stepX, stepY],
+        minorElements: [minorX, minorY],
+        includeBoundaries: true,
+        forceSquare: true,
+
+        major: {
+          face: 'line',
+          strokeColor: color,
+          strokeWidth: 1.5,
+          dash: 0,
+          drawZero: true
+        },
+        minor: {
+          face: 'line',
+          strokeColor: color,
+          strokeWidth: 1,
+          dash: 1,
+          drawZero: false
+        }
+      });
+    } catch (e) {}
+
+    // danach ggf. direkt Theme-Farbe/Axis-Farbe nachziehen
+    try { window.applyGridColor && window.applyGridColor(board, color); } catch (e) {}
+    try { window.__applyAxisColors && window.__applyAxisColors(board); } catch (e) {}
   }
 
-  // Beim Zoomen/Pannen triggern
-  board.on('boundingbox', update);
+  // --- Achsenticks live anpassen
+  function setAxisTicks(axisKey, step, minorTicks, fontSize, drawLabels) {
+    try {
+      const ax = board.defaultAxes && board.defaultAxes[axisKey];
+      if (!ax) return;
+
+      // Defaults für neu entstehende Ticks/Labels
+      board.options = board.options || {};
+      board.options.defaultAxes = board.options.defaultAxes || {};
+      board.options.defaultAxes[axisKey] = board.options.defaultAxes[axisKey] || {};
+      board.options.defaultAxes[axisKey].ticks = board.options.defaultAxes[axisKey].ticks || {};
+      board.options.defaultAxes[axisKey].ticks.label = board.options.defaultAxes[axisKey].ticks.label || {};
+
+      board.options.defaultAxes[axisKey].ticks.ticksDistance = step;
+      board.options.defaultAxes[axisKey].ticks.minorTicks    = minorTicks;
+      board.options.defaultAxes[axisKey].ticks.drawLabels    = !!drawLabels;
+      board.options.defaultAxes[axisKey].ticks.label.fontSize = fontSize;
+
+      // existierende Tick-Objekte aktualisieren
+      const t = ax.defaultTicks;
+      if (t && typeof t.setAttribute === 'function') {
+        t.setAttribute({
+          ticksDistance: step,
+          minorTicks: minorTicks,
+          drawLabels: !!drawLabels,
+          label: { fontSize: fontSize }
+        });
+      }
+    } catch (e) {}
+  }
+
+  // --- Zustand, damit wir nicht dauernd neu bauen
+  let lastSig = '';
+
+  function computeAndApply() {
+    const ppuX = pxPerUnitX();
+    const ppuY = pxPerUnitY();
+
+    // Ziel: ca. 90px pro Major-Tick
+    const targetPx = 90;
+
+    const rawStepX = targetPx / Math.max(1e-9, ppuX);
+    const rawStepY = targetPx / Math.max(1e-9, ppuY);
+
+    const stepX = niceStep(rawStepX);
+    const stepY = niceStep(rawStepY);
+
+    // Minor-Logik: je größer der Step / je kleiner ppu, desto weniger Minor
+    const minorX = (ppuX < 25 || stepX >= 10) ? 0 : (stepX >= 5 ? 4 : 9);
+    const minorY = (ppuY < 25 || stepY >= 10) ? 0 : (stepY >= 5 ? 4 : 9);
+
+    // Label-Logik: bei zu wenig Pixel pro Einheit Labels verkleinern / ausblenden
+    let font = 18;
+    let draw = true;
+    const ppuMin = Math.min(ppuX, ppuY);
+    if (ppuMin < 35) font = 14;
+    if (ppuMin < 25) font = 12;
+    if (ppuMin < 16) draw = 10;
+
+    // Signatur – nur anwenden, wenn sich wirklich was geändert hat
+    const sig = [stepX, stepY, minorX, minorY, font, draw].join('|');
+    if (sig === lastSig) return;
+    lastSig = sig;
+
+    // Achsen
+    setAxisTicks('x', stepX, minorX, font, draw);
+    setAxisTicks('y', stepY, minorY, font, draw);
+
+    // Grid (neu bauen)
+    rebuildGrid(stepX, stepY, minorX, minorY);
+
+    try {
+      if (typeof board.fullUpdate === 'function') board.fullUpdate();
+      else board.update();
+    } catch (e) {}
+  }
+
+  // --- throttle über rAF, sonst boundingbox spammt hart
+  let raf = 0;
+  function schedule() {
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      raf = 0;
+      computeAndApply();
+    });
+  }
+
+  board.on('boundingbox', schedule);
+  try { board.on('resize', schedule); } catch (e) {}
 
   // initial
-  update();
+  computeAndApply();
 })(board);
+
+
+
+
+
+
+
+
+
 
 
 // =========================================================
@@ -1973,8 +2271,8 @@ function __applyAxisColors(board) {
   // 1) Achsen + Ticks + Tick-Labels (existierende)
   try {
     if (board.defaultAxes) {
-      paint(board.defaultAxes.x);
-      paint(board.defaultAxes.y);
+      if (board.defaultAxes.x && board.defaultAxes.x.label) paint(board.defaultAxes.x.label);
+      if (board.defaultAxes.y && board.defaultAxes.y.label) paint(board.defaultAxes.y.label);
 
       const paintTicks = (axis) => {
         if (!axis) return;
@@ -2324,6 +2622,10 @@ function __watchGridColor(board, intervalMs = 400) {
 
 const btnColor = __getGridColor('#0b5fff');
 
+JXG.Options.text.useMathJax = true;
+
+
+
 // Board HIER DIE KOORDINATEN
 // Board HIER DIE KOORDINATEN
 // Board HIER DIE KOORDINATEN
@@ -2356,6 +2658,9 @@ board = JXG.JSXGraph.initBoard(jxgbox, {
     x: {
       strokeColor: 'black',
       strokeWidth: 2.5,
+    name: '\(x\,\text{in}\,[m]\)',
+    withLabel: true,
+    label: { position: 'rt', offset: [-50, -25], fontSize: 18 },
       ticks: {
         insertTicks: false,
         ticksDistance: 1,
@@ -2368,6 +2673,9 @@ board = JXG.JSXGraph.initBoard(jxgbox, {
     y: {
       strokeColor: 'black',
       strokeWidth: 2.5,
+    name: '\(y\,\text{in}\,[m]\)',
+    withLabel: true,
+    label: { position: 'rt', offset: [15, 0], fontSize: 18 },
       ticks: {
         insertTicks: false,
         ticksDistance: 1,
@@ -2405,50 +2713,188 @@ board = JXG.JSXGraph.initBoard(jxgbox, {
 
 
 
-(function enableAdaptiveMinorGrid(board) {
+/* =========================================================
+   ADAPTIVE AXES + GRID (auto tick distance + grid rebuild)
+   - passt bei Zoom/Pan automatisch:
+     * ticksDistance (1-2-5-10 …)
+     * minorTicks
+     * label fontSize / drawLabels
+     * Grid majorStep + minorElements
+   ========================================================= */
+
+(function adaptiveAxesAndGrid(board) {
   if (!board) return;
 
-  function pxPerUnitX() {
-    const bb = board.getBoundingBox();        // [xmin, ymax, xmax, ymin]
-    const xmin = bb[0], xmax = bb[2];
-    const w = board.canvasWidth || board.canvasWidth || board.containerObj.clientWidth;
-    return w / Math.max(1e-9, (xmax - xmin));
+  // --- "nice number" für Tick-Abstände: 1,2,5 * 10^k
+  function niceStep(raw) {
+    if (!isFinite(raw) || raw <= 0) return 1;
+    const exp = Math.floor(Math.log10(raw));
+    const f = raw / Math.pow(10, exp);
+    let nf;
+    if (f <= 1) nf = 1;
+    else if (f <= 2) nf = 2;
+    else if (f <= 5) nf = 5;
+    else nf = 10;
+    return nf * Math.pow(10, exp);
   }
 
-  let lastShow = null;
+  function pxPerUnitX() {
+    const bb = board.getBoundingBox(); // [xmin, ymax, xmax, ymin]
+    const w = board.containerObj ? board.containerObj.clientWidth : (board.canvasWidth || 600);
+    return w / Math.max(1e-9, (bb[2] - bb[0]));
+  }
 
-  function update() {
-    const ppu = pxPerUnitX();
+  function pxPerUnitY() {
+    const bb = board.getBoundingBox();
+    const h = board.containerObj ? board.containerObj.clientHeight : (board.canvasHeight || 400);
+    return h / Math.max(1e-9, (bb[1] - bb[3]));
+  }
 
-    // Schwelle: unter 55px pro Einheit -> minor off
-    const showMinor = ppu >= 100;
+  // --- Grid sauber neu bauen (weil majorStep/minorElements nicht in jeder JSXGraph-Version "live" wirken)
+  function rebuildGrid(stepX, stepY, minorX, minorY) {
+    const color = (window.readLiaBtnColor ? window.readLiaBtnColor('#0b5fff') : '#0b5fff');
 
-    if (showMinor === lastShow) return;
-    lastShow = showMinor;
-
-    // Setze Minor-Gitterlinien effektiv unsichtbar oder sichtbar
+    // existierende Grids entfernen
     try {
       if (board.grids && board.grids.length) {
-        board.grids.forEach(g => {
-          if (!g || typeof g.setAttribute !== 'function') return;
-
-          // Heuristik: Minor-Grids sind oft "dashed" oder strokeWidth==0.8 etc.
-          // Wir schalten alle grids mit dash==1 (dein Minor) aus/an:
-          const isMinor = (g.visProp && (g.visProp.dash == 1 || g.visProp.strokeWidth <= 1));
-          if (isMinor) g.setAttribute({ visible: showMinor });
+        board.grids.slice().forEach(g => {
+          try { board.removeObject(g); } catch (e) {}
         });
       }
     } catch (e) {}
 
-    board.update();
+    // neues Grid anlegen
+    try {
+      board.create('grid', [], {
+        majorStep: [stepX, stepY],
+        minorElements: [minorX, minorY],
+        includeBoundaries: true,
+        forceSquare: true,
+
+        major: {
+          face: 'line',
+          strokeColor: color,
+          strokeWidth: 1.5,
+          dash: 0,
+          drawZero: true
+        },
+        minor: {
+          face: 'line',
+          strokeColor: color,
+          strokeWidth: 1,
+          dash: 1,
+          drawZero: false
+        }
+      });
+    } catch (e) {}
+
+    // danach ggf. direkt Theme-Farbe/Axis-Farbe nachziehen
+    try { window.applyGridColor && window.applyGridColor(board, color); } catch (e) {}
+    try { window.__applyAxisColors && window.__applyAxisColors(board); } catch (e) {}
   }
 
-  // Beim Zoomen/Pannen triggern
-  board.on('boundingbox', update);
+  // --- Achsenticks live anpassen
+  function setAxisTicks(axisKey, step, minorTicks, fontSize, drawLabels) {
+    try {
+      const ax = board.defaultAxes && board.defaultAxes[axisKey];
+      if (!ax) return;
+
+      // Defaults für neu entstehende Ticks/Labels
+      board.options = board.options || {};
+      board.options.defaultAxes = board.options.defaultAxes || {};
+      board.options.defaultAxes[axisKey] = board.options.defaultAxes[axisKey] || {};
+      board.options.defaultAxes[axisKey].ticks = board.options.defaultAxes[axisKey].ticks || {};
+      board.options.defaultAxes[axisKey].ticks.label = board.options.defaultAxes[axisKey].ticks.label || {};
+
+      board.options.defaultAxes[axisKey].ticks.ticksDistance = step;
+      board.options.defaultAxes[axisKey].ticks.minorTicks    = minorTicks;
+      board.options.defaultAxes[axisKey].ticks.drawLabels    = !!drawLabels;
+      board.options.defaultAxes[axisKey].ticks.label.fontSize = fontSize;
+
+      // existierende Tick-Objekte aktualisieren
+      const t = ax.defaultTicks;
+      if (t && typeof t.setAttribute === 'function') {
+        t.setAttribute({
+          ticksDistance: step,
+          minorTicks: minorTicks,
+          drawLabels: !!drawLabels,
+          label: { fontSize: fontSize }
+        });
+      }
+    } catch (e) {}
+  }
+
+  // --- Zustand, damit wir nicht dauernd neu bauen
+  let lastSig = '';
+
+  function computeAndApply() {
+    const ppuX = pxPerUnitX();
+    const ppuY = pxPerUnitY();
+
+    // Ziel: ca. 90px pro Major-Tick
+    const targetPx = 90;
+
+    const rawStepX = targetPx / Math.max(1e-9, ppuX);
+    const rawStepY = targetPx / Math.max(1e-9, ppuY);
+
+    const stepX = niceStep(rawStepX);
+    const stepY = niceStep(rawStepY);
+
+    // Minor-Logik: je größer der Step / je kleiner ppu, desto weniger Minor
+    const minorX = (ppuX < 25 || stepX >= 10) ? 0 : (stepX >= 5 ? 4 : 9);
+    const minorY = (ppuY < 25 || stepY >= 10) ? 0 : (stepY >= 5 ? 4 : 9);
+
+    // Label-Logik: bei zu wenig Pixel pro Einheit Labels verkleinern / ausblenden
+    let font = 18;
+    let draw = true;
+    const ppuMin = Math.min(ppuX, ppuY);
+    if (ppuMin < 35) font = 14;
+    if (ppuMin < 25) font = 12;
+    if (ppuMin < 16) draw = 10;
+
+    // Signatur – nur anwenden, wenn sich wirklich was geändert hat
+    const sig = [stepX, stepY, minorX, minorY, font, draw].join('|');
+    if (sig === lastSig) return;
+    lastSig = sig;
+
+    // Achsen
+    setAxisTicks('x', stepX, minorX, font, draw);
+    setAxisTicks('y', stepY, minorY, font, draw);
+
+    // Grid (neu bauen)
+    rebuildGrid(stepX, stepY, minorX, minorY);
+
+    try {
+      if (typeof board.fullUpdate === 'function') board.fullUpdate();
+      else board.update();
+    } catch (e) {}
+  }
+
+  // --- throttle über rAF, sonst boundingbox spammt hart
+  let raf = 0;
+  function schedule() {
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      raf = 0;
+      computeAndApply();
+    });
+  }
+
+  board.on('boundingbox', schedule);
+  try { board.on('resize', schedule); } catch (e) {}
 
   // initial
-  update();
+  computeAndApply();
 })(board);
+
+
+
+
+
+
+
+
+
 
 
 // =========================================================
@@ -2593,8 +3039,8 @@ function __applyAxisColors(board) {
   // 1) Achsen + Ticks + Tick-Labels (existierende)
   try {
     if (board.defaultAxes) {
-      paint(board.defaultAxes.x);
-      paint(board.defaultAxes.y);
+      if (board.defaultAxes.x && board.defaultAxes.x.label) paint(board.defaultAxes.x.label);
+      if (board.defaultAxes.y && board.defaultAxes.y.label) paint(board.defaultAxes.y.label);
 
       const paintTicks = (axis) => {
         if (!axis) return;
