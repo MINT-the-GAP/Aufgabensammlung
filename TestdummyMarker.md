@@ -19,6 +19,7 @@ import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.m
   --hl-blue:   rgba(173, 216, 230, 0.45);
   --hl-pink:   rgba(255, 182, 193, 0.45);
   --hl-orange: rgba(255, 200, 120, 0.55);
+  --hl-red:    rgba(255, 80, 80, 0.40);
 
   /* Wird per JS an Theme/Mode angepasst */
   --hl-ui-bg: rgba(255,255,255,.92);
@@ -64,7 +65,8 @@ import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.m
   background: var(--hl-yellow) !important;
 }
 
-body.lia-hl-open #lia-hl-btn{
+/* Marker an (Button aktiver Look) */
+body.lia-hl-active #lia-hl-btn{
   outline: 2px solid color-mix(in srgb, var(--hl-ui-fg) 25%, transparent) !important;
   outline-offset: 2px !important;
 }
@@ -87,7 +89,8 @@ body.lia-hl-open #lia-hl-btn{
   backdrop-filter: blur(6px);
 }
 
-body.lia-hl-open #lia-hl-panel{
+/* Panel nur anzeigen, wenn diese Klasse gesetzt ist */
+body.lia-hl-panel-open #lia-hl-panel{
   display: block !important;
 }
 
@@ -205,13 +208,14 @@ body.lia-hl-open #lia-hl-panel{
 .lia-hl-rect[data-hl="blue"]  { background: var(--hl-blue);   }
 .lia-hl-rect[data-hl="pink"]  { background: var(--hl-pink);   }
 .lia-hl-rect[data-hl="orange"]{ background: var(--hl-orange); }
+.lia-hl-rect[data-hl="red"]   { background: var(--hl-red);    }
 @end
 
 
 @onload
 (function(){
-  if (window.__liaTextmarker_overlay_v1) return;
-  window.__liaTextmarker_overlay_v1 = true;
+  if (window.__liaTextmarker_overlay_v4) return;
+  window.__liaTextmarker_overlay_v4 = true;
 
   const doc  = document;
   const body = doc.body;
@@ -252,10 +256,10 @@ body.lia-hl-open #lia-hl-panel{
   }
 
   adaptUIToTheme();
-  let __hlThemeTimer = setInterval(adaptUIToTheme, 1200);
+  setInterval(adaptUIToTheme, 1200);
 
   // -----------------------------
-  // UI: Button + Panel (deine Version)
+  // UI: Button + Panel
   // -----------------------------
   if (doc.getElementById('lia-hl-btn')) return;
 
@@ -282,8 +286,6 @@ body.lia-hl-open #lia-hl-panel{
         <div class="hl-colors" id="hl-colors"></div>
       </div>
 
-      <div class="hl-hint" id="hl-status">Status: aus</div>
-
       <button class="hl-clear" id="hl-clear" type="button">Alle Markierungen löschen</button>
     </div>
   `;
@@ -294,7 +296,6 @@ body.lia-hl-open #lia-hl-panel{
   const toolErase= doc.getElementById('hl-tool-erase');
   const colorsEl = doc.getElementById('hl-colors');
   const clearBtn = doc.getElementById('hl-clear');
-  const statusEl = doc.getElementById('hl-status');
 
   function positionPanelUnderButton(){
     const r = btn.getBoundingClientRect();
@@ -309,8 +310,6 @@ body.lia-hl-open #lia-hl-panel{
   overlay.className = 'lia-hl-overlay';
   doc.body.appendChild(overlay);
 
-  // Highlight-Store (page-koordiniert: x/y + scrollOffset zum Erstellzeitpunkt)
-  // item = { id, color, rects:[{x,y,w,h}] }  // x/y sind dokument-korrigiert (client+scroll)
   let HL = [];
   let nextId = 1;
 
@@ -319,7 +318,6 @@ body.lia-hl-open #lia-hl-panel{
   }
 
   function render(){
-    // Overlay leeren und alle Rects neu setzen (Viewport-Koordinaten)
     overlay.innerHTML = '';
     const sc = currentScroll();
 
@@ -344,35 +342,41 @@ body.lia-hl-open #lia-hl-panel{
   // -----------------------------
   // State
   // -----------------------------
-  let open = false;
+  let active = false;     // Textmarker an/aus (per Button)
+  let panelOpen = false;  // Panel sichtbar/unsichtbar
+
   let tool = 'mark';
   let color = 'yellow';
-
-  const colorKeys = ['yellow','green','blue','pink','orange'];
+  const colorKeys = ['yellow','green','blue','pink','orange','red'];
 
   function getVar(name, fallback){
     const v = getComputedStyle(doc.documentElement).getPropertyValue(name).trim();
     return v || fallback;
   }
 
-  function setOpen(v){
-    open = !!v;
-    body.classList.toggle('lia-hl-open', open);
-    if (open) positionPanelUnderButton();
-    statusEl.textContent = open ? 'Status: aktiv' : 'Status: aus';
+  function applyClasses(){
+    body.classList.toggle('lia-hl-active', active);
+    body.classList.toggle('lia-hl-panel-open', active && panelOpen);
+  }
+
+  function setActive(v){
+    active = !!v;
+    if (!active) panelOpen = false;
+    applyClasses();
+    if (active && panelOpen) positionPanelUnderButton();
+  }
+
+  function setPanelOpen(v){
+    panelOpen = !!v;
+    applyClasses();
+    if (active && panelOpen) positionPanelUnderButton();
   }
 
   function setTool(t){
     tool = t;
     toolMark.classList.toggle('active', tool === 'mark');
     toolErase.classList.toggle('active', tool === 'erase');
-    body.classList.toggle('lia-hl-mark', tool === 'mark');
-
-    // Overlay klickbar nur im Radiermodus
     overlay.classList.toggle('erase-on', tool === 'erase');
-    statusEl.textContent = open
-      ? (tool === 'mark' ? 'Status: markieren' : 'Status: löschen')
-      : 'Status: aus';
   }
 
   function setColor(c){
@@ -383,6 +387,7 @@ body.lia-hl-open #lia-hl-panel{
       blue:   getVar('--hl-blue','rgba(173,216,230,.45)'),
       pink:   getVar('--hl-pink','rgba(255,182,193,.45)'),
       orange: getVar('--hl-orange','rgba(255,200,120,.55)'),
+      red:    getVar('--hl-red','rgba(255,80,80,.40)'),
     };
     dot.style.background = map[color] || map.yellow;
 
@@ -404,112 +409,113 @@ body.lia-hl-open #lia-hl-panel{
       blue:   getVar('--hl-blue','rgba(173,216,230,.45)'),
       pink:   getVar('--hl-pink','rgba(255,182,193,.45)'),
       orange: getVar('--hl-orange','rgba(255,200,120,.55)'),
+      red:    getVar('--hl-red','rgba(255,80,80,.40)'),
     };
     sw.style.background = map[key];
-    sw.addEventListener('click', () => { setTool('mark'); setColor(key); });
+
+    // Farbe wählen => markieren + Panel zu
+    sw.addEventListener('click', () => {
+      setTool('mark');
+      setColor(key);
+      setPanelOpen(false);
+    });
+
     colorsEl.appendChild(sw);
   });
 
   // Init
-  setOpen(false);
   setTool('mark');
   setColor('yellow');
+  setActive(false);
+  setPanelOpen(false);
 
-  // UI events
-  btn.addEventListener('click', () => { setOpen(!open); });
-  toolMark.addEventListener('click', () => setTool('mark'));
-  toolErase.addEventListener('click', () => setTool('erase'));
-  window.addEventListener('resize', () => { if (open) positionPanelUnderButton(); });
-  doc.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+  // =============================
+  // UI Interaktion
+  // =============================
+  // Linksklick: active toggeln
+  btn.addEventListener('click', () => {
+    if (!active) {
+      setActive(true);
+      setPanelOpen(true);    // beim Einschalten Panel zeigen
+    } else {
+      setActive(false);      // beim erneuten Klick komplett aus
+      setPanelOpen(false);
+    }
+  });
 
-  // -----------------------------
-  // MARKIEREN: Range -> ClientRects -> Overlay-Rechtecke
-  // (funktioniert auch, wenn DOM im ShadowRoot sitzt, weil wir nichts am Text ändern)
-  // -----------------------------
+  // Rechtsklick: Panel toggeln (ohne active zu ändern)
+  btn.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    if (!active) return;
+    setPanelOpen(!panelOpen);
+  });
+
+  toolMark.addEventListener('click', () => { setTool('mark'); setPanelOpen(false); });
+  toolErase.addEventListener('click', () => { setTool('erase'); setPanelOpen(false); });
+
+  window.addEventListener('resize', () => { if (active && panelOpen) positionPanelUnderButton(); });
+
+  doc.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      // Esc schließt nur das Panel, Textmarker bleibt an
+      if (active && panelOpen) setPanelOpen(false);
+    }
+  });
+
+  // =============================
+  // Markieren: Panel schließt zuverlässig
+  // =============================
   function isInsideUI(node){
     const el = (node && node.nodeType === 1) ? node : node?.parentElement;
     if (!el) return false;
     return !!el.closest('#lia-hl-panel, #lia-hl-btn');
   }
 
-  function canUseSelection(){
-    try {
-      const sel = window.getSelection();
-      return !!(sel && sel.rangeCount);
-    } catch {
-      return false;
-    }
-  }
-
   function addHighlightFromSelection(){
-    if (!canUseSelection()) {
-      statusEl.textContent = 'Status: Selection nicht verfügbar';
-      return;
-    }
-
-    const sel = window.getSelection();
-    if (!sel || sel.rangeCount === 0) {
-      statusEl.textContent = 'Status: keine Auswahl';
-      return;
-    }
+    const sel = window.getSelection ? window.getSelection() : null;
+    if (!sel || sel.rangeCount === 0) return;
 
     const range = sel.getRangeAt(0);
-    if (!range || range.collapsed) {
-      statusEl.textContent = 'Status: keine Auswahl';
-      return;
-    }
+    if (!range || range.collapsed) return;
 
-    // UI/Inputs ausschließen
     if (isInsideUI(range.startContainer) || isInsideUI(range.endContainer)) return;
 
     const txt = sel.toString();
-    if (!txt || !txt.trim()) {
-      statusEl.textContent = 'Status: leere Auswahl';
-      return;
-    }
+    if (!txt || !txt.trim()) return;
 
-    // Rects holen
     const rects = Array.from(range.getClientRects ? range.getClientRects() : []);
-    if (!rects.length) {
-      statusEl.textContent = 'Status: Rects=0 (iframe/cross-origin?)';
-      return;
-    }
+    if (!rects.length) return;
 
     const sc = currentScroll();
     const packed = rects
       .filter(r => r.width > 1 && r.height > 1)
-      .map(r => ({
-        x: r.left + sc.x,
-        y: r.top  + sc.y,
-        w: r.width,
-        h: r.height
-      }));
+      .map(r => ({ x: r.left + sc.x, y: r.top + sc.y, w: r.width, h: r.height }));
 
-    if (!packed.length) {
-      statusEl.textContent = 'Status: Rects gefiltert=0';
-      return;
-    }
+    if (!packed.length) return;
 
     HL.push({ id: nextId++, color, rects: packed });
     sel.removeAllRanges();
     render();
-    statusEl.textContent = `Status: markiert (${packed.length})`;
   }
 
-  // Markieren bei mouseup (capture)
   doc.addEventListener('mouseup', () => {
-    if (!open) return;
+    if (!active) return;
+
+    // <- DAS ist jetzt garantiert wirksam, weil CSS NICHT mehr an "active" hängt
+    if (panelOpen) setPanelOpen(false);
+
     if (tool !== 'mark') return;
-    positionPanelUnderButton();
     addHighlightFromSelection();
   }, true);
 
-  // -----------------------------
-  // RADIEREN: Klick in Overlay entfernt Highlight (nach ID)
-  // -----------------------------
+  // =============================
+  // Radieren
+  // =============================
   overlay.addEventListener('click', (e) => {
-    if (!open) return;
+    if (!active) return;
     if (tool !== 'erase') return;
+
+    if (panelOpen) setPanelOpen(false);
 
     const t = e.target;
     const id = t?.getAttribute?.('data-id');
@@ -518,14 +524,12 @@ body.lia-hl-open #lia-hl-panel{
     const n = Number(id);
     HL = HL.filter(item => item.id !== n);
     render();
-    statusEl.textContent = 'Status: gelöscht';
   });
 
-  // Alle löschen
   clearBtn.addEventListener('click', () => {
     HL = [];
     render();
-    statusEl.textContent = 'Status: alles gelöscht';
+    setPanelOpen(false);
   });
 
 })();
