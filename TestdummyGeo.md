@@ -55,8 +55,7 @@ author:
 
 
 import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main/README.md
-import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main/README.md
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/TestdummyMarker.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/README.md
 
 
 -->
