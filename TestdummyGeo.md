@@ -46,7 +46,7 @@ import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.m
         https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/TextmarkerImport.md?cb=1738260000
 
 
 -->

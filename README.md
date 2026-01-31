@@ -489,3 +489,6 @@
     setInterval(tick, 700);
   })();
 @end
+
+
+# Tests
