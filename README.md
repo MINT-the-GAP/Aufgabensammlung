@@ -322,7 +322,7 @@
       if (!btn || !panel) return;
       const r = btn.getBoundingClientRect();
       panel.style.left = `${Math.max(12, Math.round(r.left))}px`;
-      panel.style.top  = `${Math.round(r.bottom + 10))}px`;
+      panel.style.top  = `${Math.round(r.bottom + 10)}px`;
     }
 
     function ensureSwatches(){
