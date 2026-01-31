@@ -19,63 +19,83 @@ import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.m
   --hl-blue:   rgba(173, 216, 230, 0.45);
   --hl-pink:   rgba(255, 182, 193, 0.45);
   --hl-orange: rgba(255, 200, 120, 0.55);
-  --hl-red:    rgba(255, 80, 80, 0.40);
+  --hl-red:    rgba(255,  80,  80, 0.40);
 
-  /* Wird per JS an Theme/Mode angepasst */
+  /* UI (Theme/Mode per JS) */
   --hl-ui-bg: rgba(255,255,255,.92);
   --hl-ui-fg: rgba(0,0,0,.88);
   --hl-ui-border: rgba(0,0,0,.14);
   --hl-ui-muted: rgba(0,0,0,.62);
   --hl-ui-shadow: 0 16px 42px rgba(0,0,0,.16);
 
+  /* Akzentfarbe (per JS aus Theme abgeleitet) */
+  --hl-accent: rgb(11,95,255);
+
   --hl-z: 9999999;
 }
 
-/* Floating Button */
+/* =========================================================
+   BUTTON: "wie ein zusätzlicher Header-Button"
+   -> KEIN fixed/absolute fürs Button-Layout!
+   -> sitzt sauber in .lia-header__left
+   ========================================================= */
 #lia-hl-btn{
-  position: fixed !important;
-  top: 80px !important;
-  left: 12px !important;
-  z-index: var(--hl-z) !important;
+  position: relative !important; /* für Dot */
+  width: 40px !important;
+  height: 40px !important;
+  padding: 0 !important;
+  margin: 0 30px !important;
 
   display: inline-flex !important;
   align-items: center !important;
-  gap: 8px !important;
+  justify-content: center !important;
 
-  padding: 7px 10px !important;
-  border-radius: 999px !important;
-  border: 1px solid var(--hl-ui-border) !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: var(--hl-accent) !important; /* wandelt mit Themefarbe (JS setzt) */
 
-  background: var(--hl-ui-bg) !important;
-  color: var(--hl-ui-fg) !important;
-
-  font-size: 14px !important;
-  line-height: 1 !important;
   cursor: pointer !important;
   user-select: none !important;
 
-  box-shadow: var(--hl-ui-shadow) !important;
+  /* "Header-Button feel" */
+  border-radius: 10px !important;
+}
+
+#lia-hl-btn:hover{
+  background: color-mix(in srgb, currentColor 10%, transparent) !important;
+}
+
+#lia-hl-btn:active{
+  background: color-mix(in srgb, currentColor 16%, transparent) !important;
+}
+
+#lia-hl-btn .icon{
+  width: 22px !important;
+  height: 22px !important;
+  display: block !important;
 }
 
 #lia-hl-btn .dot{
-  width: 12px !important;
-  height: 12px !important;
+  position: absolute !important;
+  right: 6px !important;
+  bottom: 6px !important;
+  width: 10px !important;
+  height: 10px !important;
   border-radius: 999px !important;
   border: 1px solid var(--hl-ui-border) !important;
   background: var(--hl-yellow) !important;
 }
 
-/* Marker an (Button aktiver Look) */
 body.lia-hl-active #lia-hl-btn{
   outline: 2px solid color-mix(in srgb, var(--hl-ui-fg) 25%, transparent) !important;
   outline-offset: 2px !important;
 }
 
-/* Panel: unter dem Button */
+/* =========================================================
+   PANEL (bleibt fixed; positioniert sich unter dem Button)
+   ========================================================= */
 #lia-hl-panel{
   position: fixed !important;
-  left: 12px !important;
-  top: 126px !important; /* wird per JS genauer gesetzt */
   z-index: var(--hl-z) !important;
 
   width: 130px !important;
@@ -89,7 +109,6 @@ body.lia-hl-active #lia-hl-btn{
   backdrop-filter: blur(6px);
 }
 
-/* Panel nur anzeigen, wenn diese Klasse gesetzt ist */
 body.lia-hl-panel-open #lia-hl-panel{
   display: block !important;
 }
@@ -115,7 +134,6 @@ body.lia-hl-panel-open #lia-hl-panel{
   gap: 12px !important;
 }
 
-/* Tool-Toggles */
 .hl-tools{
   display: grid !important;
   grid-template-columns: 1fr 1fr !important;
@@ -135,7 +153,7 @@ body.lia-hl-panel-open #lia-hl-panel{
   display:flex !important;
   align-items:center !important;
   justify-content:center !important;
-  gap: 8px !important;
+
   user-select:none !important;
 }
 
@@ -144,7 +162,6 @@ body.lia-hl-panel-open #lia-hl-panel{
   border-color: color-mix(in srgb, var(--hl-ui-fg) 22%, var(--hl-ui-border)) !important;
 }
 
-/* Farbswatches */
 .hl-colors{
   display:flex !important;
   flex-wrap: wrap !important;
@@ -163,12 +180,6 @@ body.lia-hl-panel-open #lia-hl-panel{
 .hl-swatch.active{
   outline: 3px solid color-mix(in srgb, var(--hl-ui-fg) 65%, transparent) !important;
   outline-offset: 2px !important;
-}
-
-.hl-hint{
-  font-size: 11px !important;
-  color: var(--hl-ui-muted) !important;
-  line-height: 1.25 !important;
 }
 
 .hl-clear{
@@ -193,7 +204,7 @@ body.lia-hl-panel-open #lia-hl-panel{
 }
 
 .lia-hl-overlay.erase-on{
-  pointer-events: auto !important; /* für Klick-Radierer */
+  pointer-events: auto !important;
 }
 
 .lia-hl-rect{
@@ -214,15 +225,36 @@ body.lia-hl-panel-open #lia-hl-panel{
 
 @onload
 (function(){
-  if (window.__liaTextmarker_overlay_v4) return;
-  window.__liaTextmarker_overlay_v4 = true;
+  if (window.__liaTextmarker_headerbtn_v1) return;
+  window.__liaTextmarker_headerbtn_v1 = true;
 
-  const doc  = document;
-  const body = doc.body;
+  // ---------------------------------------------------------
+  // Root Window/Doc (falls LiaScript im iframe steckt)
+  // ---------------------------------------------------------
+  function getRootWindow(){
+    let w = window;
+    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
+    return w;
+  }
+  const ROOT_WIN = getRootWindow();
+  const ROOT_DOC = ROOT_WIN.document;
 
-  // -----------------------------
-  // Theme/Mode: UI-Variablen aus DOM ableiten
-  // -----------------------------
+  const CONTENT_WIN = window;
+  const CONTENT_DOC = document;
+
+  // ---------------------------------------------------------
+  // Shared State (Root, damit UI robust ist)
+  // ---------------------------------------------------------
+  ROOT_WIN.__liaHL = ROOT_WIN.__liaHL || {};
+  const SH = ROOT_WIN.__liaHL;
+
+  SH.state = SH.state || { active:false, panelOpen:false, tool:'mark', color:'yellow' };
+  SH.HL    = SH.HL    || [];
+  SH.nextId= SH.nextId|| 1;
+
+  // ---------------------------------------------------------
+  // Theme/Accent aus Content ableiten
+  // ---------------------------------------------------------
   function parseRGB(str){
     const m = (str || '').match(/rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)/i);
     if (!m) return null;
@@ -232,98 +264,72 @@ body.lia-hl-panel-open #lia-hl-panel{
     const r = rgb.r/255, g = rgb.g/255, b = rgb.b/255;
     return 0.2126*r + 0.7152*g + 0.0722*b;
   }
-  function setVar(k,v){ doc.documentElement.style.setProperty(k,v); }
+  function setVar(doc, k, v){ doc.documentElement.style.setProperty(k, v); }
 
-  function adaptUIToTheme(){
-    const probe = doc.querySelector('main') || doc.querySelector('[role="main"]') || doc.body;
-    const bgStr = getComputedStyle(probe).backgroundColor || getComputedStyle(doc.body).backgroundColor;
+  function adaptUIVars(){
+    const probe = CONTENT_DOC.querySelector('main') || CONTENT_DOC.querySelector('[role="main"]') || CONTENT_DOC.body;
+    const csProbe = getComputedStyle(probe);
+
+    const bgStr = csProbe.backgroundColor || getComputedStyle(CONTENT_DOC.body).backgroundColor;
     const bg = parseRGB(bgStr) || {r:255,g:255,b:255};
     const isDark = luminance(bg) < 0.45;
 
+    // Accent: bevorzugt Linkfarbe
+    const anyLink = CONTENT_DOC.querySelector('main a') || CONTENT_DOC.querySelector('a');
+    const accentStr = anyLink ? getComputedStyle(anyLink).color : (csProbe.color || 'rgb(11,95,255)');
+
+    setVar(CONTENT_DOC, '--hl-accent', accentStr);
+    try { setVar(ROOT_DOC, '--hl-accent', accentStr); } catch(e){}
+
     if (isDark){
-      setVar('--hl-ui-bg', 'rgba(20,20,22,.92)');
-      setVar('--hl-ui-fg', 'rgba(255,255,255,.92)');
-      setVar('--hl-ui-muted', 'rgba(255,255,255,.68)');
-      setVar('--hl-ui-border', 'rgba(255,255,255,.16)');
-      setVar('--hl-ui-shadow', '0 18px 44px rgba(0,0,0,.55)');
+      setVar(CONTENT_DOC, '--hl-ui-bg', 'rgba(20,20,22,.92)');
+      setVar(CONTENT_DOC, '--hl-ui-fg', 'rgba(255,255,255,.92)');
+      setVar(CONTENT_DOC, '--hl-ui-muted', 'rgba(255,255,255,.68)');
+      setVar(CONTENT_DOC, '--hl-ui-border', 'rgba(255,255,255,.16)');
+      setVar(CONTENT_DOC, '--hl-ui-shadow', '0 18px 44px rgba(0,0,0,.55)');
+      try{
+        setVar(ROOT_DOC, '--hl-ui-bg', 'rgba(20,20,22,.92)');
+        setVar(ROOT_DOC, '--hl-ui-fg', 'rgba(255,255,255,.92)');
+        setVar(ROOT_DOC, '--hl-ui-muted', 'rgba(255,255,255,.68)');
+        setVar(ROOT_DOC, '--hl-ui-border', 'rgba(255,255,255,.16)');
+        setVar(ROOT_DOC, '--hl-ui-shadow', '0 18px 44px rgba(0,0,0,.55)');
+      } catch(e){}
     } else {
-      setVar('--hl-ui-bg', 'rgba(255,255,255,.92)');
-      setVar('--hl-ui-fg', 'rgba(0,0,0,.88)');
-      setVar('--hl-ui-muted', 'rgba(0,0,0,.62)');
-      setVar('--hl-ui-border', 'rgba(0,0,0,.14)');
-      setVar('--hl-ui-shadow', '0 16px 42px rgba(0,0,0,.16)');
+      setVar(CONTENT_DOC, '--hl-ui-bg', 'rgba(255,255,255,.92)');
+      setVar(CONTENT_DOC, '--hl-ui-fg', 'rgba(0,0,0,.88)');
+      setVar(CONTENT_DOC, '--hl-ui-muted', 'rgba(0,0,0,.62)');
+      setVar(CONTENT_DOC, '--hl-ui-border', 'rgba(0,0,0,.14)');
+      setVar(CONTENT_DOC, '--hl-ui-shadow', '0 16px 42px rgba(0,0,0,.16)');
+      try{
+        setVar(ROOT_DOC, '--hl-ui-bg', 'rgba(255,255,255,.92)');
+        setVar(ROOT_DOC, '--hl-ui-fg', 'rgba(0,0,0,.88)');
+        setVar(ROOT_DOC, '--hl-ui-muted', 'rgba(0,0,0,.62)');
+        setVar(ROOT_DOC, '--hl-ui-border', 'rgba(0,0,0,.14)');
+        setVar(ROOT_DOC, '--hl-ui-shadow', '0 16px 42px rgba(0,0,0,.16)');
+      } catch(e){}
     }
   }
+  adaptUIVars();
+  setInterval(adaptUIVars, 1200);
 
-  adaptUIToTheme();
-  setInterval(adaptUIToTheme, 1200);
-
-  // -----------------------------
-  // UI: Button + Panel
-  // -----------------------------
-  if (doc.getElementById('lia-hl-btn')) return;
-
-  const btn = doc.createElement('button');
-  btn.id = 'lia-hl-btn';
-  btn.type = 'button';
-  btn.innerHTML = '<span class="dot" id="lia-hl-dot"></span><span>Textmarker</span>';
-  doc.body.appendChild(btn);
-
-  const panel = doc.createElement('div');
-  panel.id = 'lia-hl-panel';
-  panel.innerHTML = `
-    <div class="hdr">
-      <div class="title">Textmarker</div>
-    </div>
-    <div class="body">
-      <div class="hl-tools">
-        <button class="hl-tool active" id="hl-tool-mark" type="button">🖍️</button>
-        <button class="hl-tool" id="hl-tool-erase" type="button">🧽</button>
-      </div>
-
-      <div>
-        <div class="hl-hint" style="margin-bottom:8px;">Farbe</div>
-        <div class="hl-colors" id="hl-colors"></div>
-      </div>
-
-      <button class="hl-clear" id="hl-clear" type="button">Alle Markierungen löschen</button>
-    </div>
-  `;
-  doc.body.appendChild(panel);
-
-  const dot      = doc.getElementById('lia-hl-dot');
-  const toolMark = doc.getElementById('hl-tool-mark');
-  const toolErase= doc.getElementById('hl-tool-erase');
-  const colorsEl = doc.getElementById('hl-colors');
-  const clearBtn = doc.getElementById('hl-clear');
-
-  function positionPanelUnderButton(){
-    const r = btn.getBoundingClientRect();
-    panel.style.left = `${Math.max(12, Math.round(r.left))}px`;
-    panel.style.top  = `${Math.round(r.bottom + 10)}px`;
-  }
-
-  // -----------------------------
-  // Overlay Layer
-  // -----------------------------
-  const overlay = doc.createElement('div');
+  // ---------------------------------------------------------
+  // Overlay Layer (Content)
+  // ---------------------------------------------------------
+  const overlay = CONTENT_DOC.createElement('div');
   overlay.className = 'lia-hl-overlay';
-  doc.body.appendChild(overlay);
-
-  let HL = [];
-  let nextId = 1;
+  CONTENT_DOC.body.appendChild(overlay);
 
   function currentScroll(){
-    return { x: (window.scrollX || 0), y: (window.scrollY || 0) };
+    return { x: (CONTENT_WIN.scrollX || 0), y: (CONTENT_WIN.scrollY || 0) };
   }
 
   function render(){
     overlay.innerHTML = '';
     const sc = currentScroll();
 
-    for (const item of HL){
+    for (const item of SH.HL){
       for (const r of item.rects){
-        const el = doc.createElement('div');
+        const el = CONTENT_DOC.createElement('div');
         el.className = 'lia-hl-rect';
         el.setAttribute('data-hl', item.color);
         el.setAttribute('data-id', String(item.id));
@@ -336,149 +342,251 @@ body.lia-hl-panel-open #lia-hl-panel{
     }
   }
 
-  window.addEventListener('scroll', render, { passive: true });
-  window.addEventListener('resize', render);
+  CONTENT_WIN.addEventListener('scroll', render, { passive: true });
+  CONTENT_WIN.addEventListener('resize', render);
 
-  // -----------------------------
-  // State
-  // -----------------------------
-  let active = false;     // Textmarker an/aus (per Button)
-  let panelOpen = false;  // Panel sichtbar/unsichtbar
-
-  let tool = 'mark';
-  let color = 'yellow';
-  const colorKeys = ['yellow','green','blue','pink','orange','red'];
-
-  function getVar(name, fallback){
-    const v = getComputedStyle(doc.documentElement).getPropertyValue(name).trim();
-    return v || fallback;
+  // ---------------------------------------------------------
+  // Root UI: Button in .lia-header__left + Panel im Body
+  // ---------------------------------------------------------
+  function findHeaderLeft(){
+    // genau das, was du im DOM gesehen hast:
+    // <header id="lia-toolbar-nav" class="lia-header"> ... <div class="lia-header__left"> ... </div>
+    const header = ROOT_DOC.querySelector('header#lia-toolbar-nav') || ROOT_DOC.querySelector('#lia-toolbar-nav');
+    if (!header) return null;
+    return header.querySelector('.lia-header__left') || null;
   }
 
-  function applyClasses(){
-    body.classList.toggle('lia-hl-active', active);
-    body.classList.toggle('lia-hl-panel-open', active && panelOpen);
-  }
+  function findTOCButtonInLeft(left){
+    if (!left) return null;
+    const btns = Array.from(left.querySelectorAll('button,[role="button"],a'));
+    if (!btns.length) return null;
 
-  function setActive(v){
-    active = !!v;
-    if (!active) panelOpen = false;
-    applyClasses();
-    if (active && panelOpen) positionPanelUnderButton();
-  }
-
-  function setPanelOpen(v){
-    panelOpen = !!v;
-    applyClasses();
-    if (active && panelOpen) positionPanelUnderButton();
-  }
-
-  function setTool(t){
-    tool = t;
-    toolMark.classList.toggle('active', tool === 'mark');
-    toolErase.classList.toggle('active', tool === 'erase');
-    overlay.classList.toggle('erase-on', tool === 'erase');
-  }
-
-  function setColor(c){
-    color = c;
-    const map = {
-      yellow: getVar('--hl-yellow','rgba(255,238,88,.55)'),
-      green:  getVar('--hl-green','rgba(144,238,144,.45)'),
-      blue:   getVar('--hl-blue','rgba(173,216,230,.45)'),
-      pink:   getVar('--hl-pink','rgba(255,182,193,.45)'),
-      orange: getVar('--hl-orange','rgba(255,200,120,.55)'),
-      red:    getVar('--hl-red','rgba(255,80,80,.40)'),
-    };
-    dot.style.background = map[color] || map.yellow;
-
-    [...colorsEl.querySelectorAll('.hl-swatch')].forEach(s => {
-      s.classList.toggle('active', s.getAttribute('data-hl') === color);
+    // bevorzugt "Inhaltsverzeichnis"/TOC
+    const pick = btns.find(b=>{
+      const t = ((b.getAttribute('aria-label')||b.getAttribute('title')||b.textContent||'')+'').toLowerCase();
+      return t.includes('inhaltsverzeichnis') || t.includes('table of contents') || t.includes('contents');
     });
+    return pick || btns[0];
   }
 
-  // Swatches
-  colorKeys.forEach(key => {
-    const sw = doc.createElement('button');
-    sw.type = 'button';
-    sw.className = 'hl-swatch';
-    sw.setAttribute('data-hl', key);
+  function ensureRootButtonAndPanel(){
+    // Button
+    let btn = ROOT_DOC.getElementById('lia-hl-btn');
+    if (!btn){
+      btn = ROOT_DOC.createElement('button');
+      btn.id = 'lia-hl-btn';
+      btn.type = 'button';
+      btn.setAttribute('aria-label', 'Textmarker');
 
-    const map = {
-      yellow: getVar('--hl-yellow','rgba(255,238,88,.55)'),
-      green:  getVar('--hl-green','rgba(144,238,144,.45)'),
-      blue:   getVar('--hl-blue','rgba(173,216,230,.45)'),
-      pink:   getVar('--hl-pink','rgba(255,182,193,.45)'),
-      orange: getVar('--hl-orange','rgba(255,200,120,.55)'),
-      red:    getVar('--hl-red','rgba(255,80,80,.40)'),
-    };
-    sw.style.background = map[key];
+      btn.innerHTML = `
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 20h4l10.5-10.5a2.1 2.1 0 0 0 0-3L16.5 4.5a2.1 2.1 0 0 0-3 0L3 15v5z"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M13.5 6.5l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="dot" id="lia-hl-dot"></span>
+      `;
+    }
 
-    // Farbe wählen => markieren + Panel zu
-    sw.addEventListener('click', () => {
-      setTool('mark');
-      setColor(key);
-      setPanelOpen(false);
-    });
+    // Panel
+    let panel = ROOT_DOC.getElementById('lia-hl-panel');
+    if (!panel){
+      panel = ROOT_DOC.createElement('div');
+      panel.id = 'lia-hl-panel';
+      panel.innerHTML = `
+        <div class="hdr"><div class="title">Textmarker</div></div>
+        <div class="body">
+          <div class="hl-tools">
+            <button class="hl-tool" id="hl-tool-mark" type="button">🖍️</button>
+            <button class="hl-tool" id="hl-tool-erase" type="button">🧽</button>
+          </div>
+          <div>
+            <div class="hl-hint" style="margin-bottom:8px;">Farbe</div>
+            <div class="hl-colors" id="hl-colors"></div>
+          </div>
+          <button class="hl-clear" id="hl-clear" type="button">Alle Markierungen löschen</button>
+        </div>
+      `;
+      ROOT_DOC.body.appendChild(panel);
+    }
 
-    colorsEl.appendChild(sw);
-  });
-
-  // Init
-  setTool('mark');
-  setColor('yellow');
-  setActive(false);
-  setPanelOpen(false);
-
-  // =============================
-  // UI Interaktion
-  // =============================
-  // Linksklick: active toggeln
-  btn.addEventListener('click', () => {
-    if (!active) {
-      setActive(true);
-      setPanelOpen(true);    // beim Einschalten Panel zeigen
+    // In Header-Left einfügen (als "zusätzlicher Button")
+    const left = findHeaderLeft();
+    if (left){
+      // schon drin?
+      if (btn.parentNode !== left){
+        const anchor = findTOCButtonInLeft(left);
+        if (anchor && anchor.parentNode === left){
+          anchor.insertAdjacentElement('afterend', btn);
+        } else {
+          left.appendChild(btn);
+        }
+      }
     } else {
-      setActive(false);      // beim erneuten Klick komplett aus
-      setPanelOpen(false);
+      // Fallback: notfalls oben in body (aber ohne fixed—soll dich nicht wieder ärgern)
+      if (!btn.parentNode) ROOT_DOC.body.appendChild(btn);
     }
-  });
+  }
 
-  // Rechtsklick: Panel toggeln (ohne active zu ändern)
-  btn.addEventListener('contextmenu', (e) => {
-    e.preventDefault();
-    if (!active) return;
-    setPanelOpen(!panelOpen);
-  });
+  function positionPanelUnderButton(){
+    const btn = ROOT_DOC.getElementById('lia-hl-btn');
+    const panel = ROOT_DOC.getElementById('lia-hl-panel');
+    if (!btn || !panel) return;
+    const r = btn.getBoundingClientRect();
+    panel.style.left = `${Math.max(12, Math.round(r.left))}px`;
+    panel.style.top  = `${Math.round(r.bottom + 10)}px`;
+  }
 
-  toolMark.addEventListener('click', () => { setTool('mark'); setPanelOpen(false); });
-  toolErase.addEventListener('click', () => { setTool('erase'); setPanelOpen(false); });
+  function ensureSwatchesOnce(){
+    const colorsEl = ROOT_DOC.getElementById('hl-colors');
+    if (!colorsEl) return;
+    if (colorsEl.childElementCount > 0) return;
 
-  window.addEventListener('resize', () => { if (active && panelOpen) positionPanelUnderButton(); });
+    const keys = ['yellow','green','blue','pink','orange','red'];
 
-  doc.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      // Esc schließt nur das Panel, Textmarker bleibt an
-      if (active && panelOpen) setPanelOpen(false);
+    const cssMap = {
+      yellow: getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-yellow').trim() || 'rgba(255,238,88,.55)',
+      green:  getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-green').trim()  || 'rgba(144,238,144,.45)',
+      blue:   getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-blue').trim()   || 'rgba(173,216,230,.45)',
+      pink:   getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-pink').trim()   || 'rgba(255,182,193,.45)',
+      orange: getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-orange').trim() || 'rgba(255,200,120,.55)',
+      red:    getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-red').trim()    || 'rgba(255,80,80,.40)',
+    };
+
+    keys.forEach(key=>{
+      const sw = ROOT_DOC.createElement('button');
+      sw.type = 'button';
+      sw.className = 'hl-swatch';
+      sw.setAttribute('data-hl', key);
+      sw.style.background = cssMap[key];
+
+      sw.addEventListener('click', ()=>{
+        SH.state.tool = 'mark';
+        SH.state.color = key;
+        SH.state.panelOpen = false;
+        applyUI();
+      });
+
+      colorsEl.appendChild(sw);
+    });
+  }
+
+  function applyUI(){
+    try{
+      ROOT_DOC.body.classList.toggle('lia-hl-active', !!SH.state.active);
+      ROOT_DOC.body.classList.toggle('lia-hl-panel-open', !!(SH.state.active && SH.state.panelOpen));
+    } catch(e){}
+
+    overlay.classList.toggle('erase-on', SH.state.tool === 'erase');
+
+    const toolMark = ROOT_DOC.getElementById('hl-tool-mark');
+    const toolErase= ROOT_DOC.getElementById('hl-tool-erase');
+    if (toolMark) toolMark.classList.toggle('active', SH.state.tool === 'mark');
+    if (toolErase)toolErase.classList.toggle('active', SH.state.tool === 'erase');
+
+    const dot = ROOT_DOC.getElementById('lia-hl-dot');
+    if (dot){
+      const map = {
+        yellow: getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-yellow').trim() || 'rgba(255,238,88,.55)',
+        green:  getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-green').trim()  || 'rgba(144,238,144,.45)',
+        blue:   getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-blue').trim()   || 'rgba(173,216,230,.45)',
+        pink:   getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-pink').trim()   || 'rgba(255,182,193,.45)',
+        orange: getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-orange').trim() || 'rgba(255,200,120,.55)',
+        red:    getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-red').trim()    || 'rgba(255,80,80,.40)',
+      };
+      dot.style.background = map[SH.state.color] || map.yellow;
     }
-  });
 
-  // =============================
-  // Markieren: Panel schließt zuverlässig
-  // =============================
-  function isInsideUI(node){
+    const colorsEl = ROOT_DOC.getElementById('hl-colors');
+    if (colorsEl){
+      Array.from(colorsEl.querySelectorAll('.hl-swatch')).forEach(s=>{
+        s.classList.toggle('active', s.getAttribute('data-hl') === SH.state.color);
+      });
+    }
+
+    if (SH.state.active && SH.state.panelOpen) positionPanelUnderButton();
+  }
+
+  function wireUIOnce(){
+    const btn = ROOT_DOC.getElementById('lia-hl-btn');
+    if (!btn || btn.__liaHLWired) return;
+    btn.__liaHLWired = true;
+
+    const toolMark = ROOT_DOC.getElementById('hl-tool-mark');
+    const toolErase= ROOT_DOC.getElementById('hl-tool-erase');
+    const clearBtn = ROOT_DOC.getElementById('hl-clear');
+
+    ensureSwatchesOnce();
+
+    // Linksklick: an/aus
+    btn.addEventListener('click', ()=>{
+      if (!SH.state.active){
+        SH.state.active = true;
+        SH.state.panelOpen = true;
+      } else {
+        SH.state.active = false;
+        SH.state.panelOpen = false;
+      }
+      applyUI();
+    });
+
+    // Rechtsklick: Panel toggeln (ohne active zu ändern)
+    btn.addEventListener('contextmenu', (e)=>{
+      e.preventDefault();
+      if (!SH.state.active) return;
+      SH.state.panelOpen = !SH.state.panelOpen;
+      applyUI();
+    });
+
+    if (toolMark){
+      toolMark.addEventListener('click', ()=>{
+        SH.state.tool = 'mark';
+        SH.state.panelOpen = false;
+        applyUI();
+      });
+    }
+    if (toolErase){
+      toolErase.addEventListener('click', ()=>{
+        SH.state.tool = 'erase';
+        SH.state.panelOpen = false;
+        applyUI();
+      });
+    }
+
+    if (clearBtn){
+      clearBtn.addEventListener('click', ()=>{
+        SH.HL = [];
+        render();
+        SH.state.panelOpen = false;
+        applyUI();
+      });
+    }
+
+    ROOT_DOC.addEventListener('keydown', (e)=>{
+      if (e.key === 'Escape' && SH.state.active && SH.state.panelOpen){
+        SH.state.panelOpen = false;
+        applyUI();
+      }
+    });
+  }
+
+  // ---------------------------------------------------------
+  // Markieren (Content)
+  // ---------------------------------------------------------
+  function isForbiddenTarget(node){
     const el = (node && node.nodeType === 1) ? node : node?.parentElement;
     if (!el) return false;
-    return !!el.closest('#lia-hl-panel, #lia-hl-btn');
+    return !!el.closest('input, textarea, select, button, a, code, pre');
   }
 
   function addHighlightFromSelection(){
-    const sel = window.getSelection ? window.getSelection() : null;
+    const sel = CONTENT_WIN.getSelection ? CONTENT_WIN.getSelection() : null;
     if (!sel || sel.rangeCount === 0) return;
 
     const range = sel.getRangeAt(0);
     if (!range || range.collapsed) return;
 
-    if (isInsideUI(range.startContainer) || isInsideUI(range.endContainer)) return;
+    if (isForbiddenTarget(range.startContainer) || isForbiddenTarget(range.endContainer)) return;
 
     const txt = sel.toString();
     if (!txt || !txt.trim()) return;
@@ -493,44 +601,65 @@ body.lia-hl-panel-open #lia-hl-panel{
 
     if (!packed.length) return;
 
-    HL.push({ id: nextId++, color, rects: packed });
+    SH.HL.push({ id: SH.nextId++, color: SH.state.color, rects: packed });
     sel.removeAllRanges();
     render();
   }
 
-  doc.addEventListener('mouseup', () => {
-    if (!active) return;
+  CONTENT_DOC.addEventListener('mouseup', ()=>{
+    if (!SH.state.active) return;
 
-    // <- DAS ist jetzt garantiert wirksam, weil CSS NICHT mehr an "active" hängt
-    if (panelOpen) setPanelOpen(false);
+    // Panel beim Markieren/Interagieren schließen
+    if (SH.state.panelOpen){
+      SH.state.panelOpen = false;
+      applyUI();
+    }
 
-    if (tool !== 'mark') return;
+    if (SH.state.tool !== 'mark') return;
     addHighlightFromSelection();
   }, true);
 
-  // =============================
-  // Radieren
-  // =============================
-  overlay.addEventListener('click', (e) => {
-    if (!active) return;
-    if (tool !== 'erase') return;
+  // Radieren (Overlay)
+  overlay.addEventListener('click', (e)=>{
+    if (!SH.state.active) return;
+    if (SH.state.tool !== 'erase') return;
 
-    if (panelOpen) setPanelOpen(false);
+    if (SH.state.panelOpen){
+      SH.state.panelOpen = false;
+      applyUI();
+    }
 
-    const t = e.target;
-    const id = t?.getAttribute?.('data-id');
+    const id = e.target?.getAttribute?.('data-id');
     if (!id) return;
 
     const n = Number(id);
-    HL = HL.filter(item => item.id !== n);
+    SH.HL = SH.HL.filter(item => item.id !== n);
     render();
   });
 
-  clearBtn.addEventListener('click', () => {
-    HL = [];
-    render();
-    setPanelOpen(false);
-  });
+  // ---------------------------------------------------------
+  // Docking stabil halten (Nightly / DOM-Updates)
+  // ---------------------------------------------------------
+  function tick(){
+    ensureRootButtonAndPanel();
+    ensureSwatchesOnce();
+    wireUIOnce();
+    applyUI();
+    if (SH.state.active && SH.state.panelOpen) positionPanelUnderButton();
+  }
+
+  tick();
+  render();
+
+  ROOT_WIN.addEventListener('resize', tick);
+  CONTENT_WIN.addEventListener('resize', ()=>{ render(); tick(); });
+
+  try{
+    const mo = new MutationObserver(()=>tick());
+    mo.observe(ROOT_DOC.body, { childList:true, subtree:true, attributes:true });
+  } catch(e){}
+
+  setInterval(tick, 900);
 
 })();
 @end
