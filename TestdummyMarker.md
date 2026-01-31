@@ -5,10 +5,7 @@ narrator: Deutsch Female
 
 tags:
 comment:
-author:
-
-import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
-        https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+author: Martin Lommatzsch
 
 
 @style
@@ -667,4 +664,4 @@ body.lia-hl-panel-open #lia-hl-panel{
 
 # Textmarker
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+Klicke auf den Stift im Header und markiere im Text wie es dir beliebt. 

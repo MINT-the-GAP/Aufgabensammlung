@@ -1,657 +1,655 @@
 <!--
-version:  0.0.1
-language: de
-narrator: Deutsch Female
-
-tags: 
-
-comment: 
-
-author: Martin Lommatzsch, André Dietrich
-
-
-
-
-
-
-
-
-
-
-
-
-@onload
-window.segments = window.segments || {}
-
-window.toggleSegments = function (uid, i) {
-  segments[uid][i] = !segments[uid][i]
-}
-@end
-
-@circleQuiz: @circleQuiz_(@uid,@0)
-
-@circleQuiz_
-<script modify="false">
-const segments = @input(`segments-@0`);
-const cx = 145, cy = 150, r = 140;
-
-const circleFill = "white";  // Hintergrundfarbe Kreis
-const lineColor  = "black";          // Linienfarbe
-const segmentFill = "orange";     // Füllfarbe aktiver Segmente
-
-const step = 360 / segments;
-const startOffset = -90;
-
-let lines = "";
-let slices = "";
-
-if (segments > 1) {
-  for (let i = 0; i < segments; i++) {
-    const a0 = (startOffset + step * i) * Math.PI / 180;
-    const a1 = (startOffset + step * (i + 1)) * Math.PI / 180;
-
-    const x0 = cx + r * Math.cos(a0), y0 = cy + r * Math.sin(a0);
-    const x1 = cx + r * Math.cos(a1), y1 = cy + r * Math.sin(a1);
-
-    const largeArc = (step > 180) ? 1 : 0;
-    const sweep = 1;
-
-    const isActive = window.segments['@0'][i];
-    slices += `
-      <path class="slice@0 slice@0 ${isActive ? 'active' : ''}"
-            d="M ${cx},${cy} L ${x0},${y0} A ${r},${r} 0 ${largeArc},${sweep} ${x1},${y1} Z"
-            onclick="
-              this.classList.toggle('active');
-              toggleSegments('@0', ${i});
-            ">
-      </path>
-    `;
-
-    lines += `<line x1="${cx}" y1="${cy}" x2="${x0}" y2="${y0}" stroke="${lineColor}" stroke-width="2"/>`;
-  }
-} else {
-    const isActive = window.segments['@0'][0];
-    slices = `
-    <circle class="slice@0 ${isActive ? 'active' : ''}"
-            cx="${cx}" cy="${cy}" r="${r}"
-            onclick="this.classList.toggle('active'); toggleSegments('@0', 0);">
-    </circle>
-  `;
-}
-
-`HTML:
-<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" width="300" height="300" 
-     style="--line:${lineColor}; --segment:${segmentFill}">
-  <style>
-    .slice@0 { fill: transparent; cursor: pointer; }
-    .slice@0.active { fill: var(--segment); }
-  </style>
-
-  <circle cx="${cx}" cy="${cy}" r="${r}" stroke="${lineColor}" stroke-width="2" fill="${circleFill}"/>
-  ${slices}
-  ${lines}
-</svg>
-`
-</script>
-
-<script run-once modify="false" input="range" output="segments-@0" value="1" min="1" max="32" input-always-active>
-if (!segments["@0"] || @input != segments["@0"].length) {
-  segments["@0"] = Array(@input).fill(false);
-}
-
-@input
-</script>
-
-[[!]]
-<script>
-@1 === ((window.segments["@0"].filter(i => i).length) / window.segments["@0"].length)
-</script>
-@end
-
-
-
-
-
-
-
-
-
-
-
-@komma: @komma_(@uid,`@0`,`@1`)
-
-@komma_
-<input
-  data-id="lia-quiz-@0"
-  class="lia-input lia-quiz__input"
-  style="margin-bottom: 2rem"
-  value="@1">
-
-[[!]]
-<script>
-const eingabe = document.querySelector('[data-id="lia-quiz-@0"]').value.toLocaleLowerCase().replace(/\s+/g,"")
-
-eingabe == "@2".toLocaleLowerCase().replace(/\s+/g,"")
-</script>
-@end
-
-
-
-
-
-
-
-
-
-
-vorlesen: {|>}{<span style="position: absolute; left: -10000px">@0</span>} [[  @0  ]]
-
-
-
-
-
-
-
-
-formula: \carry   \textcolor{red}{\scriptsize #1}
-formula: \digit   \rlap{\carry{#1}}\phantom{#2}#2
-formula: \permil  \text{‰}
-
-
-
+Textmarker-Template (importierbar)
+
+WICHTIG:
+- In importierten Dateien dürfen @style/@onload NICHT im Header-Kommentar stehen,
+  sonst werden sie oft nicht als LiaScript-Direktiven ausgeführt.
+- Diese Datei ist daher bewusst OHNE LiaScript-Header aufgebaut.
+
+Autor: Martin Lommatzsch
+-->
 
 @style
-main > *:not(:last-child) { margin-bottom: 3rem; }
-input { text-align: center; }
-
-/* =========================================================
-   1) Layout: NEBENEINANDER (Grid, robust)
-   ========================================================= */
 :root{
-  --flex-child-minw: 350px;   /* wird per JS gesetzt: 350/425/500 */
-  --pres-side-gap: 12px;      /* Präsentationsmodus: kleiner Rand */
-  --lia-pres-font: unset;     /* Präsentation/Slides: 18/22/26 */
+  /* Highlight-Farben */
+  --hl-yellow: rgba(255, 238, 88, 0.55);
+  --hl-green:  rgba(144, 238, 144, 0.45);
+  --hl-blue:   rgba(173, 216, 230, 0.45);
+  --hl-pink:   rgba(255, 182, 193, 0.45);
+  --hl-orange: rgba(255, 200, 120, 0.55);
+  --hl-red:    rgba(255,  80,  80, 0.40);
+
+  /* UI (Theme/Mode per JS) */
+  --hl-ui-bg: rgba(255,255,255,.92);
+  --hl-ui-fg: rgba(0,0,0,.88);
+  --hl-ui-border: rgba(0,0,0,.14);
+  --hl-ui-muted: rgba(0,0,0,.62);
+  --hl-ui-shadow: 0 16px 42px rgba(0,0,0,.16);
+
+  /* Akzentfarbe (per JS aus Theme abgeleitet) */
+  --hl-accent: rgb(11,95,255);
+
+  --hl-z: 9999999;
 }
 
-.flex-container{
+/* =========================================================
+   BUTTON: "wie ein zusätzlicher Header-Button"
+   -> KEIN fixed/absolute fürs Button-Layout!
+   -> sitzt sauber in .lia-header__left
+   ========================================================= */
+#lia-hl-btn{
+  position: relative !important; /* für Dot */
+  width: 40px !important;
+  height: 40px !important;
+  padding: 0 !important;
+  margin: 0 30px !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  border: 0 !important;
+  background: transparent !important;
+  color: var(--hl-accent) !important; /* wandelt mit Themefarbe (JS setzt) */
+
+  cursor: pointer !important;
+  user-select: none !important;
+
+  /* "Header-Button feel" */
+  border-radius: 10px !important;
+}
+
+#lia-hl-btn:hover{
+  background: color-mix(in srgb, currentColor 10%, transparent) !important;
+}
+
+#lia-hl-btn:active{
+  background: color-mix(in srgb, currentColor 16%, transparent) !important;
+}
+
+#lia-hl-btn .icon{
+  width: 22px !important;
+  height: 22px !important;
+  display: block !important;
+}
+
+#lia-hl-btn .dot{
+  position: absolute !important;
+  right: 6px !important;
+  bottom: 6px !important;
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 999px !important;
+  border: 1px solid var(--hl-ui-border) !important;
+  background: var(--hl-yellow) !important;
+}
+
+body.lia-hl-active #lia-hl-btn{
+  outline: 2px solid color-mix(in srgb, var(--hl-ui-fg) 25%, transparent) !important;
+  outline-offset: 2px !important;
+}
+
+/* =========================================================
+   PANEL (bleibt fixed; positioniert sich unter dem Button)
+   ========================================================= */
+#lia-hl-panel{
+  position: fixed !important;
+  z-index: var(--hl-z) !important;
+
+  width: 130px !important;
+  display: none !important;
+
+  border-radius: 18px !important;
+  border: 1px solid var(--hl-ui-border) !important;
+  background: var(--hl-ui-bg) !important;
+  box-shadow: var(--hl-ui-shadow) !important;
+  overflow: hidden !important;
+  backdrop-filter: blur(6px);
+}
+
+body.lia-hl-panel-open #lia-hl-panel{
+  display: block !important;
+}
+
+#lia-hl-panel .hdr{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap: 10px !important;
+  padding: 10px 12px !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--hl-ui-border) 85%, transparent) !important;
+}
+
+#lia-hl-panel .title{
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  color: var(--hl-ui-fg) !important;
+}
+
+#lia-hl-panel .body{
+  padding: 12px !important;
   display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(var(--flex-child-minw), 1fr)) !important;
-  gap: 20px;
-  align-items: stretch;
-
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
+  gap: 12px !important;
 }
 
-.flex-child{
-  box-sizing: border-box;
-  max-width: 100%;
-
-  /* verhindert: Inhalt (Text/Math/Inline) sprengt Spalte */
-  min-width: 0;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+.hl-tools{
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 10px !important;
 }
 
-@media (max-width: 400px){
-  .flex-container{ grid-template-columns: 1fr !important; }
+.hl-tool{
+  border: 1px solid var(--hl-ui-border) !important;
+  background: color-mix(in srgb, var(--hl-ui-fg) 5%, transparent) !important;
+  color: var(--hl-ui-fg) !important;
+
+  border-radius: 14px !important;
+  padding: 10px 10px !important;
+  cursor: pointer !important;
+  font-size: 13px !important;
+
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+
+  user-select:none !important;
 }
 
-/* =========================================================
-   2) Spoiler / Collaborative: nie breiter als Spalte
-   ========================================================= */
-details.spoiler > summary{
-  cursor: pointer;
-  font-weight: 600;
+.hl-tool.active{
+  background: color-mix(in srgb, var(--hl-ui-fg) 16%, transparent) !important;
+  border-color: color-mix(in srgb, var(--hl-ui-fg) 22%, var(--hl-ui-border)) !important;
 }
-details.spoiler[open] > summary{ margin-bottom: 0.5em; }
-details.spoiler{ margin: 0.5em 0; }
 
-details.spoiler .collab-wrap{
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
-  box-sizing: border-box;
+.hl-colors{
+  display:flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
 }
-details.spoiler .collab-wrap *{
-  max-width: 100%;
-  box-sizing: border-box;
+
+.hl-swatch{
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 999px !important;
+  border: 2px solid var(--hl-ui-border) !important;
+  cursor: pointer !important;
+  box-shadow: 0 8px 16px color-mix(in srgb, var(--hl-ui-fg) 18%, transparent) !important;
 }
-details.spoiler .collab-wrap canvas{
+
+.hl-swatch.active{
+  outline: 3px solid color-mix(in srgb, var(--hl-ui-fg) 65%, transparent) !important;
+  outline-offset: 2px !important;
+}
+
+.hl-clear{
   width: 100% !important;
-  max-width: 100% !important;
-  display: block;
-  touch-action: none;
-}
-
-/* Button-Leiste: rechts unten unterhalb Canvas */
-details.spoiler .collab-wrap .collab-controls{
-  margin-top: 6px;
-  display: flex;
-  justify-content: flex-end;
-}
-details.spoiler .collab-wrap .collab-controls button{
-  padding: 6px 10px;
-  font-size: 0.9rem;
-  border: 1px solid currentColor;
-  border-radius: 6px;
-  background: transparent;
-  cursor: pointer;
+  border: 1px solid color-mix(in srgb, rgba(200,0,0,.9) 25%, var(--hl-ui-border)) !important;
+  background: rgba(200,0,0,.06) !important;
+  border-radius: 14px !important;
+  padding: 10px 10px !important;
+  cursor: pointer !important;
+  font-size: 12px !important;
+  color: var(--hl-ui-fg) !important;
 }
 
 /* =========================================================
-   3) Präsentation: fast volle Breite (NUR presentation!)
-      Slides: KEINE Breiten-Overrides (sonst Folienfenster kaputt)
+   OVERLAY-HIGHLIGHTS (keine DOM-Manipulation am Text!)
    ========================================================= */
-
-/* --- volle Breite nur im echten Präsentationsmodus --- */
-html[data-lia-mode="presentation"] body{ margin: 0 !important; }
-
-/* NUR main anfassen, nicht .slides/.lia-slide/.wrapper/etc. */
-html[data-lia-mode="presentation"] main{
-  width: calc(100vw - (2 * var(--pres-side-gap))) !important;
-  max-width: calc(100vw - (2 * var(--pres-side-gap))) !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  box-sizing: border-box !important;
-  padding-left: var(--pres-side-gap) !important;
-  padding-right: var(--pres-side-gap) !important;
+.lia-hl-overlay{
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: calc(var(--hl-z) - 1) !important;
+  pointer-events: none !important;
 }
 
-/* --- Schrift-Boost: presentation UND slides --- */
-html[data-lia-mode="presentation"] main,
-html[data-lia-mode="slides"] main{
-  font-size: var(--lia-pres-font) !important;
+.lia-hl-overlay.erase-on{
+  pointer-events: auto !important;
 }
+
+.lia-hl-rect{
+  position: absolute !important;
+  border-radius: 6px !important;
+  box-shadow: 0 1px 0 rgba(0,0,0,.08) inset;
+  mix-blend-mode: multiply;
+}
+
+.lia-hl-rect[data-hl="yellow"]{ background: var(--hl-yellow); }
+.lia-hl-rect[data-hl="green"] { background: var(--hl-green);  }
+.lia-hl-rect[data-hl="blue"]  { background: var(--hl-blue);   }
+.lia-hl-rect[data-hl="pink"]  { background: var(--hl-pink);   }
+.lia-hl-rect[data-hl="orange"]{ background: var(--hl-orange); }
+.lia-hl-rect[data-hl="red"]   { background: var(--hl-red);    }
 @end
-
-
-
-
-
-@Rechenplatz: @Rechenplatz@0
-
-@RechenplatzT
-<div class="onlyPresentation" style="display:none;"></div>
-
-<div class="onlyTextbook" style="display:none;">
-  <details class="spoiler">
-    <summary>
-      <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/pen.png" width="25" height="25">
-      Platz für Notizen oder zum Rechnen öffnen
-    </summary>
-
-    <div class="collab-wrap">
-      @[Collaborative.lines(640,100)](./img/example.jpg)
-    </div>
-  </details>
-</div>
-@end
-
-@RechenplatzP
-<div class="onlyPresentation" style="display:none;">
-  <details class="spoiler">
-    <summary>
-      <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/pen.png" width="25" height="25">
-      Platz für Notizen oder zum Rechnen öffnen
-    </summary>
-
-    <div class="collab-wrap">
-      @[Collaborative.lines(640,100)](./img/example.jpg)
-    </div>
-  </details>
-</div>
-
-<div class="onlyTextbook" style="display:none;"></div>
-@end
-
-@RechenplatzTP
-<div class="onlyPresentation" style="display:none;">
-  <details class="spoiler">
-    <summary>
-      <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/pen.png" width="25" height="25">
-      Platz für Notizen oder zum Rechnen öffnen
-    </summary>
-
-    <div class="collab-wrap">
-      @[Collaborative.lines(640,100)](./img/example.jpg)
-    </div>
-  </details>
-</div>
-
-<div class="onlyTextbook" style="display:none;">
-  <details class="spoiler">
-    <summary>
-      <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/pen.png" width="25" height="25">
-      Platz für Notizen oder zum Rechnen öffnen
-    </summary>
-
-    <div class="collab-wrap">
-      @[Collaborative.lines(640,100)](./img/example.jpg)
-    </div>
-  </details>
-</div>
-@end
-
-@RechenplatzPT: @RechenplatzTP
-
-
 
 
 @onload
-(function () {
-  const SETTINGS_KEY = "settings";
+(function(){
+  if (window.__liaTextmarker_headerbtn_v1) return;
+  window.__liaTextmarker_headerbtn_v1 = true;
 
-  function norm(x){ return String(x == null ? "" : x).toLowerCase(); }
-
-  function safeGetSettingsRaw(){
-    try { return localStorage.getItem(SETTINGS_KEY); }
-    catch (e) { return null; }
+  // ---------------------------------------------------------
+  // Root Window/Doc (falls LiaScript im iframe steckt)
+  // ---------------------------------------------------------
+  function getRootWindow(){
+    let w = window;
+    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
+    return w;
   }
+  const ROOT_WIN = getRootWindow();
+  const ROOT_DOC = ROOT_WIN.document;
 
-  function findModeInJson(obj){
-    const seen = new Set();
+  const CONTENT_WIN = window;
+  const CONTENT_DOC = document;
 
-    function walk(v){
-      if (v == null) return null;
+  // ---------------------------------------------------------
+  // Shared State (Root, damit UI robust ist)
+  // ---------------------------------------------------------
+  ROOT_WIN.__liaHL = ROOT_WIN.__liaHL || {};
+  const SH = ROOT_WIN.__liaHL;
 
-      if (typeof v === "string"){
-        const s = norm(v);
-        if (s.includes("presentation")) return "presentation";
-        if (s.includes("slides"))       return "slides";
-        if (s.includes("textbook") || s.includes("book")) return "textbook";
-        return null;
-      }
+  SH.state = SH.state || { active:false, panelOpen:false, tool:'mark', color:'yellow' };
+  SH.HL    = SH.HL    || [];
+  SH.nextId= SH.nextId|| 1;
 
-      if (typeof v !== "object") return null;
-      if (seen.has(v)) return null;
-      seen.add(v);
-
-      for (const k in v){
-        if (!Object.prototype.hasOwnProperty.call(v, k)) continue;
-        const key = norm(k);
-        if (key === "mode" || key === "view" || key === "layout" || key === "format"){
-          const m = walk(v[k]);
-          if (m) return m;
-        }
-      }
-
-      for (const k in v){
-        if (!Object.prototype.hasOwnProperty.call(v, k)) continue;
-        const m = walk(v[k]);
-        if (m) return m;
-      }
-      return null;
-    }
-
-    return walk(obj);
+  // ---------------------------------------------------------
+  // Theme/Accent aus Content ableiten
+  // ---------------------------------------------------------
+  function parseRGB(str){
+    const m = (str || '').match(/rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)/i);
+    if (!m) return null;
+    return { r:+m[1], g:+m[2], b:+m[3] };
   }
-
-  function detectMode(){
-    const raw = safeGetSettingsRaw();
-    if (!raw) return "unknown";
-
-    try {
-      const obj = JSON.parse(raw);
-      return findModeInJson(obj) || "unknown";
-    } catch (e){
-      const s = norm(raw);
-      if (s.includes("presentation")) return "presentation";
-      if (s.includes("slides"))       return "slides";
-      if (s.includes("textbook") || s.includes("book")) return "textbook";
-      return "unknown";
-    }
+  function luminance(rgb){
+    const r = rgb.r/255, g = rgb.g/255, b = rgb.b/255;
+    return 0.2126*r + 0.7152*g + 0.0722*b;
   }
+  function setVar(doc, k, v){ doc.documentElement.style.setProperty(k, v); }
 
-  function applyModeAttr(){
-    document.documentElement.dataset.liaMode = detectMode();
-  }
+  function adaptUIVars(){
+    const probe = CONTENT_DOC.querySelector('main') || CONTENT_DOC.querySelector('[role="main"]') || CONTENT_DOC.body;
+    const csProbe = getComputedStyle(probe);
 
-  /* ---------------- onlyPresentation / onlyTextbook ---------------- */
-  function setDisplayForAll(selector, display){
-    document.querySelectorAll(selector).forEach(function(el){
-      el.style.display = display;
-    });
-  }
+    const bgStr = csProbe.backgroundColor || getComputedStyle(CONTENT_DOC.body).backgroundColor;
+    const bg = parseRGB(bgStr) || {r:255,g:255,b:255};
+    const isDark = luminance(bg) < 0.45;
 
-  function applyModeVisibility(){
-    const mode = detectMode();
-    const isPresLike = (mode === "presentation" || mode === "slides");
+    // Accent: bevorzugt Linkfarbe
+    const anyLink = CONTENT_DOC.querySelector('main a') || CONTENT_DOC.querySelector('a');
+    const accentStr = anyLink ? getComputedStyle(anyLink).color : (csProbe.color || 'rgb(11,95,255)');
 
-    setDisplayForAll(".onlyPresentation", isPresLike ? "block" : "none");
-    setDisplayForAll(".onlyTextbook",     isPresLike ? "none"  : "block");
-  }
+    setVar(CONTENT_DOC, '--hl-accent', accentStr);
+    try { setVar(ROOT_DOC, '--hl-accent', accentStr); } catch(e){}
 
-  /* ---------------- Schriftgrößen-Boost (presentation+slides) ---------------- */
-  const PRES_PX = [18, 24, 32];     // Zielwerte
-  const BASE_MIN = 350;
-  const STEP_MIN = 75;
-
-  function pxToStep0to2(px){
-    if (px <= 17) return 0;
-    if (px <= 19) return 1;
-    return 2;
-  }
-
-  function getMainFontPx(){
-    const main = document.querySelector("main") || document.documentElement;
-    const fs = parseFloat(getComputedStyle(main).fontSize || "16");
-    return isNaN(fs) ? 16 : fs;
-  }
-
-  function setFlexChildMinWidth(step){
-    const minw = BASE_MIN + STEP_MIN * step;  // 350/425/500
-    document.documentElement.style.setProperty("--flex-child-minw", minw + "px");
-  }
-
-  function clearPresFont(){
-    document.documentElement.style.setProperty("--lia-pres-font", "unset");
-  }
-
-  function setPresFont(px){
-    document.documentElement.style.setProperty("--lia-pres-font", px + "px");
-  }
-
-  let sampling = false;
-  let lastStep = 1;
-
-  function applyFontLogic(){
-    const mode = detectMode();
-    const isPresLike = (mode === "presentation" || mode === "slides");
-
-    if (!isPresLike){
-      clearPresFont();
-      const step = pxToStep0to2(getMainFontPx());
-      lastStep = step;
-      setFlexChildMinWidth(step);
-      return;
-    }
-
-    if (sampling) return;
-    sampling = true;
-
-    clearPresFont();
-
-    requestAnimationFrame(function(){
-      requestAnimationFrame(function(){
-        const step = pxToStep0to2(getMainFontPx());
-        lastStep = step;
-
-        setPresFont(PRES_PX[step]);
-        setFlexChildMinWidth(step);
-
-        sampling = false;
-      });
-    });
-  }
-
-  /* ---------------- Collaborative: Height fix + Mehr Platz ---------------- */
-  function isActuallyVisible(el){
-    return !!(el && (el.offsetWidth || el.offsetHeight || el.getClientRects().length));
-  }
-
-  function getCanvasHeight(canvas){
-    const hAttr = canvas.getAttribute("height");
-    const h = hAttr ? parseInt(hAttr, 10) : NaN;
-    if (!isNaN(h) && h > 0) return h;
-
-    if (typeof canvas.height === "number" && canvas.height > 0) return canvas.height;
-
-    const cs = window.getComputedStyle(canvas);
-    const hs = parseInt(cs.height, 10);
-    return (!isNaN(hs) && hs > 0) ? hs : 200;
-  }
-
-  function setCanvasHeight(canvas, newH){
-    canvas.setAttribute("height", String(newH));
-    canvas.height = newH;
-    canvas.style.height = newH + "px";
-    canvas.style.maxHeight = newH + "px";
-  }
-
-  function clampWrapToColumn(wrap){
-    const col = wrap.closest(".flex-child");
-    if (!col) return;
-
-    const w = col.clientWidth;
-    if (!w || w < 50) return;
-
-    wrap.style.width = "100%";
-    wrap.style.maxWidth = w + "px";
-    wrap.style.boxSizing = "border-box";
-
-    const root = wrap.firstElementChild;
-    if (root){
-      root.style.maxWidth = "100%";
-      root.style.boxSizing = "border-box";
+    if (isDark){
+      setVar(CONTENT_DOC, '--hl-ui-bg', 'rgba(20,20,22,.92)');
+      setVar(CONTENT_DOC, '--hl-ui-fg', 'rgba(255,255,255,.92)');
+      setVar(CONTENT_DOC, '--hl-ui-muted', 'rgba(255,255,255,.68)');
+      setVar(CONTENT_DOC, '--hl-ui-border', 'rgba(255,255,255,.16)');
+      setVar(CONTENT_DOC, '--hl-ui-shadow', '0 18px 44px rgba(0,0,0,.55)');
+      try{
+        setVar(ROOT_DOC, '--hl-ui-bg', 'rgba(20,20,22,.92)');
+        setVar(ROOT_DOC, '--hl-ui-fg', 'rgba(255,255,255,.92)');
+        setVar(ROOT_DOC, '--hl-ui-muted', 'rgba(255,255,255,.68)');
+        setVar(ROOT_DOC, '--hl-ui-border', 'rgba(255,255,255,.16)');
+        setVar(ROOT_DOC, '--hl-ui-shadow', '0 18px 44px rgba(0,0,0,.55)');
+      } catch(e){}
+    } else {
+      setVar(CONTENT_DOC, '--hl-ui-bg', 'rgba(255,255,255,.92)');
+      setVar(CONTENT_DOC, '--hl-ui-fg', 'rgba(0,0,0,.88)');
+      setVar(CONTENT_DOC, '--hl-ui-muted', 'rgba(0,0,0,.62)');
+      setVar(CONTENT_DOC, '--hl-ui-border', 'rgba(0,0,0,.14)');
+      setVar(CONTENT_DOC, '--hl-ui-shadow', '0 16px 42px rgba(0,0,0,.16)');
+      try{
+        setVar(ROOT_DOC, '--hl-ui-bg', 'rgba(255,255,255,.92)');
+        setVar(ROOT_DOC, '--hl-ui-fg', 'rgba(0,0,0,.88)');
+        setVar(ROOT_DOC, '--hl-ui-muted', 'rgba(0,0,0,.62)');
+        setVar(ROOT_DOC, '--hl-ui-border', 'rgba(0,0,0,.14)');
+        setVar(ROOT_DOC, '--hl-ui-shadow', '0 16px 42px rgba(0,0,0,.16)');
+      } catch(e){}
     }
   }
+  adaptUIVars();
+  setInterval(adaptUIVars, 1200);
 
-  function ensureControls(wrap){
-    if (wrap.querySelector(".collab-controls")) return;
+  // ---------------------------------------------------------
+  // Overlay Layer (Content)
+  // ---------------------------------------------------------
+  const overlay = CONTENT_DOC.createElement('div');
+  overlay.className = 'lia-hl-overlay';
+  CONTENT_DOC.body.appendChild(overlay);
 
-    const controls = document.createElement("div");
-    controls.className = "collab-controls";
-
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.textContent = "Mehr Platz";
-
-    btn.addEventListener("click", function(){
-      const canvas = wrap.querySelector("canvas");
-      if (!canvas) return;
-
-      const currentH = getCanvasHeight(canvas);
-
-      let dataUrl = null;
-      try { dataUrl = canvas.toDataURL("image/png"); } catch (e) { dataUrl = null; }
-
-      setCanvasHeight(canvas, currentH + 100);
-
-      if (dataUrl){
-        const img = new Image();
-        img.onload = function(){
-          try{
-            const ctx = canvas.getContext("2d");
-            if (ctx) ctx.drawImage(img, 0, 0);
-          } catch (e) {}
-        };
-        img.src = dataUrl;
-      }
-    });
-
-    controls.appendChild(btn);
-    wrap.appendChild(controls);
+  function currentScroll(){
+    return { x: (CONTENT_WIN.scrollX || 0), y: (CONTENT_WIN.scrollY || 0) };
   }
-
-  function fixCollabInVisibleTextbook(){
-    document.querySelectorAll(".onlyTextbook details.spoiler[open] .collab-wrap").forEach(function(wrap){
-      if (!isActuallyVisible(wrap)) return;
-
-      clampWrapToColumn(wrap);
-
-      const canvas = wrap.querySelector("canvas");
-      if (!canvas) return;
-
-      const h = getCanvasHeight(canvas);
-      canvas.style.height = h + "px";
-      canvas.style.maxHeight = h + "px";
-
-      ensureControls(wrap);
-    });
-  }
-
-  function hookDetailsToggle(){
-    document.querySelectorAll(".onlyTextbook details.spoiler").forEach(function(det){
-      if (det.__liaHooked) return;
-      det.__liaHooked = true;
-
-      det.addEventListener("toggle", function(){
-        if (det.open){
-          requestAnimationFrame(function(){
-            fixCollabInVisibleTextbook();
-          });
-        }
-      });
-    });
-  }
-
-  /* ---------------- Render Loop ---------------- */
-  let lastRaw = null;
-  let lastMode = null;
 
   function render(){
-    const raw = safeGetSettingsRaw();
-    const mode = detectMode();
+    overlay.innerHTML = '';
+    const sc = currentScroll();
 
-    applyModeAttr();
-    applyModeVisibility();
-
-    if (raw !== lastRaw || mode !== lastMode){
-      applyFontLogic();
-      lastRaw = raw;
-      lastMode = mode;
-    } else {
-      setFlexChildMinWidth(lastStep);
+    for (const item of SH.HL){
+      for (const r of item.rects){
+        const el = CONTENT_DOC.createElement('div');
+        el.className = 'lia-hl-rect';
+        el.setAttribute('data-hl', item.color);
+        el.setAttribute('data-id', String(item.id));
+        el.style.left   = `${Math.round(r.x - sc.x)}px`;
+        el.style.top    = `${Math.round(r.y - sc.y)}px`;
+        el.style.width  = `${Math.round(r.w)}px`;
+        el.style.height = `${Math.round(r.h)}px`;
+        overlay.appendChild(el);
+      }
     }
-
-    hookDetailsToggle();
-    fixCollabInVisibleTextbook();
   }
 
+  CONTENT_WIN.addEventListener('scroll', render, { passive: true });
+  CONTENT_WIN.addEventListener('resize', render);
+
+  // ---------------------------------------------------------
+  // Root UI: Button in .lia-header__left + Panel im Body
+  // ---------------------------------------------------------
+  function findHeaderLeft(){
+    const header = ROOT_DOC.querySelector('header#lia-toolbar-nav') || ROOT_DOC.querySelector('#lia-toolbar-nav');
+    if (!header) return null;
+    return header.querySelector('.lia-header__left') || null;
+  }
+
+  function findTOCButtonInLeft(left){
+    if (!left) return null;
+    const btns = Array.from(left.querySelectorAll('button,[role="button"],a'));
+    if (!btns.length) return null;
+
+    const pick = btns.find(b=>{
+      const t = ((b.getAttribute('aria-label')||b.getAttribute('title')||b.textContent||'')+'').toLowerCase();
+      return t.includes('inhaltsverzeichnis') || t.includes('table of contents') || t.includes('contents');
+    });
+    return pick || btns[0];
+  }
+
+  function ensureRootButtonAndPanel(){
+    let btn = ROOT_DOC.getElementById('lia-hl-btn');
+    if (!btn){
+      btn = ROOT_DOC.createElement('button');
+      btn.id = 'lia-hl-btn';
+      btn.type = 'button';
+      btn.setAttribute('aria-label', 'Textmarker');
+
+      btn.innerHTML = `
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 20h4l10.5-10.5a2.1 2.1 0 0 0 0-3L16.5 4.5a2.1 2.1 0 0 0-3 0L3 15v5z"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M13.5 6.5l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="dot" id="lia-hl-dot"></span>
+      `;
+    }
+
+    let panel = ROOT_DOC.getElementById('lia-hl-panel');
+    if (!panel){
+      panel = ROOT_DOC.createElement('div');
+      panel.id = 'lia-hl-panel';
+      panel.innerHTML = `
+        <div class="hdr"><div class="title">Textmarker</div></div>
+        <div class="body">
+          <div class="hl-tools">
+            <button class="hl-tool" id="hl-tool-mark" type="button">🖍️</button>
+            <button class="hl-tool" id="hl-tool-erase" type="button">🧽</button>
+          </div>
+          <div>
+            <div class="hl-hint" style="margin-bottom:8px;">Farbe</div>
+            <div class="hl-colors" id="hl-colors"></div>
+          </div>
+          <button class="hl-clear" id="hl-clear" type="button">Alle Markierungen löschen</button>
+        </div>
+      `;
+      ROOT_DOC.body.appendChild(panel);
+    }
+
+    const left = findHeaderLeft();
+    if (left){
+      if (btn.parentNode !== left){
+        const anchor = findTOCButtonInLeft(left);
+        if (anchor && anchor.parentNode === left){
+          anchor.insertAdjacentElement('afterend', btn);
+        } else {
+          left.appendChild(btn);
+        }
+      }
+    } else {
+      if (!btn.parentNode) ROOT_DOC.body.appendChild(btn);
+    }
+  }
+
+  function positionPanelUnderButton(){
+    const btn = ROOT_DOC.getElementById('lia-hl-btn');
+    const panel = ROOT_DOC.getElementById('lia-hl-panel');
+    if (!btn || !panel) return;
+    const r = btn.getBoundingClientRect();
+    panel.style.left = `${Math.max(12, Math.round(r.left))}px`;
+    panel.style.top  = `${Math.round(r.bottom + 10)}px`;
+  }
+
+  function ensureSwatchesOnce(){
+    const colorsEl = ROOT_DOC.getElementById('hl-colors');
+    if (!colorsEl) return;
+    if (colorsEl.childElementCount > 0) return;
+
+    const keys = ['yellow','green','blue','pink','orange','red'];
+    const cssMap = {
+      yellow: getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-yellow').trim() || 'rgba(255,238,88,.55)',
+      green:  getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-green').trim()  || 'rgba(144,238,144,.45)',
+      blue:   getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-blue').trim()   || 'rgba(173,216,230,.45)',
+      pink:   getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-pink').trim()   || 'rgba(255,182,193,.45)',
+      orange: getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-orange').trim() || 'rgba(255,200,120,.55)',
+      red:    getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-red').trim()    || 'rgba(255,80,80,.40)',
+    };
+
+    keys.forEach(key=>{
+      const sw = ROOT_DOC.createElement('button');
+      sw.type = 'button';
+      sw.className = 'hl-swatch';
+      sw.setAttribute('data-hl', key);
+      sw.style.background = cssMap[key];
+
+      sw.addEventListener('click', ()=>{
+        SH.state.tool = 'mark';
+        SH.state.color = key;
+        SH.state.panelOpen = false;
+        applyUI();
+      });
+
+      colorsEl.appendChild(sw);
+    });
+  }
+
+  function applyUI(){
+    try{
+      ROOT_DOC.body.classList.toggle('lia-hl-active', !!SH.state.active);
+      ROOT_DOC.body.classList.toggle('lia-hl-panel-open', !!(SH.state.active && SH.state.panelOpen));
+    } catch(e){}
+
+    overlay.classList.toggle('erase-on', SH.state.tool === 'erase');
+
+    const toolMark = ROOT_DOC.getElementById('hl-tool-mark');
+    const toolErase= ROOT_DOC.getElementById('hl-tool-erase');
+    if (toolMark) toolMark.classList.toggle('active', SH.state.tool === 'mark');
+    if (toolErase)toolErase.classList.toggle('active', SH.state.tool === 'erase');
+
+    const dot = ROOT_DOC.getElementById('lia-hl-dot');
+    if (dot){
+      const map = {
+        yellow: getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-yellow').trim() || 'rgba(255,238,88,.55)',
+        green:  getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-green').trim()  || 'rgba(144,238,144,.45)',
+        blue:   getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-blue').trim()   || 'rgba(173,216,230,.45)',
+        pink:   getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-pink').trim()   || 'rgba(255,182,193,.45)',
+        orange: getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-orange').trim() || 'rgba(255,200,120,.55)',
+        red:    getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-red').trim()    || 'rgba(255,80,80,.40)',
+      };
+      dot.style.background = map[SH.state.color] || map.yellow;
+    }
+
+    const colorsEl = ROOT_DOC.getElementById('hl-colors');
+    if (colorsEl){
+      Array.from(colorsEl.querySelectorAll('.hl-swatch')).forEach(s=>{
+        s.classList.toggle('active', s.getAttribute('data-hl') === SH.state.color);
+      });
+    }
+
+    if (SH.state.active && SH.state.panelOpen) positionPanelUnderButton();
+  }
+
+  function wireUIOnce(){
+    const btn = ROOT_DOC.getElementById('lia-hl-btn');
+    if (!btn || btn.__liaHLWired) return;
+    btn.__liaHLWired = true;
+
+    const toolMark = ROOT_DOC.getElementById('hl-tool-mark');
+    const toolErase= ROOT_DOC.getElementById('hl-tool-erase');
+    const clearBtn = ROOT_DOC.getElementById('hl-clear');
+
+    ensureSwatchesOnce();
+
+    btn.addEventListener('click', ()=>{
+      if (!SH.state.active){
+        SH.state.active = true;
+        SH.state.panelOpen = true;
+      } else {
+        SH.state.active = false;
+        SH.state.panelOpen = false;
+      }
+      applyUI();
+    });
+
+    btn.addEventListener('contextmenu', (e)=>{
+      e.preventDefault();
+      if (!SH.state.active) return;
+      SH.state.panelOpen = !SH.state.panelOpen;
+      applyUI();
+    });
+
+    if (toolMark){
+      toolMark.addEventListener('click', ()=>{
+        SH.state.tool = 'mark';
+        SH.state.panelOpen = false;
+        applyUI();
+      });
+    }
+    if (toolErase){
+      toolErase.addEventListener('click', ()=>{
+        SH.state.tool = 'erase';
+        SH.state.panelOpen = false;
+        applyUI();
+      });
+    }
+
+    if (clearBtn){
+      clearBtn.addEventListener('click', ()=>{
+        SH.HL = [];
+        render();
+        SH.state.panelOpen = false;
+        applyUI();
+      });
+    }
+
+    ROOT_DOC.addEventListener('keydown', (e)=>{
+      if (e.key === 'Escape' && SH.state.active && SH.state.panelOpen){
+        SH.state.panelOpen = false;
+        applyUI();
+      }
+    });
+  }
+
+  // ---------------------------------------------------------
+  // Markieren (Content)
+  // ---------------------------------------------------------
+  function isForbiddenTarget(node){
+    const el = (node && node.nodeType === 1) ? node : node?.parentElement;
+    if (!el) return false;
+    return !!el.closest('input, textarea, select, button, a, code, pre');
+  }
+
+  function addHighlightFromSelection(){
+    const sel = CONTENT_WIN.getSelection ? CONTENT_WIN.getSelection() : null;
+    if (!sel || sel.rangeCount === 0) return;
+
+    const range = sel.getRangeAt(0);
+    if (!range || range.collapsed) return;
+
+    if (isForbiddenTarget(range.startContainer) || isForbiddenTarget(range.endContainer)) return;
+
+    const txt = sel.toString();
+    if (!txt || !txt.trim()) return;
+
+    const rects = Array.from(range.getClientRects ? range.getClientRects() : []);
+    if (!rects.length) return;
+
+    const sc = currentScroll();
+    const packed = rects
+      .filter(r => r.width > 1 && r.height > 1)
+      .map(r => ({ x: r.left + sc.x, y: r.top + sc.y, w: r.width, h: r.height }));
+
+    if (!packed.length) return;
+
+    SH.HL.push({ id: SH.nextId++, color: SH.state.color, rects: packed });
+    sel.removeAllRanges();
+    render();
+  }
+
+  CONTENT_DOC.addEventListener('mouseup', ()=>{
+    if (!SH.state.active) return;
+
+    if (SH.state.panelOpen){
+      SH.state.panelOpen = false;
+      applyUI();
+    }
+
+    if (SH.state.tool !== 'mark') return;
+    addHighlightFromSelection();
+  }, true);
+
+  overlay.addEventListener('click', (e)=>{
+    if (!SH.state.active) return;
+    if (SH.state.tool !== 'erase') return;
+
+    if (SH.state.panelOpen){
+      SH.state.panelOpen = false;
+      applyUI();
+    }
+
+    const id = e.target?.getAttribute?.('data-id');
+    if (!id) return;
+
+    const n = Number(id);
+    SH.HL = SH.HL.filter(item => item.id !== n);
+    render();
+  });
+
+  // ---------------------------------------------------------
+  // Stabilisieren (Nightly / DOM-Updates)
+  // ---------------------------------------------------------
+  function tick(){
+    ensureRootButtonAndPanel();
+    ensureSwatchesOnce();
+    wireUIOnce();
+    applyUI();
+    if (SH.state.active && SH.state.panelOpen) positionPanelUnderButton();
+  }
+
+  tick();
   render();
-  setInterval(render, 350);
 
-  window.addEventListener("storage", function(e){
-    if (!e || e.key === SETTINGS_KEY) render();
-  });
+  ROOT_WIN.addEventListener('resize', tick);
+  CONTENT_WIN.addEventListener('resize', ()=>{ render(); tick(); });
 
-  const obs = new MutationObserver(function(){
-    hookDetailsToggle();
-    fixCollabInVisibleTextbook();
-  });
-  obs.observe(document.documentElement, { childList: true, subtree: true });
+  try{
+    const mo = new MutationObserver(()=>tick());
+    mo.observe(ROOT_DOC.body, { childList:true, subtree:true, attributes:true });
+  } catch(e){}
 
-  window.addEventListener("resize", function(){
-    setFlexChildMinWidth(lastStep);
-    fixCollabInVisibleTextbook();
-  });
+  setInterval(tick, 900);
+
 })();
 @end
 
 
+# Textmarker
 
-
-
-
-
-eingabe: <script input="number" input-always-active modify="false" value="0" default="0">@input</script>
-
-
-
--->
-
-# Readme zur Aufgabensammlung
-
+Klicke auf den Stift im Header und markiere im Text wie es dir beliebt.

@@ -5,7 +5,7 @@ narrator: Deutsch Female
 
 tags:
 comment:
-author:
+author: Martin Lommatzsch
 
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
         https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
@@ -203,6 +203,36 @@ canvas.lia-draw{
   white-space: pre;
 }
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @onload
 (function(){
