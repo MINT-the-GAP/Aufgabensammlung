@@ -9,5 +9,6 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/REA
 # Geo
 
 
+Klicke auf den Stift im Header und markiere im Text wie es dir beliebt.
 
 
