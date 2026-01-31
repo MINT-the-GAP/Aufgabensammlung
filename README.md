@@ -1,5 +1,5 @@
 <!--
-comment: Textmarker (import-sicher, scroll-container aware)
+comment: Textmarker (import-sicher, scroll-container aware, theme-aware)
 author: Martin Lommatzsch
 
 @onload
@@ -26,26 +26,28 @@ author: Martin Lommatzsch
     ROOT_WIN[KEY] = ROOT_WIN[KEY] || {};
     const REG = ROOT_WIN[KEY];
 
-    // Identifiziere das aktuelle Dokument robust
-    const DOC_ID = (CONTENT_DOC.baseURI || CONTENT_WIN.location.href || "") + "::" + (CONTENT_DOC.title || "");
+    const DOC_ID =
+      (CONTENT_DOC.baseURI || CONTENT_WIN.location.href || "") +
+      "::" +
+      (CONTENT_DOC.title || "");
+
     REG.instances = REG.instances || {};
 
-    // Falls schon eine Instanz für genau dieses Dokument existiert: nur "reattach"
     let I = REG.instances[DOC_ID];
     if (!I) {
       I = REG.instances[DOC_ID] = {
         state: { active: false, panelOpen: false, tool: "mark", color: "yellow" },
         HL: [],
         nextId: 1,
-        wired: false,
         doc: CONTENT_DOC,
         win: CONTENT_WIN,
         rootDoc: ROOT_DOC,
         rootWin: ROOT_WIN,
-        scrollEl: null
+        scrollEl: null,
+        __mo: null,
+        __themeTimer: null
       };
     } else {
-      // immer aktualisieren (bei Re-Render / Import)
       I.doc = CONTENT_DOC;
       I.win = CONTENT_WIN;
       I.rootDoc = ROOT_DOC;
@@ -53,7 +55,7 @@ author: Martin Lommatzsch
     }
 
     // =========================================================
-    // 2) CSS injizieren (damit Import nicht von @style abhängt)
+    // 2) CSS injizieren (Import-sicher)
     // =========================================================
     function ensureStyle(doc, id, cssText) {
       if (doc.getElementById(id)) return;
@@ -63,7 +65,6 @@ author: Martin Lommatzsch
       doc.head.appendChild(st);
     }
 
-    // Content overlay CSS
     ensureStyle(CONTENT_DOC, "lia-hl-style-content", `
       :root{
         --hl-yellow: rgba(255, 238,  88, 0.55);
@@ -105,10 +106,9 @@ author: Martin Lommatzsch
       .lia-hl-rect[data-hl="red"]   { background: var(--hl-red);    }
     `);
 
-    // Root UI CSS (Button + Panel)
     ensureStyle(ROOT_DOC, "lia-hl-style-root", `
       #lia-hl-btn{
-        position: relative !important; /* Dot */
+        position: relative !important;
         width: 40px !important;
         height: 40px !important;
         padding: 0 !important;
@@ -213,45 +213,102 @@ author: Martin Lommatzsch
     `);
 
     // =========================================================
-    // 3) Scroll-Container erkennen (DAS ist dein Import-Bug)
+    // 3) Theme/Accent aus Content ableiten (Fix #2)
+    // =========================================================
+    function parseRGB(str) {
+      const m = (str || "").match(/rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)/i);
+      if (!m) return null;
+      return { r: +m[1], g: +m[2], b: +m[3] };
+    }
+    function luminance(rgb) {
+      const r = rgb.r / 255, g = rgb.g / 255, b = rgb.b / 255;
+      return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    }
+    function setVar(doc, k, v) { doc.documentElement.style.setProperty(k, v); }
+
+    function effectiveBgColor(startEl) {
+      let el = startEl;
+      for (let i = 0; i < 12 && el; i++) {
+        const bg = getComputedStyle(el).backgroundColor;
+        if (bg && bg !== "transparent" && bg !== "rgba(0, 0, 0, 0)") return bg;
+        el = el.parentElement;
+      }
+      return getComputedStyle(CONTENT_DOC.body).backgroundColor || "rgb(255,255,255)";
+    }
+
+    function adaptUIVars() {
+      const probe = CONTENT_DOC.querySelector("main") || CONTENT_DOC.querySelector("[role='main']") || CONTENT_DOC.body;
+      const bgStr = effectiveBgColor(probe);
+      const bg = parseRGB(bgStr) || { r: 255, g: 255, b: 255 };
+      const isDark = luminance(bg) < 0.45;
+
+      // Accent: bevorzugt Linkfarbe (wenn vorhanden)
+      const anyLink = CONTENT_DOC.querySelector("main a") || CONTENT_DOC.querySelector("a");
+      const accentStr = anyLink ? getComputedStyle(anyLink).color : "rgb(11,95,255)";
+
+      // Accent in beiden Dokumenten setzen
+      setVar(CONTENT_DOC, "--hl-accent", accentStr);
+      try { setVar(ROOT_DOC, "--hl-accent", accentStr); } catch (e) {}
+
+      if (isDark) {
+        const vars = {
+          "--hl-ui-bg": "rgba(20,20,22,.92)",
+          "--hl-ui-fg": "rgba(255,255,255,.92)",
+          "--hl-ui-muted": "rgba(255,255,255,.68)",
+          "--hl-ui-border": "rgba(255,255,255,.16)",
+          "--hl-ui-shadow": "0 18px 44px rgba(0,0,0,.55)"
+        };
+        for (const k in vars) setVar(CONTENT_DOC, k, vars[k]);
+        try { for (const k in vars) setVar(ROOT_DOC, k, vars[k]); } catch (e) {}
+      } else {
+        const vars = {
+          "--hl-ui-bg": "rgba(255,255,255,.92)",
+          "--hl-ui-fg": "rgba(0,0,0,.88)",
+          "--hl-ui-muted": "rgba(0,0,0,.62)",
+          "--hl-ui-border": "rgba(0,0,0,.14)",
+          "--hl-ui-shadow": "0 16px 42px rgba(0,0,0,.16)"
+        };
+        for (const k in vars) setVar(CONTENT_DOC, k, vars[k]);
+        try { for (const k in vars) setVar(ROOT_DOC, k, vars[k]); } catch (e) {}
+      }
+    }
+
+    adaptUIVars();
+    if (!I.__themeTimer) I.__themeTimer = setInterval(adaptUIVars, 1200);
+
+    // =========================================================
+    // 4) Scroll-Container erkennen
     // =========================================================
     function isScrollable(el) {
       if (!el || el === CONTENT_DOC.body || el === CONTENT_DOC.documentElement) return false;
       const cs = getComputedStyle(el);
       const oy = cs.overflowY;
-      const ox = cs.overflowX;
       const yOk = (oy === "auto" || oy === "scroll") && el.scrollHeight > el.clientHeight + 2;
-      const xOk = (ox === "auto" || ox === "scroll") && el.scrollWidth > el.clientWidth + 2;
-      return yOk || xOk;
+      return yOk;
     }
 
     function findMainScrollEl() {
-      // 1) klassische Kandidaten
       const cands = [
         CONTENT_DOC.querySelector("main"),
         CONTENT_DOC.querySelector(".lia-slide"),
         CONTENT_DOC.querySelector("[role='main']")
       ].filter(Boolean);
 
-      for (const c of cands) {
-        if (isScrollable(c)) return c;
-      }
+      for (const c of cands) if (isScrollable(c)) return c;
 
-      // 2) fallback: irgendein scrollbarer ancestor von main
       let n = (CONTENT_DOC.querySelector("main") || CONTENT_DOC.body);
       for (let i = 0; i < 10 && n; i++) {
         if (isScrollable(n)) return n;
         n = n.parentElement;
       }
 
-      // 3) fallback: window scroll (document.scrollingElement)
       return CONTENT_DOC.scrollingElement || CONTENT_DOC.documentElement;
     }
 
     I.scrollEl = findMainScrollEl();
 
     // =========================================================
-    // 4) Overlay + Render (requestAnimationFrame throttled)
+    // 5) Overlay + Render
     // =========================================================
     function ensureOverlay() {
       let ov = CONTENT_DOC.getElementById("lia-hl-overlay");
@@ -262,6 +319,18 @@ author: Martin Lommatzsch
       return ov;
     }
     const overlay = ensureOverlay();
+
+    // Fix #1: Overlay darf Header nicht blockieren (wenn Header im selben Dokument)
+    function updateOverlayInset() {
+      const hdr = CONTENT_DOC.querySelector("header#lia-toolbar-nav") || CONTENT_DOC.querySelector("#lia-toolbar-nav");
+      if (!hdr) {
+        overlay.style.inset = "0px 0px 0px 0px";
+        return;
+      }
+      const r = hdr.getBoundingClientRect();
+      const top = Math.max(0, Math.round(r.bottom));
+      overlay.style.inset = `${top}px 0px 0px 0px`;
+    }
 
     let raf = null;
     function requestRender() {
@@ -274,16 +343,24 @@ author: Martin Lommatzsch
 
     function renderNow() {
       overlay.innerHTML = "";
+      updateOverlayInset();
+
       const scrollEl = I.scrollEl;
 
-      // Koordinaten: absX/absY relativ zum ScrollEl-Content
-      // Render: zurück in Window-Koordinaten
-      const scrLeft = (scrollEl && scrollEl !== CONTENT_DOC.documentElement && scrollEl !== CONTENT_DOC.body) ? scrollEl.scrollLeft : (CONTENT_WIN.scrollX || 0);
-      const scrTop  = (scrollEl && scrollEl !== CONTENT_DOC.documentElement && scrollEl !== CONTENT_DOC.body) ? scrollEl.scrollTop  : (CONTENT_WIN.scrollY || 0);
+      const scrLeft =
+        (scrollEl && scrollEl !== CONTENT_DOC.documentElement && scrollEl !== CONTENT_DOC.body)
+          ? scrollEl.scrollLeft
+          : (CONTENT_WIN.scrollX || 0);
 
-      const scrollRect = (scrollEl && scrollEl !== CONTENT_DOC.documentElement && scrollEl !== CONTENT_DOC.body)
-        ? scrollEl.getBoundingClientRect()
-        : { left: 0, top: 0 };
+      const scrTop =
+        (scrollEl && scrollEl !== CONTENT_DOC.documentElement && scrollEl !== CONTENT_DOC.body)
+          ? scrollEl.scrollTop
+          : (CONTENT_WIN.scrollY || 0);
+
+      const scrollRect =
+        (scrollEl && scrollEl !== CONTENT_DOC.documentElement && scrollEl !== CONTENT_DOC.body)
+          ? scrollEl.getBoundingClientRect()
+          : { left: 0, top: 0 };
 
       for (const item of I.HL) {
         for (const r of item.rects) {
@@ -292,7 +369,6 @@ author: Martin Lommatzsch
           el.setAttribute("data-hl", item.color);
           el.setAttribute("data-id", String(item.id));
 
-          // abs -> window
           const left = (r.x - scrLeft) + scrollRect.left;
           const top  = (r.y - scrTop)  + scrollRect.top;
 
@@ -307,17 +383,24 @@ author: Martin Lommatzsch
     }
 
     // =========================================================
-    // 5) Rect-Kompression (gegen Freeze)
+    // 6) Rect-Kompression (gegen Freeze)
     // =========================================================
     function compressRects(rects, scrollEl) {
-      const scrLeft = (scrollEl && scrollEl !== CONTENT_DOC.documentElement && scrollEl !== CONTENT_DOC.body) ? scrollEl.scrollLeft : (CONTENT_WIN.scrollX || 0);
-      const scrTop  = (scrollEl && scrollEl !== CONTENT_DOC.documentElement && scrollEl !== CONTENT_DOC.body) ? scrollEl.scrollTop  : (CONTENT_WIN.scrollY || 0);
+      const scrLeft =
+        (scrollEl && scrollEl !== CONTENT_DOC.documentElement && scrollEl !== CONTENT_DOC.body)
+          ? scrollEl.scrollLeft
+          : (CONTENT_WIN.scrollX || 0);
 
-      const scrollRect = (scrollEl && scrollEl !== CONTENT_DOC.documentElement && scrollEl !== CONTENT_DOC.body)
-        ? scrollEl.getBoundingClientRect()
-        : { left: 0, top: 0 };
+      const scrTop =
+        (scrollEl && scrollEl !== CONTENT_DOC.documentElement && scrollEl !== CONTENT_DOC.body)
+          ? scrollEl.scrollTop
+          : (CONTENT_WIN.scrollY || 0);
 
-      // getClientRects liefert Window-Koordinaten → in "abs im ScrollEl" umrechnen
+      const scrollRect =
+        (scrollEl && scrollEl !== CONTENT_DOC.documentElement && scrollEl !== CONTENT_DOC.body)
+          ? scrollEl.getBoundingClientRect()
+          : { left: 0, top: 0 };
+
       const raw = rects
         .filter(r => r && r.width > 1 && r.height > 1)
         .map(r => ({
@@ -360,7 +443,7 @@ author: Martin Lommatzsch
     }
 
     // =========================================================
-    // 6) Header Button exakt wie bei dir (nach TOC)
+    // 7) Root UI (Button/Panel) – exakt wie bei dir
     // =========================================================
     function findHeaderLeft() {
       const header = ROOT_DOC.querySelector("header#lia-toolbar-nav") || ROOT_DOC.querySelector("#lia-toolbar-nav");
@@ -380,7 +463,6 @@ author: Martin Lommatzsch
     }
 
     function ensureRootUI() {
-      // Button
       let btn = ROOT_DOC.getElementById("lia-hl-btn");
       if (!btn) {
         btn = ROOT_DOC.createElement("button");
@@ -397,7 +479,6 @@ author: Martin Lommatzsch
         `;
       }
 
-      // Panel
       let panel = ROOT_DOC.getElementById("lia-hl-panel");
       if (!panel) {
         panel = ROOT_DOC.createElement("div");
@@ -419,7 +500,6 @@ author: Martin Lommatzsch
         ROOT_DOC.body.appendChild(panel);
       }
 
-      // rein in HeaderLeft – exakt wie bei dir
       const left = findHeaderLeft();
       if (left && btn.parentNode !== left) {
         try { btn.remove(); } catch (e) {}
@@ -435,7 +515,7 @@ author: Martin Lommatzsch
       if (!btn || !panel) return;
       const r = btn.getBoundingClientRect();
       panel.style.left = `${Math.max(12, Math.round(r.left))}px`;
-      panel.style.top = `${Math.round(r.bottom + 10)}px`;
+      panel.style.top  = `${Math.round(r.bottom + 10)}px`;
     }
 
     function ensureSwatchesOnce() {
@@ -531,20 +611,36 @@ author: Martin Lommatzsch
 
       if (toolMark && !toolMark.__wired) {
         toolMark.__wired = true;
-        toolMark.addEventListener("click", () => { I.state.tool = "mark"; I.state.panelOpen = false; applyUI(); });
+        toolMark.addEventListener("click", () => {
+          I.state.tool = "mark";
+          I.state.panelOpen = false;
+          applyUI();
+        });
       }
+
+      // Fix #1 UX: Erase-Button ist Toggle (nochmal klicken => zurück zu mark)
       if (toolErase && !toolErase.__wired) {
         toolErase.__wired = true;
-        toolErase.addEventListener("click", () => { I.state.tool = "erase"; I.state.panelOpen = false; applyUI(); });
+        toolErase.addEventListener("click", () => {
+          I.state.tool = (I.state.tool === "erase") ? "mark" : "erase";
+          I.state.panelOpen = false;
+          applyUI();
+        });
       }
+
       if (clearBtn && !clearBtn.__wired) {
         clearBtn.__wired = true;
-        clearBtn.addEventListener("click", () => { I.HL = []; requestRender(); I.state.panelOpen = false; applyUI(); });
+        clearBtn.addEventListener("click", () => {
+          I.HL = [];
+          requestRender();
+          I.state.panelOpen = false;
+          applyUI();
+        });
       }
     }
 
     // =========================================================
-    // 7) Markieren / Radieren (scroll-aware, stable)
+    // 8) Markieren / Radieren
     // =========================================================
     function isForbiddenTarget(node) {
       const el = (node && node.nodeType === 1) ? node : node?.parentElement;
@@ -572,7 +668,6 @@ author: Martin Lommatzsch
       requestRender();
     }
 
-    // Wire Content listeners pro Document nur einmal
     if (!CONTENT_DOC.__liaHLWired) {
       CONTENT_DOC.__liaHLWired = true;
 
@@ -599,15 +694,17 @@ author: Martin Lommatzsch
       });
     }
 
-    // Scroll/Resize am richtigen Scroll-Element
     if (!I.scrollEl.__liaHLScrollWired) {
       I.scrollEl.__liaHLScrollWired = true;
       I.scrollEl.addEventListener("scroll", requestRender, { passive: true });
     }
-    CONTENT_WIN.addEventListener("resize", requestRender);
+    CONTENT_WIN.addEventListener("resize", () => {
+      updateOverlayInset();
+      requestRender();
+    });
 
     // =========================================================
-    // 8) Start
+    // 9) Start + Stabilität
     // =========================================================
     ensureRootUI();
     ensureSwatchesOnce();
@@ -615,14 +712,15 @@ author: Martin Lommatzsch
     applyUI();
     requestRender();
 
-    // Stabilität bei DOM-Umbauten
     if (!I.__mo) {
       try {
         I.__mo = new MutationObserver(() => {
+          adaptUIVars();
           ensureRootUI();
           ensureSwatchesOnce();
           wireUIOnce();
           applyUI();
+          updateOverlayInset();
         });
         I.__mo.observe(ROOT_DOC.body, { childList: true, subtree: true, attributes: true });
       } catch (e) {}
