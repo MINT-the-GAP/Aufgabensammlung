@@ -614,3 +614,5 @@
     setInterval(tick, 900);
   })();
 @end
+
+# Tests
