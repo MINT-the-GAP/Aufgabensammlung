@@ -1,5 +1,5 @@
 <!--
-comment: LiaScript Import - Textmarker (Header-Button korrekt positioniert)
+comment: LiaScript Import - Textmarker (Header-Button + robustes Re-Docking)
 author: Martin Lommatzsch
 
 @style
@@ -12,14 +12,14 @@ author: Martin Lommatzsch
     --hl-orange: rgba(255, 200, 120, 0.55);
     --hl-red:    rgba(255,  80,  80, 0.40);
 
-    /* UI (Theme/Mode per JS) */
+    /* UI */
     --hl-ui-bg: rgba(255,255,255,.92);
     --hl-ui-fg: rgba(0,0,0,.88);
     --hl-ui-border: rgba(0,0,0,.14);
     --hl-ui-muted: rgba(0,0,0,.62);
     --hl-ui-shadow: 0 16px 42px rgba(0,0,0,.16);
 
-    /* Akzentfarbe (per JS aus Theme abgeleitet) */
+    /* Akzentfarbe (per JS) */
     --hl-accent: rgb(11,95,255);
 
     --hl-z: 9999999;
@@ -57,9 +57,6 @@ author: Martin Lommatzsch
 
 @onload
   (function(){
-    // Import-safe: nur einmal global initialisieren
-    if (globalThis.__liaTextmarker_headerbtn_import_v2) return;
-    globalThis.__liaTextmarker_headerbtn_import_v2 = true;
 
     // ---------------------------------------------------------
     // Root Window/Doc (falls LiaScript im iframe steckt)
@@ -69,17 +66,26 @@ author: Martin Lommatzsch
       try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
       return w;
     }
+
     const ROOT_WIN = getRootWindow();
     const ROOT_DOC = ROOT_WIN.document;
 
-    const CONTENT_WIN = window;
-    const CONTENT_DOC = document;
+    // ---------------------------------------------------------
+    // Root-Singleton (WICHTIG: kein "return" mehr!)
+    // -> bleibt über DOM-Rebuilds stabil, dockt immer wieder an
+    // ---------------------------------------------------------
+    ROOT_WIN.__LIA_TEXTMARKER = ROOT_WIN.__LIA_TEXTMARKER || {};
+    const TM = ROOT_WIN.__LIA_TEXTMARKER;
+
+    // aktuelle Content-Referenzen immer "refreshbar" halten
+    TM.contentWin = window;
+    TM.contentDoc = document;
 
     // ---------------------------------------------------------
     // Shared State (Root, damit UI robust ist)
     // ---------------------------------------------------------
-    ROOT_WIN.__liaHL = ROOT_WIN.__liaHL || {};
-    const SH = ROOT_WIN.__liaHL;
+    TM.SH = TM.SH || {};
+    const SH = TM.SH;
 
     SH.state = SH.state || { active:false, panelOpen:false, tool:'mark', color:'yellow' };
     SH.HL    = SH.HL    || [];
@@ -100,6 +106,7 @@ author: Martin Lommatzsch
     function setVar(doc, k, v){ doc.documentElement.style.setProperty(k, v); }
 
     function adaptUIVars(){
+      const CONTENT_DOC = TM.contentDoc;
       const probe = CONTENT_DOC.querySelector('main') || CONTENT_DOC.querySelector('[role="main"]') || CONTENT_DOC.body;
       const csProbe = getComputedStyle(probe);
 
@@ -107,7 +114,6 @@ author: Martin Lommatzsch
       const bg = parseRGB(bgStr) || {r:255,g:255,b:255};
       const isDark = luminance(bg) < 0.45;
 
-      // Accent: bevorzugt Linkfarbe
       const anyLink = CONTENT_DOC.querySelector('main a') || CONTENT_DOC.querySelector('a');
       const accentStr = anyLink ? getComputedStyle(anyLink).color : (csProbe.color || 'rgb(11,95,255)');
 
@@ -142,27 +148,48 @@ author: Martin Lommatzsch
         } catch(e){}
       }
     }
-    adaptUIVars();
-    setInterval(adaptUIVars, 1200);
+
+    // nur einmal einen Intervall-Job starten (Root-Singleton!)
+    if (!TM._adaptTimer){
+      adaptUIVars();
+      TM._adaptTimer = ROOT_WIN.setInterval(adaptUIVars, 1200);
+    } else {
+      adaptUIVars();
+    }
 
     // ---------------------------------------------------------
-    // Overlay Layer (Content)
+    // Overlay Layer (Content) - genau einmal pro Content-Doc
     // ---------------------------------------------------------
-    const overlay = CONTENT_DOC.createElement('div');
-    overlay.className = 'lia-hl-overlay';
-    CONTENT_DOC.body.appendChild(overlay);
+    function ensureOverlay(){
+      const CONTENT_DOC = TM.contentDoc;
+      if (CONTENT_DOC.getElementById('lia-hl-overlay')) return;
+
+      const overlay = CONTENT_DOC.createElement('div');
+      overlay.id = 'lia-hl-overlay';
+      overlay.className = 'lia-hl-overlay';
+      CONTENT_DOC.body.appendChild(overlay);
+    }
+    ensureOverlay();
+
+    function overlayEl(){
+      return TM.contentDoc.getElementById('lia-hl-overlay');
+    }
 
     function currentScroll(){
-      return { x: (CONTENT_WIN.scrollX || 0), y: (CONTENT_WIN.scrollY || 0) };
+      const w = TM.contentWin;
+      return { x: (w.scrollX || 0), y: (w.scrollY || 0) };
     }
 
     function render(){
+      const overlay = overlayEl();
+      if (!overlay) return;
+
       overlay.innerHTML = '';
       const sc = currentScroll();
 
       for (const item of SH.HL){
         for (const r of item.rects){
-          const el = CONTENT_DOC.createElement('div');
+          const el = TM.contentDoc.createElement('div');
           el.className = 'lia-hl-rect';
           el.setAttribute('data-hl', item.color);
           el.setAttribute('data-id', String(item.id));
@@ -175,18 +202,15 @@ author: Martin Lommatzsch
       }
     }
 
-    CONTENT_WIN.addEventListener('scroll', render, { passive: true });
-    CONTENT_WIN.addEventListener('resize', render);
-
     // ---------------------------------------------------------
-    // Root CSS injizieren (entscheidend für korrektes Header-Layout!)
-    // -> exakt dein "guter" Button-Stil + Panel-Stil
+    // Root CSS injizieren (damit Header-Button IMMER gleich sitzt)
+    // -> exakt dein funktionierendes Button-Layout
     // ---------------------------------------------------------
     function ensureRootStyle(){
-      if (ROOT_DOC.getElementById('lia-hl-root-style-v2')) return;
+      if (ROOT_DOC.getElementById('lia-hl-root-style-import')) return;
 
       const st = ROOT_DOC.createElement('style');
-      st.id = 'lia-hl-root-style-v2';
+      st.id = 'lia-hl-root-style-import';
       st.textContent = `
         #lia-hl-btn{
           position: relative !important; /* für Dot */
@@ -205,6 +229,7 @@ author: Martin Lommatzsch
 
           cursor: pointer !important;
           user-select: none !important;
+
           border-radius: 10px !important;
         }
 
@@ -340,10 +365,6 @@ author: Martin Lommatzsch
       ROOT_DOC.head.appendChild(st);
     }
 
-    // ---------------------------------------------------------
-    // Root UI: Button in .lia-header__left + Panel im Body
-    // (Das ist das Positioning, das bei dir "richtig" war)
-    // ---------------------------------------------------------
     function findHeaderLeft(){
       const header = ROOT_DOC.querySelector('header#lia-toolbar-nav') || ROOT_DOC.querySelector('#lia-toolbar-nav');
       if (!header) return null;
@@ -362,7 +383,7 @@ author: Martin Lommatzsch
       return pick || btns[0];
     }
 
-    function ensureRootButtonAndPanel(){
+    function ensureRootUI(){
       ensureRootStyle();
 
       // Button
@@ -371,8 +392,7 @@ author: Martin Lommatzsch
         btn = ROOT_DOC.createElement('button');
         btn.id = 'lia-hl-btn';
         btn.type = 'button';
-        btn.setAttribute('aria-label', 'Textmarker');
-
+        btn.setAttribute('aria-label','Textmarker');
         btn.innerHTML = `
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M4 20h4l10.5-10.5a2.1 2.1 0 0 0 0-3L16.5 4.5a2.1 2.1 0 0 0-3 0L3 15v5z"
@@ -405,21 +425,18 @@ author: Martin Lommatzsch
         ROOT_DOC.body.appendChild(panel);
       }
 
-      // In Header-Left einfügen (als "zusätzlicher Button")
       const left = findHeaderLeft();
       if (left){
         if (btn.parentNode !== left){
-          // wenn er irgendwo anders hängt, raus und sauber rein
           try { btn.remove(); } catch(e){}
           const anchor = findTOCButtonInLeft(left);
           if (anchor && anchor.parentNode === left){
-            anchor.insertAdjacentElement('afterend', btn);
+            anchor.insertAdjacentElement('afterend', btn);  // <-- wie bei dir "richtig"
           } else {
             left.appendChild(btn);
           }
         }
       } else {
-        // Fallback
         if (!btn.parentNode) ROOT_DOC.body.appendChild(btn);
       }
     }
@@ -438,8 +455,9 @@ author: Martin Lommatzsch
       if (!colorsEl) return;
       if (colorsEl.childElementCount > 0) return;
 
-      const keys = ['yellow','green','blue','pink','orange','red'];
+      const CONTENT_DOC = TM.contentDoc;
 
+      const keys = ['yellow','green','blue','pink','orange','red'];
       const cssMap = {
         yellow: getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-yellow').trim() || 'rgba(255,238,88,.55)',
         green:  getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-green').trim()  || 'rgba(144,238,144,.45)',
@@ -468,30 +486,33 @@ author: Martin Lommatzsch
     }
 
     function applyUI(){
-      try{
-        ROOT_DOC.body.classList.toggle('lia-hl-active', !!SH.state.active);
-        ROOT_DOC.body.classList.toggle('lia-hl-panel-open', !!(SH.state.active && SH.state.panelOpen));
-      } catch(e){}
+      const overlay = overlayEl();
+      if (!overlay) return;
+
+      ROOT_DOC.body.classList.toggle('lia-hl-active', !!SH.state.active);
+      ROOT_DOC.body.classList.toggle('lia-hl-panel-open', !!(SH.state.active && SH.state.panelOpen));
 
       overlay.classList.toggle('erase-on', SH.state.tool === 'erase');
+
+      const CONTENT_DOC = TM.contentDoc;
+
+      const dot = ROOT_DOC.getElementById('lia-hl-dot');
+      if (dot){
+        const map = {
+          yellow: getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-yellow').trim(),
+          green:  getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-green').trim(),
+          blue:   getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-blue').trim(),
+          pink:   getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-pink').trim(),
+          orange: getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-orange').trim(),
+          red:    getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-red').trim(),
+        };
+        dot.style.background = map[SH.state.color] || map.yellow;
+      }
 
       const toolMark = ROOT_DOC.getElementById('hl-tool-mark');
       const toolErase= ROOT_DOC.getElementById('hl-tool-erase');
       if (toolMark) toolMark.classList.toggle('active', SH.state.tool === 'mark');
       if (toolErase)toolErase.classList.toggle('active', SH.state.tool === 'erase');
-
-      const dot = ROOT_DOC.getElementById('lia-hl-dot');
-      if (dot){
-        const map = {
-          yellow: getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-yellow').trim() || 'rgba(255,238,88,.55)',
-          green:  getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-green').trim()  || 'rgba(144,238,144,.45)',
-          blue:   getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-blue').trim()   || 'rgba(173,216,230,.45)',
-          pink:   getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-pink').trim()   || 'rgba(255,182,193,.45)',
-          orange: getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-orange').trim() || 'rgba(255,200,120,.55)',
-          red:    getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue('--hl-red').trim()    || 'rgba(255,80,80,.40)',
-        };
-        dot.style.background = map[SH.state.color] || map.yellow;
-      }
 
       const colorsEl = ROOT_DOC.getElementById('hl-colors');
       if (colorsEl){
@@ -505,43 +526,46 @@ author: Martin Lommatzsch
 
     function wireUIOnce(){
       const btn = ROOT_DOC.getElementById('lia-hl-btn');
-      if (!btn || btn.__liaHLWired) return;
-      btn.__liaHLWired = true;
+      if (!btn) return;
+
+      // WICHTIG: bei DOM-Rebuild kann das Element neu sein -> neu wirebar
+      if (!btn.__liaHLWired){
+        btn.__liaHLWired = true;
+
+        btn.addEventListener('click', ()=>{
+          if (!SH.state.active){
+            SH.state.active = true;
+            SH.state.panelOpen = true;
+          } else {
+            SH.state.active = false;
+            SH.state.panelOpen = false;
+          }
+          applyUI();
+        });
+
+        btn.addEventListener('contextmenu', (e)=>{
+          e.preventDefault();
+          if (!SH.state.active) return;
+          SH.state.panelOpen = !SH.state.panelOpen;
+          applyUI();
+        });
+      }
 
       const toolMark = ROOT_DOC.getElementById('hl-tool-mark');
       const toolErase= ROOT_DOC.getElementById('hl-tool-erase');
       const clearBtn = ROOT_DOC.getElementById('hl-clear');
 
-      ensureSwatchesOnce();
-
-      // Linksklick: an/aus
-      btn.addEventListener('click', ()=>{
-        if (!SH.state.active){
-          SH.state.active = true;
-          SH.state.panelOpen = true;
-        } else {
-          SH.state.active = false;
-          SH.state.panelOpen = false;
-        }
-        applyUI();
-      });
-
-      // Rechtsklick: Panel toggeln
-      btn.addEventListener('contextmenu', (e)=>{
-        e.preventDefault();
-        if (!SH.state.active) return;
-        SH.state.panelOpen = !SH.state.panelOpen;
-        applyUI();
-      });
-
-      if (toolMark){
+      if (toolMark && !toolMark.__liaHLWired){
+        toolMark.__liaHLWired = true;
         toolMark.addEventListener('click', ()=>{
           SH.state.tool = 'mark';
           SH.state.panelOpen = false;
           applyUI();
         });
       }
-      if (toolErase){
+
+      if (toolErase && !toolErase.__liaHLWired){
+        toolErase.__liaHLWired = true;
         toolErase.addEventListener('click', ()=>{
           SH.state.tool = 'erase';
           SH.state.panelOpen = false;
@@ -549,7 +573,8 @@ author: Martin Lommatzsch
         });
       }
 
-      if (clearBtn){
+      if (clearBtn && !clearBtn.__liaHLWired){
+        clearBtn.__liaHLWired = true;
         clearBtn.addEventListener('click', ()=>{
           SH.HL = [];
           render();
@@ -557,13 +582,6 @@ author: Martin Lommatzsch
           applyUI();
         });
       }
-
-      ROOT_DOC.addEventListener('keydown', (e)=>{
-        if (e.key === 'Escape' && SH.state.active && SH.state.panelOpen){
-          SH.state.panelOpen = false;
-          applyUI();
-        }
-      });
     }
 
     // ---------------------------------------------------------
@@ -576,16 +594,16 @@ author: Martin Lommatzsch
     }
 
     function addHighlightFromSelection(){
-      const sel = CONTENT_WIN.getSelection ? CONTENT_WIN.getSelection() : null;
+      const w = TM.contentWin;
+      const d = TM.contentDoc;
+
+      const sel = w.getSelection ? w.getSelection() : null;
       if (!sel || sel.rangeCount === 0) return;
 
       const range = sel.getRangeAt(0);
       if (!range || range.collapsed) return;
 
       if (isForbiddenTarget(range.startContainer) || isForbiddenTarget(range.endContainer)) return;
-
-      const txt = sel.toString();
-      if (!txt || !txt.trim()) return;
 
       const rects = Array.from(range.getClientRects ? range.getClientRects() : []);
       if (!rects.length) return;
@@ -602,60 +620,64 @@ author: Martin Lommatzsch
       render();
     }
 
-    CONTENT_DOC.addEventListener('mouseup', ()=>{
-      if (!SH.state.active) return;
+    // Content-Listener nur einmal pro Doc hängen
+    if (!TM._contentWired){
+      TM._contentWired = true;
 
-      // Panel beim Markieren/Interagieren schließen
-      if (SH.state.panelOpen){
-        SH.state.panelOpen = false;
-        applyUI();
-      }
+      TM.contentDoc.addEventListener('mouseup', ()=>{
+        if (!SH.state.active) return;
 
-      if (SH.state.tool !== 'mark') return;
-      addHighlightFromSelection();
-    }, true);
+        if (SH.state.panelOpen){
+          SH.state.panelOpen = false;
+          applyUI();
+        }
 
-    // Radieren (Overlay)
-    overlay.addEventListener('click', (e)=>{
-      if (!SH.state.active) return;
-      if (SH.state.tool !== 'erase') return;
+        if (SH.state.tool !== 'mark') return;
+        addHighlightFromSelection();
+      }, true);
 
-      if (SH.state.panelOpen){
-        SH.state.panelOpen = false;
-        applyUI();
-      }
+      overlayEl().addEventListener('click', (e)=>{
+        if (!SH.state.active) return;
+        if (SH.state.tool !== 'erase') return;
 
-      const id = e.target?.getAttribute?.('data-id');
-      if (!id) return;
+        if (SH.state.panelOpen){
+          SH.state.panelOpen = false;
+          applyUI();
+        }
 
-      const n = Number(id);
-      SH.HL = SH.HL.filter(item => item.id !== n);
-      render();
-    });
+        const id = e.target?.getAttribute?.('data-id');
+        if (!id) return;
+
+        const n = Number(id);
+        SH.HL = SH.HL.filter(item => item.id !== n);
+        render();
+      });
+    }
 
     // ---------------------------------------------------------
-    // Docking stabil halten (Nightly / DOM-Updates)
+    // Tick: immer wieder andocken + re-wire (Import/SPA-fest)
     // ---------------------------------------------------------
     function tick(){
-      ensureRootButtonAndPanel();
+      ensureOverlay();
+      ensureRootUI();
       ensureSwatchesOnce();
       wireUIOnce();
       applyUI();
-      if (SH.state.active && SH.state.panelOpen) positionPanelUnderButton();
+      render();
     }
 
     tick();
-    render();
 
-    ROOT_WIN.addEventListener('resize', tick);
-    CONTENT_WIN.addEventListener('resize', ()=>{ render(); tick(); });
+    if (!TM._tickTimer){
+      TM._tickTimer = ROOT_WIN.setInterval(tick, 900);
 
-    try{
-      const mo = new MutationObserver(()=>tick());
-      mo.observe(ROOT_DOC.body, { childList:true, subtree:true, attributes:true });
-    } catch(e){}
+      try{
+        const mo = new MutationObserver(()=>tick());
+        mo.observe(ROOT_DOC.body, { childList:true, subtree:true, attributes:true });
+        TM._mo = mo;
+      } catch(e){}
+    }
 
-    setInterval(tick, 900);
   })();
 @end
 -->
