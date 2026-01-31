@@ -44,7 +44,7 @@ canvas.lia-draw{
   height: 260px;
   display: block;
   background: transparent;
-  touch-action: none;
+  touch-action: none;          /* wichtig für Touch-Pinch/Pan */
   cursor: crosshair;
   border-radius: 8px;
 }
@@ -59,7 +59,7 @@ canvas.lia-draw{
 
   display: flex;
   flex-direction: column;
-  gap: 5px; /* <-- deine Änderung bleibt */
+  gap: 5px;
 }
 
 /* Buttons */
@@ -153,7 +153,7 @@ canvas.lia-draw{
 
 /* Überschriften im Menü (NUR diese größer) */
 .lia-tool-heading{
-  font-size: 1.5rem;   /* <-- größer */
+  font-size: 1.5rem;
   font-weight: 750;
   line-height: 1.1;
   padding-left: 2px;
@@ -179,8 +179,8 @@ canvas.lia-draw{
 .lia-preview-line{
   width: 22px;
   border-radius: 999px;
-  background: var(--canvas-border); /* JS */
-  height: 3px;                      /* JS */
+  background: var(--canvas-border);
+  height: 3px;
 }
 
 .lia-slider{ width: 180px; }
@@ -189,18 +189,18 @@ canvas.lia-draw{
 .lia-more-row{
   display: flex;
   justify-content: flex-end;
-  margin-top: 10px;
+  margin-top: -8px;
 }
 
 /* "Mehr Platz..." als echter LiaScript-Button + kleiner skaliert */
 .lia-more-btn.lia-btn{
-  transform: scale(0.85);            /* ~15% kleiner (kompakt, ohne Lia-Style zu zerstören) */
+  transform: scale(0.5);
   transform-origin: 100% 50%;
 }
 
 /* Fallback, falls lia-btn aus irgendeinem Grund nicht greift */
 .lia-more-btn{
-  white-space: pre; /* Leerzeichen niemals kollabieren */
+  white-space: pre;
 }
 @end
 
@@ -304,29 +304,59 @@ canvas.lia-draw{
 
     const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
-    // Zustände
+    // =========================================================
+    //  VIEWPORT (Pan/Zoom) + Stroke-Store (für Redraw bei Zoom)
+    // =========================================================
+    const VIEW = {
+      panX: 0, panY: 0,     // in CSS-Pixeln
+      scale: 1,             // Zoomfaktor
+      minScale: 0.25,
+      maxScale: 8
+    };
+
+    const STROKES = []; // {tool, color, alpha, width, points:[{x,y}] } Punkte in WORLD-Koords
+    let currentStroke = null;
+
+    // Map screen (CSS px) -> world
+    function screenToWorld(sx, sy){
+      return {
+        x: (sx - VIEW.panX) / VIEW.scale,
+        y: (sy - VIEW.panY) / VIEW.scale
+      };
+    }
+    // Map world -> screen (CSS px)
+    function worldToScreen(wx, wy){
+      return {
+        x: wx * VIEW.scale + VIEW.panX,
+        y: wy * VIEW.scale + VIEW.panY
+      };
+    }
+
+    // =========================================================
+    // Zustände Tools
+    // =========================================================
     let tool = 'pen';          // 'pen' | 'eraser'
     let colorIndex = 0;        // pen color
-    let penWidth   = 3;        // pen size
+    let penWidth   = 3;        // pen size (in WORLD units; skaliert visuell mit Zoom)
     let penAlpha   = 1.0;      // 0..1
-    let eraserWidth= 12;       // eraser size
+    let eraserWidth= 12;       // eraser size (WORLD units; skaliert visuell mit Zoom)
 
     function penBaseColor(){
       const c = COLORS[colorIndex] || COLORS[0];
       return (c.key === 'auto') ? getAutoPen() : (c.value || getAutoPen());
     }
 
-    function setCtxForTool(){
-      if (tool === 'eraser'){
+    function applyStrokeStyle(st){
+      if (st.tool === 'eraser'){
         ctx.globalCompositeOperation = 'destination-out';
         ctx.globalAlpha = 1.0;
         ctx.strokeStyle = 'rgba(0,0,0,1)';
-        ctx.lineWidth = eraserWidth;
+        ctx.lineWidth = st.width;
       }else{
         ctx.globalCompositeOperation = 'source-over';
-        ctx.globalAlpha = penAlpha;
-        ctx.strokeStyle = penBaseColor();
-        ctx.lineWidth = penWidth;
+        ctx.globalAlpha = st.alpha;
+        ctx.strokeStyle = st.color;
+        ctx.lineWidth = st.width;
       }
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
@@ -357,7 +387,6 @@ canvas.lia-draw{
         const pick = () => {
           colorIndex = idx;
           tool = 'pen';
-          setCtxForTool();
           updateUI();
           setMenuOpen(false);
         };
@@ -397,7 +426,6 @@ canvas.lia-draw{
 
       slider1.addEventListener('input', () => {
         penWidth = Number(slider1.value);
-        if (tool === 'pen') setCtxForTool();
         updateUI();
       });
 
@@ -430,7 +458,6 @@ canvas.lia-draw{
 
       slider2.addEventListener('input', () => {
         penAlpha = Math.max(0, Math.min(1, Number(slider2.value) / 100));
-        if (tool === 'pen') setCtxForTool();
         updateUI();
       });
 
@@ -474,7 +501,6 @@ canvas.lia-draw{
 
       slider.addEventListener('input', () => {
         eraserWidth = Number(slider.value);
-        if (tool === 'eraser') setCtxForTool();
         updateUI();
       });
 
@@ -533,7 +559,7 @@ canvas.lia-draw{
       const col = penBaseColor();
 
       if (btnColor){
-        btnColor.style.background = col; // bewusst ohne Alpha (gut sichtbar)
+        btnColor.style.background = col;
         btnColor.dataset.active = (tool === 'pen') ? '1' : '0';
         btnColor.title = 'Stift';
       }
@@ -547,6 +573,42 @@ canvas.lia-draw{
       if (btnMore) btnMore.textContent = 'Mehr Platz zum Rechnen';
     }
 
+    // =========================================================
+    // Redraw (wichtig für Pan/Zoom/Resize)
+    // =========================================================
+    function clearScreen(){
+      // Reset auf 1 CSS->Canvas, dann clear in CSS-Koords
+      const dpr = window.devicePixelRatio || 1;
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.globalAlpha = 1;
+      ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);
+    }
+
+    function setViewportTransform(){
+      const dpr = window.devicePixelRatio || 1;
+      ctx.setTransform(dpr*VIEW.scale, 0, 0, dpr*VIEW.scale, dpr*VIEW.panX, dpr*VIEW.panY);
+    }
+
+    function redrawAll(){
+      clearScreen();
+      setViewportTransform();
+      for (const st of STROKES){
+        applyStrokeStyle(st);
+        if (!st.points || st.points.length < 2) continue;
+        ctx.beginPath();
+        ctx.moveTo(st.points[0].x, st.points[0].y);
+        for (let i=1;i<st.points.length;i++){
+          const p = st.points[i];
+          ctx.lineTo(p.x, p.y);
+        }
+        ctx.stroke();
+      }
+    }
+
+    // =========================================================
+    // Resize
+    // =========================================================
     function resizeToCss(){
       const dpr = window.devicePixelRatio || 1;
       const cssW = canvas.clientWidth;
@@ -554,24 +616,16 @@ canvas.lia-draw{
       const pxW = Math.max(1, Math.round(cssW * dpr));
       const pxH = Math.max(1, Math.round(cssH * dpr));
 
-      const prev = document.createElement('canvas');
-      prev.width = canvas.width || pxW;
-      prev.height = canvas.height || pxH;
-      prev.getContext('2d').drawImage(canvas, 0, 0);
-
       canvas.width = pxW;
       canvas.height = pxH;
 
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      setCtxForTool();
-
-      ctx.drawImage(prev, 0, 0, prev.width, prev.height, 0, 0, cssW, cssH);
+      // Redraw aus Stroke-Store
+      redrawAll();
       updateUI();
     }
 
     // Init
     buildPenMenu();
-    setCtxForTool();
     updateUI();
     resizeToCss();
     window.addEventListener('resize', resizeToCss);
@@ -594,7 +648,6 @@ canvas.lia-draw{
       btnColor.addEventListener('click', (e) => {
         e.stopPropagation();
         tool = 'pen';
-        setCtxForTool();
 
         const open = menu.dataset.open === '1';
         const same = (menu.__mode === 'pen');
@@ -609,7 +662,6 @@ canvas.lia-draw{
       btnEraser.addEventListener('click', (e) => {
         e.stopPropagation();
         tool = 'eraser';
-        setCtxForTool();
 
         const open = menu.dataset.open === '1';
         const same = (menu.__mode === 'eraser');
@@ -627,41 +679,228 @@ canvas.lia-draw{
       if (e.key === 'Escape') setMenuOpen(false);
     });
 
-    // Zeichnen / Radieren
-    let drawing = false;
-    let lastX = 0, lastY = 0;
+    // =========================================================
+    // Pan/Zoom Controls
+    // - Mouse: Wheel zoom (am Cursor), Pan mit SPACE+Drag oder rechter Maustaste
+    // - Touch: 2-Finger Pan + Pinch-Zoom
+    // =========================================================
+    let spaceDown = false;
+    window.addEventListener('keydown', (e) => { if (e.code === 'Space') spaceDown = true; });
+    window.addEventListener('keyup',   (e) => { if (e.code === 'Space') spaceDown = false; });
 
-    function pos(evt){
+    // Kontextmenü auf rechter Maustaste im Canvas blocken (für Pan)
+    canvas.addEventListener('contextmenu', (e) => e.preventDefault());
+
+    function clampScale(s){
+      return Math.max(VIEW.minScale, Math.min(VIEW.maxScale, s));
+    }
+
+    function zoomAboutScreenPoint(factor, sx, sy){
+      const oldS = VIEW.scale;
+      const newS = clampScale(oldS * factor);
+      if (newS === oldS) return;
+
+      // Weltpunkt unter Cursor
+      const w = screenToWorld(sx, sy);
+
+      // Cursor soll auf gleichem Weltpunkt bleiben:
+      // sx = w.x*newS + panX  => panX = sx - w.x*newS
+      VIEW.scale = newS;
+      VIEW.panX = sx - w.x * newS;
+      VIEW.panY = sy - w.y * newS;
+
+      redrawAll();
+    }
+
+    canvas.addEventListener('wheel', (e) => {
+      e.preventDefault();
       const r = canvas.getBoundingClientRect();
-      return { x: evt.clientX - r.left, y: evt.clientY - r.top };
+      const sx = e.clientX - r.left;
+      const sy = e.clientY - r.top;
+
+      // sanfter Zoom
+      const factor = Math.exp(-e.deltaY * 0.0012);
+      zoomAboutScreenPoint(factor, sx, sy);
+    }, { passive:false });
+
+    // =========================================================
+    // Pointer Handling (Draw vs Pan vs Pinch)
+    // =========================================================
+    const pointers = new Map(); // id -> {sx,sy}
+    let mode = 'idle';          // 'idle' | 'draw' | 'pan' | 'pinch'
+    let lastPanSX = 0, lastPanSY = 0;
+
+    // Pinch state
+    let pinchStart = null; // {midSX,midSY, dist, worldMid:{x,y}, startScale}
+
+    function getScreenPos(evt){
+      const r = canvas.getBoundingClientRect();
+      return { sx: evt.clientX - r.left, sy: evt.clientY - r.top };
+    }
+
+    function dist(a,b){
+      const dx = a.sx - b.sx, dy = a.sy - b.sy;
+      return Math.hypot(dx,dy);
+    }
+    function mid(a,b){
+      return { sx: (a.sx+b.sx)/2, sy: (a.sy+b.sy)/2 };
+    }
+
+    function startStrokeAtScreen(sx,sy){
+      const w = screenToWorld(sx,sy);
+
+      const st = {
+        tool,
+        color: penBaseColor(),
+        alpha: penAlpha,
+        width: (tool === 'eraser') ? eraserWidth : penWidth,
+        points: [ {x:w.x, y:w.y} ]
+      };
+      STROKES.push(st);
+      currentStroke = st;
+
+      // direkt minimal zeichnen (kein full redraw nötig)
+      setViewportTransform();
+      applyStrokeStyle(st);
+      ctx.beginPath();
+      ctx.moveTo(w.x, w.y);
+    }
+
+    function extendStrokeToScreen(sx,sy){
+      if (!currentStroke) return;
+      const w = screenToWorld(sx,sy);
+      currentStroke.points.push({x:w.x,y:w.y});
+
+      // inkrementell zeichnen
+      ctx.lineTo(w.x, w.y);
+      ctx.stroke();
+    }
+
+    function endStroke(){
+      currentStroke = null;
     }
 
     canvas.addEventListener('pointerdown', (e) => {
-      drawing = true;
+      // nur primäre Maus-Taste? nein: rechte Maustaste für pan
+      const p = getScreenPos(e);
+      pointers.set(e.pointerId, p);
       canvas.setPointerCapture(e.pointerId);
-      const p = pos(e);
-      lastX = p.x; lastY = p.y;
+
+      // sobald 2 Pointer: pinch/pan (Touch) priorisieren
+      if (pointers.size === 2){
+        // falls gerade gezeichnet wird: sauber beenden
+        if (mode === 'draw') endStroke();
+
+        const arr = Array.from(pointers.values());
+        const m = mid(arr[0], arr[1]);
+        const d = Math.max(1e-6, dist(arr[0], arr[1]));
+        const worldMid = screenToWorld(m.sx, m.sy);
+
+        pinchStart = {
+          midSX: m.sx, midSY: m.sy,
+          dist: d,
+          worldMid,
+          startScale: VIEW.scale
+        };
+        mode = 'pinch';
+        return;
+      }
+
+      // 1 Pointer: entscheiden draw vs pan
+      const isRightMouse = (e.pointerType === 'mouse' && e.button === 2);
+      const isMiddleMouse= (e.pointerType === 'mouse' && e.button === 1);
+
+      const wantPan = isRightMouse || isMiddleMouse || (e.pointerType === 'mouse' && spaceDown);
+
+      if (wantPan){
+        mode = 'pan';
+        lastPanSX = p.sx;
+        lastPanSY = p.sy;
+        canvas.style.cursor = 'grab';
+        return;
+      }
+
+      // Touch/Mouse normal: Zeichnen
+      mode = 'draw';
+      canvas.style.cursor = 'crosshair';
+      startStrokeAtScreen(p.sx, p.sy);
     });
 
     canvas.addEventListener('pointermove', (e) => {
-      if (!drawing) return;
-      setCtxForTool();
+      if (!pointers.has(e.pointerId)) return;
 
-      const p = pos(e);
-      ctx.beginPath();
-      ctx.moveTo(lastX, lastY);
-      ctx.lineTo(p.x, p.y);
-      ctx.stroke();
-      lastX = p.x; lastY = p.y;
+      const p = getScreenPos(e);
+      pointers.set(e.pointerId, p);
+
+      if (mode === 'pinch' && pointers.size >= 2 && pinchStart){
+        const arr = Array.from(pointers.values()).slice(0,2);
+        const m = mid(arr[0], arr[1]);
+        const d = Math.max(1e-6, dist(arr[0], arr[1]));
+
+        const factor = d / pinchStart.dist;
+        const newScale = clampScale(pinchStart.startScale * factor);
+
+        // Weltpunkt unter Start-Mitte beibehalten, aber neue Mitte m:
+        // pan = midNew - worldMid*newScale
+        VIEW.scale = newScale;
+        VIEW.panX = m.sx - pinchStart.worldMid.x * newScale;
+        VIEW.panY = m.sy - pinchStart.worldMid.y * newScale;
+
+        redrawAll();
+        return;
+      }
+
+      if (mode === 'pan'){
+        const dx = p.sx - lastPanSX;
+        const dy = p.sy - lastPanSY;
+        lastPanSX = p.sx;
+        lastPanSY = p.sy;
+
+        VIEW.panX += dx;
+        VIEW.panY += dy;
+        redrawAll();
+        return;
+      }
+
+      if (mode === 'draw'){
+        extendStrokeToScreen(p.sx, p.sy);
+      }
     });
 
-    function stop(e){
-      drawing = false;
+    function stopPointer(e){
+      if (pointers.has(e.pointerId)) pointers.delete(e.pointerId);
       try{ canvas.releasePointerCapture(e.pointerId); }catch(_){}
+
+      if (mode === 'pinch'){
+        // wenn unter 2 Pointer fallen, pinch beenden
+        if (pointers.size < 2){
+          pinchStart = null;
+          mode = 'idle';
+        }
+        return;
+      }
+
+      if (mode === 'pan'){
+        mode = 'idle';
+        canvas.style.cursor = 'crosshair';
+        return;
+      }
+
+      if (mode === 'draw'){
+        endStroke();
+        mode = 'idle';
+        return;
+      }
     }
-    canvas.addEventListener('pointerup', stop);
-    canvas.addEventListener('pointercancel', stop);
-    canvas.addEventListener('pointerleave', () => { drawing = false; });
+
+    canvas.addEventListener('pointerup', stopPointer);
+    canvas.addEventListener('pointercancel', stopPointer);
+    canvas.addEventListener('pointerleave', () => {
+      // leave nur als safety für Maus; touch pointer bleiben captured
+      if (mode === 'draw') endStroke();
+      if (mode !== 'pinch') mode = 'idle';
+      canvas.style.cursor = 'crosshair';
+    });
   }
 
   function initAll(){
@@ -681,6 +920,9 @@ canvas.lia-draw{
 -->
 
 # Canvas Trys - Road to OCR
+
+Canvas mit Farbauswahl und Radierer. Zoom ist auch dabei und mit den anderen Maustasten kann man auch die Canvas schieben. Auch sollte die Touchsteuerung dafür funktionieren.
+
 
 <div class="lia-draw-block">
   <div class="lia-draw-wrap">
