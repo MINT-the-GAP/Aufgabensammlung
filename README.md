@@ -1,5 +1,8 @@
+<!--
+author: Martin Lommatzsch
+comment: Textmarker-Import (Header-Button + Overlay)
+
 @style
-  /* Nur Overlay im Content – Header-UI wird per JS auch im Root gestylt */
   :root{
     --hl-yellow: rgba(255, 238,  88, 0.55);
     --hl-green:  rgba(144, 238, 144, 0.45);
@@ -18,13 +21,13 @@
     --hl-z: 9999999;
   }
 
+  /* Overlay im Content */
   .lia-hl-overlay{
     position: fixed !important;
     inset: 0 !important;
     z-index: calc(var(--hl-z) - 1) !important;
     pointer-events: none !important;
   }
-
   .lia-hl-overlay.erase-on{ pointer-events: auto !important; }
 
   .lia-hl-rect{
@@ -45,8 +48,8 @@
 
 @onload
   (function(){
-    if (globalThis.__LIA_TEXTMARKER_IMPORT_V1) return;
-    globalThis.__LIA_TEXTMARKER_IMPORT_V1 = true;
+    if (globalThis.__LIA_TEXTMARKER_IMPORT_V2) return;
+    globalThis.__LIA_TEXTMARKER_IMPORT_V2 = true;
 
     const CONTENT_WIN = window;
     const CONTENT_DOC = document;
@@ -56,18 +59,17 @@
       try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
       return w;
     }
-
     const ROOT_WIN = getRootWindow();
     const ROOT_DOC = ROOT_WIN.document;
 
-    // Shared State im Root (wichtig bei iframe)
+    // Shared State im Root
     ROOT_WIN.__liaHL = ROOT_WIN.__liaHL || {};
     const SH = ROOT_WIN.__liaHL;
     SH.state = SH.state || { active:false, panelOpen:false, tool:'mark', color:'yellow' };
     SH.HL    = SH.HL    || [];
     SH.nextId= SH.nextId|| 1;
 
-    // ---------- Theme/Accent ableiten ----------
+    // ---------- Theme/Accent ----------
     function parseRGB(str){
       const m = (str || '').match(/rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)/i);
       if (!m) return null;
@@ -124,7 +126,7 @@
     adaptUIVars();
     setInterval(adaptUIVars, 1200);
 
-    // ---------- Overlay im Content ----------
+    // ---------- Overlay ----------
     const overlay = CONTENT_DOC.createElement('div');
     overlay.className = 'lia-hl-overlay';
     CONTENT_DOC.body.appendChild(overlay);
@@ -148,11 +150,10 @@
         }
       }
     }
-
     CONTENT_WIN.addEventListener('scroll', render, { passive:true });
     CONTENT_WIN.addEventListener('resize', render);
 
-    // ---------- Root CSS injizieren (damit Header-Button sauber aussieht) ----------
+    // ---------- Root Styles (Header-Button + Panel) ----------
     function ensureRootStyle(){
       if (ROOT_DOC.getElementById('lia-hl-import-style')) return;
 
@@ -180,22 +181,20 @@
         }
         #lia-hl-btn:hover{ background: color-mix(in srgb, currentColor 10%, transparent) !important; }
         #lia-hl-btn:active{ background: color-mix(in srgb, currentColor 16%, transparent) !important; }
-
         #lia-hl-btn .icon{ width:22px !important; height:22px !important; display:block !important; }
         #lia-hl-btn .dot{
-          position: absolute !important;
-          right: 6px !important;
-          bottom: 6px !important;
-          width: 10px !important;
-          height: 10px !important;
-          border-radius: 999px !important;
-          border: 1px solid var(--hl-ui-border) !important;
+          position:absolute !important;
+          right:6px !important;
+          bottom:6px !important;
+          width:10px !important;
+          height:10px !important;
+          border-radius:999px !important;
+          border:1px solid var(--hl-ui-border) !important;
           background: var(--hl-yellow) !important;
         }
-
         body.lia-hl-active #lia-hl-btn{
-          outline: 2px solid color-mix(in srgb, var(--hl-ui-fg) 25%, transparent) !important;
-          outline-offset: 2px !important;
+          outline:2px solid color-mix(in srgb, var(--hl-ui-fg) 25%, transparent) !important;
+          outline-offset:2px !important;
         }
 
         #lia-hl-panel{
@@ -261,17 +260,15 @@
       ROOT_DOC.head.appendChild(st);
     }
 
-    // ---------- HeaderLeft finden ----------
     function headerLeft(){
       const header = ROOT_DOC.querySelector('header#lia-toolbar-nav') || ROOT_DOC.querySelector('#lia-toolbar-nav');
-      if (!header) return null;
+      if (!header) return ROOT_DOC.querySelector('.lia-header__left');
       return header.querySelector('.lia-header__left');
     }
 
     function ensureUI(){
       ensureRootStyle();
 
-      // Button
       let btn = ROOT_DOC.getElementById('lia-hl-btn');
       if (!btn){
         btn = ROOT_DOC.createElement('button');
@@ -288,7 +285,6 @@
         `;
       }
 
-      // Panel
       let panel = ROOT_DOC.getElementById('lia-hl-panel');
       if (!panel){
         panel = ROOT_DOC.createElement('div');
@@ -312,7 +308,9 @@
 
       const left = headerLeft();
       if (left && btn.parentNode !== left){
-        left.appendChild(btn);   // verdrängt nichts, normaler Inline-Button
+        const anchor = left.querySelector('button,[role="button"],a');
+        if (anchor) anchor.insertAdjacentElement('afterend', btn);
+        else left.appendChild(btn);
       }
     }
 
@@ -322,7 +320,7 @@
       if (!btn || !panel) return;
       const r = btn.getBoundingClientRect();
       panel.style.left = `${Math.max(12, Math.round(r.left))}px`;
-      panel.style.top  = `${Math.round(r.bottom + 10)}px`;
+      panel.style.top  = `${Math.round(r.bottom + 10)}px`;  // <- FIX: keine Extra-Klammer
     }
 
     function ensureSwatches(){
@@ -360,6 +358,11 @@
       ROOT_DOC.body.classList.toggle('lia-hl-panel-open', !!(SH.state.active && SH.state.panelOpen));
       overlay.classList.toggle('erase-on', SH.state.tool === 'erase');
 
+      const toolMark = ROOT_DOC.getElementById('hl-tool-mark');
+      const toolErase= ROOT_DOC.getElementById('hl-tool-erase');
+      if (toolMark) toolMark.classList.toggle('active', SH.state.tool==='mark');
+      if (toolErase)toolErase.classList.toggle('active', SH.state.tool==='erase');
+
       const dot = ROOT_DOC.getElementById('lia-hl-dot');
       if (dot){
         const map = {
@@ -372,11 +375,6 @@
         };
         dot.style.background = map[SH.state.color] || map.yellow;
       }
-
-      const toolMark = ROOT_DOC.getElementById('hl-tool-mark');
-      const toolErase= ROOT_DOC.getElementById('hl-tool-erase');
-      if (toolMark) toolMark.classList.toggle('active', SH.state.tool==='mark');
-      if (toolErase)toolErase.classList.toggle('active', SH.state.tool==='erase');
 
       const colorsEl = ROOT_DOC.getElementById('hl-colors');
       if (colorsEl){
@@ -477,7 +475,6 @@
     tick();
     render();
 
-    // Stabil gegen Nightly/DOM-Umbauten
     ROOT_WIN.addEventListener('resize', tick);
     CONTENT_WIN.addEventListener('resize', ()=>{ render(); tick(); });
 
@@ -489,6 +486,4 @@
     setInterval(tick, 700);
   })();
 @end
-
-
-# Tests
+-->
