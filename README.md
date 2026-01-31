@@ -1,6 +1,6 @@
 <!--
+comment: LiaScript Import - Textmarker (Header-Button + Overlay)
 author: Martin Lommatzsch
-comment: Textmarker-Import (Header-Button + Overlay)
 
 @style
   :root{
@@ -21,7 +21,6 @@ comment: Textmarker-Import (Header-Button + Overlay)
     --hl-z: 9999999;
   }
 
-  /* Overlay im Content */
   .lia-hl-overlay{
     position: fixed !important;
     inset: 0 !important;
@@ -48,8 +47,8 @@ comment: Textmarker-Import (Header-Button + Overlay)
 
 @onload
   (function(){
-    if (globalThis.__LIA_TEXTMARKER_IMPORT_V2) return;
-    globalThis.__LIA_TEXTMARKER_IMPORT_V2 = true;
+    if (globalThis.__LIA_TEXTMARKER_IMPORT_V3) return;
+    globalThis.__LIA_TEXTMARKER_IMPORT_V3 = true;
 
     const CONTENT_WIN = window;
     const CONTENT_DOC = document;
@@ -62,7 +61,7 @@ comment: Textmarker-Import (Header-Button + Overlay)
     const ROOT_WIN = getRootWindow();
     const ROOT_DOC = ROOT_WIN.document;
 
-    // Shared State im Root
+    // Shared state im Root
     ROOT_WIN.__liaHL = ROOT_WIN.__liaHL || {};
     const SH = ROOT_WIN.__liaHL;
     SH.state = SH.state || { active:false, panelOpen:false, tool:'mark', color:'yellow' };
@@ -153,10 +152,9 @@ comment: Textmarker-Import (Header-Button + Overlay)
     CONTENT_WIN.addEventListener('scroll', render, { passive:true });
     CONTENT_WIN.addEventListener('resize', render);
 
-    // ---------- Root Styles (Header-Button + Panel) ----------
+    // ---------- Root Style ----------
     function ensureRootStyle(){
       if (ROOT_DOC.getElementById('lia-hl-import-style')) return;
-
       const st = ROOT_DOC.createElement('style');
       st.id = 'lia-hl-import-style';
       st.textContent = `
@@ -166,15 +164,12 @@ comment: Textmarker-Import (Header-Button + Overlay)
           height: 40px !important;
           padding: 0 !important;
           margin-left: 6px !important;
-
           display: inline-flex !important;
           align-items: center !important;
           justify-content: center !important;
-
           border: 0 !important;
           background: transparent !important;
           color: var(--hl-accent) !important;
-
           cursor: pointer !important;
           user-select: none !important;
           border-radius: 10px !important;
@@ -210,7 +205,6 @@ comment: Textmarker-Import (Header-Button + Overlay)
           backdrop-filter: blur(6px);
         }
         body.lia-hl-panel-open #lia-hl-panel{ display:block !important; }
-
         #lia-hl-panel .hdr{
           display:flex !important; align-items:center !important; justify-content:space-between !important;
           gap:10px !important; padding:10px 12px !important;
@@ -262,8 +256,8 @@ comment: Textmarker-Import (Header-Button + Overlay)
 
     function headerLeft(){
       const header = ROOT_DOC.querySelector('header#lia-toolbar-nav') || ROOT_DOC.querySelector('#lia-toolbar-nav');
-      if (!header) return ROOT_DOC.querySelector('.lia-header__left');
-      return header.querySelector('.lia-header__left');
+      if (header) return header.querySelector('.lia-header__left');
+      return ROOT_DOC.querySelector('.lia-header__left');
     }
 
     function ensureUI(){
@@ -320,7 +314,7 @@ comment: Textmarker-Import (Header-Button + Overlay)
       if (!btn || !panel) return;
       const r = btn.getBoundingClientRect();
       panel.style.left = `${Math.max(12, Math.round(r.left))}px`;
-      panel.style.top  = `${Math.round(r.bottom + 10)}px`;  // <- FIX: keine Extra-Klammer
+      panel.style.top  = `${Math.round(r.bottom + 10)}px`;
     }
 
     function ensureSwatches(){
@@ -449,7 +443,6 @@ comment: Textmarker-Import (Header-Button + Overlay)
 
     CONTENT_DOC.addEventListener('mouseup', ()=>{
       if (!SH.state.active) return;
-
       if (SH.state.panelOpen){ SH.state.panelOpen=false; applyUI(); }
       if (SH.state.tool!=='mark') return;
       addHighlightFromSelection();
@@ -487,3 +480,5 @@ comment: Textmarker-Import (Header-Button + Overlay)
   })();
 @end
 -->
+
+# Textmarker
