@@ -5,7 +5,7 @@ narrator: Deutsch Female
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/README.md
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/TafelREADME.md?cb=55
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/TafelREADME.md?cb=56
 
 -->
 
