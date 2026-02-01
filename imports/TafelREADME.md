@@ -1,7 +1,7 @@
 <!--
 version:  0.0.2
 language: de
-comment: LiaScript – Presentation 95% Breite + Auto-Font-Boost + Schriftgrößen-Regler (Overlay-Button, nur Presentation) – import-sicher, kollisionsarm
+comment: LiaScript – Presentation 98% Breite + Auto-Font-Boost + Schriftgrößen-Regler (Overlay-Button, nur Presentation) – import-sicher, kollisionsarm
 author: Martin Lommatzsch
 
 
@@ -188,7 +188,7 @@ author: Martin Lommatzsch
   const CONTENT_CSS = `
     :root{
       --lia-tff-side-gap: 25px;     /* links/rechts ungenutzt */
-      --lia-tff-maxw: 95vw;         /* max 95% */
+      --lia-tff-maxw: 98vw;         /* max 98% */
       --lia-tff-font: unset;        /* wird per JS gesetzt */
     }
 
@@ -494,14 +494,75 @@ author: Martin Lommatzsch
     return all.find(el=>el.tagName === "BUTTON") || null;
   }
 
-  function findMarkerButton(){
-    // bewusst defensiv – wir nehmen nur sehr eindeutige Matches
-    return ROOT_DOC.querySelector(
-      'button[aria-label*="Textmarker" i],' +
-      'button[title*="Textmarker" i],' +
-      'button[id*="textmarker" i],' +
-      'button[class*="textmarker" i]'
-    );
+
+
+  // =========================================================
+  // Positioning: Dock an die Top-Left-Toolbar-Zeile (Nightly-safe)
+  // =========================================================
+  function getVisibleRect(el){
+    if (!el) return null;
+    try{
+      const cs = ROOT_WIN.getComputedStyle(el);
+      if (!cs || cs.display === "none" || cs.visibility === "hidden" || cs.opacity === "0") return null;
+
+      const r = el.getBoundingClientRect();
+      if (!r || r.width < 6 || r.height < 6) return null;
+      // außerhalb Viewport: ignorieren
+      const vp = getViewport();
+      if (r.right < 0 || r.bottom < 0 || r.left > vp.w || r.top > vp.h) return null;
+
+      return r;
+    }catch(e){
+      return null;
+    }
+  }
+
+  function isToolbarLike(el){
+    // entweder im Toolbar-Header, oder overlay/fixed/absolute
+    try{
+      if (el.closest && el.closest("header#lia-toolbar-nav,#lia-toolbar-nav,header.lia-header")) return true;
+      const pos = ROOT_WIN.getComputedStyle(el).position;
+      return (pos === "fixed" || pos === "absolute");
+    }catch(e){
+      return false;
+    }
+  }
+
+  function collectTopLeftRowButtons(anchorRect){
+    const vp = getViewport();
+    const maxTop = 140;                 // "oben"-Band
+    const maxLeft = vp.w * 0.55;        // linke Hälfte
+
+    const yMin = anchorRect ? (anchorRect.top - 28) : 0;
+    const yMax = anchorRect ? (anchorRect.bottom + 28) : maxTop;
+
+    const els = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
+
+    const out = [];
+    for (const el of els){
+      if (!el || el.id === BTN_ID) continue;
+
+      const r = getVisibleRect(el);
+      if (!r) continue;
+
+      // Top-Band + eher links
+      if (r.top > maxTop) continue;
+      if (r.left > maxLeft) continue;
+
+      // gleiche Zeile wie Anchor (falls vorhanden)
+      const midY = r.top + r.height/2;
+      if (anchorRect){
+        if (midY < yMin || midY > yMax) continue;
+      }
+
+      // keine riesigen Container
+      if (r.width > 180 || r.height > 90) continue;
+
+      if (!isToolbarLike(el)) continue;
+
+      out.push({ el, r });
+    }
+    return out;
   }
 
   function positionOverlayButton(){
@@ -509,47 +570,42 @@ author: Martin Lommatzsch
     const overlay = ROOT_DOC.getElementById(OVERLAY_ID);
     if (!btn || !overlay) return;
 
+    // Nur wenn Button sichtbar sein soll (presentation)
+    if (btn.style.display === "none") return;
+
     const vp = getViewport();
-    const pad = 8;          // viewport padding
-    const gap = 0;         // Abstand zu anderen Buttons
-    const size = 24;
+    const pad = 8;
+    const gap = 8; // Abstand rechts neben dem rechtesten Button
+
+    // Button echte Größe nehmen (nicht "size" hartkodieren!)
+    const br = btn.getBoundingClientRect();
+    const bw = (br && br.width)  ? br.width  : 34;
+    const bh = (br && br.height) ? br.height : 34;
 
     const toc = findTOCButton();
-    const mrk = findMarkerButton();
+    const tocR = getVisibleRect(toc);
 
-    // Default Anchor
-    let ax = pad;
-    let ay = pad;
-    let ar = pad + size;
-    let acy = ay + size/2;
+    // Anchor: TOC, sonst Top-Left
+    const anchor = tocR || { left: pad, top: pad, right: pad + bw, bottom: pad + bh, height: bh };
 
-    if (toc){
-      const r = toc.getBoundingClientRect();
-      ax = r.left;
-      ay = r.top;
-      ar = r.right;
-      acy = r.top + r.height/2;
+    // Sammle Buttons in derselben "Toolbar-Zeile" (inkl. Textmarker-Overlay)
+    const peers = collectTopLeftRowButtons(anchor);
+
+    // Rechtestes Ende bestimmen (TOC + alle Peers)
+    let rightEdge = anchor.right;
+    for (const p of peers){
+      rightEdge = Math.max(rightEdge, p.r.right);
     }
 
-    // falls Textmarker weiter rechts sitzt: daran vorbei
-    if (mrk){
-      const r2 = mrk.getBoundingClientRect();
-      ar = Math.max(ar, r2.right);
-      // vertikal: lieber am TOC ausrichten, aber wenn TOC nicht existiert, Marker nehmen
-      if (!toc){
-        ax = r2.left;
-        ay = r2.top;
-        acy = r2.top + r2.height/2;
-      }
-    }
+    // Vertikal sauber an Anchor zentrieren
+    const targetTop = anchor.top + ((anchor.height || bh) - bh) / 2;
 
-    // Zielposition: rechts neben "rechtestem" (TOC/Marker)
-    let left = ar + gap;
-    let top  = acy - (size/2);
+    let left = rightEdge + gap;
+    let top  = targetTop;
 
-    // Clamp in Viewport
-    left = clamp(left, pad, vp.w - size - pad);
-    top  = clamp(top,  pad, vp.h - size - pad);
+    // clamp
+    left = clamp(left, pad, vp.w - bw - pad);
+    top  = clamp(top,  pad, vp.h - bh - pad);
 
     // VisualViewport offset
     overlay.style.left = `${Math.round(vp.ox)}px`;
@@ -558,6 +614,9 @@ author: Martin Lommatzsch
     btn.style.left = `${Math.round(left)}px`;
     btn.style.top  = `${Math.round(top)}px`;
   }
+
+
+
 
   function measurePanel(panel){
     const prevD = panel.style.display;

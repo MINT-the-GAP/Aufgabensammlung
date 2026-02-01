@@ -9,7 +9,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 -->
 
-# Geo 6
+# Geo 1
 
 
 Klicke auf den Stift im Header und markiere im Text wie es dir beliebt.
