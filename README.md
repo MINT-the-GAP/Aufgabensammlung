@@ -3,6 +3,7 @@ comment: SchulLia
 author: Martin Lommatzsch
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MarkerREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/CanvasREADME.md
 
 -->
 

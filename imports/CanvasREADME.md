@@ -7,8 +7,6 @@ tags:
 comment:
 author: Martin Lommatzsch
 
-import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
-        https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
 
 @style
@@ -1661,13 +1659,6 @@ Canvas mit Farbauswahl und Radierer. Zoom ist auch dabei und mit den anderen Mau
 Codebefehl: @canvas
 ```
 
-
-Testzwecke (2 ist Lösung):
-
-<!--   data-solution-button="off" -->
-
-[[ 2 ]] 
 @canvas
-@Algebrite.check(2)
 
 
