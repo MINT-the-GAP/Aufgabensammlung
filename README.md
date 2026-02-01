@@ -332,6 +332,36 @@ author: Martin Lommatzsch
       display: none !important;
     }
 
+    /* =========================================================
+       NIGHTLY Navstack: Strich/Separator über Logo entfernen
+       (Klassenname vom Logo ist lia_header__logo!)
+       ========================================================= */
+    
+    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia-header__middle,
+    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia_header__logo,
+    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia-header__logo{
+      background-image: none !important;
+      box-shadow: none !important;
+      border: 0 !important;
+      outline: none !important;
+    
+      /* Falls eine Linie als Overlay "drüber" liegt: Logo/Container nach vorne */
+      position: relative !important;
+      z-index: calc(var(--hl-z) + 5) !important;
+    }
+    
+    /* Linie kommt oft über ::before/::after von Middle oder dem IMG selbst */
+    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia-header__middle::before,
+    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia-header__middle::after,
+    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia_header__logo::before,
+    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia_header__logo::after,
+    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia-header__logo::before,
+    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia-header__logo::after{
+      content: none !important;
+      display: none !important;
+    }
+
+
   `);
 
 
