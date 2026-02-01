@@ -1,7 +1,7 @@
 <!--
 version:  0.0.1
 language: de
-comment: LiaScript – Presentation: volle Breite + Schriftgrößen-Boost + A-Button (Font-Slider, nur presentation)
+comment: LiaScript – Tafelmodus: Presentation volle Breite + Schriftgrößen-Boost + A-Button (nur Presentation)
 author: Martin Lommatzsch
 
 
@@ -10,26 +10,32 @@ author: Martin Lommatzsch
   /* seitlicher Sicherheitsabstand im Presentation-Modus */
   --pres-side-gap: 12px;
 
-  /* wird per JS gesetzt (18/24/32px) oder "unset" */
+  /* wird per JS gesetzt: "unset" oder px */
   --lia-pres-font: unset;
 
-  /* Lia-Theme Accent (wird per JS ermittelt) */
+  /* wird per JS aus Lia-Theme ermittelt */
   --lia-tafel-font-accent: rgb(11,95,255);
+
+  /* User-Range (Slider) */
+  --lia-tafel-font-min: 14;
+  --lia-tafel-font-max: 48;
 }
 
 /* =========================================================
-   1) Präsentation: wirklich volle Breite (NUR presentation!)
-      Slides: KEINE Breiten-Overrides (sonst Folienfenster kaputt)
+   1) Presentation: volle Breite (NUR presentation!)
    ========================================================= */
 html[data-lia-mode="presentation"] body{
   margin: 0 !important;
+  overflow-x: hidden !important;
 }
 
-/* NUR main anfassen, keine Slides-Wrapper, keine Panels */
+/* NUR main anfassen (keine Slide-Wrapper!) */
 html[data-lia-mode="presentation"] main{
-  width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 !important;
+  width: calc(100vw - (2 * var(--pres-side-gap))) !important;
+  max-width: calc(100vw - (2 * var(--pres-side-gap))) !important;
+
+  margin-left: auto !important;
+  margin-right: auto !important;
 
   box-sizing: border-box !important;
   padding-left:  var(--pres-side-gap) !important;
@@ -43,120 +49,66 @@ html[data-lia-mode="presentation"] main,
 html[data-lia-mode="slides"] main{
   font-size: var(--lia-pres-font) !important;
 }
-
-/* =========================================================
-   3) A-Button + Slider (nur presentation, links oben)
-   ========================================================= */
-#lia-tafel-font-slot{
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0px !important;
-
-  /* Abstand zum Inhaltsverzeichnis-Button, damit nichts "reinragt" */
-  margin-left: 0px !important;
-}
-
-#lia-tafel-font-btn{
-  position: relative !important;
-  width: 40px !important;
-  height: 40px !important;
-  padding: 0 !important;
-  margin: 0 !important;
-
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-
-  border: 0 !important;
-  background: transparent !important;
-  cursor: pointer !important;
-  user-select: none !important;
-
-  border-radius: 10px !important;
-}
-
-#lia-tafel-font-btn:hover{
-  background: color-mix(in srgb, var(--lia-tafel-font-accent) 10%, transparent) !important;
-}
-#lia-tafel-font-btn:active{
-  background: color-mix(in srgb, var(--lia-tafel-font-accent) 16%, transparent) !important;
-}
-
-/* Focus-Ring komplett aus (Nightly setzt gern eigene Linien/Outlines) */
-#lia-tafel-font-btn:focus,
-#lia-tafel-font-btn:focus-visible{
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-/* Doppeltes A (Farben gedreht, Abstand größer) */
-#lia-tafel-font-btn .A-big{
-  position: absolute !important;
-  left: 2px !important;
-  top: -8px !important;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
-  font-weight: 950 !important;
-  font-size: 30px !important;
-  color: #fff !important;
-  opacity: .95 !important;
-  line-height: 1 !important;
-  pointer-events: none !important;
-
-  /* Lesbarkeit auf hellen Toolbars */
-  text-shadow:
-    0 1px 0 rgba(0,0,0,.22),
-    0 0 6px rgba(0,0,0,.18);
-}
-
-#lia-tafel-font-btn .A-small{
-  position: absolute !important;
-  left: 14px !important;   /* größerer Abstand */
-  top: -3px !important;    /* leichter Versatz */
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
-  font-weight: 950 !important;
-  font-size: 22px !important;
-  color: var(--lia-tafel-font-accent) !important;
-  opacity: .95 !important;
-  line-height: 1 !important;
-  pointer-events: none !important;
-}
-
-#lia-tafel-font-panel{
-  position: fixed !important;
-  z-index: 9999999 !important;
-  display: none !important;
-
-  width: 210px !important;
-  padding: 12px !important;
-
-  border-radius: 14px !important;
-  border: 1px solid rgba(0,0,0,.14) !important;
-  background: rgba(255,255,255,.92) !important;
-  box-shadow: 0 16px 42px rgba(0,0,0,.16) !important;
-  backdrop-filter: blur(6px);
-}
-
-html[data-lia-mode="presentation"] body.lia-tafel-font-open #lia-tafel-font-panel{
-  display: block !important;
-}
-
-#lia-tafel-font-panel input[type="range"]{
-  width: 100% !important;
-}
-
-/* Dark UI Anpassung (wenn Lia dunkel ist) */
-body.lia-tafel-dark #lia-tafel-font-panel{
-  border-color: rgba(255,255,255,.16) !important;
-  background: rgba(20,20,22,.92) !important;
-  box-shadow: 0 18px 44px rgba(0,0,0,.55) !important;
-}
 @end
 
 
 
 @onload
 (function () {
+
+  // =========================================================
+  // Root/Content (iframe-safe)
+  // =========================================================
+  function getRootWindow(){
+    let w = window;
+    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
+    return w;
+  }
+
+  const ROOT_WIN = getRootWindow();
+  const ROOT_DOC = ROOT_WIN.document;
+
+  const CONTENT_WIN = window;
+  const CONTENT_DOC = document;
+
+  // =========================================================
+  // Per-Dokument Instance (Import mehrfach => keine Kollision)
+  // =========================================================
+  const REGKEY = "__LIA_TAFEL_REG_V1__";
+  ROOT_WIN[REGKEY] = ROOT_WIN[REGKEY] || { instances: {} };
+  const REG = ROOT_WIN[REGKEY];
+
+  const DOC_ID =
+    (CONTENT_DOC.baseURI || CONTENT_WIN.location.href || "") +
+    "::" +
+    (CONTENT_DOC.title || "");
+
+  if (REG.instances[DOC_ID]?.__alive) return;
+
+  const I = REG.instances[DOC_ID] = {
+    __alive: true,
+    ticking: false,
+    state: { open:false },
+    lastRaw: null,
+    lastMode: null
+  };
+
+  // =========================================================
+  // Helpers: CSS Injection
+  // =========================================================
+  function ensureStyle(doc, id, css){
+    if (!doc || doc.getElementById(id)) return;
+    const st = doc.createElement("style");
+    st.id = id;
+    st.textContent = css;
+    (doc.head || doc.documentElement).appendChild(st);
+  }
+
+  // =========================================================
+  // Mode detection (Lia settings in localStorage)
+  // =========================================================
   const SETTINGS_KEY = "settings";
+  const FONT_KEY     = "lia-tafel-font-px";  // Persistierter Slider-Wert (px)
 
   function norm(x){ return String(x == null ? "" : x).toLowerCase(); }
 
@@ -197,6 +149,7 @@ body.lia-tafel-dark #lia-tafel-font-panel{
         const m = walk(v[k]);
         if (m) return m;
       }
+
       return null;
     }
 
@@ -219,47 +172,33 @@ body.lia-tafel-dark #lia-tafel-font-panel{
     }
   }
 
-  function applyModeAttr(){
-    document.documentElement.dataset.liaMode = detectMode();
+  function applyModeAttr(mode){
+    try { CONTENT_DOC.documentElement.dataset.liaMode = mode; } catch(e){}
   }
 
-  // ---------- Theme Accent + Dark/Light (robust, ohne Regex) ----------
-  function parseRgbNoRegex(s){
-    const str = String(s || "");
-    const i0 = str.indexOf("(");
-    const i1 = str.indexOf(")");
-    if (i0 < 0 || i1 < 0) return null;
-    const parts = str.slice(i0+1, i1).split(",").map(x => Number(String(x).trim()));
-    if (parts.length < 3) return null;
-    if (!isFinite(parts[0]) || !isFinite(parts[1]) || !isFinite(parts[2])) return null;
-    return [parts[0], parts[1], parts[2]];
-  }
-  function luminance(rgb){
-    const t = rgb.map(v => v/255).map(c => (c <= 0.03928 ? c/12.92 : Math.pow((c+0.055)/1.055, 2.4)));
-    return 0.2126*t[0] + 0.7152*t[1] + 0.0722*t[2];
-  }
-  function setVar(k,v){
-    try{ document.documentElement.style.setProperty(k,v); }catch(_){}
-  }
-
+  // =========================================================
+  // Theme Accent (LiaTheme-Farbe) -> CSS Var
+  // =========================================================
   function getLiaAccentColor(doc){
     try{
       const d = doc || document;
       const body = d.body || d.documentElement;
 
+      // wenn schon ein lia-btn existiert
       const existing = d.querySelector(".lia-btn");
       if (existing){
         const bg = getComputedStyle(existing).backgroundColor;
         if (bg && bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent") return bg;
       }
 
+      // sonst probe erzeugen
       const probe = d.createElement("button");
       probe.className = "lia-btn";
       probe.type = "button";
       probe.textContent = "x";
       probe.style.position = "absolute";
       probe.style.left = "-9999px";
-      probe.style.top = "-9999px";
+      probe.style.top  = "-9999px";
       probe.style.visibility = "hidden";
       body.appendChild(probe);
 
@@ -267,33 +206,26 @@ body.lia-tafel-dark #lia-tafel-font-panel{
       probe.remove();
 
       if (bg && bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent") return bg;
-    }catch(_){}
+    }catch(e){}
     return null;
   }
 
-  function updateThemeFlags(){
-    // Dark/Light grob am Root-Hintergrund
-    let bg = null;
-    try{
-      bg = getComputedStyle(document.body || document.documentElement).backgroundColor
-        || getComputedStyle(document.documentElement).backgroundColor;
-    }catch(_){}
-    const rgb = parseRgbNoRegex(bg);
-    const isDark = rgb ? (luminance(rgb) < 0.45) : false;
-
-    document.body.classList.toggle("lia-tafel-dark", !!isDark);
-
-    const accent = getLiaAccentColor(document) || (function(){
-      try{
-        const pd = (window.parent && window.parent.document) ? window.parent.document : null;
-        return pd ? getLiaAccentColor(pd) : null;
-      }catch(_){ return null; }
-    })();
-
-    if (accent) setVar("--lia-tafel-font-accent", accent);
+  function setVar(doc, k, v){
+    try { doc.documentElement.style.setProperty(k, v); } catch(e){}
   }
 
-  // ---------- Schriftgrößen-Boost (presentation+slides) ----------
+  function syncAccent(){
+    const acc =
+      getLiaAccentColor(ROOT_DOC) ||
+      getLiaAccentColor(CONTENT_DOC) ||
+      "rgb(11,95,255)";
+    setVar(ROOT_DOC,    "--lia-tafel-font-accent", acc);
+    setVar(CONTENT_DOC, "--lia-tafel-font-accent", acc);
+  }
+
+  // =========================================================
+  // Font logic (auto 18/24/32) + Slider override
+  // =========================================================
   const PRES_PX = [18, 24, 32];
 
   function pxToStep0to2(px){
@@ -303,54 +235,181 @@ body.lia-tafel-dark #lia-tafel-font-panel{
   }
 
   function getMainFontPx(){
-    const main = document.querySelector("main") || document.documentElement;
+    const main = CONTENT_DOC.querySelector("main") || CONTENT_DOC.documentElement;
     const fs = parseFloat(getComputedStyle(main).fontSize || "16");
     return isNaN(fs) ? 16 : fs;
   }
 
+  function getSavedFontPx(){
+    try{
+      const v = localStorage.getItem(FONT_KEY);
+      if (!v) return null;
+      const n = parseInt(v, 10);
+      if (!isFinite(n)) return null;
+      return n;
+    }catch(e){
+      return null;
+    }
+  }
+
+  function clamp(n, a, b){ return Math.max(a, Math.min(b, n)); }
+
+  function setPresFontPx(px){
+    setVar(CONTENT_DOC, "--lia-pres-font", px == null ? "unset" : (px + "px"));
+  }
+
   let sampling = false;
 
-  function applyFontLogic(){
-    const mode = detectMode();
+  function applyFontLogic(mode){
     const isPresLike = (mode === "presentation" || mode === "slides");
 
     if (!isPresLike){
-      setVar("--lia-pres-font", "unset");
+      setPresFontPx(null);
       return;
     }
 
+    // Slider override?
+    const min = parseInt(getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue("--lia-tafel-font-min") || "14", 10);
+    const max = parseInt(getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue("--lia-tafel-font-max") || "48", 10);
+    const saved = getSavedFontPx();
+    if (saved != null){
+      setPresFontPx(clamp(saved, min, max));
+      return;
+    }
+
+    // Auto: erst unset, dann messen
     if (sampling) return;
     sampling = true;
 
-    // erst Override weg, dann messen
-    setVar("--lia-pres-font", "unset");
+    setPresFontPx(null);
 
-    requestAnimationFrame(function(){
-      requestAnimationFrame(function(){
+    CONTENT_WIN.requestAnimationFrame(function(){
+      CONTENT_WIN.requestAnimationFrame(function(){
         const step = pxToStep0to2(getMainFontPx());
-        setVar("--lia-pres-font", PRES_PX[step] + "px");
+        setPresFontPx(PRES_PX[step]);
         sampling = false;
       });
     });
   }
 
   // =========================================================
-  // Root-Toolbar Button (A) – nur presentation
+  // Root UI: A-Button + Panel (nur Presentation)
   // =========================================================
-  function getRootWindow(){
-    let w = window;
-    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
-    return w;
-  }
+  const SLOT_ID  = "lia-tafel-slot-v1";
+  const BTN_ID   = "lia-tafel-font-btn-v1";
+  const PANEL_ID = "lia-tafel-font-panel-v1";
+  const SLIDER_ID= "lia-tafel-font-slider-v1";
 
-  const ROOT_WIN = getRootWindow();
-  const ROOT_DOC = ROOT_WIN.document;
+  ensureStyle(ROOT_DOC, "lia-tafel-ui-style-root-v1", `
+    /* Slot sitzt in der Header-Left-Leiste, direkt nach TOC */
+    #${SLOT_ID}{
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      margin-left: 6px !important;   /* nah am TOC, ohne reinzuragen */
+      flex: 0 0 auto !important;
+    }
+
+    /* Nur im Presentation-Modus sichtbar */
+    body.lia-tafel-pres #${BTN_ID}{ display: inline-flex !important; }
+    body:not(.lia-tafel-pres) #${BTN_ID}{ display: none !important; }
+    body:not(.lia-tafel-pres) #${PANEL_ID}{ display: none !important; }
+
+    #${BTN_ID}{
+      position: relative !important;
+      width: 32px !important;
+      height: 32px !important;
+      padding: 0 !important;
+      margin: 0 !important;
+
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+
+      border: 0 !important;
+      background: transparent !important;
+      border-radius: 10px !important;
+
+      cursor: pointer !important;
+      user-select: none !important;
+    }
+
+    #${BTN_ID}:hover{
+      background: color-mix(in srgb, var(--lia-tafel-font-accent) 12%, transparent) !important;
+    }
+    #${BTN_ID}:active{
+      background: color-mix(in srgb, var(--lia-tafel-font-accent) 18%, transparent) !important;
+    }
+
+    /* Focus komplett neutral (Nightly macht sonst Linien) */
+    #${BTN_ID}:focus,
+    #${BTN_ID}:focus-visible{
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
+    /* Doppel-A: weiß + Themefarbe größer, leicht nach rechts */
+    #${BTN_ID} .A-small,
+    #${BTN_ID} .A-big{
+      position: absolute !important;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
+      font-weight: 950 !important;
+      line-height: 1 !important;
+      pointer-events: none !important;
+      user-select: none !important;
+    }
+
+    #${BTN_ID} .A-small{
+      left: 2px !important;
+      top: -3px !important;
+      font-size: 24px !important;
+      color: #fff !important;
+      text-shadow: 0 1px 2px rgba(0,0,0,.45) !important; /* auf hell/dunkel sichtbar */
+      opacity: .98 !important;
+    }
+
+    #${BTN_ID} .A-big{
+      left: 6px !important;     /* leicht nach rechts */
+      top: -7px !important;
+      font-size: 28px !important;
+      color: var(--lia-tafel-font-accent) !important; /* LIA THEME-FARBE */
+      opacity: .85 !important;
+    }
+
+    /* Panel (nur Slider) */
+    #${PANEL_ID}{
+      position: fixed !important;
+      z-index: 9999998 !important;
+
+      width: 220px !important;
+      padding: 10px 12px !important;
+
+      display: none !important;
+
+      border-radius: 14px !important;
+      border: 1px solid color-mix(in srgb, currentColor 18%, transparent) !important;
+      background: color-mix(in srgb, rgba(255,255,255,.92) 60%, transparent) !important;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 16px 42px rgba(0,0,0,.18) !important;
+    }
+
+    body.lia-tafel-panel-open #${PANEL_ID}{
+      display: block !important;
+    }
+
+    #${PANEL_ID} input[type="range"]{
+      width: 100% !important;
+      margin: 0 !important;
+      accent-color: var(--lia-tafel-font-accent) !important;
+    }
+  `);
 
   function findHeaderLeft(){
     const header =
       ROOT_DOC.querySelector("header#lia-toolbar-nav") ||
       ROOT_DOC.querySelector("#lia-toolbar-nav") ||
       ROOT_DOC.querySelector("header.lia-header");
+
     if (!header) return null;
     return header.querySelector(".lia-header__left") || null;
   }
@@ -364,218 +423,265 @@ body.lia-tafel-dark #lia-tafel-font-panel{
       const t = ((b.getAttribute("aria-label")||b.getAttribute("title")||b.textContent||"")+"").toLowerCase();
       return t.includes("inhaltsverzeichnis") || t.includes("table of contents") || t.includes("contents");
     });
+
     return pick || btns[0];
   }
 
-  function ensureFontButtonUI(){
-    const mode = detectMode();
-    const isPresentation = (mode === "presentation");
-
-    // Panel/Buttons nur im presentation
-    if (!isPresentation){
-      try{
-        const slot = ROOT_DOC.getElementById("lia-tafel-font-slot");
-        const panel = ROOT_DOC.getElementById("lia-tafel-font-panel");
-        if (slot) slot.remove();
-        if (panel) panel.remove();
-        ROOT_DOC.body.classList.remove("lia-tafel-font-open");
-      }catch(_){}
-      return;
-    }
-
-    // Slot
-    let slot = ROOT_DOC.getElementById("lia-tafel-font-slot");
-    if (!slot){
-      slot = ROOT_DOC.createElement("span");
-      slot.id = "lia-tafel-font-slot";
-    }
-
-    // Button
-    let btn = ROOT_DOC.getElementById("lia-tafel-font-btn");
-    if (!btn){
-      btn = ROOT_DOC.createElement("button");
-      btn.id = "lia-tafel-font-btn";
-      btn.type = "button";
-      btn.setAttribute("aria-label","Schriftgröße");
-      btn.innerHTML = `
-        <span class="A-big">A</span>
-        <span class="A-small">A</span>
-      `;
-    }
-
-    // Panel (nur nackter Slider!)
-    let panel = ROOT_DOC.getElementById("lia-tafel-font-panel");
+  function ensureUI(){
+    // Panel sicher am Body
+    let panel = ROOT_DOC.getElementById(PANEL_ID);
     if (!panel){
       panel = ROOT_DOC.createElement("div");
-      panel.id = "lia-tafel-font-panel";
-      panel.innerHTML = `
-        <input id="lia-tafel-font-range" type="range" min="14" max="44" step="1" value="24" aria-label="Schriftgröße">
-      `;
+      panel.id = PANEL_ID;
+      panel.innerHTML = `<input id="${SLIDER_ID}" type="range" min="14" max="48" step="1" value="24" aria-label="Schriftgröße" />`;
       ROOT_DOC.body.appendChild(panel);
     }
 
-    // Slot zusammensetzen
-    if (!slot.contains(btn)) slot.appendChild(btn);
-
-    // Einhängen: zwischen TOC und Textmarker (falls vorhanden)
+    // Slot in Header-Left nach TOC
     const left = findHeaderLeft();
-    if (left){
-      if (slot.parentNode !== left){
-        const hlBtn = left.querySelector("#lia-hl-btn");
-        const toc   = findTOCButtonInLeft(left);
+    if (!left) return;
 
-        if (hlBtn && hlBtn.parentNode === left){
-          hlBtn.insertAdjacentElement("beforebegin", slot);
-        } else if (toc && toc.parentNode === left){
-          toc.insertAdjacentElement("afterend", slot);
-        } else {
-          left.appendChild(slot);
-        }
-      }
-    } else {
-      if (!slot.parentNode) ROOT_DOC.body.appendChild(slot);
+    let slot = ROOT_DOC.getElementById(SLOT_ID);
+    if (!slot){
+      slot = ROOT_DOC.createElement("span");
+      slot.id = SLOT_ID;
+      slot.setAttribute("aria-label", "Tafelmodus Werkzeuge");
     }
 
-    // Wiring einmalig
-    if (!btn.__liaFontWired){
-      btn.__liaFontWired = true;
+    // Button
+    let btn = ROOT_DOC.getElementById(BTN_ID);
+    if (!btn){
+      btn = ROOT_DOC.createElement("button");
+      btn.id = BTN_ID;
+      btn.type = "button";
+      btn.setAttribute("aria-label","Schriftgröße");
+      btn.innerHTML = `<span class="A-small">A</span><span class="A-big">A</span>`;
+    }
 
-      function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
+    if (btn.parentNode !== slot) slot.appendChild(btn);
 
-      function getViewport(){
-        const vv = ROOT_WIN.visualViewport;
-        if (vv){
-          return { w: vv.width, h: vv.height, ox: vv.offsetLeft || 0, oy: vv.offsetTop || 0 };
-        }
-        const de = ROOT_DOC.documentElement;
-        return { w: de.clientWidth, h: de.clientHeight, ox: 0, oy: 0 };
+    if (slot.parentNode !== left){
+      const toc = findTOCButtonInLeft(left);
+      if (toc && toc.parentNode === left){
+        toc.insertAdjacentElement("afterend", slot);
+      }else{
+        left.insertAdjacentElement("afterbegin", slot);
       }
+    }
+  }
 
-      function positionPanel(){
-        const r = btn.getBoundingClientRect();
-        const vp = getViewport();
+  // =========================================================
+  // Panel positioning (Viewport clamp, kein Reinragen)
+  // =========================================================
+  function getViewport(){
+    const vv = ROOT_WIN.visualViewport;
+    if (vv){
+      return { w: vv.width, h: vv.height, ox: vv.offsetLeft || 0, oy: vv.offsetTop || 0 };
+    }
+    const de = ROOT_DOC.documentElement;
+    return { w: de.clientWidth, h: de.clientHeight, ox: 0, oy: 0 };
+  }
 
-        // Panel-Maße messen (sichtbar machen zum Messen)
-        const prevDisp = panel.style.display;
-        const prevVis  = panel.style.visibility;
-        panel.style.display = "block";
-        panel.style.visibility = "hidden";
-        panel.style.left = "-9999px";
-        panel.style.top  = "-9999px";
+  function measurePanel(panel){
+    const prevDisplay = panel.style.display;
+    const prevVis = panel.style.visibility;
+    const prevLeft = panel.style.left;
+    const prevTop = panel.style.top;
 
-        const pw = panel.offsetWidth || 210;
-        const ph = panel.offsetHeight || 54;
+    panel.style.display = "block";
+    panel.style.visibility = "hidden";
+    panel.style.left = "-9999px";
+    panel.style.top  = "-9999px";
 
-        panel.style.display = prevDisp;
-        panel.style.visibility = prevVis;
+    const w = panel.offsetWidth || 220;
+    const h = panel.offsetHeight || 46;
 
-        const gap = 10, pad = 8;
+    panel.style.display = prevDisplay;
+    panel.style.visibility = prevVis;
+    panel.style.left = prevLeft;
+    panel.style.top  = prevTop;
 
-        let left = r.left;
-        let top  = r.bottom + gap;
+    return { w, h };
+  }
 
-        left = clamp(left, pad, vp.w - pw - pad);
+  function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
 
-        if (top + ph + pad > vp.h){
-          top = r.top - gap - ph;
-        }
-        top = clamp(top, pad, vp.h - ph - pad);
+  function positionPanel(){
+    const btn = ROOT_DOC.getElementById(BTN_ID);
+    const panel = ROOT_DOC.getElementById(PANEL_ID);
+    if (!btn || !panel) return;
 
-        left = left + vp.ox;
-        top  = top  + vp.oy;
+    if (!ROOT_DOC.body.classList.contains("lia-tafel-panel-open")) return;
 
-        panel.style.left = Math.round(left) + "px";
-        panel.style.top  = Math.round(top)  + "px";
-      }
+    const r = btn.getBoundingClientRect();
+    const vp = getViewport();
+    const sz = measurePanel(panel);
 
-      function closePanel(){
-        ROOT_DOC.body.classList.remove("lia-tafel-font-open");
-      }
-      function togglePanel(){
-        const open = ROOT_DOC.body.classList.toggle("lia-tafel-font-open");
-        if (open) ROOT_WIN.requestAnimationFrame(positionPanel);
-      }
+    const gap = 10;
+    const pad = 8;
+
+    let left = r.left;
+    let top  = r.bottom + gap;
+
+    left = clamp(left, pad, vp.w - sz.w - pad);
+
+    if (top + sz.h + pad > vp.h){
+      top = r.top - gap - sz.h;
+    }
+
+    top = clamp(top, pad, vp.h - sz.h - pad);
+
+    panel.style.left = `${Math.round(left + vp.ox)}px`;
+    panel.style.top  = `${Math.round(top  + vp.oy)}px`;
+  }
+
+  // =========================================================
+  // Wiring (einmal)
+  // =========================================================
+  function wireOnce(){
+    const btn = ROOT_DOC.getElementById(BTN_ID);
+    const panel = ROOT_DOC.getElementById(PANEL_ID);
+    const slider = ROOT_DOC.getElementById(SLIDER_ID);
+    if (!btn || !panel || !slider) return;
+
+    if (!btn.__liaTafelWired){
+      btn.__liaTafelWired = true;
 
       btn.addEventListener("click", (e)=>{
         e.preventDefault();
         e.stopPropagation();
-        togglePanel();
+
+        const open = ROOT_DOC.body.classList.toggle("lia-tafel-panel-open");
+        if (open) positionPanel();
       });
 
+      // Klick außerhalb schließt Panel
       ROOT_DOC.addEventListener("click", (e)=>{
-        if (!ROOT_DOC.body.classList.contains("lia-tafel-font-open")) return;
+        if (!ROOT_DOC.body.classList.contains("lia-tafel-panel-open")) return;
         const t = e.target;
-        if (t === btn || btn.contains(t) || panel.contains(t)) return;
-        closePanel();
+        if (t && (t.closest && (t.closest("#"+PANEL_ID) || t.closest("#"+BTN_ID)))) return;
+        ROOT_DOC.body.classList.remove("lia-tafel-panel-open");
       }, true);
 
       ROOT_DOC.addEventListener("keydown", (e)=>{
-        if (e.key === "Escape") closePanel();
+        if (e.key === "Escape"){
+          ROOT_DOC.body.classList.remove("lia-tafel-panel-open");
+        }
       });
 
-      // Slider -> setzt --lia-pres-font direkt
-      const range = panel.querySelector("#lia-tafel-font-range");
-      if (range){
-        range.addEventListener("input", ()=>{
-          const px = Number(range.value || 24);
-          setVar("--lia-pres-font", px + "px");
-        });
-      }
-
-      ROOT_WIN.addEventListener("resize", () => {
-        if (ROOT_DOC.body.classList.contains("lia-tafel-font-open")) positionPanel();
-      });
+      ROOT_WIN.addEventListener("resize", positionPanel);
       if (ROOT_WIN.visualViewport){
-        ROOT_WIN.visualViewport.addEventListener("resize", () => {
-          if (ROOT_DOC.body.classList.contains("lia-tafel-font-open")) positionPanel();
-        });
-        ROOT_WIN.visualViewport.addEventListener("scroll", () => {
-          if (ROOT_DOC.body.classList.contains("lia-tafel-font-open")) positionPanel();
-        });
+        ROOT_WIN.visualViewport.addEventListener("resize", positionPanel);
+        ROOT_WIN.visualViewport.addEventListener("scroll", positionPanel);
       }
     }
+
+    if (!slider.__liaTafelWired){
+      slider.__liaTafelWired = true;
+
+      slider.addEventListener("input", ()=>{
+        const min = parseInt(slider.min || "14", 10);
+        const max = parseInt(slider.max || "48", 10);
+        const v = clamp(parseInt(slider.value || "24", 10), min, max);
+
+        try { localStorage.setItem(FONT_KEY, String(v)); } catch(e){}
+        setPresFontPx(v);
+      });
+    }
   }
 
-  // =========================================================
-  // Loop/Trigger (ensure-* Ansatz)
-  // =========================================================
-  let lastRaw = null;
-  let lastMode = null;
+  function setPresentationOnlyVisibility(mode){
+    const isPresentation = (mode === "presentation");
+    ROOT_DOC.body.classList.toggle("lia-tafel-pres", isPresentation);
 
-  function ensureAll(){
-    const raw  = safeGetSettingsRaw();
-    const mode = detectMode();
+    // panel schließen, wenn nicht presentation
+    if (!isPresentation){
+      ROOT_DOC.body.classList.remove("lia-tafel-panel-open");
+    }
+  }
 
-    applyModeAttr();
-    updateThemeFlags();
+  function syncSliderToCurrentFont(){
+    const slider = ROOT_DOC.getElementById(SLIDER_ID);
+    if (!slider) return;
 
-    if (raw !== lastRaw || mode !== lastMode){
-      applyFontLogic();
-      lastRaw  = raw;
-      lastMode = mode;
+    const min = parseInt(slider.min || "14", 10);
+    const max = parseInt(slider.max || "48", 10);
+
+    // wenn saved existiert: slider dorthin, sonst current --lia-pres-font
+    const saved = getSavedFontPx();
+    if (saved != null){
+      slider.value = String(clamp(saved, min, max));
+      return;
     }
 
-    ensureFontButtonUI();
+    // current var lesen
+    const v = getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue("--lia-pres-font").trim();
+    const n = parseInt(v, 10);
+    if (isFinite(n)) slider.value = String(clamp(n, min, max));
   }
 
-  ensureAll();
-  setInterval(ensureAll, 350);
+  // =========================================================
+  // Tick (throttled) – ensure-Functions, damit Import immer greift
+  // =========================================================
+  function tick(){
+    if (I.ticking) return;
+    I.ticking = true;
 
-  window.addEventListener("storage", function(e){
-    if (!e || e.key === SETTINGS_KEY) ensureAll();
-  });
+    ROOT_WIN.requestAnimationFrame(() => {
+      try{
+        const raw  = safeGetSettingsRaw();
+        const mode = detectMode();
 
-  window.addEventListener("resize", function(){
-    applyFontLogic();
-    updateThemeFlags();
-    ensureFontButtonUI();
-  });
+        // 1) dataset im Content für CSS
+        applyModeAttr(mode);
 
-  // falls Lia im Root-Header umbaut
+        // 2) Theme-Farbe -> Var
+        syncAccent();
+
+        // 3) UI in Root sicher anheften (nur Presentation sichtbar)
+        ensureUI();
+        setPresentationOnlyVisibility(mode);
+        wireOnce();
+
+        // 4) Font-Logik nur wenn Modus/Settings wechseln oder beim ersten Mal
+        if (raw !== I.lastRaw || mode !== I.lastMode){
+          applyFontLogic(mode);
+          I.lastRaw  = raw;
+          I.lastMode = mode;
+        }
+
+        // 5) Slider sync + Panel position
+        syncSliderToCurrentFont();
+        positionPanel();
+
+      } finally {
+        I.ticking = false;
+      }
+    });
+  }
+
+  // Root DOM changes -> tick (Toolbar kommt manchmal spät)
   try{
-    const mo = new MutationObserver(() => ensureAll());
-    mo.observe(document.documentElement, { attributes:true, attributeFilter:["class","style","data-theme","data-mode","data-view","data-layout"] });
-  }catch(_){}
+    const mo = new MutationObserver(() => tick());
+    mo.observe(ROOT_DOC.documentElement, { childList:true, subtree:true });
+  }catch(e){}
+
+  // Content changes (main wird neu gerendert) -> tick
+  try{
+    const mo2 = new MutationObserver(() => tick());
+    mo2.observe(CONTENT_DOC.documentElement, { childList:true, subtree:true });
+  }catch(e){}
+
+  // Storage changes
+  ROOT_WIN.addEventListener("storage", function(e){
+    if (!e) return;
+    if (e.key === SETTINGS_KEY || e.key === FONT_KEY) tick();
+  });
+
+  // Periodisch, falls Lia intern umschaltet ohne DOM-Mutation
+  tick();
+  ROOT_WIN.setInterval(() => { if (I.__alive) tick(); }, 350);
+
 })();
 @end
 
