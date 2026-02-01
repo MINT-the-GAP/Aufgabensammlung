@@ -4,12 +4,8 @@ language: de
 comment: LiaScript – Presentation 95% Breite + Auto-Font-Boost + Schriftgrößen-Regler (Overlay-Button, nur Presentation) – import-sicher, kollisionsarm
 author: Martin Lommatzsch
 
-
-@style
-/* Absichtlich minimal: die kritischen CSS-Regeln werden zusätzlich per ensureStyle injiziert,
-   damit der Import IMMER greift (Kursdatei-Problem). */
-@end
-
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/CanvasREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MarkerREADME.md
 
 
 @onload
@@ -518,8 +514,8 @@ author: Martin Lommatzsch
 
     const vp = getViewport();
     const pad = 8;          // viewport padding
-    const gap = 10;         // Abstand zu anderen Buttons
-    const size = 34;
+    const gap = 0;         // Abstand zu anderen Buttons
+    const size = 24;
 
     const toc = findTOCButton();
     const mrk = findMarkerButton();
