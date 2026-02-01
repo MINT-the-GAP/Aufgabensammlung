@@ -992,9 +992,10 @@ author: Martin Lommatzsch
 
   // Theme-Observer: NUR class/data-theme (nicht style!)
   try{
-    I.moTheme = new MutationObserver(() => { adaptUIVars(); applyUI(); positionPanelSmart(); });
-    I.moTheme.observe(ROOT_DOC.documentElement, { attributes:true, attributeFilter:["class","data-theme"] });
-    I.moTheme.observe(ROOT_DOC.body,           { attributes:true, attributeFilter:["class","data-theme"] });
+    I.moTheme = new MutationObserver(() => { adaptUIVars(); applyUI(); positionPanelSmart(); });  
+    I.moTheme.observe(ROOT_DOC.documentElement, { attributes:true, attributeFilter:["class","data-theme","data-mode","data-view","data-layout"] });
+    I.moTheme.observe(ROOT_DOC.body,           { attributes:true, attributeFilter:["class","data-theme","data-mode","data-view","data-layout"] });
+
   } catch(e){}
 
   // Boot
