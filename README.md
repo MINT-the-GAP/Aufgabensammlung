@@ -1,5 +1,5 @@
 <!--
-comment: Lia Textmarker (import-sicher) — Panel immer im Viewport (auch "Navigation" Layout)
+comment: Lia Textmarker (import-sicher) — Crash-Fix (keine Observer-Feedback-Loops) + Panel immer im Viewport
 author: Martin Lommatzsch
 
 @onload
@@ -23,7 +23,7 @@ author: Martin Lommatzsch
   // =========================
   // Per-Dokument Instance (Import mehrfach => keine Kollision)
   // =========================
-  const REGKEY = "__LIA_TEXTMARKER_REG_V3__";
+  const REGKEY = "__LIA_TEXTMARKER_REG_V4__";
   ROOT_WIN[REGKEY] = ROOT_WIN[REGKEY] || { instances: {} };
   const REG = ROOT_WIN[REGKEY];
 
@@ -32,14 +32,16 @@ author: Martin Lommatzsch
     "::" +
     (CONTENT_DOC.title || "");
 
-  if (REG.instances[DOC_ID]?.__alive) return; // schon aktiv für dieses Dokument
+  if (REG.instances[DOC_ID]?.__alive) return;
 
   const I = REG.instances[DOC_ID] = {
     __alive: true,
     state: { active:false, panelOpen:false, tool:"mark", color:"yellow" },
     HL: [],
     nextId: 1,
-    mo: null
+    moDock: null,
+    moTheme: null,
+    ticking: false
   };
 
   // =========================
@@ -53,7 +55,7 @@ author: Martin Lommatzsch
     doc.head.appendChild(st);
   }
 
-  ensureStyle(CONTENT_DOC, "lia-hl-style-content-v3", `
+  ensureStyle(CONTENT_DOC, "lia-hl-style-content-v4", `
     :root{
       --hl-yellow: rgba(255, 238,  88, 0.55);
       --hl-green:  rgba(144, 238, 144, 0.45);
@@ -72,7 +74,6 @@ author: Martin Lommatzsch
       --hl-z: 9999999;
     }
 
-    /* Overlay blockiert NIE die Seite */
     #lia-hl-overlay{
       position: fixed !important;
       inset: 0 !important;
@@ -80,7 +81,6 @@ author: Martin Lommatzsch
       pointer-events: none !important;
     }
 
-    /* Nur die Rects sind klickbar (Erase) */
     .lia-hl-rect{
       position: absolute !important;
       border-radius: 6px !important;
@@ -99,7 +99,7 @@ author: Martin Lommatzsch
     .lia-hl-rect[data-hl="red"]   { background: var(--hl-red);    }
   `);
 
-  ensureStyle(ROOT_DOC, "lia-hl-style-root-v3", `
+  ensureStyle(ROOT_DOC, "lia-hl-style-root-v4", `
     #lia-hl-btn{
       position: relative !important;
       width: 40px !important;
@@ -243,7 +243,7 @@ author: Martin Lommatzsch
   `);
 
   // =========================
-  // Theme/Accent robust
+  // Theme/Accent robust (OHNE Observer auf style!)
   // =========================
   function parseRGB(str){
     const m = (str || "").match(/rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)/i);
@@ -318,20 +318,6 @@ author: Martin Lommatzsch
       try { setVar(CONTENT_DOC, k, vars[k]); } catch(e){}
     }
   }
-
-  adaptUIVars();
-
-  function watchTheme(){
-    if (I.mo) return;
-    try{
-      I.mo = new MutationObserver(() => adaptUIVars());
-      I.mo.observe(ROOT_DOC.documentElement, { attributes:true, attributeFilter:["class","data-theme","style"] });
-      I.mo.observe(ROOT_DOC.body, { attributes:true, attributeFilter:["class","data-theme","style"] });
-      I.mo.observe(CONTENT_DOC.documentElement, { attributes:true, attributeFilter:["class","data-theme","style"] });
-      I.mo.observe(CONTENT_DOC.body, { attributes:true, attributeFilter:["class","data-theme","style"] });
-    } catch(e){}
-  }
-  watchTheme();
 
   // =========================
   // Overlay + Rendering
@@ -429,10 +415,14 @@ author: Martin Lommatzsch
     }
 
     const left = findHeaderLeft();
-    if (left && btn.parentNode !== left){
-      const anchor = findTOCButtonInLeft(left);
-      if (anchor && anchor.parentNode === left) anchor.insertAdjacentElement("afterend", btn);
-      else left.appendChild(btn);
+    if (left){
+      if (btn.parentNode !== left){
+        const anchor = findTOCButtonInLeft(left);
+        if (anchor && anchor.parentNode === left) anchor.insertAdjacentElement("afterend", btn);
+        else left.appendChild(btn);
+      }
+    } else {
+      if (!btn.parentNode) ROOT_DOC.body.appendChild(btn);
     }
   }
 
@@ -442,31 +432,22 @@ author: Martin Lommatzsch
   function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
 
   function getViewport(){
-    // visualViewport ist in Nightly/Zoom-Fällen oft genauer
     const vv = ROOT_WIN.visualViewport;
     if (vv){
-      return {
-        w: vv.width,
-        h: vv.height,
-        ox: vv.offsetLeft || 0,
-        oy: vv.offsetTop || 0
-      };
+      return { w: vv.width, h: vv.height, ox: vv.offsetLeft || 0, oy: vv.offsetTop || 0 };
     }
     const de = ROOT_DOC.documentElement;
-    return {
-      w: de.clientWidth,
-      h: de.clientHeight,
-      ox: 0,
-      oy: 0
-    };
+    return { w: de.clientWidth, h: de.clientHeight, ox: 0, oy: 0 };
   }
 
   function measurePanel(panel){
-    // Panel ist nur im offenen Zustand display:block; ansonsten messen wir defensiv.
+    // Wenn display:none (geschlossen), kurz messbar machen
+    const prevDisplay = panel.style.display;
     const prevVis = panel.style.visibility;
     const prevLeft = panel.style.left;
     const prevTop = panel.style.top;
 
+    panel.style.display = "block";
     panel.style.visibility = "hidden";
     panel.style.left = "-9999px";
     panel.style.top  = "-9999px";
@@ -474,6 +455,7 @@ author: Martin Lommatzsch
     const w = panel.offsetWidth || 130;
     const h = panel.offsetHeight || 180;
 
+    panel.style.display = prevDisplay;
     panel.style.visibility = prevVis;
     panel.style.left = prevLeft;
     panel.style.top  = prevTop;
@@ -494,22 +476,17 @@ author: Martin Lommatzsch
     const vp = getViewport();
     const sz = measurePanel(panel);
 
-    // Preferred: below-left aligned
     let left = r.left;
     let top  = r.bottom + gap;
 
-    // If panel would overflow right => shift left
     left = clamp(left, pad, vp.w - sz.w - pad);
 
-    // If it overflows bottom => open above
     if (top + sz.h + pad > vp.h){
       top = r.top - gap - sz.h;
     }
 
-    // Clamp vertically as well
     top = clamp(top, pad, vp.h - sz.h - pad);
 
-    // Consider visualViewport offset (mobile/zoom)
     left = left + vp.ox;
     top  = top  + vp.oy;
 
@@ -517,6 +494,9 @@ author: Martin Lommatzsch
     panel.style.top  = `${Math.round(top)}px`;
   }
 
+  // =========================
+  // UI logic
+  // =========================
   function ensureSwatchesOnce(){
     const colorsEl = ROOT_DOC.getElementById("hl-colors");
     if (!colorsEl || colorsEl.childElementCount) return;
@@ -580,7 +560,6 @@ author: Martin Lommatzsch
       });
     }
 
-    // WICHTIG: Panel messen/positionieren erst NACH Layout
     if (I.state.active && I.state.panelOpen){
       ROOT_WIN.requestAnimationFrame(() => positionPanelSmart());
     }
@@ -595,9 +574,11 @@ author: Martin Lommatzsch
       if (!I.state.active){
         I.state.active = true;
         I.state.panelOpen = true;
+        I.state.tool = "mark";
       } else {
         I.state.active = false;
         I.state.panelOpen = false;
+        I.state.tool = "mark";
       }
       applyUI();
     });
@@ -623,7 +604,7 @@ author: Martin Lommatzsch
 
     if (toolErase){
       toolErase.addEventListener("click", ()=>{
-        I.state.tool = (I.state.tool === "erase") ? "mark" : "erase";
+        I.state.tool = "erase";
         I.state.panelOpen = false;
         applyUI();
       });
@@ -634,6 +615,7 @@ author: Martin Lommatzsch
         I.HL = [];
         render();
         I.state.panelOpen = false;
+        I.state.tool = "mark";
         applyUI();
       });
     }
@@ -646,7 +628,6 @@ author: Martin Lommatzsch
       }
     });
 
-    // bei viewport-changes neu positionieren
     ROOT_WIN.addEventListener("resize", () => positionPanelSmart());
     if (ROOT_WIN.visualViewport){
       ROOT_WIN.visualViewport.addEventListener("resize", () => positionPanelSmart());
@@ -689,7 +670,12 @@ author: Martin Lommatzsch
 
   CONTENT_DOC.addEventListener("mouseup", ()=>{
     if (!I.state.active) return;
-    if (I.state.panelOpen){ I.state.panelOpen = false; applyUI(); }
+
+    if (I.state.panelOpen){
+      I.state.panelOpen = false;
+      applyUI();
+    }
+
     if (I.state.tool !== "mark") return;
     addHighlightFromSelection();
   }, true);
@@ -710,26 +696,42 @@ author: Martin Lommatzsch
   }, true);
 
   // =========================
-  // Boot
+  // Tick (throttled) — Docking stabil, ohne Observer-Loop
   // =========================
-  ensureRootButtonAndPanel();
-  ensureSwatchesOnce();
-  wireUIOnce();
-  adaptUIVars();
-  applyUI();
-  render();
+  function tick(){
+    if (I.ticking) return;
+    I.ticking = true;
 
-  // defensiv: bei Lia DOM updates erneut andocken + ggf. repositionieren
-  try{
-    const mo2 = new MutationObserver(()=>{
-      ensureRootButtonAndPanel();
-      ensureSwatchesOnce();
-      adaptUIVars();
-      applyUI();
-      positionPanelSmart();
+    ROOT_WIN.requestAnimationFrame(() => {
+      try{
+        ensureRootButtonAndPanel();
+        ensureSwatchesOnce();
+        wireUIOnce();
+        adaptUIVars();
+        applyUI();
+        positionPanelSmart();
+      } finally {
+        I.ticking = false;
+      }
     });
-    mo2.observe(ROOT_DOC.body, { childList:true, subtree:true, attributes:true });
+  }
+
+  // Docking nur auf DOM-Änderungen (childList/subtree) — KEINE attributes!
+  try{
+    I.moDock = new MutationObserver(() => tick());
+    I.moDock.observe(ROOT_DOC.body, { childList:true, subtree:true });
   } catch(e){}
+
+  // Theme-Observer: NUR class/data-theme (nicht style!)
+  try{
+    I.moTheme = new MutationObserver(() => { adaptUIVars(); applyUI(); positionPanelSmart(); });
+    I.moTheme.observe(ROOT_DOC.documentElement, { attributes:true, attributeFilter:["class","data-theme"] });
+    I.moTheme.observe(ROOT_DOC.body,           { attributes:true, attributeFilter:["class","data-theme"] });
+  } catch(e){}
+
+  // Boot
+  tick();
+  render();
 
 })();
 @end
