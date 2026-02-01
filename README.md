@@ -306,7 +306,40 @@ author: Martin Lommatzsch
       font-size: 12px !important;
       color: var(--hl-ui-fg) !important;
     }
+
+    /* =========================================================
+       NIGHTLY "Navigation"-Modus: Separator/Strich kommt NICHT vom Button,
+       sondern vom Header/Container. Nur entfernen, wenn unser Button existiert.
+       (Firefox 147: :has() ist ok)
+       ========================================================= */
+
+    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn),
+    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia-header__left,
+    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia-header__middle{
+      background-image: none !important;
+      box-shadow: none !important;
+      border-bottom: 0 !important;
+    }
+
+    /* Nightly zeichnet die Linie gerne über ::before/::after */
+    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn)::before,
+    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn)::after,
+    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia-header__left::before,
+    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia-header__left::after,
+    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia-header__middle::before,
+    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia-header__middle::after{
+      content: none !important;
+      display: none !important;
+    }
+
   `);
+
+
+
+
+
+
+
 
   // =========================
   // Theme/Accent robust (OHNE Observer auf style!)
