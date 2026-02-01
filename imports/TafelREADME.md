@@ -1,14 +1,14 @@
 <!--
-version:  0.0.3
+version:  0.0.4
 language: de
-comment: LiaScript – Tafelmodus (import-sicher): Presentation volle Breite (-25px Rand) + Schriftgrößen-Boost + A-Dock (nur Presentation) + Panel "Schriftgröße"
+comment: LiaScript – Tafelmodus (import-sicher): Presentation max 95% Breite + Font-Boost + A-Dock stabil (Nightly) + Panel "Schriftgröße"
 author: Martin Lommatzsch
 
 
 @style
 :root{
-  /* links/rechts ungenutzt im Presentation-Modus */
-  --lia-tflfont-side-gap: 25px;
+  /* Presentation: maximale Darstellungsbreite */
+  --lia-tflfont-max-vw: 95vw;
 
   /* per JS gesetzt: "unset" oder z.B. 24px */
   --lia-tflfont-pres-font: unset;
@@ -21,17 +21,22 @@ author: Martin Lommatzsch
   --lia-tflfont-max: 48;
 }
 
-/* Fallback (wird zusätzlich per JS in Content injiziert) */
-html[data-lia-mode="presentation"] body{ margin:0 !important; overflow-x:hidden !important; }
+/* Fallback (zusätzlich per JS in Content injiziert) */
+html[data-lia-mode="presentation"] body{
+  margin: 0 !important;
+  overflow-x: hidden !important;
+}
+
 html[data-lia-mode="presentation"] main{
-  width: calc(100vw - (2 * var(--lia-tflfont-side-gap))) !important;
-  max-width: calc(100vw - (2 * var(--lia-tflfont-side-gap))) !important;
+  width: var(--lia-tflfont-max-vw) !important;
+  max-width: var(--lia-tflfont-max-vw) !important;
+
   margin-left: auto !important;
   margin-right: auto !important;
+
   box-sizing: border-box !important;
-  padding-left:  var(--lia-tflfont-side-gap) !important;
-  padding-right: var(--lia-tflfont-side-gap) !important;
 }
+
 html[data-lia-mode="presentation"] main,
 html[data-lia-mode="slides"] main{
   font-size: var(--lia-tflfont-pres-font) !important;
@@ -108,7 +113,7 @@ html[data-lia-mode="slides"] main{
   // =========================================================
   // Per-Dokument Instance (kein Konflikt mit Textmarker-Import)
   // =========================================================
-  const REGKEY = "__LIA_TFLFONT_REG_V3__";
+  const REGKEY = "__LIA_TFLFONT_REG_V4__";
   ROOT_WIN[REGKEY] = ROOT_WIN[REGKEY] || { instances: {} };
 
   const cur = resolveContentTargets();
@@ -147,11 +152,23 @@ html[data-lia-mode="slides"] main{
 
   function clamp(n,a,b){ return Math.max(a, Math.min(b, n)); }
 
+  function isVisible(el){
+    try{
+      if (!el) return false;
+      const cs = getComputedStyle(el);
+      if (cs.display === "none" || cs.visibility === "hidden" || cs.opacity === "0") return false;
+      const r = el.getBoundingClientRect();
+      return (r.width > 0 && r.height > 0 && r.bottom > 0 && r.right > 0);
+    }catch(e){
+      return false;
+    }
+  }
+
   // =========================================================
   // Mode detection (Lia settings in localStorage)
   // =========================================================
   const SETTINGS_KEY = "settings";
-  const FONT_KEY     = "lia-tflfont-font-px-v3";
+  const FONT_KEY     = "lia-tflfont-font-px-v4";
 
   function safeGetSettingsRaw(){
     try { return localStorage.getItem(SETTINGS_KEY); }
@@ -262,13 +279,11 @@ html[data-lia-mode="slides"] main{
     const css = `
       html[data-lia-mode="presentation"] body{ margin:0 !important; overflow-x:hidden !important; }
       html[data-lia-mode="presentation"] main{
-        width: calc(100vw - (2 * var(--lia-tflfont-side-gap))) !important;
-        max-width: calc(100vw - (2 * var(--lia-tflfont-side-gap))) !important;
+        width: var(--lia-tflfont-max-vw) !important;
+        max-width: var(--lia-tflfont-max-vw) !important;
         margin-left: auto !important;
         margin-right: auto !important;
         box-sizing: border-box !important;
-        padding-left:  var(--lia-tflfont-side-gap) !important;
-        padding-right: var(--lia-tflfont-side-gap) !important;
       }
       html[data-lia-mode="presentation"] main,
       html[data-lia-mode="slides"] main{
@@ -276,7 +291,7 @@ html[data-lia-mode="slides"] main{
       }
     `;
     for (const d of docs){
-      ensureStyle(d, "lia-tflfont-content-style-v3", css);
+      ensureStyle(d, "lia-tflfont-content-style-v4", css);
     }
   }
 
@@ -371,16 +386,15 @@ html[data-lia-mode="slides"] main{
   }
 
   // =========================================================
-  // Root UI: fixed Dock (verändert nie Layout -> kein Nightly-Umbruch)
+  // Root UI: fixed Dock (drückt Layout nie um)
   // =========================================================
-  const DOCK_ID   = "lia-tflfont-dock-v3";
-  const BTN_ID    = "lia-tflfont-btn-v3";
-  const PANEL_ID  = "lia-tflfont-panel-v3";
-  const SLIDER_ID = "lia-tflfont-slider-v3";
-  const TITLE_CLS = "lia-tflfont-title-v3";
+  const DOCK_ID   = "lia-tflfont-dock-v4";
+  const BTN_ID    = "lia-tflfont-btn-v4";
+  const PANEL_ID  = "lia-tflfont-panel-v4";
+  const SLIDER_ID = "lia-tflfont-slider-v4";
+  const TITLE_CLS = "lia-tflfont-title-v4";
 
-  ensureStyle(ROOT_DOC, "lia-tflfont-ui-style-root-v3", `
-    /* Dock: fixed -> drückt NIEMALS Toolbar um */
+  ensureStyle(ROOT_DOC, "lia-tflfont-ui-style-root-v4", `
     #${DOCK_ID}{
       position: fixed !important;
       z-index: 9999999 !important;
@@ -413,12 +427,8 @@ html[data-lia-mode="slides"] main{
       user-select: none !important;
     }
 
-    #${BTN_ID}:hover{
-      background: color-mix(in srgb, var(--lia-tflfont-accent) 12%, transparent) !important;
-    }
-    #${BTN_ID}:active{
-      background: color-mix(in srgb, var(--lia-tflfont-accent) 18%, transparent) !important;
-    }
+    #${BTN_ID}:hover{  background: color-mix(in srgb, var(--lia-tflfont-accent) 12%, transparent) !important; }
+    #${BTN_ID}:active{ background: color-mix(in srgb, var(--lia-tflfont-accent) 18%, transparent) !important; }
 
     #${BTN_ID}:focus,
     #${BTN_ID}:focus-visible{
@@ -426,7 +436,7 @@ html[data-lia-mode="slides"] main{
       box-shadow: none !important;
     }
 
-    /* Doppel-A: klein Akzent links, groß weiß rechts (größerer Abstand) */
+    /* Doppel-A: klein Akzent links, groß weiß rechts (mehr Abstand) */
     #${BTN_ID} .A-small,
     #${BTN_ID} .A-big{
       position: absolute !important;
@@ -447,7 +457,7 @@ html[data-lia-mode="slides"] main{
     }
 
     #${BTN_ID} .A-big{
-      left: 9px !important;
+      left: 10px !important;
       top: -7px !important;
       font-size: 28px !important;
       color: #fff !important;
@@ -459,7 +469,7 @@ html[data-lia-mode="slides"] main{
     #${PANEL_ID}{
       position: fixed !important;
       z-index: 9999998 !important;
-      width: 250px !important;
+      width: 260px !important;
       padding: 12px 14px !important;
       display: none !important;
       border-radius: 14px !important;
@@ -470,12 +480,11 @@ html[data-lia-mode="slides"] main{
     }
     body.lia-tflfont-panel-open #${PANEL_ID}{ display: block !important; }
 
-    /* Titel größer */
     #${PANEL_ID} .${TITLE_CLS}{
       font-weight: 800 !important;
-      font-size: 1.15rem !important;
+      font-size: 1.2rem !important;
       margin: 0 0 10px 0 !important;
-      line-height: 1.15 !important;
+      line-height: 1.1 !important;
       letter-spacing: .2px !important;
     }
 
@@ -491,6 +500,7 @@ html[data-lia-mode="slides"] main{
       ROOT_DOC.querySelector("header#lia-toolbar-nav") ||
       ROOT_DOC.querySelector("#lia-toolbar-nav") ||
       ROOT_DOC.querySelector("header.lia-header") ||
+      ROOT_DOC.querySelector("header") ||
       null
     );
   }
@@ -498,36 +508,17 @@ html[data-lia-mode="slides"] main{
   function findHeaderLeft(){
     const header = findHeader();
     if (!header) return null;
-    return header.querySelector(".lia-header__left") || null;
-  }
-
-  function findTOCButton(){
-    const left = findHeaderLeft();
-    if (!left) return null;
-    const btns = Array.from(left.querySelectorAll("button,[role='button'],a"));
-    const pick = btns.find(b=>{
-      const t = ((b.getAttribute("aria-label")||b.getAttribute("title")||b.textContent||"")+"").toLowerCase();
-      return t.includes("inhaltsverzeichnis") || t.includes("table of contents") || t.includes("contents");
-    });
-    return pick || btns[0] || null;
-  }
-
-  function findMarkerButton(){
-    const byId =
-      ROOT_DOC.getElementById("lia-hl-btn") ||
-      ROOT_DOC.getElementById("lia-textmarker-btn") ||
-      ROOT_DOC.getElementById("lia-marker-btn");
-    if (byId) return byId;
-
-    const candidates = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
-    return candidates.find(b=>{
-      const t = ((b.getAttribute("aria-label")||b.getAttribute("title")||b.textContent||"")+"").toLowerCase();
-      return t.includes("textmarker") || t.includes("markieren") || t.includes("highlight");
-    }) || null;
+    return (
+      header.querySelector(".lia-header__left") ||
+      header.querySelector("[class*='header__left']") ||
+      header.querySelector("[class*='header-left']") ||
+      header.querySelector("[class*='toolbar__left']") ||
+      header.querySelector("nav [class*='left']") ||
+      null
+    );
   }
 
   function ensureUI(){
-    // Dock
     let dock = ROOT_DOC.getElementById(DOCK_ID);
     if (!dock){
       dock = ROOT_DOC.createElement("div");
@@ -535,7 +526,6 @@ html[data-lia-mode="slides"] main{
       ROOT_DOC.body.appendChild(dock);
     }
 
-    // Button
     let btn = ROOT_DOC.getElementById(BTN_ID);
     if (!btn){
       btn = ROOT_DOC.createElement("button");
@@ -546,7 +536,6 @@ html[data-lia-mode="slides"] main{
     }
     if (btn.parentNode !== dock) dock.appendChild(btn);
 
-    // Panel
     let panel = ROOT_DOC.getElementById(PANEL_ID);
     if (!panel){
       panel = ROOT_DOC.createElement("div");
@@ -568,8 +557,8 @@ html[data-lia-mode="slides"] main{
   }
 
   // =========================================================
-  // Dock Position: orientiert sich an TOC/Textmarker + Headerhöhe
-  // (damit Nightly keine Lücken hat und alles in einer Reihe sitzt)
+  // Dock positioning: stabil im Nightly
+  // -> orientiert an rechter Kante ALLER sichtbaren Header-Left Controls
   // =========================================================
   function getViewport(){
     const vv = ROOT_WIN.visualViewport;
@@ -580,41 +569,61 @@ html[data-lia-mode="slides"] main{
     return { w: de.clientWidth, h: de.clientHeight, ox: 0, oy: 0 };
   }
 
+  function computeHeaderLeftRightEdge(){
+    const header = findHeader();
+    const left = findHeaderLeft();
+
+    let hr = null;
+    try { hr = header ? header.getBoundingClientRect() : null; } catch(e){ hr = null; }
+
+    let maxRight = 0;
+
+    // 1) aus Header-Left ALLE sichtbaren Buttons/Links sammeln
+    if (left){
+      const nodes = Array.from(left.querySelectorAll("button,a,[role='button']"));
+      for (const el of nodes){
+        if (!isVisible(el)) continue;
+        if (el.closest && (el.closest("#"+DOCK_ID) || el.closest("#"+PANEL_ID))) continue;
+
+        const r = el.getBoundingClientRect();
+
+        // nur Elemente, die vertikal in der Header-Zeile liegen
+        if (hr){
+          const midY = r.top + r.height/2;
+          if (midY < hr.top - 20 || midY > hr.bottom + 20) continue;
+        }
+
+        maxRight = Math.max(maxRight, r.right);
+      }
+    }
+
+    // 2) Fallback: wenn Header-Left leer ist, nimm Header selbst
+    if (maxRight <= 0 && hr){
+      maxRight = Math.max(0, hr.left);
+    }
+
+    return { maxRight, hr };
+  }
+
   function positionDock(){
     const dock = ROOT_DOC.getElementById(DOCK_ID);
     if (!dock || !ROOT_DOC.body.classList.contains("lia-tflfont-pres")) return;
 
     const vp = getViewport();
-    const header = findHeader();
-    const toc = findTOCButton();
-    const marker = findMarkerButton();
+    const { maxRight, hr } = computeHeaderLeftRightEdge();
 
     const pad = 8;
     const gap = 10;
 
-    // Y: optisch in die Header-Zeile zentrieren (keine "Lücke nach unten")
+    // X: rechts neben dem rechten Rand der Header-Left Controls
+    let x = (maxRight > 0 ? maxRight + gap : pad);
+
+    // Y: exakt in Header-Zeile zentrieren
     let y = pad;
-    if (header){
-      try{
-        const hr = header.getBoundingClientRect();
-        y = hr.top + (hr.height - 32) / 2;
-      }catch(e){}
+    if (hr){
+      y = hr.top + (hr.height - 32)/2;
     }
 
-    // X: rechts neben TOC/Marker, je nachdem was weiter rechts steht
-    let x = pad;
-
-    function rightEdge(el){
-      try { return el ? el.getBoundingClientRect().right : null; } catch(e){ return null; }
-    }
-
-    const tr = rightEdge(toc);
-    const mr = rightEdge(marker);
-
-    const base = Math.max(tr || 0, mr || 0);
-    if (base > 0) x = base + gap;
-
-    // Clamp in Viewport
     x = clamp(x, pad, vp.w - 32 - pad);
     y = clamp(y, pad, vp.h - 32 - pad);
 
@@ -636,7 +645,7 @@ html[data-lia-mode="slides"] main{
     panel.style.left = "-9999px";
     panel.style.top  = "-9999px";
 
-    const w = panel.offsetWidth || 250;
+    const w = panel.offsetWidth || 260;
     const h = panel.offsetHeight || 90;
 
     panel.style.display = prevDisplay;
