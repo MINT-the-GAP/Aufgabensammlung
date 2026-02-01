@@ -1235,7 +1235,7 @@ function ensureCss(){
 
       const MIN_H = 130;
       const MAX_H = 9000;
-      const MIN_W = 280;
+      const MIN_W = 200;
 
       const clamp = (v,a,b) => Math.max(a, Math.min(b, v));
 
@@ -1661,14 +1661,22 @@ function ensureCss(){
 
 
 
-# Canvas
+
+# Canvas Trys - Road to OCR
 
 
+Canvas mit Farbauswahl und Radierer. Zoom ist auch dabei und mit den anderen Maustasten kann man auch die Canvas schieben. Touchsteuerung: 2-Finger Pinch/Pan.
+
+**Neu:** Unten links und unten rechts sind unsichtbare Ziehflächen (nur „die Ecke“). Dort kannst du die Zeichenfläche stufenlos **höher/niedriger** und auch **breiter/schmaler** ziehen.
 
 
-**Befehl:** `@canvas`
+```
+Codebefehl: @canvas
+```
 
 
+Testzwecke (2 ist Lösung):
 
+<!--   data-solution-button="2" -->
 [[ 2 ]] 
 @canvas

@@ -1,12 +1,2827 @@
 <!--
-comment: SchulLia
+comment: Hier sind alle wichtigen Features für SchulLia zusammengefasst.
 author: Martin Lommatzsch
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MarkerREADME.md
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/CanvasREADME.md
+
+
+@style
+
+
+
+
+/* ---------------------------------------------------------
+   Canvas 
+   Canvas 
+   Canvas 
+   Canvas 
+   Canvas 
+   Canvas 
+   Canvas 
+   Canvas 
+   Canvas 
+   --------------------------------------------------------- */
+
+
+
+
+:root{
+  --canvas-border: #000;
+  --canvas-pen:    #000;
+
+  /* Lia Theme (wird per JS ermittelt) */
+  --canvas-accent: #0b5fff;
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --canvas-border: #fff;
+    --canvas-pen:    #fff;
+  }
+}
+
+/* ---------------------------------------------------------
+   Canvas Block: KEIN horizontal scroll!
+   --------------------------------------------------------- */
+.lia-draw-block{
+  display: block;         /* <-- WICHTIG, weil Markup jetzt <span> ist */
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+
+/* Canvas-Rahmen */
+.lia-draw-wrap{
+  width: min(520px, 100%);
+  border: 2px solid var(--canvas-border);
+  border-radius: 10px;
+  box-sizing: border-box;
+  position: relative;
+
+  display: block;
+  max-width: 100%;
+}
+
+canvas.lia-draw{
+  width: 100%;
+  height: 150px;
+  display: block;
+  background: transparent;
+
+  touch-action: none;
+  cursor: crosshair;
+  border-radius: 8px;
+}
+
+/* Stack links */
+.lia-toolstack{
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translate(0, -50%);
+  z-index: 25;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Buttons */
+.lia-tool-btn{
+  width: 22px;
+  height: 22px;
+  padding: 0;
+
+  border: 2px solid var(--canvas-border);
+  border-radius: 999px;
+  cursor: pointer;
+  user-select: none;
+
+  display: grid;
+  place-items: center;
+
+  background: transparent; /* immer transparent */
+}
+
+.lia-tool-btn:disabled{
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* Icon-Alignment (zentriert) */
+.lia-tool-btn svg{
+  width: 14px;
+  height: 14px;
+  display: block;
+  margin: 0;
+  transform: translate(0,0);
+}
+.lia-tool-btn .ico-stroke{
+  stroke: var(--canvas-border);
+  fill: none;
+}
+.lia-tool-btn .ico-fill{ fill: rgba(0,0,0,0); }
+
+.lia-tool-btn[data-active="1"]{
+  outline: 2px solid var(--canvas-border);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------
+   LAUNCHER (@canvas):
+   (Mount ist fest im Makro → kein DOM-Repair)
+   --------------------------------------------------------- */
+.lia-canvas-anchor{
+  display: inline-block;
+}
+
+.lia-canvas-mount{
+  display: none;
+  width: 100%;
+  max-width: 100%;
+  margin: 6px 0;
+  flex: 0 0 100%;
+  min-width: 0;
+}
+.lia-canvas-mount[data-open="1"]{ display: block; }
+
+/* Launcher: 32px, transparent, Theme-Farbe für Linien */
+.lia-canvas-launch{
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 999px;
+
+  background: transparent;
+  border: 2px solid var(--canvas-accent);
+
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  vertical-align: middle;
+  line-height: 0;
+  margin-right: 6px;
+}
+
+.lia-canvas-launch:hover{ filter: brightness(1.05); }
+
+.lia-canvas-launch svg{
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.lia-canvas-launch .launch-stroke{
+  stroke: var(--canvas-accent);
+  fill: none;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Menü */
+.lia-tool-menu{
+  position: absolute;
+  left: 44px;
+  top: 10px;
+  z-index: 30;
+
+  padding: 10px;
+  border: 2px solid var(--canvas-border);
+  border-radius: 12px;
+
+  background: rgba(0,0,0,0.15);
+  backdrop-filter: blur(6px);
+
+  display: none;
+  gap: 10px;
+}
+.lia-tool-menu[data-open="1"]{
+  display: grid;
+  align-items: start;
+  row-gap: 10px;
+}
+
+/* Farbpunkte */
+.lia-color-grid{
+  display: grid;
+  grid-template-columns: repeat(9, 22px);
+  gap: 10px;
+  align-items: center;
+}
+
+.lia-color-item{
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  user-select: none;
+
+  border: 2px solid var(--canvas-border);
+  background: transparent;
+  box-sizing: border-box;
+}
+.lia-color-item:hover{ transform: scale(1.06); }
+.lia-color-item[data-active="1"]{
+  outline: 2px solid var(--canvas-border);
+  outline-offset: 2px;
+}
+
+/* Überschriften im Menü */
+.lia-tool-heading{
+  font-size: 1.5rem;
+  font-weight: 750;
+  line-height: 1.1;
+  padding-left: 2px;
+}
+
+/* Heading-Zeile + Clear-Button */
+.lia-heading-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.lia-heading-row .lia-tool-heading{ padding-left: 2px; }
+
+.lia-menu-icon-btn{
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+
+  border: 2px solid var(--canvas-border);
+  background: transparent;
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+  user-select: none;
+  padding: 0;
+}
+.lia-menu-icon-btn:hover{ filter: brightness(1.08); }
+
+.lia-menu-icon-btn svg{
+  width: 16px;
+  height: 16px;
+  display:block;
+  margin: 0;
+}
+.lia-menu-icon-btn .ico-stroke{
+  stroke: var(--canvas-border);
+  fill: none;
+}
+.lia-menu-icon-btn .ico-fill{ fill: rgba(0,0,0,0); }
+
+/* Slider-Zeile */
+.lia-row{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lia-preview{
+  width: 34px;
+  height: 22px;
+  border-radius: 10px;
+  border: 2px solid var(--canvas-border);
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+}
+
+.lia-preview-line{
+  width: 22px;
+  border-radius: 999px;
+  background: var(--canvas-border);
+  height: 3px;
+}
+
+.lia-slider{ width: 180px; }
+
+/* Hintergrund-Menü: 3 Preview-Tiles */
+.lia-bg-tiles{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  align-items: stretch;
+}
+
+.lia-bg-tile{
+  height: 34px;
+  border-radius: 12px;
+  border: 2px solid var(--canvas-border);
+  background: transparent;
+  cursor: pointer;
+  user-select: none;
+  padding: 0;
+}
+.lia-bg-tile:hover{ filter: brightness(1.08); }
+.lia-bg-tile[data-active="1"]{
+  outline: 2px solid var(--canvas-border);
+  outline-offset: 2px;
+}
+
+/* Unsichtbare Ecken-Ziehflächen */
+.lia-resize-corner{
+  position: absolute;
+  bottom: 0;
+  width: 18px;
+  height: 18px;
+  z-index: 50;
+
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+
+  user-select: none;
+  touch-action: none;
+
+  opacity: 0;
+}
+.lia-resize-corner[data-corner="br"]{ right: 0; cursor: nwse-resize; }
+.lia-resize-corner[data-corner="bl"]{ left: 0;  cursor: nesw-resize; }
+@end
+
+
+
+
+
+
+
+
+
+
+@onload
+
+
+
+  // =========================
+  // TEXTMARKER
+  // TEXTMARKER
+  // TEXTMARKER
+  // TEXTMARKER
+  // TEXTMARKER
+  // TEXTMARKER
+  // TEXTMARKER
+  // TEXTMARKER
+  // TEXTMARKER
+  // TEXTMARKER
+  // =========================
+
+
+(function () {
+
+  // =========================
+  // Root/Content (iframe-safe)
+  // =========================
+  function getRootWindow(){
+    let w = window;
+    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
+    return w;
+  }
+
+  const ROOT_WIN = getRootWindow();
+  const ROOT_DOC = ROOT_WIN.document;
+
+  const CONTENT_WIN = window;
+  const CONTENT_DOC = document;
+
+  // =========================
+  // Per-Dokument Instance (Import mehrfach => keine Kollision)
+  // =========================
+  const REGKEY = "__LIA_TEXTMARKER_REG_V4__";
+  ROOT_WIN[REGKEY] = ROOT_WIN[REGKEY] || { instances: {} };
+  const REG = ROOT_WIN[REGKEY];
+
+  const DOC_ID =
+    (CONTENT_DOC.baseURI || CONTENT_WIN.location.href || "") +
+    "::" +
+    (CONTENT_DOC.title || "");
+
+  if (REG.instances[DOC_ID]?.__alive) return;
+
+  const I = REG.instances[DOC_ID] = {
+    __alive: true,
+    state: { active:false, panelOpen:false, tool:"mark", color:"yellow" },
+    HL: [],
+    nextId: 1,
+    moDock: null,
+    moTheme: null,
+    ticking: false
+  };
+
+  // =========================
+  // CSS Injection (Content + Root)
+  // =========================
+  function ensureStyle(doc, id, css){
+    if (doc.getElementById(id)) return;
+    const st = doc.createElement("style");
+    st.id = id;
+    st.textContent = css;
+    doc.head.appendChild(st);
+  }
+
+  ensureStyle(CONTENT_DOC, "lia-hl-style-content-v4", `
+    :root{
+      --hl-yellow: rgba(255, 238,  88, 0.55);
+      --hl-green:  rgba(144, 238, 144, 0.45);
+      --hl-blue:   rgba(173, 216, 230, 0.45);
+      --hl-pink:   rgba(255, 182, 193, 0.45);
+      --hl-orange: rgba(255, 200, 120, 0.55);
+      --hl-red:    rgba(255,  80,  80, 0.40);
+
+      --hl-ui-bg: rgba(255,255,255,.92);
+      --hl-ui-fg: rgba(0,0,0,.88);
+      --hl-ui-border: rgba(0,0,0,.14);
+      --hl-ui-muted: rgba(0,0,0,.62);
+      --hl-ui-shadow: 0 16px 42px rgba(0,0,0,.16);
+
+      --hl-accent: rgb(11,95,255);
+      --hl-z: 9999999;
+    }
+
+    #lia-hl-overlay{
+      position: fixed !important;
+      inset: 0 !important;
+      z-index: calc(var(--hl-z) - 1) !important;
+      pointer-events: none !important;
+    }
+
+    .lia-hl-rect{
+      position: absolute !important;
+      border-radius: 6px !important;
+      box-shadow: 0 1px 0 rgba(0,0,0,.08) inset;
+      mix-blend-mode: multiply;
+
+      pointer-events: auto !important;
+      cursor: pointer;
+    }
+
+    .lia-hl-rect[data-hl="yellow"]{ background: var(--hl-yellow); }
+    .lia-hl-rect[data-hl="green"] { background: var(--hl-green);  }
+    .lia-hl-rect[data-hl="blue"]  { background: var(--hl-blue);   }
+    .lia-hl-rect[data-hl="pink"]  { background: var(--hl-pink);   }
+    .lia-hl-rect[data-hl="orange"]{ background: var(--hl-orange); }
+    .lia-hl-rect[data-hl="red"]   { background: var(--hl-red);    }
+  `);
+
+  ensureStyle(ROOT_DOC, "lia-hl-style-root-v4", `
+    #lia-hl-btn{
+      position: relative !important;
+      width: 40px !important;
+      height: 40px !important;
+      padding: 0 !important;
+      margin: 0 30px !important;
+
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+
+      border: 0 !important;
+      background: transparent !important;
+      color: var(--hl-accent) !important;
+
+      cursor: pointer !important;
+      user-select: none !important;
+      border-radius: 10px !important;
+    }
+
+    #lia-hl-btn:hover{
+      background: color-mix(in srgb, currentColor 10%, transparent) !important;
+    }
+    #lia-hl-btn:active{
+      background: color-mix(in srgb, currentColor 16%, transparent) !important;
+    }
+
+    #lia-hl-btn .icon{ width:22px !important; height:22px !important; display:block !important; }
+    #lia-hl-btn .dot{
+      position: absolute !important;
+      right: 6px !important;
+      bottom: 6px !important;
+      width: 10px !important;
+      height: 10px !important;
+      border-radius: 999px !important;
+      border: 1px solid var(--hl-ui-border) !important;
+      background: var(--hl-yellow) !important;
+    }
+
+
+    #lia-hl-panel{
+      position: fixed !important;
+      z-index: var(--hl-z) !important;
+
+      width: 130px !important;
+      display: none !important;
+
+      border-radius: 18px !important;
+      border: 1px solid var(--hl-ui-border) !important;
+      background: var(--hl-ui-bg) !important;
+      box-shadow: var(--hl-ui-shadow) !important;
+      overflow: hidden !important;
+      backdrop-filter: blur(6px);
+    }
+
+
+    /* Nightly: "Navigation"-Iconleiste (sehr kompakt / vertikal) */
+    body.lia-hl-navstack #lia-hl-btn{
+      margin: 0 !important;
+      width: 32px !important;
+      height: 32px !important;
+      border-radius: 8px !important;
+    }
+    
+    body.lia-hl-navstack #lia-hl-btn .icon{
+      width: 18px !important;
+      height: 18px !important;
+    }
+    
+    body.lia-hl-navstack #lia-hl-btn .dot{
+      right: 4px !important;
+      bottom: 4px !important;
+      width: 8px !important;
+      height: 8px !important;
+    }
+    
+
+    /* Focus-Ring komplett aus (Nightly setzt gern eigene Linien/Outlines) */
+    #lia-hl-btn:focus,
+    #lia-hl-btn:focus-visible{
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
+    /* Active-State: NUR inset -> nichts kann nach links "durchstreichen" */
+    body.lia-hl-active #lia-hl-btn{
+      outline: none !important;
+      box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--hl-ui-fg) 25%, transparent) !important;
+    }
+
+    /* Nav-Stack: ebenfalls nur inset, etwas feiner */
+    body.lia-hl-navstack.lia-hl-active #lia-hl-btn{
+      outline: none !important;
+      box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--hl-ui-fg) 22%, transparent) !important;
+    }
+
+
+    /* Nightly-UI: manche Header-Buttons bekommen Linien via ::after/::before oder border-bottom.
+       Das killt exakt diese "Strich"-Artefakte nur für unseren Button. */
+    #lia-hl-btn,
+    #lia-hl-btn *{
+      text-decoration: none !important;
+    }
+
+    #lia-hl-btn::before,
+    #lia-hl-btn::after{
+      content: none !important;
+      display: none !important;
+    }
+
+    #lia-hl-btn{
+      border: 0 !important;
+      border-bottom: 0 !important;
+      box-shadow: none !important;   /* falls Nightly hier was drauflegt */
+      outline: none !important;
+    }
+
+    /* auch Focus/Focus-visible komplett neutralisieren */
+    #lia-hl-btn:focus,
+    #lia-hl-btn:focus-visible{
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
+
+    body.lia-hl-panel-open #lia-hl-panel{ display:block !important; }
+
+    #lia-hl-panel .hdr{
+      display:flex !important;
+      align-items:center !important;
+      justify-content:space-between !important;
+      gap: 10px !important;
+      padding: 10px 12px !important;
+      border-bottom: 1px solid color-mix(in srgb, var(--hl-ui-border) 85%, transparent) !important;
+    }
+
+    #lia-hl-panel .title{
+      font-weight: 700 !important;
+      font-size: 13px !important;
+      color: var(--hl-ui-fg) !important;
+    }
+
+    #lia-hl-panel .body{
+      padding: 12px !important;
+      display: grid !important;
+      gap: 12px !important;
+    }
+
+    .hl-tools{
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 10px !important;
+    }
+
+    .hl-tool{
+      border: 1px solid var(--hl-ui-border) !important;
+      background: color-mix(in srgb, var(--hl-ui-fg) 5%, transparent) !important;
+      color: var(--hl-ui-fg) !important;
+
+      border-radius: 14px !important;
+      padding: 10px 10px !important;
+      cursor: pointer !important;
+      font-size: 13px !important;
+
+      display:flex !important;
+      align-items:center !important;
+      justify-content:center !important;
+
+      user-select:none !important;
+    }
+
+    .hl-tool.active{
+      background: color-mix(in srgb, var(--hl-ui-fg) 16%, transparent) !important;
+      border-color: color-mix(in srgb, var(--hl-ui-fg) 22%, var(--hl-ui-border)) !important;
+    }
+
+    .hl-colors{
+      display:flex !important;
+      flex-wrap: wrap !important;
+      gap: 10px !important;
+    }
+
+    .hl-swatch{
+      width: 28px !important;
+      height: 28px !important;
+      border-radius: 999px !important;
+      border: 2px solid var(--hl-ui-border) !important;
+      cursor: pointer !important;
+      box-shadow: 0 8px 16px color-mix(in srgb, var(--hl-ui-fg) 18%, transparent) !important;
+    }
+
+    .hl-swatch.active{
+      outline: 3px solid color-mix(in srgb, var(--hl-ui-fg) 65%, transparent) !important;
+      outline-offset: 2px !important;
+    }
+
+    .hl-clear{
+      width: 100% !important;
+      border: 1px solid color-mix(in srgb, rgba(200,0,0,.9) 25%, var(--hl-ui-border)) !important;
+      background: rgba(200,0,0,.06) !important;
+      border-radius: 14px !important;
+      padding: 10px 10px !important;
+      cursor: pointer !important;
+      font-size: 12px !important;
+      color: var(--hl-ui-fg) !important;
+    }
+
+  `);
+
+
+
+
+
+
+
+
+  // =========================
+  // Theme/Accent robust (OHNE Observer auf style!)
+  // =========================
+  function parseRGB(str){
+    const m = (str || "").match(/rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)/i);
+    if (!m) return null;
+    return { r:+m[1], g:+m[2], b:+m[3] };
+  }
+  function luminance(rgb){
+    const r = rgb.r/255, g = rgb.g/255, b = rgb.b/255;
+    return 0.2126*r + 0.7152*g + 0.0722*b;
+  }
+  function setVar(doc, k, v){ doc.documentElement.style.setProperty(k, v); }
+
+  function firstNonTransparentBg(el){
+    let n = el;
+    for (let i=0; i<12 && n; i++){
+      const bg = getComputedStyle(n).backgroundColor;
+      if (bg && bg !== "transparent" && bg !== "rgba(0, 0, 0, 0)") return bg;
+      n = n.parentElement;
+    }
+    return null;
+  }
+
+  function adaptUIVars(){
+    const rootHeader =
+      ROOT_DOC.querySelector("header#lia-toolbar-nav") ||
+      ROOT_DOC.querySelector("#lia-toolbar-nav") ||
+      ROOT_DOC.querySelector("header.lia-header");
+
+    const contentMain =
+      CONTENT_DOC.querySelector("main") ||
+      CONTENT_DOC.querySelector("[role='main']") ||
+      CONTENT_DOC.body;
+
+    const bgStr =
+      (rootHeader && firstNonTransparentBg(rootHeader)) ||
+      firstNonTransparentBg(contentMain) ||
+      getComputedStyle(CONTENT_DOC.body).backgroundColor ||
+      "rgb(255,255,255)";
+
+    const bg = parseRGB(bgStr) || {r:255,g:255,b:255};
+    const isDark = luminance(bg) < 0.45;
+
+    const rootAnchor =
+      (rootHeader && (rootHeader.querySelector("a") || rootHeader.querySelector("button"))) ||
+      CONTENT_DOC.querySelector("main a") ||
+      CONTENT_DOC.querySelector("a");
+
+    const accentStr =
+      rootAnchor ? getComputedStyle(rootAnchor).color : "rgb(11,95,255)";
+
+    try { setVar(ROOT_DOC, "--hl-accent", accentStr); } catch(e){}
+    try { setVar(CONTENT_DOC, "--hl-accent", accentStr); } catch(e){}
+
+    const varsLight = {
+      "--hl-ui-bg": "rgba(255,255,255,.92)",
+      "--hl-ui-fg": "rgba(0,0,0,.88)",
+      "--hl-ui-muted": "rgba(0,0,0,.62)",
+      "--hl-ui-border": "rgba(0,0,0,.14)",
+      "--hl-ui-shadow": "0 16px 42px rgba(0,0,0,.16)"
+    };
+    const varsDark = {
+      "--hl-ui-bg": "rgba(20,20,22,.92)",
+      "--hl-ui-fg": "rgba(255,255,255,.92)",
+      "--hl-ui-muted": "rgba(255,255,255,.68)",
+      "--hl-ui-border": "rgba(255,255,255,.16)",
+      "--hl-ui-shadow": "0 18px 44px rgba(0,0,0,.55)"
+    };
+
+    const vars = isDark ? varsDark : varsLight;
+    for (const k in vars){
+      try { setVar(ROOT_DOC, k, vars[k]); } catch(e){}
+      try { setVar(CONTENT_DOC, k, vars[k]); } catch(e){}
+    }
+  }
+
+  // =========================
+  // Overlay + Rendering
+  // =========================
+  let overlay = CONTENT_DOC.getElementById("lia-hl-overlay");
+  if (!overlay){
+    overlay = CONTENT_DOC.createElement("div");
+    overlay.id = "lia-hl-overlay";
+    CONTENT_DOC.body.appendChild(overlay);
+  }
+
+  function currentScroll(){
+    return { x:(CONTENT_WIN.scrollX||0), y:(CONTENT_WIN.scrollY||0) };
+  }
+
+
+  // =========================
+  // Anchors: Range serialisieren & wiederherstellen
+  // =========================
+  function nodeToPath(node){
+    // Pfad relativ zu BODY über childNodes-Indizes (inkl. Textnodes)
+    const root = CONTENT_DOC.body;
+    const parts = [];
+    let n = node;
+    while (n && n !== root){
+      const p = n.parentNode;
+      if (!p) break;
+      const idx = Array.prototype.indexOf.call(p.childNodes, n);
+      parts.push(idx);
+      n = p;
+    }
+    parts.reverse();
+    return parts.join("/");
+  }
+
+  function pathToNode(path){
+    const root = CONTENT_DOC.body;
+    if (!path) return null;
+    const parts = path.split("/").filter(Boolean).map(x => parseInt(x, 10));
+    let n = root;
+    for (const idx of parts){
+      if (!n || !n.childNodes || idx < 0 || idx >= n.childNodes.length) return null;
+      n = n.childNodes[idx];
+    }
+    return n || null;
+  }
+
+  function clampOffset(node, off){
+    if (!node) return 0;
+    if (node.nodeType === 3) { // Text
+      const len = (node.nodeValue || "").length;
+      return Math.max(0, Math.min(off, len));
+    }
+    if (node.nodeType === 1) { // Element
+      const len = node.childNodes ? node.childNodes.length : 0;
+      return Math.max(0, Math.min(off, len));
+    }
+    return 0;
+  }
+
+  function rangeFromAnchor(a){
+    if (!a) return null;
+    const sc = pathToNode(a.sp);
+    const ec = pathToNode(a.ep);
+    if (!sc || !ec) return null;
+
+    const r = CONTENT_DOC.createRange();
+    const so = clampOffset(sc, a.so);
+    const eo = clampOffset(ec, a.eo);
+
+    try{
+      r.setStart(sc, so);
+      r.setEnd(ec, eo);
+      if (r.collapsed) return null;
+      return r;
+    } catch (e){
+      return null;
+    }
+  }
+
+  function packedRectsFromRange(range){
+    const rects = Array.from(range.getClientRects ? range.getClientRects() : []);
+    if (!rects.length) return [];
+    const sc = currentScroll();
+    return rects
+      .filter(r => r.width > 1 && r.height > 1)
+      .map(r => ({ x: r.left + sc.x, y: r.top + sc.y, w: r.width, h: r.height }));
+  }
+
+  // =========================
+  // Layout-Signatur + Recalc (wenn Präsentation/Font/Wrap sich ändert)
+  // =========================
+  I.__layoutSig = "";
+  function layoutSignature(){
+    const main = CONTENT_DOC.querySelector("main") || CONTENT_DOC.body;
+    const csMain = CONTENT_WIN.getComputedStyle(main);
+    const csRoot = CONTENT_WIN.getComputedStyle(CONTENT_DOC.documentElement);
+
+    // Root/Content Klassen + ggf. data-Attribute (Nightly toggles)
+    const rootClass = (ROOT_DOC.documentElement.className || "") + "|" + (ROOT_DOC.body.className || "");
+    const contClass = (CONTENT_DOC.documentElement.className || "") + "|" + (CONTENT_DOC.body.className || "");
+
+    const rootDE = ROOT_DOC.documentElement;
+    const rootBody = ROOT_DOC.body;
+    const rootData =
+      (rootDE?.getAttribute("data-mode")||"") + "|" +
+      (rootDE?.getAttribute("data-view")||"") + "|" +
+      (rootDE?.getAttribute("data-layout")||"") + "|" +
+      (rootBody?.getAttribute("data-mode")||"") + "|" +
+      (rootBody?.getAttribute("data-view")||"") + "|" +
+      (rootBody?.getAttribute("data-layout")||"");
+
+    const contDE = CONTENT_DOC.documentElement;
+    const contBody = CONTENT_DOC.body;
+    const contData =
+      (contDE?.getAttribute("data-mode")||"") + "|" +
+      (contDE?.getAttribute("data-view")||"") + "|" +
+      (contDE?.getAttribute("data-layout")||"") + "|" +
+      (contBody?.getAttribute("data-mode")||"") + "|" +
+      (contBody?.getAttribute("data-view")||"") + "|" +
+      (contBody?.getAttribute("data-layout")||"");
+
+    // >>> entscheidend: GEOMETRIE (Offsets), nicht nur Styles
+    const mr = main.getBoundingClientRect();
+    const mainGeo = [mr.left, mr.top, mr.width].map(v => Math.round(v)).join(",");
+
+    // Root-Header kann im Navigation-Modus andere Geometrie haben
+    const header =
+      ROOT_DOC.querySelector("header#lia-toolbar-nav") ||
+      ROOT_DOC.querySelector("#lia-toolbar-nav") ||
+      ROOT_DOC.querySelector("header.lia-header");
+    let headerGeo = "nohdr";
+    if (header){
+      const hr = header.getBoundingClientRect();
+      headerGeo = [hr.left, hr.top, hr.width, hr.height].map(v => Math.round(v)).join(",");
+    }
+
+    // Viewport-Geometrie (Navigation kann VisualViewport/Insets verändern)
+    const vv = ROOT_WIN.visualViewport;
+    const vpGeo = vv
+      ? [vv.width, vv.height, vv.offsetLeft||0, vv.offsetTop||0].map(v => Math.round(v)).join(",")
+      : [
+          (ROOT_DOC.documentElement.clientWidth||0),
+          (ROOT_DOC.documentElement.clientHeight||0),
+          0,0
+        ].map(v => Math.round(v)).join(",");
+
+    return [
+      // styles
+      csRoot.fontSize, csMain.fontSize, csMain.lineHeight,
+      csMain.width, csMain.paddingLeft, csMain.paddingRight,
+      // classes/data
+      rootClass, contClass, rootData, contData,
+      // geometry (THIS FIXES NAVIGATION MODE)
+      mainGeo, headerGeo, vpGeo
+    ].join("§");
+  }
+
+
+
+  function recalcAllHighlights(){
+    for (const item of I.HL){
+      if (!item.anchor) continue;
+      const r = rangeFromAnchor(item.anchor);
+      if (!r) continue;
+      const packed = packedRectsFromRange(r);
+      if (packed.length) item.rects = packed;
+    }
+  }
+
+  function checkLayoutAndRecalc(){
+    const sig = layoutSignature();
+    if (sig !== I.__layoutSig){
+      I.__layoutSig = sig;
+      recalcAllHighlights();
+      render();
+    }
+  }
+
+
+
+  function render(){
+    overlay.innerHTML = "";
+    const sc = currentScroll();
+
+    for (const item of I.HL){
+      for (const r of item.rects){
+        const el = CONTENT_DOC.createElement("div");
+        el.className = "lia-hl-rect";
+        el.setAttribute("data-hl", item.color);
+        el.setAttribute("data-id", String(item.id));
+        el.style.left   = `${Math.round(r.x - sc.x)}px`;
+        el.style.top    = `${Math.round(r.y - sc.y)}px`;
+        el.style.width  = `${Math.round(r.w)}px`;
+        el.style.height = `${Math.round(r.h)}px`;
+        overlay.appendChild(el);
+      }
+    }
+  }
+
+  CONTENT_WIN.addEventListener("scroll", render, { passive:true });
+  CONTENT_WIN.addEventListener("resize", () => { adaptUIVars(); checkLayoutAndRecalc(); render(); });
+
+
+  // =========================
+  // Root UI: an TOC anheften
+  // =========================
+  function findHeaderLeft(){
+    const header = ROOT_DOC.querySelector("header#lia-toolbar-nav") || ROOT_DOC.querySelector("#lia-toolbar-nav");
+    if (!header) return null;
+    return header.querySelector(".lia-header__left") || null;
+  }
+
+  function findTOCButtonInLeft(left){
+    if (!left) return null;
+    const btns = Array.from(left.querySelectorAll("button,[role='button'],a"));
+    if (!btns.length) return null;
+
+    const pick = btns.find(b=>{
+      const t = ((b.getAttribute("aria-label")||b.getAttribute("title")||b.textContent||"")+"").toLowerCase();
+      return t.includes("inhaltsverzeichnis") || t.includes("table of contents") || t.includes("contents");
+    });
+    return pick || btns[0];
+  }
+
+  function ensureRootButtonAndPanel(){
+    let btn = ROOT_DOC.getElementById("lia-hl-btn");
+    if (!btn){
+      btn = ROOT_DOC.createElement("button");
+      btn.id = "lia-hl-btn";
+      btn.type = "button";
+      btn.setAttribute("aria-label","Textmarker");
+      btn.innerHTML = `
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 20h4l10.5-10.5a2.1 2.1 0 0 0 0-3L16.5 4.5a2.1 2.1 0 0 0-3 0L3 15v5z"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M13.5 6.5l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="dot" id="lia-hl-dot"></span>
+      `;
+    }
+
+    let panel = ROOT_DOC.getElementById("lia-hl-panel");
+    if (!panel){
+      panel = ROOT_DOC.createElement("div");
+      panel.id = "lia-hl-panel";
+      panel.innerHTML = `
+        <div class="hdr"><div class="title">Textmarker</div></div>
+        <div class="body">
+          <div class="hl-tools">
+            <button class="hl-tool" id="hl-tool-mark" type="button">🖍️</button>
+            <button class="hl-tool" id="hl-tool-erase" type="button">🧽</button>
+          </div>
+          <div>
+            <div class="hl-hint" style="margin-bottom:8px;">Farbe</div>
+            <div class="hl-colors" id="hl-colors"></div>
+          </div>
+          <button class="hl-clear" id="hl-clear" type="button">Alle Markierungen löschen</button>
+        </div>
+      `;
+      ROOT_DOC.body.appendChild(panel);
+    }
+
+    const left = findHeaderLeft();
+    if (left){
+      if (btn.parentNode !== left){
+        const anchor = findTOCButtonInLeft(left);
+        if (anchor && anchor.parentNode === left) anchor.insertAdjacentElement("afterend", btn);
+        else left.appendChild(btn);
+      }
+    } else {
+      if (!btn.parentNode) ROOT_DOC.body.appendChild(btn);
+    }
+  }
+
+  // =========================
+  // Panel Position: SMART (Viewport Clamp + Above-Fallback)
+  // =========================
+  function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
+
+  function getViewport(){
+    const vv = ROOT_WIN.visualViewport;
+    if (vv){
+      return { w: vv.width, h: vv.height, ox: vv.offsetLeft || 0, oy: vv.offsetTop || 0 };
+    }
+    const de = ROOT_DOC.documentElement;
+    return { w: de.clientWidth, h: de.clientHeight, ox: 0, oy: 0 };
+  }
+
+  function measurePanel(panel){
+    // Wenn display:none (geschlossen), kurz messbar machen
+    const prevDisplay = panel.style.display;
+    const prevVis = panel.style.visibility;
+    const prevLeft = panel.style.left;
+    const prevTop = panel.style.top;
+
+    panel.style.display = "block";
+    panel.style.visibility = "hidden";
+    panel.style.left = "-9999px";
+    panel.style.top  = "-9999px";
+
+    const w = panel.offsetWidth || 130;
+    const h = panel.offsetHeight || 180;
+
+    panel.style.display = prevDisplay;
+    panel.style.visibility = prevVis;
+    panel.style.left = prevLeft;
+    panel.style.top  = prevTop;
+
+    return { w, h };
+  }
+
+  function positionPanelSmart(){
+    const btn = ROOT_DOC.getElementById("lia-hl-btn");
+    const panel = ROOT_DOC.getElementById("lia-hl-panel");
+    if (!btn || !panel) return;
+    if (!(I.state.active && I.state.panelOpen)) return;
+
+    const gap = 10;
+    const pad = 8;
+
+    const r = btn.getBoundingClientRect();
+    const vp = getViewport();
+    const sz = measurePanel(panel);
+
+    let left = r.left;
+    let top  = r.bottom + gap;
+
+    left = clamp(left, pad, vp.w - sz.w - pad);
+
+    if (top + sz.h + pad > vp.h){
+      top = r.top - gap - sz.h;
+    }
+
+    top = clamp(top, pad, vp.h - sz.h - pad);
+
+    left = left + vp.ox;
+    top  = top  + vp.oy;
+
+    panel.style.left = `${Math.round(left)}px`;
+    panel.style.top  = `${Math.round(top)}px`;
+  }
+
+  // =========================
+  // UI logic
+  // =========================
+  function ensureSwatchesOnce(){
+    const colorsEl = ROOT_DOC.getElementById("hl-colors");
+    if (!colorsEl || colorsEl.childElementCount) return;
+
+    const keys = ["yellow","green","blue","pink","orange","red"];
+    const cssMap = {
+      yellow: getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue("--hl-yellow").trim(),
+      green:  getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue("--hl-green").trim(),
+      blue:   getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue("--hl-blue").trim(),
+      pink:   getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue("--hl-pink").trim(),
+      orange: getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue("--hl-orange").trim(),
+      red:    getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue("--hl-red").trim(),
+    };
+
+    keys.forEach(key=>{
+      const sw = ROOT_DOC.createElement("button");
+      sw.type = "button";
+      sw.className = "hl-swatch";
+      sw.setAttribute("data-hl", key);
+      sw.style.background = cssMap[key] || cssMap.yellow;
+
+      sw.addEventListener("click", ()=>{
+        I.state.tool = "mark";
+        I.state.color = key;
+        I.state.panelOpen = false;
+        applyUI();
+      });
+
+      colorsEl.appendChild(sw);
+    });
+  }
+
+  function applyUI(){
+    try{
+      ROOT_DOC.body.classList.toggle("lia-hl-active", !!I.state.active);
+      ROOT_DOC.body.classList.toggle("lia-hl-panel-open", !!(I.state.active && I.state.panelOpen));
+    } catch(e){}
+
+    const toolMark = ROOT_DOC.getElementById("hl-tool-mark");
+    const toolErase= ROOT_DOC.getElementById("hl-tool-erase");
+    if (toolMark) toolMark.classList.toggle("active", I.state.tool === "mark");
+    if (toolErase)toolErase.classList.toggle("active", I.state.tool === "erase");
+
+    const dot = ROOT_DOC.getElementById("lia-hl-dot");
+    if (dot){
+      const map = {
+        yellow: getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue("--hl-yellow").trim(),
+        green:  getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue("--hl-green").trim(),
+        blue:   getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue("--hl-blue").trim(),
+        pink:   getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue("--hl-pink").trim(),
+        orange: getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue("--hl-orange").trim(),
+        red:    getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue("--hl-red").trim(),
+      };
+      dot.style.background = map[I.state.color] || map.yellow;
+    }
+
+    const colorsEl = ROOT_DOC.getElementById("hl-colors");
+    if (colorsEl){
+      Array.from(colorsEl.querySelectorAll(".hl-swatch")).forEach(s=>{
+        s.classList.toggle("active", s.getAttribute("data-hl") === I.state.color);
+      });
+    }
+
+    if (I.state.active && I.state.panelOpen){
+      ROOT_WIN.requestAnimationFrame(() => positionPanelSmart());
+    }
+  }
+
+  function wireUIOnce(){
+    const btn = ROOT_DOC.getElementById("lia-hl-btn");
+    if (!btn || btn.__liaHLWired) return;
+    btn.__liaHLWired = true;
+
+    btn.addEventListener("click", ()=>{
+      if (!I.state.active){
+        I.state.active = true;
+        I.state.panelOpen = true;
+        I.state.tool = "mark";
+      } else {
+        I.state.active = false;
+        I.state.panelOpen = false;
+        I.state.tool = "mark";
+      }
+      applyUI();
+    });
+
+    btn.addEventListener("contextmenu", (e)=>{
+      e.preventDefault();
+      if (!I.state.active) return;
+      I.state.panelOpen = !I.state.panelOpen;
+      applyUI();
+    });
+
+    const toolMark = ROOT_DOC.getElementById("hl-tool-mark");
+    const toolErase= ROOT_DOC.getElementById("hl-tool-erase");
+    const clearBtn = ROOT_DOC.getElementById("hl-clear");
+
+    if (toolMark){
+      toolMark.addEventListener("click", ()=>{
+        I.state.tool = "mark";
+        I.state.panelOpen = false;
+        applyUI();
+      });
+    }
+
+    if (toolErase){
+      toolErase.addEventListener("click", ()=>{
+        I.state.tool = "erase";
+        I.state.panelOpen = false;
+        applyUI();
+      });
+    }
+
+    if (clearBtn){
+      clearBtn.addEventListener("click", ()=>{
+        I.HL = [];
+        render();
+        I.state.panelOpen = false;
+        I.state.tool = "mark";
+        applyUI();
+      });
+    }
+
+    ROOT_DOC.addEventListener("keydown", (e)=>{
+      if (e.key === "Escape" && I.state.active){
+        I.state.panelOpen = false;
+        I.state.tool = "mark";
+        applyUI();
+      }
+    });
+
+    ROOT_WIN.addEventListener("resize", () => positionPanelSmart());
+    if (ROOT_WIN.visualViewport){
+      ROOT_WIN.visualViewport.addEventListener("resize", () => positionPanelSmart());
+      ROOT_WIN.visualViewport.addEventListener("scroll", () => positionPanelSmart());
+    }
+  }
+
+  // =========================
+  // Markieren / Radieren
+  // =========================
+  function isForbiddenTarget(node){
+    const el = (node && node.nodeType === 1) ? node : node?.parentElement;
+    if (!el) return false;
+    return !!el.closest("input, textarea, select, button, a, code, pre");
+  }
+
+  function addHighlightFromSelection(){
+    const sel = CONTENT_WIN.getSelection ? CONTENT_WIN.getSelection() : null;
+    if (!sel || sel.rangeCount === 0) return;
+
+    const range = sel.getRangeAt(0);
+    if (!range || range.collapsed) return;
+
+    if (isForbiddenTarget(range.startContainer) || isForbiddenTarget(range.endContainer)) return;
+
+    const rects = Array.from(range.getClientRects ? range.getClientRects() : []);
+    if (!rects.length) return;
+
+    const sc = currentScroll();
+    const packed = rects
+      .filter(r => r.width > 1 && r.height > 1)
+      .map(r => ({ x: r.left + sc.x, y: r.top + sc.y, w: r.width, h: r.height }));
+
+    if (!packed.length) return;
+
+        const anchor = {
+      sp: nodeToPath(range.startContainer),
+      so: range.startOffset,
+      ep: nodeToPath(range.endContainer),
+      eo: range.endOffset
+    };
+
+    I.HL.push({ id: I.nextId++, color: I.state.color, anchor, rects: packed });
+
+    sel.removeAllRanges();
+    render();
+  }
+
+  CONTENT_DOC.addEventListener("mouseup", ()=>{
+    if (!I.state.active) return;
+
+    if (I.state.panelOpen){
+      I.state.panelOpen = false;
+      applyUI();
+    }
+
+    if (I.state.tool !== "mark") return;
+    addHighlightFromSelection();
+  }, true);
+
+  CONTENT_DOC.addEventListener("click", (e)=>{
+    if (!I.state.active) return;
+    if (I.state.tool !== "erase") return;
+
+    const t = e.target;
+    if (!t || !t.classList || !t.classList.contains("lia-hl-rect")) return;
+
+    const id = t.getAttribute("data-id");
+    if (!id) return;
+
+    const n = Number(id);
+    I.HL = I.HL.filter(item => item.id !== n);
+    render();
+  }, true);
+
+
+  function detectNavStack(){
+    const btn = ROOT_DOC.getElementById("lia-hl-btn");
+    if (!btn) return;
+
+    const r = btn.getBoundingClientRect();
+    const vw = ROOT_DOC.documentElement.clientWidth || 0;
+
+    // Heuristik: im Nightly-"Navigation"-Modus sitzen die Header-Icons sehr weit rechts oben.
+    const likelyNavStack = (r.right >= vw - 2) && (r.top <= 90);
+
+    ROOT_DOC.body.classList.toggle("lia-hl-navstack", !!likelyNavStack);
+  }
+
+
+
+
+  // =========================
+  // Tick (throttled) — Docking stabil, ohne Observer-Loop
+  // =========================
+  function tick(){
+    if (I.ticking) return;
+    I.ticking = true;
+
+    ROOT_WIN.requestAnimationFrame(() => {
+      try{
+        ensureRootButtonAndPanel();
+        detectNavStack();
+        checkLayoutAndRecalc();
+        ensureSwatchesOnce();
+        wireUIOnce();
+        adaptUIVars();
+        applyUI();
+        positionPanelSmart();
+      } finally {
+        I.ticking = false;
+      }
+    });
+  }
+
+  // Docking nur auf DOM-Änderungen (childList/subtree) — KEINE attributes!
+  try{
+    I.moDock = new MutationObserver(() => tick());
+    I.moDock.observe(ROOT_DOC.body, { childList:true, subtree:true });
+  } catch(e){}
+
+  // Theme-Observer: NUR class/data-theme (nicht style!)
+  try{
+    I.moTheme = new MutationObserver(() => { adaptUIVars(); applyUI(); positionPanelSmart(); });  
+    I.moTheme.observe(ROOT_DOC.documentElement, { attributes:true, attributeFilter:["class","data-theme","data-mode","data-view","data-layout"] });
+    I.moTheme.observe(ROOT_DOC.body,           { attributes:true, attributeFilter:["class","data-theme","data-mode","data-view","data-layout"] });
+
+  } catch(e){}
+
+  // Boot
+  tick();
+  render();
+
+  // Layout-Drift Fix: reagiert auf Fontsize/Präsentationsmodus ohne style-Observer
+  if (!I.__layoutTimer){
+    I.__layoutSig = layoutSignature(); // Initial
+    I.__layoutTimer = ROOT_WIN.setInterval(() => {
+      if (!I.__alive) return;
+      checkLayoutAndRecalc();
+    }, 350);
+  }
+
+})();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // =========================
+  // CANVAS
+  // CANVAS
+  // CANVAS
+  // CANVAS
+  // CANVAS
+  // CANVAS
+  // CANVAS
+  // CANVAS
+  // CANVAS
+  // CANVAS
+  // =========================
+
+
+
+
+
+
+(function(){
+  if (window.__liaDrawCanvasInit) return;
+  window.__liaDrawCanvasInit = true;
+
+  // =========================================================
+  // CSS-Fallback: falls @style aus Import nicht greift → injizieren
+  // (Design bleibt identisch, nur robust)
+  // =========================================================
+function ensureCss(){
+  if (document.getElementById('__lia_canvas_css_v2')) return;
+
+  const st = document.createElement('style');
+  st.id = '__lia_canvas_css_v2';
+
+  st.textContent = [
+    ':root{',
+    '  --canvas-border:#000;',
+    '  --canvas-pen:#000;',
+    '  --canvas-accent:#0b5fff;',
+    '}',
+    '@media (prefers-color-scheme: dark){',
+    '  :root{ --canvas-border:#fff; --canvas-pen:#fff; }',
+    '}',
+
+    '.lia-draw-block{ display:block; width:100%; overflow-x:hidden; overflow-y:visible; }',
+    '.lia-draw-wrap{ width:min(520px,100%); border:2px solid var(--canvas-border); border-radius:10px; box-sizing:border-box; position:relative; display:block; max-width:100%; }',
+    'canvas.lia-draw{ width:100%; height:150px; display:block; background:transparent; touch-action:none; cursor:crosshair; border-radius:8px; }',
+
+    '.lia-toolstack{ position:absolute; left:10px; top:50%; transform:translate(0,-50%); z-index:25; display:flex; flex-direction:column; gap:5px; }',
+    '.lia-tool-btn{ width:22px; height:22px; padding:0; border:2px solid var(--canvas-border); border-radius:999px; cursor:pointer; user-select:none; display:grid; place-items:center; background:transparent; }',
+    '.lia-tool-btn:disabled{ opacity:.35; cursor:not-allowed; }',
+    '.lia-tool-btn svg{ width:14px; height:14px; display:block; margin:0; transform:translate(0,0); }',
+    '.lia-tool-btn .ico-stroke{ stroke:var(--canvas-border); fill:none; }',
+    '.lia-tool-btn .ico-fill{ fill:rgba(0,0,0,0); }',
+    '.lia-tool-btn[data-active="1"]{ outline:2px solid var(--canvas-border); outline-offset:2px; }',
+
+    '.lia-canvas-anchor{ display:inline-block; }',
+    '.lia-canvas-mount{ display:none; width:100%; max-width:100%; margin:6px 0; }',
+    '.lia-canvas-mount[data-open="1"]{ display:block; }',
+
+    '.lia-canvas-launch{ width:32px; height:32px; padding:0; border-radius:999px; background:transparent; border:2px solid var(--canvas-accent); cursor:pointer; user-select:none; touch-action:manipulation; display:inline-flex; align-items:center; justify-content:center; vertical-align:middle; line-height:0; margin-right:6px; }',
+    '.lia-canvas-launch:hover{ filter:brightness(1.05); }',
+    '.lia-canvas-launch svg{ width:18px; height:18px; display:block; }',
+    '.lia-canvas-launch .launch-stroke{ stroke:var(--canvas-accent); fill:none; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; }',
+
+    '.lia-tool-menu{ position:absolute; left:44px; top:10px; z-index:30; padding:10px; border:2px solid var(--canvas-border); border-radius:12px; background:rgba(0,0,0,.15); backdrop-filter:blur(6px); display:none; gap:10px; }',
+    '.lia-tool-menu[data-open="1"]{ display:grid; align-items:start; row-gap:10px; }',
+
+    '.lia-color-grid{ display:grid; grid-template-columns:repeat(9,22px); gap:10px; align-items:center; }',
+    '.lia-color-item{ width:22px; height:22px; border-radius:999px; cursor:pointer; user-select:none; border:2px solid var(--canvas-border); background:transparent; box-sizing:border-box; }',
+    '.lia-color-item:hover{ transform:scale(1.06); }',
+    '.lia-color-item[data-active="1"]{ outline:2px solid var(--canvas-border); outline-offset:2px; }',
+
+    '.lia-tool-heading{ font-size:1.5rem; font-weight:750; line-height:1.1; padding-left:2px; }',
+    '.lia-heading-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; }',
+
+    '.lia-menu-icon-btn{ width:28px; height:28px; border-radius:999px; border:2px solid var(--canvas-border); background:transparent; display:grid; place-items:center; cursor:pointer; user-select:none; padding:0; }',
+    '.lia-menu-icon-btn:hover{ filter:brightness(1.08); }',
+    '.lia-menu-icon-btn svg{ width:16px; height:16px; display:block; margin:0; }',
+    '.lia-menu-icon-btn .ico-stroke{ stroke:var(--canvas-border); fill:none; }',
+
+    '.lia-row{ display:flex; align-items:center; gap:10px; }',
+    '.lia-preview{ width:34px; height:22px; border-radius:10px; border:2px solid var(--canvas-border); box-sizing:border-box; display:grid; place-items:center; }',
+    '.lia-preview-line{ width:22px; border-radius:999px; background:var(--canvas-border); height:3px; }',
+    '.lia-slider{ width:180px; }',
+
+    '.lia-bg-tiles{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; align-items:stretch; }',
+    '.lia-bg-tile{ height:34px; border-radius:12px; border:2px solid var(--canvas-border); background:transparent; cursor:pointer; user-select:none; padding:0; }',
+    '.lia-bg-tile:hover{ filter:brightness(1.08); }',
+    '.lia-bg-tile[data-active="1"]{ outline:2px solid var(--canvas-border); outline-offset:2px; }',
+
+    '.lia-resize-corner{ position:absolute; bottom:0; width:18px; height:18px; z-index:50; background:transparent; border:0; padding:0; margin:0; user-select:none; touch-action:none; opacity:0; }',
+    '.lia-resize-corner[data-corner="br"]{ right:0; cursor:nwse-resize; }',
+    '.lia-resize-corner[data-corner="bl"]{ left:0; cursor:nesw-resize; }'
+  ].join('\n');
+
+  (document.head || document.documentElement).appendChild(st);
+}
+
+
+  // =========================================================
+  // Theme helpers — OHNE Regex-Literale (verhindert Parser-Fehler)
+  // =========================================================
+  function parseRgbNoRegex(s){
+    const str = String(s || '');
+    const i0 = str.indexOf('(');
+    const i1 = str.indexOf(')');
+    if (i0 < 0 || i1 < 0) return null;
+    const parts = str.slice(i0+1, i1).split(',').map(x => Number(String(x).trim()));
+    if (parts.length < 3) return null;
+    if (!isFinite(parts[0]) || !isFinite(parts[1]) || !isFinite(parts[2])) return null;
+    return [parts[0], parts[1], parts[2]];
+  }
+  function luminance(rgb){
+    const [r,g,b] = rgb.map(v => v/255).map(c => (c <= 0.03928 ? c/12.92 : Math.pow((c+0.055)/1.055, 2.4)));
+    return 0.2126*r + 0.7152*g + 0.0722*b;
+  }
+
+  function getLiaAccentColor(doc){
+    try{
+      const d = doc || document;
+      const body = d.body || d.documentElement;
+
+      const existing = d.querySelector('.lia-btn');
+      if (existing){
+        const bg = getComputedStyle(existing).backgroundColor;
+        if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') return bg;
+      }
+
+      const probe = d.createElement('button');
+      probe.className = 'lia-btn';
+      probe.type = 'button';
+      probe.textContent = 'x';
+      probe.style.position = 'absolute';
+      probe.style.left = '-9999px';
+      probe.style.top = '-9999px';
+      probe.style.visibility = 'hidden';
+      body.appendChild(probe);
+
+      const bg = getComputedStyle(probe).backgroundColor;
+      probe.remove();
+
+      if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') return bg;
+    }catch(e){}
+    return null;
+  }
+
+  function applyThemeVars(){
+    ensureCss();
+    try{
+      const doc = (window.parent && window.parent.document) ? window.parent.document : document;
+      const root = document.documentElement;
+
+      const bg = getComputedStyle(doc.body || doc.documentElement).backgroundColor
+              || getComputedStyle(doc.documentElement).backgroundColor;
+
+      const rgb = parseRgbNoRegex(bg);
+      const isDark = rgb ? (luminance(rgb) < 0.5) : false;
+
+      const border = isDark ? '#fff' : '#000';
+      root.style.setProperty('--canvas-border', border);
+      root.style.setProperty('--canvas-pen', border);
+
+      const accent = getLiaAccentColor(doc) || getLiaAccentColor(document);
+      if (accent) root.style.setProperty('--canvas-accent', accent);
+
+      document.dispatchEvent(new Event('lia-canvas-theme'));
+    }catch(e){}
+  }
+
+  applyThemeVars();
+  const mo = new MutationObserver(() => applyThemeVars());
+  mo.observe(document.documentElement, { attributes:true, attributeFilter:['class','style'] });
+  window.addEventListener('resize', () => applyThemeVars());
+
+  // -----------------------------
+  // Persistent store per UID
+  // -----------------------------
+  window.__LIA_CANVAS_STORE__ = window.__LIA_CANVAS_STORE__ || {}; // uid -> {wrapW,canvasH,VIEW,bgMode,bgStep,STROKES,REDO}
+
+  // -----------------------------
+  // Colors + helpers
+  // -----------------------------
+  const COLORS = [
+    { key:'auto',       value:null },
+    { key:'red',        value:'#ff2d2d' },
+    { key:'orange',     value:'#ffc800' },
+    { key:'violett',    value:'#ff00ea' },
+    { key:'blue',       value:'#2d6bff' },
+    { key:'lightblue',  value:'#00d5ff' },
+    { key:'green',      value:'#00ff1a' },
+    { key:'black',      value:'#000000' },
+    { key:'white',      value:'#ffffff' }
+  ];
+
+  function getAutoPen(){
+    return getComputedStyle(document.documentElement).getPropertyValue('--canvas-pen').trim() || '#000';
+  }
+  function getBorderColor(){
+    return getComputedStyle(document.documentElement).getPropertyValue('--canvas-border').trim() || '#000';
+  }
+  function getAccentColor(){
+    return getComputedStyle(document.documentElement).getPropertyValue('--canvas-accent').trim() || getBorderColor();
+  }
+
+  // Icons (wie bei dir)
+  function setSvg(btn, svg){
+    if (!btn) return;
+    if (btn.__hasIcon) return;
+    btn.__hasIcon = true;
+    btn.innerHTML = svg;
+  }
+
+  function setEraserIcon(btn){
+    setSvg(btn, `
+      <svg viewBox="-4 4 24 24" aria-hidden="true">
+        <path class="ico-stroke" d="M4 16.5l8.6-8.6a2 2 0 0 1 2.8 0l4.1 4.1a2 2 0 0 1 0 2.8L12.8 23H7.6L4 19.4a2 2 0 0 1 0-2.9z"
+              fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path class="ico-stroke" d="M8 23h8" fill="none" stroke-width="2" stroke-linecap="round"/>
+        <path class="ico-stroke" d="M9.2 14.3l6.5 6.5" fill="none" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    `);
+  }
+
+  function setUndoIcon(btn){
+    setSvg(btn, `
+      <svg viewBox="-4 0 24 24" aria-hidden="true">
+        <path d="M21 8H10.2V4L2 12l8.2 8v-4H21V8z" fill="var(--canvas-border)"/>
+        <rect x="10.2" y="10.6" width="10.8" height="2.8" rx="1.4" fill="var(--canvas-border)"/>
+      </svg>
+    `);
+  }
+
+  function setRedoIcon(btn){
+    setSvg(btn, `
+      <svg viewBox="-4 0 24 24" aria-hidden="true">
+        <path d="M3 8h10.8V4l8.2 8-8.2 8v-4H3V8z" fill="var(--canvas-border)"/>
+        <rect x="3" y="10.6" width="10.8" height="2.8" rx="1.4" fill="var(--canvas-border)"/>
+      </svg>
+    `);
+  }
+
+  function setTrashIcon(btn){
+    if (!btn) return;
+    btn.innerHTML = `
+      <svg viewBox="-1 0 24 24" aria-hidden="true" style="width:22px;height:22px;display:block;">
+        <path class="ico-stroke" d="M9 3h6" stroke-width="2" stroke-linecap="round"/>
+        <path class="ico-stroke" d="M4 6h16" stroke-width="2" stroke-linecap="round"/>
+        <path class="ico-stroke" d="M7 6l1 15h8l1-15" stroke-width="2" stroke-linejoin="round"/>
+        <path class="ico-stroke" d="M10 10v8M14 10v8" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    `;
+  }
+
+  function rgbaFromAny(color, a){
+    const rgb = parseRgbNoRegex(color);
+    if (rgb) return `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${a})`;
+    if (String(color).startsWith('#')){
+      const h = String(color).slice(1);
+      const hex = (h.length===3) ? (h[0]+h[0]+h[1]+h[1]+h[2]+h[2]) : h;
+      const r = parseInt(hex.slice(0,2),16);
+      const g = parseInt(hex.slice(2,4),16);
+      const b = parseInt(hex.slice(4,6),16);
+      return `rgba(${r},${g},${b},${a})`;
+    }
+    return `rgba(0,0,0,${a})`;
+  }
+
+  // -----------------------------
+  // Canvas HTML (INLINE-STABIL: spans statt divs)
+  // -----------------------------
+  function canvasMarkup(){
+    return `
+      <span class="lia-draw-block">
+        <span class="lia-draw-wrap">
+          <span class="lia-toolstack">
+            <button class="lia-tool-btn lia-undo-btn"   type="button" aria-label="Rückgängig"></button>
+            <button class="lia-tool-btn lia-redo-btn"   type="button" aria-label="Wiederherstellen"></button>
+            <button class="lia-tool-btn lia-eraser-btn" type="button" aria-label="Radierer"></button>
+            <button class="lia-tool-btn lia-color-btn"  type="button" aria-label="Stift"></button>
+            <button class="lia-tool-btn lia-bgmenu-btn" type="button" aria-label="Hintergrund"></button>
+          </span>
+
+          <span class="lia-tool-menu" data-open="0" aria-label="Werkzeuge"></span>
+          <canvas class="lia-draw" aria-label="Zeichenfläche"></canvas>
+        </span>
+      </span>
+    `;
+  }
+
+  // -----------------------------
+  // Canvas setup (mit Store-Backup)
+  // -----------------------------
+  function setupCanvas(canvas){
+    const wrap = canvas.closest('.lia-draw-wrap');
+    if (!wrap) return;
+
+    const mount = wrap.closest('.lia-canvas-mount');
+    const uid = (mount && mount.id) ? mount.id.replace('lia-canvas-mount-','') : '';
+
+    const btnUndo   = wrap.querySelector('.lia-undo-btn');
+    const btnRedo   = wrap.querySelector('.lia-redo-btn');
+    const btnColor  = wrap.querySelector('.lia-color-btn');
+    const btnEraser = wrap.querySelector('.lia-eraser-btn');
+    const btnBg     = wrap.querySelector('.lia-bgmenu-btn');
+    const menu      = wrap.querySelector('.lia-tool-menu');
+
+    setUndoIcon(btnUndo);
+    setRedoIcon(btnRedo);
+    setEraserIcon(btnEraser);
+    if (btnBg && !btnBg.__bgCleared){ btnBg.__bgCleared = true; btnBg.innerHTML = ''; }
+
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+
+    const strokeLayer = document.createElement('canvas');
+    const sctx = strokeLayer.getContext('2d', { willReadFrequently: true });
+
+    const STORE = window.__LIA_CANVAS_STORE__;
+    const saved = (uid && STORE[uid]) ? STORE[uid] : null;
+
+    const VIEW = saved && saved.VIEW ? { ...saved.VIEW } : { panX:0, panY:0, scale:1, minScale:0.25, maxScale:8 };
+    const STROKES = (saved && Array.isArray(saved.STROKES)) ? saved.STROKES : [];
+    const REDO    = (saved && Array.isArray(saved.REDO))    ? saved.REDO    : [];
+
+    let currentStroke = null;
+
+    let tool = 'pen';
+    let menuMode = 'pen';
+
+    let colorIndex = 0;
+    let penWidth = 3;
+    let penAlpha = 1.0;
+    let eraserWidth = 12;
+
+    let bgMode = (saved && saved.bgMode) ? saved.bgMode : 'none';
+    let bgStep = (saved && saved.bgStep) ? saved.bgStep : 24;
+
+    function persist(){
+      if (!uid) return;
+      STORE[uid] = {
+        VIEW: { ...VIEW },
+        STROKES,
+        REDO,
+        bgMode,
+        bgStep,
+        wrapW: wrap.getBoundingClientRect().width,
+        canvasH: canvas.clientHeight
+      };
+    }
+
+    function penBaseColor(){
+      const c = COLORS[colorIndex] || COLORS[0];
+      return (c.key === 'auto') ? getAutoPen() : (c.value || getAutoPen());
+    }
+
+    function applyStrokeStyleTo(ctx2, st){
+      if (st.tool === 'eraser'){
+        ctx2.globalCompositeOperation = 'destination-out';
+        ctx2.globalAlpha = 1.0;
+        ctx2.strokeStyle = 'rgba(0,0,0,1)';
+        ctx2.lineWidth = st.width;
+      }else{
+        ctx2.globalCompositeOperation = 'source-over';
+        ctx2.globalAlpha = st.alpha;
+        ctx2.strokeStyle = st.color;
+        ctx2.lineWidth = st.width;
+      }
+      ctx2.lineCap = 'round';
+      ctx2.lineJoin = 'round';
+    }
+
+    function setMenuOpen(open){
+      if (!menu) return;
+      menu.dataset.open = open ? '1' : '0';
+    }
+
+    function screenToWorld(sx, sy){
+      return { x: (sx - VIEW.panX) / VIEW.scale, y: (sy - VIEW.panY) / VIEW.scale };
+    }
+
+    function worldBounds(){
+      const w = canvas.clientWidth;
+      const h = canvas.clientHeight;
+      return {
+        x0: (0 - VIEW.panX) / VIEW.scale,
+        y0: (0 - VIEW.panY) / VIEW.scale,
+        x1: (w - VIEW.panX) / VIEW.scale,
+        y1: (h - VIEW.panY) / VIEW.scale
+      };
+    }
+
+    function drawBackground(){
+      if (bgMode === 'none') return;
+
+      const dpr = window.devicePixelRatio || 1;
+      ctx.setTransform(dpr*VIEW.scale, 0, 0, dpr*VIEW.scale, dpr*VIEW.panX, dpr*VIEW.panY);
+
+      const step = Math.max(6, Number(bgStep) || 24);
+      const b = worldBounds();
+
+      const col = rgbaFromAny(getAccentColor(), 0.25);
+
+      ctx.save();
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.globalAlpha = 1.0;
+      ctx.strokeStyle = col;
+      ctx.lineWidth = 1 / VIEW.scale;
+
+      const xStart = Math.floor(b.x0 / step) * step;
+      const xEnd   = Math.ceil (b.x1 / step) * step;
+      const yStart = Math.floor(b.y0 / step) * step;
+      const yEnd   = Math.ceil (b.y1 / step) * step;
+
+      const maxLines = 4000;
+
+      if (bgMode === 'grid'){
+        let count = 0;
+        ctx.beginPath();
+        for (let x = xStart; x <= xEnd; x += step){
+          ctx.moveTo(x, b.y0);
+          ctx.lineTo(x, b.y1);
+          if (++count > maxLines) break;
+        }
+        for (let y = yStart; y <= yEnd; y += step){
+          ctx.moveTo(b.x0, y);
+          ctx.lineTo(b.x1, y);
+          if (++count > maxLines) break;
+        }
+        ctx.stroke();
+      }
+
+      if (bgMode === 'lined'){
+        let count = 0;
+        ctx.beginPath();
+        for (let y = yStart; y <= yEnd; y += step){
+          ctx.moveTo(b.x0, y);
+          ctx.lineTo(b.x1, y);
+          if (++count > maxLines) break;
+        }
+        ctx.stroke();
+      }
+
+      ctx.restore();
+    }
+
+    function clearStrokeLayer(){
+      const dpr = window.devicePixelRatio || 1;
+      sctx.setTransform(dpr,0,0,dpr,0,0);
+      sctx.globalCompositeOperation = 'source-over';
+      sctx.globalAlpha = 1;
+      sctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);
+    }
+    function setViewportTransformOn(ctx2){
+      const dpr = window.devicePixelRatio || 1;
+      ctx2.setTransform(dpr*VIEW.scale, 0, 0, dpr*VIEW.scale, dpr*VIEW.panX, dpr*VIEW.panY);
+    }
+    function rebuildStrokeLayer(){
+      clearStrokeLayer();
+      setViewportTransformOn(sctx);
+
+      for (const st of STROKES){
+        applyStrokeStyleTo(sctx, st);
+        if (!st.points || st.points.length < 2) continue;
+
+        sctx.beginPath();
+        sctx.moveTo(st.points[0].x, st.points[0].y);
+        for (let i=1;i<st.points.length;i++){
+          const p = st.points[i];
+          sctx.lineTo(p.x, p.y);
+        }
+        sctx.stroke();
+      }
+    }
+
+    function clearMain(){
+      const dpr = window.devicePixelRatio || 1;
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.globalAlpha = 1;
+      ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);
+    }
+    function present(){
+      clearMain();
+      drawBackground();
+
+      const dpr = window.devicePixelRatio || 1;
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.globalAlpha = 1.0;
+      ctx.drawImage(
+        strokeLayer,
+        0,0, strokeLayer.width, strokeLayer.height,
+        0,0, canvas.clientWidth, canvas.clientHeight
+      );
+    }
+
+    const PREVIEW_STEP = 10;
+    const PREVIEW_THICK = 2;
+
+    function tileStyleFor(mode){
+      const gridCol = rgbaFromAny(getAccentColor(), 0.50);
+
+      if (mode === 'none'){
+        return { backgroundImage: 'none', backgroundColor: 'transparent' };
+      }
+      if (mode === 'grid'){
+        return {
+          backgroundColor: 'transparent',
+          backgroundImage:
+            `linear-gradient(to right, ${gridCol} ${PREVIEW_THICK}px, transparent ${PREVIEW_THICK}px),
+             linear-gradient(to bottom, ${gridCol} ${PREVIEW_THICK}px, transparent ${PREVIEW_THICK}px)`,
+          backgroundSize: `${PREVIEW_STEP}px ${PREVIEW_STEP}px`,
+          backgroundPosition: 'center'
+        };
+      }
+      return {
+        backgroundColor: 'transparent',
+        backgroundImage: `linear-gradient(to bottom, ${gridCol} ${PREVIEW_THICK}px, transparent ${PREVIEW_THICK}px)`,
+        backgroundSize: `100% ${PREVIEW_STEP}px`,
+        backgroundPosition: 'center'
+      };
+    }
+
+    function buildBgMenu(){
+      if (!menu) return;
+      menu.innerHTML = '';
+
+      const tiles = document.createElement('div');
+      tiles.className = 'lia-bg-tiles';
+
+      const mkTile = (mode, aria) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'lia-bg-tile';
+        b.setAttribute('aria-label', aria);
+        b.dataset.mode = mode;
+        b.dataset.active = (bgMode === mode) ? '1' : '0';
+        Object.assign(b.style, tileStyleFor(mode));
+
+        b.addEventListener('click', () => {
+          bgMode = mode;
+          updateUI();
+          present();
+          persist();
+        });
+        return b;
+      };
+
+      tiles.appendChild(mkTile('none',  'Kein Hintergrund'));
+      tiles.appendChild(mkTile('grid',  'Karriert'));
+      tiles.appendChild(mkTile('lined', 'Liniert'));
+
+      menu.appendChild(tiles);
+
+      const rowZ = document.createElement('div');
+      rowZ.className = 'lia-row';
+
+      const prevZ = document.createElement('div');
+      prevZ.className = 'lia-preview';
+      const lineZ = document.createElement('div');
+      lineZ.className = 'lia-preview-line';
+      prevZ.appendChild(lineZ);
+
+      const sliderZ = document.createElement('input');
+      sliderZ.className = 'lia-slider';
+      sliderZ.type = 'range';
+      sliderZ.min = '8';
+      sliderZ.max = '120';
+      sliderZ.step = '1';
+      sliderZ.value = String(bgStep);
+
+      sliderZ.addEventListener('input', () => {
+        bgStep = Number(sliderZ.value);
+        updateUI();
+        present();
+        persist();
+      });
+
+      rowZ.appendChild(prevZ);
+      rowZ.appendChild(sliderZ);
+      menu.appendChild(rowZ);
+
+      menu.__mode = 'bg';
+      menu.__bgTiles = Array.from(tiles.children);
+      menu.__bgLinePrev = lineZ;
+      menu.__bgSlider = sliderZ;
+    }
+
+    function buildPenMenu(){
+      if (!menu) return;
+      menu.innerHTML = '';
+
+      const grid = document.createElement('div');
+      grid.className = 'lia-color-grid';
+
+      COLORS.forEach((c, idx) => {
+        const item = document.createElement('div');
+        item.className = 'lia-color-item';
+        item.setAttribute('data-idx', String(idx));
+        item.setAttribute('role','button');
+        item.tabIndex = 0;
+
+        item.style.background = (c.key === 'auto') ? getAutoPen() : (c.value || 'transparent');
+        if (idx === colorIndex) item.dataset.active = '1';
+
+        const pick = () => {
+          colorIndex = idx;
+          tool = 'pen';
+          updateUI();
+          setMenuOpen(false);
+        };
+
+        item.addEventListener('click', pick);
+        item.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); }
+        });
+
+        grid.appendChild(item);
+      });
+
+      menu.appendChild(grid);
+
+      const lab1 = document.createElement('div');
+      lab1.className = 'lia-tool-heading';
+      lab1.textContent = 'Stiftdicke';
+      menu.appendChild(lab1);
+
+      const row1 = document.createElement('div');
+      row1.className = 'lia-row';
+
+      const prev1 = document.createElement('div');
+      prev1.className = 'lia-preview';
+      const line1 = document.createElement('div');
+      line1.className = 'lia-preview-line';
+      prev1.appendChild(line1);
+
+      const slider1 = document.createElement('input');
+      slider1.className = 'lia-slider';
+      slider1.type = 'range';
+      slider1.min = '1';
+      slider1.max = '18';
+      slider1.step = '1';
+      slider1.value = String(penWidth);
+      slider1.addEventListener('input', () => { penWidth = Number(slider1.value); updateUI(); });
+
+      row1.appendChild(prev1);
+      row1.appendChild(slider1);
+      menu.appendChild(row1);
+
+      const lab2 = document.createElement('div');
+      lab2.className = 'lia-tool-heading';
+      lab2.textContent = 'Transparenz';
+      menu.appendChild(lab2);
+
+      const row2 = document.createElement('div');
+      row2.className = 'lia-row';
+
+      const prev2 = document.createElement('div');
+      prev2.className = 'lia-preview';
+      const line2 = document.createElement('div');
+      line2.className = 'lia-preview-line';
+      prev2.appendChild(line2);
+
+      const slider2 = document.createElement('input');
+      slider2.className = 'lia-slider';
+      slider2.type = 'range';
+      slider2.min = '0';
+      slider2.max = '100';
+      slider2.step = '1';
+      slider2.value = String(Math.round(penAlpha * 100));
+      slider2.addEventListener('input', () => { penAlpha = Math.max(0, Math.min(1, Number(slider2.value)/100)); updateUI(); });
+
+      row2.appendChild(prev2);
+      row2.appendChild(slider2);
+      menu.appendChild(row2);
+
+      menu.__mode = 'pen';
+      menu.__lineW = line1;
+      menu.__sliderW = slider1;
+      menu.__lineA = line2;
+      menu.__sliderA = slider2;
+    }
+
+    function clearAllDrawing(){
+      STROKES.length = 0;
+      REDO.length = 0;
+      rebuildStrokeLayer();
+      present();
+      updateUI();
+      persist();
+    }
+
+    function buildEraserMenu(){
+      if (!menu) return;
+      menu.innerHTML = '';
+
+      const rowH = document.createElement('div');
+      rowH.className = 'lia-heading-row';
+
+      const lab = document.createElement('div');
+      lab.className = 'lia-tool-heading';
+      lab.textContent = 'Radierer';
+
+      const btnTrash = document.createElement('button');
+      btnTrash.type = 'button';
+      btnTrash.className = 'lia-menu-icon-btn';
+      btnTrash.setAttribute('aria-label', 'Alles löschen');
+
+      setTrashIcon(btnTrash);
+      btnTrash.addEventListener('click', () => clearAllDrawing());
+
+      rowH.appendChild(lab);
+      rowH.appendChild(btnTrash);
+      menu.appendChild(rowH);
+
+      const row = document.createElement('div');
+      row.className = 'lia-row';
+
+      const prev = document.createElement('div');
+      prev.className = 'lia-preview';
+      const line = document.createElement('div');
+      line.className = 'lia-preview-line';
+      prev.appendChild(line);
+
+      const slider = document.createElement('input');
+      slider.className = 'lia-slider';
+      slider.type = 'range';
+      slider.min = '4';
+      slider.max = '40';
+      slider.step = '1';
+      slider.value = String(eraserWidth);
+      slider.addEventListener('input', () => { eraserWidth = Number(slider.value); updateUI(); });
+
+      row.appendChild(prev);
+      row.appendChild(slider);
+      menu.appendChild(row);
+
+      menu.__mode = 'eraser';
+      menu.__lineE = line;
+      menu.__sliderE = slider;
+    }
+
+    function updateMenuVisuals(){
+      if (!menu) return;
+
+      if (menu.__mode === 'bg'){
+        if (menu.__bgTiles){
+          for (const t of menu.__bgTiles){
+            const m = t.dataset.mode;
+            t.dataset.active = (bgMode === m) ? '1' : '0';
+            Object.assign(t.style, tileStyleFor(m));
+          }
+        }
+        if (menu.__bgSlider && String(bgStep) !== menu.__bgSlider.value) menu.__bgSlider.value = String(bgStep);
+
+        if (menu.__bgLinePrev){
+          menu.__bgLinePrev.style.background = rgbaFromAny(getAccentColor(), 0.35);
+          menu.__bgLinePrev.style.height = '2px';
+        }
+        return;
+      }
+
+      if (menu.__mode === 'pen'){
+        menu.querySelectorAll('.lia-color-item').forEach((el, i) => {
+          const ci = COLORS[i];
+          el.style.background = (ci.key === 'auto') ? getAutoPen() : (ci.value || 'transparent');
+          el.dataset.active = (i === colorIndex) ? '1' : '0';
+        });
+
+        const base = penBaseColor();
+        const col = rgbaFromAny(base, penAlpha);
+
+        if (menu.__lineW){
+          menu.__lineW.style.background = col;
+          menu.__lineW.style.height = Math.max(1, penWidth) + 'px';
+        }
+        if (menu.__lineA){
+          menu.__lineA.style.background = col;
+          menu.__lineA.style.height = '6px';
+        }
+
+        if (menu.__sliderW && String(penWidth) !== menu.__sliderW.value) menu.__sliderW.value = String(penWidth);
+        if (menu.__sliderA){
+          const v = String(Math.round(penAlpha*100));
+          if (v !== menu.__sliderA.value) menu.__sliderA.value = v;
+        }
+      }
+
+      if (menu.__mode === 'eraser'){
+        const b = getBorderColor();
+        if (menu.__lineE){
+          menu.__lineE.style.background = b;
+          menu.__lineE.style.height = Math.max(1, eraserWidth) + 'px';
+        }
+        if (menu.__sliderE && String(eraserWidth) !== menu.__sliderE.value) menu.__sliderE.value = String(eraserWidth);
+      }
+    }
+
+    function doUndo(){
+      if (!STROKES.length) return;
+      const st = STROKES.pop();
+      REDO.push(st);
+      rebuildStrokeLayer();
+      present();
+      updateUI();
+      persist();
+    }
+    function doRedo(){
+      if (!REDO.length) return;
+      const st = REDO.pop();
+      STROKES.push(st);
+      rebuildStrokeLayer();
+      present();
+      updateUI();
+      persist();
+    }
+
+    function updateUI(){
+      const col = penBaseColor();
+      const accent = getAccentColor();
+
+      if (btnUndo){
+        btnUndo.disabled = (STROKES.length === 0);
+        btnUndo.title = 'Rückgängig';
+      }
+      if (btnRedo){
+        btnRedo.disabled = (REDO.length === 0);
+        btnRedo.title = 'Wiederherstellen';
+      }
+
+      if (btnColor){
+        btnColor.style.background = col;
+        btnColor.dataset.active = (tool === 'pen') ? '1' : '0';
+        btnColor.title = 'Stift';
+      }
+      if (btnEraser){
+        btnEraser.dataset.active = (tool === 'eraser') ? '1' : '0';
+        btnEraser.title = 'Radierer';
+      }
+
+      if (btnBg){
+        const gridCol = rgbaFromAny(accent, 0.65);
+        const s = 6;
+        const t = 1.8;
+
+        btnBg.style.backgroundColor = 'transparent';
+        btnBg.style.backgroundImage =
+          `linear-gradient(to right, ${gridCol} ${t}px, transparent ${t}px),
+           linear-gradient(to bottom, ${gridCol} ${t}px, transparent ${t}px)`;
+        btnBg.style.backgroundSize = `${s}px ${s}px`;
+        btnBg.style.backgroundPosition = 'center';
+
+        btnBg.dataset.active = (menuMode === 'bg') ? '1' : '0';
+        btnBg.title = 'Hintergrund';
+      }
+
+      updateMenuVisuals();
+    }
+
+    function resizeToCss(){
+      const dpr = window.devicePixelRatio || 1;
+      const cssW = canvas.clientWidth;
+      const cssH = canvas.clientHeight;
+      const pxW = Math.max(1, Math.round(cssW * dpr));
+      const pxH = Math.max(1, Math.round(cssH * dpr));
+
+      canvas.width = pxW;
+      canvas.height = pxH;
+
+      strokeLayer.width = pxW;
+      strokeLayer.height = pxH;
+
+      rebuildStrokeLayer();
+      present();
+      updateUI();
+      persist();
+    }
+
+    updateUI();
+    resizeToCss();
+
+    const ro = new ResizeObserver(() => resizeToCss());
+    ro.observe(canvas);
+
+    document.addEventListener('lia-canvas-theme', () => {
+      updateUI();
+      rebuildStrokeLayer();
+      present();
+    });
+
+    if (btnUndo && !btnUndo.__bound){
+      btnUndo.__bound = true;
+      btnUndo.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); doUndo(); });
+    }
+    if (btnRedo && !btnRedo.__bound){
+      btnRedo.__bound = true;
+      btnRedo.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); doRedo(); });
+    }
+
+    // Resize corners (wie bei dir)
+    function ensureCorners(){
+      if (wrap.__cornersReady) return;
+      wrap.__cornersReady = true;
+
+      const bl = document.createElement('button');
+      bl.type = 'button';
+      bl.className = 'lia-resize-corner';
+      bl.dataset.corner = 'bl';
+      bl.setAttribute('aria-label','Zeichenfläche ziehen (links unten)');
+
+      const br = document.createElement('button');
+      br.type = 'button';
+      br.className = 'lia-resize-corner';
+      br.dataset.corner = 'br';
+      br.setAttribute('aria-label','Zeichenfläche ziehen (rechts unten)');
+
+      wrap.appendChild(bl);
+      wrap.appendChild(br);
+
+      const MIN_H = 130;
+      const MAX_H = 9000;
+      const MIN_W = 200;
+
+      const clamp = (v,a,b) => Math.max(a, Math.min(b, v));
+
+      function containerMaxWidth(){
+        // Wichtig: NICHT wrap selbst (das schrumpft), sondern der Mount / sein Parent
+        const mount = wrap.closest('.lia-canvas-mount');
+        let host = null;
+
+        if (mount){
+          // mount ist 100% breit (oder flex:0 0 100%), daher ist DAS unsere Obergrenze
+          host = mount;
+        }else{
+          host = wrap.parentElement || wrap;
+        }
+
+        let w = 0;
+        try{ w = host.getBoundingClientRect().width; }catch(_){}
+
+        // Fallback: wenn irgendwas "komisch klein" ist, nimm main als harte Obergrenze
+        if ((!w || w < MIN_W) && document.querySelector('main')){
+          try{ w = document.querySelector('main').getBoundingClientRect().width; }catch(_){}
+        }
+
+        return Math.max(MIN_W, Math.floor(w || 0));
+      }
+
+
+      function bindCorner(handle, side){
+        let resizing = false;
+        let startX = 0, startY = 0;
+        let startW = 0, startH = 0;
+
+        function down(e){
+          e.preventDefault();
+          e.stopPropagation();
+          resizing = true;
+
+          startW = wrap.getBoundingClientRect().width;
+          startH = canvas.clientHeight || 150;
+          startX = e.clientX;
+          startY = e.clientY;
+
+          try{ handle.setPointerCapture(e.pointerId); }catch(_){}
+        }
+
+        function move(e){
+          if (!resizing) return;
+          e.preventDefault();
+
+          const dx = e.clientX - startX;
+          const dy = e.clientY - startY;
+
+          const nextH = clamp(startH + dy, MIN_H, MAX_H);
+          canvas.style.height = nextH + 'px';
+
+          const maxW = containerMaxWidth();
+          const nextW = (side === 'br')
+            ? clamp(startW + dx, MIN_W, maxW)
+            : clamp(startW - dx, MIN_W, maxW);
+
+          wrap.style.width = nextW + 'px';
+        }
+
+        function up(e){
+          if (!resizing) return;
+          resizing = false;
+          try{ handle.releasePointerCapture(e.pointerId); }catch(_){}
+          persist();
+        }
+
+        handle.addEventListener('pointerdown', down);
+        handle.addEventListener('pointermove', move);
+        handle.addEventListener('pointerup', up);
+        handle.addEventListener('pointercancel', up);
+      }
+
+      bindCorner(br, 'br');
+      bindCorner(bl, 'bl');
+    }
+    ensureCorners();
+
+    // Menüs
+    if (btnColor && menu){
+      btnColor.addEventListener('click', (e) => {
+        e.stopPropagation();
+        tool = 'pen';
+        menuMode = 'pen';
+
+        const open = menu.dataset.open === '1';
+        const same = (menu.__mode === 'pen');
+        if (!open || !same) buildPenMenu();
+
+        setMenuOpen(!open || !same);
+        updateUI();
+      });
+    }
+
+    if (btnEraser && menu){
+      btnEraser.addEventListener('click', (e) => {
+        e.stopPropagation();
+        tool = 'eraser';
+        menuMode = 'eraser';
+
+        const open = menu.dataset.open === '1';
+        const same = (menu.__mode === 'eraser');
+        if (!open || !same) buildEraserMenu();
+
+        setMenuOpen(!open || !same);
+        updateUI();
+      });
+    }
+
+    if (btnBg && menu){
+      btnBg.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuMode = 'bg';
+
+        const open = menu.dataset.open === '1';
+        const same = (menu.__mode === 'bg');
+        if (!open || !same) buildBgMenu();
+
+        setMenuOpen(!open || !same);
+        updateUI();
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!wrap.contains(e.target)) setMenuOpen(false);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setMenuOpen(false);
+    });
+
+    // Pan/Zoom (wie bei dir)
+    let spaceDown = false;
+    window.addEventListener('keydown', (e) => { if (e.code === 'Space') spaceDown = true; });
+    window.addEventListener('keyup',   (e) => { if (e.code === 'Space') spaceDown = false; });
+
+    canvas.addEventListener('contextmenu', (e) => e.preventDefault());
+
+    function clampScale(s){ return Math.max(VIEW.minScale, Math.min(VIEW.maxScale, s)); }
+
+    function zoomAboutScreenPoint(factor, sx, sy){
+      const oldS = VIEW.scale;
+      const newS = clampScale(oldS * factor);
+      if (newS === oldS) return;
+
+      const w = screenToWorld(sx, sy);
+
+      VIEW.scale = newS;
+      VIEW.panX = sx - w.x * newS;
+      VIEW.panY = sy - w.y * newS;
+
+      rebuildStrokeLayer();
+      present();
+      persist();
+    }
+
+    canvas.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const r = canvas.getBoundingClientRect();
+      const sx = e.clientX - r.left;
+      const sy = e.clientY - r.top;
+      const factor = Math.exp(-e.deltaY * 0.0012);
+      zoomAboutScreenPoint(factor, sx, sy);
+    }, { passive:false });
+
+    // Pointer Handling
+    const pointers = new Map();
+    let mode = 'idle';
+    let lastPanSX = 0, lastPanSY = 0;
+    let pinchStart = null;
+
+    function getScreenPos(evt){
+      const r = canvas.getBoundingClientRect();
+      return { sx: evt.clientX - r.left, sy: evt.clientY - r.top };
+    }
+
+    function dist(a,b){
+      const dx = a.sx - b.sx, dy = a.sy - b.sy;
+      return Math.hypot(dx,dy);
+    }
+    function mid(a,b){
+      return { sx: (a.sx+b.sx)/2, sy: (a.sy+b.sy)/2 };
+    }
+
+    function startStrokeAtScreen(sx,sy){
+      const w = screenToWorld(sx,sy);
+
+      const st = {
+        tool,
+        color: penBaseColor(),
+        alpha: penAlpha,
+        width: (tool === 'eraser') ? eraserWidth : penWidth,
+        points: [ {x:w.x, y:w.y} ]
+      };
+      STROKES.push(st);
+      currentStroke = st;
+
+      REDO.length = 0;
+
+      setViewportTransformOn(sctx);
+      applyStrokeStyleTo(sctx, st);
+      sctx.beginPath();
+      sctx.moveTo(w.x, w.y);
+
+      updateUI();
+      persist();
+    }
+
+    function extendStrokeToScreen(sx,sy){
+      if (!currentStroke) return;
+      const w = screenToWorld(sx,sy);
+      currentStroke.points.push({x:w.x,y:w.y});
+
+      sctx.lineTo(w.x, w.y);
+      sctx.stroke();
+
+      present();
+      persist();
+    }
+
+    function endStroke(){ currentStroke = null; }
+
+    canvas.addEventListener('pointerdown', (e) => {
+      if (e.target && e.target.classList && e.target.classList.contains('lia-resize-corner')) return;
+
+      const p = getScreenPos(e);
+      pointers.set(e.pointerId, p);
+      canvas.setPointerCapture(e.pointerId);
+
+      if (pointers.size === 2){
+        if (mode === 'draw') endStroke();
+
+        const arr = Array.from(pointers.values());
+        const m = mid(arr[0], arr[1]);
+        const d = Math.max(1e-6, dist(arr[0], arr[1]));
+        const worldMid = screenToWorld(m.sx, m.sy);
+
+        pinchStart = { dist:d, worldMid, startScale:VIEW.scale };
+        mode = 'pinch';
+        return;
+      }
+
+      const isRightMouse = (e.pointerType === 'mouse' && e.button === 2);
+      const isMiddleMouse= (e.pointerType === 'mouse' && e.button === 1);
+      const wantPan = isRightMouse || isMiddleMouse || (e.pointerType === 'mouse' && spaceDown);
+
+      if (wantPan){
+        mode = 'pan';
+        lastPanSX = p.sx;
+        lastPanSY = p.sy;
+        canvas.style.cursor = 'grab';
+        return;
+      }
+
+      mode = 'draw';
+      canvas.style.cursor = 'crosshair';
+      startStrokeAtScreen(p.sx, p.sy);
+    });
+
+    canvas.addEventListener('pointermove', (e) => {
+      if (!pointers.has(e.pointerId)) return;
+
+      const p = getScreenPos(e);
+      pointers.set(e.pointerId, p);
+
+      if (mode === 'pinch' && pointers.size >= 2 && pinchStart){
+        const arr = Array.from(pointers.values()).slice(0,2);
+        const m = mid(arr[0], arr[1]);
+        const d = Math.max(1e-6, dist(arr[0], arr[1]));
+        const factor = d / pinchStart.dist;
+
+        const newScale = clampScale(pinchStart.startScale * factor);
+        VIEW.scale = newScale;
+        VIEW.panX = m.sx - pinchStart.worldMid.x * newScale;
+        VIEW.panY = m.sy - pinchStart.worldMid.y * newScale;
+
+        rebuildStrokeLayer();
+        present();
+        persist();
+        return;
+      }
+
+      if (mode === 'pan'){
+        const dx = p.sx - lastPanSX;
+        const dy = p.sy - lastPanSY;
+        lastPanSX = p.sx;
+        lastPanSY = p.sy;
+        VIEW.panX += dx;
+        VIEW.panY += dy;
+
+        rebuildStrokeLayer();
+        present();
+        persist();
+        return;
+      }
+
+      if (mode === 'draw'){
+        extendStrokeToScreen(p.sx, p.sy);
+      }
+    });
+
+    function stopPointer(e){
+      if (pointers.has(e.pointerId)) pointers.delete(e.pointerId);
+      try{ canvas.releasePointerCapture(e.pointerId); }catch(_){}
+
+      if (mode === 'pinch'){
+        if (pointers.size < 2){
+          pinchStart = null;
+          mode = 'idle';
+        }
+        return;
+      }
+
+      if (mode === 'pan'){
+        mode = 'idle';
+        canvas.style.cursor = 'crosshair';
+        return;
+      }
+
+      if (mode === 'draw'){
+        endStroke();
+        mode = 'idle';
+        updateUI();
+        persist();
+        return;
+      }
+    }
+
+    canvas.addEventListener('pointerup', stopPointer);
+    canvas.addEventListener('pointercancel', stopPointer);
+    canvas.addEventListener('pointerleave', () => {
+      if (mode === 'draw') endStroke();
+      if (mode !== 'pinch') mode = 'idle';
+      canvas.style.cursor = 'crosshair';
+      updateUI();
+      persist();
+    });
+  }
+
+  function initAll(){
+    document.querySelectorAll('.lia-draw-wrap canvas.lia-draw:not([data-ready])').forEach(c => {
+      c.setAttribute('data-ready','1');
+      setupCanvas(c);
+    });
+  }
+
+  // init: wenn Canvas markup in mount erscheint
+  const obs = new MutationObserver(() => initAll());
+  obs.observe(document.body, { childList:true, subtree:true });
+
+  // ---------------------------------------------------------
+  // LAUNCHER: Toggle (Mount ist im Makro vorhanden!)
+  // ---------------------------------------------------------
+  if (!window.__liaCanvasLauncherBound){
+    window.__liaCanvasLauncherBound = true;
+
+    document.addEventListener('click', (e) => {
+      const btn = (e.target && e.target.closest) ? e.target.closest('.lia-canvas-launch') : null;
+      if (!btn) return;
+
+      const anchor = btn.closest('.lia-canvas-anchor');
+      if (!anchor) return;
+
+      const uid = anchor.getAttribute('data-uid') || '';
+      const mount = document.getElementById('lia-canvas-mount-' + uid);
+      if (!mount) return;
+
+      // Wenn wir in einem flex-nowrap Wrapper sitzen (z.B. bei [[..]]), erzwingen wir Umbruch
+      try{
+        const parent = mount.parentElement;
+        if (parent){
+          const cs = getComputedStyle(parent);
+          if (cs && String(cs.display).includes('flex') && String(cs.flexWrap) === 'nowrap'){
+            parent.style.flexWrap = 'wrap';
+          }
+        }
+      }catch(_){}
+
+
+      const isOpen = mount.dataset.open === '1';
+
+      if (!isOpen){
+        mount.dataset.open = '1';
+
+        if (!mount.querySelector('.lia-draw-wrap')){
+          mount.innerHTML = canvasMarkup();
+          initAll();
+        }
+      }else{
+        mount.dataset.open = '0';
+      }
+    }, true);
+  }
+})();
+@end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@canvas: @canvas_(@uid)
+
+@canvas_
+<span class="lia-canvas-anchor" data-uid="@0">
+  <button class="lia-canvas-launch" type="button" aria-label="Zeichenfläche öffnen/schließen">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path class="launch-stroke" d="M3 21l3.2-0.6L19 7.6a2.2 2.2 0 0 0 0-3.1l-0.5-0.5a2.2 2.2 0 0 0-3.1 0L2.6 16.8 3 21z"/>
+      <path class="launch-stroke" d="M14.2 5.2l4.6 4.6"/>
+    </svg>
+  </button>
+</span>
+
+<span id="lia-canvas-mount-@0" class="lia-canvas-mount" data-open="0"></span>
+@end
+
+
+
+
+
+
 
 -->
 
-# Readme
 
-Klicke auf den Stift im Header und markiere im Text wie es dir beliebt.
+
+
+
+# Canvas Trys - Road to OCR
+
+
+Canvas mit Farbauswahl und Radierer. Zoom ist auch dabei und mit den anderen Maustasten kann man auch die Canvas schieben. Touchsteuerung: 2-Finger Pinch/Pan.
+
+**Neu:** Unten links und unten rechts sind unsichtbare Ziehflächen (nur „die Ecke“). Dort kannst du die Zeichenfläche stufenlos **höher/niedriger** und auch **breiter/schmaler** ziehen.
+
+
+```
+Codebefehl: @canvas
+```
+
+
+Testzwecke (2 ist Lösung):
+
+<!--   data-solution-button="2" -->
+[[ 2 ]] 
+@canvas
+
+
+
+
+# Textmarker
+
+Klicke auf den Stift im Header und markiere im Text wie es dir beliebt. Wechsel Lehrbuch ↔ Präsentation ↔ Slides und ändere die Schriftgröße.
