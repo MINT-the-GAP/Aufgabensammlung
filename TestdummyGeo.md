@@ -19,6 +19,10 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/REA
 `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/README.md`
 
 
+---
+
+---
+
 > Canvas
 
 Klicke auf den Stift neben dem Eingabefeld um das Canvas zu öffnen
@@ -38,10 +42,19 @@ Testzwecke (2 ist Lösung):
 @canvas
 
 
+---
+
+---
+
 
 > Textmarker
 
 Klicke auf den Stift im Header und markiere im Text wie es dir beliebt. Wechsel Lehrbuch ↔ Präsentation ↔ Slides und ändere die Schriftgröße.
+
+
+---
+
+---
 
 > Tafelmodus
 

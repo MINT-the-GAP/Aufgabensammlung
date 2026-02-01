@@ -2979,7 +2979,7 @@ function ensureCss(){
   const CONTENT_CSS = `
     :root{
       --lia-tff-side-gap: 25px;     /* links/rechts ungenutzt */
-      --lia-tff-maxw: 98vw;         /* max 98% */
+      --lia-tff-maxw: 99vw;         /* max 99% */
       --lia-tff-font: unset;        /* wird per JS gesetzt */
     }
 
@@ -3710,6 +3710,10 @@ function ensureCss(){
 `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/README.md`
 
 
+---
+
+---
+
 > Canvas
 
 Klicke auf den Stift neben dem Eingabefeld um das Canvas zu öffnen
@@ -3730,9 +3734,19 @@ Testzwecke (2 ist Lösung):
 
 
 
+---
+
+---
+
 > Textmarker
 
 Klicke auf den Stift im Header und markiere im Text wie es dir beliebt. Wechsel Lehrbuch ↔ Präsentation ↔ Slides und ändere die Schriftgröße.
+
+
+
+---
+
+---
 
 > Tafelmodus
 
