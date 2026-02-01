@@ -305,8 +305,8 @@ html[data-lia-mode="slides"] main{
     #${SLOT_ID}{
       display: inline-flex !important;
       align-items: center !important;
-      gap: 0px !important;
-      margin-left: 0px !important;   /* nah am TOC, ohne reinzuragen */
+      gap: 8px !important;
+      margin-left: 6px !important;   /* nah am TOC, ohne reinzuragen */
       flex: 0 0 auto !important;
     }
 
@@ -388,7 +388,7 @@ html[data-lia-mode="slides"] main{
 
       border-radius: 14px !important;
       border: 1px solid color-mix(in srgb, currentColor 18%, transparent) !important;
-      background: color-mix(in srgb, rgba(0, 0, 0, 0.66) 60%, transparent) !important;
+      background: color-mix(in srgb, rgba(0, 0, 0, 0.6) 60%, transparent) !important;
       backdrop-filter: blur(8px);
       box-shadow: 0 16px 42px rgba(0,0,0,.18) !important;
     }
