@@ -1,131 +1,39 @@
 <!--
-version:  0.0.1
+version: 0.0.1
 language: de
 narrator: Deutsch Female
-
-tags:
-comment:
 author: Martin Lommatzsch
-
-
+comment: SchulLia Canvas (import-sicher) — inline-safe (span-only) + self-boot + theme-aware
 
 @style
 :root{
   --canvas-border: #000;
   --canvas-pen:    #000;
-
-  /* Lia Theme (wird per JS ermittelt) */
   --canvas-accent: #0b5fff;
 }
 
-@media (prefers-color-scheme: dark){
-  :root{
-    --canvas-border: #fff;
-    --canvas-pen:    #fff;
-  }
-}
-
 /* ---------------------------------------------------------
-   Canvas Block: KEIN horizontal scroll!
+   Inline-safe Anchor: button + mount darunter (wrap)
    --------------------------------------------------------- */
-.lia-draw-block{
-  width: 100%;
-  overflow-x: hidden;
-  overflow-y: visible;
+.lia-canvas-anchor{
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  vertical-align: middle;
 }
 
-/* Canvas-Rahmen */
-.lia-draw-wrap{
-  width: min(520px, 100%);
-  border: 2px solid var(--canvas-border);
-  border-radius: 10px;
-  box-sizing: border-box;
-  position: relative;
-
-  display: block;
-  max-width: 100%;
-}
-
-canvas.lia-draw{
-  width: 100%;
-  height: 150px;
-  display: block;
-  background: transparent;
-
-  touch-action: none;
-  cursor: crosshair;
-  border-radius: 8px;
-}
-
-/* Stack links */
-.lia-toolstack{
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translate(0, -50%);
-  z-index: 25;
-
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-/* Buttons */
-.lia-tool-btn{
-  width: 22px;
-  height: 22px;
-  padding: 0;
-
-  border: 2px solid var(--canvas-border);
-  border-radius: 999px;
-  cursor: pointer;
-  user-select: none;
-
-  display: grid;
-  place-items: center;
-
-  background: transparent; /* <-- FIX: immer transparent */
-}
-
-.lia-tool-btn:disabled{
-  opacity: 0.35;
-  cursor: not-allowed;
-}
-
-/* Icon-Alignment (zentriert) */
-.lia-tool-btn svg{
-  width: 14px;
-  height: 14px;
-  display: block;
-  margin: 0;
-  transform: translate(0,0);
-}
-.lia-tool-btn .ico-stroke{
-  stroke: var(--canvas-border);
-  fill: none;
-}
-.lia-tool-btn .ico-fill{ fill: rgba(0,0,0,0); }
-
-.lia-tool-btn[data-active="1"]{
-  outline: 2px solid var(--canvas-border);
-  outline-offset: 2px;
-}
-
-/* ---------------------------------------------------------
-   LAUNCHER (@canvas):
-   --------------------------------------------------------- */
-.lia-canvas-anchor{ display: contents; }
-
+/* mount liegt unter dem Button (volle Breite) */
 .lia-canvas-mount{
-  display: none;
+  flex: 0 0 100%;
   width: 100%;
   max-width: 100%;
-  margin: 6px 0;
+  display: none;
+  margin: 8px 0 2px 0;
 }
 .lia-canvas-mount[data-open="1"]{ display: block; }
-.lia-canvas-mount.lia-canvas-flexitem{ flex: 0 0 100%; }
 
-/* Launcher: 32px, transparent, Theme-Farbe für Linien */
+/* Launcher */
 .lia-canvas-launch{
   width: 32px;
   height: 32px;
@@ -143,19 +51,10 @@ canvas.lia-draw{
   align-items: center;
   justify-content: center;
 
-  vertical-align: middle;
   line-height: 0;
-  margin-right: 6px;
 }
 
-.lia-canvas-launch:hover{ filter: brightness(1.05); }
-
-.lia-canvas-launch svg{
-  width: 18px;
-  height: 18px;
-  display: block;
-}
-
+.lia-canvas-launch svg{ width: 18px; height: 18px; display:block; }
 .lia-canvas-launch .launch-stroke{
   stroke: var(--canvas-accent);
   fill: none;
@@ -164,12 +63,98 @@ canvas.lia-draw{
   stroke-linejoin: round;
 }
 
+/* ---------------------------------------------------------
+   Canvas UI (span-only markup)
+   --------------------------------------------------------- */
+.lia-draw-block{
+  display:block;
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+  overflow-y:visible;
+}
+
+.lia-draw-wrap{
+  display:block;
+  width: min(520px, 100%);
+  max-width:100%;
+
+  border: 2px solid var(--canvas-border);
+  border-radius: 10px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+canvas.lia-draw{
+  display:block;
+  width:100%;
+  height:150px;
+  background: transparent;
+  border-radius: 8px;
+
+  touch-action: none; /* pointer events */
+  cursor: crosshair;
+}
+
+/* Toolstack links */
+.lia-toolstack{
+  position:absolute;
+  left:10px;
+  top:50%;
+  transform: translateY(-50%);
+  z-index: 30;
+
+  display:flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Tool Buttons */
+.lia-tool-btn{
+  width: 24px;
+  height: 24px;
+  padding: 0;
+
+  border: 2px solid var(--canvas-border);
+  border-radius: 999px;
+
+  background: transparent;
+  cursor: pointer;
+  user-select: none;
+
+  display: grid;
+  place-items: center;
+
+  color: var(--canvas-border);   /* für currentColor SVG */
+}
+
+.lia-tool-btn[disabled]{
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.lia-tool-btn svg{
+  width: 14px;
+  height: 14px;
+  display:block;
+}
+
+.lia-tool-btn[data-active="1"]{
+  outline: 2px solid var(--canvas-border);
+  outline-offset: 2px;
+}
+
+/* Pen-Button zeigt Farbe als Fläche */
+.lia-tool-btn.lia-color-btn{
+  background: var(--canvas-pen);
+}
+
 /* Menü */
 .lia-tool-menu{
-  position: absolute;
-  left: 44px;
+  position:absolute;
+  left: 46px;
   top: 10px;
-  z-index: 30;
+  z-index: 40;
 
   padding: 10px;
   border: 2px solid var(--canvas-border);
@@ -178,1444 +163,128 @@ canvas.lia-draw{
   background: rgba(0,0,0,0.15);
   backdrop-filter: blur(6px);
 
-  display: none;
+  display:none;
   gap: 10px;
 }
 .lia-tool-menu[data-open="1"]{
-  display: grid;
-  align-items: start;
+  display:grid;
   row-gap: 10px;
+}
+
+/* Überschrift */
+.lia-tool-heading{
+  font-size: 1.2rem;
+  font-weight: 750;
+  line-height: 1.1;
+}
+
+/* Zeile */
+.lia-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
 /* Farbpunkte */
 .lia-color-grid{
-  display: grid;
+  display:grid;
   grid-template-columns: repeat(9, 22px);
   gap: 10px;
-  align-items: center;
 }
 
 .lia-color-item{
-  width: 22px;
-  height: 22px;
-  border-radius: 999px;
-  cursor: pointer;
-  user-select: none;
-
-  border: 2px solid var(--canvas-border);
+  width:22px;
+  height:22px;
+  border-radius:999px;
+  border:2px solid var(--canvas-border);
   background: transparent;
-  box-sizing: border-box;
+  cursor:pointer;
+  padding:0;
 }
-.lia-color-item:hover{ transform: scale(1.06); }
 .lia-color-item[data-active="1"]{
-  outline: 2px solid var(--canvas-border);
-  outline-offset: 2px;
+  outline:2px solid var(--canvas-border);
+  outline-offset:2px;
 }
 
-/* Überschriften im Menü */
-.lia-tool-heading{
-  font-size: 1.5rem;
-  font-weight: 750;
-  line-height: 1.1;
-  padding-left: 2px;
-}
-
-/* Heading-Zeile + Clear-Button */
-.lia-heading-row{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
-.lia-heading-row .lia-tool-heading{ padding-left: 2px; }
-
-.lia-menu-icon-btn{
-  width: 28px;
-  height: 28px;
-  border-radius: 999px;
-
-  border: 2px solid var(--canvas-border);
-  background: transparent;
-
-  display: grid;          /* <-- FIX: garantiert Mitte */
-  place-items: center;    /* <-- FIX: garantiert Mitte */
-
-  cursor: pointer;
-  user-select: none;
-  padding: 0;
-}
-.lia-menu-icon-btn:hover{ filter: brightness(1.08); }
-
-.lia-menu-icon-btn svg{
-  width: 16px;
-  height: 16px;
-  display:block;
-  margin: 0;
-}
-.lia-menu-icon-btn .ico-stroke{
-  stroke: var(--canvas-border);
-  fill: none;             /* <-- FIX: sichtbar, kein Fill nötig */
-}
-.lia-menu-icon-btn .ico-fill{ fill: rgba(0,0,0,0); }
-
-/* Slider-Zeile */
-.lia-row{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
+/* Preview + Slider */
 .lia-preview{
   width: 34px;
   height: 22px;
   border-radius: 10px;
   border: 2px solid var(--canvas-border);
-  box-sizing: border-box;
-  display: grid;
-  place-items: center;
+  display:grid;
+  place-items:center;
+  box-sizing:border-box;
 }
-
 .lia-preview-line{
-  width: 22px;
-  border-radius: 999px;
-  background: var(--canvas-border);
+  width:22px;
   height: 3px;
+  border-radius:999px;
+  background: var(--canvas-border);
 }
-
 .lia-slider{ width: 180px; }
 
-/* Hintergrund-Menü: 3 Preview-Tiles */
+/* BG Tiles */
 .lia-bg-tiles{
-  display: grid;
+  display:grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  align-items: stretch;
+  gap:10px;
 }
-
 .lia-bg-tile{
   height: 34px;
   border-radius: 12px;
-  border: 2px solid var(--canvas-border);
+  border:2px solid var(--canvas-border);
   background: transparent;
-  cursor: pointer;
-  user-select: none;
-  padding: 0;
+  cursor:pointer;
+  padding:0;
 }
-.lia-bg-tile:hover{ filter: brightness(1.08); }
 .lia-bg-tile[data-active="1"]{
-  outline: 2px solid var(--canvas-border);
-  outline-offset: 2px;
+  outline:2px solid var(--canvas-border);
+  outline-offset:2px;
 }
 
-/* Unsichtbare Ecken-Ziehflächen */
+/* Clear Button (im Menü) */
+.lia-menu-icon-btn{
+  width:28px;
+  height:28px;
+  border-radius:999px;
+  border:2px solid var(--canvas-border);
+  background: transparent;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  padding:0;
+  color: var(--canvas-border);
+}
+.lia-menu-icon-btn svg{ width:16px; height:16px; display:block; }
+
+/* Resize Corners (unsichtbar) */
 .lia-resize-corner{
-  position: absolute;
-  bottom: 0;
-  width: 18px;
-  height: 18px;
-  z-index: 50;
+  position:absolute;
+  bottom:0;
+  width:18px;
+  height:18px;
+  z-index: 60;
 
   background: transparent;
-  border: 0;
-  padding: 0;
-  margin: 0;
+  border:0;
+  padding:0;
+  margin:0;
 
-  user-select: none;
-  touch-action: none;
-
-  opacity: 0;
+  opacity:0;
+  touch-action:none;
+  user-select:none;
 }
-.lia-resize-corner[data-corner="br"]{ right: 0; cursor: nwse-resize; }
-.lia-resize-corner[data-corner="bl"]{ left: 0;  cursor: nesw-resize; }
+.lia-resize-corner[data-corner="br"]{ right:0; cursor:nwse-resize; }
+.lia-resize-corner[data-corner="bl"]{ left:0;  cursor:nesw-resize; }
+
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 @onload
 (function(){
-  if (window.__liaDrawCanvasInit) return;
-  window.__liaDrawCanvasInit = true;
-
-  // -----------------------------
-  // Theme helpers
-  // -----------------------------
-  function parseRgb(s){
-    const m = String(s).match(/rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)/i);
-    return m ? [Number(m[1]), Number(m[2]), Number(m[3])] : null;
-  }
-  function luminance(rgb){
-    const [r,g,b] = rgb.map(v => v/255).map(c => (c <= 0.03928 ? c/12.92 : Math.pow((c+0.055)/1.055, 2.4)));
-    return 0.2126*r + 0.7152*g + 0.0722*b;
-  }
-
-  function getLiaAccentColor(doc){
-    try{
-      const d = doc || document;
-      const body = d.body || d.documentElement;
-
-      const existing = d.querySelector('.lia-btn');
-      if (existing){
-        const bg = getComputedStyle(existing).backgroundColor;
-        if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') return bg;
-      }
-
-      const probe = d.createElement('button');
-      probe.className = 'lia-btn';
-      probe.type = 'button';
-      probe.textContent = 'x';
-      probe.style.position = 'absolute';
-      probe.style.left = '-9999px';
-      probe.style.top = '-9999px';
-      probe.style.visibility = 'hidden';
-      body.appendChild(probe);
-
-      const bg = getComputedStyle(probe).backgroundColor;
-      probe.remove();
-
-      if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') return bg;
-    }catch(e){}
-    return null;
-  }
-
-  function applyThemeVars(){
-    try{
-      const doc = (window.parent && window.parent.document) ? window.parent.document : document;
-      const root = doc.documentElement;
-
-      const bg = getComputedStyle(doc.body).backgroundColor || getComputedStyle(root).backgroundColor;
-      const rgb = parseRgb(bg);
-      const isDark = rgb ? (luminance(rgb) < 0.5) : false;
-      const border = isDark ? '#fff' : '#000';
-
-      root.style.setProperty('--canvas-border', border);
-      root.style.setProperty('--canvas-pen', border);
-
-      const accent = getLiaAccentColor(doc) || getLiaAccentColor(document);
-      if (accent) root.style.setProperty('--canvas-accent', accent);
-
-      document.dispatchEvent(new Event('lia-canvas-theme'));
-    }catch(e){}
-  }
-
-  applyThemeVars();
-  const mo = new MutationObserver(() => applyThemeVars());
-  mo.observe(document.documentElement, { attributes:true, attributeFilter:['class','style'] });
-  window.addEventListener('resize', () => applyThemeVars());
-
-  // -----------------------------
-  // Persistent store per UID
-  // -----------------------------
-  window.__LIA_CANVAS_STORE__ = window.__LIA_CANVAS_STORE__ || {}; // uid -> {wrapW,canvasH,VIEW,bgMode,bgStep,STROKES,REDO}
-
-  // -----------------------------
-  // Colors + helpers
-  // -----------------------------
-  const COLORS = [
-    { key:'auto',       value:null },
-    { key:'red',        value:'#ff2d2d' },
-    { key:'orange',     value:'#ffc800' },
-    { key:'violett',    value:'#ff00ea' },
-    { key:'blue',       value:'#2d6bff' },
-    { key:'lightblue',  value:'#00d5ff' },
-    { key:'green',      value:'#00ff1a' },
-    { key:'black',      value:'#000000' },
-    { key:'white',      value:'#ffffff' }
-  ];
-
-  function getAutoPen(){
-    return getComputedStyle(document.documentElement).getPropertyValue('--canvas-pen').trim() || '#000';
-  }
-  function getBorderColor(){
-    return getComputedStyle(document.documentElement).getPropertyValue('--canvas-border').trim() || '#000';
-  }
-  function getAccentColor(){
-    return getComputedStyle(document.documentElement).getPropertyValue('--canvas-accent').trim() || getBorderColor();
-  }
-
-  // ----- FIX: setSvg darf NICHT blockieren, sonst bleiben Undo/Redo leer
-  function setSvg(btn, svg){
-    if (!btn) return;
-    if (btn.__hasIcon) return;
-    btn.__hasIcon = true;
-    btn.innerHTML = svg;
-  }
-
-  function setEraserIcon(btn){
-    setSvg(btn, `
-      <svg viewBox="-4 4 24 24" aria-hidden="true">
-        <path class="ico-stroke" d="M4 16.5l8.6-8.6a2 2 0 0 1 2.8 0l4.1 4.1a2 2 0 0 1 0 2.8L12.8 23H7.6L4 19.4a2 2 0 0 1 0-2.9z"
-              fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path class="ico-stroke" d="M8 23h8" fill="none" stroke-width="2" stroke-linecap="round"/>
-        <path class="ico-stroke" d="M9.2 14.3l6.5 6.5" fill="none" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-    `);
-  }
-
-
-function setUndoIcon(btn){
-  setSvg(btn, `
-    <svg viewBox="-4 0 24 24" aria-hidden="true">
-      <path d="M21 8H10.2V4L2 12l8.2 8v-4H21V8z" fill="var(--canvas-border)"/>
-      <rect x="10.2" y="10.6" width="10.8" height="2.8" rx="1.4" fill="var(--canvas-border)"/>
-    </svg>
-  `);
-}
-
-function setRedoIcon(btn){
-  setSvg(btn, `
-    <svg viewBox="-4 0 24 24" aria-hidden="true">
-      <path d="M3 8h10.8V4l8.2 8-8.2 8v-4H3V8z" fill="var(--canvas-border)"/>
-      <rect x="3" y="10.6" width="10.8" height="2.8" rx="1.4" fill="var(--canvas-border)"/>
-    </svg>
-  `);
-}
-
-
-
-
-
-
-
-
-
-function setTrashIcon(btn){
-  if (!btn) return;
-  btn.innerHTML = `
-    <svg viewBox="-1 0 24 24" aria-hidden="true" style="width:22px;height:22px;display:block;">
-      <path class="ico-stroke" d="M9 3h6" stroke-width="2" stroke-linecap="round"/>
-      <path class="ico-stroke" d="M4 6h16" stroke-width="2" stroke-linecap="round"/>
-      <path class="ico-stroke" d="M7 6l1 15h8l1-15" stroke-width="2" stroke-linejoin="round"/>
-      <path class="ico-stroke" d="M10 10v8M14 10v8" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-  `;
-}
-
-
-  function hexToRgb(hex){
-    const h = String(hex).replace('#','').trim();
-    if (h.length === 3){
-      const r = parseInt(h[0]+h[0],16);
-      const g = parseInt(h[1]+h[1],16);
-      const b = parseInt(h[2]+h[2],16);
-      return {r,g,b};
-    }
-    if (h.length === 6){
-      const r = parseInt(h.slice(0,2),16);
-      const g = parseInt(h.slice(2,4),16);
-      const b = parseInt(h.slice(4,6),16);
-      return {r,g,b};
-    }
-    return {r:0,g:0,b:0};
-  }
-  function rgbaFromHex(hex, a){
-    const {r,g,b} = hexToRgb(hex);
-    return `rgba(${r},${g},${b},${a})`;
-  }
-  function rgbaFromAny(color, a){
-    const rgb = parseRgb(color);
-    if (rgb) return `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${a})`;
-    if (String(color).startsWith('#')) return rgbaFromHex(color, a);
-    return `rgba(0,0,0,${a})`;
-  }
-
-  // -----------------------------
-  // Canvas HTML
-  // -----------------------------
-  function canvasMarkup(){
-    return `
-      <div class="lia-draw-block">
-        <div class="lia-draw-wrap">
-          <div class="lia-toolstack">
-            <button class="lia-tool-btn lia-undo-btn"   type="button" aria-label="Rückgängig"></button>
-            <button class="lia-tool-btn lia-redo-btn"   type="button" aria-label="Wiederherstellen"></button>
-            <button class="lia-tool-btn lia-eraser-btn" type="button" aria-label="Radierer"></button>
-            <button class="lia-tool-btn lia-color-btn"  type="button" aria-label="Stift"></button>
-            <button class="lia-tool-btn lia-bgmenu-btn" type="button" aria-label="Hintergrund"></button>
-          </div>
-
-          <div class="lia-tool-menu" data-open="0" aria-label="Werkzeuge"></div>
-          <canvas class="lia-draw" aria-label="Zeichenfläche"></canvas>
-        </div>
-      </div>
-    `;
-  }
-
-  // -----------------------------
-  // Canvas setup (mit Store-Backup)
-  // -----------------------------
-  function setupCanvas(canvas){
-    const wrap = canvas.closest('.lia-draw-wrap');
-    if (!wrap) return;
-
-    const mount = wrap.closest('.lia-canvas-mount');
-    const uid = (mount && mount.id) ? mount.id.replace('lia-canvas-mount-','') : '';
-
-    const block = wrap.closest('.lia-draw-block') || wrap.parentElement;
-
-    const btnUndo   = wrap.querySelector('.lia-undo-btn');
-    const btnRedo   = wrap.querySelector('.lia-redo-btn');
-    const btnColor  = wrap.querySelector('.lia-color-btn');
-    const btnEraser = wrap.querySelector('.lia-eraser-btn');
-    const btnBg     = wrap.querySelector('.lia-bgmenu-btn');
-    const menu      = wrap.querySelector('.lia-tool-menu');
-
-    /* FIX: Icons werden jetzt sicher gesetzt */
-    setUndoIcon(btnUndo);
-    setRedoIcon(btnRedo);
-    setEraserIcon(btnEraser);
-    if (btnBg && !btnBg.__bgCleared){ btnBg.__bgCleared = true; btnBg.innerHTML = ''; }
-
-    const ctx = canvas.getContext('2d', { willReadFrequently: true });
-
-    const strokeLayer = document.createElement('canvas');
-    const sctx = strokeLayer.getContext('2d', { willReadFrequently: true });
-
-    const STORE = window.__LIA_CANVAS_STORE__ || (window.__LIA_CANVAS_STORE__ = {});
-    const saved = (uid && STORE[uid]) ? STORE[uid] : null;
-
-    const VIEW = saved && saved.VIEW ? { ...saved.VIEW } : { panX:0, panY:0, scale:1, minScale:0.25, maxScale:8 };
-
-    const STROKES = (saved && Array.isArray(saved.STROKES)) ? saved.STROKES : [];
-    const REDO    = (saved && Array.isArray(saved.REDO))    ? saved.REDO    : [];
-
-    let currentStroke = null;
-
-    function persist(){
-      if (!uid) return;
-      STORE[uid] = {
-        VIEW: { ...VIEW },
-        STROKES,
-        REDO,
-        bgMode,
-        bgStep,
-        wrapW: wrap.getBoundingClientRect().width,
-        canvasH: canvas.clientHeight
-      };
-    }
-
-    function screenToWorld(sx, sy){
-      return { x: (sx - VIEW.panX) / VIEW.scale, y: (sy - VIEW.panY) / VIEW.scale };
-    }
-
-    let tool = 'pen';
-    let menuMode = 'pen';
-
-    let colorIndex = 0;
-    let penWidth = 3;
-    let penAlpha = 1.0;
-    let eraserWidth = 12;
-
-    let bgMode = (saved && saved.bgMode) ? saved.bgMode : 'none';
-    let bgStep = (saved && saved.bgStep) ? saved.bgStep : 24;
-
-    if (saved && saved.wrapW){
-      const maxW = Math.floor(((block && block.getBoundingClientRect) ? block : wrap.parentElement).getBoundingClientRect().width);
-      wrap.style.width = Math.min(maxW, Math.max(280, Math.floor(saved.wrapW))) + 'px';
-    }
-    if (saved && saved.canvasH){
-      canvas.style.height = Math.max(120, Math.floor(saved.canvasH)) + 'px';
-    }
-
-    function penBaseColor(){
-      const c = COLORS[colorIndex] || COLORS[0];
-      return (c.key === 'auto') ? getAutoPen() : (c.value || getAutoPen());
-    }
-
-    function applyStrokeStyleTo(ctx2, st){
-      if (st.tool === 'eraser'){
-        ctx2.globalCompositeOperation = 'destination-out';
-        ctx2.globalAlpha = 1.0;
-        ctx2.strokeStyle = 'rgba(0,0,0,1)';
-        ctx2.lineWidth = st.width;
-      }else{
-        ctx2.globalCompositeOperation = 'source-over';
-        ctx2.globalAlpha = st.alpha;
-        ctx2.strokeStyle = st.color;
-        ctx2.lineWidth = st.width;
-      }
-      ctx2.lineCap = 'round';
-      ctx2.lineJoin = 'round';
-    }
-
-    function setMenuOpen(open){
-      if (!menu) return;
-      menu.dataset.open = open ? '1' : '0';
-    }
-
-    function worldBounds(){
-      const w = canvas.clientWidth;
-      const h = canvas.clientHeight;
-      return {
-        x0: (0 - VIEW.panX) / VIEW.scale,
-        y0: (0 - VIEW.panY) / VIEW.scale,
-        x1: (w - VIEW.panX) / VIEW.scale,
-        y1: (h - VIEW.panY) / VIEW.scale
-      };
-    }
-
-    function drawBackground(){
-      if (bgMode === 'none') return;
-
-      const dpr = window.devicePixelRatio || 1;
-      ctx.setTransform(dpr*VIEW.scale, 0, 0, dpr*VIEW.scale, dpr*VIEW.panX, dpr*VIEW.panY);
-
-      const step = Math.max(6, Number(bgStep) || 24);
-      const b = worldBounds();
-
-      const accent = getAccentColor();
-      const col = rgbaFromAny(accent, 0.25);
-
-      ctx.save();
-      ctx.globalCompositeOperation = 'source-over';
-      ctx.globalAlpha = 1.0;
-      ctx.strokeStyle = col;
-      ctx.lineWidth = 1 / VIEW.scale;
-
-      const xStart = Math.floor(b.x0 / step) * step;
-      const xEnd   = Math.ceil (b.x1 / step) * step;
-      const yStart = Math.floor(b.y0 / step) * step;
-      const yEnd   = Math.ceil (b.y1 / step) * step;
-
-      const maxLines = 4000;
-
-      if (bgMode === 'grid'){
-        let count = 0;
-        ctx.beginPath();
-        for (let x = xStart; x <= xEnd; x += step){
-          ctx.moveTo(x, b.y0);
-          ctx.lineTo(x, b.y1);
-          if (++count > maxLines) break;
-        }
-        for (let y = yStart; y <= yEnd; y += step){
-          ctx.moveTo(b.x0, y);
-          ctx.lineTo(b.x1, y);
-          if (++count > maxLines) break;
-        }
-        ctx.stroke();
-      }
-
-      if (bgMode === 'lined'){
-        let count = 0;
-        ctx.beginPath();
-        for (let y = yStart; y <= yEnd; y += step){
-          ctx.moveTo(b.x0, y);
-          ctx.lineTo(b.x1, y);
-          if (++count > maxLines) break;
-        }
-        ctx.stroke();
-      }
-
-      ctx.restore();
-    }
-
-    function clearStrokeLayer(){
-      const dpr = window.devicePixelRatio || 1;
-      sctx.setTransform(dpr,0,0,dpr,0,0);
-      sctx.globalCompositeOperation = 'source-over';
-      sctx.globalAlpha = 1;
-      sctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);
-    }
-    function setViewportTransformOn(ctx2){
-      const dpr = window.devicePixelRatio || 1;
-      ctx2.setTransform(dpr*VIEW.scale, 0, 0, dpr*VIEW.scale, dpr*VIEW.panX, dpr*VIEW.panY);
-    }
-    function rebuildStrokeLayer(){
-      clearStrokeLayer();
-      setViewportTransformOn(sctx);
-
-      for (const st of STROKES){
-        applyStrokeStyleTo(sctx, st);
-        if (!st.points || st.points.length < 2) continue;
-
-        sctx.beginPath();
-        sctx.moveTo(st.points[0].x, st.points[0].y);
-        for (let i=1;i<st.points.length;i++){
-          const p = st.points[i];
-          sctx.lineTo(p.x, p.y);
-        }
-        sctx.stroke();
-      }
-    }
-
-    function clearMain(){
-      const dpr = window.devicePixelRatio || 1;
-      ctx.setTransform(dpr,0,0,dpr,0,0);
-      ctx.globalCompositeOperation = 'source-over';
-      ctx.globalAlpha = 1;
-      ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);
-    }
-    function present(){
-      clearMain();
-      drawBackground();
-
-      const dpr = window.devicePixelRatio || 1;
-      ctx.setTransform(dpr,0,0,dpr,0,0);
-      ctx.globalCompositeOperation = 'source-over';
-      ctx.globalAlpha = 1.0;
-      ctx.drawImage(
-        strokeLayer,
-        0,0, strokeLayer.width, strokeLayer.height,
-        0,0, canvas.clientWidth, canvas.clientHeight
-      );
-    }
-
-    const PREVIEW_STEP = 10;
-    const PREVIEW_THICK = 2;
-
-    function tileStyleFor(mode){
-      const accent = getAccentColor();
-      const gridCol = rgbaFromAny(accent, 0.50);
-
-      if (mode === 'none'){
-        return { backgroundImage: 'none', backgroundColor: 'transparent' };
-      }
-      if (mode === 'grid'){
-        return {
-          backgroundColor: 'transparent',
-          backgroundImage:
-            `linear-gradient(to right, ${gridCol} ${PREVIEW_THICK}px, transparent ${PREVIEW_THICK}px),
-             linear-gradient(to bottom, ${gridCol} ${PREVIEW_THICK}px, transparent ${PREVIEW_THICK}px)`,
-          backgroundSize: `${PREVIEW_STEP}px ${PREVIEW_STEP}px`,
-          backgroundPosition: 'center'
-        };
-      }
-      return {
-        backgroundColor: 'transparent',
-        backgroundImage: `linear-gradient(to bottom, ${gridCol} ${PREVIEW_THICK}px, transparent ${PREVIEW_THICK}px)`,
-        backgroundSize: `100% ${PREVIEW_STEP}px`,
-        backgroundPosition: 'center'
-      };
-    }
-
-    function buildBgMenu(){
-      if (!menu) return;
-      menu.innerHTML = '';
-
-      const tiles = document.createElement('div');
-      tiles.className = 'lia-bg-tiles';
-
-      const mkTile = (mode, aria) => {
-        const b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'lia-bg-tile';
-        b.setAttribute('aria-label', aria);
-        b.dataset.mode = mode;
-        b.dataset.active = (bgMode === mode) ? '1' : '0';
-        Object.assign(b.style, tileStyleFor(mode));
-
-        b.addEventListener('click', () => {
-          bgMode = mode;
-          updateUI();
-          present();
-          persist();
-        });
-        return b;
-      };
-
-      const tNone = mkTile('none',  'Kein Hintergrund');
-      const tGrid = mkTile('grid',  'Karriert');
-      const tLine = mkTile('lined', 'Liniert');
-
-      tiles.appendChild(tNone);
-      tiles.appendChild(tGrid);
-      tiles.appendChild(tLine);
-      menu.appendChild(tiles);
-
-      const rowZ = document.createElement('div');
-      rowZ.className = 'lia-row';
-
-      const prevZ = document.createElement('div');
-      prevZ.className = 'lia-preview';
-      const lineZ = document.createElement('div');
-      lineZ.className = 'lia-preview-line';
-      prevZ.appendChild(lineZ);
-
-      const sliderZ = document.createElement('input');
-      sliderZ.className = 'lia-slider';
-      sliderZ.type = 'range';
-      sliderZ.min = '8';
-      sliderZ.max = '120';
-      sliderZ.step = '1';
-      sliderZ.value = String(bgStep);
-
-      sliderZ.addEventListener('input', () => {
-        bgStep = Number(sliderZ.value);
-        updateUI();
-        present();
-        persist();
-      });
-
-      rowZ.appendChild(prevZ);
-      rowZ.appendChild(sliderZ);
-      menu.appendChild(rowZ);
-
-      menu.__mode = 'bg';
-      menu.__bgTiles = [tNone, tGrid, tLine];
-      menu.__bgLinePrev = lineZ;
-      menu.__bgSlider = sliderZ;
-    }
-
-    function buildPenMenu(){
-      if (!menu) return;
-      menu.innerHTML = '';
-
-      const grid = document.createElement('div');
-      grid.className = 'lia-color-grid';
-
-      COLORS.forEach((c, idx) => {
-        const item = document.createElement('div');
-        item.className = 'lia-color-item';
-        item.setAttribute('data-idx', String(idx));
-        item.setAttribute('role','button');
-        item.tabIndex = 0;
-
-        item.style.background = (c.key === 'auto') ? getAutoPen() : (c.value || 'transparent');
-        if (idx === colorIndex) item.dataset.active = '1';
-
-        const pick = () => {
-          colorIndex = idx;
-          tool = 'pen';
-          updateUI();
-          setMenuOpen(false);
-        };
-
-        item.addEventListener('click', pick);
-        item.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); }
-        });
-
-        grid.appendChild(item);
-      });
-
-      menu.appendChild(grid);
-
-      const lab1 = document.createElement('div');
-      lab1.className = 'lia-tool-heading';
-      lab1.textContent = 'Stiftdicke';
-      menu.appendChild(lab1);
-
-      const row1 = document.createElement('div');
-      row1.className = 'lia-row';
-
-      const prev1 = document.createElement('div');
-      prev1.className = 'lia-preview';
-      const line1 = document.createElement('div');
-      line1.className = 'lia-preview-line';
-      prev1.appendChild(line1);
-
-      const slider1 = document.createElement('input');
-      slider1.className = 'lia-slider';
-      slider1.type = 'range';
-      slider1.min = '1';
-      slider1.max = '18';
-      slider1.step = '1';
-      slider1.value = String(penWidth);
-      slider1.addEventListener('input', () => { penWidth = Number(slider1.value); updateUI(); });
-
-      row1.appendChild(prev1);
-      row1.appendChild(slider1);
-      menu.appendChild(row1);
-
-      const lab2 = document.createElement('div');
-      lab2.className = 'lia-tool-heading';
-      lab2.textContent = 'Transparenz';
-      menu.appendChild(lab2);
-
-      const row2 = document.createElement('div');
-      row2.className = 'lia-row';
-
-      const prev2 = document.createElement('div');
-      prev2.className = 'lia-preview';
-      const line2 = document.createElement('div');
-      line2.className = 'lia-preview-line';
-      prev2.appendChild(line2);
-
-      const slider2 = document.createElement('input');
-      slider2.className = 'lia-slider';
-      slider2.type = 'range';
-      slider2.min = '0';
-      slider2.max = '100';
-      slider2.step = '1';
-      slider2.value = String(Math.round(penAlpha * 100));
-      slider2.addEventListener('input', () => { penAlpha = Math.max(0, Math.min(1, Number(slider2.value)/100)); updateUI(); });
-
-      row2.appendChild(prev2);
-      row2.appendChild(slider2);
-      menu.appendChild(row2);
-
-      menu.__mode = 'pen';
-      menu.__lineW = line1;
-      menu.__sliderW = slider1;
-      menu.__lineA = line2;
-      menu.__sliderA = slider2;
-    }
-
-    function clearAllDrawing(){
-      STROKES.length = 0;
-      REDO.length = 0;
-      rebuildStrokeLayer();
-      present();
-      updateUI();
-      persist();
-    }
-
-    function buildEraserMenu(){
-      if (!menu) return;
-      menu.innerHTML = '';
-
-      const rowH = document.createElement('div');
-      rowH.className = 'lia-heading-row';
-
-      const lab = document.createElement('div');
-      lab.className = 'lia-tool-heading';
-      lab.textContent = 'Radierer';
-
-      const btnTrash = document.createElement('button');
-      btnTrash.type = 'button';
-      btnTrash.className = 'lia-menu-icon-btn';
-      btnTrash.setAttribute('aria-label', 'Alles löschen');
-
-      setTrashIcon(btnTrash);
-
-      btnTrash.addEventListener('click', () => clearAllDrawing());
-
-      rowH.appendChild(lab);
-      rowH.appendChild(btnTrash);
-      menu.appendChild(rowH);
-
-      const row = document.createElement('div');
-      row.className = 'lia-row';
-
-      const prev = document.createElement('div');
-      prev.className = 'lia-preview';
-      const line = document.createElement('div');
-      line.className = 'lia-preview-line';
-      prev.appendChild(line);
-
-      const slider = document.createElement('input');
-      slider.className = 'lia-slider';
-      slider.type = 'range';
-      slider.min = '4';
-      slider.max = '40';
-      slider.step = '1';
-      slider.value = String(eraserWidth);
-      slider.addEventListener('input', () => { eraserWidth = Number(slider.value); updateUI(); });
-
-      row.appendChild(prev);
-      row.appendChild(slider);
-      menu.appendChild(row);
-
-      menu.__mode = 'eraser';
-      menu.__lineE = line;
-      menu.__sliderE = slider;
-    }
-
-    function updateMenuVisuals(){
-      if (!menu) return;
-
-      if (menu.__mode === 'bg'){
-        if (menu.__bgTiles){
-          for (const t of menu.__bgTiles){
-            const m = t.dataset.mode;
-            t.dataset.active = (bgMode === m) ? '1' : '0';
-            Object.assign(t.style, tileStyleFor(m));
-          }
-        }
-        if (menu.__bgSlider && String(bgStep) !== menu.__bgSlider.value) menu.__bgSlider.value = String(bgStep);
-
-        if (menu.__bgLinePrev){
-          const col = rgbaFromAny(getAccentColor(), 0.35);
-          menu.__bgLinePrev.style.background = col;
-          menu.__bgLinePrev.style.height = '2px';
-        }
-        return;
-      }
-
-      if (menu.__mode === 'pen'){
-        menu.querySelectorAll('.lia-color-item').forEach((el, i) => {
-          const ci = COLORS[i];
-          el.style.background = (ci.key === 'auto') ? getAutoPen() : (ci.value || 'transparent');
-          el.dataset.active = (i === colorIndex) ? '1' : '0';
-        });
-
-        const base = penBaseColor();
-        const border = getBorderColor();
-
-        if (menu.__lineW){
-          const col = String(base).startsWith('#') ? rgbaFromHex(base, penAlpha) : rgbaFromAny(border, penAlpha);
-          menu.__lineW.style.background = col;
-          menu.__lineW.style.height = Math.max(1, penWidth) + 'px';
-        }
-
-        if (menu.__lineA){
-          const col = String(base).startsWith('#') ? rgbaFromHex(base, penAlpha) : rgbaFromAny(border, penAlpha);
-          menu.__lineA.style.background = col;
-          menu.__lineA.style.height = '6px';
-        }
-
-        if (menu.__sliderW && String(penWidth) !== menu.__sliderW.value) menu.__sliderW.value = String(penWidth);
-        if (menu.__sliderA){
-          const v = String(Math.round(penAlpha*100));
-          if (v !== menu.__sliderA.value) menu.__sliderA.value = v;
-        }
-      }
-
-      if (menu.__mode === 'eraser'){
-        const b = getBorderColor();
-        if (menu.__lineE){
-          menu.__lineE.style.background = b;
-          menu.__lineE.style.height = Math.max(1, eraserWidth) + 'px';
-        }
-        if (menu.__sliderE && String(eraserWidth) !== menu.__sliderE.value) menu.__sliderE.value = String(eraserWidth);
-      }
-    }
-
-    function doUndo(){
-      if (!STROKES.length) return;
-      const st = STROKES.pop();
-      REDO.push(st);
-      rebuildStrokeLayer();
-      present();
-      updateUI();
-      persist();
-    }
-    function doRedo(){
-      if (!REDO.length) return;
-      const st = REDO.pop();
-      STROKES.push(st);
-      rebuildStrokeLayer();
-      present();
-      updateUI();
-      persist();
-    }
-
-    function updateUI(){
-      const col = penBaseColor();
-      const accent = getAccentColor();
-
-      if (btnUndo){
-        btnUndo.disabled = (STROKES.length === 0);
-        btnUndo.title = 'Rückgängig';
-      }
-      if (btnRedo){
-        btnRedo.disabled = (REDO.length === 0);
-        btnRedo.title = 'Wiederherstellen';
-      }
-
-      if (btnColor){
-        btnColor.style.background = col;
-        btnColor.dataset.active = (tool === 'pen') ? '1' : '0';
-        btnColor.title = 'Stift';
-      }
-      if (btnEraser){
-        btnEraser.dataset.active = (tool === 'eraser') ? '1' : '0';
-        btnEraser.title = 'Radierer';
-      }
-
-      if (btnBg){
-        const gridCol = rgbaFromAny(accent, 0.65);
-        const s = 6;
-        const t = 1.8;
-
-        btnBg.style.backgroundColor = 'transparent';
-        btnBg.style.backgroundImage =
-          `linear-gradient(to right, ${gridCol} ${t}px, transparent ${t}px),
-           linear-gradient(to bottom, ${gridCol} ${t}px, transparent ${t}px)`;
-        btnBg.style.backgroundSize = `${s}px ${s}px`;
-        btnBg.style.backgroundPosition = 'center';
-
-        btnBg.dataset.active = (menuMode === 'bg') ? '1' : '0';
-        btnBg.title = 'Hintergrund';
-      }
-
-      updateMenuVisuals();
-    }
-
-    function resizeToCss(){
-      const dpr = window.devicePixelRatio || 1;
-      const cssW = canvas.clientWidth;
-      const cssH = canvas.clientHeight;
-      const pxW = Math.max(1, Math.round(cssW * dpr));
-      const pxH = Math.max(1, Math.round(cssH * dpr));
-
-      canvas.width = pxW;
-      canvas.height = pxH;
-
-      strokeLayer.width = pxW;
-      strokeLayer.height = pxH;
-
-      rebuildStrokeLayer();
-      present();
-      updateUI();
-      persist();
-    }
-
-    updateUI();
-    resizeToCss();
-
-    const ro = new ResizeObserver(() => resizeToCss());
-    ro.observe(canvas);
-
-    if (!wrap.__themeBound){
-      wrap.__themeBound = true;
-      document.addEventListener('lia-canvas-theme', () => {
-        updateUI();
-        rebuildStrokeLayer();
-        present();
-      });
-    }
-
-    if (btnUndo && !btnUndo.__bound){
-      btnUndo.__bound = true;
-      btnUndo.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); doUndo(); });
-    }
-    if (btnRedo && !btnRedo.__bound){
-      btnRedo.__bound = true;
-      btnRedo.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); doRedo(); });
-    }
-
-    // Resize corners
-    function ensureCorners(){
-      if (wrap.__cornersReady) return;
-      wrap.__cornersReady = true;
-
-      const bl = document.createElement('button');
-      bl.type = 'button';
-      bl.className = 'lia-resize-corner';
-      bl.dataset.corner = 'bl';
-      bl.setAttribute('aria-label','Zeichenfläche ziehen (links unten)');
-
-      const br = document.createElement('button');
-      br.type = 'button';
-      br.className = 'lia-resize-corner';
-      br.dataset.corner = 'br';
-      br.setAttribute('aria-label','Zeichenfläche ziehen (rechts unten)');
-
-      wrap.appendChild(bl);
-      wrap.appendChild(br);
-
-      const MIN_H = 120;
-      const MAX_H = 900;
-      const MIN_W = 280;
-
-      const clamp = (v,a,b) => Math.max(a, Math.min(b, v));
-
-      function containerMaxWidth(){
-        const host = (block && block.getBoundingClientRect) ? block : wrap.parentElement;
-        const w = host.getBoundingClientRect().width;
-        return Math.max(MIN_W, Math.floor(w));
-      }
-
-      function bindCorner(handle, side){
-        let resizing = false;
-        let startX = 0, startY = 0;
-        let startW = 0, startH = 0;
-
-        function down(e){
-          e.preventDefault();
-          e.stopPropagation();
-          resizing = true;
-
-          startW = wrap.getBoundingClientRect().width;
-          startH = canvas.clientHeight || 150;
-          startX = e.clientX;
-          startY = e.clientY;
-
-          try{ handle.setPointerCapture(e.pointerId); }catch(_){}
-        }
-
-        function move(e){
-          if (!resizing) return;
-          e.preventDefault();
-
-          const dx = e.clientX - startX;
-          const dy = e.clientY - startY;
-
-          const nextH = clamp(startH + dy, MIN_H, MAX_H);
-          canvas.style.height = nextH + 'px';
-
-          const maxW = containerMaxWidth();
-          const nextW = (side === 'br')
-            ? clamp(startW + dx, MIN_W, maxW)
-            : clamp(startW - dx, MIN_W, maxW);
-
-          wrap.style.width = nextW + 'px';
-        }
-
-        function up(e){
-          if (!resizing) return;
-          resizing = false;
-          try{ handle.releasePointerCapture(e.pointerId); }catch(_){}
-          persist();
-        }
-
-        handle.addEventListener('pointerdown', down);
-        handle.addEventListener('pointermove', move);
-        handle.addEventListener('pointerup', up);
-        handle.addEventListener('pointercancel', up);
-      }
-
-      bindCorner(br, 'br');
-      bindCorner(bl, 'bl');
-    }
-    ensureCorners();
-
-    // Menüs
-    if (btnColor && menu){
-      btnColor.addEventListener('click', (e) => {
-        e.stopPropagation();
-        tool = 'pen';
-        menuMode = 'pen';
-
-        const open = menu.dataset.open === '1';
-        const same = (menu.__mode === 'pen');
-        if (!open || !same) buildPenMenu();
-
-        setMenuOpen(!open || !same);
-        updateUI();
-      });
-    }
-
-    if (btnEraser && menu){
-      btnEraser.addEventListener('click', (e) => {
-        e.stopPropagation();
-        tool = 'eraser';
-        menuMode = 'eraser';
-
-        const open = menu.dataset.open === '1';
-        const same = (menu.__mode === 'eraser');
-        if (!open || !same) buildEraserMenu();
-
-        setMenuOpen(!open || !same);
-        updateUI();
-      });
-    }
-
-    if (btnBg && menu){
-      btnBg.addEventListener('click', (e) => {
-        e.stopPropagation();
-        menuMode = 'bg';
-
-        const open = menu.dataset.open === '1';
-        const same = (menu.__mode === 'bg');
-        if (!open || !same) buildBgMenu();
-
-        setMenuOpen(!open || !same);
-        updateUI();
-      });
-    }
-
-    document.addEventListener('click', (e) => {
-      if (!wrap.contains(e.target)) setMenuOpen(false);
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') setMenuOpen(false);
-    });
-
-    // Pan/Zoom
-    let spaceDown = false;
-    window.addEventListener('keydown', (e) => { if (e.code === 'Space') spaceDown = true; });
-    window.addEventListener('keyup',   (e) => { if (e.code === 'Space') spaceDown = false; });
-
-    canvas.addEventListener('contextmenu', (e) => e.preventDefault());
-
-    function clampScale(s){ return Math.max(VIEW.minScale, Math.min(VIEW.maxScale, s)); }
-
-    function zoomAboutScreenPoint(factor, sx, sy){
-      const oldS = VIEW.scale;
-      const newS = clampScale(oldS * factor);
-      if (newS === oldS) return;
-
-      const w = screenToWorld(sx, sy);
-
-      VIEW.scale = newS;
-      VIEW.panX = sx - w.x * newS;
-      VIEW.panY = sy - w.y * newS;
-
-      rebuildStrokeLayer();
-      present();
-      persist();
-    }
-
-    canvas.addEventListener('wheel', (e) => {
-      e.preventDefault();
-      const r = canvas.getBoundingClientRect();
-      const sx = e.clientX - r.left;
-      const sy = e.clientY - r.top;
-      const factor = Math.exp(-e.deltaY * 0.0012);
-      zoomAboutScreenPoint(factor, sx, sy);
-    }, { passive:false });
-
-    // Pointer Handling
-    const pointers = new Map();
-    let mode = 'idle';
-    let lastPanSX = 0, lastPanSY = 0;
-    let pinchStart = null;
-
-    function getScreenPos(evt){
-      const r = canvas.getBoundingClientRect();
-      return { sx: evt.clientX - r.left, sy: evt.clientY - r.top };
-    }
-
-    function dist(a,b){
-      const dx = a.sx - b.sx, dy = a.sy - b.sy;
-      return Math.hypot(dx,dy);
-    }
-    function mid(a,b){
-      return { sx: (a.sx+b.sx)/2, sy: (a.sy+b.sy)/2 };
-    }
-
-    function startStrokeAtScreen(sx,sy){
-      const w = screenToWorld(sx,sy);
-
-      const st = {
-        tool,
-        color: penBaseColor(),
-        alpha: penAlpha,
-        width: (tool === 'eraser') ? eraserWidth : penWidth,
-        points: [ {x:w.x, y:w.y} ]
-      };
-      STROKES.push(st);
-      currentStroke = st;
-
-      REDO.length = 0;
-
-      setViewportTransformOn(sctx);
-      applyStrokeStyleTo(sctx, st);
-      sctx.beginPath();
-      sctx.moveTo(w.x, w.y);
-
-      updateUI();
-      persist();
-    }
-
-    function extendStrokeToScreen(sx,sy){
-      if (!currentStroke) return;
-      const w = screenToWorld(sx,sy);
-      currentStroke.points.push({x:w.x,y:w.y});
-
-      sctx.lineTo(w.x, w.y);
-      sctx.stroke();
-
-      present();
-      persist();
-    }
-
-    function endStroke(){ currentStroke = null; }
-
-    canvas.addEventListener('pointerdown', (e) => {
-      if (e.target && e.target.classList && e.target.classList.contains('lia-resize-corner')) return;
-
-      const p = getScreenPos(e);
-      pointers.set(e.pointerId, p);
-      canvas.setPointerCapture(e.pointerId);
-
-      if (pointers.size === 2){
-        if (mode === 'draw') endStroke();
-
-        const arr = Array.from(pointers.values());
-        const m = mid(arr[0], arr[1]);
-        const d = Math.max(1e-6, dist(arr[0], arr[1]));
-        const worldMid = screenToWorld(m.sx, m.sy);
-
-        pinchStart = { dist:d, worldMid, startScale:VIEW.scale };
-        mode = 'pinch';
-        return;
-      }
-
-      const isRightMouse = (e.pointerType === 'mouse' && e.button === 2);
-      const isMiddleMouse= (e.pointerType === 'mouse' && e.button === 1);
-      const wantPan = isRightMouse || isMiddleMouse || (e.pointerType === 'mouse' && spaceDown);
-
-      if (wantPan){
-        mode = 'pan';
-        lastPanSX = p.sx;
-        lastPanSY = p.sy;
-        canvas.style.cursor = 'grab';
-        return;
-      }
-
-      mode = 'draw';
-      canvas.style.cursor = 'crosshair';
-      startStrokeAtScreen(p.sx, p.sy);
-    });
-
-    canvas.addEventListener('pointermove', (e) => {
-      if (!pointers.has(e.pointerId)) return;
-
-      const p = getScreenPos(e);
-      pointers.set(e.pointerId, p);
-
-      if (mode === 'pinch' && pointers.size >= 2 && pinchStart){
-        const arr = Array.from(pointers.values()).slice(0,2);
-        const m = mid(arr[0], arr[1]);
-        const d = Math.max(1e-6, dist(arr[0], arr[1]));
-        const factor = d / pinchStart.dist;
-
-        const newScale = clampScale(pinchStart.startScale * factor);
-        VIEW.scale = newScale;
-        VIEW.panX = m.sx - pinchStart.worldMid.x * newScale;
-        VIEW.panY = m.sy - pinchStart.worldMid.y * newScale;
-
-        rebuildStrokeLayer();
-        present();
-        persist();
-        return;
-      }
-
-      if (mode === 'pan'){
-        const dx = p.sx - lastPanSX;
-        const dy = p.sy - lastPanSY;
-        lastPanSX = p.sx;
-        lastPanSY = p.sy;
-        VIEW.panX += dx;
-        VIEW.panY += dy;
-
-        rebuildStrokeLayer();
-        present();
-        persist();
-        return;
-      }
-
-      if (mode === 'draw'){
-        extendStrokeToScreen(p.sx, p.sy);
-      }
-    });
-
-    function stopPointer(e){
-      if (pointers.has(e.pointerId)) pointers.delete(e.pointerId);
-      try{ canvas.releasePointerCapture(e.pointerId); }catch(_){}
-
-      if (mode === 'pinch'){
-        if (pointers.size < 2){
-          pinchStart = null;
-          mode = 'idle';
-        }
-        return;
-      }
-
-      if (mode === 'pan'){
-        mode = 'idle';
-        canvas.style.cursor = 'crosshair';
-        return;
-      }
-
-      if (mode === 'draw'){
-        endStroke();
-        mode = 'idle';
-        updateUI();
-        persist();
-        return;
-      }
-    }
-
-    canvas.addEventListener('pointerup', stopPointer);
-    canvas.addEventListener('pointercancel', stopPointer);
-    canvas.addEventListener('pointerleave', () => {
-      if (mode === 'draw') endStroke();
-      if (mode !== 'pinch') mode = 'idle';
-      canvas.style.cursor = 'crosshair';
-      updateUI();
-      persist();
-    });
-  }
-
-  function initAll(){
-    document.querySelectorAll('.lia-draw-wrap canvas.lia-draw:not([data-ready])').forEach(c => {
-      c.setAttribute('data-ready','1');
-      setupCanvas(c);
-    });
-  }
-
-  initAll();
-  const obs = new MutationObserver(() => initAll());
-  obs.observe(document.body, { childList:true, subtree:true });
-
-  // ---------------------------------------------------------
-  // LAUNCHER-Click TOGGLE
-  // ---------------------------------------------------------
-  if (!window.__liaCanvasLauncherBound){
-    window.__liaCanvasLauncherBound = true;
-
-    document.addEventListener('click', (e) => {
-      const btn = (e.target && e.target.closest) ? e.target.closest('.lia-canvas-launch') : null;
-      if (!btn) return;
-
-      const anchor = btn.closest('.lia-canvas-anchor');
-      if (!anchor) return;
-
-      const uid = anchor.getAttribute('data-uid') || '';
-      const mountId = 'lia-canvas-mount-' + uid;
-      let mount = document.getElementById(mountId);
-
-      const parent = anchor.parentElement;
-      if (!parent) return;
-
-      try{
-        const cs = getComputedStyle(parent);
-        if (cs && String(cs.display).includes('flex') && String(cs.flexWrap) === 'nowrap'){
-          parent.style.flexWrap = 'wrap';
-        }
-      }catch(_){}
-
-      if (!mount){
-        mount = document.createElement('div');
-        mount.id = mountId;
-        mount.className = 'lia-canvas-mount';
-        mount.dataset.open = '0';
-
-        try{
-          const cs = getComputedStyle(parent);
-          if (cs && String(cs.display).includes('flex')){
-            mount.classList.add('lia-canvas-flexitem');
-          }
-        }catch(_){}
-
-        parent.insertBefore(mount, anchor);
-      }
-
-      const isOpen = mount.dataset.open === '1';
-
-      if (!isOpen){
-        mount.dataset.open = '1';
-
-        if (!mount.querySelector('.lia-draw-wrap')){
-          mount.innerHTML = canvasMarkup();
-          initAll();
-        }
-      }else{
-        mount.dataset.open = '0';
-      }
-    }, true);
-  }
+  // absichtlich minimal: der eigentliche Boot läuft import-sicher über das run-once Script im @canvas Makro
+  try{ window.__liaCanvasTheme && window.__liaCanvasTheme(); }catch(_){}
 })();
 @end
 
@@ -1624,16 +293,1178 @@ function setTrashIcon(btn){
 
 @canvas_
 <span class="lia-canvas-anchor" data-uid="@0">
-  <button class="lia-canvas-launch" type="button" aria-label="Zeichenfläche öffnen/schließen">
+  <button class="lia-canvas-launch" type="button"
+          aria-label="Zeichenfläche öffnen/schließen"
+          onclick="window.__liaCanvasToggle && window.__liaCanvasToggle('@0');">
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path class="launch-stroke" d="M3 21l3.2-0.6L19 7.6a2.2 2.2 0 0 0 0-3.1l-0.5-0.5a2.2 2.2 0 0 0-3.1 0L2.6 16.8 3 21z"/>
       <path class="launch-stroke" d="M14.2 5.2l4.6 4.6"/>
     </svg>
   </button>
+
+  <span id="lia-canvas-mount-@0" class="lia-canvas-mount" data-open="0"></span>
+
+  <script run-once="true" modify="false">
+  (function(){
+    // =========================
+    // Boot (pro Dokument)
+    // =========================
+    const DOC_KEY = "__LIA_CANVAS_BOOT_DOC_V1__";
+    if (window[DOC_KEY]) return;
+    window[DOC_KEY] = true;
+
+    // Root-Window (iframe-safe, optionaler Shared Store)
+    function getRootWindow(){
+      let w = window;
+      try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
+      return w;
+    }
+    const ROOT = getRootWindow();
+    const STOREKEY = "__LIA_CANVAS_STORE_V1__";
+    ROOT[STOREKEY] = ROOT[STOREKEY] || {}; // uid -> state
+    const STORE = ROOT[STOREKEY];
+
+    // =========================
+    // CSS Injection (falls @style beim Import nicht greift)
+    // =========================
+    const STYLE_ID = "lia-canvas-style-v1";
+    const CSS_TEXT = `
+:root{--canvas-border:#000;--canvas-pen:#000;--canvas-accent:#0b5fff;}
+.lia-canvas-anchor{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px;vertical-align:middle;}
+.lia-canvas-mount{flex:0 0 100%;width:100%;max-width:100%;display:none;margin:8px 0 2px 0;}
+.lia-canvas-mount[data-open="1"]{display:block;}
+.lia-canvas-launch{width:32px;height:32px;padding:0;border-radius:999px;background:transparent;border:2px solid var(--canvas-accent);cursor:pointer;user-select:none;touch-action:manipulation;display:inline-flex;align-items:center;justify-content:center;line-height:0;}
+.lia-canvas-launch svg{width:18px;height:18px;display:block;}
+.lia-canvas-launch .launch-stroke{stroke:var(--canvas-accent);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;}
+.lia-draw-block{display:block;width:100%;max-width:100%;overflow-x:hidden;overflow-y:visible;}
+.lia-draw-wrap{display:block;width:min(520px,100%);max-width:100%;border:2px solid var(--canvas-border);border-radius:10px;box-sizing:border-box;position:relative;}
+canvas.lia-draw{display:block;width:100%;height:150px;background:transparent;border-radius:8px;touch-action:none;cursor:crosshair;}
+.lia-toolstack{position:absolute;left:10px;top:50%;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;gap:6px;}
+.lia-tool-btn{width:24px;height:24px;padding:0;border:2px solid var(--canvas-border);border-radius:999px;background:transparent;cursor:pointer;user-select:none;display:grid;place-items:center;color:var(--canvas-border);}
+.lia-tool-btn[disabled]{opacity:.35;cursor:not-allowed;}
+.lia-tool-btn svg{width:14px;height:14px;display:block;}
+.lia-tool-btn[data-active="1"]{outline:2px solid var(--canvas-border);outline-offset:2px;}
+.lia-tool-btn.lia-color-btn{background:var(--canvas-pen);}
+.lia-tool-menu{position:absolute;left:46px;top:10px;z-index:40;padding:10px;border:2px solid var(--canvas-border);border-radius:12px;background:rgba(0,0,0,.15);backdrop-filter:blur(6px);display:none;gap:10px;}
+.lia-tool-menu[data-open="1"]{display:grid;row-gap:10px;}
+.lia-tool-heading{font-size:1.2rem;font-weight:750;line-height:1.1;}
+.lia-row{display:flex;align-items:center;gap:10px;}
+.lia-color-grid{display:grid;grid-template-columns:repeat(9,22px);gap:10px;}
+.lia-color-item{width:22px;height:22px;border-radius:999px;border:2px solid var(--canvas-border);background:transparent;cursor:pointer;padding:0;}
+.lia-color-item[data-active="1"]{outline:2px solid var(--canvas-border);outline-offset:2px;}
+.lia-preview{width:34px;height:22px;border-radius:10px;border:2px solid var(--canvas-border);display:grid;place-items:center;box-sizing:border-box;}
+.lia-preview-line{width:22px;height:3px;border-radius:999px;background:var(--canvas-border);}
+.lia-slider{width:180px;}
+.lia-bg-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.lia-bg-tile{height:34px;border-radius:12px;border:2px solid var(--canvas-border);background:transparent;cursor:pointer;padding:0;}
+.lia-bg-tile[data-active="1"]{outline:2px solid var(--canvas-border);outline-offset:2px;}
+.lia-menu-icon-btn{width:28px;height:28px;border-radius:999px;border:2px solid var(--canvas-border);background:transparent;display:grid;place-items:center;cursor:pointer;padding:0;color:var(--canvas-border);}
+.lia-menu-icon-btn svg{width:16px;height:16px;display:block;}
+.lia-resize-corner{position:absolute;bottom:0;width:18px;height:18px;z-index:60;background:transparent;border:0;padding:0;margin:0;opacity:0;touch-action:none;user-select:none;}
+.lia-resize-corner[data-corner="br"]{right:0;cursor:nwse-resize;}
+.lia-resize-corner[data-corner="bl"]{left:0;cursor:nesw-resize;}
+    `.trim();
+
+    function ensureStyle(){
+      if (document.getElementById(STYLE_ID)) return;
+      const st = document.createElement("style");
+      st.id = STYLE_ID;
+      st.textContent = CSS_TEXT;
+      (document.head || document.documentElement).appendChild(st);
+    }
+
+    // =========================
+    // Theme helpers
+    // =========================
+    function parseRgb(s){
+      const m = String(s).match(/rgba?\\(\\s*([\\d.]+)\\s*,\\s*([\\d.]+)\\s*,\\s*([\\d.]+)/i);
+      return m ? [Number(m[1]), Number(m[2]), Number(m[3])] : null;
+    }
+    function luminance(rgb){
+      const [r,g,b] = rgb.map(v => v/255).map(c => (c <= 0.03928 ? c/12.92 : Math.pow((c+0.055)/1.055, 2.4)));
+      return 0.2126*r + 0.7152*g + 0.0722*b;
+    }
+
+    function getLiaAccentColor(doc){
+      try{
+        const d = doc || document;
+        const existing = d.querySelector(".lia-btn");
+        if (existing){
+          const bg = getComputedStyle(existing).backgroundColor;
+          if (bg && bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent") return bg;
+        }
+        const probe = d.createElement("button");
+        probe.className = "lia-btn";
+        probe.type = "button";
+        probe.textContent = "x";
+        probe.style.position = "absolute";
+        probe.style.left = "-9999px";
+        probe.style.top = "-9999px";
+        probe.style.visibility = "hidden";
+        (d.body || d.documentElement).appendChild(probe);
+        const bg = getComputedStyle(probe).backgroundColor;
+        probe.remove();
+        if (bg && bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent") return bg;
+      }catch(_){}
+      return null;
+    }
+
+    function applyThemeVars(){
+      try{
+        const parentDoc = (window.parent && window.parent.document) ? window.parent.document : null;
+        const rootEl = document.documentElement;
+
+        // border/pen aus Hintergrundhelligkeit (Parent bevorzugt)
+        const bgSource = parentDoc ? parentDoc : document;
+        const bg = getComputedStyle(bgSource.body || bgSource.documentElement).backgroundColor
+                || getComputedStyle(bgSource.documentElement).backgroundColor;
+        const rgb = parseRgb(bg);
+        const isDark = rgb ? (luminance(rgb) < 0.5) : false;
+        const border = isDark ? "#fff" : "#000";
+
+        rootEl.style.setProperty("--canvas-border", border);
+        rootEl.style.setProperty("--canvas-pen", border);
+
+        // Accent aus Lia-Button (Parent bevorzugt)
+        const accent = (parentDoc ? getLiaAccentColor(parentDoc) : null) || getLiaAccentColor(document);
+        if (accent) rootEl.style.setProperty("--canvas-accent", accent);
+
+        // Event für Repaint/Icons
+        document.dispatchEvent(new Event("lia-canvas-theme"));
+      }catch(_){}
+    }
+
+    window.__liaCanvasTheme = function(){ ensureStyle(); applyThemeVars(); };
+
+    // Beobachten (Theme-/Mode-Wechsel)
+    ensureStyle();
+    applyThemeVars();
+    try{
+      const mo = new MutationObserver(() => applyThemeVars());
+      mo.observe(document.documentElement, { attributes:true, attributeFilter:["class","style"] });
+      window.addEventListener("resize", () => applyThemeVars());
+      // Parent beobachten (falls verfügbar)
+      if (window.parent && window.parent.document){
+        const pmo = new MutationObserver(() => applyThemeVars());
+        pmo.observe(window.parent.document.documentElement, { attributes:true, attributeFilter:["class","style"] });
+      }
+    }catch(_){}
+
+    // =========================
+    // Helpers (colors)
+    // =========================
+    const COLORS = [
+      { key:"auto", value:null },
+      { key:"red", value:"#ff2d2d" },
+      { key:"orange", value:"#ffc800" },
+      { key:"violett", value:"#ff00ea" },
+      { key:"blue", value:"#2d6bff" },
+      { key:"lightblue", value:"#00d5ff" },
+      { key:"green", value:"#00ff1a" },
+      { key:"black", value:"#000000" },
+      { key:"white", value:"#ffffff" }
+    ];
+
+    function cssVar(name, fallback){
+      const v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      return v || fallback;
+    }
+    function getBorderColor(){ return cssVar("--canvas-border", "#000"); }
+    function getAutoPen(){ return cssVar("--canvas-pen", "#000"); }
+    function getAccentColor(){ return cssVar("--canvas-accent", getBorderColor()); }
+
+    function rgbaFromAny(color, a){
+      const m = String(color).match(/rgba?\\(\\s*([\\d.]+)\\s*,\\s*([\\d.]+)\\s*,\\s*([\\d.]+)/i);
+      if (m) return `rgba(${Number(m[1])},${Number(m[2])},${Number(m[3])},${a})`;
+      if (String(color).startsWith("#")){
+        const h = String(color).slice(1);
+        const hex = (h.length===3) ? (h[0]+h[0]+h[1]+h[1]+h[2]+h[2]) : h;
+        const r = parseInt(hex.slice(0,2),16);
+        const g = parseInt(hex.slice(2,4),16);
+        const b = parseInt(hex.slice(4,6),16);
+        return `rgba(${r},${g},${b},${a})`;
+      }
+      return `rgba(0,0,0,${a})`;
+    }
+
+    // =========================
+    // Markup (span-only)
+    // =========================
+    function svgUndo(){
+      return `<svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M7 7H3v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M3 11c2.2-3.4 6.1-5.5 10.2-5.5 4.9 0 8.8 3.3 8.8 8.2 0 4.9-3.9 8.8-8.8 8.8H7"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>`;
+    }
+    function svgRedo(){
+      return `<svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M17 7h4v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M21 11c-2.2-3.4-6.1-5.5-10.2-5.5C5.9 5.5 2 8.8 2 13.7 2 18.6 5.9 22.5 10.8 22.5H17"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>`;
+    }
+    function svgEraser(){
+      return `<svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 16.5l8.6-8.6a2 2 0 0 1 2.8 0l4.1 4.1a2 2 0 0 1 0 2.8L12.8 23H7.6L4 19.4a2 2 0 0 1 0-2.9z"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8 23h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M9.2 14.3l6.5 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>`;
+    }
+    function svgGrid(){
+      return `<svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 4h16v16H4z" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M4 12h16M12 4v16" fill="none" stroke="currentColor" stroke-width="2"/>
+      </svg>`;
+    }
+    function svgTrash(){
+      return `<svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M9 3h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M4 6h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M7 6l1 15h8l1-15" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M10 10v8M14 10v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>`;
+    }
+
+    function canvasMarkup(uid){
+      // Pen-Button bekommt keine SVG: Farbe wird als Hintergrund gesetzt
+      return `
+        <span class="lia-draw-block">
+          <span class="lia-draw-wrap" data-uid="${uid}">
+            <span class="lia-toolstack">
+              <button class="lia-tool-btn lia-undo-btn" type="button" aria-label="Rückgängig">${svgUndo()}</button>
+              <button class="lia-tool-btn lia-redo-btn" type="button" aria-label="Wiederherstellen">${svgRedo()}</button>
+              <button class="lia-tool-btn lia-eraser-btn" type="button" aria-label="Radierer">${svgEraser()}</button>
+              <button class="lia-tool-btn lia-color-btn" type="button" aria-label="Stift"></button>
+              <button class="lia-tool-btn lia-bg-btn" type="button" aria-label="Hintergrund">${svgGrid()}</button>
+            </span>
+
+            <span class="lia-tool-menu" data-open="0" aria-label="Werkzeuge"></span>
+            <canvas class="lia-draw" data-uid="${uid}" aria-label="Zeichenfläche"></canvas>
+
+            <button class="lia-resize-corner" data-corner="bl" type="button" aria-label="Resize links unten"></button>
+            <button class="lia-resize-corner" data-corner="br" type="button" aria-label="Resize rechts unten"></button>
+          </span>
+        </span>
+      `;
+    }
+
+    // =========================
+    // Toggle (öffnet/ schließt Mount)
+    // =========================
+    window.__liaCanvasToggle = function(uid){
+      ensureStyle();
+      applyThemeVars();
+
+      const mount = document.getElementById("lia-canvas-mount-" + uid);
+      if (!mount) return;
+
+      const isOpen = mount.dataset.open === "1";
+
+      if (isOpen){
+        mount.dataset.open = "0";
+        mount.style.display = "none";
+        return;
+      }
+
+      mount.dataset.open = "1";
+      mount.style.display = "block";
+
+      if (!mount.__liaCanvasInited){
+        mount.__liaCanvasInited = true;
+        mount.innerHTML = canvasMarkup(uid);
+        initMount(mount);
+      }else{
+        // bei Reopen: ggf. Theme/Redraw
+        document.dispatchEvent(new Event("lia-canvas-theme"));
+      }
+    };
+
+    // =========================
+    // Canvas Engine
+    // =========================
+    function initMount(mount){
+      const canvas = mount.querySelector("canvas.lia-draw");
+      if (!canvas) return;
+      setupCanvas(canvas);
+    }
+
+    function setupCanvas(canvas){
+      const wrap = canvas.closest(".lia-draw-wrap");
+      const uid = canvas.getAttribute("data-uid") || "";
+      const menu = wrap.querySelector(".lia-tool-menu");
+
+      const btnUndo   = wrap.querySelector(".lia-undo-btn");
+      const btnRedo   = wrap.querySelector(".lia-redo-btn");
+      const btnEraser = wrap.querySelector(".lia-eraser-btn");
+      const btnPen    = wrap.querySelector(".lia-color-btn");
+      const btnBg     = wrap.querySelector(".lia-bg-btn");
+
+      // State (persistiert über ROOT STORE)
+      const saved = STORE[uid] || null;
+
+      const VIEW = saved && saved.VIEW ? { ...saved.VIEW } : { panX:0, panY:0, scale:1, minScale:0.25, maxScale:8 };
+      const STROKES = saved && Array.isArray(saved.STROKES) ? saved.STROKES : [];
+      const REDO    = saved && Array.isArray(saved.REDO) ? saved.REDO : [];
+
+      let tool = (saved && saved.tool) ? saved.tool : "pen";
+      let colorIndex = (saved && typeof saved.colorIndex==="number") ? saved.colorIndex : 0;
+
+      let penWidth  = (saved && saved.penWidth) ? saved.penWidth : 3;
+      let penAlpha  = (saved && typeof saved.penAlpha==="number") ? saved.penAlpha : 1.0;
+
+      let eraserWidth = (saved && saved.eraserWidth) ? saved.eraserWidth : 12;
+
+      let bgMode = (saved && saved.bgMode) ? saved.bgMode : "none"; // none|grid|lined
+      let bgStep = (saved && saved.bgStep) ? saved.bgStep : 24;
+
+      function persist(){
+        STORE[uid] = {
+          VIEW: { ...VIEW },
+          STROKES,
+          REDO,
+          tool,
+          colorIndex,
+          penWidth,
+          penAlpha,
+          eraserWidth,
+          bgMode,
+          bgStep,
+          wrapW: wrap.getBoundingClientRect().width,
+          canvasH: canvas.clientHeight
+        };
+      }
+
+      // Restore size
+      if (saved && saved.wrapW){
+        const maxW = Math.floor((wrap.parentElement || wrap).getBoundingClientRect().width || saved.wrapW);
+        wrap.style.width = Math.min(maxW, Math.max(280, Math.floor(saved.wrapW))) + "px";
+      }
+      if (saved && saved.canvasH){
+        canvas.style.height = Math.max(120, Math.floor(saved.canvasH)) + "px";
+      }
+
+      // Offscreen stroke layer
+      const ctx  = canvas.getContext("2d", { willReadFrequently:true });
+
+      const strokeLayer = document.createElement("canvas");
+      const sctx = strokeLayer.getContext("2d", { willReadFrequently:true });
+
+      let currentStroke = null;
+
+      function penBaseColor(){
+        const c = COLORS[colorIndex] || COLORS[0];
+        return (c.key === "auto") ? getAutoPen() : (c.value || getAutoPen());
+      }
+
+      function applyStrokeStyle(ctx2, st){
+        if (st.tool === "eraser"){
+          ctx2.globalCompositeOperation = "destination-out";
+          ctx2.globalAlpha = 1.0;
+          ctx2.strokeStyle = "rgba(0,0,0,1)";
+          ctx2.lineWidth = st.width;
+        }else{
+          ctx2.globalCompositeOperation = "source-over";
+          ctx2.globalAlpha = st.alpha;
+          ctx2.strokeStyle = st.color;
+          ctx2.lineWidth = st.width;
+        }
+        ctx2.lineCap = "round";
+        ctx2.lineJoin = "round";
+      }
+
+      function setViewportTransform(ctx2){
+        const dpr = window.devicePixelRatio || 1;
+        ctx2.setTransform(dpr*VIEW.scale, 0, 0, dpr*VIEW.scale, dpr*VIEW.panX, dpr*VIEW.panY);
+      }
+
+      function clearCanvas(ctx2){
+        const dpr = window.devicePixelRatio || 1;
+        ctx2.setTransform(dpr,0,0,dpr,0,0);
+        ctx2.globalCompositeOperation = "source-over";
+        ctx2.globalAlpha = 1;
+        ctx2.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);
+      }
+
+      function rebuildStrokeLayer(){
+        clearCanvas(sctx);
+        setViewportTransform(sctx);
+        for (const st of STROKES){
+          if (!st.points || st.points.length < 2) continue;
+          applyStrokeStyle(sctx, st);
+          sctx.beginPath();
+          sctx.moveTo(st.points[0].x, st.points[0].y);
+          for (let i=1;i<st.points.length;i++){
+            const p = st.points[i];
+            sctx.lineTo(p.x, p.y);
+          }
+          sctx.stroke();
+        }
+      }
+
+      function screenToWorld(sx,sy){
+        return { x: (sx - VIEW.panX)/VIEW.scale, y: (sy - VIEW.panY)/VIEW.scale };
+      }
+
+      function worldBounds(){
+        const w = canvas.clientWidth;
+        const h = canvas.clientHeight;
+        return {
+          x0: (0 - VIEW.panX)/VIEW.scale,
+          y0: (0 - VIEW.panY)/VIEW.scale,
+          x1: (w - VIEW.panX)/VIEW.scale,
+          y1: (h - VIEW.panY)/VIEW.scale
+        };
+      }
+
+      function drawBackground(){
+        if (bgMode === "none") return;
+
+        const dpr = window.devicePixelRatio || 1;
+        ctx.setTransform(dpr*VIEW.scale, 0, 0, dpr*VIEW.scale, dpr*VIEW.panX, dpr*VIEW.panY);
+
+        const step = Math.max(6, Number(bgStep) || 24);
+        const b = worldBounds();
+
+        const col = rgbaFromAny(getAccentColor(), 0.25);
+
+        ctx.save();
+        ctx.globalCompositeOperation = "source-over";
+        ctx.globalAlpha = 1.0;
+        ctx.strokeStyle = col;
+        ctx.lineWidth = 1 / VIEW.scale;
+
+        const xStart = Math.floor(b.x0/step)*step;
+        const xEnd   = Math.ceil (b.x1/step)*step;
+        const yStart = Math.floor(b.y0/step)*step;
+        const yEnd   = Math.ceil (b.y1/step)*step;
+
+        const maxLines = 4000;
+        let count = 0;
+
+        ctx.beginPath();
+        if (bgMode === "grid"){
+          for (let x=xStart; x<=xEnd; x+=step){
+            ctx.moveTo(x, b.y0); ctx.lineTo(x, b.y1);
+            if (++count > maxLines) break;
+          }
+          for (let y=yStart; y<=yEnd; y+=step){
+            ctx.moveTo(b.x0, y); ctx.lineTo(b.x1, y);
+            if (++count > maxLines) break;
+          }
+        }else if (bgMode === "lined"){
+          for (let y=yStart; y<=yEnd; y+=step){
+            ctx.moveTo(b.x0, y); ctx.lineTo(b.x1, y);
+            if (++count > maxLines) break;
+          }
+        }
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      function present(){
+        clearCanvas(ctx);
+
+        drawBackground();
+
+        const dpr = window.devicePixelRatio || 1;
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+        ctx.globalCompositeOperation = "source-over";
+        ctx.globalAlpha = 1.0;
+        ctx.drawImage(
+          strokeLayer,
+          0,0, strokeLayer.width, strokeLayer.height,
+          0,0, canvas.clientWidth, canvas.clientHeight
+        );
+      }
+
+      function resizeToCss(){
+        const dpr = window.devicePixelRatio || 1;
+
+        const cssW = canvas.clientWidth;
+        const cssH = canvas.clientHeight;
+
+        const pxW = Math.max(1, Math.round(cssW*dpr));
+        const pxH = Math.max(1, Math.round(cssH*dpr));
+
+        canvas.width = pxW;
+        canvas.height= pxH;
+
+        strokeLayer.width  = pxW;
+        strokeLayer.height = pxH;
+
+        rebuildStrokeLayer();
+        present();
+        updateUI();
+        persist();
+      }
+
+      // =========================
+      // Menüs
+      // =========================
+      function setMenuOpen(open){
+        if (!menu) return;
+        menu.dataset.open = open ? "1" : "0";
+      }
+
+      function tileStyle(mode){
+        const accent = getAccentColor();
+        const gridCol = rgbaFromAny(accent, 0.50);
+        const step = 10, thick = 2;
+
+        if (mode === "none"){
+          return { backgroundImage:"none", backgroundColor:"transparent" };
+        }
+        if (mode === "grid"){
+          return {
+            backgroundColor:"transparent",
+            backgroundImage:
+              `linear-gradient(to right, ${gridCol} ${thick}px, transparent ${thick}px),
+               linear-gradient(to bottom, ${gridCol} ${thick}px, transparent ${thick}px)`,
+            backgroundSize: `${step}px ${step}px`,
+            backgroundPosition: "center"
+          };
+        }
+        return {
+          backgroundColor:"transparent",
+          backgroundImage: `linear-gradient(to bottom, ${gridCol} ${thick}px, transparent ${thick}px)`,
+          backgroundSize: `100% ${step}px`,
+          backgroundPosition: "center"
+        };
+      }
+
+      function buildPenMenu(){
+        menu.innerHTML = "";
+
+        const grid = document.createElement("span");
+        grid.className = "lia-color-grid";
+
+        COLORS.forEach((c, idx) => {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "lia-color-item";
+          b.dataset.idx = String(idx);
+          b.dataset.active = (idx===colorIndex) ? "1" : "0";
+          b.style.background = (c.key==="auto") ? getAutoPen() : (c.value || "transparent");
+          b.addEventListener("click", () => {
+            colorIndex = idx;
+            tool = "pen";
+            setMenuOpen(false);
+            updateUI();
+            persist();
+          });
+          grid.appendChild(b);
+        });
+
+        menu.appendChild(grid);
+
+        const h1 = document.createElement("span");
+        h1.className = "lia-tool-heading";
+        h1.textContent = "Stiftdicke";
+        menu.appendChild(h1);
+
+        const row1 = document.createElement("span");
+        row1.className = "lia-row";
+
+        const prev1 = document.createElement("span");
+        prev1.className = "lia-preview";
+        const line1 = document.createElement("span");
+        line1.className = "lia-preview-line";
+        prev1.appendChild(line1);
+
+        const s1 = document.createElement("input");
+        s1.className = "lia-slider";
+        s1.type="range"; s1.min="1"; s1.max="18"; s1.step="1";
+        s1.value = String(penWidth);
+        s1.addEventListener("input", () => { penWidth = Number(s1.value); updateUI(); persist(); });
+
+        row1.appendChild(prev1); row1.appendChild(s1);
+        menu.appendChild(row1);
+
+        const h2 = document.createElement("span");
+        h2.className = "lia-tool-heading";
+        h2.textContent = "Transparenz";
+        menu.appendChild(h2);
+
+        const row2 = document.createElement("span");
+        row2.className = "lia-row";
+
+        const prev2 = document.createElement("span");
+        prev2.className = "lia-preview";
+        const line2 = document.createElement("span");
+        line2.className = "lia-preview-line";
+        prev2.appendChild(line2);
+
+        const s2 = document.createElement("input");
+        s2.className = "lia-slider";
+        s2.type="range"; s2.min="0"; s2.max="100"; s2.step="1";
+        s2.value = String(Math.round(penAlpha*100));
+        s2.addEventListener("input", () => {
+          penAlpha = Math.max(0, Math.min(1, Number(s2.value)/100));
+          updateUI(); persist();
+        });
+
+        row2.appendChild(prev2); row2.appendChild(s2);
+        menu.appendChild(row2);
+
+        menu.__mode = "pen";
+        menu.__lineW = line1;
+        menu.__lineA = line2;
+        menu.__sliderW = s1;
+        menu.__sliderA = s2;
+      }
+
+      function clearAll(){
+        STROKES.length = 0;
+        REDO.length = 0;
+        rebuildStrokeLayer();
+        present();
+        updateUI();
+        persist();
+      }
+
+      function buildEraserMenu(){
+        menu.innerHTML = "";
+
+        const headRow = document.createElement("span");
+        headRow.className = "lia-row";
+        headRow.style.justifyContent = "space-between";
+        headRow.style.gap = "10px";
+
+        const lab = document.createElement("span");
+        lab.className = "lia-tool-heading";
+        lab.textContent = "Radierer";
+
+        const trash = document.createElement("button");
+        trash.type="button";
+        trash.className = "lia-menu-icon-btn";
+        trash.setAttribute("aria-label","Alles löschen");
+        trash.innerHTML = svgTrash();
+        trash.addEventListener("click", clearAll);
+
+        headRow.appendChild(lab);
+        headRow.appendChild(trash);
+        menu.appendChild(headRow);
+
+        const row = document.createElement("span");
+        row.className = "lia-row";
+
+        const prev = document.createElement("span");
+        prev.className = "lia-preview";
+        const line = document.createElement("span");
+        line.className = "lia-preview-line";
+        prev.appendChild(line);
+
+        const s = document.createElement("input");
+        s.className = "lia-slider";
+        s.type="range"; s.min="4"; s.max="40"; s.step="1";
+        s.value = String(eraserWidth);
+        s.addEventListener("input", () => { eraserWidth = Number(s.value); updateUI(); persist(); });
+
+        row.appendChild(prev); row.appendChild(s);
+        menu.appendChild(row);
+
+        menu.__mode = "eraser";
+        menu.__lineE = line;
+        menu.__sliderE = s;
+      }
+
+      function buildBgMenu(){
+        menu.innerHTML = "";
+
+        const tiles = document.createElement("span");
+        tiles.className = "lia-bg-tiles";
+
+        function mkTile(mode, aria){
+          const b = document.createElement("button");
+          b.type="button";
+          b.className = "lia-bg-tile";
+          b.dataset.mode = mode;
+          b.dataset.active = (bgMode===mode) ? "1" : "0";
+          b.setAttribute("aria-label", aria);
+          Object.assign(b.style, tileStyle(mode));
+          b.addEventListener("click", () => {
+            bgMode = mode;
+            updateUI();
+            present();
+            persist();
+          });
+          return b;
+        }
+
+        tiles.appendChild(mkTile("none","Kein Hintergrund"));
+        tiles.appendChild(mkTile("grid","Karriert"));
+        tiles.appendChild(mkTile("lined","Liniert"));
+        menu.appendChild(tiles);
+
+        const row = document.createElement("span");
+        row.className = "lia-row";
+
+        const prev = document.createElement("span");
+        prev.className = "lia-preview";
+        const line = document.createElement("span");
+        line.className = "lia-preview-line";
+        prev.appendChild(line);
+
+        const s = document.createElement("input");
+        s.className = "lia-slider";
+        s.type="range"; s.min="8"; s.max="120"; s.step="1";
+        s.value = String(bgStep);
+        s.addEventListener("input", () => {
+          bgStep = Number(s.value);
+          updateUI();
+          present();
+          persist();
+        });
+
+        row.appendChild(prev); row.appendChild(s);
+        menu.appendChild(row);
+
+        menu.__mode = "bg";
+        menu.__bgTiles = Array.from(tiles.children);
+        menu.__bgLinePrev = line;
+        menu.__bgSlider = s;
+      }
+
+      function updateMenuVisuals(){
+        if (!menu) return;
+        const mode = menu.__mode;
+
+        if (mode === "pen"){
+          // colors
+          menu.querySelectorAll(".lia-color-item").forEach((el) => {
+            const idx = Number(el.dataset.idx);
+            const c = COLORS[idx] || COLORS[0];
+            el.style.background = (c.key==="auto") ? getAutoPen() : (c.value || "transparent");
+            el.dataset.active = (idx===colorIndex) ? "1" : "0";
+          });
+
+          const base = penBaseColor();
+          const col = String(base).startsWith("#") ? rgbaFromAny(base, penAlpha) : rgbaFromAny(getBorderColor(), penAlpha);
+
+          if (menu.__lineW){
+            menu.__lineW.style.background = col;
+            menu.__lineW.style.height = Math.max(1, penWidth) + "px";
+          }
+          if (menu.__lineA){
+            menu.__lineA.style.background = col;
+            menu.__lineA.style.height = "6px";
+          }
+
+          if (menu.__sliderW && menu.__sliderW.value !== String(penWidth)) menu.__sliderW.value = String(penWidth);
+          if (menu.__sliderA){
+            const v = String(Math.round(penAlpha*100));
+            if (menu.__sliderA.value !== v) menu.__sliderA.value = v;
+          }
+          return;
+        }
+
+        if (mode === "eraser"){
+          if (menu.__lineE){
+            menu.__lineE.style.background = getBorderColor();
+            menu.__lineE.style.height = Math.max(1, eraserWidth) + "px";
+          }
+          if (menu.__sliderE && menu.__sliderE.value !== String(eraserWidth)) menu.__sliderE.value = String(eraserWidth);
+          return;
+        }
+
+        if (mode === "bg"){
+          if (menu.__bgTiles){
+            for (const t of menu.__bgTiles){
+              const m = t.dataset.mode;
+              t.dataset.active = (bgMode===m) ? "1" : "0";
+              Object.assign(t.style, tileStyle(m));
+            }
+          }
+          if (menu.__bgSlider && menu.__bgSlider.value !== String(bgStep)) menu.__bgSlider.value = String(bgStep);
+          if (menu.__bgLinePrev){
+            menu.__bgLinePrev.style.background = rgbaFromAny(getAccentColor(), 0.35);
+            menu.__bgLinePrev.style.height = "2px";
+          }
+        }
+      }
+
+      // =========================
+      // UI State / Buttons
+      // =========================
+      function updateUI(){
+        const col = penBaseColor();
+
+        // pen-button shows current color
+        document.documentElement.style.setProperty("--canvas-pen", col);
+
+        if (btnUndo) btnUndo.disabled = (STROKES.length === 0);
+        if (btnRedo) btnRedo.disabled = (REDO.length === 0);
+
+        if (btnPen)    btnPen.dataset.active    = (tool==="pen") ? "1" : "0";
+        if (btnEraser) btnEraser.dataset.active = (tool==="eraser") ? "1" : "0";
+
+        // bg button active when bg menu open (optional)
+        updateMenuVisuals();
+      }
+
+      function doUndo(){
+        if (!STROKES.length) return;
+        REDO.push(STROKES.pop());
+        rebuildStrokeLayer();
+        present();
+        updateUI();
+        persist();
+      }
+      function doRedo(){
+        if (!REDO.length) return;
+        STROKES.push(REDO.pop());
+        rebuildStrokeLayer();
+        present();
+        updateUI();
+        persist();
+      }
+
+      // =========================
+      // Resize corners
+      // =========================
+      function bindResizeCorners(){
+        const bl = wrap.querySelector('.lia-resize-corner[data-corner="bl"]');
+        const br = wrap.querySelector('.lia-resize-corner[data-corner="br"]');
+        if (!bl || !br) return;
+
+        const MIN_H = 120;
+        const MAX_H = 900;
+        const MIN_W = 280;
+
+        const clamp = (v,a,b) => Math.max(a, Math.min(b, v));
+
+        function maxW(){
+          const host = wrap.parentElement || wrap;
+          const w = host.getBoundingClientRect().width;
+          return Math.max(MIN_W, Math.floor(w));
+        }
+
+        function bind(handle, side){
+          let resizing=false, sx=0, sy=0, sw=0, sh=0;
+
+          function down(e){
+            e.preventDefault();
+            e.stopPropagation();
+            resizing=true;
+            sw = wrap.getBoundingClientRect().width;
+            sh = canvas.clientHeight || 150;
+            sx = e.clientX; sy = e.clientY;
+            try{ handle.setPointerCapture(e.pointerId); }catch(_){}
+          }
+          function move(e){
+            if (!resizing) return;
+            e.preventDefault();
+            const dx = e.clientX - sx;
+            const dy = e.clientY - sy;
+
+            const nh = clamp(sh + dy, MIN_H, MAX_H);
+            canvas.style.height = nh + "px";
+
+            const mw = maxW();
+            const nw = (side==="br")
+              ? clamp(sw + dx, MIN_W, mw)
+              : clamp(sw - dx, MIN_W, mw);
+            wrap.style.width = nw + "px";
+          }
+          function up(e){
+            if (!resizing) return;
+            resizing=false;
+            try{ handle.releasePointerCapture(e.pointerId); }catch(_){}
+            resizeToCss();
+            persist();
+          }
+
+          handle.addEventListener("pointerdown", down);
+          handle.addEventListener("pointermove", move);
+          handle.addEventListener("pointerup", up);
+          handle.addEventListener("pointercancel", up);
+        }
+
+        bind(br,"br");
+        bind(bl,"bl");
+      }
+
+      // =========================
+      // Pan/Zoom + Draw
+      // =========================
+      let spaceDown = false;
+      window.addEventListener("keydown", (e) => { if (e.code==="Space") spaceDown=true; });
+      window.addEventListener("keyup",   (e) => { if (e.code==="Space") spaceDown=false; });
+
+      canvas.addEventListener("contextmenu", (e) => e.preventDefault());
+
+      function clampScale(s){ return Math.max(VIEW.minScale, Math.min(VIEW.maxScale, s)); }
+
+      function zoomAbout(factor, sx, sy){
+        const oldS = VIEW.scale;
+        const newS = clampScale(oldS * factor);
+        if (newS === oldS) return;
+
+        const w = screenToWorld(sx, sy);
+
+        VIEW.scale = newS;
+        VIEW.panX = sx - w.x * newS;
+        VIEW.panY = sy - w.y * newS;
+
+        rebuildStrokeLayer();
+        present();
+        persist();
+      }
+
+      canvas.addEventListener("wheel", (e) => {
+        e.preventDefault();
+        const r = canvas.getBoundingClientRect();
+        const sx = e.clientX - r.left;
+        const sy = e.clientY - r.top;
+        const factor = Math.exp(-e.deltaY * 0.0012);
+        zoomAbout(factor, sx, sy);
+      }, { passive:false });
+
+      const pointers = new Map();
+      let mode = "idle"; // idle|draw|pan|pinch
+      let lastPanSX=0, lastPanSY=0;
+      let pinchStart = null;
+
+      function screenPos(evt){
+        const r = canvas.getBoundingClientRect();
+        return { sx: evt.clientX - r.left, sy: evt.clientY - r.top };
+      }
+      function dist(a,b){ return Math.hypot(a.sx-b.sx, a.sy-b.sy); }
+      function mid(a,b){ return { sx:(a.sx+b.sx)/2, sy:(a.sy+b.sy)/2 }; }
+
+      function startStroke(sx,sy){
+        const w = screenToWorld(sx,sy);
+        const st = {
+          tool,
+          color: penBaseColor(),
+          alpha: penAlpha,
+          width: (tool==="eraser") ? eraserWidth : penWidth,
+          points: [ {x:w.x, y:w.y} ]
+        };
+        STROKES.push(st);
+        currentStroke = st;
+        REDO.length = 0;
+
+        setViewportTransform(sctx);
+        applyStrokeStyle(sctx, st);
+        sctx.beginPath();
+        sctx.moveTo(w.x, w.y);
+
+        updateUI();
+        persist();
+      }
+
+      function extendStroke(sx,sy){
+        if (!currentStroke) return;
+        const w = screenToWorld(sx,sy);
+        currentStroke.points.push({x:w.x,y:w.y});
+        sctx.lineTo(w.x,w.y);
+        sctx.stroke();
+        present();
+        persist();
+      }
+
+      function endStroke(){
+        currentStroke = null;
+      }
+
+      canvas.addEventListener("pointerdown", (e) => {
+        // ignore resize handles
+        if (e.target && e.target.classList && e.target.classList.contains("lia-resize-corner")) return;
+
+        const p = screenPos(e);
+        pointers.set(e.pointerId, p);
+        try{ canvas.setPointerCapture(e.pointerId); }catch(_){}
+
+        if (pointers.size === 2){
+          if (mode === "draw") endStroke();
+
+          const arr = Array.from(pointers.values());
+          const m = mid(arr[0], arr[1]);
+          const d = Math.max(1e-6, dist(arr[0], arr[1]));
+          const worldMid = screenToWorld(m.sx, m.sy);
+
+          pinchStart = { dist:d, worldMid, startScale:VIEW.scale };
+          mode = "pinch";
+          return;
+        }
+
+        const isRight = (e.pointerType==="mouse" && e.button===2);
+        const isMiddle= (e.pointerType==="mouse" && e.button===1);
+        const wantPan = isRight || isMiddle || (e.pointerType==="mouse" && spaceDown);
+
+        if (wantPan){
+          mode = "pan";
+          lastPanSX = p.sx; lastPanSY = p.sy;
+          canvas.style.cursor = "grab";
+          return;
+        }
+
+        mode = "draw";
+        canvas.style.cursor = "crosshair";
+        startStroke(p.sx, p.sy);
+      });
+
+      canvas.addEventListener("pointermove", (e) => {
+        if (!pointers.has(e.pointerId)) return;
+        const p = screenPos(e);
+        pointers.set(e.pointerId, p);
+
+        if (mode === "pinch" && pointers.size >= 2 && pinchStart){
+          const arr = Array.from(pointers.values()).slice(0,2);
+          const m = mid(arr[0], arr[1]);
+          const d = Math.max(1e-6, dist(arr[0], arr[1]));
+          const factor = d / pinchStart.dist;
+
+          const newScale = clampScale(pinchStart.startScale * factor);
+          VIEW.scale = newScale;
+          VIEW.panX = m.sx - pinchStart.worldMid.x * newScale;
+          VIEW.panY = m.sy - pinchStart.worldMid.y * newScale;
+
+          rebuildStrokeLayer();
+          present();
+          persist();
+          return;
+        }
+
+        if (mode === "pan"){
+          const dx = p.sx - lastPanSX;
+          const dy = p.sy - lastPanSY;
+          lastPanSX = p.sx; lastPanSY = p.sy;
+          VIEW.panX += dx;
+          VIEW.panY += dy;
+
+          rebuildStrokeLayer();
+          present();
+          persist();
+          return;
+        }
+
+        if (mode === "draw"){
+          extendStroke(p.sx, p.sy);
+        }
+      });
+
+      function stopPointer(e){
+        if (pointers.has(e.pointerId)) pointers.delete(e.pointerId);
+        try{ canvas.releasePointerCapture(e.pointerId); }catch(_){}
+
+        if (mode === "pinch"){
+          if (pointers.size < 2){
+            pinchStart = null;
+            mode = "idle";
+          }
+          return;
+        }
+
+        if (mode === "pan"){
+          mode = "idle";
+          canvas.style.cursor = "crosshair";
+          persist();
+          return;
+        }
+
+        if (mode === "draw"){
+          endStroke();
+          mode = "idle";
+          updateUI();
+          persist();
+          return;
+        }
+      }
+
+      canvas.addEventListener("pointerup", stopPointer);
+      canvas.addEventListener("pointercancel", stopPointer);
+      canvas.addEventListener("pointerleave", () => {
+        if (mode === "draw") endStroke();
+        if (mode !== "pinch") mode = "idle";
+        canvas.style.cursor = "crosshair";
+        updateUI();
+        persist();
+      });
+
+      // =========================
+      // Tool bindings
+      // =========================
+      if (btnUndo) btnUndo.addEventListener("click", (e) => { e.preventDefault(); e.stopPropagation(); doUndo(); });
+      if (btnRedo) btnRedo.addEventListener("click", (e) => { e.preventDefault(); e.stopPropagation(); doRedo(); });
+
+      if (btnPen && menu){
+        btnPen.addEventListener("click", (e) => {
+          e.preventDefault(); e.stopPropagation();
+          tool = "pen";
+          const open = menu.dataset.open === "1";
+          const same = (menu.__mode === "pen");
+          if (!open || !same) buildPenMenu();
+          setMenuOpen(!open || !same);
+          updateUI();
+          persist();
+        });
+      }
+
+      if (btnEraser && menu){
+        btnEraser.addEventListener("click", (e) => {
+          e.preventDefault(); e.stopPropagation();
+          tool = "eraser";
+          const open = menu.dataset.open === "1";
+          const same = (menu.__mode === "eraser");
+          if (!open || !same) buildEraserMenu();
+          setMenuOpen(!open || !same);
+          updateUI();
+          persist();
+        });
+      }
+
+      if (btnBg && menu){
+        btnBg.addEventListener("click", (e) => {
+          e.preventDefault(); e.stopPropagation();
+          const open = menu.dataset.open === "1";
+          const same = (menu.__mode === "bg");
+          if (!open || !same) buildBgMenu();
+          setMenuOpen(!open || !same);
+          updateUI();
+          persist();
+        });
+      }
+
+      // Menu close rules
+      document.addEventListener("click", (e) => {
+        if (!wrap.contains(e.target)) setMenuOpen(false);
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") setMenuOpen(false);
+      });
+
+      // Theme update repaint
+      document.addEventListener("lia-canvas-theme", () => {
+        updateUI();
+        rebuildStrokeLayer();
+        present();
+      });
+
+      // Initial
+      bindResizeCorners();
+
+      updateUI();
+      resizeToCss();
+
+      // resize observer
+      try{
+        if (window.ResizeObserver){
+          const ro = new ResizeObserver(() => resizeToCss());
+          ro.observe(canvas);
+        }else{
+          window.addEventListener("resize", () => resizeToCss());
+        }
+      }catch(_){}
+    }
+  })();
+  </script>
 </span>
 @end
 -->
-
 
 
 
