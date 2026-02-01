@@ -3705,6 +3705,11 @@ function ensureCss(){
 
 # Readme SchulLia
 
+> Import
+
+`import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/README.md`
+
+
 > Canvas
 
 Klicke auf den Stift neben dem Eingabefeld um das Canvas zu öffnen
