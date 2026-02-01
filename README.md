@@ -139,10 +139,6 @@ author: Martin Lommatzsch
       background: var(--hl-yellow) !important;
     }
 
-    body.lia-hl-active #lia-hl-btn{
-      outline: 2px solid color-mix(in srgb, var(--hl-ui-fg) 25%, transparent) !important;
-      outline-offset: 2px !important;
-    }
 
     #lia-hl-panel{
       position: fixed !important;
@@ -158,6 +154,48 @@ author: Martin Lommatzsch
       overflow: hidden !important;
       backdrop-filter: blur(6px);
     }
+
+
+    /* Nightly: "Navigation"-Iconleiste (sehr kompakt / vertikal) */
+    body.lia-hl-navstack #lia-hl-btn{
+      margin: 0 !important;
+      width: 32px !important;
+      height: 32px !important;
+      border-radius: 8px !important;
+    }
+    
+    body.lia-hl-navstack #lia-hl-btn .icon{
+      width: 18px !important;
+      height: 18px !important;
+    }
+    
+    body.lia-hl-navstack #lia-hl-btn .dot{
+      right: 4px !important;
+      bottom: 4px !important;
+      width: 8px !important;
+      height: 8px !important;
+    }
+    
+
+    /* Focus-Ring komplett aus (Nightly setzt gern eigene Linien/Outlines) */
+    #lia-hl-btn:focus,
+    #lia-hl-btn:focus-visible{
+      outline: none !important;
+      box-shadow: none !important;
+    }
+    
+    /* Active-State: NUR inset -> nichts kann nach links "durchstreichen" */
+    body.lia-hl-active #lia-hl-btn{
+      outline: none !important;
+      box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--hl-ui-fg) 25%, transparent) !important;
+    }
+    
+    /* Nav-Stack: ebenfalls nur inset, etwas feiner */
+    body.lia-hl-navstack.lia-hl-active #lia-hl-btn{
+      outline: none !important;
+      box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--hl-ui-fg) 22%, transparent) !important;
+    }
+
 
     body.lia-hl-panel-open #lia-hl-panel{ display:block !important; }
 
