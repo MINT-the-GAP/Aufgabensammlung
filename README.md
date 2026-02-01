@@ -183,17 +183,45 @@ author: Martin Lommatzsch
       outline: none !important;
       box-shadow: none !important;
     }
-    
+
     /* Active-State: NUR inset -> nichts kann nach links "durchstreichen" */
     body.lia-hl-active #lia-hl-btn{
       outline: none !important;
       box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--hl-ui-fg) 25%, transparent) !important;
     }
-    
+
     /* Nav-Stack: ebenfalls nur inset, etwas feiner */
     body.lia-hl-navstack.lia-hl-active #lia-hl-btn{
       outline: none !important;
       box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--hl-ui-fg) 22%, transparent) !important;
+    }
+
+
+    /* Nightly-UI: manche Header-Buttons bekommen Linien via ::after/::before oder border-bottom.
+       Das killt exakt diese "Strich"-Artefakte nur für unseren Button. */
+    #lia-hl-btn,
+    #lia-hl-btn *{
+      text-decoration: none !important;
+    }
+
+    #lia-hl-btn::before,
+    #lia-hl-btn::after{
+      content: none !important;
+      display: none !important;
+    }
+
+    #lia-hl-btn{
+      border: 0 !important;
+      border-bottom: 0 !important;
+      box-shadow: none !important;   /* falls Nightly hier was drauflegt */
+      outline: none !important;
+    }
+
+    /* auch Focus/Focus-visible komplett neutralisieren */
+    #lia-hl-btn:focus,
+    #lia-hl-btn:focus-visible{
+      outline: none !important;
+      box-shadow: none !important;
     }
 
 
@@ -733,6 +761,23 @@ author: Martin Lommatzsch
     render();
   }, true);
 
+
+  function detectNavStack(){
+    const btn = ROOT_DOC.getElementById("lia-hl-btn");
+    if (!btn) return;
+
+    const r = btn.getBoundingClientRect();
+    const vw = ROOT_DOC.documentElement.clientWidth || 0;
+
+    // Heuristik: im Nightly-"Navigation"-Modus sitzen die Header-Icons sehr weit rechts oben.
+    const likelyNavStack = (r.right >= vw - 2) && (r.top <= 90);
+
+    ROOT_DOC.body.classList.toggle("lia-hl-navstack", !!likelyNavStack);
+  }
+
+
+
+
   // =========================
   // Tick (throttled) — Docking stabil, ohne Observer-Loop
   // =========================
@@ -743,6 +788,7 @@ author: Martin Lommatzsch
     ROOT_WIN.requestAnimationFrame(() => {
       try{
         ensureRootButtonAndPanel();
+        detectNavStack();
         ensureSwatchesOnce();
         wireUIOnce();
         adaptUIVars();
