@@ -1,46 +1,13 @@
 <!--
-version:  0.0.4
+version:  0.0.2
 language: de
-comment: LiaScript – Tafelmodus (import-sicher): Presentation max 95% Breite + Font-Boost + A-Dock stabil (Nightly) + Panel "Schriftgröße"
+comment: LiaScript – Presentation 95% Breite + Auto-Font-Boost + Schriftgrößen-Regler (Overlay-Button, nur Presentation) – import-sicher, kollisionsarm
 author: Martin Lommatzsch
 
 
 @style
-:root{
-  /* Presentation: maximale Darstellungsbreite */
-  --lia-tflfont-max-vw: 95vw;
-
-  /* per JS gesetzt: "unset" oder z.B. 24px */
-  --lia-tflfont-pres-font: unset;
-
-  /* LiaTheme-Akzentfarbe (per JS ermittelt) */
-  --lia-tflfont-accent: rgb(11,95,255);
-
-  /* Slider-Range */
-  --lia-tflfont-min: 14;
-  --lia-tflfont-max: 48;
-}
-
-/* Fallback (zusätzlich per JS in Content injiziert) */
-html[data-lia-mode="presentation"] body{
-  margin: 0 !important;
-  overflow-x: hidden !important;
-}
-
-html[data-lia-mode="presentation"] main{
-  width: var(--lia-tflfont-max-vw) !important;
-  max-width: var(--lia-tflfont-max-vw) !important;
-
-  margin-left: auto !important;
-  margin-right: auto !important;
-
-  box-sizing: border-box !important;
-}
-
-html[data-lia-mode="presentation"] main,
-html[data-lia-mode="slides"] main{
-  font-size: var(--lia-tflfont-pres-font) !important;
-}
+/* Absichtlich minimal: die kritischen CSS-Regeln werden zusätzlich per ensureStyle injiziert,
+   damit der Import IMMER greift (Kursdatei-Problem). */
 @end
 
 
@@ -49,7 +16,7 @@ html[data-lia-mode="slides"] main{
 (function () {
 
   // =========================================================
-  // Root/Content Resolve (iframe-safe)
+  // Root/Content (iframe-safe)
   // =========================================================
   function getRootWindow(){
     let w = window;
@@ -60,85 +27,38 @@ html[data-lia-mode="slides"] main{
   const ROOT_WIN = getRootWindow();
   const ROOT_DOC = ROOT_WIN.document;
 
-  function tryGetDoc(win){
-    try { return win && win.document ? win.document : null; } catch(e){ return null; }
-  }
-  function hasMain(doc){
-    try { return !!(doc && doc.querySelector && doc.querySelector("main")); } catch(e){ return false; }
-  }
-
-  function resolveContentTargets(){
-    const docs = [];
-    const seen = new Set();
-
-    function add(doc){
-      if (!doc || seen.has(doc)) return;
-      seen.add(doc);
-      docs.push(doc);
-    }
-
-    const curDoc = tryGetDoc(window);
-    if (hasMain(curDoc)) add(curDoc);
-
-    try{
-      const iframes = Array.from(ROOT_DOC.querySelectorAll("iframe"));
-      for (const fr of iframes){
-        try{
-          const d = fr.contentWindow && fr.contentWindow.document;
-          if (hasMain(d)) add(d);
-        }catch(e){}
-      }
-    }catch(e){}
-
-    if (!docs.length) add(ROOT_DOC);
-
-    const primaryDoc = docs.find(d => hasMain(d)) || ROOT_DOC;
-
-    const primaryWin = (function(){
-      if (primaryDoc === ROOT_DOC) return ROOT_WIN;
-      if (curDoc === primaryDoc) return window;
-      try{
-        for (const fr of Array.from(ROOT_DOC.querySelectorAll("iframe"))){
-          try{
-            if (fr.contentWindow && fr.contentWindow.document === primaryDoc) return fr.contentWindow;
-          }catch(e){}
-        }
-      }catch(e){}
-      return ROOT_WIN;
-    })();
-
-    return { primaryWin, primaryDoc, docs };
-  }
+  const CONTENT_WIN = window;
+  const CONTENT_DOC = document;
 
   // =========================================================
-  // Per-Dokument Instance (kein Konflikt mit Textmarker-Import)
+  // Per-Dokument Instance (Import mehrfach => keine Kollision)
   // =========================================================
-  const REGKEY = "__LIA_TFLFONT_REG_V4__";
+  const REGKEY = "__LIA_TFF_REG_V2__";
   ROOT_WIN[REGKEY] = ROOT_WIN[REGKEY] || { instances: {} };
+  const REG = ROOT_WIN[REGKEY];
 
-  const cur = resolveContentTargets();
   const DOC_ID =
-    ((cur.primaryDoc && (cur.primaryDoc.baseURI || "")) || "") +
+    (CONTENT_DOC.baseURI || CONTENT_WIN.location.href || "") +
     "::" +
-    ((cur.primaryDoc && cur.primaryDoc.title) || "");
+    (CONTENT_DOC.title || "");
 
-  if (ROOT_WIN[REGKEY].instances[DOC_ID]?.__alive) return;
+  if (REG.instances[DOC_ID]?.__alive) return;
 
-  const I = ROOT_WIN[REGKEY].instances[DOC_ID] = {
+  const I = REG.instances[DOC_ID] = {
     __alive: true,
     ticking: false,
-    lastRaw: null,
-    lastMode: null
+    lastMode: null,
+    lastSettingsRaw: null
   };
 
   // =========================================================
-  // Helpers
+  // Helpers: CSS Injection (import-sicher)
   // =========================================================
-  function norm(x){ return String(x == null ? "" : x).toLowerCase(); }
-
   function ensureStyle(doc, id, css){
     try{
-      if (!doc || doc.getElementById(id)) return;
+      if (!doc) return;
+      const old = doc.getElementById(id);
+      if (old) return;
       const st = doc.createElement("style");
       st.id = id;
       st.textContent = css;
@@ -146,29 +66,13 @@ html[data-lia-mode="slides"] main{
     }catch(e){}
   }
 
-  function setVar(doc, k, v){
-    try { doc.documentElement.style.setProperty(k, v); } catch(e){}
-  }
-
-  function clamp(n,a,b){ return Math.max(a, Math.min(b, n)); }
-
-  function isVisible(el){
-    try{
-      if (!el) return false;
-      const cs = getComputedStyle(el);
-      if (cs.display === "none" || cs.visibility === "hidden" || cs.opacity === "0") return false;
-      const r = el.getBoundingClientRect();
-      return (r.width > 0 && r.height > 0 && r.bottom > 0 && r.right > 0);
-    }catch(e){
-      return false;
-    }
-  }
-
   // =========================================================
   // Mode detection (Lia settings in localStorage)
   // =========================================================
   const SETTINGS_KEY = "settings";
-  const FONT_KEY     = "lia-tflfont-font-px-v4";
+  const FONT_KEY     = "lia-tff-font-px-v2"; // persistierter Slider-Wert (px)
+
+  function norm(x){ return String(x == null ? "" : x).toLowerCase(); }
 
   function safeGetSettingsRaw(){
     try { return localStorage.getItem(SETTINGS_KEY); }
@@ -177,6 +81,7 @@ html[data-lia-mode="slides"] main{
 
   function findModeInJson(obj){
     const seen = new Set();
+
     function walk(v){
       if (v == null) return null;
 
@@ -192,6 +97,7 @@ html[data-lia-mode="slides"] main{
       if (seen.has(v)) return null;
       seen.add(v);
 
+      // wahrscheinliche Keys zuerst
       for (const k in v){
         if (!Object.prototype.hasOwnProperty.call(v, k)) continue;
         const key = norm(k);
@@ -201,6 +107,7 @@ html[data-lia-mode="slides"] main{
         }
       }
 
+      // dann breit suchen
       for (const k in v){
         if (!Object.prototype.hasOwnProperty.call(v, k)) continue;
         const m = walk(v[k]);
@@ -209,6 +116,7 @@ html[data-lia-mode="slides"] main{
 
       return null;
     }
+
     return walk(obj);
   }
 
@@ -228,26 +136,27 @@ html[data-lia-mode="slides"] main{
     }
   }
 
-  function applyModeAttrToDocs(mode, docs){
-    for (const d of docs){
-      try { d.documentElement.dataset.liaMode = mode; } catch(e){}
-    }
+  function applyModeAttr(mode){
+    try { CONTENT_DOC.documentElement.dataset.liaMode = mode; } catch(e){}
   }
 
   // =========================================================
-  // Theme Accent -> CSS Var
+  // Theme Accent (LiaTheme-Farbe) -> CSS Var (Root + Content)
   // =========================================================
   function getLiaAccentColor(doc){
     try{
-      if (!doc) return null;
-      const existing = doc.querySelector(".lia-btn");
+      const d = doc || document;
+      const body = d.body || d.documentElement;
+
+      // wenn schon ein lia-btn existiert
+      const existing = d.querySelector(".lia-btn");
       if (existing){
         const bg = getComputedStyle(existing).backgroundColor;
         if (bg && bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent") return bg;
       }
 
-      const body = doc.body || doc.documentElement;
-      const probe = doc.createElement("button");
+      // sonst probe erzeugen
+      const probe = d.createElement("button");
       probe.className = "lia-btn";
       probe.type = "button";
       probe.textContent = "x";
@@ -265,40 +174,65 @@ html[data-lia-mode="slides"] main{
     return null;
   }
 
-  function syncAccent(docs){
-    const acc = getLiaAccentColor(ROOT_DOC) || "rgb(11,95,255)";
-    for (const d of docs){
-      setVar(d, "--lia-tflfont-accent", acc);
-    }
+  function setVar(doc, k, v){
+    try { doc.documentElement.style.setProperty(k, v); } catch(e){}
+  }
+
+  function syncAccent(){
+    const acc =
+      getLiaAccentColor(ROOT_DOC) ||
+      getLiaAccentColor(CONTENT_DOC) ||
+      "rgb(11,95,255)";
+
+    setVar(ROOT_DOC,    "--lia-tff-accent", acc);
+    setVar(CONTENT_DOC, "--lia-tff-accent", acc);
   }
 
   // =========================================================
-  // Content CSS injection (Presentation width + font binding)
+  // CSS: Presentation width + font var (Content Document)
   // =========================================================
-  function ensureContentCSS(docs){
-    const css = `
-      html[data-lia-mode="presentation"] body{ margin:0 !important; overflow-x:hidden !important; }
-      html[data-lia-mode="presentation"] main{
-        width: var(--lia-tflfont-max-vw) !important;
-        max-width: var(--lia-tflfont-max-vw) !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        box-sizing: border-box !important;
-      }
-      html[data-lia-mode="presentation"] main,
-      html[data-lia-mode="slides"] main{
-        font-size: var(--lia-tflfont-pres-font) !important;
-      }
-    `;
-    for (const d of docs){
-      ensureStyle(d, "lia-tflfont-content-style-v4", css);
+  const CONTENT_STYLE_ID = "lia-tff-style-content-v2";
+  const CONTENT_CSS = `
+    :root{
+      --lia-tff-side-gap: 25px;     /* links/rechts ungenutzt */
+      --lia-tff-maxw: 95vw;         /* max 95% */
+      --lia-tff-font: unset;        /* wird per JS gesetzt */
     }
+
+    html[data-lia-mode="presentation"] body{
+      margin: 0 !important;
+      overflow-x: hidden !important;
+    }
+
+    /* NUR main anfassen (keine Slides-Wrapper!) */
+    html[data-lia-mode="presentation"] main{
+      box-sizing: border-box !important;
+
+      width: min(var(--lia-tff-maxw), calc(100vw - (2 * var(--lia-tff-side-gap)))) !important;
+      max-width: min(var(--lia-tff-maxw), calc(100vw - (2 * var(--lia-tff-side-gap)))) !important;
+
+      margin-left: auto !important;
+      margin-right: auto !important;
+
+      padding-left:  var(--lia-tff-side-gap) !important;
+      padding-right: var(--lia-tff-side-gap) !important;
+    }
+
+    /* Schrift-Boost: presentation UND slides */
+    html[data-lia-mode="presentation"] main,
+    html[data-lia-mode="slides"] main{
+      font-size: var(--lia-tff-font) !important;
+    }
+  `;
+
+  function ensureContentCSS(){
+    ensureStyle(CONTENT_DOC, CONTENT_STYLE_ID, CONTENT_CSS);
   }
 
   // =========================================================
-  // Font logic (auto 18/24/32) + Slider override
+  // Font logic (auto 18/24/32) + Slider override (nur Presentation)
   // =========================================================
-  const AUTO_PX = [18, 24, 32];
+  const PRES_PX = [18, 24, 32];
 
   function pxToStep0to2(px){
     if (px <= 17) return 0;
@@ -306,14 +240,10 @@ html[data-lia-mode="slides"] main{
     return 2;
   }
 
-  function getMainFontPx(doc){
-    try{
-      const main = doc.querySelector("main") || doc.documentElement;
-      const fs = parseFloat(getComputedStyle(main).fontSize || "16");
-      return isNaN(fs) ? 16 : fs;
-    }catch(e){
-      return 16;
-    }
+  function getMainFontPx(){
+    const main = CONTENT_DOC.querySelector("main") || CONTENT_DOC.documentElement;
+    const fs = parseFloat(getComputedStyle(main).fontSize || "16");
+    return isNaN(fs) ? 16 : fs;
   }
 
   function getSavedFontPx(){
@@ -322,98 +252,87 @@ html[data-lia-mode="slides"] main{
       if (!v) return null;
       const n = parseInt(v, 10);
       return isFinite(n) ? n : null;
-    }catch(e){ return null; }
-  }
-
-  function setPresFontPxForDocs(pxOrNull, docs){
-    const v = (pxOrNull == null) ? "unset" : (pxOrNull + "px");
-    for (const d of docs){
-      setVar(d, "--lia-tflfont-pres-font", v);
+    }catch(e){
+      return null;
     }
   }
 
-  // Slider-Override: zusätzlich inline auf <main>, damit Kursdateien garantiert reagieren
-  function setMainInlineFont(pxOrNull, docs){
-    for (const d of docs){
-      try{
-        const m = d.querySelector("main");
-        if (!m) continue;
-        m.style.fontSize = (pxOrNull == null) ? "" : (pxOrNull + "px");
-      }catch(e){}
-    }
+  function clamp(n, a, b){ return Math.max(a, Math.min(b, n)); }
+
+  function setPresFontPx(px){
+    // set auf Content-Doc!
+    setVar(CONTENT_DOC, "--lia-tff-font", (px == null) ? "unset" : (px + "px"));
   }
 
   let sampling = false;
 
-  function applyFontLogic(mode, docs){
-    const isPresLike = (mode === "presentation" || mode === "slides");
+  function applyFontLogic(mode){
+    const isSlides = (mode === "slides");
+    const isPres   = (mode === "presentation");
+    const isPresLike = (isPres || isSlides);
 
     if (!isPresLike){
-      setPresFontPxForDocs(null, docs);
-      setMainInlineFont(null, docs);
+      setPresFontPx(null);
       return;
     }
 
-    const min = parseInt(getComputedStyle(docs[0].documentElement).getPropertyValue("--lia-tflfont-min") || "14", 10);
-    const max = parseInt(getComputedStyle(docs[0].documentElement).getPropertyValue("--lia-tflfont-max") || "48", 10);
-
-    const saved = getSavedFontPx();
-    if (saved != null){
-      const v = clamp(saved, min, max);
-      setPresFontPxForDocs(v, docs);
-      setMainInlineFont(v, docs);
-      return;
+    // Slider-Override nur in Presentation
+    if (isPres){
+      const saved = getSavedFontPx();
+      if (saved != null){
+        const min = 14, max = 48;
+        setPresFontPx(clamp(saved, min, max));
+        return;
+      }
     }
 
+    // Auto: erst unset, dann messen
     if (sampling) return;
     sampling = true;
 
-    setPresFontPxForDocs(null, docs);
-    setMainInlineFont(null, docs);
+    setPresFontPx(null);
 
-    const targets = resolveContentTargets();
-    const pw = targets.primaryWin || ROOT_WIN;
-
-    pw.requestAnimationFrame(function(){
-      pw.requestAnimationFrame(function(){
-        const step = pxToStep0to2(getMainFontPx(targets.primaryDoc));
-        const v = AUTO_PX[step];
-        setPresFontPxForDocs(v, docs);
-        setMainInlineFont(null, docs); // auto via CSS-Var
+    CONTENT_WIN.requestAnimationFrame(function(){
+      CONTENT_WIN.requestAnimationFrame(function(){
+        const step = pxToStep0to2(getMainFontPx());
+        setPresFontPx(PRES_PX[step]);
         sampling = false;
       });
     });
   }
 
   // =========================================================
-  // Root UI: fixed Dock (drückt Layout nie um)
+  // Root UI (Overlay) – wie beim Textmarker gedacht: NICHT in Header flow
   // =========================================================
-  const DOCK_ID   = "lia-tflfont-dock-v4";
-  const BTN_ID    = "lia-tflfont-btn-v4";
-  const PANEL_ID  = "lia-tflfont-panel-v4";
-  const SLIDER_ID = "lia-tflfont-slider-v4";
-  const TITLE_CLS = "lia-tflfont-title-v4";
+  const ROOT_STYLE_ID = "lia-tff-style-root-v2";
+  const OVERLAY_ID    = "lia-tff-overlay-v2";
+  const BTN_ID        = "lia-tff-btn-v2";
+  const PANEL_ID      = "lia-tff-panel-v2";
+  const SLIDER_ID     = "lia-tff-slider-v2";
+  const TITLE_ID      = "lia-tff-title-v2";
 
-  ensureStyle(ROOT_DOC, "lia-tflfont-ui-style-root-v4", `
-    #${DOCK_ID}{
-      position: fixed !important;
-      z-index: 9999999 !important;
-      display: none !important;
-      align-items: center !important;
-      justify-content: center !important;
-      width: 32px !important;
-      height: 32px !important;
-      left: 8px !important;
-      top:  8px !important;
+  const ROOT_CSS = `
+    :root{
+      --lia-tff-accent: rgb(11,95,255);
     }
-    body.lia-tflfont-pres #${DOCK_ID}{ display: flex !important; }
+
+    /* Overlay-Container: fixed, schiebt nichts im Header */
+    #${OVERLAY_ID}{
+      position: fixed !important;
+      z-index: 99999980 !important;
+      left: 0;
+      top: 0;
+      width: 0;
+      height: 0;
+      pointer-events: none !important; /* Button bekommt wieder pointer */
+    }
 
     #${BTN_ID}{
-      position: relative !important;
-      width: 32px !important;
-      height: 32px !important;
-      padding: 0 !important;
-      margin: 0 !important;
+      pointer-events: auto !important;
+
+      position: absolute !important;
+      width: 34px !important;
+      height: 34px !important;
 
       display: inline-flex !important;
       align-items: center !important;
@@ -425,20 +344,24 @@ html[data-lia-mode="slides"] main{
 
       cursor: pointer !important;
       user-select: none !important;
+      -webkit-tap-highlight-color: transparent !important;
     }
 
-    #${BTN_ID}:hover{  background: color-mix(in srgb, var(--lia-tflfont-accent) 12%, transparent) !important; }
-    #${BTN_ID}:active{ background: color-mix(in srgb, var(--lia-tflfont-accent) 18%, transparent) !important; }
-
+    #${BTN_ID}:hover{
+      background: color-mix(in srgb, var(--lia-tff-accent) 12%, transparent) !important;
+    }
+    #${BTN_ID}:active{
+      background: color-mix(in srgb, var(--lia-tff-accent) 18%, transparent) !important;
+    }
     #${BTN_ID}:focus,
     #${BTN_ID}:focus-visible{
       outline: none !important;
       box-shadow: none !important;
     }
 
-    /* Doppel-A: klein Akzent links, groß weiß rechts (mehr Abstand) */
-    #${BTN_ID} .A-small,
-    #${BTN_ID} .A-big{
+    /* Doppel-A: Farben getauscht + mehr Abstand */
+    #${BTN_ID} .tffA-small,
+    #${BTN_ID} .tffA-big{
       position: absolute !important;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
       font-weight: 950 !important;
@@ -447,118 +370,100 @@ html[data-lia-mode="slides"] main{
       user-select: none !important;
     }
 
-    #${BTN_ID} .A-small{
-      left: 1px !important;
+    /* klein = Themefarbe */
+    #${BTN_ID} .tffA-small{
+      left: 2px !important;
       top: -3px !important;
       font-size: 24px !important;
-      color: var(--lia-tflfont-accent) !important;
-      opacity: .92 !important;
+      color: var(--lia-tff-accent) !important;
       text-shadow: 0 1px 2px rgba(0,0,0,.25) !important;
+      opacity: .95 !important;
     }
 
-    #${BTN_ID} .A-big{
+    /* groß = weiß, deutlich weiter rechts */
+    #${BTN_ID} .tffA-big{
       left: 10px !important;
-      top: -7px !important;
-      font-size: 28px !important;
+      top: -8px !important;
+      font-size: 30px !important;
       color: #fff !important;
+      text-shadow: 0 2px 3px rgba(0,0,0,.45) !important;
       opacity: .98 !important;
-      text-shadow: 0 1px 2px rgba(0,0,0,.45) !important;
     }
 
     /* Panel */
     #${PANEL_ID}{
       position: fixed !important;
-      z-index: 9999998 !important;
-      width: 260px !important;
+      z-index: 99999979 !important;
+
+      width: 240px !important;
       padding: 12px 14px !important;
+
       display: none !important;
+
       border-radius: 14px !important;
       border: 1px solid color-mix(in srgb, currentColor 18%, transparent) !important;
-      background: color-mix(in srgb, rgba(0, 0, 0, 0.62) 62%, transparent) !important;
+      background: color-mix(in srgb, rgba(0, 0, 0, 0.65) 65%, transparent) !important;
       backdrop-filter: blur(8px);
       box-shadow: 0 16px 42px rgba(0,0,0,.18) !important;
     }
-    body.lia-tflfont-panel-open #${PANEL_ID}{ display: block !important; }
 
-    #${PANEL_ID} .${TITLE_CLS}{
+    body.lia-tff-panel-open #${PANEL_ID}{
+      display: block !important;
+    }
+
+    #${TITLE_ID}{
+      font-size: 1.15rem !important;
       font-weight: 800 !important;
-      font-size: 1.2rem !important;
       margin: 0 0 10px 0 !important;
-      line-height: 1.1 !important;
       letter-spacing: .2px !important;
     }
 
     #${PANEL_ID} input[type="range"]{
       width: 100% !important;
       margin: 0 !important;
-      accent-color: var(--lia-tflfont-accent) !important;
+      accent-color: var(--lia-tff-accent) !important;
     }
-  `);
+  `;
 
-  function findHeader(){
-    return (
-      ROOT_DOC.querySelector("header#lia-toolbar-nav") ||
-      ROOT_DOC.querySelector("#lia-toolbar-nav") ||
-      ROOT_DOC.querySelector("header.lia-header") ||
-      ROOT_DOC.querySelector("header") ||
-      null
-    );
-  }
-
-  function findHeaderLeft(){
-    const header = findHeader();
-    if (!header) return null;
-    return (
-      header.querySelector(".lia-header__left") ||
-      header.querySelector("[class*='header__left']") ||
-      header.querySelector("[class*='header-left']") ||
-      header.querySelector("[class*='toolbar__left']") ||
-      header.querySelector("nav [class*='left']") ||
-      null
-    );
+  function ensureRootCSS(){
+    ensureStyle(ROOT_DOC, ROOT_STYLE_ID, ROOT_CSS);
   }
 
   function ensureUI(){
-    let dock = ROOT_DOC.getElementById(DOCK_ID);
-    if (!dock){
-      dock = ROOT_DOC.createElement("div");
-      dock.id = DOCK_ID;
-      ROOT_DOC.body.appendChild(dock);
+    // Overlay mount
+    let overlay = ROOT_DOC.getElementById(OVERLAY_ID);
+    if (!overlay){
+      overlay = ROOT_DOC.createElement("div");
+      overlay.id = OVERLAY_ID;
+      ROOT_DOC.body.appendChild(overlay);
     }
 
+    // Button
     let btn = ROOT_DOC.getElementById(BTN_ID);
     if (!btn){
       btn = ROOT_DOC.createElement("button");
       btn.id = BTN_ID;
       btn.type = "button";
       btn.setAttribute("aria-label","Schriftgröße");
-      btn.innerHTML = `<span class="A-small">A</span><span class="A-big">A</span>`;
+      btn.innerHTML = `<span class="tffA-small">A</span><span class="tffA-big">A</span>`;
+      overlay.appendChild(btn);
     }
-    if (btn.parentNode !== dock) dock.appendChild(btn);
 
+    // Panel
     let panel = ROOT_DOC.getElementById(PANEL_ID);
     if (!panel){
       panel = ROOT_DOC.createElement("div");
       panel.id = PANEL_ID;
-      panel.innerHTML = `
-        <div class="${TITLE_CLS}">Schriftgröße</div>
-        <input id="${SLIDER_ID}" type="range" min="14" max="48" step="1" value="24" aria-label="Schriftgröße" />
-      `;
+      panel.innerHTML =
+        `<div id="${TITLE_ID}">Schriftgröße</div>` +
+        `<input id="${SLIDER_ID}" type="range" min="14" max="48" step="1" value="24" aria-label="Schriftgröße" />`;
       ROOT_DOC.body.appendChild(panel);
     }
   }
 
-  function setPresentationOnlyVisibility(mode){
-    const isPresentation = (mode === "presentation");
-    ROOT_DOC.body.classList.toggle("lia-tflfont-pres", isPresentation);
-    if (!isPresentation){
-      ROOT_DOC.body.classList.remove("lia-tflfont-panel-open");
-    }
-  }
-
   // =========================================================
-  // Dock positioning: stabil im Nightly
-  // -> orientiert an rechter Kante ALLER sichtbaren Header-Left Controls
+  // Positioning: Dock an TOC/Nav-Button, plus Rücksicht auf Textmarker
+  // (ohne in den Header zu greifen -> kein Layout-Schieben)
   // =========================================================
   function getViewport(){
     const vv = ROOT_WIN.visualViewport;
@@ -569,101 +474,129 @@ html[data-lia-mode="slides"] main{
     return { w: de.clientWidth, h: de.clientHeight, ox: 0, oy: 0 };
   }
 
-  function computeHeaderLeftRightEdge(){
-    const header = findHeader();
-    const left = findHeaderLeft();
+  function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
 
-    let hr = null;
-    try { hr = header ? header.getBoundingClientRect() : null; } catch(e){ hr = null; }
+  function findTOCButton(){
+    // Heuristik: aria-label/title enthält Inhaltsverzeichnis/contents,
+    // sonst erster Button links oben im Toolbar-Header.
+    const all = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
+    const byLabel = all.find(el=>{
+      const t = ((el.getAttribute("aria-label")||el.getAttribute("title")||el.textContent||"")+"").toLowerCase();
+      return t.includes("inhaltsverzeichnis") || t.includes("table of contents") || t.includes("contents");
+    });
+    if (byLabel) return byLabel;
 
-    let maxRight = 0;
+    const header =
+      ROOT_DOC.querySelector("header#lia-toolbar-nav") ||
+      ROOT_DOC.querySelector("#lia-toolbar-nav") ||
+      ROOT_DOC.querySelector("header.lia-header");
 
-    // 1) aus Header-Left ALLE sichtbaren Buttons/Links sammeln
-    if (left){
-      const nodes = Array.from(left.querySelectorAll("button,a,[role='button']"));
-      for (const el of nodes){
-        if (!isVisible(el)) continue;
-        if (el.closest && (el.closest("#"+DOCK_ID) || el.closest("#"+PANEL_ID))) continue;
+    if (header){
+      const left = header.querySelector(".lia-header__left") || header;
+      const btn = left.querySelector("button,[role='button'],a");
+      if (btn) return btn;
+    }
 
-        const r = el.getBoundingClientRect();
+    // Fallback: erster Button überhaupt
+    return all.find(el=>el.tagName === "BUTTON") || null;
+  }
 
-        // nur Elemente, die vertikal in der Header-Zeile liegen
-        if (hr){
-          const midY = r.top + r.height/2;
-          if (midY < hr.top - 20 || midY > hr.bottom + 20) continue;
-        }
+  function findMarkerButton(){
+    // bewusst defensiv – wir nehmen nur sehr eindeutige Matches
+    return ROOT_DOC.querySelector(
+      'button[aria-label*="Textmarker" i],' +
+      'button[title*="Textmarker" i],' +
+      'button[id*="textmarker" i],' +
+      'button[class*="textmarker" i]'
+    );
+  }
 
-        maxRight = Math.max(maxRight, r.right);
+  function positionOverlayButton(){
+    const btn = ROOT_DOC.getElementById(BTN_ID);
+    const overlay = ROOT_DOC.getElementById(OVERLAY_ID);
+    if (!btn || !overlay) return;
+
+    const vp = getViewport();
+    const pad = 8;          // viewport padding
+    const gap = 10;         // Abstand zu anderen Buttons
+    const size = 34;
+
+    const toc = findTOCButton();
+    const mrk = findMarkerButton();
+
+    // Default Anchor
+    let ax = pad;
+    let ay = pad;
+    let ar = pad + size;
+    let acy = ay + size/2;
+
+    if (toc){
+      const r = toc.getBoundingClientRect();
+      ax = r.left;
+      ay = r.top;
+      ar = r.right;
+      acy = r.top + r.height/2;
+    }
+
+    // falls Textmarker weiter rechts sitzt: daran vorbei
+    if (mrk){
+      const r2 = mrk.getBoundingClientRect();
+      ar = Math.max(ar, r2.right);
+      // vertikal: lieber am TOC ausrichten, aber wenn TOC nicht existiert, Marker nehmen
+      if (!toc){
+        ax = r2.left;
+        ay = r2.top;
+        acy = r2.top + r2.height/2;
       }
     }
 
-    // 2) Fallback: wenn Header-Left leer ist, nimm Header selbst
-    if (maxRight <= 0 && hr){
-      maxRight = Math.max(0, hr.left);
-    }
+    // Zielposition: rechts neben "rechtestem" (TOC/Marker)
+    let left = ar + gap;
+    let top  = acy - (size/2);
 
-    return { maxRight, hr };
+    // Clamp in Viewport
+    left = clamp(left, pad, vp.w - size - pad);
+    top  = clamp(top,  pad, vp.h - size - pad);
+
+    // VisualViewport offset
+    overlay.style.left = `${Math.round(vp.ox)}px`;
+    overlay.style.top  = `${Math.round(vp.oy)}px`;
+
+    btn.style.left = `${Math.round(left)}px`;
+    btn.style.top  = `${Math.round(top)}px`;
   }
 
-  function positionDock(){
-    const dock = ROOT_DOC.getElementById(DOCK_ID);
-    if (!dock || !ROOT_DOC.body.classList.contains("lia-tflfont-pres")) return;
-
-    const vp = getViewport();
-    const { maxRight, hr } = computeHeaderLeftRightEdge();
-
-    const pad = 8;
-    const gap = 10;
-
-    // X: rechts neben dem rechten Rand der Header-Left Controls
-    let x = (maxRight > 0 ? maxRight + gap : pad);
-
-    // Y: exakt in Header-Zeile zentrieren
-    let y = pad;
-    if (hr){
-      y = hr.top + (hr.height - 32)/2;
-    }
-
-    x = clamp(x, pad, vp.w - 32 - pad);
-    y = clamp(y, pad, vp.h - 32 - pad);
-
-    dock.style.left = Math.round(x + vp.ox) + "px";
-    dock.style.top  = Math.round(y + vp.oy) + "px";
-  }
-
-  // =========================================================
-  // Panel positioning
-  // =========================================================
   function measurePanel(panel){
-    const prevDisplay = panel.style.display;
-    const prevVis = panel.style.visibility;
-    const prevLeft = panel.style.left;
-    const prevTop = panel.style.top;
+    const prevD = panel.style.display;
+    const prevV = panel.style.visibility;
+    const prevL = panel.style.left;
+    const prevT = panel.style.top;
 
     panel.style.display = "block";
     panel.style.visibility = "hidden";
     panel.style.left = "-9999px";
     panel.style.top  = "-9999px";
 
-    const w = panel.offsetWidth || 260;
+    const w = panel.offsetWidth || 240;
     const h = panel.offsetHeight || 90;
 
-    panel.style.display = prevDisplay;
-    panel.style.visibility = prevVis;
-    panel.style.left = prevLeft;
-    panel.style.top  = prevTop;
+    panel.style.display = prevD;
+    panel.style.visibility = prevV;
+    panel.style.left = prevL;
+    panel.style.top  = prevT;
 
     return { w, h };
   }
 
   function positionPanel(){
-    const dock = ROOT_DOC.getElementById(DOCK_ID);
+    const btn = ROOT_DOC.getElementById(BTN_ID);
     const panel = ROOT_DOC.getElementById(PANEL_ID);
-    if (!dock || !panel) return;
-    if (!ROOT_DOC.body.classList.contains("lia-tflfont-panel-open")) return;
+    if (!btn || !panel) return;
 
+    if (!ROOT_DOC.body.classList.contains("lia-tff-panel-open")) return;
+
+    const r = btn.getBoundingClientRect();
     const vp = getViewport();
-    const r = dock.getBoundingClientRect();
     const sz = measurePanel(panel);
 
     const gap = 10;
@@ -673,9 +606,11 @@ html[data-lia-mode="slides"] main{
     let top  = r.bottom + gap;
 
     left = clamp(left, pad, vp.w - sz.w - pad);
+
     if (top + sz.h + pad > vp.h){
       top = r.top - gap - sz.h;
     }
+
     top = clamp(top, pad, vp.h - sz.h - pad);
 
     panel.style.left = `${Math.round(left + vp.ox)}px`;
@@ -685,82 +620,89 @@ html[data-lia-mode="slides"] main{
   // =========================================================
   // Wiring
   // =========================================================
-  function wireOnce(){
-    const btn    = ROOT_DOC.getElementById(BTN_ID);
-    const slider = ROOT_DOC.getElementById(SLIDER_ID);
-    if (!btn || !slider) return;
-
-    if (!btn.__tflfontWired){
-      btn.__tflfontWired = true;
-
-      btn.addEventListener("click", (e)=>{
-        e.preventDefault();
-        e.stopPropagation();
-        const open = ROOT_DOC.body.classList.toggle("lia-tflfont-panel-open");
-        if (open) positionPanel();
-      });
-
-      ROOT_DOC.addEventListener("click", (e)=>{
-        if (!ROOT_DOC.body.classList.contains("lia-tflfont-panel-open")) return;
-        const t = e.target;
-        if (t && t.closest && (t.closest("#"+PANEL_ID) || t.closest("#"+BTN_ID) || t.closest("#"+DOCK_ID))) return;
-        ROOT_DOC.body.classList.remove("lia-tflfont-panel-open");
-      }, true);
-
-      ROOT_DOC.addEventListener("keydown", (e)=>{
-        if (e.key === "Escape"){
-          ROOT_DOC.body.classList.remove("lia-tflfont-panel-open");
-        }
-      });
-
-      ROOT_WIN.addEventListener("resize", ()=>{ positionDock(); positionPanel(); });
-      if (ROOT_WIN.visualViewport){
-        ROOT_WIN.visualViewport.addEventListener("resize", ()=>{ positionDock(); positionPanel(); });
-        ROOT_WIN.visualViewport.addEventListener("scroll", ()=>{ positionDock(); positionPanel(); });
-      }
-    }
-
-    if (!slider.__tflfontWired){
-      slider.__tflfontWired = true;
-
-      slider.addEventListener("input", ()=>{
-        const targets = resolveContentTargets();
-        const docs = targets.docs;
-
-        const min = parseInt(slider.min || "14", 10);
-        const max = parseInt(slider.max || "48", 10);
-        const v = clamp(parseInt(slider.value || "24", 10), min, max);
-
-        try { localStorage.setItem(FONT_KEY, String(v)); } catch(e){}
-
-        setPresFontPxForDocs(v, docs);
-        setMainInlineFont(v, docs);
-      });
+  function setPresentationOnlyVisibility(mode){
+    const isPres = (mode === "presentation");
+    const btn = ROOT_DOC.getElementById(BTN_ID);
+    const panel = ROOT_DOC.getElementById(PANEL_ID);
+    if (btn) btn.style.display = isPres ? "inline-flex" : "none";
+    if (!isPres && panel){
+      ROOT_DOC.body.classList.remove("lia-tff-panel-open");
+      panel.style.display = "none";
     }
   }
 
-  function syncSliderToCurrentFont(docs){
+  function syncSliderToCurrent(){
     const slider = ROOT_DOC.getElementById(SLIDER_ID);
     if (!slider) return;
 
     const min = parseInt(slider.min || "14", 10);
     const max = parseInt(slider.max || "48", 10);
 
+    // saved (nur Presentation relevant, aber Slider nur dort sichtbar)
     const saved = getSavedFontPx();
     if (saved != null){
       slider.value = String(clamp(saved, min, max));
       return;
     }
 
-    try{
-      const v = getComputedStyle(docs[0].documentElement).getPropertyValue("--lia-tflfont-pres-font").trim();
-      const n = parseInt(v, 10);
-      if (isFinite(n)) slider.value = String(clamp(n, min, max));
-    }catch(e){}
+    // current var
+    const v = getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue("--lia-tff-font").trim();
+    const n = parseInt(v, 10);
+    if (isFinite(n)) slider.value = String(clamp(n, min, max));
+  }
+
+  function wireOnce(){
+    const btn = ROOT_DOC.getElementById(BTN_ID);
+    const slider = ROOT_DOC.getElementById(SLIDER_ID);
+    if (!btn || !slider) return;
+
+    if (!btn.__liaTffWired){
+      btn.__liaTffWired = true;
+
+      btn.addEventListener("click", (e)=>{
+        e.preventDefault();
+        e.stopPropagation();
+        ROOT_DOC.body.classList.toggle("lia-tff-panel-open");
+        positionPanel();
+      });
+
+      // Klick außerhalb schließt Panel
+      ROOT_DOC.addEventListener("click", (e)=>{
+        if (!ROOT_DOC.body.classList.contains("lia-tff-panel-open")) return;
+        const t = e.target;
+        if (t && t.closest && (t.closest("#"+PANEL_ID) || t.closest("#"+BTN_ID))) return;
+        ROOT_DOC.body.classList.remove("lia-tff-panel-open");
+      }, true);
+
+      ROOT_DOC.addEventListener("keydown", (e)=>{
+        if (e.key === "Escape"){
+          ROOT_DOC.body.classList.remove("lia-tff-panel-open");
+        }
+      });
+
+      ROOT_WIN.addEventListener("resize", ()=>{ positionOverlayButton(); positionPanel(); });
+      if (ROOT_WIN.visualViewport){
+        ROOT_WIN.visualViewport.addEventListener("resize", ()=>{ positionOverlayButton(); positionPanel(); });
+        ROOT_WIN.visualViewport.addEventListener("scroll", ()=>{ positionOverlayButton(); positionPanel(); });
+      }
+    }
+
+    if (!slider.__liaTffWired){
+      slider.__liaTffWired = true;
+
+      slider.addEventListener("input", ()=>{
+        const min = parseInt(slider.min || "14", 10);
+        const max = parseInt(slider.max || "48", 10);
+        const v = clamp(parseInt(slider.value || "24", 10), min, max);
+
+        try { localStorage.setItem(FONT_KEY, String(v)); } catch(e){}
+        setPresFontPx(v);
+      });
+    }
   }
 
   // =========================================================
-  // Tick (ensure-Pattern)
+  // Tick (throttled) – ensure-Functions, damit Import immer greift
   // =========================================================
   function tick(){
     if (I.ticking) return;
@@ -768,29 +710,38 @@ html[data-lia-mode="slides"] main{
 
     ROOT_WIN.requestAnimationFrame(() => {
       try{
-        const targets = resolveContentTargets();
-        const docs = targets.docs;
+        // 0) CSS sicher injizieren
+        ensureContentCSS();
+        ensureRootCSS();
 
-        const raw  = safeGetSettingsRaw();
+        // 1) Modus
+        const settingsRaw = safeGetSettingsRaw();
         const mode = detectMode();
+        applyModeAttr(mode);
 
-        ensureContentCSS(docs);
-        applyModeAttrToDocs(mode, docs);
-        syncAccent(docs);
+        // 2) Theme-Farbe
+        syncAccent();
 
+        // 3) UI sicherstellen + sichtbar nur in Presentation
         ensureUI();
         setPresentationOnlyVisibility(mode);
-        wireOnce();
 
-        if (raw !== I.lastRaw || mode !== I.lastMode){
-          applyFontLogic(mode, docs);
-          I.lastRaw  = raw;
+        // 4) Position (Button + Panel)
+        positionOverlayButton();
+
+        // 5) Font-Logik: nur wenn Mode/Settings wechseln
+        if (mode !== I.lastMode || settingsRaw !== I.lastSettingsRaw){
+          applyFontLogic(mode);
           I.lastMode = mode;
+          I.lastSettingsRaw = settingsRaw;
         }
 
-        syncSliderToCurrentFont(docs);
-        positionDock();
+        // 6) Slider sync + Panel position
+        syncSliderToCurrent();
         positionPanel();
+
+        // 7) Wiring
+        wireOnce();
 
       } finally {
         I.ticking = false;
@@ -798,9 +749,15 @@ html[data-lia-mode="slides"] main{
     });
   }
 
+  // Beobachter: Toolbar/DOM kommt manchmal später (Nightly)
   try{
     const mo = new MutationObserver(() => tick());
     mo.observe(ROOT_DOC.documentElement, { childList:true, subtree:true });
+  }catch(e){}
+
+  try{
+    const mo2 = new MutationObserver(() => tick());
+    mo2.observe(CONTENT_DOC.documentElement, { childList:true, subtree:true });
   }catch(e){}
 
   ROOT_WIN.addEventListener("storage", function(e){
@@ -809,11 +766,16 @@ html[data-lia-mode="slides"] main{
   });
 
   tick();
-  ROOT_WIN.setInterval(() => tick(), 350);
+  ROOT_WIN.setInterval(() => { if (I.__alive) tick(); }, 350);
 
 })();
 @end
+
 -->
+
+
+
+
 
 
 
@@ -827,7 +789,8 @@ html[data-lia-mode="slides"] main{
 
 # Tafelmodus
 
-
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-
-
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
