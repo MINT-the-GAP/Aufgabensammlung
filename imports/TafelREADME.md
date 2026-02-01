@@ -366,7 +366,7 @@ author: Martin Lommatzsch
     /* klein = Themefarbe */
     #${BTN_ID} .tffA-small{
       left: 2px !important;
-      top: -3px !important;
+      top: 3px !important;
       font-size: 24px !important;
       color: var(--lia-tff-accent) !important;
       text-shadow: 0 1px 2px rgba(0,0,0,.25) !important;
@@ -376,7 +376,7 @@ author: Martin Lommatzsch
     /* groß = weiß, deutlich weiter rechts */
     #${BTN_ID} .tffA-big{
       left: 10px !important;
-      top: -8px !important;
+      top: -2px !important;
       font-size: 30px !important;
       color: #fff !important;
       text-shadow: 0 2px 3px rgba(0,0,0,.45) !important;
