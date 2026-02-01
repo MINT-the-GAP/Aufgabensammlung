@@ -1,5 +1,5 @@
 <!--
-comment: Lia Textmarker (import-sicher) — Erase blockiert nichts + Theme/Accent robust
+comment: Lia Textmarker (import-sicher) — Panel immer im Viewport (auch "Navigation" Layout)
 author: Martin Lommatzsch
 
 @onload
@@ -80,14 +80,14 @@ author: Martin Lommatzsch
       pointer-events: none !important;
     }
 
-    /* Nur die Rects sind klickbar (Erase), nie das Overlay */
+    /* Nur die Rects sind klickbar (Erase) */
     .lia-hl-rect{
       position: absolute !important;
       border-radius: 6px !important;
       box-shadow: 0 1px 0 rgba(0,0,0,.08) inset;
       mix-blend-mode: multiply;
 
-      pointer-events: auto !important; /* <— WICHTIG: nur rects nehmen clicks */
+      pointer-events: auto !important;
       cursor: pointer;
     }
 
@@ -243,7 +243,7 @@ author: Martin Lommatzsch
   `);
 
   // =========================
-  // Theme/Accent robust (Fix #2)
+  // Theme/Accent robust
   // =========================
   function parseRGB(str){
     const m = (str || "").match(/rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)/i);
@@ -267,7 +267,6 @@ author: Martin Lommatzsch
   }
 
   function adaptUIVars(){
-    // 1) Prefer ROOT header background (stabil bei Lia)
     const rootHeader =
       ROOT_DOC.querySelector("header#lia-toolbar-nav") ||
       ROOT_DOC.querySelector("#lia-toolbar-nav") ||
@@ -287,7 +286,6 @@ author: Martin Lommatzsch
     const bg = parseRGB(bgStr) || {r:255,g:255,b:255};
     const isDark = luminance(bg) < 0.45;
 
-    // Accent: prefer ROOT link/button color (Header)
     const rootAnchor =
       (rootHeader && (rootHeader.querySelector("a") || rootHeader.querySelector("button"))) ||
       CONTENT_DOC.querySelector("main a") ||
@@ -296,7 +294,6 @@ author: Martin Lommatzsch
     const accentStr =
       rootAnchor ? getComputedStyle(rootAnchor).color : "rgb(11,95,255)";
 
-    // Accent in beide Docs
     try { setVar(ROOT_DOC, "--hl-accent", accentStr); } catch(e){}
     try { setVar(CONTENT_DOC, "--hl-accent", accentStr); } catch(e){}
 
@@ -324,7 +321,6 @@ author: Martin Lommatzsch
 
   adaptUIVars();
 
-  // beobachte Theme-Klassen/Attribute (statt blindem Polling)
   function watchTheme(){
     if (I.mo) return;
     try{
@@ -374,7 +370,7 @@ author: Martin Lommatzsch
   CONTENT_WIN.addEventListener("resize", () => { adaptUIVars(); render(); });
 
   // =========================
-  // Root UI: exakt an TOC anheften (wie dein Original)
+  // Root UI: an TOC anheften
   // =========================
   function findHeaderLeft(){
     const header = ROOT_DOC.querySelector("header#lia-toolbar-nav") || ROOT_DOC.querySelector("#lia-toolbar-nav");
@@ -440,13 +436,85 @@ author: Martin Lommatzsch
     }
   }
 
-  function positionPanelUnderButton(){
+  // =========================
+  // Panel Position: SMART (Viewport Clamp + Above-Fallback)
+  // =========================
+  function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
+
+  function getViewport(){
+    // visualViewport ist in Nightly/Zoom-Fällen oft genauer
+    const vv = ROOT_WIN.visualViewport;
+    if (vv){
+      return {
+        w: vv.width,
+        h: vv.height,
+        ox: vv.offsetLeft || 0,
+        oy: vv.offsetTop || 0
+      };
+    }
+    const de = ROOT_DOC.documentElement;
+    return {
+      w: de.clientWidth,
+      h: de.clientHeight,
+      ox: 0,
+      oy: 0
+    };
+  }
+
+  function measurePanel(panel){
+    // Panel ist nur im offenen Zustand display:block; ansonsten messen wir defensiv.
+    const prevVis = panel.style.visibility;
+    const prevLeft = panel.style.left;
+    const prevTop = panel.style.top;
+
+    panel.style.visibility = "hidden";
+    panel.style.left = "-9999px";
+    panel.style.top  = "-9999px";
+
+    const w = panel.offsetWidth || 130;
+    const h = panel.offsetHeight || 180;
+
+    panel.style.visibility = prevVis;
+    panel.style.left = prevLeft;
+    panel.style.top  = prevTop;
+
+    return { w, h };
+  }
+
+  function positionPanelSmart(){
     const btn = ROOT_DOC.getElementById("lia-hl-btn");
     const panel = ROOT_DOC.getElementById("lia-hl-panel");
     if (!btn || !panel) return;
+    if (!(I.state.active && I.state.panelOpen)) return;
+
+    const gap = 10;
+    const pad = 8;
+
     const r = btn.getBoundingClientRect();
-    panel.style.left = `${Math.max(12, Math.round(r.left))}px`;
-    panel.style.top  = `${Math.round(r.bottom + 10)}px`;
+    const vp = getViewport();
+    const sz = measurePanel(panel);
+
+    // Preferred: below-left aligned
+    let left = r.left;
+    let top  = r.bottom + gap;
+
+    // If panel would overflow right => shift left
+    left = clamp(left, pad, vp.w - sz.w - pad);
+
+    // If it overflows bottom => open above
+    if (top + sz.h + pad > vp.h){
+      top = r.top - gap - sz.h;
+    }
+
+    // Clamp vertically as well
+    top = clamp(top, pad, vp.h - sz.h - pad);
+
+    // Consider visualViewport offset (mobile/zoom)
+    left = left + vp.ox;
+    top  = top  + vp.oy;
+
+    panel.style.left = `${Math.round(left)}px`;
+    panel.style.top  = `${Math.round(top)}px`;
   }
 
   function ensureSwatchesOnce(){
@@ -512,7 +580,10 @@ author: Martin Lommatzsch
       });
     }
 
-    if (I.state.active && I.state.panelOpen) positionPanelUnderButton();
+    // WICHTIG: Panel messen/positionieren erst NACH Layout
+    if (I.state.active && I.state.panelOpen){
+      ROOT_WIN.requestAnimationFrame(() => positionPanelSmart());
+    }
   }
 
   function wireUIOnce(){
@@ -550,7 +621,6 @@ author: Martin Lommatzsch
       });
     }
 
-    // Erase toggelt nur den Werkzeugmodus — blockiert nichts, weil Overlay keine clicks frisst
     if (toolErase){
       toolErase.addEventListener("click", ()=>{
         I.state.tool = (I.state.tool === "erase") ? "mark" : "erase";
@@ -571,10 +641,17 @@ author: Martin Lommatzsch
     ROOT_DOC.addEventListener("keydown", (e)=>{
       if (e.key === "Escape" && I.state.active){
         I.state.panelOpen = false;
-        I.state.tool = "mark"; // ESC bringt dich sicher raus aus erase
+        I.state.tool = "mark";
         applyUI();
       }
     });
+
+    // bei viewport-changes neu positionieren
+    ROOT_WIN.addEventListener("resize", () => positionPanelSmart());
+    if (ROOT_WIN.visualViewport){
+      ROOT_WIN.visualViewport.addEventListener("resize", () => positionPanelSmart());
+      ROOT_WIN.visualViewport.addEventListener("scroll", () => positionPanelSmart());
+    }
   }
 
   // =========================
@@ -617,7 +694,6 @@ author: Martin Lommatzsch
     addHighlightFromSelection();
   }, true);
 
-  // Wichtig: Erase nur auf Rects, nie Overlay
   CONTENT_DOC.addEventListener("click", (e)=>{
     if (!I.state.active) return;
     if (I.state.tool !== "erase") return;
@@ -643,14 +719,14 @@ author: Martin Lommatzsch
   applyUI();
   render();
 
-  // defensiv: bei Lia DOM updates den Button erneut korrekt andocken
+  // defensiv: bei Lia DOM updates erneut andocken + ggf. repositionieren
   try{
     const mo2 = new MutationObserver(()=>{
       ensureRootButtonAndPanel();
       ensureSwatchesOnce();
-      applyUI();
       adaptUIVars();
-      if (I.state.active && I.state.panelOpen) positionPanelUnderButton();
+      applyUI();
+      positionPanelSmart();
     });
     mo2.observe(ROOT_DOC.body, { childList:true, subtree:true, attributes:true });
   } catch(e){}
