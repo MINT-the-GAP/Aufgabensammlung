@@ -122,6 +122,8 @@ canvas.lia-draw{
   width: 100%;
   max-width: 100%;
   margin: 6px 0;
+  flex: 0 0 100%;
+  min-width: 0;
 }
 .lia-canvas-mount[data-open="1"]{ display: block; }
 
@@ -1231,32 +1233,32 @@ function ensureCss(){
       wrap.appendChild(bl);
       wrap.appendChild(br);
 
-      const MIN_H = 120;
-      const MAX_H = 900;
+      const MIN_H = 130;
+      const MAX_H = 9000;
       const MIN_W = 280;
 
       const clamp = (v,a,b) => Math.max(a, Math.min(b, v));
 
       function containerMaxWidth(){
-        // Wir laufen nach oben bis wir einen Container finden,
-        // der NICHT inline/inline-block/contents ist.
-        let host = wrap;
-        for (let i = 0; i < 12; i++){
-          const p = host && host.parentElement ? host.parentElement : null;
-          if (!p) break;
-          host = p;
-      
-          try{
-            const d = String(getComputedStyle(host).display || '');
-            if (d !== 'inline' && d !== 'inline-block' && d !== 'contents'){
-              break; // gefunden: "echter" Breiten-Container
-            }
-          }catch(_){
-            break;
-          }
+        // Wichtig: NICHT wrap selbst (das schrumpft), sondern der Mount / sein Parent
+        const mount = wrap.closest('.lia-canvas-mount');
+        let host = null;
+
+        if (mount){
+          // mount ist 100% breit (oder flex:0 0 100%), daher ist DAS unsere Obergrenze
+          host = mount;
+        }else{
+          host = wrap.parentElement || wrap;
         }
-      
-        const w = (host && host.getBoundingClientRect) ? host.getBoundingClientRect().width : 0;
+
+        let w = 0;
+        try{ w = host.getBoundingClientRect().width; }catch(_){}
+
+        // Fallback: wenn irgendwas "komisch klein" ist, nimm main als harte Obergrenze
+        if ((!w || w < MIN_W) && document.querySelector('main')){
+          try{ w = document.querySelector('main').getBoundingClientRect().width; }catch(_){}
+        }
+
         return Math.max(MIN_W, Math.floor(w || 0));
       }
 
@@ -1603,6 +1605,18 @@ function ensureCss(){
       const mount = document.getElementById('lia-canvas-mount-' + uid);
       if (!mount) return;
 
+      // Wenn wir in einem flex-nowrap Wrapper sitzen (z.B. bei [[..]]), erzwingen wir Umbruch
+      try{
+        const parent = mount.parentElement;
+        if (parent){
+          const cs = getComputedStyle(parent);
+          if (cs && String(cs.display).includes('flex') && String(cs.flexWrap) === 'nowrap'){
+            parent.style.flexWrap = 'wrap';
+          }
+        }
+      }catch(_){}
+
+
       const isOpen = mount.dataset.open === '1';
 
       if (!isOpen){
@@ -1631,10 +1645,11 @@ function ensureCss(){
       <path class="launch-stroke" d="M14.2 5.2l4.6 4.6"/>
     </svg>
   </button>
-
-  <span id="lia-canvas-mount-@0" class="lia-canvas-mount" data-open="0"></span>
 </span>
+
+<span id="lia-canvas-mount-@0" class="lia-canvas-mount" data-open="0"></span>
 @end
+
 -->
 
 
@@ -1653,4 +1668,7 @@ function ensureCss(){
 
 **Befehl:** `@canvas`
 
+
+
+[[ 2 ]] 
 @canvas
