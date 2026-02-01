@@ -490,16 +490,67 @@ author: Martin Lommatzsch
     const csMain = CONTENT_WIN.getComputedStyle(main);
     const csRoot = CONTENT_WIN.getComputedStyle(CONTENT_DOC.documentElement);
 
-    // Root-Klassen beeinflussen Präsentationsmodus/Fonts (Nightly)
+    // Root/Content Klassen + ggf. data-Attribute (Nightly toggles)
     const rootClass = (ROOT_DOC.documentElement.className || "") + "|" + (ROOT_DOC.body.className || "");
     const contClass = (CONTENT_DOC.documentElement.className || "") + "|" + (CONTENT_DOC.body.className || "");
 
+    const rootDE = ROOT_DOC.documentElement;
+    const rootBody = ROOT_DOC.body;
+    const rootData =
+      (rootDE?.getAttribute("data-mode")||"") + "|" +
+      (rootDE?.getAttribute("data-view")||"") + "|" +
+      (rootDE?.getAttribute("data-layout")||"") + "|" +
+      (rootBody?.getAttribute("data-mode")||"") + "|" +
+      (rootBody?.getAttribute("data-view")||"") + "|" +
+      (rootBody?.getAttribute("data-layout")||"");
+
+    const contDE = CONTENT_DOC.documentElement;
+    const contBody = CONTENT_DOC.body;
+    const contData =
+      (contDE?.getAttribute("data-mode")||"") + "|" +
+      (contDE?.getAttribute("data-view")||"") + "|" +
+      (contDE?.getAttribute("data-layout")||"") + "|" +
+      (contBody?.getAttribute("data-mode")||"") + "|" +
+      (contBody?.getAttribute("data-view")||"") + "|" +
+      (contBody?.getAttribute("data-layout")||"");
+
+    // >>> entscheidend: GEOMETRIE (Offsets), nicht nur Styles
+    const mr = main.getBoundingClientRect();
+    const mainGeo = [mr.left, mr.top, mr.width].map(v => Math.round(v)).join(",");
+
+    // Root-Header kann im Navigation-Modus andere Geometrie haben
+    const header =
+      ROOT_DOC.querySelector("header#lia-toolbar-nav") ||
+      ROOT_DOC.querySelector("#lia-toolbar-nav") ||
+      ROOT_DOC.querySelector("header.lia-header");
+    let headerGeo = "nohdr";
+    if (header){
+      const hr = header.getBoundingClientRect();
+      headerGeo = [hr.left, hr.top, hr.width, hr.height].map(v => Math.round(v)).join(",");
+    }
+
+    // Viewport-Geometrie (Navigation kann VisualViewport/Insets verändern)
+    const vv = ROOT_WIN.visualViewport;
+    const vpGeo = vv
+      ? [vv.width, vv.height, vv.offsetLeft||0, vv.offsetTop||0].map(v => Math.round(v)).join(",")
+      : [
+          (ROOT_DOC.documentElement.clientWidth||0),
+          (ROOT_DOC.documentElement.clientHeight||0),
+          0,0
+        ].map(v => Math.round(v)).join(",");
+
     return [
+      // styles
       csRoot.fontSize, csMain.fontSize, csMain.lineHeight,
       csMain.width, csMain.paddingLeft, csMain.paddingRight,
-      rootClass, contClass
+      // classes/data
+      rootClass, contClass, rootData, contData,
+      // geometry (THIS FIXES NAVIGATION MODE)
+      mainGeo, headerGeo, vpGeo
     ].join("§");
   }
+
+
 
   function recalcAllHighlights(){
     for (const item of I.HL){
@@ -921,6 +972,7 @@ author: Martin Lommatzsch
       try{
         ensureRootButtonAndPanel();
         detectNavStack();
+        checkLayoutAndRecalc();
         ensureSwatchesOnce();
         wireUIOnce();
         adaptUIVars();
