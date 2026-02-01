@@ -1,5 +1,5 @@
 <!--
-version: 0.0.1
+version: 0.0.2
 language: de
 narrator: Deutsch Female
 
@@ -12,6 +12,8 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 # Geo2
 
 
+Klicke auf den Stift im Header und markiere im Text wie es dir beliebt.
+Klicke auf den Stift im Header und markiere im Text wie es dir beliebt.
 Klicke auf den Stift im Header und markiere im Text wie es dir beliebt.
 Klicke auf den Stift im Header und markiere im Text wie es dir beliebt.
 Klicke auf den Stift im Header und markiere im Text wie es dir beliebt.
