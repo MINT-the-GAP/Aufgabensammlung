@@ -25,10 +25,12 @@ comment: Canvas (import-sicher) — Original-Design (SVG) + inline-stabil + no-r
    Canvas Block: KEIN horizontal scroll!
    --------------------------------------------------------- */
 .lia-draw-block{
+  display: block;         /* <-- WICHTIG, weil Markup jetzt <span> ist */
   width: 100%;
   overflow-x: hidden;
   overflow-y: visible;
 }
+
 
 /* Canvas-Rahmen */
 .lia-draw-wrap{
@@ -338,29 +340,77 @@ canvas.lia-draw{
   // CSS-Fallback: falls @style aus Import nicht greift → injizieren
   // (Design bleibt identisch, nur robust)
   // =========================================================
-  function ensureCss(){
-    if (document.getElementById('__lia_canvas_css_v1')) return;
-    const st = document.createElement('style');
-    st.id = '__lia_canvas_css_v1';
+function ensureCss(){
+  if (document.getElementById('__lia_canvas_css_v2')) return;
 
-    // Minimaler Satz: die Klassen aus @style (identisch genug, um leere/broken Buttons zu verhindern)
-    // (wir injizieren nicht alles doppelt — @style bleibt die “Quelle”, JS ist nur Fallback)
-    st.textContent = `
-      .lia-canvas-launch{width:32px;height:32px;border-radius:999px;background:transparent;border:2px solid var(--canvas-accent);
-        display:inline-flex;align-items:center;justify-content:center;line-height:0;margin-right:6px}
-      .lia-canvas-launch svg{width:18px;height:18px;display:block}
-      .lia-canvas-launch .launch-stroke{stroke:var(--canvas-accent);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-      .lia-canvas-mount{display:none;width:100%;max-width:100%;margin:6px 0}
-      .lia-canvas-mount[data-open="1"]{display:block}
-      .lia-draw-wrap{width:min(520px,100%);border:2px solid var(--canvas-border);border-radius:10px;box-sizing:border-box;position:relative;display:block;max-width:100%}
-      canvas.lia-draw{width:100%;height:150px;display:block;background:transparent;touch-action:none;cursor:crosshair;border-radius:8px}
-      .lia-toolstack{position:absolute;left:10px;top:50%;transform:translate(0,-50%);z-index:25;display:flex;flex-direction:column;gap:5px}
-      .lia-tool-btn{width:22px;height:22px;padding:0;border:2px solid var(--canvas-border);border-radius:999px;cursor:pointer;user-select:none;display:grid;place-items:center;background:transparent}
-      .lia-tool-btn svg{width:14px;height:14px;display:block;margin:0}
-      .lia-tool-btn .ico-stroke{stroke:var(--canvas-border);fill:none}
-    `;
-    (document.head || document.documentElement).appendChild(st);
-  }
+  const st = document.createElement('style');
+  st.id = '__lia_canvas_css_v2';
+
+  st.textContent = [
+    ':root{',
+    '  --canvas-border:#000;',
+    '  --canvas-pen:#000;',
+    '  --canvas-accent:#0b5fff;',
+    '}',
+    '@media (prefers-color-scheme: dark){',
+    '  :root{ --canvas-border:#fff; --canvas-pen:#fff; }',
+    '}',
+
+    '.lia-draw-block{ display:block; width:100%; overflow-x:hidden; overflow-y:visible; }',
+    '.lia-draw-wrap{ width:min(520px,100%); border:2px solid var(--canvas-border); border-radius:10px; box-sizing:border-box; position:relative; display:block; max-width:100%; }',
+    'canvas.lia-draw{ width:100%; height:150px; display:block; background:transparent; touch-action:none; cursor:crosshair; border-radius:8px; }',
+
+    '.lia-toolstack{ position:absolute; left:10px; top:50%; transform:translate(0,-50%); z-index:25; display:flex; flex-direction:column; gap:5px; }',
+    '.lia-tool-btn{ width:22px; height:22px; padding:0; border:2px solid var(--canvas-border); border-radius:999px; cursor:pointer; user-select:none; display:grid; place-items:center; background:transparent; }',
+    '.lia-tool-btn:disabled{ opacity:.35; cursor:not-allowed; }',
+    '.lia-tool-btn svg{ width:14px; height:14px; display:block; margin:0; transform:translate(0,0); }',
+    '.lia-tool-btn .ico-stroke{ stroke:var(--canvas-border); fill:none; }',
+    '.lia-tool-btn .ico-fill{ fill:rgba(0,0,0,0); }',
+    '.lia-tool-btn[data-active="1"]{ outline:2px solid var(--canvas-border); outline-offset:2px; }',
+
+    '.lia-canvas-anchor{ display:inline-block; }',
+    '.lia-canvas-mount{ display:none; width:100%; max-width:100%; margin:6px 0; }',
+    '.lia-canvas-mount[data-open="1"]{ display:block; }',
+
+    '.lia-canvas-launch{ width:32px; height:32px; padding:0; border-radius:999px; background:transparent; border:2px solid var(--canvas-accent); cursor:pointer; user-select:none; touch-action:manipulation; display:inline-flex; align-items:center; justify-content:center; vertical-align:middle; line-height:0; margin-right:6px; }',
+    '.lia-canvas-launch:hover{ filter:brightness(1.05); }',
+    '.lia-canvas-launch svg{ width:18px; height:18px; display:block; }',
+    '.lia-canvas-launch .launch-stroke{ stroke:var(--canvas-accent); fill:none; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; }',
+
+    '.lia-tool-menu{ position:absolute; left:44px; top:10px; z-index:30; padding:10px; border:2px solid var(--canvas-border); border-radius:12px; background:rgba(0,0,0,.15); backdrop-filter:blur(6px); display:none; gap:10px; }',
+    '.lia-tool-menu[data-open="1"]{ display:grid; align-items:start; row-gap:10px; }',
+
+    '.lia-color-grid{ display:grid; grid-template-columns:repeat(9,22px); gap:10px; align-items:center; }',
+    '.lia-color-item{ width:22px; height:22px; border-radius:999px; cursor:pointer; user-select:none; border:2px solid var(--canvas-border); background:transparent; box-sizing:border-box; }',
+    '.lia-color-item:hover{ transform:scale(1.06); }',
+    '.lia-color-item[data-active="1"]{ outline:2px solid var(--canvas-border); outline-offset:2px; }',
+
+    '.lia-tool-heading{ font-size:1.5rem; font-weight:750; line-height:1.1; padding-left:2px; }',
+    '.lia-heading-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; }',
+
+    '.lia-menu-icon-btn{ width:28px; height:28px; border-radius:999px; border:2px solid var(--canvas-border); background:transparent; display:grid; place-items:center; cursor:pointer; user-select:none; padding:0; }',
+    '.lia-menu-icon-btn:hover{ filter:brightness(1.08); }',
+    '.lia-menu-icon-btn svg{ width:16px; height:16px; display:block; margin:0; }',
+    '.lia-menu-icon-btn .ico-stroke{ stroke:var(--canvas-border); fill:none; }',
+
+    '.lia-row{ display:flex; align-items:center; gap:10px; }',
+    '.lia-preview{ width:34px; height:22px; border-radius:10px; border:2px solid var(--canvas-border); box-sizing:border-box; display:grid; place-items:center; }',
+    '.lia-preview-line{ width:22px; border-radius:999px; background:var(--canvas-border); height:3px; }',
+    '.lia-slider{ width:180px; }',
+
+    '.lia-bg-tiles{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; align-items:stretch; }',
+    '.lia-bg-tile{ height:34px; border-radius:12px; border:2px solid var(--canvas-border); background:transparent; cursor:pointer; user-select:none; padding:0; }',
+    '.lia-bg-tile:hover{ filter:brightness(1.08); }',
+    '.lia-bg-tile[data-active="1"]{ outline:2px solid var(--canvas-border); outline-offset:2px; }',
+
+    '.lia-resize-corner{ position:absolute; bottom:0; width:18px; height:18px; z-index:50; background:transparent; border:0; padding:0; margin:0; user-select:none; touch-action:none; opacity:0; }',
+    '.lia-resize-corner[data-corner="br"]{ right:0; cursor:nwse-resize; }',
+    '.lia-resize-corner[data-corner="bl"]{ left:0; cursor:nesw-resize; }'
+  ].join('\n');
+
+  (document.head || document.documentElement).appendChild(st);
+}
+
 
   // =========================================================
   // Theme helpers — OHNE Regex-Literale (verhindert Parser-Fehler)
