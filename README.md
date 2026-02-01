@@ -1,6 +1,4 @@
 <!--
-version: 0.0.1
-language: de
 comment: SchulLia
 author: Martin Lommatzsch
 
