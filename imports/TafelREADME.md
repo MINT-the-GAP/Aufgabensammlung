@@ -22,12 +22,11 @@ author: Martin Lommatzsch
       Slides: KEINE Breiten-Overrides (sonst Folienfenster kaputt)
    ========================================================= */
 
-/* Body-Margins raus, damit main wirklich bis an den Rand kann */
 html[data-lia-mode="presentation"] body{
   margin: 0 !important;
 }
 
-/* NUR main anfassen, keine Slides-Wrapper, keine Panels */
+/* NUR main anfassen, nicht .slides/.lia-slide/.wrapper/etc. */
 html[data-lia-mode="presentation"] main{
   width: 100% !important;
   max-width: 100% !important;
@@ -51,7 +50,15 @@ html[data-lia-mode="slides"] main{
 
 @onload
 (function () {
+  // ---------------------------------------------------------
+  // Guard: Import kann mehrfach passieren -> nur 1x initialisieren
+  // ---------------------------------------------------------
+  const REGKEY = "__LIA_TAFELMODE_IMPORT_V1__";
+  if (window[REGKEY]) return;
+  window[REGKEY] = true;
+
   const SETTINGS_KEY = "settings";
+  const PRES_PX = [18, 24, 32];
 
   function norm(x){ return String(x == null ? "" : x).toLowerCase(); }
 
@@ -78,7 +85,6 @@ html[data-lia-mode="slides"] main{
       if (seen.has(v)) return null;
       seen.add(v);
 
-      // wahrscheinliche Keys zuerst
       for (const k in v){
         if (!Object.prototype.hasOwnProperty.call(v, k)) continue;
         const key = norm(k);
@@ -88,7 +94,6 @@ html[data-lia-mode="slides"] main{
         }
       }
 
-      // dann breit suchen
       for (const k in v){
         if (!Object.prototype.hasOwnProperty.call(v, k)) continue;
         const m = walk(v[k]);
@@ -121,13 +126,6 @@ html[data-lia-mode="slides"] main{
     document.documentElement.dataset.liaMode = detectMode();
   }
 
-  /* =========================================================
-     Schriftgrößen-Boost (presentation+slides)
-     - misst Basis-Font ohne Override
-     - setzt dann 18/24/32px
-     ========================================================= */
-  const PRES_PX = [18, 24, 32];
-
   function pxToStep0to2(px){
     if (px <= 17) return 0;
     if (px <= 19) return 1;
@@ -158,7 +156,7 @@ html[data-lia-mode="slides"] main{
     if (sampling) return;
     sampling = true;
 
-    // wichtig: zuerst Override entfernen, dann messen
+    // erst reset, dann messen
     setVar("--lia-pres-font", "unset");
 
     requestAnimationFrame(function(){
@@ -170,9 +168,6 @@ html[data-lia-mode="slides"] main{
     });
   }
 
-  /* =========================================================
-     Loop/Trigger
-     ========================================================= */
   let lastRaw = null;
   let lastMode = null;
 
