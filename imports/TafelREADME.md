@@ -1,19 +1,19 @@
 <!--
-version:  0.0.2
+version:  0.0.3
 language: de
-comment: LiaScript – Tafelmodus (import-sicher): Presentation volle Breite + Schriftgrößen-Boost + Schriftgrößen-Panel (A) | textmarker-kompatibel
+comment: LiaScript – Tafelmodus (import-sicher): Presentation volle Breite (-25px Rand) + Schriftgrößen-Boost + A-Dock (nur Presentation) + Panel "Schriftgröße"
 author: Martin Lommatzsch
 
 
 @style
 :root{
-  /* seitlicher Sicherheitsabstand im Presentation-Modus */
-  --lia-tflfont-side-gap: 12px;
+  /* links/rechts ungenutzt im Presentation-Modus */
+  --lia-tflfont-side-gap: 25px;
 
-  /* wird per JS gesetzt: "unset" oder px (z.B. 24px) */
+  /* per JS gesetzt: "unset" oder z.B. 24px */
   --lia-tflfont-pres-font: unset;
 
-  /* Theme-Akzentfarbe (per JS aus LiaTheme ermittelt) */
+  /* LiaTheme-Akzentfarbe (per JS ermittelt) */
   --lia-tflfont-accent: rgb(11,95,255);
 
   /* Slider-Range */
@@ -21,8 +21,7 @@ author: Martin Lommatzsch
   --lia-tflfont-max: 48;
 }
 
-/* (CSS wird zur Sicherheit zusätzlich per JS in den Content injiziert)
-   -> diese @style dient als Fallback + Dokumentation */
+/* Fallback (wird zusätzlich per JS in Content injiziert) */
 html[data-lia-mode="presentation"] body{ margin:0 !important; overflow-x:hidden !important; }
 html[data-lia-mode="presentation"] main{
   width: calc(100vw - (2 * var(--lia-tflfont-side-gap))) !important;
@@ -45,7 +44,7 @@ html[data-lia-mode="slides"] main{
 (function () {
 
   // =========================================================
-  // Root/Content Resolve (iframe-safe, import-safe)
+  // Root/Content Resolve (iframe-safe)
   // =========================================================
   function getRootWindow(){
     let w = window;
@@ -56,52 +55,45 @@ html[data-lia-mode="slides"] main{
   const ROOT_WIN = getRootWindow();
   const ROOT_DOC = ROOT_WIN.document;
 
+  function tryGetDoc(win){
+    try { return win && win.document ? win.document : null; } catch(e){ return null; }
+  }
   function hasMain(doc){
     try { return !!(doc && doc.querySelector && doc.querySelector("main")); } catch(e){ return false; }
   }
 
-  function tryGetDoc(win){
-    try { return win && win.document ? win.document : null; } catch(e){ return null; }
-  }
-
-  // Liefert: { primaryWin, primaryDoc, docs[] }
   function resolveContentTargets(){
-    const candidates = [];
+    const docs = [];
     const seen = new Set();
 
-    function addDoc(doc){
+    function add(doc){
       if (!doc || seen.has(doc)) return;
       seen.add(doc);
-      candidates.push(doc);
+      docs.push(doc);
     }
 
-    // 1) aktuelles Fenster
     const curDoc = tryGetDoc(window);
-    if (hasMain(curDoc)) addDoc(curDoc);
+    if (hasMain(curDoc)) add(curDoc);
 
-    // 2) alle iframes im Root (gleiches Origin)
     try{
       const iframes = Array.from(ROOT_DOC.querySelectorAll("iframe"));
       for (const fr of iframes){
         try{
           const d = fr.contentWindow && fr.contentWindow.document;
-          if (hasMain(d)) addDoc(d);
+          if (hasMain(d)) add(d);
         }catch(e){}
       }
     }catch(e){}
 
-    // Fallback: wenigstens Root
-    if (!candidates.length) addDoc(ROOT_DOC);
+    if (!docs.length) add(ROOT_DOC);
 
-    // Primary = erstes Doc mit main (sonst Root)
-    const primaryDoc = candidates.find(d => hasMain(d)) || ROOT_DOC;
+    const primaryDoc = docs.find(d => hasMain(d)) || ROOT_DOC;
+
     const primaryWin = (function(){
-      // finde das window, das zu primaryDoc gehört
       if (primaryDoc === ROOT_DOC) return ROOT_WIN;
       if (curDoc === primaryDoc) return window;
       try{
-        const iframes = Array.from(ROOT_DOC.querySelectorAll("iframe"));
-        for (const fr of iframes){
+        for (const fr of Array.from(ROOT_DOC.querySelectorAll("iframe"))){
           try{
             if (fr.contentWindow && fr.contentWindow.document === primaryDoc) return fr.contentWindow;
           }catch(e){}
@@ -110,22 +102,28 @@ html[data-lia-mode="slides"] main{
       return ROOT_WIN;
     })();
 
-    return { primaryWin, primaryDoc, docs: candidates };
+    return { primaryWin, primaryDoc, docs };
   }
 
   // =========================================================
-  // Per-Root Instance (mehrfach importiert => keine Duplikate)
+  // Per-Dokument Instance (kein Konflikt mit Textmarker-Import)
   // =========================================================
-  const REGKEY = "__LIA_TFLFONT_REG_V2__";
-  ROOT_WIN[REGKEY] = ROOT_WIN[REGKEY] || { alive: false, inst: null };
-  if (ROOT_WIN[REGKEY].alive) return;
-  ROOT_WIN[REGKEY].alive = true;
+  const REGKEY = "__LIA_TFLFONT_REG_V3__";
+  ROOT_WIN[REGKEY] = ROOT_WIN[REGKEY] || { instances: {} };
 
-  const I = ROOT_WIN[REGKEY].inst = {
+  const cur = resolveContentTargets();
+  const DOC_ID =
+    ((cur.primaryDoc && (cur.primaryDoc.baseURI || "")) || "") +
+    "::" +
+    ((cur.primaryDoc && cur.primaryDoc.title) || "");
+
+  if (ROOT_WIN[REGKEY].instances[DOC_ID]?.__alive) return;
+
+  const I = ROOT_WIN[REGKEY].instances[DOC_ID] = {
+    __alive: true,
     ticking: false,
     lastRaw: null,
-    lastMode: null,
-    lastDockShift: 0
+    lastMode: null
   };
 
   // =========================================================
@@ -153,7 +151,7 @@ html[data-lia-mode="slides"] main{
   // Mode detection (Lia settings in localStorage)
   // =========================================================
   const SETTINGS_KEY = "settings";
-  const FONT_KEY     = "lia-tflfont-font-px-v2"; // Slider override (px)
+  const FONT_KEY     = "lia-tflfont-font-px-v3";
 
   function safeGetSettingsRaw(){
     try { return localStorage.getItem(SETTINGS_KEY); }
@@ -251,9 +249,7 @@ html[data-lia-mode="slides"] main{
   }
 
   function syncAccent(docs){
-    const acc =
-      getLiaAccentColor(ROOT_DOC) ||
-      "rgb(11,95,255)";
+    const acc = getLiaAccentColor(ROOT_DOC) || "rgb(11,95,255)";
     for (const d of docs){
       setVar(d, "--lia-tflfont-accent", acc);
     }
@@ -280,7 +276,7 @@ html[data-lia-mode="slides"] main{
       }
     `;
     for (const d of docs){
-      ensureStyle(d, "lia-tflfont-content-style-v2", css);
+      ensureStyle(d, "lia-tflfont-content-style-v3", css);
     }
   }
 
@@ -321,17 +317,13 @@ html[data-lia-mode="slides"] main{
     }
   }
 
-  // Extra: wenn Slider gesetzt, zusätzlich inline auf <main> (damit “Slider tut nix” nicht mehr vorkommt)
+  // Slider-Override: zusätzlich inline auf <main>, damit Kursdateien garantiert reagieren
   function setMainInlineFont(pxOrNull, docs){
     for (const d of docs){
       try{
         const m = d.querySelector("main");
         if (!m) continue;
-        if (pxOrNull == null) {
-          m.style.fontSize = "";
-        } else {
-          m.style.fontSize = (pxOrNull + "px");
-        }
+        m.style.fontSize = (pxOrNull == null) ? "" : (pxOrNull + "px");
       }catch(e){}
     }
   }
@@ -364,41 +356,43 @@ html[data-lia-mode="slides"] main{
     setPresFontPxForDocs(null, docs);
     setMainInlineFont(null, docs);
 
-    // messen ohne Override (2 RAF)
     const targets = resolveContentTargets();
     const pw = targets.primaryWin || ROOT_WIN;
+
     pw.requestAnimationFrame(function(){
       pw.requestAnimationFrame(function(){
         const step = pxToStep0to2(getMainFontPx(targets.primaryDoc));
         const v = AUTO_PX[step];
         setPresFontPxForDocs(v, docs);
-        setMainInlineFont(null, docs); // auto = nur via CSS Var
+        setMainInlineFont(null, docs); // auto via CSS-Var
         sampling = false;
       });
     });
   }
 
   // =========================================================
-  // UI (Root): A-Button + Panel (nur Presentation)
+  // Root UI: fixed Dock (verändert nie Layout -> kein Nightly-Umbruch)
   // =========================================================
-  const SLOT_ID   = "lia-tflfont-slot-v2";
-  const BTN_ID    = "lia-tflfont-btn-v2";
-  const PANEL_ID  = "lia-tflfont-panel-v2";
-  const SLIDER_ID = "lia-tflfont-slider-v2";
-  const TITLE_CLS = "lia-tflfont-title-v2";
+  const DOCK_ID   = "lia-tflfont-dock-v3";
+  const BTN_ID    = "lia-tflfont-btn-v3";
+  const PANEL_ID  = "lia-tflfont-panel-v3";
+  const SLIDER_ID = "lia-tflfont-slider-v3";
+  const TITLE_CLS = "lia-tflfont-title-v3";
 
-  ensureStyle(ROOT_DOC, "lia-tflfont-ui-style-root-v2", `
-    #${SLOT_ID}{
-      display: inline-flex !important;
+  ensureStyle(ROOT_DOC, "lia-tflfont-ui-style-root-v3", `
+    /* Dock: fixed -> drückt NIEMALS Toolbar um */
+    #${DOCK_ID}{
+      position: fixed !important;
+      z-index: 9999999 !important;
+      display: none !important;
       align-items: center !important;
-      flex: 0 0 auto !important;
-      margin-left: 12px !important; /* Basisabstand (wird ggf. per JS erhöht) */
+      justify-content: center !important;
+      width: 32px !important;
+      height: 32px !important;
+      left: 8px !important;
+      top:  8px !important;
     }
-
-    /* Sichtbarkeit: nur Presentation */
-    body.lia-tflfont-pres #${BTN_ID}{ display: inline-flex !important; }
-    body:not(.lia-tflfont-pres) #${BTN_ID}{ display: none !important; }
-    body:not(.lia-tflfont-pres) #${PANEL_ID}{ display: none !important; }
+    body.lia-tflfont-pres #${DOCK_ID}{ display: flex !important; }
 
     #${BTN_ID}{
       position: relative !important;
@@ -417,9 +411,6 @@ html[data-lia-mode="slides"] main{
 
       cursor: pointer !important;
       user-select: none !important;
-
-      /* sitzt in Kursdateien oft leicht zu hoch -> etwas runter */
-      transform: translateY(2px) !important;
     }
 
     #${BTN_ID}:hover{
@@ -435,7 +426,7 @@ html[data-lia-mode="slides"] main{
       box-shadow: none !important;
     }
 
-    /* Doppel-A: groß weiß (leicht nach rechts), klein Akzent (leicht nach links) */
+    /* Doppel-A: klein Akzent links, groß weiß rechts (größerer Abstand) */
     #${BTN_ID} .A-small,
     #${BTN_ID} .A-big{
       position: absolute !important;
@@ -446,7 +437,6 @@ html[data-lia-mode="slides"] main{
       user-select: none !important;
     }
 
-    /* klein: Akzent */
     #${BTN_ID} .A-small{
       left: 1px !important;
       top: -3px !important;
@@ -456,9 +446,8 @@ html[data-lia-mode="slides"] main{
       text-shadow: 0 1px 2px rgba(0,0,0,.25) !important;
     }
 
-    /* groß: weiß, weiter rechts (größere Distanz) */
     #${BTN_ID} .A-big{
-      left: 8px !important;
+      left: 9px !important;
       top: -7px !important;
       font-size: 28px !important;
       color: #fff !important;
@@ -470,28 +459,24 @@ html[data-lia-mode="slides"] main{
     #${PANEL_ID}{
       position: fixed !important;
       z-index: 9999998 !important;
-
-      width: 240px !important;
-      padding: 10px 12px !important;
-
+      width: 250px !important;
+      padding: 12px 14px !important;
       display: none !important;
-
       border-radius: 14px !important;
       border: 1px solid color-mix(in srgb, currentColor 18%, transparent) !important;
       background: color-mix(in srgb, rgba(0, 0, 0, 0.62) 62%, transparent) !important;
       backdrop-filter: blur(8px);
       box-shadow: 0 16px 42px rgba(0,0,0,.18) !important;
     }
+    body.lia-tflfont-panel-open #${PANEL_ID}{ display: block !important; }
 
-    body.lia-tflfont-panel-open #${PANEL_ID}{
-      display: block !important;
-    }
-
+    /* Titel größer */
     #${PANEL_ID} .${TITLE_CLS}{
-      font-weight: 700 !important;
-      font-size: 0.95rem !important;
-      margin: 0 0 8px 0 !important;
-      line-height: 1.2 !important;
+      font-weight: 800 !important;
+      font-size: 1.15rem !important;
+      margin: 0 0 10px 0 !important;
+      line-height: 1.15 !important;
+      letter-spacing: .2px !important;
     }
 
     #${PANEL_ID} input[type="range"]{
@@ -501,16 +486,23 @@ html[data-lia-mode="slides"] main{
     }
   `);
 
-  function findHeaderLeft(){
-    const header =
+  function findHeader(){
+    return (
       ROOT_DOC.querySelector("header#lia-toolbar-nav") ||
       ROOT_DOC.querySelector("#lia-toolbar-nav") ||
-      ROOT_DOC.querySelector("header.lia-header");
+      ROOT_DOC.querySelector("header.lia-header") ||
+      null
+    );
+  }
+
+  function findHeaderLeft(){
+    const header = findHeader();
     if (!header) return null;
     return header.querySelector(".lia-header__left") || null;
   }
 
-  function findTOCButton(left){
+  function findTOCButton(){
+    const left = findHeaderLeft();
     if (!left) return null;
     const btns = Array.from(left.querySelectorAll("button,[role='button'],a"));
     const pick = btns.find(b=>{
@@ -520,7 +512,6 @@ html[data-lia-mode="slides"] main{
     return pick || btns[0] || null;
   }
 
-  // Textmarker-Button heuristisch (ID oder Label)
   function findMarkerButton(){
     const byId =
       ROOT_DOC.getElementById("lia-hl-btn") ||
@@ -531,12 +522,31 @@ html[data-lia-mode="slides"] main{
     const candidates = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
     return candidates.find(b=>{
       const t = ((b.getAttribute("aria-label")||b.getAttribute("title")||b.textContent||"")+"").toLowerCase();
-      return t.includes("textmarker") || t.includes("marker") || t.includes("markieren") || t.includes("highlight");
+      return t.includes("textmarker") || t.includes("markieren") || t.includes("highlight");
     }) || null;
   }
 
   function ensureUI(){
-    // Panel am Body
+    // Dock
+    let dock = ROOT_DOC.getElementById(DOCK_ID);
+    if (!dock){
+      dock = ROOT_DOC.createElement("div");
+      dock.id = DOCK_ID;
+      ROOT_DOC.body.appendChild(dock);
+    }
+
+    // Button
+    let btn = ROOT_DOC.getElementById(BTN_ID);
+    if (!btn){
+      btn = ROOT_DOC.createElement("button");
+      btn.id = BTN_ID;
+      btn.type = "button";
+      btn.setAttribute("aria-label","Schriftgröße");
+      btn.innerHTML = `<span class="A-small">A</span><span class="A-big">A</span>`;
+    }
+    if (btn.parentNode !== dock) dock.appendChild(btn);
+
+    // Panel
     let panel = ROOT_DOC.getElementById(PANEL_ID);
     if (!panel){
       panel = ROOT_DOC.createElement("div");
@@ -546,41 +556,6 @@ html[data-lia-mode="slides"] main{
         <input id="${SLIDER_ID}" type="range" min="14" max="48" step="1" value="24" aria-label="Schriftgröße" />
       `;
       ROOT_DOC.body.appendChild(panel);
-    }
-
-    // Slot + Button
-    let slot = ROOT_DOC.getElementById(SLOT_ID);
-    if (!slot){
-      slot = ROOT_DOC.createElement("span");
-      slot.id = SLOT_ID;
-      slot.setAttribute("aria-label", "Tafelmodus Schriftgröße");
-    }
-
-    let btn = ROOT_DOC.getElementById(BTN_ID);
-    if (!btn){
-      btn = ROOT_DOC.createElement("button");
-      btn.id = BTN_ID;
-      btn.type = "button";
-      btn.setAttribute("aria-label","Schriftgröße");
-      btn.innerHTML = `<span class="A-small">A</span><span class="A-big">A</span>`;
-    }
-
-    if (btn.parentNode !== slot) slot.appendChild(btn);
-
-    const left = findHeaderLeft();
-    if (!left) return;
-
-    // Anchor: lieber nach Textmarker (falls vorhanden), sonst nach TOC
-    const marker = findMarkerButton();
-    const toc = findTOCButton(left);
-    const anchor = (marker && left.contains(marker)) ? marker : toc;
-
-    if (slot.parentNode !== left){
-      if (anchor && anchor.parentNode === left){
-        anchor.insertAdjacentElement("afterend", slot);
-      }else{
-        left.insertAdjacentElement("afterbegin", slot);
-      }
     }
   }
 
@@ -593,7 +568,8 @@ html[data-lia-mode="slides"] main{
   }
 
   // =========================================================
-  // Panel positioning (Viewport clamp)
+  // Dock Position: orientiert sich an TOC/Textmarker + Headerhöhe
+  // (damit Nightly keine Lücken hat und alles in einer Reihe sitzt)
   // =========================================================
   function getViewport(){
     const vv = ROOT_WIN.visualViewport;
@@ -604,6 +580,51 @@ html[data-lia-mode="slides"] main{
     return { w: de.clientWidth, h: de.clientHeight, ox: 0, oy: 0 };
   }
 
+  function positionDock(){
+    const dock = ROOT_DOC.getElementById(DOCK_ID);
+    if (!dock || !ROOT_DOC.body.classList.contains("lia-tflfont-pres")) return;
+
+    const vp = getViewport();
+    const header = findHeader();
+    const toc = findTOCButton();
+    const marker = findMarkerButton();
+
+    const pad = 8;
+    const gap = 10;
+
+    // Y: optisch in die Header-Zeile zentrieren (keine "Lücke nach unten")
+    let y = pad;
+    if (header){
+      try{
+        const hr = header.getBoundingClientRect();
+        y = hr.top + (hr.height - 32) / 2;
+      }catch(e){}
+    }
+
+    // X: rechts neben TOC/Marker, je nachdem was weiter rechts steht
+    let x = pad;
+
+    function rightEdge(el){
+      try { return el ? el.getBoundingClientRect().right : null; } catch(e){ return null; }
+    }
+
+    const tr = rightEdge(toc);
+    const mr = rightEdge(marker);
+
+    const base = Math.max(tr || 0, mr || 0);
+    if (base > 0) x = base + gap;
+
+    // Clamp in Viewport
+    x = clamp(x, pad, vp.w - 32 - pad);
+    y = clamp(y, pad, vp.h - 32 - pad);
+
+    dock.style.left = Math.round(x + vp.ox) + "px";
+    dock.style.top  = Math.round(y + vp.oy) + "px";
+  }
+
+  // =========================================================
+  // Panel positioning
+  // =========================================================
   function measurePanel(panel){
     const prevDisplay = panel.style.display;
     const prevVis = panel.style.visibility;
@@ -615,8 +636,8 @@ html[data-lia-mode="slides"] main{
     panel.style.left = "-9999px";
     panel.style.top  = "-9999px";
 
-    const w = panel.offsetWidth || 240;
-    const h = panel.offsetHeight || 70;
+    const w = panel.offsetWidth || 250;
+    const h = panel.offsetHeight || 90;
 
     panel.style.display = prevDisplay;
     panel.style.visibility = prevVis;
@@ -627,13 +648,13 @@ html[data-lia-mode="slides"] main{
   }
 
   function positionPanel(){
-    const btn = ROOT_DOC.getElementById(BTN_ID);
+    const dock = ROOT_DOC.getElementById(DOCK_ID);
     const panel = ROOT_DOC.getElementById(PANEL_ID);
-    if (!btn || !panel) return;
+    if (!dock || !panel) return;
     if (!ROOT_DOC.body.classList.contains("lia-tflfont-panel-open")) return;
 
-    const r = btn.getBoundingClientRect();
     const vp = getViewport();
+    const r = dock.getBoundingClientRect();
     const sz = measurePanel(panel);
 
     const gap = 10;
@@ -643,7 +664,6 @@ html[data-lia-mode="slides"] main{
     let top  = r.bottom + gap;
 
     left = clamp(left, pad, vp.w - sz.w - pad);
-
     if (top + sz.h + pad > vp.h){
       top = r.top - gap - sz.h;
     }
@@ -654,59 +674,7 @@ html[data-lia-mode="slides"] main{
   }
 
   // =========================================================
-  // Collision avoidance (TOC / Textmarker / Nightly nav)
-  // =========================================================
-  function rectOverlap(a,b,pad){
-    if (!a || !b) return false;
-    const p = pad || 0;
-    return !(a.right + p < b.left || a.left - p > b.right || a.bottom + p < b.top || a.top - p > b.bottom);
-  }
-
-  function nudgeSlotIfNeeded(){
-    const left = findHeaderLeft();
-    const slot = ROOT_DOC.getElementById(SLOT_ID);
-    const btn  = ROOT_DOC.getElementById(BTN_ID);
-    if (!left || !slot || !btn) return;
-
-    // Basis
-    slot.style.marginLeft = "12px";
-
-    // in Nightly-Navigation ist es oft enger -> bisschen mehr Luft
-    const navLike = ROOT_DOC.body.classList.contains("lia-hl-navstack") || ROOT_DOC.body.classList.contains("lia-hl-nav") || false;
-    if (navLike) slot.style.marginLeft = "16px";
-
-    const toc = findTOCButton(left);
-    const marker = findMarkerButton();
-
-    // 1) TOC-Kollision
-    try{
-      if (toc){
-        const tr = toc.getBoundingClientRect();
-        const br = btn.getBoundingClientRect();
-        if (rectOverlap(tr, br, 2) || br.left < tr.right + 8){
-          const need = (tr.right + 10) - br.left;
-          const cur = parseInt(slot.style.marginLeft || "0", 10) || 0;
-          slot.style.marginLeft = (cur + Math.max(0, Math.ceil(need))) + "px";
-        }
-      }
-    }catch(e){}
-
-    // 2) Marker-Kollision (oder zu wenig Abstand)
-    try{
-      if (marker){
-        const mr = marker.getBoundingClientRect();
-        const br = btn.getBoundingClientRect();
-        if (rectOverlap(mr, br, 2) || br.left < mr.right + 8){
-          const need = (mr.right + 10) - br.left;
-          const cur = parseInt(slot.style.marginLeft || "0", 10) || 0;
-          slot.style.marginLeft = (cur + Math.max(0, Math.ceil(need))) + "px";
-        }
-      }
-    }catch(e){}
-  }
-
-  // =========================================================
-  // Wiring (once)
+  // Wiring
   // =========================================================
   function wireOnce(){
     const btn    = ROOT_DOC.getElementById(BTN_ID);
@@ -723,11 +691,10 @@ html[data-lia-mode="slides"] main{
         if (open) positionPanel();
       });
 
-      // outside click closes
       ROOT_DOC.addEventListener("click", (e)=>{
         if (!ROOT_DOC.body.classList.contains("lia-tflfont-panel-open")) return;
         const t = e.target;
-        if (t && t.closest && (t.closest("#"+PANEL_ID) || t.closest("#"+BTN_ID))) return;
+        if (t && t.closest && (t.closest("#"+PANEL_ID) || t.closest("#"+BTN_ID) || t.closest("#"+DOCK_ID))) return;
         ROOT_DOC.body.classList.remove("lia-tflfont-panel-open");
       }, true);
 
@@ -737,10 +704,10 @@ html[data-lia-mode="slides"] main{
         }
       });
 
-      ROOT_WIN.addEventListener("resize", positionPanel);
+      ROOT_WIN.addEventListener("resize", ()=>{ positionDock(); positionPanel(); });
       if (ROOT_WIN.visualViewport){
-        ROOT_WIN.visualViewport.addEventListener("resize", positionPanel);
-        ROOT_WIN.visualViewport.addEventListener("scroll", positionPanel);
+        ROOT_WIN.visualViewport.addEventListener("resize", ()=>{ positionDock(); positionPanel(); });
+        ROOT_WIN.visualViewport.addEventListener("scroll", ()=>{ positionDock(); positionPanel(); });
       }
     }
 
@@ -757,7 +724,6 @@ html[data-lia-mode="slides"] main{
 
         try { localStorage.setItem(FONT_KEY, String(v)); } catch(e){}
 
-        // sofort anwenden (wichtig für Kursdatei)
         setPresFontPxForDocs(v, docs);
         setMainInlineFont(v, docs);
       });
@@ -785,7 +751,7 @@ html[data-lia-mode="slides"] main{
   }
 
   // =========================================================
-  // Tick (throttled) – ensure-Pattern (damit Import immer greift)
+  // Tick (ensure-Pattern)
   // =========================================================
   function tick(){
     if (I.ticking) return;
@@ -799,29 +765,23 @@ html[data-lia-mode="slides"] main{
         const raw  = safeGetSettingsRaw();
         const mode = detectMode();
 
-        // 1) CSS sicherstellen + dataset (für presentation/slides selectors)
         ensureContentCSS(docs);
         applyModeAttrToDocs(mode, docs);
-
-        // 2) Theme-Farbe
         syncAccent(docs);
 
-        // 3) UI sicher anheften + visibility + wiring
         ensureUI();
         setPresentationOnlyVisibility(mode);
         wireOnce();
 
-        // 4) Font Logik bei Modus/Settings Wechsel
         if (raw !== I.lastRaw || mode !== I.lastMode){
           applyFontLogic(mode, docs);
           I.lastRaw  = raw;
           I.lastMode = mode;
         }
 
-        // 5) Slider sync + Panel pos + Kollisionsvermeidung
         syncSliderToCurrentFont(docs);
+        positionDock();
         positionPanel();
-        nudgeSlotIfNeeded();
 
       } finally {
         I.ticking = false;
@@ -829,19 +789,16 @@ html[data-lia-mode="slides"] main{
     });
   }
 
-  // Mutation observers (Toolbar / main kommt oft verspätet)
   try{
     const mo = new MutationObserver(() => tick());
     mo.observe(ROOT_DOC.documentElement, { childList:true, subtree:true });
   }catch(e){}
 
-  // Storage (anderes Doc/Frame)
   ROOT_WIN.addEventListener("storage", function(e){
     if (!e) return;
     if (e.key === SETTINGS_KEY || e.key === FONT_KEY) tick();
   });
 
-  // Periodisch
   tick();
   ROOT_WIN.setInterval(() => tick(), 350);
 
