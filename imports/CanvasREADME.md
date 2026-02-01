@@ -1238,10 +1238,28 @@ function ensureCss(){
       const clamp = (v,a,b) => Math.max(a, Math.min(b, v));
 
       function containerMaxWidth(){
-        const host = wrap.parentElement || wrap;
-        const w = host.getBoundingClientRect().width;
-        return Math.max(MIN_W, Math.floor(w));
+        // Wir laufen nach oben bis wir einen Container finden,
+        // der NICHT inline/inline-block/contents ist.
+        let host = wrap;
+        for (let i = 0; i < 12; i++){
+          const p = host && host.parentElement ? host.parentElement : null;
+          if (!p) break;
+          host = p;
+      
+          try{
+            const d = String(getComputedStyle(host).display || '');
+            if (d !== 'inline' && d !== 'inline-block' && d !== 'contents'){
+              break; // gefunden: "echter" Breiten-Container
+            }
+          }catch(_){
+            break;
+          }
+        }
+      
+        const w = (host && host.getBoundingClientRect) ? host.getBoundingClientRect().width : 0;
+        return Math.max(MIN_W, Math.floor(w || 0));
       }
+
 
       function bindCorner(handle, side){
         let resizing = false;
