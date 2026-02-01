@@ -50,10 +50,10 @@ html[data-lia-mode="slides"] main{
 #lia-tafel-font-slot{
   display: inline-flex !important;
   align-items: center !important;
-  gap: 10px !important;
+  gap: 0px !important;
 
   /* Abstand zum Inhaltsverzeichnis-Button, damit nichts "reinragt" */
-  margin-left: 14px !important;
+  margin-left: 0px !important;
 }
 
 #lia-tafel-font-btn{
