@@ -307,61 +307,6 @@ author: Martin Lommatzsch
       color: var(--hl-ui-fg) !important;
     }
 
-    /* =========================================================
-       NIGHTLY "Navigation"-Modus: Separator/Strich kommt NICHT vom Button,
-       sondern vom Header/Container. Nur entfernen, wenn unser Button existiert.
-       (Firefox 147: :has() ist ok)
-       ========================================================= */
-
-    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn),
-    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia-header__left,
-    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia-header__middle{
-      background-image: none !important;
-      box-shadow: none !important;
-      border-bottom: 0 !important;
-    }
-
-    /* Nightly zeichnet die Linie gerne über ::before/::after */
-    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn)::before,
-    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn)::after,
-    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia-header__left::before,
-    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia-header__left::after,
-    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia-header__middle::before,
-    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia-header__middle::after{
-      content: none !important;
-      display: none !important;
-    }
-
-    /* =========================================================
-       NIGHTLY Navstack: Strich/Separator über Logo entfernen
-       (Klassenname vom Logo ist lia_header__logo!)
-       ========================================================= */
-    
-    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia-header__middle,
-    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia_header__logo,
-    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia-header__logo{
-      background-image: none !important;
-      box-shadow: none !important;
-      border: 0 !important;
-      outline: none !important;
-    
-      /* Falls eine Linie als Overlay "drüber" liegt: Logo/Container nach vorne */
-      position: relative !important;
-      z-index: calc(var(--hl-z) + 5) !important;
-    }
-    
-    /* Linie kommt oft über ::before/::after von Middle oder dem IMG selbst */
-    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia-header__middle::before,
-    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia-header__middle::after,
-    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia_header__logo::before,
-    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia_header__logo::after,
-    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia-header__logo::before,
-    body.lia-hl-navstack header#lia-toolbar-nav:has(#lia-hl-btn) .lia-header__logo::after{
-      content: none !important;
-      display: none !important;
-    }
-
-
   `);
 
 
@@ -462,6 +407,121 @@ author: Martin Lommatzsch
     return { x:(CONTENT_WIN.scrollX||0), y:(CONTENT_WIN.scrollY||0) };
   }
 
+
+  // =========================
+  // Anchors: Range serialisieren & wiederherstellen
+  // =========================
+  function nodeToPath(node){
+    // Pfad relativ zu BODY über childNodes-Indizes (inkl. Textnodes)
+    const root = CONTENT_DOC.body;
+    const parts = [];
+    let n = node;
+    while (n && n !== root){
+      const p = n.parentNode;
+      if (!p) break;
+      const idx = Array.prototype.indexOf.call(p.childNodes, n);
+      parts.push(idx);
+      n = p;
+    }
+    parts.reverse();
+    return parts.join("/");
+  }
+
+  function pathToNode(path){
+    const root = CONTENT_DOC.body;
+    if (!path) return null;
+    const parts = path.split("/").filter(Boolean).map(x => parseInt(x, 10));
+    let n = root;
+    for (const idx of parts){
+      if (!n || !n.childNodes || idx < 0 || idx >= n.childNodes.length) return null;
+      n = n.childNodes[idx];
+    }
+    return n || null;
+  }
+
+  function clampOffset(node, off){
+    if (!node) return 0;
+    if (node.nodeType === 3) { // Text
+      const len = (node.nodeValue || "").length;
+      return Math.max(0, Math.min(off, len));
+    }
+    if (node.nodeType === 1) { // Element
+      const len = node.childNodes ? node.childNodes.length : 0;
+      return Math.max(0, Math.min(off, len));
+    }
+    return 0;
+  }
+
+  function rangeFromAnchor(a){
+    if (!a) return null;
+    const sc = pathToNode(a.sp);
+    const ec = pathToNode(a.ep);
+    if (!sc || !ec) return null;
+
+    const r = CONTENT_DOC.createRange();
+    const so = clampOffset(sc, a.so);
+    const eo = clampOffset(ec, a.eo);
+
+    try{
+      r.setStart(sc, so);
+      r.setEnd(ec, eo);
+      if (r.collapsed) return null;
+      return r;
+    } catch (e){
+      return null;
+    }
+  }
+
+  function packedRectsFromRange(range){
+    const rects = Array.from(range.getClientRects ? range.getClientRects() : []);
+    if (!rects.length) return [];
+    const sc = currentScroll();
+    return rects
+      .filter(r => r.width > 1 && r.height > 1)
+      .map(r => ({ x: r.left + sc.x, y: r.top + sc.y, w: r.width, h: r.height }));
+  }
+
+  // =========================
+  // Layout-Signatur + Recalc (wenn Präsentation/Font/Wrap sich ändert)
+  // =========================
+  I.__layoutSig = "";
+  function layoutSignature(){
+    const main = CONTENT_DOC.querySelector("main") || CONTENT_DOC.body;
+    const csMain = CONTENT_WIN.getComputedStyle(main);
+    const csRoot = CONTENT_WIN.getComputedStyle(CONTENT_DOC.documentElement);
+
+    // Root-Klassen beeinflussen Präsentationsmodus/Fonts (Nightly)
+    const rootClass = (ROOT_DOC.documentElement.className || "") + "|" + (ROOT_DOC.body.className || "");
+    const contClass = (CONTENT_DOC.documentElement.className || "") + "|" + (CONTENT_DOC.body.className || "");
+
+    return [
+      csRoot.fontSize, csMain.fontSize, csMain.lineHeight,
+      csMain.width, csMain.paddingLeft, csMain.paddingRight,
+      rootClass, contClass
+    ].join("§");
+  }
+
+  function recalcAllHighlights(){
+    for (const item of I.HL){
+      if (!item.anchor) continue;
+      const r = rangeFromAnchor(item.anchor);
+      if (!r) continue;
+      const packed = packedRectsFromRange(r);
+      if (packed.length) item.rects = packed;
+    }
+  }
+
+  function checkLayoutAndRecalc(){
+    const sig = layoutSignature();
+    if (sig !== I.__layoutSig){
+      I.__layoutSig = sig;
+      recalcAllHighlights();
+      render();
+    }
+  }
+
+
+
   function render(){
     overlay.innerHTML = "";
     const sc = currentScroll();
@@ -482,7 +542,8 @@ author: Martin Lommatzsch
   }
 
   CONTENT_WIN.addEventListener("scroll", render, { passive:true });
-  CONTENT_WIN.addEventListener("resize", () => { adaptUIVars(); render(); });
+  CONTENT_WIN.addEventListener("resize", () => { adaptUIVars(); checkLayoutAndRecalc(); render(); });
+
 
   // =========================
   // Root UI: an TOC anheften
@@ -792,7 +853,15 @@ author: Martin Lommatzsch
 
     if (!packed.length) return;
 
-    I.HL.push({ id: I.nextId++, color: I.state.color, rects: packed });
+        const anchor = {
+      sp: nodeToPath(range.startContainer),
+      so: range.startOffset,
+      ep: nodeToPath(range.endContainer),
+      eo: range.endOffset
+    };
+
+    I.HL.push({ id: I.nextId++, color: I.state.color, anchor, rects: packed });
+
     sel.removeAllRanges();
     render();
   }
@@ -879,6 +948,15 @@ author: Martin Lommatzsch
   // Boot
   tick();
   render();
+
+  // Layout-Drift Fix: reagiert auf Fontsize/Präsentationsmodus ohne style-Observer
+  if (!I.__layoutTimer){
+    I.__layoutSig = layoutSignature(); // Initial
+    I.__layoutTimer = ROOT_WIN.setInterval(() => {
+      if (!I.__alive) return;
+      checkLayoutAndRecalc();
+    }, 350);
+  }
 
 })();
 @end
