@@ -41,8 +41,12 @@ author: Martin Lommatzsch
     nextId: 1,
     moDock: null,
     moTheme: null,
+    roLayout: null,
+    roNodes: new Set(),
+    roPending: false,
     ticking: false
   };
+
 
   // =========================
   // CSS Injection (Content + Root)
@@ -592,6 +596,60 @@ author: Martin Lommatzsch
     }
   }
 
+
+
+  function scheduleForcedRecalc(){
+    if (I.roPending) return;
+    I.roPending = true;
+
+    ROOT_WIN.requestAnimationFrame(() => {
+      I.roPending = false;
+      if (!I.__alive) return;
+      if (!I.HL || I.HL.length === 0) return;
+
+      recalcAllHighlights();
+      render();
+    });
+  }
+
+  function ensureLayoutResizeObserver(){
+    if (!("ResizeObserver" in ROOT_WIN)) return;
+
+    if (!I.roLayout){
+      I.roLayout = new ROOT_WIN.ResizeObserver(() => {
+        // Flex-Resize -> Text reflow -> Rects neu messen
+        scheduleForcedRecalc();
+      });
+    }
+
+    // Watchlist: main + alle dynFlex/flex-child Container
+    const want = new Set();
+    const main = CONTENT_DOC.querySelector("main") || CONTENT_DOC.body;
+    if (main) want.add(main);
+
+    CONTENT_DOC.querySelectorAll(".dynFlex, .flex-child").forEach(el => want.add(el));
+
+    // neu beobachten
+    for (const el of want){
+      if (!I.roNodes.has(el)){
+        try { I.roLayout.observe(el); } catch(e){}
+        I.roNodes.add(el);
+      }
+    }
+
+    // nicht mehr vorhandene Elemente abmelden
+    for (const el of Array.from(I.roNodes)){
+      if (!want.has(el)){
+        try { I.roLayout.unobserve(el); } catch(e){}
+        I.roNodes.delete(el);
+      }
+    }
+  }
+
+
+
+
+
   CONTENT_WIN.addEventListener("scroll", render, { passive:true });
   CONTENT_WIN.addEventListener("resize", () => { adaptUIVars(); checkLayoutAndRecalc(); render(); });
 
@@ -972,6 +1030,7 @@ author: Martin Lommatzsch
       try{
         ensureRootButtonAndPanel();
         detectNavStack();
+        ensureLayoutResizeObserver(); 
         checkLayoutAndRecalc();
         ensureSwatchesOnce();
         wireUIOnce();
