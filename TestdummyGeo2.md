@@ -6,25 +6,33 @@ narrator: Deutsch Female
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/CanvasREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MarkerREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/TafelREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FlexChildREADME.md
 
 -->
 
 # Geo 1
 
 
-Klicke auf den Stift im Header und markiere im Text wie es dir beliebt.
-Klicke auf den Stift im Header und markiere im Text wie es dir beliebt.
-Klicke auf den Stift im Header und markiere im Text wie es dir beliebt.
-Klicke auf den Stift im Header und markiere im Text wie es dir beliebt. So So So....
-Klicke auf den Stift im Header und markiere im Text wie es dir beliebt.
-Klicke auf den Stift im Header und markiere im Text wie es dir beliebt.
-Klicke auf den Stift im Header und markiere im Text wie es dir beliebt.
-Klicke auf den Stift im Header und markiere im Text wie es dir beliebt.
-Klicke auf den Stift im Header und markiere im Text wie es dir beliebt.
-Klicke auf den Stift im Header und markiere im Text wie es dir beliebt.
+<section class="dynFlex">
 
-Testzwecke (2 ist Lösung):
+  <div class="flex-child">
+    __$a)\;\;$__ Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.
+  </div>
 
-[[ 2 ]] 
-@canvas
+  <div class="flex-child">
+    __$b)\;\;$__ Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.
+  </div>
+
+  <div class="flex-child">
+    __$c)\;\;$__ Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.
+  </div>
+
+  <div class="flex-child">
+    __$d)\;\;$__ Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.
+  </div>
+
+</section>
+
+
+
 
