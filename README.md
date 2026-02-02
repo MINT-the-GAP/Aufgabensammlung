@@ -868,11 +868,121 @@ canvas.lia-draw{
   function packedRectsFromRange(range){
     const rects = Array.from(range.getClientRects ? range.getClientRects() : []);
     if (!rects.length) return [];
+
     const sc = currentScroll();
-    return rects
-      .filter(r => r.width > 1 && r.height > 1)
+
+    // 1) pack -> doc coords
+    const raw = rects
+      .filter(r => r.width > 0.5 && r.height > 0.5)
       .map(r => ({ x: r.left + sc.x, y: r.top + sc.y, w: r.width, h: r.height }));
+
+    if (!raw.length) return [];
+
+    // 2) merge by line (y proximity) + join gaps (spaces) + remove overlaps
+    return mergeRectsToLines(raw, {
+      yTol: 4,          // px: Rects derselben Zeile erkennen
+      gapTol: 10,       // px: kleine Lücken (Leerzeichen) schließen
+      minW: 2,
+      minH: 2,
+      padX: 0.0,        // optional: 0.5..1.5 wenn du "schöner" willst
+      padY: 0.0
+    });
   }
+
+
+  function mergeRectsToLines(rects, opt){
+    const yTol = opt?.yTol ?? 4;
+    const gapTol = opt?.gapTol ?? 10;
+    const minW = opt?.minW ?? 2;
+    const minH = opt?.minH ?? 2;
+    const padX = opt?.padX ?? 0;
+    const padY = opt?.padY ?? 0;
+  
+    // sort top->bottom, left->right
+    const a = rects.slice().sort((r1,r2) => (r1.y - r2.y) || (r1.x - r2.x));
+  
+    // group into lines by y center
+    const lines = [];
+    for (const r of a){
+      const cy = r.y + r.h/2;
+      let line = null;
+  
+      // letzte Zeile reicht fast immer, aber wir suchen defensiv von hinten
+      for (let i = lines.length - 1; i >= 0; i--){
+        const L = lines[i];
+        if (Math.abs(cy - L.cy) <= yTol){
+          line = L;
+          break;
+        }
+        if (cy < L.cy - (yTol*2)) break;
+      }
+  
+      if (!line){
+        line = { cy, rects: [] };
+        lines.push(line);
+      }
+      line.rects.push(r);
+      // Update line center (robust)
+      line.cy = (line.cy * (line.rects.length - 1) + cy) / line.rects.length;
+    }
+  
+    // merge within each line
+    const merged = [];
+    for (const L of lines){
+      const rs = L.rects.sort((r1,r2)=> r1.x - r2.x);
+      let cur = null;
+  
+      for (const r of rs){
+        const x1 = r.x;
+        const x2 = r.x + r.w;
+        const y1 = r.y;
+        const y2 = r.y + r.h;
+  
+        if (!cur){
+          cur = { x1, x2, y1, y2 };
+          continue;
+        }
+  
+        // overlap / small gap -> merge
+        if (x1 <= cur.x2 + gapTol){
+          cur.x2 = Math.max(cur.x2, x2);
+          cur.y1 = Math.min(cur.y1, y1);
+          cur.y2 = Math.max(cur.y2, y2);
+        } else {
+          // flush
+          const w = cur.x2 - cur.x1;
+          const h = cur.y2 - cur.y1;
+          if (w >= minW && h >= minH){
+            merged.push({
+              x: cur.x1 - padX,
+              y: cur.y1 - padY,
+              w: w + 2*padX,
+              h: h + 2*padY
+            });
+          }
+          cur = { x1, x2, y1, y2 };
+        }
+      }
+  
+      // flush last
+      if (cur){
+        const w = cur.x2 - cur.x1;
+        const h = cur.y2 - cur.y1;
+        if (w >= minW && h >= minH){
+          merged.push({
+            x: cur.x1 - padX,
+            y: cur.y1 - padY,
+            w: w + 2*padX,
+            h: h + 2*padY
+          });
+        }
+      }
+    }
+  
+    return merged;
+  }
+  
+
 
   // =========================
   // Layout-Signatur + Recalc (wenn Präsentation/Font/Wrap sich ändert)
