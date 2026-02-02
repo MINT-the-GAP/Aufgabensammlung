@@ -1,18 +1,40 @@
 <!--
-version: 0.0.1
+version: 0.0.3
 language: de
 author: Martin Lommatzsch
+comment: DynFlex Import V6.3 (no-macros, all-in-comment, ensure/scan, theme-update, end-resizer)
 
-@style
-/* =========================================================
-   DynFlex Import (V5.2-importsafe)
-   - Minipages (.flex-child) nebeneinander, flex-wrap
-   - Resizer hinter JEDEM Block, inkl. End-Resizer
-   - Drag ändert NUR die Breite des Blocks in %
-   - Themefarbe der Trenner aktualisiert sich bei Themewechsel
-   - Import-sicher: keine Abhängigkeit vom Header-Kommentar
-   ========================================================= */
+@onload
+(function () {
 
+  // =========================================================
+  // Root/Content (iframe-safe) + per-Doc Run-Once (import-safe)
+  // =========================================================
+  function getRootWindow(){
+    let w = window;
+    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
+    return w;
+  }
+  const ROOT = getRootWindow();
+
+  const REGKEY = "__LIA_DYNFLEX_V6_3__";
+  ROOT[REGKEY] = ROOT[REGKEY] || { docs: {} };
+
+  // stabiler Doc-Key im *aktuellen* Content-Dokument
+  const DOC_KEY_ATTR = "data-dynflex-doc";
+  let docKey = document.documentElement.getAttribute(DOC_KEY_ATTR);
+  if (!docKey){
+    docKey = (document.baseURI || location.href || "dynflex") + "::" + Math.random().toString(36).slice(2);
+    document.documentElement.setAttribute(DOC_KEY_ATTR, docKey);
+  }
+  if (ROOT[REGKEY].docs[docKey]) return;
+  ROOT[REGKEY].docs[docKey] = true;
+
+  // =========================================================
+  // CSS Injection (weil @style in Import-Konstellationen zickt)
+  // =========================================================
+  const STYLE_ID = "lia-dynflex-style-v6-3";
+  const CSS = `
 section.dynFlex{
   --dyn-gap: 20px;
   --dyn-hit: 22px;
@@ -23,7 +45,7 @@ section.dynFlex{
   flex-wrap: wrap;
   align-items: flex-start;
   gap: var(--dyn-gap);
-  overflow: visible; /* Resizer darf rausstehen */
+  overflow: visible;
 }
 
 section.dynFlex > .flex-child{
@@ -60,7 +82,6 @@ section.dynFlex .dynFlexResizer{
   z-index: 5;
 }
 
-/* End-Resizer: gleicher Abstand wie die anderen */
 section.dynFlex .dynFlexResizer.dynFlexResizerEnd{
   left: auto;
   right: calc(-1 * (var(--dyn-gap) / 2) - (var(--dyn-hit) / 2));
@@ -87,48 +108,22 @@ section.dynFlex .dynFlexResizer:hover::before{
 @media (max-width: 420px){
   section.dynFlex{ --dyn-basis: 100%; }
 }
-@end
+  `.trim();
 
-
-@onload
-(function () {
-
-  /* =========================
-     Root + Run-Once (import-safe)
-     ========================= */
-  function getRootWindow(){
-    let w = window;
-    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
-    return w;
+  function ensureStyle(){
+    if (document.getElementById(STYLE_ID)) return;
+    const st = document.createElement("style");
+    st.id = STYLE_ID;
+    st.textContent = CSS;
+    (document.head || document.documentElement).appendChild(st);
   }
-  const ROOT = getRootWindow();
 
-  const REGKEY = "__LIA_DYNFLEX_IMPORT_V5_2__";
-  ROOT[REGKEY] = ROOT[REGKEY] || { docs: {} };
-
-  // stabiler Key pro Dokument
-  const DOC_KEY_ATTR = "data-dynflex-dockey";
-  let docKey = document.documentElement.getAttribute(DOC_KEY_ATTR);
-  if (!docKey){
-    docKey = "dynflex@" + Math.random().toString(36).slice(2);
-    document.documentElement.setAttribute(DOC_KEY_ATTR, docKey);
-  }
-  if (ROOT[REGKEY].docs[docKey]) return;
-  ROOT[REGKEY].docs[docKey] = true;
-
-  /* =========================
-     Theme Accent (auto-update)
-     ========================= */
+  // =========================================================
+  // Theme Accent Update (matchMedia + attribute observer + light ensure)
+  // =========================================================
   function pickAccent(){
     const cs = getComputedStyle(document.documentElement);
-    const vars = [
-      "--lia-accent",
-      "--lia-primary",
-      "--lia-color-primary",
-      "--primary",
-      "--color-primary",
-      "--accent-color"
-    ];
+    const vars = ["--lia-accent","--lia-primary","--lia-color-primary","--primary","--color-primary","--accent-color"];
     for (const v of vars){
       const val = cs.getPropertyValue(v).trim();
       if (val) return val;
@@ -154,35 +149,10 @@ section.dynFlex .dynFlexResizer:hover::before{
       document.documentElement.style.setProperty("--dynflex-accent", acc);
     }
   }
-  updateAccent(true);
 
-  // OS dark/light
-  try{
-    const mql = window.matchMedia("(prefers-color-scheme: dark)");
-    if (mql && mql.addEventListener) mql.addEventListener("change", () => updateAccent(true));
-    else if (mql && mql.addListener) mql.addListener(() => updateAccent(true));
-  } catch(e){}
-
-  // Theme-Toggles via Attribute/Class
-  const themeMO = new MutationObserver(() => updateAccent(false));
-  try{
-    themeMO.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class","style","data-theme","data-mode","data-color-scheme"]
-    });
-  } catch(e){}
-  try{
-    if (document.body){
-      themeMO.observe(document.body, {
-        attributes: true,
-        attributeFilter: ["class","style","data-theme","data-mode","data-color-scheme"]
-      });
-    }
-  } catch(e){}
-
-  /* =========================
-     DynFlex core
-     ========================= */
+  // =========================================================
+  // DynFlex Core
+  // =========================================================
   const clamp = (x,a,b) => Math.min(b, Math.max(a,x));
 
   function parsePct(x, fallback){
@@ -235,11 +205,14 @@ section.dynFlex .dynFlexResizer:hover::before{
   }
 
   function initSection(sec){
+    // WICHTIG: nicht "init" markieren, solange Children noch nicht da sind
+    const items = Array.from(sec.querySelectorAll(":scope > .flex-child"));
+    if (items.length === 0) return;
+
     if (sec.dataset.dynflexInit === "1") return;
     sec.dataset.dynflexInit = "1";
 
-    // per Section optional steuerbar:
-    // data-gap="20" data-hit="22" data-basis="25" data-min="10" data-max="100"
+    // optional konfigurierbar pro Section
     const gap  = sec.getAttribute("data-gap");
     const hit  = sec.getAttribute("data-hit");
     const basis = parsePct(sec.getAttribute("data-basis"), 25);
@@ -253,9 +226,7 @@ section.dynFlex .dynFlexResizer:hover::before{
 
     restore(sec);
 
-    const items = Array.from(sec.querySelectorAll(":scope > .flex-child"));
-    if (items.length === 0) return;
-
+    // Resizer hinter JEDEM Block (inkl. letztes)
     for (let i = 0; i < items.length; i++){
       const box = items[i];
       if (box.querySelector(":scope > .dynFlexResizer")) continue;
@@ -281,6 +252,7 @@ section.dynFlex .dynFlexResizer:hover::before{
 
       const onMove = (e) => {
         if (!dragging) return;
+
         const secW = sec.getBoundingClientRect().width || 1;
         const dx = e.clientX - startX;
         const dPct = (dx / secW) * 100;
@@ -288,6 +260,7 @@ section.dynFlex .dynFlexResizer:hover::before{
         const newW = clamp(startW + dPct, minPct, maxPct);
         setItemPct(box, newW);
 
+        // wrap macht den Rest
         persist(sec);
         e.preventDefault();
       };
@@ -306,24 +279,49 @@ section.dynFlex .dynFlexResizer:hover::before{
     }
   }
 
-  /* =========================
-     Scan (throttled)
-     ========================= */
+  // =========================================================
+  // ensure/scan (throttled) + observers (NIE body-null)
+  // =========================================================
   let scanScheduled = false;
+
   function scan(){
     scanScheduled = false;
+    ensureStyle();
+    updateAccent(false);
     document.querySelectorAll("section.dynFlex").forEach(initSection);
   }
+
   function scheduleScan(){
     if (scanScheduled) return;
     scanScheduled = true;
     requestAnimationFrame(scan);
   }
 
+  // Start (mehrstufig, import-/render-sicher)
+  ensureStyle();
+  updateAccent(true);
   scheduleScan();
   setTimeout(scheduleScan, 50);
   setTimeout(scheduleScan, 250);
+  setTimeout(scheduleScan, 800);
 
+  // Theme trigger (Attribute)
+  const themeMO = new MutationObserver(() => { updateAccent(false); });
+  try{
+    themeMO.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class","style","data-theme","data-mode","data-color-scheme"]
+    });
+  }catch(e){}
+
+  // OS scheme
+  try{
+    const mql = window.matchMedia("(prefers-color-scheme: dark)");
+    if (mql && mql.addEventListener) mql.addEventListener("change", () => { updateAccent(true); });
+    else if (mql && mql.addListener) mql.addListener(() => { updateAccent(true); });
+  }catch(e){}
+
+  // DOM observer (throttled) — auf documentElement, nicht body
   const mo = new MutationObserver((muts) => {
     for (const m of muts){
       if (m.addedNodes && m.addedNodes.length){
@@ -336,9 +334,6 @@ section.dynFlex .dynFlexResizer:hover::before{
 
 })();
 @end
-
-
-
 
 -->
 
@@ -355,7 +350,10 @@ section.dynFlex .dynFlexResizer:hover::before{
 
 
 
+
+
 # DynFlex
+
 
 <section class="dynFlex">
 
