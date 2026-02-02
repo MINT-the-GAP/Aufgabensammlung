@@ -70,6 +70,8 @@ Klicke auf das A im Header und ändere im Präsentationsmodus die Schriftgröße
 
 > Dynamsische Flex-Childs
 
+Geh an den rechten vertikalen Trennstrich zwischen den Blöcken und schiebe diesen nach belieben hin und her. Funktioniert auch mit Textmarkern.
+
 <section class="dynFlex">
 
   <div class="flex-child">
