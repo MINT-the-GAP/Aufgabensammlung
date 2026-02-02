@@ -14,7 +14,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-# Geo 21
+# Geo 23
 
 
 <section class="dynFlex">
