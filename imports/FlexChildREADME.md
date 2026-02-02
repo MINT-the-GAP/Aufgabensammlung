@@ -1,63 +1,61 @@
 <!--
-version:  0.0.1
+version: 0.0.1
 language: de
 author: Martin Lommatzsch
 
 @style
-main > *:not(:last-child) { margin-bottom: 3rem; }
-input { text-align: center; }
-
 /* =========================================================
-   DynFlex V5.1: Minipages + Resizer pro Block (WRAP) + END-Resizer
-   - Jeder .flex-child hat rechts einen vertikalen Drag-Resizer (JETZT AUCH der letzte).
-   - Drag ändert NUR die Breite dieses Blocks in %.
-   - Wenn ein früher Block breiter wird, werden die folgenden automatisch umbrochen (flex-wrap).
-   - Themefarbe der Trenner aktualisiert sich bei Themewechsel.
+   DynFlex Import (V5.2) — Minipages + Resizer pro Block + End-Resizer
+   - pro .flex-child rechts ein Drag-Resizer (auch am letzten)
+   - Drag ändert NUR die Breite dieses Blocks in %
+   - flex-wrap schiebt nachfolgende Blöcke in die nächste Zeile
+   - Themefarbe der Trenner aktualisiert sich bei Themewechsel
+   - Import-sicher (run-once, keine body-null Crashes)
    ========================================================= */
 
 section.dynFlex{
-  --dyn-gap:  20px;
+  --dyn-gap: 20px;
+  --dyn-hit: 22px;                    /* Hitbox-Breite Resizer */
   --dyn-accent: var(--dynflex-accent, #0b5fff);
-  --dyn-basis: 25%;                  /* Defaultbreite pro Box (in %) */
+  --dyn-basis: 25%;
 
   display: flex;
-  flex-wrap: wrap;                   /* <-- Umbruch */
+  flex-wrap: wrap;
   align-items: flex-start;
   gap: var(--dyn-gap);
+  overflow: visible;                  /* Resizer darf rausstehen */
 }
 
-/* Minipage-Boxen */
+/* Minipage-Box */
 section.dynFlex > .flex-child{
-  position: relative;                /* Resizer sitzt absolut in der Box */
+  position: relative;
   box-sizing: border-box;
   min-width: 0;
 
-  /* "Minipage": feste Breite in % */
   flex: 0 0 var(--w, var(--dyn-basis));
   max-width: var(--w, var(--dyn-basis));
 
-  padding: 0.65rem 1.25rem 0.65rem 0.85rem;  /* rechts Luft wegen Resizer */
+  padding: 0.65rem 1.25rem 0.65rem 0.85rem;
   border-left: 1px solid var(--dyn-accent);
   border-radius: 10px;
   background: rgba(127,127,127,0.08);
 }
 
-/* Beim Draggen keine Textmarkierung */
+/* Drag: keine Textmarkierung */
 section.dynFlex.dynFlexDragging,
 section.dynFlex.dynFlexDragging *{
   user-select: none !important;
 }
 
-/* Resizer (wird per JS in jede Box injiziert) */
+/* Resizer (wird per JS injiziert) */
 section.dynFlex .dynFlexResizer{
   position: absolute;
   top: 0;
   bottom: 0;
 
-  /* Standard: Resizer optisch im GAP zwischen dieser und der nächsten Box */
   left: 100%;
-  width: 22px; /* Hitbox */
-  margin-left: calc(var(--dyn-gap) / 2 - 11px);
+  width: var(--dyn-hit);
+  margin-left: calc(var(--dyn-gap) / 2 - (var(--dyn-hit) / 2));
 
   cursor: ew-resize;
   touch-action: none;
@@ -65,11 +63,10 @@ section.dynFlex .dynFlexResizer{
   z-index: 5;
 }
 
-/* END-Resizer: sitzt hinter dem letzten Block (außerhalb) */
+/* End-Resizer: gleicher Abstand wie die anderen */
 section.dynFlex .dynFlexResizer.dynFlexResizerEnd{
   left: auto;
-  /* halb in den "virtuellen" Abstand rechts vom letzten Block schieben */
-  right: calc(-1 * (var(--dyn-gap) / 2) - 11px);
+  right: calc(-1 * (var(--dyn-gap) / 2) - (var(--dyn-hit) / 2));
   margin-left: 0;
 }
 
@@ -87,7 +84,6 @@ section.dynFlex .dynFlexResizer::before{
   opacity: 0.95;
 }
 
-/* Hover kräftiger */
 section.dynFlex .dynFlexResizer:hover::before{
   width: 3px;
 }
@@ -99,26 +95,35 @@ section.dynFlex .dynFlexResizer:hover::before{
 @end
 
 @onload
-(function(){
+(function () {
 
-  // ---------------------------------------------------------
-  // Import-sicher: pro Dokument nur einmal initialisieren
-  // ---------------------------------------------------------
+  /* =========================================================
+     Root-Window + per-Dokument Run-Once (import-sicher)
+     ========================================================= */
   function getRootWindow(){
     let w = window;
     try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
     return w;
   }
   const ROOT = getRootWindow();
-  const DOC_ID = (document.baseURI || ("doc@" + Math.random().toString(36).slice(2)));
-  const REGKEY = "__LIA_DYNFLEX_V5_1__";
-  ROOT[REGKEY] = ROOT[REGKEY] || { docs: {} };
-  if (ROOT[REGKEY].docs[DOC_ID]) return;
-  ROOT[REGKEY].docs[DOC_ID] = true;
 
-  // ---------------------------------------------------------
-  // Theme-Akzentfarbe dynamisch aktualisieren
-  // ---------------------------------------------------------
+  const REGKEY = "__LIA_DYNFLEX_IMPORT_V5_2__";
+  ROOT[REGKEY] = ROOT[REGKEY] || { docs: {} };
+
+  // Stabilen Doc-Key erzeugen (ohne baseURI-Fallen)
+  const DOC = document;
+  const DOC_KEY_ATTR = "data-dynflex-dockey";
+  let docKey = DOC.documentElement.getAttribute(DOC_KEY_ATTR);
+  if (!docKey){
+    docKey = "dynflex@" + Math.random().toString(36).slice(2);
+    DOC.documentElement.setAttribute(DOC_KEY_ATTR, docKey);
+  }
+  if (ROOT[REGKEY].docs[docKey]) return;
+  ROOT[REGKEY].docs[docKey] = true;
+
+  /* =========================================================
+     Theme-Akzentfarbe (auto-update)
+     ========================================================= */
   function pickAccent(){
     const cs = getComputedStyle(document.documentElement);
     const vars = [
@@ -146,25 +151,24 @@ section.dynFlex .dynFlexResizer:hover::before{
     return "#0b5fff";
   }
 
-  let __lastAccent = null;
-  function updateAccent(force=false){
+  let lastAccent = null;
+  function updateAccent(force){
     const acc = pickAccent();
-    if (force || acc !== __lastAccent){
-      __lastAccent = acc;
+    if (force || acc !== lastAccent){
+      lastAccent = acc;
       document.documentElement.style.setProperty("--dynflex-accent", acc);
     }
   }
-
   updateAccent(true);
 
-  // OS/Browser Dark/Light Umschaltung
+  // OS dark/light
   try{
     const mql = window.matchMedia("(prefers-color-scheme: dark)");
     if (mql && mql.addEventListener) mql.addEventListener("change", () => updateAccent(true));
     else if (mql && mql.addListener) mql.addListener(() => updateAccent(true));
   } catch(e){}
 
-  // DOM-Attribute (Theme-Toggles)
+  // Theme-Toggle über Klassen/Attribute
   const themeMO = new MutationObserver(() => updateAccent(false));
   try{
     themeMO.observe(document.documentElement, {
@@ -181,13 +185,9 @@ section.dynFlex .dynFlexResizer:hover::before{
     }
   } catch(e){}
 
-  // Fallback Polling
-  const poll = setInterval(() => updateAccent(false), 900);
-  window.addEventListener("pagehide", () => { try { clearInterval(poll); } catch(e){} }, { passive: true });
-
-  // ---------------------------------------------------------
-  // Resizer-Logik (Wrap)
-  // ---------------------------------------------------------
+  /* =========================================================
+     DynFlex Logik
+     ========================================================= */
   const clamp = (x,a,b) => Math.min(b, Math.max(a,x));
 
   function parsePct(x, fallback){
@@ -239,14 +239,12 @@ section.dynFlex .dynFlexResizer:hover::before{
     });
   }
 
-  function injectResizers(sec){
-    const items = Array.from(sec.querySelectorAll(":scope > .flex-child"));
-    if (items.length < 1) return;
+  function initSection(sec){
+    if (sec.dataset.dynflexInit === "1") return;
+    sec.dataset.dynflexInit = "1";
 
-    const basis = parsePct(
-      sec.getAttribute("data-basis"),
-      parsePct(getComputedStyle(sec).getPropertyValue("--dyn-basis"), 25)
-    );
+    // Defaults / Config
+    const basis = parsePct(sec.getAttribute("data-basis"), 25);
     sec.style.setProperty("--dyn-basis", basis + "%");
 
     const minPct = parsePct(sec.getAttribute("data-min"), 10);
@@ -254,7 +252,10 @@ section.dynFlex .dynFlexResizer:hover::before{
 
     restore(sec);
 
-    // Resizer JETZT für jedes Item (inkl. letztes)
+    const items = Array.from(sec.querySelectorAll(":scope > .flex-child"));
+    if (items.length === 0) return;
+
+    // Resizer für jedes Item (inkl. letztes)
     for (let i = 0; i < items.length; i++){
       const box = items[i];
       if (box.querySelector(":scope > .dynFlexResizer")) continue;
@@ -262,10 +263,7 @@ section.dynFlex .dynFlexResizer:hover::before{
       const rz = document.createElement("div");
       rz.className = "dynFlexResizer";
       rz.setAttribute("aria-hidden", "true");
-
-      // letzter Block bekommt End-Resizer-Position
       if (i === items.length - 1) rz.classList.add("dynFlexResizerEnd");
-
       box.appendChild(rz);
 
       let dragging = false;
@@ -275,10 +273,8 @@ section.dynFlex .dynFlexResizer:hover::before{
       const onDown = (e) => {
         dragging = true;
         sec.classList.add("dynFlexDragging");
-
         startX = e.clientX;
         startW = getItemPct(sec, box);
-
         rz.setPointerCapture?.(e.pointerId);
         e.preventDefault();
       };
@@ -293,7 +289,6 @@ section.dynFlex .dynFlexResizer:hover::before{
         const newW = clamp(startW + dPct, minPct, maxPct);
         setItemPct(box, newW);
 
-        // flex-wrap sorgt dafür, dass andere ggf. in nächste Zeile gehen
         persist(sec);
         e.preventDefault();
       };
@@ -312,24 +307,52 @@ section.dynFlex .dynFlexResizer:hover::before{
     }
   }
 
-  function initAll(){
-    document.querySelectorAll("section.dynFlex").forEach(sec => {
-      if (sec.dataset.dynflexInit === "1") return;
-      sec.dataset.dynflexInit = "1";
-      injectResizers(sec);
-    });
+  /* =========================================================
+     Scan + MutationObserver (throttled, import-sicher)
+     ========================================================= */
+  let scanScheduled = false;
+  function scan(){
+    scanScheduled = false;
+    document.querySelectorAll("section.dynFlex").forEach(initSection);
+  }
+  function scheduleScan(){
+    if (scanScheduled) return;
+    scanScheduled = true;
+    requestAnimationFrame(scan);
   }
 
-  initAll();
-  setTimeout(initAll, 50);
-  setTimeout(initAll, 250);
+  // Start robust (egal ob body schon da)
+  scheduleScan();
+  setTimeout(scheduleScan, 50);
+  setTimeout(scheduleScan, 250);
 
-  const mo = new MutationObserver(() => initAll());
-  mo.observe(document.body, { childList: true, subtree: true });
+  // Nur “leichtes” Observing, throttled
+  const mo = new MutationObserver((muts) => {
+    for (const m of muts){
+      if (m.addedNodes && m.addedNodes.length){
+        scheduleScan();
+        break;
+      }
+    }
+  });
+  mo.observe(document.documentElement, { childList: true, subtree: true });
 
 })();
 @end
 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # DynFlex
 
@@ -349,6 +372,14 @@ section.dynFlex .dynFlexResizer:hover::before{
 
   <div class="flex-child">
     __$d)\;\;$__ Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.
+  </div>
+
+  <div class="flex-child">
+    __$e)\;\;$__ Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.
+  </div>
+
+  <div class="flex-child">
+    __$f)\;\;$__ Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.
   </div>
 
 </section>
