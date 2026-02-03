@@ -7,7 +7,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MarkerREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/TafelREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FlexChildREADME.md
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/DeutschREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/DeutschREADME.md?cb=1
 
 
 
@@ -18,7 +18,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-# Geo Rechtschreibung
+# Geo Rechtschreibung 2
 
 
 <section class="dynFlex">
@@ -27,12 +27,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
     
 __Aufgabe 1:__ Hör dir den Satz an und schreib ihn korrekt in das Eingabefeld. \
 
-
-{{|> Deutsch Female}}
-<!-- style="position: absolute; left: -9999px;" -->
-Anna sitzt auf einem fliegenden Teppich.
-
-[[    Anna sitzt auf einem fliegenden Teppich.    ]]
+@diktat(Anna sitzt auf einem fliegenden Teppich.)
 
   </div>
 
@@ -77,6 +72,16 @@ __Aufgabe 5:__ Korrigiere die Rechtschreibfehler im gezeigten Satz. (Auflösung 
 
 
 </section>
+
+
+  
+__Aufgabe 4:__ Setze die Satzzeichen so, dass der Satz eine korrekte wörtliche Rede darstellt. (Auflösung bei erst nach 2 und 0 Versuchen) \
+
+__$a)\;\;$__
+@orthography(2,`Der Apfel ist rot sagte Ben`,`"Der Apfel ist rot", sagte Ben.`)
+
+__$b)\;\;$__
+@orthography(true,`Clara sagt Druck ist eine physikalische Größe`,`Clara sagt: "Druck ist eine physikalische Größe."`)
 
 
 
