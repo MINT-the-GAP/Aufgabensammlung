@@ -2,28 +2,205 @@
 version:  0.0.1
 language: de
 narrator: Deutsch Female
-
-tags:
-comment:
 author: Martin Lommatzsch
-
+comment: Deutsch Tools Export – dynFlex markers + orthography/diktat (reset inline left)
 
 @style
+/* ---------------------------------------------------------
+   dynFlex – robustes Flex-Layout (Fallback, falls Import fehlt)
+--------------------------------------------------------- */
+section.dynFlex{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:stretch;
+  gap:20px;
+}
+section.dynFlex > .flex-child{
+  flex:1 1 350px;
+  min-width:350px;
+}
+@media (max-width: 400px){
+  section.dynFlex > .flex-child{
+    flex-basis:100%;
+    min-width:0;
+  }
+}
+
+/* ---------------------------------------------------------
+   Reset in der Lia-Control-Leiste: links neben Prüfen/Auflösen
+--------------------------------------------------------- */
 .ortho-reset-inline{
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: auto !important;
-  max-width: max-content !important;
-  flex: 0 0 auto !important;
-  white-space: nowrap !important;
-  cursor: pointer !important;
-  order: -1;
-  margin-right: .5rem !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:auto !important;
+  max-width:max-content !important;
+  flex:0 0 auto !important;
+  white-space:nowrap !important;
+  cursor:pointer !important;
+  margin-right:.5rem !important;
+  /* kein order: wir setzen DOM-mäßig wirklich nach links */
 }
 @end
 
 
+@onload
+(function(){
+  // =========================================================
+  // ROOT + globaler Store (einmal pro Dokument)
+  // =========================================================
+  function getRootWindow(){
+    let w = window;
+    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
+    return w;
+  }
+  const ROOT = getRootWindow();
+
+  const STORE_KEY = "__DEUTSCH_TOOLS_EXPORT_V1__";
+  ROOT[STORE_KEY] = ROOT[STORE_KEY] || {
+    fixers: {},        // uid -> function
+    listener: false,
+    observer: null,
+    scheduled: false
+  };
+  const STORE = ROOT[STORE_KEY];
+
+  // =========================================================
+  // dynFlex Marker -> echte .flex-child Wrapper
+  // Nutzung im Kurs:
+  // ===============================
+  function normComment(s){
+    return String(s||"").trim().toLowerCase();
+  }
+
+  function wrapDynFlexMarkers(){
+    const sections = document.querySelectorAll('section.dynFlex');
+    sections.forEach(sec=>{
+      // Marker-Wrapper: scan childNodes
+      let node = sec.firstChild;
+      while(node){
+        if (node.nodeType === 8 && normComment(node.nodeValue) === "flex-child"){
+          const start = node;
+          const wrap = document.createElement('div');
+          wrap.className = 'flex-child';
+
+          // Wrapper vor dem Start-Marker einfügen
+          sec.insertBefore(wrap, start);
+
+          // Nodes zwischen Start und End-Marker in Wrapper verschieben
+          let cur = start.nextSibling;
+          while(cur){
+            const isEnd = (cur.nodeType === 8 && (
+              normComment(cur.nodeValue) === "/flex-child" ||
+              normComment(cur.nodeValue) === "end-flex-child" ||
+              normComment(cur.nodeValue) === "flex-child-end"
+            ));
+
+            if (isEnd){
+              const end = cur;
+              // Marker entfernen
+              if (start.parentNode === sec) sec.removeChild(start);
+              if (end.parentNode === sec) sec.removeChild(end);
+              break;
+            }
+
+            const next = cur.nextSibling;
+            wrap.appendChild(cur);
+            cur = next;
+          }
+
+          // weiter nach dem Wrapper
+          node = wrap.nextSibling;
+          continue;
+        }
+
+        node = node.nextSibling;
+      }
+    });
+
+    // Safety: falls irgendwo Quiz-Reste als Text auftauchen -> nur die Sequenz [[!]] entfernen
+    document.querySelectorAll('section.dynFlex .flex-child').forEach(fc=>{
+      const w = document.createTreeWalker(fc, NodeFilter.SHOW_TEXT);
+      const kills = [];
+      while(w.nextNode()){
+        const t = w.currentNode;
+        if (t && typeof t.nodeValue === "string" && t.nodeValue.includes('[[!]]')){
+          t.nodeValue = t.nodeValue.replace(/\[\[!\]\]\s*/g,'');
+        }
+      }
+    });
+  }
+
+  // =========================================================
+  // Scheduler: so früh wie möglich (vor Paint) + kurze Nachläufer
+  // =========================================================
+  function runAll(){
+    // Layout zuerst (damit Controls später richtig gefunden werden)
+    try { wrapDynFlexMarkers(); } catch(e){}
+    Object.keys(STORE.fixers).forEach(k=>{
+      try { STORE.fixers[k](); } catch(e){}
+    });
+  }
+
+  function scheduleRunAll(){
+    if (STORE.scheduled) return;
+    STORE.scheduled = true;
+
+    queueMicrotask(function(){
+      STORE.scheduled = false;
+      runAll();
+    });
+
+    try { requestAnimationFrame(runAll); } catch(e){}
+    setTimeout(runAll, 0);
+    setTimeout(runAll, 60);
+    setTimeout(runAll, 180);
+  }
+
+  if (!STORE.listener){
+    STORE.listener = true;
+    document.addEventListener('click', scheduleRunAll, true);
+
+    function startObserver(){
+      if (STORE.observer) return;
+      const target = document.body || document.documentElement;
+      if (!target) return;
+      STORE.observer = new MutationObserver(function(){ scheduleRunAll(); });
+      STORE.observer.observe(target, { childList:true, subtree:true });
+    }
+    startObserver();
+    setTimeout(startObserver, 0);
+    setTimeout(startObserver, 50);
+  }
+
+  // global verfügbar (optional)
+  ROOT.__DEUTSCH_TOOLS_SCHEDULE__ = scheduleRunAll;
+
+  // sofort laufen
+  scheduleRunAll();
+})();
+@end
+
+
+// =========================================================
+// @diktat – inline-sicher (funktioniert in dynFlex)
+// - versteckter Text für TTS + normales Lia-Eingabefeld
+// =========================================================
+@diktat: @diktat_(@uid,`@0`)
+@diktat_
+{|>}{<span style="position:absolute; left:-10000px">@1</span>}[[  @1  ]]
+
+
+// =========================================================
+// @orthography – mit Reset links in der Control-Leiste
+// gate:
+//   false/0/off/no  -> Auflösen aus
+//   true            -> Auflösen sofort
+//   n>0             -> Auflösen erst nach n Prüfen-Versuchen
+// Reset:
+//   - setzt KEINE tries zurück
+//   - wenn solved/resolved -> lässt Lösung stehen (und setzt sie wieder)
+// =========================================================
 @orthography: @orthography_(@uid,`@0`,`@1`,`@2`)
 
 @orthography_
@@ -51,6 +228,7 @@ author: Martin Lommatzsch
   const el  = document.querySelector('[data-id="lia-quiz-@0"]');
   const sol = document.getElementById('orthography-solution-@0');
   if(!el || !sol) return false;
+
   const norm = s => String(s||"").toLocaleLowerCase().replace(/\s+/g,"");
   return norm(el.value) === norm(sol.textContent);
 })()
@@ -58,9 +236,6 @@ author: Martin Lommatzsch
 
 <script modify="false">
 (function(){
-  // =========================================================
-  // ROOT + globaler Store (persistiert über Re-Renders)
-  // =========================================================
   function getRootWindow(){
     let w = window;
     try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
@@ -68,70 +243,11 @@ author: Martin Lommatzsch
   }
   const ROOT = getRootWindow();
 
-  const STORE_KEY = "__ORTHOGRAPHY_STORE_V2__";
-  ROOT[STORE_KEY] = ROOT[STORE_KEY] || {
-    state: {},        // uid -> { solved, tries, start, solution, gate }
-    fixers: {},       // uid -> function
-    listener: false,
-    observer: null,
-    scheduled: false
-  };
+  const STORE_KEY = "__ORTHO_STORE_V1__";
+  ROOT[STORE_KEY] = ROOT[STORE_KEY] || { state:{}, fixers:{} };
   const STORE = ROOT[STORE_KEY];
 
-  function runAllFixers(){
-    Object.keys(STORE.fixers).forEach(k=>{
-      try { STORE.fixers[k](); } catch(e){}
-    });
-  }
-
-  // Sehr schneller Scheduler: vor Paint (microtask + rAF) + kurze Nachläufer
-  function scheduleRunAll(){
-    if (STORE.scheduled) return;
-    STORE.scheduled = true;
-
-    // 1) microtask: so früh wie möglich im selben Tick
-    queueMicrotask(function(){
-      STORE.scheduled = false;
-      runAllFixers();
-    });
-
-    // 2) vor dem nächsten Paint
-    try { requestAnimationFrame(runAllFixers); } catch(e){}
-
-    // 3) Nachläufer für Lia async
-    setTimeout(runAllFixers, 0);
-    setTimeout(runAllFixers, 60);
-    setTimeout(runAllFixers, 180);
-  }
-
-  // globaler Trigger: Klicks + DOM-Mutationen (damit Re-Renders sofort repariert werden)
-  if (!STORE.listener) {
-    STORE.listener = true;
-    document.addEventListener('click', scheduleRunAll, true);
-
-    // MutationObserver: reagiert auf DOM-Ersetzungen, bevor es sichtbar wird
-    function startObserver(){
-      if (STORE.observer) return;
-      const target = document.body || document.documentElement;
-      if (!target) return;
-
-      STORE.observer = new MutationObserver(function(){
-        scheduleRunAll();
-      });
-      STORE.observer.observe(target, { childList: true, subtree: true });
-    }
-
-    // falls body noch nicht da ist:
-    startObserver();
-    setTimeout(startObserver, 0);
-    setTimeout(startObserver, 50);
-  }
-
-  // =========================================================
-  // Selektoren dieser Instanz
-  // =========================================================
   const uid = "@0";
-
   const selInput = '[data-id="lia-quiz-@0"]';
   const idReset  = 'orthography-reset-@0';
   const idSol    = 'orthography-solution-@0';
@@ -148,21 +264,17 @@ author: Martin Lommatzsch
 
   const input0 = getInput();
   const btn0   = getReset();
-  const solEl0 = getSol();
-  if(!input0 || !btn0 || !solEl0) return;
+  const sol0   = getSol();
+  if(!input0 || !btn0 || !sol0) return;
 
-  // =========================================================
-  // State
-  // =========================================================
+  // Gate parse
   const gateRaw = "@1";
-  const solutionText = (solEl0.textContent || "");
-
   function parseGate(raw){
     const s = String(raw || "").trim().toLowerCase();
-    if (s === "false" || s === "0" || s === "off" || s === "no") return { mode: "off", n: 0 };
+    if (s === "false" || s === "0" || s === "off" || s === "no") return { mode:"off", n:0 };
     const n = parseInt(s, 10);
-    if (Number.isFinite(n) && n > 0) return { mode: "attempts", n };
-    return { mode: "on", n: 0 };
+    if (Number.isFinite(n) && n > 0) return { mode:"attempts", n };
+    return { mode:"on", n:0 };
   }
 
   STORE.state[uid] = STORE.state[uid] || {
@@ -175,29 +287,16 @@ author: Martin Lommatzsch
   const S = STORE.state[uid];
 
   if (!S.start)    S.start    = input0.getAttribute('value') || input0.defaultValue || "";
-  if (!S.solution) S.solution = solutionText;
+  if (!S.solution) S.solution = (sol0.textContent || "");
   S.gate = parseGate(gateRaw);
 
-  // =========================================================
-  // Helpers
-  // =========================================================
-  function clearClasses(node){
-    if(!node || !node.classList) return;
-    [...node.classList].forEach(c => {
-      if (/(correct|wrong|success|error|checked|valid|invalid|resolved|solved)/i.test(c)) {
-        node.classList.remove(c);
-      }
-    });
-  }
-
-  // set value with optional event emission
-  function setInputValue(v, emitEvents){
+  function setInputValue(v, emit){
     const input = getInput();
     if(!input) return;
     input.value = v;
-    if (emitEvents) {
-      input.dispatchEvent(new Event('input',  { bubbles: true }));
-      input.dispatchEvent(new Event('change', { bubbles: true }));
+    if (emit){
+      input.dispatchEvent(new Event('input',  { bubbles:true }));
+      input.dispatchEvent(new Event('change', { bubbles:true }));
     }
   }
 
@@ -208,7 +307,6 @@ author: Martin Lommatzsch
     input.removeAttribute('aria-invalid');
   }
 
-  // Wichtig gegen Flackern: silent (ohne Events), damit wir Lia nicht wieder triggern
   function silentForceSolution(){
     const input = getInput();
     if(!input) return;
@@ -272,11 +370,15 @@ author: Martin Lommatzsch
     resolve.removeAttribute("aria-hidden");
   }
 
+  // WICHTIG: Reset wirklich DOM-links einfügen (nicht nur via order)
   function placeReset(control){
     const btn = getReset();
     if(!control || !btn) return;
 
-    if (btn.parentElement !== control || btn !== control.lastElementChild) {
+    const first = control.firstElementChild;
+    if (first && btn !== first) {
+      control.insertBefore(btn, first);
+    } else if (!first) {
       control.appendChild(btn);
     }
     btn.classList.add('ortho-reset-inline');
@@ -291,7 +393,6 @@ author: Martin Lommatzsch
     if (wrap) wrap.dataset.orthoSolved = "1";
   }
 
-  // Sticky ohne Flackern: niemals Events, nur sofort wieder Solution setzen
   function ensureSolvedSticky(){
     const input = getInput();
     if(!input) return;
@@ -303,25 +404,19 @@ author: Martin Lommatzsch
     }
 
     if (S.solved) {
-      // Wenn Lia/Render irgendwas überschreibt -> sofort (silent) zurück
       if (norm(input.value) !== norm(S.solution)) {
         silentForceSolution();
       } else {
-        // auch bei korrektem Wert härten (neu gerenderte Inputs!)
         hardenSolution(input);
       }
     }
   }
 
-  // =========================================================
-  // Reset (tries NICHT anfassen!)
-  // =========================================================
+  // Reset: tries NICHT anfassen!
   function doReset(){
     if (S.solved) {
-      // gelöst -> bleibt Lösung
       lockSolution();
     } else {
-      // ungelöst -> zurück zum Starttext (hier Events ok)
       setInputValue(S.start, true);
       const input = getInput();
       if (input) {
@@ -331,17 +426,16 @@ author: Martin Lommatzsch
       }
     }
 
-    clearClasses(getInput());
-    clearClasses(findQuizForThisInput());
-
     const quiz = findQuizForThisInput();
     if (quiz) {
       const control = quiz.querySelector('.lia-quiz__control');
       applyGate(control);
       placeReset(control);
     }
+    ensureSolvedSticky();
   }
 
+  // Reset-Handler: darf Lia nicht triggern
   (function bindReset(){
     const btn = getReset();
     if(!btn) return;
@@ -361,9 +455,6 @@ author: Martin Lommatzsch
     }, true);
   })();
 
-  // =========================================================
-  // Control Delegation
-  // =========================================================
   function bindControl(){
     const quiz = findQuizForThisInput();
     if(!quiz) return false;
@@ -383,7 +474,7 @@ author: Martin Lommatzsch
       if (btn && ev.target && ev.target.closest && ev.target.closest('#' + btn.id)) return;
 
       const inputBefore = (getInput() ? getInput().value : "");
-      const wasCorrect  = (norm(inputBefore) === norm(S.solution)); // VOR Lia merken
+      const wasCorrect  = (norm(inputBefore) === norm(S.solution));
 
       const check = ev.target && ev.target.closest ? ev.target.closest('.lia-quiz__check') : null;
       if (check) {
@@ -397,18 +488,9 @@ author: Martin Lommatzsch
         }
 
         if (wasCorrect) {
-          // Lösung fixieren (silent, kein Flackern)
           setTimeout(lockSolution, 0);
           setTimeout(lockSolution, 30);
         } else {
-          // nicht korrekt: wenn Lia Input ungewollt auf Start zurücksetzt, restore
-          setTimeout(function(){
-            const input = getInput();
-            if (!input) return;
-            if (!S.solved && input.value === S.start && inputBefore !== S.start) {
-              setInputValue(inputBefore, false); // silent restore
-            }
-          }, 30);
           setTimeout(ensureSolvedSticky, 80);
         }
         return;
@@ -419,36 +501,32 @@ author: Martin Lommatzsch
         if (resolve.disabled || resolve.style.display === "none") return;
         setTimeout(lockSolution, 0);
         setTimeout(lockSolution, 30);
-        return;
       }
     }, true);
 
     return true;
   }
 
-  // =========================================================
-  // Fixer registrieren
-  // =========================================================
   function repair(){
     bindControl();
     ensureSolvedSticky();
   }
+
   STORE.fixers[uid] = repair;
 
-  // initial
-  scheduleRunAll();
+  // an den globalen Scheduler hängen, wenn vorhanden
+  if (ROOT.__DEUTSCH_TOOLS_SCHEDULE__) {
+    ROOT.__DEUTSCH_TOOLS_SCHEDULE__();
+  }
+
   setTimeout(repair, 0);
   setTimeout(repair, 60);
   setTimeout(repair, 180);
 })();
 </script>
-@end
-
-
-diktat: {|>}{<span style="position: absolute; left: -10000px">@0</span>} [[  @0  ]]
-
 
 -->
+
 
 
 
