@@ -4702,6 +4702,95 @@ function ensureCss(){
 
 
 
+  // =========================
+  // MATHEMATIK MAKROS
+  // MATHEMATIK MAKROS
+  // MATHEMATIK MAKROS
+  // MATHEMATIK MAKROS
+  // MATHEMATIK MAKROS
+  // MATHEMATIK MAKROS
+  // MATHEMATIK MAKROS
+  // MATHEMATIK MAKROS
+  // =========================
+
+
+
+
+
+
+(function () {
+  // =========================
+  // Root/Content (iframe-safe)
+  // =========================
+  function getRootWindow(){
+    let w = window;
+    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
+    return w;
+  }
+
+  const ROOT = getRootWindow();
+  const KEY  = "__LIA_FRACTION_QUIZ_V1__";
+
+  if (!ROOT[KEY]) {
+    ROOT[KEY] = {
+      circle:   Object.create(null), // uid -> boolean[]
+      rect:     Object.create(null), // uid -> boolean[]
+      rectDims: Object.create(null), // uid -> {rows, cols}
+
+      ensureCircle(uid, n){
+        n = Math.max(1, n|0);
+        const a = this.circle[uid];
+        if (!Array.isArray(a) || a.length !== n) this.circle[uid] = Array(n).fill(false);
+        return this.circle[uid];
+      },
+
+      toggleCircle(uid, i){
+        const a = this.circle[uid];
+        if (!Array.isArray(a)) return false;
+        if (i < 0 || i >= a.length) return false;
+        a[i] = !a[i];
+        return a[i];
+      },
+
+      ensureRect(uid, rows, cols){
+        rows = Math.max(1, rows|0);
+        cols = Math.max(1, cols|0);
+        this.rectDims[uid] = { rows, cols };
+
+        const total = rows * cols;
+        const a = this.rect[uid];
+        if (!Array.isArray(a) || a.length !== total) this.rect[uid] = Array(total).fill(false);
+        return this.rect[uid];
+      },
+
+      toggleRect(uid, i){
+        const a = this.rect[uid];
+        if (!Array.isArray(a)) return false;
+        if (i < 0 || i >= a.length) return false;
+        a[i] = !a[i];
+        return a[i];
+      }
+    };
+  }
+
+  // Expose in Root + current window (Content iframe)
+  ROOT.__LIA_FRACTION_QUIZ__ = ROOT[KEY];
+  window.__LIA_FRACTION_QUIZ__ = ROOT[KEY];
+})();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @end
 
 
