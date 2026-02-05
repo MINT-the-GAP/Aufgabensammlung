@@ -1,15 +1,135 @@
 <!--
-version:  0.0.2
+version:  0.0.9
 language: de
 narrator: Deutsch Female
 author: Martin Lommatzsch
-comment: FractionQuizzes (circle+rect) — import-sicher, root-namespaced, kollisionsarm
+comment: FractionQuizzes (circle+rect) — 200x200 + Label IM Slider (wie Button), nur Schieber (kein Reset/keine Zahlen), import-sicher, kein ||-Parsefehler
+
+@style
+:root{
+  --fq-track: rgba(0,0,0,.20);
+  --fq-thumb: rgba(0,0,0,.88);
+  --fq-ring:  rgba(255,255,255,.90);
+
+  /* Control-Geometrie */
+  --fq-w: 200px;
+  --fq-h: 30px;         /* <- Höhe des “Button-Schiebers” (inkl. Label drin) */
+  --fq-track-h: 4px;    /* Track-Dicke */
+  --fq-thumb-sz: 12px;  /* Thumb-Größe */
+  --fq-label-size: 11px;
+  --fq-label-top: 3px;  /* Label-Position innerhalb des Controls */
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --fq-track: rgba(255,255,255,.22);
+    --fq-thumb: rgba(255,255,255,.92);
+    --fq-ring:  rgba(0,0,0,.75);
+  }
+}
+
+/* ===== Wrapper: Label “im” Control ===== */
+.fq-range{
+  width: var(--fq-w);
+  max-width: var(--fq-w);
+  height: var(--fq-h);
+  position: relative;
+  margin: 6px 0 12px 0;
+  user-select: none;
+}
+.fq-range::before{
+  content: attr(data-label);
+  position: absolute;
+  left: 0; right: 0;
+  top: var(--fq-label-top);
+  text-align: center;
+  font-size: var(--fq-label-size);
+  line-height: 1;
+  opacity: .85;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* LiaScript-Wrapper kompakt + Textausgabe killen */
+.fq-range .lia-input{
+  width: var(--fq-w) !important;
+  max-width: var(--fq-w) !important;
+  height: var(--fq-h) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  font-size: 0 !important;  /* <- falls LiaScript Output als Textnode kommt */
+  line-height: 0 !important;
+  min-height: 0 !important;
+}
+
+/* Alles Chrome weg (Reset/Value/Buttons/etc.) */
+.fq-range button,
+.fq-range output,
+.fq-range input[type="number"],
+.fq-range .lia-input-value,
+.fq-range .lia-value,
+.fq-range .lia-input-output,
+.fq-range .lia-input-label,
+.fq-range .lia-input-reset,
+.fq-range .lia-input-prefix,
+.fq-range .lia-input-suffix{
+  display: none !important;
+}
+
+/* ===== Range: im Control platziert ===== */
+.fq-range input[type="range"]{
+  width: var(--fq-w) !important;
+  max-width: var(--fq-w) !important;
+  height: var(--fq-h) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+
+  touch-action: none;
+  position: relative;
+  z-index: 1;
+}
+
+/* WebKit Track/Thumb */
+.fq-range input[type="range"]::-webkit-slider-runnable-track{
+  height: var(--fq-track-h);
+  border-radius: 999px;
+  background: var(--fq-track);
+}
+.fq-range input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  appearance: none;
+  width: var(--fq-thumb-sz);
+  height: var(--fq-thumb-sz);
+  border-radius: 50%;
+  background: var(--fq-thumb);
+  border: 2px solid var(--fq-ring);
+  margin-top: calc((var(--fq-track-h) - var(--fq-thumb-sz)) / 2);
+}
+
+/* Firefox Track/Thumb */
+.fq-range input[type="range"]::-moz-range-track{
+  height: var(--fq-track-h);
+  border-radius: 999px;
+  background: var(--fq-track);
+}
+.fq-range input[type="range"]::-moz-range-thumb{
+  width: var(--fq-thumb-sz);
+  height: var(--fq-thumb-sz);
+  border-radius: 50%;
+  background: var(--fq-thumb);
+  border: 2px solid var(--fq-ring);
+}
+@end
+
 
 @onload
 (function () {
-  // =========================
-  // Root/Content (iframe-safe)
-  // =========================
   function getRootWindow(){
     let w = window;
     try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
@@ -61,7 +181,6 @@ comment: FractionQuizzes (circle+rect) — import-sicher, root-namespaced, kolli
     };
   }
 
-  // Expose in Root + current window (Content iframe)
   ROOT.__LIA_FRACTION_QUIZ__ = ROOT[KEY];
   window.__LIA_FRACTION_QUIZ__ = ROOT[KEY];
 })();
@@ -75,12 +194,20 @@ comment: FractionQuizzes (circle+rect) — import-sicher, root-namespaced, kolli
 const API = window.__LIA_FRACTION_QUIZ__;
 const uid = "@0";
 
-const n = Math.max(1, +@input(`fq-c-n-@0`) || 1);
-if (API && API.ensureCircle) API.ensureCircle(uid, n);
+/* @input sicher einlesen (auch wenn initial noch leer) */
+const nRaw = "@input(`fq-c-n-@0`)";
+let n = parseInt(nRaw, 10);
+if (!Number.isFinite(n) || n < 1) n = 1;
+if (n > 32) n = 32;
 
+if (API && API.ensureCircle) API.ensureCircle(uid, n);
 const arr = (API && API.circle && API.circle[uid]) ? API.circle[uid] : Array(n).fill(false);
 
-const cx = 145, cy = 150, r = 140;
+/* 200x200 */
+const W = 200, H = 200, padding = 6;
+const cx = W / 2, cy = H / 2;
+const r  = Math.min(W, H) / 2 - padding;
+
 const circleFill  = "white";
 const lineColor   = "black";
 const segmentFill = "orange";
@@ -138,7 +265,7 @@ if (n > 1) {
 }
 
 `HTML:
-<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" width="300" height="300">
+<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
   <circle cx="${cx}" cy="${cy}" r="${r}" stroke="${lineColor}" stroke-width="2" fill="${circleFill}"/>
   ${slices}
   ${lines}
@@ -146,10 +273,12 @@ if (n > 1) {
 `
 </script>
 
+<div class="fq-range" data-label="Unterteilungen">
 <script run-once modify="false" input="range" output="fq-c-n-@0"
         value="1" min="1" max="32" input-always-active>
 @input
 </script>
+</div>
 
 [[!]]
 <script>
@@ -166,7 +295,6 @@ if (n > 1) {
 
 
 
-
 @rectQuiz: @rectQuiz_(@uid,@0)
 
 @rectQuiz_
@@ -174,14 +302,21 @@ if (n > 1) {
 const API = window.__LIA_FRACTION_QUIZ__;
 const uid = "@0";
 
-const rows = Math.max(1, +@input(`fq-r-rows-@0`) || 1);
-const cols = Math.max(1, +@input(`fq-r-cols-@0`) || 1);
+/* @input sicher einlesen (auch wenn initial noch leer) */
+const rowsRaw = "@input(`fq-r-rows-@0`)";
+const colsRaw = "@input(`fq-r-cols-@0`)";
+let rows = parseInt(rowsRaw, 10);
+let cols = parseInt(colsRaw, 10);
+if (!Number.isFinite(rows) || rows < 1) rows = 1;
+if (!Number.isFinite(cols) || cols < 1) cols = 1;
+if (rows > 20) rows = 20;
+if (cols > 20) cols = 20;
 
 if (API && API.ensureRect) API.ensureRect(uid, rows, cols);
-
 const arr = (API && API.rect && API.rect[uid]) ? API.rect[uid] : Array(rows*cols).fill(false);
 
-const W = 300, H = 300, padding = 8;
+/* 200x200 */
+const W = 200, H = 200, padding = 6;
 const usableW = W - 2*padding, usableH = H - 2*padding;
 
 const bgFill   = "white";
@@ -195,7 +330,7 @@ const rh = usableH / rows;
 let gridRects = "";
 let gridLines = "";
 
-// Zellen
+/* Zellen */
 for (let r = 0; r < rows; r++) {
   for (let c = 0; c < cols; c++) {
     const i = r*cols + c;
@@ -222,7 +357,7 @@ for (let r = 0; r < rows; r++) {
   }
 }
 
-// Gitterlinien
+/* Gitterlinien */
 for (let r = 0; r <= rows; r++) {
   const y = padding + r*rh;
   gridLines += `<line x1="${padding}" y1="${y}" x2="${W-padding}" y2="${y}" stroke="${lineColor}" stroke-width="2"/>`;
@@ -241,15 +376,19 @@ for (let c = 0; c <= cols; c++) {
 `
 </script>
 
+<div class="fq-range" data-label="vertikale Unterteilung">
 <script run-once modify="false" input="range" output="fq-r-rows-@0"
         value="1" min="1" max="20" input-always-active>
 @input
 </script>
+</div>
 
+<div class="fq-range" data-label="horizontale Unterteilung">
 <script run-once modify="false" input="range" output="fq-r-cols-@0"
         value="1" min="1" max="20" input-always-active>
 @input
 </script>
+</div>
 
 [[!]]
 <script>
@@ -264,8 +403,19 @@ for (let c = 0; c <= cols; c++) {
 </script>
 @end
 
-
 -->
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -274,13 +424,19 @@ for (let c = 0; c <= cols; c++) {
 
 **Stelle** die passende Teilung der Fläche **ein** und **markiere** den passenden Anteil, sodass der Bruch dargestellt wird.
 
-
 __$a)\;\;$__ $\dfrac{7}{10}$
 
 @rectQuiz(7/10)
-
 
 __$b)\;\;$__ $\dfrac{7}{10}$
 
 @circleQuiz(7/10)
 
+
+__$c)\;\;$__ $\dfrac{4}{11}$
+
+@rectQuiz(4/11)
+
+__$d)\;\;$__ $\dfrac{4}{11}$
+
+@circleQuiz(4/11)
