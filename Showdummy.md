@@ -110,7 +110,15 @@ __$i)\;\;$__ Lösung ist 6: [[ 6 ]]
 </section>
 
 
+```
+<section class="dynFlex">
+<div class="flex-child">
 
+__$i)\;\;$__ Lösung ist 6: [[ 6 ]]
+
+</div>
+</section>
+```
 
 
 
@@ -132,6 +140,8 @@ __Aufgabe 1:__ Hör dir den Satz an und schreib ihn korrekt in das Eingabefeld. 
 
 @diktat(Anna sitzt auf einem fliegenden Teppich.)
 
+`@diktat(Anna sitzt auf einem fliegenden Teppich.)`
+
 </div>
 
 <div class="flex-child">
@@ -139,6 +149,8 @@ __Aufgabe 1:__ Hör dir den Satz an und schreib ihn korrekt in das Eingabefeld. 
 __Aufgabe 2:__ Lass dir die Wörter vorlesen, die in die Lücken kommen und schreibe diese in die Lücken. \
 
 Anna ging in einen @diktat(Zoo). Dort konnte sie auf einem @diktat(Lama) reiten.
+
+`@diktat(Zoo)`
 
 </div>
 
@@ -149,41 +161,68 @@ __Aufgabe 3:__ Setze das Komma an die richtige Stelle. (Auflösung ist blockiert
 
 @orthography(false,`Das ist der Tag an dem ich geblitzt wurde.`,`Das ist der Tag, an dem ich geblitzt wurde.`)
 
+
+
+
+__Aufgabe 4:__ Setze die Satzzeichen so, dass der Satz eine korrekte wörtliche Rede darstellt. (Auflösung bei erst nach 2 Versuchen) \
+
 @orthography(2,`Der Bruder den ich mag.`,`Der Bruder, den ich mag.`)
 
-</div>
 
-<div class="flex-child">
 
-__Aufgabe 4:__ Setze die Satzzeichen so, dass der Satz eine korrekte wörtliche Rede darstellt. (Auflösung bei erst nach 2 und 0 Versuchen) \
+__Aufgabe 5:__ Korrigiere die Rechtschreibfehler im gezeigten Satz. (Auflösung bei erst nach 0 Versuchen) \
 
-__$a)\;\;$__
-@orthography(2,`Der Apfel ist rot sagte Ben`,`"Der Apfel ist rot", sagte Ben.`)
+@orthography(true,`Es ist jetze um sechse.`,`Es ist jetzt um sechs.`)
 
-__$b)\;\;$__
-@orthography(true,`Clara sagt Druck ist eine physikalische Größe`,`Clara sagt: "Druck ist eine physikalische Größe."`)
+
+`Beispiele sind leider nicht als Code darstellbar.`
 
 </div>
-
-<div class="flex-child">
-
-__Aufgabe 5:__ Korrigiere die Rechtschreibfehler im gezeigten Satz. (Auflösung geht noch nicht und ist deswegen blockiert.) \
-
-@orthography(3,`Es ist jetze um sechse.`,`Es ist jetzt um sechs.`)
-
-</div>
-
-
 
 </section>
 
 
-  
-__Aufgabe 4:__ Setze die Satzzeichen so, dass der Satz eine korrekte wörtliche Rede darstellt. (Auflösung bei erst nach 2 und 0 Versuchen) \
 
-__$a)\;\;$__
-@orthography(2,`Der Apfel ist rot sagte Ben`,`"Der Apfel ist rot", sagte Ben.`)
 
-__$b)\;\;$__
-@orthography(true,`Clara sagt Druck ist eine physikalische Größe`,`Clara sagt: "Druck ist eine physikalische Größe."`)
 
+
+---
+
+---
+
+> Mathematikaufgabenmakros
+
+
+
+<section class="dynFlex">
+
+<div class="flex-child">
+
+**Stelle** die passende Teilung der Fläche **ein** und **markiere** den passenden Anteil, sodass der Bruch dargestellt wird.
+
+
+__$a)\;\;$__ $\dfrac{7}{10}$
+
+@rectQuiz(7/10)
+
+`@rectQuiz(7/10)`
+
+</div>
+
+<div class="flex-child">
+
+**Stelle** die passende Teilung der Fläche **ein** und **markiere** den passenden Anteil, sodass der Bruch dargestellt wird.
+
+__$b)\;\;$__ $\dfrac{7}{10}$
+
+@circleQuiz(7/10)
+
+`@circleQuiz(7/10)`
+
+</div>
+
+
+
+
+
+</section>
