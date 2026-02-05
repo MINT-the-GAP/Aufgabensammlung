@@ -27,6 +27,12 @@ window.toggleRect = function (uid, i) {
   rects[uid][i] = !rects[uid][i]}
 @end
 
+
+
+
+
+
+
 @circleQuiz: @circleQuiz_(@uid,@0)
 
 @circleQuiz_
@@ -248,7 +254,12 @@ if (!window.rects['@0'] || window.rects['@0'].length !== total) {
   Math.max(1, window.rects["@0"].length)
 )
 </script>
+
+
 @end
+
+
+
 
 -->
 
