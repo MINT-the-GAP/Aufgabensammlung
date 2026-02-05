@@ -7,7 +7,8 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MarkerREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/TafelREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FlexChildREADME.md
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/DeutschREADME.md?cb=3
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/DeutschREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MatheREADME.md?cb=3
 
 
 
@@ -25,17 +26,22 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 <div class="flex-child">
 
-__Aufgabe 1:__ Hör dir den Satz an und schreib ihn korrekt in das Eingabefeld. \
+**Stelle** die passende Teilung der Fläche **ein** und **markiere** den passenden Anteil, sodass der Bruch dargestellt wird.
 
-@diktat(Anna sitzt auf einem fliegenden Teppich.)
+
+__$a)\;\;$__ $\dfrac{7}{10}$
+
+@rectQuiz(7/10)
 
 </div>
 
 <div class="flex-child">
 
-__Aufgabe 2:__ Lass dir die Wörter vorlesen, die in die Lücken kommen und schreibe diese in die Lücken. \
+**Stelle** die passende Teilung der Fläche **ein** und **markiere** den passenden Anteil, sodass der Bruch dargestellt wird.
 
-Anna ging in einen @diktat(Zoo). Dort konnte sie auf einem @diktat(Lama) reiten.
+__$b)\;\;$__ $\dfrac{7}{10}$
+
+@circleQuiz(7/10)
 
 </div>
 
@@ -50,25 +56,6 @@ __Aufgabe 3:__ Setze das Komma an die richtige Stelle. (Auflösung ist blockiert
 
 </div>
 
-<div class="flex-child">
-
-__Aufgabe 4:__ Setze die Satzzeichen so, dass der Satz eine korrekte wörtliche Rede darstellt. (Auflösung bei erst nach 2 und 0 Versuchen) \
-
-__$a)\;\;$__
-@orthography(2,`Der Apfel ist rot sagte Ben`,`"Der Apfel ist rot", sagte Ben.`)
-
-__$b)\;\;$__
-@orthography(true,`Clara sagt Druck ist eine physikalische Größe`,`Clara sagt: "Druck ist eine physikalische Größe."`)
-
-</div>
-
-<div class="flex-child">
-
-__Aufgabe 5:__ Korrigiere die Rechtschreibfehler im gezeigten Satz. (Auflösung geht noch nicht und ist deswegen blockiert.) \
-
-@orthography(3,`Es ist jetze um sechse.`,`Es ist jetzt um sechs.`)
-
-</div>
 
 
 
