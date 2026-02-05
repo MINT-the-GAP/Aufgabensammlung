@@ -13,17 +13,16 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/REA
 # SchulLia-Tests
 
 
+Auf den folgenden Seiten werden die Features von SchulLia vorgestellt.
+
 
 > Import
 
 `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/README.md`
 
 
----
 
----
-
-> Canvas
+## Canvas
 
 Klicke auf den Stift neben dem Eingabefeld um das Canvas zu öffnen
 
@@ -42,21 +41,15 @@ Testzwecke (2 ist Lösung):
 @canvas
 
 
----
 
----
-
-
-> Textmarker
+## Textmarker
 
 Klicke auf den Stift im Header und markiere im Text wie es dir beliebt. Wechsel Lehrbuch ↔ Präsentation ↔ Slides und ändere die Schriftgröße.
 
 
----
 
----
 
-> Tafelmodus
+## Tafelmodus
 
 Klicke auf das A im Header und ändere im Präsentationsmodus die Schriftgröße mit dem Slider. Empfehlung: Nightly
 
@@ -64,11 +57,7 @@ Klicke auf das A im Header und ändere im Präsentationsmodus die Schriftgröße
 
 
 
----
-
----
-
-> Dynamsische Flex-Childs
+## Dynamsische Flex-Childs
 
 Geh an den rechten vertikalen Trennstrich zwischen den Blöcken und schiebe diesen nach belieben hin und her. Funktioniert auch mit Textmarkern.
 
@@ -123,11 +112,8 @@ __$i)\;\;$__ Lösung ist 6: [[ 6 ]]
 
 
 
----
 
----
-
-> Deutschaufgabenmakros
+## Deutschaufgabenmakros
 
 
 
@@ -186,11 +172,7 @@ __Aufgabe 5:__ Korrigiere die Rechtschreibfehler im gezeigten Satz. (Auflösung 
 
 
 
----
-
----
-
-> Mathematikaufgabenmakros
+## Mathematikaufgabenmakros
 
 
 
@@ -222,7 +204,15 @@ __$b)\;\;$__ $\dfrac{7}{10}$
 </div>
 
 
-
-
-
 </section>
+
+
+
+
+
+
+
+
+
+
+

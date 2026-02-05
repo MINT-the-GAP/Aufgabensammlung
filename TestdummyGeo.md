@@ -14,97 +14,32 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/REA
 
 
 
-> Import
-
-`import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/README.md`
-
-
----
-
----
-
-> Canvas
-
-Klicke auf den Stift neben dem Eingabefeld um das Canvas zu öffnen
-
-Canvas mit Farbauswahl, Lineatur und Radierer. Zoom ist auch dabei und mit den anderen Maustasten kann man auch die Canvas schieben. Touchsteuerung: 2-Finger Pinch/Pan.
-
-Unten links und unten rechts sind unsichtbare Ziehflächen (nur „die Ecke“). Dort kannst du die Zeichenfläche stufenlos **höher/niedriger** und auch **breiter/schmaler** ziehen.
-
-
-`Codebefehl: @canvas`
-
-
-Testzwecke (2 ist Lösung):
-
-<!--   data-solution-button="2" -->
-[[ 2 ]] 
-@canvas
-
-
----
-
----
-
-
-> Textmarker
-
-Klicke auf den Stift im Header und markiere im Text wie es dir beliebt. Wechsel Lehrbuch ↔ Präsentation ↔ Slides und ändere die Schriftgröße.
-
-
----
-
----
-
-> Tafelmodus
-
-Klicke auf das A im Header und ändere im Präsentationsmodus die Schriftgröße mit dem Slider. Empfehlung: Nightly
-
-`https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/README.md`
-
-
-
----
-
----
-
-> Dynamsische Flex-Childs
-
-Geh an den rechten vertikalen Trennstrich zwischen den Blöcken und schiebe diesen nach belieben hin und her. Funktioniert auch mit Textmarkern.
-
 <section class="dynFlex">
-
 
 <div class="flex-child">
 
-__$f)\;\;$__ Lösung ist 3: [[ 3 ]]
+**Stelle** die passende Teilung der Fläche **ein** und **markiere** den passenden Anteil, sodass der Bruch dargestellt wird.
 
-__$g)\;\;$__ Lösung ist 4: [[ 4 ]]
 
-__$h)\;\;$__ Lösung ist 5: [[ 5 ]]
+__$a)\;\;$__ $\dfrac{7}{10}$
 
-__$i)\;\;$__ Lösung ist 6: [[ 6 ]]
+@rectQuiz(7/10)
+
+`@rectQuiz(7/10)`
 
 </div>
 
-  <div class="flex-child">
-    __$a)\;\;$__ Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.
-  </div>
+<div class="flex-child">
 
-  <div class="flex-child">
-    __$b)\;\;$__ Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.
-  </div>
+**Stelle** die passende Teilung der Fläche **ein** und **markiere** den passenden Anteil, sodass der Bruch dargestellt wird.
 
-  <div class="flex-child">
-    __$c)\;\;$__ Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.
-  </div>
+__$b)\;\;$__ $\dfrac{7}{10}$
 
-  <div class="flex-child">
-    __$d)\;\;$__ Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.
-  </div>
+@circleQuiz(7/10)
 
-  <div class="flex-child">
-    __$e)\;\;$__ Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.
-  </div>
+`@circleQuiz(7/10)`
+
+</div>
+
 
 </section>
