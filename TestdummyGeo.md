@@ -74,15 +74,16 @@ Geh an den rechten vertikalen Trennstrich zwischen den Blöcken und schiebe dies
 
 <section class="dynFlex">
 
+
 <div class="flex-child">
 
 __$f)\;\;$__ Lösung ist 3: [[ 3 ]]
 
-__$g)\;\;$__ Lösung ist 3: [[ 3 ]]
+__$g)\;\;$__ Lösung ist 4: [[ 4 ]]
 
-__$h)\;\;$__ Lösung ist 3: [[ 3 ]]
+__$h)\;\;$__ Lösung ist 5: [[ 5 ]]
 
-__$i)\;\;$__ Lösung ist 3: [[ 3 ]]
+__$i)\;\;$__ Lösung ist 6: [[ 6 ]]
 
 </div>
 

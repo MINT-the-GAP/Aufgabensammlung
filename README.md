@@ -3812,152 +3812,229 @@ function ensureCss(){
 
 
 
-
-
-
 (function () {
 
   // =========================================================
-  // Root/Content (iframe-safe) + per-Doc Run-Once (import-safe)
+  // Root/Content + Run-Once (import-safe)
   // =========================================================
   function getRootWindow(){
     let w = window;
     try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
     return w;
   }
-  const ROOT = getRootWindow();
 
-  const REGKEY = "__LIA_DYNFLEX_V6_3__";
-  ROOT[REGKEY] = ROOT[REGKEY] || { docs: {} };
+  const ROOT_WIN    = getRootWindow();
+  const ROOT_DOC    = ROOT_WIN.document;
+  const CONTENT_WIN = window;
+  const CONTENT_DOC = document;
 
-  // stabiler Doc-Key im *aktuellen* Content-Dokument
+  const REGKEY = "__LIA_DYNFLEX_V6_8__";
+  ROOT_WIN[REGKEY] = ROOT_WIN[REGKEY] || { docs: {} };
+
   const DOC_KEY_ATTR = "data-dynflex-doc";
-  let docKey = document.documentElement.getAttribute(DOC_KEY_ATTR);
+  let docKey = CONTENT_DOC.documentElement.getAttribute(DOC_KEY_ATTR);
   if (!docKey){
-    docKey = (document.baseURI || location.href || "dynflex") + "::" + Math.random().toString(36).slice(2);
-    document.documentElement.setAttribute(DOC_KEY_ATTR, docKey);
+    docKey = (CONTENT_DOC.baseURI || CONTENT_WIN.location.href || "dynflex") + "::" + Math.random().toString(36).slice(2);
+    CONTENT_DOC.documentElement.setAttribute(DOC_KEY_ATTR, docKey);
   }
-  if (ROOT[REGKEY].docs[docKey]) return;
-  ROOT[REGKEY].docs[docKey] = true;
+  if (ROOT_WIN[REGKEY].docs[docKey]) return;
+  ROOT_WIN[REGKEY].docs[docKey] = true;
 
   // =========================================================
-  // CSS Injection (weil @style in Import-Konstellationen zickt)
+  // CSS Injection (import-robust)
   // =========================================================
-  const STYLE_ID = "lia-dynflex-style-v6-3";
+  const STYLE_ID = "lia-dynflex-style-v6-8";
   const CSS = `
-section.dynFlex{
-  --dyn-gap: 20px;
-  --dyn-hit: 22px;
+.dynFlex{
+  --dyn-gap:  20px;
+  --dyn-hit:  22px;
   --dyn-accent: var(--dynflex-accent, #0b5fff);
   --dyn-basis: 25%;
 
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: var(--dyn-gap);
-  overflow: visible;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: flex-start !important;
+  gap: var(--dyn-gap) !important;
+  overflow: visible !important;
 }
 
-section.dynFlex > .flex-child{
-  position: relative;
-  box-sizing: border-box;
-  min-width: 0;
+/* Flex-ITEM = direktes Kind im Container (kann Wrapper oder flex-child selbst sein) */
+.dynFlex > .dynFlexItem{
+  position: relative !important;
+  box-sizing: border-box !important;
+  min-width: 0 !important;
 
-  flex: 0 0 var(--w, var(--dyn-basis));
-  max-width: var(--w, var(--dyn-basis));
+  flex: 0 0 var(--w, var(--dyn-basis)) !important;
+  max-width: var(--w, var(--dyn-basis)) !important;
 
-  padding: 0.65rem 1.25rem 0.65rem 0.85rem;
-  border-left: 1px solid var(--dyn-accent);
-  border-radius: 10px;
-  background: rgba(127,127,127,0.08);
+  padding: 0.65rem 1.25rem 0.65rem 0.85rem !important;
+  border-left: 1px solid var(--dyn-accent) !important;
+  border-radius: 10px !important;
+  background: rgba(127,127,127,0.08) !important;
+
+  overflow: visible !important;
 }
 
-section.dynFlex.dynFlexDragging,
-section.dynFlex.dynFlexDragging *{
+/* Wenn authored .flex-child NICHT das direkte Kind ist (Wrapper-Fall),
+   neutralisieren wir Box-Styling innen, damit es nicht doppelt aussieht. */
+.dynFlex > .dynFlexItem .flex-child{
+  padding: 0 !important;
+  border-left: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+/* >>> Leerzeilen-Fix: automatisch erzeugte Unter-Blöcke im flex-child */
+.flex-child > [data-dynflex-block]{
+  display: block !important;
+  margin: 0 0 0.9rem 0 !important;
+}
+.flex-child > [data-dynflex-block]:last-child{
+  margin-bottom: 0 !important;
+}
+
+
+
+
+
+/* Drag: keine Textmarkierung */
+.dynFlex.dynFlexDragging,
+.dynFlex.dynFlexDragging *{
   user-select: none !important;
 }
 
-section.dynFlex .dynFlexResizer{
-  position: absolute;
-  top: 0;
-  bottom: 0;
+/* Resizer am ITEM */
+.dynFlex > .dynFlexItem > .dynFlexResizer{
+  position: absolute !important;
+  top: 0 !important;
+  bottom: 0 !important;
 
-  left: 100%;
-  width: var(--dyn-hit);
-  margin-left: calc(var(--dyn-gap) / 2 - (var(--dyn-hit) / 2));
+  left: 100% !important;
+  width: var(--dyn-hit) !important;
+  margin-left: calc(var(--dyn-gap) / 2 - (var(--dyn-hit) / 2)) !important;
 
-  cursor: ew-resize;
-  touch-action: none;
-  background: transparent;
-  z-index: 5;
+  cursor: ew-resize !important;
+  touch-action: none !important;
+  background: transparent !important;
+  z-index: 9999 !important;
 }
 
-section.dynFlex .dynFlexResizer.dynFlexResizerEnd{
-  left: auto;
-  right: calc(-1 * (var(--dyn-gap) / 2) - (var(--dyn-hit) / 2));
-  margin-left: 0;
+/* End-Resizer: gleicher Abstand wie die anderen */
+.dynFlex > .dynFlexItem > .dynFlexResizer.dynFlexResizerEnd{
+  left: auto !important;
+  right: calc(-1 * (var(--dyn-gap) / 2) - (var(--dyn-hit) / 2)) !important;
+  margin-left: 0 !important;
 }
 
-section.dynFlex .dynFlexResizer::before{
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  transform: translateX(-50%);
-  background: var(--dyn-accent);
-  border-radius: 999px;
-  opacity: 0.95;
+.dynFlex > .dynFlexItem > .dynFlexResizer::before{
+  content: "" !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 1px !important;
+  transform: translateX(-50%) !important;
+  background: var(--dyn-accent) !important;
+  border-radius: 999px !important;
+  opacity: 0.95 !important;
 }
 
-section.dynFlex .dynFlexResizer:hover::before{
-  width: 3px;
+.dynFlex > .dynFlexItem > .dynFlexResizer:hover::before{
+  width: 3px !important;
 }
 
 @media (max-width: 420px){
-  section.dynFlex{ --dyn-basis: 100%; }
+  .dynFlex{ --dyn-basis: 100% !important; }
 }
-  `.trim();
+`.trim();
 
-  function ensureStyle(){
-    if (document.getElementById(STYLE_ID)) return;
-    const st = document.createElement("style");
-    st.id = STYLE_ID;
-    st.textContent = CSS;
-    (document.head || document.documentElement).appendChild(st);
+  function ensureStyle(doc){
+    try{
+      if (!doc || !doc.documentElement) return;
+      if (doc.getElementById(STYLE_ID)) return;
+      const st = doc.createElement("style");
+      st.id = STYLE_ID;
+      st.textContent = CSS;
+      (doc.head || doc.documentElement).appendChild(st);
+    }catch(e){}
   }
 
   // =========================================================
-  // Theme Accent Update (matchMedia + attribute observer + light ensure)
+  // Theme Accent Update (ROOT + CONTENT)
   // =========================================================
-  function pickAccent(){
-    const cs = getComputedStyle(document.documentElement);
-    const vars = ["--lia-accent","--lia-primary","--lia-color-primary","--primary","--color-primary","--accent-color"];
-    for (const v of vars){
-      const val = cs.getPropertyValue(v).trim();
-      if (val) return val;
-    }
-    const a = document.querySelector("a");
-    if (a){
-      const c = getComputedStyle(a).color;
-      if (c && c !== "rgba(0, 0, 0, 0)") return c;
-    }
-    const b = document.querySelector(".lia-btn");
-    if (b){
-      const bg = getComputedStyle(b).backgroundColor;
-      if (bg && bg !== "rgba(0, 0, 0, 0)") return bg;
-    }
-    return "#0b5fff";
+  function pickAccentFrom(doc){
+    try{
+      const win = doc.defaultView || window;
+      const cs = win.getComputedStyle(doc.documentElement);
+      const vars = ["--lia-accent","--lia-primary","--lia-color-primary","--primary","--color-primary","--accent-color"];
+      for (const v of vars){
+        const val = cs.getPropertyValue(v).trim();
+        if (val) return val;
+      }
+      const a = doc.querySelector("a");
+      if (a){
+        const c = win.getComputedStyle(a).color;
+        if (c && c !== "rgba(0, 0, 0, 0)") return c;
+      }
+      const b = doc.querySelector(".lia-btn");
+      if (b){
+        const bg = win.getComputedStyle(b).backgroundColor;
+        if (bg && bg !== "rgba(0, 0, 0, 0)") return bg;
+      }
+    }catch(e){}
+    return "";
   }
 
-  let lastAccent = null;
+  let lastAccent = "";
   function updateAccent(force){
-    const acc = pickAccent();
+    const acc = pickAccentFrom(ROOT_DOC) || pickAccentFrom(CONTENT_DOC) || "#0b5fff";
     if (force || acc !== lastAccent){
       lastAccent = acc;
-      document.documentElement.style.setProperty("--dynflex-accent", acc);
+      try { ROOT_DOC.documentElement.style.setProperty("--dynflex-accent", acc); } catch(e){}
+      try { CONTENT_DOC.documentElement.style.setProperty("--dynflex-accent", acc); } catch(e){}
     }
+  }
+
+  // =========================================================
+  // Leerzeilen -> echte Blocks innerhalb .flex-child
+  // =========================================================
+  function blockifyFlexChild(fc){
+    try{
+      if (!fc || fc.nodeType !== 1) return;
+      if (fc.dataset.dynflexBlockified === "1") return;
+
+      // Wenn LiaScript schon Inputs/Buttons gerendert hat, fassen wir NICHT mehr an
+      if (fc.querySelector("input, textarea, select, button, .lia-btn, .lia-quiz")) return;
+
+      // Ohne [[...]] macht Split keinen Sinn
+      const html = fc.innerHTML || "";
+      if (html.indexOf("[[") === -1) { fc.dataset.dynflexBlockified = "1"; return; }
+
+      // Split auf Leerzeilen (mind. eine echte Leerzeile = Absatz in Markdown)
+      const parts = html.split(/\n[ \t]*\n+/);
+      if (!parts || parts.length <= 1) { fc.dataset.dynflexBlockified = "1"; return; }
+
+      // Nur wenn wirklich "inhaltliche" Teile existieren
+      const cleaned = parts.filter(p => (p.replace(/\s+/g,"").length > 0));
+      if (cleaned.length <= 1) { fc.dataset.dynflexBlockified = "1"; return; }
+
+      // Neu aufbauen: pro Absatz ein eigener Block (ohne Zusatz-Klassen, nur data-Attr)
+      fc.innerHTML = "";
+      for (const part of cleaned){
+        const d = CONTENT_DOC.createElement("div");
+        d.setAttribute("data-dynflex-block", "1");
+        d.innerHTML = part;
+        fc.appendChild(d);
+      }
+
+      fc.dataset.dynflexBlockified = "1";
+    }catch(e){}
+  }
+
+  function blockifyAll(doc){
+    try{
+      doc.querySelectorAll(".dynFlex .flex-child").forEach(blockifyFlexChild);
+    }catch(e){}
   }
 
   // =========================================================
@@ -3973,39 +4050,43 @@ section.dynFlex .dynFlexResizer:hover::before{
     return Number.isFinite(n) ? n : fallback;
   }
 
-  function getItemPct(sec, el){
-    const w = (el.style.getPropertyValue("--w") || "").trim();
+  function getItemPct(container, item){
+    const w = (item.style.getPropertyValue("--w") || "").trim();
     if (w.endsWith("%")){
       const n = parseFloat(w);
       if (Number.isFinite(n)) return n;
     }
-    const sw = sec.getBoundingClientRect().width || 1;
-    const ew = el.getBoundingClientRect().width;
-    return (ew / sw) * 100;
+    const cw = container.getBoundingClientRect().width || 1;
+    const iw = item.getBoundingClientRect().width;
+    return (iw / cw) * 100;
   }
 
-  function setItemPct(el, pct){
-    el.style.setProperty("--w", pct.toFixed(2) + "%");
+  function setItemPct(item, pct){
+    item.style.setProperty("--w", pct.toFixed(2) + "%");
   }
 
-  function persist(sec){
-    const storeKey = sec.getAttribute("data-store");
-    if (!storeKey) return;
-    const lsKey = "dynFlexWidths::" + storeKey;
-    const items = Array.from(sec.querySelectorAll(":scope > .flex-child"));
+  function getStoreKey(container){
+    const k = container.getAttribute("data-store");
+    return k ? ("dynFlexWidths::" + k) : null;
+  }
+
+  function persist(container, items){
+    const lsKey = getStoreKey(container);
+    if (!lsKey) return;
     const arr = items.map(it => (it.style.getPropertyValue("--w") || "").trim() || "");
     try { localStorage.setItem(lsKey, JSON.stringify(arr)); } catch(e){}
   }
 
-  function restore(sec){
-    const storeKey = sec.getAttribute("data-store");
-    if (!storeKey) return;
-    const lsKey = "dynFlexWidths::" + storeKey;
+  function restore(container, items){
+    const lsKey = getStoreKey(container);
+    if (!lsKey) return;
+
+    const anySet = items.some(it => (it.style.getPropertyValue("--w") || "").trim());
+    if (anySet) return;
+
     let arr = null;
     try { arr = JSON.parse(localStorage.getItem(lsKey) || "null"); } catch(e){ arr = null; }
     if (!Array.isArray(arr)) return;
-
-    const items = Array.from(sec.querySelectorAll(":scope > .flex-child"));
     if (arr.length !== items.length) return;
 
     items.forEach((it, i) => {
@@ -4014,91 +4095,127 @@ section.dynFlex .dynFlexResizer:hover::before{
     });
   }
 
-  function initSection(sec){
-    // WICHTIG: nicht "init" markieren, solange Children noch nicht da sind
-    const items = Array.from(sec.querySelectorAll(":scope > .flex-child"));
-    if (items.length === 0) return;
+  // Items deterministisch aus .flex-child ableiten (wrapper-robust)
+  function getItemsFromFlexChildren(container){
+    const flexChildren = Array.from(container.querySelectorAll(".flex-child"))
+      .filter(fc => fc.closest(".dynFlex") === container);
 
-    if (sec.dataset.dynflexInit === "1") return;
-    sec.dataset.dynflexInit = "1";
+    if (!flexChildren.length) return [];
 
-    // optional konfigurierbar pro Section
-    const gap  = sec.getAttribute("data-gap");
-    const hit  = sec.getAttribute("data-hit");
-    const basis = parsePct(sec.getAttribute("data-basis"), 25);
+    const items = [];
+    for (const fc of flexChildren){
+      let it = fc;
+      while (it && it.parentElement && it.parentElement !== container){
+        it = it.parentElement;
+      }
+      if (it && it.parentElement === container){
+        if (!items.includes(it)) items.push(it);
+      }
+    }
+    return items;
+  }
 
-    if (gap) sec.style.setProperty("--dyn-gap", gap.trim().endsWith("px") ? gap.trim() : (gap.trim() + "px"));
-    if (hit) sec.style.setProperty("--dyn-hit", hit.trim().endsWith("px") ? hit.trim() : (hit.trim() + "px"));
-    sec.style.setProperty("--dyn-basis", basis + "%");
+  function ensureResizerBound(rz, container, item, items, minPct, maxPct){
+    if (rz.dataset.bound === "1") return;
+    rz.dataset.bound = "1";
 
-    const minPct = parsePct(sec.getAttribute("data-min"), 10);
-    const maxPct = parsePct(sec.getAttribute("data-max"), 100);
+    let dragging = false;
+    let startX = 0;
+    let startW = 0;
 
-    restore(sec);
+    const onDown = (e) => {
+      dragging = true;
+      container.classList.add("dynFlexDragging");
+      startX = e.clientX;
+      startW = getItemPct(container, item);
+      rz.setPointerCapture?.(e.pointerId);
+      e.preventDefault();
+    };
 
-    // Resizer hinter JEDEM Block (inkl. letztes)
+    const onMove = (e) => {
+      if (!dragging) return;
+      const cw = container.getBoundingClientRect().width || 1;
+      const dx = e.clientX - startX;
+      const dPct = (dx / cw) * 100;
+
+      const newW = clamp(startW + dPct, minPct, maxPct);
+      setItemPct(item, newW);
+      persist(container, items);
+      e.preventDefault();
+    };
+
+    const onUp = (e) => {
+      dragging = false;
+      container.classList.remove("dynFlexDragging");
+      try { rz.releasePointerCapture?.(e.pointerId); } catch(_){}
+      e.preventDefault();
+    };
+
+    rz.addEventListener("pointerdown", onDown);
+    rz.addEventListener("pointermove", onMove);
+    rz.addEventListener("pointerup", onUp);
+    rz.addEventListener("pointercancel", onUp);
+  }
+
+  function initContainer(container){
+    // config
+    const gap   = container.getAttribute("data-gap");
+    const hit   = container.getAttribute("data-hit");
+    const basis = parsePct(container.getAttribute("data-basis"), 25);
+
+    if (gap) container.style.setProperty("--dyn-gap", gap.trim().endsWith("px") ? gap.trim() : (gap.trim() + "px"));
+    if (hit) container.style.setProperty("--dyn-hit", hit.trim().endsWith("px") ? hit.trim() : (hit.trim() + "px"));
+    container.style.setProperty("--dyn-basis", basis + "%");
+
+    const minPct = parsePct(container.getAttribute("data-min"), 10);
+    const maxPct = parsePct(container.getAttribute("data-max"), 100);
+
+    const items = getItemsFromFlexChildren(container);
+    if (!items.length) return;
+
+    items.forEach(it => it.classList.add("dynFlexItem"));
+    restore(container, items);
+
     for (let i = 0; i < items.length; i++){
-      const box = items[i];
-      if (box.querySelector(":scope > .dynFlexResizer")) continue;
+      const item = items[i];
 
-      const rz = document.createElement("div");
-      rz.className = "dynFlexResizer";
-      rz.setAttribute("aria-hidden", "true");
+      let rz = item.querySelector(":scope > .dynFlexResizer");
+      if (!rz){
+        rz = document.createElement("div");
+        rz.className = "dynFlexResizer";
+        rz.setAttribute("aria-hidden", "true");
+        item.appendChild(rz);
+      }
+
       if (i === items.length - 1) rz.classList.add("dynFlexResizerEnd");
-      box.appendChild(rz);
+      else rz.classList.remove("dynFlexResizerEnd");
 
-      let dragging = false;
-      let startX = 0;
-      let startW = 0;
-
-      const onDown = (e) => {
-        dragging = true;
-        sec.classList.add("dynFlexDragging");
-        startX = e.clientX;
-        startW = getItemPct(sec, box);
-        rz.setPointerCapture?.(e.pointerId);
-        e.preventDefault();
-      };
-
-      const onMove = (e) => {
-        if (!dragging) return;
-
-        const secW = sec.getBoundingClientRect().width || 1;
-        const dx = e.clientX - startX;
-        const dPct = (dx / secW) * 100;
-
-        const newW = clamp(startW + dPct, minPct, maxPct);
-        setItemPct(box, newW);
-
-        // wrap macht den Rest
-        persist(sec);
-        e.preventDefault();
-      };
-
-      const onUp = (e) => {
-        dragging = false;
-        sec.classList.remove("dynFlexDragging");
-        try { rz.releasePointerCapture?.(e.pointerId); } catch(_){}
-        e.preventDefault();
-      };
-
-      rz.addEventListener("pointerdown", onDown);
-      rz.addEventListener("pointermove", onMove);
-      rz.addEventListener("pointerup", onUp);
-      rz.addEventListener("pointercancel", onUp);
+      ensureResizerBound(rz, container, item, items, minPct, maxPct);
     }
   }
 
+  function scanInDoc(doc){
+    try{
+      // 1) Leerzeilen zuerst in Blocks übersetzen (wichtig für mehrere Prüfen-Buttons)
+      blockifyAll(doc);
+
+      // 2) DynFlex initialisieren
+      doc.querySelectorAll(".dynFlex").forEach(initContainer);
+    }catch(e){}
+  }
+
   // =========================================================
-  // ensure/scan (throttled) + observers (NIE body-null)
+  // ensure/scan (throttled) + observers
   // =========================================================
   let scanScheduled = false;
 
   function scan(){
     scanScheduled = false;
-    ensureStyle();
+    ensureStyle(ROOT_DOC);
+    ensureStyle(CONTENT_DOC);
     updateAccent(false);
-    document.querySelectorAll("section.dynFlex").forEach(initSection);
+    scanInDoc(ROOT_DOC);
+    scanInDoc(CONTENT_DOC);
   }
 
   function scheduleScan(){
@@ -4107,31 +4224,32 @@ section.dynFlex .dynFlexResizer:hover::before{
     requestAnimationFrame(scan);
   }
 
-  // Start (mehrstufig, import-/render-sicher)
-  ensureStyle();
+  // Initial: sehr früh + mehrere Nachläufe
+  ensureStyle(ROOT_DOC);
+  ensureStyle(CONTENT_DOC);
   updateAccent(true);
-  scheduleScan();
-  setTimeout(scheduleScan, 50);
-  setTimeout(scheduleScan, 250);
-  setTimeout(scheduleScan, 800);
 
-  // Theme trigger (Attribute)
-  const themeMO = new MutationObserver(() => { updateAccent(false); });
-  try{
-    themeMO.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class","style","data-theme","data-mode","data-color-scheme"]
-    });
-  }catch(e){}
+  // einmal sofort + dann noch gestaffelt
+  scan();
+  scheduleScan();
+  setTimeout(scheduleScan, 30);
+  setTimeout(scheduleScan, 120);
+  setTimeout(scheduleScan, 320);
+  setTimeout(scheduleScan, 900);
+
+  // Theme changes
+  const themeMO = new MutationObserver(() => updateAccent(false));
+  try{ themeMO.observe(ROOT_DOC.documentElement,    { attributes: true, attributeFilter: ["class","style","data-theme","data-mode","data-color-scheme"] }); }catch(e){}
+  try{ themeMO.observe(CONTENT_DOC.documentElement, { attributes: true, attributeFilter: ["class","style","data-theme","data-mode","data-color-scheme"] }); }catch(e){}
 
   // OS scheme
   try{
-    const mql = window.matchMedia("(prefers-color-scheme: dark)");
-    if (mql && mql.addEventListener) mql.addEventListener("change", () => { updateAccent(true); });
-    else if (mql && mql.addListener) mql.addListener(() => { updateAccent(true); });
+    const mql = ROOT_WIN.matchMedia("(prefers-color-scheme: dark)");
+    if (mql && mql.addEventListener) mql.addEventListener("change", () => updateAccent(true));
+    else if (mql && mql.addListener) mql.addListener(() => updateAccent(true));
   }catch(e){}
 
-  // DOM observer (throttled) — auf documentElement, nicht body
+  // DOM changes (throttled)
   const mo = new MutationObserver((muts) => {
     for (const m of muts){
       if (m.addedNodes && m.addedNodes.length){
@@ -4140,9 +4258,489 @@ section.dynFlex .dynFlexResizer:hover::before{
       }
     }
   });
-  mo.observe(document.documentElement, { childList: true, subtree: true });
+  try{ mo.observe(CONTENT_DOC.documentElement, { childList: true, subtree: true }); }catch(e){}
+  try{ mo.observe(ROOT_DOC.documentElement,    { childList: true, subtree: true }); }catch(e){}
 
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // =========================
+  // DEUTSCH MAKROS
+  // DEUTSCH MAKROS
+  // DEUTSCH MAKROS
+  // DEUTSCH MAKROS
+  // DEUTSCH MAKROS
+  // DEUTSCH MAKROS
+  // DEUTSCH MAKROS
+  // DEUTSCH MAKROS
+  // DEUTSCH MAKROS
+  // =========================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(function(){
+  // ---------------------------------------------------------
+  // Globaler Boot (IMPORT-SAFE): nur einmal im ROOT anlegen
+  // ---------------------------------------------------------
+  function getRootWindow(){
+    let w = window;
+    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
+    return w;
+  }
+  const ROOT = getRootWindow();
+
+  const KEY = "__ORTHOGRAPHY_EXPORT_V1__";
+  if (ROOT[KEY]) return; // schon da
+
+  const microtask = (fn) => (window.queueMicrotask ? queueMicrotask(fn) : Promise.resolve().then(fn));
+
+  const MOD = {
+    state: {},       // uid -> { solved, tries, start, solution, gate }
+    fixers: {},      // uid -> repair()
+    listener: false,
+    observer: null,
+    scheduled: false,
+
+    norm: (s) => String(s||"").toLocaleLowerCase().replace(/\s+/g,""),
+
+    schedule(){
+      if (MOD.scheduled) return;
+      MOD.scheduled = true;
+
+      const run = () => {
+        MOD.scheduled = false;
+        Object.keys(MOD.fixers).forEach(k=>{
+          try { MOD.fixers[k](); } catch(e){}
+        });
+      };
+
+      microtask(run);
+      try { requestAnimationFrame(run); } catch(e){}
+      setTimeout(run, 0);
+      setTimeout(run, 60);
+      setTimeout(run, 180);
+    },
+
+    startGlobal(){
+      if (MOD.listener) return;
+      MOD.listener = true;
+
+      document.addEventListener('click', () => MOD.schedule(), true);
+
+      const startObserver = () => {
+        if (MOD.observer) return;
+        const target = document.body || document.documentElement;
+        if (!target) return;
+
+        MOD.observer = new MutationObserver(() => MOD.schedule());
+        MOD.observer.observe(target, { childList: true, subtree: true });
+      };
+
+      startObserver();
+      setTimeout(startObserver, 0);
+      setTimeout(startObserver, 50);
+    },
+
+    parseGate(raw){
+      const s = String(raw || "").trim().toLowerCase();
+      if (s === "false" || s === "0" || s === "off" || s === "no") return { mode: "off", n: 0 };
+      const n = parseInt(s, 10);
+      if (Number.isFinite(n) && n > 0) return { mode: "attempts", n };
+      return { mode: "on", n: 0 };
+    },
+
+    // ---------------------------------------------------------
+    // Registrierung einer Macro-Instanz
+    // ---------------------------------------------------------
+    register(cfg){
+      const uid     = cfg.uid;
+      const selIn   = cfg.selInput;
+      const idReset = cfg.idReset;
+      const idSol   = cfg.idSol;
+      const gateRaw = cfg.gateRaw;
+
+      // state
+      MOD.state[uid] = MOD.state[uid] || {
+        solved: false,
+        tries: 0,
+        start: "",
+        solution: "",
+        gate: MOD.parseGate(gateRaw)
+      };
+      const S = MOD.state[uid];
+      S.gate = MOD.parseGate(gateRaw);
+
+      // dom getters (immer frisch wegen Re-Renders)
+      const getInput = () => document.querySelector(selIn);
+      const getReset = () => document.getElementById(idReset);
+      const getSol   = () => document.getElementById(idSol);
+      const getWrap  = () => {
+        const input = getInput();
+        return input ? input.closest('.orthography-wrap') : null;
+      };
+
+      // initiales Einlesen (quote-sicher via textContent)
+      const input0 = getInput();
+      const sol0   = getSol();
+      if (input0 && !S.start)    S.start    = input0.getAttribute('value') || input0.defaultValue || "";
+      if (sol0   && !S.solution) S.solution = (sol0.textContent || "");
+
+      const clearClasses = (node) => {
+        if(!node || !node.classList) return;
+        [...node.classList].forEach(c => {
+          if (/(correct|wrong|success|error|checked|valid|invalid|resolved|solved)/i.test(c)) {
+            node.classList.remove(c);
+          }
+        });
+      };
+
+      const setInputValue = (v, emitEvents) => {
+        const input = getInput();
+        if(!input) return;
+        input.value = v;
+        if (emitEvents) {
+          input.dispatchEvent(new Event('input',  { bubbles: true }));
+          input.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      };
+
+      const hardenSolution = (input) => {
+        if(!input) return;
+        input.defaultValue = S.solution;
+        try { input.setAttribute('value', S.solution); } catch(e){}
+        input.removeAttribute('aria-invalid');
+      };
+
+      // SILENT → verhindert Flicker / Lia-Trigger
+      const silentForceSolution = () => {
+        const input = getInput();
+        if(!input) return;
+        input.value = S.solution;
+        hardenSolution(input);
+      };
+
+      const findQuiz = () => {
+        const wrap = getWrap();
+        if(!wrap) return null;
+
+        // schneller Direkt-Link, wenn Lia aria-labelledby nutzt
+        if (wrap.id) {
+          const answers = document.querySelector('.lia-quiz__answers[aria-labelledby="' + wrap.id + '"]');
+          if (answers) {
+            const quiz = answers.closest('.lia-quiz');
+            if (quiz) return quiz;
+          }
+        }
+
+        // robust: TreeWalker bis zur nächsten orthography-wrap
+        const root = document.body || document.documentElement;
+        if (!root || !root.contains(wrap) || !document.createTreeWalker) return null;
+
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT);
+        walker.currentNode = wrap;
+
+        let node;
+        while ((node = walker.nextNode())) {
+          if (node !== wrap && node.classList && node.classList.contains('orthography-wrap')) break;
+          if (node.classList && node.classList.contains('lia-quiz')) return node;
+        }
+        return null;
+      };
+
+      const applyGate = (control) => {
+        if(!control) return;
+        const resolve = control.querySelector('.lia-quiz__resolve');
+        if(!resolve) return;
+
+        if (S.gate.mode === "off") {
+          resolve.disabled = true;
+          resolve.style.display = "none";
+          resolve.setAttribute("aria-hidden", "true");
+          return;
+        }
+
+        if (S.gate.mode === "attempts") {
+          if (S.tries >= S.gate.n) {
+            resolve.style.display = "";
+            resolve.disabled = false;
+            resolve.removeAttribute("aria-hidden");
+          } else {
+            resolve.disabled = true;
+            resolve.style.display = "none";
+            resolve.setAttribute("aria-hidden", "true");
+          }
+          return;
+        }
+
+        resolve.style.display = "";
+        resolve.disabled = false;
+        resolve.removeAttribute("aria-hidden");
+      };
+
+      const placeReset = (control) => {
+        const btn = getReset();
+        if(!control || !btn) return;
+
+        if (btn.parentElement !== control || btn !== control.lastElementChild) {
+          control.appendChild(btn);
+        }
+        btn.classList.add('ortho-reset-inline');
+        btn.style.marginBottom = "0";
+      };
+
+      const lockSolution = () => {
+        S.solved = true;
+        silentForceSolution();
+        const wrap = getWrap();
+        if (wrap) wrap.dataset.orthoSolved = "1";
+      };
+
+      // gelöst bleibt wirklich unverändert → silent prepaint repair
+      const ensureSolvedSticky = () => {
+        const input = getInput();
+        if(!input) return;
+
+        const wrap = getWrap();
+        if (wrap) {
+          wrap.dataset.orthoTries  = String(S.tries);
+          wrap.dataset.orthoSolved = S.solved ? "1" : "0";
+        }
+
+        if (S.solved) {
+          if (MOD.norm(input.value) !== MOD.norm(S.solution)) {
+            silentForceSolution();
+          } else {
+            hardenSolution(input);
+          }
+        }
+      };
+
+      // Reset: tries NICHT verändern!
+      const doReset = () => {
+        if (S.solved) {
+          lockSolution();
+        } else {
+          setInputValue(S.start, true);
+          const input = getInput();
+          if (input) {
+            input.defaultValue = S.start;
+            try { input.setAttribute('value', S.start); } catch(e){}
+            input.removeAttribute('aria-invalid');
+          }
+        }
+
+        clearClasses(getInput());
+        clearClasses(findQuiz());
+
+        const quiz = findQuiz();
+        if (quiz) {
+          const control = quiz.querySelector('.lia-quiz__control');
+          applyGate(control);
+          placeReset(control);
+        }
+      };
+
+      const bindReset = () => {
+        const btn = getReset();
+        if(!btn) return;
+        if (btn.dataset.orthoResetBound === "1") return;
+        btn.dataset.orthoResetBound = "1";
+
+        const handler = (ev) => {
+          if(ev){
+            ev.preventDefault();
+            ev.stopPropagation();
+            if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
+          }
+          doReset();
+        };
+
+        btn.addEventListener('click', handler, true);
+        btn.addEventListener('keydown', (ev)=>{
+          if (ev.key === 'Enter' || ev.key === ' ') handler(ev);
+        }, true);
+      };
+
+      const bindControl = () => {
+        const quiz = findQuiz();
+        if(!quiz) return;
+
+        const control = quiz.querySelector('.lia-quiz__control');
+        if(!control) return;
+
+        applyGate(control);
+        placeReset(control);
+        bindReset();
+
+        const ckey = "orthoCtlBound_" + uid;
+        if (control.dataset[ckey] === "1") return;
+        control.dataset[ckey] = "1";
+
+        control.addEventListener('click', function(ev){
+          // Reset-Klick ignorieren
+          const btn = getReset();
+          if (btn && ev.target && ev.target.closest && ev.target.closest('#' + btn.id)) return;
+
+          const inputBefore = (getInput() ? getInput().value : "");
+          const wasCorrect  = (MOD.norm(inputBefore) === MOD.norm(S.solution)); // VOR Lia merken
+
+          const check = ev.target && ev.target.closest ? ev.target.closest('.lia-quiz__check') : null;
+          if (check) {
+            if (S.gate.mode === "attempts") {
+              setTimeout(function(){
+                S.tries += 1;
+                applyGate(control);
+                placeReset(control);
+                ensureSolvedSticky();
+              }, 0);
+            }
+
+            if (wasCorrect) {
+              setTimeout(lockSolution, 0);
+              setTimeout(lockSolution, 30);
+            } else {
+              setTimeout(function(){
+                const input = getInput();
+                if (!input) return;
+                // wenn Lia ungewollt Starttext reindrückt: silent restore
+                if (!S.solved && input.value === S.start && inputBefore !== S.start) {
+                  setInputValue(inputBefore, false);
+                }
+              }, 30);
+              setTimeout(ensureSolvedSticky, 80);
+            }
+            return;
+          }
+
+          const resolve = ev.target && ev.target.closest ? ev.target.closest('.lia-quiz__resolve') : null;
+          if (resolve) {
+            if (resolve.disabled || resolve.style.display === "none") return;
+            setTimeout(lockSolution, 0);
+            setTimeout(lockSolution, 30);
+          }
+        }, true);
+      };
+
+      const repair = () => {
+        // Lösung sicher aus DOM nachladen (falls neu gerendert)
+        const sol = getSol();
+        if (sol) S.solution = (sol.textContent || S.solution);
+
+        // Start nur setzen, wenn noch leer
+        const input = getInput();
+        if (input && !S.start) S.start = input.getAttribute('value') || input.defaultValue || "";
+
+        bindControl();
+        ensureSolvedSticky();
+      };
+
+      // fixer registrieren + sofort reparieren
+      MOD.fixers[uid] = repair;
+      repair();
+      MOD.schedule();
+      setTimeout(repair, 0);
+      setTimeout(repair, 60);
+      setTimeout(repair, 180);
+    }
+  };
+
+  MOD.startGlobal();
+  ROOT[KEY] = MOD;
+})();
+@end
+
+
+@orthography: @orthography_(@uid,`@0`,`@1`,`@2`)
+
+@orthography_
+<div class="orthography-wrap" id="orthography-wrap-@0">
+  <span id="orthography-solution-@0" style="display:none">@3</span>
+
+  <input
+    data-id="lia-quiz-@0"
+    class="lia-input lia-quiz__input"
+    style="margin-bottom: .5rem"
+    value="@2">
+
+  <button
+    type="button"
+    class="lia-btn lia-btn--outline"
+    id="orthography-reset-@0"
+    style="margin-bottom: 2rem">
+    Reset
+  </button>
+</div>
+
+[[!]]
+<script>
+(function(){
+  const el  = document.querySelector('[data-id="lia-quiz-@0"]');
+  const sol = document.getElementById('orthography-solution-@0');
+  if(!el || !sol) return false;
+
+  const norm = s => String(s||"").toLocaleLowerCase().replace(/\s+/g,"");
+  return norm(el.value) === norm(sol.textContent);
+})()
+</script>
+
+<script modify="false">
+(function(){
+  function getRootWindow(){
+    let w = window;
+    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
+    return w;
+  }
+  const ROOT = getRootWindow();
+  const MOD  = ROOT["__ORTHOGRAPHY_EXPORT_V1__"];
+  if(!MOD || !MOD.register) return;
+
+  MOD.register({
+    uid: "@0",
+    gateRaw: "@1",
+    selInput: '[data-id="lia-quiz-@0"]',
+    idReset: "orthography-reset-@0",
+    idSol:   "orthography-solution-@0"
+  });
+})();
+</script>
+@end
+
+
+diktat: {|>}{<span style="position: absolute; left: -10000px">@0</span>} [[ @0 ]]
+
+
 
 
 
