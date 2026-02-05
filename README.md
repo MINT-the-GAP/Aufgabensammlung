@@ -5269,8 +5269,16 @@ for (let c = 0; c <= cols; c++) {
 @end
 
 
-diktat: {|>}{<span style="position: absolute; left: -10000px">@0</span>} [[ @0 ]]
 
+
+
+
+@diktat: @diktat_(@uid,@0)
+
+@diktat_
+{|>}{<span style="position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden;">@0</span>}
+[[ @0 ]]
+@end
 
 
 

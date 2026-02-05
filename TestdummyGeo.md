@@ -44,9 +44,3 @@ __$b)\;\;$__ $\dfrac{7}{10}$
 
 </section>
 
-
-Testzwecke (2 ist Lösung):
-
-<!--   data-solution-button="2" -->
-[[ 2 ]] 
-@canvas
