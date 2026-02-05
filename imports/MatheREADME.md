@@ -1,51 +1,98 @@
 <!--
-version:  0.0.1
+version:  0.0.2
 language: de
 narrator: Deutsch Female
-
-tags:
-comment:
 author: Martin Lommatzsch
-
-
-
-
-
-
+comment: FractionQuizzes (circle+rect) — import-sicher, root-namespaced, kollisionsarm
 
 @onload
-window.segments = window.segments || {}
+(function () {
+  // =========================
+  // Root/Content (iframe-safe)
+  // =========================
+  function getRootWindow(){
+    let w = window;
+    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
+    return w;
+  }
 
-window.toggleSegments = function (uid, i) {
-  segments[uid][i] = !segments[uid][i]
-}
+  const ROOT = getRootWindow();
+  const KEY  = "__LIA_FRACTION_QUIZ_V1__";
 
-window.rects    = window.rects    || {}
-window.rectDims = window.rectDims || {}
+  if (!ROOT[KEY]) {
+    ROOT[KEY] = {
+      circle:   Object.create(null), // uid -> boolean[]
+      rect:     Object.create(null), // uid -> boolean[]
+      rectDims: Object.create(null), // uid -> {rows, cols}
 
-window.toggleRect = function (uid, i) {
-  rects[uid][i] = !rects[uid][i]}
+      ensureCircle(uid, n){
+        n = Math.max(1, n|0);
+        const a = this.circle[uid];
+        if (!Array.isArray(a) || a.length !== n) this.circle[uid] = Array(n).fill(false);
+        return this.circle[uid];
+      },
+
+      toggleCircle(uid, i){
+        const a = this.circle[uid];
+        if (!Array.isArray(a)) return false;
+        if (i < 0 || i >= a.length) return false;
+        a[i] = !a[i];
+        return a[i];
+      },
+
+      ensureRect(uid, rows, cols){
+        rows = Math.max(1, rows|0);
+        cols = Math.max(1, cols|0);
+        this.rectDims[uid] = { rows, cols };
+
+        const total = rows * cols;
+        const a = this.rect[uid];
+        if (!Array.isArray(a) || a.length !== total) this.rect[uid] = Array(total).fill(false);
+        return this.rect[uid];
+      },
+
+      toggleRect(uid, i){
+        const a = this.rect[uid];
+        if (!Array.isArray(a)) return false;
+        if (i < 0 || i >= a.length) return false;
+        a[i] = !a[i];
+        return a[i];
+      }
+    };
+  }
+
+  // Expose in Root + current window (Content iframe)
+  ROOT.__LIA_FRACTION_QUIZ__ = ROOT[KEY];
+  window.__LIA_FRACTION_QUIZ__ = ROOT[KEY];
+})();
 @end
+
 
 @circleQuiz: @circleQuiz_(@uid,@0)
 
 @circleQuiz_
 <script modify="false">
-const segments = @input(`segments-@0`);
+const API = window.__LIA_FRACTION_QUIZ__;
+const uid = "@0";
+
+const n = Math.max(1, +@input(`fq-c-n-@0`) || 1);
+if (API && API.ensureCircle) API.ensureCircle(uid, n);
+
+const arr = (API && API.circle && API.circle[uid]) ? API.circle[uid] : Array(n).fill(false);
+
 const cx = 145, cy = 150, r = 140;
+const circleFill  = "white";
+const lineColor   = "black";
+const segmentFill = "orange";
 
-const circleFill = "white";  // Hintergrundfarbe Kreis
-const lineColor  = "black";          // Linienfarbe
-const segmentFill = "orange";     // Füllfarbe aktiver Segmente
-
-const step = 360 / segments;
+const step = 360 / n;
 const startOffset = -90;
 
 let lines = "";
 let slices = "";
 
-if (segments > 1) {
-  for (let i = 0; i < segments; i++) {
+if (n > 1) {
+  for (let i = 0; i < n; i++) {
     const a0 = (startOffset + step * i) * Math.PI / 180;
     const a1 = (startOffset + step * (i + 1)) * Math.PI / 180;
 
@@ -55,37 +102,43 @@ if (segments > 1) {
     const largeArc = (step > 180) ? 1 : 0;
     const sweep = 1;
 
-    const isActive = window.segments['@0'][i];
+    const active = !!arr[i];
+
     slices += `
-      <path class="slice@0 slice@0 ${isActive ? 'active' : ''}"
-            d="M ${cx},${cy} L ${x0},${y0} A ${r},${r} 0 ${largeArc},${sweep} ${x1},${y1} Z"
-            onclick="
-              this.classList.toggle('active');
-              toggleSegments('@0', ${i});
-            ">
-      </path>
+      <path
+        d="M ${cx},${cy} L ${x0},${y0} A ${r},${r} 0 ${largeArc},${sweep} ${x1},${y1} Z"
+        fill="${active ? segmentFill : "transparent"}"
+        style="cursor:pointer"
+        onclick="(function(el){
+          var API = window.__LIA_FRACTION_QUIZ__;
+          if(!API) return;
+          var on = API.toggleCircle('${uid}', ${i});
+          el.setAttribute('fill', on ? '${segmentFill}' : 'transparent');
+        })(this)"
+      ></path>
     `;
 
     lines += `<line x1="${cx}" y1="${cy}" x2="${x0}" y2="${y0}" stroke="${lineColor}" stroke-width="2"/>`;
   }
 } else {
-    const isActive = window.segments['@0'][0];
-    slices = `
-    <circle class="slice@0 ${isActive ? 'active' : ''}"
-            cx="${cx}" cy="${cy}" r="${r}"
-            onclick="this.classList.toggle('active'); toggleSegments('@0', 0);">
-    </circle>
+  const active = !!arr[0];
+  slices = `
+    <circle
+      cx="${cx}" cy="${cy}" r="${r}"
+      fill="${active ? segmentFill : "transparent"}"
+      style="cursor:pointer"
+      onclick="(function(el){
+        var API = window.__LIA_FRACTION_QUIZ__;
+        if(!API) return;
+        var on = API.toggleCircle('${uid}', 0);
+        el.setAttribute('fill', on ? '${segmentFill}' : 'transparent');
+      })(this)"
+    ></circle>
   `;
 }
 
 `HTML:
-<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" width="300" height="300" 
-     style="--line:${lineColor}; --segment:${segmentFill}">
-  <style>
-    .slice@0 { fill: transparent; cursor: pointer; }
-    .slice@0.active { fill: var(--segment); }
-  </style>
-
+<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" width="300" height="300">
   <circle cx="${cx}" cy="${cy}" r="${r}" stroke="${lineColor}" stroke-width="2" fill="${circleFill}"/>
   ${slices}
   ${lines}
@@ -93,26 +146,23 @@ if (segments > 1) {
 `
 </script>
 
-<script run-once modify="false" input="range" output="segments-@0" value="1" min="1" max="32" input-always-active>
-if (!segments["@0"] || @input != segments["@0"].length) {
-  segments["@0"] = Array(@input).fill(false);
-}
-
+<script run-once modify="false" input="range" output="fq-c-n-@0"
+        value="1" min="1" max="32" input-always-active>
 @input
 </script>
 
 [[!]]
 <script>
-@1 === ((window.segments["@0"].filter(i => i).length) / window.segments["@0"].length)
+(() => {
+  const API = window.__LIA_FRACTION_QUIZ__;
+  const uid = "@0";
+  const arr = (API && API.circle && API.circle[uid]) ? API.circle[uid] : [];
+  const ratio = arr.filter(Boolean).length / Math.max(1, arr.length);
+  const target = (@1);
+  return Math.abs(ratio - target) < 1e-12;
+})()
 </script>
 @end
-
-
-
-
-
-
-
 
 
 
@@ -121,43 +171,31 @@ if (!segments["@0"] || @input != segments["@0"].length) {
 
 @rectQuiz_
 <script modify="false">
-/*
-  WICHTIG:
-  - Rows/Cols kommen NUR aus window.rectDims['@0'].
-  - Die folgenden zwei Dummy-Zeilen dienen ausschließlich als REAKTIONS-TRIGGER,
-    damit LiaScript das SVG neu rendert, wenn die Slider bewegt werden.
-    Sie werden NICHT als Datenquelle verwendet.
-*/
-const _rowsTrigger = @input(`rows-@0`);
-const _colsTrigger = @input(`cols-@0`);
+const API = window.__LIA_FRACTION_QUIZ__;
+const uid = "@0";
 
-/* Quelle der Wahrheit: globale Variable */
-const dims = window.rectDims['@0'] || { rows: 1, cols: 1 };
-const rows = Math.max(1, +dims.rows || 1);
-const cols = Math.max(1, +dims.cols || 1);
+const rows = Math.max(1, +@input(`fq-r-rows-@0`) || 1);
+const cols = Math.max(1, +@input(`fq-r-cols-@0`) || 1);
+
+if (API && API.ensureRect) API.ensureRect(uid, rows, cols);
+
+const arr = (API && API.rect && API.rect[uid]) ? API.rect[uid] : Array(rows*cols).fill(false);
 
 const W = 300, H = 300, padding = 8;
 const usableW = W - 2*padding, usableH = H - 2*padding;
 
-
-const bgFill     = "white";      // Hintergrundfarbe der Fläche
-const lineColor  = "black";  // Linienfarbe
-const cellFill   = "orange";    // Füllfarbe aktiver Zellen
-const cellGap    = 0;            // Lücke zwischen Zellen (px)
+const bgFill   = "white";
+const lineColor= "black";
+const cellFill = "orange";
+const cellGap  = 0;
 
 const rw = usableW / cols;
 const rh = usableH / rows;
 
-/* Auswahlarray-Größe absichern */
-const total = rows * cols;
-if (!window.rects['@0'] || window.rects['@0'].length !== total) {
-  window.rects['@0'] = Array(total).fill(false);
-}
-
 let gridRects = "";
 let gridLines = "";
 
-/* Zellen (anklickbar) */
+// Zellen
 for (let r = 0; r < rows; r++) {
   for (let c = 0; c < cols; c++) {
     const i = r*cols + c;
@@ -166,18 +204,25 @@ for (let r = 0; r < rows; r++) {
     const w = rw - cellGap;
     const h = rh - cellGap;
 
-    const isActive = window.rects['@0'][i];
+    const active = !!arr[i];
 
     gridRects += `
-      <rect class="cell@0 ${isActive ? 'active' : ''}"
-            x="${x}" y="${y}" width="${Math.max(0,w)}" height="${Math.max(0,h)}"
-            onclick="this.classList.toggle('active'); toggleRect('@0', ${i});">
-      </rect>
+      <rect
+        x="${x}" y="${y}" width="${Math.max(0,w)}" height="${Math.max(0,h)}"
+        fill="${active ? cellFill : "transparent"}"
+        style="cursor:pointer"
+        onclick="(function(el){
+          var API = window.__LIA_FRACTION_QUIZ__;
+          if(!API) return;
+          var on = API.toggleRect('${uid}', ${i});
+          el.setAttribute('fill', on ? '${cellFill}' : 'transparent');
+        })(this)"
+      ></rect>
     `;
   }
 }
 
-/* Gitterlinien */
+// Gitterlinien
 for (let r = 0; r <= rows; r++) {
   const y = padding + r*rh;
   gridLines += `<line x1="${padding}" y1="${y}" x2="${W-padding}" y2="${y}" stroke="${lineColor}" stroke-width="2"/>`;
@@ -188,13 +233,7 @@ for (let c = 0; c <= cols; c++) {
 }
 
 `HTML:
-<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"
-     style="--line:${lineColor}; --cell:${cellFill}">
-  <style>
-    .cell@0 { fill: transparent; cursor: pointer; }
-    .cell@0.active { fill: var(--cell); }
-  </style>
-
+<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
   <rect x="0" y="0" width="${W}" height="${H}" fill="${bgFill}" stroke="${lineColor}" stroke-width="2"/>
   ${gridRects}
   ${gridLines}
@@ -202,53 +241,29 @@ for (let c = 0; c <= cols; c++) {
 `
 </script>
 
-<script run-once modify="false" input="range" output="rows-@0" value="1" min="1" max="20" input-always-active>
-/* Initialisieren, falls nötig */
-window.rectDims = window.rectDims || {};
-const current = window.rectDims['@0'] || { rows: 1, cols: 1 };
-const newRows = Math.max(1, +@input || 1);
-const cols    = Math.max(1, +current.cols || 1);
-
-window.rectDims['@0'] = { rows: newRows, cols };
-
-/* Auswahlarray-Größe anpassen */
-window.rects = window.rects || {};
-const total = newRows * cols;
-if (!window.rects['@0'] || window.rects['@0'].length !== total) {
-  window.rects['@0'] = Array(total).fill(false);
-}
-
-/* @input zurückgeben (Anzeige im UI), aber NICHT als Logikquelle genutzt */
+<script run-once modify="false" input="range" output="fq-r-rows-@0"
+        value="1" min="1" max="20" input-always-active>
 @input
 </script>
 
-<script run-once modify="false" input="range" output="cols-@0" value="1" min="1" max="20" input-always-active>
-window.rectDims = window.rectDims || {};
-const current = window.rectDims['@0'] || { rows: 1, cols: 1 };
-const newCols = Math.max(1, +@input || 1);
-const rows    = Math.max(1, +current.rows || 1);
-
-window.rectDims['@0'] = { rows, cols: newCols };
-
-/* Auswahlarray-Größe anpassen */
-window.rects = window.rects || {};
-const total = rows * newCols;
-if (!window.rects['@0'] || window.rects['@0'].length !== total) {
-  window.rects['@0'] = Array(total).fill(false);
-}
-
-/* @input zurückgeben (Anzeige im UI), aber NICHT als Logikquelle genutzt */
+<script run-once modify="false" input="range" output="fq-r-cols-@0"
+        value="1" min="1" max="20" input-always-active>
 @input
 </script>
 
 [[!]]
 <script>
-@1 === (
-  (window.rects["@0"].filter(i => i).length) /
-  Math.max(1, window.rects["@0"].length)
-)
+(() => {
+  const API = window.__LIA_FRACTION_QUIZ__;
+  const uid = "@0";
+  const arr = (API && API.rect && API.rect[uid]) ? API.rect[uid] : [];
+  const ratio = arr.filter(Boolean).length / Math.max(1, arr.length);
+  const target = (@1);
+  return Math.abs(ratio - target) < 1e-12;
+})()
 </script>
 @end
+
 
 -->
 
