@@ -4739,14 +4739,6 @@ function ensureCss(){
 
 
 diktat: {|>}{<span style="position: absolute; left: -10000px">@0</span>} [[ @0 ]]
-
-
-
-
-
-
-
-
 @end
 
 
