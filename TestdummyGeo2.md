@@ -11,15 +11,15 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MatheREADME.md
 
 
-
-
 -->
 
 
 
 
 
-# Geo Rechtschreibung 5
+
+
+# Bruchrechnungstests 1
 
 
 <section class="dynFlex">
@@ -56,20 +56,7 @@ __Aufgabe 3:__ Setze das Komma an die richtige Stelle. (Auflösung ist blockiert
 
 </div>
 
-
-
-
 </section>
-
-
-__Aufgabe 4:__ Setze die Satzzeichen so, dass der Satz eine korrekte wörtliche Rede darstellt. (Auflösung bei erst nach 2 und 0 Versuchen) \
-
-__$a)\;\;$__
-@orthography(2,`Der Apfel ist rot sagte Ben`,`"Der Apfel ist rot", sagte Ben.`)
-
-__$b)\;\;$__
-@orthography(true,`Clara sagt Druck ist eine physikalische Größe`,`Clara sagt: "Druck ist eine physikalische Größe."`)
-
 
 
 
