@@ -1,8 +1,9 @@
 <!--
-version:  0.0.9
+version:  0.0.1
 language: de
 narrator: Deutsch Female
 author: Martin Lommatzsch
+
 comment: FractionQuizzes (circle+rect) — 200x200 + Label IM Slider (wie Button), nur Schieber (kein Reset/keine Zahlen), import-sicher, kein ||-Parsefehler
 
 @style

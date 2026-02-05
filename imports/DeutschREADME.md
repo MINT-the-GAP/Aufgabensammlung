@@ -2,6 +2,7 @@
 version:  0.0.1
 language: de
 narrator: Deutsch Female
+author: Martin Lommatzsch
 
 comment: Orthography-Export (Reset inline, gated resolve, sticky solutions, no-flicker)
 author: Martin Lommatzsch
