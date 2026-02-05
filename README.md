@@ -4969,80 +4969,6 @@ function ensureCss(){
 
 
 
-@orthography: @orthography_(@uid,`@0`,`@1`,`@2`)
-
-@orthography_
-<div class="orthography-wrap" id="orthography-wrap-@0">
-  <span id="orthography-solution-@0" style="display:none">@3</span>
-
-  <input
-    data-id="lia-quiz-@0"
-    class="lia-input lia-quiz__input"
-    style="margin-bottom: .5rem"
-    value="@2">
-
-  <button
-    type="button"
-    class="lia-btn lia-btn--outline"
-    id="orthography-reset-@0"
-    style="margin-bottom: 2rem">
-    Reset
-  </button>
-</div>
-
-[[!]]
-<script>
-(function(){
-  const el  = document.querySelector('[data-id="lia-quiz-@0"]');
-  const sol = document.getElementById('orthography-solution-@0');
-  if(!el || !sol) return false;
-
-  const norm = s => String(s||"").toLocaleLowerCase().replace(/\s+/g,"");
-  return norm(el.value) === norm(sol.textContent);
-})()
-</script>
-
-<script modify="false">
-(function(){
-  function getRootWindow(){
-    let w = window;
-    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
-    return w;
-  }
-  const ROOT = getRootWindow();
-  const MOD  = ROOT["__ORTHOGRAPHY_EXPORT_V1__"];
-  if(!MOD || !MOD.register) return;
-
-  MOD.register({
-    uid: "@0",
-    gateRaw: "@1",
-    selInput: '[data-id="lia-quiz-@0"]',
-    idReset: "orthography-reset-@0",
-    idSol:   "orthography-solution-@0"
-  });
-})();
-</script>
-@end
-
-
-diktat: {|>}{<span style="position: absolute; left: -10000px">@0</span>} [[ @0 ]]
-@end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -5260,6 +5186,124 @@ for (let c = 0; c <= cols; c++) {
   return Math.abs(ratio - target) < 1e-12;
 })()
 </script>
+@end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@orthography: @orthography_(@uid,`@0`,`@1`,`@2`)
+
+@orthography_
+<div class="orthography-wrap" id="orthography-wrap-@0">
+  <span id="orthography-solution-@0" style="display:none">@3</span>
+
+  <input
+    data-id="lia-quiz-@0"
+    class="lia-input lia-quiz__input"
+    style="margin-bottom: .5rem"
+    value="@2">
+
+  <button
+    type="button"
+    class="lia-btn lia-btn--outline"
+    id="orthography-reset-@0"
+    style="margin-bottom: 2rem">
+    Reset
+  </button>
+</div>
+
+[[!]]
+<script>
+(function(){
+  const el  = document.querySelector('[data-id="lia-quiz-@0"]');
+  const sol = document.getElementById('orthography-solution-@0');
+  if(!el || !sol) return false;
+
+  const norm = s => String(s||"").toLocaleLowerCase().replace(/\s+/g,"");
+  return norm(el.value) === norm(sol.textContent);
+})()
+</script>
+
+<script modify="false">
+(function(){
+  function getRootWindow(){
+    let w = window;
+    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
+    return w;
+  }
+  const ROOT = getRootWindow();
+  const MOD  = ROOT["__ORTHOGRAPHY_EXPORT_V1__"];
+  if(!MOD || !MOD.register) return;
+
+  MOD.register({
+    uid: "@0",
+    gateRaw: "@1",
+    selInput: '[data-id="lia-quiz-@0"]',
+    idReset: "orthography-reset-@0",
+    idSol:   "orthography-solution-@0"
+  });
+})();
+</script>
+@end
+
+
+diktat: {|>}{<span style="position: absolute; left: -10000px">@0</span>} [[ @0 ]]
+@end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
