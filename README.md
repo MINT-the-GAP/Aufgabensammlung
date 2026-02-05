@@ -4723,20 +4723,6 @@ function ensureCss(){
 
 
 
-  // =========================
-  // DEUTSCH MAKROS
-  // DEUTSCH MAKROS
-  // DEUTSCH MAKROS
-  // DEUTSCH MAKROS
-  // DEUTSCH MAKROS
-  // DEUTSCH MAKROS
-  // DEUTSCH MAKROS
-  // DEUTSCH MAKROS
-  // DEUTSCH MAKROS
-  // =========================
-
-
-
 
 
 
@@ -4818,17 +4804,6 @@ diktat: {|>}{<span style="position: absolute; left: -10000px">@0</span>} [[ @0 ]
 
 
 
-  // =========================
-  // MATHEMATIK MAKROS
-  // MATHEMATIK MAKROS
-  // MATHEMATIK MAKROS
-  // MATHEMATIK MAKROS
-  // MATHEMATIK MAKROS
-  // MATHEMATIK MAKROS
-  // MATHEMATIK MAKROS
-  // MATHEMATIK MAKROS
-  // MATHEMATIK MAKROS
-  // =========================
 
 
 
@@ -4855,27 +4830,6 @@ diktat: {|>}{<span style="position: absolute; left: -10000px">@0</span>} [[ @0 ]
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-  // =========================
-  // CANVAS MAKROS
-  // CANVAS MAKROS
-  // CANVAS MAKROS
-  // CANVAS MAKROS
-  // CANVAS MAKROS
-  // CANVAS MAKROS
-  // CANVAS MAKROS
-  // =========================
 
 
 
