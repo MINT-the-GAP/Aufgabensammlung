@@ -74,6 +74,18 @@ Geh an den rechten vertikalen Trennstrich zwischen den Blöcken und schiebe dies
 
 <section class="dynFlex">
 
+<div class="flex-child">
+
+__$f)\;\;$__ Lösung ist 3: [[ 3 ]]
+
+__$g)\;\;$__ Lösung ist 3: [[ 3 ]]
+
+__$h)\;\;$__ Lösung ist 3: [[ 3 ]]
+
+__$i)\;\;$__ Lösung ist 3: [[ 3 ]]
+
+</div>
+
   <div class="flex-child">
     __$a)\;\;$__ Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.
   </div>
@@ -92,10 +104,6 @@ Geh an den rechten vertikalen Trennstrich zwischen den Blöcken und schiebe dies
 
   <div class="flex-child">
     __$e)\;\;$__ Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.
-  </div>
-
-  <div class="flex-child">
-    __$f)\;\;$__ Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.
   </div>
 
 </section>
