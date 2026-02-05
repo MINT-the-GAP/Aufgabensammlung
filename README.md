@@ -5260,7 +5260,6 @@ for (let c = 0; c <= cols; c++) {
   return Math.abs(ratio - target) < 1e-12;
 })()
 </script>
-@end
 
 
 
