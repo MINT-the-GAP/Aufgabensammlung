@@ -6026,42 +6026,28 @@ function ensureCss(){
 
 (function () {
 
-  // =========================
-  // Root/Content (iframe-safe)
-  // =========================
-  function getRootWindow(){
-    let w = window;
-    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
-    return w;
-  }
-
-  const ROOT_WIN = getRootWindow();
-  const ROOT_DOC = ROOT_WIN.document;
+  const WIN = window;
+  const DOC = document;
 
   // =========================
-  // Run-once Guard (ROOT-weit)
+  // Per-Window/Folie Guard
   // =========================
   const GUARD = "__LIA_SOLUTION_TIMER_V0_0_1__";
-  if (ROOT_WIN[GUARD]) return;
-  ROOT_WIN[GUARD] = true;
+  if (WIN[GUARD]) return;
+  WIN[GUARD] = true;
 
   // =========================
-  // Global Store (ROOT)
+  // State (pro Folie)
   // =========================
-  const STORE = ROOT_WIN.__liaSolTimerV001 || (ROOT_WIN.__liaSolTimerV001 = {
-    // reveal-ticker
-    items: new Map(),         // key -> {btn, badge, endAt}
+  const STATE = WIN.__liaSolTimerV001 || (WIN.__liaSolTimerV001 = {
+    items: new Map(),   // key -> {btn, badge, endAt}
     ticker: null,
-
-    // doc observing
-    observedDocs: new Set(),  // Set<Document>
-    docObservers: new Map(),  // Document -> MutationObserver
-    sweep: null,              // interval id
-    debounce: new Map(),      // Document -> timeout id
+    observedRoots: new WeakSet(),
+    observers: [],
   });
 
   // =========================
-  // CSS Injection (pro Document)
+  // CSS Injection (Document + ShadowRoots)
   // =========================
   const STYLE_ID = "__lia_solution_timer_css_v0_0_1__";
   const CSS = `
@@ -6075,70 +6061,74 @@ function ensureCss(){
   opacity:.85;
   user-select:none;
 }
-.lia-sol-timer-startbtn{
-  margin-right:.6rem;
-}
+.lia-sol-timer-startbtn{ margin-right:.6rem; }
 `;
 
-  function injectStyle(doc){
+  function injectStyleIntoRoot(root){
     try{
-      if (!doc || !doc.head) return;
-      if (doc.getElementById(STYLE_ID)) return;
-      const st = doc.createElement("style");
-      st.id = STYLE_ID;
-      st.textContent = CSS;
-      doc.head.appendChild(st);
+      if (!root) return;
+
+      // Document
+      if (root.nodeType === 9) {
+        const doc = root;
+        if (!doc.head) return;
+        if (doc.getElementById(STYLE_ID)) return;
+        const st = doc.createElement("style");
+        st.id = STYLE_ID;
+        st.textContent = CSS;
+        doc.head.appendChild(st);
+        return;
+      }
+
+      // ShadowRoot
+      if (root.nodeType === 11 && root.host) {
+        if (root.querySelector && root.querySelector(`style[data-id="${STYLE_ID}"]`)) return;
+        const st = DOC.createElement("style");
+        st.setAttribute("data-id", STYLE_ID);
+        st.textContent = CSS;
+        root.appendChild(st);
+      }
     }catch(e){}
   }
 
   // =========================
-  // Helpers
+  // Utils
   // =========================
-  function parseBool(raw, defaultValue = true){
-    if (raw == null) return defaultValue;
+  function parseBool(raw, def = true){
+    if (raw == null) return def;
     const s = String(raw).trim().toLowerCase();
-    if (!s) return defaultValue;
+    if (!s) return def;
     if (["0","false","off","no","n","none"].includes(s)) return false;
     if (["1","true","on","yes","y"].includes(s)) return true;
-    return defaultValue;
+    return def;
   }
 
-  // start modes:
-  // - immediate (default)
-  // - oncheck
-  // - onclick (manual start button)
   function parseStartMode(el){
     const v = (el.getAttribute("data-solution-timer-start") || "").trim().toLowerCase();
-    if (v && /^(onclick|click|manual|startbutton|start-button|start_button)$/.test(v)) return "onclick";
-    if (v && /^(oncheck|check|aftercheck|after-check|after_check)$/.test(v)) return "oncheck";
-    if (parseBool(el.getAttribute("data-solution-timer-after-check"), false)) return "oncheck"; // Alias
+    if (/^(onclick|click|manual|startbutton|start-button|start_button)$/.test(v)) return "onclick";
+    if (/^(oncheck|check|aftercheck|after-check|after_check)$/.test(v)) return "oncheck";
     return "immediate";
   }
 
-  function parseTimeToMs(raw) {
+  function parseTimeToMs(raw){
     if (raw == null) return 0;
     const s0 = String(raw).trim().toLowerCase();
     if (!s0) return 0;
 
-    // pure number => seconds
-    if (/^\d+(\.\d+)?$/.test(s0)) return Math.max(0, parseFloat(s0) * 1000);
+    if (/^\d+(\.\d+)?$/.test(s0)) return Math.max(0, parseFloat(s0) * 1000); // seconds
 
-    // mm:ss
     if (/^\d+:\d{1,2}$/.test(s0)) {
       const [m, sec] = s0.split(":").map(Number);
       return Math.max(0, (m * 60 + sec) * 1000);
     }
 
-    // tokens: 1h 2m 3s 400ms 2min 2mins 2minutes
-    let total = 0;
-    let found = false;
+    let total = 0, found = false;
     const re = /(\d+(?:\.\d+)?)\s*(ms|s|sec|secs|second|seconds|m|min|mins|minute|minutes|h|hr|hrs|hour|hours)\b/g;
     let match;
     while ((match = re.exec(s0))) {
       found = true;
       const n = parseFloat(match[1]);
       const u = match[2];
-
       if (u === "ms") total += n;
       else if (["s","sec","secs","second","seconds"].includes(u)) total += n * 1000;
       else if (["m","min","mins","minute","minutes"].includes(u)) total += n * 60000;
@@ -6147,46 +6137,17 @@ function ensureCss(){
     return found ? Math.max(0, total) : 0;
   }
 
-  function formatRemaining(ms) {
+  function formatRemaining(ms){
     ms = Math.max(0, ms);
-    const totalSec = Math.ceil(ms / 1000);
-    const m = Math.floor(totalSec / 60);
-    const s = totalSec % 60;
-    if (m <= 0) return `${s}s`;
-    return `${m}:${String(s).padStart(2, "0")}`;
+    const sec = Math.ceil(ms / 1000);
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    return (m <= 0) ? `${s}s` : `${m}:${String(s).padStart(2,"0")}`;
   }
 
   function normText(el){
     return (el.textContent || el.value || el.getAttribute("aria-label") || el.getAttribute("title") || "")
-      .trim()
-      .toLowerCase();
-  }
-
-  // =========================
-  // Button-Finder
-  // =========================
-  function findSolutionButton(scope) {
-    if (!scope) return null;
-    const btns = Array.from(scope.querySelectorAll("button, input[type='button'], a"));
-    if (!btns.length) return null;
-
-    const wanted = btns.filter(b => {
-      const t = normText(b);
-      if (!t) return false;
-      if (/(reset|zurück|zurueck|neustart)/.test(t)) return false;
-      if (/(prüfen|pruefen|check)/.test(t)) return false;
-      return /(auf(lö|lo)sen|l(ö|oe)sung|solution|answer|antwort|reveal)/.test(t);
-    });
-    if (wanted.length) return wanted[wanted.length - 1];
-
-    const fallback = btns.filter(b => {
-      const t = normText(b);
-      if (!t) return true;
-      if (/(reset|zurück|zurueck|neustart)/.test(t)) return false;
-      if (/(prüfen|pruefen|check)/.test(t)) return false;
-      return true;
-    });
-    return (fallback.length ? fallback[fallback.length - 1] : btns[btns.length - 1]) || null;
+      .trim().toLowerCase();
   }
 
   function isCheckBtn(b){
@@ -6197,380 +6158,345 @@ function ensureCss(){
     return /(prüfen|pruefen|check)\b/.test(t);
   }
 
-  // Prüfen-Buttons "smart" finden: erst im selben Control-Panel wie der Auflösen-Button,
-  // dann hochwandern, dann notfalls im Dokument in der Nähe.
-  function findCheckButtonsSmart(quizScope, solBtn){
-    const doc = (solBtn && solBtn.ownerDocument) ? solBtn.ownerDocument : (quizScope && quizScope.ownerDocument) ? quizScope.ownerDocument : ROOT_DOC;
-    const scopes = [];
+  function isSolutionBtn(b){
+    const t = normText(b);
+    if (!t) return false;
+    if (/(reset|zurück|zurueck|neustart)/.test(t)) return false;
+    if (/(prüfen|pruefen|check)/.test(t)) return false;
+    return /(auf(lö|lo)sen|l(ö|oe)sung|solution|answer|antwort|reveal)/.test(t);
+  }
 
-    try { if (solBtn && solBtn.parentElement) scopes.push(solBtn.parentElement); } catch(e){}
-    try { if (solBtn) {
-      const near = solBtn.closest("div, li, section, article, main, lia-quiz, .lia-quiz");
-      if (near) scopes.push(near);
-    }} catch(e){}
+  // =========================
+  // Smart finders (RootNode: Document oder ShadowRoot)
+  // =========================
+  function findSolutionButtonSmart(el){
+    const root = el.getRootNode ? el.getRootNode() : DOC;
+
+    const scopes = [];
+    const quizScope =
+      (el.matches && (el.matches("lia-quiz, .lia-quiz") ? el : null)) ||
+      (el.closest ? el.closest("lia-quiz, .lia-quiz") : null) ||
+      null;
     if (quizScope) scopes.push(quizScope);
 
-    // hochwandern ab solBtn
-    try{
-      let p = solBtn ? solBtn.parentElement : null;
-      let steps = 0;
-      while (p && steps++ < 6){
-        scopes.push(p);
-        p = p.parentElement;
-      }
-    }catch(e){}
+    let p = el.parentElement, steps = 0;
+    while (p && steps++ < 8) { scopes.push(p); p = p.parentElement; }
 
-    // unique
-    const uniq = [];
-    const seen = new Set();
     for (const s of scopes){
-      if (!s || seen.has(s)) continue;
-      seen.add(s);
-      uniq.push(s);
+      try{
+        const btns = Array.from(s.querySelectorAll("button, input[type='button'], a")).filter(isSolutionBtn);
+        if (btns.length) return btns[btns.length - 1];
+      }catch(e){}
     }
 
-    for (const scope of uniq){
+    try{
+      const btns = root.querySelectorAll
+        ? Array.from(root.querySelectorAll("button, input[type='button'], a")).filter(isSolutionBtn)
+        : [];
+      for (let i = btns.length - 1; i >= 0; i--){
+        const b = btns[i];
+        if (b && b.getClientRects && b.getClientRects().length) return b;
+      }
+      return btns[btns.length - 1] || null;
+    }catch(e){}
+    return null;
+  }
+
+  function findCheckButtonsSmart(el, solBtn){
+    const root = (el.getRootNode ? el.getRootNode() : DOC);
+    const scopes = [];
+    if (solBtn && solBtn.parentElement) scopes.push(solBtn.parentElement);
+
+    const quizScope =
+      (el.matches && (el.matches("lia-quiz, .lia-quiz") ? el : null)) ||
+      (el.closest ? el.closest("lia-quiz, .lia-quiz") : null) ||
+      null;
+    if (quizScope) scopes.push(quizScope);
+
+    let p = solBtn ? solBtn.parentElement : el.parentElement, steps = 0;
+    while (p && steps++ < 8) { scopes.push(p); p = p.parentElement; }
+
+    for (const s of scopes){
       try{
-        const btns = Array.from(scope.querySelectorAll("button, input[type='button'], a")).filter(isCheckBtn);
+        const btns = Array.from(s.querySelectorAll("button, input[type='button'], a")).filter(isCheckBtn);
         if (btns.length) return btns;
       }catch(e){}
     }
 
-    // fallback: im ganzen Dokument – aber nur die ersten N (und später per show/hide mit restore)
     try{
-      const all = Array.from(doc.querySelectorAll("button, input[type='button'], a")).filter(isCheckBtn);
-      return all.slice(0, 6);
+      const all = root.querySelectorAll
+        ? Array.from(root.querySelectorAll("button, input[type='button'], a")).filter(isCheckBtn)
+        : [];
+      return all.slice(0, 8);
     }catch(e){}
     return [];
   }
 
   // =========================
-  // Hide/Show helpers (robust)
+  // Host + Cleanup (nur im Control-Host)
   // =========================
-  function hardHideBtn(b){
-    if (!b || !b.style) return;
-    if (b.dataset.__solTimerChkHidden === "1") return;
-    b.dataset.__solTimerChkHidden = "1";
-    b.dataset.__solTimerPrevDisplayChk = b.style.display || "";
-    // nicht auf "hidden" vertrauen, aber falls gesetzt: merken & entfernen/setzen wir beim Show
-    b.dataset.__solTimerPrevHiddenAttr = b.hasAttribute("hidden") ? "1" : "0";
-    b.style.display = "none";
-    b.setAttribute("hidden", "");
+  function getControlHost(el, solBtn){
+    // wichtigste Heuristik: parent des Solution-Buttons ist (fast immer) die Control-Leiste
+    if (solBtn && solBtn.parentElement) return solBtn.parentElement;
+
+    const quizScope = (el.closest ? el.closest("lia-quiz, .lia-quiz") : null) || null;
+    return quizScope || el.parentElement || DOC.body;
   }
 
-  function hardShowBtn(b){
-    if (!b || !b.style) return;
-    if (b.dataset.__solTimerChkHidden !== "1") {
-      // Falls LiaScript selbst "hidden" gesetzt hatte, respektieren wir das
-      return;
+  function cleanupUiInHost(host){
+    if (!host || !host.querySelectorAll) return;
+    host.querySelectorAll("[data-sol-timer-ui='1']").forEach(n => { try{ n.remove(); }catch(e){} });
+  }
+
+  // =========================
+  // Hide / FORCE-SHOW Prüfen
+  // =========================
+  function hideCheckButtons(btns){
+    for (const b of btns){
+      if (!b || !b.style) continue;
+      if (b.dataset.__solTimerChkHidden === "1") continue;
+      b.dataset.__solTimerChkHidden = "1";
+      b.dataset.__solTimerPrevDisplayChk = b.style.display || "";
+      b.style.display = "none";
+      b.setAttribute("hidden", "");
     }
-    b.style.display = b.dataset.__solTimerPrevDisplayChk || "";
-    delete b.dataset.__solTimerPrevDisplayChk;
-    delete b.dataset.__solTimerChkHidden;
-
-    // hidden-Attr nur entfernen, wenn wir es gesetzt haben
-    if (b.dataset.__solTimerPrevHiddenAttr === "0") b.removeAttribute("hidden");
-    delete b.dataset.__solTimerPrevHiddenAttr;
   }
 
-  function hideCheckButtons(btns){ for (const b of btns) hardHideBtn(b); }
-  function showCheckButtons(btns){ for (const b of btns) hardShowBtn(b); }
+  function forceShowCheckButtons(btns){
+    for (const b of btns){
+      if (!b || !b.style) continue;
+      // egal wer hidden gesetzt hat: wir wollen sichtbar
+      b.style.display = b.dataset.__solTimerPrevDisplayChk || "";
+      b.removeAttribute("hidden");
+      b.removeAttribute("aria-hidden");
+      b.style.visibility = "";
+      b.style.pointerEvents = "";
+      b.style.opacity = "";
+      delete b.dataset.__solTimerChkHidden;
+      delete b.dataset.__solTimerPrevDisplayChk;
+    }
+  }
 
   // =========================
-  // Reveal Ticker
+  // Reveal ticker
   // =========================
-  function ensureTicker() {
-    if (STORE.ticker) return;
-    STORE.ticker = ROOT_WIN.setInterval(() => {
+  function ensureTicker(){
+    if (STATE.ticker) return;
+    STATE.ticker = WIN.setInterval(() => {
       const now = Date.now();
-      for (const [key, it] of STORE.items.entries()) {
-        if (!it.btn || !it.btn.isConnected) { STORE.items.delete(key); continue; }
-        const remaining = it.endAt - now;
-        if (remaining <= 0) {
+      for (const [key, it] of STATE.items.entries()){
+        if (!it.btn || !it.btn.isConnected) { STATE.items.delete(key); continue; }
+        const rem = it.endAt - now;
+        if (rem <= 0){
           it.btn.style.display = it.btn.dataset.__solTimerPrevDisplay || "";
           delete it.btn.dataset.__solTimerPrevDisplay;
           if (it.badge && it.badge.isConnected) it.badge.remove();
-          STORE.items.delete(key);
+          STATE.items.delete(key);
         } else {
-          if (it.badge) it.badge.textContent = `Lösung in ${formatRemaining(remaining)}`;
+          if (it.badge) it.badge.textContent = `Lösung in ${formatRemaining(rem)}`;
         }
       }
-      if (STORE.items.size === 0) {
-        ROOT_WIN.clearInterval(STORE.ticker);
-        STORE.ticker = null;
+      if (STATE.items.size === 0){
+        WIN.clearInterval(STATE.ticker);
+        STATE.ticker = null;
       }
     }, 250);
   }
 
   function scheduleReveal(btn, badge, ms){
     const key = `${Date.now()}_${Math.random().toString(16).slice(2)}`;
-    STORE.items.set(key, { btn, badge, endAt: Date.now() + ms });
+    STATE.items.set(key, { btn, badge, endAt: Date.now() + ms });
     ensureTicker();
   }
 
   // =========================
-  // Manual Start UI (onclick)
+  // ARM (pending; dedupe über Solution-Button)
   // =========================
-  function ensureStartButton(quizScope, doc, label){
-    try{
-      const existing = quizScope && quizScope.querySelector
-        ? quizScope.querySelector("button[data-sol-timer-startbtn='1']")
-        : null;
-      if (existing) return existing;
-    }catch(e){}
+  function tryArm(el){
+    if (el.dataset.__solTimerArmed === "1") return true;
 
-    const btn = doc.createElement("button");
-    btn.type = "button";
-    btn.textContent = label || "Timer starten";
-    btn.className = "lia-btn lia-sol-timer-startbtn";
-    btn.setAttribute("data-sol-timer-startbtn", "1");
-    return btn;
-  }
-
-  // =========================
-  // Core: arm timer on element
-  // =========================
-  function armTimerOnElement(el) {
     const ms = parseTimeToMs(el.getAttribute("data-solution-timer"));
-    if (ms <= 0) return;
+    if (ms <= 0) return false;
 
-    const showBadge = parseBool(el.getAttribute("data-solution-timer-badge"), true);
     const startMode = parseStartMode(el);
+    const showBadge = parseBool(el.getAttribute("data-solution-timer-badge"), true);
 
-    const quizScope =
-      (el.matches("lia-quiz, .lia-quiz") ? el : null) ||
-      el.querySelector?.("lia-quiz, .lia-quiz") ||
-      el.closest?.("lia-quiz, .lia-quiz") ||
-      el;
+    const solBtn = findSolutionButtonSmart(el);
+    if (!solBtn) return false; // pending
 
-    const solBtn = findSolutionButton(quizScope);
-    if (!solBtn) return;
+    // ✅ Dedupe: pro Solution-Button nur einmal UI bauen
+    if (solBtn.dataset.__solTimerBound === "1") {
+      el.dataset.__solTimerArmed = "1"; // Marker "abgehakt", erzeugt nichts mehr
+      return true;
+    }
+    solBtn.dataset.__solTimerBound = "1";
 
-    if (solBtn.dataset.__solTimerArmed === "1") return;
-    solBtn.dataset.__solTimerArmed = "1";
+    const doc = solBtn.ownerDocument || DOC;
+    const host = getControlHost(el, solBtn);
 
-    // Lösung-Button sofort verstecken
+    // UI im Host bereinigen (nur unsere)
+    cleanupUiInHost(host);
+
+    // Lösung-Button verstecken
     solBtn.dataset.__solTimerPrevDisplay = solBtn.style.display || "";
     solBtn.style.display = "none";
 
-    const doc = solBtn.ownerDocument || ROOT_DOC;
+    // Marker als armed markieren
+    el.dataset.__solTimerArmed = "1";
 
-    function createBadge(){
-      const b = doc.createElement("span");
-      b.className = "lia-sol-timer-badge";
-      return b;
-    }
+    const makeBadge = (text) => {
+      const badge = doc.createElement("span");
+      badge.className = "lia-sol-timer-badge";
+      badge.setAttribute("data-sol-timer-ui", "1");
+      badge.textContent = text;
+      return badge;
+    };
 
-    // ---------- immediate ----------
+    // immediate
     if (startMode === "immediate") {
       let badge = null;
       if (showBadge) {
-        badge = createBadge();
-        badge.textContent = `Lösung in ${formatRemaining(ms)}`;
-        const parent = solBtn.parentElement || quizScope;
-        if (parent) parent.appendChild(badge);
+        badge = makeBadge(`Lösung in ${formatRemaining(ms)}`);
+        host.appendChild(badge);
       }
       scheduleReveal(solBtn, badge, ms);
-      return;
+      return true;
     }
 
-    // ---------- oncheck ----------
+    // oncheck
     if (startMode === "oncheck") {
       let started = false;
       let badge = null;
 
       if (showBadge) {
-        badge = createBadge();
-        badge.textContent = `Timer startet nach Prüfen`;
-        const parent = solBtn.parentElement || quizScope;
-        if (parent) parent.appendChild(badge);
+        badge = makeBadge(`Timer startet nach Prüfen`);
+        host.appendChild(badge);
       }
 
-      function startNow(){
+      const startNow = () => {
         if (started) return;
         started = true;
         if (badge) badge.textContent = `Lösung in ${formatRemaining(ms)}`;
         scheduleReveal(solBtn, badge, ms);
-      }
+      };
 
-      const checkBtns = findCheckButtonsSmart(quizScope, solBtn);
-      if (checkBtns[0] && checkBtns[0].dataset.__solTimerHooked !== "1") {
-        checkBtns[0].dataset.__solTimerHooked = "1";
-        checkBtns[0].addEventListener("click", startNow, { once: true, passive: true });
-        return;
-      }
-
-      if (quizScope && quizScope.nodeType === 1 && quizScope.dataset.__solTimerDelegated !== "1") {
-        quizScope.dataset.__solTimerDelegated = "1";
-        quizScope.addEventListener("click", (ev) => {
-          if (started) return;
+      const checks = findCheckButtonsSmart(el, solBtn);
+      if (checks[0] && checks[0].dataset.__solTimerHooked !== "1") {
+        checks[0].dataset.__solTimerHooked = "1";
+        checks[0].addEventListener("click", startNow, { once: true, passive: true });
+      } else {
+        // delegated
+        host.addEventListener("click", (ev) => {
           const t = ev.target;
           if (!t || !t.closest) return;
           const b = t.closest("button, input[type='button'], a");
-          if (!b) return;
-          if (isCheckBtn(b)) startNow();
+          if (b && isCheckBtn(b)) startNow();
         }, { capture: true, passive: true });
       }
-      return;
+      return true;
     }
 
-    // ---------- onclick (manual start) ----------
+    // onclick
     if (startMode === "onclick") {
-      // Marker: noch nicht gestartet (wichtig für spätere Scans!)
-      el.dataset.__solTimerStarted = "0";
+      // Prüfen verstecken (wenn vorhanden)
+      hideCheckButtons(findCheckButtonsSmart(el, solBtn));
 
-      // Check-Buttons (sobald vorhanden) verstecken
-      hideCheckButtons(findCheckButtonsSmart(quizScope, solBtn));
+      // Startbutton
+      const startBtn = doc.createElement("button");
+      startBtn.type = "button";
+      startBtn.textContent = el.getAttribute("data-solution-timer-start-label") || "Timer starten";
+      startBtn.className = "lia-btn lia-sol-timer-startbtn";
+      startBtn.setAttribute("data-sol-timer-ui", "1");
 
-      // Startbutton einfügen (in der Nähe der Kontrollleiste)
-      const label = el.getAttribute("data-solution-timer-start-label") || "Timer starten";
-      const startBtn = ensureStartButton(quizScope, doc, label);
-
-      // Host: bevorzugt das Panel rund um solBtn (weil da sicher "sein" Quiz ist)
-      const host =
-        (solBtn.parentElement) ||
-        (quizScope && quizScope.nodeType === 1 ? quizScope : null);
-
-      if (host && !startBtn.isConnected) {
-        if (host.firstChild) host.insertBefore(startBtn, host.firstChild);
-        else host.appendChild(startBtn);
-      }
+      // ganz nach vorn in die Control-Leiste
+      host.insertBefore(startBtn, host.firstChild);
 
       let started = false;
+
       startBtn.addEventListener("click", () => {
         if (started) return;
         started = true;
-        el.dataset.__solTimerStarted = "1";
 
-        // Prüfen sichtbar machen (smart suchen!)
-        const btnsNow = findCheckButtonsSmart(quizScope, solBtn);
-        showCheckButtons(btnsNow);
-
-        // Zusätzlich: noch 2 Nachläufe (falls LiaScript erst nach Klick rendert/umbaute)
-        setTimeout(() => showCheckButtons(findCheckButtonsSmart(quizScope, solBtn)), 50);
-        setTimeout(() => showCheckButtons(findCheckButtonsSmart(quizScope, solBtn)), 250);
-
-        // Badge erst nach Start (je nach setting)
-        let badge = null;
-        if (showBadge) {
-          badge = createBadge();
-          badge.textContent = `Lösung in ${formatRemaining(ms)}`;
-          const parent = solBtn.parentElement || quizScope;
-          if (parent) parent.appendChild(badge);
-        }
+        // ✅ FORCE-SHOW Prüfen (mehrfach nachziehen)
+        const force = () => forceShowCheckButtons(findCheckButtonsSmart(el, solBtn));
+        force(); setTimeout(force, 60); setTimeout(force, 250); setTimeout(force, 600);
 
         // Startbutton weg
         try { startBtn.remove(); } catch(e){ startBtn.disabled = true; }
 
-        // Timer läuft
+        // Badge erst nach Start (optional)
+        let badge = null;
+        if (showBadge) {
+          badge = makeBadge(`Lösung in ${formatRemaining(ms)}`);
+          host.appendChild(badge);
+        }
+
         scheduleReveal(solBtn, badge, ms);
       }, { passive: true });
 
-      return;
+      return true;
     }
+
+    return true;
   }
 
   // =========================
-  // Scan a document
+  // Shadow roots scanning
   // =========================
-  function scanDoc(doc){
+  function getShadowRoots(root){
+    const roots = [];
     try{
-      if (!doc || !doc.documentElement) return;
-      injectStyle(doc);
+      const start = (root.nodeType === 9) ? root.documentElement : root;
+      if (!start) return roots;
+      const walker = DOC.createTreeWalker(start, NodeFilter.SHOW_ELEMENT, null);
+      let node = walker.currentNode;
+      while (node) {
+        if (node.shadowRoot) roots.push(node.shadowRoot);
+        node = walker.nextNode();
+      }
+    }catch(e){}
+    return roots;
+  }
 
-      doc.querySelectorAll("[data-solution-timer]").forEach(el => {
-        // Schon gesehen?
-        if (el.dataset.__solTimerSeen === "1") {
-          // Bei onclick: solange nicht gestartet, weiterhin Prüfen verstecken (auch wenn später gerendert)
-          if (parseStartMode(el) === "onclick" && el.dataset.__solTimerStarted !== "1") {
-            const quizScope =
-              (el.matches("lia-quiz, .lia-quiz") ? el : null) ||
-              el.querySelector?.("lia-quiz, .lia-quiz") ||
-              el.closest?.("lia-quiz, .lia-quiz") ||
-              el;
+  function observeRoot(root){
+    if (!root || STATE.observedRoots.has(root)) return;
+    STATE.observedRoots.add(root);
 
-            const solBtn = findSolutionButton(quizScope);
-            if (solBtn) hideCheckButtons(findCheckButtonsSmart(quizScope, solBtn));
-          }
-          return;
-        }
+    injectStyleIntoRoot(root);
 
-        el.dataset.__solTimerSeen = "1";
-        armTimerOnElement(el);
-      });
+    try{
+      const mo = new MutationObserver(() => scanAll());
+      mo.observe(root, { childList: true, subtree: true });
+      STATE.observers.push(mo);
     }catch(e){}
   }
 
-  // =========================
-  // Observe a document (MutationObserver)
-  // =========================
-  function observeDoc(doc){
-    if (!doc || STORE.observedDocs.has(doc)) return;
-    STORE.observedDocs.add(doc);
+  function scanAll(){
+    const roots = [DOC, ...getShadowRoots(DOC)];
+    for (const r of roots) {
+      observeRoot(r);
 
-    scanDoc(doc);
-
-    try{
-      const mo = new MutationObserver(() => {
-        const prev = STORE.debounce.get(doc);
-        if (prev) ROOT_WIN.clearTimeout(prev);
-        const t = ROOT_WIN.setTimeout(() => scanDoc(doc), 50);
-        STORE.debounce.set(doc, t);
-      });
-
-      mo.observe(doc.documentElement, { childList: true, subtree: true });
-      STORE.docObservers.set(doc, mo);
-    }catch(e){}
-  }
-
-  // =========================
-  // Collect same-origin iframe documents (recursive)
-  // =========================
-  function collectDocs(startDoc, out, depth){
-    if (!startDoc || depth < 0) return;
-    out.add(startDoc);
-
-    let iframes = [];
-    try { iframes = Array.from(startDoc.querySelectorAll("iframe")); } catch(e){}
-
-    for (const fr of iframes){
+      let els = [];
       try{
-        const d = fr.contentDocument;
-        if (d && d.documentElement) {
-          out.add(d);
-          collectDocs(d, out, depth - 1);
-        }
+        els = (r.querySelectorAll ? Array.from(r.querySelectorAll("[data-solution-timer]")) : []);
       }catch(e){}
+
+      for (const el of els){
+        // pending + arm
+        tryArm(el);
+      }
     }
   }
 
-  function observeAll(){
-    const docs = new Set();
-    collectDocs(ROOT_DOC, docs, 3);
-    try { collectDocs(document, docs, 2); } catch(e){}
-    for (const d of docs) observeDoc(d);
-  }
-
-  function rescanSoon(){
-    observeAll();
-    ROOT_WIN.setTimeout(observeAll, 0);
-    ROOT_WIN.setTimeout(observeAll, 120);
-    ROOT_WIN.setTimeout(observeAll, 500);
-  }
-
-  try{
-    ROOT_WIN.addEventListener("hashchange", rescanSoon, { passive: true });
-    ROOT_WIN.addEventListener("popstate",  rescanSoon, { passive: true });
-  }catch(e){}
-
-  if (!STORE.sweep){
-    STORE.sweep = ROOT_WIN.setInterval(observeAll, 700);
-  }
-
-  rescanSoon();
+  // init
+  injectStyleIntoRoot(DOC);
+  scanAll();
+  // nachziehen (LiaScript rendert zeitversetzt)
+  setTimeout(scanAll, 0);
+  setTimeout(scanAll, 120);
+  setTimeout(scanAll, 500);
 
 })();
-
 
 
 
