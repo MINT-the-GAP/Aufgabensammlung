@@ -2,15 +2,14 @@
 version:  0.0.1
 language: de
 author: Martin Lommatzsch
-comment: @resetter v0.0.1 — segmentweise Reset (bis nächster @resetter oder nächste # Überschrift) — KEIN DOM-Replace — interner Reset nur im echten Quiz-Scope — Baseline-Attrs robust (id/data*/summary) => [->[]] reset — Click blockiert Slide-Advance — Overlay fixed ohne Springen
+comment: @resetter v0.0.1 — segmentweise Reset (bis nächster @resetter oder nächste # Überschrift) — Blockt Presentation-Click-Advance (window-capture) — Baseline-Attrs restore (auch [->[]]) + Controls restore (inkl. @orthography) — Overlay fixed
 
 @style
 :root{
-  /* LiaScript: häufig "r, g, b" in --color-highlight */
   --lia-resetter-accent: rgb(var(--color-highlight, 11, 95, 255));
 }
 
-/* Inline-Anker: reserviert Platz, aber unsichtbar (Overlay-Button sitzt darüber) */
+/* Inline-Anker: reserviert Platz, aber unsichtbar */
 .lia-resetter-anchor{
   display: inline-flex !important;
   align-items: center !important;
@@ -32,7 +31,7 @@ comment: @resetter v0.0.1 — segmentweise Reset (bis nächster @resetter oder n
   white-space: nowrap !important;
 }
 
-/* Echter Button (Overlay): FIXED => kein Scroll-Springen */
+/* Overlay-Button: transparent, Rand+Schrift Themefarbe, klein, fixed */
 button.lia-resetter-btn{
   color: var(--lia-resetter-accent) !important;
   border: 1px solid currentColor !important;
@@ -88,7 +87,8 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
     items: Object.create(null),  // id -> { anchor, btn, baseline }
     scanT: 0,
     rafPos: 0,
-    intervalId: 0
+    intervalId: 0,
+    blockersInstalled: false
   });
 
   // =========================
@@ -118,8 +118,56 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
   }
 
   // =========================
+  // GLOBAL BLOCKERS (window capture) => verhindert Folien-Sprung/Step-Advance
+  // =========================
+  function isResetterEvent(ev){
+    const t = ev && ev.target;
+    if (!t) return false;
+    if (t.closest && t.closest("button.lia-resetter-btn")) return true;
+    return false;
+  }
+
+  function blockEvt(ev){
+    try{
+      ev.preventDefault();
+      ev.stopPropagation();
+      if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
+      ev.cancelBubble = true;
+      ev.returnValue = false;
+    }catch(e){}
+  }
+
+  function installBlockers(win){
+    const types = ["pointerdown","pointerup","mousedown","mouseup","click","touchstart","touchend","keydown"];
+    for (let i=0;i<types.length;i++){
+      const tp = types[i];
+      win.addEventListener(tp, function(ev){
+        if (tp === "keydown"){
+          // Nur wenn Button fokussiert und Enter/Space
+          const a = ev && ev.target;
+          const key = ev && (ev.key || ev.code || "");
+          const isBtn = a && a.classList && a.classList.contains("lia-resetter-btn");
+          if (!isBtn) return;
+          if (key !== "Enter" && key !== " " && key !== "Spacebar") return;
+          blockEvt(ev);
+          return;
+        }
+        if (isResetterEvent(ev)) blockEvt(ev);
+      }, true); // CAPTURE on window => vor document-capture
+    }
+  }
+
+  function ensureBlockers(){
+    if (REG.blockersInstalled) return;
+    REG.blockersInstalled = true;
+    installBlockers(WIN);
+    // Defensive: falls Presentation-Listener im Root sitzt
+    if (ROOT_WIN && ROOT_WIN !== WIN) installBlockers(ROOT_WIN);
+  }
+
+  // =========================
   // Segment: ab Anchor bis nächste Anchor oder Überschrift
-  // (WICHTIG: Root ist immer .lia-slide oder main, niemals "section" allgemein!)
+  // Root: immer .lia-slide oder main
   // =========================
   function isAnchor(el){
     return !!el && el.nodeType === 1 && el.classList && el.classList.contains("lia-resetter-anchor");
@@ -157,9 +205,7 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
     for (let i=0;i<nodes.length;i++){
       const el = nodes[i];
       if (!el || el.nodeType !== 1) continue;
-
       if (el.classList && (el.classList.contains("solved") || el.classList.contains("failed"))) return true;
-
       if (el.attributes){
         for (let a=0;a<el.attributes.length;a++){
           const n = (el.attributes[a].name || "").toLowerCase();
@@ -173,7 +219,7 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
   }
 
   // =========================
-  // Attribute Snapshot (für [->[]]) — robust: path + id + data-key + summaryText
+  // Baseline: Attrs (für [->[]]) + Controls (für [[...]])
   // =========================
   function trackedAttrName(name){
     return (
@@ -244,7 +290,7 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
 
   function pickDataKey(el){
     if (!el || !el.getAttribute) return null;
-    const keys = ["data-uid","data-id","data-key","data-ref","data-name","data-quiz","data-task"];
+    const keys = ["data-uid","data-id","data-key","data-ref","data-name","data-step","data-index","data-animate"];
     for (let i=0;i<keys.length;i++){
       const v = el.getAttribute(keys[i]);
       if (v && v.trim()) return { k: keys[i], v: v.trim() };
@@ -252,10 +298,30 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
     return null;
   }
 
-  function summaryTextOfDetails(el){
-    if (!el || el.tagName !== "DETAILS") return "";
-    const s = el.querySelector("summary");
-    return s ? (s.textContent || "").trim().slice(0,120) : "";
+  function textSig(el){
+    try{
+      const t = (el.textContent || "").replace(/\s+/g," ").trim();
+      if (!t) return "";
+      return t.slice(0, 80);
+    }catch(e){ return ""; }
+  }
+
+  function shouldSnapshot(el, attrs){
+    if (!el || el.nodeType !== 1) return false;
+    const tag = el.tagName;
+    if (tag === "DETAILS" || tag === "SUMMARY") return true;
+    // wenn tracked attrs vorhanden
+    for (const k in attrs){ return true; }
+    // oder Lia-typische Klassen / data-*
+    const cls = (typeof el.className === "string") ? el.className : "";
+    if (cls && cls.toLowerCase().includes("lia")) return true;
+    if (el.attributes){
+      for (let i=0;i<el.attributes.length;i++){
+        const n = (el.attributes[i].name || "").toLowerCase();
+        if (n.indexOf("data-") === 0) return true;
+      }
+    }
+    return false;
   }
 
   function locateByFallback(root, snap){
@@ -264,28 +330,27 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
       const el = root.querySelector("#" + CSS.escape(snap.id));
       if (el) return el;
     }
-
     // 2) data key
     if (snap.dk && snap.dk.k && snap.dk.v){
-      const sel = `[${snap.dk.k}="${CSS.escape(snap.dk.v)}"]`;
-      const el = root.querySelector(sel);
+      const el = root.querySelector(`[${snap.dk.k}="${CSS.escape(snap.dk.v)}"]`);
       if (el) return el;
     }
-
-    // 3) details summary text
-    if (snap.tag === "DETAILS" && snap.sum){
-      const all = root.querySelectorAll("details");
-      for (let i=0;i<all.length;i++){
-        if (summaryTextOfDetails(all[i]) === snap.sum) return all[i];
+    // 3) tag + textsig (nur wenn eindeutig)
+    if (snap.ts && snap.tag){
+      const list = root.querySelectorAll(snap.tag.toLowerCase());
+      let hit = null, hits = 0;
+      for (let i=0;i<list.length;i++){
+        if (textSig(list[i]) === snap.ts){
+          hit = list[i]; hits++;
+          if (hits > 1) break;
+        }
       }
+      if (hits === 1) return hit;
     }
-
     return null;
   }
 
-  // =========================
-  // Native setter (gegen Geisterwerte)
-  // =========================
+  // Controls restore (gegen Geisterwerte)
   const INPUT_VALUE_SETTER = (function(){
     try { return Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value").set; } catch(e){ return null; }
   })();
@@ -298,13 +363,11 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
 
   function setNativeValue(el, v){
     const val = (v == null) ? "" : String(v);
-
     try{
       if (el && el._valueTracker && typeof el._valueTracker.setValue === "function"){
         el._valueTracker.setValue(el.value);
       }
     }catch(e){}
-
     try{
       if (el.tagName === "TEXTAREA" && TA_VALUE_SETTER) TA_VALUE_SETTER.call(el, val);
       else if (el.tagName === "INPUT" && INPUT_VALUE_SETTER) INPUT_VALUE_SETTER.call(el, val);
@@ -324,9 +387,6 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
     try{ el.dispatchEvent(new Event(type, { bubbles:true })); }catch(e){}
   }
 
-  // =========================
-  // Baseline Snapshot: attrs (alle) + controls (keyed)
-  // =========================
   function controlKey(el){
     const tag = el.tagName.toLowerCase();
     const type = (tag === "input") ? ((el.getAttribute("type") || el.type || "").toLowerCase()) : "";
@@ -349,17 +409,18 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
       const el = nodes[i];
       if (!el || el.nodeType !== 1) continue;
 
-      const dk = pickDataKey(el);
-      const snap = {
-        path: pathFrom(seg.root, el),
-        id: el.id || "",
-        dk,
-        tag: el.tagName,
-        sum: (el.tagName === "DETAILS") ? summaryTextOfDetails(el) : "",
-        attrs: snapshotAttrs(el),
-        detailsOpen: (el.tagName === "DETAILS") ? !!el.open : null
-      };
-      attrSnaps.push(snap);
+      const attrs = snapshotAttrs(el);
+      if (shouldSnapshot(el, attrs)){
+        attrSnaps.push({
+          path: pathFrom(seg.root, el),
+          id: el.id || "",
+          dk: pickDataKey(el),
+          tag: el.tagName,
+          ts: textSig(el),
+          attrs,
+          detailsOpen: (el.tagName === "DETAILS") ? !!el.open : null
+        });
+      }
 
       if (el.matches && el.matches("input,textarea,select")){
         const key = controlKey(el);
@@ -390,9 +451,6 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
     return { attrSnaps, controlsByKey };
   }
 
-  // =========================
-  // Hard-unblock: verhindert "Buttons tot" nach Reset
-  // =========================
   function hardUnblock(nodes){
     for (let i=0;i<nodes.length;i++){
       const el = nodes[i];
@@ -420,141 +478,11 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
     }
   }
 
-  // =========================
-  // Interner Lia-Reset: NUR im Quiz-Scope klicken (verhindert Folien-Sprung!)
-  // =========================
-  function isInNavLike(el){
-    if (!el || !el.closest) return false;
-    return !!el.closest("nav, .lia-nav, .lia-navigation, .lia-sidebar, .lia-toc, .lia-menu, .lia-controls, .lia-presentation-controls");
-  }
-
-  function isCheckLike(el){
-    const t = ((el.textContent||"") + " " + (el.getAttribute("aria-label")||"") + " " + (el.getAttribute("title")||"")).toLowerCase();
-    return t.includes("prüfen") || t.includes("pruefen") || t.includes("check");
-  }
-  function isSolveLike(el){
-    const t = ((el.textContent||"") + " " + (el.getAttribute("aria-label")||"") + " " + (el.getAttribute("title")||"")).toLowerCase();
-    return t.includes("lösung") || t.includes("loesung") || t.includes("solve") || t.includes("zeige");
-  }
-  function isHintLike(el){
-    const t = ((el.textContent||"") + " " + (el.getAttribute("aria-label")||"") + " " + (el.getAttribute("title")||"")).toLowerCase();
-    return t.includes("hint") || t.includes("tipp");
-  }
-
-  function commonAncestor(els){
-    if (!els || !els.length) return null;
-    const chains = els.map(el=>{
-      const arr = [];
-      let c = el;
-      while (c){ arr.push(c); c = c.parentElement; }
-      return arr;
-    });
-    const first = chains[0];
-    for (let i=0;i<first.length;i++){
-      const cand = first[i];
-      let ok = true;
-      for (let j=1;j<chains.length;j++){
-        if (chains[j].indexOf(cand) < 0){ ok = false; break; }
-      }
-      if (ok) return cand;
-    }
-    return null;
-  }
-
-  function findQuizScope(nodes){
-    const liaBtns = [];
-    for (let i=0;i<nodes.length;i++){
-      const el = nodes[i];
-      if (el && el.nodeType === 1 && el.classList && el.classList.contains("lia-btn")) liaBtns.push(el);
-    }
-    if (!liaBtns.length) return null;
-
-    // Nur wenn es wirklich Prüfen+Lösung gibt (typisch [[...]]-Quiz)
-    let hasCheck = false, hasSolve = false;
-    for (let i=0;i<liaBtns.length;i++){
-      if (isCheckLike(liaBtns[i])) hasCheck = true;
-      if (isSolveLike(liaBtns[i])) hasSolve = true;
-    }
-    if (!hasCheck && !hasSolve) return null;
-
-    return commonAncestor(liaBtns) || liaBtns[0].parentElement;
-  }
-
-  function scoreResetCandidate(el){
-    if (!el || el.nodeType !== 1) return -999;
-    if (isInNavLike(el)) return -999;
-
-    const tag = el.tagName;
-    if (tag !== "BUTTON" && tag !== "A" && el.getAttribute("role") !== "button") return -999;
-
-    const txt = ((el.textContent || "")).trim().toLowerCase();
-    const al  = ((el.getAttribute("aria-label") || "") + " " + (el.getAttribute("title") || "")).trim().toLowerCase();
-    const cls = ((typeof el.className === "string") ? el.className : "").toLowerCase();
-    const id  = (el.id || "").toLowerCase();
-    const s = (txt + " " + al + " " + cls + " " + id).replace(/\s+/g, " ");
-
-    let score = 0;
-
-    if (s.includes("↺") || s.includes("⟲") || s.includes("⟳")) score += 40;
-    if (s.includes("reset") || s.includes("neustart") || s.includes("restart")) score += 30;
-    if (s.includes("zurück") || s.includes("zurueck") || s.includes("zurücksetzen") || s.includes("zuruecksetzen")) score += 25;
-
-    if (el.querySelector && el.querySelector("svg")) score += 5;
-    if (cls.includes("lia-btn")) score += 3;
-
-    if (isCheckLike(el)) score -= 60;
-    if (isSolveLike(el)) score -= 60;
-    if (isHintLike(el)) score -= 25;
-
-    return score;
-  }
-
-  function clickInternalResets(nodes){
-    const scope = findQuizScope(nodes);
-    if (!scope) return; // <<< entscheidend: ohne Quiz-Scope KEIN Klick => kein Folien-Sprung
-
-    const cands = [];
-    const btns = scope.querySelectorAll("button, a, [role='button']");
-    for (let i=0;i<btns.length;i++){
-      const el = btns[i];
-      const sc = scoreResetCandidate(el);
-      if (sc >= 18) cands.push({ el, sc });
-    }
-    cands.sort((a,b)=>b.sc-a.sc);
-
-    const max = Math.min(2, cands.length);
-    for (let i=0;i<max;i++){
-      const el = cands[i].el;
-      try{
-        if ("disabled" in el && el.disabled){ el.disabled = false; el.removeAttribute("disabled"); }
-        if (el.getAttribute && el.getAttribute("aria-disabled") === "true") el.setAttribute("aria-disabled","false");
-      }catch(e){}
-      try{ el.click(); }catch(e){}
-    }
-
-    // Toolbar fallback: wenn genau ein "leftover" existiert
-    const liaBtns = Array.from(scope.querySelectorAll("button.lia-btn, a.lia-btn"));
-    if (liaBtns.length >= 3){
-      const leftovers = liaBtns.filter(b => !isCheckLike(b) && !isSolveLike(b) && !isHintLike(b));
-      if (leftovers.length === 1 && scoreResetCandidate(leftovers[0]) > 0){
-        const el = leftovers[0];
-        try{
-          if ("disabled" in el && el.disabled){ el.disabled = false; el.removeAttribute("disabled"); }
-          if (el.getAttribute && el.getAttribute("aria-disabled") === "true") el.setAttribute("aria-disabled","false");
-        }catch(e){}
-        try{ el.click(); }catch(e){}
-      }
-    }
-  }
-
-  // =========================
-  // Restore: attrs + controls (keyed); zusätzlich: Details schließen wenn baseline fehlt
-  // =========================
   function restoreFromBaseline(anchor, baseline){
     const seg = collectSegment(anchor);
     const nodes = seg.nodes;
 
-    // A) Attribute/Details robust wiederherstellen
+    // A) Attrs/Details restore (reset [->[]])
     for (let i=0;i<baseline.attrSnaps.length;i++){
       const s = baseline.attrSnaps[i];
 
@@ -570,27 +498,6 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
           if (s.detailsOpen) el.setAttribute("open","");
           else el.removeAttribute("open");
         }catch(e){}
-      }
-    }
-
-    // Zusätzlich: Details, die neu dazu kamen, schließen
-    for (let i=0;i<nodes.length;i++){
-      const el = nodes[i];
-      if (el && el.tagName === "DETAILS"){
-        // wenn baseline dieses Details nicht kennt, sicher schließen
-        // (bei [->[]] hilft das oft schon)
-        // wir erkennen baseline-known via id/summary
-        const sum = summaryTextOfDetails(el);
-        let known = false;
-        for (let j=0;j<baseline.attrSnaps.length;j++){
-          const bs = baseline.attrSnaps[j];
-          if (bs.tag !== "DETAILS") continue;
-          if (bs.id && el.id && bs.id === el.id) { known = true; break; }
-          if (bs.sum && sum && bs.sum === sum) { known = true; break; }
-        }
-        if (!known){
-          try{ el.open = false; el.removeAttribute("open"); }catch(e){}
-        }
       }
     }
 
@@ -625,7 +532,6 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
         }
       }catch(e){}
 
-      // value-Attr wie initial
       try{
         if (b.valueAttr === null) el.removeAttribute("value");
         else el.setAttribute("value", String(b.valueAttr));
@@ -644,7 +550,6 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
         fire(el,"change");
       }
       else {
-        // value + defaultValue zurück => Geisterkiller
         const v  = (b.value == null) ? "" : String(b.value);
         const dv = (b.defaultValue == null) ? "" : String(b.defaultValue);
         setNativeValue(el, v);
@@ -652,57 +557,42 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
         fire(el,"input"); fire(el,"change");
       }
     }
-
-    // C) Lia-Buttons reaktivieren
-    for (let i=0;i<nodes.length;i++){
-      const el = nodes[i];
-      if (!el || el.nodeType !== 1) continue;
-      if (el.classList && el.classList.contains("lia-btn")){
-        try{ el.disabled = false; el.removeAttribute("disabled"); }catch(e){}
-        try{ el.removeAttribute("aria-disabled"); }catch(e){}
-        try{ if (el.style && el.style.pointerEvents === "none") el.style.pointerEvents = ""; }catch(e){}
-      }
-    }
   }
 
   // =========================
-  // Reset workflow (Mehrfach-Pass)
+  // Reset workflow (ohne interne Klicks – hier erstmal nur baseline restore)
+  // => verhindert, dass irgendwo "falsch geklickt" wird und Folien springen.
   // =========================
   function resetById(id){
     const it = REG.items[id];
     if (!it || !it.anchor || !it.anchor.isConnected) return;
 
     syncAccent();
+    ensureBaseline(id);
 
     const run = () => {
       const seg = collectSegment(it.anchor);
 
-      // 1) entblocken
       hardUnblock(seg.nodes);
 
-      // 2) internen Reset klicken (aber nur im Quiz-Scope; verhindert Slide-Sprung)
-      clickInternalResets(seg.nodes);
-
-      // 3) entblocken
-      hardUnblock(seg.nodes);
-
-      // 4) baseline restore (attrs+controls) => [->[]]
       if (it.baseline) restoreFromBaseline(it.anchor, it.baseline);
 
-      // 5) nochmal entblocken
+      // nochmal unblock (Lia zieht gern nach)
       const seg2 = collectSegment(it.anchor);
       hardUnblock(seg2.nodes);
+
+      // Position nachziehen
+      positionAll();
     };
 
     run();
     WIN.setTimeout(run, 0);
     WIN.requestAnimationFrame(run);
     WIN.setTimeout(run, 120);
-    WIN.setTimeout(run, 300);
   }
 
   // =========================
-  // Overlay Positionierung (fixed + rAF)
+  // Overlay Positionierung
   // =========================
   function positionOne(id){
     const it = REG.items[id];
@@ -724,16 +614,23 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
   }
 
   // =========================
-  // Button erzeugen (mit HARD event-block gegen Slide-Advance)
+  // Baseline später aufnehmen (wichtig: Slide 2 wird oft erst beim Betreten aufgebaut)
   // =========================
-  function blockEvt(ev){
-    try{
-      ev.preventDefault();
-      ev.stopPropagation();
-      if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
-    }catch(e){}
+  function ensureBaseline(id){
+    const it = REG.items[id];
+    if (!it || !it.anchor || !it.anchor.isConnected) return;
+    if (it.baseline) return;
+
+    const seg = collectSegment(it.anchor);
+    if (!seg.nodes.length) return;
+    if (looksInteracted(seg.nodes)) return;
+
+    it.baseline = snapshotBaseline(it.anchor);
   }
 
+  // =========================
+  // Button erzeugen
+  // =========================
   function ensureButton(anchor){
     const id = anchor.getAttribute("data-resetter-id") || "";
     if (!id) return;
@@ -749,10 +646,9 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
       btn.textContent = "Neustart der Aufgabe";
       btn.setAttribute("data-resetter-id", id);
 
-      // Blocke Slide-Advance sehr früh
+      // lokal zusätzlich blocken (Redundanz)
       btn.addEventListener("pointerdown", blockEvt, true);
-      btn.addEventListener("mousedown",   blockEvt, true);
-      btn.addEventListener("mouseup",     blockEvt, true);
+      btn.addEventListener("pointerup",   blockEvt, true);
       btn.addEventListener("click", function(ev){
         blockEvt(ev);
         resetById(id);
@@ -762,19 +658,13 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
       it.btn = btn;
     }
 
-    // baseline früh (nur pristine)
-    if (!it.baseline){
-      const seg = collectSegment(anchor);
-      if (seg.nodes.length && !looksInteracted(seg.nodes)){
-        it.baseline = snapshotBaseline(anchor);
-      }
-    }
-
+    ensureBaseline(id);
     positionOne(id);
   }
 
   function scan(){
     syncAccent();
+    ensureBlockers();
 
     const anchors = Array.from(DOC.querySelectorAll(".lia-resetter-anchor[data-resetter-id]"));
     const seen = Object.create(null);
@@ -839,6 +729,7 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
 <span class="lia-resetter-anchor" data-resetter-id="@0">Neustart der Aufgabe</span>
 @end
 -->
+
 
 
 

@@ -2,7 +2,7 @@
 version:  0.0.1
 language: de
 author: Martin Lommatzsch
-comment: Solution-Button per Timer — onclick-Startbutton zeigt Prüfen zuverlässig — ROOT/iframe/Slide-sicher — komplett in @onload
+comment: Solution-Button per Timer — PENDING-Scan (Buttons kommen ggf. erst beim Slide-Aktivieren) + onclick/oncheck + Badge optional — import-sicher (alles in @onload)
 
 @onload
 (function () {
@@ -30,15 +30,15 @@ comment: Solution-Button per Timer — onclick-Startbutton zeigt Prüfen zuverl�
   // Global Store (ROOT)
   // =========================
   const STORE = ROOT_WIN.__liaSolTimerV001 || (ROOT_WIN.__liaSolTimerV001 = {
-    // reveal-ticker
-    items: new Map(),         // key -> {btn, badge, endAt}
+    // reveal ticker
+    items: new Map(),            // key -> {btn, badge, endAt}
     ticker: null,
 
-    // doc observing
-    observedDocs: new Set(),  // Set<Document>
-    docObservers: new Map(),  // Document -> MutationObserver
-    sweep: null,              // interval id
-    debounce: new Map(),      // Document -> timeout id
+    // scanning/observing
+    observedDocs: new Set(),     // Set<Document>
+    docObservers: new Map(),     // Document -> MutationObserver
+    debounce: new Map(),         // Document -> timeout id
+    sweep: null
   });
 
   // =========================
@@ -85,14 +85,13 @@ comment: Solution-Button per Timer — onclick-Startbutton zeigt Prüfen zuverl�
   }
 
   // start modes:
-  // - immediate (default)
-  // - oncheck
-  // - onclick (manual start button)
+  // - immediate (default): timer startet sofort
+  // - oncheck: timer startet beim ersten "Prüfen"
+  // - onclick: erst "Timer starten" klicken => dann Prüfen sichtbar + timer läuft
   function parseStartMode(el){
     const v = (el.getAttribute("data-solution-timer-start") || "").trim().toLowerCase();
     if (v && /^(onclick|click|manual|startbutton|start-button|start_button)$/.test(v)) return "onclick";
     if (v && /^(oncheck|check|aftercheck|after-check|after_check)$/.test(v)) return "oncheck";
-    if (parseBool(el.getAttribute("data-solution-timer-after-check"), false)) return "oncheck"; // Alias
     return "immediate";
   }
 
@@ -144,7 +143,7 @@ comment: Solution-Button per Timer — onclick-Startbutton zeigt Prüfen zuverl�
   }
 
   // =========================
-  // Button-Finder
+  // Button-Finder (robust)
   // =========================
   function findSolutionButton(scope) {
     if (!scope) return null;
@@ -178,12 +177,12 @@ comment: Solution-Button per Timer — onclick-Startbutton zeigt Prüfen zuverl�
     return /(prüfen|pruefen|check)\b/.test(t);
   }
 
-  // Prüfen-Buttons "smart" finden: erst im selben Control-Panel wie der Auflösen-Button,
-  // dann hochwandern, dann notfalls im Dokument in der Nähe.
   function findCheckButtonsSmart(quizScope, solBtn){
-    const doc = (solBtn && solBtn.ownerDocument) ? solBtn.ownerDocument : (quizScope && quizScope.ownerDocument) ? quizScope.ownerDocument : ROOT_DOC;
-    const scopes = [];
+    const doc = (solBtn && solBtn.ownerDocument) ? solBtn.ownerDocument
+      : (quizScope && quizScope.ownerDocument) ? quizScope.ownerDocument
+      : ROOT_DOC;
 
+    const scopes = [];
     try { if (solBtn && solBtn.parentElement) scopes.push(solBtn.parentElement); } catch(e){}
     try { if (solBtn) {
       const near = solBtn.closest("div, li, section, article, main, lia-quiz, .lia-quiz");
@@ -191,17 +190,12 @@ comment: Solution-Button per Timer — onclick-Startbutton zeigt Prüfen zuverl�
     }} catch(e){}
     if (quizScope) scopes.push(quizScope);
 
-    // hochwandern ab solBtn
     try{
       let p = solBtn ? solBtn.parentElement : null;
       let steps = 0;
-      while (p && steps++ < 6){
-        scopes.push(p);
-        p = p.parentElement;
-      }
+      while (p && steps++ < 6){ scopes.push(p); p = p.parentElement; }
     }catch(e){}
 
-    // unique
     const uniq = [];
     const seen = new Set();
     for (const s of scopes){
@@ -217,23 +211,21 @@ comment: Solution-Button per Timer — onclick-Startbutton zeigt Prüfen zuverl�
       }catch(e){}
     }
 
-    // fallback: im ganzen Dokument – aber nur die ersten N (und später per show/hide mit restore)
     try{
       const all = Array.from(doc.querySelectorAll("button, input[type='button'], a")).filter(isCheckBtn);
-      return all.slice(0, 6);
+      return all.slice(0, 8);
     }catch(e){}
     return [];
   }
 
   // =========================
-  // Hide/Show helpers (robust)
+  // Hide/Show Prüfen robust
   // =========================
   function hardHideBtn(b){
     if (!b || !b.style) return;
     if (b.dataset.__solTimerChkHidden === "1") return;
     b.dataset.__solTimerChkHidden = "1";
     b.dataset.__solTimerPrevDisplayChk = b.style.display || "";
-    // nicht auf "hidden" vertrauen, aber falls gesetzt: merken & entfernen/setzen wir beim Show
     b.dataset.__solTimerPrevHiddenAttr = b.hasAttribute("hidden") ? "1" : "0";
     b.style.display = "none";
     b.setAttribute("hidden", "");
@@ -241,15 +233,11 @@ comment: Solution-Button per Timer — onclick-Startbutton zeigt Prüfen zuverl�
 
   function hardShowBtn(b){
     if (!b || !b.style) return;
-    if (b.dataset.__solTimerChkHidden !== "1") {
-      // Falls LiaScript selbst "hidden" gesetzt hatte, respektieren wir das
-      return;
-    }
+    if (b.dataset.__solTimerChkHidden !== "1") return;
     b.style.display = b.dataset.__solTimerPrevDisplayChk || "";
     delete b.dataset.__solTimerPrevDisplayChk;
     delete b.dataset.__solTimerChkHidden;
 
-    // hidden-Attr nur entfernen, wenn wir es gesetzt haben
     if (b.dataset.__solTimerPrevHiddenAttr === "0") b.removeAttribute("hidden");
     delete b.dataset.__solTimerPrevHiddenAttr;
   }
@@ -290,7 +278,7 @@ comment: Solution-Button per Timer — onclick-Startbutton zeigt Prüfen zuverl�
   }
 
   // =========================
-  // Manual Start UI (onclick)
+  // onclick Startbutton
   // =========================
   function ensureStartButton(quizScope, doc, label){
     try{
@@ -309,14 +297,17 @@ comment: Solution-Button per Timer — onclick-Startbutton zeigt Prüfen zuverl�
   }
 
   // =========================
-  // Core: arm timer on element
+  // Try-arm: NUR wenn Buttons existieren!
   // =========================
-  function armTimerOnElement(el) {
-    const ms = parseTimeToMs(el.getAttribute("data-solution-timer"));
-    if (ms <= 0) return;
+  function tryArmTimer(el){
+    // schon armed?
+    if (el.dataset.__solTimerArmed === "1") return true;
 
-    const showBadge = parseBool(el.getAttribute("data-solution-timer-badge"), true);
+    const ms = parseTimeToMs(el.getAttribute("data-solution-timer"));
+    if (ms <= 0) return false;
+
     const startMode = parseStartMode(el);
+    const showBadge = parseBool(el.getAttribute("data-solution-timer-badge"), true);
 
     const quizScope =
       (el.matches("lia-quiz, .lia-quiz") ? el : null) ||
@@ -325,16 +316,25 @@ comment: Solution-Button per Timer — onclick-Startbutton zeigt Prüfen zuverl�
       el;
 
     const solBtn = findSolutionButton(quizScope);
-    if (!solBtn) return;
 
-    if (solBtn.dataset.__solTimerArmed === "1") return;
+    // CRITICAL: Wenn solBtn noch nicht existiert (typisch: Folie noch nicht aktiv), NICHT als seen/armed markieren!
+    if (!solBtn) return false;
+
+    // Doppelsicherung: Lösung-Button selbst nicht mehrfach anfassen
+    if (solBtn.dataset.__solTimerArmed === "1") {
+      el.dataset.__solTimerArmed = "1";
+      return true;
+    }
+
+    const doc = solBtn.ownerDocument || ROOT_DOC;
+
+    // Lösung-Button verstecken
     solBtn.dataset.__solTimerArmed = "1";
-
-    // Lösung-Button sofort verstecken
     solBtn.dataset.__solTimerPrevDisplay = solBtn.style.display || "";
     solBtn.style.display = "none";
 
-    const doc = solBtn.ownerDocument || ROOT_DOC;
+    // Element als armed markieren (erst jetzt!)
+    el.dataset.__solTimerArmed = "1";
 
     function createBadge(){
       const b = doc.createElement("span");
@@ -342,7 +342,7 @@ comment: Solution-Button per Timer — onclick-Startbutton zeigt Prüfen zuverl�
       return b;
     }
 
-    // ---------- immediate ----------
+    // immediate
     if (startMode === "immediate") {
       let badge = null;
       if (showBadge) {
@@ -352,10 +352,10 @@ comment: Solution-Button per Timer — onclick-Startbutton zeigt Prüfen zuverl�
         if (parent) parent.appendChild(badge);
       }
       scheduleReveal(solBtn, badge, ms);
-      return;
+      return true;
     }
 
-    // ---------- oncheck ----------
+    // oncheck
     if (startMode === "oncheck") {
       let started = false;
       let badge = null;
@@ -374,44 +374,35 @@ comment: Solution-Button per Timer — onclick-Startbutton zeigt Prüfen zuverl�
         scheduleReveal(solBtn, badge, ms);
       }
 
-      const checkBtns = findCheckButtonsSmart(quizScope, solBtn);
-      if (checkBtns[0] && checkBtns[0].dataset.__solTimerHooked !== "1") {
-        checkBtns[0].dataset.__solTimerHooked = "1";
-        checkBtns[0].addEventListener("click", startNow, { once: true, passive: true });
-        return;
-      }
-
-      if (quizScope && quizScope.nodeType === 1 && quizScope.dataset.__solTimerDelegated !== "1") {
+      // Button evtl. existiert erst beim Aktivieren — aber ab hier sind wir already in "armed", weil solBtn existiert
+      const checks = findCheckButtonsSmart(quizScope, solBtn);
+      if (checks[0] && checks[0].dataset.__solTimerHooked !== "1") {
+        checks[0].dataset.__solTimerHooked = "1";
+        checks[0].addEventListener("click", startNow, { once: true, passive: true });
+      } else if (quizScope && quizScope.nodeType === 1 && quizScope.dataset.__solTimerDelegated !== "1") {
         quizScope.dataset.__solTimerDelegated = "1";
         quizScope.addEventListener("click", (ev) => {
           if (started) return;
           const t = ev.target;
           if (!t || !t.closest) return;
           const b = t.closest("button, input[type='button'], a");
-          if (!b) return;
-          if (isCheckBtn(b)) startNow();
+          if (b && isCheckBtn(b)) startNow();
         }, { capture: true, passive: true });
       }
-      return;
+      return true;
     }
 
-    // ---------- onclick (manual start) ----------
+    // onclick: "Timer starten" => dann Prüfen sichtbar + Timer läuft
     if (startMode === "onclick") {
-      // Marker: noch nicht gestartet (wichtig für spätere Scans!)
       el.dataset.__solTimerStarted = "0";
 
-      // Check-Buttons (sobald vorhanden) verstecken
+      // Prüfen verstecken (falls vorhanden)
       hideCheckButtons(findCheckButtonsSmart(quizScope, solBtn));
 
-      // Startbutton einfügen (in der Nähe der Kontrollleiste)
       const label = el.getAttribute("data-solution-timer-start-label") || "Timer starten";
       const startBtn = ensureStartButton(quizScope, doc, label);
 
-      // Host: bevorzugt das Panel rund um solBtn (weil da sicher "sein" Quiz ist)
-      const host =
-        (solBtn.parentElement) ||
-        (quizScope && quizScope.nodeType === 1 ? quizScope : null);
-
+      const host = (solBtn.parentElement) || (quizScope && quizScope.nodeType === 1 ? quizScope : null);
       if (host && !startBtn.isConnected) {
         if (host.firstChild) host.insertBefore(startBtn, host.firstChild);
         else host.appendChild(startBtn);
@@ -423,15 +414,13 @@ comment: Solution-Button per Timer — onclick-Startbutton zeigt Prüfen zuverl�
         started = true;
         el.dataset.__solTimerStarted = "1";
 
-        // Prüfen sichtbar machen (smart suchen!)
-        const btnsNow = findCheckButtonsSmart(quizScope, solBtn);
-        showCheckButtons(btnsNow);
+        // Prüfen sichtbar machen (smart, mehrfach nachziehen)
+        const showNow = () => showCheckButtons(findCheckButtonsSmart(quizScope, solBtn));
+        showNow();
+        setTimeout(showNow, 50);
+        setTimeout(showNow, 250);
 
-        // Zusätzlich: noch 2 Nachläufe (falls LiaScript erst nach Klick rendert/umbaute)
-        setTimeout(() => showCheckButtons(findCheckButtonsSmart(quizScope, solBtn)), 50);
-        setTimeout(() => showCheckButtons(findCheckButtonsSmart(quizScope, solBtn)), 250);
-
-        // Badge erst nach Start (je nach setting)
+        // Badge erst nach Start
         let badge = null;
         if (showBadge) {
           badge = createBadge();
@@ -440,50 +429,51 @@ comment: Solution-Button per Timer — onclick-Startbutton zeigt Prüfen zuverl�
           if (parent) parent.appendChild(badge);
         }
 
-        // Startbutton weg
         try { startBtn.remove(); } catch(e){ startBtn.disabled = true; }
 
-        // Timer läuft
         scheduleReveal(solBtn, badge, ms);
       }, { passive: true });
 
-      return;
+      return true;
     }
+
+    return true;
   }
 
   // =========================
-  // Scan a document
+  // Scan Document:
+  // - versucht pending marker erneut (genau DAS ist der Fix für "nur erste Folie")
   // =========================
   function scanDoc(doc){
     try{
       if (!doc || !doc.documentElement) return;
       injectStyle(doc);
 
-      doc.querySelectorAll("[data-solution-timer]").forEach(el => {
-        // Schon gesehen?
-        if (el.dataset.__solTimerSeen === "1") {
-          // Bei onclick: solange nicht gestartet, weiterhin Prüfen verstecken (auch wenn später gerendert)
+      const list = Array.from(doc.querySelectorAll("[data-solution-timer]"));
+      for (const el of list) {
+        // already armed?
+        if (el.dataset.__solTimerArmed === "1") {
+          // onclick: solange nicht gestartet, weiterhin Prüfen verstecken (wenn Buttons später auftauchen)
           if (parseStartMode(el) === "onclick" && el.dataset.__solTimerStarted !== "1") {
             const quizScope =
               (el.matches("lia-quiz, .lia-quiz") ? el : null) ||
               el.querySelector?.("lia-quiz, .lia-quiz") ||
               el.closest?.("lia-quiz, .lia-quiz") ||
               el;
-
             const solBtn = findSolutionButton(quizScope);
             if (solBtn) hideCheckButtons(findCheckButtonsSmart(quizScope, solBtn));
           }
-          return;
+          continue;
         }
 
-        el.dataset.__solTimerSeen = "1";
-        armTimerOnElement(el);
-      });
+        // PENDING: versuche zu armen; wenn noch nicht möglich => bleibt pending und wird später erneut versucht
+        tryArmTimer(el);
+      }
     }catch(e){}
   }
 
   // =========================
-  // Observe a document (MutationObserver)
+  // Observe Documents + iframes (same-origin)
   // =========================
   function observeDoc(doc){
     if (!doc || STORE.observedDocs.has(doc)) return;
@@ -498,15 +488,11 @@ comment: Solution-Button per Timer — onclick-Startbutton zeigt Prüfen zuverl�
         const t = ROOT_WIN.setTimeout(() => scanDoc(doc), 50);
         STORE.debounce.set(doc, t);
       });
-
       mo.observe(doc.documentElement, { childList: true, subtree: true });
       STORE.docObservers.set(doc, mo);
     }catch(e){}
   }
 
-  // =========================
-  // Collect same-origin iframe documents (recursive)
-  // =========================
   function collectDocs(startDoc, out, depth){
     if (!startDoc || depth < 0) return;
     out.add(startDoc);
@@ -527,11 +513,14 @@ comment: Solution-Button per Timer — onclick-Startbutton zeigt Prüfen zuverl�
 
   function observeAll(){
     const docs = new Set();
-    collectDocs(ROOT_DOC, docs, 3);
-    try { collectDocs(document, docs, 2); } catch(e){}
+    collectDocs(ROOT_DOC, docs, 4);
+    try { collectDocs(document, docs, 3); } catch(e){}
     for (const d of docs) observeDoc(d);
   }
 
+  // =========================
+  // Slide-Wechsel Trigger + Sweeper
+  // =========================
   function rescanSoon(){
     observeAll();
     ROOT_WIN.setTimeout(observeAll, 0);
@@ -545,7 +534,8 @@ comment: Solution-Button per Timer — onclick-Startbutton zeigt Prüfen zuverl�
   }catch(e){}
 
   if (!STORE.sweep){
-    STORE.sweep = ROOT_WIN.setInterval(observeAll, 700);
+    // Sweeper ist hier wichtig, weil Folien oft ohne hashchange umgebaut werden.
+    STORE.sweep = ROOT_WIN.setInterval(observeAll, 600);
   }
 
   rescanSoon();
@@ -553,7 +543,6 @@ comment: Solution-Button per Timer — onclick-Startbutton zeigt Prüfen zuverl�
 })();
 @end
 -->
-
 
 
 

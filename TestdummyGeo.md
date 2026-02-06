@@ -14,15 +14,31 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/REA
 # SchulLia-Tests
 
 
-
 <!-- data-solution-timer="10s" -->
 2+3 = [[ 5 ]]
+
+
+Manueller Start nach erstem Prüfen
 
 <!-- data-solution-timer="15s" data-solution-timer-start="oncheck" -->
 7+8 = [[ 15 ]]
 
+
+Manueller Start nach erstem Prüfen (Timer nicht sichtbar)
+
 <!-- data-solution-timer="10s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->
 9+6 = [[ 15 ]]
+
+
+Manueller Startbutton (Prüfen erscheint erst nach Klick)
+
+<!-- data-solution-timer="10s" data-solution-timer-start="onclick" -->
+9+6 = [[ 15 ]]
+
+Manueller Startbutton ohne Badge
+
+<!-- data-solution-timer="10s" data-solution-timer-start="onclick" data-solution-timer-badge="off" -->
+5+5 = [[ 10 ]]
 
 
 
