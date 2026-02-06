@@ -2,7 +2,7 @@
 version:  0.0.1
 language: de
 author: Martin Lommatzsch
-comment: Solution-Button per Timer — per-Folie init (kein ROOT-Guard) + pending-arm + onclick/oncheck + optional Badge — alles in @onload
+comment: Solution-Button per Timer — per-Folie init + pending-arm + onclick/oncheck + Badge optional — KEINE doppelten Timerfelder — alles in @onload
 
 @onload
 (function () {
@@ -11,7 +11,7 @@ comment: Solution-Button per Timer — per-Folie init (kein ROOT-Guard) + pendin
   const DOC = document;
 
   // =========================
-  // Per-Window/Folie Guard  ✅ (wichtig!)
+  // Per-Window/Folie Guard
   // =========================
   const GUARD = "__LIA_SOLUTION_TIMER_V0_0_1__";
   if (WIN[GUARD]) return;
@@ -48,6 +48,7 @@ comment: Solution-Button per Timer — per-Folie init (kein ROOT-Guard) + pendin
   function injectStyleIntoRoot(root){
     try{
       if (!root) return;
+
       // Document
       if (root.nodeType === 9) {
         const doc = root;
@@ -59,16 +60,16 @@ comment: Solution-Button per Timer — per-Folie init (kein ROOT-Guard) + pendin
         doc.head.appendChild(st);
         return;
       }
+
       // ShadowRoot / DocumentFragment
       if (root.nodeType === 11 && root.host) {
-        // avoid duplicates
         if (root.querySelector && root.querySelector(`style[data-id="${STYLE_ID}"]`)) return;
         const st = DOC.createElement("style");
         st.setAttribute("data-id", STYLE_ID);
         st.textContent = CSS;
         root.appendChild(st);
       }
-    } catch(e){}
+    }catch(e){}
   }
 
   // =========================
@@ -147,12 +148,11 @@ comment: Solution-Button per Timer — per-Folie init (kein ROOT-Guard) + pendin
   }
 
   // =========================
-  // Smart finders (arbeiten im RootNode: Document oder ShadowRoot)
+  // Smart finders (RootNode: Document oder ShadowRoot)
   // =========================
   function findSolutionButtonSmart(el){
     const root = el.getRootNode ? el.getRootNode() : DOC;
 
-    // Candidate scopes: quizScope / ancestors
     const scopes = [];
     const quizScope =
       (el.matches && (el.matches("lia-quiz, .lia-quiz") ? el : null)) ||
@@ -170,10 +170,8 @@ comment: Solution-Button per Timer — per-Folie init (kein ROOT-Guard) + pendin
       }catch(e){}
     }
 
-    // fallback: im RootNode
     try{
       const btns = root.querySelectorAll ? Array.from(root.querySelectorAll("button, input[type='button'], a")).filter(isSolutionBtn) : [];
-      // nimm den letzten sichtbaren
       for (let i = btns.length - 1; i >= 0; i--){
         const b = btns[i];
         if (b && b.getClientRects && b.getClientRects().length) return b;
@@ -187,6 +185,7 @@ comment: Solution-Button per Timer — per-Folie init (kein ROOT-Guard) + pendin
     const root = (el.getRootNode ? el.getRootNode() : DOC);
     const scopes = [];
     if (solBtn && solBtn.parentElement) scopes.push(solBtn.parentElement);
+
     const quizScope =
       (el.matches && (el.matches("lia-quiz, .lia-quiz") ? el : null)) ||
       (el.closest ? el.closest("lia-quiz, .lia-quiz") : null) ||
@@ -208,6 +207,30 @@ comment: Solution-Button per Timer — per-Folie init (kein ROOT-Guard) + pendin
       return all.slice(0, 8);
     }catch(e){}
     return [];
+  }
+
+  // =========================
+  // UI Host + Cleanup (✅ verhindert doppelte Timerfelder)
+  // =========================
+  function getUiHost(el, solBtn){
+    // möglichst stabil: container der Control-Leiste
+    const quizScope =
+      (el.closest ? el.closest("lia-quiz, .lia-quiz") : null) || null;
+
+    return (
+      (solBtn && solBtn.parentElement) ||
+      (solBtn && solBtn.closest && solBtn.closest("div, p, li, section, article")) ||
+      quizScope ||
+      el.parentElement ||
+      (solBtn && solBtn.ownerDocument ? solBtn.ownerDocument.body : DOC.body)
+    );
+  }
+
+  function cleanupTimerUI(host){
+    if (!host || !host.querySelectorAll) return;
+    // löscht ALLE unsere Timer-UI im selben Host (Badge + Startbutton)
+    host.querySelectorAll("[data-sol-timer-badge='1']").forEach(n => { try{ n.remove(); }catch(e){} });
+    host.querySelectorAll("[data-sol-timer-startbtn='1']").forEach(n => { try{ n.remove(); }catch(e){} });
   }
 
   // =========================
@@ -267,31 +290,7 @@ comment: Solution-Button per Timer — per-Folie init (kein ROOT-Guard) + pendin
   }
 
   // =========================
-  // Start button
-  // =========================
-  function ensureStartButton(el, solBtn, label){
-    const doc = solBtn.ownerDocument || DOC;
-    const host = solBtn.parentElement || el.parentElement || doc.body;
-
-    // avoid dup
-    try{
-      const existing = host.querySelector && host.querySelector("button[data-sol-timer-startbtn='1']");
-      if (existing) return existing;
-    }catch(e){}
-
-    const b = doc.createElement("button");
-    b.type = "button";
-    b.textContent = label || "Timer starten";
-    b.className = "lia-btn lia-sol-timer-startbtn";
-    b.setAttribute("data-sol-timer-startbtn", "1");
-    // minimal fallback styling
-    b.style.marginRight = ".6rem";
-    host.insertBefore(b, host.firstChild);
-    return b;
-  }
-
-  // =========================
-  // ARM (pending, wird wiederholt versucht)
+  // ARM (pending, wiederholt versucht)
   // =========================
   function tryArm(el){
     if (el.dataset.__solTimerArmed === "1") return true;
@@ -303,19 +302,23 @@ comment: Solution-Button per Timer — per-Folie init (kein ROOT-Guard) + pendin
     const showBadge = parseBool(el.getAttribute("data-solution-timer-badge"), true);
 
     const solBtn = findSolutionButtonSmart(el);
-    if (!solBtn) return false; // noch nicht gerendert => pending lassen
+    if (!solBtn) return false; // pending
 
-    // Lösung-Button verstecken + armed markieren (erst jetzt!)
+    const doc = solBtn.ownerDocument || DOC;
+    const host = getUiHost(el, solBtn);
+
+    // ✅ wichtig: alte UI im selben Host weg, damit nichts doppelt bleibt
+    cleanupTimerUI(host);
+
+    // Lösung-Button verstecken + armed markieren
     solBtn.dataset.__solTimerPrevDisplay = solBtn.style.display || "";
     solBtn.style.display = "none";
     el.dataset.__solTimerArmed = "1";
 
-    const doc = solBtn.ownerDocument || DOC;
-    const parent = solBtn.parentElement || el.parentElement;
-
     const makeBadge = () => {
       const badge = doc.createElement("span");
       badge.className = "lia-sol-timer-badge";
+      badge.setAttribute("data-sol-timer-badge", "1");
       return badge;
     };
 
@@ -325,7 +328,7 @@ comment: Solution-Button per Timer — per-Folie init (kein ROOT-Guard) + pendin
       if (showBadge) {
         badge = makeBadge();
         badge.textContent = `Lösung in ${formatRemaining(ms)}`;
-        if (parent) parent.appendChild(badge);
+        host.appendChild(badge);
       }
       scheduleReveal(solBtn, badge, ms);
       return true;
@@ -335,11 +338,13 @@ comment: Solution-Button per Timer — per-Folie init (kein ROOT-Guard) + pendin
     if (startMode === "oncheck") {
       let started = false;
       let badge = null;
+
       if (showBadge) {
         badge = makeBadge();
         badge.textContent = `Timer startet nach Prüfen`;
-        if (parent) parent.appendChild(badge);
+        host.appendChild(badge);
       }
+
       const startNow = () => {
         if (started) return;
         started = true;
@@ -353,10 +358,9 @@ comment: Solution-Button per Timer — per-Folie init (kein ROOT-Guard) + pendin
         checks[0].addEventListener("click", startNow, { once: true, passive: true });
       } else {
         // delegated
-        const scope = parent || doc.body;
-        if (scope && scope.dataset.__solTimerDelegated !== "1") {
-          scope.dataset.__solTimerDelegated = "1";
-          scope.addEventListener("click", (ev) => {
+        if (host && host.dataset.__solTimerDelegated !== "1") {
+          host.dataset.__solTimerDelegated = "1";
+          host.addEventListener("click", (ev) => {
             const t = ev.target;
             if (!t || !t.closest) return;
             const b = t.closest("button, input[type='button'], a");
@@ -374,7 +378,14 @@ comment: Solution-Button per Timer — per-Folie init (kein ROOT-Guard) + pendin
       const checksNow = findCheckButtonsSmart(el, solBtn);
       hideChecks(checksNow);
 
-      const startBtn = ensureStartButton(el, solBtn, el.getAttribute("data-solution-timer-start-label") || "Timer starten");
+      const startBtn = doc.createElement("button");
+      startBtn.type = "button";
+      startBtn.textContent = el.getAttribute("data-solution-timer-start-label") || "Timer starten";
+      startBtn.className = "lia-btn lia-sol-timer-startbtn";
+      startBtn.setAttribute("data-sol-timer-startbtn", "1");
+
+      // (nach cleanup) genau einmal rein
+      host.insertBefore(startBtn, host.firstChild);
 
       startBtn.addEventListener("click", () => {
         if (el.dataset.__solTimerStarted === "1") return;
@@ -385,12 +396,18 @@ comment: Solution-Button per Timer — per-Folie init (kein ROOT-Guard) + pendin
 
         let badge = null;
         if (showBadge) {
+          // nochmals cleanup, falls LiaScript beim Klick neu rendert
+          cleanupTimerUI(host);
           badge = makeBadge();
           badge.textContent = `Lösung in ${formatRemaining(ms)}`;
-          if (parent) parent.appendChild(badge);
+          host.appendChild(badge);
+        } else {
+          // ohne badge trotzdem start button weg
+          try { startBtn.remove(); } catch(e){ startBtn.disabled = true; }
         }
 
         try { startBtn.remove(); } catch(e){ startBtn.disabled = true; }
+
         scheduleReveal(solBtn, badge, ms);
       }, { passive: true });
 
@@ -406,9 +423,8 @@ comment: Solution-Button per Timer — per-Folie init (kein ROOT-Guard) + pendin
   function getShadowRoots(root){
     const roots = [];
     try{
-      const start = (root.nodeType === 9) ? root.documentElement : root; // Document -> element
+      const start = (root.nodeType === 9) ? root.documentElement : root;
       if (!start) return roots;
-
       const walker = DOC.createTreeWalker(start, NodeFilter.SHOW_ELEMENT, null);
       let node = walker.currentNode;
       while (node) {
@@ -436,7 +452,6 @@ comment: Solution-Button per Timer — per-Folie init (kein ROOT-Guard) + pendin
   // Scan (Document + ShadowRoots)
   // =========================
   function scanAll(){
-    // document + shadow roots
     const roots = [DOC, ...getShadowRoots(DOC)];
     for (const r of roots) {
       observeRoot(r);
@@ -447,9 +462,8 @@ comment: Solution-Button per Timer — per-Folie init (kein ROOT-Guard) + pendin
       }catch(e){}
 
       for (const el of els){
-        // already armed?
         if (el.dataset.__solTimerArmed === "1") {
-          // onclick: solange nicht gestartet => Prüfen weiterhin verstecken, falls später gerendert
+          // onclick: solange nicht gestartet => Prüfen weiter verstecken (wenn Buttons später auftauchen)
           if (parseStartMode(el) === "onclick" && el.dataset.__solTimerStarted !== "1") {
             const solBtn = findSolutionButtonSmart(el);
             if (solBtn) hideChecks(findCheckButtonsSmart(el, solBtn));
@@ -464,7 +478,6 @@ comment: Solution-Button per Timer — per-Folie init (kein ROOT-Guard) + pendin
   // init
   injectStyleIntoRoot(DOC);
   scanAll();
-  // nachziehen (LiaScript rendert gern zeitversetzt)
   setTimeout(scanAll, 0);
   setTimeout(scanAll, 120);
   setTimeout(scanAll, 500);
@@ -472,6 +485,8 @@ comment: Solution-Button per Timer — per-Folie init (kein ROOT-Guard) + pendin
 })();
 @end
 -->
+
+
 
 
 
