@@ -2,7 +2,7 @@
 version:  0.0.1
 language: de
 author: Martin Lommatzsch
-comment: TOC PDF-Bookmarks V5.8 — eigener Baum-TOC (▶/▼), import-sicher, CSS root+tocDoc-injected, Original-TOC sicher entfernt, Search überall in .lia-toc entfernt (Button bleibt)
+comment: TOC PDF-Bookmarks V5.9 — eigener Baum-TOC (▶/▼), import-sicher, Original-TOC+Search entfernt, Übersicht bleibt unten, Cleanup beim Übersicht-Klick & auf Overview-Root
 
 @onload
 (function () {
@@ -21,18 +21,36 @@ comment: TOC PDF-Bookmarks V5.8 — eigener Baum-TOC (▶/▼), import-sicher, C
   try { ROOT_DOC = ROOT.document; } catch(e){ ROOT = window; ROOT_DOC = document; }
 
   // =========================================================
-  // Run-once Registry (import-sicher)
+  // Run-once Registry (import-sicher) — aber "kickbar"
   // =========================================================
-  const REGKEY = "__LIA_BM_TOC5_V58__";
-  if (ROOT[REGKEY] && ROOT[REGKEY].installed) return;
+  const REGKEY = "__LIA_BM_TOC5_V59__";
+  if (ROOT[REGKEY] && ROOT[REGKEY].installed) {
+    try { ROOT[REGKEY].kick && ROOT[REGKEY].kick(); } catch(e){}
+    return;
+  }
   ROOT[REGKEY] = ROOT[REGKEY] || {};
   ROOT[REGKEY].installed = true;
 
   // =========================================================
-  // CSS Injection (immer in dem Document, wo .lia-toc wirklich liegt)
+  // CSS Injection (immer in toc.ownerDocument)
   // =========================================================
   const STYLE_ID = "lia-bm-toc5-style";
   const CSS_TEXT = `
+/* ===== Aktiv nur wenn Klasse gesetzt ===== */
+.lia-toc.lia-bm-toc5-active{
+  display:flex !important;
+  flex-direction:column !important;
+  min-height:0 !important;
+}
+.lia-toc.lia-bm-toc5-active #lia-bm-toc5{
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow: auto !important;
+}
+.lia-toc.lia-bm-toc5-active .lia-bm-overview-pin{
+  margin-top: auto !important;
+}
+
 /* ===== Bookmarks TOC ===== */
 .lia-toc #lia-bm-toc5{ padding:.25em 0 .5em 0; }
 
@@ -55,8 +73,7 @@ comment: TOC PDF-Bookmarks V5.8 — eigener Baum-TOC (▶/▼), import-sicher, C
 .lia-toc #lia-bm-toc5 .bm-toggle{
   border:0; background:transparent; color:inherit;
   cursor:pointer; padding:0; opacity:.9;
-  font-size: .95em;
-  line-height: 1;
+  font-size:.95em; line-height:1;
 }
 .lia-toc #lia-bm-toc5 .bm-toggle:hover{ opacity:1; }
 
@@ -70,7 +87,7 @@ comment: TOC PDF-Bookmarks V5.8 — eigener Baum-TOC (▶/▼), import-sicher, C
 .lia-toc #lia-bm-toc5 .bm-children{ padding-left: 0.5em; }
 .lia-toc #lia-bm-toc5 .bm-hidden{ display:none !important; }
 
-/* ===== Active in Themefarbe ===== */
+/* Active in Themefarbe */
 .lia-toc #lia-bm-toc5 .bm-row.bm-active{
   background: rgba(0,0,0,.14);
   background: rgba(var(--color-highlight), .18);
@@ -80,7 +97,7 @@ comment: TOC PDF-Bookmarks V5.8 — eigener Baum-TOC (▶/▼), import-sicher, C
 }
 .lia-toc #lia-bm-toc5 .bm-row.bm-active a{ font-weight: 700; }
 
-/* Level-Optik (Werte wie bei dir) */
+/* Level-Optik (deine Werte) */
 .lia-toc #lia-bm-toc5 .bm-row[data-level="1"] a{ font-size:1.25em; font-weight:700; }
 .lia-toc #lia-bm-toc5 .bm-row[data-level="2"] a{ font-size:1.00em; font-weight:700; }
 .lia-toc #lia-bm-toc5 .bm-row[data-level="3"] a{ font-size:.9em;  font-weight:700; }
@@ -88,7 +105,7 @@ comment: TOC PDF-Bookmarks V5.8 — eigener Baum-TOC (▶/▼), import-sicher, C
 .lia-toc #lia-bm-toc5 .bm-row[data-level="5"] a{ font-size:.75em; font-weight:700; }
 .lia-toc #lia-bm-toc5 .bm-row[data-level="6"] a{ font-size:.7em;  font-weight:700; }
 
-/* ===== Search überall in .lia-toc verstecken (aber nicht in unserem Baum) ===== */
+/* Search überall in .lia-toc verstecken (aber nicht in unserem Baum) */
 .lia-toc :not(#lia-bm-toc5) input[type="search"],
 .lia-toc :not(#lia-bm-toc5) input[placeholder*="Suche"],
 .lia-toc :not(#lia-bm-toc5) input[placeholder*="suche"],
@@ -139,7 +156,23 @@ comment: TOC PDF-Bookmarks V5.8 — eigener Baum-TOC (▶/▼), import-sicher, C
   }
 
   // =========================================================
-  // Helpers
+  // Route: Overview-Root?
+  // =========================================================
+  function isOverviewRoot(){
+    try{
+      const u = new URL(ROOT.location.href);
+      const p = (u.pathname || "").replace(/\/+$/,"/"); // normalize
+      const isNightly = /\/nightly\/$/.test(p);
+      const isCourse  = /\/course\/$/.test(p);
+      const noQuery = !u.search || u.search === "";
+      return (isNightly || isCourse) && noQuery;
+    } catch(e){
+      return false;
+    }
+  }
+
+  // =========================================================
+  // Helpers (TOC)
   // =========================================================
   function findTOC(){
     return (ROOT_DOC && ROOT_DOC.querySelector ? ROOT_DOC.querySelector(".lia-toc") : null)
@@ -306,22 +339,17 @@ comment: TOC PDF-Bookmarks V5.8 — eigener Baum-TOC (▶/▼), import-sicher, C
 
   function killSearchAnywhere(toc){
     if (!toc) return;
-
     try{
-      // Inputs
       Array.from(toc.querySelectorAll("input"))
         .filter(inp => !inp.closest("#lia-bm-toc5"))
         .forEach(inp => {
           if (!looksLikeSearchInput(inp)) return;
-
           const wrap =
             inp.closest('form,[role="search"],[class*="search"],[id*="search"],div,label') || inp;
-
           wrap.style.display = "none";
           wrap.setAttribute("data-lia-bm-hidden","1");
         });
 
-      // role=search Container
       Array.from(toc.querySelectorAll('form[role="search"],[role="search"]'))
         .filter(el => !el.closest("#lia-bm-toc5"))
         .forEach(el => {
@@ -329,17 +357,63 @@ comment: TOC PDF-Bookmarks V5.8 — eigener Baum-TOC (▶/▼), import-sicher, C
           el.setAttribute("data-lia-bm-hidden","1");
         });
 
-      // class/id contains "search" (nur wenn Input drin)
       Array.from(toc.querySelectorAll('[class*="search"],[id*="search"]'))
         .filter(el => !el.closest("#lia-bm-toc5"))
         .forEach(el => {
-          const hasInput = !!el.querySelector("input");
-          if (!hasInput) return;
+          if (!el.querySelector("input")) return;
           el.style.display = "none";
           el.setAttribute("data-lia-bm-hidden","1");
         });
-
     } catch(e){}
+  }
+
+  // =========================================================
+  // Übersicht finden & unten pinnen
+  // =========================================================
+  function findOverviewControl(toc){
+    if (!toc) return null;
+
+    // Kandidaten: a/button mit Text "Übersicht"
+    const cand = Array.from(toc.querySelectorAll("a,button"))
+      .filter(el => !el.closest("#lia-bm-toc5"));
+
+    // 1) Textmatch
+    for (const el of cand){
+      const t = (el.textContent || "").trim().toLowerCase();
+      if (t === "übersicht" || t === "uebersicht" || t === "overview") return el;
+    }
+
+    // 2) href zeigt auf /nightly/ oder /course/ Root
+    for (const el of cand){
+      if (!el.getAttribute) continue;
+      const href = (el.getAttribute("href") || "").trim();
+      if (!href) continue;
+      if (href === "/nightly/" || href === "/course/" ||
+          href.endsWith("/nightly/") || href.endsWith("/course/")) {
+        return el;
+      }
+    }
+
+    return null;
+  }
+
+  // direct child of toc (damit margin-top:auto greift)
+  function directChildOfTOC(el, toc){
+    if (!el || !toc) return null;
+    let n = el;
+    while (n && n.parentElement && n.parentElement !== toc) n = n.parentElement;
+    return (n && n.parentElement === toc) ? n : null;
+  }
+
+  function pinOverviewBottom(toc, overviewEl){
+    if (!toc) return null;
+    if (!overviewEl) return null;
+
+    const child = directChildOfTOC(overviewEl, toc) || overviewEl;
+    try{
+      child.classList.add("lia-bm-overview-pin");
+    } catch(e){}
+    return child;
   }
 
   // =========================================================
@@ -361,16 +435,17 @@ comment: TOC PDF-Bookmarks V5.8 — eigener Baum-TOC (▶/▼), import-sicher, C
     return as.some(a => !a.closest("#lia-bm-toc5") && isRealHashLink(a));
   }
 
-  function hideOriginalNavigation(toc, toolbar, box){
+  function hideOriginalNavigation(toc, toolbar, box, keepEl){
     if (!toc) return;
 
-    // 1) direkte Kinder, die Original-Hashlinks enthalten -> weg
+    // direkte Kinder, die Original-Hashlinks enthalten -> weg (außer keep)
     try{
       const kids = Array.from(toc.children || []);
       kids.forEach(ch => {
         if (!ch) return;
         if (toolbar && ch === toolbar) return;
         if (box && ch === box) return;
+        if (keepEl && ch === keepEl) return;
 
         if (elementContainsOriginalHashLinks(ch)){
           ch.style.display = "none";
@@ -379,20 +454,43 @@ comment: TOC PDF-Bookmarks V5.8 — eigener Baum-TOC (▶/▼), import-sicher, C
       });
     } catch(e){}
 
-    // 2) Fallback: tiefer liegende Listen/Wrapper mit Original-Hashlinks -> weg
+    // Fallback: tiefer liegende Wrapper/Listen -> weg (außer keep/toolbar/box)
     try{
       const cand = Array.from(toc.querySelectorAll("ul,ol,nav,section,div"))
         .filter(el => !el.closest("#lia-bm-toc5"))
         .filter(el => !(toolbar && el.closest && el.closest(".lia-toolbar")))
+        .filter(el => !(keepEl && keepEl.contains && keepEl.contains(el)))
         .filter(el => elementContainsOriginalHashLinks(el));
 
-      // nur die "obersten" Kandidaten verstecken, um nicht doppelt zu arbeiten
       cand.forEach(el => {
         const parent = el.parentElement;
         if (parent && cand.includes(parent)) return;
         el.style.display = "none";
         el.setAttribute("data-lia-bm-hidden","1");
       });
+    } catch(e){}
+  }
+
+  // =========================================================
+  // Cleanup: Baum + Klassen + Hides entfernen
+  // =========================================================
+  function cleanup(toc){
+    try{
+      if (!toc) return;
+
+      // Box raus
+      const box = toc.querySelector("#lia-bm-toc5");
+      if (box) box.remove();
+
+      // Hides zurück
+      unhideAllHidden(toc);
+
+      // Klassen zurück
+      toc.classList.remove("lia-bm-toc5-active");
+      try{
+        toc.querySelectorAll(".lia-bm-overview-pin").forEach(el => el.classList.remove("lia-bm-overview-pin"));
+      } catch(e){}
+
     } catch(e){}
   }
 
@@ -412,7 +510,6 @@ comment: TOC PDF-Bookmarks V5.8 — eigener Baum-TOC (▶/▼), import-sicher, C
 
       const hasKids = n.children && n.children.length;
       let childWrap = null;
-
       const mustOpen = (forceOpen && forceOpen.has(n.key)) || (state[n.key] === 1);
 
       let btn = null;
@@ -510,20 +607,37 @@ comment: TOC PDF-Bookmarks V5.8 — eigener Baum-TOC (▶/▼), import-sicher, C
       const toc = findTOC();
       if (!toc) return false;
 
+      // Wenn wir auf Overview-Root sind: cleanup und fertig
+      if (isOverviewRoot()){
+        cleanup(toc);
+        return false;
+      }
+
       const TOC_DOC = toc.ownerDocument || ROOT_DOC || document;
 
-      // CSS wirklich dort injizieren, wo TOC gerendert wird
       ensureStyle(TOC_DOC);
       ensureStyle(ROOT_DOC);
       if (ROOT_DOC !== document) ensureStyle(document);
 
-      // alte Versteckungen zurücknehmen (neu-build sicher)
+      // Reset alter Zustände
       unhideAllHidden(toc);
-
-      // Search weg (egal wo es hängt)
       killSearchAnywhere(toc);
 
+      // Toolbar behalten (TOC-Button)
       const toolbar = toc.querySelector(".lia-toolbar");
+
+      // Overview-Button finden, pinnen und click-hook für cleanup
+      const overviewBtn = findOverviewControl(toc);
+      const overviewChild = pinOverviewBottom(toc, overviewBtn);
+
+      if (overviewBtn && !overviewBtn.getAttribute("data-lia-bm-hooked")){
+        overviewBtn.setAttribute("data-lia-bm-hooked","1");
+        overviewBtn.addEventListener("click", () => {
+          // Vor dem Wechsel: DOM-Reste entfernen
+          const t = findTOC();
+          if (t) cleanup(t);
+        }, true);
+      }
 
       // alten Baum entfernen
       const old = toc.querySelector("#lia-bm-toc5");
@@ -580,8 +694,11 @@ comment: TOC PDF-Bookmarks V5.8 — eigener Baum-TOC (▶/▼), import-sicher, C
       if (toolbar && toolbar.parentElement === toc) toolbar.insertAdjacentElement("afterend", box);
       else toc.insertBefore(box, toc.firstChild);
 
-      // Original-TOC wirklich entfernen (Button/Toolbar bleibt)
-      hideOriginalNavigation(toc, toolbar, box);
+      // Layout aktivieren (damit Übersicht unten bleibt)
+      toc.classList.add("lia-bm-toc5-active");
+
+      // Original-Navi weg (aber toolbar + box + overviewChild bleiben)
+      hideOriginalNavigation(toc, toolbar, box, overviewChild);
 
       saveState(state);
       return true;
@@ -621,23 +738,32 @@ comment: TOC PDF-Bookmarks V5.8 — eigener Baum-TOC (▶/▼), import-sicher, C
   const bootTimer = ROOT.setInterval(() => {
     tries++;
     const ok = enhance();
-    if (ok || tries > 140) ROOT.clearInterval(bootTimer);
+    if (ok || tries > 160) ROOT.clearInterval(bootTimer);
   }, 150);
 
-  // Rebuild, falls LiaScript TOC neu rendert (Sidebar zu/auf)
-  ROOT.setInterval(() => {
+  const interval = ROOT.setInterval(() => {
     const toc = findTOC();
     if (!toc) return;
 
-    // Search kill regelmäßig nachziehen (Lia kann UI neu einsetzen)
+    // Falls wir auf Overview-Root sind: sicher cleanup
+    if (isOverviewRoot()){
+      cleanup(toc);
+      return;
+    }
+
+    // Search wird von LiaScript gern nachgerendert
     killSearchAnywhere(toc);
 
     const box = toc.querySelector("#lia-bm-toc5");
-    if (!box) enhance();
-    else {
-      // Originale Liste sicher weg halten
+    if (!box) {
+      enhance();
+    } else {
+      // Original weg halten + Active sync
       const toolbar = toc.querySelector(".lia-toolbar");
-      hideOriginalNavigation(toc, toolbar, box);
+      const overviewBtn = findOverviewControl(toc);
+      const overviewChild = pinOverviewBottom(toc, overviewBtn);
+      hideOriginalNavigation(toc, toolbar, box, overviewChild);
+      toc.classList.add("lia-bm-toc5-active");
       syncActive(toc);
     }
   }, 700);
@@ -649,9 +775,19 @@ comment: TOC PDF-Bookmarks V5.8 — eigener Baum-TOC (▶/▼), import-sicher, C
     }, true);
   } catch(e){}
 
+  // expose for kick
+  ROOT[REGKEY].kick = function(){
+    try{
+      const toc = findTOC();
+      if (toc && !isOverviewRoot()) enhance();
+      if (toc && isOverviewRoot()) cleanup(toc);
+    } catch(e){}
+  };
+
 })();
 @end
 -->
+
 
 
 
