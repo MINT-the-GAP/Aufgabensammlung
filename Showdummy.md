@@ -236,6 +236,22 @@ __$a)\;\;$__ $\dfrac{7}{10}$
 
 
 
+### Timer bis Lösungzeigen
+
+> Beispiele:
+> - Sofortiger Start: `data-solution-timer="10s"`
+> - Start erst nach erstem Prüfen: `data-solution-timer="2min" data-solution-timer-start="oncheck"`
+> - ohne Badge: zusätzlich `data-solution-timer-badge="off"`
+
+<!-- data-solution-timer="10s" -->
+2+3 = [[ 5 ]]
+
+<!-- data-solution-timer="15s" data-solution-timer-start="oncheck" -->
+7+8 = [[ 15 ]]
+
+<!-- data-solution-timer="10s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->
+9+6 = [[ 15 ]]
+
 
 
 

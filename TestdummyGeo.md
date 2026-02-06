@@ -15,6 +15,19 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/REA
 
 
 
+<!-- data-solution-timer="10s" -->
+2+3 = [[ 5 ]]
+
+<!-- data-solution-timer="15s" data-solution-timer-start="oncheck" -->
+7+8 = [[ 15 ]]
+
+<!-- data-solution-timer="10s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->
+9+6 = [[ 15 ]]
+
+
+
+
+
 <section class="dynFlex">
 
 <div class="flex-child">

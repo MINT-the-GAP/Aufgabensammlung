@@ -12,6 +12,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MatheREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/NavigationREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/TimerREADME.md
 
 
 
@@ -25,6 +26,20 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 # Geo 3
+
+
+
+
+<!-- data-solution-timer="10s" -->
+2+3 = [[ 5 ]]
+
+<!-- data-solution-timer="15s" data-solution-timer-start="oncheck" -->
+7+8 = [[ 15 ]]
+
+<!-- data-solution-timer="10s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->
+9+6 = [[ 15 ]]
+
+
 
 
 <section class="dynFlex">
