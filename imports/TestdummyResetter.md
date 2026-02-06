@@ -2,15 +2,13 @@
 version:  0.0.1
 language: de
 author: Martin Lommatzsch
-comment: @resetter v0.0.1 — INLINE-Button (kein Overlay) => keine Folien-Sprünge; global capture stoppt Presentation-Advance; Quizzes: interner Lia-Reset (Toolbar-Leftover) + Baseline-Controls (native setter); [->[]]: Fragment/Details Reset (visible/current-fragment, open)
+comment: @resetter v0.0.1 — INLINE Button; verhindert Slide-Jump via Hash-Bounce; Quizzes: Toolbar-Reset + native Input-Restore; [->[]]: Segment-HTML Baseline-Restore
 
 @style
 :root{
-  /* LiaScript liefert oft "r,g,b" in --color-highlight */
   --lia-resetter-accent: rgb(var(--color-highlight, 11, 95, 255));
 }
 
-/* Inline-Resetbutton: max ~Fonthöhe, transparent, Rand+Schrift Themefarbe, kleiner Text */
 button.lia-resetter-btn{
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -44,7 +42,7 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
 
 
 @onload
-(function () {
+(function(){
 
   // =========================
   // Root/Content (iframe-safe)
@@ -66,9 +64,10 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
   // =========================
   const REGKEY = "__LIA_RESETTER_V001__";
   const REG = ROOT_WIN[REGKEY] || (ROOT_WIN[REGKEY] = {
-    docsInited: new WeakSet(),
     btnReady: new WeakSet(),
-    items: Object.create(null),        // id -> { baselineControls, baselineFragsReady }
+    docsInited: new WeakSet(),
+    // id -> baseline
+    base: Object.create(null),
     blockersInstalled: false,
     lastFire: 0
   });
@@ -125,14 +124,21 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
     return null;
   }
 
-  function collectSegment(startBtn){
+  function makeRange(startBtn, root, endEl){
+    const r = DOC.createRange();
+    r.setStartAfter(startBtn);
+    if (endEl) r.setEndBefore(endEl);
+    else r.setEnd(root, root.childNodes.length);
+    return r;
+  }
+
+  function collectSegmentNodes(startBtn){
     const root = getRootFor(startBtn);
     const endEl = findEndMarker(startBtn, root);
 
     const nodes = [];
     const w = DOC.createTreeWalker(root, NodeFilter.SHOW_ELEMENT, null);
     let node=null, started=false;
-
     while ((node = w.nextNode())){
       if (!started){
         if (node === startBtn) started=true;
@@ -141,45 +147,12 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
       if (endEl && node === endEl) break;
       nodes.push(node);
     }
-
     return { root, endEl, nodes };
   }
 
   // =========================
-  // Baseline Controls (gegen Geisterwerte)
+  // Baseline Capture: HTML + Controls
   // =========================
-  const INPUT_VALUE_SETTER = (() => { try { return Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,"value").set; } catch(e){ return null; } })();
-  const TA_VALUE_SETTER    = (() => { try { return Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype,"value").set; } catch(e){ return null; } })();
-  const INPUT_CHECKED_SETTER = (() => { try { return Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,"checked").set; } catch(e){ return null; } })();
-
-  function setNativeValue(el, v){
-    const val = (v == null) ? "" : String(v);
-
-    try{
-      if (el && el._valueTracker && typeof el._valueTracker.setValue === "function"){
-        el._valueTracker.setValue(el.value);
-      }
-    }catch(e){}
-
-    try{
-      if (el.tagName === "TEXTAREA" && TA_VALUE_SETTER) TA_VALUE_SETTER.call(el, val);
-      else if (el.tagName === "INPUT" && INPUT_VALUE_SETTER) INPUT_VALUE_SETTER.call(el, val);
-      else el.value = val;
-    }catch(e){ try{ el.value = val; }catch(_){ } }
-  }
-
-  function setNativeChecked(el, b){
-    const val = !!b;
-    try{
-      if (INPUT_CHECKED_SETTER) INPUT_CHECKED_SETTER.call(el, val);
-      else el.checked = val;
-    }catch(e){ try{ el.checked = val; }catch(_){ } }
-  }
-
-  function fire(el, type){
-    try{ el.dispatchEvent(new Event(type, { bubbles:true })); }catch(e){}
-  }
-
   function controlKey(el){
     const tag = el.tagName.toLowerCase();
     const type = (tag === "input") ? ((el.getAttribute("type") || el.type || "").toLowerCase()) : "";
@@ -218,6 +191,57 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
     return byKey;
   }
 
+  function captureBaseline(btn){
+    const id = btn.getAttribute("data-resetter-id") || "";
+    if (!id) return;
+
+    if (REG.base[id] && REG.base[id].html) return;
+
+    const seg = collectSegmentNodes(btn);
+    const r = makeRange(btn, seg.root, seg.endEl);
+
+    const frag = r.cloneContents();
+    const box = DOC.createElement("div");
+    box.appendChild(frag);
+
+    REG.base[id] = REG.base[id] || {};
+    REG.base[id].html = box.innerHTML;                 // für [->[]] & generell DOM-Reset
+    REG.base[id].controls = snapshotControls(seg.nodes); // für Geisterwerte
+  }
+
+  // =========================
+  // Restore Controls (native setter gegen Geister-7)
+  // =========================
+  const INPUT_VALUE_SETTER = (() => { try { return Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,"value").set; } catch(e){ return null; } })();
+  const TA_VALUE_SETTER    = (() => { try { return Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype,"value").set; } catch(e){ return null; } })();
+  const INPUT_CHECKED_SETTER = (() => { try { return Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,"checked").set; } catch(e){ return null; } })();
+
+  function setNativeValue(el, v){
+    const val = (v == null) ? "" : String(v);
+    try{
+      if (el && el._valueTracker && typeof el._valueTracker.setValue === "function"){
+        el._valueTracker.setValue(el.value);
+      }
+    }catch(e){}
+    try{
+      if (el.tagName === "TEXTAREA" && TA_VALUE_SETTER) TA_VALUE_SETTER.call(el, val);
+      else if (el.tagName === "INPUT" && INPUT_VALUE_SETTER) INPUT_VALUE_SETTER.call(el, val);
+      else el.value = val;
+    }catch(e){ try{ el.value = val; }catch(_){ } }
+  }
+
+  function setNativeChecked(el, b){
+    const val = !!b;
+    try{
+      if (INPUT_CHECKED_SETTER) INPUT_CHECKED_SETTER.call(el, val);
+      else el.checked = val;
+    }catch(e){ try{ el.checked = val; }catch(_){ } }
+  }
+
+  function fire(el, type){
+    try{ el.dispatchEvent(new Event(type, { bubbles:true })); }catch(e){}
+  }
+
   function restoreControls(nodes, byKey){
     if (!byKey) return;
 
@@ -234,11 +258,11 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
 
       const b = q.shift();
 
-      // Entblocken
+      // entblocken
       try{ el.disabled = false; el.removeAttribute("disabled"); }catch(e){}
       try{ if ("readOnly" in el) { el.readOnly = false; el.removeAttribute("readonly"); } }catch(e){}
 
-      // value-Attr zurück (wichtig gegen "festgesetzt")
+      // value-Attr zurück
       try{
         if (b.valueAttr === null) el.removeAttribute("value");
         else el.setAttribute("value", String(b.valueAttr));
@@ -284,11 +308,15 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
         try{ el.disabled = false; el.removeAttribute("disabled"); }catch(e){}
         try{ el.removeAttribute("aria-disabled"); }catch(e){}
       }
+      if (el.matches && el.matches("input,textarea,select")){
+        try{ el.disabled = false; el.removeAttribute("disabled"); }catch(e){}
+        try{ if ("readOnly" in el) { el.readOnly = false; el.removeAttribute("readonly"); } }catch(e){}
+      }
     }
   }
 
   // =========================
-  // Quiz-Reset: interner Toolbar-Reset (Leftover)
+  // Quiz-Toolbar Reset (Leftover-Button)
   // =========================
   function textLower(el){
     return ((el.textContent||"") + " " + (el.getAttribute?.("aria-label")||"") + " " + (el.getAttribute?.("title")||""))
@@ -313,100 +341,88 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
     return null;
   }
 
-  function clickInternalQuizReset(nodes){
+  function clickInternalReset(nodes){
     const liaBtns = [];
     for (let i=0;i<nodes.length;i++){
       const el = nodes[i];
       if (el && el.nodeType===1 && el.classList && el.classList.contains("lia-btn")) liaBtns.push(el);
     }
-    if (!liaBtns.length) return false;
+    if (!liaBtns.length) return;
 
     const scope = commonAncestor(liaBtns) || liaBtns[0].parentElement;
-    if (!scope) return false;
+    if (!scope) return;
 
     const btns = Array.from(scope.querySelectorAll("button.lia-btn, a.lia-btn"));
-    if (!btns.length) return false;
+    if (!btns.length) return;
 
     const leftovers = btns.filter(b => !isCheckBtn(b) && !isSolveBtn(b) && !isHintBtn(b));
 
     let resetBtn = null;
     if (leftovers.length === 1){
       resetBtn = leftovers[0];
-    } else if (leftovers.length > 1){
-      // bevorzugt icon/text "↺/reset/zurück"
+    } else {
       resetBtn = leftovers.find(b=>{
         const t = textLower(b);
-        return t.includes("↺") || t.includes("⟲") || t.includes("reset") || t.includes("neustart") || t.includes("zurück") || t.includes("zurueck");
-      }) || leftovers[leftovers.length - 1];
-    } else {
-      // fallback: irgendein Button, der nach Reset aussieht
-      resetBtn = btns.find(b=>{
-        const t=textLower(b);
         return t.includes("↺") || t.includes("⟲") || t.includes("reset") || t.includes("neustart") || t.includes("zurück") || t.includes("zurueck");
       }) || null;
     }
 
-    if (!resetBtn) return false;
+    if (!resetBtn) return;
 
     try{ resetBtn.disabled = false; resetBtn.removeAttribute("disabled"); }catch(e){}
-    try{ if (resetBtn.getAttribute("aria-disabled")==="true") resetBtn.setAttribute("aria-disabled","false"); }catch(e){}
-    try{ resetBtn.click(); return true; }catch(e){ return false; }
+    try{ resetBtn.click(); }catch(e){}
   }
 
   // =========================
-  // [->[]] Reset: Fragments + Details
+  // [->[]] Erkennung + Baseline HTML Restore
   // =========================
-  function resetFragmentsAndDetails(nodes){
+  function looksLikeArrowQuiz(nodes){
     for (let i=0;i<nodes.length;i++){
       const el = nodes[i];
       if (!el || el.nodeType !== 1) continue;
-
-      // details schließen
-      if (el.tagName === "DETAILS"){
-        try{ el.open = false; el.removeAttribute("open"); }catch(e){}
-      }
-
-      // reveal.js fragments: class fragment + visible/current-fragment entfernen
-      if (el.classList && (el.classList.contains("fragment") || el.hasAttribute("data-fragment-index"))){
-        try{ el.classList.remove("visible"); el.classList.remove("current-fragment"); }catch(e){}
-        // manche Engines setzen aria-hidden
-        try{
-          if (el.hasAttribute("aria-hidden")) el.setAttribute("aria-hidden","true");
-        }catch(e){}
-      }
+      if (el.tagName === "DETAILS" || el.tagName === "SUMMARY") return true;
+      if (el.classList && (el.classList.contains("fragment") || el.classList.contains("visible") || el.classList.contains("current-fragment"))) return true;
+      if (el.hasAttribute && el.hasAttribute("data-fragment-index")) return true;
     }
+    return false;
+  }
+
+  function restoreBaselineHTML(btn){
+    const id = btn.getAttribute("data-resetter-id") || "";
+    const b = REG.base[id];
+    if (!b || !b.html) return;
+
+    const seg = collectSegmentNodes(btn);
+    const r = makeRange(btn, seg.root, seg.endEl);
+
+    // ersetzen
+    try{ r.deleteContents(); }catch(e){}
+    try{
+      const tmp = DOC.createElement("div");
+      tmp.innerHTML = b.html;
+      const frag = DOC.createDocumentFragment();
+      while (tmp.firstChild) frag.appendChild(tmp.firstChild);
+      r.insertNode(frag);
+    }catch(e){}
   }
 
   // =========================
-  // Baseline pro Segment (lazy, aber früh)
+  // Hash-Bounce gegen Slide-Jump
   // =========================
-  function ensureBaselineFor(btn){
-    const id = btn.getAttribute("data-resetter-id") || "";
-    if (!id) return null;
-
-    let it = REG.items[id];
-    if (!it) it = REG.items[id] = { baselineControls: null, baselineFragsReady: false };
-
-    const seg = collectSegment(btn);
-
-    // Controls baseline einmal
-    if (!it.baselineControls){
-      it.baselineControls = snapshotControls(seg.nodes);
-    }
-
-    // Fragment/Details baseline "ready": wenn initial keine visible/current-fragment offen sind
-    if (!it.baselineFragsReady){
-      let ok = true;
-      for (let i=0;i<seg.nodes.length;i++){
-        const el = seg.nodes[i];
-        if (!el || el.nodeType !== 1) continue;
-        if (el.tagName === "DETAILS" && el.open) { ok=false; break; }
-        if (el.classList && (el.classList.contains("current-fragment") || el.classList.contains("visible"))) { ok=false; break; }
-      }
-      if (ok) it.baselineFragsReady = true;
-    }
-
-    return it;
+  function bounceHash(oldHash){
+    try{
+      const h = oldHash == null ? "" : String(oldHash);
+      const fix = () => {
+        try{
+          if (ROOT_WIN.location.hash !== h) ROOT_WIN.location.hash = h;
+        }catch(e){}
+      };
+      // mehrere Ticks, weil Presentation oft nachzieht
+      WIN.setTimeout(fix, 0);
+      WIN.setTimeout(fix, 25);
+      WIN.setTimeout(fix, 80);
+      WIN.requestAnimationFrame(fix);
+    }catch(e){}
   }
 
   // =========================
@@ -414,56 +430,50 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
   // =========================
   function doReset(btn){
     syncAccent();
+    captureBaseline(btn);
 
-    const seg = collectSegment(btn);
-    const it = ensureBaselineFor(btn) || {};
+    const oldHash = (function(){ try{ return ROOT_WIN.location.hash; } catch(e){ return ""; } })();
+
+    const seg = collectSegmentNodes(btn);
     const nodes = seg.nodes;
 
-    // Segment typ bestimmen
-    const hasQuiz = (function(){
-      for (let i=0;i<nodes.length;i++){
-        const el = nodes[i];
-        if (!el || el.nodeType !== 1) continue;
-        if (el.classList && el.classList.contains("lia-btn")) return true;
-        if (el.matches && el.matches("input,textarea,select")) return true;
-      }
-      return false;
-    })();
+    // 1) wenn [->[]] => Baseline HTML restore (am stabilsten)
+    if (looksLikeArrowQuiz(nodes)){
+      restoreBaselineHTML(btn);
 
-    // Immer defensiv entblocken
-    hardUnblock(nodes);
-
-    if (hasQuiz){
-      // 1) interner Reset (State-Machine!)
-      clickInternalQuizReset(nodes);
-
-      // 2) danach Controls auf Baseline (inkl. @orthography)
+      // danach: nochmal entblocken (falls Lia Buttons irgendwo disabled lässt)
       WIN.setTimeout(function(){
-        const seg2 = collectSegment(btn);
-        hardUnblock(seg2.nodes);
-        restoreControls(seg2.nodes, it.baselineControls);
+        const seg2 = collectSegmentNodes(btn);
         hardUnblock(seg2.nodes);
       }, 40);
 
-      WIN.setTimeout(function(){
-        const seg3 = collectSegment(btn);
-        hardUnblock(seg3.nodes);
-      }, 160);
-
-    } else {
-      // [->[]] / reine Fragment-Segmente
-      resetFragmentsAndDetails(nodes);
-      // nochmal nachziehen
-      WIN.setTimeout(function(){
-        const seg2 = collectSegment(btn);
-        resetFragmentsAndDetails(seg2.nodes);
-      }, 40);
+      bounceHash(oldHash);
+      return;
     }
+
+    // 2) normale Quizzes: interner Reset + Controls restore
+    hardUnblock(nodes);
+    clickInternalReset(nodes);
+
+    WIN.setTimeout(function(){
+      const seg2 = collectSegmentNodes(btn);
+      hardUnblock(seg2.nodes);
+      const id = btn.getAttribute("data-resetter-id") || "";
+      const b = REG.base[id];
+      if (b && b.controls) restoreControls(seg2.nodes, b.controls);
+      hardUnblock(seg2.nodes);
+    }, 50);
+
+    WIN.setTimeout(function(){
+      const seg3 = collectSegmentNodes(btn);
+      hardUnblock(seg3.nodes);
+    }, 160);
+
+    bounceHash(oldHash);
   }
 
   // =========================
-  // Capture-Blocker gegen Presentation Advance
-  // (führt Reset im Capture aus!)
+  // Capture Handler: blockt Advance + triggert Reset
   // =========================
   function captureHandler(ev){
     const t = ev && ev.target;
@@ -479,10 +489,9 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
     }
     REG.lastFire = now;
 
-    // Reset ausführen
     doReset(btn);
 
-    // Presentation/Fragment/Slide-Advance killen
+    // event killen (trotzdem Hash-Bounce als letzte Sicherung)
     try{
       ev.preventDefault();
       ev.stopPropagation();
@@ -498,41 +507,17 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
 
     const types = ["pointerdown","mousedown","click","touchstart","touchend","keydown"];
     for (let i=0;i<types.length;i++){
-      const tp = types[i];
-      WIN.addEventListener(tp, function(ev){
-        if (tp === "keydown"){
-          const a = ev && ev.target;
-          if (!a || !(a.classList && a.classList.contains("lia-resetter-btn"))) return;
-          const k = ev.key || ev.code || "";
-          if (k !== "Enter" && k !== " " && k !== "Spacebar") return;
-          captureHandler(ev);
-          return;
-        }
-        captureHandler(ev);
-      }, true);
+      WIN.addEventListener(types[i], captureHandler, true);
     }
-
-    // defensive: falls Presentation Listener im Root-Fenster hängt
     if (ROOT_WIN && ROOT_WIN !== WIN){
       for (let i=0;i<types.length;i++){
-        const tp = types[i];
-        ROOT_WIN.addEventListener(tp, function(ev){
-          if (tp === "keydown"){
-            const a = ev && ev.target;
-            if (!a || !(a.classList && a.classList.contains("lia-resetter-btn"))) return;
-            const k = ev.key || ev.code || "";
-            if (k !== "Enter" && k !== " " && k !== "Spacebar") return;
-            captureHandler(ev);
-            return;
-          }
-          captureHandler(ev);
-        }, true);
+        ROOT_WIN.addEventListener(types[i], captureHandler, true);
       }
     }
   }
 
   // =========================
-  // Scan + attach (import/slide rebuild safe)
+  // Scan + attach
   // =========================
   function scan(){
     installBlockers();
@@ -541,11 +526,11 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
     const btns = Array.from(DOC.querySelectorAll("button.lia-resetter-btn[data-resetter-id]"));
     for (let i=0;i<btns.length;i++){
       const b = btns[i];
-      ensureBaselineFor(b);
+      captureBaseline(b);
 
       if (!REG.btnReady.has(b)){
         REG.btnReady.add(b);
-        // fallback (falls capture mal nicht greift)
+        // fallback
         b.addEventListener("click", function(ev){
           ev.preventDefault();
           ev.stopPropagation();
@@ -565,16 +550,11 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
     WIN.setTimeout(scan, 1200);
 
     try{
-      const mo = new MutationObserver(function(){
-        scan();
-      });
+      const mo = new MutationObserver(function(){ scan(); });
       mo.observe(DOC.documentElement, { childList:true, subtree:true });
     }catch(e){}
 
-    // fallback
-    if (!REG.intervalId){
-      REG.intervalId = WIN.setInterval(scan, 900);
-    }
+    WIN.setInterval(scan, 900);
   }
 
   init();
@@ -588,6 +568,7 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
 <button class="lia-resetter-btn" type="button" data-resetter-id="@0">Neustart der Aufgabe</button>
 @end
 -->
+
 
 
 
