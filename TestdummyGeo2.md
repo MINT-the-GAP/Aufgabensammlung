@@ -10,6 +10,9 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FlexChildREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/DeutschREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MatheREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/NavigationREADME.md
+
+
 
 
 -->
@@ -64,6 +67,36 @@ __Aufgabe 3:__ Setze das Komma an die richtige Stelle. (Auflösung ist blockiert
 
 
 
+
+
+
+# Navigationstests
+
+## Navigationstestsa
+
+## Navigationstestse
+
+# Navigationstestsb
+
+## Navigationstestsc
+
+## Navigationstestsd
+
+### Navigationstestsc
+
+### Navigationstestsd
+
+### Navigationstestsc
+
+#### Navigationstestsc
+
+##### Navigationstestsc
+
+###### Navigationstestsc
+
+###### Navigationstestsc
+
+## Navigationstestsd
 
 
 
