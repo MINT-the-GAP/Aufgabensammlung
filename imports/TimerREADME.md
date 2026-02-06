@@ -2,7 +2,7 @@
 version:  0.0.1
 language: de
 author: Martin Lommatzsch
-comment: Solution-Button per Timer — per-Folie init + pending-arm + onclick/oncheck + Badge optional — KEINE doppelten Timerfelder — alles in @onload
+comment: Solution-Button per Timer — per-Folie init + pending-arm + onclick/oncheck + Badge optional — dedupe via owner-UID + FORCE-SHOW Prüfen — alles in @onload
 
 @onload
 (function () {
@@ -49,8 +49,7 @@ comment: Solution-Button per Timer — per-Folie init + pending-arm + onclick/on
     try{
       if (!root) return;
 
-      // Document
-      if (root.nodeType === 9) {
+      if (root.nodeType === 9) { // Document
         const doc = root;
         if (!doc.head) return;
         if (doc.getElementById(STYLE_ID)) return;
@@ -61,8 +60,7 @@ comment: Solution-Button per Timer — per-Folie init + pending-arm + onclick/on
         return;
       }
 
-      // ShadowRoot / DocumentFragment
-      if (root.nodeType === 11 && root.host) {
+      if (root.nodeType === 11 && root.host) { // ShadowRoot
         if (root.querySelector && root.querySelector(`style[data-id="${STYLE_ID}"]`)) return;
         const st = DOC.createElement("style");
         st.setAttribute("data-id", STYLE_ID);
@@ -147,6 +145,13 @@ comment: Solution-Button per Timer — per-Folie init + pending-arm + onclick/on
     return /(auf(lö|lo)sen|l(ö|oe)sung|solution|answer|antwort|reveal)/.test(t);
   }
 
+  function getUid(el){
+    if (!el.dataset.__solTimerUid) {
+      el.dataset.__solTimerUid = (Date.now().toString(36) + Math.random().toString(36).slice(2));
+    }
+    return el.dataset.__solTimerUid;
+  }
+
   // =========================
   // Smart finders (RootNode: Document oder ShadowRoot)
   // =========================
@@ -181,6 +186,7 @@ comment: Solution-Button per Timer — per-Folie init + pending-arm + onclick/on
     return null;
   }
 
+  // WICHTIG: fallback-Suche notfalls auch im ganzen Document (wenn Root ein ShadowRoot ist)
   function findCheckButtonsSmart(el, solBtn){
     const root = (el.getRootNode ? el.getRootNode() : DOC);
     const scopes = [];
@@ -202,21 +208,25 @@ comment: Solution-Button per Timer — per-Folie init + pending-arm + onclick/on
       }catch(e){}
     }
 
+    // fallback root
     try{
       const all = root.querySelectorAll ? Array.from(root.querySelectorAll("button, input[type='button'], a")).filter(isCheckBtn) : [];
-      return all.slice(0, 8);
+      if (all.length) return all.slice(0, 8);
+    }catch(e){}
+
+    // fallback document
+    try{
+      const all2 = Array.from(DOC.querySelectorAll("button, input[type='button'], a")).filter(isCheckBtn);
+      return all2.slice(0, 8);
     }catch(e){}
     return [];
   }
 
   // =========================
-  // UI Host + Cleanup (✅ verhindert doppelte Timerfelder)
+  // UI Host + Cleanup (nur OWN owner)
   // =========================
   function getUiHost(el, solBtn){
-    // möglichst stabil: container der Control-Leiste
-    const quizScope =
-      (el.closest ? el.closest("lia-quiz, .lia-quiz") : null) || null;
-
+    const quizScope = (el.closest ? el.closest("lia-quiz, .lia-quiz") : null) || null;
     return (
       (solBtn && solBtn.parentElement) ||
       (solBtn && solBtn.closest && solBtn.closest("div, p, li, section, article")) ||
@@ -226,36 +236,49 @@ comment: Solution-Button per Timer — per-Folie init + pending-arm + onclick/on
     );
   }
 
-  function cleanupTimerUI(host){
+  function cleanupTimerUI(host, uid){
     if (!host || !host.querySelectorAll) return;
-    // löscht ALLE unsere Timer-UI im selben Host (Badge + Startbutton)
-    host.querySelectorAll("[data-sol-timer-badge='1']").forEach(n => { try{ n.remove(); }catch(e){} });
-    host.querySelectorAll("[data-sol-timer-startbtn='1']").forEach(n => { try{ n.remove(); }catch(e){} });
+    host.querySelectorAll(`[data-sol-timer-owner="${uid}"]`).forEach(n => { try{ n.remove(); }catch(e){} });
   }
 
   // =========================
   // Hide/Show check buttons
   // =========================
-  function hardHideBtn(b){
+  function hardHideBtn(b, uid){
     if (!b || !b.style) return;
+    if (b.dataset.__solTimerChkOwner && b.dataset.__solTimerChkOwner !== uid) return; // gehört anderem Timer
     if (b.dataset.__solTimerChkHidden === "1") return;
+
+    b.dataset.__solTimerChkOwner = uid;
     b.dataset.__solTimerChkHidden = "1";
     b.dataset.__solTimerPrevDisplayChk = b.style.display || "";
-    b.dataset.__solTimerPrevHiddenAttr = b.hasAttribute("hidden") ? "1" : "0";
     b.style.display = "none";
     b.setAttribute("hidden", "");
   }
-  function hardShowBtn(b){
+
+  // FORCE-SHOW: hidden IMMER weg + display wiederherstellen (auch wenn LiaScript vorher hidden setzte)
+  function hardForceShowBtn(b, uid){
     if (!b || !b.style) return;
-    if (b.dataset.__solTimerChkHidden !== "1") return;
-    b.style.display = b.dataset.__solTimerPrevDisplayChk || "";
-    delete b.dataset.__solTimerPrevDisplayChk;
-    delete b.dataset.__solTimerChkHidden;
-    if (b.dataset.__solTimerPrevHiddenAttr === "0") b.removeAttribute("hidden");
-    delete b.dataset.__solTimerPrevHiddenAttr;
+    if (b.dataset.__solTimerChkOwner && b.dataset.__solTimerChkOwner !== uid) return;
+
+    const prev = b.dataset.__solTimerPrevDisplayChk || "";
+    b.style.display = prev;
+    b.removeAttribute("hidden");
+    b.removeAttribute("aria-hidden");
+    b.style.visibility = "";
+    b.style.pointerEvents = "";
+    b.style.opacity = "";
+
+    // cleanup marker
+    if (b.dataset.__solTimerChkOwner === uid) {
+      delete b.dataset.__solTimerPrevDisplayChk;
+      delete b.dataset.__solTimerChkHidden;
+      delete b.dataset.__solTimerChkOwner;
+    }
   }
-  function hideChecks(btns){ for (const b of btns) hardHideBtn(b); }
-  function showChecks(btns){ for (const b of btns) hardShowBtn(b); }
+
+  function hideChecks(btns, uid){ for (const b of btns) hardHideBtn(b, uid); }
+  function forceShowChecks(btns, uid){ for (const b of btns) hardForceShowBtn(b, uid); }
 
   // =========================
   // Reveal ticker
@@ -298,6 +321,7 @@ comment: Solution-Button per Timer — per-Folie init + pending-arm + onclick/on
     const ms = parseTimeToMs(el.getAttribute("data-solution-timer"));
     if (ms <= 0) return false;
 
+    const uid = getUid(el);
     const startMode = parseStartMode(el);
     const showBadge = parseBool(el.getAttribute("data-solution-timer-badge"), true);
 
@@ -307,10 +331,10 @@ comment: Solution-Button per Timer — per-Folie init + pending-arm + onclick/on
     const doc = solBtn.ownerDocument || DOC;
     const host = getUiHost(el, solBtn);
 
-    // ✅ wichtig: alte UI im selben Host weg, damit nichts doppelt bleibt
-    cleanupTimerUI(host);
+    // nur unsere eigenen UI-Duplikate entfernen
+    cleanupTimerUI(host, uid);
 
-    // Lösung-Button verstecken + armed markieren
+    // Lösung-Button verstecken + armed
     solBtn.dataset.__solTimerPrevDisplay = solBtn.style.display || "";
     solBtn.style.display = "none";
     el.dataset.__solTimerArmed = "1";
@@ -318,7 +342,7 @@ comment: Solution-Button per Timer — per-Folie init + pending-arm + onclick/on
     const makeBadge = () => {
       const badge = doc.createElement("span");
       badge.className = "lia-sol-timer-badge";
-      badge.setAttribute("data-sol-timer-badge", "1");
+      badge.setAttribute("data-sol-timer-owner", uid);
       return badge;
     };
 
@@ -356,17 +380,14 @@ comment: Solution-Button per Timer — per-Folie init + pending-arm + onclick/on
       if (checks[0] && checks[0].dataset.__solTimerHooked !== "1") {
         checks[0].dataset.__solTimerHooked = "1";
         checks[0].addEventListener("click", startNow, { once: true, passive: true });
-      } else {
-        // delegated
-        if (host && host.dataset.__solTimerDelegated !== "1") {
-          host.dataset.__solTimerDelegated = "1";
-          host.addEventListener("click", (ev) => {
-            const t = ev.target;
-            if (!t || !t.closest) return;
-            const b = t.closest("button, input[type='button'], a");
-            if (b && isCheckBtn(b)) startNow();
-          }, { capture: true, passive: true });
-        }
+      } else if (host && host.dataset.__solTimerDelegated !== "1") {
+        host.dataset.__solTimerDelegated = "1";
+        host.addEventListener("click", (ev) => {
+          const t = ev.target;
+          if (!t || !t.closest) return;
+          const b = t.closest("button, input[type='button'], a");
+          if (b && isCheckBtn(b)) startNow();
+        }, { capture: true, passive: true });
       }
       return true;
     }
@@ -375,38 +396,34 @@ comment: Solution-Button per Timer — per-Folie init + pending-arm + onclick/on
     if (startMode === "onclick") {
       el.dataset.__solTimerStarted = "0";
 
-      const checksNow = findCheckButtonsSmart(el, solBtn);
-      hideChecks(checksNow);
+      // Prüfen verstecken (wenn existiert) – owner-sicher
+      hideChecks(findCheckButtonsSmart(el, solBtn), uid);
 
+      // Startbutton (owner-sicher, genau einmal)
       const startBtn = doc.createElement("button");
       startBtn.type = "button";
       startBtn.textContent = el.getAttribute("data-solution-timer-start-label") || "Timer starten";
       startBtn.className = "lia-btn lia-sol-timer-startbtn";
-      startBtn.setAttribute("data-sol-timer-startbtn", "1");
-
-      // (nach cleanup) genau einmal rein
+      startBtn.setAttribute("data-sol-timer-owner", uid);
       host.insertBefore(startBtn, host.firstChild);
 
       startBtn.addEventListener("click", () => {
         if (el.dataset.__solTimerStarted === "1") return;
         el.dataset.__solTimerStarted = "1";
 
-        const showNow = () => showChecks(findCheckButtonsSmart(el, solBtn));
-        showNow(); setTimeout(showNow, 60); setTimeout(showNow, 250);
+        // ✅ FORCE-SHOW Prüfen (auch wenn LiaScript vorher hidden gesetzt hat / neu rendert)
+        const force = () => forceShowChecks(findCheckButtonsSmart(el, solBtn), uid);
+        force(); setTimeout(force, 60); setTimeout(force, 250); setTimeout(force, 600);
 
         let badge = null;
         if (showBadge) {
-          // nochmals cleanup, falls LiaScript beim Klick neu rendert
-          cleanupTimerUI(host);
+          cleanupTimerUI(host, uid); // removes startBtn + any old badge for this uid
           badge = makeBadge();
           badge.textContent = `Lösung in ${formatRemaining(ms)}`;
           host.appendChild(badge);
         } else {
-          // ohne badge trotzdem start button weg
-          try { startBtn.remove(); } catch(e){ startBtn.disabled = true; }
+          cleanupTimerUI(host, uid); // removes startBtn for this uid
         }
-
-        try { startBtn.remove(); } catch(e){ startBtn.disabled = true; }
 
         scheduleReveal(solBtn, badge, ms);
       }, { passive: true });
@@ -463,10 +480,11 @@ comment: Solution-Button per Timer — per-Folie init + pending-arm + onclick/on
 
       for (const el of els){
         if (el.dataset.__solTimerArmed === "1") {
-          // onclick: solange nicht gestartet => Prüfen weiter verstecken (wenn Buttons später auftauchen)
+          // onclick: solange nicht gestartet -> neu auftauchende Prüfen-Buttons wieder verstecken
           if (parseStartMode(el) === "onclick" && el.dataset.__solTimerStarted !== "1") {
+            const uid = getUid(el);
             const solBtn = findSolutionButtonSmart(el);
-            if (solBtn) hideChecks(findCheckButtonsSmart(el, solBtn));
+            if (solBtn) hideChecks(findCheckButtonsSmart(el, solBtn), uid);
           }
           continue;
         }
@@ -485,6 +503,18 @@ comment: Solution-Button per Timer — per-Folie init + pending-arm + onclick/on
 })();
 @end
 -->
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
