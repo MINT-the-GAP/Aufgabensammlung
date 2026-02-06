@@ -1,10 +1,38 @@
 <!--
-version:  0.0.2
+version:  0.0.1
 language: de
 author: Martin Lommatzsch
-comment: TOC PDF-Bookmarks V5.1 — Baum AUS originalem LiaScript-TOC (Navigation + Active), crash-sicher, import-sicher, FILLED Keile ▶/▼
+comment: TOC PDF-Bookmarks V5.3 — Baum AUS originalem LiaScript-TOC, FILLED Keile ▶/▼, CSS root-injected (import-sicher), Auto-Open bei Klick auf Parent
 
-@style
+@onload
+(function () {
+
+  // =========================
+  // Root/Doc (iframe-safe)
+  // =========================
+  function getRootWindowSafe(){
+    let w = window;
+    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
+    return w;
+  }
+
+  let ROOT = getRootWindowSafe();
+  let ROOT_DOC = null;
+  try { ROOT_DOC = ROOT.document; } catch(e){ ROOT = window; ROOT_DOC = document; }
+
+  // =========================
+  // Run-once Registry (import-sicher)
+  // =========================
+  const REGKEY = "__LIA_BM_TOC5_V53__";
+  if (ROOT[REGKEY] && ROOT[REGKEY].installed) return;
+  ROOT[REGKEY] = ROOT[REGKEY] || {};
+  ROOT[REGKEY].installed = true;
+
+  // =========================
+  // CSS Injection (ROOT)
+  // =========================
+  const STYLE_ID = "lia-bm-toc5-style";
+  const CSS_TEXT = `
 /* ===== Bookmarks TOC (V5) ===== */
 .lia-toc #lia-bm-toc5{ padding:.25em 0 .5em 0; }
 
@@ -35,15 +63,14 @@ comment: TOC PDF-Bookmarks V5.1 — Baum AUS originalem LiaScript-TOC (Navigatio
   content:"";
   display:block;
   width:0; height:0;
-  /* gefülltes Dreieck nach rechts */
   border-top: .28em solid transparent;
   border-bottom: .28em solid transparent;
-  border-left: .45em solid currentColor;
-  transform: rotate(0deg);            /* ▶ */
+  border-left: .45em solid currentColor;  /* ▶ */
+  transform: rotate(0deg);
   transition: transform .12s ease;
 }
 .lia-toc #lia-bm-toc5 .bm-row.bm-open > .bm-toggle::before{
-  transform: rotate(90deg);           /* ▼ */
+  transform: rotate(90deg);               /* ▼ */
 }
 
 .lia-toc #lia-bm-toc5 a{
@@ -66,38 +93,29 @@ comment: TOC PDF-Bookmarks V5.1 — Baum AUS originalem LiaScript-TOC (Navigatio
 }
 .lia-toc #lia-bm-toc5 .bm-row.bm-active a{ font-weight: 700; }
 
-/* Level-Optik (optional) — Werte wie bei dir */
+/* Level-Optik — Werte wie bei dir */
 .lia-toc #lia-bm-toc5 .bm-row[data-level="1"] a{ font-size:1.25em; font-weight:700; }
 .lia-toc #lia-bm-toc5 .bm-row[data-level="2"] a{ font-size:1.00em; font-weight:700; }
 .lia-toc #lia-bm-toc5 .bm-row[data-level="3"] a{ font-size:.9em;  font-weight:700; }
 .lia-toc #lia-bm-toc5 .bm-row[data-level="4"] a{ font-size:.8em;  font-weight:700; }
 .lia-toc #lia-bm-toc5 .bm-row[data-level="5"] a{ font-size:.75em; font-weight:700; }
 .lia-toc #lia-bm-toc5 .bm-row[data-level="6"] a{ font-size:.7em;  font-weight:700; }
-@end
+  `.trim();
 
-@onload
-(function () {
-
-  // =========================
-  // Root/Doc (iframe-safe)
-  // =========================
-  function getRootWindowSafe(){
-    let w = window;
-    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
-    return w;
+  function ensureStyle(doc){
+    if (!doc) return;
+    try{
+      if (doc.getElementById(STYLE_ID)) return;
+      const st = doc.createElement("style");
+      st.id = STYLE_ID;
+      st.type = "text/css";
+      st.appendChild(doc.createTextNode(CSS_TEXT));
+      (doc.head || doc.documentElement || doc.body).appendChild(st);
+    } catch(e){}
   }
 
-  let ROOT = getRootWindowSafe();
-  let ROOT_DOC = null;
-  try { ROOT_DOC = ROOT.document; } catch(e){ ROOT = window; ROOT_DOC = document; }
-
-  // =========================
-  // Run-once (import-sicher)
-  // =========================
-  const REGKEY = "__LIA_BM_TOC5__";
-  if (ROOT[REGKEY] && ROOT[REGKEY].installed) return;
-  ROOT[REGKEY] = ROOT[REGKEY] || {};
-  ROOT[REGKEY].installed = true;
+  ensureStyle(ROOT_DOC);
+  if (ROOT_DOC !== document) ensureStyle(document);
 
   // =========================
   // Storage
@@ -139,11 +157,14 @@ comment: TOC PDF-Bookmarks V5.1 — Baum AUS originalem LiaScript-TOC (Navigatio
     if (!toc) return [];
     return Array.from(toc.querySelectorAll('a[href*="#"]'))
       .filter(a => !a.closest("#lia-bm-toc5"))
-      .filter(a => {
-        const href = (a.getAttribute("href") || "").trim();
-        const hash = extractHashFromHref(href);
-        return !!hash;
-      });
+      .filter(a => !!extractHashFromHref(a.getAttribute("href") || ""));
+  }
+
+  function getOriginalActiveHash(toc){
+    if (!toc) return "";
+    const a = toc.querySelector("a.lia-active") || (toc.querySelector(".lia-active a") || null);
+    if (!a) return "";
+    return extractHashFromHref(a.getAttribute("href") || "");
   }
 
   function findOriginalLinkByHash(toc, hash){
@@ -169,19 +190,10 @@ comment: TOC PDF-Bookmarks V5.1 — Baum AUS originalem LiaScript-TOC (Navigatio
     return false;
   }
 
-  function getOriginalActiveHash(toc){
-    if (!toc) return "";
-    const a = toc.querySelector("a.lia-active") || (toc.querySelector(".lia-active a") || null);
-    if (!a) return "";
-    return extractHashFromHref(a.getAttribute("href") || "");
-  }
-
   function getLevelFromDOM(a, toc){
-    // 1) aria-level?
     const aria = a.getAttribute("aria-level");
     if (aria && !isNaN(parseInt(aria,10))) return parseInt(aria,10);
 
-    // 2) Verschachtelung über UL/LI?
     const li = a.closest("li");
     if (li){
       let depth = 1;
@@ -192,8 +204,7 @@ comment: TOC PDF-Bookmarks V5.1 — Baum AUS originalem LiaScript-TOC (Navigatio
       }
       return Math.max(1, Math.min(6, depth));
     }
-
-    return 0; // unknown => später via Indent-Mapping
+    return 0;
   }
 
   function getIndentPx(a){
@@ -316,7 +327,6 @@ comment: TOC PDF-Bookmarks V5.1 — Baum AUS originalem LiaScript-TOC (Navigatio
       const a = doc.createElement("a");
       a.textContent = n.text;
 
-      // href aus originalem Link (wenn vorhanden), sonst #hash
       const orig = findOriginalLinkByHash(toc, n.hash);
       a.href = (orig && orig.getAttribute) ? (orig.getAttribute("href") || ("#" + n.hash)) : ("#" + n.hash);
 
@@ -326,6 +336,13 @@ comment: TOC PDF-Bookmarks V5.1 — Baum AUS originalem LiaScript-TOC (Navigatio
         ev.preventDefault();
         ev.stopPropagation();
         if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
+
+        // ===== NEU: Auto-Open beim Klick auf Parent =====
+        if (hasKids && !row.classList.contains("bm-open")){
+          state[n.key] = 1;
+          saveState(state);
+          setCollapsed(row, childWrap, true);
+        }
 
         // Navigation: originalen Link klicken (LiaScript springt zuverlässig)
         const ok = clickOriginalByHash(toc, n.hash);
@@ -337,9 +354,7 @@ comment: TOC PDF-Bookmarks V5.1 — Baum AUS originalem LiaScript-TOC (Navigatio
         }
 
         // Active nachziehen
-        ROOT.setTimeout(() => {
-          try{ syncActive(toc); } catch(e){}
-        }, 80);
+        ROOT.setTimeout(() => { try{ syncActive(toc); } catch(e){} }, 80);
       }, true);
 
       row.appendChild(a);
@@ -407,7 +422,6 @@ comment: TOC PDF-Bookmarks V5.1 — Baum AUS originalem LiaScript-TOC (Navigatio
       });
 
       mapIndentLevels(nodes);
-
       const tree = buildTree(nodes);
 
       const state = loadState();
@@ -433,10 +447,7 @@ comment: TOC PDF-Bookmarks V5.1 — Baum AUS originalem LiaScript-TOC (Navigatio
       if (toolbar && toolbar.parentElement === toc) toolbar.insertAdjacentElement("afterend", box);
       else toc.insertBefore(box, toc.firstChild);
 
-      // Originales Listing ausblenden (Toolbar + Baum bleiben)
       hideOriginalTOCList(toc, toolbar, box);
-
-      // State sicherheitshalber speichern
       saveState(state);
 
       return true;
@@ -457,9 +468,11 @@ comment: TOC PDF-Bookmarks V5.1 — Baum AUS originalem LiaScript-TOC (Navigatio
 
       box.querySelectorAll(".bm-row.bm-active").forEach(r => r.classList.remove("bm-active"));
 
-      const target = box.querySelector(`a[href*="#${CSS.escape(activeHash)}"]`);
-      if (target && target.closest){
-        const row = target.closest(".bm-row");
+      const links = Array.from(box.querySelectorAll('a[href*="#"]'));
+      const needle = "#" + activeHash;
+      const a = links.find(x => (x.getAttribute("href") || "").includes(needle));
+      if (a && a.closest){
+        const row = a.closest(".bm-row");
         if (row) row.classList.add("bm-active");
       }
     } catch(e){}
@@ -475,7 +488,7 @@ comment: TOC PDF-Bookmarks V5.1 — Baum AUS originalem LiaScript-TOC (Navigatio
     if (ok || tries > 80) ROOT.clearInterval(bootTimer);
   }, 150);
 
-  // Falls LiaScript das TOC später neu rendert: nur dann rebuilden, wenn unser Box fehlt
+  // Rebuild nur wenn Box fehlt, sonst nur Active sync
   ROOT.setInterval(() => {
     const toc = findTOC();
     if (!toc) return;
@@ -494,6 +507,8 @@ comment: TOC PDF-Bookmarks V5.1 — Baum AUS originalem LiaScript-TOC (Navigatio
 })();
 @end
 -->
+
+
 
 
 
