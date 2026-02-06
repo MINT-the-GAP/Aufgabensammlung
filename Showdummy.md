@@ -33,6 +33,12 @@ Klicke auf das A im Header und ändere im Präsentationsmodus die Schriftgröße
 `https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/README.md`
 
 
+Falls du den Kurs nicht auf Nightly geöffnet hast, ist oben ein Button zur direkten Weiterleitung des Kurses. Link zum normalen Kurs:
+
+[https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/README.md](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/README.md)
+
+
+
 
 ## Besser Navigation
 
