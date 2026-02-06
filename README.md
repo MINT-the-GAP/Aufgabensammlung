@@ -5944,14 +5944,14 @@ for (let c = 0; c <= cols; c++) {
 `
 </script>
 
-<div class="fq-range" data-label="vertikal">
+<div class="fq-range" data-label="vertikale Unterteilungen">
 <script run-once modify="false" input="range" output="fq-r-rows-@0"
         value="1" min="1" max="20" input-always-active>
 @input
 </script>
 </div>
 
-<div class="fq-range" data-label="horizontal">
+<div class="fq-range" data-label="horizontale Unterteilungen">
 <script run-once modify="false" input="range" output="fq-r-cols-@0"
         value="1" min="1" max="20" input-always-active>
 @input

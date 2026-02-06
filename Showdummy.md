@@ -33,15 +33,19 @@ Klicke auf das A im Header und ändere im Präsentationsmodus die Schriftgröße
 `https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/README.md`
 
 
-![Navigation](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/pics/Readme/navigation.png)
-
-
 
 ## Besser Navigation
 
 Öffne die Navigation und beachte die (▶/▼)-Symbole. Klicke darauf, um die weiteren Überschriften auf- oder einzuklappen
 
 
+
+<center>
+
+<!-- style="width:300px" -->
+![Navigation](../pics/Readme/navigation.png)
+
+</center>
 
 
 
