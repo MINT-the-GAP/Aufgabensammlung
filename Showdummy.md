@@ -43,7 +43,7 @@ Klicke auf das A im Header und ändere im Präsentationsmodus die Schriftgröße
 <center>
 
 <!-- style="width:300px" -->
-![Navigation](../pics/Readme/navigation.png)
+![Navigation](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/Readme/navigation.png)
 
 </center>
 
