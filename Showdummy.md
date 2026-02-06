@@ -242,15 +242,33 @@ __$a)\;\;$__ $\dfrac{7}{10}$
 > - Sofortiger Start: `data-solution-timer="10s"`
 > - Start erst nach erstem Prüfen: `data-solution-timer="2min" data-solution-timer-start="oncheck"`
 > - ohne Badge: zusätzlich `data-solution-timer-badge="off"`
+> - Manueller Start: `data-solution-timer-start="onclick"`
 
 <!-- data-solution-timer="10s" -->
 2+3 = [[ 5 ]]
 
+
+Manueller Start nach erstem Prüfen
+
 <!-- data-solution-timer="15s" data-solution-timer-start="oncheck" -->
 7+8 = [[ 15 ]]
 
+
+Manueller Start nach erstem Prüfen (Timer nicht sichtbar)
+
 <!-- data-solution-timer="10s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->
 9+6 = [[ 15 ]]
+
+
+Manueller Startbutton (Prüfen erscheint erst nach Klick)
+
+<!-- data-solution-timer="10s" data-solution-timer-start="onclick" -->
+9+6 = [[ 15 ]]
+
+Manueller Startbutton ohne Badge
+
+<!-- data-solution-timer="10s" data-solution-timer-start="onclick" data-solution-timer-badge="off" -->
+5+5 = [[ 10 ]]
 
 
 

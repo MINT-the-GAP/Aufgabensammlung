@@ -2,7 +2,7 @@
 version:  0.0.1
 language: de
 author: Martin Lommatzsch
-comment: @resetter v0.0.1 — Range-Snapshot pro Segment (echter Initialzustand) + Range-Replace beim Reset => keine Geisterlösung, Buttons wieder lebendig; Overlay bleibt klickbar
+comment: @resetter v0.0.1 — segmentweise Reset (bis nächster @resetter oder nächste # Überschrift) — KEIN DOM-Replace — interner Reset nur im echten Quiz-Scope — Baseline-Attrs robust (id/data*/summary) => [->[]] reset — Click blockiert Slide-Advance — Overlay fixed ohne Springen
 
 @style
 :root{
@@ -10,7 +10,7 @@ comment: @resetter v0.0.1 — Range-Snapshot pro Segment (echter Initialzustand)
   --lia-resetter-accent: rgb(var(--color-highlight, 11, 95, 255));
 }
 
-/* unsichtbarer Platzhalter: reserviert exakt die Inline-Position */
+/* Inline-Anker: reserviert Platz, aber unsichtbar (Overlay-Button sitzt darüber) */
 .lia-resetter-anchor{
   display: inline-flex !important;
   align-items: center !important;
@@ -32,7 +32,7 @@ comment: @resetter v0.0.1 — Range-Snapshot pro Segment (echter Initialzustand)
   white-space: nowrap !important;
 }
 
-/* echter Button (Overlay) */
+/* Echter Button (Overlay): FIXED => kein Scroll-Springen */
 button.lia-resetter-btn{
   color: var(--lia-resetter-accent) !important;
   border: 1px solid currentColor !important;
@@ -54,7 +54,7 @@ button.lia-resetter-btn{
   user-select: none !important;
   white-space: nowrap !important;
 
-  position: absolute !important;
+  position: fixed !important;
   z-index: 2147483647 !important;
 }
 button.lia-resetter-btn:hover{ text-decoration: underline !important; }
@@ -85,13 +85,14 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
   // =========================
   const REGKEY = "__LIA_RESETTER_V001__";
   const REG = ROOT_WIN[REGKEY] || (ROOT_WIN[REGKEY] = {
-    items: Object.create(null), // id -> { anchor, btn, root, endEl, templateFrag }
+    items: Object.create(null),  // id -> { anchor, btn, baseline }
     scanT: 0,
-    rafPos: 0
+    rafPos: 0,
+    intervalId: 0
   });
 
   // =========================
-  // Themefarbe robust (falls var leer)
+  // Themefarbe robust halten
   // =========================
   function syncAccent(){
     try{
@@ -105,93 +106,611 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
         ROOT_DOC.documentElement.style.setProperty("--lia-resetter-accent", c);
         return;
       }
-
-      // fallback: echte Lia-Buttons
-      const b = DOC.querySelector("button.lia-btn, .lia-btn, a.lia-btn");
-      if (b){
-        const bc = DOC.defaultView.getComputedStyle(b).color;
-        if (bc){
-          DOC.documentElement.style.setProperty("--lia-resetter-accent", bc);
-          ROOT_DOC.documentElement.style.setProperty("--lia-resetter-accent", bc);
+      const sample = DOC.querySelector("button.lia-btn, .lia-btn, a.lia-btn");
+      if (sample){
+        const col = DOC.defaultView.getComputedStyle(sample).color;
+        if (col){
+          DOC.documentElement.style.setProperty("--lia-resetter-accent", col);
+          ROOT_DOC.documentElement.style.setProperty("--lia-resetter-accent", col);
         }
       }
     }catch(e){}
   }
 
   // =========================
-  // Segment-Grenze: bis nächste @resetter-Anchor oder nächste Überschrift
+  // Segment: ab Anchor bis nächste Anchor oder Überschrift
+  // (WICHTIG: Root ist immer .lia-slide oder main, niemals "section" allgemein!)
   // =========================
-  function isHeading(el){
-    return !!el && el.nodeType === 1 && /^H[1-6]$/.test(el.tagName);
-  }
   function isAnchor(el){
     return !!el && el.nodeType === 1 && el.classList && el.classList.contains("lia-resetter-anchor");
   }
-
-  function getRootFor(anchor){
-    return (
-      anchor.closest(".lia-slide") ||
-      anchor.closest("section") ||
-      DOC.querySelector("main") ||
-      DOC.body
-    );
+  function isHeading(el){
+    return !!el && el.nodeType === 1 && /^H[1-6]$/.test(el.tagName);
+  }
+  function getRootFor(el){
+    return el.closest(".lia-slide") || DOC.querySelector("main") || DOC.body;
   }
 
-  function findEndMarker(anchor, root){
-    try{
-      const w = DOC.createTreeWalker(root, NodeFilter.SHOW_ELEMENT, null);
-      w.currentNode = anchor;
-      let n = null;
-      while ((n = w.nextNode())){
-        if (n === anchor) continue;
-        if (isHeading(n) || isAnchor(n)) return n;
+  function collectSegment(anchor){
+    const root = getRootFor(anchor);
+    const nodes = [];
+    const w = DOC.createTreeWalker(root, NodeFilter.SHOW_ELEMENT, null);
+
+    let node = null;
+    let started = false;
+
+    while ((node = w.nextNode())){
+      if (!started){
+        if (node === anchor) started = true;
+        continue;
       }
-    }catch(e){}
-    return null;
-  }
-
-  function makeRange(anchor, root, endEl){
-    const r = DOC.createRange();
-    r.setStartAfter(anchor);
-    if (endEl){
-      r.setEndBefore(endEl);
-    } else {
-      r.setEnd(root, root.childNodes.length);
+      if (isHeading(node) || isAnchor(node)) break;
+      nodes.push(node);
     }
-    return r;
+    return { root, nodes };
   }
 
-  // optional: Baseline nur nehmen, wenn noch nicht "gelöst"
-  function rangeLooksInteracted(range){
-    try{
-      const frag = range.cloneContents();
-      const els = frag.querySelectorAll ? frag.querySelectorAll("*") : [];
-      for (let i=0;i<els.length;i++){
-        const el = els[i];
-        if (el.classList && (el.classList.contains("solved") || el.classList.contains("failed"))) return true;
-        // häufige runtime data flags (konservativ)
-        for (let a=0;a<(el.attributes?el.attributes.length:0);a++){
+  // =========================
+  // Baseline nur vor Interaktion
+  // =========================
+  function looksInteracted(nodes){
+    for (let i=0;i<nodes.length;i++){
+      const el = nodes[i];
+      if (!el || el.nodeType !== 1) continue;
+
+      if (el.classList && (el.classList.contains("solved") || el.classList.contains("failed"))) return true;
+
+      if (el.attributes){
+        for (let a=0;a<el.attributes.length;a++){
           const n = (el.attributes[a].name || "").toLowerCase();
+          if (!n) continue;
+          if (n.indexOf("data-text-") === 0) continue;
           if (n.includes("data-solved") || n.includes("data-failed") || n.includes("data-checked") || n.includes("data-state")) return true;
         }
       }
-    }catch(e){}
+    }
     return false;
   }
 
   // =========================
-  // Overlay Positionierung
+  // Attribute Snapshot (für [->[]]) — robust: path + id + data-key + summaryText
+  // =========================
+  function trackedAttrName(name){
+    return (
+      name === "class" ||
+      name === "style" ||
+      name === "open" ||
+      name === "disabled" ||
+      name === "hidden" ||
+      name === "readonly" ||
+      name.indexOf("aria-") === 0 ||
+      name.indexOf("data-") === 0
+    );
+  }
+
+  function snapshotAttrs(el){
+    const keep = Object.create(null);
+    if (!el || !el.attributes) return keep;
+    for (let i=0;i<el.attributes.length;i++){
+      const a = el.attributes[i];
+      if (trackedAttrName(a.name)) keep[a.name] = a.value;
+    }
+    return keep;
+  }
+
+  function restoreAttrs(el, keep){
+    if (!el || !el.attributes) return;
+
+    const toRemove = [];
+    for (let i=0;i<el.attributes.length;i++){
+      const a = el.attributes[i];
+      if (trackedAttrName(a.name) && !(a.name in keep)) toRemove.push(a.name);
+    }
+    for (let i=0;i<toRemove.length;i++){
+      try{ el.removeAttribute(toRemove[i]); }catch(e){}
+    }
+    for (const name in keep){
+      try{ el.setAttribute(name, keep[name]); }catch(e){}
+    }
+  }
+
+  function pathFrom(root, el){
+    const path = [];
+    let cur = el;
+    while (cur && cur !== root){
+      const p = cur.parentElement;
+      if (!p) break;
+      const kids = p.children;
+      let idx = -1;
+      for (let i=0;i<kids.length;i++){
+        if (kids[i] === cur){ idx = i; break; }
+      }
+      if (idx < 0) break;
+      path.push(idx);
+      cur = p;
+    }
+    path.reverse();
+    return path;
+  }
+
+  function byPath(root, path){
+    let cur = root;
+    for (let i=0;i<path.length;i++){
+      if (!cur || !cur.children || cur.children.length <= path[i]) return null;
+      cur = cur.children[path[i]];
+    }
+    return cur;
+  }
+
+  function pickDataKey(el){
+    if (!el || !el.getAttribute) return null;
+    const keys = ["data-uid","data-id","data-key","data-ref","data-name","data-quiz","data-task"];
+    for (let i=0;i<keys.length;i++){
+      const v = el.getAttribute(keys[i]);
+      if (v && v.trim()) return { k: keys[i], v: v.trim() };
+    }
+    return null;
+  }
+
+  function summaryTextOfDetails(el){
+    if (!el || el.tagName !== "DETAILS") return "";
+    const s = el.querySelector("summary");
+    return s ? (s.textContent || "").trim().slice(0,120) : "";
+  }
+
+  function locateByFallback(root, snap){
+    // 1) id
+    if (snap.id){
+      const el = root.querySelector("#" + CSS.escape(snap.id));
+      if (el) return el;
+    }
+
+    // 2) data key
+    if (snap.dk && snap.dk.k && snap.dk.v){
+      const sel = `[${snap.dk.k}="${CSS.escape(snap.dk.v)}"]`;
+      const el = root.querySelector(sel);
+      if (el) return el;
+    }
+
+    // 3) details summary text
+    if (snap.tag === "DETAILS" && snap.sum){
+      const all = root.querySelectorAll("details");
+      for (let i=0;i<all.length;i++){
+        if (summaryTextOfDetails(all[i]) === snap.sum) return all[i];
+      }
+    }
+
+    return null;
+  }
+
+  // =========================
+  // Native setter (gegen Geisterwerte)
+  // =========================
+  const INPUT_VALUE_SETTER = (function(){
+    try { return Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value").set; } catch(e){ return null; }
+  })();
+  const TA_VALUE_SETTER = (function(){
+    try { return Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, "value").set; } catch(e){ return null; }
+  })();
+  const INPUT_CHECKED_SETTER = (function(){
+    try { return Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "checked").set; } catch(e){ return null; }
+  })();
+
+  function setNativeValue(el, v){
+    const val = (v == null) ? "" : String(v);
+
+    try{
+      if (el && el._valueTracker && typeof el._valueTracker.setValue === "function"){
+        el._valueTracker.setValue(el.value);
+      }
+    }catch(e){}
+
+    try{
+      if (el.tagName === "TEXTAREA" && TA_VALUE_SETTER) TA_VALUE_SETTER.call(el, val);
+      else if (el.tagName === "INPUT" && INPUT_VALUE_SETTER) INPUT_VALUE_SETTER.call(el, val);
+      else el.value = val;
+    }catch(e){ try{ el.value = val; }catch(_){ } }
+  }
+
+  function setNativeChecked(el, b){
+    const val = !!b;
+    try{
+      if (INPUT_CHECKED_SETTER) INPUT_CHECKED_SETTER.call(el, val);
+      else el.checked = val;
+    }catch(e){ try{ el.checked = val; }catch(_){ } }
+  }
+
+  function fire(el, type){
+    try{ el.dispatchEvent(new Event(type, { bubbles:true })); }catch(e){}
+  }
+
+  // =========================
+  // Baseline Snapshot: attrs (alle) + controls (keyed)
+  // =========================
+  function controlKey(el){
+    const tag = el.tagName.toLowerCase();
+    const type = (tag === "input") ? ((el.getAttribute("type") || el.type || "").toLowerCase()) : "";
+    const id   = el.id || "";
+    const name = el.getAttribute("name") || "";
+    const aria = el.getAttribute("aria-label") || "";
+    const ph   = el.getAttribute("placeholder") || "";
+    const sol  = el.getAttribute("data-solution") || el.getAttribute("data-answer") || "";
+    return [tag,type,id,name,aria,ph,sol].join("||");
+  }
+
+  function snapshotBaseline(anchor){
+    const seg = collectSegment(anchor);
+    const nodes = seg.nodes;
+
+    const attrSnaps = [];
+    const controlsByKey = Object.create(null);
+
+    for (let i=0;i<nodes.length;i++){
+      const el = nodes[i];
+      if (!el || el.nodeType !== 1) continue;
+
+      const dk = pickDataKey(el);
+      const snap = {
+        path: pathFrom(seg.root, el),
+        id: el.id || "",
+        dk,
+        tag: el.tagName,
+        sum: (el.tagName === "DETAILS") ? summaryTextOfDetails(el) : "",
+        attrs: snapshotAttrs(el),
+        detailsOpen: (el.tagName === "DETAILS") ? !!el.open : null
+      };
+      attrSnaps.push(snap);
+
+      if (el.matches && el.matches("input,textarea,select")){
+        const key = controlKey(el);
+        const tagU = el.tagName.toUpperCase();
+        const type = (tagU === "INPUT") ? ((el.getAttribute("type") || el.type || "").toLowerCase()) : "";
+
+        const entry = {
+          tag: tagU,
+          type,
+          disabled: !!el.disabled,
+          readOnly: !!el.readOnly,
+          valueAttr: el.getAttribute("value"),
+
+          value: (tagU === "SELECT") ? null : (el.value == null ? "" : String(el.value)),
+          defaultValue: (tagU === "SELECT") ? null : (el.defaultValue == null ? "" : String(el.defaultValue)),
+
+          checked: (tagU === "INPUT" && (type === "checkbox" || type === "radio")) ? !!el.checked : null,
+          defaultChecked: (tagU === "INPUT" && (type === "checkbox" || type === "radio")) ? !!el.defaultChecked : null,
+
+          selectedIndex: (tagU === "SELECT") ? el.selectedIndex : null,
+          selectValue: (tagU === "SELECT") ? (el.value == null ? "" : String(el.value)) : null
+        };
+
+        (controlsByKey[key] || (controlsByKey[key] = [])).push(entry);
+      }
+    }
+
+    return { attrSnaps, controlsByKey };
+  }
+
+  // =========================
+  // Hard-unblock: verhindert "Buttons tot" nach Reset
+  // =========================
+  function hardUnblock(nodes){
+    for (let i=0;i<nodes.length;i++){
+      const el = nodes[i];
+      if (!el || el.nodeType !== 1) continue;
+
+      if (el.tagName === "FIELDSET"){
+        try{ el.disabled = false; el.removeAttribute("disabled"); }catch(e){}
+      }
+      if (el.hasAttribute && el.hasAttribute("inert")){
+        try{ el.removeAttribute("inert"); }catch(e){}
+      }
+      if (el.getAttribute && el.getAttribute("aria-disabled") === "true"){
+        try{ el.setAttribute("aria-disabled","false"); }catch(e){}
+      }
+      try{
+        if (el.style && el.style.pointerEvents === "none") el.style.pointerEvents = "";
+      }catch(e){}
+
+      if (el.matches && el.matches("input,textarea,select,button")){
+        try{ el.disabled = false; el.removeAttribute("disabled"); }catch(e){}
+        if ("readOnly" in el){
+          try{ el.readOnly = false; el.removeAttribute("readonly"); }catch(e){}
+        }
+      }
+    }
+  }
+
+  // =========================
+  // Interner Lia-Reset: NUR im Quiz-Scope klicken (verhindert Folien-Sprung!)
+  // =========================
+  function isInNavLike(el){
+    if (!el || !el.closest) return false;
+    return !!el.closest("nav, .lia-nav, .lia-navigation, .lia-sidebar, .lia-toc, .lia-menu, .lia-controls, .lia-presentation-controls");
+  }
+
+  function isCheckLike(el){
+    const t = ((el.textContent||"") + " " + (el.getAttribute("aria-label")||"") + " " + (el.getAttribute("title")||"")).toLowerCase();
+    return t.includes("prüfen") || t.includes("pruefen") || t.includes("check");
+  }
+  function isSolveLike(el){
+    const t = ((el.textContent||"") + " " + (el.getAttribute("aria-label")||"") + " " + (el.getAttribute("title")||"")).toLowerCase();
+    return t.includes("lösung") || t.includes("loesung") || t.includes("solve") || t.includes("zeige");
+  }
+  function isHintLike(el){
+    const t = ((el.textContent||"") + " " + (el.getAttribute("aria-label")||"") + " " + (el.getAttribute("title")||"")).toLowerCase();
+    return t.includes("hint") || t.includes("tipp");
+  }
+
+  function commonAncestor(els){
+    if (!els || !els.length) return null;
+    const chains = els.map(el=>{
+      const arr = [];
+      let c = el;
+      while (c){ arr.push(c); c = c.parentElement; }
+      return arr;
+    });
+    const first = chains[0];
+    for (let i=0;i<first.length;i++){
+      const cand = first[i];
+      let ok = true;
+      for (let j=1;j<chains.length;j++){
+        if (chains[j].indexOf(cand) < 0){ ok = false; break; }
+      }
+      if (ok) return cand;
+    }
+    return null;
+  }
+
+  function findQuizScope(nodes){
+    const liaBtns = [];
+    for (let i=0;i<nodes.length;i++){
+      const el = nodes[i];
+      if (el && el.nodeType === 1 && el.classList && el.classList.contains("lia-btn")) liaBtns.push(el);
+    }
+    if (!liaBtns.length) return null;
+
+    // Nur wenn es wirklich Prüfen+Lösung gibt (typisch [[...]]-Quiz)
+    let hasCheck = false, hasSolve = false;
+    for (let i=0;i<liaBtns.length;i++){
+      if (isCheckLike(liaBtns[i])) hasCheck = true;
+      if (isSolveLike(liaBtns[i])) hasSolve = true;
+    }
+    if (!hasCheck && !hasSolve) return null;
+
+    return commonAncestor(liaBtns) || liaBtns[0].parentElement;
+  }
+
+  function scoreResetCandidate(el){
+    if (!el || el.nodeType !== 1) return -999;
+    if (isInNavLike(el)) return -999;
+
+    const tag = el.tagName;
+    if (tag !== "BUTTON" && tag !== "A" && el.getAttribute("role") !== "button") return -999;
+
+    const txt = ((el.textContent || "")).trim().toLowerCase();
+    const al  = ((el.getAttribute("aria-label") || "") + " " + (el.getAttribute("title") || "")).trim().toLowerCase();
+    const cls = ((typeof el.className === "string") ? el.className : "").toLowerCase();
+    const id  = (el.id || "").toLowerCase();
+    const s = (txt + " " + al + " " + cls + " " + id).replace(/\s+/g, " ");
+
+    let score = 0;
+
+    if (s.includes("↺") || s.includes("⟲") || s.includes("⟳")) score += 40;
+    if (s.includes("reset") || s.includes("neustart") || s.includes("restart")) score += 30;
+    if (s.includes("zurück") || s.includes("zurueck") || s.includes("zurücksetzen") || s.includes("zuruecksetzen")) score += 25;
+
+    if (el.querySelector && el.querySelector("svg")) score += 5;
+    if (cls.includes("lia-btn")) score += 3;
+
+    if (isCheckLike(el)) score -= 60;
+    if (isSolveLike(el)) score -= 60;
+    if (isHintLike(el)) score -= 25;
+
+    return score;
+  }
+
+  function clickInternalResets(nodes){
+    const scope = findQuizScope(nodes);
+    if (!scope) return; // <<< entscheidend: ohne Quiz-Scope KEIN Klick => kein Folien-Sprung
+
+    const cands = [];
+    const btns = scope.querySelectorAll("button, a, [role='button']");
+    for (let i=0;i<btns.length;i++){
+      const el = btns[i];
+      const sc = scoreResetCandidate(el);
+      if (sc >= 18) cands.push({ el, sc });
+    }
+    cands.sort((a,b)=>b.sc-a.sc);
+
+    const max = Math.min(2, cands.length);
+    for (let i=0;i<max;i++){
+      const el = cands[i].el;
+      try{
+        if ("disabled" in el && el.disabled){ el.disabled = false; el.removeAttribute("disabled"); }
+        if (el.getAttribute && el.getAttribute("aria-disabled") === "true") el.setAttribute("aria-disabled","false");
+      }catch(e){}
+      try{ el.click(); }catch(e){}
+    }
+
+    // Toolbar fallback: wenn genau ein "leftover" existiert
+    const liaBtns = Array.from(scope.querySelectorAll("button.lia-btn, a.lia-btn"));
+    if (liaBtns.length >= 3){
+      const leftovers = liaBtns.filter(b => !isCheckLike(b) && !isSolveLike(b) && !isHintLike(b));
+      if (leftovers.length === 1 && scoreResetCandidate(leftovers[0]) > 0){
+        const el = leftovers[0];
+        try{
+          if ("disabled" in el && el.disabled){ el.disabled = false; el.removeAttribute("disabled"); }
+          if (el.getAttribute && el.getAttribute("aria-disabled") === "true") el.setAttribute("aria-disabled","false");
+        }catch(e){}
+        try{ el.click(); }catch(e){}
+      }
+    }
+  }
+
+  // =========================
+  // Restore: attrs + controls (keyed); zusätzlich: Details schließen wenn baseline fehlt
+  // =========================
+  function restoreFromBaseline(anchor, baseline){
+    const seg = collectSegment(anchor);
+    const nodes = seg.nodes;
+
+    // A) Attribute/Details robust wiederherstellen
+    for (let i=0;i<baseline.attrSnaps.length;i++){
+      const s = baseline.attrSnaps[i];
+
+      let el = byPath(seg.root, s.path);
+      if (!el || !el.isConnected) el = locateByFallback(seg.root, s);
+      if (!el || !el.isConnected) continue;
+
+      restoreAttrs(el, s.attrs);
+
+      if (s.tag === "DETAILS"){
+        try{
+          el.open = !!s.detailsOpen;
+          if (s.detailsOpen) el.setAttribute("open","");
+          else el.removeAttribute("open");
+        }catch(e){}
+      }
+    }
+
+    // Zusätzlich: Details, die neu dazu kamen, schließen
+    for (let i=0;i<nodes.length;i++){
+      const el = nodes[i];
+      if (el && el.tagName === "DETAILS"){
+        // wenn baseline dieses Details nicht kennt, sicher schließen
+        // (bei [->[]] hilft das oft schon)
+        // wir erkennen baseline-known via id/summary
+        const sum = summaryTextOfDetails(el);
+        let known = false;
+        for (let j=0;j<baseline.attrSnaps.length;j++){
+          const bs = baseline.attrSnaps[j];
+          if (bs.tag !== "DETAILS") continue;
+          if (bs.id && el.id && bs.id === el.id) { known = true; break; }
+          if (bs.sum && sum && bs.sum === sum) { known = true; break; }
+        }
+        if (!known){
+          try{ el.open = false; el.removeAttribute("open"); }catch(e){}
+        }
+      }
+    }
+
+    // B) Controls restore keyed
+    const queues = Object.create(null);
+    for (const k in baseline.controlsByKey) queues[k] = baseline.controlsByKey[k].slice();
+
+    const controlsNow = [];
+    for (let i=0;i<nodes.length;i++){
+      const el = nodes[i];
+      if (el && el.matches && el.matches("input,textarea,select")) controlsNow.push(el);
+    }
+
+    for (let i=0;i<controlsNow.length;i++){
+      const el = controlsNow[i];
+      const k = controlKey(el);
+      const q = queues[k];
+      if (!q || q.length === 0) continue;
+
+      const b = q.shift();
+
+      try{
+        el.disabled = !!b.disabled;
+        if (b.disabled) el.setAttribute("disabled","");
+        else el.removeAttribute("disabled");
+      }catch(e){}
+      try{
+        if ("readOnly" in el){
+          el.readOnly = !!b.readOnly;
+          if (b.readOnly) el.setAttribute("readonly","");
+          else el.removeAttribute("readonly");
+        }
+      }catch(e){}
+
+      // value-Attr wie initial
+      try{
+        if (b.valueAttr === null) el.removeAttribute("value");
+        else el.setAttribute("value", String(b.valueAttr));
+      }catch(e){}
+
+      const tagU = el.tagName.toUpperCase();
+      const type = (tagU === "INPUT") ? ((el.getAttribute("type") || el.type || "").toLowerCase()) : "";
+
+      if (tagU === "SELECT"){
+        try{ el.selectedIndex = b.selectedIndex; el.value = b.selectValue; }catch(e){}
+        fire(el,"change");
+      }
+      else if (tagU === "INPUT" && (type === "checkbox" || type === "radio")){
+        setNativeChecked(el, !!b.checked);
+        try{ el.defaultChecked = !!b.defaultChecked; }catch(e){}
+        fire(el,"change");
+      }
+      else {
+        // value + defaultValue zurück => Geisterkiller
+        const v  = (b.value == null) ? "" : String(b.value);
+        const dv = (b.defaultValue == null) ? "" : String(b.defaultValue);
+        setNativeValue(el, v);
+        try{ el.defaultValue = dv; }catch(e){}
+        fire(el,"input"); fire(el,"change");
+      }
+    }
+
+    // C) Lia-Buttons reaktivieren
+    for (let i=0;i<nodes.length;i++){
+      const el = nodes[i];
+      if (!el || el.nodeType !== 1) continue;
+      if (el.classList && el.classList.contains("lia-btn")){
+        try{ el.disabled = false; el.removeAttribute("disabled"); }catch(e){}
+        try{ el.removeAttribute("aria-disabled"); }catch(e){}
+        try{ if (el.style && el.style.pointerEvents === "none") el.style.pointerEvents = ""; }catch(e){}
+      }
+    }
+  }
+
+  // =========================
+  // Reset workflow (Mehrfach-Pass)
+  // =========================
+  function resetById(id){
+    const it = REG.items[id];
+    if (!it || !it.anchor || !it.anchor.isConnected) return;
+
+    syncAccent();
+
+    const run = () => {
+      const seg = collectSegment(it.anchor);
+
+      // 1) entblocken
+      hardUnblock(seg.nodes);
+
+      // 2) internen Reset klicken (aber nur im Quiz-Scope; verhindert Slide-Sprung)
+      clickInternalResets(seg.nodes);
+
+      // 3) entblocken
+      hardUnblock(seg.nodes);
+
+      // 4) baseline restore (attrs+controls) => [->[]]
+      if (it.baseline) restoreFromBaseline(it.anchor, it.baseline);
+
+      // 5) nochmal entblocken
+      const seg2 = collectSegment(it.anchor);
+      hardUnblock(seg2.nodes);
+    };
+
+    run();
+    WIN.setTimeout(run, 0);
+    WIN.requestAnimationFrame(run);
+    WIN.setTimeout(run, 120);
+    WIN.setTimeout(run, 300);
+  }
+
+  // =========================
+  // Overlay Positionierung (fixed + rAF)
   // =========================
   function positionOne(id){
     const it = REG.items[id];
     if (!it || !it.anchor || !it.btn || !it.anchor.isConnected) return;
 
     const r = it.anchor.getBoundingClientRect();
-    const x = r.left + (WIN.pageXOffset || DOC.documentElement.scrollLeft || 0);
-    const y = r.top  + (WIN.pageYOffset || DOC.documentElement.scrollTop  || 0);
-
-    it.btn.style.left = x + "px";
-    it.btn.style.top  = y + "px";
+    it.btn.style.left = (r.left) + "px";
+    it.btn.style.top  = (r.top)  + "px";
     it.btn.style.width  = Math.max(1, r.width) + "px";
     it.btn.style.height = Math.max(1, r.height) + "px";
   }
@@ -205,55 +724,22 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
   }
 
   // =========================
-  // Reset = Range delete + insert Initial-Fragment
+  // Button erzeugen (mit HARD event-block gegen Slide-Advance)
   // =========================
-  function resetById(id){
-    const it = REG.items[id];
-    if (!it || !it.anchor || !it.anchor.isConnected) return;
-
-    syncAccent();
-
-    // Boundary live neu ermitteln (Slides tauschen DOM oft aus)
-    const root  = getRootFor(it.anchor);
-    const endEl = findEndMarker(it.anchor, root);
-    const r = makeRange(it.anchor, root, endEl);
-
-    // Falls Template noch nicht existiert (z.B. Anchor später gerendert) => jetzt snapshotten
-    if (!it.templateFrag){
-      if (!rangeLooksInteracted(r)){
-        it.templateFrag = r.cloneContents();
-      } else {
-        // wenn schon interagiert: trotzdem "hard reset" auf aktuellen DOM-Stand
-        it.templateFrag = r.cloneContents();
-      }
-    }
-
-    // Jetzt wirklich zurücksetzen
-    try{ r.deleteContents(); }catch(e){}
-
-    // Wichtig: cloneNode(true), weil Fragment nur einmal insertbar ist
+  function blockEvt(ev){
     try{
-      const fresh = it.templateFrag.cloneNode(true);
-      r.insertNode(fresh);
+      ev.preventDefault();
+      ev.stopPropagation();
+      if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
     }catch(e){}
-
-    // nachziehen: LiaScript und Layout brauchen manchmal 1 Tick
-    WIN.setTimeout(function(){
-      scan();     // falls LiaScript neue Wrapper baut / Buttons neu auftauchen
-      positionAll();
-    }, 50);
   }
 
-  // =========================
-  // Scan: Anchors finden, Overlay-Button erzeugen, Template snapshotten
-  // =========================
   function ensureButton(anchor){
     const id = anchor.getAttribute("data-resetter-id") || "";
     if (!id) return;
 
     let it = REG.items[id];
-    if (!it) it = REG.items[id] = { anchor:null, btn:null, root:null, endEl:null, templateFrag:null };
-
+    if (!it) it = REG.items[id] = { anchor:null, btn:null, baseline:null };
     it.anchor = anchor;
 
     if (!it.btn){
@@ -263,27 +749,24 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
       btn.textContent = "Neustart der Aufgabe";
       btn.setAttribute("data-resetter-id", id);
 
+      // Blocke Slide-Advance sehr früh
+      btn.addEventListener("pointerdown", blockEvt, true);
+      btn.addEventListener("mousedown",   blockEvt, true);
+      btn.addEventListener("mouseup",     blockEvt, true);
       btn.addEventListener("click", function(ev){
-        ev.preventDefault();
-        ev.stopPropagation();
+        blockEvt(ev);
         resetById(id);
-      }, { capture:true, passive:false });
+      }, true);
 
       (DOC.body || DOC.documentElement).appendChild(btn);
       it.btn = btn;
     }
 
-    // Snapshot (wenn noch nicht vorhanden)
-    if (!it.templateFrag){
-      const root  = getRootFor(anchor);
-      const endEl = findEndMarker(anchor, root);
-      const r = makeRange(anchor, root, endEl);
-      if (!rangeLooksInteracted(r)){
-        it.templateFrag = r.cloneContents();
-      } else {
-        // Falls der Anchor erst nach Interaktion erscheint: lieber aktuellen Stand als baseline nehmen,
-        // sonst resetten wir auf "kaputt" zurück.
-        it.templateFrag = r.cloneContents();
+    // baseline früh (nur pristine)
+    if (!it.baseline){
+      const seg = collectSegment(anchor);
+      if (seg.nodes.length && !looksInteracted(seg.nodes)){
+        it.baseline = snapshotBaseline(anchor);
       }
     }
 
@@ -304,7 +787,7 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
       ensureButton(a);
     }
 
-    // cleanup: entfernte Anchors -> Button entfernen
+    // cleanup
     for (const id in REG.items){
       if (!seen[id]){
         const it = REG.items[id];
@@ -332,14 +815,17 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
     WIN.addEventListener("scroll", positionAll, { passive:true });
     WIN.addEventListener("resize", positionAll);
 
-    // DOM-Wechsel: Slides/Seite2 etc.
     try{
       const mo = new MutationObserver(function(){
         scheduleScan();
         positionAll();
       });
-      mo.observe(DOC.documentElement, { childList:true, subtree:true });
+      mo.observe(DOC.documentElement, { childList:true, subtree:true, attributes:true });
     }catch(e){}
+
+    if (!REG.intervalId){
+      REG.intervalId = WIN.setInterval(scan, 700);
+    }
   }
 
   init();
@@ -353,6 +839,9 @@ button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underl
 <span class="lia-resetter-anchor" data-resetter-id="@0">Neustart der Aufgabe</span>
 @end
 -->
+
+
+
 
 
 
