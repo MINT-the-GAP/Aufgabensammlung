@@ -26,7 +26,26 @@ Auf den folgenden Seiten werden die Features von SchulLia vorgestellt.
 
 
 
-## Canvas
+## Tafelmodus
+
+Klicke auf das A im Header und ändere im Präsentationsmodus die Schriftgröße mit dem Slider. Empfehlung: Nightly
+
+`https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/README.md`
+
+
+![Navigation](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/pics/Readme/navigation.png)
+
+
+
+## Besser Navigation
+
+Öffne die Navigation und beachte die (▶/▼)-Symbole. Klicke darauf, um die weiteren Überschriften auf- oder einzuklappen
+
+
+
+
+
+### Canvas
 
 Klicke auf den Stift neben dem Eingabefeld um das Canvas zu öffnen
 
@@ -46,22 +65,17 @@ Testzwecke (2 ist Lösung):
 
 
 
-## Textmarker
+### Textmarker
 
 Klicke auf den Stift im Header und markiere im Text wie es dir beliebt. Wechsel Lehrbuch ↔ Präsentation ↔ Slides und ändere die Schriftgröße.
 
 
 
 
-## Tafelmodus
-
-Klicke auf das A im Header und ändere im Präsentationsmodus die Schriftgröße mit dem Slider. Empfehlung: Nightly
-
-`https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/README.md`
 
 
 
-## Dynamsische Flex-Childs
+### Dynamsische Flex-Childs
 
 Geh an den rechten vertikalen Trennstrich zwischen den Blöcken und schiebe diesen nach belieben hin und her. Funktioniert auch mit Textmarkern.
 
@@ -117,7 +131,7 @@ __$i)\;\;$__ Lösung ist 6: [[ 6 ]]
 
 
 
-## Deutschaufgabenmakros
+### Deutschaufgabenmakros
 
 
 
@@ -174,7 +188,7 @@ __Aufgabe 5:__ Korrigiere die Rechtschreibfehler im gezeigten Satz. (Auflösung 
 
 
 
-## Mathematikaufgabenmakros
+### Mathematikaufgabenmakros
 
 
 

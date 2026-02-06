@@ -714,13 +714,13 @@ function ensureCss(){
       const step = Math.max(6, Number(bgStep) || 24);
       const b = worldBounds();
 
-      const col = rgbaFromAny(getAccentColor(), 0.25);
+      const col = rgbaFromAny(getAccentColor(), 0.65);
 
       ctx.save();
       ctx.globalCompositeOperation = 'source-over';
       ctx.globalAlpha = 1.0;
       ctx.strokeStyle = col;
-      ctx.lineWidth = 1 / VIEW.scale;
+      ctx.lineWidth = 1.125 / VIEW.scale;
 
       const xStart = Math.floor(b.x0 / step) * step;
       const xEnd   = Math.ceil (b.x1 / step) * step;

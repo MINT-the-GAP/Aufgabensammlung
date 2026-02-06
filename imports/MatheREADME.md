@@ -6,19 +6,47 @@ author: Martin Lommatzsch
 
 comment: FractionQuizzes (circle+rect) — 200x200 + Label IM Slider (wie Button), nur Schieber (kein Reset/keine Zahlen), import-sicher, kein ||-Parsefehler
 
-@style
+
+
+
+
+@onload
+(function () {
+
+  // =========================
+  // Root/Content (iframe-safe)
+  // =========================
+  function getRootWindow(){
+    let w = window;
+    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
+    return w;
+  }
+
+  const ROOT = getRootWindow();
+  const STORE_KEY = "__LIA_FRACTION_QUIZ_V1__";
+  const STYLE_ID  = "__LIA_FRACTION_QUIZ_STYLE_V1__";
+
+  // =========================
+  // Style Injection (ROOT head)
+  // =========================
+  function injectStyleOnce(){
+    let DOC = null;
+    try { DOC = (ROOT && ROOT.document) ? ROOT.document : document; } catch(e){ DOC = document; }
+    if (!DOC || !DOC.head) return;
+    if (DOC.getElementById(STYLE_ID)) return;
+
+    const css = `
 :root{
   --fq-track: rgba(0,0,0,.20);
   --fq-thumb: rgba(0,0,0,.88);
   --fq-ring:  rgba(255,255,255,.90);
 
-  /* Control-Geometrie */
   --fq-w: 200px;
-  --fq-h: 30px;         /* <- Höhe des “Button-Schiebers” (inkl. Label drin) */
-  --fq-track-h: 4px;    /* Track-Dicke */
-  --fq-thumb-sz: 12px;  /* Thumb-Größe */
+  --fq-h: 30px;
+  --fq-track-h: 4px;
+  --fq-thumb-sz: 12px;
   --fq-label-size: 11px;
-  --fq-label-top: 3px;  /* Label-Position innerhalb des Controls */
+  --fq-label-top: 3px;
 }
 @media (prefers-color-scheme: dark){
   :root{
@@ -28,7 +56,7 @@ comment: FractionQuizzes (circle+rect) — 200x200 + Label IM Slider (wie Button
   }
 }
 
-/* ===== Wrapper: Label “im” Control ===== */
+/* Wrapper: Label “im” Control */
 .fq-range{
   width: var(--fq-w);
   max-width: var(--fq-w);
@@ -50,7 +78,7 @@ comment: FractionQuizzes (circle+rect) — 200x200 + Label IM Slider (wie Button
   z-index: 2;
 }
 
-/* LiaScript-Wrapper kompakt + Textausgabe killen */
+/* LiaScript-Wrapper kompakt + “Textausgabe” killen */
 .fq-range .lia-input{
   width: var(--fq-w) !important;
   max-width: var(--fq-w) !important;
@@ -59,7 +87,7 @@ comment: FractionQuizzes (circle+rect) — 200x200 + Label IM Slider (wie Button
   padding: 0 !important;
   display: flex !important;
   align-items: center !important;
-  font-size: 0 !important;  /* <- falls LiaScript Output als Textnode kommt */
+  font-size: 0 !important;
   line-height: 0 !important;
   min-height: 0 !important;
 }
@@ -78,19 +106,17 @@ comment: FractionQuizzes (circle+rect) — 200x200 + Label IM Slider (wie Button
   display: none !important;
 }
 
-/* ===== Range: im Control platziert ===== */
+/* Range: im Control platziert */
 .fq-range input[type="range"]{
   width: var(--fq-w) !important;
   max-width: var(--fq-w) !important;
   height: var(--fq-h) !important;
   margin: 0 !important;
   padding: 0 !important;
-
   background: transparent;
   -webkit-appearance: none;
   appearance: none;
   -webkit-tap-highlight-color: transparent;
-
   touch-action: none;
   position: relative;
   z-index: 1;
@@ -126,22 +152,21 @@ comment: FractionQuizzes (circle+rect) — 200x200 + Label IM Slider (wie Button
   background: var(--fq-thumb);
   border: 2px solid var(--fq-ring);
 }
-@end
+    `.trim();
 
-
-@onload
-(function () {
-  function getRootWindow(){
-    let w = window;
-    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
-    return w;
+    const style = DOC.createElement("style");
+    style.id = STYLE_ID;
+    style.textContent = css;
+    DOC.head.appendChild(style);
   }
 
-  const ROOT = getRootWindow();
-  const KEY  = "__LIA_FRACTION_QUIZ_V1__";
+  injectStyleOnce();
 
-  if (!ROOT[KEY]) {
-    ROOT[KEY] = {
+  // =========================
+  // Store (import-safe)
+  // =========================
+  if (!ROOT[STORE_KEY]) {
+    ROOT[STORE_KEY] = {
       circle:   Object.create(null), // uid -> boolean[]
       rect:     Object.create(null), // uid -> boolean[]
       rectDims: Object.create(null), // uid -> {rows, cols}
@@ -182,8 +207,9 @@ comment: FractionQuizzes (circle+rect) — 200x200 + Label IM Slider (wie Button
     };
   }
 
-  ROOT.__LIA_FRACTION_QUIZ__ = ROOT[KEY];
-  window.__LIA_FRACTION_QUIZ__ = ROOT[KEY];
+  ROOT.__LIA_FRACTION_QUIZ__ = ROOT[STORE_KEY];
+  window.__LIA_FRACTION_QUIZ__ = ROOT[STORE_KEY];
+
 })();
 @end
 

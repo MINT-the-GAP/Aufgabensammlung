@@ -23,7 +23,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-# Bruchrechnungstests 1
+# Geo 3
 
 
 <section class="dynFlex">
