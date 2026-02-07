@@ -2,13 +2,14 @@
 version:  0.0.1
 language: de
 author: Martin Lommatzsch
-comment: Resetter v0.0.1 — Segment neu rendern (LIASCRIPT) + statisches Originalsegment per DOM-Range entfernen (wrapper-sicher), Salt unsichtbar
+comment: Aufgabenresetter v0.0.1 — Reset = Segment per LIASCRIPT neu rendern; statische Originalkopie wird über lineGoto-Zeilenbereich zuverlässig ausgeblendet (wrapper-sicher)
 
 @style
 .lia-resetter-marker{ display:none !important; }
 .lia-resetter-salt{ display:none !important; }
 output.lia-resetter-out{ display:block !important; }
 
+/* Button: inline, transparent, Rand+Schrift Themefarbe, klein, max. Font-Höhe */
 button.lia-resetter-btn{
   background: transparent !important;
   border: 1px solid currentColor !important;
@@ -40,32 +41,37 @@ button.lia-resetter-btn:focus{
 
 
 @onload
-(function(){
+(function () {
 
+  // =========================
+  // Root/Content (iframe-safe)
+  // =========================
   function getRootWindow(){
     let w = window;
     try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
     return w;
   }
-
   const ROOT = getRootWindow();
   const DOC  = document;
 
+  // =========================
+  // Registry (import-sicher)
+  // =========================
   const REGKEY = "__LIA_RESETTER_V001__";
   const REG = ROOT[REGKEY] || (ROOT[REGKEY] = {
-    items: Object.create(null),      // uid -> { send, marker, seg, salt }
+    items: Object.create(null), // uid -> { send, marker, seg, startLine, endLine, salt }
     mdLines: null,
     mdPromise: null,
     guardDocs: new WeakSet()
   });
 
-  // ---------------------------
-  // Helpers
-  // ---------------------------
   function selAttr(v){
     return String(v || "").replace(/\\/g,"\\\\").replace(/"/g,'\\"');
   }
 
+  // =========================
+  // Course-URL + Markdown Lines
+  // =========================
   function getCourseUrl(){
     try{
       const s = (ROOT.location && ROOT.location.search) ? ROOT.location.search : (location.search || "");
@@ -82,7 +88,6 @@ button.lia-resetter-btn:focus{
         const cand = usp.get("url") || usp.get("src") || usp.get("course") || usp.get("md");
         if (cand && /^https?:\/\//i.test(cand)) return decodeURIComponent(cand);
       }catch(e){}
-
       return null;
     }catch(e){
       return null;
@@ -108,23 +113,16 @@ button.lia-resetter-btn:focus{
     return REG.mdPromise;
   }
 
-  function isHeadingLine(line){
-    return /^[ \t]*#{1,6}\s+/.test(line || "");
-  }
-  function isResetterLine(line){
-    return /@resetter\b/.test(line || "");
-  }
+  // =========================
+  // Segment aus Markdown bestimmen (bis nächster @resetter oder nächste Überschrift)
+  // =========================
+  function isHeadingLine(line){ return /^[ \t]*#{1,6}\s+/.test(line || ""); }
+  function isResetterLine(line){ return /@resetter\b/.test(line || ""); }
 
-  function markerFor(uid){
-    return DOC.querySelector('.lia-resetter-marker[data-resetter-uid="'+selAttr(uid)+'"]');
-  }
-
-  // MAX lineGoto(...) aus dem "Aufgabe X:"-Absatz
   function approxLineFromMarker(marker){
     try{
       const p = marker && (marker.closest("p") || marker.closest(".lia-paragraph"));
       if (!p) return null;
-
       let best = null;
       p.querySelectorAll('[ondblclick*="lineGoto("]').forEach(el => {
         const s = el.getAttribute("ondblclick") || "";
@@ -145,8 +143,8 @@ button.lia-resetter-btn:focus{
     let idx = approx;
     if (idx >= lines.length && (idx - 1) >= 0) idx = idx - 1;
 
-    const lo = Math.max(0, idx - 12);
-    const hi = Math.min(lines.length - 1, idx + 12);
+    const lo = Math.max(0, idx - 14);
+    const hi = Math.min(lines.length - 1, idx + 14);
 
     for (let i = idx; i >= lo; i--){
       if (isResetterLine(lines[i])) return i;
@@ -157,130 +155,145 @@ button.lia-resetter-btn:focus{
     return null;
   }
 
-  function extractSegment(lines, resetIdx){
+  function computeSegment(lines, resetIdx){
     const start = resetIdx + 1;
     let end = lines.length;
-
     for (let i = start; i < lines.length; i++){
       if (isResetterLine(lines[i]) || isHeadingLine(lines[i])){
         end = i;
         break;
       }
     }
-    return lines.slice(start, end).join("\n");
+    return {
+      seg: lines.slice(start, end).join("\n"),
+      startLine: start,
+      endLine: end
+    };
   }
 
-  // ---------------------------
-  // DOM-Range Cleanup (wrapper-sicher)
-  // Entfernt alles nach dem "Aufgabe X:"-Absatz bis vor den nächsten
-  // Resetter-Marker oder Heading (innerhalb der aktuellen Folie/Section, sonst main).
-  // ---------------------------
-  function findStopAnchor(scope, pStart){
-    const tw = DOC.createTreeWalker(scope, NodeFilter.SHOW_ELEMENT, null);
-    let n, started = false;
+  // =========================
+  // Statische Kopie ausblenden (wrapper-sicher) via lineGoto-Bereich
+  // Wir blenden ALLE Blocks aus, die lineGoto in [startLine, endLine) haben,
+  // aber NICHT innerhalb der dynamischen Wrapper-Ausgabe liegen.
+  // =========================
+  function parseLineGotoFrom(el){
+    const s = el && el.getAttribute ? (el.getAttribute("ondblclick") || "") : "";
+    const m = s.match(/lineGoto\((\d+)\)/);
+    return m ? parseInt(m[1], 10) : null;
+  }
 
-    while ((n = tw.nextNode())){
-      if (!started){
-        if (n === pStart) started = true;
-        continue;
+  function pickBlock(node, scope){
+    let el = node;
+    while (el && el !== scope && el.nodeType === 1){
+      if (el.classList){
+        if (el.classList.contains("lia-paragraph") ||
+            el.classList.contains("lia-table") ||
+            el.classList.contains("lia-code") ||
+            el.classList.contains("lia-quiz")) return el;
       }
+      if (el.tagName === "TABLE" || el.tagName === "UL" || el.tagName === "OL" || el.tagName === "LI") return el;
 
-      // nächster Resetter
-      if (n.classList && n.classList.contains("lia-resetter-marker")){
-        return n.closest("p") || n.closest(".lia-paragraph") || n;
-      }
+      const p = el.parentElement;
+      if (!p) break;
+      // wenn direkt unter section/main/body => blockig genug
+      if (p === scope || p.tagName === "SECTION" || p.tagName === "MAIN" || p === DOC.body) return el;
 
-      // nächste Überschrift
-      if (/^H[1-6]$/.test(n.tagName) || n.tagName === "HEADER"){
-        return n;
-      }
+      el = p;
     }
-    return null;
+    return node;
   }
 
-  function cleanupOriginal(uid){
+  function hideStatic(uid){
     const it = REG.items[uid];
-    if (!it || !it.marker) return false;
+    if (!it || it.startLine == null || it.endLine == null) return;
 
-    const marker = it.marker;
-    const pStart = marker.closest("p") || marker.closest(".lia-paragraph");
-    if (!pStart) return false;
+    const marker = DOC.querySelector('.lia-resetter-marker[data-resetter-uid="'+selAttr(uid)+'"]');
+    if (!marker) return;
 
-    const scope =
-      marker.closest("section") ||
-      marker.closest("main") ||
-      DOC.querySelector("main") ||
-      DOC.body;
+    const scope = marker.closest("section") || DOC.querySelector("main") || DOC.body;
 
-    const stop = findStopAnchor(scope, pStart);
+    const dyn = DOC.querySelector('div[data-resetter-dyn="'+selAttr(uid)+'"]');
 
-    try{
-      const r = DOC.createRange();
-      r.setStartAfter(pStart);
+    const blocks = new Set();
+    const nodes = scope.querySelectorAll('[ondblclick*="lineGoto("]');
+    for (let i = 0; i < nodes.length; i++){
+      const n = nodes[i];
 
-      if (stop){
-        r.setEndBefore(stop);
-      } else {
-        const last = scope.lastChild;
-        if (!last) return false;
-        r.setEndAfter(last);
+      // niemals dynamische Ausgabe verstecken
+      if (dyn && dyn.contains(n)) continue;
+
+      const ln = parseLineGotoFrom(n);
+      if (ln == null) continue;
+
+      if (ln >= it.startLine && ln < it.endLine){
+        const b = pickBlock(n, scope);
+        if (b && b.nodeType === 1) blocks.add(b);
       }
-
-      if (r.collapsed) return false;
-
-      // Wichtig: extract (nicht nur delete) ist stabiler bei Wrappern.
-      // Inhalt wird aus DOM entfernt und verworfen.
-      r.extractContents();
-      return true;
-    }catch(e){
-      return false;
     }
+
+    blocks.forEach(b => {
+      // defensive: nicht Marker-Absatz verstecken
+      if (marker.closest && b.contains(marker)) return;
+      b.style.display = "none";
+      b.setAttribute("data-resetter-hidden", uid);
+    });
   }
 
-  function cleanupLoop(uid){
+  function hideLoop(uid){
     let tries = 0;
     const step = () => {
       tries++;
-      const ok = cleanupOriginal(uid);
-      if (ok) return;
-      if (tries > 80) return;
-      setTimeout(step, 50);
+      hideStatic(uid);
+      if (tries > 40) return;
+      setTimeout(step, 60);
     };
     step();
   }
 
-  // ---------------------------
-  // Render / Reset = Segment neu parsen
-  // ---------------------------
+  // =========================
+  // Render / Reset
+  // =========================
   function render(uid){
     const it = REG.items[uid];
     if (!it || !it.send) return;
 
     it.salt = (it.salt || 0) + 1;
 
-    const salt = '<span class="lia-resetter-salt" data-resetter-salt="'+uid+'-'+it.salt+'"></span>\n\n';
-    it.send.output("LIASCRIPT:" + salt + (it.seg || ""));
+    const head =
+      '<div data-resetter-dyn="'+uid+'">\n' +
+      '<span class="lia-resetter-salt" data-resetter-salt="'+uid+'-'+it.salt+'"></span>\n\n';
 
-    // Danach: statisches Originalsegment wegschneiden
-    cleanupLoop(uid);
+    const tail = "\n</div>";
+
+    it.send.output("LIASCRIPT:" + head + (it.seg || "") + tail);
+
+    // statische Kopie ausblenden (auch wenn Lia später noch DOM nachzieht)
+    hideLoop(uid);
   }
 
+  // =========================
+  // Public API (Macro-Script ruft bind/reset)
+  // =========================
   ROOT.__liaResetterV001 = ROOT.__liaResetterV001 || {
     bind: async function(uid, send){
       uid = String(uid);
 
-      const marker = markerFor(uid);
+      const marker = DOC.querySelector('.lia-resetter-marker[data-resetter-uid="'+selAttr(uid)+'"]');
       if (!marker) return;
 
       const it = REG.items[uid] || (REG.items[uid] = {});
       it.send = send;
       it.marker = marker;
 
-      const lines  = await ensureMarkdown();
+      const lines = await ensureMarkdown();
       const approx = approxLineFromMarker(marker);
-      const rIdx   = findResetterLineIndex(lines, approx);
+      const rIdx = findResetterLineIndex(lines, approx);
+      if (rIdx == null) return;
 
-      it.seg = (rIdx == null) ? "" : extractSegment(lines, rIdx);
+      const segInfo = computeSegment(lines, rIdx);
+      it.seg = segInfo.seg;
+      it.startLine = segInfo.startLine;
+      it.endLine = segInfo.endLine;
 
       render(uid);
     },
@@ -290,9 +303,9 @@ button.lia-resetter-btn:focus{
     }
   };
 
-  // ---------------------------
-  // Click Guard (Capture) – verhindert Slide-Sprung
-  // ---------------------------
+  // =========================
+  // Click Guard (Capture): verhindert Folien-Sprung
+  // =========================
   function installGuard(){
     if (REG.guardDocs.has(DOC)) return;
     REG.guardDocs.add(DOC);
@@ -347,6 +360,8 @@ button.lia-resetter-btn:focus{
 </output>
 @end
 -->
+
+
 
 
 

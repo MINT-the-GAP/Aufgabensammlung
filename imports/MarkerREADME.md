@@ -1425,38 +1425,87 @@ function hlFindTOCButton(){
 // Anchor: TOC (egal ob links/rechts), sonst linkester Toolbar-Button im linken Container,
 // sonst global linkester toolbar-like Button im Top-Band (nur wenn nicht "alles rechts").
 function hlFindAnchorRect(){
-  const vp = hlViewport();
+  const vp  = hlViewport();
   const pad = 8;
 
-  const tocR = hlGetVisibleRect(hlFindTOCButton());
-  if (tocR) return tocR;
+  // Kandidatenfilter: wirklich "links", wirklich "Button", nicht zu groß
+  function pickRectFor(el, mode){
+    if (!el) return null;
 
-  const leftC = hlFindToolbarLeftContainer();
-  if (leftC){
-    const els = Array.from(leftC.querySelectorAll("button,[role='button'],a"));
-    let best = null;
+    // Overlay-Tools niemals als Anchor
+    if (typeof hlIsOverlayTool === "function" && hlIsOverlayTool(el)) return null;
+
+    // muss toolbar-like sein (Header/Toolbar)
+    if (typeof hlIsToolbarLike === "function" && !hlIsToolbarLike(el)) return null;
+
+    const r = hlGetVisibleRect(el);
+    if (!r) return null;
+
+    // nur oberes UI-Band
+    if (r.top > 220) return null;
+
+    // "Titel"/zentrierte Header-Links sind oft breit -> raus
+    const maxW = (mode === "toc") ? 220 : 140;
+    const maxH = (mode === "toc") ? 120 : 90;
+    if (r.width > maxW || r.height > maxH) return null;
+
+    // Anchor muss links sein (kein Mitte-Anker)
+    // TOC darf etwas "mittiger" sein, Buttons sonst strenger links
+    const leftLimit = (mode === "toc") ? (vp.w * 0.52) : (vp.w * 0.45);
+    if (r.left > leftLimit) return null;
+
+    // plausibel klickbar (optional, aber hilft gegen wrapper)
+    try{
+      const cs = ROOT_WIN.getComputedStyle(el);
+      if (cs && cs.pointerEvents === "none") return null;
+    }catch(e){}
+
+    return r;
+  }
+
+  // 1) TOC hat Priorität
+  try{
+    const tocEl = (typeof hlFindTOCButton === "function") ? hlFindTOCButton() : null;
+    const tocR  = pickRectFor(tocEl, "toc");
+    if (tocR) return tocR;
+  }catch(e){}
+
+  // 2) Linker Toolbar-Container (bevorzugt)
+  let best = null;
+
+  try{
+    const leftC = (typeof hlFindToolbarLeftContainer === "function") ? hlFindToolbarLeftContainer() : null;
+    if (leftC){
+      const els = Array.from(leftC.querySelectorAll("button,[role='button'],a"));
+      for (const el of els){
+        const r = pickRectFor(el, "left");
+        if (!r) continue;
+        if (!best || r.left < best.left || (r.left === best.left && r.top < best.top)){
+          best = r;
+        }
+      }
+      if (best) return best;
+    }
+  }catch(e){}
+
+  // 3) Fallback: im Header suchen, aber weiterhin NUR links
+  try{
+    const header = (typeof hlFindToolbarHeader === "function") ? hlFindToolbarHeader() : null;
+    const scope  = header || ROOT_DOC;
+
+    const els = Array.from(scope.querySelectorAll("button,[role='button'],a"));
     for (const el of els){
-      const r = hlGetVisibleRect(el);
+      const r = pickRectFor(el, "left");
       if (!r) continue;
-      if (!hlIsToolbarLike(el)) continue;
-      if (r.top > 220) continue;
-      if (!best || r.left < best.left || (r.left === best.left && r.top < best.top)) best = r;
+      if (!best || r.left < best.left || (r.left === best.left && r.top < best.top)){
+        best = r;
+      }
     }
     if (best) return best;
-  }
+  }catch(e){}
 
-  const all = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
-  let best = null;
-  for (const el of all){
-    const r = hlGetVisibleRect(el);
-    if (!r) continue;
-    if (!hlIsToolbarLike(el)) continue;
-    if (r.top > 220) continue;
-    if (!best || r.left < best.left || (r.left === best.left && r.top < best.top)) best = r;
-  }
-  if (best && best.left <= vp.w * 0.60) return best;
-
-  return { left: pad, top: pad, right: pad+34, bottom: pad+34, width:34, height:34 };
+  // 4) Harte Fallback-Position
+  return { left: pad, top: pad, right: pad+34, bottom: pad+34, width: 34, height: 34 };
 }
 
 
@@ -1471,7 +1520,7 @@ function hlCollectRowPeers(anchor){
   const a = anchor;
   const aMidY = a.top + (a.height || 34)/2;
   const yTol  = Math.max(52, (a.height||34) * 1.6);
-  const clusterMaxX = Math.min(vp.w * 0.75, a.left + 520);
+  const clusterMaxX = Math.min(vp.w * 0.55, a.left + 420);
 
   const out = [];
   const leftC = hlFindToolbarLeftContainer();
@@ -1576,46 +1625,175 @@ function hlToolbarSignature(){
 
 
 
+function hlPromoteClickable(el){
+  // elementsFromPoint liefert oft <path> / <span> etc. -> hochklettern bis "klickbar"
+  let n = el;
+  for (let i=0; i<8 && n; i++){
+    if (!n.tagName) { n = n.parentElement; continue; }
 
-function hlOverlayButtonRects(exceptId){
-  const out = [];
+    const tag = n.tagName.toLowerCase();
+    const role = (n.getAttribute && n.getAttribute("role")) || "";
+    const tabindex = n.getAttribute && n.getAttribute("tabindex");
 
-  const els = Array.from(ROOT_DOC.querySelectorAll('[data-lia-overlay="1"], [id^="lia-"]'));
+    if (
+      tag === "button" || tag === "a" ||
+      role.toLowerCase() === "button" ||
+      tabindex !== null ||
+      (n.getAttribute && n.getAttribute("onclick")) ||
+      (typeof n.onclick === "function")
+    ){
+      return n;
+    }
 
-  for (const el of els){
-    if (!el) continue;
-    if (exceptId && el.id === exceptId) continue;
+    // auch divs/spans mit pointer-cursor sind oft "Buttons"
+    try{
+      const cs = ROOT_WIN.getComputedStyle(n);
+      if (cs && cs.cursor === "pointer") return n;
+    }catch(e){}
 
-    const id = (el.id || "").toLowerCase();
-    if (!id) continue;
+    n = n.parentElement;
+  }
+  return el;
+}
 
-    // nur echte "Buttons" (id endet auf -btn / btn) ODER explizit data-lia-overlay
-    const isOverlay = (el.getAttribute && el.getAttribute("data-lia-overlay") === "1") ||
-                      id.endsWith("-btn") || id.endsWith("btn");
-    if (!isOverlay) continue;
+function hlIsBlockingOverlayCandidate(el, ourBtn){
+  if (!el) return false;
 
-    // Panels / Mounts raus
-    if (id.includes("panel") || id.includes("overlay-root")) continue;
-    if (el.closest && el.closest("#lia-hl-panel")) continue;
+  // --- promote: von <path>/<span> hoch bis klickbar ---
+  let n = el;
+  for (let i = 0; i < 8 && n; i++){
+    if (n.nodeType !== 1){ n = n.parentElement; continue; }
 
-    const r = hlGetVisibleRect(el);
-    if (!r) continue;
+    let cs = null;
+    try { cs = ROOT_WIN.getComputedStyle(n); } catch(e){}
 
-    // nur kleine klickbare Elemente im oberen Band (Overlay-Buttons)
-    if (r.top > 260) continue;
-    if (r.width < 18 || r.height < 18 || r.width > 90 || r.height > 90) continue;
+    const tag = (n.tagName || "").toLowerCase();
+    const role = ((n.getAttribute && n.getAttribute("role")) || "").toLowerCase();
+    const tabindex = (n.getAttribute && n.getAttribute("tabindex"));
+    const hasOnclick = !!((n.getAttribute && n.getAttribute("onclick")) || (typeof n.onclick === "function"));
+    const cursorPointer = !!(cs && cs.cursor === "pointer");
 
-    out.push(r);
+    const clickable =
+      tag === "button" || tag === "a" ||
+      role === "button" ||
+      tabindex !== null && tabindex !== undefined ||
+      hasOnclick ||
+      cursorPointer;
+
+    if (clickable){ el = n; break; }
+    n = n.parentElement;
   }
 
-  return out;
+  // --- unsere eigenen Elemente ausnehmen ---
+  if (ourBtn){
+    try{
+      if (el === ourBtn) return false;
+      if (ourBtn.contains && ourBtn.contains(el)) return false;
+    }catch(e){}
+  }
+
+  if (el.id === "lia-hl-panel") return false;
+  if (el.closest && el.closest("#lia-hl-panel")) return false;
+
+  if (typeof HL_OVERLAY_ID !== "undefined"){
+    if (el.id === HL_OVERLAY_ID) return false;
+    if (el.closest && el.closest("#" + HL_OVERLAY_ID)) return false;
+  }
+
+  // --- ganz wichtig: Header/Toolbar NIE als Blocker zählen (sonst driftest du aus dem Cluster) ---
+  if (el.closest && el.closest("header#lia-toolbar-nav,#lia-toolbar-nav,header.lia-header")) return false;
+
+  // --- Geometrie / Sichtbarkeit ---
+  let r;
+  try { r = el.getBoundingClientRect(); } catch(e){ return false; }
+  if (!r || r.width < 14 || r.height < 14) return false;
+
+  // nur oberes UI-Band relevant
+  if (r.top > 260 || r.bottom < 0) return false;
+
+  // große Wrapper/Container sollen NIE blocken
+  if (r.width > 140 || r.height > 120) return false;
+
+  // --- CSS-Checks ---
+  let cs;
+  try { cs = ROOT_WIN.getComputedStyle(el); } catch(e){ cs = null; }
+  if (!cs) return false;
+
+  if (cs.display === "none" || cs.visibility === "hidden") return false;
+  if (cs.opacity === "0") return false;
+  if (cs.pointerEvents === "none") return false;
+
+  const pos = (cs.position || "");
+
+  // --- Overlay-Erkennung (strikt) ---
+  const explicitOverlay =
+    (el.getAttribute && el.getAttribute("data-lia-overlay") === "1") ||
+    (el.closest && el.closest('[data-lia-overlay="1"]')) ||
+    (el.closest && el.closest('[id*="overlay-root"]'));
+
+  const positionedOverlay =
+    (pos === "fixed" || pos === "absolute" || pos === "sticky");
+
+  // akzeptiere Blocker nur, wenn er overlay-typisch ist
+  if (explicitOverlay || positionedOverlay) return true;
+
+  // --- Keyword-Fallback (für Tools ohne Marker/Positionierung, aber selten) ---
+  const aria = (el.getAttribute && (el.getAttribute("aria-label") || "")) || "";
+  const title = (el.getAttribute && (el.getAttribute("title") || "")) || "";
+  const id = el.id || "";
+  const cls = (typeof el.className === "string") ? el.className : "";
+  const k = (aria + " " + title + " " + id + " " + cls).toLowerCase();
+
+  if (
+    k.includes("tafel") ||
+    k.includes("canvas") ||
+    k.includes("marker") ||
+    k.includes("textmarker") ||
+    k.includes("board") ||
+    k.includes("resetter") ||
+    k.includes("tff")
+  ){
+    return true;
+  }
+
+  return false;
 }
 
-function hlRectIntersects(l, t, w, h, r){
-  const right  = l + w;
-  const bottom = t + h;
-  return !(right <= r.left + 1 || l >= r.right - 1 || bottom <= r.top + 1 || t >= r.bottom - 1);
+function hlCollidesAt(absL, absT, w, h, ourBtn){
+  // 5 Sampling-Punkte (center + 4 Ecken)
+  const pts = [
+    [absL + w/2, absT + h/2],
+    [absL + 4,   absT + 4],
+    [absL + w-4, absT + 4],
+    [absL + 4,   absT + h-4],
+    [absL + w-4, absT + h-4],
+  ];
+
+  for (const [x,y] of pts){
+    let els = [];
+    try{
+      els = ROOT_DOC.elementsFromPoint ? ROOT_DOC.elementsFromPoint(x,y) : [ROOT_DOC.elementFromPoint(x,y)];
+    }catch(e){
+      els = [ROOT_DOC.elementFromPoint(x,y)];
+    }
+
+    for (let el of els){
+      if (!el) continue;
+      el = hlPromoteClickable(el);
+
+      if (!el) continue;
+      if (el === ourBtn || (ourBtn && ourBtn.contains && ourBtn.contains(el))) continue;
+
+      if (hlIsBlockingOverlayCandidate(el, ourBtn)){
+        // optional: merke dir das Ding fürs nächste Mal (macht spätere Erkennung leichter)
+        try { el.setAttribute("data-lia-overlay", "1"); } catch(e){}
+        return true;
+      }
+    }
+  }
+  return false;
 }
+
 
 
 
@@ -1673,16 +1851,14 @@ function positionMarkerOverlayButton(){
   left = hlClamp(left, pad, vp.w - bw - pad);
   top  = hlClamp(top,  pad, vp.h - bh - pad);
 
-  // --- Collision-Avoidance gegen andere Overlay-Buttons ---
-  const others = hlOverlayButtonRects("lia-hl-btn");
+  // --- Collision-Avoidance: HIT-TEST (findet auch Buttons ohne ID/Attribute) ---
   const step = Math.round(Math.max(bw, bh) + 12);
 
-  for (let tries = 0; tries < 10; tries++){
+  for (let tries = 0; tries < 14; tries++){
     const absL = left + (vp.ox || 0);
     const absT = top  + (vp.oy || 0);
 
-    const hit = others.find(r => hlRectIntersects(absL, absT, bw, bh, r));
-    if (!hit) break;
+    if (!hlCollidesAt(absL, absT, bw, bh, btn)) break;
 
     if (!isRight){
       // row-mode: nach rechts schieben, bei overflow: neue Zeile
@@ -1703,6 +1879,7 @@ function positionMarkerOverlayButton(){
     left = hlClamp(left, pad, vp.w - bw - pad);
     top  = hlClamp(top,  pad, vp.h - bh - pad);
   }
+
 
   // --- Apply (wie gehabt) ---
   mount.style.setProperty("left", `${Math.round(vp.ox)}px`, "important");
