@@ -143,6 +143,9 @@ author: Martin Lommatzsch
       background: var(--hl-yellow) !important;
     }
 
+    #lia-hl-btn{ pointer-events: auto !important; }
+    #lia-hl-dock > *{ position: relative !important; z-index: 1 !important; }
+
 
     #lia-hl-panel{
       position: fixed !important;
@@ -310,6 +313,40 @@ author: Martin Lommatzsch
       font-size: 12px !important;
       color: var(--hl-ui-fg) !important;
     }
+
+    
+    /* --- HL Dock Wrapper: verhindert Überlappung mit TOC --- */
+    #lia-hl-dock{
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      flex-wrap: nowrap !important;
+      min-width: 0 !important;
+    }
+
+    /* wenn Header links zu schmal wird: kein „Übereinander“, sondern notfalls horizontaler overflow */
+    #lia-hl-dock{
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      scrollbar-width: none !important;       /* Firefox */
+    }
+    #lia-hl-dock::-webkit-scrollbar{ display:none !important; }
+
+    /* Optional: auf sehr kleinen Viewports HL-Button kompakter */
+    @media (max-width: 420px){
+      #lia-hl-btn{
+        margin: 0 10px !important;
+        width: 34px !important;
+        height: 34px !important;
+        border-radius: 9px !important;
+      }
+      #lia-hl-btn .icon{ width:18px !important; height:18px !important; }
+      #lia-hl-btn .dot{
+        right: 4px !important; bottom: 4px !important;
+        width: 8px !important; height: 8px !important;
+      }
+    }
+
 
   `);
 
@@ -788,55 +825,93 @@ author: Martin Lommatzsch
     return pick || btns[0];
   }
 
-  function ensureRootButtonAndPanel(){
-    let btn = ROOT_DOC.getElementById("lia-hl-btn");
-    if (!btn){
-      btn = ROOT_DOC.createElement("button");
-      btn.id = "lia-hl-btn";
-      btn.type = "button";
-      btn.setAttribute("aria-label","Textmarker");
-      btn.innerHTML = `
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M4 20h4l10.5-10.5a2.1 2.1 0 0 0 0-3L16.5 4.5a2.1 2.1 0 0 0-3 0L3 15v5z"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-          <path d="M13.5 6.5l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <span class="dot" id="lia-hl-dot"></span>
-      `;
-    }
+function ensureRootButtonAndPanel(){
 
-    let panel = ROOT_DOC.getElementById("lia-hl-panel");
-    if (!panel){
-      panel = ROOT_DOC.createElement("div");
-      panel.id = "lia-hl-panel";
-      panel.innerHTML = `
-        <div class="hdr"><div class="title">Textmarker</div></div>
-        <div class="body">
-          <div class="hl-tools">
-            <button class="hl-tool" id="hl-tool-mark" type="button">🖍️</button>
-            <button class="hl-tool" id="hl-tool-erase" type="button">🧽</button>
-          </div>
-          <div>
-            <div class="hl-hint" style="margin-bottom:8px;">Farbe</div>
-            <div class="hl-colors" id="hl-colors"></div>
-          </div>
-          <button class="hl-clear" id="hl-clear" type="button">Alle Markierungen löschen</button>
+  // ---------- Button sicherstellen ----------
+  let btn = ROOT_DOC.getElementById("lia-hl-btn");
+  if (!btn){
+    btn = ROOT_DOC.createElement("button");
+    btn.id = "lia-hl-btn";
+    btn.type = "button";
+    btn.setAttribute("aria-label","Textmarker");
+    btn.innerHTML = `
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 20h4l10.5-10.5a2.1 2.1 0 0 0 0-3L16.5 4.5a2.1 2.1 0 0 0-3 0L3 15v5z"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M13.5 6.5l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span class="dot" id="lia-hl-dot"></span>
+    `;
+  }
+
+  // ---------- Panel sicherstellen ----------
+  let panel = ROOT_DOC.getElementById("lia-hl-panel");
+  if (!panel){
+    panel = ROOT_DOC.createElement("div");
+    panel.id = "lia-hl-panel";
+    panel.innerHTML = `
+      <div class="hdr"><div class="title">Textmarker</div></div>
+      <div class="body">
+        <div class="hl-tools">
+          <button class="hl-tool" id="hl-tool-mark" type="button">🖍️</button>
+          <button class="hl-tool" id="hl-tool-erase" type="button">🧽</button>
         </div>
-      `;
-      ROOT_DOC.body.appendChild(panel);
+        <div>
+          <div class="hl-hint" style="margin-bottom:8px;">Farbe</div>
+          <div class="hl-colors" id="hl-colors"></div>
+        </div>
+        <button class="hl-clear" id="hl-clear" type="button">Alle Markierungen löschen</button>
+      </div>
+    `;
+    ROOT_DOC.body.appendChild(panel);
+  }
+
+  // ---------- Ziel: TOC + HL in eigenen Dock-Wrapper (kein Overlap) ----------
+  const left = findHeaderLeft();
+
+  // Fallback: wenn kein Header-left existiert, einfach in Body
+  if (!left){
+    if (!btn.parentNode) ROOT_DOC.body.appendChild(btn);
+    return;
+  }
+
+  // Dock-Wrapper (inline-flex + gap) einmalig anlegen
+  let dock = ROOT_DOC.getElementById("lia-hl-dock");
+  if (!dock){
+    dock = ROOT_DOC.createElement("span");
+    dock.id = "lia-hl-dock";
+  }
+
+  // TOC-Button finden (oder irgendeinen „ersten“ Button als Anker)
+  const toc = findTOCButtonInLeft(left);
+
+  // Dock an die richtige Stelle hängen:
+  // - Wenn TOC in left ist: Dock direkt vor TOC einsetzen und TOC in Dock verschieben
+  // - Sonst: Dock ans Ende von left
+  if (toc && toc.parentNode === left){
+
+    // Dock vor TOC platzieren (nur wenn nicht schon dort)
+    if (dock.parentNode !== left || dock.nextSibling !== toc){
+      left.insertBefore(dock, toc);
     }
 
-    const left = findHeaderLeft();
-    if (left){
-      if (btn.parentNode !== left){
-        const anchor = findTOCButtonInLeft(left);
-        if (anchor && anchor.parentNode === left) anchor.insertAdjacentElement("afterend", btn);
-        else left.appendChild(btn);
-      }
-    } else {
-      if (!btn.parentNode) ROOT_DOC.body.appendChild(btn);
+    // TOC in Dock verschieben (nur wenn nicht schon drin)
+    if (toc.parentNode !== dock){
+      dock.appendChild(toc);
+    }
+
+  } else {
+    if (dock.parentNode !== left){
+      left.appendChild(dock);
     }
   }
+
+  // HL-Button immer in Dock
+  if (btn.parentNode !== dock){
+    dock.appendChild(btn);
+  }
+}
+
 
   // =========================
   // Panel Position: SMART (Viewport Clamp + Above-Fallback)
@@ -1186,5 +1261,7 @@ author: Martin Lommatzsch
 })();
 @end
 -->
+
+
 
 # Textmarker

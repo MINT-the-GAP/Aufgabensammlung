@@ -2,7 +2,7 @@
 version:  0.0.1
 language: de
 author: Martin Lommatzsch
-comment: Aufgabenresetter v0.0.1 — Segment-ReRender wie Seitenreload (lokal); Segment via lineGoto-Zeile; FIX: keine Dopplung (Original-Siblings entfernen); FIX: Segment endet vor kompletter nächster @resetter-Zeile
+comment: Aufgabenresetter v0.0.1 — Segment-ReRender wie Reload (lokal); Segment via lineGoto-Zeile; keine Dopplung (Original-Siblings entfernen); Button-Klick robust via Document-Capture; FIX: Script nicht run-once (damit Folien-Rebuild wieder bindet)
 
 @style
 .lia-resetter-marker{ display:none !important; }
@@ -27,6 +27,8 @@ button.lia-resetter-btn{
   cursor: pointer !important;
   user-select: none !important;
   white-space: nowrap !important;
+  touch-action: manipulation !important;
+  pointer-events: auto !important;
 }
 button.lia-resetter-btn:hover,
 button.lia-resetter-btn:focus{
@@ -56,29 +58,39 @@ button.lia-resetter-btn:focus{
   // =========================
   const REGKEY = "__LIA_RESETTER_V001__";
   const REG = ROOT[REGKEY] || (ROOT[REGKEY] = {
-    guardInstalled: false,
+    // uid -> renderer fn (wird pro Slide-Rebuild überschrieben)
+    renderers: Object.create(null),
 
     // uid -> salt
     salts: Object.create(null),
 
-    // uid -> renderer fn
-    renderers: Object.create(null),
-
-    // uid -> original already removed?
-    removed: Object.create(null),
+    // pro Dokument merken, ob Original schon entfernt wurde
+    removedByDoc: new WeakMap(), // doc -> Set(uids)
 
     // source cache
     srcUrl: null,
     srcLines: null,
-    srcPromise: null
+    srcPromise: null,
+
+    // Click-Guard nur einmal pro Dokument
+    guardDocs: new WeakSet()
   });
 
+  function removedSetFor(doc){
+    let s = REG.removedByDoc.get(doc);
+    if (!s){
+      s = new Set();
+      REG.removedByDoc.set(doc, s);
+    }
+    return s;
+  }
+
   // =========================
-  // Click-Guard: verhindert Slide-Advance
+  // Click-Guard (CAPTURE) – wie in der „Dopplung“-Phase zuverlässig
   // =========================
   function installGuard(){
-    if (REG.guardInstalled) return;
-    REG.guardInstalled = true;
+    if (REG.guardDocs.has(DOC)) return;
+    REG.guardDocs.add(DOC);
 
     const handler = (ev) => {
       const t = ev && ev.target;
@@ -96,7 +108,8 @@ button.lia-resetter-btn:focus{
       if (typeof fn === "function") fn();
     };
 
-    ["pointerdown","mousedown","click","touchstart"].forEach(type => {
+    // auf Content + Root (Capture), damit Reveal/Presentation nicht „weiterklickt“
+    ["pointerdown","mousedown","touchstart","click"].forEach(type => {
       try { DOC.addEventListener(type, handler, true); } catch(e){}
       try { ROOT.document.addEventListener(type, handler, true); } catch(e){}
     });
@@ -147,7 +160,7 @@ button.lia-resetter-btn:focus{
   }
 
   // =========================
-  // LineNo aus DOM (window.LIA.lineGoto(n))
+  // lineGoto-Zeile aus DOM holen
   // =========================
   function getLineNoFromScript(scriptEl){
     try{
@@ -167,8 +180,7 @@ button.lia-resetter-btn:focus{
   }
 
   // =========================
-  // Segment aus Quelltext: ab NACH @resetter-Zeile
-  // bis vor nächste Zeile mit @resetter oder nächste Heading-Zeile (#...)
+  // Segment: nach @resetter-Zeile bis vor nächste @resetter-Zeile oder Heading-Zeile
   // =========================
   function isHeadingLine(line){
     return /^[ \t]*#{1,6}\s+/.test(line || "");
@@ -181,30 +193,26 @@ button.lia-resetter-btn:focus{
     if (!lines || !lines.length || typeof lineNo !== "number" || Number.isNaN(lineNo)) return "";
 
     let idx = lineNo;
-
     // lineGoto kann 0- oder 1-basiert sein
     if (idx >= lines.length && (idx - 1) >= 0 && (idx - 1) < lines.length) idx = idx - 1;
 
-    // Start ist nächste Zeile
     let start = idx + 1;
     if (start < 0) start = 0;
     if (start > lines.length) start = lines.length;
 
-    // Ende: vor nächster @resetter-Zeile oder vor nächster Heading-Zeile
     let end = lines.length;
     for (let i = start; i < lines.length; i++){
       const ln = lines[i];
       if (isResetterLine(ln) || isHeadingLine(ln)){
-        end = i; // GANZE ZEILE ausgeschlossen
+        end = i; // ganze Zeile ausgeschlossen
         break;
       }
     }
-
     return lines.slice(start, end).join("\n");
   }
 
   // =========================
-  // Original nach dem Marker-P entfernen (Siblings)
+  // Original-Siblings nach Marker-Paragraph löschen (gegen Dopplung)
   // =========================
   function findMarker(uid, scriptEl){
     try{
@@ -230,7 +238,8 @@ button.lia-resetter-btn:focus{
   }
 
   function removeOriginalSiblings(uid, scriptEl){
-    if (REG.removed[uid]) return true;
+    const removedSet = removedSetFor(DOC);
+    if (removedSet.has(uid)) return true;
 
     const marker = findMarker(uid, scriptEl);
     if (!marker) return false;
@@ -239,27 +248,20 @@ button.lia-resetter-btn:focus{
     if (!hostP || !hostP.parentNode) return false;
 
     let n = hostP.nextSibling;
-    if (!n) {
-      // noch nichts gerendert -> später nochmal
-      return false;
-    }
+    if (!n) return false;
 
-    // Wenn sofort Stop: Segment ist leer => als entfernt markieren
     if (isStopNode(n)){
-      REG.removed[uid] = true;
+      removedSet.add(uid);
       return true;
     }
 
     let removedAny = false;
-
     while (n){
       const next = n.nextSibling;
-
       if (isStopNode(n)) break;
 
       try{
-        // Textnodes (Whitespace) ebenfalls entfernen, um „Lücken“ zu vermeiden
-        if (n.parentNode) {
+        if (n.parentNode){
           n.parentNode.removeChild(n);
           removedAny = true;
         }
@@ -269,10 +271,9 @@ button.lia-resetter-btn:focus{
     }
 
     if (removedAny){
-      REG.removed[uid] = true;
+      removedSet.add(uid);
       return true;
     }
-
     return false;
   }
 
@@ -306,10 +307,9 @@ button.lia-resetter-btn:focus{
   function bootstrap(uid, send, scriptEl){
     installGuard();
 
-    // Button sofort anzeigen (damit beim ersten Betreten sichtbar)
+    // Button sofort sichtbar
     send.output(buildOutput(uid, ""));
 
-    // Quelle laden, Segment bestimmen, rendern, dann Original entfernen
     ensureSource().then(function(lines){
       const lineNo = getLineNoFromScript(scriptEl);
       const seg = segmentByLine(lines, lineNo);
@@ -319,7 +319,9 @@ button.lia-resetter-btn:focus{
         removeOriginalLoop(uid, scriptEl);
       };
 
+      // WICHTIG: Renderer pro Slide-Rebuild überschreiben (stales send vermeiden)
       REG.renderers[uid] = render;
+
       render();
     });
   }
@@ -333,7 +335,7 @@ button.lia-resetter-btn:focus{
 @resetter: @resetter_(@uid)
 @resetter_
 <span class="lia-resetter-marker" data-resetter-uid="@0" aria-hidden="true"></span>
-<script run-once="true" modify="false">
+<script modify="false">
 (function(){
   const UID = "@0";
 
@@ -349,6 +351,7 @@ button.lia-resetter-btn:focus{
   if (typeof boot !== "function") return "LIA: stop";
   if (typeof send === "undefined" || !send || !send.output) return "LIA: stop";
 
+  // KEIN run-once: bei Folien-Neuaufbau muss das wieder laufen!
   boot(UID, send, document.currentScript);
 
   return "LIA: wait";
@@ -356,6 +359,9 @@ button.lia-resetter-btn:focus{
 </script>
 @end
 -->
+
+
+
 
 
 
