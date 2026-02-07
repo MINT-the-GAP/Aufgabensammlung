@@ -533,30 +533,67 @@ const I = REG.instances[DOC_ID] = {
 
   function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
 
-  function findTOCButton(){
-    // Heuristik: aria-label/title enthält Inhaltsverzeichnis/contents,
-    // sonst erster Button links oben im Toolbar-Header.
-    const all = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
-    const byLabel = all.find(el=>{
-      const t = ((el.getAttribute("aria-label")||el.getAttribute("title")||el.textContent||"")+"").toLowerCase();
-      return t.includes("inhaltsverzeichnis") || t.includes("table of contents") || t.includes("contents");
-    });
-    if (byLabel) return byLabel;
+function findTOCButton(){
+  const all = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
+  return all.find(el=>{
+    const t = ((el.getAttribute("aria-label")||el.getAttribute("title")||el.textContent||"")+"").toLowerCase();
+    return t.includes("inhaltsverzeichnis") || t.includes("table of contents") || t.includes("contents");
+  }) || null;
+}
 
-    const header =
-      ROOT_DOC.querySelector("header#lia-toolbar-nav") ||
-      ROOT_DOC.querySelector("#lia-toolbar-nav") ||
-      ROOT_DOC.querySelector("header.lia-header");
 
-    if (header){
-      const left = header.querySelector(".lia-header__left") || header;
-      const btn = left.querySelector("button,[role='button'],a");
-      if (btn) return btn;
+function getToolbarHeader(){
+  return ROOT_DOC.querySelector("header#lia-toolbar-nav") ||
+         ROOT_DOC.querySelector("#lia-toolbar-nav") ||
+         ROOT_DOC.querySelector("header.lia-header");
+}
+
+function getToolbarLeftContainer(){
+  const header = getToolbarHeader();
+  if (!header) return null;
+  return header.querySelector(".lia-header__left") || header;
+}
+
+// Liefert den echten Anchor-RECT (TOC wenn da, sonst linker Toolbar-Button, sonst null => pad)
+function findAnchorRect(){
+  const vp = getViewport();
+
+  // 1) TOC (wenn sichtbar)
+  const tocR = getVisibleRect(findTOCButton());
+  if (tocR) return tocR;
+
+  // 2) Header-left: linkester sichtbarer Button
+  const leftC = getToolbarLeftContainer();
+  if (leftC){
+    const els = Array.from(leftC.querySelectorAll("button,[role='button'],a"));
+    let best = null;
+    for (const el of els){
+      const r = getVisibleRect(el);
+      if (!r) continue;
+      if (!isToolbarLike(el)) continue;
+      if (r.top > 220) continue;
+      if (!best || r.left < best.left || (r.left === best.left && r.top < best.top)) best = r;
     }
-
-    // Fallback: erster Button überhaupt
-    return all.find(el=>el.tagName === "BUTTON") || null;
+    // wenn "alles rechts" (Slides ohne linke Controls) -> kein Anchor => pad
+    if (best && best.left <= vp.w * 0.60) return best;
   }
+
+  // 3) Global: linkester toolbar-like Button im Top-Band
+  const all = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
+  let best = null;
+  for (const el of all){
+    const r = getVisibleRect(el);
+    if (!r) continue;
+    if (!isToolbarLike(el)) continue;
+    if (r.top > 220) continue;
+    if (!best || r.left < best.left || (r.left === best.left && r.top < best.top)) best = r;
+  }
+  if (best && best.left <= vp.w * 0.60) return best;
+
+  return null;
+}
+
+
 
 
 
@@ -592,45 +629,48 @@ const I = REG.instances[DOC_ID] = {
     }
   }
 
+
 function collectTopLeftRowButtons(anchorRect){
   const vp = getViewport();
+  const maxTop = 220;
+  const pad = 8;
 
-  // Toolbar kann je nach Modus etwas tiefer sitzen (TOC offen etc.)
-  const maxTop  = 200;                 // vorher 140
-  const maxLeft = vp.w * 0.70;         // vorher 0.55 (TOC kann Toolbar leicht nach rechts schieben)
+  const a = anchorRect || { left: pad, top: pad, right: pad + 34, bottom: pad + 34, height: 34 };
+  const aMidY = a.top + (a.height || 34)/2;
+  const yTol  = Math.max(52, (a.height||34) * 1.6);
 
-  const els = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
+  // Linkes Cluster: nie über Mitte hinaus + moderate Breite
+  const clusterMaxX = Math.min(vp.w * 0.55, a.left + 520);
 
   const out = [];
 
-  // Anchor-Mitte + dynamische Toleranz (TOC-Open verschiebt Buttons oft ein paar Pixel)
-  const aMidY = anchorRect ? (anchorRect.top + anchorRect.height / 2) : 24;
-  const aH    = anchorRect ? anchorRect.height : 34;
-  const yTol  = Math.max(52, aH * 1.6); // <<< wichtig: deutlich toleranter
+  const leftC = getToolbarLeftContainer();
+  const primary = leftC ? Array.from(leftC.querySelectorAll("button,[role='button'],a")) : [];
+  const secondary = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
 
-  for (const el of els){
-    if (!el || el.id === BTN_ID) continue;
+  function consider(el){
+    if (!el || el.id === BTN_ID) return;
 
     const r = getVisibleRect(el);
-    if (!r) continue;
+    if (!r) return;
 
-    // nur "oben" + eher links (aber nicht zu strikt)
-    if (r.top > maxTop) continue;
-    if (r.left > maxLeft) continue;
+    if (r.top > maxTop) return;
+    if (r.left > clusterMaxX) return;
 
-    // gleiche Toolbar-Zeile (tolerant!)
-    const midY = r.top + r.height / 2;
-    if (Math.abs(midY - aMidY) > yTol) continue;
+    const midY = r.top + r.height/2;
+    if (Math.abs(midY - aMidY) > yTol) return;
 
-    // keine riesigen Container
-    if (r.width > 180 || r.height > 90) continue;
-
-    if (!isToolbarLike(el)) continue;
+    if (r.width > 220 || r.height > 100) return;
+    if (!isToolbarLike(el)) return;
 
     out.push({ el, r });
   }
 
-  return out;
+  for (const el of primary) consider(el);
+  for (const el of secondary) consider(el);
+
+  const seen = new Set();
+  return out.filter(p => (seen.has(p.el) ? false : (seen.add(p.el), true)));
 }
 
 
@@ -638,12 +678,10 @@ function collectTopLeftRowButtons(anchorRect){
 function toolbarSignature(){
   try{
     const vp = getViewport();
-
-    const tocR = getVisibleRect(findTOCButton());
     const pad = 8;
 
-    // Anchor notfalls Top-Left-Pad
-    const anchor = tocR || { left: pad, top: pad, right: pad + 34, bottom: pad + 34, height: 34 };
+    const aR = findAnchorRect();
+    const anchor = aR || { left: pad, top: pad, right: pad + 34, bottom: pad + 34, height: 34 };
 
     const peers = collectTopLeftRowButtons(anchor);
 
@@ -670,6 +708,9 @@ function toolbarSignature(){
 }
 
 
+
+
+
 function burstRepositionThrottled(){
   const now = Date.now();
   if (now - (I.lastBurstAt || 0) < 120) return;
@@ -688,48 +729,39 @@ function positionOverlayButton(){
   const pad = 8;
   const gap = 8;
 
-  // Buttongröße: wenn messbar -> nehmen, sonst fallback (auch bei display:none)
   let bw = 34, bh = 34;
   try{
     const r = btn.getBoundingClientRect();
     if (r && r.width > 6 && r.height > 6){
-      bw = r.width;
-      bh = r.height;
+      bw = r.width; bh = r.height;
     }
   }catch(e){}
 
-  const tocR = getVisibleRect(findTOCButton());
+  const aR = findAnchorRect();
+  const anchor = aR || { left: pad, top: pad, right: pad + bw, bottom: pad + bh, height: bh };
 
-  // Anchor: TOC, sonst Top-Left
-  const anchor = tocR || { left: pad, top: pad, right: pad + bw, bottom: pad + bh, height: bh };
-
-  // Peers sammeln (Toolbar-Zeile tolerant)
   const peers = collectTopLeftRowButtons(anchor);
 
-  // Rechtestes Ende bestimmen
   let rightEdge = anchor.right;
   for (const p of peers){
     rightEdge = Math.max(rightEdge, p.r.right);
   }
 
-  // Vertikal an Anchor zentrieren
   const targetTop = anchor.top + ((anchor.height || bh) - bh) / 2;
 
   let left = rightEdge + gap;
   let top  = targetTop;
 
-  // clamp
   left = clamp(left, pad, vp.w - bw - pad);
   top  = clamp(top,  pad, vp.h - bh - pad);
 
-  // VisualViewport offset
   overlay.style.left = `${Math.round(vp.ox)}px`;
   overlay.style.top  = `${Math.round(vp.oy)}px`;
 
-  // Position setzen (auch wenn Button aktuell hidden ist -> wirkt beim nächsten Show sofort)
   btn.style.left = `${Math.round(left)}px`;
   btn.style.top  = `${Math.round(top)}px`;
 }
+
 
 
 
