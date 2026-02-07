@@ -2,25 +2,19 @@
 version:  0.0.1
 language: de
 author: Martin Lommatzsch
-comment: Aufgabenresetter v0.0.1 — Segment-Neurendern wie Reload (lokal) — Klick via Capture (zuverlässig) — send wird bei Slide-Rebuild neu gebunden — keine Dopplung (Original-Siblings entfernen)
+comment: Resetter v0.0.1 — Segment-ReRender (lokal) + Original-Block entfernen
 
 @style
 .lia-resetter-marker{ display:none !important; }
 
 button.lia-resetter-btn{
-  appearance: none !important;
-  -webkit-appearance: none !important;
-
   background: transparent !important;
   border: 1px solid currentColor !important;
-
-  /* Themefarbe (wie in deinen anderen Projekten) */
   color: rgb(var(--color-highlight, 11, 95, 255)) !important;
 
   font-size: 0.75em !important;
   line-height: 1 !important;
   height: 1.15em !important;
-  box-sizing: border-box !important;
 
   padding: 0 0.45em !important;
   margin: 0 0 0 0.6em !important;
@@ -34,7 +28,6 @@ button.lia-resetter-btn{
   user-select: none !important;
   white-space: nowrap !important;
   touch-action: manipulation !important;
-  pointer-events: auto !important;
 }
 button.lia-resetter-btn:hover,
 button.lia-resetter-btn:focus{
@@ -47,9 +40,6 @@ button.lia-resetter-btn:focus{
 @onload
 (function () {
 
-  // =========================
-  // Root/Content (iframe-safe)
-  // =========================
   function getRootWindow(){
     let w = window;
     try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
@@ -58,113 +48,67 @@ button.lia-resetter-btn:focus{
 
   const ROOT = getRootWindow();
   const DOC  = document;
-  const WIN  = window;
 
   const KEY = "__LIA_RESETTER_V001__";
   const API = ROOT[KEY] || (ROOT[KEY] = {
-    // uid -> send
-    sendByUid: Object.create(null),
+    // uid -> { send, hostOutput, marker, seg, salt, cleaned }
+    items: Object.create(null),
 
-    // uid -> cached segment markdown
-    segByUid: Object.create(null),
+    // course markdown cache
+    mdLines: null,
+    mdPromise: null,
 
-    // uid -> salt counter
-    saltByUid: Object.create(null),
-
-    // per-Dokument: welche uids wurden schon „entdoppelt“
-    removedByDoc: new WeakMap(),
-
-    // markdown source cache
-    srcLines: null,
-    srcPromise: null,
-
-    // click-guard per doc
-    guardDocs: new WeakSet()
+    // click guard installed?
+    clickInstalled: false
   });
 
-  // auch im Content-Window verfügbar
-  WIN[KEY] = API;
-
-  function escAttr(s){
-    s = String(s || "");
-    // für Attribut-Selector in "..."
-    return s.replace(/\\/g,"\\\\").replace(/"/g,'\\"');
+  // ---------------------------
+  // helpers
+  // ---------------------------
+  function escSelAttr(v){
+    return String(v || "").replace(/\\/g,"\\\\").replace(/"/g,'\\"');
   }
 
-  // =========================
-  // Kurs-URL ermitteln
-  // =========================
   function getCourseUrl(){
+    // Lia: ?<rawUrl>#...
+    let s = "";
+    try { s = (ROOT.location && ROOT.location.search) ? ROOT.location.search : ""; } catch(e){}
+    if (!s) { try { s = location.search || ""; } catch(e){} }
+    if (!s || s.length < 2) return null;
+
+    const raw = s.slice(1);
+    const cut = raw.split("&")[0];
+    const dec = decodeURIComponent(cut);
+
+    if (/^https?:\/\//i.test(dec)) return dec;
+
+    // url=... fallback
     try{
-      const href = String(ROOT.location && ROOT.location.href ? ROOT.location.href : WIN.location.href);
-      const q = href.indexOf("?");
-      if (q < 0) return null;
+      const usp = new URLSearchParams(raw);
+      const cand = usp.get("url") || usp.get("src") || usp.get("course") || usp.get("md");
+      if (cand && /^https?:\/\//i.test(cand)) return decodeURIComponent(cand);
+    }catch(e){}
 
-      let part = href.slice(q + 1);
-      const h = part.indexOf("#");
-      if (h >= 0) part = part.slice(0, h);
-
-      part = part.trim();
-      if (!part) return null;
-
-      // direkt rohe URL
-      const dec = decodeURIComponent(part);
-      if (/^https?:\/\//i.test(dec)) return dec;
-
-      // url=...
-      try{
-        const usp = new URLSearchParams(part);
-        const cand = usp.get("url") || usp.get("src") || usp.get("course") || usp.get("md");
-        if (cand && /^https?:\/\//i.test(cand)) return decodeURIComponent(cand);
-      }catch(e){}
-
-      return null;
-    }catch(e){
-      return null;
-    }
+    return null;
   }
 
-  function ensureSource(){
-    if (API.srcLines) return Promise.resolve(API.srcLines);
-    if (API.srcPromise) return API.srcPromise;
+  async function ensureMarkdown(){
+    if (API.mdLines) return API.mdLines;
+    if (API.mdPromise) return API.mdPromise;
 
     const url = getCourseUrl();
-    API.srcPromise = (async () => {
+    API.mdPromise = (async () => {
       if (!url) return [];
       const res = await fetch(url, { cache: "no-store" });
       const txt = await res.text();
-      API.srcLines = String(txt || "").split(/\r?\n/);
-      return API.srcLines;
+      API.mdLines = String(txt || "").split(/\r?\n/);
+      return API.mdLines;
     })().catch(() => {
-      API.srcLines = [];
-      return API.srcLines;
+      API.mdLines = [];
+      return API.mdLines;
     });
 
-    return API.srcPromise;
-  }
-
-  // =========================
-  // lineGoto-Zeile aus DOM holen (robust: max lineGoto in dem Absatz)
-  // =========================
-  function getApproxLineNo(scriptEl){
-    try{
-      const hostP = scriptEl.closest("p") || scriptEl.parentElement;
-      if (!hostP) return null;
-
-      const spans = hostP.querySelectorAll('[ondblclick*="lineGoto("]');
-      let best = null;
-      spans.forEach(sp => {
-        const s = sp.getAttribute("ondblclick") || "";
-        const m = s.match(/lineGoto\((\d+)\)/);
-        if (!m) return;
-        const n = parseInt(m[1], 10);
-        if (!Number.isNaN(n)) best = (best == null ? n : Math.max(best, n));
-      });
-
-      return best;
-    }catch(e){
-      return null;
-    }
+    return API.mdPromise;
   }
 
   function isHeadingLine(line){
@@ -174,33 +118,52 @@ button.lia-resetter-btn:focus{
     return /@resetter\b/.test(line || "");
   }
 
-  // Suche in der Nähe nach der echten @resetter-Zeile (lineGoto kann ±1..±3 abweichen)
+  function findMarker(uid){
+    return DOC.querySelector('.lia-resetter-marker[data-resetter-uid="'+escSelAttr(uid)+'"]');
+  }
+
+  function getApproxLine(marker){
+    // nimm die MAX lineGoto(...) aus dem Absatz mit "Aufgabe X: ..."
+    try{
+      const p = marker && (marker.closest("p") || marker.closest(".lia-paragraph"));
+      if (!p) return null;
+
+      let best = null;
+      p.querySelectorAll('[ondblclick*="lineGoto("]').forEach(el => {
+        const s = el.getAttribute("ondblclick") || "";
+        const m = s.match(/lineGoto\((\d+)\)/);
+        if (!m) return;
+        const n = parseInt(m[1], 10);
+        if (!Number.isNaN(n)) best = (best == null) ? n : Math.max(best, n);
+      });
+      return best;
+    }catch(e){
+      return null;
+    }
+  }
+
   function findResetterLineIndex(lines, approx){
-    if (!lines || !lines.length || typeof approx !== "number" || Number.isNaN(approx)) return null;
+    if (!lines || !lines.length || approx == null) return null;
 
     let idx = approx;
-    if (idx >= lines.length && idx - 1 >= 0) idx = idx - 1;
+    if (idx >= lines.length && (idx - 1) >= 0) idx = idx - 1;
 
-    const lo = Math.max(0, idx - 6);
-    const hi = Math.min(lines.length - 1, idx + 6);
+    const lo = Math.max(0, idx - 10);
+    const hi = Math.min(lines.length - 1, idx + 10);
 
-    // bevorzugt nach oben (meist steht @resetter auf der gleichen Zeile wie "Aufgabe X:")
     for (let i = idx; i >= lo; i--){
       if (isResetterLine(lines[i])) return i;
     }
     for (let i = idx + 1; i <= hi; i++){
       if (isResetterLine(lines[i])) return i;
     }
-    return idx;
+    return null;
   }
 
-  function segmentFromLine(lines, approxLine){
-    const rLine = findResetterLineIndex(lines, approxLine);
-    if (rLine == null) return "";
-
-    const start = Math.min(lines.length, rLine + 1);
-
+  function segmentFrom(lines, resetLineIdx){
+    const start = resetLineIdx + 1;
     let end = lines.length;
+
     for (let i = start; i < lines.length; i++){
       if (isResetterLine(lines[i]) || isHeadingLine(lines[i])){
         end = i;
@@ -210,120 +173,129 @@ button.lia-resetter-btn:focus{
     return lines.slice(start, end).join("\n");
   }
 
-  // =========================
-  // Dopplung entfernen: alles NACH dem Marker-Absatz bis zum nächsten Marker/Heading löschen
-  // =========================
-  function removedSet(){
-    let s = API.removedByDoc.get(DOC);
-    if (!s){
-      s = new Set();
-      API.removedByDoc.set(DOC, s);
-    }
-    return s;
-  }
+  // ---------------------------
+  // cleanup: entferne den statischen Original-Block unterhalb des Output-Hosts
+  // (bis zur nächsten Überschrift oder zum nächsten Resetter-Marker)
+  // ---------------------------
+  function isStopNode(n){
+    if (!n) return true;
+    if (n.nodeType !== 1) return false;
 
-  function findMarker(uid, scriptEl){
-    // bevorzugt: direkt vor dem Script
-    try{
-      const prev = scriptEl.previousElementSibling;
-      if (prev && prev.classList && prev.classList.contains("lia-resetter-marker")) return prev;
-    }catch(e){}
+    const el = n;
+    if (/^H[1-6]$/.test(el.tagName)) return true;
+    if (el.tagName === "HEADER") return true;
 
-    try{
-      return DOC.querySelector('.lia-resetter-marker[data-resetter-uid="'+ escAttr(uid) +'"]');
-    }catch(e){
-      return null;
-    }
-  }
+    if (el.classList && el.classList.contains("lia-resetter-marker")) return true;
+    if (el.querySelector && el.querySelector(".lia-resetter-marker")) return true;
 
-  function isStopNode(node){
-    if (!node) return true;
-    if (node.nodeType === 1){
-      const el = node;
-      if (/^H[1-6]$/.test(el.tagName)) return true;
-      if (el.classList && el.classList.contains("lia-resetter-marker")) return true;
-      if (el.querySelector && el.querySelector(".lia-resetter-marker")) return true;
-    }
     return false;
   }
 
-  function removeOriginal(uid, scriptEl){
-    const s = removedSet();
-    if (s.has(uid)) return;
+  function cleanup(uid){
+    const it = API.items[uid];
+    if (!it || it.cleaned) return;
 
-    const marker = findMarker(uid, scriptEl);
-    if (!marker) return;
+    // Scope: aktuelle Folie/Section (Presentation-safe)
+    const scope = (it.marker && it.marker.closest("section")) || DOC.querySelector("main") || DOC.body;
 
-    const hostP = marker.closest("p") || marker;
-    if (!hostP || !hostP.parentNode) return;
+    // Start: direkt NACH unserem Output-Host (nicht nach dem Aufgabe-Absatz!)
+    const host = it.hostOutput;
+    if (!host || !host.parentNode) return;
 
-    let n = hostP.nextSibling;
+    let n = host.nextSibling;
     if (!n) return;
 
+    // solange entfernen, bis Stop (nächster Marker/Heading)
     while (n){
       const next = n.nextSibling;
+
+      if (scope !== DOC.body && !scope.contains(n)) break;
       if (isStopNode(n)) break;
 
       try{
+        // whitespace textnodes ebenfalls entfernen
         if (n.parentNode) n.parentNode.removeChild(n);
       }catch(e){}
 
       n = next;
     }
 
-    s.add(uid);
+    it.cleaned = true;
   }
 
-  // =========================
-  // Render/Reset
-  // =========================
+  function cleanupLoop(uid){
+    let tries = 0;
+    const step = () => {
+      tries++;
+      cleanup(uid);
+      if (API.items[uid] && API.items[uid].cleaned) return;
+      if (tries > 60) return;
+      setTimeout(step, 50);
+    };
+    step();
+  }
+
+  // ---------------------------
+  // render / reset
+  // ---------------------------
   function render(uid){
-    const send = API.sendByUid[uid];
-    if (!send) return;
+    const it = API.items[uid];
+    if (!it || !it.send) return;
 
-    const salt = (API.saltByUid[uid] = (API.saltByUid[uid] || 0) + 1);
-    const seg  = API.segByUid[uid] || "";
+    const salt = (it.salt = (it.salt || 0) + 1);
+    const seg = it.seg || "";
 
-    // Salt-Kommentar: unsichtbar, aber ändert den gerenderten Block (Persistenz-Key-Brecher)
-    const out =
-      '<button class="lia-resetter-btn" type="button" data-resetter-btn="'+ uid +'">Neustart der Aufgabe</button>\n\n' +
-      '<!-- resetter:'+ uid +':'+ salt +' -->\n\n' +
-      seg;
+    // Salt-Kommentar ändert den Block ⇒ Lia parst neu
+    const out = `<!--resetter:${uid}:${salt}-->\n\n` + seg;
 
-    send.output("LIASCRIPT:" + out);
+    it.send.output("LIASCRIPT:" + out);
+
+    // nach Render Dopplung entfernen
+    cleanupLoop(uid);
   }
 
   API.reset = function(uid){
+    render(String(uid));
+  };
+
+  // ---------------------------
+  // bind (vom @resetter-Script aufgerufen)
+  // ---------------------------
+  API.bind = async function(uid, send, scriptEl){
     uid = String(uid);
+
+    const marker = findMarker(uid);
+    if (!marker) return;
+
+    // hostOutput: das Output-Element, das zu diesem Script gehört
+    // (Lia packt Script-Ausgaben in ein <output> um den Script-Block herum)
+    let host = null;
+    try{
+      host = scriptEl && (scriptEl.closest("output") || scriptEl.parentElement);
+    }catch(e){}
+
+    const it = API.items[uid] || (API.items[uid] = {});
+    it.send = send;
+    it.marker = marker;
+    it.hostOutput = host;
+    it.cleaned = false;          // bei Slide-Rebuild wieder neu schneiden
+
+    // Segment neu bestimmen (Slide-Rebuild kann lineGoto/Offsets ändern)
+    const lines = await ensureMarkdown();
+    const approx = getApproxLine(marker);
+    const rIdx = findResetterLineIndex(lines, approx);
+
+    it.seg = (rIdx == null) ? "" : segmentFrom(lines, rIdx);
+
     render(uid);
   };
 
-  API.bind = function(send, uid, scriptEl){
-    uid = String(uid);
-
-    API.sendByUid[uid] = send;
-
-    // Segment nur einmal pro uid aus Quelle ziehen
-    if (!API.segByUid[uid]){
-      ensureSource().then(lines => {
-        const approx = getApproxLineNo(scriptEl);
-        API.segByUid[uid] = segmentFromLine(lines, approx);
-        render(uid);
-        // nach erstem Render entdoppeln (Original raus)
-        setTimeout(() => removeOriginal(uid, scriptEl), 30);
-      });
-    } else {
-      render(uid);
-      setTimeout(() => removeOriginal(uid, scriptEl), 30);
-    }
-  };
-
-  // =========================
-  // Klick-Guard (Capture): Button -> reset(uid)
-  // =========================
-  function installGuard(){
-    if (API.guardDocs.has(DOC)) return;
-    API.guardDocs.add(DOC);
+  // ---------------------------
+  // Click handler (CAPTURE): immer zuverlässig, kein inline onclick
+  // ---------------------------
+  function installClick(){
+    if (API.clickInstalled) return;
+    API.clickInstalled = true;
 
     const handler = (ev) => {
       const t = ev && ev.target;
@@ -348,7 +320,7 @@ button.lia-resetter-btn:focus{
     });
   }
 
-  installGuard();
+  installClick();
 
 })();
 @end
@@ -357,16 +329,25 @@ button.lia-resetter-btn:focus{
 @resetter: @resetter_(@uid)
 @resetter_
 <span class="lia-resetter-marker" data-resetter-uid="@0" aria-hidden="true"></span>
+<button class="lia-resetter-btn" type="button" data-resetter-btn="@0">Neustart der Aufgabe</button>
+
 <script run-once="false" modify="false">
 (function(){
-  const uid = "@0";
-  const api = window.__LIA_RESETTER_V001__ || (window.parent && window.parent.__LIA_RESETTER_V001__);
-  if (api && api.bind && typeof send !== "undefined") api.bind(send, uid, document.currentScript);
+  // wichtig: dieses Script ist der "Host" — sein send.output rendert den Segmentblock
+  try{
+    let w = window;
+    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
+    const API = w.__LIA_RESETTER_V001__;
+    if (API && API.bind && typeof send !== "undefined"){
+      API.bind("@0", send, document.currentScript);
+    }
+  }catch(e){}
   return "LIA: wait";
 })();
 </script>
 @end
 -->
+
 
 
 

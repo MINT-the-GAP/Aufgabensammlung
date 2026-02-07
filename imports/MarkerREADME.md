@@ -44,7 +44,11 @@ author: Martin Lommatzsch
     roLayout: null,
     roNodes: new Set(),
     roPending: false,
-    ticking: false
+    ticking: false,
+    posTimers: [],
+    lastToolbarSig: null,
+    lastBurstAt: 0,
+    pendingReposition: false
   };
 
 
@@ -424,14 +428,26 @@ author: Martin Lommatzsch
     }
 
     /* =========================================================
-       OVERLAY-PLACEMENT (keine Toolbar-Layout-Einmischung)
+       Overlay-Mount wie beim TFF-Button
+       -> Container fixed (0x0), Button absolut darin
        ========================================================= */
-    #lia-hl-btn{
+    #lia-hl-overlay-root-v4{
       position: fixed !important;
       z-index: var(--hl-z) !important;
-      left: auto !important;
-      top:  auto !important;
+      left: 0 !important;
+      top: 0 !important;
+      width: 0 !important;
+      height: 0 !important;
+      pointer-events: none !important;
     }
+
+    #lia-hl-overlay-root-v4 #lia-hl-btn{
+      position: absolute !important;
+      pointer-events: auto !important;
+      /* WICHTIG: KEIN left/top mit !important hier */
+    }
+
+
 
 
 
@@ -914,8 +930,18 @@ author: Martin Lommatzsch
 
 
 
+const HL_OVERLAY_ID = "lia-hl-overlay-root-v4";
+
 function ensureRootButtonAndPanel(){
-  // --- Marker Button (nur erzeugen, NICHT in Toolbar integrieren) ---
+  // Overlay mount (wie TFF)
+  let mount = ROOT_DOC.getElementById(HL_OVERLAY_ID);
+  if (!mount){
+    mount = ROOT_DOC.createElement("div");
+    mount.id = HL_OVERLAY_ID;
+    ROOT_DOC.body.appendChild(mount);
+  }
+
+  // --- Marker Button (in Overlay mounten) ---
   let btn = ROOT_DOC.getElementById("lia-hl-btn");
   if (!btn){
     btn = ROOT_DOC.createElement("button");
@@ -930,12 +956,12 @@ function ensureRootButtonAndPanel(){
       </svg>
       <span class="dot" id="lia-hl-dot"></span>
     `;
-    ROOT_DOC.body.appendChild(btn);
-  } else if (!btn.parentNode){
-    ROOT_DOC.body.appendChild(btn);
+    mount.appendChild(btn);
+  } else if (btn.parentNode !== mount){
+    mount.appendChild(btn);
   }
 
-  // --- Panel ---
+  // --- Panel (bleibt fixed im Root, wie gehabt) ---
   let panel = ROOT_DOC.getElementById("lia-hl-panel");
   if (!panel){
     panel = ROOT_DOC.createElement("div");
@@ -957,6 +983,7 @@ function ensureRootButtonAndPanel(){
     ROOT_DOC.body.appendChild(panel);
   }
 }
+
 
 
 
@@ -1009,8 +1036,8 @@ function ensureRootButtonAndPanel(){
     if (!btn || !panel) return;
     if (!(I.state.active && I.state.panelOpen)) return;
 
-    const gap = 10;
-    const pad = 8;
+    const gap = 0;
+    const pad = 0;
 
     const r = btn.getBoundingClientRect();
     const vp = getViewport();
@@ -1297,113 +1324,313 @@ function findHeaderLeft(header){
    -> Peers nur im linken Cluster
    -> Button fixed positionieren
    ========================================================= */
-function positionMarkerButton(){
-  const btn = ROOT_DOC.getElementById("lia-hl-btn");
-  if (!btn) return;
 
-  const vp = getViewport();
-  const header =
-    ROOT_DOC.querySelector("header#lia-toolbar-nav") ||
-    ROOT_DOC.querySelector("#lia-toolbar-nav") ||
-    ROOT_DOC.querySelector("header.lia-header");
+function hlClamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
 
-  const pad = 14;
-  const gap = 14;
+function hlViewport(){
+  const vv = ROOT_WIN.visualViewport;
+  if (vv) return { w: vv.width, h: vv.height, ox: vv.offsetLeft||0, oy: vv.offsetTop||0 };
+  const de = ROOT_DOC.documentElement;
+  return { w: de.clientWidth||0, h: de.clientHeight||0, ox: 0, oy: 0 };
+}
 
-  // Button size robust
-  const br0 = btn.getBoundingClientRect();
-  const bw  = Math.max(32, Math.round(br0.width  || 40));
-  const bh  = Math.max(32, Math.round(br0.height || 40));
-
-  function isVisible(el){
-    if (!el) return false;
+function hlGetVisibleRect(el){
+  if (!el) return null;
+  try{
     const cs = ROOT_WIN.getComputedStyle(el);
-    if (cs.display === "none" || cs.visibility === "hidden") return false;
+    if (!cs || cs.display === "none" || cs.visibility === "hidden" || cs.opacity === "0") return null;
+
     const r = el.getBoundingClientRect();
-    return r.width > 10 && r.height > 10;
-  }
+    if (!r || r.width < 6 || r.height < 6) return null;
 
-  function key(el){
-    const t = (el.getAttribute("aria-label")||el.getAttribute("title")||el.textContent||"").toLowerCase();
+    const vp = hlViewport();
+    if (r.right < 0 || r.bottom < 0 || r.left > vp.w || r.top > vp.h) return null;
+    return r;
+  }catch(e){
+    return null;
+  }
+}
+
+function hlIsToolbarLike(el){
+  try{
+    if (el.closest && el.closest("header#lia-toolbar-nav,#lia-toolbar-nav,header.lia-header")) return true;
+    const pos = ROOT_WIN.getComputedStyle(el).position;
+    return (pos === "fixed" || pos === "absolute");
+  }catch(e){ return false; }
+}
+
+function hlFindToolbarHeader(){
+  return ROOT_DOC.querySelector("header#lia-toolbar-nav") ||
+         ROOT_DOC.querySelector("#lia-toolbar-nav") ||
+         ROOT_DOC.querySelector("header.lia-header");
+}
+
+function hlFindToolbarLeftContainer(){
+  const header = hlFindToolbarHeader();
+  if (!header) return null;
+  return header.querySelector(".lia-header__left") ||
+         header.querySelector(".lia-toolbar__left") ||
+         header;
+}
+
+function hlFindTOCButton(){
+  const all = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
+  return all.find(el=>{
+    const t = ((el.getAttribute("aria-label")||el.getAttribute("title")||el.textContent||"")+"").toLowerCase();
     const idc = ((el.id||"")+" "+(el.className||"")+" "+(el.getAttribute("aria-controls")||"")).toLowerCase();
-    return t + " " + idc;
+    const k = t + " " + idc;
+    return k.includes("inhaltsverzeichnis") || k.includes("table of contents") || k.includes("contents") || k.includes("toc");
+  }) || null;
+}
+
+// Anchor: TOC (egal ob links/rechts), sonst linkester Toolbar-Button im linken Container,
+// sonst global linkester toolbar-like Button im Top-Band (nur wenn nicht "alles rechts").
+function hlFindAnchorRect(){
+  const vp = hlViewport();
+  const pad = 8;
+
+  const tocR = hlGetVisibleRect(hlFindTOCButton());
+  if (tocR) return tocR;
+
+  const leftC = hlFindToolbarLeftContainer();
+  if (leftC){
+    const els = Array.from(leftC.querySelectorAll("button,[role='button'],a"));
+    let best = null;
+    for (const el of els){
+      const r = hlGetVisibleRect(el);
+      if (!r) continue;
+      if (!hlIsToolbarLike(el)) continue;
+      if (r.top > 220) continue;
+      if (!best || r.left < best.left || (r.left === best.left && r.top < best.top)) best = r;
+    }
+    if (best) return best;
   }
 
-  // Kandidaten im Top-Band sammeln (Header bevorzugt)
-  const scope = header || ROOT_DOC;
-  const all = Array.from(scope.querySelectorAll("button,[role='button'],a"))
-    .filter(el => el && el.id !== "lia-hl-btn" && el.id !== "lia-hl-panel")
-    .filter(el => !el.closest("#lia-hl-panel"))
-    .filter(isVisible)
-    .map(el => ({ el, r: el.getBoundingClientRect(), k: key(el) }))
-    .filter(o => o.r.top <= 220 && o.r.bottom > 0);
-
-  // Nur linker Bereich (damit wir NICHT rechts andocken)
-  const leftBand = all.filter(o => o.r.left <= vp.w * 0.60);
-
-  // --- Anchor bestimmen ---
-  let anchor = null;
-
-  // 1) TOC scoring (auch wenn Icon ohne Text -> aria-controls/id/class hilft oft)
-  let best = null, bestScore = -1;
-  for (const o of leftBand){
-    let s = 0;
-    if (o.k.includes("inhaltsverzeichnis") || o.k.includes("table of contents") || o.k.includes("contents") || o.k.includes("toc")) s += 80;
-    if (o.k.includes("sidebar") || o.k.includes("nav") || o.k.includes("toc") || o.k.includes("contents")) s += 20;
-
-    // links/oben bonus
-    s += Math.max(0, 20 - o.r.left/40);
-    s += Math.max(0, 15 - o.r.top/30);
-
-    if (s > bestScore){ bestScore = s; best = o; }
+  const all = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
+  let best = null;
+  for (const el of all){
+    const r = hlGetVisibleRect(el);
+    if (!r) continue;
+    if (!hlIsToolbarLike(el)) continue;
+    if (r.top > 220) continue;
+    if (!best || r.left < best.left || (r.left === best.left && r.top < best.top)) best = r;
   }
-  if (bestScore >= 60) anchor = best;
+  if (best && best.left <= vp.w * 0.60) return best;
 
-  // 2) fallback: linkester Button im linken Band
-  if (!anchor && leftBand.length){
-    anchor = leftBand.reduce((a,b)=> (b.r.left < a.r.left ? b : a));
+  return { left: pad, top: pad, right: pad+34, bottom: pad+34, width:34, height:34 };
+}
+
+// Peers im selben "Row"-Band wie Anchor (links oder mitte)
+function hlCollectRowPeers(anchor){
+  const vp = hlViewport();
+  const maxTop = 220;
+
+  const a = anchor;
+  const aMidY = a.top + (a.height || 34)/2;
+  const yTol  = Math.max(52, (a.height||34) * 1.6);
+  const clusterMaxX = Math.min(vp.w * 0.75, a.left + 520);
+
+  const out = [];
+  const leftC = hlFindToolbarLeftContainer();
+  const primary = leftC ? Array.from(leftC.querySelectorAll("button,[role='button'],a")) : [];
+  const secondary = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
+
+  function consider(el){
+    if (!el || el.id === "lia-hl-btn" || el.id === "lia-hl-panel" || el.closest("#lia-hl-panel")) return;
+    const r = hlGetVisibleRect(el);
+    if (!r) return;
+    if (r.top > maxTop) return;
+    if (!hlIsToolbarLike(el)) return;
+    if (r.width > 260 || r.height > 120) return;
+
+    const midY = r.top + r.height/2;
+    if (Math.abs(midY - aMidY) > yTol) return;
+
+    // im Row-Cluster nur bis moderat rechts sammeln
+    if (r.left > clusterMaxX) return;
+
+    out.push(r);
   }
 
-  // 3) fallback: harte Top-Left Box (wenn es wirklich keinen linken Cluster gibt)
-  let anchorRect = anchor ? anchor.r : null;
-  if (!anchorRect){
-    let top = pad;
-    if (header){
-      const hr = header.getBoundingClientRect();
-      if (hr && hr.height > 10){
-        top = clamp(Math.round(hr.top + (hr.height - bh)/2), pad, 220);
+  primary.forEach(consider);
+  secondary.forEach(consider);
+
+  return out;
+}
+
+// Peers im selben "Column"-Band wie Anchor (für rechte Nav-Stacks)
+function hlCollectColPeers(anchor){
+  const vp = hlViewport();
+  const maxTop = 260;
+
+  const a = anchor;
+  const aMidX = a.left + (a.width || 34)/2;
+  const xTol  = Math.max(26, (a.width||34) * 1.4);
+
+  const out = [];
+  const all = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
+
+  for (const el of all){
+    if (!el || el.id === "lia-hl-btn" || el.id === "lia-hl-panel" || el.closest("#lia-hl-panel")) continue;
+    const r = hlGetVisibleRect(el);
+    if (!r) continue;
+    if (!hlIsToolbarLike(el)) continue;
+    if (r.top > maxTop) continue;
+    if (r.width > 260 || r.height > 140) continue;
+
+    const midX = r.left + r.width/2;
+    if (Math.abs(midX - aMidX) > xTol) continue;
+
+    out.push(r);
+  }
+
+  return out;
+}
+
+function hlToolbarSignature(){
+  try{
+    const vp = hlViewport();
+    const a = hlFindAnchorRect();
+
+    // rechts/links Heuristik: wenn Anchor deutlich rechts -> Column Mode
+    const isRight = a.left > vp.w * 0.65;
+
+    let edge1 = isRight ? a.left : a.right;
+    let edge2 = isRight ? a.right : a.left;
+
+    const peers = isRight ? hlCollectColPeers(a) : hlCollectRowPeers(a);
+
+    for (const r of peers){
+      if (isRight){
+        edge1 = Math.min(edge1, r.left);
+        edge2 = Math.max(edge2, r.right);
+      } else {
+        edge1 = Math.max(edge1, r.right);
+        edge2 = Math.min(edge2, r.left);
       }
     }
-    anchorRect = { left: pad, top, right: pad+34, height: 34 };
+
+    return [
+      Math.round(vp.w), Math.round(vp.h),
+      Math.round(vp.ox), Math.round(vp.oy),
+      Math.round(a.left), Math.round(a.top),
+      Math.round(a.width||34), Math.round(a.height||34),
+      Math.round(edge1), Math.round(edge2),
+      peers.length,
+      isRight ? "R" : "L"
+    ].join("|");
+  }catch(e){
+    return null;
+  }
+}
+
+function positionMarkerOverlayButton(){
+  const btn = ROOT_DOC.getElementById("lia-hl-btn");
+  const mount = ROOT_DOC.getElementById(HL_OVERLAY_ID);
+  if (!btn || !mount) return;
+
+  const vp  = hlViewport();
+  const pad = 8;
+  const gap = 14; // <-- Abstand zum TOC/Cluster (hier stellst du es ein)
+
+  // Button size
+  let bw = 40, bh = 40;
+  try{
+    const r = btn.getBoundingClientRect();
+    if (r && r.width > 6 && r.height > 6){ bw = r.width; bh = r.height; }
+  }catch(e){}
+
+  const a = hlFindAnchorRect();
+  const isRight = a.left > vp.w * 0.65;
+
+  // navstack class (nur fürs kompakte Styling)
+  try{ ROOT_DOC.body.classList.toggle("lia-hl-navstack", !!isRight); }catch(e){}
+
+  if (!isRight){
+    // --- Row-Mode: rechts an Row-Cluster ---
+    const peers = hlCollectRowPeers(a);
+    let rightEdge = a.right;
+    for (const r of peers) rightEdge = Math.max(rightEdge, r.right);
+
+    const targetTop = a.top + ((a.height || bh) - bh) / 2;
+
+    let left = rightEdge + gap;
+    let top  = targetTop;
+
+    left = hlClamp(left, pad, vp.w - bw - pad);
+    top  = hlClamp(top,  pad, vp.h - bh - pad);
+
+    mount.style.setProperty("left", `${Math.round(vp.ox)}px`, "important");
+    mount.style.setProperty("top",  `${Math.round(vp.oy)}px`, "important");
+
+    btn.style.setProperty("left", `${Math.round(left)}px`, "important");
+    btn.style.setProperty("top",  `${Math.round(top)}px`, "important");
+
+    return;
   }
 
-  const anchorMidY = anchorRect.top + (anchorRect.height || 34)/2;
-  const yTol = Math.max(52, (anchorRect.height || 34) * 1.6);
+  // --- Column-Mode (rechts): links an Column-Cluster ---
+  const peers = hlCollectColPeers(a);
+  let leftEdge = a.left;
+  for (const r of peers) leftEdge = Math.min(leftEdge, r.left);
 
-  // --- Peers nur im linken Cluster + gleiche Zeile ---
-  const clusterMaxX = Math.min(vp.w * 0.55, anchorRect.left + 520);
+  const targetTop = a.top + ((a.height || bh) - bh) / 2;
 
-  let rightEdge = anchorRect.right;
-  for (const o of leftBand){
-    if (o.r.left > clusterMaxX) continue;
-    const midY = o.r.top + o.r.height/2;
-    if (Math.abs(midY - anchorMidY) > yTol) continue;
-    if (o.r.width > 240 || o.r.height > 120) continue;
-    rightEdge = Math.max(rightEdge, o.r.right);
-  }
+  let left = leftEdge - gap - bw;
+  let top  = targetTop;
 
-  // --- Platzieren ---
-  let left = rightEdge + gap;
-  let top  = anchorRect.top + ((anchorRect.height || 34) - bh)/2;
+  left = hlClamp(left, pad, vp.w - bw - pad);
+  top  = hlClamp(top,  pad, vp.h - bh - pad);
 
-  left = clamp(left, pad, vp.w - bw - pad);
-  top  = clamp(top,  pad, vp.h - bh - pad);
+  mount.style.left = `${Math.round(vp.ox)}px`;
+  mount.style.top  = `${Math.round(vp.oy)}px`;
 
-  // WICHTIG: inline !important, damit es NICHT von CSS left/top !important gekillt wird
-  btn.style.setProperty("position", "fixed", "important");
-  btn.style.setProperty("z-index", "var(--hl-z)", "important");
-  btn.style.setProperty("left", `${Math.round(left + vp.ox)}px`, "important");
-  btn.style.setProperty("top",  `${Math.round(top  + vp.oy)}px`, "important");
+  btn.style.left = `${Math.round(left)}px`;
+  btn.style.top  = `${Math.round(top)}px`;
+}
+
+
+
+function hlClearPosTimers(){
+  try{
+    while (I.posTimers && I.posTimers.length){
+      ROOT_WIN.clearTimeout(I.posTimers.pop());
+    }
+  }catch(e){}
+}
+
+function hlRunPositionNow(){
+  positionMarkerOverlayButton();
+  positionPanelSmart();
+}
+
+function hlScheduleRepositionBurst(){
+  hlClearPosTimers();
+
+  // sofort + 2×rAF
+  hlRunPositionNow();
+  ROOT_WIN.requestAnimationFrame(() => {
+    ROOT_WIN.requestAnimationFrame(() => hlRunPositionNow());
+  });
+
+  // Nightly/Transitions
+  [40,120,260,520].forEach(ms => {
+    I.posTimers.push(ROOT_WIN.setTimeout(() => hlRunPositionNow(), ms));
+  });
+
+  // Fonts spät
+  try{
+    if (ROOT_DOC.fonts?.ready){
+      ROOT_DOC.fonts.ready.then(() => hlRunPositionNow());
+    }
+  }catch(e){}
+}
+
+function hlBurstRepositionThrottled(){
+  const now = Date.now();
+  if (now - (I.lastBurstAt || 0) < 120) return;
+  I.lastBurstAt = now;
+  hlScheduleRepositionBurst();
 }
 
 
@@ -1420,28 +1647,36 @@ function positionMarkerButton(){
     ROOT_WIN.requestAnimationFrame(() => {
       try{
         ensureRootButtonAndPanel();
-        (function burst(){
-          positionMarkerButton();
-          ROOT_WIN.requestAnimationFrame(positionMarkerButton);
-          ROOT_WIN.requestAnimationFrame(()=>ROOT_WIN.requestAnimationFrame(positionMarkerButton));
-          [40,120,260,520].forEach(ms => ROOT_WIN.setTimeout(positionMarkerButton, ms));
-          if (ROOT_WIN.document.fonts?.ready){
-            ROOT_WIN.document.fonts.ready.then(()=>ROOT_WIN.setTimeout(positionMarkerButton, 0));
-          }
-        })();
-        detectNavStack();
-        ensureLayoutResizeObserver(); 
+
+        // --- Signatur prüfen ---
+        const sig = hlToolbarSignature();
+        const sigChanged = !!(sig && sig !== I.lastToolbarSig);
+        I.lastToolbarSig = sig || I.lastToolbarSig;
+
+        // Ghost-Positioning IMMER
+        positionMarkerOverlayButton();
+        positionPanelSmart();
+
+        // Wenn Toolbar/TOC/Navi sich geändert hat: Burst
+        if (sigChanged || I.pendingReposition){
+          I.pendingReposition = false;
+          hlBurstRepositionThrottled();
+        }
+
+        ensureLayoutResizeObserver();
         checkLayoutAndRecalc();
         ensureSwatchesOnce();
         wireUIOnce();
         adaptUIVars();
         applyUI();
         positionPanelSmart();
+
       } finally {
         I.ticking = false;
       }
     });
   }
+
 
   // Docking nur auf DOM-Änderungen (childList/subtree) — KEINE attributes!
   try{
@@ -1451,7 +1686,12 @@ function positionMarkerButton(){
 
   // Theme-Observer: NUR class/data-theme (nicht style!)
   try{
-    I.moTheme = new MutationObserver(() => { adaptUIVars(); applyUI(); positionMarkerButton(); positionPanelSmart(); });  
+    I.moTheme = new MutationObserver(() => {
+      adaptUIVars();
+      applyUI();
+      positionMarkerOverlayButton();
+      positionPanelSmart();
+    }); 
     I.moTheme.observe(ROOT_DOC.documentElement, { attributes:true, attributeFilter:["class","data-theme","data-mode","data-view","data-layout"] });
     I.moTheme.observe(ROOT_DOC.body,           { attributes:true, attributeFilter:["class","data-theme","data-mode","data-view","data-layout"] });
 
@@ -1462,6 +1702,30 @@ ROOT_WIN.addEventListener("resize", tick, { passive: true });
 if (ROOT_WIN.visualViewport){
   ROOT_WIN.visualViewport.addEventListener("resize", tick);
   ROOT_WIN.visualViewport.addEventListener("scroll", tick);
+}
+
+
+// Jeder Toolbar-Klick kann TOC/Navi toggeln -> Burst danach
+ROOT_DOC.addEventListener("click", (e)=>{
+  // nur wenn oben im UI geklickt wurde (vermeidet unnötige Bursts)
+  if ((e.clientY || 9999) <= 260){
+    ROOT_WIN.setTimeout(() => {
+      I.pendingReposition = true;
+      tick();
+    }, 0);
+  }
+}, true);
+
+// Periodisch: falls Lia Transitions ohne DOM-Änderung macht
+if (!I.__toolbarTimer){
+  I.__toolbarTimer = ROOT_WIN.setInterval(() => {
+    if (!I.__alive) return;
+    const sig = hlToolbarSignature();
+    if (sig && sig !== I.lastToolbarSig){
+      I.lastToolbarSig = sig;
+      hlBurstRepositionThrottled();
+    }
+  }, 350);
 }
 
 
