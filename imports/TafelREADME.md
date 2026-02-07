@@ -679,55 +679,58 @@ function burstRepositionThrottled(){
 
 
 
-  function positionOverlayButton(){
-    const btn = ROOT_DOC.getElementById(BTN_ID);
-    const overlay = ROOT_DOC.getElementById(OVERLAY_ID);
-    if (!btn || !overlay) return;
+function positionOverlayButton(){
+  const btn = ROOT_DOC.getElementById(BTN_ID);
+  const overlay = ROOT_DOC.getElementById(OVERLAY_ID);
+  if (!btn || !overlay) return;
 
-    // Nur wenn Button sichtbar sein soll (presentation)
-    if (btn.style.display === "none") return;
+  const vp  = getViewport();
+  const pad = 8;
+  const gap = 8;
 
-    const vp = getViewport();
-    const pad = 8;
-    const gap = 8; // Abstand rechts neben dem rechtesten Button
-
-    // Button echte Größe nehmen (nicht "size" hartkodieren!)
-    const br = btn.getBoundingClientRect();
-    const bw = (br && br.width)  ? br.width  : 34;
-    const bh = (br && br.height) ? br.height : 34;
-
-    const toc = findTOCButton();
-    const tocR = getVisibleRect(toc);
-
-    // Anchor: TOC, sonst Top-Left
-    const anchor = tocR || { left: pad, top: pad, right: pad + bw, bottom: pad + bh, height: bh };
-
-    // Sammle Buttons in derselben "Toolbar-Zeile" (inkl. Textmarker-Overlay)
-    const peers = collectTopLeftRowButtons(anchor);
-
-    // Rechtestes Ende bestimmen (TOC + alle Peers)
-    let rightEdge = anchor.right;
-    for (const p of peers){
-      rightEdge = Math.max(rightEdge, p.r.right);
+  // Buttongröße: wenn messbar -> nehmen, sonst fallback (auch bei display:none)
+  let bw = 34, bh = 34;
+  try{
+    const r = btn.getBoundingClientRect();
+    if (r && r.width > 6 && r.height > 6){
+      bw = r.width;
+      bh = r.height;
     }
+  }catch(e){}
 
-    // Vertikal sauber an Anchor zentrieren
-    const targetTop = anchor.top + ((anchor.height || bh) - bh) / 2;
+  const tocR = getVisibleRect(findTOCButton());
 
-    let left = rightEdge + gap;
-    let top  = targetTop;
+  // Anchor: TOC, sonst Top-Left
+  const anchor = tocR || { left: pad, top: pad, right: pad + bw, bottom: pad + bh, height: bh };
 
-    // clamp
-    left = clamp(left, pad, vp.w - bw - pad);
-    top  = clamp(top,  pad, vp.h - bh - pad);
+  // Peers sammeln (Toolbar-Zeile tolerant)
+  const peers = collectTopLeftRowButtons(anchor);
 
-    // VisualViewport offset
-    overlay.style.left = `${Math.round(vp.ox)}px`;
-    overlay.style.top  = `${Math.round(vp.oy)}px`;
-
-    btn.style.left = `${Math.round(left)}px`;
-    btn.style.top  = `${Math.round(top)}px`;
+  // Rechtestes Ende bestimmen
+  let rightEdge = anchor.right;
+  for (const p of peers){
+    rightEdge = Math.max(rightEdge, p.r.right);
   }
+
+  // Vertikal an Anchor zentrieren
+  const targetTop = anchor.top + ((anchor.height || bh) - bh) / 2;
+
+  let left = rightEdge + gap;
+  let top  = targetTop;
+
+  // clamp
+  left = clamp(left, pad, vp.w - bw - pad);
+  top  = clamp(top,  pad, vp.h - bh - pad);
+
+  // VisualViewport offset
+  overlay.style.left = `${Math.round(vp.ox)}px`;
+  overlay.style.top  = `${Math.round(vp.oy)}px`;
+
+  // Position setzen (auch wenn Button aktuell hidden ist -> wirkt beim nächsten Show sofort)
+  btn.style.left = `${Math.round(left)}px`;
+  btn.style.top  = `${Math.round(top)}px`;
+}
+
 
 
 
@@ -903,6 +906,7 @@ function setPresentationOnlyVisibility(mode){
   // =========================================================
   // Tick (throttled) – ensure-Functions, damit Import immer greift
   // =========================================================
+
 function tick(){
   if (I.ticking) return;
   I.ticking = true;
@@ -928,21 +932,19 @@ function tick(){
       const showChanged = (I.lastShow === null) ? true : (show !== I.lastShow);
       I.lastShow = show;
 
-      // 4) Toolbar-Signatur IMMER prüfen (auch wenn Button versteckt ist!)
+      // 4) Toolbar-Signatur IMMER prüfen (alle Modi)
       const sig = toolbarSignature();
       const sigChanged = !!(sig && sig !== I.lastToolbarSig);
       I.lastToolbarSig = sig || I.lastToolbarSig;
 
-      // Wenn Toolbar im Hintergrund umgebaut wird (Textbook) => merken
+      // Toolbar änderte sich während Button versteckt war -> merken
       if (!show && sigChanged){
         I.pendingReposition = true;
       }
 
-      // 5) Sofort-Positionierung (best effort), wenn sichtbar
-      if (show){
-        positionOverlayButton();
-        positionPanel();
-      }
+      // 5) Position IMMER nachführen (Ghost-Positioning)
+      positionOverlayButton();
+      if (show) positionPanel();
 
       // 6) Mode/Settings-Change -> Font (kann Layout beeinflussen)
       const modeOrSettingsChanged =
@@ -954,27 +956,13 @@ function tick(){
         I.lastSettingsRaw = settingsRaw;
       }
 
-      // 7) Burst-Kriterien:
-      //    - show toggled (Button kommt/geht)
-      //    - toolbar sig changed (Navigation an/aus, Toolbar rebuilt)
-      //    - mode/settings changed
-      //    - pendingReposition (Toolbar änderte sich während show=false)
+      // 7) Burst-Kriterien: NICHT an show koppeln!
       const needBurst =
-        show && (showChanged || sigChanged || modeOrSettingsChanged || I.pendingReposition);
+        showChanged || sigChanged || modeOrSettingsChanged || I.pendingReposition;
 
       if (needBurst){
         I.pendingReposition = false;
-
-        // leicht drosseln (MutationObserver kann spammen)
-        const now = Date.now();
-        if (now - (I.lastBurstAt || 0) >= 120){
-          I.lastBurstAt = now;
-          scheduleRepositionBurst();
-        }else{
-          // trotzdem einmal sofort nachziehen
-          positionOverlayButton();
-          positionPanel();
-        }
+        burstRepositionThrottled(); // nutzt dein 120ms Throttle + scheduleRepositionBurst()
       }
 
       // 8) Slider sync + Panel nachziehen
