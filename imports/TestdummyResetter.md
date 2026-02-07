@@ -2,10 +2,11 @@
 version:  0.0.1
 language: de
 author: Martin Lommatzsch
-comment: Aufgabenresetter v0.0.1 — Segment-Neurendern wie Reload (bis nächster @resetter oder nächstes #) — korrekt in Präsentations-Lazy-Mode (Index = Slide+Local) — Persistenz brechen via Salt
+comment: Aufgabenresetter v0.0.1 — segmentweiser Neustart via Re-Render; korrekt im Präsentations-Lazy-Mode (Slide+Local Index); Original-Segment wird nach End-Marker ausgeblendet; Persistenz gebrochen via Salt
 
 @style
 .lia-resetter-marker{ display:none !important; }
+.lia-resetter-end{ display:none !important; }
 
 button.lia-resetter-btn{
   background: transparent !important;
@@ -50,18 +51,22 @@ button.lia-resetter-btn:focus{
 
   const REGKEY = "__LIA_RESETTER_V001__";
   const REG = ROOT[REGKEY] || (ROOT[REGKEY] = {
-    stripped: Object.create(null),         // uid -> true (erst wenn wirklich entfernt)
-    renderers: Object.create(null),        // uid -> fn()
-    salts: Object.create(null),            // uid -> int
     guardInstalled: false,
 
-    cacheByUrl: Object.create(null),       // url -> { segments, slideCounts, prefix }
+    // uid -> fn()
+    renderers: Object.create(null),
+
+    // uid -> salt-int
+    salts: Object.create(null),
+
+    // url -> parsed object
+    cacheByUrl: Object.create(null),
     promiseByUrl: Object.create(null)
   });
 
-  // -------------------------
-  // Click-Guard: verhindert Slide-Advance beim Button
-  // -------------------------
+  // ---------------------------------
+  // Click-Guard: verhindert Slide-Advance
+  // ---------------------------------
   function installGuard(){
     if (REG.guardInstalled) return;
     REG.guardInstalled = true;
@@ -88,9 +93,9 @@ button.lia-resetter-btn:focus{
     });
   }
 
-  // -------------------------
+  // ---------------------------------
   // Kurs-URL aus Lia-URL
-  // -------------------------
+  // ---------------------------------
   function getCourseUrl(){
     try{
       const s = (ROOT.location && ROOT.location.search) ? ROOT.location.search : (location.search || "");
@@ -112,9 +117,9 @@ button.lia-resetter-btn:focus{
     }
   }
 
-  // -------------------------
-  // Header-Comment strippen (ohne Literal-Kommentar-Tokens)
-  // -------------------------
+  // ---------------------------------
+  // Header-Comment strippen (ohne Literal Kommentar-Tokens)
+  // ---------------------------------
   function stripInitialHeaderComment(md){
     const t = md || "";
     const OPEN  = "<" + "!--";
@@ -125,9 +130,9 @@ button.lia-resetter-btn:focus{
     return t.slice(end + 3);
   }
 
-  // -------------------------
-  // Markdown -> Slides (Level-1 #) + Segmente (@resetter)
-  // -------------------------
+  // ---------------------------------
+  // Markdown: Slides (# ) + Segmente (@resetter)
+  // ---------------------------------
   function splitSlidesLevel1(src){
     const lines = String(src || "").split("\n");
     const slides = [];
@@ -135,7 +140,7 @@ button.lia-resetter-btn:focus{
 
     for (let i=0;i<lines.length;i++){
       const line = lines[i];
-      const isH1 = /^[ \t]*#\s+/.test(line); // nur Level-1 (kein ##)
+      const isH1 = /^[ \t]*#\s+/.test(line); // nur "# "
       if (isH1 && cur.length){
         slides.push(cur.join("\n"));
         cur = [line];
@@ -144,9 +149,6 @@ button.lia-resetter-btn:focus{
       }
     }
     if (cur.length) slides.push(cur.join("\n"));
-
-    // Falls vor erster # noch was war: das zählt als Slide 0 in Reveal oft nicht sinnvoll,
-    // aber wir lassen es drin – die Prefix-Logik funktioniert trotzdem stabil.
     return slides;
   }
 
@@ -167,10 +169,9 @@ button.lia-resetter-btn:focus{
     if (!hits.length) return [];
 
     const segs = [];
-    for (let i = 0; i < hits.length; i++){
+    for (let i=0;i<hits.length;i++){
       const tokPos = hits[i];
 
-      // Start: nach der Zeile mit @resetter
       let start = tokPos + token.length;
       const lineEnd = src.indexOf("\n", start);
       start = (lineEnd >= 0) ? (lineEnd + 1) : start;
@@ -190,7 +191,7 @@ button.lia-resetter-btn:focus{
     for (let i=0;i<counts.length;i++){
       prefix[i+1] = prefix[i] + (counts[i] || 0);
     }
-    return prefix; // prefix[slideIndex] = #resetter vor dieser Slide
+    return prefix;
   }
 
   function getCourseParsed(){
@@ -204,11 +205,9 @@ button.lia-resetter-btn:focus{
       .then(r => r.text())
       .then(md => {
         const src = stripInitialHeaderComment(md);
-
         const slides = splitSlidesLevel1(src);
         const slideCounts = slides.map(s => (s.match(/@resetter\b/g) || []).length);
         const prefix = buildPrefix(slideCounts);
-
         const segments = parseSegments(src);
 
         const out = { segments, slideCounts, prefix };
@@ -224,49 +223,60 @@ button.lia-resetter-btn:focus{
     return REG.promiseByUrl[url];
   }
 
-  // -------------------------
-  // DOM: Marker/Slide finden + Index (Slide+Local)
-  // -------------------------
+  // ---------------------------------
+  // Slide Index robust bestimmen
+  // ---------------------------------
   function findMarker(uid, scriptEl){
     try{
       const prev = scriptEl && scriptEl.previousElementSibling;
       if (prev && prev.classList && prev.classList.contains("lia-resetter-marker")) return prev;
-    } catch(e){}
+    }catch(e){}
     try{
       return DOC.querySelector('.lia-resetter-marker[data-resetter-uid="'+ String(uid).replace(/"/g,'\\"') +'"]');
-    } catch(e){
+    }catch(e){
       return null;
     }
   }
 
   function findSlideSection(el){
     if (!el || !el.closest) return null;
-    // Reveal-Slide ist i.d.R. ein section mit data-index-h (oder data-index)
-    let sec = el.closest("section[data-index-h]");
-    if (sec) return sec;
-    sec = el.closest("section[data-index]");
-    if (sec) return sec;
-    // Fallback: nächstes section
-    sec = el.closest("section");
-    return sec;
+    return el.closest("section") || null;
   }
 
   function getSlideIndex(section){
     if (!section) return null;
 
-    // Reveal standard
-    const dh = section.getAttribute("data-index-h");
-    if (dh != null && dh !== ""){
-      const v = parseInt(dh, 10);
-      if (!Number.isNaN(v)) return v;
-    }
+    // 1) Reveal API (best)
+    try{
+      const R = ROOT.Reveal;
+      if (R && typeof R.getIndices === "function"){
+        const idx = R.getIndices(section);
+        if (idx && typeof idx.h === "number") return idx.h;
+      }
+    }catch(e){}
 
-    // Alternative
-    const di = section.getAttribute("data-index");
-    if (di != null && di !== ""){
-      const v = parseInt(di, 10);
-      if (!Number.isNaN(v)) return v;
-    }
+    // 2) data-index-h
+    try{
+      const dh = section.getAttribute("data-index-h");
+      if (dh != null && dh !== ""){
+        const v = parseInt(dh, 10);
+        if (!Number.isNaN(v)) return v;
+      }
+    }catch(e){}
+
+    // 3) DOM Reihenfolge in Reveal
+    try{
+      const slidesRoot =
+        ROOT.document.querySelector(".reveal .slides") ||
+        ROOT.document.querySelector(".slides") ||
+        null;
+
+      if (slidesRoot){
+        const secs = Array.from(slidesRoot.children).filter(x => x && x.tagName === "SECTION");
+        const i = secs.indexOf(section);
+        if (i >= 0) return i;
+      }
+    }catch(e){}
 
     return null;
   }
@@ -276,149 +286,123 @@ button.lia-resetter-btn:focus{
     if (section && section.querySelectorAll){
       const all = Array.from(section.querySelectorAll(".lia-resetter-marker"));
       const idx = all.indexOf(marker);
-      if (idx >= 0) return idx;
+      return idx >= 0 ? idx : 0;
+    }
+    return 0;
+  }
+
+  function globalIndex(marker, parsed){
+    const section = findSlideSection(marker);
+    const h = getSlideIndex(section);
+
+    if (h != null && parsed && parsed.prefix){
+      const base = (h >= 0 && h < parsed.prefix.length) ? parsed.prefix[h] : 0;
+      const loc  = localIndexInSlide(marker, section);
+      return base + loc;
     }
 
-    // Fallback: global DOM Reihenfolge
+    // Fallback (Textbook): globale Marker-Reihenfolge im aktuellen DOM
     const all = Array.from(DOC.querySelectorAll(".lia-resetter-marker"));
     const idx = all.indexOf(marker);
     return idx >= 0 ? idx : 0;
   }
 
-  function globalIndexFromSlide(marker, parsed){
-    // 1) Versuche Reveal-Slide-Index
-    const sec = findSlideSection(marker);
-    const slideIdx = getSlideIndex(sec);
-
-    if (slideIdx != null && parsed && parsed.prefix && parsed.prefix.length){
-      const local = localIndexInSlide(marker, sec);
-      const base = (slideIdx >= 0 && slideIdx < parsed.prefix.length) ? parsed.prefix[slideIdx] : 0;
-      return base + local;
-    }
-
-    // 2) Fallback: wenn alles bereits im DOM ist (Textbook), globale Marker-Reihenfolge
-    const all = Array.from(DOC.querySelectorAll(".lia-resetter-marker"));
-    const idx = all.indexOf(marker);
-    return idx >= 0 ? idx : 0;
-  }
-
-  // -------------------------
-  // Strip Original-Segment (nur innerhalb der Slide!)
-  // -------------------------
-  function isStopNode(node){
-    if (!node) return false;
-    if (node.nodeType !== 1) return false;
-    const el = node;
-
-    if (/^H[1-6]$/.test(el.tagName)) return true;
-    if (el.classList && el.classList.contains("lia-resetter-marker")) return true;
-    if (el.querySelector && el.querySelector(".lia-resetter-marker")) return true;
-
-    return false;
-  }
-
-  function tryStripOnce(uid, marker){
-    if (REG.stripped[uid]) return true;
-    if (!marker) return false;
-
-    const sec = findSlideSection(marker) || DOC.querySelector("main") || DOC.body;
-    const start = marker.closest("p") || marker;
-    if (!sec || !start) return false;
-
-    let n = start.nextSibling;
-    if (!n) return false;
-
-    // Segment leer -> sofort fertig
-    if (isStopNode(n)){
-      REG.stripped[uid] = true;
-      return true;
-    }
-
-    let removed = 0;
-    while (n){
-      const next = n.nextSibling;
-
-      // nur innerhalb dieser Slide arbeiten
-      if (n.nodeType === 1 && sec && !sec.contains(n)) break;
-
-      if (isStopNode(n)) break;
-
-      try{
-        if (n.parentNode){
-          n.parentNode.removeChild(n);
-          removed++;
-        }
-      } catch(e){}
-
-      n = next;
-    }
-
-    if (removed > 0){
-      REG.stripped[uid] = true;
-      return true;
-    }
-
-    return false;
-  }
-
-  function ensureStripped(uid, marker){
-    if (REG.stripped[uid]) return Promise.resolve(true);
-
-    return new Promise((resolve) => {
-      let tries = 0;
-
-      const step = () => {
-        tries++;
-        if (tryStripOnce(uid, marker)){
-          resolve(true);
-          return;
-        }
-        if (tries >= 160){ // ~8s @50ms
-          resolve(false);
-          return;
-        }
-        setTimeout(step, 50);
-      };
-
-      step();
-    });
-  }
-
-  // -------------------------
-  // Output bauen (Salt bricht Persistenz-Key)
-  // -------------------------
+  // ---------------------------------
+  // Output: Salt bricht Persistenz + End-Marker zum Ausblenden des Originals
+  // (WICHTIG: Segment-Markdown NICHT in ein HTML-Wrapper einschließen!)
+  // ---------------------------------
   function buildOutput(uid, segmentText){
     const salt = (REG.salts[uid] = (REG.salts[uid] || 0) + 1);
+
     return (
       "LIASCRIPT:" +
       '<button class="lia-resetter-btn" type="button" data-resetter-btn="'+ uid +'">Neustart der Aufgabe</button>\n\n' +
       '<span style="display:none" data-resetter-salt="'+ uid +'-'+ salt +'"></span>\n\n' +
-      (segmentText || "")
+      (segmentText || "") + "\n\n" +
+      '<div class="lia-resetter-end" data-resetter-end="'+ uid +'"></div>\n'
     );
   }
 
-  // -------------------------
+  // ---------------------------------
+  // Original-Segment ausblenden (nach End-Marker bis nächster Marker oder Heading)
+  // ---------------------------------
+  function isHeadingEl(el){
+    return !!el && el.nodeType === 1 && /^H[1-6]$/.test(el.tagName);
+  }
+  function containsNextResetter(el){
+    if (!el || el.nodeType !== 1) return false;
+    if (el.classList && el.classList.contains("lia-resetter-marker")) return true;
+    if (el.querySelector && el.querySelector(".lia-resetter-marker")) return true;
+    return false;
+  }
+
+  function hideOriginalAfter(uid){
+    const end = DOC.querySelector('.lia-resetter-end[data-resetter-end="'+ String(uid).replace(/"/g,'\\"') +'"]');
+    if (!end) return false;
+
+    // wir laufen ab dem End-Marker nach vorne
+    let n = end.nextSibling;
+    let hidAny = false;
+
+    while (n){
+      // Stop: nächste Überschrift oder nächster @resetter (Marker)
+      if (n.nodeType === 1){
+        const el = n;
+        if (isHeadingEl(el)) break;
+        if (containsNextResetter(el)) break;
+      }
+
+      const next = n.nextSibling;
+
+      // nur echte sichtbare Inhalte ausblenden (Textnodes -> überspringen)
+      if (n.nodeType === 1){
+        try{
+          n.style.display = "none";
+          hidAny = true;
+        }catch(e){}
+      }
+
+      n = next;
+    }
+
+    return hidAny;
+  }
+
+  function hideOriginalLoop(uid){
+    let tries = 0;
+    const step = () => {
+      tries++;
+      if (hideOriginalAfter(uid)) return;
+      if (tries > 40) return; // ~2s
+      setTimeout(step, 50);
+    };
+    step();
+  }
+
+  // ---------------------------------
   // Bootstrap pro @resetter
-  // -------------------------
+  // ---------------------------------
   function bootstrap(uid, send, scriptEl){
     installGuard();
 
     const marker = findMarker(uid, scriptEl);
 
+    // 1) Button sofort da (Placeholder ohne Segment), damit “erste Folie” nicht leer ist
+    send.output(buildOutput(uid, "")); // zeigt Button + Endmarker
+    // NICHT hideOriginal hier, sonst wäre kurzzeitig die Aufgabe weg
+
+    // 2) Nach Fetch: korrektes Segment rendern + Original ausblenden
     getCourseParsed().then(function(parsed){
-      const gi = globalIndexFromSlide(marker, parsed);
+      const gi = globalIndex(marker, parsed);
       const seg = (parsed.segments && gi >= 0 && gi < parsed.segments.length) ? parsed.segments[gi] : "";
 
-      // erst Original entfernen, dann rendern => keine Doppelanzeige
-      ensureStripped(uid, marker).then(function(){
-        const out = buildOutput(uid, seg);
+      const render = () => {
+        send.output(buildOutput(uid, seg));
+        hideOriginalLoop(uid);
+      };
 
-        REG.renderers[uid] = function(){
-          send.output(buildOutput(uid, seg));
-        };
-
-        send.output(out);
-      });
+      REG.renderers[uid] = render;
+      render();
     });
   }
 
@@ -454,6 +438,7 @@ button.lia-resetter-btn:focus{
 </script>
 @end
 -->
+
 
 
 

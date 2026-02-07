@@ -592,42 +592,47 @@ const I = REG.instances[DOC_ID] = {
     }
   }
 
-  function collectTopLeftRowButtons(anchorRect){
-    const vp = getViewport();
-    const maxTop = 140;                 // "oben"-Band
-    const maxLeft = vp.w * 0.55;        // linke Hälfte
+function collectTopLeftRowButtons(anchorRect){
+  const vp = getViewport();
 
-    const yMin = anchorRect ? (anchorRect.top - 28) : 0;
-    const yMax = anchorRect ? (anchorRect.bottom + 28) : maxTop;
+  // Toolbar kann je nach Modus etwas tiefer sitzen (TOC offen etc.)
+  const maxTop  = 200;                 // vorher 140
+  const maxLeft = vp.w * 0.70;         // vorher 0.55 (TOC kann Toolbar leicht nach rechts schieben)
 
-    const els = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
+  const els = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
 
-    const out = [];
-    for (const el of els){
-      if (!el || el.id === BTN_ID) continue;
+  const out = [];
 
-      const r = getVisibleRect(el);
-      if (!r) continue;
+  // Anchor-Mitte + dynamische Toleranz (TOC-Open verschiebt Buttons oft ein paar Pixel)
+  const aMidY = anchorRect ? (anchorRect.top + anchorRect.height / 2) : 24;
+  const aH    = anchorRect ? anchorRect.height : 34;
+  const yTol  = Math.max(52, aH * 1.6); // <<< wichtig: deutlich toleranter
 
-      // Top-Band + eher links
-      if (r.top > maxTop) continue;
-      if (r.left > maxLeft) continue;
+  for (const el of els){
+    if (!el || el.id === BTN_ID) continue;
 
-      // gleiche Zeile wie Anchor (falls vorhanden)
-      const midY = r.top + r.height/2;
-      if (anchorRect){
-        if (midY < yMin || midY > yMax) continue;
-      }
+    const r = getVisibleRect(el);
+    if (!r) continue;
 
-      // keine riesigen Container
-      if (r.width > 180 || r.height > 90) continue;
+    // nur "oben" + eher links (aber nicht zu strikt)
+    if (r.top > maxTop) continue;
+    if (r.left > maxLeft) continue;
 
-      if (!isToolbarLike(el)) continue;
+    // gleiche Toolbar-Zeile (tolerant!)
+    const midY = r.top + r.height / 2;
+    if (Math.abs(midY - aMidY) > yTol) continue;
 
-      out.push({ el, r });
-    }
-    return out;
+    // keine riesigen Container
+    if (r.width > 180 || r.height > 90) continue;
+
+    if (!isToolbarLike(el)) continue;
+
+    out.push({ el, r });
   }
+
+  return out;
+}
+
 
 
 function toolbarSignature(){
