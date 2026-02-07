@@ -42,7 +42,57 @@ author: Martin Lommatzsch
     ticking: false,
     lastMode: null,
     lastSettingsRaw: null
+    posTimers: []
   };
+
+
+
+
+// =========================================================
+  // Reposition-Sequenz (Nightly: Toolbar/Layout setzt sich verzögert)
+  // =========================================================
+  function clearPosTimers(){
+    try{
+      if (!I.posTimers) I.posTimers = [];
+      while (I.posTimers.length){
+        ROOT_WIN.clearTimeout(I.posTimers.pop());
+      }
+    }catch(e){}
+  }
+
+  function runPositionNow(){
+    // beides, weil Panel von Button abhängt
+    positionOverlayButton();
+    positionPanel();
+  }
+
+  function scheduleRepositionBurst(){
+    clearPosTimers();
+
+    // sofort + 2×rAF (Layout/Fonts/Toolbar)
+    runPositionNow();
+    ROOT_WIN.requestAnimationFrame(() => {
+      ROOT_WIN.requestAnimationFrame(() => runPositionNow());
+    });
+
+    // kurze Delays für Nightly-Navigation/Transitions
+    const delays = [40, 120, 260, 520];
+    for (const ms of delays){
+      I.posTimers.push(ROOT_WIN.setTimeout(() => {
+        runPositionNow();
+      }, ms));
+    }
+
+    // optional: wenn Fonts spät kommen
+    try{
+      if (ROOT_DOC.fonts && ROOT_DOC.fonts.ready){
+        ROOT_DOC.fonts.ready.then(() => runPositionNow());
+      }
+    }catch(e){}
+  }
+
+
+
 
   // =========================================================
   // Helpers: CSS Injection (import-sicher)
@@ -416,6 +466,14 @@ author: Martin Lommatzsch
       margin: 0 !important;
       accent-color: var(--lia-tff-accent) !important;
     }
+
+    /* Backstop: auf kleinen Screens nie anzeigen */
+    @media (max-width: 680px){
+      #lia-tff-btn-v2{ display: none !important; }
+      body.lia-tff-panel-open #lia-tff-panel-v2{ display: none !important; }
+    }
+
+
   `;
 
   function ensureRootCSS(){
@@ -672,16 +730,46 @@ author: Martin Lommatzsch
   // =========================================================
   // Wiring
   // =========================================================
+
+
+  const TFF_HIDE_MAX_W = 680;   // <- anpassen, wenn du willst (typisch Phone <= 680px)
+  const TFF_HIDE_MIN_DIM = 520; // <- Querformat-Handy abfangen
+
+  function isSmallScreen(){
+    try{
+      const vv = ROOT_WIN.visualViewport;
+      const w = vv ? vv.width  : (ROOT_DOC.documentElement.clientWidth  || 9999);
+      const h = vv ? vv.height : (ROOT_DOC.documentElement.clientHeight || 9999);
+      const minDim = Math.min(w, h);
+
+      // "phone-like": entweder schmal, oder sehr kleine minimale Kante
+      return (w <= TFF_HIDE_MAX_W) || (minDim <= TFF_HIDE_MIN_DIM);
+    }catch(e){
+      return false;
+    }
+  }
+
+
+
+
   function setPresentationOnlyVisibility(mode){
     const isPres = (mode === "presentation");
-    const btn = ROOT_DOC.getElementById(BTN_ID);
+    const small  = isSmallScreen();
+
+    const show = isPres && !small;
+
+    const btn   = ROOT_DOC.getElementById(BTN_ID);
     const panel = ROOT_DOC.getElementById(PANEL_ID);
-    if (btn) btn.style.display = isPres ? "inline-flex" : "none";
-    if (!isPres && panel){
+
+    if (btn) btn.style.display = show ? "inline-flex" : "none";
+
+    // Wenn wir ausblenden (oder nicht Presentation): Panel immer schließen
+    if (!show && panel){
       ROOT_DOC.body.classList.remove("lia-tff-panel-open");
       panel.style.display = "none";
     }
   }
+
 
   function syncSliderToCurrent(){
     const slider = ROOT_DOC.getElementById(SLIDER_ID);
@@ -762,37 +850,63 @@ author: Martin Lommatzsch
 
     ROOT_WIN.requestAnimationFrame(() => {
       try{
-        // 0) CSS sicher injizieren
+        // =====================================================
+        // 0) CSS sicher injizieren (Content + Root)
+        // =====================================================
         ensureContentCSS();
         ensureRootCSS();
 
-        // 1) Modus
+        // =====================================================
+        // 1) Mode/Settings lesen + dataset setzen
+        // =====================================================
         const settingsRaw = safeGetSettingsRaw();
         const mode = detectMode();
         applyModeAttr(mode);
 
-        // 2) Theme-Farbe
+        // =====================================================
+        // 2) Theme-Akzent synchronisieren (Root + Content)
+        // =====================================================
         syncAccent();
 
-        // 3) UI sicherstellen + sichtbar nur in Presentation
+        // =====================================================
+        // 3) UI sicherstellen + Sichtbarkeit (nur Presentation)
+        // =====================================================
         ensureUI();
         setPresentationOnlyVisibility(mode);
 
-        // 4) Position (Button + Panel)
+        // =====================================================
+        // 4) Sofort-Positionierung (schnell, "best effort")
+        // =====================================================
         positionOverlayButton();
+        positionPanel();
 
-        // 5) Font-Logik: nur wenn Mode/Settings wechseln
-        if (mode !== I.lastMode || settingsRaw !== I.lastSettingsRaw){
+        // =====================================================
+        // 5) Wechsel erkennen -> Font + Reposition-Burst
+        //    (WICHTIG: Vergleich VOR dem Update der last*-Werte)
+        // =====================================================
+        const changed = (mode !== I.lastMode) || (settingsRaw !== I.lastSettingsRaw);
+
+        if (changed){
+          // Font kann Layout beeinflussen
           applyFontLogic(mode);
+
+          // last*-Werte erst JETZT aktualisieren
           I.lastMode = mode;
           I.lastSettingsRaw = settingsRaw;
+
+          // Nightly: Toolbar setzt sich verzögert -> Burst
+          scheduleRepositionBurst();
         }
 
-        // 6) Slider sync + Panel position
+        // =====================================================
+        // 6) Slider synchronisieren + Panel nachziehen
+        // =====================================================
         syncSliderToCurrent();
         positionPanel();
 
-        // 7) Wiring
+        // =====================================================
+        // 7) Events nur einmal verdrahten
+        // =====================================================
         wireOnce();
 
       } finally {
@@ -800,6 +914,7 @@ author: Martin Lommatzsch
       }
     });
   }
+
 
   // Beobachter: Toolbar/DOM kommt manchmal später (Nightly)
   try{
