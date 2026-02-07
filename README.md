@@ -2995,12 +2995,68 @@ function ensureCss(){
 
   if (REG.instances[DOC_ID]?.__alive) return;
 
-  const I = REG.instances[DOC_ID] = {
-    __alive: true,
-    ticking: false,
-    lastMode: null,
-    lastSettingsRaw: null
-  };
+
+const I = REG.instances[DOC_ID] = {
+  __alive: true,
+  ticking: false,
+  lastMode: null,
+  lastSettingsRaw: null,
+  posTimers: [],
+  lastShow: null,
+  lastToolbarSig: null,
+  lastBurstAt: 0,
+  pendingReposition: false
+};
+
+
+
+
+
+// =========================================================
+  // Reposition-Sequenz (Nightly: Toolbar/Layout setzt sich verzögert)
+  // =========================================================
+  function clearPosTimers(){
+    try{
+      if (!I.posTimers) I.posTimers = [];
+      while (I.posTimers.length){
+        ROOT_WIN.clearTimeout(I.posTimers.pop());
+      }
+    }catch(e){}
+  }
+
+  function runPositionNow(){
+    // beides, weil Panel von Button abhängt
+    positionOverlayButton();
+    positionPanel();
+  }
+
+  function scheduleRepositionBurst(){
+    clearPosTimers();
+
+    // sofort + 2×rAF (Layout/Fonts/Toolbar)
+    runPositionNow();
+    ROOT_WIN.requestAnimationFrame(() => {
+      ROOT_WIN.requestAnimationFrame(() => runPositionNow());
+    });
+
+    // kurze Delays für Nightly-Navigation/Transitions
+    const delays = [40, 120, 260, 520];
+    for (const ms of delays){
+      I.posTimers.push(ROOT_WIN.setTimeout(() => {
+        runPositionNow();
+      }, ms));
+    }
+
+    // optional: wenn Fonts spät kommen
+    try{
+      if (ROOT_DOC.fonts && ROOT_DOC.fonts.ready){
+        ROOT_DOC.fonts.ready.then(() => runPositionNow());
+      }
+    }catch(e){}
+  }
+
+
+
 
   // =========================================================
   // Helpers: CSS Injection (import-sicher)
@@ -3146,7 +3202,7 @@ function ensureCss(){
   const CONTENT_CSS = `
     :root{
       --lia-tff-side-gap: 25px;     /* links/rechts ungenutzt */
-      --lia-tff-maxw: 99vw;         /* max 99% */
+      --lia-tff-maxw: 98vw;         /* max 98% */
       --lia-tff-font: unset;        /* wird per JS gesetzt */
     }
 
@@ -3374,6 +3430,14 @@ function ensureCss(){
       margin: 0 !important;
       accent-color: var(--lia-tff-accent) !important;
     }
+
+    /* Backstop: auf kleinen Screens nie anzeigen */
+    @media (max-width: 680px){
+      #lia-tff-btn-v2{ display: none !important; }
+      body.lia-tff-panel-open #lia-tff-panel-v2{ display: none !important; }
+    }
+
+
   `;
 
   function ensureRootCSS(){
@@ -3427,30 +3491,67 @@ function ensureCss(){
 
   function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
 
-  function findTOCButton(){
-    // Heuristik: aria-label/title enthält Inhaltsverzeichnis/contents,
-    // sonst erster Button links oben im Toolbar-Header.
-    const all = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
-    const byLabel = all.find(el=>{
-      const t = ((el.getAttribute("aria-label")||el.getAttribute("title")||el.textContent||"")+"").toLowerCase();
-      return t.includes("inhaltsverzeichnis") || t.includes("table of contents") || t.includes("contents");
-    });
-    if (byLabel) return byLabel;
+function findTOCButton(){
+  const all = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
+  return all.find(el=>{
+    const t = ((el.getAttribute("aria-label")||el.getAttribute("title")||el.textContent||"")+"").toLowerCase();
+    return t.includes("inhaltsverzeichnis") || t.includes("table of contents") || t.includes("contents");
+  }) || null;
+}
 
-    const header =
-      ROOT_DOC.querySelector("header#lia-toolbar-nav") ||
-      ROOT_DOC.querySelector("#lia-toolbar-nav") ||
-      ROOT_DOC.querySelector("header.lia-header");
 
-    if (header){
-      const left = header.querySelector(".lia-header__left") || header;
-      const btn = left.querySelector("button,[role='button'],a");
-      if (btn) return btn;
+function getToolbarHeader(){
+  return ROOT_DOC.querySelector("header#lia-toolbar-nav") ||
+         ROOT_DOC.querySelector("#lia-toolbar-nav") ||
+         ROOT_DOC.querySelector("header.lia-header");
+}
+
+function getToolbarLeftContainer(){
+  const header = getToolbarHeader();
+  if (!header) return null;
+  return header.querySelector(".lia-header__left") || header;
+}
+
+// Liefert den echten Anchor-RECT (TOC wenn da, sonst linker Toolbar-Button, sonst null => pad)
+function findAnchorRect(){
+  const vp = getViewport();
+
+  // 1) TOC (wenn sichtbar)
+  const tocR = getVisibleRect(findTOCButton());
+  if (tocR) return tocR;
+
+  // 2) Header-left: linkester sichtbarer Button
+  const leftC = getToolbarLeftContainer();
+  if (leftC){
+    const els = Array.from(leftC.querySelectorAll("button,[role='button'],a"));
+    let best = null;
+    for (const el of els){
+      const r = getVisibleRect(el);
+      if (!r) continue;
+      if (!isToolbarLike(el)) continue;
+      if (r.top > 220) continue;
+      if (!best || r.left < best.left || (r.left === best.left && r.top < best.top)) best = r;
     }
-
-    // Fallback: erster Button überhaupt
-    return all.find(el=>el.tagName === "BUTTON") || null;
+    // wenn "alles rechts" (Slides ohne linke Controls) -> kein Anchor => pad
+    if (best && best.left <= vp.w * 0.60) return best;
   }
+
+  // 3) Global: linkester toolbar-like Button im Top-Band
+  const all = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
+  let best = null;
+  for (const el of all){
+    const r = getVisibleRect(el);
+    if (!r) continue;
+    if (!isToolbarLike(el)) continue;
+    if (r.top > 220) continue;
+    if (!best || r.left < best.left || (r.left === best.left && r.top < best.top)) best = r;
+  }
+  if (best && best.left <= vp.w * 0.60) return best;
+
+  return null;
+}
+
+
 
 
 
@@ -3486,92 +3587,140 @@ function ensureCss(){
     }
   }
 
-  function collectTopLeftRowButtons(anchorRect){
-    const vp = getViewport();
-    const maxTop = 140;                 // "oben"-Band
-    const maxLeft = vp.w * 0.55;        // linke Hälfte
 
-    const yMin = anchorRect ? (anchorRect.top - 28) : 0;
-    const yMax = anchorRect ? (anchorRect.bottom + 28) : maxTop;
+function collectTopLeftRowButtons(anchorRect){
+  const vp = getViewport();
+  const maxTop = 220;
+  const pad = 8;
 
-    const els = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
+  const a = anchorRect || { left: pad, top: pad, right: pad + 34, bottom: pad + 34, height: 34 };
+  const aMidY = a.top + (a.height || 34)/2;
+  const yTol  = Math.max(52, (a.height||34) * 1.6);
 
-    const out = [];
-    for (const el of els){
-      if (!el || el.id === BTN_ID) continue;
+  // Linkes Cluster: nie über Mitte hinaus + moderate Breite
+  const clusterMaxX = Math.min(vp.w * 0.55, a.left + 520);
 
-      const r = getVisibleRect(el);
-      if (!r) continue;
+  const out = [];
 
-      // Top-Band + eher links
-      if (r.top > maxTop) continue;
-      if (r.left > maxLeft) continue;
+  const leftC = getToolbarLeftContainer();
+  const primary = leftC ? Array.from(leftC.querySelectorAll("button,[role='button'],a")) : [];
+  const secondary = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
 
-      // gleiche Zeile wie Anchor (falls vorhanden)
-      const midY = r.top + r.height/2;
-      if (anchorRect){
-        if (midY < yMin || midY > yMax) continue;
-      }
+  function consider(el){
+    if (!el || el.id === BTN_ID) return;
 
-      // keine riesigen Container
-      if (r.width > 180 || r.height > 90) continue;
+    const r = getVisibleRect(el);
+    if (!r) return;
 
-      if (!isToolbarLike(el)) continue;
+    if (r.top > maxTop) return;
+    if (r.left > clusterMaxX) return;
 
-      out.push({ el, r });
-    }
-    return out;
+    const midY = r.top + r.height/2;
+    if (Math.abs(midY - aMidY) > yTol) return;
+
+    if (r.width > 220 || r.height > 100) return;
+    if (!isToolbarLike(el)) return;
+
+    out.push({ el, r });
   }
 
-  function positionOverlayButton(){
-    const btn = ROOT_DOC.getElementById(BTN_ID);
-    const overlay = ROOT_DOC.getElementById(OVERLAY_ID);
-    if (!btn || !overlay) return;
+  for (const el of primary) consider(el);
+  for (const el of secondary) consider(el);
 
-    // Nur wenn Button sichtbar sein soll (presentation)
-    if (btn.style.display === "none") return;
+  const seen = new Set();
+  return out.filter(p => (seen.has(p.el) ? false : (seen.add(p.el), true)));
+}
 
+
+
+function toolbarSignature(){
+  try{
     const vp = getViewport();
     const pad = 8;
-    const gap = 8; // Abstand rechts neben dem rechtesten Button
 
-    // Button echte Größe nehmen (nicht "size" hartkodieren!)
-    const br = btn.getBoundingClientRect();
-    const bw = (br && br.width)  ? br.width  : 34;
-    const bh = (br && br.height) ? br.height : 34;
+    const aR = findAnchorRect();
+    const anchor = aR || { left: pad, top: pad, right: pad + 34, bottom: pad + 34, height: 34 };
 
-    const toc = findTOCButton();
-    const tocR = getVisibleRect(toc);
-
-    // Anchor: TOC, sonst Top-Left
-    const anchor = tocR || { left: pad, top: pad, right: pad + bw, bottom: pad + bh, height: bh };
-
-    // Sammle Buttons in derselben "Toolbar-Zeile" (inkl. Textmarker-Overlay)
     const peers = collectTopLeftRowButtons(anchor);
 
-    // Rechtestes Ende bestimmen (TOC + alle Peers)
     let rightEdge = anchor.right;
+    let topBand   = anchor.top;
+    let rowH      = anchor.height || 34;
+
     for (const p of peers){
       rightEdge = Math.max(rightEdge, p.r.right);
+      topBand   = Math.min(topBand,   p.r.top);
+      rowH      = Math.max(rowH,      p.r.height);
     }
 
-    // Vertikal sauber an Anchor zentrieren
-    const targetTop = anchor.top + ((anchor.height || bh) - bh) / 2;
-
-    let left = rightEdge + gap;
-    let top  = targetTop;
-
-    // clamp
-    left = clamp(left, pad, vp.w - bw - pad);
-    top  = clamp(top,  pad, vp.h - bh - pad);
-
-    // VisualViewport offset
-    overlay.style.left = `${Math.round(vp.ox)}px`;
-    overlay.style.top  = `${Math.round(vp.oy)}px`;
-
-    btn.style.left = `${Math.round(left)}px`;
-    btn.style.top  = `${Math.round(top)}px`;
+    return [
+      Math.round(vp.w), Math.round(vp.h),
+      Math.round(vp.ox), Math.round(vp.oy),
+      Math.round(topBand), Math.round(rowH),
+      Math.round(rightEdge),
+      peers.length
+    ].join("|");
+  }catch(e){
+    return null;
   }
+}
+
+
+
+
+
+function burstRepositionThrottled(){
+  const now = Date.now();
+  if (now - (I.lastBurstAt || 0) < 120) return;
+  I.lastBurstAt = now;
+  scheduleRepositionBurst();
+}
+
+
+
+function positionOverlayButton(){
+  const btn = ROOT_DOC.getElementById(BTN_ID);
+  const overlay = ROOT_DOC.getElementById(OVERLAY_ID);
+  if (!btn || !overlay) return;
+
+  const vp  = getViewport();
+  const pad = 8;
+  const gap = 8;
+
+  let bw = 34, bh = 34;
+  try{
+    const r = btn.getBoundingClientRect();
+    if (r && r.width > 6 && r.height > 6){
+      bw = r.width; bh = r.height;
+    }
+  }catch(e){}
+
+  const aR = findAnchorRect();
+  const anchor = aR || { left: pad, top: pad, right: pad + bw, bottom: pad + bh, height: bh };
+
+  const peers = collectTopLeftRowButtons(anchor);
+
+  let rightEdge = anchor.right;
+  for (const p of peers){
+    rightEdge = Math.max(rightEdge, p.r.right);
+  }
+
+  const targetTop = anchor.top + ((anchor.height || bh) - bh) / 2;
+
+  let left = rightEdge + gap;
+  let top  = targetTop;
+
+  left = clamp(left, pad, vp.w - bw - pad);
+  top  = clamp(top,  pad, vp.h - bh - pad);
+
+  overlay.style.left = `${Math.round(vp.ox)}px`;
+  overlay.style.top  = `${Math.round(vp.oy)}px`;
+
+  btn.style.left = `${Math.round(left)}px`;
+  btn.style.top  = `${Math.round(top)}px`;
+}
+
+
 
 
 
@@ -3630,16 +3779,49 @@ function ensureCss(){
   // =========================================================
   // Wiring
   // =========================================================
-  function setPresentationOnlyVisibility(mode){
-    const isPres = (mode === "presentation");
-    const btn = ROOT_DOC.getElementById(BTN_ID);
-    const panel = ROOT_DOC.getElementById(PANEL_ID);
-    if (btn) btn.style.display = isPres ? "inline-flex" : "none";
-    if (!isPres && panel){
-      ROOT_DOC.body.classList.remove("lia-tff-panel-open");
-      panel.style.display = "none";
+
+
+  const TFF_HIDE_MAX_W = 680;   // <- anpassen, wenn du willst (typisch Phone <= 680px)
+  const TFF_HIDE_MIN_DIM = 520; // <- Querformat-Handy abfangen
+
+  function isSmallScreen(){
+    try{
+      const vv = ROOT_WIN.visualViewport;
+      const w = vv ? vv.width  : (ROOT_DOC.documentElement.clientWidth  || 9999);
+      const h = vv ? vv.height : (ROOT_DOC.documentElement.clientHeight || 9999);
+      const minDim = Math.min(w, h);
+
+      // "phone-like": entweder schmal, oder sehr kleine minimale Kante
+      return (w <= TFF_HIDE_MAX_W) || (minDim <= TFF_HIDE_MIN_DIM);
+    }catch(e){
+      return false;
     }
   }
+
+
+
+
+function setPresentationOnlyVisibility(mode){
+  const isPres = (mode === "presentation");
+  const small  = isSmallScreen();
+  const show   = isPres && !small;
+
+  const btn   = ROOT_DOC.getElementById(BTN_ID);
+  const panel = ROOT_DOC.getElementById(PANEL_ID);
+
+  if (btn) btn.style.display = show ? "inline-flex" : "none";
+
+  // Wenn wir ausblenden: Panel immer schließen + Timer stoppen
+  if (!show && panel){
+    ROOT_DOC.body.classList.remove("lia-tff-panel-open");
+    panel.style.display = "none";
+    clearPosTimers();
+  }
+
+  return show;
+}
+
+
 
   function syncSliderToCurrent(){
     const slider = ROOT_DOC.getElementById(SLIDER_ID);
@@ -3714,60 +3896,90 @@ function ensureCss(){
   // =========================================================
   // Tick (throttled) – ensure-Functions, damit Import immer greift
   // =========================================================
-  function tick(){
-    if (I.ticking) return;
-    I.ticking = true;
 
-    ROOT_WIN.requestAnimationFrame(() => {
-      try{
-        // 0) CSS sicher injizieren
-        ensureContentCSS();
-        ensureRootCSS();
+function tick(){
+  if (I.ticking) return;
+  I.ticking = true;
 
-        // 1) Modus
-        const settingsRaw = safeGetSettingsRaw();
-        const mode = detectMode();
-        applyModeAttr(mode);
+  ROOT_WIN.requestAnimationFrame(() => {
+    try{
+      // 0) CSS sicher injizieren
+      ensureContentCSS();
+      ensureRootCSS();
 
-        // 2) Theme-Farbe
-        syncAccent();
+      // 1) Mode/Settings lesen + dataset setzen
+      const settingsRaw = safeGetSettingsRaw();
+      const mode = detectMode();
+      applyModeAttr(mode);
 
-        // 3) UI sicherstellen + sichtbar nur in Presentation
-        ensureUI();
-        setPresentationOnlyVisibility(mode);
+      // 2) Theme-Akzent synchronisieren
+      syncAccent();
 
-        // 4) Position (Button + Panel)
-        positionOverlayButton();
+      // 3) UI sicherstellen + Sichtbarkeit
+      ensureUI();
+      const show = setPresentationOnlyVisibility(mode);
 
-        // 5) Font-Logik: nur wenn Mode/Settings wechseln
-        if (mode !== I.lastMode || settingsRaw !== I.lastSettingsRaw){
-          applyFontLogic(mode);
-          I.lastMode = mode;
-          I.lastSettingsRaw = settingsRaw;
-        }
+      const showChanged = (I.lastShow === null) ? true : (show !== I.lastShow);
+      I.lastShow = show;
 
-        // 6) Slider sync + Panel position
-        syncSliderToCurrent();
-        positionPanel();
+      // 4) Toolbar-Signatur IMMER prüfen (alle Modi)
+      const sig = toolbarSignature();
+      const sigChanged = !!(sig && sig !== I.lastToolbarSig);
+      I.lastToolbarSig = sig || I.lastToolbarSig;
 
-        // 7) Wiring
-        wireOnce();
-
-      } finally {
-        I.ticking = false;
+      // Toolbar änderte sich während Button versteckt war -> merken
+      if (!show && sigChanged){
+        I.pendingReposition = true;
       }
-    });
-  }
+
+      // 5) Position IMMER nachführen (Ghost-Positioning)
+      positionOverlayButton();
+      if (show) positionPanel();
+
+      // 6) Mode/Settings-Change -> Font (kann Layout beeinflussen)
+      const modeOrSettingsChanged =
+        (mode !== I.lastMode) || (settingsRaw !== I.lastSettingsRaw);
+
+      if (modeOrSettingsChanged){
+        applyFontLogic(mode);
+        I.lastMode = mode;
+        I.lastSettingsRaw = settingsRaw;
+      }
+
+      // 7) Burst-Kriterien: NICHT an show koppeln!
+      const needBurst =
+        showChanged || sigChanged || modeOrSettingsChanged || I.pendingReposition;
+
+      if (needBurst){
+        I.pendingReposition = false;
+        burstRepositionThrottled(); // nutzt dein 120ms Throttle + scheduleRepositionBurst()
+      }
+
+      // 8) Slider sync + Panel nachziehen
+      syncSliderToCurrent();
+      if (show) positionPanel();
+
+      // 9) Events nur einmal verdrahten
+      wireOnce();
+
+    } finally {
+      I.ticking = false;
+    }
+  });
+}
+
+
+
 
   // Beobachter: Toolbar/DOM kommt manchmal später (Nightly)
   try{
     const mo = new MutationObserver(() => tick());
-    mo.observe(ROOT_DOC.documentElement, { childList:true, subtree:true });
+    mo.observe(ROOT_DOC.documentElement, { childList:true, subtree:true, attributes:true });;
   }catch(e){}
 
   try{
     const mo2 = new MutationObserver(() => tick());
-    mo2.observe(CONTENT_DOC.documentElement, { childList:true, subtree:true });
+    mo2.observe(CONTENT_DOC.documentElement, { childList:true, subtree:true, attributes:true });
   }catch(e){}
 
   ROOT_WIN.addEventListener("storage", function(e){
