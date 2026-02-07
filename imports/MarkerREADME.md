@@ -1428,85 +1428,176 @@ function hlFindAnchorRect(){
   const vp  = hlViewport();
   const pad = 8;
 
-  // Kandidatenfilter: wirklich "links", wirklich "Button", nicht zu groß
-  function pickRectFor(el, mode){
+  const header =
+    (typeof hlFindToolbarHeader === "function" ? hlFindToolbarHeader() : null) ||
+    ROOT_DOC.querySelector("header#lia-toolbar-nav") ||
+    ROOT_DOC.querySelector("#lia-toolbar-nav") ||
+    ROOT_DOC.querySelector("header.lia-header");
+
+  // Header-Band (für vertikale Zentrierung im "normalen" Layout)
+  let hr = null;
+  try { if (header) hr = header.getBoundingClientRect(); } catch(e){}
+  const headerBand = hr && hr.width > 100 && hr.height > 30 ? hr : null;
+
+  const leftC =
+    (typeof hlFindToolbarLeftContainer === "function" ? hlFindToolbarLeftContainer() : null) ||
+    (header ? (header.querySelector(".lia-header__left") || header.querySelector(".lia-toolbar__left")) : null);
+
+  function isClickable(el){
+    if (!el || el.nodeType !== 1) return false;
+    const tag = (el.tagName || "").toLowerCase();
+    const role = (el.getAttribute("role") || "").toLowerCase();
+    const tabindex = el.getAttribute("tabindex");
+    return (
+      tag === "button" || tag === "a" ||
+      role === "button" ||
+      tabindex !== null ||
+      typeof el.onclick === "function" ||
+      !!el.getAttribute("onclick")
+    );
+  }
+
+  function keyOf(el){
+    const aria = el.getAttribute("aria-label") || "";
+    const title= el.getAttribute("title") || "";
+    const txt  = (el.textContent || "").trim();
+    const id   = el.id || "";
+    const cls  = (typeof el.className === "string" ? el.className : "");
+    const ac   = el.getAttribute("aria-controls") || "";
+    return (aria + " " + title + " " + txt + " " + id + " " + cls + " " + ac).toLowerCase();
+  }
+
+  function isOurStuff(el){
+    if (!el) return true;
+    if (el.id === "lia-hl-btn" || el.id === "lia-hl-panel") return true;
+    if (el.closest && el.closest("#lia-hl-panel")) return true;
+    if (typeof HL_OVERLAY_ID !== "undefined"){
+      if (el.id === HL_OVERLAY_ID) return true;
+      if (el.closest && el.closest("#" + HL_OVERLAY_ID)) return true;
+    }
+    if (typeof hlIsOverlayTool === "function" && hlIsOverlayTool(el)) return true;
+    return false;
+  }
+
+  function getRect(el){
     if (!el) return null;
+    if (!isClickable(el)) return null;
+    if (isOurStuff(el)) return null;
 
-    // Overlay-Tools niemals als Anchor
-    if (typeof hlIsOverlayTool === "function" && hlIsOverlayTool(el)) return null;
-
-    // muss toolbar-like sein (Header/Toolbar)
-    if (typeof hlIsToolbarLike === "function" && !hlIsToolbarLike(el)) return null;
+    // muss im Header sein (sonst driftet’s Richtung Content)
+    if (header && !(el === header || (el.closest && el.closest("header#lia-toolbar-nav,#lia-toolbar-nav,header.lia-header")))) {
+      return null;
+    }
 
     const r = hlGetVisibleRect(el);
     if (!r) return null;
 
     // nur oberes UI-Band
-    if (r.top > 220) return null;
+    if (r.top > 260) return null;
 
-    // "Titel"/zentrierte Header-Links sind oft breit -> raus
-    const maxW = (mode === "toc") ? 220 : 140;
-    const maxH = (mode === "toc") ? 120 : 90;
-    if (r.width > maxW || r.height > maxH) return null;
+    // harte "Titel/Wrapper" raus
+    if (r.width > 320 || r.height > 140) return null;
 
-    // Anchor muss links sein (kein Mitte-Anker)
-    // TOC darf etwas "mittiger" sein, Buttons sonst strenger links
-    const leftLimit = (mode === "toc") ? (vp.w * 0.52) : (vp.w * 0.45);
-    if (r.left > leftLimit) return null;
-
-    // plausibel klickbar (optional, aber hilft gegen wrapper)
-    try{
-      const cs = ROOT_WIN.getComputedStyle(el);
-      if (cs && cs.pointerEvents === "none") return null;
-    }catch(e){}
-
+    // im normalen Layout sind viele Buttons in "leftC" -> wir lassen aber auch global im Header zu
     return r;
   }
 
-  // 1) TOC hat Priorität
+  // Kandidaten aus Header einsammeln (priorisiert: leftC, dann kompletter header)
+  const cand = [];
   try{
-    const tocEl = (typeof hlFindTOCButton === "function") ? hlFindTOCButton() : null;
-    const tocR  = pickRectFor(tocEl, "toc");
-    if (tocR) return tocR;
-  }catch(e){}
+    const scope1 = leftC || header || ROOT_DOC;
+    Array.from(scope1.querySelectorAll("button,[role='button'],a,[tabindex]")).forEach(el => cand.push(el));
 
-  // 2) Linker Toolbar-Container (bevorzugt)
-  let best = null;
-
-  try{
-    const leftC = (typeof hlFindToolbarLeftContainer === "function") ? hlFindToolbarLeftContainer() : null;
-    if (leftC){
-      const els = Array.from(leftC.querySelectorAll("button,[role='button'],a"));
-      for (const el of els){
-        const r = pickRectFor(el, "left");
-        if (!r) continue;
-        if (!best || r.left < best.left || (r.left === best.left && r.top < best.top)){
-          best = r;
-        }
-      }
-      if (best) return best;
+    if (header && scope1 !== header){
+      Array.from(header.querySelectorAll("button,[role='button'],a,[tabindex]")).forEach(el => cand.push(el));
     }
   }catch(e){}
 
-  // 3) Fallback: im Header suchen, aber weiterhin NUR links
-  try{
-    const header = (typeof hlFindToolbarHeader === "function") ? hlFindToolbarHeader() : null;
-    const scope  = header || ROOT_DOC;
+  // Scoring: TOC/Navigation ist Anchor #1, sonst linkeste Controls im Header
+  let bestEl = null;
+  let bestR  = null;
+  let bestScore = Infinity;
 
-    const els = Array.from(scope.querySelectorAll("button,[role='button'],a"));
-    for (const el of els){
-      const r = pickRectFor(el, "left");
-      if (!r) continue;
-      if (!best || r.left < best.left || (r.left === best.left && r.top < best.top)){
-        best = r;
-      }
+  for (const el of cand){
+    const r = getRect(el);
+    if (!r) continue;
+
+    const k = keyOf(el);
+
+    const isTOC =
+      k.includes("inhaltsverzeichnis") ||
+      k.includes("table of contents") ||
+      k.includes("contents") ||
+      k.includes("toc") ||
+      // Lia nennt den Toggle oft "Navigation"
+      (k.includes("navigation") && (k.includes("toc") || k.includes("content") || k.includes("inhalts") || k.includes("nav")));
+
+    const inLeft = !!(leftC && leftC.contains && leftC.contains(el));
+
+    // niedriger = besser
+    let s = 0;
+
+    // TOC/Navigation brutal priorisieren
+    if (isTOC) s -= 100000;
+
+    // linke Toolbar bevorzugen
+    if (inLeft) s -= 5000;
+
+    // links ist besser
+    s += r.left * 5;
+
+    // sehr breite Elemente sind selten "Buttons" -> leicht bestrafen
+    s += Math.max(0, r.width - 120) * 8;
+
+    // vertikale Nähe zur Header-Mitte (nur wenn wir ein HeaderBand haben)
+    if (headerBand){
+      const midY = r.top + r.height/2;
+      const hmid = headerBand.top + headerBand.height/2;
+      s += Math.abs(midY - hmid) * 50;
     }
-    if (best) return best;
-  }catch(e){}
 
-  // 4) Harte Fallback-Position
-  return { left: pad, top: pad, right: pad+34, bottom: pad+34, width: 34, height: 34 };
+    if (s < bestScore){
+      bestScore = s;
+      bestEl = el;
+      bestR = r;
+    }
+  }
+
+  // Wenn wir nichts finden: Fallback auf Headerband links oben
+  if (!bestR){
+    if (headerBand){
+      return {
+        left: pad,
+        top: headerBand.top,
+        right: pad + 34,
+        bottom: headerBand.top + 34,
+        width: 34,
+        height: headerBand.height || 34
+      };
+    }
+    return { left: pad, top: pad, right: pad+34, bottom: pad+34, width: 34, height: 34 };
+  }
+
+  // NavStack-Rechtsmodus erkennen: dann NICHT am Headerband "korrigieren"
+  const isRight = bestR.left > vp.w * 0.65;
+
+  // Normalmodus: vertikal am Headerband zentrieren (fix für "zu weit oben")
+  if (!isRight && headerBand){
+    return {
+      left: bestR.left,
+      right: bestR.right,
+      width: bestR.width,
+      // entscheidend: top/bottom vom Headerband!
+      top: headerBand.top,
+      bottom: headerBand.bottom,
+      height: headerBand.height
+    };
+  }
+
+  // Rechts/NavStack: echtes Rect zurückgeben
+  return bestR;
 }
+
 
 
 
@@ -1915,7 +2006,7 @@ function hlScheduleRepositionBurst(){
   });
 
   // Nightly/Transitions
-  [40,120,260,520].forEach(ms => {
+  [40,120,260,520,900,1400].forEach(ms => {
     I.posTimers.push(ROOT_WIN.setTimeout(() => hlRunPositionNow(), ms));
   });
 

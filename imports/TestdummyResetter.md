@@ -2,14 +2,14 @@
 version:  0.0.1
 language: de
 author: Martin Lommatzsch
-comment: Aufgabenresetter v0.0.1 — Reset = Segment per LIASCRIPT neu rendern; statische Originalkopie wird über lineGoto-Zeilenbereich zuverlässig ausgeblendet (wrapper-sicher)
+comment: Aufgabenresetter v0.0.1 — Reset = Segment per LIASCRIPT neu rendern; statische Kopie wird (a) per lineGoto-Bereich versteckt und (b) zusätzlich werden alle Quiz-Controls im Segmentbereich wrapper-sicher ausgeblendet
 
 @style
 .lia-resetter-marker{ display:none !important; }
 .lia-resetter-salt{ display:none !important; }
 output.lia-resetter-out{ display:block !important; }
 
-/* Button: inline, transparent, Rand+Schrift Themefarbe, klein, max. Font-Höhe */
+/* Button: inline, transparent, Rand+Schrift Themefarbe, kleiner als normal, max. Font-Höhe */
 button.lia-resetter-btn{
   background: transparent !important;
   border: 1px solid currentColor !important;
@@ -62,7 +62,8 @@ button.lia-resetter-btn:focus{
     items: Object.create(null), // uid -> { send, marker, seg, startLine, endLine, salt }
     mdLines: null,
     mdPromise: null,
-    guardDocs: new WeakSet()
+    guardDocs: new WeakSet(),
+    obsDocs: new WeakSet()
   });
 
   function selAttr(v){
@@ -70,7 +71,7 @@ button.lia-resetter-btn:focus{
   }
 
   // =========================
-  // Course-URL + Markdown Lines
+  // Course-URL + Markdown
   // =========================
   function getCourseUrl(){
     try{
@@ -114,7 +115,7 @@ button.lia-resetter-btn:focus{
   }
 
   // =========================
-  // Segment aus Markdown bestimmen (bis nächster @resetter oder nächste Überschrift)
+  // Segment-Grenzen aus Markdown
   // =========================
   function isHeadingLine(line){ return /^[ \t]*#{1,6}\s+/.test(line || ""); }
   function isResetterLine(line){ return /@resetter\b/.test(line || ""); }
@@ -172,9 +173,9 @@ button.lia-resetter-btn:focus{
   }
 
   // =========================
-  // Statische Kopie ausblenden (wrapper-sicher) via lineGoto-Bereich
-  // Wir blenden ALLE Blocks aus, die lineGoto in [startLine, endLine) haben,
-  // aber NICHT innerhalb der dynamischen Wrapper-Ausgabe liegen.
+  // Statische Kopie ausblenden:
+  // (A) alles mit lineGoto im Quellbereich
+  // (B) zusätzlich: ALLE Quiz-Controls zwischen Marker-Absatz und nächstem Marker/Heading
   // =========================
   function parseLineGotoFrom(el){
     const s = el && el.getAttribute ? (el.getAttribute("ondblclick") || "") : "";
@@ -191,16 +192,68 @@ button.lia-resetter-btn:focus{
             el.classList.contains("lia-code") ||
             el.classList.contains("lia-quiz")) return el;
       }
-      if (el.tagName === "TABLE" || el.tagName === "UL" || el.tagName === "OL" || el.tagName === "LI") return el;
+      if (el.tagName === "TABLE" || el.tagName === "UL" || el.tagName === "OL") return el;
 
       const p = el.parentElement;
       if (!p) break;
-      // wenn direkt unter section/main/body => blockig genug
       if (p === scope || p.tagName === "SECTION" || p.tagName === "MAIN" || p === DOC.body) return el;
 
       el = p;
     }
     return node;
+  }
+
+  function findStopAnchor(scope, pStart){
+    const tw = DOC.createTreeWalker(scope, NodeFilter.SHOW_ELEMENT, null);
+    let n, started = false;
+
+    while ((n = tw.nextNode())){
+      if (!started){
+        if (n === pStart) started = true;
+        continue;
+      }
+
+      if (n.classList && n.classList.contains("lia-resetter-marker")){
+        return n.closest("p") || n.closest(".lia-paragraph") || n;
+      }
+      if (/^H[1-6]$/.test(n.tagName) || n.tagName === "HEADER"){
+        return n;
+      }
+    }
+    return null;
+  }
+
+  function hideQuizControlsBetween(uid, scope, pStart, dynWrap){
+    const stop = findStopAnchor(scope, pStart);
+
+    const tw = DOC.createTreeWalker(scope, NodeFilter.SHOW_ELEMENT, null);
+    let n, started = false;
+
+    const hidden = new Set();
+
+    while ((n = tw.nextNode())){
+      if (!started){
+        if (n === pStart) started = true;
+        continue;
+      }
+      if (stop && n === stop) break;
+
+      if (dynWrap && dynWrap.contains(n)) continue;
+
+      // Alles, was zu Lia-Quiz-Controls gehört -> ganze Quiz-Box ausblenden
+      if (n.matches && n.matches(
+        ".lia-quiz, .lia-quiz__control, .lia-quiz__answers," +
+        "button.lia-quiz__check, button.lia-quiz__resolve," +
+        ".lia-hint, details"
+      )){
+        const q = (n.closest && n.closest(".lia-quiz")) || n;
+        if (q && q.style && !hidden.has(q)){
+          q.style.display = "none";
+          q.setAttribute("data-resetter-hidden-quiz", uid);
+          hidden.add(q);
+        }
+      }
+    }
   }
 
   function hideStatic(uid){
@@ -211,16 +264,16 @@ button.lia-resetter-btn:focus{
     if (!marker) return;
 
     const scope = marker.closest("section") || DOC.querySelector("main") || DOC.body;
+    const dynWrap = DOC.querySelector('div[data-resetter-dyn="'+selAttr(uid)+'"]');
+    const pStart = marker.closest("p") || marker.closest(".lia-paragraph");
+    if (!pStart) return;
 
-    const dyn = DOC.querySelector('div[data-resetter-dyn="'+selAttr(uid)+'"]');
-
+    // (A) Blocks mit lineGoto im Quellbereich ausblenden (nicht dyn)
     const blocks = new Set();
     const nodes = scope.querySelectorAll('[ondblclick*="lineGoto("]');
     for (let i = 0; i < nodes.length; i++){
       const n = nodes[i];
-
-      // niemals dynamische Ausgabe verstecken
-      if (dyn && dyn.contains(n)) continue;
+      if (dynWrap && dynWrap.contains(n)) continue;
 
       const ln = parseLineGotoFrom(n);
       if (ln == null) continue;
@@ -232,11 +285,13 @@ button.lia-resetter-btn:focus{
     }
 
     blocks.forEach(b => {
-      // defensive: nicht Marker-Absatz verstecken
-      if (marker.closest && b.contains(marker)) return;
+      if (b.contains(marker)) return; // Marker-Absatz bleibt
       b.style.display = "none";
       b.setAttribute("data-resetter-hidden", uid);
     });
+
+    // (B) Quiz-Controls im Segmentbereich ausblenden (die oft ohne lineGoto übrig bleiben)
+    hideQuizControlsBetween(uid, scope, pStart, dynWrap);
   }
 
   function hideLoop(uid){
@@ -245,7 +300,7 @@ button.lia-resetter-btn:focus{
       tries++;
       hideStatic(uid);
       if (tries > 40) return;
-      setTimeout(step, 60);
+      setTimeout(step, 80);
     };
     step();
   }
@@ -267,12 +322,12 @@ button.lia-resetter-btn:focus{
 
     it.send.output("LIASCRIPT:" + head + (it.seg || "") + tail);
 
-    // statische Kopie ausblenden (auch wenn Lia später noch DOM nachzieht)
+    // danach: statische Kopie + Controls ausblenden
     hideLoop(uid);
   }
 
   // =========================
-  // Public API (Macro-Script ruft bind/reset)
+  // Public API
   // =========================
   ROOT.__liaResetterV001 = ROOT.__liaResetterV001 || {
     bind: async function(uid, send){
@@ -283,7 +338,6 @@ button.lia-resetter-btn:focus{
 
       const it = REG.items[uid] || (REG.items[uid] = {});
       it.send = send;
-      it.marker = marker;
 
       const lines = await ensureMarkdown();
       const approx = approxLineFromMarker(marker);
@@ -333,7 +387,33 @@ button.lia-resetter-btn:focus{
     });
   }
 
+  // =========================
+  // Observer: bei DOM-Rebuild (Slide-Wechsel, Resolve, Check) erneut verstecken
+  // =========================
+  function installObserver(){
+    if (REG.obsDocs.has(DOC)) return;
+    REG.obsDocs.add(DOC);
+
+    const rootEl = DOC.querySelector("main") || DOC.body;
+    if (!rootEl) return;
+
+    let pending = false;
+    const obs = new MutationObserver(function(){
+      if (pending) return;
+      pending = true;
+      setTimeout(function(){
+        pending = false;
+        for (const uid in REG.items){
+          hideStatic(uid);
+        }
+      }, 80);
+    });
+
+    obs.observe(rootEl, { childList: true, subtree: true });
+  }
+
   installGuard();
+  installObserver();
 
 })();
 @end
@@ -360,6 +440,7 @@ button.lia-resetter-btn:focus{
 </output>
 @end
 -->
+
 
 
 
