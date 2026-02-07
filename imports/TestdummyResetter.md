@@ -2,14 +2,15 @@
 version:  0.0.1
 language: de
 author: Martin Lommatzsch
-comment: Aufgabenresetter v0.0.1 — Reset = Segment per LIASCRIPT neu rendern; statische Kopie wird (a) per lineGoto-Bereich versteckt und (b) zusätzlich werden alle Quiz-Controls im Segmentbereich wrapper-sicher ausgeblendet
+comment: Resetter v0.0.1 — Output wird in Block-Host verschoben (kein <p>-Auto-Close), Reset = Re-Render per LIASCRIPT, statische Originalkopie per Range zwischen Host und nächstem @resetter/# entfernt, slide-safe
 
 @style
 .lia-resetter-marker{ display:none !important; }
 .lia-resetter-salt{ display:none !important; }
-output.lia-resetter-out{ display:block !important; }
 
-/* Button: inline, transparent, Rand+Schrift Themefarbe, kleiner als normal, max. Font-Höhe */
+/* Host ist blockig, damit LIASCRIPT-Render stabil bleibt */
+.lia-resetter-host{ display:block; margin: 0; padding: 0; }
+
 button.lia-resetter-btn{
   background: transparent !important;
   border: 1px solid currentColor !important;
@@ -43,36 +44,29 @@ button.lia-resetter-btn:focus{
 @onload
 (function () {
 
-  // =========================
-  // Root/Content (iframe-safe)
-  // =========================
   function getRootWindow(){
     let w = window;
     try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
     return w;
   }
+
   const ROOT = getRootWindow();
   const DOC  = document;
 
-  // =========================
-  // Registry (import-sicher)
-  // =========================
   const REGKEY = "__LIA_RESETTER_V001__";
   const REG = ROOT[REGKEY] || (ROOT[REGKEY] = {
-    items: Object.create(null), // uid -> { send, marker, seg, startLine, endLine, salt }
+    items: Object.create(null),  // uid -> { send, seg, salt, cleanedSalt }
     mdLines: null,
     mdPromise: null,
     guardDocs: new WeakSet(),
     obsDocs: new WeakSet()
   });
 
-  function selAttr(v){
+  function escAttr(v){
     return String(v || "").replace(/\\/g,"\\\\").replace(/"/g,'\\"');
   }
 
-  // =========================
-  // Course-URL + Markdown
-  // =========================
+  // ---------- course url + markdown ----------
   function getCourseUrl(){
     try{
       const s = (ROOT.location && ROOT.location.search) ? ROOT.location.search : (location.search || "");
@@ -81,7 +75,6 @@ button.lia-resetter-btn:focus{
       const raw = s.slice(1);
       const first = raw.split("&")[0];
       const dec = decodeURIComponent(first);
-
       if (/^https?:\/\//i.test(dec)) return dec;
 
       try{
@@ -114,11 +107,15 @@ button.lia-resetter-btn:focus{
     return REG.mdPromise;
   }
 
-  // =========================
-  // Segment-Grenzen aus Markdown
-  // =========================
   function isHeadingLine(line){ return /^[ \t]*#{1,6}\s+/.test(line || ""); }
   function isResetterLine(line){ return /@resetter\b/.test(line || ""); }
+
+  function markerFor(uid){
+    return DOC.querySelector('.lia-resetter-marker[data-resetter-uid="'+escAttr(uid)+'"]');
+  }
+  function outFor(uid){
+    return DOC.querySelector('output[data-resetter-out="'+escAttr(uid)+'"]');
+  }
 
   function approxLineFromMarker(marker){
     try{
@@ -156,7 +153,7 @@ button.lia-resetter-btn:focus{
     return null;
   }
 
-  function computeSegment(lines, resetIdx){
+  function extractSegment(lines, resetIdx){
     const start = resetIdx + 1;
     let end = lines.length;
     for (let i = start; i < lines.length; i++){
@@ -165,190 +162,159 @@ button.lia-resetter-btn:focus{
         break;
       }
     }
-    return {
-      seg: lines.slice(start, end).join("\n"),
-      startLine: start,
-      endLine: end
-    };
+    return lines.slice(start, end).join("\n");
   }
 
-  // =========================
-  // Statische Kopie ausblenden:
-  // (A) alles mit lineGoto im Quellbereich
-  // (B) zusätzlich: ALLE Quiz-Controls zwischen Marker-Absatz und nächstem Marker/Heading
-  // =========================
-  function parseLineGotoFrom(el){
-    const s = el && el.getAttribute ? (el.getAttribute("ondblclick") || "") : "";
-    const m = s.match(/lineGoto\((\d+)\)/);
-    return m ? parseInt(m[1], 10) : null;
-  }
+  // ---------- host placement (critical fix) ----------
+  function ensureHost(uid){
+    const marker = markerFor(uid);
+    const outEl  = outFor(uid);
+    if (!marker || !outEl) return null;
 
-  function pickBlock(node, scope){
-    let el = node;
-    while (el && el !== scope && el.nodeType === 1){
-      if (el.classList){
-        if (el.classList.contains("lia-paragraph") ||
-            el.classList.contains("lia-table") ||
-            el.classList.contains("lia-code") ||
-            el.classList.contains("lia-quiz")) return el;
-      }
-      if (el.tagName === "TABLE" || el.tagName === "UL" || el.tagName === "OL") return el;
+    const pStart = marker.closest("p") || marker.closest(".lia-paragraph");
+    if (!pStart || !pStart.parentNode) return null;
 
-      const p = el.parentElement;
-      if (!p) break;
-      if (p === scope || p.tagName === "SECTION" || p.tagName === "MAIN" || p === DOC.body) return el;
-
-      el = p;
+    // existierender Host?
+    let host = DOC.querySelector('.lia-resetter-host[data-resetter-host="'+escAttr(uid)+'"]');
+    if (!host){
+      host = DOC.createElement("div");
+      host.className = "lia-resetter-host";
+      host.setAttribute("data-resetter-host", uid);
+      // direkt NACH dem Aufgabe-Absatz einfügen -> kommt VOR die statische Originalkopie
+      pStart.parentNode.insertBefore(host, pStart.nextSibling);
     }
-    return node;
+
+    // Output in Host verschieben, damit LIASCRIPT-Render nicht in <p> landet
+    if (outEl.parentNode !== host){
+      host.appendChild(outEl);
+    }
+
+    return { marker, outEl, host, pStart };
   }
 
-  function findStopAnchor(scope, pStart){
+  // ---------- stop anchor in slide scope ----------
+  function findStopAnchor(scope, startEl, uid){
+    // startEl = host (NICHT p), damit wir garantiert nach dem dynamischen Bereich starten
     const tw = DOC.createTreeWalker(scope, NodeFilter.SHOW_ELEMENT, null);
-    let n, started = false;
+    let n = null;
+    let started = false;
 
     while ((n = tw.nextNode())){
       if (!started){
-        if (n === pStart) started = true;
+        if (n === startEl) started = true;
         continue;
       }
 
+      // alles innerhalb des Hosts ignorieren
+      if (startEl.contains(n)) continue;
+
       if (n.classList && n.classList.contains("lia-resetter-marker")){
-        return n.closest("p") || n.closest(".lia-paragraph") || n;
+        const u = n.getAttribute("data-resetter-uid");
+        if (u && String(u) !== String(uid)){
+          return n.closest("p") || n.closest(".lia-paragraph") || n;
+        }
+        continue;
       }
-      if (/^H[1-6]$/.test(n.tagName) || n.tagName === "HEADER"){
+
+      if (/^H[1-6]$/.test(n.tagName)){
         return n;
       }
     }
     return null;
   }
 
-  function hideQuizControlsBetween(uid, scope, pStart, dynWrap){
-    const stop = findStopAnchor(scope, pStart);
-
-    const tw = DOC.createTreeWalker(scope, NodeFilter.SHOW_ELEMENT, null);
-    let n, started = false;
-
-    const hidden = new Set();
-
-    while ((n = tw.nextNode())){
-      if (!started){
-        if (n === pStart) started = true;
-        continue;
-      }
-      if (stop && n === stop) break;
-
-      if (dynWrap && dynWrap.contains(n)) continue;
-
-      // Alles, was zu Lia-Quiz-Controls gehört -> ganze Quiz-Box ausblenden
-      if (n.matches && n.matches(
-        ".lia-quiz, .lia-quiz__control, .lia-quiz__answers," +
-        "button.lia-quiz__check, button.lia-quiz__resolve," +
-        ".lia-hint, details"
-      )){
-        const q = (n.closest && n.closest(".lia-quiz")) || n;
-        if (q && q.style && !hidden.has(q)){
-          q.style.display = "none";
-          q.setAttribute("data-resetter-hidden-quiz", uid);
-          hidden.add(q);
-        }
-      }
-    }
-  }
-
-  function hideStatic(uid){
+  // ---------- remove static original between host and stop ----------
+  function cleanupStatic(uid){
     const it = REG.items[uid];
-    if (!it || it.startLine == null || it.endLine == null) return;
+    if (!it) return false;
 
-    const marker = DOC.querySelector('.lia-resetter-marker[data-resetter-uid="'+selAttr(uid)+'"]');
-    if (!marker) return;
+    const parts = ensureHost(uid);
+    if (!parts) return false;
 
+    const { host, marker } = parts;
     const scope = marker.closest("section") || DOC.querySelector("main") || DOC.body;
-    const dynWrap = DOC.querySelector('div[data-resetter-dyn="'+selAttr(uid)+'"]');
-    const pStart = marker.closest("p") || marker.closest(".lia-paragraph");
-    if (!pStart) return;
 
-    // (A) Blocks mit lineGoto im Quellbereich ausblenden (nicht dyn)
-    const blocks = new Set();
-    const nodes = scope.querySelectorAll('[ondblclick*="lineGoto("]');
-    for (let i = 0; i < nodes.length; i++){
-      const n = nodes[i];
-      if (dynWrap && dynWrap.contains(n)) continue;
+    const stop = findStopAnchor(scope, host, uid);
 
-      const ln = parseLineGotoFrom(n);
-      if (ln == null) continue;
-
-      if (ln >= it.startLine && ln < it.endLine){
-        const b = pickBlock(n, scope);
-        if (b && b.nodeType === 1) blocks.add(b);
-      }
+    // Sicherheitsregel: Ohne Stop schneiden wir NICHT blind bis Ende -> verhindert "leere Folien"
+    if (!stop){
+      // Ausnahme: wenn wir wirklich in einer SECTION sind (typische Folie), dürfen wir bis Ende schneiden
+      if (!scope || scope.tagName !== "SECTION") return false;
     }
 
-    blocks.forEach(b => {
-      if (b.contains(marker)) return; // Marker-Absatz bleibt
-      b.style.display = "none";
-      b.setAttribute("data-resetter-hidden", uid);
-    });
+    try{
+      const r = DOC.createRange();
+      r.setStartAfter(host);
 
-    // (B) Quiz-Controls im Segmentbereich ausblenden (die oft ohne lineGoto übrig bleiben)
-    hideQuizControlsBetween(uid, scope, pStart, dynWrap);
+      if (stop){
+        r.setEndBefore(stop);
+      } else {
+        const last = scope.lastChild;
+        if (!last) return false;
+        r.setEndAfter(last);
+      }
+
+      if (r.collapsed) return false;
+
+      const frag = r.extractContents();
+      const removed = !!(frag && (frag.childNodes.length || (frag.textContent || "").trim().length));
+      if (removed) it.cleanedSalt = it.salt; // “für diesen Render” bereinigt
+      return removed;
+    }catch(e){
+      return false;
+    }
   }
 
-  function hideLoop(uid){
+  function cleanupLoop(uid){
+    const it = REG.items[uid];
+    if (!it) return;
+
     let tries = 0;
     const step = () => {
       tries++;
-      hideStatic(uid);
-      if (tries > 40) return;
-      setTimeout(step, 80);
+      // wenn bereits für aktuellen salt bereinigt -> fertig
+      if (it.cleanedSalt === it.salt) return;
+
+      cleanupStatic(uid);
+
+      if (tries > 120) return;
+      setTimeout(step, 60);
     };
     step();
   }
 
-  // =========================
-  // Render / Reset
-  // =========================
+  // ---------- render/reset ----------
   function render(uid){
     const it = REG.items[uid];
     if (!it || !it.send) return;
 
+    ensureHost(uid); // output raus aus <p> ziehen
+
     it.salt = (it.salt || 0) + 1;
+    const salt = '<span class="lia-resetter-salt" data-resetter-salt="'+uid+'-'+it.salt+'"></span>\n\n';
 
-    const head =
-      '<div data-resetter-dyn="'+uid+'">\n' +
-      '<span class="lia-resetter-salt" data-resetter-salt="'+uid+'-'+it.salt+'"></span>\n\n';
+    it.send.output("LIASCRIPT:" + salt + (it.seg || ""));
 
-    const tail = "\n</div>";
-
-    it.send.output("LIASCRIPT:" + head + (it.seg || "") + tail);
-
-    // danach: statische Kopie + Controls ausblenden
-    hideLoop(uid);
+    cleanupLoop(uid);
   }
 
-  // =========================
-  // Public API
-  // =========================
+  // ---------- API ----------
   ROOT.__liaResetterV001 = ROOT.__liaResetterV001 || {
     bind: async function(uid, send){
       uid = String(uid);
 
-      const marker = DOC.querySelector('.lia-resetter-marker[data-resetter-uid="'+selAttr(uid)+'"]');
-      if (!marker) return;
+      const parts = ensureHost(uid);
+      if (!parts) return;
 
       const it = REG.items[uid] || (REG.items[uid] = {});
       it.send = send;
 
-      const lines = await ensureMarkdown();
-      const approx = approxLineFromMarker(marker);
-      const rIdx = findResetterLineIndex(lines, approx);
+      const lines  = await ensureMarkdown();
+      const approx = approxLineFromMarker(parts.marker);
+      const rIdx   = findResetterLineIndex(lines, approx);
       if (rIdx == null) return;
 
-      const segInfo = computeSegment(lines, rIdx);
-      it.seg = segInfo.seg;
-      it.startLine = segInfo.startLine;
-      it.endLine = segInfo.endLine;
-
+      it.seg = extractSegment(lines, rIdx);
       render(uid);
     },
 
@@ -357,9 +323,7 @@ button.lia-resetter-btn:focus{
     }
   };
 
-  // =========================
-  // Click Guard (Capture): verhindert Folien-Sprung
-  // =========================
+  // ---------- click guard ----------
   function installGuard(){
     if (REG.guardDocs.has(DOC)) return;
     REG.guardDocs.add(DOC);
@@ -387,9 +351,7 @@ button.lia-resetter-btn:focus{
     });
   }
 
-  // =========================
-  // Observer: bei DOM-Rebuild (Slide-Wechsel, Resolve, Check) erneut verstecken
-  // =========================
+  // ---------- observer (safe: only cleanup, never blind-end unless SECTION) ----------
   function installObserver(){
     if (REG.obsDocs.has(DOC)) return;
     REG.obsDocs.add(DOC);
@@ -398,15 +360,16 @@ button.lia-resetter-btn:focus{
     if (!rootEl) return;
 
     let pending = false;
-    const obs = new MutationObserver(function(){
+    const obs = new MutationObserver(() => {
       if (pending) return;
       pending = true;
-      setTimeout(function(){
+      setTimeout(() => {
         pending = false;
         for (const uid in REG.items){
-          hideStatic(uid);
+          // nur nochmal bereinigen, wenn Host+Marker existieren
+          cleanupStatic(uid);
         }
-      }, 80);
+      }, 120);
     });
 
     obs.observe(rootEl, { childList: true, subtree: true });
@@ -424,14 +387,14 @@ button.lia-resetter-btn:focus{
 <span class="lia-resetter-marker" data-resetter-uid="@0" aria-hidden="true"></span>
 <button class="lia-resetter-btn" type="button" data-resetter-btn="@0">Neustart der Aufgabe</button>
 
-<output class="lia-resetter-out" modify="false">
+<output class="lia-resetter-out" data-resetter-out="@0" modify="false">
 <script run-once="false" modify="false">
 (function(){
   try{
     let w = window;
     try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
     if (w.__liaResetterV001 && typeof send !== "undefined"){
-      w.__liaResetterV001.bind("@0", send);
+      setTimeout(function(){ w.__liaResetterV001.bind("@0", send); }, 0);
     }
   }catch(e){}
   return "LIA: wait";
@@ -440,6 +403,9 @@ button.lia-resetter-btn:focus{
 </output>
 @end
 -->
+
+
+
 
 
 

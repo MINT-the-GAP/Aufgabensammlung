@@ -1677,27 +1677,116 @@ function hlCollectColPeers(anchor){
 }
 
 
+
+
+
+function hlGetNavStackColumn(){
+  const vp = hlViewport();
+
+  const header =
+    (typeof hlFindToolbarHeader === "function" ? hlFindToolbarHeader() : null) ||
+    ROOT_DOC.querySelector("header#lia-toolbar-nav") ||
+    ROOT_DOC.querySelector("#lia-toolbar-nav") ||
+    ROOT_DOC.querySelector("header.lia-header");
+
+  if (!header) return null;
+
+  const els = Array.from(header.querySelectorAll("button,[role='button'],a,[tabindex]"));
+  const rects = [];
+
+  for (const el of els){
+    if (!el) continue;
+
+    // unser Zeug raus
+    if (el.id === "lia-hl-btn" || el.id === "lia-hl-panel") continue;
+    if (el.closest && el.closest("#lia-hl-panel")) continue;
+    if (typeof hlIsOverlayTool === "function" && hlIsOverlayTool(el)) continue;
+
+    const r = hlGetVisibleRect(el);
+    if (!r) continue;
+
+    // Navstack kann bis etwas tiefer gehen (Theme/Settings sitzt oft tiefer)
+    if (r.top > 420) continue;
+
+    // zu große Container raus (aber toleranter als vorher)
+    if (r.width > 220 || r.height > 160) continue;
+
+    // muss "rechts" sein: entweder right nahe Viewport oder left sehr nahe rechts
+    const nearRight =
+      (r.right >= vp.w - 4) || ((vp.w - r.left) <= 120);
+
+    if (!nearRight) continue;
+
+    // pointer-events check
+    try{
+      const cs = ROOT_WIN.getComputedStyle(el);
+      if (cs && (cs.display === "none" || cs.visibility === "hidden" || cs.opacity === "0" || cs.pointerEvents === "none")) continue;
+    }catch(e){}
+
+    rects.push(r);
+  }
+
+  if (rects.length < 2) return null;
+
+  // Cluster nach X (left) -> stärkste Spalte nehmen
+  rects.sort((a,b)=>a.left-b.left);
+
+  const clusters = [];
+  let cur = [rects[0]];
+  const xTol = 14;
+
+  for (let i=1;i<rects.length;i++){
+    if (Math.abs(rects[i].left - cur[0].left) <= xTol) cur.push(rects[i]);
+    else { clusters.push(cur); cur = [rects[i]]; }
+  }
+  clusters.push(cur);
+
+  clusters.sort((a,b)=>b.length-a.length);
+  const best = clusters[0];
+  if (!best || best.length < 2) return null;
+
+  const median = (arr)=> (arr.sort((a,b)=>a-b)[Math.floor(arr.length/2)] || 0);
+
+  const lefts = best.map(r=>r.left);
+  const rights= best.map(r=>r.right);
+  const cxs   = best.map(r=>r.left + r.width/2);
+
+  return {
+    left:   median(lefts),
+    right:  median(rights),
+    cx:     median(cxs),
+    top:    Math.min(...best.map(r=>r.top)),
+    bottom: Math.max(...best.map(r=>r.bottom)),
+    rects:  best.slice()
+  };
+}
+
+
+
+
+
+
 function hlToolbarSignature(){
   try{
     const vp = hlViewport();
+
+    // Navstack stabil erkennen (nicht über "Anchor-left")
+    const col = hlGetNavStackColumn();
+    const isRight = !!col;
+
     const a = hlFindAnchorRect();
 
-    // rechts/links Heuristik: wenn Anchor deutlich rechts -> Column Mode
-    const isRight = a.left > vp.w * 0.65;
+    let edge1, edge2, peers;
 
-    let edge1 = isRight ? a.left : a.right;
-    let edge2 = isRight ? a.right : a.left;
-
-    const peers = isRight ? hlCollectColPeers(a) : hlCollectRowPeers(a);
-
-    for (const r of peers){
-      if (isRight){
-        edge1 = Math.min(edge1, r.left);
-        edge2 = Math.max(edge2, r.right);
-      } else {
-        edge1 = Math.max(edge1, r.right);
-        edge2 = Math.min(edge2, r.left);
-      }
+    if (isRight){
+      edge1 = col.left;
+      edge2 = col.right;
+      peers = hlCollectColPeers(a);
+    } else {
+      edge1 = a.right;
+      edge2 = a.left;
+      peers = hlCollectRowPeers(a);
+      for (const r of peers) edge1 = Math.max(edge1, r.right);
     }
 
     return [
@@ -1706,13 +1795,15 @@ function hlToolbarSignature(){
       Math.round(a.left), Math.round(a.top),
       Math.round(a.width||34), Math.round(a.height||34),
       Math.round(edge1), Math.round(edge2),
-      peers.length,
+      peers ? peers.length : 0,
       isRight ? "R" : "L"
     ].join("|");
   }catch(e){
     return null;
   }
 }
+
+
 
 
 
@@ -1896,53 +1987,102 @@ function positionMarkerOverlayButton(){
 
   const vp  = hlViewport();
   const pad = 8;
-  const gap = 14;
 
-  // Button size
+  // Button size (fallback: 40, Navstack: 32)
   let bw = 40, bh = 40;
   try{
     const r = btn.getBoundingClientRect();
     if (r && r.width > 6 && r.height > 6){ bw = r.width; bh = r.height; }
   }catch(e){}
 
-  const a = hlFindAnchorRect();
-  const isRight = a.left > vp.w * 0.65;
+  // === 1) Nightly Navstack Column (rechts, vertikal) ===
+  const col = hlGetNavStackColumn();
+  const isNavStack = !!col;
 
-  // navstack class (nur fürs kompakte Styling)
-  try{ ROOT_DOC.body.classList.toggle("lia-hl-navstack", !!isRight); }catch(e){}
+  try{ ROOT_DOC.body.classList.toggle("lia-hl-navstack", isNavStack); }catch(e){}
 
-  // --- Basisziel (wie bisher) ---
-  let left0, top0;
+  if (isNavStack){
+    // in der Spalte ausrichten
+    const bw2 = (bw > 34 ? 32 : bw);
+    const bh2 = (bh > 34 ? 32 : bh);
 
-  if (!isRight){
-    const peers = hlCollectRowPeers(a);
-    let rightEdge = a.right;
-    for (const r of peers) rightEdge = Math.max(rightEdge, r.right);
+    // X: Zentren matchen (robuster als "left")
+    let left = (col.cx || col.left || 0) - bw2/2;
 
-    const targetTop = a.top + ((a.height || bh) - bh) / 2;
+    const pad = 8;
+    left = hlClamp(left, pad, vp.w - bw2 - pad);
 
-    left0 = rightEdge + gap;
-    top0  = targetTop;
+    // Y: erster freier Slot unterhalb der Spalte finden
+    const rects = (col.rects || []).slice().sort((a,b)=>a.top-b.top);
+    const gapV = 8;
 
-  } else {
-    const peers = hlCollectColPeers(a);
-    let leftEdge = a.left;
-    for (const r of peers) leftEdge = Math.min(leftEdge, r.left);
+    const med = (arr)=>{
+      const a = arr.slice().sort((x,y)=>x-y);
+      return a[Math.floor(a.length/2)] || 0;
+    };
+    const step = Math.max(28, Math.round(med(rects.map(r=>r.height)) + gapV));
 
-    const targetTop = a.top + ((a.height || bh) - bh) / 2;
+    function intersects(t){
+      const l = left, r = left + bw2, top = t, bot = t + bh2;
+      for (const rr of rects){
+        // kleines Epsilon, damit "gerade so" nicht als Kollision zählt
+        const eps = 1;
+        const no =
+          (r <= rr.left + eps) ||
+          (l >= rr.right - eps) ||
+          (bot <= rr.top + eps) ||
+          (top >= rr.bottom - eps);
+        if (!no) return true;
+      }
+      return false;
+    }
 
-    left0 = leftEdge - gap - bw;
-    top0  = targetTop;
+    let top = (rects.length ? rects[rects.length-1].bottom : (col.bottom || 0)) + gapV;
+
+    // runter schieben bis frei
+    for (let i=0; i<20 && intersects(top); i++){
+      top += step;
+    }
+
+    // wenn unten kein Platz: oberhalb der Spalte probieren
+    if (top + bh2 > vp.h - pad){
+      top = (rects.length ? rects[0].top : (col.top || 0)) - gapV - bh2;
+      for (let i=0; i<20 && intersects(top); i++){
+        top -= step;
+      }
+    }
+
+    top = hlClamp(top, pad, vp.h - bh2 - pad);
+
+    // Apply
+    mount.style.setProperty("left", `${Math.round(vp.ox)}px`, "important");
+    mount.style.setProperty("top",  `${Math.round(vp.oy)}px`, "important");
+
+    btn.style.setProperty("left", `${Math.round(left)}px`, "important");
+    btn.style.setProperty("top",  `${Math.round(top)}px`, "important");
+
+    return;
   }
 
-  let left = left0;
-  let top  = top0;
 
-  // clamp initial
-  left = hlClamp(left, pad, vp.w - bw - pad);
-  top  = hlClamp(top,  pad, vp.h - bh - pad);
+  // === 2) Normal Row Mode (links, horizontal) ===
+  const gap = -80;
 
-  // --- Collision-Avoidance: HIT-TEST (findet auch Buttons ohne ID/Attribute) ---
+  const a = hlFindAnchorRect();
+
+  const peers = hlCollectRowPeers(a);
+  let rightEdge = a.right;
+  for (const r of peers) rightEdge = Math.max(rightEdge, r.right);
+
+  const targetTop = a.top + ((a.height || bh) - bh) / 2;
+
+  let left0 = rightEdge + gap;
+  let top0  = targetTop;
+
+  let left = hlClamp(left0, pad, vp.w - bw - pad);
+  let top  = hlClamp(top0,  pad, vp.h - bh - pad);
+
+  // Collision-Avoidance nur im Normalmodus (Row)
   const step = Math.round(Math.max(bw, bh) + 12);
 
   for (let tries = 0; tries < 14; tries++){
@@ -1951,34 +2091,26 @@ function positionMarkerOverlayButton(){
 
     if (!hlCollidesAt(absL, absT, bw, bh, btn)) break;
 
-    if (!isRight){
-      // row-mode: nach rechts schieben, bei overflow: neue Zeile
-      left += step;
-      if (left > vp.w - bw - pad){
-        left = left0;
-        top  += step;
-      }
-    } else {
-      // col-mode: nach unten schieben, bei overflow: weiter nach links
-      top += step;
-      if (top > vp.h - bh - pad){
-        top  = top0;
-        left -= step;
-      }
+    left += step;
+    if (left > vp.w - bw - pad){
+      left = left0;
+      top  += step;
     }
 
     left = hlClamp(left, pad, vp.w - bw - pad);
     top  = hlClamp(top,  pad, vp.h - bh - pad);
   }
 
-
-  // --- Apply (wie gehabt) ---
+  // Apply
   mount.style.setProperty("left", `${Math.round(vp.ox)}px`, "important");
   mount.style.setProperty("top",  `${Math.round(vp.oy)}px`, "important");
 
   btn.style.setProperty("left", `${Math.round(left)}px`, "important");
   btn.style.setProperty("top",  `${Math.round(top)}px`, "important");
 }
+
+
+
 
 
 
