@@ -46,7 +46,8 @@ const I = REG.instances[DOC_ID] = {
   posTimers: [],
   lastShow: null,
   lastToolbarSig: null,
-  lastBurstAt: 0
+  lastBurstAt: 0,
+  pendingReposition: false
 };
 
 
@@ -633,19 +634,17 @@ function toolbarSignature(){
   try{
     const vp = getViewport();
 
-    const btn = ROOT_DOC.getElementById(BTN_ID);
-    const bw = btn ? (btn.offsetWidth  || 34) : 34;
-    const bh = btn ? (btn.offsetHeight || 34) : 34;
-
     const tocR = getVisibleRect(findTOCButton());
     const pad = 8;
 
-    const anchor = tocR || { left: pad, top: pad, right: pad + bw, bottom: pad + bh, height: bh };
-    const peers  = collectTopLeftRowButtons(anchor);
+    // Anchor notfalls Top-Left-Pad
+    const anchor = tocR || { left: pad, top: pad, right: pad + 34, bottom: pad + 34, height: 34 };
+
+    const peers = collectTopLeftRowButtons(anchor);
 
     let rightEdge = anchor.right;
     let topBand   = anchor.top;
-    let rowH      = anchor.height || bh;
+    let rowH      = anchor.height || 34;
 
     for (const p of peers){
       rightEdge = Math.max(rightEdge, p.r.right);
@@ -653,7 +652,6 @@ function toolbarSignature(){
       rowH      = Math.max(rowH,      p.r.height);
     }
 
-    // alles runden, damit minimale Subpixel-Schwankungen nicht dauernd triggern
     return [
       Math.round(vp.w), Math.round(vp.h),
       Math.round(vp.ox), Math.round(vp.oy),
@@ -665,6 +663,7 @@ function toolbarSignature(){
     return null;
   }
 }
+
 
 function burstRepositionThrottled(){
   const now = Date.now();
@@ -921,31 +920,26 @@ function tick(){
       ensureUI();
       const show = setPresentationOnlyVisibility(mode);
 
-      // Detect show-toggle
       const showChanged = (I.lastShow === null) ? true : (show !== I.lastShow);
       I.lastShow = show;
 
-      // Wenn Button gerade eingeblendet wird: erst mal "reset", damit Messung/Rects sauber sind
-      if (show && showChanged){
-        const overlay = ROOT_DOC.getElementById(OVERLAY_ID);
-        const btn = ROOT_DOC.getElementById(BTN_ID);
-        if (overlay){
-          overlay.style.left = "0px";
-          overlay.style.top  = "0px";
-        }
-        if (btn){
-          btn.style.left = "0px";
-          btn.style.top  = "0px";
-        }
+      // 4) Toolbar-Signatur IMMER prüfen (auch wenn Button versteckt ist!)
+      const sig = toolbarSignature();
+      const sigChanged = !!(sig && sig !== I.lastToolbarSig);
+      I.lastToolbarSig = sig || I.lastToolbarSig;
+
+      // Wenn Toolbar im Hintergrund umgebaut wird (Textbook) => merken
+      if (!show && sigChanged){
+        I.pendingReposition = true;
       }
 
-      // 4) Sofort-Positionierung (best effort)
+      // 5) Sofort-Positionierung (best effort), wenn sichtbar
       if (show){
         positionOverlayButton();
         positionPanel();
       }
 
-      // 5) Mode/Settings-Change -> Font + Burst
+      // 6) Mode/Settings-Change -> Font (kann Layout beeinflussen)
       const modeOrSettingsChanged =
         (mode !== I.lastMode) || (settingsRaw !== I.lastSettingsRaw);
 
@@ -955,31 +949,34 @@ function tick(){
         I.lastSettingsRaw = settingsRaw;
       }
 
-      // 6) Toolbar/Layout-Change erkennen (Nightly baut gern um)
-      let sigChanged = false;
-      if (show){
-        const sig = toolbarSignature();
-        sigChanged = (sig && sig !== I.lastToolbarSig);
-        I.lastToolbarSig = sig || I.lastToolbarSig;
-      } else {
-        I.lastToolbarSig = null;
-      }
+      // 7) Burst-Kriterien:
+      //    - show toggled (Button kommt/geht)
+      //    - toolbar sig changed (Navigation an/aus, Toolbar rebuilt)
+      //    - mode/settings changed
+      //    - pendingReposition (Toolbar änderte sich während show=false)
+      const needBurst =
+        show && (showChanged || sigChanged || modeOrSettingsChanged || I.pendingReposition);
 
-      // 7) Burst, wenn nötig (show-toggle ODER layout-change ODER mode/settings-change)
-      if (show && (showChanged || sigChanged || modeOrSettingsChanged)){
-        // leicht drosseln, damit MutationObserver nicht spammt
+      if (needBurst){
+        I.pendingReposition = false;
+
+        // leicht drosseln (MutationObserver kann spammen)
         const now = Date.now();
         if (now - (I.lastBurstAt || 0) >= 120){
           I.lastBurstAt = now;
           scheduleRepositionBurst();
+        }else{
+          // trotzdem einmal sofort nachziehen
+          positionOverlayButton();
+          positionPanel();
         }
       }
 
-      // 8) Slider sync + Panel nachziehen (nur wenn sichtbar)
+      // 8) Slider sync + Panel nachziehen
       syncSliderToCurrent();
       if (show) positionPanel();
 
-      // 9) Events verdrahten
+      // 9) Events nur einmal verdrahten
       wireOnce();
 
     } finally {
@@ -990,15 +987,16 @@ function tick(){
 
 
 
+
   // Beobachter: Toolbar/DOM kommt manchmal später (Nightly)
   try{
     const mo = new MutationObserver(() => tick());
-    mo.observe(ROOT_DOC.documentElement, { childList:true, subtree:true });
+    mo.observe(ROOT_DOC.documentElement, { childList:true, subtree:true, attributes:true });;
   }catch(e){}
 
   try{
     const mo2 = new MutationObserver(() => tick());
-    mo2.observe(CONTENT_DOC.documentElement, { childList:true, subtree:true });
+    mo2.observe(CONTENT_DOC.documentElement, { childList:true, subtree:true, attributes:true });
   }catch(e){}
 
   ROOT_WIN.addEventListener("storage", function(e){

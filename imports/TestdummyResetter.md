@@ -2,7 +2,7 @@
 version:  0.0.1
 language: de
 author: Martin Lommatzsch
-comment: Aufgabenresetter v0.0.1 — Segment-Neurendern (wie Reload) bis nächster @resetter oder nächstes # — Persistenz brechen via Salt
+comment: Aufgabenresetter v0.0.1 — Segment-Neurendern wie Reload (bis nächster @resetter oder nächstes #) — korrekt in Präsentations-Lazy-Mode (Index = Slide+Local) — Persistenz brechen via Salt
 
 @style
 .lia-resetter-marker{ display:none !important; }
@@ -39,9 +39,6 @@ button.lia-resetter-btn:focus{
 @onload
 (function () {
 
-  // =========================
-  // Root/Content (iframe-safe)
-  // =========================
   function getRootWindow(){
     let w = window;
     try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
@@ -51,23 +48,20 @@ button.lia-resetter-btn:focus{
   const ROOT = getRootWindow();
   const DOC  = document;
 
-  // =========================
-  // Registry (import-sicher)
-  // =========================
   const REGKEY = "__LIA_RESETTER_V001__";
   const REG = ROOT[REGKEY] || (ROOT[REGKEY] = {
-    seq: 0,
-    stripped: Object.create(null),         // uid -> true
+    stripped: Object.create(null),         // uid -> true (erst wenn wirklich entfernt)
     renderers: Object.create(null),        // uid -> fn()
     salts: Object.create(null),            // uid -> int
-    segCacheByUrl: Object.create(null),    // url -> segs[]
-    segPromiseByUrl: Object.create(null),
-    guardInstalled: false
+    guardInstalled: false,
+
+    cacheByUrl: Object.create(null),       // url -> { segments, slideCounts, prefix }
+    promiseByUrl: Object.create(null)
   });
 
-  // =========================
-  // Click-Guard (verhindert Slide-Advance)
-  // =========================
+  // -------------------------
+  // Click-Guard: verhindert Slide-Advance beim Button
+  // -------------------------
   function installGuard(){
     if (REG.guardInstalled) return;
     REG.guardInstalled = true;
@@ -75,6 +69,7 @@ button.lia-resetter-btn:focus{
     const handler = (ev) => {
       const t = ev && ev.target;
       if (!t || !t.closest) return;
+
       const btn = t.closest("button.lia-resetter-btn");
       if (!btn) return;
 
@@ -87,16 +82,15 @@ button.lia-resetter-btn:focus{
       if (typeof fn === "function") fn();
     };
 
-    // auf Root + Content (Capture), damit Presentation nicht „weiterklickt“
     ["pointerdown","mousedown","click","touchstart"].forEach(type => {
       try { DOC.addEventListener(type, handler, true); } catch(e){}
       try { ROOT.document.addEventListener(type, handler, true); } catch(e){}
     });
   }
 
-  // =========================
-  // URL der Kursquelle (raw) finden
-  // =========================
+  // -------------------------
+  // Kurs-URL aus Lia-URL
+  // -------------------------
   function getCourseUrl(){
     try{
       const s = (ROOT.location && ROOT.location.search) ? ROOT.location.search : (location.search || "");
@@ -104,8 +98,8 @@ button.lia-resetter-btn:focus{
 
       const raw = s.slice(1);
       const first = raw.split("&")[0];
-
       const decFirst = decodeURIComponent(first);
+
       if (/^https?:/i.test(decFirst)) return decFirst;
 
       const usp = new URLSearchParams(raw);
@@ -118,9 +112,9 @@ button.lia-resetter-btn:focus{
     }
   }
 
-  // =========================
-  // Header-Comment strippen (ohne Literal-Kommentar-Tokens!)
-  // =========================
+  // -------------------------
+  // Header-Comment strippen (ohne Literal-Kommentar-Tokens)
+  // -------------------------
   function stripInitialHeaderComment(md){
     const t = md || "";
     const OPEN  = "<" + "!--";
@@ -131,6 +125,31 @@ button.lia-resetter-btn:focus{
     return t.slice(end + 3);
   }
 
+  // -------------------------
+  // Markdown -> Slides (Level-1 #) + Segmente (@resetter)
+  // -------------------------
+  function splitSlidesLevel1(src){
+    const lines = String(src || "").split("\n");
+    const slides = [];
+    let cur = [];
+
+    for (let i=0;i<lines.length;i++){
+      const line = lines[i];
+      const isH1 = /^[ \t]*#\s+/.test(line); // nur Level-1 (kein ##)
+      if (isH1 && cur.length){
+        slides.push(cur.join("\n"));
+        cur = [line];
+      } else {
+        cur.push(line);
+      }
+    }
+    if (cur.length) slides.push(cur.join("\n"));
+
+    // Falls vor erster # noch was war: das zählt als Slide 0 in Reveal oft nicht sinnvoll,
+    // aber wir lassen es drin – die Prefix-Logik funktioniert trotzdem stabil.
+    return slides;
+  }
+
   function findNextHeadingIndex(md, from){
     const sub = md.slice(from);
     const m = sub.match(/^[ \t]*#{1,6}\s/m);
@@ -138,8 +157,7 @@ button.lia-resetter-btn:focus{
     return from + (m.index || 0);
   }
 
-  function parseSegments(md){
-    const src = stripInitialHeaderComment(md);
+  function parseSegments(src){
     const token = "@resetter";
     const re = /@resetter\b/g;
 
@@ -166,68 +184,211 @@ button.lia-resetter-btn:focus{
     return segs;
   }
 
-  function getSegments(){
-    const url = getCourseUrl();
-    if (!url) return Promise.resolve([]);
-
-    if (REG.segCacheByUrl[url]) return Promise.resolve(REG.segCacheByUrl[url]);
-    if (REG.segPromiseByUrl[url]) return REG.segPromiseByUrl[url];
-
-    REG.segPromiseByUrl[url] = fetch(url, { cache: "no-store" })
-      .then(r => r.text())
-      .then(md => {
-        const segs = parseSegments(md);
-        REG.segCacheByUrl[url] = segs;
-        return segs;
-      })
-      .catch(_ => {
-        REG.segCacheByUrl[url] = [];
-        return [];
-      });
-
-    return REG.segPromiseByUrl[url];
+  function buildPrefix(counts){
+    const prefix = new Array(counts.length + 1);
+    prefix[0] = 0;
+    for (let i=0;i<counts.length;i++){
+      prefix[i+1] = prefix[i] + (counts[i] || 0);
+    }
+    return prefix; // prefix[slideIndex] = #resetter vor dieser Slide
   }
 
-  // =========================
-  // Original-Segment entfernen (damit es nicht doppelt ist)
-  // =========================
-  function stripOriginalOnce(uid, scriptEl){
-    if (REG.stripped[uid]) return;
-    REG.stripped[uid] = true;
+  function getCourseParsed(){
+    const url = getCourseUrl();
+    if (!url) return Promise.resolve({ segments: [], slideCounts: [], prefix: [0] });
 
-    const marker = (scriptEl && scriptEl.previousElementSibling && scriptEl.previousElementSibling.classList &&
-                    scriptEl.previousElementSibling.classList.contains("lia-resetter-marker"))
-                  ? scriptEl.previousElementSibling
-                  : DOC.querySelector('.lia-resetter-marker[data-resetter-uid="'+ uid.replace(/"/g,'\\"') +'"]');
+    if (REG.cacheByUrl[url]) return Promise.resolve(REG.cacheByUrl[url]);
+    if (REG.promiseByUrl[url]) return REG.promiseByUrl[url];
 
-    if (!marker) return;
+    REG.promiseByUrl[url] = fetch(url, { cache: "no-store" })
+      .then(r => r.text())
+      .then(md => {
+        const src = stripInitialHeaderComment(md);
 
-    const start = marker.closest("p") || marker;
-    const scope = marker.closest("section") || DOC.querySelector("main") || DOC.body;
-    if (!scope) return;
+        const slides = splitSlidesLevel1(src);
+        const slideCounts = slides.map(s => (s.match(/@resetter\b/g) || []).length);
+        const prefix = buildPrefix(slideCounts);
 
-    let n = start.nextSibling;
-    while (n){
-      const next = n.nextSibling;
+        const segments = parseSegments(src);
 
-      if (n.nodeType === 1){
-        const el = n;
+        const out = { segments, slideCounts, prefix };
+        REG.cacheByUrl[url] = out;
+        return out;
+      })
+      .catch(_ => {
+        const out = { segments: [], slideCounts: [], prefix: [0] };
+        REG.cacheByUrl[url] = out;
+        return out;
+      });
 
-        if (/^H[1-6]$/.test(el.tagName)) break;
-        if (el.querySelector && el.querySelector(".lia-resetter-marker")) break;
-      }
+    return REG.promiseByUrl[url];
+  }
 
-      try{ if (n.parentNode) n.parentNode.removeChild(n); }catch(e){}
-      n = next;
+  // -------------------------
+  // DOM: Marker/Slide finden + Index (Slide+Local)
+  // -------------------------
+  function findMarker(uid, scriptEl){
+    try{
+      const prev = scriptEl && scriptEl.previousElementSibling;
+      if (prev && prev.classList && prev.classList.contains("lia-resetter-marker")) return prev;
+    } catch(e){}
+    try{
+      return DOC.querySelector('.lia-resetter-marker[data-resetter-uid="'+ String(uid).replace(/"/g,'\\"') +'"]');
+    } catch(e){
+      return null;
     }
   }
 
-  // =========================
+  function findSlideSection(el){
+    if (!el || !el.closest) return null;
+    // Reveal-Slide ist i.d.R. ein section mit data-index-h (oder data-index)
+    let sec = el.closest("section[data-index-h]");
+    if (sec) return sec;
+    sec = el.closest("section[data-index]");
+    if (sec) return sec;
+    // Fallback: nächstes section
+    sec = el.closest("section");
+    return sec;
+  }
+
+  function getSlideIndex(section){
+    if (!section) return null;
+
+    // Reveal standard
+    const dh = section.getAttribute("data-index-h");
+    if (dh != null && dh !== ""){
+      const v = parseInt(dh, 10);
+      if (!Number.isNaN(v)) return v;
+    }
+
+    // Alternative
+    const di = section.getAttribute("data-index");
+    if (di != null && di !== ""){
+      const v = parseInt(di, 10);
+      if (!Number.isNaN(v)) return v;
+    }
+
+    return null;
+  }
+
+  function localIndexInSlide(marker, section){
+    if (!marker) return 0;
+    if (section && section.querySelectorAll){
+      const all = Array.from(section.querySelectorAll(".lia-resetter-marker"));
+      const idx = all.indexOf(marker);
+      if (idx >= 0) return idx;
+    }
+
+    // Fallback: global DOM Reihenfolge
+    const all = Array.from(DOC.querySelectorAll(".lia-resetter-marker"));
+    const idx = all.indexOf(marker);
+    return idx >= 0 ? idx : 0;
+  }
+
+  function globalIndexFromSlide(marker, parsed){
+    // 1) Versuche Reveal-Slide-Index
+    const sec = findSlideSection(marker);
+    const slideIdx = getSlideIndex(sec);
+
+    if (slideIdx != null && parsed && parsed.prefix && parsed.prefix.length){
+      const local = localIndexInSlide(marker, sec);
+      const base = (slideIdx >= 0 && slideIdx < parsed.prefix.length) ? parsed.prefix[slideIdx] : 0;
+      return base + local;
+    }
+
+    // 2) Fallback: wenn alles bereits im DOM ist (Textbook), globale Marker-Reihenfolge
+    const all = Array.from(DOC.querySelectorAll(".lia-resetter-marker"));
+    const idx = all.indexOf(marker);
+    return idx >= 0 ? idx : 0;
+  }
+
+  // -------------------------
+  // Strip Original-Segment (nur innerhalb der Slide!)
+  // -------------------------
+  function isStopNode(node){
+    if (!node) return false;
+    if (node.nodeType !== 1) return false;
+    const el = node;
+
+    if (/^H[1-6]$/.test(el.tagName)) return true;
+    if (el.classList && el.classList.contains("lia-resetter-marker")) return true;
+    if (el.querySelector && el.querySelector(".lia-resetter-marker")) return true;
+
+    return false;
+  }
+
+  function tryStripOnce(uid, marker){
+    if (REG.stripped[uid]) return true;
+    if (!marker) return false;
+
+    const sec = findSlideSection(marker) || DOC.querySelector("main") || DOC.body;
+    const start = marker.closest("p") || marker;
+    if (!sec || !start) return false;
+
+    let n = start.nextSibling;
+    if (!n) return false;
+
+    // Segment leer -> sofort fertig
+    if (isStopNode(n)){
+      REG.stripped[uid] = true;
+      return true;
+    }
+
+    let removed = 0;
+    while (n){
+      const next = n.nextSibling;
+
+      // nur innerhalb dieser Slide arbeiten
+      if (n.nodeType === 1 && sec && !sec.contains(n)) break;
+
+      if (isStopNode(n)) break;
+
+      try{
+        if (n.parentNode){
+          n.parentNode.removeChild(n);
+          removed++;
+        }
+      } catch(e){}
+
+      n = next;
+    }
+
+    if (removed > 0){
+      REG.stripped[uid] = true;
+      return true;
+    }
+
+    return false;
+  }
+
+  function ensureStripped(uid, marker){
+    if (REG.stripped[uid]) return Promise.resolve(true);
+
+    return new Promise((resolve) => {
+      let tries = 0;
+
+      const step = () => {
+        tries++;
+        if (tryStripOnce(uid, marker)){
+          resolve(true);
+          return;
+        }
+        if (tries >= 160){ // ~8s @50ms
+          resolve(false);
+          return;
+        }
+        setTimeout(step, 50);
+      };
+
+      step();
+    });
+  }
+
+  // -------------------------
   // Output bauen (Salt bricht Persistenz-Key)
-  // =========================
+  // -------------------------
   function buildOutput(uid, segmentText){
     const salt = (REG.salts[uid] = (REG.salts[uid] || 0) + 1);
-
     return (
       "LIASCRIPT:" +
       '<button class="lia-resetter-btn" type="button" data-resetter-btn="'+ uid +'">Neustart der Aufgabe</button>\n\n' +
@@ -236,27 +397,28 @@ button.lia-resetter-btn:focus{
     );
   }
 
-  // =========================
+  // -------------------------
   // Bootstrap pro @resetter
-  // =========================
+  // -------------------------
   function bootstrap(uid, send, scriptEl){
     installGuard();
 
-    // Reihenfolge im Dokument (einfacher, stabiler als DOM-Scans)
-    const ord = (REG.seq++);
+    const marker = findMarker(uid, scriptEl);
 
-    stripOriginalOnce(uid, scriptEl);
+    getCourseParsed().then(function(parsed){
+      const gi = globalIndexFromSlide(marker, parsed);
+      const seg = (parsed.segments && gi >= 0 && gi < parsed.segments.length) ? parsed.segments[gi] : "";
 
-    getSegments().then(function(segs){
-      const seg = (segs && ord >= 0 && ord < segs.length) ? segs[ord] : "";
-      const out = buildOutput(uid, seg);
+      // erst Original entfernen, dann rendern => keine Doppelanzeige
+      ensureStripped(uid, marker).then(function(){
+        const out = buildOutput(uid, seg);
 
-      REG.renderers[uid] = function(){
-        // jedes Mal neuer Salt => wirklich „wie neu geladen“
-        send.output(buildOutput(uid, seg));
-      };
+        REG.renderers[uid] = function(){
+          send.output(buildOutput(uid, seg));
+        };
 
-      send.output(out);
+        send.output(out);
+      });
     });
   }
 
@@ -292,6 +454,8 @@ button.lia-resetter-btn:focus{
 </script>
 @end
 -->
+
+
 
 
 
