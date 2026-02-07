@@ -940,13 +940,16 @@ function ensureRootButtonAndPanel(){
     mount.id = HL_OVERLAY_ID;
     ROOT_DOC.body.appendChild(mount);
   }
+  mount.setAttribute("data-lia-overlay","1");
 
   // --- Marker Button (in Overlay mounten) ---
   let btn = ROOT_DOC.getElementById("lia-hl-btn");
   if (!btn){
-    btn = ROOT_DOC.createElement("button");
+    btn = ROOT_DOC.createElement("div");
     btn.id = "lia-hl-btn";
-    btn.type = "button";
+    btn.setAttribute("tabindex","0");              // focusable
+    btn.setAttribute("aria-label","Textmarker");
+    btn.setAttribute("data-lia-overlay","1");      // wichtig: Overlay-Kennzeichen
     btn.setAttribute("aria-label","Textmarker");
     btn.innerHTML = `
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -966,6 +969,7 @@ function ensureRootButtonAndPanel(){
   if (!panel){
     panel = ROOT_DOC.createElement("div");
     panel.id = "lia-hl-panel";
+    panel.setAttribute("data-lia-overlay","1");
     panel.innerHTML = `
       <div class="hdr"><div class="title">Textmarker</div></div>
       <div class="body">
@@ -1200,6 +1204,18 @@ function ensureRootButtonAndPanel(){
       ROOT_WIN.visualViewport.addEventListener("resize", () => positionPanelSmart());
       ROOT_WIN.visualViewport.addEventListener("scroll", () => positionPanelSmart());
     }
+
+    btn.addEventListener("keydown", (e)=>{
+      if (e.key === "Enter" || e.key === " "){
+        e.preventDefault();
+        btn.click();
+      }
+      if (e.key === "Escape" && I.state.active){
+        I.state.panelOpen = false;
+        I.state.tool = "mark";
+        applyUI();
+      }
+    });
   }
 
   // =========================
@@ -1353,11 +1369,13 @@ function hlGetVisibleRect(el){
 
 function hlIsToolbarLike(el){
   try{
-    if (el.closest && el.closest("header#lia-toolbar-nav,#lia-toolbar-nav,header.lia-header")) return true;
-    const pos = ROOT_WIN.getComputedStyle(el).position;
-    return (pos === "fixed" || pos === "absolute");
-  }catch(e){ return false; }
+    // NUR echte Header/Toolbar-Elemente zählen, niemals "fixed/absolute" Overlays
+    return !!(el && el.closest && el.closest("header#lia-toolbar-nav,#lia-toolbar-nav,header.lia-header"));
+  }catch(e){
+    return false;
+  }
 }
+
 
 function hlFindToolbarHeader(){
   return ROOT_DOC.querySelector("header#lia-toolbar-nav") ||
@@ -1373,9 +1391,30 @@ function hlFindToolbarLeftContainer(){
          header;
 }
 
+
+
+function hlIsOverlayTool(el){
+  if (!el) return false;
+
+  // explizites Kennzeichen (nutzen wir ab jetzt für alle Overlay-Tools)
+  if (el.getAttribute && el.getAttribute("data-lia-overlay") === "1") return true;
+  if (el.closest && el.closest('[data-lia-overlay="1"]')) return true;
+
+  // generischer Fallback: alles in "overlay-root"-Containern ist kein echter Toolbar-Peer
+  const c = el.closest ? el.closest('[id*="overlay-root"]') : null;
+  if (c) return true;
+
+  return false;
+}
+
+
+
+
+
 function hlFindTOCButton(){
   const all = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
   return all.find(el=>{
+    if (hlIsOverlayTool(el)) return false;
     const t = ((el.getAttribute("aria-label")||el.getAttribute("title")||el.textContent||"")+"").toLowerCase();
     const idc = ((el.id||"")+" "+(el.className||"")+" "+(el.getAttribute("aria-controls")||"")).toLowerCase();
     const k = t + " " + idc;
@@ -1420,6 +1459,10 @@ function hlFindAnchorRect(){
   return { left: pad, top: pad, right: pad+34, bottom: pad+34, width:34, height:34 };
 }
 
+
+
+
+
 // Peers im selben "Row"-Band wie Anchor (links oder mitte)
 function hlCollectRowPeers(anchor){
   const vp = hlViewport();
@@ -1437,6 +1480,8 @@ function hlCollectRowPeers(anchor){
 
   function consider(el){
     if (!el || el.id === "lia-hl-btn" || el.id === "lia-hl-panel" || el.closest("#lia-hl-panel")) return;
+    if (hlIsOverlayTool(el)) return;
+
     const r = hlGetVisibleRect(el);
     if (!r) return;
     if (r.top > maxTop) return;
@@ -1446,7 +1491,6 @@ function hlCollectRowPeers(anchor){
     const midY = r.top + r.height/2;
     if (Math.abs(midY - aMidY) > yTol) return;
 
-    // im Row-Cluster nur bis moderat rechts sammeln
     if (r.left > clusterMaxX) return;
 
     out.push(r);
@@ -1457,6 +1501,9 @@ function hlCollectRowPeers(anchor){
 
   return out;
 }
+
+
+
 
 // Peers im selben "Column"-Band wie Anchor (für rechte Nav-Stacks)
 function hlCollectColPeers(anchor){
@@ -1472,6 +1519,8 @@ function hlCollectColPeers(anchor){
 
   for (const el of all){
     if (!el || el.id === "lia-hl-btn" || el.id === "lia-hl-panel" || el.closest("#lia-hl-panel")) continue;
+    if (hlIsOverlayTool(el)) continue;
+
     const r = hlGetVisibleRect(el);
     if (!r) continue;
     if (!hlIsToolbarLike(el)) continue;
@@ -1486,6 +1535,7 @@ function hlCollectColPeers(anchor){
 
   return out;
 }
+
 
 function hlToolbarSignature(){
   try{
@@ -1582,11 +1632,12 @@ function positionMarkerOverlayButton(){
   left = hlClamp(left, pad, vp.w - bw - pad);
   top  = hlClamp(top,  pad, vp.h - bh - pad);
 
-  mount.style.left = `${Math.round(vp.ox)}px`;
-  mount.style.top  = `${Math.round(vp.oy)}px`;
+  mount.style.setProperty("left", `${Math.round(vp.ox)}px`, "important");
+  mount.style.setProperty("top",  `${Math.round(vp.oy)}px`, "important");
 
-  btn.style.left = `${Math.round(left)}px`;
-  btn.style.top  = `${Math.round(top)}px`;
+  btn.style.setProperty("left", `${Math.round(left)}px`, "important");
+  btn.style.setProperty("top",  `${Math.round(top)}px`, "important");
+
 }
 
 
@@ -1681,7 +1732,14 @@ function hlBurstRepositionThrottled(){
   // Docking nur auf DOM-Änderungen (childList/subtree) — KEINE attributes!
   try{
     I.moDock = new MutationObserver(() => tick());
-    I.moDock.observe(ROOT_DOC.body, { childList:true, subtree:true });
+    const hdr =
+      ROOT_DOC.querySelector("header#lia-toolbar-nav") ||
+      ROOT_DOC.querySelector("#lia-toolbar-nav") ||
+      ROOT_DOC.querySelector("header.lia-header") ||
+      ROOT_DOC.body;
+
+    I.moDock.observe(hdr, { childList:true, subtree:true });
+
   } catch(e){}
 
   // Theme-Observer: NUR class/data-theme (nicht style!)
