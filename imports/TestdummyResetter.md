@@ -2,15 +2,23 @@
 version:  0.0.1
 language: de
 author: Martin Lommatzsch
-comment: Resetter v0.0.1 — Output wird in Block-Host verschoben (kein <p>-Auto-Close), Reset = Re-Render per LIASCRIPT, statische Originalkopie per Range zwischen Host und nächstem @resetter/# entfernt, slide-safe
+comment: Resetter v0.0.1 — Segment wird per LIASCRIPT neu gerendert; statische Originalkopie wird wrapper-sicher „weggestasht“ (Range nach Host bis nächster @resetter/#); keine Folien-Crashes, kein Flimmern
 
 @style
 .lia-resetter-marker{ display:none !important; }
 .lia-resetter-salt{ display:none !important; }
 
-/* Host ist blockig, damit LIASCRIPT-Render stabil bleibt */
-.lia-resetter-host{ display:block; margin: 0; padding: 0; }
+/* Block-Host (wichtig: LIASCRIPT-Render darf nie in <p> landen) */
+.lia-resetter-host{
+  display:block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.lia-resetter-trash{
+  display:none !important;
+}
 
+/* Button: transparent, Themefarbe, klein, max. Font-Höhe */
 button.lia-resetter-btn{
   background: transparent !important;
   border: 1px solid currentColor !important;
@@ -55,18 +63,19 @@ button.lia-resetter-btn:focus{
 
   const REGKEY = "__LIA_RESETTER_V001__";
   const REG = ROOT[REGKEY] || (ROOT[REGKEY] = {
-    items: Object.create(null),  // uid -> { send, seg, salt, cleanedSalt }
+    items: Object.create(null),   // uid -> { send, seg, salt, stashedSalt }
     mdLines: null,
     mdPromise: null,
     guardDocs: new WeakSet(),
-    obsDocs: new WeakSet()
+    obsDocs: new WeakSet(),
+    muting: false
   });
 
   function escAttr(v){
     return String(v || "").replace(/\\/g,"\\\\").replace(/"/g,'\\"');
   }
 
-  // ---------- course url + markdown ----------
+  // ---------- Course URL + Markdown ----------
   function getCourseUrl(){
     try{
       const s = (ROOT.location && ROOT.location.search) ? ROOT.location.search : (location.search || "");
@@ -115,6 +124,9 @@ button.lia-resetter-btn:focus{
   }
   function outFor(uid){
     return DOC.querySelector('output[data-resetter-out="'+escAttr(uid)+'"]');
+  }
+  function hostFor(uid){
+    return DOC.querySelector('.lia-resetter-host[data-resetter-host="'+escAttr(uid)+'"]');
   }
 
   function approxLineFromMarker(marker){
@@ -165,7 +177,7 @@ button.lia-resetter-btn:focus{
     return lines.slice(start, end).join("\n");
   }
 
-  // ---------- host placement (critical fix) ----------
+  // ---------- Critical: Output aus <p> rausziehen ----------
   function ensureHost(uid){
     const marker = markerFor(uid);
     const outEl  = outFor(uid);
@@ -174,46 +186,49 @@ button.lia-resetter-btn:focus{
     const pStart = marker.closest("p") || marker.closest(".lia-paragraph");
     if (!pStart || !pStart.parentNode) return null;
 
-    // existierender Host?
-    let host = DOC.querySelector('.lia-resetter-host[data-resetter-host="'+escAttr(uid)+'"]');
+    let host = hostFor(uid);
     if (!host){
       host = DOC.createElement("div");
       host.className = "lia-resetter-host";
       host.setAttribute("data-resetter-host", uid);
-      // direkt NACH dem Aufgabe-Absatz einfügen -> kommt VOR die statische Originalkopie
+
+      // immer direkt nach dem "Aufgabe X:"-Absatz einfügen (vor statischer Kopie)
       pStart.parentNode.insertBefore(host, pStart.nextSibling);
+    } else {
+      // falls Lia neu gebaut hat: Host wieder direkt nach pStart ziehen
+      if (host.parentNode === pStart.parentNode && host.previousSibling !== pStart){
+        pStart.parentNode.insertBefore(host, pStart.nextSibling);
+      }
     }
 
-    // Output in Host verschieben, damit LIASCRIPT-Render nicht in <p> landet
+    // Output in Host verschieben
     if (outEl.parentNode !== host){
       host.appendChild(outEl);
     }
 
-    return { marker, outEl, host, pStart };
+    return { marker, pStart, host, outEl };
   }
 
-  // ---------- stop anchor in slide scope ----------
-  function findStopAnchor(scope, startEl, uid){
-    // startEl = host (NICHT p), damit wir garantiert nach dem dynamischen Bereich starten
+  // ---------- Stop-Anker: nächster @resetter (anderer uid) oder nächste Überschrift ----------
+  function findStopAnchor(scope, host, uid){
     const tw = DOC.createTreeWalker(scope, NodeFilter.SHOW_ELEMENT, null);
     let n = null;
     let started = false;
 
     while ((n = tw.nextNode())){
       if (!started){
-        if (n === startEl) started = true;
+        if (n === host) started = true;
         continue;
       }
 
-      // alles innerhalb des Hosts ignorieren
-      if (startEl.contains(n)) continue;
+      // Host-Descendants ignorieren
+      if (host.contains(n)) continue;
 
       if (n.classList && n.classList.contains("lia-resetter-marker")){
         const u = n.getAttribute("data-resetter-uid");
         if (u && String(u) !== String(uid)){
           return n.closest("p") || n.closest(".lia-paragraph") || n;
         }
-        continue;
       }
 
       if (/^H[1-6]$/.test(n.tagName)){
@@ -223,26 +238,26 @@ button.lia-resetter-btn:focus{
     return null;
   }
 
-  // ---------- remove static original between host and stop ----------
-  function cleanupStatic(uid){
+  // ---------- Stash statische Kopie: Range nach Host bis Stop in hidden-trash verschieben ----------
+  function stashStatic(uid){
     const it = REG.items[uid];
     if (!it) return false;
 
     const parts = ensureHost(uid);
     if (!parts) return false;
 
-    const { host, marker } = parts;
+    const { marker, host } = parts;
+
     const scope = marker.closest("section") || DOC.querySelector("main") || DOC.body;
+    const stop  = findStopAnchor(scope, host, uid);
 
-    const stop = findStopAnchor(scope, host, uid);
-
-    // Sicherheitsregel: Ohne Stop schneiden wir NICHT blind bis Ende -> verhindert "leere Folien"
-    if (!stop){
-      // Ausnahme: wenn wir wirklich in einer SECTION sind (typische Folie), dürfen wir bis Ende schneiden
-      if (!scope || scope.tagName !== "SECTION") return false;
-    }
+    // Ohne Stop stashen wir NICHT blind (außer in SECTION-Folie)
+    if (!stop && !(scope && scope.tagName === "SECTION")) return false;
 
     try{
+      // alte Trash-Container dieses uid im aktuellen Scope entfernen (damit kein Müll wächst)
+      scope.querySelectorAll('.lia-resetter-trash[data-resetter-trash="'+escAttr(uid)+'"]').forEach(el => el.remove());
+
       const r = DOC.createRange();
       r.setStartAfter(host);
 
@@ -257,45 +272,64 @@ button.lia-resetter-btn:focus{
       if (r.collapsed) return false;
 
       const frag = r.extractContents();
-      const removed = !!(frag && (frag.childNodes.length || (frag.textContent || "").trim().length));
-      if (removed) it.cleanedSalt = it.salt; // “für diesen Render” bereinigt
-      return removed;
+      const has = !!(frag && (frag.childNodes.length || (frag.textContent || "").trim().length));
+      if (!has) return false;
+
+      const trash = DOC.createElement("div");
+      trash.className = "lia-resetter-trash";
+      trash.setAttribute("data-resetter-trash", uid);
+      trash.style.display = "none";
+      trash.appendChild(frag);
+
+      // Trash vor Stop einfügen (oder ans Ende des Scope)
+      if (stop && stop.parentNode){
+        stop.parentNode.insertBefore(trash, stop);
+      } else {
+        scope.appendChild(trash);
+      }
+
+      it.stashedSalt = it.salt;
+      return true;
+
     }catch(e){
       return false;
     }
   }
 
-  function cleanupLoop(uid){
+  function stashLoop(uid){
     const it = REG.items[uid];
     if (!it) return;
 
     let tries = 0;
     const step = () => {
       tries++;
-      // wenn bereits für aktuellen salt bereinigt -> fertig
-      if (it.cleanedSalt === it.salt) return;
+      if (it.stashedSalt === it.salt) return;
 
-      cleanupStatic(uid);
+      REG.muting = true;
+      stashStatic(uid);
+      setTimeout(() => { REG.muting = false; }, 0);
 
-      if (tries > 120) return;
-      setTimeout(step, 60);
+      if (tries > 140) return;
+      setTimeout(step, 70);
     };
     step();
   }
 
-  // ---------- render/reset ----------
+  // ---------- Render/Reset ----------
   function render(uid){
     const it = REG.items[uid];
     if (!it || !it.send) return;
 
-    ensureHost(uid); // output raus aus <p> ziehen
+    const parts = ensureHost(uid);
+    if (!parts) return;
 
     it.salt = (it.salt || 0) + 1;
-    const salt = '<span class="lia-resetter-salt" data-resetter-salt="'+uid+'-'+it.salt+'"></span>\n\n';
 
+    const salt = '<span class="lia-resetter-salt" data-resetter-salt="'+uid+'-'+it.salt+'"></span>\n\n';
     it.send.output("LIASCRIPT:" + salt + (it.seg || ""));
 
-    cleanupLoop(uid);
+    // danach: statische Kopie wegstashen (inkl. ihrer Buttons)
+    stashLoop(uid);
   }
 
   // ---------- API ----------
@@ -323,7 +357,7 @@ button.lia-resetter-btn:focus{
     }
   };
 
-  // ---------- click guard ----------
+  // ---------- Click Guard: verhindert Folien-Sprung ----------
   function installGuard(){
     if (REG.guardDocs.has(DOC)) return;
     REG.guardDocs.add(DOC);
@@ -351,7 +385,7 @@ button.lia-resetter-btn:focus{
     });
   }
 
-  // ---------- observer (safe: only cleanup, never blind-end unless SECTION) ----------
+  // ---------- Observer: bei Slide-Rebuilds wieder stashen ----------
   function installObserver(){
     if (REG.obsDocs.has(DOC)) return;
     REG.obsDocs.add(DOC);
@@ -361,13 +395,17 @@ button.lia-resetter-btn:focus{
 
     let pending = false;
     const obs = new MutationObserver(() => {
+      if (REG.muting) return;
       if (pending) return;
       pending = true;
+
       setTimeout(() => {
         pending = false;
         for (const uid in REG.items){
-          // nur nochmal bereinigen, wenn Host+Marker existieren
-          cleanupStatic(uid);
+          // falls Lia neu gebaut hat: Host/Output neu platzieren
+          ensureHost(uid);
+          // statische Kopie ggf. neu entstanden -> erneut stashen
+          stashStatic(uid);
         }
       }, 120);
     });
@@ -388,7 +426,7 @@ button.lia-resetter-btn:focus{
 <button class="lia-resetter-btn" type="button" data-resetter-btn="@0">Neustart der Aufgabe</button>
 
 <output class="lia-resetter-out" data-resetter-out="@0" modify="false">
-<script run-once="false" modify="false">
+<script run-once="true" modify="false">
 (function(){
   try{
     let w = window;
@@ -397,12 +435,13 @@ button.lia-resetter-btn:focus{
       setTimeout(function(){ w.__liaResetterV001.bind("@0", send); }, 0);
     }
   }catch(e){}
-  return "LIA: wait";
+  return "";
 })();
 </script>
 </output>
 @end
 -->
+
 
 
 
