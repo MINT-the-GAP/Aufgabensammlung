@@ -109,7 +109,10 @@ author: Martin Lommatzsch
       width: 40px !important;
       height: 40px !important;
       padding: 0 !important;
-      margin: 0 30px !important;
+      margin: 0 !important;
+      flex: 0 0 auto !important;
+      flex-shrink: 0 !important;
+
 
       display: inline-flex !important;
       align-items: center !important;
@@ -144,7 +147,21 @@ author: Martin Lommatzsch
     }
 
     #lia-hl-btn{ pointer-events: auto !important; }
-    #lia-hl-dock > *{ position: relative !important; z-index: 1 !important; }
+
+    /* DOCK: sauber nebeneinander, keine Überlagerung */
+    #lia-hl-dock{
+      display: inline-flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      gap: 8px !important;
+      flex-wrap: nowrap !important;
+      white-space: nowrap !important;
+      flex: 0 0 auto !important;
+      flex-shrink: 0 !important;
+      min-width: 0 !important;
+    }
+    
+
 
 
     #lia-hl-panel{
@@ -321,16 +338,26 @@ author: Martin Lommatzsch
       align-items: center !important;
       gap: 8px !important;
       flex-wrap: nowrap !important;
-      min-width: 0 !important;
+      flex: 0 0 auto !important;
+      flex-shrink: 0 !important;
     }
 
-    /* wenn Header links zu schmal wird: kein „Übereinander“, sondern notfalls horizontaler overflow */
-    #lia-hl-dock{
-      overflow-x: auto !important;
-      overflow-y: hidden !important;
-      scrollbar-width: none !important;       /* Firefox */
+    /* TOC, wenn wir ihn reparenten: zurück in normalen Flow zwingen */
+    #lia-hl-dock [data-hl-toc="1"]{
+      position: relative !important;
+      inset: auto !important;
+      transform: none !important;
+      margin: 0 !important;
+      flex: 0 0 auto !important;
+      flex-shrink: 0 !important;
     }
-    #lia-hl-dock::-webkit-scrollbar{ display:none !important; }
+
+    /* Marker auch niemals schrumpfen */
+    #lia-hl-btn{
+      flex: 0 0 auto !important;
+      flex-shrink: 0 !important;
+    }
+
 
     /* Optional: auf sehr kleinen Viewports HL-Button kompakter */
     @media (max-width: 420px){
@@ -346,6 +373,66 @@ author: Martin Lommatzsch
         width: 8px !important; height: 8px !important;
       }
     }
+
+    /* =========================================================
+       HARD ANTI-OVERLAP (beats #lia-toolbar-nav button{...!important})
+       ========================================================= */
+
+    #lia-toolbar-nav #lia-hl-dock{
+      display: inline-flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      gap: 8px !important;
+      flex-wrap: nowrap !important;
+      position: relative !important;
+      min-width: 0 !important;
+    }
+
+    /* Alles im Dock MUSS im Flow bleiben (kein absolute/transform-offset) */
+    #lia-toolbar-nav #lia-hl-dock > *{
+      position: relative !important;
+      left: auto !important; right: auto !important;
+      top: auto !important;  bottom: auto !important;
+      inset: auto !important;
+      transform: none !important;
+    }
+
+    /* Marker: immer Flow */
+    #lia-toolbar-nav #lia-hl-btn{
+      position: relative !important;
+      left: auto !important; right: auto !important;
+      top: auto !important;  bottom: auto !important;
+      inset: auto !important;
+      transform: none !important;
+    }
+
+    /* TOC (wenn wir ihn markieren): immer Flow */
+    #lia-toolbar-nav [data-hl-toc="1"]{
+      position: relative !important;
+      left: auto !important; right: auto !important;
+      top: auto !important;  bottom: auto !important;
+      inset: auto !important;
+      transform: none !important;
+    }
+
+    /* Optional: auf kleinen Screens Platz sparen, damit Lia kein "..." Menü erzwingt */
+    @media (max-width: 520px){
+      #lia-toolbar-nav #lia-hl-dock{ gap: 4px !important; }
+      #lia-toolbar-nav #lia-hl-btn{ width: 32px !important; height: 32px !important; }
+      /* minimaler "Kompaktmodus" ohne echtes Überlappen */
+      #lia-toolbar-nav #lia-hl-btn{ margin-left: -2px !important; }
+    }
+
+    /* =========================================================
+       OVERLAY-PLACEMENT (keine Toolbar-Layout-Einmischung)
+       ========================================================= */
+    #lia-hl-btn{
+      position: fixed !important;
+      z-index: var(--hl-z) !important;
+      left: auto !important;
+      top:  auto !important;
+    }
+
 
 
   `);
@@ -825,9 +912,10 @@ author: Martin Lommatzsch
     return pick || btns[0];
   }
 
-function ensureRootButtonAndPanel(){
 
-  // ---------- Button sicherstellen ----------
+
+function ensureRootButtonAndPanel(){
+  // --- Marker Button (nur erzeugen, NICHT in Toolbar integrieren) ---
   let btn = ROOT_DOC.getElementById("lia-hl-btn");
   if (!btn){
     btn = ROOT_DOC.createElement("button");
@@ -842,9 +930,12 @@ function ensureRootButtonAndPanel(){
       </svg>
       <span class="dot" id="lia-hl-dot"></span>
     `;
+    ROOT_DOC.body.appendChild(btn);
+  } else if (!btn.parentNode){
+    ROOT_DOC.body.appendChild(btn);
   }
 
-  // ---------- Panel sicherstellen ----------
+  // --- Panel ---
   let panel = ROOT_DOC.getElementById("lia-hl-panel");
   if (!panel){
     panel = ROOT_DOC.createElement("div");
@@ -865,52 +956,14 @@ function ensureRootButtonAndPanel(){
     `;
     ROOT_DOC.body.appendChild(panel);
   }
-
-  // ---------- Ziel: TOC + HL in eigenen Dock-Wrapper (kein Overlap) ----------
-  const left = findHeaderLeft();
-
-  // Fallback: wenn kein Header-left existiert, einfach in Body
-  if (!left){
-    if (!btn.parentNode) ROOT_DOC.body.appendChild(btn);
-    return;
-  }
-
-  // Dock-Wrapper (inline-flex + gap) einmalig anlegen
-  let dock = ROOT_DOC.getElementById("lia-hl-dock");
-  if (!dock){
-    dock = ROOT_DOC.createElement("span");
-    dock.id = "lia-hl-dock";
-  }
-
-  // TOC-Button finden (oder irgendeinen „ersten“ Button als Anker)
-  const toc = findTOCButtonInLeft(left);
-
-  // Dock an die richtige Stelle hängen:
-  // - Wenn TOC in left ist: Dock direkt vor TOC einsetzen und TOC in Dock verschieben
-  // - Sonst: Dock ans Ende von left
-  if (toc && toc.parentNode === left){
-
-    // Dock vor TOC platzieren (nur wenn nicht schon dort)
-    if (dock.parentNode !== left || dock.nextSibling !== toc){
-      left.insertBefore(dock, toc);
-    }
-
-    // TOC in Dock verschieben (nur wenn nicht schon drin)
-    if (toc.parentNode !== dock){
-      dock.appendChild(toc);
-    }
-
-  } else {
-    if (dock.parentNode !== left){
-      left.appendChild(dock);
-    }
-  }
-
-  // HL-Button immer in Dock
-  if (btn.parentNode !== dock){
-    dock.appendChild(btn);
-  }
 }
+
+
+
+
+
+
+
 
 
   // =========================
@@ -1207,6 +1260,156 @@ function ensureRootButtonAndPanel(){
 
 
 
+function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
+
+function getViewport(){
+  const vv = ROOT_WIN.visualViewport;
+  if (vv) return { w: vv.width, h: vv.height, ox: vv.offsetLeft||0, oy: vv.offsetTop||0 };
+  const de = ROOT_DOC.documentElement;
+  return { w: de.clientWidth||0, h: de.clientHeight||0, ox: 0, oy: 0 };
+}
+
+function isVisibleRect(r, vp){
+  return r && r.width > 10 && r.height > 10 && r.bottom > 0 && r.right > 0 && r.top < vp.h && r.left < vp.w;
+}
+
+function textKey(el){
+  return ((el.getAttribute("aria-label")||el.getAttribute("title")||el.textContent||"")+"").toLowerCase();
+}
+
+function findHeader(){
+  return ROOT_DOC.querySelector("header#lia-toolbar-nav") ||
+         ROOT_DOC.querySelector("#lia-toolbar-nav") ||
+         ROOT_DOC.querySelector("header.lia-header");
+}
+
+function findHeaderLeft(header){
+  if (!header) return null;
+  return header.querySelector(".lia-header__left") ||
+         header.querySelector(".lia-toolbar__left") ||
+         header;
+}
+
+/* =========================================================
+   Placement-Logik wie "letztes Mal":
+   -> Anchor NUR links (TOC oder linkester Button links)
+   -> rechte Kandidaten verwerfen
+   -> Peers nur im linken Cluster
+   -> Button fixed positionieren
+   ========================================================= */
+function positionMarkerButton(){
+  const btn = ROOT_DOC.getElementById("lia-hl-btn");
+  if (!btn) return;
+
+  const vp = getViewport();
+  const header =
+    ROOT_DOC.querySelector("header#lia-toolbar-nav") ||
+    ROOT_DOC.querySelector("#lia-toolbar-nav") ||
+    ROOT_DOC.querySelector("header.lia-header");
+
+  const pad = 14;
+  const gap = 14;
+
+  // Button size robust
+  const br0 = btn.getBoundingClientRect();
+  const bw  = Math.max(32, Math.round(br0.width  || 40));
+  const bh  = Math.max(32, Math.round(br0.height || 40));
+
+  function isVisible(el){
+    if (!el) return false;
+    const cs = ROOT_WIN.getComputedStyle(el);
+    if (cs.display === "none" || cs.visibility === "hidden") return false;
+    const r = el.getBoundingClientRect();
+    return r.width > 10 && r.height > 10;
+  }
+
+  function key(el){
+    const t = (el.getAttribute("aria-label")||el.getAttribute("title")||el.textContent||"").toLowerCase();
+    const idc = ((el.id||"")+" "+(el.className||"")+" "+(el.getAttribute("aria-controls")||"")).toLowerCase();
+    return t + " " + idc;
+  }
+
+  // Kandidaten im Top-Band sammeln (Header bevorzugt)
+  const scope = header || ROOT_DOC;
+  const all = Array.from(scope.querySelectorAll("button,[role='button'],a"))
+    .filter(el => el && el.id !== "lia-hl-btn" && el.id !== "lia-hl-panel")
+    .filter(el => !el.closest("#lia-hl-panel"))
+    .filter(isVisible)
+    .map(el => ({ el, r: el.getBoundingClientRect(), k: key(el) }))
+    .filter(o => o.r.top <= 220 && o.r.bottom > 0);
+
+  // Nur linker Bereich (damit wir NICHT rechts andocken)
+  const leftBand = all.filter(o => o.r.left <= vp.w * 0.60);
+
+  // --- Anchor bestimmen ---
+  let anchor = null;
+
+  // 1) TOC scoring (auch wenn Icon ohne Text -> aria-controls/id/class hilft oft)
+  let best = null, bestScore = -1;
+  for (const o of leftBand){
+    let s = 0;
+    if (o.k.includes("inhaltsverzeichnis") || o.k.includes("table of contents") || o.k.includes("contents") || o.k.includes("toc")) s += 80;
+    if (o.k.includes("sidebar") || o.k.includes("nav") || o.k.includes("toc") || o.k.includes("contents")) s += 20;
+
+    // links/oben bonus
+    s += Math.max(0, 20 - o.r.left/40);
+    s += Math.max(0, 15 - o.r.top/30);
+
+    if (s > bestScore){ bestScore = s; best = o; }
+  }
+  if (bestScore >= 60) anchor = best;
+
+  // 2) fallback: linkester Button im linken Band
+  if (!anchor && leftBand.length){
+    anchor = leftBand.reduce((a,b)=> (b.r.left < a.r.left ? b : a));
+  }
+
+  // 3) fallback: harte Top-Left Box (wenn es wirklich keinen linken Cluster gibt)
+  let anchorRect = anchor ? anchor.r : null;
+  if (!anchorRect){
+    let top = pad;
+    if (header){
+      const hr = header.getBoundingClientRect();
+      if (hr && hr.height > 10){
+        top = clamp(Math.round(hr.top + (hr.height - bh)/2), pad, 220);
+      }
+    }
+    anchorRect = { left: pad, top, right: pad+34, height: 34 };
+  }
+
+  const anchorMidY = anchorRect.top + (anchorRect.height || 34)/2;
+  const yTol = Math.max(52, (anchorRect.height || 34) * 1.6);
+
+  // --- Peers nur im linken Cluster + gleiche Zeile ---
+  const clusterMaxX = Math.min(vp.w * 0.55, anchorRect.left + 520);
+
+  let rightEdge = anchorRect.right;
+  for (const o of leftBand){
+    if (o.r.left > clusterMaxX) continue;
+    const midY = o.r.top + o.r.height/2;
+    if (Math.abs(midY - anchorMidY) > yTol) continue;
+    if (o.r.width > 240 || o.r.height > 120) continue;
+    rightEdge = Math.max(rightEdge, o.r.right);
+  }
+
+  // --- Platzieren ---
+  let left = rightEdge + gap;
+  let top  = anchorRect.top + ((anchorRect.height || 34) - bh)/2;
+
+  left = clamp(left, pad, vp.w - bw - pad);
+  top  = clamp(top,  pad, vp.h - bh - pad);
+
+  // WICHTIG: inline !important, damit es NICHT von CSS left/top !important gekillt wird
+  btn.style.setProperty("position", "fixed", "important");
+  btn.style.setProperty("z-index", "var(--hl-z)", "important");
+  btn.style.setProperty("left", `${Math.round(left + vp.ox)}px`, "important");
+  btn.style.setProperty("top",  `${Math.round(top  + vp.oy)}px`, "important");
+}
+
+
+
+
+
   // =========================
   // Tick (throttled) — Docking stabil, ohne Observer-Loop
   // =========================
@@ -1217,6 +1420,15 @@ function ensureRootButtonAndPanel(){
     ROOT_WIN.requestAnimationFrame(() => {
       try{
         ensureRootButtonAndPanel();
+        (function burst(){
+          positionMarkerButton();
+          ROOT_WIN.requestAnimationFrame(positionMarkerButton);
+          ROOT_WIN.requestAnimationFrame(()=>ROOT_WIN.requestAnimationFrame(positionMarkerButton));
+          [40,120,260,520].forEach(ms => ROOT_WIN.setTimeout(positionMarkerButton, ms));
+          if (ROOT_WIN.document.fonts?.ready){
+            ROOT_WIN.document.fonts.ready.then(()=>ROOT_WIN.setTimeout(positionMarkerButton, 0));
+          }
+        })();
         detectNavStack();
         ensureLayoutResizeObserver(); 
         checkLayoutAndRecalc();
@@ -1239,11 +1451,20 @@ function ensureRootButtonAndPanel(){
 
   // Theme-Observer: NUR class/data-theme (nicht style!)
   try{
-    I.moTheme = new MutationObserver(() => { adaptUIVars(); applyUI(); positionPanelSmart(); });  
+    I.moTheme = new MutationObserver(() => { adaptUIVars(); applyUI(); positionMarkerButton(); positionPanelSmart(); });  
     I.moTheme.observe(ROOT_DOC.documentElement, { attributes:true, attributeFilter:["class","data-theme","data-mode","data-view","data-layout"] });
     I.moTheme.observe(ROOT_DOC.body,           { attributes:true, attributeFilter:["class","data-theme","data-mode","data-view","data-layout"] });
 
   } catch(e){}
+
+
+ROOT_WIN.addEventListener("resize", tick, { passive: true });
+if (ROOT_WIN.visualViewport){
+  ROOT_WIN.visualViewport.addEventListener("resize", tick);
+  ROOT_WIN.visualViewport.addEventListener("scroll", tick);
+}
+
+
 
   // Boot
   tick();
