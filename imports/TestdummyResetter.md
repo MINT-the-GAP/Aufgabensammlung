@@ -2,20 +2,19 @@
 version:  0.0.1
 language: de
 author: Martin Lommatzsch
-comment: Aufgabenresetter v0.0.1 — segmentweiser Neustart via dynamischem Re-Render (bis nächster @resetter oder nächstes #)
+comment: Aufgabenresetter v0.0.1 — Segment-Neurendern (wie Reload) bis nächster @resetter oder nächstes # — Persistenz brechen via Salt
 
 @style
-/* Marker unsichtbar */
 .lia-resetter-marker{ display:none !important; }
 
-/* Reset-Button: inline, transparent, Themefarbe, klein */
 button.lia-resetter-btn{
   background: transparent !important;
   border: 1px solid currentColor !important;
-  color: var(--lia-accent, var(--lia-primary-color, var(--lia-color-primary, #0b5fff))) !important;
+  color: rgb(var(--color-highlight, 11, 95, 255)) !important;
 
   font-size: 0.75em !important;
   line-height: 1 !important;
+  height: 1.15em !important;
 
   padding: 0 0.45em !important;
   margin: 0 0 0 0.6em !important;
@@ -27,18 +26,12 @@ button.lia-resetter-btn{
 
   cursor: pointer !important;
   user-select: none !important;
+  white-space: nowrap !important;
 }
 button.lia-resetter-btn:hover,
 button.lia-resetter-btn:focus{
   text-decoration: underline !important;
   outline: none !important;
-}
-
-/* Mini-Block zum Paragraph-Break (damit inline-Makro danach Block-Inhalt sauber starten kann) */
-.lia-resetter-break{
-  height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
 }
 @end
 
@@ -55,61 +48,90 @@ button.lia-resetter-btn:focus{
     return w;
   }
 
-  const ROOT_WIN   = getRootWindow();
-  const CONTENT_DOC = document;
+  const ROOT = getRootWindow();
+  const DOC  = document;
 
   // =========================
   // Registry (import-sicher)
   // =========================
   const REGKEY = "__LIA_RESETTER_V001__";
-  const REG = ROOT_WIN[REGKEY] || (ROOT_WIN[REGKEY] = {
-    stripped: Object.create(null),      // uid -> true
-    renderers: Object.create(null),     // uid -> function()
-    clickGuardInstalled: false,
-
-    segCacheByUrl: Object.create(null), // url -> segments[]
-    segPromiseByUrl: Object.create(null)
+  const REG = ROOT[REGKEY] || (ROOT[REGKEY] = {
+    seq: 0,
+    stripped: Object.create(null),         // uid -> true
+    renderers: Object.create(null),        // uid -> fn()
+    salts: Object.create(null),            // uid -> int
+    segCacheByUrl: Object.create(null),    // url -> segs[]
+    segPromiseByUrl: Object.create(null),
+    guardInstalled: false
   });
 
   // =========================
-  // Helpers: Course-URL + Segment-Parser
+  // Click-Guard (verhindert Slide-Advance)
+  // =========================
+  function installGuard(){
+    if (REG.guardInstalled) return;
+    REG.guardInstalled = true;
+
+    const handler = (ev) => {
+      const t = ev && ev.target;
+      if (!t || !t.closest) return;
+      const btn = t.closest("button.lia-resetter-btn");
+      if (!btn) return;
+
+      ev.preventDefault();
+      ev.stopPropagation();
+      if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
+
+      const uid = btn.getAttribute("data-resetter-btn") || "";
+      const fn  = REG.renderers[uid];
+      if (typeof fn === "function") fn();
+    };
+
+    // auf Root + Content (Capture), damit Presentation nicht „weiterklickt“
+    ["pointerdown","mousedown","click","touchstart"].forEach(type => {
+      try { DOC.addEventListener(type, handler, true); } catch(e){}
+      try { ROOT.document.addEventListener(type, handler, true); } catch(e){}
+    });
+  }
+
+  // =========================
+  // URL der Kursquelle (raw) finden
   // =========================
   function getCourseUrl(){
-    // LiaScript: /course/?<md-url>#...  oder /nightly/?<md-url>#...
     try{
-      const s = (ROOT_WIN.location && ROOT_WIN.location.search) ? ROOT_WIN.location.search : (location.search || "");
+      const s = (ROOT.location && ROOT.location.search) ? ROOT.location.search : (location.search || "");
       if (!s || s.length < 2) return null;
 
       const raw = s.slice(1);
       const first = raw.split("&")[0];
 
-      // Fall A: direkt die URL als erster "Parameter"
-      if (/^https?:/i.test(decodeURIComponent(first))) return decodeURIComponent(first);
+      const decFirst = decodeURIComponent(first);
+      if (/^https?:/i.test(decFirst)) return decFirst;
 
-      // Fall B: key=value
       const usp = new URLSearchParams(raw);
       for (const k of ["url","course","src","source"]){
         if (usp.has(k)) return decodeURIComponent(usp.get(k) || "");
       }
-
-      // Fallback: erster Wert
-      return decodeURIComponent(first);
+      return decFirst;
     } catch(e){
       return null;
     }
   }
 
+  // =========================
+  // Header-Comment strippen (ohne Literal-Kommentar-Tokens!)
+  // =========================
   function stripInitialHeaderComment(md){
-    // Entfernt NUR den initialen <!-- ... --> Headerblock, damit @resetter:-Definitionen dort nicht mitgezählt werden
     const t = md || "";
-    if (!t.startsWith("<!--")) return t;
-    const end = t.indexOf("-->");
+    const OPEN  = "<" + "!--";
+    const CLOSE = "-" + "->";
+    if (!t.startsWith(OPEN)) return t;
+    const end = t.indexOf(CLOSE);
     if (end < 0) return t;
     return t.slice(end + 3);
   }
 
   function findNextHeadingIndex(md, from){
-    // nächste Zeile, die mit # beginnt
     const sub = md.slice(from);
     const m = sub.match(/^[ \t]*#{1,6}\s/m);
     if (!m) return Infinity;
@@ -118,27 +140,24 @@ button.lia-resetter-btn:focus{
 
   function parseSegments(md){
     const src = stripInitialHeaderComment(md);
-
     const token = "@resetter";
     const re = /@resetter\b/g;
 
     const hits = [];
     let m;
-    while ((m = re.exec(src))){
-      hits.push(m.index);
-    }
+    while ((m = re.exec(src))) hits.push(m.index);
     if (!hits.length) return [];
 
     const segs = [];
     for (let i = 0; i < hits.length; i++){
       const tokPos = hits[i];
 
-      // Segment beginnt NACH der Zeile, in der @resetter steht
+      // Start: nach der Zeile mit @resetter
       let start = tokPos + token.length;
       const lineEnd = src.indexOf("\n", start);
       start = (lineEnd >= 0) ? (lineEnd + 1) : start;
 
-      const nextTok = (i + 1 < hits.length) ? hits[i + 1] : Infinity;
+      const nextTok  = (i + 1 < hits.length) ? hits[i + 1] : Infinity;
       const nextHead = findNextHeadingIndex(src, start);
       const end = Math.min(nextTok, nextHead, src.length);
 
@@ -170,103 +189,78 @@ button.lia-resetter-btn:focus{
   }
 
   // =========================
-  // DOM: Ordinal + Original-Segment entfernen
+  // Original-Segment entfernen (damit es nicht doppelt ist)
   // =========================
-  function escAttr(v){
-    // CSS.escape ist nicht überall garantiert
-    return String(v).replace(/"/g, '\\"');
-  }
-
-  function getMarker(uid){
-    return CONTENT_DOC.querySelector('.lia-resetter-marker[data-resetter-uid="' + escAttr(uid) + '"]');
-  }
-
-  function ordinalOf(uid){
-    const all = Array.from(CONTENT_DOC.querySelectorAll('.lia-resetter-marker'));
-    const m = getMarker(uid);
-    return all.indexOf(m);
-  }
-
-  function stripOriginalOnce(uid){
+  function stripOriginalOnce(uid, scriptEl){
     if (REG.stripped[uid]) return;
     REG.stripped[uid] = true;
 
-    const marker = getMarker(uid);
+    const marker = (scriptEl && scriptEl.previousElementSibling && scriptEl.previousElementSibling.classList &&
+                    scriptEl.previousElementSibling.classList.contains("lia-resetter-marker"))
+                  ? scriptEl.previousElementSibling
+                  : DOC.querySelector('.lia-resetter-marker[data-resetter-uid="'+ uid.replace(/"/g,'\\"') +'"]');
+
     if (!marker) return;
 
-    // wir entfernen ab dem Absatz (oder Marker) die folgenden Geschwister
     const start = marker.closest("p") || marker;
-    const scope = marker.closest("section") || CONTENT_DOC.querySelector("main") || CONTENT_DOC.body;
+    const scope = marker.closest("section") || DOC.querySelector("main") || DOC.body;
     if (!scope) return;
 
     let n = start.nextSibling;
     while (n){
       const next = n.nextSibling;
 
-      // Stop-Kriterien
       if (n.nodeType === 1){
         const el = n;
-        if (/^H[1-6]$/.test(el.tagName)) break;                 // nächste Überschrift
-        if (el.querySelector && el.querySelector(".lia-resetter-marker")) break; // nächster @resetter
+
+        if (/^H[1-6]$/.test(el.tagName)) break;
+        if (el.querySelector && el.querySelector(".lia-resetter-marker")) break;
       }
 
-      // innerhalb des gleichen Scopes löschen
-      if (n.parentNode) n.parentNode.removeChild(n);
+      try{ if (n.parentNode) n.parentNode.removeChild(n); }catch(e){}
       n = next;
     }
   }
 
   // =========================
-  // Click-Guard + Renderer-Registry
+  // Output bauen (Salt bricht Persistenz-Key)
   // =========================
-  function installClickGuardOnce(){
-    if (REG.clickGuardInstalled) return;
-    REG.clickGuardInstalled = true;
-
-    const stop = (ev) => {
-      const t = ev.target;
-      if (!t || !t.closest) return;
-
-      const btn = t.closest("button.lia-resetter-btn");
-      if (!btn) return;
-
-      ev.preventDefault();
-      ev.stopPropagation();
-      if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
-
-      const uid = btn.getAttribute("data-resetter-btn") || "";
-      const fn = REG.renderers[uid];
-      if (typeof fn === "function") fn();
-    };
-
-    ["click","mousedown","pointerdown","touchstart"].forEach(type => {
-      CONTENT_DOC.addEventListener(type, stop, true);
-    });
-  }
-
-  function registerRenderer(uid, fn){
-    installClickGuardOnce();
-    REG.renderers[uid] = fn;
-  }
-
   function buildOutput(uid, segmentText){
-    // Button inline + HTML-Block (div) um aus dem Absatz sauber rauszukommen
+    const salt = (REG.salts[uid] = (REG.salts[uid] || 0) + 1);
+
     return (
       "LIASCRIPT:" +
-      '<button class="lia-resetter-btn" type="button" data-resetter-btn="' + uid + '">Neustart der Aufgabe</button>\n' +
-      '<div class="lia-resetter-break"></div>\n\n' +
+      '<button class="lia-resetter-btn" type="button" data-resetter-btn="'+ uid +'">Neustart der Aufgabe</button>\n\n' +
+      '<span style="display:none" data-resetter-salt="'+ uid +'-'+ salt +'"></span>\n\n' +
       (segmentText || "")
     );
   }
 
-  // API im Root bereitstellen (damit Scripts schlank bleiben)
-  ROOT_WIN.__LIA_RESETTER_API_V001__ = {
-    getSegments,
-    ordinalOf,
-    stripOriginalOnce,
-    registerRenderer,
-    buildOutput
-  };
+  // =========================
+  // Bootstrap pro @resetter
+  // =========================
+  function bootstrap(uid, send, scriptEl){
+    installGuard();
+
+    // Reihenfolge im Dokument (einfacher, stabiler als DOM-Scans)
+    const ord = (REG.seq++);
+
+    stripOriginalOnce(uid, scriptEl);
+
+    getSegments().then(function(segs){
+      const seg = (segs && ord >= 0 && ord < segs.length) ? segs[ord] : "";
+      const out = buildOutput(uid, seg);
+
+      REG.renderers[uid] = function(){
+        // jedes Mal neuer Salt => wirklich „wie neu geladen“
+        send.output(buildOutput(uid, seg));
+      };
+
+      send.output(out);
+    });
+  }
+
+  ROOT.__LIA_RESETTER_BOOT_V001__ = bootstrap;
 
 })();
 @end
@@ -275,7 +269,7 @@ button.lia-resetter-btn:focus{
 @resetter: @resetter_(@uid)
 @resetter_
 <span class="lia-resetter-marker" data-resetter-uid="@0" aria-hidden="true"></span>
-<script modify="false">
+<script run-once="true" modify="false">
 (function(){
   const UID = "@0";
 
@@ -286,38 +280,19 @@ button.lia-resetter-btn:focus{
   }
 
   const ROOT = getRootWindow();
-  const API  = ROOT.__LIA_RESETTER_API_V001__;
+  const boot = ROOT.__LIA_RESETTER_BOOT_V001__;
 
-  if (!API || typeof send === "undefined" || !send || !send.output) {
-    // Fallback: wenn send.output nicht da ist, lieber nix tun als Zustand kaputt machen
-    return "LIA: stop";
-  }
+  if (typeof boot !== "function") return "LIA: stop";
+  if (typeof send === "undefined" || !send || !send.output) return "LIA: stop";
 
-  // Original-Segment einmal entfernen (sonst doppelt)
-  API.stripOriginalOnce(UID);
-
-  // Ordinal bestimmen (reine Dokument-Reihenfolge der Marker)
-  const ord = API.ordinalOf(UID);
-
-  // Segmente holen und dynamisch rendern
-  API.getSegments().then(function(segs){
-    const seg = (ord >= 0 && segs && segs[ord]) ? segs[ord] : "";
-    const out = API.buildOutput(UID, seg);
-
-    // Renderer registrieren: Klick auf Button => komplett frisch rendern
-    API.registerRenderer(UID, function(){
-      send.output(out);
-    });
-
-    // initial rendern (und Script aktiv halten)
-    send.output(out);
-  });
+  boot(UID, send, document.currentScript);
 
   return "LIA: wait";
 })();
 </script>
 @end
 -->
+
 
 
 

@@ -41,7 +41,7 @@ author: Martin Lommatzsch
     __alive: true,
     ticking: false,
     lastMode: null,
-    lastSettingsRaw: null
+    lastSettingsRaw: null,
     posTimers: []
   };
 
