@@ -109,7 +109,7 @@ author: Martin Lommatzsch
       width: 40px !important;
       height: 40px !important;
       padding: 0 !important;
-      margin: 0 30px !important;
+      margin: 0 120px !important;
 
       display: inline-flex !important;
       align-items: center !important;

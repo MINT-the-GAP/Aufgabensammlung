@@ -2,23 +2,17 @@
 version:  0.0.1
 language: de
 author: Martin Lommatzsch
-comment: Resetter v0.0.1 — Segment wird per LIASCRIPT neu gerendert; statische Originalkopie wird wrapper-sicher „weggestasht“ (Range nach Host bis nächster @resetter/#); keine Folien-Crashes, kein Flimmern
+comment: Resetter v0.0.1 — Segment wird per LIASCRIPT neu gerendert; statische Originalkopie wird wrapper-sicher per Range nach einem Block-Host „weggestashed“ (kein <p>-Chaos, kein Folien-Crash)
 
 @style
 .lia-resetter-marker{ display:none !important; }
 .lia-resetter-salt{ display:none !important; }
 
-/* Block-Host (wichtig: LIASCRIPT-Render darf nie in <p> landen) */
-.lia-resetter-host{
-  display:block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-.lia-resetter-trash{
-  display:none !important;
-}
+/* WICHTIG: LIASCRIPT-Render darf nie in <p> landen */
+.lia-resetter-host{ display:block !important; margin:0 !important; padding:0 !important; }
+.lia-resetter-trash{ display:none !important; }
 
-/* Button: transparent, Themefarbe, klein, max. Font-Höhe */
+/* Button: inline, transparent, Rand+Schrift Themefarbe, klein, max. Font-Höhe */
 button.lia-resetter-btn{
   background: transparent !important;
   border: 1px solid currentColor !important;
@@ -63,7 +57,7 @@ button.lia-resetter-btn:focus{
 
   const REGKEY = "__LIA_RESETTER_V001__";
   const REG = ROOT[REGKEY] || (ROOT[REGKEY] = {
-    items: Object.create(null),   // uid -> { send, seg, salt, stashedSalt }
+    items: Object.create(null),  // uid -> { send, seg, salt, stashedSalt }
     mdLines: null,
     mdPromise: null,
     guardDocs: new WeakSet(),
@@ -75,7 +69,9 @@ button.lia-resetter-btn:focus{
     return String(v || "").replace(/\\/g,"\\\\").replace(/"/g,'\\"');
   }
 
-  // ---------- Course URL + Markdown ----------
+  // =========================
+  // Markdown laden (Course-URL)
+  // =========================
   function getCourseUrl(){
     try{
       const s = (ROOT.location && ROOT.location.search) ? ROOT.location.search : (location.search || "");
@@ -122,11 +118,25 @@ button.lia-resetter-btn:focus{
   function markerFor(uid){
     return DOC.querySelector('.lia-resetter-marker[data-resetter-uid="'+escAttr(uid)+'"]');
   }
-  function outFor(uid){
-    return DOC.querySelector('output[data-resetter-out="'+escAttr(uid)+'"]');
-  }
-  function hostFor(uid){
-    return DOC.querySelector('.lia-resetter-host[data-resetter-host="'+escAttr(uid)+'"]');
+
+  // Output zuverlässig finden (LiaScript strippt oft Attribute am <output>)
+  function outputForUid(uid){
+    const marker = markerFor(uid);
+    if (!marker) return null;
+    const pStart = marker.closest("p") || marker.closest(".lia-paragraph");
+    if (!pStart) return null;
+
+    const outs = pStart.querySelectorAll("output");
+    if (!outs || !outs.length) return null;
+
+    // nimm das Output, das NACH dem Marker liegt
+    for (let i = 0; i < outs.length; i++){
+      const o = outs[i];
+      const pos = marker.compareDocumentPosition(o);
+      if (pos & Node.DOCUMENT_POSITION_FOLLOWING) return o;
+    }
+    // fallback: erstes Output im Absatz
+    return outs[0];
   }
 
   function approxLineFromMarker(marker){
@@ -177,39 +187,42 @@ button.lia-resetter-btn:focus{
     return lines.slice(start, end).join("\n");
   }
 
-  // ---------- Critical: Output aus <p> rausziehen ----------
+  // =========================
+  // Host nach "Aufgabe X:" Absatz einfügen und Output dorthin verschieben
+  // =========================
   function ensureHost(uid){
     const marker = markerFor(uid);
-    const outEl  = outFor(uid);
-    if (!marker || !outEl) return null;
+    if (!marker) return null;
+
+    const outEl = outputForUid(uid);
+    if (!outEl) return null;
 
     const pStart = marker.closest("p") || marker.closest(".lia-paragraph");
     if (!pStart || !pStart.parentNode) return null;
 
-    let host = hostFor(uid);
+    let host = DOC.querySelector('.lia-resetter-host[data-resetter-host="'+escAttr(uid)+'"]');
     if (!host){
       host = DOC.createElement("div");
       host.className = "lia-resetter-host";
       host.setAttribute("data-resetter-host", uid);
-
-      // immer direkt nach dem "Aufgabe X:"-Absatz einfügen (vor statischer Kopie)
       pStart.parentNode.insertBefore(host, pStart.nextSibling);
     } else {
-      // falls Lia neu gebaut hat: Host wieder direkt nach pStart ziehen
+      // Host ggf. wieder korrekt positionieren (nach Rebuild)
       if (host.parentNode === pStart.parentNode && host.previousSibling !== pStart){
         pStart.parentNode.insertBefore(host, pStart.nextSibling);
       }
     }
 
-    // Output in Host verschieben
     if (outEl.parentNode !== host){
       host.appendChild(outEl);
     }
 
-    return { marker, pStart, host, outEl };
+    return { marker, pStart, host };
   }
 
-  // ---------- Stop-Anker: nächster @resetter (anderer uid) oder nächste Überschrift ----------
+  // =========================
+  // Stop-Anker: nächster Resetter (anderer uid) oder nächste Überschrift
+  // =========================
   function findStopAnchor(scope, host, uid){
     const tw = DOC.createTreeWalker(scope, NodeFilter.SHOW_ELEMENT, null);
     let n = null;
@@ -221,7 +234,6 @@ button.lia-resetter-btn:focus{
         continue;
       }
 
-      // Host-Descendants ignorieren
       if (host.contains(n)) continue;
 
       if (n.classList && n.classList.contains("lia-resetter-marker")){
@@ -238,7 +250,9 @@ button.lia-resetter-btn:focus{
     return null;
   }
 
-  // ---------- Stash statische Kopie: Range nach Host bis Stop in hidden-trash verschieben ----------
+  // =========================
+  // Statische Kopie stashen: Range nach Host bis Stop in hidden Trash verschieben
+  // =========================
   function stashStatic(uid){
     const it = REG.items[uid];
     if (!it) return false;
@@ -251,11 +265,11 @@ button.lia-resetter-btn:focus{
     const scope = marker.closest("section") || DOC.querySelector("main") || DOC.body;
     const stop  = findStopAnchor(scope, host, uid);
 
-    // Ohne Stop stashen wir NICHT blind (außer in SECTION-Folie)
+    // Ohne Stop NICHT blind alles entfernen (nur wenn es wirklich eine SECTION-Folie ist)
     if (!stop && !(scope && scope.tagName === "SECTION")) return false;
 
     try{
-      // alte Trash-Container dieses uid im aktuellen Scope entfernen (damit kein Müll wächst)
+      // alten Trash dieses uid entfernen
       scope.querySelectorAll('.lia-resetter-trash[data-resetter-trash="'+escAttr(uid)+'"]').forEach(el => el.remove());
 
       const r = DOC.createRange();
@@ -281,7 +295,6 @@ button.lia-resetter-btn:focus{
       trash.style.display = "none";
       trash.appendChild(frag);
 
-      // Trash vor Stop einfügen (oder ans Ende des Scope)
       if (stop && stop.parentNode){
         stop.parentNode.insertBefore(trash, stop);
       } else {
@@ -309,30 +322,32 @@ button.lia-resetter-btn:focus{
       stashStatic(uid);
       setTimeout(() => { REG.muting = false; }, 0);
 
-      if (tries > 140) return;
+      if (tries > 160) return;
       setTimeout(step, 70);
     };
     step();
   }
 
-  // ---------- Render/Reset ----------
+  // =========================
+  // Render / Reset
+  // =========================
   function render(uid){
     const it = REG.items[uid];
     if (!it || !it.send) return;
 
-    const parts = ensureHost(uid);
-    if (!parts) return;
+    ensureHost(uid);
 
     it.salt = (it.salt || 0) + 1;
-
     const salt = '<span class="lia-resetter-salt" data-resetter-salt="'+uid+'-'+it.salt+'"></span>\n\n';
+
     it.send.output("LIASCRIPT:" + salt + (it.seg || ""));
 
-    // danach: statische Kopie wegstashen (inkl. ihrer Buttons)
     stashLoop(uid);
   }
 
-  // ---------- API ----------
+  // =========================
+  // Public API
+  // =========================
   ROOT.__liaResetterV001 = ROOT.__liaResetterV001 || {
     bind: async function(uid, send){
       uid = String(uid);
@@ -357,7 +372,9 @@ button.lia-resetter-btn:focus{
     }
   };
 
-  // ---------- Click Guard: verhindert Folien-Sprung ----------
+  // =========================
+  // Click Guard (Capture): verhindert Folien-Sprung
+  // =========================
   function installGuard(){
     if (REG.guardDocs.has(DOC)) return;
     REG.guardDocs.add(DOC);
@@ -385,7 +402,9 @@ button.lia-resetter-btn:focus{
     });
   }
 
-  // ---------- Observer: bei Slide-Rebuilds wieder stashen ----------
+  // =========================
+  // Observer: nach Slide-Rebuild wieder Host/Trash herstellen
+  // =========================
   function installObserver(){
     if (REG.obsDocs.has(DOC)) return;
     REG.obsDocs.add(DOC);
@@ -402,12 +421,10 @@ button.lia-resetter-btn:focus{
       setTimeout(() => {
         pending = false;
         for (const uid in REG.items){
-          // falls Lia neu gebaut hat: Host/Output neu platzieren
           ensureHost(uid);
-          // statische Kopie ggf. neu entstanden -> erneut stashen
           stashStatic(uid);
         }
-      }, 120);
+      }, 140);
     });
 
     obs.observe(rootEl, { childList: true, subtree: true });
@@ -425,7 +442,7 @@ button.lia-resetter-btn:focus{
 <span class="lia-resetter-marker" data-resetter-uid="@0" aria-hidden="true"></span>
 <button class="lia-resetter-btn" type="button" data-resetter-btn="@0">Neustart der Aufgabe</button>
 
-<output class="lia-resetter-out" data-resetter-out="@0" modify="false">
+<output modify="false">
 <script run-once="true" modify="false">
 (function(){
   try{
@@ -441,6 +458,7 @@ button.lia-resetter-btn:focus{
 </output>
 @end
 -->
+
 
 
 
