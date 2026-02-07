@@ -1574,6 +1574,52 @@ function hlToolbarSignature(){
   }
 }
 
+
+
+
+function hlOverlayButtonRects(exceptId){
+  const out = [];
+
+  const els = Array.from(ROOT_DOC.querySelectorAll('[data-lia-overlay="1"], [id^="lia-"]'));
+
+  for (const el of els){
+    if (!el) continue;
+    if (exceptId && el.id === exceptId) continue;
+
+    const id = (el.id || "").toLowerCase();
+    if (!id) continue;
+
+    // nur echte "Buttons" (id endet auf -btn / btn) ODER explizit data-lia-overlay
+    const isOverlay = (el.getAttribute && el.getAttribute("data-lia-overlay") === "1") ||
+                      id.endsWith("-btn") || id.endsWith("btn");
+    if (!isOverlay) continue;
+
+    // Panels / Mounts raus
+    if (id.includes("panel") || id.includes("overlay-root")) continue;
+    if (el.closest && el.closest("#lia-hl-panel")) continue;
+
+    const r = hlGetVisibleRect(el);
+    if (!r) continue;
+
+    // nur kleine klickbare Elemente im oberen Band (Overlay-Buttons)
+    if (r.top > 260) continue;
+    if (r.width < 18 || r.height < 18 || r.width > 90 || r.height > 90) continue;
+
+    out.push(r);
+  }
+
+  return out;
+}
+
+function hlRectIntersects(l, t, w, h, r){
+  const right  = l + w;
+  const bottom = t + h;
+  return !(right <= r.left + 1 || l >= r.right - 1 || bottom <= r.top + 1 || t >= r.bottom - 1);
+}
+
+
+
+
 function positionMarkerOverlayButton(){
   const btn = ROOT_DOC.getElementById("lia-hl-btn");
   const mount = ROOT_DOC.getElementById(HL_OVERLAY_ID);
@@ -1581,7 +1627,7 @@ function positionMarkerOverlayButton(){
 
   const vp  = hlViewport();
   const pad = 8;
-  const gap = 14; // <-- Abstand zum TOC/Cluster (hier stellst du es ein)
+  const gap = 14;
 
   // Button size
   let bw = 40, bh = 40;
@@ -1596,49 +1642,76 @@ function positionMarkerOverlayButton(){
   // navstack class (nur fürs kompakte Styling)
   try{ ROOT_DOC.body.classList.toggle("lia-hl-navstack", !!isRight); }catch(e){}
 
+  // --- Basisziel (wie bisher) ---
+  let left0, top0;
+
   if (!isRight){
-    // --- Row-Mode: rechts an Row-Cluster ---
     const peers = hlCollectRowPeers(a);
     let rightEdge = a.right;
     for (const r of peers) rightEdge = Math.max(rightEdge, r.right);
 
     const targetTop = a.top + ((a.height || bh) - bh) / 2;
 
-    let left = rightEdge + gap;
-    let top  = targetTop;
+    left0 = rightEdge + gap;
+    top0  = targetTop;
 
-    left = hlClamp(left, pad, vp.w - bw - pad);
-    top  = hlClamp(top,  pad, vp.h - bh - pad);
+  } else {
+    const peers = hlCollectColPeers(a);
+    let leftEdge = a.left;
+    for (const r of peers) leftEdge = Math.min(leftEdge, r.left);
 
-    mount.style.setProperty("left", `${Math.round(vp.ox)}px`, "important");
-    mount.style.setProperty("top",  `${Math.round(vp.oy)}px`, "important");
+    const targetTop = a.top + ((a.height || bh) - bh) / 2;
 
-    btn.style.setProperty("left", `${Math.round(left)}px`, "important");
-    btn.style.setProperty("top",  `${Math.round(top)}px`, "important");
-
-    return;
+    left0 = leftEdge - gap - bw;
+    top0  = targetTop;
   }
 
-  // --- Column-Mode (rechts): links an Column-Cluster ---
-  const peers = hlCollectColPeers(a);
-  let leftEdge = a.left;
-  for (const r of peers) leftEdge = Math.min(leftEdge, r.left);
+  let left = left0;
+  let top  = top0;
 
-  const targetTop = a.top + ((a.height || bh) - bh) / 2;
-
-  let left = leftEdge - gap - bw;
-  let top  = targetTop;
-
+  // clamp initial
   left = hlClamp(left, pad, vp.w - bw - pad);
   top  = hlClamp(top,  pad, vp.h - bh - pad);
 
+  // --- Collision-Avoidance gegen andere Overlay-Buttons ---
+  const others = hlOverlayButtonRects("lia-hl-btn");
+  const step = Math.round(Math.max(bw, bh) + 12);
+
+  for (let tries = 0; tries < 10; tries++){
+    const absL = left + (vp.ox || 0);
+    const absT = top  + (vp.oy || 0);
+
+    const hit = others.find(r => hlRectIntersects(absL, absT, bw, bh, r));
+    if (!hit) break;
+
+    if (!isRight){
+      // row-mode: nach rechts schieben, bei overflow: neue Zeile
+      left += step;
+      if (left > vp.w - bw - pad){
+        left = left0;
+        top  += step;
+      }
+    } else {
+      // col-mode: nach unten schieben, bei overflow: weiter nach links
+      top += step;
+      if (top > vp.h - bh - pad){
+        top  = top0;
+        left -= step;
+      }
+    }
+
+    left = hlClamp(left, pad, vp.w - bw - pad);
+    top  = hlClamp(top,  pad, vp.h - bh - pad);
+  }
+
+  // --- Apply (wie gehabt) ---
   mount.style.setProperty("left", `${Math.round(vp.ox)}px`, "important");
   mount.style.setProperty("top",  `${Math.round(vp.oy)}px`, "important");
 
   btn.style.setProperty("left", `${Math.round(left)}px`, "important");
   btn.style.setProperty("top",  `${Math.round(top)}px`, "important");
-
 }
+
 
 
 

@@ -2,7 +2,7 @@
 version:  0.0.1
 language: de
 author: Martin Lommatzsch
-comment: Resetter v0.0.1 — Segment per LIASCRIPT neu rendern + Originalsegment per DOM-Range entfernen (keine Dopplung) + Salt unsichtbar
+comment: Resetter v0.0.1 — Segment neu rendern (LIASCRIPT) + statisches Originalsegment per DOM-Range entfernen (wrapper-sicher), Salt unsichtbar
 
 @style
 .lia-resetter-marker{ display:none !important; }
@@ -51,15 +51,17 @@ button.lia-resetter-btn:focus{
   const ROOT = getRootWindow();
   const DOC  = document;
 
-  const KEY = "__LIA_RESETTER_V001__";
-  const REG = ROOT[KEY] || (ROOT[KEY] = {
-    items: Object.create(null),   // uid -> {send, marker, seg, salt}
+  const REGKEY = "__LIA_RESETTER_V001__";
+  const REG = ROOT[REGKEY] || (ROOT[REGKEY] = {
+    items: Object.create(null),      // uid -> { send, marker, seg, salt }
     mdLines: null,
     mdPromise: null,
     guardDocs: new WeakSet()
   });
 
-  // ---------- helpers ----------
+  // ---------------------------
+  // Helpers
+  // ---------------------------
   function selAttr(v){
     return String(v || "").replace(/\\/g,"\\\\").replace(/"/g,'\\"');
   }
@@ -72,6 +74,7 @@ button.lia-resetter-btn:focus{
       const raw = s.slice(1);
       const first = raw.split("&")[0];
       const dec = decodeURIComponent(first);
+
       if (/^https?:\/\//i.test(dec)) return dec;
 
       try{
@@ -116,11 +119,12 @@ button.lia-resetter-btn:focus{
     return DOC.querySelector('.lia-resetter-marker[data-resetter-uid="'+selAttr(uid)+'"]');
   }
 
-  // MAX lineGoto(...) aus dem Absatz mit "Aufgabe X: ..."
+  // MAX lineGoto(...) aus dem "Aufgabe X:"-Absatz
   function approxLineFromMarker(marker){
     try{
       const p = marker && (marker.closest("p") || marker.closest(".lia-paragraph"));
       if (!p) return null;
+
       let best = null;
       p.querySelectorAll('[ondblclick*="lineGoto("]').forEach(el => {
         const s = el.getAttribute("ondblclick") || "";
@@ -156,6 +160,7 @@ button.lia-resetter-btn:focus{
   function extractSegment(lines, resetIdx){
     const start = resetIdx + 1;
     let end = lines.length;
+
     for (let i = start; i < lines.length; i++){
       if (isResetterLine(lines[i]) || isHeadingLine(lines[i])){
         end = i;
@@ -165,64 +170,67 @@ button.lia-resetter-btn:focus{
     return lines.slice(start, end).join("\n");
   }
 
-  // ---------- cleanup via DOM Range (robust gegen Wrapper!) ----------
-  function cleanupOriginalBetween(uid){
+  // ---------------------------
+  // DOM-Range Cleanup (wrapper-sicher)
+  // Entfernt alles nach dem "Aufgabe X:"-Absatz bis vor den nächsten
+  // Resetter-Marker oder Heading (innerhalb der aktuellen Folie/Section, sonst main).
+  // ---------------------------
+  function findStopAnchor(scope, pStart){
+    const tw = DOC.createTreeWalker(scope, NodeFilter.SHOW_ELEMENT, null);
+    let n, started = false;
+
+    while ((n = tw.nextNode())){
+      if (!started){
+        if (n === pStart) started = true;
+        continue;
+      }
+
+      // nächster Resetter
+      if (n.classList && n.classList.contains("lia-resetter-marker")){
+        return n.closest("p") || n.closest(".lia-paragraph") || n;
+      }
+
+      // nächste Überschrift
+      if (/^H[1-6]$/.test(n.tagName) || n.tagName === "HEADER"){
+        return n;
+      }
+    }
+    return null;
+  }
+
+  function cleanupOriginal(uid){
     const it = REG.items[uid];
     if (!it || !it.marker) return false;
 
     const marker = it.marker;
-    const scope  = marker.closest("section") || DOC.querySelector("main") || DOC.body;
-
     const pStart = marker.closest("p") || marker.closest(".lia-paragraph");
     if (!pStart) return false;
 
-    // nächster Marker ODER Heading nach pStart (document order in scope)
-    const candidates = scope.querySelectorAll("span.lia-resetter-marker, h1,h2,h3,h4,h5,h6,header");
-    let stop = null;
+    const scope =
+      marker.closest("section") ||
+      marker.closest("main") ||
+      DOC.querySelector("main") ||
+      DOC.body;
 
-    for (let i = 0; i < candidates.length; i++){
-      const c = candidates[i];
-      if (!c) continue;
-      if (pStart.contains(c)) continue; // Marker im aktuellen Absatz ignorieren
+    const stop = findStopAnchor(scope, pStart);
 
-      const pos = pStart.compareDocumentPosition(c);
-      if (pos & Node.DOCUMENT_POSITION_FOLLOWING){
-        stop = c;
-        break;
-      }
-    }
-
-    let endNode = null;
-    if (stop){
-      // wenn Stop ein Marker ist: bis vor dessen Absatz löschen
-      if (stop.classList && stop.classList.contains("lia-resetter-marker")){
-        endNode = stop.closest("p") || stop.closest(".lia-paragraph") || stop;
-      } else {
-        endNode = stop;
-      }
-    } else {
-      // kein Stop: bis zum Ende des Scope löschen
-      endNode = scope.lastChild ? scope.lastChild : null;
-    }
-
-    if (!endNode) return false;
-
-    // Range löschen: (nach pStart) bis (vor endNode)
     try{
       const r = DOC.createRange();
       r.setStartAfter(pStart);
 
-      // wenn endNode das letzte Child ist und kein “before” möglich → EndAfter
-      if (endNode === scope.lastChild && !stop){
-        r.setEndAfter(endNode);
+      if (stop){
+        r.setEndBefore(stop);
       } else {
-        r.setEndBefore(endNode);
+        const last = scope.lastChild;
+        if (!last) return false;
+        r.setEndAfter(last);
       }
 
-      // nur löschen, wenn Range sinnvoll ist
       if (r.collapsed) return false;
 
-      r.deleteContents();
+      // Wichtig: extract (nicht nur delete) ist stabiler bei Wrappern.
+      // Inhalt wird aus DOM entfernt und verworfen.
+      r.extractContents();
       return true;
     }catch(e){
       return false;
@@ -233,23 +241,27 @@ button.lia-resetter-btn:focus{
     let tries = 0;
     const step = () => {
       tries++;
-      const ok = cleanupOriginalBetween(uid);
+      const ok = cleanupOriginal(uid);
       if (ok) return;
-      if (tries > 60) return;
+      if (tries > 80) return;
       setTimeout(step, 50);
     };
     step();
   }
 
-  // ---------- render/reset ----------
+  // ---------------------------
+  // Render / Reset = Segment neu parsen
+  // ---------------------------
   function render(uid){
     const it = REG.items[uid];
     if (!it || !it.send) return;
 
     it.salt = (it.salt || 0) + 1;
-    const salt = '<span class="lia-resetter-salt" data-resetter-salt="'+uid+'-'+it.salt+'"></span>\n\n';
 
+    const salt = '<span class="lia-resetter-salt" data-resetter-salt="'+uid+'-'+it.salt+'"></span>\n\n';
     it.send.output("LIASCRIPT:" + salt + (it.seg || ""));
+
+    // Danach: statisches Originalsegment wegschneiden
     cleanupLoop(uid);
   }
 
@@ -272,12 +284,15 @@ button.lia-resetter-btn:focus{
 
       render(uid);
     },
+
     reset: function(uid){
       render(String(uid));
     }
   };
 
-  // ---------- click guard (capture) ----------
+  // ---------------------------
+  // Click Guard (Capture) – verhindert Slide-Sprung
+  // ---------------------------
   function installGuard(){
     if (REG.guardDocs.has(DOC)) return;
     REG.guardDocs.add(DOC);
@@ -332,6 +347,7 @@ button.lia-resetter-btn:focus{
 </output>
 @end
 -->
+
 
 
 
