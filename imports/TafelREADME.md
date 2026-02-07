@@ -37,13 +37,18 @@ author: Martin Lommatzsch
 
   if (REG.instances[DOC_ID]?.__alive) return;
 
-  const I = REG.instances[DOC_ID] = {
-    __alive: true,
-    ticking: false,
-    lastMode: null,
-    lastSettingsRaw: null,
-    posTimers: []
-  };
+
+const I = REG.instances[DOC_ID] = {
+  __alive: true,
+  ticking: false,
+  lastMode: null,
+  lastSettingsRaw: null,
+  posTimers: [],
+  lastShow: null,
+  lastToolbarSig: null,
+  lastBurstAt: 0
+};
+
 
 
 
@@ -623,6 +628,53 @@ author: Martin Lommatzsch
     return out;
   }
 
+
+function toolbarSignature(){
+  try{
+    const vp = getViewport();
+
+    const btn = ROOT_DOC.getElementById(BTN_ID);
+    const bw = btn ? (btn.offsetWidth  || 34) : 34;
+    const bh = btn ? (btn.offsetHeight || 34) : 34;
+
+    const tocR = getVisibleRect(findTOCButton());
+    const pad = 8;
+
+    const anchor = tocR || { left: pad, top: pad, right: pad + bw, bottom: pad + bh, height: bh };
+    const peers  = collectTopLeftRowButtons(anchor);
+
+    let rightEdge = anchor.right;
+    let topBand   = anchor.top;
+    let rowH      = anchor.height || bh;
+
+    for (const p of peers){
+      rightEdge = Math.max(rightEdge, p.r.right);
+      topBand   = Math.min(topBand,   p.r.top);
+      rowH      = Math.max(rowH,      p.r.height);
+    }
+
+    // alles runden, damit minimale Subpixel-Schwankungen nicht dauernd triggern
+    return [
+      Math.round(vp.w), Math.round(vp.h),
+      Math.round(vp.ox), Math.round(vp.oy),
+      Math.round(topBand), Math.round(rowH),
+      Math.round(rightEdge),
+      peers.length
+    ].join("|");
+  }catch(e){
+    return null;
+  }
+}
+
+function burstRepositionThrottled(){
+  const now = Date.now();
+  if (now - (I.lastBurstAt || 0) < 120) return;
+  I.lastBurstAt = now;
+  scheduleRepositionBurst();
+}
+
+
+
   function positionOverlayButton(){
     const btn = ROOT_DOC.getElementById(BTN_ID);
     const overlay = ROOT_DOC.getElementById(OVERLAY_ID);
@@ -752,23 +804,26 @@ author: Martin Lommatzsch
 
 
 
-  function setPresentationOnlyVisibility(mode){
-    const isPres = (mode === "presentation");
-    const small  = isSmallScreen();
+function setPresentationOnlyVisibility(mode){
+  const isPres = (mode === "presentation");
+  const small  = isSmallScreen();
+  const show   = isPres && !small;
 
-    const show = isPres && !small;
+  const btn   = ROOT_DOC.getElementById(BTN_ID);
+  const panel = ROOT_DOC.getElementById(PANEL_ID);
 
-    const btn   = ROOT_DOC.getElementById(BTN_ID);
-    const panel = ROOT_DOC.getElementById(PANEL_ID);
+  if (btn) btn.style.display = show ? "inline-flex" : "none";
 
-    if (btn) btn.style.display = show ? "inline-flex" : "none";
-
-    // Wenn wir ausblenden (oder nicht Presentation): Panel immer schließen
-    if (!show && panel){
-      ROOT_DOC.body.classList.remove("lia-tff-panel-open");
-      panel.style.display = "none";
-    }
+  // Wenn wir ausblenden: Panel immer schließen + Timer stoppen
+  if (!show && panel){
+    ROOT_DOC.body.classList.remove("lia-tff-panel-open");
+    panel.style.display = "none";
+    clearPosTimers();
   }
+
+  return show;
+}
+
 
 
   function syncSliderToCurrent(){
@@ -844,76 +899,95 @@ author: Martin Lommatzsch
   // =========================================================
   // Tick (throttled) – ensure-Functions, damit Import immer greift
   // =========================================================
-  function tick(){
-    if (I.ticking) return;
-    I.ticking = true;
+function tick(){
+  if (I.ticking) return;
+  I.ticking = true;
 
-    ROOT_WIN.requestAnimationFrame(() => {
-      try{
-        // =====================================================
-        // 0) CSS sicher injizieren (Content + Root)
-        // =====================================================
-        ensureContentCSS();
-        ensureRootCSS();
+  ROOT_WIN.requestAnimationFrame(() => {
+    try{
+      // 0) CSS sicher injizieren
+      ensureContentCSS();
+      ensureRootCSS();
 
-        // =====================================================
-        // 1) Mode/Settings lesen + dataset setzen
-        // =====================================================
-        const settingsRaw = safeGetSettingsRaw();
-        const mode = detectMode();
-        applyModeAttr(mode);
+      // 1) Mode/Settings lesen + dataset setzen
+      const settingsRaw = safeGetSettingsRaw();
+      const mode = detectMode();
+      applyModeAttr(mode);
 
-        // =====================================================
-        // 2) Theme-Akzent synchronisieren (Root + Content)
-        // =====================================================
-        syncAccent();
+      // 2) Theme-Akzent synchronisieren
+      syncAccent();
 
-        // =====================================================
-        // 3) UI sicherstellen + Sichtbarkeit (nur Presentation)
-        // =====================================================
-        ensureUI();
-        setPresentationOnlyVisibility(mode);
+      // 3) UI sicherstellen + Sichtbarkeit
+      ensureUI();
+      const show = setPresentationOnlyVisibility(mode);
 
-        // =====================================================
-        // 4) Sofort-Positionierung (schnell, "best effort")
-        // =====================================================
+      // Detect show-toggle
+      const showChanged = (I.lastShow === null) ? true : (show !== I.lastShow);
+      I.lastShow = show;
+
+      // Wenn Button gerade eingeblendet wird: erst mal "reset", damit Messung/Rects sauber sind
+      if (show && showChanged){
+        const overlay = ROOT_DOC.getElementById(OVERLAY_ID);
+        const btn = ROOT_DOC.getElementById(BTN_ID);
+        if (overlay){
+          overlay.style.left = "0px";
+          overlay.style.top  = "0px";
+        }
+        if (btn){
+          btn.style.left = "0px";
+          btn.style.top  = "0px";
+        }
+      }
+
+      // 4) Sofort-Positionierung (best effort)
+      if (show){
         positionOverlayButton();
         positionPanel();
+      }
 
-        // =====================================================
-        // 5) Wechsel erkennen -> Font + Reposition-Burst
-        //    (WICHTIG: Vergleich VOR dem Update der last*-Werte)
-        // =====================================================
-        const changed = (mode !== I.lastMode) || (settingsRaw !== I.lastSettingsRaw);
+      // 5) Mode/Settings-Change -> Font + Burst
+      const modeOrSettingsChanged =
+        (mode !== I.lastMode) || (settingsRaw !== I.lastSettingsRaw);
 
-        if (changed){
-          // Font kann Layout beeinflussen
-          applyFontLogic(mode);
+      if (modeOrSettingsChanged){
+        applyFontLogic(mode);
+        I.lastMode = mode;
+        I.lastSettingsRaw = settingsRaw;
+      }
 
-          // last*-Werte erst JETZT aktualisieren
-          I.lastMode = mode;
-          I.lastSettingsRaw = settingsRaw;
+      // 6) Toolbar/Layout-Change erkennen (Nightly baut gern um)
+      let sigChanged = false;
+      if (show){
+        const sig = toolbarSignature();
+        sigChanged = (sig && sig !== I.lastToolbarSig);
+        I.lastToolbarSig = sig || I.lastToolbarSig;
+      } else {
+        I.lastToolbarSig = null;
+      }
 
-          // Nightly: Toolbar setzt sich verzögert -> Burst
+      // 7) Burst, wenn nötig (show-toggle ODER layout-change ODER mode/settings-change)
+      if (show && (showChanged || sigChanged || modeOrSettingsChanged)){
+        // leicht drosseln, damit MutationObserver nicht spammt
+        const now = Date.now();
+        if (now - (I.lastBurstAt || 0) >= 120){
+          I.lastBurstAt = now;
           scheduleRepositionBurst();
         }
-
-        // =====================================================
-        // 6) Slider synchronisieren + Panel nachziehen
-        // =====================================================
-        syncSliderToCurrent();
-        positionPanel();
-
-        // =====================================================
-        // 7) Events nur einmal verdrahten
-        // =====================================================
-        wireOnce();
-
-      } finally {
-        I.ticking = false;
       }
-    });
-  }
+
+      // 8) Slider sync + Panel nachziehen (nur wenn sichtbar)
+      syncSliderToCurrent();
+      if (show) positionPanel();
+
+      // 9) Events verdrahten
+      wireOnce();
+
+    } finally {
+      I.ticking = false;
+    }
+  });
+}
+
 
 
   // Beobachter: Toolbar/DOM kommt manchmal später (Nightly)
