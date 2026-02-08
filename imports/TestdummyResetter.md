@@ -2,80 +2,138 @@
 version:  0.0.1
 language: de
 author: Martin Lommatzsch
-comment: Neustartbare Blöcke v0.0.1 — echter Re-Parse via LIASCRIPT-Return (keine DOM-Injection), Reset-Button oben
+comment: Neustartbare Div-Blöcke v0.0.1 — JIT-Transform: <div.neustartbar> -> Script-Button erzeugt LIASCRIPT (echter Reparse pro Klick)
 
 @style
 .neustartbar{
-  border: 2px solid var(--lia-color, #666);
+  border: 2px solid rgba(0,0,0,.25);
   border-radius: 12px;
-  padding: 12px;
-  margin: 18px 0;
-  position: relative;
+  padding: 12px 14px;
+  margin: 12px 0 20px 0;
 }
 
-.neustartbar .nb-src{
-  display:none !important;
+@media (prefers-color-scheme: dark){
+  .neustartbar{ border-color: rgba(255,255,255,.25); }
 }
 
-.neustartbar .nb-btnWrap{
-  display:flex;
-  justify-content:flex-start;
-  align-items:center;
-  margin-bottom: 10px;
-}
-
-.neustartbar .nb-btnWrap .lia-btn{
+/* Optional: Button etwas „Lia-like“ */
+input[type="button"][value^="↻ Neustart Block"]{
+  margin: 0 0 10px 0;
+  padding: 6px 10px;
   border-radius: 10px;
-  padding: 8px 12px;
-}
-
-.neustartbar .nb-body{
-  margin-top: 6px;
+  cursor: pointer;
 }
 @end
 
 @onload
-(function(){
-  // In LiaScript laufen manche Sachen in iframes; wir halten es robust:
+(function () {
+
+  // =========================================================
+  // Root-Window finden (für JIT-Funktion und Run-Once Flag)
+  // =========================================================
   function getRootWindow(){
     let w = window;
     try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
     return w;
   }
-  const ROOT = getRootWindow();
 
-  // Exponierte Render-Funktion: liest Quelltext aus textarea und gibt LIASCRIPT zurück
-  function renderFromTextarea(textareaId){
-    const ta = document.getElementById(textareaId);
-    if(!ta){
-      return "HTML:<div style='padding:8px;border:1px solid #c00;border-radius:8px'>Neustartbar: Quelle nicht gefunden ("+textareaId+")</div>";
+  const ROOT = getRootWindow();
+  const RUNKEY = "__LIA_NEUSTARTBAR_JIT_V001__";
+
+  if (ROOT[RUNKEY]) return;
+  ROOT[RUNKEY] = true;
+
+  // =========================================================
+  // Kurs-URL aus ?<raw-url> (course/nightly) extrahieren
+  // =========================================================
+  function getCourseURL(){
+    try {
+      const s = (ROOT.location && ROOT.location.search) ? ROOT.location.search : "";
+      if (!s || s.length < 2) return null;
+
+      // häufigster Fall: ?https://raw.githubusercontent.com/...
+      const direct = s.slice(1);
+      if (/^https?:\/\//i.test(direct)) return decodeURIComponent(direct.split("&")[0]);
+
+      // alternative: ?file=... o.ä.
+      const p = new URLSearchParams(s);
+      return p.get("file") || p.get("course") || p.get("src") || p.get("url");
+    } catch(e){
+      return null;
     }
-    const src = (ta.value != null) ? ta.value : (ta.textContent || "");
-    // Wichtig: als LIASCRIPT zurückgeben, damit LiaScript wirklich neu parsed:
-    return "LIASCRIPT:\n<div class=\"nb-body\">\n" + src + "\n</div>";
   }
 
-  // global verfügbar machen (für Script-Buttons)
-  ROOT.__NB_renderFromTextarea = ROOT.__NB_renderFromTextarea || renderFromTextarea;
-  window.__NB_renderFromTextarea = ROOT.__NB_renderFromTextarea;
+  // =========================================================
+  // JIT anwenden (verschiedene Laufzeit-Varianten)
+  // =========================================================
+  function applyJIT(markdown){
+    try {
+      if (typeof ROOT.jitLia === "function") { ROOT.jitLia(markdown); return true; }
+      if (ROOT.LIA && typeof ROOT.LIA.jit === "function") { ROOT.LIA.jit(markdown); return true; }
+
+      // Fallback: Message-API (falls vorhanden)
+      ROOT.postMessage({ cmd: "jit", param: markdown }, "*");
+      return true;
+    } catch(e){
+      console.warn("[neustartbar] JIT failed:", e);
+      return false;
+    }
+  }
+
+  // =========================================================
+  // Safe JS-String: </script> neutralisieren
+  // =========================================================
+  function jsStringLiteral(s){
+    // JSON-stringify ist robust für Quotes/Newlines, aber </script> muss entschärft werden
+    return JSON.stringify(s).replace(/<\/script/gi, "<\\/script");
+  }
+
+  // =========================================================
+  // Transform: <div class="neustartbar">...</div> -> Script-Button
+  // =========================================================
+  function transform(source){
+    if (source.includes('data-nbscript="v001"')) return null;
+
+    let idx = 0;
+    const re = /<div\s+class=(["'])neustartbar\1[^>]*>[\s\S]*?<\/div>/g;
+
+    const out = source.replace(re, (block) => {
+      idx++;
+
+      const payload = "LIASCRIPT:\n" + block + "\n";
+      const lit = jsStringLiteral(payload);
+
+      return (
+        `<!-- neustartbar:v001:${idx} -->\n` +
+        `<script data-nbscript="v001" input="button" value="↻ Neustart Block ${idx}" modify="false" style="display:block;">\n` +
+        `${lit}\n` +
+        `</script>\n`
+      );
+    });
+
+    return (idx > 0) ? out : null;
+  }
+
+  // =========================================================
+  // Load -> Transform -> JIT
+  // =========================================================
+  (async function(){
+    const url = getCourseURL();
+    if (!url) return;
+
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) return;
+
+    const src = await res.text();
+    const transformed = transform(src);
+    if (!transformed) return;
+
+    applyJIT(transformed);
+  })();
+
 })();
 @end
-
-@Neustartbar: @Neustartbar_(@uid,@0)
-@Neustartbar_
-<div class="neustartbar">
-  <textarea id="nb-src-@0" class="nb-src">@1</textarea>
-
-  <div class="nb-btnWrap">
-    <script input="button" run-once="true" class="lia-btn">
-      window.__NB_renderFromTextarea("nb-src-@0")
-    </script>
-  </div>
-</div>
-@end
 -->
-
-
 
 
 
