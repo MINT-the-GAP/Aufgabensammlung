@@ -9,33 +9,61 @@ comment: FractionQuizzes (circle+rect) — 200x200 + Label IM Slider (wie Button
 
 
 
-
 @onload
 (function () {
+  "use strict";
 
-  // =========================
-  // Root/Content (iframe-safe)
-  // =========================
-  function getRootWindow(){
-    let w = window;
-    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
-    return w;
-  }
+  // =========================================================
+  // Hardened, import-safe init (no hard failures)
+  // - same-origin root detection (won't throw on cross-origin)
+  // - style injection into ROOT + local doc (guarded)
+  // - store lives in ROOT when possible, otherwise falls back
+  // - never throws (try/catch + defensive checks)
+  // =========================================================
 
-  const ROOT = getRootWindow();
   const STORE_KEY = "__LIA_FRACTION_QUIZ_V1__";
   const STYLE_ID  = "__LIA_FRACTION_QUIZ_STYLE_V1__";
 
-  // =========================
-  // Style Injection (ROOT head)
-  // =========================
-  function injectStyleOnce(){
-    let DOC = null;
-    try { DOC = (ROOT && ROOT.document) ? ROOT.document : document; } catch(e){ DOC = document; }
-    if (!DOC || !DOC.head) return;
-    if (DOC.getElementById(STYLE_ID)) return;
+  // ---------- safe helpers ----------
+  function canAccessDoc(w){
+    try { return !!(w && w.document && w.document.head); } catch(e){ return false; }
+  }
 
-    const css = `
+  function getRootWindowSafe(){
+    // climb parents only while same-origin accessible
+    let w = window;
+    let last = w;
+    for (let i = 0; i < 20; i++) {
+      try {
+        if (!w.parent || w.parent === w) break;
+        // only climb if parent is accessible (same-origin)
+        if (!canAccessDoc(w.parent) && !(() => { try { return !!w.parent.document; } catch(e){ return false; } })()) break;
+        last = w.parent;
+        w = w.parent;
+      } catch (e) {
+        break;
+      }
+    }
+    return last || window;
+  }
+
+  function getDocSafe(w){
+    try { return (w && w.document) ? w.document : document; } catch(e){ return document; }
+  }
+
+  function safeAssign(obj, key, value){
+    try { obj[key] = value; return true; } catch(e){ return false; }
+  }
+
+  // ---------- determine ROOT + HOST for store ----------
+  const ROOT = getRootWindowSafe();
+
+  // hostWindow is where we store global state; prefer ROOT, but fall back to window
+  let hostWindow = ROOT;
+  try { void hostWindow[STORE_KEY]; } catch(e) { hostWindow = window; }
+
+  // ---------- CSS (keep as-is) ----------
+  const css = `
 :root{
   --fq-track: rgba(0,0,0,.20);
   --fq-thumb: rgba(0,0,0,.88);
@@ -152,21 +180,54 @@ comment: FractionQuizzes (circle+rect) — 200x200 + Label IM Slider (wie Button
   background: var(--fq-thumb);
   border: 2px solid var(--fq-ring);
 }
-    `.trim();
+  `.trim();
 
-    const style = DOC.createElement("style");
-    style.id = STYLE_ID;
-    style.textContent = css;
-    DOC.head.appendChild(style);
+  // ---------- style injection (ROOT + local), guarded + head-wait ----------
+  function injectStyleInto(doc){
+    try {
+      if (!doc || !doc.head) return false;
+      if (doc.getElementById(STYLE_ID)) return true;
+
+      const style = doc.createElement("style");
+      style.id = STYLE_ID;
+      style.textContent = css;
+      doc.head.appendChild(style);
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 
-  injectStyleOnce();
+  function injectStyleOnceHardened(){
+    const docs = [];
 
-  // =========================
-  // Store (import-safe)
-  // =========================
-  if (!ROOT[STORE_KEY]) {
-    ROOT[STORE_KEY] = {
+    // Prefer ROOT doc (same-origin), also inject locally for safety
+    try { docs.push(getDocSafe(ROOT)); } catch(e){}
+    try { docs.push(document); } catch(e){}
+
+    // try immediately
+    let ok = false;
+    for (const d of docs) ok = injectStyleInto(d) || ok;
+
+    // if head not ready somewhere, retry a few times async (does not block)
+    if (!ok) {
+      let tries = 0;
+      const tick = () => {
+        tries++;
+        let any = false;
+        for (const d of docs) any = injectStyleInto(d) || any;
+        if (!any && tries < 10) {
+          // backoff a bit
+          setTimeout(tick, 50 * tries);
+        }
+      };
+      setTimeout(tick, 0);
+    }
+  }
+
+  // ---------- store init ----------
+  function makeStore(){
+    return {
       circle:   Object.create(null), // uid -> boolean[]
       rect:     Object.create(null), // uid -> boolean[]
       rectDims: Object.create(null), // uid -> {rows, cols}
@@ -207,11 +268,49 @@ comment: FractionQuizzes (circle+rect) — 200x200 + Label IM Slider (wie Button
     };
   }
 
-  ROOT.__LIA_FRACTION_QUIZ__ = ROOT[STORE_KEY];
-  window.__LIA_FRACTION_QUIZ__ = ROOT[STORE_KEY];
+  function ensureStore(){
+    let existing = null;
+    try { existing = hostWindow[STORE_KEY]; } catch(e) { existing = null; }
+
+    if (!existing || typeof existing !== "object") {
+      const created = makeStore();
+      // try ROOT/host, else fall back to window
+      if (!safeAssign(hostWindow, STORE_KEY, created)) {
+        hostWindow = window;
+        safeAssign(hostWindow, STORE_KEY, created);
+      }
+    } else {
+      // If something exists but is malformed, patch required fields rather than overwriting
+      const s = existing;
+      if (!s.circle)   s.circle   = Object.create(null);
+      if (!s.rect)     s.rect     = Object.create(null);
+      if (!s.rectDims) s.rectDims = Object.create(null);
+
+      if (typeof s.ensureCircle !== "function") s.ensureCircle = makeStore().ensureCircle;
+      if (typeof s.toggleCircle !== "function") s.toggleCircle = makeStore().toggleCircle;
+      if (typeof s.ensureRect   !== "function") s.ensureRect   = makeStore().ensureRect;
+      if (typeof s.toggleRect   !== "function") s.toggleRect   = makeStore().toggleRect;
+    }
+
+    // Provide a single stable API handle on window (used by macros)
+    try { window.__LIA_FRACTION_QUIZ__ = hostWindow[STORE_KEY]; } catch(e){}
+    // Optional: keep ROOT alias for legacy usage, but don't rely on it
+    try { ROOT.__LIA_FRACTION_QUIZ__ = hostWindow[STORE_KEY]; } catch(e){}
+  }
+
+  // ---------- run (never throw) ----------
+  try {
+    injectStyleOnceHardened();
+    ensureStore();
+  } catch (e) {
+    // Hard shield: NEVER break other imports
+    try { console.error("[FractionQuizzes] onload failed:", e); } catch(_){}
+    try { window.__LIA_FRACTION_QUIZ__ = window.__LIA_FRACTION_QUIZ__ || makeStore(); } catch(_){}
+  }
 
 })();
 @end
+
 
 
 @circleQuiz: @circleQuiz_(@uid,@0)

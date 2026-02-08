@@ -2,44 +2,42 @@
 version:  0.0.1
 language: de
 author: Martin Lommatzsch
-comment: Resetter v0.0.1 — Segment wird per LIASCRIPT neu gerendert; statische Originalkopie wird wrapper-sicher per Range nach einem Block-Host „weggestashed“ (kein <p>-Chaos, kein Folien-Crash)
+comment: Aufgabenresetter v0.0.1 — Segment-Reset via LIASCRIPT-Reparse (Invocation-Scan) + sibling-safe Stash + single-instance guard
 
 @style
-.lia-resetter-marker{ display:none !important; }
-.lia-resetter-salt{ display:none !important; }
+:root{
+  --lia-resetter-accent: var(--lia-accent, var(--lia-primary-color, var(--color-primary, #0b5fff)));
+}
 
-/* WICHTIG: LIASCRIPT-Render darf nie in <p> landen */
-.lia-resetter-host{ display:block !important; margin:0 !important; padding:0 !important; }
-.lia-resetter-trash{ display:none !important; }
-
-/* Button: inline, transparent, Rand+Schrift Themefarbe, klein, max. Font-Höhe */
 button.lia-resetter-btn{
   background: transparent !important;
-  border: 1px solid currentColor !important;
-  color: rgb(var(--color-highlight, 11, 95, 255)) !important;
+  color: var(--lia-resetter-accent) !important;
+  border: 1px solid var(--lia-resetter-accent) !important;
 
   font-size: 0.75em !important;
   line-height: 1 !important;
-  height: 1.15em !important;
+  height: 1.35em !important;
 
   padding: 0 0.45em !important;
   margin: 0 0 0 0.6em !important;
-
   border-radius: 0.35em !important;
+
   display: inline-flex !important;
   align-items: center !important;
   vertical-align: baseline !important;
 
   cursor: pointer !important;
-  user-select: none !important;
-  white-space: nowrap !important;
-  touch-action: manipulation !important;
 }
-button.lia-resetter-btn:hover,
-button.lia-resetter-btn:focus{
-  text-decoration: underline !important;
-  outline: none !important;
+button.lia-resetter-btn:hover{ text-decoration: underline !important; }
+button.lia-resetter-btn:focus{ outline: none !important; text-decoration: underline !important; }
+
+.lia-resetter-host{
+  display: block !important;
+  margin-top: 0.25rem !important;
 }
+output.lia-resetter-out{ display: block !important; }
+
+.lia-resetter-stash{ display: none !important; }
 @end
 
 
@@ -52,386 +50,504 @@ button.lia-resetter-btn:focus{
     return w;
   }
 
-  const ROOT = getRootWindow();
-  const DOC  = document;
+  const ROOT_WIN    = getRootWindow();
+  const ROOT_DOC    = ROOT_WIN.document;
+  const CONTENT_WIN = window;
+  const CONTENT_DOC = document;
 
+  // =========================
+  // Registry (import-sicher) + Single-Instance Guard
+  // =========================
   const REGKEY = "__LIA_RESETTER_V001__";
-  const REG = ROOT[REGKEY] || (ROOT[REGKEY] = {
-    items: Object.create(null),  // uid -> { send, seg, salt, stashedSalt }
-    mdLines: null,
-    mdPromise: null,
-    guardDocs: new WeakSet(),
-    obsDocs: new WeakSet(),
-    muting: false
+  const REG = ROOT_WIN[REGKEY] || (ROOT_WIN[REGKEY] = {
+    activeId: null,
+    cleanup: null,
+
+    sendByUid: Object.create(null),
+    uiByUid: Object.create(null),
+    inflight: Object.create(null),
+
+    cache: Object.create(null),
+
+    MAX_DEPTH: 12,
+    MAX_FILES: 250
   });
 
-  function escAttr(v){
-    return String(v || "").replace(/\\/g,"\\\\").replace(/"/g,'\\"');
+  // Kill previous instance (best effort)
+  const MY_ID = String(Date.now()) + "_" + Math.random().toString(16).slice(2);
+  try{
+    if (typeof REG.cleanup === "function") REG.cleanup();
+  }catch(e){}
+  REG.activeId = MY_ID;
+  REG.cleanup = function(){
+    // nothing persistent here (no observers/timers)
+  };
+
+  function isActive(){
+    return REG.activeId === MY_ID;
   }
 
   // =========================
-  // Markdown laden (Course-URL)
+  // Themefarbe (aus .lia-btn gemessen)
   // =========================
+  function sampleAccent(doc){
+    try{
+      let btn = doc.querySelector(".lia-btn");
+      let tmp = null;
+      if (!btn && doc.body){
+        tmp = doc.createElement("button");
+        tmp.className = "lia-btn";
+        tmp.type = "button";
+        tmp.textContent = "x";
+        tmp.style.position = "absolute";
+        tmp.style.left = "-10000px";
+        tmp.style.top  = "-10000px";
+        tmp.style.opacity = "0";
+        doc.body.appendChild(tmp);
+        btn = tmp;
+      }
+      if (!btn) return "";
+      const cs = (doc.defaultView || ROOT_WIN).getComputedStyle(btn);
+      const bg = (cs.backgroundColor || "").trim();
+      const bc = (cs.borderTopColor  || "").trim();
+      if (tmp) tmp.remove();
+      return (bg && bg !== "rgba(0, 0, 0, 0)") ? bg : bc;
+    }catch(e){ return ""; }
+  }
+
+  function updateAccent(){
+    const c = sampleAccent(ROOT_DOC) || sampleAccent(CONTENT_DOC) || "#0b5fff";
+    try{ ROOT_DOC.documentElement.style.setProperty("--lia-resetter-accent", c); }catch(e){}
+    try{ CONTENT_DOC.documentElement.style.setProperty("--lia-resetter-accent", c); }catch(e){}
+  }
+
+  // =========================
+  // Kurs-URL + Fetch
+  // =========================
+  function normalizeGithubUrl(u){
+    try{
+      if (!u) return u;
+      if (u.includes("github.com/") && u.includes("/blob/")){
+        return u.replace("https://github.com/", "https://raw.githubusercontent.com/").replace("/blob/", "/");
+      }
+      return u;
+    }catch(e){ return u; }
+  }
+
   function getCourseUrl(){
     try{
-      const s = (ROOT.location && ROOT.location.search) ? ROOT.location.search : (location.search || "");
-      if (!s || s.length < 2) return null;
-
-      const raw = s.slice(1);
-      const first = raw.split("&")[0];
-      const dec = decodeURIComponent(first);
-      if (/^https?:\/\//i.test(dec)) return dec;
-
-      try{
-        const usp = new URLSearchParams(raw);
-        const cand = usp.get("url") || usp.get("src") || usp.get("course") || usp.get("md");
-        if (cand && /^https?:\/\//i.test(cand)) return decodeURIComponent(cand);
-      }catch(e){}
-      return null;
-    }catch(e){
-      return null;
-    }
-  }
-
-  async function ensureMarkdown(){
-    if (REG.mdLines) return REG.mdLines;
-    if (REG.mdPromise) return REG.mdPromise;
-
-    const url = getCourseUrl();
-    REG.mdPromise = (async () => {
-      if (!url) return [];
-      const res = await fetch(url, { cache: "no-store" });
-      const txt = await res.text();
-      REG.mdLines = String(txt || "").split(/\r?\n/);
-      return REG.mdLines;
-    })().catch(() => {
-      REG.mdLines = [];
-      return REG.mdLines;
-    });
-
-    return REG.mdPromise;
-  }
-
-  function isHeadingLine(line){ return /^[ \t]*#{1,6}\s+/.test(line || ""); }
-  function isResetterLine(line){ return /@resetter\b/.test(line || ""); }
-
-  function markerFor(uid){
-    return DOC.querySelector('.lia-resetter-marker[data-resetter-uid="'+escAttr(uid)+'"]');
-  }
-
-  // Output zuverlässig finden (LiaScript strippt oft Attribute am <output>)
-  function outputForUid(uid){
-    const marker = markerFor(uid);
-    if (!marker) return null;
-    const pStart = marker.closest("p") || marker.closest(".lia-paragraph");
-    if (!pStart) return null;
-
-    const outs = pStart.querySelectorAll("output");
-    if (!outs || !outs.length) return null;
-
-    // nimm das Output, das NACH dem Marker liegt
-    for (let i = 0; i < outs.length; i++){
-      const o = outs[i];
-      const pos = marker.compareDocumentPosition(o);
-      if (pos & Node.DOCUMENT_POSITION_FOLLOWING) return o;
-    }
-    // fallback: erstes Output im Absatz
-    return outs[0];
-  }
-
-  function approxLineFromMarker(marker){
+      const qs = (ROOT_WIN.location && ROOT_WIN.location.search) ? ROOT_WIN.location.search : "";
+      if (qs && qs.length > 1){
+        const raw = qs.slice(1);
+        if (raw.startsWith("http")) return normalizeGithubUrl(decodeURIComponent(raw));
+        const sp = new URLSearchParams(raw);
+        const c = sp.get("course") || sp.get("url") || sp.get("src");
+        if (c) return normalizeGithubUrl(decodeURIComponent(c));
+        const keys = Array.from(sp.keys());
+        if (keys.length === 1 && keys[0].startsWith("http")) return normalizeGithubUrl(decodeURIComponent(keys[0]));
+      }
+    }catch(e){}
     try{
-      const p = marker && (marker.closest("p") || marker.closest(".lia-paragraph"));
-      if (!p) return null;
-      let best = null;
-      p.querySelectorAll('[ondblclick*="lineGoto("]').forEach(el => {
-        const s = el.getAttribute("ondblclick") || "";
-        const m = s.match(/lineGoto\((\d+)\)/);
-        if (!m) return;
-        const n = parseInt(m[1], 10);
-        if (!Number.isNaN(n)) best = (best == null) ? n : Math.max(best, n);
-      });
-      return best;
-    }catch(e){
-      return null;
-    }
-  }
-
-  function findResetterLineIndex(lines, approx){
-    if (!lines || !lines.length || approx == null) return null;
-
-    let idx = approx;
-    if (idx >= lines.length && (idx - 1) >= 0) idx = idx - 1;
-
-    const lo = Math.max(0, idx - 14);
-    const hi = Math.min(lines.length - 1, idx + 14);
-
-    for (let i = idx; i >= lo; i--){
-      if (isResetterLine(lines[i])) return i;
-    }
-    for (let i = idx + 1; i <= hi; i++){
-      if (isResetterLine(lines[i])) return i;
-    }
+      const L = ROOT_WIN.LIA;
+      if (L && L.course && typeof L.course.url === "string")  return normalizeGithubUrl(L.course.url);
+      if (L && L.course && typeof L.course.path === "string") return normalizeGithubUrl(L.course.path);
+    }catch(e){}
     return null;
   }
 
-  function extractSegment(lines, resetIdx){
-    const start = resetIdx + 1;
-    let end = lines.length;
-    for (let i = start; i < lines.length; i++){
-      if (isResetterLine(lines[i]) || isHeadingLine(lines[i])){
-        end = i;
-        break;
-      }
-    }
-    return lines.slice(start, end).join("\n");
+  async function fetchText(url){
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) throw new Error("fetch " + res.status);
+    return await res.text();
   }
 
   // =========================
-  // Host nach "Aufgabe X:" Absatz einfügen und Output dorthin verschieben
+  // Import resolver → resolved source (cached)
   // =========================
-  function ensureHost(uid){
-    const marker = markerFor(uid);
-    if (!marker) return null;
-
-    const outEl = outputForUid(uid);
-    if (!outEl) return null;
-
-    const pStart = marker.closest("p") || marker.closest(".lia-paragraph");
-    if (!pStart || !pStart.parentNode) return null;
-
-    let host = DOC.querySelector('.lia-resetter-host[data-resetter-host="'+escAttr(uid)+'"]');
-    if (!host){
-      host = DOC.createElement("div");
-      host.className = "lia-resetter-host";
-      host.setAttribute("data-resetter-host", uid);
-      pStart.parentNode.insertBefore(host, pStart.nextSibling);
-    } else {
-      // Host ggf. wieder korrekt positionieren (nach Rebuild)
-      if (host.parentNode === pStart.parentNode && host.previousSibling !== pStart){
-        pStart.parentNode.insertBefore(host, pStart.nextSibling);
-      }
-    }
-
-    if (outEl.parentNode !== host){
-      host.appendChild(outEl);
-    }
-
-    return { marker, pStart, host };
+  function absolutize(u, base){
+    try{
+      if (!u) return null;
+      if (/^https?:\/\//.test(u)) return normalizeGithubUrl(u);
+      return normalizeGithubUrl(new URL(u, base).href);
+    }catch(e){ return normalizeGithubUrl(u); }
   }
 
-  // =========================
-  // Stop-Anker: nächster Resetter (anderer uid) oder nächste Überschrift
-  // =========================
-  function findStopAnchor(scope, host, uid){
-    const tw = DOC.createTreeWalker(scope, NodeFilter.SHOW_ELEMENT, null);
-    let n = null;
-    let started = false;
+  function parseImportBlock(lines, startIdx){
+    const ln = lines[startIdx] || "";
+    const m = ln.match(/^\s*import\s*:\s*(.*)$/);
+    if (!m) return null;
 
-    while ((n = tw.nextNode())){
-      if (!started){
-        if (n === host) started = true;
+    const urls = [];
+    const addFrom = (s) => {
+      const parts = String(s || "").trim().split(/\s+/).filter(Boolean);
+      for (const p of parts){
+        if (/^https?:\/\//.test(p) || /^[./]/.test(p)) urls.push(p);
+      }
+    };
+
+    addFrom(m[1]);
+    let i = startIdx + 1;
+    for (; i < lines.length; i++){
+      const t = lines[i] || "";
+      if (/^\s+/.test(t) && (t.trim().startsWith("http") || t.trim().startsWith("./") || t.trim().startsWith("../"))){
+        addFrom(t);
         continue;
       }
-
-      if (host.contains(n)) continue;
-
-      if (n.classList && n.classList.contains("lia-resetter-marker")){
-        const u = n.getAttribute("data-resetter-uid");
-        if (u && String(u) !== String(uid)){
-          return n.closest("p") || n.closest(".lia-paragraph") || n;
-        }
-      }
-
-      if (/^H[1-6]$/.test(n.tagName)){
-        return n;
-      }
+      break;
     }
-    return null;
+    return { endIdx: i, urls };
+  }
+
+  async function resolveUrl(url, depth, visited, counter){
+    if (depth > REG.MAX_DEPTH) return [];
+    if (visited.has(url)) return [];
+    visited.add(url);
+
+    counter.count++;
+    if (counter.count > REG.MAX_FILES) return [];
+
+    const txt = await fetchText(url);
+    const lines = txt.split(/\r?\n/);
+
+    const out = [];
+    for (let i = 0; i < lines.length; ){
+      const imp = parseImportBlock(lines, i);
+      if (imp && imp.urls.length){
+        for (const u of imp.urls){
+          const abs = absolutize(u, url);
+          if (!abs) continue;
+          const sub = await resolveUrl(abs, depth + 1, visited, counter);
+          out.push(...sub);
+        }
+        i = imp.endIdx;
+        continue;
+      }
+      out.push(lines[i]);
+      i++;
+    }
+    return out;
+  }
+
+  async function getResolvedLines(url){
+    const now = Date.now();
+    const c = REG.cache[url] || (REG.cache[url] = { resolved:null, inv:null, ts:0, resolving:null });
+
+    if (c.resolved && c.inv && (now - c.ts) < 2000) return c;
+
+    if (c.resolving) return await c.resolving;
+
+    c.resolving = (async () => {
+      const visited = new Set();
+      const counter = { count: 0 };
+      const resolved = await resolveUrl(url, 0, visited, counter);
+      const inv = scanInvocations(resolved);
+      c.resolved = resolved;
+      c.inv = inv;
+      c.ts = Date.now();
+      return c;
+    })();
+
+    try{ return await c.resolving; }
+    finally{ c.resolving = null; }
   }
 
   // =========================
-  // Statische Kopie stashen: Range nach Host bis Stop in hidden Trash verschieben
+  // Source scan: @resetter invocations (inline ok)
   // =========================
-  function stashStatic(uid){
-    const it = REG.items[uid];
-    if (!it) return false;
+  const TOKEN = "@resetter";
+  const TOKEN_LEN = 9;
 
-    const parts = ensureHost(uid);
-    if (!parts) return false;
+  function isHeadingLine(line){
+    return /^[ \t]*#{1,6}\s/.test(String(line || ""));
+  }
 
-    const { marker, host } = parts;
+  function nextNonSpaceChar(s, from){
+    for (let i = from; i < s.length; i++){
+      const c = s[i];
+      if (c !== " " && c !== "\t") return c;
+    }
+    return "";
+  }
 
-    const scope = marker.closest("section") || DOC.querySelector("main") || DOC.body;
-    const stop  = findStopAnchor(scope, host, uid);
+  function isInvocationAt(line, idx){
+    const before = (idx > 0) ? line[idx - 1] : "";
+    if (before && /[A-Za-z0-9_]/.test(before)) return false;
 
-    // Ohne Stop NICHT blind alles entfernen (nur wenn es wirklich eine SECTION-Folie ist)
-    if (!stop && !(scope && scope.tagName === "SECTION")) return false;
+    const after = nextNonSpaceChar(line, idx + TOKEN_LEN);
+    if (after === ":" || after === "_") return false;
+    return true;
+  }
 
+  function scanInvocations(lines){
+    const inv = [];
+    let inFence = false;
+    let fenceMark = "";
+    let inComment = false;
+
+    for (let i = 0; i < lines.length; i++){
+      const line = String(lines[i] || "");
+
+      const fm = line.match(/^\s*(```|~~~)/);
+      if (!inComment && fm){
+        const mark = fm[1];
+        if (!inFence){ inFence = true; fenceMark = mark; }
+        else if (mark === fenceMark){ inFence = false; fenceMark = ""; }
+        continue;
+      }
+      if (inFence) continue;
+
+      let pos = 0;
+      while (pos < line.length){
+        if (inComment){
+          const end = line.indexOf("-->", pos);
+          if (end === -1){ pos = line.length; continue; }
+          inComment = false;
+          pos = end + 3;
+          continue;
+        } else {
+          const start = line.indexOf("<!--", pos);
+          const scanEnd = (start === -1) ? line.length : start;
+
+          let j = pos;
+          while (j < scanEnd){
+            const k = line.indexOf(TOKEN, j);
+            if (k === -1 || k >= scanEnd) break;
+            if (isInvocationAt(line, k)) inv.push({ line: i, col: k });
+            j = k + TOKEN_LEN;
+          }
+
+          if (start === -1){
+            pos = line.length;
+          } else {
+            inComment = true;
+            pos = start + 4;
+          }
+        }
+      }
+    }
+    return inv;
+  }
+
+  function stripInvocationRemainder(s){
+    let t = String(s || "");
+    t = t.replace(/^\s*\([^)]*\)\s*/, " ");
+    return t.trimStart();
+  }
+
+  function extractSegmentByPick(lines, invList, pickIndex){
+    const pick = invList[pickIndex];
+    const curLine = String(lines[pick.line] || "");
+
+    let remainder = curLine.slice(pick.col + TOKEN_LEN);
+    remainder = stripInvocationRemainder(remainder);
+
+    const next = (pickIndex + 1 < invList.length) ? invList[pickIndex + 1] : null;
+
+    const out = [];
+    if (remainder.trim()) out.push(remainder);
+
+    for (let i = pick.line + 1; i < lines.length; i++){
+      if (next && i === next.line) break;
+      if (isHeadingLine(lines[i])) break;
+      out.push(String(lines[i] || ""));
+    }
+    return out.join("\n");
+  }
+
+  // =========================
+  // DOM: host/output + sibling-safe stash
+  // =========================
+  function cssEscape(s){
+    try{ return (CSS && CSS.escape) ? CSS.escape(s) : String(s).replace(/"/g, '\\"'); }
+    catch(e){ return String(s).replace(/"/g, '\\"'); }
+  }
+
+  function isInsideDynamic(n){
+    return !!(n && n.closest && n.closest(".lia-resetter-host, .lia-resetter-stash"));
+  }
+
+  function getOriginalMarkers(){
+    const root = CONTENT_DOC.querySelector("main") || CONTENT_DOC.body;
+    return Array.from(root.querySelectorAll(".lia-resetter-marker[data-resetter-uid]"))
+      .filter(m => !isInsideDynamic(m));
+  }
+
+  function getMarkerIndexByUid(uid){
+    const ms = getOriginalMarkers();
+    for (let i = 0; i < ms.length; i++){
+      if (ms[i].getAttribute("data-resetter-uid") === uid) return i;
+    }
+    return 0;
+  }
+
+  function ensureHost(uid){
+    const marker = CONTENT_DOC.querySelector(`.lia-resetter-marker[data-resetter-uid="${cssEscape(uid)}"]`);
+    if (!marker) return null;
+
+    const anchor = marker.closest(".lia-paragraph, p, li") || marker;
+
+    let host = CONTENT_DOC.querySelector(`.lia-resetter-host[data-resetter-host="${cssEscape(uid)}"]`);
+    if (!host){
+      host = CONTENT_DOC.createElement("div");
+      host.className = "lia-resetter-host";
+      host.setAttribute("data-resetter-host", uid);
+      anchor.insertAdjacentElement("afterend", host);
+    }
+
+    const out = CONTENT_DOC.querySelector(`output.lia-resetter-out[data-resetter-out="${cssEscape(uid)}"]`);
+    if (out && out.parentElement !== host) host.appendChild(out);
+
+    REG.uiByUid[uid] = REG.uiByUid[uid] || {};
+    REG.uiByUid[uid].host = host;
+
+    return host;
+  }
+
+  function restoreIfStashed(uid){
+    const stash = CONTENT_DOC.querySelector(`.lia-resetter-stash[data-resetter-stash="${cssEscape(uid)}"]`);
+    if (!stash) return;
+
+    const host = ensureHost(uid);
+    if (!host || !stash.parentElement) return;
+
+    while (stash.firstChild){
+      stash.parentElement.insertBefore(stash.firstChild, stash);
+    }
+    stash.remove();
+
+    if (REG.uiByUid[uid]) REG.uiByUid[uid].stashed = false;
+  }
+
+  function stashOnceSiblingSafe(uid){
+    const ui = REG.uiByUid[uid] || (REG.uiByUid[uid] = {});
+    if (ui.stashed) return true;
+
+    const host = ensureHost(uid);
+    if (!host) return false;
+
+    // Boundary = nächster Original-Marker-Block oder Heading, aber nur wenn als SIBLING erreichbar
+    const parent = host.parentNode;
+    if (!parent) return false;
+
+    let boundary = null;
+    let cur = host.nextSibling;
+
+    const MAX_ELEMS = 80;
+    let elems = 0;
+
+    while (cur){
+      // boundary candidate: heading
+      if (cur.nodeType === 1){
+        const el = cur;
+        if (!isInsideDynamic(el)){
+          if (/^H[1-6]$/.test(el.tagName) || (el.tagName === "HEADER" && el.querySelector && el.querySelector("h1,h2,h3,h4,h5,h6"))){
+            boundary = el;
+            break;
+          }
+          // boundary candidate: next resetter marker block
+          const m = el.querySelector && el.querySelector(".lia-resetter-marker[data-resetter-uid]");
+          if (m && !isInsideDynamic(m)){
+            boundary = el;
+            break;
+          }
+        }
+        elems++;
+        if (elems > MAX_ELEMS) return false;
+      }
+      cur = cur.nextSibling;
+    }
+
+    // Keine sichere boundary -> NICHT stashen
+    if (!boundary) return false;
+
+    // Extract only siblings between host and boundary
+    const r = CONTENT_DOC.createRange();
     try{
-      // alten Trash dieses uid entfernen
-      scope.querySelectorAll('.lia-resetter-trash[data-resetter-trash="'+escAttr(uid)+'"]').forEach(el => el.remove());
-
-      const r = DOC.createRange();
       r.setStartAfter(host);
-
-      if (stop){
-        r.setEndBefore(stop);
-      } else {
-        const last = scope.lastChild;
-        if (!last) return false;
-        r.setEndAfter(last);
-      }
-
-      if (r.collapsed) return false;
-
-      const frag = r.extractContents();
-      const has = !!(frag && (frag.childNodes.length || (frag.textContent || "").trim().length));
-      if (!has) return false;
-
-      const trash = DOC.createElement("div");
-      trash.className = "lia-resetter-trash";
-      trash.setAttribute("data-resetter-trash", uid);
-      trash.style.display = "none";
-      trash.appendChild(frag);
-
-      if (stop && stop.parentNode){
-        stop.parentNode.insertBefore(trash, stop);
-      } else {
-        scope.appendChild(trash);
-      }
-
-      it.stashedSalt = it.salt;
-      return true;
-
+      r.setEndBefore(boundary);
     }catch(e){
       return false;
     }
-  }
 
-  function stashLoop(uid){
-    const it = REG.items[uid];
-    if (!it) return;
+    const frag = r.extractContents();
 
-    let tries = 0;
-    const step = () => {
-      tries++;
-      if (it.stashedSalt === it.salt) return;
+    const stash = CONTENT_DOC.createElement("div");
+    stash.className = "lia-resetter-stash";
+    stash.setAttribute("data-resetter-stash", uid);
+    host.insertAdjacentElement("afterend", stash);
+    stash.appendChild(frag);
 
-      REG.muting = true;
-      stashStatic(uid);
-      setTimeout(() => { REG.muting = false; }, 0);
-
-      if (tries > 160) return;
-      setTimeout(step, 70);
-    };
-    step();
+    ui.stashed = true;
+    return true;
   }
 
   // =========================
-  // Render / Reset
+  // Render
   // =========================
-  function render(uid){
-    const it = REG.items[uid];
-    if (!it || !it.send) return;
+  async function renderUid(uid){
+    if (!isActive()) return;
 
-    ensureHost(uid);
+    const send = REG.sendByUid[uid];
+    if (!send || !send.output) return;
 
-    it.salt = (it.salt || 0) + 1;
-    const salt = '<span class="lia-resetter-salt" data-resetter-salt="'+uid+'-'+it.salt+'"></span>\n\n';
+    if (REG.inflight[uid]) return;
+    REG.inflight[uid] = true;
 
-    it.send.output("LIASCRIPT:" + salt + (it.seg || ""));
+    try{
+      updateAccent();
+      ensureHost(uid);
 
-    stashLoop(uid);
-  }
+      const url = getCourseUrl();
+      if (!url){
+        restoreIfStashed(uid);
+        send.output("HTML:<em>Resetter: Kurs-URL nicht gefunden.</em>");
+        return;
+      }
 
-  // =========================
-  // Public API
-  // =========================
-  ROOT.__liaResetterV001 = ROOT.__liaResetterV001 || {
-    bind: async function(uid, send){
-      uid = String(uid);
+      const pack = await getResolvedLines(url);
+      const lines = pack.resolved;
+      const inv   = pack.inv;
 
-      const parts = ensureHost(uid);
-      if (!parts) return;
+      if (!inv || !inv.length){
+        restoreIfStashed(uid);
+        send.output("HTML:<em>Resetter: keine @resetter-Invocations im Source gefunden.</em>");
+        return;
+      }
 
-      const it = REG.items[uid] || (REG.items[uid] = {});
-      it.send = send;
+      const pickIndex = Math.min(getMarkerIndexByUid(uid), inv.length - 1);
+      const seg = extractSegmentByPick(lines, inv, pickIndex);
 
-      const lines  = await ensureMarkdown();
-      const approx = approxLineFromMarker(parts.marker);
-      const rIdx   = findResetterLineIndex(lines, approx);
-      if (rIdx == null) return;
+      if (!seg || !seg.trim()){
+        restoreIfStashed(uid);
+        send.output("HTML:<em>Resetter: Segment leer (Index " + pickIndex + ").</em>");
+        return;
+      }
 
-      it.seg = extractSegment(lines, rIdx);
-      render(uid);
-    },
+      // Salt -> neue interne IDs (wichtig für "wie Reload")
+      uiSalt(uid);
+      const payload = "LIASCRIPT:\n<!-- resetter:" + uid + ":" + REG.uiByUid[uid].salt + " -->\n" + seg + "\n";
 
-    reset: function(uid){
-      render(String(uid));
+      // erst jetzt stashen (und nur safe)
+      stashOnceSiblingSafe(uid);
+
+      send.output(payload);
+    } finally {
+      REG.inflight[uid] = false;
     }
+  }
+
+  function uiSalt(uid){
+    REG.uiByUid[uid] = REG.uiByUid[uid] || {};
+    REG.uiByUid[uid].salt = (REG.uiByUid[uid].salt || 0) + 1;
+  }
+
+  // Public function (inline onclick)
+  ROOT_WIN.__liaResetter_v001 = function(uid){
+    try{ renderUid(String(uid)); }catch(e){}
   };
+  CONTENT_WIN.__liaResetter_v001 = ROOT_WIN.__liaResetter_v001;
 
-  // =========================
-  // Click Guard (Capture): verhindert Folien-Sprung
-  // =========================
-  function installGuard(){
-    if (REG.guardDocs.has(DOC)) return;
-    REG.guardDocs.add(DOC);
-
-    const handler = (ev) => {
-      const t = ev && ev.target;
-      if (!t || !t.closest) return;
-
-      const btn = t.closest("button.lia-resetter-btn");
-      if (!btn) return;
-
-      const uid = btn.getAttribute("data-resetter-btn");
-      if (!uid) return;
-
-      ev.preventDefault();
-      ev.stopPropagation();
-      if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
-
-      ROOT.__liaResetterV001.reset(uid);
-    };
-
-    ["pointerdown","mousedown","touchstart","click"].forEach(type => {
-      try { DOC.addEventListener(type, handler, true); } catch(e){}
-      try { ROOT.document.addEventListener(type, handler, true); } catch(e){}
-    });
-  }
-
-  // =========================
-  // Observer: nach Slide-Rebuild wieder Host/Trash herstellen
-  // =========================
-  function installObserver(){
-    if (REG.obsDocs.has(DOC)) return;
-    REG.obsDocs.add(DOC);
-
-    const rootEl = DOC.querySelector("main") || DOC.body;
-    if (!rootEl) return;
-
-    let pending = false;
-    const obs = new MutationObserver(() => {
-      if (REG.muting) return;
-      if (pending) return;
-      pending = true;
-
-      setTimeout(() => {
-        pending = false;
-        for (const uid in REG.items){
-          ensureHost(uid);
-          stashStatic(uid);
-        }
-      }, 140);
-    });
-
-    obs.observe(rootEl, { childList: true, subtree: true });
-  }
-
-  installGuard();
-  installObserver();
+  updateAccent();
 
 })();
 @end
@@ -440,24 +556,44 @@ button.lia-resetter-btn:focus{
 @resetter: @resetter_(@uid)
 @resetter_
 <span class="lia-resetter-marker" data-resetter-uid="@0" aria-hidden="true"></span>
-<button class="lia-resetter-btn" type="button" data-resetter-btn="@0">Neustart der Aufgabe</button>
-
-<output modify="false">
+<button class="lia-resetter-btn" type="button" onclick="__liaResetter_v001('@0')">Neustart der Aufgabe</button>
+<output class="lia-resetter-out" data-resetter-out="@0" modify="false">
 <script run-once="true" modify="false">
 (function(){
-  try{
+  function getRootWindow(){
     let w = window;
     try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
-    if (w.__liaResetterV001 && typeof send !== "undefined"){
-      setTimeout(function(){ w.__liaResetterV001.bind("@0", send); }, 0);
-    }
+    return w;
+  }
+  const ROOT = getRootWindow();
+  const REGKEY = "__LIA_RESETTER_V001__";
+  const REG = ROOT[REGKEY] || (ROOT[REGKEY] = { sendByUid: Object.create(null) });
+
+  try{
+    if (!REG.sendByUid) REG.sendByUid = Object.create(null);
+    REG.sendByUid["@0"] = send;
   }catch(e){}
-  return "";
+
+  "HTML:<span style='display:none' data-resetter-keep='@0'></span>";
 })();
 </script>
 </output>
 @end
 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

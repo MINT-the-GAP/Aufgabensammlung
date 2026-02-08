@@ -94,6 +94,7 @@ Geh an den rechten vertikalen Trennstrich zwischen den Blöcken und schiebe dies
 
 <div class="flex-child">
 
+<!--   data-solution-button="2" -->
 __$f)\;\;$__ Lösung ist 3: [[ 3 ]]
 
 __$g)\;\;$__ Lösung ist 4: [[ 4 ]]
