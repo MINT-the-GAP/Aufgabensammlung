@@ -451,12 +451,12 @@ canvas.lia-draw{
 
   ensureStyle(CONTENT_DOC, "lia-hl-style-content-v4", `
     :root{
-      --hl-yellow: rgba(255, 238,  88, 0.55);
+      --hl-yellow: rgba(255, 247, 0, 0.81);
       --hl-green:  rgba(144, 238, 144, 0.45);
-      --hl-blue:   rgba(173, 216, 230, 0.45);
-      --hl-pink:   rgba(255, 182, 193, 0.45);
-      --hl-orange: rgba(255, 200, 120, 0.55);
-      --hl-red:    rgba(255,  80,  80, 0.40);
+      --hl-blue:   rgba(0, 76, 255, 0.45);
+      --hl-pink:   rgba(255, 0, 212, 0.6);
+      --hl-orange: rgba(255, 153, 0, 0.55);
+      --hl-red:    rgba(255, 0, 0, 0.4);
 
       --hl-ui-bg: rgba(255,255,255,.92);
       --hl-ui-fg: rgba(0,0,0,.88);

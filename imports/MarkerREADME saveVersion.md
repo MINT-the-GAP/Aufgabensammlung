@@ -2,67 +2,8 @@
 comment: Lia Textmarker (import-sicher) — Crash-Fix (keine Observer-Feedback-Loops) + Panel immer im Viewport
 author: Martin Lommatzsch
 
-
-@style
-/* HLQ: verhindert Aufblitzen + entfernt Proxy-Abstand (wirkt VOR @onload) */
-.hlq-proxy{
-  display: inline-flex !important;
-  align-items: center !important;
-  flex-wrap: wrap !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  gap: 0 !important;
-}
-
-/* unsere UI standardmäßig komplett raus */
-.hlq-proxy .hlq-btn,
-.hlq-proxy .hlq-msg{
-  display: none !important;
-}
-
-/* Lia-Teil bleibt inline und ohne extra Block-Abstände */
-.hlq-proxy .hlq-lia{
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin: 0 !important;
-  padding: 0 !important;
-  font-size: 0 !important;
-}
-
-.hlq-proxy .hlq-lia button,
-.hlq-proxy .hlq-lia [role="button"],
-.hlq-proxy .hlq-lia a{
-  font-size: 1rem !important;
-}
-
-/* Debug: wenn du es brauchst */
-body.lia-hlq-debug .hlq-proxy{ gap: 10px !important; }
-body.lia-hlq-debug .hlq-proxy .hlq-btn{ display: inline-flex !important; }
-body.lia-hlq-debug .hlq-proxy .hlq-msg{ display: inline !important; }
-
-/* Markerquiz: keine Absatz-Abstände zwischen Text und Quiz-Zeile */
-.markerquiz p{
-  margin: 0 !important;
-}
-
-/* falls Lia leere <p> erzeugt (Parser-Autokorrektur), komplett weg */
-.markerquiz p:empty{
-  display: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-@end
-
-
-
-
-
 @onload
 (function () {
-
-
 
   // =========================
   // Root/Content (iframe-safe)
@@ -91,20 +32,10 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{ display: inline !important; }
     "::" +
     (CONTENT_DOC.title || "");
 
-  const prev = REG.instances[DOC_ID];
-  if (prev?.__alive){
-    try { prev.__alive = false; } catch(e){}
-    try { prev.moDock?.disconnect(); } catch(e){}
-    try { prev.moTheme?.disconnect(); } catch(e){}
-    try { prev.roLayout?.disconnect(); } catch(e){}
-    try { if (prev.__layoutTimer) ROOT_WIN.clearInterval(prev.__layoutTimer); } catch(e){}
-    try { CONTENT_DOC.getElementById("lia-hl-overlay")?.remove(); } catch(e){}
-  }
-
+  if (REG.instances[DOC_ID]?.__alive) return;
 
   const I = REG.instances[DOC_ID] = {
     __alive: true,
-    debugHLQ: false, //
     state: { active:false, panelOpen:false, tool:"mark", color:"yellow" },
     HL: [],
     nextId: 1,
@@ -121,8 +52,7 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{ display: inline !important; }
   // CSS Injection (Content + Root)
   // =========================
   function ensureStyle(doc, id, css){
-    const old = doc.getElementById(id);
-    if (old){ old.textContent = css; return; }
+    if (doc.getElementById(id)) return;
     const st = doc.createElement("style");
     st.id = id;
     st.textContent = css;
@@ -131,12 +61,12 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{ display: inline !important; }
 
   ensureStyle(CONTENT_DOC, "lia-hl-style-content-v4", `
     :root{
-      --hl-yellow: rgba(255, 247, 0, 0.81);
+      --hl-yellow: rgba(255, 238,  88, 0.55);
       --hl-green:  rgba(144, 238, 144, 0.45);
-      --hl-blue:   rgba(0, 76, 255, 0.45);
-      --hl-pink:   rgba(255, 0, 212, 0.6);
-      --hl-orange: rgba(255, 153, 0, 0.55);
-      --hl-red:    rgba(255, 0, 0, 0.4);
+      --hl-blue:   rgba(173, 216, 230, 0.45);
+      --hl-pink:   rgba(255, 182, 193, 0.45);
+      --hl-orange: rgba(255, 200, 120, 0.55);
+      --hl-red:    rgba(255,  80,  80, 0.40);
 
       --hl-ui-bg: rgba(255,255,255,.92);
       --hl-ui-fg: rgba(0,0,0,.88);
@@ -164,30 +94,6 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{ display: inline !important; }
       pointer-events: auto !important;
       cursor: pointer;
     }
-
-        /* ---------------------------------------------------------
-           Textmarker-Quiz Proxy: Lia-Buttons behalten, Input verstecken
-           --------------------------------------------------------- */
-        .hlq-proxy{
-          display: inline-flex;
-          align-items: center;
-          gap: 0px;
-          flex-wrap: wrap;
-          margin: 0px 0;
-        }
-
-        /* Eingabefelder im Proxy verstecken (Buttons bleiben!) */
-        .hlq-proxy input,
-        .hlq-proxy textarea,
-        .hlq-proxy select{
-          display: none !important;
-        }
-
-        .hlq-proxy .hlq-msg{
-          font-weight: 700;
-          opacity: .85;
-        }
-
 
     .lia-hl-rect[data-hl="yellow"]{ background: var(--hl-yellow); }
     .lia-hl-rect[data-hl="green"] { background: var(--hl-green);  }
@@ -404,77 +310,6 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{ display: inline !important; }
       font-size: 12px !important;
       color: var(--hl-ui-fg) !important;
     }
-
-
-
-    /* Lia-Quiz im Proxy kapseln: alles verstecken außer Buttons */
-    .hlq-proxy .hlq-lia{
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0 !important;          /* killt "The correct answer ..." zuverlässig */
-    }
-    
-    /* Buttons wieder lesbar machen */
-    .hlq-proxy .hlq-lia button,
-    .hlq-proxy .hlq-lia [role="button"],
-    .hlq-proxy .hlq-lia a{
-      font-size: 1rem !important;
-    }
-    
-    /* Eingabefelder sicher aus */
-    .hlq-proxy .hlq-lia input,
-    .hlq-proxy .hlq-lia textarea,
-    .hlq-proxy .hlq-lia select{
-      display: none !important;
-    }
-
-    /* Textmarker-Quiz Buttons (eigene UI, Lia-Quiz raus) */
-    .hlq-btn{
-      appearance: none;
-      border: 1px solid var(--hl-ui-border);
-      background: color-mix(in srgb, var(--hl-ui-fg) 6%, transparent);
-      color: var(--hl-ui-fg);
-      border-radius: 12px;
-      padding: 8px 10px;
-      font-weight: 700;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .hlq-btn:hover{
-      border-color: color-mix(in srgb, var(--hl-accent) 45%, var(--hl-ui-border));
-      background: color-mix(in srgb, var(--hl-accent) 10%, transparent);
-    }
-
-    .hlq-btn:active{
-      background: color-mix(in srgb, var(--hl-accent) 14%, transparent);
-    }
-
-    .hlq-proxy .hlq-msg{
-      margin-right: 6px;
-    }
-
-
-/* ---------------------------------------------------------
-   HLQ: Standard = unsichtbar (Prod), Debug = sichtbar
-   --------------------------------------------------------- */
-
-/* Default: Proxy-Buttons + Status-Text ausblenden */
-.hlq-proxy .hlq-btn,
-.hlq-proxy .hlq-msg{
-  display: none !important;
-}
-
-/* Debug: wieder einblenden */
-body.lia-hlq-debug .hlq-proxy .hlq-btn{
-  display: inline-flex !important;
-}
-body.lia-hlq-debug .hlq-proxy .hlq-msg{
-  display: inline !important;
-}
-
-
 
   `);
 
@@ -1106,11 +941,6 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{
       ROOT_DOC.body.classList.toggle("lia-hl-panel-open", !!(I.state.active && I.state.panelOpen));
     } catch(e){}
 
-  // HLQ Debug-UI (Buttons + Treffer/Lösung) ein/aus
-  try{
-    CONTENT_DOC.body.classList.toggle("lia-hlq-debug", !!I.debugHLQ);
-  } catch(e){}
-
     const toolMark = ROOT_DOC.getElementById("hl-tool-mark");
     const toolErase= ROOT_DOC.getElementById("hl-tool-erase");
     if (toolMark) toolMark.classList.toggle("active", I.state.tool === "mark");
@@ -1211,406 +1041,46 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{
     }
   }
 
-
-
-        // =========================
-        // Textmarker-Quiz (ROBUST: eigener Check/Solve + Scope)
-        // =========================
-        function ensureScopeIds(){
-          const scopes = Array.from(CONTENT_DOC.querySelectorAll(".markerquiz"));
-          for (let i=0; i<scopes.length; i++){
-            const s = scopes[i];
-            if (!s.dataset.hlScope){
-              s.dataset.hlScope = "S" + (i+1);
-            }
-          }
-        }
-
-        function scopeElFromNode(node){
-          const el = (node && node.nodeType === 1) ? node : node?.parentElement;
-          return el?.closest?.(".markerquiz") || null;
-        }
-
-        function scopeIdFromNode(node){
-          ensureScopeIds();
-          const s = scopeElFromNode(node);
-          return (s && s.dataset.hlScope) ? s.dataset.hlScope : "global";
-        }
-
-        function rectArea(rs){
-          return (rs || []).reduce((a,r)=> a + Math.max(0,r.w)*Math.max(0,r.h), 0);
-        }
-        function interArea(a,b){
-          const x1 = Math.max(a.x, b.x);
-          const y1 = Math.max(a.y, b.y);
-          const x2 = Math.min(a.x+a.w, b.x+b.w);
-          const y2 = Math.min(a.y+a.h, b.y+b.h);
-          const w = x2 - x1, h = y2 - y1;
-          return (w>0 && h>0) ? w*h : 0;
-        }
-        function overlapScore(targetRects, userRects){
-          const tA = rectArea(targetRects);
-          if (tA <= 0) return 0;
-          let inter = 0;
-          for (const tr of (targetRects||[])){
-            for (const ur of (userRects||[])){
-              inter += interArea(tr, ur);
-            }
-          }
-          return inter / tA; // 0..1
-        }
-
-        function collectTargetsInScope(scopeEl){
-          const root = scopeEl || CONTENT_DOC;
-          const els = Array.from(root.querySelectorAll(".lia-hl-target[data-hl-expected]"));
-
-          return els.map(el=>{
-            const color = el.getAttribute("data-hl-expected") || "yellow";
-            const r = CONTENT_DOC.createRange();
-            r.selectNodeContents(el);
-
-            const anchor = {
-              sp: nodeToPath(r.startContainer),
-              so: r.startOffset,
-              ep: nodeToPath(r.endContainer),
-              eo: r.endOffset
-            };
-            return { el, color, anchor };
-          });
-        }
-
-        function bestUserMatch(scopeId, color, targetRects){
-          // Alle User-Rects derselben Farbe im Scope sammeln
-          const all = [];
-          for (const h of I.HL){
-            if ((h.kind || "user") !== "user") continue;
-            if ((h.scope || "global") !== scopeId) continue;
-            if (h.color !== color) continue;
-            if (Array.isArray(h.rects)) all.push(...h.rects);
-          }
-          if (!all.length) return 0;
-
-          // Rects "unionisieren": kleine Lücken (Leerzeichen) schließen + Überlappungen entschärfen
-          // (gapTol ~ Wortabstände, damit wortweises Markieren trotzdem als zusammenhängend zählt)
-          const merged = mergeRectsToLines(all, {
-            yTol: 4,
-            gapTol: 12,   // <- wenn du sehr große Wortabstände hast, ggf. 14–16
-            minW: 2,
-            minH: 2,
-            padX: 0,
-            padY: 0
-          });
-
-          return overlapScore(targetRects, merged);
-        }
-
-
-        function evalScope(scopeEl){
-          ensureScopeIds();
-          const scopeId = scopeEl?.dataset?.hlScope || "global";
-          const targets = collectTargetsInScope(scopeEl);
-          if (!targets.length) return { ok:0, total:0, pass:false };
-
-          recalcAllHighlights();
-
-          let ok = 0;
-          for (const t of targets){
-            const r = rangeFromAnchor(t.anchor);
-            if (!r) continue;
-            const tRects = packedRectsFromRange(r);
-            const score = bestUserMatch(scopeId, t.color, tRects);
-            if (score >= 0.75) ok++;
-          }
-          return { ok, total: targets.length, pass: ok === targets.length };
-        }
-
-        function solveScope(scopeEl){
-          ensureScopeIds();
-          const scopeId = scopeEl?.dataset?.hlScope || "global";
-
-          // alte Lösungsoverlays für diesen Scope raus
-          I.HL = I.HL.filter(h => !((h.kind==="solution") && ((h.scope||"global")===scopeId)));
-
-          const targets = collectTargetsInScope(scopeEl);
-          for (const t of targets){
-            const r = rangeFromAnchor(t.anchor);
-            if (!r) continue;
-            const rects = packedRectsFromRange(r);
-
-            I.HL.push({
-              id: I.nextId++,
-              kind: "solution",
-              scope: scopeId,
-              color: t.color,
-              anchor: t.anchor,
-              rects
-            });
-          }
-          render();
-        }
-
-        function setProxyMsg(proxyEl, txt){
-          const msg = proxyEl.querySelector(".hlq-msg");
-          if (msg) msg.textContent = txt || "";
-        }
-
-
-function setLiaValue(input, v){
-  if (!input) return;
-  try { input.value = String(v); } catch(e){ return; }
-
-  // Lia reagiert je nach Version auf unterschiedliche Events
-  const evts = ["input","change","keyup","blur"];
-  for (const name of evts){
-    try { input.dispatchEvent(new Event(name, { bubbles:true })); } catch(e){}
-    try { input.dispatchEvent(new Event("keydown", { bubbles:true })); } catch(e){}
-  }
-}
-
-function getLiaInput(proxy){
-  // Priorität: wirklich nur innerhalb der Lia-Quiz-Ausgabe
-  return proxy.querySelector(".hlq-lia input, .hlq-lia textarea, .hlq-lia select") ||
-         proxy.querySelector("input, textarea, select");
-}
-
-function getLiaButtons(proxy){
-  // Erst in hlq-lia suchen, aber falls Lia umgebaut hat: fallback auf proxy
-  const inside = (root) =>
-    Array.from(root.querySelectorAll("button,[role='button'],a"))
-      .filter(b => !b.closest("button.hlq-btn")); // unsere Buttons raus
-
-  const wrap = proxy.querySelector(".hlq-lia");
-  let btns = wrap ? inside(wrap) : [];
-
-  if (!btns.length){
-    btns = inside(proxy);
-  }
-  return btns;
-}
-
-
-function inferAction(btn, proxy){
-  const t = (
-    btn.getAttribute("aria-label") ||
-    btn.getAttribute("title") ||
-    btn.textContent ||
-    ""
-  ).trim().toLowerCase();
-
-  const cls = (btn.className || "").toLowerCase();
-
-  // 1) Primär: Text/aria/title/class
-  if (t.includes("prüf") || t.includes("check") || cls.includes("check") || cls.includes("verify")) return "check";
-  if (t.includes("aufl") || t.includes("lös")  || t.includes("solve") || t.includes("solution") ||
-      cls.includes("solution") || cls.includes("solve") || cls.includes("answer")) return "solve";
-
-  // 2) Fallback: Position im Button-Set
-  const btns = getLiaButtons(proxy).filter(b => b.closest(".hlq-proxy") === proxy);
-  const idx = btns.indexOf(btn);
-
-  // typisch: 0=prüfen, 1=auflösen
-  if (idx === 0) return "check";
-  if (idx === 1) return "solve";
-
-  return null;
-}
-
-// Klick auf Lia-Buttons (capture): erst Marker-Logik, dann Lia normal weiterlaufen lassen
-function handleHLQAction(act, proxy, btnRef){
-  const scopeEl = proxy.closest(".markerquiz") || scopeElFromNode(btnRef);
-  const input   = getLiaInputRobust(proxy);
-
-  if (act === "check"){
-    const r = evalScope(scopeEl);
-    setProxyMsg(proxy, r.total ? `Treffer: ${r.ok}/${r.total}` : "Keine Targets gefunden.");
-    setLiaValue(input, r.pass ? 1 : 0);
-    return;
-  }
-
-  if (act === "solve"){
-    solveScope(scopeEl);
-    setProxyMsg(proxy, "Lösung eingeblendet.");
-    setLiaValue(input, 1);
-    return;
-  }
-}
-
-
-function inferActionLoose(btn){
-  const t = (
-    btn.getAttribute("aria-label") ||
-    btn.getAttribute("title") ||
-    btn.textContent ||
-    ""
-  ).trim().toLowerCase();
-
-  const cls = (btn.className || "").toLowerCase();
-
-  if (t.includes("prüf") || t.includes("check") || cls.includes("check") || cls.includes("verify")) return "check";
-  if (t.includes("aufl") || t.includes("lös")  || t.includes("solve") || t.includes("solution") ||
-      cls.includes("solution") || cls.includes("solve") || cls.includes("answer")) return "solve";
-
-  return null;
-}
-
-function findProxyForAnyButton(btn){
-  // 1) Direkt drin?
-  let p = btn.closest?.(".hlq-proxy");
-  if (p) return p;
-
-  // 2) Sonst: im selben markerquiz den "nächstliegenden" Proxy nehmen
-  const scope = btn.closest?.(".markerquiz") || CONTENT_DOC;
-  const proxies = Array.from(scope.querySelectorAll(".hlq-proxy"));
-  if (!proxies.length) return null;
-  if (proxies.length === 1) return proxies[0];
-
-  // Heuristik: "letzter Proxy vor dem Button" in Dokumentreihenfolge
-  for (let i = proxies.length - 1; i >= 0; i--){
-    const pr = proxies[i];
-    const rel = pr.compareDocumentPosition(btn);
-    // btn folgt auf pr => pr ist vor btn
-    if (rel & Node.DOCUMENT_POSITION_FOLLOWING) return pr;
-  }
-
-  // Falls Button aus irgendeinem Grund vor allen Proxies liegt:
-  return proxies[0];
-}
-
-function getLiaInputRobust(proxy){
-  // 1) Im Proxy selbst
-  let input =
-    proxy.querySelector(".hlq-lia input, .hlq-lia textarea, .hlq-lia select") ||
-    proxy.querySelector("input, textarea, select");
-  if (input) return input;
-
-  // 2) In unmittelbarer Nähe im selben markerquiz (Lia kann Input rausziehen)
-  const scope = proxy.closest?.(".markerquiz") || CONTENT_DOC;
-  const pr = proxy.getBoundingClientRect();
-
-  let best = null;
-  let bestScore = Infinity;
-
-  const cands = Array.from(scope.querySelectorAll("input, textarea, select"));
-  for (const el of cands){
-    const br = el.getBoundingClientRect();
-    const dy = Math.abs((br.top + br.height/2) - (pr.top + pr.height/2));
-    const dx = Math.abs((br.left + br.width/2) - (pr.left + pr.width/2));
-    const score = dy * 10 + dx;
-
-    // harte Plausibilitätsgrenze: sonst erwischen wir fremde Inputs
-    if (dy > 300) continue;
-
-    if (score < bestScore){
-      bestScore = score;
-      best = el;
-    }
-  }
-  return best;
-}
-
-
-
-// EIN Listener: funktioniert auch, wenn Lia Buttons ausserhalb des Proxys rendert
-CONTENT_DOC.addEventListener("click", (e)=>{
-
-  const clicked = e.target?.closest?.("button,[role='button'],a,[role='link']");
-  if (!clicked) return;
-
-  // (A) Unsere Buttons
-  const own = clicked.closest("button.hlq-btn[data-hlq-act]");
-  if (own){
-    const proxy = own.closest(".hlq-proxy");
-    if (!proxy) return;
-    const act = own.getAttribute("data-hlq-act");
-    if (!act) return;
-    handleHLQAction(act, proxy, own);
-    return;
-  }
-
-  // (B) Lia-Buttons (Prüfen/Auflösen) – auch wenn sie ausserhalb des Proxys liegen
-  const act = inferActionLoose(clicked);
-  if (!act) return;
-
-  const proxy = findProxyForAnyButton(clicked);
-  if (!proxy) return;
-
-  handleHLQAction(act, proxy, clicked);
-
-  // KEIN preventDefault/stopPropagation:
-  // Lia darf danach normal seine UI rendern.
-}, true);
-
-
-
-
-
-
-
-
-
-
-
-
-
   // =========================
   // Markieren / Radieren
   // =========================
-    function isForbiddenTarget(node){
-      const el = (node && node.nodeType === 1) ? node : node?.parentElement;
-      if (!el) return false;
-      return !!el.closest("input, textarea, select, button, a, code, pre, .hlq-proxy");
-    }
-
+  function isForbiddenTarget(node){
+    const el = (node && node.nodeType === 1) ? node : node?.parentElement;
+    if (!el) return false;
+    return !!el.closest("input, textarea, select, button, a, code, pre");
+  }
 
   function addHighlightFromSelection(){
     const sel = CONTENT_WIN.getSelection ? CONTENT_WIN.getSelection() : null;
     if (!sel || sel.rangeCount === 0) return;
 
-    const range0 = sel.getRangeAt(0);
-    if (!range0 || range0.collapsed) return;
+    const range = sel.getRangeAt(0);
+    if (!range || range.collapsed) return;
 
-    // Nicht in interaktiven/Code-Elementen markieren
-    if (isForbiddenTarget(range0.startContainer) || isForbiddenTarget(range0.endContainer)) return;
+    if (isForbiddenTarget(range.startContainer) || isForbiddenTarget(range.endContainer)) return;
 
-    // Scope bestimmen (passt zu evalScope/solveScope)
-    ensureScopeIds();
-    const scopeId = scopeIdFromNode(range0.commonAncestorContainer);
+    const rects = Array.from(range.getClientRects ? range.getClientRects() : []);
+    if (!rects.length) return;
 
-    // Range klonen (sicherer, falls UI/DOM irgendwas macht)
-    const range = range0.cloneRange();
+    const sc = currentScroll();
+    const packed = rects
+      .filter(r => r.width > 1 && r.height > 1)
+      .map(r => ({ x: r.left + sc.x, y: r.top + sc.y, w: r.width, h: r.height }));
 
-    // Rechtecke packen
-    const packed = packedRectsFromRange(range);
-    if (!packed.length) {
-      try { sel.removeAllRanges(); } catch(e){}
-      return;
-    }
+    if (!packed.length) return;
 
-    // Anchor serialisieren
-    const anchor = {
+        const anchor = {
       sp: nodeToPath(range.startContainer),
       so: range.startOffset,
       ep: nodeToPath(range.endContainer),
       eo: range.endOffset
     };
 
-    // User-Highlight speichern (WICHTIG: scope statt qid)
-    I.HL.push({
-      id: I.nextId++,
-      kind: "user",
-      scope: scopeId,          // <<< DAS ist der Fix
-      color: I.state.color,
-      anchor,
-      rects: packed
-    });
+    I.HL.push({ id: I.nextId++, color: I.state.color, anchor, rects: packed });
 
-    // Selection entfernen
-    try { sel.removeAllRanges(); } catch(e){}
-
+    sel.removeAllRanges();
     render();
   }
-
-
 
   CONTENT_DOC.addEventListener("mouseup", ()=>{
     if (!I.state.active) return;
@@ -1624,7 +1094,7 @@ CONTENT_DOC.addEventListener("click", (e)=>{
     addHighlightFromSelection();
   }, true);
 
-  CONTENT_WIN.addEventListener("click", (e)=>{
+  CONTENT_DOC.addEventListener("click", (e)=>{
     if (!I.state.active) return;
     if (I.state.tool !== "erase") return;
 
@@ -1635,11 +1105,8 @@ CONTENT_DOC.addEventListener("click", (e)=>{
     if (!id) return;
 
     const n = Number(id);
-    const item = I.HL.find(x => x.id === n);
-    if (item && item.kind === "user"){
-      I.HL = I.HL.filter(x => x.id !== n);
-      render();
-    }
+    I.HL = I.HL.filter(item => item.id !== n);
+    render();
   }, true);
 
 
@@ -1712,43 +1179,21 @@ CONTENT_DOC.addEventListener("click", (e)=>{
 
 })();
 @end
-
-
-
-
-
-
-
-TextmarkerQuiz: <span class="hlq-proxy"><span class="hlq-msg"></span><button class="hlq-btn" type="button" data-hlq-act="check">Prüfen</button><button class="hlq-btn" type="button" data-hlq-act="solve">Auflösen</button><span class="hlq-lia">[[ 1 ]]</span></span>
-
-
-
-
-
-
-
-markred:    <span class="lia-hl-target" data-hl-expected="red"    data-hl-quiz="default">@0</span>
-markblue:   <span class="lia-hl-target" data-hl-expected="blue"   data-hl-quiz="default">@0</span>
-markgreen:  <span class="lia-hl-target" data-hl-expected="green"  data-hl-quiz="default">@0</span>
-markyellow: <span class="lia-hl-target" data-hl-expected="yellow" data-hl-quiz="default">@0</span>
-markpink:   <span class="lia-hl-target" data-hl-expected="pink"   data-hl-quiz="default">@0</span>
-markorange: <span class="lia-hl-target" data-hl-expected="orange" data-hl-quiz="default">@0</span>
-
-
-
-
-
-
 -->
 
 
 
 # Textmarker
 
-Markiere die korrekt.
 
-<div class="markerquiz">
-@markred(rot) und @markblue(blau bis blau)
+@markred{rot} 
 
-@TextmarkerQuiz
-</div>
+@markblue{blau bis blau} 
+
+@markgreen{grün} 
+
+@markyellow{gelb} 
+
+@markpink{pink} 
+
+@markorange{orange} 
