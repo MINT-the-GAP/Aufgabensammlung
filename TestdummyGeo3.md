@@ -2,7 +2,7 @@
 version:  0.0.1
 language: de
 author: Martin Lommatzsch
-comment: Kachel-Sortierer v0.0.1 — Pool -> Zonen (Tabelle), auto-Slots, Check/Reset per Buttons — DnD-Fix für Firefox/iframe
+comment: Kachel-Sortierer v0.0.1 — Pool -> Zonen (Tabelle), auto-Slots, Check/Reset per Buttons — robustes Dragging via Pointer-Drag (kein HTML5-DnD)
 
 @style
 /* =========================
@@ -38,6 +38,7 @@ comment: Kachel-Sortierer v0.0.1 — Pool -> Zonen (Tabelle), auto-Slots, Check/
   cursor: grab;
   user-select: none;
   white-space: nowrap;
+  touch-action: none; /* wichtig fürs Pointer-Dragging */
 }
 @media (prefers-color-scheme: dark){
   .lia-kachel-tile{
@@ -46,6 +47,7 @@ comment: Kachel-Sortierer v0.0.1 — Pool -> Zonen (Tabelle), auto-Slots, Check/
   }
 }
 .lia-kachel-tile:active{ cursor: grabbing; }
+.lia-kachel-tile.is-dragging{ opacity: .45; }
 
 .lia-kachel-zone-list{
   display: flex;
@@ -81,14 +83,20 @@ comment: Kachel-Sortierer v0.0.1 — Pool -> Zonen (Tabelle), auto-Slots, Check/
 }
 .lia-kachel-feedback[data-state="ok"]{ opacity: .85; }
 
-/* Drag-Hover */
-.lia-kachel-zone.is-over{
-  outline: 2px solid rgba(var(--color-highlight, 11,95,255), 0.9);
+.lia-kachel-zone.is-over,
+.lia-kachel-pool.is-over{
+  outline: 2px solid rgba(var(--color-highlight, 11,95,255), 0.65);
   outline-offset: 2px;
 }
-.lia-kachel-pool.is-over{
-  outline: 2px solid rgba(var(--color-highlight, 11,95,255), 0.55);
-  outline-offset: 2px;
+
+/* Ghost */
+.lia-kachel-ghost{
+  position: fixed;
+  left: 0; top: 0;
+  z-index: 2147483647;
+  pointer-events: none;
+  opacity: .92;
+  transform: translate(-9999px,-9999px);
 }
 
 /* Buttons */
@@ -133,16 +141,18 @@ comment: Kachel-Sortierer v0.0.1 — Pool -> Zonen (Tabelle), auto-Slots, Check/
   ROOT[KEY]  = ROOT[KEY] || {};
   const API  = ROOT[KEY];
 
-  // Run-once (import-sicher)
   if(API.__installed) return;
   API.__installed = true;
 
-  // Firefox/iframe: dataTransfer.getData kann in dragover leer sein → globaler Fallback
-  API.__dragId = "";
-  API.__dragBankId = "";
+  // Toggle bei Bedarf:
+  API.__debug = false;
 
-  function attrEscape(s){
-    // minimaler Escape für "..." in querySelector-Attribut-Selektoren
+  function log(){
+    if(!API.__debug) return;
+    try{ console.log.apply(console, arguments); } catch(e){}
+  }
+
+  function escAttr(s){
     return String(s).replace(/\\/g, "\\\\").replace(/"/g, '\\"');
   }
 
@@ -167,64 +177,21 @@ comment: Kachel-Sortierer v0.0.1 — Pool -> Zonen (Tabelle), auto-Slots, Check/
   }
 
   function getBankEl(id){
-    return document.querySelector('.lia-kachel-pool[data-kachel-id="'+attrEscape(id)+'"]');
+    return document.querySelector('.lia-kachel-pool[data-kachel-id="'+escAttr(id)+'"]');
   }
+
   function getZones(id){
-    return Array.from(document.querySelectorAll('.lia-kachel-zone[data-kachel-id="'+attrEscape(id)+'"]'));
-  }
-
-  function setDragId(ev, id, bankId){
-    API.__dragId = id;
-    API.__dragBankId = bankId || "";
-    try{
-      ev.dataTransfer.setData("text/plain", "KACHEL:" + id);
-      ev.dataTransfer.effectAllowed = "move";
-    } catch(e){}
-  }
-
-  function getDragId(ev){
-    let raw = "";
-    try { raw = (ev.dataTransfer.getData("text/plain") || "").trim(); } catch(e){}
-    if(raw.startsWith("KACHEL:")) return raw.slice(6);
-    return API.__dragId || "";
-  }
-
-  function makeTile(word, bankId){
-    const t = document.createElement("span");
-    t.className = "lia-kachel-tile";
-    t.textContent = word;
-    t.draggable = true;
-    t.dataset.word = word;
-    t.dataset.kachelId = bankId;
-    t.id = "kachel_" + bankId.replace(/[^a-zA-Z0-9_-]/g,"_") + "_" + Math.random().toString(36).slice(2,10);
-
-    t.addEventListener("dragstart", (e) => setDragId(e, t.id, bankId));
-    t.addEventListener("dragend", () => { API.__dragId=""; API.__dragBankId=""; });
-
-    // Optional: Doppelklick zurück in Pool
-    t.addEventListener("dblclick", () => {
-      const bank = getBankEl(bankId);
-      if(!bank) return;
-      const list = bank.querySelector(".lia-kachel-bank") || bank;
-      list.appendChild(t);
-      cleanupZones(bankId);
-    });
-
-    return t;
-  }
-
-  function makeSlot(bankId){
-    const s = document.createElement("span");
-    s.className = "lia-kachel-slot";
-    s.dataset.kachelId = bankId;
-    return s;
+    return Array.from(document.querySelectorAll('.lia-kachel-zone[data-kachel-id="'+escAttr(id)+'"]'));
   }
 
   function ensureTrailingEmptySlot(zoneList, bankId){
     const slots = zoneList.querySelectorAll(".lia-kachel-slot");
     const last  = slots[slots.length - 1];
     if(!last || last.classList.contains("filled")){
-      zoneList.appendChild(makeSlot(bankId));
+      const s = document.createElement("span");
+      s.className = "lia-kachel-slot";
+      s.dataset.kachelId = bankId;
+      zoneList.appendChild(s);
     }
   }
 
@@ -246,23 +213,218 @@ comment: Kachel-Sortierer v0.0.1 — Pool -> Zonen (Tabelle), auto-Slots, Check/
     }
   }
 
+  // -------------------------
+  // Pointer-Drag Engine
+  // -------------------------
+  const drag = {
+    active: false,
+    tile: null,
+    bankId: "",
+    originParent: null,
+    ghost: null,
+    overEl: null
+  };
+
+  function clearOver(){
+    if(drag.overEl){
+      drag.overEl.classList.remove("is-over");
+      drag.overEl = null;
+    }
+  }
+
+  function setOver(el){
+    if(drag.overEl === el) return;
+    clearOver();
+    drag.overEl = el;
+    if(el) el.classList.add("is-over");
+  }
+
+  function makeGhostFrom(tile){
+    const g = tile.cloneNode(true);
+    g.classList.add("lia-kachel-ghost");
+    g.classList.remove("is-dragging");
+    g.style.width = tile.getBoundingClientRect().width + "px";
+    document.body.appendChild(g);
+    return g;
+  }
+
+  function moveGhost(x,y){
+    if(!drag.ghost) return;
+    // kleiner Offset, damit der Cursor nicht exakt drüber liegt
+    drag.ghost.style.transform = "translate(" + (x + 10) + "px," + (y + 10) + "px)";
+  }
+
+  function findDropTarget(x,y, bankId){
+    const el = document.elementFromPoint(x,y);
+    if(!el) return { kind: "none", el: null, slot: null };
+
+    // Slot preferieren (wenn auf Slot)
+    const slot = el.closest ? el.closest('.lia-kachel-slot') : null;
+    if(slot){
+      const zone = slot.closest('.lia-kachel-zone[data-kachel-id="'+escAttr(bankId)+'"]');
+      if(zone) return { kind: "zone", el: zone, slot: slot };
+    }
+
+    const zone = el.closest ? el.closest('.lia-kachel-zone[data-kachel-id="'+escAttr(bankId)+'"]') : null;
+    if(zone) return { kind: "zone", el: zone, slot: null };
+
+    const pool = el.closest ? el.closest('.lia-kachel-pool[data-kachel-id="'+escAttr(bankId)+'"]') : null;
+    if(pool) return { kind: "pool", el: pool, slot: null };
+
+    return { kind: "none", el: null, slot: null };
+  }
+
+  function placeIntoZone(tile, zone, slotHint){
+    const bankId = tile.dataset.kachelId;
+    const list = zone.querySelector(".lia-kachel-zone-list");
+    if(!list) return;
+
+    // Zielslot bestimmen
+    let slot = null;
+
+    if(slotHint && slotHint.classList && slotHint.classList.contains("lia-kachel-slot") && !slotHint.classList.contains("filled")){
+      slot = slotHint;
+    }
+
+    if(!slot){
+      const slots = Array.from(list.querySelectorAll(".lia-kachel-slot"));
+      const last = slots[slots.length - 1];
+      if(last && !last.classList.contains("filled")) slot = last;
+    }
+
+    if(!slot){
+      slot = document.createElement("span");
+      slot.className = "lia-kachel-slot";
+      slot.dataset.kachelId = bankId;
+      list.appendChild(slot);
+    }
+
+    slot.appendChild(tile);
+    slot.classList.add("filled");
+    ensureTrailingEmptySlot(list, bankId);
+    cleanupZones(bankId);
+
+    const fb = zone.querySelector(".lia-kachel-feedback");
+    if(fb){ fb.textContent = ""; fb.removeAttribute("data-state"); }
+  }
+
+  function placeIntoPool(tile){
+    const bankId = tile.dataset.kachelId;
+    const bank = getBankEl(bankId);
+    if(!bank) return;
+    const list = bank.querySelector(".lia-kachel-bank") || bank;
+    list.appendChild(tile);
+    cleanupZones(bankId);
+  }
+
+  function onDragStart(e, tile){
+    // nur links / primär
+    if(e.button !== undefined && e.button !== 0) return;
+
+    const bankId = tile.dataset.kachelId || "";
+    if(!bankId) return;
+
+    e.preventDefault();
+
+    drag.active = true;
+    drag.tile = tile;
+    drag.bankId = bankId;
+    drag.originParent = tile.parentNode;
+    tile.classList.add("is-dragging");
+
+    drag.ghost = makeGhostFrom(tile);
+    moveGhost(e.clientX, e.clientY);
+
+    // capture pointer
+    if(tile.setPointerCapture && e.pointerId != null){
+      try { tile.setPointerCapture(e.pointerId); } catch(_e){}
+    }
+
+    log("[Kachel] dragstart", bankId, tile.textContent);
+  }
+
+  function onDragMove(e){
+    if(!drag.active) return;
+    e.preventDefault();
+
+    moveGhost(e.clientX, e.clientY);
+
+    const t = findDropTarget(e.clientX, e.clientY, drag.bankId);
+    setOver(t.el);
+  }
+
+  function onDragEnd(e){
+    if(!drag.active) return;
+    e.preventDefault();
+
+    const tile = drag.tile;
+    const bankId = drag.bankId;
+
+    const t = findDropTarget(e.clientX, e.clientY, bankId);
+
+    clearOver();
+
+    if(drag.ghost && drag.ghost.parentNode) drag.ghost.parentNode.removeChild(drag.ghost);
+
+    if(tile) tile.classList.remove("is-dragging");
+
+    // Drop-Action
+    if(tile && t.kind === "zone" && t.el){
+      placeIntoZone(tile, t.el, t.slot);
+    } else if(tile && t.kind === "pool" && t.el){
+      placeIntoPool(tile);
+    } else {
+      // keine Zielzone: zurück (falls aus DOM raus wäre)
+      if(tile && drag.originParent && tile.parentNode !== drag.originParent){
+        drag.originParent.appendChild(tile);
+      }
+    }
+
+    drag.active = false;
+    drag.tile = null;
+    drag.bankId = "";
+    drag.originParent = null;
+    drag.ghost = null;
+    drag.overEl = null;
+
+    log("[Kachel] dragend");
+  }
+
+  function bindTileDragging(tile){
+    if(tile.dataset.kachelBound === "1") return;
+    tile.dataset.kachelBound = "1";
+
+    // Pointer Events
+    tile.addEventListener("pointerdown", (e) => onDragStart(e, tile));
+    tile.addEventListener("pointermove", onDragMove);
+    tile.addEventListener("pointerup", onDragEnd);
+    tile.addEventListener("pointercancel", onDragEnd);
+
+    // Optional: Doppelklick zurück in Pool
+    tile.addEventListener("dblclick", () => placeIntoPool(tile));
+  }
+
+  // -------------------------
+  // UI Init
+  // -------------------------
   function initPool(pool){
     if(pool.dataset.kachelReady === "1") return;
     pool.dataset.kachelReady = "1";
 
     const bankId = pool.dataset.kachelId;
-    const words = [];
 
-    // Plaintext aus Pool (Zeilen / Whitespace)
+    // Wörter aus Plaintext
     const txt = pool.textContent || "";
+    const words = [];
     txt.split(/[\n,;]+/g).forEach(chunk => {
       chunk.split(/\s+/g).forEach(w => { if(w) words.push(w); });
     });
 
+    const clean = uniq(words);
+
     const list = document.createElement("div");
     list.className = "lia-kachel-bank";
 
-    const clean = uniq(words);
     pool.innerHTML = "";
     pool.appendChild(list);
 
@@ -271,29 +433,17 @@ comment: Kachel-Sortierer v0.0.1 — Pool -> Zonen (Tabelle), auto-Slots, Check/
       return;
     }
 
-    clean.forEach(w => list.appendChild(makeTile(w, bankId)));
-
-    pool.addEventListener("dragenter", () => pool.classList.add("is-over"));
-    pool.addEventListener("dragleave", () => pool.classList.remove("is-over"));
-
-    // WICHTIG: immer preventDefault(), sonst drop verboten (Firefox/iframe)
-    pool.addEventListener("dragover", (e) => {
-      e.preventDefault();
-      try{ e.dataTransfer.dropEffect = "move"; } catch(_e){}
+    clean.forEach(w => {
+      const t = document.createElement("span");
+      t.className = "lia-kachel-tile";
+      t.textContent = w;
+      t.dataset.word = w;
+      t.dataset.kachelId = bankId;
+      list.appendChild(t);
+      bindTileDragging(t);
     });
 
-    pool.addEventListener("drop", (e) => {
-      e.preventDefault();
-      pool.classList.remove("is-over");
-
-      const id = getDragId(e);
-      const tile = id ? document.getElementById(id) : null;
-      if(!tile) return;
-      if(tile.dataset.kachelId !== bankId) return;
-
-      list.appendChild(tile);
-      cleanupZones(bankId);
-    });
+    // Hover-Klasse für optisches Feedback (wird vom Drag-Engine gesetzt, aber Pool kann so auch markiert werden)
   }
 
   function initZone(zone){
@@ -305,64 +455,28 @@ comment: Kachel-Sortierer v0.0.1 — Pool -> Zonen (Tabelle), auto-Slots, Check/
     const list = document.createElement("div");
     list.className = "lia-kachel-zone-list";
     zone.appendChild(list);
-    list.appendChild(makeSlot(bankId));
+
+    const slot = document.createElement("span");
+    slot.className = "lia-kachel-slot";
+    slot.dataset.kachelId = bankId;
+    list.appendChild(slot);
 
     const fb = document.createElement("div");
     fb.className = "lia-kachel-feedback";
     zone.appendChild(fb);
-
-    zone.addEventListener("dragenter", () => zone.classList.add("is-over"));
-    zone.addEventListener("dragleave", () => zone.classList.remove("is-over"));
-
-    // WICHTIG: immer preventDefault(), sonst drop verboten
-    zone.addEventListener("dragover", (e) => {
-      e.preventDefault();
-      try{ e.dataTransfer.dropEffect = "move"; } catch(_e){}
-    });
-
-    zone.addEventListener("drop", (e) => {
-      e.preventDefault();
-      zone.classList.remove("is-over");
-
-      const id = getDragId(e);
-      const tile = id ? document.getElementById(id) : null;
-      if(!tile) return;
-      if(tile.dataset.kachelId !== bankId) return;
-
-      const list = zone.querySelector(".lia-kachel-zone-list");
-      if(!list) return;
-
-      // Slot bestimmen: Drop auf Slot → der Slot, sonst letzter leerer Slot
-      let slot = null;
-      const t = e.target && e.target.closest ? e.target.closest(".lia-kachel-slot") : null;
-      if(t && !t.classList.contains("filled")) slot = t;
-
-      if(!slot){
-        const slots = Array.from(list.querySelectorAll(".lia-kachel-slot"));
-        const last = slots[slots.length - 1];
-        slot = (last && !last.classList.contains("filled")) ? last : null;
-      }
-      if(!slot){
-        slot = makeSlot(bankId);
-        list.appendChild(slot);
-      }
-
-      slot.appendChild(tile);
-      slot.classList.add("filled");
-
-      ensureTrailingEmptySlot(list, bankId);
-      cleanupZones(bankId);
-
-      const fb = zone.querySelector(".lia-kachel-feedback");
-      if(fb){ fb.textContent = ""; fb.removeAttribute("data-state"); }
-    });
   }
 
   function initAll(){
     document.querySelectorAll(".lia-kachel-pool[data-kachel-id]").forEach(initPool);
     document.querySelectorAll(".lia-kachel-zone[data-kachel-id]").forEach(initZone);
+
+    // Falls Tiles später wieder in Pool kommen / Reset: sicherstellen dass alle Tiles gebunden sind
+    document.querySelectorAll(".lia-kachel-tile[data-kachel-id]").forEach(bindTileDragging);
   }
 
+  // -------------------------
+  // Check / Reset API
+  // -------------------------
   API.check = function(bankId){
     initAll();
     let allOk = true;
@@ -408,13 +522,19 @@ comment: Kachel-Sortierer v0.0.1 — Pool -> Zonen (Tabelle), auto-Slots, Check/
     if(!bank) return;
 
     const bankList = bank.querySelector(".lia-kachel-bank") || bank;
-    document.querySelectorAll('.lia-kachel-tile[data-kachel-id="'+attrEscape(bankId)+'"]').forEach(t => bankList.appendChild(t));
 
+    // Alle Tiles zurück in Bank
+    document.querySelectorAll('.lia-kachel-tile[data-kachel-id="'+escAttr(bankId)+'"]').forEach(t => bankList.appendChild(t));
+
+    // Zonen neu aufbauen
     for(const z of getZones(bankId)){
       z.dataset.kachelReady = "0";
       z.innerHTML = "";
       initZone(z);
     }
+
+    // Re-bind
+    initAll();
     return true;
   };
 
@@ -438,6 +558,7 @@ comment: Kachel-Sortierer v0.0.1 — Pool -> Zonen (Tabelle), auto-Slots, Check/
   }
   scan();
 
+  // Slide-Wechsel / Re-Render
   let timer = null;
   const obs = new MutationObserver(() => {
     if(timer) return;
@@ -467,6 +588,7 @@ comment: Kachel-Sortierer v0.0.1 — Pool -> Zonen (Tabelle), auto-Slots, Check/
 </div>
 @end
 -->
+
 
 
 
