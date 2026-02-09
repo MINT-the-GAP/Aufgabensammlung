@@ -114,7 +114,12 @@ Weitere Beispiele:
 
 - `@markorange(words)`
 
+Bei `@mark(Test zum Markieren)` ist die gewählte Farbe egal.
 
+<div class="markerquiz">
+@mark(Test zum Markieren)
+@TextmarkerQuiz
+</div>
 
 
 ### Dynamsische Flex-Childs

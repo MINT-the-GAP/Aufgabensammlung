@@ -1280,21 +1280,21 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{
         }
 
         function bestUserMatch(scopeId, color, targetRects){
-          // Alle User-Rects derselben Farbe im Scope sammeln
+          const wantAny = (color === "any" || color === "*" || !color);
+
+          // Alle User-Rects im Scope sammeln (bei "any": alle Farben)
           const all = [];
           for (const h of I.HL){
             if ((h.kind || "user") !== "user") continue;
             if ((h.scope || "global") !== scopeId) continue;
-            if (h.color !== color) continue;
+            if (!wantAny && h.color !== color) continue;
             if (Array.isArray(h.rects)) all.push(...h.rects);
           }
           if (!all.length) return 0;
 
-          // Rects "unionisieren": kleine Lücken (Leerzeichen) schließen + Überlappungen entschärfen
-          // (gapTol ~ Wortabstände, damit wortweises Markieren trotzdem als zusammenhängend zählt)
           const merged = mergeRectsToLines(all, {
             yTol: 4,
-            gapTol: 12,   // <- wenn du sehr große Wortabstände hast, ggf. 14–16
+            gapTol: 12,
             minW: 2,
             minH: 2,
             padX: 0,
@@ -1303,6 +1303,7 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{
 
           return overlapScore(targetRects, merged);
         }
+
 
 
         function evalScope(scopeEl){
@@ -1327,27 +1328,29 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{
         function solveScope(scopeEl){
           ensureScopeIds();
           const scopeId = scopeEl?.dataset?.hlScope || "global";
-
-          // alte Lösungsoverlays für diesen Scope raus
+        
           I.HL = I.HL.filter(h => !((h.kind==="solution") && ((h.scope||"global")===scopeId)));
-
+        
           const targets = collectTargetsInScope(scopeEl);
           for (const t of targets){
             const r = rangeFromAnchor(t.anchor);
             if (!r) continue;
             const rects = packedRectsFromRange(r);
-
+        
+            const showColor = (t.color === "any") ? "yellow" : t.color; // <- wichtig
+        
             I.HL.push({
               id: I.nextId++,
               kind: "solution",
               scope: scopeId,
-              color: t.color,
+              color: showColor,
               anchor: t.anchor,
               rects
             });
           }
           render();
         }
+
 
         function setProxyMsg(proxyEl, txt){
           const msg = proxyEl.querySelector(".hlq-msg");
@@ -1734,6 +1737,7 @@ markyellow: <span class="lia-hl-target" data-hl-expected="yellow" data-hl-quiz="
 markpink:   <span class="lia-hl-target" data-hl-expected="pink"   data-hl-quiz="default">@0</span>
 markorange: <span class="lia-hl-target" data-hl-expected="orange" data-hl-quiz="default">@0</span>
 
+mark: <span class="lia-hl-target" data-hl-expected="any" data-hl-quiz="default">@0</span>
 
 
 
@@ -1749,6 +1753,11 @@ Markiere die korrekt.
 
 <div class="markerquiz">
 @markred(rot) und @markblue(blau bis blau)
+@TextmarkerQuiz
+</div>
 
+
+<div class="markerquiz">
+@mark(dieser Teil ist zu markieren – Farbe egal)
 @TextmarkerQuiz
 </div>
