@@ -15,8 +15,6 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/NavigationREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/TimerREADME.md
 
-import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
-import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
 
 
@@ -30,6 +28,20 @@ import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
 
 # Geo 1
+
+
+
+Markiere die korrekt.
+
+<div class="markerquiz">
+@markred(rot) und @markblue(blau bis blau)
+
+@TextmarkerQuiz
+</div>
+
+
+
+
 
 
 __$b)\;\;$__ 12/5
