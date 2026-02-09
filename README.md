@@ -7900,9 +7900,43 @@ Testzwecke (2 ist Lösung):
 
 ### Textmarker
 
+
 Klicke auf den Stift im Header und markiere im Text wie es dir beliebt. Wechsel Lehrbuch ↔ Präsentation ↔ Slides und ändere die Schriftgröße.
 
+---
 
+> Textmarkerquiz
+
+**Markiere** mit der Textmarkerfunktion die Nomen in Rot und die Verben in blau.
+
+<div class="markerquiz">
+@markred(Haus) und @markblue(rennen laufen gehen)
+@TextmarkerQuiz
+</div>
+
+---
+
+
+```
+<div class="markerquiz">
+@markred(Haus) und @markblue(rennen laufen gehen)
+@TextmarkerQuiz
+</div>
+```
+
+Weitere Beispiele:
+
+- `@markblue(words)`
+
+- `@markred(words)`
+
+- `@markgreen(words)`
+
+- `@markyellow(words)`
+
+- `@markpink(words)`
+
+- `@markorange(words)`
 
 
 
