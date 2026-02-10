@@ -1346,8 +1346,8 @@ const HLQ_OK    = 0.95;  // wie bisher
 const HLQ_WRONG = 0.10;  // >10% falsche Farbe auf dem Target => falsch
 const HLQ_PREC  = 0.55;  // "nicht zu groß markieren" (Precision) 0..1
 const HLQ_PAD   = 2;     // px: Target leicht aufblasen für Robustheit
-const HLQ_EXTRA_OUT_FRAC = 0.35; // max. 22% der Markierungsfläche darf außerhalb liegen
-const HLQ_EXTRA_OUT_ABS  = 180;  // kleine Schlampigkeit (ein paar Pixel/Leerzeichen) erlauben
+const HLQ_EXTRA_OUT_FRAC = 0.22; // max. 22% der Markierungsfläche darf außerhalb liegen
+const HLQ_EXTRA_OUT_ABS  = 80;  // kleine Schlampigkeit (ein paar Pixel/Leerzeichen) erlauben
 
 function expandRect(r, p){
   return { x:r.x-p, y:r.y-p, w:r.w+2*p, h:r.h+2*p };
@@ -1399,7 +1399,20 @@ function rectsTouchTargets(userRects, targetRects, pad = HLQ_PAD){
 
 function mergedUserRects(scopeId, mode, refColor){
   // mode: "all" | "only" | "except"
-  const all = [];
+  // Ziel: Rects innerhalb eines einzelnen User-Highlights "aufräumen"/mengen,
+  //       aber niemals verschiedene Highlights zusammenkleben (wichtig für Precision).
+
+  const out = [];
+
+  const OPT = {
+    yTol: 4,
+    gapTol: 12, // innerhalb EINER Markierung dürfen Leerzeichen "geschlossen" werden
+    minW: 2,
+    minH: 2,
+    padX: 0,
+    padY: 0
+  };
+
   for (const h of I.HL){
     if ((h.kind || "user") !== "user") continue;
     if ((h.scope || "global") !== scopeId) continue;
@@ -1407,18 +1420,20 @@ function mergedUserRects(scopeId, mode, refColor){
     if (mode === "only"   && h.color !== refColor) continue;
     if (mode === "except" && h.color === refColor) continue;
 
-    if (Array.isArray(h.rects)) all.push(...h.rects);
+    const rs = Array.isArray(h.rects) ? h.rects : [];
+    if (!rs.length) continue;
+
+    // WICHTIG: Merge nur innerhalb dieses EINEN Highlights.
+    // Dadurch können zwei getrennte Markierungen (z.B. "Katze" und "Schritt")
+    // nicht mehr zu einem breiten Balken zusammenkleben.
+    const mergedThisHighlight = mergeRectsToLines(rs, OPT);
+
+    out.push(...mergedThisHighlight);
   }
-  if (!all.length) return [];
-  return mergeRectsToLines(all, {
-    yTol: 4,
-    gapTol: 12,
-    minW: 2,
-    minH: 2,
-    padX: 0,
-    padY: 0
-  });
+
+  return out;
 }
+
 
 function matchTarget(scopeId, expectedColor, targetRects){
   const wantAny = (expectedColor === "any" || expectedColor === "*" || !expectedColor);
@@ -1780,6 +1795,94 @@ CONTENT_DOC.addEventListener("click", (e)=>{
     }
 
 
+function trimRangeWhitespace(range){
+  if (!range) return false;
+
+  const WS = (ch) =>
+    ch === " "  || ch === "\t" || ch === "\n" || ch === "\r" ||
+    ch === "\u00A0" || ch === "\u2009" || ch === "\u202F"; // NBSP + schmale Spaces
+
+  // Textknoten einsammeln, die im Range liegen
+  const root = range.commonAncestorContainer.nodeType === 1
+    ? range.commonAncestorContainer
+    : range.commonAncestorContainer.parentNode;
+
+  if (!root) return false;
+
+  const tw = CONTENT_DOC.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node){
+      try{
+        return range.intersectsNode(node) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      } catch(e){
+        return NodeFilter.FILTER_REJECT;
+      }
+    }
+  });
+
+  const segs = [];
+  let n;
+  while ((n = tw.nextNode())){
+    const text = n.nodeValue || "";
+    if (!text.length) continue;
+
+    let s = 0;
+    let e = text.length;
+
+    if (n === range.startContainer) s = range.startOffset;
+    if (n === range.endContainer)   e = range.endOffset;
+
+    // wenn Range-Container Element ist (selten), lassen wir s/e bei 0/len
+    // -> wird dann über intersectsNode trotzdem sinnvoll abgedeckt
+
+    s = Math.max(0, Math.min(s, text.length));
+    e = Math.max(0, Math.min(e, text.length));
+    if (e <= s) continue;
+
+    segs.push({ node: n, s, e, text: text.slice(s, e) });
+  }
+
+  if (!segs.length) return false;
+
+  // neuen Start suchen (erstes Nicht-Whitespace-Zeichen)
+  let newStartNode = null, newStartOff = 0;
+  for (const seg of segs){
+    const t = seg.text;
+    let i = 0;
+    while (i < t.length && WS(t[i])) i++;
+    if (i < t.length){
+      newStartNode = seg.node;
+      newStartOff  = seg.s + i;
+      break;
+    }
+  }
+
+  // neuen Endpunkt suchen (letztes Nicht-Whitespace-Zeichen)
+  let newEndNode = null, newEndOff = 0;
+  for (let k = segs.length - 1; k >= 0; k--){
+    const seg = segs[k];
+    const t = seg.text;
+    let i = t.length - 1;
+    while (i >= 0 && WS(t[i])) i--;
+    if (i >= 0){
+      newEndNode = seg.node;
+      newEndOff  = seg.s + i + 1; // Range-End ist exklusiv
+      break;
+    }
+  }
+
+  if (!newStartNode || !newEndNode) return false;
+
+  try{
+    range.setStart(newStartNode, newStartOff);
+    range.setEnd(newEndNode, newEndOff);
+    return !range.collapsed;
+  } catch(e){
+    return false;
+  }
+}
+
+
+
   function addHighlightFromSelection(){
     const sel = CONTENT_WIN.getSelection ? CONTENT_WIN.getSelection() : null;
     if (!sel || sel.rangeCount === 0) return;
@@ -1796,6 +1899,13 @@ CONTENT_DOC.addEventListener("click", (e)=>{
 
     // Range klonen (sicherer, falls UI/DOM irgendwas macht)
     const range = range0.cloneRange();
+
+    // >>> Doppelclick/Schlampigkeit: führende/nachfolgende Whitespaces ignorieren
+    if (!trimRangeWhitespace(range)) {
+      try { sel.removeAllRanges(); } catch(e){}
+      return;
+    }
+
 
     // Rechtecke packen
     const packed = packedRectsFromRange(range);
@@ -1978,24 +2088,13 @@ Markiere die korrekt.
 </div>
 
 
-Markiere alle Normen rot.
 
+Aufgabe 1:
 <div class="markerquiz">
-@markred(Mimi) war eine kleine @markred(Katze) mit glänzendem, schwarzem @markred(Fell). Jeden @markred(Morgen) saß sie am @markred(Fenster) und beobachtete die @markred(Tauben) im @markred(Hof). Eines @markred(Tages) hörte sie ein leises @markred(Piepen) aus dem @markred(Gebüsch). Neugierig schlich sie hin, ganz vorsichtig, @markred(Schritt) für @markred(Schritt).
+@markred(Katze) @markred(Schritt).
 @TextmarkerQuiz
 </div>
 
-
-
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
 
 
