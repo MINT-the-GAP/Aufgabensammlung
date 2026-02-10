@@ -1346,7 +1346,7 @@ const HLQ_OK    = 0.95;  // wie bisher
 const HLQ_WRONG = 0.10;  // >10% falsche Farbe auf dem Target => falsch
 const HLQ_PREC  = 0.55;  // "nicht zu groß markieren" (Precision) 0..1
 const HLQ_PAD   = 2;     // px: Target leicht aufblasen für Robustheit
-const HLQ_EXTRA_OUT_FRAC = 0.30; // max. 22% der Markierungsfläche darf außerhalb liegen
+const HLQ_EXTRA_OUT_FRAC = 0.35; // max. 22% der Markierungsfläche darf außerhalb liegen
 const HLQ_EXTRA_OUT_ABS  = 180;  // kleine Schlampigkeit (ein paar Pixel/Leerzeichen) erlauben
 
 function expandRect(r, p){
