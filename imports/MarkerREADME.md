@@ -1346,8 +1346,8 @@ const HLQ_OK    = 0.95;  // wie bisher
 const HLQ_WRONG = 0.10;  // >10% falsche Farbe auf dem Target => falsch
 const HLQ_PREC  = 0.55;  // "nicht zu groß markieren" (Precision) 0..1
 const HLQ_PAD   = 2;     // px: Target leicht aufblasen für Robustheit
-const HLQ_EXTRA_OUT_FRAC = 0.10; // max. 22% der Markierungsfläche darf außerhalb liegen
-const HLQ_EXTRA_OUT_ABS  = 50;  // kleine Schlampigkeit (ein paar Pixel/Leerzeichen) erlauben
+const HLQ_EXTRA_OUT_FRAC = 0.25; // max. 22% der Markierungsfläche darf außerhalb liegen
+const HLQ_EXTRA_OUT_ABS  = 150;  // kleine Schlampigkeit (ein paar Pixel/Leerzeichen) erlauben
 
 function expandRect(r, p){
   return { x:r.x-p, y:r.y-p, w:r.w+2*p, h:r.h+2*p };
@@ -1978,6 +1978,12 @@ Markiere die korrekt.
 </div>
 
 
+Markiere alle Normen rot.
+
+<div class="markerquiz">
+@markred(Mimi) war eine kleine @markred(Katze) mit glänzendem, schwarzem @markred(Fell). Jeden @markred(Morgen) saß sie am @markred(Fenster) und beobachtete die @markred(Tauben) im @markred(Hof). Eines @markred(Tages) hörte sie ein leises @markred(Piepen) aus dem @markred(Gebüsch). Neugierig schlich sie hin, ganz vorsichtig, @markred(Schritt) für @markred(Schritt).
+@TextmarkerQuiz
+</div>
 
 
 
