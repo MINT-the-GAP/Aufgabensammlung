@@ -572,9 +572,48 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{
     CONTENT_DOC.body.appendChild(overlay);
   }
 
-  function currentScroll(){
-    return { x:(CONTENT_WIN.scrollX||0), y:(CONTENT_WIN.scrollY||0) };
+function isScrollable(el){
+  if (!el || el === CONTENT_DOC.body || el === CONTENT_DOC.documentElement) return false;
+  const cs = CONTENT_WIN.getComputedStyle(el);
+  const oy = (cs.overflowY || "").toLowerCase();
+  const ox = (cs.overflowX || "").toLowerCase();
+
+  const y = (oy === "auto" || oy === "scroll" || oy === "overlay") && (el.scrollHeight > el.clientHeight + 2);
+  const x = (ox === "auto" || ox === "scroll" || ox === "overlay") && (el.scrollWidth  > el.clientWidth  + 2);
+  return y || x;
+}
+
+function detectScrollHost(){
+  // Lia: meist scrollt main oder ein Parent davon
+  let n = CONTENT_DOC.querySelector("main") || CONTENT_DOC.body;
+  for (let i=0; i<10 && n && n !== CONTENT_DOC.body; i++){
+    if (isScrollable(n)) return n;
+    n = n.parentElement;
   }
+  return null; // => window scroll
+}
+
+function getScrollCtx(){
+  const host = detectScrollHost();
+  if (host){
+    const r = host.getBoundingClientRect();
+    return {
+      host,
+      sx: host.scrollLeft || 0,
+      sy: host.scrollTop  || 0,
+      ox: r.left,   // Host-Viewport-Origin
+      oy: r.top
+    };
+  }
+  return {
+    host: null,
+    sx: CONTENT_WIN.scrollX || 0,
+    sy: CONTENT_WIN.scrollY || 0,
+    ox: 0,
+    oy: 0
+  };
+}
+
 
 
   // =========================
@@ -645,12 +684,18 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{
     const rects = Array.from(range.getClientRects ? range.getClientRects() : []);
     if (!rects.length) return [];
 
-    const sc = currentScroll();
+const S = getScrollCtx();
 
-    // 1) pack -> doc coords
-    const raw = rects
-      .filter(r => r.width > 0.5 && r.height > 0.5)
-      .map(r => ({ x: r.left + sc.x, y: r.top + sc.y, w: r.width, h: r.height }));
+// 1) pack -> Host-Content-Koordinaten
+const raw = rects
+  .filter(r => r.width > 0.5 && r.height > 0.5)
+  .map(r => ({
+    x: (r.left - S.ox) + S.sx,
+    y: (r.top  - S.oy) + S.sy,
+    w: r.width,
+    h: r.height
+  }));
+
 
     if (!raw.length) return [];
 
@@ -854,7 +899,7 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{
 
   function render(){
     overlay.innerHTML = "";
-    const sc = currentScroll();
+    const S = getScrollCtx();
 
     for (const item of I.HL){
       for (const r of item.rects){
@@ -862,8 +907,8 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{
         el.className = "lia-hl-rect";
         el.setAttribute("data-hl", item.color);
         el.setAttribute("data-id", String(item.id));
-        el.style.left   = `${Math.round(r.x - sc.x)}px`;
-        el.style.top    = `${Math.round(r.y - sc.y)}px`;
+          el.style.left = `${Math.round(S.ox + (r.x - S.sx))}px`;
+          el.style.top  = `${Math.round(S.oy + (r.y - S.sy))}px`;
         el.style.width  = `${Math.round(r.w)}px`;
         el.style.height = `${Math.round(r.h)}px`;
         overlay.appendChild(el);
@@ -922,7 +967,24 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{
 
 
 
-  CONTENT_WIN.addEventListener("scroll", render, { passive:true });
+let __renderPending = false;
+function scheduleRender(){
+  if (__renderPending) return;
+  __renderPending = true;
+  ROOT_WIN.requestAnimationFrame(() => {
+    __renderPending = false;
+    if (!I.__alive) return;
+    render();
+  });
+}
+
+CONTENT_WIN.addEventListener("scroll", scheduleRender, { passive:true });
+
+// scrollt in Lia häufig auf main/Container: scroll bubbled nicht, aber capture greift!
+CONTENT_DOC.addEventListener("scroll", scheduleRender, { passive:true, capture:true });
+
+
+
   CONTENT_WIN.addEventListener("resize", () => { adaptUIVars(); checkLayoutAndRecalc(); render(); });
 
 
@@ -1279,51 +1341,197 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{
           });
         }
 
-        function bestUserMatch(scopeId, color, targetRects){
-          const wantAny = (color === "any" || color === "*" || !color);
+// Schwellen: "genug richtig" und "maximal erlaubte falsche Farbe auf dem Target"
+const HLQ_OK    = 0.95;  // wie bisher
+const HLQ_WRONG = 0.10;  // >10% falsche Farbe auf dem Target => falsch
+const HLQ_PREC  = 0.55;  // "nicht zu groß markieren" (Precision) 0..1
+const HLQ_PAD   = 2;     // px: Target leicht aufblasen für Robustheit
+const HLQ_EXTRA_OUT_FRAC = 0.10; // max. 22% der Markierungsfläche darf außerhalb liegen
+const HLQ_EXTRA_OUT_ABS  = 50;  // kleine Schlampigkeit (ein paar Pixel/Leerzeichen) erlauben
 
-          // Alle User-Rects im Scope sammeln (bei "any": alle Farben)
-          const all = [];
-          for (const h of I.HL){
-            if ((h.kind || "user") !== "user") continue;
-            if ((h.scope || "global") !== scopeId) continue;
-            if (!wantAny && h.color !== color) continue;
-            if (Array.isArray(h.rects)) all.push(...h.rects);
-          }
-          if (!all.length) return 0;
+function expandRect(r, p){
+  return { x:r.x-p, y:r.y-p, w:r.w+2*p, h:r.h+2*p };
+}
 
-          const merged = mergeRectsToLines(all, {
-            yTol: 4,
-            gapTol: 12,
-            minW: 2,
-            minH: 2,
-            padX: 0,
-            padY: 0
-          });
+function interSum(targetRects, userRects){
+  let inter = 0;
+  for (const tr of (targetRects || [])){
+    for (const ur of (userRects || [])){
+      inter += interArea(tr, ur);
+    }
+  }
+  return inter;
+}
 
-          return overlapScore(targetRects, merged);
-        }
+// NUR die User-Rects nehmen, die wirklich am Target "dranhängen"
+function subsetRectsByTarget(userRects, targetRects, pad = HLQ_PAD){
+  const out = [];
+  const tExp = (targetRects || []).map(r => expandRect(r, pad));
+
+  for (const ur of (userRects || [])){
+    let hit = false;
+    for (const tr of tExp){
+      if (interArea(tr, ur) > 0){
+        hit = true;
+        break;
+      }
+    }
+    if (hit) out.push(ur);
+  }
+  return out;
+}
+
+
+// True, wenn irgendein User-Rect irgendein Target-Rect berührt (mit Pad)
+function rectsTouchTargets(userRects, targetRects, pad = HLQ_PAD){
+  if (!userRects?.length || !targetRects?.length) return false;
+  const tExp = targetRects.map(r => expandRect(r, pad));
+
+  for (const ur of userRects){
+    for (const tr of tExp){
+      if (interArea(tr, ur) > 0) return true;
+    }
+  }
+  return false;
+}
 
 
 
-        function evalScope(scopeEl){
-          ensureScopeIds();
-          const scopeId = scopeEl?.dataset?.hlScope || "global";
-          const targets = collectTargetsInScope(scopeEl);
-          if (!targets.length) return { ok:0, total:0, pass:false };
+function mergedUserRects(scopeId, mode, refColor){
+  // mode: "all" | "only" | "except"
+  const all = [];
+  for (const h of I.HL){
+    if ((h.kind || "user") !== "user") continue;
+    if ((h.scope || "global") !== scopeId) continue;
 
-          recalcAllHighlights();
+    if (mode === "only"   && h.color !== refColor) continue;
+    if (mode === "except" && h.color === refColor) continue;
 
-          let ok = 0;
-          for (const t of targets){
-            const r = rangeFromAnchor(t.anchor);
-            if (!r) continue;
-            const tRects = packedRectsFromRange(r);
-            const score = bestUserMatch(scopeId, t.color, tRects);
-            if (score >= 0.75) ok++;
-          }
-          return { ok, total: targets.length, pass: ok === targets.length };
-        }
+    if (Array.isArray(h.rects)) all.push(...h.rects);
+  }
+  if (!all.length) return [];
+  return mergeRectsToLines(all, {
+    yTol: 4,
+    gapTol: 12,
+    minW: 2,
+    minH: 2,
+    padX: 0,
+    padY: 0
+  });
+}
+
+function matchTarget(scopeId, expectedColor, targetRects){
+  const wantAny = (expectedColor === "any" || expectedColor === "*" || !expectedColor);
+
+  // 1) gute User-Rects holen (je nach erwarteter Farbe)
+  const goodAll = wantAny
+    ? mergedUserRects(scopeId, "all")
+    : mergedUserRects(scopeId, "only", expectedColor);
+
+  // 2) und lokal am Target einschränken
+  const goodNear = subsetRectsByTarget(goodAll, targetRects, HLQ_PAD);
+
+  const tA = rectArea(targetRects);
+  const uA = rectArea(goodNear);
+
+  const inter = (tA > 0 && uA > 0) ? interSum(targetRects, goodNear) : 0;
+
+  const sGood = (tA > 0) ? (inter / tA) : 0; // Recall
+  const sPrec = (uA > 0) ? (inter / uA) : 0; // Precision (zu groß markiert => klein)
+
+  // ANY: keine falsche Farbe bewerten, aber Precision trotzdem (sonst "ganzer Satz" Cheat)
+  if (wantAny){
+    return { pass: (sGood >= HLQ_OK) && (sPrec >= HLQ_PREC), sGood, sBad: 0, sPrec };
+  }
+
+  // 3) falsche Farben: nur das, was am Target anliegt
+  const badAll  = mergedUserRects(scopeId, "except", expectedColor);
+  const badNear = subsetRectsByTarget(badAll, targetRects, HLQ_PAD);
+
+  const badInter = (tA > 0) ? interSum(targetRects, badNear) : 0;
+  const sBad = (tA > 0) ? (badInter / tA) : 0;
+
+  const pass =
+    (sGood >= HLQ_OK) &&
+    (sPrec >= HLQ_PREC) &&
+    (sBad  <= HLQ_WRONG);
+
+  return { pass, sGood, sBad, sPrec };
+}
+
+
+
+
+
+function evalScope(scopeEl){
+  ensureScopeIds();
+  const scopeId = scopeEl?.dataset?.hlScope || "global";
+  const targets = collectTargetsInScope(scopeEl);
+  if (!targets.length) return { ok:0, total:0, pass:false, badColor:0, tooWide:0, extra:0 };
+
+  recalcAllHighlights();
+
+  // 1) Alle Target-Rects sammeln (Union)
+  const allTargetRects = [];
+
+  let ok = 0;
+  let badColor = 0;
+  let tooWide = 0;
+
+  for (const t of targets){
+    const r = rangeFromAnchor(t.anchor);
+    if (!r) continue;
+
+    const tRects = packedRectsFromRange(r);
+    if (tRects?.length) allTargetRects.push(...tRects);
+
+    const m = matchTarget(scopeId, t.color, tRects);
+
+    if (m.sBad  > HLQ_WRONG) badColor++;
+    if (m.sPrec < HLQ_PREC)  tooWide++;
+    if (m.pass) ok++;
+  }
+
+  // 2) Extra-Markierungen: jede User-Markierung muss überwiegend AUF Targets liegen
+  let extra = 0;
+
+  // Targets leicht aufblasen (nur minimal!), um Pixel-/Wrap-Rauschen zu tolerieren
+  const allTargetRectsExp = allTargetRects.map(r => expandRect(r, HLQ_PAD));
+
+  for (const h of I.HL){
+    if ((h.kind || "user") !== "user") continue;
+    if ((h.scope || "global") !== scopeId) continue;
+    if (!Array.isArray(h.rects) || !h.rects.length) continue;
+
+    const uA = rectArea(h.rects);
+    if (uA <= 0) continue;
+
+    const inter = interSum(allTargetRectsExp, h.rects); // Schnittfläche mit Targets
+    if (inter <= 0){
+      extra++;
+      continue;
+    }
+
+    const outA   = Math.max(0, uA - inter);   // Fläche außerhalb Targets
+    const outFrac= outA / uA;
+
+    // „und“ markieren => fast alles außerhalb => extra++
+    // kleine Überstände/Leerzeichen => toleriert
+    if (outA > HLQ_EXTRA_OUT_ABS && outFrac > HLQ_EXTRA_OUT_FRAC){
+      extra++;
+    }
+  }
+
+
+  const pass =
+    (ok === targets.length) &&
+    (badColor === 0) &&
+    (tooWide === 0) &&
+    (extra === 0);
+
+  return { ok, total: targets.length, pass, badColor, tooWide, extra };
+}
+
 
         function solveScope(scopeEl){
           ensureScopeIds();
@@ -1425,7 +1633,14 @@ function handleHLQAction(act, proxy, btnRef){
 
   if (act === "check"){
     const r = evalScope(scopeEl);
-    setProxyMsg(proxy, r.total ? `Treffer: ${r.ok}/${r.total}` : "Keine Targets gefunden.");
+    setProxyMsg(proxy,
+      r.total
+        ? `Treffer: ${r.ok}/${r.total}` +
+          (r.badColor ? ` — falsche Farbe: ${r.badColor}` : "") +
+          (r.tooWide  ? ` — zu groß: ${r.tooWide}` : "") +
+          (r.extra   ? ` — extra: ${r.extra}` : "")
+        : "Keine Targets gefunden."
+    );
     setLiaValue(input, r.pass ? 1 : 0);
     return;
   }
@@ -1752,7 +1967,7 @@ mark: <span class="lia-hl-target" data-hl-expected="any" data-hl-quiz="default">
 Markiere die korrekt.
 
 <div class="markerquiz">
-@markred(rot) und @markblue(blau bis blau)
+@markred(rot) und @markblue(blau bis blau)  
 @TextmarkerQuiz
 </div>
 
@@ -1761,3 +1976,23 @@ Markiere die korrekt.
 @mark(dieser Teil ist zu markieren – Farbe egal)
 @TextmarkerQuiz
 </div>
+
+
+
+
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+
+
+
+
+
