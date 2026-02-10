@@ -93,11 +93,13 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{ display: inline !important; }
 
   const prev = REG.instances[DOC_ID];
   if (prev?.__alive){
+    try { prev.moSlides?.disconnect(); } catch(e){}
     try { prev.__alive = false; } catch(e){}
     try { prev.moDock?.disconnect(); } catch(e){}
     try { prev.moTheme?.disconnect(); } catch(e){}
     try { prev.roLayout?.disconnect(); } catch(e){}
     try { if (prev.__layoutTimer) ROOT_WIN.clearInterval(prev.__layoutTimer); } catch(e){}
+    try { if (prev.__slideSyncTimer) ROOT_WIN.clearInterval(prev.__slideSyncTimer); } catch(e){}
     try { CONTENT_DOC.getElementById("lia-hl-overlay")?.remove(); } catch(e){}
   }
 
@@ -110,10 +112,12 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{ display: inline !important; }
     nextId: 1,
     moDock: null,
     moTheme: null,
+    moSlides: null, 
     roLayout: null,
     roNodes: new Set(),
     roPending: false,
-    ticking: false
+    ticking: false,
+  __activeSlide: null
   };
 
 
@@ -131,12 +135,12 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{ display: inline !important; }
 
   ensureStyle(CONTENT_DOC, "lia-hl-style-content-v4", `
     :root{
-      --hl-yellow: rgba(255, 247, 0, 0.81);
+      --hl-yellow: rgba(255, 247, 0, 0.45);
       --hl-green:  rgba(144, 238, 144, 0.45);
       --hl-blue:   rgba(0, 76, 255, 0.45);
-      --hl-pink:   rgba(255, 0, 212, 0.6);
-      --hl-orange: rgba(255, 153, 0, 0.55);
-      --hl-red:    rgba(255, 0, 0, 0.4);
+      --hl-pink:   rgba(255, 0, 212, 0.45);
+      --hl-orange: rgba(255, 153, 0, 0.45);
+      --hl-red:    rgba(255, 0, 0, 0.45);
 
       --hl-ui-bg: rgba(255,255,255,.92);
       --hl-ui-fg: rgba(0,0,0,.88);
@@ -876,15 +880,23 @@ const raw = rects
 
 
 
-  function recalcAllHighlights(){
-    for (const item of I.HL){
-      if (!item.anchor) continue;
-      const r = rangeFromAnchor(item.anchor);
-      if (!r) continue;
-      const packed = packedRectsFromRange(r);
-      if (packed.length) item.rects = packed;
+function recalcAllHighlights(){
+  for (const item of I.HL){
+    if (!item.anchor) continue;
+
+    const r = rangeFromAnchor(item.anchor);
+
+    // WICHTIG: wenn Range nicht mehr rekonstruierbar -> rects leeren
+    if (!r){
+      item.rects = [];
+      continue;
     }
+
+    // WICHTIG: IMMER überschreiben, auch wenn leer (hidden slide => leere rects)
+    item.rects = packedRectsFromRange(r) || [];
   }
+}
+
 
   function checkLayoutAndRecalc(){
     const sig = layoutSignature();
@@ -896,25 +908,54 @@ const raw = rects
   }
 
 
+function getRevealSlideKey(){
+  const h = (ROOT_WIN.location.hash || CONTENT_WIN.location.hash || "").trim();
+  // Reveal nutzt typischerweise "#/h/v" oder "#/h"
+  return (h && h.startsWith("#/")) ? h : null;
+}
+
+
 
   function render(){
     overlay.innerHTML = "";
+
+    const filter = shouldFilterBySlide();
+    let activeSlide = filter ? getActiveSlideId() : null;
+
+    // >>> WICHTIG: wenn wir im Folienmodus sind, aber die Folie gerade nicht erkannt wird,
+    // NICHT "alle" rendern (das ist genau dein Bug). Dann lieber gar nichts rendern.
+    if (filter && !activeSlide){
+      return;
+    }
+
+    // Slides merken (damit Wechsel erkannt werden kann)
+    I.__activeSlide = activeSlide || null;
+
+    // Lazy: alten Items slide zuweisen
+    for (const it of I.HL) ensureItemSlide(it);
+
+    const items = (filter && activeSlide)
+      ? I.HL.filter(it => (it.slide || "global") === activeSlide)
+      : I.HL;
+
     const S = getScrollCtx();
 
-    for (const item of I.HL){
+    for (const item of items){
       for (const r of item.rects){
         const el = CONTENT_DOC.createElement("div");
         el.className = "lia-hl-rect";
         el.setAttribute("data-hl", item.color);
         el.setAttribute("data-id", String(item.id));
-          el.style.left = `${Math.round(S.ox + (r.x - S.sx))}px`;
-          el.style.top  = `${Math.round(S.oy + (r.y - S.sy))}px`;
+        el.style.left = `${Math.round(S.ox + (r.x - S.sx))}px`;
+        el.style.top  = `${Math.round(S.oy + (r.y - S.sy))}px`;
         el.style.width  = `${Math.round(r.w)}px`;
         el.style.height = `${Math.round(r.h)}px`;
         overlay.appendChild(el);
       }
     }
   }
+
+
 
 
   function scheduleForcedRecalc(){
@@ -1250,8 +1291,20 @@ CONTENT_DOC.addEventListener("scroll", scheduleRender, { passive:true, capture:t
 
     if (clearBtn){
       clearBtn.addEventListener("click", ()=>{
-        I.HL = [];
+        for (const it of I.HL) ensureItemSlide(it);
+
+        if (shouldFilterBySlide()){
+          const sid = getActiveSlideId();
+          if (sid){
+            I.HL = I.HL.filter(it => (it.slide || "global") !== sid);
+          } else {
+            I.HL = [];
+          }
+        } else {
+          I.HL = [];
+        }
         render();
+
         I.state.panelOpen = false;
         I.state.tool = "mark";
         applyUI();
@@ -1272,6 +1325,289 @@ CONTENT_DOC.addEventListener("scroll", scheduleRender, { passive:true, capture:t
       ROOT_WIN.visualViewport.addEventListener("scroll", () => positionPanelSmart());
     }
   }
+
+
+
+
+
+
+
+function ensureRevealSlideObserver(){
+  if (I.moSlides) return;
+
+  const rr = getRevealSlidesRoot();
+  if (!rr) return;
+
+  I.moSlides = new CONTENT_WIN.MutationObserver(() => {
+    // Reveal toggelt Klassen (present/past/future) während Transition.
+    // In der Phase kann activeSlideId kurz NULL sein -> dann müssen wir OVERLAY leeren.
+    checkSlideAndRender(true);
+  });
+
+  I.moSlides.observe(rr, {
+    subtree: true,
+    attributes: true,
+    attributeFilter: ["class", "style", "aria-hidden"],
+    childList: true
+  });
+}
+
+
+
+
+
+
+
+function getRevealSlidesRoot(){
+  return CONTENT_DOC.querySelector(".reveal .slides") || null;
+}
+
+function getSlideCandidates(){
+  // 1) Reveal.js (Lia Präsentationsmodus) => das ist der stabile Weg
+  const rr = getRevealSlidesRoot();
+  if (rr){
+    // Alle sections sind "slide-ish"; current slide hat class "present"
+    const secs = Array.from(rr.querySelectorAll("section"));
+    // uniq
+    return secs.filter((el,i,arr)=> arr.indexOf(el) === i);
+  }
+
+  // 2) Fallback (Nicht-Presentation / anderer Modus)
+  const main = CONTENT_DOC.querySelector("main") || CONTENT_DOC.body;
+
+  let slides = Array.from(main.querySelectorAll(
+    "section[aria-hidden], section[data-index], section[data-slide], section.lia-slide, section.lia-section"
+  ));
+
+  if (!slides.length){
+    slides = Array.from(main.querySelectorAll("section"));
+  }
+
+  if (!slides.length){
+    slides = Array.from(main.children).filter(el =>
+      el && (el.tagName === "SECTION" || el.tagName === "ARTICLE")
+    );
+  }
+
+  return slides.filter((el,i,arr)=> arr.indexOf(el) === i);
+}
+
+function ensureSlideIds(){
+  const slides = getSlideCandidates();
+  for (let i = 0; i < slides.length; i++){
+    const s = slides[i];
+    if (!s.dataset.hlSlide) s.dataset.hlSlide = "F" + (i+1);
+  }
+}
+
+function slideElFromNode(node){
+  ensureSlideIds();
+  const el = (node && node.nodeType === 1) ? node : node?.parentElement;
+  return el?.closest?.("[data-hl-slide]") || null;
+}
+
+function slideIdFromNode(node){
+  const s = slideElFromNode(node);
+  return s?.dataset?.hlSlide || "global";
+}
+
+function shouldFilterBySlide(){
+  // Präsentationsmodus (Reveal) => immer filtern
+  if (getRevealSlidesRoot()) return true;
+
+  const slides = getSlideCandidates();
+  if (slides.length < 2) return false;
+
+  const v =
+    (ROOT_DOC.documentElement.getAttribute("data-view") ||
+     ROOT_DOC.body.getAttribute("data-view") || "").toLowerCase();
+  if (v.includes("presentation")) return true;
+
+  const cls = (ROOT_DOC.body.className || "").toLowerCase();
+  if (cls.includes("presentation")) return true;
+
+  return true; // dein Use-Case
+}
+
+function getViewportRect(){
+  const w = CONTENT_WIN.innerWidth  || CONTENT_DOC.documentElement.clientWidth  || 0;
+  const h = CONTENT_WIN.innerHeight || CONTENT_DOC.documentElement.clientHeight || 0;
+  return { left:0, top:0, right:w, bottom:h, w, h };
+}
+
+function interAreaDOMRect(r, vp){
+  const x1 = Math.max(r.left, vp.left);
+  const y1 = Math.max(r.top,  vp.top);
+  const x2 = Math.min(r.right, vp.right);
+  const y2 = Math.min(r.bottom,vp.bottom);
+  const w = x2 - x1, h = y2 - y1;
+  return (w > 0 && h > 0) ? (w * h) : 0;
+}
+
+function getActiveSlideEl(){
+  ensureSlideIds();
+
+  // 1) Reveal.js: "present" ist die Wahrheit.
+  const rr = getRevealSlidesRoot();
+  if (rr){
+    const pres = Array.from(rr.querySelectorAll("section.present"));
+    if (pres.length){
+      // bei vertical stacks gibt's ggf. mehrere present => deepest/last ist die aktuelle Folie
+      return pres[pres.length - 1];
+    }
+  }
+
+  // 2) Fallback: explizite Marker
+  const slides = getSlideCandidates();
+  if (!slides.length) return null;
+
+  const explicit = slides.find(s =>
+    s.classList.contains("present") ||
+    s.classList.contains("active") ||
+    s.classList.contains("current") ||
+    s.getAttribute("aria-hidden") === "false" ||
+    s.dataset.active === "true"
+  );
+  if (explicit) return explicit;
+
+  // 3) Fallback: größter Viewport-Overlap
+  const vp = getViewportRect();
+  let best = null, bestA = -1;
+
+  for (const s of slides){
+    const cs = CONTENT_WIN.getComputedStyle(s);
+    if (s.getAttribute("aria-hidden") === "true") continue;
+    if (parseFloat(cs.opacity || "1") < 0.01) continue;
+    if (cs.display === "none" || cs.visibility === "hidden") continue;
+
+    const r = s.getBoundingClientRect();
+    const a = interAreaDOMRect(r, vp);
+    if (a > bestA){
+      bestA = a;
+      best = s;
+    }
+  }
+
+  return best || slides[0];
+}
+
+function getActiveSlideId(){
+  const s = getActiveSlideEl();
+  return s?.dataset?.hlSlide || null;
+}
+
+function ensureItemSlide(item){
+  if (item?.slide) return;
+  if (!item?.anchor) return;
+  const r = rangeFromAnchor(item.anchor);
+  if (!r) return;
+  item.slide = slideIdFromNode(r.commonAncestorContainer);
+}
+
+function checkSlideAndRender(force = false){
+  if (!shouldFilterBySlide()){
+    if (I.__activeSlide !== null || force){
+      I.__activeSlide = null;
+      render();
+    }
+    return;
+  }
+
+  const sid = getActiveSlideId(); // kann während Transition null sein!
+
+  // WICHTIG: auch bei sid===null rendern (damit overlay geleert wird).
+  if (sid !== I.__activeSlide || force){
+    I.__activeSlide = sid || null;
+    render(); // render() leert overlay immer am Anfang; bei sid==null bleibt es leer
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function slideIdFromNode(node){
+  // Präsentation: eindeutig über Hash
+  const hk = getRevealSlideKey();
+  if (hk) return hk;
+
+  const s = slideElFromNode(node);
+  return s?.dataset?.hlSlide || "global";
+}
+
+function shouldFilterBySlide(){
+  // In Reveal/Päsentation IMMER filtern, auch wenn nur 1 Slide im DOM ist
+  if (getRevealSlideKey()) return true;
+
+  const v =
+    (ROOT_DOC.documentElement.getAttribute("data-view") ||
+     ROOT_DOC.body.getAttribute("data-view") || "").toLowerCase();
+  const cls = (ROOT_DOC.body.className || "").toLowerCase();
+
+  if (v.includes("presentation")) return true;
+  if (cls.includes("presentation")) return true;
+
+  // Non-presentation: nur filtern, wenn es wirklich mehrere Kandidaten gibt
+  const slides = getSlideCandidates();
+  return slides.length >= 2;
+}
+
+function getActiveSlideId(){
+  // Präsentation: Hash ist die Wahrheit
+  const hk = getRevealSlideKey();
+  if (hk) return hk;
+
+  const s = getActiveSlideEl();
+  return s?.dataset?.hlSlide || null;
+}
+
+
+
+
+function getViewportRect(){
+  const w = CONTENT_WIN.innerWidth  || CONTENT_DOC.documentElement.clientWidth  || 0;
+  const h = CONTENT_WIN.innerHeight || CONTENT_DOC.documentElement.clientHeight || 0;
+  return { left:0, top:0, right:w, bottom:h, w, h };
+}
+
+function interAreaDOMRect(r, vp){
+  const x1 = Math.max(r.left, vp.left);
+  const y1 = Math.max(r.top,  vp.top);
+  const x2 = Math.min(r.right, vp.right);
+  const y2 = Math.min(r.bottom,vp.bottom);
+  const w = x2 - x1, h = y2 - y1;
+  return (w > 0 && h > 0) ? (w * h) : 0;
+}
+
+
+
+
+// Lazy-Migration: alte HL-Items ohne slide bekommen eins beim Rendern
+function ensureItemSlide(item){
+  if (item?.slide) return;
+  if (!item?.anchor) return;
+  const r = rangeFromAnchor(item.anchor);
+  if (!r) return;
+  item.slide = slideIdFromNode(r.commonAncestorContainer);
+}
+
+
+
+
+
 
 
 
@@ -1397,16 +1733,24 @@ function rectsTouchTargets(userRects, targetRects, pad = HLQ_PAD){
 
 
 
-function mergedUserRects(scopeId, mode, refColor){
-  // mode: "all" | "only" | "except"
-  // Ziel: Rects innerhalb eines einzelnen User-Highlights "aufräumen"/mengen,
-  //       aber niemals verschiedene Highlights zusammenkleben (wichtig für Precision).
 
+function __hlqActiveSlideId(scopeEl){
+  // In Presentation liefert slideIdFromNode() i.d.R. die aktive Folie.
+  // Fallbacks für Course/Edgecases:
+  try { return (typeof slideIdFromNode === "function" && slideIdFromNode(scopeEl)) || "global"; } catch(e){}
+  try { return (typeof getActiveSlideId === "function" && getActiveSlideId()) || "global"; } catch(e){}
+  return "global";
+}
+
+
+
+
+function mergedUserRects(scopeId, slideId, mode, refColor){
   const out = [];
 
   const OPT = {
     yTol: 4,
-    gapTol: 12, // innerhalb EINER Markierung dürfen Leerzeichen "geschlossen" werden
+    gapTol: 12,
     minW: 2,
     minH: 2,
     padX: 0,
@@ -1417,17 +1761,16 @@ function mergedUserRects(scopeId, mode, refColor){
     if ((h.kind || "user") !== "user") continue;
     if ((h.scope || "global") !== scopeId) continue;
 
+    // >>> NEU: nur aktuelle Folie
+    if ((h.slide || "global") !== slideId) continue;
+
     if (mode === "only"   && h.color !== refColor) continue;
     if (mode === "except" && h.color === refColor) continue;
 
     const rs = Array.isArray(h.rects) ? h.rects : [];
     if (!rs.length) continue;
 
-    // WICHTIG: Merge nur innerhalb dieses EINEN Highlights.
-    // Dadurch können zwei getrennte Markierungen (z.B. "Katze" und "Schritt")
-    // nicht mehr zu einem breiten Balken zusammenkleben.
     const mergedThisHighlight = mergeRectsToLines(rs, OPT);
-
     out.push(...mergedThisHighlight);
   }
 
@@ -1435,32 +1778,28 @@ function mergedUserRects(scopeId, mode, refColor){
 }
 
 
-function matchTarget(scopeId, expectedColor, targetRects){
+
+function matchTarget(scopeId, slideId, expectedColor, targetRects){
   const wantAny = (expectedColor === "any" || expectedColor === "*" || !expectedColor);
 
-  // 1) gute User-Rects holen (je nach erwarteter Farbe)
   const goodAll = wantAny
-    ? mergedUserRects(scopeId, "all")
-    : mergedUserRects(scopeId, "only", expectedColor);
+    ? mergedUserRects(scopeId, slideId, "all")
+    : mergedUserRects(scopeId, slideId, "only", expectedColor);
 
-  // 2) und lokal am Target einschränken
   const goodNear = subsetRectsByTarget(goodAll, targetRects, HLQ_PAD);
 
   const tA = rectArea(targetRects);
   const uA = rectArea(goodNear);
-
   const inter = (tA > 0 && uA > 0) ? interSum(targetRects, goodNear) : 0;
 
-  const sGood = (tA > 0) ? (inter / tA) : 0; // Recall
-  const sPrec = (uA > 0) ? (inter / uA) : 0; // Precision (zu groß markiert => klein)
+  const sGood = (tA > 0) ? (inter / tA) : 0;
+  const sPrec = (uA > 0) ? (inter / uA) : 0;
 
-  // ANY: keine falsche Farbe bewerten, aber Precision trotzdem (sonst "ganzer Satz" Cheat)
   if (wantAny){
     return { pass: (sGood >= HLQ_OK) && (sPrec >= HLQ_PREC), sGood, sBad: 0, sPrec };
   }
 
-  // 3) falsche Farben: nur das, was am Target anliegt
-  const badAll  = mergedUserRects(scopeId, "except", expectedColor);
+  const badAll  = mergedUserRects(scopeId, slideId, "except", expectedColor);
   const badNear = subsetRectsByTarget(badAll, targetRects, HLQ_PAD);
 
   const badInter = (tA > 0) ? interSum(targetRects, badNear) : 0;
@@ -1478,20 +1817,20 @@ function matchTarget(scopeId, expectedColor, targetRects){
 
 
 
+
 function evalScope(scopeEl){
   ensureScopeIds();
+
   const scopeId = scopeEl?.dataset?.hlScope || "global";
+  const slideId = __hlqActiveSlideId(scopeEl);  // >>> NEU
+
   const targets = collectTargetsInScope(scopeEl);
   if (!targets.length) return { ok:0, total:0, pass:false, badColor:0, tooWide:0, extra:0 };
 
   recalcAllHighlights();
 
-  // 1) Alle Target-Rects sammeln (Union)
   const allTargetRects = [];
-
-  let ok = 0;
-  let badColor = 0;
-  let tooWide = 0;
+  let ok = 0, badColor = 0, tooWide = 0;
 
   for (const t of targets){
     const r = rangeFromAnchor(t.anchor);
@@ -1500,43 +1839,42 @@ function evalScope(scopeEl){
     const tRects = packedRectsFromRange(r);
     if (tRects?.length) allTargetRects.push(...tRects);
 
-    const m = matchTarget(scopeId, t.color, tRects);
+    const m = matchTarget(scopeId, slideId, t.color, tRects); // >>> NEU
 
     if (m.sBad  > HLQ_WRONG) badColor++;
     if (m.sPrec < HLQ_PREC)  tooWide++;
     if (m.pass) ok++;
   }
 
-  // 2) Extra-Markierungen: jede User-Markierung muss überwiegend AUF Targets liegen
+  // 2) Extra-Markierungen: NUR auf dieser Folie
   let extra = 0;
-
-  // Targets leicht aufblasen (nur minimal!), um Pixel-/Wrap-Rauschen zu tolerieren
   const allTargetRectsExp = allTargetRects.map(r => expandRect(r, HLQ_PAD));
 
   for (const h of I.HL){
     if ((h.kind || "user") !== "user") continue;
     if ((h.scope || "global") !== scopeId) continue;
+
+    // >>> NEU: nur aktuelle Folie
+    if ((h.slide || "global") !== slideId) continue;
+
     if (!Array.isArray(h.rects) || !h.rects.length) continue;
 
     const uA = rectArea(h.rects);
     if (uA <= 0) continue;
 
-    const inter = interSum(allTargetRectsExp, h.rects); // Schnittfläche mit Targets
+    const inter = interSum(allTargetRectsExp, h.rects);
     if (inter <= 0){
       extra++;
       continue;
     }
 
-    const outA   = Math.max(0, uA - inter);   // Fläche außerhalb Targets
+    const outA   = Math.max(0, uA - inter);
     const outFrac= outA / uA;
 
-    // „und“ markieren => fast alles außerhalb => extra++
-    // kleine Überstände/Leerzeichen => toleriert
     if (outA > HLQ_EXTRA_OUT_ABS && outFrac > HLQ_EXTRA_OUT_FRAC){
       extra++;
     }
   }
-
 
   const pass =
     (ok === targets.length) &&
@@ -1548,11 +1886,20 @@ function evalScope(scopeEl){
 }
 
 
+
+
+
         function solveScope(scopeEl){
           ensureScopeIds();
           const scopeId = scopeEl?.dataset?.hlScope || "global";
+          const slideId = __hlqActiveSlideId(scopeEl);  // >>> NEU
         
-          I.HL = I.HL.filter(h => !((h.kind==="solution") && ((h.scope||"global")===scopeId)));
+          // >>> NEU: nur Lösungen dieser Folie+Scope löschen
+          I.HL = I.HL.filter(h => !(
+            (h.kind === "solution") &&
+            ((h.scope || "global") === scopeId) &&
+            ((h.slide || "global") === slideId)
+          ));
         
           const targets = collectTargetsInScope(scopeEl);
           for (const t of targets){
@@ -1560,12 +1907,13 @@ function evalScope(scopeEl){
             if (!r) continue;
             const rects = packedRectsFromRange(r);
         
-            const showColor = (t.color === "any") ? "yellow" : t.color; // <- wichtig
+            const showColor = (t.color === "any") ? "yellow" : t.color;
         
             I.HL.push({
               id: I.nextId++,
               kind: "solution",
               scope: scopeId,
+              slide: slideId,     // >>> wichtig
               color: showColor,
               anchor: t.anchor,
               rects
@@ -1573,6 +1921,7 @@ function evalScope(scopeEl){
           }
           render();
         }
+
 
 
         function setProxyMsg(proxyEl, txt){
@@ -1922,11 +2271,18 @@ function trimRangeWhitespace(range){
       eo: range.endOffset
     };
 
+    const slideId =
+      (typeof getActiveSlideId === "function" && getActiveSlideId())
+    ? getActiveSlideId()
+    : slideIdFromNode(range.commonAncestorContainer);
+
+
     // User-Highlight speichern (WICHTIG: scope statt qid)
     I.HL.push({
       id: I.nextId++,
       kind: "user",
-      scope: scopeId,          // <<< DAS ist der Fix
+      scope: scopeId,
+      slide: slideId,
       color: I.state.color,
       anchor,
       rects: packed
@@ -1991,6 +2347,11 @@ function trimRangeWhitespace(range){
   // Tick (throttled) — Docking stabil, ohne Observer-Loop
   // =========================
   function tick(){
+      if (!I.__hashWired){
+      I.__hashWired = true;
+      try { ROOT_WIN.addEventListener("hashchange", () => checkSlideAndRender(true)); } catch(e){}
+      try { CONTENT_WIN.addEventListener("hashchange", () => checkSlideAndRender(true)); } catch(e){}
+    }
     if (I.ticking) return;
     I.ticking = true;
 
@@ -1999,8 +2360,10 @@ function trimRangeWhitespace(range){
         ensureRootButtonAndPanel();
         detectNavStack();
         ensureLayoutResizeObserver(); 
+        ensureRevealSlideObserver();
         checkLayoutAndRecalc();
         ensureSwatchesOnce();
+        checkSlideAndRender();
         wireUIOnce();
         adaptUIVars();
         applyUI();
@@ -2035,8 +2398,619 @@ function trimRangeWhitespace(range){
     I.__layoutTimer = ROOT_WIN.setInterval(() => {
       if (!I.__alive) return;
       checkLayoutAndRecalc();
+      checkSlideAndRender();  
     }, 350);
   }
+
+
+
+
+
+
+
+
+
+// =========================================================
+// OVERRIDE: Reveal/Lia Slide-Detection (ROOT+CONTENT robust)
+// =========================================================
+function getRevealSlidesRoot(){
+  return (
+    CONTENT_DOC.querySelector(".reveal .slides") ||
+    ROOT_DOC.querySelector(".reveal .slides") ||
+    null
+  );
+}
+
+function getRevealAPI(){
+  // Lia/Reveal ist meist im ROOT, manchmal im CONTENT
+  return ROOT_WIN.Reveal || CONTENT_WIN.Reveal || null;
+}
+
+function activeSlideKeyFromDOM(){
+  const rr = getRevealSlidesRoot();
+  if (!rr) return null;
+
+  const pres = Array.from(rr.querySelectorAll("section.present"));
+  const cur  = pres.length ? pres[pres.length - 1] : null;
+  if (!cur) return null;
+
+  // Reveal setzt oft data-index-h/v/f
+  const hA = cur.getAttribute("data-index-h");
+  const vA = cur.getAttribute("data-index-v");
+  const fA = cur.getAttribute("data-index-f");
+  if (hA !== null) return `D:${hA}/${vA || 0}/${fA || 0}`;
+
+  // Fallback: Indizes aus DOM-Struktur ableiten (horizontal + vertikal)
+  // top-level section = horizontal, inner section = vertical
+  let top = cur;
+  while (top.parentElement && top.parentElement.tagName === "SECTION") top = top.parentElement;
+
+  const hSecs = Array.from(rr.children).filter(el => el.tagName === "SECTION");
+  const h = Math.max(0, hSecs.indexOf(top));
+
+  let v = 0;
+  if (cur !== top){
+    const vSecs = Array.from(top.children).filter(el => el.tagName === "SECTION");
+    v = Math.max(0, vSecs.indexOf(cur));
+  }
+  return `D:${h}/${v}/0`;
+}
+
+function getActiveSlideId(){
+  // 1) Reveal API (am stabilsten)
+  const R = getRevealAPI();
+  if (R && typeof R.getIndices === "function"){
+    const idx = R.getIndices() || {};
+    return `R:${idx.h || 0}/${idx.v || 0}/${idx.f || 0}`;
+  }
+
+  // 2) DOM (present-class)
+  const dk = activeSlideKeyFromDOM();
+  if (dk) return dk;
+
+  // 3) Hash (falls Reveal Router aktiv ist)
+  const h = (ROOT_WIN.location.hash || CONTENT_WIN.location.hash || "");
+  if (h.startsWith("#/")) return `H:${h}`;
+
+  return null;
+}
+
+function shouldFilterBySlide(){
+  // Wenn Reveal irgendwo vorhanden ist -> IMMER filtern
+  if (getRevealSlidesRoot()) return true;
+
+  // sonst: nur filtern, wenn wirklich mehrere Slides sichtbar sind
+  const slides = getSlideCandidates ? getSlideCandidates() : [];
+  return slides.length >= 2;
+}
+
+function slideIdFromNode(node){
+  // Im Präsentationsmodus: aktuelle Folie ist die Wahrheit (DOM kann virtualisiert sein)
+  const sid = getActiveSlideId();
+  if (sid) return sid;
+
+  // Fallback (Non-presentation)
+  try{
+    const s = slideElFromNode ? slideElFromNode(node) : null;
+    return s?.dataset?.hlSlide || "global";
+  } catch(e){
+    return "global";
+  }
+}
+
+// Wichtig: "global" darf nicht leaken -> wenn wir in Reveal sind, binden wir unknown an aktuelle Folie
+function ensureItemSlide(item){
+  if (item?.slide && item.slide !== "global") return;
+  const active = getActiveSlideId();
+
+  if (!item?.anchor){
+    if (active) item.slide = active;
+    return;
+  }
+
+  const r = rangeFromAnchor(item.anchor);
+  if (!r){
+    if (active) item.slide = active;
+    return;
+  }
+
+  let sid = "global";
+  try { sid = slideIdFromNode(r.commonAncestorContainer); } catch(e){}
+
+  if ((sid === "global" || !sid) && active) sid = active;
+  item.slide = sid || "global";
+}
+
+function ensureRevealSlideObserver(){
+  if (I.moSlides) return;
+
+  const rr = getRevealSlidesRoot();
+  if (!rr) return;
+
+  const obsWin = (rr.ownerDocument === ROOT_DOC) ? ROOT_WIN : CONTENT_WIN;
+
+  I.moSlides = new obsWin.MutationObserver(() => {
+    // bei Transition kann activeSlideId kurz null sein -> trotzdem rendern, damit Overlay leer wird
+    checkSlideAndRender(true);
+  });
+
+  I.moSlides.observe(rr, {
+    subtree: true,
+    attributes: true,
+    attributeFilter: ["class", "style", "aria-hidden"],
+    childList: true
+  });
+
+  // Zusätzlich: echte Reveal-Events (wenn verfügbar)
+  if (!I.__revealEvt){
+    I.__revealEvt = true;
+    const R = getRevealAPI();
+    if (R && typeof R.addEventListener === "function"){
+      try { R.addEventListener("ready",        () => checkSlideAndRender(true)); } catch(e){}
+      try { R.addEventListener("slidechanged", () => checkSlideAndRender(true)); } catch(e){}
+      try { R.addEventListener("fragmentshown",() => checkSlideAndRender(true)); } catch(e){}
+      try { R.addEventListener("fragmenthidden",() => checkSlideAndRender(true)); } catch(e){}
+    }
+    try { ROOT_WIN.addEventListener("hashchange", () => checkSlideAndRender(true)); } catch(e){}
+    try { CONTENT_WIN.addEventListener("hashchange", () => checkSlideAndRender(true)); } catch(e){}
+  }
+}
+
+
+
+
+
+
+// =========================================================
+// PATCH v4.2 — Slide-Key + Filter im Präsentationsmodus erzwingen
+// (ganz ans Ende, vor })();
+// =========================================================
+
+function __presentSection(){
+  // auch wenn .reveal/.slides nicht sauber matchen: "present" ist Reveal-Standard
+  return (
+    ROOT_DOC.querySelector("section.present") ||
+    CONTENT_DOC.querySelector("section.present") ||
+    null
+  );
+}
+
+function getRevealAPI(){
+  return ROOT_WIN.Reveal || CONTENT_WIN.Reveal || null;
+}
+
+function __inPresentationMode(){
+  // 1) Reveal-API vorhanden => Präsentation
+  const R = getRevealAPI();
+  if (R) return true;
+
+  // 2) "present" Section => Präsentation
+  if (__presentSection()) return true;
+
+  // 3) Lia/Nightly Marker
+  const v =
+    (ROOT_DOC.documentElement.getAttribute("data-view") ||
+     ROOT_DOC.body.getAttribute("data-view") || "").toLowerCase();
+  const cls = (ROOT_DOC.body.className || "").toLowerCase();
+  if (v.includes("presentation") || cls.includes("presentation")) return true;
+
+  // 4) DOM-Heuristik
+  if (ROOT_DOC.querySelector(".reveal") || CONTENT_DOC.querySelector(".reveal")) return true;
+
+  return false;
+}
+
+function getRevealSlidesRoot(){
+  // nicht zwingend nötig, aber falls vorhanden: gut für Observer
+  return (
+    CONTENT_DOC.querySelector(".reveal .slides") ||
+    ROOT_DOC.querySelector(".reveal .slides") ||
+    CONTENT_DOC.querySelector(".slides") ||
+    ROOT_DOC.querySelector(".slides") ||
+    null
+  );
+}
+
+function getActiveSlideId(){
+  // 1) Reveal API (stabil, auch bei Virtualisierung)
+  const R = getRevealAPI();
+  if (R && typeof R.getIndices === "function"){
+    const idx = R.getIndices() || {};
+    return `R:${idx.h || 0}/${idx.v || 0}/${idx.f || 0}`;
+  }
+
+  // 2) DOM: section.present (+ data-index-*)
+  const cur = __presentSection();
+  if (cur){
+    const hA = cur.getAttribute("data-index-h");
+    const vA = cur.getAttribute("data-index-v");
+    const fA = cur.getAttribute("data-index-f");
+    if (hA !== null) return `D:${hA}/${vA || 0}/${fA || 0}`;
+
+    // DOM-Indizes ableiten
+    let top = cur;
+    while (top.parentElement && top.parentElement.tagName === "SECTION") top = top.parentElement;
+
+    const rr = getRevealSlidesRoot();
+    const hSecs = rr
+      ? Array.from(rr.children).filter(el => el.tagName === "SECTION")
+      : Array.from((top.parentElement || {}).children || []).filter(el => el.tagName === "SECTION");
+
+    const h = Math.max(0, hSecs.indexOf(top));
+
+    let v = 0;
+    if (cur !== top){
+      const vSecs = Array.from(top.children).filter(el => el.tagName === "SECTION");
+      v = Math.max(0, vSecs.indexOf(cur));
+    }
+    return `D:${h}/${v}/0`;
+  }
+
+  // 3) Hash als letzter Fallback (falls vorhanden)
+  const h = (ROOT_WIN.location.hash || CONTENT_WIN.location.hash || "");
+  if (h.startsWith("#/")) return `H:${h}`;
+
+  return null;
+}
+
+function shouldFilterBySlide(){
+  // entscheidend: im Präsentationsmodus IMMER filtern,
+  // auch wenn nur 1 Slide im DOM ist.
+  if (__inPresentationMode()) return true;
+
+  const slides = (typeof getSlideCandidates === "function") ? getSlideCandidates() : [];
+  return slides.length >= 2;
+}
+
+function slideIdFromNode(node){
+  // Präsentation: aktuelle Folie ist die Wahrheit
+  if (__inPresentationMode()){
+    return getActiveSlideId() || "global";
+  }
+
+  // Non-presentation: wie gehabt
+  try{
+    const s = (typeof slideElFromNode === "function") ? slideElFromNode(node) : null;
+    return s?.dataset?.hlSlide || "global";
+  } catch(e){
+    return "global";
+  }
+}
+
+// WICHTIG: im Präsentationsmodus "global" NIE rendern (sonst wandert es)
+function ensureItemSlide(item){
+  if (!item) return;
+
+  // wenn schon sauber gesetzt -> lassen
+  if (item.slide && item.slide !== "global") return;
+
+  // wenn Präsentation: ohne eindeutigen Slide-Key wird NICHT gerendert
+  // (damit verschwindet das "Wandern" sofort; neue Markierungen bekommen korrekte slide-IDs)
+  if (__inPresentationMode()){
+    // versuche noch einmal über Anchor die aktuelle Slide zu taggen (nur falls möglich)
+    const active = getActiveSlideId();
+    if (active && item.anchor){
+      const r = rangeFromAnchor(item.anchor);
+      if (r) item.slide = active;
+    }
+  }
+}
+
+// Reveal-Events auch dann binden, wenn slides-root nicht gefunden wird
+function ensureRevealSlideObserver(){
+  if (I.__revealEvt) return;
+
+  I.__revealEvt = true;
+
+  const R = getRevealAPI();
+  if (R && typeof R.addEventListener === "function"){
+    try { R.addEventListener("ready",        () => checkSlideAndRender(true)); } catch(e){}
+    try { R.addEventListener("slidechanged", () => checkSlideAndRender(true)); } catch(e){}
+    try { R.addEventListener("fragmentshown",() => checkSlideAndRender(true)); } catch(e){}
+    try { R.addEventListener("fragmenthidden",() => checkSlideAndRender(true)); } catch(e){}
+  }
+
+  try { ROOT_WIN.addEventListener("hashchange", () => checkSlideAndRender(true)); } catch(e){}
+  try { CONTENT_WIN.addEventListener("hashchange", () => checkSlideAndRender(true)); } catch(e){}
+
+  // optionaler MutationObserver nur wenn wir einen Root finden
+  const rr = getRevealSlidesRoot();
+  if (rr){
+    const obsWin = (rr.ownerDocument === ROOT_DOC) ? ROOT_WIN : CONTENT_WIN;
+    I.moSlides = new obsWin.MutationObserver(() => checkSlideAndRender(true));
+    try{
+      I.moSlides.observe(rr, { subtree:true, attributes:true, attributeFilter:["class","aria-hidden"], childList:true });
+    } catch(e){}
+  }
+}
+
+// Render härten: im Präsentationsmodus niemals "alles" zeigen
+function render(){
+  overlay.innerHTML = "";
+
+  const filter = shouldFilterBySlide();
+  const activeSlide = filter ? getActiveSlideId() : null;
+
+  // wenn wir filtern wollen, aber keinen Slide-Key haben -> NICHTS rendern (kein Wandern)
+  if (filter && !activeSlide) return;
+
+  I.__activeSlide = activeSlide || null;
+
+  // Slides für Items setzen (oder bewusst "global" lassen)
+  for (const it of I.HL) ensureItemSlide(it);
+
+  const items = (filter && activeSlide)
+    ? I.HL.filter(it => it.slide && it.slide !== "global" && it.slide === activeSlide)
+    : I.HL;
+
+  const S = getScrollCtx();
+
+  for (const item of items){
+    // Safety: wenn Anchor aktuell nicht rekonstruiert werden kann, skip (verhindert Ghosting)
+    if (filter && item.anchor){
+      const r = rangeFromAnchor(item.anchor);
+      if (!r) continue;
+      const packed = packedRectsFromRange(r);
+      if (!packed?.length) continue;
+      item.rects = packed;
+    }
+
+    for (const r of (item.rects || [])){
+      const el = CONTENT_DOC.createElement("div");
+      el.className = "lia-hl-rect";
+      el.setAttribute("data-hl", item.color);
+      el.setAttribute("data-id", String(item.id));
+      el.style.left = `${Math.round(S.ox + (r.x - S.sx))}px`;
+      el.style.top  = `${Math.round(S.oy + (r.y - S.sy))}px`;
+      el.style.width  = `${Math.round(r.w)}px`;
+      el.style.height = `${Math.round(r.h)}px`;
+      overlay.appendChild(el);
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+// =========================================================
+// FINAL OVERRIDE v5.0 — render() funktioniert wieder im Kursmodus
+//   - Presentation: strikt nach aktiver Folie (kein Wandern)
+//   - Non-Presentation: rendert ALLE Markierungen (damit überhaupt sichtbar)
+// =========================================================
+(function FINAL_HL_RENDER_V5(){
+
+  function getRevealAPI(){
+    return ROOT_WIN.Reveal || CONTENT_WIN.Reveal || null;
+  }
+
+  function isPresentation(){
+    // 1) Reveal API
+    if (getRevealAPI()) return true;
+
+    // 2) DOM Marker
+    if (ROOT_DOC.querySelector(".reveal") || CONTENT_DOC.querySelector(".reveal")) return true;
+    if (ROOT_DOC.querySelector("section.present") || CONTENT_DOC.querySelector("section.present")) return true;
+
+    // 3) Hash Router
+    const h = (ROOT_WIN.location.hash || CONTENT_WIN.location.hash || "");
+    if (h.startsWith("#/")) return true;
+
+    // 4) Lia/Nightly view flags
+    const v =
+      ((ROOT_DOC.documentElement.getAttribute("data-view") || "") + " " +
+       (ROOT_DOC.body.getAttribute("data-view") || "") + " " +
+       (ROOT_DOC.body.className || "")).toLowerCase();
+
+    return v.includes("presentation");
+  }
+
+  function presentSection(){
+    return (
+      CONTENT_DOC.querySelector(".reveal section.present") ||
+      ROOT_DOC.querySelector(".reveal section.present") ||
+      CONTENT_DOC.querySelector("section.present") ||
+      ROOT_DOC.querySelector("section.present") ||
+      null
+    );
+  }
+
+  function getSlidesRoot(){
+    return (
+      CONTENT_DOC.querySelector(".reveal .slides") ||
+      ROOT_DOC.querySelector(".reveal .slides") ||
+      CONTENT_DOC.querySelector(".reveal") ||
+      ROOT_DOC.querySelector(".reveal") ||
+      null
+    );
+  }
+
+  function slideKeyFromSection(sec){
+    if (!sec) return null;
+
+    const hA = sec.getAttribute("data-index-h");
+    const vA = sec.getAttribute("data-index-v");
+    const fA = sec.getAttribute("data-index-f");
+    if (hA !== null) return `D:${hA}/${vA || 0}/${fA || 0}`;
+
+    const rr = getSlidesRoot();
+    if (!rr) return "D:0/0/0";
+
+    // horizontal top-level section
+    let top = sec;
+    while (top.parentElement && top.parentElement.tagName === "SECTION") top = top.parentElement;
+
+    const hSecs = Array.from(rr.querySelectorAll(":scope > section"));
+    const h = Math.max(0, hSecs.indexOf(top));
+
+    let v = 0;
+    if (sec !== top){
+      const vSecs = Array.from(top.querySelectorAll(":scope > section"));
+      v = Math.max(0, vSecs.indexOf(sec));
+    }
+    return `D:${h}/${v}/0`;
+  }
+
+  function activeSlideKey(){
+    // 1) Reveal API
+    const R = getRevealAPI();
+    if (R && typeof R.getIndices === "function"){
+      const idx = R.getIndices() || {};
+      return `R:${idx.h || 0}/${idx.v || 0}/${idx.f || 0}`;
+    }
+
+    // 2) DOM present
+    const sec = presentSection();
+    if (sec) return slideKeyFromSection(sec);
+
+    // 3) Hash fallback
+    const h = (ROOT_WIN.location.hash || CONTENT_WIN.location.hash || "");
+    if (h.startsWith("#/")) return `H:${h}`;
+
+    return null;
+  }
+
+  function slideKeyFromNode(node){
+    let el = (node && node.nodeType === 1) ? node : node?.parentElement;
+    if (!el) return null;
+
+    const sec =
+      el.closest?.(".reveal section") ||
+      el.closest?.("section") ||
+      null;
+
+    return slideKeyFromSection(sec);
+  }
+
+  function drawRects(item, S){
+    for (const rr of (item.rects || [])){
+      const el = CONTENT_DOC.createElement("div");
+      el.className = "lia-hl-rect";
+      el.setAttribute("data-hl", item.color);
+      el.setAttribute("data-id", String(item.id));
+
+      el.style.left   = `${Math.round(S.ox + (rr.x - S.sx))}px`;
+      el.style.top    = `${Math.round(S.oy + (rr.y - S.sy))}px`;
+      el.style.width  = `${Math.round(rr.w)}px`;
+      el.style.height = `${Math.round(rr.h)}px`;
+
+      overlay.appendChild(el);
+    }
+  }
+
+  function render_ALL(){
+    overlay.innerHTML = "";
+    const S = getScrollCtx();
+
+    for (const item of (I.HL || [])){
+      if (!item) continue;
+
+      // Rects immer frisch messen (Reflow/Zoom etc.)
+      if (item.anchor){
+        const r = rangeFromAnchor(item.anchor);
+        if (!r) continue;
+        const packed = packedRectsFromRange(r);
+        if (!packed?.length) continue;
+        item.rects = packed;
+      }
+
+      drawRects(item, S);
+    }
+  }
+
+  function render_PRESENTATION_STRICT(){
+    overlay.innerHTML = "";
+    const sid = activeSlideKey();
+    if (!sid) return; // Transition => leer lassen
+
+    I.__activeSlide = sid;
+    const S = getScrollCtx();
+
+    // alte/global Items reparieren
+    for (const it of (I.HL || [])){
+      if (!it) continue;
+      if (it.slide && it.slide !== "global") continue;
+
+      if (it.anchor){
+        const rr = rangeFromAnchor(it.anchor);
+        if (rr){
+          const k = slideKeyFromNode(rr.commonAncestorContainer);
+          if (k) it.slide = k;
+        }
+      }
+    }
+
+    const items = (I.HL || []).filter(it => it && it.slide === sid);
+
+    for (const item of items){
+      if (item.anchor){
+        const r = rangeFromAnchor(item.anchor);
+        if (!r) continue;
+        const packed = packedRectsFromRange(r);
+        if (!packed?.length) continue;
+        item.rects = packed;
+      }
+      drawRects(item, S);
+    }
+  }
+
+  function render_AUTO(){
+    if (isPresentation()) render_PRESENTATION_STRICT();
+    else render_ALL();
+  }
+
+  // >>> render() global überschreiben (alle bisherigen render()-Calls laufen hier rein)
+  try { render = render_AUTO; } catch(e){}
+
+  function forceSync(){
+    if (!I.__alive) return;
+    render_AUTO();
+  }
+
+  // Events: nur triggern (Lia darf normal weiter)
+  try { ROOT_WIN.addEventListener("hashchange", forceSync); } catch(e){}
+  try { CONTENT_WIN.addEventListener("hashchange", forceSync); } catch(e){}
+  try { ROOT_WIN.addEventListener("keydown", forceSync, true); } catch(e){}
+  try { CONTENT_WIN.addEventListener("keydown", forceSync, true); } catch(e){}
+
+  const R = getRevealAPI();
+  if (R && typeof R.addEventListener === "function"){
+    try { R.addEventListener("ready", forceSync); } catch(e){}
+    try { R.addEventListener("slidechanged", forceSync); } catch(e){}
+    try { R.addEventListener("fragmentshown", forceSync); } catch(e){}
+    try { R.addEventListener("fragmenthidden", forceSync); } catch(e){}
+  }
+
+  // Polling NUR wenn Presentation aktiv ist (sonst unnötig)
+  try { if (I.__slideSyncTimer) ROOT_WIN.clearInterval(I.__slideSyncTimer); } catch(e){}
+  I.__slideSyncTimer = ROOT_WIN.setInterval(() => {
+    if (!I.__alive){
+      try { ROOT_WIN.clearInterval(I.__slideSyncTimer); } catch(e){}
+      return;
+    }
+    if (isPresentation()) forceSync();
+  }, 180);
+
+  // Initial
+  forceSync();
+
+})();
+
+
+
+
+
+
+
+
+
+
+
+
 
 })();
 @end
@@ -2072,7 +3046,7 @@ mark: <span class="lia-hl-target" data-hl-expected="any" data-hl-quiz="default">
 
 
 
-# Textmarker
+# Folie 1
 
 Markiere die korrekt.
 
@@ -2081,6 +3055,8 @@ Markiere die korrekt.
 @TextmarkerQuiz
 </div>
 
+
+# Folie 2
 
 <div class="markerquiz">
 @mark(dieser Teil ist zu markieren – Farbe egal)
