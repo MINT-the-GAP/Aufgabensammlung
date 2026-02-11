@@ -81,6 +81,9 @@ Klicke auf den Stift im Header und markiere im Text wie es dir beliebt. Wechsel 
 
 ---
 
+---
+
+
 > Textmarkerquiz
 
 **Markiere** mit der Textmarkerfunktion die Nomen in Rot und die Verben in blau.
@@ -120,6 +123,27 @@ Bei `@mark(Test zum Markieren)` ist die gewählte Farbe egal.
 @mark(Test zum Markieren)
 @TextmarkerQuiz
 </div>
+
+---
+
+---
+
+> Schon markierte Bereiche
+
+
+
+
+- `@markedred(red)`  @markedred(red)
+
+- `@markedblue(blue)`  @markedblue(blue)
+
+- `@markedyellow(yellow)`  @markedyellow(yellow)
+
+- `@markedpink(pink)`  @markedpink(pink)
+
+- `@markedgreen(green)`  @markedgreen(green)
+
+- `@markedorange(orange)`  @markedorange(orange)
 
 
 
@@ -180,6 +204,7 @@ __$i)\;\;$__ Lösung ist 6: [[ 6 ]]
 ```
 
 
+mit `<section class="dynFlex" data-start="30">` wird die Startbreite auf 30% gesetzt.
 
 
 

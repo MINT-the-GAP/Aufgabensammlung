@@ -2343,6 +2343,102 @@ function trimRangeWhitespace(range){
 
 
 
+
+
+// =========================
+// Prefill-Markierungen (@marked*)
+// =========================
+I.__prefillKeys = I.__prefillKeys || new Set();
+
+function __prefillPresentSection(){
+  return (
+    CONTENT_DOC.querySelector("section.present") ||
+    ROOT_DOC.querySelector("section.present") ||
+    null
+  );
+}
+
+function __prefillInPresentation(){
+  if (ROOT_WIN.Reveal || CONTENT_WIN.Reveal) return true;
+  if (__prefillPresentSection()) return true;
+  const h = (ROOT_WIN.location.hash || CONTENT_WIN.location.hash || "");
+  if (h.startsWith("#/")) return true;
+  const v = ((ROOT_DOC.documentElement.getAttribute("data-view") || "") + " " + (ROOT_DOC.body.className || "")).toLowerCase();
+  return v.includes("presentation");
+}
+
+function __prefillScanRoot(){
+  if (__prefillInPresentation()){
+    return __prefillPresentSection() || CONTENT_DOC;
+  }
+  return CONTENT_DOC;
+}
+
+function ensurePrefills(){
+  const root = __prefillScanRoot();
+  const els = Array.from(root.querySelectorAll(".lia-hl-prefill[data-hl-prefill]"));
+  if (!els.length) return;
+
+  try { if (typeof ensureScopeIds === "function") ensureScopeIds(); } catch(e){}
+
+  for (const el of els){
+    const color = (el.getAttribute("data-hl-prefill") || "yellow").toLowerCase();
+
+    // Range über den Inhalt des Spans
+    const r = CONTENT_DOC.createRange();
+    try { r.selectNodeContents(el); } catch(e){ continue; }
+
+    const anchor = {
+      sp: nodeToPath(r.startContainer),
+      so: r.startOffset,
+      ep: nodeToPath(r.endContainer),
+      eo: r.endOffset
+    };
+
+    // Scope + Slide (wichtig gegen Folien-Leaks)
+    let scopeId = "global";
+    try { scopeId = (typeof scopeIdFromNode === "function") ? scopeIdFromNode(r.commonAncestorContainer) : "global"; } catch(e){}
+
+    let slideId = "global";
+    try {
+      slideId =
+        (typeof getActiveSlideId === "function" && getActiveSlideId()) ||
+        (typeof slideIdFromNode === "function" ? slideIdFromNode(r.commonAncestorContainer) : "global") ||
+        "global";
+    } catch(e){}
+
+    const key = `P|${color}|${scopeId}|${slideId}|${anchor.sp}|${anchor.so}|${anchor.ep}|${anchor.eo}`;
+    if (I.__prefillKeys.has(key)) continue;
+
+    // Rects: wenn Slide gerade “hidden” ist, kann das erstmal leer sein – wird später beim Render/Recalc gefüllt
+    let rects = [];
+    try { rects = packedRectsFromRange(r) || []; } catch(e){ rects = []; }
+
+    I.HL.push({
+      id: I.nextId++,
+      kind: "prefill",     // zählt NICHT als user => beeinflusst dein Quiz nicht
+      scope: scopeId,
+      slide: slideId,
+      color,
+      anchor,
+      rects
+    });
+
+    I.__prefillKeys.add(key);
+  }
+
+  render();
+}
+
+
+
+
+
+
+
+
+
+
   // =========================
   // Tick (throttled) — Docking stabil, ohne Observer-Loop
   // =========================
@@ -2364,6 +2460,7 @@ function trimRangeWhitespace(range){
         checkLayoutAndRecalc();
         ensureSwatchesOnce();
         checkSlideAndRender();
+        ensurePrefills();
         wireUIOnce();
         adaptUIVars();
         applyUI();
@@ -3040,6 +3137,14 @@ mark: <span class="lia-hl-target" data-hl-expected="any" data-hl-quiz="default">
 
 
 
+markedred:    <span class="lia-hl-prefill" data-hl-prefill="red">@0</span>
+markedblue:   <span class="lia-hl-prefill" data-hl-prefill="blue">@0</span>
+markedgreen:  <span class="lia-hl-prefill" data-hl-prefill="green">@0</span>
+markedyellow: <span class="lia-hl-prefill" data-hl-prefill="yellow">@0</span>
+markedpink:   <span class="lia-hl-prefill" data-hl-prefill="pink">@0</span>
+markedorange: <span class="lia-hl-prefill" data-hl-prefill="orange">@0</span>
+
+
 
 
 -->
@@ -3075,5 +3180,16 @@ Aufgabe 1:
 
 
 
+`@markedred(red)`  @markedred(red)
+
+`@markedblue(blue)`  @markedblue(blue)
+
+`@markedyellow(yellow)`  @markedyellow(yellow)
+
+`@markedpink(pink)`  @markedpink(pink)
+
+`@markedgreen(green)`  @markedgreen(green)
+
+`@markedorange(orange)`  @markedorange(orange)
 
 
