@@ -835,6 +835,11 @@ comment: TOC PDF-Bookmarks V0.1 — eigener Baum-TOC (▶/▼), import-sicher, O
 
 # Navigationstests
 
+Nagivation ist einklappbar nach Überschriftenstärke.
+
+`import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/NavigationREADME.md`
+
+
 ## Navigationstestsa
 
 ## Navigationstestse
