@@ -1636,7 +1636,7 @@ CONTENT_DOC.addEventListener("scroll", scheduleRender, { passive:true, capture:t
         orange: getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue("--hl-orange").trim(),
         red:    getComputedStyle(CONTENT_DOC.documentElement).getPropertyValue("--hl-red").trim(),
       };
-      dot.style.background = map[I.state.color] || map.yellow;
+      dot.style.setProperty("background", map[I.state.color] || map.yellow, "important");
     }
 
     const colorsEl = ROOT_DOC.getElementById("hl-colors");

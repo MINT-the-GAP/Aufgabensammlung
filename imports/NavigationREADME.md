@@ -840,29 +840,31 @@ Nagivation ist einklappbar nach Überschriftenstärke.
 `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/NavigationREADME.md`
 
 
-## Navigationstestsa
+# Teil A
 
-## Navigationstestse
+## Teil A
 
-# Navigationstestsb
+## Teil A.1
 
-## Navigationstestsc
+# Teil B
 
-## Navigationstestsd
+## Teil B.1
 
-### Navigationstestsc
+## Teil B.2
 
-### Navigationstestsd
+###  Teil B.2.1
 
-### Navigationstestsc
+###  Teil B.2.2
 
-#### Navigationstestsc
+###  Teil B.2.3
 
-##### Navigationstestsc
+#### Teil B.2.3.1
 
-###### Navigationstestsc
+##### Teil B.2.3.1.1
 
-###### Navigationstestsc
+###### Teil B.2.3.1.1.1
 
-## Navigationstestsd
+###### Teil B.2.3.1.1.2
+
+## Teil B.3
 
