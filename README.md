@@ -3731,12 +3731,14 @@ function ensureCss(){
   // -----------------------------
   const COLORS = [
     { key:'auto',       value:null },
-    { key:'red',        value:'#ff2d2d' },
-    { key:'orange',     value:'#ffc800' },
-    { key:'violett',    value:'#ff00ea' },
-    { key:'blue',       value:'#2d6bff' },
-    { key:'lightblue',  value:'#00d5ff' },
-    { key:'green',      value:'#00ff1a' },
+    { key:'red',        value:'#ff0000' },
+    { key:'orange',     value:'#ff7500' },
+    { key:'yellow',     value:'#ffff00' },
+    { key:'violett',    value:'#ff00ff' },
+    { key:'blue',       value:'#0055ff' },
+    { key:'lightblue',  value:'#00ffff' },
+    { key:'green',      value:'#00ff00' },
+    { key:'darkgreen',  value:'#007500' },
     { key:'black',      value:'#000000' },
     { key:'white',      value:'#ffffff' }
   ];
