@@ -3854,7 +3854,7 @@ ensureMountUID(mount);
 
 6. Legt ein Grid oder Linien in den Hintergrund.
 
-7. Lässt ein Feld ziehen, welches mittels Schrifterkennung an das Eingabefeld die Lösung übergibt.
+7. Lässt ein Feld ziehen, welches mittels Schrifterkennung an das Eingabefeld als Lösung übergibt.
 
 Die Schreibfläche kann unten links oder rechts an den Ecke in der Größe beliebig verändert werden.
 
@@ -3868,7 +3868,7 @@ Die Schreibfläche kann unten links oder rechts an den Ecke in der Größe belie
 - Mausrad: Zoom
 
 
-> **Steuerung mit Maus**
+> **Steuerung mit Touchscreen**
 
 - Ein Finger:  Zeichnen, Radieren, Ziehen
 
