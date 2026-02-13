@@ -362,6 +362,56 @@ canvas.lia-draw{
 
 
 
+
+/* Close-Button oben rechts am Marker-Rechteck */
+.lia-rect-close{
+  position: absolute;
+  z-index: 61;
+  display: none;
+
+  width: 24px;
+  height: 24px;
+  padding: 0;
+
+  border-radius: 999px;
+  border: 2px solid var(--canvas-accent);
+  background: transparent;
+
+  cursor: pointer;
+  user-select: none;
+  line-height: 0;
+}
+
+.lia-rect-close svg{
+  width: 14px;
+  height: 14px;
+  display: block;
+  margin: auto;
+}
+
+.lia-rect-close .x{
+  stroke: var(--canvas-accent);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+.lia-rect-close:hover{
+  background: var(--canvas-accent);
+}
+
+.lia-rect-close:hover .x{
+  stroke: #fff;
+}
+
+.lia-rect-close:active{ transform: translateY(1px); }
+
+
+
+
+
+
+
+
 /* OCR */
 /* OCR */
 /* OCR */
@@ -572,6 +622,141 @@ canvas.lia-draw{
 
 
 
+/* =========================================================
+   Loadbox UNTER der OCR-Bar (AUSSERHALB als eigener Sticky-Block)
+   ========================================================= */
+.lia-ocr-loadwrap{
+  position: sticky;
+  top: calc(10px + var(--lia-ocrbar-h, 64px) + 8px);
+  z-index: 9998;
+
+  display: none;
+  width: 100%;
+  margin: -6px 0 14px 0;   /* sitzt optisch direkt unter der Bar */
+  padding: 10px 12px;
+
+  border: 2px solid var(--canvas-border);
+  border-radius: 14px;
+
+  background: rgba(0,0,0,0.05);
+  backdrop-filter: blur(6px);
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark){
+  .lia-ocr-loadwrap{ background: rgba(255,255,255,0.06); }
+}
+
+.lia-ocr-loadwrap[data-on="1"]{ display:block; }
+
+.lia-ocr-loadmsg{
+  display:flex;
+  align-items:baseline;
+  justify-content: space-between;
+  gap: 10px;
+  font-weight: 850;
+}
+
+.lia-ocr-loadmsg .t{ font-weight: 850; }
+.lia-ocr-loadmsg .p{ font-weight: 900; min-width: 3.5em; text-align:right; }
+
+.lia-ocr-loaddetail{
+  margin-top: 6px;
+  opacity: .78;
+  font-weight: 700;
+  font-size: 0.95em;
+}
+
+.lia-ocr-loadtrack{
+  margin-top: 8px;
+  height: 10px;
+  width: 100%;
+  border-radius: 999px;
+  border: 2px solid var(--canvas-border);
+  overflow: hidden;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+.lia-ocr-loadfill{
+  height: 100%;
+  width: 0%;
+  background: var(--canvas-accent);
+}
+
+/* indeterminate (wenn progress nicht verfügbar) */
+.lia-ocr-loadwrap[data-indet="1"] .lia-ocr-loadfill{
+  width: 35%;
+  animation: lia_ocr_indet 1.1s linear infinite;
+}
+
+/* wenn du keyframes schon hast, kannst du diesen Teil weglassen */
+@keyframes lia_ocr_indet{
+  0%   { transform: translateX(-120%); }
+  100% { transform: translateX(320%); }
+}
+
+
+
+
+
+
+
+
+
+/* Progress unter "Als Lösung übergeben" */
+.lia-rect-progress{
+  position: absolute;
+  z-index: 59; /* unter Button (60), über Canvas */
+  display: none;
+
+  left: 0;
+  top: 0;
+
+  width: 180px; /* wird in JS dynamisch überschrieben */
+  padding: 4px 8px;
+  border-radius: 999px;
+
+  border: 2px solid var(--canvas-border);
+  background: rgba(0,0,0,0.10);
+  backdrop-filter: blur(6px);
+
+  box-sizing: border-box;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (prefers-color-scheme: dark){
+  .lia-rect-progress{ background: rgba(255,255,255,0.10); }
+}
+
+.lia-rect-progress[data-on="1"]{ display: flex; }
+
+.lia-rect-progbar{
+  flex: 1 1 auto;
+  height: 8px;
+  border-radius: 999px;
+  border: 2px solid var(--canvas-border);
+  overflow: hidden;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+.lia-rect-progfill{
+  height: 100%;
+  width: 0%;
+  background: var(--canvas-accent);
+}
+
+.lia-rect-progtxt{
+  font-weight: 850;
+  font-size: 0.8em;
+  min-width: 3.2em;
+  text-align: right;
+}
+
+
+
 
 
 @end
@@ -701,6 +886,36 @@ if (!window.__LIA_OCR_BAR_BOOT__){
         background:transparent;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
         font-size:.92em;line-height:1.25;white-space:pre-wrap;box-sizing:border-box}
       .lia-ocrbar[data-open="1"] .lia-ocr-log{display:block}
+
+      .lia-ocr-loadwrap{
+        position:sticky;
+        top:calc(10px + var(--lia-ocrbar-h,64px) + 8px);
+        z-index:9998;
+        display:none;
+        width:100%;
+        margin:-6px 0 14px 0;
+        padding:10px 12px;
+        border:2px solid var(--canvas-border);
+        border-radius:14px;
+        background:rgba(0,0,0,0.05);
+        backdrop-filter:blur(6px);
+        box-sizing:border-box
+      }
+      @media (prefers-color-scheme: dark){
+        .lia-ocr-loadwrap{background:rgba(255,255,255,0.06)}
+      }
+      .lia-ocr-loadwrap[data-on="1"]{display:block}
+      .lia-ocr-loadmsg{display:flex;align-items:baseline;justify-content:space-between;gap:10px;font-weight:850}
+      .lia-ocr-loadmsg .p{font-weight:900;min-width:3.5em;text-align:right}
+      .lia-ocr-loaddetail{margin-top:6px;opacity:.78;font-weight:700;font-size:.95em}
+
+      .lia-ocr-loadtrack{margin-top:8px;height:10px;width:100%;border-radius:999px;border:2px solid var(--canvas-border);
+        overflow:hidden;box-sizing:border-box;background:transparent}
+      .lia-ocr-loadfill{height:100%;width:0%;background:var(--canvas-accent)}
+      .lia-ocr-loadwrap[data-indet="1"] .lia-ocr-loadfill{width:35%;animation:lia_ocr_indet 1.1s linear infinite}
+      @keyframes lia_ocr_indet{0%{transform:translateX(-120%)}100%{transform:translateX(320%)}}
+
+
     `;
     (document.head || document.documentElement).appendChild(st);
   }
@@ -775,6 +990,10 @@ if (!window.__LIA_OCR_BAR_BOOT__){
     const main = DOC.querySelector('main');
     const host = DOC.body || DOC.documentElement;
 
+    const loadbar = bar.querySelector('.lia-ocr-loadbar');
+    const loadfill = bar.querySelector('.lia-ocr-loadfill');
+
+
     if (main){
       // Bar muss innerhalb von main liegen (nicht als Flex-Item daneben)
       if (main.firstChild) main.insertBefore(bar, main.firstChild);
@@ -784,6 +1003,33 @@ if (!window.__LIA_OCR_BAR_BOOT__){
     }else{
       host.appendChild(bar);
     }
+
+
+    // -------- LOADBOX (Sibling direkt UNTER der OCR-Bar) --------
+    const loadWrap = DOC.createElement('div');
+    loadWrap.className = 'lia-ocr-loadwrap';
+    loadWrap.dataset.on = '0';
+    loadWrap.dataset.indet = '0';
+    loadWrap.innerHTML = `
+      <div class="lia-ocr-loadmsg">
+        <span class="t">Schrifterkennungsmodul lädt noch…</span>
+        <span class="p">…</span>
+      </div>
+      <div class="lia-ocr-loadtrack"><div class="lia-ocr-loadfill"></div></div>
+      <div class="lia-ocr-loaddetail">Download von rund 900&nbsp;MB (nur beim ersten Mal, danach Cache).</div>
+    `;
+    
+    // direkt NACH bar einfügen
+    if (bar.parentNode){
+      if (bar.nextSibling) bar.parentNode.insertBefore(loadWrap, bar.nextSibling);
+      else bar.parentNode.appendChild(loadWrap);
+    }
+    
+    const loadFill   = loadWrap.querySelector('.lia-ocr-loadfill');
+    const loadTxt    = loadWrap.querySelector('.lia-ocr-loadmsg .t');
+    const loadPct    = loadWrap.querySelector('.lia-ocr-loadmsg .p');
+    const loadDetail = loadWrap.querySelector('.lia-ocr-loaddetail');
+    
 
 
     // -------- STATE + UI BINDINGS --------
@@ -832,7 +1078,8 @@ if (!window.__LIA_OCR_BAR_BOOT__){
       setText('loaded', state.loaded ? 'yes' : 'no');
       setText('phase', state.phase || '—');
       setText('status', state.status || 'idle');
-
+    
+      // bestehender Progress (in der Bar)
       if (state.progress === null || state.progress === undefined || !isFinite(state.progress)){
         prog.dataset.on = '0';
       }else{
@@ -841,7 +1088,63 @@ if (!window.__LIA_OCR_BAR_BOOT__){
         fill.style.width = Math.round(v * 100) + '%';
         ptxt.textContent = Math.round(v * 100) + '%';
       }
+    
+
+
+      // --- Bar-Höhe als CSS-Var (damit loadWrap sticky exakt drunter sitzt) ---
+      try{
+        const h = Math.ceil(bar.getBoundingClientRect().height || bar.offsetHeight || 0);
+        if (h) document.documentElement.style.setProperty('--lia-ocrbar-h', h + 'px');
+      }catch(_){}
+
+      // --- Loadbox (unterhalb, außerhalb) ---
+      if (loadWrap && loadFill && loadTxt && loadPct){
+        const status = String(state.status || 'idle');
+        const phase  = String(state.phase  || 'idle');
+
+        const isLoading =
+          (!state.loaded) &&
+          (status === 'loading' || phase === 'import' || phase === 'pipeline' || phase === 'download');
+
+        if (isLoading){
+          loadWrap.dataset.on = '1';
+
+          if (phase === 'download'){
+            loadTxt.textContent = 'Schrifterkennungsmodul lädt noch…';
+            if (loadDetail) loadDetail.innerHTML = 'Dieser Download dauert nur beim ersten Mal so lange und ist danach im Cache.';
+          }else if (phase === 'import'){
+            loadTxt.textContent = 'Schrifterkennungsmodul lädt noch… (Bibliothek wird geladen)';
+            if (loadDetail) loadDetail.textContent = 'Erster Start kann etwas dauern.';
+          }else if (phase === 'pipeline'){
+            loadTxt.textContent = 'Schrifterkennungsmodul lädt noch… (Modell wird initialisiert)';
+            if (loadDetail) loadDetail.textContent = 'Erster Start kann etwas dauern.';
+          }else{
+            loadTxt.textContent = 'Schrifterkennungsmodul lädt noch…';
+            if (loadDetail) loadDetail.textContent = 'Erster Start kann etwas dauern.';
+          }
+
+          if (state.progress !== null && state.progress !== undefined && isFinite(state.progress)){
+            const v = Math.max(0, Math.min(1, Number(state.progress)));
+            loadWrap.dataset.indet = '0';
+            loadFill.style.transform = 'translateX(0)';
+            loadFill.style.width = Math.round(v * 100) + '%';
+            loadPct.textContent = Math.round(v * 100) + '%';
+          }else{
+            loadWrap.dataset.indet = '1';
+            loadFill.style.width = '35%';
+            loadPct.textContent = '…';
+          }
+        }else{
+          loadWrap.dataset.on = '0';
+          loadWrap.dataset.indet = '0';
+          loadFill.style.transform = 'translateX(0)';
+          loadFill.style.width = '0%';
+          loadPct.textContent = '';
+        }
+      }
+
     }
+
 
     const LOG_MAX = 10;
     function log(line){
@@ -927,7 +1230,7 @@ if (!window.__LIA_OCR_BAR_BOOT__){
       });
     }
 
-    window.__LIA_OCR_BAR__ = { el: bar, set, log, get: () => ({ ...state }) };
+    window.__LIA_OCR_BAR__ = { el: bar, loadEl: loadWrap, set, log, get: () => ({ ...state }) };
     render();
     log('OCR-Bar ready.');
     return window.__LIA_OCR_BAR__;
@@ -1361,6 +1664,22 @@ function ensureCss(){
     '.lia-rect-action{ position:absolute; z-index:60; display:none; padding:6px 9px; border-radius:999px; border:2px solid var(--canvas-accent); background:var(--canvas-accent); color:#fff; font-weight:800; font-size:0.75em; cursor:pointer; user-select:none; line-height:1; white-space:nowrap; }',
     '.lia-rect-action:active{ transform:translateY(1px); }',
 
+    '.lia-rect-progress{ position:absolute; z-index:59; display:none; left:0; top:0; width:180px; padding:4px 8px; border-radius:999px; border:2px solid var(--canvas-border); background:rgba(0,0,0,.10); backdrop-filter:blur(6px); box-sizing:border-box; align-items:center; gap:8px; }',
+    '@media (prefers-color-scheme: dark){ .lia-rect-progress{ background:rgba(255,255,255,.10); } }',
+    '.lia-rect-progress[data-on="1"]{ display:flex; }',
+    '.lia-rect-progbar{ flex:1 1 auto; height:8px; border-radius:999px; border:2px solid var(--canvas-border); overflow:hidden; box-sizing:border-box;    background:transparent; }',
+    '.lia-rect-progfill{ height:100%; width:0%; background:var(--canvas-accent); }',
+    '.lia-rect-progtxt{ font-weight:850; font-size:0.8em; min-width:3.2em; text-align:right; }',
+
+
+    '.lia-rect-close{ position:absolute; z-index:61; display:none; width:24px; height:24px; padding:0; border-radius:999px; border:2px solid var(--canvas-accent);    background:transparent; cursor:pointer; user-select:none; line-height:0; }',
+    '.lia-rect-close svg{ width:14px; height:14px; display:block; margin:auto; }',
+    '.lia-rect-close .x{ stroke:var(--canvas-accent); stroke-width:2.4; stroke-linecap:round; }',
+    '.lia-rect-close:hover{ background:var(--canvas-accent); }',
+    '.lia-rect-close:hover .x{ stroke:#fff; }',
+    '.lia-rect-close:active{ transform:translateY(1px); }',
+
+
     '.lia-tool-btn .ico-accent{ stroke:var(--canvas-accent); fill:none; }',
     '.lia-tool-btn .ico-accent-fill{ fill:var(--canvas-accent); }',
 
@@ -1590,7 +1909,8 @@ function __liaFindAndSetInputBeforeNode(refEl, value){
 
   function setRectIcon(btn){
     setSvg(btn, `
-    <svg viewBox="-1 0 24 24" aria-hidden="true">
+    <svg viewBox="0 0 24 24" aria-hidden="true"
+         style="transform: translateX(3px);">
       <path class="ico-stroke" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"
             d="
               M4.1 4.6
@@ -1726,12 +2046,65 @@ function setupCanvas(canvas){
   // Action-Button (unter Marker-Rechteck) — MUSS existieren,
   // sonst crasht setupCanvas() und die ganze UI ist tot.
   // ---------------------------------------------------------
+
   const rectActionBtn = document.createElement('button');
   rectActionBtn.type = 'button';
   rectActionBtn.className = 'lia-rect-action';
   rectActionBtn.textContent = 'Als Lösung übergeben';
   rectActionBtn.style.display = 'none';
   wrap.appendChild(rectActionBtn);
+
+
+  // --- Progressbar unter dem Action-Button ---
+  const rectProg = document.createElement('div');
+  rectProg.className = 'lia-rect-progress';
+  rectProg.dataset.on = '0';
+  rectProg.innerHTML = `
+    <div class="lia-rect-progbar"><div class="lia-rect-progfill"></div></div>
+    <div class="lia-rect-progtxt">0%</div>
+  `;
+  wrap.appendChild(rectProg);
+
+  const rectProgFill = rectProg.querySelector('.lia-rect-progfill');
+  const rectProgTxt  = rectProg.querySelector('.lia-rect-progtxt');
+
+  // verhindert Pointer-"Durchfall" (wie beim Button)
+  rectProg.addEventListener('pointerdown', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  });
+
+
+
+  // verhindert, dass Pointer-Events "durchfallen"
+  rectActionBtn.addEventListener('pointerdown', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  });
+
+
+  // Close-Button (oben rechts am Marker-Rechteck)
+  const rectCloseBtn = document.createElement('button');
+  rectCloseBtn.type = 'button';
+  rectCloseBtn.className = 'lia-rect-close';
+  rectCloseBtn.setAttribute('aria-label','Marker-Rechteck entfernen');
+  rectCloseBtn.style.display = 'none';
+  rectCloseBtn.innerHTML = `
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path class="x" d="M7 7L17 17M17 7L7 17"></path>
+    </svg>
+  `;
+  wrap.appendChild(rectCloseBtn);
+
+  // verhindert, dass Pointer-Events "durchfallen"
+  rectCloseBtn.addEventListener('pointerdown', (e) => { e.preventDefault(); e.stopPropagation(); });
+
+  rectCloseBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    clearMarkerRect();
+  });
+
 
 
   setUndoIcon(btnUndo);
@@ -2352,6 +2725,69 @@ async function __ocrDigitGuard(engine, cropCanvas){
 
 
 
+// -----------------------------
+// Rect-Progress (Pseudo-Progress für Inference)
+// -----------------------------
+let __rectProgRAF = 0;
+let __rectProgStart = 0;
+
+function __rectProgSet01(v){
+  if (!rectProg || !rectProgFill || !rectProgTxt) return;
+  const p = Math.max(0, Math.min(1, Number(v)));
+  rectProgFill.style.width = Math.round(p*100) + '%';
+  rectProgTxt.textContent = Math.round(p*100) + '%';
+}
+
+function __rectProgShow(){
+  if (!rectProg) return;
+  rectProg.dataset.on = '1';
+  __rectProgSet01(0);
+  scheduleRectActionUpdate();
+}
+
+function __rectProgHide(){
+  if (!rectProg) return;
+  rectProg.dataset.on = '0';
+  __rectProgSet01(0);
+}
+
+function __rectProgStartPseudo(){
+  __rectProgShow();
+  __rectProgStart = performance.now();
+
+  const tick = () => {
+    const t = performance.now() - __rectProgStart;
+
+    // Kurve: schnell auf 70%, dann 90%, dann langsam bis 98%
+    let v = 0;
+    if (t < 900){
+      v = (t/900) * 0.70;
+    }else if (t < 2200){
+      v = 0.70 + ((t-900)/1300) * 0.20;
+    }else{
+      v = 0.90 + Math.min(0.08, ((t-2200)/5000) * 0.08);
+    }
+
+    __rectProgSet01(v);
+    __rectProgRAF = requestAnimationFrame(tick);
+  };
+
+  __rectProgRAF = requestAnimationFrame(tick);
+}
+
+function __rectProgStop(final01){
+  if (__rectProgRAF){
+    cancelAnimationFrame(__rectProgRAF);
+    __rectProgRAF = 0;
+  }
+  __rectProgSet01(final01);
+
+  // kurze “100% sichtbar” Phase, dann weg
+  setTimeout(() => __rectProgHide(), 250);
+}
+
+
+
 
 
 async function __ocrFromMarkedRect({ auto=false } = {}){
@@ -2367,10 +2803,12 @@ async function __ocrFromMarkedRect({ auto=false } = {}){
     return;
   }
 
-  // UI: Button sperren
-  const oldText = rectActionBtn.textContent;
-  rectActionBtn.disabled = true;
-  rectActionBtn.textContent = auto ? 'OCR läuft …' : 'Als Lösung übergeben';
+    // UI: Button sperren
+    const oldText = rectActionBtn.textContent;
+    rectActionBtn.disabled = true;
+    rectActionBtn.textContent = 'Schrifterkennung läuft...';
+    __rectProgStartPseudo();
+
 
   try{
     // Modell sicher geladen
@@ -2582,6 +3020,7 @@ async function __ocrFromMarkedRect({ auto=false } = {}){
     rectActionBtn.textContent = '⚠ Fehler';
     setTimeout(() => { rectActionBtn.textContent = oldText; }, 900);
   }finally{
+    __rectProgStop(1);
     rectActionBtn.disabled = false;
   }
 }
@@ -2597,11 +3036,16 @@ async function __ocrFromMarkedRect({ auto=false } = {}){
 
 
     // --- Button: manuell auslösen ---
-    rectActionBtn.addEventListener('click', (e) => {
+    rectActionBtn.addEventListener('click', async (e) => {
       e.preventDefault();
       e.stopPropagation();
-      __ocrFromMarkedRect({ auto:false });
+
+      await __ocrFromMarkedRect({ auto:false });
+
+      // OPTIONAL: wenn du nach erfolgreicher Übergabe automatisch löschen willst:
+      // clearMarkerRect();
     });
+
 
 
 
@@ -2659,6 +3103,11 @@ async function __ocrFromMarkedRect({ auto=false } = {}){
     if (!menu) return;
     menu.dataset.open = open ? '1' : '0';
   }
+
+function autoCloseSubmenus(){
+  if (!menu) return;
+  if (menu.dataset.open === '1') setMenuOpen(false);
+}
 
 
 
@@ -2903,6 +3352,29 @@ async function __ocrFromMarkedRect({ auto=false } = {}){
 
 
 
+  function clearMarkerRect(){
+    let removed = false;
+
+    for (let i = ITEMS.length - 1; i >= 0; i--){
+      if (ITEMS[i] && ITEMS[i].kind === 'rect'){ ITEMS.splice(i, 1); removed = true; }
+    }
+    for (let i = REDO.length - 1; i >= 0; i--){
+      if (REDO[i] && REDO[i].kind === 'rect'){ REDO.splice(i, 1); removed = true; }
+    }
+
+    if (removed){
+      rebuildHighlightLayer();
+      present();
+      updateUI();
+      persist();
+    }
+    scheduleRectActionUpdate();
+  }
+
+
+
+
+
   function getRectItem(){
     for (let i = ITEMS.length - 1; i >= 0; i--){
       const it = ITEMS[i];
@@ -2926,6 +3398,7 @@ async function __ocrFromMarkedRect({ auto=false } = {}){
     const it = getRectItem();
     if (!it){
       rectActionBtn.style.display = 'none';
+      if (rectCloseBtn) rectCloseBtn.style.display = 'none';
       return;
     }
 
@@ -2961,7 +3434,55 @@ async function __ocrFromMarkedRect({ auto=false } = {}){
 
     rectActionBtn.style.left = left + 'px';
     rectActionBtn.style.top  = top  + 'px';
+
+
+    // --- Progressbar direkt UNTER dem Button positionieren ---
+    if (rectProg){
+      rectProg.style.width = bw + 'px';
+
+      const gap2 = 6;
+      let pLeft = left;
+      let pTop  = top + bh + gap2;
+
+      // wenn rectProg gerade hidden ist, ist offsetHeight 0 → fallback
+      const pbH = rectProg.offsetHeight || 26;
+
+      pLeft = clamp(pLeft, pad, canvas.clientWidth  - bw - pad);
+      pTop  = clamp(pTop,  pad, canvas.clientHeight - pbH - pad);
+
+      rectProg.style.left = pLeft + 'px';
+      rectProg.style.top  = pTop  + 'px';
+    }
+
+
+      // ---- Close-Button oben rechts am Rechteck ----
+    if (rectCloseBtn){
+      rectCloseBtn.style.display = 'block';
+      rectCloseBtn.style.visibility = 'hidden';
+
+      const cbw = rectCloseBtn.offsetWidth  || 24;
+      const cbh = rectCloseBtn.offsetHeight || 24;
+
+      rectCloseBtn.style.visibility = 'visible';
+
+      const topRect = Math.min(a.sy, b.sy);
+      const rightRect = Math.max(a.sx, b.sx);
+
+      const pad2 = 6;
+
+      // Button leicht "auf" die Ecke setzen (halb über Eck), aber im Canvas halten
+      let cLeft = rightRect - cbw * 0.5;
+      let cTop  = topRect  - cbh * 0.5;
+
+      cLeft = clamp(cLeft, pad2, canvas.clientWidth  - cbw - pad2);
+      cTop  = clamp(cTop,  pad2, canvas.clientHeight - cbh - pad2);
+
+      rectCloseBtn.style.left = cLeft + 'px';
+      rectCloseBtn.style.top  = cTop  + 'px';
+    }
   }
+
+
 
 
 
@@ -3418,6 +3939,7 @@ function ensureCorners(){
     let startW = 0, startH = 0;
 
     function down(e){
+      autoCloseSubmenus();
       e.preventDefault();
       e.stopPropagation();
       resizing = true;
@@ -3569,8 +4091,10 @@ ensureCorners();
     persist();
   }
 
-  canvas.addEventListener('wheel', (e) => {
+  canvas.addEventListener('wheel', (e) => {  
+    autoCloseSubmenus();         
     e.preventDefault();
+
     const r = canvas.getBoundingClientRect();
     const sx = e.clientX - r.left;
     const sy = e.clientY - r.top;
@@ -3597,6 +4121,7 @@ ensureCorners();
   }
 
   canvas.addEventListener('pointerdown', (e) => {
+    autoCloseSubmenus();    
     if (e.target && e.target.classList && e.target.classList.contains('lia-resize-corner')) return;
 
     const p = getScreenPos(e);
