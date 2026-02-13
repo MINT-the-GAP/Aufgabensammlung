@@ -800,6 +800,20 @@ canvas.lia-draw{
 
 (function(){
 
+function getRootWindow(){
+  let w = window;
+  try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
+  return w;
+}
+
+const ROOT = getRootWindow();
+const REGKEY = "__LIA_CANVAS_OCR_REG_V1__";
+ROOT[REGKEY] = ROOT[REGKEY] || { inited: {} };
+
+const DOC_ID = document.baseURI || location.href;
+if (ROOT[REGKEY].inited[DOC_ID]) return;
+ROOT[REGKEY].inited[DOC_ID] = true;
+
 
 // ---------------------------------------------------------
 // OCR-Bar + Engine: eigener Guard (läuft unabhängig vom Canvas-Guard)
