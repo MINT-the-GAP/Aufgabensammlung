@@ -807,6 +807,10 @@ canvas.lia-draw{
 // - Load/Reload Button
 // - Auto-Load beim Kursstart (warmup)
 // ---------------------------------------------------------
+window.__LIA_OCR_SHOW_BAR__ = false;   // <-- HIER umschalten (true/false)
+
+
+
 if (!window.__LIA_OCR_BAR_BOOT__){
   window.__LIA_OCR_BAR_BOOT__ = true;
 
@@ -922,6 +926,8 @@ if (!window.__LIA_OCR_BAR_BOOT__){
 
   // ---------------- OCR-Bar ----------------
   function ensureOcrBar(){
+    const SHOW_BAR = (window.__LIA_OCR_SHOW_BAR__ !== false);
+
     ensureOcrCss();
 
     if (window.__LIA_OCR_BAR__ && window.__LIA_OCR_BAR__.el && window.__LIA_OCR_BAR__.el.isConnected){
@@ -929,13 +935,33 @@ if (!window.__LIA_OCR_BAR_BOOT__){
         const el = window.__LIA_OCR_BAR__.el;
         const DOC = document;
         const main = DOC.querySelector('main');
+
+        // ggf. wieder in main nach oben ziehen
         if (main && el.parentNode !== main){
           if (main.firstChild) main.insertBefore(el, main.firstChild);
           else main.appendChild(el);
         }
+
+        // Sichtbarkeit der Bar
+        el.style.display = SHOW_BAR ? '' : 'none';
+        el.setAttribute('aria-hidden', SHOW_BAR ? 'false' : 'true');
+
+        // Loadbox ggf. nach oben ziehen, wenn Bar aus
+        const lw = window.__LIA_OCR_BAR__.loadEl;
+        if (lw){
+          if (!SHOW_BAR){
+            lw.style.top = '10px';
+            lw.style.margin = '0 0 14px 0';
+          }else{
+            lw.style.top = '';
+            lw.style.margin = '';
+          }
+        }
+
       }catch(_){}
       return window.__LIA_OCR_BAR__;
     }
+
 
 
     const DOC = document;
@@ -943,6 +969,14 @@ if (!window.__LIA_OCR_BAR_BOOT__){
     // -------- BAR ERZEUGEN (das fehlte bei dir!) --------
     const bar = DOC.createElement('div');
     bar.className = 'lia-ocrbar';
+
+    // Bar ggf. komplett ausblenden (Loadbox bleibt separat sichtbar)
+    if (!SHOW_BAR){
+      bar.style.display = 'none';
+      bar.setAttribute('aria-hidden','true');
+    }
+
+
     bar.dataset.state = 'idle';
     bar.dataset.open  = '0';
 
@@ -1018,7 +1052,16 @@ if (!window.__LIA_OCR_BAR_BOOT__){
       <div class="lia-ocr-loadtrack"><div class="lia-ocr-loadfill"></div></div>
       <div class="lia-ocr-loaddetail">Download von rund 900&nbsp;MB (nur beim ersten Mal, danach Cache).</div>
     `;
-    
+
+
+    // Wenn Bar aus: Loadbox "rückt nach oben" (sonst wäre sie für die Bar reserviert)
+    if (!SHOW_BAR){
+      loadWrap.style.top = '10px';
+      loadWrap.style.margin = '0 0 14px 0';
+    }
+
+
+
     // direkt NACH bar einfügen
     if (bar.parentNode){
       if (bar.nextSibling) bar.parentNode.insertBefore(loadWrap, bar.nextSibling);
@@ -1093,9 +1136,14 @@ if (!window.__LIA_OCR_BAR_BOOT__){
 
       // --- Bar-Höhe als CSS-Var (damit loadWrap sticky exakt drunter sitzt) ---
       try{
-        const h = Math.ceil(bar.getBoundingClientRect().height || bar.offsetHeight || 0);
-        if (h) document.documentElement.style.setProperty('--lia-ocrbar-h', h + 'px');
+        if (!SHOW_BAR){
+          document.documentElement.style.setProperty('--lia-ocrbar-h', '0px');
+        }else{
+          const h = Math.ceil(bar.getBoundingClientRect().height || bar.offsetHeight || 0);
+          document.documentElement.style.setProperty('--lia-ocrbar-h', (h || 0) + 'px');
+        }
       }catch(_){}
+
 
       // --- Loadbox (unterhalb, außerhalb) ---
       if (loadWrap && loadFill && loadTxt && loadPct){
@@ -2091,7 +2139,11 @@ function setupCanvas(canvas){
   rectCloseBtn.style.display = 'none';
   rectCloseBtn.innerHTML = `
     <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path class="x" d="M7 7L17 17M17 7L7 17"></path>
+        <path d="M7 7L17 17M17 7L7 17"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.4"
+        stroke-linecap="round"/>
     </svg>
   `;
   wrap.appendChild(rectCloseBtn);
