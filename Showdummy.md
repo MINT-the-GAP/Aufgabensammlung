@@ -67,10 +67,10 @@ Unten links und unten rechts sind unsichtbare Ziehflächen (nur „die Ecke“).
 `Codebefehl: @canvas`
 
 
-Testzwecke (2 ist Lösung):
+Testzwecke (1479 ist Lösung):
 
 <!--   data-solution-button="2" -->
-[[ 2 ]] 
+[[ 1479 ]] 
 @canvas
 
 
