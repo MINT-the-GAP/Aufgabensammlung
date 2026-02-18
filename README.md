@@ -12001,6 +12001,7 @@ markedorange: <span class="lia-hl-prefill" data-hl-prefill="orange">@0</span>
 
 
 
+
 # SchulLia-Tests
 
 
@@ -12020,7 +12021,15 @@ Klicke auf das A im Header und ändere im Präsentationsmodus die Schriftgröße
 `https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/README.md`
 
 
-![Navigation](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/pics/Readme/navigation.png)
+Falls du den Kurs nicht auf Nightly geöffnet hast, ist oben ein Button zur direkten Weiterleitung des Kurses. Link zum normalen Kurs:
+
+[https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/README.md](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/README.md)
+
+
+> Einzeltemplate - Nightlychecker: `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md`
+
+> Einzeltemplate - Tafelmodus: `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/TafelREADME.md`
+
 
 
 
@@ -12030,21 +12039,25 @@ Klicke auf das A im Header und ändere im Präsentationsmodus die Schriftgröße
 
 
 
+<center>
+
+<!-- style="width:300px" -->
+![Navigation](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/Readme/navigation.png)
+
+</center>
 
 
-### Canvas + Schrifterkennung für Mathematik
+> Einzeltemplate - einklappbare Navigation: `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/NavigationREADME.md`
 
 
-
-
-`Codebefehl: @canvas`
+### Canvas
 
 
 
 <center>
 
 <!-- style="width:200px" -->
-![Navigation](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/Readme/canvas.png)
+![Canvas](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/Readme/canvas.png)
 
 </center>
 
@@ -12083,37 +12096,20 @@ Die Schreibfläche kann unten links oder rechts an den Ecke in der Größe belie
 - Zwei Finger (Abstand zwischen den Fingern verändern): Zoom
 
 
----
 
----
-
-
-> **Beispielaufgaben**
-
-**Aufgabe 1:** Berechne den Wert des Terms
+`Codebefehl: @canvas`
 
 
-__$a)\;\;$__
-$1470+8 =$ [[     1478                 ]] 
+Testzwecke (1479 ist Lösung):
 
+<!--   data-solution-button="2" -->
+[[ 1479 ]] 
 @canvas
 
 
+> Einzeltemplate - Canvas: `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/CanvasREADME.md`
 
-
-__$b)\;\;$__
-$5010+300 =$ [[     5310                 ]] 
-
-@canvas
-
-
-
-
-
-__$c)\;\;$__
-$4200+89 =$ [[     4289                 ]] 
-
-@canvas
+> Einzeltemplate - Canvas (mit Schrifterkennung): `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/OCRREADME.md`
 
 
 
@@ -12125,6 +12121,10 @@ $4200+89 =$ [[     4289                 ]]
 ### Textmarker
 
 Klicke auf den Stift im Header und markiere im Text wie es dir beliebt. Wechsel Lehrbuch ↔ Präsentation ↔ Slides und ändere die Schriftgröße.
+
+
+
+> Einzeltemplate - Textmarker: `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MarkerREADME.md`
 
 ---
 
@@ -12197,13 +12197,6 @@ Bei `@mark(Test zum Markieren)` ist die gewählte Farbe egal.
 
 
 
-
-
-
-
-
-
-
 ### Dynamsische Flex-Childs
 
 Geh an den rechten vertikalen Trennstrich zwischen den Blöcken und schiebe diesen nach belieben hin und her. Funktioniert auch mit Textmarkern.
@@ -12213,6 +12206,7 @@ Geh an den rechten vertikalen Trennstrich zwischen den Blöcken und schiebe dies
 
 <div class="flex-child">
 
+<!--   data-solution-button="2" -->
 __$f)\;\;$__ Lösung ist 3: [[ 3 ]]
 
 __$g)\;\;$__ Lösung ist 4: [[ 4 ]]
@@ -12256,12 +12250,16 @@ __$i)\;\;$__ Lösung ist 6: [[ 6 ]]
 </section>
 ```
 
+
 mit `<section class="dynFlex" data-start="30">` wird die Startbreite auf 30% gesetzt.
 
 
 
-### Deutschaufgabenmakros
+> Einzeltemplate - Dynamsische Flex-Childs: `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FlexChildREADME.md`
 
+
+
+### Deutschaufgabenmakros
 
 
 
@@ -12316,6 +12314,8 @@ __Aufgabe 5:__ Korrigiere die Rechtschreibfehler im gezeigten Satz. (Auflösung 
 </section>
 
 
+> Einzeltemplate - Deutschmakros: `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/DeutschREADME.md`
+
 
 
 ### Mathematikaufgabenmakros
@@ -12356,12 +12356,7 @@ __$a)\;\;$__ $\dfrac{7}{10}$
 
 
 
-
-
-
-
-
-
+> Einzeltemplate - Mathematikmakros: `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MatheREADME.md`
 
 
 
@@ -12399,5 +12394,9 @@ Manueller Startbutton ohne Badge
 <!-- data-solution-timer="10s" data-solution-timer-start="onclick" data-solution-timer-badge="off" -->
 5+5 = [[ 10 ]]
 
+
+
+
+> Einzeltemplate - Aufgabentimer: `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/TimerREADME.md`
 
 

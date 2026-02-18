@@ -38,6 +38,11 @@ Falls du den Kurs nicht auf Nightly geöffnet hast, ist oben ein Button zur dire
 [https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/README.md](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/README.md)
 
 
+> Einzeltemplate - Nightlychecker: `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md`
+
+> Einzeltemplate - Tafelmodus: `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/TafelREADME.md`
+
+
 
 
 ## Besser Navigation
@@ -54,14 +59,54 @@ Falls du den Kurs nicht auf Nightly geöffnet hast, ist oben ein Button zur dire
 </center>
 
 
+> Einzeltemplate - einklappbare Navigation: `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/NavigationREADME.md`
+
 
 ### Canvas
 
-Klicke auf den Stift neben dem Eingabefeld um das Canvas zu öffnen
 
-Canvas mit Farbauswahl, Lineatur und Radierer. Zoom ist auch dabei und mit den anderen Maustasten kann man auch die Canvas schieben. Touchsteuerung: 2-Finger Pinch/Pan.
 
-Unten links und unten rechts sind unsichtbare Ziehflächen (nur „die Ecke“). Dort kannst du die Zeichenfläche stufenlos **höher/niedriger** und auch **breiter/schmaler** ziehen.
+<center>
+
+<!-- style="width:200px" -->
+![Canvas](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/Readme/canvas.png)
+
+</center>
+
+1. Öffnet oder schließt die Schreibfläche.
+
+2. Macht die letzte Änderung auf der Schreibfläche rückgängig.
+
+3. Stellt das letzte "Rückgängig machen" wieder her.
+
+4. Radierer mit Submenü für Radierergröße oder komplettes löschen.
+
+5. Stift mit Submenü für Farbauswahl, Stiftdicke und Transparenz.
+
+6. Legt ein Grid oder Linien in den Hintergrund.
+
+7. Lässt ein Feld ziehen, welches mittels Schrifterkennung an das Eingabefeld als Lösung übergibt.
+
+Die Schreibfläche kann unten links oder rechts an den Ecke in der Größe beliebig verändert werden.
+
+
+> **Steuerung mit Maus**
+
+- Linke Maustaste: Zeichnen, Radieren, Ziehen
+
+- Rechte Maustaste: Schreibfläche hin- und herziehen
+
+- Mausrad: Zoom
+
+
+> **Steuerung mit Touchscreen**
+
+- Ein Finger:  Zeichnen, Radieren, Ziehen
+
+- Zwei Finger (Abstand zwischen den Fingern gleichbleibend): Schreibfläche hin- und herziehen
+
+- Zwei Finger (Abstand zwischen den Fingern verändern): Zoom
+
 
 
 `Codebefehl: @canvas`
@@ -74,10 +119,24 @@ Testzwecke (1479 ist Lösung):
 @canvas
 
 
+> Einzeltemplate - Canvas: `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/CanvasREADME.md`
+
+> Einzeltemplate - Canvas (mit Schrifterkennung): `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/OCRREADME.md`
+
+
+
+
+
+
+
 
 ### Textmarker
 
 Klicke auf den Stift im Header und markiere im Text wie es dir beliebt. Wechsel Lehrbuch ↔ Präsentation ↔ Slides und ändere die Schriftgröße.
+
+
+
+> Einzeltemplate - Textmarker: `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MarkerREADME.md`
 
 ---
 
@@ -208,6 +267,10 @@ mit `<section class="dynFlex" data-start="30">` wird die Startbreite auf 30% ges
 
 
 
+> Einzeltemplate - Dynamsische Flex-Childs: `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FlexChildREADME.md`
+
+
+
 ### Deutschaufgabenmakros
 
 
@@ -263,6 +326,8 @@ __Aufgabe 5:__ Korrigiere die Rechtschreibfehler im gezeigten Satz. (Auflösung 
 </section>
 
 
+> Einzeltemplate - Deutschmakros: `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/DeutschREADME.md`
+
 
 
 ### Mathematikaufgabenmakros
@@ -303,6 +368,10 @@ __$a)\;\;$__ $\dfrac{7}{10}$
 
 
 
+> Einzeltemplate - Mathematikmakros: `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MatheREADME.md`
+
+
+
 ### Timer bis Lösungzeigen
 
 > Beispiele:
@@ -339,6 +408,8 @@ Manueller Startbutton ohne Badge
 
 
 
+
+> Einzeltemplate - Aufgabentimer: `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/TimerREADME.md`
 
 
 
