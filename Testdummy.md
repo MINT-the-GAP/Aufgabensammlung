@@ -371,10 +371,6 @@ if (!window.rects['@0'] || window.rects['@0'].length !== total) {
 
 
 
-
-
-
-
 # Vernetzte Lücken
 
 
@@ -388,6 +384,29 @@ Entweder [[  positiv  ]] oder [[  negativ  ]] oder [[  magnetisch  ]]?
 
 
 
+
+
+
+
+
+
+Vorher Text [[ Kohlendioxid ]] Nachher Text
+<script>
+  const raw = (`@input`).trim(); 
+  let s = raw;
+
+  try {
+    const v = JSON.parse(raw);
+    if (Array.isArray(v)) s = String(v[0] ?? "");
+  } catch (e) {}
+
+  s = s.trim(); 
+
+  s === "Kohlendioxid" ||
+  s === "Kohlenstoffdioxid" ||
+  s === "CO2" ||
+  s === "CO₂";
+</script>
 
 
 
