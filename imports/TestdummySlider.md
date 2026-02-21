@@ -2,11 +2,15 @@
 version:  0.0.1
 language: de
 author: Martin Lommatzsch
-comment: JS-Mode-Readout (slides|presentation|textbook) -> "Aktiver Modus: ..."
+comment: JS-Mode-Readout + Mode-Only (import-sicher: CSS-Injection via onload)
 
 @modus: <span class="lia-mode-out" data-lia-mode-out>unknown</span>
 
-@style
+@onload
+(function () {
+
+  const STYLE_ID = "__LIA_MODE_ONLY_STYLE_V01__";
+  const MODE_CSS = `
 /* Default: alles sichtbar */
 [data-lia-only]{ display: block; }
 
@@ -20,11 +24,22 @@ html[data-lia-mode="presentation"] [data-lia-only]:not([data-lia-only="presentat
 html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
   display: none !important;
 }
-@end
+`;
 
+  function ensureStyle(doc){
+    try{
+      const head = doc.head || doc.getElementsByTagName("head")[0] || doc.documentElement;
+      if (!head) return;
+      if (doc.getElementById(STYLE_ID)) return;
 
-@onload
-(function () {
+      const style = doc.createElement("style");
+      style.id = STYLE_ID;
+      style.type = "text/css";
+      style.appendChild(doc.createTextNode(MODE_CSS));
+      head.appendChild(style);
+    }catch(e){}
+  }
+
   // =========================
   // Mode mapping
   // =========================
@@ -166,12 +181,23 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
   function apply(){
     const docs = collectDocsSameOrigin();
 
-    // find a doc that actually contains our output spans
+    // Docs mit Ausgabe
     const outDocs = docs.filter(d => {
       try{ return !!d.querySelector("[data-lia-mode-out]"); }catch(e){ return false; }
     });
 
-    const targetDocs = outDocs.length ? outDocs : [document];
+    // Docs mit Mode-Sections
+    const sectionDocs = docs.filter(d => {
+      try{ return !!d.querySelector("[data-lia-only]"); }catch(e){ return false; }
+    });
+
+    const targetOutDocs = outDocs.length ? outDocs : [document];
+    const targetSectionDocs = sectionDocs.length ? sectionDocs : targetOutDocs;
+
+    // CSS injizieren (import-sicher)
+    for (const d of targetSectionDocs){
+      ensureStyle(d);
+    }
 
     // detect from the "best" doc (prefer one with topbar icons)
     let mode = null;
@@ -181,19 +207,19 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
     }
     if (!mode) mode = "unknown";
 
-    // write it
-    for (const d of targetDocs){
+    // write readout
+    for (const d of targetOutDocs){
       try{
         d.querySelectorAll("[data-lia-mode-out]").forEach(el => { el.textContent = mode; });
       }catch(e){}
     }
 
-        // === NEU: Mode fürs CSS setzen (if/then/else Anzeige) ===
+    // Mode fürs CSS setzen (if/then/else Anzeige)
     const valid = (mode === "slides" || mode === "presentation" || mode === "textbook");
-    for (const d of targetDocs){
+    for (const d of targetSectionDocs){
       try{
         if (valid) d.documentElement.setAttribute("data-lia-mode", mode);
-        else d.documentElement.removeAttribute("data-lia-mode"); // failsafe
+        else d.documentElement.removeAttribute("data-lia-mode"); // failsafe: alles sichtbar
       }catch(e){}
     }
   }
@@ -214,34 +240,60 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
 
 # Nutzung
 
-Wechsel bitte einmal zwischen den Ansichtsmodi durch.
 
-Aktiver Modus: @modus
 
-Das hier sieht man immer.
 
-<div data-lia-only="slides">
-Das sehe ich nur bei Slides
 
-**Aufgabe 1:** $6+7=$ [[  13  ]]
-</div>
 
-<div data-lia-only="presentation">
-Das sehe ich nur bei Präsentation
+So kann man Bereiche nur für einen Modus sichtbar machen: 
 
-**Aufgabe 1:** $5+7=$ [[  12  ]]
-</div>
+`<div data-lia-only="slides"> Das sehe ich nur bei Folien </div>`
+
+`<div data-lia-only="presentation"> Das sehe ich nur bei Präsentation </div>`
+
+`<div data-lia-only="textbook"> Das sehe ich nur bei Lehrbuch </div>`
+
+Aktuell ist dieser Modus aktiv: <b><big><big> @modus </big></big></b>
+
+
+
+---
+
+---
+
+
+
+
+<h2>Beispiel im Text</h2>
+
+
+
+Das hier ist ein Beispiel bei dem man bei den verschiedenen Modi unterschiedliche Inhalte angezeigt bekommt. Hier muss dann eine Leerzeile sein.
 
 <div data-lia-only="textbook">
-Das sehe ich nur bei Textbook
 
-**Aufgabe 1:** $2+7=$ [[   9  ]]
-
-- Hier steht mehr kram 
-- Hier steht mehr kram
-- Hier steht mehr kram
-- Hier steht mehr kram
-
-**Aufgabe 2:** $3+7=$ [[  10  ]]
+<!-- data-solution-button="5"-->
+$4+5=$ [[ 9 ]] 
 
 </div>
+<div data-lia-only="presentation">  
+
+<!-- style="width:350px" -->
+![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne1.png)  
+
+</div>
+<div data-lia-only="slides">
+
+- Eine Liste
+
+- Die ist toll!
+
+- wenn sie denn klappen würde
+
+</div>
+
+ Hier muss dann auch eine Leerzeile sein, aber dann geht eigentlich alles.
+
+
+
+
