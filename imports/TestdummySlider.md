@@ -270,27 +270,28 @@ Aktuell ist dieser Modus aktiv: <b><big><big> @modus </big></big></b>
 
 Das hier ist ein Beispiel bei dem man bei den verschiedenen Modi unterschiedliche Inhalte angezeigt bekommt. Hier muss dann eine Leerzeile sein.
 
+
 <div data-lia-only="textbook">
 
 <!-- data-solution-button="5"-->
-$4+5=$ [[ 9 ]] 
+> $4+5=$ [[ 9 ]] Diese Aufgabe ist nur im **Textbookmodus** zu sehen.
 
 </div>
 <div data-lia-only="presentation">  
 
-<!-- style="width:350px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/urne1.png)  
+<!-- style="width:400px" -->
+> ![Presentationmode](https://liascript.github.io/nightly/icon.ico)  Dieses Bild ist nur im **Presentationmodus** zu sehen.
+
 
 </div>
 <div data-lia-only="slides">
 
-- Eine Liste
-
-- Die ist toll!
-
-- wenn sie denn klappen würde
+> - Das ist eine Liste,
+> - die man nur im **Folienmodus**
+> - sehen kann.
 
 </div>
+
 
  Hier muss dann auch eine Leerzeile sein, aber dann geht eigentlich alles.
 

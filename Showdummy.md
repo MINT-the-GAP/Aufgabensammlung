@@ -89,23 +89,21 @@ Das hier ist ein Beispiel bei dem man bei den verschiedenen Modi unterschiedlich
 <div data-lia-only="textbook">
 
 <!-- data-solution-button="5"-->
-$4+5=$ [[ 9 ]] 
+> $4+5=$ [[ 9 ]] Diese Aufgabe ist nur im **Textbookmodus** zu sehen.
 
 </div>
 <div data-lia-only="presentation">  
 
-<!-- style="width:200px" -->
-![Canvas](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/Readme/canvas.png)
+<!-- style="width:400px" -->
+> ![Presentationmode](https://liascript.github.io/nightly/icon.ico)  Dieses Bild ist nur im **Presentationmodus** zu sehen.
 
 
 </div>
 <div data-lia-only="slides">
 
-- Das ist eine Liste,
-
-- die man nur im Folienmodus
-
-- sehen kann.
+> - Das ist eine Liste,
+> - die man nur im **Folienmodus**
+> - sehen kann.
 
 </div>
 
