@@ -38,9 +38,95 @@ Falls du den Kurs nicht auf Nightly geöffnet hast, ist oben ein Button zur dire
 [https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/README.md](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/README.md)
 
 
+
+
+---
+
+---
+
+
+
+
+Im Präsentations- oder Folienmodus wird nun die maximale Breite des Bildschirms ausgenutzt, was man an der Länge dieser doch sehr langen Textzeile erkennen kann, wenn man die Schrift nicht allzu klein einstellt. Auch die Schriftgröße kann nun dynamisch angepasst werden. 
+
+
+
+
+Mittels div-Bereichen kann man Bereiche nur für einen Modus sichtbar machen: 
+
+```
+<div data-lia-only="slides"> 
+Das sehe ich nur bei Folien 
+</div>
+```
+
+---
+
+```
+<div data-lia-only="presentation"> 
+Das sehe ich nur bei Präsentation 
+</div>
+```
+
+---
+
+```
+<div data-lia-only="textbook"> 
+Das sehe ich nur bei Lehrbuch 
+</div>
+```
+
+---
+
+---
+
+<h2>Beispiel im Text</h2>
+
+
+
+Das hier ist ein Beispiel bei dem man bei den verschiedenen Modi unterschiedliche Inhalte angezeigt bekommt. Hier muss dann eine Leerzeile sein.
+
+<div data-lia-only="textbook">
+
+<!-- data-solution-button="5"-->
+$4+5=$ [[ 9 ]] 
+
+</div>
+<div data-lia-only="presentation">  
+
+<!-- style="width:200px" -->
+![Canvas](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/Readme/canvas.png)
+
+
+</div>
+<div data-lia-only="slides">
+
+- Das ist eine Liste,
+
+- die man nur im Folienmodus
+
+- sehen kann.
+
+</div>
+
+ Hier muss dann auch eine Leerzeile sein, aber dann geht eigentlich alles.
+
+
+
+
+
+---
+
+---
+
+
 > Einzeltemplate - Nightlychecker: `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md`
 
 > Einzeltemplate - Tafelmodus: `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/TafelREADME.md`
+
+
+
+
 
 
 
@@ -154,6 +240,8 @@ Klicke auf den Stift im Header und markiere im Text wie es dir beliebt. Wechsel 
 
 ---
 
+---
+
 
 ```
 <div class="markerquiz">
@@ -250,6 +338,10 @@ __$i)\;\;$__ Lösung ist 6: [[ 6 ]]
   </div>
 
 </section>
+
+---
+
+---
 
 
 ```
