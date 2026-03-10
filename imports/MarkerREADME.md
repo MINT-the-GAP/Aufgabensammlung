@@ -1244,6 +1244,62 @@ CONTENT_DOC.addEventListener("scroll", scheduleRender, { passive:true, capture:t
     }
   }
 
+
+  function wireRootDelegationOnce(){
+    if (I.__rootDelegated) return;
+    I.__rootDelegated = true;
+
+    let last = 0;
+    function safeToggle(){
+      const now = Date.now();
+      if (now - last < 250) return; // verhindert Doppelfeuer (touch+click)
+      last = now;
+
+      try{
+        I.state.active = !I.state.active;
+        I.state.panelOpen = I.state.active;
+        I.state.tool = "mark";
+        applyUI();
+        render();
+      } catch(err){
+        console.error("[HL] toggle failed", err);
+        // Fail-safe: Tool sauber schließen, Kurs nicht “killen”
+        I.state.active = false;
+        I.state.panelOpen = false;
+        I.state.tool = "mark";
+        try { applyUI(); } catch(e){}
+      }
+    }
+
+    // Desktop: Click
+    ROOT_DOC.addEventListener("click", (e)=>{
+      const btn = e.target?.closest?.("#lia-hl-btn");
+      if (!btn) return;
+      e.preventDefault();
+      e.stopPropagation();
+      safeToggle();
+    }, true);
+
+    // Mobile/alte Browser: Touch
+    ROOT_DOC.addEventListener("touchend", (e)=>{
+      const btn = e.target?.closest?.("#lia-hl-btn");
+      if (!btn) return;
+      e.preventDefault();
+      e.stopPropagation();
+      safeToggle();
+    }, { capture:true, passive:false });
+
+    // Not-Aus: Escape schließt immer
+    ROOT_DOC.addEventListener("keydown", (e)=>{
+      if (e.key !== "Escape") return;
+      if (!I.state.active) return;
+      I.state.active = false;
+      I.state.panelOpen = false;
+      I.state.tool = "mark";
+      try { applyUI(); render(); } catch(err){}
+    }, true);
+  }
+
   function wireUIOnce(){
     const btn = ROOT_DOC.getElementById("lia-hl-btn");
     if (!btn || btn.__liaHLWired) return;
@@ -2454,6 +2510,7 @@ function ensurePrefills(){
     ROOT_WIN.requestAnimationFrame(() => {
       try{
         ensureRootButtonAndPanel();
+        wireRootDelegationOnce();  
         detectNavStack();
         ensureLayoutResizeObserver(); 
         ensureRevealSlideObserver();
@@ -3089,8 +3146,15 @@ function render(){
       try { ROOT_WIN.clearInterval(I.__slideSyncTimer); } catch(e){}
       return;
     }
-    if (isPresentation()) forceSync();
-  }, 180);
+
+    // nur arbeiten, wenn es überhaupt “was zu tun” gibt
+    const hasMarks = !!(I.HL && I.HL.length);
+    if (!I.state.active && !hasMarks) return;
+
+    if (isPresentation()){
+      forceSync();
+    }
+  }, 450); // deutlich entspannter als 180ms
 
   // Initial
   forceSync();
