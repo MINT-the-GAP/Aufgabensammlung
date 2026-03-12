@@ -952,6 +952,7 @@ function getRevealSlideKey(){
         el.className = "lia-hl-rect";
         el.setAttribute("data-hl", item.color);
         el.setAttribute("data-id", String(item.id));
+        el.setAttribute("data-kind", item.kind || "user");
         el.style.left = `${Math.round(S.ox + (r.x - S.sx))}px`;
         el.style.top  = `${Math.round(S.oy + (r.y - S.sy))}px`;
         el.style.width  = `${Math.round(r.w)}px`;
@@ -1354,22 +1355,22 @@ CONTENT_DOC.addEventListener("scroll", scheduleRender, { passive:true, capture:t
     if (clearBtn){
       clearBtn.addEventListener("click", ()=>{
         for (const it of I.HL) ensureItemSlide(it);
-    
+
         const removableKinds = new Set(["user", "solution"]);
         // Falls Lösungen NICHT mit gelöscht werden sollen:
         // const removableKinds = new Set(["user"]);
-    
+
         if (shouldFilterBySlide()){
           const sid = getActiveSlideId();
-    
+
           if (sid){
             I.HL = I.HL.filter(it => {
               const kind = it.kind || "user";
               const sameSlide = (it.slide || "global") === sid;
-    
+
               // andere Folien bleiben immer erhalten
               if (!sameSlide) return true;
-    
+
               // prefill bleibt erhalten, user/solution werden gelöscht
               return !removableKinds.has(kind);
             });
@@ -1379,9 +1380,9 @@ CONTENT_DOC.addEventListener("scroll", scheduleRender, { passive:true, capture:t
         } else {
           I.HL = I.HL.filter(it => !removableKinds.has(it.kind || "user"));
         }
-    
+
         render();
-    
+
         I.state.panelOpen = false;
         I.state.tool = "mark";
         applyUI();
@@ -2373,6 +2374,43 @@ function trimRangeWhitespace(range){
 
 
 
+function findUserHighlightAtPoint(clientX, clientY){
+  const S = getScrollCtx();
+
+  // Klick von Viewport-Koordinaten in Content-Koordinaten umrechnen
+  const x = (clientX - S.ox) + S.sx;
+  const y = (clientY - S.oy) + S.sy;
+
+  const activeSlide = shouldFilterBySlide() ? getActiveSlideId() : null;
+
+  // von hinten nach vorne: zuletzt erzeugte Markierung gewinnt
+  for (let i = I.HL.length - 1; i >= 0; i--){
+    const item = I.HL[i];
+    if (!item) continue;
+
+    if ((item.kind || "user") !== "user") continue;
+
+    // im Präsentationsmodus nur auf aktueller Folie radieren
+    if (activeSlide && (item.slide || "global") !== activeSlide) continue;
+
+    const rects = Array.isArray(item.rects) ? item.rects : [];
+    for (const r of rects){
+      if (
+        x >= r.x &&
+        x <= r.x + r.w &&
+        y >= r.y &&
+        y <= r.y + r.h
+      ){
+        return item;
+      }
+    }
+  }
+
+  return null;
+}
+
+
+
   CONTENT_DOC.addEventListener("mouseup", ()=>{
     if (!I.state.active) return;
 
@@ -2385,18 +2423,31 @@ function trimRangeWhitespace(range){
     addHighlightFromSelection();
   }, true);
 
-  CONTENT_WIN.addEventListener("click", (e)=>{
+  CONTENT_DOC.addEventListener("click", (e)=>{
     if (!I.state.active) return;
     if (I.state.tool !== "erase") return;
 
+    // 1) zuerst normaler DOM-Treffer
+    let id = null;
     const t = e.target?.closest?.('.lia-hl-rect[data-kind="user"]');
-    if (!t) return;
+    if (t){
+      id = t.getAttribute("data-id");
+    }
 
-    const id = t.getAttribute("data-id");
+    // 2) Fallback: geometrisch prüfen, in welcher User-Markierung geklickt wurde
+    if (!id){
+      const hit = findUserHighlightAtPoint(e.clientX, e.clientY);
+      if (hit) id = String(hit.id);
+    }
+
     if (!id) return;
 
     const n = Number(id);
     I.HL = I.HL.filter(x => x.id !== n);
+
+    e.preventDefault();
+    e.stopPropagation();
+
     render();
   }, true);
 
@@ -2932,6 +2983,7 @@ function render(){
       el.className = "lia-hl-rect";
       el.setAttribute("data-hl", item.color);
       el.setAttribute("data-id", String(item.id));
+      el.setAttribute("data-kind", item.kind || "user");
       el.style.left = `${Math.round(S.ox + (r.x - S.sx))}px`;
       el.style.top  = `${Math.round(S.oy + (r.y - S.sy))}px`;
       el.style.width  = `${Math.round(r.w)}px`;
