@@ -897,6 +897,11 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{ display: inline !important; }
 
 
 
+
+
+
+
+
 (function () {
 
 
@@ -1002,8 +1007,14 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{ display: inline !important; }
       box-shadow: 0 1px 0 rgba(0,0,0,.08) inset;
       mix-blend-mode: multiply;
 
+      pointer-events: none !important;
+      cursor: default !important;
+    }
+
+    /* Nur echte User-Markierungen dürfen angeklickt / radiert werden */
+    .lia-hl-rect[data-kind="user"]{
       pointer-events: auto !important;
-      cursor: pointer;
+      cursor: pointer !important;
     }
 
         /* ---------------------------------------------------------
@@ -1783,6 +1794,7 @@ function getRevealSlideKey(){
         el.className = "lia-hl-rect";
         el.setAttribute("data-hl", item.color);
         el.setAttribute("data-id", String(item.id));
+        el.setAttribute("data-kind", item.kind || "user");
         el.style.left = `${Math.round(S.ox + (r.x - S.sx))}px`;
         el.style.top  = `${Math.round(S.oy + (r.y - S.sy))}px`;
         el.style.width  = `${Math.round(r.w)}px`;
@@ -2081,6 +2093,62 @@ CONTENT_DOC.addEventListener("scroll", scheduleRender, { passive:true, capture:t
     }
   }
 
+
+  function wireRootDelegationOnce(){
+    if (I.__rootDelegated) return;
+    I.__rootDelegated = true;
+
+    let last = 0;
+    function safeToggle(){
+      const now = Date.now();
+      if (now - last < 250) return; // verhindert Doppelfeuer (touch+click)
+      last = now;
+
+      try{
+        I.state.active = !I.state.active;
+        I.state.panelOpen = I.state.active;
+        I.state.tool = "mark";
+        applyUI();
+        render();
+      } catch(err){
+        console.error("[HL] toggle failed", err);
+        // Fail-safe: Tool sauber schließen, Kurs nicht “killen”
+        I.state.active = false;
+        I.state.panelOpen = false;
+        I.state.tool = "mark";
+        try { applyUI(); } catch(e){}
+      }
+    }
+
+    // Desktop: Click
+    ROOT_DOC.addEventListener("click", (e)=>{
+      const btn = e.target?.closest?.("#lia-hl-btn");
+      if (!btn) return;
+      e.preventDefault();
+      e.stopPropagation();
+      safeToggle();
+    }, true);
+
+    // Mobile/alte Browser: Touch
+    ROOT_DOC.addEventListener("touchend", (e)=>{
+      const btn = e.target?.closest?.("#lia-hl-btn");
+      if (!btn) return;
+      e.preventDefault();
+      e.stopPropagation();
+      safeToggle();
+    }, { capture:true, passive:false });
+
+    // Not-Aus: Escape schließt immer
+    ROOT_DOC.addEventListener("keydown", (e)=>{
+      if (e.key !== "Escape") return;
+      if (!I.state.active) return;
+      I.state.active = false;
+      I.state.panelOpen = false;
+      I.state.tool = "mark";
+      try { applyUI(); render(); } catch(err){}
+    }, true);
+  }
+
   function wireUIOnce(){
     const btn = ROOT_DOC.getElementById("lia-hl-btn");
     if (!btn || btn.__liaHLWired) return;
@@ -2130,16 +2198,31 @@ CONTENT_DOC.addEventListener("scroll", scheduleRender, { passive:true, capture:t
       clearBtn.addEventListener("click", ()=>{
         for (const it of I.HL) ensureItemSlide(it);
 
+        const removableKinds = new Set(["user", "solution"]);
+        // Falls Lösungen NICHT mit gelöscht werden sollen:
+        // const removableKinds = new Set(["user"]);
+
         if (shouldFilterBySlide()){
           const sid = getActiveSlideId();
+
           if (sid){
-            I.HL = I.HL.filter(it => (it.slide || "global") !== sid);
+            I.HL = I.HL.filter(it => {
+              const kind = it.kind || "user";
+              const sameSlide = (it.slide || "global") === sid;
+
+              // andere Folien bleiben immer erhalten
+              if (!sameSlide) return true;
+
+              // prefill bleibt erhalten, user/solution werden gelöscht
+              return !removableKinds.has(kind);
+            });
           } else {
-            I.HL = [];
+            I.HL = I.HL.filter(it => !removableKinds.has(it.kind || "user"));
           }
         } else {
-          I.HL = [];
+          I.HL = I.HL.filter(it => !removableKinds.has(it.kind || "user"));
         }
+
         render();
 
         I.state.panelOpen = false;
@@ -3133,6 +3216,45 @@ function trimRangeWhitespace(range){
 
 
 
+  function findUserHighlightAtPoint(clientX, clientY){
+    const S = getScrollCtx();
+
+    // Klick von Viewport-Koordinaten in Content-Koordinaten umrechnen
+    const x = (clientX - S.ox) + S.sx;
+    const y = (clientY - S.oy) + S.sy;
+
+    // aktuelle Folie bestimmen, falls Folienfilter aktiv ist
+    const activeSlide = shouldFilterBySlide() ? getActiveSlideId() : null;
+
+    // von hinten nach vorne: zuletzt erzeugte User-Markierung gewinnt
+    for (let i = I.HL.length - 1; i >= 0; i--){
+      const item = I.HL[i];
+      if (!item) continue;
+
+      // Nur echte User-Markierungen dürfen radiert werden
+      if ((item.kind || "user") !== "user") continue;
+
+      // Im Folienmodus nur auf aktueller Folie radieren
+      if (activeSlide && (item.slide || "global") !== activeSlide) continue;
+
+      const rects = Array.isArray(item.rects) ? item.rects : [];
+      for (const r of rects){
+        if (
+          x >= r.x &&
+          x <= r.x + r.w &&
+          y >= r.y &&
+          y <= r.y + r.h
+        ){
+          return item;
+        }
+      }
+    }
+
+    return null;
+  }
+
+
+
   CONTENT_DOC.addEventListener("mouseup", ()=>{
     if (!I.state.active) return;
 
@@ -3145,22 +3267,23 @@ function trimRangeWhitespace(range){
     addHighlightFromSelection();
   }, true);
 
-  CONTENT_WIN.addEventListener("click", (e)=>{
+  CONTENT_DOC.addEventListener("pointerdown", (e)=>{
     if (!I.state.active) return;
     if (I.state.tool !== "erase") return;
 
-    const t = e.target;
-    if (!t || !t.classList || !t.classList.contains("lia-hl-rect")) return;
+    // Vor dem Hit-Test alle Rechtecke aktualisieren
+    recalcAllHighlights();
 
-    const id = t.getAttribute("data-id");
-    if (!id) return;
+    // Immer geometrisch prüfen – nicht auf e.target verlassen
+    const hit = findUserHighlightAtPoint(e.clientX, e.clientY);
+    if (!hit) return;
 
-    const n = Number(id);
-    const item = I.HL.find(x => x.id === n);
-    if (item && item.kind === "user"){
-      I.HL = I.HL.filter(x => x.id !== n);
-      render();
-    }
+    I.HL = I.HL.filter(x => x.id !== hit.id);
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    render();
   }, true);
 
 
@@ -3176,9 +3299,6 @@ function trimRangeWhitespace(range){
 
     ROOT_DOC.body.classList.toggle("lia-hl-navstack", !!likelyNavStack);
   }
-
-
-
 
 
 
@@ -3279,8 +3399,6 @@ function ensurePrefills(){
 
 
 
-
-
   // =========================
   // Tick (throttled) — Docking stabil, ohne Observer-Loop
   // =========================
@@ -3296,6 +3414,7 @@ function ensurePrefills(){
     ROOT_WIN.requestAnimationFrame(() => {
       try{
         ensureRootButtonAndPanel();
+        wireRootDelegationOnce();  
         detectNavStack();
         ensureLayoutResizeObserver(); 
         ensureRevealSlideObserver();
@@ -3699,6 +3818,7 @@ function render(){
       el.className = "lia-hl-rect";
       el.setAttribute("data-hl", item.color);
       el.setAttribute("data-id", String(item.id));
+      el.setAttribute("data-kind", item.kind || "user");
       el.style.left = `${Math.round(S.ox + (r.x - S.sx))}px`;
       el.style.top  = `${Math.round(S.oy + (r.y - S.sy))}px`;
       el.style.width  = `${Math.round(r.w)}px`;
@@ -3831,6 +3951,7 @@ function render(){
       el.className = "lia-hl-rect";
       el.setAttribute("data-hl", item.color);
       el.setAttribute("data-id", String(item.id));
+      el.setAttribute("data-kind", item.kind || "user");
 
       el.style.left   = `${Math.round(S.ox + (rr.x - S.sx))}px`;
       el.style.top    = `${Math.round(S.oy + (rr.y - S.sy))}px`;
@@ -3931,8 +4052,15 @@ function render(){
       try { ROOT_WIN.clearInterval(I.__slideSyncTimer); } catch(e){}
       return;
     }
-    if (isPresentation()) forceSync();
-  }, 180);
+
+    // nur arbeiten, wenn es überhaupt “was zu tun” gibt
+    const hasMarks = !!(I.HL && I.HL.length);
+    if (!I.state.active && !hasMarks) return;
+
+    if (isPresentation()){
+      forceSync();
+    }
+  }, 450); // deutlich entspannter als 180ms
 
   // Initial
   forceSync();
@@ -3942,11 +4070,16 @@ function render(){
 
 
 
+
+
+
+
+
+
+
+
+
 })();
-
-
-
-
 
 
 

@@ -59,6 +59,30 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{ display: inline !important; }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @onload
 (function () {
 
@@ -2374,40 +2398,42 @@ function trimRangeWhitespace(range){
 
 
 
-function findUserHighlightAtPoint(clientX, clientY){
-  const S = getScrollCtx();
+  function findUserHighlightAtPoint(clientX, clientY){
+    const S = getScrollCtx();
 
-  // Klick von Viewport-Koordinaten in Content-Koordinaten umrechnen
-  const x = (clientX - S.ox) + S.sx;
-  const y = (clientY - S.oy) + S.sy;
+    // Klick von Viewport-Koordinaten in Content-Koordinaten umrechnen
+    const x = (clientX - S.ox) + S.sx;
+    const y = (clientY - S.oy) + S.sy;
 
-  const activeSlide = shouldFilterBySlide() ? getActiveSlideId() : null;
+    // aktuelle Folie bestimmen, falls Folienfilter aktiv ist
+    const activeSlide = shouldFilterBySlide() ? getActiveSlideId() : null;
 
-  // von hinten nach vorne: zuletzt erzeugte Markierung gewinnt
-  for (let i = I.HL.length - 1; i >= 0; i--){
-    const item = I.HL[i];
-    if (!item) continue;
+    // von hinten nach vorne: zuletzt erzeugte User-Markierung gewinnt
+    for (let i = I.HL.length - 1; i >= 0; i--){
+      const item = I.HL[i];
+      if (!item) continue;
 
-    if ((item.kind || "user") !== "user") continue;
+      // Nur echte User-Markierungen dürfen radiert werden
+      if ((item.kind || "user") !== "user") continue;
 
-    // im Präsentationsmodus nur auf aktueller Folie radieren
-    if (activeSlide && (item.slide || "global") !== activeSlide) continue;
+      // Im Folienmodus nur auf aktueller Folie radieren
+      if (activeSlide && (item.slide || "global") !== activeSlide) continue;
 
-    const rects = Array.isArray(item.rects) ? item.rects : [];
-    for (const r of rects){
-      if (
-        x >= r.x &&
-        x <= r.x + r.w &&
-        y >= r.y &&
-        y <= r.y + r.h
-      ){
-        return item;
+      const rects = Array.isArray(item.rects) ? item.rects : [];
+      for (const r of rects){
+        if (
+          x >= r.x &&
+          x <= r.x + r.w &&
+          y >= r.y &&
+          y <= r.y + r.h
+        ){
+          return item;
+        }
       }
     }
-  }
 
-  return null;
-}
+    return null;
+  }
 
 
 
@@ -2423,27 +2449,18 @@ function findUserHighlightAtPoint(clientX, clientY){
     addHighlightFromSelection();
   }, true);
 
-  CONTENT_DOC.addEventListener("click", (e)=>{
+  CONTENT_DOC.addEventListener("pointerdown", (e)=>{
     if (!I.state.active) return;
     if (I.state.tool !== "erase") return;
 
-    // 1) zuerst normaler DOM-Treffer
-    let id = null;
-    const t = e.target?.closest?.('.lia-hl-rect[data-kind="user"]');
-    if (t){
-      id = t.getAttribute("data-id");
-    }
+    // Vor dem Hit-Test alle Rechtecke aktualisieren
+    recalcAllHighlights();
 
-    // 2) Fallback: geometrisch prüfen, in welcher User-Markierung geklickt wurde
-    if (!id){
-      const hit = findUserHighlightAtPoint(e.clientX, e.clientY);
-      if (hit) id = String(hit.id);
-    }
+    // Immer geometrisch prüfen – nicht auf e.target verlassen
+    const hit = findUserHighlightAtPoint(e.clientX, e.clientY);
+    if (!hit) return;
 
-    if (!id) return;
-
-    const n = Number(id);
-    I.HL = I.HL.filter(x => x.id !== n);
+    I.HL = I.HL.filter(x => x.id !== hit.id);
 
     e.preventDefault();
     e.stopPropagation();
