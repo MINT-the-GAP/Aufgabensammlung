@@ -165,8 +165,14 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{ display: inline !important; }
       box-shadow: 0 1px 0 rgba(0,0,0,.08) inset;
       mix-blend-mode: multiply;
 
+      pointer-events: none !important;
+      cursor: default !important;
+    }
+
+    /* Nur echte User-Markierungen dürfen angeklickt / radiert werden */
+    .lia-hl-rect[data-kind="user"]{
       pointer-events: auto !important;
-      cursor: pointer;
+      cursor: pointer !important;
     }
 
         /* ---------------------------------------------------------
@@ -1348,19 +1354,34 @@ CONTENT_DOC.addEventListener("scroll", scheduleRender, { passive:true, capture:t
     if (clearBtn){
       clearBtn.addEventListener("click", ()=>{
         for (const it of I.HL) ensureItemSlide(it);
-
+    
+        const removableKinds = new Set(["user", "solution"]);
+        // Falls Lösungen NICHT mit gelöscht werden sollen:
+        // const removableKinds = new Set(["user"]);
+    
         if (shouldFilterBySlide()){
           const sid = getActiveSlideId();
+    
           if (sid){
-            I.HL = I.HL.filter(it => (it.slide || "global") !== sid);
+            I.HL = I.HL.filter(it => {
+              const kind = it.kind || "user";
+              const sameSlide = (it.slide || "global") === sid;
+    
+              // andere Folien bleiben immer erhalten
+              if (!sameSlide) return true;
+    
+              // prefill bleibt erhalten, user/solution werden gelöscht
+              return !removableKinds.has(kind);
+            });
           } else {
-            I.HL = [];
+            I.HL = I.HL.filter(it => !removableKinds.has(it.kind || "user"));
           }
         } else {
-          I.HL = [];
+          I.HL = I.HL.filter(it => !removableKinds.has(it.kind || "user"));
         }
+    
         render();
-
+    
         I.state.panelOpen = false;
         I.state.tool = "mark";
         applyUI();
@@ -2368,18 +2389,15 @@ function trimRangeWhitespace(range){
     if (!I.state.active) return;
     if (I.state.tool !== "erase") return;
 
-    const t = e.target;
-    if (!t || !t.classList || !t.classList.contains("lia-hl-rect")) return;
+    const t = e.target?.closest?.('.lia-hl-rect[data-kind="user"]');
+    if (!t) return;
 
     const id = t.getAttribute("data-id");
     if (!id) return;
 
     const n = Number(id);
-    const item = I.HL.find(x => x.id === n);
-    if (item && item.kind === "user"){
-      I.HL = I.HL.filter(x => x.id !== n);
-      render();
-    }
+    I.HL = I.HL.filter(x => x.id !== n);
+    render();
   }, true);
 
 
@@ -3046,6 +3064,7 @@ function render(){
       el.className = "lia-hl-rect";
       el.setAttribute("data-hl", item.color);
       el.setAttribute("data-id", String(item.id));
+      el.setAttribute("data-kind", item.kind || "user");
 
       el.style.left   = `${Math.round(S.ox + (rr.x - S.sx))}px`;
       el.style.top    = `${Math.round(S.oy + (rr.y - S.sy))}px`;
