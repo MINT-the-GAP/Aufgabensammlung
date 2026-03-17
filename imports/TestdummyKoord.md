@@ -1,612 +1,1204 @@
 <!--
-version:  0.0.1
+version: 0.0.1
 language: de
-author: Martin Lommatzsch
-comment: JSXGraph Board-Template (Design-Preset) — initBoard() + Theme/Grid Sync + Adaptive Ticks/Grid (import-sicher)
+narrator: Deutsch Female
 
-
-import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
-        https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
 
 
-@style
-:root{
-  /* optional: wenn gesetzt, wird das für Grid bevorzugt */
-  --grid-color: ;
-}
-
-/* Wrapper für max Breite (optional nutzen) */
-.jxs-wrap{
-  max-width: 1000px;
-}
-
-/* JSXGraph Container: transparent + Rahmen (Basis; Farbe via JS nachgezogen) */
-.jxgbox{
-  background: transparent !important;
-  border-radius: 8px;
-  box-sizing: border-box;
-}
-
-/* Navigation transparent (Farbe in @media) */
-.jxgbox .JXG_navigation,
-.JXG_navigation{
-  background: transparent !important;
-}
-
-/* LIGHTMODE */
-@media (prefers-color-scheme: light){
-  .jxgbox .JXG_navigation,
-  .JXG_navigation{ color: #000 !important; }
-
-  .jxgbox .JXG_navigation a,
-  .jxgbox .JXG_navigation span,
-  .jxgbox .JXG_navigation button,
-  .JXG_navigation a,
-  .JXG_navigation span,
-  .JXG_navigation button{
-    color: #000 !important;
-    border-color: #000 !important;
-    background: transparent !important;
-  }
-
-  .jxgbox .JXG_navigation svg,
-  .jxgbox .JXG_navigation svg *,
-  .JXG_navigation svg,
-  .JXG_navigation svg *{
-    fill: #000 !important;
-    stroke: #000 !important;
-  }
-
-  .jxgbox .JXG_navigation img,
-  .JXG_navigation img{
-    filter: none !important;
-  }
-}
-
-/* DARKMODE */
-@media (prefers-color-scheme: dark){
-  .jxgbox .JXG_navigation,
-  .JXG_navigation{ color: #fff !important; }
-
-  .jxgbox .JXG_navigation a,
-  .jxgbox .JXG_navigation span,
-  .jxgbox .JXG_navigation button,
-  .JXG_navigation a,
-  .JXG_navigation span,
-  .JXG_navigation button{
-    color: #fff !important;
-    border-color: #fff !important;
-    background: transparent !important;
-  }
-
-  .jxgbox .JXG_navigation svg,
-  .jxgbox .JXG_navigation svg *,
-  .JXG_navigation svg,
-  .JXG_navigation svg *{
-    fill: #fff !important;
-    stroke: #fff !important;
-  }
-
-  .jxgbox .JXG_navigation img,
-  .JXG_navigation img{
-    filter: invert(1) !important;
-  }
-}
-@end
 
 
-@onload
-(function(){
-  // =========================================================
-  // Root/Content (iframe-safe)
-  // =========================================================
-  function getRootWindow(){
-    let w = window;
-    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
-    return w;
-  }
-  const ROOT = getRootWindow();
 
-  // =========================================================
-  // Registry (import-safe)
-  // =========================================================
-  const KEY = "__LIA_JXS_BOARD_TEMPLATE_V1__";
-  ROOT[KEY] = ROOT[KEY] || { api: null };
-  if (ROOT[KEY].api) {
-    // API schon installiert: in diesem Dokument sichtbar machen
-    try { window.__JXS = ROOT[KEY].api; } catch(e){}
-    return;
-  }
 
-  // =========================================================
-  // Helpers
-  // =========================================================
-  const api = {};
-  ROOT[KEY].api = api;
-  try { ROOT.__JXS = api; } catch(e){}
-  try { window.__JXS = api; } catch(e){}
 
-  api.boards = ROOT.__boards || (ROOT.__boards = {});
-  api.timers = new WeakMap();   // board -> {gridTimer, themeTimer}
-  api.grids  = new WeakMap();   // board -> gridObject (für rebuild)
 
-  function isConnected(board){
-    try { return !!(board && board.containerObj && board.containerObj.isConnected); }
-    catch(e){ return true; }
-  }
 
-  // Lia Akzentfarbe: 1) --grid-color 2) .lia-btn bg/border/color 3) fallback
-  api.readAccent = function(fallback = "#0b5fff"){
-    // 1) im aktuellen Dokument
-    try {
-      const cs0 = getComputedStyle(document.documentElement);
-      const v0 = cs0.getPropertyValue("--grid-color").trim();
-      if (v0) return v0;
-    } catch(e){}
 
-    // 2) aus .lia-btn im aktuellen Dokument
-    try {
-      const btn = document.querySelector(".lia-btn");
-      if (btn) {
-        const cs = getComputedStyle(btn);
-        const bg = cs.backgroundColor && cs.backgroundColor !== "rgba(0, 0, 0, 0)" ? cs.backgroundColor : "";
-        if (bg) return bg;
-        const br = cs.borderTopColor && cs.borderTopColor !== "rgba(0, 0, 0, 0)" ? cs.borderTopColor : "";
-        if (br) return br;
-        if (cs.color) return cs.color;
+
+
+
+
+@Koordinatensystem
+<div>
+
+``` javascript @JSX.Graph
+
+
+(function () {
+  JXG.Options.text.useMathJax = false;
+
+  function splitTopLevel(str) {
+    const out = [];
+    let cur = '';
+    let quote = '';
+    let esc = false;
+
+    for (let i = 0; i < str.length; i++) {
+      const ch = str[i];
+
+      if (esc) {
+        cur += ch;
+        esc = false;
+        continue;
       }
-    } catch(e){}
 
-    // 3) parent versuchen
-    try {
-      if (window.parent && window.parent.document) {
-        const docP = window.parent.document;
-        const winP = window.parent;
-        const csP0 = winP.getComputedStyle(docP.documentElement);
-        const vP0 = csP0.getPropertyValue("--grid-color").trim();
-        if (vP0) return vP0;
-
-        const btnP = docP.querySelector(".lia-btn");
-        if (btnP) {
-          const cs = winP.getComputedStyle(btnP);
-          const bg = cs.backgroundColor && cs.backgroundColor !== "rgba(0, 0, 0, 0)" ? cs.backgroundColor : "";
-          if (bg) return bg;
-          const br = cs.borderTopColor && cs.borderTopColor !== "rgba(0, 0, 0, 0)" ? cs.borderTopColor : "";
-          if (br) return br;
-          if (cs.color) return cs.color;
-        }
+      if (ch === '\\') {
+        cur += ch;
+        esc = true;
+        continue;
       }
-    } catch(e){}
 
-    return fallback;
-  };
+      if (quote) {
+        cur += ch;
+        if (ch === quote) quote = '';
+        continue;
+      }
 
-  api.isDarkTheme = function(){
+      if (ch === '"' || ch === "'" || ch === '`') {
+        cur += ch;
+        quote = ch;
+        continue;
+      }
+
+      if (ch === ';' || ch === ',') {
+        if (cur.trim()) out.push(cur.trim());
+        cur = '';
+        continue;
+      }
+
+      cur += ch;
+    }
+
+    if (cur.trim()) out.push(cur.trim());
+    return out;
+  }
+
+  function unquote(v) {
+    v = String(v || '').trim();
+    if (
+      (v.startsWith('"') && v.endsWith('"')) ||
+      (v.startsWith("'") && v.endsWith("'")) ||
+      (v.startsWith('`') && v.endsWith('`'))
+    ) {
+      return v.slice(1, -1);
+    }
+    return v;
+  }
+
+  function toNum(v, fallback) {
+    const n = parseFloat(String(v).replace(',', '.'));
+    return Number.isFinite(n) ? n : fallback;
+  }
+
+  function parseSpec(spec) {
+    const raw = unquote(String(spec || '').trim());
+    const obj = {};
+
+    splitTopLevel(raw).forEach(part => {
+      const eq = part.indexOf('=');
+      if (eq < 0) return;
+
+      const key = part.slice(0, eq).trim().toLowerCase();
+      const val = unquote(part.slice(eq + 1).trim());
+      obj[key] = val;
+    });
+
+    const cfg = {
+      xmin:  toNum(obj.xmin, -4),
+      xmax:  toNum(obj.xmax,  4),
+      ymin:  toNum(obj.ymin, -3),
+      ymax:  toNum(obj.ymax,  3),
+      width: toNum(obj.width, NaN),
+      id:    obj.id != null ? obj.id : 'A1'
+    };
+
+    if (!(cfg.xmax > cfg.xmin)) cfg.xmax = cfg.xmin + 1;
+    if (!(cfg.ymax > cfg.ymin)) cfg.ymax = cfg.ymin + 1;
+    if (!Number.isFinite(cfg.width) || cfg.width <= 0) cfg.width = null;
+
+    return cfg;
+  }
+
+  const cfg = parseSpec(String.raw`@0`);
+
+  const XMIN0 = cfg.xmin;
+  const XMAX0 = cfg.xmax;
+  const YMIN0 = cfg.ymin;
+  const YMAX0 = cfg.ymax;
+  const INITIAL_WIDTH = cfg.width;
+
+  const INITIAL_BBOX = [XMIN0, YMAX0, XMAX0, YMIN0];
+  const INITIAL_XSPAN = XMAX0 - XMIN0;
+  const INITIAL_YSPAN = YMAX0 - YMIN0;
+  const INITIAL_RATIO = INITIAL_YSPAN / INITIAL_XSPAN;
+
+  let manualWidth = null;
+  let manualHeight = null;
+
+  function isDarkTheme() {
     try {
       const doc = (window.parent && window.parent.document) ? window.parent.document : document;
       const win = (window.parent && window.parent.getComputedStyle) ? window.parent : window;
       const el  = doc.body || doc.documentElement;
-      const bg  = win.getComputedStyle(el).backgroundColor || "";
+      const bg  = win.getComputedStyle(el).backgroundColor;
       const m   = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
       if (!m) return false;
-      const r = parseInt(m[1],10), g = parseInt(m[2],10), b = parseInt(m[3],10);
-      const lum = 0.2126*r + 0.7152*g + 0.0722*b;
+
+      const r = parseInt(m[1], 10);
+      const g = parseInt(m[2], 10);
+      const b = parseInt(m[3], 10);
+
+      const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
       return lum < 128;
-    } catch(e){ return false; }
-  };
+    } catch (e) {
+      return false;
+    }
+  }
 
-  api.neutral = function(){
-    return api.isDarkTheme() ? "#fff" : "#000";
-  };
+  function neutralColor() {
+    return isDarkTheme() ? '#fff' : '#000';
+  }
 
-  // Grid einfärben (existierende Objekte)
-  api.applyGridColor = function(board, color){
+  function getGridColor(fallback = '#0b5fff') {
+    try {
+      const doc = (window.parent && window.parent.document) ? window.parent.document : document;
+      const win = (window.parent && window.parent.getComputedStyle) ? window.parent : window;
+
+      const btn = doc.querySelector('.lia-btn');
+      if (btn) {
+        const cs = win.getComputedStyle(btn);
+
+        const bg = cs.backgroundColor;
+        if (bg && bg !== 'rgba(0, 0, 0, 0)') return bg;
+
+        const br = cs.borderTopColor;
+        if (br && br !== 'rgba(0, 0, 0, 0)') return br;
+
+        if (cs.color) return cs.color;
+      }
+    } catch (e) {}
+
+    return fallback;
+  }
+
+  function applyBoardFrame(board) {
+    if (!board || !board.containerObj) return;
+
+    board.containerObj.style.border = '2px solid ' + neutralColor();
+    board.containerObj.style.borderRadius = '8px';
+    board.containerObj.style.boxSizing = 'border-box';
+    board.containerObj.style.background = 'transparent';
+    board.containerObj.style.position = 'relative';
+    board.containerObj.style.display = 'block';
+    board.containerObj.style.marginLeft = '0';
+    board.containerObj.style.marginRight = 'auto';
+    board.containerObj.style.touchAction = 'none';
+  }
+
+  function applyNavColors(board) {
+    if (!board || !board.containerObj) return;
+
+    const nav = board.containerObj.querySelector('.JXG_navigation');
+    if (!nav) return;
+
+    const col  = neutralColor();
+    const dark = isDarkTheme();
+
+    nav.style.color = col;
+    nav.style.background = 'transparent';
+
+    nav.querySelectorAll('a, button, span').forEach(el => {
+      el.style.color = col;
+      el.style.borderColor = col;
+      el.style.background = 'transparent';
+      el.style.boxShadow = 'none';
+    });
+
+    nav.querySelectorAll('svg, svg *').forEach(el => {
+      el.style.fill = col;
+      el.style.stroke = col;
+    });
+
+    nav.querySelectorAll('img').forEach(img => {
+      img.style.filter = dark ? 'invert(1)' : 'none';
+    });
+  }
+
+  function applyGridColor(board, color) {
     if (!board || !color) return;
 
-    // Optionen (für spätere Builds)
     try {
       if (board.options && board.options.grid) {
         if (board.options.grid.major) board.options.grid.major.strokeColor = color;
         if (board.options.grid.minor) board.options.grid.minor.strokeColor = color;
       }
-    } catch(e){}
+    } catch (e) {}
 
-    // aktives Grid-Objekt (falls von uns gebaut)
-    try {
-      const g = api.grids.get(board);
-      if (g && typeof g.setAttribute === "function") {
-        g.setAttribute({ strokeColor: color });
-      }
-    } catch(e){}
-
-    // fallback: board.grids
     try {
       if (board.grids && board.grids.length) {
-        board.grids.forEach(g => g && g.setAttribute && g.setAttribute({ strokeColor: color }));
-      }
-    } catch(e){}
-
-    try {
-      if (typeof board.fullUpdate === "function") board.fullUpdate();
-      else board.update();
-    } catch(e){}
-  };
-
-  // Achsen/Ticklabels einfärben + Rahmen
-  api.applyAxisAndFrame = function(board){
-    if (!board) return;
-    const col = api.neutral();
-
-    try {
-      if (board.containerObj) {
-        board.containerObj.style.border = "2px solid " + col;
-        board.containerObj.style.borderRadius = "8px";
-        board.containerObj.style.background = "transparent";
-        board.containerObj.style.boxSizing = "border-box";
-      }
-    } catch(e){}
-
-    // Defaults für neu entstehende Ticklabels
-    try {
-      board.options = board.options || {};
-      board.options.defaultAxes = board.options.defaultAxes || {};
-      ["x","y"].forEach(ax => {
-        board.options.defaultAxes[ax] = board.options.defaultAxes[ax] || {};
-        board.options.defaultAxes[ax].ticks = board.options.defaultAxes[ax].ticks || {};
-        board.options.defaultAxes[ax].ticks.label = board.options.defaultAxes[ax].ticks.label || {};
-
-        board.options.defaultAxes[ax].strokeColor = col;
-        board.options.defaultAxes[ax].ticks.strokeColor = col;
-        board.options.defaultAxes[ax].ticks.label.strokeColor = col;
-        board.options.defaultAxes[ax].ticks.label.fillColor   = col;
-      });
-    } catch(e){}
-
-    const paint = (obj) => {
-      if (!obj || typeof obj.setAttribute !== "function") return;
-      try {
-        obj.setAttribute({
-          strokeColor: col,
-          highlightStrokeColor: col,
-          fillColor: col,
-          highlightFillColor: col
+        board.grids.forEach(g => {
+          if (g && typeof g.setAttribute === 'function') {
+            g.setAttribute({ strokeColor: color });
+          }
         });
-      } catch(e){}
-    };
-
-    try {
-      if (board.defaultAxes) {
-        if (board.defaultAxes.x && board.defaultAxes.x.label) paint(board.defaultAxes.x.label);
-        if (board.defaultAxes.y && board.defaultAxes.y.label) paint(board.defaultAxes.y.label);
-
-        const paintTicks = (axis) => {
-          if (!axis) return;
-          try { axis.setAttribute({ strokeColor: col, highlightStrokeColor: col }); } catch(e){}
-
-          const t = axis.defaultTicks;
-          if (t) {
-            paint(t);
-            try {
-              if (t.labels && t.labels.length) t.labels.forEach(paint);
-              if (t.visProp && t.visProp.label) {
-                t.visProp.label.strokeColor = col;
-                t.visProp.label.fillColor   = col;
-              }
-            } catch(e){}
-          }
-
-          if (axis.ticks && axis.ticks.length) {
-            axis.ticks.forEach(tt => {
-              paint(tt);
-              try {
-                if (tt.labels && tt.labels.length) tt.labels.forEach(paint);
-                if (tt.visProp && tt.visProp.label) {
-                  tt.visProp.label.strokeColor = col;
-                  tt.visProp.label.fillColor   = col;
-                }
-              } catch(e){}
-            });
-          }
-        };
-
-        paintTicks(board.defaultAxes.x);
-        paintTicks(board.defaultAxes.y);
       }
-    } catch(e){}
+    } catch (e) {}
 
     try {
-      if (typeof board.fullUpdate === "function") board.fullUpdate();
-      else board.update();
-    } catch(e){}
-  };
+      if (board.objectsList && board.objectsList.length) {
+        board.objectsList.forEach(o => {
+          if (!o || typeof o.setAttribute !== 'function') return;
+          if (o.elType === 'grid' || (typeof JXG !== 'undefined' && o.type === JXG.OBJECT_TYPE_GRID)) {
+            o.setAttribute({ strokeColor: color });
+          }
+        });
+      }
+    } catch (e) {}
+  }
 
-  // Adaptive Ticks/Grid (1–2–5–10) + Rebuild Grid (versionsstabil)
-  api.enableAdaptiveAxesAndGrid = function(board){
-    if (!board) return;
+  function applyAxisColors(board) {
+    if (!board || !board.defaultAxes) return;
 
-    function niceStep(raw){
-      if (!isFinite(raw) || raw <= 0) return 1;
-      const exp = Math.floor(Math.log10(raw));
-      const f = raw / Math.pow(10, exp);
-      let nf;
-      if (f <= 1) nf = 1;
-      else if (f <= 2) nf = 2;
-      else if (f <= 5) nf = 5;
-      else nf = 10;
-      return nf * Math.pow(10, exp);
-    }
+    const col = neutralColor();
 
-    function pxPerUnitX(){
-      const bb = board.getBoundingBox(); // [xmin, ymax, xmax, ymin]
-      const w = board.containerObj ? board.containerObj.clientWidth : (board.canvasWidth || 600);
-      return w / Math.max(1e-9, (bb[2] - bb[0]));
-    }
-    function pxPerUnitY(){
-      const bb = board.getBoundingBox();
-      const h = board.containerObj ? board.containerObj.clientHeight : (board.canvasHeight || 400);
-      return h / Math.max(1e-9, (bb[1] - bb[3]));
-    }
+    ['x', 'y'].forEach(axisKey => {
+      const ax = board.defaultAxes[axisKey];
+      if (!ax) return;
 
-    function setAxisTicks(axisKey, step, minorTicks, fontSize, drawLabels){
       try {
-        const ax = board.defaultAxes && board.defaultAxes[axisKey];
-        if (!ax) return;
+        ax.setAttribute({
+          strokeColor: col,
+          highlightStrokeColor: col
+        });
+      } catch (e) {}
 
-        board.options = board.options || {};
-        board.options.defaultAxes = board.options.defaultAxes || {};
-        board.options.defaultAxes[axisKey] = board.options.defaultAxes[axisKey] || {};
-        board.options.defaultAxes[axisKey].ticks = board.options.defaultAxes[axisKey].ticks || {};
-        board.options.defaultAxes[axisKey].ticks.label = board.options.defaultAxes[axisKey].ticks.label || {};
-
-        board.options.defaultAxes[axisKey].ticks.ticksDistance = step;
-        board.options.defaultAxes[axisKey].ticks.minorTicks    = minorTicks;
-        board.options.defaultAxes[axisKey].ticks.drawLabels    = !!drawLabels;
-        board.options.defaultAxes[axisKey].ticks.label.fontSize = fontSize;
-
-        const t = ax.defaultTicks;
-        if (t && typeof t.setAttribute === "function") {
-          t.setAttribute({
-            ticksDistance: step,
-            minorTicks: minorTicks,
-            drawLabels: !!drawLabels,
-            label: { fontSize: fontSize }
+      try {
+        if (ax.defaultTicks) {
+          ax.defaultTicks.setAttribute({
+            strokeColor: col,
+            highlightStrokeColor: col,
+            label: {
+              strokeColor: col,
+              fillColor: col
+            }
           });
         }
-      } catch(e){}
-    }
+      } catch (e) {}
+    });
 
-    function rebuildGrid(stepX, stepY, minorX, minorY){
-      const color = api.readAccent("#0b5fff");
-
-      // altes Grid entfernen (wenn von uns)
-      try {
-        const gOld = api.grids.get(board);
-        if (gOld) { try { board.removeObject(gOld); } catch(e){} }
-      } catch(e){}
-
-      // neues Grid
-      let gNew = null;
-      try {
-        gNew = board.create("grid", [], {
-          majorStep: [stepX, stepY],
-          minorElements: [minorX, minorY],
-          includeBoundaries: true,
-          forceSquare: true,
-          major: { face:"line", strokeColor: color, strokeWidth: 1.5, dash: 0, drawZero: true },
-          minor: { face:"line", strokeColor: color, strokeWidth: 1.0, dash: 1, drawZero: false }
-        });
-      } catch(e){}
-
-      if (gNew) api.grids.set(board, gNew);
-      api.applyGridColor(board, color);
-      api.applyAxisAndFrame(board);
-    }
-
-    let lastSig = "";
-    function computeAndApply(){
-      const ppuX = pxPerUnitX();
-      const ppuY = pxPerUnitY();
-      const targetPx = 90;
-
-      const stepX = niceStep(targetPx / Math.max(1e-9, ppuX));
-      const stepY = niceStep(targetPx / Math.max(1e-9, ppuY));
-
-      const minorX = (ppuX < 25 || stepX >= 10) ? 0 : (stepX >= 5 ? 4 : 9);
-      const minorY = (ppuY < 25 || stepY >= 10) ? 0 : (stepY >= 5 ? 4 : 9);
-
-      let font = 18;
-      let draw = true;
-      const ppuMin = Math.min(ppuX, ppuY);
-      if (ppuMin < 35) font = 14;
-      if (ppuMin < 25) font = 12;
-      if (ppuMin < 16) draw = false;
-
-      const sig = [stepX,stepY,minorX,minorY,font,draw].join("|");
-      if (sig === lastSig) return;
-      lastSig = sig;
-
-      setAxisTicks("x", stepX, minorX, font, draw);
-      setAxisTicks("y", stepY, minorY, font, draw);
-      rebuildGrid(stepX, stepY, minorX, minorY);
-
-      try {
-        if (typeof board.fullUpdate === "function") board.fullUpdate();
-        else board.update();
-      } catch(e){}
-    }
-
-    let raf = 0;
-    function schedule(){
-      if (raf) return;
-      raf = requestAnimationFrame(() => { raf = 0; computeAndApply(); });
-    }
-
-    try { board.on("boundingbox", schedule); } catch(e){}
-    try { board.on("resize", schedule); } catch(e){}
-
-    computeAndApply();
-  };
-
-  // Watcher: Grid-Farbe & Theme regelmäßig nachziehen (und bei DOM-Disconnect stoppen)
-  api.enableWatchers = function(board, gridIntervalMs = 400, themeIntervalMs = 300){
-    if (!board) return;
-
-    const timers = api.timers.get(board) || {};
-
-    // Grid watcher
-    if (!timers.gridTimer) {
-      let last = "";
-      timers.gridTimer = setInterval(() => {
-        if (!isConnected(board)) { clearInterval(timers.gridTimer); timers.gridTimer = null; return; }
-        const c = api.readAccent("#0b5fff");
-        if (c && c !== last) { last = c; api.applyGridColor(board, c); }
-      }, gridIntervalMs);
-    }
-
-    // Theme watcher (hilft bei Lia-Theme-Umschaltungen/Slides)
-    if (!timers.themeTimer) {
-      let lastDark = null;
-      timers.themeTimer = setInterval(() => {
-        if (!isConnected(board)) { clearInterval(timers.themeTimer); timers.themeTimer = null; return; }
-        const nowDark = api.isDarkTheme();
-        if (nowDark === lastDark) return;
-        lastDark = nowDark;
-        api.applyAxisAndFrame(board);
-      }, themeIntervalMs);
-    }
-
-    api.timers.set(board, timers);
-
-    // matchMedia (sofortiger Wechsel, falls verfügbar)
     try {
-      const mq = window.matchMedia("(prefers-color-scheme: dark)");
-      const handler = () => api.applyAxisAndFrame(board);
-      if (mq && typeof mq.addEventListener === "function") mq.addEventListener("change", handler);
-      else if (mq && typeof mq.addListener === "function") mq.addListener(handler);
-    } catch(e){}
-  };
+      if (typeof board.fullUpdate === 'function') board.fullUpdate();
+      else board.update();
+    } catch (e) {}
+  }
 
-  // =========================================================
-  // Default-Optionen (dein Look)
-  // =========================================================
-  function baseOptions(btnColor, axisLabels){
-    const xName = (axisLabels && axisLabels.x) ? axisLabels.x : "\\(x\\)";
-    const yName = (axisLabels && axisLabels.y) ? axisLabels.y : "\\(y\\)";
+  function getConstrainedAncestorWidth(el) {
+    let cur = el;
+    let best = Infinity;
+
+    while (cur && cur !== document.body) {
+      try {
+        const r = cur.getBoundingClientRect();
+        const w = Math.round(r.width);
+        if (w > 0 && w < best) best = w;
+      } catch (e) {}
+
+      cur = cur.parentElement;
+    }
+
+    return Number.isFinite(best) ? best : 900;
+  }
+
+  function maxBoardWidth(board) {
+    return Math.min(
+      getConstrainedAncestorWidth(board.containerObj.parentElement),
+      1000
+    );
+  }
+
+  function maxBoardHeight() {
+    return Math.min(Math.round(window.innerHeight * 0.82), 900);
+  }
+
+  function clampWidth(board, w) {
+    return Math.max(260, Math.min(maxBoardWidth(board), w));
+  }
+
+  function clampHeight(h) {
+    return Math.max(220, Math.min(maxBoardHeight(), h));
+  }
+
+  function roundPx(v) {
+    return Math.max(1, Math.round(v));
+  }
+
+  function solveAspectFittedSize(board, preferredWidth, ratio) {
+    const minW = 260;
+    const minH = 220;
+    const maxW = maxBoardWidth(board);
+    const maxH = maxBoardHeight();
+
+    const safeRatio = Math.max(1e-9, ratio);
+
+    const lowerW = Math.max(minW, minH / safeRatio);
+    const upperW = Math.min(maxW, maxH / safeRatio);
+
+    let width;
+
+    if (upperW >= lowerW) {
+      width = Math.min(preferredWidth, upperW);
+      if (width < lowerW) width = lowerW;
+    } else {
+      width = Math.min(preferredWidth, maxW, maxH / safeRatio);
+      if (!(width > 0)) width = Math.min(maxW, preferredWidth, 600);
+      width = Math.max(1, width);
+    }
+
+    const height = width * safeRatio;
 
     return {
-      axis: true,
-      showNavigation: true,
-      showCopyright: false,
-      keepaspectratio: true,
+      width: roundPx(width),
+      height: roundPx(height)
+    };
+  }
 
-      zoom: { enabled: true, wheel: true, needShift: false, factorX: 1.15, factorY: 1.15 },
-      pan:  { enabled: true, needShift: false, needTwoFingers: false },
+  function computeResizeBBox(width, height) {
+    const ySpan = INITIAL_XSPAN * (height / width);
+    return [XMIN0, YMIN0 + ySpan, XMAX0, YMIN0];
+  }
 
-      defaultAxes: {
-        x: {
-          strokeColor: "black",
-          strokeWidth: 2.5,
-          name: xName,
-          withLabel: true,
-          label: { position: "rt", offset: [-50, -25], fontSize: 18 },
-          ticks: {
-            insertTicks: false,
-            ticksDistance: 1,
-            strokeWidth: 3,
-            minorTicks: 9,
-            drawLabels: true,
-            label: { fontSize: 18 }
-          }
-        },
-        y: {
-          strokeColor: "black",
-          strokeWidth: 2.5,
-          name: yName,
-          withLabel: true,
-          label: { position: "rt", offset: [15, 0], fontSize: 18 },
-          ticks: {
-            insertTicks: false,
-            ticksDistance: 1,
-            strokeWidth: 3,
-            minorTicks: 9,
-            drawLabels: true,
-            label: { fontSize: 18 }
+  function applyBoardSize(board, desiredWidth, desiredHeight, useInitialBBox) {
+    if (!board || !board.containerObj) return null;
+
+    const width  = clampWidth(board, desiredWidth);
+    const height = clampHeight(desiredHeight);
+
+    board.containerObj.style.width = width + 'px';
+    board.containerObj.style.height = height + 'px';
+
+    try {
+      board.resizeContainer(width, height, false, true);
+    } catch (e) {}
+
+    const bb = useInitialBBox ? INITIAL_BBOX : computeResizeBBox(width, height);
+
+    try {
+      board.setBoundingBox(bb, true);
+    } catch (e) {}
+
+    try {
+      board.update();
+    } catch (e) {}
+
+    return { width, height };
+  }
+
+  function fitBoardSize(board) {
+    if (!board || !board.containerObj) return;
+
+    const autoMode = (manualWidth == null || manualHeight == null);
+
+    if (autoMode) {
+      const autoWidth = Math.min(
+        getConstrainedAncestorWidth(board.containerObj.parentElement),
+        1000
+      );
+
+      const preferredWidth = INITIAL_WIDTH != null ? INITIAL_WIDTH : autoWidth;
+
+      const size = solveAspectFittedSize(board, preferredWidth, INITIAL_RATIO);
+      applyBoardSize(board, size.width, size.height, true);
+      return;
+    }
+
+    applyBoardSize(board, manualWidth, manualHeight, false);
+  }
+
+  function styleResizeHandle(handle) {
+    const col = neutralColor();
+
+    handle.style.position = 'absolute';
+    handle.style.right = '0';
+    handle.style.bottom = '0';
+    handle.style.left = 'auto';
+    handle.style.width = '22px';
+    handle.style.height = '22px';
+    handle.style.cursor = 'nwse-resize';
+    handle.style.zIndex = '50';
+    handle.style.touchAction = 'none';
+    handle.style.userSelect = 'none';
+    handle.style.background = 'transparent';
+    handle.style.borderRight = '2px solid ' + col;
+    handle.style.borderBottom = '2px solid ' + col;
+    handle.style.borderLeft = '0';
+    handle.style.borderTop = '0';
+    handle.style.borderBottomRightRadius = '8px';
+    handle.style.borderBottomLeftRadius = '0';
+    handle.style.boxSizing = 'border-box';
+  }
+
+  function ensureResizeHandle(board) {
+    if (!board || !board.containerObj) return;
+
+    let handle = board.containerObj.querySelector('.lia-jxg-resize-handle');
+    if (!handle) {
+      handle = document.createElement('div');
+      handle.className = 'lia-jxg-resize-handle';
+      board.containerObj.appendChild(handle);
+    }
+
+    styleResizeHandle(handle);
+
+    if (handle.__bound) return;
+    handle.__bound = true;
+
+    let drag = null;
+
+    function stopDrag() {
+      drag = null;
+      try { document.body.style.userSelect = ''; } catch (e) {}
+    }
+
+    handle.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      drag = {
+        pointerId: e.pointerId,
+        startX: e.clientX,
+        startY: e.clientY,
+        startW: board.containerObj.clientWidth,
+        startH: board.containerObj.clientHeight
+      };
+
+      try { handle.setPointerCapture(e.pointerId); } catch (err) {}
+      try { document.body.style.userSelect = 'none'; } catch (err) {}
+    });
+
+    window.addEventListener('pointermove', (e) => {
+      if (!drag || e.pointerId !== drag.pointerId) return;
+
+      const dx = e.clientX - drag.startX;
+      const dy = e.clientY - drag.startY;
+
+      manualWidth  = clampWidth(board, drag.startW + dx);
+      manualHeight = clampHeight(drag.startH + dy);
+
+      applyBoardSize(board, manualWidth, manualHeight, false);
+      applyBoardFrame(board);
+      applyNavColors(board);
+      applyGridColor(board, getGridColor('#0b5fff'));
+      applyAxisColors(board);
+      applyAdaptiveTicks(board);
+      styleResizeHandle(handle);
+    });
+
+    window.addEventListener('pointerup', (e) => {
+      if (!drag || e.pointerId !== drag.pointerId) return;
+      stopDrag();
+    });
+
+    window.addEventListener('pointercancel', () => {
+      stopDrag();
+    });
+  }
+
+  function pxPerUnitX(board) {
+    const bb = board.getBoundingBox();
+    const w  = board.containerObj ? board.containerObj.clientWidth : 800;
+    return w / Math.max(1e-9, (bb[2] - bb[0]));
+  }
+
+  function pxPerUnitY(board) {
+    const bb = board.getBoundingBox();
+    const h  = board.containerObj ? board.containerObj.clientHeight : 600;
+    return h / Math.max(1e-9, (bb[1] - bb[3]));
+  }
+
+  function chooseDecadeStep(raw) {
+    if (!isFinite(raw) || raw <= 0) return 1;
+
+    const exp  = Math.floor(Math.log10(raw));
+    const base = Math.pow(10, exp);
+    const next = base * 10;
+
+    return (raw / base < next / raw) ? base : next;
+  }
+
+  function chooseMinorTicks(pxPerMajor) {
+    if (pxPerMajor >= 160) return 9;
+    if (pxPerMajor >= 80)  return 3;
+    if (pxPerMajor >= 36)  return 1;
+    return 0;
+  }
+
+  let lastAdaptiveSig = '';
+
+  function applyAdaptiveTicks(board) {
+    if (!board || !board.defaultAxes) return;
+
+    const ppuX = pxPerUnitX(board);
+    const ppuY = pxPerUnitY(board);
+
+    const targetPx = 90;
+
+    const rawStepX = targetPx / Math.max(1e-9, ppuX);
+    const rawStepY = targetPx / Math.max(1e-9, ppuY);
+
+    const majorStepX = chooseDecadeStep(rawStepX);
+    const majorStepY = chooseDecadeStep(rawStepY);
+
+    const pxPerMajorX = majorStepX * ppuX;
+    const pxPerMajorY = majorStepY * ppuY;
+
+    const minorX = chooseMinorTicks(pxPerMajorX);
+    const minorY = chooseMinorTicks(pxPerMajorY);
+
+    let font = 18;
+    if (Math.min(pxPerMajorX, pxPerMajorY) < 90) font = 16;
+    if (Math.min(pxPerMajorX, pxPerMajorY) < 55) font = 14;
+
+    const sig = [majorStepX, majorStepY, minorX, minorY, font].join('|');
+    if (sig === lastAdaptiveSig) return;
+    lastAdaptiveSig = sig;
+
+    try {
+      board.defaultAxes.x.setAttribute({
+        ticks: {
+          insertTicks: false,
+          ticksDistance: majorStepX,
+          minorTicks: minorX,
+          label: { fontSize: font }
+        }
+      });
+
+      board.defaultAxes.y.setAttribute({
+        ticks: {
+          insertTicks: false,
+          ticksDistance: majorStepY,
+          minorTicks: minorY,
+          label: { fontSize: font }
+        }
+      });
+    } catch (e) {}
+
+    try {
+      if (board.defaultAxes.x.defaultTicks) {
+        board.defaultAxes.x.defaultTicks.setAttribute({
+          ticksDistance: majorStepX,
+          minorTicks: minorX,
+          label: { fontSize: font }
+        });
+      }
+
+      if (board.defaultAxes.y.defaultTicks) {
+        board.defaultAxes.y.defaultTicks.setAttribute({
+          ticksDistance: majorStepY,
+          minorTicks: minorY,
+          label: { fontSize: font }
+        });
+      }
+    } catch (e) {}
+
+    try {
+      if (typeof board.fullUpdate === 'function') board.fullUpdate();
+      else board.update();
+    } catch (e) {}
+  }
+
+  const axisCol = neutralColor();
+  const gridCol = getGridColor('#0b5fff');
+
+  const board = JXG.JSXGraph.initBoard(jxgbox, {
+    axis: true,
+    showNavigation: true,
+    showCopyright: false,
+    boundingbox: INITIAL_BBOX,
+    keepaspectratio: true,
+    zoom: {
+      enabled: true,
+      wheel: true,
+      needShift: false,
+      factorX: 1.15,
+      factorY: 1.15
+    },
+    pan: {
+      enabled: true,
+      needShift: false,
+      needTwoFingers: false
+    },
+    defaultAxes: {
+      x: {
+        strokeColor: axisCol,
+        strokeWidth: 2.5,
+        name: '',
+        withLabel: false,
+        ticks: {
+          insertTicks: false,
+          ticksDistance: 1,
+          strokeWidth: 3,
+          minorTicks: 1,
+          drawLabels: true,
+          label: {
+            fontSize: 18,
+            strokeColor: axisCol,
+            fillColor: axisCol
           }
         }
       },
-
-      grid: {
-        majorStep: "auto",
-        minorElements: "auto",
-        includeBoundaries: true,
-        forceSquare: true,
-        major: { face:"line", strokeColor: btnColor, strokeWidth: 1.5, dash: 0, drawZero: true },
-        minor: { face:"line", strokeColor: btnColor, strokeWidth: 1.0, dash: 1, drawZero: false }
+      y: {
+        strokeColor: axisCol,
+        strokeWidth: 2.5,
+        name: '',
+        withLabel: false,
+        ticks: {
+          insertTicks: false,
+          ticksDistance: 1,
+          strokeWidth: 3,
+          minorTicks: 1,
+          drawLabels: true,
+          label: {
+            fontSize: 18,
+            strokeColor: axisCol,
+            fillColor: axisCol
+          }
+        }
       }
+    },
+    grid: {
+      majorStep: 'auto',
+      minorElements: 'auto',
+      includeBoundaries: true,
+      forceSquare: true,
+      major: {
+        face: 'line',
+        strokeColor: gridCol,
+        strokeWidth: 1.5,
+        dash: 0,
+        drawZero: true
+      },
+      minor: {
+        face: 'line',
+        strokeColor: gridCol,
+        strokeWidth: 1,
+        dash: 1,
+        drawZero: false
+      }
+    }
+  });
+
+  window.__boards = window.__boards || {};
+  window.__boards[cfg.id] = board;
+
+  fitBoardSize(board);
+  applyBoardFrame(board);
+  applyNavColors(board);
+  applyGridColor(board, gridCol);
+  applyAxisColors(board);
+  applyAdaptiveTicks(board);
+  ensureResizeHandle(board);
+
+  try {
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    const handler = () => {
+      applyBoardFrame(board);
+      applyNavColors(board);
+      applyGridColor(board, getGridColor('#0b5fff'));
+      applyAxisColors(board);
+      applyAdaptiveTicks(board);
+      ensureResizeHandle(board);
     };
-  }
 
-  function deepMerge(a, b){
-    if (!b) return a;
-    const out = Array.isArray(a) ? a.slice() : Object.assign({}, a);
-    Object.keys(b).forEach(k => {
-      const bv = b[k];
-      const av = out[k];
-      const bothObj = av && bv && typeof av === "object" && typeof bv === "object" && !Array.isArray(av) && !Array.isArray(bv);
-      out[k] = bothObj ? deepMerge(av, bv) : bv;
+    if (mq && typeof mq.addEventListener === 'function') mq.addEventListener('change', handler);
+    else if (mq && typeof mq.addListener === 'function') mq.addListener(handler);
+  } catch (e) {}
+
+  let resizeRAF = 0;
+  window.addEventListener('resize', () => {
+    if (resizeRAF) return;
+
+    resizeRAF = requestAnimationFrame(() => {
+      resizeRAF = 0;
+      fitBoardSize(board);
+      applyBoardFrame(board);
+      applyNavColors(board);
+      applyGridColor(board, getGridColor('#0b5fff'));
+      applyAxisColors(board);
+      applyAdaptiveTicks(board);
+      ensureResizeHandle(board);
     });
-    return out;
+  });
+
+  let bboxRAF = 0;
+  board.on('boundingbox', () => {
+    if (bboxRAF) return;
+
+    bboxRAF = requestAnimationFrame(() => {
+      bboxRAF = 0;
+      applyAdaptiveTicks(board);
+      applyAxisColors(board);
+      ensureResizeHandle(board);
+    });
+  });
+
+  let lastGridColor = '';
+  setInterval(() => {
+    const c = getGridColor('#0b5fff');
+    if (!c || c === lastGridColor) return;
+    lastGridColor = c;
+    applyGridColor(board, c);
+  }, 400);
+})();
+
+
+```
+
+</div>
+
+@end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@ErzeugePunkt: @ErzeugePunkt_(@uid,@0)
+
+@ErzeugePunkt_
+<style>
+  #point-ui-@0{
+    display:inline-flex;
+    align-items:flex-start;
+    gap:.6rem;
+    flex-wrap:nowrap;
   }
 
-  // =========================================================
-  // Public API: initBoard
-  // =========================================================
-  api.initBoard = function(jxgbox, boardId, userOpts){
-    if (!boardId) boardId = "board_" + Math.random().toString(36).slice(2);
-    userOpts = userOpts || {};
+  #point-task-@0,
+  #point-check-@0{
+    display:inline-flex;
+    align-items:flex-start;
+    align-self:flex-start;
+    margin:0;
+    padding:0;
+  }
 
-    // MathJax in JSXGraph aktivieren (einmal)
-    try { if (typeof JXG !== "undefined") JXG.Options.text.useMathJax = true; } catch(e){}
+  #point-check-@0 > *{
+    margin:0;
+  }
 
-    const btnColor = api.readAccent("#0b5fff");
-    const axisLabels = userOpts.axisLabels || null;
+  #btn-@0{
+    vertical-align:top;
+  }
+</style>
 
-    // boundingbox MUSS kommen (default aus userOpts oder fallback)
-    const bb = userOpts.boundingbox || [-1, 5, 7, -1];
+<div id="point-ui-@0">
+  <div id="point-task-@0" class="lia-point-task">
+    <button
+      id="btn-@0"
+      class="lia-btn"
+      type="button"
+      data-spec="@1"
+      onclick="window.ensurePointFromSpec(this.dataset.spec)"
+    >
+      Punkt erzeugen
+    </button>
+  </div>
 
-    // Template defaults + user overrides (ohne axisLabels als Option an initBoard durchzureichen)
-    const defaults = baseOptions(btnColor, axisLabels);
-    const merged = deepMerge(defaults, userOpts);
-    merged.boundingbox = bb;
+  <div id="point-check-@0">
+    <!-- data-solution-button="off" -->
+    [[!]]
+    <script modify="false">
+      function unquote(v) {
+        v = String(v || '').trim();
+        if (
+          (v.startsWith('"') && v.endsWith('"')) ||
+          (v.startsWith("'") && v.endsWith("'")) ||
+          (v.startsWith('`') && v.endsWith('`'))
+        ) {
+          return v.slice(1, -1);
+        }
+        return v;
+      }
 
-    // axisLabels aus merged entfernen, damit JSXGraph nicht meckert
-    try { delete merged.axisLabels; } catch(e){}
+      const spec = unquote('@1');
+      const parts = String(spec).split(';').map(s => s.trim());
 
-    const board = JXG.JSXGraph.initBoard(jxgbox, merged);
+      const boardId = parts[0] || '';
+      const name    = parts[1] || '';
+      const tx      = parseFloat((parts[2] || '').replace(',', '.'));
+      const ty      = parseFloat((parts[3] || '').replace(',', '.'));
 
-    // registrieren
-    api.boards[boardId] = board;
+      const pt = window.__points && window.__points[boardId] && window.__points[boardId][name];
+      const eps = 0.05;
 
-    // initiale Theme/Frame/Colors
-    api.applyAxisAndFrame(board);
-    api.applyGridColor(board, btnColor);
+      !!pt
+        && !Number.isNaN(tx)
+        && !Number.isNaN(ty)
+        && Math.abs(pt.X() - tx) < eps
+        && Math.abs(pt.Y() - ty) < eps;
+    </script>
+  </div>
+</div>
 
-    // adaptive ticks/grid + watcher
-    api.enableAdaptiveAxesAndGrid(board);
-    api.enableWatchers(board);
+<script run-once="true" modify="false">
+(function(){
+  if (window.__erzeugePunktReady) return;
+  window.__erzeugePunktReady = true;
 
-    return board;
+  function themeDoc() {
+    return (window.parent && window.parent.document) ? window.parent.document : document;
+  }
+
+  function themeWin() {
+    return (window.parent && window.parent.getComputedStyle) ? window.parent : window;
+  }
+
+  function currentNeutralColor() {
+    try {
+      const doc = themeDoc();
+      const win = themeWin();
+      const el  = doc.body || doc.documentElement;
+      const bg  = win.getComputedStyle(el).backgroundColor;
+      const m   = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+      if (!m) return '#000';
+
+      const r = parseInt(m[1], 10);
+      const g = parseInt(m[2], 10);
+      const b = parseInt(m[3], 10);
+      const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+
+      return lum < 128 ? '#fff' : '#000';
+    } catch (e) {
+      return '#000';
+    }
+  }
+
+  function themeSignature() {
+    try {
+      const doc = themeDoc();
+      const win = themeWin();
+      const root = doc.documentElement || doc.body;
+      const body = doc.body || doc.documentElement;
+      const rootCls = root ? root.className : '';
+      const bodyCls = body ? body.className : '';
+      const bg = win.getComputedStyle(body).backgroundColor;
+      const fg = win.getComputedStyle(body).color;
+      return [String(rootCls), String(bodyCls), String(bg), String(fg)].join('|');
+    } catch (e) {
+      return String(Date.now());
+    }
+  }
+
+  window.__points = window.__points || {};
+  window.__pointNeutralColor = currentNeutralColor;
+
+  if (!window.__liaThemeSync) {
+    const listeners = new Set();
+    let lastSig = themeSignature();
+
+    function notify() {
+      listeners.forEach(fn => {
+        try { fn(); } catch (e) {}
+      });
+    }
+
+    function check() {
+      const sig = themeSignature();
+      if (sig !== lastSig) {
+        lastSig = sig;
+        notify();
+      }
+    }
+
+    window.__liaThemeSync = {
+      listeners,
+      check
+    };
+
+    try {
+      const doc = themeDoc();
+      const obs = new MutationObserver(check);
+
+      if (doc.documentElement) {
+        obs.observe(doc.documentElement, {
+          attributes: true,
+          attributeFilter: ['class', 'style', 'data-theme']
+        });
+      }
+
+      if (doc.body) {
+        obs.observe(doc.body, {
+          attributes: true,
+          attributeFilter: ['class', 'style', 'data-theme']
+        });
+      }
+    } catch (e) {}
+
+    try {
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+      if (mq && typeof mq.addEventListener === 'function') mq.addEventListener('change', check);
+      else if (mq && typeof mq.addListener === 'function') mq.addListener(check);
+    } catch (e) {}
+
+    setInterval(check, 300);
+  }
+
+  window.__registerLiaThemeListener = function(fn) {
+    if (!window.__liaThemeSync || !fn) return;
+    window.__liaThemeSync.listeners.add(fn);
+    try { fn(); } catch (e) {}
   };
 
-  // Optional: target store (falls du das nutzen willst)
-  ROOT.__targets = ROOT.__targets || {};
-  api.setTarget = function(boardId, key, fn){
-    ROOT.__targets[boardId] = ROOT.__targets[boardId] || {};
-    ROOT.__targets[boardId][key] = fn;
+  function unquote(v) {
+    v = String(v || '').trim();
+    if (
+      (v.startsWith('"') && v.endsWith('"')) ||
+      (v.startsWith("'") && v.endsWith("'")) ||
+      (v.startsWith('`') && v.endsWith('`'))
+    ) {
+      return v.slice(1, -1);
+    }
+    return v;
+  }
+
+  function splitSpec(spec) {
+    return unquote(spec)
+      .split(';')
+      .map(s => s.trim());
+  }
+
+  function stylePointLabel(pt) {
+    if (!pt || typeof pt.setAttribute !== 'function') return;
+
+    const c = currentNeutralColor();
+
+    try {
+      pt.setAttribute({
+        label: {
+          strokeColor: c,
+          fillColor: c,
+          fontSize: 24
+        }
+      });
+    } catch (e) {}
+
+    try {
+      if (pt.label && typeof pt.label.setAttribute === 'function') {
+        pt.label.setAttribute({
+          strokeColor: c,
+          fillColor: c,
+          fontSize: 24
+        });
+      }
+    } catch (e) {}
+  }
+
+  function refreshAllPointLabels() {
+    try {
+      const boards = window.__points || {};
+      Object.keys(boards).forEach(boardId => {
+        const entries = boards[boardId] || {};
+        Object.keys(entries).forEach(name => {
+          stylePointLabel(entries[name]);
+        });
+      });
+    } catch (e) {}
+  }
+
+  window.ensurePointFromSpec = function(spec) {
+    const parts = splitSpec(spec);
+
+    const boardId = parts[0] || '';
+    const name    = parts[1] || 'A';
+
+    const board = window.__boards && window.__boards[boardId];
+    if (!board || !name) return false;
+
+    window.__points[boardId] = window.__points[boardId] || {};
+
+    if (window.__points[boardId][name]) {
+      stylePointLabel(window.__points[boardId][name]);
+      try { board.update(); } catch (e) {}
+      return true;
+    }
+
+    const x0 = Math.random();
+    const y0 = Math.random();
+
+    try {
+      const pt = board.create('point', [x0, y0], {
+        name: name,
+        fixed: false,
+        withLabel: true,
+        showInfobox: false,
+        strokeColor: 'orange',
+        fillColor: 'orange',
+        highlightStrokeColor: 'orange',
+        highlightFillColor: 'orange',
+        face: 'x',
+        size: 7,
+        label: {
+          strokeColor: currentNeutralColor(),
+          fillColor: currentNeutralColor(),
+          fontSize: 24
+        }
+      });
+
+      window.__points[boardId][name] = pt;
+      stylePointLabel(pt);
+      board.update();
+      return true;
+    } catch (e) {
+      return false;
+    }
   };
+
+  window.__registerLiaThemeListener(refreshAllPointLabels);
 })();
+</script>
+
+<script modify="false">
+(function(){
+  const btn = document.getElementById('btn-@0');
+  const checkRoot = document.getElementById('point-check-@0');
+  const uiRoot = document.getElementById('point-ui-@0');
+
+  if (!btn || !checkRoot) return;
+
+  function findCheckButton() {
+    return checkRoot.querySelector(
+      'button.lia-btn, input.lia-btn, button, input[type="button"], input[type="submit"]'
+    );
+  }
+
+  function apply() {
+    const c = (window.__pointNeutralColor ? window.__pointNeutralColor() : '#000');
+    btn.style.color = c;
+
+    if (uiRoot) {
+      uiRoot.style.display = 'inline-flex';
+      uiRoot.style.alignItems = 'flex-start';
+      uiRoot.style.gap = '.6rem';
+      uiRoot.style.flexWrap = 'nowrap';
+    }
+
+    const checkBtn = findCheckButton();
+    if (!checkBtn) return;
+
+    const cs = window.getComputedStyle(checkBtn);
+    const h = checkBtn.offsetHeight;
+
+    btn.style.display = 'inline-flex';
+    btn.style.alignItems = 'center';
+    btn.style.justifyContent = 'center';
+    btn.style.verticalAlign = 'middle';
+    btn.style.boxSizing = 'border-box';
+    btn.style.margin = '0';
+
+    if (h > 0) {
+      btn.style.height = h + 'px';
+      btn.style.minHeight = h + 'px';
+    }
+
+    btn.style.lineHeight = cs.lineHeight;
+    btn.style.paddingTop = cs.paddingTop;
+    btn.style.paddingBottom = cs.paddingBottom;
+    btn.style.paddingLeft = cs.paddingLeft;
+    btn.style.paddingRight = cs.paddingRight;
+    btn.style.fontSize = cs.fontSize;
+    btn.style.fontFamily = cs.fontFamily;
+    btn.style.fontWeight = cs.fontWeight;
+  }
+
+  apply();
+  requestAnimationFrame(apply);
+  setTimeout(apply, 0);
+  setTimeout(apply, 80);
+  setTimeout(apply, 200);
+
+  try {
+    const mo = new MutationObserver(apply);
+    mo.observe(checkRoot, { childList: true, subtree: true, attributes: true });
+  } catch (e) {}
+
+  try {
+    const checkBtn = findCheckButton();
+    if (checkBtn && typeof ResizeObserver !== 'undefined') {
+      const ro = new ResizeObserver(apply);
+      ro.observe(checkBtn);
+    }
+  } catch (e) {}
+
+  if (window.__registerLiaThemeListener) {
+    window.__registerLiaThemeListener(apply);
+  } else {
+    setInterval(apply, 300);
+  }
+})();
+</script>
+
+
 @end
+
+
+
+
+
 -->
 
 
@@ -621,56 +1213,13 @@ import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.m
 
 
 
+# Test
+
+
+@Koordinatensystem(`xmin=-5;xmax=4;ymin=-3;ymax=10;width=500;id=A1`)
 
 
 
+Ziehe den Punkt $A$ auf die Koordinaten $(1|4)$.
 
-
-
-
-# Koordinatensysteme 
-
-
-
-
-
-``` javascript @JSX.Graph
-const JXS = window.__JXS || (window.parent && window.parent.__JXS);
-const id  = 'Aufgabe1';
-
-board = JXS.initBoard(jxgbox, id, {
-  boundingbox: [-1, 5, 7, -1],
-  axisLabels: {
-    x: '\\(x\\,\\text{in}\\,[m]\\)',
-    y: '\\(y\\,\\text{in}\\,[m]\\)'
-  }
-});
-
-// dein Inhalt (plotten, punkte, etc.)
-const f1 = (x) => 0.25*x + 2;
-// optionaler Store:
-JXS.setTarget(id, 'graph1', f1);
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@ErzeugePunkt(`A1;A;1;4`)
