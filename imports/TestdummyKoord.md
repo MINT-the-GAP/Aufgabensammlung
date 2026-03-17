@@ -3,7 +3,6 @@ version: 0.0.1
 language: de
 narrator: Deutsch Female
 
-import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
 
 
