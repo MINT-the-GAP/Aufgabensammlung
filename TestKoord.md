@@ -7,7 +7,7 @@ tags:
 comment:
 author:
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/imports/TestdummyKoord.md?cb=2
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/imports/TestdummyKoord.md
 
 
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
