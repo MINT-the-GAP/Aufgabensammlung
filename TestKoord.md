@@ -48,6 +48,29 @@ Alles klappt nur wenn `https://raw.githubusercontent.com/liaTemplates/JSXGraph/m
 
 
 
+
+# Graph selbst plotten
+
+@Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A8`)
+
+@AchsenBeschriftung(`id=A8;xlabel=$x$;ylabel=$y$`)
+
+@PlotEingabeLatex(`A8;g;#b41f65`)
+
+
+```
+@Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A8`)
+
+@AchsenBeschriftung(`id=A8;xlabel=$x$;ylabel=$y$`)
+
+@PlotEingabeLatex(`A8;g;#b41f65`)
+```
+
+
+
+
+
+
 # Punkt auf Koordinate
 
 
@@ -102,21 +125,23 @@ Ziehe den Punkt auf den Graphen von $f(x)=2x-4$.
 
 
 
-# Graph selbst plotten
+# Punkte (plural) auf Graph
 
-@Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A8`)
+@Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A5`)
 
-@AchsenBeschriftung(`id=A8;xlabel=$x$;ylabel=$y$`)
+@AchsenBeschriftung(`id=A5;xlabel=$x$;ylabel=$y$`)
 
-@PlotEingabeLatex(`A8;g;#b41f65`)
+Generiere drei Punkte und platziere sie auf den Graphen, sodass die Punkte mindestens einen Abstand von $2LE$ zueinander haben.
+
+@PunkteAufGraph(A5;n=3;d=2;A;2x-4;0.05)
+
 
 
 ```
-@Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A8`)
+@Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A5`)
 
-@AchsenBeschriftung(`id=A8;xlabel=$x$;ylabel=$y$`)
+@AchsenBeschriftung(`id=A5;xlabel=$x$;ylabel=$y$`)
 
-@PlotEingabeLatex(`A8;g;#b41f65`)
+@PunkteAufGraph(A5;n=4;d=3;A;2x-4;0.05)
 ```
-
 

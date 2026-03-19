@@ -18,8 +18,6 @@ narrator: Deutsch Female
 
 
 
-
-
 @onload
 
 
@@ -4074,6 +4072,1168 @@ if (window.__liaRunCoordHooks) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // =========================
+  // MEHRERE PUNKTE AUF GRAPH
+  // MEHRERE PUNKTE AUF GRAPH
+  // MEHRERE PUNKTE AUF GRAPH
+  // MEHRERE PUNKTE AUF GRAPH
+  // MEHRERE PUNKTE AUF GRAPH
+  // MEHRERE PUNKTE AUF GRAPH
+  // MEHRERE PUNKTE AUF GRAPH
+  // MEHRERE PUNKTE AUF GRAPH
+  // =========================
+
+
+
+(function(){
+  if (window.__punkteAufGraphReady) {
+    try {
+      if (window.__scheduleBootstrapPunkteAufGraph) window.__scheduleBootstrapPunkteAufGraph();
+      else if (window.__bootstrapPunkteAufGraph) window.__bootstrapPunkteAufGraph();
+    } catch (e) {}
+    return;
+  }
+  window.__punkteAufGraphReady = true;
+
+  try {
+    if (window.JXG && JXG.Options && JXG.Options.text) {
+      JXG.Options.text.useMathJax = true;
+    }
+  } catch (e) {}
+
+  function themeDoc() {
+    return (window.parent && window.parent.document) ? window.parent.document : document;
+  }
+
+  function themeWin() {
+    return (window.parent && window.parent.getComputedStyle) ? window.parent : window;
+  }
+
+  function currentNeutralColor() {
+    try {
+      const doc = themeDoc();
+      const win = themeWin();
+      const el  = doc.body || doc.documentElement;
+      const bg  = win.getComputedStyle(el).backgroundColor;
+      const m   = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+      if (!m) return '#000';
+
+      const r = parseInt(m[1], 10);
+      const g = parseInt(m[2], 10);
+      const b = parseInt(m[3], 10);
+      const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+
+      return lum < 128 ? '#fff' : '#000';
+    } catch (e) {
+      return '#000';
+    }
+  }
+
+  function themeSignature() {
+    try {
+      const doc = themeDoc();
+      const win = themeWin();
+      const root = doc.documentElement || doc.body;
+      const body = doc.body || doc.documentElement;
+      const rootCls = root ? root.className : '';
+      const bodyCls = body ? body.className : '';
+      const bg = win.getComputedStyle(body).backgroundColor;
+      const fg = win.getComputedStyle(body).color;
+      return [String(rootCls), String(bodyCls), String(bg), String(fg)].join('|');
+    } catch (e) {
+      return String(Date.now());
+    }
+  }
+
+  window.__points = window.__points || {};
+  window.__pointStates = window.__pointStates || {};
+  window.__pointGraphs = window.__pointGraphs || {};
+  window.__pointGraphStates = window.__pointGraphStates || {};
+  window.__pointNeutralColor = currentNeutralColor;
+  window.__punkteAufGraphInstances = window.__punkteAufGraphInstances || {};
+  window.__punkteAufGraphLocks = window.__punkteAufGraphLocks || {};
+
+  if (!window.__liaThemeSync) {
+    const listeners = new Set();
+    let lastSig = themeSignature();
+
+    function notify() {
+      listeners.forEach(function(fn) {
+        try { fn(); } catch (e) {}
+      });
+    }
+
+    function check() {
+      const sig = themeSignature();
+      if (sig !== lastSig) {
+        lastSig = sig;
+        window.__pointNeutralColor = currentNeutralColor;
+        notify();
+      }
+    }
+
+    window.__liaThemeSync = {
+      listeners,
+      check
+    };
+
+    try {
+      const doc = themeDoc();
+      const obs = new MutationObserver(check);
+
+      if (doc.documentElement) {
+        obs.observe(doc.documentElement, {
+          attributes: true,
+          attributeFilter: ['class', 'style', 'data-theme']
+        });
+      }
+
+      if (doc.body) {
+        obs.observe(doc.body, {
+          attributes: true,
+          attributeFilter: ['class', 'style', 'data-theme']
+        });
+      }
+    } catch (e) {}
+
+    try {
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+      if (mq && typeof mq.addEventListener === 'function') mq.addEventListener('change', check);
+      else if (mq && typeof mq.addListener === 'function') mq.addListener(check);
+    } catch (e) {}
+  }
+
+  if (typeof window.__registerLiaThemeListener !== 'function') {
+    window.__registerLiaThemeListener = function(fn) {
+      if (!window.__liaThemeSync || !fn) return;
+      window.__liaThemeSync.listeners.add(fn);
+      try { fn(); } catch (e) {}
+    };
+  }
+
+  function unquote(v) {
+    v = String(v || '').trim();
+    if (
+      (v.startsWith('"') && v.endsWith('"')) ||
+      (v.startsWith("'") && v.endsWith("'")) ||
+      (v.startsWith('`') && v.endsWith('`'))
+    ) {
+      return v.slice(1, -1);
+    }
+    return v;
+  }
+
+  function splitSpec(spec) {
+    return unquote(spec)
+      .split(';')
+      .map(function(s) { return s.trim(); });
+  }
+
+  function parseCountToken(s) {
+    const raw = String(s || '').trim();
+    const cleaned = raw.replace(/^n\s*=\s*/i, '');
+    const v = parseInt(cleaned, 10);
+    return Number.isFinite(v) && v > 0 ? v : 1;
+  }
+
+  function parseDistanceToken(s) {
+    const raw = String(s || '').trim();
+    const cleaned = raw.replace(/^d\s*=\s*/i, '');
+    const v = parseFloat(cleaned.replace(',', '.'));
+    return Number.isFinite(v) ? Math.abs(v) : 0;
+  }
+
+  function texName(name) {
+    const s = String(name || '').trim();
+    if (!s) return '\\(A\\)';
+    if (s.includes('\\(') || s.includes('\\[') || s.includes('$')) return s;
+
+    const m = s.match(/^(.+?)_(.+)$/);
+    if (m) {
+      return '\\(' + m[1] + '_{' + m[2] + '}\\)';
+    }
+    return '\\(' + s + '\\)';
+  }
+
+  function ensureBuckets(boardId) {
+    window.__points[boardId] = window.__points[boardId] || {};
+    window.__pointStates[boardId] = window.__pointStates[boardId] || {};
+    window.__pointGraphs[boardId] = window.__pointGraphs[boardId] || {};
+    window.__pointGraphStates[boardId] = window.__pointGraphStates[boardId] || {};
+  }
+
+  function getTargetFromSpec(spec) {
+    const parts = splitSpec(spec);
+
+    const boardId = parts[0] || '';
+    const count   = parseCountToken(parts[1] || '1');
+    const minDist = parseDistanceToken(parts[2] || '0');
+    const prefix  = parts[3] || 'A';
+    const expr    = parts[4] || '';
+    const epsRaw  = parseFloat(String(parts[5] || '0.05').replace(',', '.'));
+    const eps     = Number.isFinite(epsRaw) ? Math.abs(epsRaw) : 0.05;
+
+    const names = [];
+    for (let i = 1; i <= count; i++) {
+      names.push(prefix + '_' + i);
+    }
+
+    return {
+      boardId: boardId,
+      count: count,
+      minDist: minDist,
+      prefix: prefix,
+      expr: expr,
+      eps: eps,
+      names: names
+    };
+  }
+
+  function getGraphKey(target) {
+    return String(target.prefix || '') + '||' + String(target.count || 0) + '||' + String(target.expr || '');
+  }
+
+  function isLocked(uid) {
+    return !!window.__punkteAufGraphLocks[String(uid)];
+  }
+
+  function setLocked(uid, value) {
+    window.__punkteAufGraphLocks[String(uid)] = !!value;
+    try {
+      applyPunkteAufGraphUi(uid);
+    } catch (e) {}
+  }
+
+  function stylePointLabel(pt) {
+    if (!pt || typeof pt.setAttribute !== 'function') return;
+
+    const c = currentNeutralColor();
+
+    try {
+      pt.setAttribute({
+        label: {
+          strokeColor: c,
+          fillColor: c,
+          fontSize: 24,
+          parse: false,
+          useMathJax: true
+        }
+      });
+    } catch (e) {}
+
+    try {
+      if (pt.label && typeof pt.label.setAttribute === 'function') {
+        pt.label.setAttribute({
+          strokeColor: c,
+          fillColor: c,
+          fontSize: 24,
+          parse: false,
+          useMathJax: true
+        });
+      }
+    } catch (e) {}
+  }
+
+  function refreshAllPointLabels() {
+    try {
+      const boards = window.__points || {};
+      Object.keys(boards).forEach(function(boardId) {
+        const entries = boards[boardId] || {};
+        Object.keys(entries).forEach(function(name) {
+          stylePointLabel(entries[name]);
+        });
+      });
+    } catch (e) {}
+  }
+
+  function savePointState(boardId, name, pt) {
+    if (!pt) return;
+    ensureBuckets(boardId);
+
+    let fixed = false;
+    try {
+      fixed = !!(pt.getAttribute ? pt.getAttribute('fixed') : pt.visProp && pt.visProp.fixed);
+    } catch (e) {}
+
+    try {
+      window.__pointStates[boardId][name] = {
+        x: pt.X(),
+        y: pt.Y(),
+        fixed: fixed
+      };
+    } catch (e) {}
+  }
+
+  function movePointTo(pt, x, y) {
+    if (!pt) return false;
+
+    try {
+      if (typeof pt.moveTo === 'function') {
+        pt.moveTo([x, y], 0);
+        return true;
+      }
+    } catch (e) {}
+
+    try {
+      if (typeof pt.setPositionDirectly === 'function' && typeof JXG !== 'undefined') {
+        pt.setPositionDirectly(JXG.COORDS_BY_USER, [x, y]);
+        return true;
+      }
+    } catch (e) {}
+
+    try {
+      if (typeof pt.setPosition === 'function' && typeof JXG !== 'undefined') {
+        pt.setPosition(JXG.COORDS_BY_USER, [x, y]);
+        return true;
+      }
+    } catch (e) {}
+
+    return false;
+  }
+
+  function bindPointPersistence(boardId, name, pt) {
+    if (!pt || pt.__liaStateBound) return;
+    pt.__liaStateBound = true;
+
+    const persist = function() {
+      savePointState(boardId, name, pt);
+    };
+
+    try { pt.on('drag', persist); } catch (e) {}
+    try { pt.on('up', persist); } catch (e) {}
+    try { pt.on('move', persist); } catch (e) {}
+
+    persist();
+  }
+
+  function createPoint(board, boardId, name, x0, y0) {
+    try {
+      const pt = board.create('point', [x0, y0], {
+        name: texName(name),
+        fixed: false,
+        withLabel: true,
+        showInfobox: false,
+        strokeColor: '#ff00ff',
+        fillColor: '#ff00ff',
+        highlightStrokeColor: '#ff00ff',
+        highlightFillColor: '#ff00ff',
+        strokeWidth: 3,
+        highlightStrokeWidth: 3,
+        face: 'x',
+        size: 7,
+        label: {
+          strokeColor: currentNeutralColor(),
+          fillColor: currentNeutralColor(),
+          fontSize: 24,
+          parse: false,
+          useMathJax: true
+        }
+      });
+
+      ensureBuckets(boardId);
+      window.__points[boardId][name] = pt;
+
+      stylePointLabel(pt);
+      bindPointPersistence(boardId, name, pt);
+      savePointState(boardId, name, pt);
+
+      return pt;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function getLivePointOnCurrentBoard(boardId, name) {
+    const board = window.__boards && window.__boards[boardId];
+    const pt = window.__points && window.__points[boardId] && window.__points[boardId][name];
+
+    if (!board || !pt) return null;
+
+    try {
+      if (pt.board === board) return pt;
+    } catch (e) {}
+
+    return null;
+  }
+
+  function restorePointFromState(boardId, name) {
+    const board = window.__boards && window.__boards[boardId];
+    const state = window.__pointStates && window.__pointStates[boardId] && window.__pointStates[boardId][name];
+
+    if (!board || !state) return null;
+
+    let pt = getLivePointOnCurrentBoard(boardId, name);
+    if (!pt) {
+      pt = createPoint(board, boardId, name, state.x, state.y);
+      if (!pt) return null;
+    }
+
+    movePointTo(pt, state.x, state.y);
+
+    try {
+      pt.setAttribute({ fixed: !!state.fixed });
+    } catch (e) {}
+
+    stylePointLabel(pt);
+    bindPointPersistence(boardId, name, pt);
+    savePointState(boardId, name, pt);
+
+    try { board.update(); } catch (e) {}
+    return pt;
+  }
+
+  function safeBBox(board) {
+    try {
+      const bb = board.getBoundingBox();
+      if (
+        Array.isArray(bb) &&
+        bb.length === 4 &&
+        bb.every(function(v){ return Number.isFinite(v); }) &&
+        bb[2] > bb[0] &&
+        bb[1] > bb[3]
+      ) {
+        return bb.slice();
+      }
+    } catch (e) {}
+
+    return [-5, 5, 5, -5];
+  }
+
+  function randomStartPositions(count) {
+    const out = [];
+    for (let i = 0; i < count; i++) {
+      out.push({
+        x: Math.random(),
+        y: Math.random()
+      });
+    }
+    return out;
+  }
+
+  function distance(a, b) {
+    const dx = a.x - b.x;
+    const dy = a.y - b.y;
+    return Math.sqrt(dx * dx + dy * dy);
+  }
+
+  function allPairDistancesOk(points, minDist) {
+    if (!(minDist > 0)) return true;
+
+    for (let i = 0; i < points.length; i++) {
+      for (let j = i + 1; j < points.length; j++) {
+        const pi = points[i];
+        const pj = points[j];
+        const d = distance(
+          { x: Number(pi.X()), y: Number(pi.Y()) },
+          { x: Number(pj.X()), y: Number(pj.Y()) }
+        );
+        if (!Number.isFinite(d) || d < minDist) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  function normalizeExpr(expr) {
+    expr = unquote(expr)
+      .trim()
+      .replace(/\u2212/g, '-')
+      .replace(/\u00B7/g, '*')
+      .replace(/\s+/g, ' ');
+
+    expr = expr.replace(/^\s*(?:y|f\s*\(\s*x\s*\))\s*=\s*/i, '');
+    expr = expr.replace(/(\d),(\d)/g, '$1.$2');
+    expr = expr.replace(/\^/g, '**');
+    expr = expr.replace(/\bln\s*\(/gi, 'log(');
+    expr = expr.replace(/\bpi\b/g, 'PI');
+    expr = expr.replace(/\be\b/g, 'E');
+
+    const FN =
+      '(?:sin|cos|tan|asin|acos|atan|sqrt|abs|log|exp|floor|ceil|round|min|max|pow)';
+
+    expr = expr.replace(new RegExp('(\\d)\\s*(x|PI|E|\\()', 'gi'), '$1*$2');
+    expr = expr.replace(new RegExp('(\\))\\s*(x|PI|E|\\()', 'gi'), '$1*$2');
+    expr = expr.replace(new RegExp('(x|PI|E)\\s*(\\()', 'gi'), '$1*$2');
+    expr = expr.replace(new RegExp('(\\d|x|\\)|PI|E)\\s*(' + FN + '\\s*\\()', 'gi'), '$1*$2');
+
+    return expr.trim();
+  }
+
+  function buildGraphFunction(expr) {
+    const src = normalizeExpr(expr);
+
+    if (!src) {
+      throw new Error('Leerer Term');
+    }
+
+    if (/[^0-9A-Za-z_+\-*/().,\s]/.test(src)) {
+      throw new Error('Unerlaubte Zeichen im Term');
+    }
+
+    const ids = src.match(/[A-Za-z_]+/g) || [];
+    const allowed = new Set([
+      'x',
+      'sin', 'cos', 'tan',
+      'asin', 'acos', 'atan',
+      'sqrt', 'abs', 'log', 'exp',
+      'floor', 'ceil', 'round',
+      'min', 'max', 'pow',
+      'PI', 'E'
+    ]);
+
+    for (let i = 0; i < ids.length; i++) {
+      const id = ids[i];
+      if (!allowed.has(id)) {
+        throw new Error('Unerlaubter Bezeichner: ' + id);
+      }
+    }
+
+    return new Function(
+      'x',
+      `
+      const {
+        sin, cos, tan,
+        asin, acos, atan,
+        sqrt, abs, log, exp,
+        floor, ceil, round,
+        min, max, pow,
+        PI, E
+      } = Math;
+
+      return (${src});
+      `
+    );
+  }
+
+  function getLiveGraphOnCurrentBoard(boardId, graphKey) {
+    const board = window.__boards && window.__boards[boardId];
+    const graph = window.__pointGraphs && window.__pointGraphs[boardId] && window.__pointGraphs[boardId][graphKey];
+
+    if (!board || !graph) return null;
+
+    try {
+      if (graph.board === board) return graph;
+    } catch (e) {}
+
+    return null;
+  }
+
+  function createGraphFromSpec(spec) {
+    const target = getTargetFromSpec(spec);
+    const boardId = target.boardId;
+    const expr = target.expr;
+    const board = window.__boards && window.__boards[boardId];
+    const graphKey = getGraphKey(target);
+
+    if (!board || !expr) return null;
+
+    let f;
+    try {
+      f = buildGraphFunction(expr);
+    } catch (e) {
+      return null;
+    }
+
+    try {
+      const graph = board.create('functiongraph', [
+        function(x) {
+          return f(x);
+        }
+      ], {
+        strokeColor: '#b41f65',
+        highlightStrokeColor: '#b41f65',
+        strokeWidth: 3,
+        fixed: true
+      });
+
+      ensureBuckets(boardId);
+      window.__pointGraphs[boardId][graphKey] = graph;
+      window.__pointGraphStates[boardId][graphKey] = { visible: true };
+
+      return graph;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  window.showGraphFromPunkteAufGraphSpec = function(spec) {
+    const target = getTargetFromSpec(spec);
+    const boardId = target.boardId;
+    const graphKey = getGraphKey(target);
+    const board = window.__boards && window.__boards[boardId];
+
+    if (!board || !target.expr) return false;
+
+    ensureBuckets(boardId);
+
+    let graph = getLiveGraphOnCurrentBoard(boardId, graphKey);
+
+    if (!graph) {
+      graph = createGraphFromSpec(spec);
+      if (!graph) return false;
+    } else {
+      try {
+        graph.setAttribute({
+          visible: true,
+          strokeColor: '#b41f65',
+          highlightStrokeColor: '#b41f65',
+          strokeWidth: 3,
+          fixed: true
+        });
+      } catch (e) {}
+      window.__pointGraphStates[boardId][graphKey] = { visible: true };
+    }
+
+    try { board.update(); } catch (e) {}
+    return true;
+  };
+
+  window.restorePunkteAufGraphVisualState = function(spec) {
+    const target = getTargetFromSpec(spec);
+    const boardId = target.boardId;
+    const graphKey = getGraphKey(target);
+
+    if (!boardId) return false;
+
+    if (
+      window.__pointGraphStates &&
+      window.__pointGraphStates[boardId] &&
+      window.__pointGraphStates[boardId][graphKey] &&
+      window.__pointGraphStates[boardId][graphKey].visible
+    ) {
+      return window.showGraphFromPunkteAufGraphSpec(spec);
+    }
+
+    return false;
+  };
+
+  window.restorePunkteAufGraphFromSpec = function(spec) {
+    const target = getTargetFromSpec(spec);
+    if (!target.boardId || !target.names.length) return [];
+
+    const out = [];
+    for (let i = 0; i < target.names.length; i++) {
+      const pt = restorePointFromState(target.boardId, target.names[i]);
+      if (pt) out.push(pt);
+    }
+    return out;
+  };
+
+  window.getPunkteAufGraphFromSpec = function(spec) {
+    const target = getTargetFromSpec(spec);
+    const out = [];
+
+    for (let i = 0; i < target.names.length; i++) {
+      const name = target.names[i];
+      let pt = getLivePointOnCurrentBoard(target.boardId, name);
+      if (!pt) pt = restorePointFromState(target.boardId, name);
+      if (pt) out.push(pt);
+    }
+
+    return out;
+  };
+
+  window.ensurePunkteAufGraphFromSpec = function(uid, spec) {
+    if (isLocked(uid)) return false;
+
+    const target = getTargetFromSpec(spec);
+    const board = window.__boards && window.__boards[target.boardId];
+
+    if (!board || !target.names.length) return false;
+    ensureBuckets(target.boardId);
+
+    const positions = randomStartPositions(target.count);
+
+    for (let i = 0; i < target.names.length; i++) {
+      const name = target.names[i];
+      const pos = positions[i];
+
+      let pt = getLivePointOnCurrentBoard(target.boardId, name);
+      if (!pt) pt = restorePointFromState(target.boardId, name);
+      if (!pt) pt = createPoint(board, target.boardId, name, pos.x, pos.y);
+      if (!pt) continue;
+
+      movePointTo(pt, pos.x, pos.y);
+
+      try {
+        pt.setAttribute({ fixed: false });
+      } catch (e) {}
+
+      stylePointLabel(pt);
+      bindPointPersistence(target.boardId, name, pt);
+      savePointState(target.boardId, name, pt);
+    }
+
+    try { board.update(); } catch (e) {}
+    applyPunkteAufGraphUi(uid);
+    return true;
+  };
+
+  window.checkPunkteAufGraphFromSpec = function(uid, spec) {
+    const target = getTargetFromSpec(spec);
+
+    if (!target.boardId || !target.expr || !target.names.length) return false;
+
+    let f;
+    try {
+      f = buildGraphFunction(target.expr);
+    } catch (e) {
+      return false;
+    }
+
+    const pts = [];
+
+    for (let i = 0; i < target.names.length; i++) {
+      const name = target.names[i];
+      let pt = getLivePointOnCurrentBoard(target.boardId, name);
+      if (!pt) pt = restorePointFromState(target.boardId, name);
+      if (!pt) return false;
+
+      let x, y, fy;
+      try {
+        x = Number(pt.X());
+        y = Number(pt.Y());
+        fy = Number(f(x));
+      } catch (e) {
+        return false;
+      }
+
+      if (!Number.isFinite(x) || !Number.isFinite(y) || !Number.isFinite(fy)) {
+        return false;
+      }
+
+      if (Math.abs(y - fy) > target.eps) {
+        return false;
+      }
+
+      pts.push(pt);
+    }
+
+    if (!allPairDistancesOk(pts, target.minDist)) {
+      return false;
+    }
+
+    return true;
+  };
+
+  window.finalizePunkteAufGraphFromSpec = function(uid, spec) {
+    const target = getTargetFromSpec(spec);
+    const board = window.__boards && window.__boards[target.boardId];
+    let any = false;
+
+    for (let i = 0; i < target.names.length; i++) {
+      const name = target.names[i];
+      let pt = getLivePointOnCurrentBoard(target.boardId, name);
+      if (!pt) pt = restorePointFromState(target.boardId, name);
+      if (!pt) continue;
+
+      try {
+        pt.setAttribute({ fixed: true });
+      } catch (e) {}
+
+      savePointState(target.boardId, name, pt);
+      any = true;
+    }
+
+    const shown = window.showGraphFromPunkteAufGraphSpec(spec);
+    setLocked(uid, true);
+
+    try { if (board) board.update(); } catch (e) {}
+
+    return !!(any || shown);
+  };
+
+  window.__checkPunkteAufGraphFromSpec = function(uid, spec) {
+    const ok = !!(
+      typeof window.checkPunkteAufGraphFromSpec === 'function' &&
+      window.checkPunkteAufGraphFromSpec(uid, spec)
+    );
+
+    if (ok && typeof window.finalizePunkteAufGraphFromSpec === 'function') {
+      window.finalizePunkteAufGraphFromSpec(uid, spec);
+    }
+
+    return ok;
+  };
+
+  function findCheckButton(checkRoot) {
+    return checkRoot.querySelector(
+      'button.lia-btn, input.lia-btn, button, input[type="button"], input[type="submit"]'
+    );
+  }
+
+  function findAllQuizButtons(checkRoot) {
+    return Array.from(
+      checkRoot.querySelectorAll(
+        'button.lia-btn, input.lia-btn, button, input[type="button"], input[type="submit"]'
+      )
+    );
+  }
+
+  function ensureInnerSpan(btn) {
+    let inner = btn.querySelector('.lia-btn-inner');
+    if (inner) return inner;
+
+    inner = document.createElement('span');
+    inner.className = 'lia-btn-inner';
+
+    while (btn.firstChild) {
+      inner.appendChild(btn.firstChild);
+    }
+    btn.appendChild(inner);
+
+    return inner;
+  }
+
+  function looksLikeResolveButton(checkRoot, targetBtn) {
+    const buttons = findAllQuizButtons(checkRoot);
+    const idx = buttons.indexOf(targetBtn);
+    const text = String(targetBtn.textContent || targetBtn.value || '').trim().toLowerCase();
+
+    if (idx >= 1) return true;
+    if (/lös|solution|aufl|show/.test(text)) return true;
+
+    return false;
+  }
+
+  function applyLockedStateToButton(uid, btn) {
+    const locked = isLocked(uid);
+
+    btn.disabled = locked;
+    btn.style.opacity = locked ? '0.55' : '';
+    btn.style.cursor = locked ? 'not-allowed' : '';
+    btn.style.pointerEvents = locked ? 'none' : '';
+  }
+
+  function applyPunkteAufGraphUi(uid) {
+    const uiRoot = document.getElementById('multi-graph-ui-' + uid);
+    const taskRoot = document.getElementById('multi-graph-task-' + uid);
+    const checkRoot = document.getElementById('multi-graph-check-' + uid);
+    const btn = document.getElementById('multi-graph-btn-' + uid);
+
+    if (!uiRoot || !taskRoot || !checkRoot || !btn) return false;
+
+    const spec = uiRoot.dataset.spec || '';
+
+    uiRoot.style.display = 'inline-flex';
+    uiRoot.style.alignItems = 'flex-start';
+    uiRoot.style.gap = '.6rem';
+    uiRoot.style.flexWrap = 'nowrap';
+
+    taskRoot.style.display = 'inline-flex';
+    taskRoot.style.alignItems = 'flex-start';
+    taskRoot.style.alignSelf = 'flex-start';
+    taskRoot.style.margin = '0';
+    taskRoot.style.padding = '0';
+
+    checkRoot.style.display = 'inline-flex';
+    checkRoot.style.alignItems = 'flex-start';
+    checkRoot.style.alignSelf = 'flex-start';
+    checkRoot.style.margin = '0';
+    checkRoot.style.padding = '0';
+
+    Array.from(checkRoot.children).forEach(function(el) {
+      try { el.style.margin = '0'; } catch (e) {}
+    });
+
+    const c = (window.__pointNeutralColor ? window.__pointNeutralColor() : '#000');
+    btn.style.color = c;
+
+    const checkBtn = findCheckButton(checkRoot);
+    if (!checkBtn) {
+      applyLockedStateToButton(uid, btn);
+
+      if (typeof window.restorePunkteAufGraphFromSpec === 'function') {
+        window.restorePunkteAufGraphFromSpec(spec);
+      }
+      if (typeof window.restorePunkteAufGraphVisualState === 'function') {
+        window.restorePunkteAufGraphVisualState(spec);
+      }
+      return true;
+    }
+
+    const cs = window.getComputedStyle(checkBtn);
+    const h = checkBtn.offsetHeight;
+    const inner = ensureInnerSpan(btn);
+
+    btn.style.display = 'inline-flex';
+    btn.style.alignItems = 'stretch';
+    btn.style.justifyContent = 'center';
+    btn.style.verticalAlign = 'top';
+    btn.style.boxSizing = 'border-box';
+    btn.style.margin = '0';
+    btn.style.textAlign = 'center';
+
+    if (h > 0) {
+      btn.style.height = h + 'px';
+      btn.style.minHeight = h + 'px';
+    }
+
+    btn.style.paddingTop = '0';
+    btn.style.paddingBottom = '0';
+    btn.style.paddingLeft = '0';
+    btn.style.paddingRight = '0';
+
+    btn.style.fontSize = cs.fontSize;
+    btn.style.fontFamily = cs.fontFamily;
+    btn.style.fontWeight = cs.fontWeight;
+    btn.style.lineHeight = 'normal';
+
+    inner.style.display = 'inline-flex';
+    inner.style.alignItems = 'center';
+    inner.style.justifyContent = 'center';
+    inner.style.boxSizing = 'border-box';
+    inner.style.height = '100%';
+    inner.style.paddingTop = '0';
+    inner.style.paddingBottom = '0';
+    inner.style.paddingLeft = cs.paddingLeft;
+    inner.style.paddingRight = cs.paddingRight;
+    inner.style.lineHeight = '1';
+    inner.style.transform = 'translateY(0px)';
+    inner.style.whiteSpace = 'nowrap';
+
+    applyLockedStateToButton(uid, btn);
+
+    if (typeof window.restorePunkteAufGraphFromSpec === 'function') {
+      window.restorePunkteAufGraphFromSpec(spec);
+    }
+
+    if (typeof window.restorePunkteAufGraphVisualState === 'function') {
+      window.restorePunkteAufGraphVisualState(spec);
+    }
+
+    return true;
+  }
+
+  window.renderPunkteAufGraphFromSpec = function(uid, spec) {
+    const uiRoot = document.getElementById('multi-graph-ui-' + uid);
+    const taskRoot = document.getElementById('multi-graph-task-' + uid);
+    const checkRoot = document.getElementById('multi-graph-check-' + uid);
+
+    if (!uiRoot || !taskRoot || !checkRoot) return false;
+
+    uiRoot.dataset.spec = spec;
+
+    let btn = document.getElementById('multi-graph-btn-' + uid);
+    if (!btn) {
+      btn = document.createElement('button');
+      btn.id = 'multi-graph-btn-' + uid;
+      btn.className = 'lia-btn';
+      btn.type = 'button';
+      btn.textContent = 'Punkte erzeugen';
+      taskRoot.appendChild(btn);
+    }
+
+    if (!btn.__liaMultiGraphEnsureBound) {
+      btn.__liaMultiGraphEnsureBound = true;
+      btn.addEventListener('click', function() {
+        const curSpec = uiRoot.dataset.spec || '';
+        if (typeof window.ensurePunkteAufGraphFromSpec === 'function') {
+          window.ensurePunkteAufGraphFromSpec(uid, curSpec);
+        }
+      });
+    }
+
+    btn.dataset.spec = spec;
+
+    applyPunkteAufGraphUi(uid);
+
+    if (!checkRoot.__liaMultiGraphUiObserved) {
+      checkRoot.__liaMultiGraphUiObserved = true;
+
+      try {
+        checkRoot.addEventListener('click', function(e) {
+          const targetBtn = e.target && e.target.closest
+            ? e.target.closest('button, input[type="button"], input[type="submit"]')
+            : null;
+
+          if (!targetBtn || !checkRoot.contains(targetBtn)) return;
+          if (!looksLikeResolveButton(checkRoot, targetBtn)) return;
+
+          setTimeout(function() {
+            const curSpec = uiRoot.dataset.spec || '';
+            if (typeof window.finalizePunkteAufGraphFromSpec === 'function') {
+              window.finalizePunkteAufGraphFromSpec(uid, curSpec);
+            }
+          }, 0);
+
+          setTimeout(function() {
+            const curSpec = uiRoot.dataset.spec || '';
+            if (typeof window.finalizePunkteAufGraphFromSpec === 'function') {
+              window.finalizePunkteAufGraphFromSpec(uid, curSpec);
+            }
+          }, 80);
+        });
+      } catch (e) {}
+
+      if (window.__registerLiaThemeListener) {
+        window.__registerLiaThemeListener(function() {
+          applyPunkteAufGraphUi(uid);
+        });
+      }
+    }
+
+    setTimeout(function() {
+      if (typeof window.restorePunkteAufGraphFromSpec === 'function') {
+        window.restorePunkteAufGraphFromSpec(spec);
+      }
+      if (typeof window.restorePunkteAufGraphVisualState === 'function') {
+        window.restorePunkteAufGraphVisualState(spec);
+      }
+      applyPunkteAufGraphUi(uid);
+    }, 0);
+
+    setTimeout(function() {
+      if (typeof window.restorePunkteAufGraphFromSpec === 'function') {
+        window.restorePunkteAufGraphFromSpec(spec);
+      }
+      if (typeof window.restorePunkteAufGraphVisualState === 'function') {
+        window.restorePunkteAufGraphVisualState(spec);
+      }
+      applyPunkteAufGraphUi(uid);
+    }, 120);
+
+    return true;
+  };
+
+  window.__bootstrapPunkteAufGraph = function() {
+    const nodes = document.querySelectorAll('[id^="multi-graph-ui-"][data-spec]');
+
+    nodes.forEach(function(node) {
+      const uid = String(node.id || '').replace(/^multi-graph-ui-/, '');
+      const spec = String(node.dataset.spec || '');
+      if (!uid || !spec) return;
+
+      window.renderPunkteAufGraphFromSpec(uid, spec);
+    });
+
+    refreshAllPointLabels();
+  };
+
+  if (!window.__scheduleBootstrapPunkteAufGraph) {
+    window.__scheduleBootstrapPunkteAufGraph = function() {
+      if (window.__bootstrapPunkteAufGraphRAF) return;
+      window.__bootstrapPunkteAufGraphRAF = requestAnimationFrame(function() {
+        window.__bootstrapPunkteAufGraphRAF = 0;
+        try {
+          if (window.__bootstrapPunkteAufGraph) window.__bootstrapPunkteAufGraph();
+        } catch (e) {}
+      });
+    };
+  }
+
+  try {
+    const mo = new MutationObserver(function(mutations) {
+      let needsBootstrap = false;
+
+      for (let i = 0; i < mutations.length; i++) {
+        const m = mutations[i];
+        if (m.type !== 'childList') continue;
+
+        const added = Array.from(m.addedNodes || []);
+        for (let j = 0; j < added.length; j++) {
+          const n = added[j];
+          if (!n || n.nodeType !== 1) continue;
+
+          if (
+            (n.id && /^multi-graph-ui-/.test(n.id)) ||
+            (n.querySelector && n.querySelector('[id^="multi-graph-ui-"][data-spec]'))
+          ) {
+            needsBootstrap = true;
+            break;
+          }
+        }
+
+        if (needsBootstrap) break;
+      }
+
+      if (needsBootstrap && window.__scheduleBootstrapPunkteAufGraph) {
+        window.__scheduleBootstrapPunkteAufGraph();
+      }
+    });
+
+    const root = document.body || document.documentElement;
+    if (root) {
+      mo.observe(root, {
+        childList: true,
+        subtree: true
+      });
+    }
+  } catch (e) {}
+
+  try {
+    window.addEventListener('hashchange', function() {
+      if (window.__scheduleBootstrapPunkteAufGraph) window.__scheduleBootstrapPunkteAufGraph();
+    }, true);
+  } catch (e) {}
+
+  try {
+    window.addEventListener('pageshow', function() {
+      if (window.__scheduleBootstrapPunkteAufGraph) window.__scheduleBootstrapPunkteAufGraph();
+    }, true);
+  } catch (e) {}
+
+  try {
+    document.addEventListener('visibilitychange', function() {
+      if (!document.hidden && window.__scheduleBootstrapPunkteAufGraph) {
+        window.__scheduleBootstrapPunkteAufGraph();
+      }
+    }, true);
+  } catch (e) {}
+
+  window.__registerLiaThemeListener(refreshAllPointLabels);
+
+  try {
+    if (window.__scheduleBootstrapPunkteAufGraph) window.__scheduleBootstrapPunkteAufGraph();
+    setTimeout(function() {
+      if (window.__scheduleBootstrapPunkteAufGraph) window.__scheduleBootstrapPunkteAufGraph();
+    }, 80);
+    setTimeout(function() {
+      if (window.__scheduleBootstrapPunkteAufGraph) window.__scheduleBootstrapPunkteAufGraph();
+    }, 220);
+  } catch (e) {}
+})();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @end
 
 
@@ -5328,34 +6488,43 @@ if (window.__liaRunCoordHooks) {
 
 
 
+
+
+@PunkteAufGraph: @PunkteAufGraph_(@uid,@0)
+
+@PunkteAufGraph_
+<div id="multi-graph-ui-@0" data-spec="@1">
+  <div id="multi-graph-task-@0" class="lia-multi-graph-task"></div>
+
+  <div id="multi-graph-check-@0">
+    [[!]]
+    <script modify="false">
+      (() => {
+        const root = document.getElementById('multi-graph-ui-@0');
+        const spec = root ? (root.dataset.spec || '') : String.raw`@1`;
+        const uid  = '@0';
+
+        if (typeof window.__checkPunkteAufGraphFromSpec === 'function') {
+          return window.__checkPunkteAufGraphFromSpec(uid, spec);
+        }
+        return false;
+      })()
+    </script>
+  </div>
+</div>
+
+@end
+
+
+
+
+
+
 -->
 
 
 
 
-
-
-
-
-
-
-
-# Graph selbst plotten
-
-@Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A8`)
-
-@AchsenBeschriftung(`id=A8;xlabel=$x$;ylabel=$y$`)
-
-@PlotEingabeLatex(`A8;g;#b41f65`)
-
-
-```
-@Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A8`)
-
-@AchsenBeschriftung(`id=A8;xlabel=$x$;ylabel=$y$`)
-
-@PlotEingabeLatex(`A8;g;#b41f65`)
-```
 
 
 
@@ -5383,6 +6552,28 @@ Alles klappt nur wenn `https://raw.githubusercontent.com/liaTemplates/JSXGraph/m
 
 @PlotFunktion(`A1;f;x;#b41f65`)
 ```
+
+
+
+
+# Graph selbst plotten
+
+@Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A8`)
+
+@AchsenBeschriftung(`id=A8;xlabel=$x$;ylabel=$y$`)
+
+@PlotEingabeLatex(`A8;g;#b41f65`)
+
+
+```
+@Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A8`)
+
+@AchsenBeschriftung(`id=A8;xlabel=$x$;ylabel=$y$`)
+
+@PlotEingabeLatex(`A8;g;#b41f65`)
+```
+
+
 
 
 
@@ -5443,6 +6634,37 @@ Ziehe den Punkt auf den Graphen von $f(x)=2x-4$.
 
 
 
+# Punkte (plural) auf Graph
+
+@Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A5`)
+
+@AchsenBeschriftung(`id=A5;xlabel=$x$;ylabel=$y$`)
+
+Generiere drei Punkte und platziere sie auf den Graphen, sodass die Punkte mindestens einen Abstand von $2LE$ zueinander haben.
+
+@PunkteAufGraph(A5;n=3;d=2;A;2x-4;0.05)
+
+
+
+```
+@Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A5`)
+
+@AchsenBeschriftung(`id=A5;xlabel=$x$;ylabel=$y$`)
+
+@PunkteAufGraph(A5;n=4;d=3;A;2x-4;0.05)
+```
+
+
+
+
+
+
+
+
+
+
+
+
 # Funktion schiebbar
 
 @Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A3`)
@@ -5451,14 +6673,6 @@ Ziehe den Punkt auf den Graphen von $f(x)=2x-4$.
 
 
 
-
-
-
-# Punkte (plural) auf Graph
-
-@Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A5`)
-
-@AchsenBeschriftung(`id=A5;xlabel=$x$;ylabel=$y$`)
 
 
 
