@@ -22,7 +22,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/hea
 # Plot Funktion
 
 
-> Updateversuch für neue Features am 19.03. um 07:23 Uhr
+> Updateversuch für neue Features am 19.03. um 09:40 Uhr
 
 
 
