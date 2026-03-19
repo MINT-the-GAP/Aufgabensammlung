@@ -3071,7 +3071,8 @@ if (window.__liaRunCoordHooks) {
 (function(){
   if (window.__punktGraphReady) {
     try {
-      if (window.__bootstrapPunktGraphs) window.__bootstrapPunktGraphs();
+      if (window.__scheduleBootstrapPunktGraphs) window.__scheduleBootstrapPunktGraphs();
+      else if (window.__bootstrapPunktGraphs) window.__bootstrapPunktGraphs();
     } catch (e) {}
     return;
   }
@@ -3133,6 +3134,7 @@ if (window.__liaRunCoordHooks) {
   window.__pointGraphStates = window.__pointGraphStates || {};
   window.__pointNeutralColor = currentNeutralColor;
   window.__punktGraphInstances = window.__punktGraphInstances || {};
+  window.__punktGraphLocks = window.__punktGraphLocks || {};
 
   if (!window.__liaThemeSync) {
     const listeners = new Set();
@@ -3182,8 +3184,6 @@ if (window.__liaRunCoordHooks) {
       if (mq && typeof mq.addEventListener === 'function') mq.addEventListener('change', check);
       else if (mq && typeof mq.addListener === 'function') mq.addListener(check);
     } catch (e) {}
-
-    setInterval(check, 300);
   }
 
   if (typeof window.__registerLiaThemeListener !== 'function') {
@@ -3212,27 +3212,84 @@ if (window.__liaRunCoordHooks) {
       .map(function(s) { return s.trim(); });
   }
 
-  function getTargetFromSpec(spec) {
-    const parts = splitSpec(spec);
-
-    return {
-      boardId: parts[0] || '',
-      name:    parts[1] || 'A',
-      expr:    parts[2] || '',
-      eps:     (function() {
-        const v = parseFloat((parts[3] || '0.05').replace(',', '.'));
-        return Number.isFinite(v) ? Math.abs(v) : 0.05;
-      })()
-    };
+  function isColorToken(s) {
+    const v = String(s || '').trim();
+    return /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/.test(v);
   }
 
-  function getGraphKey(target) {
-    return String(target.name || '') + '||' + String(target.expr || '');
+  function parseEpsToken(s, fallback) {
+    const v = parseFloat(String(s || '').replace(',', '.'));
+    return Number.isFinite(v) ? Math.abs(v) : fallback;
   }
 
   function texName(name) {
     const s = String(name || '').trim();
-    return s ? '\\(' + s + '\\)' : '\\(A\\)';
+    if (!s) return '\\(f\\)';
+    if (s.includes('\\(') || s.includes('\\[') || s.includes('$')) return s;
+
+    const m = s.match(/^(.+?)_(.+)$/);
+    if (m) {
+      return '\\(' + m[1] + '_{' + m[2] + '}\\)';
+    }
+    return '\\(' + s + '\\)';
+  }
+
+  function getGraphUiSpecByUid(uid) {
+    const holder = document.getElementById('graph-spec-' + uid);
+    if (holder) return String(holder.textContent || '');
+    return '';
+  }
+
+  function getTargetFromSpec(spec) {
+    const parts = splitSpec(spec);
+
+    const boardId = parts[0] || '';
+    const name    = parts[1] || 'A';
+
+    let pointColor = '#ff00ff';
+    let graphName  = 'f';
+    let expr       = '';
+    let graphColor = '#b41f65';
+    let eps        = 0.05;
+
+    if (isColorToken(parts[2])) {
+      pointColor = parts[2] || '#ff00ff';
+      graphName  = parts[3] || 'f';
+      expr       = parts[4] || '';
+      graphColor = isColorToken(parts[5]) ? parts[5] : '#b41f65';
+      eps        = parseEpsToken(parts[6], 0.05);
+    } else {
+      graphName  = parts[2] || 'f';
+      expr       = parts[3] || '';
+      eps        = parseEpsToken(parts[4], 0.05);
+    }
+
+    return {
+      boardId: boardId,
+      name: name,
+      pointColor: pointColor || '#ff00ff',
+      graphName: graphName || 'f',
+      expr: expr,
+      graphColor: graphColor || '#b41f65',
+      eps: eps
+    };
+  }
+
+  function getGraphKey(target) {
+    return [
+      String(target.name || ''),
+      String(target.graphName || ''),
+      String(target.expr || '')
+    ].join('||');
+  }
+
+  function isLocked(uid) {
+    return !!window.__punktGraphLocks[String(uid)];
+  }
+
+  function setLocked(uid, value) {
+    window.__punktGraphLocks[String(uid)] = !!value;
+    try { applyPunktGraphUi(uid); } catch (e) {}
   }
 
   function ensureBuckets(boardId) {
@@ -3240,6 +3297,25 @@ if (window.__liaRunCoordHooks) {
     window.__pointStates[boardId] = window.__pointStates[boardId] || {};
     window.__pointGraphs[boardId] = window.__pointGraphs[boardId] || {};
     window.__pointGraphStates[boardId] = window.__pointGraphStates[boardId] || {};
+  }
+
+  function applyPointVisual(pt, pointColor) {
+    if (!pt || typeof pt.setAttribute !== 'function') return;
+
+    const pCol = String(pointColor || '#ff00ff').trim() || '#ff00ff';
+
+    try {
+      pt.setAttribute({
+        strokeColor: pCol,
+        fillColor: pCol,
+        highlightStrokeColor: pCol,
+        highlightFillColor: pCol,
+        strokeWidth: 3,
+        highlightStrokeWidth: 3,
+        face: 'x',
+        size: 7
+      });
+    } catch (e) {}
   }
 
   function stylePointLabel(pt) {
@@ -3344,17 +3420,19 @@ if (window.__liaRunCoordHooks) {
     persist();
   }
 
-  function createPoint(board, boardId, name, x0, y0) {
+  function createPoint(board, boardId, name, x0, y0, pointColor) {
+    const pCol = String(pointColor || '#ff00ff').trim() || '#ff00ff';
+
     try {
       const pt = board.create('point', [x0, y0], {
         name: texName(name),
         fixed: false,
         withLabel: true,
         showInfobox: false,
-        strokeColor: '#ff00ff',
-        fillColor: '#ff00ff',
-        highlightStrokeColor: '#ff00ff',
-        highlightFillColor: '#ff00ff',
+        strokeColor: pCol,
+        fillColor: pCol,
+        highlightStrokeColor: pCol,
+        highlightFillColor: pCol,
         strokeWidth: 3,
         highlightStrokeWidth: 3,
         face: 'x',
@@ -3371,6 +3449,7 @@ if (window.__liaRunCoordHooks) {
       ensureBuckets(boardId);
       window.__points[boardId][name] = pt;
 
+      applyPointVisual(pt, pCol);
       stylePointLabel(pt);
       bindPointPersistence(boardId, name, pt);
       savePointState(boardId, name, pt);
@@ -3394,7 +3473,7 @@ if (window.__liaRunCoordHooks) {
     return null;
   }
 
-  function restorePointFromState(boardId, name) {
+  function restorePointFromState(boardId, name, pointColor) {
     const board = window.__boards && window.__boards[boardId];
     const state = window.__pointStates && window.__pointStates[boardId] && window.__pointStates[boardId][name];
 
@@ -3402,7 +3481,7 @@ if (window.__liaRunCoordHooks) {
 
     let pt = getLivePointOnCurrentBoard(boardId, name);
     if (!pt) {
-      pt = createPoint(board, boardId, name, state.x, state.y);
+      pt = createPoint(board, boardId, name, state.x, state.y, pointColor);
       if (!pt) return null;
     }
 
@@ -3412,6 +3491,7 @@ if (window.__liaRunCoordHooks) {
       pt.setAttribute({ fixed: !!state.fixed });
     } catch (e) {}
 
+    applyPointVisual(pt, pointColor);
     stylePointLabel(pt);
     bindPointPersistence(boardId, name, pt);
     savePointState(boardId, name, pt);
@@ -3419,58 +3499,6 @@ if (window.__liaRunCoordHooks) {
     try { board.update(); } catch (e) {}
     return pt;
   }
-
-  window.restorePointGraphFromSpec = function(spec) {
-    const target = getTargetFromSpec(spec);
-    if (!target.boardId || !target.name) return null;
-    return restorePointFromState(target.boardId, target.name);
-  };
-
-  window.getPointGraphFromSpec = function(spec) {
-    const target = getTargetFromSpec(spec);
-    const boardId = target.boardId;
-    const name = target.name;
-
-    let pt = getLivePointOnCurrentBoard(boardId, name);
-    if (pt) return pt;
-
-    return restorePointFromState(boardId, name);
-  };
-
-  window.ensurePointGraphFromSpec = function(spec) {
-    const target = getTargetFromSpec(spec);
-    const boardId = target.boardId;
-    const name = target.name;
-
-    const board = window.__boards && window.__boards[boardId];
-    if (!board || !name) return false;
-
-    ensureBuckets(boardId);
-
-    let pt = getLivePointOnCurrentBoard(boardId, name);
-    if (pt) {
-      stylePointLabel(pt);
-      bindPointPersistence(boardId, name, pt);
-      savePointState(boardId, name, pt);
-      try { board.update(); } catch (e) {}
-      return true;
-    }
-
-    pt = restorePointFromState(boardId, name);
-    if (pt) {
-      try { board.update(); } catch (e) {}
-      return true;
-    }
-
-    const x0 = Math.random();
-    const y0 = Math.random();
-
-    pt = createPoint(board, boardId, name, x0, y0);
-    if (!pt) return false;
-
-    try { board.update(); } catch (e) {}
-    return true;
-  };
 
   function normalizeExpr(expr) {
     expr = unquote(expr)
@@ -3543,14 +3571,128 @@ if (window.__liaRunCoordHooks) {
     );
   }
 
-  function getLiveGraphOnCurrentBoard(boardId, graphKey) {
-    const board = window.__boards && window.__boards[boardId];
-    const graph = window.__pointGraphs && window.__pointGraphs[boardId] && window.__pointGraphs[boardId][graphKey];
+  function safeBBox(board) {
+    try {
+      const bb = board.getBoundingBox();
+      if (
+        Array.isArray(bb) &&
+        bb.length === 4 &&
+        bb.every(function(v) { return Number.isFinite(v); }) &&
+        bb[2] > bb[0] &&
+        bb[1] > bb[3]
+      ) {
+        return bb.slice();
+      }
+    } catch (e) {}
 
-    if (!board || !graph) return null;
+    return [-5, 5, 5, -5];
+  }
+
+  function chooseVisibleAnchorX(board, fn) {
+    const bb = safeBBox(board);
+    const xmin = bb[0];
+    const ymax = bb[1];
+    const xmax = bb[2];
+    const ymin = bb[3];
+
+    const xspan = xmax - xmin;
+    const yspan = ymax - ymin;
+
+    const xStart = xmax - 0.10 * xspan;
+    const xEnd   = xmin + 0.18 * xspan;
+
+    const yPadTop = 0.14 * yspan;
+    const yPadBottom = 0.12 * yspan;
+
+    const steps = 120;
+
+    for (let i = 0; i <= steps; i++) {
+      const t = i / steps;
+      const x = xStart - t * (xStart - xEnd);
+
+      let y;
+      try {
+        y = fn(x);
+      } catch (e) {
+        y = NaN;
+      }
+
+      if (!Number.isFinite(y)) continue;
+      if (y <= ymax - yPadTop && y >= ymin + yPadBottom) return x;
+    }
+
+    return xmin + 0.60 * xspan;
+  }
+
+  function createFunctionLabel(board, fn, graphName, graphColor) {
+    const labelText = texName(graphName);
+    const gCol = String(graphColor || '#b41f65').trim() || '#b41f65';
+
+    const anchor = board.create('point', [
+      function() {
+        return chooseVisibleAnchorX(board, fn);
+      },
+      function() {
+        const x = chooseVisibleAnchorX(board, fn);
+        let y;
+
+        try {
+          y = fn(x);
+        } catch (e) {
+          y = NaN;
+        }
+
+        if (!Number.isFinite(y)) {
+          const bb = safeBBox(board);
+          return (bb[1] + bb[3]) / 2;
+        }
+
+        return y;
+      }
+    ], {
+      visible: false,
+      fixed: true,
+      withLabel: false,
+      name: ''
+    });
+
+    const text = board.create('text', [
+      function() {
+        return anchor.X() + 0.18;
+      },
+      function() {
+        return anchor.Y() + 0.18;
+      },
+      function() {
+        return labelText;
+      }
+    ], {
+      fixed: true,
+      highlight: false,
+      parse: false,
+      useMathJax: true,
+      display: 'html',
+      strokeColor: gCol,
+      fillColor: gCol,
+      fontSize: 24,
+      anchorX: 'left',
+      anchorY: 'top'
+    });
+
+    return {
+      anchor: anchor,
+      text: text
+    };
+  }
+
+  function getLiveGraphEntryOnCurrentBoard(boardId, graphKey) {
+    const board = window.__boards && window.__boards[boardId];
+    const entry = window.__pointGraphs && window.__pointGraphs[boardId] && window.__pointGraphs[boardId][graphKey];
+
+    if (!board || !entry || !entry.graph) return null;
 
     try {
-      if (graph.board === board) return graph;
+      if (entry.graph.board === board) return entry;
     } catch (e) {}
 
     return null;
@@ -3560,6 +3702,8 @@ if (window.__liaRunCoordHooks) {
     const target = getTargetFromSpec(spec);
     const boardId = target.boardId;
     const expr = target.expr;
+    const graphName = target.graphName || 'f';
+    const graphColor = target.graphColor || '#b41f65';
     const board = window.__boards && window.__boards[boardId];
     const graphKey = getGraphKey(target);
 
@@ -3578,17 +3722,30 @@ if (window.__liaRunCoordHooks) {
           return f(x);
         }
       ], {
-        strokeColor: '#b41f65',
-        highlightStrokeColor: '#b41f65',
+        strokeColor: graphColor,
+        highlightStrokeColor: graphColor,
         strokeWidth: 3,
         fixed: true
       });
 
-      ensureBuckets(boardId);
-      window.__pointGraphs[boardId][graphKey] = graph;
-      window.__pointGraphStates[boardId][graphKey] = { visible: true };
+      const labelPack = createFunctionLabel(board, f, graphName, graphColor);
 
-      return graph;
+      ensureBuckets(boardId);
+      window.__pointGraphs[boardId][graphKey] = {
+        graph: graph,
+        anchor: labelPack.anchor,
+        text: labelPack.text,
+        name: graphName,
+        color: graphColor,
+        expr: expr
+      };
+      window.__pointGraphStates[boardId][graphKey] = {
+        visible: true,
+        name: graphName,
+        color: graphColor
+      };
+
+      return window.__pointGraphs[boardId][graphKey];
     } catch (e) {
       return null;
     }
@@ -3598,28 +3755,46 @@ if (window.__liaRunCoordHooks) {
     const target = getTargetFromSpec(spec);
     const boardId = target.boardId;
     const graphKey = getGraphKey(target);
+    const graphColor = target.graphColor || '#b41f65';
     const board = window.__boards && window.__boards[boardId];
 
     if (!board || !target.expr) return false;
 
     ensureBuckets(boardId);
 
-    let graph = getLiveGraphOnCurrentBoard(boardId, graphKey);
+    let entry = getLiveGraphEntryOnCurrentBoard(boardId, graphKey);
 
-    if (!graph) {
-      graph = createGraphFromSpec(spec);
-      if (!graph) return false;
+    if (!entry) {
+      entry = createGraphFromSpec(spec);
+      if (!entry) return false;
     } else {
       try {
-        graph.setAttribute({
-          visible: true,
-          strokeColor: '#b41f65',
-          highlightStrokeColor: '#b41f65',
-          strokeWidth: 3,
-          fixed: true
-        });
+        if (entry.graph) {
+          entry.graph.setAttribute({
+            visible: true,
+            strokeColor: graphColor,
+            highlightStrokeColor: graphColor,
+            strokeWidth: 3,
+            fixed: true
+          });
+        }
       } catch (e) {}
-      window.__pointGraphStates[boardId][graphKey] = { visible: true };
+
+      try {
+        if (entry.text) {
+          entry.text.setAttribute({
+            strokeColor: graphColor,
+            fillColor: graphColor,
+            fontSize: 24
+          });
+        }
+      } catch (e) {}
+
+      window.__pointGraphStates[boardId][graphKey] = {
+        visible: true,
+        name: target.graphName,
+        color: graphColor
+      };
     }
 
     try { board.update(); } catch (e) {}
@@ -3645,7 +3820,68 @@ if (window.__liaRunCoordHooks) {
     return false;
   };
 
-  window.checkPointGraphFromSpec = function(spec) {
+  window.restorePointGraphFromSpec = function(spec) {
+    const target = getTargetFromSpec(spec);
+    if (!target.boardId || !target.name) return null;
+    return restorePointFromState(target.boardId, target.name, target.pointColor);
+  };
+
+  window.getPointGraphFromSpec = function(spec) {
+    const target = getTargetFromSpec(spec);
+    const boardId = target.boardId;
+    const name = target.name;
+
+    let pt = getLivePointOnCurrentBoard(boardId, name);
+    if (pt) {
+      applyPointVisual(pt, target.pointColor);
+      return pt;
+    }
+
+    return restorePointFromState(boardId, name, target.pointColor);
+  };
+
+  window.ensurePointGraphFromSpec = function(uid, spec) {
+    if (isLocked(uid)) return false;
+
+    const target = getTargetFromSpec(spec);
+    const boardId = target.boardId;
+    const name = target.name;
+
+    const board = window.__boards && window.__boards[boardId];
+    if (!board || !name) return false;
+
+    ensureBuckets(boardId);
+
+    let pt = getLivePointOnCurrentBoard(boardId, name);
+    if (pt) {
+      applyPointVisual(pt, target.pointColor);
+      stylePointLabel(pt);
+      bindPointPersistence(boardId, name, pt);
+      savePointState(boardId, name, pt);
+      try { board.update(); } catch (e) {}
+      applyPunktGraphUi(uid);
+      return true;
+    }
+
+    pt = restorePointFromState(boardId, name, target.pointColor);
+    if (pt) {
+      try { board.update(); } catch (e) {}
+      applyPunktGraphUi(uid);
+      return true;
+    }
+
+    const x0 = Math.random();
+    const y0 = Math.random();
+
+    pt = createPoint(board, boardId, name, x0, y0, target.pointColor);
+    if (!pt) return false;
+
+    try { board.update(); } catch (e) {}
+    applyPunktGraphUi(uid);
+    return true;
+  };
+
+  window.checkPointGraphFromSpec = function(uid, spec) {
     const target = getTargetFromSpec(spec);
     const boardId = target.boardId;
     const expr = target.expr;
@@ -3679,7 +3915,7 @@ if (window.__liaRunCoordHooks) {
     return Math.abs(y - fy) <= eps;
   };
 
-  window.finalizePointGraphFromSpec = function(spec) {
+  window.finalizePointGraphFromSpec = function(uid, spec) {
     const target = getTargetFromSpec(spec);
     const boardId = target.boardId;
     const name = target.name;
@@ -3692,24 +3928,26 @@ if (window.__liaRunCoordHooks) {
       try {
         pt.setAttribute({ fixed: true });
       } catch (e) {}
+      applyPointVisual(pt, target.pointColor);
       savePointState(boardId, name, pt);
     }
 
     const shown = window.showGraphFromPointGraphSpec(spec);
+    setLocked(uid, true);
 
     try { if (board) board.update(); } catch (e) {}
 
     return !!(pt || shown);
   };
 
-  window.__checkPointGraphFromSpec = function(spec) {
+  window.__checkPointGraphFromSpec = function(uid, spec) {
     const ok = !!(
       typeof window.checkPointGraphFromSpec === 'function' &&
-      window.checkPointGraphFromSpec(spec)
+      window.checkPointGraphFromSpec(uid, spec)
     );
 
     if (ok && typeof window.finalizePointGraphFromSpec === 'function') {
-      window.finalizePointGraphFromSpec(spec);
+      window.finalizePointGraphFromSpec(uid, spec);
     }
 
     return ok;
@@ -3755,6 +3993,15 @@ if (window.__liaRunCoordHooks) {
     return false;
   }
 
+  function applyLockedStateToButton(uid, btn) {
+    const locked = isLocked(uid);
+
+    btn.disabled = locked;
+    btn.style.opacity = locked ? '0.55' : '';
+    btn.style.cursor = locked ? 'not-allowed' : '';
+    btn.style.pointerEvents = locked ? 'none' : '';
+  }
+
   function applyPunktGraphUi(uid) {
     const uiRoot = document.getElementById('graph-ui-' + uid);
     const taskRoot = document.getElementById('graph-task-' + uid);
@@ -3763,7 +4010,7 @@ if (window.__liaRunCoordHooks) {
 
     if (!uiRoot || !taskRoot || !checkRoot || !btn) return false;
 
-    const spec = uiRoot.dataset.spec || '';
+    const spec = getGraphUiSpecByUid(uid);
 
     uiRoot.style.display = 'inline-flex';
     uiRoot.style.alignItems = 'flex-start';
@@ -3805,6 +4052,8 @@ if (window.__liaRunCoordHooks) {
         inner.style.whiteSpace = 'nowrap';
         inner.style.transform = 'translateY(0px)';
       } catch (e) {}
+
+      applyLockedStateToButton(uid, btn);
 
       if (typeof window.restorePointGraphFromSpec === 'function') {
         window.restorePointGraphFromSpec(spec);
@@ -3855,6 +4104,8 @@ if (window.__liaRunCoordHooks) {
     inner.style.transform = 'translateY(0px)';
     inner.style.whiteSpace = 'nowrap';
 
+    applyLockedStateToButton(uid, btn);
+
     if (typeof window.restorePointGraphFromSpec === 'function') {
       window.restorePointGraphFromSpec(spec);
     }
@@ -3873,10 +4124,6 @@ if (window.__liaRunCoordHooks) {
 
     if (!uiRoot || !taskRoot || !checkRoot) return false;
 
-    if ((uiRoot.dataset.spec || '') !== String(spec || '')) {
-      uiRoot.dataset.spec = spec;
-    }
-
     let btn = document.getElementById('graph-btn-' + uid);
     if (!btn) {
       btn = document.createElement('button');
@@ -3890,9 +4137,9 @@ if (window.__liaRunCoordHooks) {
     if (!btn.__liaPointGraphEnsureBound) {
       btn.__liaPointGraphEnsureBound = true;
       btn.addEventListener('click', function() {
-        const curSpec = uiRoot.dataset.spec || '';
+        const curSpec = getGraphUiSpecByUid(uid);
         if (typeof window.ensurePointGraphFromSpec === 'function') {
-          window.ensurePointGraphFromSpec(curSpec);
+          window.ensurePointGraphFromSpec(uid, curSpec);
         }
       });
     }
@@ -3924,16 +4171,16 @@ if (window.__liaRunCoordHooks) {
           if (!looksLikeResolveButton(checkRoot, targetBtn)) return;
 
           setTimeout(function() {
-            const curSpec = uiRoot.dataset.spec || '';
+            const curSpec = getGraphUiSpecByUid(uid);
             if (typeof window.finalizePointGraphFromSpec === 'function') {
-              window.finalizePointGraphFromSpec(curSpec);
+              window.finalizePointGraphFromSpec(uid, curSpec);
             }
           }, 0);
 
           setTimeout(function() {
-            const curSpec = uiRoot.dataset.spec || '';
+            const curSpec = getGraphUiSpecByUid(uid);
             if (typeof window.finalizePointGraphFromSpec === 'function') {
-              window.finalizePointGraphFromSpec(curSpec);
+              window.finalizePointGraphFromSpec(uid, curSpec);
             }
           }, 80);
         });
@@ -3947,32 +4194,36 @@ if (window.__liaRunCoordHooks) {
     }
 
     setTimeout(function() {
+      const curSpec = getGraphUiSpecByUid(uid);
       if (typeof window.restorePointGraphFromSpec === 'function') {
-        window.restorePointGraphFromSpec(spec);
+        window.restorePointGraphFromSpec(curSpec);
       }
       if (typeof window.restorePointGraphVisualState === 'function') {
-        window.restorePointGraphVisualState(spec);
+        window.restorePointGraphVisualState(curSpec);
       }
+      applyPunktGraphUi(uid);
     }, 0);
 
     setTimeout(function() {
+      const curSpec = getGraphUiSpecByUid(uid);
       if (typeof window.restorePointGraphFromSpec === 'function') {
-        window.restorePointGraphFromSpec(spec);
+        window.restorePointGraphFromSpec(curSpec);
       }
       if (typeof window.restorePointGraphVisualState === 'function') {
-        window.restorePointGraphVisualState(spec);
+        window.restorePointGraphVisualState(curSpec);
       }
+      applyPunktGraphUi(uid);
     }, 120);
 
     return true;
   };
 
   window.__bootstrapPunktGraphs = function() {
-    const nodes = document.querySelectorAll('[id^="graph-ui-"][data-spec]');
+    const nodes = document.querySelectorAll('[id^="graph-ui-"]');
 
     nodes.forEach(function(node) {
       const uid = String(node.id || '').replace(/^graph-ui-/, '');
-      const spec = String(node.dataset.spec || '');
+      const spec = getGraphUiSpecByUid(uid);
       if (!uid || !spec) return;
 
       window.renderPunktGraphFromSpec(uid, spec);
@@ -4008,7 +4259,8 @@ if (window.__liaRunCoordHooks) {
 
           if (
             (n.id && /^graph-ui-/.test(n.id)) ||
-            (n.querySelector && n.querySelector('[id^="graph-ui-"][data-spec]'))
+            (n.id && /^graph-spec-/.test(n.id)) ||
+            (n.querySelector && n.querySelector('[id^="graph-ui-"], [id^="graph-spec-"]'))
           ) {
             needsBootstrap = true;
             break;
@@ -4030,6 +4282,26 @@ if (window.__liaRunCoordHooks) {
         subtree: true
       });
     }
+  } catch (e) {}
+
+  try {
+    window.addEventListener('hashchange', function() {
+      if (window.__scheduleBootstrapPunktGraphs) window.__scheduleBootstrapPunktGraphs();
+    }, true);
+  } catch (e) {}
+
+  try {
+    window.addEventListener('pageshow', function() {
+      if (window.__scheduleBootstrapPunktGraphs) window.__scheduleBootstrapPunktGraphs();
+    }, true);
+  } catch (e) {}
+
+  try {
+    document.addEventListener('visibilitychange', function() {
+      if (!document.hidden && window.__scheduleBootstrapPunktGraphs) {
+        window.__scheduleBootstrapPunktGraphs();
+      }
+    }, true);
   } catch (e) {}
 
   window.__registerLiaThemeListener(refreshAllPointLabels);
@@ -4098,17 +4370,40 @@ if (window.__liaRunCoordHooks) {
 
 
 
-  // =========================
-  // MEHRERE PUNKTE AUF GRAPH
-  // MEHRERE PUNKTE AUF GRAPH
-  // MEHRERE PUNKTE AUF GRAPH
-  // MEHRERE PUNKTE AUF GRAPH
-  // MEHRERE PUNKTE AUF GRAPH
-  // MEHRERE PUNKTE AUF GRAPH
-  // MEHRERE PUNKTE AUF GRAPH
-  // MEHRERE PUNKTE AUF GRAPH
-  // =========================
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // =========================
+  // MEHRERE PUNKTE AUF GRAPH
+  // MEHRERE PUNKTE AUF GRAPH
+  // MEHRERE PUNKTE AUF GRAPH
+  // MEHRERE PUNKTE AUF GRAPH
+  // MEHRERE PUNKTE AUF GRAPH
+  // MEHRERE PUNKTE AUF GRAPH
+  // MEHRERE PUNKTE AUF GRAPH
+  // MEHRERE PUNKTE AUF GRAPH
+  // =========================
 
 
 (function(){
@@ -4269,9 +4564,19 @@ if (window.__liaRunCoordHooks) {
     return Number.isFinite(v) ? Math.abs(v) : 0;
   }
 
+  function parseEpsToken(s, fallback) {
+    const v = parseFloat(String(s || '').replace(',', '.'));
+    return Number.isFinite(v) ? Math.abs(v) : fallback;
+  }
+
+  function isColorToken(s) {
+    const v = String(s || '').trim();
+    return /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/.test(v);
+  }
+
   function texName(name) {
     const s = String(name || '').trim();
-    if (!s) return '\\(A\\)';
+    if (!s) return '\\(f\\)';
     if (s.includes('\\(') || s.includes('\\[') || s.includes('$')) return s;
 
     const m = s.match(/^(.+?)_(.+)$/);
@@ -4295,9 +4600,24 @@ if (window.__liaRunCoordHooks) {
     const count   = parseCountToken(parts[1] || '1');
     const minDist = parseDistanceToken(parts[2] || '0');
     const prefix  = parts[3] || 'A';
-    const expr    = parts[4] || '';
-    const epsRaw  = parseFloat(String(parts[5] || '0.05').replace(',', '.'));
-    const eps     = Number.isFinite(epsRaw) ? Math.abs(epsRaw) : 0.05;
+
+    let pointColor = '#ff00ff';
+    let graphName = 'f';
+    let expr = '';
+    let graphColor = '#b41f65';
+    let eps = 0.05;
+
+    if (isColorToken(parts[4])) {
+      pointColor = parts[4] || '#ff00ff';
+      graphName = parts[5] || 'f';
+      expr = parts[6] || '';
+      graphColor = isColorToken(parts[7]) ? parts[7] : '#b41f65';
+      eps = parseEpsToken(parts[8], 0.05);
+    } else {
+      graphName = parts[4] || 'f';
+      expr = parts[5] || '';
+      eps = parseEpsToken(parts[6], 0.05);
+    }
 
     const names = [];
     for (let i = 1; i <= count; i++) {
@@ -4309,14 +4629,22 @@ if (window.__liaRunCoordHooks) {
       count: count,
       minDist: minDist,
       prefix: prefix,
+      pointColor: pointColor || '#ff00ff',
+      graphName: graphName || 'f',
       expr: expr,
+      graphColor: graphColor || '#b41f65',
       eps: eps,
       names: names
     };
   }
 
   function getGraphKey(target) {
-    return String(target.prefix || '') + '||' + String(target.count || 0) + '||' + String(target.expr || '');
+    return [
+      String(target.prefix || ''),
+      String(target.count || 0),
+      String(target.graphName || ''),
+      String(target.expr || '')
+    ].join('||');
   }
 
   function isLocked(uid) {
@@ -4327,6 +4655,25 @@ if (window.__liaRunCoordHooks) {
     window.__punkteAufGraphLocks[String(uid)] = !!value;
     try {
       applyPunkteAufGraphUi(uid);
+    } catch (e) {}
+  }
+
+  function applyPointVisual(pt, pointColor) {
+    if (!pt || typeof pt.setAttribute !== 'function') return;
+
+    const pCol = String(pointColor || '#ff00ff').trim() || '#ff00ff';
+
+    try {
+      pt.setAttribute({
+        strokeColor: pCol,
+        fillColor: pCol,
+        highlightStrokeColor: pCol,
+        highlightFillColor: pCol,
+        strokeWidth: 3,
+        highlightStrokeWidth: 3,
+        face: 'x',
+        size: 7
+      });
     } catch (e) {}
   }
 
@@ -4432,17 +4779,19 @@ if (window.__liaRunCoordHooks) {
     persist();
   }
 
-  function createPoint(board, boardId, name, x0, y0) {
+  function createPoint(board, boardId, name, x0, y0, pointColor) {
+    const pCol = String(pointColor || '#ff00ff').trim() || '#ff00ff';
+
     try {
       const pt = board.create('point', [x0, y0], {
         name: texName(name),
         fixed: false,
         withLabel: true,
         showInfobox: false,
-        strokeColor: '#ff00ff',
-        fillColor: '#ff00ff',
-        highlightStrokeColor: '#ff00ff',
-        highlightFillColor: '#ff00ff',
+        strokeColor: pCol,
+        fillColor: pCol,
+        highlightStrokeColor: pCol,
+        highlightFillColor: pCol,
         strokeWidth: 3,
         highlightStrokeWidth: 3,
         face: 'x',
@@ -4459,6 +4808,7 @@ if (window.__liaRunCoordHooks) {
       ensureBuckets(boardId);
       window.__points[boardId][name] = pt;
 
+      applyPointVisual(pt, pCol);
       stylePointLabel(pt);
       bindPointPersistence(boardId, name, pt);
       savePointState(boardId, name, pt);
@@ -4482,7 +4832,7 @@ if (window.__liaRunCoordHooks) {
     return null;
   }
 
-  function restorePointFromState(boardId, name) {
+  function restorePointFromState(boardId, name, pointColor) {
     const board = window.__boards && window.__boards[boardId];
     const state = window.__pointStates && window.__pointStates[boardId] && window.__pointStates[boardId][name];
 
@@ -4490,7 +4840,7 @@ if (window.__liaRunCoordHooks) {
 
     let pt = getLivePointOnCurrentBoard(boardId, name);
     if (!pt) {
-      pt = createPoint(board, boardId, name, state.x, state.y);
+      pt = createPoint(board, boardId, name, state.x, state.y, pointColor);
       if (!pt) return null;
     }
 
@@ -4500,29 +4850,13 @@ if (window.__liaRunCoordHooks) {
       pt.setAttribute({ fixed: !!state.fixed });
     } catch (e) {}
 
+    applyPointVisual(pt, pointColor);
     stylePointLabel(pt);
     bindPointPersistence(boardId, name, pt);
     savePointState(boardId, name, pt);
 
     try { board.update(); } catch (e) {}
     return pt;
-  }
-
-  function safeBBox(board) {
-    try {
-      const bb = board.getBoundingBox();
-      if (
-        Array.isArray(bb) &&
-        bb.length === 4 &&
-        bb.every(function(v){ return Number.isFinite(v); }) &&
-        bb[2] > bb[0] &&
-        bb[1] > bb[3]
-      ) {
-        return bb.slice();
-      }
-    } catch (e) {}
-
-    return [-5, 5, 5, -5];
   }
 
   function randomStartPositions(count) {
@@ -4547,17 +4881,17 @@ if (window.__liaRunCoordHooks) {
 
     for (let i = 0; i < points.length; i++) {
       for (let j = i + 1; j < points.length; j++) {
-        const pi = points[i];
-        const pj = points[j];
         const d = distance(
-          { x: Number(pi.X()), y: Number(pi.Y()) },
-          { x: Number(pj.X()), y: Number(pj.Y()) }
+          { x: Number(points[i].X()), y: Number(points[i].Y()) },
+          { x: Number(points[j].X()), y: Number(points[j].Y()) }
         );
+
         if (!Number.isFinite(d) || d < minDist) {
           return false;
         }
       }
     }
+
     return true;
   }
 
@@ -4609,9 +4943,8 @@ if (window.__liaRunCoordHooks) {
     ]);
 
     for (let i = 0; i < ids.length; i++) {
-      const id = ids[i];
-      if (!allowed.has(id)) {
-        throw new Error('Unerlaubter Bezeichner: ' + id);
+      if (!allowed.has(ids[i])) {
+        throw new Error('Unerlaubter Bezeichner: ' + ids[i]);
       }
     }
 
@@ -4632,23 +4965,155 @@ if (window.__liaRunCoordHooks) {
     );
   }
 
-  function getLiveGraphOnCurrentBoard(boardId, graphKey) {
-    const board = window.__boards && window.__boards[boardId];
-    const graph = window.__pointGraphs && window.__pointGraphs[boardId] && window.__pointGraphs[boardId][graphKey];
+  function safeBBox(board) {
+    try {
+      const bb = board.getBoundingBox();
+      if (
+        Array.isArray(bb) &&
+        bb.length === 4 &&
+        bb.every(function(v) { return Number.isFinite(v); }) &&
+        bb[2] > bb[0] &&
+        bb[1] > bb[3]
+      ) {
+        return bb.slice();
+      }
+    } catch (e) {}
 
-    if (!board || !graph) return null;
+    return [-5, 5, 5, -5];
+  }
+
+  function chooseVisibleAnchorX(board, fn) {
+    const bb = safeBBox(board);
+    const xmin = bb[0];
+    const ymax = bb[1];
+    const xmax = bb[2];
+    const ymin = bb[3];
+
+    const xspan = xmax - xmin;
+    const yspan = ymax - ymin;
+
+    const xStart = xmax - 0.10 * xspan;
+    const xEnd   = xmin + 0.18 * xspan;
+
+    const yPadTop = 0.14 * yspan;
+    const yPadBottom = 0.12 * yspan;
+
+    const steps = 120;
+
+    for (let i = 0; i <= steps; i++) {
+      const t = i / steps;
+      const x = xStart - t * (xStart - xEnd);
+
+      let y;
+      try {
+        y = fn(x);
+      } catch (e) {
+        y = NaN;
+      }
+
+      if (!Number.isFinite(y)) continue;
+      if (y <= ymax - yPadTop && y >= ymin + yPadBottom) return x;
+    }
+
+    return xmin + 0.60 * xspan;
+  }
+
+  function createFunctionLabel(board, fn, graphName, graphColor) {
+    const labelText = texName(graphName);
+    const gCol = String(graphColor || '#b41f65').trim() || '#b41f65';
+
+    const anchor = board.create('point', [
+      function() {
+        return chooseVisibleAnchorX(board, fn);
+      },
+      function() {
+        const x = chooseVisibleAnchorX(board, fn);
+        let y;
+
+        try {
+          y = fn(x);
+        } catch (e) {
+          y = NaN;
+        }
+
+        if (!Number.isFinite(y)) {
+          const bb = safeBBox(board);
+          return (bb[1] + bb[3]) / 2;
+        }
+
+        return y;
+      }
+    ], {
+      visible: false,
+      fixed: true,
+      withLabel: false,
+      name: ''
+    });
+
+    const text = board.create('text', [
+      function() {
+        return anchor.X() + 0.18;
+      },
+      function() {
+        return anchor.Y() + 0.18;
+      },
+      function() {
+        return labelText;
+      }
+    ], {
+      fixed: true,
+      highlight: false,
+      parse: false,
+      useMathJax: true,
+      display: 'html',
+      strokeColor: gCol,
+      fillColor: gCol,
+      fontSize: 24,
+      anchorX: 'left',
+      anchorY: 'top'
+    });
+
+    return {
+      anchor: anchor,
+      text: text
+    };
+  }
+
+  function getLiveGraphEntryOnCurrentBoard(boardId, graphKey) {
+    const board = window.__boards && window.__boards[boardId];
+    const entry = window.__pointGraphs && window.__pointGraphs[boardId] && window.__pointGraphs[boardId][graphKey];
+
+    if (!board || !entry || !entry.graph) return null;
 
     try {
-      if (graph.board === board) return graph;
+      if (entry.graph.board === board) return entry;
     } catch (e) {}
 
     return null;
+  }
+
+  function removeGraphEntry(entry) {
+    if (!entry) return;
+
+    try {
+      if (entry.graph && entry.graph.board) entry.graph.board.removeObject(entry.graph);
+    } catch (e) {}
+
+    try {
+      if (entry.anchor && entry.anchor.board) entry.anchor.board.removeObject(entry.anchor);
+    } catch (e) {}
+
+    try {
+      if (entry.text && entry.text.board) entry.text.board.removeObject(entry.text);
+    } catch (e) {}
   }
 
   function createGraphFromSpec(spec) {
     const target = getTargetFromSpec(spec);
     const boardId = target.boardId;
     const expr = target.expr;
+    const graphName = target.graphName || 'f';
+    const graphColor = target.graphColor || '#b41f65';
     const board = window.__boards && window.__boards[boardId];
     const graphKey = getGraphKey(target);
 
@@ -4667,17 +5132,30 @@ if (window.__liaRunCoordHooks) {
           return f(x);
         }
       ], {
-        strokeColor: '#b41f65',
-        highlightStrokeColor: '#b41f65',
+        strokeColor: graphColor,
+        highlightStrokeColor: graphColor,
         strokeWidth: 3,
         fixed: true
       });
 
-      ensureBuckets(boardId);
-      window.__pointGraphs[boardId][graphKey] = graph;
-      window.__pointGraphStates[boardId][graphKey] = { visible: true };
+      const labelPack = createFunctionLabel(board, f, graphName, graphColor);
 
-      return graph;
+      ensureBuckets(boardId);
+      window.__pointGraphs[boardId][graphKey] = {
+        graph: graph,
+        anchor: labelPack.anchor,
+        text: labelPack.text,
+        name: graphName,
+        color: graphColor,
+        expr: expr
+      };
+      window.__pointGraphStates[boardId][graphKey] = {
+        visible: true,
+        name: graphName,
+        color: graphColor
+      };
+
+      return window.__pointGraphs[boardId][graphKey];
     } catch (e) {
       return null;
     }
@@ -4687,28 +5165,46 @@ if (window.__liaRunCoordHooks) {
     const target = getTargetFromSpec(spec);
     const boardId = target.boardId;
     const graphKey = getGraphKey(target);
+    const graphColor = target.graphColor || '#b41f65';
     const board = window.__boards && window.__boards[boardId];
 
     if (!board || !target.expr) return false;
 
     ensureBuckets(boardId);
 
-    let graph = getLiveGraphOnCurrentBoard(boardId, graphKey);
+    let entry = getLiveGraphEntryOnCurrentBoard(boardId, graphKey);
 
-    if (!graph) {
-      graph = createGraphFromSpec(spec);
-      if (!graph) return false;
+    if (!entry) {
+      entry = createGraphFromSpec(spec);
+      if (!entry) return false;
     } else {
       try {
-        graph.setAttribute({
-          visible: true,
-          strokeColor: '#b41f65',
-          highlightStrokeColor: '#b41f65',
-          strokeWidth: 3,
-          fixed: true
-        });
+        if (entry.graph) {
+          entry.graph.setAttribute({
+            visible: true,
+            strokeColor: graphColor,
+            highlightStrokeColor: graphColor,
+            strokeWidth: 3,
+            fixed: true
+          });
+        }
       } catch (e) {}
-      window.__pointGraphStates[boardId][graphKey] = { visible: true };
+
+      try {
+        if (entry.text) {
+          entry.text.setAttribute({
+            strokeColor: graphColor,
+            fillColor: graphColor,
+            fontSize: 24
+          });
+        }
+      } catch (e) {}
+
+      window.__pointGraphStates[boardId][graphKey] = {
+        visible: true,
+        name: target.graphName,
+        color: graphColor
+      };
     }
 
     try { board.update(); } catch (e) {}
@@ -4740,7 +5236,7 @@ if (window.__liaRunCoordHooks) {
 
     const out = [];
     for (let i = 0; i < target.names.length; i++) {
-      const pt = restorePointFromState(target.boardId, target.names[i]);
+      const pt = restorePointFromState(target.boardId, target.names[i], target.pointColor);
       if (pt) out.push(pt);
     }
     return out;
@@ -4753,8 +5249,11 @@ if (window.__liaRunCoordHooks) {
     for (let i = 0; i < target.names.length; i++) {
       const name = target.names[i];
       let pt = getLivePointOnCurrentBoard(target.boardId, name);
-      if (!pt) pt = restorePointFromState(target.boardId, name);
-      if (pt) out.push(pt);
+      if (!pt) pt = restorePointFromState(target.boardId, name, target.pointColor);
+      if (pt) {
+        applyPointVisual(pt, target.pointColor);
+        out.push(pt);
+      }
     }
 
     return out;
@@ -4776,8 +5275,8 @@ if (window.__liaRunCoordHooks) {
       const pos = positions[i];
 
       let pt = getLivePointOnCurrentBoard(target.boardId, name);
-      if (!pt) pt = restorePointFromState(target.boardId, name);
-      if (!pt) pt = createPoint(board, target.boardId, name, pos.x, pos.y);
+      if (!pt) pt = restorePointFromState(target.boardId, name, target.pointColor);
+      if (!pt) pt = createPoint(board, target.boardId, name, pos.x, pos.y, target.pointColor);
       if (!pt) continue;
 
       movePointTo(pt, pos.x, pos.y);
@@ -4786,6 +5285,7 @@ if (window.__liaRunCoordHooks) {
         pt.setAttribute({ fixed: false });
       } catch (e) {}
 
+      applyPointVisual(pt, target.pointColor);
       stylePointLabel(pt);
       bindPointPersistence(target.boardId, name, pt);
       savePointState(target.boardId, name, pt);
@@ -4813,8 +5313,10 @@ if (window.__liaRunCoordHooks) {
     for (let i = 0; i < target.names.length; i++) {
       const name = target.names[i];
       let pt = getLivePointOnCurrentBoard(target.boardId, name);
-      if (!pt) pt = restorePointFromState(target.boardId, name);
+      if (!pt) pt = restorePointFromState(target.boardId, name, target.pointColor);
       if (!pt) return false;
+
+      applyPointVisual(pt, target.pointColor);
 
       let x, y, fy;
       try {
@@ -4851,13 +5353,14 @@ if (window.__liaRunCoordHooks) {
     for (let i = 0; i < target.names.length; i++) {
       const name = target.names[i];
       let pt = getLivePointOnCurrentBoard(target.boardId, name);
-      if (!pt) pt = restorePointFromState(target.boardId, name);
+      if (!pt) pt = restorePointFromState(target.boardId, name, target.pointColor);
       if (!pt) continue;
 
       try {
         pt.setAttribute({ fixed: true });
       } catch (e) {}
 
+      applyPointVisual(pt, target.pointColor);
       savePointState(target.boardId, name, pt);
       any = true;
     }
@@ -5220,6 +5723,7 @@ if (window.__liaRunCoordHooks) {
     }, 220);
   } catch (e) {}
 })();
+
 
 
 
@@ -6466,24 +6970,26 @@ if (window.__liaRunCoordHooks) {
 @PunktGraph: @PunktGraph_(@uid,@0)
 
 @PunktGraph_
-<div id="graph-ui-@0" data-spec="@1">
+<div id="graph-ui-@0">
   <div id="graph-task-@0" class="lia-graph-task"></div>
 
   <div id="graph-check-@0">
     [[!]]
     <script modify="false">
       (() => {
-        const root = document.getElementById('graph-ui-@0');
-        const spec = root ? (root.dataset.spec || '') : String.raw`@1`;
+        const holder = document.getElementById('graph-spec-@0');
+        const spec = holder ? String(holder.textContent || '') : String.raw`@1`;
 
         if (typeof window.__checkPointGraphFromSpec === 'function') {
-          return window.__checkPointGraphFromSpec(spec);
+          return window.__checkPointGraphFromSpec('@0', spec);
         }
         return false;
       })()
     </script>
   </div>
 </div>
+
+<span id="graph-spec-@0" style="display:none;">@1</span>
 
 @end
 
@@ -6619,7 +7125,11 @@ Ziehe den Punkt $A$ auf die Koordinaten $(1|4)$.
 
 Ziehe den Punkt auf den Graphen von $f(x)=2x-4$.
 
-@PunktGraph(`A4;A;2x-4;0.05`)
+@PunktGraph(`A4;A;f;2x-4;0.05`) \
+
+Ziehe den Punkt auf den Graphen von $f(x)=2x-4$.
+
+@PunktGraph(`A4;B;#ff0000;f;2x-4;#000fff;0.05`)
 
 
 ```
@@ -6643,10 +7153,13 @@ Ziehe den Punkt auf den Graphen von $f(x)=2x-4$.
 
 @AchsenBeschriftung(`id=A5;xlabel=$x$;ylabel=$y$`)
 
-Generiere drei Punkte und platziere sie auf den Graphen, sodass die Punkte mindestens einen Abstand von $2LE$ zueinander haben.
+Generiere drei Punkte und platziere sie auf den Graphen zur Funktion $f(x)=2x-4$, sodass die Punkte mindestens einen Abstand von $2LE$ zueinander haben.
 
-@PunkteAufGraph(A5;n=3;d=2;A;2x-4;0.05)
+@PunkteAufGraph(`A5;n=4;d=3;A;f;2x-4;0.05`)
 
+Generiere drei Punkte und platziere sie auf den Graphen zur Funktion $g(x)=x-1$, sodass die Punkte mindestens einen Abstand von $1LE$ zueinander haben.
+
+@PunkteAufGraph(`A5;n=4;d=3;B;#0000ff;g;x-1;#fff000;0.05`)
 
 
 ```
@@ -6654,7 +7167,9 @@ Generiere drei Punkte und platziere sie auf den Graphen, sodass die Punkte minde
 
 @AchsenBeschriftung(`id=A5;xlabel=$x$;ylabel=$y$`)
 
-@PunkteAufGraph(A5;n=4;d=3;A;2x-4;0.05)
+@PunkteAufGraph(`A5;n=4;d=3;A;f;2x-4;0.05`)
+
+Mit Farbeinstellungen: @PunkteAufGraph(`A5;n=4;d=3;A;#ff00ff;g;2x-4;#b41f65;0.05`)
 ```
 
 

@@ -22,21 +22,21 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/hea
 # Plot Funktion
 
 
-> Updateversuch für neue Features am 19.03. um 09:40 Uhr
+> Updateversuch für neue Features am 19.03. um 18:00 Uhr
 
 > `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/imports/KoordREADME.md`
 
 
 
 
-Alles klappt nur wenn `https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md` im Header importiert ist!
+Alles klappt nur wenn `https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md` im Header importiert wurde!
 
 
 @Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A1`)
 
 @AchsenBeschriftung(`id=A1;xlabel=$x$;ylabel=$y$`)
 
-@PlotFunktion(`A1;f;4*exp{{-1/5*x^2}};#b41f65`)
+@PlotFunktion(`A1;f;x;#b41f65`)
 
 
 
@@ -45,9 +45,8 @@ Alles klappt nur wenn `https://raw.githubusercontent.com/liaTemplates/JSXGraph/m
 
 @AchsenBeschriftung(`id=A1;xlabel=$x$;ylabel=$y$`)
 
-@PlotFunktion(`A1;f;4*exp{{-1/5*x^2}};#b41f65`)
+@PlotFunktion(`A1;f;x;#b41f65`)
 ```
-
 
 
 
@@ -68,6 +67,7 @@ Alles klappt nur wenn `https://raw.githubusercontent.com/liaTemplates/JSXGraph/m
 
 @PlotEingabeLatex(`A8;g;#b41f65`)
 ```
+
 
 
 
@@ -111,7 +111,11 @@ Ziehe den Punkt $A$ auf die Koordinaten $(1|4)$.
 
 Ziehe den Punkt auf den Graphen von $f(x)=2x-4$.
 
-@PunktGraph(`A4;A;2x-4;0.05`)
+@PunktGraph(`A4;A;f;2x-4;0.05`) \
+
+Ziehe den Punkt auf den Graphen von $g(x)=x-1$.
+
+@PunktGraph(`A4;B;#ff0000;g;x-1;#000fff;0.05`)
 
 
 ```
@@ -128,16 +132,20 @@ Ziehe den Punkt auf den Graphen von $f(x)=2x-4$.
 
 
 
+
 # Punkte (plural) auf Graph
 
 @Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A5`)
 
 @AchsenBeschriftung(`id=A5;xlabel=$x$;ylabel=$y$`)
 
-Generiere drei Punkte und platziere sie auf den Graphen, sodass die Punkte mindestens einen Abstand von $2LE$ zueinander haben.
+Generiere drei Punkte und platziere sie auf den Graphen zur Funktion $f(x)=2x-4$, sodass die Punkte mindestens einen Abstand von $2LE$ zueinander haben.
 
-@PunkteAufGraph(A5;n=3;d=2;A;2x-4;0.05)
+@PunkteAufGraph(`A5;n=4;d=3;A;f;2x-4;0.05`)
 
+Generiere drei Punkte und platziere sie auf den Graphen zur Funktion $g(x)=x-1$, sodass die Punkte mindestens einen Abstand von $1LE$ zueinander haben.
+
+@PunkteAufGraph(`A5;n=4;d=3;B;#0000ff;g;x-1;#fff000;0.05`)
 
 
 ```
@@ -145,6 +153,10 @@ Generiere drei Punkte und platziere sie auf den Graphen, sodass die Punkte minde
 
 @AchsenBeschriftung(`id=A5;xlabel=$x$;ylabel=$y$`)
 
-@PunkteAufGraph(A5;n=4;d=3;A;2x-4;0.05)
+@PunkteAufGraph(`A5;n=4;d=3;A;f;2x-4;0.05`)
+
+Mit Farbeinstellungen: @PunkteAufGraph(`A5;n=4;d=3;A;#ff00ff;g;2x-4;#b41f65;0.05`)
 ```
+
+
 
