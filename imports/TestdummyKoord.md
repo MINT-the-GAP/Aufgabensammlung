@@ -20,7 +20,6 @@ narrator: Deutsch Female
 
 
 
-
 @Koordinatensystem
 <div>
 
@@ -1121,13 +1120,28 @@ function getConstrainedAncestorWidth(el) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 @AchsenBeschriftung: @AchsenBeschriftung_(@uid,@0)
 
 @AchsenBeschriftung_
+<span id="axis-title-spec-@0" data-spec="@1" style="display:none;"></span>
+
 <script run-once="true" modify="false">
 (function(){
   if (window.__liaAxisTitlesReady) return;
   window.__liaAxisTitlesReady = true;
+
+  window.__liaAxisTitleSpecs = window.__liaAxisTitleSpecs || {};
 
   function splitTopLevel(str) {
     const out = [];
@@ -1207,7 +1221,7 @@ function getConstrainedAncestorWidth(el) {
     const raw = unquote(String(spec || '').trim());
     const obj = {};
 
-    splitTopLevel(raw).forEach(part => {
+    splitTopLevel(raw).forEach(function(part) {
       const eq = part.indexOf('=');
       if (eq < 0) return;
 
@@ -1227,9 +1241,11 @@ function getConstrainedAncestorWidth(el) {
     try {
       if (window.MathJax) return window.MathJax;
     } catch (e) {}
+
     try {
       if (window.parent && window.parent.MathJax) return window.parent.MathJax;
     } catch (e) {}
+
     return null;
   }
 
@@ -1259,7 +1275,7 @@ function getConstrainedAncestorWidth(el) {
       if (
         Array.isArray(bb) &&
         bb.length === 4 &&
-        bb.every(v => Number.isFinite(v)) &&
+        bb.every(function(v){ return Number.isFinite(v); }) &&
         bb[2] > bb[0] &&
         bb[1] > bb[3]
       ) {
@@ -1278,35 +1294,29 @@ function getConstrainedAncestorWidth(el) {
     return board.origin.scrCoords[2] - y * board.unitY;
   }
 
+  function createOverlay(board) {
+    const el = document.createElement('div');
+    el.style.position = 'absolute';
+    el.style.pointerEvents = 'none';
+    el.style.zIndex = '40';
+    el.style.whiteSpace = 'nowrap';
+    el.style.lineHeight = '1.2';
+    el.style.fontSize = '20px';
+    el.style.maxWidth = 'none';
+    el.style.display = 'none';
+    board.containerObj.appendChild(el);
+    return el;
+  }
+
   function ensureOverlays(board) {
     if (!board || !board.containerObj) return;
 
     if (!board.__xTitleOverlay) {
-      const el = document.createElement('div');
-      el.style.position = 'absolute';
-      el.style.pointerEvents = 'none';
-      el.style.zIndex = '40';
-      el.style.whiteSpace = 'nowrap';
-      el.style.lineHeight = '1.2';
-      el.style.fontSize = '20px';
-      el.style.maxWidth = 'none';
-      el.style.display = 'none';
-      board.containerObj.appendChild(el);
-      board.__xTitleOverlay = el;
+      board.__xTitleOverlay = createOverlay(board);
     }
 
     if (!board.__yTitleOverlay) {
-      const el = document.createElement('div');
-      el.style.position = 'absolute';
-      el.style.pointerEvents = 'none';
-      el.style.zIndex = '40';
-      el.style.whiteSpace = 'nowrap';
-      el.style.lineHeight = '1.2';
-      el.style.fontSize = '20px';
-      el.style.maxWidth = 'none';
-      el.style.display = 'none';
-      board.containerObj.appendChild(el);
-      board.__yTitleOverlay = el;
+      board.__yTitleOverlay = createOverlay(board);
     }
   }
 
@@ -1383,6 +1393,7 @@ function getConstrainedAncestorWidth(el) {
         xEl.style.bottom = '12px';
       } else {
         const scrY = userToScrY(board, 0);
+
         if (scrY < h / 2) {
           xEl.style.top = Math.max(8, Math.round(scrY + 16)) + 'px';
           xEl.style.bottom = 'auto';
@@ -1409,6 +1420,7 @@ function getConstrainedAncestorWidth(el) {
         yEl.style.transform = 'translateX(-100%)';
       } else {
         const scrX = userToScrX(board, 0);
+
         if (scrX < w / 2) {
           yEl.style.left = Math.round(scrX + 18) + 'px';
           yEl.style.right = 'auto';
@@ -1424,9 +1436,7 @@ function getConstrainedAncestorWidth(el) {
     }
   }
 
-  window.__liaAxisTitleSpecs = window.__liaAxisTitleSpecs || {};
-
-  window.__setAxisTitlesFromSpec = function(spec) {
+  window.renderAxisTitlesFromSpec = function(spec) {
     const cfg = parseSpec(spec);
     if (!cfg.id) return false;
 
@@ -1435,6 +1445,8 @@ function getConstrainedAncestorWidth(el) {
     return true;
   };
 
+  window.__setAxisTitlesFromSpec = window.renderAxisTitlesFromSpec;
+
   window.__refreshAllAxisTitles = function() {
     const specs = window.__liaAxisTitleSpecs || {};
     Object.keys(specs).forEach(applyAxisTitles);
@@ -1442,7 +1454,9 @@ function getConstrainedAncestorWidth(el) {
 
   try {
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
-    const handler = () => window.__refreshAllAxisTitles();
+    const handler = function() {
+      window.__refreshAllAxisTitles();
+    };
 
     if (mq && typeof mq.addEventListener === 'function') mq.addEventListener('change', handler);
     else if (mq && typeof mq.addListener === 'function') mq.addListener(handler);
@@ -1462,10 +1476,23 @@ function getConstrainedAncestorWidth(el) {
 
 <script modify="false">
 (function(){
-  const spec = String.raw`@1`;
-  if (window.__setAxisTitlesFromSpec) {
-    window.__setAxisTitlesFromSpec(spec);
+  const uid = '@0';
+  const holder = document.getElementById('axis-title-spec-@0');
+  if (!holder) return;
+
+  const spec = holder.dataset.spec || '';
+
+  function tryRender() {
+    if (typeof window.renderAxisTitlesFromSpec !== 'function') return false;
+    return window.renderAxisTitlesFromSpec(spec);
   }
+
+  tryRender();
+  requestAnimationFrame(tryRender);
+  setTimeout(tryRender, 0);
+  setTimeout(tryRender, 80);
+  setTimeout(tryRender, 220);
+  setTimeout(tryRender, 500);
 })();
 </script>
 
@@ -1523,89 +1550,24 @@ function getConstrainedAncestorWidth(el) {
 
 
 
-
-
 @ErzeugePunkt: @ErzeugePunkt_(@uid,@0,@1)
 
 @ErzeugePunkt_
-<style>
-  #point-ui-@0{
-    display:inline-flex;
-    align-items:flex-start;
-    gap:.6rem;
-    flex-wrap:nowrap;
-  }
-
-  #point-task-@0,
-  #point-check-@0{
-    display:inline-flex;
-    align-items:flex-start;
-    align-self:flex-start;
-    margin:0;
-    padding:0;
-  }
-
-  #point-check-@0 > *{
-    margin:0;
-  }
-
-  #btn-@0{
-    vertical-align:top;
-  }
-</style>
-
-<div id="point-ui-@0">
-  <div id="point-task-@0" class="lia-point-task">
-    <button
-      id="btn-@0"
-      class="lia-btn"
-      type="button"
-      data-spec="@1"
-      onclick="window.ensurePointFromSpec(this.dataset.spec)"
-    >
-      Punkt erzeugen
-    </button>
-  </div>
+<div id="point-ui-@0" data-spec="@1">
+  <div id="point-task-@0" class="lia-point-task"></div>
 
   <div id="point-check-@0">
     @2
     [[!]]
     <script modify="false">
       (() => {
-        function unquote(v) {
-          v = String(v || '').trim();
-          if (
-            (v.startsWith('"') && v.endsWith('"')) ||
-            (v.startsWith("'") && v.endsWith("'")) ||
-            (v.startsWith('`') && v.endsWith('`'))
-          ) {
-            return v.slice(1, -1);
-          }
-          return v;
+        const root = document.getElementById('point-ui-@0');
+        const spec = root ? (root.dataset.spec || '') : String.raw`@1`;
+
+        if (typeof window.__checkPointFromSpec === 'function') {
+          return window.__checkPointFromSpec(spec);
         }
-
-        const spec = unquote('@1');
-        const parts = String(spec).split(';').map(s => s.trim());
-
-        const boardId = parts[0] || '';
-        const name    = parts[1] || '';
-        const tx      = parseFloat((parts[2] || '').replace(',', '.'));
-        const ty      = parseFloat((parts[3] || '').replace(',', '.'));
-
-        const pt = window.getPointFromSpec ? window.getPointFromSpec(spec) : null;
-        const eps = 0.05;
-
-        const ok = !!pt
-          && !Number.isNaN(tx)
-          && !Number.isNaN(ty)
-          && Math.abs(pt.X() - tx) < eps
-          && Math.abs(pt.Y() - ty) < eps;
-
-        if (ok && typeof window.finalizePointFromSpec === 'function') {
-          window.finalizePointFromSpec(spec);
-        }
-
-        return ok;
+        return false;
       })()
     </script>
   </div>
@@ -1669,6 +1631,7 @@ function getConstrainedAncestorWidth(el) {
   window.__points = window.__points || {};
   window.__pointStates = window.__pointStates || {};
   window.__pointNeutralColor = currentNeutralColor;
+  window.__erzeugePunktInstances = window.__erzeugePunktInstances || {};
 
   if (!window.__liaThemeSync) {
     const listeners = new Set();
@@ -2029,26 +1992,31 @@ function getConstrainedAncestorWidth(el) {
     return true;
   };
 
-  window.__registerLiaThemeListener(refreshAllPointLabels);
-})();
-</script>
+  window.__checkPointFromSpec = function(spec) {
+    const target = getPointTargetFromSpec(spec);
+    const pt = window.getPointFromSpec ? window.getPointFromSpec(spec) : null;
+    const eps = 0.05;
 
-<script modify="false">
-(function(){
-  const btn = document.getElementById('btn-@0');
-  const checkRoot = document.getElementById('point-check-@0');
-  const uiRoot = document.getElementById('point-ui-@0');
-  const spec = '@1';
+    const ok = !!pt
+      && !Number.isNaN(target.tx)
+      && !Number.isNaN(target.ty)
+      && Math.abs(pt.X() - target.tx) < eps
+      && Math.abs(pt.Y() - target.ty) < eps;
 
-  if (!btn || !checkRoot) return;
+    if (ok && typeof window.finalizePointFromSpec === 'function') {
+      window.finalizePointFromSpec(spec);
+    }
 
-  function findCheckButton() {
+    return ok;
+  };
+
+  function findCheckButton(checkRoot) {
     return checkRoot.querySelector(
       'button.lia-btn, input.lia-btn, button, input[type="button"], input[type="submit"]'
     );
   }
 
-  function findAllQuizButtons() {
+  function findAllQuizButtons(checkRoot) {
     return Array.from(
       checkRoot.querySelectorAll(
         'button.lia-btn, input.lia-btn, button, input[type="button"], input[type="submit"]'
@@ -2056,7 +2024,7 @@ function getConstrainedAncestorWidth(el) {
     );
   }
 
-  function ensureInnerSpan() {
+  function ensureInnerSpan(btn) {
     let inner = btn.querySelector('.lia-btn-inner');
     if (inner) return inner;
 
@@ -2071,8 +2039,8 @@ function getConstrainedAncestorWidth(el) {
     return inner;
   }
 
-  function looksLikeResolveButton(targetBtn) {
-    const buttons = findAllQuizButtons();
+  function looksLikeResolveButton(checkRoot, targetBtn) {
+    const buttons = findAllQuizButtons(checkRoot);
     const idx = buttons.indexOf(targetBtn);
     const text = String(targetBtn.textContent || targetBtn.value || '').trim().toLowerCase();
 
@@ -2082,23 +2050,46 @@ function getConstrainedAncestorWidth(el) {
     return false;
   }
 
-  function apply() {
+  function applyErzeugePunktUi(uid) {
+    const uiRoot = document.getElementById('point-ui-' + uid);
+    const taskRoot = document.getElementById('point-task-' + uid);
+    const checkRoot = document.getElementById('point-check-' + uid);
+    const btn = document.getElementById('btn-' + uid);
+
+    if (!uiRoot || !taskRoot || !checkRoot || !btn) return false;
+
+    const spec = uiRoot.dataset.spec || '';
+
+    uiRoot.style.display = 'inline-flex';
+    uiRoot.style.alignItems = 'flex-start';
+    uiRoot.style.gap = '.6rem';
+    uiRoot.style.flexWrap = 'nowrap';
+
+    taskRoot.style.display = 'inline-flex';
+    taskRoot.style.alignItems = 'flex-start';
+    taskRoot.style.alignSelf = 'flex-start';
+    taskRoot.style.margin = '0';
+    taskRoot.style.padding = '0';
+
+    checkRoot.style.display = 'inline-flex';
+    checkRoot.style.alignItems = 'flex-start';
+    checkRoot.style.alignSelf = 'flex-start';
+    checkRoot.style.margin = '0';
+    checkRoot.style.padding = '0';
+
+    Array.from(checkRoot.children).forEach(el => {
+      try { el.style.margin = '0'; } catch (e) {}
+    });
+
     const c = (window.__pointNeutralColor ? window.__pointNeutralColor() : '#000');
     btn.style.color = c;
 
-    if (uiRoot) {
-      uiRoot.style.display = 'inline-flex';
-      uiRoot.style.alignItems = 'flex-start';
-      uiRoot.style.gap = '.6rem';
-      uiRoot.style.flexWrap = 'nowrap';
-    }
-
-    const checkBtn = findCheckButton();
-    if (!checkBtn) return;
+    const checkBtn = findCheckButton(checkRoot);
+    if (!checkBtn) return true;
 
     const cs = window.getComputedStyle(checkBtn);
     const h = checkBtn.offsetHeight;
-    const inner = ensureInnerSpan();
+    const inner = ensureInnerSpan(btn);
 
     btn.style.display = 'inline-flex';
     btn.style.alignItems = 'stretch';
@@ -2133,83 +2124,142 @@ function getConstrainedAncestorWidth(el) {
     inner.style.paddingLeft = cs.paddingLeft;
     inner.style.paddingRight = cs.paddingRight;
     inner.style.lineHeight = '1';
-    inner.style.transform = 'translateY(5px)';
+    inner.style.transform = 'translateY(0px)';
     inner.style.whiteSpace = 'nowrap';
 
     if (typeof window.restorePointFromSpec === 'function') {
       window.restorePointFromSpec(spec);
     }
+
+    return true;
   }
 
-  apply();
-  requestAnimationFrame(apply);
-  setTimeout(apply, 0);
-  setTimeout(apply, 80);
-  setTimeout(apply, 200);
+  window.renderErzeugePunktFromSpec = function(uid, spec) {
+    const uiRoot = document.getElementById('point-ui-' + uid);
+    const taskRoot = document.getElementById('point-task-' + uid);
+    const checkRoot = document.getElementById('point-check-' + uid);
 
-  try {
-    const mo = new MutationObserver(apply);
-    mo.observe(checkRoot, { childList: true, subtree: true, attributes: true });
-  } catch (e) {}
+    if (!uiRoot || !taskRoot || !checkRoot) return false;
 
-  try {
-    const checkBtn = findCheckButton();
-    if (checkBtn && typeof ResizeObserver !== 'undefined') {
-      const ro = new ResizeObserver(apply);
-      ro.observe(checkBtn);
+    uiRoot.dataset.spec = spec;
+
+    let btn = document.getElementById('btn-' + uid);
+    if (!btn) {
+      btn = document.createElement('button');
+      btn.id = 'btn-' + uid;
+      btn.className = 'lia-btn';
+      btn.type = 'button';
+      btn.textContent = 'Punkt erzeugen';
+      taskRoot.appendChild(btn);
     }
-  } catch (e) {}
 
-  try {
-    if (!checkRoot.__resolveHooked) {
-      checkRoot.__resolveHooked = true;
-
-      checkRoot.addEventListener('click', (e) => {
-        const targetBtn = e.target && e.target.closest
-          ? e.target.closest('button, input[type="button"], input[type="submit"]')
-          : null;
-
-        if (!targetBtn || !checkRoot.contains(targetBtn)) return;
-        if (!looksLikeResolveButton(targetBtn)) return;
-
-        setTimeout(() => {
-          if (typeof window.finalizePointFromSpec === 'function') {
-            window.finalizePointFromSpec(spec);
-          }
-        }, 0);
-
-        setTimeout(() => {
-          if (typeof window.finalizePointFromSpec === 'function') {
-            window.finalizePointFromSpec(spec);
-          }
-        }, 80);
+    if (!btn.__liaPointEnsureBound) {
+      btn.__liaPointEnsureBound = true;
+      btn.addEventListener('click', function() {
+        const curSpec = uiRoot.dataset.spec || '';
+        if (typeof window.ensurePointFromSpec === 'function') {
+          window.ensurePointFromSpec(curSpec);
+        }
       });
     }
-  } catch (e) {}
 
-  if (window.__registerLiaThemeListener) {
-    window.__registerLiaThemeListener(apply);
-  } else {
-    setInterval(apply, 300);
+    btn.dataset.spec = spec;
+
+    applyErzeugePunktUi(uid);
+
+    if (!checkRoot.__liaPointUiObserved) {
+      checkRoot.__liaPointUiObserved = true;
+
+      try {
+        const mo = new MutationObserver(function() {
+          applyErzeugePunktUi(uid);
+        });
+        mo.observe(checkRoot, { childList: true, subtree: true, attributes: true });
+      } catch (e) {}
+
+      try {
+        const checkBtn = findCheckButton(checkRoot);
+        if (checkBtn && typeof ResizeObserver !== 'undefined') {
+          const ro = new ResizeObserver(function() {
+            applyErzeugePunktUi(uid);
+          });
+          ro.observe(checkBtn);
+        }
+      } catch (e) {}
+
+      try {
+        checkRoot.addEventListener('click', function(e) {
+          const targetBtn = e.target && e.target.closest
+            ? e.target.closest('button, input[type="button"], input[type="submit"]')
+            : null;
+
+          if (!targetBtn || !checkRoot.contains(targetBtn)) return;
+          if (!looksLikeResolveButton(checkRoot, targetBtn)) return;
+
+          setTimeout(function() {
+            const curSpec = uiRoot.dataset.spec || '';
+            if (typeof window.finalizePointFromSpec === 'function') {
+              window.finalizePointFromSpec(curSpec);
+            }
+          }, 0);
+
+          setTimeout(function() {
+            const curSpec = uiRoot.dataset.spec || '';
+            if (typeof window.finalizePointFromSpec === 'function') {
+              window.finalizePointFromSpec(curSpec);
+            }
+          }, 80);
+        });
+      } catch (e) {}
+
+      if (window.__registerLiaThemeListener) {
+        window.__registerLiaThemeListener(function() {
+          applyErzeugePunktUi(uid);
+        });
+      }
+    }
+
+    setTimeout(function() {
+      if (typeof window.restorePointFromSpec === 'function') {
+        window.restorePointFromSpec(spec);
+      }
+    }, 0);
+
+    setTimeout(function() {
+      if (typeof window.restorePointFromSpec === 'function') {
+        window.restorePointFromSpec(spec);
+      }
+    }, 120);
+
+    return true;
+  };
+
+  window.__registerLiaThemeListener(refreshAllPointLabels);
+})();
+</script>
+
+<script modify="false">
+(function(){
+  const uid = '@0';
+  const root = document.getElementById('point-ui-@0');
+  if (!root) return;
+
+  const spec = root.dataset.spec || String.raw`@1`;
+
+  function tryRender() {
+    if (typeof window.renderErzeugePunktFromSpec !== 'function') return false;
+    return window.renderErzeugePunktFromSpec(uid, spec);
   }
 
-  setTimeout(() => {
-    if (typeof window.restorePointFromSpec === 'function') {
-      window.restorePointFromSpec(spec);
-    }
-  }, 0);
-
-  setTimeout(() => {
-    if (typeof window.restorePointFromSpec === 'function') {
-      window.restorePointFromSpec(spec);
-    }
-  }, 120);
+  tryRender();
+  requestAnimationFrame(tryRender);
+  setTimeout(tryRender, 0);
+  setTimeout(tryRender, 80);
+  setTimeout(tryRender, 200);
 })();
 </script>
 
 @end
-
-
 
 
 
@@ -2618,17 +2668,17 @@ function getConstrainedAncestorWidth(el) {
       function() {
         return labelText;
       }
-      ], {
-        fixed: true,
-        highlight: false,
-        parse: false,
-        useMathJax: true,
-        display: 'html',
-        strokeColor: color,
-        fillColor: color,
-        fontSize: 28,
-        anchorX: 'left',
-        anchorY: 'top'
+    ], {
+      fixed: true,
+      highlight: false,
+      parse: false,
+      useMathJax: true,
+      display: 'html',
+      strokeColor: color,
+      fillColor: color,
+      fontSize: 28,
+      anchorX: 'left',
+      anchorY: 'top'
     });
 
     return { anchor, label };
@@ -2810,104 +2860,20 @@ function getConstrainedAncestorWidth(el) {
 
 
 
-
-
 @PlotEingabeLatex: @PlotEingabeLatex_(@uid,@0)
 
 @PlotEingabeLatex_
-<div id="lia-plot-eingabe-@0" class="lia-plot-eingabe-@0" data-spec="@1">
-  <style>
-    #lia-plot-eingabe-@0{
-      width:100%;
-      margin:.5rem 0 1rem 0;
-      position:relative;
-    }
-
-    #lia-plot-eingabe-ui-@0{
-      display:flex;
-      flex-wrap:wrap;
-      align-items:flex-start;
-      width:100%;
-    }
-
-    #lia-plot-eingabe-field-@0{
-      flex:1 1 22rem;
-      min-width:16rem;
-      display:flex;
-      align-items:flex-start;
-    }
-
-    #lia-plot-eingabe-input-@0{
-      width:100%;
-      min-width:0;
-      box-sizing:border-box;
-      margin:0;
-    }
-
-    #lia-plot-eingabe-actions-@0{
-      display:inline-flex;
-      flex-direction:row;
-      flex-wrap:nowrap;
-      align-items:flex-start;
-      justify-content:flex-start;
-      white-space:nowrap;
-    }
-
-    #lia-plot-eingabe-actions-@0 > button{
-      vertical-align:top;
-      flex:0 0 auto;
-    }
-
-    #lia-plot-eingabe-msg-@0{
-      margin-top:.45rem;
-      min-height:1.2em;
-      font-size:.95rem;
-      line-height:1.25;
-    }
-
-    #lia-plot-eingabe-msg-@0.is-error{
-      color:#b00020;
-      font-weight:600;
-    }
-
-    #lia-plot-eingabe-msg-@0.is-ok{
-      color:#1d6f42;
-      font-weight:600;
-    }
-  </style>
-
-  <div id="lia-plot-eingabe-ui-@0">
-    <div id="lia-plot-eingabe-field-@0">
-      <input
-        id="lia-plot-eingabe-input-@0"
-        type="text"
-        inputmode="text"
-        autocomplete="off"
-        autocapitalize="off"
-        spellcheck="false"
-        placeholder="z. B. \frac{1}{2}x^2 - 1"
-      />
-    </div>
-
-    <div id="lia-plot-eingabe-actions-@0">
-      <button id="lia-plot-btn-@0" class="lia-btn" type="button">
-        Plotten
-      </button>
-
-      <button id="lia-plot-clear-@0" class="lia-btn" type="button">
-        Löschen
-      </button>
-    </div>
-  </div>
-
-  <div id="lia-plot-eingabe-msg-@0" aria-live="polite"></div>
-</div>
+<div id="lia-plot-eingabe-@0" data-spec="@1"></div>
 
 <script run-once="true" modify="false">
 (function(){
-  if (window.__liaLatexStudentPlot) return;
+  if (window.__liaLatexStudentPlotReady) return;
+  window.__liaLatexStudentPlotReady = true;
 
   const H = {};
+  window.__liaLatexStudentPlot = H;
+  window.__liaLatexStudentPlotStates = window.__liaLatexStudentPlotStates || {};
+  window.__liaLatexStudentPlotInstances = window.__liaLatexStudentPlotInstances || {};
 
   H.functionNames = new Set([
     'sin','cos','tan',
@@ -2915,6 +2881,77 @@ function getConstrainedAncestorWidth(el) {
     'arcsin','arccos','arctan',
     'sqrt','exp','ln','log','abs'
   ]);
+
+  H.splitTopLevel = function(str) {
+    const out = [];
+    let cur = '';
+    let quote = '';
+    let esc = false;
+    let round = 0;
+    let square = 0;
+    let curly = 0;
+
+    for (let i = 0; i < str.length; i++) {
+      const ch = str[i];
+
+      if (esc) {
+        cur += ch;
+        esc = false;
+        continue;
+      }
+
+      if (quote) {
+        cur += ch;
+        if (ch === '\\') esc = true;
+        else if (ch === quote) quote = '';
+        continue;
+      }
+
+      if (ch === '"' || ch === "'" || ch === '`') {
+        quote = ch;
+        cur += ch;
+        continue;
+      }
+
+      if (ch === '(') round++;
+      else if (ch === ')') round = Math.max(0, round - 1);
+      else if (ch === '[') square++;
+      else if (ch === ']') square = Math.max(0, square - 1);
+      else if (ch === '{') curly++;
+      else if (ch === '}') curly = Math.max(0, curly - 1);
+
+      if (ch === ';' && round === 0 && square === 0 && curly === 0) {
+        out.push(cur.trim());
+        cur = '';
+        continue;
+      }
+
+      cur += ch;
+    }
+
+    out.push(cur.trim());
+    return out;
+  };
+
+  H.numOr = function(parts, idx, fallback){
+    const v = parseFloat(parts[idx]);
+    return Number.isFinite(v) ? v : fallback;
+  };
+
+  H.parseInputSpec = function(spec){
+    const parts = H.splitTopLevel(String(spec || '').trim());
+
+    return {
+      boardId: parts[0] || 'A1',
+      name: parts[1] || 'f',
+      color: parts[2] || '#b41f65',
+      placeholder: parts[3] || 'z. B. \\frac{1}{2}x^2 - 1',
+      dx: H.numOr(parts, 4, 0.18),
+      dy: H.numOr(parts, 5, 0.18),
+      strokeWidth: H.numOr(parts, 6, 3),
+      labelFontSize: H.numOr(parts, 7, 28)
+    };
+  };
 
   H.skipSpaces = function(str, i){
     while (i < str.length && /\s/.test(str[i])) i++;
@@ -3624,302 +3661,304 @@ function getConstrainedAncestorWidth(el) {
     try { fn(); } catch (e) {}
   };
 
-  window.__liaLatexStudentPlot = H;
+  window.renderPlotEingabeLatexFromSpec = function(uid, spec) {
+    const root = document.getElementById('lia-plot-eingabe-' + uid);
+    if (!root) return false;
+
+    root.dataset.spec = spec;
+
+    const cfg = H.parseInputSpec(spec);
+    const state = window.__liaLatexStudentPlotStates[uid] || (window.__liaLatexStudentPlotStates[uid] = {});
+    const inst = window.__liaLatexStudentPlotInstances[uid] || (window.__liaLatexStudentPlotInstances[uid] = {});
+
+    state.uid = uid;
+    state.boardId = cfg.boardId;
+    state.name = cfg.name;
+    state.color = cfg.color;
+    state.placeholder = cfg.placeholder;
+    state.dx = cfg.dx;
+    state.dy = cfg.dy;
+    state.strokeWidth = cfg.strokeWidth;
+    state.labelFontSize = cfg.labelFontSize;
+
+    if (!inst.built) {
+      const ui = document.createElement('div');
+      const field = document.createElement('div');
+      const input = document.createElement('input');
+      const actions = document.createElement('div');
+      const btnPlot = document.createElement('button');
+      const btnClear = document.createElement('button');
+      const msg = document.createElement('div');
+
+      input.type = 'text';
+      input.inputMode = 'text';
+      input.autocomplete = 'off';
+      input.autocapitalize = 'off';
+      input.spellcheck = false;
+
+      btnPlot.className = 'lia-btn';
+      btnPlot.type = 'button';
+      btnPlot.textContent = 'Plotten';
+
+      btnClear.className = 'lia-btn';
+      btnClear.type = 'button';
+      btnClear.textContent = 'Löschen';
+
+      ui.appendChild(field);
+      field.appendChild(input);
+      ui.appendChild(actions);
+      actions.appendChild(btnPlot);
+      actions.appendChild(btnClear);
+      root.appendChild(ui);
+      root.appendChild(msg);
+
+      inst.ui = ui;
+      inst.field = field;
+      inst.input = input;
+      inst.actions = actions;
+      inst.btnPlot = btnPlot;
+      inst.btnClear = btnClear;
+      inst.msg = msg;
+      inst.built = true;
+
+      function getBoard(){
+        return (window.__boards && window.__boards[state.boardId]) || null;
+      }
+
+      function setMsg(text, isError){
+        msg.textContent = text || '';
+        msg.style.marginTop = '.45rem';
+        msg.style.minHeight = '1.2em';
+        msg.style.fontSize = '.95rem';
+        msg.style.lineHeight = '1.25';
+        msg.style.fontWeight = text ? '600' : '400';
+        msg.style.color = text ? (isError ? '#b00020' : '#1d6f42') : '';
+      }
+
+      function doPlot(){
+        const raw = String(input.value || '').trim();
+        state.raw = raw;
+
+        if (!raw) {
+          setMsg('Bitte einen Funktionsterm eingeben.', true);
+          return;
+        }
+
+        const board = getBoard();
+        if (!board) {
+          setMsg('Board "' + state.boardId + '" wurde nicht gefunden.', true);
+          return;
+        }
+
+        try {
+          H.plotIntoBoard(board, state, raw);
+          setMsg('Graph geplottet.', false);
+        } catch (err) {
+          setMsg((err && err.message) ? err.message : 'Der Ausdruck konnte nicht geplottet werden.', true);
+        }
+      }
+
+      function doClear(){
+        state.raw = '';
+        input.value = '';
+
+        const board = getBoard();
+        if (board) {
+          H.removePlotObjects(board, state);
+          board.update();
+        }
+
+        setMsg('', false);
+      }
+
+      btnPlot.addEventListener('click', doPlot);
+      btnClear.addEventListener('click', doClear);
+
+      input.addEventListener('keydown', function(ev){
+        if (ev.key === 'Enter') {
+          ev.preventDefault();
+          doPlot();
+        }
+      });
+
+      inst.setMsg = setMsg;
+    }
+
+    inst.input.placeholder = state.placeholder;
+    if (typeof state.raw === 'string' && state.raw) {
+      inst.input.value = state.raw;
+    }
+
+    function ensureBtnInner(btn) {
+      let inner = btn.querySelector('.lia-btn-inner');
+      if (inner) return inner;
+
+      inner = document.createElement('span');
+      inner.className = 'lia-btn-inner';
+
+      while (btn.firstChild) {
+        inner.appendChild(btn.firstChild);
+      }
+      btn.appendChild(inner);
+
+      return inner;
+    }
+
+    function px(v){
+      const n = parseFloat(v);
+      return Number.isFinite(n) ? n : 0;
+    }
+
+    function applyInputTheme() {
+      const neutral = currentNeutralColor();
+      const doc = themeDoc();
+      const win = themeWin();
+      const el = (doc && (doc.body || doc.documentElement)) || document.body || document.documentElement;
+      const cs = win.getComputedStyle(el);
+
+      root.style.width = '100%';
+      root.style.margin = '.5rem 0 1rem 0';
+      root.style.position = 'relative';
+
+      inst.ui.style.display = 'flex';
+      inst.ui.style.flexWrap = 'wrap';
+      inst.ui.style.alignItems = 'flex-start';
+      inst.ui.style.width = '100%';
+
+      inst.field.style.flex = '1 1 22rem';
+      inst.field.style.minWidth = '16rem';
+      inst.field.style.display = 'flex';
+      inst.field.style.alignItems = 'flex-start';
+
+      inst.input.style.boxSizing = 'border-box';
+      inst.input.style.width = '100%';
+      inst.input.style.minWidth = '0';
+      inst.input.style.margin = '0';
+
+      inst.input.style.font = 'inherit';
+      inst.input.style.fontSize = cs.fontSize;
+      inst.input.style.fontFamily = cs.fontFamily;
+      inst.input.style.fontWeight = cs.fontWeight;
+      inst.input.style.lineHeight = '1.2';
+
+      inst.input.style.color = cs.color || neutral;
+      inst.input.style.background = 'transparent';
+      inst.input.style.border = '1px solid ' + neutral;
+      inst.input.style.borderRadius = '.4rem';
+      inst.input.style.padding = '.55rem .75rem';
+      inst.input.style.outline = 'none';
+    }
+
+    function applyButtonTheme(btn) {
+      const c = currentNeutralColor();
+      const cs = window.getComputedStyle(btn);
+      const h = btn.offsetHeight;
+      const inner = ensureBtnInner(btn);
+
+      btn.style.color = c;
+      btn.style.display = 'inline-flex';
+      btn.style.alignItems = 'stretch';
+      btn.style.justifyContent = 'center';
+      btn.style.verticalAlign = 'top';
+      btn.style.boxSizing = 'border-box';
+      btn.style.textAlign = 'center';
+      btn.style.minWidth = '8rem';
+
+      if (h > 0) {
+        btn.style.height = h + 'px';
+        btn.style.minHeight = h + 'px';
+      }
+
+      btn.style.marginTop = '0';
+      btn.style.marginBottom = '0';
+      btn.style.marginLeft = '0';
+      btn.style.marginRight = '0';
+
+      btn.style.paddingTop = '0';
+      btn.style.paddingBottom = '0';
+      btn.style.paddingLeft = '0';
+      btn.style.paddingRight = '0';
+
+      btn.style.fontSize = cs.fontSize;
+      btn.style.fontFamily = cs.fontFamily;
+      btn.style.fontWeight = cs.fontWeight;
+      btn.style.lineHeight = 'normal';
+
+      inner.style.display = 'inline-flex';
+      inner.style.alignItems = 'center';
+      inner.style.justifyContent = 'center';
+      inner.style.boxSizing = 'border-box';
+      inner.style.height = '100%';
+      inner.style.minWidth = '100%';
+      inner.style.paddingTop = '0';
+      inner.style.paddingBottom = '0';
+      inner.style.paddingLeft = Math.max(px(cs.paddingLeft), 18) + 'px';
+      inner.style.paddingRight = Math.max(px(cs.paddingRight), 18) + 'px';
+      inner.style.lineHeight = '1';
+      inner.style.transform = 'translateY(0px)';
+      inner.style.whiteSpace = 'nowrap';
+    }
+
+    function applyTheme() {
+      applyInputTheme();
+      applyButtonTheme(inst.btnPlot);
+      applyButtonTheme(inst.btnClear);
+
+      inst.actions.style.display = 'inline-flex';
+      inst.actions.style.flexDirection = 'row';
+      inst.actions.style.flexWrap = 'nowrap';
+      inst.actions.style.alignItems = 'flex-start';
+      inst.actions.style.justifyContent = 'flex-start';
+      inst.actions.style.whiteSpace = 'nowrap';
+      inst.actions.style.marginTop = '0rem';
+      inst.actions.style.marginLeft = '1.2rem';
+
+      inst.btnPlot.style.marginRight = '1.2rem';
+      inst.btnClear.style.marginLeft = '0rem';
+    }
+
+    applyTheme();
+
+    if (!inst.themeRegistered) {
+      inst.themeRegistered = true;
+
+      if (window.__registerLiaLatexStudentPlotThemeListener) {
+        window.__registerLiaLatexStudentPlotThemeListener(function() {
+          applyTheme();
+        });
+      }
+    }
+
+    requestAnimationFrame(applyTheme);
+    setTimeout(applyTheme, 0);
+    setTimeout(applyTheme, 80);
+    setTimeout(applyTheme, 200);
+    setTimeout(applyTheme, 500);
+
+    return true;
+  };
 })();
 </script>
 
 <script modify="false">
 (function(){
+  const uid = '@0';
   const root = document.getElementById('lia-plot-eingabe-@0');
-  if (!root || root.__liaPlotInputBound) return;
-  root.__liaPlotInputBound = true;
+  if (!root) return;
 
-  const H = window.__liaLatexStudentPlot;
-  window.__liaLatexStudentPlotStates = window.__liaLatexStudentPlotStates || {};
+  const spec = root.dataset.spec || String.raw`@1`;
 
-  function splitTopLevel(str) {
-    const out = [];
-    let cur = '';
-    let quote = '';
-    let esc = false;
-    let round = 0;
-    let square = 0;
-    let curly = 0;
-
-    for (let i = 0; i < str.length; i++) {
-      const ch = str[i];
-
-      if (esc) {
-        cur += ch;
-        esc = false;
-        continue;
-      }
-
-      if (quote) {
-        cur += ch;
-        if (ch === '\\') esc = true;
-        else if (ch === quote) quote = '';
-        continue;
-      }
-
-      if (ch === '"' || ch === "'" || ch === '`') {
-        quote = ch;
-        cur += ch;
-        continue;
-      }
-
-      if (ch === '(') round++;
-      else if (ch === ')') round = Math.max(0, round - 1);
-      else if (ch === '[') square++;
-      else if (ch === ']') square = Math.max(0, square - 1);
-      else if (ch === '{') curly++;
-      else if (ch === '}') curly = Math.max(0, curly - 1);
-
-      if (ch === ';' && round === 0 && square === 0 && curly === 0) {
-        out.push(cur.trim());
-        cur = '';
-        continue;
-      }
-
-      cur += ch;
-    }
-
-    out.push(cur.trim());
-    return out;
+  function tryRender() {
+    if (typeof window.renderPlotEingabeLatexFromSpec !== 'function') return false;
+    return window.renderPlotEingabeLatexFromSpec(uid, spec);
   }
 
-  function numOr(parts, idx, fallback){
-    const v = parseFloat(parts[idx]);
-    return Number.isFinite(v) ? v : fallback;
-  }
-
-  function currentNeutralColor(){
-    try {
-      return window.__liaLatexStudentPlotNeutralColor
-        ? window.__liaLatexStudentPlotNeutralColor()
-        : '#000';
-    } catch (e) {
-      return '#000';
-    }
-  }
-
-  function themeDoc() {
-    return (window.parent && window.parent.document) ? window.parent.document : document;
-  }
-
-  function themeWin() {
-    return (window.parent && window.parent.getComputedStyle) ? window.parent : window;
-  }
-
-  function ensureBtnInner(btn) {
-    let inner = btn.querySelector('.lia-btn-inner');
-    if (inner) return inner;
-
-    inner = document.createElement('span');
-    inner.className = 'lia-btn-inner';
-
-    while (btn.firstChild) {
-      inner.appendChild(btn.firstChild);
-    }
-    btn.appendChild(inner);
-
-    return inner;
-  }
-
-  function px(v){
-    const n = parseFloat(v);
-    return Number.isFinite(n) ? n : 0;
-  }
-
-  const parts = splitTopLevel(root.getAttribute('data-spec') || '');
-
-  const state = window.__liaLatexStudentPlotStates['@0'] || (window.__liaLatexStudentPlotStates['@0'] = {});
-  state.uid = '@0';
-  state.boardId = parts[0] || 'A1';
-  state.name = parts[1] || 'f';
-  state.color = parts[2] || '#b41f65';
-  state.placeholder = parts[3] || 'z. B. \\frac{1}{2}x^2 - 1';
-  state.dx = numOr(parts, 4, 0.18);
-  state.dy = numOr(parts, 5, 0.18);
-  state.strokeWidth = numOr(parts, 6, 3);
-  state.labelFontSize = numOr(parts, 7, 28);
-
-  const input = document.getElementById('lia-plot-eingabe-input-@0');
-  const btnPlot = document.getElementById('lia-plot-btn-@0');
-  const btnClear = document.getElementById('lia-plot-clear-@0');
-  const actions = document.getElementById('lia-plot-eingabe-actions-@0');
-  const msg = document.getElementById('lia-plot-eingabe-msg-@0');
-
-  input.placeholder = state.placeholder;
-
-  if (typeof state.raw === 'string' && state.raw) {
-    input.value = state.raw;
-  }
-
-  function setMsg(text, isError){
-    msg.textContent = text || '';
-    msg.classList.remove('is-error', 'is-ok');
-
-    if (!text) return;
-    msg.classList.add(isError ? 'is-error' : 'is-ok');
-  }
-
-  function getBoard(){
-    return (window.__boards && window.__boards[state.boardId]) || null;
-  }
-
-  function applyInputTheme() {
-    const neutral = currentNeutralColor();
-    const doc = themeDoc();
-    const win = themeWin();
-    const el = (doc && (doc.body || doc.documentElement)) || document.body || document.documentElement;
-    const cs = win.getComputedStyle(el);
-
-    input.style.boxSizing = 'border-box';
-    input.style.width = '100%';
-    input.style.minWidth = '0';
-    input.style.margin = '0';
-
-    input.style.font = 'inherit';
-    input.style.fontSize = cs.fontSize;
-    input.style.fontFamily = cs.fontFamily;
-    input.style.fontWeight = cs.fontWeight;
-    input.style.lineHeight = '1.2';
-
-    input.style.color = cs.color || neutral;
-    input.style.background = 'transparent';
-    input.style.border = '1px solid ' + neutral;
-    input.style.borderRadius = '.4rem';
-    input.style.padding = '.55rem .75rem';
-    input.style.outline = 'none';
-  }
-
-  function applyButtonTheme(btn) {
-    const c = currentNeutralColor();
-    const cs = window.getComputedStyle(btn);
-    const h = btn.offsetHeight;
-    const inner = ensureBtnInner(btn);
-
-    btn.style.color = c;
-    btn.style.display = 'inline-flex';
-    btn.style.alignItems = 'stretch';
-    btn.style.justifyContent = 'center';
-    btn.style.verticalAlign = 'top';
-    btn.style.boxSizing = 'border-box';
-    btn.style.textAlign = 'center';
-    btn.style.minWidth = '8rem';
-
-    if (h > 0) {
-      btn.style.height = h + 'px';
-      btn.style.minHeight = h + 'px';
-    }
-
-    btn.style.marginTop = '0';
-    btn.style.marginBottom = '0';
-    btn.style.marginLeft = '0';
-    btn.style.marginRight = '0';
-
-    btn.style.paddingTop = '0';
-    btn.style.paddingBottom = '0';
-    btn.style.paddingLeft = '0';
-    btn.style.paddingRight = '0';
-
-    btn.style.fontSize = cs.fontSize;
-    btn.style.fontFamily = cs.fontFamily;
-    btn.style.fontWeight = cs.fontWeight;
-    btn.style.lineHeight = 'normal';
-
-    inner.style.display = 'inline-flex';
-    inner.style.alignItems = 'center';
-    inner.style.justifyContent = 'center';
-    inner.style.boxSizing = 'border-box';
-    inner.style.height = '100%';
-    inner.style.minWidth = '100%';
-    inner.style.paddingTop = '0';
-    inner.style.paddingBottom = '0';
-    inner.style.paddingLeft = Math.max(px(cs.paddingLeft), 18) + 'px';
-    inner.style.paddingRight = Math.max(px(cs.paddingRight), 18) + 'px';
-    inner.style.lineHeight = '1';
-    inner.style.transform = 'translateY(5px)';
-    inner.style.whiteSpace = 'nowrap';
-  }
-
-  function applyTheme() {
-    applyInputTheme();
-    applyButtonTheme(btnPlot);
-    applyButtonTheme(btnClear);
-
-    if (actions) {
-      actions.style.display = 'inline-flex';
-      actions.style.flexDirection = 'row';
-      actions.style.flexWrap = 'nowrap';
-      actions.style.alignItems = 'flex-start';
-      actions.style.justifyContent = 'flex-start';
-      actions.style.whiteSpace = 'nowrap';
-      actions.style.marginTop = '1.1rem';
-      actions.style.marginLeft = '.0rem';
-    }
-
-    btnPlot.style.marginRight = '1.2rem';
-    btnClear.style.marginLeft = '0';
-  }
-
-  function doPlot(){
-    const raw = (input.value || '').trim();
-    state.raw = raw;
-
-    if (!raw) {
-      setMsg('Bitte einen Funktionsterm eingeben.', true);
-      return;
-    }
-
-    const board = getBoard();
-    if (!board) {
-      setMsg('Board "' + state.boardId + '" wurde nicht gefunden.', true);
-      return;
-    }
-
-    try {
-      H.plotIntoBoard(board, state, raw);
-      setMsg('Graph geplottet.', false);
-    } catch (err) {
-      setMsg((err && err.message) ? err.message : 'Der Ausdruck konnte nicht geplottet werden.', true);
-    }
-  }
-
-  function doClear(){
-    state.raw = '';
-    input.value = '';
-
-    const board = getBoard();
-    if (board) {
-      H.removePlotObjects(board, state);
-      board.update();
-    }
-
-    setMsg('', false);
-  }
-
-  btnPlot.addEventListener('click', doPlot);
-  btnClear.addEventListener('click', doClear);
-
-  input.addEventListener('keydown', function(ev){
-    if (ev.key === 'Enter') {
-      ev.preventDefault();
-      doPlot();
-    }
-  });
-
-  applyTheme();
-  requestAnimationFrame(applyTheme);
-  setTimeout(applyTheme, 0);
-  setTimeout(applyTheme, 80);
-  setTimeout(applyTheme, 200);
-  setTimeout(applyTheme, 500);
-
-  if (window.__registerLiaLatexStudentPlotThemeListener) {
-    window.__registerLiaLatexStudentPlotThemeListener(applyTheme);
-  }
+  tryRender();
+  requestAnimationFrame(tryRender);
+  setTimeout(tryRender, 0);
+  setTimeout(tryRender, 80);
+  setTimeout(tryRender, 220);
+  setTimeout(tryRender, 500);
 })();
 </script>
 
@@ -4024,66 +4063,23 @@ function getConstrainedAncestorWidth(el) {
 
 
 
-
-
 @PunktGraph: @PunktGraph_(@uid,@0)
 
 @PunktGraph_
-<style>
-  #graph-ui-@0{
-    display:inline-flex;
-    align-items:flex-start;
-    gap:.6rem;
-    flex-wrap:nowrap;
-  }
-
-  #graph-task-@0,
-  #graph-check-@0{
-    display:inline-flex;
-    align-items:flex-start;
-    align-self:flex-start;
-    margin:0;
-    padding:0;
-  }
-
-  #graph-check-@0 > *{
-    margin:0;
-  }
-
-  #btn-@0{
-    vertical-align:top;
-  }
-</style>
-
-<div id="graph-ui-@0">
-  <div id="graph-task-@0" class="lia-graph-task">
-    <button
-      id="btn-@0"
-      class="lia-btn"
-      type="button"
-      data-spec="@1"
-      onclick="window.ensurePointGraphFromSpec(this.dataset.spec)"
-    >
-      Punkt erzeugen
-    </button>
-  </div>
+<div id="graph-ui-@0" data-spec="@1">
+  <div id="graph-task-@0" class="lia-graph-task"></div>
 
   <div id="graph-check-@0">
     [[!]]
     <script modify="false">
       (() => {
-        const spec = '@1';
+        const root = document.getElementById('graph-ui-@0');
+        const spec = root ? (root.dataset.spec || '') : String.raw`@1`;
 
-        const ok = !!(
-          typeof window.checkPointGraphFromSpec === 'function' &&
-          window.checkPointGraphFromSpec(spec)
-        );
-
-        if (ok && typeof window.finalizePointGraphFromSpec === 'function') {
-          window.finalizePointGraphFromSpec(spec);
+        if (typeof window.__checkPointGraphFromSpec === 'function') {
+          return window.__checkPointGraphFromSpec(spec);
         }
-
-        return ok;
+        return false;
       })()
     </script>
   </div>
@@ -4149,6 +4145,7 @@ function getConstrainedAncestorWidth(el) {
   window.__pointGraphs = window.__pointGraphs || {};
   window.__pointGraphStates = window.__pointGraphStates || {};
   window.__pointNeutralColor = currentNeutralColor;
+  window.__punktGraphInstances = window.__punktGraphInstances || {};
 
   if (!window.__liaThemeSync) {
     const listeners = new Set();
@@ -4716,26 +4713,26 @@ function getConstrainedAncestorWidth(el) {
     return !!(pt || shown);
   };
 
-  window.__registerLiaThemeListener(refreshAllPointLabels);
-})();
-</script>
+  window.__checkPointGraphFromSpec = function(spec) {
+    const ok = !!(
+      typeof window.checkPointGraphFromSpec === 'function' &&
+      window.checkPointGraphFromSpec(spec)
+    );
 
-<script modify="false">
-(function(){
-  const btn = document.getElementById('btn-@0');
-  const checkRoot = document.getElementById('graph-check-@0');
-  const uiRoot = document.getElementById('graph-ui-@0');
-  const spec = '@1';
+    if (ok && typeof window.finalizePointGraphFromSpec === 'function') {
+      window.finalizePointGraphFromSpec(spec);
+    }
 
-  if (!btn || !checkRoot) return;
+    return ok;
+  };
 
-  function findCheckButton() {
+  function findCheckButton(checkRoot) {
     return checkRoot.querySelector(
       'button.lia-btn, input.lia-btn, button, input[type="button"], input[type="submit"]'
     );
   }
 
-  function findAllQuizButtons() {
+  function findAllQuizButtons(checkRoot) {
     return Array.from(
       checkRoot.querySelectorAll(
         'button.lia-btn, input.lia-btn, button, input[type="button"], input[type="submit"]'
@@ -4743,7 +4740,7 @@ function getConstrainedAncestorWidth(el) {
     );
   }
 
-  function ensureInnerSpan() {
+  function ensureInnerSpan(btn) {
     let inner = btn.querySelector('.lia-btn-inner');
     if (inner) return inner;
 
@@ -4758,8 +4755,8 @@ function getConstrainedAncestorWidth(el) {
     return inner;
   }
 
-  function looksLikeResolveButton(targetBtn) {
-    const buttons = findAllQuizButtons();
+  function looksLikeResolveButton(checkRoot, targetBtn) {
+    const buttons = findAllQuizButtons(checkRoot);
     const idx = buttons.indexOf(targetBtn);
     const text = String(targetBtn.textContent || targetBtn.value || '').trim().toLowerCase();
 
@@ -4769,23 +4766,46 @@ function getConstrainedAncestorWidth(el) {
     return false;
   }
 
-  function apply() {
+  function applyPunktGraphUi(uid) {
+    const uiRoot = document.getElementById('graph-ui-' + uid);
+    const taskRoot = document.getElementById('graph-task-' + uid);
+    const checkRoot = document.getElementById('graph-check-' + uid);
+    const btn = document.getElementById('graph-btn-' + uid);
+
+    if (!uiRoot || !taskRoot || !checkRoot || !btn) return false;
+
+    const spec = uiRoot.dataset.spec || '';
+
+    uiRoot.style.display = 'inline-flex';
+    uiRoot.style.alignItems = 'flex-start';
+    uiRoot.style.gap = '.6rem';
+    uiRoot.style.flexWrap = 'nowrap';
+
+    taskRoot.style.display = 'inline-flex';
+    taskRoot.style.alignItems = 'flex-start';
+    taskRoot.style.alignSelf = 'flex-start';
+    taskRoot.style.margin = '0';
+    taskRoot.style.padding = '0';
+
+    checkRoot.style.display = 'inline-flex';
+    checkRoot.style.alignItems = 'flex-start';
+    checkRoot.style.alignSelf = 'flex-start';
+    checkRoot.style.margin = '0';
+    checkRoot.style.padding = '0';
+
+    Array.from(checkRoot.children).forEach(el => {
+      try { el.style.margin = '0'; } catch (e) {}
+    });
+
     const c = (window.__pointNeutralColor ? window.__pointNeutralColor() : '#000');
     btn.style.color = c;
 
-    if (uiRoot) {
-      uiRoot.style.display = 'inline-flex';
-      uiRoot.style.alignItems = 'flex-start';
-      uiRoot.style.gap = '.6rem';
-      uiRoot.style.flexWrap = 'nowrap';
-    }
-
-    const checkBtn = findCheckButton();
-    if (!checkBtn) return;
+    const checkBtn = findCheckButton(checkRoot);
+    if (!checkBtn) return true;
 
     const cs = window.getComputedStyle(checkBtn);
     const h = checkBtn.offsetHeight;
-    const inner = ensureInnerSpan();
+    const inner = ensureInnerSpan(btn);
 
     btn.style.display = 'inline-flex';
     btn.style.alignItems = 'stretch';
@@ -4820,7 +4840,7 @@ function getConstrainedAncestorWidth(el) {
     inner.style.paddingLeft = cs.paddingLeft;
     inner.style.paddingRight = cs.paddingRight;
     inner.style.lineHeight = '1';
-    inner.style.transform = 'translateY(5px)';
+    inner.style.transform = 'translateY(0px)';
     inner.style.whiteSpace = 'nowrap';
 
     if (typeof window.restorePointGraphFromSpec === 'function') {
@@ -4830,82 +4850,142 @@ function getConstrainedAncestorWidth(el) {
     if (typeof window.restorePointGraphVisualState === 'function') {
       window.restorePointGraphVisualState(spec);
     }
+
+    return true;
   }
 
-  apply();
-  requestAnimationFrame(apply);
-  setTimeout(apply, 0);
-  setTimeout(apply, 80);
-  setTimeout(apply, 200);
+  window.renderPunktGraphFromSpec = function(uid, spec) {
+    const uiRoot = document.getElementById('graph-ui-' + uid);
+    const taskRoot = document.getElementById('graph-task-' + uid);
+    const checkRoot = document.getElementById('graph-check-' + uid);
 
-  try {
-    const mo = new MutationObserver(apply);
-    mo.observe(checkRoot, { childList: true, subtree: true, attributes: true });
-  } catch (e) {}
+    if (!uiRoot || !taskRoot || !checkRoot) return false;
 
-  try {
-    const checkBtn = findCheckButton();
-    if (checkBtn && typeof ResizeObserver !== 'undefined') {
-      const ro = new ResizeObserver(apply);
-      ro.observe(checkBtn);
+    uiRoot.dataset.spec = spec;
+
+    let btn = document.getElementById('graph-btn-' + uid);
+    if (!btn) {
+      btn = document.createElement('button');
+      btn.id = 'graph-btn-' + uid;
+      btn.className = 'lia-btn';
+      btn.type = 'button';
+      btn.textContent = 'Punkt erzeugen';
+      taskRoot.appendChild(btn);
     }
-  } catch (e) {}
 
-  try {
-    if (!checkRoot.__resolveHooked) {
-      checkRoot.__resolveHooked = true;
-
-      checkRoot.addEventListener('click', (e) => {
-        const targetBtn = e.target && e.target.closest
-          ? e.target.closest('button, input[type="button"], input[type="submit"]')
-          : null;
-
-        if (!targetBtn || !checkRoot.contains(targetBtn)) return;
-        if (!looksLikeResolveButton(targetBtn)) return;
-
-        setTimeout(() => {
-          if (typeof window.finalizePointGraphFromSpec === 'function') {
-            window.finalizePointGraphFromSpec(spec);
-          }
-        }, 0);
-
-        setTimeout(() => {
-          if (typeof window.finalizePointGraphFromSpec === 'function') {
-            window.finalizePointGraphFromSpec(spec);
-          }
-        }, 80);
+    if (!btn.__liaPointGraphEnsureBound) {
+      btn.__liaPointGraphEnsureBound = true;
+      btn.addEventListener('click', function() {
+        const curSpec = uiRoot.dataset.spec || '';
+        if (typeof window.ensurePointGraphFromSpec === 'function') {
+          window.ensurePointGraphFromSpec(curSpec);
+        }
       });
     }
-  } catch (e) {}
 
-  if (window.__registerLiaThemeListener) {
-    window.__registerLiaThemeListener(apply);
-  } else {
-    setInterval(apply, 300);
+    btn.dataset.spec = spec;
+
+    applyPunktGraphUi(uid);
+
+    if (!checkRoot.__liaPointGraphUiObserved) {
+      checkRoot.__liaPointGraphUiObserved = true;
+
+      try {
+        const mo = new MutationObserver(function() {
+          applyPunktGraphUi(uid);
+        });
+        mo.observe(checkRoot, { childList: true, subtree: true, attributes: true });
+      } catch (e) {}
+
+      try {
+        const checkBtn = findCheckButton(checkRoot);
+        if (checkBtn && typeof ResizeObserver !== 'undefined') {
+          const ro = new ResizeObserver(function() {
+            applyPunktGraphUi(uid);
+          });
+          ro.observe(checkBtn);
+        }
+      } catch (e) {}
+
+      try {
+        checkRoot.addEventListener('click', function(e) {
+          const targetBtn = e.target && e.target.closest
+            ? e.target.closest('button, input[type="button"], input[type="submit"]')
+            : null;
+
+          if (!targetBtn || !checkRoot.contains(targetBtn)) return;
+          if (!looksLikeResolveButton(checkRoot, targetBtn)) return;
+
+          setTimeout(function() {
+            const curSpec = uiRoot.dataset.spec || '';
+            if (typeof window.finalizePointGraphFromSpec === 'function') {
+              window.finalizePointGraphFromSpec(curSpec);
+            }
+          }, 0);
+
+          setTimeout(function() {
+            const curSpec = uiRoot.dataset.spec || '';
+            if (typeof window.finalizePointGraphFromSpec === 'function') {
+              window.finalizePointGraphFromSpec(curSpec);
+            }
+          }, 80);
+        });
+      } catch (e) {}
+
+      if (window.__registerLiaThemeListener) {
+        window.__registerLiaThemeListener(function() {
+          applyPunktGraphUi(uid);
+        });
+      }
+    }
+
+    setTimeout(function() {
+      if (typeof window.restorePointGraphFromSpec === 'function') {
+        window.restorePointGraphFromSpec(spec);
+      }
+      if (typeof window.restorePointGraphVisualState === 'function') {
+        window.restorePointGraphVisualState(spec);
+      }
+    }, 0);
+
+    setTimeout(function() {
+      if (typeof window.restorePointGraphFromSpec === 'function') {
+        window.restorePointGraphFromSpec(spec);
+      }
+      if (typeof window.restorePointGraphVisualState === 'function') {
+        window.restorePointGraphVisualState(spec);
+      }
+    }, 120);
+
+    return true;
+  };
+
+  window.__registerLiaThemeListener(refreshAllPointLabels);
+})();
+</script>
+
+<script modify="false">
+(function(){
+  const uid = '@0';
+  const root = document.getElementById('graph-ui-@0');
+  if (!root) return;
+
+  const spec = root.dataset.spec || String.raw`@1`;
+
+  function tryRender() {
+    if (typeof window.renderPunktGraphFromSpec !== 'function') return false;
+    return window.renderPunktGraphFromSpec(uid, spec);
   }
 
-  setTimeout(() => {
-    if (typeof window.restorePointGraphFromSpec === 'function') {
-      window.restorePointGraphFromSpec(spec);
-    }
-    if (typeof window.restorePointGraphVisualState === 'function') {
-      window.restorePointGraphVisualState(spec);
-    }
-  }, 0);
-
-  setTimeout(() => {
-    if (typeof window.restorePointGraphFromSpec === 'function') {
-      window.restorePointGraphFromSpec(spec);
-    }
-    if (typeof window.restorePointGraphVisualState === 'function') {
-      window.restorePointGraphVisualState(spec);
-    }
-  }, 120);
+  tryRender();
+  requestAnimationFrame(tryRender);
+  setTimeout(tryRender, 0);
+  setTimeout(tryRender, 80);
+  setTimeout(tryRender, 200);
 })();
 </script>
 
 @end
-
 
 
 
