@@ -10,7 +10,7 @@ author:
 
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/imports/TestdummyKoord.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/imports/KoordREADME.md
 
 
 
@@ -24,6 +24,8 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/hea
 
 > Updateversuch für neue Features am 19.03. um 09:40 Uhr
 
+> `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/imports/KoordREADME.md`
+
 
 
 
@@ -34,7 +36,7 @@ Alles klappt nur wenn `https://raw.githubusercontent.com/liaTemplates/JSXGraph/m
 
 @AchsenBeschriftung(`id=A1;xlabel=$x$;ylabel=$y$`)
 
-@PlotFunktion(`A1;f;x;#b41f65`)
+@PlotFunktion(`A1;f;4*exp{{-1/5*x^2}};#b41f65`)
 
 
 
@@ -43,8 +45,9 @@ Alles klappt nur wenn `https://raw.githubusercontent.com/liaTemplates/JSXGraph/m
 
 @AchsenBeschriftung(`id=A1;xlabel=$x$;ylabel=$y$`)
 
-@PlotFunktion(`A1;f;x;#b41f65`)
+@PlotFunktion(`A1;f;4*exp{{-1/5*x^2}};#b41f65`)
 ```
+
 
 
 

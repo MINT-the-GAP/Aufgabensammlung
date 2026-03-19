@@ -10,6 +10,9 @@ narrator: Deutsch Female
 
 
 
+import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+
 
 
 
