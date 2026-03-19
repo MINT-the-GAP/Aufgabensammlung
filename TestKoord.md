@@ -22,12 +22,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/hea
 # Plot Funktion
 
 
-> Updateversuch für neue Features am 19.03. um 07:02 Uhr
+> Updateversuch für neue Features am 19.03. um 07:23 Uhr
 
 
 
 
-Alles klappt nur wenn `import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md` im Header ist!
+Alles klappt nur wenn `https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md` im Header importiert ist!
 
 
 @Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A1`)
