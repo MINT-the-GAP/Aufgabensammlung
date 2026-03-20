@@ -2,7 +2,19 @@
 version: 0.0.1
 language: de
 author: Martin Lommatzsch
-comment: Generische LiaScript-Abgabelink-Demo mit Theme-Hintergrund und kursadaptiven Eingabefeldern
+comment: LiaScript-Abgabelink mit exakterer Zustandsprotokollierung und Freeze
+
+
+
+
+
+
+
+
+
+
+
+
 
 @style
 :root{
@@ -36,8 +48,8 @@ comment: Generische LiaScript-Abgabelink-Demo mit Theme-Hintergrund und kursadap
 .lia-submit-box input[type="text"],
 .lia-submit-box input[type="password"],
 .lia-submit-box textarea{
+  display: block;
   width: 100%;
-  max-width: 900px;
   box-sizing: border-box;
   padding: .78rem .95rem;
   border-radius: 10px;
@@ -80,6 +92,7 @@ comment: Generische LiaScript-Abgabelink-Demo mit Theme-Hintergrund und kursadap
 }
 
 .lia-frozen-note{
+  display: none;
   margin-top: 1rem;
   padding: .8rem 1rem;
   border-radius: 10px;
@@ -88,24 +101,8 @@ comment: Generische LiaScript-Abgabelink-Demo mit Theme-Hintergrund und kursadap
   color: var(--lia-submit-fg);
 }
 
-#lia-frozen-banner,
-#lia-frozen-banner[hidden]{
-  display: none !important;
-}
-
-#lia-frozen-banner.lia-show-banner{
-  display: block !important;
-  position: sticky;
-  top: 0;
-  z-index: 9999;
-  margin: 0 0 1rem 0;
-  padding: .8rem 1rem;
-  border-radius: 12px;
-  font-weight: 700;
-  background: rgb(var(--lia-submit-bg-rgb));
-  color: var(--lia-submit-fg);
-  border: 1px solid var(--lia-submit-border-on-theme);
-  box-shadow: 0 10px 26px rgba(0,0,0,.14);
+body.lia-course-frozen .lia-frozen-note{
+  display: block;
 }
 
 body.lia-course-frozen button,
@@ -125,7 +122,20 @@ body.lia-course-frozen #lia-link{
   cursor: text !important;
   user-select: text !important;
 }
+
+.lia-snapshot-host{
+  display: none;
+}
+
+body.lia-snapshot-mode .lia-snapshot-host{
+  display: block !important;
+}
+
+body.lia-snapshot-mode .lia-live-root{
+  display: none !important;
+}
 @end
+
 
 @onload
 window.__liaSubmissionDemo = (function () {
@@ -197,7 +207,7 @@ window.__liaSubmissionDemo = (function () {
   }
 
   function applyCourseColors() {
-    const probe = document.querySelector("main, article, section, .lia-content, body") || document.body;
+    const probe = document.querySelector(".lia-content, main, article, section, body") || document.body;
     if (!probe) return;
 
     const cs = getComputedStyle(probe);
@@ -255,64 +265,149 @@ window.__liaSubmissionDemo = (function () {
     return document.getElementById("lia-link");
   }
 
-  function getBanner() {
-    return document.getElementById("lia-frozen-banner");
-  }
-
   function setStatus(msg) {
     const el = getStatusBox();
     if (el) el.textContent = msg || "";
+  }
+
+  function getContentRoot() {
+    return (
+      document.querySelector(".lia-content") ||
+      document.querySelector("main") ||
+      document.querySelector("article") ||
+      document.querySelector("section")
+    );
+  }
+
+  function ensureSnapshotHost() {
+    let host = document.getElementById("lia-snapshot-host");
+    if (host) return host;
+
+    const root = getContentRoot();
+    if (!root || !root.parentNode) return null;
+
+    host = document.createElement("div");
+    host.id = "lia-snapshot-host";
+    host.className = "lia-snapshot-host";
+
+    root.parentNode.insertBefore(host, root.nextSibling);
+    return host;
+  }
+
+  function markLiveRoot(root) {
+    if (!root) return;
+    root.classList.add("lia-live-root");
   }
 
   function isAdminField(el) {
     return !!(el && el.getAttribute && el.getAttribute(ADMIN_ATTR) === "1");
   }
 
-  function isVisible(el) {
-    if (!el) return false;
-    if (el.type === "hidden") return false;
-    return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
-  }
+  function syncFormStateIntoClone(srcRoot, cloneRoot) {
+    const srcFields = Array.from(srcRoot.querySelectorAll("input, textarea, select"));
+    const cloneFields = Array.from(cloneRoot.querySelectorAll("input, textarea, select"));
 
-  function getLearnerFields() {
-    return Array.from(document.querySelectorAll("input, textarea, select")).filter(function (el) {
-      if (!isVisible(el)) return false;
-      if (isAdminField(el)) return false;
-      return true;
+    srcFields.forEach(function (src, i) {
+      const clone = cloneFields[i];
+      if (!clone) return;
+
+      const tag = (src.tagName || "").toLowerCase();
+      const type = (src.type || "").toLowerCase();
+
+      if (tag === "textarea") {
+        clone.value = String(src.value || "");
+        clone.textContent = String(src.value || "");
+        return;
+      }
+
+      if (tag === "select") {
+        clone.selectedIndex = src.selectedIndex;
+        Array.from(clone.options || []).forEach(function (opt, idx) {
+          if (idx === src.selectedIndex) {
+            opt.setAttribute("selected", "selected");
+          } else {
+            opt.removeAttribute("selected");
+          }
+        });
+        return;
+      }
+
+      if (type === "checkbox" || type === "radio") {
+        clone.checked = !!src.checked;
+        if (src.checked) {
+          clone.setAttribute("checked", "checked");
+        } else {
+          clone.removeAttribute("checked");
+        }
+        return;
+      }
+
+      if ("value" in src) {
+        if (isAdminField(src) && type === "password") {
+          clone.value = "";
+          clone.setAttribute("value", "");
+        } else {
+          clone.value = String(src.value || "");
+          clone.setAttribute("value", String(src.value || ""));
+        }
+      }
     });
   }
 
-  function serializeField(el, index) {
-    const tag = (el.tagName || "").toLowerCase();
-    const type = (el.type || "").toLowerCase();
+  function freezeAdminAreaInClone(cloneRoot) {
+    const pwEl = cloneRoot.querySelector("#lia-password");
+    const btnEl = cloneRoot.querySelector("#lia-create-link");
+    const linkEl = cloneRoot.querySelector("#lia-link");
+    const noteEl = cloneRoot.querySelector("#lia-frozen-note");
 
-    return {
-      index: index,
-      tag: tag,
-      type: type,
-      value: "value" in el ? String(el.value || "") : "",
-      checked: !!el.checked,
-      selectedIndex: typeof el.selectedIndex === "number" ? el.selectedIndex : -1
-    };
+    if (pwEl) {
+      pwEl.value = "";
+      pwEl.setAttribute("value", "");
+      pwEl.disabled = true;
+      pwEl.readOnly = true;
+      pwEl.placeholder = "Im Abgabemodus gesperrt";
+    }
+
+    if (btnEl) {
+      btnEl.disabled = true;
+      if ((btnEl.tagName || "").toLowerCase() === "input") {
+        btnEl.value = "Abgabe eingefroren";
+      } else {
+        btnEl.textContent = "Abgabe eingefroren";
+      }
+    }
+
+    if (linkEl) {
+      linkEl.readOnly = true;
+    }
+
+    if (noteEl) {
+      noteEl.style.display = "block";
+      noteEl.innerHTML = "Dies ist ein <strong>eingefrorener Abgabestand</strong>. Der Kurs ist nicht mehr bedienbar.";
+    }
   }
 
-  function readState() {
-    const nameEl = document.getElementById("lia-name");
-    const fields = getLearnerFields();
+  function buildVisualSnapshotHtml() {
+    const srcRoot = getContentRoot();
+    const cloneRoot = srcRoot.cloneNode(true);
 
+    syncFormStateIntoClone(srcRoot, cloneRoot);
+    freezeAdminAreaInClone(cloneRoot);
+
+    return cloneRoot.innerHTML;
+  }
+
+  function buildSnapshotPayload() {
     return {
-      version: "0.0.1",
+      version: "dom-freeze-3",
       createdAt: new Date().toISOString(),
-      name: String((nameEl && nameEl.value) || ""),
-      fields: fields.map(function (el, i) {
-        return serializeField(el, i);
-      })
+      html: buildVisualSnapshotHtml()
     };
   }
 
-  function buildLink(state) {
+  function buildLink(payload) {
     const base = window.location.href.split("#")[0];
-    const token = utf8ToBase64(JSON.stringify(state));
+    const token = utf8ToBase64(JSON.stringify(payload));
     return base + "#" + HASH_PREFIX + encodeURIComponent(token);
   }
 
@@ -323,69 +418,24 @@ window.__liaSubmissionDemo = (function () {
     try {
       const token = decodeURIComponent(hash.slice(("#" + HASH_PREFIX).length));
       const obj = JSON.parse(base64ToUtf8(token));
-      if (!obj || !Array.isArray(obj.fields)) return null;
+      if (!obj || typeof obj.html !== "string") return null;
       return obj;
     } catch (e) {
       return null;
     }
   }
 
-  function applyFieldState(el, data) {
-    if (!el || !data) return;
-
-    const type = (el.type || "").toLowerCase();
-    const tag = (el.tagName || "").toLowerCase();
-
-    if (
-      tag === "textarea" ||
-      tag === "select" ||
-      type === "text" ||
-      type === "number" ||
-      type === "email" ||
-      type === "search" ||
-      type === "tel" ||
-      type === "url" ||
-      type === "password"
-    ) {
-      el.value = data.value || "";
-    }
-
-    if (type === "checkbox" || type === "radio") {
-      el.checked = !!data.checked;
-    }
-
-    if (tag === "select" && typeof data.selectedIndex === "number" && data.selectedIndex >= 0) {
-      el.selectedIndex = data.selectedIndex;
-    }
-
-    try { el.disabled = true; } catch (e) {}
-    try { el.readOnly = true; } catch (e) {}
-  }
-
-  function showBanner() {
-    const banner = getBanner();
-    if (banner) {
-      banner.hidden = false;
-      banner.classList.add("lia-show-banner");
-    }
-  }
-
-  function hardFreezeCourse(state, link) {
+  function freezeCurrentPage(link) {
     const nameEl = document.getElementById("lia-name");
     const pwEl = document.getElementById("lia-password");
     const btnEl = document.getElementById("lia-create-link");
     const linkEl = getLinkBox();
+    const noteEl = document.getElementById("lia-frozen-note");
 
     if (nameEl) {
-      nameEl.value = state.name || "";
       nameEl.disabled = true;
       nameEl.readOnly = true;
     }
-
-    const fields = getLearnerFields();
-    fields.forEach(function (el, i) {
-      applyFieldState(el, state.fields[i]);
-    });
 
     if (pwEl) {
       pwEl.value = "";
@@ -400,41 +450,66 @@ window.__liaSubmissionDemo = (function () {
     }
 
     if (linkEl) {
-      linkEl.value = link || window.location.href;
+      linkEl.value = link || "";
       linkEl.readOnly = true;
       linkEl.disabled = false;
     }
 
-    document.body.classList.add("lia-course-frozen");
-    showBanner();
-
-    const note = document.getElementById("lia-frozen-note");
-    if (note) {
-      note.innerHTML = "Dies ist ein <strong>eingefrorener Abgabestand</strong>. Der Kurs ist nicht mehr bedienbar.";
+    if (noteEl) {
+      noteEl.style.display = "block";
+      noteEl.innerHTML = "Dies ist ein <strong>eingefrorener Abgabestand</strong>. Der Kurs ist nicht mehr bedienbar.";
     }
 
-    setStatus("Kurs eingefroren.");
+    document.body.classList.add("lia-course-frozen");
+  }
+
+  function mountSnapshotHtml(html) {
+    const root = getContentRoot();
+    const host = ensureSnapshotHost();
+
+    if (!root || !host || !html) return false;
+
+    markLiveRoot(root);
+    host.innerHTML = html;
+
+    if (!host.innerHTML.trim()) return false;
+
+    document.body.classList.add("lia-course-frozen");
+    document.body.classList.add("lia-snapshot-mode");
+
+    const linkEl = host.querySelector("#lia-link");
+    if (linkEl) {
+      linkEl.value = window.location.href;
+      linkEl.readOnly = true;
+    }
+
+    return true;
   }
 
   function createLink() {
-    const pwEl = document.getElementById("lia-password");
-    const linkEl = getLinkBox();
-    const pw = String((pwEl && pwEl.value) || "");
+    try {
+      const pwEl = document.getElementById("lia-password");
+      const pw = String((pwEl && pwEl.value) || "");
 
-    if (pw !== fromCodes(PASSWORD_CODES)) {
-      setStatus("Passwort falsch.");
-      return;
+      if (pw !== fromCodes(PASSWORD_CODES)) {
+        setStatus("Passwort falsch.");
+        return;
+      }
+
+      const payload = buildSnapshotPayload();
+      const link = buildLink(payload);
+
+      const linkEl = getLinkBox();
+      if (linkEl) {
+        linkEl.value = link;
+      }
+
+      freezeCurrentPage(link);
+      setStatus("Abgabelink erstellt.");
+    } catch (err) {
+      console.error(err);
+      setStatus("Fehler bei der Linkerstellung: " + (err && err.message ? err.message : err));
     }
-
-    const state = readState();
-    const link = buildLink(state);
-
-    if (linkEl) {
-      linkEl.value = link;
-    }
-
-    hardFreezeCourse(state, link);
-    setStatus("Abgabelink erstellt.");
   }
 
   function initSnapshotMode() {
@@ -445,11 +520,22 @@ window.__liaSubmissionDemo = (function () {
     const timer = setInterval(function () {
       tries += 1;
 
-      if (document.querySelectorAll("input, textarea, select").length > 0 || tries > 40) {
-        clearInterval(timer);
-        hardFreezeCourse(snapshot, window.location.href);
+      const root = getContentRoot();
+      if (!root) {
+        if (tries > 120) clearInterval(timer);
+        return;
       }
-    }, 200);
+
+      const ok = mountSnapshotHtml(snapshot.html);
+      if (ok) {
+        clearInterval(timer);
+        return;
+      }
+
+      if (tries > 120) {
+        clearInterval(timer);
+      }
+    }, 100);
   }
 
   if (document.readyState === "loading") {
@@ -469,13 +555,27 @@ window.__liaSubmissionDemo = (function () {
   };
 })();
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 -->
 
 # Reine LiaScript-Abgabelink-Demo
-
-<div id="lia-frozen-banner" hidden>
-  Eingefrorener Abgabestand
-</div>
 
 $a)\;\;$ $7000+123=$ [[  7123  ]]
 
@@ -486,7 +586,8 @@ $c)\;\;$ $5000+123=$ [[  5123  ]]
 $d)\;\;$ $4000+123=$ [[  4123  ]]
 
 <div class="lia-submit-box">
-<h2>Abgabeerstellung</h2>
+  <h2>Abgabeerstellung</h2>
+
   <label for="lia-name">Name</label>
   <input id="lia-name" data-snapshot-admin="1" type="text" placeholder="Name eingeben">
 
@@ -501,3 +602,4 @@ $d)\;\;$ $4000+123=$ [[  4123  ]]
   <div id="lia-status"></div>
   <div id="lia-frozen-note" class="lia-frozen-note"></div>
 </div>
+
