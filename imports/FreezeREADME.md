@@ -5327,10 +5327,10 @@ function blockNativeFrozenInteractionEvent(e) {
 # Reine LiaScript-Abgabelink-Demo
 
 Einfaches importieren: \
-'import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md'
+`import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md`
 
 Abgabefeld über Makro: \
-'@Abgabe'
+`@Abgabe`
 
 
 
