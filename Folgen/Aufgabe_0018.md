@@ -66,7 +66,7 @@ $12 \quad 24 \quad 36 \quad 48 \quad 60 \quad 72 \quad 84 \quad$ [[ 96 ]] $\quad
 
 __$b)\;\;$__
 
-$1 \quad 12 \quad 123 \quad 1234 \quad 12345 \quad $ [[ 123456 ]] $\quad$ [[ 1234567 ]] $\quad$ [[ 1234567 ]] \
+$1 \quad 12 \quad 123 \quad 1234 \quad 12345 \quad $ [[ 123456 ]] $\quad$ [[ 1234567 ]] $\quad$ [[ 12345678 ]] \
 
 [[?]] Musterbeschreibung: Es wird immer die nächst höhere natürliche Zahl als Ziffer angehangen.
 

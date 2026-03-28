@@ -68,7 +68,7 @@ __$a)\;\;$__ Wie viele Minuten sind von 14:44$\,$Uhr bis 18:52$\,$Uhr vergangen?
 <div class="flex-child">
 
 __$b)\;\;$__ Wie viele Minuten sind von 07:30$\,$Uhr bis 13:28$\,$Uhr vergangen? \
-[[  352  ]] $\,\text{min}$
+[[  358  ]] $\,\text{min}$
 
 </div>
 
