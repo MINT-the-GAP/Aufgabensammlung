@@ -375,6 +375,7 @@ function ensureRuntimeStyle() {
 
 .lia-submit-box input[type="text"],
 .lia-submit-box textarea{
+  text-align: left !important;
   display: block;
   width: 100%;
   box-sizing: border-box;
@@ -939,11 +940,11 @@ body.lia-snapshot-mode #lia-freeze-info{
 
       if (inFence) continue;
 
-      const m = line.match(/^#\s+(.+?)\s*$/);
+      const m = line.match(/^(#{1,6})\s+(.+?)\s*$/);
       if (m) {
         out.push({
           h: "#" + (out.length + 1),
-          t: normalizeSpace(m[1])
+          t: normalizeSpace(m[2])
         });
       }
     }
@@ -2840,17 +2841,7 @@ function isTextQuizInputControl(el) {
     return uniqueElements(roots);
   }
 
-function collectSupportedQuizRootsFromRoot(root) {
-  return uniqueElements(
-    collectTextQuizRootsFromRoot(root)
-      .concat(collectDropdownQuizRootsFromRoot(root))
-      .concat(collectTileQuizRootsFromRoot(root))
-      .concat(collectChoiceQuizRootsFromRoot(root))
-      .concat(collectOrthographyQuizRootsFromRoot(root))
-      .concat(collectFractionQuizRootsFromRoot(root))
-      .concat(collectMarkerQuizRootsFromRoot(root))
-  );
-}
+
 
 
 function hasTileHandler(el, names, pattern) {
@@ -2984,10 +2975,14 @@ function collectTileQuizRootsFromRoot(root) {
 
 function collectSupportedQuizRootsFromRoot(root) {
   return uniqueElements(
-    collectTextQuizRootsFromRoot(root)
+    []
+      .concat(collectTextQuizRootsFromRoot(root))
       .concat(collectDropdownQuizRootsFromRoot(root))
       .concat(collectTileQuizRootsFromRoot(root))
       .concat(collectChoiceQuizRootsFromRoot(root))
+      .concat(collectOrthographyQuizRootsFromRoot(root))
+      .concat(collectFractionQuizRootsFromRoot(root))
+      .concat(collectMarkerQuizRootsFromRoot(root))
   );
 }
 
