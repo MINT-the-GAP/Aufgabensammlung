@@ -1032,6 +1032,10 @@ function normalizeActualQuizRoot(root) {
   return nestedQuiz || root;
 }
 
+function getTextQuizStateRoot(root) {
+  return normalizeActualQuizRoot(root) || root || null;
+}
+
 function findNearbySiblingQuiz(startEl) {
   let anchor = startEl instanceof Element ? startEl : null;
   let up = 0;
@@ -2788,15 +2792,32 @@ function getTextQuizRootFromInput(input, host) {
   const explicit = input.closest(".lia-quiz");
   if (explicit) return explicit;
 
+  const stop = host || getContentHost() || document.body;
+
   const localAnchor =
     input.closest(".lia-paragraph") ||
     input.parentElement ||
     input;
 
   const siblingQuiz = findNearbySiblingQuiz(localAnchor);
-  if (siblingQuiz) return siblingQuiz;
+  if (siblingQuiz) {
+    let node = input.parentElement || input;
 
-  const stop = host || getContentHost() || document.body;
+    while (node && node !== stop && node !== document.body) {
+      if (!(node instanceof Element)) break;
+      if (node.closest("#lia-freeze-bar")) break;
+      if (node.closest(".lia-submit-box")) break;
+
+      if (node.contains(input) && node.contains(siblingQuiz)) {
+        return node;
+      }
+
+      node = node.parentElement;
+    }
+
+    return siblingQuiz.parentElement || siblingQuiz;
+  }
+
   let node = input.parentElement || input;
 
   while (node && node !== stop && node !== document.body) {
@@ -2811,14 +2832,16 @@ function getTextQuizRootFromInput(input, host) {
     });
 
     if (directChildQuiz) {
-      return directChildQuiz;
+      return node;
     }
 
     node = node.parentElement;
   }
 
-  return null;
+  return input.parentElement || input;
 }
+
+
 
   function collectTextQuizRootsFromRoot(root) {
     const host = root || getContentHost() || document.body;
@@ -3501,7 +3524,6 @@ function applyStoredTileStatesToHost(host, storedStates) {
 
 
 function getTextQuizRootKey(root, idx) {
-  root = normalizeActualQuizRoot(root);
   if (!root) return "qr:" + idx;
 
   const inputs = getTextQuizInputsFromRoot(root);
@@ -3510,7 +3532,8 @@ function getTextQuizRootKey(root, idx) {
     if (first) return first;
   }
 
-  const txt = stripQuizUiText(root.textContent || "");
+  const quizRoot = getTextQuizStateRoot(root);
+  const txt = stripQuizUiText((quizRoot || root).textContent || "");
   if (txt) return "t:" + shortHash(txt.slice(0, 200));
 
   return "qr:" + idx;
@@ -3615,20 +3638,20 @@ function applyQuizCheckCount(root, count) {
   }
 
 function captureTextQuizState(root, idx) {
-  root = normalizeActualQuizRoot(root);
   if (!root) return null;
 
+  const quizRoot = getTextQuizStateRoot(root);
   const inputs = getTextQuizInputsFromRoot(root);
-  const feedback = root.querySelector(".lia-quiz__feedback");
+  const feedback = quizRoot ? quizRoot.querySelector(".lia-quiz__feedback") : null;
 
   const values = inputs.map(function (el) {
     return readTextQuizInputValue(el);
   });
 
-  const stateCode = detectQuizState(root);
+  const stateCode = detectQuizState(quizRoot);
   const feedbackCode = detectFeedbackCode(feedback);
   const feedbackText = feedback ? normalizeSpace(feedback.textContent || "") : "";
-  const checkCount = getQuizCheckCount(root);
+  const checkCount = getQuizCheckCount(quizRoot);
 
   const out = {
     k: getTextQuizRootKey(root, idx),
@@ -3864,9 +3887,9 @@ function countLiveSupportedControlsForHash(hash) {
   }
 
 function applyTextQuizState(root, state) {
-  root = normalizeActualQuizRoot(root);
   if (!root || !state) return root;
 
+  const quizRoot = getTextQuizStateRoot(root);
   const controls = getTextQuizInputsFromRoot(root);
   const values = Array.isArray(state.v) ? state.v : [];
   const max = Math.min(controls.length, values.length);
@@ -3875,13 +3898,13 @@ function applyTextQuizState(root, state) {
     applyFieldValueOnly(controls[i], values[i]);
   }
 
-  applyQuizRootStateClasses(root, state.s || "");
+  applyQuizRootStateClasses(quizRoot, state.s || "");
 
-  const feedbackText = deriveFeedbackTextForState(root, state);
+  const feedbackText = deriveFeedbackTextForState(quizRoot, state);
   const feedbackClass = getFeedbackClassFromState(state);
 
   if (feedbackText || state.s || state.f || state.fc) {
-    const feedback = ensureQuizFeedbackElement(root);
+    const feedback = ensureQuizFeedbackElement(quizRoot);
     if (feedback) {
       feedback.classList.remove("text-success", "text-error", "text-disabled");
       if (feedbackClass) {
@@ -3898,8 +3921,13 @@ function applyTextQuizState(root, state) {
     }
   }
 
-  applyQuizCheckCount(root, state.cc || 0);
+  applyQuizCheckCount(quizRoot, state.cc || 0);
+
   lockTextQuizRoot(root);
+  if (quizRoot && quizRoot !== root) {
+    lockTextQuizRoot(quizRoot);
+  }
+
   return root;
 }
 
