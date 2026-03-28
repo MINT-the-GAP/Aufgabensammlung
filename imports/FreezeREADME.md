@@ -1014,6 +1014,54 @@ body.lia-snapshot-mode #lia-freeze-info{
   // =========================================================
 
 
+function normalizeActualQuizRoot(root) {
+  if (!root || !(root instanceof Element)) return null;
+
+  if (root.classList && root.classList.contains("lia-quiz")) {
+    return root;
+  }
+
+  const directChildQuiz = Array.from(root.children || []).find(function (el) {
+    return el instanceof Element &&
+           el.classList &&
+           el.classList.contains("lia-quiz");
+  });
+  if (directChildQuiz) return directChildQuiz;
+
+  const nestedQuiz = root.querySelector ? root.querySelector(".lia-quiz") : null;
+  return nestedQuiz || root;
+}
+
+function findNearbySiblingQuiz(startEl) {
+  let anchor = startEl instanceof Element ? startEl : null;
+  let up = 0;
+
+  while (anchor && up < 4) {
+    let sib = anchor.nextElementSibling;
+    let hops = 0;
+
+    while (sib && hops < 6) {
+      if (sib.classList && sib.classList.contains("lia-quiz")) {
+        return sib;
+      }
+
+      const nested = sib.querySelector ? sib.querySelector(".lia-quiz") : null;
+      if (nested) {
+        return nested;
+      }
+
+      sib = sib.nextElementSibling;
+      hops += 1;
+    }
+
+    anchor = anchor.parentElement;
+    up += 1;
+  }
+
+  return null;
+}
+
+
 function isChoiceQuizInput(el) {
   if (!el || !(el instanceof Element)) return false;
   if (el.closest("#lia-freeze-bar")) return false;
@@ -2734,35 +2782,43 @@ function isTextQuizInputControl(el) {
     );
   }
 
-  function getTextQuizRootFromInput(input, host) {
-    if (!input) return null;
+function getTextQuizRootFromInput(input, host) {
+  if (!input) return null;
 
-    const explicit = input.closest(".lia-quiz");
-    if (explicit) return explicit;
+  const explicit = input.closest(".lia-quiz");
+  if (explicit) return explicit;
 
-    const stop = host || getContentHost() || document.body;
-    let node = input.parentElement || input;
-    let best = input.parentElement || input;
+  const localAnchor =
+    input.closest(".lia-paragraph") ||
+    input.parentElement ||
+    input;
 
-    while (node && node !== stop && node !== document.body) {
-      if (!(node instanceof Element)) break;
-      if (node.closest("#lia-freeze-bar")) break;
-      if (node.closest(".lia-submit-box")) break;
+  const siblingQuiz = findNearbySiblingQuiz(localAnchor);
+  if (siblingQuiz) return siblingQuiz;
 
-      if (node.contains(input)) {
-        const buttons = node.querySelectorAll(".lia-quiz__check, .lia-quiz__resolve");
-        const meaningfulText = stripQuizUiText(node.textContent || "");
+  const stop = host || getContentHost() || document.body;
+  let node = input.parentElement || input;
 
-        if (buttons.length && meaningfulText.length > 0) {
-          best = node;
-        }
-      }
+  while (node && node !== stop && node !== document.body) {
+    if (!(node instanceof Element)) break;
+    if (node.closest("#lia-freeze-bar")) break;
+    if (node.closest(".lia-submit-box")) break;
 
-      node = node.parentElement;
+    const directChildQuiz = Array.from(node.children || []).find(function (el) {
+      return el instanceof Element &&
+             el.classList &&
+             el.classList.contains("lia-quiz");
+    });
+
+    if (directChildQuiz) {
+      return directChildQuiz;
     }
 
-    return best || input.parentElement || input;
+    node = node.parentElement;
   }
+
+  return null;
+}
 
   function collectTextQuizRootsFromRoot(root) {
     const host = root || getContentHost() || document.body;
@@ -3444,20 +3500,21 @@ function applyStoredTileStatesToHost(host, storedStates) {
   }
 
 
-  function getTextQuizRootKey(root, idx) {
-    if (!root) return "qr:" + idx;
+function getTextQuizRootKey(root, idx) {
+  root = normalizeActualQuizRoot(root);
+  if (!root) return "qr:" + idx;
 
-    const inputs = getTextQuizInputsFromRoot(root);
-    if (inputs.length) {
-      const first = getTextQuizInputKey(inputs[0], 0);
-      if (first) return first;
-    }
-
-    const txt = stripQuizUiText(root.textContent || "");
-    if (txt) return "t:" + shortHash(txt.slice(0, 200));
-
-    return "qr:" + idx;
+  const inputs = getTextQuizInputsFromRoot(root);
+  if (inputs.length) {
+    const first = getTextQuizInputKey(inputs[0], 0);
+    if (first) return first;
   }
+
+  const txt = stripQuizUiText(root.textContent || "");
+  if (txt) return "t:" + shortHash(txt.slice(0, 200));
+
+  return "qr:" + idx;
+}
 
   function readTextQuizInputValue(el) {
     if (!el) return "";
@@ -3557,31 +3614,34 @@ function applyQuizCheckCount(root, count) {
     return "";
   }
 
-  function captureTextQuizState(root, idx) {
-    const inputs = getTextQuizInputsFromRoot(root);
-    const feedback = root ? root.querySelector(".lia-quiz__feedback") : null;
+function captureTextQuizState(root, idx) {
+  root = normalizeActualQuizRoot(root);
+  if (!root) return null;
 
-    const values = inputs.map(function (el) {
-      return readTextQuizInputValue(el);
-    });
+  const inputs = getTextQuizInputsFromRoot(root);
+  const feedback = root.querySelector(".lia-quiz__feedback");
 
-    const stateCode = detectQuizState(root);
-    const feedbackCode = detectFeedbackCode(feedback);
-    const feedbackText = feedback ? normalizeSpace(feedback.textContent || "") : "";
-    const checkCount = getQuizCheckCount(root);
+  const values = inputs.map(function (el) {
+    return readTextQuizInputValue(el);
+  });
 
-    const out = {
-      k: getTextQuizRootKey(root, idx),
-      v: values
-    };
+  const stateCode = detectQuizState(root);
+  const feedbackCode = detectFeedbackCode(feedback);
+  const feedbackText = feedback ? normalizeSpace(feedback.textContent || "") : "";
+  const checkCount = getQuizCheckCount(root);
 
-    if (stateCode) out.s = stateCode;
-    if (feedbackCode) out.fc = feedbackCode;
-    if (feedbackText) out.t = feedbackText;
-    if (checkCount > 0) out.cc = checkCount;
+  const out = {
+    k: getTextQuizRootKey(root, idx),
+    v: values
+  };
 
-    return out;
-  }
+  if (stateCode) out.s = stateCode;
+  if (feedbackCode) out.fc = feedbackCode;
+  if (feedbackText) out.t = feedbackText;
+  if (checkCount > 0) out.cc = checkCount;
+
+  return out;
+}
 
 function countExpectedControls(slide) {
   let n = 0;
@@ -3803,44 +3863,45 @@ function countLiveSupportedControlsForHash(hash) {
     return "";
   }
 
-  function applyTextQuizState(root, state) {
-    if (!root || !state) return root;
+function applyTextQuizState(root, state) {
+  root = normalizeActualQuizRoot(root);
+  if (!root || !state) return root;
 
-    const controls = getTextQuizInputsFromRoot(root);
-    const values = Array.isArray(state.v) ? state.v : [];
-    const max = Math.min(controls.length, values.length);
+  const controls = getTextQuizInputsFromRoot(root);
+  const values = Array.isArray(state.v) ? state.v : [];
+  const max = Math.min(controls.length, values.length);
 
-    for (let i = 0; i < max; i++) {
-      applyFieldValueOnly(controls[i], values[i]);
-    }
-
-    applyQuizRootStateClasses(root, state.s || "");
-
-    const feedbackText = deriveFeedbackTextForState(root, state);
-    const feedbackClass = getFeedbackClassFromState(state);
-
-    if (feedbackText || state.s || state.f || state.fc) {
-      const feedback = ensureQuizFeedbackElement(root);
-      if (feedback) {
-        feedback.classList.remove("text-success", "text-error", "text-disabled");
-        if (feedbackClass) {
-          feedback.classList.add(feedbackClass);
-        }
-
-        feedback.setAttribute("aria-live", "polite");
-
-        if (feedbackText) {
-          feedback.textContent = feedbackText;
-        }
-
-        revealQuizBlock(feedback);
-      }
-    }
-    applyQuizCheckCount(root, state.cc || 0);
-
-    lockTextQuizRoot(root);
-    return root;
+  for (let i = 0; i < max; i++) {
+    applyFieldValueOnly(controls[i], values[i]);
   }
+
+  applyQuizRootStateClasses(root, state.s || "");
+
+  const feedbackText = deriveFeedbackTextForState(root, state);
+  const feedbackClass = getFeedbackClassFromState(state);
+
+  if (feedbackText || state.s || state.f || state.fc) {
+    const feedback = ensureQuizFeedbackElement(root);
+    if (feedback) {
+      feedback.classList.remove("text-success", "text-error", "text-disabled");
+      if (feedbackClass) {
+        feedback.classList.add(feedbackClass);
+      }
+
+      feedback.setAttribute("aria-live", "polite");
+
+      if (feedbackText) {
+        feedback.textContent = feedbackText;
+      }
+
+      revealQuizBlock(feedback);
+    }
+  }
+
+  applyQuizCheckCount(root, state.cc || 0);
+  lockTextQuizRoot(root);
+  return root;
+}
 
   function applyStoredTextQuizStatesToHost(host, storedStates) {
     const liveRoots = host ? collectTextQuizRootsFromRoot(host) : [];
