@@ -26,7 +26,7 @@ window.__liaSubmissionDemo = (function () {
   const ADMIN_ATTR = "data-snapshot-admin";
   const STORAGE_PREFIX = "__lia_submission_demo__:";
   const PAYLOAD_VERSION = "sf-mini-ti-2";
-  const DEBUG = false;
+  const DEBUG = true;
   const EVALUATION_TITLE = "Auswertung";
 
 
@@ -59,6 +59,31 @@ window.__liaSubmissionDemo = (function () {
 
   let snapshotIsSharedLinkMode = false;
   let manualAwardValuesByKey = Object.create(null);
+
+  let devtoolsWatchInstalled = false;
+  let devtoolsWatchTimer = 0;
+  let devtoolsLikelyOpen = false;
+
+  let tabTrackingArmed = false;
+  let f12TrackingInstalled = false;
+  let tabTrackingInstalled = false;
+
+  let lastTrackedF12Stamp = -1;
+  let lastTrackedTabStamp = -1;
+  let tabBlurProbeTimer = 0;
+
+  let declaredEvaluationOptions = {
+    trackF12: false,
+    trackTab: false
+  };
+
+  let liveSecurityState = {
+    f12: 0,
+    tab: 0
+  };
+  
+  let lastTrackedF12KeyStamp = -1;
+  let declaredSlidesLoaded = false;
 
   // =========================================================
   // Debug
@@ -975,6 +1000,191 @@ body.lia-snapshot-mode #lia-freeze-info{
     return src;
   }
 
+function parseEvaluationMacroOptions(raw) {
+  const out = {
+    trackF12: false,
+    trackTab: false
+  };
+
+  const txt = normalizeSpace(raw || "");
+  if (!txt) return out;
+
+  txt
+    .split(/[;,]/)
+    .map(function (part) { return normalizeSpace(part); })
+    .filter(Boolean)
+    .forEach(function (flag) {
+      if (/^f12$/i.test(flag)) {
+        out.trackF12 = true;
+        return;
+      }
+
+      if (/^tab$/i.test(flag)) {
+        out.trackTab = true;
+      }
+    });
+
+  return out;
+}
+
+function parseEvaluationOptionsFromSource(text) {
+  const src = stripLeadingHeaderComment(text);
+  const lines = src.split(/\r?\n/);
+
+  let inFence = false;
+  let fenceToken = "";
+
+  const out = {
+    trackF12: false,
+    trackTab: false
+  };
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const fenceMatch = line.match(/^\s*(```+|~~~+)/);
+
+    if (fenceMatch) {
+      const token = fenceMatch[1].charAt(0);
+
+      if (!inFence) {
+        inFence = true;
+        fenceToken = token;
+        continue;
+      }
+
+      if (token === fenceToken) {
+        inFence = false;
+        fenceToken = "";
+        continue;
+      }
+    }
+
+    if (inFence) continue;
+
+    const trimmed = String(line || "").trim();
+
+    const m = trimmed.match(/^@Auswertung(?:\s*\(([^)]*)\))?\s*$/);
+    if (!m) continue;
+
+    const opts = parseEvaluationMacroOptions(m[1] || "");
+
+    if (opts.trackF12) out.trackF12 = true;
+    if (opts.trackTab) out.trackTab = true;
+
+    log(
+      "eval-option-match",
+      "line=" + (i + 1),
+      "raw=" + trimmed,
+      JSON.stringify(out)
+    );
+  }
+
+  return out;
+}
+
+function shouldTrackF12() {
+  return !!(declaredEvaluationOptions && declaredEvaluationOptions.trackF12);
+}
+
+function shouldTrackTab() {
+  return !!(declaredEvaluationOptions && declaredEvaluationOptions.trackTab);
+}
+
+function getSnapshotF12Count() {
+  const n = Number(
+    snapshotPayload &&
+    snapshotPayload.sec &&
+    snapshotPayload.sec.f12
+  );
+
+  if (Number.isFinite(n) && n > 0) return n;
+  return 0;
+}
+
+function getSnapshotTabCount() {
+  const n = Number(
+    snapshotPayload &&
+    snapshotPayload.sec &&
+    snapshotPayload.sec.tab
+  );
+
+  if (Number.isFinite(n) && n > 0) return n;
+  return 0;
+}
+
+function getSerializableSecurityState() {
+  return {
+    trackF12: shouldTrackF12() ? 1 : 0,
+    trackTab: shouldTrackTab() ? 1 : 0,
+    f12: Number(liveSecurityState.f12 || 0) || 0,
+    tab: Number(liveSecurityState.tab || 0) || 0
+  };
+}
+
+function snapshotRequestsF12Tracking() {
+  return !!(
+    snapshotPayload &&
+    snapshotPayload.sec &&
+    (
+      snapshotPayload.sec.trackF12 === 1 ||
+      snapshotPayload.sec.trackF12 === true
+    )
+  );
+}
+
+function snapshotRequestsTabTracking() {
+  return !!(
+    snapshotPayload &&
+    snapshotPayload.sec &&
+    (
+      snapshotPayload.sec.trackTab === 1 ||
+      snapshotPayload.sec.trackTab === true
+    )
+  );
+}
+
+function renderF12FraudWarningHtml() {
+  if (!isSharedFreezeLinkMode()) return "";
+
+  const count = getSnapshotF12Count();
+  const wantsTracking = snapshotRequestsF12Tracking() || shouldTrackF12();
+
+  if (!wantsTracking) return "";
+  if (count <= 0) return "";
+
+  const wrongColor = escapeHtml(getEvaluationFeedbackColor("wrong"));
+
+  return [
+    '<div style="margin-top:1rem;font-weight:800;font-size:2.35rem;padding:1rem 1.05rem;border-radius:12px;',
+      'border:1px solid ', wrongColor, ';',
+      'background:color-mix(in srgb, ', wrongColor, ' 12%, var(--lia-course-bg) 88%);',
+      'color:', wrongColor, ';">',
+      'Ein Betrugsversuch durch Drücken der F12-Taste bzw. Öffnen der DevTools liegt vor.',
+    '</div>'
+  ].join("");
+}
+
+function renderTabFraudWarningHtml() {
+  if (!isSharedFreezeLinkMode()) return "";
+
+  const count = getSnapshotTabCount();
+  const wantsTracking = snapshotRequestsTabTracking() || shouldTrackTab();
+
+  if (!wantsTracking) return "";
+  if (count <= 0) return "";
+
+  const wrongColor = escapeHtml(getEvaluationFeedbackColor("wrong"));
+
+  return [
+    '<div style="margin-top:.85rem;font-weight:800;font-size:2.35rem;padding:1rem 1.05rem;border-radius:12px;',
+      'border:1px solid ', wrongColor, ';',
+      'background:color-mix(in srgb, ', wrongColor, ' 12%, var(--lia-course-bg) 88%);',
+      'color:', wrongColor, ';">',
+      'Ein Betrugsversuch durch Verlassen des Tabs oder Browserfensters liegt vor.',
+    '</div>'
+  ].join("");
+}
+
 function parseDeclaredSlidesFromSource(text) {
   const src = stripLeadingHeaderComment(text);
   const lines = src.split(/\r?\n/);
@@ -1004,7 +1214,8 @@ function parseDeclaredSlidesFromSource(text) {
 
     if (inFence) continue;
 
-    if (/^\s*@Auswertung(?:\s|$)/.test(line)) {
+    const evalMatch = line.match(/^\s*@Auswertung(?:\s*\(([^)]*)\))?\s*$/);
+    if (evalMatch) {
       hasEvaluationMacro = true;
     }
 
@@ -1284,39 +1495,53 @@ function getDeclaredSlideTaskCount(slide) {
 }
 
 
-  async function ensureDeclaredSlides() {
-    if (declaredSlidesCache && declaredSlidesCache.length) {
-      return declaredSlidesCache.slice().sort(hashSort);
-    }
+async function ensureDeclaredSlides(force) {
+  if (!force && declaredSlidesLoaded && declaredSlidesCache && declaredSlidesCache.length) {
+    return declaredSlidesCache.slice().sort(hashSort);
+  }
 
-    const courseUrl = stripSubmissionFromCourseUrl(getCourseUrlFromViewerUrl());
-    if (!courseUrl) {
-      declaredSlidesCache = [{
+  const courseUrl = stripSubmissionFromCourseUrl(getCourseUrlFromViewerUrl());
+  if (!courseUrl) {
+      declaredEvaluationOptions = {
+        trackF12: false,
+        trackTab: false
+      };
+    declaredEvaluationByHash = Object.create(null);
+    declaredSlidesCache = [{
+      h: "#1",
+      t: getCurrentSlideTitle() || ""
+    }];
+    declaredSlidesLoaded = true;
+    log("declared-eval-options", JSON.stringify(declaredEvaluationOptions));
+    return declaredSlidesCache.slice();
+  }
+
+  const resp = await fetch(courseUrl, { cache: "no-store" });
+  if (!resp.ok) {
+    throw new Error("Kursquelle konnte nicht geladen werden (" + resp.status + ").");
+  }
+
+  const text = await resp.text();
+
+  declaredEvaluationOptions = parseEvaluationOptionsFromSource(text);
+  declaredEvaluationByHash = parseDeclaredEvaluationFromSource(text);
+
+  const parsed = parseDeclaredSlidesFromSource(text);
+
+  declaredSlidesCache = parsed.length
+    ? parsed
+    : [{
         h: "#1",
         t: getCurrentSlideTitle() || ""
       }];
-      return declaredSlidesCache.slice();
-    }
 
-    const resp = await fetch(courseUrl, { cache: "no-store" });
-    if (!resp.ok) {
-      throw new Error("Kursquelle konnte nicht geladen werden (" + resp.status + ").");
-    }
+  declaredSlidesCache = declaredSlidesCache.slice().sort(hashSort);
+  declaredSlidesLoaded = true;
 
-    const text = await resp.text();
-    declaredEvaluationByHash = parseDeclaredEvaluationFromSource(text);
-    const parsed = parseDeclaredSlidesFromSource(text);
+  log("declared-eval-options", JSON.stringify(declaredEvaluationOptions));
 
-    declaredSlidesCache = parsed.length
-      ? parsed
-      : [{
-          h: "#1",
-          t: getCurrentSlideTitle() || ""
-        }];
-
-    declaredSlidesCache = declaredSlidesCache.slice().sort(hashSort);
-    return declaredSlidesCache.slice();
-  }
+  return declaredSlidesCache.slice();
+}
 
   function getDeclaredSlides() {
     return (declaredSlidesCache || []).slice().sort(hashSort);
@@ -1930,6 +2155,8 @@ function renderEvaluationPlaceholderHtml(hash) {
   const correct = Number(stats.correct || 0);
   const total = Number(stats.total || 0);
   const percentText = formatEvaluationPercent(correct, total);
+  const fraudWarningF12 = renderF12FraudWarningHtml();
+  const fraudWarningTab = renderTabFraudWarningHtml();
 
   const tagSection = tagStats.length
     ? [
@@ -1969,6 +2196,9 @@ function renderEvaluationPlaceholderHtml(hash) {
       '%</big></big></big></big></big></strong>.<br>',
       '<span style="opacity:.82;">Berücksichtigt werden die im Freeze-Snapshot gespeicherten Aufgabenzustände.</span>',
     '</div>',
+
+    fraudWarningF12,
+    fraudWarningTab,
 
     tagSection
   ].join("");
@@ -2624,7 +2854,7 @@ async function buildPayloadFromAllSlides() {
     await sleep(80);
   }
 
-  return {
+  const payload = {
     v: PAYLOAD_VERSION,
     sh: startHash,
     n: displayName,
@@ -2632,6 +2862,10 @@ async function buildPayloadFromAllSlides() {
       return liveSlidesByHash[slide.h] || makeEmptySlideState(slide.h);
     })
   };
+
+  payload.sec = getSerializableSecurityState();
+
+  return payload;
 }
 
 
@@ -5850,7 +6084,7 @@ function buildPayloadFromLiveStates() {
     return !(slide && slide.vt === "evaluation");
   });
 
-  return {
+  const payload = {
     v: PAYLOAD_VERSION,
     sh: getCurrentHash(),
     n: getDisplayName(),
@@ -5867,6 +6101,10 @@ function buildPayloadFromLiveStates() {
       return out;
     })
   };
+
+  payload.sec = getSerializableSecurityState();
+
+  return payload;
 }
 
   function getSnapshotSlideForHash(hash) {
@@ -6608,6 +6846,302 @@ async function runApplyCycle(hash, runToken, attemptDelays, reason) {
   // Live-Bindings
   // =========================================================
 
+
+function getRootWindowSafe() {
+  let w = window;
+  try {
+    while (w.parent && w.parent !== w) {
+      w = w.parent;
+    }
+  } catch (e) {}
+  return w;
+}
+
+function isF12KeyboardEvent(e) {
+  const key = String(e && e.key || "");
+  const code = String(e && e.code || "");
+  const keyCode = Number(e && (e.keyCode || e.which) || 0);
+
+  return key === "F12" || code === "F12" || keyCode === 123;
+}
+
+function markF12Attempt(e) {
+  const type = String(e && e.type || "unknown");
+  const ts = Math.round(Number(e && e.timeStamp || Date.now()));
+  const COALESCE_MS = 1200;
+
+  if (Number.isFinite(ts) && ts >= 0) {
+    if (lastTrackedF12Stamp >= 0 && Math.abs(ts - lastTrackedF12Stamp) <= 40) {
+      return;
+    }
+  }
+
+  if (type === "keydown") {
+    lastTrackedF12KeyStamp = ts;
+  }
+
+  if (type === "devtools-open") {
+    if (
+      lastTrackedF12KeyStamp >= 0 &&
+      ts >= lastTrackedF12KeyStamp &&
+      (ts - lastTrackedF12KeyStamp) <= COALESCE_MS
+    ) {
+      log(
+        "security-f12-coalesced",
+        "devtools-open merged with recent F12 keydown",
+        "delta=" + (ts - lastTrackedF12KeyStamp)
+      );
+      lastTrackedF12Stamp = ts;
+      return;
+    }
+  }
+
+  lastTrackedF12Stamp = ts;
+  liveSecurityState.f12 = (Number(liveSecurityState.f12 || 0) || 0) + 1;
+
+  log(
+    "security-f12",
+    "count=" + liveSecurityState.f12,
+    "type=" + type
+  );
+}
+
+function markTabAttempt(kind, stamp) {
+  const ts = Math.round(Number(stamp || Date.now()));
+
+  if (Number.isFinite(ts) && ts >= 0) {
+    if (lastTrackedTabStamp >= 0 && Math.abs(ts - lastTrackedTabStamp) <= 500) {
+      return;
+    }
+    lastTrackedTabStamp = ts;
+  }
+
+  liveSecurityState.tab = (Number(liveSecurityState.tab || 0) || 0) + 1;
+
+  log(
+    "security-tab",
+    "count=" + liveSecurityState.tab,
+    "type=" + String(kind || "unknown")
+  );
+}
+
+function isLikelyDevtoolsOpen() {
+  const outerW = Number(window.outerWidth || 0);
+  const innerW = Number(window.innerWidth || 0);
+  const outerH = Number(window.outerHeight || 0);
+  const innerH = Number(window.innerHeight || 0);
+
+  const widthGap = Math.abs(outerW - innerW);
+  const heightGap = Math.abs(outerH - innerH);
+
+  if (widthGap > 170) return true;
+  if (heightGap > 170) return true;
+
+  try {
+    if (
+      window.Firebug &&
+      window.Firebug.chrome &&
+      window.Firebug.chrome.isInitialized
+    ) {
+      return true;
+    }
+  } catch (e) {}
+
+  return false;
+}
+
+function installDevtoolsWatch() {
+  if (devtoolsWatchInstalled) return;
+  devtoolsWatchInstalled = true;
+
+  devtoolsLikelyOpen = isLikelyDevtoolsOpen();
+
+  // Schon beim Start offen => direkt als Versuch werten
+  if (
+    devtoolsLikelyOpen &&
+    !(document.body && document.body.classList.contains("lia-snapshot-mode"))
+  ) {
+    markF12Attempt({
+      type: "devtools-open-initial",
+      timeStamp: Date.now()
+    });
+  }
+
+  function probe() {
+    if (document.body && document.body.classList.contains("lia-snapshot-mode")) return;
+
+    const openNow = isLikelyDevtoolsOpen();
+
+    if (openNow && !devtoolsLikelyOpen) {
+      markF12Attempt({
+        type: "devtools-open",
+        timeStamp: Date.now()
+      });
+    }
+
+    devtoolsLikelyOpen = openNow;
+  }
+
+  window.addEventListener("resize", function () {
+    setTimeout(probe, 60);
+  }, true);
+
+  window.addEventListener("focus", function () {
+    setTimeout(probe, 60);
+  }, true);
+
+  devtoolsWatchTimer = window.setInterval(probe, 700);
+}
+
+function installGlobalF12Tracking() {
+  if (f12TrackingInstalled) return;
+  f12TrackingInstalled = true;
+
+  function handler(e) {
+    if (document.body && document.body.classList.contains("lia-snapshot-mode")) return;
+    if (!isF12KeyboardEvent(e)) return;
+    if (e && e.repeat) return;
+
+    markF12Attempt(e);
+  }
+
+  const root = getRootWindowSafe();
+  const targets = uniqueElements([
+    window,
+    document,
+    document.documentElement,
+    document.body,
+    root,
+    root && root.document
+  ]);
+
+  targets.forEach(function (target) {
+    if (!target || !target.addEventListener) return;
+    target.addEventListener("keydown", handler, true);
+  });
+}
+
+function installGlobalTabTracking() {
+  if (tabTrackingInstalled) return;
+  tabTrackingInstalled = true;
+
+  const root = getRootWindowSafe();
+  const winTargets = uniqueElements([window, root]);
+  const docTargets = uniqueElements([document, root && root.document]);
+
+  function inSnapshotMode() {
+    return !!(
+      document.body &&
+      document.body.classList.contains("lia-snapshot-mode")
+    );
+  }
+
+  function isTabCurrentlyActive() {
+    let visible = true;
+    let focused = true;
+
+    try {
+      visible = String(document.visibilityState || "") !== "hidden";
+    } catch (e) {}
+
+    try {
+      focused = typeof document.hasFocus === "function"
+        ? !!document.hasFocus()
+        : true;
+    } catch (e) {}
+
+    return visible && focused;
+  }
+
+  function tryArmTabTracking(reason) {
+    if (inSnapshotMode()) return;
+    if (!shouldTrackTab()) return;
+    if (tabTrackingArmed) return;
+    if (!isTabCurrentlyActive()) return;
+
+    tabTrackingArmed = true;
+    log("security-tab-armed", "type=" + String(reason || "active"));
+  }
+
+  function scheduleBlurProbe(kind) {
+    if (inSnapshotMode()) return;
+    if (!shouldTrackTab()) return;
+    if (!tabTrackingArmed) return;
+
+    clearTimeout(tabBlurProbeTimer);
+
+    tabBlurProbeTimer = window.setTimeout(function () {
+      if (inSnapshotMode()) return;
+      if (!tabTrackingArmed) return;
+
+      let hidden = false;
+      let unfocused = false;
+
+      try {
+        hidden = String(document.visibilityState || "") === "hidden";
+      } catch (e) {}
+
+      try {
+        unfocused = typeof document.hasFocus === "function"
+          ? !document.hasFocus()
+          : true;
+      } catch (e) {
+        unfocused = true;
+      }
+
+      if (hidden || unfocused) {
+        markTabAttempt(kind, Date.now());
+      }
+    }, 80);
+  }
+
+  function onVisibilityChange(e) {
+    if (inSnapshotMode()) return;
+    if (!shouldTrackTab()) return;
+
+    const doc = e && e.currentTarget && typeof e.currentTarget.visibilityState === "string"
+      ? e.currentTarget
+      : document;
+
+    const state = String(doc.visibilityState || "");
+
+    if (state === "visible") {
+      tryArmTabTracking("tab-visible");
+      return;
+    }
+
+    if (state === "hidden") {
+      if (!tabTrackingArmed) return;
+      markTabAttempt("tab-hidden", Date.now());
+    }
+  }
+
+  docTargets.forEach(function (target) {
+    if (!target || !target.addEventListener) return;
+    target.addEventListener("visibilitychange", onVisibilityChange, true);
+  });
+
+  winTargets.forEach(function (target) {
+    if (!target || !target.addEventListener) return;
+
+    target.addEventListener("focus", function () {
+      tryArmTabTracking("window-focus");
+    }, true);
+
+    target.addEventListener("pageshow", function () {
+      tryArmTabTracking("pageshow");
+    }, true);
+
+    target.addEventListener("blur", function () {
+      scheduleBlurProbe("window-blur");
+    }, true);
+  });
+
+  setTimeout(function () {
+    tryArmTabTracking("boot");
+  }, 250);
+}
+
 function installLiveCaptureBindings() {
   if (liveBindingsInstalled) return;
   liveBindingsInstalled = true;
@@ -6931,12 +7465,13 @@ async function activateSnapshotMode(payload, linkValue, opts) {
   opts = opts || {};
 
   snapshotPayload = payload || null;
+  console.log("[LIA-FREEZE] snapshot-loaded", JSON.stringify(snapshotPayload));
   if (!snapshotPayload) return false;
 
   snapshotIsSharedLinkMode = !!opts.sharedLinkMode;
   freezeLinkValue = String(linkValue || window.location.href || "");
 
-  await ensureDeclaredSlides();
+  await ensureDeclaredSlides(true);
 
   ensureSnapshotModeClasses();
   getFreezeBar();
@@ -6970,12 +7505,13 @@ async function activateSnapshotMode(payload, linkValue, opts) {
         btnEl.textContent = "Abgabelink wird erstellt …";
       }
 
-      await ensureDeclaredSlides();
+      await ensureDeclaredSlides(true);
 
       captureAdminState();
       storeLiveSlideState(liveRouteCurrentHash || getCurrentHash(), "createLink");
 
       const payload = buildPayloadFromLiveStates();
+      console.log("[LIA-FREEZE] payload-before-link", JSON.stringify(payload));
       const link = buildLink(payload);
 
       freezeLinkValue = link;
@@ -6990,7 +7526,20 @@ async function activateSnapshotMode(payload, linkValue, opts) {
         linkEl.style.webkitUserSelect = "text";
       }
 
-      setStatus("Abgabelink erstellt.");
+      setStatus(
+        "Abgabelink erstellt. F12/DevTools: " +
+        (
+          payload &&
+          payload.sec &&
+          Number(payload.sec.f12 || 0)
+        ) +
+        " · Tab/Fenster: " +
+        (
+          payload &&
+          payload.sec &&
+          Number(payload.sec.tab || 0)
+        )
+      );
       await activateSnapshotMode(payload, link, {
         sharedLinkMode: false
       });
@@ -7028,12 +7577,15 @@ async function initMode() {
   await ensureDeclaredSlides();
   installLiveCaptureBindings();
   scheduleAssignmentDetailsRefresh(180);
-}
+  }
 
   function safeBoot() {
     try {
       ensureRuntimeStyle();
       installThemeWatcher();
+      installGlobalF12Tracking();
+      installGlobalTabTracking();
+      installDevtoolsWatch();
       initMode().catch(function (err) {
         console.error("[LIA-FREEZE] boot-error", err);
       });
@@ -7111,6 +7663,15 @@ Abgabefeld über Makro: \
 
 Automatisches Auswerten: \
 `@Auswertung`
+
+Tracking von Betrugsversuchen über DevTools: \
+`@Auswertung(F12)`
+
+Tracking von Betrugsversuchen über Tab-/Fensterwechsel: \
+`@Auswertung(Tab)`
+
+Tracking von Betrugsversuchen im Allgemeinen: \
+`@Auswertung(F12;Tab)`
 
 Aufgaben mit Bewertungseinheiten und Tags versehen: \
 `@ADetails(x=BE;Tag1,Tag2,...)` (mit einer Leerzeile hinter dem Quiz einfügen.)
@@ -7310,7 +7871,7 @@ Kommentare werden auch eingefroren
 
 @Abgabe
 
-@Auswertung
+@Auswertung(F12;Tab)
 
 
 

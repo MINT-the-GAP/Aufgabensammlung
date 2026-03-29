@@ -64,15 +64,25 @@ window.__liaSubmissionDemo = (function () {
   let devtoolsWatchTimer = 0;
   let devtoolsLikelyOpen = false;
 
+  let tabTrackingArmed = false;
   let f12TrackingInstalled = false;
+  let tabTrackingInstalled = false;
+
   let lastTrackedF12Stamp = -1;
-  let lastTrackedF12KeyStamp = -1;
+  let lastTrackedTabStamp = -1;
+  let tabBlurProbeTimer = 0;
+
   let declaredEvaluationOptions = {
-    trackF12: false
+    trackF12: false,
+    trackTab: false
   };
+
   let liveSecurityState = {
-    f12: 0
+    f12: 0,
+    tab: 0
   };
+  
+  let lastTrackedF12KeyStamp = -1;
   let declaredSlidesLoaded = false;
 
   // =========================================================
@@ -992,7 +1002,8 @@ body.lia-snapshot-mode #lia-freeze-info{
 
 function parseEvaluationMacroOptions(raw) {
   const out = {
-    trackF12: false
+    trackF12: false,
+    trackTab: false
   };
 
   const txt = normalizeSpace(raw || "");
@@ -1005,6 +1016,11 @@ function parseEvaluationMacroOptions(raw) {
     .forEach(function (flag) {
       if (/^f12$/i.test(flag)) {
         out.trackF12 = true;
+        return;
+      }
+
+      if (/^tab$/i.test(flag)) {
+        out.trackTab = true;
       }
     });
 
@@ -1017,6 +1033,11 @@ function parseEvaluationOptionsFromSource(text) {
 
   let inFence = false;
   let fenceToken = "";
+
+  const out = {
+    trackF12: false,
+    trackTab: false
+  };
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
@@ -1040,19 +1061,33 @@ function parseEvaluationOptionsFromSource(text) {
 
     if (inFence) continue;
 
-    const m = line.match(/^\s*@Auswertung(?:\s*\(([^)]*)\))?\s*$/);
-    if (m) {
-      return parseEvaluationMacroOptions(m[1] || "");
-    }
+    const trimmed = String(line || "").trim();
+
+    const m = trimmed.match(/^@Auswertung(?:\s*\(([^)]*)\))?\s*$/);
+    if (!m) continue;
+
+    const opts = parseEvaluationMacroOptions(m[1] || "");
+
+    if (opts.trackF12) out.trackF12 = true;
+    if (opts.trackTab) out.trackTab = true;
+
+    log(
+      "eval-option-match",
+      "line=" + (i + 1),
+      "raw=" + trimmed,
+      JSON.stringify(out)
+    );
   }
 
-  return {
-    trackF12: false
-  };
+  return out;
 }
 
 function shouldTrackF12() {
   return !!(declaredEvaluationOptions && declaredEvaluationOptions.trackF12);
+}
+
+function shouldTrackTab() {
+  return !!(declaredEvaluationOptions && declaredEvaluationOptions.trackTab);
 }
 
 function getSnapshotF12Count() {
@@ -1066,55 +1101,56 @@ function getSnapshotF12Count() {
   return 0;
 }
 
-function getSerializableSecurityState() {
-  const count = Number(liveSecurityState.f12 || 0) || 0;
+function getSnapshotTabCount() {
+  const n = Number(
+    snapshotPayload &&
+    snapshotPayload.sec &&
+    snapshotPayload.sec.tab
+  );
 
+  if (Number.isFinite(n) && n > 0) return n;
+  return 0;
+}
+
+function getSerializableSecurityState() {
   return {
-    trackF12: (shouldTrackF12() || count > 0) ? 1 : 0,
-    f12: count
+    trackF12: shouldTrackF12() ? 1 : 0,
+    trackTab: shouldTrackTab() ? 1 : 0,
+    f12: Number(liveSecurityState.f12 || 0) || 0,
+    tab: Number(liveSecurityState.tab || 0) || 0
   };
 }
 
 function snapshotRequestsF12Tracking() {
-  const sec = snapshotPayload && snapshotPayload.sec;
-  if (!sec) return false;
+  return !!(
+    snapshotPayload &&
+    snapshotPayload.sec &&
+    (
+      snapshotPayload.sec.trackF12 === 1 ||
+      snapshotPayload.sec.trackF12 === true
+    )
+  );
+}
 
-  if (sec.trackF12 === 1 || sec.trackF12 === true) {
-    return true;
-  }
-
-  if (Number(sec.f12 || 0) > 0) {
-    return true;
-  }
-
-  return false;
+function snapshotRequestsTabTracking() {
+  return !!(
+    snapshotPayload &&
+    snapshotPayload.sec &&
+    (
+      snapshotPayload.sec.trackTab === 1 ||
+      snapshotPayload.sec.trackTab === true
+    )
+  );
 }
 
 function renderF12FraudWarningHtml() {
-  const inFreezeMode = !!(
-    document.body &&
-    document.body.classList.contains("lia-snapshot-mode")
-  );
+  if (!isSharedFreezeLinkMode()) return "";
 
-  const shared = isSharedFreezeLinkMode();
   const count = getSnapshotF12Count();
-  const wantsTracking =
-    snapshotRequestsF12Tracking() ||
-    shouldTrackF12();
+  const wantsTracking = snapshotRequestsF12Tracking() || shouldTrackF12();
 
-  log(
-    "fraud-banner-check",
-    "freeze=" + (inFreezeMode ? 1 : 0),
-    "shared=" + (shared ? 1 : 0),
-    "snapshotTrackF12=" + (snapshotRequestsF12Tracking() ? 1 : 0),
-    "declaredTrackF12=" + (shouldTrackF12() ? 1 : 0),
-    "count=" + count
-  );
-
-  if (!inFreezeMode) return "";
-  if (!shared) return "";
-  if (count <= 0) return "";
   if (!wantsTracking) return "";
+  if (count <= 0) return "";
 
   const wrongColor = escapeHtml(getEvaluationFeedbackColor("wrong"));
 
@@ -1123,7 +1159,28 @@ function renderF12FraudWarningHtml() {
       'border:1px solid ', wrongColor, ';',
       'background:color-mix(in srgb, ', wrongColor, ' 12%, var(--lia-course-bg) 88%);',
       'color:', wrongColor, ';">',
-      'Ein Betrugsversuch durch Drücken der F12-Taste liegt vor.<br>',
+      'Ein Betrugsversuch durch Drücken der F12-Taste bzw. Öffnen der DevTools liegt vor.',
+    '</div>'
+  ].join("");
+}
+
+function renderTabFraudWarningHtml() {
+  if (!isSharedFreezeLinkMode()) return "";
+
+  const count = getSnapshotTabCount();
+  const wantsTracking = snapshotRequestsTabTracking() || shouldTrackTab();
+
+  if (!wantsTracking) return "";
+  if (count <= 0) return "";
+
+  const wrongColor = escapeHtml(getEvaluationFeedbackColor("wrong"));
+
+  return [
+    '<div style="margin-top:.85rem;font-weight:800;font-size:2.35rem;padding:1rem 1.05rem;border-radius:12px;',
+      'border:1px solid ', wrongColor, ';',
+      'background:color-mix(in srgb, ', wrongColor, ' 12%, var(--lia-course-bg) 88%);',
+      'color:', wrongColor, ';">',
+      'Ein Betrugsversuch durch Verlassen des Tabs oder Browserfensters liegt vor.',
     '</div>'
   ].join("");
 }
@@ -1445,7 +1502,10 @@ async function ensureDeclaredSlides(force) {
 
   const courseUrl = stripSubmissionFromCourseUrl(getCourseUrlFromViewerUrl());
   if (!courseUrl) {
-    declaredEvaluationOptions = { trackF12: false };
+      declaredEvaluationOptions = {
+        trackF12: false,
+        trackTab: false
+      };
     declaredEvaluationByHash = Object.create(null);
     declaredSlidesCache = [{
       h: "#1",
@@ -2095,7 +2155,8 @@ function renderEvaluationPlaceholderHtml(hash) {
   const correct = Number(stats.correct || 0);
   const total = Number(stats.total || 0);
   const percentText = formatEvaluationPercent(correct, total);
-  const fraudWarning = renderF12FraudWarningHtml();
+  const fraudWarningF12 = renderF12FraudWarningHtml();
+  const fraudWarningTab = renderTabFraudWarningHtml();
 
   const tagSection = tagStats.length
     ? [
@@ -2136,7 +2197,8 @@ function renderEvaluationPlaceholderHtml(hash) {
       '<span style="opacity:.82;">Berücksichtigt werden die im Freeze-Snapshot gespeicherten Aufgabenzustände.</span>',
     '</div>',
 
-    fraudWarning,
+    fraudWarningF12,
+    fraudWarningTab,
 
     tagSection
   ].join("");
@@ -6844,6 +6906,25 @@ function markF12Attempt(e) {
   );
 }
 
+function markTabAttempt(kind, stamp) {
+  const ts = Math.round(Number(stamp || Date.now()));
+
+  if (Number.isFinite(ts) && ts >= 0) {
+    if (lastTrackedTabStamp >= 0 && Math.abs(ts - lastTrackedTabStamp) <= 500) {
+      return;
+    }
+    lastTrackedTabStamp = ts;
+  }
+
+  liveSecurityState.tab = (Number(liveSecurityState.tab || 0) || 0) + 1;
+
+  log(
+    "security-tab",
+    "count=" + liveSecurityState.tab,
+    "type=" + String(kind || "unknown")
+  );
+}
+
 function isLikelyDevtoolsOpen() {
   const outerW = Number(window.outerWidth || 0);
   const innerW = Number(window.innerWidth || 0);
@@ -6940,6 +7021,126 @@ function installGlobalF12Tracking() {
   });
 }
 
+function installGlobalTabTracking() {
+  if (tabTrackingInstalled) return;
+  tabTrackingInstalled = true;
+
+  const root = getRootWindowSafe();
+  const winTargets = uniqueElements([window, root]);
+  const docTargets = uniqueElements([document, root && root.document]);
+
+  function inSnapshotMode() {
+    return !!(
+      document.body &&
+      document.body.classList.contains("lia-snapshot-mode")
+    );
+  }
+
+  function isTabCurrentlyActive() {
+    let visible = true;
+    let focused = true;
+
+    try {
+      visible = String(document.visibilityState || "") !== "hidden";
+    } catch (e) {}
+
+    try {
+      focused = typeof document.hasFocus === "function"
+        ? !!document.hasFocus()
+        : true;
+    } catch (e) {}
+
+    return visible && focused;
+  }
+
+  function tryArmTabTracking(reason) {
+    if (inSnapshotMode()) return;
+    if (!shouldTrackTab()) return;
+    if (tabTrackingArmed) return;
+    if (!isTabCurrentlyActive()) return;
+
+    tabTrackingArmed = true;
+    log("security-tab-armed", "type=" + String(reason || "active"));
+  }
+
+  function scheduleBlurProbe(kind) {
+    if (inSnapshotMode()) return;
+    if (!shouldTrackTab()) return;
+    if (!tabTrackingArmed) return;
+
+    clearTimeout(tabBlurProbeTimer);
+
+    tabBlurProbeTimer = window.setTimeout(function () {
+      if (inSnapshotMode()) return;
+      if (!tabTrackingArmed) return;
+
+      let hidden = false;
+      let unfocused = false;
+
+      try {
+        hidden = String(document.visibilityState || "") === "hidden";
+      } catch (e) {}
+
+      try {
+        unfocused = typeof document.hasFocus === "function"
+          ? !document.hasFocus()
+          : true;
+      } catch (e) {
+        unfocused = true;
+      }
+
+      if (hidden || unfocused) {
+        markTabAttempt(kind, Date.now());
+      }
+    }, 80);
+  }
+
+  function onVisibilityChange(e) {
+    if (inSnapshotMode()) return;
+    if (!shouldTrackTab()) return;
+
+    const doc = e && e.currentTarget && typeof e.currentTarget.visibilityState === "string"
+      ? e.currentTarget
+      : document;
+
+    const state = String(doc.visibilityState || "");
+
+    if (state === "visible") {
+      tryArmTabTracking("tab-visible");
+      return;
+    }
+
+    if (state === "hidden") {
+      if (!tabTrackingArmed) return;
+      markTabAttempt("tab-hidden", Date.now());
+    }
+  }
+
+  docTargets.forEach(function (target) {
+    if (!target || !target.addEventListener) return;
+    target.addEventListener("visibilitychange", onVisibilityChange, true);
+  });
+
+  winTargets.forEach(function (target) {
+    if (!target || !target.addEventListener) return;
+
+    target.addEventListener("focus", function () {
+      tryArmTabTracking("window-focus");
+    }, true);
+
+    target.addEventListener("pageshow", function () {
+      tryArmTabTracking("pageshow");
+    }, true);
+
+    target.addEventListener("blur", function () {
+      scheduleBlurProbe("window-blur");
+    }, true);
+  });
+
+  setTimeout(function () {
+    tryArmTabTracking("boot");
+  }, 250);
+}
 
 function installLiveCaptureBindings() {
   if (liveBindingsInstalled) return;
@@ -7326,11 +7527,17 @@ async function activateSnapshotMode(payload, linkValue, opts) {
       }
 
       setStatus(
-        "Abgabelink erstellt. F12/DevTools im Payload: " +
+        "Abgabelink erstellt. F12/DevTools: " +
         (
           payload &&
           payload.sec &&
           Number(payload.sec.f12 || 0)
+        ) +
+        " · Tab/Fenster: " +
+        (
+          payload &&
+          payload.sec &&
+          Number(payload.sec.tab || 0)
         )
       );
       await activateSnapshotMode(payload, link, {
@@ -7377,6 +7584,7 @@ async function initMode() {
       ensureRuntimeStyle();
       installThemeWatcher();
       installGlobalF12Tracking();
+      installGlobalTabTracking();
       installDevtoolsWatch();
       initMode().catch(function (err) {
         console.error("[LIA-FREEZE] boot-error", err);
@@ -7458,6 +7666,12 @@ Automatisches Auswerten: \
 
 Tracking von Betrugsversuchen über DevTools: \
 `@Auswertung(F12)`
+
+Tracking von Betrugsversuchen über Tab-/Fensterwechsel: \
+`@Auswertung(Tab)`
+
+Tracking von Betrugsversuchen im Allgemeinen: \
+`@Auswertung(F12;Tab)`
 
 Aufgaben mit Bewertungseinheiten und Tags versehen: \
 `@ADetails(x=BE;Tag1,Tag2,...)` (mit einer Leerzeile hinter dem Quiz einfügen.)
@@ -7657,7 +7871,7 @@ Kommentare werden auch eingefroren
 
 @Abgabe
 
-@Auswertung(F12)
+@Auswertung(F12;Tab)
 
 
 
