@@ -3204,6 +3204,10 @@ function applyStoredChoiceStatesToHost(host, storedStates) {
 
 
 
+
+
+
+
 function escapeRegExp(str) {
   return String(str || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
@@ -3252,7 +3256,7 @@ function getFractionRepInfo(rep) {
     return parseFractionOutputSpec(rep.getAttribute("output"));
   }
 
-  const input = rep.querySelector && rep.querySelector("input.lia-range[output]");
+  const input = rep.querySelector && rep.querySelector("input[type='range'][output]");
   if (!input) return null;
 
   return parseFractionOutputSpec(input.getAttribute("output"));
@@ -3268,6 +3272,47 @@ function getFractionQuizTypeFromRep(rep) {
   return info ? info.tp : "";
 }
 
+function getFractionQuizKindNameFromInfo(info) {
+  if (!info) return "";
+  return info.tp === "c" ? "circle" : (info.tp === "r" ? "rect" : "");
+}
+
+function isFractionWidgetForInfo(el, info) {
+  if (!el || !(el instanceof Element) || !info) return false;
+  if (!el.classList || !el.classList.contains("fq-widget")) return false;
+
+  const uid = String(el.getAttribute("data-fq-uid") || "");
+  const kind = String(el.getAttribute("data-fq-kind") || "");
+
+  return uid === String(info.uid || "") && kind === getFractionQuizKindNameFromInfo(info);
+}
+
+function getFractionWidgetFromRep(rep) {
+  const info = getFractionRepInfo(rep);
+  if (!info) return null;
+
+  let node = rep instanceof Element ? rep : null;
+  let best = null;
+
+  while (node && node !== document.body) {
+    if (isFractionWidgetForInfo(node, info)) {
+      best = node;
+    }
+    node = node.parentElement;
+  }
+
+  if (best) return best;
+
+  if (rep && rep.querySelector) {
+    const nested = rep.querySelector(
+      '.fq-widget[data-fq-uid="' + info.uid + '"][data-fq-kind="' + getFractionQuizKindNameFromInfo(info) + '"]'
+    );
+    if (nested) return nested;
+  }
+
+  return null;
+}
+
 function getFractionQuizKey(rep, idx) {
   const info = getFractionRepInfo(rep);
   if (info && info.uid) {
@@ -3280,17 +3325,35 @@ function getFractionRangeInputsForRep(rep) {
   const info = getFractionRepInfo(rep);
   if (!info) return [];
 
-  const host = getContentHost() || document.body;
-  const inputs = Array.from(
-    host.querySelectorAll("input.lia-range[output]")
-  ).filter(function (el) {
-    const spec = parseFractionOutputSpec(el.getAttribute("output"));
-    return !!(
-      spec &&
-      spec.uid === info.uid &&
-      spec.tp === info.tp
-    );
-  });
+  const localScope = getFractionWidgetFromRep(rep) || rep;
+  let inputs = [];
+
+  if (localScope && localScope.querySelectorAll) {
+    inputs = Array.from(
+      localScope.querySelectorAll("input[type='range'][output]")
+    ).filter(function (el) {
+      const spec = parseFractionOutputSpec(el.getAttribute("output"));
+      return !!(
+        spec &&
+        spec.uid === info.uid &&
+        spec.tp === info.tp
+      );
+    });
+  }
+
+  if (!inputs.length) {
+    const host = getContentHost() || document.body;
+    inputs = Array.from(
+      host.querySelectorAll("input[type='range'][output]")
+    ).filter(function (el) {
+      const spec = parseFractionOutputSpec(el.getAttribute("output"));
+      return !!(
+        spec &&
+        spec.uid === info.uid &&
+        spec.tp === info.tp
+      );
+    });
+  }
 
   inputs.sort(function (a, b) {
     const sa = parseFractionOutputSpec(a.getAttribute("output"));
@@ -3305,13 +3368,13 @@ function getFractionRangeInputsForRep(rep) {
 
 function getFractionFirstRangeWrap(rep) {
   const inputs = getFractionRangeInputsForRep(rep);
-  if (!inputs.length) return rep;
+  if (!inputs.length) return getFractionWidgetFromRep(rep) || rep;
   return inputs[0].closest(".fq-range") || inputs[0];
 }
 
 function getFractionLastRangeWrap(rep) {
   const inputs = getFractionRangeInputsForRep(rep);
-  if (!inputs.length) return rep;
+  if (!inputs.length) return getFractionWidgetFromRep(rep) || rep;
   const last = inputs[inputs.length - 1];
   return last.closest(".fq-range") || last;
 }
@@ -3334,6 +3397,12 @@ function hasFractionToggleForUid(el, tp, uid) {
 }
 
 function getFractionSvgFromRep(rep) {
+  const widget = getFractionWidgetFromRep(rep);
+  if (widget) {
+    const mountSvg = widget.querySelector(".fq-mount svg");
+    if (mountSvg) return mountSvg;
+  }
+
   const info = getFractionRepInfo(rep);
   if (!info) return null;
 
@@ -3368,6 +3437,29 @@ function getFractionSvgFromRep(rep) {
 }
 
 function getFractionQuizRootFromRep(rep) {
+  const widget = getFractionWidgetFromRep(rep);
+
+  if (widget) {
+    const innerQuiz = widget.querySelector(".lia-quiz");
+    if (innerQuiz) return innerQuiz;
+
+    let node = widget.nextElementSibling;
+    let hops = 0;
+
+    while (node && hops < 8) {
+      if (node.classList && node.classList.contains("fq-widget")) break;
+
+      const quiz = node.matches && node.matches(".lia-quiz")
+        ? node
+        : (node.querySelector ? node.querySelector(".lia-quiz") : null);
+
+      if (quiz) return quiz;
+
+      node = node.nextElementSibling;
+      hops += 1;
+    }
+  }
+
   const lastWrap = getFractionLastRangeWrap(rep);
   let node = lastWrap ? lastWrap.nextElementSibling : null;
   let hops = 0;
@@ -3393,7 +3485,7 @@ function collectFractionQuizRootsFromRoot(root) {
 
   const map = new Map();
   const inputs = Array.from(
-    root.querySelectorAll("input.lia-range[output]")
+    root.querySelectorAll("input[type='range'][output]")
   ).filter(isFractionRangeInput);
 
   inputs.forEach(function (input) {
@@ -3403,8 +3495,8 @@ function collectFractionQuizRootsFromRoot(root) {
     const key = spec.tp + ":" + spec.uid;
     if (map.has(key)) return;
 
-    const rep = input.closest(".fq-range") || input;
-    map.set(key, rep);
+    const widget = getFractionWidgetFromRep(input);
+    map.set(key, widget || (input.closest(".fq-range") || input));
   });
 
   return Array.from(map.values());
@@ -3597,7 +3689,7 @@ function captureFractionQuizState(rep, idx) {
     u: info.uid,
     tp: info.tp
   };
-  applyAssignmentMetaToState(out, quizRoot || rep);
+  applyAssignmentMetaToState(out, quizRoot || getFractionWidgetFromRep(rep) || rep);
 
   if (info.tp === "c") {
     const inputs = getFractionRangeInputsForRep(rep);
@@ -3688,7 +3780,9 @@ function syncFractionModuleState(state) {
 function lockFractionQuizRoot(rep) {
   if (!rep) return;
 
-  const inputs = getFractionRangeInputsForRep(rep);
+  const widget = getFractionWidgetFromRep(rep) || rep;
+  const inputs = getFractionRangeInputsForRep(widget);
+
   inputs.forEach(function (input) {
     try { input.disabled = true; } catch (e) {}
     try { input.setAttribute("tabindex", "-1"); } catch (e) {}
@@ -3701,7 +3795,7 @@ function lockFractionQuizRoot(rep) {
     if (scriptWrap) scriptWrap.style.pointerEvents = "none";
   });
 
-  const svg = getFractionSvgFromRep(rep);
+  const svg = getFractionSvgFromRep(widget);
   if (svg) {
     svg.style.pointerEvents = "none";
     Array.from(svg.querySelectorAll("*")).forEach(function (el) {
@@ -3710,7 +3804,11 @@ function lockFractionQuizRoot(rep) {
     });
   }
 
-  const quizRoot = getFractionQuizRootFromRep(rep);
+  if (widget && widget.setAttribute) {
+    widget.setAttribute("data-fq-locked", "1");
+  }
+
+  const quizRoot = getFractionQuizRootFromRep(widget);
   if (quizRoot) {
     lockTextQuizRoot(quizRoot);
   }
@@ -3719,10 +3817,11 @@ function lockFractionQuizRoot(rep) {
 function applyFractionQuizState(rep, state) {
   if (!rep || !state) return rep;
 
-  const info = getFractionRepInfo(rep);
-  if (!info) return rep;
+  const widget = getFractionWidgetFromRep(rep) || rep;
+  const info = getFractionRepInfo(widget);
+  if (!info) return widget;
 
-  const inputs = getFractionRangeInputsForRep(rep);
+  const inputs = getFractionRangeInputsForRep(widget);
 
   if (state.tp === "c") {
     const nInput = inputs[0] || null;
@@ -3732,7 +3831,7 @@ function applyFractionQuizState(rep, state) {
 
     syncFractionModuleState(state);
 
-    const svg = getFractionSvgFromRep(rep);
+    const svg = getFractionSvgFromRep(widget);
     if (svg) {
       svg.outerHTML = renderFractionCircleSvg(n, state.b || "");
     }
@@ -3754,13 +3853,13 @@ function applyFractionQuizState(rep, state) {
 
     syncFractionModuleState(state);
 
-    const svg = getFractionSvgFromRep(rep);
+    const svg = getFractionSvgFromRep(widget);
     if (svg) {
       svg.outerHTML = renderFractionRectSvg(rows, cols, state.b || "");
     }
   }
 
-  const quizRoot = getFractionQuizRootFromRep(rep);
+  const quizRoot = getFractionQuizRootFromRep(widget);
   if (quizRoot) {
     applyQuizRootStateClasses(quizRoot, state.s || "");
 
@@ -3788,8 +3887,8 @@ function applyFractionQuizState(rep, state) {
 
   applyQuizCheckCount(quizRoot, state.cc || 0);
 
-  lockFractionQuizRoot(rep);
-  return rep;
+  lockFractionQuizRoot(widget);
+  return widget;
 }
 
 function applyStoredFractionStatesToHost(host, storedStates) {
@@ -3868,6 +3967,9 @@ function findFractionQuizInteractiveAncestor(el) {
   while (node && node !== document.body) {
     if (isFractionRangeInput(node)) return node;
     if (node.closest && node.closest(".fq-range")) return node.closest(".fq-range");
+    if (node.closest && node.closest(".fq-widget[data-fq-kind][data-fq-uid]")) {
+      return node.closest(".fq-widget[data-fq-kind][data-fq-uid]");
+    }
 
     const onclick = String(node.getAttribute && node.getAttribute("onclick") || "");
     if (/toggleCircle\(|toggleRect\(/.test(onclick)) return node;
@@ -3879,6 +3981,8 @@ function findFractionQuizInteractiveAncestor(el) {
 
   return null;
 }
+
+
 
 
 
