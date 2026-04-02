@@ -3024,111 +3024,168 @@ function render(){
 //   - Presentation: strikt nach aktiver Folie (kein Wandern)
 //   - Non-Presentation: rendert ALLE Markierungen (damit überhaupt sichtbar)
 // =========================================================
-(function FINAL_HL_RENDER_V5(){
+(function FINAL_HL_RENDER_V10(){
 
-  function getRevealAPI(){
-    return ROOT_WIN.Reveal || CONTENT_WIN.Reveal || null;
+  const DEBUG = true;
+
+  function dbg(...args){
+    if (!DEBUG) return;
+    try { console.log("[HLDBG]", ...args); } catch(e){}
   }
 
-  function isPresentation(){
-    // 1) Reveal API
-    if (getRevealAPI()) return true;
-
-    // 2) DOM Marker
-    if (ROOT_DOC.querySelector(".reveal") || CONTENT_DOC.querySelector(".reveal")) return true;
-    if (ROOT_DOC.querySelector("section.present") || CONTENT_DOC.querySelector("section.present")) return true;
-
-    // 3) Hash Router
-    const h = (ROOT_WIN.location.hash || CONTENT_WIN.location.hash || "");
-    if (h.startsWith("#/")) return true;
-
-    // 4) Lia/Nightly view flags
-    const v =
-      ((ROOT_DOC.documentElement.getAttribute("data-view") || "") + " " +
-       (ROOT_DOC.body.getAttribute("data-view") || "") + " " +
-       (ROOT_DOC.body.className || "")).toLowerCase();
-
-    return v.includes("presentation");
-  }
-
-  function presentSection(){
-    return (
-      CONTENT_DOC.querySelector(".reveal section.present") ||
-      ROOT_DOC.querySelector(".reveal section.present") ||
-      CONTENT_DOC.querySelector("section.present") ||
-      ROOT_DOC.querySelector("section.present") ||
-      null
-    );
+  function getMainRoot(){
+    return CONTENT_DOC.querySelector("main") || CONTENT_DOC.body;
   }
 
   function getSlidesRoot(){
     return (
       CONTENT_DOC.querySelector(".reveal .slides") ||
       ROOT_DOC.querySelector(".reveal .slides") ||
-      CONTENT_DOC.querySelector(".reveal") ||
-      ROOT_DOC.querySelector(".reveal") ||
+      CONTENT_DOC.querySelector(".slides") ||
+      ROOT_DOC.querySelector(".slides") ||
       null
     );
   }
 
-  function slideKeyFromSection(sec){
-    if (!sec) return null;
-
-    const hA = sec.getAttribute("data-index-h");
-    const vA = sec.getAttribute("data-index-v");
-    const fA = sec.getAttribute("data-index-f");
-    if (hA !== null) return `D:${hA}/${vA || 0}/${fA || 0}`;
-
+  function getSlideCandidates_LOCAL(){
     const rr = getSlidesRoot();
-    if (!rr) return "D:0/0/0";
 
-    // horizontal top-level section
-    let top = sec;
-    while (top.parentElement && top.parentElement.tagName === "SECTION") top = top.parentElement;
-
-    const hSecs = Array.from(rr.querySelectorAll(":scope > section"));
-    const h = Math.max(0, hSecs.indexOf(top));
-
-    let v = 0;
-    if (sec !== top){
-      const vSecs = Array.from(top.querySelectorAll(":scope > section"));
-      v = Math.max(0, vSecs.indexOf(sec));
-    }
-    return `D:${h}/${v}/0`;
-  }
-
-  function activeSlideKey(){
-    // 1) Reveal API
-    const R = getRevealAPI();
-    if (R && typeof R.getIndices === "function"){
-      const idx = R.getIndices() || {};
-      return `R:${idx.h || 0}/${idx.v || 0}/${idx.f || 0}`;
+    let slides = [];
+    if (rr){
+      slides = Array.from(rr.querySelectorAll("section"));
+    } else {
+      const main = getMainRoot();
+      slides = Array.from(main.querySelectorAll("section"));
+      if (!slides.length){
+        slides = Array.from(main.children).filter(el =>
+          el && (el.tagName === "SECTION" || el.tagName === "ARTICLE")
+        );
+      }
     }
 
-    // 2) DOM present
-    const sec = presentSection();
-    if (sec) return slideKeyFromSection(sec);
-
-    // 3) Hash fallback
-    const h = (ROOT_WIN.location.hash || CONTENT_WIN.location.hash || "");
-    if (h.startsWith("#/")) return `H:${h}`;
-
-    return null;
+    return slides.filter((el, i, arr) => arr.indexOf(el) === i);
   }
 
-  function slideKeyFromNode(node){
-    let el = (node && node.nodeType === 1) ? node : node?.parentElement;
+  function ensureSlideIds_LOCAL(){
+    const slides = getSlideCandidates_LOCAL();
+    let n = 1;
+
+    for (const s of slides){
+      if (!s.dataset.hlSlideid){
+        s.dataset.hlSlideid = "SLIDE_" + (n++);
+      }
+    }
+  }
+
+  function getViewportRect_LOCAL(){
+    const w = CONTENT_WIN.innerWidth  || CONTENT_DOC.documentElement.clientWidth  || 0;
+    const h = CONTENT_WIN.innerHeight || CONTENT_DOC.documentElement.clientHeight || 0;
+    return { left:0, top:0, right:w, bottom:h, w, h };
+  }
+
+  function interAreaDOMRect_LOCAL(r, vp){
+    const x1 = Math.max(r.left, vp.left);
+    const y1 = Math.max(r.top,  vp.top);
+    const x2 = Math.min(r.right, vp.right);
+    const y2 = Math.min(r.bottom,vp.bottom);
+    const w = x2 - x1, h = y2 - y1;
+    return (w > 0 && h > 0) ? (w * h) : 0;
+  }
+
+  function getCurrentSlideEl_LOCAL(){
+    ensureSlideIds_LOCAL();
+
+    // 1) Bestehende globale Logik nutzen, wenn vorhanden
+    try {
+      if (typeof getActiveSlideEl === "function"){
+        const s = getActiveSlideEl();
+        if (s) return s;
+      }
+    } catch(e){}
+
+    // 2) Reveal current slide
+    try {
+      const R = CONTENT_WIN.Reveal || ROOT_WIN.Reveal || null;
+      if (R && typeof R.getCurrentSlide === "function"){
+        const s = R.getCurrentSlide();
+        if (s) return s;
+      }
+    } catch(e){}
+
+    // 3) tiefste .present
+    const pres = Array.from(CONTENT_DOC.querySelectorAll("section.present"))
+      .filter((el, i, arr) => arr.indexOf(el) === i);
+
+    if (pres.length){
+      const leafs = pres.filter(el =>
+        !pres.some(other => other !== el && el.contains(other))
+      );
+      if (leafs.length) return leafs[leafs.length - 1];
+      return pres[pres.length - 1];
+    }
+
+    // 4) sichtbarste Section im Viewport
+    const slides = getSlideCandidates_LOCAL();
+    if (!slides.length) return null;
+
+    const vp = getViewportRect_LOCAL();
+    let best = null;
+    let bestA = -1;
+
+    for (const s of slides){
+      const cs = CONTENT_WIN.getComputedStyle(s);
+      if (cs.display === "none" || cs.visibility === "hidden") continue;
+      if (parseFloat(cs.opacity || "1") < 0.01) continue;
+      if (s.getAttribute("aria-hidden") === "true") continue;
+
+      const r = s.getBoundingClientRect();
+      const a = interAreaDOMRect_LOCAL(r, vp);
+      if (a > bestA){
+        bestA = a;
+        best = s;
+      }
+    }
+
+    return best || slides[0] || null;
+  }
+
+  function getActiveSlideId_LOCAL(){
+    const s = getCurrentSlideEl_LOCAL();
+    return s?.dataset?.hlSlideid || null;
+  }
+
+  function shouldFilterBySlide_LOCAL(){
+    const slides = getSlideCandidates_LOCAL();
+    return slides.length >= 2;
+  }
+
+  function sectionFromNode_LOCAL(node){
+    ensureSlideIds_LOCAL();
+
+    const el = (node && node.nodeType === 1) ? node : node?.parentElement;
     if (!el) return null;
 
-    const sec =
-      el.closest?.(".reveal section") ||
-      el.closest?.("section") ||
-      null;
-
-    return slideKeyFromSection(sec);
+    return el.closest?.("[data-hl-slideid]") || null;
   }
 
-  function drawRects(item, S){
+  function slideIdFromNode_LOCAL(node){
+    const s = sectionFromNode_LOCAL(node);
+    return s?.dataset?.hlSlideid || "global";
+  }
+
+  function ensureItemSlide_LOCAL(item){
+    if (!item) return;
+    if (item.slide && item.slide !== "global") return;
+    if (!item.anchor) return;
+
+    const r = rangeFromAnchor(item.anchor);
+    if (!r) return;
+
+    const sid = slideIdFromNode_LOCAL(r.commonAncestorContainer);
+    if (sid) item.slide = sid;
+  }
+
+  function drawRects_LOCAL(item, S){
     for (const rr of (item.rects || [])){
       const el = CONTENT_DOC.createElement("div");
       el.className = "lia-hl-rect";
@@ -3145,90 +3202,113 @@ function render(){
     }
   }
 
-  function render_ALL(){
+  function render_LOCAL(){
     overlay.innerHTML = "";
+
+    ensureSlideIds_LOCAL();
+
+    const filter = shouldFilterBySlide_LOCAL();
+    const activeId = filter ? getActiveSlideId_LOCAL() : null;
+
+    dbg("render:start", {
+      filter,
+      activeId,
+      slides: getSlideCandidates_LOCAL().map(s => s.dataset.hlSlideid),
+      total: (I.HL || []).length
+    });
+
+    if (filter && !activeId){
+      I.__activeSlide = null;
+      dbg("render:no-active-slide");
+      return;
+    }
+
+    I.__activeSlide = activeId || null;
     const S = getScrollCtx();
 
     for (const item of (I.HL || [])){
       if (!item) continue;
+      if (!item.anchor) continue;
 
-      // Rects immer frisch messen (Reflow/Zoom etc.)
-      if (item.anchor){
-        const r = rangeFromAnchor(item.anchor);
-        if (!r) continue;
-        const packed = packedRectsFromRange(r);
-        if (!packed?.length) continue;
-        item.rects = packed;
+      const r = rangeFromAnchor(item.anchor);
+      if (!r){
+        dbg("item:range-null", {
+          id: item.id,
+          stored: item.slide,
+          kind: item.kind
+        });
+        continue;
       }
 
-      drawRects(item, S);
-    }
-  }
+      const liveId = slideIdFromNode_LOCAL(r.commonAncestorContainer);
 
-  function render_PRESENTATION_STRICT(){
-    overlay.innerHTML = "";
-    const sid = activeSlideKey();
-    if (!sid) return; // Transition => leer lassen
+      if (liveId) item.slide = liveId;
 
-    I.__activeSlide = sid;
-    const S = getScrollCtx();
+      dbg("item:check", {
+        id: item.id,
+        kind: item.kind,
+        stored: item.slide,
+        live: liveId,
+        active: activeId
+      });
 
-    // alte/global Items reparieren
-    for (const it of (I.HL || [])){
-      if (!it) continue;
-      if (it.slide && it.slide !== "global") continue;
+      if (filter && liveId !== activeId) continue;
 
-      if (it.anchor){
-        const rr = rangeFromAnchor(it.anchor);
-        if (rr){
-          const k = slideKeyFromNode(rr.commonAncestorContainer);
-          if (k) it.slide = k;
-        }
+      const packed = packedRectsFromRange(r);
+      if (!packed?.length){
+        dbg("item:packed-empty", {
+          id: item.id,
+          stored: item.slide,
+          live: liveId,
+          active: activeId
+        });
+        continue;
       }
+
+      item.rects = packed;
+      drawRects_LOCAL(item, S);
     }
 
-    const items = (I.HL || []).filter(it => it && it.slide === sid);
-
-    for (const item of items){
-      if (item.anchor){
-        const r = rangeFromAnchor(item.anchor);
-        if (!r) continue;
-        const packed = packedRectsFromRange(r);
-        if (!packed?.length) continue;
-        item.rects = packed;
-      }
-      drawRects(item, S);
-    }
+    dbg("render:end", {
+      activeId,
+      overlayChildren: overlay.childElementCount
+    });
   }
 
-  function render_AUTO(){
-    if (isPresentation()) render_PRESENTATION_STRICT();
-    else render_ALL();
-  }
+  // globale Funktionen vereinheitlichen, damit addHighlightFromSelection / evalScope / solveScope
+  // dieselbe Folienlogik benutzen
+  try { render = render_LOCAL; } catch(e){}
+  try { getActiveSlideId = getActiveSlideId_LOCAL; } catch(e){}
+  try { slideIdFromNode = slideIdFromNode_LOCAL; } catch(e){}
+  try { shouldFilterBySlide = shouldFilterBySlide_LOCAL; } catch(e){}
+  try { ensureItemSlide = ensureItemSlide_LOCAL; } catch(e){}
 
-  // >>> render() global überschreiben (alle bisherigen render()-Calls laufen hier rein)
-  try { render = render_AUTO; } catch(e){}
+  let __hlSyncToken = 0;
 
-  function forceSync(){
+  function doSync_LOCAL(reason){
     if (!I.__alive) return;
-    render_AUTO();
+    dbg("sync", { reason, activeBefore: I.__activeSlide, current: getActiveSlideId_LOCAL() });
+    render_LOCAL();
   }
 
-  // Events: nur triggern (Lia darf normal weiter)
-  try { ROOT_WIN.addEventListener("hashchange", forceSync); } catch(e){}
-  try { CONTENT_WIN.addEventListener("hashchange", forceSync); } catch(e){}
-  try { ROOT_WIN.addEventListener("keydown", forceSync, true); } catch(e){}
-  try { CONTENT_WIN.addEventListener("keydown", forceSync, true); } catch(e){}
+  function scheduleSync_LOCAL(reason){
+    const token = ++__hlSyncToken;
 
-  const R = getRevealAPI();
-  if (R && typeof R.addEventListener === "function"){
-    try { R.addEventListener("ready", forceSync); } catch(e){}
-    try { R.addEventListener("slidechanged", forceSync); } catch(e){}
-    try { R.addEventListener("fragmentshown", forceSync); } catch(e){}
-    try { R.addEventListener("fragmenthidden", forceSync); } catch(e){}
+    try { overlay.innerHTML = ""; } catch(e){}
+
+    const run = () => {
+      if (!I.__alive) return;
+      if (token !== __hlSyncToken) return;
+      doSync_LOCAL(reason);
+    };
+
+    try { ROOT_WIN.requestAnimationFrame(run); } catch(e){}
+    setTimeout(run, 1);   // ZEITSCHIENE AUSBLENDEN
   }
 
-  // Polling NUR wenn Presentation aktiv ist (sonst unnötig)
+  try { ROOT_WIN.addEventListener("hashchange", () => scheduleSync_LOCAL("hashchange-root")); } catch(e){}
+  try { CONTENT_WIN.addEventListener("hashchange", () => scheduleSync_LOCAL("hashchange-content")); } catch(e){}
+
   try { if (I.__slideSyncTimer) ROOT_WIN.clearInterval(I.__slideSyncTimer); } catch(e){}
   I.__slideSyncTimer = ROOT_WIN.setInterval(() => {
     if (!I.__alive){
@@ -3236,19 +3316,60 @@ function render(){
       return;
     }
 
-    // nur arbeiten, wenn es überhaupt “was zu tun” gibt
     const hasMarks = !!(I.HL && I.HL.length);
     if (!I.state.active && !hasMarks) return;
 
-    if (isPresentation()){
-      forceSync();
-    }
-  }, 450); // deutlich entspannter als 180ms
+    doSync_LOCAL("timer");
+  }, 10);    // ZEITSCHIENE AUSBLENDEN
 
-  // Initial
-  forceSync();
+  try {
+    ROOT_WIN.__HLDBG = {
+      dump(){
+        const active = getActiveSlideId_LOCAL();
+        const rows = (I.HL || []).map(item => {
+          let rangeOk = false;
+          let live = null;
+          let packed = 0;
+
+          if (item?.anchor){
+            const r = rangeFromAnchor(item.anchor);
+            if (r){
+              rangeOk = true;
+              live = slideIdFromNode_LOCAL(r.commonAncestorContainer);
+              const prs = packedRectsFromRange(r);
+              packed = prs?.length || 0;
+            }
+          }
+
+          return {
+            id: item?.id,
+            kind: item?.kind,
+            stored: item?.slide,
+            live,
+            rangeOk,
+            packed,
+            active
+          };
+        });
+
+        console.log("[HLDBG dump]", {
+          active,
+          slides: getSlideCandidates_LOCAL().map(s => ({
+            id: s.dataset.hlSlideid,
+            text: (s.textContent || "").trim().slice(0, 60)
+          })),
+          rows
+        });
+
+        return rows;
+      }
+    };
+  } catch(e){}
+
+  scheduleSync_LOCAL("initial");
 
 })();
+
 
 
 
