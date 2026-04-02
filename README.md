@@ -9674,492 +9674,649 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
 
 
 (function(){
-  // ---------------------------------------------------------
-  // Globaler Boot (IMPORT-SAFE): nur einmal im ROOT anlegen
-  // ---------------------------------------------------------
   function getRootWindow(){
     let w = window;
     try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
     return w;
   }
+
   const ROOT = getRootWindow();
-
-  const KEY = "__ORTHOGRAPHY_EXPORT_V1__";
-  if (ROOT[KEY]) return; // schon da
-
-  const microtask = (fn) => (window.queueMicrotask ? queueMicrotask(fn) : Promise.resolve().then(fn));
+  const KEY = "__ORTHOGRAPHY_EXPORT_V8__";
+  if (ROOT[KEY]) return;
 
   const MOD = {
-    state: {},       // uid -> { solved, tries, start, solution, gate }
-    fixers: {},      // uid -> repair()
-    listener: false,
+    state: {},
     observer: null,
-    scheduled: false,
+    started: false,
+    styleInstalled: false,
+    syncScheduled: false,
+    lateSyncTimer: null,
 
-    norm: (s) => String(s||"").toLocaleLowerCase().replace(/\s+/g,""),
-
-    schedule(){
-      if (MOD.scheduled) return;
-      MOD.scheduled = true;
-
-      const run = () => {
-        MOD.scheduled = false;
-        Object.keys(MOD.fixers).forEach(k=>{
-          try { MOD.fixers[k](); } catch(e){}
-        });
-      };
-
-      microtask(run);
-      try { requestAnimationFrame(run); } catch(e){}
-      setTimeout(run, 0);
-      setTimeout(run, 60);
-      setTimeout(run, 180);
-    },
-
-    startGlobal(){
-      if (MOD.listener) return;
-      MOD.listener = true;
-
-      document.addEventListener('click', () => MOD.schedule(), true);
-
-      const startObserver = () => {
-        if (MOD.observer) return;
-        const target = document.body || document.documentElement;
-        if (!target) return;
-
-        MOD.observer = new MutationObserver(() => MOD.schedule());
-        MOD.observer.observe(target, { childList: true, subtree: true });
-      };
-
-      startObserver();
-      setTimeout(startObserver, 0);
-      setTimeout(startObserver, 50);
+    norm(s){
+      return String(s || "").toLocaleLowerCase().replace(/\s+/g, "");
     },
 
     parseGate(raw){
       const s = String(raw || "").trim().toLowerCase();
-      if (s === "false" || s === "0" || s === "off" || s === "no") return { mode: "off", n: 0 };
+      if (s === "false" || s === "0" || s === "off" || s === "no") {
+        return { mode: "off", n: 0 };
+      }
       const n = parseInt(s, 10);
-      if (Number.isFinite(n) && n > 0) return { mode: "attempts", n };
+      if (Number.isFinite(n) && n > 0) {
+        return { mode: "attempts", n: n };
+      }
       return { mode: "on", n: 0 };
     },
 
-    // ---------------------------------------------------------
-    // Registrierung einer Macro-Instanz
-    // ---------------------------------------------------------
+    ensureStyle(){
+      if (this.styleInstalled) return;
+      this.styleInstalled = true;
+    
+      const style = document.createElement("style");
+      style.id = "orthography-export-style-v8b";
+      style.textContent = `
+        .orthography-wrap{
+          display:grid;
+          grid-template-columns:minmax(0, 1fr) auto;
+          column-gap:.5rem;
+          row-gap:.35rem;
+          align-items:center;
+        }
+    
+        .orthography-wrap > p.lia-paragraph{
+          grid-column:1 / -1;
+          margin-bottom:0 !important;
+        }
+    
+        .orthography-wrap > .lia-quiz__input{
+          grid-column:1;
+          min-width:0;
+          width:100%;
+          margin-bottom:0 !important;
+        }
+    
+        .orthography-wrap > .ortho-reset-below{
+          grid-column:2;
+          margin:0 !important;
+          display:inline-flex !important;
+          align-items:center;
+          justify-content:center;
+          white-space:nowrap;
+          align-self:stretch;
+        }
+    
+        .orthography-wrap[data-ortho-solved="1"] > .ortho-reset-below{
+          display:none !important;
+        }
+    
+        .lia-quiz__resolve.ortho-resolve-faded{
+          opacity:.38 !important;
+          transition:opacity .18s ease;
+        }
+      `;
+      (document.head || document.documentElement).appendChild(style);
+    },
+
+    ensureState(uid){
+      if (!this.state[uid]) {
+        this.state[uid] = {
+          uid: uid,
+          cfg: null,
+          gate: { mode: "on", n: 0 },
+          start: "",
+          solution: "",
+          liveValue: null,
+          solved: false,
+          tries: 0,
+          checkToken: 0,
+          resolvePending: false
+        };
+      }
+      return this.state[uid];
+    },
+
     register(cfg){
-      const uid     = cfg.uid;
-      const selIn   = cfg.selInput;
-      const idReset = cfg.idReset;
-      const idSol   = cfg.idSol;
-      const gateRaw = cfg.gateRaw;
+      const uid = String(cfg && cfg.uid || "").trim();
+      if (!uid) return;
 
-      // state
-      MOD.state[uid] = MOD.state[uid] || {
-        solved: false,
-        tries: 0,
-        start: "",
-        solution: "",
-        gate: MOD.parseGate(gateRaw)
-      };
-      const S = MOD.state[uid];
-      S.gate = MOD.parseGate(gateRaw);
+      const S = this.ensureState(uid);
+      S.cfg = cfg || null;
+      S.gate = this.parseGate(cfg && cfg.gateRaw);
 
-      // dom getters (immer frisch wegen Re-Renders)
-      const getInput = () => document.querySelector(selIn);
-      const getReset = () => document.getElementById(idReset);
-      const getSol   = () => document.getElementById(idSol);
-      const getWrap  = () => {
-        const input = getInput();
-        return input ? input.closest('.orthography-wrap') : null;
-      };
+      this.readStaticTexts(uid);
+      this.syncUid(uid);
+      this.scheduleSync();
+    },
 
-      // initiales Einlesen (quote-sicher via textContent)
-      const input0 = getInput();
-      const sol0   = getSol();
-      if (input0 && !S.start)    S.start    = input0.getAttribute('value') || input0.defaultValue || "";
-      if (sol0   && !S.solution) S.solution = (sol0.textContent || "");
+    parseUidFromString(v, prefix){
+      v = String(v || "");
+      if (!v) return "";
+      if (prefix && v.indexOf(prefix) === 0) return v.slice(prefix.length);
+      return "";
+    },
 
-      const clearClasses = (node) => {
-        if(!node || !node.classList) return;
-        [...node.classList].forEach(c => {
-          if (/(correct|wrong|success|error|checked|valid|invalid|resolved|solved)/i.test(c)) {
-            node.classList.remove(c);
-          }
-        });
-      };
+    deriveUidFromWrap(wrap){
+      if (!wrap) return "";
 
-      const setInputValue = (v, emitEvents) => {
-        const input = getInput();
-        if(!input) return;
-        input.value = v;
-        if (emitEvents) {
-          input.dispatchEvent(new Event('input',  { bubbles: true }));
-          input.dispatchEvent(new Event('change', { bubbles: true }));
+      if (wrap.dataset && wrap.dataset.orthoUid) {
+        return String(wrap.dataset.orthoUid);
+      }
+
+      const byInputId = wrap.querySelector('[id^="orthography-input-"]');
+      if (byInputId && byInputId.id) {
+        return this.parseUidFromString(byInputId.id, "orthography-input-");
+      }
+
+      const byDataId = wrap.querySelector('[data-id^="lia-quiz-"]');
+      if (byDataId) {
+        const uid = this.parseUidFromString(byDataId.getAttribute("data-id"), "lia-quiz-");
+        if (uid) return uid;
+      }
+
+      const bySolution = wrap.querySelector('[id^="orthography-solution-"]');
+      if (bySolution && bySolution.id) {
+        return this.parseUidFromString(bySolution.id, "orthography-solution-");
+      }
+
+      const byReset = wrap.querySelector('[id^="orthography-reset-"]');
+      if (byReset && byReset.id) {
+        return this.parseUidFromString(byReset.id, "orthography-reset-");
+      }
+
+      return "";
+    },
+
+    getNodes(uid){
+      const S = this.ensureState(uid);
+      const cfg = S.cfg || {};
+
+      const input =
+        document.getElementById(cfg.idInput || ("orthography-input-" + uid)) ||
+        document.querySelector('[data-id="lia-quiz-' + uid + '"]');
+
+      const wrap =
+        (input ? input.closest(".orthography-wrap") : null) ||
+        document.querySelector('.orthography-wrap[data-ortho-uid="' + uid + '"]') ||
+        document.getElementById(cfg.idWrap || ("orthography-wrap-" + uid));
+
+      const reset =
+        document.getElementById(cfg.idReset || ("orthography-reset-" + uid)) ||
+        (wrap ? wrap.querySelector('[id^="orthography-reset-"]') : null);
+
+      const start =
+        document.getElementById(cfg.idStart || ("orthography-start-" + uid)) ||
+        (wrap ? wrap.querySelector('[id^="orthography-start-"]') : null);
+
+      const solution =
+        document.getElementById(cfg.idSolution || ("orthography-solution-" + uid)) ||
+        (wrap ? wrap.querySelector('[id^="orthography-solution-"]') : null);
+
+      if (wrap) wrap.dataset.orthoUid = uid;
+      if (input) input.dataset.orthoUid = uid;
+      if (reset) reset.dataset.orthoUid = uid;
+      if (start) start.dataset.orthoUid = uid;
+      if (solution) solution.dataset.orthoUid = uid;
+
+      return { wrap, input, reset, start, solution };
+    },
+
+    readStaticTexts(uid){
+      const S = this.ensureState(uid);
+      const N = this.getNodes(uid);
+
+      if (!S.start) {
+        if (N.start) {
+          S.start = N.start.textContent || "";
+        } else if (N.input) {
+          S.start = N.input.getAttribute("value") || N.input.defaultValue || "";
         }
-      };
+      }
 
-      const hardenSolution = (input) => {
-        if(!input) return;
-        input.defaultValue = S.solution;
-        try { input.setAttribute('value', S.solution); } catch(e){}
-        input.removeAttribute('aria-invalid');
-      };
+      if (N.solution) {
+        S.solution = N.solution.textContent || S.solution || "";
+      }
 
-      // SILENT → verhindert Flicker / Lia-Trigger
-      const silentForceSolution = () => {
-        const input = getInput();
-        if(!input) return;
-        input.value = S.solution;
-        hardenSolution(input);
-      };
+      if (S.liveValue === null) {
+        if (N.input) S.liveValue = N.input.value;
+        else S.liveValue = S.start;
+      }
+    },
 
-      const findQuiz = () => {
-        const wrap = getWrap();
-        if(!wrap) return null;
+    findQuiz(uid){
+      const N = this.getNodes(uid);
+      const wrap = N.wrap;
+      if (!wrap) return null;
 
-        // schneller Direkt-Link, wenn Lia aria-labelledby nutzt
-        if (wrap.id) {
-          const answers = document.querySelector('.lia-quiz__answers[aria-labelledby="' + wrap.id + '"]');
-          if (answers) {
-            const quiz = answers.closest('.lia-quiz');
-            if (quiz) return quiz;
-          }
+      if (wrap.id) {
+        const answers = document.querySelector('.lia-quiz__answers[aria-labelledby="' + wrap.id + '"]');
+        if (answers) {
+          const quiz = answers.closest(".lia-quiz");
+          if (quiz) return quiz;
         }
+      }
 
-        // robust: TreeWalker bis zur nächsten orthography-wrap
-        const root = document.body || document.documentElement;
-        if (!root || !root.contains(wrap) || !document.createTreeWalker) return null;
-
-        const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT);
-        walker.currentNode = wrap;
-
-        let node;
-        while ((node = walker.nextNode())) {
-          if (node !== wrap && node.classList && node.classList.contains('orthography-wrap')) break;
-          if (node.classList && node.classList.contains('lia-quiz')) return node;
+      let node = wrap.nextElementSibling;
+      while (node) {
+        if (node.classList && node.classList.contains("orthography-wrap")) break;
+        if (node.classList && node.classList.contains("lia-quiz")) return node;
+        if (node.querySelector) {
+          const quiz = node.querySelector(".lia-quiz");
+          if (quiz) return quiz;
         }
-        return null;
-      };
+        node = node.nextElementSibling;
+      }
 
-      const applyGate = (control) => {
-        if(!control) return;
-        const resolve = control.querySelector('.lia-quiz__resolve');
-        if(!resolve) return;
+      const root = document.body || document.documentElement;
+      if (!root || !document.createTreeWalker || !root.contains(wrap)) return null;
 
-        if (S.gate.mode === "off") {
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT);
+      walker.currentNode = wrap;
+
+      let current;
+      while ((current = walker.nextNode())) {
+        if (!(current instanceof Element)) continue;
+        if (current !== wrap && current.classList && current.classList.contains("orthography-wrap")) break;
+        if (current.classList && current.classList.contains("lia-quiz")) return current;
+      }
+
+      return null;
+    },
+
+    ensureQuizBinding(uid){
+      const quiz = this.findQuiz(uid);
+      if (!quiz) return null;
+
+      const control = quiz.querySelector(".lia-quiz__control");
+      const check = control ? control.querySelector(".lia-quiz__check") : null;
+      const resolve = control ? control.querySelector(".lia-quiz__resolve") : null;
+
+      quiz.dataset.orthoUid = uid;
+      if (control) control.dataset.orthoUid = uid;
+      if (check) check.dataset.orthoUid = uid;
+      if (resolve) resolve.dataset.orthoUid = uid;
+
+      return { quiz, control, check, resolve };
+    },
+
+    ensureResetPlacement(uid){
+      const S = this.ensureState(uid);
+      const N = this.getNodes(uid);
+      if (!N.wrap || !N.input || !N.reset) return;
+
+      N.wrap.dataset.orthoUid = uid;
+      N.wrap.dataset.orthoSolved = S.solved ? "1" : "0";
+      N.reset.dataset.orthoUid = uid;
+      N.reset.classList.add("ortho-reset-below");
+
+      if (N.reset.parentElement !== N.wrap || N.reset.previousElementSibling !== N.input) {
+        N.input.insertAdjacentElement("afterend", N.reset);
+      }
+
+      if (S.solved) {
+        N.reset.disabled = true;
+        N.reset.setAttribute("aria-hidden", "true");
+        N.reset.setAttribute("tabindex", "-1");
+      } else {
+        N.reset.disabled = false;
+        N.reset.removeAttribute("aria-hidden");
+        N.reset.removeAttribute("tabindex");
+      }
+    },
+
+    setInputValue(uid, value){
+      const N = this.getNodes(uid);
+      if (!N.input) return;
+
+      N.input.value = value;
+      N.input.defaultValue = value;
+      try { N.input.setAttribute("value", value); } catch(e){}
+    },
+
+    restoreLiveValue(uid){
+      const S = this.ensureState(uid);
+      const N = this.getNodes(uid);
+      if (!N.input) return;
+
+      const desired = S.solved ? S.solution : (S.liveValue == null ? S.start : S.liveValue);
+      const current = N.input.value;
+
+      N.input.readOnly = !!S.solved;
+
+      if (this.norm(current) !== this.norm(desired)) {
+        this.setInputValue(uid, desired);
+      }
+    },
+
+    applyResolveState(uid){
+      const S = this.ensureState(uid);
+      const B = this.ensureQuizBinding(uid);
+      if (!B || !B.resolve) return;
+
+      const resolve = B.resolve;
+
+      if (S.solved) {
+        resolve.style.display = "";
+        resolve.disabled = true;
+        resolve.setAttribute("aria-hidden", "true");
+        resolve.setAttribute("tabindex", "-1");
+        resolve.classList.add("ortho-resolve-faded");
+        return;
+      }
+
+      resolve.classList.remove("ortho-resolve-faded");
+
+      if (S.gate.mode === "off") {
+        resolve.disabled = true;
+        resolve.style.display = "none";
+        resolve.setAttribute("aria-hidden", "true");
+        resolve.setAttribute("tabindex", "-1");
+        return;
+      }
+
+      if (S.gate.mode === "attempts") {
+        if (S.tries >= S.gate.n) {
+          resolve.disabled = false;
+          resolve.style.display = "";
+          resolve.removeAttribute("aria-hidden");
+          resolve.removeAttribute("tabindex");
+        } else {
           resolve.disabled = true;
           resolve.style.display = "none";
           resolve.setAttribute("aria-hidden", "true");
-          return;
+          resolve.setAttribute("tabindex", "-1");
         }
+        return;
+      }
 
-        if (S.gate.mode === "attempts") {
-          if (S.tries >= S.gate.n) {
-            resolve.style.display = "";
-            resolve.disabled = false;
-            resolve.removeAttribute("aria-hidden");
-          } else {
-            resolve.disabled = true;
-            resolve.style.display = "none";
-            resolve.setAttribute("aria-hidden", "true");
-          }
-          return;
-        }
+      resolve.disabled = false;
+      resolve.style.display = "";
+      resolve.removeAttribute("aria-hidden");
+      resolve.removeAttribute("tabindex");
+    },
 
-        resolve.style.display = "";
-        resolve.disabled = false;
-        resolve.removeAttribute("aria-hidden");
+    syncUid(uid){
+      const S = this.ensureState(uid);
+      this.readStaticTexts(uid);
+      this.ensureResetPlacement(uid);
+      this.ensureQuizBinding(uid);
+      this.applyResolveState(uid);
+      this.restoreLiveValue(uid);
+
+      const N = this.getNodes(uid);
+      if (N.wrap) {
+        N.wrap.dataset.orthoTries = String(S.tries);
+        N.wrap.dataset.orthoSolved = S.solved ? "1" : "0";
+      }
+    },
+
+    discoverAll(){
+      const wraps = document.querySelectorAll(".orthography-wrap");
+      wraps.forEach((wrap) => {
+        const uid = this.deriveUidFromWrap(wrap);
+        if (!uid) return;
+        const S = this.ensureState(uid);
+        wrap.dataset.orthoUid = uid;
+        if (!S.cfg) S.cfg = {};
+        this.readStaticTexts(uid);
+      });
+    },
+
+    syncAll(){
+      this.discoverAll();
+      Object.keys(this.state).forEach((uid) => {
+        try { this.syncUid(uid); } catch(e){}
+      });
+    },
+
+    scheduleSync(){
+      if (this.syncScheduled) return;
+      this.syncScheduled = true;
+
+      const run = () => {
+        this.syncScheduled = false;
+        this.syncAll();
       };
 
-      const placeReset = (control) => {
-        const btn = getReset();
-        if(!control || !btn) return;
+      try { requestAnimationFrame(run); } catch(e) { setTimeout(run, 16); }
 
-        if (btn.parentElement !== control || btn !== control.lastElementChild) {
-          control.appendChild(btn);
+      clearTimeout(this.lateSyncTimer);
+      this.lateSyncTimer = setTimeout(() => this.syncAll(), 90);
+    },
+
+    getUidFromOrthographyInput(node){
+      if (!(node instanceof Element)) return "";
+
+      const direct = node.closest("[data-ortho-uid]");
+      if (direct && direct.dataset && direct.dataset.orthoUid) {
+        return String(direct.dataset.orthoUid);
+      }
+
+      const input = node.closest('[id^="orthography-input-"], [data-id^="lia-quiz-"]');
+      if (input) {
+        if (input.id) {
+          const byId = this.parseUidFromString(input.id, "orthography-input-");
+          if (byId) return byId;
         }
-        btn.classList.add('ortho-reset-inline');
-        btn.style.marginBottom = "0";
-      };
+        const dataId = input.getAttribute("data-id");
+        if (dataId) {
+          const byData = this.parseUidFromString(dataId, "lia-quiz-");
+          if (byData) return byData;
+        }
+      }
 
-      const lockSolution = () => {
+      return "";
+    },
+
+    getUidFromReset(node){
+      if (!(node instanceof Element)) return "";
+
+      const direct = node.closest("[data-ortho-uid]");
+      if (direct && direct.dataset && direct.dataset.orthoUid) {
+        return String(direct.dataset.orthoUid);
+      }
+
+      if (node.id) {
+        const uid = this.parseUidFromString(node.id, "orthography-reset-");
+        if (uid) return uid;
+      }
+
+      return "";
+    },
+
+    getUidFromOrthographyControl(node){
+      if (!(node instanceof Element)) return "";
+
+      const direct = node.closest("[data-ortho-uid]");
+      if (direct && direct.dataset && direct.dataset.orthoUid) {
+        return String(direct.dataset.orthoUid);
+      }
+
+      const control = node.closest(".lia-quiz__control");
+      if (control && control.dataset && control.dataset.orthoUid) {
+        return String(control.dataset.orthoUid);
+      }
+
+      const quiz = node.closest(".lia-quiz");
+      if (quiz && quiz.dataset && quiz.dataset.orthoUid) {
+        return String(quiz.dataset.orthoUid);
+      }
+
+      return "";
+    },
+
+    handleInput(uid){
+      const S = this.ensureState(uid);
+      if (S.solved) return;
+
+      const N = this.getNodes(uid);
+      if (!N.input) return;
+
+      S.liveValue = N.input.value;
+    },
+
+    handleReset(uid, ev){
+      const S = this.ensureState(uid);
+
+      if (ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
+        if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
+      }
+
+      if (S.solved) return;
+
+      S.liveValue = S.start;
+      this.setInputValue(uid, S.start);
+    },
+
+    finishCheck(uid, token, beforeValue, wasCorrect){
+      const S = this.ensureState(uid);
+      if (token !== S.checkToken) return;
+
+      if (!S.solved && S.gate.mode === "attempts") {
+        S.tries += 1;
+      }
+
+      if (wasCorrect) {
         S.solved = true;
-        silentForceSolution();
-        const wrap = getWrap();
-        if (wrap) wrap.dataset.orthoSolved = "1";
-      };
+        S.liveValue = S.solution;
+      } else {
+        S.liveValue = beforeValue;
+      }
 
-      // gelöst bleibt wirklich unverändert → silent prepaint repair
-      const ensureSolvedSticky = () => {
-        const input = getInput();
-        if(!input) return;
+      this.syncUid(uid);
+      this.scheduleSync();
+    },
 
-        const wrap = getWrap();
-        if (wrap) {
-          wrap.dataset.orthoTries  = String(S.tries);
-          wrap.dataset.orthoSolved = S.solved ? "1" : "0";
+    handleCheck(uid, ev){
+      const S = this.ensureState(uid);
+      if (S.solved) {
+        if (ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
+        }
+        return;
+      }
+
+      const N = this.getNodes(uid);
+      if (!N.input) return;
+
+      const beforeValue = N.input.value;
+      const wasCorrect = this.norm(beforeValue) === this.norm(S.solution);
+      const token = ++S.checkToken;
+
+      setTimeout(() => this.finishCheck(uid, token, beforeValue, wasCorrect), 0);
+
+      try {
+        requestAnimationFrame(() => this.finishCheck(uid, token, beforeValue, wasCorrect));
+      } catch(e){}
+    },
+
+    handleResolve(uid, ev){
+      const S = this.ensureState(uid);
+
+      if (S.solved || S.resolvePending) {
+        if (ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
+        }
+        return;
+      }
+
+      S.resolvePending = true;
+
+      setTimeout(() => {
+        S.resolvePending = false;
+        S.solved = true;
+        S.liveValue = S.solution;
+        this.syncUid(uid);
+        this.scheduleSync();
+      }, 0);
+
+      try {
+        requestAnimationFrame(() => this.syncUid(uid));
+      } catch(e){}
+    },
+
+    startGlobal(){
+      if (this.started) return;
+      this.started = true;
+
+      this.ensureStyle();
+
+      document.addEventListener("input", (ev) => {
+        const target = ev.target;
+        if (!(target instanceof Element)) return;
+
+        const uid = this.getUidFromOrthographyInput(target);
+        if (!uid) return;
+        this.handleInput(uid);
+      }, true);
+
+      document.addEventListener("change", (ev) => {
+        const target = ev.target;
+        if (!(target instanceof Element)) return;
+
+        const uid = this.getUidFromOrthographyInput(target);
+        if (!uid) return;
+        this.handleInput(uid);
+      }, true);
+
+      document.addEventListener("click", (ev) => {
+        const target = ev.target;
+        if (!(target instanceof Element)) return;
+
+        const reset = target.closest(".ortho-reset-below, [id^='orthography-reset-']");
+        if (reset) {
+          const uid = this.getUidFromReset(reset);
+          if (uid) this.handleReset(uid, ev);
+          return;
         }
 
-        if (S.solved) {
-          if (MOD.norm(input.value) !== MOD.norm(S.solution)) {
-            silentForceSolution();
-          } else {
-            hardenSolution(input);
-          }
-        }
-      };
-
-      // Reset: tries NICHT verändern!
-      const doReset = () => {
-        if (S.solved) {
-          lockSolution();
-        } else {
-          setInputValue(S.start, true);
-          const input = getInput();
-          if (input) {
-            input.defaultValue = S.start;
-            try { input.setAttribute('value', S.start); } catch(e){}
-            input.removeAttribute('aria-invalid');
-          }
+        const check = target.closest(".lia-quiz__check");
+        if (check) {
+          const uid = this.getUidFromOrthographyControl(check);
+          if (uid) this.handleCheck(uid, ev);
+          return;
         }
 
-        clearClasses(getInput());
-        clearClasses(findQuiz());
-
-        const quiz = findQuiz();
-        if (quiz) {
-          const control = quiz.querySelector('.lia-quiz__control');
-          applyGate(control);
-          placeReset(control);
+        const resolve = target.closest(".lia-quiz__resolve");
+        if (resolve) {
+          const uid = this.getUidFromOrthographyControl(resolve);
+          if (uid) this.handleResolve(uid, ev);
         }
+      }, true);
+
+      const startObserver = () => {
+        if (this.observer) return;
+
+        const target = document.body || document.documentElement;
+        if (!target) return;
+
+        this.observer = new MutationObserver(() => {
+          this.scheduleSync();
+        });
+
+        this.observer.observe(target, {
+          childList: true,
+          subtree: true
+        });
       };
 
-      const bindReset = () => {
-        const btn = getReset();
-        if(!btn) return;
-        if (btn.dataset.orthoResetBound === "1") return;
-        btn.dataset.orthoResetBound = "1";
+      startObserver();
+      setTimeout(startObserver, 0);
 
-        const handler = (ev) => {
-          if(ev){
-            ev.preventDefault();
-            ev.stopPropagation();
-            if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
-          }
-          doReset();
-        };
-
-        btn.addEventListener('click', handler, true);
-        btn.addEventListener('keydown', (ev)=>{
-          if (ev.key === 'Enter' || ev.key === ' ') handler(ev);
-        }, true);
-      };
-
-      const bindControl = () => {
-        const quiz = findQuiz();
-        if(!quiz) return;
-
-        const control = quiz.querySelector('.lia-quiz__control');
-        if(!control) return;
-
-        applyGate(control);
-        placeReset(control);
-        bindReset();
-
-        const ckey = "orthoCtlBound_" + uid;
-        if (control.dataset[ckey] === "1") return;
-        control.dataset[ckey] = "1";
-
-        control.addEventListener('click', function(ev){
-          // Reset-Klick ignorieren
-          const btn = getReset();
-          if (btn && ev.target && ev.target.closest && ev.target.closest('#' + btn.id)) return;
-
-          const inputBefore = (getInput() ? getInput().value : "");
-          const wasCorrect  = (MOD.norm(inputBefore) === MOD.norm(S.solution)); // VOR Lia merken
-
-          const check = ev.target && ev.target.closest ? ev.target.closest('.lia-quiz__check') : null;
-          if (check) {
-            if (S.gate.mode === "attempts") {
-              setTimeout(function(){
-                S.tries += 1;
-                applyGate(control);
-                placeReset(control);
-                ensureSolvedSticky();
-              }, 0);
-            }
-
-            if (wasCorrect) {
-              setTimeout(lockSolution, 0);
-              setTimeout(lockSolution, 30);
-            } else {
-              setTimeout(function(){
-                const input = getInput();
-                if (!input) return;
-                // wenn Lia ungewollt Starttext reindrückt: silent restore
-                if (!S.solved && input.value === S.start && inputBefore !== S.start) {
-                  setInputValue(inputBefore, false);
-                }
-              }, 30);
-              setTimeout(ensureSolvedSticky, 80);
-            }
-            return;
-          }
-
-          const resolve = ev.target && ev.target.closest ? ev.target.closest('.lia-quiz__resolve') : null;
-          if (resolve) {
-            if (resolve.disabled || resolve.style.display === "none") return;
-            setTimeout(lockSolution, 0);
-            setTimeout(lockSolution, 30);
-          }
-        }, true);
-      };
-
-      const repair = () => {
-        // Lösung sicher aus DOM nachladen (falls neu gerendert)
-        const sol = getSol();
-        if (sol) S.solution = (sol.textContent || S.solution);
-
-        // Start nur setzen, wenn noch leer
-        const input = getInput();
-        if (input && !S.start) S.start = input.getAttribute('value') || input.defaultValue || "";
-
-        bindControl();
-        ensureSolvedSticky();
-      };
-
-      // fixer registrieren + sofort reparieren
-      MOD.fixers[uid] = repair;
-      repair();
-      MOD.schedule();
-      setTimeout(repair, 0);
-      setTimeout(repair, 60);
-      setTimeout(repair, 180);
+      this.syncAll();
+      setTimeout(() => this.syncAll(), 0);
+      setTimeout(() => this.syncAll(), 120);
+      setTimeout(() => this.syncAll(), 260);
     }
   };
 
-  MOD.startGlobal();
   ROOT[KEY] = MOD;
-})();
-
-
-
-
-
-
-
-
-(function () {
-  // =========================
-  // DIKTAT
-  // =========================
-  // =========================
-  // Init (pro Dokument nur einmal)
-  // =========================
-  const KEY = "__LIA_DIKTAT_AUTOWIDTH_V1__";
-  if (window[KEY]) return;
-  window[KEY] = true;
-
-  // =========================
-  // CSS Injection (statt @style)
-  // =========================
-  const STYLE_ID = "lia-diktat-css-v1";
-  if (!document.getElementById(STYLE_ID)) {
-    const css = `
-.lia-diktat{
-  display:inline-block;
-  vertical-align:baseline;
-  max-width:100%;
-}
-
-/* egal welchen Wrapper LiaScript um [[...]] baut: inline halten */
-.lia-diktat > :not(.lia-diktat-measure){
-  display:inline-block !important;
-  vertical-align:baseline;
-}
-
-/* robust gegen zusätzliche Wrapper */
-.lia-diktat :where(div,span){
-  vertical-align:baseline;
-}
-.lia-diktat :where(div,span):not(.lia-diktat-measure){
-  display:inline-block !important;
-}
-
-.lia-diktat input,
-.lia-diktat textarea{
-  display:inline-block !important;
-  vertical-align:baseline;
-  box-sizing:border-box;
-  max-width:100%;
-}
-    `.trim();
-
-    const st = document.createElement("style");
-    st.id = STYLE_ID;
-    st.textContent = css;
-    (document.head || document.documentElement).appendChild(st);
-  }
-
-  // =========================
-  // Auto-Fit Logik
-  // =========================
-  const num = (v) => {
-    const x = parseFloat(v);
-    return Number.isFinite(x) ? x : 0;
-  };
-
-  function fitOne(wrapper){
-    const meas  = wrapper.querySelector(".lia-diktat-measure");
-    const input = wrapper.querySelector("input, textarea");
-    if(!meas || !input) return false;
-
-    const cs = getComputedStyle(input);
-    meas.style.font = cs.font;
-    meas.style.letterSpacing = cs.letterSpacing;
-    meas.style.textTransform = cs.textTransform;
-
-    const textW = meas.getBoundingClientRect().width;
-    const pad   = num(cs.paddingLeft) + num(cs.paddingRight);
-    const bord  = num(cs.borderLeftWidth) + num(cs.borderRightWidth);
-
-    const w = Math.ceil(textW + pad + bord + 14); // Cursor/Luft
-
-    input.style.minWidth = "6ch";
-    input.style.width    = w + "px";
-    input.style.maxWidth = "100%";
-    return true;
-  }
-
-  let scheduled = false;
-  function fitAll(){
-    if (scheduled) return;
-    scheduled = true;
-    requestAnimationFrame(() => {
-      scheduled = false;
-      document.querySelectorAll(".lia-diktat").forEach(w => {
-        let tries = 0;
-        (function retry(){
-          if (fitOne(w)) return;
-          if (tries++ < 60) requestAnimationFrame(retry);
-        })();
-      });
-    });
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", fitAll, { once:true });
-  } else {
-    fitAll();
-  }
-
-  window.addEventListener("resize", fitAll);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
-
-  const mo = new MutationObserver(() => fitAll());
-  mo.observe(document.body, { childList:true, subtree:true });
-
+  MOD.startGlobal();
 })();
 
 
@@ -10195,26 +10352,164 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
 
 
 (function () {
-
-  // =========================
-  // Root/Content (iframe-safe)
-  // =========================
-  function getRootWindow(){
+  function getRootWindow() {
     let w = window;
-    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
+    try {
+      while (w.parent && w.parent !== w) w = w.parent;
+    } catch (e) {}
     return w;
   }
 
   const ROOT = getRootWindow();
-  const STORE_KEY = "__LIA_FRACTION_QUIZ_V1__";
-  const STYLE_ID  = "__LIA_FRACTION_QUIZ_STYLE_V1__";
+  const STORE_KEY = "__LIA_FRACTION_QUIZ_V3__";
+  const STYLE_ID = "__LIA_FRACTION_QUIZ_STYLE_V3__";
 
-  // =========================
-  // Style Injection (ROOT head)
-  // =========================
-  function injectStyleOnce(){
-    let DOC = null;
-    try { DOC = (ROOT && ROOT.document) ? ROOT.document : document; } catch(e){ DOC = document; }
+  function getDoc() {
+    try {
+      if (ROOT && ROOT.document) return ROOT.document;
+    } catch (e) {}
+    return document;
+  }
+
+  function clampInt(value, min, max, fallback) {
+    let n = parseInt(value, 10);
+    if (!Number.isFinite(n)) n = fallback;
+    if (!Number.isFinite(n)) n = min;
+    if (n < min) n = min;
+    if (n > max) n = max;
+    return n | 0;
+  }
+
+  function gcd(a, b) {
+    a = Math.abs(a | 0);
+    b = Math.abs(b | 0);
+    while (b) {
+      const t = a % b;
+      a = b;
+      b = t;
+    }
+    return a || 1;
+  }
+
+  function fractionFromDecimalString(str) {
+    const s = String(str == null ? "" : str).trim().replace(",", ".");
+    if (!s) return { num: 0, den: 1 };
+
+    if (/e/i.test(s)) {
+      const x = Number(s);
+      if (!Number.isFinite(x)) return { num: 0, den: 1 };
+      const fixed = x.toFixed(12).replace(/0+$/, "").replace(/\.$/, "");
+      return fractionFromDecimalString(fixed);
+    }
+
+    if (!/^[-+]?\d*(?:\.\d+)?$/.test(s)) {
+      return { num: 0, den: 1 };
+    }
+
+    const sign = s.startsWith("-") ? -1 : 1;
+    const unsigned = s.replace(/^[-+]/, "");
+    const parts = unsigned.split(".");
+    const intPart = parts[0] || "0";
+    const fracPart = parts[1] || "";
+
+    if (!fracPart) {
+      return { num: sign * parseInt(intPart, 10), den: 1 };
+    }
+
+    const den = Math.pow(10, fracPart.length);
+    const num = sign * (parseInt(intPart, 10) * den + parseInt(fracPart, 10));
+    return { num, den };
+  }
+
+  function normalizeFractionInfo(raw) {
+    let num = 0;
+    let den = 1;
+    const original = raw;
+
+    if (raw && typeof raw === "object" && Number.isFinite(raw.num) && Number.isFinite(raw.den)) {
+      num = raw.num;
+      den = raw.den;
+    } else if (typeof raw === "number") {
+      const f = fractionFromDecimalString(String(raw));
+      num = f.num;
+      den = f.den;
+    } else {
+      const s0 = String(raw == null ? "" : raw).trim();
+      const s = s0.replace(/^\((.*)\)$/, "$1").trim();
+
+      if (s.includes("/")) {
+        const m = s.match(/^\s*([-+]?\d+)\s*\/\s*([-+]?\d+)\s*$/);
+        if (m) {
+          num = parseInt(m[1], 10);
+          den = parseInt(m[2], 10);
+        } else {
+          const f = fractionFromDecimalString(s);
+          num = f.num;
+          den = f.den;
+        }
+      } else {
+        const f = fractionFromDecimalString(s);
+        num = f.num;
+        den = f.den;
+      }
+    }
+
+    if (!Number.isFinite(num)) num = 0;
+    if (!Number.isFinite(den) || den === 0) den = 1;
+    if (den < 0) {
+      num = -num;
+      den = -den;
+    }
+
+    const g = gcd(num, den);
+    num = num / g;
+    den = den / g;
+
+    if (num < 0) num = 0;
+    if (num > den) num = den;
+
+    return {
+      num,
+      den,
+      value: den ? num / den : 0,
+      raw: original
+    };
+  }
+
+  function bestFactorPair(n) {
+    n = Math.max(1, n | 0);
+    let bestA = 1;
+    let bestB = n;
+    let bestDiff = Math.abs(bestB - bestA);
+
+    for (let a = 1; a * a <= n; a++) {
+      if (n % a !== 0) continue;
+      const b = n / a;
+      const diff = Math.abs(b - a);
+      if (diff < bestDiff) {
+        bestA = a;
+        bestB = b;
+        bestDiff = diff;
+      }
+    }
+
+    return {
+      cols: Math.min(bestA, bestB),
+      rows: Math.max(bestA, bestB)
+    };
+  }
+
+  function boolArray(length, source) {
+    const n = Math.max(1, length | 0);
+    const out = Array(n).fill(false);
+    if (Array.isArray(source)) {
+      for (let i = 0; i < Math.min(n, source.length); i++) out[i] = !!source[i];
+    }
+    return out;
+  }
+
+  function injectStyleOnce() {
+    const DOC = getDoc();
     if (!DOC || !DOC.head) return;
     if (DOC.getElementById(STYLE_ID)) return;
 
@@ -10222,7 +10517,11 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
 :root{
   --fq-track: rgba(0,0,0,.20);
   --fq-thumb: rgba(0,0,0,.88);
-  --fq-ring:  rgba(255,255,255,.90);
+  --fq-ring: rgba(255,255,255,.90);
+  --fq-mark: orange;
+  --fq-stroke: #000000;
+  --fq-fill: #ffffff;
+  --fq-disabled: .58;
 
   --fq-w: 200px;
   --fq-h: 30px;
@@ -10235,47 +10534,74 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
   :root{
     --fq-track: rgba(255,255,255,.22);
     --fq-thumb: rgba(255,255,255,.92);
-    --fq-ring:  rgba(0,0,0,.75);
+    --fq-ring: rgba(0,0,0,.75);
+    --fq-stroke: #000000;
+    --fq-fill: #ffffff;
   }
 }
 
-/* Wrapper: Label “im” Control */
+.fq-widget{
+  display:inline-block;
+}
+
+.fq-mount svg{
+  display:block;
+}
+
+.fq-clickable{
+  cursor:pointer;
+}
+
+.fq-widget[data-fq-locked="1"] .fq-clickable,
+.fq-widget[data-fq-locked="1"] [data-fq-part]{
+  cursor:default !important;
+}
+
+.fq-widget[data-fq-locked="1"] .fq-range,
+.fq-widget[data-fq-locked="1"] .fq-range input[type="range"]{
+  pointer-events:none !important;
+}
+
+.fq-widget[data-fq-locked="1"] .fq-range{
+  opacity:var(--fq-disabled);
+}
+
 .fq-range{
-  width: var(--fq-w);
-  max-width: var(--fq-w);
-  height: var(--fq-h);
-  position: relative;
-  margin: 6px 0 12px 0;
-  user-select: none;
+  width:var(--fq-w);
+  max-width:var(--fq-w);
+  height:var(--fq-h);
+  position:relative;
+  margin:6px 0 12px 0;
+  user-select:none;
 }
+
 .fq-range::before{
-  content: attr(data-label);
-  position: absolute;
-  left: 0; right: 0;
-  top: var(--fq-label-top);
-  text-align: center;
-  font-size: var(--fq-label-size);
-  line-height: 1;
-  opacity: .85;
-  pointer-events: none;
-  z-index: 2;
+  content:attr(data-label);
+  position:absolute;
+  left:0;
+  right:0;
+  top:var(--fq-label-top);
+  text-align:center;
+  font-size:var(--fq-label-size);
+  line-height:1;
+  opacity:.85;
+  pointer-events:none;
+  z-index:2;
 }
 
-/* LiaScript-Wrapper kompakt + “Textausgabe” killen */
 .fq-range .lia-input{
-  width: var(--fq-w) !important;
-  max-width: var(--fq-w) !important;
-  height: var(--fq-h) !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-  font-size: 0 !important;
-  line-height: 0 !important;
-  min-height: 0 !important;
+  width:var(--fq-w) !important;
+  max-width:var(--fq-w) !important;
+  height:var(--fq-h) !important;
+  margin:0 !important;
+  padding:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  font-size:0 !important;
+  line-height:0 !important;
+  min-height:0 !important;
 }
 
-/* Alles Chrome weg (Reset/Value/Buttons/etc.) */
 .fq-range button,
 .fq-range output,
 .fq-range input[type="number"],
@@ -10286,54 +10612,53 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
 .fq-range .lia-input-reset,
 .fq-range .lia-input-prefix,
 .fq-range .lia-input-suffix{
-  display: none !important;
+  display:none !important;
 }
 
-/* Range: im Control platziert */
 .fq-range input[type="range"]{
-  width: var(--fq-w) !important;
-  max-width: var(--fq-w) !important;
-  height: var(--fq-h) !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  background: transparent;
-  -webkit-appearance: none;
-  appearance: none;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: none;
-  position: relative;
-  z-index: 1;
+  width:var(--fq-w) !important;
+  max-width:var(--fq-w) !important;
+  height:var(--fq-h) !important;
+  margin:0 !important;
+  padding:0 !important;
+  background:transparent;
+  -webkit-appearance:none;
+  appearance:none;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:none;
+  position:relative;
+  z-index:1;
 }
 
-/* WebKit Track/Thumb */
 .fq-range input[type="range"]::-webkit-slider-runnable-track{
-  height: var(--fq-track-h);
-  border-radius: 999px;
-  background: var(--fq-track);
-}
-.fq-range input[type="range"]::-webkit-slider-thumb{
-  -webkit-appearance: none;
-  appearance: none;
-  width: var(--fq-thumb-sz);
-  height: var(--fq-thumb-sz);
-  border-radius: 50%;
-  background: var(--fq-thumb);
-  border: 2px solid var(--fq-ring);
-  margin-top: calc((var(--fq-track-h) - var(--fq-thumb-sz)) / 2);
+  height:var(--fq-track-h);
+  border-radius:999px;
+  background:var(--fq-track);
 }
 
-/* Firefox Track/Thumb */
-.fq-range input[type="range"]::-moz-range-track{
-  height: var(--fq-track-h);
-  border-radius: 999px;
-  background: var(--fq-track);
+.fq-range input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  appearance:none;
+  width:var(--fq-thumb-sz);
+  height:var(--fq-thumb-sz);
+  border-radius:50%;
+  background:var(--fq-thumb);
+  border:2px solid var(--fq-ring);
+  margin-top:calc((var(--fq-track-h) - var(--fq-thumb-sz)) / 2);
 }
+
+.fq-range input[type="range"]::-moz-range-track{
+  height:var(--fq-track-h);
+  border-radius:999px;
+  background:var(--fq-track);
+}
+
 .fq-range input[type="range"]::-moz-range-thumb{
-  width: var(--fq-thumb-sz);
-  height: var(--fq-thumb-sz);
-  border-radius: 50%;
-  background: var(--fq-thumb);
-  border: 2px solid var(--fq-ring);
+  width:var(--fq-thumb-sz);
+  height:var(--fq-thumb-sz);
+  border-radius:50%;
+  background:var(--fq-thumb);
+  border:2px solid var(--fq-ring);
 }
     `.trim();
 
@@ -10345,54 +10670,638 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
 
   injectStyleOnce();
 
-  // =========================
-  // Store (import-safe)
-  // =========================
   if (!ROOT[STORE_KEY]) {
     ROOT[STORE_KEY] = {
-      circle:   Object.create(null), // uid -> boolean[]
-      rect:     Object.create(null), // uid -> boolean[]
-      rectDims: Object.create(null), // uid -> {rows, cols}
+      version: 3,
+      circle: Object.create(null),
+      rect: Object.create(null),
+      rectDims: Object.create(null),
+      meta: Object.create(null),
+      nodes: Object.create(null),
 
-      ensureCircle(uid, n){
-        n = Math.max(1, n|0);
-        const a = this.circle[uid];
-        if (!Array.isArray(a) || a.length !== n) this.circle[uid] = Array(n).fill(false);
+      getMeta(uid, kind) {
+        uid = String(uid == null ? "" : uid);
+        if (!this.meta[uid]) {
+          this.meta[uid] = {
+            uid,
+            kind: kind || "",
+            target: { num: 0, den: 1, value: 0, raw: "0" },
+            locked: false,
+            solved: false,
+            revealed: false,
+            ready: false
+          };
+        }
+        if (kind) this.meta[uid].kind = kind;
+        return this.meta[uid];
+      },
+
+      getNodes(uid) {
+        uid = String(uid == null ? "" : uid);
+        if (!this.nodes[uid]) {
+          this.nodes[uid] = {
+            uid,
+            kind: "",
+            wrap: null,
+            host: null,
+            mount: null,
+            circleInput: null,
+            rowsInput: null,
+            colsInput: null,
+            observer: null,
+            _quizScope: null,
+            _quizClickHandler: null,
+            _quizBridgeInstalled: false
+          };
+        }
+        return this.nodes[uid];
+      },
+
+      parseTarget(raw) {
+        return normalizeFractionInfo(raw);
+      },
+
+      setTarget(uid, raw, kind) {
+        const meta = this.getMeta(uid, kind);
+        meta.target = normalizeFractionInfo(raw);
+        return meta.target;
+      },
+
+      ensureCircle(uid, parts, options) {
+        const opts = options || {};
+        const meta = this.getMeta(uid, "circle");
+        const n = clampInt(parts, 1, 32, 1);
+        const prev = Array.isArray(this.circle[uid]) ? this.circle[uid] : [];
+        this.circle[uid] = boolArray(n, opts.preserve ? prev : null);
+        meta.parts = n;
+        meta.kind = "circle";
         return this.circle[uid];
       },
 
-      toggleCircle(uid, i){
-        const a = this.circle[uid];
-        if (!Array.isArray(a)) return false;
-        if (i < 0 || i >= a.length) return false;
-        a[i] = !a[i];
-        return a[i];
-      },
-
-      ensureRect(uid, rows, cols){
-        rows = Math.max(1, rows|0);
-        cols = Math.max(1, cols|0);
-        this.rectDims[uid] = { rows, cols };
-
-        const total = rows * cols;
-        const a = this.rect[uid];
-        if (!Array.isArray(a) || a.length !== total) this.rect[uid] = Array(total).fill(false);
+      ensureRect(uid, rows, cols, options) {
+        const opts = options || {};
+        const meta = this.getMeta(uid, "rect");
+        const r = clampInt(rows, 1, 20, 1);
+        const c = clampInt(cols, 1, 20, 1);
+        const total = r * c;
+        const prev = Array.isArray(this.rect[uid]) ? this.rect[uid] : [];
+        this.rectDims[uid] = { rows: r, cols: c };
+        this.rect[uid] = boolArray(total, opts.preserve ? prev : null);
+        meta.rows = r;
+        meta.cols = c;
+        meta.kind = "rect";
         return this.rect[uid];
       },
 
-      toggleRect(uid, i){
-        const a = this.rect[uid];
-        if (!Array.isArray(a)) return false;
-        if (i < 0 || i >= a.length) return false;
-        a[i] = !a[i];
-        return a[i];
+      setCircleParts(uid, parts, options) {
+        const meta = this.getMeta(uid, "circle");
+        if (meta.locked && !(options && options.force)) return this.circle[uid] || this.ensureCircle(uid, 1);
+        return this.ensureCircle(uid, parts, options);
+      },
+
+      setRectDims(uid, rows, cols, options) {
+        const meta = this.getMeta(uid, "rect");
+        if (meta.locked && !(options && options.force)) return this.rect[uid] || this.ensureRect(uid, 1, 1);
+        return this.ensureRect(uid, rows, cols, options);
+      },
+
+      buildCircleSolution(targetRaw) {
+        const t = normalizeFractionInfo(targetRaw);
+        const parts = Math.max(1, t.den | 0);
+        const active = Array(parts).fill(false);
+        for (let i = 0; i < Math.min(parts, t.num | 0); i++) active[i] = true;
+        return { type: "circle", target: t, parts, active };
+      },
+
+      buildRectSolution(targetRaw) {
+        const t = normalizeFractionInfo(targetRaw);
+        const pair = bestFactorPair(t.den);
+        const rows = pair.rows;
+        const cols = pair.cols;
+        const total = rows * cols;
+        const active = Array(total).fill(false);
+        for (let i = 0; i < Math.min(total, t.num | 0); i++) active[i] = true;
+        return { type: "rect", target: t, rows, cols, active };
+      },
+
+      getSolution(uid) {
+        const meta = this.getMeta(uid);
+        if (meta.kind === "circle") return this.buildCircleSolution(meta.target);
+        if (meta.kind === "rect") return this.buildRectSolution(meta.target);
+        return null;
+      },
+
+      isLocked(uid) {
+        return !!this.getMeta(uid).locked;
+      },
+
+      toggleCircle(uid, index) {
+        const meta = this.getMeta(uid, "circle");
+        if (meta.locked || !meta.ready) return false;
+        const arr = Array.isArray(this.circle[uid]) ? this.circle[uid] : this.ensureCircle(uid, meta.parts || 1);
+        const i = index | 0;
+        if (i < 0 || i >= arr.length) return false;
+        arr[i] = !arr[i];
+        return arr[i];
+      },
+
+      toggleRect(uid, index) {
+        const meta = this.getMeta(uid, "rect");
+        if (meta.locked || !meta.ready) return false;
+        const dims = this.rectDims[uid] || { rows: meta.rows || 1, cols: meta.cols || 1 };
+        const arr = Array.isArray(this.rect[uid]) ? this.rect[uid] : this.ensureRect(uid, dims.rows, dims.cols);
+        const i = index | 0;
+        if (i < 0 || i >= arr.length) return false;
+        arr[i] = !arr[i];
+        return arr[i];
+      },
+
+      countSelected(uid) {
+        const meta = this.getMeta(uid);
+        const arr = meta.kind === "rect" ? this.rect[uid] : this.circle[uid];
+        if (!Array.isArray(arr) || !arr.length) return 0;
+        let k = 0;
+        for (let i = 0; i < arr.length; i++) if (arr[i]) k++;
+        return k;
+      },
+
+      countTotal(uid) {
+        const meta = this.getMeta(uid);
+        const arr = meta.kind === "rect" ? this.rect[uid] : this.circle[uid];
+        return Array.isArray(arr) && arr.length ? arr.length : 1;
+      },
+
+      getRatio(uid) {
+        const total = this.countTotal(uid);
+        const selected = this.countSelected(uid);
+        return total ? selected / total : 0;
+      },
+
+      isCorrect(uid) {
+        const meta = this.getMeta(uid);
+        if (!meta.ready) return false;
+        const t = meta.target || { num: 0, den: 1 };
+        const total = this.countTotal(uid);
+        const selected = this.countSelected(uid);
+        return selected * t.den === t.num * total;
+      },
+
+      lock(uid) {
+        const meta = this.getMeta(uid);
+        meta.locked = true;
+        this.syncDomState(uid);
+        return true;
+      },
+
+      markSolved(uid) {
+        const meta = this.getMeta(uid);
+        if (!meta.ready) return false;
+        meta.solved = true;
+        meta.revealed = false;
+        meta.locked = true;
+        this.syncDomState(uid);
+        this.render(uid);
+        return true;
+      },
+
+      applySolution(uid) {
+        const meta = this.getMeta(uid);
+        const sol = this.getSolution(uid);
+        if (!sol) return null;
+
+        if (sol.type === "circle") {
+          this.setCircleParts(uid, sol.parts, { force: true, preserve: false });
+          this.circle[uid] = boolArray(sol.parts, sol.active);
+          meta.parts = sol.parts;
+        } else {
+          this.setRectDims(uid, sol.rows, sol.cols, { force: true, preserve: false });
+          this.rect[uid] = boolArray(sol.rows * sol.cols, sol.active);
+          this.rectDims[uid] = { rows: sol.rows, cols: sol.cols };
+          meta.rows = sol.rows;
+          meta.cols = sol.cols;
+        }
+
+        this.syncInputs(uid, true);
+        this.render(uid);
+        return sol;
+      },
+
+      markRevealed(uid) {
+        const meta = this.getMeta(uid);
+        if (!meta.ready) return false;
+        meta.revealed = true;
+        meta.solved = false;
+        meta.locked = true;
+        this.applySolution(uid);
+        this.syncDomState(uid);
+        return true;
+      },
+
+      register(uid, options) {
+        const opts = options || {};
+        const kind = opts.kind || "";
+        const meta = this.getMeta(uid, kind);
+        const nodes = this.getNodes(uid);
+
+        if (kind) nodes.kind = kind;
+        if (opts.wrap) nodes.wrap = opts.wrap;
+        if (opts.host) nodes.host = opts.host;
+        if (opts.mount) nodes.mount = opts.mount;
+        if (opts.circleInput) nodes.circleInput = opts.circleInput;
+        if (opts.rowsInput) nodes.rowsInput = opts.rowsInput;
+        if (opts.colsInput) nodes.colsInput = opts.colsInput;
+
+        if (opts.target !== undefined) this.setTarget(uid, opts.target, kind || meta.kind);
+
+        if (kind === "circle") {
+          this.ensureCircle(uid, opts.initialParts != null ? opts.initialParts : 1, { preserve: false });
+        } else if (kind === "rect") {
+          this.ensureRect(
+            uid,
+            opts.initialRows != null ? opts.initialRows : 1,
+            opts.initialCols != null ? opts.initialCols : 1,
+            { preserve: false }
+          );
+        }
+
+        if (nodes.circleInput) this.bindCircleInput(uid, nodes.circleInput);
+        if (nodes.rowsInput || nodes.colsInput) this.bindRectInputs(uid, nodes.rowsInput, nodes.colsInput);
+
+        meta.ready = true;
+        this.syncInputs(uid, true);
+        this.syncDomState(uid);
+        this.render(uid);
+        return nodes;
+      },
+
+      attachCircle(uid, options) {
+        const opts = Object.assign({}, options || {}, { kind: "circle" });
+        return this.register(uid, opts);
+      },
+
+      attachRect(uid, options) {
+        const opts = Object.assign({}, options || {}, { kind: "rect" });
+        return this.register(uid, opts);
+      },
+
+      bindCircleInput(uid, input) {
+        if (!input || input.__fqCircleBoundUid === uid) return;
+        input.__fqCircleBoundUid = uid;
+
+        const handler = () => {
+          if (this.isLocked(uid)) {
+            this.syncInputs(uid, true);
+            return;
+          }
+          const value = clampInt(input.value, 1, 32, 1);
+          this.setCircleParts(uid, value, { preserve: false });
+          this.render(uid);
+        };
+
+        input.addEventListener("input", handler, true);
+        input.addEventListener("change", handler, true);
+      },
+
+      bindRectInputs(uid, rowsInput, colsInput) {
+        if (rowsInput && rowsInput.__fqRectRowsBoundUid !== uid) {
+          rowsInput.__fqRectRowsBoundUid = uid;
+
+          const handlerRows = () => {
+            if (this.isLocked(uid)) {
+              this.syncInputs(uid, true);
+              return;
+            }
+            const rows = clampInt(rowsInput.value, 1, 20, 1);
+            const cols = colsInput ? clampInt(colsInput.value, 1, 20, 1) : ((this.rectDims[uid] && this.rectDims[uid].cols) || 1);
+            this.setRectDims(uid, rows, cols, { preserve: false });
+            this.render(uid);
+          };
+
+          rowsInput.addEventListener("input", handlerRows, true);
+          rowsInput.addEventListener("change", handlerRows, true);
+        }
+
+        if (colsInput && colsInput.__fqRectColsBoundUid !== uid) {
+          colsInput.__fqRectColsBoundUid = uid;
+
+          const handlerCols = () => {
+            if (this.isLocked(uid)) {
+              this.syncInputs(uid, true);
+              return;
+            }
+            const cols = clampInt(colsInput.value, 1, 20, 1);
+            const rows = rowsInput ? clampInt(rowsInput.value, 1, 20, 1) : ((this.rectDims[uid] && this.rectDims[uid].rows) || 1);
+            this.setRectDims(uid, rows, cols, { preserve: false });
+            this.render(uid);
+          };
+
+          colsInput.addEventListener("input", handlerCols, true);
+          colsInput.addEventListener("change", handlerCols, true);
+        }
+      },
+
+      syncInputs(uid, forceValue) {
+        const nodes = this.getNodes(uid);
+        const meta = this.getMeta(uid);
+        const force = !!forceValue;
+
+        if (meta.kind === "circle" && nodes.circleInput) {
+          const parts = (this.circle[uid] && this.circle[uid].length) || meta.parts || 1;
+          if (force || String(nodes.circleInput.value) !== String(parts)) nodes.circleInput.value = String(parts);
+          nodes.circleInput.disabled = !!meta.locked;
+        }
+
+        if (meta.kind === "rect") {
+          const dims = this.rectDims[uid] || { rows: meta.rows || 1, cols: meta.cols || 1 };
+
+          if (nodes.rowsInput) {
+            if (force || String(nodes.rowsInput.value) !== String(dims.rows)) nodes.rowsInput.value = String(dims.rows);
+            nodes.rowsInput.disabled = !!meta.locked;
+          }
+
+          if (nodes.colsInput) {
+            if (force || String(nodes.colsInput.value) !== String(dims.cols)) nodes.colsInput.value = String(dims.cols);
+            nodes.colsInput.disabled = !!meta.locked;
+          }
+        }
+      },
+
+      syncDomState(uid) {
+        const nodes = this.getNodes(uid);
+        const meta = this.getMeta(uid);
+        const targets = [nodes.wrap, nodes.host, nodes.mount];
+
+        for (let i = 0; i < targets.length; i++) {
+          const el = targets[i];
+          if (!el || !el.setAttribute) continue;
+          el.setAttribute("data-fq-locked", meta.locked ? "1" : "0");
+          el.setAttribute("data-fq-solved", meta.solved ? "1" : "0");
+          el.setAttribute("data-fq-revealed", meta.revealed ? "1" : "0");
+        }
+
+        this.syncInputs(uid, false);
+      },
+
+      render(uid) {
+        const nodes = this.getNodes(uid);
+        const meta = this.getMeta(uid);
+        if (!nodes.mount) return false;
+        if (meta.kind === "circle") return this.renderCircle(uid, nodes.mount);
+        if (meta.kind === "rect") return this.renderRect(uid, nodes.mount);
+        return false;
+      },
+
+      renderCircle(uid, mount) {
+        const meta = this.getMeta(uid, "circle");
+        const arr = Array.isArray(this.circle[uid]) ? this.circle[uid] : this.ensureCircle(uid, meta.parts || 1);
+        const n = Math.max(1, arr.length | 0);
+        const locked = !!meta.locked;
+
+        const W = 200;
+        const H = 200;
+        const padding = 6;
+        const cx = W / 2;
+        const cy = H / 2;
+        const r = Math.min(W, H) / 2 - padding;
+        const step = 360 / n;
+        const startOffset = -90;
+
+        let slices = "";
+        let lines = "";
+
+        if (n === 1) {
+          slices = `
+            <circle
+              data-fq-part="0"
+              class="fq-clickable"
+              cx="${cx}" cy="${cy}" r="${r}"
+              fill="${arr[0] ? "var(--fq-mark)" : "transparent"}"
+            ></circle>
+          `;
+        } else {
+          for (let i = 0; i < n; i++) {
+            const a0 = (startOffset + step * i) * Math.PI / 180;
+            const a1 = (startOffset + step * (i + 1)) * Math.PI / 180;
+
+            const x0 = cx + r * Math.cos(a0);
+            const y0 = cy + r * Math.sin(a0);
+            const x1 = cx + r * Math.cos(a1);
+            const y1 = cy + r * Math.sin(a1);
+            const largeArc = step > 180 ? 1 : 0;
+
+            slices += `
+              <path
+                data-fq-part="${i}"
+                class="fq-clickable"
+                d="M ${cx},${cy} L ${x0},${y0} A ${r},${r} 0 ${largeArc},1 ${x1},${y1} Z"
+                fill="${arr[i] ? "var(--fq-mark)" : "transparent"}"
+              ></path>
+            `;
+
+            lines += `
+              <line
+                x1="${cx}" y1="${cy}" x2="${x0}" y2="${y0}"
+                stroke="#000000" stroke-width="2"
+              ></line>
+            `;
+          }
+        }
+
+        mount.innerHTML = `
+          <svg class="fq-svg" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" aria-hidden="true">
+            <circle cx="${cx}" cy="${cy}" r="${r}" stroke="#000000" stroke-width="2" fill="#ffffff"></circle>
+            ${slices}
+            ${lines}
+            <circle cx="${cx}" cy="${cy}" r="${r}" stroke="#000000" stroke-width="2" fill="none"></circle>
+          </svg>
+        `;
+
+        mount.onclick = (evt) => {
+          const el = evt.target && evt.target.closest ? evt.target.closest("[data-fq-part]") : null;
+          if (!el || locked) return;
+          const i = parseInt(el.getAttribute("data-fq-part"), 10);
+          if (!Number.isFinite(i)) return;
+          this.toggleCircle(uid, i);
+          this.render(uid);
+        };
+
+        this.syncDomState(uid);
+        return true;
+      },
+
+      renderRect(uid, mount) {
+        const meta = this.getMeta(uid, "rect");
+        const dims = this.rectDims[uid] || { rows: meta.rows || 1, cols: meta.cols || 1 };
+        const arr = Array.isArray(this.rect[uid]) ? this.rect[uid] : this.ensureRect(uid, dims.rows, dims.cols);
+        const rows = clampInt(dims.rows, 1, 20, 1);
+        const cols = clampInt(dims.cols, 1, 20, 1);
+        const locked = !!meta.locked;
+
+        const W = 200;
+        const H = 200;
+        const padding = 6;
+        const usableW = W - 2 * padding;
+        const usableH = H - 2 * padding;
+        const rw = usableW / cols;
+        const rh = usableH / rows;
+
+        let cells = "";
+        let lines = "";
+
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            const i = r * cols + c;
+            const x = padding + c * rw;
+            const y = padding + r * rh;
+
+            cells += `
+              <rect
+                data-fq-part="${i}"
+                class="fq-clickable"
+                x="${x}" y="${y}" width="${rw}" height="${rh}"
+                fill="${arr[i] ? "var(--fq-mark)" : "transparent"}"
+              ></rect>
+            `;
+          }
+        }
+
+        for (let r = 0; r <= rows; r++) {
+          const y = padding + r * rh;
+          lines += `<line x1="${padding}" y1="${y}" x2="${W - padding}" y2="${y}" stroke="#000000" stroke-width="2"></line>`;
+        }
+        for (let c = 0; c <= cols; c++) {
+          const x = padding + c * rw;
+          lines += `<line x1="${x}" y1="${padding}" x2="${x}" y2="${H - padding}" stroke="#000000" stroke-width="2"></line>`;
+        }
+
+        mount.innerHTML = `
+          <svg class="fq-svg" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" aria-hidden="true">
+            <rect x="0" y="0" width="${W}" height="${H}" fill="#ffffff" stroke="#000000" stroke-width="2"></rect>
+            ${cells}
+            ${lines}
+          </svg>
+        `;
+
+        mount.onclick = (evt) => {
+          const el = evt.target && evt.target.closest ? evt.target.closest("[data-fq-part]") : null;
+          if (!el || locked) return;
+          const i = parseInt(el.getAttribute("data-fq-part"), 10);
+          if (!Number.isFinite(i)) return;
+          this.toggleRect(uid, i);
+          this.render(uid);
+        };
+
+        this.syncDomState(uid);
+        return true;
+      },
+
+      _fqLabelOf(el) {
+        if (!el) return "";
+        const parts = [];
+        try { parts.push(el.textContent || ""); } catch (e) {}
+        try { if (el.className) parts.push(String(el.className)); } catch (e) {}
+
+        const attrs = ["title", "aria-label", "data-action", "data-title", "name", "value"];
+        for (let i = 0; i < attrs.length; i++) {
+          try {
+            const v = el.getAttribute && el.getAttribute(attrs[i]);
+            if (v) parts.push(v);
+          } catch (e) {}
+        }
+
+        return parts.join(" ").replace(/\s+/g, " ").trim().toLowerCase();
+      },
+
+      _fqIsRevealButton(el) {
+        const s = this._fqLabelOf(el);
+        return /(aufl|aufl[oö]sen|l[oö]sung|show solution|solution|resolve)/i.test(s);
+      },
+
+      _fqLooksRevealed(scope) {
+        if (!scope || !scope.querySelector) return false;
+
+        try {
+          if (scope.querySelector('[data-state="resolved"], [data-revealed="true"], [data-state="revealed"]')) return true;
+        } catch (e) {}
+
+        const feedback = scope.querySelector(".lia-quiz__feedback, [class*='feedback']");
+        const text = ((feedback && feedback.textContent) || "").toLowerCase();
+
+        if (/(aufgel|aufl[oö]s|l[oö]sung|show solution|resolved|solution)/i.test(text)) return true;
+
+        return false;
+      },
+
+      ensureQuizBridge(uid, scope) {
+        const nodes = this.getNodes(uid);
+        const meta = this.getMeta(uid);
+
+        if (!scope) return;
+        if (nodes._quizBridgeInstalled && nodes._quizScope === scope && scope.isConnected) return;
+
+        if (nodes.observer) {
+          try { nodes.observer.disconnect(); } catch (e) {}
+          nodes.observer = null;
+        }
+
+        if (nodes._quizScope && nodes._quizClickHandler) {
+          try { nodes._quizScope.removeEventListener("click", nodes._quizClickHandler, true); } catch (e) {}
+        }
+
+        const clickHandler = (evt) => {
+          const btn = evt.target && evt.target.closest
+            ? evt.target.closest("button, input[type='button'], input[type='submit']")
+            : null;
+
+          if (!btn) return;
+          if (!this._fqIsRevealButton(btn)) return;
+          if (!meta.ready) return;
+
+          setTimeout(() => {
+            this.markRevealed(uid);
+          }, 0);
+        };
+
+        scope.addEventListener("click", clickHandler, true);
+
+        let obs = null;
+        if (typeof MutationObserver !== "undefined") {
+          obs = new MutationObserver(() => {
+            if (!meta.ready || meta.revealed) return;
+            if (this._fqLooksRevealed(scope)) this.markRevealed(uid);
+          });
+
+          try {
+            obs.observe(scope, {
+              subtree: true,
+              childList: true,
+              attributes: true,
+              characterData: true
+            });
+          } catch (e) {
+            obs = null;
+          }
+        }
+
+        nodes._quizBridgeInstalled = true;
+        nodes._quizScope = scope;
+        nodes._quizClickHandler = clickHandler;
+        nodes.observer = obs;
+      },
+
+      onCheck(uid, passed) {
+        if (passed) this.markSolved(uid);
+        return !!passed;
+      },
+
+      onReveal(uid) {
+        return this.markRevealed(uid);
       }
     };
   }
 
   ROOT.__LIA_FRACTION_QUIZ__ = ROOT[STORE_KEY];
   window.__LIA_FRACTION_QUIZ__ = ROOT[STORE_KEY];
-
 })();
 
 
@@ -12061,219 +12970,209 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @circleQuiz: @circleQuiz_(@uid,@0)
 
 @circleQuiz_
-<script modify="false">
-const API = window.__LIA_FRACTION_QUIZ__;
-const uid = "@0";
+<div id="fq-circle-wrap-@0" class="fq-widget" data-fq-kind="circle" data-fq-uid="@0">
+  <div id="fq-circle-host-@0" class="fq-widget" data-fq-kind="circle" data-fq-uid="@0">
+    <div id="fq-circle-mount-@0" class="fq-mount"></div>
 
-/* @input sicher einlesen (initial kann leer sein) */
-const nRaw = "@input(`fq-c-n-@0`)";
-let n = parseInt(nRaw, 10);
-if (!Number.isFinite(n) || n < 1) n = 1;
-if (n > 32) n = 32;
-
-if (API && API.ensureCircle) API.ensureCircle(uid, n);
-const arr = (API && API.circle && API.circle[uid]) ? API.circle[uid] : Array(n).fill(false);
-
-/* 200x200 */
-const W = 200, H = 200, padding = 6;
-const cx = W / 2, cy = H / 2;
-const r  = Math.min(W, H) / 2 - padding;
-
-const circleFill  = "white";
-const lineColor   = "black";
-const segmentFill = "orange";
-
-const step = 360 / n;
-const startOffset = -90;
-
-let lines = "";
-let slices = "";
-
-if (n > 1) {
-  for (let i = 0; i < n; i++) {
-    const a0 = (startOffset + step * i) * Math.PI / 180;
-    const a1 = (startOffset + step * (i + 1)) * Math.PI / 180;
-
-    const x0 = cx + r * Math.cos(a0), y0 = cy + r * Math.sin(a0);
-    const x1 = cx + r * Math.cos(a1), y1 = cy + r * Math.sin(a1);
-
-    const largeArc = (step > 180) ? 1 : 0;
-    const sweep = 1;
-
-    const active = !!arr[i];
-
-    slices += `
-      <path
-        d="M ${cx},${cy} L ${x0},${y0} A ${r},${r} 0 ${largeArc},${sweep} ${x1},${y1} Z"
-        fill="${active ? segmentFill : "transparent"}"
-        style="cursor:pointer"
-        onclick="(function(el){
-          var API = window.__LIA_FRACTION_QUIZ__;
-          if(!API) return;
-          var on = API.toggleCircle('${uid}', ${i});
-          el.setAttribute('fill', on ? '${segmentFill}' : 'transparent');
-        })(this)"
-      ></path>
-    `;
-
-    lines += `<line x1="${cx}" y1="${cy}" x2="${x0}" y2="${y0}" stroke="${lineColor}" stroke-width="2"/>`;
-  }
-} else {
-  const active = !!arr[0];
-  slices = `
-    <circle
-      cx="${cx}" cy="${cy}" r="${r}"
-      fill="${active ? segmentFill : "transparent"}"
-      style="cursor:pointer"
-      onclick="(function(el){
-        var API = window.__LIA_FRACTION_QUIZ__;
-        if(!API) return;
-        var on = API.toggleCircle('${uid}', 0);
-        el.setAttribute('fill', on ? '${segmentFill}' : 'transparent');
-      })(this)"
-    ></circle>
-  `;
-}
-
-`HTML:
-<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
-  <circle cx="${cx}" cy="${cy}" r="${r}" stroke="${lineColor}" stroke-width="2" fill="${circleFill}"/>
-  ${slices}
-  ${lines}
-</svg>
-`
-</script>
-
-<div class="fq-range" data-label="Unterteilungen">
-<script run-once modify="false" input="range" output="fq-c-n-@0"
-        value="1" min="1" max="32" input-always-active>
+    <div id="fq-circle-range-@0" class="fq-range" data-label="Unterteilungen">
+      <script run-once modify="false" input="range" output="fq-c-n-@0"
+              value="1" min="1" max="32" input-always-active>
 @input
-</script>
-</div>
+      </script>
+    </div>
+  </div>
 
-[[!]]
-<script>
+  [[!]]
+  <script>
 (() => {
   const API = window.__LIA_FRACTION_QUIZ__;
   const uid = "@0";
-  const arr = (API && API.circle && API.circle[uid]) ? API.circle[uid] : [];
-  const ratio = arr.filter(Boolean).length / Math.max(1, arr.length);
-  const target = (@1);
-  return Math.abs(ratio - target) < 1e-12;
+  if (!API) return false;
+
+  const passed = API.isCorrect(uid);
+  if (passed && !API.isLocked(uid)) {
+    API.onCheck(uid, true);
+  }
+  return passed;
 })()
+  </script>
+</div>
+
+<script modify="false">
+(function () {
+  const API = window.__LIA_FRACTION_QUIZ__;
+  const uid = "@0";
+  const targetRaw = String.raw`@1`;
+
+  if (!API) return;
+
+  function waitForCircleDom(cb) {
+    let tries = 0;
+
+    function tick() {
+      const wrap = document.getElementById("fq-circle-wrap-@0");
+      const host = document.getElementById("fq-circle-host-@0");
+      const mount = document.getElementById("fq-circle-mount-@0");
+      const rangeWrap = document.getElementById("fq-circle-range-@0");
+      const input = rangeWrap ? rangeWrap.querySelector('input[type="range"]') : null;
+
+      if (wrap && host && mount && rangeWrap && input) {
+        cb({ wrap, host, mount, input });
+        return;
+      }
+
+      tries++;
+      if (tries < 240) requestAnimationFrame(tick);
+    }
+
+    tick();
+  }
+
+  waitForCircleDom(({ wrap, host, mount, input }) => {
+    API.attachCircle(uid, {
+      wrap: wrap,
+      host: host,
+      mount: mount,
+      circleInput: input,
+      target: targetRaw,
+      initialParts: input.value || 1
+    });
+
+    API.ensureQuizBridge(uid, wrap);
+  });
+})();
 </script>
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 @rectQuiz: @rectQuiz_(@uid,@0)
 
 @rectQuiz_
-<script modify="false">
-const API = window.__LIA_FRACTION_QUIZ__;
-const uid = "@0";
+<div id="fq-rect-wrap-@0" class="fq-widget" data-fq-kind="rect" data-fq-uid="@0">
+  <div id="fq-rect-host-@0" class="fq-widget" data-fq-kind="rect" data-fq-uid="@0">
+    <div id="fq-rect-mount-@0" class="fq-mount"></div>
 
-/* @input sicher einlesen (initial kann leer sein) */
-const rowsRaw = "@input(`fq-r-rows-@0`)";
-const colsRaw = "@input(`fq-r-cols-@0`)";
-let rows = parseInt(rowsRaw, 10);
-let cols = parseInt(colsRaw, 10);
-if (!Number.isFinite(rows) || rows < 1) rows = 1;
-if (!Number.isFinite(cols) || cols < 1) cols = 1;
-if (rows > 20) rows = 20;
-if (cols > 20) cols = 20;
-
-if (API && API.ensureRect) API.ensureRect(uid, rows, cols);
-const arr = (API && API.rect && API.rect[uid]) ? API.rect[uid] : Array(rows*cols).fill(false);
-
-/* 200x200 */
-const W = 200, H = 200, padding = 6;
-const usableW = W - 2*padding, usableH = H - 2*padding;
-
-const bgFill   = "white";
-const lineColor= "black";
-const cellFill = "orange";
-const cellGap  = 0;
-
-const rw = usableW / cols;
-const rh = usableH / rows;
-
-let gridRects = "";
-let gridLines = "";
-
-/* Zellen */
-for (let r = 0; r < rows; r++) {
-  for (let c = 0; c < cols; c++) {
-    const i = r*cols + c;
-    const x = padding + c*rw + cellGap/2;
-    const y = padding + r*rh + cellGap/2;
-    const w = rw - cellGap;
-    const h = rh - cellGap;
-
-    const active = !!arr[i];
-
-    gridRects += `
-      <rect
-        x="${x}" y="${y}" width="${Math.max(0,w)}" height="${Math.max(0,h)}"
-        fill="${active ? cellFill : "transparent"}"
-        style="cursor:pointer"
-        onclick="(function(el){
-          var API = window.__LIA_FRACTION_QUIZ__;
-          if(!API) return;
-          var on = API.toggleRect('${uid}', ${i});
-          el.setAttribute('fill', on ? '${cellFill}' : 'transparent');
-        })(this)"
-      ></rect>
-    `;
-  }
-}
-
-/* Gitterlinien */
-for (let r = 0; r <= rows; r++) {
-  const y = padding + r*rh;
-  gridLines += `<line x1="${padding}" y1="${y}" x2="${W-padding}" y2="${y}" stroke="${lineColor}" stroke-width="2"/>`;
-}
-for (let c = 0; c <= cols; c++) {
-  const x = padding + c*rw;
-  gridLines += `<line x1="${x}" y1="${padding}" x2="${x}" y2="${H-padding}" stroke="${lineColor}" stroke-width="2"/>`;
-}
-
-`HTML:
-<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
-  <rect x="0" y="0" width="${W}" height="${H}" fill="${bgFill}" stroke="${lineColor}" stroke-width="2"/>
-  ${gridRects}
-  ${gridLines}
-</svg>
-`
-</script>
-
-<div class="fq-range" data-label="vertikale Unterteilungen">
-<script run-once modify="false" input="range" output="fq-r-rows-@0"
-        value="1" min="1" max="20" input-always-active>
+    <div id="fq-rect-rows-wrap-@0" class="fq-range" data-label="vertikal">
+      <script run-once modify="false" input="range" output="fq-r-rows-@0"
+              value="1" min="1" max="20" input-always-active>
 @input
-</script>
-</div>
+      </script>
+    </div>
 
-<div class="fq-range" data-label="horizontale Unterteilungen">
-<script run-once modify="false" input="range" output="fq-r-cols-@0"
-        value="1" min="1" max="20" input-always-active>
+    <div id="fq-rect-cols-wrap-@0" class="fq-range" data-label="horizontal">
+      <script run-once modify="false" input="range" output="fq-r-cols-@0"
+              value="1" min="1" max="20" input-always-active>
 @input
-</script>
-</div>
+      </script>
+    </div>
+  </div>
 
-[[!]]
-<script>
+  [[!]]
+  <script>
 (() => {
   const API = window.__LIA_FRACTION_QUIZ__;
   const uid = "@0";
-  const arr = (API && API.rect && API.rect[uid]) ? API.rect[uid] : [];
-  const ratio = arr.filter(Boolean).length / Math.max(1, arr.length);
-  const target = (@1);
-  return Math.abs(ratio - target) < 1e-12;
+  if (!API) return false;
+
+  const passed = API.isCorrect(uid);
+  if (passed && !API.isLocked(uid)) {
+    API.onCheck(uid, true);
+  }
+  return passed;
 })()
+  </script>
+</div>
+
+<script modify="false">
+(function () {
+  const API = window.__LIA_FRACTION_QUIZ__;
+  const uid = "@0";
+  const targetRaw = String.raw`@1`;
+
+  if (!API) return;
+
+  function waitForRectDom(cb) {
+    let tries = 0;
+
+    function tick() {
+      const wrap = document.getElementById("fq-rect-wrap-@0");
+      const host = document.getElementById("fq-rect-host-@0");
+      const mount = document.getElementById("fq-rect-mount-@0");
+      const rowsWrap = document.getElementById("fq-rect-rows-wrap-@0");
+      const colsWrap = document.getElementById("fq-rect-cols-wrap-@0");
+      const rowsInput = rowsWrap ? rowsWrap.querySelector('input[type="range"]') : null;
+      const colsInput = colsWrap ? colsWrap.querySelector('input[type="range"]') : null;
+
+      if (wrap && host && mount && rowsWrap && colsWrap && rowsInput && colsInput) {
+        cb({ wrap, host, mount, rowsInput, colsInput });
+        return;
+      }
+
+      tries++;
+      if (tries < 240) requestAnimationFrame(tick);
+    }
+
+    tick();
+  }
+
+  waitForRectDom(({ wrap, host, mount, rowsInput, colsInput }) => {
+    API.attachRect(uid, {
+      wrap: wrap,
+      host: host,
+      mount: mount,
+      rowsInput: rowsInput,
+      colsInput: colsInput,
+      target: targetRaw,
+      initialRows: rowsInput.value || 1,
+      initialCols: colsInput.value || 1
+    });
+
+    API.ensureQuizBridge(uid, wrap);
+  });
+})();
 </script>
 @end
 
@@ -12334,32 +13233,23 @@ for (let c = 0; c <= cols; c++) {
 @orthography: @orthography_(@uid,`@0`,`@1`,`@2`)
 
 @orthography_
-<div class="orthography-wrap" id="orthography-wrap-@0">
+<div class="orthography-wrap" id="orthography-wrap-@0" data-ortho-uid="@0">
+  <span id="orthography-start-@0" style="display:none">@2</span>
   <span id="orthography-solution-@0" style="display:none">@3</span>
 
-  <input
-    data-id="lia-quiz-@0"
-    class="lia-input lia-quiz__input"
-    style="margin-bottom: .5rem"
-    value="@2">
+  <input id="orthography-input-@0" data-ortho-uid="@0" data-id="lia-quiz-@0" class="lia-input lia-quiz__input" style="margin-bottom:.5rem" value="@2">
 
-  <button
-    type="button"
-    class="lia-btn lia-btn--outline"
-    id="orthography-reset-@0"
-    style="margin-bottom: 2rem">
-    Reset
-  </button>
+  <button type="button" class="lia-btn lia-btn--outline ortho-reset-inline" id="orthography-reset-@0" data-ortho-uid="@0">Reset</button>
 </div>
 
 [[!]]
 <script>
 (function(){
-  const el  = document.querySelector('[data-id="lia-quiz-@0"]');
-  const sol = document.getElementById('orthography-solution-@0');
+  const el  = document.getElementById("orthography-input-@0");
+  const sol = document.getElementById("orthography-solution-@0");
   if(!el || !sol) return false;
 
-  const norm = s => String(s||"").toLocaleLowerCase().replace(/\s+/g,"");
+  const norm = s => String(s || "").toLocaleLowerCase().replace(/\s+/g, "");
   return norm(el.value) === norm(sol.textContent);
 })()
 </script>
@@ -12371,20 +13261,33 @@ for (let c = 0; c <= cols; c++) {
     try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
     return w;
   }
+
   const ROOT = getRootWindow();
-  const MOD  = ROOT["__ORTHOGRAPHY_EXPORT_V1__"];
-  if(!MOD || !MOD.register) return;
+  const MOD  = ROOT["__ORTHOGRAPHY_EXPORT_V2__"];
+  if (!MOD || !MOD.register) return;
 
   MOD.register({
     uid: "@0",
     gateRaw: "@1",
-    selInput: '[data-id="lia-quiz-@0"]',
+    idWrap: "orthography-wrap-@0",
+    idInput: "orthography-input-@0",
     idReset: "orthography-reset-@0",
-    idSol:   "orthography-solution-@0"
+    idStart: "orthography-start-@0",
+    idSolution: "orthography-solution-@0"
   });
 })();
 </script>
+
 @end
+
+
+
+
+
+
+
+
+
 
 
 

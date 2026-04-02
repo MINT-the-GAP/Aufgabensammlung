@@ -8,540 +8,705 @@ comment: Orthography-Export (Reset inline, gated resolve, sticky solutions, no-f
 author: Martin Lommatzsch
 
 
-@style
-/* Reset neben Prüfen/Auflösen */
-.ortho-reset-inline{
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: auto !important;
-  max-width: max-content !important;
-  flex: 0 0 auto !important;
-  white-space: nowrap !important;
-  cursor: pointer !important;
-  order: -1;
-  margin-right: .5rem !important;
-}
-@end
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @onload
 (function(){
-  // ---------------------------------------------------------
-  // Globaler Boot (IMPORT-SAFE): nur einmal im ROOT anlegen
-  // ---------------------------------------------------------
   function getRootWindow(){
     let w = window;
     try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
     return w;
   }
+
   const ROOT = getRootWindow();
-
-  const KEY = "__ORTHOGRAPHY_EXPORT_V1__";
-  if (ROOT[KEY]) return; // schon da
-
-  const microtask = (fn) => (window.queueMicrotask ? queueMicrotask(fn) : Promise.resolve().then(fn));
+  const KEY = "__ORTHOGRAPHY_EXPORT_V8__";
+  if (ROOT[KEY]) return;
 
   const MOD = {
-    state: {},       // uid -> { solved, tries, start, solution, gate }
-    fixers: {},      // uid -> repair()
-    listener: false,
+    state: {},
     observer: null,
-    scheduled: false,
+    started: false,
+    styleInstalled: false,
+    syncScheduled: false,
+    lateSyncTimer: null,
 
-    norm: (s) => String(s||"").toLocaleLowerCase().replace(/\s+/g,""),
-
-    schedule(){
-      if (MOD.scheduled) return;
-      MOD.scheduled = true;
-
-      const run = () => {
-        MOD.scheduled = false;
-        Object.keys(MOD.fixers).forEach(k=>{
-          try { MOD.fixers[k](); } catch(e){}
-        });
-      };
-
-      microtask(run);
-      try { requestAnimationFrame(run); } catch(e){}
-      setTimeout(run, 0);
-      setTimeout(run, 60);
-      setTimeout(run, 180);
-    },
-
-    startGlobal(){
-      if (MOD.listener) return;
-      MOD.listener = true;
-
-      document.addEventListener('click', () => MOD.schedule(), true);
-
-      const startObserver = () => {
-        if (MOD.observer) return;
-        const target = document.body || document.documentElement;
-        if (!target) return;
-
-        MOD.observer = new MutationObserver(() => MOD.schedule());
-        MOD.observer.observe(target, { childList: true, subtree: true });
-      };
-
-      startObserver();
-      setTimeout(startObserver, 0);
-      setTimeout(startObserver, 50);
+    norm(s){
+      return String(s || "").toLocaleLowerCase().replace(/\s+/g, "");
     },
 
     parseGate(raw){
       const s = String(raw || "").trim().toLowerCase();
-      if (s === "false" || s === "0" || s === "off" || s === "no") return { mode: "off", n: 0 };
+      if (s === "false" || s === "0" || s === "off" || s === "no") {
+        return { mode: "off", n: 0 };
+      }
       const n = parseInt(s, 10);
-      if (Number.isFinite(n) && n > 0) return { mode: "attempts", n };
+      if (Number.isFinite(n) && n > 0) {
+        return { mode: "attempts", n: n };
+      }
       return { mode: "on", n: 0 };
     },
 
-    // ---------------------------------------------------------
-    // Registrierung einer Macro-Instanz
-    // ---------------------------------------------------------
+    ensureStyle(){
+      if (this.styleInstalled) return;
+      this.styleInstalled = true;
+    
+      const style = document.createElement("style");
+      style.id = "orthography-export-style-v8b";
+      style.textContent = `
+        .orthography-wrap{
+          display:grid;
+          grid-template-columns:minmax(0, 1fr) auto;
+          column-gap:.5rem;
+          row-gap:.35rem;
+          align-items:center;
+        }
+    
+        .orthography-wrap > p.lia-paragraph{
+          grid-column:1 / -1;
+          margin-bottom:0 !important;
+        }
+    
+        .orthography-wrap > .lia-quiz__input{
+          grid-column:1;
+          min-width:0;
+          width:100%;
+          margin-bottom:0 !important;
+        }
+    
+        .orthography-wrap > .ortho-reset-below{
+          grid-column:2;
+          margin:0 !important;
+          display:inline-flex !important;
+          align-items:center;
+          justify-content:center;
+          white-space:nowrap;
+          align-self:stretch;
+        }
+    
+        .orthography-wrap[data-ortho-solved="1"] > .ortho-reset-below{
+          display:none !important;
+        }
+    
+        .lia-quiz__resolve.ortho-resolve-faded{
+          opacity:.38 !important;
+          transition:opacity .18s ease;
+        }
+      `;
+      (document.head || document.documentElement).appendChild(style);
+    },
+
+    ensureState(uid){
+      if (!this.state[uid]) {
+        this.state[uid] = {
+          uid: uid,
+          cfg: null,
+          gate: { mode: "on", n: 0 },
+          start: "",
+          solution: "",
+          liveValue: null,
+          solved: false,
+          tries: 0,
+          checkToken: 0,
+          resolvePending: false
+        };
+      }
+      return this.state[uid];
+    },
+
     register(cfg){
-      const uid     = cfg.uid;
-      const selIn   = cfg.selInput;
-      const idReset = cfg.idReset;
-      const idSol   = cfg.idSol;
-      const gateRaw = cfg.gateRaw;
+      const uid = String(cfg && cfg.uid || "").trim();
+      if (!uid) return;
 
-      // state
-      MOD.state[uid] = MOD.state[uid] || {
-        solved: false,
-        tries: 0,
-        start: "",
-        solution: "",
-        gate: MOD.parseGate(gateRaw)
-      };
-      const S = MOD.state[uid];
-      S.gate = MOD.parseGate(gateRaw);
+      const S = this.ensureState(uid);
+      S.cfg = cfg || null;
+      S.gate = this.parseGate(cfg && cfg.gateRaw);
 
-      // dom getters (immer frisch wegen Re-Renders)
-      const getInput = () => document.querySelector(selIn);
-      const getReset = () => document.getElementById(idReset);
-      const getSol   = () => document.getElementById(idSol);
-      const getWrap  = () => {
-        const input = getInput();
-        return input ? input.closest('.orthography-wrap') : null;
-      };
+      this.readStaticTexts(uid);
+      this.syncUid(uid);
+      this.scheduleSync();
+    },
 
-      // initiales Einlesen (quote-sicher via textContent)
-      const input0 = getInput();
-      const sol0   = getSol();
-      if (input0 && !S.start)    S.start    = input0.getAttribute('value') || input0.defaultValue || "";
-      if (sol0   && !S.solution) S.solution = (sol0.textContent || "");
+    parseUidFromString(v, prefix){
+      v = String(v || "");
+      if (!v) return "";
+      if (prefix && v.indexOf(prefix) === 0) return v.slice(prefix.length);
+      return "";
+    },
 
-      const clearClasses = (node) => {
-        if(!node || !node.classList) return;
-        [...node.classList].forEach(c => {
-          if (/(correct|wrong|success|error|checked|valid|invalid|resolved|solved)/i.test(c)) {
-            node.classList.remove(c);
-          }
-        });
-      };
+    deriveUidFromWrap(wrap){
+      if (!wrap) return "";
 
-      const setInputValue = (v, emitEvents) => {
-        const input = getInput();
-        if(!input) return;
-        input.value = v;
-        if (emitEvents) {
-          input.dispatchEvent(new Event('input',  { bubbles: true }));
-          input.dispatchEvent(new Event('change', { bubbles: true }));
+      if (wrap.dataset && wrap.dataset.orthoUid) {
+        return String(wrap.dataset.orthoUid);
+      }
+
+      const byInputId = wrap.querySelector('[id^="orthography-input-"]');
+      if (byInputId && byInputId.id) {
+        return this.parseUidFromString(byInputId.id, "orthography-input-");
+      }
+
+      const byDataId = wrap.querySelector('[data-id^="lia-quiz-"]');
+      if (byDataId) {
+        const uid = this.parseUidFromString(byDataId.getAttribute("data-id"), "lia-quiz-");
+        if (uid) return uid;
+      }
+
+      const bySolution = wrap.querySelector('[id^="orthography-solution-"]');
+      if (bySolution && bySolution.id) {
+        return this.parseUidFromString(bySolution.id, "orthography-solution-");
+      }
+
+      const byReset = wrap.querySelector('[id^="orthography-reset-"]');
+      if (byReset && byReset.id) {
+        return this.parseUidFromString(byReset.id, "orthography-reset-");
+      }
+
+      return "";
+    },
+
+    getNodes(uid){
+      const S = this.ensureState(uid);
+      const cfg = S.cfg || {};
+
+      const input =
+        document.getElementById(cfg.idInput || ("orthography-input-" + uid)) ||
+        document.querySelector('[data-id="lia-quiz-' + uid + '"]');
+
+      const wrap =
+        (input ? input.closest(".orthography-wrap") : null) ||
+        document.querySelector('.orthography-wrap[data-ortho-uid="' + uid + '"]') ||
+        document.getElementById(cfg.idWrap || ("orthography-wrap-" + uid));
+
+      const reset =
+        document.getElementById(cfg.idReset || ("orthography-reset-" + uid)) ||
+        (wrap ? wrap.querySelector('[id^="orthography-reset-"]') : null);
+
+      const start =
+        document.getElementById(cfg.idStart || ("orthography-start-" + uid)) ||
+        (wrap ? wrap.querySelector('[id^="orthography-start-"]') : null);
+
+      const solution =
+        document.getElementById(cfg.idSolution || ("orthography-solution-" + uid)) ||
+        (wrap ? wrap.querySelector('[id^="orthography-solution-"]') : null);
+
+      if (wrap) wrap.dataset.orthoUid = uid;
+      if (input) input.dataset.orthoUid = uid;
+      if (reset) reset.dataset.orthoUid = uid;
+      if (start) start.dataset.orthoUid = uid;
+      if (solution) solution.dataset.orthoUid = uid;
+
+      return { wrap, input, reset, start, solution };
+    },
+
+    readStaticTexts(uid){
+      const S = this.ensureState(uid);
+      const N = this.getNodes(uid);
+
+      if (!S.start) {
+        if (N.start) {
+          S.start = N.start.textContent || "";
+        } else if (N.input) {
+          S.start = N.input.getAttribute("value") || N.input.defaultValue || "";
         }
-      };
+      }
 
-      const hardenSolution = (input) => {
-        if(!input) return;
-        input.defaultValue = S.solution;
-        try { input.setAttribute('value', S.solution); } catch(e){}
-        input.removeAttribute('aria-invalid');
-      };
+      if (N.solution) {
+        S.solution = N.solution.textContent || S.solution || "";
+      }
 
-      // SILENT → verhindert Flicker / Lia-Trigger
-      const silentForceSolution = () => {
-        const input = getInput();
-        if(!input) return;
-        input.value = S.solution;
-        hardenSolution(input);
-      };
+      if (S.liveValue === null) {
+        if (N.input) S.liveValue = N.input.value;
+        else S.liveValue = S.start;
+      }
+    },
 
-      const findQuiz = () => {
-        const wrap = getWrap();
-        if(!wrap) return null;
+    findQuiz(uid){
+      const N = this.getNodes(uid);
+      const wrap = N.wrap;
+      if (!wrap) return null;
 
-        // schneller Direkt-Link, wenn Lia aria-labelledby nutzt
-        if (wrap.id) {
-          const answers = document.querySelector('.lia-quiz__answers[aria-labelledby="' + wrap.id + '"]');
-          if (answers) {
-            const quiz = answers.closest('.lia-quiz');
-            if (quiz) return quiz;
-          }
+      if (wrap.id) {
+        const answers = document.querySelector('.lia-quiz__answers[aria-labelledby="' + wrap.id + '"]');
+        if (answers) {
+          const quiz = answers.closest(".lia-quiz");
+          if (quiz) return quiz;
         }
+      }
 
-        // robust: TreeWalker bis zur nächsten orthography-wrap
-        const root = document.body || document.documentElement;
-        if (!root || !root.contains(wrap) || !document.createTreeWalker) return null;
-
-        const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT);
-        walker.currentNode = wrap;
-
-        let node;
-        while ((node = walker.nextNode())) {
-          if (node !== wrap && node.classList && node.classList.contains('orthography-wrap')) break;
-          if (node.classList && node.classList.contains('lia-quiz')) return node;
+      let node = wrap.nextElementSibling;
+      while (node) {
+        if (node.classList && node.classList.contains("orthography-wrap")) break;
+        if (node.classList && node.classList.contains("lia-quiz")) return node;
+        if (node.querySelector) {
+          const quiz = node.querySelector(".lia-quiz");
+          if (quiz) return quiz;
         }
-        return null;
-      };
+        node = node.nextElementSibling;
+      }
 
-      const applyGate = (control) => {
-        if(!control) return;
-        const resolve = control.querySelector('.lia-quiz__resolve');
-        if(!resolve) return;
+      const root = document.body || document.documentElement;
+      if (!root || !document.createTreeWalker || !root.contains(wrap)) return null;
 
-        if (S.gate.mode === "off") {
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT);
+      walker.currentNode = wrap;
+
+      let current;
+      while ((current = walker.nextNode())) {
+        if (!(current instanceof Element)) continue;
+        if (current !== wrap && current.classList && current.classList.contains("orthography-wrap")) break;
+        if (current.classList && current.classList.contains("lia-quiz")) return current;
+      }
+
+      return null;
+    },
+
+    ensureQuizBinding(uid){
+      const quiz = this.findQuiz(uid);
+      if (!quiz) return null;
+
+      const control = quiz.querySelector(".lia-quiz__control");
+      const check = control ? control.querySelector(".lia-quiz__check") : null;
+      const resolve = control ? control.querySelector(".lia-quiz__resolve") : null;
+
+      quiz.dataset.orthoUid = uid;
+      if (control) control.dataset.orthoUid = uid;
+      if (check) check.dataset.orthoUid = uid;
+      if (resolve) resolve.dataset.orthoUid = uid;
+
+      return { quiz, control, check, resolve };
+    },
+
+    ensureResetPlacement(uid){
+      const S = this.ensureState(uid);
+      const N = this.getNodes(uid);
+      if (!N.wrap || !N.input || !N.reset) return;
+
+      N.wrap.dataset.orthoUid = uid;
+      N.wrap.dataset.orthoSolved = S.solved ? "1" : "0";
+      N.reset.dataset.orthoUid = uid;
+      N.reset.classList.add("ortho-reset-below");
+
+      if (N.reset.parentElement !== N.wrap || N.reset.previousElementSibling !== N.input) {
+        N.input.insertAdjacentElement("afterend", N.reset);
+      }
+
+      if (S.solved) {
+        N.reset.disabled = true;
+        N.reset.setAttribute("aria-hidden", "true");
+        N.reset.setAttribute("tabindex", "-1");
+      } else {
+        N.reset.disabled = false;
+        N.reset.removeAttribute("aria-hidden");
+        N.reset.removeAttribute("tabindex");
+      }
+    },
+
+    setInputValue(uid, value){
+      const N = this.getNodes(uid);
+      if (!N.input) return;
+
+      N.input.value = value;
+      N.input.defaultValue = value;
+      try { N.input.setAttribute("value", value); } catch(e){}
+    },
+
+    restoreLiveValue(uid){
+      const S = this.ensureState(uid);
+      const N = this.getNodes(uid);
+      if (!N.input) return;
+
+      const desired = S.solved ? S.solution : (S.liveValue == null ? S.start : S.liveValue);
+      const current = N.input.value;
+
+      N.input.readOnly = !!S.solved;
+
+      if (this.norm(current) !== this.norm(desired)) {
+        this.setInputValue(uid, desired);
+      }
+    },
+
+    applyResolveState(uid){
+      const S = this.ensureState(uid);
+      const B = this.ensureQuizBinding(uid);
+      if (!B || !B.resolve) return;
+
+      const resolve = B.resolve;
+
+      if (S.solved) {
+        resolve.style.display = "";
+        resolve.disabled = true;
+        resolve.setAttribute("aria-hidden", "true");
+        resolve.setAttribute("tabindex", "-1");
+        resolve.classList.add("ortho-resolve-faded");
+        return;
+      }
+
+      resolve.classList.remove("ortho-resolve-faded");
+
+      if (S.gate.mode === "off") {
+        resolve.disabled = true;
+        resolve.style.display = "none";
+        resolve.setAttribute("aria-hidden", "true");
+        resolve.setAttribute("tabindex", "-1");
+        return;
+      }
+
+      if (S.gate.mode === "attempts") {
+        if (S.tries >= S.gate.n) {
+          resolve.disabled = false;
+          resolve.style.display = "";
+          resolve.removeAttribute("aria-hidden");
+          resolve.removeAttribute("tabindex");
+        } else {
           resolve.disabled = true;
           resolve.style.display = "none";
           resolve.setAttribute("aria-hidden", "true");
-          return;
+          resolve.setAttribute("tabindex", "-1");
         }
+        return;
+      }
 
-        if (S.gate.mode === "attempts") {
-          if (S.tries >= S.gate.n) {
-            resolve.style.display = "";
-            resolve.disabled = false;
-            resolve.removeAttribute("aria-hidden");
-          } else {
-            resolve.disabled = true;
-            resolve.style.display = "none";
-            resolve.setAttribute("aria-hidden", "true");
-          }
-          return;
-        }
+      resolve.disabled = false;
+      resolve.style.display = "";
+      resolve.removeAttribute("aria-hidden");
+      resolve.removeAttribute("tabindex");
+    },
 
-        resolve.style.display = "";
-        resolve.disabled = false;
-        resolve.removeAttribute("aria-hidden");
+    syncUid(uid){
+      const S = this.ensureState(uid);
+      this.readStaticTexts(uid);
+      this.ensureResetPlacement(uid);
+      this.ensureQuizBinding(uid);
+      this.applyResolveState(uid);
+      this.restoreLiveValue(uid);
+
+      const N = this.getNodes(uid);
+      if (N.wrap) {
+        N.wrap.dataset.orthoTries = String(S.tries);
+        N.wrap.dataset.orthoSolved = S.solved ? "1" : "0";
+      }
+    },
+
+    discoverAll(){
+      const wraps = document.querySelectorAll(".orthography-wrap");
+      wraps.forEach((wrap) => {
+        const uid = this.deriveUidFromWrap(wrap);
+        if (!uid) return;
+        const S = this.ensureState(uid);
+        wrap.dataset.orthoUid = uid;
+        if (!S.cfg) S.cfg = {};
+        this.readStaticTexts(uid);
+      });
+    },
+
+    syncAll(){
+      this.discoverAll();
+      Object.keys(this.state).forEach((uid) => {
+        try { this.syncUid(uid); } catch(e){}
+      });
+    },
+
+    scheduleSync(){
+      if (this.syncScheduled) return;
+      this.syncScheduled = true;
+
+      const run = () => {
+        this.syncScheduled = false;
+        this.syncAll();
       };
 
-      const placeReset = (control) => {
-        const btn = getReset();
-        if(!control || !btn) return;
+      try { requestAnimationFrame(run); } catch(e) { setTimeout(run, 16); }
 
-        if (btn.parentElement !== control || btn !== control.lastElementChild) {
-          control.appendChild(btn);
+      clearTimeout(this.lateSyncTimer);
+      this.lateSyncTimer = setTimeout(() => this.syncAll(), 90);
+    },
+
+    getUidFromOrthographyInput(node){
+      if (!(node instanceof Element)) return "";
+
+      const direct = node.closest("[data-ortho-uid]");
+      if (direct && direct.dataset && direct.dataset.orthoUid) {
+        return String(direct.dataset.orthoUid);
+      }
+
+      const input = node.closest('[id^="orthography-input-"], [data-id^="lia-quiz-"]');
+      if (input) {
+        if (input.id) {
+          const byId = this.parseUidFromString(input.id, "orthography-input-");
+          if (byId) return byId;
         }
-        btn.classList.add('ortho-reset-inline');
-        btn.style.marginBottom = "0";
-      };
+        const dataId = input.getAttribute("data-id");
+        if (dataId) {
+          const byData = this.parseUidFromString(dataId, "lia-quiz-");
+          if (byData) return byData;
+        }
+      }
 
-      const lockSolution = () => {
+      return "";
+    },
+
+    getUidFromReset(node){
+      if (!(node instanceof Element)) return "";
+
+      const direct = node.closest("[data-ortho-uid]");
+      if (direct && direct.dataset && direct.dataset.orthoUid) {
+        return String(direct.dataset.orthoUid);
+      }
+
+      if (node.id) {
+        const uid = this.parseUidFromString(node.id, "orthography-reset-");
+        if (uid) return uid;
+      }
+
+      return "";
+    },
+
+    getUidFromOrthographyControl(node){
+      if (!(node instanceof Element)) return "";
+
+      const direct = node.closest("[data-ortho-uid]");
+      if (direct && direct.dataset && direct.dataset.orthoUid) {
+        return String(direct.dataset.orthoUid);
+      }
+
+      const control = node.closest(".lia-quiz__control");
+      if (control && control.dataset && control.dataset.orthoUid) {
+        return String(control.dataset.orthoUid);
+      }
+
+      const quiz = node.closest(".lia-quiz");
+      if (quiz && quiz.dataset && quiz.dataset.orthoUid) {
+        return String(quiz.dataset.orthoUid);
+      }
+
+      return "";
+    },
+
+    handleInput(uid){
+      const S = this.ensureState(uid);
+      if (S.solved) return;
+
+      const N = this.getNodes(uid);
+      if (!N.input) return;
+
+      S.liveValue = N.input.value;
+    },
+
+    handleReset(uid, ev){
+      const S = this.ensureState(uid);
+
+      if (ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
+        if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
+      }
+
+      if (S.solved) return;
+
+      S.liveValue = S.start;
+      this.setInputValue(uid, S.start);
+    },
+
+    finishCheck(uid, token, beforeValue, wasCorrect){
+      const S = this.ensureState(uid);
+      if (token !== S.checkToken) return;
+
+      if (!S.solved && S.gate.mode === "attempts") {
+        S.tries += 1;
+      }
+
+      if (wasCorrect) {
         S.solved = true;
-        silentForceSolution();
-        const wrap = getWrap();
-        if (wrap) wrap.dataset.orthoSolved = "1";
-      };
+        S.liveValue = S.solution;
+      } else {
+        S.liveValue = beforeValue;
+      }
 
-      // gelöst bleibt wirklich unverändert → silent prepaint repair
-      const ensureSolvedSticky = () => {
-        const input = getInput();
-        if(!input) return;
+      this.syncUid(uid);
+      this.scheduleSync();
+    },
 
-        const wrap = getWrap();
-        if (wrap) {
-          wrap.dataset.orthoTries  = String(S.tries);
-          wrap.dataset.orthoSolved = S.solved ? "1" : "0";
+    handleCheck(uid, ev){
+      const S = this.ensureState(uid);
+      if (S.solved) {
+        if (ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
+        }
+        return;
+      }
+
+      const N = this.getNodes(uid);
+      if (!N.input) return;
+
+      const beforeValue = N.input.value;
+      const wasCorrect = this.norm(beforeValue) === this.norm(S.solution);
+      const token = ++S.checkToken;
+
+      setTimeout(() => this.finishCheck(uid, token, beforeValue, wasCorrect), 0);
+
+      try {
+        requestAnimationFrame(() => this.finishCheck(uid, token, beforeValue, wasCorrect));
+      } catch(e){}
+    },
+
+    handleResolve(uid, ev){
+      const S = this.ensureState(uid);
+
+      if (S.solved || S.resolvePending) {
+        if (ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
+        }
+        return;
+      }
+
+      S.resolvePending = true;
+
+      setTimeout(() => {
+        S.resolvePending = false;
+        S.solved = true;
+        S.liveValue = S.solution;
+        this.syncUid(uid);
+        this.scheduleSync();
+      }, 0);
+
+      try {
+        requestAnimationFrame(() => this.syncUid(uid));
+      } catch(e){}
+    },
+
+    startGlobal(){
+      if (this.started) return;
+      this.started = true;
+
+      this.ensureStyle();
+
+      document.addEventListener("input", (ev) => {
+        const target = ev.target;
+        if (!(target instanceof Element)) return;
+
+        const uid = this.getUidFromOrthographyInput(target);
+        if (!uid) return;
+        this.handleInput(uid);
+      }, true);
+
+      document.addEventListener("change", (ev) => {
+        const target = ev.target;
+        if (!(target instanceof Element)) return;
+
+        const uid = this.getUidFromOrthographyInput(target);
+        if (!uid) return;
+        this.handleInput(uid);
+      }, true);
+
+      document.addEventListener("click", (ev) => {
+        const target = ev.target;
+        if (!(target instanceof Element)) return;
+
+        const reset = target.closest(".ortho-reset-below, [id^='orthography-reset-']");
+        if (reset) {
+          const uid = this.getUidFromReset(reset);
+          if (uid) this.handleReset(uid, ev);
+          return;
         }
 
-        if (S.solved) {
-          if (MOD.norm(input.value) !== MOD.norm(S.solution)) {
-            silentForceSolution();
-          } else {
-            hardenSolution(input);
-          }
-        }
-      };
-
-      // Reset: tries NICHT verändern!
-      const doReset = () => {
-        if (S.solved) {
-          lockSolution();
-        } else {
-          setInputValue(S.start, true);
-          const input = getInput();
-          if (input) {
-            input.defaultValue = S.start;
-            try { input.setAttribute('value', S.start); } catch(e){}
-            input.removeAttribute('aria-invalid');
-          }
+        const check = target.closest(".lia-quiz__check");
+        if (check) {
+          const uid = this.getUidFromOrthographyControl(check);
+          if (uid) this.handleCheck(uid, ev);
+          return;
         }
 
-        clearClasses(getInput());
-        clearClasses(findQuiz());
-
-        const quiz = findQuiz();
-        if (quiz) {
-          const control = quiz.querySelector('.lia-quiz__control');
-          applyGate(control);
-          placeReset(control);
+        const resolve = target.closest(".lia-quiz__resolve");
+        if (resolve) {
+          const uid = this.getUidFromOrthographyControl(resolve);
+          if (uid) this.handleResolve(uid, ev);
         }
+      }, true);
+
+      const startObserver = () => {
+        if (this.observer) return;
+
+        const target = document.body || document.documentElement;
+        if (!target) return;
+
+        this.observer = new MutationObserver(() => {
+          this.scheduleSync();
+        });
+
+        this.observer.observe(target, {
+          childList: true,
+          subtree: true
+        });
       };
 
-      const bindReset = () => {
-        const btn = getReset();
-        if(!btn) return;
-        if (btn.dataset.orthoResetBound === "1") return;
-        btn.dataset.orthoResetBound = "1";
+      startObserver();
+      setTimeout(startObserver, 0);
 
-        const handler = (ev) => {
-          if(ev){
-            ev.preventDefault();
-            ev.stopPropagation();
-            if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
-          }
-          doReset();
-        };
-
-        btn.addEventListener('click', handler, true);
-        btn.addEventListener('keydown', (ev)=>{
-          if (ev.key === 'Enter' || ev.key === ' ') handler(ev);
-        }, true);
-      };
-
-      const bindControl = () => {
-        const quiz = findQuiz();
-        if(!quiz) return;
-
-        const control = quiz.querySelector('.lia-quiz__control');
-        if(!control) return;
-
-        applyGate(control);
-        placeReset(control);
-        bindReset();
-
-        const ckey = "orthoCtlBound_" + uid;
-        if (control.dataset[ckey] === "1") return;
-        control.dataset[ckey] = "1";
-
-        control.addEventListener('click', function(ev){
-          // Reset-Klick ignorieren
-          const btn = getReset();
-          if (btn && ev.target && ev.target.closest && ev.target.closest('#' + btn.id)) return;
-
-          const inputBefore = (getInput() ? getInput().value : "");
-          const wasCorrect  = (MOD.norm(inputBefore) === MOD.norm(S.solution)); // VOR Lia merken
-
-          const check = ev.target && ev.target.closest ? ev.target.closest('.lia-quiz__check') : null;
-          if (check) {
-            if (S.gate.mode === "attempts") {
-              setTimeout(function(){
-                S.tries += 1;
-                applyGate(control);
-                placeReset(control);
-                ensureSolvedSticky();
-              }, 0);
-            }
-
-            if (wasCorrect) {
-              setTimeout(lockSolution, 0);
-              setTimeout(lockSolution, 30);
-            } else {
-              setTimeout(function(){
-                const input = getInput();
-                if (!input) return;
-                // wenn Lia ungewollt Starttext reindrückt: silent restore
-                if (!S.solved && input.value === S.start && inputBefore !== S.start) {
-                  setInputValue(inputBefore, false);
-                }
-              }, 30);
-              setTimeout(ensureSolvedSticky, 80);
-            }
-            return;
-          }
-
-          const resolve = ev.target && ev.target.closest ? ev.target.closest('.lia-quiz__resolve') : null;
-          if (resolve) {
-            if (resolve.disabled || resolve.style.display === "none") return;
-            setTimeout(lockSolution, 0);
-            setTimeout(lockSolution, 30);
-          }
-        }, true);
-      };
-
-      const repair = () => {
-        // Lösung sicher aus DOM nachladen (falls neu gerendert)
-        const sol = getSol();
-        if (sol) S.solution = (sol.textContent || S.solution);
-
-        // Start nur setzen, wenn noch leer
-        const input = getInput();
-        if (input && !S.start) S.start = input.getAttribute('value') || input.defaultValue || "";
-
-        bindControl();
-        ensureSolvedSticky();
-      };
-
-      // fixer registrieren + sofort reparieren
-      MOD.fixers[uid] = repair;
-      repair();
-      MOD.schedule();
-      setTimeout(repair, 0);
-      setTimeout(repair, 60);
-      setTimeout(repair, 180);
+      this.syncAll();
+      setTimeout(() => this.syncAll(), 0);
+      setTimeout(() => this.syncAll(), 120);
+      setTimeout(() => this.syncAll(), 260);
     }
   };
 
-  MOD.startGlobal();
   ROOT[KEY] = MOD;
-})();
-
-
-
-
-(function () {
-  // =========================
-  // DIKTAT
-  // =========================
-  // =========================
-  // Init (pro Dokument nur einmal)
-  // =========================
-  const KEY = "__LIA_DIKTAT_AUTOWIDTH_V1__";
-  if (window[KEY]) return;
-  window[KEY] = true;
-
-  // =========================
-  // CSS Injection (statt @style)
-  // =========================
-  const STYLE_ID = "lia-diktat-css-v1";
-  if (!document.getElementById(STYLE_ID)) {
-    const css = `
-.lia-diktat{
-  display:inline-block;
-  vertical-align:baseline;
-  max-width:100%;
-}
-
-/* egal welchen Wrapper LiaScript um [[...]] baut: inline halten */
-.lia-diktat > :not(.lia-diktat-measure){
-  display:inline-block !important;
-  vertical-align:baseline;
-}
-
-/* robust gegen zusätzliche Wrapper */
-.lia-diktat :where(div,span){
-  vertical-align:baseline;
-}
-.lia-diktat :where(div,span):not(.lia-diktat-measure){
-  display:inline-block !important;
-}
-
-.lia-diktat input,
-.lia-diktat textarea{
-  display:inline-block !important;
-  vertical-align:baseline;
-  box-sizing:border-box;
-  max-width:100%;
-}
-    `.trim();
-
-    const st = document.createElement("style");
-    st.id = STYLE_ID;
-    st.textContent = css;
-    (document.head || document.documentElement).appendChild(st);
-  }
-
-  // =========================
-  // Auto-Fit Logik
-  // =========================
-  const num = (v) => {
-    const x = parseFloat(v);
-    return Number.isFinite(x) ? x : 0;
-  };
-
-  function fitOne(wrapper){
-    const meas  = wrapper.querySelector(".lia-diktat-measure");
-    const input = wrapper.querySelector("input, textarea");
-    if(!meas || !input) return false;
-
-    const cs = getComputedStyle(input);
-    meas.style.font = cs.font;
-    meas.style.letterSpacing = cs.letterSpacing;
-    meas.style.textTransform = cs.textTransform;
-
-    const textW = meas.getBoundingClientRect().width;
-    const pad   = num(cs.paddingLeft) + num(cs.paddingRight);
-    const bord  = num(cs.borderLeftWidth) + num(cs.borderRightWidth);
-
-    const w = Math.ceil(textW + pad + bord + 14); // Cursor/Luft
-
-    input.style.minWidth = "6ch";
-    input.style.width    = w + "px";
-    input.style.maxWidth = "100%";
-    return true;
-  }
-
-  let scheduled = false;
-  function fitAll(){
-    if (scheduled) return;
-    scheduled = true;
-    requestAnimationFrame(() => {
-      scheduled = false;
-      document.querySelectorAll(".lia-diktat").forEach(w => {
-        let tries = 0;
-        (function retry(){
-          if (fitOne(w)) return;
-          if (tries++ < 60) requestAnimationFrame(retry);
-        })();
-      });
-    });
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", fitAll, { once:true });
-  } else {
-    fitAll();
-  }
-
-  window.addEventListener("resize", fitAll);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
-
-  const mo = new MutationObserver(() => fitAll());
-  mo.observe(document.body, { childList:true, subtree:true });
-
+  MOD.startGlobal();
 })();
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @orthography: @orthography_(@uid,`@0`,`@1`,`@2`)
 
 @orthography_
-<div class="orthography-wrap" id="orthography-wrap-@0">
+<div class="orthography-wrap" id="orthography-wrap-@0" data-ortho-uid="@0">
+  <span id="orthography-start-@0" style="display:none">@2</span>
   <span id="orthography-solution-@0" style="display:none">@3</span>
 
-  <input
-    data-id="lia-quiz-@0"
-    class="lia-input lia-quiz__input"
-    style="margin-bottom: .5rem"
-    value="@2">
+  <input id="orthography-input-@0" data-ortho-uid="@0" data-id="lia-quiz-@0" class="lia-input lia-quiz__input" style="margin-bottom:.5rem" value="@2">
 
-  <button
-    type="button"
-    class="lia-btn lia-btn--outline"
-    id="orthography-reset-@0"
-    style="margin-bottom: 2rem">
-    Reset
-  </button>
+  <button type="button" class="lia-btn lia-btn--outline ortho-reset-inline" id="orthography-reset-@0" data-ortho-uid="@0">Reset</button>
 </div>
 
 [[!]]
 <script>
 (function(){
-  const el  = document.querySelector('[data-id="lia-quiz-@0"]');
-  const sol = document.getElementById('orthography-solution-@0');
+  const el  = document.getElementById("orthography-input-@0");
+  const sol = document.getElementById("orthography-solution-@0");
   if(!el || !sol) return false;
 
-  const norm = s => String(s||"").toLocaleLowerCase().replace(/\s+/g,"");
+  const norm = s => String(s || "").toLocaleLowerCase().replace(/\s+/g, "");
   return norm(el.value) === norm(sol.textContent);
 })()
 </script>
@@ -553,16 +718,19 @@ author: Martin Lommatzsch
     try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
     return w;
   }
+
   const ROOT = getRootWindow();
-  const MOD  = ROOT["__ORTHOGRAPHY_EXPORT_V1__"];
-  if(!MOD || !MOD.register) return;
+  const MOD  = ROOT["__ORTHOGRAPHY_EXPORT_V2__"];
+  if (!MOD || !MOD.register) return;
 
   MOD.register({
     uid: "@0",
     gateRaw: "@1",
-    selInput: '[data-id="lia-quiz-@0"]',
+    idWrap: "orthography-wrap-@0",
+    idInput: "orthography-input-@0",
     idReset: "orthography-reset-@0",
-    idSol:   "orthography-solution-@0"
+    idStart: "orthography-start-@0",
+    idSolution: "orthography-solution-@0"
   });
 })();
 </script>
@@ -576,11 +744,23 @@ author: Martin Lommatzsch
 
 
 
+
+
+
+
+
+
+
 @diktat: @diktat_(@uid,@0)
 
 @diktat_
 <span class="lia-diktat" id="lia-diktat-@0">{|>}{<span class="lia-diktat-measure" style="position:absolute;left:-10000px;top:auto;width:auto;height:auto;overflow:hidden;white-space:pre;">@1</span>}[[ @1 ]]</span>
 @end
+
+
+
+
+
 
 
 
@@ -646,8 +826,12 @@ __Aufgabe 3:__ Setze das Komma an die richtige Stelle. (Auflösung ist blockiert
 
 @orthography(false,`Das ist der Tag an dem ich geblitzt wurde.`,`Das ist der Tag, an dem ich geblitzt wurde.`)
 
+
+<p>
+
 @orthography(2,`Der Bruder den ich mag.`,`Der Bruder, den ich mag.`)
 
+</p>
 
 
 --- 
