@@ -59,14 +59,39 @@ comment: TOC PDF-Bookmarks V0.1 — eigener Baum-TOC (▶/▼), import-sicher, O
 
 .lia-toc #lia-bm-toc5 .bm-row{
   display:flex; align-items:center; gap:.35em;
-  padding:.18em .25em; border-radius:.35em;
+    padding:.18em .25em .28em .25em; border-radius:.35em;
   line-height:1.25;
 }
+
+
+/* ===== Separator: weiß, 80% Breite, zentriert, zwischen ALLEN sichtbaren Einträgen ===== */
+.lia-toc #lia-bm-toc5 .bm-row{
+  position:relative; /* Anker für ::after */
+  padding-bottom:.28em; /* Platz für Linie */
+}
+.lia-toc #lia-bm-toc5 .bm-row::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  width:90%;
+  height:1px;
+  bottom:0; /* Linie IN der Zeile, wird nicht vom children-UL überdeckt */
+  background: rgba(255,255,255,0.85);
+  pointer-events:none;
+}
+/* nur beim letzten BLATT (ohne Kinder) ausblenden */
+.lia-toc #lia-bm-toc5 li:last-child:not(.bm-has-kids) > .bm-row::after{
+  display:none;
+}
+
+
+
 .lia-toc #lia-bm-toc5 .bm-row:hover{ background: rgba(127,127,127,.12); }
 
 .lia-toc #lia-bm-toc5 .bm-toggle,
 .lia-toc #lia-bm-toc5 .bm-spacer{
-  width:1.15em; height:1.15em; flex:0 0 1.15em;
+  width:1.65em; height:1.65em; flex:0 0 1.15em;
   display:inline-flex; align-items:center; justify-content:center;
 }
 
@@ -74,6 +99,19 @@ comment: TOC PDF-Bookmarks V0.1 — eigener Baum-TOC (▶/▼), import-sicher, O
   border:0; background:transparent; color:inherit;
   cursor:pointer; padding:0; opacity:.9;
   font-size:.95em; line-height:1;
+}
+
+.lia-toc #lia-bm-toc5 .bm-toggle svg{
+  width:2.5em;
+  height:2.5em;
+  display:block;
+  pointer-events:none;
+  transform-origin:50% 50%;
+  transition:transform .12s ease;
+}
+
+.lia-toc #lia-bm-toc5 .bm-toggle[data-open="true"] svg{
+  transform:rotate(90deg);
 }
 .lia-toc #lia-bm-toc5 .bm-toggle:hover{ opacity:1; }
 
@@ -318,8 +356,17 @@ comment: TOC PDF-Bookmarks V0.1 — eigener Baum-TOC (▶/▼), import-sicher, O
 
   function setGlyph(btn, open){
     if (!btn) return;
-    btn.textContent = open ? "▼" : "▶";
+
     btn.setAttribute("aria-expanded", open ? "true" : "false");
+    btn.setAttribute("data-open", open ? "true" : "false");
+
+    if (!btn.querySelector("svg")){
+      btn.innerHTML = `
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M8 6 L17 12 L8 18 Z" fill="currentColor"></path>
+        </svg>
+      `.trim();
+    }
   }
 
   // =========================================================
@@ -509,6 +556,7 @@ comment: TOC PDF-Bookmarks V0.1 — eigener Baum-TOC (▶/▼), import-sicher, O
       row.dataset.level = String(n.level);
 
       const hasKids = n.children && n.children.length;
+      if (hasKids) li.classList.add("bm-has-kids");
       let childWrap = null;
       const mustOpen = (forceOpen && forceOpen.has(n.key)) || (state[n.key] === 1);
 
