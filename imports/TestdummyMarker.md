@@ -3,77 +3,6 @@ comment: Lia Textmarker (import-sicher) — Crash-Fix (keine Observer-Feedback-L
 author: Martin Lommatzsch
 
 
-@style
-/* HLQ: verhindert Aufblitzen + entfernt Proxy-Abstand (wirkt VOR @onload) */
-.hlq-proxy{
-  display: inline-flex !important;
-  align-items: center !important;
-  flex-wrap: wrap !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  gap: 0 !important;
-}
-
-/* unsere UI standardmäßig komplett raus */
-.hlq-proxy .hlq-btn,
-.hlq-proxy .hlq-msg{
-  display: none !important;
-}
-
-/* Lia-Teil bleibt inline und ohne extra Block-Abstände */
-.hlq-proxy .hlq-lia{
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin: 0 !important;
-  padding: 0 !important;
-  font-size: 0 !important;
-}
-
-.hlq-proxy .hlq-lia button,
-.hlq-proxy .hlq-lia [role="button"],
-.hlq-proxy .hlq-lia a{
-  font-size: 1rem !important;
-}
-
-/* Debug: wenn du es brauchst */
-body.lia-hlq-debug .hlq-proxy{ gap: 10px !important; }
-body.lia-hlq-debug .hlq-proxy .hlq-btn{ display: inline-flex !important; }
-body.lia-hlq-debug .hlq-proxy .hlq-msg{ display: inline !important; }
-
-/* Markerquiz: keine Absatz-Abstände zwischen Text und Quiz-Zeile */
-.markerquiz p{
-  margin: 0 !important;
-}
-
-/* falls Lia leere <p> erzeugt (Parser-Autokorrektur), komplett weg */
-.markerquiz p:empty{
-  display: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-@end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -150,6 +79,8 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{ display: inline !important; }
   // =========================
   // CSS Injection (Content + Root)
   // =========================
+
+
   function ensureStyle(doc, id, css){
     const old = doc.getElementById(id);
     if (old){ old.textContent = css; return; }
@@ -158,6 +89,61 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{ display: inline !important; }
     st.textContent = css;
     doc.head.appendChild(st);
   }
+
+function ensureCSS(){
+  ensureStyle(CONTENT_DOC, "lia-hl-style-static-v4", `
+    /* HLQ: Basisstyles für Proxy/Quiz */
+    .hlq-proxy{
+      display: inline-flex !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      gap: 0 !important;
+    }
+
+    /* unsere UI standardmäßig komplett raus */
+    .hlq-proxy .hlq-btn,
+    .hlq-proxy .hlq-msg{
+      display: none !important;
+    }
+
+    /* Lia-Teil bleibt inline und ohne extra Block-Abstände */
+    .hlq-proxy .hlq-lia{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 !important;
+      padding: 0 !important;
+      font-size: 0 !important;
+    }
+
+    .hlq-proxy .hlq-lia button,
+    .hlq-proxy .hlq-lia [role="button"],
+    .hlq-proxy .hlq-lia a{
+      font-size: 1rem !important;
+    }
+
+    /* Debug: wenn du es brauchst */
+    body.lia-hlq-debug .hlq-proxy{ gap: 10px !important; }
+    body.lia-hlq-debug .hlq-proxy .hlq-btn{ display: inline-flex !important; }
+    body.lia-hlq-debug .hlq-proxy .hlq-msg{ display: inline !important; }
+
+    /* Markerquiz: keine Absatz-Abstände zwischen Text und Quiz-Zeile */
+    .markerquiz p{
+      margin: 0 !important;
+    }
+
+    /* falls Lia leere <p> erzeugt (Parser-Autokorrektur), komplett weg */
+    .markerquiz p:empty{
+      display: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  `);
+}
+
+ensureCSS();
 
   ensureStyle(CONTENT_DOC, "lia-hl-style-content-v4", `
     :root{
@@ -234,6 +220,16 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{ display: inline !important; }
   `);
 
   ensureStyle(ROOT_DOC, "lia-hl-style-root-v4", `
+      :root{
+      --hl-ui-bg: rgba(255,255,255,.92);
+      --hl-ui-fg: rgba(0,0,0,.88);
+      --hl-ui-border: rgba(0,0,0,.14);
+      --hl-ui-muted: rgba(0,0,0,.62);
+      --hl-ui-shadow: 0 16px 42px rgba(0,0,0,.16);
+
+      --hl-accent: rgb(11,95,255);
+      --hl-z: 9999999;
+      }
     #lia-hl-btn{
       position: relative !important;
       width: 40px !important;
@@ -261,7 +257,24 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{ display: inline !important; }
       background: color-mix(in srgb, currentColor 16%, transparent) !important;
     }
 
-    #lia-hl-btn .icon{ width:22px !important; height:22px !important; display:block !important; }
+#lia-hl-btn .icon,
+#lia-hl-btn svg{
+  width:22px !important;
+  height:22px !important;
+  display:block !important;
+  color: var(--hl-accent) !important;
+}
+
+#lia-hl-btn svg,
+#lia-hl-btn svg *{
+  color: var(--hl-accent) !important;
+  stroke: var(--hl-accent) !important;
+}
+
+#lia-hl-btn svg path{
+  stroke: var(--hl-accent) !important;
+}
+
     #lia-hl-btn .dot{
       position: absolute !important;
       right: 6px !important;
@@ -283,7 +296,7 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{ display: inline !important; }
 
       border-radius: 18px !important;
       border: 1px solid var(--hl-ui-border) !important;
-      background: var(--hl-ui-bg) !important;
+      background-color: var(--hl-ui-bg) !important;
       box-shadow: var(--hl-ui-shadow) !important;
       overflow: hidden !important;
       backdrop-filter: blur(6px);
@@ -409,6 +422,35 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{ display: inline !important; }
       background: color-mix(in srgb, var(--hl-ui-fg) 16%, transparent) !important;
       border-color: color-mix(in srgb, var(--hl-ui-fg) 22%, var(--hl-ui-border)) !important;
     }
+
+.hl-tool svg{
+  display: block !important;
+  flex: 0 0 auto !important;
+}
+
+/* Stift: etwas kleiner/feiner */
+#hl-tool-mark svg{
+  width: 26px !important;
+  height: 26px !important;
+}
+
+/* Radierer: etwas größer, weil massiver Pfad */
+#hl-tool-erase svg{
+  width: 26px !important;
+  height: 26px !important;
+}
+
+/* Stift bleibt Linien-Icon */
+#hl-tool-mark svg *{
+  stroke: currentColor !important;
+  fill: none !important;
+}
+
+/* Radierer bleibt Flächen-Icon */
+#hl-tool-erase svg *{
+  fill: currentColor !important;
+  stroke: none !important;
+}
 
     .hl-colors{
       display:flex !important;
@@ -545,58 +587,212 @@ body.lia-hlq-debug .hlq-proxy .hlq-msg{
     return null;
   }
 
-  function adaptUIVars(){
-    const rootHeader =
-      ROOT_DOC.querySelector("header#lia-toolbar-nav") ||
-      ROOT_DOC.querySelector("#lia-toolbar-nav") ||
-      ROOT_DOC.querySelector("header.lia-header");
+function getStyleSafe(el){
+  try{
+    const win = el?.ownerDocument?.defaultView || window;
+    return win.getComputedStyle(el);
+  } catch(e){
+    return null;
+  }
+}
 
-    const contentMain =
-      CONTENT_DOC.querySelector("main") ||
-      CONTENT_DOC.querySelector("[role='main']") ||
-      CONTENT_DOC.body;
+function readCSSVar(name, ...els){
+  for (const el of els){
+    if (!el) continue;
+    const cs = getStyleSafe(el);
+    if (!cs) continue;
+    const v = (cs.getPropertyValue(name) || "").trim();
+    if (v) return normalizeColorValue(v);
+  }
+  return "";
+}
 
-    const bgStr =
-      (rootHeader && firstNonTransparentBg(rootHeader)) ||
-      firstNonTransparentBg(contentMain) ||
-      getComputedStyle(CONTENT_DOC.body).backgroundColor ||
-      "rgb(255,255,255)";
+function normalizeColorValue(v){
+  v = String(v || "").trim();
+  if (!v) return "";
 
-    const bg = parseRGB(bgStr) || {r:255,g:255,b:255};
-    const isDark = luminance(bg) < 0.45;
+  // schon gültig
+  if (
+    v.startsWith("rgb(") ||
+    v.startsWith("rgba(") ||
+    v.startsWith("hsl(") ||
+    v.startsWith("hsla(") ||
+    v.startsWith("#") ||
+    v.startsWith("var(") ||
+    /^[a-zA-Z]+$/.test(v)
+  ){
+    return v;
+  }
 
-    const rootAnchor =
-      (rootHeader && (rootHeader.querySelector("a") || rootHeader.querySelector("button"))) ||
-      CONTENT_DOC.querySelector("main a") ||
-      CONTENT_DOC.querySelector("a");
+  // Fall wie: 20,115,117  -> rgb(20,115,117)
+  if (/^\d+(\.\d+)?\s*,\s*\d+(\.\d+)?\s*,\s*\d+(\.\d+)?(\s*,\s*\d+(\.\d+)?)?$/.test(v)){
+    const parts = v.split(",").map(s => s.trim());
+    return parts.length === 3
+      ? `rgb(${parts.join(", ")})`
+      : `rgba(${parts.join(", ")})`;
+  }
 
-    const accentStr =
-      rootAnchor ? getComputedStyle(rootAnchor).color : "rgb(11,95,255)";
+  return v;
+}
 
-    try { setVar(ROOT_DOC, "--hl-accent", accentStr); } catch(e){}
-    try { setVar(CONTENT_DOC, "--hl-accent", accentStr); } catch(e){}
+function readThemeAccent(){
+  const els = [
+    ROOT_DOC.querySelector("#lia-toolbar-nav"),
+    ROOT_DOC.querySelector("header#lia-toolbar-nav"),
+    ROOT_DOC.querySelector("header.lia-header"),
+    ROOT_DOC.body,
+    ROOT_DOC.documentElement,
+    CONTENT_DOC.querySelector("main"),
+    CONTENT_DOC.body,
+    CONTENT_DOC.documentElement
+  ];
 
-    const varsLight = {
-      "--hl-ui-bg": "rgba(255,255,255,.92)",
-      "--hl-ui-fg": "rgba(0,0,0,.88)",
-      "--hl-ui-muted": "rgba(0,0,0,.62)",
-      "--hl-ui-border": "rgba(0,0,0,.14)",
-      "--hl-ui-shadow": "0 16px 42px rgba(0,0,0,.16)"
-    };
-    const varsDark = {
-      "--hl-ui-bg": "rgba(20,20,22,.92)",
-      "--hl-ui-fg": "rgba(255,255,255,.92)",
-      "--hl-ui-muted": "rgba(255,255,255,.68)",
-      "--hl-ui-border": "rgba(255,255,255,.16)",
-      "--hl-ui-shadow": "0 18px 44px rgba(0,0,0,.55)"
-    };
+  const names = [
+    "--color-highlight",
+    "--accent-color",
+    "--color-accent",
+    "--theme-highlight"
+  ];
 
-    const vars = isDark ? varsDark : varsLight;
-    for (const k in vars){
-      try { setVar(ROOT_DOC, k, vars[k]); } catch(e){}
-      try { setVar(CONTENT_DOC, k, vars[k]); } catch(e){}
+  for (const name of names){
+    const v = readCSSVar(name, ...els);
+    if (v) return v;
+  }
+
+  return "";
+}
+
+
+function isLikelyNeutralColor(str){
+  const c = parseRGB(str);
+  if (!c) return false;
+
+  const max = Math.max(c.r, c.g, c.b);
+  const min = Math.min(c.r, c.g, c.b);
+  const spread = max - min;
+
+  // fast weiß / fast schwarz / fast grau
+  if (max < 40) return true;
+  if (min > 215) return true;
+  if (spread < 14) return true;
+
+  return false;
+}
+
+function readRenderedAccentFromToolbar(){
+  const left = findHeaderLeft ? findHeaderLeft() : null;
+  const tocBtn = left ? findTOCButtonInLeft(left) : null;
+
+  const candidates = [
+    tocBtn,
+    tocBtn?.querySelector("svg"),
+    tocBtn?.querySelector("svg *"),
+    tocBtn?.querySelector(".icon"),
+    ROOT_DOC.querySelector("#lia-toolbar-nav svg"),
+    ROOT_DOC.querySelector("#lia-toolbar-nav svg *"),
+    ROOT_DOC.querySelector("header.lia-header svg"),
+    ROOT_DOC.querySelector("header.lia-header svg *")
+  ];
+
+  for (const el of candidates){
+    if (!el) continue;
+    const cs = getStyleSafe(el);
+    if (!cs) continue;
+
+    const vals = [
+      (cs.getPropertyValue("stroke") || "").trim(),
+      (cs.getPropertyValue("fill") || "").trim(),
+      (cs.getPropertyValue("color") || "").trim()
+    ];
+
+    for (const v of vals){
+      if (!v) continue;
+      if (!parseRGB(v)) continue;
+      if (isLikelyNeutralColor(v)) continue;
+      return v;
     }
   }
+
+  return "";
+}
+
+
+function adaptUIVars(){
+  const rootHeader =
+    ROOT_DOC.querySelector("header#lia-toolbar-nav") ||
+    ROOT_DOC.querySelector("#lia-toolbar-nav") ||
+    ROOT_DOC.querySelector("header.lia-header");
+
+  const contentMain =
+    CONTENT_DOC.querySelector("main") ||
+    CONTENT_DOC.querySelector("[role='main']") ||
+    CONTENT_DOC.body;
+
+  const mainStyle = getStyleSafe(contentMain);
+  const bodyStyle = getStyleSafe(CONTENT_DOC.body);
+
+  const bgStr =
+    firstNonTransparentBg(contentMain) ||
+    mainStyle?.backgroundColor ||
+    bodyStyle?.backgroundColor ||
+    "rgb(255,255,255)";
+
+  const fgStr =
+    (mainStyle?.color || "").trim() ||
+    (bodyStyle?.color || "").trim() ||
+    "rgb(0,0,0)";
+
+  const bg = parseRGB(bgStr) || {r:255,g:255,b:255};
+  const isDark = luminance(bg) < 0.45;
+
+  let accentStr =
+    readThemeAccent() ||
+    readRenderedAccentFromToolbar();
+
+  accentStr = normalizeColorValue(accentStr);
+
+  if (!accentStr){
+    accentStr = "rgb(11,95,255)";
+  }
+
+  try { setVar(ROOT_DOC, "--hl-accent", accentStr); } catch(e){}
+  try { setVar(CONTENT_DOC, "--hl-accent", accentStr); } catch(e){}
+
+  const uiBg = normalizeColorValue(bgStr);
+  const uiFg = normalizeColorValue(fgStr);
+  const uiMuted = isDark ? "rgba(255,255,255,.68)" : "rgba(0,0,0,.62)";
+  const uiBorder = isDark ? "rgba(255,255,255,.16)" : "rgba(0,0,0,.14)";
+  const uiShadow = isDark
+    ? "0 18px 44px rgba(0,0,0,.55)"
+    : "0 16px 42px rgba(0,0,0,.16)";
+
+  try { setVar(ROOT_DOC, "--hl-ui-bg", uiBg); } catch(e){}
+  try { setVar(CONTENT_DOC, "--hl-ui-bg", uiBg); } catch(e){}
+
+  try { setVar(ROOT_DOC, "--hl-ui-fg", uiFg); } catch(e){}
+  try { setVar(CONTENT_DOC, "--hl-ui-fg", uiFg); } catch(e){}
+
+  try { setVar(ROOT_DOC, "--hl-ui-muted", uiMuted); } catch(e){}
+  try { setVar(CONTENT_DOC, "--hl-ui-muted", uiMuted); } catch(e){}
+
+  try { setVar(ROOT_DOC, "--hl-ui-border", uiBorder); } catch(e){}
+  try { setVar(CONTENT_DOC, "--hl-ui-border", uiBorder); } catch(e){}
+
+  try { setVar(ROOT_DOC, "--hl-ui-shadow", uiShadow); } catch(e){}
+  try { setVar(CONTENT_DOC, "--hl-ui-shadow", uiShadow); } catch(e){}
+
+  const btn = ROOT_DOC.getElementById("lia-hl-btn");
+  if (btn){
+    try { btn.style.setProperty("color", accentStr, "important"); } catch(e){}
+    try { btn.style.setProperty("--hl-accent", accentStr, "important"); } catch(e){}
+
+    const svg = btn.querySelector("svg");
+    if (svg){
+      try { svg.style.setProperty("color", accentStr, "important"); } catch(e){}
+      try { svg.style.setProperty("stroke", accentStr, "important"); } catch(e){}
+    }
+  }
+}
 
   // =========================
   // Overlay + Rendering
@@ -1108,8 +1304,24 @@ CONTENT_DOC.addEventListener("scroll", scheduleRender, { passive:true, capture:t
         <div class="hdr"><div class="title">Textmarker</div></div>
         <div class="body">
           <div class="hl-tools">
-            <button class="hl-tool" id="hl-tool-mark" type="button">🖍️</button>
-            <button class="hl-tool" id="hl-tool-erase" type="button">🧽</button>
+            <button class="hl-tool" id="hl-tool-mark" type="button" aria-label="Markieren" title="Markieren">
+              <svg viewBox="0 0 512 512" aria-hidden="true">
+                <g transform="translate(-15 -75) scale(25)">
+                  <path d="M4 20h4l10.2-10.2a2.2 2.2 0 0 0 0-3.1l-1.1-1.1a2.2 2.2 0 0 0-3.1 0L3.8 15.8 3 21z"
+                        fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                  <path d="M13.2 6.8l4 4"
+                        fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M3.5 20.5h5"
+                        fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </g>
+              </svg>
+            </button>
+
+            <button class="hl-tool" id="hl-tool-erase" type="button" aria-label="Radierer">
+              <svg viewBox="0 0 512 512" aria-hidden="true">
+                <path fill="currentColor" d="M490.3,133.177l-99.5-99.6c-33-33-74-11.4-85.5,0l-287.6,287.7c-23.6,23.6-23.6,61.9,0,85.5l81.1,81.1c2.6,2.6,6.2,4.1,10,4.1h102.4c3.7,0,7.3-1.5,10-4.1l269.2-269.2C513.9,195.077,513.9,156.777,490.3,133.177zM205.3,463.777h-90.7l-77-77c-12.6-12.6-12.6-33,0-45.5l67.4-67.4l145.1,145.1L205.3,463.777zM470.4,198.677l-200.3,200.3L125,253.877l200.3-200.3c6.1-6.1,27-18.5,45.5,0l99.5,99.5C482.9,165.777,482.9,186.177,470.4,198.677z"/>
+              </svg>
+            </button>
           </div>
           <div>
             <div class="hl-hint" style="margin-bottom:8px;">Farbe</div>
@@ -2587,6 +2799,7 @@ function ensurePrefills(){
   // Tick (throttled) — Docking stabil, ohne Observer-Loop
   // =========================
   function tick(){
+      ensureCSS();
       if (!I.__hashWired){
       I.__hashWired = true;
       try { ROOT_WIN.addEventListener("hashchange", () => checkSlideAndRender(true)); } catch(e){}
@@ -3027,7 +3240,7 @@ function render(){
 // =========================================================
 (function FINAL_HL_RENDER_V10(){
 
-  const DEBUG = true;
+  const DEBUG = false;
 
   function dbg(...args){
     if (!DEBUG) return;

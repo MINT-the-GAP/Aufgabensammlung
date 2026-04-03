@@ -10,6 +10,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/DeutschREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MarkerREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/KoordREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/OCRREADME.md
 
 
 
@@ -7854,7 +7855,7 @@ Wähle blau aus.
 
 
 
-$d)\;\;$ $4000+123=$ [[  4123  ]]
+$d)\;\;$ $4000+123=$ [[  4123  ]] @canvas
 
 @ADetails(1=BE;Addition)
 
