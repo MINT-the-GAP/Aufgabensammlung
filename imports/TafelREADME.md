@@ -242,23 +242,30 @@ const I = REG.instances[DOC_ID] = {
   // =========================================================
   const CONTENT_STYLE_ID = "lia-tff-style-content-v2";
 const CONTENT_CSS = `
-  :root{
-    --lia-tff-side-gap: 25px;
-    --lia-tff-maxw: 97.5vw;
-    --lia-tff-font: unset;
-  }
+:root{
+  --lia-tff-left-gap: 50px;   /* Platz für Annotationsbar */
+  --lia-tff-right-gap: 25px;
+  --lia-tff-pad-left: 25px;
+  --lia-tff-pad-right: 25px;
+  --lia-tff-maxw: 98.5vw;
+  --lia-tff-font: unset;
+}
 
-  /* Presentation: wie bisher */
-  html[data-lia-mode="presentation"]{
-    --lia-tff-side-gap: 25px;
-    --lia-tff-maxw: 97.5vw;
-  }
+html[data-lia-mode="presentation"]{
+  --lia-tff-left-gap: 50px;
+  --lia-tff-right-gap: 15px;
+  --lia-tff-pad-left: 25px;
+  --lia-tff-pad-right: 15px;
+  --lia-tff-maxw: 98.5vw;
+}
 
-  /* Slides: volle Breite */
-  html[data-lia-mode="slides"]{
-    --lia-tff-side-gap: 25px;
-    --lia-tff-maxw: 97.5vw;
-  }
+html[data-lia-mode="slides"]{
+  --lia-tff-left-gap: 50px;
+  --lia-tff-right-gap: 15px;
+  --lia-tff-pad-left: 25px;
+  --lia-tff-pad-right: 15px;
+  --lia-tff-maxw: 98.5vw;
+}
 
   html[data-lia-mode="presentation"] body,
   html[data-lia-mode="slides"] body{
@@ -267,19 +274,26 @@ const CONTENT_CSS = `
   }
 
   /* NUR main anfassen (keine Slides-Wrapper!) */
-  html[data-lia-mode="presentation"] main,
-  html[data-lia-mode="slides"] main{
-    box-sizing: border-box !important;
+html[data-lia-mode="presentation"] main,
+html[data-lia-mode="slides"] main{
+  box-sizing: border-box !important;
 
-    width: min(var(--lia-tff-maxw), calc(100vw - (2 * var(--lia-tff-side-gap)))) !important;
-    max-width: min(var(--lia-tff-maxw), calc(100vw - (2 * var(--lia-tff-side-gap)))) !important;
+  width: min(
+    var(--lia-tff-maxw),
+    calc(100vw - var(--lia-tff-left-gap) - var(--lia-tff-right-gap))
+  ) !important;
 
-    margin-left: auto !important;
-    margin-right: auto !important;
+  max-width: min(
+    var(--lia-tff-maxw),
+    calc(100vw - var(--lia-tff-left-gap) - var(--lia-tff-right-gap))
+  ) !important;
 
-    padding-left:  var(--lia-tff-side-gap) !important;
-    padding-right: var(--lia-tff-side-gap) !important;
-  }
+  margin-left: var(--lia-tff-left-gap) !important;
+  margin-right: var(--lia-tff-right-gap) !important;
+
+  padding-left: var(--lia-tff-pad-left) !important;
+  padding-right: var(--lia-tff-pad-right) !important;
+}
 
   /* Schrift-Boost: presentation UND slides */
   html[data-lia-mode="presentation"] main,
