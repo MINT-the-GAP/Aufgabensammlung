@@ -13749,7 +13749,7 @@ function fqdbg(tag) {
     <div id="fq-circle-mount-@0" class="fq-mount"></div>
 
     <div id="fq-circle-range-@0" class="fq-range" data-label="Unterteilungen">
-<input type="range" min="1" max="20" value="1">
+<input type="range" min="1" max="32" value="1" output="fq-c-n-@0">
     </div>
   </div>
 
@@ -13843,11 +13843,11 @@ function fqdbg(tag) {
     <div id="fq-rect-mount-@0" class="fq-mount"></div>
 
     <div id="fq-rect-rows-wrap-@0" class="fq-range" data-label="vertikal">
-<input type="range" min="1" max="20" value="1">
+<input type="range" min="1" max="20" value="1" output="fq-r-rows-@0">
     </div>
 
     <div id="fq-rect-cols-wrap-@0" class="fq-range" data-label="horizontal">
-<input type="range" min="1" max="20" value="1">
+<input type="range" min="1" max="20" value="1" output="fq-r-cols-@0">
     </div>
   </div>
 
