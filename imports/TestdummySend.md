@@ -10,6 +10,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/DeutschREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MarkerREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/KoordREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/OCRREADME.md
 
 
 
@@ -53,6 +54,7 @@ window.__liaSubmissionDemo = (function () {
   let initialBootDone = false;
 
   let evaluationPlaceholderHash = "";
+  let submissionStartHash = "";
 
   let assignmentDetailRefreshTimer = null;
   let assignmentDetailSerial = 0;
@@ -107,13 +109,32 @@ window.__liaSubmissionDemo = (function () {
   // Utilities
   // =========================================================
 
-  function utf8ToBase64(str) {
-    return btoa(unescape(encodeURIComponent(str)));
+function utf8ToBase64(str) {
+  return btoa(unescape(encodeURIComponent(str)));
+}
+
+function toBase64Url(str) {
+  return String(str || "")
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/g, "");
+}
+
+function fromBase64Url(str) {
+  let s = String(str || "")
+    .replace(/-/g, "+")
+    .replace(/_/g, "/");
+
+  while (s.length % 4 !== 0) {
+    s += "=";
   }
 
-  function base64ToUtf8(str) {
-    return decodeURIComponent(escape(atob(str)));
-  }
+  return s;
+}
+
+function base64ToUtf8(str) {
+  return decodeURIComponent(escape(atob(fromBase64Url(str))));
+}
 
   function sleep(ms) {
     return new Promise(function (resolve) {
@@ -200,22 +221,29 @@ window.__liaSubmissionDemo = (function () {
     return false;
   }
 
-  function cleanHashValue(raw) {
-    const h = String(raw || "");
+function cleanHashValue(raw) {
+  const h = String(raw || "");
 
-    if (!h) return "#1";
+  if (!h) return "#1";
 
-    if (h.startsWith("#" + PARAM_NAME + "=")) {
-      const lastHash = h.lastIndexOf("#");
-      if (lastHash > 0) {
-        const trailing = h.slice(lastHash);
-        if (/^#\d+$/.test(trailing)) return trailing;
-      }
-      return snapshotPayload && snapshotPayload.sh ? snapshotPayload.sh : "#1";
-    }
-
-    return h;
+  // Neues Format: #7&submission=TOKEN
+  let m = h.match(/^(#\d+)&submission=.+$/);
+  if (m) {
+    return m[1];
   }
+
+  // Altes Format: #submission=TOKEN#7
+  if (h.startsWith("#" + PARAM_NAME + "=")) {
+    const lastHash = h.lastIndexOf("#");
+    if (lastHash > 0) {
+      const trailing = h.slice(lastHash);
+      if (/^#\d+$/.test(trailing)) return trailing;
+    }
+    return snapshotPayload && snapshotPayload.sh ? snapshotPayload.sh : "#1";
+  }
+
+  return h;
+}
 
   function descriptorLooksMaterialized(desc) {
     if (!desc) return false;
@@ -728,14 +756,25 @@ body.lia-snapshot-mode #lia-freeze-info{
     }
   }
 
-  function getSubmissionTokenFromViewerHash() {
-    const h = String(window.location.hash || "");
-    if (!h.startsWith("#" + PARAM_NAME + "=")) return null;
+function getSubmissionTokenFromViewerHash() {
+  const h = String(window.location.hash || "");
+  if (!h) return null;
 
+  // Neues Format: #7&submission=TOKEN
+  let m = h.match(/[?&]submission=([^&]+)/);
+  if (m && m[1]) {
+    return decodeURIComponent(m[1]);
+  }
+
+  // Altes Format weiterhin unterstützen: #submission=TOKEN#7
+  if (h.startsWith("#" + PARAM_NAME + "=")) {
     const raw = h.slice(("#" + PARAM_NAME + "=").length);
     const token = raw.split("#")[0];
     return token ? decodeURIComponent(token) : null;
   }
+
+  return null;
+}
 
   function getSubmissionToken() {
     const direct =
@@ -750,25 +789,39 @@ body.lia-snapshot-mode #lia-freeze-info{
     return loadStoredSubmissionToken();
   }
 
-  function sanitizeMalformedSubmissionHash() {
-    const raw = String(window.location.hash || "");
+function sanitizeMalformedSubmissionHash() {
+  const raw = String(window.location.hash || "");
+  if (!raw) return false;
 
-    if (!raw.startsWith("#" + PARAM_NAME + "=")) return false;
-
-    const lastHash = raw.lastIndexOf("#");
-    if (lastHash <= 0) return false;
-
-    const trailing = raw.slice(lastHash);
-    if (!/^#\d+$/.test(trailing)) return false;
-
+  // Neues Format: #7&submission=TOKEN  ->  #7
+  let m = raw.match(/^(#\d+)&submission=.+$/);
+  if (m) {
     try {
-      history.replaceState(null, "", trailing);
+      history.replaceState(null, "", m[1]);
     } catch (e) {
-      window.location.hash = trailing;
+      window.location.hash = m[1];
     }
-
     return true;
   }
+
+  // Altes Format: #submission=TOKEN#7  ->  #7
+  if (raw.startsWith("#" + PARAM_NAME + "=")) {
+    const lastHash = raw.lastIndexOf("#");
+    if (lastHash > 0) {
+      const trailing = raw.slice(lastHash);
+      if (/^#\d+$/.test(trailing)) {
+        try {
+          history.replaceState(null, "", trailing);
+        } catch (e) {
+          window.location.hash = trailing;
+        }
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
 
   function getCurrentHash() {
     sanitizeMalformedSubmissionHash();
@@ -787,21 +840,37 @@ body.lia-snapshot-mode #lia-freeze-info{
     }
   }
 
-  function buildLink(payload) {
-    const baseCourseUrl = stripSubmissionFromCourseUrl(getCourseUrlFromViewerUrl());
-    if (!baseCourseUrl) return window.location.href;
+function buildLink(payload) {
+  const baseCourseUrl = stripSubmissionFromCourseUrl(getCourseUrlFromViewerUrl());
+  if (!baseCourseUrl) return window.location.href;
 
-    const token = encodeURIComponent(utf8ToBase64(JSON.stringify(payload)));
-    storeSubmissionToken(token);
+  const rawToken = utf8ToBase64(JSON.stringify(payload));
+  const token = toBase64Url(rawToken);
 
-    const courseUrlObj = new URL(baseCourseUrl, window.location.href);
-    courseUrlObj.hash = PARAM_NAME + "=" + token;
+  storeSubmissionToken(token);
 
-    const viewerBase = window.location.href.split("?")[0].split("#")[0];
-    const encodedCourseUrl = encodeURIComponent(courseUrlObj.toString());
+  const viewerBase = window.location.href.split("?")[0].split("#")[0];
+  const encodedCourseUrl = encodeURIComponent(baseCourseUrl);
+  const slideHash = /^#\d+$/.test(String(payload && payload.sh || ""))
+    ? String(payload.sh)
+    : "#1";
 
-    return viewerBase + "?" + encodedCourseUrl + (payload.sh || "#1");
-  }
+  // Neues Format:
+  //   ...?COURSE_URL#7&submission=TOKEN
+  // Vorteil:
+  //   - Folienhash steht vorne und ist für LiaScript direkt lesbar
+  //   - Token bleibt im Fragment und geht nicht als Referrer raus
+  return (
+    viewerBase +
+    "?" +
+    encodedCourseUrl +
+    slideHash +
+    "&" +
+    PARAM_NAME +
+    "=" +
+    token
+  );
+}
 
   function tryLoadSnapshot() {
     const token = getSubmissionToken();
@@ -984,6 +1053,94 @@ body.lia-snapshot-mode #lia-freeze-info{
       x: getTextSampleFromRoot(host)
     };
   }
+
+
+function getRenderedVisibleDeclaredHash() {
+  const title = normalizeSpace(getCurrentSlideTitle() || "");
+  if (!title) return "";
+
+  const declared = getDeclaredSlides();
+  for (let i = 0; i < declared.length; i++) {
+    const slide = declared[i];
+    if (!slide || !slide.h) continue;
+    if (slide.vt === "evaluation") continue;
+
+    if (normalizeSpace(slide.t || "") === title) {
+      return String(slide.h || "");
+    }
+  }
+
+  return "";
+}
+
+
+function applySnapshotToCurrentVisibleHost(reason) {
+  const host = getContentHost() || document.body;
+  if (!host || !hasRenderedSelfOrDescendant(host)) {
+    log("boot-visible-skip", "reason=" + String(reason || ""), "host=not-ready");
+    return false;
+  }
+
+  const visibleHash =
+    getRenderedVisibleDeclaredHash() ||
+    cleanHashValue(getCurrentHash() || "") ||
+    "#1";
+
+  if (!visibleHash) {
+    log("boot-visible-skip", "reason=" + String(reason || ""), "visible=<empty>");
+    return false;
+  }
+
+  if (isEvaluationTarget(visibleHash)) {
+    hideUnvisitedPlaceholder();
+    showEvaluationPlaceholder(visibleHash);
+    reinforceFrozenUi();
+    setFreezeLoading(false, "boot-visible-evaluation:" + visibleHash);
+    log("boot-visible-apply", "reason=" + String(reason || ""), "hash=" + visibleHash, "type=evaluation");
+    return true;
+  }
+
+  if (isUnvisitedTarget(visibleHash)) {
+    hideUnvisitedPlaceholder();
+    showUnvisitedPlaceholder(visibleHash);
+    reinforceFrozenUi();
+    setFreezeLoading(false, "boot-visible-unvisited:" + visibleHash);
+    log("boot-visible-apply", "reason=" + String(reason || ""), "hash=" + visibleHash, "type=unvisited");
+    return true;
+  }
+
+  const slide = getSnapshotSlideForHash(visibleHash);
+  if (!slide) {
+    log("boot-visible-skip", "reason=" + String(reason || ""), "hash=" + visibleHash, "stored=no");
+    return false;
+  }
+
+  hideUnvisitedPlaceholder();
+  evaluationPlaceholderHash = "";
+
+  clearStoredGeneralMarkerStateNow("boot-visible:" + visibleHash);
+
+  applyStoredTextQuizStatesToHost(host, slide.q || []);
+  applyStoredDropdownStatesToHost(host, slide.d || []);
+  applyStoredTileStatesToHost(host, slide.m || []);
+  applyStoredChoiceStatesToHost(host, slide.c || []);
+  applyStoredOrthographyStatesToHost(host, slide.o || []);
+  applyStoredFractionStatesToHost(host, slide.fq || []);
+  applyStoredMarkerQuizStatesToHost(host, slide.mq || []);
+  applyStoredGeneralMarkerState(slide.gm || null);
+
+  reinforceFrozenUi();
+  setFreezeLoading(false, "boot-visible:" + visibleHash);
+
+  log(
+    "boot-visible-apply",
+    "reason=" + String(reason || ""),
+    "hash=" + visibleHash
+  );
+
+  return true;
+}
+
 
   // =========================================================
   // Kursquelle / deklarierte Folien
@@ -1238,6 +1395,51 @@ function parseDeclaredSlidesFromSource(text) {
 
   return out;
 }
+
+
+function parseSubmissionHashFromSource(text) {
+  const src = stripLeadingHeaderComment(text);
+  const lines = src.split(/\r?\n/);
+
+  let inFence = false;
+  let fenceToken = "";
+  let slideCount = 0;
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = String(lines[i] || "");
+    const fenceMatch = line.match(/^\s*(```+|~~~+)/);
+
+    if (fenceMatch) {
+      const token = fenceMatch[1].charAt(0);
+
+      if (!inFence) {
+        inFence = true;
+        fenceToken = token;
+        continue;
+      }
+
+      if (token === fenceToken) {
+        inFence = false;
+        fenceToken = "";
+        continue;
+      }
+    }
+
+    if (inFence) continue;
+
+    if (/^(#{1,6})\s+(.+?)\s*$/.test(line)) {
+      slideCount += 1;
+      continue;
+    }
+
+    if (/^\s*@Abgabe(?:\s*\([^)]*\))?\s*$/.test(line)) {
+      return "#" + Math.max(1, slideCount || 1);
+    }
+  }
+
+  return "";
+}
+
 
 function countRegexMatches(text, regex) {
   const m = String(text || "").match(regex);
@@ -1502,11 +1704,12 @@ async function ensureDeclaredSlides(force) {
 
   const courseUrl = stripSubmissionFromCourseUrl(getCourseUrlFromViewerUrl());
   if (!courseUrl) {
-      declaredEvaluationOptions = {
-        trackF12: false,
-        trackTab: false
-      };
+    declaredEvaluationOptions = {
+      trackF12: false,
+      trackTab: false
+    };
     declaredEvaluationByHash = Object.create(null);
+    submissionStartHash = "";
     declaredSlidesCache = [{
       h: "#1",
       t: getCurrentSlideTitle() || ""
@@ -1525,6 +1728,7 @@ async function ensureDeclaredSlides(force) {
 
   declaredEvaluationOptions = parseEvaluationOptionsFromSource(text);
   declaredEvaluationByHash = parseDeclaredEvaluationFromSource(text);
+  submissionStartHash = parseSubmissionHashFromSource(text);
 
   const parsed = parseDeclaredSlidesFromSource(text);
 
@@ -1539,6 +1743,7 @@ async function ensureDeclaredSlides(force) {
   declaredSlidesLoaded = true;
 
   log("declared-eval-options", JSON.stringify(declaredEvaluationOptions));
+  log("declared-abgabe-hash", submissionStartHash || "<none>");
 
   return declaredSlidesCache.slice();
 }
@@ -1567,6 +1772,64 @@ async function ensureDeclaredSlides(force) {
     return -1;
   }
 
+  function getDeclaredEvaluationHash() {
+    const declared = getDeclaredSlides();
+
+    for (let i = 0; i < declared.length; i++) {
+      const slide = declared[i];
+      if (slide && slide.vt === "evaluation" && /^#\d+$/.test(String(slide.h || ""))) {
+        return String(slide.h);
+      }
+    }
+
+    return "";
+  }
+
+  function getFreezeBootTargetHash() {
+    // Geteilter Freezelink: direkt auf die Auswertung
+    if (snapshotIsSharedLinkMode) {
+      const evalHash = getDeclaredEvaluationHash();
+      if (evalHash) return evalHash;
+    }
+
+    // Lokal nach createLink(): auf der aktuellen Folie bleiben
+    const current = cleanHashValue(getCurrentHash() || "");
+    if (/^#\d+$/.test(current)) {
+      return current;
+    }
+
+    // Fallback
+    const snap = cleanHashValue(snapshotPayload && snapshotPayload.sh || "");
+    if (/^#\d+$/.test(snap)) {
+      return snap;
+    }
+
+    return "#1";
+  }
+
+  function getPreferredFreezeLandingHash() {
+    if (
+      submissionStartHash &&
+      /^#\d+$/.test(submissionStartHash) &&
+      getDeclaredSlideByHash(submissionStartHash)
+    ) {
+      return submissionStartHash;
+    }
+
+    const snapshotHash = cleanHashValue(
+      snapshotPayload && snapshotPayload.sh ? snapshotPayload.sh : ""
+    );
+
+    if (
+      snapshotHash &&
+      /^#\d+$/.test(snapshotHash) &&
+      getDeclaredSlideByHash(snapshotHash)
+    ) {
+      return snapshotHash;
+    }
+
+    return "#1";
+  }
 
 function compareElementsInDocumentOrder(a, b) {
   if (a === b) return 0;
@@ -2802,7 +3065,10 @@ function makeEmptySlideState(hash) {
     c: [],
     o: [],
     fq: [],
-    mq: []
+    mq: [],
+    gm: {
+      h: []
+    }
   };
 }
 
@@ -4120,6 +4386,28 @@ function findMarkerQuizInteractiveAncestor(el) {
   return null;
 }
 
+
+function isGeneralMarkerMarkModeActive() {
+  const inst = getMarkerQuizInstance();
+  return !!(
+    inst &&
+    inst.state &&
+    inst.state.active &&
+    String(inst.state.tool || "") === "mark"
+  );
+}
+
+function isAnyMarkerOverlayInteraction(el) {
+  if (!el || !(el instanceof Element)) return false;
+
+  return !!(
+    el.closest(".lia-hl-rect") ||
+    el.closest("#lia-hl-btn") ||
+    el.closest("#lia-hl-panel")
+  );
+}
+
+
 function captureMarkerQuizState(root, idx) {
   if (!root) return null;
 
@@ -4372,6 +4660,408 @@ function applyStoredMarkerQuizStatesToHost(host, storedStates) {
 }
 
 
+
+function getGeneralMarkerScopeName() {
+  return "global";
+}
+
+function isGeneralMarkerUserItem(item) {
+  if (!item) return false;
+
+  const kind = String(item.kind || "");
+  const scope = String(item.scope || getGeneralMarkerScopeName());
+
+  return kind === "user" && scope === getGeneralMarkerScopeName();
+}
+
+function markerAnchorPathToNode(path) {
+  const root = document.body;
+  if (!root) return null;
+
+  const raw = String(path || "").trim();
+  if (!raw) return null;
+
+  const parts = raw.split("/").filter(Boolean).map(function (x) {
+    return parseInt(x, 10);
+  });
+
+  let node = root;
+
+  for (let i = 0; i < parts.length; i++) {
+    const idx = parts[i];
+
+    if (!node || !node.childNodes || idx < 0 || idx >= node.childNodes.length) {
+      return null;
+    }
+
+    node = node.childNodes[idx];
+  }
+
+  return node || null;
+}
+
+function clampMarkerAnchorOffset(node, off) {
+  const n = Number(off || 0) || 0;
+
+  if (!node) return 0;
+
+  if (node.nodeType === 3) {
+    const len = String(node.nodeValue || "").length;
+    return Math.max(0, Math.min(n, len));
+  }
+
+  if (node.nodeType === 1) {
+    const len = node.childNodes ? node.childNodes.length : 0;
+    return Math.max(0, Math.min(n, len));
+  }
+
+  return 0;
+}
+
+function rangeFromGeneralMarkerAnchor(anchor) {
+  if (!anchor) return null;
+
+  const sc = markerAnchorPathToNode(anchor.sp);
+  const ec = markerAnchorPathToNode(anchor.ep);
+
+  if (!sc || !ec) return null;
+
+  const r = document.createRange();
+
+  try {
+    r.setStart(sc, clampMarkerAnchorOffset(sc, anchor.so));
+    r.setEnd(ec, clampMarkerAnchorOffset(ec, anchor.eo));
+
+    if (r.collapsed) return null;
+    return r;
+  } catch (err) {
+    return null;
+  }
+}
+
+function getElementForMarkerAnchorNode(node) {
+  if (!node) return null;
+  if (node.nodeType === 1) return node;
+  return node.parentElement || null;
+}
+
+function markerAnchorBelongsToHost(anchor, host) {
+  if (!anchor || !host || !(host instanceof Element)) return false;
+
+  const r = rangeFromGeneralMarkerAnchor(anchor);
+  if (!r) return false;
+
+  const startEl = getElementForMarkerAnchorNode(r.startContainer);
+  const endEl = getElementForMarkerAnchorNode(r.endContainer);
+  const commonEl = getElementForMarkerAnchorNode(r.commonAncestorContainer);
+
+  if (startEl && host.contains(startEl)) return true;
+  if (endEl && host.contains(endEl)) return true;
+  if (commonEl && host.contains(commonEl)) return true;
+
+  return false;
+}
+
+function getGeneralMarkerDebugToken(host) {
+  const el = host && host.closest
+    ? (
+        host.matches && host.matches("[data-hl-slideid]")
+          ? host
+          : host.closest("[data-hl-slideid]")
+      )
+    : null;
+
+  const token = normalizeSpace(el && el.getAttribute("data-hl-slideid") || "");
+  if (token) return token;
+
+  return cleanHashValue(getCurrentHash() || "");
+}
+
+
+const GENERAL_MARKER_COLOR_TO_CODE = Object.freeze({
+  yellow: "y",
+  green: "g",
+  blue: "b",
+  pink: "p",
+  orange: "o",
+  red: "r"
+});
+
+const GENERAL_MARKER_CODE_TO_COLOR = Object.freeze({
+  y: "yellow",
+  g: "green",
+  b: "blue",
+  p: "pink",
+  o: "orange",
+  r: "red"
+});
+
+function encodeGeneralMarkerColor(color) {
+  const clean = normalizeSpace(color || "").toLowerCase();
+  return GENERAL_MARKER_COLOR_TO_CODE[clean] || clean || "yellow";
+}
+
+function decodeGeneralMarkerColor(code) {
+  const clean = normalizeSpace(code || "").toLowerCase();
+  return GENERAL_MARKER_CODE_TO_COLOR[clean] || clean || "yellow";
+}
+
+function decodeStoredGeneralMarkerMarks(state) {
+  const rawMarks = Array.isArray(state && state.h) ? state.h : [];
+
+  if (!rawMarks.length) return [];
+
+  // Legacy-Format: [{ c, a:{sp,so,ep,eo} }, ...]
+  if (!Array.isArray(rawMarks[0])) {
+    return rawMarks.map(function (mark) {
+      if (!mark || !mark.a) return null;
+
+      return {
+        c: decodeGeneralMarkerColor(mark.c || "yellow"),
+        a: {
+          sp: String(mark.a.sp || ""),
+          so: Number(mark.a.so || 0),
+          ep: String(mark.a.ep || ""),
+          eo: Number(mark.a.eo || 0)
+        }
+      };
+    }).filter(Boolean);
+  }
+
+  // Kompaktformat:
+  // state.p = ["pathA", "pathB", ...]
+  // h = [
+  //   ["y", pIdx, so, eo]                 // gleicher Start-/Endpfad
+  //   ["b", spIdx, so, epIdx, eo]         // unterschiedlicher Start-/Endpfad
+  // ]
+  const pathList = Array.isArray(state && state.p) ? state.p : [];
+
+  return rawMarks.map(function (entry) {
+    if (!Array.isArray(entry) || entry.length < 4) return null;
+
+    const color = decodeGeneralMarkerColor(entry[0]);
+
+    if (entry.length === 4) {
+      const path = String(pathList[Number(entry[1] || 0)] || "");
+      return {
+        c: color,
+        a: {
+          sp: path,
+          so: Number(entry[2] || 0),
+          ep: path,
+          eo: Number(entry[3] || 0)
+        }
+      };
+    }
+
+    const sp = String(pathList[Number(entry[1] || 0)] || "");
+    const ep = String(pathList[Number(entry[3] || 0)] || "");
+
+    return {
+      c: color,
+      a: {
+        sp: sp,
+        so: Number(entry[2] || 0),
+        ep: ep,
+        eo: Number(entry[4] || 0)
+      }
+    };
+  }).filter(function (mark) {
+    return !!(
+      mark &&
+      mark.a &&
+      mark.a.sp &&
+      mark.a.ep
+    );
+  });
+}
+
+function countStoredGeneralMarkerMarks(state) {
+  return decodeStoredGeneralMarkerMarks(state).length;
+}
+
+
+function getGeneralMarkerCaptureHost(root) {
+  const candidates = uniqueElements([
+    root,
+    getBaseContentHost(),
+    getContentHost(),
+    document.querySelector(".lia-slide__content"),
+    document.querySelector(".lia-content"),
+    document.querySelector("main")
+  ]).filter(function (el) {
+    return el instanceof Element;
+  });
+
+  let best = null;
+  let bestArea = -1;
+
+  candidates.forEach(function (el) {
+    if (!isRenderedElement(el) && !hasRenderedSelfOrDescendant(el)) return;
+
+    const r = el.getBoundingClientRect();
+    const area = Math.max(0, r.width) * Math.max(0, r.height);
+
+    if (area > bestArea) {
+      best = el;
+      bestArea = area;
+    }
+  });
+
+  return best || root || getBaseContentHost() || document.body;
+}
+
+
+function captureGeneralMarkerState(root) {
+  const host = getGeneralMarkerCaptureHost(root);
+  const inst = getMarkerQuizInstance();
+
+  if (!inst || !Array.isArray(inst.HL)) {
+    return {
+      h: []
+    };
+  }
+
+  const items = inst.HL.filter(function (item) {
+    if (!isGeneralMarkerUserItem(item)) return false;
+    if (!item.anchor) return false;
+
+    return markerAnchorBelongsToHost(item.anchor, host);
+  }).slice().sort(function (a, b) {
+    return Number(a.id || 0) - Number(b.id || 0);
+  });
+
+  const pathList = [];
+  const pathIndex = Object.create(null);
+
+  function internPath(path) {
+    const key = String(path || "");
+    if (!key) return -1;
+
+    if (!Object.prototype.hasOwnProperty.call(pathIndex, key)) {
+      pathIndex[key] = pathList.length;
+      pathList.push(key);
+    }
+
+    return pathIndex[key];
+  }
+
+  const marks = [];
+
+  items.forEach(function (item) {
+    const a = item.anchor || {};
+    const sp = String(a.sp || "");
+    const ep = String(a.ep || "");
+
+    if (!sp || !ep) return;
+
+    const spIdx = internPath(sp);
+    const epIdx = internPath(ep);
+    const colorCode = encodeGeneralMarkerColor(item.color || "yellow");
+    const so = Number(a.so || 0);
+    const eo = Number(a.eo || 0);
+
+    if (spIdx < 0 || epIdx < 0) return;
+
+    if (spIdx === epIdx) {
+      marks.push([colorCode, spIdx, so, eo]);
+    } else {
+      marks.push([colorCode, spIdx, so, epIdx, eo]);
+    }
+  });
+
+  log(
+    "general-marker-capture",
+    "host=" + getGeneralMarkerDebugToken(host),
+    "tag=" + String(host && host.tagName || ""),
+    "marks=" + marks.length,
+    "paths=" + pathList.length
+  );
+
+  const out = {
+    h: marks
+  };
+
+  if (pathList.length) {
+    out.p = pathList;
+  }
+
+  return out;
+}
+
+function applyStoredGeneralMarkerState(state) {
+  const inst = getMarkerQuizInstance();
+  const marks = decodeStoredGeneralMarkerMarks(state);
+
+  if (!inst) {
+    warn("general-marker-apply-no-instance", "marks=" + marks.length);
+    return false;
+  }
+
+  inst.nextId = Number(inst.nextId || 1) || 1;
+
+  inst.HL = Array.isArray(inst.HL)
+    ? inst.HL.filter(function (item) {
+        if (!item) return false;
+        return !isGeneralMarkerUserItem(item);
+      })
+    : [];
+
+  marks.forEach(function (mark) {
+    if (!mark || !mark.a) return;
+
+    inst.HL.push({
+      id: inst.nextId++,
+      kind: "user",
+      scope: getGeneralMarkerScopeName(),
+      slide: "",
+      color: decodeGeneralMarkerColor(mark.c || "yellow"),
+      anchor: {
+        sp: String(mark.a.sp || ""),
+        so: Number(mark.a.so || 0),
+        ep: String(mark.a.ep || ""),
+        eo: Number(mark.a.eo || 0)
+      },
+      rects: []
+    });
+  });
+
+  pokeMarkerQuizModule();
+
+  log(
+    "general-marker-apply",
+    "stored=" + marks.length,
+    "raw=" + countStoredGeneralMarkerMarks(state)
+  );
+
+  return true;
+}
+
+function clearStoredGeneralMarkerStateNow(reason) {
+  const inst = getMarkerQuizInstance();
+  if (!inst) return false;
+
+  const before = Array.isArray(inst.HL) ? inst.HL.length : 0;
+
+  inst.HL = Array.isArray(inst.HL)
+    ? inst.HL.filter(function (item) {
+        if (!item) return false;
+        return !isGeneralMarkerUserItem(item);
+      })
+    : [];
+
+  const after = Array.isArray(inst.HL) ? inst.HL.length : 0;
+
+  pokeMarkerQuizModule();
+
+  log(
+    "general-marker-clear",
+    "reason=" + String(reason || ""),
+    "removed=" + Math.max(0, before - after)
+  );
+
+  return true;
+}
 
 
 function getOrthographyModule() {
@@ -5992,11 +6682,16 @@ function reapplySnapshotSilently(hash, reason) {
   applyStoredOrthographyStatesToHost(host, slide.o || []);
   applyStoredFractionStatesToHost(host, slide.fq || []);
   applyStoredMarkerQuizStatesToHost(host, slide.mq || []);
+  applyStoredGeneralMarkerState(slide.gm || null);
+
   reinforceFrozenUi();
 
   log("reapply-silent", wantedHash, reason || "");
   return true;
 }
+
+
+
 
   function schedulePostApplyReinforcement(hash, reason, delays) {
     const wantedHash = String(hash || "");
@@ -6051,6 +6746,7 @@ function captureSlideStateForHash(hash) {
   const orthoRoots = collectOrthographyQuizRootsFromRoot(host);
   const fractionRoots = collectFractionQuizRootsFromRoot(host);
   const markerRoots = collectMarkerQuizRootsFromRoot(host);
+  const generalMarkerState = captureGeneralMarkerState(host);
 
   const ordered = [];
 
@@ -6122,7 +6818,8 @@ function captureSlideStateForHash(hash) {
     c: [],
     o: [],
     fq: [],
-    mq: []
+    mq: [],
+    gm: generalMarkerState
   };
 
   const sequence = [];
@@ -6151,7 +6848,12 @@ function captureSlideStateForHash(hash) {
     "choice=" + out.c.length,
     "ortho=" + out.o.length,
     "fraction=" + out.fq.length,
-    "marker=" + out.mq.length
+    "marker=" + out.mq.length,
+    "general-marker=" + (
+      out.gm && Array.isArray(out.gm.h)
+        ? out.gm.h.length
+        : 0
+    )
   );
 
   return out;
@@ -6175,10 +6877,17 @@ function storeLiveSlideState(hash, source) {
     "choice=" + (state.c ? state.c.length : 0),
     "ortho=" + (state.o ? state.o.length : 0),
     "fraction=" + (state.fq ? state.fq.length : 0),
-    "marker=" + (state.mq ? state.mq.length : 0)
+    "marker=" + (state.mq ? state.mq.length : 0),
+    "general-marker=" + (
+      state.gm && Array.isArray(state.gm.h)
+        ? state.gm.h.length
+        : 0
+    )
   );
   return true;
 }
+
+
 
 function buildPayloadFromLiveStates() {
   const currentHash = liveRouteCurrentHash || getCurrentHash();
@@ -6473,130 +7182,245 @@ function ensureSnapshotModeClasses() {
   if (host) host.classList.add("lia-frozen-scope");
 }
 
-  function getFreezeBar() {
-    let bar = document.getElementById("lia-freeze-bar");
+function getFreezeBar() {
+  let bar = document.getElementById("lia-freeze-bar");
 
-    if (!bar) {
-      bar = document.createElement("div");
-      bar.id = "lia-freeze-bar";
-      bar.innerHTML = [
-        '<div id="lia-freeze-bar-inner" style="display:grid;grid-template-columns:auto 1fr auto;gap:.8rem;align-items:center;">',
-          '<div id="lia-freeze-nav" style="display:flex;gap:.55rem;align-items:center;">',
-            '<button id="lia-freeze-prev" type="button" aria-label="Vorherige Folie">←</button>',
-            '<button id="lia-freeze-next" type="button" aria-label="Nächste Folie">→</button>',
-          '</div>',
-          '<div id="lia-freeze-center" style="min-width:0;">',
-            '<div id="lia-freeze-head" style="font-weight:800;line-height:1.2;"></div>',
-            '<div id="lia-freeze-sub" style="font-size:.92rem;opacity:.95;line-height:1.25;"></div>',
-          '</div>',
-          '<div id="lia-freeze-meta" style="text-align:right;font-weight:700;white-space:nowrap;"></div>',
-        '</div>'
-      ].join("");
+  if (!bar) {
+    bar = document.createElement("div");
+    bar.id = "lia-freeze-bar";
+    bar.innerHTML = [
+      '<div id="lia-freeze-bar-inner">',
+        '<div id="lia-freeze-nav-left" class="lia-freeze-nav-group">',
+          '<button id="lia-freeze-first" type="button" aria-label="Zur ersten Folie" title="Zur ersten Folie">',
+            '<svg viewBox="-4 0 24 24" aria-hidden="true" class="lia-freeze-icon lia-freeze-icon-first">',
+              '<path d="M21 8H10.2V4L2 12l8.2 8v-4H21V8z" fill="currentColor"/>',
+              '<rect x="-1.8" y="4" width="2.6" height="16" rx="1.3" fill="currentColor"/>',
+            '</svg>',
+          '</button>',
+          '<button id="lia-freeze-prev" type="button" aria-label="Vorherige Folie" title="Vorherige Folie">',
+            '<svg viewBox="-4 0 24 24" aria-hidden="true" class="lia-freeze-icon lia-freeze-icon-prev">',
+              '<path d="M21 8H10.2V4L2 12l8.2 8v-4H21V8z" fill="currentColor"/>',
+              '<rect x="10.2" y="10.6" width="10.8" height="2.8" rx="1.4" fill="currentColor"/>',
+            '</svg>',
+          '</button>',
+        '</div>',
 
-      document.body.appendChild(bar);
+        '<div id="lia-freeze-center">',
+          '<div id="lia-freeze-head"></div>',
+          '<div id="lia-freeze-meta"></div>',
+        '</div>',
 
-      const prevBtn = bar.querySelector("#lia-freeze-prev");
-      const nextBtn = bar.querySelector("#lia-freeze-next");
+        '<div id="lia-freeze-nav-right" class="lia-freeze-nav-group">',
+          '<button id="lia-freeze-next" type="button" aria-label="Nächste Folie" title="Nächste Folie">',
+            '<svg viewBox="-4 0 24 24" aria-hidden="true" class="lia-freeze-icon lia-freeze-icon-next" style="transform:scaleX(-1);">',
+              '<path d="M21 8H10.2V4L2 12l8.2 8v-4H21V8z" fill="currentColor"/>',
+              '<rect x="10.2" y="10.6" width="10.8" height="2.8" rx="1.4" fill="currentColor"/>',
+            '</svg>',
+          '</button>',
+          '<button id="lia-freeze-last" type="button" aria-label="Zur Auswertungsfolie" title="Zur Auswertungsfolie">',
+            '<svg viewBox="-4 0 24 24" aria-hidden="true" class="lia-freeze-icon lia-freeze-icon-last" style="transform:scaleX(-1);">',
+              '<path d="M21 8H10.2V4L2 12l8.2 8v-4H21V8z" fill="currentColor"/>',
+              '<rect x="-1.8" y="4" width="2.6" height="16" rx="1.3" fill="currentColor"/>',
+            '</svg>',
+          '</button>',
+        '</div>',
+      '</div>'
+    ].join("");
 
-      prevBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        goFrozenRelative(-1);
-      }, true);
+    document.body.appendChild(bar);
 
-      nextBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        goFrozenRelative(1);
-      }, true);
-    }
-
-    styleFreezeBar(bar);
-    return bar;
-  }
-
-  function styleFreezeBar(bar) {
-    if (!bar) return;
-
-    const maxWidth = Math.min(1100, Math.max(280, window.innerWidth - 16));
-
-    bar.style.position = "fixed";
-    bar.style.top = "0";
-    bar.style.left = "50%";
-    bar.style.transform = "translateX(-50%)";
-    bar.style.width = maxWidth + "px";
-    bar.style.maxWidth = "calc(100vw - 16px)";
-    bar.style.boxSizing = "border-box";
-    bar.style.zIndex = "99999";
-    bar.style.padding = ".72rem .9rem";
-    bar.style.borderRadius = "0 0 14px 14px";
-    bar.style.background = "rgb(var(--lia-submit-bg-rgb))";
-    bar.style.color = "var(--lia-submit-fg)";
-    bar.style.border = "1px solid var(--lia-submit-border-on-theme)";
-    bar.style.boxShadow = "0 10px 26px rgba(0,0,0,.14)";
-    bar.style.display = document.body.classList.contains("lia-snapshot-mode") ? "block" : "none";
-
-    Array.from(bar.querySelectorAll("button")).forEach(function (btn) {
-      btn.style.padding = ".48rem .72rem";
-      btn.style.borderRadius = "10px";
-      btn.style.cursor = "pointer";
-      btn.style.fontWeight = "800";
-      btn.style.fontSize = "1rem";
-      btn.style.background = "var(--lia-submit-button-bg)";
-      btn.style.color = "var(--lia-submit-fg)";
-      btn.style.border = "1px solid var(--lia-submit-border-on-theme)";
-    });
-
-    const bodyPadding = Math.ceil((bar.offsetHeight || 62) + 10);
-    document.body.style.paddingTop = bodyPadding + "px";
-    document.documentElement.style.scrollPaddingTop = bodyPadding + "px";
-  }
-
-  function refreshFreezeBar() {
-    const bar = document.getElementById("lia-freeze-bar");
-    if (!bar) return;
-
-    styleFreezeBar(bar);
-
-    const slides = getDeclaredSlides();
-    const hash = getCurrentHash();
-    const idx = getDeclaredSlideIndex(hash);
-    const slide = idx >= 0 ? slides[idx] : null;
-
-    const head = bar.querySelector("#lia-freeze-head");
-    const sub = bar.querySelector("#lia-freeze-sub");
-    const meta = bar.querySelector("#lia-freeze-meta");
+    const firstBtn = bar.querySelector("#lia-freeze-first");
     const prevBtn = bar.querySelector("#lia-freeze-prev");
     const nextBtn = bar.querySelector("#lia-freeze-next");
+    const lastBtn = bar.querySelector("#lia-freeze-last");
 
-    const name = getDisplayName();
-    head.innerHTML = name
-      ? (escapeHtml(name) + ": eingefrorener Abgabestand")
-      : "Eingefrorener Abgabestand";
+    firstBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      goFrozenFirst();
+    }, true);
 
-    if (slide && slide.t) {
-      if (isEvaluationTarget(hash)) {
-        sub.textContent = slide.t;
-      } else if (isUnvisitedTarget(hash)) {
-        sub.textContent = slide.t + " · unbesucht / gesperrt";
-      } else {
-        sub.textContent = slide.t;
-      }
-    } else {
-      sub.textContent = "Der Kurs ist nicht mehr veränderbar.";
-    }
+    prevBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      goFrozenRelative(-1);
+    }, true);
 
-    if (idx >= 0) {
-      meta.textContent = (idx + 1) + " / " + slides.length;
-    } else {
-      meta.textContent = "– / " + slides.length;
-    }
+    nextBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      goFrozenRelative(1);
+    }, true);
 
-    prevBtn.disabled = !(idx > 0);
-    nextBtn.disabled = !(idx >= 0 && idx < slides.length - 1);
-    prevBtn.style.opacity = prevBtn.disabled ? ".55" : "1";
-    nextBtn.style.opacity = nextBtn.disabled ? ".55" : "1";
+    lastBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      goFrozenEvaluation();
+    }, true);
   }
+
+  styleFreezeBar(bar);
+  return bar;
+}
+
+function styleFreezeBar(bar) {
+  if (!bar) return;
+
+  const maxWidth = Math.min(1180, Math.max(320, window.innerWidth - 16));
+
+  bar.style.position = "fixed";
+  bar.style.top = "0";
+  bar.style.left = "50%";
+  bar.style.transform = "translateX(-50%)";
+  bar.style.width = maxWidth + "px";
+  bar.style.maxWidth = "calc(100vw - 16px)";
+  bar.style.boxSizing = "border-box";
+  bar.style.zIndex = "99999";
+  bar.style.padding = ".62rem .85rem";
+  bar.style.borderRadius = "0 0 14px 14px";
+  bar.style.background = "rgb(var(--lia-submit-bg-rgb))";
+  bar.style.color = "var(--lia-submit-fg)";
+  bar.style.border = "1px solid var(--lia-submit-border-on-theme)";
+  bar.style.boxShadow = "0 10px 26px rgba(0,0,0,.14)";
+  bar.style.display = document.body.classList.contains("lia-snapshot-mode") ? "block" : "none";
+
+  const inner = bar.querySelector("#lia-freeze-bar-inner");
+  if (inner) {
+    inner.style.display = "grid";
+    inner.style.gridTemplateColumns = "auto 1fr auto";
+    inner.style.alignItems = "center";
+    inner.style.gap = ".9rem";
+  }
+
+  const navGroups = bar.querySelectorAll(".lia-freeze-nav-group");
+  navGroups.forEach(function (group) {
+    group.style.display = "flex";
+    group.style.alignItems = "center";
+    group.style.gap = ".45rem";
+  });
+
+  const center = bar.querySelector("#lia-freeze-center");
+  if (center) {
+    center.style.minWidth = "0";
+    center.style.display = "flex";
+    center.style.alignItems = "center";
+    center.style.justifyContent = "center";
+    center.style.gap = "1rem";
+    center.style.textAlign = "center";
+  }
+
+  const head = bar.querySelector("#lia-freeze-head");
+  if (head) {
+    head.style.minWidth = "0";
+    head.style.fontWeight = "800";
+    head.style.fontSize = "2rem";
+    head.style.lineHeight = "1.2";
+    head.style.whiteSpace = "nowrap";
+    head.style.overflow = "hidden";
+    head.style.textOverflow = "ellipsis";
+  }
+
+  const meta = bar.querySelector("#lia-freeze-meta");
+  if (meta) {
+    meta.style.flex = "0 0 auto";
+    meta.style.fontWeight = "800";
+    meta.style.fontSize = "2rem";
+    meta.style.lineHeight = "1.2";
+    meta.style.whiteSpace = "nowrap";
+  }
+
+  Array.from(bar.querySelectorAll("button")).forEach(function (btn) {
+    btn.style.width = "46px";
+    btn.style.height = "46px";
+    btn.style.minWidth = "46px";
+    btn.style.minHeight = "46px";
+    btn.style.padding = "0";
+    btn.style.borderRadius = "10px";
+    btn.style.cursor = "pointer";
+    btn.style.display = "inline-flex";
+    btn.style.alignItems = "center";
+    btn.style.justifyContent = "center";
+    btn.style.background = "var(--lia-submit-button-bg)";
+    btn.style.color = "var(--lia-submit-fg)";
+    btn.style.border = "1px solid var(--lia-submit-border-on-theme)";
+  });
+
+  Array.from(bar.querySelectorAll(".lia-freeze-icon")).forEach(function (svg) {
+    svg.style.width = "28px";
+    svg.style.height = "28px";
+    svg.style.display = "block";
+    svg.style.pointerEvents = "none";
+  });
+
+  const bodyPadding = Math.ceil((bar.offsetHeight || 64) + 10);
+  document.body.style.paddingTop = bodyPadding + "px";
+  document.documentElement.style.scrollPaddingTop = bodyPadding + "px";
+}
+
+function refreshFreezeBar() {
+  const bar = document.getElementById("lia-freeze-bar");
+  if (!bar) return;
+
+  styleFreezeBar(bar);
+
+  const slides = getDeclaredSlides();
+  const hash = cleanHashValue(getCurrentHash() || "");
+  const idx = getDeclaredSlideIndex(hash);
+  const slide = idx >= 0 ? slides[idx] : null;
+
+  const head = bar.querySelector("#lia-freeze-head");
+  const meta = bar.querySelector("#lia-freeze-meta");
+
+  const firstBtn = bar.querySelector("#lia-freeze-first");
+  const prevBtn  = bar.querySelector("#lia-freeze-prev");
+  const nextBtn  = bar.querySelector("#lia-freeze-next");
+  const lastBtn  = bar.querySelector("#lia-freeze-last");
+
+  const evaluationIdx = slides.findIndex(function (s) {
+    return !!(s && s.vt === "evaluation");
+  });
+
+  const name = normalizeSpace(getDisplayName() || "");
+  const slideTitle = normalizeSpace(slide && slide.t || "");
+  const posText = idx >= 0
+    ? ((idx + 1) + " / " + slides.length)
+    : ("– / " + slides.length);
+
+  if (head) {
+    const parts = [];
+
+    if (name) parts.push(name);
+    parts.push("Abgabe");
+    if (slideTitle) parts.push(slideTitle);
+    parts.push(posText);
+
+    head.textContent = parts.join(" - ");
+  }
+
+  // meta leer lassen, weil x / y jetzt mit im Head steckt
+  if (meta) {
+    meta.textContent = "";
+  }
+
+  const canGoFirst = idx > 0;
+  const canGoPrev = idx > 0;
+  const canGoNext = idx >= 0 && idx < slides.length - 1;
+
+  // Zur Auswertungsfolie springen dürfen wir,
+  // sobald es überhaupt eine Auswertungsfolie gibt
+  // und wir nicht bereits dort sind.
+  const canGoLast = evaluationIdx >= 0 && idx !== evaluationIdx;
+
+  if (firstBtn) firstBtn.disabled = !canGoFirst;
+  if (prevBtn)  prevBtn.disabled  = !canGoPrev;
+  if (nextBtn)  nextBtn.disabled  = !canGoNext;
+  if (lastBtn)  lastBtn.disabled  = !canGoLast;
+
+  [firstBtn, prevBtn, nextBtn, lastBtn].forEach(function (btn) {
+    if (!btn) return;
+    btn.style.opacity = btn.disabled ? ".55" : "1";
+  });
+}
 
   function scheduleRefreshFreezeBar(delay) {
     clearTimeout(freezeBarTimer);
@@ -6750,6 +7574,7 @@ async function applySnapshotOnce(hash, reason) {
     const appliedOrtho = applyStoredOrthographyStatesToHost(host, slide.o || []);
     const appliedFraction = applyStoredFractionStatesToHost(host, slide.fq || []);
     const appliedMarker = applyStoredMarkerQuizStatesToHost(host, slide.mq || []);
+    applyStoredGeneralMarkerState(slide.gm || null);
 
     const expectedText = Array.isArray(slide.q) ? slide.q.length : 0;
     const expectedDropdown = Array.isArray(slide.d) ? slide.d.length : 0;
@@ -6944,6 +7769,36 @@ async function runApplyCycle(hash, runToken, attemptDelays, reason) {
   function goFrozenHash(targetHash) {
     if (!targetHash) return;
     window.location.hash = String(targetHash);
+  }
+
+
+  function goFrozenFirst() {
+    const slides = getDeclaredSlides();
+    if (!slides.length) return;
+
+    const first = slides[0];
+    if (!first || !first.h) return;
+
+    window.location.hash = String(first.h);
+  }
+
+  function goFrozenEvaluation() {
+    const slides = getDeclaredSlides();
+    if (!slides.length) return;
+
+    for (let i = 0; i < slides.length; i++) {
+      const slide = slides[i];
+      if (slide && slide.vt === "evaluation" && slide.h) {
+        window.location.hash = String(slide.h);
+        return;
+      }
+    }
+
+    // Fallback: letzte deklarierte Folie
+    const last = slides[slides.length - 1];
+    if (last && last.h) {
+      window.location.hash = String(last.h);
+    }
   }
 
   // =========================================================
@@ -7246,12 +8101,34 @@ function installGlobalTabTracking() {
   }, 250);
 }
 
+
+
 function installLiveCaptureBindings() {
   if (liveBindingsInstalled) return;
   liveBindingsInstalled = true;
 
   installRouteBridge();
   liveRouteCurrentHash = getCurrentHash();
+
+  function isGeneralMarkerMarkModeActive_LOCAL() {
+    const inst = getMarkerQuizInstance();
+    return !!(
+      inst &&
+      inst.state &&
+      inst.state.active &&
+      String(inst.state.tool || "") === "mark"
+    );
+  }
+
+  function isAnyMarkerOverlayInteraction_LOCAL(el) {
+    if (!el || !(el instanceof Element)) return false;
+
+    return !!(
+      el.closest(".lia-hl-rect") ||
+      el.closest("#lia-hl-btn") ||
+      el.closest("#lia-hl-panel")
+    );
+  }
 
   document.addEventListener("input", function (e) {
     const t = e.target;
@@ -7267,7 +8144,10 @@ function installLiveCaptureBindings() {
     if (isFractionRangeInput(t)) {
       setTimeout(function () {
         captureAdminState();
-        storeLiveSlideState(liveRouteCurrentHash || getCurrentHash(), "fraction-range-input");
+        storeLiveSlideState(
+          liveRouteCurrentHash || getCurrentHash(),
+          "fraction-range-input"
+        );
       }, 120);
     }
   }, true);
@@ -7286,7 +8166,10 @@ function installLiveCaptureBindings() {
     if (isFractionRangeInput(t)) {
       setTimeout(function () {
         captureAdminState();
-        storeLiveSlideState(liveRouteCurrentHash || getCurrentHash(), "fraction-range-change");
+        storeLiveSlideState(
+          liveRouteCurrentHash || getCurrentHash(),
+          "fraction-range-change"
+        );
       }, 120);
     }
   }, true);
@@ -7370,12 +8253,23 @@ function installLiveCaptureBindings() {
     const t = e.target;
     if (!(t instanceof HTMLElement)) return;
     if (document.body.classList.contains("lia-snapshot-mode")) return;
-    if (!t.closest(".markerquiz")) return;
+
+    const inMarkerQuiz = !!t.closest(".markerquiz");
+    const generalMarkerMode = isGeneralMarkerMarkModeActive_LOCAL();
+
+    // Wichtig:
+    // Für allgemeine Marker außerhalb eines Quiz NICHT mehr auf eine noch
+    // vorhandene Text-Selection prüfen, weil der Markerimport die Selection
+    // auf mouseup oft schon entfernt hat.
+    if (!inMarkerQuiz && !generalMarkerMode) return;
 
     setTimeout(function () {
       captureAdminState();
-      storeLiveSlideState(liveRouteCurrentHash || getCurrentHash(), "marker-mouseup");
-    }, 140);
+      storeLiveSlideState(
+        liveRouteCurrentHash || getCurrentHash(),
+        inMarkerQuiz ? "markerquiz-mouseup" : "general-marker-mouseup"
+      );
+    }, 180);
   }, true);
 
   document.addEventListener("pointerdown", function (e) {
@@ -7383,16 +8277,15 @@ function installLiveCaptureBindings() {
     if (!(t instanceof HTMLElement)) return;
     if (document.body.classList.contains("lia-snapshot-mode")) return;
 
-    if (
-      t.closest(".lia-hl-rect") ||
-      t.closest("#lia-hl-btn") ||
-      t.closest("#lia-hl-panel")
-    ) {
-      setTimeout(function () {
-        captureAdminState();
-        storeLiveSlideState(liveRouteCurrentHash || getCurrentHash(), "marker-pointer");
-      }, 140);
-    }
+    if (!isAnyMarkerOverlayInteraction_LOCAL(t)) return;
+
+    setTimeout(function () {
+      captureAdminState();
+      storeLiveSlideState(
+        liveRouteCurrentHash || getCurrentHash(),
+        "marker-pointer"
+      );
+    }, 140);
   }, true);
 
   document.addEventListener("dragend", function (e) {
@@ -7444,6 +8337,8 @@ function installLiveCaptureBindings() {
   }, 180);
 }
 
+
+
   // =========================================================
   // Freeze-Bindings
   // =========================================================
@@ -7490,9 +8385,28 @@ function blockFrozenKeydown(e) {
   if (isAllowedFreezeTarget(e.target)) return;
 
   const key = String(e.key || "");
+
+  if (key === "ArrowLeft") {
+    e.preventDefault();
+    e.stopPropagation();
+    if (typeof e.stopImmediatePropagation === "function") {
+      e.stopImmediatePropagation();
+    }
+    goFrozenRelative(-1);
+    return;
+  }
+
+  if (key === "ArrowRight") {
+    e.preventDefault();
+    e.stopPropagation();
+    if (typeof e.stopImmediatePropagation === "function") {
+      e.stopImmediatePropagation();
+    }
+    goFrozenRelative(1);
+    return;
+  }
+
   const blocked = {
-    ArrowLeft: 1,
-    ArrowRight: 1,
     ArrowUp: 1,
     ArrowDown: 1,
     PageUp: 1,
@@ -7553,6 +8467,11 @@ function blockFrozenKeydown(e) {
       );
 
       log("freeze-route-handler", "current=" + current);
+
+      // Alte allgemeine Marker sofort entfernen, damit beim Folienwechsel
+      // kein kurzer Stale-State der vorherigen Folie aufblitzt.
+      clearStoredGeneralMarkerStateNow("route-change:" + current);
+
       scheduleRefreshFreezeBar(20);
       scheduleApplySnapshot(current, 80, {
         reason: "route-change",
@@ -7586,15 +8505,37 @@ async function activateSnapshotMode(payload, linkValue, opts) {
     linkValue: freezeLinkValue
   });
 
-  const startHash = /^#\d+$/.test(snapshotPayload.sh || "") ? snapshotPayload.sh : getCurrentHash();
+  const bootHash = getFreezeBootTargetHash();
+  const currentHash = cleanHashValue(getCurrentHash() || "");
 
-  if (getCurrentHash() !== startHash) {
-    setFreezeLoading(true, "activate-route");
-    setHashSilently(startHash);
-    window.location.hash = startHash;
+  log(
+    "activate-boot-target",
+    "shared=" + (snapshotIsSharedLinkMode ? "1" : "0"),
+    "current=" + currentHash,
+    "target=" + bootHash
+  );
+
+  setFreezeLoading(true, "activate-start");
+
+  // Wenn wir im geteilten Link direkt auf die Auswertung wollen,
+  // sofort dorthin routen. Der Evaluation-Apply braucht keinen fertigen DOM-Quizaufbau.
+  if (currentHash !== bootHash) {
+    try {
+      setHashSilently(bootHash);
+    } catch (e) {}
+
+    try {
+      window.location.hash = bootHash;
+    } catch (e) {}
   }
 
-  scheduleInitialBootApply(startHash);
+  scheduleApplySnapshot(bootHash, 0, {
+    reason: "initial-boot",
+    attemptDelays: isEvaluationTarget(bootHash)
+      ? [0, 80, 180]
+      : [0, 120, 260, 520]
+  });
+
   return true;
 }
 
@@ -7854,7 +8795,7 @@ Wähle blau aus.
 
 
 
-$d)\;\;$ $4000+123=$ [[  4123  ]]
+$d)\;\;$ $4000+123=$ [[  4123  ]] @canvas
 
 @ADetails(1=BE;Addition)
 
@@ -7932,15 +8873,21 @@ __Aufgabe 3:__ Setze das Komma an die richtige Stelle. (Auflösung ist blockiert
 
 **Stelle** die passende Teilung der Fläche **ein** und **markiere** den passenden Anteil, sodass der Bruch dargestellt wird.
 
-__$a)\;\;$__ $\dfrac{7}{10}$
+__$a)\;\;$__ $\dfrac{1}{4}$
 
-@rectQuiz(7/10)
+@rectQuiz(1/4)
 
 @ADetails(1=BE;Bruchrechnung)
 
-__$b)\;\;$__ $\dfrac{7}{10}$
+__$b)\;\;$__ $\dfrac{2}{5}$
 
-@circleQuiz(7/10)
+@circleQuiz(2/5)
+
+@ADetails(1=BE;Bruchrechnung)
+
+__$c)\;\;$__ $\dfrac{1}{3}$
+
+@circleQuiz(1/3)
 
 @ADetails(1=BE;Bruchrechnung)
 

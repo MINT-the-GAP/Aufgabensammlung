@@ -10673,7 +10673,6 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
 
 
 
-
 (function () {
   function getRootWindow() {
     let w = window;
@@ -10686,6 +10685,39 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
   const ROOT = getRootWindow();
   const STORE_KEY = "__LIA_FRACTION_QUIZ_V3__";
   const STYLE_ID = "__LIA_FRACTION_QUIZ_STYLE_V3__";
+  const DEBUG_OBSERVER_KEY = "__LIA_FQ_DEBUG_DOM_OBSERVER_V1__";
+  const DEBUG_FQ = true;
+
+function fqdbg(tag) {
+  if (!DEBUG_FQ) return;
+
+  const keep =
+    tag === "quiz-reveal-click" ||
+    tag === "quiz-observer-detected-revealed" ||
+    tag === "markRevealed:before" ||
+    tag === "markRevealed:after" ||
+    tag === "applySolution:start" ||
+    tag === "applySolution:end" ||
+    tag === "dom-mutation" ||
+    tag === "wrap-replaced" ||
+    tag === "host-replaced" ||
+    tag === "mount-replaced" ||
+    tag === "circle-input-replaced" ||
+    tag === "rows-input-replaced" ||
+    tag === "cols-input-replaced" ||
+    tag === "circle-input-event" ||
+    tag === "rect-rows-event" ||
+    tag === "rect-cols-event" ||
+    tag === "register:start" ||
+    tag === "register:end";
+
+  if (!keep) return;
+
+  try {
+    const args = Array.prototype.slice.call(arguments, 1);
+    console.log("[FQDBG]", tag, ...args);
+  } catch (e) {}
+}
 
   function getDoc() {
     try {
@@ -10850,8 +10882,8 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
   --fq-h: 30px;
   --fq-track-h: 4px;
   --fq-thumb-sz: 12px;
-  --fq-label-size: 11px;
-  --fq-label-top: 3px;
+  --fq-label-size: 18px;
+  --fq-label-top: -7px;
 }
 @media (prefers-color-scheme: dark){
   :root{
@@ -10906,6 +10938,7 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
   top:var(--fq-label-top);
   text-align:center;
   font-size:var(--fq-label-size);
+  font-weight: 700;
   line-height:1;
   opacity:.85;
   pointer-events:none;
@@ -10991,7 +11024,81 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
     DOC.head.appendChild(style);
   }
 
+  function fqNodeLabel(node) {
+    if (!node) return "(null)";
+    if (node.nodeType !== 1) return "(" + node.nodeName + ")";
+    const id = node.id ? "#" + node.id : "";
+    const cls = node.className && typeof node.className === "string"
+      ? "." + node.className.trim().replace(/\s+/g, ".")
+      : "";
+    return node.tagName.toLowerCase() + id + cls;
+  }
+
+  function fqNodeTouchesWidget(node) {
+    if (!node || node.nodeType !== 1) return false;
+    if ((node.id && /^fq-/.test(node.id))) return true;
+    if (node.classList) {
+      if (
+        node.classList.contains("fq-widget") ||
+        node.classList.contains("fq-mount") ||
+        node.classList.contains("fq-range")
+      ) return true;
+    }
+    try {
+      return !!node.querySelector('[id^="fq-"], .fq-widget, .fq-mount, .fq-range');
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function installDebugDomObserverOnce() {
+    if (!DEBUG_FQ) return;
+    if (ROOT[DEBUG_OBSERVER_KEY]) return;
+    if (typeof MutationObserver === "undefined") return;
+
+    const DOC = document;
+    const target = DOC.body || DOC.documentElement;
+    if (!target) return;
+
+    const obs = new MutationObserver((mutations) => {
+      for (let i = 0; i < mutations.length; i++) {
+        const m = mutations[i];
+        if (m.type !== "childList") continue;
+
+        const added = [];
+        const removed = [];
+
+        for (let j = 0; j < m.addedNodes.length; j++) {
+          const n = m.addedNodes[j];
+          if (fqNodeTouchesWidget(n)) added.push(fqNodeLabel(n));
+        }
+
+        for (let j = 0; j < m.removedNodes.length; j++) {
+          const n = m.removedNodes[j];
+          if (fqNodeTouchesWidget(n)) removed.push(fqNodeLabel(n));
+        }
+
+        if (added.length || removed.length) {
+          fqdbg("dom-mutation", {
+            target: fqNodeLabel(m.target),
+            added: added,
+            removed: removed
+          });
+        }
+      }
+    });
+
+    obs.observe(target, {
+      childList: true,
+      subtree: true
+    });
+
+    ROOT[DEBUG_OBSERVER_KEY] = obs;
+    fqdbg("debug-dom-observer-installed");
+  }
+
   injectStyleOnce();
+  installDebugDomObserverOnce();
 
   if (!ROOT[STORE_KEY]) {
     ROOT[STORE_KEY] = {
@@ -11014,6 +11121,7 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
             revealed: false,
             ready: false
           };
+          fqdbg("meta-created", uid, { kind: kind || "" });
         }
         if (kind) this.meta[uid].kind = kind;
         return this.meta[uid];
@@ -11036,8 +11144,72 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
             _quizClickHandler: null,
             _quizBridgeInstalled: false
           };
+          fqdbg("nodes-created", uid);
         }
         return this.nodes[uid];
+      },
+
+      refreshNodes(uid) {
+        uid = String(uid == null ? "" : uid);
+        const nodes = this.getNodes(uid);
+
+        const prevWrap = nodes.wrap;
+        const prevHost = nodes.host;
+        const prevMount = nodes.mount;
+        const prevCircleInput = nodes.circleInput;
+        const prevRowsInput = nodes.rowsInput;
+        const prevColsInput = nodes.colsInput;
+
+        const circleWrap = document.getElementById("fq-circle-wrap-" + uid);
+        const rectWrap = document.getElementById("fq-rect-wrap-" + uid);
+
+        if (circleWrap) {
+          nodes.kind = "circle";
+          nodes.wrap = circleWrap;
+          nodes.host = document.getElementById("fq-circle-host-" + uid);
+          nodes.mount = document.getElementById("fq-circle-mount-" + uid);
+
+          const rangeWrap = document.getElementById("fq-circle-range-" + uid);
+          nodes.circleInput = rangeWrap ? rangeWrap.querySelector('input[type="range"]') : null;
+          nodes.rowsInput = null;
+          nodes.colsInput = null;
+        } else if (rectWrap) {
+          nodes.kind = "rect";
+          nodes.wrap = rectWrap;
+          nodes.host = document.getElementById("fq-rect-host-" + uid);
+          nodes.mount = document.getElementById("fq-rect-mount-" + uid);
+
+          const rowsWrap = document.getElementById("fq-rect-rows-wrap-" + uid);
+          const colsWrap = document.getElementById("fq-rect-cols-wrap-" + uid);
+
+          nodes.rowsInput = rowsWrap ? rowsWrap.querySelector('input[type="range"]') : null;
+          nodes.colsInput = colsWrap ? colsWrap.querySelector('input[type="range"]') : null;
+          nodes.circleInput = null;
+        } else {
+          nodes.wrap = null;
+          nodes.host = null;
+          nodes.mount = null;
+          nodes.circleInput = null;
+          nodes.rowsInput = null;
+          nodes.colsInput = null;
+        }
+
+        if (prevWrap && prevWrap !== nodes.wrap) fqdbg("wrap-replaced", uid, nodes.kind, fqNodeLabel(nodes.wrap));
+        if (!prevWrap && nodes.wrap) fqdbg("wrap-found", uid, nodes.kind, fqNodeLabel(nodes.wrap));
+
+        if (prevHost && prevHost !== nodes.host) fqdbg("host-replaced", uid, nodes.kind, fqNodeLabel(nodes.host));
+        if (prevMount && prevMount !== nodes.mount) fqdbg("mount-replaced", uid, nodes.kind, fqNodeLabel(nodes.mount));
+
+        if (prevCircleInput && prevCircleInput !== nodes.circleInput) fqdbg("circle-input-replaced", uid);
+        if (prevRowsInput && prevRowsInput !== nodes.rowsInput) fqdbg("rows-input-replaced", uid);
+        if (prevColsInput && prevColsInput !== nodes.colsInput) fqdbg("cols-input-replaced", uid);
+
+        if (nodes.circleInput) this.bindCircleInput(uid, nodes.circleInput);
+        if (nodes.rowsInput || nodes.colsInput) this.bindRectInputs(uid, nodes.rowsInput, nodes.colsInput);
+
+        if (nodes.wrap) this.ensureQuizBridge(uid, nodes.wrap);
+
+        return nodes;
       },
 
       parseTarget(raw) {
@@ -11047,6 +11219,10 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
       setTarget(uid, raw, kind) {
         const meta = this.getMeta(uid, kind);
         meta.target = normalizeFractionInfo(raw);
+        fqdbg("setTarget", uid, {
+          kind: meta.kind,
+          target: meta.target
+        });
         return meta.target;
       },
 
@@ -11058,6 +11234,13 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
         this.circle[uid] = boolArray(n, opts.preserve ? prev : null);
         meta.parts = n;
         meta.kind = "circle";
+
+        fqdbg("ensureCircle", uid, {
+          parts: n,
+          preserve: !!opts.preserve,
+          selected: this.countSelected(uid)
+        });
+
         return this.circle[uid];
       },
 
@@ -11073,18 +11256,35 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
         meta.rows = r;
         meta.cols = c;
         meta.kind = "rect";
+
+        fqdbg("ensureRect", uid, {
+          rows: r,
+          cols: c,
+          preserve: !!opts.preserve,
+          selected: this.countSelected(uid)
+        });
+
         return this.rect[uid];
       },
 
       setCircleParts(uid, parts, options) {
         const meta = this.getMeta(uid, "circle");
-        if (meta.locked && !(options && options.force)) return this.circle[uid] || this.ensureCircle(uid, 1);
+        if (meta.locked && !(options && options.force)) {
+          fqdbg("setCircleParts-blocked-locked", uid, { parts: parts });
+          return this.circle[uid] || this.ensureCircle(uid, 1);
+        }
         return this.ensureCircle(uid, parts, options);
       },
 
       setRectDims(uid, rows, cols, options) {
         const meta = this.getMeta(uid, "rect");
-        if (meta.locked && !(options && options.force)) return this.rect[uid] || this.ensureRect(uid, 1, 1);
+        if (meta.locked && !(options && options.force)) {
+          fqdbg("setRectDims-blocked-locked", uid, {
+            rows: rows,
+            cols: cols
+          });
+          return this.rect[uid] || this.ensureRect(uid, 1, 1);
+        }
         return this.ensureRect(uid, rows, cols, options);
       },
 
@@ -11120,22 +11320,53 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
 
       toggleCircle(uid, index) {
         const meta = this.getMeta(uid, "circle");
-        if (meta.locked || !meta.ready) return false;
+        if (meta.locked || !meta.ready) {
+          fqdbg("toggleCircle-blocked", uid, {
+            locked: !!meta.locked,
+            ready: !!meta.ready,
+            index: index
+          });
+          return false;
+        }
         const arr = Array.isArray(this.circle[uid]) ? this.circle[uid] : this.ensureCircle(uid, meta.parts || 1);
         const i = index | 0;
         if (i < 0 || i >= arr.length) return false;
         arr[i] = !arr[i];
+
+        fqdbg("toggleCircle", uid, {
+          index: i,
+          value: arr[i],
+          total: arr.length,
+          selected: this.countSelected(uid)
+        });
+
         return arr[i];
       },
 
       toggleRect(uid, index) {
         const meta = this.getMeta(uid, "rect");
-        if (meta.locked || !meta.ready) return false;
+        if (meta.locked || !meta.ready) {
+          fqdbg("toggleRect-blocked", uid, {
+            locked: !!meta.locked,
+            ready: !!meta.ready,
+            index: index
+          });
+          return false;
+        }
         const dims = this.rectDims[uid] || { rows: meta.rows || 1, cols: meta.cols || 1 };
         const arr = Array.isArray(this.rect[uid]) ? this.rect[uid] : this.ensureRect(uid, dims.rows, dims.cols);
         const i = index | 0;
         if (i < 0 || i >= arr.length) return false;
         arr[i] = !arr[i];
+
+        fqdbg("toggleRect", uid, {
+          index: i,
+          value: arr[i],
+          rows: dims.rows,
+          cols: dims.cols,
+          selected: this.countSelected(uid)
+        });
+
         return arr[i];
       },
 
@@ -11172,6 +11403,7 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
       lock(uid) {
         const meta = this.getMeta(uid);
         meta.locked = true;
+        fqdbg("lock", uid, { kind: meta.kind });
         this.syncDomState(uid);
         return true;
       },
@@ -11179,11 +11411,27 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
       markSolved(uid) {
         const meta = this.getMeta(uid);
         if (!meta.ready) return false;
+
+        fqdbg("markSolved:before", uid, {
+          kind: meta.kind,
+          rectDims: this.rectDims[uid] || null,
+          circleLen: this.circle[uid] ? this.circle[uid].length : null,
+          selected: this.countSelected(uid)
+        });
+
         meta.solved = true;
         meta.revealed = false;
         meta.locked = true;
         this.syncDomState(uid);
         this.render(uid);
+
+        fqdbg("markSolved:after", uid, {
+          kind: meta.kind,
+          rectDims: this.rectDims[uid] || null,
+          circleLen: this.circle[uid] ? this.circle[uid].length : null,
+          selected: this.countSelected(uid)
+        });
+
         return true;
       },
 
@@ -11191,6 +11439,11 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
         const meta = this.getMeta(uid);
         const sol = this.getSolution(uid);
         if (!sol) return null;
+
+        fqdbg("applySolution:start", uid, {
+          kind: meta.kind,
+          solution: sol
+        });
 
         if (sol.type === "circle") {
           this.setCircleParts(uid, sol.parts, { force: true, preserve: false });
@@ -11206,17 +11459,52 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
 
         this.syncInputs(uid, true);
         this.render(uid);
+
+        fqdbg("applySolution:end", uid, {
+          kind: meta.kind,
+          rectDims: this.rectDims[uid] || null,
+          circleLen: this.circle[uid] ? this.circle[uid].length : null,
+          selected: this.countSelected(uid)
+        });
+
         return sol;
       },
 
       markRevealed(uid) {
         const meta = this.getMeta(uid);
         if (!meta.ready) return false;
+
+        if (meta.revealed && meta.locked) {
+          fqdbg("markRevealed-skip-already-revealed", uid);
+          return true;
+        }
+
+        fqdbg("markRevealed:before", uid, {
+          kind: meta.kind,
+          locked: meta.locked,
+          revealed: meta.revealed,
+          solved: meta.solved,
+          rectDims: this.rectDims[uid] || null,
+          circleLen: this.circle[uid] ? this.circle[uid].length : null,
+          selected: this.countSelected(uid)
+        });
+
         meta.revealed = true;
         meta.solved = false;
         meta.locked = true;
         this.applySolution(uid);
         this.syncDomState(uid);
+
+        fqdbg("markRevealed:after", uid, {
+          kind: meta.kind,
+          locked: meta.locked,
+          revealed: meta.revealed,
+          solved: meta.solved,
+          rectDims: this.rectDims[uid] || null,
+          circleLen: this.circle[uid] ? this.circle[uid].length : null,
+          selected: this.countSelected(uid)
+        });
+
         return true;
       },
 
@@ -11225,6 +11513,16 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
         const kind = opts.kind || "";
         const meta = this.getMeta(uid, kind);
         const nodes = this.getNodes(uid);
+
+        fqdbg("register:start", uid, {
+          kind: kind,
+          initialParts: opts.initialParts,
+          initialRows: opts.initialRows,
+          initialCols: opts.initialCols,
+          hadCircleState: Array.isArray(this.circle[uid]) ? this.circle[uid].length : 0,
+          hadRectState: Array.isArray(this.rect[uid]) ? this.rect[uid].length : 0,
+          rectDims: this.rectDims[uid] || null
+        });
 
         if (kind) nodes.kind = kind;
         if (opts.wrap) nodes.wrap = opts.wrap;
@@ -11237,14 +11535,40 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
         if (opts.target !== undefined) this.setTarget(uid, opts.target, kind || meta.kind);
 
         if (kind === "circle") {
-          this.ensureCircle(uid, opts.initialParts != null ? opts.initialParts : 1, { preserve: false });
+          const hasCircleState =
+            Array.isArray(this.circle[uid]) &&
+            this.circle[uid].length > 0;
+
+          if (!hasCircleState) {
+            this.ensureCircle(
+              uid,
+              opts.initialParts != null ? opts.initialParts : 1,
+              { preserve: false }
+            );
+          } else {
+            meta.parts = this.circle[uid].length;
+            meta.kind = "circle";
+          }
         } else if (kind === "rect") {
-          this.ensureRect(
-            uid,
-            opts.initialRows != null ? opts.initialRows : 1,
-            opts.initialCols != null ? opts.initialCols : 1,
-            { preserve: false }
-          );
+          const dims = this.rectDims[uid];
+          const hasRectState =
+            !!dims &&
+            Array.isArray(this.rect[uid]) &&
+            this.rect[uid].length ===
+              clampInt(dims.rows, 1, 20, 1) * clampInt(dims.cols, 1, 20, 1);
+
+          if (!hasRectState) {
+            this.ensureRect(
+              uid,
+              opts.initialRows != null ? opts.initialRows : 1,
+              opts.initialCols != null ? opts.initialCols : 1,
+              { preserve: false }
+            );
+          } else {
+            meta.rows = clampInt(dims.rows, 1, 20, 1);
+            meta.cols = clampInt(dims.cols, 1, 20, 1);
+            meta.kind = "rect";
+          }
         }
 
         if (nodes.circleInput) this.bindCircleInput(uid, nodes.circleInput);
@@ -11254,16 +11578,26 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
         this.syncInputs(uid, true);
         this.syncDomState(uid);
         this.render(uid);
+
+        fqdbg("register:end", uid, {
+          kind: meta.kind,
+          rectDims: this.rectDims[uid] || null,
+          circleLen: this.circle[uid] ? this.circle[uid].length : null,
+          selected: this.countSelected(uid)
+        });
+
         return nodes;
       },
 
       attachCircle(uid, options) {
         const opts = Object.assign({}, options || {}, { kind: "circle" });
+        fqdbg("attachCircle", uid);
         return this.register(uid, opts);
       },
 
       attachRect(uid, options) {
         const opts = Object.assign({}, options || {}, { kind: "rect" });
+        fqdbg("attachRect", uid);
         return this.register(uid, opts);
       },
 
@@ -11271,7 +11605,14 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
         if (!input || input.__fqCircleBoundUid === uid) return;
         input.__fqCircleBoundUid = uid;
 
+        fqdbg("bindCircleInput", uid);
+
         const handler = () => {
+          fqdbg("circle-input-event", uid, {
+            value: input.value,
+            locked: this.isLocked(uid)
+          });
+
           if (this.isLocked(uid)) {
             this.syncInputs(uid, true);
             return;
@@ -11288,8 +11629,15 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
       bindRectInputs(uid, rowsInput, colsInput) {
         if (rowsInput && rowsInput.__fqRectRowsBoundUid !== uid) {
           rowsInput.__fqRectRowsBoundUid = uid;
+          fqdbg("bindRectRowsInput", uid);
 
           const handlerRows = () => {
+            fqdbg("rect-rows-event", uid, {
+              rowsValue: rowsInput ? rowsInput.value : null,
+              colsValue: colsInput ? colsInput.value : null,
+              locked: this.isLocked(uid)
+            });
+
             if (this.isLocked(uid)) {
               this.syncInputs(uid, true);
               return;
@@ -11306,8 +11654,15 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
 
         if (colsInput && colsInput.__fqRectColsBoundUid !== uid) {
           colsInput.__fqRectColsBoundUid = uid;
+          fqdbg("bindRectColsInput", uid);
 
           const handlerCols = () => {
+            fqdbg("rect-cols-event", uid, {
+              rowsValue: rowsInput ? rowsInput.value : null,
+              colsValue: colsInput ? colsInput.value : null,
+              locked: this.isLocked(uid)
+            });
+
             if (this.isLocked(uid)) {
               this.syncInputs(uid, true);
               return;
@@ -11324,12 +11679,22 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
       },
 
       syncInputs(uid, forceValue) {
-        const nodes = this.getNodes(uid);
+        const nodes = this.refreshNodes(uid);
         const meta = this.getMeta(uid);
         const force = !!forceValue;
 
+        fqdbg("syncInputs:start", uid, meta.kind, {
+          force: force,
+          locked: !!meta.locked
+        });
+
         if (meta.kind === "circle" && nodes.circleInput) {
           const parts = (this.circle[uid] && this.circle[uid].length) || meta.parts || 1;
+          fqdbg("syncInputs:circle", uid, {
+            domValue: nodes.circleInput.value,
+            targetValue: String(parts),
+            force: force
+          });
           if (force || String(nodes.circleInput.value) !== String(parts)) nodes.circleInput.value = String(parts);
           nodes.circleInput.disabled = !!meta.locked;
         }
@@ -11338,11 +11703,21 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
           const dims = this.rectDims[uid] || { rows: meta.rows || 1, cols: meta.cols || 1 };
 
           if (nodes.rowsInput) {
+            fqdbg("syncInputs:rectRows", uid, {
+              domValue: nodes.rowsInput.value,
+              targetValue: String(dims.rows),
+              force: force
+            });
             if (force || String(nodes.rowsInput.value) !== String(dims.rows)) nodes.rowsInput.value = String(dims.rows);
             nodes.rowsInput.disabled = !!meta.locked;
           }
 
           if (nodes.colsInput) {
+            fqdbg("syncInputs:rectCols", uid, {
+              domValue: nodes.colsInput.value,
+              targetValue: String(dims.cols),
+              force: force
+            });
             if (force || String(nodes.colsInput.value) !== String(dims.cols)) nodes.colsInput.value = String(dims.cols);
             nodes.colsInput.disabled = !!meta.locked;
           }
@@ -11350,9 +11725,16 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
       },
 
       syncDomState(uid) {
-        const nodes = this.getNodes(uid);
+        const nodes = this.refreshNodes(uid);
         const meta = this.getMeta(uid);
         const targets = [nodes.wrap, nodes.host, nodes.mount];
+
+        fqdbg("syncDomState", uid, {
+          kind: meta.kind,
+          locked: !!meta.locked,
+          solved: !!meta.solved,
+          revealed: !!meta.revealed
+        });
 
         for (let i = 0; i < targets.length; i++) {
           const el = targets[i];
@@ -11366,9 +11748,20 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
       },
 
       render(uid) {
-        const nodes = this.getNodes(uid);
+        const nodes = this.refreshNodes(uid);
         const meta = this.getMeta(uid);
-        if (!nodes.mount) return false;
+        if (!nodes.mount) {
+          fqdbg("render-skip-no-mount", uid, meta.kind);
+          return false;
+        }
+
+        fqdbg("render", uid, {
+          kind: meta.kind,
+          rectDims: this.rectDims[uid] || null,
+          circleLen: this.circle[uid] ? this.circle[uid].length : null,
+          selected: this.countSelected(uid)
+        });
+
         if (meta.kind === "circle") return this.renderCircle(uid, nodes.mount);
         if (meta.kind === "rect") return this.renderRect(uid, nodes.mount);
         return false;
@@ -11580,6 +11973,10 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
           if (!this._fqIsRevealButton(btn)) return;
           if (!meta.ready) return;
 
+          fqdbg("quiz-reveal-click", uid, {
+            label: this._fqLabelOf(btn)
+          });
+
           setTimeout(() => {
             this.markRevealed(uid);
           }, 0);
@@ -11591,7 +11988,10 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
         if (typeof MutationObserver !== "undefined") {
           obs = new MutationObserver(() => {
             if (!meta.ready || meta.revealed) return;
-            if (this._fqLooksRevealed(scope)) this.markRevealed(uid);
+            if (this._fqLooksRevealed(scope)) {
+              fqdbg("quiz-observer-detected-revealed", uid);
+              this.markRevealed(uid);
+            }
           });
 
           try {
@@ -11610,17 +12010,27 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
         nodes._quizScope = scope;
         nodes._quizClickHandler = clickHandler;
         nodes.observer = obs;
+
+        fqdbg("ensureQuizBridge", uid, {
+          scope: fqNodeLabel(scope)
+        });
       },
 
       onCheck(uid, passed) {
+        fqdbg("onCheck", uid, { passed: !!passed });
         if (passed) this.markSolved(uid);
         return !!passed;
       },
 
       onReveal(uid) {
+        fqdbg("onReveal", uid);
         return this.markRevealed(uid);
       }
     };
+
+    fqdbg("fraction-store-created");
+  } else {
+    fqdbg("fraction-store-reused");
   }
 
   ROOT.__LIA_FRACTION_QUIZ__ = ROOT[STORE_KEY];
@@ -13339,10 +13749,7 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
     <div id="fq-circle-mount-@0" class="fq-mount"></div>
 
     <div id="fq-circle-range-@0" class="fq-range" data-label="Unterteilungen">
-      <script run-once modify="false" input="range" output="fq-c-n-@0"
-              value="1" min="1" max="32" input-always-active>
-@input
-      </script>
+<input type="range" min="1" max="20" value="1">
     </div>
   </div>
 
@@ -13436,17 +13843,11 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
     <div id="fq-rect-mount-@0" class="fq-mount"></div>
 
     <div id="fq-rect-rows-wrap-@0" class="fq-range" data-label="vertikal">
-      <script run-once modify="false" input="range" output="fq-r-rows-@0"
-              value="1" min="1" max="20" input-always-active>
-@input
-      </script>
+<input type="range" min="1" max="20" value="1">
     </div>
 
     <div id="fq-rect-cols-wrap-@0" class="fq-range" data-label="horizontal">
-      <script run-once modify="false" input="range" output="fq-r-cols-@0"
-              value="1" min="1" max="20" input-always-active>
-@input
-      </script>
+<input type="range" min="1" max="20" value="1">
     </div>
   </div>
 
