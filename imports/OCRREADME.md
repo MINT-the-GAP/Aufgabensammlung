@@ -763,6 +763,22 @@ function ensureMountUID(mount){
   return uid;
 }
 
+function __liaDispatchCanvasFreezeChange(detail){
+  try{
+    const payload = Object.assign(
+      { ts: Date.now() },
+      (detail && typeof detail === 'object') ? detail : {}
+    );
+
+    const target = (ROOT && typeof ROOT.dispatchEvent === 'function')
+      ? ROOT
+      : window;
+
+    target.dispatchEvent(new CustomEvent('lia:canvas-change', {
+      detail: payload
+    }));
+  }catch(_){}
+}
 
   // =========================================================
   // CSS-Fallback: falls @style aus Import nicht greift → injizieren
@@ -2899,6 +2915,22 @@ function setupCanvas(canvas){
 
   const VIEW = saved && saved.VIEW ? { ...saved.VIEW } : { panX:0, panY:0, scale:1, minScale:0.25, maxScale:8 };
 
+  let __liaCanvasFreezeNotifyTimer = 0;
+  let __liaCanvasFreezeNotifyArmed = false;
+
+  function scheduleCanvasFreezeNotify(reason){
+    if (!uid) return;
+    if (!__liaCanvasFreezeNotifyArmed) return;
+
+    clearTimeout(__liaCanvasFreezeNotifyTimer);
+    __liaCanvasFreezeNotifyTimer = setTimeout(() => {
+      __liaDispatchCanvasFreezeChange({
+        uid: uid,
+        reason: String(reason || 'persist'),
+        hasItems: (Array.isArray(ITEMS) && ITEMS.length > 0) ? 1 : 0
+      });
+    }, 120);
+  }
 
   // --- Action-Button (erscheint nach Rechteck-Commit) ---
     // ---------------------------------------------------------
@@ -3267,6 +3299,83 @@ function __ocrIsAllDigits(s){
   }
   return true;
 }
+
+
+function __ocrMathLooksIncomplete(s){
+  const t = String(s || '').trim();
+  if (!t) return true;
+
+  // endet auf typischen "abgeschnittenen" Zeichen
+  if (/[+\-*/=,:;\\]$/.test(t)) return true;
+  if (/[{[(]$/.test(t)) return true;
+
+  let curly = 0;
+  let square = 0;
+  let round = 0;
+  let escaped = false;
+
+  for (let i = 0; i < t.length; i++){
+    const ch = t[i];
+
+    if (escaped){
+      escaped = false;
+      continue;
+    }
+
+    if (ch === '\\'){
+      escaped = true;
+      continue;
+    }
+
+    if (ch === '{') curly++;
+    else if (ch === '}') curly--;
+
+    else if (ch === '[') square++;
+    else if (ch === ']') square--;
+
+    else if (ch === '(') round++;
+    else if (ch === ')') round--;
+  }
+
+  if (curly !== 0) return true;
+  if (square !== 0) return true;
+  if (round !== 0) return true;
+
+  return false;
+}
+
+function __ocrShouldPreferDigits(ink, crop){
+  if (!ink || !crop) return false;
+
+  const cropW = Math.max(1, crop.width  | 0);
+  const cropH = Math.max(1, crop.height | 0);
+
+  const w = Math.max(1, ink.w | 0);
+  const h = Math.max(1, ink.h | 0);
+  const longSide = Math.max(w, h);
+  const shortSide = Math.min(w, h);
+  const ar = w / Math.max(1, h);
+  const fill = (Number(ink.black || 0) || 0) / Math.max(1, w * h);
+
+  // sehr konservativ:
+  // nur kleine, kompakte Einzel-/Kurztoken sollen in den Digit-Pfad
+  if (longSide > 220) return false;
+  if (shortSide > 170) return false;
+
+  // typische Form für 1 bis wenige Ziffern
+  if (ar < 0.20 || ar > 2.80) return false;
+
+  // zu leer oder zu voll => eher kein sauberer Ziffern-Token
+  if (fill < 0.01 || fill > 0.60) return false;
+
+  // wenn der Inhalt schon recht groß ist, lieber normaler Math-Pfad
+  if (w > Math.floor(cropW * 0.82) && h > Math.floor(cropH * 0.82) && longSide > 140){
+    return false;
+  }
+
+  return true;
+}
+
 
 // sehr konservativ: akzeptiert nur (gemappte) Ziffern, sonst null
 function __ocrDigitCandidateFrom(txt){
@@ -3638,15 +3747,8 @@ async function __ocrFromMarkedRect({ auto=false } = {}){
     // Ink-Box statt Crop-Box
     const ink = __ocrInkBBoxQuick(crop);
 
-    // Fallback, falls leer
-    const arInk  = ink ? (ink.w / Math.max(1, ink.h)) : (cropW / Math.max(1, cropH));
-    const maxInk = ink ? Math.max(ink.w, ink.h) : Math.max(cropW, cropH);
-
-    // Sehr viel toleranter: Einzelziffern sind fast immer „klein“ in der Ink-Box,
-    // selbst wenn das Marker-Rechteck riesig war.
-    const preferDigits =
-      (maxInk <= 560) &&
-      (arInk >= 0.16) && (arInk <= 6.0);
+    // sehr konservativ: nur echte Kurz-/Ziffern-Tokens
+    const preferDigits = __ocrShouldPreferDigits(ink, crop);
 
 
     const modelName = String(engine.model || '');
@@ -3654,12 +3756,11 @@ async function __ocrFromMarkedRect({ auto=false } = {}){
 
 
 
-      // 1x OCR (kein Multi-Voting mehr)
+      // 1x OCR mit möglichem Fallback aus dem Digit-Pfad in den normalen Math-Pfad
 
-      // Preprocess-Input vorbereiten (wichtig: img war nie definiert)
       let inputCanvas = crop;
+      let raw = '';
 
-      // Für "Digits/Symbole" das Digit-Preprocessing nutzen, sonst dein Standard-Preprocessing
       try{
         if (preferDigits){
           inputCanvas = __ocrPreprocessDigitCanvas(crop, { dilate: 0 });
@@ -3667,21 +3768,60 @@ async function __ocrFromMarkedRect({ auto=false } = {}){
           inputCanvas = __ocrPreprocessCanvas(crop);
         }
       }catch(_){
-        inputCanvas = crop; // fallback
+        inputCanvas = crop;
       }
 
-      // Optional: normalize (kleine Ausschnitte hochskalieren)
       try{
         inputCanvas = __ocrNormalizeSize(inputCanvas);
       }catch(_){}
 
-      // OCR
-      const raw = await engine.recognize(
+      raw = await engine.recognize(
         inputCanvas,
         preferDigits
           ? { max_new_tokens: 16,  do_sample:false, temperature:0 }
           : { max_new_tokens: 128, do_sample:false, temperature:0 }
       );
+
+      // Falls der Digit-Pfad versehentlich auf einen echten Math-Term angewendet wurde,
+      // dann wirkt die Ausgabe oft "plötzlich abgeschnitten".
+      // In diesem Fall rechnen wir einmal sauber im normalen Math-Pfad nach.
+      if (preferDigits){
+        const rawTrim = String(raw || '').trim();
+        const looksMathy =
+          rawTrim.indexOf('\\') !== -1 ||
+          rawTrim.indexOf('{') !== -1 ||
+          rawTrim.indexOf('}') !== -1 ||
+          rawTrim.indexOf('^') !== -1 ||
+          rawTrim.indexOf('_') !== -1 ||
+          rawTrim.indexOf('sqrt') !== -1 ||
+          rawTrim.indexOf('frac') !== -1;
+
+        if (looksMathy || __ocrMathLooksIncomplete(rawTrim)){
+          let retryCanvas = crop;
+
+          try{
+            retryCanvas = __ocrPreprocessCanvas(crop, {
+              pad: 24,
+              threshold: 205,
+              dilateIters: 0,
+              target: 640,
+              minScale: 0.85,
+              maxScale: 4.0
+            });
+          }catch(_){
+            retryCanvas = crop;
+          }
+
+          try{
+            retryCanvas = __ocrNormalizeSize(retryCanvas);
+          }catch(_){}
+
+          raw = await engine.recognize(
+            retryCanvas,
+            { max_new_tokens: 128, do_sample:false, temperature:0 }
+          );
+        }
+      }
 
 
 
@@ -3853,7 +3993,7 @@ async function __ocrFromMarkedRect({ auto=false } = {}){
   let currentPath = null;
   let currentRect = null;
 
-  function persist(){
+  function persist(reason){
     if (!uid) return;
     STORE[uid] = {
       VIEW: { ...VIEW },
@@ -3864,6 +4004,8 @@ async function __ocrFromMarkedRect({ auto=false } = {}){
       wrapW: wrap.getBoundingClientRect().width,
       canvasH: canvas.clientHeight
     };
+
+    scheduleCanvasFreezeNotify(reason || 'persist');
   }
 
   function penBaseColor(){
@@ -5088,6 +5230,8 @@ ensureCorners();
 
   // ---- Trash (dein buildEraserMenu nutzt clearAllDrawing)
   // Wichtig: buildEraserMenu() muss weiterhin clearAllDrawing() aufrufen (wie vorher).
+
+  __liaCanvasFreezeNotifyArmed = true;
 }
 
 

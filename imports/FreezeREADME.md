@@ -1127,6 +1127,7 @@ function applySnapshotToCurrentVisibleHost(reason) {
   applyStoredOrthographyStatesToHost(host, slide.o || []);
   applyStoredFractionStatesToHost(host, slide.fq || []);
   applyStoredMarkerQuizStatesToHost(host, slide.mq || []);
+  applyStoredCanvasStatesToHost(host, slide.cv || []);
   applyStoredGeneralMarkerState(slide.gm || null);
 
   reinforceFrozenUi();
@@ -3066,6 +3067,7 @@ function makeEmptySlideState(hash) {
     o: [],
     fq: [],
     mq: [],
+    cv: [],
     gm: {
       h: []
     }
@@ -6365,6 +6367,11 @@ function countExpectedControls(slide) {
     n += slide.mq.length;
   }
 
+  if (slide && Array.isArray(slide.cv)) {
+    n += slide.cv.length;
+  }
+
+
   return n;
 }
 
@@ -6381,7 +6388,8 @@ function countLiveSupportedControlsForHash(hash) {
     getChoiceQuizInputsFromRoot(host).length +
     collectOrthographyQuizRootsFromRoot(host).length +
     collectFractionQuizRootsFromRoot(host).length +
-    collectMarkerQuizRootsFromRoot(host).length
+    collectMarkerQuizRootsFromRoot(host).length +
+    collectCanvasFreezePairsFromRoot(host).length
   );
 }
 
@@ -6682,6 +6690,7 @@ function reapplySnapshotSilently(hash, reason) {
   applyStoredOrthographyStatesToHost(host, slide.o || []);
   applyStoredFractionStatesToHost(host, slide.fq || []);
   applyStoredMarkerQuizStatesToHost(host, slide.mq || []);
+  applyStoredCanvasStatesToHost(host, slide.cv || []);
   applyStoredGeneralMarkerState(slide.gm || null);
 
   reinforceFrozenUi();
@@ -6722,6 +6731,144 @@ function reapplySnapshotSilently(hash, reason) {
   // Snapshot-Daten
   // =========================================================
 
+  // =========================================================
+  // Canvas Freeze API
+  // =========================================================
+
+  function getCanvasFreezeRootWindow() {
+    let w = window;
+    try {
+      while (w.parent && w.parent !== w) w = w.parent;
+    } catch (e) {}
+    return w;
+  }
+
+  function getCanvasFreezeApi() {
+    const root = getCanvasFreezeRootWindow();
+    return (
+      (root && root.__LIA_CANVAS_FREEZE_API__) ||
+      window.__LIA_CANVAS_FREEZE_API__ ||
+      null
+    );
+  }
+
+  function collectCanvasFreezePairsFromRoot(root) {
+    const api = getCanvasFreezeApi();
+    if (!api || typeof api.collectCanvasPairsFromRoot !== "function") return [];
+
+    const pairs = api.collectCanvasPairsFromRoot(root || document.body) || [];
+    return uniqueElements(pairs.filter(function (el) {
+      return !!(el && el instanceof Element);
+    }));
+  }
+
+  function getCanvasFreezeUidFromPair(pair) {
+    const api = getCanvasFreezeApi();
+    if (!api || typeof api.getCanvasUidFromPair !== "function") return "";
+    return String(api.getCanvasUidFromPair(pair) || "");
+  }
+
+function captureCanvasFreezeStatesFromRoot(root) {
+  const api = getCanvasFreezeApi();
+  if (!api || typeof api.exportCanvasFreezeStateFromPair !== "function") {
+    return [];
+  }
+
+  const pairs = collectCanvasFreezePairsFromRoot(root);
+  const out = [];
+
+  pairs.forEach(function (pair) {
+    if (!pair || !(pair instanceof Element)) return;
+    if (pair.closest("#lia-freeze-bar")) return;
+    if (pair.closest(".lia-submit-box")) return;
+
+    const uid = getCanvasFreezeUidFromPair(pair);
+    if (!uid) return;
+
+    const entry = (typeof api.getCanvasStoreEntry === "function")
+      ? api.getCanvasStoreEntry(uid)
+      : null;
+
+    // Nur wirklich benutzte Canvas übernehmen:
+    // aktuelle Heuristik = es gibt mindestens ein Item => Undo wäre möglich
+    if (!entry || !Array.isArray(entry.ITEMS) || entry.ITEMS.length === 0) {
+      return;
+    }
+
+    const state = api.exportCanvasFreezeStateFromPair(pair);
+    if (!state) return;
+
+    out.push(state);
+  });
+
+  return out;
+}
+
+  function applyStoredCanvasStatesToHost(host, storedStates) {
+    const api = getCanvasFreezeApi();
+    if (!api || typeof api.renderCanvasFreezeStateIntoPair !== "function") {
+      return [];
+    }
+
+    const livePairs = host ? collectCanvasFreezePairsFromRoot(host) : [];
+    const states = Array.isArray(storedStates) ? storedStates : [];
+    const used = new Set();
+    const applied = [];
+
+    log(
+      "canvas-apply-live",
+      "live=" + livePairs.length,
+      livePairs.map(function (pair, idx) {
+        return "[" + idx + "] " + JSON.stringify(getCanvasFreezeUidFromPair(pair));
+      }).join(" || ")
+    );
+
+    log(
+      "canvas-apply-stored",
+      "stored=" + states.length,
+      states.map(function (state, idx) {
+        return "[" + idx + "] " + JSON.stringify(state && state.u || "");
+      }).join(" || ")
+    );
+
+    states.forEach(function (state, idx) {
+      let target = null;
+      const wantedUid = normalizeSpace(state && state.u || "");
+
+      if (wantedUid) {
+        for (let i = 0; i < livePairs.length; i++) {
+          if (used.has(livePairs[i])) continue;
+          if (getCanvasFreezeUidFromPair(livePairs[i]) === wantedUid) {
+            target = livePairs[i];
+            break;
+          }
+        }
+      }
+
+      if (!target) {
+        if (idx >= 0 && idx < livePairs.length && !used.has(livePairs[idx])) {
+          target = livePairs[idx];
+        }
+      }
+
+      if (!target) {
+        log("canvas-match-miss", "storedIdx=" + idx, "uid=" + JSON.stringify(wantedUid));
+        return;
+      }
+
+      used.add(target);
+      api.renderCanvasFreezeStateIntoPair(target, state);
+      applied.push(target);
+    });
+
+    return applied;
+  }
+
+
+
+
+
+
 function captureSlideStateForHash(hash) {
   const cleanHash = cleanHashValue(hash || "");
   if (!/^#\d+$/.test(cleanHash)) return null;
@@ -6746,6 +6893,7 @@ function captureSlideStateForHash(hash) {
   const orthoRoots = collectOrthographyQuizRootsFromRoot(host);
   const fractionRoots = collectFractionQuizRootsFromRoot(host);
   const markerRoots = collectMarkerQuizRootsFromRoot(host);
+  const canvasStates = captureCanvasFreezeStatesFromRoot(host);
   const generalMarkerState = captureGeneralMarkerState(host);
 
   const ordered = [];
@@ -6819,6 +6967,7 @@ function captureSlideStateForHash(hash) {
     o: [],
     fq: [],
     mq: [],
+    cv: canvasStates,
     gm: generalMarkerState
   };
 
@@ -6849,6 +6998,7 @@ function captureSlideStateForHash(hash) {
     "ortho=" + out.o.length,
     "fraction=" + out.fq.length,
     "marker=" + out.mq.length,
+    "canvas=" + out.cv.length,
     "general-marker=" + (
       out.gm && Array.isArray(out.gm.h)
         ? out.gm.h.length
@@ -6878,6 +7028,7 @@ function storeLiveSlideState(hash, source) {
     "ortho=" + (state.o ? state.o.length : 0),
     "fraction=" + (state.fq ? state.fq.length : 0),
     "marker=" + (state.mq ? state.mq.length : 0),
+    "canvas=" + (state.cv ? state.cv.length : 0),
     "general-marker=" + (
       state.gm && Array.isArray(state.gm.h)
         ? state.gm.h.length
@@ -7574,6 +7725,7 @@ async function applySnapshotOnce(hash, reason) {
     const appliedOrtho = applyStoredOrthographyStatesToHost(host, slide.o || []);
     const appliedFraction = applyStoredFractionStatesToHost(host, slide.fq || []);
     const appliedMarker = applyStoredMarkerQuizStatesToHost(host, slide.mq || []);
+    const appliedCanvas = applyStoredCanvasStatesToHost(host, slide.cv || []);
     applyStoredGeneralMarkerState(slide.gm || null);
 
     const expectedText = Array.isArray(slide.q) ? slide.q.length : 0;
@@ -7583,6 +7735,7 @@ async function applySnapshotOnce(hash, reason) {
     const expectedOrtho = Array.isArray(slide.o) ? slide.o.length : 0;
     const expectedFraction = Array.isArray(slide.fq) ? slide.fq.length : 0;
     const expectedMarker = Array.isArray(slide.mq) ? slide.mq.length : 0;
+    const expectedCanvas = Array.isArray(slide.cv) ? slide.cv.length : 0;
 
     if (expectedText > 0 && (!appliedText || appliedText.length < expectedText)) {
       warn("apply-partial-text", currentHash, "expected=" + expectedText, "applied=" + (appliedText ? appliedText.length : 0));
@@ -7616,6 +7769,11 @@ async function applySnapshotOnce(hash, reason) {
 
     if (expectedMarker > 0 && (!appliedMarker || appliedMarker.length < expectedMarker)) {
       warn("apply-partial-marker", currentHash, "expected=" + expectedMarker, "applied=" + (appliedMarker ? appliedMarker.length : 0));
+      return false;
+    }
+
+    if (expectedCanvas > 0 && (!appliedCanvas || appliedCanvas.length < expectedCanvas)) {
+      warn("apply-partial-canvas", currentHash, "expected=" + expectedCanvas, "applied=" + (appliedCanvas ? appliedCanvas.length : 0));
       return false;
     }
   }
@@ -8300,6 +8458,22 @@ function installLiveCaptureBindings() {
     }, 100);
   }, true);
 
+  uniqueElements([window, getRootWindowSafe()]).forEach(function (target) {
+    if (!target || !target.addEventListener) return;
+
+    target.addEventListener("lia:canvas-change", function (ev) {
+      if (document.body.classList.contains("lia-snapshot-mode")) return;
+
+      setTimeout(function () {
+        captureAdminState();
+        storeLiveSlideState(
+          liveRouteCurrentHash || getCurrentHash(),
+          "canvas-change"
+        );
+      }, 40);
+    }, true);
+  });
+
   document.addEventListener("drop", function (e) {
     const t = e.target;
     if (!(t instanceof HTMLElement)) return;
@@ -8729,11 +8903,11 @@ Aufgaben ohne Bewertung: \
 
 # Erste Folie
 
-$a)\;\;$ $7000+123=$ [[  7123  ]]
+$a)\;\;$ $7000+123=$ [[  7123  ]] @canvas
 
 @ADetails(1=BE;Addition)
 
-$b)\;\;$ $6000+123=$ [[  6123  ]] m
+$b)\;\;$ $6000+123=$ [[  6123  ]] m @canvas
 
 @ADetails(1=BE;Einheiten,Addition)
 
@@ -8763,7 +8937,7 @@ Wähle gelb aus.
 # 2. Folie
 
 
-$c)\;\;$ $5000+123=$ [[  5123  ]]
+$c)\;\;$ $5000+123=$ [[  5123  ]] @canvas
 
 @ADetails(1=BE;Addition)
 
@@ -8899,6 +9073,8 @@ __$c)\;\;$__ $\dfrac{1}{3}$
 # Markerquiz
 
 
+
+
 Markiere die korrekt.
 
 <div class="markerquiz">
@@ -8915,6 +9091,10 @@ Kommentare werden auch eingefroren
 @ADetails(0=BE)
 
 [[___ ___ ___ ___]]
+
+@ADetails(0=BE)
+
+Einfach noch ein KaTeX-Testfeld: [[     passt     ]]  @canvas
 
 @ADetails(0=BE)
 
