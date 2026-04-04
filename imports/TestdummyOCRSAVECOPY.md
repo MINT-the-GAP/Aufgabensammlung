@@ -818,22 +818,6 @@ canvas.lia-draw{
   border-radius: 8px;
 }
 
-canvas.lia-canvas-freeze-preview{
-  width: 100%;
-  height: auto;
-  display: block;
-  background: transparent;
-  border-radius: 8px;
-  cursor: default;
-  touch-action: auto;
-}
-
-.lia-canvas-freeze-empty{
-  padding: 12px 14px;
-  font-weight: 700;
-  opacity: 0.75;
-}
-
 .lia-toolstack{
   position: absolute;
   left: 10px;
@@ -1168,27 +1152,6 @@ canvas.lia-canvas-freeze-preview{
 
 .lia-rect-close:active{
   transform: translateY(1px);
-}
-
-.lia-eraser-ring{
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 12px;
-  height: 12px;
-  border-radius: 999px;
-  box-sizing: border-box;
-  border: 2px solid var(--canvas-accent);
-  background: transparent;
-  box-shadow: 0 0 0 1px var(--canvas-border);
-  pointer-events: none;
-  display: none;
-  z-index: 58;
-  transform: translate(-50%, -50%);
-}
-
-.lia-eraser-ring[data-on="1"]{
-  display: block;
 }
 
 /* OCR */
@@ -2173,596 +2136,6 @@ function __liaInitTexPreviews(){
     return `rgba(0,0,0,${a})`;
   }
 
-
-  // -----------------------------
-  // Canvas Freeze API
-  // - exportiert den final sichtbaren Canvas-Zustand
-  // - rendert daraus eine statische Frozen-Preview
-  // - noch OHNE Eingriff in den Freeze-Code
-  // -----------------------------
-  function cfNum(v, fallback){
-    const n = Number(v);
-    return isFinite(n) ? n : (fallback || 0);
-  }
-
-  function cfClamp(v, a, b){
-    return Math.max(a, Math.min(b, v));
-  }
-
-  function cfRound(v){
-    return Math.round(cfNum(v, 0) * 100) / 100;
-  }
-
-  function cfMod(v, m){
-    const mm = cfNum(m, 0);
-    if (!(mm > 0)) return 0;
-    const x = cfNum(v, 0) % mm;
-    return x < 0 ? (x + mm) : x;
-  }
-
-  function cfCloneView(view){
-    const src = (view && typeof view === 'object') ? view : {};
-    return {
-      panX: cfNum(src.panX, 0),
-      panY: cfNum(src.panY, 0),
-      scale: cfNum(src.scale, 1) || 1,
-      minScale: cfNum(src.minScale, 0.25),
-      maxScale: cfNum(src.maxScale, 8)
-    };
-  }
-
-  function cfProjectWorldPoint(pt, view){
-    const x = cfNum(pt && pt.x, 0);
-    const y = cfNum(pt && pt.y, 0);
-    const s = cfNum(view && view.scale, 1) || 1;
-    const px = x * s + cfNum(view && view.panX, 0);
-    const py = y * s + cfNum(view && view.panY, 0);
-    return { x:px, y:py };
-  }
-
-  function cfNormalizeRect(x0, y0, x1, y1){
-    const left = Math.min(cfNum(x0, 0), cfNum(x1, 0));
-    const top  = Math.min(cfNum(y0, 0), cfNum(y1, 0));
-    const right  = Math.max(cfNum(x0, 0), cfNum(x1, 0));
-    const bottom = Math.max(cfNum(y0, 0), cfNum(y1, 0));
-
-    return {
-      x: left,
-      y: top,
-      w: Math.max(0, right - left),
-      h: Math.max(0, bottom - top)
-    };
-  }
-
-  function cfBBoxFromScreenPoints(points, radius){
-    const pts = Array.isArray(points) ? points : [];
-    if (!pts.length) return null;
-
-    let xMin = Infinity, yMin = Infinity, xMax = -Infinity, yMax = -Infinity;
-
-    for (let i = 0; i < pts.length; i++){
-      const p = pts[i];
-      const x = cfNum(p && p.x, 0);
-      const y = cfNum(p && p.y, 0);
-
-      if (x < xMin) xMin = x;
-      if (y < yMin) yMin = y;
-      if (x > xMax) xMax = x;
-      if (y > yMax) yMax = y;
-    }
-
-    const r = Math.max(0, cfNum(radius, 0));
-
-    return {
-      x: xMin - r,
-      y: yMin - r,
-      w: Math.max(0, (xMax - xMin) + 2 * r),
-      h: Math.max(0, (yMax - yMin) + 2 * r)
-    };
-  }
-
-  function cfIntersectViewport(bb, vw, vh){
-    if (!bb) return null;
-
-    const x0 = Math.max(0, cfNum(bb.x, 0));
-    const y0 = Math.max(0, cfNum(bb.y, 0));
-    const x1 = Math.min(cfNum(vw, 0), cfNum(bb.x, 0) + cfNum(bb.w, 0));
-    const y1 = Math.min(cfNum(vh, 0), cfNum(bb.y, 0) + cfNum(bb.h, 0));
-
-    if (x1 <= x0 || y1 <= y0) return null;
-
-    return {
-      x: x0,
-      y: y0,
-      w: x1 - x0,
-      h: y1 - y0
-    };
-  }
-
-  function cfUnionBBox(a, b){
-    if (!a) return b ? { x:b.x, y:b.y, w:b.w, h:b.h } : null;
-    if (!b) return { x:a.x, y:a.y, w:a.w, h:a.h };
-
-    const x0 = Math.min(a.x, b.x);
-    const y0 = Math.min(a.y, b.y);
-    const x1 = Math.max(a.x + a.w, b.x + b.w);
-    const y1 = Math.max(a.y + a.h, b.y + b.h);
-
-    return {
-      x: x0,
-      y: y0,
-      w: Math.max(0, x1 - x0),
-      h: Math.max(0, y1 - y0)
-    };
-  }
-
-  function cfGetCanvasStore(){
-    return window.__LIA_CANVAS_STORE__ || {};
-  }
-
-  function cfGetCanvasMountFromPair(pair){
-    if (!pair || !pair.querySelector) return null;
-    return pair.querySelector('.lia-canvas-mount');
-  }
-
-  function cfGetCanvasUidFromPair(pair){
-    const mount = cfGetCanvasMountFromPair(pair);
-    if (!mount) return '';
-    return ensureMountUID(mount);
-  }
-
-  function cfGetCanvasStoreEntry(uid){
-    const STORE = cfGetCanvasStore();
-    return uid && STORE[uid] ? STORE[uid] : null;
-  }
-
-  function cfCollectCanvasPairsFromRoot(root){
-    const scope = (root && root.querySelectorAll) ? root : document;
-    return Array.from(scope.querySelectorAll('.lia-canvas-pair')).filter(function(pair){
-      return !!cfGetCanvasMountFromPair(pair);
-    });
-  }
-
-  function cfBuildScreenItemsFromEntry(entry){
-    const src = (entry && typeof entry === 'object') ? entry : {};
-    const items = Array.isArray(src.ITEMS) ? src.ITEMS : [];
-    const view = cfCloneView(src.VIEW || {});
-    const vw = Math.max(1, Math.round(cfNum(src.wrapW, 0)));
-    const vh = Math.max(1, Math.round(cfNum(src.canvasH, 0)));
-
-    const rectFillDefault = rgbaFromAny(getAccentColor(), 0.28);
-    const out = [];
-
-    for (let i = 0; i < items.length; i++){
-      const it = items[i];
-      if (!it || typeof it !== 'object') continue;
-
-      if (it.kind === 'path'){
-        const ptsSrc = Array.isArray(it.points) ? it.points : [];
-        if (!ptsSrc.length) continue;
-
-        const pts = ptsSrc.map(function(p){
-          const q = cfProjectWorldPoint(p, view);
-          return { x:q.x, y:q.y };
-        });
-
-        const screenWidth = Math.max(0.75, cfNum(it.width, 1) * cfNum(view.scale, 1));
-        const bb = cfBBoxFromScreenPoints(pts, screenWidth / 2 + 2);
-        const vis = cfIntersectViewport(bb, vw, vh);
-        if (!vis) continue;
-
-        out.push({
-          k: (it.tool === 'eraser') ? 'e' : 'p',
-          c: String(it.color || getAutoPen()),
-          a: cfClamp(cfNum(it.alpha, 1), 0, 1),
-          w: cfRound(screenWidth),
-          p: pts.map(function(p){
-            return [cfRound(p.x), cfRound(p.y)];
-          })
-        });
-
-        continue;
-      }
-
-      if (it.kind === 'rect'){
-        const a = cfProjectWorldPoint({ x:it.x0, y:it.y0 }, view);
-        const b = cfProjectWorldPoint({ x:it.x1, y:it.y1 }, view);
-
-        const bb = cfNormalizeRect(a.x, a.y, b.x, b.y);
-        const vis = cfIntersectViewport(bb, vw, vh);
-        if (!vis) continue;
-
-        const alpha = cfClamp(cfNum(it.alpha, 0.28), 0, 1);
-        const fill = (it.color)
-          ? rgbaFromAny(it.color, alpha)
-          : rgbaFromAny(getAccentColor(), alpha);
-
-        out.push({
-          k: 'r',
-          f: fill || rectFillDefault,
-          x: cfRound(bb.x),
-          y: cfRound(bb.y),
-          w: cfRound(bb.w),
-          h: cfRound(bb.h)
-        });
-
-        continue;
-      }
-    }
-
-    return {
-      vw: vw,
-      vh: vh,
-      items: out
-    };
-  }
-
-  function cfPaintFreezeItems(ctx, items){
-    const list = Array.isArray(items) ? items : [];
-
-    for (let i = 0; i < list.length; i++){
-      const it = list[i];
-      if (!it) continue;
-
-      if (it.k === 'r'){
-        ctx.save();
-        ctx.globalCompositeOperation = 'source-over';
-        ctx.globalAlpha = 1;
-        ctx.fillStyle = String(it.f || 'rgba(0,0,0,0.15)');
-        ctx.fillRect(
-          cfNum(it.x, 0),
-          cfNum(it.y, 0),
-          Math.max(0, cfNum(it.w, 0)),
-          Math.max(0, cfNum(it.h, 0))
-        );
-        ctx.restore();
-        continue;
-      }
-
-      const pts = Array.isArray(it.p) ? it.p : [];
-      if (!pts.length) continue;
-
-      ctx.save();
-      ctx.beginPath();
-      ctx.moveTo(cfNum(pts[0][0], 0), cfNum(pts[0][1], 0));
-
-      for (let j = 1; j < pts.length; j++){
-        ctx.lineTo(cfNum(pts[j][0], 0), cfNum(pts[j][1], 0));
-      }
-
-      ctx.lineCap = 'round';
-      ctx.lineJoin = 'round';
-      ctx.lineWidth = Math.max(0.75, cfNum(it.w, 1));
-
-      if (it.k === 'e'){
-        ctx.globalCompositeOperation = 'destination-out';
-        ctx.globalAlpha = 1;
-        ctx.strokeStyle = 'rgba(0,0,0,1)';
-      }else{
-        ctx.globalCompositeOperation = 'source-over';
-        ctx.globalAlpha = cfClamp(cfNum(it.a, 1), 0, 1);
-        ctx.strokeStyle = String(it.c || '#000');
-      }
-
-      ctx.stroke();
-      ctx.restore();
-    }
-  }
-
-  function cfComputeAlphaBBox(canvas, pad){
-    if (!canvas) return null;
-
-    const x = canvas.getContext('2d', { willReadFrequently:true });
-    const W = canvas.width | 0;
-    const H = canvas.height | 0;
-    if (!(W > 0 && H > 0)) return null;
-
-    const img = x.getImageData(0, 0, W, H);
-    const d = img.data;
-
-    let xMin = W, yMin = H, xMax = -1, yMax = -1;
-
-    for (let y = 0; y < H; y++){
-      const row = y * W * 4;
-      for (let x0 = 0; x0 < W; x0++){
-        const a = d[row + x0 * 4 + 3];
-        if (a <= 10) continue;
-
-        if (x0 < xMin) xMin = x0;
-        if (y < yMin) yMin = y;
-        if (x0 > xMax) xMax = x0;
-        if (y > yMax) yMax = y;
-      }
-    }
-
-    if (xMax < 0) return null;
-
-    const p = Math.max(0, Math.round(cfNum(pad, 0)));
-
-    xMin = Math.max(0, xMin - p);
-    yMin = Math.max(0, yMin - p);
-    xMax = Math.min(W - 1, xMax + p);
-    yMax = Math.min(H - 1, yMax + p);
-
-    return {
-      x: xMin,
-      y: yMin,
-      w: Math.max(1, xMax - xMin + 1),
-      h: Math.max(1, yMax - yMin + 1)
-    };
-  }
-
-  function cfRebaseFreezeItems(items, crop){
-    const list = Array.isArray(items) ? items : [];
-    const dx = cfNum(crop && crop.x, 0);
-    const dy = cfNum(crop && crop.y, 0);
-
-    return list.map(function(it){
-      if (!it) return null;
-
-      if (it.k === 'r'){
-        return {
-          k: 'r',
-          f: String(it.f || ''),
-          x: cfRound(cfNum(it.x, 0) - dx),
-          y: cfRound(cfNum(it.y, 0) - dy),
-          w: cfRound(cfNum(it.w, 0)),
-          h: cfRound(cfNum(it.h, 0))
-        };
-      }
-
-      return {
-        k: it.k === 'e' ? 'e' : 'p',
-        c: String(it.c || ''),
-        a: cfClamp(cfNum(it.a, 1), 0, 1),
-        w: cfRound(cfNum(it.w, 1)),
-        p: (Array.isArray(it.p) ? it.p : []).map(function(pt){
-          return [
-            cfRound(cfNum(pt && pt[0], 0) - dx),
-            cfRound(cfNum(pt && pt[1], 0) - dy)
-          ];
-        })
-      };
-    }).filter(Boolean);
-  }
-
-  function cfBuildBackgroundRecipe(entry, crop){
-    const src = (entry && typeof entry === 'object') ? entry : {};
-    const view = cfCloneView(src.VIEW || {});
-    const mode = String(src.bgMode || 'none');
-
-    if (mode !== 'grid' && mode !== 'lined'){
-      return { m:'none' };
-    }
-
-    const stepWorld = Math.max(1, cfNum(src.bgStep, 24));
-    const stepPx = stepWorld * Math.max(0.0001, cfNum(view.scale, 1));
-
-    if (!(stepPx > 0)){
-      return { m:'none' };
-    }
-
-    const cropX = cfNum(crop && crop.x, 0);
-    const cropY = cfNum(crop && crop.y, 0);
-
-    return {
-      m: mode,
-      s: cfRound(stepPx),
-      ox: cfRound(cfMod(cfNum(view.panX, 0) - cropX, stepPx)),
-      oy: cfRound(cfMod(cfNum(view.panY, 0) - cropY, stepPx)),
-      c: rgbaFromAny(getAccentColor(), 0.65),
-      lw: 1.125
-    };
-  }
-
-  function cfPaintBackground(ctx, bg, w, h){
-    const spec = (bg && typeof bg === 'object') ? bg : {};
-    const mode = String(spec.m || 'none');
-    if (mode !== 'grid' && mode !== 'lined') return;
-
-    const step = Math.max(1, cfNum(spec.s, 1));
-    const ox = cfMod(cfNum(spec.ox, 0), step);
-    const oy = cfMod(cfNum(spec.oy, 0), step);
-    const col = String(spec.c || rgbaFromAny(getAccentColor(), 0.65));
-    const lw = Math.max(0.5, cfNum(spec.lw, 1.125));
-
-    ctx.save();
-    ctx.globalCompositeOperation = 'source-over';
-    ctx.globalAlpha = 1;
-    ctx.strokeStyle = col;
-    ctx.lineWidth = lw;
-
-    if (mode === 'grid'){
-      ctx.beginPath();
-
-      for (let x = ox; x <= w; x += step){
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, h);
-      }
-
-      for (let y = oy; y <= h; y += step){
-        ctx.moveTo(0, y);
-        ctx.lineTo(w, y);
-      }
-
-      ctx.stroke();
-      ctx.restore();
-      return;
-    }
-
-    if (mode === 'lined'){
-      ctx.beginPath();
-
-      for (let y = oy; y <= h; y += step){
-        ctx.moveTo(0, y);
-        ctx.lineTo(w, y);
-      }
-
-      ctx.stroke();
-      ctx.restore();
-    }
-  }
-
-  function cfExportCanvasFreezeStateFromEntry(uid, entry){
-    if (!uid || !entry) return null;
-
-    const built = cfBuildScreenItemsFromEntry(entry);
-    const vw = Math.max(1, built.vw | 0);
-    const vh = Math.max(1, built.vh | 0);
-    const items = Array.isArray(built.items) ? built.items : [];
-
-    const off = document.createElement('canvas');
-    off.width = vw;
-    off.height = vh;
-
-    const ox = off.getContext('2d', { willReadFrequently:true });
-    ox.clearRect(0, 0, vw, vh);
-    cfPaintFreezeItems(ox, items);
-
-    const crop = cfComputeAlphaBBox(off, 8);
-
-    if (!crop){
-      return {
-        v: 'cvf1',
-        u: String(uid),
-        e: 1,
-        w: 0,
-        h: 0,
-        bg: { m:'none' },
-        it: []
-      };
-    }
-
-    return {
-      v: 'cvf1',
-      u: String(uid),
-      w: crop.w,
-      h: crop.h,
-      bg: cfBuildBackgroundRecipe(entry, crop),
-      it: cfRebaseFreezeItems(items, crop)
-    };
-  }
-
-  function cfExportCanvasFreezeStateFromPair(pair){
-    const uid = cfGetCanvasUidFromPair(pair);
-    if (!uid) return null;
-
-    const entry = cfGetCanvasStoreEntry(uid);
-    if (!entry) return null;
-
-    return cfExportCanvasFreezeStateFromEntry(uid, entry);
-  }
-
-  function cfExportAllCanvasFreezeStatesFromRoot(root){
-    const pairs = cfCollectCanvasPairsFromRoot(root);
-    const out = [];
-
-    for (let i = 0; i < pairs.length; i++){
-      const state = cfExportCanvasFreezeStateFromPair(pairs[i]);
-      if (!state) continue;
-
-      out.push(state);
-    }
-
-    return out;
-  }
-
-  function cfHasCanvasFreezeContent(state){
-    return !!(
-      state &&
-      state.e !== 1 &&
-      cfNum(state.w, 0) > 0 &&
-      cfNum(state.h, 0) > 0 &&
-      Array.isArray(state.it) &&
-      state.it.length
-    );
-  }
-
-  function cfPaintCanvasFreezeStateToCanvas(canvas, state){
-    if (!canvas || !state) return null;
-
-    const w = Math.max(1, Math.round(cfNum(state.w, 1)));
-    const h = Math.max(1, Math.round(cfNum(state.h, 1)));
-    const dpr = window.devicePixelRatio || 1;
-
-    canvas.width = Math.max(1, Math.round(w * dpr));
-    canvas.height = Math.max(1, Math.round(h * dpr));
-    canvas.style.width = w + 'px';
-    canvas.style.height = h + 'px';
-
-    const ctx = canvas.getContext('2d', { willReadFrequently:true });
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.clearRect(0, 0, w, h);
-
-    cfPaintBackground(ctx, state.bg || { m:'none' }, w, h);
-    cfPaintFreezeItems(ctx, Array.isArray(state.it) ? state.it : []);
-
-    return canvas;
-  }
-
-  function cfRenderCanvasFreezeStateIntoMount(mount, state){
-    if (!mount || !(mount instanceof Element) || !state) return null;
-
-    mount.dataset.open = '1';
-    mount.innerHTML = '';
-
-    if (!cfHasCanvasFreezeContent(state)){
-      const empty = document.createElement('span');
-      empty.className = 'lia-canvas-freeze-empty';
-      empty.textContent = 'Keine sichtbaren Canvas-Inhalte eingefroren.';
-      mount.appendChild(empty);
-      return empty;
-    }
-
-    const block = document.createElement('span');
-    block.className = 'lia-draw-block';
-
-    const wrap = document.createElement('span');
-    wrap.className = 'lia-draw-wrap';
-
-    const canvas = document.createElement('canvas');
-    canvas.className = 'lia-canvas-freeze-preview';
-    canvas.setAttribute('aria-label', 'Eingefrorene Zeichenfläche');
-
-    wrap.appendChild(canvas);
-    block.appendChild(wrap);
-    mount.appendChild(block);
-
-    cfPaintCanvasFreezeStateToCanvas(canvas, state);
-    return canvas;
-  }
-
-  function cfRenderCanvasFreezeStateIntoPair(pair, state){
-    const mount = cfGetCanvasMountFromPair(pair);
-    if (!mount) return null;
-    return cfRenderCanvasFreezeStateIntoMount(mount, state);
-  }
-
-  function ensureCanvasFreezeApi(){
-    const api = ROOT.__LIA_CANVAS_FREEZE_API__ || {};
-
-    api.version = 'cvf1';
-    api.collectCanvasPairsFromRoot = cfCollectCanvasPairsFromRoot;
-    api.getCanvasMountFromPair = cfGetCanvasMountFromPair;
-    api.getCanvasUidFromPair = cfGetCanvasUidFromPair;
-    api.getCanvasStoreEntry = cfGetCanvasStoreEntry;
-    api.exportCanvasFreezeStateFromEntry = cfExportCanvasFreezeStateFromEntry;
-    api.exportCanvasFreezeStateFromPair = cfExportCanvasFreezeStateFromPair;
-    api.exportAllCanvasFreezeStatesFromRoot = cfExportAllCanvasFreezeStatesFromRoot;
-    api.hasCanvasFreezeContent = cfHasCanvasFreezeContent;
-    api.paintCanvasFreezeStateToCanvas = cfPaintCanvasFreezeStateToCanvas;
-    api.renderCanvasFreezeStateIntoMount = cfRenderCanvasFreezeStateIntoMount;
-    api.renderCanvasFreezeStateIntoPair = cfRenderCanvasFreezeStateIntoPair;
-
-    ROOT.__LIA_CANVAS_FREEZE_API__ = api;
-    window.__LIA_CANVAS_FREEZE_API__ = api;
-
-    return api;
-  }
-
-  ensureCanvasFreezeApi();
-
-
   // -----------------------------
   // Canvas HTML (INLINE-STABIL: spans statt divs)
   // -----------------------------
@@ -2861,12 +2234,6 @@ function setupCanvas(canvas){
     </svg>
   `;
   wrap.appendChild(rectCloseBtn);
-
-  // Sichtbarer Radierer-Ring
-  const eraserRing = document.createElement('span');
-  eraserRing.className = 'lia-eraser-ring';
-  eraserRing.dataset.on = '0';
-  wrap.appendChild(eraserRing);
 
   // verhindert, dass Pointer-Events "durchfallen"
   rectCloseBtn.addEventListener('pointerdown', (e) => { e.preventDefault(); e.stopPropagation(); });
@@ -3927,7 +3294,7 @@ function autoCloseSubmenus(){
     // Width
     html += `<span class="lia-row">
       <span class="lia-preview"><span class="lia-preview-line" data-k="pw" style="height:${Math.max(2, Math.min(14, penWidth))}px;"></span></span>
-      <input class="lia-slider" type="range" min="1" max="100" step="1" value="${penWidth}" data-act="penWidth" aria-label="Stiftbreite">
+      <input class="lia-slider" type="range" min="1" max="30" step="1" value="${penWidth}" data-act="penWidth" aria-label="Stiftbreite">
       <span style="font-weight:800;min-width:2.6em;text-align:right">${penWidth}</span>
     </span>`;
 
@@ -3973,7 +3340,7 @@ function autoCloseSubmenus(){
     const w = menu.querySelector('input[data-act="penWidth"]');
     if (w){
       w.oninput = () => {
-        penWidth = clamp(Number(w.value), 1, 100);
+        penWidth = clamp(Number(w.value), 1, 60);
         updateUI();
         persist();
         const line = menu.querySelector('[data-k="pw"]');
@@ -4012,7 +3379,7 @@ function autoCloseSubmenus(){
 
       <span class="lia-row">
         <span class="lia-preview"><span class="lia-preview-line" style="height:${Math.max(2, Math.min(18, eraserWidth))}px;"></span></span>
-        <input class="lia-slider" type="range" min="4" max="500" step="1" value="${eraserWidth}" data-act="eraserWidth" aria-label="Radiererbreite">
+        <input class="lia-slider" type="range" min="4" max="80" step="1" value="${eraserWidth}" data-act="eraserWidth" aria-label="Radiererbreite">
         <span style="font-weight:800;min-width:2.6em;text-align:right">${eraserWidth}</span>
       </span>
     `;
@@ -4035,7 +3402,7 @@ function autoCloseSubmenus(){
     const w = menu.querySelector('input[data-act="eraserWidth"]');
     if (w){
       w.oninput = () => {
-        eraserWidth = clamp(Number(w.value), 2, 500);
+        eraserWidth = clamp(Number(w.value), 2, 200);
         updateUI();
         persist();
         const t = w.parentElement && w.parentElement.querySelector('span[style*="min-width"]');
@@ -4156,36 +3523,6 @@ function autoCloseSubmenus(){
   }
 
   function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
-
-  function hideEraserRing(){
-    if (!eraserRing) return;
-    eraserRing.dataset.on = '0';
-  }
-
-  function updateEraserRingFromScreen(sx, sy){
-    if (!eraserRing) return;
-
-    // Nur im Radierer-Modus anzeigen
-    if (tool !== 'eraser'){
-      hideEraserRing();
-      return;
-    }
-
-    if (!isFinite(sx) || !isFinite(sy)){
-      hideEraserRing();
-      return;
-    }
-
-    // WICHTIG:
-    // tatsächliche sichtbare Radierergröße = eraserWidth * VIEW.scale
-    const size = Math.max(8, eraserWidth * VIEW.scale);
-
-    eraserRing.style.width = size + 'px';
-    eraserRing.style.height = size + 'px';
-    eraserRing.style.left = clamp(sx, 0, canvas.clientWidth) + 'px';
-    eraserRing.style.top  = clamp(sy, 0, canvas.clientHeight) + 'px';
-    eraserRing.dataset.on = '1';
-  }
 
   let __rectBtnRAF = 0;
   function scheduleRectActionUpdate(){
@@ -4537,10 +3874,6 @@ function autoCloseSubmenus(){
 
     // falls du deine alten Menü-Visuals nutzen willst:
     try{ updateMenuVisuals(); }catch(_){}
-
-    if (tool !== 'eraser'){
-      hideEraserRing();
-    }
   }
 
   // ---- Undo/Redo (über ALLE Items)
@@ -4668,7 +4001,6 @@ function autoCloseSubmenus(){
 
   // ---- Resize
   function resizeToCss(){
-    hideEraserRing();
     const dpr = window.devicePixelRatio || 1;
     const cssW = canvas.clientWidth;
     const cssH = canvas.clientHeight;
@@ -4901,7 +4233,6 @@ ensureCorners();
   canvas.addEventListener('wheel', (e) => {  
     autoCloseSubmenus();         
     e.preventDefault();
-    hideEraserRing();
 
     const r = canvas.getBoundingClientRect();
     const sx = e.clientX - r.left;
@@ -4937,7 +4268,6 @@ ensureCorners();
     canvas.setPointerCapture(e.pointerId);
 
     if (pointers.size === 2){
-      hideEraserRing();
       if (mode === 'draw') endStroke();
       if (mode === 'rect') finishRect(false); // abbrechen, wenn pinch startet
 
@@ -4956,7 +4286,6 @@ ensureCorners();
     const wantPan = isRightMouse || isMiddleMouse || (e.pointerType === 'mouse' && spaceDown);
 
     if (wantPan){
-      hideEraserRing();
       mode = 'pan';
       lastPanSX = p.sx;
       lastPanSY = p.sy;
@@ -4965,7 +4294,6 @@ ensureCorners();
     }
 
     if (tool === 'rect'){
-      hideEraserRing();
       mode = 'rect';
       canvas.style.cursor = 'crosshair';
       startRectAtScreen(p.sx, p.sy);
@@ -4976,12 +4304,6 @@ ensureCorners();
     mode = 'draw';
     canvas.style.cursor = 'crosshair';
     startStrokeAtScreen(p.sx, p.sy);
-
-    if (tool === 'eraser'){
-      updateEraserRingFromScreen(p.sx, p.sy);
-    }else{
-      hideEraserRing();
-    }
   });
 
   canvas.addEventListener('pointermove', (e) => {
@@ -4989,12 +4311,6 @@ ensureCorners();
 
     const p = getScreenPos(e);
     pointers.set(e.pointerId, p);
-
-    if (tool === 'eraser' && mode !== 'pan' && mode !== 'pinch' && mode !== 'rect'){
-      updateEraserRingFromScreen(p.sx, p.sy);
-    }else{
-      hideEraserRing();
-    }
 
     if (mode === 'pinch' && pointers.size >= 2 && pinchStart){
       const arr = Array.from(pointers.values()).slice(0,2);
@@ -5040,7 +4356,6 @@ ensureCorners();
   });
 
   function stopPointer(e){
-    hideEraserRing();
     if (pointers.has(e.pointerId)) pointers.delete(e.pointerId);
     try{ canvas.releasePointerCapture(e.pointerId); }catch(_){}
 
@@ -5078,7 +4393,6 @@ ensureCorners();
   canvas.addEventListener('pointerup', stopPointer);
   canvas.addEventListener('pointercancel', stopPointer);
   canvas.addEventListener('pointerleave', () => {
-    hideEraserRing();
     if (mode === 'draw') endStroke();
     if (mode !== 'pinch') mode = 'idle';
     canvas.style.cursor = 'crosshair';

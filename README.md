@@ -7,793 +7,6 @@ author: Martin Lommatzsch
 
 
 
-@style
-
-
-/* ---------------------------------------------------------
-   Canvas + SCHRIFTERKENNUNG OCR
-   Canvas + SCHRIFTERKENNUNG OCR
-   Canvas + SCHRIFTERKENNUNG OCR
-   Canvas + SCHRIFTERKENNUNG OCR
-   Canvas + SCHRIFTERKENNUNG OCR
-   Canvas + SCHRIFTERKENNUNG OCR
-   Canvas + SCHRIFTERKENNUNG OCR
-   Canvas + SCHRIFTERKENNUNG OCR
-   Canvas + SCHRIFTERKENNUNG OCR
-   --------------------------------------------------------- */
-
-
-
-
-:root{
-  --canvas-border: #000;
-  --canvas-pen:    #000;
-
-  /* Lia Theme (wird per JS ermittelt) */
-  --canvas-accent: #0b5fff;
-}
-
-@media (prefers-color-scheme: dark){
-  :root{
-    --canvas-border: #fff;
-    --canvas-pen:    #fff;
-  }
-}
-
-/* ---------------------------------------------------------
-   Canvas Block: KEIN horizontal scroll!
-   --------------------------------------------------------- */
-.lia-draw-block{
-  display: block;         /* <-- WICHTIG, weil Markup jetzt <span> ist */
-  width: 100%;
-  overflow-x: hidden;
-  overflow-y: visible;
-}
-
-
-/* Canvas-Rahmen */
-.lia-draw-wrap{
-  width: min(520px, 100%);
-  border: 2px solid var(--canvas-border);
-  border-radius: 10px;
-  box-sizing: border-box;
-  position: relative;
-
-  display: block;
-  max-width: 100%;
-}
-
-canvas.lia-draw{
-  width: 100%;
-  height: 245px;
-  display: block;
-  background: transparent;
-
-  touch-action: none;
-  cursor: crosshair;
-  border-radius: 8px;
-}
-
-/* Stack links */
-.lia-toolstack{
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translate(0, -50%);
-  z-index: 25;
-
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-/* Buttons */
-.lia-tool-btn{
-  width: 32px;
-  height: 32px;
-  padding: 0;
-
-  border: 2px solid var(--canvas-border);
-  border-radius: 999px;
-  cursor: pointer;
-  user-select: none;
-
-  display: grid;
-  place-items: center;
-
-  background: transparent; /* immer transparent */
-}
-
-.lia-tool-btn:disabled{
-  opacity: 0.35;
-  cursor: not-allowed;
-}
-
-/* Icon-Alignment (zentriert) */
-.lia-tool-btn svg{
-  width: 22px;
-  height: 22px;
-  display: block;
-  margin: 0;
-  transform: translate(0,0);
-}
-.lia-tool-btn .ico-stroke{
-  stroke: var(--canvas-border);
-  fill: none;
-}
-.lia-tool-btn .ico-fill{ fill: rgba(0,0,0,0); }
-
-.lia-tool-btn[data-active="1"]{
-  outline: 2px solid var(--canvas-border);
-  outline-offset: 2px;
-}
-
-/* ---------------------------------------------------------
-   LAUNCHER (@canvas):
-   (Mount ist fest im Makro → kein DOM-Repair)
-   --------------------------------------------------------- */
-.lia-canvas-anchor{
-  display: inline-block;
-}
-
-.lia-canvas-mount{
-  display: none;
-  width: 100%;
-  max-width: 100%;
-  margin: 6px 0;
-  flex: 0 0 100%;
-  min-width: 0;
-}
-.lia-canvas-mount[data-open="1"]{ display: block; }
-
-/* Launcher: 32px, transparent, Theme-Farbe für Linien */
-.lia-canvas-launch{
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  border-radius: 999px;
-
-  background: transparent;
-  border: 2px solid var(--canvas-accent);
-
-  cursor: pointer;
-  user-select: none;
-  touch-action: manipulation;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  vertical-align: middle;
-  line-height: 0;
-  margin-right: 6px;
-}
-
-.lia-canvas-launch:hover{ filter: brightness(1.05); }
-
-.lia-canvas-launch svg{
-  width: 18px;
-  height: 18px;
-  display: block;
-}
-
-.lia-canvas-launch .launch-stroke{
-  stroke: var(--canvas-accent);
-  fill: none;
-  stroke-width: 2.4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-/* Menü */
-.lia-tool-menu{
-  position: absolute;
-  left: 44px;
-  top: 10px;
-  z-index: 30;
-
-  padding: 10px;
-  border: 2px solid var(--canvas-border);
-  border-radius: 12px;
-
-  background: rgba(0,0,0,0.15);
-  backdrop-filter: blur(6px);
-
-  display: none;
-  gap: 10px;
-}
-.lia-tool-menu[data-open="1"]{
-  display: grid;
-  align-items: start;
-  row-gap: 10px;
-}
-
-/* Farbpunkte */
-.lia-color-grid{
-  display: grid;
-  grid-template-columns: repeat(9, 22px);
-  gap: 10px;
-  align-items: center;
-}
-
-.lia-color-item{
-  width: 22px;
-  height: 22px;
-  border-radius: 999px;
-  cursor: pointer;
-  user-select: none;
-
-  border: 2px solid var(--canvas-border);
-  background: transparent;
-  box-sizing: border-box;
-}
-.lia-color-item:hover{ transform: scale(1.06); }
-.lia-color-item[data-active="1"]{
-  outline: 2px solid var(--canvas-border);
-  outline-offset: 2px;
-}
-
-/* Überschriften im Menü */
-.lia-tool-heading{
-  font-size: 1.5rem;
-  font-weight: 750;
-  line-height: 1.1;
-  padding-left: 2px;
-}
-
-/* Heading-Zeile + Clear-Button */
-.lia-heading-row{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
-.lia-heading-row .lia-tool-heading{ padding-left: 2px; }
-
-.lia-menu-icon-btn{
-  width: 28px;
-  height: 28px;
-  border-radius: 999px;
-
-  border: 2px solid var(--canvas-border);
-  background: transparent;
-
-  display: grid;
-  place-items: center;
-
-  cursor: pointer;
-  user-select: none;
-  padding: 0;
-}
-.lia-menu-icon-btn:hover{ filter: brightness(1.08); }
-
-.lia-menu-icon-btn svg{
-  width: 16px;
-  height: 16px;
-  display:block;
-  margin: 0;
-}
-.lia-menu-icon-btn .ico-stroke{
-  stroke: var(--canvas-border);
-  fill: none;
-}
-.lia-menu-icon-btn .ico-fill{ fill: rgba(0,0,0,0); }
-
-/* Slider-Zeile */
-.lia-row{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.lia-preview{
-  width: 34px;
-  height: 22px;
-  border-radius: 10px;
-  border: 2px solid var(--canvas-border);
-  box-sizing: border-box;
-  display: grid;
-  place-items: center;
-}
-
-.lia-preview-line{
-  width: 22px;
-  border-radius: 999px;
-  background: var(--canvas-border);
-  height: 3px;
-}
-
-.lia-slider{ width: 180px; }
-
-/* Hintergrund-Menü: 3 Preview-Tiles */
-.lia-bg-tiles{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  align-items: stretch;
-}
-
-.lia-bg-tile{
-  height: 34px;
-  border-radius: 12px;
-  border: 2px solid var(--canvas-border);
-  background: transparent;
-  cursor: pointer;
-  user-select: none;
-  padding: 0;
-}
-.lia-bg-tile:hover{ filter: brightness(1.08); }
-.lia-bg-tile[data-active="1"]{
-  outline: 2px solid var(--canvas-border);
-  outline-offset: 2px;
-}
-
-/* Unsichtbare Ecken-Ziehflächen */
-.lia-resize-corner{
-  position: absolute;
-  bottom: 0;
-  width: 18px;
-  height: 18px;
-  z-index: 50;
-
-  background: transparent;
-  border: 0;
-  padding: 0;
-  margin: 0;
-
-  user-select: none;
-  touch-action: none;
-
-  opacity: 0;
-}
-.lia-resize-corner[data-corner="br"]{ right: 0; cursor: nwse-resize; }
-.lia-resize-corner[data-corner="bl"]{ left: 0;  cursor: nesw-resize; }
-
-
-
-/* Button unter dem Marker-Rechteck */
-.lia-rect-action{
-  position: absolute;
-  z-index: 60;
-  display: none;
-
-  right: auto;
-  bottom: auto;
-
-  padding: 6px 9px;        /* vorher 8px 12px */
-  border-radius: 999px;
-
-  border: 2px solid var(--canvas-accent);
-  background: var(--canvas-accent);
-  color: #fff;
-
-  font-weight: 800;
-  font-size: 0.75em;       /* NEU: ~25% kleiner */
-  cursor: pointer;
-  user-select: none;
-  line-height: 1;
-  white-space: nowrap;
-}
-.lia-rect-action:active{ transform: translateY(1px); }
-
-
-
-
-
-
-
-
-/* Close-Button oben rechts am Marker-Rechteck */
-.lia-rect-close{
-  position: absolute;
-  z-index: 61;
-  display: none;
-
-  width: 24px;
-  height: 24px;
-  padding: 0;
-
-  border-radius: 999px;
-  border: 2px solid var(--canvas-accent);
-  background: transparent;
-
-  cursor: pointer;
-  user-select: none;
-  line-height: 0;
-}
-
-.lia-rect-close svg{
-  width: 14px;
-  height: 14px;
-  display: block;
-  margin: auto;
-}
-
-.lia-rect-close .x{
-  stroke: var(--canvas-accent);
-  stroke-width: 2.4;
-  stroke-linecap: round;
-}
-
-.lia-rect-close:hover{
-  background: var(--canvas-accent);
-}
-
-.lia-rect-close:hover .x{
-  stroke: #fff;
-}
-
-.lia-rect-close:active{ transform: translateY(1px); }
-
-
-
-
-
-
-
-
-/* OCR */
-/* OCR */
-/* OCR */
-/* OCR */
-/* OCR */
-/* OCR */
-/* OCR */
-
-
-
-/* =========================================================
-   OCR-Konfigleiste (sticky, import-safe)
-   ========================================================= */
-
-.lia-ocrbar{
-  position: sticky;
-  top: 10px;
-  z-index: 9999;
-
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-
-  padding: 10px 12px;
-  margin: 0 0 14px 0;
-
-  border: 2px solid var(--canvas-border);
-  border-radius: 14px;
-
-  background: rgba(0,0,0,0.07);
-  backdrop-filter: blur(6px);
-
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark){
-  .lia-ocrbar{
-    background: rgba(255,255,255,0.08);
-  }
-}
-
-.lia-ocr-head{
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-right: 6px;
-}
-
-.lia-ocr-title{
-  font-weight: 850;
-  letter-spacing: 0.2px;
-  line-height: 1;
-}
-
-.lia-ocr-dot{
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  border: 2px solid var(--canvas-border);
-  background: transparent;
-  box-sizing: border-box;
-}
-
-.lia-ocrbar[data-state="ready"]   .lia-ocr-dot{ border-color: var(--canvas-accent); background: var(--canvas-accent); }
-.lia-ocrbar[data-state="working"] .lia-ocr-dot{ border-color: var(--canvas-accent); background: var(--canvas-accent); }
-.lia-ocrbar[data-state="loading"] .lia-ocr-dot{ border-color: var(--canvas-accent); border-style: dashed; }
-.lia-ocrbar[data-state="error"]   .lia-ocr-dot{ border-color: #c00000; background: #c00000; }
-
-.lia-ocr-pills{
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
-  min-width: 0;
-}
-
-.lia-ocr-pill{
-  display: inline-flex;
-  align-items: baseline;
-  gap: 8px;
-
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: 2px solid var(--canvas-border);
-
-  background: transparent;
-  max-width: 100%;
-}
-
-.lia-ocr-pill .k{
-  opacity: 0.75;
-  font-weight: 750;
-  white-space: nowrap;
-}
-
-.lia-ocr-pill .v{
-  font-weight: 800;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: min(52vw, 520px);
-}
-
-.lia-ocr-actions{
-  display: inline-flex;
-  gap: 8px;
-  align-items: center;
-  margin-left: auto;
-}
-
-.lia-ocr-btn{
-  border: 2px solid var(--canvas-accent);
-  background: transparent;
-  color: var(--canvas-accent);
-  border-radius: 999px;
-  padding: 6px 10px;
-  font-weight: 850;
-  cursor: pointer;
-  user-select: none;
-  line-height: 1;
-}
-
-.lia-ocr-select{
-  border: 2px solid var(--canvas-accent);
-  background: transparent;
-  color: var(--canvas-accent);
-  border-radius: 999px;
-  padding: 6px 10px;
-  font-weight: 850;
-  cursor: pointer;
-  user-select: none;
-  line-height: 1;
-  appearance: none;
-}
-.lia-ocr-select:active{ transform: translateY(1px); }
-
-
-
-.lia-ocr-btn:active{ transform: translateY(1px); }
-
-.lia-ocr-progress{
-  display: none;
-  align-items: center;
-  gap: 8px;
-  width: min(420px, 100%);
-}
-
-.lia-ocr-progress[data-on="1"]{ display: inline-flex; }
-
-.lia-ocr-progbar{
-  height: 10px;
-  width: 100%;
-  border-radius: 999px;
-  border: 2px solid var(--canvas-border);
-  overflow: hidden;
-  box-sizing: border-box;
-  background: transparent;
-}
-
-.lia-ocr-progfill{
-  height: 100%;
-  width: 0%;
-  background: var(--canvas-accent);
-}
-
-.lia-ocr-progtxt{
-  font-weight: 850;
-  min-width: 44px;
-  text-align: right;
-}
-
-.lia-ocr-log{
-  display: none;
-  width: 100%;
-  margin: 6px 0 0 0;
-  padding: 10px 12px;
-  border-radius: 12px;
-  border: 2px solid var(--canvas-border);
-  background: transparent;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-  font-size: 0.92em;
-  line-height: 1.25;
-  white-space: pre-wrap;
-  box-sizing: border-box;
-}
-
-.lia-ocrbar[data-open="1"] .lia-ocr-log{ display: block; }
-
-
-.lia-ocrbar{
-  width: 100%;
-  flex: 0 0 100%;
-  align-self: stretch;
-}
-
-
-/* Accent-Stroke/Fill für Icons (Themefarbe) */
-.lia-tool-btn .ico-accent{
-  stroke: var(--canvas-accent);
-  fill: none;
-}
-.lia-tool-btn .ico-accent-fill{
-  fill: var(--canvas-accent);
-}
-
-
-
-
-/* =========================================================
-   Loadbox UNTER der OCR-Bar (AUSSERHALB als eigener Sticky-Block)
-   ========================================================= */
-.lia-ocr-loadwrap{
-  position: sticky;
-  top: calc(10px + var(--lia-ocrbar-h, 64px) + 8px);
-  z-index: 9998;
-
-  display: none;
-  width: 100%;
-  margin: -6px 0 14px 0;   /* sitzt optisch direkt unter der Bar */
-  padding: 10px 12px;
-
-  border: 2px solid var(--canvas-border);
-  border-radius: 14px;
-
-  background: rgba(0,0,0,0.05);
-  backdrop-filter: blur(6px);
-  box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark){
-  .lia-ocr-loadwrap{ background: rgba(255,255,255,0.06); }
-}
-
-.lia-ocr-loadwrap[data-on="1"]{ display:block; }
-
-.lia-ocr-loadmsg{
-  display:flex;
-  align-items:baseline;
-  justify-content: space-between;
-  gap: 10px;
-  font-weight: 850;
-}
-
-.lia-ocr-loadmsg .t{ font-weight: 850; }
-.lia-ocr-loadmsg .p{ font-weight: 900; min-width: 3.5em; text-align:right; }
-
-.lia-ocr-loaddetail{
-  margin-top: 6px;
-  opacity: .78;
-  font-weight: 700;
-  font-size: 0.95em;
-}
-
-.lia-ocr-loadtrack{
-  margin-top: 8px;
-  height: 10px;
-  width: 100%;
-  border-radius: 999px;
-  border: 2px solid var(--canvas-border);
-  overflow: hidden;
-  box-sizing: border-box;
-  background: transparent;
-}
-
-.lia-ocr-loadfill{
-  height: 100%;
-  width: 0%;
-  background: var(--canvas-accent);
-}
-
-/* indeterminate (wenn progress nicht verfügbar) */
-.lia-ocr-loadwrap[data-indet="1"] .lia-ocr-loadfill{
-  width: 35%;
-  animation: lia_ocr_indet 1.1s linear infinite;
-}
-
-/* wenn du keyframes schon hast, kannst du diesen Teil weglassen */
-@keyframes lia_ocr_indet{
-  0%   { transform: translateX(-120%); }
-  100% { transform: translateX(320%); }
-}
-
-
-
-
-
-
-
-
-
-/* Progress unter "Als Lösung übergeben" */
-.lia-rect-progress{
-  position: absolute;
-  z-index: 59; /* unter Button (60), über Canvas */
-  display: none;
-
-  left: 0;
-  top: 0;
-
-  width: 180px; /* wird in JS dynamisch überschrieben */
-  padding: 4px 8px;
-  border-radius: 999px;
-
-  border: 2px solid var(--canvas-border);
-  background: rgba(0,0,0,0.10);
-  backdrop-filter: blur(6px);
-
-  box-sizing: border-box;
-  align-items: center;
-  gap: 8px;
-}
-
-@media (prefers-color-scheme: dark){
-  .lia-rect-progress{ background: rgba(255,255,255,0.10); }
-}
-
-.lia-rect-progress[data-on="1"]{ display: flex; }
-
-.lia-rect-progbar{
-  flex: 1 1 auto;
-  height: 8px;
-  border-radius: 999px;
-  border: 2px solid var(--canvas-border);
-  overflow: hidden;
-  box-sizing: border-box;
-  background: transparent;
-}
-
-.lia-rect-progfill{
-  height: 100%;
-  width: 0%;
-  background: var(--canvas-accent);
-}
-
-.lia-rect-progtxt{
-  font-weight: 850;
-  font-size: 0.8em;
-  min-width: 3.2em;
-  text-align: right;
-}
-
-
-
-
-
-
-
-
-
-@end
-
-
-
-
-
-
-
-
-
-
 @onload
 
 
@@ -4463,7 +3676,6 @@ function render(){
 
 
 
-
 (function(){
 
 
@@ -4528,83 +3740,9 @@ if (!window.__LIA_OCR_BAR_BOOT__){
   }
 
   // ---------------- CSS Fallback (inkl. Select) ----------------
-  function ensureOcrCss(){
-    if (document.getElementById('__lia_ocrbar_css_v2')) return;
-
-    const st = document.createElement('style');
-    st.id = '__lia_ocrbar_css_v2';
-    st.textContent = `
-      .lia-ocrbar{position:sticky;top:10px;z-index:9999;display:flex;flex-wrap:wrap;gap:10px;align-items:center;
-        padding:10px 12px;margin:0 0 14px 0;border:2px solid var(--canvas-border);border-radius:14px;
-        background:rgba(0,0,0,0.07);backdrop-filter:blur(6px);box-sizing:border-box}
-      @media (prefers-color-scheme: dark){.lia-ocrbar{background:rgba(255,255,255,0.08)}}
-      .lia-ocr-head{display:inline-flex;align-items:center;gap:10px;margin-right:6px}
-      .lia-ocr-title{font-weight:850;letter-spacing:.2px;line-height:1}
-      .lia-ocr-dot{width:10px;height:10px;border-radius:999px;border:2px solid var(--canvas-border);background:transparent;box-sizing:border-box}
-      .lia-ocrbar[data-state="ready"] .lia-ocr-dot,
-      .lia-ocrbar[data-state="working"] .lia-ocr-dot{border-color:var(--canvas-accent);background:var(--canvas-accent)}
-      .lia-ocrbar[data-state="loading"] .lia-ocr-dot{border-color:var(--canvas-accent);border-style:dashed}
-      .lia-ocrbar[data-state="error"] .lia-ocr-dot{border-color:#c00000;background:#c00000}
-
-      .lia-ocr-pills{display:inline-flex;flex-wrap:wrap;gap:8px;align-items:center;min-width:0}
-      .lia-ocr-pill{display:inline-flex;align-items:baseline;gap:8px;padding:6px 10px;border-radius:999px;border:2px solid var(--canvas-border);
-        background:transparent;max-width:100%}
-      .lia-ocr-pill .k{opacity:.75;font-weight:750;white-space:nowrap}
-      .lia-ocr-pill .v{font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:min(52vw,520px)}
-
-      .lia-ocr-actions{display:inline-flex;gap:8px;align-items:center;margin-left:auto}
-
-      .lia-ocr-btn{border:2px solid var(--canvas-accent);background:transparent;color:var(--canvas-accent);
-        border-radius:999px;padding:6px 10px;font-weight:850;cursor:pointer;user-select:none;line-height:1}
-      .lia-ocr-btn:active{transform:translateY(1px)}
-
-      .lia-ocr-select{border:2px solid var(--canvas-accent);background:transparent;color:var(--canvas-accent);
-        border-radius:999px;padding:6px 10px;font-weight:850;cursor:pointer;user-select:none;line-height:1;appearance:none}
-      .lia-ocr-select:active{transform:translateY(1px)}
-
-      .lia-ocr-progress{display:none;align-items:center;gap:8px;width:min(420px,100%)}
-      .lia-ocr-progress[data-on="1"]{display:inline-flex}
-      .lia-ocr-progbar{height:10px;width:100%;border-radius:999px;border:2px solid var(--canvas-border);overflow:hidden;box-sizing:border-box;background:transparent}
-      .lia-ocr-progfill{height:100%;width:0%;background:var(--canvas-accent)}
-      .lia-ocr-progtxt{font-weight:850;min-width:44px;text-align:right}
-
-      .lia-ocr-log{display:none;width:100%;margin:6px 0 0 0;padding:10px 12px;border-radius:12px;border:2px solid var(--canvas-border);
-        background:transparent;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
-        font-size:.92em;line-height:1.25;white-space:pre-wrap;box-sizing:border-box}
-      .lia-ocrbar[data-open="1"] .lia-ocr-log{display:block}
-
-      .lia-ocr-loadwrap{
-        position:sticky;
-        top:calc(10px + var(--lia-ocrbar-h,64px) + 8px);
-        z-index:9998;
-        display:none;
-        width:100%;
-        margin:-6px 0 14px 0;
-        padding:10px 12px;
-        border:2px solid var(--canvas-border);
-        border-radius:14px;
-        background:rgba(0,0,0,0.05);
-        backdrop-filter:blur(6px);
-        box-sizing:border-box
-      }
-      @media (prefers-color-scheme: dark){
-        .lia-ocr-loadwrap{background:rgba(255,255,255,0.06)}
-      }
-      .lia-ocr-loadwrap[data-on="1"]{display:block}
-      .lia-ocr-loadmsg{display:flex;align-items:baseline;justify-content:space-between;gap:10px;font-weight:850}
-      .lia-ocr-loadmsg .p{font-weight:900;min-width:3.5em;text-align:right}
-      .lia-ocr-loaddetail{margin-top:6px;opacity:.78;font-weight:700;font-size:.95em}
-
-      .lia-ocr-loadtrack{margin-top:8px;height:10px;width:100%;border-radius:999px;border:2px solid var(--canvas-border);
-        overflow:hidden;box-sizing:border-box;background:transparent}
-      .lia-ocr-loadfill{height:100%;width:0%;background:var(--canvas-accent)}
-      .lia-ocr-loadwrap[data-indet="1"] .lia-ocr-loadfill{width:35%;animation:lia_ocr_indet 1.1s linear infinite}
-      @keyframes lia_ocr_indet{0%{transform:translateX(-120%)}100%{transform:translateX(320%)}}
-
-
-    `;
-    (document.head || document.documentElement).appendChild(st);
-  }
+    function ensureOcrCss(){
+      ensureCss();
+    }
 
   // ---------------- OCR-Bar ----------------
   function ensureOcrBar(){
@@ -4614,32 +3752,25 @@ if (!window.__LIA_OCR_BAR_BOOT__){
 
     if (window.__LIA_OCR_BAR__ && window.__LIA_OCR_BAR__.el && window.__LIA_OCR_BAR__.el.isConnected){
       try{
-        const el = window.__LIA_OCR_BAR__.el;
-        const DOC = document;
-        const main = DOC.querySelector('main');
+          const el = window.__LIA_OCR_BAR__.el;
+          const DOC = document;
+          const overlayHost = DOC.body || DOC.documentElement;
 
-        // ggf. wieder in main nach oben ziehen
-        if (main && el.parentNode !== main){
-          if (main.firstChild) main.insertBefore(el, main.firstChild);
-          else main.appendChild(el);
-        }
-
-        // Sichtbarkeit der Bar
-        el.style.display = SHOW_BAR ? '' : 'none';
-        el.setAttribute('aria-hidden', SHOW_BAR ? 'false' : 'true');
-
-        // Loadbox ggf. nach oben ziehen, wenn Bar aus
-        const lw = window.__LIA_OCR_BAR__.loadEl;
-        if (lw){
-          if (!SHOW_BAR){
-            lw.style.top = '10px';
-            lw.style.margin = '0 0 14px 0';
-          }else{
-            lw.style.top = '';
-            lw.style.margin = '';
+          // OCR-Bar IMMER als Overlay außerhalb des Content halten
+          if (el.parentNode !== overlayHost){
+            overlayHost.appendChild(el);
           }
-        }
 
+          // Sichtbarkeit der Bar
+          el.style.display = SHOW_BAR ? '' : 'none';
+          el.setAttribute('aria-hidden', SHOW_BAR ? 'false' : 'true');
+
+          // Loadbox IMMER als Overlay außerhalb des Content halten
+          const lw = window.__LIA_OCR_BAR__.loadEl;
+          if (lw && lw.parentNode !== overlayHost){
+            overlayHost.appendChild(lw);
+          }
+    
       }catch(_){}
       return window.__LIA_OCR_BAR__;
     }
@@ -4702,26 +3833,12 @@ if (!window.__LIA_OCR_BAR_BOOT__){
       <pre class="lia-ocr-log"></pre>
     `;
 
-    // -------- EINHÄNGEN: IN <main> als erstes Kind (damit Layout/Scale passt) --------
-    const main = DOC.querySelector('main');
-    const host = DOC.body || DOC.documentElement;
-
-    const loadbar = bar.querySelector('.lia-ocr-loadbar');
-    const loadfill = bar.querySelector('.lia-ocr-loadfill');
+    // -------- EINHÄNGEN: ALS OVERLAY AUSSERHALB DES CONTENT --------
+    const overlayHost = DOC.body || DOC.documentElement;
+    overlayHost.appendChild(bar);
 
 
-    if (main){
-      // Bar muss innerhalb von main liegen (nicht als Flex-Item daneben)
-      if (main.firstChild) main.insertBefore(bar, main.firstChild);
-      else main.appendChild(bar);
-    }else if (host.firstChild){
-      host.insertBefore(bar, host.firstChild);
-    }else{
-      host.appendChild(bar);
-    }
-
-
-    // -------- LOADBOX (Sibling direkt UNTER der OCR-Bar) --------
+    // -------- LOADBOX --------
     const loadWrap = DOC.createElement('div');
     loadWrap.className = 'lia-ocr-loadwrap';
     loadWrap.dataset.on = '0';
@@ -4735,21 +3852,8 @@ if (!window.__LIA_OCR_BAR_BOOT__){
       <div class="lia-ocr-loaddetail">Download von rund 900&nbsp;MB (nur beim ersten Mal, danach Cache).</div>
     `;
 
+    overlayHost.appendChild(loadWrap);
 
-    // Wenn Bar aus: Loadbox "rückt nach oben" (sonst wäre sie für die Bar reserviert)
-    if (!SHOW_BAR){
-      loadWrap.style.top = '10px';
-      loadWrap.style.margin = '0 0 14px 0';
-    }
-
-
-
-    // direkt NACH bar einfügen
-    if (bar.parentNode){
-      if (bar.nextSibling) bar.parentNode.insertBefore(loadWrap, bar.nextSibling);
-      else bar.parentNode.appendChild(loadWrap);
-    }
-    
     const loadFill   = loadWrap.querySelector('.lia-ocr-loadfill');
     const loadTxt    = loadWrap.querySelector('.lia-ocr-loadmsg .t');
     const loadPct    = loadWrap.querySelector('.lia-ocr-loadmsg .p');
@@ -4820,9 +3924,11 @@ if (!window.__LIA_OCR_BAR_BOOT__){
       try{
         if (!SHOW_BAR){
           document.documentElement.style.setProperty('--lia-ocrbar-h', '0px');
+          document.documentElement.style.setProperty('--lia-ocrbar-gap', '0px');
         }else{
           const h = Math.ceil(bar.getBoundingClientRect().height || bar.offsetHeight || 0);
           document.documentElement.style.setProperty('--lia-ocrbar-h', (h || 0) + 'px');
+          document.documentElement.style.setProperty('--lia-ocrbar-gap', '8px');
         }
       }catch(_){}
 
@@ -5325,97 +4431,779 @@ function ensureMountUID(mount){
   // (Design bleibt identisch, nur robust)
   // =========================================================
 function ensureCss(){
-  if (document.getElementById('__lia_canvas_css_v2')) return;
+  if (document.getElementById('__lia_canvas_ocr_css_v1')) return;
 
   const st = document.createElement('style');
-  st.id = '__lia_canvas_css_v2';
+  st.id = '__lia_canvas_ocr_css_v1';
 
-  st.textContent = [
-    ':root{',
-    '  --canvas-border:#000;',
-    '  --canvas-pen:#000;',
-    '  --canvas-accent:#0b5fff;',
-    '}',
-    '@media (prefers-color-scheme: dark){',
-    '  :root{ --canvas-border:#fff; --canvas-pen:#fff; }',
-    '}',
+  st.textContent = `
+:root{
+  --canvas-border: #000;
+  --canvas-pen: #000;
+  --canvas-accent: #0b5fff;
+}
 
-    '.lia-draw-block{ display:block; width:100%; overflow-x:hidden; overflow-y:visible; }',
-    '.lia-draw-wrap{ width:min(520px,100%); border:2px solid var(--canvas-border); border-radius:10px; box-sizing:border-box; position:relative; display:block; max-width:100%; }',
-    'canvas.lia-draw{ width:100%; height:245px; display:block; background:transparent; touch-action:none; cursor:crosshair; border-radius:8px; }',
+@media (prefers-color-scheme: dark){
+  :root{
+    --canvas-border: #fff;
+    --canvas-pen: #fff;
+  }
+}
 
-    '.lia-toolstack{ position:absolute; left:10px; top:50%; transform:translate(0,-50%); z-index:25; display:flex; flex-direction:column; gap:5px; }',
-    '.lia-tool-btn{ width:32px; height:32px; padding:0; border:2px solid var(--canvas-border); border-radius:999px; cursor:pointer; user-select:none; display:grid; place-items:center; background:transparent; }',
-    '.lia-tool-btn:disabled{ opacity:.35; cursor:not-allowed; }',
-    '.lia-tool-btn svg{ width:22px; height:22px; display:block; margin:0; transform:translate(0,0); }',
-    '.lia-tool-btn .ico-stroke{ stroke:var(--canvas-border); fill:none; }',
-    '.lia-tool-btn .ico-fill{ fill:rgba(0,0,0,0); }',
-    '.lia-tool-btn[data-active="1"]{ outline:2px solid var(--canvas-border); outline-offset:2px; }',
+/* ---------------------------------------------------------
+   Canvas Block: KEIN horizontal scroll!
+   --------------------------------------------------------- */
+.lia-draw-block{
+  display: block;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: visible;
+}
 
-    '.lia-canvas-anchor{ display:inline-block; }',
-    '.lia-canvas-mount{ display:none; width:100%; max-width:100%; margin:6px 0; }',
-    '.lia-canvas-mount[data-open="1"]{ display:block; }',
+.lia-draw-wrap{
+  width: min(520px, 100%);
+  border: 2px solid var(--canvas-border);
+  border-radius: 10px;
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  max-width: 100%;
+}
 
-    '.lia-canvas-launch{ width:32px; height:32px; padding:0; border-radius:999px; background:transparent; border:2px solid var(--canvas-accent); cursor:pointer; user-select:none; touch-action:manipulation; display:inline-flex; align-items:center; justify-content:center; vertical-align:middle; line-height:0; margin-right:6px; }',
-    '.lia-canvas-launch:hover{ filter:brightness(1.05); }',
-    '.lia-canvas-launch svg{ width:18px; height:18px; display:block; }',
-    '.lia-canvas-launch .launch-stroke{ stroke:var(--canvas-accent); fill:none; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; }',
+canvas.lia-draw{
+  width: 100%;
+  height: 245px;
+  display: block;
+  background: transparent;
+  touch-action: none;
+  cursor: crosshair;
+  border-radius: 8px;
+}
 
-    '.lia-tool-menu{ position:absolute; left:44px; top:10px; z-index:30; padding:10px; border:2px solid var(--canvas-border); border-radius:12px; background:rgba(0,0,0,.15); backdrop-filter:blur(6px); display:none; gap:10px; }',
-    '.lia-tool-menu[data-open="1"]{ display:grid; align-items:start; row-gap:10px; }',
+canvas.lia-canvas-freeze-preview{
+  width: 100%;
+  height: auto;
+  display: block;
+  background: transparent;
+  border-radius: 8px;
+  cursor: default;
+  touch-action: auto;
+}
 
-    '.lia-color-grid{ display:grid; grid-template-columns:repeat(9,22px); gap:10px; align-items:center; }',
-    '.lia-color-item{ width:22px; height:22px; border-radius:999px; cursor:pointer; user-select:none; border:2px solid var(--canvas-border); background:transparent; box-sizing:border-box; }',
-    '.lia-color-item:hover{ transform:scale(1.06); }',
-    '.lia-color-item[data-active="1"]{ outline:2px solid var(--canvas-border); outline-offset:2px; }',
+.lia-canvas-freeze-empty{
+  padding: 12px 14px;
+  font-weight: 700;
+  opacity: 0.75;
+}
 
-    '.lia-tool-heading{ font-size:1.5rem; font-weight:750; line-height:1.1; padding-left:2px; }',
-    '.lia-heading-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; }',
+.lia-toolstack{
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translate(0, -50%);
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 
-    '.lia-menu-icon-btn{ width:28px; height:28px; border-radius:999px; border:2px solid var(--canvas-border); background:transparent; display:grid; place-items:center; cursor:pointer; user-select:none; padding:0; }',
-    '.lia-menu-icon-btn:hover{ filter:brightness(1.08); }',
-    '.lia-menu-icon-btn svg{ width:16px; height:16px; display:block; margin:0; }',
-    '.lia-menu-icon-btn .ico-stroke{ stroke:var(--canvas-border); fill:none; }',
+.lia-tool-btn{
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 2px solid var(--canvas-border);
+  border-radius: 999px;
+  cursor: pointer;
+  user-select: none;
+  display: grid;
+  place-items: center;
+  background: transparent;
+}
 
-    '.lia-row{ display:flex; align-items:center; gap:10px; }',
-    '.lia-preview{ width:34px; height:22px; border-radius:10px; border:2px solid var(--canvas-border); box-sizing:border-box; display:grid; place-items:center; }',
-    '.lia-preview-line{ width:22px; border-radius:999px; background:var(--canvas-border); height:3px; }',
-    '.lia-slider{ width:180px; }',
+.lia-tool-btn:disabled{
+  opacity: 0.35;
+  cursor: not-allowed;
+}
 
-    '.lia-bg-tiles{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; align-items:stretch; }',
-    '.lia-bg-tile{ height:34px; border-radius:12px; border:2px solid var(--canvas-border); background:transparent; cursor:pointer; user-select:none; padding:0; }',
-    '.lia-bg-tile:hover{ filter:brightness(1.08); }',
-    '.lia-bg-tile[data-active="1"]{ outline:2px solid var(--canvas-border); outline-offset:2px; }',
+.lia-tool-btn svg{
+  width: 22px;
+  height: 22px;
+  display: block;
+  margin: 0;
+  transform: translate(0,0);
+}
 
-    '.lia-resize-corner{ position:absolute; bottom:0; width:18px; height:18px; z-index:50; background:transparent; border:0; padding:0; margin:0; user-select:none; touch-action:none; opacity:0; }',
-    '.lia-resize-corner[data-corner="br"]{ right:0; cursor:nwse-resize; }',
-    '.lia-resize-corner[data-corner="bl"]{ left:0; cursor:nesw-resize; }',
+.lia-tool-btn .ico-stroke{
+  stroke: var(--canvas-border);
+  fill: none;
+}
 
-    '.lia-rect-action{ position:absolute; z-index:60; display:none; padding:6px 9px; border-radius:999px; border:2px solid var(--canvas-accent); background:var(--canvas-accent); color:#fff; font-weight:800; font-size:0.75em; cursor:pointer; user-select:none; line-height:1; white-space:nowrap; }',
-    '.lia-rect-action:active{ transform:translateY(1px); }',
+.lia-tool-btn .ico-fill{
+  fill: rgba(0,0,0,0);
+}
 
-    '.lia-rect-progress{ position:absolute; z-index:59; display:none; left:0; top:0; width:180px; padding:4px 8px; border-radius:999px; border:2px solid var(--canvas-border); background:rgba(0,0,0,.10); backdrop-filter:blur(6px); box-sizing:border-box; align-items:center; gap:8px; }',
-    '@media (prefers-color-scheme: dark){ .lia-rect-progress{ background:rgba(255,255,255,.10); } }',
-    '.lia-rect-progress[data-on="1"]{ display:flex; }',
-    '.lia-rect-progbar{ flex:1 1 auto; height:8px; border-radius:999px; border:2px solid var(--canvas-border); overflow:hidden; box-sizing:border-box;    background:transparent; }',
-    '.lia-rect-progfill{ height:100%; width:0%; background:var(--canvas-accent); }',
-    '.lia-rect-progtxt{ font-weight:850; font-size:0.8em; min-width:3.2em; text-align:right; }',
+.lia-tool-btn[data-active="1"]{
+  outline: 2px solid var(--canvas-border);
+  outline-offset: 2px;
+}
 
+.lia-canvas-anchor{
+  display: inline-block;
+}
 
-    '.lia-rect-close{ position:absolute; z-index:61; display:none; width:24px; height:24px; padding:0; border-radius:999px; border:2px solid var(--canvas-accent);    background:transparent; cursor:pointer; user-select:none; line-height:0; }',
-    '.lia-rect-close svg{ width:14px; height:14px; display:block; margin:auto; }',
-    '.lia-rect-close .x{ stroke:var(--canvas-accent); stroke-width:2.4; stroke-linecap:round; }',
-    '.lia-rect-close:hover{ background:var(--canvas-accent); }',
-    '.lia-rect-close:hover .x{ stroke:#fff; }',
-    '.lia-rect-close:active{ transform:translateY(1px); }',
+.lia-canvas-mount{
+  display: none;
+  width: 100%;
+  max-width: 100%;
+  margin: 6px 0;
+  flex: 0 0 100%;
+  min-width: 0;
+}
 
+.lia-canvas-mount[data-open="1"]{
+  display: block;
+}
 
-    '.lia-tool-btn .ico-accent{ stroke:var(--canvas-accent); fill:none; }',
-    '.lia-tool-btn .ico-accent-fill{ fill:var(--canvas-accent); }',
+.lia-canvas-launch{
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 999px;
+  background: transparent;
+  border: 2px solid var(--canvas-accent);
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  line-height: 0;
+  margin-right: 6px;
+}
 
+.lia-canvas-launch:hover{
+  filter: brightness(1.05);
+}
 
+.lia-canvas-launch svg{
+  width: 18px;
+  height: 18px;
+  display: block;
+}
 
-  ].join('\n');
+.lia-canvas-launch .launch-stroke{
+  stroke: var(--canvas-accent);
+  fill: none;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lia-tool-menu{
+  position: absolute;
+  left: 44px;
+  top: 10px;
+  z-index: 30;
+  padding: 10px;
+  border: 2px solid var(--canvas-border);
+  border-radius: 12px;
+  background: rgba(0,0,0,0.15);
+  backdrop-filter: blur(6px);
+  display: none;
+  gap: 10px;
+}
+
+.lia-tool-menu[data-open="1"]{
+  display: grid;
+  align-items: start;
+  row-gap: 10px;
+}
+
+.lia-color-grid{
+  display: grid;
+  grid-template-columns: repeat(9, 22px);
+  gap: 10px;
+  align-items: center;
+}
+
+.lia-color-item{
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  user-select: none;
+  border: 2px solid var(--canvas-border);
+  background: transparent;
+  box-sizing: border-box;
+}
+
+.lia-color-item:hover{
+  transform: scale(1.06);
+}
+
+.lia-color-item[data-active="1"]{
+  outline: 2px solid var(--canvas-border);
+  outline-offset: 2px;
+}
+
+.lia-tool-heading{
+  font-size: 1.5rem;
+  font-weight: 750;
+  line-height: 1.1;
+  padding-left: 2px;
+}
+
+.lia-heading-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.lia-heading-row .lia-tool-heading{
+  padding-left: 2px;
+}
+
+.lia-menu-icon-btn{
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 2px solid var(--canvas-border);
+  background: transparent;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  user-select: none;
+  padding: 0;
+}
+
+.lia-menu-icon-btn:hover{
+  filter: brightness(1.08);
+}
+
+.lia-menu-icon-btn svg{
+  width: 16px;
+  height: 16px;
+  display: block;
+  margin: 0;
+}
+
+.lia-menu-icon-btn .ico-stroke{
+  stroke: var(--canvas-border);
+  fill: none;
+}
+
+.lia-menu-icon-btn .ico-fill{
+  fill: rgba(0,0,0,0);
+}
+
+.lia-row{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lia-preview{
+  width: 34px;
+  height: 22px;
+  border-radius: 10px;
+  border: 2px solid var(--canvas-border);
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+}
+
+.lia-preview-line{
+  width: 22px;
+  border-radius: 999px;
+  background: var(--canvas-border);
+  height: 3px;
+}
+
+.lia-slider{
+  width: 180px;
+}
+
+.lia-bg-tiles{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  align-items: stretch;
+}
+
+.lia-bg-tile{
+  height: 34px;
+  border-radius: 12px;
+  border: 2px solid var(--canvas-border);
+  background: transparent;
+  cursor: pointer;
+  user-select: none;
+  padding: 0;
+}
+
+.lia-bg-tile:hover{
+  filter: brightness(1.08);
+}
+
+.lia-bg-tile[data-active="1"]{
+  outline: 2px solid var(--canvas-border);
+  outline-offset: 2px;
+}
+
+.lia-resize-corner{
+  position: absolute;
+  bottom: 0;
+  width: 18px;
+  height: 18px;
+  z-index: 50;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  user-select: none;
+  touch-action: none;
+  opacity: 0;
+}
+
+.lia-resize-corner[data-corner="br"]{ right: 0; cursor: nwse-resize; }
+.lia-resize-corner[data-corner="bl"]{ left: 0; cursor: nesw-resize; }
+
+.lia-rect-action{
+  position: absolute;
+  z-index: 60;
+  display: none;
+  right: auto;
+  bottom: auto;
+  padding: 6px 9px;
+  border-radius: 999px;
+  border: 2px solid var(--canvas-accent);
+  background: var(--canvas-accent);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.75em;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.lia-rect-action:active{
+  transform: translateY(1px);
+}
+
+.lia-rect-close{
+  position: absolute;
+  z-index: 61;
+  display: none;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border-radius: 999px;
+  border: 2px solid var(--canvas-accent);
+  background: transparent;
+  cursor: pointer;
+  user-select: none;
+  line-height: 0;
+}
+
+.lia-rect-close svg{
+  width: 14px;
+  height: 14px;
+  display: block;
+  margin: auto;
+}
+
+.lia-rect-close .x{
+  stroke: var(--canvas-accent);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+.lia-rect-close:hover{
+  background: var(--canvas-accent);
+}
+
+.lia-rect-close:hover .x{
+  stroke: #fff;
+}
+
+.lia-rect-close:active{
+  transform: translateY(1px);
+}
+
+.lia-eraser-ring{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  box-sizing: border-box;
+  border: 2px solid var(--canvas-accent);
+  background: transparent;
+  box-shadow: 0 0 0 1px var(--canvas-border);
+  pointer-events: none;
+  display: none;
+  z-index: 58;
+  transform: translate(-50%, -50%);
+}
+
+.lia-eraser-ring[data-on="1"]{
+  display: block;
+}
+
+/* OCR */
+
+.lia-ocrbar{
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 10px;
+  z-index: 10000;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  width: min(1100px, calc(100vw - 20px));
+  max-width: calc(100vw - 20px);
+  padding: 10px 12px;
+  margin: 0;
+  border: 2px solid var(--canvas-border);
+  border-radius: 14px;
+  background: rgba(0,0,0,0.07);
+  backdrop-filter: blur(6px);
+  box-sizing: border-box;
+  flex: 0 0 100%;
+  align-self: stretch;
+}
+
+@media (prefers-color-scheme: dark){
+  .lia-ocrbar{
+    background: rgba(255,255,255,0.08);
+  }
+}
+
+.lia-ocr-head{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 6px;
+}
+
+.lia-ocr-title{
+  font-weight: 850;
+  letter-spacing: 0.2px;
+  line-height: 1;
+}
+
+.lia-ocr-dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 2px solid var(--canvas-border);
+  background: transparent;
+  box-sizing: border-box;
+}
+
+.lia-ocrbar[data-state="ready"] .lia-ocr-dot,
+.lia-ocrbar[data-state="working"] .lia-ocr-dot{
+  border-color: var(--canvas-accent);
+  background: var(--canvas-accent);
+}
+
+.lia-ocrbar[data-state="loading"] .lia-ocr-dot{
+  border-color: var(--canvas-accent);
+  border-style: dashed;
+}
+
+.lia-ocrbar[data-state="error"] .lia-ocr-dot{
+  border-color: #c00000;
+  background: #c00000;
+}
+
+.lia-ocr-pills{
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+}
+
+.lia-ocr-pill{
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 2px solid var(--canvas-border);
+  background: transparent;
+  max-width: 100%;
+}
+
+.lia-ocr-pill .k{
+  opacity: 0.75;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.lia-ocr-pill .v{
+  font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: min(52vw, 520px);
+}
+
+.lia-ocr-actions{
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  margin-left: auto;
+}
+
+.lia-ocr-btn,
+.lia-ocr-select{
+  border: 2px solid var(--canvas-accent);
+  background: transparent;
+  color: var(--canvas-accent);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-weight: 850;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1;
+}
+
+.lia-ocr-select{
+  appearance: none;
+}
+
+.lia-ocr-btn:active,
+.lia-ocr-select:active{
+  transform: translateY(1px);
+}
+
+.lia-ocr-progress{
+  display: none;
+  align-items: center;
+  gap: 8px;
+  width: min(420px, 100%);
+}
+
+.lia-ocr-progress[data-on="1"]{
+  display: inline-flex;
+}
+
+.lia-ocr-progbar{
+  height: 10px;
+  width: 100%;
+  border-radius: 999px;
+  border: 2px solid var(--canvas-border);
+  overflow: hidden;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+.lia-ocr-progfill{
+  height: 100%;
+  width: 0%;
+  background: var(--canvas-accent);
+}
+
+.lia-ocr-progtxt{
+  font-weight: 850;
+  min-width: 44px;
+  text-align: right;
+}
+
+.lia-ocr-log{
+  display: none;
+  width: 100%;
+  margin: 6px 0 0 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 2px solid var(--canvas-border);
+  background: transparent;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 0.92em;
+  line-height: 1.25;
+  white-space: pre-wrap;
+  box-sizing: border-box;
+}
+
+.lia-ocrbar[data-open="1"] .lia-ocr-log{
+  display: block;
+}
+
+.lia-tool-btn .ico-accent{
+  stroke: var(--canvas-accent);
+  fill: none;
+}
+
+.lia-tool-btn .ico-accent-fill{
+  fill: var(--canvas-accent);
+}
+
+.lia-ocr-loadwrap{
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(10px + var(--lia-ocrbar-h, 0px) + var(--lia-ocrbar-gap, 0px));
+  z-index: 10001;
+  display: none;
+  width: min(820px, calc(100vw - 20px));
+  max-width: calc(100vw - 20px);
+  margin: 0;
+  padding: 10px 12px;
+  border: 2px solid var(--canvas-border);
+  border-radius: 14px;
+  background: rgba(0,0,0,0.05);
+  backdrop-filter: blur(6px);
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+@media (prefers-color-scheme: dark){
+  .lia-ocr-loadwrap{
+    background: rgba(255,255,255,0.06);
+  }
+}
+
+.lia-ocr-loadwrap[data-on="1"]{
+  display: block;
+}
+
+.lia-ocr-loadmsg{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  font-weight: 850;
+}
+
+.lia-ocr-loadmsg .t{ font-weight: 850; }
+.lia-ocr-loadmsg .p{ font-weight: 900; min-width: 3.5em; text-align: right; }
+
+.lia-ocr-loaddetail{
+  margin-top: 6px;
+  opacity: .78;
+  font-weight: 700;
+  font-size: 0.95em;
+}
+
+.lia-ocr-loadtrack{
+  margin-top: 8px;
+  height: 10px;
+  width: 100%;
+  border-radius: 999px;
+  border: 2px solid var(--canvas-border);
+  overflow: hidden;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+.lia-ocr-loadfill{
+  height: 100%;
+  width: 0%;
+  background: var(--canvas-accent);
+}
+
+.lia-ocr-loadwrap[data-indet="1"] .lia-ocr-loadfill{
+  width: 35%;
+  animation: lia_ocr_indet 1.1s linear infinite;
+}
+
+@keyframes lia_ocr_indet{
+  0%{ transform: translateX(-120%); }
+  100%{ transform: translateX(320%); }
+}
+
+.lia-rect-progress{
+  position: absolute;
+  z-index: 59;
+  display: none;
+  left: 0;
+  top: 0;
+  width: 180px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 2px solid var(--canvas-border);
+  background: rgba(0,0,0,0.10);
+  backdrop-filter: blur(6px);
+  box-sizing: border-box;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (prefers-color-scheme: dark){
+  .lia-rect-progress{
+    background: rgba(255,255,255,0.10);
+  }
+}
+
+.lia-rect-progress[data-on="1"]{
+  display: flex;
+}
+
+.lia-rect-progbar{
+  flex: 1 1 auto;
+  height: 8px;
+  border-radius: 999px;
+  border: 2px solid var(--canvas-border);
+  overflow: hidden;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+.lia-rect-progfill{
+  height: 100%;
+  width: 0%;
+  background: var(--canvas-accent);
+}
+
+.lia-rect-progtxt{
+  font-weight: 850;
+  font-size: 0.8em;
+  min-width: 3.2em;
+  text-align: right;
+}
+
+.lia-tex-preview{
+  display: none;
+  align-items: center;
+  gap: 8px;
+  vertical-align: middle;
+  min-height: 2.1em;
+  max-width: 100%;
+  width: fit-content;
+  padding: 4px 10px;
+  border: 2px solid var(--canvas-accent);
+  border-radius: 999px;
+  background: transparent;
+  cursor: text;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.lia-tex-preview[data-on="1"]{
+  display: inline-flex;
+}
+
+.lia-tex-preview-math{
+  min-width: 0;
+  overflow: visible;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+.lia-tex-preview-hint{
+  font-size: 0.78em;
+  font-weight: 800;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+  `;
 
   (document.head || document.documentElement).appendChild(st);
 }
@@ -5428,30 +5216,316 @@ function ensureCss(){
   // =========================================================
   // Lia Input Helper: setze das Feld direkt VOR dem @canvas-Anchor
   // =========================================================
-  function __liaApplyValue(el, value){
-    const v = String(value);
+function __liaApplyValue(el, value){
+  const v = String(value);
 
+  try{
+    if (el && el.getAttribute && el.getAttribute('contenteditable') === 'true'){
+      el.textContent = v;
+      el.dispatchEvent(new Event('input',  { bubbles:true }));
+      el.dispatchEvent(new Event('change', { bubbles:true }));
+      return true;
+    }
+
+    if (el && ('value' in el)){
+      el.value = v;
+      el.dispatchEvent(new Event('input',  { bubbles:true }));
+      el.dispatchEvent(new Event('change', { bubbles:true }));
+      return true;
+    }
+  }catch(_){}
+  return false;
+}
+
+function __liaReadFieldValue(el){
+  try{
+    if (!el) return '';
+    if (el.getAttribute && el.getAttribute('contenteditable') === 'true'){
+      return String(el.textContent || '');
+    }
+    if ('value' in el){
+      return String(el.value || '');
+    }
+  }catch(_){}
+  return '';
+}
+
+
+function __liaAutoSizeTexWidgets(el){
+  if (!el) return;
+
+  const box = el.__liaTexPreviewBox || null;
+  const math = box ? box.querySelector('.lia-tex-preview-math') : null;
+
+  function getAvailableWidth(node){
     try{
-      if (el && el.getAttribute && el.getAttribute('contenteditable') === 'true'){
-        el.textContent = v;
-        el.dispatchEvent(new Event('input',  { bubbles:true }));
-        el.dispatchEvent(new Event('change', { bubbles:true }));
-        return true;
-      }
+      const parent = (node && node.parentElement) ? node.parentElement : null;
+      if (!parent) return 900;
 
-      if (el && ('value' in el)){
-        el.value = v;
-        el.dispatchEvent(new Event('input',  { bubbles:true }));
-        el.dispatchEvent(new Event('change', { bubbles:true }));
-        return true;
-      }
+      const pr = parent.getBoundingClientRect();
+      if (!pr || !pr.width) return 900;
+
+      return Math.max(80, Math.floor(pr.width - 8));
     }catch(_){}
-    return false;
+    return 900;
   }
 
-function __liaFindAndSetInputBeforeNode(refEl, value){
+  function applyWidth(px){
+    const avail = getAvailableWidth(box || el);
+    const w = Math.max(80, Math.min(Math.ceil(px), avail));
+
+    try{
+      el.style.width = w + 'px';
+      el.style.maxWidth = '100%';
+      el.style.boxSizing = 'border-box';
+    }catch(_){}
+
+    if (box){
+      try{
+        box.style.width = w + 'px';
+        box.style.maxWidth = '100%';
+        box.style.boxSizing = 'border-box';
+      }catch(_){}
+    }
+
+    if (math){
+      try{
+        math.style.minWidth = '0';
+        math.style.maxWidth = '100%';
+      }catch(_){}
+    }
+  }
+
+  function measureAndApply(){
+    try{
+      let wanted = 140;
+
+      if (box && math && box.dataset.on === '1'){
+        const inner = math.scrollWidth || math.getBoundingClientRect().width || 0;
+        const hint = box.querySelector('.lia-tex-preview-hint');
+        const hintW = hint ? (hint.getBoundingClientRect().width || 0) : 0;
+
+        wanted = inner + hintW + 32;
+      }else{
+        const raw = __liaReadFieldValue(el);
+        wanted = Math.max(140, raw.length * 0.62 * 16 + 28);
+      }
+
+      applyWidth(wanted);
+    }catch(_){}
+  }
+
+  requestAnimationFrame(measureAndApply);
+  setTimeout(measureAndApply, 0);
+  setTimeout(measureAndApply, 60);
+}
+
+
+
+var __liaKatexLoadPromise = null;
+
+function __liaEnsureKatex(){
+  const ROOT_WIN = getRootWindow();
+
+  const candidates = [
+    window.katex,
+    ROOT_WIN.katex,
+    window.KaTeX,
+    ROOT_WIN.KaTeX
+  ];
+
+  for (let i = 0; i < candidates.length; i++){
+    const k = candidates[i];
+    if (k && typeof k.render === 'function'){
+      return Promise.resolve(k);
+    }
+  }
+
+  if (__liaKatexLoadPromise){
+    return __liaKatexLoadPromise;
+  }
+
+  __liaKatexLoadPromise = (async function(){
+    const ROOT_DOC = ROOT_WIN.document || document;
+
+    if (!ROOT_DOC.getElementById('__lia_katex_css_v1')){
+      const link = ROOT_DOC.createElement('link');
+      link.id = '__lia_katex_css_v1';
+      link.rel = 'stylesheet';
+      link.href = 'https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css';
+      (ROOT_DOC.head || ROOT_DOC.documentElement).appendChild(link);
+    }
+
+    const mod = await import(/* @vite-ignore */ 'https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.mjs');
+    const katex = mod && (mod.default || mod);
+
+    if (!katex || typeof katex.render !== 'function'){
+      throw new Error('KaTeX render not available.');
+    }
+
+    try{
+      if (!ROOT_WIN.katex) ROOT_WIN.katex = katex;
+    }catch(_){}
+
+    try{
+      if (!window.katex) window.katex = katex;
+    }catch(_){}
+
+    return katex;
+  })();
+
+  return __liaKatexLoadPromise;
+}
+
+function __liaRenderTexPreview(target, tex){
+  const src = String(tex || '').trim();
+  target.innerHTML = '';
+  if (!src) return false;
+
+  const box = target.closest ? target.closest('.lia-tex-preview') : null;
+  const el = box ? (function(){
+    const prev = box.previousElementSibling;
+    return prev || null;
+  })() : null;
+
+  const ROOT_WIN = getRootWindow();
+  const KATEX = window.katex || ROOT_WIN.katex || null;
+
+  function resizeLater(){
+    if (!el) return;
+    __liaAutoSizeTexWidgets(el);
+  }
+
   try{
-    if (!refEl || refEl.nodeType !== 1) return false;
+    if (KATEX && typeof KATEX.render === 'function'){
+      KATEX.render(src, target, {
+        throwOnError: false,
+        displayMode: false
+      });
+      resizeLater();
+      return true;
+    }
+  }catch(_){}
+
+  __liaEnsureKatex()
+    .then(function(katex){
+      if (!target || !target.isConnected) return;
+      target.innerHTML = '';
+      try{
+        katex.render(src, target, {
+          throwOnError: false,
+          displayMode: false
+        });
+      }catch(_){
+        target.textContent = src;
+      }
+      resizeLater();
+    })
+    .catch(function(){
+      if (!target || !target.isConnected) return;
+      target.textContent = src;
+      resizeLater();
+    });
+
+  target.textContent = src;
+  resizeLater();
+  return false;
+}
+
+function __liaShowTexEditor(el){
+  if (!el || !el.__liaTexPreviewBox) return;
+
+  el.__liaTexPreviewBox.dataset.on = '0';
+  el.__liaTexPreviewBox.style.display = 'none';
+  el.style.display = '';
+  __liaAutoSizeTexWidgets(el);
+
+  try{
+    el.focus();
+    if (typeof el.select === 'function') el.select();
+  }catch(_){}
+}
+
+function __liaShowTexPreview(el){
+  if (!el || !el.__liaTexPreviewBox) return;
+
+  const value = __liaReadFieldValue(el).trim();
+
+  if (!value){
+    el.__liaTexPreviewBox.dataset.on = '0';
+    el.__liaTexPreviewBox.style.display = 'none';
+    el.style.display = '';
+    return;
+  }
+
+  const math = el.__liaTexPreviewBox.querySelector('.lia-tex-preview-math');
+  __liaRenderTexPreview(math, value);
+
+  el.__liaTexPreviewBox.dataset.on = '1';
+  el.__liaTexPreviewBox.style.display = 'inline-flex';
+  el.style.display = 'none';  
+  __liaAutoSizeTexWidgets(el);
+}
+
+function __liaEnsureTexPreview(el){
+  if (!el) return null;
+  if (el.__liaTexPreviewReady) return el;
+
+  el.__liaTexPreviewReady = true;
+
+  const box = document.createElement('span');
+  box.className = 'lia-tex-preview';
+  box.dataset.on = '0';
+  box.innerHTML = `
+    <span class="lia-tex-preview-math"></span>
+    <span class="lia-tex-preview-hint">Bearbeiten</span>
+  `;
+
+  box.addEventListener('click', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    __liaShowTexEditor(el);
+  });
+
+  el.insertAdjacentElement('afterend', box);
+  el.__liaTexPreviewBox = box;
+
+  el.addEventListener('input', function(){
+    const math = box.querySelector('.lia-tex-preview-math');
+    __liaRenderTexPreview(math, __liaReadFieldValue(el));
+  });
+
+  el.addEventListener('blur', function(){
+    setTimeout(function(){
+      __liaShowTexPreview(el);
+    }, 0);
+  });
+
+  el.addEventListener('keydown', function(e){
+    const isTextarea =
+      (el.tagName && el.tagName.toUpperCase() === 'TEXTAREA') ||
+      (el.getAttribute && el.getAttribute('contenteditable') === 'true');
+
+    if (e.key === 'Escape'){
+      e.preventDefault();
+      __liaShowTexPreview(el);
+      return;
+    }
+
+    if (e.key === 'Enter' && !isTextarea){
+      e.preventDefault();
+      __liaShowTexPreview(el);
+    }
+  });
+
+  __liaShowTexPreview(el);  
+  __liaAutoSizeTexWidgets(el);
+  return el;
+}
+
+function __liaFindInputBeforeNode(refEl){
+  try{
+    if (!refEl || refEl.nodeType !== 1) return null;
 
     function findIn(node){
       if (!node || node.nodeType !== 1) return null;
@@ -5465,18 +5539,16 @@ function __liaFindAndSetInputBeforeNode(refEl, value){
       return null;
     }
 
-    // 1) Siblings vor refEl
     let n = refEl.previousElementSibling;
     while (n){
       if (n.matches && (n.matches('input, textarea') || n.getAttribute('contenteditable') === 'true')){
-        if (__liaApplyValue(n, value)) return true;
+        return n;
       }
       const hit = findIn(n);
-      if (hit && __liaApplyValue(hit, value)) return true;
+      if (hit) return hit;
       n = n.previousElementSibling;
     }
 
-    // 2) In Parent: alle Elemente vor refEl
     let cur = refEl;
     for (let depth = 0; depth < 10; depth++){
       const p = cur.parentElement;
@@ -5489,22 +5561,54 @@ function __liaFindAndSetInputBeforeNode(refEl, value){
         const el = kids[i];
 
         if (el.matches && (el.matches('input, textarea') || el.getAttribute('contenteditable') === 'true')){
-          if (__liaApplyValue(el, value)) return true;
+          return el;
         }
         const hit = findIn(el);
-        if (hit && __liaApplyValue(hit, value)) return true;
+        if (hit) return hit;
       }
 
       cur = p;
     }
   }catch(_){}
-  return false;
+  return null;
+}
+
+
+function __liaRefreshTexPreviewNear(refEl){
+  function run(){
+    const fresh = __liaFindInputBeforeNode(refEl);
+    if (!fresh) return;
+    __liaEnsureTexPreview(fresh);
+    __liaShowTexPreview(fresh);
+  }
+
+  setTimeout(run, 0);
+  setTimeout(run, 80);
+  setTimeout(run, 180);
+}
+
+
+function __liaFindAndSetInputBeforeNode(refEl, value){
+  const el = __liaFindInputBeforeNode(refEl);
+  if (!el) return false;
+
+  const ok = __liaApplyValue(el, value);
+  if (!ok) return false;
+
+  __liaRefreshTexPreviewNear(refEl);
+  return true;
 }
 
 
 
 
 
+function __liaInitTexPreviews(){
+  document.querySelectorAll('.lia-canvas-pair').forEach(function(pair){
+    const field = __liaFindInputBeforeNode(pair);
+    if (field) __liaEnsureTexPreview(field);
+  });
+}
 
 
 
@@ -5731,6 +5835,596 @@ function __liaFindAndSetInputBeforeNode(refEl, value){
     return `rgba(0,0,0,${a})`;
   }
 
+
+  // -----------------------------
+  // Canvas Freeze API
+  // - exportiert den final sichtbaren Canvas-Zustand
+  // - rendert daraus eine statische Frozen-Preview
+  // - noch OHNE Eingriff in den Freeze-Code
+  // -----------------------------
+  function cfNum(v, fallback){
+    const n = Number(v);
+    return isFinite(n) ? n : (fallback || 0);
+  }
+
+  function cfClamp(v, a, b){
+    return Math.max(a, Math.min(b, v));
+  }
+
+  function cfRound(v){
+    return Math.round(cfNum(v, 0) * 100) / 100;
+  }
+
+  function cfMod(v, m){
+    const mm = cfNum(m, 0);
+    if (!(mm > 0)) return 0;
+    const x = cfNum(v, 0) % mm;
+    return x < 0 ? (x + mm) : x;
+  }
+
+  function cfCloneView(view){
+    const src = (view && typeof view === 'object') ? view : {};
+    return {
+      panX: cfNum(src.panX, 0),
+      panY: cfNum(src.panY, 0),
+      scale: cfNum(src.scale, 1) || 1,
+      minScale: cfNum(src.minScale, 0.25),
+      maxScale: cfNum(src.maxScale, 8)
+    };
+  }
+
+  function cfProjectWorldPoint(pt, view){
+    const x = cfNum(pt && pt.x, 0);
+    const y = cfNum(pt && pt.y, 0);
+    const s = cfNum(view && view.scale, 1) || 1;
+    const px = x * s + cfNum(view && view.panX, 0);
+    const py = y * s + cfNum(view && view.panY, 0);
+    return { x:px, y:py };
+  }
+
+  function cfNormalizeRect(x0, y0, x1, y1){
+    const left = Math.min(cfNum(x0, 0), cfNum(x1, 0));
+    const top  = Math.min(cfNum(y0, 0), cfNum(y1, 0));
+    const right  = Math.max(cfNum(x0, 0), cfNum(x1, 0));
+    const bottom = Math.max(cfNum(y0, 0), cfNum(y1, 0));
+
+    return {
+      x: left,
+      y: top,
+      w: Math.max(0, right - left),
+      h: Math.max(0, bottom - top)
+    };
+  }
+
+  function cfBBoxFromScreenPoints(points, radius){
+    const pts = Array.isArray(points) ? points : [];
+    if (!pts.length) return null;
+
+    let xMin = Infinity, yMin = Infinity, xMax = -Infinity, yMax = -Infinity;
+
+    for (let i = 0; i < pts.length; i++){
+      const p = pts[i];
+      const x = cfNum(p && p.x, 0);
+      const y = cfNum(p && p.y, 0);
+
+      if (x < xMin) xMin = x;
+      if (y < yMin) yMin = y;
+      if (x > xMax) xMax = x;
+      if (y > yMax) yMax = y;
+    }
+
+    const r = Math.max(0, cfNum(radius, 0));
+
+    return {
+      x: xMin - r,
+      y: yMin - r,
+      w: Math.max(0, (xMax - xMin) + 2 * r),
+      h: Math.max(0, (yMax - yMin) + 2 * r)
+    };
+  }
+
+  function cfIntersectViewport(bb, vw, vh){
+    if (!bb) return null;
+
+    const x0 = Math.max(0, cfNum(bb.x, 0));
+    const y0 = Math.max(0, cfNum(bb.y, 0));
+    const x1 = Math.min(cfNum(vw, 0), cfNum(bb.x, 0) + cfNum(bb.w, 0));
+    const y1 = Math.min(cfNum(vh, 0), cfNum(bb.y, 0) + cfNum(bb.h, 0));
+
+    if (x1 <= x0 || y1 <= y0) return null;
+
+    return {
+      x: x0,
+      y: y0,
+      w: x1 - x0,
+      h: y1 - y0
+    };
+  }
+
+  function cfUnionBBox(a, b){
+    if (!a) return b ? { x:b.x, y:b.y, w:b.w, h:b.h } : null;
+    if (!b) return { x:a.x, y:a.y, w:a.w, h:a.h };
+
+    const x0 = Math.min(a.x, b.x);
+    const y0 = Math.min(a.y, b.y);
+    const x1 = Math.max(a.x + a.w, b.x + b.w);
+    const y1 = Math.max(a.y + a.h, b.y + b.h);
+
+    return {
+      x: x0,
+      y: y0,
+      w: Math.max(0, x1 - x0),
+      h: Math.max(0, y1 - y0)
+    };
+  }
+
+  function cfGetCanvasStore(){
+    return window.__LIA_CANVAS_STORE__ || {};
+  }
+
+  function cfGetCanvasMountFromPair(pair){
+    if (!pair || !pair.querySelector) return null;
+    return pair.querySelector('.lia-canvas-mount');
+  }
+
+  function cfGetCanvasUidFromPair(pair){
+    const mount = cfGetCanvasMountFromPair(pair);
+    if (!mount) return '';
+    return ensureMountUID(mount);
+  }
+
+  function cfGetCanvasStoreEntry(uid){
+    const STORE = cfGetCanvasStore();
+    return uid && STORE[uid] ? STORE[uid] : null;
+  }
+
+  function cfCollectCanvasPairsFromRoot(root){
+    const scope = (root && root.querySelectorAll) ? root : document;
+    return Array.from(scope.querySelectorAll('.lia-canvas-pair')).filter(function(pair){
+      return !!cfGetCanvasMountFromPair(pair);
+    });
+  }
+
+  function cfBuildScreenItemsFromEntry(entry){
+    const src = (entry && typeof entry === 'object') ? entry : {};
+    const items = Array.isArray(src.ITEMS) ? src.ITEMS : [];
+    const view = cfCloneView(src.VIEW || {});
+    const vw = Math.max(1, Math.round(cfNum(src.wrapW, 0)));
+    const vh = Math.max(1, Math.round(cfNum(src.canvasH, 0)));
+
+    const rectFillDefault = rgbaFromAny(getAccentColor(), 0.28);
+    const out = [];
+
+    for (let i = 0; i < items.length; i++){
+      const it = items[i];
+      if (!it || typeof it !== 'object') continue;
+
+      if (it.kind === 'path'){
+        const ptsSrc = Array.isArray(it.points) ? it.points : [];
+        if (!ptsSrc.length) continue;
+
+        const pts = ptsSrc.map(function(p){
+          const q = cfProjectWorldPoint(p, view);
+          return { x:q.x, y:q.y };
+        });
+
+        const screenWidth = Math.max(0.75, cfNum(it.width, 1) * cfNum(view.scale, 1));
+        const bb = cfBBoxFromScreenPoints(pts, screenWidth / 2 + 2);
+        const vis = cfIntersectViewport(bb, vw, vh);
+        if (!vis) continue;
+
+        out.push({
+          k: (it.tool === 'eraser') ? 'e' : 'p',
+          c: String(it.color || getAutoPen()),
+          a: cfClamp(cfNum(it.alpha, 1), 0, 1),
+          w: cfRound(screenWidth),
+          p: pts.map(function(p){
+            return [cfRound(p.x), cfRound(p.y)];
+          })
+        });
+
+        continue;
+      }
+
+      if (it.kind === 'rect'){
+        const a = cfProjectWorldPoint({ x:it.x0, y:it.y0 }, view);
+        const b = cfProjectWorldPoint({ x:it.x1, y:it.y1 }, view);
+
+        const bb = cfNormalizeRect(a.x, a.y, b.x, b.y);
+        const vis = cfIntersectViewport(bb, vw, vh);
+        if (!vis) continue;
+
+        const alpha = cfClamp(cfNum(it.alpha, 0.28), 0, 1);
+        const fill = (it.color)
+          ? rgbaFromAny(it.color, alpha)
+          : rgbaFromAny(getAccentColor(), alpha);
+
+        out.push({
+          k: 'r',
+          f: fill || rectFillDefault,
+          x: cfRound(bb.x),
+          y: cfRound(bb.y),
+          w: cfRound(bb.w),
+          h: cfRound(bb.h)
+        });
+
+        continue;
+      }
+    }
+
+    return {
+      vw: vw,
+      vh: vh,
+      items: out
+    };
+  }
+
+  function cfPaintFreezeItems(ctx, items){
+    const list = Array.isArray(items) ? items : [];
+
+    for (let i = 0; i < list.length; i++){
+      const it = list[i];
+      if (!it) continue;
+
+      if (it.k === 'r'){
+        ctx.save();
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = String(it.f || 'rgba(0,0,0,0.15)');
+        ctx.fillRect(
+          cfNum(it.x, 0),
+          cfNum(it.y, 0),
+          Math.max(0, cfNum(it.w, 0)),
+          Math.max(0, cfNum(it.h, 0))
+        );
+        ctx.restore();
+        continue;
+      }
+
+      const pts = Array.isArray(it.p) ? it.p : [];
+      if (!pts.length) continue;
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(cfNum(pts[0][0], 0), cfNum(pts[0][1], 0));
+
+      for (let j = 1; j < pts.length; j++){
+        ctx.lineTo(cfNum(pts[j][0], 0), cfNum(pts[j][1], 0));
+      }
+
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.lineWidth = Math.max(0.75, cfNum(it.w, 1));
+
+      if (it.k === 'e'){
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.globalAlpha = 1;
+        ctx.strokeStyle = 'rgba(0,0,0,1)';
+      }else{
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.globalAlpha = cfClamp(cfNum(it.a, 1), 0, 1);
+        ctx.strokeStyle = String(it.c || '#000');
+      }
+
+      ctx.stroke();
+      ctx.restore();
+    }
+  }
+
+  function cfComputeAlphaBBox(canvas, pad){
+    if (!canvas) return null;
+
+    const x = canvas.getContext('2d', { willReadFrequently:true });
+    const W = canvas.width | 0;
+    const H = canvas.height | 0;
+    if (!(W > 0 && H > 0)) return null;
+
+    const img = x.getImageData(0, 0, W, H);
+    const d = img.data;
+
+    let xMin = W, yMin = H, xMax = -1, yMax = -1;
+
+    for (let y = 0; y < H; y++){
+      const row = y * W * 4;
+      for (let x0 = 0; x0 < W; x0++){
+        const a = d[row + x0 * 4 + 3];
+        if (a <= 10) continue;
+
+        if (x0 < xMin) xMin = x0;
+        if (y < yMin) yMin = y;
+        if (x0 > xMax) xMax = x0;
+        if (y > yMax) yMax = y;
+      }
+    }
+
+    if (xMax < 0) return null;
+
+    const p = Math.max(0, Math.round(cfNum(pad, 0)));
+
+    xMin = Math.max(0, xMin - p);
+    yMin = Math.max(0, yMin - p);
+    xMax = Math.min(W - 1, xMax + p);
+    yMax = Math.min(H - 1, yMax + p);
+
+    return {
+      x: xMin,
+      y: yMin,
+      w: Math.max(1, xMax - xMin + 1),
+      h: Math.max(1, yMax - yMin + 1)
+    };
+  }
+
+  function cfRebaseFreezeItems(items, crop){
+    const list = Array.isArray(items) ? items : [];
+    const dx = cfNum(crop && crop.x, 0);
+    const dy = cfNum(crop && crop.y, 0);
+
+    return list.map(function(it){
+      if (!it) return null;
+
+      if (it.k === 'r'){
+        return {
+          k: 'r',
+          f: String(it.f || ''),
+          x: cfRound(cfNum(it.x, 0) - dx),
+          y: cfRound(cfNum(it.y, 0) - dy),
+          w: cfRound(cfNum(it.w, 0)),
+          h: cfRound(cfNum(it.h, 0))
+        };
+      }
+
+      return {
+        k: it.k === 'e' ? 'e' : 'p',
+        c: String(it.c || ''),
+        a: cfClamp(cfNum(it.a, 1), 0, 1),
+        w: cfRound(cfNum(it.w, 1)),
+        p: (Array.isArray(it.p) ? it.p : []).map(function(pt){
+          return [
+            cfRound(cfNum(pt && pt[0], 0) - dx),
+            cfRound(cfNum(pt && pt[1], 0) - dy)
+          ];
+        })
+      };
+    }).filter(Boolean);
+  }
+
+  function cfBuildBackgroundRecipe(entry, crop){
+    const src = (entry && typeof entry === 'object') ? entry : {};
+    const view = cfCloneView(src.VIEW || {});
+    const mode = String(src.bgMode || 'none');
+
+    if (mode !== 'grid' && mode !== 'lined'){
+      return { m:'none' };
+    }
+
+    const stepWorld = Math.max(1, cfNum(src.bgStep, 24));
+    const stepPx = stepWorld * Math.max(0.0001, cfNum(view.scale, 1));
+
+    if (!(stepPx > 0)){
+      return { m:'none' };
+    }
+
+    const cropX = cfNum(crop && crop.x, 0);
+    const cropY = cfNum(crop && crop.y, 0);
+
+    return {
+      m: mode,
+      s: cfRound(stepPx),
+      ox: cfRound(cfMod(cfNum(view.panX, 0) - cropX, stepPx)),
+      oy: cfRound(cfMod(cfNum(view.panY, 0) - cropY, stepPx)),
+      c: rgbaFromAny(getAccentColor(), 0.65),
+      lw: 1.125
+    };
+  }
+
+  function cfPaintBackground(ctx, bg, w, h){
+    const spec = (bg && typeof bg === 'object') ? bg : {};
+    const mode = String(spec.m || 'none');
+    if (mode !== 'grid' && mode !== 'lined') return;
+
+    const step = Math.max(1, cfNum(spec.s, 1));
+    const ox = cfMod(cfNum(spec.ox, 0), step);
+    const oy = cfMod(cfNum(spec.oy, 0), step);
+    const col = String(spec.c || rgbaFromAny(getAccentColor(), 0.65));
+    const lw = Math.max(0.5, cfNum(spec.lw, 1.125));
+
+    ctx.save();
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.globalAlpha = 1;
+    ctx.strokeStyle = col;
+    ctx.lineWidth = lw;
+
+    if (mode === 'grid'){
+      ctx.beginPath();
+
+      for (let x = ox; x <= w; x += step){
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, h);
+      }
+
+      for (let y = oy; y <= h; y += step){
+        ctx.moveTo(0, y);
+        ctx.lineTo(w, y);
+      }
+
+      ctx.stroke();
+      ctx.restore();
+      return;
+    }
+
+    if (mode === 'lined'){
+      ctx.beginPath();
+
+      for (let y = oy; y <= h; y += step){
+        ctx.moveTo(0, y);
+        ctx.lineTo(w, y);
+      }
+
+      ctx.stroke();
+      ctx.restore();
+    }
+  }
+
+  function cfExportCanvasFreezeStateFromEntry(uid, entry){
+    if (!uid || !entry) return null;
+
+    const built = cfBuildScreenItemsFromEntry(entry);
+    const vw = Math.max(1, built.vw | 0);
+    const vh = Math.max(1, built.vh | 0);
+    const items = Array.isArray(built.items) ? built.items : [];
+
+    const off = document.createElement('canvas');
+    off.width = vw;
+    off.height = vh;
+
+    const ox = off.getContext('2d', { willReadFrequently:true });
+    ox.clearRect(0, 0, vw, vh);
+    cfPaintFreezeItems(ox, items);
+
+    const crop = cfComputeAlphaBBox(off, 8);
+
+    if (!crop){
+      return {
+        v: 'cvf1',
+        u: String(uid),
+        e: 1,
+        w: 0,
+        h: 0,
+        bg: { m:'none' },
+        it: []
+      };
+    }
+
+    return {
+      v: 'cvf1',
+      u: String(uid),
+      w: crop.w,
+      h: crop.h,
+      bg: cfBuildBackgroundRecipe(entry, crop),
+      it: cfRebaseFreezeItems(items, crop)
+    };
+  }
+
+  function cfExportCanvasFreezeStateFromPair(pair){
+    const uid = cfGetCanvasUidFromPair(pair);
+    if (!uid) return null;
+
+    const entry = cfGetCanvasStoreEntry(uid);
+    if (!entry) return null;
+
+    return cfExportCanvasFreezeStateFromEntry(uid, entry);
+  }
+
+  function cfExportAllCanvasFreezeStatesFromRoot(root){
+    const pairs = cfCollectCanvasPairsFromRoot(root);
+    const out = [];
+
+    for (let i = 0; i < pairs.length; i++){
+      const state = cfExportCanvasFreezeStateFromPair(pairs[i]);
+      if (!state) continue;
+
+      out.push(state);
+    }
+
+    return out;
+  }
+
+  function cfHasCanvasFreezeContent(state){
+    return !!(
+      state &&
+      state.e !== 1 &&
+      cfNum(state.w, 0) > 0 &&
+      cfNum(state.h, 0) > 0 &&
+      Array.isArray(state.it) &&
+      state.it.length
+    );
+  }
+
+  function cfPaintCanvasFreezeStateToCanvas(canvas, state){
+    if (!canvas || !state) return null;
+
+    const w = Math.max(1, Math.round(cfNum(state.w, 1)));
+    const h = Math.max(1, Math.round(cfNum(state.h, 1)));
+    const dpr = window.devicePixelRatio || 1;
+
+    canvas.width = Math.max(1, Math.round(w * dpr));
+    canvas.height = Math.max(1, Math.round(h * dpr));
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+
+    const ctx = canvas.getContext('2d', { willReadFrequently:true });
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+
+    cfPaintBackground(ctx, state.bg || { m:'none' }, w, h);
+    cfPaintFreezeItems(ctx, Array.isArray(state.it) ? state.it : []);
+
+    return canvas;
+  }
+
+  function cfRenderCanvasFreezeStateIntoMount(mount, state){
+    if (!mount || !(mount instanceof Element) || !state) return null;
+
+    mount.dataset.open = '1';
+    mount.innerHTML = '';
+
+    if (!cfHasCanvasFreezeContent(state)){
+      const empty = document.createElement('span');
+      empty.className = 'lia-canvas-freeze-empty';
+      empty.textContent = 'Keine sichtbaren Canvas-Inhalte eingefroren.';
+      mount.appendChild(empty);
+      return empty;
+    }
+
+    const block = document.createElement('span');
+    block.className = 'lia-draw-block';
+
+    const wrap = document.createElement('span');
+    wrap.className = 'lia-draw-wrap';
+
+    const canvas = document.createElement('canvas');
+    canvas.className = 'lia-canvas-freeze-preview';
+    canvas.setAttribute('aria-label', 'Eingefrorene Zeichenfläche');
+
+    wrap.appendChild(canvas);
+    block.appendChild(wrap);
+    mount.appendChild(block);
+
+    cfPaintCanvasFreezeStateToCanvas(canvas, state);
+    return canvas;
+  }
+
+  function cfRenderCanvasFreezeStateIntoPair(pair, state){
+    const mount = cfGetCanvasMountFromPair(pair);
+    if (!mount) return null;
+    return cfRenderCanvasFreezeStateIntoMount(mount, state);
+  }
+
+  function ensureCanvasFreezeApi(){
+    const api = ROOT.__LIA_CANVAS_FREEZE_API__ || {};
+
+    api.version = 'cvf1';
+    api.collectCanvasPairsFromRoot = cfCollectCanvasPairsFromRoot;
+    api.getCanvasMountFromPair = cfGetCanvasMountFromPair;
+    api.getCanvasUidFromPair = cfGetCanvasUidFromPair;
+    api.getCanvasStoreEntry = cfGetCanvasStoreEntry;
+    api.exportCanvasFreezeStateFromEntry = cfExportCanvasFreezeStateFromEntry;
+    api.exportCanvasFreezeStateFromPair = cfExportCanvasFreezeStateFromPair;
+    api.exportAllCanvasFreezeStatesFromRoot = cfExportAllCanvasFreezeStatesFromRoot;
+    api.hasCanvasFreezeContent = cfHasCanvasFreezeContent;
+    api.paintCanvasFreezeStateToCanvas = cfPaintCanvasFreezeStateToCanvas;
+    api.renderCanvasFreezeStateIntoMount = cfRenderCanvasFreezeStateIntoMount;
+    api.renderCanvasFreezeStateIntoPair = cfRenderCanvasFreezeStateIntoPair;
+
+    ROOT.__LIA_CANVAS_FREEZE_API__ = api;
+    window.__LIA_CANVAS_FREEZE_API__ = api;
+
+    return api;
+  }
+
+  ensureCanvasFreezeApi();
+
+
   // -----------------------------
   // Canvas HTML (INLINE-STABIL: spans statt divs)
   // -----------------------------
@@ -5829,6 +6523,12 @@ function setupCanvas(canvas){
     </svg>
   `;
   wrap.appendChild(rectCloseBtn);
+
+  // Sichtbarer Radierer-Ring
+  const eraserRing = document.createElement('span');
+  eraserRing.className = 'lia-eraser-ring';
+  eraserRing.dataset.on = '0';
+  wrap.appendChild(eraserRing);
 
   // verhindert, dass Pointer-Events "durchfallen"
   rectCloseBtn.addEventListener('pointerdown', (e) => { e.preventDefault(); e.stopPropagation(); });
@@ -6889,7 +7589,7 @@ function autoCloseSubmenus(){
     // Width
     html += `<span class="lia-row">
       <span class="lia-preview"><span class="lia-preview-line" data-k="pw" style="height:${Math.max(2, Math.min(14, penWidth))}px;"></span></span>
-      <input class="lia-slider" type="range" min="1" max="30" step="1" value="${penWidth}" data-act="penWidth" aria-label="Stiftbreite">
+      <input class="lia-slider" type="range" min="1" max="100" step="1" value="${penWidth}" data-act="penWidth" aria-label="Stiftbreite">
       <span style="font-weight:800;min-width:2.6em;text-align:right">${penWidth}</span>
     </span>`;
 
@@ -6935,7 +7635,7 @@ function autoCloseSubmenus(){
     const w = menu.querySelector('input[data-act="penWidth"]');
     if (w){
       w.oninput = () => {
-        penWidth = clamp(Number(w.value), 1, 60);
+        penWidth = clamp(Number(w.value), 1, 100);
         updateUI();
         persist();
         const line = menu.querySelector('[data-k="pw"]');
@@ -6974,7 +7674,7 @@ function autoCloseSubmenus(){
 
       <span class="lia-row">
         <span class="lia-preview"><span class="lia-preview-line" style="height:${Math.max(2, Math.min(18, eraserWidth))}px;"></span></span>
-        <input class="lia-slider" type="range" min="4" max="80" step="1" value="${eraserWidth}" data-act="eraserWidth" aria-label="Radiererbreite">
+        <input class="lia-slider" type="range" min="4" max="500" step="1" value="${eraserWidth}" data-act="eraserWidth" aria-label="Radiererbreite">
         <span style="font-weight:800;min-width:2.6em;text-align:right">${eraserWidth}</span>
       </span>
     `;
@@ -6997,7 +7697,7 @@ function autoCloseSubmenus(){
     const w = menu.querySelector('input[data-act="eraserWidth"]');
     if (w){
       w.oninput = () => {
-        eraserWidth = clamp(Number(w.value), 2, 200);
+        eraserWidth = clamp(Number(w.value), 2, 500);
         updateUI();
         persist();
         const t = w.parentElement && w.parentElement.querySelector('span[style*="min-width"]');
@@ -7118,6 +7818,36 @@ function autoCloseSubmenus(){
   }
 
   function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
+
+  function hideEraserRing(){
+    if (!eraserRing) return;
+    eraserRing.dataset.on = '0';
+  }
+
+  function updateEraserRingFromScreen(sx, sy){
+    if (!eraserRing) return;
+
+    // Nur im Radierer-Modus anzeigen
+    if (tool !== 'eraser'){
+      hideEraserRing();
+      return;
+    }
+
+    if (!isFinite(sx) || !isFinite(sy)){
+      hideEraserRing();
+      return;
+    }
+
+    // WICHTIG:
+    // tatsächliche sichtbare Radierergröße = eraserWidth * VIEW.scale
+    const size = Math.max(8, eraserWidth * VIEW.scale);
+
+    eraserRing.style.width = size + 'px';
+    eraserRing.style.height = size + 'px';
+    eraserRing.style.left = clamp(sx, 0, canvas.clientWidth) + 'px';
+    eraserRing.style.top  = clamp(sy, 0, canvas.clientHeight) + 'px';
+    eraserRing.dataset.on = '1';
+  }
 
   let __rectBtnRAF = 0;
   function scheduleRectActionUpdate(){
@@ -7469,6 +8199,10 @@ function autoCloseSubmenus(){
 
     // falls du deine alten Menü-Visuals nutzen willst:
     try{ updateMenuVisuals(); }catch(_){}
+
+    if (tool !== 'eraser'){
+      hideEraserRing();
+    }
   }
 
   // ---- Undo/Redo (über ALLE Items)
@@ -7596,6 +8330,7 @@ function autoCloseSubmenus(){
 
   // ---- Resize
   function resizeToCss(){
+    hideEraserRing();
     const dpr = window.devicePixelRatio || 1;
     const cssW = canvas.clientWidth;
     const cssH = canvas.clientHeight;
@@ -7828,6 +8563,7 @@ ensureCorners();
   canvas.addEventListener('wheel', (e) => {  
     autoCloseSubmenus();         
     e.preventDefault();
+    hideEraserRing();
 
     const r = canvas.getBoundingClientRect();
     const sx = e.clientX - r.left;
@@ -7863,6 +8599,7 @@ ensureCorners();
     canvas.setPointerCapture(e.pointerId);
 
     if (pointers.size === 2){
+      hideEraserRing();
       if (mode === 'draw') endStroke();
       if (mode === 'rect') finishRect(false); // abbrechen, wenn pinch startet
 
@@ -7881,6 +8618,7 @@ ensureCorners();
     const wantPan = isRightMouse || isMiddleMouse || (e.pointerType === 'mouse' && spaceDown);
 
     if (wantPan){
+      hideEraserRing();
       mode = 'pan';
       lastPanSX = p.sx;
       lastPanSY = p.sy;
@@ -7889,6 +8627,7 @@ ensureCorners();
     }
 
     if (tool === 'rect'){
+      hideEraserRing();
       mode = 'rect';
       canvas.style.cursor = 'crosshair';
       startRectAtScreen(p.sx, p.sy);
@@ -7899,6 +8638,12 @@ ensureCorners();
     mode = 'draw';
     canvas.style.cursor = 'crosshair';
     startStrokeAtScreen(p.sx, p.sy);
+
+    if (tool === 'eraser'){
+      updateEraserRingFromScreen(p.sx, p.sy);
+    }else{
+      hideEraserRing();
+    }
   });
 
   canvas.addEventListener('pointermove', (e) => {
@@ -7906,6 +8651,12 @@ ensureCorners();
 
     const p = getScreenPos(e);
     pointers.set(e.pointerId, p);
+
+    if (tool === 'eraser' && mode !== 'pan' && mode !== 'pinch' && mode !== 'rect'){
+      updateEraserRingFromScreen(p.sx, p.sy);
+    }else{
+      hideEraserRing();
+    }
 
     if (mode === 'pinch' && pointers.size >= 2 && pinchStart){
       const arr = Array.from(pointers.values()).slice(0,2);
@@ -7951,6 +8702,7 @@ ensureCorners();
   });
 
   function stopPointer(e){
+    hideEraserRing();
     if (pointers.has(e.pointerId)) pointers.delete(e.pointerId);
     try{ canvas.releasePointerCapture(e.pointerId); }catch(_){}
 
@@ -7988,6 +8740,7 @@ ensureCorners();
   canvas.addEventListener('pointerup', stopPointer);
   canvas.addEventListener('pointercancel', stopPointer);
   canvas.addEventListener('pointerleave', () => {
+    hideEraserRing();
     if (mode === 'draw') endStroke();
     if (mode !== 'pinch') mode = 'idle';
     canvas.style.cursor = 'crosshair';
@@ -8000,16 +8753,19 @@ ensureCorners();
 }
 
 
-  function initAll(){
-    document.querySelectorAll('.lia-draw-wrap canvas.lia-draw:not([data-ready])').forEach(c => {
-      c.setAttribute('data-ready','1');
-      setupCanvas(c);
-    });
-  }
+function initAll(){
+  document.querySelectorAll('.lia-draw-wrap canvas.lia-draw:not([data-ready])').forEach(c => {
+    c.setAttribute('data-ready','1');
+    setupCanvas(c);
+  });
+
+  __liaInitTexPreviews();
+}
 
   // init: wenn Canvas markup in mount erscheint
   const obs = new MutationObserver(() => initAll());
   obs.observe(document.body, { childList:true, subtree:true });
+  initAll();
 
   // ---------------------------------------------------------
   // LAUNCHER: Toggle (Mount ist im Makro vorhanden!)
@@ -8059,7 +8815,6 @@ ensureMountUID(mount);
     }, true);
   }
 })();
-
 
 
 
