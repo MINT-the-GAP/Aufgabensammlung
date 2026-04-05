@@ -1010,7 +1010,6 @@ function ensureOverlay(){
       const canvas = document.createElement('canvas');
       canvas.className = 'lia-annot-canvas';
       canvas.setAttribute('aria-label', 'Annotationsfläche');
-      canvas.setAttribute('data-snapshot-admin', '1');
 
       shell.appendChild(canvas);
     }
@@ -1234,6 +1233,84 @@ function requestSync(){
     updateToolbar();
   }
 
+
+  function roundFreezeNum(v){
+    const n = Number(v);
+    if (!isFinite(n)) return null;
+    return Math.round(n * 10000) / 10000;
+  }
+
+  function sanitizeFreezePoint(pt){
+    if (!pt || typeof pt !== 'object') return null;
+
+    const x = roundFreezeNum(pt.x);
+    const y = roundFreezeNum(pt.y);
+
+    if (x === null || y === null) return null;
+
+    return { x, y };
+  }
+
+  function sanitizeFreezeItem(item){
+    if (!item || typeof item !== 'object') return null;
+    if (item.kind !== 'path') return null;
+
+    const pts = Array.isArray(item.points)
+      ? item.points.map(sanitizeFreezePoint).filter(Boolean)
+      : [];
+
+    if (!pts.length) return null;
+
+    const tool = (item.tool === 'eraser') ? 'eraser' : 'pen';
+    const width = roundFreezeNum(item.width);
+    const alpha = roundFreezeNum(item.alpha == null ? 1 : item.alpha);
+    const baseW = roundFreezeNum(item.baseW);
+
+    return {
+      kind: 'path',
+      tool: tool,
+      color: String(item.color || '#ff0000'),
+      width: width === null ? 1 : width,
+      alpha: alpha === null ? 1 : alpha,
+      baseW: baseW === null ? 1 : baseW,
+      points: pts
+    };
+  }
+
+  function sanitizeFreezeSlides(srcSlides){
+    const out = {};
+
+    if (!srcSlides || typeof srcSlides !== 'object') return out;
+
+    for (const k in srcSlides){
+      if (!Object.prototype.hasOwnProperty.call(srcSlides, k)) continue;
+
+      const src = srcSlides[k];
+      if (!src || typeof src !== 'object') continue;
+
+      const items = Array.isArray(src.items)
+        ? src.items.map(sanitizeFreezeItem).filter(Boolean)
+        : [];
+
+      if (!items.length) continue;
+
+      out[String(k)] = {
+        items: items,
+        redo: []
+      };
+    }
+
+    return out;
+  }
+
+  function hasFreezeData(){
+    const slides = sanitizeFreezeSlides(STORE.slides);
+    for (const k in slides){
+      if (Object.prototype.hasOwnProperty.call(slides, k)) return true;
+    }
+    return false;
+  }
+
   // ---------------------------------------------------------
   // Export / Import API
   // ---------------------------------------------------------
@@ -1244,6 +1321,16 @@ function requestSync(){
         visible: !!STORE.ui.visible
       },
       slides: STORE.slides
+    });
+  }
+
+  function exportFreezeState(){
+    return copyJson({
+      version: 'lia-annotation-freeze-v1',
+      ui: {
+        visible: !!STORE.ui.visible
+      },
+      slides: sanitizeFreezeSlides(STORE.slides)
     });
   }
 
@@ -1276,7 +1363,45 @@ function requestSync(){
       }
     }
 
+    ensureSlide(getSlideKey());
+    ensureOverlay();
     syncOverlayInteractivity();
+    requestSync();
+    requestRedraw();
+    updateToolbar();
+    return true;
+  }
+
+  function importFreezeState(payload, opts){
+    const o = (opts && typeof opts === 'object') ? opts : {};
+    const replace = (o.replace !== false);
+
+    if (!payload || typeof payload !== 'object') return false;
+
+    if (replace){
+      STORE.slides = {};
+    }
+
+    const slides = sanitizeFreezeSlides(payload.slides);
+
+    for (const k in slides){
+      if (!Object.prototype.hasOwnProperty.call(slides, k)) continue;
+      STORE.slides[k] = {
+        items: copyJson(slides[k].items) || [],
+        redo: []
+      };
+    }
+
+    if (payload.ui && typeof payload.ui === 'object'){
+      if (typeof payload.ui.visible === 'boolean'){
+        STORE.ui.visible = payload.ui.visible;
+      }
+    }
+
+    ensureSlide(getSlideKey());
+    ensureOverlay();
+    syncOverlayInteractivity();
+    requestSync();
     requestRedraw();
     updateToolbar();
     return true;
@@ -1304,7 +1429,10 @@ function requestSync(){
   // ---------------------------------------------------------
   window.__LIA_ANNOTATION__ = {
     exportState,
+    exportFreezeState,
     importState,
+    importFreezeState,
+    hasFreezeData,
     setVisible,
     toggleVisible,
     setReadOnly,
@@ -1329,6 +1457,18 @@ function requestSync(){
 
   window.__LIA_ANNOTATION_IMPORT__ = function(payload, opts){
     return importState(payload, opts);
+  };
+
+  window.__LIA_ANNOTATION_FREEZE_EXPORT__ = function(){
+    return exportFreezeState();
+  };
+
+  window.__LIA_ANNOTATION_FREEZE_IMPORT__ = function(payload, opts){
+    return importFreezeState(payload, opts);
+  };
+
+  window.__LIA_ANNOTATION_FREEZE_HAS_DATA__ = function(){
+    return hasFreezeData();
   };
 
   // ---------------------------------------------------------
@@ -1393,6 +1533,8 @@ function requestSync(){
   boot();
 
 })();
+
+
 @end
 
 
