@@ -585,6 +585,124 @@ function getHighlightRect(){
   return getVisibleRect(ROOT_DOC.getElementById("lia-hl-btn"));
 }
 
+function getRectLoose(el){
+  if (!el) return null;
+  try{
+    const cs = ROOT_WIN.getComputedStyle(el);
+    if (!cs) return null;
+    if (cs.display === "none" || cs.visibility === "hidden") return null;
+
+    const r = el.getBoundingClientRect();
+    if (!r || r.width < 2 || r.height < 2) return null;
+
+    const vp = getViewport();
+    if (r.right < 0 || r.bottom < 0 || r.left > vp.w || r.top > vp.h) return null;
+
+    return r;
+  }catch(e){
+    return null;
+  }
+}
+
+function getTOCDockSlot(){
+  const size = 34;
+  const gap  = 8;
+  const pad  = 8;
+
+  const toc = ROOT_DOC.getElementById("lia-toc");
+  if (toc && toc.classList.contains("lia-toc--open")){
+    const r = getRectLoose(toc);
+    if (r){
+      const top = Math.max(pad, r.top + 8);
+      return {
+        kind: "toc-open-slot",
+        rect: {
+          left:   r.right + gap,
+          top:    top,
+          right:  r.right + gap + size,
+          bottom: top + size,
+          width:  size,
+          height: size
+        },
+        peers: []
+      };
+    }
+  }
+
+  const tocBtn = ROOT_DOC.getElementById("lia-btn-toc");
+  const b = getRectLoose(tocBtn);
+  if (b){
+    return {
+      kind: "toc-button",
+      rect: b,
+      peers: [{ el: tocBtn, r: b }]
+    };
+  }
+
+  return null;
+}
+
+function getRawVisibleRect(el){
+  if (!el) return null;
+  try{
+    const cs = ROOT_WIN.getComputedStyle(el);
+    if (!cs || cs.display === "none" || cs.visibility === "hidden" || cs.opacity === "0") return null;
+
+    const r = el.getBoundingClientRect();
+    if (!r || r.width < 6 || r.height < 6) return null;
+
+    const vp = getViewport();
+    if (r.right < 0 || r.bottom < 0 || r.left > vp.w || r.top > vp.h) return null;
+
+    return r;
+  }catch(e){
+    return null;
+  }
+}
+
+function isTOCOpen(){
+  const toc = ROOT_DOC.getElementById("lia-toc");
+  if (!toc) return false;
+  return toc.classList.contains("lia-toc--open");
+}
+
+function getTOCButtonRect(){
+  return getRawVisibleRect(ROOT_DOC.getElementById("lia-btn-toc"));
+}
+
+function getTOCPanelRect(){
+  const toc = ROOT_DOC.getElementById("lia-toc");
+  if (!toc) return null;
+  if (!isTOCOpen()) return null;
+  return getRawVisibleRect(toc);
+}
+
+function getToolbarBandRect(){
+  const leftC = getToolbarLeftContainer();
+  const leftR = getRawVisibleRect(leftC);
+  if (leftR) return leftR;
+
+  const header = getToolbarHeader();
+  return getRawVisibleRect(header);
+}
+
+function getVirtualHighlightSlotRect(){
+  const band = getToolbarBandRect();
+  if (!band) return null;
+
+  const size = 34;
+  const insetLeft = 8;
+
+  return {
+    left:   band.left + insetLeft,
+    top:    band.top + (band.height - size) / 2,
+    right:  band.left + insetLeft + size,
+    bottom: band.top + (band.height - size) / 2 + size,
+    width:  size,
+    height: size
+  };
+}
+
 function getTOCButtonRect(){
   return getVisibleRect(ROOT_DOC.getElementById("lia-btn-toc"));
 }
@@ -681,17 +799,13 @@ function getDockTarget(){
     };
   }
 
-  // 3) TOC-Button als Fallback
-  const tocRect = getTOCButtonRect();
-  if (tocRect){
-    return {
-      kind: "toc",
-      rect: tocRect,
-      peers: [{ el: ROOT_DOC.getElementById("lia-btn-toc"), r: tocRect }]
-    };
+  // 3) TOC-Slot (offen oder geschlossen)
+  const tocDock = getTOCDockSlot();
+  if (tocDock){
+    return tocDock;
   }
 
-  // 4) nur wenn gar nichts da ist: virtueller Platz
+  // 4) letzter Fallback: virtueller Platz im Header
   const virtualRect = getVirtualHighlightSlotRect();
   if (virtualRect){
     return {
@@ -731,6 +845,8 @@ function toolbarSignature(){
       Math.round(r.left),
       Math.round(r.top),
       Math.round(r.right),
+      Math.round(r.bottom),
+      Math.round(r.width),
       Math.round(r.height),
       count
     ].join("|");
@@ -768,13 +884,17 @@ function positionOverlayButton(){
     if (
       dock.kind === "highlight" ||
       dock.kind === "toolbar-row" ||
-      dock.kind === "toc"
+      dock.kind === "toc-button"
     ){
       left = r.right + gap;
       top  = r.top + (r.height - bh) / 2;
-    } else if (dock.kind === "virtual-highlight-slot"){
+    }
+    else if (
+      dock.kind === "toc-open-slot" ||
+      dock.kind === "virtual-highlight-slot"
+    ){
       left = r.left;
-      top  = r.top + (r.height - bh) / 2;
+      top  = r.top;
     }
   }
 
