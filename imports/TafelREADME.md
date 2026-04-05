@@ -428,25 +428,30 @@ const INLINE_SLOT_ID = "lia-tff-inline-slot-v2";
       -webkit-tap-highlight-color: transparent !important;
     }
 
-    #${INLINE_SLOT_ID}{
-      position: relative !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      width: 34px !important;
-      height: 34px !important;
-      min-width: 34px !important;
-      min-height: 34px !important;
-      flex: 0 0 34px !important;
-      pointer-events: none !important;
-    }
+#${INLINE_SLOT_ID}{
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
 
-    #${INLINE_SLOT_ID} > #${BTN_ID}{
-      position: relative !important;
-      left: auto !important;
-      top: auto !important;
-      margin: 0 !important;
-    }
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 34px !important;
+  min-height: 34px !important;
+
+  box-sizing: border-box !important;
+  padding-right: 2px !important;
+
+  flex: 0 0 auto !important;
+  pointer-events: none !important;
+}
+
+#${INLINE_SLOT_ID} > #${BTN_ID}{
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  margin: 0 !important;
+}
 
     #${BTN_ID}:hover{
       background: color-mix(in srgb, var(--lia-tff-accent) 12%, transparent) !important;
