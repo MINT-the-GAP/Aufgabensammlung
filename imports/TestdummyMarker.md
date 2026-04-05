@@ -2335,18 +2335,37 @@ function handleHLQAction(act, proxy, btnRef){
 
 
 function inferActionLoose(btn){
+  const el = btn?.closest?.("button,[role='button'],a,[role='link']") || btn;
+  if (!el) return null;
+
   const t = (
-    btn.getAttribute("aria-label") ||
-    btn.getAttribute("title") ||
-    btn.textContent ||
+    el.getAttribute("aria-label") ||
+    el.getAttribute("title") ||
+    el.textContent ||
     ""
   ).trim().toLowerCase();
 
-  const cls = (btn.className || "").toLowerCase();
+  const clsList = Array.from(el.classList || []).map(x => String(x).toLowerCase());
 
-  if (t.includes("prüf") || t.includes("check") || cls.includes("check") || cls.includes("verify")) return "check";
-  if (t.includes("aufl") || t.includes("lös")  || t.includes("solve") || t.includes("solution") ||
-      cls.includes("solution") || cls.includes("solve") || cls.includes("answer")) return "solve";
+  // Primär: echte Lia-Quiz-Klassen
+  if (clsList.includes("lia-quiz__check")) return "check";
+  if (clsList.includes("lia-quiz__resolve")) return "solve";
+
+  // Sekundär: wirklich eindeutige Texte
+  if (
+    t === "prüfen" ||
+    t === "check" ||
+    t.startsWith("prüfen")
+  ) return "check";
+
+  if (
+    t === "auflösen" ||
+    t === "lösung" ||
+    t === "solve" ||
+    t === "show solution" ||
+    t.startsWith("auflösen") ||
+    t.startsWith("lösung")
+  ) return "solve";
 
   return null;
 }
@@ -2406,7 +2425,37 @@ function getLiaInputRobust(proxy){
   return best;
 }
 
+function isForeignToolUi(node){
+  const el = (node && node.nodeType === 1) ? node : node?.parentElement;
+  if (!el) return false;
 
+  return !!el.closest([
+    "[data-hlq-ignore='1']",
+    "[data-lia-hlq-ignore='1']",
+    "[data-lia-canvas-ui='1']",
+
+    ".lia-tool-menu",
+    ".lia-undo-btn",
+    ".lia-redo-btn",
+    ".lia-color-btn",
+    ".lia-eraser-btn",
+    ".lia-rect-btn",
+    ".lia-bgmenu-btn",
+
+    ".lia-annot-btn",
+    ".lia-annot-toolbar",
+    ".lia-annot-menu",
+    ".lia-annot-panel"
+  ].join(","));
+}
+
+function isRelevantHLQArea(node){
+  const el = (node && node.nodeType === 1) ? node : node?.parentElement;
+  if (!el) return false;
+  if (isForeignToolUi(el)) return false;
+
+  return !!el.closest(".hlq-proxy, .hlq-lia, .markerquiz");
+}
 
 // EIN Listener: funktioniert auch, wenn Lia Buttons ausserhalb des Proxys rendert
 CONTENT_DOC.addEventListener("click", (e)=>{
@@ -2414,28 +2463,44 @@ CONTENT_DOC.addEventListener("click", (e)=>{
   const clicked = e.target?.closest?.("button,[role='button'],a,[role='link']");
   if (!clicked) return;
 
-  // (A) Unsere Buttons
+  // Fremde Tool-UI grundsätzlich ignorieren
+  if (isForeignToolUi(clicked)) return;
+
+  // Nur in echten HLQ-Bereichen überhaupt weiterarbeiten
+  if (!isRelevantHLQArea(clicked)) return;
+
+  // (A) Unsere eigenen HLQ-Buttons
   const own = clicked.closest("button.hlq-btn[data-hlq-act]");
   if (own){
     const proxy = own.closest(".hlq-proxy");
     if (!proxy) return;
+
     const act = own.getAttribute("data-hlq-act");
     if (!act) return;
+
     handleHLQAction(act, proxy, own);
     return;
   }
 
-  // (B) Lia-Buttons (Prüfen/Auflösen) – auch wenn sie ausserhalb des Proxys liegen
+  // (B) Echte Lia-Quiz-Buttons
   const act = inferActionLoose(clicked);
   if (!act) return;
 
   const proxy = findProxyForAnyButton(clicked);
   if (!proxy) return;
 
+  // Scope-Sicherheit: fremde Buttons nicht auf irgendeinen Proxy mappen
+  const scopeClicked = clicked.closest?.(".markerquiz");
+  const scopeProxy   = proxy.closest?.(".markerquiz");
+
+  if (scopeClicked && scopeProxy && scopeClicked !== scopeProxy){
+    return;
+  }
+
   handleHLQAction(act, proxy, clicked);
 
-  // KEIN preventDefault/stopPropagation:
-  // Lia darf danach normal seine UI rendern.
+  // Kein preventDefault/stopPropagation:
+  // Lia darf seine eigene UI weiter normal rendern.
 }, true);
 
 
@@ -2651,7 +2716,8 @@ function trimRangeWhitespace(range){
 
 
 
-  CONTENT_DOC.addEventListener("mouseup", ()=>{
+  CONTENT_DOC.addEventListener("mouseup", (e)=>{
+    if (isForeignToolUi(e.target)) return;
     if (!I.state.active) return;
 
     if (I.state.panelOpen){
@@ -2664,21 +2730,22 @@ function trimRangeWhitespace(range){
   }, true);
 
   CONTENT_DOC.addEventListener("pointerdown", (e)=>{
+    if (isForeignToolUi(e.target)) return;
     if (!I.state.active) return;
     if (I.state.tool !== "erase") return;
-
+  
     // Vor dem Hit-Test alle Rechtecke aktualisieren
     recalcAllHighlights();
-
+  
     // Immer geometrisch prüfen – nicht auf e.target verlassen
     const hit = findUserHighlightAtPoint(e.clientX, e.clientY);
     if (!hit) return;
-
+  
     I.HL = I.HL.filter(x => x.id !== hit.id);
-
+  
     e.preventDefault();
     e.stopPropagation();
-
+  
     render();
   }, true);
 

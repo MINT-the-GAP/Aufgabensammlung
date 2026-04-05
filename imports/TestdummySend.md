@@ -6735,6 +6735,9 @@ function reapplySnapshotSilently(hash, reason) {
   // Canvas Freeze API
   // =========================================================
 
+
+
+
   function getCanvasFreezeRootWindow() {
     let w = window;
     try {
@@ -6751,6 +6754,36 @@ function reapplySnapshotSilently(hash, reason) {
       null
     );
   }
+
+function getCanvasFreezeScopeHost(root) {
+  const candidates = uniqueElements([
+    root,
+    getBaseContentHost(),
+    document.querySelector(".lia-slide__content"),
+    document.querySelector(".lia-content"),
+    document.querySelector("main"),
+    document.body
+  ]).filter(function (el) {
+    return !!(el && el instanceof Element);
+  });
+
+  let best = null;
+  let bestArea = -1;
+
+  candidates.forEach(function (el) {
+    if (!isRenderedElement(el) && !hasRenderedSelfOrDescendant(el)) return;
+
+    const r = el.getBoundingClientRect();
+    const area = Math.max(0, r.width) * Math.max(0, r.height);
+
+    if (area > bestArea) {
+      best = el;
+      bestArea = area;
+    }
+  });
+
+  return best || root || getBaseContentHost() || document.body;
+}
 
   function collectCanvasFreezePairsFromRoot(root) {
     const api = getCanvasFreezeApi();
@@ -6774,26 +6807,20 @@ function captureCanvasFreezeStatesFromRoot(root) {
     return [];
   }
 
-  const pairs = collectCanvasFreezePairsFromRoot(root);
+  const scope = getCanvasFreezeScopeHost(root);
+  const pairs = collectCanvasFreezePairsFromRoot(scope);
   const out = [];
+
+  log(
+    "canvas-capture-scope",
+    "tag=" + String(scope && scope.tagName || ""),
+    "pairs=" + pairs.length
+  );
 
   pairs.forEach(function (pair) {
     if (!pair || !(pair instanceof Element)) return;
     if (pair.closest("#lia-freeze-bar")) return;
     if (pair.closest(".lia-submit-box")) return;
-
-    const uid = getCanvasFreezeUidFromPair(pair);
-    if (!uid) return;
-
-    const entry = (typeof api.getCanvasStoreEntry === "function")
-      ? api.getCanvasStoreEntry(uid)
-      : null;
-
-    // Nur wirklich benutzte Canvas übernehmen:
-    // aktuelle Heuristik = es gibt mindestens ein Item => Undo wäre möglich
-    if (!entry || !Array.isArray(entry.ITEMS) || entry.ITEMS.length === 0) {
-      return;
-    }
 
     const state = api.exportCanvasFreezeStateFromPair(pair);
     if (!state) return;
@@ -6804,65 +6831,66 @@ function captureCanvasFreezeStatesFromRoot(root) {
   return out;
 }
 
-  function applyStoredCanvasStatesToHost(host, storedStates) {
-    const api = getCanvasFreezeApi();
-    if (!api || typeof api.renderCanvasFreezeStateIntoPair !== "function") {
-      return [];
+function applyStoredCanvasStatesToHost(host, storedStates) {
+  const api = getCanvasFreezeApi();
+  if (!api || typeof api.renderCanvasFreezeStateIntoPair !== "function") {
+    return [];
+  }
+
+  const scope = getCanvasFreezeScopeHost(host);
+  const livePairs = scope ? collectCanvasFreezePairsFromRoot(scope) : [];
+  const states = Array.isArray(storedStates) ? storedStates : [];
+  const used = new Set();
+  const applied = [];
+
+  log(
+    "canvas-apply-live",
+    "live=" + livePairs.length,
+    livePairs.map(function (pair, idx) {
+      return "[" + idx + "] " + JSON.stringify(getCanvasFreezeUidFromPair(pair));
+    }).join(" || ")
+  );
+
+  log(
+    "canvas-apply-stored",
+    "stored=" + states.length,
+    states.map(function (state, idx) {
+      return "[" + idx + "] " + JSON.stringify(state && state.u || "");
+    }).join(" || ")
+  );
+
+  states.forEach(function (state, idx) {
+    let target = null;
+    const wantedUid = normalizeSpace(state && state.u || "");
+
+    if (wantedUid) {
+      for (let i = 0; i < livePairs.length; i++) {
+        if (used.has(livePairs[i])) continue;
+        if (getCanvasFreezeUidFromPair(livePairs[i]) === wantedUid) {
+          target = livePairs[i];
+          break;
+        }
+      }
     }
 
-    const livePairs = host ? collectCanvasFreezePairsFromRoot(host) : [];
-    const states = Array.isArray(storedStates) ? storedStates : [];
-    const used = new Set();
-    const applied = [];
-
-    log(
-      "canvas-apply-live",
-      "live=" + livePairs.length,
-      livePairs.map(function (pair, idx) {
-        return "[" + idx + "] " + JSON.stringify(getCanvasFreezeUidFromPair(pair));
-      }).join(" || ")
-    );
-
-    log(
-      "canvas-apply-stored",
-      "stored=" + states.length,
-      states.map(function (state, idx) {
-        return "[" + idx + "] " + JSON.stringify(state && state.u || "");
-      }).join(" || ")
-    );
-
-    states.forEach(function (state, idx) {
-      let target = null;
-      const wantedUid = normalizeSpace(state && state.u || "");
-
-      if (wantedUid) {
-        for (let i = 0; i < livePairs.length; i++) {
-          if (used.has(livePairs[i])) continue;
-          if (getCanvasFreezeUidFromPair(livePairs[i]) === wantedUid) {
-            target = livePairs[i];
-            break;
-          }
-        }
+    if (!target) {
+      if (idx >= 0 && idx < livePairs.length && !used.has(livePairs[idx])) {
+        target = livePairs[idx];
       }
+    }
 
-      if (!target) {
-        if (idx >= 0 && idx < livePairs.length && !used.has(livePairs[idx])) {
-          target = livePairs[idx];
-        }
-      }
+    if (!target) {
+      log("canvas-match-miss", "storedIdx=" + idx, "uid=" + JSON.stringify(wantedUid));
+      return;
+    }
 
-      if (!target) {
-        log("canvas-match-miss", "storedIdx=" + idx, "uid=" + JSON.stringify(wantedUid));
-        return;
-      }
+    used.add(target);
+    api.renderCanvasFreezeStateIntoPair(target, state);
+    applied.push(target);
+  });
 
-      used.add(target);
-      api.renderCanvasFreezeStateIntoPair(target, state);
-      applied.push(target);
-    });
-
-    return applied;
-  }
+  return applied;
+}
 
 
 
@@ -8907,9 +8935,6 @@ $a)\;\;$ $7000+123=$ [[  7123  ]] @canvas
 
 @ADetails(1=BE;Addition)
 
-$b)\;\;$ $6000+123=$ [[  6123  ]] m @canvas
-
-@ADetails(1=BE;Einheiten,Addition)
 
 
 Wähle blau aus.
@@ -8931,6 +8956,12 @@ Wähle gelb aus.
 [->[rot|blau|grün|(gelb)]]
 
 @ADetails(1=BE;Farben)
+
+
+
+$b)\;\;$ $6000+123=$ [[  6123  ]] m @canvas
+
+@ADetails(1=BE;Einheiten,Addition)
 
 
 
@@ -8969,9 +9000,6 @@ Wähle blau aus.
 
 
 
-$d)\;\;$ $4000+123=$ [[  4123  ]] @canvas
-
-@ADetails(1=BE;Addition)
 
 
 Wähle blau aus.
@@ -9000,6 +9028,12 @@ Wähle grün aus.
 
 
 @ADetails(3=BE;Tabelle)
+
+
+
+$d)\;\;$ $4000+123=$ [[  4123  ]] @canvas
+
+@ADetails(1=BE;Addition)
 
 
 
@@ -9042,6 +9076,10 @@ __Aufgabe 3:__ Setze das Komma an die richtige Stelle. (Auflösung ist blockiert
 @ADetails(1=BE; Deutsch)
 
 
+$g)\;\;$ $6000+123=$ [[  6123  ]] m @canvas
+
+@ADetails(1=BE;Einheiten,Addition)
+
 
 # Brüche darstellen
 
@@ -9067,6 +9105,9 @@ __$c)\;\;$__ $\dfrac{1}{3}$
 
 
 
+$e)\;\;$ $6000+123=$ [[  6123  ]] m @canvas
+
+@ADetails(1=BE;Einheiten,Addition)
 
 
 
