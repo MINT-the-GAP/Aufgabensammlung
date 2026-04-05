@@ -585,6 +585,36 @@ function getHighlightRect(){
   return getVisibleRect(ROOT_DOC.getElementById("lia-hl-btn"));
 }
 
+function getTOCButtonRect(){
+  return getVisibleRect(ROOT_DOC.getElementById("lia-btn-toc"));
+}
+
+function getToolbarBandRect(){
+  const leftC = getToolbarLeftContainer();
+  const leftR = getVisibleRect(leftC);
+  if (leftR) return leftR;
+
+  const header = getToolbarHeader();
+  return getVisibleRect(header);
+}
+
+function getVirtualHighlightSlotRect(){
+  const band = getToolbarBandRect();
+  if (!band) return null;
+
+  const size = 34;
+  const insetLeft = 8;
+
+  return {
+    left:   band.left + insetLeft,
+    top:    band.top + (band.height - size) / 2,
+    right:  band.left + insetLeft + size,
+    bottom: band.top + (band.height - size) / 2 + size,
+    width:  size,
+    height: size
+  };
+}
+
 function getStableLeftToolbarPeers(){
   const vp = getViewport();
   const leftC = getToolbarLeftContainer();
@@ -626,7 +656,7 @@ function getStableLeftToolbarPeers(){
 }
 
 function getDockTarget(){
-  // 1) immer zuerst hart an den Textmarkerbutton
+  // 1) echter Textmarker
   const hlRect = getHighlightRect();
   if (hlRect){
     return {
@@ -636,7 +666,7 @@ function getDockTarget(){
     };
   }
 
-  // 2) sonst stabiles linkes Toolbar-Cluster
+  // 2) echte linke Header-Buttons
   const peers = getStableLeftToolbarPeers();
   if (peers.length){
     let rightMost = peers[0].r;
@@ -648,6 +678,26 @@ function getDockTarget(){
       kind: "toolbar-row",
       rect: rightMost,
       peers
+    };
+  }
+
+  // 3) TOC-Button als Fallback
+  const tocRect = getTOCButtonRect();
+  if (tocRect){
+    return {
+      kind: "toc",
+      rect: tocRect,
+      peers: [{ el: ROOT_DOC.getElementById("lia-btn-toc"), r: tocRect }]
+    };
+  }
+
+  // 4) nur wenn gar nichts da ist: virtueller Platz
+  const virtualRect = getVirtualHighlightSlotRect();
+  if (virtualRect){
+    return {
+      kind: "virtual-highlight-slot",
+      rect: virtualRect,
+      peers: []
     };
   }
 
@@ -670,7 +720,7 @@ function toolbarSignature(){
     }
 
     const r = dock.rect;
-    const count = dock.peers ? dock.peers.length : 1;
+    const count = dock.peers ? dock.peers.length : 0;
 
     return [
       Math.round(vp.w),
@@ -715,9 +765,17 @@ function positionOverlayButton(){
   if (dock && dock.rect){
     const r = dock.rect;
 
-    // immer direkt rechts daneben
-    left = r.right + gap;
-    top  = r.top + (r.height - bh) / 2;
+    if (
+      dock.kind === "highlight" ||
+      dock.kind === "toolbar-row" ||
+      dock.kind === "toc"
+    ){
+      left = r.right + gap;
+      top  = r.top + (r.height - bh) / 2;
+    } else if (dock.kind === "virtual-highlight-slot"){
+      left = r.left;
+      top  = r.top + (r.height - bh) / 2;
+    }
   }
 
   left = clamp(left, pad, vp.w - bw - pad);
