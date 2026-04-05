@@ -30,7 +30,7 @@ window.__liaSubmissionDemo = (function () {
   const PAYLOAD_VERSION = "sf-mini-ti-2";
   const DEBUG = true;
   const EVALUATION_TITLE = "Auswertung";
-
+  const BUILD_STAMP = "FREEZE-BUILD-2026-04-05-12-26";
 
   let snapshotPayload = null;
   let declaredSlidesCache = [];
@@ -40,6 +40,7 @@ window.__liaSubmissionDemo = (function () {
   let liveBindingsInstalled = false;
   let freezeBindingsInstalled = false;
   let themeWatcherInstalled = false;
+  let createLinkDelegationInstalled = false;
 
   let liveRouteCurrentHash = "";
   let lastKnownName = "";
@@ -578,6 +579,16 @@ body.lia-course-frozen .lia-frozen-note{
 .lia-frozen-scope [contenteditable="true"]{
   pointer-events: none !important;
   cursor: not-allowed !important;
+}
+
+.lia-frozen-scope .lia-annot-toolbar,
+.lia-frozen-scope .lia-annot-toolbar *{
+  pointer-events: auto !important;
+}
+
+.lia-frozen-scope .lia-annot-toolbar button,
+.lia-frozen-scope .lia-annot-toolbar [role="button"]{
+  cursor: pointer !important;
 }
 
 .lia-frozen-scope #lia-link{
@@ -2525,20 +2536,6 @@ function getAssignmentDetailManualKey(marker) {
   return makeManualAwardStoreKey(hash, taskIndex);
 }
 
-function hasStoredManualAwardValue(key) {
-  return !!(key && Object.prototype.hasOwnProperty.call(manualAwardValuesByKey, key));
-}
-
-function getStoredManualAwardValue(key) {
-  return hasStoredManualAwardValue(key)
-    ? String(manualAwardValuesByKey[key])
-    : "";
-}
-
-function setStoredManualAwardValue(key, value) {
-  if (!key) return;
-  manualAwardValuesByKey[key] = String(value == null ? "" : value);
-}
 
 function hasStoredManualAwardValue(key) {
   return !!(key && Object.prototype.hasOwnProperty.call(manualAwardValuesByKey, key));
@@ -3132,6 +3129,8 @@ async function buildPayloadFromAllSlides() {
     })
   };
 
+  payload.af = captureFullAnnotationFreezeState();
+  payload.anv = getAnnotationFreezeVisibleFlag();
   payload.sec = getSerializableSecurityState();
 
   return payload;
@@ -6694,6 +6693,8 @@ function reapplySnapshotSilently(hash, reason) {
   applyStoredCanvasStatesToHost(host, slide.cv || []);
   applyStoredGeneralMarkerState(slide.gm || null);
 
+  applyAnnotationFreezeSnapshot(snapshotPayload);
+  reinforceAnnotationFreezeUi();
   reinforceFrozenUi();
 
   log("reapply-silent", wantedHash, reason || "");
@@ -6718,6 +6719,11 @@ function reapplySnapshotSilently(hash, reason) {
         reapplySnapshotSilently(
           wantedHash,
           (reason || "stabilize") + "@" + delay
+        );
+        
+        reinforceAnnotationFreezeUi(
+          "stabilize:" + wantedHash + "@" + delay,
+          { reimport: true }
         );
       }, delay);
     });
@@ -6895,6 +6901,365 @@ function applyStoredCanvasStatesToHost(host, storedStates) {
 
 
 
+  // =========================================================
+  // Annotation Freeze API
+  // =========================================================
+function getAnnotationFreezeRootWindow() {
+  let w = window;
+  try {
+    while (w.parent && w.parent !== w) w = w.parent;
+  } catch (e) {}
+  return w;
+}
+
+function getAnnotationFreezeApi() {
+  const root = getAnnotationFreezeRootWindow();
+
+  const candidates = [
+    root && root.__LIA_ANNOTATION_FREEZE_API__,
+    window.__LIA_ANNOTATION_FREEZE_API__,
+    root && root.__LIA_ANNOTATION__,
+    window.__LIA_ANNOTATION__
+  ].filter(Boolean);
+
+  for (let i = 0; i < candidates.length; i++) {
+    const api = candidates[i];
+
+    const exportFn =
+      (typeof api.exportFreezeState === "function" && api.exportFreezeState) ||
+      (typeof api.exportState === "function" && api.exportState) ||
+      (typeof api.freezeExport === "function" && api.freezeExport) ||
+      null;
+
+    const importFn =
+      (typeof api.importFreezeState === "function" && api.importFreezeState) ||
+      (typeof api.importState === "function" && api.importState) ||
+      (typeof api.freezeImport === "function" && api.freezeImport) ||
+      null;
+
+    if (exportFn || importFn) {
+      log(
+        "annotation-api-detected",
+        "export=" + (exportFn ? "1" : "0"),
+        "import=" + (importFn ? "1" : "0")
+      );
+
+      return {
+        exportFreezeState: exportFn ? exportFn.bind(api) : null,
+        importFreezeState: importFn ? importFn.bind(api) : null,
+        setReadOnly: typeof api.setReadOnly === "function" ? api.setReadOnly.bind(api) : null,
+        refresh: typeof api.refresh === "function" ? api.refresh.bind(api) : null,
+        persistCurrentSlide: typeof api.persistCurrentSlide === "function" ? api.persistCurrentSlide.bind(api) : null,
+        saveCurrentSlide: typeof api.saveCurrentSlide === "function" ? api.saveCurrentSlide.bind(api) : null,
+        commitCurrentSlide: typeof api.commitCurrentSlide === "function" ? api.commitCurrentSlide.bind(api) : null,
+        syncCurrentSlide: typeof api.syncCurrentSlide === "function" ? api.syncCurrentSlide.bind(api) : null,
+        flushCurrentSlide: typeof api.flushCurrentSlide === "function" ? api.flushCurrentSlide.bind(api) : null,
+        save: typeof api.save === "function" ? api.save.bind(api) : null,
+        sync: typeof api.sync === "function" ? api.sync.bind(api) : null,
+        flush: typeof api.flush === "function" ? api.flush.bind(api) : null
+      };
+    }
+  }
+
+  const exportFn =
+    (root && root.__LIA_ANNOTATION_FREEZE_EXPORT__) ||
+    window.__LIA_ANNOTATION_FREEZE_EXPORT__ ||
+    null;
+
+  const importFn =
+    (root && root.__LIA_ANNOTATION_FREEZE_IMPORT__) ||
+    window.__LIA_ANNOTATION_FREEZE_IMPORT__ ||
+    null;
+
+  if (exportFn || importFn) {
+    log(
+      "annotation-api-detected",
+      "export=" + (exportFn ? "1" : "0"),
+      "import=" + (importFn ? "1" : "0"),
+      "mode=global-functions"
+    );
+
+    return {
+      exportFreezeState: typeof exportFn === "function" ? exportFn : null,
+      importFreezeState: typeof importFn === "function" ? importFn : null
+    };
+  }
+
+  log("annotation-api-detected", "export=0", "import=0");
+  return null;
+}
+
+function tryCallAnnotationApiMethod(api, names) {
+  if (!api) return false;
+
+  const list = Array.isArray(names) ? names : [names];
+
+  for (let i = 0; i < list.length; i++) {
+    const name = String(list[i] || "");
+    if (!name) continue;
+    if (typeof api[name] !== "function") continue;
+
+    try {
+      api[name]();
+      log("annotation-flush-call", "method=" + name);
+      return true;
+    } catch (err) {
+      warn(
+        "annotation-flush-call-failed",
+        "method=" + name,
+        err && err.message ? err.message : err
+      );
+    }
+  }
+
+  return false;
+}
+
+function flushAnnotationBeforeExport() {
+  const api = getAnnotationFreezeApi();
+  if (!api) return false;
+
+  // vorsichtig mehrere mögliche Persist-/Sync-Hooks probieren
+  const tried =
+    tryCallAnnotationApiMethod(api, ["persistCurrentSlide", "saveCurrentSlide", "commitCurrentSlide"]) ||
+    tryCallAnnotationApiMethod(api, ["syncCurrentSlide", "flushCurrentSlide"]) ||
+    tryCallAnnotationApiMethod(api, ["save", "sync", "flush"]);
+
+  if (typeof api.refresh === "function") {
+    try {
+      api.refresh();
+      log("annotation-flush-call", "method=refresh");
+    } catch (err) {
+      warn(
+        "annotation-refresh-before-export-failed",
+        err && err.message ? err.message : err
+      );
+    }
+  }
+
+  return tried;
+}
+
+function countAnnotationItemsInFreezePayload(payload) {
+  const slides = payload && payload.slides && typeof payload.slides === "object"
+    ? payload.slides
+    : null;
+
+  if (!slides) return 0;
+
+  let total = 0;
+
+  Object.keys(slides).forEach(function (hash) {
+    const slide = slides[hash];
+    const items = Array.isArray(slide && slide.items) ? slide.items : [];
+    total += items.length;
+  });
+
+  return total;
+}
+
+function captureFullAnnotationFreezeState() {
+  const api = getAnnotationFreezeApi();
+  if (!api || typeof api.exportFreezeState !== "function") {
+    log("annotation-export-skip", "reason=no-api");
+    return null;
+  }
+
+  try {
+    flushAnnotationBeforeExport();
+
+    const payload = api.exportFreezeState();
+    const copy = copyJson(payload);
+
+    const slides = copy && copy.slides && typeof copy.slides === "object"
+      ? copy.slides
+      : {};
+
+    const hashes = Object.keys(slides);
+    const itemCount = countAnnotationItemsInFreezePayload(copy);
+
+    log(
+      "annotation-export",
+      "slides=" + hashes.length,
+      "hashes=" + hashes.join(","),
+      "items=" + itemCount
+    );
+
+    if (!hashes.length && itemCount <= 0) {
+      return null;
+    }
+
+    return copy;
+  } catch (err) {
+    warn(
+      "annotation-export-failed",
+      err && err.message ? err.message : err
+    );
+    return null;
+  }
+}
+
+function getAnnotationFreezeVisibleFlag() {
+  const full = captureFullAnnotationFreezeState();
+  if (!full) return 1;
+
+  return (full.ui && full.ui.visible === false) ? 0 : 1;
+}
+
+function buildAnnotationFreezeImportPayloadFromSnapshot(payload) {
+  // Neues bevorzugtes Format: kompletter Annotation-Export auf Top-Level
+  if (payload && payload.af && typeof payload.af === "object") {
+    const full = copyJson(payload.af) || {};
+
+    full.ui = full.ui || {};
+    if (Object.prototype.hasOwnProperty.call(payload, "anv")) {
+      full.ui.visible = !(Number(payload.anv) === 0);
+    }
+
+    return full;
+  }
+
+  // Fallback für altes per-slide-Format
+  const out = {
+    version: "lia-annotation-freeze-v1",
+    ui: {
+      visible: !(
+        payload &&
+        Object.prototype.hasOwnProperty.call(payload, "anv") &&
+        Number(payload.anv) === 0
+      )
+    },
+    slides: {}
+  };
+
+  if (!payload || !Array.isArray(payload.s)) {
+    return out;
+  }
+
+  payload.s.forEach(function (slide) {
+    const hash = cleanHashValue(slide && slide.h || "");
+    const ann = slide && slide.an;
+    const data = ann && ann.d;
+
+    if (!hash) return;
+    if (!data || !Array.isArray(data.items) || !data.items.length) return;
+
+    out.slides[hash] = {
+      items: copyJson(data.items) || [],
+      redo: []
+    };
+  });
+
+  return out;
+}
+
+function applyAnnotationFreezeSnapshot(payload) {
+  log("ANNOTATION-IMPORT-ENTER");
+  
+  const api = getAnnotationFreezeApi();
+  if (!api) {
+    log("annotation-apply-skip", "reason=no-api");
+    return false;
+  }
+
+  try {
+    if (typeof api.importFreezeState === "function") {
+      const importPayload = buildAnnotationFreezeImportPayloadFromSnapshot(
+        payload || snapshotPayload
+      );
+
+      const hashes = Object.keys(importPayload && importPayload.slides || {});
+      const itemCount = countAnnotationItemsInFreezePayload(importPayload);
+
+      log(
+        "annotation-apply",
+        "slides=" + hashes.length,
+        "hashes=" + hashes.join(","),
+        "items=" + itemCount
+      );
+
+      api.importFreezeState(importPayload, { replace: true });
+    }
+
+    if (typeof api.setReadOnly === "function") {
+      api.setReadOnly(true);
+    }
+
+    if (typeof api.refresh === "function") {
+      api.refresh();
+    }
+
+    return true;
+  } catch (err) {
+    warn(
+      "annotation-apply-failed",
+      err && err.message ? err.message : err
+    );
+    return false;
+  }
+}
+
+
+function reimportAnnotationFreezeSnapshot(reason) {
+  if (!snapshotPayload) {
+    log("annotation-reimport-skip", "reason=" + String(reason || ""), "snapshot=none");
+    return false;
+  }
+
+  const ok = applyAnnotationFreezeSnapshot(snapshotPayload);
+
+  log(
+    "annotation-reimport",
+    "reason=" + String(reason || ""),
+    "ok=" + (ok ? "1" : "0")
+  );
+
+  return ok;
+}
+
+
+function reinforceAnnotationFreezeUi(reason, opts) {
+  opts = opts || {};
+
+  const api = getAnnotationFreezeApi();
+  if (!api) return false;
+
+  let imported = false;
+
+  if (opts.reimport) {
+    imported = reimportAnnotationFreezeSnapshot(reason || "reinforce");
+  }
+
+  try {
+    if (typeof api.setReadOnly === "function") {
+      api.setReadOnly(true);
+    }
+
+    if (typeof api.refresh === "function") {
+      api.refresh();
+    }
+
+    log(
+      "annotation-reinforce",
+      "reason=" + String(reason || ""),
+      "reimport=" + (opts.reimport ? "1" : "0"),
+      "imported=" + (imported ? "1" : "0")
+    );
+
+    return true;
+  } catch (err) {
+    warn(
+      "annotation-reinforce-failed",
+      err && err.message ? err.message : err
+    );
+    return false;
+  }
+}
+
+
+
+
+
 
 
 
@@ -7000,6 +7365,7 @@ function captureSlideStateForHash(hash) {
     gm: generalMarkerState
   };
 
+
   const sequence = [];
 
   ordered.forEach(function (entry) {
@@ -7028,6 +7394,7 @@ function captureSlideStateForHash(hash) {
     "fraction=" + out.fq.length,
     "marker=" + out.mq.length,
     "canvas=" + out.cv.length,
+    "annotation=global",
     "general-marker=" + (
       out.gm && Array.isArray(out.gm.h)
         ? out.gm.h.length
@@ -7046,6 +7413,7 @@ function storeLiveSlideState(hash, source) {
   if (!state) return false;
 
   liveSlidesByHash[state.h] = state;
+
   log(
     "live-store",
     state.h,
@@ -7058,18 +7426,22 @@ function storeLiveSlideState(hash, source) {
     "fraction=" + (state.fq ? state.fq.length : 0),
     "marker=" + (state.mq ? state.mq.length : 0),
     "canvas=" + (state.cv ? state.cv.length : 0),
+    "annotation=global",
     "general-marker=" + (
       state.gm && Array.isArray(state.gm.h)
         ? state.gm.h.length
         : 0
     )
   );
+
   return true;
 }
 
 
 
 function buildPayloadFromLiveStates() {
+  log("BUILD-PAYLOAD-ENTER");
+
   const currentHash = liveRouteCurrentHash || getCurrentHash();
   storeLiveSlideState(currentHash, "payload-final");
 
@@ -7095,10 +7467,25 @@ function buildPayloadFromLiveStates() {
     })
   };
 
+  const annotationFullState = captureFullAnnotationFreezeState();
+  log("ANNOTATION-EXPORT-ENTER");
+
+  payload.af = annotationFullState;
+  payload.anv = (
+    annotationFullState &&
+    annotationFullState.ui &&
+    annotationFullState.ui.visible === false
+  ) ? 0 : 1;
   payload.sec = getSerializableSecurityState();
 
-  return payload;
-}
+  log(
+    "payload-annotation",
+    annotationFullState ? "present=1" : "present=0",
+    "items=" + countAnnotationItemsInFreezePayload(annotationFullState)
+  );
+
+    return payload;
+  }
 
   function getSnapshotSlideForHash(hash) {
     if (!snapshotPayload || !Array.isArray(snapshotPayload.s)) return null;
@@ -7620,6 +8007,7 @@ function lockCurrentSlideInteractiveState() {
   Array.from(host.querySelectorAll(
     "input, textarea, select, button, a, summary, [role='button'], [contenteditable='true'], [role='textbox']"
   )).forEach(function (el) {
+    if (el.closest(".lia-annot-toolbar")) return;
     if (el.closest("#lia-freeze-bar")) return;
 
     if (el.id === "lia-link") {
@@ -7706,6 +8094,7 @@ function reinforceFrozenUi() {
     linkValue: freezeLinkValue || undefined
   });
   lockCurrentSlideInteractiveState();
+  reinforceAnnotationFreezeUi();
   refreshAssignmentDetails();
   syncFrozenScreens();
 }
@@ -7806,6 +8195,20 @@ async function applySnapshotOnce(hash, reason) {
       return false;
     }
   }
+
+  // Annotation nach bereitstehendem Foliendom erneut importieren.
+  // Das ist wichtig, weil die Annotation-Instanzen beim ersten globalen
+  // Import oft noch nicht vollständig für die aktuelle Folie materialisiert sind.  
+  const annotationApplied = applyAnnotationFreezeSnapshot(snapshotPayload);
+  log(
+    "annotation-apply-after-slide",
+    "hash=" + currentHash,
+    "ok=" + (annotationApplied ? "1" : "0"),
+    "items=" + countAnnotationItemsInFreezePayload(
+      buildAnnotationFreezeImportPayloadFromSnapshot(snapshotPayload)
+    )
+  );
+    reinforceAnnotationFreezeUi("apply:" + currentHash, { reimport: true });
 
   reinforceFrozenUi();
 
@@ -8553,6 +8956,10 @@ function isAllowedFreezeTarget(target) {
   if (target.id === "lia-link") return true;
   if (target.closest && target.closest("#lia-link")) return true;
 
+  // Annotation-Toolbar darf auch im Freeze bedienbar bleiben
+  // (z.B. Anzeigen/Ausblenden per Auge-Button).
+  if (target.closest(".lia-annot-toolbar")) return true;
+
   if (
     isSharedFreezeLinkMode() &&
     target.closest(".lia-adetails-award-input")
@@ -8703,6 +9110,7 @@ async function activateSnapshotMode(payload, linkValue, opts) {
   getFreezeBar();
   refreshFreezeBar();
   installFreezeBindings();
+
   applyAdminState(getDisplayName(), {
     preserveLinkValue: false,
     linkValue: freezeLinkValue
@@ -8743,6 +9151,8 @@ async function activateSnapshotMode(payload, linkValue, opts) {
 }
 
   async function createLink() {
+    console.warn("[LIA-FREEZE] CREATE-LINK-ENTER", BUILD_STAMP);
+
     const btnEl = document.getElementById("lia-create-link");
 
     try {
@@ -8758,7 +9168,10 @@ async function activateSnapshotMode(payload, linkValue, opts) {
       captureAdminState();
       storeLiveSlideState(liveRouteCurrentHash || getCurrentHash(), "createLink");
 
+      console.warn("[LIA-FREEZE] BEFORE-BUILD-PAYLOAD", BUILD_STAMP);
       const payload = buildPayloadFromLiveStates();
+      console.warn("[LIA-FREEZE] AFTER-BUILD-PAYLOAD", BUILD_STAMP);
+
       console.log("[LIA-FREEZE] payload-before-link", JSON.stringify(payload));
       const link = buildLink(payload);
 
@@ -8827,13 +9240,53 @@ async function initMode() {
   scheduleAssignmentDetailsRefresh(180);
   }
 
+function installCreateLinkDelegation() {
+  if (createLinkDelegationInstalled) return;
+  createLinkDelegationInstalled = true;
+
+  document.addEventListener("click", function (e) {
+    const t = e.target;
+    if (!(t instanceof Element)) return;
+
+    const btn = t.closest("#lia-create-link");
+    if (!btn) return;
+
+    if (document.body && document.body.classList.contains("lia-snapshot-mode")) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (typeof e.stopImmediatePropagation === "function") {
+        e.stopImmediatePropagation();
+      }
+      return;
+    }
+
+    console.warn("[LIA-FREEZE] DELEGATED-CREATE-LINK-CLICK", BUILD_STAMP);
+
+    e.preventDefault();
+    e.stopPropagation();
+    if (typeof e.stopImmediatePropagation === "function") {
+      e.stopImmediatePropagation();
+    }
+
+    Promise.resolve()
+      .then(function () {
+        return createLink();
+      })
+      .catch(function (err) {
+        console.error("[LIA-FREEZE] delegated-createLink-error", err);
+      });
+  }, true);
+}
+
   function safeBoot() {
     try {
+      console.warn("[LIA-FREEZE] BUILD-STAMP", BUILD_STAMP);
       ensureRuntimeStyle();
       installThemeWatcher();
       installGlobalF12Tracking();
       installGlobalTabTracking();
       installDevtoolsWatch();
+      installCreateLinkDelegation();
       initMode().catch(function (err) {
         console.error("[LIA-FREEZE] boot-error", err);
       });
@@ -8875,7 +9328,7 @@ async function initMode() {
   <label for="lia-name">Name</label>
   <input id="lia-name" data-snapshot-admin="1" type="text" placeholder="Name eingeben">
 
-  <button id="lia-create-link" data-snapshot-admin="1" onclick="window.__liaSubmissionDemo.createLink()">Abgabelink erstellen</button>
+  <button id="lia-create-link" data-snapshot-admin="1" type="button">Abgabelink erstellen</button>
 
   <label for="lia-link">Abgabelink</label>
   <textarea id="lia-link" data-snapshot-admin="1" readonly placeholder="Hier erscheint der erzeugte Link"></textarea>

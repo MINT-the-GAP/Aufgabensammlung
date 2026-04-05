@@ -105,10 +105,33 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
     );
   }
 
-  function getCurrentHash(){
-    const h = String(location.hash || '').trim();
-    return h || '#1';
+function getCurrentHash(){
+  const raw = String(location.hash || '').trim();
+
+  if (!raw) return '#1';
+
+  // Neues Freeze-Format:
+  //   #7&submission=TOKEN   ->   #7
+  let m = raw.match(/^(#\d+)&submission=.+$/);
+  if (m) {
+    return m[1];
   }
+
+  // Altes Freeze-Format:
+  //   #submission=TOKEN#7   ->   #7
+  if (/^#submission=/.test(raw)) {
+    const lastHash = raw.lastIndexOf('#');
+    if (lastHash > 0) {
+      const trailing = raw.slice(lastHash);
+      if (/^#\d+$/.test(trailing)) {
+        return trailing;
+      }
+    }
+    return '#1';
+  }
+
+  return raw;
+}
 
   function getSlideKey(){
     return getCurrentHash();
