@@ -4,6 +4,7 @@ language: de
 comment: LiaScript – Presentation 98% Breite + Auto-Font-Boost + Schriftgrößen-Regler (Overlay-Button, nur Presentation) – import-sicher, kollisionsarm
 author: Martin Lommatzsch
 
+
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MarkerREADME.md
 
 
@@ -579,13 +580,89 @@ function getToolbarLeftContainer(){
 }
 
 
+function isSaneTopLeftRect(r){
+  if (!r) return false;
 
+  const vp = getViewport();
+
+  if (!isFinite(r.left) || !isFinite(r.top) || !isFinite(r.right) || !isFinite(r.bottom)) return false;
+  if (r.width < 6 || r.height < 6) return false;
+
+  // Muss im oberen linken Toolbar-Bereich liegen
+  if (r.top < -20 || r.top > 220) return false;
+  if (r.left < -20) return false;
+  if (r.left > vp.w * 0.60) return false;
+
+  // komplett absurde Werte abfangen
+  if (r.right > vp.w + 120) return false;
+  if (r.bottom > vp.h + 120) return false;
+
+  return true;
+}
 
 
 
 function getHighlightRect(){
-  return getVisibleRect(ROOT_DOC.getElementById("lia-hl-btn"));
+  const btn = ROOT_DOC.getElementById("lia-hl-btn");
+  if (!btn) return null;
+
+  // 1) direkter Rect-Versuch
+  let r = null;
+  try{
+    r = btn.getBoundingClientRect();
+  }catch(e){
+    r = null;
+  }
+
+  if (isSaneTopLeftRect(r)){
+    return r;
+  }
+
+  // 2) Nightly-Fallback:
+  // aus Header-Left + Button-Offsets ein synthetisches Rect bauen
+  const leftC =
+    getToolbarLeftContainer() ||
+    btn.parentElement ||
+    getToolbarHeader();
+
+  if (!leftC) return null;
+
+  const c = getVisibleRect(leftC);
+  if (!c) return null;
+
+  const bw = Math.max(34, btn.offsetWidth  || 0);
+  const bh = Math.max(34, btn.offsetHeight || 0);
+
+  const ox = btn.offsetLeft || 0;
+  const oy = (typeof btn.offsetTop === "number")
+    ? btn.offsetTop
+    : Math.max(0, (c.height - bh) / 2);
+
+  const synthetic = {
+    left:   c.left + ox,
+    top:    c.top + oy,
+    right:  c.left + ox + bw,
+    bottom: c.top + oy + bh,
+    width:  bw,
+    height: bh
+  };
+
+  if (isSaneTopLeftRect(synthetic)){
+    return synthetic;
+  }
+
+  // 3) letzter Fallback: Textmarker-Slot ganz links im Header-Left
+  return {
+    left:   c.left + 8,
+    top:    c.top + Math.max(0, (c.height - 34) / 2),
+    right:  c.left + 8 + 34,
+    bottom: c.top + Math.max(0, (c.height - 34) / 2) + 34,
+    width:  34,
+    height: 34
+  };
 }
+
+
 
 function getRectLoose(el){
   if (!el) return null;
