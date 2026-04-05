@@ -561,13 +561,7 @@ html[data-lia-mode="slides"] main{
 
   function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
 
-function findTOCButton(){
-  const all = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
-  return all.find(el=>{
-    const t = ((el.getAttribute("aria-label")||el.getAttribute("title")||el.textContent||"")+"").toLowerCase();
-    return t.includes("inhaltsverzeichnis") || t.includes("table of contents") || t.includes("contents");
-  }) || null;
-}
+
 
 
 function getToolbarHeader(){
@@ -582,43 +576,158 @@ function getToolbarLeftContainer(){
   return header.querySelector(".lia-header__left") || header;
 }
 
-// Liefert den echten Anchor-RECT (TOC wenn da, sonst linker Toolbar-Button, sonst null => pad)
-function findAnchorRect(){
+
+
+
+
+
+function getHighlightRect(){
+  return getVisibleRect(ROOT_DOC.getElementById("lia-hl-btn"));
+}
+
+function getStableLeftToolbarPeers(){
   const vp = getViewport();
-
-  // 1) TOC (wenn sichtbar)
-  const tocR = getVisibleRect(findTOCButton());
-  if (tocR) return tocR;
-
-  // 2) Header-left: linkester sichtbarer Button
   const leftC = getToolbarLeftContainer();
-  if (leftC){
-    const els = Array.from(leftC.querySelectorAll("button,[role='button'],a"));
-    let best = null;
-    for (const el of els){
-      const r = getVisibleRect(el);
-      if (!r) continue;
-      if (!isToolbarLike(el)) continue;
-      if (r.top > 220) continue;
-      if (!best || r.left < best.left || (r.left === best.left && r.top < best.top)) best = r;
-    }
-    // wenn "alles rechts" (Slides ohne linke Controls) -> kein Anchor => pad
-    if (best && best.left <= vp.w * 0.60) return best;
-  }
+  if (!leftC) return [];
 
-  // 3) Global: linkester toolbar-like Button im Top-Band
-  const all = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
-  let best = null;
-  for (const el of all){
+  const out = [];
+  const els = Array.from(leftC.querySelectorAll("button,[role='button'],a"));
+
+  for (const el of els){
+    if (!el || el.id === BTN_ID) continue;
+
     const r = getVisibleRect(el);
     if (!r) continue;
-    if (!isToolbarLike(el)) continue;
+
+    // nur echtes linkes Toolbar-Band
     if (r.top > 220) continue;
-    if (!best || r.left < best.left || (r.left === best.left && r.top < best.top)) best = r;
+    if (r.left > vp.w * 0.60) continue;
+
+    // grotesk große Elemente ignorieren
+    if (r.width > 220 || r.height > 100) continue;
+
+    out.push({ el, r });
   }
-  if (best && best.left <= vp.w * 0.60) return best;
+
+  out.sort((a, b) => {
+    return (a.r.left - b.r.left) || (a.r.top - b.r.top);
+  });
+
+  if (!out.length) return out;
+
+  // nur dieselbe Zeile wie der erste linke Toolbar-Button
+  const baseMidY = out[0].r.top + out[0].r.height / 2;
+  const yTol = Math.max(20, out[0].r.height * 0.9);
+
+  return out.filter(p => {
+    const midY = p.r.top + p.r.height / 2;
+    return Math.abs(midY - baseMidY) <= yTol;
+  });
+}
+
+function getDockTarget(){
+  // 1) immer zuerst hart an den Textmarkerbutton
+  const hlRect = getHighlightRect();
+  if (hlRect){
+    return {
+      kind: "highlight",
+      rect: hlRect,
+      peers: [{ el: ROOT_DOC.getElementById("lia-hl-btn"), r: hlRect }]
+    };
+  }
+
+  // 2) sonst stabiles linkes Toolbar-Cluster
+  const peers = getStableLeftToolbarPeers();
+  if (peers.length){
+    let rightMost = peers[0].r;
+    for (const p of peers){
+      if (p.r.right > rightMost.right) rightMost = p.r;
+    }
+
+    return {
+      kind: "toolbar-row",
+      rect: rightMost,
+      peers
+    };
+  }
 
   return null;
+}
+
+function toolbarSignature(){
+  try{
+    const vp = getViewport();
+    const dock = getDockTarget();
+
+    if (!dock){
+      return [
+        Math.round(vp.w),
+        Math.round(vp.h),
+        Math.round(vp.ox),
+        Math.round(vp.oy),
+        "none"
+      ].join("|");
+    }
+
+    const r = dock.rect;
+    const count = dock.peers ? dock.peers.length : 1;
+
+    return [
+      Math.round(vp.w),
+      Math.round(vp.h),
+      Math.round(vp.ox),
+      Math.round(vp.oy),
+      dock.kind,
+      Math.round(r.left),
+      Math.round(r.top),
+      Math.round(r.right),
+      Math.round(r.height),
+      count
+    ].join("|");
+  }catch(e){
+    return null;
+  }
+}
+
+function positionOverlayButton(){
+  const btn = ROOT_DOC.getElementById(BTN_ID);
+  const overlay = ROOT_DOC.getElementById(OVERLAY_ID);
+  if (!btn || !overlay) return;
+
+  const vp  = getViewport();
+  const pad = 8;
+  const gap = 8;
+
+  let bw = 34, bh = 34;
+  try{
+    const r = btn.getBoundingClientRect();
+    if (r && r.width > 6 && r.height > 6){
+      bw = r.width;
+      bh = r.height;
+    }
+  }catch(e){}
+
+  const dock = getDockTarget();
+
+  let left = pad;
+  let top  = pad;
+
+  if (dock && dock.rect){
+    const r = dock.rect;
+
+    // immer direkt rechts daneben
+    left = r.right + gap;
+    top  = r.top + (r.height - bh) / 2;
+  }
+
+  left = clamp(left, pad, vp.w - bw - pad);
+  top  = clamp(top,  pad, vp.h - bh - pad);
+
+  overlay.style.left = `${Math.round(vp.ox)}px`;
+  overlay.style.top  = `${Math.round(vp.oy)}px`;
+
+  btn.style.left = `${Math.round(left)}px`;
+  btn.style.top  = `${Math.round(top)}px`;
 }
 
 
@@ -658,82 +767,9 @@ function findAnchorRect(){
   }
 
 
-function collectTopLeftRowButtons(anchorRect){
-  const vp = getViewport();
-  const maxTop = 220;
-  const pad = 8;
-
-  const a = anchorRect || { left: pad, top: pad, right: pad + 34, bottom: pad + 34, height: 34 };
-  const aMidY = a.top + (a.height || 34)/2;
-  const yTol  = Math.max(52, (a.height||34) * 1.6);
-
-  // Linkes Cluster: nie über Mitte hinaus + moderate Breite
-  const clusterMaxX = Math.min(vp.w * 0.55, a.left + 520);
-
-  const out = [];
-
-  const leftC = getToolbarLeftContainer();
-  const primary = leftC ? Array.from(leftC.querySelectorAll("button,[role='button'],a")) : [];
-  const secondary = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
-
-  function consider(el){
-    if (!el || el.id === BTN_ID) return;
-
-    const r = getVisibleRect(el);
-    if (!r) return;
-
-    if (r.top > maxTop) return;
-    if (r.left > clusterMaxX) return;
-
-    const midY = r.top + r.height/2;
-    if (Math.abs(midY - aMidY) > yTol) return;
-
-    if (r.width > 220 || r.height > 100) return;
-    if (!isToolbarLike(el)) return;
-
-    out.push({ el, r });
-  }
-
-  for (const el of primary) consider(el);
-  for (const el of secondary) consider(el);
-
-  const seen = new Set();
-  return out.filter(p => (seen.has(p.el) ? false : (seen.add(p.el), true)));
-}
 
 
 
-function toolbarSignature(){
-  try{
-    const vp = getViewport();
-    const pad = 8;
-
-    const aR = findAnchorRect();
-    const anchor = aR || { left: pad, top: pad, right: pad + 34, bottom: pad + 34, height: 34 };
-
-    const peers = collectTopLeftRowButtons(anchor);
-
-    let rightEdge = anchor.right;
-    let topBand   = anchor.top;
-    let rowH      = anchor.height || 34;
-
-    for (const p of peers){
-      rightEdge = Math.max(rightEdge, p.r.right);
-      topBand   = Math.min(topBand,   p.r.top);
-      rowH      = Math.max(rowH,      p.r.height);
-    }
-
-    return [
-      Math.round(vp.w), Math.round(vp.h),
-      Math.round(vp.ox), Math.round(vp.oy),
-      Math.round(topBand), Math.round(rowH),
-      Math.round(rightEdge),
-      peers.length
-    ].join("|");
-  }catch(e){
-    return null;
-  }
-}
 
 
 
@@ -748,47 +784,6 @@ function burstRepositionThrottled(){
 
 
 
-function positionOverlayButton(){
-  const btn = ROOT_DOC.getElementById(BTN_ID);
-  const overlay = ROOT_DOC.getElementById(OVERLAY_ID);
-  if (!btn || !overlay) return;
-
-  const vp  = getViewport();
-  const pad = 8;
-  const gap = 8;
-
-  let bw = 34, bh = 34;
-  try{
-    const r = btn.getBoundingClientRect();
-    if (r && r.width > 6 && r.height > 6){
-      bw = r.width; bh = r.height;
-    }
-  }catch(e){}
-
-  const aR = findAnchorRect();
-  const anchor = aR || { left: pad, top: pad, right: pad + bw, bottom: pad + bh, height: bh };
-
-  const peers = collectTopLeftRowButtons(anchor);
-
-  let rightEdge = anchor.right;
-  for (const p of peers){
-    rightEdge = Math.max(rightEdge, p.r.right);
-  }
-
-  const targetTop = anchor.top + ((anchor.height || bh) - bh) / 2;
-
-  let left = rightEdge + gap;
-  let top  = targetTop;
-
-  left = clamp(left, pad, vp.w - bw - pad);
-  top  = clamp(top,  pad, vp.h - bh - pad);
-
-  overlay.style.left = `${Math.round(vp.ox)}px`;
-  overlay.style.top  = `${Math.round(vp.oy)}px`;
-
-  btn.style.left = `${Math.round(left)}px`;
-  btn.style.top  = `${Math.round(top)}px`;
-}
 
 
 
