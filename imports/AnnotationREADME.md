@@ -66,7 +66,14 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
     syncRAF: 0,
     redrawRAF: 0,
     resizeObserver: null,
-    toolbar: null
+    toolbar: null,
+    eraserRing: null,
+    lastPointer: {
+      x: 0,
+      y: 0,
+      inside: false,
+      pointerType: ''
+    }
   };
 
   // ---------------------------------------------------------
@@ -105,33 +112,10 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
     );
   }
 
-function getCurrentHash(){
-  const raw = String(location.hash || '').trim();
-
-  if (!raw) return '#1';
-
-  // Neues Freeze-Format:
-  //   #7&submission=TOKEN   ->   #7
-  let m = raw.match(/^(#\d+)&submission=.+$/);
-  if (m) {
-    return m[1];
+  function getCurrentHash(){
+    const h = String(location.hash || '').trim();
+    return h || '#1';
   }
-
-  // Altes Freeze-Format:
-  //   #submission=TOKEN#7   ->   #7
-  if (/^#submission=/.test(raw)) {
-    const lastHash = raw.lastIndexOf('#');
-    if (lastHash > 0) {
-      const trailing = raw.slice(lastHash);
-      if (/^#\d+$/.test(trailing)) {
-        return trailing;
-      }
-    }
-    return '#1';
-  }
-
-  return raw;
-}
 
   function getSlideKey(){
     return getCurrentHash();
@@ -265,6 +249,46 @@ function getCurrentHash(){
     const w     = Math.max(0.75, Number(item && item.width) || 1);
     return Math.max(0.75, w * (curW / baseW));
   }
+
+function getLiveEraserRingSize(){
+  return Math.max(8, Number(STORE.ui.eraserWidth || 18));
+}
+
+function hideEraserRing(){
+  if (!STATE.eraserRing) return;
+  STATE.eraserRing.dataset.on = '0';
+}
+
+function updateEraserRing(x, y){
+  if (!STATE.eraserRing) return;
+
+  if (!STORE.ui.visible || isReadOnly() || effectiveMode() !== 'eraser'){
+    hideEraserRing();
+    return;
+  }
+
+  if (!isFinite(x) || !isFinite(y) || !isFinite(STATE.cssW) || !isFinite(STATE.cssH)){
+    hideEraserRing();
+    return;
+  }
+
+  const size = getLiveEraserRingSize();
+
+  STATE.eraserRing.style.width = size + 'px';
+  STATE.eraserRing.style.height = size + 'px';
+  STATE.eraserRing.style.left = clamp(x, 0, STATE.cssW) + 'px';
+  STATE.eraserRing.style.top  = clamp(y, 0, STATE.cssH) + 'px';
+  STATE.eraserRing.dataset.on = '1';
+}
+
+function refreshEraserRing(){
+  if (!STATE.lastPointer || !STATE.lastPointer.inside){
+    hideEraserRing();
+    return;
+  }
+
+  updateEraserRing(STATE.lastPointer.x, STATE.lastPointer.y);
+}
 
   // ---------------------------------------------------------
   // CSS
@@ -503,6 +527,27 @@ function ensureCss(){
       pointer-events: none;
     }
 
+    .lia-annot-eraser-ring{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      box-sizing: border-box;
+      border: 2px solid var(--lia-annot-accent);
+      background: transparent;
+      box-shadow: 0 0 0 1px var(--lia-annot-border);
+      pointer-events: none;
+      display: none;
+      z-index: 501;
+      transform: translate(-50%, -50%);
+    }
+
+    .lia-annot-eraser-ring[data-on="1"]{
+      display: block;
+    }
+
     .lia-annot-shell[data-mode="pen"] .lia-annot-canvas,
     .lia-annot-shell[data-mode="eraser"] .lia-annot-canvas{
       pointer-events: auto;
@@ -665,8 +710,8 @@ function ensureCss(){
     (document.body || document.documentElement).appendChild(bar);
 
     bar.addEventListener('click', function(e){
-      const btn = e.target && e.target.closest ? e.target.closest('[data-act]') : null;
-      const colorBtn = e.target && e.target.closest ? e.target.closest('[data-color]') : null;
+      const btn = e.target && e.target.closest ? e.target.closest('button[data-act]') : null;
+      const colorBtn = e.target && e.target.closest ? e.target.closest('button[data-color]') : null;
 
       if (colorBtn){
         e.preventDefault();
@@ -774,72 +819,108 @@ function ensureCss(){
     return bar;
   }
 
-  function updateToolbar(){
-    const bar = ensureToolbar();
-    const slide = currentSlide();
-    const ro = isReadOnly();
+function updateToolbar(){
+  const bar = ensureToolbar();
+  const slide = currentSlide();
+  const ro = isReadOnly();
 
-    const panel = bar.querySelector('.lia-annot-panel');
-    if (panel){
-      panel.dataset.open = (STORE.ui.panelOpen && !ro) ? '1' : '0';
-      if (STORE.ui.panelMode === 'eraser'){
+  const panel = bar.querySelector('.lia-annot-panel');
+  if (panel){
+    const open = (STORE.ui.panelOpen && !ro) ? '1' : '0';
+    const wantedMode = (STORE.ui.panelMode === 'eraser') ? 'eraser' : 'pen';
+    const builtMode = String(panel.dataset.builtMode || '');
+    const builtRo   = String(panel.dataset.builtRo || '');
+
+    panel.dataset.open = open;
+
+    const needsRebuild =
+      !panel.firstElementChild ||
+      builtMode !== wantedMode ||
+      builtRo !== String(ro ? 1 : 0);
+
+    if (needsRebuild){
+      if (wantedMode === 'eraser'){
         panel.innerHTML = buildEraserPanelHTML();
       }else{
         panel.innerHTML = buildPenPanelHTML();
       }
-    }
 
-    const note = panel ? panel.querySelector('[data-k="note"]') : null;
-    if (note){
-      note.textContent = ro
-        ? 'Freeze-/Read-only-Modus: Zeichnen ist gesperrt, Anzeigen/Ausblenden bleibt möglich.'
-        : '';
-    }
-
-    const btns = bar.querySelectorAll('.lia-annot-btn[data-act]');
-    btns.forEach(function(btn){
-      const act = String(btn.getAttribute('data-act') || '');
-      btn.dataset.active = '0';
-
-      if (act === 'cursor' && STORE.ui.mode === 'cursor') btn.dataset.active = '1';
-      if (act === 'pen'    && STORE.ui.mode === 'pen')    btn.dataset.active = '1';
-      if (act === 'eraser' && STORE.ui.mode === 'eraser') btn.dataset.active = '1';
-      if (act === 'toggle'){
-        btn.dataset.active = STORE.ui.visible ? '1' : '0';
-        btn.innerHTML = iconEye(!!STORE.ui.visible);
-      }
-
-      if (act === 'undo'){
-        btn.disabled = ro || slide.items.length === 0;
-      }else if (act === 'redo'){
-        btn.disabled = ro || slide.redo.length === 0;
-      }else if (act === 'pen' || act === 'eraser'){
-        btn.disabled = ro;
-      }else{
-        btn.disabled = false;
-      }
-    });
-
-    if (panel){
-      const colorBtns = panel.querySelectorAll('.lia-annot-color-item');
-      colorBtns.forEach(function(btn){
-        const c = String(btn.getAttribute('data-color') || '');
-        btn.dataset.active = (c === String(STORE.ui.color || '')) ? '1' : '0';
-        btn.disabled = ro;
-      });
-
-      const clearBtn = panel.querySelector('.lia-annot-danger[data-act="clear"]');
-      if (clearBtn) clearBtn.disabled = ro || slide.items.length === 0;
-
-      const wTxt = panel.querySelector('[data-k="width"]');
-      const aTxt = panel.querySelector('[data-k="alpha"]');
-      const eTxt = panel.querySelector('[data-k="eraserWidth"]');
-
-      if (wTxt) wTxt.textContent = String(STORE.ui.width);
-      if (aTxt) aTxt.textContent = Math.round(Number(STORE.ui.alpha || 1) * 100) + '%';
-      if (eTxt) eTxt.textContent = String(STORE.ui.eraserWidth);
+      panel.dataset.builtMode = wantedMode;
+      panel.dataset.builtRo = String(ro ? 1 : 0);
     }
   }
+
+  const note = panel ? panel.querySelector('[data-k="note"]') : null;
+  if (note){
+    note.textContent = ro
+      ? 'Freeze-/Read-only-Modus: Zeichnen ist gesperrt, Anzeigen/Ausblenden bleibt möglich.'
+      : '';
+  }
+
+  const btns = bar.querySelectorAll('.lia-annot-btn[data-act]');
+  btns.forEach(function(btn){
+    const act = String(btn.getAttribute('data-act') || '');
+    btn.dataset.active = '0';
+
+    if (act === 'cursor' && STORE.ui.mode === 'cursor') btn.dataset.active = '1';
+    if (act === 'pen'    && STORE.ui.mode === 'pen')    btn.dataset.active = '1';
+    if (act === 'eraser' && STORE.ui.mode === 'eraser') btn.dataset.active = '1';
+    if (act === 'toggle'){
+      btn.dataset.active = STORE.ui.visible ? '1' : '0';
+      btn.innerHTML = iconEye(!!STORE.ui.visible);
+    }
+
+    if (act === 'undo'){
+      btn.disabled = ro || slide.items.length === 0;
+    }else if (act === 'redo'){
+      btn.disabled = ro || slide.redo.length === 0;
+    }else if (act === 'pen' || act === 'eraser'){
+      btn.disabled = ro;
+    }else{
+      btn.disabled = false;
+    }
+  });
+
+  if (panel){
+    const colorBtns = panel.querySelectorAll('.lia-annot-color-item');
+    colorBtns.forEach(function(btn){
+      const c = String(btn.getAttribute('data-color') || '');
+      btn.dataset.active = (c === String(STORE.ui.color || '')) ? '1' : '0';
+      btn.disabled = ro;
+    });
+
+    const clearBtn = panel.querySelector('.lia-annot-danger[data-act="clear"]');
+    if (clearBtn) clearBtn.disabled = ro || slide.items.length === 0;
+
+    const widthSlider = panel.querySelector('input[data-act="width"]');
+    const alphaSlider = panel.querySelector('input[data-act="alpha"]');
+    const eraserSlider = panel.querySelector('input[data-act="eraserWidth"]');
+
+    const wTxt = panel.querySelector('[data-k="width"]');
+    const aTxt = panel.querySelector('[data-k="alpha"]');
+    const eTxt = panel.querySelector('[data-k="eraserWidth"]');
+
+    if (widthSlider && document.activeElement !== widthSlider){
+      widthSlider.value = String(STORE.ui.width);
+    }
+    if (alphaSlider && document.activeElement !== alphaSlider){
+      alphaSlider.value = String(STORE.ui.alpha);
+    }
+    if (eraserSlider && document.activeElement !== eraserSlider){
+      eraserSlider.value = String(STORE.ui.eraserWidth);
+    }
+
+    if (wTxt) wTxt.textContent = String(STORE.ui.width);
+    if (aTxt) aTxt.textContent = Math.round(Number(STORE.ui.alpha || 1) * 100) + '%';
+    if (eTxt) eTxt.textContent = String(STORE.ui.eraserWidth);
+  }
+
+  if (effectiveMode() === 'eraser' && STORE.ui.visible && !ro && STATE.lastPointer && STATE.lastPointer.inside){
+    refreshEraserRing();
+  }else{
+    hideEraserRing();
+  }
+}
 
 
 function syncToolbarPosition(){
@@ -914,84 +995,44 @@ function syncToolbarPosition(){
     }
   }
 
-  function bindCanvasEvents(){
-    if (!STATE.canvas || STATE.canvas.__liaAnnotBound) return;
-    STATE.canvas.__liaAnnotBound = true;
+function bindCanvasEvents(){
+  if (!STATE.canvas || STATE.canvas.__liaAnnotBound) return;
+  STATE.canvas.__liaAnnotBound = true;
 
-    function getLocalPos(evt){
-      const r = STATE.canvas.getBoundingClientRect();
-      const x = clamp(evt.clientX - r.left, 0, STATE.cssW);
-      const y = clamp(evt.clientY - r.top,  0, STATE.cssH);
-      return { x, y };
+  function getLocalPos(evt){
+    const r = STATE.canvas.getBoundingClientRect();
+    const x = clamp(evt.clientX - r.left, 0, STATE.cssW);
+    const y = clamp(evt.clientY - r.top,  0, STATE.cssH);
+    return { x, y };
+  }
+
+  function rememberPointer(evt){
+    const p = getLocalPos(evt);
+    STATE.lastPointer = {
+      x: p.x,
+      y: p.y,
+      inside: true,
+      pointerType: String((evt && evt.pointerType) || '')
+    };
+    return p;
+  }
+
+  function addPoint(path, x, y){
+    if (!path || !Array.isArray(path.points)) return;
+    const rel = toRel(x, y);
+    const prev = path.points.length ? path.points[path.points.length - 1] : null;
+
+    if (prev){
+      const dx = (rel.x - prev.x) * STATE.cssW;
+      const dy = (rel.y - prev.y) * STATE.cssH;
+      if (Math.hypot(dx, dy) < 0.8) return;
     }
 
-    function addPoint(path, x, y){
-      if (!path || !Array.isArray(path.points)) return;
-      const rel = toRel(x, y);
-      const prev = path.points.length ? path.points[path.points.length - 1] : null;
+    path.points.push(rel);
+  }
 
-      if (prev){
-        const dx = (rel.x - prev.x) * STATE.cssW;
-        const dy = (rel.y - prev.y) * STATE.cssH;
-        if (Math.hypot(dx, dy) < 0.8) return;
-      }
-
-      path.points.push(rel);
-    }
-
-    STATE.canvas.addEventListener('pointerdown', function(evt){
-      if (evt.pointerType === 'mouse' && evt.button !== 0) return;
-      if (isReadOnly()) return;
-      if (!STORE.ui.visible) return;
-
-      const mode = effectiveMode();
-      if (mode !== 'pen' && mode !== 'eraser') return;
-
-      evt.preventDefault();
-      evt.stopPropagation();
-
-      if (STORE.ui.panelOpen){
-        STORE.ui.panelOpen = false;
-        updateToolbar();
-      }
-
-      const p = getLocalPos(evt);
-      const slide = currentSlide();
-
-      const item = {
-        kind: 'path',
-        tool: mode,
-        color: String(STORE.ui.color || '#ff0000'),
-        width: (mode === 'eraser') ? Number(STORE.ui.eraserWidth || 18) : Number(STORE.ui.width || 3),
-        alpha: (mode === 'eraser') ? 1 : Number(STORE.ui.alpha || 1),
-        baseW: Math.max(1, STATE.cssW),
-        points: [ toRel(p.x, p.y) ]
-      };
-
-      slide.items.push(item);
-      slide.redo = [];
-      STATE.activePath = item;
-      STATE.drawing = true;
-
-      try{ STATE.canvas.setPointerCapture(evt.pointerId); }catch(_){}
-      requestRedraw();
-      updateToolbar();
-    }, true);
-
-    STATE.canvas.addEventListener('pointermove', function(evt){
-      if (!STATE.drawing || !STATE.activePath) return;
-
-      evt.preventDefault();
-      evt.stopPropagation();
-
-      const p = getLocalPos(evt);
-      addPoint(STATE.activePath, p.x, p.y);
-      requestRedraw();
-    }, true);
-
-    function finish(evt){
-      if (!STATE.drawing) return;
-
+  function finishStroke(evt, keepMouseRing){
+    if (STATE.drawing){
       evt.preventDefault();
       evt.stopPropagation();
 
@@ -1002,12 +1043,107 @@ function syncToolbarPosition(){
       updateToolbar();
     }
 
-    STATE.canvas.addEventListener('pointerup', finish, true);
-    STATE.canvas.addEventListener('pointercancel', finish, true);
-    STATE.canvas.addEventListener('contextmenu', function(evt){
-      evt.preventDefault();
-    }, true);
+    if (
+      keepMouseRing &&
+      evt &&
+      evt.pointerType === 'mouse' &&
+      STORE.ui.visible &&
+      !isReadOnly() &&
+      effectiveMode() === 'eraser'
+    ){
+      const p = rememberPointer(evt);
+      updateEraserRing(p.x, p.y);
+    }else{
+      STATE.lastPointer.inside = false;
+      hideEraserRing();
+    }
   }
+
+  STATE.canvas.addEventListener('pointerdown', function(evt){
+    if (evt.pointerType === 'mouse' && evt.button !== 0) return;
+
+    const p = rememberPointer(evt);
+
+    if (!STORE.ui.visible || isReadOnly()){
+      hideEraserRing();
+      return;
+    }
+
+    const mode = effectiveMode();
+
+    if (mode === 'eraser'){
+      updateEraserRing(p.x, p.y);
+    }else{
+      hideEraserRing();
+    }
+
+    if (mode !== 'pen' && mode !== 'eraser') return;
+
+    evt.preventDefault();
+    evt.stopPropagation();
+
+    if (STORE.ui.panelOpen){
+      STORE.ui.panelOpen = false;
+      updateToolbar();
+    }
+
+    const slide = currentSlide();
+
+    const item = {
+      kind: 'path',
+      tool: mode,
+      color: String(STORE.ui.color || '#ff0000'),
+      width: (mode === 'eraser') ? Number(STORE.ui.eraserWidth || 18) : Number(STORE.ui.width || 3),
+      alpha: (mode === 'eraser') ? 1 : Number(STORE.ui.alpha || 1),
+      baseW: Math.max(1, STATE.cssW),
+      points: [ toRel(p.x, p.y) ]
+    };
+
+    slide.items.push(item);
+    slide.redo = [];
+    STATE.activePath = item;
+    STATE.drawing = true;
+
+    try{ STATE.canvas.setPointerCapture(evt.pointerId); }catch(_){}
+    requestRedraw();
+    updateToolbar();
+  }, true);
+
+  STATE.canvas.addEventListener('pointermove', function(evt){
+    const p = rememberPointer(evt);
+
+    if (!isReadOnly() && STORE.ui.visible && effectiveMode() === 'eraser'){
+      updateEraserRing(p.x, p.y);
+    }else{
+      hideEraserRing();
+    }
+
+    if (!STATE.drawing || !STATE.activePath) return;
+
+    evt.preventDefault();
+    evt.stopPropagation();
+
+    addPoint(STATE.activePath, p.x, p.y);
+    requestRedraw();
+  }, true);
+
+  STATE.canvas.addEventListener('pointerup', function(evt){
+    finishStroke(evt, true);
+  }, true);
+
+  STATE.canvas.addEventListener('pointercancel', function(evt){
+    finishStroke(evt, false);
+  }, true);
+
+  STATE.canvas.addEventListener('pointerleave', function(){
+    STATE.lastPointer.inside = false;
+    hideEraserRing();
+  }, true);
+
+  STATE.canvas.addEventListener('contextmenu', function(evt){
+    evt.preventDefault();
+  }, true);
+}
 
 function ensureOverlay(){
   const host = getVisibleMainHost();
@@ -1029,24 +1165,38 @@ function ensureOverlay(){
       shell = document.createElement('div');
       shell.className = 'lia-annot-shell';
       shell.setAttribute('aria-hidden', 'true');
+    }
 
-      const canvas = document.createElement('canvas');
+    let canvas = shell.querySelector('.lia-annot-canvas');
+    if (!canvas){
+      canvas = document.createElement('canvas');
       canvas.className = 'lia-annot-canvas';
       canvas.setAttribute('aria-label', 'Annotationsfläche');
-
       shell.appendChild(canvas);
+    }
+
+    let ring = shell.querySelector('.lia-annot-eraser-ring');
+    if (!ring){
+      ring = document.createElement('span');
+      ring.className = 'lia-annot-eraser-ring';
+      ring.dataset.on = '0';
+      shell.appendChild(ring);
     }
 
     insertShellAfterHeader(host, shell);
 
     STATE.shell = shell;
-    STATE.canvas = shell.querySelector('.lia-annot-canvas');
+    STATE.canvas = canvas;
+    STATE.eraserRing = ring;
     STATE.ctx = STATE.canvas ? STATE.canvas.getContext('2d', { willReadFrequently:true }) : null;
 
     bindCanvasEvents();
     bindResizeObserver();
   }else{
     insertShellAfterHeader(host, STATE.shell);
+
+    STATE.canvas = STATE.shell.querySelector('.lia-annot-canvas');
+    STATE.eraserRing = STATE.shell.querySelector('.lia-annot-eraser-ring');
   }
 
   if (slideChanged){
@@ -1061,7 +1211,6 @@ function syncOverlayInteractivity(){
   const mode = effectiveMode();
   const visible = !!STORE.ui.visible;
 
-  // alles zuerst neutralisieren
   for (let i = 0; i < shells.length; i++){
     const shell = shells[i];
     const canvas = shell.querySelector('.lia-annot-canvas');
@@ -1078,11 +1227,15 @@ function syncOverlayInteractivity(){
     }
   }
 
-  // komplett unsichtbar -> fertig
-  if (!visible) return;
+  if (!visible){
+    hideEraserRing();
+    return;
+  }
 
-  // aktuelle aktive Shell explizit sichtbar halten
-  if (!STATE.shell || !STATE.canvas) return;
+  if (!STATE.shell || !STATE.canvas){
+    hideEraserRing();
+    return;
+  }
 
   STATE.shell.style.display = '';
   STATE.shell.dataset.hidden = '0';
@@ -1097,6 +1250,12 @@ function syncOverlayInteractivity(){
     STATE.canvas.style.pointerEvents = 'none';
     STATE.canvas.style.touchAction = 'auto';
     STATE.canvas.style.cursor = 'default';
+  }
+
+  if (mode === 'eraser'){
+    refreshEraserRing();
+  }else{
+    hideEraserRing();
   }
 }
 
@@ -1136,6 +1295,8 @@ function syncOverlayInteractivity(){
 
     if (STATE.canvas.width !== pxW) STATE.canvas.width = pxW;
     if (STATE.canvas.height !== pxH) STATE.canvas.height = pxH;
+
+    refreshEraserRing();
   }
 
 function requestSync(){

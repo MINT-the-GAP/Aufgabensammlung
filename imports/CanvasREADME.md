@@ -327,6 +327,28 @@ canvas.lia-draw{
 
   opacity: 0;
 }
+
+.lia-eraser-ring{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  box-sizing: border-box;
+  border: 2px solid var(--canvas-accent);
+  background: transparent;
+  box-shadow: 0 0 0 1px var(--canvas-border);
+  pointer-events: none;
+  display: none;
+  z-index: 58;
+  transform: translate(-50%, -50%);
+}
+
+.lia-eraser-ring[data-on="1"]{
+  display: block;
+}
+
 .lia-resize-corner[data-corner="br"]{ right: 0; cursor: nwse-resize; }
 .lia-resize-corner[data-corner="bl"]{ left: 0;  cursor: nesw-resize; }
 @end
@@ -622,6 +644,10 @@ function ensureCss(){
     const btnEraser = wrap.querySelector('.lia-eraser-btn');
     const btnBg     = wrap.querySelector('.lia-bgmenu-btn');
     const menu      = wrap.querySelector('.lia-tool-menu');
+    const eraserRing = document.createElement('span');
+    eraserRing.className = 'lia-eraser-ring';
+    eraserRing.dataset.on = '0';
+    wrap.appendChild(eraserRing);
 
     setUndoIcon(btnUndo);
     setRedoIcon(btnRedo);
@@ -641,6 +667,73 @@ function ensureCss(){
     const REDO    = (saved && Array.isArray(saved.REDO))    ? saved.REDO    : [];
 
     let currentStroke = null;
+
+const hoverState = {
+  sx: 0,
+  sy: 0,
+  inside: false
+};
+
+function clampLocal(v, a, b){
+  return Math.max(a, Math.min(b, v));
+}
+
+function hideEraserRing(){
+  if (!eraserRing) return;
+  eraserRing.dataset.on = '0';
+}
+
+function rememberHover(sx, sy){
+  hoverState.sx = sx;
+  hoverState.sy = sy;
+  hoverState.inside = true;
+}
+
+function updateEraserRingFromScreen(sx, sy){
+  if (!eraserRing) return;
+
+  if (tool !== 'eraser' || mode === 'pan' || mode === 'pinch'){
+    hideEraserRing();
+    return;
+  }
+
+  if (!isFinite(sx) || !isFinite(sy)) {
+    hideEraserRing();
+    return;
+  }
+
+  const size = Math.max(8, eraserWidth * VIEW.scale);
+
+  eraserRing.style.width = size + 'px';
+  eraserRing.style.height = size + 'px';
+  eraserRing.style.left = clampLocal(sx, 0, canvas.clientWidth) + 'px';
+  eraserRing.style.top  = clampLocal(sy, 0, canvas.clientHeight) + 'px';
+  eraserRing.dataset.on = '1';
+}
+
+function refreshEraserRing(){
+  if (!hoverState.inside){
+    hideEraserRing();
+    return;
+  }
+  updateEraserRingFromScreen(hoverState.sx, hoverState.sy);
+}
+
+function maybeRestoreMouseRing(e){
+  if (!e || e.pointerType !== 'mouse'){
+    hideEraserRing();
+    return;
+  }
+
+  const p = getScreenPos(e);
+  rememberHover(p.sx, p.sy);
+
+  if (tool === 'eraser'){
+    updateEraserRingFromScreen(p.sx, p.sy);
+  }else{
+    hideEraserRing();
+  }
+}
 
     let tool = 'pen';
     let menuMode = 'pen';
@@ -1173,6 +1266,11 @@ function ensureCss(){
       }
 
       updateMenuVisuals();
+      if (tool === 'eraser'){
+        refreshEraserRing();
+      }else{
+        hideEraserRing();
+      }
     }
 
     function resizeToCss(){
@@ -1192,6 +1290,7 @@ function ensureCss(){
       present();
       updateUI();
       persist();
+      refreshEraserRing();
     }
 
     updateUI();
@@ -1380,21 +1479,23 @@ function ensureCss(){
 
     function clampScale(s){ return Math.max(VIEW.minScale, Math.min(VIEW.maxScale, s)); }
 
-    function zoomAboutScreenPoint(factor, sx, sy){
-      const oldS = VIEW.scale;
-      const newS = clampScale(oldS * factor);
-      if (newS === oldS) return;
+function zoomAboutScreenPoint(factor, sx, sy){
+  const oldS = VIEW.scale;
+  const newS = clampScale(oldS * factor);
+  if (newS === oldS) return;
 
-      const w = screenToWorld(sx, sy);
+  const w = screenToWorld(sx, sy);
 
-      VIEW.scale = newS;
-      VIEW.panX = sx - w.x * newS;
-      VIEW.panY = sy - w.y * newS;
+  VIEW.scale = newS;
+  VIEW.panX = sx - w.x * newS;
+  VIEW.panY = sy - w.y * newS;
 
-      rebuildStrokeLayer();
-      present();
-      persist();
-    }
+  rememberHover(sx, sy);
+  rebuildStrokeLayer();
+  present();
+  persist();
+  refreshEraserRing();
+}
 
     canvas.addEventListener('wheel', (e) => {
       e.preventDefault();
@@ -1462,12 +1563,19 @@ function ensureCss(){
 
     function endStroke(){ currentStroke = null; }
 
-    canvas.addEventListener('pointerdown', (e) => {
-      if (e.target && e.target.classList && e.target.classList.contains('lia-resize-corner')) return;
+      canvas.addEventListener('pointerdown', (e) => {
+        if (e.target && e.target.classList && e.target.classList.contains('lia-resize-corner')) return;
 
-      const p = getScreenPos(e);
-      pointers.set(e.pointerId, p);
-      canvas.setPointerCapture(e.pointerId);
+        const p = getScreenPos(e);
+        rememberHover(p.sx, p.sy);
+        pointers.set(e.pointerId, p);
+        canvas.setPointerCapture(e.pointerId);
+
+        if (tool === 'eraser'){
+          updateEraserRingFromScreen(p.sx, p.sy);
+        }else{
+          hideEraserRing();
+        }
 
       if (pointers.size === 2){
         if (mode === 'draw') endStroke();
@@ -1479,6 +1587,7 @@ function ensureCss(){
 
         pinchStart = { dist:d, worldMid, startScale:VIEW.scale };
         mode = 'pinch';
+        hideEraserRing();
         return;
       }
 
@@ -1491,6 +1600,7 @@ function ensureCss(){
         lastPanSX = p.sx;
         lastPanSY = p.sy;
         canvas.style.cursor = 'grab';
+        hideEraserRing();
         return;
       }
 
@@ -1499,78 +1609,101 @@ function ensureCss(){
       startStrokeAtScreen(p.sx, p.sy);
     });
 
-    canvas.addEventListener('pointermove', (e) => {
-      if (!pointers.has(e.pointerId)) return;
+canvas.addEventListener('pointermove', (e) => {
+  const tracked = pointers.has(e.pointerId);
+  const p = getScreenPos(e);
 
-      const p = getScreenPos(e);
-      pointers.set(e.pointerId, p);
+  if (tracked || e.pointerType === 'mouse'){
+    rememberHover(p.sx, p.sy);
 
-      if (mode === 'pinch' && pointers.size >= 2 && pinchStart){
-        const arr = Array.from(pointers.values()).slice(0,2);
-        const m = mid(arr[0], arr[1]);
-        const d = Math.max(1e-6, dist(arr[0], arr[1]));
-        const factor = d / pinchStart.dist;
-
-        const newScale = clampScale(pinchStart.startScale * factor);
-        VIEW.scale = newScale;
-        VIEW.panX = m.sx - pinchStart.worldMid.x * newScale;
-        VIEW.panY = m.sy - pinchStart.worldMid.y * newScale;
-
-        rebuildStrokeLayer();
-        present();
-        persist();
-        return;
-      }
-
-      if (mode === 'pan'){
-        const dx = p.sx - lastPanSX;
-        const dy = p.sy - lastPanSY;
-        lastPanSX = p.sx;
-        lastPanSY = p.sy;
-        VIEW.panX += dx;
-        VIEW.panY += dy;
-
-        rebuildStrokeLayer();
-        present();
-        persist();
-        return;
-      }
-
-      if (mode === 'draw'){
-        extendStrokeToScreen(p.sx, p.sy);
-      }
-    });
-
-    function stopPointer(e){
-      if (pointers.has(e.pointerId)) pointers.delete(e.pointerId);
-      try{ canvas.releasePointerCapture(e.pointerId); }catch(_){}
-
-      if (mode === 'pinch'){
-        if (pointers.size < 2){
-          pinchStart = null;
-          mode = 'idle';
-        }
-        return;
-      }
-
-      if (mode === 'pan'){
-        mode = 'idle';
-        canvas.style.cursor = 'crosshair';
-        return;
-      }
-
-      if (mode === 'draw'){
-        endStroke();
-        mode = 'idle';
-        updateUI();
-        persist();
-        return;
-      }
+    if (tool === 'eraser' && mode !== 'pan' && mode !== 'pinch'){
+      updateEraserRingFromScreen(p.sx, p.sy);
+    }else{
+      hideEraserRing();
     }
+  }
+
+  if (!tracked) return;
+
+  pointers.set(e.pointerId, p);
+
+  if (mode === 'pinch' && pointers.size >= 2 && pinchStart){
+    const arr = Array.from(pointers.values()).slice(0,2);
+    const m = mid(arr[0], arr[1]);
+    const d = Math.max(1e-6, dist(arr[0], arr[1]));
+    const factor = d / pinchStart.dist;
+
+    const newScale = clampScale(pinchStart.startScale * factor);
+    VIEW.scale = newScale;
+    VIEW.panX = m.sx - pinchStart.worldMid.x * newScale;
+    VIEW.panY = m.sy - pinchStart.worldMid.y * newScale;
+
+    hoverState.sx = m.sx;
+    hoverState.sy = m.sy;
+
+    rebuildStrokeLayer();
+    present();
+    persist();
+    hideEraserRing();
+    return;
+  }
+
+  if (mode === 'pan'){
+    const dx = p.sx - lastPanSX;
+    const dy = p.sy - lastPanSY;
+    lastPanSX = p.sx;
+    lastPanSY = p.sy;
+    VIEW.panX += dx;
+    VIEW.panY += dy;
+
+    rebuildStrokeLayer();
+    present();
+    persist();
+    hideEraserRing();
+    return;
+  }
+
+  if (mode === 'draw'){
+    extendStrokeToScreen(p.sx, p.sy);
+  }
+});
+
+function stopPointer(e){
+  if (pointers.has(e.pointerId)) pointers.delete(e.pointerId);
+  try{ canvas.releasePointerCapture(e.pointerId); }catch(_){}
+
+  if (mode === 'pinch'){
+    if (pointers.size < 2){
+      pinchStart = null;
+      mode = 'idle';
+    }
+    maybeRestoreMouseRing(e);
+    return;
+  }
+
+  if (mode === 'pan'){
+    mode = 'idle';
+    canvas.style.cursor = 'crosshair';
+    maybeRestoreMouseRing(e);
+    return;
+  }
+
+  if (mode === 'draw'){
+    endStroke();
+    mode = 'idle';
+    updateUI();
+    persist();
+    maybeRestoreMouseRing(e);
+    return;
+  }
+}
 
     canvas.addEventListener('pointerup', stopPointer);
     canvas.addEventListener('pointercancel', stopPointer);
     canvas.addEventListener('pointerleave', () => {
+      hoverState.inside = false;
+      hideEraserRing();
+    
       if (mode === 'draw') endStroke();
       if (mode !== 'pinch') mode = 'idle';
       canvas.style.cursor = 'crosshair';
