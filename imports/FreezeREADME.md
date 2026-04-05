@@ -11,6 +11,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MarkerREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/KoordREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/OCRREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/AnnotationREADME.md?cb=2
 
 
 
@@ -26,10 +27,10 @@ window.__liaSubmissionDemo = (function () {
   const PARAM_NAME = "submission";
   const ADMIN_ATTR = "data-snapshot-admin";
   const STORAGE_PREFIX = "__lia_submission_demo__:";
-  const PAYLOAD_VERSION = "sf-mini-ti-2";
+  const PAYLOAD_VERSION = "sf-mini-ti-3";
   const DEBUG = true;
   const EVALUATION_TITLE = "Auswertung";
-
+  const BUILD_STAMP = "FREEZE-BUILD-2026-04-05-12-26";
 
   let snapshotPayload = null;
   let declaredSlidesCache = [];
@@ -39,6 +40,7 @@ window.__liaSubmissionDemo = (function () {
   let liveBindingsInstalled = false;
   let freezeBindingsInstalled = false;
   let themeWatcherInstalled = false;
+  let createLinkDelegationInstalled = false;
 
   let liveRouteCurrentHash = "";
   let lastKnownName = "";
@@ -157,6 +159,17 @@ function base64ToUtf8(str) {
       })[ch];
     });
   }
+
+function copyJson(value) {
+  if (value == null) return value;
+
+  try {
+    return JSON.parse(JSON.stringify(value));
+  } catch (e) {
+    return null;
+  }
+}
+
 
   function uniqueElements(list) {
     const seen = new Set();
@@ -579,6 +592,16 @@ body.lia-course-frozen .lia-frozen-note{
   cursor: not-allowed !important;
 }
 
+.lia-frozen-scope .lia-annot-toolbar,
+.lia-frozen-scope .lia-annot-toolbar *{
+  pointer-events: auto !important;
+}
+
+.lia-frozen-scope .lia-annot-toolbar button,
+.lia-frozen-scope .lia-annot-toolbar [role="button"]{
+  cursor: pointer !important;
+}
+
 .lia-frozen-scope #lia-link{
   pointer-events: auto !important;
   cursor: text !important;
@@ -850,25 +873,26 @@ function buildLink(payload) {
   storeSubmissionToken(token);
 
   const viewerBase = window.location.href.split("?")[0].split("#")[0];
-  const encodedCourseUrl = encodeURIComponent(baseCourseUrl);
   const slideHash = /^#\d+$/.test(String(payload && payload.sh || ""))
     ? String(payload.sh)
     : "#1";
 
-  // Neues Format:
-  //   ...?COURSE_URL#7&submission=TOKEN
-  // Vorteil:
-  //   - Folienhash steht vorne und ist für LiaScript direkt lesbar
-  //   - Token bleibt im Fragment und geht nicht als Referrer raus
+  // WICHTIG:
+  // Token in die kodierte Kurs-URL legen, nicht in den Viewer-Hash.
+  // Dann kann LiaScript den Hash #7 normal benutzen, ohne uns das
+  // submission-Token wegzunormalisieren.
+  const courseUrlWithSubmission =
+    stripSubmissionFromCourseUrl(baseCourseUrl) +
+    "#" +
+    PARAM_NAME +
+    "=" +
+    token;
+
   return (
     viewerBase +
     "?" +
-    encodedCourseUrl +
-    slideHash +
-    "&" +
-    PARAM_NAME +
-    "=" +
-    token
+    encodeURIComponent(courseUrlWithSubmission) +
+    slideHash
   );
 }
 
@@ -1787,22 +1811,35 @@ async function ensureDeclaredSlides(force) {
   }
 
   function getFreezeBootTargetHash() {
-    // Geteilter Freezelink: direkt auf die Auswertung
-    if (snapshotIsSharedLinkMode) {
-      const evalHash = getDeclaredEvaluationHash();
-      if (evalHash) return evalHash;
+    const evalHash = getDeclaredEvaluationHash();
+
+    // Im geteilten Freezelink zuerst zur Auswertungsfolie,
+    // aber nur wenn im Kurs überhaupt eine @Auswertung(...) existiert.
+    if (
+      snapshotIsSharedLinkMode &&
+      /^#\d+$/.test(evalHash) &&
+      getDeclaredSlideByHash(evalHash)
+    ) {
+      return evalHash;
     }
 
-    // Lokal nach createLink(): auf der aktuellen Folie bleiben
     const current = cleanHashValue(getCurrentHash() || "");
-    if (/^#\d+$/.test(current)) {
+    if (/^#\d+$/.test(current) && getDeclaredSlideByHash(current)) {
       return current;
     }
 
-    // Fallback
     const snap = cleanHashValue(snapshotPayload && snapshotPayload.sh || "");
-    if (/^#\d+$/.test(snap)) {
+    if (/^#\d+$/.test(snap) && getDeclaredSlideByHash(snap)) {
       return snap;
+    }
+
+    const preferred = getPreferredFreezeLandingHash();
+    if (/^#\d+$/.test(preferred) && getDeclaredSlideByHash(preferred)) {
+      return preferred;
+    }
+
+    if (/^#\d+$/.test(evalHash) && getDeclaredSlideByHash(evalHash)) {
+      return evalHash;
     }
 
     return "#1";
@@ -2524,20 +2561,6 @@ function getAssignmentDetailManualKey(marker) {
   return makeManualAwardStoreKey(hash, taskIndex);
 }
 
-function hasStoredManualAwardValue(key) {
-  return !!(key && Object.prototype.hasOwnProperty.call(manualAwardValuesByKey, key));
-}
-
-function getStoredManualAwardValue(key) {
-  return hasStoredManualAwardValue(key)
-    ? String(manualAwardValuesByKey[key])
-    : "";
-}
-
-function setStoredManualAwardValue(key, value) {
-  if (!key) return;
-  manualAwardValuesByKey[key] = String(value == null ? "" : value);
-}
 
 function hasStoredManualAwardValue(key) {
   return !!(key && Object.prototype.hasOwnProperty.call(manualAwardValuesByKey, key));
@@ -3074,6 +3097,889 @@ function makeEmptySlideState(hash) {
   };
 }
 
+
+
+
+
+
+function hasMeaningfulOutcomeState(state) {
+  return !!(
+    normalizeSpace(state && state.s || "") ||
+    normalizeSpace(state && state.fc || "") ||
+    Number(state && state.cc || 0) > 0
+  );
+}
+
+function isDropdownPlaceholderValue(value) {
+  const txt = normalizeSpace(value || "");
+  return !txt || /^auswahl$/i.test(txt) || /^select$/i.test(txt) || /^choose$/i.test(txt);
+}
+
+function compactCommonStateMeta(src, out) {
+  if (!src || !out) return out;
+
+  if (Object.prototype.hasOwnProperty.call(src, "be")) {
+    out.be = src.be;
+  }
+
+  if (Array.isArray(src.tg) && src.tg.length) {
+    out.tg = src.tg.slice();
+  }
+
+  if (Number(src.di || 0) > 0) {
+    out.di = Number(src.di);
+  }
+
+  if (normalizeSpace(src.s || "")) {
+    out.s = String(src.s);
+  }
+
+  if (normalizeSpace(src.fc || "")) {
+    out.fc = String(src.fc);
+  }
+
+  if (Number(src.cc || 0) > 0) {
+    out.cc = Number(src.cc);
+  }
+
+  return out;
+}
+
+function compactTextQuizStateForFreezeUrl(state) {
+  if (!state) return null;
+
+  const values = Array.isArray(state.v) ? state.v.slice() : [];
+  const hasText = values.some(function (v) {
+    return normalizeSpace(v || "") !== "";
+  });
+
+  const out = { k: state.k };
+  if (hasText) out.v = values;
+
+  compactCommonStateMeta(state, out);
+
+  if (!hasText && !hasMeaningfulOutcomeState(out)) {
+    return null;
+  }
+
+  return out;
+}
+
+function compactDropdownStateForFreezeUrl(state) {
+  if (!state) return null;
+
+  const value = String(state.v || "");
+  const hasChoice = !isDropdownPlaceholderValue(value);
+
+  const out = { k: state.k };
+  if (hasChoice) out.v = value;
+
+  compactCommonStateMeta(state, out);
+
+  if (!hasChoice && !hasMeaningfulOutcomeState(out)) {
+    return null;
+  }
+
+  return out;
+}
+
+function compactTileStateForFreezeUrl(state) {
+  if (!state) return null;
+
+  const values = Array.isArray(state.v) ? state.v.slice() : [];
+  const hasPlacedTiles = values.some(function (v) {
+    return normalizeSpace(v || "") !== "";
+  });
+
+  const out = { k: state.k };
+  if (hasPlacedTiles) out.v = values;
+
+  compactCommonStateMeta(state, out);
+
+  if (!hasPlacedTiles && !hasMeaningfulOutcomeState(out)) {
+    return null;
+  }
+
+  return out;
+}
+
+function compactChoiceStateForFreezeUrl(state) {
+  if (!state) return null;
+
+  const values = Array.isArray(state.v) ? state.v.slice() : [];
+  const hasSelection = values.some(function (v) {
+    return !!Number(v);
+  });
+
+  const out = { k: state.k };
+  if (hasSelection) out.v = values;
+
+  compactCommonStateMeta(state, out);
+
+  if (!hasSelection && !hasMeaningfulOutcomeState(out)) {
+    return null;
+  }
+
+  return out;
+}
+
+function compactOrthographyStateForFreezeUrl(state) {
+  if (!state) return null;
+
+  const text = String(state.v || "");
+  const tries = Number(state.tr || 0) || 0;
+  const solved = !!Number(state.sv || 0);
+
+  const hasText = normalizeSpace(text) !== "";
+
+  const out = {
+    k: state.k,
+    u: state.u
+  };
+
+  if (hasText) out.v = text;
+  if (tries > 0) out.tr = tries;
+  if (solved) out.sv = 1;
+
+  compactCommonStateMeta(state, out);
+
+  if (!hasText && tries <= 0 && !solved && !hasMeaningfulOutcomeState(out)) {
+    return null;
+  }
+
+  return out;
+}
+
+function compactFractionStateForFreezeUrl(state) {
+  if (!state) return null;
+
+  const tp = String(state.tp || "");
+  const mask = String(state.b || "");
+  const hasMarkedParts = /1/.test(mask);
+
+  const out = {
+    k: state.k,
+    u: state.u,
+    tp: tp
+  };
+
+  if (tp === "c") {
+    const n = Math.max(1, Number(state.n || 1) || 1);
+    if (n !== 1) out.n = n;
+  } else if (tp === "r") {
+    const r = Math.max(1, Number(state.r || 1) || 1);
+    const c = Math.max(1, Number(state.c || 1) || 1);
+
+    if (r !== 1) out.r = r;
+    if (c !== 1) out.c = c;
+  }
+
+  if (hasMarkedParts) {
+    out.b = mask;
+  }
+
+  compactCommonStateMeta(state, out);
+
+  const hasDimensionChange =
+    Object.prototype.hasOwnProperty.call(out, "n") ||
+    Object.prototype.hasOwnProperty.call(out, "r") ||
+    Object.prototype.hasOwnProperty.call(out, "c");
+
+  if (!hasMarkedParts && !hasDimensionChange && !hasMeaningfulOutcomeState(out)) {
+    return null;
+  }
+
+  return out;
+}
+
+function compactMarkerQuizStateForFreezeUrl(state) {
+  if (!state) return null;
+
+  const marks = Array.isArray(state.h) ? copyJson(state.h) : [];
+  const inputValue = String(state.iv || "");
+  const hasMarks = marks.length > 0;
+  const hasInputValue = normalizeSpace(inputValue) !== "";
+
+  const out = {
+    k: state.k,
+    sc: state.sc
+  };
+
+  if (hasMarks) out.h = marks;
+  if (hasInputValue) out.iv = inputValue;
+  if (normalizeSpace(state.sl || "")) out.sl = String(state.sl);
+
+  compactCommonStateMeta(state, out);
+
+  if (!hasMarks && !hasInputValue && !hasMeaningfulOutcomeState(out)) {
+    return null;
+  }
+
+  return out;
+}
+
+const CANVAS_CODEC_VERSION = "cv2";
+const CANVAS_POINT_SCALE = 10; // 1 Nachkommastellen
+
+function isCanvasBgDefaultForFreezeUrl(bg) {
+  return !bg || String(bg.m || "") === "none";
+}
+
+function isCanvasStateTrulyEmptyForFreezeUrl(state) {
+  if (!state || typeof state !== "object") return false;
+
+  const items = Array.isArray(state.it) ? state.it : [];
+  const w = Number(state.w || 0) || 0;
+  const h = Number(state.h || 0) || 0;
+  const bgDefault = isCanvasBgDefaultForFreezeUrl(state.bg);
+
+  // NUR dann leer:
+  // - keine Items
+  // - kein Hintergrund
+  // - Breite 0
+  // - Höhe 0
+  return items.length === 0 && bgDefault && w === 0 && h === 0;
+}
+
+function encodeCanvasPointNumberForFreezeUrl(v) {
+  const n = Number(v);
+  if (!Number.isFinite(n)) return null;
+  return Math.round(n * CANVAS_POINT_SCALE);
+}
+
+function decodeCanvasPointNumberFromFreezeUrl(v) {
+  const n = Number(v);
+  if (!Number.isFinite(n)) return 0;
+  return n / CANVAS_POINT_SCALE;
+}
+
+function encodeCanvasPathPointsForFreezeUrl(points) {
+  const src = Array.isArray(points) ? points : [];
+  const out = [];
+
+  let prevX = 0;
+  let prevY = 0;
+  let havePrev = false;
+
+  for (let i = 0; i < src.length; i++) {
+    const pt = src[i];
+
+    let rawX = null;
+    let rawY = null;
+
+    if (Array.isArray(pt) && pt.length >= 2) {
+      rawX = pt[0];
+      rawY = pt[1];
+    } else if (pt && typeof pt === "object") {
+      rawX = pt.x;
+      rawY = pt.y;
+    }
+
+    const x = encodeCanvasPointNumberForFreezeUrl(rawX);
+    const y = encodeCanvasPointNumberForFreezeUrl(rawY);
+
+    if (x === null || y === null) continue;
+
+    if (!havePrev) {
+      out.push(x, y);
+      prevX = x;
+      prevY = y;
+      havePrev = true;
+      continue;
+    }
+
+    out.push(x - prevX, y - prevY);
+    prevX = x;
+    prevY = y;
+  }
+
+  return out.length >= 2 ? out : null;
+}
+
+function decodeCanvasPathPointsFromFreezeUrl(encoded) {
+  const src = Array.isArray(encoded) ? encoded : [];
+  const out = [];
+
+  let x = 0;
+  let y = 0;
+
+  for (let i = 0; i + 1 < src.length; i += 2) {
+    const a = Number(src[i]);
+    const b = Number(src[i + 1]);
+
+    if (!Number.isFinite(a) || !Number.isFinite(b)) continue;
+
+    if (i === 0) {
+      x = a;
+      y = b;
+    } else {
+      x += a;
+      y += b;
+    }
+
+    out.push([
+      decodeCanvasPointNumberFromFreezeUrl(x),
+      decodeCanvasPointNumberFromFreezeUrl(y)
+    ]);
+  }
+
+  return out;
+}
+
+function compactCanvasPathItemForFreezeUrl(item, colorList, colorIndex) {
+  if (!item || typeof item !== "object") return null;
+  if (String(item.k || "") !== "p") return null;
+
+  const pts = encodeCanvasPathPointsForFreezeUrl(item.p);
+  if (!pts) return null;
+
+  const color = String(item.c || "#000000");
+
+  if (!Object.prototype.hasOwnProperty.call(colorIndex, color)) {
+    colorIndex[color] = colorList.length;
+    colorList.push(color);
+  }
+
+  const ci = colorIndex[color];
+  const alpha = Number(item.a == null ? 1 : item.a);
+  const width = Number(item.w == null ? 1 : item.w);
+
+  if (alpha === 1) {
+    // [type, colorIndex, width, encodedPoints]
+    return [0, ci, width, pts];
+  }
+
+  // [type, colorIndex, alpha, width, encodedPoints]
+  return [0, ci, alpha, width, pts];
+}
+
+function expandCanvasPathItemFromFreezeUrl(entry, colors) {
+  if (!Array.isArray(entry) || !entry.length) return null;
+  if (Number(entry[0]) !== 0) return null;
+
+  const colorIdx = Number(entry[1] || 0);
+  const color =
+    colorIdx >= 0 && colorIdx < colors.length
+      ? String(colors[colorIdx] || "#000000")
+      : "#000000";
+
+  if (entry.length === 4) {
+    return {
+      k: "p",
+      c: color,
+      a: 1,
+      w: Number(entry[2] || 1) || 1,
+      p: decodeCanvasPathPointsFromFreezeUrl(entry[3])
+    };
+  }
+
+  if (entry.length >= 5) {
+    return {
+      k: "p",
+      c: color,
+      a: Number(entry[2] || 1) || 1,
+      w: Number(entry[3] || 1) || 1,
+      p: decodeCanvasPathPointsFromFreezeUrl(entry[4])
+    };
+  }
+
+  return null;
+}
+
+function compactSingleCanvasStateForFreezeUrl(state) {
+  if (!state || typeof state !== "object") return null;
+
+  // Bereits komprimiert
+  if (state.v === CANVAS_CODEC_VERSION) {
+    return copyJson(state);
+  }
+
+  // Nur wirklich komplett leere Canvas verwerfen
+  if (isCanvasStateTrulyEmptyForFreezeUrl(state)) {
+    return null;
+  }
+
+  const items = Array.isArray(state.it) ? state.it : [];
+  const colorList = [];
+  const colorIndex = Object.create(null);
+  const compactItems = [];
+
+  for (let i = 0; i < items.length; i++) {
+    const compactItem = compactCanvasPathItemForFreezeUrl(
+      items[i],
+      colorList,
+      colorIndex
+    );
+
+    // Falls ein unbekannter Item-Typ auftaucht:
+    // lieber roh behalten als kaputt komprimieren
+    if (!compactItem) {
+      return copyJson(state);
+    }
+
+    compactItems.push(compactItem);
+  }
+
+  const out = {
+    v: CANVAS_CODEC_VERSION,
+    u: String(state.u || "")
+  };
+
+  if (Number(state.e || 0) === 1) {
+    out.e = 1;
+  }
+
+  if (Number(state.w || 0) !== 0) {
+    out.w = Number(state.w || 0);
+  }
+
+  if (Number(state.h || 0) !== 0) {
+    out.h = Number(state.h || 0);
+  }
+
+  if (!isCanvasBgDefaultForFreezeUrl(state.bg)) {
+    out.bg = copyJson(state.bg);
+  }
+
+  if (colorList.length) {
+    out.c = colorList;
+  }
+
+  if (compactItems.length) {
+    out.i = compactItems;
+  }
+
+  return out;
+}
+
+function expandCanvasStateFromFreezeUrl(state) {
+  if (!state || typeof state !== "object") return null;
+
+  // Alte rohe cvf1-Einträge unverändert weiter unterstützen
+  if (state.v !== CANVAS_CODEC_VERSION) {
+    return copyJson(state);
+  }
+
+  const colors = Array.isArray(state.c)
+    ? state.c.map(function (c) { return String(c || "#000000"); })
+    : [];
+
+  const items = (Array.isArray(state.i) ? state.i : [])
+    .map(function (entry) {
+      return expandCanvasPathItemFromFreezeUrl(entry, colors);
+    })
+    .filter(Boolean);
+
+  const out = {
+    v: "cvf1",
+    u: String(state.u || ""),
+    w: Number(state.w || 0) || 0,
+    h: Number(state.h || 0) || 0,
+    bg: state.bg ? copyJson(state.bg) : { m: "none" },
+    it: items
+  };
+
+  if (Number(state.e || 0) === 1) {
+    out.e = 1;
+  }
+
+  return out;
+}
+
+function compactCanvasStatesForFreezeUrl(states) {
+  if (!Array.isArray(states) || !states.length) return [];
+
+  const compacted = states
+    .map(function (state) {
+      return compactSingleCanvasStateForFreezeUrl(state);
+    })
+    .filter(Boolean);
+
+  log(
+    "canvas-compact",
+    "before=" + states.length,
+    "after=" + compacted.length,
+    "removed=" + Math.max(0, states.length - compacted.length)
+  );
+
+  return compacted;
+}
+
+function compactGeneralMarkerStateForFreezeUrl(state) {
+  if (!state || !Array.isArray(state.h) || !state.h.length) {
+    return null;
+  }
+
+  const out = {
+    h: copyJson(state.h)
+  };
+
+  if (Array.isArray(state.p) && state.p.length) {
+    out.p = state.p.slice();
+  }
+
+  return out;
+}
+
+function compactStateArrayForFreezeUrl(states, mapper) {
+  if (!Array.isArray(states) || !states.length) return [];
+  return states.map(mapper).filter(Boolean);
+}
+
+function compactSlideStateForFreezeUrl(slide) {
+  if (!slide || !slide.h) return null;
+
+  const out = {
+    h: String(slide.h)
+  };
+
+  const q = compactStateArrayForFreezeUrl(slide.q, compactTextQuizStateForFreezeUrl);
+  const d = compactStateArrayForFreezeUrl(slide.d, compactDropdownStateForFreezeUrl);
+  const m = compactStateArrayForFreezeUrl(slide.m, compactTileStateForFreezeUrl);
+  const c = compactStateArrayForFreezeUrl(slide.c, compactChoiceStateForFreezeUrl);
+  const o = compactStateArrayForFreezeUrl(slide.o, compactOrthographyStateForFreezeUrl);
+  const fq = compactStateArrayForFreezeUrl(slide.fq, compactFractionStateForFreezeUrl);
+  const mq = compactStateArrayForFreezeUrl(slide.mq, compactMarkerQuizStateForFreezeUrl);
+  const cv = compactCanvasStatesForFreezeUrl(slide.cv);
+  const gm = compactGeneralMarkerStateForFreezeUrl(slide.gm);
+
+  if (q.length) out.q = q;
+  if (d.length) out.d = d;
+  if (m.length) out.m = m;
+  if (c.length) out.c = c;
+  if (o.length) out.o = o;
+  if (fq.length) out.fq = fq;
+  if (mq.length) out.mq = mq;
+  if (cv.length) out.cv = cv;
+  if (gm) out.gm = gm;
+
+  if (Object.keys(out).length === 1) {
+    return null;
+  }
+
+  return out;
+}
+
+
+const ANNOT_CODEC_VERSION = "af2";
+const ANNOT_POINT_SCALE = 1000; // verlustfrei relativ zum aktuellen Freeze-Export (4 Nachkommastellen)
+
+function roundAnnotCodecNum(v) {
+  const n = Number(v);
+  if (!Number.isFinite(n)) return null;
+  return Math.round(n * 10000) / 10000;
+}
+
+function encodeAnnotationSlideKeyForFreezeUrl(hash) {
+  const m = String(hash || "").match(/^#(\d+)$/);
+  if (m) return Number(m[1]);
+  return String(hash || "");
+}
+
+function decodeAnnotationSlideKeyFromFreezeUrl(key) {
+  if (typeof key === "number" && Number.isFinite(key)) {
+    return "#" + String(Math.max(1, Math.round(key)));
+  }
+
+  const txt = String(key || "");
+  if (/^\d+$/.test(txt)) {
+    return "#" + txt;
+  }
+
+  return txt;
+}
+
+function encodeAnnotationPointsForFreezeUrl(points) {
+  const src = Array.isArray(points) ? points : [];
+  const out = [];
+
+  let prevX = 0;
+  let prevY = 0;
+  let havePrev = false;
+
+  for (let i = 0; i < src.length; i++) {
+    const pt = src[i];
+    if (!pt || typeof pt !== "object") continue;
+
+    const xNum = Number(pt.x);
+    const yNum = Number(pt.y);
+    if (!Number.isFinite(xNum) || !Number.isFinite(yNum)) continue;
+
+    const x = Math.round(xNum * ANNOT_POINT_SCALE);
+    const y = Math.round(yNum * ANNOT_POINT_SCALE);
+
+    if (!havePrev) {
+      out.push(x, y);
+      prevX = x;
+      prevY = y;
+      havePrev = true;
+      continue;
+    }
+
+    out.push(x - prevX, y - prevY);
+    prevX = x;
+    prevY = y;
+  }
+
+  return out.length >= 2 ? out : null;
+}
+
+function decodeAnnotationPointsFromFreezeUrl(encoded) {
+  const src = Array.isArray(encoded) ? encoded : [];
+  const out = [];
+
+  let x = 0;
+  let y = 0;
+
+  for (let i = 0; i + 1 < src.length; i += 2) {
+    const a = Number(src[i]);
+    const b = Number(src[i + 1]);
+
+    if (!Number.isFinite(a) || !Number.isFinite(b)) continue;
+
+    if (i === 0) {
+      x = a;
+      y = b;
+    } else {
+      x += a;
+      y += b;
+    }
+
+    out.push({
+      x: x / ANNOT_POINT_SCALE,
+      y: y / ANNOT_POINT_SCALE
+    });
+  }
+
+  return out;
+}
+
+function compressAnnotationFreezeStateForFreezeUrl(fullState) {
+  if (!fullState || typeof fullState !== "object") return null;
+
+  // Bereits komprimiert -> nur kopieren
+  if (fullState.v === ANNOT_CODEC_VERSION && Array.isArray(fullState.s)) {
+    return copyJson(fullState);
+  }
+
+  const slidesSrc =
+    fullState.slides && typeof fullState.slides === "object"
+      ? fullState.slides
+      : null;
+
+  const colorList = [];
+  const colorIndex = Object.create(null);
+
+  function internColor(raw) {
+    const color = String(raw || "#ff0000");
+
+    if (!Object.prototype.hasOwnProperty.call(colorIndex, color)) {
+      colorIndex[color] = colorList.length;
+      colorList.push(color);
+    }
+
+    return colorIndex[color];
+  }
+
+  const slidesOut = [];
+
+  if (slidesSrc) {
+    Object.keys(slidesSrc)
+      .sort(function (a, b) {
+        return hashSort({ h: a }, { h: b });
+      })
+      .forEach(function (hash) {
+        const slide = slidesSrc[hash];
+        const itemsSrc = Array.isArray(slide && slide.items) ? slide.items : [];
+
+        const itemsOut = itemsSrc.map(function (item) {
+          if (!item || typeof item !== "object") return null;
+          if (item.kind !== "path") return null;
+
+          const pts = encodeAnnotationPointsForFreezeUrl(item.points);
+          if (!pts) return null;
+
+          return [
+            item.tool === "eraser" ? 1 : 0,
+            internColor(item.color),
+            roundAnnotCodecNum(item.width == null ? 1 : item.width),
+            roundAnnotCodecNum(item.alpha == null ? 1 : item.alpha),
+            roundAnnotCodecNum(item.baseW == null ? 1 : item.baseW),
+            pts
+          ];
+        }).filter(Boolean);
+
+        if (!itemsOut.length) return;
+
+        slidesOut.push([
+          encodeAnnotationSlideKeyForFreezeUrl(hash),
+          itemsOut
+        ]);
+      });
+  }
+
+  const out = {
+    v: ANNOT_CODEC_VERSION
+  };
+
+  if (slidesOut.length) {
+    out.s = slidesOut;
+  }
+
+  if (colorList.length) {
+    out.c = colorList;
+  }
+
+  if (fullState.ui && fullState.ui.visible === false) {
+    out.u = 0;
+  }
+
+  if ((!out.s || !out.s.length) && out.u !== 0) {
+    return null;
+  }
+
+  return out;
+}
+
+function expandAnnotationFreezeStateFromFreezeUrl(state) {
+  if (!state || typeof state !== "object") return null;
+
+  // Altes Format unverändert weiter unterstützen
+  if (!(state.v === ANNOT_CODEC_VERSION && Array.isArray(state.s))) {
+    return copyJson(state);
+  }
+
+  const colors = Array.isArray(state.c)
+    ? state.c.map(function (c) { return String(c || "#ff0000"); })
+    : [];
+
+  const slides = Object.create(null);
+
+  state.s.forEach(function (entry) {
+    if (!Array.isArray(entry) || entry.length < 2) return;
+
+    const hash = decodeAnnotationSlideKeyFromFreezeUrl(entry[0]);
+    if (!hash) return;
+
+    const itemTuples = Array.isArray(entry[1]) ? entry[1] : [];
+
+    const items = itemTuples.map(function (tuple) {
+      if (!Array.isArray(tuple) || tuple.length < 6) return null;
+
+      const toolCode = Number(tuple[0] || 0);
+      const colorIdx = Number(tuple[1] || 0);
+
+      const width = roundAnnotCodecNum(tuple[2]);
+      const alpha = roundAnnotCodecNum(tuple[3]);
+      const baseW = roundAnnotCodecNum(tuple[4]);
+      const points = decodeAnnotationPointsFromFreezeUrl(tuple[5]);
+
+      if (!points.length) return null;
+
+      return {
+        kind: "path",
+        tool: toolCode === 1 ? "eraser" : "pen",
+        color:
+          colorIdx >= 0 && colorIdx < colors.length
+            ? colors[colorIdx]
+            : "#ff0000",
+        width: width === null ? 1 : width,
+        alpha: alpha === null ? 1 : alpha,
+        baseW: baseW === null ? 1 : baseW,
+        points: points
+      };
+    }).filter(Boolean);
+
+    if (!items.length) return;
+
+    slides[hash] = {
+      items: items,
+      redo: []
+    };
+  });
+
+  return {
+    version: "lia-annotation-freeze-v1",
+    ui: {
+      visible: state.u === 0 ? false : true
+    },
+    slides: slides
+  };
+}
+
+
+function shouldKeepAnnotationFreezeState(state) {
+  if (!state || typeof state !== "object") return false;
+
+  if (countAnnotationItemsInFreezePayload(state) > 0) {
+    return true;
+  }
+
+  if (state.v === ANNOT_CODEC_VERSION) {
+    return state.u === 0;
+  }
+
+  if (state.ui && state.ui.visible === false) {
+    return true;
+  }
+
+  return false;
+}
+
+
+
+function compactSecurityStateForFreezeUrl(state) {
+  const f12 = Number(state && state.f12 || 0) || 0;
+  const tab = Number(state && state.tab || 0) || 0;
+
+  if (f12 <= 0 && tab <= 0) {
+    return null;
+  }
+
+  const out = {};
+  if (f12 > 0) out.f12 = f12;
+  if (tab > 0) out.tab = tab;
+
+  return out;
+}
+
+function compactPayloadForFreezeUrl(payload) {
+  const out = {
+    v: String(payload && payload.v || PAYLOAD_VERSION),
+    sh: cleanHashValue(payload && payload.sh || "#1"),
+    s: []
+  };
+
+  const name = normalizeSpace(payload && payload.n || "");
+  if (name) {
+    out.n = name;
+  }
+
+  const slides = Array.isArray(payload && payload.s) ? payload.s : [];
+  out.s = slides.map(compactSlideStateForFreezeUrl).filter(Boolean);
+
+  const compactAf = compressAnnotationFreezeStateForFreezeUrl(payload && payload.af);
+
+  if (shouldKeepAnnotationFreezeState(compactAf)) {
+    out.af = compactAf;
+  }
+
+  // anv wird für neue Links nicht mehr separat serialisiert,
+  // weil af2 die Sichtbarkeit bereits selbst trägt.
+  // Altlinks bleiben über buildAnnotationFreezeImportPayloadFromSnapshot kompatibel.
+
+  const sec = compactSecurityStateForFreezeUrl(payload && payload.sec);
+  if (sec) {
+    out.sec = sec;
+  }
+
+  return out;
+}
+
+
+
+
+
 async function buildPayloadFromAllSlides() {
   const declared = getDeclaredSlides().filter(function (slide) {
     return !(slide && slide.vt === "evaluation");
@@ -3131,6 +4037,10 @@ async function buildPayloadFromAllSlides() {
     })
   };
 
+  const annotationFullState = await captureFullAnnotationFreezeState();
+
+  payload.af = annotationFullState;
+  payload.anv = getAnnotationFreezeVisibleFlag(annotationFullState);
   payload.sec = getSerializableSecurityState();
 
   return payload;
@@ -3341,12 +4251,10 @@ function captureChoiceQuizState(root, idx) {
 
   const stateCode = detectQuizState(root);
   const feedbackCode = detectFeedbackCode(feedback);
-  const feedbackText = feedback ? normalizeSpace(feedback.textContent || "") : "";
   const checkCount = getQuizCheckCount(root);
 
   if (stateCode) out.s = stateCode;
   if (feedbackCode) out.fc = feedbackCode;
-  if (feedbackText) out.t = feedbackText;
   if (checkCount > 0) out.cc = checkCount;
 
   return out;
@@ -3993,12 +4901,10 @@ function captureFractionQuizState(rep, idx) {
 
   const stateCode = detectQuizState(quizRoot);
   const feedbackCode = detectFeedbackCode(feedback);
-  const feedbackText = feedback ? normalizeSpace(feedback.textContent || "") : "";
   const checkCount = getQuizCheckCount(quizRoot);
 
   if (stateCode) out.s = stateCode;
   if (feedbackCode) out.fc = feedbackCode;
-  if (feedbackText) out.t = feedbackText;
   if (checkCount > 0) out.cc = checkCount;
 
   return out;
@@ -4464,12 +5370,10 @@ function captureMarkerQuizState(root, idx) {
 
   const stateCode = detectQuizState(liaRoot);
   const feedbackCode = detectFeedbackCode(feedback);
-  const feedbackText = feedback ? normalizeSpace(feedback.textContent || "") : "";
   const checkCount = getQuizCheckCount(liaRoot);
 
   if (stateCode) out.s = stateCode;
   if (feedbackCode) out.fc = feedbackCode;
-  if (feedbackText) out.t = feedbackText;
   if (checkCount > 0) out.cc = checkCount;
 
   return out;
@@ -5203,12 +6107,10 @@ function captureOrthographyQuizState(wrap, idx) {
 
   const stateCode = detectQuizState(quizRoot);
   const feedbackCode = detectFeedbackCode(feedback);
-  const feedbackText = feedback ? normalizeSpace(feedback.textContent || "") : "";
   const checkCount = getQuizCheckCount(quizRoot);
 
   if (stateCode) out.s = stateCode;
   if (feedbackCode) out.fc = feedbackCode;
-  if (feedbackText) out.t = feedbackText;
   if (checkCount > 0) out.cc = checkCount;
 
   return out;
@@ -5791,12 +6693,10 @@ function captureTileQuizState(root, idx) {
 
   const stateCode = detectQuizState(quizRoot);
   const feedbackCode = detectFeedbackCode(feedback);
-  const feedbackText = feedback ? normalizeSpace(feedback.textContent || "") : "";
   const checkCount = getQuizCheckCount(quizRoot);
 
   if (stateCode) out.s = stateCode;
   if (feedbackCode) out.fc = feedbackCode;
-  if (feedbackText) out.t = feedbackText;
   if (checkCount > 0) out.cc = checkCount;
 
   return out;
@@ -6032,12 +6932,10 @@ function applyStoredTileStatesToHost(host, storedStates) {
 
     const stateCode = detectQuizState(root);
     const feedbackCode = detectFeedbackCode(feedback);
-    const feedbackText = feedback ? normalizeSpace(feedback.textContent || "") : "";
     const checkCount = getQuizCheckCount(root);
 
     if (stateCode) out.s = stateCode;
     if (feedbackCode) out.fc = feedbackCode;
-    if (feedbackText) out.t = feedbackText;
     if (checkCount > 0) out.cc = checkCount;
 
     return out;
@@ -6099,7 +6997,7 @@ function applyStoredTileStatesToHost(host, storedStates) {
       const feedbackText = deriveFeedbackTextForState(root, state);
       const feedbackClass = getFeedbackClassFromState(state);
 
-      if (feedbackText || state.s || state.f || state.fc) {
+      if (feedbackText || state.s || state.fc) {
         const feedback = ensureQuizFeedbackElement(root);
         if (feedback) {
           feedback.classList.remove("text-success", "text-error", "text-disabled");
@@ -6313,7 +7211,6 @@ function captureTextQuizState(root, idx) {
 
   const stateCode = detectQuizState(quizRoot);
   const feedbackCode = detectFeedbackCode(feedback);
-  const feedbackText = feedback ? normalizeSpace(feedback.textContent || "") : "";
   const checkCount = getQuizCheckCount(quizRoot);
 
   const out = {
@@ -6324,7 +7221,6 @@ function captureTextQuizState(root, idx) {
 
   if (stateCode) out.s = stateCode;
   if (feedbackCode) out.fc = feedbackCode;
-  if (feedbackText) out.t = feedbackText;
   if (checkCount > 0) out.cc = checkCount;
 
   return out;
@@ -6522,25 +7418,51 @@ function countLiveSupportedControlsForHash(hash) {
     });
   }
 
-  function deriveFeedbackTextForState(root, state) {
-    state = state || {};
+function deriveFeedbackTextForState(root, state) {
+  state = state || {};
 
-    if (typeof state.t === "string" && state.t) return state.t;
+  // Alte Links mit gespeichertem t bleiben weiter kompatibel
+  if (typeof state.t === "string" && state.t) {
+    return state.t;
+  }
 
-    if (state.s === "s") {
-      return readQuizDataText(root, "data-text-solved");
+  function firstNonEmpty() {
+    for (let i = 0; i < arguments.length; i++) {
+      const txt = normalizeSpace(arguments[i] || "");
+      if (txt) return txt;
     }
-
-    if (state.s === "r") {
-      return readQuizDataText(root, "data-text-resolved");
-    }
-
-    if (state.f === "e") {
-      return readQuizDataText(root, "data-text-failed");
-    }
-
     return "";
   }
+
+  const solvedText = firstNonEmpty(
+    readQuizDataText(root, "data-text-solved"),
+    "Herzlichen Glückwunsch, das war die richtige Antwort"
+  );
+
+  const resolvedText = firstNonEmpty(
+    readQuizDataText(root, "data-text-resolved"),
+    "Aufgelöste Antwort"
+  );
+
+  const failedText = firstNonEmpty(
+    readQuizDataText(root, "data-text-failed"),
+    "Die richtige Antwort wurde noch nicht gegeben"
+  );
+
+  if (state.s === "s" || state.fc === "s") {
+    return solvedText;
+  }
+
+  if (state.s === "r" || state.fc === "d") {
+    return resolvedText;
+  }
+
+  if (state.fc === "e") {
+    return failedText;
+  }
+
+  return "";
+}
 
   function getFeedbackClassFromState(state) {
     state = state || {};
@@ -6551,7 +7473,7 @@ function countLiveSupportedControlsForHash(hash) {
 
     if (state.s === "s") return "text-success";
     if (state.s === "r") return "text-disabled";
-    if (state.f === "e") return "text-error";
+    if (state.fc === "e") return "text-error";
 
     return "";
   }
@@ -6573,7 +7495,7 @@ function applyTextQuizState(root, state) {
   const feedbackText = deriveFeedbackTextForState(quizRoot, state);
   const feedbackClass = getFeedbackClassFromState(state);
 
-  if (feedbackText || state.s || state.f || state.fc) {
+  if (feedbackText || state.s || state.fc) {
     const feedback = ensureQuizFeedbackElement(quizRoot);
     if (feedback) {
       feedback.classList.remove("text-success", "text-error", "text-disabled");
@@ -6702,25 +7624,27 @@ function reapplySnapshotSilently(hash, reason) {
 
 
 
-  function schedulePostApplyReinforcement(hash, reason, delays) {
-    const wantedHash = String(hash || "");
-    const token = ++stabilizationToken;
-    const plan = Array.isArray(delays) && delays.length
-      ? delays
-      : [140, 320, 700, 1200];
+function schedulePostApplyReinforcement(hash, reason, delays) {
+  const wantedHash = String(hash || "");
+  const token = ++stabilizationToken;
+  const plan = Array.isArray(delays) && delays.length
+    ? delays
+    : [140, 320, 700, 1200];
 
-    plan.forEach(function (delay) {
-      setTimeout(function () {
-        if (token !== stabilizationToken) return;
-        if (String(getCurrentHash() || "") !== wantedHash) return;
+  plan.forEach(function (delay) {
+    setTimeout(function () {
+      if (token !== stabilizationToken) return;
+      if (String(getCurrentHash() || "") !== wantedHash) return;
 
-        reapplySnapshotSilently(
-          wantedHash,
-          (reason || "stabilize") + "@" + delay
-        );
-      }, delay);
-    });
-  }
+      reapplySnapshotSilently(
+        wantedHash,
+        (reason || "stabilize") + "@" + delay
+      );
+
+      // Annotation hier bewusst NICHT erneut importieren.
+    }, delay);
+  });
+}
 
 
 
@@ -6734,6 +7658,9 @@ function reapplySnapshotSilently(hash, reason) {
   // =========================================================
   // Canvas Freeze API
   // =========================================================
+
+
+
 
   function getCanvasFreezeRootWindow() {
     let w = window;
@@ -6752,6 +7679,36 @@ function reapplySnapshotSilently(hash, reason) {
     );
   }
 
+function getCanvasFreezeScopeHost(root) {
+  const candidates = uniqueElements([
+    root,
+    getBaseContentHost(),
+    document.querySelector(".lia-slide__content"),
+    document.querySelector(".lia-content"),
+    document.querySelector("main"),
+    document.body
+  ]).filter(function (el) {
+    return !!(el && el instanceof Element);
+  });
+
+  let best = null;
+  let bestArea = -1;
+
+  candidates.forEach(function (el) {
+    if (!isRenderedElement(el) && !hasRenderedSelfOrDescendant(el)) return;
+
+    const r = el.getBoundingClientRect();
+    const area = Math.max(0, r.width) * Math.max(0, r.height);
+
+    if (area > bestArea) {
+      best = el;
+      bestArea = area;
+    }
+  });
+
+  return best || root || getBaseContentHost() || document.body;
+}
+
   function collectCanvasFreezePairsFromRoot(root) {
     const api = getCanvasFreezeApi();
     if (!api || typeof api.collectCanvasPairsFromRoot !== "function") return [];
@@ -6768,32 +7725,115 @@ function reapplySnapshotSilently(hash, reason) {
     return String(api.getCanvasUidFromPair(pair) || "");
   }
 
+function getCanvasStoredSizeTarget(pair) {
+  if (!pair || !(pair instanceof Element)) return null;
+
+  const preferred =
+    pair.querySelector(".lia-ocr-box, .lia-canvas-box, .ocr-box, .canvas-box") ||
+    pair.querySelector(".lia-ocr-wrap, .lia-canvas-wrap, .ocr-wrap, .canvas-wrap") ||
+    null;
+
+  return preferred || pair;
+}
+
+function applyStoredCanvasWindowSizeToPair(pair, state) {
+  if (!pair || !(pair instanceof Element)) return false;
+
+  const expanded = expandCanvasStateFromFreezeUrl(state) || state || {};
+  const storedW = Number(expanded.w || 0) || 0;
+  const storedH = Number(expanded.h || 0) || 0;
+
+  if (storedW <= 0 && storedH <= 0) return false;
+
+  const mount = pair.querySelector(".lia-canvas-mount");
+  const block = pair.querySelector(".lia-draw-block");
+  const wrap = pair.querySelector(".lia-draw-wrap");
+  const canvas = pair.querySelector("canvas.lia-canvas-freeze-preview, canvas");
+
+  // WICHTIG:
+  // Die Wrapper sind spans. width/height greifen dort erst sinnvoll,
+  // wenn wir das Anzeigeverhalten umstellen.
+  pair.style.display = "inline-block";
+  pair.style.verticalAlign = "top";
+  pair.style.maxWidth = "none";
+  pair.style.flex = "0 0 auto";
+
+  if (mount) {
+    mount.style.display = "block";
+    mount.style.maxWidth = "none";
+  }
+
+  if (block) {
+    block.style.display = "block";
+    block.style.maxWidth = "none";
+  }
+
+  if (wrap) {
+    wrap.style.display = "block";
+    wrap.style.maxWidth = "none";
+  }
+
+  if (storedW > 0) {
+    pair.style.width = storedW + "px";
+    pair.style.minWidth = storedW + "px";
+
+    [mount, block, wrap].forEach(function (el) {
+      if (!el) return;
+      el.style.width = storedW + "px";
+      el.style.minWidth = storedW + "px";
+    });
+
+    if (canvas) {
+      canvas.style.width = storedW + "px";
+      canvas.style.maxWidth = "none";
+    }
+  }
+
+  if (storedH > 0) {
+    // Die Höhe lieber auf Mount/Block/Wrap/Canvas,
+    // nicht auf das äußere pair mit Launch-Button etc.
+    [mount, block, wrap].forEach(function (el) {
+      if (!el) return;
+      el.style.height = storedH + "px";
+      el.style.minHeight = storedH + "px";
+    });
+
+    if (canvas) {
+      canvas.style.height = storedH + "px";
+    }
+  }
+
+  return true;
+}
+
+function scheduleStoredCanvasWindowSizeReapply(pair, state) {
+  [0, 60, 180, 360].forEach(function (delay) {
+    setTimeout(function () {
+      applyStoredCanvasWindowSizeToPair(pair, state);
+    }, delay);
+  });
+}
+
 function captureCanvasFreezeStatesFromRoot(root) {
   const api = getCanvasFreezeApi();
   if (!api || typeof api.exportCanvasFreezeStateFromPair !== "function") {
     return [];
   }
 
-  const pairs = collectCanvasFreezePairsFromRoot(root);
+  const scope = getCanvasFreezeScopeHost(root);
+  const pairs = collectCanvasFreezePairsFromRoot(scope);
   const out = [];
+
+  log(
+    "canvas-capture-scope",
+    "tag=" + String(scope && scope.tagName || ""),
+    "pairs=" + pairs.length
+  );
 
   pairs.forEach(function (pair) {
     if (!pair || !(pair instanceof Element)) return;
     if (pair.closest("#lia-freeze-bar")) return;
     if (pair.closest(".lia-submit-box")) return;
-
-    const uid = getCanvasFreezeUidFromPair(pair);
-    if (!uid) return;
-
-    const entry = (typeof api.getCanvasStoreEntry === "function")
-      ? api.getCanvasStoreEntry(uid)
-      : null;
-
-    // Nur wirklich benutzte Canvas übernehmen:
-    // aktuelle Heuristik = es gibt mindestens ein Item => Undo wäre möglich
-    if (!entry || !Array.isArray(entry.ITEMS) || entry.ITEMS.length === 0) {
-      return;
-    }
 
     const state = api.exportCanvasFreezeStateFromPair(pair);
     if (!state) return;
@@ -6804,65 +7844,548 @@ function captureCanvasFreezeStatesFromRoot(root) {
   return out;
 }
 
-  function applyStoredCanvasStatesToHost(host, storedStates) {
-    const api = getCanvasFreezeApi();
-    if (!api || typeof api.renderCanvasFreezeStateIntoPair !== "function") {
-      return [];
+function applyStoredCanvasStatesToHost(host, storedStates) {
+  const api = getCanvasFreezeApi();
+  if (!api || typeof api.renderCanvasFreezeStateIntoPair !== "function") {
+    return [];
+  }
+
+  const scope = getCanvasFreezeScopeHost(host);
+  const livePairs = scope ? collectCanvasFreezePairsFromRoot(scope) : [];
+  const states = Array.isArray(storedStates) ? storedStates : [];
+  const used = new Set();
+  const applied = [];
+
+  log(
+    "canvas-apply-live",
+    "live=" + livePairs.length,
+    livePairs.map(function (pair, idx) {
+      return "[" + idx + "] " + JSON.stringify(getCanvasFreezeUidFromPair(pair));
+    }).join(" || ")
+  );
+
+  log(
+    "canvas-apply-stored",
+    "stored=" + states.length,
+    states.map(function (state, idx) {
+      return "[" + idx + "] " + JSON.stringify(state && state.u || "");
+    }).join(" || ")
+  );
+
+  states.forEach(function (state, idx) {
+    let target = null;
+    const wantedUid = normalizeSpace(state && state.u || "");
+
+    if (wantedUid) {
+      for (let i = 0; i < livePairs.length; i++) {
+        if (used.has(livePairs[i])) continue;
+        if (getCanvasFreezeUidFromPair(livePairs[i]) === wantedUid) {
+          target = livePairs[i];
+          break;
+        }
+      }
     }
 
-    const livePairs = host ? collectCanvasFreezePairsFromRoot(host) : [];
-    const states = Array.isArray(storedStates) ? storedStates : [];
-    const used = new Set();
-    const applied = [];
+    if (!target) {
+      if (idx >= 0 && idx < livePairs.length && !used.has(livePairs[idx])) {
+        target = livePairs[idx];
+      }
+    }
 
+    if (!target) {
+      log("canvas-match-miss", "storedIdx=" + idx, "uid=" + JSON.stringify(wantedUid));
+      return;
+    }
+
+    const renderState = expandCanvasStateFromFreezeUrl(state) || state;
+
+    used.add(target);
+    api.renderCanvasFreezeStateIntoPair(target, renderState);
+    applyStoredCanvasWindowSizeToPair(target, renderState);
+    scheduleStoredCanvasWindowSizeReapply(target, renderState);
+    applied.push(target);
+  });
+
+  return applied;
+}
+
+
+
+  // =========================================================
+  // Annotation Freeze API
+  // =========================================================
+function getAnnotationFreezeRootWindow() {
+  let w = window;
+  try {
+    while (w.parent && w.parent !== w) w = w.parent;
+  } catch (e) {}
+  return w;
+}
+
+function getAnnotationFreezeApi() {
+  const root = getAnnotationFreezeRootWindow();
+
+  const candidates = [
+    root && root.__LIA_ANNOTATION_FREEZE_API__,
+    window.__LIA_ANNOTATION_FREEZE_API__,
+    root && root.__LIA_ANNOTATION__,
+    window.__LIA_ANNOTATION__
+  ].filter(Boolean);
+
+  for (let i = 0; i < candidates.length; i++) {
+    const api = candidates[i];
+
+    const exportFn =
+      (typeof api.exportFreezeState === "function" && api.exportFreezeState) ||
+      (typeof api.exportState === "function" && api.exportState) ||
+      (typeof api.freezeExport === "function" && api.freezeExport) ||
+      null;
+
+    const importFn =
+      (typeof api.importFreezeState === "function" && api.importFreezeState) ||
+      (typeof api.importState === "function" && api.importState) ||
+      (typeof api.freezeImport === "function" && api.freezeImport) ||
+      null;
+
+    if (exportFn || importFn) {
+      log(
+        "annotation-api-detected",
+        "export=" + (exportFn ? "1" : "0"),
+        "import=" + (importFn ? "1" : "0")
+      );
+
+      return {
+        exportFreezeState: exportFn ? exportFn.bind(api) : null,
+        importFreezeState: importFn ? importFn.bind(api) : null,
+        setReadOnly: typeof api.setReadOnly === "function" ? api.setReadOnly.bind(api) : null,
+        refresh: typeof api.refresh === "function" ? api.refresh.bind(api) : null,
+        persistCurrentSlide: typeof api.persistCurrentSlide === "function" ? api.persistCurrentSlide.bind(api) : null,
+        saveCurrentSlide: typeof api.saveCurrentSlide === "function" ? api.saveCurrentSlide.bind(api) : null,
+        commitCurrentSlide: typeof api.commitCurrentSlide === "function" ? api.commitCurrentSlide.bind(api) : null,
+        syncCurrentSlide: typeof api.syncCurrentSlide === "function" ? api.syncCurrentSlide.bind(api) : null,
+        flushCurrentSlide: typeof api.flushCurrentSlide === "function" ? api.flushCurrentSlide.bind(api) : null,
+        save: typeof api.save === "function" ? api.save.bind(api) : null,
+        sync: typeof api.sync === "function" ? api.sync.bind(api) : null,
+        flush: typeof api.flush === "function" ? api.flush.bind(api) : null
+      };
+    }
+  }
+
+  const exportFn =
+    (root && root.__LIA_ANNOTATION_FREEZE_EXPORT__) ||
+    window.__LIA_ANNOTATION_FREEZE_EXPORT__ ||
+    null;
+
+  const importFn =
+    (root && root.__LIA_ANNOTATION_FREEZE_IMPORT__) ||
+    window.__LIA_ANNOTATION_FREEZE_IMPORT__ ||
+    null;
+
+  if (exportFn || importFn) {
     log(
-      "canvas-apply-live",
-      "live=" + livePairs.length,
-      livePairs.map(function (pair, idx) {
-        return "[" + idx + "] " + JSON.stringify(getCanvasFreezeUidFromPair(pair));
-      }).join(" || ")
+      "annotation-api-detected",
+      "export=" + (exportFn ? "1" : "0"),
+      "import=" + (importFn ? "1" : "0"),
+      "mode=global-functions"
     );
 
-    log(
-      "canvas-apply-stored",
-      "stored=" + states.length,
-      states.map(function (state, idx) {
-        return "[" + idx + "] " + JSON.stringify(state && state.u || "");
-      }).join(" || ")
-    );
+    return {
+      exportFreezeState: typeof exportFn === "function" ? exportFn : null,
+      importFreezeState: typeof importFn === "function" ? importFn : null
+    };
+  }
 
-    states.forEach(function (state, idx) {
-      let target = null;
-      const wantedUid = normalizeSpace(state && state.u || "");
+  log("annotation-api-detected", "export=0", "import=0");
+  return null;
+}
 
-      if (wantedUid) {
-        for (let i = 0; i < livePairs.length; i++) {
-          if (used.has(livePairs[i])) continue;
-          if (getCanvasFreezeUidFromPair(livePairs[i]) === wantedUid) {
-            target = livePairs[i];
-            break;
-          }
-        }
-      }
 
-      if (!target) {
-        if (idx >= 0 && idx < livePairs.length && !used.has(livePairs[idx])) {
-          target = livePairs[idx];
-        }
-      }
+function debugAnnotationProbe(stage) {
+  const api = getAnnotationFreezeApi();
 
-      if (!target) {
-        log("canvas-match-miss", "storedIdx=" + idx, "uid=" + JSON.stringify(wantedUid));
-        return;
-      }
+  log(
+    "annotation-probe",
+    "stage=" + String(stage || ""),
+    "api=" + (api ? "1" : "0"),
+    "export=" + (
+      api && typeof api.exportFreezeState === "function"
+        ? "1"
+        : "0"
+    ),
+    "import=" + (
+      api && typeof api.importFreezeState === "function"
+        ? "1"
+        : "0"
+    ),
+    "readonly=" + (
+      api && typeof api.setReadOnly === "function"
+        ? "1"
+        : "0"
+    ),
+    "refresh=" + (
+      api && typeof api.refresh === "function"
+        ? "1"
+        : "0"
+    )
+  );
 
-      used.add(target);
-      api.renderCanvasFreezeStateIntoPair(target, state);
-      applied.push(target);
+  return api;
+}
+
+
+function tryCallAnnotationApiMethod(api, names) {
+  if (!api) return false;
+
+  const list = Array.isArray(names) ? names : [names];
+
+  for (let i = 0; i < list.length; i++) {
+    const name = String(list[i] || "");
+    if (!name) continue;
+    if (typeof api[name] !== "function") continue;
+
+    try {
+      api[name]();
+      log("annotation-flush-call", "method=" + name);
+      return true;
+    } catch (err) {
+      warn(
+        "annotation-flush-call-failed",
+        "method=" + name,
+        err && err.message ? err.message : err
+      );
+    }
+  }
+
+  return false;
+}
+
+function flushAnnotationBeforeExport() {
+  const api = getAnnotationFreezeApi();
+  if (!api) return false;
+
+  // vorsichtig mehrere mögliche Persist-/Sync-Hooks probieren
+  const tried =
+    tryCallAnnotationApiMethod(api, ["persistCurrentSlide", "saveCurrentSlide", "commitCurrentSlide"]) ||
+    tryCallAnnotationApiMethod(api, ["syncCurrentSlide", "flushCurrentSlide"]) ||
+    tryCallAnnotationApiMethod(api, ["save", "sync", "flush"]);
+
+  if (typeof api.refresh === "function") {
+    try {
+      api.refresh();
+      log("annotation-flush-call", "method=refresh");
+    } catch (err) {
+      warn(
+        "annotation-refresh-before-export-failed",
+        err && err.message ? err.message : err
+      );
+    }
+  }
+
+  return tried;
+}
+
+function countAnnotationItemsInFreezePayload(payload) {
+  if (!payload || typeof payload !== "object") {
+    return 0;
+  }
+
+  if (payload.v === ANNOT_CODEC_VERSION && Array.isArray(payload.s)) {
+    let total = 0;
+
+    payload.s.forEach(function (entry) {
+      if (!Array.isArray(entry) || entry.length < 2) return;
+      const items = Array.isArray(entry[1]) ? entry[1] : [];
+      total += items.length;
     });
 
-    return applied;
+    return total;
   }
+
+  const slides = payload.slides && typeof payload.slides === "object"
+    ? payload.slides
+    : null;
+
+  if (!slides) return 0;
+
+  let total = 0;
+
+  Object.keys(slides).forEach(function (hash) {
+    const slide = slides[hash];
+    const items = Array.isArray(slide && slide.items) ? slide.items : [];
+    total += items.length;
+  });
+
+  return total;
+}
+
+
+function describeAnnotationFreezePayload(payload) {
+  if (!payload || typeof payload !== "object") {
+    return "payload=<null>";
+  }
+
+  const keys = Object.keys(payload);
+  const slideHashes =
+    payload.slides && typeof payload.slides === "object"
+      ? Object.keys(payload.slides)
+      : [];
+
+  const uiKeys =
+    payload.ui && typeof payload.ui === "object"
+      ? Object.keys(payload.ui)
+      : [];
+
+  return [
+    "keys=" + keys.join(","),
+    "slides=" + slideHashes.length,
+    "slideHashes=" + slideHashes.join(","),
+    "uiKeys=" + uiKeys.join(",")
+  ].join(" ");
+}
+
+
+async function captureFullAnnotationFreezeState() {
+  const api = getAnnotationFreezeApi();
+  if (!api || typeof api.exportFreezeState !== "function") {
+    log("annotation-export-skip", "reason=no-api");
+    return null;
+  }
+
+  const delays = [0, 80, 180, 320];
+
+  for (let i = 0; i < delays.length; i++) {
+    const delay = delays[i];
+
+    if (delay > 0) {
+      await sleep(delay);
+    }
+
+    flushAnnotationBeforeExport();
+
+    let raw = null;
+
+    try {
+      raw = api.exportFreezeState();
+      if (raw && typeof raw.then === "function") {
+        raw = await raw;
+      }
+    } catch (err) {
+      warn(
+        "annotation-export-failed",
+        "try=" + (i + 1),
+        err && err.message ? err.message : err
+      );
+      continue;
+    }
+
+    const copy = copyJson(raw);
+
+    const keys =
+      copy && typeof copy === "object"
+        ? Object.keys(copy)
+        : [];
+
+    const slideKeys =
+      copy &&
+      copy.slides &&
+      typeof copy.slides === "object"
+        ? Object.keys(copy.slides)
+        : [];
+
+    const itemCount = countAnnotationItemsInFreezePayload(copy);
+
+    log(
+      "annotation-export-attempt",
+      "try=" + (i + 1),
+      "rawType=" + (raw === null ? "null" : typeof raw),
+      "keys=" + keys.join(","),
+      "slides=" + slideKeys.join(","),
+      "items=" + itemCount
+    );
+
+    if (copy && typeof copy === "object") {
+      if (keys.length > 0 || slideKeys.length > 0 || itemCount > 0) {
+        return copy;
+      }
+    }
+  }
+
+  warn("annotation-export-empty", "all-attempts-failed");
+  return null;
+}
+
+function getAnnotationFreezeVisibleFlag(fullState) {
+  const full =
+    fullState && typeof fullState === "object"
+      ? fullState
+      : null;
+
+  if (!full) return 1;
+
+  if (full.v === ANNOT_CODEC_VERSION) {
+    return full.u === 0 ? 0 : 1;
+  }
+
+  return (full.ui && full.ui.visible === false) ? 0 : 1;
+}
+
+function buildAnnotationFreezeImportPayloadFromSnapshot(payload) {
+  // Neues bevorzugtes Format: kompakter af2-Codec
+  if (payload && payload.af && typeof payload.af === "object") {
+    const full =
+      expandAnnotationFreezeStateFromFreezeUrl(payload.af) ||
+      {};
+
+    full.ui = full.ui || {};
+
+    // Altkompatibilität: falls anv noch vorhanden ist, darf es visible überschreiben
+    if (Object.prototype.hasOwnProperty.call(payload, "anv")) {
+      full.ui.visible = !(Number(payload.anv) === 0);
+    }
+
+    return full;
+  }
+
+  // Fallback für altes per-slide-Format
+  const out = {
+    version: "lia-annotation-freeze-v1",
+    ui: {
+      visible: !(
+        payload &&
+        Object.prototype.hasOwnProperty.call(payload, "anv") &&
+        Number(payload.anv) === 0
+      )
+    },
+    slides: {}
+  };
+
+  if (!payload || !Array.isArray(payload.s)) {
+    return out;
+  }
+
+  payload.s.forEach(function (slide) {
+    const hash = cleanHashValue(slide && slide.h || "");
+    const ann = slide && slide.an;
+    const data = ann && ann.d;
+
+    if (!hash) return;
+    if (!data || !Array.isArray(data.items) || !data.items.length) return;
+
+    out.slides[hash] = {
+      items: copyJson(data.items) || [],
+      redo: []
+    };
+  });
+
+  return out;
+}
+
+
+
+function applyAnnotationFreezeSnapshot(payload) {
+  log("ANNOTATION-IMPORT-ENTER");
+  
+  const api = getAnnotationFreezeApi();
+  if (!api) {
+    log("annotation-apply-skip", "reason=no-api");
+    return false;
+  }
+
+  try {
+    if (typeof api.importFreezeState === "function") {
+      const importPayload = buildAnnotationFreezeImportPayloadFromSnapshot(
+        payload || snapshotPayload
+      );
+
+      const hashes = Object.keys(importPayload && importPayload.slides || {});
+      const itemCount = countAnnotationItemsInFreezePayload(importPayload);
+
+      log(
+        "annotation-apply",
+        "slides=" + hashes.length,
+        "hashes=" + hashes.join(","),
+        "items=" + itemCount
+      );
+
+      api.importFreezeState(importPayload, { replace: true });
+    }
+
+    if (typeof api.setReadOnly === "function") {
+      api.setReadOnly(true);
+    }
+
+    if (typeof api.refresh === "function") {
+      api.refresh();
+    }
+
+    return true;
+  } catch (err) {
+    warn(
+      "annotation-apply-failed",
+      err && err.message ? err.message : err
+    );
+    return false;
+  }
+}
+
+
+function reimportAnnotationFreezeSnapshot(reason) {
+  if (!snapshotPayload) {
+    log("annotation-reimport-skip", "reason=" + String(reason || ""), "snapshot=none");
+    return false;
+  }
+
+  const ok = applyAnnotationFreezeSnapshot(snapshotPayload);
+
+  log(
+    "annotation-reimport",
+    "reason=" + String(reason || ""),
+    "ok=" + (ok ? "1" : "0")
+  );
+
+  return ok;
+}
+
+
+function reinforceAnnotationFreezeUi(reason, opts) {
+  opts = opts || {};
+
+  const api = getAnnotationFreezeApi();
+  if (!api) return false;
+
+  let imported = false;
+
+  if (opts.reimport) {
+    imported = reimportAnnotationFreezeSnapshot(reason || "reinforce");
+  }
+
+  try {
+    if (typeof api.setReadOnly === "function") {
+      api.setReadOnly(true);
+    }
+
+    if (typeof api.refresh === "function") {
+      api.refresh();
+    }
+
+    log(
+      "annotation-reinforce",
+      "reason=" + String(reason || ""),
+      "reimport=" + (opts.reimport ? "1" : "0"),
+      "imported=" + (imported ? "1" : "0")
+    );
+
+    return true;
+  } catch (err) {
+    warn(
+      "annotation-reinforce-failed",
+      err && err.message ? err.message : err
+    );
+    return false;
+  }
+}
+
+
 
 
 
@@ -6971,6 +8494,7 @@ function captureSlideStateForHash(hash) {
     gm: generalMarkerState
   };
 
+
   const sequence = [];
 
   ordered.forEach(function (entry) {
@@ -6999,6 +8523,7 @@ function captureSlideStateForHash(hash) {
     "fraction=" + out.fq.length,
     "marker=" + out.mq.length,
     "canvas=" + out.cv.length,
+    "annotation=global",
     "general-marker=" + (
       out.gm && Array.isArray(out.gm.h)
         ? out.gm.h.length
@@ -7017,6 +8542,7 @@ function storeLiveSlideState(hash, source) {
   if (!state) return false;
 
   liveSlidesByHash[state.h] = state;
+
   log(
     "live-store",
     state.h,
@@ -7029,18 +8555,22 @@ function storeLiveSlideState(hash, source) {
     "fraction=" + (state.fq ? state.fq.length : 0),
     "marker=" + (state.mq ? state.mq.length : 0),
     "canvas=" + (state.cv ? state.cv.length : 0),
+    "annotation=global",
     "general-marker=" + (
       state.gm && Array.isArray(state.gm.h)
         ? state.gm.h.length
         : 0
     )
   );
+
   return true;
 }
 
 
 
-function buildPayloadFromLiveStates() {
+async function buildPayloadFromLiveStates() {
+  log("BUILD-PAYLOAD-ENTER");
+
   const currentHash = liveRouteCurrentHash || getCurrentHash();
   storeLiveSlideState(currentHash, "payload-final");
 
@@ -7053,22 +8583,31 @@ function buildPayloadFromLiveStates() {
     sh: getCurrentHash(),
     n: getDisplayName(),
     s: declared.map(function (slide) {
-      const base = liveSlidesByHash[slide.h] || makeEmptySlideState(slide.h);
-      const out = Object.assign({}, base);
-      const meta = declaredEvaluationByHash[slide.h];
-
-      if (meta) {
-        out.tt = Number(meta.tt || 0) || 0;
-        out.tb = Number(meta.tb || 0) || 0;
-      }
-
-      return out;
+      return liveSlidesByHash[slide.h] || makeEmptySlideState(slide.h);
     })
   };
 
+  const annotationFullState = await captureFullAnnotationFreezeState();
+  log("ANNOTATION-EXPORT-ENTER");
+
+  payload.af = annotationFullState;
+  payload.anv = getAnnotationFreezeVisibleFlag(annotationFullState);
   payload.sec = getSerializableSecurityState();
 
-  return payload;
+  log(
+    "payload-annotation",
+    annotationFullState ? "present=1" : "present=0",
+    "items=" + countAnnotationItemsInFreezePayload(annotationFullState)
+  );
+
+  log(
+    "payload-annotation-final",
+    payload.af ? "present=1" : "present=0",
+    payload.af ? describeAnnotationFreezePayload(payload.af) : "payload=<null>",
+    "items=" + countAnnotationItemsInFreezePayload(payload.af)
+  );
+
+  return compactPayloadForFreezeUrl(payload);
 }
 
   function getSnapshotSlideForHash(hash) {
@@ -7591,6 +9130,7 @@ function lockCurrentSlideInteractiveState() {
   Array.from(host.querySelectorAll(
     "input, textarea, select, button, a, summary, [role='button'], [contenteditable='true'], [role='textbox']"
   )).forEach(function (el) {
+    if (el.closest(".lia-annot-toolbar")) return;
     if (el.closest("#lia-freeze-bar")) return;
 
     if (el.id === "lia-link") {
@@ -7692,6 +9232,11 @@ async function applySnapshotOnce(hash, reason) {
   if (isEvaluationTarget(currentHash)) {
     hideUnvisitedPlaceholder();
     showEvaluationPlaceholder(currentHash);
+
+    reinforceAnnotationFreezeUi("apply-evaluation:" + currentHash, {
+      reimport: isBootApply
+    });
+
     reinforceFrozenUi();
     setFreezeLoading(false, "apply-evaluation:" + currentHash);
     return true;
@@ -7701,6 +9246,11 @@ async function applySnapshotOnce(hash, reason) {
   if (isUnvisitedTarget(currentHash)) {
     hideUnvisitedPlaceholder();
     showUnvisitedPlaceholder(currentHash);
+
+    reinforceAnnotationFreezeUi("apply-unvisited:" + currentHash, {
+      reimport: isBootApply
+    });
+
     reinforceFrozenUi();
     setFreezeLoading(false, "apply-unvisited:" + currentHash);
     return true;
@@ -7778,8 +9328,12 @@ async function applySnapshotOnce(hash, reason) {
     }
   }
 
-  reinforceFrozenUi();
+    reinforceAnnotationFreezeUi("apply:" + currentHash, {
+      reimport: isBootApply
+    });
 
+  reinforceFrozenUi();
+  
   schedulePostApplyReinforcement(
     currentHash,
     isBootApply ? "boot-stabilize" : "route-stabilize",
@@ -7787,7 +9341,7 @@ async function applySnapshotOnce(hash, reason) {
       ? [160, 380, 800, 1400, 2200]
       : [140, 320, 700]
   );
-
+  
   setFreezeLoading(false, "apply-success:" + currentHash);
   return true;
 }
@@ -8524,6 +10078,10 @@ function isAllowedFreezeTarget(target) {
   if (target.id === "lia-link") return true;
   if (target.closest && target.closest("#lia-link")) return true;
 
+  // Annotation-Toolbar darf auch im Freeze bedienbar bleiben
+  // (z.B. Anzeigen/Ausblenden per Auge-Button).
+  if (target.closest(".lia-annot-toolbar")) return true;
+
   if (
     isSharedFreezeLinkMode() &&
     target.closest(".lia-adetails-award-input")
@@ -8662,6 +10220,7 @@ async function activateSnapshotMode(payload, linkValue, opts) {
   opts = opts || {};
 
   snapshotPayload = payload || null;
+  debugAnnotationProbe("activateSnapshotMode");
   console.log("[LIA-FREEZE] snapshot-loaded", JSON.stringify(snapshotPayload));
   if (!snapshotPayload) return false;
 
@@ -8674,6 +10233,7 @@ async function activateSnapshotMode(payload, linkValue, opts) {
   getFreezeBar();
   refreshFreezeBar();
   installFreezeBindings();
+
   applyAdminState(getDisplayName(), {
     preserveLinkValue: false,
     linkValue: freezeLinkValue
@@ -8714,6 +10274,9 @@ async function activateSnapshotMode(payload, linkValue, opts) {
 }
 
   async function createLink() {
+    console.warn("[LIA-FREEZE] CREATE-LINK-ENTER", BUILD_STAMP);    
+    debugAnnotationProbe("createLink-start");
+
     const btnEl = document.getElementById("lia-create-link");
 
     try {
@@ -8729,7 +10292,17 @@ async function activateSnapshotMode(payload, linkValue, opts) {
       captureAdminState();
       storeLiveSlideState(liveRouteCurrentHash || getCurrentHash(), "createLink");
 
-      const payload = buildPayloadFromLiveStates();
+      console.warn("[LIA-FREEZE] BEFORE-BUILD-PAYLOAD", BUILD_STAMP);
+      const payload = await buildPayloadFromLiveStates();
+      console.warn(
+        "[LIA-FREEZE] payload-af-check",
+        payload && payload.af ? "present" : "null",
+        payload && payload.af && typeof payload.af === "object"
+          ? Object.keys(payload.af).join(",")
+          : ""
+      );
+      console.warn("[LIA-FREEZE] AFTER-BUILD-PAYLOAD", BUILD_STAMP);
+
       console.log("[LIA-FREEZE] payload-before-link", JSON.stringify(payload));
       const link = buildLink(payload);
 
@@ -8798,20 +10371,133 @@ async function initMode() {
   scheduleAssignmentDetailsRefresh(180);
   }
 
-  function safeBoot() {
-    try {
-      ensureRuntimeStyle();
-      installThemeWatcher();
-      installGlobalF12Tracking();
-      installGlobalTabTracking();
-      installDevtoolsWatch();
-      initMode().catch(function (err) {
-        console.error("[LIA-FREEZE] boot-error", err);
-      });
-    } catch (err) {
-      console.error("[LIA-FREEZE] boot-error", err);
-    }
+
+function installDirectCreateLinkBinding() {
+  let retryTimer = 0;
+  let observer = null;
+
+  function bindNow() {
+    const btn = document.getElementById("lia-create-link");
+    if (!btn) return false;
+    if (btn.dataset.freezeDirectBound === "1") return true;
+
+    btn.dataset.freezeDirectBound = "1";
+
+    btn.addEventListener("click", function (e) {
+      console.warn("[LIA-FREEZE] DIRECT-CREATE-LINK-CLICK", BUILD_STAMP);
+
+      if (document.body && document.body.classList.contains("lia-snapshot-mode")) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (typeof e.stopImmediatePropagation === "function") {
+          e.stopImmediatePropagation();
+        }
+        return;
+      }
+
+      e.preventDefault();
+      e.stopPropagation();
+      if (typeof e.stopImmediatePropagation === "function") {
+        e.stopImmediatePropagation();
+      }
+
+      Promise.resolve()
+        .then(function () {
+          return createLink();
+        })
+        .catch(function (err) {
+          console.error("[LIA-FREEZE] direct-createLink-error", err);
+        });
+    }, true);
+
+    log("direct-create-link-bound", "id=lia-create-link");
+    return true;
   }
+
+  function scheduleRetries() {
+    const delays = [0, 100, 300, 700, 1500];
+
+    delays.forEach(function (delay) {
+      setTimeout(function () {
+        bindNow();
+      }, delay);
+    });
+  }
+
+  scheduleRetries();
+
+  if (window.MutationObserver) {
+    observer = new MutationObserver(function () {
+      bindNow();
+    });
+
+    observer.observe(document.documentElement || document.body, {
+      childList: true,
+      subtree: true
+    });
+  }
+}
+
+
+function installCreateLinkDelegation() {
+  if (createLinkDelegationInstalled) return;
+  createLinkDelegationInstalled = true;
+
+  document.addEventListener("click", function (e) {
+    const t = e.target;
+    if (!(t instanceof Element)) return;
+
+    const btn = t.closest("#lia-create-link");
+    if (!btn) return;
+
+    if (document.body && document.body.classList.contains("lia-snapshot-mode")) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (typeof e.stopImmediatePropagation === "function") {
+        e.stopImmediatePropagation();
+      }
+      return;
+    }
+
+    console.warn("[LIA-FREEZE] DELEGATED-CREATE-LINK-CLICK", BUILD_STAMP);
+
+    e.preventDefault();
+    e.stopPropagation();
+    if (typeof e.stopImmediatePropagation === "function") {
+      e.stopImmediatePropagation();
+    }
+
+    Promise.resolve()
+      .then(function () {
+        return createLink();
+      })
+      .catch(function (err) {
+        console.error("[LIA-FREEZE] delegated-createLink-error", err);
+      });
+  }, true);
+}
+
+
+
+
+function safeBoot() {
+  try {
+    console.warn("[LIA-FREEZE] BUILD-STAMP", BUILD_STAMP);
+    ensureRuntimeStyle();
+    installThemeWatcher();
+    installGlobalF12Tracking();
+    installGlobalTabTracking();
+    installDevtoolsWatch();
+    installCreateLinkDelegation();
+    installDirectCreateLinkBinding();
+    debugAnnotationProbe("safeBoot");
+    initMode().catch(function (err) {
+      console.error("[LIA-FREEZE] boot-error", err);
+    });
+  } catch (err) {
+    console.error("[LIA-FREEZE] boot-error", err);
+  }
+}
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", safeBoot);
@@ -8846,7 +10532,12 @@ async function initMode() {
   <label for="lia-name">Name</label>
   <input id="lia-name" data-snapshot-admin="1" type="text" placeholder="Name eingeben">
 
-  <button id="lia-create-link" data-snapshot-admin="1" onclick="window.__liaSubmissionDemo.createLink()">Abgabelink erstellen</button>
+  <button
+    id="lia-create-link"
+    data-snapshot-admin="1"
+    type="button"
+    onclick="console.warn('[LIA-FREEZE] INLINE-CREATE-LINK-CLICK'); if(window.__liaSubmissionDemo && typeof window.__liaSubmissionDemo.createLink === 'function')  { window.__liaSubmissionDemo.createLink(); } else { console.error('[LIA-FREEZE] createLink not available on window.__liaSubmissionDemo'); } return false;"
+  >Abgabelink erstellen</button>
 
   <label for="lia-link">Abgabelink</label>
   <textarea id="lia-link" data-snapshot-admin="1" readonly placeholder="Hier erscheint der erzeugte Link"></textarea>
@@ -8907,9 +10598,6 @@ $a)\;\;$ $7000+123=$ [[  7123  ]] @canvas
 
 @ADetails(1=BE;Addition)
 
-$b)\;\;$ $6000+123=$ [[  6123  ]] m @canvas
-
-@ADetails(1=BE;Einheiten,Addition)
 
 
 Wähle blau aus.
@@ -8931,6 +10619,12 @@ Wähle gelb aus.
 [->[rot|blau|grün|(gelb)]]
 
 @ADetails(1=BE;Farben)
+
+
+
+$b)\;\;$ $6000+123=$ [[  6123  ]] m @canvas
+
+@ADetails(1=BE;Einheiten,Addition)
 
 
 
@@ -8969,9 +10663,6 @@ Wähle blau aus.
 
 
 
-$d)\;\;$ $4000+123=$ [[  4123  ]] @canvas
-
-@ADetails(1=BE;Addition)
 
 
 Wähle blau aus.
@@ -9000,6 +10691,12 @@ Wähle grün aus.
 
 
 @ADetails(3=BE;Tabelle)
+
+
+
+$d)\;\;$ $4000+123=$ [[  4123  ]] @canvas
+
+@ADetails(1=BE;Addition)
 
 
 
@@ -9042,6 +10739,10 @@ __Aufgabe 3:__ Setze das Komma an die richtige Stelle. (Auflösung ist blockiert
 @ADetails(1=BE; Deutsch)
 
 
+$g)\;\;$ $6000+123=$ [[  6123  ]] m @canvas
+
+@ADetails(1=BE;Einheiten,Addition)
+
 
 # Brüche darstellen
 
@@ -9067,6 +10768,9 @@ __$c)\;\;$__ $\dfrac{1}{3}$
 
 
 
+$e)\;\;$ $6000+123=$ [[  6123  ]] m @canvas
+
+@ADetails(1=BE;Einheiten,Addition)
 
 
 
