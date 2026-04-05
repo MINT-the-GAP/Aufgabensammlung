@@ -855,6 +855,7 @@ function toolbarSignature(){
   }
 }
 
+
 function positionOverlayButton(){
   const btn = ROOT_DOC.getElementById(BTN_ID);
   const overlay = ROOT_DOC.getElementById(OVERLAY_ID);
