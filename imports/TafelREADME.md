@@ -384,12 +384,13 @@ html[data-lia-mode="slides"] main{
   // =========================================================
   // Root UI (Overlay) – wie beim Textmarker gedacht: NICHT in Header flow
   // =========================================================
-  const ROOT_STYLE_ID = "lia-tff-style-root-v2";
-  const OVERLAY_ID    = "lia-tff-overlay-v2";
-  const BTN_ID        = "lia-tff-btn-v2";
-  const PANEL_ID      = "lia-tff-panel-v2";
-  const SLIDER_ID     = "lia-tff-slider-v2";
-  const TITLE_ID      = "lia-tff-title-v2";
+const ROOT_STYLE_ID = "lia-tff-style-root-v2";
+const OVERLAY_ID    = "lia-tff-overlay-v2";
+const BTN_ID        = "lia-tff-btn-v2";
+const PANEL_ID      = "lia-tff-panel-v2";
+const SLIDER_ID     = "lia-tff-slider-v2";
+const TITLE_ID      = "lia-tff-title-v2";
+const INLINE_SLOT_ID = "lia-tff-inline-slot-v2";
 
   const ROOT_CSS = `
     :root{
@@ -425,6 +426,26 @@ html[data-lia-mode="slides"] main{
       cursor: pointer !important;
       user-select: none !important;
       -webkit-tap-highlight-color: transparent !important;
+    }
+
+    #${INLINE_SLOT_ID}{
+      position: relative !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 34px !important;
+      height: 34px !important;
+      min-width: 34px !important;
+      min-height: 34px !important;
+      flex: 0 0 34px !important;
+      pointer-events: none !important;
+    }
+
+    #${INLINE_SLOT_ID} > #${BTN_ID}{
+      position: relative !important;
+      left: auto !important;
+      top: auto !important;
+      margin: 0 !important;
     }
 
     #${BTN_ID}:hover{
@@ -553,6 +574,102 @@ html[data-lia-mode="slides"] main{
   // Positioning: Dock an TOC/Nav-Button, plus Rücksicht auf Textmarker
   // (ohne in den Header zu greifen -> kein Layout-Schieben)
   // =========================================================
+
+
+function getInlineDockHost(){
+  const hl = ROOT_DOC.getElementById("lia-hl-btn");
+  if (!hl) return null;
+
+  return hl.closest(".lia-header__left") || null;
+}
+
+function shouldUseInlineStripDock(){
+  const hl = ROOT_DOC.getElementById("lia-hl-btn");
+  if (!hl) return false;
+
+  // Nightly-/Navigations-Sonderfall
+  const canvas = ROOT_DOC.querySelector(".lia-canvas");
+  if (canvas && canvas.classList.contains("lia-navigation--hidden")){
+    return true;
+  }
+
+  // Fallback: wenn die linke Leiste selbst schon vertikal organisiert ist
+  const host = getInlineDockHost();
+  if (host){
+    try{
+      const cs = ROOT_WIN.getComputedStyle(host);
+      if (
+        cs.display.includes("flex") &&
+        (cs.flexDirection === "column" || cs.flexDirection === "column-reverse")
+      ){
+        return true;
+      }
+    }catch(e){}
+  }
+
+  return false;
+}
+
+function ensureInlineDockSlot(){
+  const host = getInlineDockHost();
+  if (!host) return null;
+
+  let slot = ROOT_DOC.getElementById(INLINE_SLOT_ID);
+  if (!slot){
+    slot = ROOT_DOC.createElement("div");
+    slot.id = INLINE_SLOT_ID;
+  }
+
+  const hl = ROOT_DOC.getElementById("lia-hl-btn");
+
+  if (slot.parentNode !== host){
+    if (hl && hl.nextSibling){
+      host.insertBefore(slot, hl.nextSibling);
+    } else {
+      host.appendChild(slot);
+    }
+  } else if (hl && slot.previousSibling !== hl){
+    if (hl.nextSibling){
+      host.insertBefore(slot, hl.nextSibling);
+    } else {
+      host.appendChild(slot);
+    }
+  }
+
+  return slot;
+}
+
+function placeButtonInCorrectHost(){
+  const btn = ROOT_DOC.getElementById(BTN_ID);
+  const overlay = ROOT_DOC.getElementById(OVERLAY_ID);
+  if (!btn || !overlay) return;
+
+  if (shouldUseInlineStripDock()){
+    const slot = ensureInlineDockSlot();
+    if (slot && btn.parentNode !== slot){
+      slot.appendChild(btn);
+    }
+
+    overlay.style.left = "0px";
+    overlay.style.top  = "0px";
+
+    btn.style.left = "";
+    btn.style.top  = "";
+    return;
+  }
+
+  // Standardfall: wieder ins Overlay zurück
+  if (btn.parentNode !== overlay){
+    overlay.appendChild(btn);
+  }
+
+  const slot = ROOT_DOC.getElementById(INLINE_SLOT_ID);
+  if (slot && slot.parentNode){
+    slot.parentNode.removeChild(slot);
+  }
+}
+
+
   function getViewport(){
     const vv = ROOT_WIN.visualViewport;
     if (vv){
@@ -939,6 +1056,10 @@ function positionOverlayButton(){
   const btn = ROOT_DOC.getElementById(BTN_ID);
   const overlay = ROOT_DOC.getElementById(OVERLAY_ID);
   if (!btn || !overlay) return;
+  if (shouldUseInlineStripDock()){
+    placeButtonInCorrectHost();
+    return;
+  }
 
   const vp  = getViewport();
   const pad = 8;
@@ -1240,6 +1361,7 @@ function tick(){
 
       // 3) UI sicherstellen + Sichtbarkeit
       ensureUI();
+      placeButtonInCorrectHost();
       const show = setPresentationOnlyVisibility(mode);
 
       const showChanged = (I.lastShow === null) ? true : (show !== I.lastShow);
