@@ -819,17 +819,51 @@ function getRectLoose(el){
   }
 }
 
+function isNightlyNavigationHidden(){
+  const canvas = ROOT_DOC.querySelector(".lia-canvas");
+  return !!(canvas && canvas.classList.contains("lia-navigation--hidden"));
+}
+
+
 function getTOCDockSlot(){
   const size = 34;
-  const gap  = 10;   // wenn es noch zu eng ist: 12
+  const gap  = 8;
   const pad  = 8;
 
-  const toc = ROOT_DOC.getElementById("lia-toc");
+  const toc    = ROOT_DOC.getElementById("lia-toc");
   const tocBtn = ROOT_DOC.getElementById("lia-btn-toc");
   const tocBtnRect = getRectLoose(tocBtn);
+  const nightly = isNightlyNavigationHidden();
 
-  // TOC offen -> AA DIREKT rechts neben den Close-Button
-  if (toc && toc.classList.contains("lia-toc--open") && tocBtnRect){
+  if (!tocBtnRect) return null;
+
+  // =========================
+  // NIGHTLY:
+  // AA immer UNTER den TOC-/Close-Button
+  // =========================
+  if (nightly){
+    const left = tocBtnRect.left + (tocBtnRect.width - size) / 2;
+    const top  = tocBtnRect.bottom + gap;
+
+    return {
+      kind: "toc-open-slot",
+      rect: {
+        left:   Math.max(pad, left),
+        top:    Math.max(pad, top),
+        right:  Math.max(pad, left) + size,
+        bottom: Math.max(pad, top) + size,
+        width:  size,
+        height: size
+      },
+      peers: [{ el: tocBtn, r: tocBtnRect }]
+    };
+  }
+
+  // =========================
+  // NORMAL:
+  // TOC offen -> AA rechts neben Close-Button
+  // =========================
+  if (toc && toc.classList.contains("lia-toc--open")){
     const left = tocBtnRect.right + gap;
     const top  = tocBtnRect.top + (tocBtnRect.height - size) / 2;
 
@@ -847,16 +881,15 @@ function getTOCDockSlot(){
     };
   }
 
-  // TOC geschlossen -> ebenfalls rechts neben den TOC-Button
-  if (tocBtnRect){
-    return {
-      kind: "toc-button",
-      rect: tocBtnRect,
-      peers: [{ el: tocBtn, r: tocBtnRect }]
-    };
-  }
-
-  return null;
+  // =========================
+  // NORMAL:
+  // TOC geschlossen -> AA rechts neben TOC-Button
+  // =========================
+  return {
+    kind: "toc-button",
+    rect: tocBtnRect,
+    peers: [{ el: tocBtn, r: tocBtnRect }]
+  };
 }
 
 function getRawVisibleRect(el){
