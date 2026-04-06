@@ -279,10 +279,10 @@ ensureCSS();
       flex-direction: column !important;
       align-items: stretch !important;
       justify-content: flex-start !important;
-    
+
       width: 32px !important;
       min-width: 32px !important;
-    
+
       gap: 6px !important;
       overflow: visible !important;
     }
@@ -1368,6 +1368,28 @@ function getHLTOCButtonRect(){
 }
 
 
+
+function getHLRectSafe(el){
+  if (!el) return null;
+  try{
+    const r = el.getBoundingClientRect();
+    if (!r || r.width < 6 || r.height < 6) return null;
+    return r;
+  }catch(e){
+    return null;
+  }
+}
+
+function getHLAAButtonRect(){
+  return getHLRectSafe(ROOT_DOC.getElementById("lia-tff-btn-v2"));
+}
+
+function getHLPrimaryDockRect(){
+  return getHLAAButtonRect() || getHLTOCButtonRect() || null;
+}
+
+
+
 function ensureHLUIOverlay(){
   let overlay = ROOT_DOC.getElementById(HL_UI_OVERLAY_ID);
   if (!overlay){
@@ -1389,7 +1411,7 @@ function shouldUseHLNightlyStackDock(){
 }
 
 function shouldUseHLInlineDock(){
-  return shouldUseHLNightlyStackDock();
+  return false;
 }
 
 function ensureHLInlineSlot(){
@@ -1430,34 +1452,20 @@ function placeHLButtonInCorrectHost(){
   const overlay = ensureHLUIOverlay();
   if (!btn || !overlay) return;
 
-  const slot = ROOT_DOC.getElementById(HL_INLINE_SLOT_ID);
-
-  // Nightly: inline unter/bei TOC-Stack
-  if (shouldUseHLInlineDock()){
-    const inlineSlot = ensureHLInlineSlot();
-    if (inlineSlot && btn.parentNode !== inlineSlot){
-      inlineSlot.appendChild(btn);
-    }
-
-    overlay.style.left = "0px";
-    overlay.style.top  = "0px";
-
-    btn.style.left = "";
-    btn.style.top  = "";
-    return;
-  }
-
-  // Standardmodus: Overlay, NICHT inline
   if (btn.parentNode !== overlay){
     overlay.appendChild(btn);
   }
 
+  const slot = ROOT_DOC.getElementById(HL_INLINE_SLOT_ID);
   if (slot && slot.parentNode){
     slot.parentNode.removeChild(slot);
   }
 
   overlay.style.left = "0px";
   overlay.style.top  = "0px";
+
+  btn.style.left = "";
+  btn.style.top  = "";
 }
 
 function clearHLPosTimers(){
@@ -1511,11 +1519,6 @@ function positionHLButton(){
 
   placeHLButtonInCorrectHost();
 
-  // Normalmodus: inline => keine absolute Positionierung nötig
-  if (shouldUseHLInlineDock()){
-    return;
-  }
-
   const vp  = getViewport();
   const pad = 8;
   const gap = 8;
@@ -1532,17 +1535,19 @@ function positionHLButton(){
   let left = pad;
   let top  = pad;
 
+  const aaRect  = getHLAAButtonRect();
   const tocRect = getHLTOCButtonRect();
+  const dockRect = getHLPrimaryDockRect();
 
-  if (tocRect){
+  if (dockRect){
     if (shouldUseHLNightlyStackDock()){
-      // Nightly: DIREKT UNTER dem TOC-/Close-Button, mittig dazu
-      left = tocRect.left + (tocRect.width - bw) / 2;
-      top  = tocRect.bottom + 8;
+      // Nightly: unter den bestehenden Dock-Anker
+      left = dockRect.left + (dockRect.width - bw) / 2;
+      top  = dockRect.bottom + 6;
     } else {
-      // Standard-Overlay-Fallback: rechts neben TOC
-      left = tocRect.right + gap;
-      top  = tocRect.top + (tocRect.height - bh) / 2;
+      // Normal: rechts neben den bestehenden Dock-Anker
+      left = dockRect.right + gap;
+      top  = dockRect.top + (dockRect.height - bh) / 2;
     }
   } else {
     const leftHost = findHeaderLeft();
