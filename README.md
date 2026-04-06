@@ -74,20 +74,24 @@ author: Martin Lommatzsch
 
   const I = REG.instances[DOC_ID] = {
     __alive: true,
-    debugHLQ: false, //
+    debugHLQ: false,
     state: { active:false, panelOpen:false, tool:"mark", color:"yellow" },
     HL: [],
     nextId: 1,
     moDock: null,
     moTheme: null,
-    moSlides: null, 
+    moSlides: null,
     roLayout: null,
     roNodes: new Set(),
     roPending: false,
     ticking: false,
-  __activeSlide: null
+    __activeSlide: null,
+    posTimers: [],
+    lastBurstAt: 0
   };
 
+  const HL_UI_OVERLAY_ID = "lia-hl-ui-overlay-v1";
+  const HL_INLINE_SLOT_ID = "lia-hl-inline-slot-v1";
 
   // =========================
   // CSS Injection (Content + Root)
@@ -243,12 +247,78 @@ ensureCSS();
       --hl-accent: rgb(11,95,255);
       --hl-z: 9999999;
       }
-    #lia-hl-btn{
+
+
+    #lia-hl-ui-overlay-v1{
+      position: fixed !important;
+      z-index: var(--hl-z) !important;
+      left: 0;
+      top: 0;
+      width: 0;
+      height: 0;
+      pointer-events: none !important;
+    }
+
+    #lia-hl-inline-slot-v1{
       position: relative !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+
+      width: 40px !important;
+      min-width: 40px !important;
+      max-width: 40px !important;
+
+      height: 40px !important;
+      min-height: 40px !important;
+
+      flex: 0 0 40px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow: visible !important;
+      pointer-events: none !important;
+    }
+
+    #lia-hl-inline-slot-v1 > #lia-hl-btn{
+      position: relative !important;
+      left: auto !important;
+      top: auto !important;
+      margin: 0 !important;
+    }
+
+    body.lia-hl-navstack #lia-toolbar-nav .lia-header__left{
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: stretch !important;
+      justify-content: flex-start !important;
+
+      width: 32px !important;
+      min-width: 32px !important;
+
+      gap: 6px !important;
+      overflow: visible !important;
+    }
+
+    body.lia-hl-navstack #lia-hl-inline-slot-v1{
+      width: 32px !important;
+      min-width: 32px !important;
+      max-width: 32px !important;
+
+      height: 32px !important;
+      min-height: 32px !important;
+
+      flex: 0 0 32px !important;
+    }
+
+
+    #lia-hl-btn{
+      position: absolute !important;
+      pointer-events: auto !important;
+
       width: 40px !important;
       height: 40px !important;
       padding: 0 !important;
-      margin: 0 120px !important;
+      margin: 0 !important;
 
       display: inline-flex !important;
       align-items: center !important;
@@ -319,21 +389,21 @@ ensureCSS();
     /* Nightly: "Navigation"-Iconleiste (sehr kompakt / vertikal) */
     body.lia-hl-navstack #lia-hl-btn{
       margin: 0 !important;
-      width: 32px !important;
-      height: 32px !important;
+      width: 22px !important;
+      height: 22px !important;
       border-radius: 8px !important;
     }
     
     body.lia-hl-navstack #lia-hl-btn .icon{
-      width: 18px !important;
-      height: 18px !important;
+      width: 15px !important;
+      height: 15px !important;
     }
     
     body.lia-hl-navstack #lia-hl-btn .dot{
-      right: 4px !important;
-      bottom: 4px !important;
-      width: 8px !important;
-      height: 8px !important;
+      right: 2px !important;
+      bottom: 2px !important;
+      width: 6px !important;
+      height: 6px !important;
     }
     
 
@@ -1292,71 +1362,332 @@ CONTENT_DOC.addEventListener("scroll", scheduleRender, { passive:true, capture:t
     return pick || btns[0];
   }
 
-  function ensureRootButtonAndPanel(){
-    let btn = ROOT_DOC.getElementById("lia-hl-btn");
-    if (!btn){
-      btn = ROOT_DOC.createElement("button");
-      btn.id = "lia-hl-btn";
-      btn.type = "button";
-      btn.setAttribute("aria-label","Textmarker");
-      btn.innerHTML = `
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M4 20h4l10.5-10.5a2.1 2.1 0 0 0 0-3L16.5 4.5a2.1 2.1 0 0 0-3 0L3 15v5z"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-          <path d="M13.5 6.5l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <span class="dot" id="lia-hl-dot"></span>
-      `;
-    }
 
-    let panel = ROOT_DOC.getElementById("lia-hl-panel");
-    if (!panel){
-      panel = ROOT_DOC.createElement("div");
-      panel.id = "lia-hl-panel";
-      panel.innerHTML = `
-        <div class="hdr"><div class="title">Textmarker</div></div>
-        <div class="body">
-          <div class="hl-tools">
-            <button class="hl-tool" id="hl-tool-mark" type="button" aria-label="Markieren" title="Markieren">
-              <svg viewBox="0 0 512 512" aria-hidden="true">
-                <g transform="translate(-15 -75) scale(25)">
-                  <path d="M4 20h4l10.2-10.2a2.2 2.2 0 0 0 0-3.1l-1.1-1.1a2.2 2.2 0 0 0-3.1 0L3.8 15.8 3 21z"
-                        fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                  <path d="M13.2 6.8l4 4"
-                        fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                  <path d="M3.5 20.5h5"
-                        fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                </g>
-              </svg>
-            </button>
+function getHLTOCButtonRect(){
+  const tocBtn =
+    ROOT_DOC.getElementById("lia-btn-toc") ||
+    findTOCButtonInLeft(findHeaderLeft());
 
-            <button class="hl-tool" id="hl-tool-erase" type="button" aria-label="Radierer">
-              <svg viewBox="0 0 512 512" aria-hidden="true">
-                <path fill="currentColor" d="M490.3,133.177l-99.5-99.6c-33-33-74-11.4-85.5,0l-287.6,287.7c-23.6,23.6-23.6,61.9,0,85.5l81.1,81.1c2.6,2.6,6.2,4.1,10,4.1h102.4c3.7,0,7.3-1.5,10-4.1l269.2-269.2C513.9,195.077,513.9,156.777,490.3,133.177zM205.3,463.777h-90.7l-77-77c-12.6-12.6-12.6-33,0-45.5l67.4-67.4l145.1,145.1L205.3,463.777zM470.4,198.677l-200.3,200.3L125,253.877l200.3-200.3c6.1-6.1,27-18.5,45.5,0l99.5,99.5C482.9,165.777,482.9,186.177,470.4,198.677z"/>
-              </svg>
-            </button>
-          </div>
-          <div>
-            <div class="hl-hint" style="margin-bottom:8px;">Farbe</div>
-            <div class="hl-colors" id="hl-colors"></div>
-          </div>
-          <button class="hl-clear" id="hl-clear" type="button">Alle Markierungen löschen</button>
-        </div>
-      `;
-      ROOT_DOC.body.appendChild(panel);
-    }
+  if (!tocBtn) return null;
 
-    const left = findHeaderLeft();
-    if (left){
-      if (btn.parentNode !== left){
-        const anchor = findTOCButtonInLeft(left);
-        if (anchor && anchor.parentNode === left) anchor.insertAdjacentElement("afterend", btn);
-        else left.appendChild(btn);
-      }
-    } else {
-      if (!btn.parentNode) ROOT_DOC.body.appendChild(btn);
+  try{
+    const r = tocBtn.getBoundingClientRect();
+    if (!r || r.width < 6 || r.height < 6) return null;
+    return r;
+  }catch(e){
+    return null;
+  }
+}
+
+
+
+function isHLStackPeerVisible(el){
+  if (!el) return false;
+
+  try{
+    const cs = ROOT_WIN.getComputedStyle(el);
+    if (!cs) return false;
+    if (cs.display === "none" || cs.visibility === "hidden" || cs.opacity === "0") return false;
+
+    const r = el.getBoundingClientRect();
+    return !!(r && r.width > 4 && r.height > 4);
+  }catch(e){
+    return false;
+  }
+}
+
+function getHLNightlyStackOrder(){
+  // feste Reihenfolge unter dem TOC
+  // AA zuerst, Textmarker danach
+  return ["lia-tff-btn-v2", "lia-hl-btn"];
+}
+
+function getHLNightlyStackIndex(){
+  const ownId = "lia-hl-btn";
+  const order = getHLNightlyStackOrder();
+
+  let idx = 0;
+
+  for (const id of order){
+    if (id === ownId) return idx;
+
+    const el = ROOT_DOC.getElementById(id);
+    if (isHLStackPeerVisible(el)){
+      idx++;
     }
   }
+
+  return idx;
+}
+
+
+
+function getHLPrimaryDockRect(){
+  return getHLTOCButtonRect() || null;
+}
+
+
+
+function getHLRectSafe(el){
+  if (!el) return null;
+  try{
+    const r = el.getBoundingClientRect();
+    if (!r || r.width < 6 || r.height < 6) return null;
+    return r;
+  }catch(e){
+    return null;
+  }
+}
+
+
+
+
+function ensureHLUIOverlay(){
+  let overlay = ROOT_DOC.getElementById(HL_UI_OVERLAY_ID);
+  if (!overlay){
+    overlay = ROOT_DOC.createElement("div");
+    overlay.id = HL_UI_OVERLAY_ID;
+    ROOT_DOC.body.appendChild(overlay);
+  }
+  return overlay;
+}
+
+function shouldUseHLNightlyStackDock(){
+  const canvas = ROOT_DOC.querySelector(".lia-canvas");
+  if (!canvas) return false;
+
+  const navHidden = canvas.classList.contains("lia-navigation--hidden");
+  const presMode  = canvas.classList.contains("lia-mode--presentation");
+
+  return navHidden && presMode;
+}
+
+function shouldUseHLInlineDock(){
+  return false;
+}
+
+function ensureHLInlineSlot(){
+  const left = findHeaderLeft();
+  if (!left) return null;
+
+  let slot = ROOT_DOC.getElementById(HL_INLINE_SLOT_ID);
+  if (!slot){
+    slot = ROOT_DOC.createElement("div");
+    slot.id = HL_INLINE_SLOT_ID;
+  }
+
+  const tocBtn = ROOT_DOC.getElementById("lia-btn-toc") || findTOCButtonInLeft(left);
+
+  if (tocBtn && tocBtn.parentNode === left){
+    if (slot.parentNode !== left){
+      if (tocBtn.nextSibling){
+        left.insertBefore(slot, tocBtn.nextSibling);
+      } else {
+        left.appendChild(slot);
+      }
+    } else if (slot.previousSibling !== tocBtn){
+      if (tocBtn.nextSibling){
+        left.insertBefore(slot, tocBtn.nextSibling);
+      } else {
+        left.appendChild(slot);
+      }
+    }
+  } else if (slot.parentNode !== left){
+    left.insertBefore(slot, left.firstChild || null);
+  }
+
+  return slot;
+}
+
+function placeHLButtonInCorrectHost(){
+  const btn = ROOT_DOC.getElementById("lia-hl-btn");
+  const overlay = ensureHLUIOverlay();
+  if (!btn || !overlay) return;
+
+  if (btn.parentNode !== overlay){
+    overlay.appendChild(btn);
+  }
+
+  const slot = ROOT_DOC.getElementById(HL_INLINE_SLOT_ID);
+  if (slot && slot.parentNode){
+    slot.parentNode.removeChild(slot);
+  }
+
+  overlay.style.left = "0px";
+  overlay.style.top  = "0px";
+
+  btn.style.left = "";
+  btn.style.top  = "";
+}
+
+function clearHLPosTimers(){
+  try{
+    if (!I.posTimers) I.posTimers = [];
+    while (I.posTimers.length){
+      ROOT_WIN.clearTimeout(I.posTimers.pop());
+    }
+  }catch(e){}
+}
+
+function runHLPositionNow(){
+  detectNavStack();
+  positionHLButton();
+  positionPanelSmart();
+}
+
+function scheduleHLRepositionBurst(){
+  clearHLPosTimers();
+
+  // sofort
+  runHLPositionNow();
+
+  // zwei Frames später (TOC-Klasse/Layout ist dann oft schon stabiler)
+  ROOT_WIN.requestAnimationFrame(() => {
+    ROOT_WIN.requestAnimationFrame(() => {
+      runHLPositionNow();
+    });
+  });
+
+  // kurze Nachzüge für TOC-Transition
+  const delays = [10, 20, 30];
+  for (const ms of delays){
+    I.posTimers.push(ROOT_WIN.setTimeout(() => {
+      runHLPositionNow();
+    }, ms));
+  }
+}
+
+function scheduleHLRepositionBurstThrottled(){
+  const now = Date.now();
+  if (now - (I.lastBurstAt || 0) < 80) return;
+  I.lastBurstAt = now;
+  scheduleHLRepositionBurst();
+}
+
+function positionHLButton(){
+  const btn = ROOT_DOC.getElementById("lia-hl-btn");
+  const overlay = ensureHLUIOverlay();
+  if (!btn || !overlay) return;
+
+  placeHLButtonInCorrectHost();
+
+  // Normalmodus: inline => keine absolute Positionierung nötig
+  if (shouldUseHLInlineDock()){
+    return;
+  }
+
+  const vp  = getViewport();
+  const pad = 8;
+  const gap = 8;
+
+  let bw = 40, bh = 40;
+  try{
+    const br = btn.getBoundingClientRect();
+    if (br && br.width > 6 && br.height > 6){
+      bw = br.width;
+      bh = br.height;
+    }
+  }catch(e){}
+
+  let left = pad;
+  let top  = pad;
+
+  const tocRect = getHLPrimaryDockRect();
+
+  if (tocRect){
+    if (shouldUseHLNightlyStackDock()){
+      // Nightly: fester Stack unter dem TOC
+      const stackIndex = getHLNightlyStackIndex();
+      const stackGap   = 6;
+      const stackPitch = 28; // passend zu 22x22 + Luft
+  
+      left = tocRect.left + (tocRect.width - bw) / 2;
+      top  = tocRect.bottom + stackGap + stackIndex * stackPitch;
+    } else {
+      // Normalmodus: direkt rechts neben TOC / TOC-Close
+      left = tocRect.right + gap;
+      top  = tocRect.top + (tocRect.height - bh) / 2;
+    }
+  } else {
+    const leftHost = findHeaderLeft();
+    const hostRect = leftHost ? leftHost.getBoundingClientRect() : null;
+
+    if (hostRect){
+      left = hostRect.left + 8;
+      top  = hostRect.top + 8;
+    }
+  }
+
+  left = clamp(left, pad, vp.w - bw - pad);
+  top  = clamp(top,  pad, vp.h - bh - pad);
+
+  overlay.style.left = `${Math.round(vp.ox)}px`;
+  overlay.style.top  = `${Math.round(vp.oy)}px`;
+
+  btn.style.left = `${Math.round(left)}px`;
+  btn.style.top  = `${Math.round(top)}px`;
+}
+
+
+function ensureRootButtonAndPanel(){
+  const overlayRoot = ensureHLUIOverlay();
+
+  let btn = ROOT_DOC.getElementById("lia-hl-btn");
+  if (!btn){
+    btn = ROOT_DOC.createElement("button");
+    btn.id = "lia-hl-btn";
+    btn.type = "button";
+    btn.setAttribute("aria-label","Textmarker");
+    btn.innerHTML = `
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 20h4l10.5-10.5a2.1 2.1 0 0 0 0-3L16.5 4.5a2.1 2.1 0 0 0-3 0L3 15v5z"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M13.5 6.5l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span class="dot" id="lia-hl-dot"></span>
+    `;
+    overlayRoot.appendChild(btn);
+  }
+
+  let panel = ROOT_DOC.getElementById("lia-hl-panel");
+  if (!panel){
+    panel = ROOT_DOC.createElement("div");
+    panel.id = "lia-hl-panel";
+    panel.innerHTML = `
+      <div class="hdr"><div class="title">Textmarker</div></div>
+      <div class="body">
+        <div class="hl-tools">
+          <button class="hl-tool" id="hl-tool-mark" type="button" aria-label="Markieren" title="Markieren">
+            <svg viewBox="0 0 512 512" aria-hidden="true">
+              <g transform="translate(-15 -75) scale(25)">
+                <path d="M4 20h4l10.2-10.2a2.2 2.2 0 0 0 0-3.1l-1.1-1.1a2.2 2.2 0 0 0-3.1 0L3.8 15.8 3 21z"
+                      fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M13.2 6.8l4 4"
+                      fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M3.5 20.5h5"
+                      fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </g>
+            </svg>
+          </button>
+
+          <button class="hl-tool" id="hl-tool-erase" type="button" aria-label="Radierer">
+            <svg viewBox="0 0 512 512" aria-hidden="true">
+              <path fill="currentColor" d="M490.3,133.177l-99.5-99.6c-33-33-74-11.4-85.5,0l-287.6,287.7c-23.6,23.6-23.6,61.9,0,85.5l81.1,81.1c2.6,2.6,6.2,4.1,10,4.1h102.4c3.7,0,7.3-1.5,10-4.1l269.2-269.2C513.9,195.077,513.9,156.777,490.3,133.177zM205.3,463.777h-90.7l-77-77c-12.6-12.6-12.6-33,0-45.5l67.4-67.4l145.1,145.1L205.3,463.777zM470.4,198.677l-200.3,200.3L125,253.877l200.3-200.3c6.1-6.1,27-18.5,45.5,0l99.5,99.5C482.9,165.777,482.9,186.177,470.4,198.677z"/>
+            </svg>
+          </button>
+        </div>
+        <div>
+          <div class="hl-hint" style="margin-bottom:8px;">Farbe</div>
+          <div class="hl-colors" id="hl-colors"></div>
+        </div>
+        <button class="hl-clear" id="hl-clear" type="button">Alle Markierungen löschen</button>
+      </div>
+    `;
+    ROOT_DOC.body.appendChild(panel);
+  }
+
+  placeHLButtonInCorrectHost();
+}
 
   // =========================
   // Panel Position: SMART (Viewport Clamp + Above-Fallback)
@@ -1563,6 +1894,25 @@ CONTENT_DOC.addEventListener("scroll", scheduleRender, { passive:true, capture:t
     if (!btn || btn.__liaHLWired) return;
     btn.__liaHLWired = true;
 
+    if (!I.__hlTOCWired){
+      I.__hlTOCWired = true;
+
+      ROOT_DOC.addEventListener("click", (e)=>{
+        const tocBtn = e.target?.closest?.("#lia-btn-toc");
+        if (!tocBtn) return;
+
+        // sofort und während der TOC-Animation nachziehen
+        scheduleHLRepositionBurst();
+      }, true);
+
+      const toc = ROOT_DOC.getElementById("lia-toc");
+      if (toc){
+        toc.addEventListener("transitionrun",  ()=> scheduleHLRepositionBurstThrottled(), true);
+        toc.addEventListener("transitionstart",()=> scheduleHLRepositionBurstThrottled(), true);
+        toc.addEventListener("transitionend",  ()=> scheduleHLRepositionBurstThrottled(), true);
+      }
+    }
+
     btn.addEventListener("click", ()=>{
       if (!I.state.active){
         I.state.active = true;
@@ -1648,10 +1998,18 @@ CONTENT_DOC.addEventListener("scroll", scheduleRender, { passive:true, capture:t
       }
     });
 
-    ROOT_WIN.addEventListener("resize", () => positionPanelSmart());
+    ROOT_WIN.addEventListener("resize", () => {
+      scheduleHLRepositionBurstThrottled();
+    });
+
     if (ROOT_WIN.visualViewport){
-      ROOT_WIN.visualViewport.addEventListener("resize", () => positionPanelSmart());
-      ROOT_WIN.visualViewport.addEventListener("scroll", () => positionPanelSmart());
+      ROOT_WIN.visualViewport.addEventListener("resize", () => {
+        scheduleHLRepositionBurstThrottled();
+      });
+
+      ROOT_WIN.visualViewport.addEventListener("scroll", () => {
+        scheduleHLRepositionBurstThrottled();
+      });
     }
   }
 
@@ -2763,18 +3121,9 @@ function trimRangeWhitespace(range){
   }, true);
 
 
-  function detectNavStack(){
-    const btn = ROOT_DOC.getElementById("lia-hl-btn");
-    if (!btn) return;
-
-    const r = btn.getBoundingClientRect();
-    const vw = ROOT_DOC.documentElement.clientWidth || 0;
-
-    // Heuristik: im Nightly-"Navigation"-Modus sitzen die Header-Icons sehr weit rechts oben.
-    const likelyNavStack = (r.right >= vw - 2) && (r.top <= 90);
-
-    ROOT_DOC.body.classList.toggle("lia-hl-navstack", !!likelyNavStack);
-  }
+function detectNavStack(){
+  ROOT_DOC.body.classList.toggle("lia-hl-navstack", !!shouldUseHLNightlyStackDock());
+}
 
 
 
@@ -2891,9 +3240,10 @@ function ensurePrefills(){
     ROOT_WIN.requestAnimationFrame(() => {
       try{
         ensureRootButtonAndPanel();
-        wireRootDelegationOnce();  
-        detectNavStack();
-        ensureLayoutResizeObserver(); 
+        wireRootDelegationOnce();
+        runHLPositionNow();
+
+        ensureLayoutResizeObserver();
         ensureRevealSlideObserver();
         checkLayoutAndRecalc();
         ensureSwatchesOnce();
@@ -2917,7 +3267,11 @@ function ensurePrefills(){
 
   // Theme-Observer: NUR class/data-theme (nicht style!)
   try{
-    I.moTheme = new MutationObserver(() => { adaptUIVars(); applyUI(); positionPanelSmart(); });  
+    I.moTheme = new MutationObserver(() => {
+      adaptUIVars();
+      applyUI();
+      runHLPositionNow();
+    });
     I.moTheme.observe(ROOT_DOC.documentElement, { attributes:true, attributeFilter:["class","data-theme","data-mode","data-view","data-layout"] });
     I.moTheme.observe(ROOT_DOC.body,           { attributes:true, attributeFilter:["class","data-theme","data-mode","data-view","data-layout"] });
 
@@ -9095,7 +9449,6 @@ ensureMountUID(mount);
 
 
 
-
 (function () {
 
   // =========================================================
@@ -9332,23 +9685,30 @@ const I = REG.instances[DOC_ID] = {
   // =========================================================
   const CONTENT_STYLE_ID = "lia-tff-style-content-v2";
 const CONTENT_CSS = `
-  :root{
-    --lia-tff-side-gap: 25px;
-    --lia-tff-maxw: 97.5vw;
-    --lia-tff-font: unset;
-  }
+:root{
+  --lia-tff-left-gap: 50px;   /* Platz für Annotationsbar */
+  --lia-tff-right-gap: 25px;
+  --lia-tff-pad-left: 25px;
+  --lia-tff-pad-right: 25px;
+  --lia-tff-maxw: 98.5vw;
+  --lia-tff-font: unset;
+}
 
-  /* Presentation: wie bisher */
-  html[data-lia-mode="presentation"]{
-    --lia-tff-side-gap: 25px;
-    --lia-tff-maxw: 97.5vw;
-  }
+html[data-lia-mode="presentation"]{
+  --lia-tff-left-gap: 50px;
+  --lia-tff-right-gap: 15px;
+  --lia-tff-pad-left: 25px;
+  --lia-tff-pad-right: 15px;
+  --lia-tff-maxw: 98.5vw;
+}
 
-  /* Slides: volle Breite */
-  html[data-lia-mode="slides"]{
-    --lia-tff-side-gap: 25px;
-    --lia-tff-maxw: 97.5vw;
-  }
+html[data-lia-mode="slides"]{
+  --lia-tff-left-gap: 50px;
+  --lia-tff-right-gap: 15px;
+  --lia-tff-pad-left: 25px;
+  --lia-tff-pad-right: 15px;
+  --lia-tff-maxw: 98.5vw;
+}
 
   html[data-lia-mode="presentation"] body,
   html[data-lia-mode="slides"] body{
@@ -9357,19 +9717,26 @@ const CONTENT_CSS = `
   }
 
   /* NUR main anfassen (keine Slides-Wrapper!) */
-  html[data-lia-mode="presentation"] main,
-  html[data-lia-mode="slides"] main{
-    box-sizing: border-box !important;
+html[data-lia-mode="presentation"] main,
+html[data-lia-mode="slides"] main{
+  box-sizing: border-box !important;
 
-    width: min(var(--lia-tff-maxw), calc(100vw - (2 * var(--lia-tff-side-gap)))) !important;
-    max-width: min(var(--lia-tff-maxw), calc(100vw - (2 * var(--lia-tff-side-gap)))) !important;
+  width: min(
+    var(--lia-tff-maxw),
+    calc(100vw - var(--lia-tff-left-gap) - var(--lia-tff-right-gap))
+  ) !important;
 
-    margin-left: auto !important;
-    margin-right: auto !important;
+  max-width: min(
+    var(--lia-tff-maxw),
+    calc(100vw - var(--lia-tff-left-gap) - var(--lia-tff-right-gap))
+  ) !important;
 
-    padding-left:  var(--lia-tff-side-gap) !important;
-    padding-right: var(--lia-tff-side-gap) !important;
-  }
+  margin-left: var(--lia-tff-left-gap) !important;
+  margin-right: var(--lia-tff-right-gap) !important;
+
+  padding-left: var(--lia-tff-pad-left) !important;
+  padding-right: var(--lia-tff-pad-right) !important;
+}
 
   /* Schrift-Boost: presentation UND slides */
   html[data-lia-mode="presentation"] main,
@@ -9457,12 +9824,13 @@ const CONTENT_CSS = `
   // =========================================================
   // Root UI (Overlay) – wie beim Textmarker gedacht: NICHT in Header flow
   // =========================================================
-  const ROOT_STYLE_ID = "lia-tff-style-root-v2";
-  const OVERLAY_ID    = "lia-tff-overlay-v2";
-  const BTN_ID        = "lia-tff-btn-v2";
-  const PANEL_ID      = "lia-tff-panel-v2";
-  const SLIDER_ID     = "lia-tff-slider-v2";
-  const TITLE_ID      = "lia-tff-title-v2";
+const ROOT_STYLE_ID = "lia-tff-style-root-v2";
+const OVERLAY_ID    = "lia-tff-overlay-v2";
+const BTN_ID        = "lia-tff-btn-v2";
+const PANEL_ID      = "lia-tff-panel-v2";
+const SLIDER_ID     = "lia-tff-slider-v2";
+const TITLE_ID      = "lia-tff-title-v2";
+const INLINE_SLOT_ID = "lia-tff-inline-slot-v2";
 
   const ROOT_CSS = `
     :root{
@@ -9499,6 +9867,70 @@ const CONTENT_CSS = `
       user-select: none !important;
       -webkit-tap-highlight-color: transparent !important;
     }
+
+#${INLINE_SLOT_ID}{
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+
+  width: 46px !important;
+  min-width: 46px !important;
+  max-width: 46px !important;
+
+  height: 34px !important;
+  min-height: 34px !important;
+
+  box-sizing: border-box !important;
+  padding-right: 2px !important;
+  overflow: visible !important;
+
+  flex: 0 0 46px !important;
+  pointer-events: none !important;
+}
+
+#${INLINE_SLOT_ID} > #${BTN_ID}{
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  margin: 0 !important;
+}
+
+body.lia-navigation--hidden #lia-toolbar-nav .lia-header__left{
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+
+  width: 46px !important;
+  min-width: 46px !important;
+
+  gap: 6px !important;
+  overflow: visible !important;
+}
+
+body.lia-navigation--hidden #lia-tff-btn-v2{
+  width: 22px !important;
+  height: 22px !important;
+}
+
+body.lia-tff-nightly-mini #${BTN_ID}{
+  width: 22px !important;
+  height: 22px !important;
+  border-radius: 6px !important;
+}
+
+body.lia-tff-nightly-mini #${BTN_ID} .tffA-small{
+  left: 0px !important;
+  top: 2px !important;
+  font-size: 15px !important;
+}
+
+body.lia-tff-nightly-mini #${BTN_ID} .tffA-big{
+  left: 5px !important;
+  top: -2px !important;
+  font-size: 18px !important;
+}
 
     #${BTN_ID}:hover{
       background: color-mix(in srgb, var(--lia-tff-accent) 12%, transparent) !important;
@@ -9626,6 +10058,129 @@ const CONTENT_CSS = `
   // Positioning: Dock an TOC/Nav-Button, plus Rücksicht auf Textmarker
   // (ohne in den Header zu greifen -> kein Layout-Schieben)
   // =========================================================
+
+
+
+function getTFFTOCButton(){
+  const byId = ROOT_DOC.getElementById("lia-btn-toc");
+  if (byId) return byId;
+
+  const host = getToolbarLeftContainer();
+  if (!host) return null;
+
+  const btns = Array.from(host.querySelectorAll("button,[role='button'],a"));
+  return btns.find(b => {
+    const t = (
+      (b.getAttribute("aria-label") || "") + " " +
+      (b.getAttribute("title") || "") + " " +
+      (b.textContent || "")
+    ).toLowerCase();
+
+    return (
+      t.includes("inhaltsverzeichnis") ||
+      t.includes("table of contents") ||
+      t.includes("contents")
+    );
+  }) || null;
+}
+
+function getTFFTOCButtonRect(){
+  const tocBtn = getTFFTOCButton();
+  if (!tocBtn) return null;
+
+  try{
+    const r = tocBtn.getBoundingClientRect();
+    if (!r || r.width < 6 || r.height < 6) return null;
+    return r;
+  }catch(e){
+    return null;
+  }
+}
+
+function shouldUseTFFNightlyStackDock(){
+  const canvas = ROOT_DOC.querySelector(".lia-canvas");
+  if (!canvas) return false;
+
+  const navHidden = canvas.classList.contains("lia-navigation--hidden");
+  const presMode  = canvas.classList.contains("lia-mode--presentation");
+
+  return navHidden && presMode;
+}
+
+function shouldUseInlineStripDock(){
+  if (shouldUseTFFNightlyStackDock()) return false;
+
+  const host = getToolbarLeftContainer();
+  const tocBtn = getTFFTOCButton();
+
+  return !!(host && tocBtn && host.contains(tocBtn));
+}
+
+function ensureInlineDockSlot(){
+  const host = getToolbarLeftContainer();
+  const tocBtn = getTFFTOCButton();
+
+  if (!host || !tocBtn || !host.contains(tocBtn)) return null;
+
+  let slot = ROOT_DOC.getElementById(INLINE_SLOT_ID);
+  if (!slot){
+    slot = ROOT_DOC.createElement("div");
+    slot.id = INLINE_SLOT_ID;
+  }
+
+  if (slot.parentNode !== host || slot.previousElementSibling !== tocBtn){
+    tocBtn.insertAdjacentElement("afterend", slot);
+  }
+
+  return slot;
+}
+
+function placeButtonInCorrectHost(){
+  const btn = ROOT_DOC.getElementById(BTN_ID);
+  const overlay = ROOT_DOC.getElementById(OVERLAY_ID);
+  if (!btn || !overlay) return;
+
+  const slot = ROOT_DOC.getElementById(INLINE_SLOT_ID);
+
+  if (shouldUseTFFNightlyStackDock()){
+    if (btn.parentNode !== overlay){
+      overlay.appendChild(btn);
+    }
+
+    if (slot && slot.parentNode){
+      slot.parentNode.removeChild(slot);
+    }
+
+    overlay.style.left = "0px";
+    overlay.style.top  = "0px";
+    btn.style.left = "";
+    btn.style.top  = "";
+    return;
+  }
+
+  if (shouldUseInlineStripDock()){
+    const inlineSlot = ensureInlineDockSlot();
+    if (inlineSlot && btn.parentNode !== inlineSlot){
+      inlineSlot.appendChild(btn);
+    }
+
+    overlay.style.left = "0px";
+    overlay.style.top  = "0px";
+    btn.style.left = "";
+    btn.style.top  = "";
+    return;
+  }
+
+  if (btn.parentNode !== overlay){
+    overlay.appendChild(btn);
+  }
+
+  if (slot && slot.parentNode){
+    slot.parentNode.removeChild(slot);
+  }
+}
+
+
   function getViewport(){
     const vv = ROOT_WIN.visualViewport;
     if (vv){
@@ -9637,13 +10192,7 @@ const CONTENT_CSS = `
 
   function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
 
-function findTOCButton(){
-  const all = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
-  return all.find(el=>{
-    const t = ((el.getAttribute("aria-label")||el.getAttribute("title")||el.textContent||"")+"").toLowerCase();
-    return t.includes("inhaltsverzeichnis") || t.includes("table of contents") || t.includes("contents");
-  }) || null;
-}
+
 
 
 function getToolbarHeader(){
@@ -9658,43 +10207,476 @@ function getToolbarLeftContainer(){
   return header.querySelector(".lia-header__left") || header;
 }
 
-// Liefert den echten Anchor-RECT (TOC wenn da, sonst linker Toolbar-Button, sonst null => pad)
-function findAnchorRect(){
+
+function isSaneTopLeftRect(r){
+  if (!r) return false;
+
   const vp = getViewport();
 
-  // 1) TOC (wenn sichtbar)
-  const tocR = getVisibleRect(findTOCButton());
-  if (tocR) return tocR;
+  if (!isFinite(r.left) || !isFinite(r.top) || !isFinite(r.right) || !isFinite(r.bottom)) return false;
+  if (r.width < 6 || r.height < 6) return false;
 
-  // 2) Header-left: linkester sichtbarer Button
-  const leftC = getToolbarLeftContainer();
-  if (leftC){
-    const els = Array.from(leftC.querySelectorAll("button,[role='button'],a"));
-    let best = null;
-    for (const el of els){
-      const r = getVisibleRect(el);
-      if (!r) continue;
-      if (!isToolbarLike(el)) continue;
-      if (r.top > 220) continue;
-      if (!best || r.left < best.left || (r.left === best.left && r.top < best.top)) best = r;
-    }
-    // wenn "alles rechts" (Slides ohne linke Controls) -> kein Anchor => pad
-    if (best && best.left <= vp.w * 0.60) return best;
+  // Muss im oberen linken Toolbar-Bereich liegen
+  if (r.top < -20 || r.top > 220) return false;
+  if (r.left < -20) return false;
+  if (r.left > vp.w * 0.60) return false;
+
+  // komplett absurde Werte abfangen
+  if (r.right > vp.w + 120) return false;
+  if (r.bottom > vp.h + 120) return false;
+
+  return true;
+}
+
+
+
+function getHighlightRect(){
+  const btn = ROOT_DOC.getElementById("lia-hl-btn");
+  if (!btn) return null;
+
+  // 1) direkter Rect-Versuch
+  let r = null;
+  try{
+    r = btn.getBoundingClientRect();
+  }catch(e){
+    r = null;
   }
 
-  // 3) Global: linkester toolbar-like Button im Top-Band
-  const all = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
-  let best = null;
-  for (const el of all){
+  if (isSaneTopLeftRect(r)){
+    return r;
+  }
+
+  // 2) Nightly-Fallback:
+  // aus Header-Left + Button-Offsets ein synthetisches Rect bauen
+  const leftC =
+    getToolbarLeftContainer() ||
+    btn.parentElement ||
+    getToolbarHeader();
+
+  if (!leftC) return null;
+
+  const c = getVisibleRect(leftC);
+  if (!c) return null;
+
+  const bw = Math.max(34, btn.offsetWidth  || 0);
+  const bh = Math.max(34, btn.offsetHeight || 0);
+
+  const ox = btn.offsetLeft || 0;
+  const oy = (typeof btn.offsetTop === "number")
+    ? btn.offsetTop
+    : Math.max(0, (c.height - bh) / 2);
+
+  const synthetic = {
+    left:   c.left + ox,
+    top:    c.top + oy,
+    right:  c.left + ox + bw,
+    bottom: c.top + oy + bh,
+    width:  bw,
+    height: bh
+  };
+
+  if (isSaneTopLeftRect(synthetic)){
+    return synthetic;
+  }
+
+  // 3) letzter Fallback: Textmarker-Slot ganz links im Header-Left
+  return {
+    left:   c.left + 8,
+    top:    c.top + Math.max(0, (c.height - 34) / 2),
+    right:  c.left + 8 + 34,
+    bottom: c.top + Math.max(0, (c.height - 34) / 2) + 34,
+    width:  34,
+    height: 34
+  };
+}
+
+
+
+function getRectLoose(el){
+  if (!el) return null;
+  try{
+    const cs = ROOT_WIN.getComputedStyle(el);
+    if (!cs) return null;
+    if (cs.display === "none" || cs.visibility === "hidden") return null;
+
+    const r = el.getBoundingClientRect();
+    if (!r || r.width < 2 || r.height < 2) return null;
+
+    const vp = getViewport();
+    if (r.right < 0 || r.bottom < 0 || r.left > vp.w || r.top > vp.h) return null;
+
+    return r;
+  }catch(e){
+    return null;
+  }
+}
+
+function isNightlyNavigationHidden(){
+  const canvas = ROOT_DOC.querySelector(".lia-canvas");
+  return !!(canvas && canvas.classList.contains("lia-navigation--hidden"));
+}
+
+function syncNightlyMiniMode(){
+  try{
+    if (!ROOT_DOC.body) return;
+    ROOT_DOC.body.classList.toggle("lia-tff-nightly-mini", isNightlyNavigationHidden());
+  }catch(e){}
+}
+
+
+
+function getTOCDockSlot(){
+  const gap  = 8;
+  const pad  = 8;
+
+  const toc    = ROOT_DOC.getElementById("lia-toc");
+  const tocBtn = ROOT_DOC.getElementById("lia-btn-toc");
+  const tocBtnRect = getRectLoose(tocBtn);
+  const nightly = isNightlyNavigationHidden();
+  const size = nightly ? 22 : 34;
+
+  if (!tocBtnRect) return null;
+
+  // =========================
+  // NIGHTLY:
+  // AA immer UNTER den TOC-/Close-Button
+  // =========================
+  if (nightly){
+    const left = tocBtnRect.left + (tocBtnRect.width - size) / 2;
+    const top  = tocBtnRect.bottom + gap;
+
+    return {
+      kind: "toc-open-slot",
+      rect: {
+        left:   Math.max(pad, left),
+        top:    Math.max(pad, top),
+        right:  Math.max(pad, left) + size,
+        bottom: Math.max(pad, top) + size,
+        width:  size,
+        height: size
+      },
+      peers: [{ el: tocBtn, r: tocBtnRect }]
+    };
+  }
+
+  // =========================
+  // NORMAL:
+  // TOC offen -> AA rechts neben Close-Button
+  // =========================
+  if (toc && toc.classList.contains("lia-toc--open")){
+    const left = tocBtnRect.right + gap;
+    const top  = tocBtnRect.top + (tocBtnRect.height - size) / 2;
+
+    return {
+      kind: "toc-open-slot",
+      rect: {
+        left:   left,
+        top:    Math.max(pad, top),
+        right:  left + size,
+        bottom: Math.max(pad, top) + size,
+        width:  size,
+        height: size
+      },
+      peers: [{ el: tocBtn, r: tocBtnRect }]
+    };
+  }
+
+  // =========================
+  // NORMAL:
+  // TOC geschlossen -> AA rechts neben TOC-Button
+  // =========================
+  return {
+    kind: "toc-button",
+    rect: tocBtnRect,
+    peers: [{ el: tocBtn, r: tocBtnRect }]
+  };
+}
+
+function getRawVisibleRect(el){
+  if (!el) return null;
+  try{
+    const cs = ROOT_WIN.getComputedStyle(el);
+    if (!cs || cs.display === "none" || cs.visibility === "hidden" || cs.opacity === "0") return null;
+
+    const r = el.getBoundingClientRect();
+    if (!r || r.width < 6 || r.height < 6) return null;
+
+    const vp = getViewport();
+    if (r.right < 0 || r.bottom < 0 || r.left > vp.w || r.top > vp.h) return null;
+
+    return r;
+  }catch(e){
+    return null;
+  }
+}
+
+function isTOCOpen(){
+  const toc = ROOT_DOC.getElementById("lia-toc");
+  if (!toc) return false;
+  return toc.classList.contains("lia-toc--open");
+}
+
+function getTOCButtonRect(){
+  return getRawVisibleRect(ROOT_DOC.getElementById("lia-btn-toc"));
+}
+
+function getTOCPanelRect(){
+  const toc = ROOT_DOC.getElementById("lia-toc");
+  if (!toc) return null;
+  if (!isTOCOpen()) return null;
+  return getRawVisibleRect(toc);
+}
+
+function getToolbarBandRect(){
+  const leftC = getToolbarLeftContainer();
+  const leftR = getRawVisibleRect(leftC);
+  if (leftR) return leftR;
+
+  const header = getToolbarHeader();
+  return getRawVisibleRect(header);
+}
+
+function getVirtualHighlightSlotRect(){
+  const band = getToolbarBandRect();
+  if (!band) return null;
+
+  const size = 34;
+  const insetLeft = 8;
+
+  return {
+    left:   band.left + insetLeft,
+    top:    band.top + (band.height - size) / 2,
+    right:  band.left + insetLeft + size,
+    bottom: band.top + (band.height - size) / 2 + size,
+    width:  size,
+    height: size
+  };
+}
+
+function getTOCButtonRect(){
+  return getVisibleRect(ROOT_DOC.getElementById("lia-btn-toc"));
+}
+
+function getToolbarBandRect(){
+  const leftC = getToolbarLeftContainer();
+  const leftR = getVisibleRect(leftC);
+  if (leftR) return leftR;
+
+  const header = getToolbarHeader();
+  return getVisibleRect(header);
+}
+
+function getVirtualHighlightSlotRect(){
+  const band = getToolbarBandRect();
+  if (!band) return null;
+
+  const size = 34;
+  const insetLeft = 8;
+
+  return {
+    left:   band.left + insetLeft,
+    top:    band.top + (band.height - size) / 2,
+    right:  band.left + insetLeft + size,
+    bottom: band.top + (band.height - size) / 2 + size,
+    width:  size,
+    height: size
+  };
+}
+
+function getStableLeftToolbarPeers(){
+  const vp = getViewport();
+  const leftC = getToolbarLeftContainer();
+  if (!leftC) return [];
+
+  const out = [];
+  const els = Array.from(leftC.querySelectorAll("button,[role='button'],a"));
+
+  for (const el of els){
+    if (!el || el.id === BTN_ID) continue;
+
     const r = getVisibleRect(el);
     if (!r) continue;
-    if (!isToolbarLike(el)) continue;
+
+    // nur echtes linkes Toolbar-Band
     if (r.top > 220) continue;
-    if (!best || r.left < best.left || (r.left === best.left && r.top < best.top)) best = r;
+    if (r.left > vp.w * 0.60) continue;
+
+    // grotesk große Elemente ignorieren
+    if (r.width > 220 || r.height > 100) continue;
+
+    out.push({ el, r });
   }
-  if (best && best.left <= vp.w * 0.60) return best;
+
+  out.sort((a, b) => {
+    return (a.r.left - b.r.left) || (a.r.top - b.r.top);
+  });
+
+  if (!out.length) return out;
+
+  // nur dieselbe Zeile wie der erste linke Toolbar-Button
+  const baseMidY = out[0].r.top + out[0].r.height / 2;
+  const yTol = Math.max(20, out[0].r.height * 0.9);
+
+  return out.filter(p => {
+    const midY = p.r.top + p.r.height / 2;
+    return Math.abs(midY - baseMidY) <= yTol;
+  });
+}
+
+function getDockTarget(){
+  // 1) echter Textmarker
+  const hlRect = getHighlightRect();
+  if (hlRect){
+    return {
+      kind: "highlight",
+      rect: hlRect,
+      peers: [{ el: ROOT_DOC.getElementById("lia-hl-btn"), r: hlRect }]
+    };
+  }
+
+  // 2) echte linke Header-Buttons
+  const peers = getStableLeftToolbarPeers();
+  if (peers.length){
+    let rightMost = peers[0].r;
+    for (const p of peers){
+      if (p.r.right > rightMost.right) rightMost = p.r;
+    }
+
+    return {
+      kind: "toolbar-row",
+      rect: rightMost,
+      peers
+    };
+  }
+
+  // 3) TOC-Slot (offen oder geschlossen)
+  const tocDock = getTOCDockSlot();
+  if (tocDock){
+    return tocDock;
+  }
+
+  // 4) letzter Fallback: virtueller Platz im Header
+  const virtualRect = getVirtualHighlightSlotRect();
+  if (virtualRect){
+    return {
+      kind: "virtual-highlight-slot",
+      rect: virtualRect,
+      peers: []
+    };
+  }
 
   return null;
+}
+
+function toolbarSignature(){
+  try{
+    const vp = getViewport();
+    const dock = getDockTarget();
+
+    if (!dock){
+      return [
+        Math.round(vp.w),
+        Math.round(vp.h),
+        Math.round(vp.ox),
+        Math.round(vp.oy),
+        "none"
+      ].join("|");
+    }
+
+    const r = dock.rect;
+    const count = dock.peers ? dock.peers.length : 0;
+
+    return [
+      Math.round(vp.w),
+      Math.round(vp.h),
+      Math.round(vp.ox),
+      Math.round(vp.oy),
+      dock.kind,
+      Math.round(r.left),
+      Math.round(r.top),
+      Math.round(r.right),
+      Math.round(r.bottom),
+      Math.round(r.width),
+      Math.round(r.height),
+      count
+    ].join("|");
+  }catch(e){
+    return null;
+  }
+}
+
+
+function positionOverlayButton(){
+  const btn = ROOT_DOC.getElementById(BTN_ID);
+  const overlay = ROOT_DOC.getElementById(OVERLAY_ID);
+  if (!btn || !overlay) return;
+  placeButtonInCorrectHost();
+
+  if (shouldUseInlineStripDock()){
+    return;
+  }
+
+  const vp  = getViewport();
+  const pad = 8;
+  const gap = 8;
+
+  const defaultBtnSize = isNightlyNavigationHidden() ? 22 : 34;
+  let bw = defaultBtnSize, bh = defaultBtnSize;
+  try{
+    const r = btn.getBoundingClientRect();
+    if (r && r.width > 6 && r.height > 6){
+      bw = r.width;
+      bh = r.height;
+    }
+  }catch(e){}
+
+  let left = pad;
+  let top  = pad;
+
+  // Nightly: AA ist immer Slot 0 direkt unter TOC / TOC-Close
+  if (shouldUseTFFNightlyStackDock()){
+    const tocRect = getTFFTOCButtonRect();
+
+    if (tocRect){
+      const stackGap   = 6;
+      const stackPitch = 28; // passend für 22x22
+      const stackIndex = 0;  // AA immer zuerst
+
+      left = tocRect.left + (tocRect.width - bw) / 2;
+      top  = tocRect.bottom + stackGap + stackIndex * stackPitch;
+    }
+  } else {
+    const dock = getDockTarget();
+
+    if (dock && dock.rect){
+      const r = dock.rect;
+
+      if (
+        dock.kind === "highlight" ||
+        dock.kind === "toolbar-row" ||
+        dock.kind === "toc-button"
+      ){
+        left = r.right + gap;
+        top  = r.top + (r.height - bh) / 2;
+      }
+      else if (
+        dock.kind === "toc-open-slot" ||
+        dock.kind === "virtual-highlight-slot"
+      ){
+        left = r.left;
+        top  = r.top;
+      }
+    }
+  }
+
+  left = clamp(left, pad, vp.w - bw - pad);
+  top  = clamp(top,  pad, vp.h - bh - pad);
+
+  overlay.style.left = `${Math.round(vp.ox)}px`;
+  overlay.style.top  = `${Math.round(vp.oy)}px`;
+
+  btn.style.left = `${Math.round(left)}px`;
+  btn.style.top  = `${Math.round(top)}px`;
 }
 
 
@@ -9734,82 +10716,9 @@ function findAnchorRect(){
   }
 
 
-function collectTopLeftRowButtons(anchorRect){
-  const vp = getViewport();
-  const maxTop = 220;
-  const pad = 8;
-
-  const a = anchorRect || { left: pad, top: pad, right: pad + 34, bottom: pad + 34, height: 34 };
-  const aMidY = a.top + (a.height || 34)/2;
-  const yTol  = Math.max(52, (a.height||34) * 1.6);
-
-  // Linkes Cluster: nie über Mitte hinaus + moderate Breite
-  const clusterMaxX = Math.min(vp.w * 0.55, a.left + 520);
-
-  const out = [];
-
-  const leftC = getToolbarLeftContainer();
-  const primary = leftC ? Array.from(leftC.querySelectorAll("button,[role='button'],a")) : [];
-  const secondary = Array.from(ROOT_DOC.querySelectorAll("button,[role='button'],a"));
-
-  function consider(el){
-    if (!el || el.id === BTN_ID) return;
-
-    const r = getVisibleRect(el);
-    if (!r) return;
-
-    if (r.top > maxTop) return;
-    if (r.left > clusterMaxX) return;
-
-    const midY = r.top + r.height/2;
-    if (Math.abs(midY - aMidY) > yTol) return;
-
-    if (r.width > 220 || r.height > 100) return;
-    if (!isToolbarLike(el)) return;
-
-    out.push({ el, r });
-  }
-
-  for (const el of primary) consider(el);
-  for (const el of secondary) consider(el);
-
-  const seen = new Set();
-  return out.filter(p => (seen.has(p.el) ? false : (seen.add(p.el), true)));
-}
 
 
 
-function toolbarSignature(){
-  try{
-    const vp = getViewport();
-    const pad = 8;
-
-    const aR = findAnchorRect();
-    const anchor = aR || { left: pad, top: pad, right: pad + 34, bottom: pad + 34, height: 34 };
-
-    const peers = collectTopLeftRowButtons(anchor);
-
-    let rightEdge = anchor.right;
-    let topBand   = anchor.top;
-    let rowH      = anchor.height || 34;
-
-    for (const p of peers){
-      rightEdge = Math.max(rightEdge, p.r.right);
-      topBand   = Math.min(topBand,   p.r.top);
-      rowH      = Math.max(rowH,      p.r.height);
-    }
-
-    return [
-      Math.round(vp.w), Math.round(vp.h),
-      Math.round(vp.ox), Math.round(vp.oy),
-      Math.round(topBand), Math.round(rowH),
-      Math.round(rightEdge),
-      peers.length
-    ].join("|");
-  }catch(e){
-    return null;
-  }
-}
 
 
 
@@ -9824,47 +10733,6 @@ function burstRepositionThrottled(){
 
 
 
-function positionOverlayButton(){
-  const btn = ROOT_DOC.getElementById(BTN_ID);
-  const overlay = ROOT_DOC.getElementById(OVERLAY_ID);
-  if (!btn || !overlay) return;
-
-  const vp  = getViewport();
-  const pad = 8;
-  const gap = 8;
-
-  let bw = 34, bh = 34;
-  try{
-    const r = btn.getBoundingClientRect();
-    if (r && r.width > 6 && r.height > 6){
-      bw = r.width; bh = r.height;
-    }
-  }catch(e){}
-
-  const aR = findAnchorRect();
-  const anchor = aR || { left: pad, top: pad, right: pad + bw, bottom: pad + bh, height: bh };
-
-  const peers = collectTopLeftRowButtons(anchor);
-
-  let rightEdge = anchor.right;
-  for (const p of peers){
-    rightEdge = Math.max(rightEdge, p.r.right);
-  }
-
-  const targetTop = anchor.top + ((anchor.height || bh) - bh) / 2;
-
-  let left = rightEdge + gap;
-  let top  = targetTop;
-
-  left = clamp(left, pad, vp.w - bw - pad);
-  top  = clamp(top,  pad, vp.h - bh - pad);
-
-  overlay.style.left = `${Math.round(vp.ox)}px`;
-  overlay.style.top  = `${Math.round(vp.oy)}px`;
-
-  btn.style.left = `${Math.round(left)}px`;
-  btn.style.top  = `${Math.round(top)}px`;
-}
 
 
 
@@ -10063,6 +10931,8 @@ function tick(){
 
       // 3) UI sicherstellen + Sichtbarkeit
       ensureUI();
+      syncNightlyMiniMode();
+      placeButtonInCorrectHost();
       const show = setPresentationOnlyVisibility(mode);
 
       const showChanged = (I.lastShow === null) ? true : (show !== I.lastShow);
