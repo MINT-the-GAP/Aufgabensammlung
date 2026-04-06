@@ -1365,6 +1365,49 @@ function getHLTOCButtonRect(){
   }
 }
 
+
+
+function isHLStackPeerVisible(el){
+  if (!el) return false;
+
+  try{
+    const cs = ROOT_WIN.getComputedStyle(el);
+    if (!cs) return false;
+    if (cs.display === "none" || cs.visibility === "hidden" || cs.opacity === "0") return false;
+
+    const r = el.getBoundingClientRect();
+    return !!(r && r.width > 4 && r.height > 4);
+  }catch(e){
+    return false;
+  }
+}
+
+function getHLNightlyStackOrder(){
+  // feste Reihenfolge unter dem TOC
+  // AA zuerst, Textmarker danach
+  return ["lia-tff-btn-v2", "lia-hl-btn"];
+}
+
+function getHLNightlyStackIndex(){
+  const ownId = "lia-hl-btn";
+  const order = getHLNightlyStackOrder();
+
+  let idx = 0;
+
+  for (const id of order){
+    if (id === ownId) return idx;
+
+    const el = ROOT_DOC.getElementById(id);
+    if (isHLStackPeerVisible(el)){
+      idx++;
+    }
+  }
+
+  return idx;
+}
+
+
+
 function getHLPrimaryDockRect(){
   return getHLTOCButtonRect() || null;
 }
@@ -1539,9 +1582,13 @@ function positionHLButton(){
 
   if (tocRect){
     if (shouldUseHLNightlyStackDock()){
-      // Nightly: direkt unter TOC / TOC-Close
+      // Nightly: fester Stack unter dem TOC
+      const stackIndex = getHLNightlyStackIndex();
+      const stackGap   = 6;
+      const stackPitch = 28; // passend zu 22x22 + Luft
+  
       left = tocRect.left + (tocRect.width - bw) / 2;
-      top  = tocRect.bottom + 6;
+      top  = tocRect.bottom + stackGap + stackIndex * stackPitch;
     } else {
       // Normalmodus: direkt rechts neben TOC / TOC-Close
       left = tocRect.right + gap;
