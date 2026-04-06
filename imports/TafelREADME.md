@@ -468,21 +468,21 @@ body.lia-navigation--hidden #lia-toolbar-nav .lia-header__left{
 }
 
 body.lia-tff-nightly-mini #${BTN_ID}{
-  width: 20px !important;
-  height: 20px !important;
+  width: 22px !important;
+  height: 22px !important;
   border-radius: 6px !important;
 }
 
 body.lia-tff-nightly-mini #${BTN_ID} .tffA-small{
   left: 0px !important;
   top: 2px !important;
-  font-size: 14px !important;
+  font-size: 15px !important;
 }
 
 body.lia-tff-nightly-mini #${BTN_ID} .tffA-big{
   left: 5px !important;
   top: -2px !important;
-  font-size: 17px !important;
+  font-size: 18px !important;
 }
 
     #${BTN_ID}:hover{
@@ -859,7 +859,7 @@ function getTOCDockSlot(){
   const tocBtn = ROOT_DOC.getElementById("lia-btn-toc");
   const tocBtnRect = getRectLoose(tocBtn);
   const nightly = isNightlyNavigationHidden();
-  const size = nightly ? 20 : 34;
+  const size = nightly ? 22 : 34;
 
   if (!tocBtnRect) return null;
 
@@ -1145,7 +1145,7 @@ function positionOverlayButton(){
   const pad = 8;
   const gap = 8;
 
-  const defaultBtnSize = isNightlyNavigationHidden() ? 20 : 34;
+  const defaultBtnSize = isNightlyNavigationHidden() ? 22 : 34;
   let bw = defaultBtnSize, bh = defaultBtnSize;
   try{
     const r = btn.getBoundingClientRect();
