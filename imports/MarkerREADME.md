@@ -274,6 +274,19 @@ ensureCSS();
       margin: 0 !important;
     }
 
+    body.lia-hl-navstack #lia-toolbar-nav .lia-header__left{
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: stretch !important;
+      justify-content: flex-start !important;
+    
+      width: 32px !important;
+      min-width: 32px !important;
+    
+      gap: 6px !important;
+      overflow: visible !important;
+    }
+
     body.lia-hl-navstack #lia-hl-inline-slot-v1{
       width: 32px !important;
       min-width: 32px !important;
@@ -364,21 +377,21 @@ ensureCSS();
     /* Nightly: "Navigation"-Iconleiste (sehr kompakt / vertikal) */
     body.lia-hl-navstack #lia-hl-btn{
       margin: 0 !important;
-      width: 32px !important;
-      height: 32px !important;
+      width: 22px !important;
+      height: 22px !important;
       border-radius: 8px !important;
     }
     
     body.lia-hl-navstack #lia-hl-btn .icon{
-      width: 18px !important;
-      height: 18px !important;
+      width: 15px !important;
+      height: 15px !important;
     }
     
     body.lia-hl-navstack #lia-hl-btn .dot{
-      right: 4px !important;
-      bottom: 4px !important;
-      width: 8px !important;
-      height: 8px !important;
+      right: 2px !important;
+      bottom: 2px !important;
+      width: 6px !important;
+      height: 6px !important;
     }
     
 
@@ -1338,6 +1351,23 @@ CONTENT_DOC.addEventListener("scroll", scheduleRender, { passive:true, capture:t
   }
 
 
+function getHLTOCButtonRect(){
+  const tocBtn =
+    ROOT_DOC.getElementById("lia-btn-toc") ||
+    findTOCButtonInLeft(findHeaderLeft());
+
+  if (!tocBtn) return null;
+
+  try{
+    const r = tocBtn.getBoundingClientRect();
+    if (!r || r.width < 6 || r.height < 6) return null;
+    return r;
+  }catch(e){
+    return null;
+  }
+}
+
+
 function ensureHLUIOverlay(){
   let overlay = ROOT_DOC.getElementById(HL_UI_OVERLAY_ID);
   if (!overlay){
@@ -1348,26 +1378,18 @@ function ensureHLUIOverlay(){
   return overlay;
 }
 
-function shouldUseHLInlineDock(){
+function shouldUseHLNightlyStackDock(){
   const canvas = ROOT_DOC.querySelector(".lia-canvas");
-  if (canvas && canvas.classList.contains("lia-navigation--hidden")){
-    return true;
-  }
+  if (!canvas) return false;
 
-  const left = findHeaderLeft();
-  if (left){
-    try{
-      const cs = ROOT_WIN.getComputedStyle(left);
-      if (
-        cs.display.includes("flex") &&
-        (cs.flexDirection === "column" || cs.flexDirection === "column-reverse")
-      ){
-        return true;
-      }
-    }catch(e){}
-  }
+  const navHidden = canvas.classList.contains("lia-navigation--hidden");
+  const presMode  = canvas.classList.contains("lia-mode--presentation");
 
-  return false;
+  return navHidden && presMode;
+}
+
+function shouldUseHLInlineDock(){
+  return shouldUseHLNightlyStackDock();
 }
 
 function ensureHLInlineSlot(){
@@ -1408,10 +1430,13 @@ function placeHLButtonInCorrectHost(){
   const overlay = ensureHLUIOverlay();
   if (!btn || !overlay) return;
 
+  const slot = ROOT_DOC.getElementById(HL_INLINE_SLOT_ID);
+
+  // Nightly: inline unter/bei TOC-Stack
   if (shouldUseHLInlineDock()){
-    const slot = ensureHLInlineSlot();
-    if (slot && btn.parentNode !== slot){
-      slot.appendChild(btn);
+    const inlineSlot = ensureHLInlineSlot();
+    if (inlineSlot && btn.parentNode !== inlineSlot){
+      inlineSlot.appendChild(btn);
     }
 
     overlay.style.left = "0px";
@@ -1422,14 +1447,17 @@ function placeHLButtonInCorrectHost(){
     return;
   }
 
+  // Standardmodus: Overlay, NICHT inline
   if (btn.parentNode !== overlay){
     overlay.appendChild(btn);
   }
 
-  const slot = ROOT_DOC.getElementById(HL_INLINE_SLOT_ID);
   if (slot && slot.parentNode){
     slot.parentNode.removeChild(slot);
   }
+
+  overlay.style.left = "0px";
+  overlay.style.top  = "0px";
 }
 
 function clearHLPosTimers(){
@@ -1483,11 +1511,12 @@ function positionHLButton(){
 
   placeHLButtonInCorrectHost();
 
+  // Normalmodus: inline => keine absolute Positionierung nötig
   if (shouldUseHLInlineDock()){
     return;
   }
 
-  const vp = getViewport();
+  const vp  = getViewport();
   const pad = 8;
   const gap = 8;
 
@@ -1503,14 +1532,26 @@ function positionHLButton(){
   let left = pad;
   let top  = pad;
 
-  const tocBtn = ROOT_DOC.getElementById("lia-btn-toc");
-  const anchor = tocBtn
-    ? tocBtn.getBoundingClientRect()
-    : (findHeaderLeft()?.getBoundingClientRect() || null);
+  const tocRect = getHLTOCButtonRect();
 
-  if (anchor){
-    left = anchor.right + gap;
-    top  = anchor.top + (anchor.height - bh) / 2;
+  if (tocRect){
+    if (shouldUseHLNightlyStackDock()){
+      // Nightly: DIREKT UNTER dem TOC-/Close-Button, mittig dazu
+      left = tocRect.left + (tocRect.width - bw) / 2;
+      top  = tocRect.bottom + 8;
+    } else {
+      // Standard-Overlay-Fallback: rechts neben TOC
+      left = tocRect.right + gap;
+      top  = tocRect.top + (tocRect.height - bh) / 2;
+    }
+  } else {
+    const leftHost = findHeaderLeft();
+    const hostRect = leftHost ? leftHost.getBoundingClientRect() : null;
+
+    if (hostRect){
+      left = hostRect.left + 8;
+      top  = hostRect.top + 8;
+    }
   }
 
   left = clamp(left, pad, vp.w - bw - pad);
@@ -3017,7 +3058,7 @@ function trimRangeWhitespace(range){
 
 
 function detectNavStack(){
-  ROOT_DOC.body.classList.toggle("lia-hl-navstack", !!shouldUseHLInlineDock());
+  ROOT_DOC.body.classList.toggle("lia-hl-navstack", !!shouldUseHLNightlyStackDock());
 }
 
 
