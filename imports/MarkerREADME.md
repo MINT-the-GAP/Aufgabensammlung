@@ -14,7 +14,6 @@ author: Martin Lommatzsch
 
 
 
-
 @onload
 (function () {
 
@@ -63,20 +62,24 @@ author: Martin Lommatzsch
 
   const I = REG.instances[DOC_ID] = {
     __alive: true,
-    debugHLQ: false, //
+    debugHLQ: false,
     state: { active:false, panelOpen:false, tool:"mark", color:"yellow" },
     HL: [],
     nextId: 1,
     moDock: null,
     moTheme: null,
-    moSlides: null, 
+    moSlides: null,
     roLayout: null,
     roNodes: new Set(),
     roPending: false,
     ticking: false,
-  __activeSlide: null
+    __activeSlide: null,
+    posTimers: [],
+    lastBurstAt: 0
   };
 
+  const HL_UI_OVERLAY_ID = "lia-hl-ui-overlay-v1";
+  const HL_INLINE_SLOT_ID = "lia-hl-inline-slot-v1";
 
   // =========================
   // CSS Injection (Content + Root)
@@ -232,12 +235,65 @@ ensureCSS();
       --hl-accent: rgb(11,95,255);
       --hl-z: 9999999;
       }
-    #lia-hl-btn{
+
+
+    #lia-hl-ui-overlay-v1{
+      position: fixed !important;
+      z-index: var(--hl-z) !important;
+      left: 0;
+      top: 0;
+      width: 0;
+      height: 0;
+      pointer-events: none !important;
+    }
+
+    #lia-hl-inline-slot-v1{
       position: relative !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+
+      width: 40px !important;
+      min-width: 40px !important;
+      max-width: 40px !important;
+
+      height: 40px !important;
+      min-height: 40px !important;
+
+      flex: 0 0 40px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow: visible !important;
+      pointer-events: none !important;
+    }
+
+    #lia-hl-inline-slot-v1 > #lia-hl-btn{
+      position: relative !important;
+      left: auto !important;
+      top: auto !important;
+      margin: 0 !important;
+    }
+
+    body.lia-hl-navstack #lia-hl-inline-slot-v1{
+      width: 32px !important;
+      min-width: 32px !important;
+      max-width: 32px !important;
+
+      height: 32px !important;
+      min-height: 32px !important;
+
+      flex: 0 0 32px !important;
+    }
+
+
+    #lia-hl-btn{
+      position: absolute !important;
+      pointer-events: auto !important;
+
       width: 40px !important;
       height: 40px !important;
       padding: 0 !important;
-      margin: 0 120px !important;
+      margin: 0 !important;
 
       display: inline-flex !important;
       align-items: center !important;
@@ -1281,71 +1337,252 @@ CONTENT_DOC.addEventListener("scroll", scheduleRender, { passive:true, capture:t
     return pick || btns[0];
   }
 
-  function ensureRootButtonAndPanel(){
-    let btn = ROOT_DOC.getElementById("lia-hl-btn");
-    if (!btn){
-      btn = ROOT_DOC.createElement("button");
-      btn.id = "lia-hl-btn";
-      btn.type = "button";
-      btn.setAttribute("aria-label","Textmarker");
-      btn.innerHTML = `
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M4 20h4l10.5-10.5a2.1 2.1 0 0 0 0-3L16.5 4.5a2.1 2.1 0 0 0-3 0L3 15v5z"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-          <path d="M13.5 6.5l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <span class="dot" id="lia-hl-dot"></span>
-      `;
-    }
 
-    let panel = ROOT_DOC.getElementById("lia-hl-panel");
-    if (!panel){
-      panel = ROOT_DOC.createElement("div");
-      panel.id = "lia-hl-panel";
-      panel.innerHTML = `
-        <div class="hdr"><div class="title">Textmarker</div></div>
-        <div class="body">
-          <div class="hl-tools">
-            <button class="hl-tool" id="hl-tool-mark" type="button" aria-label="Markieren" title="Markieren">
-              <svg viewBox="0 0 512 512" aria-hidden="true">
-                <g transform="translate(-15 -75) scale(25)">
-                  <path d="M4 20h4l10.2-10.2a2.2 2.2 0 0 0 0-3.1l-1.1-1.1a2.2 2.2 0 0 0-3.1 0L3.8 15.8 3 21z"
-                        fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                  <path d="M13.2 6.8l4 4"
-                        fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                  <path d="M3.5 20.5h5"
-                        fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                </g>
-              </svg>
-            </button>
-
-            <button class="hl-tool" id="hl-tool-erase" type="button" aria-label="Radierer">
-              <svg viewBox="0 0 512 512" aria-hidden="true">
-                <path fill="currentColor" d="M490.3,133.177l-99.5-99.6c-33-33-74-11.4-85.5,0l-287.6,287.7c-23.6,23.6-23.6,61.9,0,85.5l81.1,81.1c2.6,2.6,6.2,4.1,10,4.1h102.4c3.7,0,7.3-1.5,10-4.1l269.2-269.2C513.9,195.077,513.9,156.777,490.3,133.177zM205.3,463.777h-90.7l-77-77c-12.6-12.6-12.6-33,0-45.5l67.4-67.4l145.1,145.1L205.3,463.777zM470.4,198.677l-200.3,200.3L125,253.877l200.3-200.3c6.1-6.1,27-18.5,45.5,0l99.5,99.5C482.9,165.777,482.9,186.177,470.4,198.677z"/>
-              </svg>
-            </button>
-          </div>
-          <div>
-            <div class="hl-hint" style="margin-bottom:8px;">Farbe</div>
-            <div class="hl-colors" id="hl-colors"></div>
-          </div>
-          <button class="hl-clear" id="hl-clear" type="button">Alle Markierungen löschen</button>
-        </div>
-      `;
-      ROOT_DOC.body.appendChild(panel);
-    }
-
-    const left = findHeaderLeft();
-    if (left){
-      if (btn.parentNode !== left){
-        const anchor = findTOCButtonInLeft(left);
-        if (anchor && anchor.parentNode === left) anchor.insertAdjacentElement("afterend", btn);
-        else left.appendChild(btn);
-      }
-    } else {
-      if (!btn.parentNode) ROOT_DOC.body.appendChild(btn);
-    }
+function ensureHLUIOverlay(){
+  let overlay = ROOT_DOC.getElementById(HL_UI_OVERLAY_ID);
+  if (!overlay){
+    overlay = ROOT_DOC.createElement("div");
+    overlay.id = HL_UI_OVERLAY_ID;
+    ROOT_DOC.body.appendChild(overlay);
   }
+  return overlay;
+}
+
+function shouldUseHLInlineDock(){
+  const canvas = ROOT_DOC.querySelector(".lia-canvas");
+  if (canvas && canvas.classList.contains("lia-navigation--hidden")){
+    return true;
+  }
+
+  const left = findHeaderLeft();
+  if (left){
+    try{
+      const cs = ROOT_WIN.getComputedStyle(left);
+      if (
+        cs.display.includes("flex") &&
+        (cs.flexDirection === "column" || cs.flexDirection === "column-reverse")
+      ){
+        return true;
+      }
+    }catch(e){}
+  }
+
+  return false;
+}
+
+function ensureHLInlineSlot(){
+  const left = findHeaderLeft();
+  if (!left) return null;
+
+  let slot = ROOT_DOC.getElementById(HL_INLINE_SLOT_ID);
+  if (!slot){
+    slot = ROOT_DOC.createElement("div");
+    slot.id = HL_INLINE_SLOT_ID;
+  }
+
+  const tocBtn = ROOT_DOC.getElementById("lia-btn-toc") || findTOCButtonInLeft(left);
+
+  if (tocBtn && tocBtn.parentNode === left){
+    if (slot.parentNode !== left){
+      if (tocBtn.nextSibling){
+        left.insertBefore(slot, tocBtn.nextSibling);
+      } else {
+        left.appendChild(slot);
+      }
+    } else if (slot.previousSibling !== tocBtn){
+      if (tocBtn.nextSibling){
+        left.insertBefore(slot, tocBtn.nextSibling);
+      } else {
+        left.appendChild(slot);
+      }
+    }
+  } else if (slot.parentNode !== left){
+    left.insertBefore(slot, left.firstChild || null);
+  }
+
+  return slot;
+}
+
+function placeHLButtonInCorrectHost(){
+  const btn = ROOT_DOC.getElementById("lia-hl-btn");
+  const overlay = ensureHLUIOverlay();
+  if (!btn || !overlay) return;
+
+  if (shouldUseHLInlineDock()){
+    const slot = ensureHLInlineSlot();
+    if (slot && btn.parentNode !== slot){
+      slot.appendChild(btn);
+    }
+
+    overlay.style.left = "0px";
+    overlay.style.top  = "0px";
+
+    btn.style.left = "";
+    btn.style.top  = "";
+    return;
+  }
+
+  if (btn.parentNode !== overlay){
+    overlay.appendChild(btn);
+  }
+
+  const slot = ROOT_DOC.getElementById(HL_INLINE_SLOT_ID);
+  if (slot && slot.parentNode){
+    slot.parentNode.removeChild(slot);
+  }
+}
+
+function clearHLPosTimers(){
+  try{
+    if (!I.posTimers) I.posTimers = [];
+    while (I.posTimers.length){
+      ROOT_WIN.clearTimeout(I.posTimers.pop());
+    }
+  }catch(e){}
+}
+
+function runHLPositionNow(){
+  detectNavStack();
+  positionHLButton();
+  positionPanelSmart();
+}
+
+function scheduleHLRepositionBurst(){
+  clearHLPosTimers();
+
+  // sofort
+  runHLPositionNow();
+
+  // zwei Frames später (TOC-Klasse/Layout ist dann oft schon stabiler)
+  ROOT_WIN.requestAnimationFrame(() => {
+    ROOT_WIN.requestAnimationFrame(() => {
+      runHLPositionNow();
+    });
+  });
+
+  // kurze Nachzüge für TOC-Transition
+  const delays = [10, 20, 30];
+  for (const ms of delays){
+    I.posTimers.push(ROOT_WIN.setTimeout(() => {
+      runHLPositionNow();
+    }, ms));
+  }
+}
+
+function scheduleHLRepositionBurstThrottled(){
+  const now = Date.now();
+  if (now - (I.lastBurstAt || 0) < 80) return;
+  I.lastBurstAt = now;
+  scheduleHLRepositionBurst();
+}
+
+function positionHLButton(){
+  const btn = ROOT_DOC.getElementById("lia-hl-btn");
+  const overlay = ensureHLUIOverlay();
+  if (!btn || !overlay) return;
+
+  placeHLButtonInCorrectHost();
+
+  if (shouldUseHLInlineDock()){
+    return;
+  }
+
+  const vp = getViewport();
+  const pad = 8;
+  const gap = 8;
+
+  let bw = 40, bh = 40;
+  try{
+    const br = btn.getBoundingClientRect();
+    if (br && br.width > 6 && br.height > 6){
+      bw = br.width;
+      bh = br.height;
+    }
+  }catch(e){}
+
+  let left = pad;
+  let top  = pad;
+
+  const tocBtn = ROOT_DOC.getElementById("lia-btn-toc");
+  const anchor = tocBtn
+    ? tocBtn.getBoundingClientRect()
+    : (findHeaderLeft()?.getBoundingClientRect() || null);
+
+  if (anchor){
+    left = anchor.right + gap;
+    top  = anchor.top + (anchor.height - bh) / 2;
+  }
+
+  left = clamp(left, pad, vp.w - bw - pad);
+  top  = clamp(top,  pad, vp.h - bh - pad);
+
+  overlay.style.left = `${Math.round(vp.ox)}px`;
+  overlay.style.top  = `${Math.round(vp.oy)}px`;
+
+  btn.style.left = `${Math.round(left)}px`;
+  btn.style.top  = `${Math.round(top)}px`;
+}
+
+
+function ensureRootButtonAndPanel(){
+  const overlayRoot = ensureHLUIOverlay();
+
+  let btn = ROOT_DOC.getElementById("lia-hl-btn");
+  if (!btn){
+    btn = ROOT_DOC.createElement("button");
+    btn.id = "lia-hl-btn";
+    btn.type = "button";
+    btn.setAttribute("aria-label","Textmarker");
+    btn.innerHTML = `
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 20h4l10.5-10.5a2.1 2.1 0 0 0 0-3L16.5 4.5a2.1 2.1 0 0 0-3 0L3 15v5z"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M13.5 6.5l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span class="dot" id="lia-hl-dot"></span>
+    `;
+    overlayRoot.appendChild(btn);
+  }
+
+  let panel = ROOT_DOC.getElementById("lia-hl-panel");
+  if (!panel){
+    panel = ROOT_DOC.createElement("div");
+    panel.id = "lia-hl-panel";
+    panel.innerHTML = `
+      <div class="hdr"><div class="title">Textmarker</div></div>
+      <div class="body">
+        <div class="hl-tools">
+          <button class="hl-tool" id="hl-tool-mark" type="button" aria-label="Markieren" title="Markieren">
+            <svg viewBox="0 0 512 512" aria-hidden="true">
+              <g transform="translate(-15 -75) scale(25)">
+                <path d="M4 20h4l10.2-10.2a2.2 2.2 0 0 0 0-3.1l-1.1-1.1a2.2 2.2 0 0 0-3.1 0L3.8 15.8 3 21z"
+                      fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M13.2 6.8l4 4"
+                      fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M3.5 20.5h5"
+                      fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </g>
+            </svg>
+          </button>
+
+          <button class="hl-tool" id="hl-tool-erase" type="button" aria-label="Radierer">
+            <svg viewBox="0 0 512 512" aria-hidden="true">
+              <path fill="currentColor" d="M490.3,133.177l-99.5-99.6c-33-33-74-11.4-85.5,0l-287.6,287.7c-23.6,23.6-23.6,61.9,0,85.5l81.1,81.1c2.6,2.6,6.2,4.1,10,4.1h102.4c3.7,0,7.3-1.5,10-4.1l269.2-269.2C513.9,195.077,513.9,156.777,490.3,133.177zM205.3,463.777h-90.7l-77-77c-12.6-12.6-12.6-33,0-45.5l67.4-67.4l145.1,145.1L205.3,463.777zM470.4,198.677l-200.3,200.3L125,253.877l200.3-200.3c6.1-6.1,27-18.5,45.5,0l99.5,99.5C482.9,165.777,482.9,186.177,470.4,198.677z"/>
+            </svg>
+          </button>
+        </div>
+        <div>
+          <div class="hl-hint" style="margin-bottom:8px;">Farbe</div>
+          <div class="hl-colors" id="hl-colors"></div>
+        </div>
+        <button class="hl-clear" id="hl-clear" type="button">Alle Markierungen löschen</button>
+      </div>
+    `;
+    ROOT_DOC.body.appendChild(panel);
+  }
+
+  placeHLButtonInCorrectHost();
+}
 
   // =========================
   // Panel Position: SMART (Viewport Clamp + Above-Fallback)
@@ -1552,6 +1789,25 @@ CONTENT_DOC.addEventListener("scroll", scheduleRender, { passive:true, capture:t
     if (!btn || btn.__liaHLWired) return;
     btn.__liaHLWired = true;
 
+    if (!I.__hlTOCWired){
+      I.__hlTOCWired = true;
+
+      ROOT_DOC.addEventListener("click", (e)=>{
+        const tocBtn = e.target?.closest?.("#lia-btn-toc");
+        if (!tocBtn) return;
+
+        // sofort und während der TOC-Animation nachziehen
+        scheduleHLRepositionBurst();
+      }, true);
+
+      const toc = ROOT_DOC.getElementById("lia-toc");
+      if (toc){
+        toc.addEventListener("transitionrun",  ()=> scheduleHLRepositionBurstThrottled(), true);
+        toc.addEventListener("transitionstart",()=> scheduleHLRepositionBurstThrottled(), true);
+        toc.addEventListener("transitionend",  ()=> scheduleHLRepositionBurstThrottled(), true);
+      }
+    }
+
     btn.addEventListener("click", ()=>{
       if (!I.state.active){
         I.state.active = true;
@@ -1637,10 +1893,18 @@ CONTENT_DOC.addEventListener("scroll", scheduleRender, { passive:true, capture:t
       }
     });
 
-    ROOT_WIN.addEventListener("resize", () => positionPanelSmart());
+    ROOT_WIN.addEventListener("resize", () => {
+      scheduleHLRepositionBurstThrottled();
+    });
+
     if (ROOT_WIN.visualViewport){
-      ROOT_WIN.visualViewport.addEventListener("resize", () => positionPanelSmart());
-      ROOT_WIN.visualViewport.addEventListener("scroll", () => positionPanelSmart());
+      ROOT_WIN.visualViewport.addEventListener("resize", () => {
+        scheduleHLRepositionBurstThrottled();
+      });
+
+      ROOT_WIN.visualViewport.addEventListener("scroll", () => {
+        scheduleHLRepositionBurstThrottled();
+      });
     }
   }
 
@@ -2752,18 +3016,9 @@ function trimRangeWhitespace(range){
   }, true);
 
 
-  function detectNavStack(){
-    const btn = ROOT_DOC.getElementById("lia-hl-btn");
-    if (!btn) return;
-
-    const r = btn.getBoundingClientRect();
-    const vw = ROOT_DOC.documentElement.clientWidth || 0;
-
-    // Heuristik: im Nightly-"Navigation"-Modus sitzen die Header-Icons sehr weit rechts oben.
-    const likelyNavStack = (r.right >= vw - 2) && (r.top <= 90);
-
-    ROOT_DOC.body.classList.toggle("lia-hl-navstack", !!likelyNavStack);
-  }
+function detectNavStack(){
+  ROOT_DOC.body.classList.toggle("lia-hl-navstack", !!shouldUseHLInlineDock());
+}
 
 
 
@@ -2880,9 +3135,10 @@ function ensurePrefills(){
     ROOT_WIN.requestAnimationFrame(() => {
       try{
         ensureRootButtonAndPanel();
-        wireRootDelegationOnce();  
-        detectNavStack();
-        ensureLayoutResizeObserver(); 
+        wireRootDelegationOnce();
+        runHLPositionNow();
+
+        ensureLayoutResizeObserver();
         ensureRevealSlideObserver();
         checkLayoutAndRecalc();
         ensureSwatchesOnce();
@@ -2906,7 +3162,11 @@ function ensurePrefills(){
 
   // Theme-Observer: NUR class/data-theme (nicht style!)
   try{
-    I.moTheme = new MutationObserver(() => { adaptUIVars(); applyUI(); positionPanelSmart(); });  
+    I.moTheme = new MutationObserver(() => {
+      adaptUIVars();
+      applyUI();
+      runHLPositionNow();
+    });
     I.moTheme.observe(ROOT_DOC.documentElement, { attributes:true, attributeFilter:["class","data-theme","data-mode","data-view","data-layout"] });
     I.moTheme.observe(ROOT_DOC.body,           { attributes:true, attributeFilter:["class","data-theme","data-mode","data-view","data-layout"] });
 
