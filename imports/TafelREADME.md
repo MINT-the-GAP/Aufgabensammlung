@@ -467,6 +467,24 @@ body.lia-navigation--hidden #lia-toolbar-nav .lia-header__left{
   overflow: visible !important;
 }
 
+body.lia-tff-nightly-mini #${BTN_ID}{
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 6px !important;
+}
+
+body.lia-tff-nightly-mini #${BTN_ID} .tffA-small{
+  left: 0px !important;
+  top: 2px !important;
+  font-size: 14px !important;
+}
+
+body.lia-tff-nightly-mini #${BTN_ID} .tffA-big{
+  left: 5px !important;
+  top: -2px !important;
+  font-size: 17px !important;
+}
+
     #${BTN_ID}:hover{
       background: color-mix(in srgb, var(--lia-tff-accent) 12%, transparent) !important;
     }
@@ -824,9 +842,16 @@ function isNightlyNavigationHidden(){
   return !!(canvas && canvas.classList.contains("lia-navigation--hidden"));
 }
 
+function syncNightlyMiniMode(){
+  try{
+    if (!ROOT_DOC.body) return;
+    ROOT_DOC.body.classList.toggle("lia-tff-nightly-mini", isNightlyNavigationHidden());
+  }catch(e){}
+}
+
+
 
 function getTOCDockSlot(){
-  const size = 34;
   const gap  = 8;
   const pad  = 8;
 
@@ -834,6 +859,7 @@ function getTOCDockSlot(){
   const tocBtn = ROOT_DOC.getElementById("lia-btn-toc");
   const tocBtnRect = getRectLoose(tocBtn);
   const nightly = isNightlyNavigationHidden();
+  const size = nightly ? 20 : 34;
 
   if (!tocBtnRect) return null;
 
@@ -1119,7 +1145,8 @@ function positionOverlayButton(){
   const pad = 8;
   const gap = 8;
 
-  let bw = 34, bh = 34;
+  const defaultBtnSize = isNightlyNavigationHidden() ? 20 : 34;
+  let bw = defaultBtnSize, bh = defaultBtnSize;
   try{
     const r = btn.getBoundingClientRect();
     if (r && r.width > 6 && r.height > 6){
@@ -1415,6 +1442,7 @@ function tick(){
 
       // 3) UI sicherstellen + Sichtbarkeit
       ensureUI();
+      syncNightlyMiniMode();
       placeButtonInCorrectHost();
       const show = setPresentationOnlyVisibility(mode);
 
