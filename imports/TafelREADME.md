@@ -5,8 +5,6 @@ comment: LiaScript – Presentation 98% Breite + Auto-Font-Boost + Schriftgröß
 author: Martin Lommatzsch
 
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MarkerREADME.md
-
 
 @onload
 (function () {
@@ -823,36 +821,38 @@ function getRectLoose(el){
 
 function getTOCDockSlot(){
   const size = 34;
-  const gap  = 8;
+  const gap  = 10;   // wenn es noch zu eng ist: 12
   const pad  = 8;
 
   const toc = ROOT_DOC.getElementById("lia-toc");
-  if (toc && toc.classList.contains("lia-toc--open")){
-    const r = getRectLoose(toc);
-    if (r){
-      const top = Math.max(pad, r.top + 8);
-      return {
-        kind: "toc-open-slot",
-        rect: {
-          left:   r.right + gap,
-          top:    top,
-          right:  r.right + gap + size,
-          bottom: top + size,
-          width:  size,
-          height: size
-        },
-        peers: []
-      };
-    }
+  const tocBtn = ROOT_DOC.getElementById("lia-btn-toc");
+  const tocBtnRect = getRectLoose(tocBtn);
+
+  // TOC offen -> AA DIREKT rechts neben den Close-Button
+  if (toc && toc.classList.contains("lia-toc--open") && tocBtnRect){
+    const left = tocBtnRect.right + gap;
+    const top  = tocBtnRect.top + (tocBtnRect.height - size) / 2;
+
+    return {
+      kind: "toc-open-slot",
+      rect: {
+        left:   left,
+        top:    Math.max(pad, top),
+        right:  left + size,
+        bottom: Math.max(pad, top) + size,
+        width:  size,
+        height: size
+      },
+      peers: [{ el: tocBtn, r: tocBtnRect }]
+    };
   }
 
-  const tocBtn = ROOT_DOC.getElementById("lia-btn-toc");
-  const b = getRectLoose(tocBtn);
-  if (b){
+  // TOC geschlossen -> ebenfalls rechts neben den TOC-Button
+  if (tocBtnRect){
     return {
       kind: "toc-button",
-      rect: b,
-      peers: [{ el: tocBtn, r: b }]
+      rect: tocBtnRect,
+      peers: [{ el: tocBtn, r: tocBtnRect }]
     };
   }
 
