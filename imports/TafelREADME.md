@@ -467,6 +467,11 @@ body.lia-navigation--hidden #lia-toolbar-nav .lia-header__left{
   overflow: visible !important;
 }
 
+body.lia-navigation--hidden #lia-tff-btn-v2{
+  width: 22px !important;
+  height: 22px !important;
+}
+
 body.lia-tff-nightly-mini #${BTN_ID}{
   width: 22px !important;
   height: 22px !important;
@@ -613,43 +618,67 @@ body.lia-tff-nightly-mini #${BTN_ID} .tffA-big{
   // =========================================================
 
 
-function getInlineDockHost(){
-  const hl = ROOT_DOC.getElementById("lia-hl-btn");
-  if (!hl) return null;
 
-  return hl.closest(".lia-header__left") || null;
+function getTFFTOCButton(){
+  const byId = ROOT_DOC.getElementById("lia-btn-toc");
+  if (byId) return byId;
+
+  const host = getToolbarLeftContainer();
+  if (!host) return null;
+
+  const btns = Array.from(host.querySelectorAll("button,[role='button'],a"));
+  return btns.find(b => {
+    const t = (
+      (b.getAttribute("aria-label") || "") + " " +
+      (b.getAttribute("title") || "") + " " +
+      (b.textContent || "")
+    ).toLowerCase();
+
+    return (
+      t.includes("inhaltsverzeichnis") ||
+      t.includes("table of contents") ||
+      t.includes("contents")
+    );
+  }) || null;
+}
+
+function getTFFTOCButtonRect(){
+  const tocBtn = getTFFTOCButton();
+  if (!tocBtn) return null;
+
+  try{
+    const r = tocBtn.getBoundingClientRect();
+    if (!r || r.width < 6 || r.height < 6) return null;
+    return r;
+  }catch(e){
+    return null;
+  }
+}
+
+function shouldUseTFFNightlyStackDock(){
+  const canvas = ROOT_DOC.querySelector(".lia-canvas");
+  if (!canvas) return false;
+
+  const navHidden = canvas.classList.contains("lia-navigation--hidden");
+  const presMode  = canvas.classList.contains("lia-mode--presentation");
+
+  return navHidden && presMode;
 }
 
 function shouldUseInlineStripDock(){
-  const hl = ROOT_DOC.getElementById("lia-hl-btn");
-  if (!hl) return false;
+  if (shouldUseTFFNightlyStackDock()) return false;
 
-  // Nightly-/Navigations-Sonderfall
-  const canvas = ROOT_DOC.querySelector(".lia-canvas");
-  if (canvas && canvas.classList.contains("lia-navigation--hidden")){
-    return true;
-  }
+  const host = getToolbarLeftContainer();
+  const tocBtn = getTFFTOCButton();
 
-  // Fallback: wenn die linke Leiste selbst schon vertikal organisiert ist
-  const host = getInlineDockHost();
-  if (host){
-    try{
-      const cs = ROOT_WIN.getComputedStyle(host);
-      if (
-        cs.display.includes("flex") &&
-        (cs.flexDirection === "column" || cs.flexDirection === "column-reverse")
-      ){
-        return true;
-      }
-    }catch(e){}
-  }
-
-  return false;
+  return !!(host && tocBtn && host.contains(tocBtn));
 }
 
 function ensureInlineDockSlot(){
-  const host = getInlineDockHost();
-  if (!host) return null;
+  const host = getToolbarLeftContainer();
+  const tocBtn = getTFFTOCButton();
+
+  if (!host || !tocBtn || !host.contains(tocBtn)) return null;
 
   let slot = ROOT_DOC.getElementById(INLINE_SLOT_ID);
   if (!slot){
@@ -657,20 +686,8 @@ function ensureInlineDockSlot(){
     slot.id = INLINE_SLOT_ID;
   }
 
-  const hl = ROOT_DOC.getElementById("lia-hl-btn");
-
-  if (slot.parentNode !== host){
-    if (hl && hl.nextSibling){
-      host.insertBefore(slot, hl.nextSibling);
-    } else {
-      host.appendChild(slot);
-    }
-  } else if (hl && slot.previousSibling !== hl){
-    if (hl.nextSibling){
-      host.insertBefore(slot, hl.nextSibling);
-    } else {
-      host.appendChild(slot);
-    }
+  if (slot.parentNode !== host || slot.previousElementSibling !== tocBtn){
+    tocBtn.insertAdjacentElement("afterend", slot);
   }
 
   return slot;
@@ -681,26 +698,41 @@ function placeButtonInCorrectHost(){
   const overlay = ROOT_DOC.getElementById(OVERLAY_ID);
   if (!btn || !overlay) return;
 
-  if (shouldUseInlineStripDock()){
-    const slot = ensureInlineDockSlot();
-    if (slot && btn.parentNode !== slot){
-      slot.appendChild(btn);
+  const slot = ROOT_DOC.getElementById(INLINE_SLOT_ID);
+
+  if (shouldUseTFFNightlyStackDock()){
+    if (btn.parentNode !== overlay){
+      overlay.appendChild(btn);
+    }
+
+    if (slot && slot.parentNode){
+      slot.parentNode.removeChild(slot);
     }
 
     overlay.style.left = "0px";
     overlay.style.top  = "0px";
-
     btn.style.left = "";
     btn.style.top  = "";
     return;
   }
 
-  // Standardfall: wieder ins Overlay zurück
+  if (shouldUseInlineStripDock()){
+    const inlineSlot = ensureInlineDockSlot();
+    if (inlineSlot && btn.parentNode !== inlineSlot){
+      inlineSlot.appendChild(btn);
+    }
+
+    overlay.style.left = "0px";
+    overlay.style.top  = "0px";
+    btn.style.left = "";
+    btn.style.top  = "";
+    return;
+  }
+
   if (btn.parentNode !== overlay){
     overlay.appendChild(btn);
   }
 
-  const slot = ROOT_DOC.getElementById(INLINE_SLOT_ID);
   if (slot && slot.parentNode){
     slot.parentNode.removeChild(slot);
   }
@@ -1136,8 +1168,9 @@ function positionOverlayButton(){
   const btn = ROOT_DOC.getElementById(BTN_ID);
   const overlay = ROOT_DOC.getElementById(OVERLAY_ID);
   if (!btn || !overlay) return;
+  placeButtonInCorrectHost();
+
   if (shouldUseInlineStripDock()){
-    placeButtonInCorrectHost();
     return;
   }
 
@@ -1155,28 +1188,42 @@ function positionOverlayButton(){
     }
   }catch(e){}
 
-  const dock = getDockTarget();
-
   let left = pad;
   let top  = pad;
 
-  if (dock && dock.rect){
-    const r = dock.rect;
+  // Nightly: AA ist immer Slot 0 direkt unter TOC / TOC-Close
+  if (shouldUseTFFNightlyStackDock()){
+    const tocRect = getTFFTOCButtonRect();
 
-    if (
-      dock.kind === "highlight" ||
-      dock.kind === "toolbar-row" ||
-      dock.kind === "toc-button"
-    ){
-      left = r.right + gap;
-      top  = r.top + (r.height - bh) / 2;
+    if (tocRect){
+      const stackGap   = 6;
+      const stackPitch = 28; // passend für 22x22
+      const stackIndex = 0;  // AA immer zuerst
+
+      left = tocRect.left + (tocRect.width - bw) / 2;
+      top  = tocRect.bottom + stackGap + stackIndex * stackPitch;
     }
-    else if (
-      dock.kind === "toc-open-slot" ||
-      dock.kind === "virtual-highlight-slot"
-    ){
-      left = r.left;
-      top  = r.top;
+  } else {
+    const dock = getDockTarget();
+
+    if (dock && dock.rect){
+      const r = dock.rect;
+
+      if (
+        dock.kind === "highlight" ||
+        dock.kind === "toolbar-row" ||
+        dock.kind === "toc-button"
+      ){
+        left = r.right + gap;
+        top  = r.top + (r.height - bh) / 2;
+      }
+      else if (
+        dock.kind === "toc-open-slot" ||
+        dock.kind === "virtual-highlight-slot"
+      ){
+        left = r.left;
+        top  = r.top;
+      }
     }
   }
 
