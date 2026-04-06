@@ -12,8 +12,6 @@ author: Martin Lommatzsch
 
 
 
-
-
 @onload
 (function () {
 
@@ -1367,6 +1365,10 @@ function getHLTOCButtonRect(){
   }
 }
 
+function getHLPrimaryDockRect(){
+  return getHLTOCButtonRect() || null;
+}
+
 
 
 function getHLRectSafe(el){
@@ -1380,13 +1382,6 @@ function getHLRectSafe(el){
   }
 }
 
-function getHLAAButtonRect(){
-  return getHLRectSafe(ROOT_DOC.getElementById("lia-tff-btn-v2"));
-}
-
-function getHLPrimaryDockRect(){
-  return getHLAAButtonRect() || getHLTOCButtonRect() || null;
-}
 
 
 
@@ -1519,6 +1514,11 @@ function positionHLButton(){
 
   placeHLButtonInCorrectHost();
 
+  // Normalmodus: inline => keine absolute Positionierung nötig
+  if (shouldUseHLInlineDock()){
+    return;
+  }
+
   const vp  = getViewport();
   const pad = 8;
   const gap = 8;
@@ -1535,19 +1535,17 @@ function positionHLButton(){
   let left = pad;
   let top  = pad;
 
-  const aaRect  = getHLAAButtonRect();
-  const tocRect = getHLTOCButtonRect();
-  const dockRect = getHLPrimaryDockRect();
+  const tocRect = getHLPrimaryDockRect();
 
-  if (dockRect){
+  if (tocRect){
     if (shouldUseHLNightlyStackDock()){
-      // Nightly: unter den bestehenden Dock-Anker
-      left = dockRect.left + (dockRect.width - bw) / 2;
-      top  = dockRect.bottom + 6;
+      // Nightly: direkt unter TOC / TOC-Close
+      left = tocRect.left + (tocRect.width - bw) / 2;
+      top  = tocRect.bottom + 6;
     } else {
-      // Normal: rechts neben den bestehenden Dock-Anker
-      left = dockRect.right + gap;
-      top  = dockRect.top + (dockRect.height - bh) / 2;
+      // Normalmodus: direkt rechts neben TOC / TOC-Close
+      left = tocRect.right + gap;
+      top  = tocRect.top + (tocRect.height - bh) / 2;
     }
   } else {
     const leftHost = findHeaderLeft();
