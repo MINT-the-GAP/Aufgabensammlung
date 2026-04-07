@@ -3319,7 +3319,7 @@ function compactMarkerQuizStateForFreezeUrl(state) {
 }
 
 const CANVAS_CODEC_VERSION = "cv2";
-const CANVAS_POINT_SCALE = 10; // 1 Nachkommastellen
+const CANVAS_POINT_SCALE = 1; // 1 Nachkommastellen
 
 function isCanvasBgDefaultForFreezeUrl(bg) {
   return !bg || String(bg.m || "") === "none";
