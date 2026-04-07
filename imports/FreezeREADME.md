@@ -3426,18 +3426,33 @@ function isCanvasBgDefaultForFreezeUrl(bg) {
 }
 
 function isCanvasStateTrulyEmptyForFreezeUrl(state) {
-  if (!state || typeof state !== "object") return false;
+  if (!state || typeof state !== "object") return true;
 
+  // Bereits komprimiertes Format (cv2)
+  if (state.v === CANVAS_CODEC_VERSION) {
+    const items = Array.isArray(state.i) ? state.i : [];
+    const w = Number(state.w || 0) || 0;
+    const h = Number(state.h || 0) || 0;
+    const bgDefault = !state.bg || String(state.bg.m || "") === "none";
+
+    return items.length === 0 && bgDefault && w === 0 && h === 0;
+  }
+
+  // Rohformat / altes Format
   const items = Array.isArray(state.it) ? state.it : [];
   const w = Number(state.w || 0) || 0;
   const h = Number(state.h || 0) || 0;
-  const bgDefault = isCanvasBgDefaultForFreezeUrl(state.bg);
+  const bgDefault = !state.bg || String(state.bg.m || "") === "none";
 
-  // NUR dann leer:
-  // - keine Items
-  // - kein Hintergrund
-  // - Breite 0
-  // - Höhe 0
+  const looksLikeKnownRaw =
+    Object.prototype.hasOwnProperty.call(state, "it") ||
+    Object.prototype.hasOwnProperty.call(state, "bg") ||
+    Object.prototype.hasOwnProperty.call(state, "w") ||
+    Object.prototype.hasOwnProperty.call(state, "h");
+
+  // Unbekannte Struktur niemals aggressiv wegwerfen
+  if (!looksLikeKnownRaw) return false;
+
   return items.length === 0 && bgDefault && w === 0 && h === 0;
 }
 
@@ -3589,12 +3604,14 @@ function expandCanvasPathItemFromFreezeUrl(entry, colors) {
 function compactSingleCanvasStateForFreezeUrl(state) {
   if (!state || typeof state !== "object") return null;
 
-  // Bereits komprimiert
+  // Bereits komprimiert: zuerst erhalten, nicht vorher leerprüfen
   if (state.v === CANVAS_CODEC_VERSION) {
-    return copyJson(state);
+    return isCanvasStateTrulyEmptyForFreezeUrl(state)
+      ? null
+      : copyJson(state);
   }
 
-  // Nur wirklich komplett leere Canvas verwerfen
+  // Nur bekannte Rohformate leerwerfen
   if (isCanvasStateTrulyEmptyForFreezeUrl(state)) {
     return null;
   }
@@ -3611,8 +3628,7 @@ function compactSingleCanvasStateForFreezeUrl(state) {
       colorIndex
     );
 
-    // Falls ein unbekannter Item-Typ auftaucht:
-    // lieber roh behalten als kaputt komprimieren
+    // Unbekannten Typ nicht zerstören, sondern roh erhalten
     if (!compactItem) {
       return copyJson(state);
     }
@@ -7782,42 +7798,47 @@ function schedulePostApplyReinforcement(hash, reason, delays) {
 function getCanvasFreezeScopeHost(root) {
   const candidates = uniqueElements([
     root,
+    getContentHost(),
+    getSlideRootFromVisibleHeading(),
     getBaseContentHost(),
     document.querySelector(".lia-slide__content"),
     document.querySelector(".lia-content"),
-    document.querySelector("main"),
-    document.body
+    document.querySelector("main")
   ]).filter(function (el) {
     return !!(el && el instanceof Element);
   });
 
-  let best = null;
-  let bestArea = -1;
-
-  candidates.forEach(function (el) {
-    if (!isRenderedElement(el) && !hasRenderedSelfOrDescendant(el)) return;
-
-    const r = el.getBoundingClientRect();
-    const area = Math.max(0, r.width) * Math.max(0, r.height);
-
-    if (area > bestArea) {
-      best = el;
-      bestArea = area;
+  for (let i = 0; i < candidates.length; i++) {
+    const el = candidates[i];
+    if (isRenderedElement(el) || hasRenderedSelfOrDescendant(el)) {
+      return el;
     }
-  });
+  }
 
-  return best || root || getBaseContentHost() || document.body;
+  return root || getContentHost() || getBaseContentHost() || document.body;
 }
 
-  function collectCanvasFreezePairsFromRoot(root) {
-    const api = getCanvasFreezeApi();
-    if (!api || typeof api.collectCanvasPairsFromRoot !== "function") return [];
+function collectCanvasFreezePairsFromRoot(root) {
+  const api = getCanvasFreezeApi();
+  if (!api || typeof api.collectCanvasPairsFromRoot !== "function") return [];
 
-    const pairs = api.collectCanvasPairsFromRoot(root || document.body) || [];
-    return uniqueElements(pairs.filter(function (el) {
-      return !!(el && el instanceof Element);
-    }));
-  }
+  const scope = getCanvasFreezeScopeHost(root);
+  if (!scope) return [];
+
+  const pairs = api.collectCanvasPairsFromRoot(scope) || [];
+
+  return uniqueElements(
+    pairs.filter(function (el) {
+      if (!(el && el instanceof Element)) return false;
+      if (el.closest("#lia-freeze-bar")) return false;
+      if (el.closest(".lia-submit-box")) return false;
+
+      if (scope !== document.body && !scope.contains(el)) return false;
+
+      return isRenderedElement(el) || hasRenderedSelfOrDescendant(el);
+    })
+  );
+}
 
   function getCanvasFreezeUidFromPair(pair) {
     const api = getCanvasFreezeApi();
