@@ -4102,6 +4102,44 @@ function compactPayloadForFreezeUrl(payload) {
 
 
 
+function getCanvasFreezeStateItemCount(state) {
+  const s = expandCanvasStateFromFreezeUrl(state) || state || {};
+
+  if (Array.isArray(s.it)) return s.it.length;
+  if (Array.isArray(s.i)) return s.i.length;
+  if (Array.isArray(s.items)) return s.items.length;
+
+  return 0;
+}
+
+function getCanvasFreezeStatesScore(states) {
+  const arr = Array.isArray(states) ? states : [];
+
+  return arr.reduce(function (sum, state) {
+    const s = expandCanvasStateFromFreezeUrl(state) || state || {};
+    let score = 0;
+
+    score += getCanvasFreezeStateItemCount(s) * 1000;
+
+    if (Number(s.w || 0) > 0) score += 10;
+    if (Number(s.h || 0) > 0) score += 10;
+
+    if (s.bg && String(s.bg.m || "") !== "none") score += 5;
+
+    if (typeof s.img === "string" && s.img) score += 500;
+    if (typeof s.dataUrl === "string" && s.dataUrl) score += 500;
+
+    if (Number(s.e || 0) === 1) score -= 10000;
+
+    return sum + score;
+  }, 0);
+}
+
+function cloneSlideStateOrNull(state) {
+  if (!state) return null;
+  return copyJson(state) || null;
+}
+
 
 
 async function buildPayloadFromAllSlides() {
@@ -4112,7 +4150,17 @@ async function buildPayloadFromAllSlides() {
   const startHash = getCurrentHash();
   const displayName = getDisplayName();
 
-  liveSlidesByHash = Object.create(null);
+  const preservedLiveSlidesByHash = liveSlidesByHash || Object.create(null);
+  const nextLiveSlidesByHash = Object.create(null);
+
+  Object.keys(preservedLiveSlidesByHash).forEach(function (hash) {
+    const cloned = cloneSlideStateOrNull(preservedLiveSlidesByHash[hash]);
+    if (cloned) {
+      nextLiveSlidesByHash[hash] = cloned;
+    }
+  });
+
+  liveSlidesByHash = nextLiveSlidesByHash;
 
   for (let i = 0; i < declared.length; i++) {
     const slide = declared[i];
@@ -8818,24 +8866,53 @@ async function buildPayloadFromAllSlides() {
 
     if (!ready || visibleHash !== targetHash) {
       warn("capture-all-not-settled", targetHash);
-      liveSlidesByHash[targetHash] = makeEmptySlideState(targetHash);
+
+      const cachedState = cloneSlideStateOrNull(preservedLiveSlidesByHash[targetHash]);
+      liveSlidesByHash[targetHash] = cachedState || makeEmptySlideState(targetHash);
+
+      if (cachedState) {
+        log(
+          "capture-all-use-live-cache",
+          targetHash,
+          "canvasScore=" + getCanvasFreezeStatesScore(cachedState.cv)
+        );
+      }
+
       continue;
     }
 
     await sleep(160);
     captureAdminState();
 
-    const state = captureSlideStateForHash(targetHash);
-    liveSlidesByHash[targetHash] = state || makeEmptySlideState(targetHash);
+    const freshState = captureSlideStateForHash(targetHash) || makeEmptySlideState(targetHash);
+    const cachedState = cloneSlideStateOrNull(preservedLiveSlidesByHash[targetHash]);
+
+    if (cachedState) {
+      const freshCanvasScore = getCanvasFreezeStatesScore(freshState.cv);
+      const cachedCanvasScore = getCanvasFreezeStatesScore(cachedState.cv);
+
+      if (cachedCanvasScore > freshCanvasScore) {
+        freshState.cv = copyJson(cachedState.cv) || [];
+        log(
+          "capture-all-canvas-from-live-cache",
+          targetHash,
+          "freshScore=" + freshCanvasScore,
+          "cachedScore=" + cachedCanvasScore
+        );
+      }
+    }
+
+    liveSlidesByHash[targetHash] = freshState;
 
     log(
       "capture-all-final",
       targetHash,
       "canvas=" + (
-        state && Array.isArray(state.cv)
-          ? state.cv.length
+        freshState && Array.isArray(freshState.cv)
+          ? freshState.cv.length
           : 0
-      )
+      ),
+      "canvasScore=" + getCanvasFreezeStatesScore(freshState.cv)
     );
   }
 
