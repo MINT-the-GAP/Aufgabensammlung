@@ -36,6 +36,7 @@ window.__liaSubmissionDemo = (function () {
   let snapshotPayload = null;
   let declaredSlidesCache = [];
   let liveSlidesByHash = Object.create(null);
+  let preservedLiveSlidesByHash = Object.create(null);
 
   let routeBridgeInstalled = false;
   let liveBindingsInstalled = false;
@@ -10627,8 +10628,16 @@ async function activateSnapshotMode(payload, linkValue, opts) {
       captureAdminState();
       storeLiveSlideState(liveRouteCurrentHash || getCurrentHash(), "createLink");
 
+      // bisher schon im Live-Modus erfasste Folien sichern,
+      // damit buildPayloadFromAllSlides darauf zurückgreifen kann
+      preservedLiveSlidesByHash = copyJson(liveSlidesByHash) || Object.create(null);
+
       console.warn("[LIA-FREEZE] BEFORE-BUILD-PAYLOAD", BUILD_STAMP);
-      const payload = await buildPayloadFromAllSlides();
+      const fullPayload = await buildPayloadFromAllSlides();
+      const payload = compactPayloadForFreezeUrl(fullPayload);
+      
+      // Sicherung wieder leeren
+      preservedLiveSlidesByHash = Object.create(null);
       console.warn(
         "[LIA-FREEZE] payload-af-check",
         payload && payload.af ? "present" : "null",
