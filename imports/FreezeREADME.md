@@ -235,44 +235,16 @@ async function decompressBase64UrlToUtf8(token) {
 
 async function encodePayloadToken(payload) {
   const json = JSON.stringify(payload);
-
   const legacyToken = toBase64Url(utf8ToBase64(json));
 
-  try {
-    const compressedBody = await compressUtf8ToBase64Url(json);
+  log(
+    "token-size",
+    "json=" + json.length,
+    "legacy=" + legacyToken.length,
+    "mode=legacy-only"
+  );
 
-    if (!compressedBody) {
-      log(
-        "token-size",
-        "json=" + json.length,
-        "legacy=" + legacyToken.length,
-        "compressed=<unsupported>",
-        "mode=legacy"
-      );
-      return legacyToken;
-    }
-
-    const compressedToken = "z." + compressedBody;
-
-    log(
-      "token-size",
-      "json=" + json.length,
-      "legacy=" + legacyToken.length,
-      "compressed=" + compressedToken.length
-    );
-
-    if (compressedToken.length < legacyToken.length) {
-      return compressedToken;
-    }
-
-    return legacyToken;
-  } catch (e) {
-    warn(
-      "token-compress-fallback",
-      e && e.message ? e.message : e
-    );
-    return legacyToken;
-  }
+  return legacyToken;
 }
 
 async function decodePayloadToken(token) {
