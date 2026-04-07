@@ -3704,9 +3704,10 @@ function expandCanvasStateFromFreezeUrl(state) {
 }
 
 function compactCanvasStatesForFreezeUrl(states) {
-  if (!Array.isArray(states) || !states.length) return [];
+  const input = Array.isArray(states) ? states.filter(Boolean) : [];
+  if (!input.length) return [];
 
-  const compacted = states
+  const compacted = input
     .map(function (state) {
       return compactSingleCanvasStateForFreezeUrl(state);
     })
@@ -3714,10 +3715,18 @@ function compactCanvasStatesForFreezeUrl(states) {
 
   log(
     "canvas-compact",
-    "before=" + states.length,
+    "before=" + input.length,
     "after=" + compacted.length,
-    "removed=" + Math.max(0, states.length - compacted.length)
+    "removed=" + Math.max(0, input.length - compacted.length)
   );
+
+  // WICHTIG:
+  // Wenn vorher Canvas da waren, nach der Kompaktierung aber plötzlich keine
+  // mehr übrig bleiben, dann behalten wir die Rohdaten statt alles zu verlieren.
+  if (!compacted.length && input.length) {
+    warn("canvas-compact-fallback-keep-raw", "count=" + input.length);
+    return copyJson(input);
+  }
 
   return compacted;
 }
@@ -3769,10 +3778,6 @@ function compactSlideStateForFreezeUrl(slide) {
   if (mq.length) out.mq = mq;
   if (cv.length) out.cv = cv;
   if (gm) out.gm = gm;
-
-  if (Object.keys(out).length === 1) {
-    return null;
-  }
 
   return out;
 }
@@ -4073,7 +4078,9 @@ function compactPayloadForFreezeUrl(payload) {
   }
 
   const slides = Array.isArray(payload && payload.s) ? payload.s : [];
-  out.s = slides.map(compactSlideStateForFreezeUrl).filter(Boolean);
+  out.s = slides.map(function (slide) {
+    return compactSlideStateForFreezeUrl(slide);
+  });
 
   const compactAf = compressAnnotationFreezeStateForFreezeUrl(payload && payload.af);
 
@@ -10544,8 +10551,7 @@ async function activateSnapshotMode(payload, linkValue, opts) {
       storeLiveSlideState(liveRouteCurrentHash || getCurrentHash(), "createLink");
 
       console.warn("[LIA-FREEZE] BEFORE-BUILD-PAYLOAD", BUILD_STAMP);
-      const fullPayload = await buildPayloadFromAllSlides();
-      const payload = compactPayloadForFreezeUrl(fullPayload);
+      const payload = await buildPayloadFromAllSlides();
       console.warn(
         "[LIA-FREEZE] payload-af-check",
         payload && payload.af ? "present" : "null",
