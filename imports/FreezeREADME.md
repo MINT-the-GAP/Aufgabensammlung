@@ -7900,9 +7900,10 @@ function collectCanvasFreezePairsFromRoot(root) {
   const api = getCanvasFreezeApi();
   if (!api || typeof api.collectCanvasPairsFromRoot !== "function") return [];
 
-  const scope = getCanvasFreezeScopeHost(root);
-  if (!scope) return [];
-
+  // Für Canvas bewusst NICHT den getContentHost-/section-Host benutzen.
+  // LiaScript zeigt effektiv nur die aktuelle Folie sichtbar an;
+  // deshalb sammeln wir global und filtern auf wirklich gerenderte Elemente.
+  const scope = document.body || document.documentElement;
   const pairs = api.collectCanvasPairsFromRoot(scope) || [];
 
   return uniqueElements(
@@ -7910,8 +7911,6 @@ function collectCanvasFreezePairsFromRoot(root) {
       if (!(el && el instanceof Element)) return false;
       if (el.closest("#lia-freeze-bar")) return false;
       if (el.closest(".lia-submit-box")) return false;
-
-      if (scope !== document.body && !scope.contains(el)) return false;
 
       return isRenderedElement(el) || hasRenderedSelfOrDescendant(el);
     })
@@ -8019,13 +8018,12 @@ function captureCanvasFreezeStatesFromRoot(root) {
     return [];
   }
 
-  const scope = getCanvasFreezeScopeHost(root);
-  const pairs = collectCanvasFreezePairsFromRoot(scope);
+  const pairs = collectCanvasFreezePairsFromRoot(root);
   const out = [];
 
   log(
     "canvas-capture-scope",
-    "tag=" + String(scope && scope.tagName || ""),
+    "mode=global-visible",
     "pairs=" + pairs.length
   );
 
@@ -8049,8 +8047,7 @@ function applyStoredCanvasStatesToHost(host, storedStates) {
     return [];
   }
 
-  const scope = getCanvasFreezeScopeHost(host);
-  const livePairs = scope ? collectCanvasFreezePairsFromRoot(scope) : [];
+  const livePairs = collectCanvasFreezePairsFromRoot(host);
   const states = Array.isArray(storedStates) ? storedStates : [];
   const used = new Set();
   const applied = [];
