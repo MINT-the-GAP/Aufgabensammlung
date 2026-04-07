@@ -138,6 +138,159 @@ function base64ToUtf8(str) {
   return decodeURIComponent(escape(atob(fromBase64Url(str))));
 }
 
+function uint8ArrayToBase64Url(bytes) {
+  const src = bytes instanceof Uint8Array ? bytes : new Uint8Array(0);
+  const CHUNK = 0x8000;
+  let bin = "";
+
+  for (let i = 0; i < src.length; i += CHUNK) {
+    const slice = src.subarray(i, i + CHUNK);
+    bin += String.fromCharCode.apply(null, slice);
+  }
+
+  return toBase64Url(btoa(bin));
+}
+
+function base64UrlToUint8Array(token) {
+  const bin = atob(fromBase64Url(token));
+  const out = new Uint8Array(bin.length);
+
+  for (let i = 0; i < bin.length; i++) {
+    out[i] = bin.charCodeAt(i);
+  }
+
+  return out;
+}
+
+function withTimeout(promise, ms, label) {
+  return new Promise(function (resolve, reject) {
+    let done = false;
+
+    const timer = setTimeout(function () {
+      if (done) return;
+      done = true;
+      reject(new Error((label || "Operation") + " timeout after " + ms + "ms"));
+    }, ms);
+
+    Promise.resolve(promise).then(function (value) {
+      if (done) return;
+      done = true;
+      clearTimeout(timer);
+      resolve(value);
+    }).catch(function (err) {
+      if (done) return;
+      done = true;
+      clearTimeout(timer);
+      reject(err);
+    });
+  });
+}
+
+
+async function compressUtf8ToBase64Url(str) {
+  if (typeof CompressionStream !== "function") {
+    return null;
+  }
+
+  const inputBytes = new TextEncoder().encode(String(str || ""));
+  const stream = new CompressionStream("deflate");
+  const writer = stream.writable.getWriter();
+
+  await withTimeout(writer.write(inputBytes), 1200, "Compression write");
+  await withTimeout(writer.close(), 1200, "Compression close");
+
+  const compressedBytes = new Uint8Array(
+    await withTimeout(
+      new Response(stream.readable).arrayBuffer(),
+      2000,
+      "Compression read"
+    )
+  );
+
+  return uint8ArrayToBase64Url(compressedBytes);
+}
+
+async function decompressBase64UrlToUtf8(token) {
+  if (typeof DecompressionStream !== "function") {
+    throw new Error("Dieser Browser kann komprimierte Freezelinks nicht entpacken.");
+  }
+
+  const inputBytes = base64UrlToUint8Array(token);
+  const stream = new DecompressionStream("deflate");
+  const writer = stream.writable.getWriter();
+
+  await withTimeout(writer.write(inputBytes), 1200, "Decompression write");
+  await withTimeout(writer.close(), 1200, "Decompression close");
+
+  const outputBytes = new Uint8Array(
+    await withTimeout(
+      new Response(stream.readable).arrayBuffer(),
+      2000,
+      "Decompression read"
+    )
+  );
+
+  return new TextDecoder().decode(outputBytes);
+}
+
+async function encodePayloadToken(payload) {
+  const json = JSON.stringify(payload);
+
+  const legacyToken = toBase64Url(utf8ToBase64(json));
+
+  try {
+    const compressedBody = await compressUtf8ToBase64Url(json);
+
+    if (!compressedBody) {
+      log(
+        "token-size",
+        "json=" + json.length,
+        "legacy=" + legacyToken.length,
+        "compressed=<unsupported>",
+        "mode=legacy"
+      );
+      return legacyToken;
+    }
+
+    const compressedToken = "z." + compressedBody;
+
+    log(
+      "token-size",
+      "json=" + json.length,
+      "legacy=" + legacyToken.length,
+      "compressed=" + compressedToken.length
+    );
+
+    if (compressedToken.length < legacyToken.length) {
+      return compressedToken;
+    }
+
+    return legacyToken;
+  } catch (e) {
+    warn(
+      "token-compress-fallback",
+      e && e.message ? e.message : e
+    );
+    return legacyToken;
+  }
+}
+
+async function decodePayloadToken(token) {
+  const raw = String(token || "");
+  if (!raw) return null;
+
+  // Neues komprimiertes Format
+  if (raw.startsWith("z.")) {
+    const json = await decompressBase64UrlToUtf8(raw.slice(2));
+    return JSON.parse(json);
+  }
+
+  // Altes Legacy-Format
+  return JSON.parse(base64ToUtf8(raw));
+}
+
+
+
   function sleep(ms) {
     return new Promise(function (resolve) {
       setTimeout(resolve, ms);
@@ -863,12 +1016,11 @@ function sanitizeMalformedSubmissionHash() {
     }
   }
 
-function buildLink(payload) {
+async function buildLink(payload) {
   const baseCourseUrl = stripSubmissionFromCourseUrl(getCourseUrlFromViewerUrl());
   if (!baseCourseUrl) return window.location.href;
 
-  const rawToken = utf8ToBase64(JSON.stringify(payload));
-  const token = toBase64Url(rawToken);
+  const token = await encodePayloadToken(payload);
 
   storeSubmissionToken(token);
 
@@ -877,10 +1029,6 @@ function buildLink(payload) {
     ? String(payload.sh)
     : "#1";
 
-  // WICHTIG:
-  // Token in die kodierte Kurs-URL legen, nicht in den Viewer-Hash.
-  // Dann kann LiaScript den Hash #7 normal benutzen, ohne uns das
-  // submission-Token wegzunormalisieren.
   const courseUrlWithSubmission =
     stripSubmissionFromCourseUrl(baseCourseUrl) +
     "#" +
@@ -896,18 +1044,22 @@ function buildLink(payload) {
   );
 }
 
-  function tryLoadSnapshot() {
-    const token = getSubmissionToken();
-    if (!token) return null;
+async function tryLoadSnapshot() {
+  const token = getSubmissionToken();
+  if (!token) return null;
 
-    try {
-      const obj = JSON.parse(base64ToUtf8(token));
-      if (!obj || !Array.isArray(obj.s)) return null;
-      return obj;
-    } catch (e) {
-      return null;
-    }
+  try {
+    const obj = await decodePayloadToken(token);
+    if (!obj || !Array.isArray(obj.s)) return null;
+    return obj;
+  } catch (e) {
+    warn(
+      "snapshot-decode-failed",
+      e && e.message ? e.message : e
+    );
+    return null;
   }
+}
 
   // =========================================================
   // DOM / aktuelle Folie
@@ -10304,7 +10456,7 @@ async function activateSnapshotMode(payload, linkValue, opts) {
       console.warn("[LIA-FREEZE] AFTER-BUILD-PAYLOAD", BUILD_STAMP);
 
       console.log("[LIA-FREEZE] payload-before-link", JSON.stringify(payload));
-      const link = buildLink(payload);
+      const link = await buildLink(payload);
 
       freezeLinkValue = link;
 
@@ -10357,7 +10509,7 @@ async function initMode() {
     storeSubmissionToken(directToken);
   }
 
-  const snapshot = tryLoadSnapshot();
+  const snapshot = await tryLoadSnapshot();
 
   if (snapshot) {
     await activateSnapshotMode(snapshot, window.location.href, {
