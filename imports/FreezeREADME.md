@@ -12,6 +12,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/KoordREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/OCRREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/AnnotationREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FlexChildREADME.md
 
 
 
@@ -7436,6 +7437,83 @@ function countLiveSupportedControlsForHash(hash) {
     return true;
   }
 
+async function waitForImagesInHost(host, timeoutMs) {
+  const scope = host || getContentHost() || document.body;
+  if (!scope || !scope.querySelectorAll) return;
+
+  const pending = Array.from(scope.querySelectorAll("img")).filter(function (img) {
+    return img && typeof img.complete === "boolean" && !img.complete;
+  });
+
+  if (!pending.length) return;
+
+  await Promise.race([
+    Promise.allSettled(
+      pending.map(function (img) {
+        return new Promise(function (resolve) {
+          const done = function () { resolve(); };
+          img.addEventListener("load", done, { once: true });
+          img.addEventListener("error", done, { once: true });
+        });
+      })
+    ),
+    sleep(timeoutMs || 1800)
+  ]);
+}
+
+async function waitForStableCanvasPairsInHost(host, opts) {
+  opts = opts || {};
+
+  const stableHitsNeeded = Number(opts.stableHits || 2) || 2;
+  const pollMs = Number(opts.pollMs || 120) || 120;
+  const timeoutMs = Number(opts.timeoutMs || 2400) || 2400;
+
+  let lastCount = -1;
+  let stableHits = 0;
+  const start = Date.now();
+
+  while (Date.now() - start < timeoutMs) {
+    const scope = getCanvasFreezeScopeHost(host || getContentHost() || document.body);
+    const count = collectCanvasFreezePairsFromRoot(scope).length;
+
+    if (count === lastCount) {
+      stableHits += 1;
+      if (stableHits >= stableHitsNeeded) {
+        log("canvas-pairs-stable", "count=" + count);
+        return count;
+      }
+    } else {
+      lastCount = count;
+      stableHits = 0;
+    }
+
+    await sleep(pollMs);
+  }
+
+  log("canvas-pairs-stable-timeout", "count=" + Math.max(0, lastCount));
+  return Math.max(0, lastCount);
+}
+
+async function waitForSlideCaptureSettle(hash) {
+  const wantedHash = cleanHashValue(hash || "");
+  if (!wantedHash) return false;
+
+  const ready = await waitForSlideReady(wantedHash, 3200);
+  if (!ready) return false;
+
+  const host = getContentHost() || document.body;
+
+  await waitForImagesInHost(host, 1800);
+  await waitForStableCanvasPairsInHost(host, {
+    stableHits: 2,
+    pollMs: 120,
+    timeoutMs: 2400
+  });
+
+  await sleep(140);
+  return true;
+}
+
   async function waitForSlideReady(hash, timeoutMs) {
     const timeout = timeoutMs || 2600;
     const start = Date.now();
@@ -8517,8 +8595,15 @@ function captureSlideStateForHash(hash) {
   const cleanHash = cleanHashValue(hash || "");
   if (!/^#\d+$/.test(cleanHash)) return null;
 
-  const currentHash = getCurrentHash();
-  if (String(currentHash) !== String(cleanHash)) {
+  const currentHash = cleanHashValue(getCurrentHash() || "");
+  const renderedHash = cleanHashValue(
+    getRenderedVisibleDeclaredHash() || currentHash || ""
+  );
+
+  // Wichtig:
+  // Nicht blind den bereits umgesprungenen URL-Hash als Wahrheit nehmen,
+  // sondern die Folie capturen, die gerade tatsächlich noch im DOM sichtbar ist.
+  if (String(renderedHash) !== String(cleanHash)) {
     return null;
   }
 
@@ -8689,46 +8774,82 @@ function storeLiveSlideState(hash, source) {
 
 
 
-async function buildPayloadFromLiveStates() {
-  log("BUILD-PAYLOAD-ENTER");
-
-  const currentHash = liveRouteCurrentHash || getCurrentHash();
-  storeLiveSlideState(currentHash, "payload-final");
-
+async function buildPayloadFromAllSlides() {
   const declared = getDeclaredSlides().filter(function (slide) {
     return !(slide && slide.vt === "evaluation");
   });
 
+  const startHash = cleanHashValue(getCurrentHash() || "#1");
+  const displayName = getDisplayName();
+
+  liveSlidesByHash = Object.create(null);
+
+  for (let i = 0; i < declared.length; i++) {
+    const slide = declared[i];
+    if (!slide || !slide.h) continue;
+
+    setStatus(
+      "Abgabelink wird erstellt … Folie " +
+      (i + 1) +
+      " / " +
+      declared.length
+    );
+
+    if (cleanHashValue(getCurrentHash() || "") !== slide.h) {
+      try { setHashSilently(slide.h); } catch (e) {}
+      window.location.hash = slide.h;
+    }
+
+    const settled = await waitForSlideCaptureSettle(slide.h);
+
+    if (!settled) {
+      warn("capture-all-not-settled", slide.h);
+      liveSlidesByHash[slide.h] = makeEmptySlideState(slide.h);
+      continue;
+    }
+
+    try {
+      refreshAssignmentDetails(getContentHost() || document.body);
+    } catch (err) {
+      console.error("[LIA-FREEZE] adetails-before-capture-all-error", err);
+    }
+
+    captureAdminState();
+
+    const state = captureSlideStateForHash(slide.h);
+    liveSlidesByHash[slide.h] = state || makeEmptySlideState(slide.h);
+
+    log(
+      "capture-all-final",
+      slide.h,
+      "canvas=" + (
+        state && Array.isArray(state.cv) ? state.cv.length : 0
+      )
+    );
+  }
+
+  if (cleanHashValue(getCurrentHash() || "") !== startHash) {
+    try { setHashSilently(startHash); } catch (e) {}
+    window.location.hash = startHash;
+    await waitForSlideCaptureSettle(startHash);
+  }
+
   const payload = {
     v: PAYLOAD_VERSION,
-    sh: getCurrentHash(),
-    n: getDisplayName(),
+    sh: startHash,
+    n: displayName,
     s: declared.map(function (slide) {
       return liveSlidesByHash[slide.h] || makeEmptySlideState(slide.h);
     })
   };
 
   const annotationFullState = await captureFullAnnotationFreezeState();
-  log("ANNOTATION-EXPORT-ENTER");
 
   payload.af = annotationFullState;
   payload.anv = getAnnotationFreezeVisibleFlag(annotationFullState);
   payload.sec = getSerializableSecurityState();
 
-  log(
-    "payload-annotation",
-    annotationFullState ? "present=1" : "present=0",
-    "items=" + countAnnotationItemsInFreezePayload(annotationFullState)
-  );
-
-  log(
-    "payload-annotation-final",
-    payload.af ? "present=1" : "present=0",
-    payload.af ? describeAnnotationFreezePayload(payload.af) : "payload=<null>",
-    "items=" + countAnnotationItemsInFreezePayload(payload.af)
-  );
-
-  return compactPayloadForFreezeUrl(payload);
+  return payload;
 }
 
   function getSnapshotSlideForHash(hash) {
@@ -10418,7 +10539,8 @@ async function activateSnapshotMode(payload, linkValue, opts) {
       storeLiveSlideState(liveRouteCurrentHash || getCurrentHash(), "createLink");
 
       console.warn("[LIA-FREEZE] BEFORE-BUILD-PAYLOAD", BUILD_STAMP);
-      const payload = await buildPayloadFromLiveStates();
+      const fullPayload = await buildPayloadFromAllSlides();
+      const payload = compactPayloadForFreezeUrl(fullPayload);
       console.warn(
         "[LIA-FREEZE] payload-af-check",
         payload && payload.af ? "present" : "null",
@@ -10873,6 +10995,9 @@ $g)\;\;$ $6000+123=$ [[  6123  ]] m @canvas
 @ADetails(1=BE;Einheiten,Addition)
 
 
+
+
+
 # Brüche darstellen
 
 **Stelle** die passende Teilung der Fläche **ein** und **markiere** den passenden Anteil, sodass der Bruch dargestellt wird.
@@ -10900,6 +11025,8 @@ __$c)\;\;$__ $\dfrac{1}{3}$
 $e)\;\;$ $6000+123=$ [[  6123  ]] m @canvas
 
 @ADetails(1=BE;Einheiten,Addition)
+
+
 
 
 
@@ -10933,50 +11060,7 @@ Einfach noch ein KaTeX-Testfeld: [[     passt     ]]  @canvas
 
 
 
-# Mehr Canvas
 
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-
-# Abgabe mit mehr Canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
 
 
 
