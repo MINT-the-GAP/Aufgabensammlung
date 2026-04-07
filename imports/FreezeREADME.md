@@ -8785,6 +8785,9 @@ async function buildPayloadFromAllSlides() {
     const slide = declared[i];
     if (!slide || !slide.h) continue;
 
+    const targetHash = cleanHashValue(slide.h || "");
+    if (!/^#\d+$/.test(targetHash)) continue;
+
     setStatus(
       "Abgabelink wird erstellt … Folie " +
       (i + 1) +
@@ -8792,43 +8795,48 @@ async function buildPayloadFromAllSlides() {
       declared.length
     );
 
-    if (cleanHashValue(getCurrentHash() || "") !== slide.h) {
-      try { setHashSilently(slide.h); } catch (e) {}
-      window.location.hash = slide.h;
+    // WICHTIG:
+    // Kein setHashSilently(targetHash) vor dem echten Routing.
+    // Sonst ist window.location.hash = targetHash danach wirkungslos.
+    if (cleanHashValue(getCurrentHash() || "") !== targetHash) {
+      window.location.hash = targetHash;
     }
 
-    const settled = await waitForSlideCaptureSettle(slide.h);
+    const ready = await waitForSlideReady(targetHash, 3200);
+    const visibleHash = cleanHashValue(
+      getRenderedVisibleDeclaredHash() ||
+      getCurrentHash() ||
+      ""
+    );
 
-    if (!settled) {
-      warn("capture-all-not-settled", slide.h);
-      liveSlidesByHash[slide.h] = makeEmptySlideState(slide.h);
+    if (!ready || visibleHash !== targetHash) {
+      warn("capture-all-not-settled", targetHash);
+      liveSlidesByHash[targetHash] = makeEmptySlideState(targetHash);
       continue;
     }
 
-    try {
-      refreshAssignmentDetails(getContentHost() || document.body);
-    } catch (err) {
-      console.error("[LIA-FREEZE] adetails-before-capture-all-error", err);
-    }
-
+    await sleep(160);
     captureAdminState();
 
-    const state = captureSlideStateForHash(slide.h);
-    liveSlidesByHash[slide.h] = state || makeEmptySlideState(slide.h);
+    const state = captureSlideStateForHash(targetHash);
+    liveSlidesByHash[targetHash] = state || makeEmptySlideState(targetHash);
 
     log(
       "capture-all-final",
-      slide.h,
+      targetHash,
       "canvas=" + (
-        state && Array.isArray(state.cv) ? state.cv.length : 0
+        state && Array.isArray(state.cv)
+          ? state.cv.length
+          : 0
       )
     );
   }
 
+  // Startfolie am Ende wieder normal ansteuern
   if (cleanHashValue(getCurrentHash() || "") !== startHash) {
-    try { setHashSilently(startHash); } catch (e) {}
     window.location.hash = startHash;
-    await waitForSlideCaptureSettle(startHash);
+    await waitForSlideReady(startHash, 3200);
+    await sleep(120);
   }
 
   const payload = {
@@ -8846,7 +8854,7 @@ async function buildPayloadFromAllSlides() {
   payload.anv = getAnnotationFreezeVisibleFlag(annotationFullState);
   payload.sec = getSerializableSecurityState();
 
-  return payload;
+  return compactPayloadForFreezeUrl(payload);
 }
 
   function getSnapshotSlideForHash(hash) {
