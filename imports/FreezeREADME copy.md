@@ -111,9 +111,9 @@ window.__liaSubmissionDemo = (function () {
   // Utilities
   // =========================================================
 
-const TOKEN_CODEC_GZIP = "gz:";
-const TOKEN_CODEC_PLAIN = "b64:";
-const BASE64_CHUNK_SIZE = 0x8000;
+function utf8ToBase64(str) {
+  return btoa(unescape(encodeURIComponent(str)));
+}
 
 function toBase64Url(str) {
   return String(str || "")
@@ -134,101 +134,8 @@ function fromBase64Url(str) {
   return s;
 }
 
-function bytesToBase64(bytes) {
-  const arr = bytes instanceof Uint8Array ? bytes : new Uint8Array(bytes || []);
-  let binary = "";
-
-  for (let i = 0; i < arr.length; i += BASE64_CHUNK_SIZE) {
-    const chunk = arr.subarray(i, i + BASE64_CHUNK_SIZE);
-    binary += String.fromCharCode.apply(null, chunk);
-  }
-
-  return btoa(binary);
-}
-
-function base64ToBytes(base64) {
-  const binary = atob(fromBase64Url(base64));
-  const out = new Uint8Array(binary.length);
-
-  for (let i = 0; i < binary.length; i++) {
-    out[i] = binary.charCodeAt(i);
-  }
-
-  return out;
-}
-
-async function streamToUint8Array(stream) {
-  const reader = stream.getReader();
-  const chunks = [];
-  let total = 0;
-
-  while (true) {
-    const part = await reader.read();
-    if (part.done) break;
-
-    const value = part.value instanceof Uint8Array
-      ? part.value
-      : new Uint8Array(part.value || []);
-
-    chunks.push(value);
-    total += value.length;
-  }
-
-  const out = new Uint8Array(total);
-  let offset = 0;
-
-  for (let i = 0; i < chunks.length; i++) {
-    out.set(chunks[i], offset);
-    offset += chunks[i].length;
-  }
-
-  return out;
-}
-
-async function encodePayloadToken(payload) {
-  const json = typeof payload === "string"
-    ? payload
-    : JSON.stringify(payload);
-
-  const utf8 = new TextEncoder().encode(json);
-
-  if (typeof CompressionStream === "function") {
-    const compressed = await streamToUint8Array(
-      new Blob([utf8]).stream().pipeThrough(new CompressionStream("gzip"))
-    );
-
-    return TOKEN_CODEC_GZIP + toBase64Url(bytesToBase64(compressed));
-  }
-
-  return TOKEN_CODEC_PLAIN + toBase64Url(bytesToBase64(utf8));
-}
-
-async function decodePayloadToken(token) {
-  const raw = String(token || "");
-  if (!raw) return "";
-
-  if (raw.startsWith(TOKEN_CODEC_GZIP)) {
-    const compressed = base64ToBytes(raw.slice(TOKEN_CODEC_GZIP.length));
-
-    if (typeof DecompressionStream !== "function") {
-      throw new Error(
-        "Dieser Freeze-Link ist gzip-komprimiert, aber der Browser unterstützt keine Dekompression."
-      );
-    }
-
-    const decompressedStream =
-      new Blob([compressed]).stream().pipeThrough(new DecompressionStream("gzip"));
-
-    return await new Response(decompressedStream).text();
-  }
-
-  if (raw.startsWith(TOKEN_CODEC_PLAIN)) {
-    const plain = base64ToBytes(raw.slice(TOKEN_CODEC_PLAIN.length));
-    return new TextDecoder().decode(plain);
-  }
-
-  // Altlinks weiterhin unterstützen
-  return decodeURIComponent(escape(atob(fromBase64Url(raw))));
+function base64ToUtf8(str) {
+  return decodeURIComponent(escape(atob(fromBase64Url(str))));
 }
 
   function sleep(ms) {
@@ -956,29 +863,24 @@ function sanitizeMalformedSubmissionHash() {
     }
   }
 
-async function buildLink(payload) {
+function buildLink(payload) {
   const baseCourseUrl = stripSubmissionFromCourseUrl(getCourseUrlFromViewerUrl());
   if (!baseCourseUrl) return window.location.href;
 
-  const token = await encodePayloadToken(payload);
+  const rawToken = utf8ToBase64(JSON.stringify(payload));
+  const token = toBase64Url(rawToken);
 
   storeSubmissionToken(token);
-
-  log(
-    "token-built",
-    "codec=" + (
-      String(token || "").startsWith(TOKEN_CODEC_GZIP)
-        ? "gzip"
-        : "plain"
-    ),
-    "chars=" + String(token || "").length
-  );
 
   const viewerBase = window.location.href.split("?")[0].split("#")[0];
   const slideHash = /^#\d+$/.test(String(payload && payload.sh || ""))
     ? String(payload.sh)
     : "#1";
 
+  // WICHTIG:
+  // Token in die kodierte Kurs-URL legen, nicht in den Viewer-Hash.
+  // Dann kann LiaScript den Hash #7 normal benutzen, ohne uns das
+  // submission-Token wegzunormalisieren.
   const courseUrlWithSubmission =
     stripSubmissionFromCourseUrl(baseCourseUrl) +
     "#" +
@@ -994,20 +896,18 @@ async function buildLink(payload) {
   );
 }
 
-async function tryLoadSnapshot() {
-  const token = getSubmissionToken();
-  if (!token) return null;
+  function tryLoadSnapshot() {
+    const token = getSubmissionToken();
+    if (!token) return null;
 
-  try {
-    const json = await decodePayloadToken(token);
-    const obj = JSON.parse(json);
-    if (!obj || !Array.isArray(obj.s)) return null;
-    return obj;
-  } catch (e) {
-    warn("snapshot-decode-failed", e && e.message ? e.message : e);
-    return null;
+    try {
+      const obj = JSON.parse(base64ToUtf8(token));
+      if (!obj || !Array.isArray(obj.s)) return null;
+      return obj;
+    } catch (e) {
+      return null;
+    }
   }
-}
 
   // =========================================================
   // DOM / aktuelle Folie
@@ -10321,11 +10221,7 @@ async function activateSnapshotMode(payload, linkValue, opts) {
 
   snapshotPayload = payload || null;
   debugAnnotationProbe("activateSnapshotMode");
-  log(
-    "snapshot-loaded",
-    "slides=" + (Array.isArray(snapshotPayload && snapshotPayload.s) ? snapshotPayload.s.length : 0),
-    "sec=" + JSON.stringify(snapshotPayload && snapshotPayload.sec || {})
-  );
+  console.log("[LIA-FREEZE] snapshot-loaded", JSON.stringify(snapshotPayload));
   if (!snapshotPayload) return false;
 
   snapshotIsSharedLinkMode = !!opts.sharedLinkMode;
@@ -10407,12 +10303,8 @@ async function activateSnapshotMode(payload, linkValue, opts) {
       );
       console.warn("[LIA-FREEZE] AFTER-BUILD-PAYLOAD", BUILD_STAMP);
 
-      log(
-        "payload-before-link",
-        "slides=" + (Array.isArray(payload && payload.s) ? payload.s.length : 0),
-        "sec=" + JSON.stringify(payload && payload.sec || {})
-      );
-      const link = await buildLink(payload);
+      console.log("[LIA-FREEZE] payload-before-link", JSON.stringify(payload));
+      const link = buildLink(payload);
 
       freezeLinkValue = link;
 
@@ -10465,7 +10357,7 @@ async function initMode() {
     storeSubmissionToken(directToken);
   }
 
-  const snapshot = await tryLoadSnapshot();
+  const snapshot = tryLoadSnapshot();
 
   if (snapshot) {
     await activateSnapshotMode(snapshot, window.location.href, {
@@ -10909,54 +10801,6 @@ Kommentare werden auch eingefroren
 Einfach noch ein KaTeX-Testfeld: [[     passt     ]]  @canvas
 
 @ADetails(0=BE)
-
-
-
-# Mehr Canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-
-# Abgabe mit mehr Canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
-[[ 0 ]] @canvas
-
 
 
 
