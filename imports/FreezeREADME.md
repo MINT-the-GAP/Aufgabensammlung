@@ -12,7 +12,6 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/KoordREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/OCRREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/AnnotationREADME.md
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FlexChildREADME.md
 
 
 
@@ -36,7 +35,6 @@ window.__liaSubmissionDemo = (function () {
   let snapshotPayload = null;
   let declaredSlidesCache = [];
   let liveSlidesByHash = Object.create(null);
-  let preservedLiveSlidesByHash = Object.create(null);
 
   let routeBridgeInstalled = false;
   let liveBindingsInstalled = false;
@@ -113,9 +111,9 @@ window.__liaSubmissionDemo = (function () {
   // Utilities
   // =========================================================
 
-const TOKEN_CODEC_GZIP = "gz:";
-const TOKEN_CODEC_PLAIN = "b64:";
-const BASE64_CHUNK_SIZE = 0x8000;
+function utf8ToBase64(str) {
+  return btoa(unescape(encodeURIComponent(str)));
+}
 
 function toBase64Url(str) {
   return String(str || "")
@@ -136,101 +134,8 @@ function fromBase64Url(str) {
   return s;
 }
 
-function bytesToBase64(bytes) {
-  const arr = bytes instanceof Uint8Array ? bytes : new Uint8Array(bytes || []);
-  let binary = "";
-
-  for (let i = 0; i < arr.length; i += BASE64_CHUNK_SIZE) {
-    const chunk = arr.subarray(i, i + BASE64_CHUNK_SIZE);
-    binary += String.fromCharCode.apply(null, chunk);
-  }
-
-  return btoa(binary);
-}
-
-function base64ToBytes(base64) {
-  const binary = atob(fromBase64Url(base64));
-  const out = new Uint8Array(binary.length);
-
-  for (let i = 0; i < binary.length; i++) {
-    out[i] = binary.charCodeAt(i);
-  }
-
-  return out;
-}
-
-async function streamToUint8Array(stream) {
-  const reader = stream.getReader();
-  const chunks = [];
-  let total = 0;
-
-  while (true) {
-    const part = await reader.read();
-    if (part.done) break;
-
-    const value = part.value instanceof Uint8Array
-      ? part.value
-      : new Uint8Array(part.value || []);
-
-    chunks.push(value);
-    total += value.length;
-  }
-
-  const out = new Uint8Array(total);
-  let offset = 0;
-
-  for (let i = 0; i < chunks.length; i++) {
-    out.set(chunks[i], offset);
-    offset += chunks[i].length;
-  }
-
-  return out;
-}
-
-async function encodePayloadToken(payload) {
-  const json = typeof payload === "string"
-    ? payload
-    : JSON.stringify(payload);
-
-  const utf8 = new TextEncoder().encode(json);
-
-  if (typeof CompressionStream === "function") {
-    const compressed = await streamToUint8Array(
-      new Blob([utf8]).stream().pipeThrough(new CompressionStream("gzip"))
-    );
-
-    return TOKEN_CODEC_GZIP + toBase64Url(bytesToBase64(compressed));
-  }
-
-  return TOKEN_CODEC_PLAIN + toBase64Url(bytesToBase64(utf8));
-}
-
-async function decodePayloadToken(token) {
-  const raw = String(token || "");
-  if (!raw) return "";
-
-  if (raw.startsWith(TOKEN_CODEC_GZIP)) {
-    const compressed = base64ToBytes(raw.slice(TOKEN_CODEC_GZIP.length));
-
-    if (typeof DecompressionStream !== "function") {
-      throw new Error(
-        "Dieser Freeze-Link ist gzip-komprimiert, aber der Browser unterstützt keine Dekompression."
-      );
-    }
-
-    const decompressedStream =
-      new Blob([compressed]).stream().pipeThrough(new DecompressionStream("gzip"));
-
-    return await new Response(decompressedStream).text();
-  }
-
-  if (raw.startsWith(TOKEN_CODEC_PLAIN)) {
-    const plain = base64ToBytes(raw.slice(TOKEN_CODEC_PLAIN.length));
-    return new TextDecoder().decode(plain);
-  }
-
-  // Altlinks weiterhin unterstützen
-  return decodeURIComponent(escape(atob(fromBase64Url(raw))));
+function base64ToUtf8(str) {
+  return decodeURIComponent(escape(atob(fromBase64Url(str))));
 }
 
   function sleep(ms) {
@@ -958,29 +863,24 @@ function sanitizeMalformedSubmissionHash() {
     }
   }
 
-async function buildLink(payload) {
+function buildLink(payload) {
   const baseCourseUrl = stripSubmissionFromCourseUrl(getCourseUrlFromViewerUrl());
   if (!baseCourseUrl) return window.location.href;
 
-  const token = await encodePayloadToken(payload);
+  const rawToken = utf8ToBase64(JSON.stringify(payload));
+  const token = toBase64Url(rawToken);
 
   storeSubmissionToken(token);
-
-  log(
-    "token-built",
-    "codec=" + (
-      String(token || "").startsWith(TOKEN_CODEC_GZIP)
-        ? "gzip"
-        : "plain"
-    ),
-    "chars=" + String(token || "").length
-  );
 
   const viewerBase = window.location.href.split("?")[0].split("#")[0];
   const slideHash = /^#\d+$/.test(String(payload && payload.sh || ""))
     ? String(payload.sh)
     : "#1";
 
+  // WICHTIG:
+  // Token in die kodierte Kurs-URL legen, nicht in den Viewer-Hash.
+  // Dann kann LiaScript den Hash #7 normal benutzen, ohne uns das
+  // submission-Token wegzunormalisieren.
   const courseUrlWithSubmission =
     stripSubmissionFromCourseUrl(baseCourseUrl) +
     "#" +
@@ -996,20 +896,18 @@ async function buildLink(payload) {
   );
 }
 
-async function tryLoadSnapshot() {
-  const token = getSubmissionToken();
-  if (!token) return null;
+  function tryLoadSnapshot() {
+    const token = getSubmissionToken();
+    if (!token) return null;
 
-  try {
-    const json = await decodePayloadToken(token);
-    const obj = JSON.parse(json);
-    if (!obj || !Array.isArray(obj.s)) return null;
-    return obj;
-  } catch (e) {
-    warn("snapshot-decode-failed", e && e.message ? e.message : e);
-    return null;
+    try {
+      const obj = JSON.parse(base64ToUtf8(token));
+      if (!obj || !Array.isArray(obj.s)) return null;
+      return obj;
+    } catch (e) {
+      return null;
+    }
   }
-}
 
   // =========================================================
   // DOM / aktuelle Folie
@@ -3428,33 +3326,18 @@ function isCanvasBgDefaultForFreezeUrl(bg) {
 }
 
 function isCanvasStateTrulyEmptyForFreezeUrl(state) {
-  if (!state || typeof state !== "object") return true;
+  if (!state || typeof state !== "object") return false;
 
-  // Bereits komprimiertes Format (cv2)
-  if (state.v === CANVAS_CODEC_VERSION) {
-    const items = Array.isArray(state.i) ? state.i : [];
-    const w = Number(state.w || 0) || 0;
-    const h = Number(state.h || 0) || 0;
-    const bgDefault = !state.bg || String(state.bg.m || "") === "none";
-
-    return items.length === 0 && bgDefault && w === 0 && h === 0;
-  }
-
-  // Rohformat / altes Format
   const items = Array.isArray(state.it) ? state.it : [];
   const w = Number(state.w || 0) || 0;
   const h = Number(state.h || 0) || 0;
-  const bgDefault = !state.bg || String(state.bg.m || "") === "none";
+  const bgDefault = isCanvasBgDefaultForFreezeUrl(state.bg);
 
-  const looksLikeKnownRaw =
-    Object.prototype.hasOwnProperty.call(state, "it") ||
-    Object.prototype.hasOwnProperty.call(state, "bg") ||
-    Object.prototype.hasOwnProperty.call(state, "w") ||
-    Object.prototype.hasOwnProperty.call(state, "h");
-
-  // Unbekannte Struktur niemals aggressiv wegwerfen
-  if (!looksLikeKnownRaw) return false;
-
+  // NUR dann leer:
+  // - keine Items
+  // - kein Hintergrund
+  // - Breite 0
+  // - Höhe 0
   return items.length === 0 && bgDefault && w === 0 && h === 0;
 }
 
@@ -3606,14 +3489,12 @@ function expandCanvasPathItemFromFreezeUrl(entry, colors) {
 function compactSingleCanvasStateForFreezeUrl(state) {
   if (!state || typeof state !== "object") return null;
 
-  // Bereits komprimiert: zuerst erhalten, nicht vorher leerprüfen
+  // Bereits komprimiert
   if (state.v === CANVAS_CODEC_VERSION) {
-    return isCanvasStateTrulyEmptyForFreezeUrl(state)
-      ? null
-      : copyJson(state);
+    return copyJson(state);
   }
 
-  // Nur bekannte Rohformate leerwerfen
+  // Nur wirklich komplett leere Canvas verwerfen
   if (isCanvasStateTrulyEmptyForFreezeUrl(state)) {
     return null;
   }
@@ -3630,7 +3511,8 @@ function compactSingleCanvasStateForFreezeUrl(state) {
       colorIndex
     );
 
-    // Unbekannten Typ nicht zerstören, sondern roh erhalten
+    // Falls ein unbekannter Item-Typ auftaucht:
+    // lieber roh behalten als kaputt komprimieren
     if (!compactItem) {
       return copyJson(state);
     }
@@ -3705,10 +3587,9 @@ function expandCanvasStateFromFreezeUrl(state) {
 }
 
 function compactCanvasStatesForFreezeUrl(states) {
-  const input = Array.isArray(states) ? states.filter(Boolean) : [];
-  if (!input.length) return [];
+  if (!Array.isArray(states) || !states.length) return [];
 
-  const compacted = input
+  const compacted = states
     .map(function (state) {
       return compactSingleCanvasStateForFreezeUrl(state);
     })
@@ -3716,18 +3597,10 @@ function compactCanvasStatesForFreezeUrl(states) {
 
   log(
     "canvas-compact",
-    "before=" + input.length,
+    "before=" + states.length,
     "after=" + compacted.length,
-    "removed=" + Math.max(0, input.length - compacted.length)
+    "removed=" + Math.max(0, states.length - compacted.length)
   );
-
-  // WICHTIG:
-  // Wenn vorher Canvas da waren, nach der Kompaktierung aber plötzlich keine
-  // mehr übrig bleiben, dann behalten wir die Rohdaten statt alles zu verlieren.
-  if (!compacted.length && input.length) {
-    warn("canvas-compact-fallback-keep-raw", "count=" + input.length);
-    return copyJson(input);
-  }
 
   return compacted;
 }
@@ -3779,6 +3652,10 @@ function compactSlideStateForFreezeUrl(slide) {
   if (mq.length) out.mq = mq;
   if (cv.length) out.cv = cv;
   if (gm) out.gm = gm;
+
+  if (Object.keys(out).length === 1) {
+    return null;
+  }
 
   return out;
 }
@@ -4079,9 +3956,7 @@ function compactPayloadForFreezeUrl(payload) {
   }
 
   const slides = Array.isArray(payload && payload.s) ? payload.s : [];
-  out.s = slides.map(function (slide) {
-    return compactSlideStateForFreezeUrl(slide);
-  });
+  out.s = slides.map(compactSlideStateForFreezeUrl).filter(Boolean);
 
   const compactAf = compressAnnotationFreezeStateForFreezeUrl(payload && payload.af);
 
@@ -4103,44 +3978,6 @@ function compactPayloadForFreezeUrl(payload) {
 
 
 
-function getCanvasFreezeStateItemCount(state) {
-  const s = expandCanvasStateFromFreezeUrl(state) || state || {};
-
-  if (Array.isArray(s.it)) return s.it.length;
-  if (Array.isArray(s.i)) return s.i.length;
-  if (Array.isArray(s.items)) return s.items.length;
-
-  return 0;
-}
-
-function getCanvasFreezeStatesScore(states) {
-  const arr = Array.isArray(states) ? states : [];
-
-  return arr.reduce(function (sum, state) {
-    const s = expandCanvasStateFromFreezeUrl(state) || state || {};
-    let score = 0;
-
-    score += getCanvasFreezeStateItemCount(s) * 1000;
-
-    if (Number(s.w || 0) > 0) score += 10;
-    if (Number(s.h || 0) > 0) score += 10;
-
-    if (s.bg && String(s.bg.m || "") !== "none") score += 5;
-
-    if (typeof s.img === "string" && s.img) score += 500;
-    if (typeof s.dataUrl === "string" && s.dataUrl) score += 500;
-
-    if (Number(s.e || 0) === 1) score -= 10000;
-
-    return sum + score;
-  }, 0);
-}
-
-function cloneSlideStateOrNull(state) {
-  if (!state) return null;
-  return copyJson(state) || null;
-}
-
 
 
 async function buildPayloadFromAllSlides() {
@@ -4151,17 +3988,7 @@ async function buildPayloadFromAllSlides() {
   const startHash = getCurrentHash();
   const displayName = getDisplayName();
 
-  const preservedLiveSlidesByHash = liveSlidesByHash || Object.create(null);
-  const nextLiveSlidesByHash = Object.create(null);
-
-  Object.keys(preservedLiveSlidesByHash).forEach(function (hash) {
-    const cloned = cloneSlideStateOrNull(preservedLiveSlidesByHash[hash]);
-    if (cloned) {
-      nextLiveSlidesByHash[hash] = cloned;
-    }
-  });
-
-  liveSlidesByHash = nextLiveSlidesByHash;
+  liveSlidesByHash = Object.create(null);
 
   for (let i = 0; i < declared.length; i++) {
     const slide = declared[i];
@@ -7493,83 +7320,6 @@ function countLiveSupportedControlsForHash(hash) {
     return true;
   }
 
-async function waitForImagesInHost(host, timeoutMs) {
-  const scope = host || getContentHost() || document.body;
-  if (!scope || !scope.querySelectorAll) return;
-
-  const pending = Array.from(scope.querySelectorAll("img")).filter(function (img) {
-    return img && typeof img.complete === "boolean" && !img.complete;
-  });
-
-  if (!pending.length) return;
-
-  await Promise.race([
-    Promise.allSettled(
-      pending.map(function (img) {
-        return new Promise(function (resolve) {
-          const done = function () { resolve(); };
-          img.addEventListener("load", done, { once: true });
-          img.addEventListener("error", done, { once: true });
-        });
-      })
-    ),
-    sleep(timeoutMs || 1800)
-  ]);
-}
-
-async function waitForStableCanvasPairsInHost(host, opts) {
-  opts = opts || {};
-
-  const stableHitsNeeded = Number(opts.stableHits || 2) || 2;
-  const pollMs = Number(opts.pollMs || 120) || 120;
-  const timeoutMs = Number(opts.timeoutMs || 2400) || 2400;
-
-  let lastCount = -1;
-  let stableHits = 0;
-  const start = Date.now();
-
-  while (Date.now() - start < timeoutMs) {
-    const scope = getCanvasFreezeScopeHost(host || getContentHost() || document.body);
-    const count = collectCanvasFreezePairsFromRoot(scope).length;
-
-    if (count === lastCount) {
-      stableHits += 1;
-      if (stableHits >= stableHitsNeeded) {
-        log("canvas-pairs-stable", "count=" + count);
-        return count;
-      }
-    } else {
-      lastCount = count;
-      stableHits = 0;
-    }
-
-    await sleep(pollMs);
-  }
-
-  log("canvas-pairs-stable-timeout", "count=" + Math.max(0, lastCount));
-  return Math.max(0, lastCount);
-}
-
-async function waitForSlideCaptureSettle(hash) {
-  const wantedHash = cleanHashValue(hash || "");
-  if (!wantedHash) return false;
-
-  const ready = await waitForSlideReady(wantedHash, 3200);
-  if (!ready) return false;
-
-  const host = getContentHost() || document.body;
-
-  await waitForImagesInHost(host, 1800);
-  await waitForStableCanvasPairsInHost(host, {
-    stableHits: 2,
-    pollMs: 120,
-    timeoutMs: 2400
-  });
-
-  await sleep(140);
-  return true;
-}
-
   async function waitForSlideReady(hash, timeoutMs) {
     const timeout = timeoutMs || 2600;
     const start = Date.now();
@@ -7932,46 +7682,42 @@ function schedulePostApplyReinforcement(hash, reason, delays) {
 function getCanvasFreezeScopeHost(root) {
   const candidates = uniqueElements([
     root,
-    getContentHost(),
-    getSlideRootFromVisibleHeading(),
     getBaseContentHost(),
     document.querySelector(".lia-slide__content"),
     document.querySelector(".lia-content"),
-    document.querySelector("main")
+    document.querySelector("main"),
+    document.body
   ]).filter(function (el) {
     return !!(el && el instanceof Element);
   });
 
-  for (let i = 0; i < candidates.length; i++) {
-    const el = candidates[i];
-    if (isRenderedElement(el) || hasRenderedSelfOrDescendant(el)) {
-      return el;
+  let best = null;
+  let bestArea = -1;
+
+  candidates.forEach(function (el) {
+    if (!isRenderedElement(el) && !hasRenderedSelfOrDescendant(el)) return;
+
+    const r = el.getBoundingClientRect();
+    const area = Math.max(0, r.width) * Math.max(0, r.height);
+
+    if (area > bestArea) {
+      best = el;
+      bestArea = area;
     }
+  });
+
+  return best || root || getBaseContentHost() || document.body;
+}
+
+  function collectCanvasFreezePairsFromRoot(root) {
+    const api = getCanvasFreezeApi();
+    if (!api || typeof api.collectCanvasPairsFromRoot !== "function") return [];
+
+    const pairs = api.collectCanvasPairsFromRoot(root || document.body) || [];
+    return uniqueElements(pairs.filter(function (el) {
+      return !!(el && el instanceof Element);
+    }));
   }
-
-  return root || getContentHost() || getBaseContentHost() || document.body;
-}
-
-function collectCanvasFreezePairsFromRoot(root) {
-  const api = getCanvasFreezeApi();
-  if (!api || typeof api.collectCanvasPairsFromRoot !== "function") return [];
-
-  // Für Canvas bewusst NICHT den getContentHost-/section-Host benutzen.
-  // LiaScript zeigt effektiv nur die aktuelle Folie sichtbar an;
-  // deshalb sammeln wir global und filtern auf wirklich gerenderte Elemente.
-  const scope = document.body || document.documentElement;
-  const pairs = api.collectCanvasPairsFromRoot(scope) || [];
-
-  return uniqueElements(
-    pairs.filter(function (el) {
-      if (!(el && el instanceof Element)) return false;
-      if (el.closest("#lia-freeze-bar")) return false;
-      if (el.closest(".lia-submit-box")) return false;
-
-      return isRenderedElement(el) || hasRenderedSelfOrDescendant(el);
-    })
-  );
-}
 
   function getCanvasFreezeUidFromPair(pair) {
     const api = getCanvasFreezeApi();
@@ -8074,12 +7820,13 @@ function captureCanvasFreezeStatesFromRoot(root) {
     return [];
   }
 
-  const pairs = collectCanvasFreezePairsFromRoot(root);
+  const scope = getCanvasFreezeScopeHost(root);
+  const pairs = collectCanvasFreezePairsFromRoot(scope);
   const out = [];
 
   log(
     "canvas-capture-scope",
-    "mode=global-visible",
+    "tag=" + String(scope && scope.tagName || ""),
     "pairs=" + pairs.length
   );
 
@@ -8103,7 +7850,8 @@ function applyStoredCanvasStatesToHost(host, storedStates) {
     return [];
   }
 
-  const livePairs = collectCanvasFreezePairsFromRoot(host);
+  const scope = getCanvasFreezeScopeHost(host);
+  const livePairs = scope ? collectCanvasFreezePairsFromRoot(scope) : [];
   const states = Array.isArray(storedStates) ? storedStates : [];
   const used = new Set();
   const applied = [];
@@ -8648,15 +8396,8 @@ function captureSlideStateForHash(hash) {
   const cleanHash = cleanHashValue(hash || "");
   if (!/^#\d+$/.test(cleanHash)) return null;
 
-  const currentHash = cleanHashValue(getCurrentHash() || "");
-  const renderedHash = cleanHashValue(
-    getRenderedVisibleDeclaredHash() || currentHash || ""
-  );
-
-  // Wichtig:
-  // Nicht blind den bereits umgesprungenen URL-Hash als Wahrheit nehmen,
-  // sondern die Folie capturen, die gerade tatsächlich noch im DOM sichtbar ist.
-  if (String(renderedHash) !== String(cleanHash)) {
+  const currentHash = getCurrentHash();
+  if (String(currentHash) !== String(cleanHash)) {
     return null;
   }
 
@@ -8827,117 +8568,44 @@ function storeLiveSlideState(hash, source) {
 
 
 
-async function buildPayloadFromAllSlides() {
+async function buildPayloadFromLiveStates() {
+  log("BUILD-PAYLOAD-ENTER");
+
+  const currentHash = liveRouteCurrentHash || getCurrentHash();
+  storeLiveSlideState(currentHash, "payload-final");
+
   const declared = getDeclaredSlides().filter(function (slide) {
     return !(slide && slide.vt === "evaluation");
   });
 
-  const startHash = cleanHashValue(getCurrentHash() || "#1");
-  const displayName = getDisplayName();
-
-  liveSlidesByHash = Object.create(null);
-
-  for (let i = 0; i < declared.length; i++) {
-    const slide = declared[i];
-    if (!slide || !slide.h) continue;
-
-    const targetHash = cleanHashValue(slide.h || "");
-    if (!/^#\d+$/.test(targetHash)) continue;
-
-    setStatus(
-      "Abgabelink wird erstellt … Folie " +
-      (i + 1) +
-      " / " +
-      declared.length
-    );
-
-    // WICHTIG:
-    // Kein setHashSilently(targetHash) vor dem echten Routing.
-    // Sonst ist window.location.hash = targetHash danach wirkungslos.
-    if (cleanHashValue(getCurrentHash() || "") !== targetHash) {
-      window.location.hash = targetHash;
-    }
-
-    const ready = await waitForSlideReady(targetHash, 3200);
-    const visibleHash = cleanHashValue(
-      getRenderedVisibleDeclaredHash() ||
-      getCurrentHash() ||
-      ""
-    );
-
-    if (!ready || visibleHash !== targetHash) {
-      warn("capture-all-not-settled", targetHash);
-
-      const cachedState = cloneSlideStateOrNull(preservedLiveSlidesByHash[targetHash]);
-      liveSlidesByHash[targetHash] = cachedState || makeEmptySlideState(targetHash);
-
-      if (cachedState) {
-        log(
-          "capture-all-use-live-cache",
-          targetHash,
-          "canvasScore=" + getCanvasFreezeStatesScore(cachedState.cv)
-        );
-      }
-
-      continue;
-    }
-
-    await sleep(160);
-    captureAdminState();
-
-    const freshState = captureSlideStateForHash(targetHash) || makeEmptySlideState(targetHash);
-    const cachedState = cloneSlideStateOrNull(preservedLiveSlidesByHash[targetHash]);
-
-    if (cachedState) {
-      const freshCanvasScore = getCanvasFreezeStatesScore(freshState.cv);
-      const cachedCanvasScore = getCanvasFreezeStatesScore(cachedState.cv);
-
-      if (cachedCanvasScore > freshCanvasScore) {
-        freshState.cv = copyJson(cachedState.cv) || [];
-        log(
-          "capture-all-canvas-from-live-cache",
-          targetHash,
-          "freshScore=" + freshCanvasScore,
-          "cachedScore=" + cachedCanvasScore
-        );
-      }
-    }
-
-    liveSlidesByHash[targetHash] = freshState;
-
-    log(
-      "capture-all-final",
-      targetHash,
-      "canvas=" + (
-        freshState && Array.isArray(freshState.cv)
-          ? freshState.cv.length
-          : 0
-      ),
-      "canvasScore=" + getCanvasFreezeStatesScore(freshState.cv)
-    );
-  }
-
-  // Startfolie am Ende wieder normal ansteuern
-  if (cleanHashValue(getCurrentHash() || "") !== startHash) {
-    window.location.hash = startHash;
-    await waitForSlideReady(startHash, 3200);
-    await sleep(120);
-  }
-
   const payload = {
     v: PAYLOAD_VERSION,
-    sh: startHash,
-    n: displayName,
+    sh: getCurrentHash(),
+    n: getDisplayName(),
     s: declared.map(function (slide) {
       return liveSlidesByHash[slide.h] || makeEmptySlideState(slide.h);
     })
   };
 
   const annotationFullState = await captureFullAnnotationFreezeState();
+  log("ANNOTATION-EXPORT-ENTER");
 
   payload.af = annotationFullState;
   payload.anv = getAnnotationFreezeVisibleFlag(annotationFullState);
   payload.sec = getSerializableSecurityState();
+
+  log(
+    "payload-annotation",
+    annotationFullState ? "present=1" : "present=0",
+    "items=" + countAnnotationItemsInFreezePayload(annotationFullState)
+  );
+
+  log(
+    "payload-annotation-final",
+    payload.af ? "present=1" : "present=0",
+    payload.af ? describeAnnotationFreezePayload(payload.af) : "payload=<null>",
+    "items=" + countAnnotationItemsInFreezePayload(payload.af)
+  );
 
   return compactPayloadForFreezeUrl(payload);
 }
@@ -10553,11 +10221,7 @@ async function activateSnapshotMode(payload, linkValue, opts) {
 
   snapshotPayload = payload || null;
   debugAnnotationProbe("activateSnapshotMode");
-  log(
-    "snapshot-loaded",
-    "slides=" + (Array.isArray(snapshotPayload && snapshotPayload.s) ? snapshotPayload.s.length : 0),
-    "sec=" + JSON.stringify(snapshotPayload && snapshotPayload.sec || {})
-  );
+  console.log("[LIA-FREEZE] snapshot-loaded", JSON.stringify(snapshotPayload));
   if (!snapshotPayload) return false;
 
   snapshotIsSharedLinkMode = !!opts.sharedLinkMode;
@@ -10628,16 +10292,8 @@ async function activateSnapshotMode(payload, linkValue, opts) {
       captureAdminState();
       storeLiveSlideState(liveRouteCurrentHash || getCurrentHash(), "createLink");
 
-      // bisher schon im Live-Modus erfasste Folien sichern,
-      // damit buildPayloadFromAllSlides darauf zurückgreifen kann
-      preservedLiveSlidesByHash = copyJson(liveSlidesByHash) || Object.create(null);
-
       console.warn("[LIA-FREEZE] BEFORE-BUILD-PAYLOAD", BUILD_STAMP);
-      const fullPayload = await buildPayloadFromAllSlides();
-      const payload = compactPayloadForFreezeUrl(fullPayload);
-      
-      // Sicherung wieder leeren
-      preservedLiveSlidesByHash = Object.create(null);
+      const payload = await buildPayloadFromLiveStates();
       console.warn(
         "[LIA-FREEZE] payload-af-check",
         payload && payload.af ? "present" : "null",
@@ -10647,12 +10303,8 @@ async function activateSnapshotMode(payload, linkValue, opts) {
       );
       console.warn("[LIA-FREEZE] AFTER-BUILD-PAYLOAD", BUILD_STAMP);
 
-      log(
-        "payload-before-link",
-        "slides=" + (Array.isArray(payload && payload.s) ? payload.s.length : 0),
-        "sec=" + JSON.stringify(payload && payload.sec || {})
-      );
-      const link = await buildLink(payload);
+      console.log("[LIA-FREEZE] payload-before-link", JSON.stringify(payload));
+      const link = buildLink(payload);
 
       freezeLinkValue = link;
 
@@ -10705,7 +10357,7 @@ async function initMode() {
     storeSubmissionToken(directToken);
   }
 
-  const snapshot = await tryLoadSnapshot();
+  const snapshot = tryLoadSnapshot();
 
   if (snapshot) {
     await activateSnapshotMode(snapshot, window.location.href, {
@@ -11092,9 +10744,6 @@ $g)\;\;$ $6000+123=$ [[  6123  ]] m @canvas
 @ADetails(1=BE;Einheiten,Addition)
 
 
-
-
-
 # Brüche darstellen
 
 **Stelle** die passende Teilung der Fläche **ein** und **markiere** den passenden Anteil, sodass der Bruch dargestellt wird.
@@ -11125,8 +10774,6 @@ $e)\;\;$ $6000+123=$ [[  6123  ]] m @canvas
 
 
 
-
-
 # Markerquiz
 
 
@@ -11154,11 +10801,6 @@ Kommentare werden auch eingefroren
 Einfach noch ein KaTeX-Testfeld: [[     passt     ]]  @canvas
 
 @ADetails(0=BE)
-
-
-
-
-
 
 
 
