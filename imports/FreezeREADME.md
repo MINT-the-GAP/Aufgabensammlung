@@ -5,6 +5,7 @@ author: Martin Lommatzsch
 comment: LiaScript-Abgabelink mit exakterer Zustandsprotokollierung und Freeze
 
 
+import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MatheREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/DeutschREADME.md
@@ -12,6 +13,8 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/KoordREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/OCRREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/AnnotationREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FlexChildREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/TafelREADME.md
 
 
 
@@ -586,9 +589,23 @@ function cleanHashValue(raw) {
         const bs = Math.max(0, br.width) * Math.max(0, br.height);
         return bs - as;
       });
-      return candidates[0];
+
+      const picked = candidates[0];
+      const r = picked.getBoundingClientRect();
+
+      log(
+        "host-pick",
+        "tag=" + String(picked.tagName || ""),
+        "id=" + String(picked.id || ""),
+        "class=" + normalizeSpace(picked.className || ""),
+        "w=" + Math.round(r.width),
+        "h=" + Math.round(r.height)
+      );
+
+      return picked;
     }
 
+    log("host-pick", "fallback=BODY");
     return document.body;
   }
 
@@ -7747,20 +7764,48 @@ function countLiveSupportedControlsForHash(hash) {
 
   function isSlideReadyForApply(hash) {
     const current = String(getCurrentHash() || "");
-    if (current !== String(hash || "")) return false;
+    if (current !== String(hash || "")) {
+      log("ready-fail", "reason=hash", "wanted=" + String(hash || ""), "current=" + current);
+      return false;
+    }
 
     const host = getContentHost() || document.body;
-    if (!host) return false;
-    if (!hasRenderedSelfOrDescendant(host)) return false;
+    if (!host) {
+      log("ready-fail", "reason=no-host");
+      return false;
+    }
+    if (!hasRenderedSelfOrDescendant(host)) {
+      log(
+        "ready-fail",
+        "reason=host-not-rendered",
+        "tag=" + String(host.tagName || ""),
+        "id=" + String(host.id || ""),
+        "class=" + normalizeSpace(host.className || "")
+      );
+      return false;
+    }
 
     const desc = getCurrentSlideDescriptor();
-    if (!descriptorLooksMaterialized(desc)) return false;
+    if (!descriptorLooksMaterialized(desc)) {
+      log(
+        "ready-fail",
+        "reason=descriptor",
+        JSON.stringify(desc)
+      );
+      return false;
+    }
 
     const decl = getDeclaredSlideByHash(hash);
     const expectedTitle = normalizeSpace(decl && decl.t || "");
     const actualTitle = normalizeSpace(desc.t || "");
 
     if (expectedTitle && actualTitle && expectedTitle !== actualTitle) {
+      log(
+        "ready-fail",
+        "reason=title",
+        "expected=" + expectedTitle,
+        "actual=" + actualTitle
+      );
       return false;
     }
 
@@ -7769,8 +7814,45 @@ function countLiveSupportedControlsForHash(hash) {
 
     const expectedControls = countExpectedControls(slide);
     if (expectedControls > 0) {
-      const liveControls = countLiveSupportedControlsForHash(hash);
-      if (liveControls < expectedControls) return false;
+      const liveText = getTextQuizInputsFromRoot(host).length;
+      const liveDropdown = getDropdownQuizControlsFromRoot(host).length;
+      const liveTile = getTileQuizTargetsFromRoot(host).length;
+      const liveChoice = getChoiceQuizInputsFromRoot(host).length;
+      const liveOrtho = collectOrthographyQuizRootsFromRoot(host).length;
+      const liveFraction = collectFractionQuizRootsFromRoot(host).length;
+      const liveMarker = collectMarkerQuizRootsFromRoot(host).length;
+      const liveCanvas = collectCanvasFreezePairsFromRoot(host).length;
+
+      const liveControls =
+        liveText +
+        liveDropdown +
+        liveTile +
+        liveChoice +
+        liveOrtho +
+        liveFraction +
+        liveMarker +
+        liveCanvas;
+
+      if (liveControls < expectedControls) {
+        log(
+          "ready-fail",
+          "reason=controls",
+          "expected=" + expectedControls,
+          "live=" + liveControls,
+          "text=" + liveText,
+          "dropdown=" + liveDropdown,
+          "tile=" + liveTile,
+          "choice=" + liveChoice,
+          "ortho=" + liveOrtho,
+          "fraction=" + liveFraction,
+          "marker=" + liveMarker,
+          "canvas=" + liveCanvas,
+          "hostTag=" + String(host.tagName || ""),
+          "hostId=" + String(host.id || ""),
+          "hostClass=" + normalizeSpace(host.className || "")
+        );
+        return false;
+      }
     }
 
     return true;
@@ -11253,6 +11335,8 @@ __$c)\;\;$__ $\dfrac{1}{3}$
 $e)\;\;$ $6000+123=$ [[  6123  ]] m @canvas
 
 @ADetails(1=BE;Einheiten,Addition)
+
+
 
 
 
