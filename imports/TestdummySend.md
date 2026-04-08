@@ -11,7 +11,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MarkerREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/KoordREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/OCRREADME.md
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/AnnotationREADME.md?cb=2
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/AnnotationREADME.md
 
 
 
@@ -114,6 +114,249 @@ window.__liaSubmissionDemo = (function () {
 function utf8ToBase64(str) {
   return btoa(unescape(encodeURIComponent(str)));
 }
+
+function uint8ArrayToBase64Url(bytes) {
+  const arr = bytes instanceof Uint8Array ? bytes : new Uint8Array(bytes || []);
+  let binary = "";
+  const chunkSize = 0x8000;
+
+  for (let i = 0; i < arr.length; i += chunkSize) {
+    const chunk = arr.subarray(i, i + chunkSize);
+    binary += String.fromCharCode.apply(null, chunk);
+  }
+
+  return toBase64Url(btoa(binary));
+}
+
+function base64UrlToUint8Array(token) {
+  const b64 = fromBase64Url(token);
+  const binary = atob(b64);
+  const out = new Uint8Array(binary.length);
+
+  for (let i = 0; i < binary.length; i++) {
+    out[i] = binary.charCodeAt(i);
+  }
+
+  return out;
+}
+
+async function readStreamToUint8Array(stream) {
+  const response = new Response(stream);
+  const buffer = await response.arrayBuffer();
+  return new Uint8Array(buffer);
+}
+
+async function gzipCompressUtf8ToBase64UrlToken(str) {
+  if (typeof CompressionStream !== "function") {
+    throw new Error("CompressionStream wird in diesem Browser nicht unterstützt.");
+  }
+
+  const inputBytes = new TextEncoder().encode(String(str || ""));
+  const compressedStream =
+    new Blob([inputBytes])
+      .stream()
+      .pipeThrough(new CompressionStream("gzip"));
+
+  const compressedBuffer = await new Response(compressedStream).arrayBuffer();
+  return uint8ArrayToBase64Url(new Uint8Array(compressedBuffer));
+}
+
+async function gzipDecompressBase64UrlTokenToUtf8(token) {
+  if (typeof DecompressionStream !== "function") {
+    throw new Error("DecompressionStream wird in diesem Browser nicht unterstützt.");
+  }
+
+  const compressedBytes = base64UrlToUint8Array(token);
+  const decompressedStream =
+    new Blob([compressedBytes])
+      .stream()
+      .pipeThrough(new DecompressionStream("gzip"));
+
+  const decompressedBuffer = await new Response(decompressedStream).arrayBuffer();
+  return new TextDecoder().decode(new Uint8Array(decompressedBuffer));
+}
+
+async function runCompressionCoreSelfTest(sampleText) {
+  const sample = String(
+    sampleText ||
+    JSON.stringify({
+      v: "compression-self-test",
+      txt: "Dies ist ein Test für die Browser-Kompression.",
+      arr: ["canvas", "freeze", "token", "gzip", "base64url"],
+      nested: {
+        a: 1,
+        b: 2,
+        c: "wiederholte wiederholte wiederholte Daten"
+      }
+    })
+  );
+
+  try {
+    const plainBytes = new TextEncoder().encode(sample);
+    const token = await gzipCompressUtf8ToBase64UrlToken(sample);
+    const roundtrip = await gzipDecompressBase64UrlTokenToUtf8(token);
+
+    const ok = roundtrip === sample;
+
+    log(
+      "compression-self-test",
+      "ok=" + (ok ? "1" : "0"),
+      "plainChars=" + sample.length,
+      "plainBytes=" + plainBytes.length,
+      "tokenChars=" + token.length
+    );
+
+    if (!ok) {
+      warn("compression-self-test-mismatch");
+    }
+
+    return {
+      ok: ok,
+      plainChars: sample.length,
+      plainBytes: plainBytes.length,
+      tokenChars: token.length,
+      token: token,
+      roundtrip: roundtrip
+    };
+  } catch (err) {
+    warn(
+      "compression-self-test-failed",
+      err && err.message ? err.message : err
+    );
+
+    return {
+      ok: false,
+      error: err && err.message ? err.message : String(err)
+    };
+  }
+}
+
+
+const SNAPSHOT_TOKEN_GZIP_PREFIX = "gz:";
+
+function encodeSnapshotTokenPlain(payload) {
+  return toBase64Url(utf8ToBase64(JSON.stringify(payload)));
+}
+
+function decodeSnapshotTokenPlain(token) {
+  return JSON.parse(base64ToUtf8(token));
+}
+
+async function encodeSnapshotToken(payload) {
+  const json = JSON.stringify(payload);
+  const plainToken = toBase64Url(utf8ToBase64(json));
+
+  let gzipToken = null;
+
+  try {
+    const compressed = await gzipCompressUtf8ToBase64UrlToken(json);
+    gzipToken = SNAPSHOT_TOKEN_GZIP_PREFIX + compressed;
+  } catch (err) {
+    log(
+      "snapshot-token-encode-gzip-skip",
+      err && err.message ? err.message : err
+    );
+  }
+
+  if (gzipToken && gzipToken.length < plainToken.length) {
+    return {
+      token: gzipToken,
+      mode: "gzip",
+      plainLength: plainToken.length,
+      finalLength: gzipToken.length
+    };
+  }
+
+  return {
+    token: plainToken,
+    mode: "plain",
+    plainLength: plainToken.length,
+    finalLength: plainToken.length
+  };
+}
+
+async function decodeSnapshotToken(token) {
+  const raw = String(token || "");
+  if (!raw) {
+    throw new Error("Leerer Snapshot-Token.");
+  }
+
+  if (raw.startsWith(SNAPSHOT_TOKEN_GZIP_PREFIX)) {
+    const compressedPart = raw.slice(SNAPSHOT_TOKEN_GZIP_PREFIX.length);
+    const json = await gzipDecompressBase64UrlTokenToUtf8(compressedPart);
+    return JSON.parse(json);
+  }
+
+  return JSON.parse(base64ToUtf8(raw));
+}
+
+async function runSnapshotTokenSelfTest(samplePayload) {
+  const payload = samplePayload && typeof samplePayload === "object"
+    ? samplePayload
+    : {
+        v: "snapshot-token-self-test",
+        sh: "#1",
+        s: [
+          {
+            h: "#1",
+            cv: [
+              {
+                v: "cv2",
+                u: "demo_0",
+                w: 500,
+                h: 200,
+                c: ["#fff"],
+                i: [
+                  [0, 0, 3, "k.a2.0.7.0.9.4.h.0.h.2.r.2.11.4.15.6.11.6.z.4.n.6.j.6.f"]
+                ]
+              }
+            ]
+          }
+        ]
+      };
+
+  try {
+    const originalJson = JSON.stringify(payload);
+    const encoded = await encodeSnapshotToken(payload);
+    const decoded = await decodeSnapshotToken(encoded.token);
+    const decodedJson = JSON.stringify(decoded);
+
+    const ok = decodedJson === originalJson;
+
+    log(
+      "snapshot-token-self-test",
+      "ok=" + (ok ? "1" : "0"),
+      "mode=" + encoded.mode,
+      "plainLength=" + encoded.plainLength,
+      "finalLength=" + encoded.finalLength
+    );
+
+    if (!ok) {
+      warn("snapshot-token-self-test-mismatch");
+    }
+
+    return {
+      ok: ok,
+      mode: encoded.mode,
+      plainLength: encoded.plainLength,
+      finalLength: encoded.finalLength,
+      token: encoded.token,
+      original: payload,
+      decoded: decoded
+    };
+  } catch (err) {
+    warn(
+      "snapshot-token-self-test-failed",
+      err && err.message ? err.message : err
+    );
+
+    return {
+      ok: false,
+      error: err && err.message ? err.message : String(err)
+    };
+  }
+}
+
 
 function toBase64Url(str) {
   return String(str || "")
@@ -863,12 +1106,19 @@ function sanitizeMalformedSubmissionHash() {
     }
   }
 
-function buildLink(payload) {
+async function buildLink(payload) {
   const baseCourseUrl = stripSubmissionFromCourseUrl(getCourseUrlFromViewerUrl());
   if (!baseCourseUrl) return window.location.href;
 
-  const rawToken = utf8ToBase64(JSON.stringify(payload));
-  const token = toBase64Url(rawToken);
+  const encoded = await encodeSnapshotToken(payload);
+  const token = encoded.token;
+
+  log(
+    "snapshot-token-encode",
+    "mode=" + encoded.mode,
+    "plainLength=" + encoded.plainLength,
+    "finalLength=" + encoded.finalLength
+  );
 
   storeSubmissionToken(token);
 
@@ -896,18 +1146,33 @@ function buildLink(payload) {
   );
 }
 
-  function tryLoadSnapshot() {
-    const token = getSubmissionToken();
-    if (!token) return null;
+async function tryLoadSnapshot() {
+  const token = getSubmissionToken();
+  if (!token) return null;
 
-    try {
-      const obj = JSON.parse(base64ToUtf8(token));
-      if (!obj || !Array.isArray(obj.s)) return null;
-      return obj;
-    } catch (e) {
-      return null;
-    }
+  try {
+    const obj = await decodeSnapshotToken(token);
+    if (!obj || !Array.isArray(obj.s)) return null;
+
+    log(
+      "snapshot-load-decoded",
+      "mode=" + (
+        String(token || "").startsWith(SNAPSHOT_TOKEN_GZIP_PREFIX)
+          ? "gzip"
+          : "plain"
+      ),
+      "slides=" + obj.s.length
+    );
+
+    return obj;
+  } catch (e) {
+    warn(
+      "snapshot-load-decode-failed",
+      e && e.message ? e.message : e
+    );
+    return null;
   }
+}
 
   // =========================================================
   // DOM / aktuelle Folie
@@ -1885,6 +2150,72 @@ function getDeclaredTaskListForHash(hash) {
   const entry = declaredEvaluationByHash[String(hash || "")] || null;
   return Array.isArray(entry && entry.tl) ? entry.tl : [];
 }
+
+
+function rehydrateStateEvaluationMetaFromDeclaredTask(hash, state) {
+  if (!state || typeof state !== "object") return state;
+
+  const di = Number(state.di || 0);
+  if (!Number.isFinite(di) || di <= 0) return state;
+
+  const taskList = getDeclaredTaskListForHash(hash);
+  const task = Array.isArray(taskList) ? taskList[di - 1] : null;
+  if (!task) return state;
+
+  const rawBe = Object.prototype.hasOwnProperty.call(task, "be")
+    ? task.be
+    : 1;
+
+  state.be = Number.isFinite(Number(rawBe))
+    ? Math.max(0, Number(rawBe))
+    : 1;
+
+  if (Array.isArray(task.tg) && task.tg.length) {
+    state.tg = task.tg
+      .map(function (tag) { return normalizeSpace(tag); })
+      .filter(Boolean)
+      .filter(function (tag, idx, arr) {
+        return arr.indexOf(tag) === idx;
+      });
+  } else {
+    delete state.tg;
+  }
+
+  return state;
+}
+
+function rehydrateSnapshotEvaluationMetaFromSource(payload) {
+  if (!payload || !Array.isArray(payload.s)) return payload;
+
+  let restored = 0;
+
+  payload.s.forEach(function (slide) {
+    const hash = cleanHashValue(slide && slide.h || "");
+    if (!hash) return;
+
+    ["q", "d", "m", "c", "o", "fq", "mq"].forEach(function (key) {
+      const arr = Array.isArray(slide && slide[key]) ? slide[key] : [];
+
+      arr.forEach(function (state) {
+        const beforeBe = Object.prototype.hasOwnProperty.call(state, "be");
+        const beforeTg = Object.prototype.hasOwnProperty.call(state, "tg");
+
+        rehydrateStateEvaluationMetaFromDeclaredTask(hash, state);
+
+        const afterBe = Object.prototype.hasOwnProperty.call(state, "be");
+        const afterTg = Object.prototype.hasOwnProperty.call(state, "tg");
+
+        if ((!beforeBe && afterBe) || (!beforeTg && afterTg)) {
+          restored += 1;
+        }
+      });
+    });
+  });
+
+  log("snapshot-meta-rehydrated", "states=" + restored);
+  return payload;
+}
+
 
 function applyDeclaredTaskMetaToCapturedSequence(hash, sequence) {
   const taskList = getDeclaredTaskListForHash(hash);
@@ -3118,13 +3449,11 @@ function isDropdownPlaceholderValue(value) {
 function compactCommonStateMeta(src, out) {
   if (!src || !out) return out;
 
-  if (Object.prototype.hasOwnProperty.call(src, "be")) {
-    out.be = src.be;
-  }
-
-  if (Array.isArray(src.tg) && src.tg.length) {
-    out.tg = src.tg.slice();
-  }
+  // WICHTIG:
+  // be und tg werden im ersten Kompressionsschritt
+  // bewusst NICHT mehr in den URL-Payload geschrieben.
+  // di bleibt erhalten, damit wir be/tg später aus der
+  // Kursquelle wieder sauber anreichern können.
 
   if (Number(src.di || 0) > 0) {
     out.di = Number(src.di);
@@ -3154,6 +3483,12 @@ function compactTextQuizStateForFreezeUrl(state) {
   });
 
   const out = { k: state.k };
+
+  const rootIndex = Number(state.ri);
+  if (Number.isFinite(rootIndex) && rootIndex >= 0) {
+    out.ri = rootIndex;
+  }
+
   if (hasText) out.v = values;
 
   compactCommonStateMeta(state, out);
@@ -3319,7 +3654,58 @@ function compactMarkerQuizStateForFreezeUrl(state) {
 }
 
 const CANVAS_CODEC_VERSION = "cv2";
-const CANVAS_POINT_SCALE = 10; // 1 Nachkommastellen
+const CANVAS_POINT_SCALE = 1; // 0 Nachkommastellen
+
+
+function zigZagEncodeCanvasInt(n) {
+  const v = Number(n);
+  if (!Number.isFinite(v)) return 0;
+  return v < 0 ? ((-v * 2) - 1) : (v * 2);
+}
+
+function zigZagDecodeCanvasInt(n) {
+  const v = Number(n);
+  if (!Number.isFinite(v)) return 0;
+  return (v % 2 === 1) ? (-(v + 1) / 2) : (v / 2);
+}
+
+function encodeCanvasIntListToFreezeUrlString(nums) {
+  const src = Array.isArray(nums) ? nums : [];
+  if (!src.length) return "";
+
+  const parts = [];
+
+  for (let i = 0; i < src.length; i++) {
+    const n = Number(src[i]);
+    if (!Number.isFinite(n)) continue;
+
+    const zz = zigZagEncodeCanvasInt(Math.trunc(n));
+    parts.push(zz.toString(36));
+  }
+
+  return parts.join(".");
+}
+
+function decodeCanvasIntListFromFreezeUrlString(raw) {
+  const txt = String(raw || "").trim();
+  if (!txt) return [];
+
+  return txt
+    .split(".")
+    .map(function (part) {
+      const clean = String(part || "").trim();
+      if (!clean) return null;
+
+      const parsed = parseInt(clean, 36);
+      if (!Number.isFinite(parsed)) return null;
+
+      return zigZagDecodeCanvasInt(parsed);
+    })
+    .filter(function (v) {
+      return v !== null;
+    });
+}
+
 
 function isCanvasBgDefaultForFreezeUrl(bg) {
   return !bg || String(bg.m || "") === "none";
@@ -3393,11 +3779,26 @@ function encodeCanvasPathPointsForFreezeUrl(points) {
     prevY = y;
   }
 
-  return out.length >= 2 ? out : null;
+  if (out.length < 2) return null;
+
+  return encodeCanvasIntListToFreezeUrlString(out);
 }
 
 function decodeCanvasPathPointsFromFreezeUrl(encoded) {
-  const src = Array.isArray(encoded) ? encoded : [];
+  let src = [];
+
+  // Neues kompaktes String-Format
+  if (typeof encoded === "string") {
+    src = decodeCanvasIntListFromFreezeUrlString(encoded);
+  }
+  // Altformat weiter unterstützen
+  else if (Array.isArray(encoded)) {
+    src = encoded.slice();
+  }
+  else {
+    src = [];
+  }
+
   const out = [];
 
   let x = 0;
@@ -3428,58 +3829,108 @@ function decodeCanvasPathPointsFromFreezeUrl(encoded) {
 
 function compactCanvasPathItemForFreezeUrl(item, colorList, colorIndex) {
   if (!item || typeof item !== "object") return null;
-  if (String(item.k || "") !== "p") return null;
 
-  const pts = encodeCanvasPathPointsForFreezeUrl(item.p);
-  if (!pts) return null;
+  const kind = String(item.k || "");
 
-  const color = String(item.c || "#000000");
+  if (kind === "p") {
+    const pts = encodeCanvasPathPointsForFreezeUrl(item.p);
+    if (!pts) return null;
 
-  if (!Object.prototype.hasOwnProperty.call(colorIndex, color)) {
-    colorIndex[color] = colorList.length;
-    colorList.push(color);
+    const color = String(item.c || "#000000");
+
+    if (!Object.prototype.hasOwnProperty.call(colorIndex, color)) {
+      colorIndex[color] = colorList.length;
+      colorList.push(color);
+    }
+
+    const ci = colorIndex[color];
+    const alpha = Number(item.a == null ? 1 : item.a);
+    const width = Number(item.w == null ? 1 : item.w);
+
+    if (alpha === 1) {
+      // [type, colorIndex, width, encodedPoints]
+      return [0, ci, width, pts];
+    }
+
+    // [type, colorIndex, alpha, width, encodedPoints]
+    return [0, ci, alpha, width, pts];
   }
 
-  const ci = colorIndex[color];
-  const alpha = Number(item.a == null ? 1 : item.a);
-  const width = Number(item.w == null ? 1 : item.w);
+  if (kind === "r") {
+    const fill = String(item.f || "rgba(0,0,0,0)");
 
-  if (alpha === 1) {
-    // [type, colorIndex, width, encodedPoints]
-    return [0, ci, width, pts];
+    if (!Object.prototype.hasOwnProperty.call(colorIndex, fill)) {
+      colorIndex[fill] = colorList.length;
+      colorList.push(fill);
+    }
+
+    const fi = colorIndex[fill];
+
+    const x = encodeCanvasPointNumberForFreezeUrl(item.x);
+    const y = encodeCanvasPointNumberForFreezeUrl(item.y);
+    const w = encodeCanvasPointNumberForFreezeUrl(item.w);
+    const h = encodeCanvasPointNumberForFreezeUrl(item.h);
+
+    if (x === null || y === null || w === null || h === null) {
+      return null;
+    }
+
+    // [type, fillIndex, x, y, w, h]
+    return [1, fi, x, y, w, h];
   }
 
-  // [type, colorIndex, alpha, width, encodedPoints]
-  return [0, ci, alpha, width, pts];
+  return null;
 }
 
 function expandCanvasPathItemFromFreezeUrl(entry, colors) {
   if (!Array.isArray(entry) || !entry.length) return null;
-  if (Number(entry[0]) !== 0) return null;
 
-  const colorIdx = Number(entry[1] || 0);
-  const color =
-    colorIdx >= 0 && colorIdx < colors.length
-      ? String(colors[colorIdx] || "#000000")
-      : "#000000";
+  const type = Number(entry[0]);
 
-  if (entry.length === 4) {
-    return {
-      k: "p",
-      c: color,
-      a: 1,
-      w: Number(entry[2] || 1) || 1,
-      p: decodeCanvasPathPointsFromFreezeUrl(entry[3])
-    };
+  if (type === 0) {
+    const colorIdx = Number(entry[1] || 0);
+    const color =
+      colorIdx >= 0 && colorIdx < colors.length
+        ? String(colors[colorIdx] || "#000000")
+        : "#000000";
+
+    if (entry.length === 4) {
+      return {
+        k: "p",
+        c: color,
+        a: 1,
+        w: Number(entry[2] || 1) || 1,
+        p: decodeCanvasPathPointsFromFreezeUrl(entry[3])
+      };
+    }
+
+    if (entry.length >= 5) {
+      return {
+        k: "p",
+        c: color,
+        a: Number(entry[2] || 1) || 1,
+        w: Number(entry[3] || 1) || 1,
+        p: decodeCanvasPathPointsFromFreezeUrl(entry[4])
+      };
+    }
+
+    return null;
   }
 
-  if (entry.length >= 5) {
+  if (type === 1) {
+    const fillIdx = Number(entry[1] || 0);
+    const fill =
+      fillIdx >= 0 && fillIdx < colors.length
+        ? String(colors[fillIdx] || "rgba(0,0,0,0)")
+        : "rgba(0,0,0,0)";
+
     return {
-      k: "p",
-      c: color,
-      a: Number(entry[2] || 1) || 1,
-      w: Number(entry[3] || 1) || 1,
-      p: decodeCanvasPathPointsFromFreezeUrl(entry[4])
+      k: "r",
+      f: fill,
+      x: decodeCanvasPointNumberFromFreezeUrl(entry[2]),
+      y: decodeCanvasPointNumberFromFreezeUrl(entry[3]),
+      w: decodeCanvasPointNumberFromFreezeUrl(entry[4]),
+      h: decodeCanvasPointNumberFromFreezeUrl(entry[5])
     };
   }
 
@@ -7089,7 +7540,11 @@ function getTextQuizRootKey(root, idx) {
 
   const inputs = getTextQuizInputsFromRoot(root);
   if (inputs.length) {
-    const first = getTextQuizInputKey(inputs[0], 0);
+    // WICHTIG:
+    // Hier den tatsächlichen Root-Index weitergeben,
+    // nicht immer 0. Sonst kollidieren einfache Textfelder
+    // sehr leicht auf demselben Key (z.B. "idx:0").
+    const first = getTextQuizInputKey(inputs[0], idx);
     if (first) return first;
   }
 
@@ -7215,6 +7670,7 @@ function captureTextQuizState(root, idx) {
 
   const out = {
     k: getTextQuizRootKey(root, idx),
+    ri: Number(idx || 0),
     v: values
   };
   applyAssignmentMetaToState(out, quizRoot || root);
@@ -7523,61 +7979,83 @@ function applyTextQuizState(root, state) {
   return root;
 }
 
-  function applyStoredTextQuizStatesToHost(host, storedStates) {
-    const liveRoots = host ? collectTextQuizRootsFromRoot(host) : [];
-    const states = Array.isArray(storedStates) ? storedStates : [];
-    const used = new Set();
-    const applied = [];
+function applyStoredTextQuizStatesToHost(host, storedStates) {
+  const liveRoots = host ? collectTextQuizRootsFromRoot(host) : [];
+  const states = Array.isArray(storedStates) ? storedStates : [];
+  const used = new Set();
+  const applied = [];
 
-    log(
-      "textquiz-apply-live",
-      "live=" + liveRoots.length,
-      liveRoots.map(function (root, idx) {
-        return "[" + idx + "] " + JSON.stringify(getTextQuizRootKey(root, idx));
-      }).join(" || ")
-    );
+  log(
+    "textquiz-apply-live",
+    "live=" + liveRoots.length,
+    liveRoots.map(function (root, idx) {
+      return "[" + idx + "] " + JSON.stringify(getTextQuizRootKey(root, idx));
+    }).join(" || ")
+  );
 
-    log(
-      "textquiz-apply-stored",
-      "stored=" + states.length,
-      states.map(function (state, idx) {
-        return "[" + idx + "] " + JSON.stringify(state.k || "");
-      }).join(" || ")
-    );
+  log(
+    "textquiz-apply-stored",
+    "stored=" + states.length,
+    states.map(function (state, idx) {
+      return "[" + idx + "] " + JSON.stringify(state.k || "") + " ri=" + String(
+        Number.isFinite(Number(state && state.ri)) ? Number(state.ri) : "-"
+      );
+    }).join(" || ")
+  );
 
-    states.forEach(function (state, idx) {
-      let target = null;
-      const wantedKey = normalizeSpace(state && state.k || "");
+  states.forEach(function (state, idx) {
+    let target = null;
 
-      if (wantedKey) {
-        for (let i = 0; i < liveRoots.length; i++) {
-          if (used.has(liveRoots[i])) continue;
-          if (getTextQuizRootKey(liveRoots[i], i) === wantedKey) {
-            target = liveRoots[i];
-            break;
-          }
+    const wantedKey = normalizeSpace(state && state.k || "");
+    const wantedRootIndex = Number(state && state.ri);
+
+    // 1. Zuerst die ursprüngliche Root-Position benutzen.
+    //    Das ist stabil gegenüber der Kompaktierung leerer Zustände.
+    if (
+      Number.isFinite(wantedRootIndex) &&
+      wantedRootIndex >= 0 &&
+      wantedRootIndex < liveRoots.length &&
+      !used.has(liveRoots[wantedRootIndex])
+    ) {
+      target = liveRoots[wantedRootIndex];
+    }
+
+    // 2. Danach per Key matchen (für Alt-/Mischfälle weiter sinnvoll).
+    if (!target && wantedKey) {
+      for (let i = 0; i < liveRoots.length; i++) {
+        if (used.has(liveRoots[i])) continue;
+        if (getTextQuizRootKey(liveRoots[i], i) === wantedKey) {
+          target = liveRoots[i];
+          break;
         }
       }
+    }
 
-      if (!target) {
-        const wantedIndex = idx;
-        if (wantedIndex >= 0 && wantedIndex < liveRoots.length && !used.has(liveRoots[wantedIndex])) {
-          target = liveRoots[wantedIndex];
-        }
+    // 3. Letzter Alt-Fallback für sehr alte Daten ohne ri und ohne Key-Treffer.
+    if (!target) {
+      const wantedIndex = idx;
+      if (wantedIndex >= 0 && wantedIndex < liveRoots.length && !used.has(liveRoots[wantedIndex])) {
+        target = liveRoots[wantedIndex];
       }
+    }
 
-      if (!target) {
-        log("textquiz-match-miss", "storedIdx=" + idx, "key=" + JSON.stringify(wantedKey));
-        return;
-      }
+    if (!target) {
+      log(
+        "textquiz-match-miss",
+        "storedIdx=" + idx,
+        "key=" + JSON.stringify(wantedKey),
+        "ri=" + String(Number.isFinite(wantedRootIndex) ? wantedRootIndex : "-")
+      );
+      return;
+    }
 
-      used.add(target);
-      applyTextQuizState(target, state);
-      applied.push(target);
-    });
+    used.add(target);
+    applyTextQuizState(target, state);
+    applied.push(target);
+  });
 
-    return applied;
-  }
+  return applied;
+}
 
 
 function reapplySnapshotSilently(hash, reason) {
@@ -10229,6 +10707,8 @@ async function activateSnapshotMode(payload, linkValue, opts) {
 
   await ensureDeclaredSlides(true);
 
+  rehydrateSnapshotEvaluationMetaFromSource(snapshotPayload);
+  
   ensureSnapshotModeClasses();
   getFreezeBar();
   refreshFreezeBar();
@@ -10304,7 +10784,7 @@ async function activateSnapshotMode(payload, linkValue, opts) {
       console.warn("[LIA-FREEZE] AFTER-BUILD-PAYLOAD", BUILD_STAMP);
 
       console.log("[LIA-FREEZE] payload-before-link", JSON.stringify(payload));
-      const link = buildLink(payload);
+      const link = await buildLink(payload);
 
       freezeLinkValue = link;
 
@@ -10357,7 +10837,7 @@ async function initMode() {
     storeSubmissionToken(directToken);
   }
 
-  const snapshot = tryLoadSnapshot();
+  const snapshot = await tryLoadSnapshot();
 
   if (snapshot) {
     await activateSnapshotMode(snapshot, window.location.href, {
@@ -10508,7 +10988,9 @@ function safeBoot() {
   return {
     createLink: createLink,
     clearStoredSubmissionToken: clearStoredSubmissionToken,
-    goFrozenHash: goFrozenHash
+    goFrozenHash: goFrozenHash,
+    runCompressionCoreSelfTest: runCompressionCoreSelfTest,
+    runSnapshotTokenSelfTest: runSnapshotTokenSelfTest
   };
 })();
 @end
