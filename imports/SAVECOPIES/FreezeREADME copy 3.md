@@ -3744,54 +3744,7 @@ function compactMarkerQuizStateForFreezeUrl(state) {
 }
 
 const CANVAS_CODEC_VERSION = "cv2";
-const CANVAS_GRID_STEP = 2; // Punkte werden auf ein 2-Pixel-Raster quantisiert
-
-// Kleine UID-Kompression:
-// "slide_canvas" -> Zahl, solange canvasIndex klein genug ist.
-// Beispiel bei Faktor 64:
-// "1_0" -> 64
-// "4_3" -> 259
-const CANVAS_UID_PACK_FACTOR = 64;
-
-function encodeCanvasUidForFreezeUrl(uid) {
-  const txt = normalizeSpace(uid || "");
-  const m = txt.match(/^(\d+)_(\d+)$/);
-
-  if (!m) return txt;
-
-  const slideIdx = Number(m[1]);
-  const canvasIdx = Number(m[2]);
-
-  if (!Number.isFinite(slideIdx) || !Number.isFinite(canvasIdx)) return txt;
-  if (slideIdx < 1 || canvasIdx < 0) return txt;
-
-  // Nur den kleinen, sicheren Standardfall packen.
-  // Alles andere bleibt unverändert als String erhalten.
-  if (canvasIdx >= CANVAS_UID_PACK_FACTOR) return txt;
-
-  return slideIdx * CANVAS_UID_PACK_FACTOR + canvasIdx;
-}
-
-function decodeCanvasUidFromFreezeUrl(uid) {
-  if (typeof uid === "number" && Number.isFinite(uid)) {
-    const packed = Math.trunc(uid);
-
-    if (packed >= CANVAS_UID_PACK_FACTOR) {
-      const slideIdx = Math.floor(packed / CANVAS_UID_PACK_FACTOR);
-      const canvasIdx = packed % CANVAS_UID_PACK_FACTOR;
-
-      if (slideIdx >= 1 && canvasIdx >= 0) {
-        return slideIdx + "_" + canvasIdx;
-      }
-    }
-
-    return String(packed);
-  }
-
-  return String(uid || "");
-}
-
-
+const CANVAS_POINT_SCALE = 1; // 0 Nachkommastellen
 
 function isCanvasCompactTupleState(state) {
   return Array.isArray(state) && state.length >= 1;
@@ -3799,111 +3752,14 @@ function isCanvasCompactTupleState(state) {
 
 function getCanvasStateUidForFreezeUrl(state) {
   if (isCanvasCompactTupleState(state)) {
-    return decodeCanvasUidFromFreezeUrl(state[0]);
+    return String(state[0] || "");
   }
 
   if (state && typeof state === "object") {
-    return decodeCanvasUidFromFreezeUrl(state.u);
+    return String(state.u || "");
   }
 
   return "";
-}
-
-
-function isCanvasStateMeaningfulForMerge(state) {
-  const expanded = expandCanvasStateFromFreezeUrl(state) || state;
-
-  if (!expanded || typeof expanded !== "object") {
-    return false;
-  }
-
-  // sichtbare oder bewusst erhaltene Canvas-Größe => sinnvoller Zustand
-  const w = Number(expanded.w || 0) || 0;
-  const h = Number(expanded.h || 0) || 0;
-
-  if (w > 0 || h > 0) {
-    return true;
-  }
-
-  // neues/expandiertes Format
-  if (Array.isArray(expanded.it) && expanded.it.length > 0) {
-    return true;
-  }
-
-  // altes cv2-Format
-  if (Array.isArray(expanded.i) && expanded.i.length > 0) {
-    return true;
-  }
-
-  // ganz leer / unbrauchbar
-  return false;
-}
-
-function mergeCanvasStatesPreferPreviousNonEmpty(prevStates, nextStates) {
-  const prev = Array.isArray(prevStates) ? prevStates : [];
-  const next = Array.isArray(nextStates) ? nextStates : [];
-
-  if (!prev.length && !next.length) return [];
-  if (!prev.length) return next.slice();
-  if (!next.length) {
-    return prev
-      .filter(function (state) {
-        return isCanvasStateMeaningfulForMerge(state);
-      })
-      .map(function (state) {
-        return copyJson(state) || state;
-      });
-  }
-
-  const prevByUid = Object.create(null);
-
-  prev.forEach(function (state) {
-    const uid = getCanvasStateUidForFreezeUrl(state);
-    if (!uid) return;
-    prevByUid[uid] = state;
-  });
-
-  const out = [];
-  const seenUid = Object.create(null);
-
-  next.forEach(function (state, idx) {
-    const uid = getCanvasStateUidForFreezeUrl(state) || ("__idx__" + idx);
-    const prevState = prevByUid[uid] || null;
-
-    const nextMeaningful = isCanvasStateMeaningfulForMerge(state);
-    const prevMeaningful = isCanvasStateMeaningfulForMerge(prevState);
-
-    if (!nextMeaningful && prevMeaningful) {
-      log(
-        "canvas-merge-preserve",
-        "uid=" + uid,
-        "reason=current-empty-keep-previous"
-      );
-      out.push(copyJson(prevState) || prevState);
-    } else {
-      out.push(state);
-    }
-
-    seenUid[uid] = 1;
-  });
-
-  // Falls aktuelle Erfassung eine Canvas gar nicht mehr liefert,
-  // den letzten sinnvollen Zustand trotzdem mitnehmen.
-  prev.forEach(function (state, idx) {
-    const uid = getCanvasStateUidForFreezeUrl(state) || ("__prev__" + idx);
-    if (seenUid[uid]) return;
-    if (!isCanvasStateMeaningfulForMerge(state)) return;
-
-    log(
-      "canvas-merge-carry",
-      "uid=" + uid,
-      "reason=missing-in-current"
-    );
-
-    out.push(copyJson(state) || state);
-  });
-
-  return out;
 }
 
 
@@ -4048,18 +3904,22 @@ function isCanvasStateTrulyEmptyForFreezeUrl(state) {
 function encodeCanvasPointNumberForFreezeUrl(v) {
   const n = Number(v);
   if (!Number.isFinite(n)) return null;
-  return Math.round(n / CANVAS_GRID_STEP);
+  return Math.round(n * CANVAS_POINT_SCALE);
 }
 
 function decodeCanvasPointNumberFromFreezeUrl(v) {
   const n = Number(v);
   if (!Number.isFinite(n)) return 0;
-  return n * CANVAS_GRID_STEP;
+  return n / CANVAS_POINT_SCALE;
 }
 
-function quantizeCanvasPathPointsForFreezeUrl(points) {
+function encodeCanvasPathPointsForFreezeUrl(points) {
   const src = Array.isArray(points) ? points : [];
-  const abs = [];
+  const out = [];
+
+  let prevX = 0;
+  let prevY = 0;
+  let havePrev = false;
 
   for (let i = 0; i < src.length; i++) {
     const pt = src[i];
@@ -4080,63 +3940,20 @@ function quantizeCanvasPathPointsForFreezeUrl(points) {
 
     if (x === null || y === null) continue;
 
-    // doppelte quantisierte Punkte entfernen
-    if (abs.length) {
-      const last = abs[abs.length - 1];
-      if (last[0] === x && last[1] === y) {
-        continue;
-      }
-    }
-
-    abs.push([x, y]);
-
-    // exakt kollineare Zwischenpunkte entfernen
-    while (abs.length >= 3) {
-      const a = abs[abs.length - 3];
-      const b = abs[abs.length - 2];
-      const c = abs[abs.length - 1];
-
-      const dx1 = b[0] - a[0];
-      const dy1 = b[1] - a[1];
-      const dx2 = c[0] - b[0];
-      const dy2 = c[1] - b[1];
-
-      const cross = dx1 * dy2 - dy1 * dx2;
-      const dot = dx1 * dx2 + dy1 * dy2;
-
-      if (cross === 0 && dot >= 0) {
-        abs.splice(abs.length - 2, 1);
-      } else {
-        break;
-      }
-    }
-  }
-
-  return abs;
-}
-
-function encodeCanvasPathPointsForFreezeUrl(points) {
-  const abs = quantizeCanvasPathPointsForFreezeUrl(points);
-
-  if (abs.length < 2) return null;
-
-  const out = [];
-  let prevX = 0;
-  let prevY = 0;
-
-  for (let i = 0; i < abs.length; i++) {
-    const x = abs[i][0];
-    const y = abs[i][1];
-
-    if (i === 0) {
+    if (!havePrev) {
       out.push(x, y);
-    } else {
-      out.push(x - prevX, y - prevY);
+      prevX = x;
+      prevY = y;
+      havePrev = true;
+      continue;
     }
 
+    out.push(x - prevX, y - prevY);
     prevX = x;
     prevY = y;
   }
+
+  if (out.length < 2) return null;
 
   return encodeCanvasIntListToFreezeUrlString(out);
 }
@@ -4190,9 +4007,8 @@ function compactCanvasPathItemForFreezeUrl(item, colorList, colorIndex) {
   const kind = String(item.k || "");
 
   if (kind === "p") {
-    const abs = quantizeCanvasPathPointsForFreezeUrl(item.p);
-
-    if (!abs.length) return null;
+    const pts = encodeCanvasPathPointsForFreezeUrl(item.p);
+    if (!pts) return null;
 
     const ci = internCanvasColorEntryForFreezeUrl(
       String(item.c || "#000000"),
@@ -4204,44 +4020,6 @@ function compactCanvasPathItemForFreezeUrl(item, colorList, colorIndex) {
 
     const alpha = Number(item.a == null ? 1 : item.a);
     const width = Number(item.w == null ? 1 : item.w);
-
-    // Sonderfall: genau ein Punkt
-    if (abs.length === 1) {
-      const x = abs[0][0];
-      const y = abs[0][1];
-
-      if (alpha === 1) {
-        // [type, colorIndex, width, x, y]
-        return [2, ci, width, x, y];
-      }
-
-      // [type, colorIndex, alpha, width, x, y]
-      return [2, ci, alpha, width, x, y];
-    }
-
-    const pts = encodeCanvasIntListToFreezeUrlString((function () {
-      const out = [];
-      let prevX = 0;
-      let prevY = 0;
-
-      for (let i = 0; i < abs.length; i++) {
-        const x = abs[i][0];
-        const y = abs[i][1];
-
-        if (i === 0) {
-          out.push(x, y);
-        } else {
-          out.push(x - prevX, y - prevY);
-        }
-
-        prevX = x;
-        prevY = y;
-      }
-
-      return out;
-    })());
-
-    if (!pts) return null;
 
     if (alpha === 1) {
       // [type, colorIndex, width, encodedPoints]
@@ -4341,48 +4119,6 @@ function expandCanvasPathItemFromFreezeUrl(entry, colors) {
     };
   }
 
-  if (type === 2) {
-    const colorIdx = Number(entry[1] || 0);
-
-    const storedColor =
-      colorIdx >= 0 && colorIdx < colors.length
-        ? colors[colorIdx]
-        : "#000000";
-
-    const color = decodeCanvasColorEntryFromFreezeUrl(
-      storedColor,
-      "#000000"
-    );
-
-    if (entry.length === 5) {
-      return {
-        k: "p",
-        c: color,
-        a: 1,
-        w: Number(entry[2] || 1) || 1,
-        p: [[
-          decodeCanvasPointNumberFromFreezeUrl(entry[3]),
-          decodeCanvasPointNumberFromFreezeUrl(entry[4])
-        ]]
-      };
-    }
-
-    if (entry.length >= 6) {
-      return {
-        k: "p",
-        c: color,
-        a: Number(entry[2] || 1) || 1,
-        w: Number(entry[3] || 1) || 1,
-        p: [[
-          decodeCanvasPointNumberFromFreezeUrl(entry[4]),
-          decodeCanvasPointNumberFromFreezeUrl(entry[5])
-        ]]
-      };
-    }
-
-    return null;
-  }
-
   return null;
 }
 
@@ -4391,20 +4127,12 @@ function compactSingleCanvasStateForFreezeUrl(state) {
 
   // Bereits im neuen Tuple-Format
   if (isCanvasCompactTupleState(state)) {
-    const cloned = copyJson(state);
-    if (Array.isArray(cloned) && cloned.length > 0) {
-      cloned[0] = encodeCanvasUidForFreezeUrl(cloned[0]);
-    }
-    return cloned;
+    return copyJson(state);
   }
 
   // Bereits im bisherigen cv2-Objektformat
   if (state.v === CANVAS_CODEC_VERSION) {
-    const cloned = copyJson(state);
-    if (cloned && typeof cloned === "object") {
-      cloned.u = encodeCanvasUidForFreezeUrl(cloned.u);
-    }
-    return cloned;
+    return copyJson(state);
   }
 
   // Nur wirklich komplett leere Canvas verwerfen
@@ -4432,7 +4160,7 @@ function compactSingleCanvasStateForFreezeUrl(state) {
     compactItems.push(compactItem);
   }
 
-  const uid = encodeCanvasUidForFreezeUrl(state.u);
+  const uid = String(state.u || "");
   const width = Number(state.w || 0) || 0;
   const height = Number(state.h || 0) || 0;
   const emptyFlag = Number(state.e || 0) === 1 ? 1 : 0;
@@ -4484,7 +4212,7 @@ function expandCanvasStateFromFreezeUrl(state) {
 
     const out = {
       v: "cvf1",
-      u: decodeCanvasUidFromFreezeUrl(state[0]),
+      u: String(state[0] || ""),
       w: Number(state[1] || 0) || 0,
       h: Number(state[2] || 0) || 0,
       bg: { m: "none" },
@@ -4515,7 +4243,7 @@ function expandCanvasStateFromFreezeUrl(state) {
 
   const out = {
     v: "cvf1",
-    u: decodeCanvasUidFromFreezeUrl(state.u),
+    u: String(state.u || ""),
     w: Number(state.w || 0) || 0,
     h: Number(state.h || 0) || 0,
     bg: { m: "none" },
@@ -7179,7 +6907,7 @@ function applyStoredOrthographyStatesToHost(host, storedStates) {
 
   states.forEach(function (state, idx) {
     let target = null;
-    const wantedUid = normalizeSpace(getCanvasStateUidForFreezeUrl(state));
+    const wantedUid = normalizeSpace(state && state.u || "");
     const wantedKey = normalizeSpace(state && state.k || "");
 
     if (wantedUid) {
@@ -9451,14 +9179,8 @@ function captureSlideStateForHash(hash) {
   const orthoRoots = collectOrthographyQuizRootsFromRoot(host);
   const fractionRoots = collectFractionQuizRootsFromRoot(host);
   const markerRoots = collectMarkerQuizRootsFromRoot(host);
+  const canvasStates = captureCanvasFreezeStatesFromRoot(host);
   const generalMarkerState = captureGeneralMarkerState(host);
-
-  const previousSlideState = liveSlidesByHash[cleanHash] || null;
-  const rawCanvasStates = captureCanvasFreezeStatesFromRoot(host);
-  const canvasStates = mergeCanvasStatesPreferPreviousNonEmpty(
-    previousSlideState && previousSlideState.cv,
-    rawCanvasStates
-  );
 
   const ordered = [];
 
