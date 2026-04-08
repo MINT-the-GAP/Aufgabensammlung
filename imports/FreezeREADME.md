@@ -578,36 +578,109 @@ function cleanHashValue(raw) {
     });
   }
 
-  function getBaseContentHost() {
-    const candidates = getVisibleContentCandidates();
+function getBaseContentHost() {
+  const doc = document;
 
-    if (candidates.length) {
-      candidates.sort(function (a, b) {
-        const ar = a.getBoundingClientRect();
-        const br = b.getBoundingClientRect();
-        const as = Math.max(0, ar.width) * Math.max(0, ar.height);
-        const bs = Math.max(0, br.width) * Math.max(0, br.height);
-        return bs - as;
-      });
+  function isVisible(el) {
+    if (!el || !(el instanceof Element)) return false;
+    const cs = window.getComputedStyle(el);
+    if (!cs) return false;
+    if (cs.display === "none" || cs.visibility === "hidden") return false;
+    return true;
+  }
 
-      const picked = candidates[0];
-      const r = picked.getBoundingClientRect();
+  function isBadHost(el) {
+    if (!el || !(el instanceof Element)) return true;
 
-      log(
+    const cls = (el.className || "").toString();
+
+    if (el.classList.contains("dynFlex")) return true;
+    if (el.classList.contains("flex-child")) return true;
+    if (el.classList.contains("lia-quiz")) return true;
+    if (el.classList.contains("lia-quiz__control")) return true;
+    if (el.classList.contains("lia-annot-toolbar")) return true;
+    if (el.classList.contains("lia-freeze-bar")) return true;
+
+    const tag = (el.tagName || "").toUpperCase();
+
+    if (tag === "SECTION" && !el.classList.contains("lia-slide__content")) return true;
+    if (tag === "ASIDE") return true;
+    if (tag === "NAV") return true;
+    if (tag === "FOOTER") return true;
+
+    return false;
+  }
+
+  function logHostPick(el) {
+    try {
+      if (!el) {
+        debugLog("host-pick", "null");
+        return;
+      }
+      const r = el.getBoundingClientRect();
+      debugLog(
         "host-pick",
-        "tag=" + String(picked.tagName || ""),
-        "id=" + String(picked.id || ""),
-        "class=" + normalizeSpace(picked.className || ""),
+        "tag=" + (el.tagName || ""),
+        "id=" + (el.id || ""),
+        "class=" + ((el.className || "").toString().trim() || ""),
         "w=" + Math.round(r.width),
         "h=" + Math.round(r.height)
       );
-
-      return picked;
-    }
-
-    log("host-pick", "fallback=BODY");
-    return document.body;
+    } catch (e) {}
   }
+
+  function firstVisible(list) {
+    for (let i = 0; i < list.length; i++) {
+      const el = list[i];
+      if (!el || !isVisible(el) || isBadHost(el)) continue;
+      return el;
+    }
+    return null;
+  }
+
+  let currentSlide = null;
+
+  currentSlide =
+    doc.querySelector(".lia-slide.active") ||
+    doc.querySelector(".lia-slide.current") ||
+    doc.querySelector(".lia-slide[aria-hidden='false']") ||
+    null;
+
+  if (currentSlide && !isVisible(currentSlide)) {
+    currentSlide = null;
+  }
+
+  let host = null;
+
+  if (currentSlide) {
+    host = firstVisible([
+      currentSlide.querySelector(".lia-slide__content"),
+      currentSlide.querySelector("main.lia-slide__content"),
+      currentSlide.querySelector(".lia-content"),
+      currentSlide.querySelector("main"),
+      currentSlide.querySelector("article")
+    ]);
+  }
+
+  if (!host) {
+    host = firstVisible([
+      doc.querySelector(".lia-slide.active .lia-slide__content"),
+      doc.querySelector(".lia-slide.current .lia-slide__content"),
+      doc.querySelector(".lia-slide[aria-hidden='false'] .lia-slide__content"),
+      doc.querySelector("main.lia-slide__content"),
+      doc.querySelector(".lia-content"),
+      doc.querySelector("main"),
+      doc.querySelector("article")
+    ]);
+  }
+
+  if (!host || isBadHost(host)) {
+    host = doc.body;
+  }
+
+  logHostPick(host);
+  return host;
+}
 
   function applyCourseColors() {
     function firstOpaqueBackground(startEl) {
