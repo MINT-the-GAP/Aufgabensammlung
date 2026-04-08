@@ -3744,7 +3744,164 @@ function compactMarkerQuizStateForFreezeUrl(state) {
 }
 
 const CANVAS_CODEC_VERSION = "cv2";
-const CANVAS_GRID_STEP = 2; // Punkte werden auf ein 2-Pixel-Raster quantisiert
+const CANVAS_GRID_STEP = 2.25; // Punkte werden auf ein 2-Pixel-Raster quantisiert
+const CANVAS_CONTENT_PAD = 10; // kleiner Sicherheitsrand, damit Linienenden nicht abgeschnitten werden
+const CANVAS_EXTRA_HEIGHT = 10; // zusätzlicher Höhenspielraum gegen vertikale Scrollbar
+const CANVAS_MIN_RAW_POINT_DIST_PX = 1.25; // sehr vorsichtiger Mindestabstand vor der Quantisierung
+const CANVAS_COLLINEAR_TOL_PX = 1.05;      // fast-kollinear-Toleranz, ebenfalls vorsichtig
+const CANVAS_USE_DOUGLAS_PEUCKER = true;
+const CANVAS_DP_TOL_PX = 1.4;
+
+
+function getCanvasDouglasPeuckerTolCells() {
+  const px = Number(CANVAS_DP_TOL_PX || 0);
+  if (!Number.isFinite(px) || px <= 0) return 0;
+  return px / CANVAS_GRID_STEP;
+}
+
+function getCanvasPointSegmentDistanceCells(p, a, b) {
+  if (!p || !a || !b) return 0;
+
+  const px = Number(p[0]), py = Number(p[1]);
+  const ax = Number(a[0]), ay = Number(a[1]);
+  const bx = Number(b[0]), by = Number(b[1]);
+
+  if (
+    !Number.isFinite(px) || !Number.isFinite(py) ||
+    !Number.isFinite(ax) || !Number.isFinite(ay) ||
+    !Number.isFinite(bx) || !Number.isFinite(by)
+  ) {
+    return 0;
+  }
+
+  const abx = bx - ax;
+  const aby = by - ay;
+  const len2 = abx * abx + aby * aby;
+
+  if (len2 <= 0) {
+    const dx = px - ax;
+    const dy = py - ay;
+    return Math.sqrt(dx * dx + dy * dy);
+  }
+
+  let t = ((px - ax) * abx + (py - ay) * aby) / len2;
+  if (t < 0) t = 0;
+  if (t > 1) t = 1;
+
+  const qx = ax + t * abx;
+  const qy = ay + t * aby;
+
+  const dx = px - qx;
+  const dy = py - qy;
+
+  return Math.sqrt(dx * dx + dy * dy);
+}
+
+function simplifyCanvasPointsDouglasPeucker(points, tolCells) {
+  const src = Array.isArray(points) ? points : [];
+  const tol = Number(tolCells || 0);
+
+  if (src.length <= 2) return src.slice();
+  if (!Number.isFinite(tol) || tol <= 0) return src.slice();
+
+  const keep = new Array(src.length).fill(false);
+  keep[0] = true;
+  keep[src.length - 1] = true;
+
+  function walk(startIdx, endIdx) {
+    if (endIdx <= startIdx + 1) return;
+
+    const a = src[startIdx];
+    const b = src[endIdx];
+
+    let maxDist = -1;
+    let maxIdx = -1;
+
+    for (let i = startIdx + 1; i < endIdx; i++) {
+      const d = getCanvasPointSegmentDistanceCells(src[i], a, b);
+      if (d > maxDist) {
+        maxDist = d;
+        maxIdx = i;
+      }
+    }
+
+    if (maxIdx >= 0 && maxDist > tol) {
+      keep[maxIdx] = true;
+      walk(startIdx, maxIdx);
+      walk(maxIdx, endIdx);
+    }
+  }
+
+  walk(0, src.length - 1);
+
+  const out = [];
+  for (let i = 0; i < src.length; i++) {
+    if (keep[i]) out.push(src[i]);
+  }
+
+  return out.length >= 2 ? out : src.slice();
+}
+
+
+function getCanvasRawPointXY(pt) {
+  if (Array.isArray(pt) && pt.length >= 2) {
+    const x = Number(pt[0]);
+    const y = Number(pt[1]);
+    return Number.isFinite(x) && Number.isFinite(y) ? [x, y] : null;
+  }
+
+  if (pt && typeof pt === "object") {
+    const x = Number(pt.x);
+    const y = Number(pt.y);
+    return Number.isFinite(x) && Number.isFinite(y) ? [x, y] : null;
+  }
+
+  return null;
+}
+
+function canvasPointDist2(ax, ay, bx, by) {
+  const dx = ax - bx;
+  const dy = ay - by;
+  return dx * dx + dy * dy;
+}
+
+function isCanvasMiddlePointAlmostCollinear(a, b, c) {
+  if (!a || !b || !c) return false;
+
+  const ax = Number(a[0]), ay = Number(a[1]);
+  const bx = Number(b[0]), by = Number(b[1]);
+  const cx = Number(c[0]), cy = Number(c[1]);
+
+  if (
+    !Number.isFinite(ax) || !Number.isFinite(ay) ||
+    !Number.isFinite(bx) || !Number.isFinite(by) ||
+    !Number.isFinite(cx) || !Number.isFinite(cy)
+  ) {
+    return false;
+  }
+
+  const acx = cx - ax;
+  const acy = cy - ay;
+  const len2 = acx * acx + acy * acy;
+
+  if (len2 <= 0) {
+    return bx === ax && by === ay;
+  }
+
+  // b muss zwischen a und c liegen
+  const abx = bx - ax;
+  const aby = by - ay;
+  const dot = abx * acx + aby * acy;
+  if (dot < 0 || dot > len2) return false;
+
+  // senkrechter Abstand von b zur Geraden a-c
+  const cross = Math.abs(acx * aby - acy * abx);
+  const distCells = cross / Math.sqrt(len2);
+  const tolCells = CANVAS_COLLINEAR_TOL_PX / CANVAS_GRID_STEP;
+
+  return distCells <= tolCells;
+}
+
 
 // Kleine UID-Kompression:
 // "slide_canvas" -> Zahl, solange canvasIndex klein genug ist.
@@ -4035,6 +4192,19 @@ function decodeCanvasIntListFromFreezeUrlString(raw) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 function isCanvasStateTrulyEmptyForFreezeUrl(state) {
   if (!state || typeof state !== "object") return false;
 
@@ -4061,18 +4231,23 @@ function quantizeCanvasPathPointsForFreezeUrl(points) {
   const src = Array.isArray(points) ? points : [];
   const abs = [];
 
+  const minDist2 = CANVAS_MIN_RAW_POINT_DIST_PX * CANVAS_MIN_RAW_POINT_DIST_PX;
+
+  let lastAcceptedRawX = null;
+  let lastAcceptedRawY = null;
+
   for (let i = 0; i < src.length; i++) {
-    const pt = src[i];
+    const raw = getCanvasRawPointXY(src[i]);
+    if (!raw) continue;
 
-    let rawX = null;
-    let rawY = null;
+    const rawX = raw[0];
+    const rawY = raw[1];
 
-    if (Array.isArray(pt) && pt.length >= 2) {
-      rawX = pt[0];
-      rawY = pt[1];
-    } else if (pt && typeof pt === "object") {
-      rawX = pt.x;
-      rawY = pt.y;
+    // 1. sehr kurze Rohsegmente schon vor der Quantisierung verwerfen
+    if (lastAcceptedRawX !== null && lastAcceptedRawY !== null) {
+      if (canvasPointDist2(rawX, rawY, lastAcceptedRawX, lastAcceptedRawY) < minDist2) {
+        continue;
+      }
     }
 
     const x = encodeCanvasPointNumberForFreezeUrl(rawX);
@@ -4080,7 +4255,7 @@ function quantizeCanvasPathPointsForFreezeUrl(points) {
 
     if (x === null || y === null) continue;
 
-    // doppelte quantisierte Punkte entfernen
+    // 2. doppelte quantisierte Punkte entfernen
     if (abs.length) {
       const last = abs[abs.length - 1];
       if (last[0] === x && last[1] === y) {
@@ -4089,25 +4264,39 @@ function quantizeCanvasPathPointsForFreezeUrl(points) {
     }
 
     abs.push([x, y]);
+    lastAcceptedRawX = rawX;
+    lastAcceptedRawY = rawY;
 
-    // exakt kollineare Zwischenpunkte entfernen
+    // 3. fast-kollineare Zwischenpunkte entfernen
     while (abs.length >= 3) {
       const a = abs[abs.length - 3];
       const b = abs[abs.length - 2];
       const c = abs[abs.length - 1];
 
-      const dx1 = b[0] - a[0];
-      const dy1 = b[1] - a[1];
-      const dx2 = c[0] - b[0];
-      const dy2 = c[1] - b[1];
-
-      const cross = dx1 * dy2 - dy1 * dx2;
-      const dot = dx1 * dx2 + dy1 * dy2;
-
-      if (cross === 0 && dot >= 0) {
+      if (isCanvasMiddlePointAlmostCollinear(a, b, c)) {
         abs.splice(abs.length - 2, 1);
       } else {
         break;
+      }
+    }
+  }
+
+  if (CANVAS_USE_DOUGLAS_PEUCKER && abs.length >= 3) {
+    const tolCells = getCanvasDouglasPeuckerTolCells();
+    if (tolCells > 0) {
+      const beforeLen = abs.length;
+      const simplified = simplifyCanvasPointsDouglasPeucker(abs, tolCells);
+      const afterLen = Array.isArray(simplified) ? simplified.length : beforeLen;
+
+      log(
+        "canvas-dp",
+        "before=" + beforeLen,
+        "after=" + afterLen,
+        "saved=" + Math.max(0, beforeLen - afterLen)
+      );
+
+      if (Array.isArray(simplified) && simplified.length >= 2) {
+        return simplified;
       }
     }
   }
@@ -4386,33 +4575,127 @@ function expandCanvasPathItemFromFreezeUrl(entry, colors) {
   return null;
 }
 
-function compactSingleCanvasStateForFreezeUrl(state) {
-  if (!state || typeof state !== "object") return null;
 
-  // Bereits im neuen Tuple-Format
-  if (isCanvasCompactTupleState(state)) {
-    const cloned = copyJson(state);
-    if (Array.isArray(cloned) && cloned.length > 0) {
-      cloned[0] = encodeCanvasUidForFreezeUrl(cloned[0]);
-    }
-    return cloned;
+function measureCanvasContentBoundsForFreezeUrl(items) {
+  const src = Array.isArray(items) ? items : [];
+
+  let minX = Infinity;
+  let minY = Infinity;
+  let maxX = -Infinity;
+  let maxY = -Infinity;
+
+  function addPoint(x, y, pad) {
+    const nx = Number(x);
+    const ny = Number(y);
+    const np = Number(pad || 0);
+
+    if (!Number.isFinite(nx) || !Number.isFinite(ny)) return;
+
+    const p = Number.isFinite(np) ? np : 0;
+
+    minX = Math.min(minX, nx - p);
+    minY = Math.min(minY, ny - p);
+    maxX = Math.max(maxX, nx + p);
+    maxY = Math.max(maxY, ny + p);
   }
 
-  // Bereits im bisherigen cv2-Objektformat
-  if (state.v === CANVAS_CODEC_VERSION) {
-    const cloned = copyJson(state);
-    if (cloned && typeof cloned === "object") {
-      cloned.u = encodeCanvasUidForFreezeUrl(cloned.u);
-    }
-    return cloned;
-  }
+  src.forEach(function (item) {
+    if (!item || typeof item !== "object") return;
 
-  // Nur wirklich komplett leere Canvas verwerfen
-  if (isCanvasStateTrulyEmptyForFreezeUrl(state)) {
+    if (item.k === "p") {
+      const pts = Array.isArray(item.p) ? item.p : [];
+      const halfStroke = Math.max(0.5, (Number(item.w || 1) || 1) / 2);
+
+      pts.forEach(function (pt) {
+        if (!Array.isArray(pt) || pt.length < 2) return;
+        addPoint(pt[0], pt[1], halfStroke);
+      });
+
+      return;
+    }
+
+    if (item.k === "r") {
+      const x = Number(item.x || 0) || 0;
+      const y = Number(item.y || 0) || 0;
+      const w = Number(item.w || 0) || 0;
+      const h = Number(item.h || 0) || 0;
+
+      addPoint(x, y, 0);
+      addPoint(x + w, y + h, 0);
+    }
+  });
+
+  if (
+    !Number.isFinite(minX) ||
+    !Number.isFinite(minY) ||
+    !Number.isFinite(maxX) ||
+    !Number.isFinite(maxY)
+  ) {
     return null;
   }
 
-  const items = Array.isArray(state.it) ? state.it : [];
+  let requiredWidth = Math.ceil(maxX + CANVAS_CONTENT_PAD);
+  let requiredHeight = Math.ceil(maxY + CANVAS_CONTENT_PAD + CANVAS_EXTRA_HEIGHT);
+
+  // Falls doch mal negative Koordinaten vorkommen, nicht zu knapp werden
+  if (minX < 0) {
+    requiredWidth = Math.max(
+      requiredWidth,
+      Math.ceil((maxX - minX) + CANVAS_CONTENT_PAD * 2)
+    );
+  }
+
+  if (minY < 0) {
+    requiredHeight = Math.max(
+      requiredHeight,
+      Math.ceil((maxY - minY) + CANVAS_CONTENT_PAD * 2)
+    );
+  }
+
+  return {
+    minX: minX,
+    minY: minY,
+    maxX: maxX,
+    maxY: maxY,
+    width: Math.max(0, requiredWidth),
+    height: Math.max(0, requiredHeight)
+  };
+}
+
+function normalizeCanvasSizeToContentForFreezeUrl(state) {
+  const expanded = expandCanvasStateFromFreezeUrl(state) || copyJson(state);
+
+  if (!expanded || typeof expanded !== "object") {
+    return null;
+  }
+
+  const bounds = measureCanvasContentBoundsForFreezeUrl(expanded.it);
+  if (!bounds) {
+    return expanded;
+  }
+
+  const currentW = Number(expanded.w || 0) || 0;
+  const currentH = Number(expanded.h || 0) || 0;
+
+  expanded.w = Math.max(currentW, bounds.width);
+  expanded.h = Math.max(currentH, bounds.height);
+
+  return expanded;
+}
+
+
+function compactSingleCanvasStateForFreezeUrl(state) {
+  if (!state || typeof state !== "object") return null;
+
+  const normalized = normalizeCanvasSizeToContentForFreezeUrl(state);
+  if (!normalized || typeof normalized !== "object") return null;
+
+  // Nur wirklich komplett leere Canvas verwerfen
+  if (isCanvasStateTrulyEmptyForFreezeUrl(normalized)) {
+    return null;
+  }
+
+  const items = Array.isArray(normalized.it) ? normalized.it : [];
   const colorList = [];
   const colorIndex = Object.create(null);
   const compactItems = [];
@@ -4426,21 +4709,44 @@ function compactSingleCanvasStateForFreezeUrl(state) {
 
     // Unbekannten Typ lieber roh behalten als kaputt komprimieren
     if (!compactItem) {
-      return copyJson(state);
+      return copyJson(normalized);
     }
 
     compactItems.push(compactItem);
   }
 
-  const uid = encodeCanvasUidForFreezeUrl(state.u);
-  const width = Number(state.w || 0) || 0;
-  const height = Number(state.h || 0) || 0;
-  const emptyFlag = Number(state.e || 0) === 1 ? 1 : 0;
+  const uid = encodeCanvasUidForFreezeUrl(normalized.u);
+  const currentW = Number(normalized.w || 0) || 0;
+  const currentH = Number(normalized.h || 0) || 0;
+  const emptyFlag = Number(normalized.e || 0) === 1 ? 1 : 0;
+
+  let storedW = currentW;
+  let storedH = currentH;
+
+  // Neuer Canvas-Minischritt:
+  // Bei Canvas MIT Inhalt speichern wir nicht mehr absolute Größe,
+  // sondern die Zusatzgröße über die minimale Inhaltsfläche hinaus.
+  // Kodierung:
+  //   -1  => exakt Mindestgröße
+  //   -N  => Mindestgröße + (N-1) Pixel
+  //
+  // Altlinks mit positiven absoluten w/h bleiben beim Expand kompatibel.
+  if (compactItems.length > 0) {
+    const bounds = measureCanvasContentBoundsForFreezeUrl(normalized.it);
+
+    if (bounds) {
+      const extraW = Math.max(0, currentW - bounds.width);
+      const extraH = Math.max(0, currentH - bounds.height);
+
+      storedW = -(extraW + 1);
+      storedH = -(extraH + 1);
+    }
+  }
 
   const out = [
     uid,
-    width,
-    height,
+    storedW,
+    storedH,
     colorList.length ? colorList : 0,
     compactItems.length ? compactItems : 0,
     emptyFlag
@@ -4471,6 +4777,10 @@ function expandCanvasStateFromFreezeUrl(state) {
 
   // Neues kompaktes Tuple-Format:
   // [u, w, h, c, i, e]
+  //
+  // Kompatibilität:
+  // - w/h >= 0  => altes absolutes Format
+  // - w/h < 0   => neues Delta-Format relativ zur Inhaltsmindestgröße
   if (isCanvasCompactTupleState(state)) {
     const colors = Array.isArray(state[3])
       ? state[3].map(function (c) { return String(c || "#000000"); })
@@ -4482,11 +4792,35 @@ function expandCanvasStateFromFreezeUrl(state) {
       })
       .filter(Boolean);
 
+    const rawW = Number(state[1] || 0) || 0;
+    const rawH = Number(state[2] || 0) || 0;
+
+    let width = rawW;
+    let height = rawH;
+
+    // Neues Delta-Format dekodieren:
+    // -1  => exakt Mindestgröße
+    // -6  => Mindestgröße + 5 px
+    if (rawW < 0 || rawH < 0) {
+      const bounds = measureCanvasContentBoundsForFreezeUrl(items) || {
+        width: 0,
+        height: 0
+      };
+
+      if (rawW < 0) {
+        width = bounds.width + Math.max(0, (-rawW) - 1);
+      }
+
+      if (rawH < 0) {
+        height = bounds.height + Math.max(0, (-rawH) - 1);
+      }
+    }
+
     const out = {
       v: "cvf1",
       u: decodeCanvasUidFromFreezeUrl(state[0]),
-      w: Number(state[1] || 0) || 0,
-      h: Number(state[2] || 0) || 0,
+      w: width,
+      h: height,
       bg: { m: "none" },
       it: items
     };
@@ -8788,39 +9122,55 @@ function applyStoredCanvasWindowSizeToPair(pair, state) {
   // WICHTIG:
   // Die Wrapper sind spans. width/height greifen dort erst sinnvoll,
   // wenn wir das Anzeigeverhalten umstellen.
-  pair.style.display = "inline-block";
-  pair.style.verticalAlign = "top";
+  pair.style.display = "block";
+  pair.style.width = "100%";
+  pair.style.minWidth = "0";
   pair.style.maxWidth = "none";
+  pair.style.marginLeft = "0";
+  pair.style.paddingLeft = "0";
+  pair.style.verticalAlign = "top";
   pair.style.flex = "0 0 auto";
+  pair.style.textAlign = "left";
 
   if (mount) {
     mount.style.display = "block";
     mount.style.maxWidth = "none";
+    mount.style.marginLeft = "0";
+    mount.style.marginRight = "0";
+    mount.style.clear = "both";
   }
 
   if (block) {
     block.style.display = "block";
     block.style.maxWidth = "none";
+    block.style.marginLeft = "0";
+    block.style.marginRight = "0";
+    block.style.clear = "both";
   }
 
   if (wrap) {
     wrap.style.display = "block";
     wrap.style.maxWidth = "none";
+    wrap.style.marginLeft = "0";
+    wrap.style.marginRight = "0";
+    wrap.style.clear = "both";
+    wrap.style.boxSizing = "border-box";
+    wrap.style.overflow = "hidden";
   }
 
   if (storedW > 0) {
-    pair.style.width = storedW + "px";
-    pair.style.minWidth = storedW + "px";
-
     [mount, block, wrap].forEach(function (el) {
       if (!el) return;
       el.style.width = storedW + "px";
       el.style.minWidth = storedW + "px";
+      el.style.maxWidth = "none";
     });
 
     if (canvas) {
       canvas.style.width = storedW + "px";
       canvas.style.maxWidth = "none";
+      canvas.style.display = "block";
+      canvas.style.verticalAlign = "top";
     }
   }
 
