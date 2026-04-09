@@ -227,21 +227,29 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
     return null;
   }
 
-  function applyThemeVars(){
-    try{
-      const root = document.documentElement;
-      const bg = getComputedStyle(document.body || document.documentElement).backgroundColor
-              || getComputedStyle(document.documentElement).backgroundColor;
-      const rgb = parseRgbNoRegex(bg);
-      const dark = rgb ? (luminance(rgb) < 0.5) : false;
+function applyThemeVars(){
+  try{
+    const root = document.documentElement;
+    const bg = getComputedStyle(document.body || document.documentElement).backgroundColor
+            || getComputedStyle(document.documentElement).backgroundColor;
+    const rgb = parseRgbNoRegex(bg);
+    const dark = rgb ? (luminance(rgb) < 0.5) : false;
 
-      root.style.setProperty('--lia-annot-border', dark ? '#fff' : '#000');
-      root.style.setProperty('--lia-annot-fg', dark ? '#fff' : '#000');
+    root.style.setProperty('--lia-annot-border', dark ? '#fff' : '#000');
+    root.style.setProperty('--lia-annot-fg', dark ? '#fff' : '#000');
 
-      const accent = getThemeAccent();
-      if (accent) root.style.setProperty('--lia-annot-accent', accent);
-    }catch(_){}
-  }
+    const accent = getThemeAccent();
+    if (accent) root.style.setProperty('--lia-annot-accent', accent);
+
+    if (dark){
+      root.style.setProperty('--lia-annot-bg', 'rgba(28,28,28,0.96)');
+      root.style.setProperty('--lia-annot-panel-bg', 'rgba(34,34,34,0.97)');
+    }else{
+      root.style.setProperty('--lia-annot-bg', 'rgba(255,255,255,0.96)');
+      root.style.setProperty('--lia-annot-panel-bg', 'rgba(255,255,255,0.97)');
+    }
+  }catch(_){}
+}
 
   function getLineWidthPx(item){
     const baseW = Math.max(1, Number(item && item.baseW) || STATE.cssW || 1);
@@ -308,12 +316,6 @@ function ensureCss(){
       --lia-annot-panel-bg: rgba(255,255,255,0.97);
     }
 
-    @media (prefers-color-scheme: dark){
-      :root{
-        --lia-annot-bg: rgba(28,28,28,0.96);
-        --lia-annot-panel-bg: rgba(34,34,34,0.97);
-      }
-    }
 
     .lia-annot-toolbar{
       position: fixed;

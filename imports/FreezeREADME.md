@@ -6,6 +6,7 @@ comment: LiaScript-Abgabelink mit exakterer Zustandsprotokollierung und Freeze
 
 
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
+import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MatheREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/DeutschREADME.md
@@ -1506,6 +1507,7 @@ function applySnapshotToCurrentVisibleHost(reason) {
   applyStoredOrthographyStatesToHost(host, slide.o || []);
   applyStoredFractionStatesToHost(host, slide.fq || []);
   applyStoredMarkerQuizStatesToHost(host, slide.mq || []);
+  applyStoredCoordinateStatesToHost(host, slide.cq || []);
   applyStoredCanvasStatesToHost(host, slide.cv || []);
   applyStoredGeneralMarkerState(slide.gm || null);
 
@@ -1918,8 +1920,8 @@ function collectDeclaredTasksFromSlideLines(lines) {
     });
     if (orthographyMatches.length) continue;
 
-    // Bruch-/Marker-Makros: jede Instanz ist eine Aufgabe
-    const macroMatches = line.match(/@(?:rectQuiz|circleQuiz|TextmarkerQuiz)\b/g) || [];
+    // Bruch-/Marker-/Koordinaten-Makros: jede Instanz ist eine Aufgabe
+    const macroMatches = line.match(/@(?:rectQuiz|circleQuiz|TextmarkerQuiz|ErzeugePunkt)\b/g) || [];
     macroMatches.forEach(function () {
       pushTask();
     });
@@ -2048,7 +2050,7 @@ function parseDeclaredEvaluationFromSource(text) {
 }
 
 function forEachCapturedState(slide, fn) {
-  ["q", "d", "m", "c", "o", "fq", "mq"].forEach(function (key) {
+  ["q", "d", "m", "c", "o", "fq", "mq", "cq"].forEach(function (key) {
     const arr = Array.isArray(slide && slide[key]) ? slide[key] : [];
     arr.forEach(fn);
   });
@@ -2252,13 +2254,26 @@ function rehydrateStateEvaluationMetaFromDeclaredTask(hash, state) {
   const task = Array.isArray(taskList) ? taskList[di - 1] : null;
   if (!task) return state;
 
-  const rawBe = Object.prototype.hasOwnProperty.call(task, "be")
-    ? task.be
-    : 1;
+  const hasExplicitBe =
+    Object.prototype.hasOwnProperty.call(state, "be") &&
+    Number.isFinite(Number(state.be)) &&
+    Number(state.be) >= 0;
 
-  state.be = Number.isFinite(Number(rawBe))
-    ? Math.max(0, Number(rawBe))
-    : 1;
+  if (!hasExplicitBe) {
+    const rawBe = Object.prototype.hasOwnProperty.call(task, "be")
+      ? task.be
+      : 1;
+
+    state.be = Number.isFinite(Number(rawBe))
+      ? Math.max(0, Number(rawBe))
+      : 1;
+  }
+
+  const existingTags = getEvaluationStateTags(state);
+  if (existingTags.length) {
+    state.tg = existingTags.slice();
+    return state;
+  }
 
   if (Array.isArray(task.tg) && task.tg.length) {
     state.tg = task.tg
@@ -2283,7 +2298,7 @@ function rehydrateSnapshotEvaluationMetaFromSource(payload) {
     const hash = cleanHashValue(slide && slide.h || "");
     if (!hash) return;
 
-    ["q", "d", "m", "c", "o", "fq", "mq"].forEach(function (key) {
+    ["q", "d", "m", "c", "o", "fq", "mq", "cq"].forEach(function (key) {
       const arr = Array.isArray(slide && slide[key]) ? slide[key] : [];
 
       arr.forEach(function (state) {
@@ -2323,15 +2338,25 @@ function applyDeclaredTaskMetaToCapturedSequence(hash, sequence) {
 
     if (!task) continue;
 
-    const rawBe = Object.prototype.hasOwnProperty.call(task, "be")
-      ? task.be
-      : 1;
+    const hasExplicitBe =
+      Object.prototype.hasOwnProperty.call(state, "be") &&
+      Number.isFinite(Number(state.be)) &&
+      Number(state.be) >= 0;
 
-    state.be = Number.isFinite(Number(rawBe))
-      ? Math.max(0, Number(rawBe))
-      : 1;
+    if (!hasExplicitBe) {
+      const rawBe = Object.prototype.hasOwnProperty.call(task, "be")
+        ? task.be
+        : 1;
 
-    if (Array.isArray(task.tg) && task.tg.length) {
+      state.be = Number.isFinite(Number(rawBe))
+        ? Math.max(0, Number(rawBe))
+        : 1;
+    }
+
+    const existingTags = getEvaluationStateTags(state);
+    if (existingTags.length) {
+      state.tg = existingTags.slice();
+    } else if (Array.isArray(task.tg) && task.tg.length) {
       state.tg = task.tg.slice();
     } else {
       delete state.tg;
@@ -2513,12 +2538,17 @@ function getEvaluationOutcome(state) {
   const s = String(state.s || "");
   const fc = String(state.fc || "");
   const cc = Number(state.cc || 0) || 0;
+  const orthoSolved = Number(state.sv || 0) === 1;
 
   if (s === "r" || fc === "d") return "resolved";
   if (s === "s" || fc === "s") return "correct";
+
+  // orthography liefert teils nur sv=1, ohne die normalen Klassen sauber zu setzen
+  if (orthoSolved) return "correct";
+
   if (fc === "e") return "wrong";
 
-  // geprüft, aber weder richtig noch aufgelöst => als falsch zählen
+  // geprüft, aber weder richtig noch aufgelöst => falsch
   if (cc > 0) return "wrong";
 
   return "";
@@ -2550,6 +2580,26 @@ function getEvaluationStateTags(state) {
 }
 
 
+function getEvaluationDeclaredTagsForState(slide, state) {
+  const hash = cleanHashValue(slide && slide.h || "");
+  const di = Number(state && state.di || 0);
+
+  if (hash && Number.isFinite(di) && di > 0) {
+    const taskList = getDeclaredTaskListForHash(hash);
+    const task = Array.isArray(taskList) ? taskList[di - 1] : null;
+
+    if (task && Array.isArray(task.tg) && task.tg.length) {
+      return task.tg
+        .map(function (tag) { return normalizeSpace(tag); })
+        .filter(Boolean)
+        .filter(function (tag, idx, arr) {
+          return arr.indexOf(tag) === idx;
+        });
+    }
+  }
+
+  return getEvaluationStateTags(state);
+}
 
 
 function visitEvaluationStates(payload, visitor) {
@@ -2558,10 +2608,31 @@ function visitEvaluationStates(payload, visitor) {
   }
 
   payload.s.forEach(function (slide) {
-    ["q", "d", "m", "c", "o", "fq", "mq"].forEach(function (key) {
+    const hash = cleanHashValue(slide && slide.h || "");
+    const declaredTasks = getDeclaredTaskListForHash(hash);
+    const hasDeclaredTasks = Array.isArray(declaredTasks) && declaredTasks.length > 0;
+
+    ["q", "d", "m", "c", "o", "fq", "mq", "cq"].forEach(function (key) {
       const arr = Array.isArray(slide && slide[key]) ? slide[key] : [];
 
       arr.forEach(function (state) {
+        rehydrateStateEvaluationMetaFromDeclaredTask(hash, state);
+
+        // WICHTIG:
+        // Wenn es für die Folie deklarierte Aufgaben gibt, dann dürfen auch
+        // nur solche Zustände in die Auswertung eingehen, die einer echten
+        // deklarierten Aufgabe zugeordnet sind.
+        //
+        // Sonst kann "erreicht" größer als "gesamt" werden, weil zusätzliche
+        // Hilfs-/Neben-Zustände mitgezählt werden.
+        if (hasDeclaredTasks) {
+          const di = Number(state && state.di || 0);
+
+          if (!Number.isFinite(di) || di <= 0 || di > declaredTasks.length) {
+            return;
+          }
+        }
+
         visitor(state, key, slide);
       });
     });
@@ -2725,10 +2796,11 @@ function buildSnapshotEvaluationStatsByTag(payload) {
   const bucket = getDeclaredEvaluationTagTotals();
 
   visitEvaluationStates(payload, function (state, key, slide) {
-    const tags = getEvaluationStateTags(state);
+    const tags = getEvaluationDeclaredTagsForState(slide, state);
     if (!tags.length) return;
 
     const alloc = getEvaluationAllocation(slide, state);
+    const be = getEvaluationUnits(state);
 
     tags.forEach(function (tag) {
       const clean = normalizeSpace(tag);
@@ -2743,6 +2815,17 @@ function buildSnapshotEvaluationStatsByTag(payload) {
           wrong: 0,
           resolved: 0
         };
+      }
+
+      // Fallback:
+      // Wenn der deklarierte Tag-Topf fehlt oder leer ist,
+      // hole total/tasks notfalls aus dem tatsächlich gespeicherten Zustand.
+      if (
+        Number(bucket[clean].total || 0) <= 0 &&
+        Number(bucket[clean].tasks || 0) <= 0
+      ) {
+        bucket[clean].total += be;
+        bucket[clean].tasks += 1;
       }
 
       bucket[clean].correct += alloc.correct;
@@ -2937,6 +3020,16 @@ function showEvaluationPlaceholder(hash) {
 }
 
 
+function refreshEvaluationPlaceholderIfVisible() {
+  const currentHash = cleanHashValue(getCurrentHash() || "");
+  if (!currentHash) return;
+  if (!isEvaluationTarget(currentHash)) return;
+
+  evaluationPlaceholderHash = currentHash;
+  syncFrozenScreens();
+}
+
+
 function renderEvaluationCard(label, value, kind) {
   const tone = escapeHtml(getEvaluationFeedbackColor(kind));
 
@@ -3009,12 +3102,55 @@ function getAssignmentOutcomeFromQuizRoot(root) {
   });
 }
 
-function getAssignmentDefaultAwardValue(root, spec) {
+
+function getSnapshotTaskStateForMarker(marker) {
+  if (!marker || !snapshotPayload) return null;
+
+  const hash = cleanHashValue(getCurrentHash() || "");
+  const taskIndex = getAssignmentDetailTaskIndex(marker);
+
+  if (!hash || !taskIndex) return null;
+
+  const slide = getSnapshotSlideForHash(hash);
+  if (!slide) return null;
+
+  const buckets = ["q", "d", "m", "c", "o", "fq", "mq", "cq"];
+
+  for (let i = 0; i < buckets.length; i++) {
+    const arr = Array.isArray(slide[buckets[i]]) ? slide[buckets[i]] : [];
+
+    for (let j = 0; j < arr.length; j++) {
+      const state = arr[j];
+      if (Number(state && state.di || 0) === taskIndex) {
+        return state;
+      }
+    }
+  }
+
+  return null;
+}
+
+
+function getAssignmentDefaultAwardValue(root, spec, marker) {
   const be =
     spec && spec.pointsValue !== null
       ? Number(spec.pointsValue)
       : 1;
 
+  // Im geteilten Freezelink möglichst den gespeicherten Snapshot-Zustand
+  // der konkreten Aufgabe benutzen, nicht den gerade sichtbaren DOM-Zustand.
+  if (isSharedFreezeLinkMode()) {
+    const storedState = getSnapshotTaskStateForMarker(marker);
+
+    if (storedState) {
+      const outcome = getEvaluationOutcome(storedState);
+
+      if (outcome === "correct") return String(be);
+      if (outcome === "wrong" || outcome === "resolved") return "0";
+    }
+  }
+
+  // Fallback für lokale/ältere Fälle weiterhin über DOM-Zustand
   const outcome = getAssignmentOutcomeFromQuizRoot(root);
 
   if (outcome === "correct") return String(be);
@@ -3054,17 +3190,17 @@ function renderAssignmentDetailBadgeContent(badge, marker, spec, quizRoot) {
 
   const initialValue = hasStoredManualAwardValue(manualKey)
     ? getStoredManualAwardValue(manualKey)
-    : getAssignmentDefaultAwardValue(quizRoot, spec);
+    : getAssignmentDefaultAwardValue(quizRoot, spec, marker);
 
   input.value = initialValue;
 
-  input.addEventListener("input", function () {
+  function handleManualAwardChange() {
     setStoredManualAwardValue(manualKey, input.value);
-  });
+    refreshEvaluationPlaceholderIfVisible();
+  }
 
-  input.addEventListener("change", function () {
-    setStoredManualAwardValue(manualKey, input.value);
-  });
+  input.addEventListener("input", handleManualAwardChange);
+  input.addEventListener("change", handleManualAwardChange);
 
   const sep = document.createElement("span");
   sep.className = "lia-adetails-award-sep";
@@ -3357,23 +3493,16 @@ function applyAssignmentDetailToMarker(marker) {
   if (!marker || !(marker instanceof Element)) return false;
 
   const spec = parseAssignmentDetails(marker.getAttribute("data-adetails") || "");
-  const checkBtn = getLastQuizCheckBeforeMarker(marker);
+  const taskRoot = getAssignmentDetailTaskRoot(marker);
+  const quizRoot = getAssignmentDetailQuizRootFromTaskRoot(taskRoot, marker);
 
-  if (!checkBtn) return false;
+  const controlRoot = quizRoot
+    ? (quizRoot.querySelector(".lia-quiz__control") || null)
+    : null;
 
-  const ownerId = ensureAssignmentDetailOwnerId(marker);
-  const badge = ensureAssignmentDetailBadge(checkBtn, ownerId);
-  if (!badge) return false;
-
-  const quizRoot = checkBtn.closest(".lia-quiz");
-  const controlRoot = checkBtn.closest(".lia-quiz__control") || checkBtn.parentElement;
-
-  renderAssignmentDetailBadgeContent(
-    badge,
-    marker,
-    spec,
-    quizRoot || controlRoot || checkBtn
-  );
+  const checkBtn =
+    (quizRoot && quizRoot.querySelector(".lia-quiz__check")) ||
+    getLastQuizCheckBeforeMarker(marker);
 
   function applySpecToElement(el) {
     if (!el || !(el instanceof Element)) return;
@@ -3404,15 +3533,32 @@ function applyAssignmentDetailToMarker(marker) {
     });
   }
 
-  applySpecToElement(checkBtn);
+  // WICHTIG:
+  // Die ADetails müssen vor allem am tatsächlichen Task/Quiz hängen,
+  // nicht nur am Prüfen-Button.
+  applySpecToElement(marker);
+  applySpecToElement(taskRoot);
+  applySpecToElement(quizRoot);
   applySpecToElement(controlRoot);
+  applySpecToElement(checkBtn);
 
-  if (quizRoot) {
-    applySpecToElement(quizRoot);
+  if (checkBtn) {
+    const ownerId = ensureAssignmentDetailOwnerId(marker);
+    const badge = ensureAssignmentDetailBadge(checkBtn, ownerId);
+
+    if (badge) {
+      renderAssignmentDetailBadgeContent(
+        badge,
+        marker,
+        spec,
+        quizRoot || taskRoot || controlRoot || checkBtn
+      );
+    }
   }
 
   marker.setAttribute("data-adetails-bound", "1");
-  return true;
+
+  return !!(taskRoot || quizRoot || checkBtn);
 }
 
 function collectOrderedTaskRootsForAssignmentDetails(root) {
@@ -3447,10 +3593,125 @@ function collectOrderedTaskRootsForAssignmentDetails(root) {
     ordered.push(root);
   });
 
+  collectCoordinateQuizRootsFromRoot(host).forEach(function (root) {
+    ordered.push(root);
+  });
+
   const unique = uniqueElements(ordered);
   unique.sort(compareElementsInDocumentOrder);
   return unique;
 }
+
+
+function getAssignmentDetailTaskRoot(marker) {
+  if (!marker || !(marker instanceof Element)) return null;
+
+  const scope = getAssignmentDetailScope(marker);
+  const taskIndex = getAssignmentDetailTaskIndex(marker);
+
+  if (!Number.isFinite(taskIndex) || taskIndex <= 0) {
+    return null;
+  }
+
+  const orderedTaskRoots = collectOrderedTaskRootsForAssignmentDetails(scope);
+  return orderedTaskRoots[taskIndex - 1] || null;
+}
+
+function getAssignmentDetailQuizRootFromTaskRoot(taskRoot, marker) {
+  if (!taskRoot || !(taskRoot instanceof Element)) return null;
+
+  if (taskRoot.classList && taskRoot.classList.contains("markerquiz")) {
+    return getMarkerQuizLiaRoot(taskRoot) || taskRoot.querySelector(".lia-quiz") || null;
+  }
+
+  if (taskRoot.classList && taskRoot.classList.contains("orthography-wrap")) {
+    return getOrthographyQuizRootFromWrap(taskRoot) || null;
+  }
+
+  if (taskRoot.classList && taskRoot.classList.contains("lia-dropdown")) {
+    return getDropdownQuizRootFromDropdown(
+      taskRoot,
+      getAssignmentDetailScope(marker)
+    ) || null;
+  }
+
+  if (taskRoot.classList && taskRoot.classList.contains("lia-quiz")) {
+    return taskRoot;
+  }
+
+  const fractionQuiz = getFractionQuizRootFromRep(taskRoot);
+  if (fractionQuiz) return fractionQuiz;
+
+  const tileQuiz = getTileQuizInnerQuiz(taskRoot);
+  if (tileQuiz) return tileQuiz;
+
+  // WICHTIG:
+  // Koordinatensystem-/Spezialmakros hängen ihren .lia-quiz-Block
+  // oft nicht direkt in taskRoot, sondern nur als nahen Sibling.
+  const nearbyFromTaskRoot = findNearbySiblingQuiz(taskRoot);
+  if (nearbyFromTaskRoot) return nearbyFromTaskRoot;
+
+  const nearbyFromMarker = findNearbySiblingQuiz(marker);
+  if (nearbyFromMarker) return nearbyFromMarker;
+
+  const normalized = normalizeActualQuizRoot(taskRoot);
+  if (normalized && normalized !== taskRoot) {
+    return normalized;
+  }
+
+  return null;
+}
+
+
+
+function getAssignmentDetailOwnerInfo(marker) {
+  const taskRoot = getAssignmentDetailTaskRoot(marker);
+
+  if (taskRoot) {
+    const quizRoot =
+      (taskRoot.matches && taskRoot.matches(".lia-quiz") ? taskRoot : null) ||
+      taskRoot.querySelector(".lia-quiz") ||
+      taskRoot;
+
+    const control =
+      (quizRoot && quizRoot.querySelector(".lia-quiz__control")) ||
+      taskRoot.querySelector(".lia-quiz__control") ||
+      null;
+
+    const checkBtn =
+      (control && control.querySelector(".lia-quiz__check")) ||
+      (quizRoot && quizRoot.querySelector(".lia-quiz__check")) ||
+      taskRoot.querySelector(".lia-quiz__check") ||
+      null;
+
+    if (control || checkBtn) {
+      return {
+        taskRoot: taskRoot,
+        quizRoot: quizRoot,
+        control:
+          control ||
+          (checkBtn
+            ? (checkBtn.closest(".lia-quiz__control") || checkBtn.parentElement || checkBtn)
+            : taskRoot),
+        checkBtn: checkBtn || null
+      };
+    }
+  }
+
+  const fallbackCheckBtn = getLastQuizCheckBeforeMarker(marker);
+  if (!fallbackCheckBtn) return null;
+
+  return {
+    taskRoot: null,
+    quizRoot: fallbackCheckBtn.closest(".lia-quiz") || null,
+    control:
+      fallbackCheckBtn.closest(".lia-quiz__control") ||
+      fallbackCheckBtn.parentElement ||
+      fallbackCheckBtn,
+    checkBtn: fallbackCheckBtn
+  };
+}
+
 
 function refreshAssignmentDetails(root) {
   const scope = root || getContentHost() || document.body;
@@ -3511,6 +3772,7 @@ function makeEmptySlideState(hash) {
     o: [],
     fq: [],
     mq: [],
+    cq: [],
     cv: [],
     gm: {
       h: []
@@ -3539,14 +3801,18 @@ function isDropdownPlaceholderValue(value) {
 function compactCommonStateMeta(src, out) {
   if (!src || !out) return out;
 
-  // WICHTIG:
-  // be und tg werden im ersten Kompressionsschritt
-  // bewusst NICHT mehr in den URL-Payload geschrieben.
-  // di bleibt erhalten, damit wir be/tg später aus der
-  // Kursquelle wieder sauber anreichern können.
-
   if (Number(src.di || 0) > 0) {
     out.di = Number(src.di);
+  }
+
+  const be = Number(src.be);
+  if (Number.isFinite(be) && be >= 0) {
+    out.be = be;
+  }
+
+  const tags = getEvaluationStateTags(src);
+  if (tags.length) {
+    out.tg = tags.slice();
   }
 
   if (normalizeSpace(src.s || "")) {
@@ -5440,6 +5706,7 @@ function compactSlideStateForFreezeUrl(slide) {
   const o = compactStateArrayForFreezeUrl(slide.o, compactOrthographyStateForFreezeUrl);
   const fq = compactStateArrayForFreezeUrl(slide.fq, compactFractionStateForFreezeUrl);
   const mq = compactStateArrayForFreezeUrl(slide.mq, compactMarkerQuizStateForFreezeUrl);
+  const cq = compactStateArrayForFreezeUrl(slide.cq, compactCoordinateQuizStateForFreezeUrl);
   const cv = compactCanvasStatesForFreezeUrl(slide.cv);
   const gm = compactGeneralMarkerStateForFreezeUrl(slide.gm);
 
@@ -5450,6 +5717,7 @@ function compactSlideStateForFreezeUrl(slide) {
   if (o.length) out.o = o;
   if (fq.length) out.fq = fq;
   if (mq.length) out.mq = mq;
+  if (cq.length) out.cq = cq;
   if (cv.length) out.cv = cv;
   if (gm) out.gm = gm;
 
@@ -6413,22 +6681,41 @@ function getFractionSvgFromRep(rep) {
 }
 
 function getFractionQuizRootFromRep(rep) {
-  const widget = getFractionWidgetFromRep(rep);
+  if (!rep) return null;
 
-  if (widget) {
-    const innerQuiz = widget.querySelector(".lia-quiz");
-    if (innerQuiz) return innerQuiz;
+  const host = getContentHost() || document.body;
+  const seeds = uniqueElements([
+    getFractionWidgetFromRep(rep),
+    getFractionFirstRangeWrap(rep),
+    getFractionLastRangeWrap(rep),
+    rep
+  ]).filter(function (el) {
+    return el instanceof Element;
+  });
 
-    let node = widget.nextElementSibling;
+  function pickQuiz(node) {
+    if (!node || !(node instanceof Element)) return null;
+
+    if (node.classList && node.classList.contains("lia-quiz")) {
+      return node;
+    }
+
+    const nestedQuiz = node.querySelector(".lia-quiz");
+    if (nestedQuiz) return nestedQuiz;
+
+    if (node.querySelector(".lia-quiz__check") || node.querySelector(".lia-quiz__feedback")) {
+      return node;
+    }
+
+    return null;
+  }
+
+  for (let s = 0; s < seeds.length; s++) {
+    let node = seeds[s];
     let hops = 0;
 
-    while (node && hops < 8) {
-      if (node.classList && node.classList.contains("fq-widget")) break;
-
-      const quiz = node.matches && node.matches(".lia-quiz")
-        ? node
-        : (node.querySelector ? node.querySelector(".lia-quiz") : null);
-
+    while (node && hops < 12) {
+      const quiz = pickQuiz(node);
       if (quiz) return quiz;
 
       node = node.nextElementSibling;
@@ -6436,21 +6723,17 @@ function getFractionQuizRootFromRep(rep) {
     }
   }
 
-  const lastWrap = getFractionLastRangeWrap(rep);
-  let node = lastWrap ? lastWrap.nextElementSibling : null;
-  let hops = 0;
+  for (let s = 0; s < seeds.length; s++) {
+    let node = seeds[s];
+    let hops = 0;
 
-  while (node && hops < 8) {
-    if (node.classList && node.classList.contains("fq-range")) break;
+    while (node && node !== host && hops < 10) {
+      const quiz = pickQuiz(node);
+      if (quiz) return quiz;
 
-    const quiz = node.matches && node.matches(".lia-quiz")
-      ? node
-      : (node.querySelector ? node.querySelector(".lia-quiz") : null);
-
-    if (quiz) return quiz;
-
-    node = node.nextElementSibling;
-    hops += 1;
+      node = node.parentElement;
+      hops += 1;
+    }
   }
 
   return null;
@@ -8083,8 +8366,19 @@ function isTextQuizInputControl(el) {
   if (!el || !(el instanceof Element)) return false;
   if (!isLearnerFieldCandidate(el)) return false;
 
+  // Bereits separat behandelte Quizfamilien NICHT als normales Textquiz zählen
   if (el.closest && el.closest(".markerquiz")) return false;
   if (el.closest && el.closest(".orthography-wrap")) return false;
+  if (el.closest && el.closest(".lia-dropdown")) return false;
+  if (el.closest && el.closest(".hlq-proxy")) return false;
+  if (el.closest && el.closest(".hlq-lia")) return false;
+  if (el.closest && el.closest(".lia-hl-target")) return false;
+  if (el.closest && el.closest(".lia-hl-prefill")) return false;
+  if (el.closest && el.closest(".fq-widget")) return false;
+  if (el.closest && el.closest(".fq-range")) return false;
+
+  if (findTileQuizInteractiveAncestor(el)) return false;
+  if (isFractionRangeInput(el)) return false;
 
   const type = String(el.type || "").toLowerCase();
   if (type === "checkbox" || type === "radio") return false;
@@ -8205,19 +8499,146 @@ function getTextQuizRootFromInput(input, host) {
 }
 
 
+function getNearestQuizAncestorId(root) {
+  let node = root instanceof Element ? root : null;
+  let hops = 0;
 
-  function collectTextQuizRootsFromRoot(root) {
-    const host = root || getContentHost() || document.body;
-    const inputs = getTextQuizInputsFromRoot(host);
-
-    const roots = inputs.map(function (input) {
-      return getTextQuizRootFromInput(input, host);
-    }).filter(function (rootEl) {
-      return !!rootEl;
-    });
-
-    return uniqueElements(roots);
+  while (node && hops < 6) {
+    const id = normalizeSpace(node.id || "");
+    if (id) return id;
+    node = node.parentElement;
+    hops += 1;
   }
+
+  return "";
+}
+
+function isPureResultQuizRoot(root) {
+  if (!root || !(root instanceof Element)) return false;
+  if (!root.classList || !root.classList.contains("lia-quiz")) return false;
+
+  if (root.closest("#lia-freeze-bar")) return false;
+  if (root.closest(".lia-submit-box")) return false;
+
+  if (!isRenderedElement(root) && !hasRenderedSelfOrDescendant(root)) {
+    return false;
+  }
+
+  // Keine normalen Texteingaben
+  if (getTextQuizInputsFromRoot(root).length > 0) return false;
+
+  // Keine anderen bereits separat behandelten Quizfamilien
+  if (getDropdownQuizControlsFromRoot(root).length > 0) return false;
+  if (getTileQuizTargetsFromRoot(root).length > 0) return false;
+  if (getChoiceQuizInputsFromRoot(root).length > 0) return false;
+  if (collectOrthographyQuizRootsFromRoot(root).length > 0) return false;
+  if (collectFractionQuizRootsFromRoot(root).length > 0) return false;
+  if (collectMarkerQuizRootsFromRoot(root).length > 0) return false;
+
+  // Es muss überhaupt wie ein Lia-Quiz aussehen
+  return !!root.querySelector(".lia-quiz__check, .lia-quiz__resolve, .lia-quiz__feedback");
+}
+
+
+function getCommonAncestorElement(nodes) {
+  const list = (Array.isArray(nodes) ? nodes : []).filter(function (n) {
+    return n instanceof Element;
+  });
+
+  if (!list.length) return null;
+
+  let ancestor = list[0];
+
+  while (ancestor) {
+    let ok = true;
+
+    for (let i = 1; i < list.length; i++) {
+      if (!ancestor.contains(list[i])) {
+        ok = false;
+        break;
+      }
+    }
+
+    if (ok) return ancestor;
+    ancestor = ancestor.parentElement;
+  }
+
+  return null;
+}
+
+function getNextQuizControlAfterElement(el, host) {
+  const scope = host || getContentHost() || document.body;
+  if (!scope || !el) return null;
+
+  const controls = Array.from(
+    scope.querySelectorAll(".lia-quiz__check, .lia-quiz__resolve")
+  ).filter(function (btn) {
+    if (!(btn instanceof Element)) return false;
+    if (btn.closest("#lia-freeze-bar")) return false;
+    if (btn.closest(".lia-submit-box")) return false;
+    return true;
+  });
+
+  let best = null;
+
+  controls.forEach(function (btn) {
+    if (compareElementsInDocumentOrder(el, btn) >= 0) return;
+
+    if (!best || compareElementsInDocumentOrder(btn, best) < 0) {
+      best = btn;
+    }
+  });
+
+  return best;
+}
+
+function getGroupedTextQuizRoot(inputs, owner, host) {
+  const scope = host || getContentHost() || document.body;
+  const pieces = (Array.isArray(inputs) ? inputs : []).slice();
+
+  if (owner) {
+    pieces.push(owner.closest(".lia-quiz__control") || owner);
+  }
+
+  const common = getCommonAncestorElement(pieces);
+
+  if (common && common !== scope && scope.contains(common)) {
+    return common;
+  }
+
+  return getTextQuizRootFromInput(inputs[0], scope);
+}
+
+
+function collectTextQuizRootsFromRoot(root) {
+  const host = root || getContentHost() || document.body;
+  const inputs = getTextQuizInputsFromRoot(host);
+  const groups = new Map();
+
+  inputs.forEach(function (input) {
+    const owner =
+      getNextQuizControlAfterElement(input, host) ||
+      getTextQuizRootFromInput(input, host) ||
+      input;
+
+    if (!groups.has(owner)) {
+      groups.set(owner, []);
+    }
+
+    groups.get(owner).push(input);
+  });
+
+  const roots = [];
+
+  groups.forEach(function (bucket, owner) {
+    const groupedRoot = getGroupedTextQuizRoot(bucket, owner, host);
+    if (groupedRoot) {
+      roots.push(groupedRoot);
+    }
+  });
+
+  return uniqueElements(roots);
+}
 
 
   function isDropdownQuizControl(el) {
@@ -8415,6 +8836,209 @@ function collectTileQuizRootsFromRoot(root) {
   return uniqueElements(roots);
 }
 
+
+
+function collectActualKnownLiaQuizRootsFromRoot(root) {
+  const host = root || getContentHost() || document.body;
+  const out = [];
+
+  collectTextQuizRootsFromRoot(host).forEach(function (taskRoot) {
+    const quiz = getTextQuizStateRoot(taskRoot);
+    if (quiz) out.push(quiz);
+  });
+
+  getDropdownQuizControlsFromRoot(host).forEach(function (drop) {
+    const quiz = getDropdownQuizRootFromDropdown(drop, host);
+    if (quiz) out.push(normalizeActualQuizRoot(quiz) || quiz);
+  });
+
+  collectTileQuizRootsFromRoot(host).forEach(function (taskRoot) {
+    const quiz = getTileQuizInnerQuiz(taskRoot);
+    if (quiz) out.push(quiz);
+  });
+
+  collectChoiceQuizRootsFromRoot(host).forEach(function (taskRoot) {
+    const quiz = normalizeActualQuizRoot(taskRoot) || taskRoot;
+    if (quiz) out.push(quiz);
+  });
+
+  collectOrthographyQuizRootsFromRoot(host).forEach(function (wrap) {
+    const quiz = getOrthographyQuizRootFromWrap(wrap);
+    if (quiz) out.push(quiz);
+  });
+
+  collectFractionQuizRootsFromRoot(host).forEach(function (rep) {
+    const quiz = getFractionQuizRootFromRep(rep);
+    if (quiz) out.push(quiz);
+  });
+
+  collectMarkerQuizRootsFromRoot(host).forEach(function (taskRoot) {
+    const quiz = getMarkerQuizLiaRoot(taskRoot);
+    if (quiz) out.push(quiz);
+  });
+
+  return uniqueElements(
+    out
+      .map(function (el) { return normalizeActualQuizRoot(el) || el; })
+      .filter(Boolean)
+  );
+}
+
+function collectCoordinateQuizRootsFromRoot(root) {
+  const host = root || getContentHost() || document.body;
+  const known = new Set(collectActualKnownLiaQuizRootsFromRoot(host));
+
+  return Array.from(host.querySelectorAll(".lia-quiz")).filter(function (quiz) {
+    if (!(quiz instanceof Element)) return false;
+    if (quiz.closest("#lia-freeze-bar")) return false;
+    if (quiz.closest(".lia-submit-box")) return false;
+    if (!isRenderedElement(quiz) && !hasRenderedSelfOrDescendant(quiz)) return false;
+    if (known.has(quiz)) return false;
+    return true;
+  });
+}
+
+function getCoordinateQuizKey(root, idx) {
+  if (!root) return "coord:" + idx;
+
+  const scope =
+    root.closest(".flex-child") ||
+    root.closest(".lia-paragraph") ||
+    root.parentElement ||
+    root;
+
+  const txt = stripQuizUiText((scope.textContent || root.textContent || ""));
+  if (txt) {
+    return "coord:" + shortHash(txt.slice(0, 240));
+  }
+
+  return "coord:" + idx;
+}
+
+function captureCoordinateQuizState(root, idx) {
+  if (!root) return null;
+
+  const feedback = root.querySelector(".lia-quiz__feedback");
+
+  const out = {
+    k: getCoordinateQuizKey(root, idx)
+  };
+  applyAssignmentMetaToState(out, root);
+
+  const stateCode = detectQuizState(root);
+  const feedbackCode = detectFeedbackCode(feedback);
+  const checkCount = getQuizCheckCount(root);
+
+  if (stateCode) out.s = stateCode;
+  if (feedbackCode) out.fc = feedbackCode;
+  if (checkCount > 0) out.cc = checkCount;
+
+  return out;
+}
+
+function compactCoordinateQuizStateForFreezeUrl(state) {
+  if (!state) return null;
+
+  const out = {
+    k: state.k
+  };
+
+  compactCommonStateMeta(state, out);
+
+  if (!hasMeaningfulOutcomeState(out)) {
+    return null;
+  }
+
+  return out;
+}
+
+function applyCoordinateQuizState(root, state) {
+  if (!root || !state) return root;
+
+  applyQuizRootStateClasses(root, state.s || "");
+
+  const feedbackText = deriveFeedbackTextForState(root, state);
+  const feedbackClass = getFeedbackClassFromState(state);
+
+  if (feedbackText || state.s || state.fc) {
+    const feedback = ensureQuizFeedbackElement(root);
+    if (feedback) {
+      feedback.classList.remove("text-success", "text-error", "text-disabled");
+      if (feedbackClass) {
+        feedback.classList.add(feedbackClass);
+      }
+
+      feedback.setAttribute("aria-live", "polite");
+
+      if (feedbackText) {
+        feedback.textContent = feedbackText;
+      }
+
+      revealQuizBlock(feedback);
+    }
+  }
+
+  applyQuizCheckCount(root, state.cc || 0);
+  lockTextQuizRoot(root);
+
+  return root;
+}
+
+function applyStoredCoordinateStatesToHost(host, storedStates) {
+  const liveRoots = host ? collectCoordinateQuizRootsFromRoot(host) : [];
+  const states = Array.isArray(storedStates) ? storedStates : [];
+  const used = new Set();
+  const applied = [];
+
+  log(
+    "coord-apply-live",
+    "live=" + liveRoots.length,
+    liveRoots.map(function (root, idx) {
+      return "[" + idx + "] " + JSON.stringify(getCoordinateQuizKey(root, idx));
+    }).join(" || ")
+  );
+
+  log(
+    "coord-apply-stored",
+    "stored=" + states.length,
+    states.map(function (state, idx) {
+      return "[" + idx + "] " + JSON.stringify(state.k || "");
+    }).join(" || ")
+  );
+
+  states.forEach(function (state, idx) {
+    let target = null;
+    const wantedKey = normalizeSpace(state && state.k || "");
+
+    if (wantedKey) {
+      for (let i = 0; i < liveRoots.length; i++) {
+        if (used.has(liveRoots[i])) continue;
+        if (getCoordinateQuizKey(liveRoots[i], i) === wantedKey) {
+          target = liveRoots[i];
+          break;
+        }
+      }
+    }
+
+    if (!target) {
+      if (idx >= 0 && idx < liveRoots.length && !used.has(liveRoots[idx])) {
+        target = liveRoots[idx];
+      }
+    }
+
+    if (!target) {
+      log("coord-match-miss", "storedIdx=" + idx, "key=" + JSON.stringify(wantedKey));
+      return;
+    }
+
+    used.add(target);
+    applyCoordinateQuizState(target, state);
+    applied.push(target);
+  });
+
+  return applied;
+}
+
 function collectSupportedQuizRootsFromRoot(root) {
   return uniqueElements(
     []
@@ -8425,6 +9049,7 @@ function collectSupportedQuizRootsFromRoot(root) {
       .concat(collectOrthographyQuizRootsFromRoot(root))
       .concat(collectFractionQuizRootsFromRoot(root))
       .concat(collectMarkerQuizRootsFromRoot(root))
+      .concat(collectCoordinateQuizRootsFromRoot(root))
   );
 }
 
@@ -8889,13 +9514,12 @@ function getTextQuizRootKey(root, idx) {
 
   const inputs = getTextQuizInputsFromRoot(root);
   if (inputs.length) {
-    // WICHTIG:
-    // Hier den tatsächlichen Root-Index weitergeben,
-    // nicht immer 0. Sonst kollidieren einfache Textfelder
-    // sehr leicht auf demselben Key (z.B. "idx:0").
     const first = getTextQuizInputKey(inputs[0], idx);
     if (first) return first;
   }
+
+  const ancestorId = getNearestQuizAncestorId(root);
+  if (ancestorId) return "id:" + ancestorId;
 
   const quizRoot = getTextQuizStateRoot(root);
   const txt = stripQuizUiText((quizRoot || root).textContent || "");
@@ -9015,7 +9639,7 @@ function captureTextQuizState(root, idx) {
 
   const stateCode = detectQuizState(quizRoot);
   const feedbackCode = detectFeedbackCode(feedback);
-  const checkCount = getQuizCheckCount(quizRoot);
+  const checkCount = getQuizCheckCount(quizRoot || root);
 
   const out = {
     k: getTextQuizRootKey(root, idx),
@@ -9067,11 +9691,15 @@ function countExpectedControls(slide) {
   if (slide && Array.isArray(slide.mq)) {
     n += slide.mq.length;
   }
+  
+
+  if (slide && Array.isArray(slide.cq)) {
+    n += slide.cq.length;
+  }
 
   if (slide && Array.isArray(slide.cv)) {
     n += slide.cv.length;
   }
-
 
   return n;
 }
@@ -9090,105 +9718,109 @@ function countLiveSupportedControlsForHash(hash) {
     collectOrthographyQuizRootsFromRoot(host).length +
     collectFractionQuizRootsFromRoot(host).length +
     collectMarkerQuizRootsFromRoot(host).length +
+    collectCoordinateQuizRootsFromRoot(host).length +
     collectCanvasFreezePairsFromRoot(host).length
   );
 }
 
-  function isSlideReadyForApply(hash) {
-    const current = String(getCurrentHash() || "");
-    if (current !== String(hash || "")) {
-      log("ready-fail", "reason=hash", "wanted=" + String(hash || ""), "current=" + current);
-      return false;
-    }
-
-    const host = getContentHost() || document.body;
-    if (!host) {
-      log("ready-fail", "reason=no-host");
-      return false;
-    }
-    if (!hasRenderedSelfOrDescendant(host)) {
-      log(
-        "ready-fail",
-        "reason=host-not-rendered",
-        "tag=" + String(host.tagName || ""),
-        "id=" + String(host.id || ""),
-        "class=" + normalizeSpace(host.className || "")
-      );
-      return false;
-    }
-
-    const desc = getCurrentSlideDescriptor();
-    if (!descriptorLooksMaterialized(desc)) {
-      log(
-        "ready-fail",
-        "reason=descriptor",
-        JSON.stringify(desc)
-      );
-      return false;
-    }
-
-    const decl = getDeclaredSlideByHash(hash);
-    const expectedTitle = normalizeSpace(decl && decl.t || "");
-    const actualTitle = normalizeSpace(desc.t || "");
-
-    if (expectedTitle && actualTitle && expectedTitle !== actualTitle) {
-      log(
-        "ready-fail",
-        "reason=title",
-        "expected=" + expectedTitle,
-        "actual=" + actualTitle
-      );
-      return false;
-    }
-
-    const slide = getSnapshotSlideForHash(hash);
-    if (!slide) return true;
-
-    const expectedControls = countExpectedControls(slide);
-    if (expectedControls > 0) {
-      const liveText = getTextQuizInputsFromRoot(host).length;
-      const liveDropdown = getDropdownQuizControlsFromRoot(host).length;
-      const liveTile = getTileQuizTargetsFromRoot(host).length;
-      const liveChoice = getChoiceQuizInputsFromRoot(host).length;
-      const liveOrtho = collectOrthographyQuizRootsFromRoot(host).length;
-      const liveFraction = collectFractionQuizRootsFromRoot(host).length;
-      const liveMarker = collectMarkerQuizRootsFromRoot(host).length;
-      const liveCanvas = collectCanvasFreezePairsFromRoot(host).length;
-
-      const liveControls =
-        liveText +
-        liveDropdown +
-        liveTile +
-        liveChoice +
-        liveOrtho +
-        liveFraction +
-        liveMarker +
-        liveCanvas;
-
-      if (liveControls < expectedControls) {
-        log(
-          "ready-fail",
-          "reason=controls",
-          "expected=" + expectedControls,
-          "live=" + liveControls,
-          "text=" + liveText,
-          "dropdown=" + liveDropdown,
-          "tile=" + liveTile,
-          "choice=" + liveChoice,
-          "ortho=" + liveOrtho,
-          "fraction=" + liveFraction,
-          "marker=" + liveMarker,
-          "canvas=" + liveCanvas,
-          "hostTag=" + String(host.tagName || ""),
-          "hostId=" + String(host.id || ""),
-          "hostClass=" + normalizeSpace(host.className || "")
-        );
-        return false;
-      }
-    }
-
-    return true;
+function isSlideReadyForApply(hash) {
+  const current = String(getCurrentHash() || "");
+  if (current !== String(hash || "")) {
+    log("ready-fail", "reason=hash", "wanted=" + String(hash || ""), "current=" + current);
+    return false;
   }
+
+  const host = getContentHost() || document.body;
+  if (!host) {
+    log("ready-fail", "reason=no-host");
+    return false;
+  }
+  if (!hasRenderedSelfOrDescendant(host)) {
+    log(
+      "ready-fail",
+      "reason=host-not-rendered",
+      "tag=" + String(host.tagName || ""),
+      "id=" + String(host.id || ""),
+      "class=" + normalizeSpace(host.className || "")
+    );
+    return false;
+  }
+
+  const desc = getCurrentSlideDescriptor();
+  if (!descriptorLooksMaterialized(desc)) {
+    log(
+      "ready-fail",
+      "reason=descriptor",
+      JSON.stringify(desc)
+    );
+    return false;
+  }
+
+  const decl = getDeclaredSlideByHash(hash);
+  const expectedTitle = normalizeSpace(decl && decl.t || "");
+  const actualTitle = normalizeSpace(desc.t || "");
+
+  if (expectedTitle && actualTitle && expectedTitle !== actualTitle) {
+    log(
+      "ready-fail",
+      "reason=title",
+      "expected=" + expectedTitle,
+      "actual=" + actualTitle
+    );
+    return false;
+  }
+
+  const slide = getSnapshotSlideForHash(hash);
+  if (!slide) return true;
+
+  const expectedControls = countExpectedControls(slide);
+  if (expectedControls > 0) {
+    const liveText = getTextQuizInputsFromRoot(host).length;
+    const liveDropdown = getDropdownQuizControlsFromRoot(host).length;
+    const liveTile = getTileQuizTargetsFromRoot(host).length;
+    const liveChoice = getChoiceQuizInputsFromRoot(host).length;
+    const liveOrtho = collectOrthographyQuizRootsFromRoot(host).length;
+    const liveFraction = collectFractionQuizRootsFromRoot(host).length;
+    const liveMarker = collectMarkerQuizRootsFromRoot(host).length;
+    const liveCoord = collectCoordinateQuizRootsFromRoot(host).length;
+    const liveCanvas = collectCanvasFreezePairsFromRoot(host).length;
+
+    const liveControls =
+      liveText +
+      liveDropdown +
+      liveTile +
+      liveChoice +
+      liveOrtho +
+      liveFraction +
+      liveMarker +
+      liveCoord +
+      liveCanvas;
+
+    if (liveControls < expectedControls) {
+      log(
+        "ready-fail",
+        "reason=controls",
+        "expected=" + expectedControls,
+        "live=" + liveControls,
+        "text=" + liveText,
+        "dropdown=" + liveDropdown,
+        "tile=" + liveTile,
+        "choice=" + liveChoice,
+        "ortho=" + liveOrtho,
+        "fraction=" + liveFraction,
+        "marker=" + liveMarker,
+        "coord=" + liveCoord,
+        "canvas=" + liveCanvas,
+        "hostTag=" + String(host.tagName || ""),
+        "hostId=" + String(host.id || ""),
+        "hostClass=" + normalizeSpace(host.className || "")
+      );
+      return false;
+    }
+  }
+
+  return true;
+}
 
   async function waitForSlideReady(hash, timeoutMs) {
     const timeout = timeoutMs || 2600;
@@ -9504,6 +10136,7 @@ function reapplySnapshotSilently(hash, reason) {
   applyStoredOrthographyStatesToHost(host, slide.o || []);
   applyStoredFractionStatesToHost(host, slide.fq || []);
   applyStoredMarkerQuizStatesToHost(host, slide.mq || []);
+  applyStoredCoordinateStatesToHost(host, slide.cq || []);
   applyStoredCanvasStatesToHost(host, slide.cv || []);
   applyStoredGeneralMarkerState(slide.gm || null);
 
@@ -10324,6 +10957,7 @@ function captureSlideStateForHash(hash) {
   const orthoRoots = collectOrthographyQuizRootsFromRoot(host);
   const fractionRoots = collectFractionQuizRootsFromRoot(host);
   const markerRoots = collectMarkerQuizRootsFromRoot(host);
+  const coordinateRoots = collectCoordinateQuizRootsFromRoot(host);
   const generalMarkerState = captureGeneralMarkerState(host);
 
   const previousSlideState = liveSlidesByHash[cleanHash] || null;
@@ -10391,6 +11025,15 @@ function captureSlideStateForHash(hash) {
     });
   });
 
+  coordinateRoots.forEach(function (root, idx) {
+    ordered.push({
+      root: root,
+      kind: "cq",
+      capture: function () { return captureCoordinateQuizState(root, idx); }
+    });
+  });
+
+
   ordered.sort(function (a, b) {
     return compareElementsInDocumentOrder(a.root, b.root);
   });
@@ -10404,6 +11047,7 @@ function captureSlideStateForHash(hash) {
     o: [],
     fq: [],
     mq: [],
+    cq: [],
     cv: canvasStates,
     gm: generalMarkerState
   };
@@ -10436,8 +11080,9 @@ function captureSlideStateForHash(hash) {
     "ortho=" + out.o.length,
     "fraction=" + out.fq.length,
     "marker=" + out.mq.length,
+    "coord=" + out.cq.length,
     "canvas=" + out.cv.length,
-    "annotation=global",
+        "annotation=global",
     "general-marker=" + (
       out.gm && Array.isArray(out.gm.h)
         ? out.gm.h.length
@@ -10468,6 +11113,7 @@ function storeLiveSlideState(hash, source) {
     "ortho=" + (state.o ? state.o.length : 0),
     "fraction=" + (state.fq ? state.fq.length : 0),
     "marker=" + (state.mq ? state.mq.length : 0),
+    "coord=" + (state.cq ? state.cq.length : 0),
     "canvas=" + (state.cv ? state.cv.length : 0),
     "annotation=global",
     "general-marker=" + (
@@ -11189,6 +11835,7 @@ async function applySnapshotOnce(hash, reason) {
     const appliedOrtho = applyStoredOrthographyStatesToHost(host, slide.o || []);
     const appliedFraction = applyStoredFractionStatesToHost(host, slide.fq || []);
     const appliedMarker = applyStoredMarkerQuizStatesToHost(host, slide.mq || []);
+    const appliedCoord = applyStoredCoordinateStatesToHost(host, slide.cq || []);
     const appliedCanvas = applyStoredCanvasStatesToHost(host, slide.cv || []);
     applyStoredGeneralMarkerState(slide.gm || null);
 
@@ -11199,6 +11846,7 @@ async function applySnapshotOnce(hash, reason) {
     const expectedOrtho = Array.isArray(slide.o) ? slide.o.length : 0;
     const expectedFraction = Array.isArray(slide.fq) ? slide.fq.length : 0;
     const expectedMarker = Array.isArray(slide.mq) ? slide.mq.length : 0;
+    const expectedCoord = Array.isArray(slide.cq) ? slide.cq.length : 0;
     const expectedCanvas = Array.isArray(slide.cv) ? slide.cv.length : 0;
 
     if (expectedText > 0 && (!appliedText || appliedText.length < expectedText)) {
@@ -11233,6 +11881,11 @@ async function applySnapshotOnce(hash, reason) {
 
     if (expectedMarker > 0 && (!appliedMarker || appliedMarker.length < expectedMarker)) {
       warn("apply-partial-marker", currentHash, "expected=" + expectedMarker, "applied=" + (appliedMarker ? appliedMarker.length : 0));
+      return false;
+    }
+
+    if (expectedCoord > 0 && (!appliedCoord || appliedCoord.length < expectedCoord)) {
+      warn("apply-partial-coord", currentHash, "expected=" + expectedCoord, "applied=" + (appliedCoord ? appliedCoord.length : 0));
       return false;
     }
 
@@ -12487,7 +13140,7 @@ function safeBoot() {
 Einfaches importieren: \
 `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md`
 
-Abgabefeld über Makro: \
+Abgabefeld über Makro: Am sinnvollsten wäre eine eigene letzte Folie dafür einzurichten. \
 `@Abgabe`
 
 Automatisches Auswerten: \
@@ -12511,11 +13164,15 @@ Aufgaben ohne Bewertung: \
 
 
 
-# Erste Folie
+# Etablierte Quiz
 
 $a)\;\;$ $7000+123=$ [[  7123  ]] @canvas
 
-@ADetails(1=BE;Addition)
+@ADetails(1=BE;Normal)
+
+--- 
+
+--- 
 
 
 
@@ -12525,81 +13182,56 @@ Wähle blau aus.
 - [[ ]] Rot
 - [[ ]] Grün
 
-@ADetails(1=BE;Farben)
+@ADetails(1=BE;Multiple)
+
+--- 
+
+--- 
+
+
+
+Wähle blau aus.
+- [(X)] Blau
+- [( )] Gelb
+- [( )] Rot
+- [( )] Grün
+
+@ADetails(1=BE;Radio)
+
+--- 
+
+--- 
 
 Wähle rot aus.
 [[(rot)|blau|grün|gelb]]
 
-@ADetails(1=BE;Farben)
+@ADetails(1=BE;Auswahl)
+
+--- 
+
+--- 
 
 
 
 Wähle gelb aus.
 [->[rot|blau|grün|(gelb)]]
 
-@ADetails(1=BE;Farben)
+@ADetails(1=BE;Kachel)
+
+--- 
+
+--- 
 
 
 
 $b)\;\;$ $6000+123=$ [[  6123  ]] m @canvas
 
-@ADetails(1=BE;Einheiten,Addition)
+@ADetails(1=BE;Tag1,Tag2)
 
+--- 
 
+--- 
 
-# 2. Folie
-
-
-$c)\;\;$ $5000+123=$ [[  5123  ]] @canvas
-
-@ADetails(1=BE;Addition)
-
-Wähle blau aus.
-- [(X)] Blau
-- [( )] Gelb
-- [( )] Rot
-- [( )] Grün
-
-@ADetails(1=BE;Farben)
-
-Wähle grün aus.
-[->[rot|blau|(grün)|gelb]]
-
-@ADetails(1=BE;Farben)
-
-
-Wähle blau aus.
-- [[X]] Blau
-- [[ ]] Gelb
-- [[ ]] Rot
-- [[ ]] Grün
-
-@ADetails(1=BE;Farben)
-
-
-
-# 3. Folie
-
-
-$e)\;\;$ $6000+123=$ [[  6123  ]] m @canvas
-
-
-
-
-Wähle blau aus.
-- [(X)] Blau
-- [( )] Gelb
-- [( )] Rot
-- [( )] Grün
-
-@ADetails(1=BE;Farben)
-
-
-
-Wähle grün aus.
-[[rot|blau|(grün)|gelb]]
-
-@ADetails(1=BE;Farben)
 
 
 **Entscheide**, ob es sich bei dem Term um einen Vektor, ein Skalar oder einen nicht definierten Ausdruck handelt.
@@ -12614,16 +13246,9 @@ Wähle grün aus.
 @ADetails(3=BE;Tabelle)
 
 
+--- 
 
-$d)\;\;$ $4000+123=$ [[  4123  ]] @canvas
-
-@ADetails(1=BE;Addition)
-
-
-
-
-# Deutschaufgaben-Makros
-
+--- 
 
 
 
@@ -12633,11 +13258,11 @@ __Aufgabe 1:__ Hör dir den Satz an und schreib ihn korrekt in das Eingabefeld.
 
 {{|> Deutsch Female}}
 <!-- style="position: absolute; left: -9999px;" -->
-Anna sitzt auf einem fliegenden Teppich.
+Anna
 
-[[    Anna sitzt auf einem fliegenden Teppich.    ]]
+[[    Anna    ]]
 
-@ADetails(4=BE; Deutsch)
+@ADetails(4=BE; Diktat)
 
 --- 
 
@@ -12646,10 +13271,9 @@ __Aufgabe 2:__ Lass dir die Wörter vorlesen, die in die Lücken kommen und schr
 
 Anna ging in einen @diktat(Zoo). Dort konnte sie auf einem @diktat(Lama) reiten.
 
-@ADetails(2=BE; Deutsch)
+@ADetails(2=BE; Lückendiktat)
 
 --- 
-
 
 
 __Aufgabe 3:__ Setze das Komma an die richtige Stelle. (Auflösung ist blockiert.)
@@ -12657,15 +13281,12 @@ __Aufgabe 3:__ Setze das Komma an die richtige Stelle. (Auflösung ist blockiert
 
 @orthography(2,`Der Bruder den ich mag.`,`Der Bruder, den ich mag.`)
 
-@ADetails(1=BE; Deutsch)
+@ADetails(1=BE; Komma)
 
 
-$g)\;\;$ $6000+123=$ [[  6123  ]] m @canvas
+--- 
 
-@ADetails(1=BE;Einheiten,Addition)
-
-
-# Brüche darstellen
+--- 
 
 **Stelle** die passende Teilung der Fläche **ein** und **markiere** den passenden Anteil, sodass der Bruch dargestellt wird.
 
@@ -12673,37 +13294,34 @@ __$a)\;\;$__ $\dfrac{1}{4}$
 
 @rectQuiz(1/4)
 
-@ADetails(1=BE;Bruchrechnung)
+@ADetails(1=BE;Rechteckbruch)
 
 __$b)\;\;$__ $\dfrac{2}{5}$
 
 @circleQuiz(2/5)
 
-@ADetails(1=BE;Bruchrechnung)
+@ADetails(1=BE;Kreisbruch)
 
 
+--- 
 
-$e)\;\;$ $6000+123=$ [[  6123  ]] m @canvas
-
-@ADetails(1=BE;Einheiten,Addition)
-
-
-
-
-
-# Markerquiz
-
-
+--- 
 
 
 Markiere die korrekt.
 
 <div class="markerquiz">
-@markred(rot) und @markblue(blau bis blau)
+@markred(rot)
 @TextmarkerQuiz
 </div>
 
-@ADetails(1=BE;Farben)
+@ADetails(1=BE;Marker)
+
+
+--- 
+
+--- 
+
 
 Kommentare werden auch eingefroren
 
@@ -12718,6 +13336,60 @@ Kommentare werden auch eingefroren
 Einfach noch ein KaTeX-Testfeld: [[     passt     ]]  @canvas
 
 @ADetails(0=BE)
+
+
+
+# Koordinatensystemquizze
+
+
+@Koordinatensystem(`xmin=-1;xmax=10;ymin=-1;ymax=10;width=700;id=A1`)
+
+@AchsenBeschriftung(`id=A1;xlabel=$x$;ylabel=$y$`)
+
+
+
+<section class="dynFlex">
+
+<div class="flex-child">
+
+__$a)\;\;$__ **Ziehe** den Punkt $A$ **auf** die Koordinaten $(1|4)$.
+
+@ErzeugePunkt(`A1;A;1;4`,`<!--  -->`)
+
+@ADetails(BE=1;Koordinatensystem)
+</div>
+
+<div class="flex-child">
+
+__$b)\;\;$__ **Ziehe** den Punkt $B$ **auf** die Koordinaten $(5|0)$.
+
+@ErzeugePunkt(`A1;B;5;0`,`<!--  -->`)
+
+@ADetails(BE=1;Koordinatensystem)
+
+</div>
+
+<div class="flex-child">
+
+__$c)\;\;$__ **Ziehe** den Punkt $C$ **auf** die Koordinaten $(7|6)$.
+
+@ErzeugePunkt(`A1;C;7;6`,`<!--  -->`)
+
+@ADetails(BE=1;Koordinatensystem)
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+# Abgabe
+
 
 
 
