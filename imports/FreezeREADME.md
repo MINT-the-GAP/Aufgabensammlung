@@ -32,7 +32,7 @@ window.__liaSubmissionDemo = (function () {
   const ADMIN_ATTR = "data-snapshot-admin";
   const STORAGE_PREFIX = "__lia_submission_demo__:";
   const PAYLOAD_VERSION = "sf-mini-ti-3";
-  const DEBUG = true;
+  const DEBUG = false;
   const EVALUATION_TITLE = "Auswertung";
   const BUILD_STAMP = "FREEZE-BUILD-2026-04-05-12-26";
 
@@ -894,6 +894,27 @@ body.lia-shared-freeze-link .lia-frozen-scope .lia-adetails-award-input{
 .lia-submit-box button:disabled{
   opacity: .82;
 }
+
+.lia-submit-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.75rem;
+  margin-top:1rem;
+  justify-content:flex-start;
+}
+
+.lia-submit-actions button{
+  margin-top:0;
+  flex:0 0 320px;
+  width:320px;
+  max-width:100%;
+}
+
+.lia-frozen-scope #lia-copy-link{
+  pointer-events:auto !important;
+  cursor:pointer !important;
+}
+
 
 #lia-status{
   margin-top: .85rem;
@@ -3155,7 +3176,7 @@ function getAssignmentDefaultAwardValue(root, spec, marker) {
 
   if (outcome === "correct") return String(be);
   if (outcome === "wrong" || outcome === "resolved") return "0";
-  return "";
+  return "0";
 }
 
 function renderAssignmentDetailBadgeContent(badge, marker, spec, quizRoot) {
@@ -3863,6 +3884,12 @@ function compactDropdownStateForFreezeUrl(state) {
   const hasChoice = !isDropdownPlaceholderValue(value);
 
   const out = { k: state.k };
+
+  const rootIndex = Number(state.ri);
+  if (Number.isFinite(rootIndex) && rootIndex >= 0) {
+    out.ri = rootIndex;
+  }
+
   if (hasChoice) out.v = value;
 
   compactCommonStateMeta(state, out);
@@ -3883,6 +3910,12 @@ function compactTileStateForFreezeUrl(state) {
   });
 
   const out = { k: state.k };
+
+  const rootIndex = Number(state.ri);
+  if (Number.isFinite(rootIndex) && rootIndex >= 0) {
+    out.ri = rootIndex;
+  }
+
   if (hasPlacedTiles) out.v = values;
 
   compactCommonStateMeta(state, out);
@@ -3903,6 +3936,12 @@ function compactChoiceStateForFreezeUrl(state) {
   });
 
   const out = { k: state.k };
+
+  const rootIndex = Number(state.ri);
+  if (Number.isFinite(rootIndex) && rootIndex >= 0) {
+    out.ri = rootIndex;
+  }
+
   if (hasSelection) out.v = values;
 
   compactCommonStateMeta(state, out);
@@ -6311,6 +6350,7 @@ function captureChoiceQuizState(root, idx) {
 
   const out = {
     k: getChoiceQuizKey(root, idx),
+    ri: Number(idx || 0),
     v: inputs.map(function (el) {
       return el.checked ? 1 : 0;
     })
@@ -6409,15 +6449,29 @@ function applyStoredChoiceStatesToHost(host, storedStates) {
     "choice-apply-stored",
     "stored=" + states.length,
     states.map(function (state, idx) {
-      return "[" + idx + "] " + JSON.stringify(getCanvasStateUidForFreezeUrl(state));
+      return "[" + idx + "] " + states.map(function (state, idx) {
+        return "[" + idx + "] " + JSON.stringify(state.k || "") + " ri=" + String(
+          Number.isFinite(Number(state && state.ri)) ? Number(state.ri) : "-"
+        );
+      }).join(" || ");
     }).join(" || ")
   );
 
   states.forEach(function (state, idx) {
     let target = null;
     const wantedKey = normalizeSpace(state && state.k || "");
+    const wantedRootIndex = Number(state && state.ri);
 
-    if (wantedKey) {
+    if (
+      Number.isFinite(wantedRootIndex) &&
+      wantedRootIndex >= 0 &&
+      wantedRootIndex < liveRoots.length &&
+      !used.has(liveRoots[wantedRootIndex])
+    ) {
+      target = liveRoots[wantedRootIndex];
+    }
+
+    if (!target && wantedKey) {
       for (let i = 0; i < liveRoots.length; i++) {
         if (used.has(liveRoots[i])) continue;
         if (getChoiceQuizKey(liveRoots[i], i) === wantedKey) {
@@ -7166,7 +7220,9 @@ function applyStoredFractionStatesToHost(host, storedStates) {
     "fraction-apply-stored",
     "stored=" + states.length,
     states.map(function (state, idx) {
-      return "[" + idx + "] " + JSON.stringify(state.k || "");
+      return "[" + idx + "] " + JSON.stringify(state.k || "") + " ri=" + String(
+        Number.isFinite(Number(state && state.ri)) ? Number(state.ri) : "-"
+      );
     }).join(" || ")
   );
 
@@ -8921,7 +8977,8 @@ function captureCoordinateQuizState(root, idx) {
   const feedback = root.querySelector(".lia-quiz__feedback");
 
   const out = {
-    k: getCoordinateQuizKey(root, idx)
+    k: getCoordinateQuizKey(root, idx),
+    ri: Number(idx || 0)
   };
   applyAssignmentMetaToState(out, root);
 
@@ -8939,9 +8996,12 @@ function captureCoordinateQuizState(root, idx) {
 function compactCoordinateQuizStateForFreezeUrl(state) {
   if (!state) return null;
 
-  const out = {
-    k: state.k
-  };
+  const out = { k: state.k };
+
+  const rootIndex = Number(state.ri);
+  if (Number.isFinite(rootIndex) && rootIndex >= 0) {
+    out.ri = rootIndex;
+  }
 
   compactCommonStateMeta(state, out);
 
@@ -9002,15 +9062,29 @@ function applyStoredCoordinateStatesToHost(host, storedStates) {
     "coord-apply-stored",
     "stored=" + states.length,
     states.map(function (state, idx) {
-      return "[" + idx + "] " + JSON.stringify(state.k || "");
+      return "[" + idx + "] " + JSON.stringify(state.k || "") + " ri=" + String(
+        Number.isFinite(Number(state && state.ri)) ? Number(state.ri) : "-"
+      );
     }).join(" || ")
   );
 
   states.forEach(function (state, idx) {
     let target = null;
     const wantedKey = normalizeSpace(state && state.k || "");
+    const wantedRootIndex = Number(state && state.ri);
 
-    if (wantedKey) {
+    // 1. Zuerst die ursprüngliche Root-Position benutzen.
+    if (
+      Number.isFinite(wantedRootIndex) &&
+      wantedRootIndex >= 0 &&
+      wantedRootIndex < liveRoots.length &&
+      !used.has(liveRoots[wantedRootIndex])
+    ) {
+      target = liveRoots[wantedRootIndex];
+    }
+
+    // 2. Danach per Key matchen.
+    if (!target && wantedKey) {
       for (let i = 0; i < liveRoots.length; i++) {
         if (used.has(liveRoots[i])) continue;
         if (getCoordinateQuizKey(liveRoots[i], i) === wantedKey) {
@@ -9020,6 +9094,7 @@ function applyStoredCoordinateStatesToHost(host, storedStates) {
       }
     }
 
+    // 3. Alter Fallback nur noch ganz zum Schluss.
     if (!target) {
       if (idx >= 0 && idx < liveRoots.length && !used.has(liveRoots[idx])) {
         target = liveRoots[idx];
@@ -9027,7 +9102,12 @@ function applyStoredCoordinateStatesToHost(host, storedStates) {
     }
 
     if (!target) {
-      log("coord-match-miss", "storedIdx=" + idx, "key=" + JSON.stringify(wantedKey));
+      log(
+        "coord-match-miss",
+        "storedIdx=" + idx,
+        "key=" + JSON.stringify(wantedKey),
+        "ri=" + String(Number.isFinite(wantedRootIndex) ? wantedRootIndex : "-")
+      );
       return;
     }
 
@@ -9110,6 +9190,7 @@ function captureTileQuizState(root, idx) {
 
   const out = {
     k: getTileQuizKey(tileRoot, idx),
+    ri: Number(idx || 0),
     v: targets.map(function (target) {
       return getTileTargetDisplayText(target);
     })
@@ -9247,15 +9328,29 @@ function applyStoredTileStatesToHost(host, storedStates) {
     "tile-apply-stored",
     "stored=" + states.length,
     states.map(function (state, idx) {
-      return "[" + idx + "] " + JSON.stringify(state.k || "");
+      return "[" + idx + "] " + JSON.stringify(state.k || "") + " ri=" + String(
+        Number.isFinite(Number(state && state.ri)) ? Number(state.ri) : "-"
+      );
     }).join(" || ")
   );
 
   states.forEach(function (state, idx) {
     let target = null;
     const wantedKey = normalizeSpace(state && state.k || "");
+    const wantedRootIndex = Number(state && state.ri);
 
-    if (wantedKey) {
+    // 1. Zuerst die ursprüngliche Root-Position benutzen.
+    if (
+      Number.isFinite(wantedRootIndex) &&
+      wantedRootIndex >= 0 &&
+      wantedRootIndex < liveRoots.length &&
+      !used.has(liveRoots[wantedRootIndex])
+    ) {
+      target = liveRoots[wantedRootIndex];
+    }
+
+    // 2. Danach per Key matchen.
+    if (!target && wantedKey) {
       for (let i = 0; i < liveRoots.length; i++) {
         if (used.has(liveRoots[i])) continue;
         if (getTileQuizKey(liveRoots[i], i) === wantedKey) {
@@ -9265,6 +9360,7 @@ function applyStoredTileStatesToHost(host, storedStates) {
       }
     }
 
+    // 3. Alter Fallback nur noch ganz zum Schluss.
     if (!target) {
       if (idx >= 0 && idx < liveRoots.length && !used.has(liveRoots[idx])) {
         target = liveRoots[idx];
@@ -9272,7 +9368,12 @@ function applyStoredTileStatesToHost(host, storedStates) {
     }
 
     if (!target) {
-      log("tile-match-miss", "storedIdx=" + idx, "key=" + JSON.stringify(wantedKey));
+      log(
+        "tile-match-miss",
+        "storedIdx=" + idx,
+        "key=" + JSON.stringify(wantedKey),
+        "ri=" + String(Number.isFinite(wantedRootIndex) ? wantedRootIndex : "-")
+      );
       return;
     }
 
@@ -9351,6 +9452,7 @@ function applyStoredTileStatesToHost(host, storedStates) {
 
     const out = {
       k: getDropdownQuizKey(drop, idx),
+      ri: Number(idx || 0),
       v: getDropdownSelectedText(drop)
     };
     applyAssignmentMetaToState(out, root);
@@ -9453,60 +9555,80 @@ function applyStoredTileStatesToHost(host, storedStates) {
     return drop;
   }
 
-  function applyStoredDropdownStatesToHost(host, storedStates) {
-    const live = host ? getDropdownQuizControlsFromRoot(host) : [];
-    const states = Array.isArray(storedStates) ? storedStates : [];
-    const used = new Set();
-    const applied = [];
+function applyStoredDropdownStatesToHost(host, storedStates) {
+  const live = host ? getDropdownQuizControlsFromRoot(host) : [];
+  const states = Array.isArray(storedStates) ? storedStates : [];
+  const used = new Set();
+  const applied = [];
 
-    log(
-      "dropdown-apply-live",
-      "live=" + live.length,
-      live.map(function (drop, idx) {
-        return "[" + idx + "] " + JSON.stringify(getDropdownQuizKey(drop, idx));
-      }).join(" || ")
-    );
+  log(
+    "dropdown-apply-live",
+    "live=" + live.length,
+    live.map(function (drop, idx) {
+      return "[" + idx + "] " + JSON.stringify(getDropdownQuizKey(drop, idx));
+    }).join(" || ")
+  );
 
-    log(
-      "dropdown-apply-stored",
-      "stored=" + states.length,
-      states.map(function (state, idx) {
-        return "[" + idx + "] " + JSON.stringify(state.k || "");
-      }).join(" || ")
-    );
+  log(
+    "dropdown-apply-stored",
+    "stored=" + states.length,
+    states.map(function (state, idx) {
+      return "[" + idx + "] " + JSON.stringify(state.k || "") + " ri=" + String(
+        Number.isFinite(Number(state && state.ri)) ? Number(state.ri) : "-"
+      );
+    }).join(" || ")
+  );
 
-    states.forEach(function (state, idx) {
-      let target = null;
-      const wantedKey = normalizeSpace(state && state.k || "");
+  states.forEach(function (state, idx) {
+    let target = null;
+    const wantedKey = normalizeSpace(state && state.k || "");
+    const wantedRootIndex = Number(state && state.ri);
 
-      if (wantedKey) {
-        for (let i = 0; i < live.length; i++) {
-          if (used.has(live[i])) continue;
-          if (getDropdownQuizKey(live[i], i) === wantedKey) {
-            target = live[i];
-            break;
-          }
+    // 1. Zuerst die ursprüngliche Root-Position benutzen.
+    if (
+      Number.isFinite(wantedRootIndex) &&
+      wantedRootIndex >= 0 &&
+      wantedRootIndex < live.length &&
+      !used.has(live[wantedRootIndex])
+    ) {
+      target = live[wantedRootIndex];
+    }
+
+    // 2. Danach per Key matchen.
+    if (!target && wantedKey) {
+      for (let i = 0; i < live.length; i++) {
+        if (used.has(live[i])) continue;
+        if (getDropdownQuizKey(live[i], i) === wantedKey) {
+          target = live[i];
+          break;
         }
       }
+    }
 
-      if (!target) {
-        if (idx >= 0 && idx < live.length && !used.has(live[idx])) {
-          target = live[idx];
-        }
+    // 3. Alter Fallback nur noch ganz zum Schluss.
+    if (!target) {
+      if (idx >= 0 && idx < live.length && !used.has(live[idx])) {
+        target = live[idx];
       }
+    }
 
-      if (!target) {
-        log("dropdown-match-miss", "storedIdx=" + idx, "key=" + JSON.stringify(wantedKey));
-        return;
-      }
+    if (!target) {
+      log(
+        "dropdown-match-miss",
+        "storedIdx=" + idx,
+        "key=" + JSON.stringify(wantedKey),
+        "ri=" + String(Number.isFinite(wantedRootIndex) ? wantedRootIndex : "-")
+      );
+      return;
+    }
 
-      used.add(target);
-      applyDropdownQuizState(target, state);
-      applied.push(target);
-    });
+    used.add(target);
+    applyDropdownQuizState(target, state);
+    applied.push(target);
+  });
 
-    return applied;
-  }
+  return applied;
+}
 
 
 function getTextQuizRootKey(root, idx) {
@@ -10409,13 +10531,13 @@ function applyStoredCanvasStatesToHost(host, storedStates) {
     "canvas-apply-stored",
     "stored=" + states.length,
     states.map(function (state, idx) {
-      return "[" + idx + "] " + JSON.stringify(state && state.u || "");
+      return "[" + idx + "] " + JSON.stringify(getCanvasStateUidForFreezeUrl(state));
     }).join(" || ")
   );
 
   states.forEach(function (state, idx) {
     let target = null;
-    const wantedUid = normalizeSpace(state && state.u || "");
+    const wantedUid = normalizeSpace(getCanvasStateUidForFreezeUrl(state));
 
     if (wantedUid) {
       for (let i = 0; i < livePairs.length; i++) {
@@ -11198,6 +11320,147 @@ async function buildPayloadFromLiveStates() {
     return document.getElementById("lia-link");
   }
 
+
+function getCopyLinkButton() {
+  return document.getElementById("lia-copy-link");
+}
+
+function syncCopyLinkButtonState() {
+  const btn = getCopyLinkButton();
+  if (!btn) return;
+
+  const linkEl = getLinkBox();
+  const value = normalizeSpace(
+    (linkEl && linkEl.value) ||
+    freezeLinkValue ||
+    ""
+  );
+
+  try { btn.disabled = !value; } catch (e) {}
+}
+
+function fallbackCopyText(text) {
+  const value = String(text || "");
+  if (!value) return false;
+
+  const active = document.activeElement;
+  const ta = document.createElement("textarea");
+
+  ta.value = value;
+  ta.setAttribute("aria-hidden", "true");
+  ta.setAttribute("tabindex", "-1");
+  ta.style.position = "fixed";
+  ta.style.top = "0";
+  ta.style.left = "-9999px";
+  ta.style.opacity = "0";
+  ta.style.pointerEvents = "none";
+  ta.style.fontSize = "16px";
+
+  document.body.appendChild(ta);
+
+  let ok = false;
+
+  try {
+    try { ta.focus({ preventScroll: true }); } catch (e) { ta.focus(); }
+    ta.select();
+    ta.setSelectionRange(0, ta.value.length);
+    ok = !!document.execCommand("copy");
+  } catch (e) {
+    ok = false;
+  }
+
+  if (ta.parentNode) {
+    ta.parentNode.removeChild(ta);
+  }
+
+  if (active && typeof active.focus === "function") {
+    try { active.focus({ preventScroll: true }); } catch (e) {
+      try { active.focus(); } catch (e2) {}
+    }
+  }
+
+  return ok;
+}
+
+async function writeTextToClipboard(text) {
+  const value = String(text || "");
+  if (!value) return false;
+
+  if (
+    navigator.clipboard &&
+    typeof navigator.clipboard.writeText === "function" &&
+    window.isSecureContext
+  ) {
+    try {
+      await navigator.clipboard.writeText(value);
+      return true;
+    } catch (err) {
+      log(
+        "clipboard-api-failed",
+        err && err.message ? err.message : err
+      );
+    }
+  }
+
+  return fallbackCopyText(value);
+}
+
+async function copyLink() {
+  const linkEl = getLinkBox();
+  const value = normalizeSpace(
+    (linkEl && linkEl.value) ||
+    freezeLinkValue ||
+    ""
+  );
+
+  if (!value) {
+    setStatus("Es ist noch kein Abgabelink vorhanden.");
+    syncCopyLinkButtonState();
+    return false;
+  }
+
+  const btn = getCopyLinkButton();
+  const oldLabel = btn ? btn.textContent : "";
+
+  const ok = await writeTextToClipboard(value);
+
+  if (ok) {
+    setStatus("Abgabelink in die Zwischenablage kopiert.");
+
+    if (btn) {
+      btn.textContent = "Link kopiert";
+      setTimeout(function () {
+        if (btn) btn.textContent = oldLabel || "Link kopieren";
+      }, 1400);
+    }
+
+    return true;
+  }
+
+  // Falls direktes Kopieren blockiert wurde:
+  // Link markieren, damit danach manuell kopiert werden kann.
+  if (linkEl) {
+    try { linkEl.focus({ preventScroll: true }); } catch (e) {
+      try { linkEl.focus(); } catch (e2) {}
+    }
+
+    try { linkEl.select(); } catch (e) {}
+    try { linkEl.setSelectionRange(0, String(linkEl.value || "").length); } catch (e) {}
+  }
+
+  setStatus("Kopieren wurde vom Browser blockiert. Der Link ist markiert und kann nun manuell kopiert werden.");
+
+  if (btn) {
+    btn.textContent = "Manuell kopieren";
+    setTimeout(function () {
+      if (btn) btn.textContent = oldLabel || "Link kopieren";
+    }, 1600);
+  }
+
+  return false;
+}
+
+
   function setStatus(msg) {
     const el = getStatusBox();
     if (el) el.textContent = msg || "";
@@ -11238,6 +11501,7 @@ async function buildPayloadFromLiveStates() {
     const linkEl = document.getElementById("lia-link");
     const statusEl = document.getElementById("lia-status");
     const btnEl = document.getElementById("lia-create-link");
+    const copyBtn = document.getElementById("lia-copy-link");
     const noteEl = document.getElementById("lia-frozen-note");
 
     if (nameEl) {
@@ -11249,6 +11513,17 @@ async function buildPayloadFromLiveStates() {
     if (btnEl) {
       try { btnEl.disabled = true; } catch (e) {}
       btnEl.textContent = "Abgabe eingefroren";
+    }
+
+    if (copyBtn) {
+      const currentValue = normalizeSpace(
+        (linkEl && linkEl.value) ||
+        (typeof opts.linkValue === "string" ? opts.linkValue : "") ||
+        freezeLinkValue ||
+        ""
+      );
+
+      try { copyBtn.disabled = !currentValue; } catch (e) {}
     }
 
     if (linkEl) {
@@ -11700,6 +11975,24 @@ function lockCurrentSlideInteractiveState() {
       el.style.userSelect = "text";
       el.style.webkitUserSelect = "text";
       el.style.cursor = "text";
+      return;
+    }
+
+    if (el.id === "lia-copy-link") {
+      const linkEl = getLinkBox();
+      const value = normalizeSpace(
+        (linkEl && linkEl.value) ||
+        freezeLinkValue ||
+        ""
+      );
+
+      try { el.disabled = !value; } catch (e) {}
+      try { el.removeAttribute("tabindex"); } catch (e) {}
+
+      el.style.pointerEvents = "auto";
+      el.style.userSelect = "none";
+      el.style.webkitUserSelect = "none";
+      el.style.cursor = value ? "pointer" : "not-allowed";
       return;
     }
 
@@ -12416,7 +12709,7 @@ function installLiveCaptureBindings() {
 
     if (isTextQuizInputControl(t) || isOrthographyQuizInput(t)) {
       captureAdminState();
-      storeLiveSlideState(liveRouteCurrentHash || getCurrentHash(), "input-now");
+      const state = captureSlideStateForHash(hash);
       return;
     }
 
@@ -12642,8 +12935,11 @@ function isAllowedFreezeTarget(target) {
   if (!target || !(target instanceof Element)) return false;
 
   if (target.closest("#lia-freeze-bar")) return true;
+
   if (target.id === "lia-link") return true;
+  if (target.id === "lia-copy-link") return true;
   if (target.closest && target.closest("#lia-link")) return true;
+  if (target.closest && target.closest("#lia-copy-link")) return true;
 
   // Annotation-Toolbar darf auch im Freeze bedienbar bleiben
   // (z.B. Anzeigen/Ausblenden per Auge-Button).
@@ -12887,6 +13183,8 @@ async function activateSnapshotMode(payload, linkValue, opts) {
         linkEl.style.webkitUserSelect = "text";
       }
 
+      syncCopyLinkButtonState();
+
       setStatus(
         "Abgabelink erstellt. F12/DevTools: " +
         (
@@ -13076,6 +13374,7 @@ function safeBoot() {
 
   return {
     createLink: createLink,
+    copyLink: copyLink,
     clearStoredSubmissionToken: clearStoredSubmissionToken,
     goFrozenHash: goFrozenHash,
     runCompressionCoreSelfTest: runCompressionCoreSelfTest,
@@ -13104,12 +13403,22 @@ function safeBoot() {
   <label for="lia-name">Name</label>
   <input id="lia-name" data-snapshot-admin="1" type="text" placeholder="Name eingeben">
 
-  <button
-    id="lia-create-link"
-    data-snapshot-admin="1"
-    type="button"
-    onclick="console.warn('[LIA-FREEZE] INLINE-CREATE-LINK-CLICK'); if(window.__liaSubmissionDemo && typeof window.__liaSubmissionDemo.createLink === 'function')  { window.__liaSubmissionDemo.createLink(); } else { console.error('[LIA-FREEZE] createLink not available on window.__liaSubmissionDemo'); } return false;"
-  >Abgabelink erstellen</button>
+  <div class="lia-submit-actions">
+    <button
+      id="lia-create-link"
+      data-snapshot-admin="1"
+      type="button"
+      onclick="console.warn('[LIA-FREEZE] INLINE-CREATE-LINK-CLICK'); if(window.__liaSubmissionDemo && typeof window.__liaSubmissionDemo.createLink ===   'function') { window.__liaSubmissionDemo.createLink(); } else { console.error('[LIA-FREEZE] createLink not available on window.__liaSubmissionDemo'); } return false;"
+    >Abgabelink erstellen</button>
+
+    <button
+      id="lia-copy-link"
+      data-snapshot-admin="1"
+      type="button"
+      disabled
+      onclick="console.warn('[LIA-FREEZE] INLINE-COPY-LINK-CLICK'); if(window.__liaSubmissionDemo && typeof window.__liaSubmissionDemo.copyLink === 'function') { window.__liaSubmissionDemo.copyLink(); } else { console.error('[LIA-FREEZE] copyLink not available on window.__liaSubmissionDemo'); } return false;"
+    >Link kopieren</button>
+  </div>
 
   <label for="lia-link">Abgabelink</label>
   <textarea id="lia-link" data-snapshot-admin="1" readonly placeholder="Hier erscheint der erzeugte Link"></textarea>
@@ -13336,6 +13645,192 @@ Kommentare werden auch eingefroren
 Einfach noch ein KaTeX-Testfeld: [[     passt     ]]  @canvas
 
 @ADetails(0=BE)
+
+
+--- 
+
+--- 
+
+--- 
+
+--- 
+
+
+
+
+$a)\;\;$ $7000+123=$ [[  7123  ]] @canvas
+
+@ADetails(1=BE;Normal)
+
+--- 
+
+--- 
+
+
+
+Wähle blau aus.
+- [[X]] Blau
+- [[ ]] Gelb
+- [[ ]] Rot
+- [[ ]] Grün
+
+@ADetails(1=BE;Multiple)
+
+--- 
+
+--- 
+
+
+
+Wähle blau aus.
+- [(X)] Blau
+- [( )] Gelb
+- [( )] Rot
+- [( )] Grün
+
+@ADetails(1=BE;Radio)
+
+--- 
+
+--- 
+
+Wähle rot aus.
+[[(rot)|blau|grün|gelb]]
+
+@ADetails(1=BE;Auswahl)
+
+--- 
+
+--- 
+
+
+
+Wähle gelb aus.
+[->[rot|blau|grün|(gelb)]]
+
+@ADetails(1=BE;Kachel)
+
+--- 
+
+--- 
+
+
+
+$b)\;\;$ $6000+123=$ [[  6123  ]] m @canvas
+
+@ADetails(1=BE;Tag1,Tag2)
+
+--- 
+
+--- 
+
+
+
+**Entscheide**, ob es sich bei dem Term um einen Vektor, ein Skalar oder einen nicht definierten Ausdruck handelt.
+<br>
+
+- [[Vektor]       (Skalar)    [nicht definiert]]
+- [    [ ]           [ ]             [X]     ]  nicht definiert
+- [    ( )           (X)             ( )     ]  Skalar
+- [    [X]           [ ]             [ ]     ]  Vektor
+
+
+@ADetails(3=BE;Tabelle)
+
+
+--- 
+
+--- 
+
+
+
+
+__Aufgabe 1:__ Hör dir den Satz an und schreib ihn korrekt in das Eingabefeld.
+
+
+{{|> Deutsch Female}}
+<!-- style="position: absolute; left: -9999px;" -->
+Anna
+
+[[    Anna    ]]
+
+@ADetails(4=BE; Diktat)
+
+--- 
+
+
+__Aufgabe 2:__ Lass dir die Wörter vorlesen, die in die Lücken kommen und schreibe diese in die Lücken.
+
+Anna ging in einen @diktat(Zoo). Dort konnte sie auf einem @diktat(Lama) reiten.
+
+@ADetails(2=BE; Lückendiktat)
+
+--- 
+
+
+__Aufgabe 3:__ Setze das Komma an die richtige Stelle. (Auflösung ist blockiert.)
+
+
+@orthography(2,`Der Bruder den ich mag.`,`Der Bruder, den ich mag.`)
+
+@ADetails(1=BE; Komma)
+
+
+--- 
+
+--- 
+
+**Stelle** die passende Teilung der Fläche **ein** und **markiere** den passenden Anteil, sodass der Bruch dargestellt wird.
+
+__$a)\;\;$__ $\dfrac{1}{4}$
+
+@rectQuiz(1/4)
+
+@ADetails(1=BE;Rechteckbruch)
+
+__$b)\;\;$__ $\dfrac{2}{5}$
+
+@circleQuiz(2/5)
+
+@ADetails(1=BE;Kreisbruch)
+
+
+--- 
+
+--- 
+
+
+Markiere die korrekt.
+
+<div class="markerquiz">
+@markred(rot)
+@TextmarkerQuiz
+</div>
+
+@ADetails(1=BE;Marker)
+
+
+--- 
+
+--- 
+
+
+Kommentare werden auch eingefroren
+
+[[___]]
+
+@ADetails(0=BE)
+
+[[___ ___ ___ ___]]
+
+@ADetails(0=BE)
+
+Einfach noch ein KaTeX-Testfeld: [[     passt     ]]  @canvas
+
+@ADetails(0=BE)
+
+
+
 
 
 
