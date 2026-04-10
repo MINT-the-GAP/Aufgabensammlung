@@ -7482,11 +7482,9 @@ window.getTabelleDaten = function(uid) {
 
 
 
+@Koordinatensystem: @Koordinatensystem_(@0)
 
-
-@Koordinatensystem
-<div>
-
+@Koordinatensystem_
 ``` javascript @JSX.Graph
 
 
@@ -8563,14 +8561,7 @@ window.getTabelleDaten = function(uid) {
     applyGridColor(board, c);
   }, 400);
 })();
-
-
-
-
 ```
-
-</div>
-
 @end
 
 
