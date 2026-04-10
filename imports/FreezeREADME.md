@@ -32,7 +32,7 @@ window.__liaSubmissionDemo = (function () {
   const ADMIN_ATTR = "data-snapshot-admin";
   const STORAGE_PREFIX = "__lia_submission_demo__:";
   const PAYLOAD_VERSION = "sf-mini-ti-3";
-  const DEBUG = false;
+  const DEBUG = true;
   const EVALUATION_TITLE = "Auswertung";
   const BUILD_STAMP = "FREEZE-BUILD-2026-04-05-12-26";
 
@@ -3834,16 +3834,6 @@ function compactCommonStateMeta(src, out) {
     out.di = Number(src.di);
   }
 
-  const be = Number(src.be);
-  if (Number.isFinite(be) && be >= 0) {
-    out.be = be;
-  }
-
-  const tags = getEvaluationStateTags(src);
-  if (tags.length) {
-    out.tg = tags.slice();
-  }
-
   if (normalizeSpace(src.s || "")) {
     out.s = String(src.s);
   }
@@ -3867,11 +3857,13 @@ function compactTextQuizStateForFreezeUrl(state) {
     return normalizeSpace(v || "") !== "";
   });
 
-  const out = { k: state.k };
+  const out = {};
 
   const rootIndex = Number(state.ri);
   if (Number.isFinite(rootIndex) && rootIndex >= 0) {
     out.ri = rootIndex;
+  } else if (normalizeSpace(state.k || "")) {
+    out.k = state.k;
   }
 
   if (hasText) out.v = values;
@@ -3891,11 +3883,13 @@ function compactDropdownStateForFreezeUrl(state) {
   const value = String(state.v || "");
   const hasChoice = !isDropdownPlaceholderValue(value);
 
-  const out = { k: state.k };
+  const out = {};
 
   const rootIndex = Number(state.ri);
   if (Number.isFinite(rootIndex) && rootIndex >= 0) {
     out.ri = rootIndex;
+  } else if (normalizeSpace(state.k || "")) {
+    out.k = state.k;
   }
 
   if (hasChoice) out.v = value;
@@ -3917,11 +3911,13 @@ function compactTileStateForFreezeUrl(state) {
     return normalizeSpace(v || "") !== "";
   });
 
-  const out = { k: state.k };
+  const out = {};
 
   const rootIndex = Number(state.ri);
   if (Number.isFinite(rootIndex) && rootIndex >= 0) {
     out.ri = rootIndex;
+  } else if (normalizeSpace(state.k || "")) {
+    out.k = state.k;
   }
 
   if (hasPlacedTiles) out.v = values;
@@ -3943,11 +3939,13 @@ function compactChoiceStateForFreezeUrl(state) {
     return !!Number(v);
   });
 
-  const out = { k: state.k };
+  const out = {};
 
   const rootIndex = Number(state.ri);
   if (Number.isFinite(rootIndex) && rootIndex >= 0) {
     out.ri = rootIndex;
+  } else if (normalizeSpace(state.k || "")) {
+    out.k = state.k;
   }
 
   if (hasSelection) out.v = values;
@@ -3971,9 +3969,12 @@ function compactOrthographyStateForFreezeUrl(state) {
   const hasText = normalizeSpace(text) !== "";
 
   const out = {
-    k: state.k,
     u: state.u
   };
+
+  if (!normalizeSpace(state.u || "") && normalizeSpace(state.k || "")) {
+    out.k = state.k;
+  }
 
   if (hasText) out.v = text;
   if (tries > 0) out.tr = tries;
@@ -3996,10 +3997,13 @@ function compactFractionStateForFreezeUrl(state) {
   const hasMarkedParts = /1/.test(mask);
 
   const out = {
-    k: state.k,
     u: state.u,
     tp: tp
   };
+
+  if (!normalizeSpace(state.u || "") && normalizeSpace(state.k || "")) {
+    out.k = state.k;
+  }
 
   if (tp === "c") {
     const n = Math.max(1, Number(state.n || 1) || 1);
@@ -4039,9 +4043,12 @@ function compactMarkerQuizStateForFreezeUrl(state) {
   const hasInputValue = normalizeSpace(inputValue) !== "";
 
   const out = {
-    k: state.k,
     sc: state.sc
   };
+
+  if (!normalizeSpace(state.sc || "") && normalizeSpace(state.k || "")) {
+    out.k = state.k;
+  }
 
   if (hasMarks) out.h = marks;
   if (hasInputValue) out.iv = inputValue;
@@ -4513,6 +4520,16 @@ function decodeCanvasIntListFromFreezeUrlString(raw) {
 const CANVAS_CODEC_VERSION_V3 = "cv3";
 const CANVAS_V3_PATH_MAGIC = 3;
 
+const CANVAS_PATH_ENTRY_TYPE_V2 = 0;
+const CANVAS_RECT_ENTRY_TYPE = 1;
+const CANVAS_POINT_ENTRY_TYPE = 2;
+const CANVAS_PATH_ENTRY_TYPE_V3 = 3;
+
+const CANVAS_ERASER_PATH_ENTRY_TYPE_V2 = 5;
+const CANVAS_ERASER_POINT_ENTRY_TYPE = 6;
+const CANVAS_ERASER_PATH_ENTRY_TYPE_V3 = 7;
+
+
 function pushCanvasVarUint(bytes, value) {
   let v = Number(value);
 
@@ -4919,7 +4936,8 @@ function compactCanvasPathItemForFreezeUrl(item, colorList, colorIndex) {
 
   const kind = String(item.k || "");
 
-  if (kind === "p") {
+  if (kind === "p" || kind === "e") {
+    const isEraser = kind === "e";
     const abs = quantizeCanvasPathPointsForFreezeUrl(item.p);
 
     if (!abs.length) return null;
@@ -4935,18 +4953,28 @@ function compactCanvasPathItemForFreezeUrl(item, colorList, colorIndex) {
     const alpha = Number(item.a == null ? 1 : item.a);
     const width = Number(item.w == null ? 1 : item.w);
 
-    // Sonderfall: genau ein Punkt
     if (abs.length === 1) {
       const x = abs[0][0];
       const y = abs[0][1];
 
       if (alpha === 1) {
-        // [type, colorIndex, width, x, y]
-        return [2, ci, width, x, y];
+        return [
+          isEraser ? CANVAS_ERASER_POINT_ENTRY_TYPE : CANVAS_POINT_ENTRY_TYPE,
+          ci,
+          width,
+          x,
+          y
+        ];
       }
 
-      // [type, colorIndex, alpha, width, x, y]
-      return [2, ci, alpha, width, x, y];
+      return [
+        isEraser ? CANVAS_ERASER_POINT_ENTRY_TYPE : CANVAS_POINT_ENTRY_TYPE,
+        ci,
+        alpha,
+        width,
+        x,
+        y
+      ];
     }
 
     const ptsV2 = encodeCanvasAbsPointsToFreezeUrlString(abs);
@@ -4963,29 +4991,34 @@ function compactCanvasPathItemForFreezeUrl(item, colorList, colorIndex) {
     if (useV3) {
       log(
         "canvas-cv3-path",
+        "kind=" + kind,
         "points=" + abs.length,
         "v2=" + String(ptsV2 ? ptsV2.length : 0),
         "v3=" + String(ptsV3 ? ptsV3.length : 0)
       );
     }
 
+    const typeV2 = isEraser
+      ? CANVAS_ERASER_PATH_ENTRY_TYPE_V2
+      : CANVAS_PATH_ENTRY_TYPE_V2;
+
+    const typeV3 = isEraser
+      ? CANVAS_ERASER_PATH_ENTRY_TYPE_V3
+      : CANVAS_PATH_ENTRY_TYPE_V3;
+
     if (useV3) {
       if (alpha === 1) {
-        // [type, colorIndex, width, binaryToken]
-        return [3, ci, width, pts];
+        return [typeV3, ci, width, pts];
       }
 
-      // [type, colorIndex, alpha, width, binaryToken]
-      return [3, ci, alpha, width, pts];
+      return [typeV3, ci, alpha, width, pts];
     }
 
     if (alpha === 1) {
-      // [type, colorIndex, width, encodedPoints]
-      return [0, ci, width, pts];
+      return [typeV2, ci, width, pts];
     }
 
-    // [type, colorIndex, alpha, width, encodedPoints]
-    return [0, ci, alpha, width, pts];
+    return [typeV2, ci, alpha, width, pts];
   }
 
   if (kind === "r") {
@@ -5006,8 +5039,7 @@ function compactCanvasPathItemForFreezeUrl(item, colorList, colorIndex) {
       return null;
     }
 
-    // [type, fillIndex, x, y, w, h]
-    return [1, fi, x, y, w, h];
+    return [CANVAS_RECT_ENTRY_TYPE, fi, x, y, w, h];
   }
 
   return null;
@@ -5024,7 +5056,14 @@ function getCanvasCompactPathRunMeta(entry) {
   // Nur normale Pfade bündeln:
   // 0 = alter String-Pfad
   // 3 = binärer cv3-Pfad
-  if (type !== 0 && type !== 3) return null;
+  if (
+    type !== CANVAS_PATH_ENTRY_TYPE_V2 &&
+    type !== CANVAS_PATH_ENTRY_TYPE_V3 &&
+    type !== CANVAS_ERASER_PATH_ENTRY_TYPE_V2 &&
+    type !== CANVAS_ERASER_PATH_ENTRY_TYPE_V3
+  ) {
+    return null;
+  }
 
   const colorIdx = Number(entry[1] || 0);
 
@@ -5171,7 +5210,27 @@ function expandCanvasPathItemFromFreezeUrl(entry, colors) {
 
   const type = Number(entry[0]);
 
-  if (type === 0) {
+  const PATH_V2 = 0;
+  const RECT = 1;
+  const POINT = 2;
+  const PATH_V3 = 3;
+  const ERASER_PATH_V2 = 5;
+  const ERASER_POINT = 6;
+  const ERASER_PATH_V3 = 7;
+
+  if (
+    type === PATH_V2 ||
+    type === PATH_V3 ||
+    type === POINT ||
+    type === ERASER_PATH_V2 ||
+    type === ERASER_POINT ||
+    type === ERASER_PATH_V3
+  ) {
+    const isEraser =
+      type === ERASER_PATH_V2 ||
+      type === ERASER_POINT ||
+      type === ERASER_PATH_V3;
+
     const colorIdx = Number(entry[1] || 0);
 
     const storedColor =
@@ -5184,66 +5243,88 @@ function expandCanvasPathItemFromFreezeUrl(entry, colors) {
       "#000000"
     );
 
-    if (entry.length === 4) {
-      return {
-        k: "p",
-        c: color,
-        a: 1,
-        w: Number(entry[2] || 1) || 1,
-        p: decodeCanvasPathPointsFromFreezeUrl(entry[3])
-      };
+    const outKind = isEraser ? "e" : "p";
+
+    if (type === POINT || type === ERASER_POINT) {
+      if (entry.length === 5) {
+        return {
+          k: outKind,
+          c: color,
+          a: 1,
+          w: Number(entry[2] || 1) || 1,
+          p: [[
+            decodeCanvasPointNumberFromFreezeUrl(entry[3]),
+            decodeCanvasPointNumberFromFreezeUrl(entry[4])
+          ]]
+        };
+      }
+
+      if (entry.length >= 6) {
+        return {
+          k: outKind,
+          c: color,
+          a: Number(entry[2] || 1) || 1,
+          w: Number(entry[3] || 1) || 1,
+          p: [[
+            decodeCanvasPointNumberFromFreezeUrl(entry[4]),
+            decodeCanvasPointNumberFromFreezeUrl(entry[5])
+          ]]
+        };
+      }
+
+      return null;
     }
 
-    if (entry.length >= 5) {
-      return {
-        k: "p",
-        c: color,
-        a: Number(entry[2] || 1) || 1,
-        w: Number(entry[3] || 1) || 1,
-        p: decodeCanvasPathPointsFromFreezeUrl(entry[4])
-      };
+    if (type === PATH_V2 || type === ERASER_PATH_V2) {
+      if (entry.length === 4) {
+        return {
+          k: outKind,
+          c: color,
+          a: 1,
+          w: Number(entry[2] || 1) || 1,
+          p: decodeCanvasPathPointsFromFreezeUrl(entry[3])
+        };
+      }
+
+      if (entry.length >= 5) {
+        return {
+          k: outKind,
+          c: color,
+          a: Number(entry[2] || 1) || 1,
+          w: Number(entry[3] || 1) || 1,
+          p: decodeCanvasPathPointsFromFreezeUrl(entry[4])
+        };
+      }
+
+      return null;
     }
 
-    return null;
+    if (type === PATH_V3 || type === ERASER_PATH_V3) {
+      if (entry.length === 4) {
+        return {
+          k: outKind,
+          c: color,
+          a: 1,
+          w: Number(entry[2] || 1) || 1,
+          p: decodeCanvasPathPointsFromBinaryTokenForFreezeUrl(entry[3])
+        };
+      }
+
+      if (entry.length >= 5) {
+        return {
+          k: outKind,
+          c: color,
+          a: Number(entry[2] || 1) || 1,
+          w: Number(entry[3] || 1) || 1,
+          p: decodeCanvasPathPointsFromBinaryTokenForFreezeUrl(entry[4])
+        };
+      }
+
+      return null;
+    }
   }
 
-  if (type === 3) {
-    const colorIdx = Number(entry[1] || 0);
-
-    const storedColor =
-      colorIdx >= 0 && colorIdx < colors.length
-        ? colors[colorIdx]
-        : "#000000";
-
-    const color = decodeCanvasColorEntryFromFreezeUrl(
-      storedColor,
-      "#000000"
-    );
-
-    if (entry.length === 4) {
-      return {
-        k: "p",
-        c: color,
-        a: 1,
-        w: Number(entry[2] || 1) || 1,
-        p: decodeCanvasPathPointsFromBinaryTokenForFreezeUrl(entry[3])
-      };
-    }
-
-    if (entry.length >= 5) {
-      return {
-        k: "p",
-        c: color,
-        a: Number(entry[2] || 1) || 1,
-        w: Number(entry[3] || 1) || 1,
-        p: decodeCanvasPathPointsFromBinaryTokenForFreezeUrl(entry[4])
-      };
-    }
-
-    return null;
-  }
-
-  if (type === 1) {
+  if (type === RECT) {
     const fillIdx = Number(entry[1] || 0);
 
     const storedFill =
@@ -5264,48 +5345,6 @@ function expandCanvasPathItemFromFreezeUrl(entry, colors) {
       w: decodeCanvasPointNumberFromFreezeUrl(entry[4]),
       h: decodeCanvasPointNumberFromFreezeUrl(entry[5])
     };
-  }
-
-  if (type === 2) {
-    const colorIdx = Number(entry[1] || 0);
-
-    const storedColor =
-      colorIdx >= 0 && colorIdx < colors.length
-        ? colors[colorIdx]
-        : "#000000";
-
-    const color = decodeCanvasColorEntryFromFreezeUrl(
-      storedColor,
-      "#000000"
-    );
-
-    if (entry.length === 5) {
-      return {
-        k: "p",
-        c: color,
-        a: 1,
-        w: Number(entry[2] || 1) || 1,
-        p: [[
-          decodeCanvasPointNumberFromFreezeUrl(entry[3]),
-          decodeCanvasPointNumberFromFreezeUrl(entry[4])
-        ]]
-      };
-    }
-
-    if (entry.length >= 6) {
-      return {
-        k: "p",
-        c: color,
-        a: Number(entry[2] || 1) || 1,
-        w: Number(entry[3] || 1) || 1,
-        p: [[
-          decodeCanvasPointNumberFromFreezeUrl(entry[4]),
-          decodeCanvasPointNumberFromFreezeUrl(entry[5])
-        ]]
-      };
-    }
-
-    return null;
   }
 
   return null;
@@ -5782,6 +5821,7 @@ function compactSlideStateForFreezeUrl(slide) {
 
 const ANNOT_CODEC_VERSION = "af2";
 const ANNOT_POINT_SCALE = 1000; // verlustfrei relativ zum aktuellen Freeze-Export (4 Nachkommastellen)
+const ANNOT_POINTS_TOKEN_PREFIX = "b:";
 
 function roundAnnotCodecNum(v) {
   const n = Number(v);
@@ -5840,11 +5880,32 @@ function encodeAnnotationPointsForFreezeUrl(points) {
     prevY = y;
   }
 
-  return out.length >= 2 ? out : null;
+  if (out.length < 2) return null;
+
+  return ANNOT_POINTS_TOKEN_PREFIX +
+    encodeCanvasSignedIntsToBinaryTokenForFreezeUrl(out);
 }
 
 function decodeAnnotationPointsFromFreezeUrl(encoded) {
-  const src = Array.isArray(encoded) ? encoded : [];
+  let src = [];
+
+  if (typeof encoded === "string") {
+    const raw = String(encoded || "");
+
+    if (raw.startsWith(ANNOT_POINTS_TOKEN_PREFIX)) {
+      src = decodeCanvasSignedIntsFromBinaryTokenForFreezeUrl(
+        raw.slice(ANNOT_POINTS_TOKEN_PREFIX.length)
+      );
+    } else {
+      src = decodeCanvasIntListFromFreezeUrlString(raw);
+    }
+  } else if (Array.isArray(encoded)) {
+    // Altformat weiter unterstützen
+    src = encoded;
+  } else {
+    src = [];
+  }
+
   const out = [];
 
   let x = 0;
@@ -5874,9 +5935,10 @@ function decodeAnnotationPointsFromFreezeUrl(encoded) {
 }
 
 function compressAnnotationFreezeStateForFreezeUrl(fullState) {
+  const ANNOT_POINTS_TOKEN_PREFIX = "b:";
+
   if (!fullState || typeof fullState !== "object") return null;
 
-  // Bereits komprimiert -> nur kopieren
   if (fullState.v === ANNOT_CODEC_VERSION && Array.isArray(fullState.s)) {
     return copyJson(fullState);
   }
@@ -5900,6 +5962,43 @@ function compressAnnotationFreezeStateForFreezeUrl(fullState) {
     return colorIndex[color];
   }
 
+  function encodePoints(points) {
+    const src = Array.isArray(points) ? points : [];
+    const deltas = [];
+
+    let prevX = 0;
+    let prevY = 0;
+    let havePrev = false;
+
+    for (let i = 0; i < src.length; i++) {
+      const pt = src[i];
+      if (!pt || typeof pt !== "object") continue;
+
+      const xNum = Number(pt.x);
+      const yNum = Number(pt.y);
+      if (!Number.isFinite(xNum) || !Number.isFinite(yNum)) continue;
+
+      const x = Math.round(xNum * ANNOT_POINT_SCALE);
+      const y = Math.round(yNum * ANNOT_POINT_SCALE);
+
+      if (!havePrev) {
+        deltas.push(x, y);
+        prevX = x;
+        prevY = y;
+        havePrev = true;
+      } else {
+        deltas.push(x - prevX, y - prevY);
+        prevX = x;
+        prevY = y;
+      }
+    }
+
+    if (deltas.length < 2) return null;
+
+    return ANNOT_POINTS_TOKEN_PREFIX +
+      encodeCanvasSignedIntsToBinaryTokenForFreezeUrl(deltas);
+  }
+
   const slidesOut = [];
 
   if (slidesSrc) {
@@ -5915,17 +6014,28 @@ function compressAnnotationFreezeStateForFreezeUrl(fullState) {
           if (!item || typeof item !== "object") return null;
           if (item.kind !== "path") return null;
 
-          const pts = encodeAnnotationPointsForFreezeUrl(item.points);
+          const pts = encodePoints(item.points);
           if (!pts) return null;
 
-          return [
-            item.tool === "eraser" ? 1 : 0,
-            internColor(item.color),
-            roundAnnotCodecNum(item.width == null ? 1 : item.width),
-            roundAnnotCodecNum(item.alpha == null ? 1 : item.alpha),
-            roundAnnotCodecNum(item.baseW == null ? 1 : item.baseW),
-            pts
-          ];
+          const toolCode = item.tool === "eraser" ? 1 : 0;
+          const colorIdx = internColor(item.color);
+          const width = roundAnnotCodecNum(item.width == null ? 1 : item.width);
+          const alpha = roundAnnotCodecNum(item.alpha == null ? 1 : item.alpha);
+          const baseW = roundAnnotCodecNum(item.baseW == null ? 1 : item.baseW);
+
+          if (width === 1 && alpha === 1 && baseW === 1) {
+            return [toolCode, colorIdx, pts];
+          }
+
+          if (alpha === 1 && baseW === 1) {
+            return [toolCode, colorIdx, width, pts];
+          }
+
+          if (baseW === 1) {
+            return [toolCode, colorIdx, width, alpha, pts];
+          }
+
+          return [toolCode, colorIdx, width, alpha, baseW, pts];
         }).filter(Boolean);
 
         if (!itemsOut.length) return;
@@ -5961,11 +6071,60 @@ function compressAnnotationFreezeStateForFreezeUrl(fullState) {
 }
 
 function expandAnnotationFreezeStateFromFreezeUrl(state) {
+  const ANNOT_POINTS_TOKEN_PREFIX = "b:";
+
   if (!state || typeof state !== "object") return null;
 
-  // Altes Format unverändert weiter unterstützen
   if (!(state.v === ANNOT_CODEC_VERSION && Array.isArray(state.s))) {
     return copyJson(state);
+  }
+
+  function decodePoints(encoded) {
+    let src = [];
+
+    if (typeof encoded === "string") {
+      const raw = String(encoded || "");
+
+      if (raw.startsWith(ANNOT_POINTS_TOKEN_PREFIX)) {
+        src = decodeCanvasSignedIntsFromBinaryTokenForFreezeUrl(
+          raw.slice(ANNOT_POINTS_TOKEN_PREFIX.length)
+        );
+      } else {
+        // Alt-/Fallbackformat weiter unterstützen
+        src = decodeCanvasIntListFromFreezeUrlString(raw);
+      }
+    } else if (Array.isArray(encoded)) {
+      // ganz altes Zahlenarray weiter unterstützen
+      src = encoded;
+    } else {
+      src = [];
+    }
+
+    const out = [];
+    let x = 0;
+    let y = 0;
+
+    for (let i = 0; i + 1 < src.length; i += 2) {
+      const a = Number(src[i]);
+      const b = Number(src[i + 1]);
+
+      if (!Number.isFinite(a) || !Number.isFinite(b)) continue;
+
+      if (i === 0) {
+        x = a;
+        y = b;
+      } else {
+        x += a;
+        y += b;
+      }
+
+      out.push({
+        x: x / ANNOT_POINT_SCALE,
+        y: y / ANNOT_POINT_SCALE
+      });
+    }
+
+    return out;
   }
 
   const colors = Array.isArray(state.c)
@@ -5983,16 +6142,33 @@ function expandAnnotationFreezeStateFromFreezeUrl(state) {
     const itemTuples = Array.isArray(entry[1]) ? entry[1] : [];
 
     const items = itemTuples.map(function (tuple) {
-      if (!Array.isArray(tuple) || tuple.length < 6) return null;
+      if (!Array.isArray(tuple) || tuple.length < 3) return null;
 
       const toolCode = Number(tuple[0] || 0);
       const colorIdx = Number(tuple[1] || 0);
 
-      const width = roundAnnotCodecNum(tuple[2]);
-      const alpha = roundAnnotCodecNum(tuple[3]);
-      const baseW = roundAnnotCodecNum(tuple[4]);
-      const points = decodeAnnotationPointsFromFreezeUrl(tuple[5]);
+      let width = 1;
+      let alpha = 1;
+      let baseW = 1;
+      let encodedPoints = null;
 
+      if (tuple.length === 3) {
+        encodedPoints = tuple[2];
+      } else if (tuple.length === 4) {
+        width = roundAnnotCodecNum(tuple[2]);
+        encodedPoints = tuple[3];
+      } else if (tuple.length === 5) {
+        width = roundAnnotCodecNum(tuple[2]);
+        alpha = roundAnnotCodecNum(tuple[3]);
+        encodedPoints = tuple[4];
+      } else {
+        width = roundAnnotCodecNum(tuple[2]);
+        alpha = roundAnnotCodecNum(tuple[3]);
+        baseW = roundAnnotCodecNum(tuple[4]);
+        encodedPoints = tuple[5];
+      }
+
+      const points = decodePoints(encodedPoints);
       if (!points.length) return null;
 
       return {
@@ -9014,11 +9190,13 @@ function captureCoordinateQuizState(root, idx) {
 function compactCoordinateQuizStateForFreezeUrl(state) {
   if (!state) return null;
 
-  const out = { k: state.k };
+  const out = {};
 
   const rootIndex = Number(state.ri);
   if (Number.isFinite(rootIndex) && rootIndex >= 0) {
     out.ri = rootIndex;
+  } else if (normalizeSpace(state.k || "")) {
+    out.k = state.k;
   }
 
   compactCommonStateMeta(state, out);
