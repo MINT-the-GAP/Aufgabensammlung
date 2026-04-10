@@ -615,11 +615,11 @@ function getBaseContentHost() {
   function logHostPick(el) {
     try {
       if (!el) {
-        debugLog("host-pick", "null");
+        log("host-pick", "null");
         return;
       }
       const r = el.getBoundingClientRect();
-      debugLog(
+      log(
         "host-pick",
         "tag=" + (el.tagName || ""),
         "id=" + (el.id || ""),
@@ -3783,8 +3783,10 @@ function scheduleAssignmentDetailsRefresh(delay) {
 
 
 
-function makeEmptySlideState(hash) {
-  return {
+function makeEmptySlideState(hash, opts) {
+  opts = opts || {};
+
+  const out = {
     h: String(hash || ""),
     q: [],
     d: [],
@@ -3799,6 +3801,12 @@ function makeEmptySlideState(hash) {
       h: []
     }
   };
+
+  if (opts.unvisited) {
+    out.u = 1;
+  }
+
+  return out;
 }
 
 
@@ -5738,6 +5746,10 @@ function compactSlideStateForFreezeUrl(slide) {
     h: String(slide.h)
   };
 
+  if (Number(slide && slide.u || 0) === 1) {
+    out.u = 1;
+  }
+
   const q = compactStateArrayForFreezeUrl(slide.q, compactTextQuizStateForFreezeUrl);
   const d = compactStateArrayForFreezeUrl(slide.d, compactDropdownStateForFreezeUrl);
   const m = compactStateArrayForFreezeUrl(slide.m, compactTileStateForFreezeUrl);
@@ -6036,14 +6048,18 @@ function shouldKeepAnnotationFreezeState(state) {
 
 
 function compactSecurityStateForFreezeUrl(state) {
+  const trackF12 = !!(state && (state.trackF12 === 1 || state.trackF12 === true));
+  const trackTab = !!(state && (state.trackTab === 1 || state.trackTab === true));
   const f12 = Number(state && state.f12 || 0) || 0;
   const tab = Number(state && state.tab || 0) || 0;
 
-  if (f12 <= 0 && tab <= 0) {
+  if (!trackF12 && !trackTab && f12 <= 0 && tab <= 0) {
     return null;
   }
 
   const out = {};
+  if (trackF12) out.trackF12 = 1;
+  if (trackTab) out.trackTab = 1;
   if (f12 > 0) out.f12 = f12;
   if (tab > 0) out.tab = tab;
 
@@ -6140,7 +6156,11 @@ async function buildPayloadFromAllSlides() {
     sh: startHash,
     n: displayName,
     s: declared.map(function (slide) {
-      return liveSlidesByHash[slide.h] || makeEmptySlideState(slide.h);
+      if (liveSlidesByHash[slide.h]) {
+        return liveSlidesByHash[slide.h];
+      }
+
+      return makeEmptySlideState(slide.h, { unvisited: true });
     })
   };
 
@@ -6449,11 +6469,9 @@ function applyStoredChoiceStatesToHost(host, storedStates) {
     "choice-apply-stored",
     "stored=" + states.length,
     states.map(function (state, idx) {
-      return "[" + idx + "] " + states.map(function (state, idx) {
-        return "[" + idx + "] " + JSON.stringify(state.k || "") + " ri=" + String(
-          Number.isFinite(Number(state && state.ri)) ? Number(state.ri) : "-"
-        );
-      }).join(" || ");
+      return "[" + idx + "] " + JSON.stringify(state.k || "") + " ri=" + String(
+        Number.isFinite(Number(state && state.ri)) ? Number(state.ri) : "-"
+      );
     }).join(" || ")
   );
 
@@ -11305,7 +11323,8 @@ async function buildPayloadFromLiveStates() {
   }
 
   function isUnvisitedTarget(hash) {
-    return false;
+    const slide = getSnapshotSlideForHash(hash);
+    return !!(slide && Number(slide.u || 0) === 1);
   }
 
   // =========================================================
@@ -12709,7 +12728,10 @@ function installLiveCaptureBindings() {
 
     if (isTextQuizInputControl(t) || isOrthographyQuizInput(t)) {
       captureAdminState();
-      const state = captureSlideStateForHash(hash);
+      storeLiveSlideState(
+        liveRouteCurrentHash || getCurrentHash(),
+        "text-input"
+      );
       return;
     }
 
