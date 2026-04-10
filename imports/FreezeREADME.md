@@ -3957,6 +3957,12 @@ function expandSlideStateFromFreezeUrl(slide) {
       .filter(Boolean);
   }
 
+  if (Array.isArray(out.mq)) {
+    out.mq = out.mq
+      .map(expandMarkerQuizStateFromFreezeUrl)
+      .filter(Boolean);
+  }
+
   return out;
 }
 
@@ -4298,12 +4304,126 @@ function compactFractionStateForFreezeUrl(state) {
   return out;
 }
 
+
+function encodeMarkerQuizMarksForFreezeUrl(rawMarks) {
+  const marks = Array.isArray(rawMarks) ? rawMarks : [];
+  const pathList = [];
+  const pathIndex = Object.create(null);
+
+  function internPath(path) {
+    const key = String(path || "");
+    if (!key) return -1;
+
+    if (!Object.prototype.hasOwnProperty.call(pathIndex, key)) {
+      pathIndex[key] = pathList.length;
+      pathList.push(key);
+    }
+
+    return pathIndex[key];
+  }
+
+  const compactMarks = marks.map(function (mark) {
+    if (!mark || !mark.a) return null;
+
+    const sp = String(mark.a.sp || "");
+    const ep = String(mark.a.ep || "");
+    if (!sp || !ep) return null;
+
+    const spIdx = internPath(sp);
+    const epIdx = internPath(ep);
+
+    if (spIdx < 0 || epIdx < 0) return null;
+
+    const kindCode = String(mark.k || "u") === "s" ? 1 : 0;
+    const colorCode = encodeGeneralMarkerColor(mark.c || "yellow");
+    const so = Number(mark.a.so || 0);
+    const eo = Number(mark.a.eo || 0);
+
+    if (spIdx === epIdx) {
+      return [kindCode, colorCode, spIdx, so, eo];
+    }
+
+    return [kindCode, colorCode, spIdx, so, epIdx, eo];
+  }).filter(Boolean);
+
+  return {
+    h: compactMarks,
+    p: pathList
+  };
+}
+
+function expandMarkerQuizStateFromFreezeUrl(state) {
+  if (!state || typeof state !== "object") return null;
+
+  const out = copyJson(state) || state;
+  const rawMarks = Array.isArray(out.h) ? out.h : [];
+
+  if (!rawMarks.length) {
+    delete out.p;
+    return out;
+  }
+
+  // Altformat weiter unverändert unterstützen
+  if (!Array.isArray(rawMarks[0])) {
+    delete out.p;
+    return out;
+  }
+
+  const pathList = Array.isArray(out.p) ? out.p : [];
+
+  out.h = rawMarks.map(function (entry) {
+    if (!Array.isArray(entry) || entry.length < 5) return null;
+
+    const kind = Number(entry[0] || 0) === 1 ? "s" : "u";
+    const color = decodeGeneralMarkerColor(entry[1] || "yellow");
+
+    // Gleiches Start-/End-Path
+    if (entry.length === 5) {
+      const path = String(pathList[Number(entry[2] || 0)] || "");
+      if (!path) return null;
+
+      return {
+        k: kind,
+        c: color,
+        a: {
+          sp: path,
+          so: Number(entry[3] || 0),
+          ep: path,
+          eo: Number(entry[4] || 0)
+        }
+      };
+    }
+
+    // Unterschiedliche Start-/End-Paths
+    const sp = String(pathList[Number(entry[2] || 0)] || "");
+    const ep = String(pathList[Number(entry[4] || 0)] || "");
+
+    if (!sp || !ep) return null;
+
+    return {
+      k: kind,
+      c: color,
+      a: {
+        sp: sp,
+        so: Number(entry[3] || 0),
+        ep: ep,
+        eo: Number(entry[5] || 0)
+      }
+    };
+  }).filter(Boolean);
+
+  delete out.p;
+  return out;
+}
+
+
+
 function compactMarkerQuizStateForFreezeUrl(state) {
   if (!state) return null;
 
-  const marks = Array.isArray(state.h) ? copyJson(state.h) : [];
+  const compactMarks = encodeMarkerQuizMarksForFreezeUrl(state.h);
   const inputValue = String(state.iv || "");
-  const hasMarks = marks.length > 0;
+  const hasMarks = Array.isArray(compactMarks.h) && compactMarks.h.length > 0;
   const hasInputValue = normalizeSpace(inputValue) !== "";
 
   const out = {
@@ -4314,7 +4434,13 @@ function compactMarkerQuizStateForFreezeUrl(state) {
     out.k = state.k;
   }
 
-  if (hasMarks) out.h = marks;
+  if (hasMarks) {
+    out.h = compactMarks.h;
+    if (compactMarks.p.length) {
+      out.p = compactMarks.p;
+    }
+  }
+
   if (hasInputValue) out.iv = inputValue;
   if (normalizeSpace(state.sl || "")) out.sl = String(state.sl);
 
@@ -4322,6 +4448,21 @@ function compactMarkerQuizStateForFreezeUrl(state) {
 
   if (!hasMarks && !hasInputValue && !hasMeaningfulOutcomeState(out)) {
     return null;
+  }
+
+  if (hasMarks) {
+    const beforeLen = JSON.stringify(Array.isArray(state.h) ? state.h : []).length;
+    const afterLen = JSON.stringify({
+      h: out.h || [],
+      p: out.p || []
+    }).length;
+
+    log(
+      "markerquiz-compact",
+      "before=" + beforeLen,
+      "after=" + afterLen,
+      "saved=" + Math.max(0, beforeLen - afterLen)
+    );
   }
 
   return out;
@@ -13693,7 +13834,10 @@ function blockFrozenKeydown(e) {
 async function activateSnapshotMode(payload, linkValue, opts) {
   opts = opts || {};
 
-  snapshotPayload = payload || null;
+  snapshotPayload =
+    expandPayloadFromFreezeUrl(payload || null) ||
+    payload ||
+    null;
   debugAnnotationProbe("activateSnapshotMode");
   console.log("[LIA-FREEZE] snapshot-loaded", JSON.stringify(snapshotPayload));
   if (!snapshotPayload) return false;
@@ -14414,7 +14558,7 @@ __$b)\;\;$__ $\dfrac{2}{5}$
 Markiere die korrekt.
 
 <div class="markerquiz">
-@markred(rot)
+Dieser @markred(Text) ist so wie er ist und eigentlich auch total egal, alle @markred(Nomen) sollen als rot markiert werden. Da wird doch der @markred(Hund) in der @markred(Pfanne) verrückt.
 @TextmarkerQuiz
 </div>
 
