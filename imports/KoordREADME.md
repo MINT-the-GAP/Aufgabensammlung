@@ -7482,9 +7482,9 @@ window.getTabelleDaten = function(uid) {
 
 
 
+@Koordinatensystem: @Koordinatensystem_(@0)
 
-
-@Koordinatensystem
+@Koordinatensystem_
 <div>
 ``` javascript @JSX.Graph
 
