@@ -2037,23 +2037,50 @@ function __liaInitTexPreviews(){
     }catch(e){}
   }
 
+
+
+
+
+
+
+
+
   applyThemeVars();
-
-
-
-
-
-
-
-
-
-
-
-
 
   const mo = new MutationObserver(() => applyThemeVars());
   mo.observe(document.documentElement, { attributes:true, attributeFilter:['class','style'] });
+
+  try{
+    const pdoc = (window.parent && window.parent.document) ? window.parent.document : null;
+    if (pdoc && pdoc !== document){
+      mo.observe(pdoc.documentElement, { attributes:true, attributeFilter:['class','style'] });
+      if (pdoc.body){
+        mo.observe(pdoc.body, { attributes:true, attributeFilter:['class','style'] });
+      }
+    }
+  }catch(_){}
+
+  try{
+    const mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    if (mq){
+      const onModeChange = () => applyThemeVars();
+      if (typeof mq.addEventListener === 'function'){
+        mq.addEventListener('change', onModeChange);
+      }else if (typeof mq.addListener === 'function'){
+        mq.addListener(onModeChange);
+      }
+    }
+  }catch(_){}
+
   window.addEventListener('resize', () => applyThemeVars());
+
+
+
+
+
+
+
+
 
   // -----------------------------
   // Persistent store per UID
@@ -2085,6 +2112,13 @@ function __liaInitTexPreviews(){
   }
   function getAccentColor(){
     return getComputedStyle(document.documentElement).getPropertyValue('--canvas-accent').trim() || getBorderColor();
+  }
+
+  function resolveStrokeColor(it){
+    if (it && it.colorKey === 'auto'){
+      return getAutoPen();
+    }
+    return String((it && it.color) || getAutoPen());
   }
 
   // Icons (wie bei dir)
@@ -2369,7 +2403,7 @@ function __liaInitTexPreviews(){
 
         out.push({
           k: (it.tool === 'eraser') ? 'e' : 'p',
-          c: String(it.color || getAutoPen()),
+          c: resolveStrokeColor(it),
           a: cfClamp(cfNum(it.alpha, 1), 0, 1),
           w: cfRound(screenWidth),
           p: pts.map(function(p){
@@ -3984,6 +4018,11 @@ async function __ocrFromMarkedRect({ auto=false } = {}){
   let penAlpha = 1.0;
   let eraserWidth = 12;
 
+  function isAutoPenSelected(){
+    const c = COLORS[colorIndex] || COLORS[0];
+    return !!c && c.key === 'auto';
+  }
+
   let bgMode = (saved && saved.bgMode) ? saved.bgMode : 'none';
   let bgStep = (saved && saved.bgStep) ? saved.bgStep : 24;
 
@@ -4524,7 +4563,7 @@ function autoCloseSubmenus(){
     }else{
       ctx2.globalCompositeOperation = 'source-over';
       ctx2.globalAlpha = it.alpha;
-      ctx2.strokeStyle = it.color;
+      ctx2.strokeStyle = resolveStrokeColor(it);
       ctx2.lineWidth = it.width;
     }
     ctx2.lineCap = 'round';
@@ -4720,10 +4759,13 @@ function autoCloseSubmenus(){
   // ---- Zeichnen: Path
   function startStrokeAtScreen(sx,sy){
     const w = screenToWorld(sx,sy);
+    const autoColor = isAutoPenSelected();
+
     const it = {
       kind:'path',
       tool,
-      color: penBaseColor(),
+      colorKey: autoColor ? 'auto' : 'fixed',
+      color: autoColor ? null : penBaseColor(),
       alpha: penAlpha,
       width: (tool === 'eraser') ? eraserWidth : penWidth,
       points: [ {x:w.x, y:w.y} ]
