@@ -8,7 +8,7 @@ narrator: Deutsch Female
 
 
 
-https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
+import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
 
 
 
