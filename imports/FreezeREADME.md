@@ -995,6 +995,7 @@ body.lia-snapshot-mode #lia-freeze-info{
 .lia-frozen-static-quiz *{
   pointer-events: none !important;
 }
+
   `.trim();
 
   (document.head || document.documentElement).appendChild(style);
@@ -1266,6 +1267,9 @@ async function tryLoadSnapshot() {
     const obj = await decodeSnapshotToken(token);
     if (!obj || !Array.isArray(obj.s)) return null;
 
+    const expanded = expandPayloadFromFreezeUrl(obj);
+    if (!expanded || !Array.isArray(expanded.s)) return null;
+
     log(
       "snapshot-load-decoded",
       "mode=" + (
@@ -1273,10 +1277,10 @@ async function tryLoadSnapshot() {
           ? "gzip"
           : "plain"
       ),
-      "slides=" + obj.s.length
+      "slides=" + expanded.s.length
     );
 
-    return obj;
+    return expanded;
   } catch (e) {
     warn(
       "snapshot-load-decode-failed",
@@ -3849,6 +3853,129 @@ function compactCommonStateMeta(src, out) {
   return out;
 }
 
+
+
+function isTextQuizCompactTupleState(state) {
+  return Array.isArray(state) && state.length >= 3;
+}
+
+function compactTextQuizValuePayloadForFreezeUrl(values) {
+  const arr = Array.isArray(values) ? values : [];
+
+  if (arr.length === 1) {
+    return String(arr[0] == null ? "" : arr[0]);
+  }
+
+  return arr.map(function (v) {
+    return String(v == null ? "" : v);
+  });
+}
+
+function expandTextQuizValuePayloadFromFreezeUrl(raw) {
+  if (Array.isArray(raw)) {
+    return raw.map(function (v) {
+      return String(v == null ? "" : v);
+    });
+  }
+
+  return [String(raw == null ? "" : raw)];
+}
+
+function canUseCompactTextQuizTuple(state) {
+  if (!state || typeof state !== "object" || Array.isArray(state)) {
+    return false;
+  }
+
+  const keys = Object.keys(state).filter(function (key) {
+    return state[key] !== undefined;
+  });
+
+  const allowed = {
+    ri: 1,
+    v: 1,
+    di: 1,
+    s: 1,
+    fc: 1,
+    cc: 1
+  };
+
+  for (let i = 0; i < keys.length; i++) {
+    if (!allowed[keys[i]]) {
+      return false;
+    }
+  }
+
+  if (!Number.isFinite(Number(state.ri)) || Number(state.ri) < 0) {
+    return false;
+  }
+
+  if (!Object.prototype.hasOwnProperty.call(state, "v")) {
+    return false;
+  }
+
+  return true;
+}
+
+function expandTextQuizStateFromFreezeUrl(state) {
+  if (!state) return null;
+
+  if (!isTextQuizCompactTupleState(state)) {
+    return copyJson(state) || state;
+  }
+
+  const out = {
+    ri: Number(state[0] || 0) || 0,
+    di: Number(state[1] || 0) || 0,
+    v: expandTextQuizValuePayloadFromFreezeUrl(state[2])
+  };
+
+  if (normalizeSpace(state[3] || "")) {
+    out.s = String(state[3]);
+  }
+
+  if (normalizeSpace(state[4] || "")) {
+    out.fc = String(state[4]);
+  }
+
+  if (Number(state[5] || 0) > 0) {
+    out.cc = Number(state[5]);
+  }
+
+  return out;
+}
+
+function expandSlideStateFromFreezeUrl(slide) {
+  if (!slide || typeof slide !== "object") {
+    return slide;
+  }
+
+  const out = copyJson(slide) || slide;
+
+  if (Array.isArray(out.q)) {
+    out.q = out.q
+      .map(expandTextQuizStateFromFreezeUrl)
+      .filter(Boolean);
+  }
+
+  return out;
+}
+
+function expandPayloadFromFreezeUrl(payload) {
+  if (!payload || !Array.isArray(payload.s)) {
+    return payload;
+  }
+
+  const out = copyJson(payload) || payload;
+
+  out.s = out.s
+    .map(expandSlideStateFromFreezeUrl)
+    .filter(Boolean);
+
+  return out;
+}
+
+
+
 function compactTextQuizStateForFreezeUrl(state) {
   if (!state) return null;
 
@@ -3862,16 +3989,40 @@ function compactTextQuizStateForFreezeUrl(state) {
   const rootIndex = Number(state.ri);
   if (Number.isFinite(rootIndex) && rootIndex >= 0) {
     out.ri = rootIndex;
-  } else if (normalizeSpace(state.k || "")) {
-    out.k = state.k;
   }
 
-  if (hasText) out.v = values;
+  if (hasText) {
+    out.v = values.map(function (v) {
+      return String(v == null ? "" : v);
+    });
+  }
 
   compactCommonStateMeta(state, out);
 
   if (!hasText && !hasMeaningfulOutcomeState(out)) {
     return null;
+  }
+
+  if (canUseCompactTextQuizTuple(out)) {
+    const tuple = [
+      Number(out.ri || 0) || 0,
+      Number(out.di || 0) || 0,
+      compactTextQuizValuePayloadForFreezeUrl(out.v)
+    ];
+
+    if (normalizeSpace(out.s || "")) {
+      tuple[3] = String(out.s);
+    }
+
+    if (normalizeSpace(out.fc || "")) {
+      tuple[4] = String(out.fc);
+    }
+
+    if (Number(out.cc || 0) > 0) {
+      tuple[5] = Number(out.cc);
+    }
+
+    return tuple;
   }
 
   return out;
@@ -3959,35 +4110,148 @@ function compactChoiceStateForFreezeUrl(state) {
   return out;
 }
 
+
+
+
+
 function compactOrthographyStateForFreezeUrl(state) {
   if (!state) return null;
 
   const text = String(state.v || "");
   const tries = Number(state.tr || 0) || 0;
-  const solved = !!Number(state.sv || 0);
+  const solved = isOrthographySolvedState(state);
+
+  const refs = getOrthographyReferenceTexts(state.u, null);
+  const startText = typeof refs.start === "string" ? refs.start : "";
+  const solutionText = typeof refs.solution === "string" ? refs.solution : "";
 
   const hasText = normalizeSpace(text) !== "";
 
+  // Ungeprüft + unverändert = Starttext ist im Makro ohnehin vorhanden
+  const omitBecauseUnchangedStart =
+    hasText &&
+    !solved &&
+    startText !== "" &&
+    text === startText;
+
+  // Gelöst / aufgelöst = Lösung ist im Makro ohnehin vorhanden
+  const omitBecauseSolved =
+    solved &&
+    solutionText !== "";
+
+  const shouldStoreText =
+    hasText &&
+    !omitBecauseUnchangedStart &&
+    !omitBecauseSolved;
+
   const out = {
+    k: state.k,
     u: state.u
   };
 
-  if (!normalizeSpace(state.u || "") && normalizeSpace(state.k || "")) {
-    out.k = state.k;
+  if (shouldStoreText) {
+    out.v = text;
   }
 
-  if (hasText) out.v = text;
-  if (tries > 0) out.tr = tries;
-  if (solved) out.sv = 1;
+  if (tries > 0) {
+    out.tr = tries;
+  }
+
+  if (solved) {
+    out.sv = 1;
+  }
 
   compactCommonStateMeta(state, out);
 
-  if (!hasText && tries <= 0 && !solved && !hasMeaningfulOutcomeState(out)) {
+  // Wenn weder Text noch Status noch Prüfspur relevant sind,
+  // kann der ganze Orthography-Zustand entfallen.
+  if (
+    !shouldStoreText &&
+    tries <= 0 &&
+    !solved &&
+    !hasMeaningfulOutcomeState(out)
+  ) {
     return null;
   }
 
   return out;
 }
+
+
+function getOrthographyReferenceTexts(uid, wrap) {
+  const out = {
+    start: "",
+    solution: ""
+  };
+
+  const cleanUid = normalizeSpace(
+    uid || getOrthographyUidFromWrap(wrap) || ""
+  );
+
+  const mod = getOrthographyModule();
+
+  if (mod && mod.state && cleanUid && mod.state[cleanUid]) {
+    const S = mod.state[cleanUid];
+
+    if (typeof S.start === "string") {
+      out.start = S.start;
+    }
+
+    if (typeof S.solution === "string") {
+      out.solution = S.solution;
+    }
+  }
+
+  // Nur beim Anwenden im Freeze vorsichtig auf das bereits gerenderte Feld
+  // zurückfallen. Beim Komprimieren rufen wir diese Funktion mit wrap=null auf,
+  // damit ein geänderter Live-Inhalt nicht versehentlich als "Start" gilt.
+  if (wrap) {
+    const input = getOrthographyInputFromWrap(wrap);
+
+    if (input) {
+      if (!out.start) {
+        if (typeof input.defaultValue === "string" && input.defaultValue !== "") {
+          out.start = input.defaultValue;
+        } else {
+          const attrValue = input.getAttribute("value");
+          if (typeof attrValue === "string" && attrValue !== "") {
+            out.start = attrValue;
+          }
+        }
+      }
+
+      if (!out.start) {
+        const currentValue = readTextQuizInputValue(input);
+        if (typeof currentValue === "string" && currentValue !== "") {
+          out.start = currentValue;
+        }
+      }
+    }
+  }
+
+  return out;
+}
+
+function getOrthographyReconstructedValue(state, wrap) {
+  if (!state) return null;
+
+  if (typeof state.v === "string") {
+    return state.v;
+  }
+
+  const refs = getOrthographyReferenceTexts(state.u, wrap);
+
+  if (isOrthographySolvedState(state) && refs.solution) {
+    return refs.solution;
+  }
+
+  if (refs.start) {
+    return refs.start;
+  }
+
+  return null;
+}
+
 
 function compactFractionStateForFreezeUrl(state) {
   if (!state) return null;
@@ -5048,6 +5312,42 @@ function compactCanvasPathItemForFreezeUrl(item, colorList, colorIndex) {
 
 const CANVAS_PATH_RUN_ENTRY_TYPE = 4;
 
+
+const CANVAS_RUN_TOKEN_SEPARATOR = "~";
+// "~" ist absichtlich gewählt:
+// - kommt in base64url-Tokens nicht vor
+// - kommt auch in deinem alten Punkt-/Base36-Format nicht vor
+// - eignet sich daher gut als verlustfreier Trenner
+
+function encodeCanvasPathRunTokenListForFreezeUrl(tokens) {
+  const list = (Array.isArray(tokens) ? tokens : []).filter(function (token) {
+    return typeof token === "string" && token.length > 0;
+  });
+
+  if (!list.length) return "";
+  return list.join(CANVAS_RUN_TOKEN_SEPARATOR);
+}
+
+function decodeCanvasPathRunTokenListFromFreezeUrl(raw) {
+  // Altformat weiter unterstützen: token-Liste als Array
+  if (Array.isArray(raw)) {
+    return raw.filter(function (token) {
+      return typeof token === "string" && token.length > 0;
+    });
+  }
+
+  // Neues Format: ein einziger String mit "~" als Trenner
+  const txt = String(raw || "");
+  if (!txt) return [];
+
+  return txt
+    .split(CANVAS_RUN_TOKEN_SEPARATOR)
+    .filter(function (token) {
+      return !!token;
+    });
+}
+
+
 function getCanvasCompactPathRunMeta(entry) {
   if (!Array.isArray(entry) || !entry.length) return null;
 
@@ -5108,16 +5408,18 @@ function makeCanvasCompactPathRunTuple(meta, tokens) {
     return [meta.pathType, meta.colorIdx, meta.alpha, meta.width, list[0]];
   }
 
+  const packedTokenString = encodeCanvasPathRunTokenListForFreezeUrl(list);
+
   // Neuer Run-Typ:
-  // [4, pathType, colorIdx, width, [token1, token2, ...]]
-  // [4, pathType, colorIdx, alpha, width, [token1, token2, ...]]
+  // [4, pathType, colorIdx, width, "tok1~tok2~tok3"]
+  // [4, pathType, colorIdx, alpha, width, "tok1~tok2~tok3"]
   if (meta.alpha === 1) {
     return [
       CANVAS_PATH_RUN_ENTRY_TYPE,
       meta.pathType,
       meta.colorIdx,
       meta.width,
-      list
+      packedTokenString
     ];
   }
 
@@ -5127,7 +5429,7 @@ function makeCanvasCompactPathRunTuple(meta, tokens) {
     meta.colorIdx,
     meta.alpha,
     meta.width,
-    list
+    packedTokenString
   ];
 }
 
@@ -5537,12 +5839,25 @@ function compactSingleCanvasStateForFreezeUrl(state) {
 
   const packedItems = compactCanvasPathRunsForFreezeUrl(compactItems);
 
+  // kleiner Singleton-Kollaps:
+  // - genau 1 Farbe => nicht als Array ["9"], sondern direkt als "9"
+  // - genau 1 Item  => nicht als [[...]], sondern direkt als [...]
+  const compactColorsForTuple =
+    colorList.length === 0
+      ? 0
+      : (colorList.length === 1 ? colorList[0] : colorList);
+
+  const compactItemsForTuple =
+    packedItems.length === 0
+      ? 0
+      : (packedItems.length === 1 ? packedItems[0] : packedItems);
+
   const out = [
     uid,
     storedW,
     storedH,
-    colorList.length ? colorList : 0,
-    packedItems.length ? packedItems : 0,
+    compactColorsForTuple,
+    compactItemsForTuple,
     emptyFlag
   ];
 
@@ -5564,6 +5879,23 @@ function compactSingleCanvasStateForFreezeUrl(state) {
   }
 
   return out;
+}
+
+
+function normalizeCanvasCompactItemListFromFreezeUrl(rawItems) {
+  if (rawItems == null || rawItems === 0) return [];
+
+  // Alt-/Normalfall: echte Item-Liste
+  if (Array.isArray(rawItems) && Array.isArray(rawItems[0])) {
+    return rawItems;
+  }
+
+  // Neuer Singleton-Fall: genau ein Item direkt gespeichert
+  if (Array.isArray(rawItems)) {
+    return [rawItems];
+  }
+
+  return [];
 }
 
 
@@ -5590,18 +5922,20 @@ function expandCanvasPathEntriesFromFreezeUrl(entry, colors) {
 
     let alpha = 1;
     let width = 1;
-    let tokens = [];
+    let tokenPayload = null;
 
     if (entry.length === 5) {
       width = Number(entry[3] || 1) || 1;
-      tokens = Array.isArray(entry[4]) ? entry[4] : [];
+      tokenPayload = entry[4];
     } else if (entry.length >= 6) {
       alpha = Number(entry[3] || 1) || 1;
       width = Number(entry[4] || 1) || 1;
-      tokens = Array.isArray(entry[5]) ? entry[5] : [];
+      tokenPayload = entry[5];
     } else {
       return [];
     }
+
+    const tokens = decodeCanvasPathRunTokenListFromFreezeUrl(tokenPayload);
 
     return tokens.map(function (token) {
       let points = null;
@@ -5653,12 +5987,19 @@ function expandCanvasStateFromFreezeUrl(state) {
   // - w/h >= 0  => altes absolutes Format
   // - w/h < 0   => neues Delta-Format relativ zur Inhaltsmindestgröße
   if (isCanvasCompactTupleState(state)) {
-    const colors = Array.isArray(state[3])
-      ? state[3].map(function (c) { return String(c || "#000000"); })
-      : [];
+    const rawColors = state[3];
+    const colors =
+      rawColors === 0 || rawColors == null
+        ? []
+        : Array.isArray(rawColors)
+          ? rawColors.map(function (c) { return String(c || "#000000"); })
+          : [String(rawColors || "#000000")];
+
+    const rawItems = state[4];
+    const itemEntries = normalizeCanvasCompactItemListFromFreezeUrl(rawItems);
 
     const items = [];
-    (Array.isArray(state[4]) ? state[4] : []).forEach(function (entry) {
+    itemEntries.forEach(function (entry) {
       const expanded = expandCanvasPathEntriesFromFreezeUrl(entry, colors);
       if (expanded && expanded.length) {
         items.push.apply(items, expanded);
@@ -8501,10 +8842,13 @@ function applyOrthographyQuizState(wrap, state) {
   const input = getOrthographyInputFromWrap(wrap);
   const uid = state.u || getOrthographyUidFromWrap(wrap);
 
-  if (input && typeof state.v === "string") {
-    applyFieldValueOnly(input, state.v);
-    try { input.setAttribute("value", state.v); } catch (e) {}
-    input.defaultValue = state.v;
+  const valueToApply = getOrthographyReconstructedValue(state, wrap);
+
+  if (input && valueToApply !== null) {
+    applyFieldValueOnly(input, valueToApply);
+
+    try { input.setAttribute("value", valueToApply); } catch (e) {}
+    input.defaultValue = valueToApply;
   }
 
   if (wrap.dataset) {
@@ -11744,7 +12088,7 @@ async function copyLink() {
 
     if (noteEl) {
       noteEl.style.display = "block";
-      noteEl.innerHTML = "Dies ist ein <strong>eingefrorener Abgabestand</strong>. Änderungen sind gesperrt, Navigation läuft nur über die Freeze-Leiste oben.";
+      noteEl.innerHTML = "Dies ist ein <strong>eingefrorener Abgabestand</strong>. Aufgaben und Eingaben sind gesperrt. TOC, Anzeige-Modus und Darstellung können weiterhin benutzt werden.";
     }
   }
 
@@ -13134,6 +13478,7 @@ function installLiveCaptureBindings() {
 function isAllowedFreezeTarget(target) {
   if (!target || !(target instanceof Element)) return false;
 
+  // Freeze-Leiste und Admin-Linkbereich
   if (target.closest("#lia-freeze-bar")) return true;
 
   if (target.id === "lia-link") return true;
@@ -13141,10 +13486,10 @@ function isAllowedFreezeTarget(target) {
   if (target.closest && target.closest("#lia-link")) return true;
   if (target.closest && target.closest("#lia-copy-link")) return true;
 
-  // Annotation-Toolbar darf auch im Freeze bedienbar bleiben
-  // (z.B. Anzeigen/Ausblenden per Auge-Button).
+  // Annotation-Toolbar weiter erlauben
   if (target.closest(".lia-annot-toolbar")) return true;
 
+  // Manuelle BE-Eingaben im Shared-Freezelink weiter erlauben
   if (
     isSharedFreezeLinkMode() &&
     target.closest(".lia-adetails-award-input")
@@ -13152,8 +13497,46 @@ function isAllowedFreezeTarget(target) {
     return true;
   }
 
+  // ======================================================
+  // LiaScript-Menü / Support-Menü freigeben
+  // ======================================================
+  if (
+    target.closest(
+      ".lia-support-menu, " +
+      ".lia-support-menu__nav, " +
+      ".lia-support-menu__item, " +
+      ".lia-support-menu__submenu"
+    )
+  ) {
+    return true;
+  }
+
+  // ======================================================
+  // TOC / Sidebar / eigene TOC-Buttons freigeben
+  // ======================================================
+  if (
+    target.closest(
+      ".lia-toc, " +
+      "#lia-toc, " +
+      ".lia-sidebar, " +
+      ".lia-menu, " +
+      ".lia-nav, " +
+      "#lia-bm-toc5"
+    )
+  ) {
+    return true;
+  }
+
   return false;
 }
+
+
+function isInsideFrozenScopeTarget(target) {
+  if (!target || !(target instanceof Element)) return false;
+  return !!target.closest(".lia-frozen-scope");
+}
+
+
 
 function blockNativeFrozenInteractionEvent(e) {
   if (!document.body.classList.contains("lia-snapshot-mode")) return;
@@ -13161,6 +13544,9 @@ function blockNativeFrozenInteractionEvent(e) {
 
   const t = e.target;
   if (!(t instanceof Element)) return;
+
+  // Nur Interaktionen innerhalb des eingefrorenen Inhaltsbereichs blockieren
+  if (!isInsideFrozenScopeTarget(t)) return;
 
   const interactive = t.closest(
     "a, button, input, textarea, select, summary, [role='button'], .lia-quiz, .lia-dropdown, .lia-dropdown__selected, .lia-dropdown__option, label, [contenteditable='true'], [role='textbox']"
@@ -13177,11 +13563,28 @@ function blockNativeFrozenInteractionEvent(e) {
 
 function blockFrozenKeydown(e) {
   if (!document.body.classList.contains("lia-snapshot-mode")) return;
-  if (isAllowedFreezeTarget(e.target)) return;
+
+  const target = e.target instanceof Element ? e.target : null;
+  const active = document.activeElement instanceof Element ? document.activeElement : null;
+
+  // Erlaubte UI-Bereiche nie per Keydown blockieren
+  if (isAllowedFreezeTarget(target) || isAllowedFreezeTarget(active)) return;
 
   const key = String(e.key || "");
 
+  const targetInFrozenScope = isInsideFrozenScopeTarget(target);
+  const activeInFrozenScope = isInsideFrozenScopeTarget(active);
+
+  // Wenn gar nichts Spezifisches fokussiert ist, dürfen Links/Rechts weiter
+  // als Freeze-Navigation arbeiten.
+  const neutralFocus =
+    !active ||
+    active === document.body ||
+    active === document.documentElement;
+
   if (key === "ArrowLeft") {
+    if (!targetInFrozenScope && !activeInFrozenScope && !neutralFocus) return;
+
     e.preventDefault();
     e.stopPropagation();
     if (typeof e.stopImmediatePropagation === "function") {
@@ -13192,6 +13595,8 @@ function blockFrozenKeydown(e) {
   }
 
   if (key === "ArrowRight") {
+    if (!targetInFrozenScope && !activeInFrozenScope && !neutralFocus) return;
+
     e.preventDefault();
     e.stopPropagation();
     if (typeof e.stopImmediatePropagation === "function") {
@@ -13200,6 +13605,9 @@ function blockFrozenKeydown(e) {
     goFrozenRelative(1);
     return;
   }
+
+  // Andere Tasten nur im eingefrorenen Inhaltsbereich blockieren
+  if (!targetInFrozenScope && !activeInFrozenScope) return;
 
   const blocked = {
     ArrowUp: 1,
@@ -13244,6 +13652,9 @@ function blockFrozenKeydown(e) {
 
       const t = e.target;
       if (!(t instanceof Element)) return;
+
+      // Fokus nur dann wegnehmen, wenn er in den eigentlichen Freeze-Inhalt fällt
+      if (!isInsideFrozenScopeTarget(t)) return;
 
       const interactive = t.closest(
         "a, button, input, textarea, select, summary, [role='button'], [contenteditable='true'], [role='textbox']"
