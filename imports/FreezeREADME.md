@@ -1883,6 +1883,20 @@ function mergeDeclaredTaskDetails(task, raw) {
 function collectDeclaredTasksFromSlideLines(lines) {
   const tasks = [];
 
+  function getNextRelevantLine(startIdx) {
+    for (let j = startIdx + 1; j < lines.length; j++) {
+      const nextLine = String(lines[j] || "");
+      const nextTrimmed = normalizeSpace(nextLine);
+
+      if (!nextTrimmed) continue;
+      if (/^\s*<!--/.test(nextTrimmed)) continue;
+
+      return nextTrimmed;
+    }
+
+    return "";
+  }
+
   function pushTask() {
     const task = makeDeclaredTask();
     tasks.push(task);
@@ -1961,9 +1975,26 @@ function collectDeclaredTasksFromSlideLines(lines) {
 
     // Inline-Quizformen wie [[...]]
     const inlineMatches = line.match(/\[\[[^\n]*?\]\]/g) || [];
-    inlineMatches.forEach(function () {
-      pushTask();
-    });
+    if (inlineMatches.length) {
+      const nextRelevant = getNextRelevantLine(i);
+      const hasAlgebriteCheckHere = /@Algebrite\.check\s*\(/.test(line);
+      const hasAlgebriteCheckNext = /^@Algebrite\.check\s*\(/.test(nextRelevant);
+
+      // Mehrere Eingabefelder, die zu EINEM gemeinsamen Algebrite-Check gehören,
+      // zählen als genau EINE Aufgabe.
+      if (
+        inlineMatches.length > 1 &&
+        (hasAlgebriteCheckHere || hasAlgebriteCheckNext)
+      ) {
+        pushTask();
+      } else {
+        inlineMatches.forEach(function () {
+          pushTask();
+        });
+      }
+
+      continue;
+    }
   }
 
   return tasks;
@@ -14333,6 +14364,8 @@ Anna
 
 __Aufgabe 2:__ Lass dir die Wörter vorlesen, die in die Lücken kommen und schreibe diese in die Lücken.
 
+
+<!-- data-show-partial-solution="true" -->
 Anna ging in einen @diktat(Zoo). Dort konnte sie auf einem @diktat(Lama) reiten.
 
 @ADetails(2=BE; Lückendiktat)
@@ -14406,184 +14439,23 @@ Einfach noch ein KaTeX-Testfeld: [[     passt     ]]  @canvas
 
 --- 
 
---- 
-
---- 
+$x = 5 \;\;\wedge\;\; y= 3$ \
 
 
+$x$ = [[  5  ]] @canvas und $y$ = [[  3  ]] @canvas
+@Algebrite.check([ 5 ; 3 ])
 
 
-$a)\;\;$ $7000+123=$ [[  7123  ]] @canvas
-
-@ADetails(1=BE;Normal)
-
---- 
-
---- 
-
-
-
-Wähle blau aus.
-- [[X]] Blau
-- [[ ]] Gelb
-- [[ ]] Rot
-- [[ ]] Grün
-
-@ADetails(1=BE;Multiple)
-
---- 
-
---- 
-
-
-
-Wähle blau aus.
-- [(X)] Blau
-- [( )] Gelb
-- [( )] Rot
-- [( )] Grün
-
-@ADetails(1=BE;Radio)
-
---- 
-
---- 
-
-Wähle rot aus.
-[[(rot)|blau|grün|gelb]]
-
-@ADetails(1=BE;Auswahl)
-
---- 
-
---- 
-
-
-
-Wähle gelb aus.
-[->[rot|blau|grün|(gelb)]]
-
-@ADetails(1=BE;Kachel)
-
---- 
-
---- 
-
-
-
-$b)\;\;$ $6000+123=$ [[  6123  ]] m @canvas
-
-@ADetails(1=BE;Tag1,Tag2)
-
---- 
-
---- 
-
-
-
-**Entscheide**, ob es sich bei dem Term um einen Vektor, ein Skalar oder einen nicht definierten Ausdruck handelt.
-<br>
-
-- [[Vektor]       (Skalar)    [nicht definiert]]
-- [    [ ]           [ ]             [X]     ]  nicht definiert
-- [    ( )           (X)             ( )     ]  Skalar
-- [    [X]           [ ]             [ ]     ]  Vektor
-
-
-@ADetails(3=BE;Tabelle)
+@ADetails(4=BE;Gleichungssysteme)
 
 
 --- 
 
 --- 
 
-
-
-
-__Aufgabe 1:__ Hör dir den Satz an und schreib ihn korrekt in das Eingabefeld.
-
-
-{{|> Deutsch Female}}
-<!-- style="position: absolute; left: -9999px;" -->
-Anna
-
-[[    Anna    ]]
-
-@ADetails(4=BE; Diktat)
-
---- 
-
-
-__Aufgabe 2:__ Lass dir die Wörter vorlesen, die in die Lücken kommen und schreibe diese in die Lücken.
-
-Anna ging in einen @diktat(Zoo). Dort konnte sie auf einem @diktat(Lama) reiten.
-
-@ADetails(2=BE; Lückendiktat)
-
---- 
-
-
-__Aufgabe 3:__ Setze das Komma an die richtige Stelle. (Auflösung ist blockiert.)
-
-
-@orthography(2,`Der Bruder den ich mag.`,`Der Bruder, den ich mag.`)
-
-@ADetails(1=BE; Komma)
-
-
 --- 
 
 --- 
-
-**Stelle** die passende Teilung der Fläche **ein** und **markiere** den passenden Anteil, sodass der Bruch dargestellt wird.
-
-__$a)\;\;$__ $\dfrac{1}{4}$
-
-@rectQuiz(1/4)
-
-@ADetails(1=BE;Rechteckbruch)
-
-__$b)\;\;$__ $\dfrac{2}{5}$
-
-@circleQuiz(2/5)
-
-@ADetails(1=BE;Kreisbruch)
-
-
---- 
-
---- 
-
-
-Markiere die korrekt.
-
-<div class="markerquiz">
-Dieser @markred(Text) ist so wie er ist und eigentlich auch total egal, alle @markred(Nomen) sollen als rot markiert werden. Da wird doch der @markred(Hund) in der @markred(Pfanne) verrückt.
-@TextmarkerQuiz
-</div>
-
-@ADetails(1=BE;Marker)
-
-
---- 
-
---- 
-
-
-Kommentare werden auch eingefroren
-
-[[___]]
-
-@ADetails(0=BE)
-
-[[___ ___ ___ ___]]
-
-@ADetails(0=BE)
-
-Einfach noch ein KaTeX-Testfeld: [[     passt     ]]  @canvas
-
-@ADetails(0=BE)
-
 
 
 
