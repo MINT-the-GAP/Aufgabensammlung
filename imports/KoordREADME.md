@@ -8,6 +8,15 @@ narrator: Deutsch Female
 
 
 
+import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+
+
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/OCRREADME.md
+
+
+
 
 
 
@@ -7477,7 +7486,6 @@ window.getTabelleDaten = function(uid) {
 
 @Koordinatensystem
 <div>
-
 ``` javascript @JSX.Graph
 
 
@@ -8559,9 +8567,7 @@ window.getTabelleDaten = function(uid) {
 
 
 ```
-
 </div>
-
 @end
 
 
