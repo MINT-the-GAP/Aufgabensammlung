@@ -42,7 +42,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
 
 
-import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
+import: https://cdn.jsdelivr.net/gh/LiaTemplates/algebrite@master/README.md
 
 
 

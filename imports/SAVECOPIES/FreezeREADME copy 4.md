@@ -5,7 +5,7 @@ author: Martin Lommatzsch
 comment: LiaScript-Abgabelink mit exakterer Zustandsprotokollierung und Freeze
 
 
-import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
+import: https://cdn.jsdelivr.net/gh/LiaTemplates/algebrite@master/README.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MatheREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/DeutschREADME.md

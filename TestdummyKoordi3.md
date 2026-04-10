@@ -161,8 +161,8 @@ input {
 
 @end
 
-import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
-        https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+import: https://cdn.jsdelivr.net/gh/LiaTemplates/algebrite@master/README.md
+        https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
 
 script: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js
 

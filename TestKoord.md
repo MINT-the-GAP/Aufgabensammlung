@@ -8,7 +8,7 @@ comment:
 author:
 
 
-import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/imports/KoordREADME.md
 
@@ -29,7 +29,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/hea
 
 
 
-Alles klappt nur wenn `https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md` im Header importiert wurde!
+Alles klappt nur wenn `https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md` im Header importiert wurde!
 
 
 @Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A1`)
