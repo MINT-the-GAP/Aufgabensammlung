@@ -32,7 +32,7 @@ window.__liaSubmissionDemo = (function () {
   const ADMIN_ATTR = "data-snapshot-admin";
   const STORAGE_PREFIX = "__lia_submission_demo__:";
   const PAYLOAD_VERSION = "sf-mini-ti-3";
-  const DEBUG = true;
+  const DEBUG = false;
   const EVALUATION_TITLE = "Auswertung";
   const BUILD_STAMP = "FREEZE-BUILD-2026-04-05-12-26";
 
@@ -52,6 +52,7 @@ window.__liaSubmissionDemo = (function () {
 
   let applyTimer = null;
   let freezeBarTimer = null;
+  let frozenCanvasThemeTimer = null;
   let applyRunToken = 0;
   let stabilizationToken = 0;
   let freezeLoadingVisible = false;
@@ -798,9 +799,9 @@ function ensureRuntimeStyle() {
   border-radius:8px;
   border:1px solid color-mix(in srgb, rgb(var(--lia-submit-bg-rgb)) 55%, var(--lia-course-fg) 45%);
   background:color-mix(in srgb, rgb(var(--lia-submit-bg-rgb)) 99%, var(--lia-course-bg) 1%);
-  color:var(--lia-course-fg) !important;
-  -webkit-text-fill-color:var(--lia-course-fg) !important;
-  caret-color:var(--lia-course-fg);
+  color:#ffffff !important;
+  -webkit-text-fill-color:#ffffff !important;
+  caret-color:#ffffff;
   font:inherit;
   font-weight:700;
   line-height:1.15;
@@ -808,7 +809,8 @@ function ensureRuntimeStyle() {
 }
 
 .lia-adetails-award-input::placeholder{
-  color:color-mix(in srgb, var(--lia-course-fg) 60%, transparent);
+  color:rgba(255,255,255,.7);
+  -webkit-text-fill-color:rgba(255,255,255,.7);
 }
 
 body.lia-shared-freeze-link .lia-quiz__control .lia-adetails-points{
@@ -1015,6 +1017,7 @@ body.lia-snapshot-mode #lia-freeze-info{
       applyCourseColors();
       refreshFreezeBar();
       syncFrozenScreens();
+      scheduleFrozenCanvasThemeRefresh("theme-mutation", 60);
     });
 
     observer.observe(document.documentElement, {
@@ -1033,6 +1036,7 @@ body.lia-snapshot-mode #lia-freeze-info{
       applyCourseColors();
       refreshFreezeBar();
       syncFrozenScreens();
+      scheduleFrozenCanvasThemeRefresh("theme-resize", 80);
     });
 
     setTimeout(function () {
@@ -1040,6 +1044,7 @@ body.lia-snapshot-mode #lia-freeze-info{
       applyCourseColors();
       refreshFreezeBar();
       syncFrozenScreens();
+      scheduleFrozenCanvasThemeRefresh("theme-init", 80);
     }, 100);
   }
 
@@ -4848,6 +4853,157 @@ function normalizeCanvasStoredColor(value) {
   return s;
 }
 
+
+
+function getCanvasItemThemeModeForFreezeUrl(item, role) {
+  return getCanvasStoredColorKeyFromItem(item, role);
+}
+
+function getCanvasStoredStrokeValueForFreezeUrl(item) {
+  const mode = getCanvasItemThemeModeForFreezeUrl(item, "stroke");
+  if (mode) {
+    return mode;
+  }
+
+  if (item && Object.prototype.hasOwnProperty.call(item, "c")) {
+    return String(item.c == null ? "" : item.c);
+  }
+
+  return "#000000";
+}
+
+function getCanvasStoredFillValueForFreezeUrl(item) {
+  const mode = getCanvasItemThemeModeForFreezeUrl(item, "fill");
+  if (mode) {
+    return mode;
+  }
+
+  if (item && Object.prototype.hasOwnProperty.call(item, "f")) {
+    return String(item.f == null ? "" : item.f);
+  }
+
+  return "rgba(0,0,0,0)";
+}
+
+
+
+function normalizeCanvasStoredColorKey(value) {
+  const txt = normalizeSpace(value || "").toLowerCase();
+
+  if (txt === "default" || txt === "auto") {
+    return txt;
+  }
+
+  return "";
+}
+
+function getCanvasStoredColorKeyFromItem(item, role) {
+  if (!item || typeof item !== "object") return "";
+
+  const names = role === "fill"
+    ? ["fk", "fillKey", "fillColorKey", "fillMode", "colorMode", "mode"]
+    : ["ck", "colorKey", "strokeKey", "strokeColorKey", "strokeMode", "colorMode", "mode"];
+
+  for (let i = 0; i < names.length; i++) {
+    const clean = normalizeCanvasStoredColorKey(item[names[i]]);
+    if (clean) return clean;
+  }
+
+  const rawValue = role === "fill"
+    ? (item.f != null ? item.f : item.fill)
+    : (item.c != null ? item.c : item.color);
+
+  return normalizeCanvasStoredColorKey(rawValue);
+}
+
+function encodeCanvasColorMetaEntryForFreezeUrl(rawColor, rawColorKey) {
+  const colorEntry = encodeCanvasColorEntryForFreezeUrl(rawColor);
+  const colorKey = normalizeCanvasStoredColorKey(rawColorKey);
+
+  if (!colorKey) {
+    return colorEntry;
+  }
+
+  const keyCode = colorKey === "default" ? "d" : "a";
+
+  if (!colorEntry) {
+    return "!" + keyCode;
+  }
+
+  return "!" + keyCode + ":" + colorEntry;
+}
+
+function decodeCanvasColorMetaEntryFromFreezeUrl(value, fallbackColor) {
+  const txt = String(value == null ? "" : value).trim();
+
+  if (!txt) {
+    return {
+      color: fallbackColor,
+      colorKey: ""
+    };
+  }
+
+  const m = txt.match(/^!(d|a)(?::(.+))?$/i);
+  if (m) {
+    return {
+      color: decodeCanvasColorEntryFromFreezeUrl(m[2] || "", fallbackColor),
+      colorKey: m[1].toLowerCase() === "d" ? "default" : "auto"
+    };
+  }
+
+  return {
+    color: decodeCanvasColorEntryFromFreezeUrl(txt, fallbackColor),
+    colorKey: ""
+  };
+}
+
+function internCanvasColorMetaEntryForFreezeUrl(rawColor, rawColorKey, colorList, colorIndex) {
+  const stored = encodeCanvasColorMetaEntryForFreezeUrl(rawColor, rawColorKey);
+  if (!stored) return -1;
+
+  if (!Object.prototype.hasOwnProperty.call(colorIndex, stored)) {
+    colorIndex[stored] = colorList.length;
+    colorList.push(stored);
+  }
+
+  return colorIndex[stored];
+}
+
+function applyCanvasStrokeColorMetaToExpandedItem(out, colorMeta) {
+  if (!out || !colorMeta) return out;
+
+  out.c = colorMeta.color;
+
+  if (colorMeta.colorKey) {
+    out.ck = colorMeta.colorKey;
+    out.colorKey = colorMeta.colorKey;
+    out.strokeKey = colorMeta.colorKey;
+    out.strokeColorKey = colorMeta.colorKey;
+    out.strokeMode = colorMeta.colorKey;
+    out.colorMode = colorMeta.colorKey;
+    out.mode = colorMeta.colorKey;
+  }
+
+  return out;
+}
+
+function applyCanvasFillColorMetaToExpandedItem(out, colorMeta) {
+  if (!out || !colorMeta) return out;
+
+  out.f = colorMeta.color;
+
+  if (colorMeta.colorKey) {
+    out.fk = colorMeta.colorKey;
+    out.fillKey = colorMeta.colorKey;
+    out.fillColorKey = colorMeta.colorKey;
+    out.fillMode = colorMeta.colorKey;
+    out.colorMode = colorMeta.colorKey;
+    out.mode = colorMeta.colorKey;
+  }
+
+  return out;
+}
+
 function encodeCanvasColorEntryForFreezeUrl(value) {
   const norm = normalizeCanvasStoredColor(value);
   if (!norm) return "";
@@ -5378,8 +5534,27 @@ function compactCanvasPathItemForFreezeUrl(item, colorList, colorIndex) {
 
     if (!abs.length) return null;
 
-    const ci = internCanvasColorEntryForFreezeUrl(
-      String(item.c || "#000000"),
+    const rawStrokeColor =
+      item.c != null ? item.c :
+      item.color != null ? item.color :
+      "#000000";
+
+    const strokeKey = getCanvasStoredColorKeyFromItem(item, "stroke");
+    const storedStrokeMeta = encodeCanvasColorMetaEntryForFreezeUrl(
+      rawStrokeColor,
+      strokeKey
+    );
+
+    log(
+      "canvas-stroke-store",
+      "raw=" + String(rawStrokeColor),
+      "key=" + String(strokeKey || ""),
+      "stored=" + String(storedStrokeMeta)
+    );
+
+    const ci = internCanvasColorMetaEntryForFreezeUrl(
+      rawStrokeColor,
+      strokeKey,
       colorList,
       colorIndex
     );
@@ -5458,8 +5633,27 @@ function compactCanvasPathItemForFreezeUrl(item, colorList, colorIndex) {
   }
 
   if (kind === "r") {
-    const fi = internCanvasColorEntryForFreezeUrl(
-      String(item.f || "rgba(0,0,0,0)"),
+    const rawFillColor =
+      item.f != null ? item.f :
+      item.fill != null ? item.fill :
+      "rgba(0,0,0,0)";
+
+    const fillKey = getCanvasStoredColorKeyFromItem(item, "fill");
+    const storedFillMeta = encodeCanvasColorMetaEntryForFreezeUrl(
+      rawFillColor,
+      fillKey
+    );
+
+    log(
+      "canvas-fill-store",
+      "raw=" + String(rawFillColor),
+      "key=" + String(fillKey || ""),
+      "stored=" + String(storedFillMeta)
+    );
+
+    const fi = internCanvasColorMetaEntryForFreezeUrl(
+      rawFillColor,
+      fillKey,
       colorList,
       colorIndex
     );
@@ -5712,38 +5906,38 @@ function expandCanvasPathItemFromFreezeUrl(entry, colors) {
         ? colors[colorIdx]
         : "#000000";
 
-    const color = decodeCanvasColorEntryFromFreezeUrl(
+    const colorMeta = decodeCanvasColorMetaEntryFromFreezeUrl(
       storedColor,
       "#000000"
     );
+
+    const color = colorMeta.color;
 
     const outKind = isEraser ? "e" : "p";
 
     if (type === POINT || type === ERASER_POINT) {
       if (entry.length === 5) {
-        return {
+        return applyCanvasStrokeColorMetaToExpandedItem({
           k: outKind,
-          c: color,
           a: 1,
           w: Number(entry[2] || 1) || 1,
           p: [[
             decodeCanvasPointNumberFromFreezeUrl(entry[3]),
             decodeCanvasPointNumberFromFreezeUrl(entry[4])
           ]]
-        };
+        }, colorMeta);
       }
 
       if (entry.length >= 6) {
-        return {
+        return applyCanvasStrokeColorMetaToExpandedItem({
           k: outKind,
-          c: color,
           a: Number(entry[2] || 1) || 1,
           w: Number(entry[3] || 1) || 1,
           p: [[
             decodeCanvasPointNumberFromFreezeUrl(entry[4]),
             decodeCanvasPointNumberFromFreezeUrl(entry[5])
           ]]
-        };
+        }, colorMeta);
       }
 
       return null;
@@ -5751,23 +5945,21 @@ function expandCanvasPathItemFromFreezeUrl(entry, colors) {
 
     if (type === PATH_V2 || type === ERASER_PATH_V2) {
       if (entry.length === 4) {
-        return {
+        return applyCanvasStrokeColorMetaToExpandedItem({
           k: outKind,
-          c: color,
           a: 1,
           w: Number(entry[2] || 1) || 1,
           p: decodeCanvasPathPointsFromFreezeUrl(entry[3])
-        };
+        }, colorMeta);
       }
 
       if (entry.length >= 5) {
-        return {
+        return applyCanvasStrokeColorMetaToExpandedItem({
           k: outKind,
-          c: color,
           a: Number(entry[2] || 1) || 1,
           w: Number(entry[3] || 1) || 1,
           p: decodeCanvasPathPointsFromFreezeUrl(entry[4])
-        };
+        }, colorMeta);
       }
 
       return null;
@@ -5775,23 +5967,21 @@ function expandCanvasPathItemFromFreezeUrl(entry, colors) {
 
     if (type === PATH_V3 || type === ERASER_PATH_V3) {
       if (entry.length === 4) {
-        return {
+        return applyCanvasStrokeColorMetaToExpandedItem({
           k: outKind,
-          c: color,
           a: 1,
           w: Number(entry[2] || 1) || 1,
           p: decodeCanvasPathPointsFromBinaryTokenForFreezeUrl(entry[3])
-        };
+        }, colorMeta);
       }
 
       if (entry.length >= 5) {
-        return {
+        return applyCanvasStrokeColorMetaToExpandedItem({
           k: outKind,
-          c: color,
           a: Number(entry[2] || 1) || 1,
           w: Number(entry[3] || 1) || 1,
           p: decodeCanvasPathPointsFromBinaryTokenForFreezeUrl(entry[4])
-        };
+        }, colorMeta);
       }
 
       return null;
@@ -5806,19 +5996,20 @@ function expandCanvasPathItemFromFreezeUrl(entry, colors) {
         ? colors[fillIdx]
         : "rgba(0,0,0,0)";
 
-    const fill = decodeCanvasColorEntryFromFreezeUrl(
+    const fillMeta = decodeCanvasColorMetaEntryFromFreezeUrl(
       storedFill,
       "rgba(0,0,0,0)"
     );
+    
+    const fill = fillMeta.color;
 
-    return {
+    return applyCanvasFillColorMetaToExpandedItem({
       k: "r",
-      f: fill,
       x: decodeCanvasPointNumberFromFreezeUrl(entry[2]),
       y: decodeCanvasPointNumberFromFreezeUrl(entry[3]),
       w: decodeCanvasPointNumberFromFreezeUrl(entry[4]),
       h: decodeCanvasPointNumberFromFreezeUrl(entry[5])
-    };
+    }, fillMeta);
   }
 
   return null;
@@ -6087,7 +6278,7 @@ function expandCanvasPathEntriesFromFreezeUrl(entry, colors) {
         ? colors[colorIdx]
         : "#000000";
 
-    const color = decodeCanvasColorEntryFromFreezeUrl(
+    const colorMeta = decodeCanvasColorMetaEntryFromFreezeUrl(
       storedColor,
       "#000000"
     );
@@ -6109,17 +6300,21 @@ function expandCanvasPathEntriesFromFreezeUrl(entry, colors) {
 
     const tokens = decodeCanvasPathRunTokenListFromFreezeUrl(tokenPayload);
 
+    const isBinary =
+      pathType === CANVAS_PATH_ENTRY_TYPE_V3 ||
+      pathType === CANVAS_ERASER_PATH_ENTRY_TYPE_V3;
+
+    const isEraser =
+      pathType === CANVAS_ERASER_PATH_ENTRY_TYPE_V2 ||
+      pathType === CANVAS_ERASER_PATH_ENTRY_TYPE_V3;
+
     return tokens.map(function (token) {
       let points = null;
 
       try {
-        if (pathType === 3) {
-          points = decodeCanvasPathPointsFromBinaryTokenForFreezeUrl(token);
-        } else if (pathType === 0) {
-          points = decodeCanvasPathPointsFromFreezeUrl(token);
-        } else {
-          return null;
-        }
+        points = isBinary
+          ? decodeCanvasPathPointsFromBinaryTokenForFreezeUrl(token)
+          : decodeCanvasPathPointsFromFreezeUrl(token);
       } catch (err) {
         warn(
           "canvas-run-expand-failed",
@@ -6132,13 +6327,12 @@ function expandCanvasPathEntriesFromFreezeUrl(entry, colors) {
         return null;
       }
 
-      return {
-        k: "p",
-        c: color,
+      return applyCanvasStrokeColorMetaToExpandedItem({
+        k: isEraser ? "e" : "p",
         a: alpha,
         w: width,
         p: points
-      };
+      }, colorMeta);
     }).filter(Boolean);
   }
 
@@ -11213,11 +11407,253 @@ function captureCanvasFreezeStatesFromRoot(root) {
     const state = api.exportCanvasFreezeStateFromPair(pair);
     if (!state) return;
 
+    inferCanvasThemeKeysFromPairState(pair, state);
+
     out.push(state);
   });
 
   return out;
 }
+
+
+function normalizeCanvasThemeModeKey(value) {
+  const txt = normalizeSpace(value || "").toLowerCase();
+  if (txt === "default" || txt === "auto") return txt;
+  return "";
+}
+
+function getCanvasThemeModeFromItem(item, role) {
+  if (!item || typeof item !== "object") return "";
+
+  const names = role === "fill"
+    ? ["fk", "fillKey", "fillColorKey", "fillMode", "colorMode", "mode"]
+    : ["ck", "colorKey", "strokeKey", "strokeColorKey", "strokeMode", "colorMode", "mode"];
+
+  for (let i = 0; i < names.length; i++) {
+    const clean = normalizeCanvasThemeModeKey(item[names[i]]);
+    if (clean) return clean;
+  }
+
+  const rawValue = role === "fill"
+    ? (item.f != null ? item.f : item.fill)
+    : (item.c != null ? item.c : item.color);
+
+  return normalizeCanvasThemeModeKey(rawValue);
+}
+
+function readCanvasCssVarFromPair(pair, name) {
+  let node = pair instanceof Element ? pair : null;
+
+  while (node && node instanceof Element) {
+    try {
+      const value = String(
+        getComputedStyle(node).getPropertyValue(name) || ""
+      ).trim();
+
+      if (value) return value;
+    } catch (e) {}
+
+    node = node.parentElement;
+  }
+
+  try {
+    const bodyValue = document.body
+      ? String(getComputedStyle(document.body).getPropertyValue(name) || "").trim()
+      : "";
+
+    if (bodyValue) return bodyValue;
+  } catch (e) {}
+
+  try {
+    const rootValue = String(
+      getComputedStyle(document.documentElement).getPropertyValue(name) || ""
+    ).trim();
+
+    if (rootValue) return rootValue;
+  } catch (e) {}
+
+  return "";
+}
+
+function getCanvasDefaultStrokeColorForPair(pair) {
+  const fromCanvasPen = readCanvasCssVarFromPair(pair, "--canvas-pen");
+  if (fromCanvasPen) return fromCanvasPen;
+
+  const fromCourseFg = readCanvasCssVarFromPair(pair, "--lia-course-fg");
+  if (fromCourseFg) return fromCourseFg;
+
+  try {
+    const cs = getComputedStyle(pair || document.body || document.documentElement);
+    const color = String(cs && cs.color || "").trim();
+    if (color) return color;
+  } catch (e) {}
+
+  return "#000000";
+}
+
+function normalizeCanvasColorForCompare(value) {
+  const txt = normalizeSpace(value || "");
+  if (!txt) return "";
+
+  try {
+    const ctx =
+      normalizeCanvasColorForCompare.__ctx ||
+      (normalizeCanvasColorForCompare.__ctx =
+        document.createElement("canvas").getContext("2d"));
+
+    if (!ctx) {
+      return normalizeCanvasStoredColor(txt);
+    }
+
+    ctx.fillStyle = "#000000";
+    ctx.fillStyle = txt;
+
+    return String(ctx.fillStyle || "").trim().toLowerCase();
+  } catch (e) {
+    return normalizeCanvasStoredColor(txt);
+  }
+}
+
+function canvasColorsLookEqual(a, b) {
+  const na = normalizeCanvasColorForCompare(a);
+  const nb = normalizeCanvasColorForCompare(b);
+
+  return !!na && !!nb && na === nb;
+}
+
+function inferCanvasThemeKeysFromPairState(pair, state) {
+  if (!state || typeof state !== "object") return state;
+
+  const items = Array.isArray(state.it) ? state.it : [];
+  if (!items.length) return state;
+
+  const defaultStroke = getCanvasDefaultStrokeColorForPair(pair);
+  let tagged = 0;
+
+  items.forEach(function (item) {
+    if (!item || typeof item !== "object") return;
+
+    const kind = String(item.k || "");
+    if (kind !== "p" && kind !== "e") return;
+
+    if (getCanvasStoredColorKeyFromItem(item, "stroke")) return;
+
+    const rawStroke =
+      item.c != null ? item.c :
+      item.color != null ? item.color :
+      "";
+
+    if (!canvasColorsLookEqual(rawStroke, defaultStroke)) return;
+
+    item.ck = "default";
+    item.colorKey = "default";
+    item.strokeKey = "default";
+    item.strokeColorKey = "default";
+    item.strokeMode = "default";
+
+    tagged += 1;
+  });
+
+  if (tagged > 0) {
+    log(
+      "canvas-theme-capture-tag",
+      "uid=" + String(state.u || ""),
+      "tagged=" + tagged,
+      "defaultStroke=" + String(defaultStroke || "")
+    );
+  }
+
+  return state;
+}
+
+function resolveCanvasThemeModeToColor(pair, mode, fallbackColor, role) {
+  const cleanMode = normalizeCanvasThemeModeKey(mode);
+
+  if (cleanMode === "default" || cleanMode === "auto") {
+    if (role === "fill") {
+      return getCanvasDefaultStrokeColorForPair(pair);
+    }
+
+    return getCanvasDefaultStrokeColorForPair(pair);
+  }
+
+  return fallbackColor;
+}
+
+function materializeCanvasThemeColorsForPair(state, pair) {
+  const out = copyJson(state) || state;
+  if (!out || typeof out !== "object") return out;
+
+  const items = Array.isArray(out.it) ? out.it : [];
+  out.it = items.map(function (item) {
+    const clone = copyJson(item) || item;
+    if (!clone || typeof clone !== "object") return clone;
+
+    const strokeMode = getCanvasThemeModeFromItem(clone, "stroke");
+    if (strokeMode) {
+      clone.c = resolveCanvasThemeModeToColor(
+        pair,
+        strokeMode,
+        clone.c != null ? clone.c : "#000000",
+        "stroke"
+      );
+    }
+
+    const fillMode = getCanvasThemeModeFromItem(clone, "fill");
+    if (fillMode) {
+      clone.f = resolveCanvasThemeModeToColor(
+        pair,
+        fillMode,
+        clone.f != null ? clone.f : "rgba(0,0,0,0)",
+        "fill"
+      );
+    }
+
+    return clone;
+  });
+
+  return out;
+}
+
+function refreshVisibleFrozenCanvasTheme(reason) {
+  if (!document.body || !document.body.classList.contains("lia-snapshot-mode")) {
+    return false;
+  }
+
+  const currentHash = cleanHashValue(getCurrentHash() || "");
+  if (!currentHash) return false;
+  if (isEvaluationTarget(currentHash)) return false;
+  if (isUnvisitedTarget(currentHash)) return false;
+
+  const slide = getSnapshotSlideForHash(currentHash);
+  if (!slide || !Array.isArray(slide.cv) || !slide.cv.length) {
+    return false;
+  }
+
+  const host = getContentHost() || document.body;
+  if (!host) return false;
+
+  applyStoredCanvasStatesToHost(host, slide.cv || []);
+
+  log(
+    "canvas-theme-refresh",
+    "reason=" + String(reason || ""),
+    "hash=" + currentHash,
+    "count=" + slide.cv.length
+  );
+
+  return true;
+}
+
+function scheduleFrozenCanvasThemeRefresh(reason, delay) {
+  clearTimeout(frozenCanvasThemeTimer);
+
+  frozenCanvasThemeTimer = setTimeout(function () {
+    refreshVisibleFrozenCanvasTheme(reason || "theme");
+  }, delay || 50);
+}
+
+
 
 function applyStoredCanvasStatesToHost(host, storedStates) {
   const api = getCanvasFreezeApi();
@@ -11272,12 +11708,61 @@ function applyStoredCanvasStatesToHost(host, storedStates) {
       return;
     }
 
-    const renderState = expandCanvasStateFromFreezeUrl(state) || state;
+    const expandedState = expandCanvasStateFromFreezeUrl(state) || state;
+    
+    log(
+      "canvas-theme-expanded",
+      "uid=" + String(getCanvasStateUidForFreezeUrl(state)),
+      (Array.isArray(expandedState && expandedState.it) ? expandedState.it : []).map(function (it, i) {
+        return (
+          "[" + i + "]" +
+          " k=" + String(it && it.k || "") +
+          " c=" + String(it && it.c || "") +
+          " ck=" + String(
+            (it && (
+              it.ck ||
+              it.colorKey ||
+              it.strokeKey ||
+              it.strokeColorKey ||
+              it.strokeMode ||
+              it.colorMode ||
+              it.mode
+            )) || ""
+          ) +
+          " f=" + String(it && it.f || "") +
+          " fk=" + String(
+            (it && (
+              it.fk ||
+              it.fillKey ||
+              it.fillColorKey ||
+              it.fillMode ||
+              it.colorMode ||
+              it.mode
+            )) || ""
+          )
+        );
+      }).join(" || ")
+    );
+    
+    const renderState = materializeCanvasThemeColorsForPair(expandedState, target);
+    
+    log(
+      "canvas-theme-materialized",
+      "uid=" + String(getCanvasStateUidForFreezeUrl(state)),
+      (Array.isArray(renderState && renderState.it) ? renderState.it : []).map(function (it, i) {
+        return (
+          "[" + i + "]" +
+          " k=" + String(it && it.k || "") +
+          " c=" + String(it && it.c || "") +
+          " f=" + String(it && it.f || "")
+        );
+      }).join(" || ")
+    );
 
     used.add(target);
     api.renderCanvasFreezeStateIntoPair(target, renderState);
-    applyStoredCanvasWindowSizeToPair(target, renderState);
-    scheduleStoredCanvasWindowSizeReapply(target, renderState);
+    applyStoredCanvasWindowSizeToPair(target, expandedState);
+    scheduleStoredCanvasWindowSizeReapply(target, expandedState);
     applied.push(target);
   });
 
