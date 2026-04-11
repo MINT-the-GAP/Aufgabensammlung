@@ -1532,7 +1532,7 @@ canvas.lia-canvas-freeze-preview{
   max-width: 100%;
   width: fit-content;
   padding: 4px 10px;
-  border: 2px solid var(--canvas-accent);
+  border: 2px solid var(--lia-tex-preview-border, var(--canvas-accent));
   border-radius: 999px;
   background: transparent;
   cursor: text;
@@ -1604,6 +1604,64 @@ function __liaReadFieldValue(el){
   return '';
 }
 
+function __liaHasQuizStateColor(el){
+  try{
+    if (!el || !el.classList) return false;
+
+    if (el.classList.contains('is-success')) return true;
+    if (el.classList.contains('is-failure')) return true;
+    if (el.classList.contains('is-warning')) return true;
+    if (el.classList.contains('is-partial')) return true;
+    if (el.classList.contains('is-resolved')) return true;
+
+    if (el.getAttribute && el.getAttribute('aria-invalid') === 'true') return true;
+  }catch(_){}
+  return false;
+}
+
+function __liaIsUsableCssColor(v){
+  const s = String(v || '').trim().toLowerCase();
+  if (!s) return false;
+  if (s === 'transparent') return false;
+  if (s === 'rgba(0, 0, 0, 0)') return false;
+  if (s === 'rgba(0,0,0,0)') return false;
+  return true;
+}
+
+function __liaSyncTexPreviewBorder(el){
+  if (!el || !el.__liaTexPreviewBox) return;
+
+  const box = el.__liaTexPreviewBox;
+
+  // Standard zurücksetzen -> fällt auf var(--canvas-accent) zurück
+  box.style.removeProperty('--lia-tex-preview-border');
+
+  // Nur bei echten LiaScript-Zuständen überschreiben
+  if (!__liaHasQuizStateColor(el)) return;
+
+  let border = '';
+  try{
+    const cs = getComputedStyle(el);
+    border =
+      cs.borderTopColor ||
+      cs.borderColor ||
+      cs.outlineColor ||
+      '';
+  }catch(_){}
+
+  if (!__liaIsUsableCssColor(border)) return;
+
+  box.style.setProperty('--lia-tex-preview-border', border);
+}
+
+function __liaRefreshAllTexPreviewBorders(root){
+  const scope = (root && root.querySelectorAll) ? root : document;
+
+  scope.querySelectorAll('.lia-canvas-pair').forEach(function(pair){
+    const field = __liaFindInputBeforeNode(pair);
+    if (field) __liaSyncTexPreviewBorder(field);
+  });
+}
 
 function __liaAutoSizeTexWidgets(el){
   if (!el) return;
@@ -1812,12 +1870,14 @@ function __liaShowTexPreview(el){
     return;
   }
 
+  __liaSyncTexPreviewBorder(el);
+
   const math = el.__liaTexPreviewBox.querySelector('.lia-tex-preview-math');
   __liaRenderTexPreview(math, value);
 
   el.__liaTexPreviewBox.dataset.on = '1';
   el.__liaTexPreviewBox.style.display = 'inline-flex';
-  el.style.display = 'none';  
+  el.style.display = 'none';
   __liaAutoSizeTexWidgets(el);
 }
 
@@ -1843,6 +1903,21 @@ function __liaEnsureTexPreview(el){
 
   el.insertAdjacentElement('afterend', box);
   el.__liaTexPreviewBox = box;
+
+  if (!el.__liaTexPreviewBorderObserver){
+    const mo = new MutationObserver(function(){
+      __liaSyncTexPreviewBorder(el);
+    });
+
+    mo.observe(el, {
+      attributes: true,
+      attributeFilter: ['class', 'style', 'aria-invalid']
+    });
+
+    el.__liaTexPreviewBorderObserver = mo;
+  }
+
+  __liaSyncTexPreviewBorder(el);
 
   el.addEventListener('input', function(){
     const math = box.querySelector('.lia-tex-preview-math');
@@ -1960,7 +2035,10 @@ function __liaFindAndSetInputBeforeNode(refEl, value){
 function __liaInitTexPreviews(){
   document.querySelectorAll('.lia-canvas-pair').forEach(function(pair){
     const field = __liaFindInputBeforeNode(pair);
-    if (field) __liaEnsureTexPreview(field);
+    if (field){
+      __liaEnsureTexPreview(field);
+      __liaSyncTexPreviewBorder(field);
+    }
   });
 }
 
@@ -4988,6 +5066,7 @@ ensureCorners();
 
 
   document.addEventListener('lia-canvas-theme', () => {
+    __liaRefreshAllTexPreviewBorders(document);
     updateUI();
     rebuildHighlightLayer();
     rebuildStrokeLayer();
@@ -5444,11 +5523,16 @@ $1470+8 =$ [[     1478    ]]
 
 
 
+mit partial-solution
 
+<!-- data-show-partial-solution="true" -->
 __$b)\;\;$__
-$5010+300 =$ [[     5310    ]] 
-
+$5100+30 =$ [[     5130    ]] 
 @canvas
+$5100+30 =$ [[     5130    ]] 
+@canvas
+
+
 
 
 
