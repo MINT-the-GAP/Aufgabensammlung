@@ -1604,6 +1604,69 @@ function __liaReadFieldValue(el){
   return '';
 }
 
+
+window.__LIA_CANVAS_TEX_FIELDS__ = window.__LIA_CANVAS_TEX_FIELDS__ || [];
+
+function __liaRegisterCanvasTexField(el){
+  if (!el) return;
+  el.dataset.liaCanvasTex = '1';
+
+  const list = window.__LIA_CANVAS_TEX_FIELDS__;
+  if (list.indexOf(el) === -1){
+    list.push(el);
+  }
+}
+
+function __liaSyncCanvasTexPreview(el){
+  if (!el || !el.__liaTexPreviewBox) return;
+
+  const value = __liaReadFieldValue(el);
+  const focused = (document.activeElement === el);
+
+  // nichts tun, wenn sich weder Inhalt noch Fokuszustand geändert hat
+  if (el.__liaTexPreviewLastValue === value && el.__liaTexPreviewLastFocused === focused){
+    return;
+  }
+
+  el.__liaTexPreviewLastValue = value;
+  el.__liaTexPreviewLastFocused = focused;
+
+  const math = el.__liaTexPreviewBox.querySelector('.lia-tex-preview-math');
+  if (math){
+    __liaRenderTexPreview(math, value);
+  }
+
+  // Während echter Bearbeitung Feld sichtbar lassen.
+  // Sobald nicht fokussiert (z.B. im Freeze), gerenderte Vorschau zeigen.
+  if (focused){
+    el.__liaTexPreviewBox.dataset.on = '0';
+    el.__liaTexPreviewBox.style.display = 'none';
+    el.style.display = '';
+    __liaAutoSizeTexWidgets(el);
+  }else{
+    __liaShowTexPreview(el);
+  }
+}
+
+if (!window.__LIA_CANVAS_TEX_SYNC_BOOT__){
+  window.__LIA_CANVAS_TEX_SYNC_BOOT__ = true;
+
+  setInterval(function(){
+    const list = window.__LIA_CANVAS_TEX_FIELDS__ || [];
+
+    for (let i = list.length - 1; i >= 0; i--){
+      const el = list[i];
+
+      if (!el || !el.isConnected){
+        list.splice(i, 1);
+        continue;
+      }
+
+      __liaSyncCanvasTexPreview(el);
+    }
+  }, 250);
+}
+
 function __liaHasQuizStateColor(el){
   try{
     if (!el || !el.classList) return false;
@@ -1886,6 +1949,7 @@ function __liaEnsureTexPreview(el){
   if (el.__liaTexPreviewReady) return el;
 
   el.__liaTexPreviewReady = true;
+  __liaRegisterCanvasTexField(el);
 
   const box = document.createElement('span');
   box.className = 'lia-tex-preview';
@@ -1920,14 +1984,21 @@ function __liaEnsureTexPreview(el){
   __liaSyncTexPreviewBorder(el);
 
   el.addEventListener('input', function(){
-    const math = box.querySelector('.lia-tex-preview-math');
-    __liaRenderTexPreview(math, __liaReadFieldValue(el));
+    __liaSyncCanvasTexPreview(el);
+  });
+
+  el.addEventListener('change', function(){
+    __liaSyncCanvasTexPreview(el);
   });
 
   el.addEventListener('blur', function(){
     setTimeout(function(){
-      __liaShowTexPreview(el);
+      __liaSyncCanvasTexPreview(el);
     }, 0);
+  });
+
+  el.addEventListener('focus', function(){
+    __liaSyncCanvasTexPreview(el);
   });
 
   el.addEventListener('keydown', function(e){
@@ -1947,8 +2018,7 @@ function __liaEnsureTexPreview(el){
     }
   });
 
-  __liaShowTexPreview(el);  
-  __liaAutoSizeTexWidgets(el);
+  __liaSyncCanvasTexPreview(el);
   return el;
 }
 
