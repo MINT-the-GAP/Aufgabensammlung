@@ -542,6 +542,8 @@ if (window.__liaRunCoordHooks) {
 
 
 
+
+
 (function(){
   if (window.__erzeugePunktReady) {
     try {
@@ -708,9 +710,21 @@ function currentAccentColor() {
       .map(function(s){ return s.trim(); });
   }
 
+  function parseFixToken(v) {
+    return /^fix$/i.test(String(v || '').trim());
+  }
+
   function texName(name) {
     const s = String(name || '').trim();
-    return s ? '\\(' + s + '\\)' : '\\(A\\)';
+    if (!s) return '\\(A\\)';
+    if (s.includes('\\(') || s.includes('\\[') || s.includes('$')) return s;
+
+    const m = s.match(/^(.+?)_(.+)$/);
+    if (m) {
+      return '\\(' + m[1] + '_{' + m[2] + '}\\)';
+    }
+
+    return '\\(' + s + '\\)';
   }
 
   function ensureBuckets(boardId) {
@@ -725,7 +739,8 @@ function currentAccentColor() {
       boardId: parts[0] || '',
       name: parts[1] || 'A',
       tx: parseFloat((parts[2] || '').replace(',', '.')),
-      ty: parseFloat((parts[3] || '').replace(',', '.'))
+      ty: parseFloat((parts[3] || '').replace(',', '.')),
+      fixed: parseFixToken(parts[4] || '')
     };
   }
 
@@ -831,11 +846,11 @@ function currentAccentColor() {
     persist();
   }
 
-  function createPoint(board, boardId, name, x0, y0) {
+  function createPoint(board, boardId, name, x0, y0, isFixed) {
     try {
       const pt = board.create('point', [x0, y0], {
         name: texName(name),
-        fixed: false,
+        fixed: !!isFixed,
         withLabel: true,
         showInfobox: false,
         strokeColor: '#ff00ff',
@@ -988,6 +1003,157 @@ function currentAccentColor() {
     try { board.update(); } catch (e) {}
     return true;
   };
+
+  window.placeKoordPointFromSpec = function(spec) {
+    const target = getPointTargetFromSpec(spec);
+    const boardId = target.boardId;
+    const name = target.name;
+    const tx = target.tx;
+    const ty = target.ty;
+    const isFixed = !!target.fixed;
+
+    const board = window.__boards && window.__boards[boardId];
+    if (!board || !name || Number.isNaN(tx) || Number.isNaN(ty)) return false;
+
+    ensureBuckets(boardId);
+
+    const state = window.__pointStates &&
+      window.__pointStates[boardId] &&
+      window.__pointStates[boardId][name];
+
+    let pt = getLivePointOnCurrentBoard(boardId, name);
+
+    if (!pt) {
+      if (isFixed) {
+        pt = createPoint(board, boardId, name, tx, ty, true);
+      } else if (
+        state &&
+        Number.isFinite(state.x) &&
+        Number.isFinite(state.y)
+      ) {
+        pt = createPoint(board, boardId, name, state.x, state.y, false);
+      } else {
+        pt = createPoint(board, boardId, name, tx, ty, false);
+      }
+    }
+
+    if (!pt) return false;
+
+    if (isFixed) {
+      movePointTo(pt, tx, ty);
+    }
+
+    try {
+      pt.setAttribute({ fixed: isFixed });
+    } catch (e) {}
+
+    stylePointLabel(pt);
+    bindPointPersistence(boardId, name, pt);
+    savePointState(boardId, name, pt);
+
+    try { board.update(); } catch (e) {}
+    return true;
+  };
+
+  window.renderKoordPunktFromSpec = function(uid, spec) {
+    const holder = document.getElementById('punkt-spec-' + uid);
+    if (!holder) return false;
+
+    if ((holder.dataset.spec || '') !== String(spec || '')) {
+      holder.dataset.spec = spec;
+    }
+
+    if (typeof window.placeKoordPointFromSpec === 'function') {
+      return !!window.placeKoordPointFromSpec(spec);
+    }
+    return false;
+  };
+
+  window.__bootstrapKoordPunkte = function() {
+    const nodes = document.querySelectorAll('[id^="punkt-spec-"][data-spec]');
+
+    nodes.forEach(function(node) {
+      const uid = String(node.id || '').replace(/^punkt-spec-/, '');
+      const spec = String(node.dataset.spec || '');
+      if (!uid || !spec) return;
+
+      window.renderKoordPunktFromSpec(uid, spec);
+    });
+
+    refreshAllPointLabels();
+  };
+
+  if (!window.__scheduleBootstrapKoordPunkte) {
+    window.__scheduleBootstrapKoordPunkte = function() {
+      if (window.__bootstrapKoordPunkteRAF) return;
+      window.__bootstrapKoordPunkteRAF = requestAnimationFrame(function() {
+        window.__bootstrapKoordPunkteRAF = 0;
+        try {
+          if (window.__bootstrapKoordPunkte) window.__bootstrapKoordPunkte();
+        } catch (e) {}
+      });
+    };
+  }
+
+  try {
+    const moKoordPunkte = new MutationObserver(function(mutations) {
+      let needsBootstrap = false;
+
+      for (let i = 0; i < mutations.length; i++) {
+        const m = mutations[i];
+
+        if (m.type === 'attributes') {
+          const target = m.target;
+          if (target && target.id && /^punkt-spec-/.test(target.id)) {
+            needsBootstrap = true;
+            break;
+          }
+        }
+
+        if (m.type !== 'childList') continue;
+
+        const added = Array.from(m.addedNodes || []);
+        for (let j = 0; j < added.length; j++) {
+          const n = added[j];
+          if (!n || n.nodeType !== 1) continue;
+
+          if (
+            (n.id && /^punkt-spec-/.test(n.id)) ||
+            (n.querySelector && n.querySelector('[id^="punkt-spec-"][data-spec]'))
+          ) {
+            needsBootstrap = true;
+            break;
+          }
+        }
+
+        if (needsBootstrap) break;
+      }
+
+      if (needsBootstrap && window.__scheduleBootstrapKoordPunkte) {
+        window.__scheduleBootstrapKoordPunkte();
+      }
+    });
+
+    const rootKoordPunkte = document.body || document.documentElement;
+    if (rootKoordPunkte) {
+      moKoordPunkte.observe(rootKoordPunkte, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['data-spec']
+      });
+    }
+  } catch (e) {}
+
+  try {
+    if (window.__scheduleBootstrapKoordPunkte) window.__scheduleBootstrapKoordPunkte();
+    setTimeout(function() {
+      if (window.__scheduleBootstrapKoordPunkte) window.__scheduleBootstrapKoordPunkte();
+    }, 80);
+    setTimeout(function() {
+      if (window.__scheduleBootstrapKoordPunkte) window.__scheduleBootstrapKoordPunkte();
+    }, 220);
+  } catch (e) {}
 
   window.__checkPointFromSpec = function(spec) {
     const target = getPointTargetFromSpec(spec);
@@ -7714,6 +7880,7 @@ window.getTabelleDaten = function(uid) {
     callIfFunction(window.__bootstrapPlotFunctions);
     callIfFunction(window.__bootstrapPlotInputs);
     callIfFunction(window.__bootstrapErzeugePunkte);
+    callIfFunction(window.__bootstrapKoordPunkte);
     callIfFunction(window.__bootstrapPunktGraphs);
   }
 
@@ -8621,7 +8788,11 @@ window.getTabelleDaten = function(uid) {
 
 
 
+@Punkt: @Punkt_(@uid,@0)
 
+@Punkt_
+<span id="punkt-spec-@0" data-spec="@1" style="display:none;"></span>
+@end
 
 
 
@@ -8830,6 +9001,44 @@ window.getTabelleDaten = function(uid) {
 
 
 
+# Punkt auf Koordinate
+
+
+
+@Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A2`)
+
+@AchsenBeschriftung(`id=A2;xlabel=$x$;ylabel=$y$`)
+
+
+
+Ziehe den Punkt $A$ auf die Koordinaten $(1|4)$.
+
+@ErzeugePunkt(`A2;A;1;4`,`<!-- data-solution-button="2" -->`)
+
+
+```
+@Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A2`)
+
+@AchsenBeschriftung(`id=A2;xlabel=$x$;ylabel=$y$`)
+
+Ziehe den Punkt $A$ auf die Koordinaten $(1|4)$.
+
+@ErzeugePunkt(`A2;A;1;4`,`<!-- data-solution-button="2" -->`)
+```
+
+
+Punkte schon vorgeben ($A_1$ ist beweglich und $B$ nicht.)
+
+
+@Punkt(`A2;A_1;2;3`)
+@Punkt(`A2;B;-4;1;fix`)
+
+```
+@Punkt(`A2;A_1;2;3`)
+@Punkt(`A2;B;-4;1;fix`)
+```
+
+
 
 
 
@@ -8906,33 +9115,6 @@ Alles klappt nur wenn `https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/RE
 
 
 
-
-
-# Punkt auf Koordinate
-
-
-
-@Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A2`)
-
-@AchsenBeschriftung(`id=A2;xlabel=$x$;ylabel=$y$`)
-
-
-
-Ziehe den Punkt $A$ auf die Koordinaten $(1|4)$.
-
-@ErzeugePunkt(`A2;A;1;4`,`<!-- data-solution-button="2" -->`)
-
-
-
-```
-@Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A2`)
-
-@AchsenBeschriftung(`id=A2;xlabel=$x$;ylabel=$y$`)
-
-Ziehe den Punkt $A$ auf die Koordinaten $(1|4)$.
-
-@ErzeugePunkt(`A2;A;1;4`,`<!-- data-solution-button="2" -->`)
-```
 
 
 
