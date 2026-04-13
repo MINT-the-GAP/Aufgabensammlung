@@ -720,7 +720,7 @@ author: Martin Lommatzsch
   }
 
   const ROOT = getRootWindow();
-  const MOD  = ROOT["__ORTHOGRAPHY_EXPORT_V2__"];
+  const MOD  = ROOT["__ORTHOGRAPHY_EXPORT_V8__"];
   if (!MOD || !MOD.register) return;
 
   MOD.register({
@@ -827,11 +827,8 @@ __Aufgabe 3:__ Setze das Komma an die richtige Stelle. (Auflösung ist blockiert
 @orthography(false,`Das ist der Tag an dem ich geblitzt wurde.`,`Das ist der Tag, an dem ich geblitzt wurde.`)
 
 
-<p>
-
 @orthography(2,`Der Bruder den ich mag.`,`Der Bruder, den ich mag.`)
 
-</p>
 
 
 --- 

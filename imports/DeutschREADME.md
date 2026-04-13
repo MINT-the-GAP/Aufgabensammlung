@@ -720,7 +720,7 @@ author: Martin Lommatzsch
   }
 
   const ROOT = getRootWindow();
-  const MOD  = ROOT["__ORTHOGRAPHY_EXPORT_V2__"];
+  const MOD  = ROOT["__ORTHOGRAPHY_EXPORT_V8__"];
   if (!MOD || !MOD.register) return;
 
   MOD.register({
