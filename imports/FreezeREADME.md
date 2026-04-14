@@ -53,7 +53,6 @@ window.__liaSubmissionDemo = (function () {
   let applyTimer = null;
   let freezeBarTimer = null;
   let frozenCanvasThemeTimer = null;
-  let internalFrozenEventBypass = 0;
   let applyRunToken = 0;
   let stabilizationToken = 0;
   let freezeLoadingVisible = false;
@@ -81,7 +80,6 @@ window.__liaSubmissionDemo = (function () {
   let lastTrackedF12Stamp = -1;
   let lastTrackedTabStamp = -1;
   let tabBlurProbeTimer = 0;
-
 
   let declaredEvaluationOptions = {
     trackF12: false,
@@ -10922,304 +10920,6 @@ function isSlideReadyForApply(hash) {
     }
   }
 
-function getCanvasLinkedTeXScope(root) {
-  let node = root instanceof Element ? root : null;
-  let hops = 0;
-
-  while (node && hops < 5) {
-    try {
-      if (collectCanvasFreezePairsFromRoot(node).length > 0) {
-        return node;
-      }
-    } catch (e) {}
-
-    node = node.parentElement;
-    hops += 1;
-  }
-
-  return null;
-}
-
-function withInternalFrozenEventBypass(fn) {
-  internalFrozenEventBypass += 1;
-
-  try {
-    return typeof fn === "function" ? fn() : undefined;
-  } finally {
-    setTimeout(function () {
-      internalFrozenEventBypass = Math.max(0, internalFrozenEventBypass - 1);
-    }, 0);
-  }
-}
-
-function getFrozenTeXControlText(el) {
-  if (!el || !(el instanceof Element)) return "";
-
-  const aria = normalizeSpace(el.getAttribute("aria-label") || "");
-  const title = normalizeSpace(el.getAttribute("title") || "");
-  const text = normalizeSpace(el.textContent || "");
-
-  return (aria || title || text).toLowerCase();
-}
-
-function isFrozenTeXEditButton(el) {
-  const txt = getFrozenTeXControlText(el);
-  if (!txt) return false;
-
-  return (
-    /\bbearbeiten\b/.test(txt) ||
-    /\bedit\b/.test(txt) ||
-    /\beditieren\b/.test(txt)
-  );
-}
-
-function isFrozenTeXPreviewButton(el) {
-  const txt = getFrozenTeXControlText(el);
-  if (!txt) return false;
-
-  return (
-    /\bfertig\b/.test(txt) ||
-    /\bdone\b/.test(txt) ||
-    /\bpreview\b/.test(txt) ||
-    /\bvorschau\b/.test(txt)
-  );
-}
-
-function getFrozenTeXButtonsFromPair(pair) {
-  if (!pair || !(pair instanceof Element)) return [];
-
-  return Array.from(
-    pair.querySelectorAll("button, [role='button'], summary, a")
-  ).filter(function (el) {
-    return el instanceof Element;
-  });
-}
-
-function disableFrozenTeXEditButtonsInPair(pair) {
-  if (!pair || !(pair instanceof Element)) return;
-
-  getFrozenTeXButtonsFromPair(pair).forEach(function (btn) {
-    if (!isFrozenTeXEditButton(btn)) return;
-
-    btn.setAttribute("data-freeze-tex-lock", "1");
-
-    try { btn.disabled = true; } catch (e) {}
-    try { btn.setAttribute("tabindex", "-1"); } catch (e) {}
-
-    btn.style.pointerEvents = "none";
-    btn.style.cursor = "not-allowed";
-    btn.style.opacity = "0.7";
-  });
-}
-
-function forceFrozenTeXPreviewInPair(pair) {
-  if (!pair || !(pair instanceof Element)) return false;
-
-  let changed = false;
-
-  getFrozenTeXButtonsFromPair(pair).forEach(function (btn) {
-    if (!isFrozenTeXPreviewButton(btn)) return;
-    if (!isRenderedElement(btn)) return;
-
-    withInternalFrozenEventBypass(function () {
-      try {
-        btn.click();
-        changed = true;
-      } catch (e) {}
-    });
-  });
-
-  disableFrozenTeXEditButtonsInPair(pair);
-  requestFrozenMathTypeset(pair);
-
-  return changed;
-}
-
-function scheduleFrozenTeXPreviewStabilizationForPair(pair) {
-  if (!pair || !(pair instanceof Element)) return;
-
-  observeFrozenTeXPair(pair);
-
-  [0, 80, 220, 500, 1000, 1800, 3000, 5000, 8000].forEach(function (delay) {
-    setTimeout(function () {
-      if (!document.body || !document.body.classList.contains("lia-snapshot-mode")) {
-        return;
-      }
-
-      forceFrozenTeXPreviewInPair(pair);
-      disableFrozenTeXEditButtonsInPair(pair);
-    }, delay);
-  });
-}
-
-
-function getCanvasFreezePairFromElement(el) {
-  let node = el instanceof Element ? el : null;
-
-  while (node && node !== document.body) {
-    try {
-      const uid = getCanvasFreezeUidFromPair(node);
-      if (uid) return node;
-    } catch (e) {}
-
-    node = node.parentElement;
-  }
-
-  return null;
-}
-
-function blockFrozenTeXControlEvent(e) {
-  if (!document.body.classList.contains("lia-snapshot-mode")) return;
-  if (internalFrozenEventBypass > 0) return;
-
-  const target = e.target instanceof Element ? e.target : null;
-  if (!target) return;
-  if (!isInsideFrozenScopeTarget(target)) return;
-
-  const control = target.closest("button, a, summary, [role='button']");
-  if (!control) return;
-
-  if (!isFrozenTeXEditButton(control) && !isFrozenTeXPreviewButton(control)) {
-    return;
-  }
-
-  e.preventDefault();
-  e.stopPropagation();
-  if (typeof e.stopImmediatePropagation === "function") {
-    e.stopImmediatePropagation();
-  }
-
-  const pair = getCanvasFreezePairFromElement(control);
-  if (pair) {
-    forceFrozenTeXPreviewInPair(pair);
-    scheduleFrozenTeXPreviewStabilizationForPair(pair);
-  }
-}
-
-
-function observeFrozenTeXPair(pair) {
-  if (!pair || !(pair instanceof Element)) return;
-
-  try {
-    if (pair.__liaFreezeTexObserver) {
-      pair.__liaFreezeTexObserver.disconnect();
-    }
-  } catch (e) {}
-
-  const observer = new MutationObserver(function () {
-    if (!document.body || !document.body.classList.contains("lia-snapshot-mode")) {
-      return;
-    }
-
-    forceFrozenTeXPreviewInPair(pair);
-    disableFrozenTeXEditButtonsInPair(pair);
-  });
-
-  observer.observe(pair, {
-    childList: true,
-    subtree: true,
-    attributes: true,
-    attributeFilter: ["class", "style", "hidden", "aria-hidden", "disabled"]
-  });
-
-  pair.__liaFreezeTexObserver = observer;
-
-  setTimeout(function () {
-    try {
-      if (pair.__liaFreezeTexObserver === observer) {
-        observer.disconnect();
-        delete pair.__liaFreezeTexObserver;
-      }
-    } catch (e) {}
-  }, 12000);
-}
-
-
-function dispatchFrozenTeXRefreshEvents(el) {
-  if (!el || !(el instanceof Element)) return;
-
-  withInternalFrozenEventBypass(function () {
-    try {
-      el.dispatchEvent(new Event("input", { bubbles: true }));
-    } catch (e) {}
-
-    try {
-      el.dispatchEvent(new Event("change", { bubbles: true }));
-    } catch (e) {}
-  });
-}
-
-function requestFrozenMathTypeset(scope) {
-  if (!scope) return;
-
-  const rootWin = getRootWindowSafe();
-  const mj =
-    (rootWin && rootWin.MathJax) ||
-    window.MathJax ||
-    null;
-
-  if (!mj) return;
-
-  try {
-    if (typeof mj.typesetPromise === "function") {
-      mj.typesetPromise([scope]).catch(function () {});
-      return;
-    }
-  } catch (e) {}
-
-  try {
-    if (typeof mj.typeset === "function") {
-      mj.typeset([scope]);
-    }
-  } catch (e) {}
-}
-
-function refreshFrozenTeXPreviewsInHost(host) {
-  const scope = host || getContentHost() || document.body;
-  if (!scope) return;
-
-  const textRoots = collectTextQuizRootsFromRoot(scope);
-  if (!textRoots.length) return;
-
-  function runOnce() {
-    const typesetScopes = [];
-
-    textRoots.forEach(function (root) {
-      const texScope = getCanvasLinkedTeXScope(root);
-      if (!texScope) return;
-
-      const controls = getTextQuizInputsFromRoot(root);
-      if (!controls.length) return;
-
-      controls.forEach(function (el) {
-        dispatchFrozenTeXRefreshEvents(el);
-      });
-
-      const pairs = collectCanvasFreezePairsFromRoot(texScope);
-      pairs.forEach(function (pair) {
-        forceFrozenTeXPreviewInPair(pair);
-      });
-
-      if (typesetScopes.indexOf(texScope) < 0) {
-        typesetScopes.push(texScope);
-      }
-    });
-
-    typesetScopes.forEach(function (texScope) {
-      requestFrozenMathTypeset(texScope);
-    });
-  }
-
-  // sofort
-  runOnce();
-
-  // online oft erst nach kurzer Stabilisierung nötig
-  [80, 220, 500, 1000, 1800, 3000, 5000, 8000].forEach(function (delay) {
-    setTimeout(runOnce, delay);
-  });
-}
-
-
   function lockTextQuizRoot(root) {
     if (!root) return;
 
@@ -11467,8 +11167,6 @@ function reapplySnapshotSilently(hash, reason) {
   applyStoredCoordinateStatesToHost(host, slide.cq || []);
   applyStoredCanvasStatesToHost(host, slide.cv || []);
   applyStoredGeneralMarkerState(slide.gm || null);
-
-    refreshFrozenTeXPreviewsInHost(host);
 
   reinforceFrozenUi();
 
@@ -12065,8 +11763,6 @@ function applyStoredCanvasStatesToHost(host, storedStates) {
     api.renderCanvasFreezeStateIntoPair(target, renderState);
     applyStoredCanvasWindowSizeToPair(target, expandedState);
     scheduleStoredCanvasWindowSizeReapply(target, expandedState);
-    observeFrozenTeXPair(target);
-    scheduleFrozenTeXPreviewStabilizationForPair(target);
     applied.push(target);
   });
 
@@ -13634,8 +13330,6 @@ async function applySnapshotOnce(hash, reason) {
     const appliedCanvas = applyStoredCanvasStatesToHost(host, slide.cv || []);
     applyStoredGeneralMarkerState(slide.gm || null);
 
-        refreshFrozenTeXPreviewsInHost(host);
-
     const expectedText = Array.isArray(slide.q) ? slide.q.length : 0;
     const expectedDropdown = Array.isArray(slide.d) ? slide.d.length : 0;
     const expectedTile = Array.isArray(slide.m) ? slide.m.length : 0;
@@ -14503,7 +14197,6 @@ function isInsideFrozenScopeTarget(target) {
 
 function blockNativeFrozenInteractionEvent(e) {
   if (!document.body.classList.contains("lia-snapshot-mode")) return;
-  if (internalFrozenEventBypass > 0) return;
   if (isAllowedFreezeTarget(e.target)) return;
 
   const t = e.target;
@@ -14527,7 +14220,6 @@ function blockNativeFrozenInteractionEvent(e) {
 
 function blockFrozenKeydown(e) {
   if (!document.body.classList.contains("lia-snapshot-mode")) return;
-  if (internalFrozenEventBypass > 0) return;
 
   const target = e.target instanceof Element ? e.target : null;
   const active = document.activeElement instanceof Element ? document.activeElement : null;
@@ -14601,10 +14293,6 @@ function blockFrozenKeydown(e) {
     freezeBindingsInstalled = true;
 
     installRouteBridge();
-
-    document.addEventListener("click", blockFrozenTeXControlEvent, true);
-    document.addEventListener("mousedown", blockFrozenTeXControlEvent, true);
-    document.addEventListener("pointerdown", blockFrozenTeXControlEvent, true);
 
     document.addEventListener("click", blockNativeFrozenInteractionEvent, true);
     document.addEventListener("mousedown", blockNativeFrozenInteractionEvent, true);
@@ -15173,7 +14861,7 @@ Anna ging in einen @diktat(Zoo). Dort konnte sie auf einem @diktat(Lama) reiten.
 __Aufgabe 3:__ Setze das Komma an die richtige Stelle. (Auflösung ist blockiert.)
 
 
-@orthography(2,`Der Bruder den ich mag.`,`Der Bruder, den ich mag.`)
+@orthography(`<!-- data-solution-timer="10s" data-solution-timer-start="onclick" -->`,`Der Bruder den ich mag.`,`Der Bruder, den ich mag.`)
 
 @ADetails(1=BE; Komma)
 
