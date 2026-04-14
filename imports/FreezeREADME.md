@@ -10940,22 +10940,127 @@ function getCanvasLinkedTeXScope(root) {
   return null;
 }
 
-function dispatchFrozenTeXRefreshEvents(el) {
-  if (!el || !(el instanceof Element)) return;
-
+function withInternalFrozenEventBypass(fn) {
   internalFrozenEventBypass += 1;
 
   try {
-    el.dispatchEvent(new Event("input", { bubbles: true }));
-  } catch (e) {}
+    return typeof fn === "function" ? fn() : undefined;
+  } finally {
+    setTimeout(function () {
+      internalFrozenEventBypass = Math.max(0, internalFrozenEventBypass - 1);
+    }, 0);
+  }
+}
 
-  try {
-    el.dispatchEvent(new Event("change", { bubbles: true }));
-  } catch (e) {}
+function getFrozenTeXControlText(el) {
+  if (!el || !(el instanceof Element)) return "";
 
-  setTimeout(function () {
-    internalFrozenEventBypass = Math.max(0, internalFrozenEventBypass - 1);
-  }, 0);
+  const aria = normalizeSpace(el.getAttribute("aria-label") || "");
+  const title = normalizeSpace(el.getAttribute("title") || "");
+  const text = normalizeSpace(el.textContent || "");
+
+  return (aria || title || text).toLowerCase();
+}
+
+function isFrozenTeXEditButton(el) {
+  const txt = getFrozenTeXControlText(el);
+  if (!txt) return false;
+
+  return (
+    /\bbearbeiten\b/.test(txt) ||
+    /\bedit\b/.test(txt) ||
+    /\beditieren\b/.test(txt)
+  );
+}
+
+function isFrozenTeXPreviewButton(el) {
+  const txt = getFrozenTeXControlText(el);
+  if (!txt) return false;
+
+  return (
+    /\bfertig\b/.test(txt) ||
+    /\bdone\b/.test(txt) ||
+    /\bpreview\b/.test(txt) ||
+    /\bvorschau\b/.test(txt)
+  );
+}
+
+function getFrozenTeXButtonsFromPair(pair) {
+  if (!pair || !(pair instanceof Element)) return [];
+
+  return Array.from(
+    pair.querySelectorAll("button, [role='button'], summary, a")
+  ).filter(function (el) {
+    return el instanceof Element;
+  });
+}
+
+function disableFrozenTeXEditButtonsInPair(pair) {
+  if (!pair || !(pair instanceof Element)) return;
+
+  getFrozenTeXButtonsFromPair(pair).forEach(function (btn) {
+    if (!isFrozenTeXEditButton(btn)) return;
+
+    btn.setAttribute("data-freeze-tex-lock", "1");
+
+    try { btn.disabled = true; } catch (e) {}
+    try { btn.setAttribute("tabindex", "-1"); } catch (e) {}
+
+    btn.style.pointerEvents = "none";
+    btn.style.cursor = "not-allowed";
+    btn.style.opacity = "0.7";
+  });
+}
+
+function forceFrozenTeXPreviewInPair(pair) {
+  if (!pair || !(pair instanceof Element)) return false;
+
+  let changed = false;
+
+  getFrozenTeXButtonsFromPair(pair).forEach(function (btn) {
+    if (!isFrozenTeXPreviewButton(btn)) return;
+    if (!isRenderedElement(btn)) return;
+
+    withInternalFrozenEventBypass(function () {
+      try {
+        btn.click();
+        changed = true;
+      } catch (e) {}
+    });
+  });
+
+  disableFrozenTeXEditButtonsInPair(pair);
+  requestFrozenMathTypeset(pair);
+
+  return changed;
+}
+
+function scheduleFrozenTeXPreviewStabilizationForPair(pair) {
+  if (!pair || !(pair instanceof Element)) return;
+
+  [0, 80, 220, 500, 1000, 1800, 3000].forEach(function (delay) {
+    setTimeout(function () {
+      if (!document.body || !document.body.classList.contains("lia-snapshot-mode")) {
+        return;
+      }
+
+      forceFrozenTeXPreviewInPair(pair);
+    }, delay);
+  });
+}
+
+function dispatchFrozenTeXRefreshEvents(el) {
+  if (!el || !(el instanceof Element)) return;
+
+  withInternalFrozenEventBypass(function () {
+    try {
+      el.dispatchEvent(new Event("input", { bubbles: true }));
+    } catch (e) {}
+
+    try {
+      el.dispatchEvent(new Event("change", { bubbles: true }));
+    } catch (e) {}
+  });
 }
 
 function requestFrozenMathTypeset(scope) {
@@ -11004,6 +11109,11 @@ function refreshFrozenTeXPreviewsInHost(host) {
         dispatchFrozenTeXRefreshEvents(el);
       });
 
+      const pairs = collectCanvasFreezePairsFromRoot(texScope);
+      pairs.forEach(function (pair) {
+        forceFrozenTeXPreviewInPair(pair);
+      });
+
       if (typesetScopes.indexOf(texScope) < 0) {
         typesetScopes.push(texScope);
       }
@@ -11018,7 +11128,7 @@ function refreshFrozenTeXPreviewsInHost(host) {
   runOnce();
 
   // online oft erst nach kurzer Stabilisierung nötig
-  [80, 220, 500].forEach(function (delay) {
+  [80, 220, 500, 1000, 1800, 3000].forEach(function (delay) {
     setTimeout(runOnce, delay);
   });
 }
@@ -11869,6 +11979,7 @@ function applyStoredCanvasStatesToHost(host, storedStates) {
     api.renderCanvasFreezeStateIntoPair(target, renderState);
     applyStoredCanvasWindowSizeToPair(target, expandedState);
     scheduleStoredCanvasWindowSizeReapply(target, expandedState);
+    scheduleFrozenTeXPreviewStabilizationForPair(target);
     applied.push(target);
   });
 
