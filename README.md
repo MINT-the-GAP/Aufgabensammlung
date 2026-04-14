@@ -11874,7 +11874,6 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
 
 
 
-@onload
 (function(){
   function getRootWindow(){
     let w = window;
@@ -11883,7 +11882,7 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
   }
 
   const ROOT = getRootWindow();
-  const KEY = "__ORTHOGRAPHY_EXPORT_V14__";
+  const KEY = "__ORTHOGRAPHY_EXPORT_V8__";
   if (ROOT[KEY]) return;
 
   const MOD = {
@@ -11895,40 +11894,28 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
     lateSyncTimer: null,
 
     norm(s){
-      return String(s || "")
-        .normalize("NFKC")
-        .replace(/[„“”‟«»‹›"]/g, '"')
-        .replace(/[‚‘’‛]/g, "'")
-        .replace(/\u00A0/g, " ")
-        .toLocaleLowerCase()
-        .replace(/\s+/g, "");
+      return String(s || "").toLocaleLowerCase().replace(/\s+/g, "");
+    },
+
+    parseGate(raw){
+      const s = String(raw || "").trim().toLowerCase();
+      if (s === "false" || s === "0" || s === "off" || s === "no") {
+        return { mode: "off", n: 0 };
+      }
+      const n = parseInt(s, 10);
+      if (Number.isFinite(n) && n > 0) {
+        return { mode: "attempts", n: n };
+      }
+      return { mode: "on", n: 0 };
     },
 
     ensureStyle(){
       if (this.styleInstalled) return;
       this.styleInstalled = true;
-
+    
       const style = document.createElement("style");
-      style.id = "orthography-export-style-v14";
+      style.id = "orthography-export-style-v8b";
       style.textContent = `
-        .orthography-ui{
-          display:block;
-          margin:0;
-          padding:0;
-        }
-
-        .orthography-task{
-          display:block;
-          margin:0;
-          padding:0;
-        }
-
-        .orthography-check{
-          display:block;
-          margin:0;
-          padding:0;
-        }
-
         .orthography-wrap{
           display:grid;
           grid-template-columns:minmax(0, 1fr) auto;
@@ -11936,14 +11923,19 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
           row-gap:.35rem;
           align-items:center;
         }
-
+    
+        .orthography-wrap > p.lia-paragraph{
+          grid-column:1 / -1;
+          margin-bottom:0 !important;
+        }
+    
         .orthography-wrap > .lia-quiz__input{
           grid-column:1;
           min-width:0;
           width:100%;
           margin-bottom:0 !important;
         }
-
+    
         .orthography-wrap > .ortho-reset-below{
           grid-column:2;
           margin:0 !important;
@@ -11953,9 +11945,14 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
           white-space:nowrap;
           align-self:stretch;
         }
-
+    
         .orthography-wrap[data-ortho-solved="1"] > .ortho-reset-below{
           display:none !important;
+        }
+    
+        .lia-quiz__resolve.ortho-resolve-faded{
+          opacity:.38 !important;
+          transition:opacity .18s ease;
         }
       `;
       (document.head || document.documentElement).appendChild(style);
@@ -11964,12 +11961,16 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
     ensureState(uid){
       if (!this.state[uid]) {
         this.state[uid] = {
-          uid,
+          uid: uid,
           cfg: null,
+          gate: { mode: "on", n: 0 },
           start: "",
           solution: "",
           liveValue: null,
-          solved: false
+          solved: false,
+          tries: 0,
+          checkToken: 0,
+          resolvePending: false
         };
       }
       return this.state[uid];
@@ -11981,19 +11982,9 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
 
       const S = this.ensureState(uid);
       S.cfg = cfg || null;
+      S.gate = this.parseGate(cfg && cfg.gateRaw);
 
-      if (cfg && typeof cfg.startText === "string") {
-        S.start = cfg.startText;
-      }
-
-      if (cfg && typeof cfg.solutionText === "string") {
-        S.solution = cfg.solutionText;
-      }
-
-      if (S.liveValue === null) {
-        S.liveValue = S.start;
-      }
-
+      this.readStaticTexts(uid);
       this.syncUid(uid);
       this.scheduleSync();
     },
@@ -12017,6 +12008,22 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
         return this.parseUidFromString(byInputId.id, "orthography-input-");
       }
 
+      const byDataId = wrap.querySelector('[data-id^="lia-quiz-"]');
+      if (byDataId) {
+        const uid = this.parseUidFromString(byDataId.getAttribute("data-id"), "lia-quiz-");
+        if (uid) return uid;
+      }
+
+      const bySolution = wrap.querySelector('[id^="orthography-solution-"]');
+      if (bySolution && bySolution.id) {
+        return this.parseUidFromString(bySolution.id, "orthography-solution-");
+      }
+
+      const byReset = wrap.querySelector('[id^="orthography-reset-"]');
+      if (byReset && byReset.id) {
+        return this.parseUidFromString(byReset.id, "orthography-reset-");
+      }
+
       return "";
     },
 
@@ -12024,41 +12031,34 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
       const S = this.ensureState(uid);
       const cfg = S.cfg || {};
 
-      const ui =
-        document.getElementById(cfg.idUi || ("orthography-ui-" + uid));
-
-      const task =
-        document.getElementById(cfg.idTask || ("orthography-task-" + uid));
-
-      const checkRoot =
-        document.getElementById(cfg.idCheck || ("orthography-check-" + uid));
-
       const input =
-        document.getElementById(cfg.idInput || ("orthography-input-" + uid));
+        document.getElementById(cfg.idInput || ("orthography-input-" + uid)) ||
+        document.querySelector('[data-id="lia-quiz-' + uid + '"]');
 
       const wrap =
         (input ? input.closest(".orthography-wrap") : null) ||
+        document.querySelector('.orthography-wrap[data-ortho-uid="' + uid + '"]') ||
         document.getElementById(cfg.idWrap || ("orthography-wrap-" + uid));
 
       const reset =
-        document.getElementById(cfg.idReset || ("orthography-reset-" + uid));
+        document.getElementById(cfg.idReset || ("orthography-reset-" + uid)) ||
+        (wrap ? wrap.querySelector('[id^="orthography-reset-"]') : null);
 
       const start =
-        document.getElementById(cfg.idStart || ("orthography-start-" + uid));
+        document.getElementById(cfg.idStart || ("orthography-start-" + uid)) ||
+        (wrap ? wrap.querySelector('[id^="orthography-start-"]') : null);
 
       const solution =
-        document.getElementById(cfg.idSolution || ("orthography-solution-" + uid));
+        document.getElementById(cfg.idSolution || ("orthography-solution-" + uid)) ||
+        (wrap ? wrap.querySelector('[id^="orthography-solution-"]') : null);
 
-      if (ui) ui.dataset.orthoUid = uid;
-      if (task) task.dataset.orthoUid = uid;
-      if (checkRoot) checkRoot.dataset.orthoUid = uid;
       if (wrap) wrap.dataset.orthoUid = uid;
       if (input) input.dataset.orthoUid = uid;
       if (reset) reset.dataset.orthoUid = uid;
       if (start) start.dataset.orthoUid = uid;
       if (solution) solution.dataset.orthoUid = uid;
 
-      return { ui, task, checkRoot, wrap, input, reset, start, solution };
+      return { wrap, input, reset, start, solution };
     },
 
     readStaticTexts(uid){
@@ -12066,11 +12066,15 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
       const N = this.getNodes(uid);
 
       if (!S.start) {
-        if (N.start) S.start = N.start.textContent || "";
+        if (N.start) {
+          S.start = N.start.textContent || "";
+        } else if (N.input) {
+          S.start = N.input.getAttribute("value") || N.input.defaultValue || "";
+        }
       }
 
-      if (!S.solution) {
-        if (N.solution) S.solution = N.solution.textContent || "";
+      if (N.solution) {
+        S.solution = N.solution.textContent || S.solution || "";
       }
 
       if (S.liveValue === null) {
@@ -12081,12 +12085,58 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
 
     findQuiz(uid){
       const N = this.getNodes(uid);
-      if (!N.checkRoot) return null;
+      const wrap = N.wrap;
+      if (!wrap) return null;
 
-      const quizzes = N.checkRoot.querySelectorAll(".lia-quiz");
-      if (!quizzes || !quizzes.length) return null;
+      if (wrap.id) {
+        const answers = document.querySelector('.lia-quiz__answers[aria-labelledby="' + wrap.id + '"]');
+        if (answers) {
+          const quiz = answers.closest(".lia-quiz");
+          if (quiz) return quiz;
+        }
+      }
 
-      return quizzes[quizzes.length - 1];
+      let node = wrap.nextElementSibling;
+      while (node) {
+        if (node.classList && node.classList.contains("orthography-wrap")) break;
+        if (node.classList && node.classList.contains("lia-quiz")) return node;
+        if (node.querySelector) {
+          const quiz = node.querySelector(".lia-quiz");
+          if (quiz) return quiz;
+        }
+        node = node.nextElementSibling;
+      }
+
+      const root = document.body || document.documentElement;
+      if (!root || !document.createTreeWalker || !root.contains(wrap)) return null;
+
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT);
+      walker.currentNode = wrap;
+
+      let current;
+      while ((current = walker.nextNode())) {
+        if (!(current instanceof Element)) continue;
+        if (current !== wrap && current.classList && current.classList.contains("orthography-wrap")) break;
+        if (current.classList && current.classList.contains("lia-quiz")) return current;
+      }
+
+      return null;
+    },
+
+    ensureQuizBinding(uid){
+      const quiz = this.findQuiz(uid);
+      if (!quiz) return null;
+
+      const control = quiz.querySelector(".lia-quiz__control");
+      const check = control ? control.querySelector(".lia-quiz__check") : null;
+      const resolve = control ? control.querySelector(".lia-quiz__resolve") : null;
+
+      quiz.dataset.orthoUid = uid;
+      if (control) control.dataset.orthoUid = uid;
+      if (check) check.dataset.orthoUid = uid;
+      if (resolve) resolve.dataset.orthoUid = uid;
+
+      return { quiz, control, check, resolve };
     },
 
     ensureResetPlacement(uid){
@@ -12114,30 +12164,6 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
       }
     },
 
-    ensureInstanceBindings(uid){
-      const N = this.getNodes(uid);
-
-      if (N.input && N.input.__orthoInputBoundUid !== uid) {
-        N.input.__orthoInputBoundUid = uid;
-
-        N.input.addEventListener("input", () => {
-          this.handleInput(uid);
-        }, true);
-
-        N.input.addEventListener("change", () => {
-          this.handleInput(uid);
-        }, true);
-      }
-
-      if (N.reset && N.reset.__orthoResetBoundUid !== uid) {
-        N.reset.__orthoResetBoundUid = uid;
-
-        N.reset.addEventListener("click", (ev) => {
-          this.handleReset(uid, ev);
-        }, true);
-      }
-    },
-
     setInputValue(uid, value){
       const N = this.getNodes(uid);
       if (!N.input) return;
@@ -12147,29 +12173,12 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
       try { N.input.setAttribute("value", value); } catch(e){}
     },
 
-    syncSolvedFromQuiz(uid){
-      const S = this.ensureState(uid);
-      const quiz = this.findQuiz(uid);
-
-      if (!quiz) {
-        S.solved = false;
-        return;
-      }
-
-      S.solved =
-        quiz.classList.contains("solved") ||
-        quiz.classList.contains("resolved");
-    },
-
     restoreLiveValue(uid){
       const S = this.ensureState(uid);
       const N = this.getNodes(uid);
       if (!N.input) return;
 
-      const desired = S.solved
-        ? (S.solution || S.liveValue || S.start)
-        : (S.liveValue == null ? S.start : S.liveValue);
-
+      const desired = S.solved ? S.solution : (S.liveValue == null ? S.start : S.liveValue);
       const current = N.input.value;
 
       N.input.readOnly = !!S.solved;
@@ -12179,16 +12188,64 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
       }
     },
 
+    applyResolveState(uid){
+      const S = this.ensureState(uid);
+      const B = this.ensureQuizBinding(uid);
+      if (!B || !B.resolve) return;
+
+      const resolve = B.resolve;
+
+      if (S.solved) {
+        resolve.style.display = "";
+        resolve.disabled = true;
+        resolve.setAttribute("aria-hidden", "true");
+        resolve.setAttribute("tabindex", "-1");
+        resolve.classList.add("ortho-resolve-faded");
+        return;
+      }
+
+      resolve.classList.remove("ortho-resolve-faded");
+
+      if (S.gate.mode === "off") {
+        resolve.disabled = true;
+        resolve.style.display = "none";
+        resolve.setAttribute("aria-hidden", "true");
+        resolve.setAttribute("tabindex", "-1");
+        return;
+      }
+
+      if (S.gate.mode === "attempts") {
+        if (S.tries >= S.gate.n) {
+          resolve.disabled = false;
+          resolve.style.display = "";
+          resolve.removeAttribute("aria-hidden");
+          resolve.removeAttribute("tabindex");
+        } else {
+          resolve.disabled = true;
+          resolve.style.display = "none";
+          resolve.setAttribute("aria-hidden", "true");
+          resolve.setAttribute("tabindex", "-1");
+        }
+        return;
+      }
+
+      resolve.disabled = false;
+      resolve.style.display = "";
+      resolve.removeAttribute("aria-hidden");
+      resolve.removeAttribute("tabindex");
+    },
+
     syncUid(uid){
       const S = this.ensureState(uid);
       this.readStaticTexts(uid);
-      this.syncSolvedFromQuiz(uid);
       this.ensureResetPlacement(uid);
-      this.ensureInstanceBindings(uid);
+      this.ensureQuizBinding(uid);
+      this.applyResolveState(uid);
       this.restoreLiveValue(uid);
 
       const N = this.getNodes(uid);
       if (N.wrap) {
+        N.wrap.dataset.orthoTries = String(S.tries);
         N.wrap.dataset.orthoSolved = S.solved ? "1" : "0";
       }
     },
@@ -12227,17 +12284,65 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
       this.lateSyncTimer = setTimeout(() => this.syncAll(), 90);
     },
 
-    getCurrentValue(uid){
-      const N = this.getNodes(uid);
-      if (N.input) return N.input.value;
+    getUidFromOrthographyInput(node){
+      if (!(node instanceof Element)) return "";
 
-      const S = this.ensureState(uid);
-      return S.liveValue == null ? S.start : S.liveValue;
+      const direct = node.closest("[data-ortho-uid]");
+      if (direct && direct.dataset && direct.dataset.orthoUid) {
+        return String(direct.dataset.orthoUid);
+      }
+
+      const input = node.closest('[id^="orthography-input-"], [data-id^="lia-quiz-"]');
+      if (input) {
+        if (input.id) {
+          const byId = this.parseUidFromString(input.id, "orthography-input-");
+          if (byId) return byId;
+        }
+        const dataId = input.getAttribute("data-id");
+        if (dataId) {
+          const byData = this.parseUidFromString(dataId, "lia-quiz-");
+          if (byData) return byData;
+        }
+      }
+
+      return "";
     },
 
-    getSolution(uid){
-      const S = this.ensureState(uid);
-      return S.solution || "";
+    getUidFromReset(node){
+      if (!(node instanceof Element)) return "";
+
+      const direct = node.closest("[data-ortho-uid]");
+      if (direct && direct.dataset && direct.dataset.orthoUid) {
+        return String(direct.dataset.orthoUid);
+      }
+
+      if (node.id) {
+        const uid = this.parseUidFromString(node.id, "orthography-reset-");
+        if (uid) return uid;
+      }
+
+      return "";
+    },
+
+    getUidFromOrthographyControl(node){
+      if (!(node instanceof Element)) return "";
+
+      const direct = node.closest("[data-ortho-uid]");
+      if (direct && direct.dataset && direct.dataset.orthoUid) {
+        return String(direct.dataset.orthoUid);
+      }
+
+      const control = node.closest(".lia-quiz__control");
+      if (control && control.dataset && control.dataset.orthoUid) {
+        return String(control.dataset.orthoUid);
+      }
+
+      const quiz = node.closest(".lia-quiz");
+      if (quiz && quiz.dataset && quiz.dataset.orthoUid) {
+        return String(quiz.dataset.orthoUid);
+      }
+
+      return "";
     },
 
     handleInput(uid){
@@ -12265,11 +12370,125 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
       this.setInputValue(uid, S.start);
     },
 
+    finishCheck(uid, token, beforeValue, wasCorrect){
+      const S = this.ensureState(uid);
+      if (token !== S.checkToken) return;
+
+      if (!S.solved && S.gate.mode === "attempts") {
+        S.tries += 1;
+      }
+
+      if (wasCorrect) {
+        S.solved = true;
+        S.liveValue = S.solution;
+      } else {
+        S.liveValue = beforeValue;
+      }
+
+      this.syncUid(uid);
+      this.scheduleSync();
+    },
+
+    handleCheck(uid, ev){
+      const S = this.ensureState(uid);
+      if (S.solved) {
+        if (ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
+        }
+        return;
+      }
+
+      const N = this.getNodes(uid);
+      if (!N.input) return;
+
+      const beforeValue = N.input.value;
+      const wasCorrect = this.norm(beforeValue) === this.norm(S.solution);
+      const token = ++S.checkToken;
+
+      setTimeout(() => this.finishCheck(uid, token, beforeValue, wasCorrect), 0);
+
+      try {
+        requestAnimationFrame(() => this.finishCheck(uid, token, beforeValue, wasCorrect));
+      } catch(e){}
+    },
+
+    handleResolve(uid, ev){
+      const S = this.ensureState(uid);
+
+      if (S.solved || S.resolvePending) {
+        if (ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
+        }
+        return;
+      }
+
+      S.resolvePending = true;
+
+      setTimeout(() => {
+        S.resolvePending = false;
+        S.solved = true;
+        S.liveValue = S.solution;
+        this.syncUid(uid);
+        this.scheduleSync();
+      }, 0);
+
+      try {
+        requestAnimationFrame(() => this.syncUid(uid));
+      } catch(e){}
+    },
+
     startGlobal(){
       if (this.started) return;
       this.started = true;
 
       this.ensureStyle();
+
+      document.addEventListener("input", (ev) => {
+        const target = ev.target;
+        if (!(target instanceof Element)) return;
+
+        const uid = this.getUidFromOrthographyInput(target);
+        if (!uid) return;
+        this.handleInput(uid);
+      }, true);
+
+      document.addEventListener("change", (ev) => {
+        const target = ev.target;
+        if (!(target instanceof Element)) return;
+
+        const uid = this.getUidFromOrthographyInput(target);
+        if (!uid) return;
+        this.handleInput(uid);
+      }, true);
+
+      document.addEventListener("click", (ev) => {
+        const target = ev.target;
+        if (!(target instanceof Element)) return;
+
+        const reset = target.closest(".ortho-reset-below, [id^='orthography-reset-']");
+        if (reset) {
+          const uid = this.getUidFromReset(reset);
+          if (uid) this.handleReset(uid, ev);
+          return;
+        }
+
+        const check = target.closest(".lia-quiz__check");
+        if (check) {
+          const uid = this.getUidFromOrthographyControl(check);
+          if (uid) this.handleCheck(uid, ev);
+          return;
+        }
+
+        const resolve = target.closest(".lia-quiz__resolve");
+        if (resolve) {
+          const uid = this.getUidFromOrthographyControl(resolve);
+          if (uid) this.handleResolve(uid, ev);
+        }
+      }, true);
 
       const startObserver = () => {
         if (this.observer) return;
@@ -12283,9 +12502,7 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
 
         this.observer.observe(target, {
           childList: true,
-          subtree: true,
-          attributes: true,
-          attributeFilter: ["class", "aria-hidden", "tabindex"]
+          subtree: true
         });
       };
 
@@ -12302,7 +12519,6 @@ html[data-lia-mode="textbook"] [data-lia-only]:not([data-lia-only="textbook"]){
   ROOT[KEY] = MOD;
   MOD.startGlobal();
 })();
-@end
 
 
 
@@ -15633,56 +15849,29 @@ function fqdbg(tag) {
 
 
 
-
 @orthography: @orthography_(@uid,`@0`,`@1`,`@2`)
 
 @orthography_
-<div id="orthography-ui-@0" class="orthography-ui" data-ortho-uid="@0">
-  <div id="orthography-task-@0" class="orthography-task">
-    <div class="orthography-wrap" id="orthography-wrap-@0" data-ortho-uid="@0">
-      <span id="orthography-start-@0" style="display:none">@2</span>
-      <span id="orthography-solution-@0" style="display:none">@3</span>
+<div class="orthography-wrap" id="orthography-wrap-@0" data-ortho-uid="@0">
+  <span id="orthography-start-@0" style="display:none">@2</span>
+  <span id="orthography-solution-@0" style="display:none">@3</span>
 
-      <input
-        id="orthography-input-@0"
-        data-ortho-uid="@0"
-        data-id="lia-quiz-@0"
-        class="lia-input lia-quiz__input"
-        style="margin-bottom:.5rem"
-        value="@2"
-      >
+  <input id="orthography-input-@0" data-ortho-uid="@0" data-id="lia-quiz-@0" class="lia-input lia-quiz__input" style="margin-bottom:.5rem" value="@2">
 
-      <button
-        type="button"
-        class="lia-btn lia-btn--outline ortho-reset-inline"
-        id="orthography-reset-@0"
-        data-ortho-uid="@0"
-      >Reset</button>
-    </div>
-  </div>
-
-  <div id="orthography-check-@0" class="orthography-check" data-ortho-uid="@0">
-    @1
-    [[!]]
-    <script modify="false">
-      (() => {
-        function getRootWindow(){
-          let w = window;
-          try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
-          return w;
-        }
-
-        const ROOT = getRootWindow();
-        const MOD  = ROOT["__ORTHOGRAPHY_EXPORT_V14__"];
-        if (!MOD || !MOD.getCurrentValue || !MOD.getSolution || !MOD.norm) return false;
-
-        return MOD.norm(MOD.getCurrentValue("@0")) === MOD.norm(MOD.getSolution("@0"));
-      })()
-    </script>
-  </div>
+  <button type="button" class="lia-btn lia-btn--outline ortho-reset-inline" id="orthography-reset-@0" data-ortho-uid="@0">Reset</button>
 </div>
 
-<script type="text/plain" id="orthography-comment-@0">@1</script>
+[[!]]
+<script>
+(function(){
+  const el  = document.getElementById("orthography-input-@0");
+  const sol = document.getElementById("orthography-solution-@0");
+  if(!el || !sol) return false;
+
+  const norm = s => String(s || "").toLocaleLowerCase().replace(/\s+/g, "");
+  return norm(el.value) === norm(sol.textContent);
+})()
+</script>
 
 <script modify="false">
 (function(){
@@ -15693,29 +15882,22 @@ function fqdbg(tag) {
   }
 
   const ROOT = getRootWindow();
-  const MOD  = ROOT["__ORTHOGRAPHY_EXPORT_V13__"];
+  const MOD  = ROOT["__ORTHOGRAPHY_EXPORT_V8__"];
   if (!MOD || !MOD.register) return;
 
   MOD.register({
     uid: "@0",
-    startText: String.raw`@2`,
-    solutionText: String.raw`@3`,
-    idUi: "orthography-ui-@0",
-    idTask: "orthography-task-@0",
-    idCheck: "orthography-check-@0",
+    gateRaw: "@1",
     idWrap: "orthography-wrap-@0",
     idInput: "orthography-input-@0",
     idReset: "orthography-reset-@0",
-    idComment: "orthography-comment-@0",
     idStart: "orthography-start-@0",
     idSolution: "orthography-solution-@0"
   });
 })();
 </script>
+
 @end
-
-
-
 
 
 
@@ -16212,20 +16394,20 @@ Anna ging in einen @diktat(Zoo). Dort konnte sie auf einem @diktat(Lama) reiten.
 __Aufgabe 3:__ Setze das Komma an die richtige Stelle. (Auflösung ist blockiert.) \
 
 
-@orthography(`<!-- -->`,`Das ist der Tag an dem ich geblitzt wurde.`,`Das ist der Tag, an dem ich geblitzt wurde.`)
+@orthography(false,`Das ist der Tag an dem ich geblitzt wurde.`,`Das ist der Tag, an dem ich geblitzt wurde.`)
 
 
 
 
 __Aufgabe 4:__ Setze die Satzzeichen so, dass der Satz eine korrekte wörtliche Rede darstellt. (Auflösung bei erst nach 2 Versuchen) \
 
-@orthography(`<!-- -->`,`Der Bruder den ich mag.`,`Der Bruder, den ich mag.`)
+@orthography(2,`Der Bruder den ich mag.`,`Der Bruder, den ich mag.`)
 
 
 
 __Aufgabe 5:__ Korrigiere die Rechtschreibfehler im gezeigten Satz. (Auflösung bei erst nach 0 Versuchen) \
 
-@orthography(`<!-- -->`,`Es ist jetze um sechse.`,`Es ist jetzt um sechs.`)
+@orthography(true,`Es ist jetze um sechse.`,`Es ist jetzt um sechs.`)
 
 
 `Beispiele sind leider nicht als Code darstellbar.`
