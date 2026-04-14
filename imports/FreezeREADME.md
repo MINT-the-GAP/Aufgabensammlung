@@ -11038,16 +11038,102 @@ function forceFrozenTeXPreviewInPair(pair) {
 function scheduleFrozenTeXPreviewStabilizationForPair(pair) {
   if (!pair || !(pair instanceof Element)) return;
 
-  [0, 80, 220, 500, 1000, 1800, 3000].forEach(function (delay) {
+  observeFrozenTeXPair(pair);
+
+  [0, 80, 220, 500, 1000, 1800, 3000, 5000, 8000].forEach(function (delay) {
     setTimeout(function () {
       if (!document.body || !document.body.classList.contains("lia-snapshot-mode")) {
         return;
       }
 
       forceFrozenTeXPreviewInPair(pair);
+      disableFrozenTeXEditButtonsInPair(pair);
     }, delay);
   });
 }
+
+
+function getCanvasFreezePairFromElement(el) {
+  let node = el instanceof Element ? el : null;
+
+  while (node && node !== document.body) {
+    try {
+      const uid = getCanvasFreezeUidFromPair(node);
+      if (uid) return node;
+    } catch (e) {}
+
+    node = node.parentElement;
+  }
+
+  return null;
+}
+
+function blockFrozenTeXControlEvent(e) {
+  if (!document.body.classList.contains("lia-snapshot-mode")) return;
+  if (internalFrozenEventBypass > 0) return;
+
+  const target = e.target instanceof Element ? e.target : null;
+  if (!target) return;
+  if (!isInsideFrozenScopeTarget(target)) return;
+
+  const control = target.closest("button, a, summary, [role='button']");
+  if (!control) return;
+
+  if (!isFrozenTeXEditButton(control) && !isFrozenTeXPreviewButton(control)) {
+    return;
+  }
+
+  e.preventDefault();
+  e.stopPropagation();
+  if (typeof e.stopImmediatePropagation === "function") {
+    e.stopImmediatePropagation();
+  }
+
+  const pair = getCanvasFreezePairFromElement(control);
+  if (pair) {
+    forceFrozenTeXPreviewInPair(pair);
+    scheduleFrozenTeXPreviewStabilizationForPair(pair);
+  }
+}
+
+
+function observeFrozenTeXPair(pair) {
+  if (!pair || !(pair instanceof Element)) return;
+
+  try {
+    if (pair.__liaFreezeTexObserver) {
+      pair.__liaFreezeTexObserver.disconnect();
+    }
+  } catch (e) {}
+
+  const observer = new MutationObserver(function () {
+    if (!document.body || !document.body.classList.contains("lia-snapshot-mode")) {
+      return;
+    }
+
+    forceFrozenTeXPreviewInPair(pair);
+    disableFrozenTeXEditButtonsInPair(pair);
+  });
+
+  observer.observe(pair, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ["class", "style", "hidden", "aria-hidden", "disabled"]
+  });
+
+  pair.__liaFreezeTexObserver = observer;
+
+  setTimeout(function () {
+    try {
+      if (pair.__liaFreezeTexObserver === observer) {
+        observer.disconnect();
+        delete pair.__liaFreezeTexObserver;
+      }
+    } catch (e) {}
+  }, 12000);
+}
+
 
 function dispatchFrozenTeXRefreshEvents(el) {
   if (!el || !(el instanceof Element)) return;
@@ -11128,7 +11214,7 @@ function refreshFrozenTeXPreviewsInHost(host) {
   runOnce();
 
   // online oft erst nach kurzer Stabilisierung nötig
-  [80, 220, 500, 1000, 1800, 3000].forEach(function (delay) {
+  [80, 220, 500, 1000, 1800, 3000, 5000, 8000].forEach(function (delay) {
     setTimeout(runOnce, delay);
   });
 }
@@ -11979,6 +12065,7 @@ function applyStoredCanvasStatesToHost(host, storedStates) {
     api.renderCanvasFreezeStateIntoPair(target, renderState);
     applyStoredCanvasWindowSizeToPair(target, expandedState);
     scheduleStoredCanvasWindowSizeReapply(target, expandedState);
+    observeFrozenTeXPair(target);
     scheduleFrozenTeXPreviewStabilizationForPair(target);
     applied.push(target);
   });
@@ -14514,6 +14601,10 @@ function blockFrozenKeydown(e) {
     freezeBindingsInstalled = true;
 
     installRouteBridge();
+
+    document.addEventListener("click", blockFrozenTeXControlEvent, true);
+    document.addEventListener("mousedown", blockFrozenTeXControlEvent, true);
+    document.addEventListener("pointerdown", blockFrozenTeXControlEvent, true);
 
     document.addEventListener("click", blockNativeFrozenInteractionEvent, true);
     document.addEventListener("mousedown", blockNativeFrozenInteractionEvent, true);
