@@ -16212,20 +16212,20 @@ Anna ging in einen @diktat(Zoo). Dort konnte sie auf einem @diktat(Lama) reiten.
 __Aufgabe 3:__ Setze das Komma an die richtige Stelle. (Auflösung ist blockiert.) \
 
 
-@orthography(false,`Das ist der Tag an dem ich geblitzt wurde.`,`Das ist der Tag, an dem ich geblitzt wurde.`)
+@orthography(`<!-- -->`,`Das ist der Tag an dem ich geblitzt wurde.`,`Das ist der Tag, an dem ich geblitzt wurde.`)
 
 
 
 
 __Aufgabe 4:__ Setze die Satzzeichen so, dass der Satz eine korrekte wörtliche Rede darstellt. (Auflösung bei erst nach 2 Versuchen) \
 
-@orthography(2,`Der Bruder den ich mag.`,`Der Bruder, den ich mag.`)
+@orthography(`<!-- -->`,`Der Bruder den ich mag.`,`Der Bruder, den ich mag.`)
 
 
 
 __Aufgabe 5:__ Korrigiere die Rechtschreibfehler im gezeigten Satz. (Auflösung bei erst nach 0 Versuchen) \
 
-@orthography(true,`Es ist jetze um sechse.`,`Es ist jetzt um sechs.`)
+@orthography(`<!-- -->`,`Es ist jetze um sechse.`,`Es ist jetzt um sechs.`)
 
 
 `Beispiele sind leider nicht als Code darstellbar.`
