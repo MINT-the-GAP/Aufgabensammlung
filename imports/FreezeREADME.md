@@ -10920,6 +10920,102 @@ function isSlideReadyForApply(hash) {
     }
   }
 
+function getCanvasLinkedTeXScope(root) {
+  let node = root instanceof Element ? root : null;
+  let hops = 0;
+
+  while (node && hops < 5) {
+    try {
+      if (collectCanvasFreezePairsFromRoot(node).length > 0) {
+        return node;
+      }
+    } catch (e) {}
+
+    node = node.parentElement;
+    hops += 1;
+  }
+
+  return null;
+}
+
+function dispatchFrozenTeXRefreshEvents(el) {
+  if (!el || !(el instanceof Element)) return;
+
+  try {
+    el.dispatchEvent(new Event("input", { bubbles: true }));
+  } catch (e) {}
+
+  try {
+    el.dispatchEvent(new Event("change", { bubbles: true }));
+  } catch (e) {}
+}
+
+function requestFrozenMathTypeset(scope) {
+  if (!scope) return;
+
+  const rootWin = getRootWindowSafe();
+  const mj =
+    (rootWin && rootWin.MathJax) ||
+    window.MathJax ||
+    null;
+
+  if (!mj) return;
+
+  try {
+    if (typeof mj.typesetPromise === "function") {
+      mj.typesetPromise([scope]).catch(function () {});
+      return;
+    }
+  } catch (e) {}
+
+  try {
+    if (typeof mj.typeset === "function") {
+      mj.typeset([scope]);
+    }
+  } catch (e) {}
+}
+
+function refreshFrozenTeXPreviewsInHost(host) {
+  const scope = host || getContentHost() || document.body;
+  if (!scope) return;
+
+  const textRoots = collectTextQuizRootsFromRoot(scope);
+  if (!textRoots.length) return;
+
+  function runOnce() {
+    const typesetScopes = [];
+
+    textRoots.forEach(function (root) {
+      const texScope = getCanvasLinkedTeXScope(root);
+      if (!texScope) return;
+
+      const controls = getTextQuizInputsFromRoot(root);
+      if (!controls.length) return;
+
+      controls.forEach(function (el) {
+        dispatchFrozenTeXRefreshEvents(el);
+      });
+
+      if (typesetScopes.indexOf(texScope) < 0) {
+        typesetScopes.push(texScope);
+      }
+    });
+
+    typesetScopes.forEach(function (texScope) {
+      requestFrozenMathTypeset(texScope);
+    });
+  }
+
+  // sofort
+  runOnce();
+
+  // online oft erst nach kurzer Stabilisierung nötig
+  [80, 220, 500].forEach(function (delay) {
+    setTimeout(runOnce, delay);
+  });
+}
+
+
   function lockTextQuizRoot(root) {
     if (!root) return;
 
@@ -11167,6 +11263,8 @@ function reapplySnapshotSilently(hash, reason) {
   applyStoredCoordinateStatesToHost(host, slide.cq || []);
   applyStoredCanvasStatesToHost(host, slide.cv || []);
   applyStoredGeneralMarkerState(slide.gm || null);
+
+    refreshFrozenTeXPreviewsInHost(host);
 
   reinforceFrozenUi();
 
@@ -13329,6 +13427,8 @@ async function applySnapshotOnce(hash, reason) {
     const appliedCoord = applyStoredCoordinateStatesToHost(host, slide.cq || []);
     const appliedCanvas = applyStoredCanvasStatesToHost(host, slide.cv || []);
     applyStoredGeneralMarkerState(slide.gm || null);
+
+        refreshFrozenTeXPreviewsInHost(host);
 
     const expectedText = Array.isArray(slide.q) ? slide.q.length : 0;
     const expectedDropdown = Array.isArray(slide.d) ? slide.d.length : 0;
