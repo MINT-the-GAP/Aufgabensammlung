@@ -53,6 +53,7 @@ window.__liaSubmissionDemo = (function () {
   let applyTimer = null;
   let freezeBarTimer = null;
   let frozenCanvasThemeTimer = null;
+  let internalFrozenEventBypass = 0;
   let applyRunToken = 0;
   let stabilizationToken = 0;
   let freezeLoadingVisible = false;
@@ -80,6 +81,7 @@ window.__liaSubmissionDemo = (function () {
   let lastTrackedF12Stamp = -1;
   let lastTrackedTabStamp = -1;
   let tabBlurProbeTimer = 0;
+
 
   let declaredEvaluationOptions = {
     trackF12: false,
@@ -10941,6 +10943,8 @@ function getCanvasLinkedTeXScope(root) {
 function dispatchFrozenTeXRefreshEvents(el) {
   if (!el || !(el instanceof Element)) return;
 
+  internalFrozenEventBypass += 1;
+
   try {
     el.dispatchEvent(new Event("input", { bubbles: true }));
   } catch (e) {}
@@ -10948,6 +10952,10 @@ function dispatchFrozenTeXRefreshEvents(el) {
   try {
     el.dispatchEvent(new Event("change", { bubbles: true }));
   } catch (e) {}
+
+  setTimeout(function () {
+    internalFrozenEventBypass = Math.max(0, internalFrozenEventBypass - 1);
+  }, 0);
 }
 
 function requestFrozenMathTypeset(scope) {
@@ -14297,6 +14305,7 @@ function isInsideFrozenScopeTarget(target) {
 
 function blockNativeFrozenInteractionEvent(e) {
   if (!document.body.classList.contains("lia-snapshot-mode")) return;
+  if (internalFrozenEventBypass > 0) return;
   if (isAllowedFreezeTarget(e.target)) return;
 
   const t = e.target;
@@ -14320,6 +14329,7 @@ function blockNativeFrozenInteractionEvent(e) {
 
 function blockFrozenKeydown(e) {
   if (!document.body.classList.contains("lia-snapshot-mode")) return;
+  if (internalFrozenEventBypass > 0) return;
 
   const target = e.target instanceof Element ? e.target : null;
   const active = document.activeElement instanceof Element ? document.activeElement : null;
