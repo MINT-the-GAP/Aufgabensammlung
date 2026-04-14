@@ -637,12 +637,12 @@ Anna ging in einen @diktat(Zoo). Dort konnte sie auf einem @diktat(Lama) reiten.
 __Aufgabe 3:__ Setze das Komma an die richtige Stelle. (Auflösung ist blockiert.)
 
 
-@orthography(false,`Das ist der Tag an dem ich geblitzt wurde.`,`Das ist der Tag, an dem ich geblitzt wurde.`)
+@orthography(`<!--  data-solution-button="false"  -->`,`Das ist der Tag an dem ich geblitzt wurde.`,`Das ist der Tag, an dem ich geblitzt wurde.`)
 
 
 <p>
 
-@orthography(2,`Der Bruder den ich mag.`,`Der Bruder, den ich mag.`)
+@orthography(`<!--  data-solution-button="4"  -->`,`Der Bruder den ich mag.`,`Der Bruder, den ich mag.`)
 
 </p>
 
@@ -653,18 +653,20 @@ __Aufgabe 3:__ Setze das Komma an die richtige Stelle. (Auflösung ist blockiert
 __Aufgabe 4:__ Setze die Satzzeichen so, dass der Satz eine korrekte wörtliche Rede darstellt. (Auflösung bei erst nach 2 und 0 Versuchen)
 
 __$a)\;\;$__
-@orthography(2,`Der Apfel ist rot sagte Ben`,`"Der Apfel ist rot", sagte Ben.`)
+
+@orthography(`<!--  data-solution-button="2"  -->`,`Der Apfel ist rot sagte Ben`,`"Der Apfel ist rot", sagte Ben.`)
 
 __$b)\;\;$__
-@orthography(true,`Clara sagt Druck ist eine physikalische Größe`,`Clara sagt: "Druck ist eine physikalische Größe."`)
+
+@orthography(`<!--  data-solution-button="0"  -->`,`Clara sagt Druck ist eine physikalische Größe`,`Clara sagt: "Druck ist eine physikalische Größe."`)
 
 
 --- 
 
 
-__Aufgabe 5:__ Korrigiere die Rechtschreibfehler im gezeigten Satz. (Auflösung geht noch nicht und ist deswegen blockiert.)
+__Aufgabe 5:__ Korrigiere die Rechtschreibfehler im gezeigten Satz. 
 
-@orthography(3,`Es ist jetze um sechse.`,`Es ist jetzt um sechs.`)
+@orthography(`<!--  data-solution-button="4"  -->`,`Es ist jetze um sechse.`,`Es ist jetzt um sechs.`)
 
 
 
