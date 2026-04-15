@@ -4,6 +4,7 @@ language: de
 author: Martin Lommatzsch
 comment: LiaScript-Abgabelink mit exakterer Zustandsprotokollierung und Freeze
 
+mode: Presentation
 
 import: https://cdn.jsdelivr.net/gh/LiaTemplates/algebrite@master/README.md
 import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
@@ -13669,6 +13670,20 @@ function getRootWindowSafe() {
   return w;
 }
 
+function shouldDisableDevtoolsHeuristicOnThisDevice() {
+  const platform = String(navigator.platform || "");
+  const ua = String(navigator.userAgent || "");
+  const maxTouchPoints = Number(navigator.maxTouchPoints || 0) || 0;
+
+  // Klassisches iOS
+  const isIOSDevice = /iPad|iPhone|iPod/.test(platform) || /iPad|iPhone|iPod/.test(ua);
+
+  // iPadOS meldet sich oft als "MacIntel", hat aber Touchpunkte
+  const isIPadOSLike = platform === "MacIntel" && maxTouchPoints > 1;
+
+  return isIOSDevice || isIPadOSLike;
+}
+
 function isF12KeyboardEvent(e) {
   const key = String(e && e.key || "");
   const code = String(e && e.code || "");
@@ -13738,6 +13753,12 @@ function markTabAttempt(kind, stamp) {
 }
 
 function isLikelyDevtoolsOpen() {
+  // Auf iPad/iOS ist die outer/inner-Heuristik wegen Safari-UI instabil
+  // und produziert False Positives. Dort komplett abschalten.
+  if (shouldDisableDevtoolsHeuristicOnThisDevice()) {
+    return false;
+  }
+
   const outerW = Number(window.outerWidth || 0);
   const innerW = Number(window.innerWidth || 0);
   const outerH = Number(window.outerHeight || 0);
@@ -13764,6 +13785,12 @@ function isLikelyDevtoolsOpen() {
 
 function installDevtoolsWatch() {
   if (devtoolsWatchInstalled) return;
+
+  if (shouldDisableDevtoolsHeuristicOnThisDevice()) {
+    log("security-devtools-watch-skip", "reason=ios-ipad");
+    return;
+  }
+
   devtoolsWatchInstalled = true;
 
   devtoolsLikelyOpen = isLikelyDevtoolsOpen();

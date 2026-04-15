@@ -3,7 +3,7 @@ comment: Hier sind alle wichtigen Features für SchulLia zusammengefasst.
 author: Martin Lommatzsch
 
 
-
+mode: Presentation
 
 
 
