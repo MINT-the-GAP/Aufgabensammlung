@@ -2609,6 +2609,8 @@ function getEvaluationOutcome(state) {
 
   if (fc === "e") return "wrong";
 
+  if (Number(state.nm || 0) === 1) return "not_made";
+
   // geprüft, aber weder richtig noch aufgelöst => falsch
   if (cc > 0) return "wrong";
 
@@ -2663,37 +2665,109 @@ function getEvaluationDeclaredTagsForState(slide, state) {
 }
 
 
+function collectStoredEvaluationStatesByTaskIndex(slide, hash) {
+  const map = Object.create(null);
+
+  ["q", "d", "m", "c", "o", "fq", "mq", "cq"].forEach(function (key) {
+    const arr = Array.isArray(slide && slide[key]) ? slide[key] : [];
+
+    arr.forEach(function (state) {
+      rehydrateStateEvaluationMetaFromDeclaredTask(hash, state);
+
+      const di = Number(state && state.di || 0);
+      if (!Number.isFinite(di) || di <= 0) return;
+
+      // Erstes passendes State-Objekt pro Aufgabenindex behalten
+      if (!map[di]) {
+        map[di] = {
+          key: key,
+          state: state
+        };
+      }
+    });
+  });
+
+  return map;
+}
+
+function makeSyntheticEvaluationStateFromDeclaredTask(hash, taskIndex) {
+  const state = {
+    di: Number(taskIndex || 0),
+    nm: 1   // nicht gemacht
+  };
+
+  rehydrateStateEvaluationMetaFromDeclaredTask(hash, state);
+  return state;
+}
+
+
 function visitEvaluationStates(payload, visitor) {
   if (!payload || !Array.isArray(payload.s) || typeof visitor !== "function") {
     return;
   }
 
+  const slideByHash = Object.create(null);
+
   payload.s.forEach(function (slide) {
     const hash = cleanHashValue(slide && slide.h || "");
-    const declaredTasks = getDeclaredTaskListForHash(hash);
-    const hasDeclaredTasks = Array.isArray(declaredTasks) && declaredTasks.length > 0;
+    if (!hash) return;
+    slideByHash[hash] = slide;
+  });
+
+  const declaredMap = declaredEvaluationByHash || Object.create(null);
+  const declaredHashes = Object.keys(declaredMap).sort(function (a, b) {
+    return hashSort({ h: a }, { h: b });
+  });
+
+  const alreadyHandledHashes = Object.create(null);
+
+  // 1. Zuerst alle deklarierten Aufgaben behandeln.
+  declaredHashes.forEach(function (hash) {
+    const slide = slideByHash[hash] || { h: hash };
+    const taskList = getDeclaredTaskListForHash(hash);
+
+    // Wenn es deklarierte Aufgaben gibt, dann MUSS jede Aufgabe genau einmal
+    // in die Auswertung eingehen: entweder als echtes State oder als "nicht gemacht".
+    if (Array.isArray(taskList) && taskList.length > 0) {
+      const storedByDi = collectStoredEvaluationStatesByTaskIndex(slide, hash);
+
+      for (let i = 1; i <= taskList.length; i++) {
+        const hit = storedByDi[i];
+        const state = hit
+          ? hit.state
+          : makeSyntheticEvaluationStateFromDeclaredTask(hash, i);
+
+        visitor(state, hit ? hit.key : "nm", slide);
+      }
+
+      alreadyHandledHashes[hash] = 1;
+      return;
+    }
+
+    // Falls eine Folie keine deklarierten Aufgaben hat, aber dennoch States trägt:
+    ["q", "d", "m", "c", "o", "fq", "mq", "cq"].forEach(function (key) {
+      const arr = Array.isArray(slide && slide[key]) ? slide[key] : [];
+
+      arr.forEach(function (state) {
+        rehydrateStateEvaluationMetaFromDeclaredTask(hash, state);
+        visitor(state, key, slide);
+      });
+    });
+
+    alreadyHandledHashes[hash] = 1;
+  });
+
+  // 2. Fallback für alte/ungewöhnliche Fälle:
+  // Slides, die nicht in declaredEvaluationByHash auftauchen, aber States tragen.
+  payload.s.forEach(function (slide) {
+    const hash = cleanHashValue(slide && slide.h || "");
+    if (!hash || alreadyHandledHashes[hash]) return;
 
     ["q", "d", "m", "c", "o", "fq", "mq", "cq"].forEach(function (key) {
       const arr = Array.isArray(slide && slide[key]) ? slide[key] : [];
 
       arr.forEach(function (state) {
         rehydrateStateEvaluationMetaFromDeclaredTask(hash, state);
-
-        // WICHTIG:
-        // Wenn es für die Folie deklarierte Aufgaben gibt, dann dürfen auch
-        // nur solche Zustände in die Auswertung eingehen, die einer echten
-        // deklarierten Aufgabe zugeordnet sind.
-        //
-        // Sonst kann "erreicht" größer als "gesamt" werden, weil zusätzliche
-        // Hilfs-/Neben-Zustände mitgezählt werden.
-        if (hasDeclaredTasks) {
-          const di = Number(state && state.di || 0);
-
-          if (!Number.isFinite(di) || di <= 0 || di > declaredTasks.length) {
-            return;
-          }
-        }
-
         visitor(state, key, slide);
       });
     });
@@ -2796,29 +2870,35 @@ function getEvaluationAllocation(slide, state) {
   const be = getEvaluationUnits(state);
   const manual = getManualAwardNumberForState(slide, state);
 
+  // Manuelle Korrektur hat immer Vorrang
   if (manual !== null) {
     return {
       correct: manual,
       wrong: Math.max(0, be - manual),
-      resolved: 0
+      resolved: 0,
+      notMade: 0
     };
   }
 
   const outcome = getEvaluationOutcome(state);
 
   if (outcome === "correct") {
-    return { correct: be, wrong: 0, resolved: 0 };
+    return { correct: be, wrong: 0, resolved: 0, notMade: 0 };
   }
 
   if (outcome === "wrong") {
-    return { correct: 0, wrong: be, resolved: 0 };
+    return { correct: 0, wrong: be, resolved: 0, notMade: 0 };
   }
 
   if (outcome === "resolved") {
-    return { correct: 0, wrong: 0, resolved: be };
+    return { correct: 0, wrong: 0, resolved: be, notMade: 0 };
   }
 
-  return { correct: 0, wrong: 0, resolved: 0 };
+  if (outcome === "not_made") {
+    return { correct: 0, wrong: 0, resolved: 0, notMade: be };
+  }
+
+  return { correct: 0, wrong: 0, resolved: 0, notMade: 0 };
 }
 
 
@@ -2830,6 +2910,7 @@ function buildSnapshotEvaluationStats(payload) {
     correct: 0,
     wrong: 0,
     resolved: 0,
+    notMade: 0,
     tasks: declared.tasks
   };
 
@@ -2839,6 +2920,7 @@ function buildSnapshotEvaluationStats(payload) {
     stats.correct += alloc.correct;
     stats.wrong += alloc.wrong;
     stats.resolved += alloc.resolved;
+    stats.notMade += alloc.notMade;
   });
 
   // Fallback, falls die deklarierte Auswertung aus irgendeinem Grund leer ist
@@ -3050,7 +3132,8 @@ function renderEvaluationPlaceholderHtml(hash) {
     '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.85rem;margin-bottom:1rem;">',
       renderEvaluationCard("Richtig", stats.correct, "correct"),
       renderEvaluationCard("Falsch", stats.wrong, "wrong"),
-      renderEvaluationCard("Gelöst", stats.resolved, "resolved"),
+      renderEvaluationCard("Aufgelöst", stats.resolved, "resolved"),
+      renderEvaluationCard("Nicht gemacht", stats.notMade, "neutral"),
     '</div>',
 
     '<div style="font-weight:800;font-size:2.35rem;padding:1rem 1.05rem;border-radius:12px;border:1px solid var(--lia-course-border);background:var(--lia-course-bg);color:var(--lia-course-fg);">',
