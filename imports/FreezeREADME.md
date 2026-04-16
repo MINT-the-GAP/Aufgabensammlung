@@ -9160,19 +9160,49 @@ function getOrthographyQuizRootFromWrap(wrap) {
   if (!wrap) return null;
 
   const uid = getOrthographyUidFromWrap(wrap);
-  const boundQuiz = findOrthographyBoundQuizByUid(uid);
-  if (boundQuiz) return boundQuiz;
 
+  const boundQuiz = findOrthographyBoundQuizByUid(uid);
+  if (boundQuiz) {
+    return normalizeActualQuizRoot(boundQuiz) || boundQuiz;
+  }
+
+  // Neuer robuster Fallback:
+  // denselben allgemeinen "nahegelegenes Sibling-Quiz"-Finder benutzen
+  // wie an anderen Stellen im Freeze-Code.
+  const nearby = findNearbySiblingQuiz(wrap);
+  if (nearby) {
+    return normalizeActualQuizRoot(nearby) || nearby;
+  }
+
+  // Alter Sibling-Scan bleibt als zusätzlicher Fallback erhalten
   let node = wrap.nextElementSibling;
   while (node) {
     if (node.classList && node.classList.contains("orthography-wrap")) break;
 
-    const quiz = node.matches && node.matches(".lia-quiz")
-      ? node
-      : (node.querySelector ? node.querySelector(".lia-quiz") : null);
+    const quiz =
+      (node.matches && node.matches(".lia-quiz") ? node : null) ||
+      (node.querySelector ? node.querySelector(".lia-quiz") : null);
 
-    if (quiz) return quiz;
+    if (quiz) {
+      return normalizeActualQuizRoot(quiz) || quiz;
+    }
+
     node = node.nextElementSibling;
+  }
+
+  // Letzter Rettungsanker:
+  // nächster Prüfen-/Lösungs-Button nach dem Orthography-Wrap
+  const scope = getContentHost() || document.body;
+  const nextControl = getNextQuizControlAfterElement(wrap, scope);
+
+  if (nextControl) {
+    const quiz =
+      nextControl.closest(".lia-quiz") ||
+      findNearbySiblingQuiz(nextControl);
+
+    if (quiz) {
+      return normalizeActualQuizRoot(quiz) || quiz;
+    }
   }
 
   return null;
@@ -9907,8 +9937,13 @@ function collectActualKnownLiaQuizRootsFromRoot(root) {
   });
 
   collectOrthographyQuizRootsFromRoot(host).forEach(function (wrap) {
-    const quiz = getOrthographyQuizRootFromWrap(wrap);
-    if (quiz) out.push(quiz);
+    const quiz =
+      getOrthographyQuizRootFromWrap(wrap) ||
+      findNearbySiblingQuiz(wrap);
+  
+    if (quiz) {
+      out.push(normalizeActualQuizRoot(quiz) || quiz);
+    }
   });
 
   collectFractionQuizRootsFromRoot(host).forEach(function (rep) {
@@ -14954,6 +14989,7 @@ Anna
 
 @ADetails(4=BE; Diktat)
 
+
 --- 
 
 
@@ -14964,6 +15000,8 @@ __Aufgabe 2:__ Lass dir die Wörter vorlesen, die in die Lücken kommen und schr
 Anna ging in einen @diktat(Zoo). Dort konnte sie auf einem @diktat(Lama) reiten.
 
 @ADetails(2=BE; Lückendiktat)
+
+
 
 --- 
 
@@ -15044,9 +15082,6 @@ $x$ = [[  5  ]] @canvas und $y$ = [[  3  ]] @canvas
 @ADetails(4=BE;Gleichungssysteme)
 
 
---- 
-
---- 
 
 --- 
 
