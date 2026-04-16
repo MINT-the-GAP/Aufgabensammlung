@@ -2272,10 +2272,29 @@ function __liaInitTexPreviews(){
 
 
 
+  let __liaThemeVarsQueued = false;
+
+  function scheduleThemeVars(){
+    if (__liaThemeVarsQueued) return;
+    __liaThemeVarsQueued = true;
+
+    requestAnimationFrame(function(){
+      __liaThemeVarsQueued = false;
+      applyThemeVars();
+    });
+  }
+
   applyThemeVars();
 
-  const mo = new MutationObserver(() => applyThemeVars());
-  mo.observe(document.documentElement, { attributes:true, attributeFilter:['class','style'] });
+  const mo = new MutationObserver(() => scheduleThemeVars());
+
+  // WICHTIG:
+  // Nicht "style" auf dem eigenen documentElement beobachten,
+  // weil applyThemeVars() dort selbst CSS-Variablen schreibt.
+  mo.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class']
+  });
 
   try{
     const pdoc = (window.parent && window.parent.document) ? window.parent.document : null;
@@ -2290,7 +2309,7 @@ function __liaInitTexPreviews(){
   try{
     const mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
     if (mq){
-      const onModeChange = () => applyThemeVars();
+      const onModeChange = () => scheduleThemeVars();
       if (typeof mq.addEventListener === 'function'){
         mq.addEventListener('change', onModeChange);
       }else if (typeof mq.addListener === 'function'){
@@ -2299,8 +2318,7 @@ function __liaInitTexPreviews(){
     }
   }catch(_){}
 
-  window.addEventListener('resize', () => applyThemeVars());
-
+  window.addEventListener('resize', () => scheduleThemeVars());
 
 
 
@@ -5505,19 +5523,76 @@ ensureCorners();
 }
 
 
-function initAll(){
-  document.querySelectorAll('.lia-draw-wrap canvas.lia-draw:not([data-ready])').forEach(c => {
+function initAll(root){
+  const scope = (root && root.querySelectorAll) ? root : document;
+
+  scope.querySelectorAll('.lia-draw-wrap canvas.lia-draw:not([data-ready])').forEach(c => {
     c.setAttribute('data-ready','1');
     setupCanvas(c);
   });
 
-  __liaInitTexPreviews();
+  scope.querySelectorAll('.lia-canvas-pair').forEach(function(pair){
+    const field = __liaFindInputBeforeNode(pair);
+    if (field){
+      __liaEnsureTexPreview(field);
+      __liaSyncTexPreviewBorder(field);
+    }
+  });
 }
 
-  // init: wenn Canvas markup in mount erscheint
-  const obs = new MutationObserver(() => initAll());
+let __liaInitAllQueued = false;
+let __liaInitAllTimer = 0;
+
+function scheduleInitAll(root, delay){
+  const scope = (root && root.querySelectorAll) ? root : document;
+
+  clearTimeout(__liaInitAllTimer);
+  __liaInitAllTimer = setTimeout(function(){
+    if (__liaInitAllQueued) return;
+    __liaInitAllQueued = true;
+
+    requestAnimationFrame(function(){
+      __liaInitAllQueued = false;
+      initAll(scope);
+    });
+  }, Math.max(0, Number(delay) || 0));
+}
+
+function bindInitAllObserver(){
+  if (window.__LIA_CANVAS_INIT_OBSERVER__) return;
+  if (!document.body) return;
+
+  const obs = new MutationObserver(function(muts){
+    let shouldRun = false;
+
+    for (let i = 0; i < muts.length; i++){
+      const m = muts[i];
+      if (m && m.addedNodes && m.addedNodes.length){
+        shouldRun = true;
+        break;
+      }
+    }
+
+    if (shouldRun){
+      scheduleInitAll(document, 120);
+    }
+  });
+
   obs.observe(document.body, { childList:true, subtree:true });
-  initAll();
+  window.__LIA_CANVAS_INIT_OBSERVER__ = obs;
+}
+
+if (document.readyState === 'complete'){
+  bindInitAllObserver();
+  scheduleInitAll(document, 0);
+}else{
+  window.addEventListener('load', function(){
+    bindInitAllObserver();
+    scheduleInitAll(document, 0);
+    scheduleInitAll(document, 180);
+    scheduleInitAll(document, 600);
+  }, { once:true });
+}
 
   // ---------------------------------------------------------
   // LAUNCHER: Toggle (Mount ist im Makro vorhanden!)
@@ -5559,7 +5634,7 @@ ensureMountUID(mount);
 
         if (!mount.querySelector('.lia-draw-wrap')){
           mount.innerHTML = canvasMarkup();
-          initAll();
+          initAll(mount);
         }
       }else{
         mount.dataset.open = '0';
@@ -5595,3 +5670,94 @@ ensureMountUID(mount);
 
 
 -->
+
+
+
+
+
+
+# Road to OCR from Canvas 
+
+>  <h2> ACHTUNG: BITTE WARTET AB BIS BEI LOADED "YES" STEHT. DAS DAUERT BEIM ERSTEN MAL LEIDER ETWAS LÄNGER! </h2>
+
+
+
+<center>
+
+<!-- style="width:200px" -->
+![Navigation](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/Readme/canvas.png)
+
+</center>
+
+1. Öffnet oder schließt die Schreibfläche.
+
+2. Macht die letzte Änderung auf der Schreibfläche rückgängig.
+
+3. Stellt das letzte "Rückgängig machen" wieder her.
+
+4. Radierer mit Submenü für Radierergröße oder komplettes löschen.
+
+5. Stift mit Submenü für Farbauswahl, Stiftdicke und Transparenz.
+
+6. Legt ein Grid oder Linien in den Hintergrund.
+
+7. Lässt ein Feld ziehen, welches mittels Schrifterkennung an das Eingabefeld als Lösung übergibt.
+
+Die Schreibfläche kann unten links oder rechts an den Ecke in der Größe beliebig verändert werden.
+
+
+> **Steuerung mit Maus**
+
+- Linke Maustaste: Zeichnen, Radieren, Ziehen
+
+- Rechte Maustaste: Schreibfläche hin- und herziehen
+
+- Mausrad: Zoom
+
+
+> **Steuerung mit Touchscreen**
+
+- Ein Finger:  Zeichnen, Radieren, Ziehen
+
+- Zwei Finger (Abstand zwischen den Fingern gleichbleibend): Schreibfläche hin- und herziehen
+
+- Zwei Finger (Abstand zwischen den Fingern verändern): Zoom
+
+
+---
+
+---
+
+
+> **Beispielaufgaben**
+
+**Aufgabe 1:** Berechne den Wert des Terms
+
+
+__$a)\;\;$__
+$1470+8 =$ [[     1478    ]] 
+
+@canvas
+
+
+
+mit partial-solution
+
+<!-- data-show-partial-solution="true" -->
+__$b)\;\;$__
+$5100+30 =$ [[     5130    ]] 
+@canvas
+$5100+30 =$ [[     5130    ]] 
+@canvas
+
+
+
+
+
+
+
+__$c)\;\;$__
+$4200+89 =$ [[     4289    ]] 
+
+@canvas
+
