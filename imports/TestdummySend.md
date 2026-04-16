@@ -4,6 +4,7 @@ language: de
 author: Martin Lommatzsch
 comment: LiaScript-Abgabelink mit exakterer Zustandsprotokollierung und Freeze
 
+mode: Presentation
 
 import: https://cdn.jsdelivr.net/gh/LiaTemplates/algebrite@master/README.md
 import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
@@ -52,6 +53,7 @@ window.__liaSubmissionDemo = (function () {
 
   let applyTimer = null;
   let freezeBarTimer = null;
+  let frozenCanvasThemeTimer = null;
   let applyRunToken = 0;
   let stabilizationToken = 0;
   let freezeLoadingVisible = false;
@@ -615,11 +617,11 @@ function getBaseContentHost() {
   function logHostPick(el) {
     try {
       if (!el) {
-        debugLog("host-pick", "null");
+        log("host-pick", "null");
         return;
       }
       const r = el.getBoundingClientRect();
-      debugLog(
+      log(
         "host-pick",
         "tag=" + (el.tagName || ""),
         "id=" + (el.id || ""),
@@ -798,9 +800,9 @@ function ensureRuntimeStyle() {
   border-radius:8px;
   border:1px solid color-mix(in srgb, rgb(var(--lia-submit-bg-rgb)) 55%, var(--lia-course-fg) 45%);
   background:color-mix(in srgb, rgb(var(--lia-submit-bg-rgb)) 99%, var(--lia-course-bg) 1%);
-  color:var(--lia-course-fg) !important;
-  -webkit-text-fill-color:var(--lia-course-fg) !important;
-  caret-color:var(--lia-course-fg);
+  color:#ffffff !important;
+  -webkit-text-fill-color:#ffffff !important;
+  caret-color:#ffffff;
   font:inherit;
   font-weight:700;
   line-height:1.15;
@@ -808,7 +810,8 @@ function ensureRuntimeStyle() {
 }
 
 .lia-adetails-award-input::placeholder{
-  color:color-mix(in srgb, var(--lia-course-fg) 60%, transparent);
+  color:rgba(255,255,255,.7);
+  -webkit-text-fill-color:rgba(255,255,255,.7);
 }
 
 body.lia-shared-freeze-link .lia-quiz__control .lia-adetails-points{
@@ -995,6 +998,7 @@ body.lia-snapshot-mode #lia-freeze-info{
 .lia-frozen-static-quiz *{
   pointer-events: none !important;
 }
+
   `.trim();
 
   (document.head || document.documentElement).appendChild(style);
@@ -1014,6 +1018,7 @@ body.lia-snapshot-mode #lia-freeze-info{
       applyCourseColors();
       refreshFreezeBar();
       syncFrozenScreens();
+      scheduleFrozenCanvasThemeRefresh("theme-mutation", 60);
     });
 
     observer.observe(document.documentElement, {
@@ -1032,6 +1037,7 @@ body.lia-snapshot-mode #lia-freeze-info{
       applyCourseColors();
       refreshFreezeBar();
       syncFrozenScreens();
+      scheduleFrozenCanvasThemeRefresh("theme-resize", 80);
     });
 
     setTimeout(function () {
@@ -1039,6 +1045,7 @@ body.lia-snapshot-mode #lia-freeze-info{
       applyCourseColors();
       refreshFreezeBar();
       syncFrozenScreens();
+      scheduleFrozenCanvasThemeRefresh("theme-init", 80);
     }, 100);
   }
 
@@ -1266,6 +1273,9 @@ async function tryLoadSnapshot() {
     const obj = await decodeSnapshotToken(token);
     if (!obj || !Array.isArray(obj.s)) return null;
 
+    const expanded = expandPayloadFromFreezeUrl(obj);
+    if (!expanded || !Array.isArray(expanded.s)) return null;
+
     log(
       "snapshot-load-decoded",
       "mode=" + (
@@ -1273,10 +1283,10 @@ async function tryLoadSnapshot() {
           ? "gzip"
           : "plain"
       ),
-      "slides=" + obj.s.length
+      "slides=" + expanded.s.length
     );
 
-    return obj;
+    return expanded;
   } catch (e) {
     warn(
       "snapshot-load-decode-failed",
@@ -1879,6 +1889,20 @@ function mergeDeclaredTaskDetails(task, raw) {
 function collectDeclaredTasksFromSlideLines(lines) {
   const tasks = [];
 
+  function getNextRelevantLine(startIdx) {
+    for (let j = startIdx + 1; j < lines.length; j++) {
+      const nextLine = String(lines[j] || "");
+      const nextTrimmed = normalizeSpace(nextLine);
+
+      if (!nextTrimmed) continue;
+      if (/^\s*<!--/.test(nextTrimmed)) continue;
+
+      return nextTrimmed;
+    }
+
+    return "";
+  }
+
   function pushTask() {
     const task = makeDeclaredTask();
     tasks.push(task);
@@ -1957,9 +1981,26 @@ function collectDeclaredTasksFromSlideLines(lines) {
 
     // Inline-Quizformen wie [[...]]
     const inlineMatches = line.match(/\[\[[^\n]*?\]\]/g) || [];
-    inlineMatches.forEach(function () {
-      pushTask();
-    });
+    if (inlineMatches.length) {
+      const nextRelevant = getNextRelevantLine(i);
+      const hasAlgebriteCheckHere = /@Algebrite\.check\s*\(/.test(line);
+      const hasAlgebriteCheckNext = /^@Algebrite\.check\s*\(/.test(nextRelevant);
+
+      // Mehrere Eingabefelder, die zu EINEM gemeinsamen Algebrite-Check gehören,
+      // zählen als genau EINE Aufgabe.
+      if (
+        inlineMatches.length > 1 &&
+        (hasAlgebriteCheckHere || hasAlgebriteCheckNext)
+      ) {
+        pushTask();
+      } else {
+        inlineMatches.forEach(function () {
+          pushTask();
+        });
+      }
+
+      continue;
+    }
   }
 
   return tasks;
@@ -2569,6 +2610,8 @@ function getEvaluationOutcome(state) {
 
   if (fc === "e") return "wrong";
 
+  if (Number(state.nm || 0) === 1) return "not_made";
+
   // geprüft, aber weder richtig noch aufgelöst => falsch
   if (cc > 0) return "wrong";
 
@@ -2623,37 +2666,109 @@ function getEvaluationDeclaredTagsForState(slide, state) {
 }
 
 
+function collectStoredEvaluationStatesByTaskIndex(slide, hash) {
+  const map = Object.create(null);
+
+  ["q", "d", "m", "c", "o", "fq", "mq", "cq"].forEach(function (key) {
+    const arr = Array.isArray(slide && slide[key]) ? slide[key] : [];
+
+    arr.forEach(function (state) {
+      rehydrateStateEvaluationMetaFromDeclaredTask(hash, state);
+
+      const di = Number(state && state.di || 0);
+      if (!Number.isFinite(di) || di <= 0) return;
+
+      // Erstes passendes State-Objekt pro Aufgabenindex behalten
+      if (!map[di]) {
+        map[di] = {
+          key: key,
+          state: state
+        };
+      }
+    });
+  });
+
+  return map;
+}
+
+function makeSyntheticEvaluationStateFromDeclaredTask(hash, taskIndex) {
+  const state = {
+    di: Number(taskIndex || 0),
+    nm: 1   // nicht gemacht
+  };
+
+  rehydrateStateEvaluationMetaFromDeclaredTask(hash, state);
+  return state;
+}
+
+
 function visitEvaluationStates(payload, visitor) {
   if (!payload || !Array.isArray(payload.s) || typeof visitor !== "function") {
     return;
   }
 
+  const slideByHash = Object.create(null);
+
   payload.s.forEach(function (slide) {
     const hash = cleanHashValue(slide && slide.h || "");
-    const declaredTasks = getDeclaredTaskListForHash(hash);
-    const hasDeclaredTasks = Array.isArray(declaredTasks) && declaredTasks.length > 0;
+    if (!hash) return;
+    slideByHash[hash] = slide;
+  });
+
+  const declaredMap = declaredEvaluationByHash || Object.create(null);
+  const declaredHashes = Object.keys(declaredMap).sort(function (a, b) {
+    return hashSort({ h: a }, { h: b });
+  });
+
+  const alreadyHandledHashes = Object.create(null);
+
+  // 1. Zuerst alle deklarierten Aufgaben behandeln.
+  declaredHashes.forEach(function (hash) {
+    const slide = slideByHash[hash] || { h: hash };
+    const taskList = getDeclaredTaskListForHash(hash);
+
+    // Wenn es deklarierte Aufgaben gibt, dann MUSS jede Aufgabe genau einmal
+    // in die Auswertung eingehen: entweder als echtes State oder als "nicht gemacht".
+    if (Array.isArray(taskList) && taskList.length > 0) {
+      const storedByDi = collectStoredEvaluationStatesByTaskIndex(slide, hash);
+
+      for (let i = 1; i <= taskList.length; i++) {
+        const hit = storedByDi[i];
+        const state = hit
+          ? hit.state
+          : makeSyntheticEvaluationStateFromDeclaredTask(hash, i);
+
+        visitor(state, hit ? hit.key : "nm", slide);
+      }
+
+      alreadyHandledHashes[hash] = 1;
+      return;
+    }
+
+    // Falls eine Folie keine deklarierten Aufgaben hat, aber dennoch States trägt:
+    ["q", "d", "m", "c", "o", "fq", "mq", "cq"].forEach(function (key) {
+      const arr = Array.isArray(slide && slide[key]) ? slide[key] : [];
+
+      arr.forEach(function (state) {
+        rehydrateStateEvaluationMetaFromDeclaredTask(hash, state);
+        visitor(state, key, slide);
+      });
+    });
+
+    alreadyHandledHashes[hash] = 1;
+  });
+
+  // 2. Fallback für alte/ungewöhnliche Fälle:
+  // Slides, die nicht in declaredEvaluationByHash auftauchen, aber States tragen.
+  payload.s.forEach(function (slide) {
+    const hash = cleanHashValue(slide && slide.h || "");
+    if (!hash || alreadyHandledHashes[hash]) return;
 
     ["q", "d", "m", "c", "o", "fq", "mq", "cq"].forEach(function (key) {
       const arr = Array.isArray(slide && slide[key]) ? slide[key] : [];
 
       arr.forEach(function (state) {
         rehydrateStateEvaluationMetaFromDeclaredTask(hash, state);
-
-        // WICHTIG:
-        // Wenn es für die Folie deklarierte Aufgaben gibt, dann dürfen auch
-        // nur solche Zustände in die Auswertung eingehen, die einer echten
-        // deklarierten Aufgabe zugeordnet sind.
-        //
-        // Sonst kann "erreicht" größer als "gesamt" werden, weil zusätzliche
-        // Hilfs-/Neben-Zustände mitgezählt werden.
-        if (hasDeclaredTasks) {
-          const di = Number(state && state.di || 0);
-
-          if (!Number.isFinite(di) || di <= 0 || di > declaredTasks.length) {
-            return;
-          }
-        }
-
         visitor(state, key, slide);
       });
     });
@@ -2756,29 +2871,35 @@ function getEvaluationAllocation(slide, state) {
   const be = getEvaluationUnits(state);
   const manual = getManualAwardNumberForState(slide, state);
 
+  // Manuelle Korrektur hat immer Vorrang
   if (manual !== null) {
     return {
       correct: manual,
       wrong: Math.max(0, be - manual),
-      resolved: 0
+      resolved: 0,
+      notMade: 0
     };
   }
 
   const outcome = getEvaluationOutcome(state);
 
   if (outcome === "correct") {
-    return { correct: be, wrong: 0, resolved: 0 };
+    return { correct: be, wrong: 0, resolved: 0, notMade: 0 };
   }
 
   if (outcome === "wrong") {
-    return { correct: 0, wrong: be, resolved: 0 };
+    return { correct: 0, wrong: be, resolved: 0, notMade: 0 };
   }
 
   if (outcome === "resolved") {
-    return { correct: 0, wrong: 0, resolved: be };
+    return { correct: 0, wrong: 0, resolved: be, notMade: 0 };
   }
 
-  return { correct: 0, wrong: 0, resolved: 0 };
+  if (outcome === "not_made") {
+    return { correct: 0, wrong: 0, resolved: 0, notMade: be };
+  }
+
+  return { correct: 0, wrong: 0, resolved: 0, notMade: 0 };
 }
 
 
@@ -2790,6 +2911,7 @@ function buildSnapshotEvaluationStats(payload) {
     correct: 0,
     wrong: 0,
     resolved: 0,
+    notMade: 0,
     tasks: declared.tasks
   };
 
@@ -2799,6 +2921,7 @@ function buildSnapshotEvaluationStats(payload) {
     stats.correct += alloc.correct;
     stats.wrong += alloc.wrong;
     stats.resolved += alloc.resolved;
+    stats.notMade += alloc.notMade;
   });
 
   // Fallback, falls die deklarierte Auswertung aus irgendeinem Grund leer ist
@@ -3010,7 +3133,8 @@ function renderEvaluationPlaceholderHtml(hash) {
     '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.85rem;margin-bottom:1rem;">',
       renderEvaluationCard("Richtig", stats.correct, "correct"),
       renderEvaluationCard("Falsch", stats.wrong, "wrong"),
-      renderEvaluationCard("Gelöst", stats.resolved, "resolved"),
+      renderEvaluationCard("Aufgelöst", stats.resolved, "resolved"),
+      renderEvaluationCard("Nicht gemacht", stats.notMade, "neutral"),
     '</div>',
 
     '<div style="font-weight:800;font-size:2.35rem;padding:1rem 1.05rem;border-radius:12px;border:1px solid var(--lia-course-border);background:var(--lia-course-bg);color:var(--lia-course-fg);">',
@@ -3783,8 +3907,10 @@ function scheduleAssignmentDetailsRefresh(delay) {
 
 
 
-function makeEmptySlideState(hash) {
-  return {
+function makeEmptySlideState(hash, opts) {
+  opts = opts || {};
+
+  const out = {
     h: String(hash || ""),
     q: [],
     d: [],
@@ -3799,6 +3925,12 @@ function makeEmptySlideState(hash) {
       h: []
     }
   };
+
+  if (opts.unvisited) {
+    out.u = 1;
+  }
+
+  return out;
 }
 
 
@@ -3810,7 +3942,8 @@ function hasMeaningfulOutcomeState(state) {
   return !!(
     normalizeSpace(state && state.s || "") ||
     normalizeSpace(state && state.fc || "") ||
-    Number(state && state.cc || 0) > 0
+    Number(state && state.cc || 0) > 0 ||
+    Number(state && state.nm || 0) === 1
   );
 }
 
@@ -3826,16 +3959,6 @@ function compactCommonStateMeta(src, out) {
     out.di = Number(src.di);
   }
 
-  const be = Number(src.be);
-  if (Number.isFinite(be) && be >= 0) {
-    out.be = be;
-  }
-
-  const tags = getEvaluationStateTags(src);
-  if (tags.length) {
-    out.tg = tags.slice();
-  }
-
   if (normalizeSpace(src.s || "")) {
     out.s = String(src.s);
   }
@@ -3848,8 +3971,141 @@ function compactCommonStateMeta(src, out) {
     out.cc = Number(src.cc);
   }
 
+  if (Number(src.nm || 0) === 1) {
+    out.nm = 1;
+  }
+
   return out;
 }
+
+
+
+function isTextQuizCompactTupleState(state) {
+  return Array.isArray(state) && state.length >= 3;
+}
+
+function compactTextQuizValuePayloadForFreezeUrl(values) {
+  const arr = Array.isArray(values) ? values : [];
+
+  if (arr.length === 1) {
+    return String(arr[0] == null ? "" : arr[0]);
+  }
+
+  return arr.map(function (v) {
+    return String(v == null ? "" : v);
+  });
+}
+
+function expandTextQuizValuePayloadFromFreezeUrl(raw) {
+  if (Array.isArray(raw)) {
+    return raw.map(function (v) {
+      return String(v == null ? "" : v);
+    });
+  }
+
+  return [String(raw == null ? "" : raw)];
+}
+
+function canUseCompactTextQuizTuple(state) {
+  if (!state || typeof state !== "object" || Array.isArray(state)) {
+    return false;
+  }
+
+  const keys = Object.keys(state).filter(function (key) {
+    return state[key] !== undefined;
+  });
+
+  const allowed = {
+    ri: 1,
+    v: 1,
+    di: 1,
+    s: 1,
+    fc: 1,
+    cc: 1
+  };
+
+  for (let i = 0; i < keys.length; i++) {
+    if (!allowed[keys[i]]) {
+      return false;
+    }
+  }
+
+  if (!Number.isFinite(Number(state.ri)) || Number(state.ri) < 0) {
+    return false;
+  }
+
+  if (!Object.prototype.hasOwnProperty.call(state, "v")) {
+    return false;
+  }
+
+  return true;
+}
+
+function expandTextQuizStateFromFreezeUrl(state) {
+  if (!state) return null;
+
+  if (!isTextQuizCompactTupleState(state)) {
+    return copyJson(state) || state;
+  }
+
+  const out = {
+    ri: Number(state[0] || 0) || 0,
+    di: Number(state[1] || 0) || 0,
+    v: expandTextQuizValuePayloadFromFreezeUrl(state[2])
+  };
+
+  if (normalizeSpace(state[3] || "")) {
+    out.s = String(state[3]);
+  }
+
+  if (normalizeSpace(state[4] || "")) {
+    out.fc = String(state[4]);
+  }
+
+  if (Number(state[5] || 0) > 0) {
+    out.cc = Number(state[5]);
+  }
+
+  return out;
+}
+
+function expandSlideStateFromFreezeUrl(slide) {
+  if (!slide || typeof slide !== "object") {
+    return slide;
+  }
+
+  const out = copyJson(slide) || slide;
+
+  if (Array.isArray(out.q)) {
+    out.q = out.q
+      .map(expandTextQuizStateFromFreezeUrl)
+      .filter(Boolean);
+  }
+
+  if (Array.isArray(out.mq)) {
+    out.mq = out.mq
+      .map(expandMarkerQuizStateFromFreezeUrl)
+      .filter(Boolean);
+  }
+
+  return out;
+}
+
+function expandPayloadFromFreezeUrl(payload) {
+  if (!payload || !Array.isArray(payload.s)) {
+    return payload;
+  }
+
+  const out = copyJson(payload) || payload;
+
+  out.s = out.s
+    .map(expandSlideStateFromFreezeUrl)
+    .filter(Boolean);
+
+  return out;
+}
+
+
 
 function compactTextQuizStateForFreezeUrl(state) {
   if (!state) return null;
@@ -3859,19 +4115,45 @@ function compactTextQuizStateForFreezeUrl(state) {
     return normalizeSpace(v || "") !== "";
   });
 
-  const out = { k: state.k };
+  const out = {};
 
   const rootIndex = Number(state.ri);
   if (Number.isFinite(rootIndex) && rootIndex >= 0) {
     out.ri = rootIndex;
   }
 
-  if (hasText) out.v = values;
+  if (hasText) {
+    out.v = values.map(function (v) {
+      return String(v == null ? "" : v);
+    });
+  }
 
   compactCommonStateMeta(state, out);
 
   if (!hasText && !hasMeaningfulOutcomeState(out)) {
     return null;
+  }
+
+  if (canUseCompactTextQuizTuple(out)) {
+    const tuple = [
+      Number(out.ri || 0) || 0,
+      Number(out.di || 0) || 0,
+      compactTextQuizValuePayloadForFreezeUrl(out.v)
+    ];
+
+    if (normalizeSpace(out.s || "")) {
+      tuple[3] = String(out.s);
+    }
+
+    if (normalizeSpace(out.fc || "")) {
+      tuple[4] = String(out.fc);
+    }
+
+    if (Number(out.cc || 0) > 0) {
+      tuple[5] = Number(out.cc);
+    }
+
+    return tuple;
   }
 
   return out;
@@ -3883,11 +4165,13 @@ function compactDropdownStateForFreezeUrl(state) {
   const value = String(state.v || "");
   const hasChoice = !isDropdownPlaceholderValue(value);
 
-  const out = { k: state.k };
+  const out = {};
 
   const rootIndex = Number(state.ri);
   if (Number.isFinite(rootIndex) && rootIndex >= 0) {
     out.ri = rootIndex;
+  } else if (normalizeSpace(state.k || "")) {
+    out.k = state.k;
   }
 
   if (hasChoice) out.v = value;
@@ -3909,11 +4193,13 @@ function compactTileStateForFreezeUrl(state) {
     return normalizeSpace(v || "") !== "";
   });
 
-  const out = { k: state.k };
+  const out = {};
 
   const rootIndex = Number(state.ri);
   if (Number.isFinite(rootIndex) && rootIndex >= 0) {
     out.ri = rootIndex;
+  } else if (normalizeSpace(state.k || "")) {
+    out.k = state.k;
   }
 
   if (hasPlacedTiles) out.v = values;
@@ -3935,11 +4221,13 @@ function compactChoiceStateForFreezeUrl(state) {
     return !!Number(v);
   });
 
-  const out = { k: state.k };
+  const out = {};
 
   const rootIndex = Number(state.ri);
   if (Number.isFinite(rootIndex) && rootIndex >= 0) {
     out.ri = rootIndex;
+  } else if (normalizeSpace(state.k || "")) {
+    out.k = state.k;
   }
 
   if (hasSelection) out.v = values;
@@ -3953,32 +4241,148 @@ function compactChoiceStateForFreezeUrl(state) {
   return out;
 }
 
+
+
+
+
 function compactOrthographyStateForFreezeUrl(state) {
   if (!state) return null;
 
   const text = String(state.v || "");
   const tries = Number(state.tr || 0) || 0;
-  const solved = !!Number(state.sv || 0);
+  const solved = isOrthographySolvedState(state);
+
+  const refs = getOrthographyReferenceTexts(state.u, null);
+  const startText = typeof refs.start === "string" ? refs.start : "";
+  const solutionText = typeof refs.solution === "string" ? refs.solution : "";
 
   const hasText = normalizeSpace(text) !== "";
+
+  // Ungeprüft + unverändert = Starttext ist im Makro ohnehin vorhanden
+  const omitBecauseUnchangedStart =
+    hasText &&
+    !solved &&
+    startText !== "" &&
+    text === startText;
+
+  // Gelöst / aufgelöst = Lösung ist im Makro ohnehin vorhanden
+  const omitBecauseSolved =
+    solved &&
+    solutionText !== "";
+
+  const shouldStoreText =
+    hasText &&
+    !omitBecauseUnchangedStart &&
+    !omitBecauseSolved;
 
   const out = {
     k: state.k,
     u: state.u
   };
 
-  if (hasText) out.v = text;
-  if (tries > 0) out.tr = tries;
-  if (solved) out.sv = 1;
+  if (shouldStoreText) {
+    out.v = text;
+  }
+
+  if (tries > 0) {
+    out.tr = tries;
+  }
+
+  if (solved) {
+    out.sv = 1;
+  }
 
   compactCommonStateMeta(state, out);
 
-  if (!hasText && tries <= 0 && !solved && !hasMeaningfulOutcomeState(out)) {
+  // Wenn weder Text noch Status noch Prüfspur relevant sind,
+  // kann der ganze Orthography-Zustand entfallen.
+  if (
+    !shouldStoreText &&
+    tries <= 0 &&
+    !solved &&
+    !hasMeaningfulOutcomeState(out)
+  ) {
     return null;
   }
 
   return out;
 }
+
+
+function getOrthographyReferenceTexts(uid, wrap) {
+  const out = {
+    start: "",
+    solution: ""
+  };
+
+  const cleanUid = normalizeSpace(
+    uid || getOrthographyUidFromWrap(wrap) || ""
+  );
+
+  const mod = getOrthographyModule();
+
+  if (mod && mod.state && cleanUid && mod.state[cleanUid]) {
+    const S = mod.state[cleanUid];
+
+    if (typeof S.start === "string") {
+      out.start = S.start;
+    }
+
+    if (typeof S.solution === "string") {
+      out.solution = S.solution;
+    }
+  }
+
+  // Nur beim Anwenden im Freeze vorsichtig auf das bereits gerenderte Feld
+  // zurückfallen. Beim Komprimieren rufen wir diese Funktion mit wrap=null auf,
+  // damit ein geänderter Live-Inhalt nicht versehentlich als "Start" gilt.
+  if (wrap) {
+    const input = getOrthographyInputFromWrap(wrap);
+
+    if (input) {
+      if (!out.start) {
+        if (typeof input.defaultValue === "string" && input.defaultValue !== "") {
+          out.start = input.defaultValue;
+        } else {
+          const attrValue = input.getAttribute("value");
+          if (typeof attrValue === "string" && attrValue !== "") {
+            out.start = attrValue;
+          }
+        }
+      }
+
+      if (!out.start) {
+        const currentValue = readTextQuizInputValue(input);
+        if (typeof currentValue === "string" && currentValue !== "") {
+          out.start = currentValue;
+        }
+      }
+    }
+  }
+
+  return out;
+}
+
+function getOrthographyReconstructedValue(state, wrap) {
+  if (!state) return null;
+
+  if (typeof state.v === "string") {
+    return state.v;
+  }
+
+  const refs = getOrthographyReferenceTexts(state.u, wrap);
+
+  if (isOrthographySolvedState(state) && refs.solution) {
+    return refs.solution;
+  }
+
+  if (refs.start) {
+    return refs.start;
+  }
+
+  return null;
+}
+
 
 function compactFractionStateForFreezeUrl(state) {
   if (!state) return null;
@@ -3988,10 +4392,13 @@ function compactFractionStateForFreezeUrl(state) {
   const hasMarkedParts = /1/.test(mask);
 
   const out = {
-    k: state.k,
     u: state.u,
     tp: tp
   };
+
+  if (!normalizeSpace(state.u || "") && normalizeSpace(state.k || "")) {
+    out.k = state.k;
+  }
 
   if (tp === "c") {
     const n = Math.max(1, Number(state.n || 1) || 1);
@@ -4022,20 +4429,143 @@ function compactFractionStateForFreezeUrl(state) {
   return out;
 }
 
+
+function encodeMarkerQuizMarksForFreezeUrl(rawMarks) {
+  const marks = Array.isArray(rawMarks) ? rawMarks : [];
+  const pathList = [];
+  const pathIndex = Object.create(null);
+
+  function internPath(path) {
+    const key = String(path || "");
+    if (!key) return -1;
+
+    if (!Object.prototype.hasOwnProperty.call(pathIndex, key)) {
+      pathIndex[key] = pathList.length;
+      pathList.push(key);
+    }
+
+    return pathIndex[key];
+  }
+
+  const compactMarks = marks.map(function (mark) {
+    if (!mark || !mark.a) return null;
+
+    const sp = String(mark.a.sp || "");
+    const ep = String(mark.a.ep || "");
+    if (!sp || !ep) return null;
+
+    const spIdx = internPath(sp);
+    const epIdx = internPath(ep);
+
+    if (spIdx < 0 || epIdx < 0) return null;
+
+    const kindCode = String(mark.k || "u") === "s" ? 1 : 0;
+    const colorCode = encodeGeneralMarkerColor(mark.c || "yellow");
+    const so = Number(mark.a.so || 0);
+    const eo = Number(mark.a.eo || 0);
+
+    if (spIdx === epIdx) {
+      return [kindCode, colorCode, spIdx, so, eo];
+    }
+
+    return [kindCode, colorCode, spIdx, so, epIdx, eo];
+  }).filter(Boolean);
+
+  return {
+    h: compactMarks,
+    p: pathList
+  };
+}
+
+function expandMarkerQuizStateFromFreezeUrl(state) {
+  if (!state || typeof state !== "object") return null;
+
+  const out = copyJson(state) || state;
+  const rawMarks = Array.isArray(out.h) ? out.h : [];
+
+  if (!rawMarks.length) {
+    delete out.p;
+    return out;
+  }
+
+  // Altformat weiter unverändert unterstützen
+  if (!Array.isArray(rawMarks[0])) {
+    delete out.p;
+    return out;
+  }
+
+  const pathList = Array.isArray(out.p) ? out.p : [];
+
+  out.h = rawMarks.map(function (entry) {
+    if (!Array.isArray(entry) || entry.length < 5) return null;
+
+    const kind = Number(entry[0] || 0) === 1 ? "s" : "u";
+    const color = decodeGeneralMarkerColor(entry[1] || "yellow");
+
+    // Gleiches Start-/End-Path
+    if (entry.length === 5) {
+      const path = String(pathList[Number(entry[2] || 0)] || "");
+      if (!path) return null;
+
+      return {
+        k: kind,
+        c: color,
+        a: {
+          sp: path,
+          so: Number(entry[3] || 0),
+          ep: path,
+          eo: Number(entry[4] || 0)
+        }
+      };
+    }
+
+    // Unterschiedliche Start-/End-Paths
+    const sp = String(pathList[Number(entry[2] || 0)] || "");
+    const ep = String(pathList[Number(entry[4] || 0)] || "");
+
+    if (!sp || !ep) return null;
+
+    return {
+      k: kind,
+      c: color,
+      a: {
+        sp: sp,
+        so: Number(entry[3] || 0),
+        ep: ep,
+        eo: Number(entry[5] || 0)
+      }
+    };
+  }).filter(Boolean);
+
+  delete out.p;
+  return out;
+}
+
+
+
 function compactMarkerQuizStateForFreezeUrl(state) {
   if (!state) return null;
 
-  const marks = Array.isArray(state.h) ? copyJson(state.h) : [];
+  const compactMarks = encodeMarkerQuizMarksForFreezeUrl(state.h);
   const inputValue = String(state.iv || "");
-  const hasMarks = marks.length > 0;
+  const hasMarks = Array.isArray(compactMarks.h) && compactMarks.h.length > 0;
   const hasInputValue = normalizeSpace(inputValue) !== "";
 
   const out = {
-    k: state.k,
     sc: state.sc
   };
 
-  if (hasMarks) out.h = marks;
+  if (!normalizeSpace(state.sc || "") && normalizeSpace(state.k || "")) {
+    out.k = state.k;
+  }
+
+  if (hasMarks) {
+    out.h = compactMarks.h;
+    if (compactMarks.p.length) {
+      out.p = compactMarks.p;
+    }
+  }
+
   if (hasInputValue) out.iv = inputValue;
   if (normalizeSpace(state.sl || "")) out.sl = String(state.sl);
 
@@ -4043,6 +4573,21 @@ function compactMarkerQuizStateForFreezeUrl(state) {
 
   if (!hasMarks && !hasInputValue && !hasMeaningfulOutcomeState(out)) {
     return null;
+  }
+
+  if (hasMarks) {
+    const beforeLen = JSON.stringify(Array.isArray(state.h) ? state.h : []).length;
+    const afterLen = JSON.stringify({
+      h: out.h || [],
+      p: out.p || []
+    }).length;
+
+    log(
+      "markerquiz-compact",
+      "before=" + beforeLen,
+      "after=" + afterLen,
+      "saved=" + Math.max(0, beforeLen - afterLen)
+    );
   }
 
   return out;
@@ -4397,6 +4942,157 @@ function normalizeCanvasStoredColor(value) {
   return s;
 }
 
+
+
+function getCanvasItemThemeModeForFreezeUrl(item, role) {
+  return getCanvasStoredColorKeyFromItem(item, role);
+}
+
+function getCanvasStoredStrokeValueForFreezeUrl(item) {
+  const mode = getCanvasItemThemeModeForFreezeUrl(item, "stroke");
+  if (mode) {
+    return mode;
+  }
+
+  if (item && Object.prototype.hasOwnProperty.call(item, "c")) {
+    return String(item.c == null ? "" : item.c);
+  }
+
+  return "#000000";
+}
+
+function getCanvasStoredFillValueForFreezeUrl(item) {
+  const mode = getCanvasItemThemeModeForFreezeUrl(item, "fill");
+  if (mode) {
+    return mode;
+  }
+
+  if (item && Object.prototype.hasOwnProperty.call(item, "f")) {
+    return String(item.f == null ? "" : item.f);
+  }
+
+  return "rgba(0,0,0,0)";
+}
+
+
+
+function normalizeCanvasStoredColorKey(value) {
+  const txt = normalizeSpace(value || "").toLowerCase();
+
+  if (txt === "default" || txt === "auto") {
+    return txt;
+  }
+
+  return "";
+}
+
+function getCanvasStoredColorKeyFromItem(item, role) {
+  if (!item || typeof item !== "object") return "";
+
+  const names = role === "fill"
+    ? ["fk", "fillKey", "fillColorKey", "fillMode", "colorMode", "mode"]
+    : ["ck", "colorKey", "strokeKey", "strokeColorKey", "strokeMode", "colorMode", "mode"];
+
+  for (let i = 0; i < names.length; i++) {
+    const clean = normalizeCanvasStoredColorKey(item[names[i]]);
+    if (clean) return clean;
+  }
+
+  const rawValue = role === "fill"
+    ? (item.f != null ? item.f : item.fill)
+    : (item.c != null ? item.c : item.color);
+
+  return normalizeCanvasStoredColorKey(rawValue);
+}
+
+function encodeCanvasColorMetaEntryForFreezeUrl(rawColor, rawColorKey) {
+  const colorEntry = encodeCanvasColorEntryForFreezeUrl(rawColor);
+  const colorKey = normalizeCanvasStoredColorKey(rawColorKey);
+
+  if (!colorKey) {
+    return colorEntry;
+  }
+
+  const keyCode = colorKey === "default" ? "d" : "a";
+
+  if (!colorEntry) {
+    return "!" + keyCode;
+  }
+
+  return "!" + keyCode + ":" + colorEntry;
+}
+
+function decodeCanvasColorMetaEntryFromFreezeUrl(value, fallbackColor) {
+  const txt = String(value == null ? "" : value).trim();
+
+  if (!txt) {
+    return {
+      color: fallbackColor,
+      colorKey: ""
+    };
+  }
+
+  const m = txt.match(/^!(d|a)(?::(.+))?$/i);
+  if (m) {
+    return {
+      color: decodeCanvasColorEntryFromFreezeUrl(m[2] || "", fallbackColor),
+      colorKey: m[1].toLowerCase() === "d" ? "default" : "auto"
+    };
+  }
+
+  return {
+    color: decodeCanvasColorEntryFromFreezeUrl(txt, fallbackColor),
+    colorKey: ""
+  };
+}
+
+function internCanvasColorMetaEntryForFreezeUrl(rawColor, rawColorKey, colorList, colorIndex) {
+  const stored = encodeCanvasColorMetaEntryForFreezeUrl(rawColor, rawColorKey);
+  if (!stored) return -1;
+
+  if (!Object.prototype.hasOwnProperty.call(colorIndex, stored)) {
+    colorIndex[stored] = colorList.length;
+    colorList.push(stored);
+  }
+
+  return colorIndex[stored];
+}
+
+function applyCanvasStrokeColorMetaToExpandedItem(out, colorMeta) {
+  if (!out || !colorMeta) return out;
+
+  out.c = colorMeta.color;
+
+  if (colorMeta.colorKey) {
+    out.ck = colorMeta.colorKey;
+    out.colorKey = colorMeta.colorKey;
+    out.strokeKey = colorMeta.colorKey;
+    out.strokeColorKey = colorMeta.colorKey;
+    out.strokeMode = colorMeta.colorKey;
+    out.colorMode = colorMeta.colorKey;
+    out.mode = colorMeta.colorKey;
+  }
+
+  return out;
+}
+
+function applyCanvasFillColorMetaToExpandedItem(out, colorMeta) {
+  if (!out || !colorMeta) return out;
+
+  out.f = colorMeta.color;
+
+  if (colorMeta.colorKey) {
+    out.fk = colorMeta.colorKey;
+    out.fillKey = colorMeta.colorKey;
+    out.fillColorKey = colorMeta.colorKey;
+    out.fillMode = colorMeta.colorKey;
+    out.colorMode = colorMeta.colorKey;
+    out.mode = colorMeta.colorKey;
+  }
+
+  return out;
+}
+
 function encodeCanvasColorEntryForFreezeUrl(value) {
   const norm = normalizeCanvasStoredColor(value);
   if (!norm) return "";
@@ -4504,6 +5200,16 @@ function decodeCanvasIntListFromFreezeUrlString(raw) {
 
 const CANVAS_CODEC_VERSION_V3 = "cv3";
 const CANVAS_V3_PATH_MAGIC = 3;
+
+const CANVAS_PATH_ENTRY_TYPE_V2 = 0;
+const CANVAS_RECT_ENTRY_TYPE = 1;
+const CANVAS_POINT_ENTRY_TYPE = 2;
+const CANVAS_PATH_ENTRY_TYPE_V3 = 3;
+
+const CANVAS_ERASER_PATH_ENTRY_TYPE_V2 = 5;
+const CANVAS_ERASER_POINT_ENTRY_TYPE = 6;
+const CANVAS_ERASER_PATH_ENTRY_TYPE_V3 = 7;
+
 
 function pushCanvasVarUint(bytes, value) {
   let v = Number(value);
@@ -4911,13 +5617,33 @@ function compactCanvasPathItemForFreezeUrl(item, colorList, colorIndex) {
 
   const kind = String(item.k || "");
 
-  if (kind === "p") {
+  if (kind === "p" || kind === "e") {
+    const isEraser = kind === "e";
     const abs = quantizeCanvasPathPointsForFreezeUrl(item.p);
 
     if (!abs.length) return null;
 
-    const ci = internCanvasColorEntryForFreezeUrl(
-      String(item.c || "#000000"),
+    const rawStrokeColor =
+      item.c != null ? item.c :
+      item.color != null ? item.color :
+      "#000000";
+
+    const strokeKey = getCanvasStoredColorKeyFromItem(item, "stroke");
+    const storedStrokeMeta = encodeCanvasColorMetaEntryForFreezeUrl(
+      rawStrokeColor,
+      strokeKey
+    );
+
+    log(
+      "canvas-stroke-store",
+      "raw=" + String(rawStrokeColor),
+      "key=" + String(strokeKey || ""),
+      "stored=" + String(storedStrokeMeta)
+    );
+
+    const ci = internCanvasColorMetaEntryForFreezeUrl(
+      rawStrokeColor,
+      strokeKey,
       colorList,
       colorIndex
     );
@@ -4927,18 +5653,28 @@ function compactCanvasPathItemForFreezeUrl(item, colorList, colorIndex) {
     const alpha = Number(item.a == null ? 1 : item.a);
     const width = Number(item.w == null ? 1 : item.w);
 
-    // Sonderfall: genau ein Punkt
     if (abs.length === 1) {
       const x = abs[0][0];
       const y = abs[0][1];
 
       if (alpha === 1) {
-        // [type, colorIndex, width, x, y]
-        return [2, ci, width, x, y];
+        return [
+          isEraser ? CANVAS_ERASER_POINT_ENTRY_TYPE : CANVAS_POINT_ENTRY_TYPE,
+          ci,
+          width,
+          x,
+          y
+        ];
       }
 
-      // [type, colorIndex, alpha, width, x, y]
-      return [2, ci, alpha, width, x, y];
+      return [
+        isEraser ? CANVAS_ERASER_POINT_ENTRY_TYPE : CANVAS_POINT_ENTRY_TYPE,
+        ci,
+        alpha,
+        width,
+        x,
+        y
+      ];
     }
 
     const ptsV2 = encodeCanvasAbsPointsToFreezeUrlString(abs);
@@ -4955,34 +5691,58 @@ function compactCanvasPathItemForFreezeUrl(item, colorList, colorIndex) {
     if (useV3) {
       log(
         "canvas-cv3-path",
+        "kind=" + kind,
         "points=" + abs.length,
         "v2=" + String(ptsV2 ? ptsV2.length : 0),
         "v3=" + String(ptsV3 ? ptsV3.length : 0)
       );
     }
 
+    const typeV2 = isEraser
+      ? CANVAS_ERASER_PATH_ENTRY_TYPE_V2
+      : CANVAS_PATH_ENTRY_TYPE_V2;
+
+    const typeV3 = isEraser
+      ? CANVAS_ERASER_PATH_ENTRY_TYPE_V3
+      : CANVAS_PATH_ENTRY_TYPE_V3;
+
     if (useV3) {
       if (alpha === 1) {
-        // [type, colorIndex, width, binaryToken]
-        return [3, ci, width, pts];
+        return [typeV3, ci, width, pts];
       }
 
-      // [type, colorIndex, alpha, width, binaryToken]
-      return [3, ci, alpha, width, pts];
+      return [typeV3, ci, alpha, width, pts];
     }
 
     if (alpha === 1) {
-      // [type, colorIndex, width, encodedPoints]
-      return [0, ci, width, pts];
+      return [typeV2, ci, width, pts];
     }
 
-    // [type, colorIndex, alpha, width, encodedPoints]
-    return [0, ci, alpha, width, pts];
+    return [typeV2, ci, alpha, width, pts];
   }
 
   if (kind === "r") {
-    const fi = internCanvasColorEntryForFreezeUrl(
-      String(item.f || "rgba(0,0,0,0)"),
+    const rawFillColor =
+      item.f != null ? item.f :
+      item.fill != null ? item.fill :
+      "rgba(0,0,0,0)";
+
+    const fillKey = getCanvasStoredColorKeyFromItem(item, "fill");
+    const storedFillMeta = encodeCanvasColorMetaEntryForFreezeUrl(
+      rawFillColor,
+      fillKey
+    );
+
+    log(
+      "canvas-fill-store",
+      "raw=" + String(rawFillColor),
+      "key=" + String(fillKey || ""),
+      "stored=" + String(storedFillMeta)
+    );
+
+    const fi = internCanvasColorMetaEntryForFreezeUrl(
+      rawFillColor,
+      fillKey,
       colorList,
       colorIndex
     );
@@ -4998,8 +5758,7 @@ function compactCanvasPathItemForFreezeUrl(item, colorList, colorIndex) {
       return null;
     }
 
-    // [type, fillIndex, x, y, w, h]
-    return [1, fi, x, y, w, h];
+    return [CANVAS_RECT_ENTRY_TYPE, fi, x, y, w, h];
   }
 
   return null;
@@ -5007,6 +5766,42 @@ function compactCanvasPathItemForFreezeUrl(item, colorList, colorIndex) {
 
 
 const CANVAS_PATH_RUN_ENTRY_TYPE = 4;
+
+
+const CANVAS_RUN_TOKEN_SEPARATOR = "~";
+// "~" ist absichtlich gewählt:
+// - kommt in base64url-Tokens nicht vor
+// - kommt auch in deinem alten Punkt-/Base36-Format nicht vor
+// - eignet sich daher gut als verlustfreier Trenner
+
+function encodeCanvasPathRunTokenListForFreezeUrl(tokens) {
+  const list = (Array.isArray(tokens) ? tokens : []).filter(function (token) {
+    return typeof token === "string" && token.length > 0;
+  });
+
+  if (!list.length) return "";
+  return list.join(CANVAS_RUN_TOKEN_SEPARATOR);
+}
+
+function decodeCanvasPathRunTokenListFromFreezeUrl(raw) {
+  // Altformat weiter unterstützen: token-Liste als Array
+  if (Array.isArray(raw)) {
+    return raw.filter(function (token) {
+      return typeof token === "string" && token.length > 0;
+    });
+  }
+
+  // Neues Format: ein einziger String mit "~" als Trenner
+  const txt = String(raw || "");
+  if (!txt) return [];
+
+  return txt
+    .split(CANVAS_RUN_TOKEN_SEPARATOR)
+    .filter(function (token) {
+      return !!token;
+    });
+}
+
 
 function getCanvasCompactPathRunMeta(entry) {
   if (!Array.isArray(entry) || !entry.length) return null;
@@ -5016,7 +5811,14 @@ function getCanvasCompactPathRunMeta(entry) {
   // Nur normale Pfade bündeln:
   // 0 = alter String-Pfad
   // 3 = binärer cv3-Pfad
-  if (type !== 0 && type !== 3) return null;
+  if (
+    type !== CANVAS_PATH_ENTRY_TYPE_V2 &&
+    type !== CANVAS_PATH_ENTRY_TYPE_V3 &&
+    type !== CANVAS_ERASER_PATH_ENTRY_TYPE_V2 &&
+    type !== CANVAS_ERASER_PATH_ENTRY_TYPE_V3
+  ) {
+    return null;
+  }
 
   const colorIdx = Number(entry[1] || 0);
 
@@ -5061,16 +5863,18 @@ function makeCanvasCompactPathRunTuple(meta, tokens) {
     return [meta.pathType, meta.colorIdx, meta.alpha, meta.width, list[0]];
   }
 
+  const packedTokenString = encodeCanvasPathRunTokenListForFreezeUrl(list);
+
   // Neuer Run-Typ:
-  // [4, pathType, colorIdx, width, [token1, token2, ...]]
-  // [4, pathType, colorIdx, alpha, width, [token1, token2, ...]]
+  // [4, pathType, colorIdx, width, "tok1~tok2~tok3"]
+  // [4, pathType, colorIdx, alpha, width, "tok1~tok2~tok3"]
   if (meta.alpha === 1) {
     return [
       CANVAS_PATH_RUN_ENTRY_TYPE,
       meta.pathType,
       meta.colorIdx,
       meta.width,
-      list
+      packedTokenString
     ];
   }
 
@@ -5080,7 +5884,7 @@ function makeCanvasCompactPathRunTuple(meta, tokens) {
     meta.colorIdx,
     meta.alpha,
     meta.width,
-    list
+    packedTokenString
   ];
 }
 
@@ -5163,7 +5967,27 @@ function expandCanvasPathItemFromFreezeUrl(entry, colors) {
 
   const type = Number(entry[0]);
 
-  if (type === 0) {
+  const PATH_V2 = 0;
+  const RECT = 1;
+  const POINT = 2;
+  const PATH_V3 = 3;
+  const ERASER_PATH_V2 = 5;
+  const ERASER_POINT = 6;
+  const ERASER_PATH_V3 = 7;
+
+  if (
+    type === PATH_V2 ||
+    type === PATH_V3 ||
+    type === POINT ||
+    type === ERASER_PATH_V2 ||
+    type === ERASER_POINT ||
+    type === ERASER_PATH_V3
+  ) {
+    const isEraser =
+      type === ERASER_PATH_V2 ||
+      type === ERASER_POINT ||
+      type === ERASER_PATH_V3;
+
     const colorIdx = Number(entry[1] || 0);
 
     const storedColor =
@@ -5171,71 +5995,89 @@ function expandCanvasPathItemFromFreezeUrl(entry, colors) {
         ? colors[colorIdx]
         : "#000000";
 
-    const color = decodeCanvasColorEntryFromFreezeUrl(
+    const colorMeta = decodeCanvasColorMetaEntryFromFreezeUrl(
       storedColor,
       "#000000"
     );
 
-    if (entry.length === 4) {
-      return {
-        k: "p",
-        c: color,
-        a: 1,
-        w: Number(entry[2] || 1) || 1,
-        p: decodeCanvasPathPointsFromFreezeUrl(entry[3])
-      };
+    const color = colorMeta.color;
+
+    const outKind = isEraser ? "e" : "p";
+
+    if (type === POINT || type === ERASER_POINT) {
+      if (entry.length === 5) {
+        return applyCanvasStrokeColorMetaToExpandedItem({
+          k: outKind,
+          a: 1,
+          w: Number(entry[2] || 1) || 1,
+          p: [[
+            decodeCanvasPointNumberFromFreezeUrl(entry[3]),
+            decodeCanvasPointNumberFromFreezeUrl(entry[4])
+          ]]
+        }, colorMeta);
+      }
+
+      if (entry.length >= 6) {
+        return applyCanvasStrokeColorMetaToExpandedItem({
+          k: outKind,
+          a: Number(entry[2] || 1) || 1,
+          w: Number(entry[3] || 1) || 1,
+          p: [[
+            decodeCanvasPointNumberFromFreezeUrl(entry[4]),
+            decodeCanvasPointNumberFromFreezeUrl(entry[5])
+          ]]
+        }, colorMeta);
+      }
+
+      return null;
     }
 
-    if (entry.length >= 5) {
-      return {
-        k: "p",
-        c: color,
-        a: Number(entry[2] || 1) || 1,
-        w: Number(entry[3] || 1) || 1,
-        p: decodeCanvasPathPointsFromFreezeUrl(entry[4])
-      };
+    if (type === PATH_V2 || type === ERASER_PATH_V2) {
+      if (entry.length === 4) {
+        return applyCanvasStrokeColorMetaToExpandedItem({
+          k: outKind,
+          a: 1,
+          w: Number(entry[2] || 1) || 1,
+          p: decodeCanvasPathPointsFromFreezeUrl(entry[3])
+        }, colorMeta);
+      }
+
+      if (entry.length >= 5) {
+        return applyCanvasStrokeColorMetaToExpandedItem({
+          k: outKind,
+          a: Number(entry[2] || 1) || 1,
+          w: Number(entry[3] || 1) || 1,
+          p: decodeCanvasPathPointsFromFreezeUrl(entry[4])
+        }, colorMeta);
+      }
+
+      return null;
     }
 
-    return null;
+    if (type === PATH_V3 || type === ERASER_PATH_V3) {
+      if (entry.length === 4) {
+        return applyCanvasStrokeColorMetaToExpandedItem({
+          k: outKind,
+          a: 1,
+          w: Number(entry[2] || 1) || 1,
+          p: decodeCanvasPathPointsFromBinaryTokenForFreezeUrl(entry[3])
+        }, colorMeta);
+      }
+
+      if (entry.length >= 5) {
+        return applyCanvasStrokeColorMetaToExpandedItem({
+          k: outKind,
+          a: Number(entry[2] || 1) || 1,
+          w: Number(entry[3] || 1) || 1,
+          p: decodeCanvasPathPointsFromBinaryTokenForFreezeUrl(entry[4])
+        }, colorMeta);
+      }
+
+      return null;
+    }
   }
 
-  if (type === 3) {
-    const colorIdx = Number(entry[1] || 0);
-
-    const storedColor =
-      colorIdx >= 0 && colorIdx < colors.length
-        ? colors[colorIdx]
-        : "#000000";
-
-    const color = decodeCanvasColorEntryFromFreezeUrl(
-      storedColor,
-      "#000000"
-    );
-
-    if (entry.length === 4) {
-      return {
-        k: "p",
-        c: color,
-        a: 1,
-        w: Number(entry[2] || 1) || 1,
-        p: decodeCanvasPathPointsFromBinaryTokenForFreezeUrl(entry[3])
-      };
-    }
-
-    if (entry.length >= 5) {
-      return {
-        k: "p",
-        c: color,
-        a: Number(entry[2] || 1) || 1,
-        w: Number(entry[3] || 1) || 1,
-        p: decodeCanvasPathPointsFromBinaryTokenForFreezeUrl(entry[4])
-      };
-    }
-
-    return null;
-  }
-
-  if (type === 1) {
+  if (type === RECT) {
     const fillIdx = Number(entry[1] || 0);
 
     const storedFill =
@@ -5243,61 +6085,20 @@ function expandCanvasPathItemFromFreezeUrl(entry, colors) {
         ? colors[fillIdx]
         : "rgba(0,0,0,0)";
 
-    const fill = decodeCanvasColorEntryFromFreezeUrl(
+    const fillMeta = decodeCanvasColorMetaEntryFromFreezeUrl(
       storedFill,
       "rgba(0,0,0,0)"
     );
+    
+    const fill = fillMeta.color;
 
-    return {
+    return applyCanvasFillColorMetaToExpandedItem({
       k: "r",
-      f: fill,
       x: decodeCanvasPointNumberFromFreezeUrl(entry[2]),
       y: decodeCanvasPointNumberFromFreezeUrl(entry[3]),
       w: decodeCanvasPointNumberFromFreezeUrl(entry[4]),
       h: decodeCanvasPointNumberFromFreezeUrl(entry[5])
-    };
-  }
-
-  if (type === 2) {
-    const colorIdx = Number(entry[1] || 0);
-
-    const storedColor =
-      colorIdx >= 0 && colorIdx < colors.length
-        ? colors[colorIdx]
-        : "#000000";
-
-    const color = decodeCanvasColorEntryFromFreezeUrl(
-      storedColor,
-      "#000000"
-    );
-
-    if (entry.length === 5) {
-      return {
-        k: "p",
-        c: color,
-        a: 1,
-        w: Number(entry[2] || 1) || 1,
-        p: [[
-          decodeCanvasPointNumberFromFreezeUrl(entry[3]),
-          decodeCanvasPointNumberFromFreezeUrl(entry[4])
-        ]]
-      };
-    }
-
-    if (entry.length >= 6) {
-      return {
-        k: "p",
-        c: color,
-        a: Number(entry[2] || 1) || 1,
-        w: Number(entry[3] || 1) || 1,
-        p: [[
-          decodeCanvasPointNumberFromFreezeUrl(entry[4]),
-          decodeCanvasPointNumberFromFreezeUrl(entry[5])
-        ]]
-      };
-    }
-
-    return null;
+    }, fillMeta);
   }
 
   return null;
@@ -5490,12 +6291,25 @@ function compactSingleCanvasStateForFreezeUrl(state) {
 
   const packedItems = compactCanvasPathRunsForFreezeUrl(compactItems);
 
+  // kleiner Singleton-Kollaps:
+  // - genau 1 Farbe => nicht als Array ["9"], sondern direkt als "9"
+  // - genau 1 Item  => nicht als [[...]], sondern direkt als [...]
+  const compactColorsForTuple =
+    colorList.length === 0
+      ? 0
+      : (colorList.length === 1 ? colorList[0] : colorList);
+
+  const compactItemsForTuple =
+    packedItems.length === 0
+      ? 0
+      : (packedItems.length === 1 ? packedItems[0] : packedItems);
+
   const out = [
     uid,
     storedW,
     storedH,
-    colorList.length ? colorList : 0,
-    packedItems.length ? packedItems : 0,
+    compactColorsForTuple,
+    compactItemsForTuple,
     emptyFlag
   ];
 
@@ -5520,6 +6334,23 @@ function compactSingleCanvasStateForFreezeUrl(state) {
 }
 
 
+function normalizeCanvasCompactItemListFromFreezeUrl(rawItems) {
+  if (rawItems == null || rawItems === 0) return [];
+
+  // Alt-/Normalfall: echte Item-Liste
+  if (Array.isArray(rawItems) && Array.isArray(rawItems[0])) {
+    return rawItems;
+  }
+
+  // Neuer Singleton-Fall: genau ein Item direkt gespeichert
+  if (Array.isArray(rawItems)) {
+    return [rawItems];
+  }
+
+  return [];
+}
+
+
 
 function expandCanvasPathEntriesFromFreezeUrl(entry, colors) {
   if (!Array.isArray(entry) || !entry.length) return [];
@@ -5536,37 +6367,43 @@ function expandCanvasPathEntriesFromFreezeUrl(entry, colors) {
         ? colors[colorIdx]
         : "#000000";
 
-    const color = decodeCanvasColorEntryFromFreezeUrl(
+    const colorMeta = decodeCanvasColorMetaEntryFromFreezeUrl(
       storedColor,
       "#000000"
     );
 
     let alpha = 1;
     let width = 1;
-    let tokens = [];
+    let tokenPayload = null;
 
     if (entry.length === 5) {
       width = Number(entry[3] || 1) || 1;
-      tokens = Array.isArray(entry[4]) ? entry[4] : [];
+      tokenPayload = entry[4];
     } else if (entry.length >= 6) {
       alpha = Number(entry[3] || 1) || 1;
       width = Number(entry[4] || 1) || 1;
-      tokens = Array.isArray(entry[5]) ? entry[5] : [];
+      tokenPayload = entry[5];
     } else {
       return [];
     }
+
+    const tokens = decodeCanvasPathRunTokenListFromFreezeUrl(tokenPayload);
+
+    const isBinary =
+      pathType === CANVAS_PATH_ENTRY_TYPE_V3 ||
+      pathType === CANVAS_ERASER_PATH_ENTRY_TYPE_V3;
+
+    const isEraser =
+      pathType === CANVAS_ERASER_PATH_ENTRY_TYPE_V2 ||
+      pathType === CANVAS_ERASER_PATH_ENTRY_TYPE_V3;
 
     return tokens.map(function (token) {
       let points = null;
 
       try {
-        if (pathType === 3) {
-          points = decodeCanvasPathPointsFromBinaryTokenForFreezeUrl(token);
-        } else if (pathType === 0) {
-          points = decodeCanvasPathPointsFromFreezeUrl(token);
-        } else {
-          return null;
-        }
+        points = isBinary
+          ? decodeCanvasPathPointsFromBinaryTokenForFreezeUrl(token)
+          : decodeCanvasPathPointsFromFreezeUrl(token);
       } catch (err) {
         warn(
           "canvas-run-expand-failed",
@@ -5579,13 +6416,12 @@ function expandCanvasPathEntriesFromFreezeUrl(entry, colors) {
         return null;
       }
 
-      return {
-        k: "p",
-        c: color,
+      return applyCanvasStrokeColorMetaToExpandedItem({
+        k: isEraser ? "e" : "p",
         a: alpha,
         w: width,
         p: points
-      };
+      }, colorMeta);
     }).filter(Boolean);
   }
 
@@ -5606,12 +6442,19 @@ function expandCanvasStateFromFreezeUrl(state) {
   // - w/h >= 0  => altes absolutes Format
   // - w/h < 0   => neues Delta-Format relativ zur Inhaltsmindestgröße
   if (isCanvasCompactTupleState(state)) {
-    const colors = Array.isArray(state[3])
-      ? state[3].map(function (c) { return String(c || "#000000"); })
-      : [];
+    const rawColors = state[3];
+    const colors =
+      rawColors === 0 || rawColors == null
+        ? []
+        : Array.isArray(rawColors)
+          ? rawColors.map(function (c) { return String(c || "#000000"); })
+          : [String(rawColors || "#000000")];
+
+    const rawItems = state[4];
+    const itemEntries = normalizeCanvasCompactItemListFromFreezeUrl(rawItems);
 
     const items = [];
-    (Array.isArray(state[4]) ? state[4] : []).forEach(function (entry) {
+    itemEntries.forEach(function (entry) {
       const expanded = expandCanvasPathEntriesFromFreezeUrl(entry, colors);
       if (expanded && expanded.length) {
         items.push.apply(items, expanded);
@@ -5738,6 +6581,10 @@ function compactSlideStateForFreezeUrl(slide) {
     h: String(slide.h)
   };
 
+  if (Number(slide && slide.u || 0) === 1) {
+    out.u = 1;
+  }
+
   const q = compactStateArrayForFreezeUrl(slide.q, compactTextQuizStateForFreezeUrl);
   const d = compactStateArrayForFreezeUrl(slide.d, compactDropdownStateForFreezeUrl);
   const m = compactStateArrayForFreezeUrl(slide.m, compactTileStateForFreezeUrl);
@@ -5770,6 +6617,7 @@ function compactSlideStateForFreezeUrl(slide) {
 
 const ANNOT_CODEC_VERSION = "af2";
 const ANNOT_POINT_SCALE = 1000; // verlustfrei relativ zum aktuellen Freeze-Export (4 Nachkommastellen)
+const ANNOT_POINTS_TOKEN_PREFIX = "b:";
 
 function roundAnnotCodecNum(v) {
   const n = Number(v);
@@ -5828,11 +6676,32 @@ function encodeAnnotationPointsForFreezeUrl(points) {
     prevY = y;
   }
 
-  return out.length >= 2 ? out : null;
+  if (out.length < 2) return null;
+
+  return ANNOT_POINTS_TOKEN_PREFIX +
+    encodeCanvasSignedIntsToBinaryTokenForFreezeUrl(out);
 }
 
 function decodeAnnotationPointsFromFreezeUrl(encoded) {
-  const src = Array.isArray(encoded) ? encoded : [];
+  let src = [];
+
+  if (typeof encoded === "string") {
+    const raw = String(encoded || "");
+
+    if (raw.startsWith(ANNOT_POINTS_TOKEN_PREFIX)) {
+      src = decodeCanvasSignedIntsFromBinaryTokenForFreezeUrl(
+        raw.slice(ANNOT_POINTS_TOKEN_PREFIX.length)
+      );
+    } else {
+      src = decodeCanvasIntListFromFreezeUrlString(raw);
+    }
+  } else if (Array.isArray(encoded)) {
+    // Altformat weiter unterstützen
+    src = encoded;
+  } else {
+    src = [];
+  }
+
   const out = [];
 
   let x = 0;
@@ -5862,9 +6731,10 @@ function decodeAnnotationPointsFromFreezeUrl(encoded) {
 }
 
 function compressAnnotationFreezeStateForFreezeUrl(fullState) {
+  const ANNOT_POINTS_TOKEN_PREFIX = "b:";
+
   if (!fullState || typeof fullState !== "object") return null;
 
-  // Bereits komprimiert -> nur kopieren
   if (fullState.v === ANNOT_CODEC_VERSION && Array.isArray(fullState.s)) {
     return copyJson(fullState);
   }
@@ -5888,6 +6758,43 @@ function compressAnnotationFreezeStateForFreezeUrl(fullState) {
     return colorIndex[color];
   }
 
+  function encodePoints(points) {
+    const src = Array.isArray(points) ? points : [];
+    const deltas = [];
+
+    let prevX = 0;
+    let prevY = 0;
+    let havePrev = false;
+
+    for (let i = 0; i < src.length; i++) {
+      const pt = src[i];
+      if (!pt || typeof pt !== "object") continue;
+
+      const xNum = Number(pt.x);
+      const yNum = Number(pt.y);
+      if (!Number.isFinite(xNum) || !Number.isFinite(yNum)) continue;
+
+      const x = Math.round(xNum * ANNOT_POINT_SCALE);
+      const y = Math.round(yNum * ANNOT_POINT_SCALE);
+
+      if (!havePrev) {
+        deltas.push(x, y);
+        prevX = x;
+        prevY = y;
+        havePrev = true;
+      } else {
+        deltas.push(x - prevX, y - prevY);
+        prevX = x;
+        prevY = y;
+      }
+    }
+
+    if (deltas.length < 2) return null;
+
+    return ANNOT_POINTS_TOKEN_PREFIX +
+      encodeCanvasSignedIntsToBinaryTokenForFreezeUrl(deltas);
+  }
+
   const slidesOut = [];
 
   if (slidesSrc) {
@@ -5903,17 +6810,28 @@ function compressAnnotationFreezeStateForFreezeUrl(fullState) {
           if (!item || typeof item !== "object") return null;
           if (item.kind !== "path") return null;
 
-          const pts = encodeAnnotationPointsForFreezeUrl(item.points);
+          const pts = encodePoints(item.points);
           if (!pts) return null;
 
-          return [
-            item.tool === "eraser" ? 1 : 0,
-            internColor(item.color),
-            roundAnnotCodecNum(item.width == null ? 1 : item.width),
-            roundAnnotCodecNum(item.alpha == null ? 1 : item.alpha),
-            roundAnnotCodecNum(item.baseW == null ? 1 : item.baseW),
-            pts
-          ];
+          const toolCode = item.tool === "eraser" ? 1 : 0;
+          const colorIdx = internColor(item.color);
+          const width = roundAnnotCodecNum(item.width == null ? 1 : item.width);
+          const alpha = roundAnnotCodecNum(item.alpha == null ? 1 : item.alpha);
+          const baseW = roundAnnotCodecNum(item.baseW == null ? 1 : item.baseW);
+
+          if (width === 1 && alpha === 1 && baseW === 1) {
+            return [toolCode, colorIdx, pts];
+          }
+
+          if (alpha === 1 && baseW === 1) {
+            return [toolCode, colorIdx, width, pts];
+          }
+
+          if (baseW === 1) {
+            return [toolCode, colorIdx, width, alpha, pts];
+          }
+
+          return [toolCode, colorIdx, width, alpha, baseW, pts];
         }).filter(Boolean);
 
         if (!itemsOut.length) return;
@@ -5949,11 +6867,60 @@ function compressAnnotationFreezeStateForFreezeUrl(fullState) {
 }
 
 function expandAnnotationFreezeStateFromFreezeUrl(state) {
+  const ANNOT_POINTS_TOKEN_PREFIX = "b:";
+
   if (!state || typeof state !== "object") return null;
 
-  // Altes Format unverändert weiter unterstützen
   if (!(state.v === ANNOT_CODEC_VERSION && Array.isArray(state.s))) {
     return copyJson(state);
+  }
+
+  function decodePoints(encoded) {
+    let src = [];
+
+    if (typeof encoded === "string") {
+      const raw = String(encoded || "");
+
+      if (raw.startsWith(ANNOT_POINTS_TOKEN_PREFIX)) {
+        src = decodeCanvasSignedIntsFromBinaryTokenForFreezeUrl(
+          raw.slice(ANNOT_POINTS_TOKEN_PREFIX.length)
+        );
+      } else {
+        // Alt-/Fallbackformat weiter unterstützen
+        src = decodeCanvasIntListFromFreezeUrlString(raw);
+      }
+    } else if (Array.isArray(encoded)) {
+      // ganz altes Zahlenarray weiter unterstützen
+      src = encoded;
+    } else {
+      src = [];
+    }
+
+    const out = [];
+    let x = 0;
+    let y = 0;
+
+    for (let i = 0; i + 1 < src.length; i += 2) {
+      const a = Number(src[i]);
+      const b = Number(src[i + 1]);
+
+      if (!Number.isFinite(a) || !Number.isFinite(b)) continue;
+
+      if (i === 0) {
+        x = a;
+        y = b;
+      } else {
+        x += a;
+        y += b;
+      }
+
+      out.push({
+        x: x / ANNOT_POINT_SCALE,
+        y: y / ANNOT_POINT_SCALE
+      });
+    }
+
+    return out;
   }
 
   const colors = Array.isArray(state.c)
@@ -5971,16 +6938,33 @@ function expandAnnotationFreezeStateFromFreezeUrl(state) {
     const itemTuples = Array.isArray(entry[1]) ? entry[1] : [];
 
     const items = itemTuples.map(function (tuple) {
-      if (!Array.isArray(tuple) || tuple.length < 6) return null;
+      if (!Array.isArray(tuple) || tuple.length < 3) return null;
 
       const toolCode = Number(tuple[0] || 0);
       const colorIdx = Number(tuple[1] || 0);
 
-      const width = roundAnnotCodecNum(tuple[2]);
-      const alpha = roundAnnotCodecNum(tuple[3]);
-      const baseW = roundAnnotCodecNum(tuple[4]);
-      const points = decodeAnnotationPointsFromFreezeUrl(tuple[5]);
+      let width = 1;
+      let alpha = 1;
+      let baseW = 1;
+      let encodedPoints = null;
 
+      if (tuple.length === 3) {
+        encodedPoints = tuple[2];
+      } else if (tuple.length === 4) {
+        width = roundAnnotCodecNum(tuple[2]);
+        encodedPoints = tuple[3];
+      } else if (tuple.length === 5) {
+        width = roundAnnotCodecNum(tuple[2]);
+        alpha = roundAnnotCodecNum(tuple[3]);
+        encodedPoints = tuple[4];
+      } else {
+        width = roundAnnotCodecNum(tuple[2]);
+        alpha = roundAnnotCodecNum(tuple[3]);
+        baseW = roundAnnotCodecNum(tuple[4]);
+        encodedPoints = tuple[5];
+      }
+
+      const points = decodePoints(encodedPoints);
       if (!points.length) return null;
 
       return {
@@ -6036,14 +7020,18 @@ function shouldKeepAnnotationFreezeState(state) {
 
 
 function compactSecurityStateForFreezeUrl(state) {
+  const trackF12 = !!(state && (state.trackF12 === 1 || state.trackF12 === true));
+  const trackTab = !!(state && (state.trackTab === 1 || state.trackTab === true));
   const f12 = Number(state && state.f12 || 0) || 0;
   const tab = Number(state && state.tab || 0) || 0;
 
-  if (f12 <= 0 && tab <= 0) {
+  if (!trackF12 && !trackTab && f12 <= 0 && tab <= 0) {
     return null;
   }
 
   const out = {};
+  if (trackF12) out.trackF12 = 1;
+  if (trackTab) out.trackTab = 1;
   if (f12 > 0) out.f12 = f12;
   if (tab > 0) out.tab = tab;
 
@@ -6140,7 +7128,11 @@ async function buildPayloadFromAllSlides() {
     sh: startHash,
     n: displayName,
     s: declared.map(function (slide) {
-      return liveSlidesByHash[slide.h] || makeEmptySlideState(slide.h);
+      if (liveSlidesByHash[slide.h]) {
+        return liveSlidesByHash[slide.h];
+      }
+
+      return makeEmptySlideState(slide.h, { unvisited: true });
     })
   };
 
@@ -6449,11 +7441,9 @@ function applyStoredChoiceStatesToHost(host, storedStates) {
     "choice-apply-stored",
     "stored=" + states.length,
     states.map(function (state, idx) {
-      return "[" + idx + "] " + states.map(function (state, idx) {
-        return "[" + idx + "] " + JSON.stringify(state.k || "") + " ri=" + String(
-          Number.isFinite(Number(state && state.ri)) ? Number(state.ri) : "-"
-        );
-      }).join(" || ");
+      return "[" + idx + "] " + JSON.stringify(state.k || "") + " ri=" + String(
+        Number.isFinite(Number(state && state.ri)) ? Number(state.ri) : "-"
+      );
     }).join(" || ")
   );
 
@@ -8175,19 +9165,49 @@ function getOrthographyQuizRootFromWrap(wrap) {
   if (!wrap) return null;
 
   const uid = getOrthographyUidFromWrap(wrap);
-  const boundQuiz = findOrthographyBoundQuizByUid(uid);
-  if (boundQuiz) return boundQuiz;
 
+  const boundQuiz = findOrthographyBoundQuizByUid(uid);
+  if (boundQuiz) {
+    return normalizeActualQuizRoot(boundQuiz) || boundQuiz;
+  }
+
+  // Neuer robuster Fallback:
+  // denselben allgemeinen "nahegelegenes Sibling-Quiz"-Finder benutzen
+  // wie an anderen Stellen im Freeze-Code.
+  const nearby = findNearbySiblingQuiz(wrap);
+  if (nearby) {
+    return normalizeActualQuizRoot(nearby) || nearby;
+  }
+
+  // Alter Sibling-Scan bleibt als zusätzlicher Fallback erhalten
   let node = wrap.nextElementSibling;
   while (node) {
     if (node.classList && node.classList.contains("orthography-wrap")) break;
 
-    const quiz = node.matches && node.matches(".lia-quiz")
-      ? node
-      : (node.querySelector ? node.querySelector(".lia-quiz") : null);
+    const quiz =
+      (node.matches && node.matches(".lia-quiz") ? node : null) ||
+      (node.querySelector ? node.querySelector(".lia-quiz") : null);
 
-    if (quiz) return quiz;
+    if (quiz) {
+      return normalizeActualQuizRoot(quiz) || quiz;
+    }
+
     node = node.nextElementSibling;
+  }
+
+  // Letzter Rettungsanker:
+  // nächster Prüfen-/Lösungs-Button nach dem Orthography-Wrap
+  const scope = getContentHost() || document.body;
+  const nextControl = getNextQuizControlAfterElement(wrap, scope);
+
+  if (nextControl) {
+    const quiz =
+      nextControl.closest(".lia-quiz") ||
+      findNearbySiblingQuiz(nextControl);
+
+    if (quiz) {
+      return normalizeActualQuizRoot(quiz) || quiz;
+    }
   }
 
   return null;
@@ -8234,11 +9254,12 @@ function captureOrthographyQuizState(wrap, idx) {
     : wrapTries;
 
   const solved = modState ? !!modState.solved : wrapSolved;
+  const currentValue = input ? readTextQuizInputValue(input) : "";
 
   const out = {
     k: getOrthographyKey(wrap, idx),
     u: uid,
-    v: input ? readTextQuizInputValue(input) : "",
+    v: currentValue,
     tr: tries,
     sv: solved ? 1 : 0
   };
@@ -8251,6 +9272,30 @@ function captureOrthographyQuizState(wrap, idx) {
   if (stateCode) out.s = stateCode;
   if (feedbackCode) out.fc = feedbackCode;
   if (checkCount > 0) out.cc = checkCount;
+
+  // WICHTIG:
+  // Ein unangetastetes Orthography hat oft schon einen Starttext im Feld.
+  // Dann darf es nicht als "irgendein leerer Status" enden,
+  // sondern muss explizit als "nicht gemacht" markiert werden.
+  const refs = getOrthographyReferenceTexts(uid, wrap);
+  const startText = typeof refs.start === "string" ? refs.start : "";
+
+  const untouchedStart =
+    (startText !== "" && currentValue === startText) ||
+    (startText === "" && currentValue === "");
+
+  const noInteractionTrace =
+    !solved &&
+    tries <= 0;
+
+  const noEvaluationTrace =
+    !stateCode &&
+    !feedbackCode &&
+    checkCount <= 0;
+
+  if (untouchedStart && noInteractionTrace && noEvaluationTrace) {
+    out.nm = 1;
+  }
 
   return out;
 }
@@ -8307,10 +9352,13 @@ function applyOrthographyQuizState(wrap, state) {
   const input = getOrthographyInputFromWrap(wrap);
   const uid = state.u || getOrthographyUidFromWrap(wrap);
 
-  if (input && typeof state.v === "string") {
-    applyFieldValueOnly(input, state.v);
-    try { input.setAttribute("value", state.v); } catch (e) {}
-    input.defaultValue = state.v;
+  const valueToApply = getOrthographyReconstructedValue(state, wrap);
+
+  if (input && valueToApply !== null) {
+    applyFieldValueOnly(input, valueToApply);
+
+    try { input.setAttribute("value", valueToApply); } catch (e) {}
+    input.defaultValue = valueToApply;
   }
 
   if (wrap.dataset) {
@@ -8919,8 +9967,13 @@ function collectActualKnownLiaQuizRootsFromRoot(root) {
   });
 
   collectOrthographyQuizRootsFromRoot(host).forEach(function (wrap) {
-    const quiz = getOrthographyQuizRootFromWrap(wrap);
-    if (quiz) out.push(quiz);
+    const quiz =
+      getOrthographyQuizRootFromWrap(wrap) ||
+      findNearbySiblingQuiz(wrap);
+  
+    if (quiz) {
+      out.push(normalizeActualQuizRoot(quiz) || quiz);
+    }
   });
 
   collectFractionQuizRootsFromRoot(host).forEach(function (rep) {
@@ -8996,11 +10049,13 @@ function captureCoordinateQuizState(root, idx) {
 function compactCoordinateQuizStateForFreezeUrl(state) {
   if (!state) return null;
 
-  const out = { k: state.k };
+  const out = {};
 
   const rootIndex = Number(state.ri);
   if (Number.isFinite(rootIndex) && rootIndex >= 0) {
     out.ri = rootIndex;
+  } else if (normalizeSpace(state.k || "")) {
+    out.k = state.k;
   }
 
   compactCommonStateMeta(state, out);
@@ -10501,11 +11556,253 @@ function captureCanvasFreezeStatesFromRoot(root) {
     const state = api.exportCanvasFreezeStateFromPair(pair);
     if (!state) return;
 
+    inferCanvasThemeKeysFromPairState(pair, state);
+
     out.push(state);
   });
 
   return out;
 }
+
+
+function normalizeCanvasThemeModeKey(value) {
+  const txt = normalizeSpace(value || "").toLowerCase();
+  if (txt === "default" || txt === "auto") return txt;
+  return "";
+}
+
+function getCanvasThemeModeFromItem(item, role) {
+  if (!item || typeof item !== "object") return "";
+
+  const names = role === "fill"
+    ? ["fk", "fillKey", "fillColorKey", "fillMode", "colorMode", "mode"]
+    : ["ck", "colorKey", "strokeKey", "strokeColorKey", "strokeMode", "colorMode", "mode"];
+
+  for (let i = 0; i < names.length; i++) {
+    const clean = normalizeCanvasThemeModeKey(item[names[i]]);
+    if (clean) return clean;
+  }
+
+  const rawValue = role === "fill"
+    ? (item.f != null ? item.f : item.fill)
+    : (item.c != null ? item.c : item.color);
+
+  return normalizeCanvasThemeModeKey(rawValue);
+}
+
+function readCanvasCssVarFromPair(pair, name) {
+  let node = pair instanceof Element ? pair : null;
+
+  while (node && node instanceof Element) {
+    try {
+      const value = String(
+        getComputedStyle(node).getPropertyValue(name) || ""
+      ).trim();
+
+      if (value) return value;
+    } catch (e) {}
+
+    node = node.parentElement;
+  }
+
+  try {
+    const bodyValue = document.body
+      ? String(getComputedStyle(document.body).getPropertyValue(name) || "").trim()
+      : "";
+
+    if (bodyValue) return bodyValue;
+  } catch (e) {}
+
+  try {
+    const rootValue = String(
+      getComputedStyle(document.documentElement).getPropertyValue(name) || ""
+    ).trim();
+
+    if (rootValue) return rootValue;
+  } catch (e) {}
+
+  return "";
+}
+
+function getCanvasDefaultStrokeColorForPair(pair) {
+  const fromCanvasPen = readCanvasCssVarFromPair(pair, "--canvas-pen");
+  if (fromCanvasPen) return fromCanvasPen;
+
+  const fromCourseFg = readCanvasCssVarFromPair(pair, "--lia-course-fg");
+  if (fromCourseFg) return fromCourseFg;
+
+  try {
+    const cs = getComputedStyle(pair || document.body || document.documentElement);
+    const color = String(cs && cs.color || "").trim();
+    if (color) return color;
+  } catch (e) {}
+
+  return "#000000";
+}
+
+function normalizeCanvasColorForCompare(value) {
+  const txt = normalizeSpace(value || "");
+  if (!txt) return "";
+
+  try {
+    const ctx =
+      normalizeCanvasColorForCompare.__ctx ||
+      (normalizeCanvasColorForCompare.__ctx =
+        document.createElement("canvas").getContext("2d"));
+
+    if (!ctx) {
+      return normalizeCanvasStoredColor(txt);
+    }
+
+    ctx.fillStyle = "#000000";
+    ctx.fillStyle = txt;
+
+    return String(ctx.fillStyle || "").trim().toLowerCase();
+  } catch (e) {
+    return normalizeCanvasStoredColor(txt);
+  }
+}
+
+function canvasColorsLookEqual(a, b) {
+  const na = normalizeCanvasColorForCompare(a);
+  const nb = normalizeCanvasColorForCompare(b);
+
+  return !!na && !!nb && na === nb;
+}
+
+function inferCanvasThemeKeysFromPairState(pair, state) {
+  if (!state || typeof state !== "object") return state;
+
+  const items = Array.isArray(state.it) ? state.it : [];
+  if (!items.length) return state;
+
+  const defaultStroke = getCanvasDefaultStrokeColorForPair(pair);
+  let tagged = 0;
+
+  items.forEach(function (item) {
+    if (!item || typeof item !== "object") return;
+
+    const kind = String(item.k || "");
+    if (kind !== "p" && kind !== "e") return;
+
+    if (getCanvasStoredColorKeyFromItem(item, "stroke")) return;
+
+    const rawStroke =
+      item.c != null ? item.c :
+      item.color != null ? item.color :
+      "";
+
+    if (!canvasColorsLookEqual(rawStroke, defaultStroke)) return;
+
+    item.ck = "default";
+    item.colorKey = "default";
+    item.strokeKey = "default";
+    item.strokeColorKey = "default";
+    item.strokeMode = "default";
+
+    tagged += 1;
+  });
+
+  if (tagged > 0) {
+    log(
+      "canvas-theme-capture-tag",
+      "uid=" + String(state.u || ""),
+      "tagged=" + tagged,
+      "defaultStroke=" + String(defaultStroke || "")
+    );
+  }
+
+  return state;
+}
+
+function resolveCanvasThemeModeToColor(pair, mode, fallbackColor, role) {
+  const cleanMode = normalizeCanvasThemeModeKey(mode);
+
+  if (cleanMode === "default" || cleanMode === "auto") {
+    if (role === "fill") {
+      return getCanvasDefaultStrokeColorForPair(pair);
+    }
+
+    return getCanvasDefaultStrokeColorForPair(pair);
+  }
+
+  return fallbackColor;
+}
+
+function materializeCanvasThemeColorsForPair(state, pair) {
+  const out = copyJson(state) || state;
+  if (!out || typeof out !== "object") return out;
+
+  const items = Array.isArray(out.it) ? out.it : [];
+  out.it = items.map(function (item) {
+    const clone = copyJson(item) || item;
+    if (!clone || typeof clone !== "object") return clone;
+
+    const strokeMode = getCanvasThemeModeFromItem(clone, "stroke");
+    if (strokeMode) {
+      clone.c = resolveCanvasThemeModeToColor(
+        pair,
+        strokeMode,
+        clone.c != null ? clone.c : "#000000",
+        "stroke"
+      );
+    }
+
+    const fillMode = getCanvasThemeModeFromItem(clone, "fill");
+    if (fillMode) {
+      clone.f = resolveCanvasThemeModeToColor(
+        pair,
+        fillMode,
+        clone.f != null ? clone.f : "rgba(0,0,0,0)",
+        "fill"
+      );
+    }
+
+    return clone;
+  });
+
+  return out;
+}
+
+function refreshVisibleFrozenCanvasTheme(reason) {
+  if (!document.body || !document.body.classList.contains("lia-snapshot-mode")) {
+    return false;
+  }
+
+  const currentHash = cleanHashValue(getCurrentHash() || "");
+  if (!currentHash) return false;
+  if (isEvaluationTarget(currentHash)) return false;
+  if (isUnvisitedTarget(currentHash)) return false;
+
+  const slide = getSnapshotSlideForHash(currentHash);
+  if (!slide || !Array.isArray(slide.cv) || !slide.cv.length) {
+    return false;
+  }
+
+  const host = getContentHost() || document.body;
+  if (!host) return false;
+
+  applyStoredCanvasStatesToHost(host, slide.cv || []);
+
+  log(
+    "canvas-theme-refresh",
+    "reason=" + String(reason || ""),
+    "hash=" + currentHash,
+    "count=" + slide.cv.length
+  );
+
+  return true;
+}
+
+function scheduleFrozenCanvasThemeRefresh(reason, delay) {
+  clearTimeout(frozenCanvasThemeTimer);
+
+  frozenCanvasThemeTimer = setTimeout(function () {
+    refreshVisibleFrozenCanvasTheme(reason || "theme");
+  }, delay || 50);
+}
+
+
 
 function applyStoredCanvasStatesToHost(host, storedStates) {
   const api = getCanvasFreezeApi();
@@ -10560,12 +11857,61 @@ function applyStoredCanvasStatesToHost(host, storedStates) {
       return;
     }
 
-    const renderState = expandCanvasStateFromFreezeUrl(state) || state;
+    const expandedState = expandCanvasStateFromFreezeUrl(state) || state;
+    
+    log(
+      "canvas-theme-expanded",
+      "uid=" + String(getCanvasStateUidForFreezeUrl(state)),
+      (Array.isArray(expandedState && expandedState.it) ? expandedState.it : []).map(function (it, i) {
+        return (
+          "[" + i + "]" +
+          " k=" + String(it && it.k || "") +
+          " c=" + String(it && it.c || "") +
+          " ck=" + String(
+            (it && (
+              it.ck ||
+              it.colorKey ||
+              it.strokeKey ||
+              it.strokeColorKey ||
+              it.strokeMode ||
+              it.colorMode ||
+              it.mode
+            )) || ""
+          ) +
+          " f=" + String(it && it.f || "") +
+          " fk=" + String(
+            (it && (
+              it.fk ||
+              it.fillKey ||
+              it.fillColorKey ||
+              it.fillMode ||
+              it.colorMode ||
+              it.mode
+            )) || ""
+          )
+        );
+      }).join(" || ")
+    );
+    
+    const renderState = materializeCanvasThemeColorsForPair(expandedState, target);
+    
+    log(
+      "canvas-theme-materialized",
+      "uid=" + String(getCanvasStateUidForFreezeUrl(state)),
+      (Array.isArray(renderState && renderState.it) ? renderState.it : []).map(function (it, i) {
+        return (
+          "[" + i + "]" +
+          " k=" + String(it && it.k || "") +
+          " c=" + String(it && it.c || "") +
+          " f=" + String(it && it.f || "")
+        );
+      }).join(" || ")
+    );
 
     used.add(target);
     api.renderCanvasFreezeStateIntoPair(target, renderState);
-    applyStoredCanvasWindowSizeToPair(target, renderState);
-    scheduleStoredCanvasWindowSizeReapply(target, renderState);
+    applyStoredCanvasWindowSizeToPair(target, expandedState);
+    scheduleStoredCanvasWindowSizeReapply(target, expandedState);
     applied.push(target);
   });
 
@@ -11305,7 +12651,8 @@ async function buildPayloadFromLiveStates() {
   }
 
   function isUnvisitedTarget(hash) {
-    return false;
+    const slide = getSnapshotSlideForHash(hash);
+    return !!(slide && Number(slide.u || 0) === 1);
   }
 
   // =========================================================
@@ -11547,7 +12894,7 @@ async function copyLink() {
 
     if (noteEl) {
       noteEl.style.display = "block";
-      noteEl.innerHTML = "Dies ist ein <strong>eingefrorener Abgabestand</strong>. Änderungen sind gesperrt, Navigation läuft nur über die Freeze-Leiste oben.";
+      noteEl.innerHTML = "Dies ist ein <strong>eingefrorener Abgabestand</strong>. Aufgaben und Eingaben sind gesperrt. TOC, Anzeige-Modus und Darstellung können weiterhin benutzt werden.";
     }
   }
 
@@ -12388,6 +13735,20 @@ function getRootWindowSafe() {
   return w;
 }
 
+function shouldDisableDevtoolsHeuristicOnThisDevice() {
+  const platform = String(navigator.platform || "");
+  const ua = String(navigator.userAgent || "");
+  const maxTouchPoints = Number(navigator.maxTouchPoints || 0) || 0;
+
+  // Klassisches iOS
+  const isIOSDevice = /iPad|iPhone|iPod/.test(platform) || /iPad|iPhone|iPod/.test(ua);
+
+  // iPadOS meldet sich oft als "MacIntel", hat aber Touchpunkte
+  const isIPadOSLike = platform === "MacIntel" && maxTouchPoints > 1;
+
+  return isIOSDevice || isIPadOSLike;
+}
+
 function isF12KeyboardEvent(e) {
   const key = String(e && e.key || "");
   const code = String(e && e.code || "");
@@ -12457,6 +13818,12 @@ function markTabAttempt(kind, stamp) {
 }
 
 function isLikelyDevtoolsOpen() {
+  // Auf iPad/iOS ist die outer/inner-Heuristik wegen Safari-UI instabil
+  // und produziert False Positives. Dort komplett abschalten.
+  if (shouldDisableDevtoolsHeuristicOnThisDevice()) {
+    return false;
+  }
+
   const outerW = Number(window.outerWidth || 0);
   const innerW = Number(window.innerWidth || 0);
   const outerH = Number(window.outerHeight || 0);
@@ -12483,6 +13850,12 @@ function isLikelyDevtoolsOpen() {
 
 function installDevtoolsWatch() {
   if (devtoolsWatchInstalled) return;
+
+  if (shouldDisableDevtoolsHeuristicOnThisDevice()) {
+    log("security-devtools-watch-skip", "reason=ios-ipad");
+    return;
+  }
+
   devtoolsWatchInstalled = true;
 
   devtoolsLikelyOpen = isLikelyDevtoolsOpen();
@@ -12709,7 +14082,10 @@ function installLiveCaptureBindings() {
 
     if (isTextQuizInputControl(t) || isOrthographyQuizInput(t)) {
       captureAdminState();
-      const state = captureSlideStateForHash(hash);
+      storeLiveSlideState(
+        liveRouteCurrentHash || getCurrentHash(),
+        "text-input"
+      );
       return;
     }
 
@@ -12934,6 +14310,7 @@ function installLiveCaptureBindings() {
 function isAllowedFreezeTarget(target) {
   if (!target || !(target instanceof Element)) return false;
 
+  // Freeze-Leiste und Admin-Linkbereich
   if (target.closest("#lia-freeze-bar")) return true;
 
   if (target.id === "lia-link") return true;
@@ -12941,10 +14318,10 @@ function isAllowedFreezeTarget(target) {
   if (target.closest && target.closest("#lia-link")) return true;
   if (target.closest && target.closest("#lia-copy-link")) return true;
 
-  // Annotation-Toolbar darf auch im Freeze bedienbar bleiben
-  // (z.B. Anzeigen/Ausblenden per Auge-Button).
+  // Annotation-Toolbar weiter erlauben
   if (target.closest(".lia-annot-toolbar")) return true;
 
+  // Manuelle BE-Eingaben im Shared-Freezelink weiter erlauben
   if (
     isSharedFreezeLinkMode() &&
     target.closest(".lia-adetails-award-input")
@@ -12952,8 +14329,46 @@ function isAllowedFreezeTarget(target) {
     return true;
   }
 
+  // ======================================================
+  // LiaScript-Menü / Support-Menü freigeben
+  // ======================================================
+  if (
+    target.closest(
+      ".lia-support-menu, " +
+      ".lia-support-menu__nav, " +
+      ".lia-support-menu__item, " +
+      ".lia-support-menu__submenu"
+    )
+  ) {
+    return true;
+  }
+
+  // ======================================================
+  // TOC / Sidebar / eigene TOC-Buttons freigeben
+  // ======================================================
+  if (
+    target.closest(
+      ".lia-toc, " +
+      "#lia-toc, " +
+      ".lia-sidebar, " +
+      ".lia-menu, " +
+      ".lia-nav, " +
+      "#lia-bm-toc5"
+    )
+  ) {
+    return true;
+  }
+
   return false;
 }
+
+
+function isInsideFrozenScopeTarget(target) {
+  if (!target || !(target instanceof Element)) return false;
+  return !!target.closest(".lia-frozen-scope");
+}
+
+
 
 function blockNativeFrozenInteractionEvent(e) {
   if (!document.body.classList.contains("lia-snapshot-mode")) return;
@@ -12961,6 +14376,9 @@ function blockNativeFrozenInteractionEvent(e) {
 
   const t = e.target;
   if (!(t instanceof Element)) return;
+
+  // Nur Interaktionen innerhalb des eingefrorenen Inhaltsbereichs blockieren
+  if (!isInsideFrozenScopeTarget(t)) return;
 
   const interactive = t.closest(
     "a, button, input, textarea, select, summary, [role='button'], .lia-quiz, .lia-dropdown, .lia-dropdown__selected, .lia-dropdown__option, label, [contenteditable='true'], [role='textbox']"
@@ -12977,11 +14395,28 @@ function blockNativeFrozenInteractionEvent(e) {
 
 function blockFrozenKeydown(e) {
   if (!document.body.classList.contains("lia-snapshot-mode")) return;
-  if (isAllowedFreezeTarget(e.target)) return;
+
+  const target = e.target instanceof Element ? e.target : null;
+  const active = document.activeElement instanceof Element ? document.activeElement : null;
+
+  // Erlaubte UI-Bereiche nie per Keydown blockieren
+  if (isAllowedFreezeTarget(target) || isAllowedFreezeTarget(active)) return;
 
   const key = String(e.key || "");
 
+  const targetInFrozenScope = isInsideFrozenScopeTarget(target);
+  const activeInFrozenScope = isInsideFrozenScopeTarget(active);
+
+  // Wenn gar nichts Spezifisches fokussiert ist, dürfen Links/Rechts weiter
+  // als Freeze-Navigation arbeiten.
+  const neutralFocus =
+    !active ||
+    active === document.body ||
+    active === document.documentElement;
+
   if (key === "ArrowLeft") {
+    if (!targetInFrozenScope && !activeInFrozenScope && !neutralFocus) return;
+
     e.preventDefault();
     e.stopPropagation();
     if (typeof e.stopImmediatePropagation === "function") {
@@ -12992,6 +14427,8 @@ function blockFrozenKeydown(e) {
   }
 
   if (key === "ArrowRight") {
+    if (!targetInFrozenScope && !activeInFrozenScope && !neutralFocus) return;
+
     e.preventDefault();
     e.stopPropagation();
     if (typeof e.stopImmediatePropagation === "function") {
@@ -13000,6 +14437,9 @@ function blockFrozenKeydown(e) {
     goFrozenRelative(1);
     return;
   }
+
+  // Andere Tasten nur im eingefrorenen Inhaltsbereich blockieren
+  if (!targetInFrozenScope && !activeInFrozenScope) return;
 
   const blocked = {
     ArrowUp: 1,
@@ -13045,6 +14485,9 @@ function blockFrozenKeydown(e) {
       const t = e.target;
       if (!(t instanceof Element)) return;
 
+      // Fokus nur dann wegnehmen, wenn er in den eigentlichen Freeze-Inhalt fällt
+      if (!isInsideFrozenScopeTarget(t)) return;
+
       const interactive = t.closest(
         "a, button, input, textarea, select, summary, [role='button'], [contenteditable='true'], [role='textbox']"
       );
@@ -13082,7 +14525,10 @@ function blockFrozenKeydown(e) {
 async function activateSnapshotMode(payload, linkValue, opts) {
   opts = opts || {};
 
-  snapshotPayload = payload || null;
+  snapshotPayload =
+    expandPayloadFromFreezeUrl(payload || null) ||
+    payload ||
+    null;
   debugAnnotationProbe("activateSnapshotMode");
   console.log("[LIA-FREEZE] snapshot-loaded", JSON.stringify(snapshotPayload));
   if (!snapshotPayload) return false;
@@ -13473,407 +14919,59 @@ Aufgaben ohne Bewertung: \
 
 
 
-# Etablierte Quiz
 
-$a)\;\;$ $7000+123=$ [[  7123  ]] @canvas
 
-@ADetails(1=BE;Normal)
+## Rechtschreibkorrektur
 
---- 
 
---- 
+**Aufgabe:** **Korrigiere** die Rechtschreibfehler.
 
 
 
-Wähle blau aus.
-- [[X]] Blau
-- [[ ]] Gelb
-- [[ ]] Rot
-- [[ ]] Grün
 
-@ADetails(1=BE;Multiple)
+__$g)\;\;$__ 
 
---- 
+@orthography(`<!-- data-solution-timer="90s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->`,`Ich glaubte das der Film schon anfängt aber erst nach einer Weile ging das Licht aus.`,`Ich glaubte, dass der Film schon anfängt, aber erst nach einer Weile ging das Licht aus.`)
 
---- 
 
+@ADetails(BE=1;Rechtschreibung)
 
+__$h)\;\;$__ 
 
-Wähle blau aus.
-- [(X)] Blau
-- [( )] Gelb
-- [( )] Rot
-- [( )] Grün
+@orthography(`<!-- data-solution-timer="90s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->`,`Der Hund der Nachbarn bellte laut und ich konnte mich garnicht auf meine Hausaufgaben konzentrieren.`,`Der Hund der Nachbarn bellte laut, und ich konnte mich gar nicht auf meine Hausaufgaben konzentrieren.`)
 
-@ADetails(1=BE;Radio)
 
---- 
+@ADetails(BE=1;Rechtschreibung)
 
---- 
+__$i)\;\;$__ 
 
-Wähle rot aus.
-[[(rot)|blau|grün|gelb]]
+@orthography(`<!-- data-solution-timer="90s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->`,`Heute Morgen bin ich zu spät gekommen weil der Bus sich verspettet hat und ich warten musste.`,`Heute Morgen bin ich zu spät gekommen, weil der Bus sich verspätet hat und ich warten musste.`)
 
-@ADetails(1=BE;Auswahl)
 
---- 
+@ADetails(BE=1;Rechtschreibung)
 
---- 
+__$j)\;\;$__ 
 
+@orthography(`<!-- data-solution-timer="90s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->`,`Im Garten wuchs eine große Sonnenblume die wir gestern zusammen gegossen haben und sie ist schon höher.`,`Im Garten wuchs eine große Sonnenblume, die wir gestern zusammen gegossen haben, und sie ist schon höher.`)
 
+@ADetails(BE=1;Rechtschreibung)
 
-Wähle gelb aus.
-[->[rot|blau|grün|(gelb)]]
+__$k)\;\;$__ 
 
-@ADetails(1=BE;Kachel)
+@orthography(`<!-- data-solution-timer="90s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->`,`Meine Schwester meinte ich solle leiser sein doch ich war so aufgeregt das ich es vergaß.`,`Meine Schwester meinte, ich solle leiser sein, doch ich war so aufgeregt, dass ich es vergaß.`)
 
---- 
 
---- 
+@ADetails(BE=1;Rechtschreibung)
 
 
+__$l)\;\;$__ 
 
-$b)\;\;$ $6000+123=$ [[  6123  ]] m @canvas
+@orthography(`<!-- data-solution-timer="90s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->`,`Wenn du die Anleitung genau liest verstehst du die Aufgabe besser und machst weniger Fehler.`,`Wenn du die Anleitung genau liest, verstehst du die Aufgabe besser und machst weniger Fehler.`)
 
-@ADetails(1=BE;Tag1,Tag2)
 
---- 
+@ADetails(BE=1;Rechtschreibung)
 
---- 
 
-
-
-**Entscheide**, ob es sich bei dem Term um einen Vektor, ein Skalar oder einen nicht definierten Ausdruck handelt.
-<br>
-
-- [[Vektor]       (Skalar)    [nicht definiert]]
-- [    [ ]           [ ]             [X]     ]  nicht definiert
-- [    ( )           (X)             ( )     ]  Skalar
-- [    [X]           [ ]             [ ]     ]  Vektor
-
-
-@ADetails(3=BE;Tabelle)
-
-
---- 
-
---- 
-
-
-
-
-__Aufgabe 1:__ Hör dir den Satz an und schreib ihn korrekt in das Eingabefeld.
-
-
-{{|> Deutsch Female}}
-<!-- style="position: absolute; left: -9999px;" -->
-Anna
-
-[[    Anna    ]]
-
-@ADetails(4=BE; Diktat)
-
---- 
-
-
-__Aufgabe 2:__ Lass dir die Wörter vorlesen, die in die Lücken kommen und schreibe diese in die Lücken.
-
-Anna ging in einen @diktat(Zoo). Dort konnte sie auf einem @diktat(Lama) reiten.
-
-@ADetails(2=BE; Lückendiktat)
-
---- 
-
-
-__Aufgabe 3:__ Setze das Komma an die richtige Stelle. (Auflösung ist blockiert.)
-
-
-@orthography(2,`Der Bruder den ich mag.`,`Der Bruder, den ich mag.`)
-
-@ADetails(1=BE; Komma)
-
-
---- 
-
---- 
-
-**Stelle** die passende Teilung der Fläche **ein** und **markiere** den passenden Anteil, sodass der Bruch dargestellt wird.
-
-__$a)\;\;$__ $\dfrac{1}{4}$
-
-@rectQuiz(1/4)
-
-@ADetails(1=BE;Rechteckbruch)
-
-__$b)\;\;$__ $\dfrac{2}{5}$
-
-@circleQuiz(2/5)
-
-@ADetails(1=BE;Kreisbruch)
-
-
---- 
-
---- 
-
-
-Markiere die korrekt.
-
-<div class="markerquiz">
-@markred(rot)
-@TextmarkerQuiz
-</div>
-
-@ADetails(1=BE;Marker)
-
-
---- 
-
---- 
-
-
-Kommentare werden auch eingefroren
-
-[[___]]
-
-@ADetails(0=BE)
-
-[[___ ___ ___ ___]]
-
-@ADetails(0=BE)
-
-Einfach noch ein KaTeX-Testfeld: [[     passt     ]]  @canvas
-
-@ADetails(0=BE)
-
-
---- 
-
---- 
-
---- 
-
---- 
-
-
-
-
-$a)\;\;$ $7000+123=$ [[  7123  ]] @canvas
-
-@ADetails(1=BE;Normal)
-
---- 
-
---- 
-
-
-
-Wähle blau aus.
-- [[X]] Blau
-- [[ ]] Gelb
-- [[ ]] Rot
-- [[ ]] Grün
-
-@ADetails(1=BE;Multiple)
-
---- 
-
---- 
-
-
-
-Wähle blau aus.
-- [(X)] Blau
-- [( )] Gelb
-- [( )] Rot
-- [( )] Grün
-
-@ADetails(1=BE;Radio)
-
---- 
-
---- 
-
-Wähle rot aus.
-[[(rot)|blau|grün|gelb]]
-
-@ADetails(1=BE;Auswahl)
-
---- 
-
---- 
-
-
-
-Wähle gelb aus.
-[->[rot|blau|grün|(gelb)]]
-
-@ADetails(1=BE;Kachel)
-
---- 
-
---- 
-
-
-
-$b)\;\;$ $6000+123=$ [[  6123  ]] m @canvas
-
-@ADetails(1=BE;Tag1,Tag2)
-
---- 
-
---- 
-
-
-
-**Entscheide**, ob es sich bei dem Term um einen Vektor, ein Skalar oder einen nicht definierten Ausdruck handelt.
-<br>
-
-- [[Vektor]       (Skalar)    [nicht definiert]]
-- [    [ ]           [ ]             [X]     ]  nicht definiert
-- [    ( )           (X)             ( )     ]  Skalar
-- [    [X]           [ ]             [ ]     ]  Vektor
-
-
-@ADetails(3=BE;Tabelle)
-
-
---- 
-
---- 
-
-
-
-
-__Aufgabe 1:__ Hör dir den Satz an und schreib ihn korrekt in das Eingabefeld.
-
-
-{{|> Deutsch Female}}
-<!-- style="position: absolute; left: -9999px;" -->
-Anna
-
-[[    Anna    ]]
-
-@ADetails(4=BE; Diktat)
-
---- 
-
-
-__Aufgabe 2:__ Lass dir die Wörter vorlesen, die in die Lücken kommen und schreibe diese in die Lücken.
-
-Anna ging in einen @diktat(Zoo). Dort konnte sie auf einem @diktat(Lama) reiten.
-
-@ADetails(2=BE; Lückendiktat)
-
---- 
-
-
-__Aufgabe 3:__ Setze das Komma an die richtige Stelle. (Auflösung ist blockiert.)
-
-
-@orthography(2,`Der Bruder den ich mag.`,`Der Bruder, den ich mag.`)
-
-@ADetails(1=BE; Komma)
-
-
---- 
-
---- 
-
-**Stelle** die passende Teilung der Fläche **ein** und **markiere** den passenden Anteil, sodass der Bruch dargestellt wird.
-
-__$a)\;\;$__ $\dfrac{1}{4}$
-
-@rectQuiz(1/4)
-
-@ADetails(1=BE;Rechteckbruch)
-
-__$b)\;\;$__ $\dfrac{2}{5}$
-
-@circleQuiz(2/5)
-
-@ADetails(1=BE;Kreisbruch)
-
-
---- 
-
---- 
-
-
-Markiere die korrekt.
-
-<div class="markerquiz">
-@markred(rot)
-@TextmarkerQuiz
-</div>
-
-@ADetails(1=BE;Marker)
-
-
---- 
-
---- 
-
-
-Kommentare werden auch eingefroren
-
-[[___]]
-
-@ADetails(0=BE)
-
-[[___ ___ ___ ___]]
-
-@ADetails(0=BE)
-
-Einfach noch ein KaTeX-Testfeld: [[     passt     ]]  @canvas
-
-@ADetails(0=BE)
-
-
-
-
-
-
-# Koordinatensystemquizze
-
-
-@Koordinatensystem(`xmin=-1;xmax=10;ymin=-1;ymax=10;width=700;id=A1`)
-
-@AchsenBeschriftung(`id=A1;xlabel=$x$;ylabel=$y$`)
-
-
-
-<section class="dynFlex">
-
-<div class="flex-child">
-
-__$a)\;\;$__ **Ziehe** den Punkt $A$ **auf** die Koordinaten $(1|4)$.
-
-@ErzeugePunkt(`A1;A;1;4`,`<!--  -->`)
-
-@ADetails(BE=1;Koordinatensystem)
-</div>
-
-<div class="flex-child">
-
-__$b)\;\;$__ **Ziehe** den Punkt $B$ **auf** die Koordinaten $(5|0)$.
-
-@ErzeugePunkt(`A1;B;5;0`,`<!--  -->`)
-
-@ADetails(BE=1;Koordinatensystem)
-
-</div>
-
-<div class="flex-child">
-
-__$c)\;\;$__ **Ziehe** den Punkt $C$ **auf** die Koordinaten $(7|6)$.
-
-@ErzeugePunkt(`A1;C;7;6`,`<!--  -->`)
-
-@ADetails(BE=1;Koordinatensystem)
-
-</div>
-</section>
 
 
 

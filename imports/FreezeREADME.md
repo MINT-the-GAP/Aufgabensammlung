@@ -3942,7 +3942,8 @@ function hasMeaningfulOutcomeState(state) {
   return !!(
     normalizeSpace(state && state.s || "") ||
     normalizeSpace(state && state.fc || "") ||
-    Number(state && state.cc || 0) > 0
+    Number(state && state.cc || 0) > 0 ||
+    Number(state && state.nm || 0) === 1
   );
 }
 
@@ -3968,6 +3969,10 @@ function compactCommonStateMeta(src, out) {
 
   if (Number(src.cc || 0) > 0) {
     out.cc = Number(src.cc);
+  }
+
+  if (Number(src.nm || 0) === 1) {
+    out.nm = 1;
   }
 
   return out;
@@ -9249,11 +9254,12 @@ function captureOrthographyQuizState(wrap, idx) {
     : wrapTries;
 
   const solved = modState ? !!modState.solved : wrapSolved;
+  const currentValue = input ? readTextQuizInputValue(input) : "";
 
   const out = {
     k: getOrthographyKey(wrap, idx),
     u: uid,
-    v: input ? readTextQuizInputValue(input) : "",
+    v: currentValue,
     tr: tries,
     sv: solved ? 1 : 0
   };
@@ -9266,6 +9272,30 @@ function captureOrthographyQuizState(wrap, idx) {
   if (stateCode) out.s = stateCode;
   if (feedbackCode) out.fc = feedbackCode;
   if (checkCount > 0) out.cc = checkCount;
+
+  // WICHTIG:
+  // Ein unangetastetes Orthography hat oft schon einen Starttext im Feld.
+  // Dann darf es nicht als "irgendein leerer Status" enden,
+  // sondern muss explizit als "nicht gemacht" markiert werden.
+  const refs = getOrthographyReferenceTexts(uid, wrap);
+  const startText = typeof refs.start === "string" ? refs.start : "";
+
+  const untouchedStart =
+    (startText !== "" && currentValue === startText) ||
+    (startText === "" && currentValue === "");
+
+  const noInteractionTrace =
+    !solved &&
+    tries <= 0;
+
+  const noEvaluationTrace =
+    !stateCode &&
+    !feedbackCode &&
+    checkCount <= 0;
+
+  if (untouchedStart && noInteractionTrace && noEvaluationTrace) {
+    out.nm = 1;
+  }
 
   return out;
 }
@@ -9940,7 +9970,7 @@ function collectActualKnownLiaQuizRootsFromRoot(root) {
     const quiz =
       getOrthographyQuizRootFromWrap(wrap) ||
       findNearbySiblingQuiz(wrap);
-  
+
     if (quiz) {
       out.push(normalizeActualQuizRoot(quiz) || quiz);
     }
@@ -14942,6 +14972,7 @@ Wähle gelb aus.
 [->[rot|blau|grün|(gelb)]]
 
 @ADetails(1=BE;Kachel)
+
 
 --- 
 
