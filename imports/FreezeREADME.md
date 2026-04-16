@@ -1903,6 +1903,30 @@ function collectDeclaredTasksFromSlideLines(lines) {
     return "";
   }
 
+  function isGroupedInlineQuizLine(line) {
+    const txt = normalizeSpace(line);
+
+    if (!txt) return false;
+    if (/^\s*<!--/.test(txt)) return false;
+    if (/^\s*@ADetails\b/.test(line)) return false;
+
+    // Bullet-/Choice-Blöcke laufen schon separat
+    if (/^\s*-\s+/.test(line)) return false;
+
+    // Diese Familien laufen schon separat
+    if (/@diktat\s*\(/.test(line)) return false;
+    if (/@orthography\s*\(/.test(line)) return false;
+    if (/@(?:rectQuiz|circleQuiz|TextmarkerQuiz|ErzeugePunkt)\b/.test(line)) return false;
+
+    // Kachel-/Zuordnungsquiz
+    if (/\[\->\[[^\n]*?\]\]/.test(line)) return true;
+
+    // Inline-/Dropdown-Quizformen
+    if (/\[\[[^\n]*?\]\]/.test(line)) return true;
+
+    return false;
+  }
+
   function pushTask() {
     const task = makeDeclaredTask();
     tasks.push(task);
@@ -1973,30 +1997,27 @@ function collectDeclaredTasksFromSlideLines(lines) {
     if (macroMatches.length) continue;
 
     // Kachel-/Zuordnungsquiz: jede Instanz ist eine Aufgabe
-    const tileMatches = line.match(/\[\->\[[^\n]*?\]\]/g) || [];
-    tileMatches.forEach(function () {
+    // Zusammengehörige Inline-/Dropdown-/Kachel-Blöcke
+    // ohne Leerzeile dazwischen zählen als genau EINE Aufgabe.
+    if (isGroupedInlineQuizLine(line)) {
       pushTask();
-    });
-    if (tileMatches.length) continue;
 
-    // Inline-Quizformen wie [[...]]
-    const inlineMatches = line.match(/\[\[[^\n]*?\]\]/g) || [];
-    if (inlineMatches.length) {
-      const nextRelevant = getNextRelevantLine(i);
-      const hasAlgebriteCheckHere = /@Algebrite\.check\s*\(/.test(line);
-      const hasAlgebriteCheckNext = /^@Algebrite\.check\s*\(/.test(nextRelevant);
+      while (i + 1 < lines.length) {
+        const nextLine = String(lines[i + 1] || "");
+        const nextTrimmed = normalizeSpace(nextLine);
 
-      // Mehrere Eingabefelder, die zu EINEM gemeinsamen Algebrite-Check gehören,
-      // zählen als genau EINE Aufgabe.
-      if (
-        inlineMatches.length > 1 &&
-        (hasAlgebriteCheckHere || hasAlgebriteCheckNext)
-      ) {
-        pushTask();
-      } else {
-        inlineMatches.forEach(function () {
-          pushTask();
-        });
+        if (!nextTrimmed) break;
+        if (/^\s*@ADetails\b/.test(nextLine)) break;
+
+        // Kommentare innerhalb des Blocks überspringen
+        if (/^\s*<!--/.test(nextTrimmed)) {
+          i += 1;
+          continue;
+        }
+
+        if (!isGroupedInlineQuizLine(nextLine)) break;
+
+        i += 1;
       }
 
       continue;
@@ -3714,7 +3735,7 @@ function collectOrderedTaskRootsForAssignmentDetails(root) {
     ordered.push(root);
   });
 
-  getDropdownQuizControlsFromRoot(host).forEach(function (root) {
+  collectDropdownQuizRootsFromRoot(host).forEach(function (root) {
     ordered.push(root);
   });
 
@@ -4162,8 +4183,13 @@ function compactTextQuizStateForFreezeUrl(state) {
 function compactDropdownStateForFreezeUrl(state) {
   if (!state) return null;
 
-  const value = String(state.v || "");
-  const hasChoice = !isDropdownPlaceholderValue(value);
+  const values = Array.isArray(state.v)
+    ? state.v.map(function (v) { return String(v || ""); })
+    : [String(state.v || "")];
+
+  const hasChoice = values.some(function (value) {
+    return !isDropdownPlaceholderValue(value);
+  });
 
   const out = {};
 
@@ -4174,7 +4200,9 @@ function compactDropdownStateForFreezeUrl(state) {
     out.k = state.k;
   }
 
-  if (hasChoice) out.v = value;
+  if (hasChoice) {
+    out.v = values.length === 1 ? values[0] : values;
+  }
 
   compactCommonStateMeta(state, out);
 
@@ -9970,7 +9998,7 @@ function collectActualKnownLiaQuizRootsFromRoot(root) {
     const quiz =
       getOrthographyQuizRootFromWrap(wrap) ||
       findNearbySiblingQuiz(wrap);
-
+  
     if (quiz) {
       out.push(normalizeActualQuizRoot(quiz) || quiz);
     }
@@ -10501,16 +10529,22 @@ function applyStoredTileStatesToHost(host, storedStates) {
     return normalizeSpace(node && node.textContent || "");
   }
 
-  function captureDropdownQuizState(drop, idx) {
-    const root = getDropdownQuizRootFromDropdown(drop, getContentHost() || document.body);
+  function captureDropdownQuizState(taskRoot, idx) {
+    const controls = getDropdownQuizControlsFromRoot(taskRoot);
+    const firstControl = controls[0] || null;
+    const root = firstControl
+      ? getDropdownQuizRootFromDropdown(firstControl, getContentHost() || document.body)
+      : taskRoot;
     const feedback = root ? root.querySelector(".lia-quiz__feedback") : null;
 
     const out = {
-      k: getDropdownQuizKey(drop, idx),
+      k: getDropdownQuizKey(taskRoot, idx),
       ri: Number(idx || 0),
-      v: getDropdownSelectedText(drop)
+      v: controls.map(function (drop) {
+        return getDropdownSelectedText(drop);
+      })
     };
-    applyAssignmentMetaToState(out, root);
+    applyAssignmentMetaToState(out, root || taskRoot);
 
     const stateCode = detectQuizState(root);
     const feedbackCode = detectFeedbackCode(feedback);
@@ -10566,52 +10600,55 @@ function applyStoredTileStatesToHost(host, storedStates) {
     }
   }
 
-  function applyDropdownQuizState(drop, state) {
-    if (!drop || !state) return drop;
+function applyDropdownQuizState(taskRoot, state) {
+  if (!taskRoot || !state) return taskRoot;
 
-    const root = getDropdownQuizRootFromDropdown(drop, getContentHost() || document.body);
+  const controls = getDropdownQuizControlsFromRoot(taskRoot);
+  const firstControl = controls[0] || null;
+  const root = firstControl
+    ? getDropdownQuizRootFromDropdown(firstControl, getContentHost() || document.body)
+    : taskRoot;
 
-    applyDropdownSelectedText(drop, state.v || "");
+  const values = Array.isArray(state.v) ? state.v : [state.v];
 
-    if (root) {
-      applyQuizRootStateClasses(root, state.s || "");
+  for (let i = 0; i < controls.length; i++) {
+    applyDropdownSelectedText(controls[i], values[i] || "");
+    lockDropdownControl(controls[i]);
+  }
 
-      const feedbackText = deriveFeedbackTextForState(root, state);
-      const feedbackClass = getFeedbackClassFromState(state);
+  if (root) {
+    applyQuizRootStateClasses(root, state.s || "");
 
-      if (feedbackText || state.s || state.fc) {
-        const feedback = ensureQuizFeedbackElement(root);
-        if (feedback) {
-          feedback.classList.remove("text-success", "text-error", "text-disabled");
-          if (feedbackClass) {
-            feedback.classList.add(feedbackClass);
-          }
+    const feedbackText = deriveFeedbackTextForState(root, state);
+    const feedbackClass = getFeedbackClassFromState(state);
 
-          feedback.setAttribute("aria-live", "polite");
-
-          if (feedbackText) {
-            feedback.textContent = feedbackText;
-          }
-
-          revealQuizBlock(feedback);
+    if (feedbackText || state.s || state.fc) {
+      const feedback = ensureQuizFeedbackElement(root);
+      if (feedback) {
+        feedback.classList.remove("text-success", "text-error", "text-disabled");
+        if (feedbackClass) {
+          feedback.classList.add(feedbackClass);
         }
+
+        feedback.setAttribute("aria-live", "polite");
+
+        if (feedbackText) {
+          feedback.textContent = feedbackText;
+        }
+
+        revealQuizBlock(feedback);
       }
     }
 
-    if (root) {
-      applyQuizCheckCount(root, state.cc || 0);
-    }
-
-    lockDropdownControl(drop);
-    if (root) {
-      lockTextQuizRoot(root);
-    }
-    
-    return drop;
+    applyQuizCheckCount(root, state.cc || 0);
+    lockTextQuizRoot(root);
   }
 
+  return taskRoot;
+}
+
 function applyStoredDropdownStatesToHost(host, storedStates) {
-  const live = host ? getDropdownQuizControlsFromRoot(host) : [];
+  const live = host ? collectDropdownQuizRootsFromRoot(host) : [];
   const states = Array.isArray(storedStates) ? storedStates : [];
   const used = new Set();
   const applied = [];
@@ -12419,7 +12456,7 @@ function captureSlideStateForHash(hash) {
   }
 
   const textRoots = collectTextQuizRootsFromRoot(host);
-  const dropdownRoots = getDropdownQuizControlsFromRoot(host);
+  const dropdownRoots = collectDropdownQuizRootsFromRoot(host);
   const tileRoots = collectTileQuizRootsFromRoot(host);
   const choiceRoots = collectChoiceQuizRootsFromRoot(host);
   const orthoRoots = collectOrthographyQuizRootsFromRoot(host);
