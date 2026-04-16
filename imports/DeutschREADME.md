@@ -274,6 +274,26 @@ author: Martin Lommatzsch
         N.input.addEventListener("change", () => {
           this.handleInput(uid);
         }, true);
+
+        const swallowArrowKeys = (ev) => {
+          const k = String(ev && ev.key || "");
+
+          if (
+            k === "ArrowLeft"  ||
+            k === "ArrowRight" ||
+            k === "ArrowUp"    ||
+            k === "ArrowDown"
+          ) {
+            // Wichtig:
+            // NICHT preventDefault(), sonst bewegt sich der Cursor nicht mehr.
+            if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
+            ev.stopPropagation();
+            ev.cancelBubble = true;
+          }
+        };
+
+        N.input.addEventListener("keydown", swallowArrowKeys, true);
+        N.input.addEventListener("keyup",   swallowArrowKeys, true);
       }
 
       if (N.reset && N.reset.__orthoResetBoundUid !== uid) {
@@ -527,7 +547,7 @@ author: Martin Lommatzsch
   }
 
   const ROOT = getRootWindow();
-  const MOD  = ROOT["__ORTHOGRAPHY_EXPORT_V13__"];
+  const MOD  = ROOT["__ORTHOGRAPHY_EXPORT_V14__"];
   if (!MOD || !MOD.register) return;
 
   MOD.register({
