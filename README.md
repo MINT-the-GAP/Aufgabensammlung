@@ -4807,6 +4807,91 @@ if (!window.__LIA_OCR_BAR_BOOT__){
     return engine;
   }
 
+  function __ocrIsDelayedAutoloadBrowser(){
+    try{
+      const ua = String(navigator.userAgent || '');
+
+      const isFirefox =
+        ua.indexOf('Firefox/') !== -1 ||
+        ua.indexOf('FxiOS') !== -1;
+
+      if (isFirefox) return false;
+
+      const isEdge =
+        ua.indexOf('Edg/') !== -1 ||
+        ua.indexOf('EdgiOS') !== -1;
+
+      const isOpera =
+        ua.indexOf('OPR/') !== -1 ||
+        ua.indexOf('Opera') !== -1;
+
+      const isChromeLike =
+        ua.indexOf('Chrome/') !== -1 ||
+        ua.indexOf('Chromium/') !== -1 ||
+        ua.indexOf('CriOS') !== -1;
+
+      const isSafari =
+        (ua.indexOf('Safari/') !== -1 || ua.indexOf('Version/') !== -1) &&
+        !isEdge &&
+        !isOpera &&
+        !isChromeLike;
+
+      return !!(isEdge || isChromeLike || isSafari);
+    }catch(_){}
+    return false;
+  }
+
+  function __ocrAfterVisiblePaint(fn){
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        setTimeout(fn, 0);
+      });
+    });
+  }
+
+  function __ocrAutoloadCatch(err){
+    try{
+      const b = window.__LIA_OCR_BAR__;
+      if (b && b.log){
+        b.log('Auto-load failed: ' + (err && err.message ? err.message : String(err)));
+      }
+    }catch(_){}
+  }
+
+  function __ocrStartAutoloadNow(eng){
+    if (!eng || typeof eng.ensureLoaded !== 'function') return;
+
+    __ocrAfterVisiblePaint(function(){
+      Promise.resolve()
+        .then(function(){
+          return eng.ensureLoaded(false);
+        })
+        .catch(__ocrAutoloadCatch);
+    });
+  }
+
+  function __ocrScheduleAutoload(eng){
+    if (!eng || typeof eng.ensureLoaded !== 'function') return;
+
+    // Firefox bleibt wie bisher schnell / direkt.
+    if (!__ocrIsDelayedAutoloadBrowser()){
+      __ocrStartAutoloadNow(eng);
+      return;
+    }
+
+    // Chrome / Edge / Safari:
+    // erst warten, bis das Dokument wirklich "complete" ist,
+    // dann 2 Paints abwarten, dann OCR laden.
+    if (document.readyState === 'complete'){
+      __ocrStartAutoloadNow(eng);
+      return;
+    }
+
+    window.addEventListener('load', function(){
+      __ocrStartAutoloadNow(eng);
+    }, { once:true });
+  }
+
   // ---- Boot: Bar + Engine + Auto-Load beim Kursstart ----
   ensureOcrBar();
   __ocrSyncAccent();
@@ -4814,16 +4899,10 @@ if (!window.__LIA_OCR_BAR_BOOT__){
 
   const eng = ensureOcrEngine();
 
-  // Auto-Load erzwingen, sobald der Kurs offen ist:
-  // (kein "idle" – wirklich sofort; aber async, damit UI nicht blockiert)
-  Promise.resolve()
-  .then(() => eng.ensureLoaded(false))
-  .catch(err => {
-    try{
-      const b = window.__LIA_OCR_BAR__;
-      if (b && b.log) b.log('Auto-load failed: ' + (err && err.message ? err.message : String(err)));
-    }catch(_){}
-  });
+  // Auto-Load:
+  // Firefox wie bisher direkt.
+  // Chrome / Edge / Safari erst nach complete + sichtbarem Paint.
+  __ocrScheduleAutoload(eng);
 
 }
 
