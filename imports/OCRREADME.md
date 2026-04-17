@@ -810,16 +810,28 @@ if (!window.__LIA_OCR_BAR_BOOT__){
   }
 
   // ---- Boot: Bar + Engine + Auto-Load beim Kursstart ----
-  ensureOcrBar();
-  __ocrSyncAccent();
-  setTimeout(__ocrSyncAccent, 0);
+  function __liaBootOcrAfterLoad(){
+    const run = () => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          ensureOcrBar();
+          __ocrSyncAccent();
+          setTimeout(__ocrSyncAccent, 0);
 
-  const eng = ensureOcrEngine();
+          const eng = ensureOcrEngine();
+          __ocrScheduleAutoload(eng);
+        });
+      });
+    };
 
-  // Auto-Load:
-  // Firefox wie bisher direkt.
-  // Chrome / Edge / Safari erst nach complete + sichtbarem Paint.
-  __ocrScheduleAutoload(eng);
+    if (document.readyState === 'complete'){
+      run();
+    }else{
+      window.addEventListener('load', run, { once:true });
+    }
+  }
+
+  __liaBootOcrAfterLoad();
 
 }
 
@@ -2284,23 +2296,41 @@ function __liaInitTexPreviews(){
     });
   }
 
-  function __liaApplyThemeVarsAfterLoad(){
-    const run = () => {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          applyThemeVars();
-        });
-      });
-    };
+  applyThemeVars();
 
-    if (document.readyState === 'complete'){
-      run();
-    }else{
-      window.addEventListener('load', run, { once:true });
+  const mo = new MutationObserver(() => scheduleThemeVars());
+
+  // WICHTIG:
+  // Nicht "style" auf dem eigenen documentElement beobachten,
+  // weil applyThemeVars() dort selbst CSS-Variablen schreibt.
+  mo.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class']
+  });
+
+  try{
+    const pdoc = (window.parent && window.parent.document) ? window.parent.document : null;
+    if (pdoc && pdoc !== document){
+      mo.observe(pdoc.documentElement, { attributes:true, attributeFilter:['class','style'] });
+      if (pdoc.body){
+        mo.observe(pdoc.body, { attributes:true, attributeFilter:['class','style'] });
+      }
     }
-  }
+  }catch(_){}
 
-  __liaApplyThemeVarsAfterLoad();
+  try{
+    const mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    if (mq){
+      const onModeChange = () => scheduleThemeVars();
+      if (typeof mq.addEventListener === 'function'){
+        mq.addEventListener('change', onModeChange);
+      }else if (typeof mq.addListener === 'function'){
+        mq.addListener(onModeChange);
+      }
+    }
+  }catch(_){}
+
+  window.addEventListener('resize', () => scheduleThemeVars());
 
 
 
