@@ -223,6 +223,63 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
     boot();
 
   })();
+
+<!--
+@onload
+(function () {
+  let lastClick = 0;
+
+  function closeNavigation() {
+    const toc = document.getElementById("lia-toc");
+    if (!toc) return false;
+
+    if (toc.classList.contains("lia-toc--closed")) {
+      return true;
+    }
+
+    if (toc.classList.contains("lia-toc--open")) {
+      const toggleBtn = toc.querySelector("button");
+      const now = Date.now();
+
+      if (toggleBtn && now - lastClick > 300) {
+        lastClick = now;
+        toggleBtn.click();
+      }
+    }
+
+    return toc.classList.contains("lia-toc--closed");
+  }
+
+  if (closeNavigation()) return;
+
+  const observer = new MutationObserver(() => {
+    if (closeNavigation()) {
+      observer.disconnect();
+      clearInterval(fallback);
+    }
+  });
+
+  observer.observe(document.documentElement, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ["class"]
+  });
+
+  const fallback = setInterval(() => {
+    if (closeNavigation()) {
+      observer.disconnect();
+      clearInterval(fallback);
+    }
+  }, 250);
+
+  setTimeout(() => {
+    observer.disconnect();
+    clearInterval(fallback);
+  }, 10000);
+})();
+-->
+
 @end
 -->
 
