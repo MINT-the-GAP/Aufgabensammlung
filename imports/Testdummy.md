@@ -23,23 +23,36 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeCoreREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeEvaluationREADME.md
+
 
 
 -->
 
 
 
-# Test E
+# Testing mal hart...
 
-Mehr nicht
 
 
 123456
 
 [[ 123456 ]]
 
+@ADetails(BE=5;Test)
 
 
+
+
+# Abgabe
+
+
+
+
+@Abgabe
+
+@Auswertung(F12;Tab)
 
 
 
