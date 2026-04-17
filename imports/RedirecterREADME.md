@@ -7,6 +7,7 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
 
 @onload
 (function () {
+
   function getRootWindow() {
     let w = window;
     try {
@@ -26,9 +27,9 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
     DOC = document;
   }
 
-  const KEY = "__LIA_FORCE_NIGHTLY_NAV_MINI_AND_SWITCH_V1__";
-  ROOT[KEY] = ROOT[KEY] || {};
-  const STATE = ROOT[KEY];
+  const STORE_KEY = "__LIA_SWITCH_TO_NIGHTLY_ONESHOT_V2__";
+  ROOT[STORE_KEY] = ROOT[STORE_KEY] || {};
+  const STATE = ROOT[STORE_KEY];
 
   const SWITCH_BTN_ID = "lia-switch-to-nightly";
 
@@ -42,10 +43,18 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
 
   function getCurrentHref() {
     try {
-      return (ROOT.location && ROOT.location.href) ? ROOT.location.href : window.location.href;
+      return (ROOT.location && ROOT.location.href)
+        ? ROOT.location.href
+        : window.location.href;
     } catch (e) {
       return window.location.href;
     }
+  }
+
+  function getDocKey() {
+    const u = parseUrl(getCurrentHref());
+    if (!u) return getCurrentHref();
+    return u.origin + u.pathname + u.search;
   }
 
   function isCourseHref() {
@@ -177,32 +186,16 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
     applySwitchButtonStyle(btn);
   }
 
-  function getCanvas() {
-    return DOC.querySelector(".lia-canvas");
-  }
-
-  function isMiniActive() {
-    const body = DOC.body;
-    const canvas = getCanvas();
-
-    return !!(
-      body &&
-      canvas &&
-      body.classList.contains("lia-tff-nightly-mini") &&
-      canvas.classList.contains("lia-navigation--hidden")
-    );
-  }
-
-  function findModeItem() {
-    return DOC.querySelector(".lia-support-menu__item--mode");
-  }
-
   function findSupportButton() {
     return DOC.getElementById("lia-btn-support");
   }
 
   function findModeButton() {
     return DOC.getElementById("lia-mode-menu-button");
+  }
+
+  function findModeItem() {
+    return DOC.querySelector(".lia-support-menu__item--mode");
   }
 
   function findNavigationButton() {
@@ -217,12 +210,6 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
     return null;
   }
 
-  function navigationButtonMeansHide(btn) {
-    if (!btn) return false;
-    const icon = btn.querySelector("i");
-    return !!(icon && icon.classList.contains("icon-navigation-hide"));
-  }
-
   function openSupportMenu() {
     const btn = findSupportButton();
     if (!btn) return false;
@@ -233,6 +220,16 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
       return false;
     }
     return true;
+  }
+
+  function closeSupportMenu() {
+    const btn = findSupportButton();
+    if (!btn) return;
+
+    const expanded = btn.getAttribute("aria-expanded") === "true";
+    if (expanded) {
+      try { btn.click(); } catch (e) {}
+    }
   }
 
   function openModeMenu() {
@@ -247,149 +244,70 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
     return true;
   }
 
-  function hardSyncMiniClasses() {
+  function getCanvas() {
+    return DOC.querySelector(".lia-canvas");
+  }
+
+  function isMiniActive() {
     const body = DOC.body;
     const canvas = getCanvas();
+    const navBtn = findNavigationButton();
+    const icon = navBtn ? navBtn.querySelector("i") : null;
 
-    if (body) {
-      body.classList.add("lia-tff-nightly-mini");
-    }
+    const iconShowsMini = !!(icon && icon.classList.contains("icon-navigation-show"));
 
-    if (canvas) {
-      canvas.classList.add("lia-navigation--hidden");
-      canvas.classList.remove("lia-navigation--visible");
-    }
+    return !!(
+      iconShowsMini ||
+      (body && body.classList.contains("lia-tff-nightly-mini")) ||
+      (canvas && canvas.classList.contains("lia-navigation--hidden"))
+    );
   }
 
-  function closeSupportMenuAfterSuccess() {
-    const btn = findSupportButton();
-    if (!btn) return;
-    const expanded = btn.getAttribute("aria-expanded") === "true";
-    if (expanded) {
-      try { btn.click(); } catch (e) {}
-    }
+  function navigationButtonWouldActivateMini(btn) {
+    if (!btn) return false;
+    const icon = btn.querySelector("i");
+    return !!(icon && icon.classList.contains("icon-navigation-hide"));
   }
 
-  function stopNavRunner() {
-    if (STATE.navTimer) {
-      try { ROOT.clearInterval(STATE.navTimer); } catch (e) {}
-      STATE.navTimer = null;
-    }
-  }
+  function runNightlyMiniOnce() {
+    if (!isNightlyHref()) return;
 
-  function forceMiniNavigation() {
-    if (!isNightlyHref()) {
-      stopNavRunner();
-      return;
-    }
-
-    STATE.navRun = (STATE.navRun || 0) + 1;
-    const runId = STATE.navRun;
-
-    stopNavRunner();
+    const docKey = getDocKey();
+    if (STATE.autoMiniDoneFor === docKey) return;
 
     let tries = 0;
-    let stable = 0;
-    const maxTries = 50;
-    const delay = 160;
+    const maxTries = 20;
+    const delay = 180;
 
     function tick() {
-      if (runId !== STATE.navRun) {
-        stopNavRunner();
-        return;
-      }
-
       tries++;
 
       if (isMiniActive()) {
-        hardSyncMiniClasses();
-        stable++;
-        if (stable >= 3) {
-          closeSupportMenuAfterSuccess();
-          stopNavRunner();
-        }
+        STATE.autoMiniDoneFor = docKey;
+        ROOT.setTimeout(closeSupportMenu, 120);
         return;
       }
-
-      stable = 0;
 
       openSupportMenu();
       openModeMenu();
 
       const navBtn = findNavigationButton();
-
-      if (navBtn && navigationButtonMeansHide(navBtn)) {
+      if (navBtn && navigationButtonWouldActivateMini(navBtn)) {
         try { navBtn.click(); } catch (e) {}
       }
 
-      hardSyncMiniClasses();
+      if (tries < maxTries && !isMiniActive()) {
+        ROOT.setTimeout(tick, delay);
+        return;
+      }
 
-      if (tries >= maxTries) {
-        stopNavRunner();
+      if (isMiniActive()) {
+        STATE.autoMiniDoneFor = docKey;
+        ROOT.setTimeout(closeSupportMenu, 120);
       }
     }
 
     tick();
-    STATE.navTimer = ROOT.setInterval(tick, delay);
-  }
-
-  function rerun() {
-    try { ensureNightlySwitchButton(); } catch (e) {}
-    try { forceMiniNavigation(); } catch (e) {}
-  }
-
-  function scheduleRerun(ms) {
-    ROOT.setTimeout(rerun, ms);
-  }
-
-  function installHistoryHooks() {
-    try {
-      const H = ROOT.history;
-      if (!H || H.__liaForceNightlyMiniPatchedV1) return;
-      H.__liaForceNightlyMiniPatchedV1 = true;
-
-      const push = H.pushState;
-      const replace = H.replaceState;
-
-      H.pushState = function () {
-        const r = push.apply(this, arguments);
-        scheduleRerun(30);
-        scheduleRerun(250);
-        scheduleRerun(800);
-        return r;
-      };
-
-      H.replaceState = function () {
-        const r = replace.apply(this, arguments);
-        scheduleRerun(30);
-        scheduleRerun(250);
-        scheduleRerun(800);
-        return r;
-      };
-    } catch (e) {}
-  }
-
-  function installObserver() {
-    try {
-      if (STATE.observer) return;
-
-      STATE.observer = new ROOT.MutationObserver(function () {
-        if (STATE.queued) return;
-        STATE.queued = true;
-
-        ROOT.setTimeout(function () {
-          STATE.queued = false;
-          rerun();
-        }, 100);
-      });
-
-      STATE.observer.observe(DOC.documentElement, {
-        childList: true,
-        subtree: true,
-        attributes: true,
-        attributeFilter: ["class", "aria-expanded"]
-      });
-    } catch (e) {}
   }
 
   function boot() {
@@ -398,26 +316,24 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
       return;
     }
 
-    rerun();
-    scheduleRerun(120);
-    scheduleRerun(350);
-    scheduleRerun(900);
-    scheduleRerun(1800);
+    ensureNightlySwitchButton();
 
-    ROOT.addEventListener("hashchange", rerun, true);
-    ROOT.addEventListener("popstate", rerun, true);
-
-    installHistoryHooks();
-    installObserver();
+    // nur einmalig beim Laden versuchen
+    runNightlyMiniOnce();
+    ROOT.setTimeout(runNightlyMiniOnce, 250);
+    ROOT.setTimeout(runNightlyMiniOnce, 800);
+    ROOT.setTimeout(runNightlyMiniOnce, 1600);
   }
 
   if (STATE.started) {
-    rerun();
+    ensureNightlySwitchButton();
+    runNightlyMiniOnce();
     return;
   }
 
   STATE.started = true;
   boot();
+
 })();
 @end
 
