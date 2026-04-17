@@ -9,103 +9,64 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
 
   function getRootWindow() {
     let w = window;
-    try { while (w.parent && w.parent !== w) w = w.parent; } catch (e) {}
+    try {
+      while (w.parent && w.parent !== w) w = w.parent;
+    } catch (e) {}
     return w;
   }
 
-  // Root bevorzugen (Course-Shell), sonst Fallback auf Content
   let ROOT = getRootWindow();
-  let DOC  = null;
+  let DOC = null;
 
   try {
     DOC = ROOT.document;
     void DOC.body;
   } catch (e) {
     ROOT = window;
-    DOC  = document;
+    DOC = document;
   }
 
-  const STORE_KEY = "__LIA_SWITCH_TO_NIGHTLY_V001__";
+  const STORE_KEY = "__LIA_SWITCH_TO_NIGHTLY_V002__";
   ROOT[STORE_KEY] = ROOT[STORE_KEY] || {};
   const STATE = ROOT[STORE_KEY];
 
   const BTN_ID = "lia-switch-to-nightly";
 
-
-function getCurrentHref() {
-  return (ROOT.location && ROOT.location.href) ? ROOT.location.href : window.location.href;
-}
-
-function forceNightlyCompactNavigation() {
-  const href = getCurrentHref();
-  if (!isNightlyHref(href)) return;
-
-  let tries = 0;
-  const maxTries = 40;     // 40 * 150 ms = 6 s
-  const delay = 150;
-
-  const timer = ROOT.setInterval(() => {
-    tries++;
-
-    const btn = DOC.getElementById("lia-btn-toc");
-    const toc = DOC.getElementById("lia-toc");
-
-    if (btn && toc) {
-      const expanded =
-        btn.getAttribute("aria-expanded") === "true" ||
-        toc.classList.contains("lia-toc--open");
-
-      const closed =
-        btn.getAttribute("aria-expanded") === "false" ||
-        toc.classList.contains("lia-toc--closed");
-
-      if (expanded) {
-        try { btn.click(); } catch (e) {}
-      }
-
-      if (closed) {
-        try { ROOT.clearInterval(timer); } catch (e) {}
-        return;
-      }
-    }
-
-    if (tries >= maxTries) {
-      try { ROOT.clearInterval(timer); } catch (e) {}
-    }
-  }, delay);
-}
-
-
-
-  function courseToNightly(href) {
+  function getCurrentHref() {
     try {
-      const u = new URL(href, ROOT.location.href);
-      if (!/^\/course(\/|$)/.test(u.pathname)) return null;
-      u.pathname = u.pathname.replace(/^\/course(\/|$)/, "/nightly$1");
-      return u.toString();
+      return (ROOT.location && ROOT.location.href) ? ROOT.location.href : window.location.href;
+    } catch (e) {
+      return window.location.href;
+    }
+  }
+
+  function parseUrl(href) {
+    try {
+      return new URL(href, window.location.href);
     } catch (e) {
       return null;
     }
   }
 
   function isNightlyHref(href) {
-    try {
-      const u = new URL(href, ROOT.location.href);
-      return /^\/nightly(\/|$)/.test(u.pathname);
-    } catch (e) {
-      return false;
-    }
+    const u = parseUrl(href);
+    return !!(u && /^\/nightly(\/|$)/.test(u.pathname));
   }
 
-  // ---------------------------------------------------------
-  // Themefarbe robust aus LiaScript-UI lesen (kein Variablenraten)
-  // ---------------------------------------------------------
+  function courseToNightly(href) {
+    const u = parseUrl(href);
+    if (!u) return null;
+    if (!/^\/course(\/|$)/.test(u.pathname)) return null;
+    u.pathname = u.pathname.replace(/^\/course(\/|$)/, "/nightly$1");
+    return u.toString();
+  }
+
   function readAccentFromUI(doc) {
     const candidates = [
       ".lia-toolbar .lia-btn",
       ".lia-btn",
-      ".lia-active",
-      ".lia-link"
+      ".lia-link",
+      ".lia-active"
     ];
 
     for (const sel of candidates) {
@@ -113,11 +74,10 @@ function forceNightlyCompactNavigation() {
       if (!el) continue;
 
       const cs = ROOT.getComputedStyle(el);
-
       const bg = (cs.backgroundColor || "").trim();
-      if (bg && bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent") return bg;
-
       const col = (cs.color || "").trim();
+
+      if (bg && bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent") return bg;
       if (col) return col;
     }
 
@@ -127,14 +87,13 @@ function forceNightlyCompactNavigation() {
       probe.textContent = "x";
       probe.style.position = "absolute";
       probe.style.left = "-9999px";
-      probe.style.top  = "-9999px";
+      probe.style.top = "-9999px";
       probe.style.opacity = "0";
       doc.body.appendChild(probe);
 
       const cs = ROOT.getComputedStyle(probe);
       const bg = (cs.backgroundColor || "").trim();
       const col = (cs.color || "").trim();
-
       probe.remove();
 
       if (bg && bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent") return bg;
@@ -161,7 +120,6 @@ function forceNightlyCompactNavigation() {
     btn.style.display = "inline-flex";
     btn.style.alignItems = "center";
     btn.style.gap = "8px";
-
     btn.style.padding = "10px 14px";
     btn.style.borderRadius = "999px";
 
@@ -178,25 +136,11 @@ function forceNightlyCompactNavigation() {
     btn.style.opacity = "1";
     btn.style.visibility = "visible";
     btn.style.pointerEvents = "auto";
-
-    const badge = btn.querySelector(".badge");
-    if (badge) {
-      badge.style.display = "inline-block";
-      badge.style.fontSize = "12px";
-      badge.style.fontWeight = "800";
-      badge.style.padding = "3px 8px";
-      badge.style.borderRadius = "999px";
-      badge.style.background = accent;
-      badge.style.border = "1px solid " + accent;
-      badge.style.color = "#fff";
-      badge.style.lineHeight = "1";
-    }
   }
 
   function ensureButton() {
-    const href = (ROOT.location && ROOT.location.href) ? ROOT.location.href : window.location.href;
+    const href = getCurrentHref();
     const target = courseToNightly(href);
-
     let btn = DOC.getElementById(BTN_ID);
 
     if (!target) {
@@ -208,11 +152,15 @@ function forceNightlyCompactNavigation() {
       btn = DOC.createElement("a");
       btn.id = BTN_ID;
       btn.rel = "noopener";
-      btn.innerHTML = "Wechsel zu Nightly";
+      btn.textContent = "Wechsel zu Nightly";
 
-      btn.addEventListener("click", (ev) => {
+      btn.addEventListener("click", function (ev) {
         ev.preventDefault();
-        try { ROOT.location.href = btn.href; } catch (e) { window.location.href = btn.href; }
+        try {
+          ROOT.location.href = btn.href;
+        } catch (e) {
+          window.location.href = btn.href;
+        }
       });
 
       DOC.body.appendChild(btn);
@@ -222,13 +170,179 @@ function forceNightlyCompactNavigation() {
     applyInlineStyle(btn);
   }
 
-  // ---------------------------------------------------------
-  // Nightly: Navigation direkt einklappen
-  // ---------------------------------------------------------
+  function getNavRefs() {
+    return {
+      root: DOC.querySelector(".lia-canvas"),
+      toc: DOC.getElementById("lia-toc"),
+      btn: DOC.getElementById("lia-btn-toc")
+    };
+  }
+
+  function isCompactState(refs) {
+    if (!refs.root || !refs.toc || !refs.btn) return false;
+
+    const btnClosed =
+      refs.btn.getAttribute("aria-expanded") === "false" ||
+      refs.btn.ariaExpanded === "false";
+
+    const tocClosed = refs.toc.classList.contains("lia-toc--closed");
+    const rootHidden = refs.root.classList.contains("lia-toc--hidden");
+
+    return btnClosed && tocClosed && rootHidden;
+  }
+
+  function syncCompactClasses(refs) {
+    if (refs.root) {
+      refs.root.classList.remove("lia-toc--visible");
+      refs.root.classList.add("lia-toc--hidden");
+    }
+
+    if (refs.toc) {
+      refs.toc.classList.remove("lia-toc--open");
+      refs.toc.classList.add("lia-toc--closed");
+    }
+
+    if (refs.btn) {
+      refs.btn.setAttribute("aria-expanded", "false");
+      try { refs.btn.ariaExpanded = "false"; } catch (e) {}
+    }
+  }
+
+  function maybeClickToc(refs) {
+    if (!refs.btn || !refs.toc) return;
+
+    const expanded =
+      refs.btn.getAttribute("aria-expanded") === "true" ||
+      refs.btn.ariaExpanded === "true" ||
+      refs.toc.classList.contains("lia-toc--open");
+
+    if (!expanded) return;
+
+    const now = Date.now();
+    if (STATE.lastTocClick && now - STATE.lastTocClick < 250) return;
+
+    STATE.lastTocClick = now;
+    try { refs.btn.click(); } catch (e) {}
+  }
+
+  function stopCompactRun() {
+    if (STATE.navTimer) {
+      try { ROOT.clearInterval(STATE.navTimer); } catch (e) {}
+      STATE.navTimer = null;
+    }
+  }
+
+  function forceNightlyCompactNavigation() {
+    const href = getCurrentHref();
+    if (!isNightlyHref(href)) {
+      stopCompactRun();
+      return;
+    }
+
+    STATE.navRun = (STATE.navRun || 0) + 1;
+    const runId = STATE.navRun;
+
+    stopCompactRun();
+
+    let tries = 0;
+    let stable = 0;
+    const maxTries = 60;
+    const delay = 120;
+
+    function tick() {
+      if (runId !== STATE.navRun) {
+        stopCompactRun();
+        return;
+      }
+
+      tries++;
+
+      const refs = getNavRefs();
+      if (!refs.root || !refs.toc || !refs.btn) {
+        if (tries >= maxTries) stopCompactRun();
+        return;
+      }
+
+      maybeClickToc(refs);
+      syncCompactClasses(refs);
+
+      if (isCompactState(refs)) {
+        stable++;
+      } else {
+        stable = 0;
+      }
+
+      if (stable >= 3 || tries >= maxTries) {
+        stopCompactRun();
+      }
+    }
+
+    tick();
+    if (!STATE.navTimer) {
+      STATE.navTimer = ROOT.setInterval(tick, delay);
+    }
+  }
+
+  function scheduleRerun(delay) {
+    ROOT.setTimeout(function () {
+      try { ensureButton(); } catch (e) {}
+      try { forceNightlyCompactNavigation(); } catch (e) {}
+    }, delay);
+  }
 
   function rerunAll() {
     try { ensureButton(); } catch (e) {}
     try { forceNightlyCompactNavigation(); } catch (e) {}
+  }
+
+  function installHistoryHooks() {
+    try {
+      const H = ROOT.history;
+      if (!H || H.__liaNightlySwitchPatched002) return;
+      H.__liaNightlySwitchPatched002 = true;
+
+      const push = H.pushState;
+      const replace = H.replaceState;
+
+      H.pushState = function () {
+        const r = push.apply(this, arguments);
+        scheduleRerun(20);
+        scheduleRerun(250);
+        scheduleRerun(900);
+        return r;
+      };
+
+      H.replaceState = function () {
+        const r = replace.apply(this, arguments);
+        scheduleRerun(20);
+        scheduleRerun(250);
+        scheduleRerun(900);
+        return r;
+      };
+    } catch (e) {}
+  }
+
+  function installObserver() {
+    try {
+      if (STATE.mo) return;
+
+      STATE.mo = new ROOT.MutationObserver(function () {
+        if (STATE.mutationQueued) return;
+        STATE.mutationQueued = true;
+
+        ROOT.setTimeout(function () {
+          STATE.mutationQueued = false;
+          rerunAll();
+        }, 80);
+      });
+
+      STATE.mo.observe(DOC.documentElement, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ["class", "aria-expanded"]
+      });
+    } catch (e) {}
   }
 
   function boot() {
@@ -238,52 +352,24 @@ function forceNightlyCompactNavigation() {
     }
 
     rerunAll();
-    ROOT.setTimeout(rerunAll, 250);
+    scheduleRerun(120);
+    scheduleRerun(350);
+    scheduleRerun(800);
+    scheduleRerun(1600);
 
     ROOT.addEventListener("hashchange", rerunAll, true);
-    ROOT.addEventListener("popstate",  rerunAll, true);
+    ROOT.addEventListener("popstate", rerunAll, true);
 
-    try {
-      const H = ROOT.history;
-      if (H && !H.__liaSwitchPatched001) {
-        H.__liaSwitchPatched001 = true;
-
-        const _push = H.pushState;
-        const _rep  = H.replaceState;
-
-        H.pushState = function () {
-          const r = _push.apply(this, arguments);
-          try { rerunAll(); } catch (e) {}
-          return r;
-        };
-
-        H.replaceState = function () {
-          const r = _rep.apply(this, arguments);
-          try { rerunAll(); } catch (e) {}
-          return r;
-        };
-      }
-    } catch (e) {}
-
-    try {
-      const mo = new ROOT.MutationObserver(() => {
-        if (!DOC.getElementById(BTN_ID)) {
-          try { ensureButton(); } catch (e) {}
-        }
-        try { forceNightlyCompactNavigation(); } catch (e) {}
-      });
-      mo.observe(DOC.documentElement, { childList: true, subtree: true });
-    } catch (e) {}
-
-    ROOT.setInterval(rerunAll, 1200);
+    installHistoryHooks();
+    installObserver();
   }
 
   if (STATE.started) {
-    try { rerunAll(); } catch (e) {}
+    rerunAll();
     return;
   }
-  STATE.started = true;
 
+  STATE.started = true;
   boot();
 
 })();
