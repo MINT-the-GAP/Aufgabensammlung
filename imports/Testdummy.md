@@ -3,7 +3,7 @@ version:  0.0.1
 language: de
 narrator: Deutsch Female
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/OCRREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 
 
 
@@ -11,7 +11,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-# Test D
+# Test E
 
 Mehr nicht
 
@@ -20,7 +20,7 @@ Mehr nicht
 
 [[ 123456 ]]
 
-@canvas
+
 
 
 
