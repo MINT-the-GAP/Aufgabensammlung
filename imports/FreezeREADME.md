@@ -14927,6 +14927,7 @@ function safeBoot() {
 
 # Test A
 
+Hier steht text...
 
 # Reine LiaScript-Abgabelink-Demo
 
