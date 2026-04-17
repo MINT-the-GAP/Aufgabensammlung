@@ -224,8 +224,8 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
 
   })();
 
-<!--
-@onload
+
+
 (function () {
   let lastClick = 0;
 
