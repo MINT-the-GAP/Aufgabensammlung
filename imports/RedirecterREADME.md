@@ -26,9 +26,11 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
     DOC = document;
   }
 
-  const KEY = "__LIA_FORCE_NIGHTLY_NAV_MINI_V1__";
+  const KEY = "__LIA_FORCE_NIGHTLY_NAV_MINI_AND_SWITCH_V1__";
   ROOT[KEY] = ROOT[KEY] || {};
   const STATE = ROOT[KEY];
+
+  const SWITCH_BTN_ID = "lia-switch-to-nightly";
 
   function parseUrl(href) {
     try {
@@ -38,9 +40,141 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
     }
   }
 
+  function getCurrentHref() {
+    try {
+      return (ROOT.location && ROOT.location.href) ? ROOT.location.href : window.location.href;
+    } catch (e) {
+      return window.location.href;
+    }
+  }
+
+  function isCourseHref() {
+    const u = parseUrl(getCurrentHref());
+    return !!(u && /^\/course(\/|$)/.test(u.pathname));
+  }
+
   function isNightlyHref() {
-    const u = parseUrl((ROOT.location && ROOT.location.href) || window.location.href);
+    const u = parseUrl(getCurrentHref());
     return !!(u && /^\/nightly(\/|$)/.test(u.pathname));
+  }
+
+  function courseToNightly(href) {
+    const u = parseUrl(href);
+    if (!u) return null;
+    if (!/^\/course(\/|$)/.test(u.pathname)) return null;
+    u.pathname = u.pathname.replace(/^\/course(\/|$)/, "/nightly$1");
+    return u.toString();
+  }
+
+  function readAccentFromUI(doc) {
+    const candidates = [
+      ".lia-toolbar .lia-btn",
+      ".lia-btn",
+      ".lia-link",
+      ".lia-active"
+    ];
+
+    for (const sel of candidates) {
+      const el = doc.querySelector(sel);
+      if (!el) continue;
+
+      const cs = ROOT.getComputedStyle(el);
+      const bg = (cs.backgroundColor || "").trim();
+      const col = (cs.color || "").trim();
+
+      if (bg && bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent") return bg;
+      if (col) return col;
+    }
+
+    try {
+      const probe = doc.createElement("button");
+      probe.className = "lia-btn";
+      probe.textContent = "x";
+      probe.style.position = "absolute";
+      probe.style.left = "-9999px";
+      probe.style.top = "-9999px";
+      probe.style.opacity = "0";
+      doc.body.appendChild(probe);
+
+      const cs = ROOT.getComputedStyle(probe);
+      const bg = (cs.backgroundColor || "").trim();
+      const col = (cs.color || "").trim();
+
+      probe.remove();
+
+      if (bg && bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent") return bg;
+      if (col) return col;
+    } catch (e) {}
+
+    return "#0b5fff";
+  }
+
+  function getAccentColor() {
+    return readAccentFromUI(DOC);
+  }
+
+  function applySwitchButtonStyle(btn) {
+    const accent = getAccentColor();
+
+    btn.style.position = "fixed";
+    btn.style.top = "14px";
+    btn.style.left = "50%";
+    btn.style.transform = "translateX(-50%) translateX(-150px)";
+    btn.style.zIndex = "2147483647";
+
+    btn.style.display = "inline-flex";
+    btn.style.alignItems = "center";
+    btn.style.gap = "8px";
+
+    btn.style.padding = "10px 14px";
+    btn.style.borderRadius = "999px";
+
+    btn.style.background = "transparent";
+    btn.style.color = accent;
+    btn.style.border = "2px solid " + accent;
+    btn.style.boxShadow = "none";
+
+    btn.style.cursor = "pointer";
+    btn.style.textDecoration = "none";
+    btn.style.userSelect = "none";
+    btn.style.font = "800 16px/1 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif";
+
+    btn.style.opacity = "1";
+    btn.style.visibility = "visible";
+    btn.style.pointerEvents = "auto";
+  }
+
+  function ensureNightlySwitchButton() {
+    const href = getCurrentHref();
+    const target = courseToNightly(href);
+
+    let btn = DOC.getElementById(SWITCH_BTN_ID);
+
+    if (!target) {
+      if (btn) btn.remove();
+      return;
+    }
+
+    if (!btn) {
+      btn = DOC.createElement("a");
+      btn.id = SWITCH_BTN_ID;
+      btn.rel = "noopener";
+      btn.textContent = "Wechsel zu Nightly";
+
+      btn.addEventListener("click", function (ev) {
+        ev.preventDefault();
+        try {
+          ROOT.location.href = btn.href;
+        } catch (e) {
+          window.location.href = btn.href;
+        }
+      });
+
+      DOC.body.appendChild(btn);
+    }
+
+    btn.href = target;
+    applySwitchButtonStyle(btn);
   }
 
   function getCanvas() {
@@ -116,7 +250,11 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
   function hardSyncMiniClasses() {
     const body = DOC.body;
     const canvas = getCanvas();
-    if (body) body.classList.add("lia-tff-nightly-mini");
+
+    if (body) {
+      body.classList.add("lia-tff-nightly-mini");
+    }
+
     if (canvas) {
       canvas.classList.add("lia-navigation--hidden");
       canvas.classList.remove("lia-navigation--visible");
@@ -132,23 +270,23 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
     }
   }
 
-  function stopRunner() {
-    if (STATE.timer) {
-      try { ROOT.clearInterval(STATE.timer); } catch (e) {}
-      STATE.timer = null;
+  function stopNavRunner() {
+    if (STATE.navTimer) {
+      try { ROOT.clearInterval(STATE.navTimer); } catch (e) {}
+      STATE.navTimer = null;
     }
   }
 
   function forceMiniNavigation() {
     if (!isNightlyHref()) {
-      stopRunner();
+      stopNavRunner();
       return;
     }
 
-    STATE.run = (STATE.run || 0) + 1;
-    const runId = STATE.run;
+    STATE.navRun = (STATE.navRun || 0) + 1;
+    const runId = STATE.navRun;
 
-    stopRunner();
+    stopNavRunner();
 
     let tries = 0;
     let stable = 0;
@@ -156,8 +294,8 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
     const delay = 160;
 
     function tick() {
-      if (runId !== STATE.run) {
-        stopRunner();
+      if (runId !== STATE.navRun) {
+        stopNavRunner();
         return;
       }
 
@@ -168,7 +306,7 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
         stable++;
         if (stable >= 3) {
           closeSupportMenuAfterSuccess();
-          stopRunner();
+          stopNavRunner();
         }
         return;
       }
@@ -187,15 +325,16 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
       hardSyncMiniClasses();
 
       if (tries >= maxTries) {
-        stopRunner();
+        stopNavRunner();
       }
     }
 
     tick();
-    STATE.timer = ROOT.setInterval(tick, delay);
+    STATE.navTimer = ROOT.setInterval(tick, delay);
   }
 
   function rerun() {
+    try { ensureNightlySwitchButton(); } catch (e) {}
     try { forceMiniNavigation(); } catch (e) {}
   }
 
@@ -206,8 +345,8 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
   function installHistoryHooks() {
     try {
       const H = ROOT.history;
-      if (!H || H.__liaForceNightlyMiniPatched) return;
-      H.__liaForceNightlyMiniPatched = true;
+      if (!H || H.__liaForceNightlyMiniPatchedV1) return;
+      H.__liaForceNightlyMiniPatchedV1 = true;
 
       const push = H.pushState;
       const replace = H.replaceState;
