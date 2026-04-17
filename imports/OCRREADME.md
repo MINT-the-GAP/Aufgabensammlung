@@ -32,22 +32,6 @@ const DOC_ID = document.baseURI || location.href;
 if (ROOT[REGKEY].inited[DOC_ID]) return;
 ROOT[REGKEY].inited[DOC_ID] = true;
 
-const __LIA_DIAG_MODE__ = 'bail_after_guard'; // '' | 'bail_after_guard' | 'no_tex_preview'
-
-const __liaDiagT0 = performance.now();
-function __liaDiag(msg){
-  try{
-    const dt = (performance.now() - __liaDiagT0).toFixed(1);
-    console.log('[LIA-OCR-DIAG +' + dt + 'ms] ' + msg);
-  }catch(_){}
-}
-
-__liaDiag('after guard');
-
-if (__LIA_DIAG_MODE__ === 'bail_after_guard'){
-  __liaDiag('BAIL after guard');
-  return;
-}
 
 
 // ---------------------------------------------------------
@@ -5684,7 +5668,7 @@ ensureMountUID(mount);
 
 
 
-# Test C
+# Test D
 
 Narf...
 
