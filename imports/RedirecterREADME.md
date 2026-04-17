@@ -278,9 +278,8 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
     clearInterval(fallback);
   }, 10000);
 })();
--->
-
 @end
+
 -->
 
 
