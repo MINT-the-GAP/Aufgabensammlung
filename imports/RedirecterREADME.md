@@ -30,8 +30,52 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
   const STATE = ROOT[STORE_KEY];
 
   const BTN_ID = "lia-switch-to-nightly";
-  const NAV_RETRY_MS  = 250;
-  const NAV_RETRY_MAX = 40;
+
+
+function getCurrentHref() {
+  return (ROOT.location && ROOT.location.href) ? ROOT.location.href : window.location.href;
+}
+
+function forceNightlyCompactNavigation() {
+  const href = getCurrentHref();
+  if (!isNightlyHref(href)) return;
+
+  let tries = 0;
+  const maxTries = 40;     // 40 * 150 ms = 6 s
+  const delay = 150;
+
+  const timer = ROOT.setInterval(() => {
+    tries++;
+
+    const btn = DOC.getElementById("lia-btn-toc");
+    const toc = DOC.getElementById("lia-toc");
+
+    if (btn && toc) {
+      const expanded =
+        btn.getAttribute("aria-expanded") === "true" ||
+        toc.classList.contains("lia-toc--open");
+
+      const closed =
+        btn.getAttribute("aria-expanded") === "false" ||
+        toc.classList.contains("lia-toc--closed");
+
+      if (expanded) {
+        try { btn.click(); } catch (e) {}
+      }
+
+      if (closed) {
+        try { ROOT.clearInterval(timer); } catch (e) {}
+        return;
+      }
+    }
+
+    if (tries >= maxTries) {
+      try { ROOT.clearInterval(timer); } catch (e) {}
+    }
+  }, delay);
+}
+
+
 
   function courseToNightly(href) {
     try {
@@ -181,88 +225,10 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
   // ---------------------------------------------------------
   // Nightly: Navigation direkt einklappen
   // ---------------------------------------------------------
-  function getToc() {
-    return DOC.getElementById("lia-toc");
-  }
-
-  function findTocToggleButton(toc) {
-    if (!toc) return null;
-
-    const buttons = Array.from(toc.querySelectorAll("button, .lia-btn"));
-    if (!buttons.length) return null;
-
-    for (const btn of buttons) {
-      const s = [
-        btn.getAttribute("aria-label") || "",
-        btn.getAttribute("title") || "",
-        btn.textContent || ""
-      ].join(" ").toLowerCase();
-
-      if (/toc|table|contents|menu|navigation|outline|open|close|collapse|expand/.test(s)) {
-        return btn;
-      }
-    }
-
-    return buttons[0] || null;
-  }
-
-  function closeNavigationOnce() {
-    const href = (ROOT.location && ROOT.location.href) ? ROOT.location.href : window.location.href;
-
-    // nur in Nightly aktiv
-    if (!isNightlyHref(href)) return true;
-
-    const toc = getToc();
-    if (!toc) return false;
-
-    if (toc.classList.contains("lia-toc--closed")) {
-      return true;
-    }
-
-    const toggleBtn = findTocToggleButton(toc);
-
-    if (toggleBtn) {
-      toggleBtn.click();
-    } else {
-      // defensiver Fallback, falls der Button noch nicht greifbar ist
-      toc.classList.remove("lia-toc--open");
-      toc.classList.add("lia-toc--closed");
-    }
-
-    return toc.classList.contains("lia-toc--closed");
-  }
-
-  function scheduleCompactNavigation() {
-    STATE.navRun = (STATE.navRun || 0) + 1;
-    const runId = STATE.navRun;
-    let tries = 0;
-
-    if (STATE.navTimer) {
-      try { ROOT.clearInterval(STATE.navTimer); } catch (e) {}
-      STATE.navTimer = null;
-    }
-
-    function tick() {
-      if (runId !== STATE.navRun) return;
-
-      const done = closeNavigationOnce();
-      tries++;
-
-      if (done || tries >= NAV_RETRY_MAX) {
-        if (STATE.navTimer) {
-          try { ROOT.clearInterval(STATE.navTimer); } catch (e) {}
-          STATE.navTimer = null;
-        }
-      }
-    }
-
-    STATE.navTimer = ROOT.setInterval(tick, NAV_RETRY_MS);
-    tick();
-  }
 
   function rerunAll() {
     try { ensureButton(); } catch (e) {}
-    try { scheduleCompactNavigation(); } catch (e) {}
+    try { forceNightlyCompactNavigation(); } catch (e) {}
   }
 
   function boot() {
@@ -304,7 +270,7 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
         if (!DOC.getElementById(BTN_ID)) {
           try { ensureButton(); } catch (e) {}
         }
-        try { scheduleCompactNavigation(); } catch (e) {}
+        try { forceNightlyCompactNavigation(); } catch (e) {}
       });
       mo.observe(DOC.documentElement, { childList: true, subtree: true });
     } catch (e) {}
