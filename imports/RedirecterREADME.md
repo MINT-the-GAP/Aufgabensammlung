@@ -222,11 +222,6 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
 
     boot();
 
-  })();
-
-
-
-(function () {
   let lastClick = 0;
 
   function closeNavigation() {
@@ -277,7 +272,10 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
     observer.disconnect();
     clearInterval(fallback);
   }, 10000);
-})();
+
+  })();
+
+
 @end
 
 -->
