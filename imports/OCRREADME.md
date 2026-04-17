@@ -32,6 +32,23 @@ const DOC_ID = document.baseURI || location.href;
 if (ROOT[REGKEY].inited[DOC_ID]) return;
 ROOT[REGKEY].inited[DOC_ID] = true;
 
+const __LIA_DIAG_MODE__ = 'bail_after_guard'; // '' | 'bail_after_guard' | 'no_tex_preview'
+
+const __liaDiagT0 = performance.now();
+function __liaDiag(msg){
+  try{
+    const dt = (performance.now() - __liaDiagT0).toFixed(1);
+    console.log('[LIA-OCR-DIAG +' + dt + 'ms] ' + msg);
+  }catch(_){}
+}
+
+__liaDiag('after guard');
+
+if (__LIA_DIAG_MODE__ === 'bail_after_guard'){
+  __liaDiag('BAIL after guard');
+  return;
+}
+
 
 // ---------------------------------------------------------
 // OCR-Bar + Engine: eigener Guard (läuft unabhängig vom Canvas-Guard)
@@ -810,28 +827,16 @@ if (!window.__LIA_OCR_BAR_BOOT__){
   }
 
   // ---- Boot: Bar + Engine + Auto-Load beim Kursstart ----
-  function __liaBootOcrAfterLoad(){
-    const run = () => {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          ensureOcrBar();
-          __ocrSyncAccent();
-          setTimeout(__ocrSyncAccent, 0);
+  ensureOcrBar();
+  __ocrSyncAccent();
+  setTimeout(__ocrSyncAccent, 0);
 
-          const eng = ensureOcrEngine();
-          __ocrScheduleAutoload(eng);
-        });
-      });
-    };
+  const eng = ensureOcrEngine();
 
-    if (document.readyState === 'complete'){
-      run();
-    }else{
-      window.addEventListener('load', run, { once:true });
-    }
-  }
-
-  __liaBootOcrAfterLoad();
+  // Auto-Load:
+  // Firefox wie bisher direkt.
+  // Chrome / Edge / Safari erst nach complete + sichtbarem Paint.
+  __ocrScheduleAutoload(eng);
 
 }
 
@@ -5679,9 +5684,9 @@ ensureMountUID(mount);
 
 
 
-# Test B
+# Test C
 
-Nun sowas...
+Narf...
 
 # Road to OCR from Canvas 
 
