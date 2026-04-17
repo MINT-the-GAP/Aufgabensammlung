@@ -1,32 +1,11 @@
-<!--
-version: 0.0.1
-language: de
-author: Martin Lommatzsch
-comment: LiaScript-Freezelink Basismodul (Core) – Snapshot, Routing, Capture, Apply, Canvas, Annotation, Security
-
-mode: Presentation
-
-import: https://cdn.jsdelivr.net/gh/LiaTemplates/algebrite@master/README.md
-import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
-
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MatheREADME.md
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/DeutschREADME.md
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MarkerREADME.md
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/KoordREADME.md
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/OCRREADME.md
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/AnnotationREADME.md
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FlexChildREADME.md
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/TafelREADME.md
-
-
-@onload
 window.__liaSubmissionDemo = (function () {
   const PARAM_NAME = "submission";
   const ADMIN_ATTR = "data-snapshot-admin";
   const STORAGE_PREFIX = "__lia_submission_demo__:";
   const PAYLOAD_VERSION = "sf-mini-ti-3";
   const DEBUG = false;
-  const BUILD_STAMP = "FREEZE-CORE-BUILD-2026-04-17-01";
+  const EVALUATION_TITLE = "Auswertung";
+  const BUILD_STAMP = "FREEZE-BUILD-2026-04-05-12-26";
 
   let snapshotPayload = null;
   let declaredSlidesCache = [];
@@ -49,9 +28,17 @@ window.__liaSubmissionDemo = (function () {
   let stabilizationToken = 0;
   let freezeLoadingVisible = false;
   let unvisitedPlaceholderHash = "";
+  let declaredEvaluationByHash = Object.create(null);
   let initialBootDone = false;
 
+  let evaluationPlaceholderHash = "";
+  let submissionStartHash = "";
+
+  let assignmentDetailRefreshTimer = null;
+  let assignmentDetailSerial = 0;
+
   let snapshotIsSharedLinkMode = false;
+  let manualAwardValuesByKey = Object.create(null);
 
   let devtoolsWatchInstalled = false;
   let devtoolsWatchTimer = 0;
@@ -62,7 +49,8 @@ window.__liaSubmissionDemo = (function () {
   let tabTrackingInstalled = false;
 
   let lastTrackedF12Stamp = -1;
-  let declaredSlidesLoaded = false;
+  let lastTrackedTabStamp = -1;
+  let tabBlurProbeTimer = 0;
 
   let declaredEvaluationOptions = {
     trackF12: false,
@@ -73,12 +61,9 @@ window.__liaSubmissionDemo = (function () {
     f12: 0,
     tab: 0
   };
-
+  
   let lastTrackedF12KeyStamp = -1;
-  let lastTrackedTabStamp = -1;
-  let tabBlurProbeTimer = 0;
-
-  let submissionStartHash = "";
+  let declaredSlidesLoaded = false;
 
   // =========================================================
   // Debug
@@ -97,8 +82,6 @@ window.__liaSubmissionDemo = (function () {
     args.unshift("[LIA-FREEZE]");
     console.warn.apply(console, args);
   }
-
-
 
   // =========================================================
   // Utilities
@@ -501,9 +484,6 @@ function cleanHashValue(raw) {
     if (normalizeSpace(desc.x)) return true;
     return false;
   }
-
-
-
 
   // =========================================================
   // Theme / Farben
@@ -1039,9 +1019,6 @@ body.lia-snapshot-mode #lia-freeze-info{
     }, 100);
   }
 
-
-
-
   // =========================================================
   // URL / Storage
   // =========================================================
@@ -1548,7 +1525,6 @@ function applySnapshotToCurrentVisibleHost(reason) {
 }
 
 
-
   // =========================================================
   // Kursquelle / deklarierte Folien
   // =========================================================
@@ -1803,6 +1779,7 @@ function parseDeclaredSlidesFromSource(text) {
   return out;
 }
 
+
 function parseSubmissionHashFromSource(text) {
   const src = stripLeadingHeaderComment(text);
   const lines = src.split(/\r?\n/);
@@ -1845,6 +1822,7 @@ function parseSubmissionHashFromSource(text) {
 
   return "";
 }
+
 
 function countRegexMatches(text, regex) {
   const m = String(text || "").match(regex);
@@ -1902,13 +1880,18 @@ function collectDeclaredTasksFromSlideLines(lines) {
     if (/^\s*<!--/.test(txt)) return false;
     if (/^\s*@ADetails\b/.test(line)) return false;
 
+    // Bullet-/Choice-Blöcke laufen schon separat
     if (/^\s*-\s+/.test(line)) return false;
 
+    // Diese Familien laufen schon separat
     if (/@diktat\s*\(/.test(line)) return false;
     if (/@orthography\s*\(/.test(line)) return false;
     if (/@(?:rectQuiz|circleQuiz|TextmarkerQuiz|ErzeugePunkt)\b/.test(line)) return false;
 
+    // Kachel-/Zuordnungsquiz
     if (/\[\->\[[^\n]*?\]\]/.test(line)) return true;
+
+    // Inline-/Dropdown-Quizformen
     if (/\[\[[^\n]*?\]\]/.test(line)) return true;
 
     return false;
@@ -1936,6 +1919,7 @@ function collectDeclaredTasksFromSlideLines(lines) {
       continue;
     }
 
+    // Auswahl-/Matrix-Blöcke: ein zusammenhängender Bullet-Block = genau eine Aufgabe
     if (/^\s*-\s+/.test(line) && /(\[\[|\[\()/.test(line)) {
       pushTask();
 
@@ -1948,6 +1932,7 @@ function collectDeclaredTasksFromSlideLines(lines) {
       continue;
     }
 
+    // Mehrere @diktat(...) im selben zusammenhängenden Block = eine Aufgabe
     if (/@diktat\s*\(/.test(line)) {
       pushTask();
 
@@ -1967,18 +1952,23 @@ function collectDeclaredTasksFromSlideLines(lines) {
       continue;
     }
 
+    // orthography: jede Instanz ist eine Aufgabe
     const orthographyMatches = line.match(/@orthography\s*\(/g) || [];
     orthographyMatches.forEach(function () {
       pushTask();
     });
     if (orthographyMatches.length) continue;
 
+    // Bruch-/Marker-/Koordinaten-Makros: jede Instanz ist eine Aufgabe
     const macroMatches = line.match(/@(?:rectQuiz|circleQuiz|TextmarkerQuiz|ErzeugePunkt)\b/g) || [];
     macroMatches.forEach(function () {
       pushTask();
     });
     if (macroMatches.length) continue;
 
+    // Kachel-/Zuordnungsquiz: jede Instanz ist eine Aufgabe
+    // Zusammengehörige Inline-/Dropdown-/Kachel-Blöcke
+    // ohne Leerzeile dazwischen zählen als genau EINE Aufgabe.
     if (isGroupedInlineQuizLine(line)) {
       pushTask();
 
@@ -1989,6 +1979,7 @@ function collectDeclaredTasksFromSlideLines(lines) {
         if (!nextTrimmed) break;
         if (/^\s*@ADetails\b/.test(nextLine)) break;
 
+        // Kommentare innerhalb des Blocks überspringen
         if (/^\s*<!--/.test(nextTrimmed)) {
           i += 1;
           continue;
@@ -2111,9 +2102,6 @@ function parseDeclaredEvaluationFromSource(text) {
   return map;
 }
 
-
-
-
 function forEachCapturedState(slide, fn) {
   ["q", "d", "m", "c", "o", "fq", "mq", "cq"].forEach(function (key) {
     const arr = Array.isArray(slide && slide[key]) ? slide[key] : [];
@@ -2142,6 +2130,7 @@ function getDeclaredSlideTaskCount(slide) {
   });
   return total;
 }
+
 
 async function ensureDeclaredSlides(force) {
   if (!force && declaredSlidesLoaded && declaredSlidesCache && declaredSlidesCache.length) {
@@ -2194,99 +2183,101 @@ async function ensureDeclaredSlides(force) {
   return declaredSlidesCache.slice();
 }
 
-function getDeclaredSlides() {
-  return (declaredSlidesCache || []).slice().sort(hashSort);
-}
+  function getDeclaredSlides() {
+    return (declaredSlidesCache || []).slice().sort(hashSort);
+  }
 
-function getDeclaredSlideByHash(hash) {
-  const declared = getDeclaredSlides();
-  for (let i = 0; i < declared.length; i++) {
-    if (String(declared[i].h || "") === String(hash || "")) {
-      return declared[i];
+  function getDeclaredSlideByHash(hash) {
+    const declared = getDeclaredSlides();
+    for (let i = 0; i < declared.length; i++) {
+      if (String(declared[i].h || "") === String(hash || "")) {
+        return declared[i];
+      }
     }
+    return null;
   }
-  return null;
-}
 
-function getDeclaredSlideIndex(hash) {
-  const declared = getDeclaredSlides();
-  for (let i = 0; i < declared.length; i++) {
-    if (String(declared[i].h || "") === String(hash || "")) {
-      return i;
+  function getDeclaredSlideIndex(hash) {
+    const declared = getDeclaredSlides();
+    for (let i = 0; i < declared.length; i++) {
+      if (String(declared[i].h || "") === String(hash || "")) {
+        return i;
+      }
     }
+    return -1;
   }
-  return -1;
-}
 
-function getDeclaredEvaluationHash() {
-  const declared = getDeclaredSlides();
+  function getDeclaredEvaluationHash() {
+    const declared = getDeclaredSlides();
 
-  for (let i = 0; i < declared.length; i++) {
-    const slide = declared[i];
-    if (slide && slide.vt === "evaluation" && /^#\d+$/.test(String(slide.h || ""))) {
-      return String(slide.h);
+    for (let i = 0; i < declared.length; i++) {
+      const slide = declared[i];
+      if (slide && slide.vt === "evaluation" && /^#\d+$/.test(String(slide.h || ""))) {
+        return String(slide.h);
+      }
     }
+
+    return "";
   }
 
-  return "";
-}
+  function getFreezeBootTargetHash() {
+    const evalHash = getDeclaredEvaluationHash();
 
-function getFreezeBootTargetHash() {
-  const evalHash = getDeclaredEvaluationHash();
+    // Im geteilten Freezelink zuerst zur Auswertungsfolie,
+    // aber nur wenn im Kurs überhaupt eine @Auswertung(...) existiert.
+    if (
+      snapshotIsSharedLinkMode &&
+      /^#\d+$/.test(evalHash) &&
+      getDeclaredSlideByHash(evalHash)
+    ) {
+      return evalHash;
+    }
 
-  if (
-    snapshotIsSharedLinkMode &&
-    /^#\d+$/.test(evalHash) &&
-    getDeclaredSlideByHash(evalHash)
-  ) {
-    return evalHash;
+    const current = cleanHashValue(getCurrentHash() || "");
+    if (/^#\d+$/.test(current) && getDeclaredSlideByHash(current)) {
+      return current;
+    }
+
+    const snap = cleanHashValue(snapshotPayload && snapshotPayload.sh || "");
+    if (/^#\d+$/.test(snap) && getDeclaredSlideByHash(snap)) {
+      return snap;
+    }
+
+    const preferred = getPreferredFreezeLandingHash();
+    if (/^#\d+$/.test(preferred) && getDeclaredSlideByHash(preferred)) {
+      return preferred;
+    }
+
+    if (/^#\d+$/.test(evalHash) && getDeclaredSlideByHash(evalHash)) {
+      return evalHash;
+    }
+
+    return "#1";
   }
 
-  const current = cleanHashValue(getCurrentHash() || "");
-  if (/^#\d+$/.test(current) && getDeclaredSlideByHash(current)) {
-    return current;
+  function getPreferredFreezeLandingHash() {
+    if (
+      submissionStartHash &&
+      /^#\d+$/.test(submissionStartHash) &&
+      getDeclaredSlideByHash(submissionStartHash)
+    ) {
+      return submissionStartHash;
+    }
+
+    const snapshotHash = cleanHashValue(
+      snapshotPayload && snapshotPayload.sh ? snapshotPayload.sh : ""
+    );
+
+    if (
+      snapshotHash &&
+      /^#\d+$/.test(snapshotHash) &&
+      getDeclaredSlideByHash(snapshotHash)
+    ) {
+      return snapshotHash;
+    }
+
+    return "#1";
   }
-
-  const snap = cleanHashValue(snapshotPayload && snapshotPayload.sh || "");
-  if (/^#\d+$/.test(snap) && getDeclaredSlideByHash(snap)) {
-    return snap;
-  }
-
-  const preferred = getPreferredFreezeLandingHash();
-  if (/^#\d+$/.test(preferred) && getDeclaredSlideByHash(preferred)) {
-    return preferred;
-  }
-
-  if (/^#\d+$/.test(evalHash) && getDeclaredSlideByHash(evalHash)) {
-    return evalHash;
-  }
-
-  return "#1";
-}
-
-function getPreferredFreezeLandingHash() {
-  if (
-    submissionStartHash &&
-    /^#\d+$/.test(submissionStartHash) &&
-    getDeclaredSlideByHash(submissionStartHash)
-  ) {
-    return submissionStartHash;
-  }
-
-  const snapshotHash = cleanHashValue(
-    snapshotPayload && snapshotPayload.sh ? snapshotPayload.sh : ""
-  );
-
-  if (
-    snapshotHash &&
-    /^#\d+$/.test(snapshotHash) &&
-    getDeclaredSlideByHash(snapshotHash)
-  ) {
-    return snapshotHash;
-  }
-
-  return "#1";
-}
 
 function compareElementsInDocumentOrder(a, b) {
   if (a === b) return 0;
@@ -2304,6 +2295,7 @@ function getDeclaredTaskListForHash(hash) {
   const entry = declaredEvaluationByHash[String(hash || "")] || null;
   return Array.isArray(entry && entry.tl) ? entry.tl : [];
 }
+
 
 function rehydrateStateEvaluationMetaFromDeclaredTask(hash, state) {
   if (!state || typeof state !== "object") return state;
@@ -2381,6 +2373,7 @@ function rehydrateSnapshotEvaluationMetaFromSource(payload) {
   log("snapshot-meta-rehydrated", "states=" + restored);
   return payload;
 }
+
 
 function applyDeclaredTaskMetaToCapturedSequence(hash, sequence) {
   const taskList = getDeclaredTaskListForHash(hash);
@@ -2475,6 +2468,7 @@ function getAssignmentUnitsFromRoot(root) {
 
   return 1;
 }
+
 
 function parseAssignmentTags(raw) {
   if (!raw) return [];
@@ -2602,12 +2596,14 @@ function getEvaluationOutcome(state) {
   if (s === "r" || fc === "d") return "resolved";
   if (s === "s" || fc === "s") return "correct";
 
+  // orthography liefert teils nur sv=1, ohne die normalen Klassen sauber zu setzen
   if (orthoSolved) return "correct";
 
   if (fc === "e") return "wrong";
 
   if (Number(state.nm || 0) === 1) return "not_made";
 
+  // geprüft, aber weder richtig noch aufgelöst => falsch
   if (cc > 0) return "wrong";
 
   return "";
@@ -2638,6 +2634,7 @@ function getEvaluationStateTags(state) {
   return [];
 }
 
+
 function getEvaluationDeclaredTagsForState(slide, state) {
   const hash = cleanHashValue(slide && slide.h || "");
   const di = Number(state && state.di || 0);
@@ -2659,6 +2656,7 @@ function getEvaluationDeclaredTagsForState(slide, state) {
   return getEvaluationStateTags(state);
 }
 
+
 function collectStoredEvaluationStatesByTaskIndex(slide, hash) {
   const map = Object.create(null);
 
@@ -2671,6 +2669,7 @@ function collectStoredEvaluationStatesByTaskIndex(slide, hash) {
       const di = Number(state && state.di || 0);
       if (!Number.isFinite(di) || di <= 0) return;
 
+      // Erstes passendes State-Objekt pro Aufgabenindex behalten
       if (!map[di]) {
         map[di] = {
           key: key,
@@ -2686,12 +2685,13 @@ function collectStoredEvaluationStatesByTaskIndex(slide, hash) {
 function makeSyntheticEvaluationStateFromDeclaredTask(hash, taskIndex) {
   const state = {
     di: Number(taskIndex || 0),
-    nm: 1
+    nm: 1   // nicht gemacht
   };
 
   rehydrateStateEvaluationMetaFromDeclaredTask(hash, state);
   return state;
 }
+
 
 function visitEvaluationStates(payload, visitor) {
   if (!payload || !Array.isArray(payload.s) || typeof visitor !== "function") {
@@ -2713,10 +2713,13 @@ function visitEvaluationStates(payload, visitor) {
 
   const alreadyHandledHashes = Object.create(null);
 
+  // 1. Zuerst alle deklarierten Aufgaben behandeln.
   declaredHashes.forEach(function (hash) {
     const slide = slideByHash[hash] || { h: hash };
     const taskList = getDeclaredTaskListForHash(hash);
 
+    // Wenn es deklarierte Aufgaben gibt, dann MUSS jede Aufgabe genau einmal
+    // in die Auswertung eingehen: entweder als echtes State oder als "nicht gemacht".
     if (Array.isArray(taskList) && taskList.length > 0) {
       const storedByDi = collectStoredEvaluationStatesByTaskIndex(slide, hash);
 
@@ -2733,6 +2736,7 @@ function visitEvaluationStates(payload, visitor) {
       return;
     }
 
+    // Falls eine Folie keine deklarierten Aufgaben hat, aber dennoch States trägt:
     ["q", "d", "m", "c", "o", "fq", "mq", "cq"].forEach(function (key) {
       const arr = Array.isArray(slide && slide[key]) ? slide[key] : [];
 
@@ -2745,6 +2749,8 @@ function visitEvaluationStates(payload, visitor) {
     alreadyHandledHashes[hash] = 1;
   });
 
+  // 2. Fallback für alte/ungewöhnliche Fälle:
+  // Slides, die nicht in declaredEvaluationByHash auftauchen, aber States tragen.
   payload.s.forEach(function (slide) {
     const hash = cleanHashValue(slide && slide.h || "");
     if (!hash || alreadyHandledHashes[hash]) return;
@@ -2759,6 +2765,7 @@ function visitEvaluationStates(payload, visitor) {
     });
   });
 }
+
 
 function getDeclaredEvaluationTotals() {
   const out = {
@@ -2822,6 +2829,7 @@ function getDeclaredEvaluationTagTotals() {
   return bucket;
 }
 
+
 function parseManualAwardNumber(raw) {
   const txt = normalizeSpace(String(raw || "")).replace(",", ".");
   if (!txt) return null;
@@ -2854,6 +2862,7 @@ function getEvaluationAllocation(slide, state) {
   const be = getEvaluationUnits(state);
   const manual = getManualAwardNumberForState(slide, state);
 
+  // Manuelle Korrektur hat immer Vorrang
   if (manual !== null) {
     return {
       correct: manual,
@@ -2884,6 +2893,7 @@ function getEvaluationAllocation(slide, state) {
   return { correct: 0, wrong: 0, resolved: 0, notMade: 0 };
 }
 
+
 function buildSnapshotEvaluationStats(payload) {
   const declared = getDeclaredEvaluationTotals();
 
@@ -2905,6 +2915,7 @@ function buildSnapshotEvaluationStats(payload) {
     stats.notMade += alloc.notMade;
   });
 
+  // Fallback, falls die deklarierte Auswertung aus irgendeinem Grund leer ist
   if (stats.total <= 0 && stats.tasks <= 0) {
     visitEvaluationStates(payload, function (state) {
       const be = getEvaluationUnits(state);
@@ -2941,6 +2952,9 @@ function buildSnapshotEvaluationStatsByTag(payload) {
         };
       }
 
+      // Fallback:
+      // Wenn der deklarierte Tag-Topf fehlt oder leer ist,
+      // hole total/tasks notfalls aus dem tatsächlich gespeicherten Zustand.
       if (
         Number(bucket[clean].total || 0) <= 0 &&
         Number(bucket[clean].tasks || 0) <= 0
@@ -2963,6 +2977,7 @@ function buildSnapshotEvaluationStatsByTag(payload) {
       return bucket[tag];
     });
 }
+
 
 function ensureEvaluationFeedbackProbe() {
   let probe = document.getElementById("lia-eval-feedback-probe");
@@ -3004,6 +3019,7 @@ function getEvaluationFeedbackColor(kind) {
   }
 }
 
+
 function renderEvaluationBigStat(value, kind) {
   const tone = escapeHtml(getEvaluationFeedbackColor(kind));
 
@@ -3015,6 +3031,8 @@ function renderEvaluationBigStat(value, kind) {
     '</div>'
   ].join("");
 }
+
+
 
 function formatEvaluationPercent(part, total) {
   const p = total > 0 ? (part / total) * 100 : 0;
@@ -3137,6 +3155,7 @@ function showEvaluationPlaceholder(hash) {
   syncFrozenScreens();
 }
 
+
 function refreshEvaluationPlaceholderIfVisible() {
   const currentHash = cleanHashValue(getCurrentHash() || "");
   if (!currentHash) return;
@@ -3145,6 +3164,7 @@ function refreshEvaluationPlaceholderIfVisible() {
   evaluationPlaceholderHash = currentHash;
   syncFrozenScreens();
 }
+
 
 function renderEvaluationCard(label, value, kind) {
   const tone = escapeHtml(getEvaluationFeedbackColor(kind));
@@ -3160,6 +3180,7 @@ function renderEvaluationCard(label, value, kind) {
     '</div>'
   ].join("");
 }
+
 
 function isSharedFreezeLinkMode() {
   return !!(
@@ -3190,6 +3211,7 @@ function getAssignmentDetailManualKey(marker) {
   return makeManualAwardStoreKey(hash, taskIndex);
 }
 
+
 function hasStoredManualAwardValue(key) {
   return !!(key && Object.prototype.hasOwnProperty.call(manualAwardValuesByKey, key));
 }
@@ -3215,6 +3237,7 @@ function getAssignmentOutcomeFromQuizRoot(root) {
     cc: getQuizCheckCount(quizRoot)
   });
 }
+
 
 function getSnapshotTaskStateForMarker(marker) {
   if (!marker || !snapshotPayload) return null;
@@ -3243,12 +3266,15 @@ function getSnapshotTaskStateForMarker(marker) {
   return null;
 }
 
+
 function getAssignmentDefaultAwardValue(root, spec, marker) {
   const be =
     spec && spec.pointsValue !== null
       ? Number(spec.pointsValue)
       : 1;
 
+  // Im geteilten Freezelink möglichst den gespeicherten Snapshot-Zustand
+  // der konkreten Aufgabe benutzen, nicht den gerade sichtbaren DOM-Zustand.
   if (isSharedFreezeLinkMode()) {
     const storedState = getSnapshotTaskStateForMarker(marker);
 
@@ -3260,14 +3286,13 @@ function getAssignmentDefaultAwardValue(root, spec, marker) {
     }
   }
 
+  // Fallback für lokale/ältere Fälle weiterhin über DOM-Zustand
   const outcome = getAssignmentOutcomeFromQuizRoot(root);
 
   if (outcome === "correct") return String(be);
   if (outcome === "wrong" || outcome === "resolved") return "0";
   return "0";
 }
-
-
 
 function renderAssignmentDetailBadgeContent(badge, marker, spec, quizRoot) {
   if (!badge) return false;
@@ -3328,6 +3353,8 @@ function renderAssignmentDetailBadgeContent(badge, marker, spec, quizRoot) {
 
   return true;
 }
+
+
 
 function parseAssignmentDetails(raw) {
   const txt = normalizeSpace(raw);
@@ -3432,6 +3459,7 @@ function parseAssignmentDetails(raw) {
   return out;
 }
 
+
 function collectAssignmentDetailMarkersFromRoot(root) {
   if (!root || !root.querySelectorAll) return [];
 
@@ -3496,6 +3524,7 @@ function ensureAssignmentDetailOwnerId(marker) {
   return marker.id;
 }
 
+
 function moveAssignmentDetailBadgesBehindOrthographyReset(control) {
   if (!control || !(control instanceof Element)) return;
 
@@ -3546,6 +3575,7 @@ function scheduleAssignmentDetailBadgeReorder(control) {
   });
 }
 
+
 function ensureAssignmentDetailBadge(checkBtn, ownerId) {
   if (!checkBtn) return null;
 
@@ -3571,6 +3601,8 @@ function ensureAssignmentDetailBadge(checkBtn, ownerId) {
 
   return badge;
 }
+
+
 
 function reorderAssignmentDetailBadges(root) {
   const scope = root || getContentHost() || document.body;
@@ -3637,6 +3669,9 @@ function applyAssignmentDetailToMarker(marker) {
     });
   }
 
+  // WICHTIG:
+  // Die ADetails müssen vor allem am tatsächlichen Task/Quiz hängen,
+  // nicht nur am Prüfen-Button.
   applySpecToElement(marker);
   applySpecToElement(taskRoot);
   applySpecToElement(quizRoot);
@@ -3703,6 +3738,7 @@ function collectOrderedTaskRootsForAssignmentDetails(root) {
   return unique;
 }
 
+
 function getAssignmentDetailTaskRoot(marker) {
   if (!marker || !(marker instanceof Element)) return null;
 
@@ -3745,6 +3781,9 @@ function getAssignmentDetailQuizRootFromTaskRoot(taskRoot, marker) {
   const tileQuiz = getTileQuizInnerQuiz(taskRoot);
   if (tileQuiz) return tileQuiz;
 
+  // WICHTIG:
+  // Koordinatensystem-/Spezialmakros hängen ihren .lia-quiz-Block
+  // oft nicht direkt in taskRoot, sondern nur als nahen Sibling.
   const nearbyFromTaskRoot = findNearbySiblingQuiz(taskRoot);
   if (nearbyFromTaskRoot) return nearbyFromTaskRoot;
 
@@ -3758,6 +3797,8 @@ function getAssignmentDetailQuizRootFromTaskRoot(taskRoot, marker) {
 
   return null;
 }
+
+
 
 function getAssignmentDetailOwnerInfo(marker) {
   const taskRoot = getAssignmentDetailTaskRoot(marker);
@@ -3807,6 +3848,7 @@ function getAssignmentDetailOwnerInfo(marker) {
   };
 }
 
+
 function refreshAssignmentDetails(root) {
   const scope = root || getContentHost() || document.body;
   const markers = collectAssignmentDetailMarkersFromRoot(scope);
@@ -3853,6 +3895,9 @@ function scheduleAssignmentDetailsRefresh(delay) {
   }, delay || 80);
 }
 
+
+
+
 function makeEmptySlideState(hash, opts) {
   opts = opts || {};
 
@@ -3878,6 +3923,11 @@ function makeEmptySlideState(hash, opts) {
 
   return out;
 }
+
+
+
+
+
 
 function hasMeaningfulOutcomeState(state) {
   return !!(
@@ -3918,6 +3968,8 @@ function compactCommonStateMeta(src, out) {
 
   return out;
 }
+
+
 
 function isTextQuizCompactTupleState(state) {
   return Array.isArray(state) && state.length >= 3;
@@ -4043,6 +4095,8 @@ function expandPayloadFromFreezeUrl(payload) {
 
   return out;
 }
+
+
 
 function compactTextQuizStateForFreezeUrl(state) {
   if (!state) return null;
@@ -4185,6 +4239,10 @@ function compactChoiceStateForFreezeUrl(state) {
   return out;
 }
 
+
+
+
+
 function compactOrthographyStateForFreezeUrl(state) {
   if (!state) return null;
 
@@ -4198,12 +4256,14 @@ function compactOrthographyStateForFreezeUrl(state) {
 
   const hasText = normalizeSpace(text) !== "";
 
+  // Ungeprüft + unverändert = Starttext ist im Makro ohnehin vorhanden
   const omitBecauseUnchangedStart =
     hasText &&
     !solved &&
     startText !== "" &&
     text === startText;
 
+  // Gelöst / aufgelöst = Lösung ist im Makro ohnehin vorhanden
   const omitBecauseSolved =
     solved &&
     solutionText !== "";
@@ -4232,6 +4292,8 @@ function compactOrthographyStateForFreezeUrl(state) {
 
   compactCommonStateMeta(state, out);
 
+  // Wenn weder Text noch Status noch Prüfspur relevant sind,
+  // kann der ganze Orthography-Zustand entfallen.
   if (
     !shouldStoreText &&
     tries <= 0 &&
@@ -4243,6 +4305,7 @@ function compactOrthographyStateForFreezeUrl(state) {
 
   return out;
 }
+
 
 function getOrthographyReferenceTexts(uid, wrap) {
   const out = {
@@ -4268,6 +4331,9 @@ function getOrthographyReferenceTexts(uid, wrap) {
     }
   }
 
+  // Nur beim Anwenden im Freeze vorsichtig auf das bereits gerenderte Feld
+  // zurückfallen. Beim Komprimieren rufen wir diese Funktion mit wrap=null auf,
+  // damit ein geänderter Live-Inhalt nicht versehentlich als "Start" gilt.
   if (wrap) {
     const input = getOrthographyInputFromWrap(wrap);
 
@@ -4315,6 +4381,7 @@ function getOrthographyReconstructedValue(state, wrap) {
   return null;
 }
 
+
 function compactFractionStateForFreezeUrl(state) {
   if (!state) return null;
 
@@ -4359,6 +4426,7 @@ function compactFractionStateForFreezeUrl(state) {
 
   return out;
 }
+
 
 function encodeMarkerQuizMarksForFreezeUrl(rawMarks) {
   const marks = Array.isArray(rawMarks) ? rawMarks : [];
@@ -4418,6 +4486,7 @@ function expandMarkerQuizStateFromFreezeUrl(state) {
     return out;
   }
 
+  // Altformat weiter unverändert unterstützen
   if (!Array.isArray(rawMarks[0])) {
     delete out.p;
     return out;
@@ -4431,6 +4500,7 @@ function expandMarkerQuizStateFromFreezeUrl(state) {
     const kind = Number(entry[0] || 0) === 1 ? "s" : "u";
     const color = decodeGeneralMarkerColor(entry[1] || "yellow");
 
+    // Gleiches Start-/End-Path
     if (entry.length === 5) {
       const path = String(pathList[Number(entry[2] || 0)] || "");
       if (!path) return null;
@@ -4447,6 +4517,7 @@ function expandMarkerQuizStateFromFreezeUrl(state) {
       };
     }
 
+    // Unterschiedliche Start-/End-Paths
     const sp = String(pathList[Number(entry[2] || 0)] || "");
     const ep = String(pathList[Number(entry[4] || 0)] || "");
 
@@ -4467,6 +4538,8 @@ function expandMarkerQuizStateFromFreezeUrl(state) {
   delete out.p;
   return out;
 }
+
+
 
 function compactMarkerQuizStateForFreezeUrl(state) {
   if (!state) return null;
@@ -4519,13 +4592,14 @@ function compactMarkerQuizStateForFreezeUrl(state) {
 }
 
 const CANVAS_CODEC_VERSION = "cv2";
-const CANVAS_GRID_STEP = 2.25;
-const CANVAS_CONTENT_PAD = 10;
-const CANVAS_EXTRA_HEIGHT = 10;
-const CANVAS_MIN_RAW_POINT_DIST_PX = 1.25;
-const CANVAS_COLLINEAR_TOL_PX = 1.05;
+const CANVAS_GRID_STEP = 2.25; // Punkte werden auf ein 2-Pixel-Raster quantisiert
+const CANVAS_CONTENT_PAD = 10; // kleiner Sicherheitsrand, damit Linienenden nicht abgeschnitten werden
+const CANVAS_EXTRA_HEIGHT = 10; // zusätzlicher Höhenspielraum gegen vertikale Scrollbar
+const CANVAS_MIN_RAW_POINT_DIST_PX = 1.25; // sehr vorsichtiger Mindestabstand vor der Quantisierung
+const CANVAS_COLLINEAR_TOL_PX = 1.05;      // fast-kollinear-Toleranz, ebenfalls vorsichtig
 const CANVAS_USE_DOUGLAS_PEUCKER = true;
 const CANVAS_DP_TOL_PX = 1.4;
+
 
 function getCanvasDouglasPeuckerTolCells() {
   const px = Number(CANVAS_DP_TOL_PX || 0);
@@ -4616,6 +4690,7 @@ function simplifyCanvasPointsDouglasPeucker(points, tolCells) {
   return out.length >= 2 ? out : src.slice();
 }
 
+
 function getCanvasRawPointXY(pt) {
   if (Array.isArray(pt) && pt.length >= 2) {
     const x = Number(pt[0]);
@@ -4661,11 +4736,13 @@ function isCanvasMiddlePointAlmostCollinear(a, b, c) {
     return bx === ax && by === ay;
   }
 
+  // b muss zwischen a und c liegen
   const abx = bx - ax;
   const aby = by - ay;
   const dot = abx * acx + aby * acy;
   if (dot < 0 || dot > len2) return false;
 
+  // senkrechter Abstand von b zur Geraden a-c
   const cross = Math.abs(acx * aby - acy * abx);
   const distCells = cross / Math.sqrt(len2);
   const tolCells = CANVAS_COLLINEAR_TOL_PX / CANVAS_GRID_STEP;
@@ -4673,6 +4750,12 @@ function isCanvasMiddlePointAlmostCollinear(a, b, c) {
   return distCells <= tolCells;
 }
 
+
+// Kleine UID-Kompression:
+// "slide_canvas" -> Zahl, solange canvasIndex klein genug ist.
+// Beispiel bei Faktor 64:
+// "1_0" -> 64
+// "4_3" -> 259
 const CANVAS_UID_PACK_FACTOR = 64;
 
 function encodeCanvasUidForFreezeUrl(uid) {
@@ -4686,6 +4769,9 @@ function encodeCanvasUidForFreezeUrl(uid) {
 
   if (!Number.isFinite(slideIdx) || !Number.isFinite(canvasIdx)) return txt;
   if (slideIdx < 1 || canvasIdx < 0) return txt;
+
+  // Nur den kleinen, sicheren Standardfall packen.
+  // Alles andere bleibt unverändert als String erhalten.
   if (canvasIdx >= CANVAS_UID_PACK_FACTOR) return txt;
 
   return slideIdx * CANVAS_UID_PACK_FACTOR + canvasIdx;
@@ -4710,6 +4796,8 @@ function decodeCanvasUidFromFreezeUrl(uid) {
   return String(uid || "");
 }
 
+
+
 function isCanvasCompactTupleState(state) {
   return Array.isArray(state) && state.length >= 1;
 }
@@ -4726,6 +4814,7 @@ function getCanvasStateUidForFreezeUrl(state) {
   return "";
 }
 
+
 function isCanvasStateMeaningfulForMerge(state) {
   const expanded = expandCanvasStateFromFreezeUrl(state) || state;
 
@@ -4733,6 +4822,7 @@ function isCanvasStateMeaningfulForMerge(state) {
     return false;
   }
 
+  // sichtbare oder bewusst erhaltene Canvas-Größe => sinnvoller Zustand
   const w = Number(expanded.w || 0) || 0;
   const h = Number(expanded.h || 0) || 0;
 
@@ -4740,14 +4830,17 @@ function isCanvasStateMeaningfulForMerge(state) {
     return true;
   }
 
+  // neues/expandiertes Format
   if (Array.isArray(expanded.it) && expanded.it.length > 0) {
     return true;
   }
 
+  // altes cv2-Format
   if (Array.isArray(expanded.i) && expanded.i.length > 0) {
     return true;
   }
 
+  // ganz leer / unbrauchbar
   return false;
 }
 
@@ -4799,6 +4892,8 @@ function mergeCanvasStatesPreferPreviousNonEmpty(prevStates, nextStates) {
     seenUid[uid] = 1;
   });
 
+  // Falls aktuelle Erfassung eine Canvas gar nicht mehr liefert,
+  // den letzten sinnvollen Zustand trotzdem mitnehmen.
   prev.forEach(function (state, idx) {
     const uid = getCanvasStateUidForFreezeUrl(state) || ("__prev__" + idx);
     if (seenUid[uid]) return;
@@ -4816,17 +4911,18 @@ function mergeCanvasStatesPreferPreviousNonEmpty(prevStates, nextStates) {
   return out;
 }
 
+
 const CANVAS_FREEZE_PALETTE_VALUES = [
-  "#ff0000",
-  "#ff7500",
-  "#ffff00",
-  "#ff00ff",
-  "#0055ff",
-  "#00ffff",
-  "#00ff00",
-  "#007500",
-  "#000000",
-  "#ffffff"
+  "#ff0000", // 0 red
+  "#ff7500", // 1 orange
+  "#ffff00", // 2 yellow
+  "#ff00ff", // 3 violett
+  "#0055ff", // 4 blue
+  "#00ffff", // 5 lightblue
+  "#00ff00", // 6 green
+  "#007500", // 7 darkgreen
+  "#000000", // 8 black
+  "#ffffff"  // 9 white
 ];
 
 function normalizeCanvasStoredColor(value) {
@@ -4838,10 +4934,13 @@ function normalizeCanvasStoredColor(value) {
   if (s === "#fff") return "#ffffff";
   if (s === "#000") return "#000000";
 
+  // rgba(...)-Schreibweisen vereinheitlichen
   s = s.replace(/\s+/g, "");
 
   return s;
 }
+
+
 
 function getCanvasItemThemeModeForFreezeUrl(item, role) {
   return getCanvasStoredColorKeyFromItem(item, role);
@@ -4872,6 +4971,8 @@ function getCanvasStoredFillValueForFreezeUrl(item) {
 
   return "rgba(0,0,0,0)";
 }
+
+
 
 function normalizeCanvasStoredColorKey(value) {
   const txt = normalizeSpace(value || "").toLowerCase();
@@ -4999,6 +5100,7 @@ function encodeCanvasColorEntryForFreezeUrl(value) {
     return idx.toString(36);
   }
 
+  // Fallback für nicht-palettierte Farben, z.B. rgba(0,0,0,0)
   return norm;
 }
 
@@ -5009,6 +5111,7 @@ function decodeCanvasColorEntryFromFreezeUrl(value, fallbackColor) {
     return fallbackColor;
   }
 
+  // Neue kompakte 1-Zeichen-Codes
   if (/^[0-9a-z]$/i.test(txt)) {
     const idx = parseInt(txt, 36);
     if (
@@ -5020,6 +5123,7 @@ function decodeCanvasColorEntryFromFreezeUrl(value, fallbackColor) {
     }
   }
 
+  // Altformat oder Fallback-Rohwert
   return txt;
 }
 
@@ -5034,6 +5138,7 @@ function internCanvasColorEntryForFreezeUrl(rawColor, colorList, colorIndex) {
 
   return colorIndex[stored];
 }
+
 
 function zigZagEncodeCanvasInt(n) {
   const v = Number(n);
@@ -5084,6 +5189,13 @@ function decodeCanvasIntListFromFreezeUrlString(raw) {
     });
 }
 
+
+
+
+
+
+
+
 const CANVAS_CODEC_VERSION_V3 = "cv3";
 const CANVAS_V3_PATH_MAGIC = 3;
 
@@ -5095,6 +5207,7 @@ const CANVAS_PATH_ENTRY_TYPE_V3 = 3;
 const CANVAS_ERASER_PATH_ENTRY_TYPE_V2 = 5;
 const CANVAS_ERASER_POINT_ENTRY_TYPE = 6;
 const CANVAS_ERASER_PATH_ENTRY_TYPE_V3 = 7;
+
 
 function pushCanvasVarUint(bytes, value) {
   let v = Number(value);
@@ -5283,6 +5396,12 @@ function runCanvasPathBinaryCodecSelfTest(samplePoints) {
   }
 }
 
+
+
+
+
+
+
 function isCanvasStateTrulyEmptyForFreezeUrl(state) {
   if (!state || typeof state !== "object") return false;
 
@@ -5321,6 +5440,7 @@ function quantizeCanvasPathPointsForFreezeUrl(points) {
     const rawX = raw[0];
     const rawY = raw[1];
 
+    // 1. sehr kurze Rohsegmente schon vor der Quantisierung verwerfen
     if (lastAcceptedRawX !== null && lastAcceptedRawY !== null) {
       if (canvasPointDist2(rawX, rawY, lastAcceptedRawX, lastAcceptedRawY) < minDist2) {
         continue;
@@ -5332,6 +5452,7 @@ function quantizeCanvasPathPointsForFreezeUrl(points) {
 
     if (x === null || y === null) continue;
 
+    // 2. doppelte quantisierte Punkte entfernen
     if (abs.length) {
       const last = abs[abs.length - 1];
       if (last[0] === x && last[1] === y) {
@@ -5343,6 +5464,7 @@ function quantizeCanvasPathPointsForFreezeUrl(points) {
     lastAcceptedRawX = rawX;
     lastAcceptedRawY = rawY;
 
+    // 3. fast-kollineare Zwischenpunkte entfernen
     while (abs.length >= 3) {
       const a = abs[abs.length - 3];
       const b = abs[abs.length - 2];
@@ -5378,6 +5500,9 @@ function quantizeCanvasPathPointsForFreezeUrl(points) {
 
   return abs;
 }
+
+
+
 
 function encodeCanvasAbsPointsToFreezeUrlString(abs) {
   if (!Array.isArray(abs) || abs.length < 2) return null;
@@ -5434,6 +5559,9 @@ function encodeCanvasAbsPointsToBinaryTokenForFreezeUrl(abs) {
   return encodeCanvasSignedIntsToBinaryTokenForFreezeUrl(ints);
 }
 
+
+
+
 function encodeCanvasPathPointsForFreezeUrl(points) {
   const abs = quantizeCanvasPathPointsForFreezeUrl(points);
   return encodeCanvasAbsPointsToFreezeUrlString(abs);
@@ -5442,11 +5570,15 @@ function encodeCanvasPathPointsForFreezeUrl(points) {
 function decodeCanvasPathPointsFromFreezeUrl(encoded) {
   let src = [];
 
+  // Neues kompaktes String-Format
   if (typeof encoded === "string") {
     src = decodeCanvasIntListFromFreezeUrlString(encoded);
-  } else if (Array.isArray(encoded)) {
+  }
+  // Altformat weiter unterstützen
+  else if (Array.isArray(encoded)) {
     src = encoded.slice();
-  } else {
+  }
+  else {
     src = [];
   }
 
@@ -5630,8 +5762,15 @@ function compactCanvasPathItemForFreezeUrl(item, colorList, colorIndex) {
   return null;
 }
 
+
 const CANVAS_PATH_RUN_ENTRY_TYPE = 4;
+
+
 const CANVAS_RUN_TOKEN_SEPARATOR = "~";
+// "~" ist absichtlich gewählt:
+// - kommt in base64url-Tokens nicht vor
+// - kommt auch in deinem alten Punkt-/Base36-Format nicht vor
+// - eignet sich daher gut als verlustfreier Trenner
 
 function encodeCanvasPathRunTokenListForFreezeUrl(tokens) {
   const list = (Array.isArray(tokens) ? tokens : []).filter(function (token) {
@@ -5643,12 +5782,14 @@ function encodeCanvasPathRunTokenListForFreezeUrl(tokens) {
 }
 
 function decodeCanvasPathRunTokenListFromFreezeUrl(raw) {
+  // Altformat weiter unterstützen: token-Liste als Array
   if (Array.isArray(raw)) {
     return raw.filter(function (token) {
       return typeof token === "string" && token.length > 0;
     });
   }
 
+  // Neues Format: ein einziger String mit "~" als Trenner
   const txt = String(raw || "");
   if (!txt) return [];
 
@@ -5659,11 +5800,15 @@ function decodeCanvasPathRunTokenListFromFreezeUrl(raw) {
     });
 }
 
+
 function getCanvasCompactPathRunMeta(entry) {
   if (!Array.isArray(entry) || !entry.length) return null;
 
   const type = Number(entry[0]);
 
+  // Nur normale Pfade bündeln:
+  // 0 = alter String-Pfad
+  // 3 = binärer cv3-Pfad
   if (
     type !== CANVAS_PATH_ENTRY_TYPE_V2 &&
     type !== CANVAS_PATH_ENTRY_TYPE_V3 &&
@@ -5707,6 +5852,7 @@ function makeCanvasCompactPathRunTuple(meta, tokens) {
 
   if (!list.length) return null;
 
+  // Einzelpfad nicht künstlich aufblasen
   if (list.length === 1) {
     if (meta.alpha === 1) {
       return [meta.pathType, meta.colorIdx, meta.width, list[0]];
@@ -5717,6 +5863,9 @@ function makeCanvasCompactPathRunTuple(meta, tokens) {
 
   const packedTokenString = encodeCanvasPathRunTokenListForFreezeUrl(list);
 
+  // Neuer Run-Typ:
+  // [4, pathType, colorIdx, width, "tok1~tok2~tok3"]
+  // [4, pathType, colorIdx, alpha, width, "tok1~tok2~tok3"]
   if (meta.alpha === 1) {
     return [
       CANVAS_PATH_RUN_ENTRY_TYPE,
@@ -5810,6 +5959,7 @@ function compactCanvasPathRunsForFreezeUrl(items) {
   return out;
 }
 
+
 function expandCanvasPathItemFromFreezeUrl(entry, colors) {
   if (!Array.isArray(entry) || !entry.length) return null;
 
@@ -5849,6 +5999,7 @@ function expandCanvasPathItemFromFreezeUrl(entry, colors) {
     );
 
     const color = colorMeta.color;
+
     const outKind = isEraser ? "e" : "p";
 
     if (type === POINT || type === ERASER_POINT) {
@@ -5936,6 +6087,8 @@ function expandCanvasPathItemFromFreezeUrl(entry, colors) {
       storedFill,
       "rgba(0,0,0,0)"
     );
+    
+    const fill = fillMeta.color;
 
     return applyCanvasFillColorMetaToExpandedItem({
       k: "r",
@@ -5948,6 +6101,7 @@ function expandCanvasPathItemFromFreezeUrl(entry, colors) {
 
   return null;
 }
+
 
 function measureCanvasContentBoundsForFreezeUrl(items) {
   const src = Array.isArray(items) ? items : [];
@@ -6010,6 +6164,7 @@ function measureCanvasContentBoundsForFreezeUrl(items) {
   let requiredWidth = Math.ceil(maxX + CANVAS_CONTENT_PAD);
   let requiredHeight = Math.ceil(maxY + CANVAS_CONTENT_PAD + CANVAS_EXTRA_HEIGHT);
 
+  // Falls doch mal negative Koordinaten vorkommen, nicht zu knapp werden
   if (minX < 0) {
     requiredWidth = Math.max(
       requiredWidth,
@@ -6062,6 +6217,7 @@ function compactSingleCanvasStateForFreezeUrl(state) {
   const normalized = normalizeCanvasSizeToContentForFreezeUrl(state);
   if (!normalized || typeof normalized !== "object") return null;
 
+  // Nur wirklich komplett leere Canvas verwerfen
   if (isCanvasStateTrulyEmptyForFreezeUrl(normalized)) {
     return null;
   }
@@ -6095,6 +6251,7 @@ function compactSingleCanvasStateForFreezeUrl(state) {
       colorIndex
     );
 
+    // Unbekannten Typ lieber roh behalten als kaputt komprimieren
     if (!compactItem) {
       return copyJson(normalized);
     }
@@ -6110,6 +6267,14 @@ function compactSingleCanvasStateForFreezeUrl(state) {
   let storedW = currentW;
   let storedH = currentH;
 
+  // Neuer Canvas-Minischritt:
+  // Bei Canvas MIT Inhalt speichern wir nicht mehr absolute Größe,
+  // sondern die Zusatzgröße über die minimale Inhaltsfläche hinaus.
+  // Kodierung:
+  //   -1  => exakt Mindestgröße
+  //   -N  => Mindestgröße + (N-1) Pixel
+  //
+  // Altlinks mit positiven absoluten w/h bleiben beim Expand kompatibel.
   if (compactItems.length > 0) {
     const bounds = measureCanvasContentBoundsForFreezeUrl(normalized.it);
 
@@ -6124,6 +6289,9 @@ function compactSingleCanvasStateForFreezeUrl(state) {
 
   const packedItems = compactCanvasPathRunsForFreezeUrl(compactItems);
 
+  // kleiner Singleton-Kollaps:
+  // - genau 1 Farbe => nicht als Array ["9"], sondern direkt als "9"
+  // - genau 1 Item  => nicht als [[...]], sondern direkt als [...]
   const compactColorsForTuple =
     colorList.length === 0
       ? 0
@@ -6143,6 +6311,7 @@ function compactSingleCanvasStateForFreezeUrl(state) {
     emptyFlag
   ];
 
+  // unnötige Null-Enden abschneiden
   while (out.length > 1) {
     const last = out[out.length - 1];
 
@@ -6162,13 +6331,16 @@ function compactSingleCanvasStateForFreezeUrl(state) {
   return out;
 }
 
+
 function normalizeCanvasCompactItemListFromFreezeUrl(rawItems) {
   if (rawItems == null || rawItems === 0) return [];
 
+  // Alt-/Normalfall: echte Item-Liste
   if (Array.isArray(rawItems) && Array.isArray(rawItems[0])) {
     return rawItems;
   }
 
+  // Neuer Singleton-Fall: genau ein Item direkt gespeichert
   if (Array.isArray(rawItems)) {
     return [rawItems];
   }
@@ -6176,11 +6348,14 @@ function normalizeCanvasCompactItemListFromFreezeUrl(rawItems) {
   return [];
 }
 
+
+
 function expandCanvasPathEntriesFromFreezeUrl(entry, colors) {
   if (!Array.isArray(entry) || !entry.length) return [];
 
   const type = Number(entry[0]);
 
+  // Neuer Run-Typ
   if (type === CANVAS_PATH_RUN_ENTRY_TYPE) {
     const pathType = Number(entry[1] || 0);
     const colorIdx = Number(entry[2] || 0);
@@ -6248,13 +6423,22 @@ function expandCanvasPathEntriesFromFreezeUrl(entry, colors) {
     }).filter(Boolean);
   }
 
+  // Altformate bleiben unverändert
   const single = expandCanvasPathItemFromFreezeUrl(entry, colors);
   return single ? [single] : [];
 }
 
+
+
 function expandCanvasStateFromFreezeUrl(state) {
   if (!state || typeof state !== "object") return null;
 
+  // Neues kompaktes Tuple-Format:
+  // [u, w, h, c, i, e]
+  //
+  // Kompatibilität:
+  // - w/h >= 0  => altes absolutes Format
+  // - w/h < 0   => neues Delta-Format relativ zur Inhaltsmindestgröße
   if (isCanvasCompactTupleState(state)) {
     const rawColors = state[3];
     const colors =
@@ -6281,6 +6465,9 @@ function expandCanvasStateFromFreezeUrl(state) {
     let width = rawW;
     let height = rawH;
 
+    // Neues Delta-Format dekodieren:
+    // -1  => exakt Mindestgröße
+    // -6  => Mindestgröße + 5 px
     if (rawW < 0 || rawH < 0) {
       const bounds = measureCanvasContentBoundsForFreezeUrl(items) || {
         width: 0,
@@ -6312,6 +6499,7 @@ function expandCanvasStateFromFreezeUrl(state) {
     return out;
   }
 
+  // Alte rohe cvf1-Einträge unverändert weiter unterstützen
   if (state.v !== CANVAS_CODEC_VERSION) {
     return copyJson(state);
   }
@@ -6424,8 +6612,9 @@ function compactSlideStateForFreezeUrl(slide) {
   return out;
 }
 
+
 const ANNOT_CODEC_VERSION = "af2";
-const ANNOT_POINT_SCALE = 1000;
+const ANNOT_POINT_SCALE = 1000; // verlustfrei relativ zum aktuellen Freeze-Export (4 Nachkommastellen)
 const ANNOT_POINTS_TOKEN_PREFIX = "b:";
 
 function roundAnnotCodecNum(v) {
@@ -6505,6 +6694,7 @@ function decodeAnnotationPointsFromFreezeUrl(encoded) {
       src = decodeCanvasIntListFromFreezeUrlString(raw);
     }
   } else if (Array.isArray(encoded)) {
+    // Altformat weiter unterstützen
     src = encoded;
   } else {
     src = [];
@@ -6694,9 +6884,11 @@ function expandAnnotationFreezeStateFromFreezeUrl(state) {
           raw.slice(ANNOT_POINTS_TOKEN_PREFIX.length)
         );
       } else {
+        // Alt-/Fallbackformat weiter unterstützen
         src = decodeCanvasIntListFromFreezeUrlString(raw);
       }
     } else if (Array.isArray(encoded)) {
+      // ganz altes Zahlenarray weiter unterstützen
       src = encoded;
     } else {
       src = [];
@@ -6804,6 +6996,7 @@ function expandAnnotationFreezeStateFromFreezeUrl(state) {
   };
 }
 
+
 function shouldKeepAnnotationFreezeState(state) {
   if (!state || typeof state !== "object") return false;
 
@@ -6821,6 +7014,8 @@ function shouldKeepAnnotationFreezeState(state) {
 
   return false;
 }
+
+
 
 function compactSecurityStateForFreezeUrl(state) {
   const trackF12 = !!(state && (state.trackF12 === 1 || state.trackF12 === true));
@@ -6862,6 +7057,10 @@ function compactPayloadForFreezeUrl(payload) {
     out.af = compactAf;
   }
 
+  // anv wird für neue Links nicht mehr separat serialisiert,
+  // weil af2 die Sichtbarkeit bereits selbst trägt.
+  // Altlinks bleiben über buildAnnotationFreezeImportPayloadFromSnapshot kompatibel.
+
   const sec = compactSecurityStateForFreezeUrl(payload && payload.sec);
   if (sec) {
     out.sec = sec;
@@ -6869,6 +7068,10 @@ function compactPayloadForFreezeUrl(payload) {
 
   return out;
 }
+
+
+
+
 
 async function buildPayloadFromAllSlides() {
   const declared = getDeclaredSlides().filter(function (slide) {
@@ -6941,11 +7144,10 @@ async function buildPayloadFromAllSlides() {
 }
 
 
-
-
   // =========================================================
   // QUIZ FUNKTIONEN (HELPERS)
   // =========================================================
+
 
 function normalizeActualQuizRoot(root) {
   if (!root || !(root instanceof Element)) return null;
@@ -6997,6 +7199,7 @@ function findNearbySiblingQuiz(startEl) {
 
   return null;
 }
+
 
 function isChoiceQuizInput(el) {
   if (!el || !(el instanceof Element)) return false;
@@ -7283,6 +7486,16 @@ function applyStoredChoiceStatesToHost(host, storedStates) {
   });
 
   return applied;
+}
+
+
+
+
+
+
+
+function escapeRegExp(str) {
+  return String(str || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 function getFractionQuizModule() {
@@ -8071,6 +8284,11 @@ function findFractionQuizInteractiveAncestor(el) {
 }
 
 
+
+
+
+
+
 function getMarkerQuizRootWindow() {
   let w = window;
   try {
@@ -8203,6 +8421,7 @@ function findMarkerQuizInteractiveAncestor(el) {
   return null;
 }
 
+
 function isGeneralMarkerMarkModeActive() {
   const inst = getMarkerQuizInstance();
   return !!(
@@ -8222,6 +8441,7 @@ function isAnyMarkerOverlayInteraction(el) {
     el.closest("#lia-hl-panel")
   );
 }
+
 
 function captureMarkerQuizState(root, idx) {
   if (!root) return null;
@@ -8472,6 +8692,8 @@ function applyStoredMarkerQuizStatesToHost(host, storedStates) {
   return applied;
 }
 
+
+
 function getGeneralMarkerScopeName() {
   return "global";
 }
@@ -8588,6 +8810,7 @@ function getGeneralMarkerDebugToken(host) {
   return cleanHashValue(getCurrentHash() || "");
 }
 
+
 const GENERAL_MARKER_COLOR_TO_CODE = Object.freeze({
   yellow: "y",
   green: "g",
@@ -8690,6 +8913,7 @@ function countStoredGeneralMarkerMarks(state) {
   return decodeStoredGeneralMarkerMarks(state).length;
 }
 
+
 function getGeneralMarkerCaptureHost(root) {
   const candidates = uniqueElements([
     root,
@@ -8719,6 +8943,7 @@ function getGeneralMarkerCaptureHost(root) {
 
   return best || root || getBaseContentHost() || document.body;
 }
+
 
 function captureGeneralMarkerState(root) {
   const host = getGeneralMarkerCaptureHost(root);
@@ -8871,6 +9096,7 @@ function clearStoredGeneralMarkerStateNow(reason) {
   return true;
 }
 
+
 function getOrthographyModule() {
   let root = window;
   try {
@@ -8879,6 +9105,7 @@ function getOrthographyModule() {
 
   return root["__ORTHOGRAPHY_EXPORT_V1__"] || null;
 }
+
 
 function isOrthographyQuizInput(el) {
   if (!el || !(el instanceof Element)) return false;
@@ -8942,11 +9169,15 @@ function getOrthographyQuizRootFromWrap(wrap) {
     return normalizeActualQuizRoot(boundQuiz) || boundQuiz;
   }
 
+  // Neuer robuster Fallback:
+  // denselben allgemeinen "nahegelegenes Sibling-Quiz"-Finder benutzen
+  // wie an anderen Stellen im Freeze-Code.
   const nearby = findNearbySiblingQuiz(wrap);
   if (nearby) {
     return normalizeActualQuizRoot(nearby) || nearby;
   }
 
+  // Alter Sibling-Scan bleibt als zusätzlicher Fallback erhalten
   let node = wrap.nextElementSibling;
   while (node) {
     if (node.classList && node.classList.contains("orthography-wrap")) break;
@@ -8962,6 +9193,8 @@ function getOrthographyQuizRootFromWrap(wrap) {
     node = node.nextElementSibling;
   }
 
+  // Letzter Rettungsanker:
+  // nächster Prüfen-/Lösungs-Button nach dem Orthography-Wrap
   const scope = getContentHost() || document.body;
   const nextControl = getNextQuizControlAfterElement(wrap, scope);
 
@@ -9038,6 +9271,10 @@ function captureOrthographyQuizState(wrap, idx) {
   if (feedbackCode) out.fc = feedbackCode;
   if (checkCount > 0) out.cc = checkCount;
 
+  // WICHTIG:
+  // Ein unangetastetes Orthography hat oft schon einen Starttext im Feld.
+  // Dann darf es nicht als "irgendein leerer Status" enden,
+  // sondern muss explizit als "nicht gemacht" markiert werden.
   const refs = getOrthographyReferenceTexts(uid, wrap);
   const startText = typeof refs.start === "string" ? refs.start : "";
 
@@ -9227,7 +9464,6 @@ function applyStoredOrthographyStatesToHost(host, storedStates) {
 }
 
 
-
 function isTextQuizInputControl(el) {
   if (!el || !(el instanceof Element)) return false;
   if (!isLearnerFieldCandidate(el)) return false;
@@ -9258,56 +9494,56 @@ function isTextQuizInputControl(el) {
   return false;
 }
 
-function getTextQuizInputsFromRoot(root) {
-  if (!root || !root.querySelectorAll) return [];
+  function getTextQuizInputsFromRoot(root) {
+    if (!root || !root.querySelectorAll) return [];
 
-  return Array.from(
-    root.querySelectorAll("input, textarea, select, [contenteditable='true'], [role='textbox']")
-  ).filter(function (el) {
-    return isTextQuizInputControl(el);
-  });
-}
+    return Array.from(
+      root.querySelectorAll("input, textarea, select, [contenteditable='true'], [role='textbox']")
+    ).filter(function (el) {
+      return isTextQuizInputControl(el);
+    });
+  }
 
-function extractTextQuizRuntimeKey(raw) {
-  const txt = String(raw || "");
+  function extractTextQuizRuntimeKey(raw) {
+    const txt = String(raw || "");
 
-  let m = txt.match(/track\s*:\s*\[\s*\[\s*["']quiz["']\s*,\s*(\d+)\s*\]/i);
-  if (m) return "q" + m[1];
+    let m = txt.match(/track\s*:\s*\[\s*\[\s*["']quiz["']\s*,\s*(\d+)\s*\]/i);
+    if (m) return "q" + m[1];
 
-  m = txt.match(/param\s*:\s*\{\s*id\s*:\s*(\d+)/i);
-  if (m) return "i" + m[1];
+    m = txt.match(/param\s*:\s*\{\s*id\s*:\s*(\d+)/i);
+    if (m) return "i" + m[1];
 
-  return "";
-}
+    return "";
+  }
 
-function getTextQuizInputKey(el, idx) {
-  if (!el) return "idx:" + idx;
+  function getTextQuizInputKey(el, idx) {
+    if (!el) return "idx:" + idx;
 
-  const handlerKey =
-    extractTextQuizRuntimeKey(el.getAttribute("oninput")) ||
-    extractTextQuizRuntimeKey(el.getAttribute("onchange"));
+    const handlerKey =
+      extractTextQuizRuntimeKey(el.getAttribute("oninput")) ||
+      extractTextQuizRuntimeKey(el.getAttribute("onchange"));
 
-  if (handlerKey) return handlerKey;
+    if (handlerKey) return handlerKey;
 
-  const aria = normalizeSpace(el.getAttribute("aria-label") || "");
-  if (aria) return "a:" + shortHash(aria);
+    const aria = normalizeSpace(el.getAttribute("aria-label") || "");
+    if (aria) return "a:" + shortHash(aria);
 
-  const ph = normalizeSpace(el.getAttribute("placeholder") || "");
-  if (ph) return "p:" + shortHash(ph);
+    const ph = normalizeSpace(el.getAttribute("placeholder") || "");
+    if (ph) return "p:" + shortHash(ph);
 
-  return "idx:" + idx;
-}
+    return "idx:" + idx;
+  }
 
-function stripQuizUiText(txt) {
-  return normalizeSpace(
-    String(txt || "")
-      .replace(/Aufgelöste Antwort/g, "")
-      .replace(/Prüfen/g, "")
-      .replace(/Lösung/g, "")
-      .replace(/Resolve/g, "")
-      .replace(/Check/g, "")
-  );
-}
+  function stripQuizUiText(txt) {
+    return normalizeSpace(
+      String(txt || "")
+        .replace(/Aufgelöste Antwort/g, "")
+        .replace(/Prüfen/g, "")
+        .replace(/Lösung/g, "")
+        .replace(/Resolve/g, "")
+        .replace(/Check/g, "")
+    );
+  }
 
 function getTextQuizRootFromInput(input, host) {
   if (!input) return null;
@@ -9364,6 +9600,7 @@ function getTextQuizRootFromInput(input, host) {
   return input.parentElement || input;
 }
 
+
 function getNearestQuizAncestorId(root) {
   let node = root instanceof Element ? root : null;
   let hops = 0;
@@ -9403,6 +9640,7 @@ function isPureResultQuizRoot(root) {
   // Es muss überhaupt wie ein Lia-Quiz aussehen
   return !!root.querySelector(".lia-quiz__check, .lia-quiz__resolve, .lia-quiz__feedback");
 }
+
 
 function getCommonAncestorElement(nodes) {
   const list = (Array.isArray(nodes) ? nodes : []).filter(function (n) {
@@ -9473,6 +9711,7 @@ function getGroupedTextQuizRoot(inputs, owner, host) {
   return getTextQuizRootFromInput(inputs[0], scope);
 }
 
+
 function collectTextQuizRootsFromRoot(root) {
   const host = root || getContentHost() || document.body;
   const inputs = getTextQuizInputsFromRoot(host);
@@ -9503,68 +9742,72 @@ function collectTextQuizRootsFromRoot(root) {
   return uniqueElements(roots);
 }
 
-function isDropdownQuizControl(el) {
-  if (!el || !(el instanceof Element)) return false;
 
-  const root = el.matches(".lia-dropdown") ? el : el.closest(".lia-dropdown");
-  if (!root) return false;
-  if (root.closest("#lia-freeze-bar")) return false;
-  if (root.closest(".lia-submit-box")) return false;
+  function isDropdownQuizControl(el) {
+    if (!el || !(el instanceof Element)) return false;
 
-  return true;
-}
+    const root = el.matches(".lia-dropdown") ? el : el.closest(".lia-dropdown");
+    if (!root) return false;
+    if (root.closest("#lia-freeze-bar")) return false;
+    if (root.closest(".lia-submit-box")) return false;
 
-function getDropdownQuizControlsFromRoot(root) {
-  if (!root || !root.querySelectorAll) return [];
-
-  return Array.from(root.querySelectorAll(".lia-dropdown")).filter(function (el) {
-    if (!isDropdownQuizControl(el)) return false;
-    return isRenderedElement(el) || hasRenderedSelfOrDescendant(el);
-  });
-}
-
-function getDropdownQuizRootFromDropdown(drop, host) {
-  if (!drop) return null;
-
-  const explicit = drop.closest(".lia-quiz");
-  if (explicit) return explicit;
-
-  const stop = host || getContentHost() || document.body;
-  let node = drop.parentElement || drop;
-  let best = drop.parentElement || drop;
-
-  while (node && node !== stop && node !== document.body) {
-    if (!(node instanceof Element)) break;
-    if (node.closest("#lia-freeze-bar")) break;
-    if (node.closest(".lia-submit-box")) break;
-
-    if (node.contains(drop)) {
-      const buttons = node.querySelectorAll(".lia-quiz__check, .lia-quiz__resolve");
-      const meaningfulText = stripQuizUiText(node.textContent || "");
-
-      if (buttons.length && meaningfulText.length > 0) {
-        best = node;
-      }
-    }
-
-    node = node.parentElement;
+    return true;
   }
 
-  return best || drop.parentElement || drop;
-}
+  function getDropdownQuizControlsFromRoot(root) {
+    if (!root || !root.querySelectorAll) return [];
 
-function collectDropdownQuizRootsFromRoot(root) {
-  const host = root || getContentHost() || document.body;
-  const controls = getDropdownQuizControlsFromRoot(host);
+    return Array.from(root.querySelectorAll(".lia-dropdown")).filter(function (el) {
+      if (!isDropdownQuizControl(el)) return false;
+      return isRenderedElement(el) || hasRenderedSelfOrDescendant(el);
+    });
+  }
 
-  const roots = controls.map(function (drop) {
-    return getDropdownQuizRootFromDropdown(drop, host);
-  }).filter(function (rootEl) {
-    return !!rootEl;
-  });
+  function getDropdownQuizRootFromDropdown(drop, host) {
+    if (!drop) return null;
 
-  return uniqueElements(roots);
-}
+    const explicit = drop.closest(".lia-quiz");
+    if (explicit) return explicit;
+
+    const stop = host || getContentHost() || document.body;
+    let node = drop.parentElement || drop;
+    let best = drop.parentElement || drop;
+
+    while (node && node !== stop && node !== document.body) {
+      if (!(node instanceof Element)) break;
+      if (node.closest("#lia-freeze-bar")) break;
+      if (node.closest(".lia-submit-box")) break;
+
+      if (node.contains(drop)) {
+        const buttons = node.querySelectorAll(".lia-quiz__check, .lia-quiz__resolve");
+        const meaningfulText = stripQuizUiText(node.textContent || "");
+
+        if (buttons.length && meaningfulText.length > 0) {
+          best = node;
+        }
+      }
+
+      node = node.parentElement;
+    }
+
+    return best || drop.parentElement || drop;
+  }
+
+  function collectDropdownQuizRootsFromRoot(root) {
+    const host = root || getContentHost() || document.body;
+    const controls = getDropdownQuizControlsFromRoot(host);
+
+    const roots = controls.map(function (drop) {
+      return getDropdownQuizRootFromDropdown(drop, host);
+    }).filter(function (rootEl) {
+      return !!rootEl;
+    });
+
+    return uniqueElements(roots);
+  }
+
+
+
 
 function hasTileHandler(el, names, pattern) {
   if (!el || !(el instanceof Element)) return false;
@@ -9695,6 +9938,8 @@ function collectTileQuizRootsFromRoot(root) {
   return uniqueElements(roots);
 }
 
+
+
 function collectActualKnownLiaQuizRootsFromRoot(root) {
   const host = root || getContentHost() || document.body;
   const out = [];
@@ -9723,7 +9968,7 @@ function collectActualKnownLiaQuizRootsFromRoot(root) {
     const quiz =
       getOrthographyQuizRootFromWrap(wrap) ||
       findNearbySiblingQuiz(wrap);
-
+  
     if (quiz) {
       out.push(normalizeActualQuizRoot(quiz) || quiz);
     }
@@ -9881,6 +10126,7 @@ function applyStoredCoordinateStatesToHost(host, storedStates) {
     const wantedKey = normalizeSpace(state && state.k || "");
     const wantedRootIndex = Number(state && state.ri);
 
+    // 1. Zuerst die ursprüngliche Root-Position benutzen.
     if (
       Number.isFinite(wantedRootIndex) &&
       wantedRootIndex >= 0 &&
@@ -9890,6 +10136,7 @@ function applyStoredCoordinateStatesToHost(host, storedStates) {
       target = liveRoots[wantedRootIndex];
     }
 
+    // 2. Danach per Key matchen.
     if (!target && wantedKey) {
       for (let i = 0; i < liveRoots.length; i++) {
         if (used.has(liveRoots[i])) continue;
@@ -9900,6 +10147,7 @@ function applyStoredCoordinateStatesToHost(host, storedStates) {
       }
     }
 
+    // 3. Alter Fallback nur noch ganz zum Schluss.
     if (!target) {
       if (idx >= 0 && idx < liveRoots.length && !used.has(liveRoots[idx])) {
         target = liveRoots[idx];
@@ -9937,10 +10185,6 @@ function collectSupportedQuizRootsFromRoot(root) {
       .concat(collectCoordinateQuizRootsFromRoot(root))
   );
 }
-
-
-
-
 
 function extractTileRuntimeKey(raw) {
   const txt = String(raw || "");
@@ -10194,136 +10438,137 @@ function applyStoredTileStatesToHost(host, storedStates) {
   return applied;
 }
 
-function extractDropdownRuntimeKey(raw) {
-  const txt = String(raw || "");
 
-  let m = txt.match(
-    /track\s*:\s*\[\s*\[\s*["']quiz["']\s*,\s*(\d+)\s*\]\s*,\s*\[\s*["']input["']\s*,\s*(\d+)\s*\]\s*\]/i
-  );
-  if (m) return "q" + m[1] + "i" + m[2];
+  function extractDropdownRuntimeKey(raw) {
+    const txt = String(raw || "");
 
-  m = txt.match(/param\s*:\s*\{\s*id\s*:\s*(\d+)/i);
-  if (m) return "id:" + m[1];
+    let m = txt.match(
+      /track\s*:\s*\[\s*\[\s*["']quiz["']\s*,\s*(\d+)\s*\]\s*,\s*\[\s*["']input["']\s*,\s*(\d+)\s*\]\s*\]/i
+    );
+    if (m) return "q" + m[1] + "i" + m[2];
 
-  return "";
-}
+    m = txt.match(/param\s*:\s*\{\s*id\s*:\s*(\d+)/i);
+    if (m) return "id:" + m[1];
 
-function getDropdownQuizKey(drop, idx) {
-  if (!drop) return "dd:" + idx;
-
-  const nodes = [drop].concat(Array.from(drop.querySelectorAll("[onclick],[onkeydown]")));
-
-  for (let i = 0; i < nodes.length; i++) {
-    const key =
-      extractDropdownRuntimeKey(nodes[i].getAttribute("onclick")) ||
-      extractDropdownRuntimeKey(nodes[i].getAttribute("onkeydown"));
-
-    if (key) return key;
+    return "";
   }
 
-  const selectedText = getDropdownSelectedText(drop);
-  if (selectedText) return "t:" + shortHash(selectedText);
+  function getDropdownQuizKey(drop, idx) {
+    if (!drop) return "dd:" + idx;
 
-  const txt = stripQuizUiText(drop.textContent || "");
-  if (txt) return "h:" + shortHash(txt.slice(0, 200));
+    const nodes = [drop].concat(Array.from(drop.querySelectorAll("[onclick],[onkeydown]")));
 
-  return "dd:" + idx;
-}
+    for (let i = 0; i < nodes.length; i++) {
+      const key =
+        extractDropdownRuntimeKey(nodes[i].getAttribute("onclick")) ||
+        extractDropdownRuntimeKey(nodes[i].getAttribute("onkeydown"));
 
-function getDropdownSelectedTextNode(drop) {
-  if (!drop) return null;
+      if (key) return key;
+    }
 
-  const selectedWrap =
-    drop.querySelector(":scope > .lia-dropdown__selected") ||
-    drop.querySelector(".lia-dropdown__selected");
+    const selectedText = getDropdownSelectedText(drop);
+    if (selectedText) return "t:" + shortHash(selectedText);
 
-  if (!selectedWrap) return null;
+    const txt = stripQuizUiText(drop.textContent || "");
+    if (txt) return "h:" + shortHash(txt.slice(0, 200));
 
-  const directChildren = Array.from(selectedWrap.children || []);
-  for (let i = 0; i < directChildren.length; i++) {
-    if (String(directChildren[i].tagName || "").toLowerCase() === "span") {
-      return directChildren[i];
+    return "dd:" + idx;
+  }
+
+  function getDropdownSelectedTextNode(drop) {
+    if (!drop) return null;
+
+    const selectedWrap =
+      drop.querySelector(":scope > .lia-dropdown__selected") ||
+      drop.querySelector(".lia-dropdown__selected");
+
+    if (!selectedWrap) return null;
+
+    const directChildren = Array.from(selectedWrap.children || []);
+    for (let i = 0; i < directChildren.length; i++) {
+      if (String(directChildren[i].tagName || "").toLowerCase() === "span") {
+        return directChildren[i];
+      }
+    }
+
+    return selectedWrap.querySelector("span");
+  }
+
+  function getDropdownSelectedText(drop) {
+    const node = getDropdownSelectedTextNode(drop);
+    return normalizeSpace(node && node.textContent || "");
+  }
+
+  function captureDropdownQuizState(taskRoot, idx) {
+    const controls = getDropdownQuizControlsFromRoot(taskRoot);
+    const firstControl = controls[0] || null;
+    const root = firstControl
+      ? getDropdownQuizRootFromDropdown(firstControl, getContentHost() || document.body)
+      : taskRoot;
+    const feedback = root ? root.querySelector(".lia-quiz__feedback") : null;
+
+    const out = {
+      k: getDropdownQuizKey(taskRoot, idx),
+      ri: Number(idx || 0),
+      v: controls.map(function (drop) {
+        return getDropdownSelectedText(drop);
+      })
+    };
+    applyAssignmentMetaToState(out, root || taskRoot);
+
+    const stateCode = detectQuizState(root);
+    const feedbackCode = detectFeedbackCode(feedback);
+    const checkCount = getQuizCheckCount(root);
+
+    if (stateCode) out.s = stateCode;
+    if (feedbackCode) out.fc = feedbackCode;
+    if (checkCount > 0) out.cc = checkCount;
+
+    return out;
+  }
+
+  function lockDropdownControl(drop) {
+    if (!drop) return;
+
+    try { drop.setAttribute("tabindex", "-1"); } catch (e) {}
+    drop.style.pointerEvents = "none";
+
+    const selected = drop.querySelector(".lia-dropdown__selected");
+    if (selected) {
+      try { selected.setAttribute("tabindex", "-1"); } catch (e) {}
+      try { selected.setAttribute("aria-expanded", "false"); } catch (e) {}
+      selected.style.pointerEvents = "none";
+    }
+
+    const options = drop.querySelector(".lia-dropdown__options");
+    if (options) {
+      options.classList.add("is-hidden");
+      try { options.setAttribute("tabindex", "-1"); } catch (e) {}
+      options.style.pointerEvents = "none";
+    }
+
+    Array.from(drop.querySelectorAll(".lia-dropdown__option")).forEach(function (opt) {
+      try { opt.setAttribute("tabindex", "-1"); } catch (e) {}
+      opt.style.pointerEvents = "none";
+    });
+  }
+
+  function applyDropdownSelectedText(drop, value) {
+    const node = getDropdownSelectedTextNode(drop);
+    if (node) {
+      node.textContent = String(value || "");
+    }
+
+    const selected = drop.querySelector(".lia-dropdown__selected");
+    if (selected) {
+      try { selected.setAttribute("aria-expanded", "false"); } catch (e) {}
+    }
+
+    const options = drop.querySelector(".lia-dropdown__options");
+    if (options) {
+      options.classList.add("is-hidden");
     }
   }
-
-  return selectedWrap.querySelector("span");
-}
-
-function getDropdownSelectedText(drop) {
-  const node = getDropdownSelectedTextNode(drop);
-  return normalizeSpace(node && node.textContent || "");
-}
-
-function captureDropdownQuizState(taskRoot, idx) {
-  const controls = getDropdownQuizControlsFromRoot(taskRoot);
-  const firstControl = controls[0] || null;
-  const root = firstControl
-    ? getDropdownQuizRootFromDropdown(firstControl, getContentHost() || document.body)
-    : taskRoot;
-  const feedback = root ? root.querySelector(".lia-quiz__feedback") : null;
-
-  const out = {
-    k: getDropdownQuizKey(taskRoot, idx),
-    ri: Number(idx || 0),
-    v: controls.map(function (drop) {
-      return getDropdownSelectedText(drop);
-    })
-  };
-  applyAssignmentMetaToState(out, root || taskRoot);
-
-  const stateCode = detectQuizState(root);
-  const feedbackCode = detectFeedbackCode(feedback);
-  const checkCount = getQuizCheckCount(root);
-
-  if (stateCode) out.s = stateCode;
-  if (feedbackCode) out.fc = feedbackCode;
-  if (checkCount > 0) out.cc = checkCount;
-
-  return out;
-}
-
-function lockDropdownControl(drop) {
-  if (!drop) return;
-
-  try { drop.setAttribute("tabindex", "-1"); } catch (e) {}
-  drop.style.pointerEvents = "none";
-
-  const selected = drop.querySelector(".lia-dropdown__selected");
-  if (selected) {
-    try { selected.setAttribute("tabindex", "-1"); } catch (e) {}
-    try { selected.setAttribute("aria-expanded", "false"); } catch (e) {}
-    selected.style.pointerEvents = "none";
-  }
-
-  const options = drop.querySelector(".lia-dropdown__options");
-  if (options) {
-    options.classList.add("is-hidden");
-    try { options.setAttribute("tabindex", "-1"); } catch (e) {}
-    options.style.pointerEvents = "none";
-  }
-
-  Array.from(drop.querySelectorAll(".lia-dropdown__option")).forEach(function (opt) {
-    try { opt.setAttribute("tabindex", "-1"); } catch (e) {}
-    opt.style.pointerEvents = "none";
-  });
-}
-
-function applyDropdownSelectedText(drop, value) {
-  const node = getDropdownSelectedTextNode(drop);
-  if (node) {
-    node.textContent = String(value || "");
-  }
-
-  const selected = drop.querySelector(".lia-dropdown__selected");
-  if (selected) {
-    try { selected.setAttribute("aria-expanded", "false"); } catch (e) {}
-  }
-
-  const options = drop.querySelector(".lia-dropdown__options");
-  if (options) {
-    options.classList.add("is-hidden");
-  }
-}
 
 function applyDropdownQuizState(taskRoot, state) {
   if (!taskRoot || !state) return taskRoot;
@@ -10447,6 +10692,7 @@ function applyStoredDropdownStatesToHost(host, storedStates) {
   return applied;
 }
 
+
 function getTextQuizRootKey(root, idx) {
   if (!root) return "qr:" + idx;
 
@@ -10466,19 +10712,20 @@ function getTextQuizRootKey(root, idx) {
   return "qr:" + idx;
 }
 
-function readTextQuizInputValue(el) {
-  if (!el) return "";
+  function readTextQuizInputValue(el) {
+    if (!el) return "";
 
-  if (isEditableTextbox(el)) {
-    return String(el.textContent || "");
+    if (isEditableTextbox(el)) {
+      return String(el.textContent || "");
+    }
+
+    if ("value" in el) {
+      return String(el.value || "");
+    }
+
+    return "";
   }
 
-  if ("value" in el) {
-    return String(el.value || "");
-  }
-
-  return "";
-}
 
 function stripTrailingCheckCountLabel(txt) {
   return normalizeSpace(String(txt || "").replace(/\s+\d+\s*$/, ""));
@@ -10519,48 +10766,49 @@ function applyQuizCheckCount(root, count) {
   btn.textContent = n > 0 ? (base + " " + n) : base;
 }
 
-function detectQuizState(root) {
-  const cls = String(root && root.className || "");
-  if (/\bsolved\b/.test(cls)) return "s";
-  if (/\bresolved\b/.test(cls)) return "r";
-  return "";
-}
 
-function detectFeedbackCode(feedback) {
-  if (!feedback) return "";
-  const cls = String(feedback.className || "");
-  if (/\btext-success\b/.test(cls)) return "s";
-  if (/\btext-error\b/.test(cls)) return "e";
-  if (/\btext-disabled\b/.test(cls)) return "d";
-  return "";
-}
-
-function readQuizDataText(quiz, attrName) {
-  if (!quiz) return "";
-
-  const direct = normalizeSpace(quiz.getAttribute(attrName) || "");
-  if (direct) return direct;
-
-  const inDesc = quiz.querySelector("[" + attrName + "]");
-  if (inDesc) {
-    const txt = normalizeSpace(inDesc.getAttribute(attrName) || "");
-    if (txt) return txt;
+  function detectQuizState(root) {
+    const cls = String(root && root.className || "");
+    if (/\bsolved\b/.test(cls)) return "s";
+    if (/\bresolved\b/.test(cls)) return "r";
+    return "";
   }
 
-  const checkBtn = quiz.querySelector(".lia-quiz__check");
-  if (checkBtn) {
-    const txt = normalizeSpace(checkBtn.getAttribute(attrName) || "");
-    if (txt) return txt;
+  function detectFeedbackCode(feedback) {
+    if (!feedback) return "";
+    const cls = String(feedback.className || "");
+    if (/\btext-success\b/.test(cls)) return "s";
+    if (/\btext-error\b/.test(cls)) return "e";
+    if (/\btext-disabled\b/.test(cls)) return "d";
+    return "";
   }
 
-  const resolveBtn = quiz.querySelector(".lia-quiz__resolve");
-  if (resolveBtn) {
-    const txt = normalizeSpace(resolveBtn.getAttribute(attrName) || "");
-    if (txt) return txt;
-  }
+  function readQuizDataText(quiz, attrName) {
+    if (!quiz) return "";
 
-  return "";
-}
+    const direct = normalizeSpace(quiz.getAttribute(attrName) || "");
+    if (direct) return direct;
+
+    const inDesc = quiz.querySelector("[" + attrName + "]");
+    if (inDesc) {
+      const txt = normalizeSpace(inDesc.getAttribute(attrName) || "");
+      if (txt) return txt;
+    }
+
+    const checkBtn = quiz.querySelector(".lia-quiz__check");
+    if (checkBtn) {
+      const txt = normalizeSpace(checkBtn.getAttribute(attrName) || "");
+      if (txt) return txt;
+    }
+
+    const resolveBtn = quiz.querySelector(".lia-quiz__resolve");
+    if (resolveBtn) {
+      const txt = normalizeSpace(resolveBtn.getAttribute(attrName) || "");
+      if (txt) return txt;
+    }
+
+    return "";
+  }
 
 function captureTextQuizState(root, idx) {
   if (!root) return null;
@@ -10627,6 +10875,7 @@ function countExpectedControls(slide) {
   if (slide && Array.isArray(slide.mq)) {
     n += slide.mq.length;
   }
+  
 
   if (slide && Array.isArray(slide.cq)) {
     n += slide.cq.length;
@@ -10757,103 +11006,103 @@ function isSlideReadyForApply(hash) {
   return true;
 }
 
-async function waitForSlideReady(hash, timeoutMs) {
-  const timeout = timeoutMs || 2600;
-  const start = Date.now();
+  async function waitForSlideReady(hash, timeoutMs) {
+    const timeout = timeoutMs || 2600;
+    const start = Date.now();
 
-  while (Date.now() - start < timeout) {
-    if (isSlideReadyForApply(hash)) return true;
-    await sleep(60);
+    while (Date.now() - start < timeout) {
+      if (isSlideReadyForApply(hash)) return true;
+      await sleep(60);
+    }
+
+    return isSlideReadyForApply(hash);
   }
 
-  return isSlideReadyForApply(hash);
-}
+  function ensureQuizFeedbackElement(root) {
+    if (!root) return null;
 
-function ensureQuizFeedbackElement(root) {
-  if (!root) return null;
+    let feedback = root.querySelector(".lia-quiz__feedback");
+    if (feedback) return feedback;
 
-  let feedback = root.querySelector(".lia-quiz__feedback");
-  if (feedback) return feedback;
-
-  feedback = document.createElement("div");
-  feedback.className = "lia-quiz__feedback";
-  root.appendChild(feedback);
-  return feedback;
-}
-
-function revealQuizBlock(el) {
-  if (!el) return;
-
-  try { el.hidden = false; } catch (e) {}
-  try { el.removeAttribute("hidden"); } catch (e) {}
-  try { el.removeAttribute("aria-hidden"); } catch (e) {}
-
-  el.style.removeProperty("display");
-  el.style.removeProperty("visibility");
-  el.style.removeProperty("opacity");
-  el.style.removeProperty("max-height");
-
-  if (!isRenderedElement(el)) {
-    el.style.display = "block";
-    el.style.visibility = "visible";
-    el.style.opacity = "1";
+    feedback = document.createElement("div");
+    feedback.className = "lia-quiz__feedback";
+    root.appendChild(feedback);
+    return feedback;
   }
-}
 
-function applyQuizRootStateClasses(root, stateCode) {
-  if (!root) return;
-  root.classList.remove("solved", "resolved");
+  function revealQuizBlock(el) {
+    if (!el) return;
 
-  if (stateCode === "s") {
-    root.classList.add("solved");
-  } else if (stateCode === "r") {
-    root.classList.add("resolved");
-  }
-}
+    try { el.hidden = false; } catch (e) {}
+    try { el.removeAttribute("hidden"); } catch (e) {}
+    try { el.removeAttribute("aria-hidden"); } catch (e) {}
 
-function applyFieldValueOnly(el, value) {
-  if (!el) return;
+    el.style.removeProperty("display");
+    el.style.removeProperty("visibility");
+    el.style.removeProperty("opacity");
+    el.style.removeProperty("max-height");
 
-  const tag = String(el.tagName || "").toLowerCase();
-  const type = String(el.type || "").toLowerCase();
-
-  if (isEditableTextbox(el)) {
-    el.textContent = String(value || "");
-  } else if (tag === "textarea" || tag === "select" || (type !== "checkbox" && type !== "radio")) {
-    el.value = String(value || "");
-    if (tag === "textarea") {
-      el.textContent = String(value || "");
+    if (!isRenderedElement(el)) {
+      el.style.display = "block";
+      el.style.visibility = "visible";
+      el.style.opacity = "1";
     }
   }
-}
 
-function lockTextQuizRoot(root) {
-  if (!root) return;
+  function applyQuizRootStateClasses(root, stateCode) {
+    if (!root) return;
+    root.classList.remove("solved", "resolved");
 
-  Array.from(root.querySelectorAll(
-    "input, textarea, select, button, a, summary, [role='button'], [contenteditable='true'], [role='textbox']"
-  )).forEach(function (el) {
+    if (stateCode === "s") {
+      root.classList.add("solved");
+    } else if (stateCode === "r") {
+      root.classList.add("resolved");
+    }
+  }
+
+  function applyFieldValueOnly(el, value) {
+    if (!el) return;
+
     const tag = String(el.tagName || "").toLowerCase();
     const type = String(el.type || "").toLowerCase();
 
-    if (tag === "a") {
-      try { el.setAttribute("tabindex", "-1"); } catch (e) {}
-      el.style.pointerEvents = "none";
-      return;
+    if (isEditableTextbox(el)) {
+      el.textContent = String(value || "");
+    } else if (tag === "textarea" || tag === "select" || (type !== "checkbox" && type !== "radio")) {
+      el.value = String(value || "");
+      if (tag === "textarea") {
+        el.textContent = String(value || "");
+      }
     }
+  }
 
-    if (type === "checkbox" || type === "radio") {
+  function lockTextQuizRoot(root) {
+    if (!root) return;
+
+    Array.from(root.querySelectorAll(
+      "input, textarea, select, button, a, summary, [role='button'], [contenteditable='true'], [role='textbox']"
+    )).forEach(function (el) {
+      const tag = String(el.tagName || "").toLowerCase();
+      const type = String(el.type || "").toLowerCase();
+
+      if (tag === "a") {
+        try { el.setAttribute("tabindex", "-1"); } catch (e) {}
+        el.style.pointerEvents = "none";
+        return;
+      }
+
+      if (type === "checkbox" || type === "radio") {
+        try { el.setAttribute("tabindex", "-1"); } catch (e) {}
+        el.style.pointerEvents = "none";
+        return;
+      }
+
+      try { el.disabled = true; } catch (e) {}
+      try { el.readOnly = true; } catch (e) {}
       try { el.setAttribute("tabindex", "-1"); } catch (e) {}
-      el.style.pointerEvents = "none";
-      return;
-    }
-
-    try { el.disabled = true; } catch (e) {}
-    try { el.readOnly = true; } catch (e) {}
-    try { el.setAttribute("tabindex", "-1"); } catch (e) {}
-    try { el.setAttribute("contenteditable", "false"); } catch (e) {}
-  });
-}
+      try { el.setAttribute("contenteditable", "false"); } catch (e) {}
+    });
+  }
 
 function deriveFeedbackTextForState(root, state) {
   state = state || {};
@@ -10901,19 +11150,19 @@ function deriveFeedbackTextForState(root, state) {
   return "";
 }
 
-function getFeedbackClassFromState(state) {
-  state = state || {};
+  function getFeedbackClassFromState(state) {
+    state = state || {};
 
-  if (state.fc === "s") return "text-success";
-  if (state.fc === "e") return "text-error";
-  if (state.fc === "d") return "text-disabled";
+    if (state.fc === "s") return "text-success";
+    if (state.fc === "e") return "text-error";
+    if (state.fc === "d") return "text-disabled";
 
-  if (state.s === "s") return "text-success";
-  if (state.s === "r") return "text-disabled";
-  if (state.fc === "e") return "text-error";
+    if (state.s === "s") return "text-success";
+    if (state.s === "r") return "text-disabled";
+    if (state.fc === "e") return "text-error";
 
-  return "";
-}
+    return "";
+  }
 
 function applyTextQuizState(root, state) {
   if (!root || !state) return root;
@@ -11038,6 +11287,7 @@ function applyStoredTextQuizStatesToHost(host, storedStates) {
   return applied;
 }
 
+
 function reapplySnapshotSilently(hash, reason) {
   if (!snapshotPayload) return false;
 
@@ -11080,6 +11330,9 @@ function reapplySnapshotSilently(hash, reason) {
   return true;
 }
 
+
+
+
 function schedulePostApplyReinforcement(hash, reason, delays) {
   const wantedHash = String(hash || "");
   const token = ++stabilizationToken;
@@ -11103,30 +11356,37 @@ function schedulePostApplyReinforcement(hash, reason, delays) {
 }
 
 
-// =========================================================
-// Snapshot-Daten
-// =========================================================
 
-// =========================================================
-// Canvas Freeze API
-// =========================================================
 
-function getCanvasFreezeRootWindow() {
-  let w = window;
-  try {
-    while (w.parent && w.parent !== w) w = w.parent;
-  } catch (e) {}
-  return w;
-}
 
-function getCanvasFreezeApi() {
-  const root = getCanvasFreezeRootWindow();
-  return (
-    (root && root.__LIA_CANVAS_FREEZE_API__) ||
-    window.__LIA_CANVAS_FREEZE_API__ ||
-    null
-  );
-}
+
+  // =========================================================
+  // Snapshot-Daten
+  // =========================================================
+
+  // =========================================================
+  // Canvas Freeze API
+  // =========================================================
+
+
+
+
+  function getCanvasFreezeRootWindow() {
+    let w = window;
+    try {
+      while (w.parent && w.parent !== w) w = w.parent;
+    } catch (e) {}
+    return w;
+  }
+
+  function getCanvasFreezeApi() {
+    const root = getCanvasFreezeRootWindow();
+    return (
+      (root && root.__LIA_CANVAS_FREEZE_API__) ||
+      window.__LIA_CANVAS_FREEZE_API__ ||
+      null
+    );
+  }
 
 function getCanvasFreezeScopeHost(root) {
   const candidates = uniqueElements([
@@ -11158,21 +11418,21 @@ function getCanvasFreezeScopeHost(root) {
   return best || root || getBaseContentHost() || document.body;
 }
 
-function collectCanvasFreezePairsFromRoot(root) {
-  const api = getCanvasFreezeApi();
-  if (!api || typeof api.collectCanvasPairsFromRoot !== "function") return [];
+  function collectCanvasFreezePairsFromRoot(root) {
+    const api = getCanvasFreezeApi();
+    if (!api || typeof api.collectCanvasPairsFromRoot !== "function") return [];
 
-  const pairs = api.collectCanvasPairsFromRoot(root || document.body) || [];
-  return uniqueElements(pairs.filter(function (el) {
-    return !!(el && el instanceof Element);
-  }));
-}
+    const pairs = api.collectCanvasPairsFromRoot(root || document.body) || [];
+    return uniqueElements(pairs.filter(function (el) {
+      return !!(el && el instanceof Element);
+    }));
+  }
 
-function getCanvasFreezeUidFromPair(pair) {
-  const api = getCanvasFreezeApi();
-  if (!api || typeof api.getCanvasUidFromPair !== "function") return "";
-  return String(api.getCanvasUidFromPair(pair) || "");
-}
+  function getCanvasFreezeUidFromPair(pair) {
+    const api = getCanvasFreezeApi();
+    if (!api || typeof api.getCanvasUidFromPair !== "function") return "";
+    return String(api.getCanvasUidFromPair(pair) || "");
+  }
 
 function getCanvasStoredSizeTarget(pair) {
   if (!pair || !(pair instanceof Element)) return null;
@@ -11310,6 +11570,7 @@ function captureCanvasFreezeStatesFromRoot(root) {
 
   return out;
 }
+
 
 function normalizeCanvasThemeModeKey(value) {
   const txt = normalizeSpace(value || "").toLowerCase();
@@ -11548,6 +11809,8 @@ function scheduleFrozenCanvasThemeRefresh(reason, delay) {
   }, delay || 50);
 }
 
+
+
 function applyStoredCanvasStatesToHost(host, storedStates) {
   const api = getCanvasFreezeApi();
   if (!api || typeof api.renderCanvasFreezeStateIntoPair !== "function") {
@@ -11602,7 +11865,7 @@ function applyStoredCanvasStatesToHost(host, storedStates) {
     }
 
     const expandedState = expandCanvasStateFromFreezeUrl(state) || state;
-
+    
     log(
       "canvas-theme-expanded",
       "uid=" + String(getCanvasStateUidForFreezeUrl(state)),
@@ -11636,9 +11899,9 @@ function applyStoredCanvasStatesToHost(host, storedStates) {
         );
       }).join(" || ")
     );
-
+    
     const renderState = materializeCanvasThemeColorsForPair(expandedState, target);
-
+    
     log(
       "canvas-theme-materialized",
       "uid=" + String(getCanvasStateUidForFreezeUrl(state)),
@@ -11664,10 +11927,9 @@ function applyStoredCanvasStatesToHost(host, storedStates) {
 
 
 
-// =========================================================
-// Annotation Freeze API
-// =========================================================
-
+  // =========================================================
+  // Annotation Freeze API
+  // =========================================================
 function getAnnotationFreezeRootWindow() {
   let w = window;
   try {
@@ -11753,6 +12015,7 @@ function getAnnotationFreezeApi() {
   return null;
 }
 
+
 function debugAnnotationProbe(stage) {
   const api = getAnnotationFreezeApi();
 
@@ -11784,6 +12047,7 @@ function debugAnnotationProbe(stage) {
 
   return api;
 }
+
 
 function tryCallAnnotationApiMethod(api, names) {
   if (!api) return false;
@@ -11870,6 +12134,7 @@ function countAnnotationItemsInFreezePayload(payload) {
   return total;
 }
 
+
 function describeAnnotationFreezePayload(payload) {
   if (!payload || typeof payload !== "object") {
     return "payload=<null>";
@@ -11893,6 +12158,7 @@ function describeAnnotationFreezePayload(payload) {
     "uiKeys=" + uiKeys.join(",")
   ].join(" ");
 }
+
 
 async function captureFullAnnotationFreezeState() {
   const api = getAnnotationFreezeApi();
@@ -12030,9 +12296,11 @@ function buildAnnotationFreezeImportPayloadFromSnapshot(payload) {
   return out;
 }
 
+
+
 function applyAnnotationFreezeSnapshot(payload) {
   log("ANNOTATION-IMPORT-ENTER");
-
+  
   const api = getAnnotationFreezeApi();
   if (!api) {
     log("annotation-apply-skip", "reason=no-api");
@@ -12076,6 +12344,7 @@ function applyAnnotationFreezeSnapshot(payload) {
   }
 }
 
+
 function reimportAnnotationFreezeSnapshot(reason) {
   if (!snapshotPayload) {
     log("annotation-reimport-skip", "reason=" + String(reason || ""), "snapshot=none");
@@ -12092,6 +12361,7 @@ function reimportAnnotationFreezeSnapshot(reason) {
 
   return ok;
 }
+
 
 function reinforceAnnotationFreezeUi(reason, opts) {
   opts = opts || {};
@@ -12130,6 +12400,13 @@ function reinforceAnnotationFreezeUi(reason, opts) {
     return false;
   }
 }
+
+
+
+
+
+
+
 
 function captureSlideStateForHash(hash) {
   const cleanHash = cleanHashValue(hash || "");
@@ -12231,6 +12508,7 @@ function captureSlideStateForHash(hash) {
     });
   });
 
+
   ordered.sort(function (a, b) {
     return compareElementsInDocumentOrder(a.root, b.root);
   });
@@ -12248,6 +12526,7 @@ function captureSlideStateForHash(hash) {
     cv: canvasStates,
     gm: generalMarkerState
   };
+
 
   const sequence = [];
 
@@ -12278,7 +12557,7 @@ function captureSlideStateForHash(hash) {
     "marker=" + out.mq.length,
     "coord=" + out.cq.length,
     "canvas=" + out.cv.length,
-    "annotation=global",
+        "annotation=global",
     "general-marker=" + (
       out.gm && Array.isArray(out.gm.h)
         ? out.gm.h.length
@@ -12288,6 +12567,7 @@ function captureSlideStateForHash(hash) {
 
   return out;
 }
+
 
 function storeLiveSlideState(hash, source) {
   if (document.body.classList.contains("lia-snapshot-mode")) return false;
@@ -12320,6 +12600,8 @@ function storeLiveSlideState(hash, source) {
 
   return true;
 }
+
+
 
 async function buildPayloadFromLiveStates() {
   log("BUILD-PAYLOAD-ENTER");
@@ -12363,34 +12645,35 @@ async function buildPayloadFromLiveStates() {
   return compactPayloadForFreezeUrl(payload);
 }
 
-function getSnapshotSlideForHash(hash) {
-  if (!snapshotPayload || !Array.isArray(snapshotPayload.s)) return null;
+  function getSnapshotSlideForHash(hash) {
+    if (!snapshotPayload || !Array.isArray(snapshotPayload.s)) return null;
 
-  for (let i = 0; i < snapshotPayload.s.length; i++) {
-    if (String(snapshotPayload.s[i].h || "") === String(hash || "")) {
-      return snapshotPayload.s[i];
+    for (let i = 0; i < snapshotPayload.s.length; i++) {
+      if (String(snapshotPayload.s[i].h || "") === String(hash || "")) {
+        return snapshotPayload.s[i];
+      }
     }
+
+    return null;
   }
 
-  return null;
-}
+  function isUnvisitedTarget(hash) {
+    const slide = getSnapshotSlideForHash(hash);
+    return !!(slide && Number(slide.u || 0) === 1);
+  }
 
-function isUnvisitedTarget(hash) {
-  const slide = getSnapshotSlideForHash(hash);
-  return !!(slide && Number(slide.u || 0) === 1);
-}
+  // =========================================================
+  // Admin
+  // =========================================================
 
-// =========================================================
-// Admin
-// =========================================================
+  function getStatusBox() {
+    return document.getElementById("lia-status");
+  }
 
-function getStatusBox() {
-  return document.getElementById("lia-status");
-}
+  function getLinkBox() {
+    return document.getElementById("lia-link");
+  }
 
-function getLinkBox() {
-  return document.getElementById("lia-link");
-}
 
 function getCopyLinkButton() {
   return document.getElementById("lia-copy-link");
@@ -12508,6 +12791,8 @@ async function copyLink() {
     return true;
   }
 
+  // Falls direktes Kopieren blockiert wurde:
+  // Link markieren, damit danach manuell kopiert werden kann.
   if (linkEl) {
     try { linkEl.focus({ preventScroll: true }); } catch (e) {
       try { linkEl.focus(); } catch (e2) {}
@@ -12529,241 +12814,236 @@ async function copyLink() {
   return false;
 }
 
-function setStatus(msg) {
-  const el = getStatusBox();
-  if (el) el.textContent = msg || "";
-}
 
-function captureAdminState() {
-  const nameEl = document.getElementById("lia-name");
-
-  if (nameEl && String(nameEl.value || "").trim()) {
-    lastKnownName = String(nameEl.value || "").trim();
-    return lastKnownName;
+  function setStatus(msg) {
+    const el = getStatusBox();
+    if (el) el.textContent = msg || "";
   }
 
-  return lastKnownName || null;
-}
+  function captureAdminState() {
+    const nameEl = document.getElementById("lia-name");
 
-function getDisplayName() {
-  if (snapshotPayload && typeof snapshotPayload.n === "string" && snapshotPayload.n.trim()) {
-    return snapshotPayload.n.trim();
-  }
-
-  if (typeof lastKnownName === "string" && lastKnownName.trim()) {
-    return lastKnownName.trim();
-  }
-
-  const nameEl = document.getElementById("lia-name");
-  if (nameEl && String(nameEl.value || "").trim()) {
-    return String(nameEl.value || "").trim();
-  }
-
-  return "";
-}
-
-function applyAdminState(name, opts) {
-  opts = opts || {};
-
-  const nameEl = document.getElementById("lia-name");
-  const linkEl = document.getElementById("lia-link");
-  const statusEl = document.getElementById("lia-status");
-  const btnEl = document.getElementById("lia-create-link");
-  const copyBtn = document.getElementById("lia-copy-link");
-  const noteEl = document.getElementById("lia-frozen-note");
-
-  if (nameEl) {
-    nameEl.value = typeof name === "string" ? name : "";
-    try { nameEl.disabled = true; } catch (e) {}
-    try { nameEl.readOnly = true; } catch (e) {}
-  }
-
-  if (btnEl) {
-    try { btnEl.disabled = true; } catch (e) {}
-    btnEl.textContent = "Abgabe eingefroren";
-  }
-
-  if (copyBtn) {
-    const currentValue = normalizeSpace(
-      (linkEl && linkEl.value) ||
-      (typeof opts.linkValue === "string" ? opts.linkValue : "") ||
-      freezeLinkValue ||
-      ""
-    );
-
-    try { copyBtn.disabled = !currentValue; } catch (e) {}
-  }
-
-  if (linkEl) {
-    if (typeof opts.linkValue === "string") {
-      linkEl.value = opts.linkValue;
-    } else if (!opts.preserveLinkValue && !String(linkEl.value || "").trim()) {
-      linkEl.value = window.location.href;
+    if (nameEl && String(nameEl.value || "").trim()) {
+      lastKnownName = String(nameEl.value || "").trim();
+      return lastKnownName;
     }
 
-    try { linkEl.disabled = false; } catch (e) {}
-    try { linkEl.readOnly = true; } catch (e) {}
-    linkEl.style.pointerEvents = "auto";
-    linkEl.style.userSelect = "text";
-    linkEl.style.webkitUserSelect = "text";
-    linkEl.style.cursor = "text";
+    return lastKnownName || null;
   }
 
-  if (statusEl) {
-    statusEl.textContent = opts.statusText || "Abgabelink erstellt.";
+  function getDisplayName() {
+    if (snapshotPayload && typeof snapshotPayload.n === "string" && snapshotPayload.n.trim()) {
+      return snapshotPayload.n.trim();
+    }
+
+    if (typeof lastKnownName === "string" && lastKnownName.trim()) {
+      return lastKnownName.trim();
+    }
+
+    const nameEl = document.getElementById("lia-name");
+    if (nameEl && String(nameEl.value || "").trim()) {
+      return String(nameEl.value || "").trim();
+    }
+
+    return "";
   }
 
-  if (noteEl) {
-    noteEl.style.display = "block";
-    noteEl.innerHTML = "Dies ist ein <strong>eingefrorener Abgabestand</strong>. Aufgaben und Eingaben sind gesperrt. TOC, Anzeige-Modus und Darstellung können weiterhin benutzt werden.";
+  function applyAdminState(name, opts) {
+    opts = opts || {};
+
+    const nameEl = document.getElementById("lia-name");
+    const linkEl = document.getElementById("lia-link");
+    const statusEl = document.getElementById("lia-status");
+    const btnEl = document.getElementById("lia-create-link");
+    const copyBtn = document.getElementById("lia-copy-link");
+    const noteEl = document.getElementById("lia-frozen-note");
+
+    if (nameEl) {
+      nameEl.value = typeof name === "string" ? name : "";
+      try { nameEl.disabled = true; } catch (e) {}
+      try { nameEl.readOnly = true; } catch (e) {}
+    }
+
+    if (btnEl) {
+      try { btnEl.disabled = true; } catch (e) {}
+      btnEl.textContent = "Abgabe eingefroren";
+    }
+
+    if (copyBtn) {
+      const currentValue = normalizeSpace(
+        (linkEl && linkEl.value) ||
+        (typeof opts.linkValue === "string" ? opts.linkValue : "") ||
+        freezeLinkValue ||
+        ""
+      );
+
+      try { copyBtn.disabled = !currentValue; } catch (e) {}
+    }
+
+    if (linkEl) {
+      if (typeof opts.linkValue === "string") {
+        linkEl.value = opts.linkValue;
+      } else if (!opts.preserveLinkValue && !String(linkEl.value || "").trim()) {
+        linkEl.value = window.location.href;
+      }
+
+      try { linkEl.disabled = false; } catch (e) {}
+      try { linkEl.readOnly = true; } catch (e) {}
+      linkEl.style.pointerEvents = "auto";
+      linkEl.style.userSelect = "text";
+      linkEl.style.webkitUserSelect = "text";
+      linkEl.style.cursor = "text";
+    }
+
+    if (statusEl) {
+      statusEl.textContent = opts.statusText || "Abgabelink erstellt.";
+    }
+
+    if (noteEl) {
+      noteEl.style.display = "block";
+      noteEl.innerHTML = "Dies ist ein <strong>eingefrorener Abgabestand</strong>. Aufgaben und Eingaben sind gesperrt. TOC, Anzeige-Modus und Darstellung können weiterhin benutzt werden.";
+    }
   }
-}
 
+  // =========================================================
+  // Placeholder / Loading
+  // =========================================================
 
-// =========================================================
-// Placeholder / Loading
-// =========================================================
+  function getFreezeOverlay() {
+    let overlay = document.getElementById("lia-freeze-overlay");
+    if (overlay) return overlay;
 
-function getFreezeOverlay() {
-  let overlay = document.getElementById("lia-freeze-overlay");
-  if (overlay) return overlay;
+    overlay = document.createElement("div");
+    overlay.id = "lia-freeze-overlay";
+    overlay.style.position = "fixed";
+    overlay.style.left = "0";
+    overlay.style.top = "0";
+    overlay.style.right = "0";
+    overlay.style.bottom = "0";
+    overlay.style.zIndex = "99998";
+    overlay.style.display = "none";
+    overlay.style.pointerEvents = "auto";
+    overlay.style.background = "color-mix(in srgb, var(--lia-course-bg) 82%, transparent)";
+    overlay.style.backdropFilter = "blur(1px)";
+    overlay.innerHTML = '<div style="position:absolute;top:88px;left:50%;transform:translateX(-50%);padding:.7rem 1rem;border-radius:12px;background:rgb(var(--lia-submit-bg-rgb));color:var(--lia-submit-fg);border:1px solid var(--lia-submit-border-on-theme);font-weight:700;box-shadow:0 10px 26px rgba(0,0,0,.14);">Frozen-Zustand wird geladen …</div>';
 
-  overlay = document.createElement("div");
-  overlay.id = "lia-freeze-overlay";
-  overlay.style.position = "fixed";
-  overlay.style.left = "0";
-  overlay.style.top = "0";
-  overlay.style.right = "0";
-  overlay.style.bottom = "0";
-  overlay.style.zIndex = "99998";
-  overlay.style.display = "none";
-  overlay.style.pointerEvents = "auto";
-  overlay.style.background = "color-mix(in srgb, var(--lia-course-bg) 82%, transparent)";
-  overlay.style.backdropFilter = "blur(1px)";
-  overlay.innerHTML = '<div style="position:absolute;top:88px;left:50%;transform:translateX(-50%);padding:.7rem 1rem;border-radius:12px;background:rgb(var(--lia-submit-bg-rgb));color:var(--lia-submit-fg);border:1px solid var(--lia-submit-border-on-theme);font-weight:700;box-shadow:0 10px 26px rgba(0,0,0,.14);">Frozen-Zustand wird geladen …</div>';
+    document.body.appendChild(overlay);
+    return overlay;
+  }
 
-  document.body.appendChild(overlay);
-  return overlay;
-}
+  function getUnvisitedPlaceholder() {
+    let box = document.getElementById("lia-unvisited-placeholder");
+    if (box) return box;
 
-function getUnvisitedPlaceholder() {
-  let box = document.getElementById("lia-unvisited-placeholder");
-  if (box) return box;
+    box = document.createElement("div");
+    box.id = "lia-unvisited-placeholder";
+    box.style.position = "fixed";
+    box.style.left = "50%";
+    box.style.top = "96px";
+    box.style.transform = "translateX(-50%)";
+    box.style.width = "min(920px, calc(100vw - 24px))";
+    box.style.maxHeight = "calc(100vh - 120px)";
+    box.style.overflow = "auto";
+    box.style.zIndex = "99997";
+    box.style.display = "none";
+    box.style.boxSizing = "border-box";
+    box.style.padding = "1.1rem 1.2rem";
+    box.style.borderRadius = "16px";
+    box.style.background = "var(--lia-course-bg)";
+    box.style.color = "var(--lia-course-fg)";
+    box.style.border = "1px solid var(--lia-course-border)";
+    box.style.boxShadow = "0 10px 26px rgba(0,0,0,.14)";
+    document.body.appendChild(box);
+    return box;
+  }
 
-  box = document.createElement("div");
-  box.id = "lia-unvisited-placeholder";
-  box.style.position = "fixed";
-  box.style.left = "50%";
-  box.style.top = "96px";
-  box.style.transform = "translateX(-50%)";
-  box.style.width = "min(920px, calc(100vw - 24px))";
-  box.style.maxHeight = "calc(100vh - 120px)";
-  box.style.overflow = "auto";
-  box.style.zIndex = "99997";
-  box.style.display = "none";
-  box.style.boxSizing = "border-box";
-  box.style.padding = "1.1rem 1.2rem";
-  box.style.borderRadius = "16px";
-  box.style.background = "var(--lia-course-bg)";
-  box.style.color = "var(--lia-course-fg)";
-  box.style.border = "1px solid var(--lia-course-border)";
-  box.style.boxShadow = "0 10px 26px rgba(0,0,0,.14)";
-  document.body.appendChild(box);
-  return box;
-}
+  function hideUnvisitedPlaceholder() {
+    unvisitedPlaceholderHash = "";
+    syncFrozenScreens();
+  }
 
-function hideUnvisitedPlaceholder() {
-  unvisitedPlaceholderHash = "";
-  syncFrozenScreens();
-}
+  function showUnvisitedPlaceholder(hash) {
+    unvisitedPlaceholderHash = String(hash || "");
+    syncFrozenScreens();
+  }
 
-function showUnvisitedPlaceholder(hash) {
-  unvisitedPlaceholderHash = String(hash || "");
-  syncFrozenScreens();
-}
+  function syncFrozenScreens() {
+    const host = getContentHost();
+    const overlay = getFreezeOverlay();
+    const placeholder = getUnvisitedPlaceholder();
 
-function syncFrozenScreens() {
-  const host = getContentHost();
-  const overlay = getFreezeOverlay();
-  const placeholder = getUnvisitedPlaceholder();
+    if (freezeLoadingVisible) {
+      if (host) {
+        host.style.opacity = "0.08";
+        host.style.pointerEvents = "none";
+      }
+      overlay.style.display = "block";
+      placeholder.style.display = "none";
+      return;
+    }
 
-  if (freezeLoadingVisible) {
+    if (evaluationPlaceholderHash) {
+      if (host) {
+        host.style.opacity = "0";
+        host.style.pointerEvents = "none";
+      }
+
+      overlay.style.display = "none";
+      placeholder.style.background = "rgb(var(--lia-submit-bg-rgb))";
+      placeholder.style.color = "var(--lia-submit-fg)";
+      placeholder.style.border = "1px solid var(--lia-submit-border-on-theme)";
+      placeholder.style.display = "block";
+      placeholder.innerHTML = renderEvaluationPlaceholderHtml(evaluationPlaceholderHash);
+      return;
+    }
+
+    if (unvisitedPlaceholderHash) {
+      const decl = getDeclaredSlideByHash(unvisitedPlaceholderHash);
+      const title = normalizeSpace(decl && decl.t || "");
+      const name = getDisplayName();
+
+      if (host) {
+        host.style.opacity = "0";
+        host.style.pointerEvents = "none";
+      }
+
+      overlay.style.display = "none";
+      placeholder.style.background = "var(--lia-course-bg)";
+      placeholder.style.color = "var(--lia-course-fg)";
+      placeholder.style.border = "1px solid var(--lia-course-border)";
+      placeholder.style.display = "block";
+      placeholder.innerHTML = [
+        '<div style="font-weight:800;font-size:1.35rem;line-height:1.2;margin-bottom:.6rem;">',
+        escapeHtml(title || "Unbesuchte Folie"),
+        "</div>",
+        '<div style="margin-bottom:1rem;opacity:.9;font-weight:700;">',
+        name ? (escapeHtml(name) + ": eingefrorener Abgabestand") : "Eingefrorener Abgabestand",
+        "</div>",
+        '<div style="padding:1rem 1.05rem;border-radius:12px;border:1px solid var(--lia-course-border);background:color-mix(in srgb, var(--lia-course-bg) 88%, black 12%);">',
+        'Diese Folie wurde vor der Link-Erzeugung <strong>nicht besucht</strong> und bleibt deshalb im Freeze-Modus gesperrt.',
+        "</div>"
+      ].join("");
+      return;
+    }
+
     if (host) {
-      host.style.opacity = "0.08";
-      host.style.pointerEvents = "none";
+      host.style.opacity = "";
+      host.style.pointerEvents = "";
     }
-    overlay.style.display = "block";
+
+    overlay.style.display = "none";
     placeholder.style.display = "none";
-    return;
   }
 
-  if (evaluationPlaceholderHash) {
-    if (host) {
-      host.style.opacity = "0";
-      host.style.pointerEvents = "none";
-    }
-
-    overlay.style.display = "none";
-    placeholder.style.background = "rgb(var(--lia-submit-bg-rgb))";
-    placeholder.style.color = "var(--lia-submit-fg)";
-    placeholder.style.border = "1px solid var(--lia-submit-border-on-theme)";
-    placeholder.style.display = "block";
-    placeholder.innerHTML = renderEvaluationPlaceholderHtml(evaluationPlaceholderHash);
-    return;
+  function setFreezeLoading(active, reason) {
+    freezeLoadingVisible = !!active;
+    syncFrozenScreens();
+    log(active ? "freeze-loading:on" : "freeze-loading:off", reason || "");
   }
 
-  if (unvisitedPlaceholderHash) {
-    const decl = getDeclaredSlideByHash(unvisitedPlaceholderHash);
-    const title = normalizeSpace(decl && decl.t || "");
-    const name = getDisplayName();
-
-    if (host) {
-      host.style.opacity = "0";
-      host.style.pointerEvents = "none";
-    }
-
-    overlay.style.display = "none";
-    placeholder.style.background = "var(--lia-course-bg)";
-    placeholder.style.color = "var(--lia-course-fg)";
-    placeholder.style.border = "1px solid var(--lia-course-border)";
-    placeholder.style.display = "block";
-    placeholder.innerHTML = [
-      '<div style="font-weight:800;font-size:1.35rem;line-height:1.2;margin-bottom:.6rem;">',
-      escapeHtml(title || "Unbesuchte Folie"),
-      "</div>",
-      '<div style="margin-bottom:1rem;opacity:.9;font-weight:700;">',
-      name ? (escapeHtml(name) + ": eingefrorener Abgabestand") : "Eingefrorener Abgabestand",
-      "</div>",
-      '<div style="padding:1rem 1.05rem;border-radius:12px;border:1px solid var(--lia-course-border);background:color-mix(in srgb, var(--lia-course-bg) 88%, black 12%);">',
-      'Diese Folie wurde vor der Link-Erzeugung <strong>nicht besucht</strong> und bleibt deshalb im Freeze-Modus gesperrt.',
-      "</div>"
-    ].join("");
-    return;
-  }
-
-  if (host) {
-    host.style.opacity = "";
-    host.style.pointerEvents = "";
-  }
-
-  overlay.style.display = "none";
-  placeholder.style.display = "none";
-}
-
-function setFreezeLoading(active, reason) {
-  freezeLoadingVisible = !!active;
-  syncFrozenScreens();
-  log(active ? "freeze-loading:on" : "freeze-loading:off", reason || "");
-}
-
-// =========================================================
-// Freeze UI
-// =========================================================
-
-
-// =========================================================
-// Freeze UI
-// =========================================================
+  // =========================================================
+  // Freeze UI
+  // =========================================================
 
 function ensureSnapshotModeClasses() {
   if (!document.body) return;
@@ -12996,6 +13276,7 @@ function refreshFreezeBar() {
     head.textContent = parts.join(" - ");
   }
 
+  // meta leer lassen, weil x / y jetzt mit im Head steckt
   if (meta) {
     meta.textContent = "";
   }
@@ -13003,6 +13284,10 @@ function refreshFreezeBar() {
   const canGoFirst = idx > 0;
   const canGoPrev = idx > 0;
   const canGoNext = idx >= 0 && idx < slides.length - 1;
+
+  // Zur Auswertungsfolie springen dürfen wir,
+  // sobald es überhaupt eine Auswertungsfolie gibt
+  // und wir nicht bereits dort sind.
   const canGoLast = evaluationIdx >= 0 && idx !== evaluationIdx;
 
   if (firstBtn) firstBtn.disabled = !canGoFirst;
@@ -13016,12 +13301,14 @@ function refreshFreezeBar() {
   });
 }
 
-function scheduleRefreshFreezeBar(delay) {
-  clearTimeout(freezeBarTimer);
-  freezeBarTimer = setTimeout(function () {
-    refreshFreezeBar();
-  }, delay || 20);
-}
+  function scheduleRefreshFreezeBar(delay) {
+    clearTimeout(freezeBarTimer);
+    freezeBarTimer = setTimeout(function () {
+      refreshFreezeBar();
+    }, delay || 20);
+  }
+
+
 
 function lockCurrentSlideInteractiveState() {
   const host = getContentHost();
@@ -13126,6 +13413,8 @@ function lockCurrentSlideInteractiveState() {
   lockMarkerQuizUi();
 }
 
+
+
 function reinforceFrozenUi() {
   ensureSnapshotModeClasses();
   getFreezeBar();
@@ -13139,15 +13428,9 @@ function reinforceFrozenUi() {
   syncFrozenScreens();
 }
 
-// =========================================================
-// Apply-Zyklus
-// =========================================================
-
-
-
-// =========================================================
-// Apply-Zyklus
-// =========================================================
+  // =========================================================
+  // Apply-Zyklus
+  // =========================================================
 
 async function applySnapshotOnce(hash, reason) {
   const currentHash = String(hash || getCurrentHash() || "#1");
@@ -13259,12 +13542,12 @@ async function applySnapshotOnce(hash, reason) {
     }
   }
 
-  reinforceAnnotationFreezeUi("apply:" + currentHash, {
-    reimport: isBootApply
-  });
+    reinforceAnnotationFreezeUi("apply:" + currentHash, {
+      reimport: isBootApply
+    });
 
   reinforceFrozenUi();
-
+  
   schedulePostApplyReinforcement(
     currentHash,
     isBootApply ? "boot-stabilize" : "route-stabilize",
@@ -13272,10 +13555,12 @@ async function applySnapshotOnce(hash, reason) {
       ? [160, 380, 800, 1400, 2200]
       : [140, 320, 700]
   );
-
+  
   setFreezeLoading(false, "apply-success:" + currentHash);
   return true;
 }
+
+
 
 async function runApplyCycle(hash, runToken, attemptDelays, reason) {
   const delays = Array.isArray(attemptDelays) && attemptDelays.length
@@ -13316,139 +13601,135 @@ async function runApplyCycle(hash, runToken, attemptDelays, reason) {
   }
 }
 
-function scheduleApplySnapshot(hash, delay, opts) {
-  opts = opts || {};
-  const targetHash = String(hash || getCurrentHash() || "#1");
-  const delays = Array.isArray(opts.attemptDelays) ? opts.attemptDelays : null;
-  const reason = String(opts.reason || "");
-
-  applyRunToken += 1;
-  stabilizationToken += 1;
-  const runToken = applyRunToken;
-
-  clearTimeout(applyTimer);
-  applyTimer = setTimeout(function () {
-    if (String(getCurrentHash() || "") !== targetHash) return;
-    setFreezeLoading(true, "schedule-apply:" + targetHash);
-    runApplyCycle(targetHash, runToken, delays, reason);
-  }, delay || 60);
-}
-
-function scheduleInitialBootApply(hash) {
-  initialBootDone = false;
-  scheduleApplySnapshot(hash, 40, {
-    reason: "initial-boot",
-    attemptDelays: [0, 120, 280, 550, 900, 1400]
-  });
-}
-
-// =========================================================
-// Route-Bridge
-// =========================================================
-
-
-// =========================================================
-// Route-Bridge
-// =========================================================
-
-function installRouteBridge() {
-  if (routeBridgeInstalled) return;
-  routeBridgeInstalled = true;
-
-  function emitRouteChange(source, hrefSnapshot, hashSnapshot) {
-    const snapHref = String(hrefSnapshot || window.location.href || "");
-    const snapHash = cleanHashValue(hashSnapshot || window.location.hash || "");
-
-    setTimeout(function () {
-      sanitizeMalformedSubmissionHash();
-
-      const detail = {
-        source: source,
-        href: snapHref,
-        hash: snapHash
-      };
-
-      log("routechange", detail.source, "hash=" + detail.hash);
-      window.dispatchEvent(new CustomEvent("lia:routechange", { detail: detail }));
-    }, 0);
+  function scheduleApplySnapshot(hash, delay, opts) {
+    opts = opts || {};
+    const targetHash = String(hash || getCurrentHash() || "#1");
+    const delays = Array.isArray(opts.attemptDelays) ? opts.attemptDelays : null;
+    const reason = String(opts.reason || "");
+  
+    applyRunToken += 1;
+    stabilizationToken += 1;
+    const runToken = applyRunToken;
+  
+    clearTimeout(applyTimer);
+    applyTimer = setTimeout(function () {
+      if (String(getCurrentHash() || "") !== targetHash) return;
+      setFreezeLoading(true, "schedule-apply:" + targetHash);
+      runApplyCycle(targetHash, runToken, delays, reason);
+    }, delay || 60);
   }
 
-  const originalPushState = history.pushState.bind(history);
-  const originalReplaceState = history.replaceState.bind(history);
+  function scheduleInitialBootApply(hash) {
+    initialBootDone = false;
+    scheduleApplySnapshot(hash, 40, {
+      reason: "initial-boot",
+      attemptDelays: [0, 120, 280, 550, 900, 1400]
+    });
+  }
 
-  history.pushState = function () {
-    const result = originalPushState.apply(history, arguments);
-    emitRouteChange("pushState", window.location.href, window.location.hash);
-    return result;
-  };
+  // =========================================================
+  // Route-Bridge
+  // =========================================================
 
-  history.replaceState = function () {
-    const result = originalReplaceState.apply(history, arguments);
-    emitRouteChange("replaceState", window.location.href, window.location.hash);
-    return result;
-  };
+  function installRouteBridge() {
+    if (routeBridgeInstalled) return;
+    routeBridgeInstalled = true;
 
-  window.addEventListener("hashchange", function () {
-    emitRouteChange("hashchange", window.location.href, window.location.hash);
-  });
+    function emitRouteChange(source, hrefSnapshot, hashSnapshot) {
+      const snapHref = String(hrefSnapshot || window.location.href || "");
+      const snapHash = cleanHashValue(hashSnapshot || window.location.hash || "");
 
-  window.addEventListener("popstate", function () {
-    emitRouteChange("popstate", window.location.href, window.location.hash);
-  });
-}
+      setTimeout(function () {
+        sanitizeMalformedSubmissionHash();
 
-// =========================================================
-// Navigation
-// =========================================================
+        const detail = {
+          source: source,
+          href: snapHref,
+          hash: snapHash
+        };
 
-function goFrozenRelative(dir) {
-  const slides = getDeclaredSlides();
-  const idx = getDeclaredSlideIndex(getCurrentHash());
-  if (idx < 0) return;
+        log("routechange", detail.source, "hash=" + detail.hash);
+        window.dispatchEvent(new CustomEvent("lia:routechange", { detail: detail }));
+      }, 0);
+    }
 
-  const target = slides[idx + dir];
-  if (!target) return;
+    const originalPushState = history.pushState.bind(history);
+    const originalReplaceState = history.replaceState.bind(history);
 
-  window.location.hash = String(target.h);
-}
+    history.pushState = function () {
+      const result = originalPushState.apply(history, arguments);
+      emitRouteChange("pushState", window.location.href, window.location.hash);
+      return result;
+    };
 
-function goFrozenHash(targetHash) {
-  if (!targetHash) return;
-  window.location.hash = String(targetHash);
-}
+    history.replaceState = function () {
+      const result = originalReplaceState.apply(history, arguments);
+      emitRouteChange("replaceState", window.location.href, window.location.hash);
+      return result;
+    };
 
-function goFrozenFirst() {
-  const slides = getDeclaredSlides();
-  if (!slides.length) return;
+    window.addEventListener("hashchange", function () {
+      emitRouteChange("hashchange", window.location.href, window.location.hash);
+    });
 
-  const first = slides[0];
-  if (!first || !first.h) return;
+    window.addEventListener("popstate", function () {
+      emitRouteChange("popstate", window.location.href, window.location.hash);
+    });
+  }
 
-  window.location.hash = String(first.h);
-}
+  // =========================================================
+  // Navigation
+  // =========================================================
 
-function goFrozenEvaluation() {
-  const slides = getDeclaredSlides();
-  if (!slides.length) return;
+  function goFrozenRelative(dir) {
+    const slides = getDeclaredSlides();
+    const idx = getDeclaredSlideIndex(getCurrentHash());
+    if (idx < 0) return;
 
-  for (let i = 0; i < slides.length; i++) {
-    const slide = slides[i];
-    if (slide && slide.vt === "evaluation" && slide.h) {
-      window.location.hash = String(slide.h);
-      return;
+    const target = slides[idx + dir];
+    if (!target) return;
+
+    window.location.hash = String(target.h);
+  }
+
+  function goFrozenHash(targetHash) {
+    if (!targetHash) return;
+    window.location.hash = String(targetHash);
+  }
+
+
+  function goFrozenFirst() {
+    const slides = getDeclaredSlides();
+    if (!slides.length) return;
+
+    const first = slides[0];
+    if (!first || !first.h) return;
+
+    window.location.hash = String(first.h);
+  }
+
+  function goFrozenEvaluation() {
+    const slides = getDeclaredSlides();
+    if (!slides.length) return;
+
+    for (let i = 0; i < slides.length; i++) {
+      const slide = slides[i];
+      if (slide && slide.vt === "evaluation" && slide.h) {
+        window.location.hash = String(slide.h);
+        return;
+      }
+    }
+
+    // Fallback: letzte deklarierte Folie
+    const last = slides[slides.length - 1];
+    if (last && last.h) {
+      window.location.hash = String(last.h);
     }
   }
 
-  // Fallback: letzte deklarierte Folie
-  const last = slides[slides.length - 1];
-  if (last && last.h) {
-    window.location.hash = String(last.h);
-  }
-}
-
-// =========================================================
-// Live-Bindings
-// =========================================================
+  // =========================================================
+  // Live-Bindings
+  // =========================================================
 
 
 function getRootWindowSafe() {
@@ -13772,6 +14053,8 @@ function installGlobalTabTracking() {
   }, 250);
 }
 
+
+
 function installLiveCaptureBindings() {
   if (liveBindingsInstalled) return;
   liveBindingsInstalled = true;
@@ -14025,9 +14308,11 @@ function installLiveCaptureBindings() {
   }, 180);
 }
 
-// =========================================================
-// Freeze-Bindings
-// =========================================================
+
+
+  // =========================================================
+  // Freeze-Bindings
+  // =========================================================
 
 function isAllowedFreezeTarget(target) {
   if (!target || !(target instanceof Element)) return false;
@@ -14084,10 +14369,13 @@ function isAllowedFreezeTarget(target) {
   return false;
 }
 
+
 function isInsideFrozenScopeTarget(target) {
   if (!target || !(target instanceof Element)) return false;
   return !!target.closest(".lia-frozen-scope");
 }
+
+
 
 function blockNativeFrozenInteractionEvent(e) {
   if (!document.body.classList.contains("lia-snapshot-mode")) return;
@@ -14182,64 +14470,64 @@ function blockFrozenKeydown(e) {
   }
 }
 
-function installFreezeBindings() {
-  if (freezeBindingsInstalled) return;
-  freezeBindingsInstalled = true;
+  function installFreezeBindings() {
+    if (freezeBindingsInstalled) return;
+    freezeBindingsInstalled = true;
 
-  installRouteBridge();
+    installRouteBridge();
 
-  document.addEventListener("click", blockNativeFrozenInteractionEvent, true);
-  document.addEventListener("mousedown", blockNativeFrozenInteractionEvent, true);
-  document.addEventListener("pointerdown", blockNativeFrozenInteractionEvent, true);
-  document.addEventListener("touchstart", blockNativeFrozenInteractionEvent, true);
-  document.addEventListener("input", blockNativeFrozenInteractionEvent, true);
-  document.addEventListener("change", blockNativeFrozenInteractionEvent, true);
-  document.addEventListener("submit", blockNativeFrozenInteractionEvent, true);
-  document.addEventListener("keydown", blockFrozenKeydown, true);
+    document.addEventListener("click", blockNativeFrozenInteractionEvent, true);
+    document.addEventListener("mousedown", blockNativeFrozenInteractionEvent, true);
+    document.addEventListener("pointerdown", blockNativeFrozenInteractionEvent, true);
+    document.addEventListener("touchstart", blockNativeFrozenInteractionEvent, true);
+    document.addEventListener("input", blockNativeFrozenInteractionEvent, true);
+    document.addEventListener("change", blockNativeFrozenInteractionEvent, true);
+    document.addEventListener("submit", blockNativeFrozenInteractionEvent, true);
+    document.addEventListener("keydown", blockFrozenKeydown, true);
 
-  document.addEventListener("focusin", function (e) {
-    if (!document.body.classList.contains("lia-snapshot-mode")) return;
-    if (isAllowedFreezeTarget(e.target)) return;
+    document.addEventListener("focusin", function (e) {
+      if (!document.body.classList.contains("lia-snapshot-mode")) return;
+      if (isAllowedFreezeTarget(e.target)) return;
 
-    const t = e.target;
-    if (!(t instanceof Element)) return;
+      const t = e.target;
+      if (!(t instanceof Element)) return;
 
-    // Fokus nur dann wegnehmen, wenn er in den eigentlichen Freeze-Inhalt fällt
-    if (!isInsideFrozenScopeTarget(t)) return;
+      // Fokus nur dann wegnehmen, wenn er in den eigentlichen Freeze-Inhalt fällt
+      if (!isInsideFrozenScopeTarget(t)) return;
 
-    const interactive = t.closest(
-      "a, button, input, textarea, select, summary, [role='button'], [contenteditable='true'], [role='textbox']"
-    );
+      const interactive = t.closest(
+        "a, button, input, textarea, select, summary, [role='button'], [contenteditable='true'], [role='textbox']"
+      );
 
-    if (!interactive) return;
+      if (!interactive) return;
 
-    try { interactive.blur(); } catch (err) {}
-  }, true);
+      try { interactive.blur(); } catch (err) {}
+    }, true);
 
-  window.addEventListener("lia:routechange", function (ev) {
-    if (!snapshotPayload) return;
+    window.addEventListener("lia:routechange", function (ev) {
+      if (!snapshotPayload) return;
 
-    const current = cleanHashValue(
-      ev && ev.detail && ev.detail.hash ? ev.detail.hash : getCurrentHash()
-    );
+      const current = cleanHashValue(
+        ev && ev.detail && ev.detail.hash ? ev.detail.hash : getCurrentHash()
+      );
 
-    log("freeze-route-handler", "current=" + current);
+      log("freeze-route-handler", "current=" + current);
 
-    // Alte allgemeine Marker sofort entfernen, damit beim Folienwechsel
-    // kein kurzer Stale-State der vorherigen Folie aufblitzt.
-    clearStoredGeneralMarkerStateNow("route-change:" + current);
+      // Alte allgemeine Marker sofort entfernen, damit beim Folienwechsel
+      // kein kurzer Stale-State der vorherigen Folie aufblitzt.
+      clearStoredGeneralMarkerStateNow("route-change:" + current);
 
-    scheduleRefreshFreezeBar(20);
-    scheduleApplySnapshot(current, 80, {
-      reason: "route-change",
-      attemptDelays: [0, 120, 260, 520]
+      scheduleRefreshFreezeBar(20);
+      scheduleApplySnapshot(current, 80, {
+        reason: "route-change",
+        attemptDelays: [0, 120, 260, 520]
+      });
     });
-  });
-}
+  }
 
-// =========================================================
-// Modi / Link-Erzeugung
-// =========================================================
+  // =========================================================
+  // Modi / Link-Erzeugung
+  // =========================================================
 
 async function activateSnapshotMode(payload, linkValue, opts) {
   opts = opts || {};
@@ -14258,7 +14546,7 @@ async function activateSnapshotMode(payload, linkValue, opts) {
   await ensureDeclaredSlides(true);
 
   rehydrateSnapshotEvaluationMetaFromSource(snapshotPayload);
-
+  
   ensureSnapshotModeClasses();
   getFreezeBar();
   refreshFreezeBar();
@@ -14303,13 +14591,12 @@ async function activateSnapshotMode(payload, linkValue, opts) {
   return true;
 }
 
-function createLink() {
-  console.warn("[LIA-FREEZE] CREATE-LINK-ENTER", BUILD_STAMP);
-  debugAnnotationProbe("createLink-start");
+  async function createLink() {
+    console.warn("[LIA-FREEZE] CREATE-LINK-ENTER", BUILD_STAMP);    
+    debugAnnotationProbe("createLink-start");
 
-  const btnEl = document.getElementById("lia-create-link");
+    const btnEl = document.getElementById("lia-create-link");
 
-  return Promise.resolve().then(async function () {
     try {
       lastKnownName = getDisplayName() || lastKnownName || "";
 
@@ -14379,8 +14666,7 @@ function createLink() {
 
       setFreezeLoading(false, "createLink-error");
     }
-  });
-}
+  }
 
 async function initMode() {
   const directToken =
@@ -14403,7 +14689,8 @@ async function initMode() {
   await ensureDeclaredSlides();
   installLiveCaptureBindings();
   scheduleAssignmentDetailsRefresh(180);
-}
+  }
+
 
 function installDirectCreateLinkBinding() {
   let retryTimer = 0;
@@ -14471,6 +14758,7 @@ function installDirectCreateLinkBinding() {
   }
 }
 
+
 function installCreateLinkDelegation() {
   if (createLinkDelegationInstalled) return;
   createLinkDelegationInstalled = true;
@@ -14509,6 +14797,9 @@ function installCreateLinkDelegation() {
   }, true);
 }
 
+
+
+
 function safeBoot() {
   try {
     console.warn("[LIA-FREEZE] BUILD-STAMP", BUILD_STAMP);
@@ -14528,62 +14819,19 @@ function safeBoot() {
   }
 }
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", safeBoot);
-} else {
-  setTimeout(safeBoot, 0);
-}
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", safeBoot);
+  } else {
+    setTimeout(safeBoot, 0);
+  }
 
-return {
-  createLink: createLink,
-  copyLink: copyLink,
-  clearStoredSubmissionToken: clearStoredSubmissionToken,
-  goFrozenHash: goFrozenHash,
-  runCompressionCoreSelfTest: runCompressionCoreSelfTest,
-  runSnapshotTokenSelfTest: runSnapshotTokenSelfTest,
-  runCanvasPathBinaryCodecSelfTest: runCanvasPathBinaryCodecSelfTest
-};
+  return {
+    createLink: createLink,
+    copyLink: copyLink,
+    clearStoredSubmissionToken: clearStoredSubmissionToken,
+    goFrozenHash: goFrozenHash,
+    runCompressionCoreSelfTest: runCompressionCoreSelfTest,
+    runSnapshotTokenSelfTest: runSnapshotTokenSelfTest,
+    runCanvasPathBinaryCodecSelfTest: runCanvasPathBinaryCodecSelfTest
+  };
 })();
-@end
-
-
-
-
-
-
-
-@Abgabe
-<div class="lia-submit-box">
-  <h2>Abgabeerstellung</h2>
-
-  <label for="lia-name">Name</label>
-  <input id="lia-name" data-snapshot-admin="1" type="text" placeholder="Name eingeben">
-
-  <div class="lia-submit-actions">
-    <button
-      id="lia-create-link"
-      data-snapshot-admin="1"
-      type="button"
-      onclick="console.warn('[LIA-FREEZE] INLINE-CREATE-LINK-CLICK'); if(window.__LIA_FREEZE_CORE__ && typeof window.__LIA_FREEZE_CORE__.createLink === 'function') { window.__LIA_FREEZE_CORE__.createLink(); } else { console.error('[LIA-FREEZE] createLink not available on window.__LIA_FREEZE_CORE__'); } return false;"
-    >Abgabelink erstellen</button>
-
-    <button
-      id="lia-copy-link"
-      data-snapshot-admin="1"
-      type="button"
-      disabled
-      onclick="console.warn('[LIA-FREEZE] INLINE-COPY-LINK-CLICK'); if(window.__LIA_FREEZE_CORE__ && typeof window.__LIA_FREEZE_CORE__.copyLink === 'function') { window.__LIA_FREEZE_CORE__.copyLink(); } else { console.error('[LIA-FREEZE] copyLink not available on window.__LIA_FREEZE_CORE__'); } return false;"
-    >Link kopieren</button>
-  </div>
-
-  <label for="lia-link">Abgabelink</label>
-  <textarea id="lia-link" data-snapshot-admin="1" readonly placeholder="Hier erscheint der erzeugte Link"></textarea>
-
-  <div id="lia-status"></div>
-  <div id="lia-frozen-note" class="lia-frozen-note"></div>
-</div>
-@end
-
--->
-
-# FreezeCore
