@@ -2284,41 +2284,23 @@ function __liaInitTexPreviews(){
     });
   }
 
-  applyThemeVars();
+  function __liaApplyThemeVarsAfterLoad(){
+    const run = () => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          applyThemeVars();
+        });
+      });
+    };
 
-  const mo = new MutationObserver(() => scheduleThemeVars());
-
-  // WICHTIG:
-  // Nicht "style" auf dem eigenen documentElement beobachten,
-  // weil applyThemeVars() dort selbst CSS-Variablen schreibt.
-  mo.observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ['class']
-  });
-
-  try{
-    const pdoc = (window.parent && window.parent.document) ? window.parent.document : null;
-    if (pdoc && pdoc !== document){
-      mo.observe(pdoc.documentElement, { attributes:true, attributeFilter:['class','style'] });
-      if (pdoc.body){
-        mo.observe(pdoc.body, { attributes:true, attributeFilter:['class','style'] });
-      }
+    if (document.readyState === 'complete'){
+      run();
+    }else{
+      window.addEventListener('load', run, { once:true });
     }
-  }catch(_){}
+  }
 
-  try{
-    const mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
-    if (mq){
-      const onModeChange = () => scheduleThemeVars();
-      if (typeof mq.addEventListener === 'function'){
-        mq.addEventListener('change', onModeChange);
-      }else if (typeof mq.addListener === 'function'){
-        mq.addListener(onModeChange);
-      }
-    }
-  }catch(_){}
-
-  window.addEventListener('resize', () => scheduleThemeVars());
+  __liaApplyThemeVarsAfterLoad();
 
 
 
