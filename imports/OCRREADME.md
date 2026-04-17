@@ -33,24 +33,6 @@ if (ROOT[REGKEY].inited[DOC_ID]) return;
 ROOT[REGKEY].inited[DOC_ID] = true;
 
 
-const __LIA_DIAG_MODE__ = 'bail_after_guard'; // '' | 'bail_after_guard' | 'no_tex_preview'
-
-const __liaDiagT0 = performance.now();
-function __liaDiag(msg){
-  try{
-    const dt = (performance.now() - __liaDiagT0).toFixed(1);
-    console.log('[LIA-OCR-DIAG +' + dt + 'ms] ' + msg);
-  }catch(_){}
-}
-
-__liaDiag('after guard');
-
-if (__LIA_DIAG_MODE__ === 'bail_after_guard'){
-  __liaDiag('BAIL after guard');
-  return;
-}
-
-
 // ---------------------------------------------------------
 // OCR-Bar + Engine: eigener Guard (läuft unabhängig vom Canvas-Guard)
 // - Precision Dropdown (fp32/fp16/int8)
@@ -2302,41 +2284,23 @@ function __liaInitTexPreviews(){
     });
   }
 
-  applyThemeVars();
+  function __liaApplyThemeVarsAfterLoad(){
+    const run = () => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          applyThemeVars();
+        });
+      });
+    };
 
-  const mo = new MutationObserver(() => scheduleThemeVars());
-
-  // WICHTIG:
-  // Nicht "style" auf dem eigenen documentElement beobachten,
-  // weil applyThemeVars() dort selbst CSS-Variablen schreibt.
-  mo.observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ['class']
-  });
-
-  try{
-    const pdoc = (window.parent && window.parent.document) ? window.parent.document : null;
-    if (pdoc && pdoc !== document){
-      mo.observe(pdoc.documentElement, { attributes:true, attributeFilter:['class','style'] });
-      if (pdoc.body){
-        mo.observe(pdoc.body, { attributes:true, attributeFilter:['class','style'] });
-      }
+    if (document.readyState === 'complete'){
+      run();
+    }else{
+      window.addEventListener('load', run, { once:true });
     }
-  }catch(_){}
+  }
 
-  try{
-    const mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
-    if (mq){
-      const onModeChange = () => scheduleThemeVars();
-      if (typeof mq.addEventListener === 'function'){
-        mq.addEventListener('change', onModeChange);
-      }else if (typeof mq.addListener === 'function'){
-        mq.addListener(onModeChange);
-      }
-    }
-  }catch(_){}
-
-  window.addEventListener('resize', () => scheduleThemeVars());
+  __liaApplyThemeVarsAfterLoad();
 
 
 
