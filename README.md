@@ -4116,6 +4116,7 @@ if (ROOT[REGKEY].inited[DOC_ID]) return;
 ROOT[REGKEY].inited[DOC_ID] = true;
 
 
+
 // ---------------------------------------------------------
 // OCR-Bar + Engine: eigener Guard (läuft unabhängig vom Canvas-Guard)
 // - Precision Dropdown (fp32/fp16/int8)
@@ -5694,7 +5695,7 @@ canvas.lia-canvas-freeze-preview{
   max-width: 100%;
   width: fit-content;
   padding: 4px 10px;
-  border: 2px solid var(--canvas-accent);
+  border: 2px solid var(--lia-tex-preview-border, var(--canvas-accent));
   border-radius: 999px;
   background: transparent;
   cursor: text;
@@ -5766,6 +5767,127 @@ function __liaReadFieldValue(el){
   return '';
 }
 
+
+window.__LIA_CANVAS_TEX_FIELDS__ = window.__LIA_CANVAS_TEX_FIELDS__ || [];
+
+function __liaRegisterCanvasTexField(el){
+  if (!el) return;
+  el.dataset.liaCanvasTex = '1';
+
+  const list = window.__LIA_CANVAS_TEX_FIELDS__;
+  if (list.indexOf(el) === -1){
+    list.push(el);
+  }
+}
+
+function __liaSyncCanvasTexPreview(el){
+  if (!el || !el.__liaTexPreviewBox) return;
+
+  const value = __liaReadFieldValue(el);
+  const focused = (document.activeElement === el);
+
+  // nichts tun, wenn sich weder Inhalt noch Fokuszustand geändert hat
+  if (el.__liaTexPreviewLastValue === value && el.__liaTexPreviewLastFocused === focused){
+    return;
+  }
+
+  el.__liaTexPreviewLastValue = value;
+  el.__liaTexPreviewLastFocused = focused;
+
+  const math = el.__liaTexPreviewBox.querySelector('.lia-tex-preview-math');
+  if (math){
+    __liaRenderTexPreview(math, value);
+  }
+
+  // Während echter Bearbeitung Feld sichtbar lassen.
+  // Sobald nicht fokussiert (z.B. im Freeze), gerenderte Vorschau zeigen.
+  if (focused){
+    el.__liaTexPreviewBox.dataset.on = '0';
+    el.__liaTexPreviewBox.style.display = 'none';
+    el.style.display = '';
+    __liaAutoSizeTexWidgets(el);
+  }else{
+    __liaShowTexPreview(el);
+  }
+}
+
+if (!window.__LIA_CANVAS_TEX_SYNC_BOOT__){
+  window.__LIA_CANVAS_TEX_SYNC_BOOT__ = true;
+
+  setInterval(function(){
+    const list = window.__LIA_CANVAS_TEX_FIELDS__ || [];
+
+    for (let i = list.length - 1; i >= 0; i--){
+      const el = list[i];
+
+      if (!el || !el.isConnected){
+        list.splice(i, 1);
+        continue;
+      }
+
+      __liaSyncCanvasTexPreview(el);
+    }
+  }, 250);
+}
+
+function __liaHasQuizStateColor(el){
+  try{
+    if (!el || !el.classList) return false;
+
+    if (el.classList.contains('is-success')) return true;
+    if (el.classList.contains('is-failure')) return true;
+    if (el.classList.contains('is-warning')) return true;
+    if (el.classList.contains('is-partial')) return true;
+    if (el.classList.contains('is-resolved')) return true;
+
+    if (el.getAttribute && el.getAttribute('aria-invalid') === 'true') return true;
+  }catch(_){}
+  return false;
+}
+
+function __liaIsUsableCssColor(v){
+  const s = String(v || '').trim().toLowerCase();
+  if (!s) return false;
+  if (s === 'transparent') return false;
+  if (s === 'rgba(0, 0, 0, 0)') return false;
+  if (s === 'rgba(0,0,0,0)') return false;
+  return true;
+}
+
+function __liaSyncTexPreviewBorder(el){
+  if (!el || !el.__liaTexPreviewBox) return;
+
+  const box = el.__liaTexPreviewBox;
+
+  // Standard zurücksetzen -> fällt auf var(--canvas-accent) zurück
+  box.style.removeProperty('--lia-tex-preview-border');
+
+  // Nur bei echten LiaScript-Zuständen überschreiben
+  if (!__liaHasQuizStateColor(el)) return;
+
+  let border = '';
+  try{
+    const cs = getComputedStyle(el);
+    border =
+      cs.borderTopColor ||
+      cs.borderColor ||
+      cs.outlineColor ||
+      '';
+  }catch(_){}
+
+  if (!__liaIsUsableCssColor(border)) return;
+
+  box.style.setProperty('--lia-tex-preview-border', border);
+}
+
+function __liaRefreshAllTexPreviewBorders(root){
+  const scope = (root && root.querySelectorAll) ? root : document;
+
+  scope.querySelectorAll('.lia-canvas-pair').forEach(function(pair){
+    const field = __liaFindInputBeforeNode(pair);
+    if (field) __liaSyncTexPreviewBorder(field);
+  });
+}
 
 function __liaAutoSizeTexWidgets(el){
   if (!el) return;
@@ -5974,12 +6096,14 @@ function __liaShowTexPreview(el){
     return;
   }
 
+  __liaSyncTexPreviewBorder(el);
+
   const math = el.__liaTexPreviewBox.querySelector('.lia-tex-preview-math');
   __liaRenderTexPreview(math, value);
 
   el.__liaTexPreviewBox.dataset.on = '1';
   el.__liaTexPreviewBox.style.display = 'inline-flex';
-  el.style.display = 'none';  
+  el.style.display = 'none';
   __liaAutoSizeTexWidgets(el);
 }
 
@@ -5988,6 +6112,7 @@ function __liaEnsureTexPreview(el){
   if (el.__liaTexPreviewReady) return el;
 
   el.__liaTexPreviewReady = true;
+  __liaRegisterCanvasTexField(el);
 
   const box = document.createElement('span');
   box.className = 'lia-tex-preview';
@@ -6006,15 +6131,37 @@ function __liaEnsureTexPreview(el){
   el.insertAdjacentElement('afterend', box);
   el.__liaTexPreviewBox = box;
 
+  if (!el.__liaTexPreviewBorderObserver){
+    const mo = new MutationObserver(function(){
+      __liaSyncTexPreviewBorder(el);
+    });
+
+    mo.observe(el, {
+      attributes: true,
+      attributeFilter: ['class', 'style', 'aria-invalid']
+    });
+
+    el.__liaTexPreviewBorderObserver = mo;
+  }
+
+  __liaSyncTexPreviewBorder(el);
+
   el.addEventListener('input', function(){
-    const math = box.querySelector('.lia-tex-preview-math');
-    __liaRenderTexPreview(math, __liaReadFieldValue(el));
+    __liaSyncCanvasTexPreview(el);
+  });
+
+  el.addEventListener('change', function(){
+    __liaSyncCanvasTexPreview(el);
   });
 
   el.addEventListener('blur', function(){
     setTimeout(function(){
-      __liaShowTexPreview(el);
+      __liaSyncCanvasTexPreview(el);
     }, 0);
+  });
+
+  el.addEventListener('focus', function(){
+    __liaSyncCanvasTexPreview(el);
   });
 
   el.addEventListener('keydown', function(e){
@@ -6034,8 +6181,7 @@ function __liaEnsureTexPreview(el){
     }
   });
 
-  __liaShowTexPreview(el);  
-  __liaAutoSizeTexWidgets(el);
+  __liaSyncCanvasTexPreview(el);
   return el;
 }
 
@@ -6122,7 +6268,10 @@ function __liaFindAndSetInputBeforeNode(refEl, value){
 function __liaInitTexPreviews(){
   document.querySelectorAll('.lia-canvas-pair').forEach(function(pair){
     const field = __liaFindInputBeforeNode(pair);
-    if (field) __liaEnsureTexPreview(field);
+    if (field){
+      __liaEnsureTexPreview(field);
+      __liaSyncTexPreviewBorder(field);
+    }
   });
 }
 
@@ -6207,6 +6356,18 @@ function __liaInitTexPreviews(){
 
 
 
+  let __liaThemeVarsQueued = false;
+
+  function scheduleThemeVars(){
+    if (__liaThemeVarsQueued) return;
+    __liaThemeVarsQueued = true;
+
+    requestAnimationFrame(function(){
+      __liaThemeVarsQueued = false;
+      applyThemeVars();
+    });
+  }
+
   applyThemeVars();
 
   const mo = new MutationObserver(() => applyThemeVars());
@@ -6235,7 +6396,6 @@ function __liaInitTexPreviews(){
   }catch(_){}
 
   window.addEventListener('resize', () => applyThemeVars());
-
 
 
 
@@ -9150,6 +9310,7 @@ ensureCorners();
 
 
   document.addEventListener('lia-canvas-theme', () => {
+    __liaRefreshAllTexPreviewBorders(document);
     updateUI();
     rebuildHighlightLayer();
     rebuildStrokeLayer();
@@ -9439,19 +9600,76 @@ ensureCorners();
 }
 
 
-function initAll(){
-  document.querySelectorAll('.lia-draw-wrap canvas.lia-draw:not([data-ready])').forEach(c => {
+function initAll(root){
+  const scope = (root && root.querySelectorAll) ? root : document;
+
+  scope.querySelectorAll('.lia-draw-wrap canvas.lia-draw:not([data-ready])').forEach(c => {
     c.setAttribute('data-ready','1');
     setupCanvas(c);
   });
 
-  __liaInitTexPreviews();
+  scope.querySelectorAll('.lia-canvas-pair').forEach(function(pair){
+    const field = __liaFindInputBeforeNode(pair);
+    if (field){
+      __liaEnsureTexPreview(field);
+      __liaSyncTexPreviewBorder(field);
+    }
+  });
 }
 
-  // init: wenn Canvas markup in mount erscheint
-  const obs = new MutationObserver(() => initAll());
+let __liaInitAllQueued = false;
+let __liaInitAllTimer = 0;
+
+function scheduleInitAll(root, delay){
+  const scope = (root && root.querySelectorAll) ? root : document;
+
+  clearTimeout(__liaInitAllTimer);
+  __liaInitAllTimer = setTimeout(function(){
+    if (__liaInitAllQueued) return;
+    __liaInitAllQueued = true;
+
+    requestAnimationFrame(function(){
+      __liaInitAllQueued = false;
+      initAll(scope);
+    });
+  }, Math.max(0, Number(delay) || 0));
+}
+
+function bindInitAllObserver(){
+  if (window.__LIA_CANVAS_INIT_OBSERVER__) return;
+  if (!document.body) return;
+
+  const obs = new MutationObserver(function(muts){
+    let shouldRun = false;
+
+    for (let i = 0; i < muts.length; i++){
+      const m = muts[i];
+      if (m && m.addedNodes && m.addedNodes.length){
+        shouldRun = true;
+        break;
+      }
+    }
+
+    if (shouldRun){
+      scheduleInitAll(document, 120);
+    }
+  });
+
   obs.observe(document.body, { childList:true, subtree:true });
-  initAll();
+  window.__LIA_CANVAS_INIT_OBSERVER__ = obs;
+}
+
+if (document.readyState === 'complete'){
+  bindInitAllObserver();
+  scheduleInitAll(document, 0);
+}else{
+  window.addEventListener('load', function(){
+    bindInitAllObserver();
+    scheduleInitAll(document, 0);
+    scheduleInitAll(document, 180);
+    scheduleInitAll(document, 600);
+  }, { once:true });
+}
 
   // ---------------------------------------------------------
   // LAUNCHER: Toggle (Mount ist im Makro vorhanden!)
@@ -9493,7 +9711,7 @@ ensureMountUID(mount);
 
         if (!mount.querySelector('.lia-draw-wrap')){
           mount.innerHTML = canvasMarkup();
-          initAll();
+          initAll(mount);
         }
       }else{
         mount.dataset.open = '0';
