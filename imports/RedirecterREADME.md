@@ -4,9 +4,9 @@ language: de
 author: Martin Lommatzsch
 comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus Lia-UI gelesen
 
+
 @onload
 (function () {
-
   function getRootWindow() {
     let w = window;
     try {
@@ -26,178 +26,30 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
     DOC = document;
   }
 
-  const STORE_KEY = "__LIA_SWITCH_TO_NIGHTLY_V003__";
-  ROOT[STORE_KEY] = ROOT[STORE_KEY] || {};
-  const STATE = ROOT[STORE_KEY];
-
-  const BTN_ID = "lia-switch-to-nightly";
-
-  function getCurrentHref() {
-    try {
-      return (ROOT.location && ROOT.location.href) ? ROOT.location.href : window.location.href;
-    } catch (e) {
-      return window.location.href;
-    }
-  }
+  const KEY = "__LIA_FORCE_NIGHTLY_NAV_MINI_V1__";
+  ROOT[KEY] = ROOT[KEY] || {};
+  const STATE = ROOT[KEY];
 
   function parseUrl(href) {
     try {
-      return new URL(href, window.location.href);
+      return new URL(href, ROOT.location.href);
     } catch (e) {
       return null;
     }
   }
 
-  function isCourseHref(href) {
-    const u = parseUrl(href);
-    return !!(u && /^\/course(\/|$)/.test(u.pathname));
-  }
-
-  function isNightlyHref(href) {
-    const u = parseUrl(href);
+  function isNightlyHref() {
+    const u = parseUrl((ROOT.location && ROOT.location.href) || window.location.href);
     return !!(u && /^\/nightly(\/|$)/.test(u.pathname));
   }
 
-  function courseToNightly(href) {
-    const u = parseUrl(href);
-    if (!u) return null;
-    if (!/^\/course(\/|$)/.test(u.pathname)) return null;
-    u.pathname = u.pathname.replace(/^\/course(\/|$)/, "/nightly$1");
-    return u.toString();
-  }
-
-  function readAccentFromUI(doc) {
-    const candidates = [
-      ".lia-toolbar .lia-btn",
-      ".lia-btn",
-      ".lia-link",
-      ".lia-active"
-    ];
-
-    for (const sel of candidates) {
-      const el = doc.querySelector(sel);
-      if (!el) continue;
-
-      const cs = ROOT.getComputedStyle(el);
-      const bg = (cs.backgroundColor || "").trim();
-      const col = (cs.color || "").trim();
-
-      if (bg && bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent") return bg;
-      if (col) return col;
-    }
-
-    try {
-      const probe = doc.createElement("button");
-      probe.className = "lia-btn";
-      probe.textContent = "x";
-      probe.style.position = "absolute";
-      probe.style.left = "-9999px";
-      probe.style.top = "-9999px";
-      probe.style.opacity = "0";
-      doc.body.appendChild(probe);
-
-      const cs = ROOT.getComputedStyle(probe);
-      const bg = (cs.backgroundColor || "").trim();
-      const col = (cs.color || "").trim();
-
-      probe.remove();
-
-      if (bg && bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent") return bg;
-      if (col) return col;
-    } catch (e) {}
-
-    return "#0b5fff";
-  }
-
-  function getAccentColor() {
-    return readAccentFromUI(DOC);
-  }
-
-  function applyInlineStyle(btn) {
-    const accent = getAccentColor();
-
-    btn.style.position = "fixed";
-    btn.style.top = "14px";
-    btn.style.left = "50%";
-    btn.style.transform = "translateX(-50%) translateX(-150px)";
-    btn.style.zIndex = "2147483647";
-
-    btn.style.display = "inline-flex";
-    btn.style.alignItems = "center";
-    btn.style.gap = "8px";
-
-    btn.style.padding = "10px 14px";
-    btn.style.borderRadius = "999px";
-
-    btn.style.background = "transparent";
-    btn.style.color = accent;
-    btn.style.border = "2px solid " + accent;
-    btn.style.boxShadow = "none";
-
-    btn.style.cursor = "pointer";
-    btn.style.textDecoration = "none";
-    btn.style.userSelect = "none";
-    btn.style.font = "800 16px/1 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif";
-
-    btn.style.opacity = "1";
-    btn.style.visibility = "visible";
-    btn.style.pointerEvents = "auto";
-  }
-
-  function ensureNightlySwitchButton() {
-    const href = getCurrentHref();
-    const target = courseToNightly(href);
-
-    let btn = DOC.getElementById(BTN_ID);
-
-    if (!target) {
-      if (btn) btn.remove();
-      return;
-    }
-
-    if (!btn) {
-      btn = DOC.createElement("a");
-      btn.id = BTN_ID;
-      btn.rel = "noopener";
-      btn.textContent = "Wechsel zu Nightly";
-
-      btn.addEventListener("click", function (ev) {
-        ev.preventDefault();
-        try {
-          ROOT.location.href = btn.href;
-        } catch (e) {
-          window.location.href = btn.href;
-        }
-      });
-
-      DOC.body.appendChild(btn);
-    }
-
-    btn.href = target;
-    applyInlineStyle(btn);
-  }
-
-  function getCanvasRoot() {
+  function getCanvas() {
     return DOC.querySelector(".lia-canvas");
   }
 
-  function getModeNavigationButton() {
-    const groups = Array.from(DOC.querySelectorAll('div[data-group-id="mode"]'));
-    for (const group of groups) {
-      const buttons = Array.from(group.querySelectorAll("button"));
-      for (const btn of buttons) {
-        const txt = (btn.textContent || "").trim().toLowerCase();
-        if (txt.includes("navigation")) {
-          return btn;
-        }
-      }
-    }
-    return null;
-  }
-
-  function isNightlyMiniActive() {
+  function isMiniActive() {
     const body = DOC.body;
-    const canvas = getCanvasRoot();
+    const canvas = getCanvas();
 
     return !!(
       body &&
@@ -207,116 +59,162 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
     );
   }
 
-  function syncNightlyMiniDom() {
-    const body = DOC.body;
-    const canvas = getCanvasRoot();
+  function findModeItem() {
+    return DOC.querySelector(".lia-support-menu__item--mode");
+  }
 
-    if (body) {
-      body.classList.add("lia-tff-nightly-mini");
+  function findSupportButton() {
+    return DOC.getElementById("lia-btn-support");
+  }
+
+  function findModeButton() {
+    return DOC.getElementById("lia-mode-menu-button");
+  }
+
+  function findNavigationButton() {
+    const modeItem = findModeItem();
+    if (!modeItem) return null;
+
+    const buttons = Array.from(modeItem.querySelectorAll("button"));
+    for (const btn of buttons) {
+      const txt = (btn.textContent || "").trim().toLowerCase();
+      if (txt.includes("navigation")) return btn;
     }
+    return null;
+  }
 
+  function navigationButtonMeansHide(btn) {
+    if (!btn) return false;
+    const icon = btn.querySelector("i");
+    return !!(icon && icon.classList.contains("icon-navigation-hide"));
+  }
+
+  function openSupportMenu() {
+    const btn = findSupportButton();
+    if (!btn) return false;
+
+    const expanded = btn.getAttribute("aria-expanded") === "true";
+    if (!expanded) {
+      try { btn.click(); } catch (e) {}
+      return false;
+    }
+    return true;
+  }
+
+  function openModeMenu() {
+    const btn = findModeButton();
+    if (!btn) return false;
+
+    const expanded = btn.getAttribute("aria-expanded") === "true";
+    if (!expanded) {
+      try { btn.click(); } catch (e) {}
+      return false;
+    }
+    return true;
+  }
+
+  function hardSyncMiniClasses() {
+    const body = DOC.body;
+    const canvas = getCanvas();
+    if (body) body.classList.add("lia-tff-nightly-mini");
     if (canvas) {
       canvas.classList.add("lia-navigation--hidden");
       canvas.classList.remove("lia-navigation--visible");
     }
   }
 
-  function syncNavigationButtonAppearance() {
-    const btn = getModeNavigationButton();
+  function closeSupportMenuAfterSuccess() {
+    const btn = findSupportButton();
     if (!btn) return;
-
-    const icon = btn.querySelector("i");
-    if (icon) {
-      icon.classList.remove("icon-navigation-hide");
-      icon.classList.add("icon-navigation-show");
-    }
-
-    const text = btn.querySelector(".lia-btn__text");
-    if (text) {
-      text.textContent = "Navigation";
+    const expanded = btn.getAttribute("aria-expanded") === "true";
+    if (expanded) {
+      try { btn.click(); } catch (e) {}
     }
   }
 
-  function stopNavLoop() {
-    if (STATE.navTimer) {
-      try { ROOT.clearInterval(STATE.navTimer); } catch (e) {}
-      STATE.navTimer = null;
+  function stopRunner() {
+    if (STATE.timer) {
+      try { ROOT.clearInterval(STATE.timer); } catch (e) {}
+      STATE.timer = null;
     }
   }
 
-  function forceNightlyMiniNavigation() {
-    const href = getCurrentHref();
-
-    if (!isNightlyHref(href)) {
-      stopNavLoop();
+  function forceMiniNavigation() {
+    if (!isNightlyHref()) {
+      stopRunner();
       return;
     }
 
-    STATE.navRun = (STATE.navRun || 0) + 1;
-    const runId = STATE.navRun;
+    STATE.run = (STATE.run || 0) + 1;
+    const runId = STATE.run;
 
-    stopNavLoop();
+    stopRunner();
 
     let tries = 0;
     let stable = 0;
     const maxTries = 50;
-    const delay = 120;
+    const delay = 160;
 
     function tick() {
-      if (runId !== STATE.navRun) {
-        stopNavLoop();
+      if (runId !== STATE.run) {
+        stopRunner();
         return;
       }
 
       tries++;
 
-      const btn = getModeNavigationButton();
-
-      if (!isNightlyMiniActive() && btn) {
-        try { btn.click(); } catch (e) {}
-      }
-
-      syncNightlyMiniDom();
-      syncNavigationButtonAppearance();
-
-      if (isNightlyMiniActive()) {
+      if (isMiniActive()) {
+        hardSyncMiniClasses();
         stable++;
-      } else {
-        stable = 0;
+        if (stable >= 3) {
+          closeSupportMenuAfterSuccess();
+          stopRunner();
+        }
+        return;
       }
 
-      if (stable >= 3 || tries >= maxTries) {
-        stopNavLoop();
+      stable = 0;
+
+      openSupportMenu();
+      openModeMenu();
+
+      const navBtn = findNavigationButton();
+
+      if (navBtn && navigationButtonMeansHide(navBtn)) {
+        try { navBtn.click(); } catch (e) {}
+      }
+
+      hardSyncMiniClasses();
+
+      if (tries >= maxTries) {
+        stopRunner();
       }
     }
 
     tick();
-    STATE.navTimer = ROOT.setInterval(tick, delay);
+    STATE.timer = ROOT.setInterval(tick, delay);
   }
 
-  function rerunAll() {
-    try { ensureNightlySwitchButton(); } catch (e) {}
-    try { forceNightlyMiniNavigation(); } catch (e) {}
+  function rerun() {
+    try { forceMiniNavigation(); } catch (e) {}
   }
 
-  function scheduleRerun(delay) {
-    ROOT.setTimeout(function () {
-      rerunAll();
-    }, delay);
+  function scheduleRerun(ms) {
+    ROOT.setTimeout(rerun, ms);
   }
 
   function installHistoryHooks() {
     try {
       const H = ROOT.history;
-      if (!H || H.__liaNightlySwitchPatched003) return;
-      H.__liaNightlySwitchPatched003 = true;
+      if (!H || H.__liaForceNightlyMiniPatched) return;
+      H.__liaForceNightlyMiniPatched = true;
 
       const push = H.pushState;
       const replace = H.replaceState;
 
       H.pushState = function () {
         const r = push.apply(this, arguments);
-        scheduleRerun(20);
+        scheduleRerun(30);
         scheduleRerun(250);
         scheduleRerun(800);
         return r;
@@ -324,7 +222,7 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
 
       H.replaceState = function () {
         const r = replace.apply(this, arguments);
-        scheduleRerun(20);
+        scheduleRerun(30);
         scheduleRerun(250);
         scheduleRerun(800);
         return r;
@@ -334,23 +232,23 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
 
   function installObserver() {
     try {
-      if (STATE.mo) return;
+      if (STATE.observer) return;
 
-      STATE.mo = new ROOT.MutationObserver(function () {
-        if (STATE.mutationQueued) return;
-        STATE.mutationQueued = true;
+      STATE.observer = new ROOT.MutationObserver(function () {
+        if (STATE.queued) return;
+        STATE.queued = true;
 
         ROOT.setTimeout(function () {
-          STATE.mutationQueued = false;
-          rerunAll();
-        }, 80);
+          STATE.queued = false;
+          rerun();
+        }, 100);
       });
 
-      STATE.mo.observe(DOC.documentElement, {
+      STATE.observer.observe(DOC.documentElement, {
         childList: true,
         subtree: true,
         attributes: true,
-        attributeFilter: ["class"]
+        attributeFilter: ["class", "aria-expanded"]
       });
     } catch (e) {}
   }
@@ -361,27 +259,26 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
       return;
     }
 
-    rerunAll();
-    scheduleRerun(100);
-    scheduleRerun(300);
-    scheduleRerun(700);
-    scheduleRerun(1400);
+    rerun();
+    scheduleRerun(120);
+    scheduleRerun(350);
+    scheduleRerun(900);
+    scheduleRerun(1800);
 
-    ROOT.addEventListener("hashchange", rerunAll, true);
-    ROOT.addEventListener("popstate", rerunAll, true);
+    ROOT.addEventListener("hashchange", rerun, true);
+    ROOT.addEventListener("popstate", rerun, true);
 
     installHistoryHooks();
     installObserver();
   }
 
   if (STATE.started) {
-    rerunAll();
+    rerun();
     return;
   }
 
   STATE.started = true;
   boot();
-
 })();
 @end
 
