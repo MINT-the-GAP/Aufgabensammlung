@@ -246,17 +246,17 @@ const CONTENT_CSS = `
 
 html[data-lia-mode="presentation"]{
   --lia-tff-left-gap: 50px;
-  --lia-tff-right-gap: 15px;
+  --lia-tff-right-gap: 25px;
   --lia-tff-pad-left: 25px;
-  --lia-tff-pad-right: 15px;
+  --lia-tff-pad-right: 25px;
   --lia-tff-maxw: 98.5vw;
 }
 
 html[data-lia-mode="slides"]{
   --lia-tff-left-gap: 50px;
-  --lia-tff-right-gap: 15px;
+  --lia-tff-right-gap: 25px;
   --lia-tff-pad-left: 25px;
-  --lia-tff-pad-right: 15px;
+  --lia-tff-pad-right: 25px;
   --lia-tff-maxw: 98.5vw;
 }
 
