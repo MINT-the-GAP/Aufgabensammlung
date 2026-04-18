@@ -11,6 +11,8 @@ comment: FractionQuizzes (circle+rect) — 200x200 + Label IM Slider (wie Button
 
 
 
+script: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/Mathe.js
+
 
 
 
