@@ -337,6 +337,9 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
     } catch (e) {}
   }
 
+  const AXIS_LINE_WIDTH = 2.5;
+  const AXIS_TICK_WIDTH = 1.75;
+
   function applyAxisColors(board) {
     if (!board || !board.defaultAxes) return;
 
@@ -348,8 +351,11 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
       try {
         ax.setAttribute({
+          highlight: false,
           strokeColor: col,
-          highlightStrokeColor: col
+          highlightStrokeColor: col,
+          strokeWidth: AXIS_LINE_WIDTH,
+          highlightStrokeWidth: AXIS_LINE_WIDTH
         });
       } catch (e) {}
 
@@ -358,6 +364,8 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
           ax.defaultTicks.setAttribute({
             strokeColor: col,
             highlightStrokeColor: col,
+            strokeWidth: AXIS_TICK_WIDTH,
+            highlightStrokeWidth: AXIS_TICK_WIDTH,
             label: {
               strokeColor: col,
               fillColor: col
@@ -799,9 +807,11 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
   function buildStickyAxes(board, axisCol) {
     const xAxis = board.create('axis', [[0, 0], [1, 0]], {
+      highlight: false,
       strokeColor: axisCol,
       highlightStrokeColor: axisCol,
-      strokeWidth: 2.5,
+      strokeWidth: AXIS_LINE_WIDTH,
+      highlightStrokeWidth: AXIS_LINE_WIDTH,
       name: '',
       withLabel: false,
       fixed: true,
@@ -812,7 +822,8 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
       ticks: {
         insertTicks: false,
         ticksDistance: 1,
-        strokeWidth: 1.75,
+        strokeWidth: AXIS_TICK_WIDTH,
+        highlightStrokeWidth: AXIS_TICK_WIDTH,
         minorTicks: 1,
         drawLabels: true,
         label: {
@@ -827,9 +838,11 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
     });
 
     const yAxis = board.create('axis', [[0, 0], [0, 1]], {
+      highlight: false,
       strokeColor: axisCol,
       highlightStrokeColor: axisCol,
-      strokeWidth: 2.5,
+      strokeWidth: AXIS_LINE_WIDTH,
+      highlightStrokeWidth: AXIS_LINE_WIDTH,
       name: '',
       withLabel: false,
       fixed: true,
@@ -840,7 +853,8 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
       ticks: {
         insertTicks: false,
         ticksDistance: 1,
-        strokeWidth: 1.75,
+        strokeWidth: AXIS_TICK_WIDTH,
+        highlightStrokeWidth: AXIS_TICK_WIDTH,
         minorTicks: 1,
         drawLabels: true,
         label: {
@@ -857,8 +871,10 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
     board.defaultAxes = { x: xAxis, y: yAxis };
   }
 
-  function updateStickyTickLabelPositions(board) {
+  function updateStickyTickLabelPositions(board, opts) {
     if (!board || !board.defaultAxes) return;
+
+    const options = opts || {};
 
     const bb = getSafeBBox(board);
     const xmin = bb[0];
@@ -928,9 +944,11 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
       if (yAxis.defaultTicks) yAxis.defaultTicks.setAttribute({ label: yLabel });
     } catch (e) {}
 
-    try {
-      board.update();
-    } catch (e) {}
+    if (!options.skipBoardUpdate) {
+      try {
+        board.update();
+      } catch (e) {}
+    }
   }
 
   const axisCol = neutralColor();
@@ -1128,19 +1146,35 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
     scheduleBoardResizePass();
   });
 
+  function runBoundingBoxLightSync() {
+    applyAdaptiveTicks(board);
+    updateStickyTickLabelPositions(board, { skipBoardUpdate: true });
+  }
+
+  function runBoundingBoxHeavySync() {
+    saveBoardState(board);
+    applyAdaptiveTicks(board);
+    applyAxisColors(board);
+    updateStickyTickLabelPositions(board);
+    ensureResizeHandle(board);
+    runExternalBootstraps();
+  }
+
   let bboxRAF = 0;
+  let bboxTrailingTimer = 0;
   board.on('boundingbox', () => {
     if (bboxRAF) return;
 
     bboxRAF = requestAnimationFrame(() => {
       bboxRAF = 0;
-      saveBoardState(board);
-      applyAdaptiveTicks(board);
-      applyAxisColors(board);
-      updateStickyTickLabelPositions(board);
-      ensureResizeHandle(board);
-      runExternalBootstraps();
+      runBoundingBoxLightSync();
     });
+
+    if (bboxTrailingTimer) clearTimeout(bboxTrailingTimer);
+    bboxTrailingTimer = setTimeout(() => {
+      bboxTrailingTimer = 0;
+      runBoundingBoxHeavySync();
+    }, 140);
   });
 
   let lastGridColor = '';
