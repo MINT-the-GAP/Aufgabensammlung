@@ -3,7 +3,7 @@ window.__liaSubmissionDemo = (function () {
   const ADMIN_ATTR = "data-snapshot-admin";
   const STORAGE_PREFIX = "__lia_submission_demo__:";
   const PAYLOAD_VERSION = "sf-mini-ti-3";
-  const DEBUG = true;
+  const DEBUG = false;
   const EVALUATION_TITLE = "Auswertung";
   const BUILD_STAMP = "FREEZE-BUILD-2026-04-05-12-26";
 
@@ -3472,57 +3472,41 @@ function collectAssignmentDetailMarkersFromRoot(root) {
 }
 
 function getAssignmentDetailScope(marker) {
-  const host = getContentHost() || document.body;
+  if (!marker) return getContentHost() || document.body;
 
-  if (!marker) return host;
-
-  // Use one stable slide/content scope for task-index generation and lookup.
-  // This avoids section-local index spaces when multiple dynFlex sections exist.
   return (
-    marker.closest(".lia-slide__content, .lia-content, #content") ||
-    host
+    marker.closest(".lia-slide__content, .lia-content, main, article, section, #content") ||
+    getContentHost() ||
+    document.body
   );
 }
 
 function getLastQuizCheckBeforeMarker(marker) {
   if (!marker) return null;
 
-  function collectChecks(scope) {
-    if (!scope || !scope.querySelectorAll) return [];
-
-    return Array.from(scope.querySelectorAll(".lia-quiz__check")).filter(function (btn) {
-      if (!(btn instanceof Element)) return false;
-      if (btn.closest("#lia-freeze-bar")) return false;
-      if (btn.closest(".lia-submit-box")) return false;
-
-      return !!(btn.compareDocumentPosition(marker) & Node.DOCUMENT_POSITION_FOLLOWING);
-    });
-  }
-
-  function pickLatest(checks) {
-    let best = null;
-
-    checks.forEach(function (btn) {
-      if (!best) {
-        best = btn;
-        return;
-      }
-
-      if (best.compareDocumentPosition(btn) & Node.DOCUMENT_POSITION_FOLLOWING) {
-        best = btn;
-      }
-    });
-
-    return best;
-  }
-
-  // Prefer local matching inside the current dynFlex column.
-  const localFlexChild = marker.closest(".flex-child");
-  const localBest = pickLatest(collectChecks(localFlexChild));
-  if (localBest) return localBest;
-
   const scope = getAssignmentDetailScope(marker);
-  return pickLatest(collectChecks(scope));
+  const checks = Array.from(scope.querySelectorAll(".lia-quiz__check")).filter(function (btn) {
+    if (!(btn instanceof Element)) return false;
+    if (btn.closest("#lia-freeze-bar")) return false;
+    if (btn.closest(".lia-submit-box")) return false;
+
+    return !!(btn.compareDocumentPosition(marker) & Node.DOCUMENT_POSITION_FOLLOWING);
+  });
+
+  let best = null;
+
+  checks.forEach(function (btn) {
+    if (!best) {
+      best = btn;
+      return;
+    }
+
+    if (best.compareDocumentPosition(btn) & Node.DOCUMENT_POSITION_FOLLOWING) {
+      best = btn;
+    }
+  });
+
+  return best;
 }
 
 function ensureAssignmentDetailOwnerId(marker) {
@@ -3758,63 +3742,15 @@ function collectOrderedTaskRootsForAssignmentDetails(root) {
 function getAssignmentDetailTaskRoot(marker) {
   if (!marker || !(marker instanceof Element)) return null;
 
-  // Fast path: if the marker is inside a .flex-child, resolve the task root
-  // locally within that container. This avoids global-index mismatches that
-  // occur when multiple dynFlex sections share one slide-level scope.
-  const localFlexChild = marker.closest(".flex-child");
-  if (localFlexChild) {
-    const localRoots = collectOrderedTaskRootsForAssignmentDetails(localFlexChild);
-    console.warn("[LIA-FREEZE][ADetails-DEBUG] flex-child roots:", localRoots.length,
-      "marker-text:", (marker.textContent||"").slice(0,40),
-      "flex-child-text:", (localFlexChild.textContent||"").slice(0,60));
-    if (localRoots.length > 0) {
-      // Take the last local root that comes at or before the marker.
-      let best = null;
-      for (let i = 0; i < localRoots.length; i++) {
-        const pos = compareElementsInDocumentOrder(localRoots[i], marker);
-        console.warn("[LIA-FREEZE][ADetails-DEBUG] root[" + i + "] pos=" + pos,
-          "class:", localRoots[i].className);
-        if (pos <= 0) {
-          best = localRoots[i];
-        } else {
-          break;
-        }
-      }
-      console.warn("[LIA-FREEZE][ADetails-DEBUG] best:", best && best.className);
-      // If marker precedes all local roots (e.g. placed before the quiz),
-      // fall back to the first local root as the closest match.
-      return best || localRoots[0];
-    }
-  }
-
-  // Global index-based resolution for markers outside dynFlex columns.
   const scope = getAssignmentDetailScope(marker);
   const taskIndex = getAssignmentDetailTaskIndex(marker);
 
   if (!Number.isFinite(taskIndex) || taskIndex <= 0) {
-    const check = getLastQuizCheckBeforeMarker(marker);
-    return check
-      ? (
-          check.closest(".lia-quiz") ||
-          check.closest(".lia-quiz__control") ||
-          check.parentElement ||
-          check
-        )
-      : null;
+    return null;
   }
 
   const orderedTaskRoots = collectOrderedTaskRootsForAssignmentDetails(scope);
-  return orderedTaskRoots[taskIndex - 1] || (function () {
-    const check = getLastQuizCheckBeforeMarker(marker);
-    return check
-      ? (
-          check.closest(".lia-quiz") ||
-          check.closest(".lia-quiz__control") ||
-          check.parentElement ||
-          check
-        )
-      : null;
-  })();
+  return orderedTaskRoots[taskIndex - 1] || null;
 }
 
 function getAssignmentDetailQuizRootFromTaskRoot(taskRoot, marker) {
