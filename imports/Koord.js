@@ -25,6 +25,152 @@ if (window.__liaRunCoordHooks) {
   }, 120);
 }
 
+(function() {
+  if (window.__liaCoordResizeSyncReady) {
+    try {
+      if (window.__liaObserveCoordBoards) window.__liaObserveCoordBoards();
+      if (window.__liaScheduleCoordResizePass) window.__liaScheduleCoordResizePass('reinit');
+    } catch (e) {}
+    return;
+  }
+
+  window.__liaCoordResizeSyncReady = true;
+
+  function getBoardEntries() {
+    const boards = window.__boards || {};
+    return Object.keys(boards).map(function(id) {
+      return boards[id];
+    }).filter(function(board) {
+      return !!board && !!board.containerObj;
+    });
+  }
+
+  function getBoardPixelSize(board) {
+    if (!board || !board.containerObj) return null;
+
+    const el = board.containerObj;
+    const width = Math.max(0, Math.round(el.clientWidth || el.offsetWidth || 0));
+    const height = Math.max(0, Math.round(el.clientHeight || el.offsetHeight || 0));
+
+    if (width <= 0 || height <= 0) return null;
+
+    return {
+      width: width,
+      height: height,
+      sig: width + 'x' + height
+    };
+  }
+
+  function refreshBoardGeometry(board) {
+    const size = getBoardPixelSize(board);
+    if (!size) return;
+
+    const prev = board.__liaCoordLastPixelSize || {};
+    const changed = prev.width !== size.width || prev.height !== size.height;
+
+    board.__liaCoordLastPixelSize = {
+      width: size.width,
+      height: size.height
+    };
+
+    try {
+      board.containerObj.__liaCoordSizeSig = size.sig;
+    } catch (e) {}
+
+    if (changed) {
+      try {
+        if (typeof board.resizeContainer === 'function') {
+          board.resizeContainer(size.width, size.height, false, true);
+        }
+      } catch (e) {}
+    }
+
+    try {
+      if (typeof board.fullUpdate === 'function') board.fullUpdate();
+      else if (typeof board.update === 'function') board.update();
+    } catch (e) {}
+  }
+
+  function runCoordResizePass() {
+    getBoardEntries().forEach(refreshBoardGeometry);
+
+    try {
+      if (window.__liaRunCoordHooks) window.__liaRunCoordHooks();
+    } catch (e) {}
+  }
+
+  let resizePassToken = 0;
+
+  function scheduleCoordResizePass() {
+    resizePassToken += 1;
+    const token = resizePassToken;
+
+    const run = function() {
+      if (token !== resizePassToken) return;
+
+      try {
+        if (window.__liaObserveCoordBoards) window.__liaObserveCoordBoards();
+      } catch (e) {}
+
+      runCoordResizePass();
+    };
+
+    requestAnimationFrame(run);
+    setTimeout(run, 0);
+    setTimeout(run, 80);
+    setTimeout(run, 180);
+    setTimeout(run, 320);
+  }
+
+  function observeBoard(board) {
+    if (!board || !board.containerObj) return;
+
+    const el = board.containerObj;
+    if (el.__liaCoordObserved) return;
+    el.__liaCoordObserved = true;
+
+    if (typeof ResizeObserver === 'function') {
+      try {
+        const ro = new ResizeObserver(function() {
+          const size = getBoardPixelSize(board);
+          if (!size) return;
+          if (el.__liaCoordSizeSig === size.sig) return;
+
+          el.__liaCoordSizeSig = size.sig;
+          scheduleCoordResizePass();
+        });
+
+        ro.observe(el);
+        if (el.parentElement) ro.observe(el.parentElement);
+        el.__liaCoordRO = ro;
+      } catch (e) {}
+    }
+  }
+
+  window.__liaObserveCoordBoards = function() {
+    getBoardEntries().forEach(observeBoard);
+  };
+
+  window.__liaScheduleCoordResizePass = scheduleCoordResizePass;
+
+  window.addEventListener('resize', function() {
+    scheduleCoordResizePass();
+  });
+
+  setInterval(function() {
+    try {
+      if (window.__liaObserveCoordBoards) window.__liaObserveCoordBoards();
+    } catch (e) {}
+  }, 500);
+
+  requestAnimationFrame(function() {
+    try {
+      if (window.__liaObserveCoordBoards) window.__liaObserveCoordBoards();
+    } catch (e) {}
+    scheduleCoordResizePass();
+  });
+})();
+
 
 
 
@@ -430,9 +576,20 @@ if (window.__liaRunCoordHooks) {
   } catch (e) {}
 
   window.addEventListener('resize', function() {
-    requestAnimationFrame(function() {
+    const run = function() {
       kickAxisTitles();
-    });
+    };
+
+    if (window.__liaScheduleCoordResizePass) {
+      try {
+        window.__liaScheduleCoordResizePass('axis-titles');
+      } catch (e) {}
+    }
+
+    requestAnimationFrame(run);
+    setTimeout(run, 0);
+    setTimeout(run, 80);
+    setTimeout(run, 180);
   });
 
   try {

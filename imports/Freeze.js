@@ -3,7 +3,7 @@ window.__liaSubmissionDemo = (function () {
   const ADMIN_ATTR = "data-snapshot-admin";
   const STORAGE_PREFIX = "__lia_submission_demo__:";
   const PAYLOAD_VERSION = "sf-mini-ti-3";
-  const DEBUG = true;
+  const DEBUG = false;
   const EVALUATION_TITLE = "Auswertung";
   const BUILD_STAMP = "FREEZE-BUILD-2026-04-05-12-26";
 
@@ -3764,23 +3764,17 @@ function getAssignmentDetailTaskRoot(marker) {
   const localFlexChild = marker.closest(".flex-child");
   if (localFlexChild) {
     const localRoots = collectOrderedTaskRootsForAssignmentDetails(localFlexChild);
-    console.warn("[LIA-FREEZE][ADetails-DEBUG] flex-child roots:", localRoots.length,
-      "marker-text:", (marker.textContent||"").slice(0,40),
-      "flex-child-text:", (localFlexChild.textContent||"").slice(0,60));
     if (localRoots.length > 0) {
       // Take the last local root that comes at or before the marker.
       let best = null;
       for (let i = 0; i < localRoots.length; i++) {
         const pos = compareElementsInDocumentOrder(localRoots[i], marker);
-        console.warn("[LIA-FREEZE][ADetails-DEBUG] root[" + i + "] pos=" + pos,
-          "class:", localRoots[i].className);
         if (pos <= 0) {
           best = localRoots[i];
         } else {
           break;
         }
       }
-      console.warn("[LIA-FREEZE][ADetails-DEBUG] best:", best && best.className);
       // If marker precedes all local roots (e.g. placed before the quiz),
       // fall back to the first local root as the closest match.
       return best || localRoots[0];

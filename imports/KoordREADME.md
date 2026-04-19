@@ -1061,12 +1061,17 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
     else if (mq && typeof mq.addListener === 'function') mq.addListener(handler);
   } catch (e) {}
 
-  let resizeRAF = 0;
-  window.addEventListener('resize', () => {
-    if (resizeRAF) return;
+  let resizePassToken = 0;
+  const runBoardResizePass = () => {
+    try {
+      if (board.containerObj) {
+        const width = Math.max(1, Math.round(board.containerObj.clientWidth || board.containerObj.offsetWidth || 0));
+        const height = Math.max(1, Math.round(board.containerObj.clientHeight || board.containerObj.offsetHeight || 0));
+        board.containerObj.__liaCoordSizeSig = width + 'x' + height;
+      }
+    } catch (e) {}
 
-    resizeRAF = requestAnimationFrame(() => {
-      resizeRAF = 0;
+    try {
       fitBoardSize(board);
       applyBoardFrame(board);
       applyNavColors(board);
@@ -1076,7 +1081,51 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
       updateStickyTickLabelPositions(board);
       ensureResizeHandle(board);
       runExternalBootstraps();
-    });
+    } catch (e) {}
+  };
+
+  const scheduleBoardResizePass = () => {
+    resizePassToken += 1;
+    const token = resizePassToken;
+
+    const run = () => {
+      if (token !== resizePassToken) return;
+      runBoardResizePass();
+    };
+
+    requestAnimationFrame(run);
+    setTimeout(run, 0);
+    setTimeout(run, 80);
+    setTimeout(run, 180);
+    setTimeout(run, 320);
+  };
+
+  if (typeof ResizeObserver === 'function') {
+    try {
+      const ro = new ResizeObserver(() => {
+        const el = board.containerObj;
+        if (!el) return;
+
+        const width = Math.max(1, Math.round(el.clientWidth || el.offsetWidth || 0));
+        const height = Math.max(1, Math.round(el.clientHeight || el.offsetHeight || 0));
+        const sig = width + 'x' + height;
+
+        if (el.__liaCoordSizeSig === sig) return;
+        el.__liaCoordSizeSig = sig;
+        scheduleBoardResizePass();
+      });
+
+      if (board.containerObj) ro.observe(board.containerObj);
+      if (board.containerObj && board.containerObj.parentElement) {
+        ro.observe(board.containerObj.parentElement);
+      }
+
+      board.__liaResizeRO = ro;
+    } catch (e) {}
+  }
+
+  window.addEventListener('resize', () => {
+    scheduleBoardResizePass();
   });
 
   let bboxRAF = 0;
