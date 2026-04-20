@@ -26,7 +26,6 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 
 
-
 -->
 
 
@@ -36,6 +35,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 # Wochenaufgaben 13 für die 8. Klasse zum Selbstlernen
+
 
 
 

@@ -401,6 +401,7 @@ function fqdbg(tag) {
   height:var(--fq-track-h);
   border-radius:999px;
   background:var(--fq-track);
+  border: 1.5px solid #aaa;
 }
 
 .fq-range input[type="range"]::-moz-range-thumb{
