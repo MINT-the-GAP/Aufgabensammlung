@@ -1527,9 +1527,15 @@ function fqdbg(tag) {
   if (!API) return false;
 
   const passed = API.isCorrect(uid);
-  if (passed && !API.isLocked(uid)) {
-    API.onCheck(uid, true);
+  const wrap = document.getElementById("fq-circle-wrap-@0");
+
+  if (!passed && !API.isLocked(uid) && wrap) {
+    const prev = parseInt(wrap.getAttribute("data-fq-failed-checks") || "0", 10);
+    wrap.setAttribute("data-fq-failed-checks", String((Number.isFinite(prev) ? prev : 0) + 1));
+    if (typeof wrap.__fqApplyRevealSetting === "function") wrap.__fqApplyRevealSetting();
   }
+
+  if (passed && !API.isLocked(uid)) API.onCheck(uid, true);
   return passed;
 })()
   </script>
@@ -1539,9 +1545,31 @@ function fqdbg(tag) {
 (function () {
   const API = window.__LIA_FRACTION_QUIZ__;
   const uid = "@0";
-  const targetRaw = String.raw`@1`;
+  const rawSpec = String.raw`@1`;
 
   if (!API) return;
+
+  function parseQuizSpec(raw) {
+    const source = String(raw == null ? "" : raw).trim();
+    const semi = source.indexOf(";");
+    if (semi < 0) {
+      return { targetRaw: source, optionText: "" };
+    }
+    return {
+      targetRaw: source.slice(0, semi).trim(),
+      optionText: source.slice(semi + 1).trim()
+    };
+  }
+
+  function parseRevealSetting(optionText) {
+    const m = String(optionText || "").match(/data-solution-button\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s]+))/i);
+    if (!m) return "";
+    return String(m[1] != null ? m[1] : (m[2] != null ? m[2] : (m[3] != null ? m[3] : ""))).trim().toLowerCase();
+  }
+
+  const spec = parseQuizSpec(rawSpec);
+  const targetRaw = spec.targetRaw;
+  const revealSetting = parseRevealSetting(spec.optionText);
 
   function waitForCircleDom(cb) {
     let tries = 0;
@@ -1566,6 +1594,8 @@ function fqdbg(tag) {
   }
 
   waitForCircleDom(({ wrap, host, mount, input }) => {
+    wrap.setAttribute("data-fq-failed-checks", wrap.getAttribute("data-fq-failed-checks") || "0");
+
     API.attachCircle(uid, {
       wrap: wrap,
       host: host,
@@ -1576,85 +1606,49 @@ function fqdbg(tag) {
     });
 
     API.ensureQuizBridge(uid, wrap);
-  });
-})();
-</script>
-@end
 
-@circleQuizC: @circleQuizC_(@uid,@0,@1)
+    if (revealSetting) {
+      const applyRevealSetting = () => {
+        const nodes = wrap.querySelectorAll("button, input[type='button'], input[type='submit']");
+        const buttons = [];
 
-@circleQuizC_
-<div id="fq-circle-wrap-@0" class="fq-widget" data-fq-kind="circle" data-fq-uid="@0">
-  <div id="fq-circle-host-@0" class="fq-widget" data-fq-kind="circle" data-fq-uid="@0">
-    <div id="fq-circle-mount-@0" class="fq-mount"></div>
+        for (let i = 0; i < nodes.length; i++) {
+          const label = ((nodes[i].textContent || "") + " " + (nodes[i].getAttribute("aria-label") || "") + " " + (nodes[i].getAttribute("value") || ""))
+            .replace(/\s+/g, " ")
+            .trim()
+            .toLowerCase();
+          if (/(aufl|aufl[oö]sen|l[oö]sung|show solution|solution|resolve)/i.test(label)) buttons.push(nodes[i]);
+        }
 
-    <div id="fq-circle-range-@0" class="fq-range" data-label="Unterteilungen">
-<input type="range" min="1" max="32" value="1" output="fq-c-n-@0">
-    </div>
-  </div>
+        if (!buttons.length) return;
 
-  @2
-  [[!]]
-  <script>
-(() => {
-  const API = window.__LIA_FRACTION_QUIZ__;
-  const uid = "@0";
-  if (!API) return false;
+        let show = true;
+        if (/^(off|false|disable|disabled|none)$/.test(revealSetting)) {
+          show = false;
+        } else if (/^(on|true|enable|enabled)$/.test(revealSetting)) {
+          show = true;
+        } else if (/^\d+$/.test(revealSetting)) {
+          const threshold = parseInt(revealSetting, 10);
+          const attempts = parseInt(wrap.getAttribute("data-fq-failed-checks") || "0", 10);
+          show = (Number.isFinite(attempts) ? attempts : 0) >= threshold;
+        }
 
-  const passed = API.isCorrect(uid);
-  if (passed && !API.isLocked(uid)) {
-    API.onCheck(uid, true);
-  }
-  return passed;
-})()
-  </script>
-</div>
+        for (let i = 0; i < buttons.length; i++) {
+          const btn = buttons[i];
+          const display = show ? "" : "none";
+          if (btn.style.display !== display) btn.style.display = display;
+        }
+      };
 
-<script modify="false">
-(function () {
-  const API = window.__LIA_FRACTION_QUIZ__;
-  const uid = "@0";
-  const targetRaw = String.raw`@1`;
-
-  if (!API) return;
-
-  function waitForCircleDom(cb) {
-    let tries = 0;
-
-    function tick() {
-      const wrap = document.getElementById("fq-circle-wrap-@0");
-      const host = document.getElementById("fq-circle-host-@0");
-      const mount = document.getElementById("fq-circle-mount-@0");
-      const rangeWrap = document.getElementById("fq-circle-range-@0");
-      const input = rangeWrap ? rangeWrap.querySelector('input[type="range"]') : null;
-
-      if (wrap && host && mount && rangeWrap && input) {
-        cb({ wrap, host, mount, input });
-        return;
-      }
-
-      tries++;
-      if (tries < 240) requestAnimationFrame(tick);
+      wrap.__fqApplyRevealSetting = applyRevealSetting;
+      applyRevealSetting();
     }
-
-    tick();
-  }
-
-  waitForCircleDom(({ wrap, host, mount, input }) => {
-    API.attachCircle(uid, {
-      wrap: wrap,
-      host: host,
-      mount: mount,
-      circleInput: input,
-      target: targetRaw,
-      initialParts: input.value || 1
-    });
-
-    API.ensureQuizBridge(uid, wrap);
   });
 })();
 </script>
 @end
+
+
 
 
 
@@ -1700,9 +1694,15 @@ function fqdbg(tag) {
   if (!API) return false;
 
   const passed = API.isCorrect(uid);
-  if (passed && !API.isLocked(uid)) {
-    API.onCheck(uid, true);
+  const wrap = document.getElementById("fq-rect-wrap-@0");
+
+  if (!passed && !API.isLocked(uid) && wrap) {
+    const prev = parseInt(wrap.getAttribute("data-fq-failed-checks") || "0", 10);
+    wrap.setAttribute("data-fq-failed-checks", String((Number.isFinite(prev) ? prev : 0) + 1));
+    if (typeof wrap.__fqApplyRevealSetting === "function") wrap.__fqApplyRevealSetting();
   }
+
+  if (passed && !API.isLocked(uid)) API.onCheck(uid, true);
   return passed;
 })()
   </script>
@@ -1712,9 +1712,31 @@ function fqdbg(tag) {
 (function () {
   const API = window.__LIA_FRACTION_QUIZ__;
   const uid = "@0";
-  const targetRaw = String.raw`@1`;
+  const rawSpec = String.raw`@1`;
 
   if (!API) return;
+
+  function parseQuizSpec(raw) {
+    const source = String(raw == null ? "" : raw).trim();
+    const semi = source.indexOf(";");
+    if (semi < 0) {
+      return { targetRaw: source, optionText: "" };
+    }
+    return {
+      targetRaw: source.slice(0, semi).trim(),
+      optionText: source.slice(semi + 1).trim()
+    };
+  }
+
+  function parseRevealSetting(optionText) {
+    const m = String(optionText || "").match(/data-solution-button\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s]+))/i);
+    if (!m) return "";
+    return String(m[1] != null ? m[1] : (m[2] != null ? m[2] : (m[3] != null ? m[3] : ""))).trim().toLowerCase();
+  }
+
+  const spec = parseQuizSpec(rawSpec);
+  const targetRaw = spec.targetRaw;
+  const revealSetting = parseRevealSetting(spec.optionText);
 
   function waitForRectDom(cb) {
     let tries = 0;
@@ -1741,6 +1763,8 @@ function fqdbg(tag) {
   }
 
   waitForRectDom(({ wrap, host, mount, rowsInput, colsInput }) => {
+    wrap.setAttribute("data-fq-failed-checks", wrap.getAttribute("data-fq-failed-checks") || "0");
+
     API.attachRect(uid, {
       wrap: wrap,
       host: host,
@@ -1753,93 +1777,49 @@ function fqdbg(tag) {
     });
 
     API.ensureQuizBridge(uid, wrap);
-  });
-})();
-</script>
-@end
 
-@rectQuizC: @rectQuizC_(@uid,@0,@1)
+    if (revealSetting) {
+      const applyRevealSetting = () => {
+        const nodes = wrap.querySelectorAll("button, input[type='button'], input[type='submit']");
+        const buttons = [];
 
-@rectQuizC_
-<div id="fq-rect-wrap-@0" class="fq-widget" data-fq-kind="rect" data-fq-uid="@0">
-  <div id="fq-rect-host-@0" class="fq-widget" data-fq-kind="rect" data-fq-uid="@0">
-    <div id="fq-rect-mount-@0" class="fq-mount"></div>
+        for (let i = 0; i < nodes.length; i++) {
+          const label = ((nodes[i].textContent || "") + " " + (nodes[i].getAttribute("aria-label") || "") + " " + (nodes[i].getAttribute("value") || ""))
+            .replace(/\s+/g, " ")
+            .trim()
+            .toLowerCase();
+          if (/(aufl|aufl[oö]sen|l[oö]sung|show solution|solution|resolve)/i.test(label)) buttons.push(nodes[i]);
+        }
 
-    <div id="fq-rect-rows-wrap-@0" class="fq-range" data-label="vertikal">
-<input type="range" min="1" max="20" value="1" output="fq-r-rows-@0">
-    </div>
+        if (!buttons.length) return;
 
-    <div id="fq-rect-cols-wrap-@0" class="fq-range" data-label="horizontal">
-<input type="range" min="1" max="20" value="1" output="fq-r-cols-@0">
-    </div>
-  </div>
+        let show = true;
+        if (/^(off|false|disable|disabled|none)$/.test(revealSetting)) {
+          show = false;
+        } else if (/^(on|true|enable|enabled)$/.test(revealSetting)) {
+          show = true;
+        } else if (/^\d+$/.test(revealSetting)) {
+          const threshold = parseInt(revealSetting, 10);
+          const attempts = parseInt(wrap.getAttribute("data-fq-failed-checks") || "0", 10);
+          show = (Number.isFinite(attempts) ? attempts : 0) >= threshold;
+        }
 
-  @2
-  [[!]]
-  <script>
-(() => {
-  const API = window.__LIA_FRACTION_QUIZ__;
-  const uid = "@0";
-  if (!API) return false;
+        for (let i = 0; i < buttons.length; i++) {
+          const btn = buttons[i];
+          const display = show ? "" : "none";
+          if (btn.style.display !== display) btn.style.display = display;
+        }
+      };
 
-  const passed = API.isCorrect(uid);
-  if (passed && !API.isLocked(uid)) {
-    API.onCheck(uid, true);
-  }
-  return passed;
-})()
-  </script>
-</div>
-
-<script modify="false">
-(function () {
-  const API = window.__LIA_FRACTION_QUIZ__;
-  const uid = "@0";
-  const targetRaw = String.raw`@1`;
-
-  if (!API) return;
-
-  function waitForRectDom(cb) {
-    let tries = 0;
-
-    function tick() {
-      const wrap = document.getElementById("fq-rect-wrap-@0");
-      const host = document.getElementById("fq-rect-host-@0");
-      const mount = document.getElementById("fq-rect-mount-@0");
-      const rowsWrap = document.getElementById("fq-rect-rows-wrap-@0");
-      const colsWrap = document.getElementById("fq-rect-cols-wrap-@0");
-      const rowsInput = rowsWrap ? rowsWrap.querySelector('input[type="range"]') : null;
-      const colsInput = colsWrap ? colsWrap.querySelector('input[type="range"]') : null;
-
-      if (wrap && host && mount && rowsWrap && colsWrap && rowsInput && colsInput) {
-        cb({ wrap, host, mount, rowsInput, colsInput });
-        return;
-      }
-
-      tries++;
-      if (tries < 240) requestAnimationFrame(tick);
+      wrap.__fqApplyRevealSetting = applyRevealSetting;
+      applyRevealSetting();
     }
-
-    tick();
-  }
-
-  waitForRectDom(({ wrap, host, mount, rowsInput, colsInput }) => {
-    API.attachRect(uid, {
-      wrap: wrap,
-      host: host,
-      mount: mount,
-      rowsInput: rowsInput,
-      colsInput: colsInput,
-      target: targetRaw,
-      initialRows: rowsInput.value || 1,
-      initialCols: colsInput.value || 1
-    });
-
-    API.ensureQuizBridge(uid, wrap);
   });
 })();
 </script>
 @end
+
+
 
 
 
@@ -1866,12 +1846,12 @@ function fqdbg(tag) {
 __$a)\;\;$__ $\dfrac{1}{3}$
 
 
-@rectQuizC(1/3,`<!-- data-solution-button="2" -->`)
+@rectQuiz(`1/3; data-solution-button="2"`)
 
 __$b)\;\;$__ $\dfrac{4}{5}$
 
 
-@circleQuizC(4/5,`<!-- data-solution-button="2" -->`)
+@circleQuiz(`4/5; data-solution-button="2"`)
 
 
 __$c)\;\;$__ $\dfrac{3}{4}$
