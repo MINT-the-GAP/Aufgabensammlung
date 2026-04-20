@@ -1014,7 +1014,6 @@ script: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-
 (function () {
   function getRootWindow() {
     let w = window;
@@ -1205,6 +1204,55 @@ function fqdbg(tag) {
     return out;
   }
 
+  function detectUiLanguage() {
+    const langs = [];
+
+    try {
+      const lia = ROOT && (ROOT.LIA || ROOT.lia);
+      if (lia) {
+        if (typeof lia.language === "string") langs.push(lia.language);
+        if (lia.settings && typeof lia.settings.language === "string") langs.push(lia.settings.language);
+        if (lia.lang && typeof lia.lang === "string") langs.push(lia.lang);
+      }
+    } catch (e) {}
+
+    try {
+      if (ROOT && ROOT.document && ROOT.document.documentElement) {
+        langs.push(ROOT.document.documentElement.lang || "");
+      }
+    } catch (e) {}
+
+    try {
+      if (document && document.documentElement) {
+        langs.push(document.documentElement.lang || "");
+      }
+    } catch (e) {}
+
+    try {
+      if (navigator && Array.isArray(navigator.languages)) {
+        for (let i = 0; i < navigator.languages.length; i++) langs.push(navigator.languages[i] || "");
+      }
+      if (navigator && navigator.language) langs.push(navigator.language);
+    } catch (e) {}
+
+    for (let i = 0; i < langs.length; i++) {
+      const raw = String(langs[i] || "").trim().toLowerCase();
+      if (!raw) continue;
+      const base = raw.split("-")[0];
+      if (base) return base;
+    }
+
+    return "de";
+  }
+
+  function getQuizLabels(lang) {
+    const key = String(lang || "").toLowerCase();
+    if (key === "de") {
+      return { subdivisions: "Unterteilungen", vertical: "vertikal", horizontal: "horizontal" };
+    }
+    return { subdivisions: "Subdivisions", vertical: "vertical", horizontal: "horizontal" };
+  }
+
   function injectStyleOnce() {
     const DOC = getDoc();
     if (!DOC || !DOC.head) return;
@@ -1349,6 +1397,7 @@ function fqdbg(tag) {
   height:var(--fq-track-h);
   border-radius:999px;
   background:var(--fq-track);
+  border: 1.5px solid #aaa;
 }
 
 .fq-range input[type="range"]::-moz-range-thumb{
@@ -1549,9 +1598,28 @@ function fqdbg(tag) {
         if (nodes.circleInput) this.bindCircleInput(uid, nodes.circleInput);
         if (nodes.rowsInput || nodes.colsInput) this.bindRectInputs(uid, nodes.rowsInput, nodes.colsInput);
 
+        this.localizeRangeLabels(uid, nodes.kind);
+
         if (nodes.wrap) this.ensureQuizBridge(uid, nodes.wrap);
 
         return nodes;
+      },
+
+      localizeRangeLabels(uid, kind) {
+        const lang = detectUiLanguage();
+        const labels = getQuizLabels(lang);
+
+        if (kind === "circle") {
+          const range = document.getElementById("fq-circle-range-" + uid);
+          if (range) range.setAttribute("data-label", labels.subdivisions);
+        }
+
+        if (kind === "rect") {
+          const rowsWrap = document.getElementById("fq-rect-rows-wrap-" + uid);
+          const colsWrap = document.getElementById("fq-rect-cols-wrap-" + uid);
+          if (rowsWrap) rowsWrap.setAttribute("data-label", labels.vertical);
+          if (colsWrap) colsWrap.setAttribute("data-label", labels.horizontal);
+        }
       },
 
       parseTarget(raw) {
@@ -1632,20 +1700,40 @@ function fqdbg(tag) {
 
       buildCircleSolution(targetRaw) {
         const t = normalizeFractionInfo(targetRaw);
-        const parts = Math.max(1, t.den | 0);
+        let displayNum = t.num;
+        let displayDen = t.den;
+        const rawStr = (targetRaw && typeof targetRaw === "object" && typeof targetRaw.raw === "string")
+          ? targetRaw.raw
+          : (typeof targetRaw === "string" ? targetRaw : "");
+        const rawMatch = rawStr.trim().match(/^\s*([-+]?\d+)\s*\/\s*([-+]?\d+)\s*$/);
+        if (rawMatch) {
+          displayNum = parseInt(rawMatch[1], 10);
+          displayDen = parseInt(rawMatch[2], 10);
+        }
+        const parts = Math.max(1, displayDen | 0);
         const active = Array(parts).fill(false);
-        for (let i = 0; i < Math.min(parts, t.num | 0); i++) active[i] = true;
+        for (let i = 0; i < Math.min(parts, displayNum | 0); i++) active[i] = true;
         return { type: "circle", target: t, parts, active };
       },
 
       buildRectSolution(targetRaw) {
         const t = normalizeFractionInfo(targetRaw);
-        const pair = bestFactorPair(t.den);
+        let displayNum = t.num;
+        let displayDen = t.den;
+        const rawStr = (targetRaw && typeof targetRaw === "object" && typeof targetRaw.raw === "string")
+          ? targetRaw.raw
+          : (typeof targetRaw === "string" ? targetRaw : "");
+        const rawMatch = rawStr.trim().match(/^\s*([-+]?\d+)\s*\/\s*([-+]?\d+)\s*$/);
+        if (rawMatch) {
+          displayNum = parseInt(rawMatch[1], 10);
+          displayDen = parseInt(rawMatch[2], 10);
+        }
+        const pair = bestFactorPair(displayDen);
         const rows = pair.rows;
         const cols = pair.cols;
         const total = rows * cols;
         const active = Array(total).fill(false);
-        for (let i = 0; i < Math.min(total, t.num | 0); i++) active[i] = true;
+        for (let i = 0; i < Math.min(total, displayNum | 0); i++) active[i] = true;
         return { type: "rect", target: t, rows, cols, active };
       },
 
@@ -1873,6 +1961,8 @@ function fqdbg(tag) {
         if (opts.circleInput) nodes.circleInput = opts.circleInput;
         if (opts.rowsInput) nodes.rowsInput = opts.rowsInput;
         if (opts.colsInput) nodes.colsInput = opts.colsInput;
+
+        this.localizeRangeLabels(uid, kind || nodes.kind);
 
         if (opts.target !== undefined) this.setTarget(uid, opts.target, kind || meta.kind);
 
@@ -2378,6 +2468,12 @@ function fqdbg(tag) {
   ROOT.__LIA_FRACTION_QUIZ__ = ROOT[STORE_KEY];
   window.__LIA_FRACTION_QUIZ__ = ROOT[STORE_KEY];
 })();
+
+
+
+
+
+
 
 
 
@@ -4175,9 +4271,15 @@ function fqdbg(tag) {
   if (!API) return false;
 
   const passed = API.isCorrect(uid);
-  if (passed && !API.isLocked(uid)) {
-    API.onCheck(uid, true);
+  const wrap = document.getElementById("fq-circle-wrap-@0");
+
+  if (!passed && !API.isLocked(uid) && wrap) {
+    const prev = parseInt(wrap.getAttribute("data-fq-failed-checks") || "0", 10);
+    wrap.setAttribute("data-fq-failed-checks", String((Number.isFinite(prev) ? prev : 0) + 1));
+    if (typeof wrap.__fqApplyRevealSetting === "function") wrap.__fqApplyRevealSetting();
   }
+
+  if (passed && !API.isLocked(uid)) API.onCheck(uid, true);
   return passed;
 })()
   </script>
@@ -4187,9 +4289,31 @@ function fqdbg(tag) {
 (function () {
   const API = window.__LIA_FRACTION_QUIZ__;
   const uid = "@0";
-  const targetRaw = String.raw`@1`;
+  const rawSpec = String.raw`@1`;
 
   if (!API) return;
+
+  function parseQuizSpec(raw) {
+    const source = String(raw == null ? "" : raw).trim();
+    const semi = source.indexOf(";");
+    if (semi < 0) {
+      return { targetRaw: source, optionText: "" };
+    }
+    return {
+      targetRaw: source.slice(0, semi).trim(),
+      optionText: source.slice(semi + 1).trim()
+    };
+  }
+
+  function parseRevealSetting(optionText) {
+    const m = String(optionText || "").match(/data-solution-button\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s]+))/i);
+    if (!m) return "";
+    return String(m[1] != null ? m[1] : (m[2] != null ? m[2] : (m[3] != null ? m[3] : ""))).trim().toLowerCase();
+  }
+
+  const spec = parseQuizSpec(rawSpec);
+  const targetRaw = spec.targetRaw;
+  const revealSetting = parseRevealSetting(spec.optionText);
 
   function waitForCircleDom(cb) {
     let tries = 0;
@@ -4214,6 +4338,8 @@ function fqdbg(tag) {
   }
 
   waitForCircleDom(({ wrap, host, mount, input }) => {
+    wrap.setAttribute("data-fq-failed-checks", wrap.getAttribute("data-fq-failed-checks") || "0");
+
     API.attachCircle(uid, {
       wrap: wrap,
       host: host,
@@ -4224,10 +4350,49 @@ function fqdbg(tag) {
     });
 
     API.ensureQuizBridge(uid, wrap);
+
+    if (revealSetting) {
+      const applyRevealSetting = () => {
+        const nodes = wrap.querySelectorAll("button, input[type='button'], input[type='submit']");
+        const buttons = [];
+
+        for (let i = 0; i < nodes.length; i++) {
+          const label = ((nodes[i].textContent || "") + " " + (nodes[i].getAttribute("aria-label") || "") + " " + (nodes[i].getAttribute("value") || ""))
+            .replace(/\s+/g, " ")
+            .trim()
+            .toLowerCase();
+          if (/(aufl|aufl[oö]sen|l[oö]sung|show solution|solution|resolve)/i.test(label)) buttons.push(nodes[i]);
+        }
+
+        if (!buttons.length) return;
+
+        let show = true;
+        if (/^(off|false|disable|disabled|none)$/.test(revealSetting)) {
+          show = false;
+        } else if (/^(on|true|enable|enabled)$/.test(revealSetting)) {
+          show = true;
+        } else if (/^\d+$/.test(revealSetting)) {
+          const threshold = parseInt(revealSetting, 10);
+          const attempts = parseInt(wrap.getAttribute("data-fq-failed-checks") || "0", 10);
+          show = (Number.isFinite(attempts) ? attempts : 0) >= threshold;
+        }
+
+        for (let i = 0; i < buttons.length; i++) {
+          const btn = buttons[i];
+          const display = show ? "" : "none";
+          if (btn.style.display !== display) btn.style.display = display;
+        }
+      };
+
+      wrap.__fqApplyRevealSetting = applyRevealSetting;
+      applyRevealSetting();
+    }
   });
 })();
 </script>
 @end
+
+
 
 
 
@@ -4273,9 +4438,15 @@ function fqdbg(tag) {
   if (!API) return false;
 
   const passed = API.isCorrect(uid);
-  if (passed && !API.isLocked(uid)) {
-    API.onCheck(uid, true);
+  const wrap = document.getElementById("fq-rect-wrap-@0");
+
+  if (!passed && !API.isLocked(uid) && wrap) {
+    const prev = parseInt(wrap.getAttribute("data-fq-failed-checks") || "0", 10);
+    wrap.setAttribute("data-fq-failed-checks", String((Number.isFinite(prev) ? prev : 0) + 1));
+    if (typeof wrap.__fqApplyRevealSetting === "function") wrap.__fqApplyRevealSetting();
   }
+
+  if (passed && !API.isLocked(uid)) API.onCheck(uid, true);
   return passed;
 })()
   </script>
@@ -4285,9 +4456,31 @@ function fqdbg(tag) {
 (function () {
   const API = window.__LIA_FRACTION_QUIZ__;
   const uid = "@0";
-  const targetRaw = String.raw`@1`;
+  const rawSpec = String.raw`@1`;
 
   if (!API) return;
+
+  function parseQuizSpec(raw) {
+    const source = String(raw == null ? "" : raw).trim();
+    const semi = source.indexOf(";");
+    if (semi < 0) {
+      return { targetRaw: source, optionText: "" };
+    }
+    return {
+      targetRaw: source.slice(0, semi).trim(),
+      optionText: source.slice(semi + 1).trim()
+    };
+  }
+
+  function parseRevealSetting(optionText) {
+    const m = String(optionText || "").match(/data-solution-button\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s]+))/i);
+    if (!m) return "";
+    return String(m[1] != null ? m[1] : (m[2] != null ? m[2] : (m[3] != null ? m[3] : ""))).trim().toLowerCase();
+  }
+
+  const spec = parseQuizSpec(rawSpec);
+  const targetRaw = spec.targetRaw;
+  const revealSetting = parseRevealSetting(spec.optionText);
 
   function waitForRectDom(cb) {
     let tries = 0;
@@ -4314,6 +4507,8 @@ function fqdbg(tag) {
   }
 
   waitForRectDom(({ wrap, host, mount, rowsInput, colsInput }) => {
+    wrap.setAttribute("data-fq-failed-checks", wrap.getAttribute("data-fq-failed-checks") || "0");
+
     API.attachRect(uid, {
       wrap: wrap,
       host: host,
@@ -4326,6 +4521,43 @@ function fqdbg(tag) {
     });
 
     API.ensureQuizBridge(uid, wrap);
+
+    if (revealSetting) {
+      const applyRevealSetting = () => {
+        const nodes = wrap.querySelectorAll("button, input[type='button'], input[type='submit']");
+        const buttons = [];
+
+        for (let i = 0; i < nodes.length; i++) {
+          const label = ((nodes[i].textContent || "") + " " + (nodes[i].getAttribute("aria-label") || "") + " " + (nodes[i].getAttribute("value") || ""))
+            .replace(/\s+/g, " ")
+            .trim()
+            .toLowerCase();
+          if (/(aufl|aufl[oö]sen|l[oö]sung|show solution|solution|resolve)/i.test(label)) buttons.push(nodes[i]);
+        }
+
+        if (!buttons.length) return;
+
+        let show = true;
+        if (/^(off|false|disable|disabled|none)$/.test(revealSetting)) {
+          show = false;
+        } else if (/^(on|true|enable|enabled)$/.test(revealSetting)) {
+          show = true;
+        } else if (/^\d+$/.test(revealSetting)) {
+          const threshold = parseInt(revealSetting, 10);
+          const attempts = parseInt(wrap.getAttribute("data-fq-failed-checks") || "0", 10);
+          show = (Number.isFinite(attempts) ? attempts : 0) >= threshold;
+        }
+
+        for (let i = 0; i < buttons.length; i++) {
+          const btn = buttons[i];
+          const display = show ? "" : "none";
+          if (btn.style.display !== display) btn.style.display = display;
+        }
+      };
+
+      wrap.__fqApplyRevealSetting = applyRevealSetting;
+      applyRevealSetting();
+    }
   });
 })();
 </script>
@@ -4377,63 +4609,6 @@ function fqdbg(tag) {
 
 
 
-
-
-
-
-
-
-
-
-@orthography: @orthography_(@uid,`@0`,`@1`,`@2`)
-
-@orthography_
-<div class="orthography-wrap" id="orthography-wrap-@0" data-ortho-uid="@0">
-  <span id="orthography-start-@0" style="display:none">@2</span>
-  <span id="orthography-solution-@0" style="display:none">@3</span>
-
-  <input id="orthography-input-@0" data-ortho-uid="@0" data-id="lia-quiz-@0" class="lia-input lia-quiz__input" style="margin-bottom:.5rem" value="@2">
-
-  <button type="button" class="lia-btn lia-btn--outline ortho-reset-inline" id="orthography-reset-@0" data-ortho-uid="@0">Reset</button>
-</div>
-
-[[!]]
-<script>
-(function(){
-  const el  = document.getElementById("orthography-input-@0");
-  const sol = document.getElementById("orthography-solution-@0");
-  if(!el || !sol) return false;
-
-  const norm = s => String(s || "").toLocaleLowerCase().replace(/\s+/g, "");
-  return norm(el.value) === norm(sol.textContent);
-})()
-</script>
-
-<script modify="false">
-(function(){
-  function getRootWindow(){
-    let w = window;
-    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
-    return w;
-  }
-
-  const ROOT = getRootWindow();
-  const MOD  = ROOT["__ORTHOGRAPHY_EXPORT_V8__"];
-  if (!MOD || !MOD.register) return;
-
-  MOD.register({
-    uid: "@0",
-    gateRaw: "@1",
-    idWrap: "orthography-wrap-@0",
-    idInput: "orthography-input-@0",
-    idReset: "orthography-reset-@0",
-    idStart: "orthography-start-@0",
-    idSolution: "orthography-solution-@0"
-  });
-})();
-</script>
-
-@end
 
 
 
@@ -4525,6 +4700,7 @@ function fqdbg(tag) {
 })();
 </script>
 @end
+
 
 
 
