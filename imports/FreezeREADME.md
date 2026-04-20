@@ -86,6 +86,8 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 -->
 
+
+
 # Reine LiaScript-Abgabelink-Demo
 
 Einfaches importieren: \
@@ -107,7 +109,13 @@ Tracking von Betrugsversuchen im Allgemeinen: \
 `@Auswertung(F12;Tab)`
 
 Aufgaben mit Bewertungseinheiten und Tags versehen: \
-`@ADetails(x=BE;Tag1,Tag2,...)` (mit einer Leerzeile hinter dem Quiz einfügen.)
+`@ADetails(BE=x;Tag1,Tag2,...)` (mit einer Leerzeile hinter dem Quiz einfügen.)
+
+Teilpunkte pro Teilaufgabe (z.B. 3 Lücken mit je 2 BE, insgesamt 6 BE): \
+`@ADetails(BE=6;Tag1,Tag2,...)`
+
+Unterschiedliche Teilpunkte pro Feld (z.B. 1 BE, 2 BE, 5 BE): \
+`@ADetails(BE=1|2|5;Tag1,Tag2,...)`
 
 Aufgaben ohne Bewertung: \
 `@ADetails(0=BE)` (mit einer Leerzeile hinter dem Quiz einfügen.)
@@ -360,254 +368,6 @@ __$c)\;\;$__ **Ziehe** den Punkt $C$ **auf** die Koordinaten $(7|6)$.
 </section>
 
 
-
-
-# Wie entsteht hier der Bug?
-
-
-**_Aufgabe 1:_** **Gib** den Wert des Terms als Dezimalzahl **an**.
-
-<section class="dynFlex">
-
-<div class="flex-child">
-
-<!-- data-solution-timer="450s" data-solution-timer-start="oncheck" data-solution-timer-badge="off"  -->
-__$a)\;\;$__ $ \dfrac{5}{8} =$ [[  0,625  ]]
-@ADetails(1=BE;Dezimalzahlen)
-
-</div>
-
-<div class="flex-child">
-
-<!-- data-solution-timer="450s" data-solution-timer-start="oncheck" data-solution-timer-badge="off"  -->
-__$b)\;\;$__ $ \dfrac{7}{5} =$ [[  1,4  ]] 
-@ADetails(1=BE;Dezimalzahlen)
-
-</div>
-
-<div class="flex-child">
-
-<!-- data-solution-timer="450s" data-solution-timer-start="oncheck" data-solution-timer-badge="off"  -->
-__$c)\;\;$__ $ \dfrac{12}{25} =$ [[  0,48  ]] 
-@ADetails(1=BE;Dezimalzahlen)
-
-</div>
-
-</section>
-
-
-
---- 
-
---- 
-
-
-**_Aufgabe 2:_** **Gib** die Zahl **an**, die $x$ sein muss, sodass die Brüche gleichwertig sind.
-
-
-<section class="dynFlex">
-
-<div class="flex-child">
-
-<!-- data-solution-timer="450s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->
-__$a)\;\;$__ 
-$ \dfrac{ 3 }{ 5 } = \dfrac{ 21 }{ x }  $ \
-$x = $ [[  35  ]]
-@ADetails(1=BE;Bruchrechnung)
-
-</div>
-
-<div class="flex-child">
-
-<!-- data-solution-timer="450s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->
-__$b)\;\;$__  
-$ \dfrac{ 4 }{ 7 } = \dfrac{ x }{ 21 } $ \
-$x = $ [[  12  ]]
-@ADetails(1=BE;Bruchrechnung)
-
-</div>
-
-<div class="flex-child">
-
-<!-- data-solution-timer="450s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->
-__$c)\;\;$__  
-$ \dfrac{ x }{ 8 } = \dfrac{ 9 }{ 12 } $ \
-$x = $ [[  6  ]]
-@ADetails(1=BE;Bruchrechnung)
-
-</div>
-
-</section>
-
-
-
---- 
-
---- 
-
-
-
-
-
-**_Aufgabe 3:_** Höre die Tonspur an und **gib** den Wert des beschriebenen Terms **an**. (Schreibe für die Schrifterkennung sauber, falls du sie nutzen solltest.)
-
-
-<section class="dynFlex">
-
-<div class="flex-child">
-
-__$a)\;\;$__ 
-
-{{|> Deutsch Female}}
-<!-- style="position: absolute; left: -9999px;" -->
-Zu meinen drei Elftel werden vier Elftel hinzugefügt.
-
-<!-- data-solution-button="5"-->
-[[  7/11  ]] @canvas
-@ADetails(1=BE;Bruchrechnung)
-@Algebrite.check(7/11)
-
-
-</div>
-
-<div class="flex-child">
-
-__$b)\;\;$__ 
-
-{{|> Deutsch Female}}
-<!-- style="position: absolute; left: -9999px;" -->
-Ich habe drei Zehntel und nochmal vier Zehntel.
-
-<!-- data-solution-button="5"-->
-[[  7/10  ]] @canvas
-@ADetails(1=BE;Bruchrechnung)
-@Algebrite.check(7/10)
-
-</div>
-
-</section>
-
-
-
---- 
-
---- 
-
-
-**_Aufgabe 4:_** **Gib** den Wert der Terme **an**. Achte dabei auf die Muster dieser Permanenzreihe.
-
-
-<section class="dynFlex">
-
-<div class="flex-child">
-
-<!-- data-solution-timer="450s" data-solution-timer-start="oncheck" data-solution-timer-badge="off"  data-show-partial-solution -->
-__$a)\;\;$__ \
-$24 \cdot 8 =$ [[  192 ]] \
- \
-$24 \cdot 4 =$ [[  96  ]] \
- \
-$24 \cdot 2 =$ [[  48  ]] \
- \
-$24 \cdot 1 =$ [[  24  ]] \
- \
-$24 \cdot \dfrac{1}{2} =$ [[  12  ]] \
- \
-$24 \cdot \dfrac{1}{4} =$ [[   6  ]] \
- \
-$24 \cdot \dfrac{1}{8} =$ [[  3   ]] \
-@ADetails(2=BE;Bruchrechnung)
-@Algebrite.check([ 192;96;48;24;12;6;3 ])
-
-
-</div>
-
-<div class="flex-child">
-
-
-
-<!-- data-solution-timer="450s" data-solution-timer-start="oncheck" data-solution-timer-badge="off"  data-show-partial-solution -->
-__$b)\;\;$__ \
-
-$4 : 4 =$ [[  1 ]] \
- \
-$4 : 2 =$ [[  2  ]] \
- \
-$4 : 1 =$ [[  4  ]] \
- \
-$4 : \dfrac{1}{2} =$ [[  8  ]] \
- \
-$4 : \dfrac{1}{4} =$ [[  16 ]] \
- \
-$4 : \dfrac{1}{8} =$ [[  32 ]] \
- \
-$4 : \dfrac{1}{16} =$ [[ 64  ]] \
-@ADetails(2=BE;Bruchrechnung)
-@Algebrite.check([ 1;2;4;8;16;32;64 ])
-
-
-</div>
-
-</section>
-
-
-
-
-
-
-
-**_Aufgabe 2:_** **Gib** den Wert des Terms als Dezimalzahl **an**.
-
-<section class="dynFlex">
-
-<div class="flex-child">
-
-<!-- data-solution-timer="450s" data-solution-timer-start="oncheck" data-solution-timer-badge="off"  -->
-__$a)\;\;$__ $ 1,4 + 2,1 \cdot 0,3 =$ [[  2,09  ]] 
-@ADetails(2=BE;Dezimalzahlen)
-
-</div>
-
-<div class="flex-child">
-
-<!-- data-solution-timer="450s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->
-__$b)\;\;$__ $ 6,5 : 1,25 -1,6 =$ [[  3,6  ]] 
-@ADetails(2=BE;Dezimalzahlen)
-
-</div>
-
-<div class="flex-child">
-
-<!-- data-solution-timer="450s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->
-__$c)\;\;$__ $ 3,4 - 0,6 \cdot 1,1 =$ [[  2,84  ]]
-@ADetails(2=BE;Dezimalzahlen)
-
-</div>
-
-<div class="flex-child">
-
-<!-- data-solution-timer="450s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->
-__$d)\;\;$__ $ (4,8+2,5) \cdot 0,02 =$ [[  0,146  ]]
-@ADetails(2=BE;Dezimalzahlen)
-
-</div>
-
-<div class="flex-child">
-
-<!-- data-solution-timer="450s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->
-__$e)\;\;$__ $ 5,7:6-2,1:6 =$ [[  0,6  ]]
-@ADetails(2=BE;Dezimalzahlen)
-
-</div>
-
-<div class="flex-child">
-
-<!-- data-solution-timer="450s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->
-__$f)\;\;$__ $ (0,8-0,45):0,7 =$ [[  0,5  ]]
-@ADetails(2=BE;Dezimalzahlen)
-
-</div> 
-</section>
 
 
 

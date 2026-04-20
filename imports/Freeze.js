@@ -2417,16 +2417,92 @@ function applyDeclaredTaskMetaToCapturedSequence(hash, sequence) {
   }
 }
 
+function parseAssignmentPointSpec(raw) {
+  const txt = normalizeSpace(String(raw || ""));
+  const out = {
+    raw: txt,
+    parts: [],
+    total: null
+  };
+
+  if (!txt) return out;
+
+  function toNumberToken(token) {
+    let t = normalizeSpace(String(token || ""));
+    if (!t) return NaN;
+
+    if (/^[-+]?[.,]\d+$/.test(t)) {
+      t = t.replace(/^([-+])?/, "$10");
+    }
+
+    return Number(t.replace(",", "."));
+  }
+
+  if (txt.indexOf("|") >= 0) {
+    out.parts = txt
+      .split(/\s*\|\s*/)
+      .map(toNumberToken)
+      .filter(function (n) {
+        return Number.isFinite(n) && n >= 0;
+      });
+
+    if (out.parts.length) {
+      out.total = out.parts.reduce(function (sum, n) {
+        return sum + n;
+      }, 0);
+      return out;
+    }
+  }
+
+  // Explizite Liste, z.B. "2,2,2" oder "1.5;0.5;2"
+  const isExplicitList = /^[-+]?(?:\d+(?:[.,]\d+)?|[.,]\d+)(?:\s*[,;]\s*[-+]?(?:\d+(?:[.,]\d+)?|[.,]\d+))+$/i.test(txt);
+
+  if (isExplicitList) {
+    out.parts = txt
+      .split(/\s*[,;]\s*/)
+      .map(toNumberToken)
+      .filter(function (n) {
+        return Number.isFinite(n) && n >= 0;
+      });
+
+    if (out.parts.length) {
+      out.total = out.parts.reduce(function (sum, n) {
+        return sum + n;
+      }, 0);
+      return out;
+    }
+  }
+
+  const first = txt.match(/[-+]?(?:\d+(?:[.,]\d+)?|[.,]\d+)/);
+  if (!first) return out;
+
+  const n = toNumberToken(first[0] || "");
+  if (!Number.isFinite(n)) return out;
+
+  out.parts = [Math.max(0, n)];
+  out.total = Math.max(0, n);
+  return out;
+}
+
+function formatAssignmentUnitsValue(n) {
+  if (!Number.isFinite(Number(n))) return "";
+
+  const value = Number(n);
+
+  if (Math.abs(value - Math.round(value)) < 1e-9) {
+    return String(Math.round(value));
+  }
+
+  return String(value).replace(".", ",");
+}
+
 function parseAssignmentUnits(raw) {
-  const txt = normalizeSpace(String(raw || "")).replace(",", ".");
-  const m = txt.match(/\d+(?:\.\d+)?/);
-  if (!m) return 1;
+  const parsed = parseAssignmentPointSpec(raw);
 
-  const n = Number(m[0]);
-  if (!Number.isFinite(n)) return 1;
-  if (n < 0) return 0;
+  if (parsed.total === null) return 1;
+  if (!Number.isFinite(parsed.total)) return 1;
 
-  return n;
+  return Math.max(0, Number(parsed.total));
 }
 
 function getAssignmentUnitsFromRoot(root) {
@@ -2467,6 +2543,69 @@ function getAssignmentUnitsFromRoot(root) {
   }
 
   return 1;
+}
+
+function getAssignmentPointPartsFromRoot(root) {
+  if (!root || !(root instanceof Element)) return [];
+
+  const quizRoot = getTextQuizStateRoot(root) || root;
+
+  function readPartsFromElement(el) {
+    if (!el || !(el instanceof Element)) return [];
+
+    const rawJson = normalizeSpace(el.getAttribute("data-adetails-point-parts") || "");
+    if (rawJson) {
+      try {
+        const parsed = JSON.parse(rawJson);
+        if (Array.isArray(parsed) && parsed.length) {
+          return parsed
+            .map(function (n) { return Number(n); })
+            .filter(function (n) {
+              return Number.isFinite(n) && n >= 0;
+            });
+        }
+      } catch (e) {}
+    }
+
+    const rawSpec = normalizeSpace(el.getAttribute("data-adetails-raw") || "");
+    if (rawSpec) {
+      const spec = parseAssignmentDetails(rawSpec);
+      if (Array.isArray(spec.pointsParts) && spec.pointsParts.length) {
+        return spec.pointsParts
+          .map(function (n) { return Number(n); })
+          .filter(function (n) {
+            return Number.isFinite(n) && n >= 0;
+          });
+      }
+    }
+
+    return [];
+  }
+
+  let parts = readPartsFromElement(quizRoot);
+  if (parts.length) return parts;
+
+  const descendants = Array.from(
+    quizRoot.querySelectorAll("[data-adetails-point-parts], [data-adetails-raw]")
+  );
+
+  for (let i = 0; i < descendants.length; i++) {
+    parts = readPartsFromElement(descendants[i]);
+    if (parts.length) return parts;
+  }
+
+  let node = quizRoot.parentElement;
+  let hops = 0;
+
+  while (node && hops < 5) {
+    parts = readPartsFromElement(node);
+    if (parts.length) return parts;
+
+    node = node.parentElement;
+    hops += 1;
+  }
+
+  return [];
 }
 
 
@@ -2578,6 +2717,18 @@ function getEvaluationUnits(state) {
   const n = Number(state && state.be);
   if (Number.isFinite(n) && n >= 0) return n;
   return 1;
+}
+
+function getEvaluationPartialRatio(state) {
+  const n = Number(state && state.pc);
+  if (!Number.isFinite(n)) return null;
+  return Math.max(0, Math.min(1, n));
+}
+
+function getEvaluationPartialAward(state) {
+  const n = Number(state && state.pa);
+  if (!Number.isFinite(n)) return null;
+  return Math.max(0, n);
 }
 
 function isEvaluationTarget(hash) {
@@ -2861,6 +3012,8 @@ function getManualAwardNumberForState(slide, state) {
 function getEvaluationAllocation(slide, state) {
   const be = getEvaluationUnits(state);
   const manual = getManualAwardNumberForState(slide, state);
+  const partialAward = getEvaluationPartialAward(state);
+  const partialRatio = getEvaluationPartialRatio(state);
 
   // Manuelle Korrektur hat immer Vorrang
   if (manual !== null) {
@@ -2872,7 +3025,33 @@ function getEvaluationAllocation(slide, state) {
     };
   }
 
+  if (partialAward !== null) {
+    const correct = Math.max(0, Math.min(be, partialAward));
+    return {
+      correct: correct,
+      wrong: Math.max(0, be - correct),
+      resolved: 0,
+      notMade: 0
+    };
+  }
+
   const outcome = getEvaluationOutcome(state);
+
+  // Automatische Teilpunkte aus Feld-für-Feld-Auswertung (z.B. partial solution)
+  if (
+    partialRatio !== null &&
+    outcome !== "resolved" &&
+    outcome !== "not_made"
+  ) {
+    const correct = Math.max(0, Math.min(be, be * partialRatio));
+
+    return {
+      correct: correct,
+      wrong: Math.max(0, be - correct),
+      resolved: 0,
+      notMade: 0
+    };
+  }
 
   if (outcome === "correct") {
     return { correct: be, wrong: 0, resolved: 0, notMade: 0 };
@@ -3273,12 +3452,27 @@ function getAssignmentDefaultAwardValue(root, spec, marker) {
       ? Number(spec.pointsValue)
       : 1;
 
+  function ratioToAward(ratio) {
+    const r = Number(ratio);
+    if (!Number.isFinite(r)) return null;
+    const clamped = Math.max(0, Math.min(1, r));
+    return String(Math.max(0, Math.min(be, be * clamped)));
+  }
+
   // Im geteilten Freezelink möglichst den gespeicherten Snapshot-Zustand
   // der konkreten Aufgabe benutzen, nicht den gerade sichtbaren DOM-Zustand.
   if (isSharedFreezeLinkMode()) {
     const storedState = getSnapshotTaskStateForMarker(marker);
 
     if (storedState) {
+      const storedWeightedAward = Number(storedState.pa);
+      if (Number.isFinite(storedWeightedAward)) {
+        return String(Math.max(0, Math.min(be, storedWeightedAward)));
+      }
+
+      const storedPartial = ratioToAward(storedState.pc);
+      if (storedPartial !== null) return storedPartial;
+
       const outcome = getEvaluationOutcome(storedState);
 
       if (outcome === "correct") return String(be);
@@ -3287,6 +3481,31 @@ function getAssignmentDefaultAwardValue(root, spec, marker) {
   }
 
   // Fallback für lokale/ältere Fälle weiterhin über DOM-Zustand
+  const rootEl = root && (getTextQuizStateRoot(root) || root);
+  const rootFeedback = rootEl ? rootEl.querySelector(".lia-quiz__feedback") : null;
+  const rootChecks = getQuizCheckCount(rootEl || root);
+
+  const textPartial = detectTextQuizPartialRatio(
+    rootEl,
+    getTextQuizInputsFromRoot(rootEl || root),
+    rootFeedback,
+    rootChecks
+  );
+
+  const dropPartial = detectDropdownQuizPartialRatio(
+    rootEl,
+    getDropdownQuizControlsFromRoot(rootEl || root),
+    rootFeedback,
+    rootChecks
+  );
+
+  const domPartial = ratioToAward(
+    textPartial.ratio !== null
+      ? textPartial.ratio
+      : dropPartial.ratio
+  );
+  if (domPartial !== null) return domPartial;
+
   const outcome = getAssignmentOutcomeFromQuizRoot(root);
 
   if (outcome === "correct") return String(be);
@@ -3363,6 +3582,7 @@ function parseAssignmentDetails(raw) {
     pointsText: "",
     unit: "BE",
     pointsValue: null,
+    pointsParts: [],
     meta: Object.create(null),
     badge: "",
     tags: []
@@ -3379,9 +3599,10 @@ function parseAssignmentDetails(raw) {
     out.pointsText = p;
     out.unit = u;
 
-    const n = Number(String(p).replace(",", "."));
-    if (Number.isFinite(n)) {
-      out.pointsValue = n;
+    const parsed = parseAssignmentPointSpec(p);
+    if (parsed.total !== null && Number.isFinite(parsed.total)) {
+      out.pointsValue = Math.max(0, Number(parsed.total));
+      out.pointsParts = Array.isArray(parsed.parts) ? parsed.parts.slice() : [];
     }
   }
 
@@ -3453,7 +3674,11 @@ function parseAssignmentDetails(raw) {
   });
 
   if (out.pointsText) {
-    out.badge = normalizeSpace(out.pointsText + " " + out.unit);
+    const badgePoints = out.pointsValue !== null
+      ? formatAssignmentUnitsValue(out.pointsValue)
+      : out.pointsText;
+
+    out.badge = normalizeSpace(badgePoints + " " + out.unit);
   }
 
   return out;
@@ -3671,6 +3896,12 @@ function applyAssignmentDetailToMarker(marker) {
       el.setAttribute("data-adetails-points", String(spec.pointsValue));
     } else {
       el.removeAttribute("data-adetails-points");
+    }
+
+    if (Array.isArray(spec.pointsParts) && spec.pointsParts.length) {
+      el.setAttribute("data-adetails-point-parts", JSON.stringify(spec.pointsParts));
+    } else {
+      el.removeAttribute("data-adetails-point-parts");
     }
 
     if (spec.tags && spec.tags.length) {
@@ -4020,6 +4251,16 @@ function compactCommonStateMeta(src, out) {
     out.cc = Number(src.cc);
   }
 
+  const partialRatio = Number(src.pc);
+  if (Number.isFinite(partialRatio) && partialRatio >= 0 && partialRatio <= 1) {
+    out.pc = partialRatio;
+  }
+
+  const partialAward = Number(src.pa);
+  if (Number.isFinite(partialAward) && partialAward >= 0) {
+    out.pa = partialAward;
+  }
+
   if (Number(src.nm || 0) === 1) {
     out.nm = 1;
   }
@@ -4070,7 +4311,9 @@ function canUseCompactTextQuizTuple(state) {
     di: 1,
     s: 1,
     fc: 1,
-    cc: 1
+    cc: 1,
+    pc: 1,
+    pa: 1
   };
 
   for (let i = 0; i < keys.length; i++) {
@@ -4113,6 +4356,16 @@ function expandTextQuizStateFromFreezeUrl(state) {
 
   if (Number(state[5] || 0) > 0) {
     out.cc = Number(state[5]);
+  }
+
+  const partialRatio = Number(state[6]);
+  if (Number.isFinite(partialRatio) && partialRatio >= 0 && partialRatio <= 1) {
+    out.pc = partialRatio;
+  }
+
+  const partialAward = Number(state[7]);
+  if (Number.isFinite(partialAward) && partialAward >= 0) {
+    out.pa = partialAward;
   }
 
   return out;
@@ -4200,6 +4453,15 @@ function compactTextQuizStateForFreezeUrl(state) {
 
     if (Number(out.cc || 0) > 0) {
       tuple[5] = Number(out.cc);
+    }
+
+    if (Number.isFinite(Number(out.pc))) {
+      const partialRatio = Math.max(0, Math.min(1, Number(out.pc)));
+      tuple[6] = partialRatio;
+    }
+
+    if (Number.isFinite(Number(out.pa))) {
+      tuple[7] = Math.max(0, Number(out.pa));
     }
 
     return tuple;
@@ -10582,8 +10844,150 @@ function applyStoredTileStatesToHost(host, storedStates) {
     if (feedbackCode) out.fc = feedbackCode;
     if (checkCount > 0) out.cc = checkCount;
 
+    const partial = detectDropdownQuizPartialRatio(root || taskRoot, controls, feedback, checkCount);
+    if (partial.ratio !== null) {
+      out.pc = partial.ratio;
+    }
+
+    const dropdownParts = getAssignmentPointPartsFromRoot(root || taskRoot);
+    const weightedAward = getWeightedPartialAwardFromStatuses(partial.statuses, dropdownParts, out.be);
+    if (weightedAward !== null) {
+      out.pa = weightedAward;
+    }
+
     return out;
   }
+
+function detectDropdownQuizPartialRatio(root, controls, feedback, checkCount) {
+  const drops = Array.isArray(controls) ? controls : [];
+  const checks = Number(checkCount || 0) || 0;
+
+  if (!drops.length || checks <= 0) {
+    return {
+      ratio: null,
+      statuses: []
+    };
+  }
+
+  function hasClassToken(node, regex) {
+    if (!node || !(node instanceof Element)) return false;
+    return regex.test(String(node.className || ""));
+  }
+
+  function detectStatusFromElement(el) {
+    if (!el || !(el instanceof Element)) return "";
+
+    if (String(el.getAttribute("aria-invalid") || "").toLowerCase() === "true") {
+      return "wrong";
+    }
+
+    const dataState = normalizeSpace(
+      el.getAttribute("data-state") ||
+      el.getAttribute("data-status") ||
+      ""
+    ).toLowerCase();
+
+    if (dataState === "correct" || dataState === "right" || dataState === "success") {
+      return "correct";
+    }
+
+    if (dataState === "wrong" || dataState === "error" || dataState === "incorrect") {
+      return "wrong";
+    }
+
+    if (hasClassToken(el, /\b(text-success|is-valid|valid|correct|right|success)\b/i)) {
+      return "correct";
+    }
+
+    if (hasClassToken(el, /\b(text-error|is-invalid|invalid|wrong|incorrect|error|failed)\b/i)) {
+      return "wrong";
+    }
+
+    return "";
+  }
+
+  function detectDropStatus(drop) {
+    if (!drop) return "";
+
+    const chain = [];
+    let node = drop;
+
+    for (let depth = 0; depth < 8 && node; depth++) {
+      chain.push(node);
+      node = node.parentElement;
+      if (root && node === root) {
+        chain.push(node);
+        break;
+      }
+    }
+
+    const selectedWrap =
+      drop.querySelector(":scope > .lia-dropdown__selected") ||
+      drop.querySelector(".lia-dropdown__selected");
+    if (selectedWrap) chain.push(selectedWrap);
+
+    const selectedOption =
+      drop.querySelector('.lia-dropdown__option[aria-selected="true"]') ||
+      drop.querySelector('.lia-dropdown__option.is-selected, .lia-dropdown__option.selected, .lia-dropdown__option.active');
+    if (selectedOption) chain.push(selectedOption);
+
+    for (let i = 0; i < chain.length; i++) {
+      const status = detectStatusFromElement(chain[i]);
+      if (status) return status;
+    }
+
+    return "";
+  }
+
+  let correctCount = 0;
+  let wrongCount = 0;
+
+  drops.forEach(function (drop) {
+    const status = detectDropStatus(drop);
+    if (status === "correct") correctCount += 1;
+    if (status === "wrong") wrongCount += 1;
+  });
+
+  const markedCount = correctCount + wrongCount;
+  if (markedCount > 0) {
+    return {
+      ratio: Math.max(0, Math.min(1, correctCount / markedCount)),
+      statuses: drops.map(detectDropStatus)
+    };
+  }
+
+  const feedbackText = normalizeSpace(feedback && feedback.textContent || "");
+  if (feedbackText) {
+    let m = feedbackText.match(/(\d+)\s*(?:\/|von|of|aus)\s*(\d+)/i);
+    if (m) {
+      const a = Number(m[1]);
+      const b = Number(m[2]);
+      if (Number.isFinite(a) && Number.isFinite(b) && b > 0) {
+        return {
+          ratio: Math.max(0, Math.min(1, a / b)),
+          statuses: []
+        };
+      }
+    }
+
+    m = feedbackText.match(/(\d+)\s*(?:richtig|korrekt|correct)/i);
+    if (m) {
+      const a = Number(m[1]);
+      const b = drops.length;
+      if (Number.isFinite(a) && b > 0) {
+        return {
+          ratio: Math.max(0, Math.min(1, a / b)),
+          statuses: []
+        };
+      }
+    }
+  }
+
+  return {
+    ratio: null,
+    statuses: []
+  };
+}
 
   function lockDropdownControl(drop) {
     if (!drop) return;
@@ -10894,7 +11298,157 @@ function captureTextQuizState(root, idx) {
   if (feedbackCode) out.fc = feedbackCode;
   if (checkCount > 0) out.cc = checkCount;
 
+  const partial = detectTextQuizPartialRatio(quizRoot || root, inputs, feedback, checkCount);
+  if (partial.ratio !== null) {
+    out.pc = partial.ratio;
+  }
+
+  const textParts = getAssignmentPointPartsFromRoot(quizRoot || root);
+  const weightedAward = getWeightedPartialAwardFromStatuses(partial.statuses, textParts, out.be);
+  if (weightedAward !== null) {
+    out.pa = weightedAward;
+  }
+
   return out;
+}
+
+function getWeightedPartialAwardFromStatuses(statuses, pointParts, totalBe) {
+  const arr = Array.isArray(statuses) ? statuses.slice() : [];
+  const parts = Array.isArray(pointParts) ? pointParts.slice() : [];
+
+  if (!arr.length || !parts.length) return null;
+  if (arr.length !== parts.length) return null;
+
+  let awarded = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === "correct") {
+      awarded += Number(parts[i]) || 0;
+    }
+  }
+
+  const be = Number(totalBe);
+  if (Number.isFinite(be) && be >= 0) {
+    return Math.max(0, Math.min(be, awarded));
+  }
+
+  return Math.max(0, awarded);
+}
+
+function detectTextQuizPartialRatio(quizRoot, inputs, feedback, checkCount) {
+  const controls = Array.isArray(inputs) ? inputs : [];
+  const checks = Number(checkCount || 0) || 0;
+
+  if (!controls.length || checks <= 0) {
+    return {
+      ratio: null,
+      statuses: []
+    };
+  }
+
+  function hasClassToken(node, regex) {
+    if (!node || !(node instanceof Element)) return false;
+    return regex.test(String(node.className || ""));
+  }
+
+  function detectFieldStatus(input) {
+    if (!input) return "";
+
+    const chain = [];
+    let node = input;
+
+    for (let depth = 0; depth < 4 && node; depth++) {
+      chain.push(node);
+      node = node.parentElement;
+      if (quizRoot && node === quizRoot) {
+        chain.push(node);
+        break;
+      }
+    }
+
+    for (let i = 0; i < chain.length; i++) {
+      const el = chain[i];
+
+      if (String(el.getAttribute("aria-invalid") || "").toLowerCase() === "true") {
+        return "wrong";
+      }
+
+      const dataState = normalizeSpace(
+        el.getAttribute("data-state") ||
+        el.getAttribute("data-status") ||
+        ""
+      ).toLowerCase();
+
+      if (dataState === "correct" || dataState === "right" || dataState === "success") {
+        return "correct";
+      }
+
+      if (dataState === "wrong" || dataState === "error" || dataState === "incorrect") {
+        return "wrong";
+      }
+
+      if (hasClassToken(el, /\b(text-success|is-valid|valid|correct|right|success)\b/i)) {
+        return "correct";
+      }
+
+      if (hasClassToken(el, /\b(text-error|is-invalid|invalid|wrong|incorrect|error|failed)\b/i)) {
+        return "wrong";
+      }
+    }
+
+    return "";
+  }
+
+  let correctCount = 0;
+  let wrongCount = 0;
+  const statuses = [];
+
+  controls.forEach(function (input) {
+    const status = detectFieldStatus(input);
+    statuses.push(status || "");
+    if (status === "correct") correctCount += 1;
+    if (status === "wrong") wrongCount += 1;
+  });
+
+  const markedCount = correctCount + wrongCount;
+  if (markedCount > 0) {
+    return {
+      ratio: Math.max(0, Math.min(1, correctCount / markedCount)),
+      statuses: statuses
+    };
+  }
+
+  const feedbackText = normalizeSpace(feedback && feedback.textContent || "");
+  if (feedbackText) {
+    let m = feedbackText.match(/(\d+)\s*(?:\/|von|of)\s*(\d+)/i);
+    if (m) {
+      const a = Number(m[1]);
+      const b = Number(m[2]);
+      if (Number.isFinite(a) && Number.isFinite(b) && b > 0) {
+        return {
+          ratio: Math.max(0, Math.min(1, a / b)),
+          statuses: []
+        };
+      }
+    }
+
+    m = feedbackText.match(/(\d+)\s*(?:richtig|correct)/i);
+    if (m) {
+      const a = Number(m[1]);
+      const b = controls.length;
+      if (Number.isFinite(a) && b > 0) {
+        return {
+          ratio: Math.max(0, Math.min(1, a / b)),
+          statuses: []
+        };
+      }
+    }
+  }
+
+  return {
+    ratio: null,
+    statuses: []
+  };
 }
 
 function countExpectedControls(slide) {

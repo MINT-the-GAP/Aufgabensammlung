@@ -208,6 +208,55 @@ function fqdbg(tag) {
     return out;
   }
 
+  function detectUiLanguage() {
+    const langs = [];
+
+    try {
+      const lia = ROOT && (ROOT.LIA || ROOT.lia);
+      if (lia) {
+        if (typeof lia.language === "string") langs.push(lia.language);
+        if (lia.settings && typeof lia.settings.language === "string") langs.push(lia.settings.language);
+        if (lia.lang && typeof lia.lang === "string") langs.push(lia.lang);
+      }
+    } catch (e) {}
+
+    try {
+      if (ROOT && ROOT.document && ROOT.document.documentElement) {
+        langs.push(ROOT.document.documentElement.lang || "");
+      }
+    } catch (e) {}
+
+    try {
+      if (document && document.documentElement) {
+        langs.push(document.documentElement.lang || "");
+      }
+    } catch (e) {}
+
+    try {
+      if (navigator && Array.isArray(navigator.languages)) {
+        for (let i = 0; i < navigator.languages.length; i++) langs.push(navigator.languages[i] || "");
+      }
+      if (navigator && navigator.language) langs.push(navigator.language);
+    } catch (e) {}
+
+    for (let i = 0; i < langs.length; i++) {
+      const raw = String(langs[i] || "").trim().toLowerCase();
+      if (!raw) continue;
+      const base = raw.split("-")[0];
+      if (base) return base;
+    }
+
+    return "de";
+  }
+
+  function getQuizLabels(lang) {
+    const key = String(lang || "").toLowerCase();
+    if (key === "de") {
+      return { subdivisions: "Unterteilungen", vertical: "vertikal", horizontal: "horizontal" };
+    }
+    return { subdivisions: "Subdivisions", vertical: "vertical", horizontal: "horizontal" };
+  }
+
   function injectStyleOnce() {
     const DOC = getDoc();
     if (!DOC || !DOC.head) return;
@@ -552,9 +601,28 @@ function fqdbg(tag) {
         if (nodes.circleInput) this.bindCircleInput(uid, nodes.circleInput);
         if (nodes.rowsInput || nodes.colsInput) this.bindRectInputs(uid, nodes.rowsInput, nodes.colsInput);
 
+        this.localizeRangeLabels(uid, nodes.kind);
+
         if (nodes.wrap) this.ensureQuizBridge(uid, nodes.wrap);
 
         return nodes;
+      },
+
+      localizeRangeLabels(uid, kind) {
+        const lang = detectUiLanguage();
+        const labels = getQuizLabels(lang);
+
+        if (kind === "circle") {
+          const range = document.getElementById("fq-circle-range-" + uid);
+          if (range) range.setAttribute("data-label", labels.subdivisions);
+        }
+
+        if (kind === "rect") {
+          const rowsWrap = document.getElementById("fq-rect-rows-wrap-" + uid);
+          const colsWrap = document.getElementById("fq-rect-cols-wrap-" + uid);
+          if (rowsWrap) rowsWrap.setAttribute("data-label", labels.vertical);
+          if (colsWrap) colsWrap.setAttribute("data-label", labels.horizontal);
+        }
       },
 
       parseTarget(raw) {
@@ -635,20 +703,40 @@ function fqdbg(tag) {
 
       buildCircleSolution(targetRaw) {
         const t = normalizeFractionInfo(targetRaw);
-        const parts = Math.max(1, t.den | 0);
+        let displayNum = t.num;
+        let displayDen = t.den;
+        const rawStr = (targetRaw && typeof targetRaw === "object" && typeof targetRaw.raw === "string")
+          ? targetRaw.raw
+          : (typeof targetRaw === "string" ? targetRaw : "");
+        const rawMatch = rawStr.trim().match(/^\s*([-+]?\d+)\s*\/\s*([-+]?\d+)\s*$/);
+        if (rawMatch) {
+          displayNum = parseInt(rawMatch[1], 10);
+          displayDen = parseInt(rawMatch[2], 10);
+        }
+        const parts = Math.max(1, displayDen | 0);
         const active = Array(parts).fill(false);
-        for (let i = 0; i < Math.min(parts, t.num | 0); i++) active[i] = true;
+        for (let i = 0; i < Math.min(parts, displayNum | 0); i++) active[i] = true;
         return { type: "circle", target: t, parts, active };
       },
 
       buildRectSolution(targetRaw) {
         const t = normalizeFractionInfo(targetRaw);
-        const pair = bestFactorPair(t.den);
+        let displayNum = t.num;
+        let displayDen = t.den;
+        const rawStr = (targetRaw && typeof targetRaw === "object" && typeof targetRaw.raw === "string")
+          ? targetRaw.raw
+          : (typeof targetRaw === "string" ? targetRaw : "");
+        const rawMatch = rawStr.trim().match(/^\s*([-+]?\d+)\s*\/\s*([-+]?\d+)\s*$/);
+        if (rawMatch) {
+          displayNum = parseInt(rawMatch[1], 10);
+          displayDen = parseInt(rawMatch[2], 10);
+        }
+        const pair = bestFactorPair(displayDen);
         const rows = pair.rows;
         const cols = pair.cols;
         const total = rows * cols;
         const active = Array(total).fill(false);
-        for (let i = 0; i < Math.min(total, t.num | 0); i++) active[i] = true;
+        for (let i = 0; i < Math.min(total, displayNum | 0); i++) active[i] = true;
         return { type: "rect", target: t, rows, cols, active };
       },
 
@@ -876,6 +964,8 @@ function fqdbg(tag) {
         if (opts.circleInput) nodes.circleInput = opts.circleInput;
         if (opts.rowsInput) nodes.rowsInput = opts.rowsInput;
         if (opts.colsInput) nodes.colsInput = opts.colsInput;
+
+        this.localizeRangeLabels(uid, kind || nodes.kind);
 
         if (opts.target !== undefined) this.setTarget(uid, opts.target, kind || meta.kind);
 
@@ -1490,6 +1580,81 @@ function fqdbg(tag) {
 </script>
 @end
 
+@circleQuizC: @circleQuizC_(@uid,@0,@1)
+
+@circleQuizC_
+<div id="fq-circle-wrap-@0" class="fq-widget" data-fq-kind="circle" data-fq-uid="@0">
+  <div id="fq-circle-host-@0" class="fq-widget" data-fq-kind="circle" data-fq-uid="@0">
+    <div id="fq-circle-mount-@0" class="fq-mount"></div>
+
+    <div id="fq-circle-range-@0" class="fq-range" data-label="Unterteilungen">
+<input type="range" min="1" max="32" value="1" output="fq-c-n-@0">
+    </div>
+  </div>
+
+  @2
+  [[!]]
+  <script>
+(() => {
+  const API = window.__LIA_FRACTION_QUIZ__;
+  const uid = "@0";
+  if (!API) return false;
+
+  const passed = API.isCorrect(uid);
+  if (passed && !API.isLocked(uid)) {
+    API.onCheck(uid, true);
+  }
+  return passed;
+})()
+  </script>
+</div>
+
+<script modify="false">
+(function () {
+  const API = window.__LIA_FRACTION_QUIZ__;
+  const uid = "@0";
+  const targetRaw = String.raw`@1`;
+
+  if (!API) return;
+
+  function waitForCircleDom(cb) {
+    let tries = 0;
+
+    function tick() {
+      const wrap = document.getElementById("fq-circle-wrap-@0");
+      const host = document.getElementById("fq-circle-host-@0");
+      const mount = document.getElementById("fq-circle-mount-@0");
+      const rangeWrap = document.getElementById("fq-circle-range-@0");
+      const input = rangeWrap ? rangeWrap.querySelector('input[type="range"]') : null;
+
+      if (wrap && host && mount && rangeWrap && input) {
+        cb({ wrap, host, mount, input });
+        return;
+      }
+
+      tries++;
+      if (tries < 240) requestAnimationFrame(tick);
+    }
+
+    tick();
+  }
+
+  waitForCircleDom(({ wrap, host, mount, input }) => {
+    API.attachCircle(uid, {
+      wrap: wrap,
+      host: host,
+      mount: mount,
+      circleInput: input,
+      target: targetRaw,
+      initialParts: input.value || 1
+    });
+
+    API.ensureQuizBridge(uid, wrap);
+  });
+})();
+</script>
+@end
+
 
 
 
@@ -1592,6 +1757,89 @@ function fqdbg(tag) {
 </script>
 @end
 
+@rectQuizC: @rectQuizC_(@uid,@0,@1)
+
+@rectQuizC_
+<div id="fq-rect-wrap-@0" class="fq-widget" data-fq-kind="rect" data-fq-uid="@0">
+  <div id="fq-rect-host-@0" class="fq-widget" data-fq-kind="rect" data-fq-uid="@0">
+    <div id="fq-rect-mount-@0" class="fq-mount"></div>
+
+    <div id="fq-rect-rows-wrap-@0" class="fq-range" data-label="vertikal">
+<input type="range" min="1" max="20" value="1" output="fq-r-rows-@0">
+    </div>
+
+    <div id="fq-rect-cols-wrap-@0" class="fq-range" data-label="horizontal">
+<input type="range" min="1" max="20" value="1" output="fq-r-cols-@0">
+    </div>
+  </div>
+
+  @2
+  [[!]]
+  <script>
+(() => {
+  const API = window.__LIA_FRACTION_QUIZ__;
+  const uid = "@0";
+  if (!API) return false;
+
+  const passed = API.isCorrect(uid);
+  if (passed && !API.isLocked(uid)) {
+    API.onCheck(uid, true);
+  }
+  return passed;
+})()
+  </script>
+</div>
+
+<script modify="false">
+(function () {
+  const API = window.__LIA_FRACTION_QUIZ__;
+  const uid = "@0";
+  const targetRaw = String.raw`@1`;
+
+  if (!API) return;
+
+  function waitForRectDom(cb) {
+    let tries = 0;
+
+    function tick() {
+      const wrap = document.getElementById("fq-rect-wrap-@0");
+      const host = document.getElementById("fq-rect-host-@0");
+      const mount = document.getElementById("fq-rect-mount-@0");
+      const rowsWrap = document.getElementById("fq-rect-rows-wrap-@0");
+      const colsWrap = document.getElementById("fq-rect-cols-wrap-@0");
+      const rowsInput = rowsWrap ? rowsWrap.querySelector('input[type="range"]') : null;
+      const colsInput = colsWrap ? colsWrap.querySelector('input[type="range"]') : null;
+
+      if (wrap && host && mount && rowsWrap && colsWrap && rowsInput && colsInput) {
+        cb({ wrap, host, mount, rowsInput, colsInput });
+        return;
+      }
+
+      tries++;
+      if (tries < 240) requestAnimationFrame(tick);
+    }
+
+    tick();
+  }
+
+  waitForRectDom(({ wrap, host, mount, rowsInput, colsInput }) => {
+    API.attachRect(uid, {
+      wrap: wrap,
+      host: host,
+      mount: mount,
+      rowsInput: rowsInput,
+      colsInput: colsInput,
+      target: targetRaw,
+      initialRows: rowsInput.value || 1,
+      initialCols: colsInput.value || 1
+    });
+
+    API.ensureQuizBridge(uid, wrap);
+  });
+})();
+</script>
+@end
+
 
 
 
@@ -1616,14 +1864,17 @@ function fqdbg(tag) {
 
 __$a)\;\;$__ $\dfrac{1}{3}$
 
-@rectQuiz(1/3)
+
+@rectQuizC(1/3,`<!-- data-solution-button="2" -->`)
 
 __$b)\;\;$__ $\dfrac{4}{5}$
 
-@circleQuiz(4/5)
+
+@circleQuizC(4/5,`<!-- data-solution-button="2" -->`)
 
 
 __$c)\;\;$__ $\dfrac{3}{4}$
+
 
 @rectQuiz(3/4)
 
