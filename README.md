@@ -1014,6 +1014,8 @@ script: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
+
+
 (function () {
   function getRootWindow() {
     let w = window;
@@ -4251,7 +4253,8 @@ function fqdbg(tag) {
 
 
 
-@circleQuiz: @circleQuiz_(@uid,@0)
+
+@circleQuiz: @circleQuiz_(@uid,@0,@1)
 
 @circleQuiz_
 <div id="fq-circle-wrap-@0" class="fq-widget" data-fq-kind="circle" data-fq-uid="@0">
@@ -4289,7 +4292,9 @@ function fqdbg(tag) {
 (function () {
   const API = window.__LIA_FRACTION_QUIZ__;
   const uid = "@0";
-  const rawSpec = String.raw`@1`;
+  const raw0 = String.raw`@1`;
+  const raw1 = String.raw`@2`;
+  const rawSpec = raw1 ? (raw0 + ";" + raw1) : raw0;
 
   if (!API) return;
 
@@ -4311,9 +4316,52 @@ function fqdbg(tag) {
     return String(m[1] != null ? m[1] : (m[2] != null ? m[2] : (m[3] != null ? m[3] : ""))).trim().toLowerCase();
   }
 
+  function applyOptionDataAttributes(optionText, el, quizRootEl) {
+    if (!el) return;
+    const src = String(optionText || "");
+    const re = /(data-[\w-]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'>/]+))/gi;
+    const timerAttrs = [];
+    let m;
+
+    while ((m = re.exec(src)) !== null) {
+      const name = String(m[1] || "").toLowerCase();
+      if (!name || /^data-fq-/.test(name)) continue;
+      const val = m[2] != null ? m[2] : (m[3] != null ? m[3] : (m[4] != null ? m[4] : ""));
+
+      if (/^data-solution-timer(?:-|$)/.test(name)) {
+        timerAttrs.push({ name: name, value: String(val) });
+        try { el.removeAttribute(name); } catch (e) {}
+      } else {
+        try { el.setAttribute(name, String(val)); } catch (e) {}
+      }
+    }
+
+    const applyTimerAttrs = (retries) => {
+      if (!quizRootEl || !timerAttrs.length) return;
+      let targets = [];
+      try {
+        targets = Array.from(quizRootEl.querySelectorAll("lia-quiz, .lia-quiz"));
+      } catch (e) {}
+
+      if (!targets.length) {
+        if (retries < 240) requestAnimationFrame(() => applyTimerAttrs(retries + 1));
+        return;
+      }
+
+      for (let i = 0; i < targets.length; i++) {
+        for (let j = 0; j < timerAttrs.length; j++) {
+          try { targets[i].setAttribute(timerAttrs[j].name, timerAttrs[j].value); } catch (e) {}
+        }
+      }
+    };
+
+    applyTimerAttrs(0);
+  }
+
   const spec = parseQuizSpec(rawSpec);
   const targetRaw = spec.targetRaw;
-  const revealSetting = parseRevealSetting(spec.optionText);
+  const optionText = spec.optionText;
+  const revealSetting = parseRevealSetting(optionText);
 
   function waitForCircleDom(cb) {
     let tries = 0;
@@ -4350,6 +4398,7 @@ function fqdbg(tag) {
     });
 
     API.ensureQuizBridge(uid, wrap);
+  applyOptionDataAttributes(optionText, wrap, wrap);
 
     if (revealSetting) {
       const applyRevealSetting = () => {
@@ -4414,7 +4463,7 @@ function fqdbg(tag) {
 
 
 
-@rectQuiz: @rectQuiz_(@uid,@0)
+@rectQuiz: @rectQuiz_(@uid,@0,@1)
 
 @rectQuiz_
 <div id="fq-rect-wrap-@0" class="fq-widget" data-fq-kind="rect" data-fq-uid="@0">
@@ -4456,7 +4505,9 @@ function fqdbg(tag) {
 (function () {
   const API = window.__LIA_FRACTION_QUIZ__;
   const uid = "@0";
-  const rawSpec = String.raw`@1`;
+  const raw0 = String.raw`@1`;
+  const raw1 = String.raw`@2`;
+  const rawSpec = raw1 ? (raw0 + ";" + raw1) : raw0;
 
   if (!API) return;
 
@@ -4478,9 +4529,52 @@ function fqdbg(tag) {
     return String(m[1] != null ? m[1] : (m[2] != null ? m[2] : (m[3] != null ? m[3] : ""))).trim().toLowerCase();
   }
 
+  function applyOptionDataAttributes(optionText, el, quizRootEl) {
+    if (!el) return;
+    const src = String(optionText || "");
+    const re = /(data-[\w-]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'>/]+))/gi;
+    const timerAttrs = [];
+    let m;
+
+    while ((m = re.exec(src)) !== null) {
+      const name = String(m[1] || "").toLowerCase();
+      if (!name || /^data-fq-/.test(name)) continue;
+      const val = m[2] != null ? m[2] : (m[3] != null ? m[3] : (m[4] != null ? m[4] : ""));
+
+      if (/^data-solution-timer(?:-|$)/.test(name)) {
+        timerAttrs.push({ name: name, value: String(val) });
+        try { el.removeAttribute(name); } catch (e) {}
+      } else {
+        try { el.setAttribute(name, String(val)); } catch (e) {}
+      }
+    }
+
+    const applyTimerAttrs = (retries) => {
+      if (!quizRootEl || !timerAttrs.length) return;
+      let targets = [];
+      try {
+        targets = Array.from(quizRootEl.querySelectorAll("lia-quiz, .lia-quiz"));
+      } catch (e) {}
+
+      if (!targets.length) {
+        if (retries < 240) requestAnimationFrame(() => applyTimerAttrs(retries + 1));
+        return;
+      }
+
+      for (let i = 0; i < targets.length; i++) {
+        for (let j = 0; j < timerAttrs.length; j++) {
+          try { targets[i].setAttribute(timerAttrs[j].name, timerAttrs[j].value); } catch (e) {}
+        }
+      }
+    };
+
+    applyTimerAttrs(0);
+  }
+
   const spec = parseQuizSpec(rawSpec);
   const targetRaw = spec.targetRaw;
-  const revealSetting = parseRevealSetting(spec.optionText);
+  const optionText = spec.optionText;
+  const revealSetting = parseRevealSetting(optionText);
 
   function waitForRectDom(cb) {
     let tries = 0;
@@ -4521,6 +4615,7 @@ function fqdbg(tag) {
     });
 
     API.ensureQuizBridge(uid, wrap);
+  applyOptionDataAttributes(optionText, wrap, wrap);
 
     if (revealSetting) {
       const applyRevealSetting = () => {
@@ -4562,6 +4657,7 @@ function fqdbg(tag) {
 })();
 </script>
 @end
+
 
 
 
