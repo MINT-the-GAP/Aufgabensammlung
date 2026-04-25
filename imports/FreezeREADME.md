@@ -9,13 +9,13 @@ mode: Presentation
 import: https://cdn.jsdelivr.net/gh/LiaTemplates/algebrite@master/README.md
 import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
 
-script: ./Freeze.js
+script: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/Freeze.js
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MatheREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/DeutschREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MarkerREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/KoordREADME.md
-import: ./OCRREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/OCRREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/AnnotationREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FlexChildREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/TafelREADME.md

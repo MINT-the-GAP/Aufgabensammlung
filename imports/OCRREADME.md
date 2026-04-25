@@ -8,7 +8,7 @@ comment: LaTeX-OCR (Browser/LiaScript) v0.0.1 — robust: Canvas->RawImage, Outp
 
 
 
-script: ./OCR.js
+script: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/OCR.js
 
 
 

@@ -5374,6 +5374,49 @@ ensureCorners();
 
   canvas.addEventListener('contextmenu', (e) => e.preventDefault());
 
+  window.__LIA_CANVAS_PEN_TOUCH_GUARD__ = window.__LIA_CANVAS_PEN_TOUCH_GUARD__ || {
+    activePenPointers: new Set()
+  };
+  const PEN_TOUCH_GUARD = window.__LIA_CANVAS_PEN_TOUCH_GUARD__;
+
+  function markPenPointer(pointerId){
+    PEN_TOUCH_GUARD.activePenPointers.add(pointerId);
+  }
+
+  function unmarkPenPointer(pointerId){
+    PEN_TOUCH_GUARD.activePenPointers.delete(pointerId);
+  }
+
+  function isPenTouchBlocked(){
+    return PEN_TOUCH_GUARD.activePenPointers.size > 0;
+  }
+
+  function isTouchPointerEvent(evt){
+    return String((evt && evt.pointerType) || '').toLowerCase() === 'touch';
+  }
+
+  function shouldIgnoreTouchPointer(evt){
+    return isTouchPointerEvent(evt) && isPenTouchBlocked();
+  }
+
+  if (!window.__LIA_CANVAS_GLOBAL_TOUCH_SUPPRESSOR__){
+    window.__LIA_CANVAS_GLOBAL_TOUCH_SUPPRESSOR__ = true;
+
+    const suppressTouchIfPenActive = function(evt){
+      const isPointerEvent = String(evt && evt.type || '').indexOf('pointer') === 0;
+      if (isPointerEvent && !isTouchPointerEvent(evt)) return;
+      if (!isPenTouchBlocked()) return;
+
+      if (evt && evt.cancelable) evt.preventDefault();
+      if (evt && typeof evt.stopPropagation === 'function') evt.stopPropagation();
+    };
+
+    document.addEventListener('touchstart', suppressTouchIfPenActive, { capture:true, passive:false });
+    document.addEventListener('touchmove', suppressTouchIfPenActive, { capture:true, passive:false });
+    document.addEventListener('pointerdown', suppressTouchIfPenActive, { capture:true, passive:false });
+    document.addEventListener('pointermove', suppressTouchIfPenActive, { capture:true, passive:false });
+  }
+
   function clampScale(s){ return Math.max(VIEW.minScale, Math.min(VIEW.maxScale, s)); }
 
   function zoomAboutScreenPoint(factor, sx, sy){
@@ -5423,6 +5466,15 @@ ensureCorners();
   }
 
   canvas.addEventListener('pointerdown', (e) => {
+    if (String((e && e.pointerType) || '').toLowerCase() === 'pen'){
+      markPenPointer(e.pointerId);
+    }
+    if (shouldIgnoreTouchPointer(e)){
+      if (e.cancelable) e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
+
     autoCloseSubmenus();    
     if (e.target && e.target.classList && e.target.classList.contains('lia-resize-corner')) return;
 
@@ -5479,6 +5531,16 @@ ensureCorners();
   });
 
   canvas.addEventListener('pointermove', (e) => {
+    if (String((e && e.pointerType) || '').toLowerCase() === 'pen'){
+      markPenPointer(e.pointerId);
+    }
+    if (shouldIgnoreTouchPointer(e)){
+      if (pointers.has(e.pointerId)) pointers.delete(e.pointerId);
+      if (e.cancelable) e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
+
     if (!pointers.has(e.pointerId)) return;
 
     const p = getScreenPos(e);
@@ -5534,6 +5596,10 @@ ensureCorners();
   });
 
   function stopPointer(e){
+    if (String((e && e.pointerType) || '').toLowerCase() === 'pen'){
+      unmarkPenPointer(e.pointerId);
+    }
+
     hideEraserRing();
     if (pointers.has(e.pointerId)) pointers.delete(e.pointerId);
     try{ canvas.releasePointerCapture(e.pointerId); }catch(_){}
