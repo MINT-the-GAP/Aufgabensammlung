@@ -1974,6 +1974,15 @@ function __liaRenderTexPreview(target, tex){
 function __liaShowTexEditor(el){
   if (!el || !el.__liaTexPreviewBox) return;
 
+  const body = document.body;
+  if (
+    body &&
+    (body.classList.contains('lia-snapshot-mode') || body.classList.contains('lia-course-frozen'))
+  ) {
+    __liaShowTexPreview(el);
+    return;
+  }
+
   el.__liaTexPreviewBox.dataset.on = '0';
   el.__liaTexPreviewBox.style.display = 'none';
   el.style.display = '';
@@ -2026,6 +2035,16 @@ function __liaEnsureTexPreview(el){
   box.addEventListener('click', function(e){
     e.preventDefault();
     e.stopPropagation();
+
+    const body = document.body;
+    if (
+      body &&
+      (body.classList.contains('lia-snapshot-mode') || body.classList.contains('lia-course-frozen'))
+    ) {
+      __liaShowTexPreview(el);
+      return;
+    }
+
     __liaShowTexEditor(el);
   });
 
@@ -2057,7 +2076,7 @@ function __liaEnsureTexPreview(el){
 
   el.addEventListener('blur', function(){
     setTimeout(function(){
-      __liaSyncCanvasTexPreview(el);
+      __liaShowTexPreview(el);
     }, 0);
   });
 
@@ -2174,6 +2193,73 @@ function __liaInitTexPreviews(){
       __liaSyncTexPreviewBorder(field);
     }
   });
+}
+
+function __liaForceRefreshCanvasTexPreviews(root){
+  const scope = (root && root.querySelectorAll) ? root : document;
+
+  scope.querySelectorAll('.lia-canvas-pair').forEach(function(pair){
+    const field = __liaFindInputBeforeNode(pair);
+    if (!field) return;
+
+    __liaEnsureTexPreview(field);
+    __liaSyncTexPreviewBorder(field);
+
+    // Cache zurücksetzen, damit auch bei gleichen Werten neu gerendert wird.
+    field.__liaTexPreviewLastValue = null;
+    field.__liaTexPreviewLastFocused = null;
+
+    __liaSyncCanvasTexPreview(field);
+
+    if (document.activeElement !== field) {
+      __liaShowTexPreview(field);
+    }
+  });
+}
+
+let __liaForceRefreshCanvasTexPreviewsTimer = 0;
+function __liaQueueForceRefreshCanvasTexPreviews(delay){
+  clearTimeout(__liaForceRefreshCanvasTexPreviewsTimer);
+  __liaForceRefreshCanvasTexPreviewsTimer = setTimeout(function(){
+    __liaForceRefreshCanvasTexPreviews(document);
+  }, Math.max(0, Number(delay) || 0));
+}
+
+if (!window.__LIA_CANVAS_TEX_REFRESH_BRIDGE__){
+  window.__LIA_CANVAS_TEX_REFRESH_BRIDGE__ = true;
+
+  const onFreezeRefresh = function(){
+    __liaQueueForceRefreshCanvasTexPreviews(0);
+    __liaQueueForceRefreshCanvasTexPreviews(80);
+    __liaQueueForceRefreshCanvasTexPreviews(200);
+  };
+
+  try { window.addEventListener('lia:freeze-tex-refresh', onFreezeRefresh, true); } catch(_){ }
+  try { document.addEventListener('lia:freeze-tex-refresh', onFreezeRefresh, true); } catch(_){ }
+
+  // Sicherstellen, dass Verlassen des Feldes die Preview sichtbar macht,
+  // auch wenn der Wert außerhalb normaler Tastaturpfade gesetzt wurde.
+  document.addEventListener('focusout', function(e){
+    const t = e && e.target;
+    if (!t || !(t instanceof Element)) return;
+
+    if (t.dataset && t.dataset.liaCanvasTex === '1') {
+      __liaQueueForceRefreshCanvasTexPreviews(0);
+      return;
+    }
+
+    if (t.matches && t.matches('input, textarea, [contenteditable="true"]')) {
+      __liaQueueForceRefreshCanvasTexPreviews(0);
+    }
+  }, true);
+
+  document.addEventListener('change', function(e){
+    const t = e && e.target;
+    if (!t || !(t instanceof Element)) return;
+    if (!t.matches || !t.matches('input, textarea, [contenteditable="true"]')) return;
+
+    __liaQueueForceRefreshCanvasTexPreviews(0);
+  }, true);
 }
 
 

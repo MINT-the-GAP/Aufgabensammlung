@@ -1605,6 +1605,21 @@ function getRenderedVisibleDeclaredHash() {
   return "";
 }
 
+function dispatchFreezeTexRefresh(reason, hash) {
+  const detail = {
+    reason: String(reason || ""),
+    hash: String(hash || cleanHashValue(getCurrentHash() || "") || "")
+  };
+
+  try {
+    window.dispatchEvent(new CustomEvent("lia:freeze-tex-refresh", { detail: detail }));
+  } catch (e) {}
+
+  try {
+    document.dispatchEvent(new CustomEvent("lia:freeze-tex-refresh", { detail: detail }));
+  } catch (e) {}
+}
+
 
 function applySnapshotToCurrentVisibleHost(reason) {
   const host = getContentHost() || document.body;
@@ -1662,6 +1677,8 @@ function applySnapshotToCurrentVisibleHost(reason) {
   applyStoredCoordinateStatesToHost(host, slide.cq || []);
   applyStoredCanvasStatesToHost(host, slide.cv || []);
   applyStoredGeneralMarkerState(slide.gm || null);
+
+  dispatchFreezeTexRefresh("boot-visible:" + String(reason || ""), visibleHash);
 
   reinforceFrozenUi();
   setFreezeLoading(false, "boot-visible:" + visibleHash);
@@ -12712,6 +12729,16 @@ function applyTextQuizState(root, state) {
 
   for (let i = 0; i < max; i++) {
     applyFieldValueOnly(controls[i], values[i]);
+
+    // Re-fire value-change signals so LiaScript/OCR dependent renderers
+    // (e.g. TeX previews in script-enabled inputs) rebuild in snapshot mode.
+    try {
+      controls[i].dispatchEvent(new Event("input", { bubbles: true }));
+    } catch (e) {}
+
+    try {
+      controls[i].dispatchEvent(new Event("change", { bubbles: true }));
+    } catch (e) {}
   }
 
   applyQuizRootStateClasses(quizRoot, state.s || "");
@@ -12861,6 +12888,8 @@ function reapplySnapshotSilently(hash, reason) {
   applyStoredCoordinateStatesToHost(host, slide.cq || []);
   applyStoredCanvasStatesToHost(host, slide.cv || []);
   applyStoredGeneralMarkerState(slide.gm || null);
+
+  dispatchFreezeTexRefresh("reapply-silent:" + String(reason || ""), wantedHash);
 
   reinforceFrozenUi();
 
