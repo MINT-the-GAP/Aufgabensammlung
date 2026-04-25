@@ -125,6 +125,60 @@ Aufgaben ohne Bewertung: \
 
 # Etablierte Quiz
 
+
+
+<section class="dynFlex">
+
+<div class="flex-child">
+
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Wochenaufgabe/refs/heads/main/Zeug/Demographie8N2.png)
+
+
+</div>
+
+<div class="flex-child">
+
+
+$a)\;\;$ $7000+123=$ [[  7123  ]] @canvas
+
+@ADetails(1=BE;Normaldyn)
+</div>
+
+<div class="flex-child">
+
+
+$b)\;\;$ 
+
+Wähle blau aus.
+- [[X]] Blau
+- [[ ]] Gelb
+- [[ ]] Rot
+- [[ ]] Grün
+
+@ADetails(1=BE;Multipledyn)
+
+
+</div>
+
+<div class="flex-child">
+
+
+$c)\;\;$ 
+
+Wähle blau aus.
+- [(X)] Blau
+- [( )] Gelb
+- [( )] Rot
+- [( )] Grün
+
+@ADetails(1=BE;Radiodyn)
+
+</div>
+
+</section>
+
+
 $a)\;\;$ $7000+123=$ [[  7123  ]] @canvas
 
 @ADetails(1=BE;Normal)
