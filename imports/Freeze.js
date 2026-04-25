@@ -2,7 +2,7 @@ window.__liaSubmissionDemo = (function () {
   const PARAM_NAME = "submission";
   const ADMIN_ATTR = "data-snapshot-admin";
   const STORAGE_PREFIX = "__lia_submission_demo__:";
-  const PAYLOAD_VERSION = "sf-mini-ti-3";
+  const PAYLOAD_VERSION = "sf-mini-ti-4";
   const DEBUG = false;
   const EVALUATION_TITLE = "Auswertung";
   const BUILD_STAMP = "FREEZE-BUILD-2026-04-05-12-26";
@@ -10,6 +10,11 @@ window.__liaSubmissionDemo = (function () {
   let snapshotPayload = null;
   let declaredSlidesCache = [];
   let liveSlidesByHash = Object.create(null);
+  let liveSlideTimeMsByHash = Object.create(null);
+  let liveSlideTimingActive = {
+    h: "",
+    ts: 0
+  };
 
   let routeBridgeInstalled = false;
   let liveBindingsInstalled = false;
@@ -54,7 +59,8 @@ window.__liaSubmissionDemo = (function () {
 
   let declaredEvaluationOptions = {
     trackF12: false,
-    trackTab: false
+    trackTab: false,
+    trackTime: false
   };
 
   let liveSecurityState = {
@@ -361,6 +367,127 @@ function base64ToUtf8(str) {
     return new Promise(function (resolve) {
       setTimeout(resolve, ms);
     });
+  }
+
+  function nowMs() {
+    return Date.now();
+  }
+
+  function normalizeSlideTimeHash(hash) {
+    const clean = cleanHashValue(hash || "");
+    return /^#\d+$/.test(clean) ? clean : "";
+  }
+
+  function addLiveSlideDurationMs(hash, deltaMs) {
+    if (!shouldTrackTime()) return;
+
+    const cleanHash = normalizeSlideTimeHash(hash);
+    if (!cleanHash) return;
+
+    const ms = Number(deltaMs || 0);
+    if (!Number.isFinite(ms) || ms <= 0) return;
+
+    const prev = Number(liveSlideTimeMsByHash[cleanHash] || 0) || 0;
+    liveSlideTimeMsByHash[cleanHash] = prev + ms;
+  }
+
+  function stopLiveSlideTimer(reason, stampMs) {
+    if (!shouldTrackTime()) {
+      liveSlideTimingActive.h = "";
+      liveSlideTimingActive.ts = 0;
+      return;
+    }
+
+    const activeHash = normalizeSlideTimeHash(liveSlideTimingActive.h || "");
+    const startMs = Number(liveSlideTimingActive.ts || 0);
+    if (!activeHash || !startMs) {
+      liveSlideTimingActive.h = "";
+      liveSlideTimingActive.ts = 0;
+      return;
+    }
+
+    const now = Number(stampMs || nowMs());
+    if (Number.isFinite(now) && now > startMs) {
+      addLiveSlideDurationMs(activeHash, now - startMs);
+    }
+
+    liveSlideTimingActive.h = "";
+    liveSlideTimingActive.ts = 0;
+
+    log("slide-time-stop", "hash=" + activeHash, "reason=" + String(reason || ""));
+  }
+
+  function startLiveSlideTimer(hash, reason, stampMs) {
+    if (!shouldTrackTime()) {
+      liveSlideTimingActive.h = "";
+      liveSlideTimingActive.ts = 0;
+      return;
+    }
+
+    const cleanHash = normalizeSlideTimeHash(hash);
+    if (!cleanHash) return;
+
+    const now = Number(stampMs || nowMs());
+    const activeHash = normalizeSlideTimeHash(liveSlideTimingActive.h || "");
+    const activeStartMs = Number(liveSlideTimingActive.ts || 0);
+
+    if (activeHash === cleanHash && activeStartMs > 0) {
+      return;
+    }
+
+    stopLiveSlideTimer(reason || "switch", now);
+
+    liveSlideTimingActive.h = cleanHash;
+    liveSlideTimingActive.ts = now;
+
+    log("slide-time-start", "hash=" + cleanHash, "reason=" + String(reason || ""));
+  }
+
+  function switchLiveSlideTimer(hash, reason) {
+    startLiveSlideTimer(hash, reason || "switch", nowMs());
+  }
+
+  function getSerializableSlideTimeState() {
+    if (!shouldTrackTime()) {
+      return Object.create(null);
+    }
+
+    const out = Object.create(null);
+    const tempMsByHash = Object.create(null);
+
+    Object.keys(liveSlideTimeMsByHash || {}).forEach(function (hash) {
+      const cleanHash = normalizeSlideTimeHash(hash);
+      if (!cleanHash) return;
+
+      const ms = Number(liveSlideTimeMsByHash[hash] || 0);
+      if (!Number.isFinite(ms) || ms <= 0) return;
+
+      tempMsByHash[cleanHash] = ms;
+    });
+
+    const activeHash = normalizeSlideTimeHash(liveSlideTimingActive.h || "");
+    const activeStartMs = Number(liveSlideTimingActive.ts || 0);
+
+    if (activeHash && activeStartMs > 0) {
+      const activeNow = nowMs();
+      if (activeNow > activeStartMs) {
+        tempMsByHash[activeHash] =
+          (Number(tempMsByHash[activeHash] || 0) || 0) +
+          (activeNow - activeStartMs);
+      }
+    }
+
+    Object.keys(tempMsByHash).forEach(function (hash) {
+      const ms = Number(tempMsByHash[hash] || 0);
+      if (!Number.isFinite(ms) || ms <= 0) return;
+
+      const mins = Math.max(0, Math.round(ms / 60000));
+      if (mins > 0) {
+        out[hash] = mins;
+      }
+    });
+
+    return out;
   }
 
   function normalizeSpace(str) {
@@ -1543,7 +1670,8 @@ function applySnapshotToCurrentVisibleHost(reason) {
 function parseEvaluationMacroOptions(raw) {
   const out = {
     trackF12: false,
-    trackTab: false
+    trackTab: false,
+    trackTime: false
   };
 
   const txt = normalizeSpace(raw || "");
@@ -1561,6 +1689,11 @@ function parseEvaluationMacroOptions(raw) {
 
       if (/^tab$/i.test(flag)) {
         out.trackTab = true;
+        return;
+      }
+
+      if (/^time$/i.test(flag)) {
+        out.trackTime = true;
       }
     });
 
@@ -1576,7 +1709,8 @@ function parseEvaluationOptionsFromSource(text) {
 
   const out = {
     trackF12: false,
-    trackTab: false
+    trackTab: false,
+    trackTime: false
   };
 
   for (let i = 0; i < lines.length; i++) {
@@ -1610,6 +1744,7 @@ function parseEvaluationOptionsFromSource(text) {
 
     if (opts.trackF12) out.trackF12 = true;
     if (opts.trackTab) out.trackTab = true;
+    if (opts.trackTime) out.trackTime = true;
 
     log(
       "eval-option-match",
@@ -1628,6 +1763,10 @@ function shouldTrackF12() {
 
 function shouldTrackTab() {
   return !!(declaredEvaluationOptions && declaredEvaluationOptions.trackTab);
+}
+
+function shouldTrackTime() {
+  return !!(declaredEvaluationOptions && declaredEvaluationOptions.trackTime);
 }
 
 function getSnapshotF12Count() {
@@ -1656,6 +1795,7 @@ function getSerializableSecurityState() {
   return {
     trackF12: shouldTrackF12() ? 1 : 0,
     trackTab: shouldTrackTab() ? 1 : 0,
+    trackTime: shouldTrackTime() ? 1 : 0,
     f12: Number(liveSecurityState.f12 || 0) || 0,
     tab: Number(liveSecurityState.tab || 0) || 0
   };
@@ -1679,6 +1819,17 @@ function snapshotRequestsTabTracking() {
     (
       snapshotPayload.sec.trackTab === 1 ||
       snapshotPayload.sec.trackTab === true
+    )
+  );
+}
+
+function snapshotRequestsTimeTracking() {
+  return !!(
+    snapshotPayload &&
+    snapshotPayload.sec &&
+    (
+      snapshotPayload.sec.trackTime === 1 ||
+      snapshotPayload.sec.trackTime === true
     )
   );
 }
@@ -2141,7 +2292,8 @@ async function ensureDeclaredSlides(force) {
   if (!courseUrl) {
     declaredEvaluationOptions = {
       trackF12: false,
-      trackTab: false
+      trackTab: false,
+      trackTime: false
     };
     declaredEvaluationByHash = Object.create(null);
     submissionStartHash = "";
@@ -3264,6 +3416,116 @@ function renderEvaluationTagBlock(entry) {
   ].join("");
 }
 
+function isLegacySecondBasedSlideTimesPayload() {
+  const v = normalizeSpace(snapshotPayload && snapshotPayload.v || "");
+  return v === "sf-mini-ti-3";
+}
+
+function isTimeTrackingEnabledForEvaluation() {
+  return snapshotRequestsTimeTracking() || shouldTrackTime();
+}
+
+function getSnapshotSlideTimeMinutesByHash() {
+  const out = Object.create(null);
+  if (!isTimeTrackingEnabledForEvaluation()) {
+    return out;
+  }
+
+  const raw = snapshotPayload && snapshotPayload.tm;
+
+  if (!raw || typeof raw !== "object") {
+    return out;
+  }
+
+  const isLegacySeconds = isLegacySecondBasedSlideTimesPayload();
+
+  Object.keys(raw).forEach(function (hash) {
+    const cleanHash = cleanHashValue(hash || "");
+    if (!/^#\d+$/.test(cleanHash)) return;
+
+    const rawValue = Number(raw[hash] || 0);
+    if (!Number.isFinite(rawValue)) {
+      out[cleanHash] = 0;
+      return;
+    }
+
+    const mins = isLegacySeconds
+      ? Math.max(0, Math.round(rawValue / 60))
+      : Math.max(0, Math.round(rawValue));
+
+    out[cleanHash] = mins;
+  });
+
+  return out;
+}
+
+function formatWholeMinutes(minutes) {
+  const mins = Math.max(0, Math.round(Number(minutes || 0)));
+  return String(mins);
+}
+
+function getTotalSnapshotSlideTimeMinutes() {
+  const declaredSlides = getDeclaredSlides().filter(function (slide) {
+    return slide && slide.h && slide.vt !== "evaluation";
+  });
+
+  if (!declaredSlides.length) return 0;
+
+  const timeByHash = getSnapshotSlideTimeMinutesByHash();
+
+  return declaredSlides.reduce(function (sum, slide) {
+    const hash = String(slide && slide.h || "");
+    const mins = Math.max(0, Math.round(Number(timeByHash[hash] || 0)));
+    return sum + mins;
+  }, 0);
+}
+
+function renderEvaluationSlideTimesHtml() {
+  if (!isTimeTrackingEnabledForEvaluation()) return "";
+
+  const declaredSlides = getDeclaredSlides().filter(function (slide) {
+    return slide && slide.h && slide.vt !== "evaluation";
+  });
+
+  if (!declaredSlides.length) return "";
+
+  const timeByHash = getSnapshotSlideTimeMinutesByHash();
+  const totalMinutes = getTotalSnapshotSlideTimeMinutes();
+
+  const rows = declaredSlides.map(function (slide) {
+    const hash = String(slide.h || "");
+    const title = normalizeSpace(slide.t || "") || hash;
+    const mins = formatWholeMinutes(timeByHash[hash]);
+
+    return [
+      '<div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.9rem;align-items:center;padding:.5rem 0;border-top:1px solid color-mix(in srgb, var(--lia-course-border) 65%, transparent);">',
+        '<div style="font-weight:700;line-height:1.25;">',
+          escapeHtml(hash + " " + title),
+        '</div>',
+        '<div style="font-weight:800;font-size:1.4rem;white-space:nowrap;">',
+          escapeHtml(mins),
+          ' min',
+        '</div>',
+      '</div>'
+    ].join("");
+  }).join("");
+
+  return [
+    '<div style="margin-top:1.35rem;padding:1rem 1.05rem;border-radius:14px;border:1px solid var(--lia-course-border);background:color-mix(in srgb, var(--lia-course-bg) 95%, black 5%);">',
+      '<div style="font-weight:800;font-size:2rem;line-height:1.2;margin-bottom:.2rem;">Bearbeitungszeit pro Folie</div>',
+      '<div style="opacity:.82;margin-bottom:.6rem;">Angabe nur in Minuten, mathematisch gerundet.</div>',
+      '<div style="display:flex;justify-content:space-between;align-items:center;gap:.8rem;padding:.55rem 0 .7rem 0;margin-bottom:.25rem;border-top:1px solid color-mix(in srgb, var(--lia-course-border) 65%, transparent);border-bottom:1px solid color-mix(in srgb, var(--lia-course-border) 65%, transparent);">',
+        '<div style="font-weight:800;">Gesamte Bearbeitungszeit</div>',
+        '<div style="font-weight:900;font-size:1.55rem;white-space:nowrap;">',
+          escapeHtml(formatWholeMinutes(totalMinutes)),
+          ' min',
+        '</div>',
+      '</div>',
+      rows,
+    '</div>'
+  ].join("");
+}
+
 function renderEvaluationPlaceholderHtml(hash) {
   const decl = getDeclaredSlideByHash(hash);
   const title = normalizeSpace(decl && decl.t || EVALUATION_TITLE);
@@ -3274,8 +3536,20 @@ function renderEvaluationPlaceholderHtml(hash) {
   const correct = Number(stats.correct || 0);
   const total = Number(stats.total || 0);
   const percentText = formatEvaluationPercent(correct, total);
+  const showTimeTracking = isTimeTrackingEnabledForEvaluation();
+  const totalMinutesText = showTimeTracking
+    ? formatWholeMinutes(getTotalSnapshotSlideTimeMinutes())
+    : "";
   const fraudWarningF12 = renderF12FraudWarningHtml();
   const fraudWarningTab = renderTabFraudWarningHtml();
+  const slideTimesSection = renderEvaluationSlideTimesHtml();
+  const completionTimeSentence = showTimeTracking
+    ? [
+        ' <br>Die Bearbeitung wurde nach <strong><big><big>',
+        escapeHtml(totalMinutesText),
+        ' Minuten</big></big></strong> abgeschlossen.'
+      ].join("")
+    : "";
 
   const tagSection = tagStats.length
     ? [
@@ -3311,16 +3585,19 @@ function renderEvaluationPlaceholderHtml(hash) {
       escapeHtml(String(correct)),
       ' von ',
       escapeHtml(String(total)),
-      ' Bewertungseinheiten sind erreicht. <br> Das entspricht &nbsp;&nbsp;&nbsp; <strong><big><big><big><big>',
+      ' Bewertungseinheiten sind erreicht.<br> Das entspricht &nbsp;&nbsp;&nbsp; <strong><big><big><big><big>',
       escapeHtml(percentText),
-      '%</big></big></big></big></big></strong>.<br>',
+      '%</big></big></big></big></big></strong>',
+      completionTimeSentence,
+      '<br><br>',
       '<span style="opacity:.82;">Berücksichtigt werden die im Freeze-Snapshot gespeicherten Aufgabenzustände.</span>',
     '</div>',
 
     fraudWarningF12,
     fraudWarningTab,
 
-    tagSection
+    tagSection,
+    slideTimesSection
   ].join("");
 }
 
@@ -4393,6 +4670,23 @@ function expandSlideStateFromFreezeUrl(slide) {
   return out;
 }
 
+function expandSlideTimeStateFromFreezeUrl(state) {
+  const out = Object.create(null);
+  if (!state || typeof state !== "object") return out;
+
+  Object.keys(state).forEach(function (hash) {
+    const cleanHash = cleanHashValue(hash || "");
+    if (!/^#\d+$/.test(cleanHash)) return;
+
+    const secs = Math.max(0, Math.round(Number(state[hash] || 0)));
+    if (secs > 0) {
+      out[cleanHash] = secs;
+    }
+  });
+
+  return out;
+}
+
 function expandPayloadFromFreezeUrl(payload) {
   if (!payload || !Array.isArray(payload.s)) {
     return payload;
@@ -4403,6 +4697,8 @@ function expandPayloadFromFreezeUrl(payload) {
   out.s = out.s
     .map(expandSlideStateFromFreezeUrl)
     .filter(Boolean);
+
+  out.tm = expandSlideTimeStateFromFreezeUrl(out.tm);
 
   return out;
 }
@@ -6887,6 +7183,24 @@ function compactGeneralMarkerStateForFreezeUrl(state) {
   return out;
 }
 
+function compactSlideTimeStateForFreezeUrl(state) {
+  if (!state || typeof state !== "object") return null;
+
+  const out = Object.create(null);
+
+  Object.keys(state).forEach(function (hash) {
+    const cleanHash = cleanHashValue(hash || "");
+    if (!/^#\d+$/.test(cleanHash)) return;
+
+    const secs = Math.max(0, Math.round(Number(state[hash] || 0)));
+    if (secs > 0) {
+      out[cleanHash] = secs;
+    }
+  });
+
+  return Object.keys(out).length ? out : null;
+}
+
 function compactStateArrayForFreezeUrl(states, mapper) {
   if (!Array.isArray(states) || !states.length) return [];
   return states.map(mapper).filter(Boolean);
@@ -7340,16 +7654,18 @@ function shouldKeepAnnotationFreezeState(state) {
 function compactSecurityStateForFreezeUrl(state) {
   const trackF12 = !!(state && (state.trackF12 === 1 || state.trackF12 === true));
   const trackTab = !!(state && (state.trackTab === 1 || state.trackTab === true));
+  const trackTime = !!(state && (state.trackTime === 1 || state.trackTime === true));
   const f12 = Number(state && state.f12 || 0) || 0;
   const tab = Number(state && state.tab || 0) || 0;
 
-  if (!trackF12 && !trackTab && f12 <= 0 && tab <= 0) {
+  if (!trackF12 && !trackTab && !trackTime && f12 <= 0 && tab <= 0) {
     return null;
   }
 
   const out = {};
   if (trackF12) out.trackF12 = 1;
   if (trackTab) out.trackTab = 1;
+  if (trackTime) out.trackTime = 1;
   if (f12 > 0) out.f12 = f12;
   if (tab > 0) out.tab = tab;
 
@@ -7384,6 +7700,11 @@ function compactPayloadForFreezeUrl(payload) {
   const sec = compactSecurityStateForFreezeUrl(payload && payload.sec);
   if (sec) {
     out.sec = sec;
+  }
+
+  const tm = compactSlideTimeStateForFreezeUrl(payload && payload.tm);
+  if (tm) {
+    out.tm = tm;
   }
 
   return out;
@@ -13219,6 +13540,7 @@ async function buildPayloadFromLiveStates() {
   log("BUILD-PAYLOAD-ENTER");
 
   const currentHash = liveRouteCurrentHash || getCurrentHash();
+  switchLiveSlideTimer(currentHash, "payload-final");
   storeLiveSlideState(currentHash, "payload-final");
 
   const declared = getDeclaredSlides().filter(function (slide) {
@@ -13240,6 +13562,13 @@ async function buildPayloadFromLiveStates() {
   payload.af = annotationFullState;
   payload.anv = getAnnotationFreezeVisibleFlag(annotationFullState);
   payload.sec = getSerializableSecurityState();
+
+  if (shouldTrackTime()) {
+    const slideTimes = getSerializableSlideTimeState();
+    if (Object.keys(slideTimes).length) {
+      payload.tm = slideTimes;
+    }
+  }
 
   log(
     "payload-annotation",
@@ -14673,6 +15002,7 @@ function installLiveCaptureBindings() {
 
   installRouteBridge();
   liveRouteCurrentHash = getCurrentHash();
+  switchLiveSlideTimer(liveRouteCurrentHash, "live-bindings-init");
 
   function isGeneralMarkerMarkModeActive_LOCAL() {
     const inst = getMarkerQuizInstance();
@@ -14903,10 +15233,12 @@ function installLiveCaptureBindings() {
       ev && ev.detail && ev.detail.hash ? ev.detail.hash : getCurrentHash()
     );
 
+    stopLiveSlideTimer("route-outgoing");
     captureAdminState();
     storeLiveSlideState(prevHash, "route-outgoing");
 
     liveRouteCurrentHash = newHash;
+    startLiveSlideTimer(newHash, "route-incoming");
 
     setTimeout(function () {
       storeLiveSlideState(newHash, "route-incoming");
@@ -14915,6 +15247,7 @@ function installLiveCaptureBindings() {
   });
 
   setTimeout(function () {
+    switchLiveSlideTimer(liveRouteCurrentHash || getCurrentHash(), "init");
     captureAdminState();
     storeLiveSlideState(liveRouteCurrentHash || getCurrentHash(), "init");
   }, 180);
@@ -15143,6 +15476,8 @@ function blockFrozenKeydown(e) {
 
 async function activateSnapshotMode(payload, linkValue, opts) {
   opts = opts || {};
+
+  stopLiveSlideTimer("activate-snapshot");
 
   snapshotPayload =
     expandPayloadFromFreezeUrl(payload || null) ||

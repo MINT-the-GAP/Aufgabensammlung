@@ -9,7 +9,7 @@ mode: Presentation
 import: https://cdn.jsdelivr.net/gh/LiaTemplates/algebrite@master/README.md
 import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
 
-script: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/Freeze.js
+script: ./Freeze.js
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/MatheREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/DeutschREADME.md
@@ -90,6 +90,9 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 # Reine LiaScript-Abgabelink-Demo
 
+
+
+
 Einfaches importieren: \
 `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md`
 
@@ -105,8 +108,11 @@ Tracking von Betrugsversuchen über DevTools: \
 Tracking von Betrugsversuchen über Tab-/Fensterwechsel: \
 `@Auswertung(Tab)`
 
+Tracking von Betrugsversuchen über Bearbeitungszeit: \
+`@Auswertung(Time)`
+
 Tracking von Betrugsversuchen im Allgemeinen: \
-`@Auswertung(F12;Tab)`
+`@Auswertung(F12;Tab;Time)`
 
 Aufgaben mit Bewertungseinheiten und Tags versehen: \
 `@ADetails(BE=x;Tag1,Tag2,...)` (mit einer Leerzeile hinter dem Quiz einfügen.)
@@ -382,7 +388,7 @@ __$c)\;\;$__ **Ziehe** den Punkt $C$ **auf** die Koordinaten $(7|6)$.
 
 @Abgabe
 
-@Auswertung(F12;Tab)
+@Auswertung(F12;Tab;Time)
 
 
 
