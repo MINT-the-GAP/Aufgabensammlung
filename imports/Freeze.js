@@ -1078,6 +1078,17 @@ body.lia-course-frozen .lia-frozen-note{
   user-select: text !important;
 }
 
+.lia-frozen-scope #lia-switch-to-nightly,
+body.lia-snapshot-mode #lia-switch-to-nightly,
+body.lia-course-frozen #lia-switch-to-nightly{
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  z-index: 2147483647 !important;
+}
+
 #lia-freeze-info{
   display: none;
   position: sticky;
@@ -15662,7 +15673,7 @@ function installLiveCaptureBindings() {
     const t = e.target;
     if (!(t instanceof Element)) return;
 
-    if (t.closest("#lia-create-link") || t.closest("#lia-copy-link") || t.closest("#lia-link") || t.closest("#lia-name")) {
+    if (t.closest("#lia-create-link") || t.closest("#lia-copy-link") || t.closest("#lia-link") || t.closest("#lia-name") || t.closest("#lia-switch-to-nightly")) {
       return;
     }
 
@@ -15944,8 +15955,10 @@ function isAllowedFreezeTarget(target) {
 
   if (target.id === "lia-link") return true;
   if (target.id === "lia-copy-link") return true;
+  if (target.id === "lia-switch-to-nightly") return true;
   if (target.closest && target.closest("#lia-link")) return true;
   if (target.closest && target.closest("#lia-copy-link")) return true;
+  if (target.closest && target.closest("#lia-switch-to-nightly")) return true;
 
   // Annotation-Toolbar weiter erlauben
   if (target.closest(".lia-annot-toolbar")) return true;
