@@ -2467,8 +2467,8 @@ function getExamCountdownElement() {
   el.style.fontSize = "1.75rem";
   el.style.lineHeight = "1.2";
   el.style.color = "#c1121f";
-  el.style.background = "transparent";
-  el.style.border = "none";
+  el.style.background = "color-mix(in srgb, #c1121f 8%, transparent)";
+  el.style.border = "2px solid #c1121f";
   el.style.boxShadow = "none";
   el.style.transform = "rotate(0deg)";
   el.style.transformOrigin = "bottom right";
@@ -2491,9 +2491,13 @@ function renderExamIntroIntoHost() {
   if (!host) return;
 
   function buildWarningNode() {
+    const initialName = escapeHtml(
+      normalizeSpace(String(syncLiveNameFields() || getDisplayName() || ""))
+    );
+
     const wrap = document.createElement("section");
     wrap.className = "lia-exam-intro-virtual-slide";
-    wrap.style.maxWidth = "980px";
+    wrap.style.maxWidth = "1200px";
     wrap.style.margin = "0 auto";
     wrap.style.padding = "1.5rem 1.6rem";
     wrap.style.borderRadius = "16px";
@@ -2501,11 +2505,38 @@ function renderExamIntroIntoHost() {
     wrap.style.background = "color-mix(in srgb, #c1121f 10%, var(--lia-course-bg) 90%)";
     wrap.style.color = "var(--lia-course-fg)";
     wrap.innerHTML = [
-      '<h1 style="font-size:5rem;font-weight:900;line-height:1.05;margin:0 0 .9rem 0;color:#c1121f;">Prüfung</h1>',
-      '<p style="font-size:2.8rem;line-height:1.45;font-weight:700;margin:0;">Beim Verlassen dieser Folie beginnt die Bearbeitungszeit von <strong>' +
+      '<h1 style="font-size:8rem;font-weight:900;line-height:1.05;margin:0 0 .9rem 0;color:#c1121f;">Prüfung</h1>',
+      '<p style="font-size:4.25rem;line-height:1.45;font-weight:700;margin:0;">Beim Verlassen dieser Folie beginnt die Bearbeitungszeit von <strong>' +
+        '<span style="color:#c1121f;">' +
         escapeHtml(String(declaredExamConfig.durationMinutes || 0)) +
-        ' Minuten</strong>.</p>'
+        ' Minuten</span></strong>.</p>',
+      '<div style="margin-top:1.3rem;max-width:1200px;">' +
+        '<label style="display:block;font-size:4.25rem;font-weight:700;margin:0 0 .4rem 0;">Name</label>' +
+        '<input class="lia-exam-name-input" type="text" placeholder="Name eingeben" value="' +
+        initialName +
+        '" style="width:100%;padding:.6rem .75rem;border-radius:10px;border:1px solid color-mix(in srgb, #c1121f 35%, var(--lia-course-border) 65%);background:var(--lia-course-bg);color:var(--lia-course-fg);font-size:4rem;">' +
+      '</div>'
     ].join("");
+
+    const input = wrap.querySelector(".lia-exam-name-input");
+    if (input) {
+      input.addEventListener("input", function () {
+        syncLiveNameFields({
+          source: "exam",
+          name: normalizeSpace(String(input.value || "")),
+          forceSubmission: true
+        });
+      });
+
+      input.addEventListener("change", function () {
+        syncLiveNameFields({
+          source: "exam",
+          name: normalizeSpace(String(input.value || "")),
+          forceSubmission: true
+        });
+      });
+    }
+
     return wrap;
   }
 
@@ -2551,6 +2582,57 @@ function removeExamIntroNotice() {
       node.parentNode.removeChild(node);
     }
   });
+}
+
+function syncLiveNameFields(opts) {
+  opts = opts || {};
+
+  const examNameEl = document.querySelector(".lia-exam-name-input");
+  const submissionNameEl = document.getElementById("lia-name");
+
+  let chosen = normalizeSpace(String(opts.name || ""));
+
+  if (!chosen && opts.source === "exam" && examNameEl) {
+    chosen = normalizeSpace(String(examNameEl.value || ""));
+  }
+
+  if (!chosen && opts.source === "submission" && submissionNameEl) {
+    chosen = normalizeSpace(String(submissionNameEl.value || ""));
+  }
+
+  if (!chosen && examNameEl) {
+    chosen = normalizeSpace(String(examNameEl.value || ""));
+  }
+
+  if (!chosen && submissionNameEl) {
+    chosen = normalizeSpace(String(submissionNameEl.value || ""));
+  }
+
+  if (!chosen && typeof lastKnownName === "string") {
+    chosen = normalizeSpace(lastKnownName);
+  }
+
+  if (!chosen) {
+    return "";
+  }
+
+  lastKnownName = chosen;
+
+  if (submissionNameEl) {
+    const current = normalizeSpace(String(submissionNameEl.value || ""));
+    if (opts.forceSubmission || !current) {
+      submissionNameEl.value = chosen;
+    }
+  }
+
+  if (examNameEl) {
+    const current = normalizeSpace(String(examNameEl.value || ""));
+    if (opts.forceExam || !current) {
+      examNameEl.value = chosen;
+    }
+  }
+
+  return chosen;
 }
 
 function getExamSubmissionHash() {
@@ -15543,6 +15625,16 @@ function installLiveCaptureBindings() {
     if (!(t instanceof HTMLElement)) return;
     if (document.body.classList.contains("lia-snapshot-mode")) return;
 
+    if (t.id === "lia-name") {
+      syncLiveNameFields({
+        source: "submission",
+        name: normalizeSpace(String(t.value || "")),
+        forceExam: true
+      });
+      captureAdminState();
+      return;
+    }
+
     if (isTextQuizInputControl(t) || isOrthographyQuizInput(t)) {
       captureAdminState();
       storeLiveSlideState(
@@ -15821,6 +15913,7 @@ function installLiveCaptureBindings() {
 
     setTimeout(function () {
       storeLiveSlideState(newHash, "route-incoming");
+      syncLiveNameFields();
       scheduleAssignmentDetailsRefresh(220);
       updateExamIntroNoticeForHash(newHash);
       updateExamCountdownUi("route-incoming-delayed");
@@ -15830,6 +15923,7 @@ function installLiveCaptureBindings() {
   setTimeout(function () {
     switchLiveSlideTimer(liveRouteCurrentHash || getCurrentHash(), "init");
     captureAdminState();
+    syncLiveNameFields();
     storeLiveSlideState(liveRouteCurrentHash || getCurrentHash(), "init");
     updateExamIntroNoticeForHash(liveRouteCurrentHash || getCurrentHash());
     updateExamCountdownUi("init-delayed");

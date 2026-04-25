@@ -95,7 +95,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 # Reine LiaScript-Abgabelink-Demo
 
 
-@Exam(5min)
+@Exam(45min)
 
 
 Einfaches importieren: \
