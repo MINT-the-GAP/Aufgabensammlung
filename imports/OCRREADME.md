@@ -41,9 +41,6 @@ script: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-# Test D
-
-Narf...
 
 # Road to OCR from Canvas 
 

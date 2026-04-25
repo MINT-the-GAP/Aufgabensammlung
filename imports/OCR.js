@@ -4253,6 +4253,10 @@ async function __ocrFromMarkedRect({ auto=false } = {}){
       }
     }
 
+    // Nutzerwunsch: geschriebenes ':' nicht als '\div' ausgeben.
+    // Falls das OCR '\div' liefert, normalisieren wir auf ':'.
+    latex = String(latex || '').replace(/\s*\\div\s*/g, ':');
+
 
 
 
@@ -4340,6 +4344,9 @@ async function __ocrFromMarkedRect({ auto=false } = {}){
 
   let currentPath = null;
   let currentRect = null;
+  const STROKE_CAPTURE_MIN_STEP_PX = 0.35;
+  const STROKE_CAPTURE_TARGET_STEP_PX = 1.4;
+  const STROKE_CAPTURE_MAX_INTERP_POINTS = 12;
 
   function persist(reason){
     if (!uid) return;
@@ -5092,11 +5099,51 @@ function autoCloseSubmenus(){
     persist();
   }
 
+  function appendStrokePointWorld(wx, wy){
+    if (!currentPath) return;
+    currentPath.points.push({ x:wx, y:wy });
+    sctx.lineTo(wx, wy);
+  }
+
+  function appendStrokePointFromScreen(sx, sy){
+    if (!currentPath) return;
+
+    const pts = currentPath.points;
+    const last = pts && pts.length ? pts[pts.length - 1] : null;
+
+    if (!last){
+      const first = screenToWorld(sx, sy);
+      appendStrokePointWorld(first.x, first.y);
+      return;
+    }
+
+    const prev = worldToScreen(last.x, last.y);
+    const dx = sx - prev.sx;
+    const dy = sy - prev.sy;
+    const dist = Math.hypot(dx, dy);
+
+    if (dist < STROKE_CAPTURE_MIN_STEP_PX) return;
+
+    if (dist > STROKE_CAPTURE_TARGET_STEP_PX){
+      const rawSteps = Math.floor(dist / STROKE_CAPTURE_TARGET_STEP_PX);
+      const steps = Math.min(STROKE_CAPTURE_MAX_INTERP_POINTS, Math.max(0, rawSteps));
+
+      for (let i = 1; i <= steps; i++){
+        const t = i / (steps + 1);
+        const mx = prev.sx + dx * t;
+        const my = prev.sy + dy * t;
+        const mw = screenToWorld(mx, my);
+        appendStrokePointWorld(mw.x, mw.y);
+      }
+    }
+
+    const w = screenToWorld(sx, sy);
+    appendStrokePointWorld(w.x, w.y);
+  }
+
   function extendStrokeToScreen(sx,sy){
     if (!currentPath) return;
-    const w = screenToWorld(sx,sy);
-    currentPath.points.push({x:w.x,y:w.y});
-    sctx.lineTo(w.x, w.y);
+    appendStrokePointFromScreen(sx, sy);
     sctx.stroke();
     present();
     persist();
@@ -5591,6 +5638,19 @@ ensureCorners();
     }
 
     if (mode === 'draw'){
+      if (typeof e.getCoalescedEvents === 'function'){
+        const coalesced = e.getCoalescedEvents();
+        if (Array.isArray(coalesced) && coalesced.length){
+          for (let i = 0; i < coalesced.length; i++){
+            const ce = coalesced[i];
+            if (!ce) continue;
+            const cp = getScreenPos(ce);
+            extendStrokeToScreen(cp.sx, cp.sy);
+          }
+          return;
+        }
+      }
+
       extendStrokeToScreen(p.sx, p.sy);
     }
   });
