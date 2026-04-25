@@ -578,17 +578,9 @@ author: Martin Lommatzsch
 
 
 
+@diktat: @diktat_(@uid,`@0`)
 
-
-
-
-
-
-@diktat: @diktat_(@uid,@0)
-
-@diktat_
-<span class="lia-diktat" id="lia-diktat-@0">{|>}{<span class="lia-diktat-measure" style="position:absolute;left:-10000px;top:auto;width:auto;height:auto;overflow:hidden;white-space:pre;">@1</span>}[[ @1 ]]</span>
-@end
+@diktat_: {|>}{<span style="position: absolute; left: -9999px;">@1</span>}[[ @1 ]]
 
 
 
@@ -630,9 +622,20 @@ author: Martin Lommatzsch
 
 
 
+__Aufgabe 0:__ 
+
+Hallo @diktat(Kasse). 
+
+@diktat(`Es war der Hund, der auf mich zu rannte.`)
 
 
-__Aufgabe 1:__ Hör dir den Satz an und schreib ihn korrekt in das Eingabefeld.
+--- 
+
+
+
+
+
+__Aufgabe 1:__ Hör dir den Satz an und schreib ihn korrekt in das Eingabefeld. (ganze Zeile)
 
 
 {{|> Deutsch Female}}
@@ -641,6 +644,14 @@ Anna sitzt auf einem fliegenden Teppich.
 
 [[    Anna sitzt auf einem fliegenden Teppich.    ]]
 
+
+Mit Kommata vorlesen lassen:
+
+@diktat(`Es war der Hund, der auf mich zu rannte.`)
+
+``` 
+@diktat(`Es war der Hund, der auf mich zu rannte.`) 
+```
 
 --- 
 
