@@ -134,6 +134,12 @@ Aufgaben ohne Bewertung: \
 
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Wochenaufgabe/refs/heads/main/Zeug/Demographie8N2.png)
 
+![](https://raw.githubusercontent.com/MINT-the-GAP/Wochenaufgabe/refs/heads/main/Zeug/Demographie8N1.png)
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Wochenaufgabe/refs/heads/main/Zeug/Kueste.png)
+
+![](https://raw.githubusercontent.com/MINT-the-GAP/Wochenaufgabe/refs/heads/main/Zeug/Tektonik.png)
+
 
 </div>
 
