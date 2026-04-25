@@ -71,6 +71,21 @@ window.__liaSubmissionDemo = (function () {
   let lastTrackedF12KeyStamp = -1;
   let declaredSlidesLoaded = false;
 
+  let declaredExamConfig = {
+    enabled: false,
+    durationMinutes: 0,
+    triggerHash: ""
+  };
+
+  let examIntroHash = "";
+  let examTimerStartedAtMs = 0;
+  let examTimerEndsAtMs = 0;
+  let examLockToSubmission = false;
+  let examTickTimer = 0;
+  let examLayoutTimer = 0;
+  let examLockWatchTimer = 0;
+  let examLockNudgeUsed = false;
+
   // =========================================================
   // Debug
   // =========================================================
@@ -1757,6 +1772,75 @@ function parseEvaluationOptionsFromSource(text) {
   return out;
 }
 
+function parseExamDurationMinutes(raw) {
+  const txt = normalizeSpace(raw || "");
+  if (!txt) return 0;
+
+  const m = txt.match(/(-?\d+(?:[\.,]\d+)?)\s*(?:m|min|mins|minute|minuten)?/i);
+  if (!m) return 0;
+
+  const n = Number(String(m[1] || "").replace(",", "."));
+  if (!Number.isFinite(n) || n <= 0) return 0;
+
+  return Math.max(1, Math.round(n));
+}
+
+function parseExamConfigFromSource(text) {
+  const src = stripLeadingHeaderComment(text);
+  const lines = src.split(/\r?\n/);
+
+  let inFence = false;
+  let fenceToken = "";
+  let slideCount = 0;
+
+  const out = {
+    enabled: false,
+    durationMinutes: 0,
+    triggerHash: ""
+  };
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = String(lines[i] || "");
+    const fenceMatch = line.match(/^\s*(```+|~~~+)/);
+
+    if (fenceMatch) {
+      const token = fenceMatch[1].charAt(0);
+
+      if (!inFence) {
+        inFence = true;
+        fenceToken = token;
+        continue;
+      }
+
+      if (token === fenceToken) {
+        inFence = false;
+        fenceToken = "";
+        continue;
+      }
+    }
+
+    if (inFence) continue;
+
+    if (/^(#{1,6})\s+(.+?)\s*$/.test(line)) {
+      slideCount += 1;
+      continue;
+    }
+
+    const trimmed = line.trim();
+    const m = trimmed.match(/^@Exam(?:\s*\(([^)]*)\))?\s*$/i);
+    if (!m) continue;
+
+    const mins = parseExamDurationMinutes(m[1] || "");
+    if (mins > 0) {
+      out.enabled = true;
+      out.durationMinutes = mins;
+      out.triggerHash = "#" + Math.max(1, slideCount || 1);
+    }
+  }
+
+  return out;
+}
+
 function shouldTrackF12() {
   return !!(declaredEvaluationOptions && declaredEvaluationOptions.trackF12);
 }
@@ -1938,6 +2022,7 @@ function parseSubmissionHashFromSource(text) {
   let inFence = false;
   let fenceToken = "";
   let slideCount = 0;
+  let foundHash = "";
 
   for (let i = 0; i < lines.length; i++) {
     const line = String(lines[i] || "");
@@ -1966,12 +2051,12 @@ function parseSubmissionHashFromSource(text) {
       continue;
     }
 
-    if (/^\s*@Abgabe(?:\s*\([^)]*\))?\s*$/.test(line)) {
-      return "#" + Math.max(1, slideCount || 1);
+    if (/^\s*@abgabe(?:\s*\([^)]*\))?\s*$/i.test(line)) {
+      foundHash = "#" + Math.max(1, slideCount || 1);
     }
   }
 
-  return "";
+  return foundHash;
 }
 
 
@@ -2297,6 +2382,11 @@ async function ensureDeclaredSlides(force) {
     };
     declaredEvaluationByHash = Object.create(null);
     submissionStartHash = "";
+    declaredExamConfig = {
+      enabled: false,
+      durationMinutes: 0,
+      triggerHash: ""
+    };
     declaredSlidesCache = [{
       h: "#1",
       t: getCurrentSlideTitle() || ""
@@ -2316,6 +2406,7 @@ async function ensureDeclaredSlides(force) {
   declaredEvaluationOptions = parseEvaluationOptionsFromSource(text);
   declaredEvaluationByHash = parseDeclaredEvaluationFromSource(text);
   submissionStartHash = parseSubmissionHashFromSource(text);
+  declaredExamConfig = parseExamConfigFromSource(text);
 
   const parsed = parseDeclaredSlidesFromSource(text);
 
@@ -2331,6 +2422,7 @@ async function ensureDeclaredSlides(force) {
 
   log("declared-eval-options", JSON.stringify(declaredEvaluationOptions));
   log("declared-abgabe-hash", submissionStartHash || "<none>");
+  log("declared-exam", JSON.stringify(declaredExamConfig));
 
   return declaredSlidesCache.slice();
 }
@@ -2358,6 +2450,428 @@ async function ensureDeclaredSlides(force) {
     }
     return -1;
   }
+
+function getExamCountdownElement() {
+  let el = document.getElementById("lia-exam-countdown");
+  if (el) return el;
+
+  el = document.createElement("div");
+  el.id = "lia-exam-countdown";
+  el.style.position = "fixed";
+  el.style.right = "28px";
+  el.style.bottom = "38px";
+  el.style.zIndex = "99995";
+  el.style.padding = ".25rem .35rem";
+  el.style.borderRadius = "8px";
+  el.style.fontWeight = "800";
+  el.style.fontSize = "1.75rem";
+  el.style.lineHeight = "1.2";
+  el.style.color = "#c1121f";
+  el.style.background = "transparent";
+  el.style.border = "none";
+  el.style.boxShadow = "none";
+  el.style.transform = "rotate(0deg)";
+  el.style.transformOrigin = "bottom right";
+  el.style.pointerEvents = "none";
+  el.style.display = "none";
+
+  document.body.appendChild(el);
+  return el;
+}
+
+function removeExamCountdownElement() {
+  const el = document.getElementById("lia-exam-countdown");
+  if (el && el.parentNode) {
+    el.parentNode.removeChild(el);
+  }
+}
+
+function renderExamIntroIntoHost() {
+  const host = getContentHost();
+  if (!host) return;
+
+  function buildWarningNode() {
+    const wrap = document.createElement("section");
+    wrap.className = "lia-exam-intro-virtual-slide";
+    wrap.style.maxWidth = "980px";
+    wrap.style.margin = "0 auto";
+    wrap.style.padding = "1.5rem 1.6rem";
+    wrap.style.borderRadius = "16px";
+    wrap.style.border = "1px solid color-mix(in srgb, #c1121f 55%, var(--lia-course-border) 45%)";
+    wrap.style.background = "color-mix(in srgb, #c1121f 10%, var(--lia-course-bg) 90%)";
+    wrap.style.color = "var(--lia-course-fg)";
+    wrap.innerHTML = [
+      '<h1 style="font-size:5rem;font-weight:900;line-height:1.05;margin:0 0 .9rem 0;color:#c1121f;">Prüfung</h1>',
+      '<p style="font-size:2.8rem;line-height:1.45;font-weight:700;margin:0;">Beim Verlassen dieser Folie beginnt die Bearbeitungszeit von <strong>' +
+        escapeHtml(String(declaredExamConfig.durationMinutes || 0)) +
+        ' Minuten</strong>.</p>'
+    ].join("");
+    return wrap;
+  }
+
+  const anchors = Array.from(host.querySelectorAll("[data-lia-exam-macro='1'], .lia-exam-macro-anchor"));
+
+  if (!anchors.length) return;
+
+  anchors.forEach(function (anchor) {
+    while (anchor.firstChild) {
+      anchor.removeChild(anchor.firstChild);
+    }
+    anchor.appendChild(buildWarningNode());
+  });
+}
+
+function updateExamCountdownLayout() {
+  const el = document.getElementById("lia-exam-countdown");
+  if (!el) return;
+
+  const mobile = window.innerWidth <= 700;
+  el.style.right = mobile ? "12px" : "30px";
+  el.style.bottom = mobile ? "30px" : "5px";
+}
+
+function ensureExamLayoutTimer() {
+  if (examLayoutTimer) return;
+
+  examLayoutTimer = setInterval(function () {
+    updateExamCountdownLayout();
+  }, 900);
+}
+
+function stopExamLayoutTimer() {
+  if (examLayoutTimer) {
+    clearInterval(examLayoutTimer);
+    examLayoutTimer = 0;
+  }
+}
+
+function removeExamIntroNotice() {
+  Array.from(document.querySelectorAll(".lia-exam-intro-virtual-slide")).forEach(function (node) {
+    if (node && node.parentNode) {
+      node.parentNode.removeChild(node);
+    }
+  });
+}
+
+function getExamSubmissionHash() {
+  if (
+    submissionStartHash &&
+    /^#\d+$/.test(String(submissionStartHash || "")) &&
+    getDeclaredSlideByHash(submissionStartHash)
+  ) {
+    return String(submissionStartHash);
+  }
+
+  const declared = getDeclaredSlides();
+
+  for (let i = 0; i < declared.length; i++) {
+    const slide = declared[i];
+    if (!slide || slide.vt === "evaluation") continue;
+
+    const title = normalizeSpace(slide.t || "");
+    if (/^abgabe$/i.test(title) && /^#\d+$/.test(String(slide.h || ""))) {
+      return String(slide.h);
+    }
+  }
+
+  for (let j = declared.length - 1; j >= 0; j--) {
+    const candidate = declared[j];
+    if (!candidate || candidate.vt === "evaluation") continue;
+
+    const hash = String(candidate.h || "");
+    if (/^#\d+$/.test(hash)) {
+      return hash;
+    }
+  }
+
+  const current = cleanHashValue(getCurrentHash() || "");
+  if (/^#\d+$/.test(current)) {
+    return current;
+  }
+
+  return "#1";
+}
+
+function forceHashToExamSubmission() {
+  const target = getExamSubmissionHash();
+  if (!target) return;
+
+  const current = cleanHashValue(getCurrentHash() || "");
+  if (current === target) return;
+
+  try {
+    setHashSilently(target);
+  } catch (e) {}
+
+  try {
+    window.location.hash = target;
+  } catch (e) {}
+}
+
+function forceNavigateToHash(targetHash, opts) {
+  opts = opts || {};
+
+  const target = cleanHashValue(targetHash || "");
+  if (!/^#\d+$/.test(target)) return;
+
+  const current = cleanHashValue(getCurrentHash() || "");
+
+  if (current !== target) {
+    try {
+      window.location.hash = target;
+    } catch (e) {}
+
+    try {
+      setHashSilently(target);
+    } catch (e) {}
+
+    return;
+  }
+
+  if (!opts.allowNudge) {
+    return;
+  }
+
+  if (examLockToSubmission && examLockNudgeUsed) {
+    return;
+  }
+
+  if (examLockToSubmission) {
+    examLockNudgeUsed = true;
+  }
+
+  const declared = getDeclaredSlides();
+  const currentIdx = getDeclaredSlideIndex(current);
+  let nudge = "";
+
+  if (currentIdx > 0) {
+    nudge = String(declared[currentIdx - 1] && declared[currentIdx - 1].h || "");
+  } else if (currentIdx >= 0 && currentIdx < declared.length - 1) {
+    nudge = String(declared[currentIdx + 1] && declared[currentIdx + 1].h || "");
+  }
+
+  if (/^#\d+$/.test(nudge) && nudge !== target) {
+    try {
+      window.location.hash = nudge;
+    } catch (e) {}
+
+    setTimeout(function () {
+      try {
+        window.location.hash = target;
+      } catch (e) {}
+    }, 24);
+  }
+}
+
+function updateExamIntroNoticeForHash(hash) {
+  removeExamIntroNotice();
+
+  if (!declaredExamConfig.enabled) return;
+  if (document.body.classList.contains("lia-snapshot-mode")) return;
+  if (examTimerStartedAtMs > 0) return;
+  if (examLockToSubmission) return;
+  if (!examIntroHash || String(hash || "") !== String(examIntroHash)) return;
+
+  renderExamIntroIntoHost();
+}
+
+function updateExamCountdownUi(reason) {
+  const el = getExamCountdownElement();
+
+  if (
+    !declaredExamConfig.enabled ||
+    document.body.classList.contains("lia-snapshot-mode") ||
+    examTimerStartedAtMs <= 0
+  ) {
+    el.style.display = "none";
+    return;
+  }
+
+  const now = nowMs();
+  const remainingMs = Math.max(0, Number(examTimerEndsAtMs || 0) - now);
+  const remainingMins = Math.max(0, Math.ceil(remainingMs / 60000));
+
+  el.textContent = "Restzeit: " + remainingMins + " min";
+  el.style.display = "block";
+
+  updateExamCountdownLayout();
+
+  if (remainingMs <= 0) {
+    lockExamToSubmission("time-over:" + String(reason || ""));
+  }
+}
+
+function stopExamTickTimer() {
+  if (examTickTimer) {
+    clearInterval(examTickTimer);
+    examTickTimer = 0;
+  }
+}
+
+function ensureExamLockWatch() {
+  if (examLockWatchTimer) return;
+
+  examLockWatchTimer = setInterval(function () {
+    if (!examLockToSubmission) return;
+    if (document.body.classList.contains("lia-snapshot-mode")) return;
+
+    const target = getExamSubmissionHash();
+    const current = cleanHashValue(getCurrentHash() || "");
+    const rendered = cleanHashValue(getRenderedVisibleDeclaredHash() || "");
+
+    if (target && (current !== target || rendered !== target)) {
+      forceNavigateToHash(target, { allowNudge: false });
+    }
+  }, 420);
+}
+
+function stopExamLockWatch() {
+  if (examLockWatchTimer) {
+    clearInterval(examLockWatchTimer);
+    examLockWatchTimer = 0;
+  }
+}
+
+function lockExamToSubmission(reason) {
+  if (!declaredExamConfig.enabled) return;
+  if (document.body.classList.contains("lia-snapshot-mode")) return;
+
+  examLockToSubmission = true;
+  examLockNudgeUsed = false;
+  stopExamTickTimer();
+  ensureExamLockWatch();
+  updateExamCountdownUi("lock");
+
+  setStatus("Bearbeitungszeit beendet. Bitte den Abgabelink erstellen. Die Abgabefolie kann bis zum Freeze nicht mehr verlassen werden.");
+  const target = getExamSubmissionHash();
+  forceNavigateToHash(target, { allowNudge: true });
+
+  setTimeout(function () {
+    const cur = cleanHashValue(getCurrentHash() || "");
+    const rendered = cleanHashValue(getRenderedVisibleDeclaredHash() || "");
+    if (target && (cur !== target || rendered !== target)) {
+      forceNavigateToHash(target, { allowNudge: false });
+    }
+  }, 180);
+
+  setTimeout(function () {
+    const cur = cleanHashValue(getCurrentHash() || "");
+    const rendered = cleanHashValue(getRenderedVisibleDeclaredHash() || "");
+    if (target && (cur !== target || rendered !== target)) {
+      forceNavigateToHash(target, { allowNudge: false });
+    }
+  }, 620);
+
+  log("exam-lock-submission", String(reason || ""));
+}
+
+function startExamTimer(reason) {
+  if (!declaredExamConfig.enabled) return;
+  if (document.body.classList.contains("lia-snapshot-mode")) return;
+  if (examLockToSubmission) return;
+  if (examTimerStartedAtMs > 0) return;
+
+  const mins = Number(declaredExamConfig.durationMinutes || 0);
+  if (!Number.isFinite(mins) || mins <= 0) return;
+
+  examTimerStartedAtMs = nowMs();
+  examTimerEndsAtMs = examTimerStartedAtMs + Math.round(mins * 60000);
+
+  stopExamTickTimer();
+  examTickTimer = setInterval(function () {
+    updateExamCountdownUi("tick");
+  }, 1000);
+
+  updateExamCountdownUi("start");
+
+  log(
+    "exam-timer-start",
+    "mins=" + mins,
+    "reason=" + String(reason || "")
+  );
+}
+
+function handleExamRouteTransition(prevHash, newHash) {
+  let next = cleanHashValue(newHash || "") || "#1";
+
+  if (!declaredExamConfig.enabled) {
+    return next;
+  }
+
+  if (document.body.classList.contains("lia-snapshot-mode")) {
+    return next;
+  }
+
+  if (examLockToSubmission) {
+    const target = getExamSubmissionHash();
+    if (next !== target) {
+      setTimeout(function () {
+        forceNavigateToHash(target, { allowNudge: false });
+      }, 0);
+      next = target;
+    }
+
+    updateExamCountdownUi("route-lock");
+    return next;
+  }
+
+  if (
+    examTimerStartedAtMs <= 0 &&
+    examIntroHash &&
+    prevHash === examIntroHash &&
+    next !== examIntroHash
+  ) {
+    startExamTimer("left-intro-slide");
+  }
+
+  updateExamIntroNoticeForHash(next);
+  updateExamCountdownUi("route");
+
+  return next;
+}
+
+function resetLiveExamStateForCourse() {
+  removeExamIntroNotice();
+  stopExamTickTimer();
+  stopExamLockWatch();
+
+  examIntroHash = "";
+  examTimerStartedAtMs = 0;
+  examTimerEndsAtMs = 0;
+  examLockToSubmission = false;
+  examLockNudgeUsed = false;
+
+  const el = getExamCountdownElement();
+  el.style.display = "none";
+
+  if (!declaredExamConfig.enabled) {
+    stopExamLayoutTimer();
+    removeExamCountdownElement();
+    return;
+  }
+
+  const declared = getDeclaredSlides().filter(function (slide) {
+    return !!(slide && slide.h && slide.vt !== "evaluation");
+  });
+
+  const configuredHash = cleanHashValue(declaredExamConfig && declaredExamConfig.triggerHash || "");
+  if (configuredHash && getDeclaredSlideByHash(configuredHash)) {
+    examIntroHash = configuredHash;
+  } else {
+    examIntroHash = declared.length ? String(declared[0].h || "") : "#1";
+  }
+
+  ensureExamLayoutTimer();
+  updateExamCountdownLayout();
+
+  const currentHash = cleanHashValue(getCurrentHash() || "") || "#1";
+
+  if (examIntroHash && currentHash !== examIntroHash) {
+    startExamTimer("entered-outside-intro");
+  }
+  // Intro-Hinweis wird verzögert durch installLiveCaptureBindings (setTimeout 180ms) gerendert,
+  // damit LiaScript die Folie zuerst vollständig darstellen kann.
+}
 
   function getDeclaredEvaluationHash() {
     const declared = getDeclaredSlides();
@@ -15049,6 +15563,32 @@ function installLiveCaptureBindings() {
     }
   }, true);
 
+  document.addEventListener("click", function (e) {
+    if (document.body.classList.contains("lia-snapshot-mode")) return;
+    if (!examLockToSubmission) return;
+
+    const t = e.target;
+    if (!(t instanceof Element)) return;
+
+    if (t.closest("#lia-create-link") || t.closest("#lia-copy-link") || t.closest("#lia-link") || t.closest("#lia-name")) {
+      return;
+    }
+
+    const navLike = t.closest(
+      "a, .lia-toc, #lia-toc, .lia-sidebar, .lia-menu, .lia-nav, .lia-support-menu, [data-slide], [href*='#']"
+    );
+
+    if (!navLike) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+    if (typeof e.stopImmediatePropagation === "function") {
+      e.stopImmediatePropagation();
+    }
+
+    forceNavigateToHash(getExamSubmissionHash(), { allowNudge: false });
+  }, true);
+
   document.addEventListener("change", function (e) {
     const t = e.target;
     if (!(t instanceof HTMLElement)) return;
@@ -15111,6 +15651,30 @@ function installLiveCaptureBindings() {
     const t = e.target;
     if (!(t instanceof HTMLElement)) return;
     if (document.body.classList.contains("lia-snapshot-mode")) return;
+
+    if (examLockToSubmission) {
+      const keyLock = String(e.key || "");
+      if (
+        keyLock === "ArrowLeft" ||
+        keyLock === "ArrowRight" ||
+        keyLock === "ArrowUp" ||
+        keyLock === "ArrowDown" ||
+        keyLock === "PageUp" ||
+        keyLock === "PageDown" ||
+        keyLock === "Home" ||
+        keyLock === "End" ||
+        keyLock === " " ||
+        keyLock === "Spacebar"
+      ) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (typeof e.stopImmediatePropagation === "function") {
+          e.stopImmediatePropagation();
+        }
+        forceNavigateToHash(getExamSubmissionHash(), { allowNudge: false });
+        return;
+      }
+    }
 
     const key = String(e.key || "");
     if (key !== "Enter" && key !== " ") return;
@@ -15229,9 +15793,24 @@ function installLiveCaptureBindings() {
     if (document.body.classList.contains("lia-snapshot-mode")) return;
 
     const prevHash = cleanHashValue(liveRouteCurrentHash || getCurrentHash());
-    const newHash = cleanHashValue(
+    let newHash = cleanHashValue(
       ev && ev.detail && ev.detail.hash ? ev.detail.hash : getCurrentHash()
     );
+
+    if (examLockToSubmission) {
+      const targetLocked = getExamSubmissionHash();
+      const renderedLocked = cleanHashValue(getRenderedVisibleDeclaredHash() || "");
+
+      if (targetLocked && (newHash !== targetLocked || renderedLocked !== targetLocked)) {
+        forceNavigateToHash(targetLocked, { allowNudge: false });
+      }
+
+      if (targetLocked && newHash !== targetLocked) {
+        return;
+      }
+    }
+
+    newHash = handleExamRouteTransition(prevHash, newHash);
 
     stopLiveSlideTimer("route-outgoing");
     captureAdminState();
@@ -15243,6 +15822,8 @@ function installLiveCaptureBindings() {
     setTimeout(function () {
       storeLiveSlideState(newHash, "route-incoming");
       scheduleAssignmentDetailsRefresh(220);
+      updateExamIntroNoticeForHash(newHash);
+      updateExamCountdownUi("route-incoming-delayed");
     }, 180);
   });
 
@@ -15250,6 +15831,8 @@ function installLiveCaptureBindings() {
     switchLiveSlideTimer(liveRouteCurrentHash || getCurrentHash(), "init");
     captureAdminState();
     storeLiveSlideState(liveRouteCurrentHash || getCurrentHash(), "init");
+    updateExamIntroNoticeForHash(liveRouteCurrentHash || getCurrentHash());
+    updateExamCountdownUi("init-delayed");
   }, 180);
 }
 
@@ -15490,6 +16073,11 @@ async function activateSnapshotMode(payload, linkValue, opts) {
   snapshotIsSharedLinkMode = !!opts.sharedLinkMode;
   freezeLinkValue = String(linkValue || window.location.href || "");
 
+  removeExamIntroNotice();
+  stopExamTickTimer();
+  stopExamLayoutTimer();
+  removeExamCountdownElement();
+
   await ensureDeclaredSlides(true);
 
   rehydrateSnapshotEvaluationMetaFromSource(snapshotPayload);
@@ -15634,6 +16222,7 @@ async function initMode() {
   }
 
   await ensureDeclaredSlides();
+  resetLiveExamStateForCourse();
   installLiveCaptureBindings();
   scheduleAssignmentDetailsRefresh(180);
   }

@@ -82,6 +82,10 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 <span class="lia-assignment-details" data-adetails="@0" style="display:none !important;"></span>
 @end
 
+@Exam
+<div class="lia-exam-macro-anchor" data-lia-exam-macro="1" data-lia-exam-duration="@0"></div>
+@end
+
 
 
 -->
@@ -91,6 +95,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 # Reine LiaScript-Abgabelink-Demo
 
 
+@Exam(5min)
 
 
 Einfaches importieren: \
@@ -101,6 +106,9 @@ Abgabefeld über Makro: Am sinnvollsten wäre eine eigene letzte Folie dafür ei
 
 Automatisches Auswerten: \
 `@Auswertung`
+
+Festgelegte Bearbeitungszeit mit X gleich der Anzahl der Minuten. Der Warnhinweis erscheint auf der Folie direkt an der Makro-Stelle. (Start beim Verlassen dieser Makro-Folie): \
+`@Exam(Xmin)`
 
 Tracking von Betrugsversuchen über DevTools: \
 `@Auswertung(F12)`
@@ -382,7 +390,6 @@ __$c)\;\;$__ **Ziehe** den Punkt $C$ **auf** die Koordinaten $(7|6)$.
 
 
 # Abgabe
-
 
 
 
