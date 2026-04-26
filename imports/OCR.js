@@ -3336,6 +3336,60 @@ function setupCanvas(canvas){
           return s;
         }
 
+        // Heuristik: OCR-\times ist in Schulmathe meist eigentlich Multiplikation.
+        // Bei echtem Operator-Kontext normalisieren wir auf \cdot,
+        // sonst als Variable x interpretieren (häufiger OCR-Fehler bei Handschrift).
+        function __ocrNormalizeTimesVsX(input){
+          const s = String(input || '');
+          if (!s) return s;
+
+          const CMD = '\\times';
+          let out = '';
+          let i = 0;
+
+          function isWS(ch){
+            return ch === ' ' || ch === '\n' || ch === '\r' || ch === '\t' || ch === '\f';
+          }
+          function isLeftOperand(ch){
+            if (!ch) return false;
+            const c = ch.charCodeAt(0);
+            return (c >= 48 && c <= 57) || // 0-9
+                   (c >= 65 && c <= 90) || // A-Z
+                   (c >= 97 && c <= 122) || // a-z
+                   ch === ')' || ch === ']' || ch === '}';
+          }
+          function isRightOperand(ch){
+            if (!ch) return false;
+            const c = ch.charCodeAt(0);
+            return (c >= 48 && c <= 57) || // 0-9
+                   (c >= 65 && c <= 90) || // A-Z
+                   (c >= 97 && c <= 122) || // a-z
+                   ch === '(' || ch === '[' || ch === '{' || ch === '\\';
+          }
+
+          while (i < s.length){
+            if (s.slice(i, i + CMD.length) === CMD){
+              let j = out.length - 1;
+              while (j >= 0 && isWS(out[j])) j--;
+              const prev = j >= 0 ? out[j] : '';
+
+              let k = i + CMD.length;
+              while (k < s.length && isWS(s[k])) k++;
+              const next = k < s.length ? s[k] : '';
+
+              const isBinaryMul = isLeftOperand(prev) && isRightOperand(next);
+              out += isBinaryMul ? '\\cdot' : 'x';
+              i += CMD.length;
+              continue;
+            }
+
+            out += s[i];
+            i += 1;
+          }
+
+          return out;
+        }
+
 
 
       function __ocrCropFromRect(rectItem){
@@ -3925,6 +3979,7 @@ async function __ocrDigitGuard(engine, cropCanvas){
 
     let latex = __ocrCleanLatex(raw);
     latex = __ocrUnwrapRoman(latex);
+    latex = __ocrNormalizeTimesVsX(latex);
 
     const cand = __ocrDigitCandidateFrom(latex);
     if (!cand) continue;
@@ -4011,7 +4066,91 @@ function __rectProgStop(final01){
 }
 
 
+// ---- Multi-Preprocessing-Voting ----------------------------------------
+// Läuft 3 Bildvarianten desselben Crops durch texify2 und wählt die
+// vollständigste LaTeX-Ausgabe (balancierte Klammern + möglichst lang).
 
+function __ocrAddPadding(canvas, px){
+  const c = document.createElement('canvas');
+  c.width  = canvas.width  + px * 2;
+  c.height = canvas.height + px * 2;
+  const ctx = c.getContext('2d', { willReadFrequently: true });
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 0, c.width, c.height);
+  ctx.drawImage(canvas, px, px);
+  return c;
+}
+
+function __ocrDarkenCrop(canvas, factor){
+  // factor > 1 → mehr Pixel werden schwarz (niedrigerer Schwellwert effektiv)
+  const c = document.createElement('canvas');
+  c.width  = canvas.width;
+  c.height = canvas.height;
+  const ctx = c.getContext('2d', { willReadFrequently: true });
+  ctx.drawImage(canvas, 0, 0);
+  const img = ctx.getImageData(0, 0, c.width, c.height);
+  const d = img.data;
+  const inv = 1 / Math.max(1, factor);
+  for (let i = 0; i < d.length; i += 4){
+    d[i]   = Math.round(d[i]   * inv);
+    d[i+1] = Math.round(d[i+1] * inv);
+    d[i+2] = Math.round(d[i+2] * inv);
+  }
+  ctx.putImageData(img, 0, 0);
+  return c;
+}
+
+function __ocrScoreLatex(s){
+  const t = String(s || '').trim();
+  if (!t) return -9999;
+  const incomplete = __ocrMathLooksIncomplete(t);
+  // Vollständige Ausgaben: Länge als positives Signal
+  // Unvollständige: stark bestraft, aber längere sind weniger schlecht
+  return incomplete ? (t.length - 5000) : t.length;
+}
+
+async function __ocrVotingRecognize(engine, crop){
+  // Variante A: Standard
+  let varA = crop;
+  try{ varA = __ocrPreprocessCanvas(crop); }catch(_){}
+  try{ varA = __ocrNormalizeSize(varA); }catch(_){}
+
+  // Variante B: mehr Padding → Brüche / hohe Ausdrücke haben mehr Luft
+  let varB = crop;
+  try{
+    varB = __ocrPreprocessCanvas(crop);
+    varB = __ocrAddPadding(varB, 20);
+    varB = __ocrNormalizeSize(varB);
+  }catch(_){ varB = varA; }
+
+  // Variante C: stärkerer Kontrast → schwaches Ink besser sichtbar
+  let varC = crop;
+  try{
+    varC = __ocrPreprocessCanvas(__ocrDarkenCrop(crop, 1.35));
+    varC = __ocrNormalizeSize(varC);
+  }catch(_){ varC = varA; }
+
+  const opts = { max_new_tokens: 128, do_sample: false, temperature: 0, __silent: true };
+
+  // Alle drei parallel
+  const [rawA, rawB, rawC] = await Promise.all([
+    engine.recognize(varA, opts).catch(() => ''),
+    engine.recognize(varB, opts).catch(() => ''),
+    engine.recognize(varC, opts).catch(() => '')
+  ]);
+
+  // Bestes Ergebnis wählen
+  const candidates = [rawA, rawB, rawC];
+  let best = rawA;
+  let bestScore = __ocrScoreLatex(rawA);
+  for (let i = 1; i < candidates.length; i++){
+    const sc = __ocrScoreLatex(candidates[i]);
+    if (sc > bestScore){ bestScore = sc; best = candidates[i]; }
+  }
+
+  return best;
+}
+// -------------------------------------------------------------------------
 
 
 async function __ocrFromMarkedRect({ auto=false } = {}){
@@ -4104,26 +4243,15 @@ async function __ocrFromMarkedRect({ auto=false } = {}){
       let inputCanvas = crop;
       let raw = '';
 
-      try{
-        if (preferDigits){
-          inputCanvas = __ocrPreprocessDigitCanvas(crop, { dilate: 0 });
-        }else{
-          inputCanvas = __ocrPreprocessCanvas(crop);
-        }
-      }catch(_){
-        inputCanvas = crop;
+      if (preferDigits){
+        // Digit-Pfad: schnell, single-pass
+        try{ inputCanvas = __ocrPreprocessDigitCanvas(crop, { dilate: 0 }); }catch(_){ inputCanvas = crop; }
+        try{ inputCanvas = __ocrNormalizeSize(inputCanvas); }catch(_){}
+        raw = await engine.recognize(inputCanvas, { max_new_tokens: 16, do_sample:false, temperature:0 });
+      } else {
+        // Math-Pfad: Voting über 3 Bildvarianten
+        raw = await __ocrVotingRecognize(engine, crop);
       }
-
-      try{
-        inputCanvas = __ocrNormalizeSize(inputCanvas);
-      }catch(_){}
-
-      raw = await engine.recognize(
-        inputCanvas,
-        preferDigits
-          ? { max_new_tokens: 16,  do_sample:false, temperature:0 }
-          : { max_new_tokens: 128, do_sample:false, temperature:0 }
-      );
 
       // Falls der Digit-Pfad versehentlich auf einen echten Math-Term angewendet wurde,
       // dann wirkt die Ausgabe oft "plötzlich abgeschnitten".
@@ -4195,6 +4323,7 @@ async function __ocrFromMarkedRect({ auto=false } = {}){
       latex = __ocrCleanLatex(raw);
       latex = __ocrUnwrapRoman(latex);
     }
+    latex = __ocrNormalizeTimesVsX(latex);
 
     // --- NEW: Digit-Salvage auch dann, wenn Texify "Li" etc. liefert.
     // Wir triggern das, wenn preferDigits true ist ODER die Ausgabe sehr kurz ist und kein LaTeX enthält.
