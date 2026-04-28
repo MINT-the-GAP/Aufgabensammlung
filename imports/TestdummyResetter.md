@@ -9,7 +9,67 @@ comment: Resetter v0.0.1
 
 
 @onload
+(function () {
+	if (!document.getElementById("lia-reset-icon-css")) {
+		const s = document.createElement("style");
+		s.id = "lia-reset-icon-css";
+		s.textContent = [
+			".lia-quiz .lia-quiz__answers { position: relative; }",
+			".lia-resetall-sep { border: 0 !important; border-top: 1px solid var(--lia-reset-accent, #0b5fff) !important; opacity: 0.55; }",
+			".lia-quiz.lia-reset-icons-hidden .lia-quiz__answers i.icon, .lia-quiz.lia-reset-icon-success .lia-quiz__answers i.icon, .lia-quiz.lia-reset-icon-error .lia-quiz__answers i.icon, .lia-quiz.lia-reset-icon-resolve .lia-quiz__answers i.icon { display:none !important; }",
+			".lia-quiz.lia-reset-icon-success .lia-quiz__answers::after { content: '\\2713'; position: absolute; top: 1rem; right: 1rem; color: #198754; font-weight: 700; line-height: 1; }",
+				".lia-quiz.lia-reset-icon-error .lia-quiz__answers::after { content: '\\2715'; position: absolute; top: 1rem; right: 1rem; color: #dc3545; font-weight: 700; line-height: 1; }",
+			".lia-quiz.lia-reset-icon-success .lia-quiz__answers input, .lia-quiz.lia-reset-icon-success .lia-quiz__answers textarea, .lia-quiz.lia-reset-icon-success .lia-quiz__answers [role='textbox'] { border-color: var(--lia-success, #198754) !important; }",
+			".lia-quiz.lia-reset-icon-error .lia-quiz__answers input, .lia-quiz.lia-reset-icon-error .lia-quiz__answers textarea, .lia-quiz.lia-reset-icon-error .lia-quiz__answers [role='textbox'] { border-color: var(--lia-error, #dc3545) !important; }",
+			".lia-quiz.lia-reset-icon-resolve .lia-quiz__answers input, .lia-quiz.lia-reset-icon-resolve .lia-quiz__answers textarea, .lia-quiz.lia-reset-icon-resolve .lia-quiz__answers [role='textbox'] { border-color: var(--lia-text-disabled, #6c757d) !important; }",
+		].join("\n");
+		(document.head || document.body).appendChild(s);
+	}
+
+	function pickAccentFrom(doc) {
+		try {
+			const win = doc.defaultView || window;
+			const cs = win.getComputedStyle(doc.documentElement);
+			const vars = ["--lia-accent", "--lia-primary", "--lia-color-primary", "--primary", "--color-primary", "--accent-color"];
+			for (let i = 0; i < vars.length; i++) {
+				const val = String(cs.getPropertyValue(vars[i]) || "").trim();
+				if (val) return val;
+			}
+			const a = doc.querySelector("a");
+			if (a) {
+				const c = win.getComputedStyle(a).color;
+				if (c && c !== "rgba(0, 0, 0, 0)") return c;
+			}
+			const b = doc.querySelector(".lia-btn");
+			if (b) {
+				const bg = win.getComputedStyle(b).backgroundColor;
+				if (bg && bg !== "rgba(0, 0, 0, 0)") return bg;
+			}
+		} catch (e) {}
+		return "";
+	}
+
+	let lastAccent = "";
+	function updateResetAccent(force) {
+		const acc = pickAccentFrom(document) || "#0b5fff";
+		if (force || acc !== lastAccent) {
+			lastAccent = acc;
+			try { document.documentElement.style.setProperty("--lia-reset-accent", acc); } catch (e) {}
+		}
+	}
+
+	updateResetAccent(true);
+	setTimeout(function () { updateResetAccent(false); }, 120);
+	setTimeout(function () { updateResetAccent(false); }, 420);
+	window.addEventListener("hashchange", function () {
+		setTimeout(function () { updateResetAccent(false); }, 80);
+		setTimeout(function () { updateResetAccent(false); }, 320);
+	});
+})();
+
 window.__liaResetCatalog = window.__liaResetCatalog || Object.create(null);
+window.__liaResetDoneByHash = window.__liaResetDoneByHash || Object.create(null);
+window.__liaResetEpoch = window.__liaResetEpoch || 0;
 window.__liaResetUidCounter = window.__liaResetUidCounter || 0;
 window.__liaResetDebug = window.__liaResetDebug || { boot: Date.now(), count: 0, last: "init" };
 window.__liaResetExpectedByQuizId = window.__liaResetExpectedByQuizId || Object.create(null);
@@ -23,6 +83,43 @@ window.__liaResetDebugWrite = function (message) {
 
 	const line = "[resetall#" + String(window.__liaResetDebug.count) + "] " + msg + " | hash=" + String(window.location.hash || "") + " | boot=" + String(window.__liaResetDebug.boot);
 	try { console.log(line); } catch (e) {}
+};
+
+window.__liaResetApplyQuizIconState = function (quizRoot, state) {
+	if (!quizRoot || !quizRoot.classList) return;
+	quizRoot.classList.remove("lia-reset-icons-hidden", "lia-reset-icon-success", "lia-reset-icon-error", "lia-reset-icon-resolve");
+	if (state === "success") {
+		quizRoot.classList.add("lia-reset-icon-success");
+	} else if (state === "error") {
+		quizRoot.classList.add("lia-reset-icon-error");
+	} else if (state === "resolve") {
+		quizRoot.classList.add("lia-reset-icon-resolve");
+	} else {
+		quizRoot.classList.add("lia-reset-icons-hidden");
+	}
+};
+
+window.__liaResetSetQuizLocked = function (quizRoot, shouldLock) {
+	if (!quizRoot || !quizRoot.querySelectorAll) return;
+	Array.from(quizRoot.querySelectorAll(".lia-quiz__check, .lia-quiz__resolve")).forEach(function (btn) {
+		if (!btn) return;
+		if (shouldLock) {
+			try { btn.disabled = true; } catch (e) {}
+			btn.setAttribute("disabled", "disabled");
+			btn.setAttribute("aria-disabled", "true");
+			btn.classList.add("is-disabled", "lia-btn--disabled");
+			btn.style.pointerEvents = "none";
+			btn.style.opacity = "0.6";
+		} else {
+			try { btn.disabled = false; } catch (e) {}
+			btn.removeAttribute("disabled");
+			btn.removeAttribute("aria-disabled");
+			btn.classList.remove("is-disabled", "lia-btn--disabled");
+			btn.removeAttribute("tabindex");
+			btn.style.removeProperty("pointer-events");
+			btn.style.removeProperty("opacity");
+		}
+	});
 };
 
 window.__liaResetDumpQuizState = function (host, tag) {
@@ -257,7 +354,7 @@ window.__liaResetFallbackSolve = function (btn, mode) {
 	const fb = quiz.querySelector(".lia-quiz__feedback") || quiz.querySelector("[class*='feedback']");
 	const solvedText = window.__liaResetReadNativeFeedbackText(quiz, "solved");
 	const resolvedText = window.__liaResetReadNativeFeedbackText(quiz, "resolved");
-	const failedText = window.__liaResetReadNativeFeedbackText(quiz, "failed");
+	const failedText = window.__liaResetReadNativeFeedbackText(quiz, "failed") || "Leider war die Antwort nicht korrekt.";
 
 	if (mode === "resolve") {
 		controls.forEach(function (c, i) {
@@ -275,6 +372,8 @@ window.__liaResetFallbackSolve = function (btn, mode) {
 			fb.classList.add("text-disabled");
 			fb.textContent = resolvedText ? resolvedText : "";
 		}
+		window.__liaResetApplyQuizIconState(quiz, "resolve");
+		window.__liaResetSetQuizLocked(quiz, true);
 		window.__liaResetDebugWrite("fallback resolve applied; id=" + String(quiz.getAttribute("data-resetall-id") || ""));
 		return true;
 	}
@@ -299,6 +398,8 @@ window.__liaResetFallbackSolve = function (btn, mode) {
 			fb.textContent = failedText ? failedText : "";
 		}
 	}
+	window.__liaResetApplyQuizIconState(quiz, ok ? "success" : "error");
+	window.__liaResetSetQuizLocked(quiz, !!ok);
 
 	const checkBtn = quiz.querySelector(".lia-quiz__check");
 	if (checkBtn) {
@@ -461,6 +562,14 @@ window.__liaResetPass = function (button, phaseLabel) {
 		try { field.readOnly = false; } catch (e) {}
 		field.removeAttribute("disabled");
 		field.removeAttribute("readonly");
+		try { field.style.borderColor = ""; field.style.outline = ""; } catch (e) {}
+		try {
+			field.classList.remove(
+				"is-success", "is-failure", "is-error", "is-warning",
+				"lia-input--disabled", "lia-input--success", "lia-input--failure",
+				"lia-input--error", "is-disabled"
+			);
+		} catch (e) {}
 
 		try { field.dispatchEvent(new Event("input", { bubbles: true })); } catch (e) {}
 		try { field.dispatchEvent(new Event("change", { bubbles: true })); } catch (e) {}
@@ -488,6 +597,8 @@ window.__liaResetPass = function (button, phaseLabel) {
 			feedback.textContent = "";
 		}
 
+		window.__liaResetApplyQuizIconState(quizRoot, "hidden");
+		window.__liaResetSetQuizLocked(quizRoot, false);
 		quizRootsTouched += 1;
 	});
 
@@ -562,6 +673,7 @@ window.__liaPrimeSlideResetCatalog = function (button) {
 
 window.__liaResetCurrentSlideOnly = function (button) {
 	const btn = button instanceof HTMLElement ? button : null;
+	window.__liaResetEpoch += 1;
 	window.__liaResetLastRunTs = Date.now();
 	window.__liaResetDebugWrite("reset function start");
 	if (btn) btn.disabled = true;
@@ -574,6 +686,7 @@ window.__liaResetCurrentSlideOnly = function (button) {
 		}
 		const hash = window.__liaGetResetHash() || "#1";
 		window.__liaResetDebugWrite("host found; hash=" + hash);
+		window.__liaResetDoneByHash[hash] = 1;
 
 		let replacedCount = 0;
 		try {
@@ -589,8 +702,7 @@ window.__liaResetCurrentSlideOnly = function (button) {
 
 		window.__liaResetPass(btn, "primary");
 		window.setTimeout(function () { window.__liaResetPass(btn, "deferred-120ms"); }, 120);
-		window.setTimeout(function () { window.__liaResetHardRebuildCurrentSlide(hash, btn); }, 30);
-		window.__liaResetDebugWrite("safe-mode + hard-rebuild hash-hop active");
+		window.__liaResetDebugWrite("safe-mode reset applied");
 
 		if (btn && replacedCount === 0) {
 			btn.title = "Fallback-Reset ausgefuehrt";
@@ -606,8 +718,8 @@ window.__liaResetCurrentSlideOnly = function (button) {
 			if (btn) {
 				btn.disabled = false;
 				btn.title = "Reset ausgefuehrt";
-				btn.textContent = "Folie zurueckgesetzt";
-				window.setTimeout(function () { btn.textContent = "Folie zuruecksetzen"; }, 700);
+				btn.textContent = "Folie zurückgesetzt";
+				window.setTimeout(function () { btn.textContent = "Folie zurücksetzen"; }, 700);
 			}
 		}, 260);
 	}
@@ -617,7 +729,24 @@ setTimeout(function () { window.__liaPrimeSlideResetCatalog(null); }, 0);
 setTimeout(function () { window.__liaPrimeSlideResetCatalog(null); }, 140);
 setTimeout(function () { window.__liaPrimeSlideResetCatalog(null); }, 420);
 window.addEventListener("hashchange", function () {
+	window.__liaResetEpoch += 1;
 	setTimeout(function () { window.__liaPrimeSlideResetCatalog(null); }, 80);
+	setTimeout(function () {
+		const hash = window.__liaGetResetHash() || "#1";
+		if (!window.__liaResetDoneByHash[hash]) return;
+		window.__liaResetDebugWrite("rehydrate reset on " + hash);
+		window.__liaResetPass(null, "rehydrate-120ms");
+	}, 120);
+	setTimeout(function () {
+		const hash = window.__liaGetResetHash() || "#1";
+		if (!window.__liaResetDoneByHash[hash]) return;
+		window.__liaResetPass(null, "rehydrate-360ms");
+	}, 360);
+	setTimeout(function () {
+		const hash = window.__liaGetResetHash() || "#1";
+		if (!window.__liaResetDoneByHash[hash]) return;
+		window.__liaResetPass(null, "rehydrate-900ms");
+	}, 900);
 });
 
 if (!window.__liaResetClickBridgeInstalled) {
@@ -638,6 +767,8 @@ if (!window.__liaResetQuizProbeInstalled) {
 	document.addEventListener("click", function (ev) {
 		const target = ev.target && ev.target.closest ? ev.target.closest(".lia-quiz__check, .lia-quiz__resolve") : null;
 		if (!target) return;
+		const clickEpoch = window.__liaResetEpoch;
+
 		const rootPre = window.__liaResetResolveQuizRootFromButton(target) || target.parentElement;
 		const preSig = window.__liaResetCaptureQuizSignature(rootPre);
 
@@ -656,8 +787,62 @@ if (!window.__liaResetQuizProbeInstalled) {
 			"; bodyFrozen=" + String(bodyFrozen ? 1 : 0)
 		);
 
+		if (target.classList && target.classList.contains("lia-quiz__check")) {
+			var _obsTarget = target;
+			var _obsRoot = window.__liaResetResolveQuizRootFromButton(_obsTarget) || _obsTarget.parentElement;
+			var _preSig = preSig;
+			if (_obsRoot && window.MutationObserver) {
+				var _obs = new MutationObserver(function (mutations) {
+					if (clickEpoch !== window.__liaResetEpoch) {
+						_obs.disconnect();
+						return;
+					}
+					var curSig = window.__liaResetCaptureQuizSignature(_obsRoot);
+					var changed = curSig !== _preSig;
+					var isSolved = !!(_obsRoot.classList && _obsRoot.classList.contains("solved"));
+					var feedback = _obsRoot.querySelector ? _obsRoot.querySelector(".lia-quiz__feedback, [class*='feedback']") : null;
+					var hasFeedbackSuccess = !!(feedback && feedback.classList && feedback.classList.contains("text-success"));
+					var hasFeedbackError = !!(feedback && feedback.classList && feedback.classList.contains("text-error"));
+					if (changed && (isSolved || hasFeedbackSuccess || hasFeedbackError)) {
+						var _state = (isSolved || hasFeedbackSuccess) ? "success" : "error";
+						window.__liaResetApplyQuizIconState(_obsRoot, _state);
+						window.__liaResetSetQuizLocked(_obsRoot, _state === "success");
+						_obs.disconnect();
+					}
+				});
+				_obs.observe(_obsRoot, { attributes: true, attributeFilter: ["class"], subtree: true, childList: true });
+				// Sicherheitsnetz: Observer nach 8s abbrechen
+				window.setTimeout(function () { try { _obs.disconnect(); } catch (e) {} }, 8000);
+			}
+		}
+
 		window.setTimeout(function () {
+			if (clickEpoch !== window.__liaResetEpoch) return;
 			const root = window.__liaResetResolveQuizRootFromButton(target) || target.parentElement;
+			const isCheckBtn = target.classList && target.classList.contains("lia-quiz__check");
+			const isResolveBtn = target.classList && target.classList.contains("lia-quiz__resolve");
+			if (isCheckBtn && root) {
+				const changed = window.__liaResetCaptureQuizSignature(root) !== preSig;
+				const isSolved = !!(root.classList && root.classList.contains("solved"));
+				const feedback = root.querySelector ? root.querySelector(".lia-quiz__feedback, [class*='feedback']") : null;
+				const hasFeedbackSuccess = !!(feedback && feedback.classList && feedback.classList.contains("text-success"));
+				const hasFeedbackError = !!(feedback && feedback.classList && feedback.classList.contains("text-error"));
+				if (changed && (isSolved || hasFeedbackSuccess || hasFeedbackError)) {
+					const stateNow = (isSolved || hasFeedbackSuccess) ? "success" : "error";
+					window.__liaResetApplyQuizIconState(root, stateNow);
+					window.__liaResetSetQuizLocked(root, stateNow === "success");
+				}
+			}
+			if (isResolveBtn && root) {
+				const changed = window.__liaResetCaptureQuizSignature(root) !== preSig;
+				const isResolved = !!(root.classList && root.classList.contains("resolved"));
+				const feedback = root.querySelector ? root.querySelector(".lia-quiz__feedback, [class*='feedback']") : null;
+				const hasFeedbackResolve = !!(feedback && feedback.classList && feedback.classList.contains("text-disabled"));
+				if (changed && (isResolved || hasFeedbackResolve)) {
+					window.__liaResetApplyQuizIconState(root, "resolve");
+					window.__liaResetSetQuizLocked(root, true);
+				}
+			}
 			const state = root && root.classList
 				? "solved=" + String(root.classList.contains("solved") ? 1 : 0) + ";resolved=" + String(root.classList.contains("resolved") ? 1 : 0)
 				: "solved=?;resolved=?";
@@ -684,7 +869,7 @@ if (!window.__liaResetQuizProbeInstalled) {
 }
 @end
 
-@resetall: <button class="lia-btn lia-btn--outline lia-resetall-btn" data-resetall-btn="1" type="button" onclick="window.__liaResetDebugWrite && window.__liaResetDebugWrite('inline click'); window.__liaResetCurrentSlideOnly && window.__liaResetCurrentSlideOnly(this); return false;">Folie zuruecksetzen</button>
+@resetall: <br><hr class="lia-resetall-sep"/><br><hr class="lia-resetall-sep"/><div style="text-align:center"><br><button class="lia-btn lia-btn--outline lia-resetall-btn" data-resetall-btn="1" type="button" onclick="window.__liaResetDebugWrite && window.__liaResetDebugWrite('inline click'); window.__liaResetCurrentSlideOnly && window.__liaResetCurrentSlideOnly(this); return false;">Folie zurücksetzen</button></div>
 
 
 -->
@@ -710,9 +895,50 @@ Was ist $3+8$?
 
 Was ist $3+8$?
 
+<!-- data-solution-button="5" -->
 [[ 11 ]]
 
 
 
 @resetall 
+
+
+
+
+# Nutzung 3
+
+
+Was ist $3+8$?
+
+
+[[ 11 ]]
+
+
+
+@reset
+
+
+Was ist $3+8$?
+
+[[ 11 ]]
+
+
+
+# Nutzung 4
+
+
+Was ist $3+8$?
+
+
+[[ 11 ]]
+
+
+
+@reset
+
+
+Was ist $3+8$?
+
+[[ 11 ]]
+
 
