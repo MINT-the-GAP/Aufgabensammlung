@@ -17,6 +17,32 @@ meta:
   description: todo
   #image:
 
+navbar:
+  brand: Aufgabensammlung
+  background: "#006AB3"
+  theme: dark
+  links:
+    - label: Aufgabensets
+      url: "#aufgabensets"
+    - label: Erklärungen
+      url: "#erklaerungen"
+    - label: Algebraische Grundlagen
+      url: "#algebraische-grundlagen"
+    - label: Geometrie
+      url: "#geometrie"
+    - label: Trigonometrie
+      url: "#trigonometrie"
+    - label: Funktionen
+      url: "#funktionen"
+    - label: Differentiation & Integration
+      url: "#differentiation-und-integration"
+    - label: Stochastik
+      url: "#stochastik"
+    - label: Vektoren
+      url: "#vektoren"
+    - label: Sonstiges
+      url: "#sonstiges"
+
 collection:
   - html: >
       <p>
@@ -24,14 +50,14 @@ collection:
         und bietet eine Vielzahl an Aufgaben für die Sekundarstufe I und II. 
       </p>
       
-  - title:  "Aufgabensets"
+  - title:  "<h4 id='aufgabensets'>Aufgabensets</h4>"
     comment: "In dieser Kachel befinden sich zusammengestellte Aufgaben zum Üben für Abschlussprüfungen."
     grid: true
     collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/00_Repetitorium.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/BLF_0001.md
       
-  - title:  "Erklärungen"
+  - title:  "<h4 id='erklaerungen'>Erklärungen</h4>"
     comment: "Hier befinden sich Erklärungen."
     grid: true
     collection:
@@ -67,7 +93,7 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_02_02_VonPrinzip.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_03_01_Kontingenztafeln.md
 
-  - title:  "Algebraische Grundlagen"
+  - title:  "<h4 id='algebraische-grundlagen'>Algebraische Grundlagen</h4>"
     comment: "In dieser Kachel sind Aufgaben für die Algebraischen Grundlagen zu finden."
     grid: true
     collection:
@@ -761,7 +787,7 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/Runden/Aufgabe_0013.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/Runden/Aufgabe_0014.md
 
-  - title:  "Geometrie"
+  - title:  "<h4 id='geometrie'>Geometrie</h4>"
     comment: "In dieser Kachel sind alle Aufgaben zur Geometrie enthalten."
     grid: true
     collection:
@@ -915,7 +941,7 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/02_Geometrie/Aufgabe_0016.md
 
 
-  - title:  "Trigonometrie"
+  - title:  "<h4 id='trigonometrie'>Trigonometrie</h4>"
     comment: "In dieser Kachel sind alle Aufgaben zur Trigonometrie zu finden."
     grid: true
     collection:
@@ -924,7 +950,7 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/03_Trigonometrie/Aufgabe_0003.md
 
 
-  - title:  "Funktionen"
+  - title:  "<h4 id='funktionen'>Funktionen</h4>"
     comment: "In dieser Kachel sind alle Aufgaben zu Funktionen zu finden."
     grid: true
     collection:
@@ -962,7 +988,7 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0012.md
 
 
-  - title:  "Differentiation und Integration"
+  - title:  "<h4 id='differentiation-und-integration'>Differentiation und Integration</h4>"
     comment: "In dieser Kachel sind alle Aufgaben zu Differentiation und Integration zu finden."
     grid: true
     collection:
@@ -977,7 +1003,7 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/03_Funktionseigenschaften/Aufgabe_0003.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/03_Funktionseigenschaften/Aufgabe_0004.md
 
-  - title:  "Stochastik"
+  - title:  "<h4 id='stochastik'>Stochastik</h4>"
     comment: "In dieser Kachel sind alle Aufgaben zur Stochastik zu finden."
     grid: true
     collection:
@@ -1052,7 +1078,7 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/05_Hypergeometrische_Verteilung/Aufgabe_0002.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/06_Stochastik/05_Hypergeometrische_Verteilung/Aufgabe_0003.md
 
-  - title:  "Vektoren"
+  - title:  "<h4 id='vektoren'>Vektoren</h4>"
     comment: "Hier sind alle Aufgaben zur Vektorrechnung zu finden."
     grid: true
     collection:
@@ -1069,7 +1095,7 @@ collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/07_Vektoren/01_Vektoralgebra/Aufgabe_0011.md
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/07_Vektoren/01_Vektoralgebra/Aufgabe_0012.md
 
-  - title:  "Sonstiges"
+  - title:  "<h4 id='sonstiges'>Sonstiges</h4>"
     comment: "Hier befinden sich Aufgaben, die nicht in die anderen Kategorien passen."
     grid: true
     collection:
