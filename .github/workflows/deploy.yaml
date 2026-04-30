@@ -24,6 +24,9 @@ jobs:
       - name: Patch index
         run: node patch.js
 
+      - name: Minify HTML
+        run: npm install -g minify@ && minify index.html > index.min.html && mv index.min.html index.html
+
       - name: Prepare Deployment Directory
         run: |
           mkdir -p gh-pages-deploy
