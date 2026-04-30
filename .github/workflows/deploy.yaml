@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Generate WebSite
-        run: liaex -i project.yml --format project --output index
+        run: liaex -i project.yml --format project --output index --project-search
 
       - name: Patch index
         run: node patch.js
