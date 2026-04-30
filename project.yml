@@ -8,13 +8,17 @@ comment: >
   </span>
 logo: https://www.bildung-bedeutet-freiheit.de/dev/wp-content/uploads/2014/06/cropped-BannerHP.png
 
-icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Logo_TU_Bergakademie_Freiberg.svg/242px-Logo_TU_Bergakademie_Freiberg.svg.png
+icon: https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/TUBAF_Siegel.svg/250px-TUBAF_Siegel.svg.png
 
 footer: >
   Aufgaben erstellt von Martin Lommatzsch
 meta:
   title: Aufgabensammlung
-  description: todo
+  description: >
+    Interaktive Aufgabensammlung für die Sekundarstufe I und II – mit Aufgaben zu
+    Algebraischen Grundlagen, Geometrie, Trigonometrie, Funktionen, Differentiation,
+    Stochastik und Vektoren. Mehrere Schwierigkeits- und Anforderungsbereiche,
+    kontinuierlich weiterentwickelt.
   #image:
 
 navbar:
