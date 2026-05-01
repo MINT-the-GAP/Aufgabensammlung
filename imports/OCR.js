@@ -5591,6 +5591,17 @@ ensureCorners();
     document.addEventListener('touchmove', suppressTouchIfPenActive, { capture:true, passive:false });
     document.addEventListener('pointerdown', suppressTouchIfPenActive, { capture:true, passive:false });
     document.addEventListener('pointermove', suppressTouchIfPenActive, { capture:true, passive:false });
+
+    // Sicherheitsnetz: Stift-Pointer-IDs immer aufräumen,
+    // auch wenn der Canvas-eigene stopPointer nicht feuert.
+    const __penCleanup = function(e){
+      if (String((e && e.pointerType) || '').toLowerCase() === 'pen'){
+        PEN_TOUCH_GUARD.activePenPointers.delete(e.pointerId);
+      }
+    };
+    document.addEventListener('pointerup',     __penCleanup, { capture:true });
+    document.addEventListener('pointercancel', __penCleanup, { capture:true });
+    document.addEventListener('pointerleave',  __penCleanup, { capture:true });
   }
 
   function clampScale(s){ return Math.max(VIEW.minScale, Math.min(VIEW.maxScale, s)); }
@@ -5708,7 +5719,14 @@ ensureCorners();
 
   canvas.addEventListener('pointermove', (e) => {
     if (String((e && e.pointerType) || '').toLowerCase() === 'pen'){
-      markPenPointer(e.pointerId);
+      // Nur markieren, wenn der Stift wirklich aufliegt (Druck > 0 oder Button gedrückt).
+      // Beim reinen Hovern (Druck = 0) soll der Stift NICHT als aktiv gelten,
+      // damit der Touch-Guard keine Finger-Gesten sperrt.
+      if ((e.pressure > 0) || (e.buttons !== 0)){
+        markPenPointer(e.pointerId);
+      } else {
+        unmarkPenPointer(e.pointerId);
+      }
     }
     if (shouldIgnoreTouchPointer(e)){
       if (pointers.has(e.pointerId)) pointers.delete(e.pointerId);
@@ -5826,7 +5844,10 @@ ensureCorners();
 
   canvas.addEventListener('pointerup', stopPointer);
   canvas.addEventListener('pointercancel', stopPointer);
-  canvas.addEventListener('pointerleave', () => {
+  canvas.addEventListener('pointerleave', (e) => {
+    if (String((e && e.pointerType) || '').toLowerCase() === 'pen'){
+      unmarkPenPointer(e.pointerId);
+    }
     hideEraserRing();
     if (mode === 'draw') endStroke();
     if (mode !== 'pinch') mode = 'idle';
