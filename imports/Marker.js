@@ -3094,6 +3094,47 @@ function detectNavStack(){
   ROOT_DOC.body.classList.toggle("lia-hl-navstack", !!shouldUseHLNightlyStackDock());
 }
 
+function normalizeMarkerMacroText(){
+  const docs = [CONTENT_DOC];
+  if (ROOT_DOC && ROOT_DOC !== CONTENT_DOC) docs.push(ROOT_DOC);
+
+  const isPlaceholder = (v) => /^`?@\d+`?$/.test(String(v || "").trim());
+
+  for (const doc of docs){
+    let nodes = [];
+    try{
+      nodes = Array.from(doc.querySelectorAll(".lia-hl-target, .lia-hl-prefill"));
+    } catch(e){
+      nodes = [];
+    }
+
+    for (const el of nodes){
+      const attrBase = String(el.getAttribute("data-hl-base") || "").trim();
+      const base = attrBase || String(el.textContent || "").trim();
+
+      if (!attrBase) el.setAttribute("data-hl-base", base);
+
+      const parts = [base];
+      for (let i = 1; i <= 9; i++){
+        const v = String(el.getAttribute(`data-hl-rest${i}`) || "").trim();
+        if (!v || isPlaceholder(v)) continue;
+        parts.push(v);
+      }
+
+      const cleaned = parts
+        .filter(Boolean)
+        .join(", ")
+        .replace(/\s+,/g, ",")
+        .replace(/\s{2,}/g, " ")
+        .trim();
+
+      if (cleaned && cleaned !== String(el.textContent || "").trim()){
+        el.textContent = cleaned;
+      }
+    }
+  }
+}
+
 
 
 
@@ -3198,6 +3239,7 @@ function ensurePrefills(){
   // =========================
   function tick(){
       ensureCSS();
+      normalizeMarkerMacroText();
       if (!I.__hashWired){
       I.__hashWired = true;
       try { ROOT_WIN.addEventListener("hashchange", () => checkSlideAndRender(true)); } catch(e){}

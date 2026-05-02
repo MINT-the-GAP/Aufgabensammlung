@@ -989,6 +989,57 @@ script: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
+	(function () {
+		try {
+			function disableBrowserWritingAids(root) {
+				const scope = root || document;
+				const elements = scope.querySelectorAll(
+					"input, textarea, [contenteditable='true'], [contenteditable=''], [contenteditable='plaintext-only']"
+				);
+
+				elements.forEach(function (element) {
+					element.spellcheck = false;
+					element.setAttribute("spellcheck", "false");
+					element.setAttribute("autocorrect", "off");
+					element.setAttribute("autocapitalize", "none");
+					element.setAttribute("autocomplete", "off");
+					element.setAttribute("aria-autocomplete", "none");
+					element.setAttribute("data-gramm", "false");
+					element.setAttribute("data-gramm_editor", "false");
+					element.setAttribute("data-enable-grammarly", "false");
+				});
+			}
+
+			disableBrowserWritingAids(document);
+
+			const observer = new MutationObserver(function (mutations) {
+				mutations.forEach(function (mutation) {
+					mutation.addedNodes.forEach(function (node) {
+						if (node.nodeType !== Node.ELEMENT_NODE) {
+							return;
+						}
+
+						if (
+							node.matches &&
+							node.matches("input, textarea, [contenteditable='true'], [contenteditable=''], [contenteditable='plaintext-only']")
+						) {
+							disableBrowserWritingAids(node.parentNode || document);
+						} else {
+							disableBrowserWritingAids(node);
+						}
+					});
+				});
+			});
+
+			observer.observe(document.body, { childList: true, subtree: true });
+		} catch (e) {}
+	})();
+
+
+
+
+
+  
 
 
 

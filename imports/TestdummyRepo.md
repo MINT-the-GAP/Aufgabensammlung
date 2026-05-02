@@ -176,11 +176,12 @@ Anna ging in einen @diktat(Zoo). Dort konnte sie auf einem @diktat(Lama) reiten.
 __Aufgabe 3:__ Setze das Komma an die richtige Stelle. (Auflösung ist blockiert.)
 
 
+
 @orthography(`<!-- data-solution-timer="10s" data-solution-timer-start="onclick" -->`,`Der Bruder den ich mag.`,`Der Bruder, den ich mag.`)
 
 
 
-@ADetails(1=BE; Komma)
+@ADetails(1=BE;Komma)
 
 
 --- 
@@ -210,7 +211,16 @@ __$b)\;\;$__ $\dfrac{2}{5}$
 Markiere die korrekt.
 
 <div class="markerquiz">
-@markred(rot)
+@markred(rot, rot)
+@TextmarkerQuiz
+</div>
+
+@ADetails(1=BE;Marker)
+
+
+
+<div class="markerquiz">
+@markedred(rot, rot)
 @TextmarkerQuiz
 </div>
 
