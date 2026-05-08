@@ -5,7 +5,7 @@ author: Martin Lommatzsch
 comment: Resetter v0.0.1
 
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/lia-timer/refs/heads/main/README.md
+import: TimerREADME.md
 
 
 
@@ -68,6 +68,191 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-timer/refs/heads/main
 		setTimeout(function () { updateResetAccent(false); }, 320);
 	});
 })();
+
+// =========================
+// Timer-Reset-Funktionen (für Problem 1, 2, 3)
+// =========================
+window.__liaResetCleanupTimerUI = function (host) {
+	if (!host || !host.querySelectorAll) return 0;
+	let removed = 0;
+	// Entferne Timer-Badges und Start-Buttons (data-sol-timer-ui="1")
+	try {
+		const timerUIs = Array.from(host.querySelectorAll("[data-sol-timer-ui='1']"));
+		timerUIs.forEach(function (el) {
+			try { el.remove(); removed += 1; } catch (e) {}
+		});
+	} catch (e) {}
+	// Zeige versteckte Prüfen-Buttons wieder
+	try {
+		const hiddenChecks = Array.from(host.querySelectorAll("[data-__solTimerChkHidden='1']"));
+		hiddenChecks.forEach(function (el) {
+			if (!el || !el.style) return;
+			el.style.display = el.dataset.__solTimerPrevDisplayChk || "";
+			el.removeAttribute("hidden");
+			el.removeAttribute("aria-hidden");
+			delete el.dataset.__solTimerChkHidden;
+			delete el.dataset.__solTimerPrevDisplayChk;
+		});
+	} catch (e) {}
+	// Zeige versteckte Lösungs-Buttons wieder
+	try {
+		const hiddenSols = Array.from(host.querySelectorAll("[data-__solTimerPrevDisplay]"));
+		hiddenSols.forEach(function (el) {
+			if (!el || !el.style) return;
+			el.style.display = el.dataset.__solTimerPrevDisplay || "";
+			delete el.dataset.__solTimerPrevDisplay;
+			delete el.dataset.__solTimerBound;
+			delete el.dataset.__solTimerArmed;
+		});
+	} catch (e) {}
+	return removed;
+};
+
+window.__liaResetResetTimerState = function (host) {
+	if (!host || !host.querySelectorAll) return 0;
+	let cleared = 0;
+	
+	// 1. Entferne Timer-Marker auf ALLEN Elementen (mit data-solution-timer oder ohne)
+	try {
+		const allElements = Array.from(host.querySelectorAll("*"));
+		allElements.forEach(function (el) {
+			if (!el || !el.dataset) return;
+			Object.keys(el.dataset).forEach(function (k) {
+				if (/^__solTimer/i.test(k)) {
+					try { 
+						delete el.dataset[k]; 
+						cleared += 1; 
+					} catch (e) {}
+				}
+			});
+		});
+	} catch (e) {}
+	
+	// 2. Spezielle Behandlung für Quiz-Elemente mit data-solution-timer
+	// Stelle sicher, dass diese auch wirklich gelöscht werden
+	try {
+		const timerTargets = Array.from(host.querySelectorAll("[data-solution-timer]"));
+		timerTargets.forEach(function (el) {
+			if (!el || !el.dataset) return;
+			// Doppelte Überprüfung - manchmal werden die Marker nicht wirklich gelöscht
+			Object.keys(el.dataset).forEach(function (k) {
+				if (/^__solTimer/i.test(k)) {
+					try { 
+						el.removeAttribute("data-" + k.replace(/([A-Z])/g, "-$1").toLowerCase());
+						delete el.dataset[k]; 
+						cleared += 1; 
+					} catch (e) {}
+				}
+			});
+		});
+	} catch (e) {}
+	
+	return cleared;
+};
+
+window.__liaResetEnforceTimerByQuizState = function (scope) {
+	const root = scope && scope.querySelectorAll ? scope : null;
+	if (!root) return { gatedOff: 0, restored: 0 };
+	let gatedOff = 0;
+	let restored = 0;
+	const B_MAIN = "data-lia-reset-timer-bak";
+	const B_START = "data-lia-reset-timer-start-bak";
+	const B_BADGE = "data-lia-reset-timer-badge-bak";
+	const B_LABEL = "data-lia-reset-timer-start-label-bak";
+
+	const quizzes = root.matches && root.matches(".lia-quiz, lia-quiz")
+		? [root]
+		: Array.from(root.querySelectorAll(".lia-quiz, lia-quiz"));
+
+	quizzes.forEach(function (quiz) {
+		if (!quiz || !quiz.querySelectorAll || !quiz.classList) return;
+		const isOutcome = quiz.classList.contains("solved") || quiz.classList.contains("resolved");
+		const timerNodes = [];
+		if (quiz.matches && (quiz.matches("[data-solution-timer]") || quiz.matches("[" + B_MAIN + "]"))) {
+			timerNodes.push(quiz);
+		}
+		Array.prototype.push.apply(timerNodes, Array.from(quiz.querySelectorAll("[data-solution-timer], [" + B_MAIN + "]")));
+
+		timerNodes.forEach(function (el) {
+			if (!el || !el.getAttribute || !el.setAttribute) return;
+
+			if (isOutcome) {
+				if (el.hasAttribute("data-solution-timer") && !el.hasAttribute(B_MAIN)) {
+					el.setAttribute(B_MAIN, String(el.getAttribute("data-solution-timer") || ""));
+				}
+				if (el.hasAttribute("data-solution-timer-start") && !el.hasAttribute(B_START)) {
+					el.setAttribute(B_START, String(el.getAttribute("data-solution-timer-start") || ""));
+				}
+				if (el.hasAttribute("data-solution-timer-badge") && !el.hasAttribute(B_BADGE)) {
+					el.setAttribute(B_BADGE, String(el.getAttribute("data-solution-timer-badge") || ""));
+				}
+				if (el.hasAttribute("data-solution-timer-start-label") && !el.hasAttribute(B_LABEL)) {
+					el.setAttribute(B_LABEL, String(el.getAttribute("data-solution-timer-start-label") || ""));
+				}
+
+				if (el.hasAttribute("data-solution-timer")) {
+					el.removeAttribute("data-solution-timer");
+					gatedOff += 1;
+				}
+				el.removeAttribute("data-solution-timer-start");
+				el.removeAttribute("data-solution-timer-badge");
+				el.removeAttribute("data-solution-timer-start-label");
+			} else {
+				if (!el.hasAttribute("data-solution-timer") && el.hasAttribute(B_MAIN)) {
+					el.setAttribute("data-solution-timer", String(el.getAttribute(B_MAIN) || ""));
+					restored += 1;
+				}
+				if (!el.hasAttribute("data-solution-timer-start") && el.hasAttribute(B_START)) {
+					el.setAttribute("data-solution-timer-start", String(el.getAttribute(B_START) || ""));
+				}
+				if (!el.hasAttribute("data-solution-timer-badge") && el.hasAttribute(B_BADGE)) {
+					el.setAttribute("data-solution-timer-badge", String(el.getAttribute(B_BADGE) || ""));
+				}
+				if (!el.hasAttribute("data-solution-timer-start-label") && el.hasAttribute(B_LABEL)) {
+					el.setAttribute("data-solution-timer-start-label", String(el.getAttribute(B_LABEL) || ""));
+				}
+			}
+
+			if (el.dataset) {
+				Object.keys(el.dataset).forEach(function (k) {
+					if (!/^__solTimer/i.test(k)) return;
+					try { delete el.dataset[k]; } catch (e) {}
+				});
+			}
+		});
+	});
+
+	return { gatedOff: gatedOff, restored: restored };
+};
+
+window.__liaResetReinitializeTimer = function (host) {
+	if (!host || !host.querySelectorAll) return;
+	// Trigger Timer-Reinitialisierung nur für OFFENE Quizzes (nicht für resolved/solved!)
+	try {
+		const timerElements = Array.from(host.querySelectorAll("[data-solution-timer]"));
+		timerElements.forEach(function (el) {
+			if (!el) return;
+			// Prüfe: Ist das Quiz noch offen?
+			const quiz = el.closest ? el.closest(".lia-quiz, lia-quiz") : null;
+			if (quiz && quiz.classList) {
+				// Wenn resolved oder solved → Timer NICHT neu initialisieren
+				if (quiz.classList.contains("resolved") || quiz.classList.contains("solved")) {
+					window.__liaResetDebugWrite("timer reinit skipped (quiz already resolved/solved)");
+					return;
+				}
+			}
+			// Nur für offene Quizzes: Triggere Mutation durch Attribute-Change
+			const attr = el.getAttribute("data-solution-timer") || "";
+			el.removeAttribute("data-solution-timer");
+			window.setTimeout(function () {
+				try { el.setAttribute("data-solution-timer", attr); } catch (e) {}
+			}, 10);
+		});
+		if (timerElements.length > 0) {
+			window.__liaResetDebugWrite("timer reinit triggered; count=" + String(timerElements.length));
+		}
+	} catch (e) {}
+};
 
 window.__liaResetCatalog = window.__liaResetCatalog || Object.create(null);
 window.__liaResetDoneByHash = window.__liaResetDoneByHash || Object.create(null);
@@ -576,6 +761,35 @@ window.__liaResetResetSelectControls = function (host) {
 	return changed;
 };
 
+window.__liaResetResetDropdownControls = function (host) {
+	if (!host || !host.querySelectorAll) return 0;
+	let changed = 0;
+	const dropdowns = Array.from(host.querySelectorAll(".lia-dropdown"));
+	dropdowns.forEach(function (dropdown) {
+		if (!dropdown || !dropdown.querySelectorAll) return;
+
+		const dropdownId = String(dropdown.getAttribute("data-resetall-id") || "");
+
+		// Find the selected display element and the first option
+		const selectedEl = dropdown.querySelector(".lia-dropdown__selected");
+		const firstOption = dropdown.querySelector(".lia-dropdown__option");
+
+		if (!selectedEl || !firstOption) return;
+
+		// Reset display text to neutral placeholder after reset.
+		const resetPlaceholderText = "Auswahl";
+		const selectedSpan = selectedEl.querySelector("span");
+		if (selectedSpan) {
+			selectedSpan.textContent = resetPlaceholderText;
+		}
+
+		changed += 1;
+		window.__liaResetDebugWrite("dropdown selected text reset; id=" + dropdownId + "; text='" + resetPlaceholderText + "'");
+	});
+
+	return changed;
+};
+
 window.__liaResetResetHiddenInputs = function (host) {
 	if (!host || !host.querySelectorAll) return 0;
 	let changed = 0;
@@ -619,7 +833,8 @@ window.__liaResetRestoreNonQuizTargetsFromCatalog = function (host, hash, reason
 	let replaced = 0;
 	const targets = window.__liaCollectResetTargets(host).filter(function (el) {
 		if (!el || !el.matches) return false;
-		return !el.matches(".lia-quiz, lia-quiz");
+		// Exclude dropdowns from catalog restore - their state is managed separately
+		return !el.matches(".lia-quiz, lia-quiz, .lia-dropdown");
 	});
 	targets.forEach(function (el) {
 		const id = String(el.getAttribute("data-resetall-id") || "");
@@ -706,6 +921,81 @@ window.__liaResetRestoreQuizComments = function (quizRoot, comments) {
 		const comment = document.createComment(String(text || ""));
 		try { parent.insertBefore(comment, insertPoint); } catch (e) {}
 	});
+};
+
+window.__liaResetCaptureDropdownState = function (host) {
+	if (!host || !host.querySelectorAll) return {};
+	const state = {};
+	const dropdowns = Array.from(host.querySelectorAll(".lia-dropdown"));
+	
+	dropdowns.forEach(function (dropdown) {
+		if (!dropdown || !(dropdown instanceof Element)) return;
+		const id = String(dropdown.getAttribute("data-resetall-id") || "");
+		if (!id) return;
+		
+		const selectedEl = dropdown.querySelector(".lia-dropdown__selected");
+		const selectedText = selectedEl ? String((selectedEl.textContent || "")).trim() : "";
+		const isDisabled = dropdown.classList && dropdown.classList.contains("is-disabled");
+		
+		// Try to find a hidden input that stores the value
+		const hiddenInput = dropdown.querySelector("input[type='hidden']");
+		const hiddenValue = hiddenInput ? String(hiddenInput.value || "") : "";
+		
+		state[id] = {
+			selectedText: selectedText,
+			selectedValue: hiddenValue,
+			isDisabled: !!isDisabled,
+		};
+	});
+	
+	return state;
+};
+
+window.__liaResetRestoreDropdownState = function (host, savedState) {
+	if (!host || !host.querySelectorAll || !savedState) return 0;
+	let restored = 0;
+	
+	const dropdowns = Array.from(host.querySelectorAll(".lia-dropdown"));
+	dropdowns.forEach(function (dropdown) {
+		if (!dropdown || !(dropdown instanceof Element)) return;
+		const id = String(dropdown.getAttribute("data-resetall-id") || "");
+		if (!id || !savedState[id]) return;
+		
+		const saved = savedState[id];
+		const selectedEl = dropdown.querySelector(".lia-dropdown__selected");
+		if (!selectedEl) return;
+		
+		// Restore selected text
+		if (saved.selectedText) {
+			const selectedSpan = selectedEl.querySelector("span");
+			if (selectedSpan) {
+				selectedSpan.textContent = saved.selectedText;
+			} else {
+				selectedEl.textContent = saved.selectedText;
+			}
+		}
+		
+		// Restore hidden input value if it exists
+		if (saved.selectedValue) {
+			const hiddenInput = dropdown.querySelector("input[type='hidden']");
+			if (hiddenInput) {
+				hiddenInput.value = saved.selectedValue;
+				try { hiddenInput.dispatchEvent(new Event("input", { bubbles: true })); } catch (e) {}
+				try { hiddenInput.dispatchEvent(new Event("change", { bubbles: true })); } catch (e) {}
+			}
+		}
+		
+		// Restore disabled state
+		if (saved.isDisabled && dropdown.classList) {
+			dropdown.classList.add("is-disabled");
+		} else if (!saved.isDisabled && dropdown.classList) {
+			dropdown.classList.remove("is-disabled");
+		}
+		
+		restored += 1;
+	});
+	
+	return restored;
 };
 
 window.__liaResetCaptureSlideState = function (hash, host, reason) {
@@ -880,6 +1170,15 @@ window.__liaResetApplySlideState = function (hash, host, reason) {
 			});
 		}
 
+		const gateStats = window.__liaResetEnforceTimerByQuizState(quiz);
+		if (gateStats && (gateStats.gatedOff > 0 || gateStats.restored > 0)) {
+			window.__liaResetDebugWrite(
+				"state-restore: timer gated; quiz=" + String(quizId) +
+				"; off=" + String(gateStats.gatedOff) +
+				"; restored=" + String(gateStats.restored)
+			);
+		}
+
 		window.__liaResetApplyQuizIconState(quiz, String(row.icon || "hidden"));
 
 		const feedback = quiz.querySelector ? quiz.querySelector(".lia-quiz__feedback, [class*='feedback']") : null;
@@ -897,11 +1196,26 @@ window.__liaResetApplySlideState = function (hash, host, reason) {
 		applyBtnState(resolve, !!row.resolveDisabled, row.resolveText);
 		window.__liaResetSyncResolveVisibility(quiz);
 
-		if (row.quizComments && Array.isArray(row.quizComments)) {
+		// WICHTIG: Comments (mit Timer-Attributen) sollten NUR für OFFENE Quizzes wiederhergestellt werden!
+		// Nicht für bereits solved/resolved Quizzes, sonst triggert das Timer-Reinitialisierung
+		if (!row.solved && !row.resolved && row.quizComments && Array.isArray(row.quizComments)) {
 			window.__liaResetRestoreQuizComments(quiz, row.quizComments);
+			window.__liaResetDebugWrite("state-restore: comments restored (open quiz only); quiz=" + String(quizId) + "; count=" + String(row.quizComments.length));
+		} else if (row.quizComments && Array.isArray(row.quizComments) && row.quizComments.length > 0) {
+			window.__liaResetDebugWrite("state-restore: comments skipped (solved/resolved); quiz=" + String(quizId) + "; solved=" + String(row.solved) + "; resolved=" + String(row.resolved));
 		}
 
 		applied += 1;
+	});
+
+	// Dropdowns entsperren die LiaScript beim Re-Render wieder gesperrt hat
+	Array.from(root.querySelectorAll(".lia-dropdown.is-disabled")).forEach(function (dd) {
+		dd.classList.remove("is-disabled");
+		dd.style.removeProperty("pointer-events");
+		dd.style.removeProperty("cursor");
+		dd.style.removeProperty("opacity");
+		dd.style.removeProperty("filter");
+		window.__liaResetDebugWrite("state-restore: dropdown unlocked; id=" + String(dd.getAttribute("data-resetall-id") || ""));
 	});
 
 	if (applied > 0) {
@@ -1056,6 +1370,10 @@ window.__liaResetNeedsRehydrate = function (host) {
 		if (val.length > 0) return true;
 	}
 
+	// Auch prüfen ob ein Dropdown noch gesperrt ist
+	const lockedDropdowns = Array.from(host.querySelectorAll(".lia-dropdown.is-disabled"));
+	if (lockedDropdowns.length > 0) return true;
+
 	return false;
 };
 
@@ -1132,7 +1450,7 @@ window.__liaResetInstallInteractionGuard = function () {
 		if (!ev || ev.isTrusted !== true) return;
 		const t = ev && ev.target;
 		if (!t || !t.closest) return;
-		if (!t.closest(".lia-quiz, lia-quiz, .orthography-wrap, .fq-widget, .markerquiz")) return;
+		if (!t.closest(".lia-quiz, lia-quiz, .orthography-wrap, .fq-widget, .markerquiz, .lia-dropdown")) return;
 		window.__liaResetMarkQuizInteraction("input");
 		window.__liaResetMarkQuizTouched(t, "input");
 		const q = t.closest(".lia-quiz, lia-quiz");
@@ -1155,6 +1473,67 @@ window.__liaResetInstallInteractionGuard = function () {
 		if (!ev || ev.isTrusted !== true) return;
 		const t = ev && ev.target;
 		if (!t || !t.closest) return;
+		
+		// Handle dropdown option clicks
+		const dropdownOption = t.closest(".lia-dropdown__option");
+		if (dropdownOption) {
+			const dropdown = dropdownOption.closest(".lia-dropdown");
+			if (dropdown) {
+				const dropdownId = String(dropdown.getAttribute("data-resetall-id") || "");
+				if (dropdownId) {
+					window.__liaResetQuizTouchById[dropdownId] = Date.now();
+					window.__liaResetMarkQuizInteraction("dropdown-click");
+					window.__liaResetDebugWrite("dropdown option clicked; id=" + dropdownId);
+				}
+			}
+		}
+
+		// Dropdown-Toggle: Falls Elm den Klick auf .lia-dropdown__selected ignoriert
+		// (weil kein Handler registriert), öffnen/schließen wir die Optionen manuell.
+		const selectedToggle = t.closest(".lia-dropdown__selected");
+		if (selectedToggle && !dropdownOption) {
+			const ddForToggle = selectedToggle.closest(".lia-dropdown");
+			if (ddForToggle && !ddForToggle.classList.contains("is-disabled")) {
+				const optionsEl = ddForToggle.querySelector(".lia-dropdown__options");
+				const wasVisible = !!(optionsEl && optionsEl.classList.contains("is-visible"));
+				window.setTimeout(function () {
+					if (!optionsEl) return;
+					const isNowVisible = optionsEl.classList.contains("is-visible");
+					if (isNowVisible === wasVisible) {
+						// Elm hat nicht reagiert – manuell toggeln
+						if (wasVisible) {
+							optionsEl.classList.remove("is-visible");
+							selectedToggle.setAttribute("aria-expanded", "false");
+						} else {
+							optionsEl.classList.add("is-visible");
+							selectedToggle.setAttribute("aria-expanded", "true");
+						}
+						window.__liaResetDebugWrite("dropdown toggle manual; id=" + String(ddForToggle.getAttribute("data-resetall-id") || "") + "; nowVisible=" + String(!wasVisible ? 1 : 0));
+					}
+				}, 0);
+			}
+		}
+
+		// Nach Optionsklick: Dropdown schließen falls Elm es nicht tut
+		if (dropdownOption) {
+			const ddForClose = dropdownOption.closest(".lia-dropdown");
+			if (ddForClose && !ddForClose.classList.contains("is-disabled")) {
+				const selEl = ddForClose.querySelector(".lia-dropdown__selected");
+				const optEl = ddForClose.querySelector(".lia-dropdown__options");
+				window.setTimeout(function () {
+					if (optEl && optEl.classList.contains("is-visible")) {
+						// Noch offen – LiaScript hat nicht geschlossen, manuell schließen
+						optEl.classList.remove("is-visible");
+						if (selEl) selEl.setAttribute("aria-expanded", "false");
+						// Angezeigte Auswahl aktualisieren (Text aus geklickter Option)
+						const optionText = String((dropdownOption.textContent || "")).trim();
+						const selectedSpan = selEl ? selEl.querySelector("span") : null;
+						if (selectedSpan && optionText) selectedSpan.textContent = optionText;
+					}
+				}, 50);
+			}
+		}
+		
 		const btn = t.closest(".lia-quiz__check, .lia-quiz__resolve");
 		if (!btn) return;
 		// Thaw the quiz being checked/resolved so LiaScript can read correct state.
@@ -1205,6 +1584,14 @@ window.__liaResetDebugNavigationChange = function (source) {
 	const now = Date.now();
 	const isMutationLike = /^mutation|^poll-/i.test(sourceText);
 	const hashReallyChanged = hash !== state.lastHash;
+	const shouldMutationRehydrate = !!(window.__liaResetDoneByHash[hash] && isMutationLike && hashReallyChanged);
+	let preMaskToken = 0;
+	if (shouldMutationRehydrate) {
+		preMaskToken = window.__liaResetApplyRehydrateMask("nav-" + sourceText + "-mutation-premask");
+		window.setTimeout(function () {
+			window.__liaResetReleaseRehydrateMask(preMaskToken, "nav-mutation-premask-failsafe");
+		}, 140);
+	}
 	let mutationGhostLike = false;
 	if (isMutationLike && hashReallyChanged) {
 		const lastHashEventTs = Number(state.lastHashEventTs || 0);
@@ -1226,6 +1613,16 @@ window.__liaResetDebugNavigationChange = function (source) {
 	const prevSig = state.lastSlideSig || "";
 	state.lastHash = hash;
 	state.lastSlideSig = sig;
+	const hashOnlyGhost = isMutationLike && hashReallyChanged && sig === prevSig;
+	if (hashOnlyGhost) {
+		window.__liaResetDebugWrite(
+			"nav-change skipped (hash-only ghost); source=" + sourceText +
+			"; fromHash=" + prevHash +
+			"; toHash=" + hash +
+			"; sig='" + sig.slice(0, 120) + "'"
+		);
+		return true;
+	}
 
 	window.__liaResetDebugWrite(
 		"nav-change; source=" + sourceText +
@@ -1238,28 +1635,78 @@ window.__liaResetDebugNavigationChange = function (source) {
 	window.__liaPrimeSlideResetCatalog(null);
 
 	const host = window.__liaGetResetHost(null);
-	if (host && host.querySelectorAll) {
+	if (host && host.querySelectorAll && !isMutationLike) {
 		window.__liaResetTraceFields(host, "nav-change-" + String(source || "unknown") + "-fields");
 		window.__liaResetTraceQuizOutcomes(host, "nav-change-" + String(source || "unknown") + "-quiz");
 	}
 	const isHashEventSource = /^hashchange|^popstate/i.test(sourceText);
+	const hashEventRecent = now - Number(state.lastHashEventTs || 0) <= 260;
 	if (window.__liaResetDoneByHash[hash] && isHashEventSource) {
 		window.__liaResetScheduleRehydrate(hash, "nav-" + sourceText);
 	}
+	if (window.__liaResetDoneByHash[hash] && isMutationLike && hashReallyChanged && hashEventRecent) {
+		window.__liaResetDebugWrite(
+			"nav-change skipped (mutation deferred to hashchange); source=" + sourceText +
+			"; hash=" + hash
+		);
+		window.__liaResetReleaseRehydrateMask(preMaskToken, "nav-mutation-deferred");
+		return true;
+	}
 	if (window.__liaResetDoneByHash[hash] && isMutationLike && hashReallyChanged) {
-		const maskToken = window.__liaResetApplyRehydrateMask("nav-" + sourceText + "-mutation");
-		const delay = mutationGhostLike ? 120 : 40;
-		window.setTimeout(function () {
-			if ((window.__liaGetResetHash() || "#1") !== hash) {
-				window.__liaResetReleaseRehydrateMask(maskToken, "nav-mutation-hash-changed");
-				return;
+		const delay = mutationGhostLike || !hashEventRecent ? 0 : 0;
+		if (mutationGhostLike || !hashEventRecent) {
+			if (state.lastLiteHash === hash && (now - Number(state.lastLiteTs || 0) < 260)) {
+				window.__liaResetDebugWrite(
+					"nav-change skipped (lite dedupe); source=" + sourceText +
+					"; hash=" + hash
+				);
+				window.__liaResetReleaseRehydrateMask(preMaskToken, "nav-mutation-lite-dedupe");
+				return true;
 			}
-			const applied = window.__liaResetTryImmediateRehydrate(hash, "nav-" + sourceText + "-mutation-" + String(delay) + "ms");
-			if (!applied) {
-				window.__liaResetScheduleRehydrate(hash, "nav-" + sourceText + "-mutation-" + String(delay) + "ms");
-			}
-			window.__liaResetReleaseRehydrateMask(maskToken, "nav-mutation-restore");
-		}, delay);
+			state.lastLiteHash = hash;
+			state.lastLiteTs = now;
+			const liteMaskToken = preMaskToken || window.__liaResetApplyRehydrateMask("nav-" + sourceText + "-mutation-lite");
+			window.setTimeout(function () {
+				window.__liaResetReleaseRehydrateMask(liteMaskToken, "nav-mutation-lite-failsafe");
+			}, 120);
+
+			(function runLiteAttempt(retry) {
+				if ((window.__liaGetResetHash() || "#1") !== hash) {
+					window.__liaResetReleaseRehydrateMask(liteMaskToken, "nav-mutation-lite-hash-changed");
+					return;
+				}
+				const applied = window.__liaResetTryImmediateRehydrate(hash, "nav-" + sourceText + "-mutation-lite-" + String(delay) + "ms");
+				if (!applied) {
+					if (retry <= 0) {
+						window.__liaResetScheduleRehydrate(hash, "nav-" + sourceText + "-mutation-lite-" + String(delay) + "ms");
+						window.__liaResetReleaseRehydrateMask(liteMaskToken, "nav-mutation-lite-scheduled");
+						return;
+					}
+					window.setTimeout(function () { runLiteAttempt(retry - 1); }, 24);
+					return;
+				}
+				window.__liaResetReleaseRehydrateMask(liteMaskToken, "nav-mutation-lite-restore");
+			})(1);
+		} else {
+			const maskToken = preMaskToken || window.__liaResetApplyRehydrateMask("nav-" + sourceText + "-mutation");
+			(function runMutationAttempt(retry) {
+				if ((window.__liaGetResetHash() || "#1") !== hash) {
+					window.__liaResetReleaseRehydrateMask(maskToken, "nav-mutation-hash-changed");
+					return;
+				}
+				const applied = window.__liaResetTryImmediateRehydrate(hash, "nav-" + sourceText + "-mutation-" + String(delay) + "ms");
+				if (!applied) {
+					if (retry <= 0) {
+						window.__liaResetScheduleRehydrate(hash, "nav-" + sourceText + "-mutation-" + String(delay) + "ms");
+						window.__liaResetReleaseRehydrateMask(maskToken, "nav-mutation-scheduled");
+						return;
+					}
+					window.setTimeout(function () { runMutationAttempt(retry - 1); }, 24);
+					return;
+				}
+				window.__liaResetReleaseRehydrateMask(maskToken, "nav-mutation-restore");
+			})(1);
+		}
 	}
 	return true;
 };
@@ -1289,7 +1736,7 @@ window.__liaResetInstallNavigationDebug = function () {
 	if (window.MutationObserver && document.body) {
 		state.observer = new MutationObserver(function () {
 			const now = Date.now();
-			if (now - Number(state.lastMutationTs || 0) < 120) return;
+			if (now - Number(state.lastMutationTs || 0) < 24) return;
 			state.lastMutationTs = now;
 			window.__liaResetDebugNavigationChange("mutation");
 		});
@@ -1406,7 +1853,23 @@ window.__liaResetLearnExpectedFromSolved = function (host) {
 			const t = String(el.type || "").toLowerCase();
 			return t !== "hidden" && t !== "button" && t !== "submit" && t !== "reset" && t !== "image" && t !== "file";
 		});
-		if (!controls.length) return;
+		if (!controls.length) {
+			// Dropdown-Quiz (lia-quiz-multi ohne Eingabefelder): korrekte Antwort
+			// aus dem Geschwister-.lia-dropdown ableiten wenn das Quiz solved ist.
+			if (isSolved) {
+				const parent = quizRoot.parentElement;
+				const dropdownEl = parent ? parent.querySelector(".lia-dropdown") : null;
+				if (dropdownEl) {
+					const selectedSpan = dropdownEl.querySelector(".lia-dropdown__selected span");
+					const selectedText = String((selectedSpan && selectedSpan.textContent) || "").trim();
+					if (selectedText) {
+						window.__liaResetExpectedByQuizId[id] = ["dropdown:" + selectedText];
+						window.__liaResetDebugWrite("learn dropdown expected; id=" + id + "; text='" + selectedText + "'");
+					}
+				}
+			}
+			return;
+		}
 
 		const values = controls.map(function (el) { return window.__liaResetControlValue(el); });
 		if (values.some(function (v) { return String(v || "").length > 0; })) {
@@ -1443,6 +1906,81 @@ window.__liaResetExtractExpectedFromControl = function (ctrl) {
 	const dv = "defaultValue" in ctrl ? String(ctrl.defaultValue || "").trim() : "";
 	if (dv) return dv;
 	return "";
+};
+
+window.__liaResetFallbackSolveDropdown = function (btn, quiz, dropdown, mode) {
+	const quizId = String(quiz.getAttribute("data-resetall-id") || "");
+
+	// Korrekte Antwort aus gespeichertem Wert holen
+	const rawExpected = String((window.__liaResetExpectedByQuizId[quizId] || [])[0] || "").trim();
+	const expectedText = rawExpected.startsWith("dropdown:") ? rawExpected.slice(9) : rawExpected;
+	if (!expectedText) {
+		window.__liaResetDebugWrite("dropdown fallback: no expected answer; id=" + quizId);
+		return false;
+	}
+
+	const fb = quiz.querySelector ? quiz.querySelector(".lia-quiz__feedback, [class*='feedback']") : null;
+	const solvedText = window.__liaResetReadNativeFeedbackText(quiz, "solved");
+	const resolvedText = window.__liaResetReadNativeFeedbackText(quiz, "resolved");
+	const failedText = window.__liaResetReadNativeFeedbackText(quiz, "failed") || "Leider war die Antwort nicht korrekt.";
+
+	if (mode === "resolve") {
+		// Korrekte Antwort im Dropdown anzeigen
+		const selectedSpan = dropdown.querySelector(".lia-dropdown__selected span");
+		if (selectedSpan) selectedSpan.textContent = expectedText;
+		quiz.classList.remove("solved", "open", "resolved");
+		quiz.classList.add("resolved");
+		if (fb) {
+			fb.classList.remove("text-success", "text-error");
+			fb.classList.add("text-disabled");
+			fb.textContent = resolvedText || ("Richtige Antwort: " + expectedText);
+		}
+		window.__liaResetApplyQuizIconState(quiz, "resolve");
+		window.__liaResetSetQuizLocked(quiz, true);
+		dropdown.classList.add("is-disabled");
+		window.__liaResetEnsureResolvedFeedbackText(quiz);
+		window.__liaResetCaptureSlideState(window.__liaGetResetHash(), window.__liaGetResetHost(btn), "fallback-dropdown-resolve");
+		window.__liaResetDebugWrite("dropdown fallback resolve; id=" + quizId + "; expected='" + expectedText + "'");
+		return true;
+	}
+
+	// mode === "check": Aktuell angezeigte Auswahl mit Erwartung vergleichen
+	const selectedSpan = dropdown.querySelector(".lia-dropdown__selected span");
+	const got = String((selectedSpan && selectedSpan.textContent) || "").trim();
+	if (!got) {
+		window.__liaResetDebugWrite("dropdown fallback: nothing selected; id=" + quizId);
+		return false;
+	}
+
+	const ok = (got === expectedText);
+	quiz.classList.remove("resolved", "solved", "open");
+	quiz.classList.add(ok ? "solved" : "open");
+
+	if (fb) {
+		fb.classList.remove("text-success", "text-error", "text-disabled");
+		if (ok) {
+			fb.classList.add("text-success");
+			fb.textContent = solvedText || "";
+		} else {
+			fb.classList.add("text-error");
+			fb.textContent = failedText;
+		}
+	}
+	window.__liaResetApplyQuizIconState(quiz, ok ? "success" : "error");
+	window.__liaResetSetQuizLocked(quiz, ok);
+	if (ok) dropdown.classList.add("is-disabled");
+
+	const checkBtn = quiz.querySelector ? quiz.querySelector(".lia-quiz__check") : null;
+	if (checkBtn) {
+		const m = String(checkBtn.textContent || "").match(/\s(\d+)\s*$/);
+		const n = m ? Number(m[1]) + 1 : 1;
+		const base = String(checkBtn.textContent || "").replace(/\s+\d+\s*$/, "").trim() || "Prüfen";
+		checkBtn.textContent = base + " " + String(n);
+	}
+	window.__liaResetSyncResolveVisibility(quiz);
+	window.__liaResetCaptureSlideState(window.__liaGetResetHash(), window.__liaGetResetHost(btn), "fallback-dropdown-check");
+	window.__liaResetDebugWrite("dropdown fallback check; ok=" + String(ok ? 1 : 0) + "; id=" + quizId + "; got='" + got + "'; expected='" + expectedText + "'");
+	return true;
 };
 
 window.__liaResetFallbackSolve = function (btn, mode) {
@@ -1483,7 +2021,13 @@ window.__liaResetFallbackSolve = function (btn, mode) {
 		const t = String(el.type || "").toLowerCase();
 		return t !== "hidden" && t !== "button" && t !== "submit" && t !== "reset" && t !== "image" && t !== "file";
 	});
-	if (!controls.length) return false;
+	if (!controls.length) {
+		// Dropdown-Quiz: Geschwister-.lia-dropdown suchen und separat auswerten
+		const quizParent = quiz.parentElement;
+		const dropdownEl = quizParent ? quizParent.querySelector(".lia-dropdown") : null;
+		if (!dropdownEl) return false;
+		return window.__liaResetFallbackSolveDropdown(btn, quiz, dropdownEl, mode);
+	}
 
 	const hasChoiceLikeControls = controls.some(function (el) {
 		const tag = String(el.tagName || "").toLowerCase();
@@ -1809,8 +2353,32 @@ window.__liaResetPass = function (button, phaseLabel) {
 	let quizRootsTouched = 0;
 	Array.from(host.querySelectorAll(".lia-quiz, lia-quiz")).forEach(function (quizRoot) {
 		if (!quizRoot || !quizRoot.classList) return;
-		quizRoot.classList.remove("solved", "resolved");
+		quizRoot.classList.remove("solved", "resolved", "is-disabled");
 		quizRoot.classList.add("open");
+		quizRoot.style.removeProperty("pointer-events");
+		quizRoot.style.removeProperty("cursor");
+
+		// MutationObserver: verhindert, dass LiaScript is-disabled nach Re-Render
+		// wieder auf den Quiz-Container setzt (besonders bei lia-quiz-multi ohne Pairs)
+		if (typeof MutationObserver !== "undefined") {
+			(function (qr) {
+				const qid = String(qr.getAttribute("data-resetall-id") || "");
+				const obs = new MutationObserver(function (mutations) {
+					for (let i = 0; i < mutations.length; i++) {
+						if (mutations[i].attributeName === "class" && qr.classList.contains("is-disabled")) {
+							qr.classList.remove("is-disabled");
+							qr.style.removeProperty("pointer-events");
+							qr.style.removeProperty("cursor");
+							window.__liaResetDebugWrite("quiz is-disabled re-add intercepted; id=" + qid);
+							break;
+						}
+					}
+				});
+				obs.observe(qr, { attributes: true, attributeFilter: ["class"] });
+				window.setTimeout(function () { obs.disconnect(); }, 800);
+			})(quizRoot);
+		}
+
 		expandoCleared += window.__liaResetClearExpandoState(quizRoot);
 
 		const checkBtn = quizRoot.querySelector ? quizRoot.querySelector(".lia-quiz__check") : null;
@@ -1858,6 +2426,27 @@ window.__liaResetPass = function (button, phaseLabel) {
 			window.__liaResetQuizTouchById[quizId] = 0;
 			window.__liaResetChoiceInputTouchById[quizId] = 0;
 		}
+
+		const passGateStats = window.__liaResetEnforceTimerByQuizState(quizRoot);
+		if (passGateStats && (passGateStats.gatedOff > 0 || passGateStats.restored > 0)) {
+			window.__liaResetDebugWrite(
+				phase + ": timer gate enforced; quiz=" + String(quizId || quizRootsTouched) +
+				"; off=" + String(passGateStats.gatedOff) +
+				"; restored=" + String(passGateStats.restored)
+			);
+		}
+
+		// ==== FIX 1: Timer-UI und Timer-State cleanup (vor Comment-Restore) ====
+		const timerUICleared = window.__liaResetCleanupTimerUI(host);
+		const timerStateCleared = window.__liaResetResetTimerState(host);
+		if (timerUICleared > 0 || timerStateCleared > 0) {
+			window.__liaResetDebugWrite(
+				phase + ": timer cleanup; quiz=" + String(quizId || quizRootsTouched) +
+				"; uiCleared=" + String(timerUICleared) +
+				"; stateCleared=" + String(timerStateCleared)
+			);
+		}
+
 		const baselineComments = quizId && window.__liaResetInitialCommentsByQuizId[quizId]
 			? window.__liaResetInitialCommentsByQuizId[quizId]
 			: [];
@@ -1869,6 +2458,59 @@ window.__liaResetPass = function (button, phaseLabel) {
 		window.__liaResetSyncResolveVisibility(quizRoot);
 
 		quizRootsTouched += 1;
+	});
+
+	let dropdownsTouched = 0;
+	Array.from(host.querySelectorAll(".lia-dropdown")).forEach(function (dropdown) {
+		if (!dropdown || !(dropdown instanceof Element)) return;
+		const dropdownId = String(dropdown.getAttribute("data-resetall-id") || "");
+		expandoCleared += window.__liaResetClearExpandoState(dropdown);
+
+		const selectedEl = dropdown.querySelector(".lia-dropdown__selected");
+		if (selectedEl) {
+			expandoCleared += window.__liaResetClearExpandoState(selectedEl);
+		}
+
+		const optionsContainer = dropdown.querySelector(".lia-dropdown__options");
+		if (optionsContainer) {
+			expandoCleared += window.__liaResetClearExpandoState(optionsContainer);
+		}
+
+		// Dropdown entsperren: is-disabled entfernen und mit MutationObserver
+		// verhindern, dass LiaScript es beim nächsten Re-Render wieder setzt.
+		function __clearDropdownDisabled(el) {
+			el.classList.remove("is-disabled");
+			try { el.removeAttribute("disabled"); } catch (e) {}
+			try { el.removeAttribute("aria-disabled"); } catch (e) {}
+			el.style.removeProperty("pointer-events");
+			el.style.removeProperty("opacity");
+			el.style.removeProperty("filter");
+			el.style.removeProperty("cursor");
+		}
+		__clearDropdownDisabled(dropdown);
+
+		// Bewache das Attribut für 800 ms gegen LiaScript-Re-Render
+		if (typeof MutationObserver !== "undefined") {
+			(function (dd, clearFn) {
+				const obs = new MutationObserver(function (mutations) {
+					for (let i = 0; i < mutations.length; i++) {
+						if (mutations[i].attributeName === "class" && dd.classList.contains("is-disabled")) {
+							clearFn(dd);
+							window.__liaResetDebugWrite("dropdown is-disabled re-add intercepted; id=" + String(dd.getAttribute("data-resetall-id") || ""));
+							break;
+						}
+					}
+				});
+				obs.observe(dd, { attributes: true, attributeFilter: ["class"] });
+				window.setTimeout(function () { obs.disconnect(); }, 800);
+			})(dropdown, __clearDropdownDisabled);
+		}
+
+		if (dropdownId) {
+			window.__liaResetQuizTouchById[dropdownId] = 0;
+		}
+
+		dropdownsTouched += 1;
 	});
 
 	let controlsUnlocked = 0;
@@ -1896,6 +2538,7 @@ window.__liaResetPass = function (button, phaseLabel) {
 	}, 60);
 
 	const selectResetCount = window.__liaResetResetSelectControls(host);
+	const dropdownResetCount = window.__liaResetResetDropdownControls(host);
 	const hiddenResetCount = 0;
 	const dragResetCount = window.__liaResetRestoreDragHomes(host);
 
@@ -1904,9 +2547,11 @@ window.__liaResetPass = function (button, phaseLabel) {
 		"; fieldsReset=" + String(editableReset) +
 		"; fieldsSkipped=" + String(editableSkipped) +
 		"; quizRootsTouched=" + String(quizRootsTouched) +
+		"; dropdownsTouched=" + String(dropdownsTouched) +
 		"; controlsUnlocked=" + String(controlsUnlocked) +
 		"; expandoCleared=" + String(expandoCleared) +
 		"; selectsReset=" + String(selectResetCount) +
+		"; dropdownsReset=" + String(dropdownResetCount) +
 		"; hiddenReset=" + String(hiddenResetCount) +
 		"; draggablesReset=" + String(dragResetCount)
 	);
@@ -1989,8 +2634,8 @@ window.__liaResetTryImmediateRehydrate = function (hash, source) {
 	if (!host || !host.querySelectorAll) return false;
 	window.__liaPrimeSlideResetCatalog(null);
 	if (window.__liaResetApplySlideState(targetHash, host, "immediate-" + String(source || "nav"))) {
+		window.__liaResetEnforceTimerByQuizState(host);
 		window.__liaResetDebugWrite("immediate rehydrate applied; hash=" + targetHash + "; source=" + String(source || "nav"));
-		window.__liaResetReleaseRehydrateMask(0, "immediate-success");
 		return true;
 	}
 	return false;
@@ -2017,9 +2662,12 @@ window.__liaResetCurrentSlideOnly = function (button) {
 		try {
 			window.__liaPrimeSlideResetCatalog(btn);
 			window.__liaResetLearnExpectedFromSolved(host);
-			// IMPORTANT: Do not replace quiz nodes by outerHTML.
-			// Replacing nodes drops runtime event listeners for Pruefen/Aufloesen.
-			window.__liaResetDebugWrite("snapshot replace skipped (listener-safe)");
+			// Keep quiz nodes listener-safe, but restore non-quiz widgets (e.g. dropdown/tile)
+			// from the initial catalog so custom UIs reset to their pristine DOM state.
+			replacedCount = window.__liaResetRestoreNonQuizTargetsFromCatalog(host, hash, "primary-prepass");
+			window.__liaResetDebugWrite(
+				"snapshot replace skipped (listener-safe); nonQuizRestored=" + String(replacedCount)
+			);
 		} catch (err) {
 			console.warn("[resetall] snapshot restore failed", err);
 			window.__liaResetDebugWrite("snapshot failed");
@@ -2064,10 +2712,30 @@ window.addEventListener("hashchange", function () {
 	}
 	const hashNow = window.__liaGetResetHash() || "#1";
 	window.__liaResetDebugWrite("hashchange detected; to=" + hashNow + "; done=" + String(window.__liaResetDoneByHash[hashNow] ? 1 : 0));
+
+	if (window.__liaResetDoneByHash[hashNow]) {
+		// Timer darf nur auf bereits reset-verwalteten Folien angefasst werden.
+		const hostEarly = window.__liaGetResetHost(null);
+		if (hostEarly && hostEarly.querySelectorAll) {
+			const uiClearedEarly = window.__liaResetCleanupTimerUI(hostEarly);
+			const stateClearedEarly = window.__liaResetResetTimerState(hostEarly);
+			const gateEarly = window.__liaResetEnforceTimerByQuizState(hostEarly);
+			if (uiClearedEarly > 0 || stateClearedEarly > 0) {
+				window.__liaResetDebugWrite("hashchange: early timer cleanup; uiCleared=" + String(uiClearedEarly) + "; stateCleared=" + String(stateClearedEarly));
+			}
+			if (gateEarly && (gateEarly.gatedOff > 0 || gateEarly.restored > 0)) {
+				window.__liaResetDebugWrite(
+					"hashchange: timer gate enforced; off=" + String(gateEarly.gatedOff) +
+					"; restored=" + String(gateEarly.restored)
+				);
+			}
+		}
+	}
+	
 	let maskToken = 0;
 	if (window.__liaResetDoneByHash[hashNow]) {
 		maskToken = window.__liaResetApplyRehydrateMask("hashchange-main");
-		setTimeout(function () { window.__liaResetReleaseRehydrateMask(maskToken, "hashchange-failsafe-180ms"); }, 180);
+		setTimeout(function () { window.__liaResetReleaseRehydrateMask(maskToken, "hashchange-failsafe-120ms"); }, 120);
 	}
 	window.__liaResetDebugNavigationChange("hashchange-main");
 	setTimeout(function () {
@@ -2082,6 +2750,16 @@ window.addEventListener("hashchange", function () {
 	setTimeout(function () { window.__liaResetTryImmediateRehydrate(hashNow, "hashchange-main-24ms"); }, 24);
 	if (window.__liaResetDoneByHash[hashNow]) {
 		window.__liaResetScheduleRehydrate(hashNow, "hashchange-main");
+	}
+
+	if (window.__liaResetDoneByHash[hashNow]) {
+		// Timer-Reinit nur auf reset-verwalteten Folien.
+		window.setTimeout(function () {
+			const host = window.__liaGetResetHost(null);
+			if (!host || !host.querySelectorAll) return;
+			window.__liaResetEnforceTimerByQuizState(host);
+			window.__liaResetReinitializeTimer(host);
+		}, 130);
 	}
 });
 
