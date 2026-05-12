@@ -8,9 +8,10 @@ author: Martin Lommatzsch
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/TafelREADME.md
 
-script: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/Annotation.js
+script: Annotation.js
 
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/OCRREADME.md
 
 
 
@@ -35,3 +36,14 @@ script: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 Man kann mit der Buttonleiste am linken Rand nun Annotationen vornehmen.
 
+[[ 1234 ]] 
+
+
+Man kann mit der Buttonleiste am linken Rand nun Annotationen vornehmen.
+
+[[ 1234 ]] 
+
+
+Man kann mit der Buttonleiste am linken Rand nun Annotationen vornehmen.
+
+[[ 1234 ]] 

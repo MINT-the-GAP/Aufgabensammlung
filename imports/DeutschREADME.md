@@ -137,8 +137,11 @@ author: Martin Lommatzsch
         S.solution = cfg.solutionText;
       }
 
-      if (S.liveValue === null) {
+      if (!S.solved) {
+        // On a fresh render/reload, unsolved tasks should always reopen with the given start text.
         S.liveValue = S.start;
+      } else if (S.liveValue === null) {
+        S.liveValue = S.solution || S.start;
       }
 
       this.syncUid(uid);
@@ -164,6 +167,11 @@ author: Martin Lommatzsch
         return this.parseUidFromString(byInputId.id, "orthography-input-");
       }
 
+      const byTextareaId = wrap.querySelector('[id^="orthographytext-input-"]');
+      if (byTextareaId && byTextareaId.id) {
+        return this.parseUidFromString(byTextareaId.id, "orthographytext-input-");
+      }
+
       return "";
     },
 
@@ -171,30 +179,72 @@ author: Martin Lommatzsch
       const S = this.ensureState(uid);
       const cfg = S.cfg || {};
 
+      const getByIds = (...ids) => {
+        for (let i = 0; i < ids.length; i++) {
+          const id = String(ids[i] || "");
+          if (!id) continue;
+          const node = document.getElementById(id);
+          if (node) return node;
+        }
+        return null;
+      };
+
       const ui =
-        document.getElementById(cfg.idUi || ("orthography-ui-" + uid));
+        getByIds(
+          cfg.idUi,
+          "orthography-ui-" + uid,
+          "orthographytext-ui-" + uid
+        );
 
       const task =
-        document.getElementById(cfg.idTask || ("orthography-task-" + uid));
+        getByIds(
+          cfg.idTask,
+          "orthography-task-" + uid,
+          "orthographytext-task-" + uid
+        );
 
       const checkRoot =
-        document.getElementById(cfg.idCheck || ("orthography-check-" + uid));
+        getByIds(
+          cfg.idCheck,
+          "orthography-check-" + uid,
+          "orthographytext-check-" + uid
+        );
 
       const input =
-        document.getElementById(cfg.idInput || ("orthography-input-" + uid));
+        getByIds(
+          cfg.idInput,
+          "orthography-input-" + uid,
+          "orthographytext-input-" + uid
+        );
 
       const wrap =
         (input ? input.closest(".orthography-wrap") : null) ||
-        document.getElementById(cfg.idWrap || ("orthography-wrap-" + uid));
+        getByIds(
+          cfg.idWrap,
+          "orthography-wrap-" + uid,
+          "orthographytext-wrap-" + uid
+        );
 
       const reset =
-        document.getElementById(cfg.idReset || ("orthography-reset-" + uid));
+        getByIds(
+          cfg.idReset,
+          "orthography-reset-" + uid,
+          "orthographytext-reset-" + uid
+        );
 
       const start =
-        document.getElementById(cfg.idStart || ("orthography-start-" + uid));
+        getByIds(
+          cfg.idStart,
+          "orthography-start-" + uid,
+          "orthographytext-start-" + uid
+        );
 
       const solution =
-        document.getElementById(cfg.idSolution || ("orthography-solution-" + uid));
+        getByIds(
+          cfg.idSolution,
+          "orthography-solution-" + uid,
+          "orthographytext-solution-" + uid
+        );
 
       if (ui) ui.dataset.orthoUid = uid;
       if (task) task.dataset.orthoUid = uid;
@@ -221,8 +271,8 @@ author: Martin Lommatzsch
       }
 
       if (S.liveValue === null) {
-        if (N.input) S.liveValue = N.input.value;
-        else S.liveValue = S.start;
+        const inputValue = N.input ? String(N.input.value || "") : "";
+        S.liveValue = inputValue ? inputValue : S.start;
       }
     },
 
@@ -309,9 +359,16 @@ author: Martin Lommatzsch
       const N = this.getNodes(uid);
       if (!N.input) return;
 
-      N.input.value = value;
-      N.input.defaultValue = value;
-      try { N.input.setAttribute("value", value); } catch(e){}
+      const val = String(value == null ? "" : value);
+      N.input.value = val;
+      N.input.defaultValue = val;
+
+      if (N.input.tagName === "TEXTAREA") {
+        // Keep textarea's default/rendered content in sync across initial render and resets.
+        N.input.textContent = val;
+      }
+
+      try { N.input.setAttribute("value", val); } catch(e){}
     },
 
     syncSolvedFromQuiz(uid){
@@ -341,7 +398,7 @@ author: Martin Lommatzsch
 
       N.input.readOnly = !!S.solved;
 
-      if (this.norm(current) !== this.norm(desired)) {
+      if (String(current) !== String(desired)) {
         this.setInputValue(uid, desired);
       }
     },
@@ -643,6 +700,95 @@ author: Martin Lommatzsch
 
 
 
+@orthographytext: @orthographytext_(@uid,`@0`,`@1`,`@2`)
+
+@orthographytext_
+<div id="orthographytext-ui-@0" class="orthography-ui" data-ortho-uid="@0">
+  <div id="orthographytext-task-@0" class="orthography-task">
+    <div class="orthography-wrap" id="orthographytext-wrap-@0" data-ortho-uid="@0">
+      <span id="orthographytext-start-@0" style="display:none">@2</span>
+      <span id="orthographytext-solution-@0" style="display:none">@3</span>
+
+      <textarea
+        id="orthographytext-input-@0"
+        data-ortho-uid="@0"
+        data-id="lia-quiz-@0"
+        class="lia-input lia-quiz__input"
+        style="margin-bottom:.5rem; resize:vertical"
+        rows="4">@2</textarea>
+
+      <button
+        type="button"
+        class="lia-btn lia-btn--outline ortho-reset-inline"
+        id="orthographytext-reset-@0"
+        data-ortho-uid="@0"
+      >Reset</button>
+    </div>
+  </div>
+
+  <div id="orthographytext-check-@0" class="orthography-check" data-ortho-uid="@0">
+    @1
+    [[!]]
+    <script modify="false">
+      (() => {
+        function getRootWindow(){
+          let w = window;
+          try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
+          return w;
+        }
+
+        const ROOT = getRootWindow();
+        const MOD  = ROOT["__ORTHOGRAPHY_EXPORT_V14__"];
+        if (!MOD || !MOD.getCurrentValue || !MOD.getSolution || !MOD.norm) return false;
+
+        return MOD.norm(MOD.getCurrentValue("@0")) === MOD.norm(MOD.getSolution("@0"));
+      })()
+    </script>
+  </div>
+</div>
+
+<script type="text/plain" id="orthographytext-comment-@0">@1</script>
+
+<script modify="false">
+(function(){
+  function getRootWindow(){
+    let w = window;
+    try { while (w.parent && w.parent !== w) w = w.parent; } catch(e){}
+    return w;
+  }
+
+  const ROOT = getRootWindow();
+  const MOD  = ROOT["__ORTHOGRAPHY_EXPORT_V14__"];
+  if (!MOD || !MOD.register) return;
+
+  MOD.register({
+    uid: "@0",
+    startText: String.raw`@2`,
+    solutionText: String.raw`@3`,
+    idUi: "orthographytext-ui-@0",
+    idTask: "orthographytext-task-@0",
+    idCheck: "orthographytext-check-@0",
+    idWrap: "orthographytext-wrap-@0",
+    idInput: "orthographytext-input-@0",
+    idReset: "orthographytext-reset-@0",
+    idComment: "orthographytext-comment-@0",
+    idStart: "orthographytext-start-@0",
+    idSolution: "orthographytext-solution-@0"
+  });
+})();
+</script>
+@end
+
+
+
+
+
+
+
+
+
+
+
 @diktat: @diktat_(@uid,`@0`)
 
 @diktat_: {|>}{<span style="position: absolute; left: -9999px;">@1</span>}[[ @1 ]]
@@ -763,6 +909,27 @@ __$b)\;\;$__
 __Aufgabe 5:__ Korrigiere die Rechtschreibfehler im gezeigten Satz. 
 
 @orthography(`<!--  data-solution-button="4"  -->`,`Es ist jetze um sechse.`,`Es ist jetzt um sechs.`)
+
+
+
+--- 
+
+
+__Aufgabe 6:__ Sehr viel Text. 
+
+@orthographytext(`<!--  data-solution-button="4"  -->`,`Es ist jetzt um sechse. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs.`,`Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs.`)
+
+
+
+# Makrosammlung
+
+
+
+
+
+__Aufgabe 6:__ Sehr viel Text. 
+
+@orthographytext(`<!--  data-solution-button="4"  -->`,`Es ist jetzt um sechse. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs.`,`Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs. Es ist jetzt um sechs.`)
 
 
 

@@ -5,7 +5,7 @@ narrator: Deutsch Female
 
 
 
-script: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/Koord.js
+script: ./Koord.js
 
 
 
@@ -13,7 +13,7 @@ script: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/OCRREADME.md
+
 
 
 
@@ -255,8 +255,10 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
   function runExternalBootstraps() {
     callIfFunction(window.__bootstrapAxisTitles);
+    callIfFunction(window.__bootstrapScharen);
     callIfFunction(window.__bootstrapPlotFunctions);
     callIfFunction(window.__bootstrapPlotInputs);
+    callIfFunction(window.__bootstrapPlotZeichnen);
     callIfFunction(window.__bootstrapErzeugePunkte);
     callIfFunction(window.__bootstrapKoordPunkte);
     callIfFunction(window.__bootstrapPunktGraphs);
@@ -1000,6 +1002,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
   window.__boards = window.__boards || {};
   window.__boards[cfg.id] = board;
+  window.__liaLastCoordBoardId = cfg.id;
 
   window.__liaCoordHooks = window.__liaCoordHooks || {};
 
@@ -1273,11 +1276,81 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
+@Schar: @Schar_(@uid,@0)
+
+@Schar_
+<span id="schar-spec-@0" data-spec="@1" style="display:none;"></span>
+@end
+
+
+
+
+
+
 
 @PlotEingabeLatex: @PlotEingabeLatex_(@uid,@0)
 
 @PlotEingabeLatex_
 <div id="lia-plot-eingabe-@0" data-spec="@1"></div>
+@end
+
+
+
+
+
+@PlotZeichnen: @PlotZeichnen_(@uid,@0)
+
+@PlotZeichnen_
+<span id="plot-zeichnen-spec-@0" data-color="@1" style="display:none;"></span>
+<script modify="false">
+(function(){
+  const node = document.getElementById('plot-zeichnen-spec-@0');
+  if (!node) return;
+
+  function parseSpec(rawValue) {
+    const raw = String(rawValue || '').trim();
+    if (!raw) return { color: '', boardId: '' };
+
+    const parts = raw.split(';').map(function(part) {
+      return String(part || '').trim();
+    }).filter(Boolean);
+
+    if (parts.length >= 2) {
+      return {
+        color: parts[0],
+        boardId: parts[1]
+      };
+    }
+
+    return {
+      color: raw,
+      boardId: ''
+    };
+  }
+
+  function register() {
+    const parsed = parseSpec(node.dataset.color || String.raw`@1` || '');
+    const color = String(parsed.color || '').trim();
+    const boardId = String(node.dataset.boardId || parsed.boardId || window.__liaLastCoordBoardId || '').trim();
+    if (!color || !boardId) return false;
+
+    node.dataset.color = color;
+    node.dataset.boardId = boardId;
+    window.__liaCoordDrawSpecs = window.__liaCoordDrawSpecs || {};
+    window.__liaCoordDrawSpecs[boardId] = { color: color };
+
+    if (typeof window.__bootstrapPlotZeichnen === 'function') {
+      window.__bootstrapPlotZeichnen();
+    }
+    return true;
+  }
+
+  if (register()) return;
+  requestAnimationFrame(register);
+  setTimeout(register, 0);
+  setTimeout(register, 120);
+})();
+</script>
 @end
 
 
@@ -1646,14 +1719,53 @@ Mit Farbeinstellungen: @PunkteAufGraph(`A5;n=4;d=3;A;#ff00ff;g;2x-4;#b41f65;0.05
 
 
 
-# Funktion schiebbar
+# Funktion zeichnen
+
+@Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A9`)
+
+@AchsenBeschriftung(`id=A9;xlabel=$x$;ylabel=$y$`)
+
+@PlotZeichnen(`#fff;A9`)
+
+
+```
+@Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A9`)
+
+@AchsenBeschriftung(`id=A9;xlabel=$x$;ylabel=$y$`)
+
+@PlotZeichnen(`#fff;A9`)
+```
+
+
+
+
+# Funktion schiebbar 1
 
 @Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A3`)
 
 @AchsenBeschriftung(`id=A3;xlabel=$x$;ylabel=$y$`)
 
+@Schar(`f;x;mx+n;A3;term=1;#00ffff`)
+
+@Schar(`g;x;d{{x+b}}^2+c;A3;term=1;#ff00ff`)
+
+@Schar(`p;x;ax^3+bx^2+cx+d;A3;term=1;#ff0000`)
+
+@Schar(`h;x;A e^{{b{{x+c}}}}+d;A3;term=1;#00ff00`)
 
 
+
+# Funktion schiebbar 2
+
+@Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A11`)
+
+@AchsenBeschriftung(`id=A11;xlabel=$x$;ylabel=$y$`)
+
+@Schar(`f;x;A sin{{b{{x+c}}}}+d;A11;term=1;#0077ff`)
+
+@Schar(`k;x;A sqrt{{b{{x+c}}}}+d;A11;term=1;#ff9900`)
+
+@Schar(`l;x;A ln{{b{{x+c}}}}+d;A11;term=1;#22aa66`)
 
 
 

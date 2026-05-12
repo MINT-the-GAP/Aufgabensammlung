@@ -5,7 +5,16 @@ author: Martin Lommatzsch
 comment: Resetter v0.0.1
 
 
+
+
 import: TimerREADME.md
+import: MarkerREADME.md
+import: MatheREADME.md
+import: DeutschREADME.md
+import: KoordREADME.md
+import: FlexChildREADME.md
+import: OCRREADME.md
+import: AnnotationREADME.md
 
 
 
@@ -287,6 +296,7 @@ window.__liaResetQuizTouchById = window.__liaResetQuizTouchById || Object.create
 window.__liaResetChoiceInputTouchById = window.__liaResetChoiceInputTouchById || Object.create(null);
 window.__liaResetStateByHash = window.__liaResetStateByHash || Object.create(null);
 window.__liaResetDragHomeById = window.__liaResetDragHomeById || Object.create(null);
+window.__liaResetTilePristineByQuizId = window.__liaResetTilePristineByQuizId || Object.create(null);
 window.__liaResetMaskToken = window.__liaResetMaskToken || 0;
 window.__liaResetDebugEnabled = window.__liaResetDebugEnabled !== false;
 
@@ -690,40 +700,98 @@ window.__liaResetEnsureNodeUid = function (node) {
 
 window.__liaResetPrimeDragHomes = function (host) {
 	if (!host || !host.querySelectorAll) return;
-	const draggables = Array.from(host.querySelectorAll("[draggable='true']"));
-	draggables.forEach(function (el) {
+	const sources = typeof window.__liaResetGetTileQuizSourcesFromRoot === "function"
+		? window.__liaResetGetTileQuizSourcesFromRoot(host)
+		: Array.from(host.querySelectorAll("[draggable], [onclick*='dragsource'], [onkeydown*='dragsource'], [ondragstart*='dragstart'], [ondragend*='dragend']"));
+	window.__liaResetDebugWrite("primeDragHomes: sourcesFound=" + String(sources.length));
+	let primed = 0;
+	let skippedInTarget = 0;
+	let skippedAlreadyPrimed = 0;
+	sources.forEach(function (el) {
 		if (!el || !(el instanceof Element)) return;
-		const id = window.__liaResetEnsureNodeUid(el);
-		if (!id || window.__liaResetDragHomeById[id]) return;
-		const parent = el.parentElement;
+		const tileRoot = typeof window.__liaResetGetTileQuizRootFromNode === "function"
+			? window.__liaResetGetTileQuizRootFromNode(el, host)
+			: null;
+		const targets = tileRoot && typeof window.__liaResetGetTileQuizTargetsFromRoot === "function"
+			? window.__liaResetGetTileQuizTargetsFromRoot(tileRoot)
+			: [];
+		const chip = typeof window.__liaResetResolveTileChipNode === "function"
+			? window.__liaResetResolveTileChipNode(el, tileRoot || host, targets)
+			: el;
+		if (!chip || !(chip instanceof Element)) return;
+		const id = window.__liaResetEnsureNodeUid(chip);
+		if (!id || window.__liaResetDragHomeById[id]) { skippedAlreadyPrimed += 1; return; }
+
+		let insideTileTarget = false;
+		if (
+			typeof window.__liaResetGetTileQuizRootFromNode === "function" &&
+			typeof window.__liaResetGetTileQuizTargetsFromRoot === "function"
+		) {
+			insideTileTarget = targets.some(function (t) {
+				return !!(t && (t === chip || (t.contains && t.contains(chip))));
+			});
+		}
+		if (insideTileTarget) { skippedInTarget += 1; return; }
+
+		const parent = chip.parentElement;
 		if (!parent) return;
 		const parentId = window.__liaResetEnsureNodeUid(parent);
-		const nextEl = el.nextElementSibling;
+		const nextEl = chip.nextElementSibling;
 		const nextId = nextEl ? window.__liaResetEnsureNodeUid(nextEl) : "";
 		window.__liaResetDragHomeById[id] = {
 			parentId: String(parentId || ""),
 			nextId: String(nextId || ""),
+			wasDraggable: String(chip.getAttribute("draggable") || "").toLowerCase() === "true" ? 1 : 0,
 		};
+		primed += 1;
+		window.__liaResetDebugWrite("primeDragHomes: primed id=" + id + "; chipTag=" + String(chip.tagName || "") + "; chipClass=" + String(chip.className || "").slice(0, 60) + "; parentId=" + String(parentId || ""));
 	});
+	window.__liaResetDebugWrite("primeDragHomes: done; primed=" + String(primed) + "; skippedAlreadyPrimed=" + String(skippedAlreadyPrimed) + "; skippedInTarget=" + String(skippedInTarget));
 };
 
 window.__liaResetRestoreDragHomes = function (host) {
 	if (!host || !host.querySelectorAll) return 0;
 	let moved = 0;
-	const draggables = Array.from(host.querySelectorAll("[draggable='true'][data-reset-uid]"));
-	draggables.forEach(function (el) {
-		const id = String(el.getAttribute("data-reset-uid") || "");
+	const ids = Object.keys(window.__liaResetDragHomeById || {});
+	window.__liaResetDebugWrite("dragHomes: mapSize=" + String(ids.length));
+	ids.forEach(function (id) {
 		if (!id) return;
+		const el = host.querySelector("[data-reset-uid='" + String(id) + "']");
+		if (!el) {
+			window.__liaResetDebugWrite("dragHome: id=" + id + "; CHIP_NOT_FOUND");
+			return;
+		}
 		const home = window.__liaResetDragHomeById[id];
-		if (!home || !home.parentId) return;
+		if (!home || !home.parentId) {
+			window.__liaResetDebugWrite("dragHome: id=" + id + "; NO_HOME_ENTRY");
+			return;
+		}
 		const parent = host.querySelector("[data-reset-uid='" + String(home.parentId) + "']");
-		if (!parent) return;
+		if (!parent) {
+			window.__liaResetDebugWrite("dragHome: id=" + id + "; PARENT_NOT_FOUND; parentId=" + String(home.parentId));
+			return;
+		}
 		const next = home.nextId ? host.querySelector("[data-reset-uid='" + String(home.nextId) + "']") : null;
-		if (el.parentElement === parent && (!next || el.nextElementSibling === next)) return;
+		if (el.parentElement === parent && (!next || el.nextElementSibling === next)) {
+			window.__liaResetDebugWrite("dragHome: id=" + id + "; ALREADY_HOME");
+			return;
+		}
+		window.__liaResetDebugWrite("dragHome: id=" + id + "; MOVING; parentId=" + String(home.parentId) + "; chipTag=" + String(el.tagName || "") + "; chipClass=" + String(el.className || "").slice(0, 60));
 		try {
 			parent.insertBefore(el, next || null);
 			moved += 1;
-		} catch (e) {}
+		} catch (e) {
+			window.__liaResetDebugWrite("dragHome: id=" + id + "; insertBefore ERROR; " + String(e));
+		}
+
+		if (Number(home.wasDraggable || 0) === 1) {
+			try { el.setAttribute("draggable", "true"); } catch (e) {}
+		}
+		el.classList.remove("is-disabled", "lia-btn--disabled");
+		el.style.removeProperty("pointer-events");
+		el.style.removeProperty("opacity");
+		el.style.removeProperty("filter");
+		el.style.removeProperty("cursor");
 	});
 	return moved;
 };
@@ -787,6 +855,678 @@ window.__liaResetResetDropdownControls = function (host) {
 		window.__liaResetDebugWrite("dropdown selected text reset; id=" + dropdownId + "; text='" + resetPlaceholderText + "'");
 	});
 
+	return changed;
+};
+
+window.__liaResetHasTileHandler = function (el, names, pattern) {
+	if (!el || !(el instanceof Element)) return false;
+	const attrs = Array.isArray(names) ? names : [names];
+	for (let i = 0; i < attrs.length; i++) {
+		const raw = String(el.getAttribute(attrs[i]) || "");
+		if (pattern.test(raw)) return true;
+	}
+	return false;
+};
+
+window.__liaResetFilterTopLevelTileNodes = function (nodes, predicate) {
+	if (!Array.isArray(nodes)) return [];
+	return nodes.filter(function (el) {
+		if (!el || !(el instanceof Element)) return false;
+		let parent = el.parentElement;
+		while (parent) {
+			if (predicate(parent)) return false;
+			parent = parent.parentElement;
+		}
+		return true;
+	});
+};
+
+window.__liaResetResolveTileChipNode = function (node, tileRoot, targets) {
+	if (!node || !(node instanceof Element)) return null;
+	const root = tileRoot && tileRoot instanceof Element ? tileRoot : null;
+	const innerQuiz = root ? window.__liaResetGetTileQuizInnerQuiz(root) : null;
+	const targetList = Array.isArray(targets) ? targets.filter(function (t) { return !!t; }) : [];
+	const rawSelector = "[onclick],[onkeydown],[ondragstart],[ondragend],[draggable],[data-reset-tile-role='source']";
+	let cur = node;
+	let bestSource = window.__liaResetIsTileQuizSource(node) ? node : null;
+	let best = node;
+	while (cur && cur instanceof Element) {
+		const parent = cur.parentElement;
+		if (window.__liaResetIsTileQuizSource(cur)) {
+			bestSource = cur;
+		}
+		if (!parent || parent === root || parent === document.body) return bestSource || cur;
+
+		const rawDescendants = Array.from(cur.querySelectorAll(rawSelector)).filter(function (el) {
+			return window.__liaResetIsTileQuizSource(el);
+		});
+		const distinctSources = window.__liaResetFilterTopLevelTileNodes(rawDescendants.concat([cur]).filter(function (el) {
+			return !!el && el instanceof Element && window.__liaResetIsTileQuizSource(el);
+		}), function (parentEl) {
+			return window.__liaResetIsTileQuizSource(parentEl);
+		});
+		if (distinctSources.length > 1) {
+			return bestSource || best;
+		}
+
+		best = cur;
+		if (parent === innerQuiz || targetList.indexOf(parent) >= 0) return bestSource || cur;
+		cur = parent;
+	}
+	return bestSource || best;
+};
+
+window.__liaResetIsTileQuizTarget = function (el) {
+	if (!el || !(el instanceof Element)) return false;
+	if (String(el.getAttribute("data-reset-tile-role") || "") === "target") return true;
+	return window.__liaResetHasTileHandler(
+		el,
+		["onclick", "onkeydown", "ondragover", "ondragleave"],
+		/cmd\s*:\s*['\"](dragtarget|dragenter)['\"]/i
+	);
+};
+
+window.__liaResetIsTileQuizSource = function (el) {
+	if (!el || !(el instanceof Element)) return false;
+	if (String(el.getAttribute("data-reset-tile-role") || "") === "source") return true;
+	return (
+		el.hasAttribute("draggable") ||
+		window.__liaResetHasTileHandler(
+			el,
+			["onclick", "onkeydown", "ondragstart", "ondragend"],
+			/cmd\s*:\s*['\"](dragsource|dragstart|dragend)['\"]/i
+		)
+	);
+};
+
+window.__liaResetGetTileQuizTargetsFromRoot = function (root) {
+	if (!root || !root.querySelectorAll) return [];
+	const nodes = Array.from(root.querySelectorAll("[onclick],[onkeydown],[ondragover],[ondragleave],[data-reset-tile-role='target']"));
+	return nodes.filter(function (el) {
+		return window.__liaResetIsTileQuizTarget(el);
+	});
+};
+
+window.__liaResetGetTileQuizSourcesFromRoot = function (root) {
+	if (!root || !root.querySelectorAll) return [];
+	const nodes = Array.from(root.querySelectorAll("[onclick],[onkeydown],[ondragstart],[ondragend],[draggable],[data-reset-tile-role='source']"));
+	const sources = nodes.filter(function (el) {
+		return window.__liaResetIsTileQuizSource(el);
+	});
+	return window.__liaResetFilterTopLevelTileNodes(sources, function (parent) {
+		return window.__liaResetIsTileQuizSource(parent);
+	});
+};
+
+window.__liaResetGetTileQuizInnerQuiz = function (root) {
+	if (!root || !(root instanceof Element)) return null;
+	const directChildren = Array.from(root.children || []);
+	for (let i = 0; i < directChildren.length; i++) {
+		const child = directChildren[i];
+		if (child && child.classList && child.classList.contains("lia-quiz")) return child;
+	}
+	if (root.classList && root.classList.contains("lia-quiz")) return root;
+	return root.querySelector(".lia-quiz");
+};
+
+window.__liaResetGetTileQuizRootFromNode = function (node, host) {
+	if (!node || !(node instanceof Element)) return null;
+	const taggedRoot = node.closest ? node.closest("[data-reset-tile-root='1']") : null;
+	if (taggedRoot) {
+		const taggedTargets = window.__liaResetGetTileQuizTargetsFromRoot(taggedRoot);
+		const taggedQuizzes = taggedRoot.querySelectorAll ? taggedRoot.querySelectorAll(".lia-quiz, lia-quiz") : [];
+		if (taggedTargets.length > 0 && taggedQuizzes.length === 1) return taggedRoot;
+	}
+	const stop = host || document.body;
+	let cur = node;
+	while (cur && cur !== stop && cur !== document.body) {
+		if (String(cur.getAttribute && cur.getAttribute("data-reset-tile-root") || "") === "1") {
+			const curTargets = window.__liaResetGetTileQuizTargetsFromRoot(cur);
+			const curQuizzes = cur.querySelectorAll ? cur.querySelectorAll(".lia-quiz, lia-quiz") : [];
+			if (curTargets.length > 0 && curQuizzes.length === 1) return cur;
+		}
+		const hasOwnTargets = window.__liaResetGetTileQuizTargetsFromRoot(cur).length > 0;
+		const hasOwnSources = window.__liaResetGetTileQuizSourcesFromRoot(cur).length > 0;
+		const innerQuiz = window.__liaResetGetTileQuizInnerQuiz(cur);
+		const quizCount = cur.querySelectorAll ? cur.querySelectorAll(".lia-quiz, lia-quiz").length : 0;
+		if ((hasOwnTargets || hasOwnSources) && innerQuiz && quizCount === 1) return cur;
+		cur = cur.parentElement;
+	}
+	return null;
+};
+
+window.__liaResetCollectTileQuizRoots = function (host) {
+	if (!host || !host.querySelectorAll) return [];
+	const nodes = window.__liaResetGetTileQuizTargetsFromRoot(host)
+		.concat(window.__liaResetGetTileQuizSourcesFromRoot(host))
+		.concat(Array.from(host.querySelectorAll("[data-reset-tile-root='1']")));
+	const out = [];
+	const seen = new Set();
+	nodes.forEach(function (node) {
+		const root = window.__liaResetGetTileQuizRootFromNode(node, host);
+		if (!root || seen.has(root)) return;
+		const targets = window.__liaResetGetTileQuizTargetsFromRoot(root);
+		const quizzes = root.querySelectorAll ? root.querySelectorAll(".lia-quiz, lia-quiz") : [];
+		if (targets.length === 0 || quizzes.length !== 1) return;
+		seen.add(root);
+		out.push(root);
+	});
+	return out;
+};
+
+window.__liaResetPrimeTileStructure = function (host) {
+	if (!host || !host.querySelectorAll) return 0;
+	let marked = 0;
+	Array.from(host.querySelectorAll("[data-reset-tile-root='1']")).forEach(function (el) {
+		if (!el || !(el instanceof Element)) return;
+		const t = window.__liaResetGetTileQuizTargetsFromRoot(el);
+		const q = el.querySelectorAll ? el.querySelectorAll(".lia-quiz, lia-quiz") : [];
+		if (t.length > 0 && q.length === 1) return;
+		try { el.removeAttribute("data-reset-tile-root"); } catch (e) {}
+		marked += 1;
+	});
+	const roots = window.__liaResetCollectTileQuizRoots(host);
+	roots.forEach(function (root) {
+		if (!root || !(root instanceof Element)) return;
+		if (String(root.getAttribute("data-reset-tile-root") || "") !== "1") {
+			try { root.setAttribute("data-reset-tile-root", "1"); } catch (e) {}
+			marked += 1;
+		}
+		window.__liaResetGetTileQuizTargetsFromRoot(root).forEach(function (target) {
+			if (!target || !(target instanceof Element)) return;
+			if (String(target.getAttribute("data-reset-tile-role") || "") !== "target") {
+				try { target.setAttribute("data-reset-tile-role", "target"); } catch (e) {}
+				marked += 1;
+			}
+		});
+		window.__liaResetGetTileQuizSourcesFromRoot(root).forEach(function (source) {
+			const chip = window.__liaResetResolveTileChipNode(source, root, window.__liaResetGetTileQuizTargetsFromRoot(root)) || source;
+			if (!chip || !(chip instanceof Element)) return;
+			window.__liaResetEnsureNodeUid(chip);
+			if (String(chip.getAttribute("data-reset-tile-role") || "") !== "source") {
+				try { chip.setAttribute("data-reset-tile-role", "source"); } catch (e) {}
+				marked += 1;
+			}
+		});
+	});
+	if (marked > 0) {
+		window.__liaResetDebugWrite("tile structure primed; roots=" + String(roots.length) + "; marked=" + String(marked));
+	}
+	return marked;
+};
+
+window.__liaResetSetTileTargetDisplay = function (target, value) {
+	if (!target) return;
+	// Remove any stale non-source, non-placeholder children (chips left in target by LiaScript)
+	Array.from(target.children || []).forEach(function (child) {
+		if (!child) return;
+		if (String(child.getAttribute && child.getAttribute("data-reset-tile-placeholder") || "") === "1") return;
+		if (window.__liaResetIsTileQuizSource(child)) return;
+		try { target.removeChild(child); } catch (e) {}
+	});
+	let box = null;
+	const childElements = Array.from(target.children || []);
+	for (let i = 0; i < childElements.length; i++) {
+		const candidate = childElements[i];
+		if (!candidate) continue;
+		if (String(candidate.getAttribute && candidate.getAttribute("data-reset-tile-placeholder") || "") === "1") {
+			box = candidate;
+			break;
+		}
+		if (window.__liaResetIsTileQuizSource(candidate)) continue;
+		box = candidate;
+		break;
+	}
+	if (!box || window.__liaResetIsTileQuizSource(box)) {
+		box = document.createElement("div");
+		try { box.setAttribute("data-reset-tile-placeholder", "1"); } catch (e) {}
+		box.style.display = "flex";
+		box.style.justifyContent = "center";
+		box.style.alignItems = "center";
+		box.style.lineHeight = "1";
+		box.style.minWidth = "3rem";
+		target.appendChild(box);
+	}
+	box.style.pointerEvents = "none";
+	if (value) {
+		box.textContent = String(value);
+		box.style.color = "";
+	} else {
+		box.textContent = "✛";
+		box.style.color = "rgb(136, 136, 136)";
+	}
+};
+
+window.__liaResetResetTileControls = function (host) {
+	if (!host || !host.querySelectorAll) return 0;
+	let changed = 0;
+	const roots = window.__liaResetCollectTileQuizRoots(host);
+
+	roots.forEach(function (tileRoot) {
+		const targets = window.__liaResetGetTileQuizTargetsFromRoot(tileRoot);
+		if (!targets.length) return;
+
+		// Safety: Skip complex manipulation for multi-quiz tile roots.
+		// These are edge cases (overlays or duplicates) that can cause DOM re-render loops.
+		const quizzes = Array.from(tileRoot.querySelectorAll(".lia-quiz, lia-quiz"));
+		if (quizzes.length > 1) {
+			window.__liaResetDebugWrite("tileControls: skipping multiQuiz root (count=" + String(quizzes.length) + ")");
+			// Still unlock sources to make them draggable
+			const sources = window.__liaResetGetTileQuizSourcesFromRoot(tileRoot).filter(function (node) {
+				const chip = window.__liaResetResolveTileChipNode(node, tileRoot, targets) || node;
+				let inside = false;
+				for (let i = 0; i < targets.length; i++) {
+					if (targets[i] === chip || (targets[i].contains && targets[i].contains(chip))) {
+						inside = true;
+						break;
+					}
+				}
+				return !inside;
+			});
+			sources.forEach(function (source) {
+				const unlockNodes = [source].concat(Array.from(source.querySelectorAll("[draggable], [onclick*='dragsource'], [onkeydown*='dragsource'], [ondragstart*='dragstart'], [ondragend*='dragend']")));
+				unlockNodes.forEach(function (node) {
+					if (!node || !(node instanceof Element)) return;
+					try { node.setAttribute("draggable", "true"); } catch (e) {}
+					node.classList.remove("is-disabled", "lia-btn--disabled");
+				});
+			});
+			return;
+		}
+
+		function isInsideAnyTarget(node) {
+			for (let i = 0; i < targets.length; i++) {
+				const t = targets[i];
+				if (!t) continue;
+				if (t === node || (t.contains && t.contains(node))) return true;
+			}
+			return false;
+		}
+
+		function resolveHomeParent(node) {
+			if (!node || !(node instanceof Element)) return null;
+			const uid = window.__liaResetEnsureNodeUid(node);
+			const home = uid ? window.__liaResetDragHomeById[uid] : null;
+			if (home && home.parentId) {
+				const homeParent = host.querySelector("[data-reset-uid='" + String(home.parentId) + "']");
+				if (homeParent) return homeParent;
+			}
+			return null;
+		}
+
+		const outsideSources = window.__liaResetGetTileQuizSourcesFromRoot(tileRoot).filter(function (node) {
+			const chip = window.__liaResetResolveTileChipNode(node, tileRoot, targets) || node;
+			return !isInsideAnyTarget(chip);
+		});
+		const fallbackSourceBank = (outsideSources.length > 0 ? outsideSources[0].parentElement : null) || tileRoot;
+		window.__liaResetDebugWrite("tileControls: root=" + String(tileRoot.tagName || "") + "; targets=" + String(targets.length) + "; outsideSources=" + String(outsideSources.length) + "; fallbackSourceBank=" + String(fallbackSourceBank ? (fallbackSourceBank.tagName + "." + String(fallbackSourceBank.className || "").slice(0, 40)) : "null"));
+		targets.forEach(function (target) {
+			if (!target || !target.querySelectorAll) return;
+
+			const embeddedSources = window.__liaResetGetTileQuizSourcesFromRoot(target).map(function (source) {
+				return window.__liaResetResolveTileChipNode(source, tileRoot, targets) || source;
+			}).filter(function (source, idx, arr) {
+				return !!source && arr.indexOf(source) === idx;
+			});
+			window.__liaResetDebugWrite("tileControls: target=" + String(target.tagName || "") + "; embeddedSources=" + String(embeddedSources.length));
+
+			const targetText = String((target.textContent || "")).replace(/\s+/g, " ").trim();
+			const targetSeemsOccupied = embeddedSources.length > 0 || (targetText && targetText !== "✛" && targetText !== "+");
+			if (!targetSeemsOccupied) {
+				target.classList.remove("is-disabled", "lia-btn--disabled");
+				target.style.removeProperty("pointer-events");
+				target.style.removeProperty("opacity");
+				return;
+			}
+
+			// --- Parse track from target's ondragover/onclick attribute ---
+			// Track format: [["quiz", slideIdx], ["input", quizId]]
+			var _slideIdx = -1, _quizId = -1;
+			try {
+				var _attrRaw = target.getAttribute("ondragover") || target.getAttribute("onclick") || "";
+				var _ti = _attrRaw.indexOf("track");
+				if (_ti >= 0) {
+					var _ts = _attrRaw.slice(_ti + 5).replace(/^\s*:\s*/, "");
+					var _depth = 0, _end = -1;
+					for (var _ci = 0; _ci < _ts.length; _ci++) {
+						if (_ts[_ci] === "[") _depth++;
+						else if (_ts[_ci] === "]") { _depth--; if (_depth === 0) { _end = _ci + 1; break; } }
+					}
+					if (_end > 0) {
+						var _parsedTrack = JSON.parse(_ts.slice(0, _end));
+						_parsedTrack.forEach(function(t) {
+							if (Array.isArray(t) && t[0] === "quiz") _slideIdx = t[1];
+							if (Array.isArray(t) && t[0] === "input") _quizId = t[1];
+						});
+					}
+				}
+			} catch (_etrack) { /* ignore parse errors */ }
+
+			window.__liaResetDebugWrite("tileControls: slideIdx=" + _slideIdx + "; quizId=" + _quizId);
+
+			// --- IndexedDB + Elm restore approach ---
+			// Read the current quiz vector from IndexedDB, set solved=0 for the tile quiz
+			// element, write back, and send a 'restore' message to Elm.
+			// Elm's restore handler (Quiz/Update.elm) merges the vector: since the tile quiz
+			// has randomize=Just [...], mergeHelper calls reset(body.state) which empties all
+			// Drop slots. Combined with solved=Open, Elm re-renders the quiz correctly.
+			if (_slideIdx >= 0 && _quizId >= 0 && window.LIA && typeof window.LIA.send === "function") {
+				var _restoreTarget = target;
+				var _restoreSlideIdx = _slideIdx;
+				var _restoreQuizId = _quizId;
+				(async function() {
+					try {
+						function _looksLikeVector(arr) {
+							if (!Array.isArray(arr)) return false;
+							if (_restoreQuizId < 0 || _restoreQuizId >= arr.length) return false;
+							var _el = arr[_restoreQuizId];
+							return !!(_el && typeof _el === "object" && Object.prototype.hasOwnProperty.call(_el, "solved"));
+						}
+
+						function _restoreVectorInPlace(vector) {
+							if (!_looksLikeVector(vector)) throw new Error("vector shape mismatch");
+							var _orig = vector[_restoreQuizId];
+							vector[_restoreQuizId] = Object.assign({}, _orig, { solved: 0 });
+							window.__liaResetDebugWrite("tileControls: elem[" + _restoreQuizId + "]=" + JSON.stringify(_orig).slice(0, 80));
+							return vector;
+						}
+
+						function _sendRestore(vector) {
+							window.LIA.send({
+								reply: true,
+								track: [["quiz", _restoreSlideIdx], ["input", _restoreQuizId]],
+								service: "restore",
+								message: { cmd: "restore", param: { value: vector } }  /* Elm: JD.field "value" */
+							});
+							window.__liaResetDebugWrite("tileControls: restore sent; vecLen=" + vector.length + "; elem6=" + JSON.stringify((vector[_restoreQuizId]||{solved:"?"}).solved));
+						}
+
+						// Helper: open DB by name, resolve to null on error
+						async function _tryOpenDB(name) {
+							return new Promise(function(resolve) {
+								var _r = indexedDB.open(name);
+								_r.onsuccess = function(e) { resolve(e.target.result); };
+								_r.onerror = function() { resolve(null); };
+							});
+						}
+
+						var _restored = false;
+						var _dbs = await indexedDB.databases();
+						var _allDBNames = _dbs.filter(function(d) { return !!d.name; });
+						window.__liaResetDebugWrite("tileControls: IDB all dbs=[" + _allDBNames.map(function(d){return d.name;}).join(", ").slice(0, 140) + "]");
+
+						// Path A: classic LiaScript DB with objectStore 'quiz'
+						var _quizDB = null;
+						var _quizDBName = "";
+						for (var _di = 0; _di < _allDBNames.length; _di++) {
+							var _nameA = _allDBNames[_di].name;
+							var _dbA = await _tryOpenDB(_nameA);
+							var _storesA = _dbA ? Array.from(_dbA.objectStoreNames) : [];
+							window.__liaResetDebugWrite("tileControls: IDB scan '" + _nameA.slice(0, 40) + "' stores=[" + _storesA.join(",") + "]");
+							if (_dbA && _dbA.objectStoreNames.contains("quiz")) {
+								_quizDB = _dbA;
+								_quizDBName = _nameA;
+								break;
+							}
+							if (_dbA) _dbA.close();
+						}
+
+						if (_quizDB) {
+							window.__liaResetDebugWrite("tileControls: IDB quiz-store db='" + _quizDBName.slice(0, 60) + "'");
+							var _allRecs = await new Promise(function(resolve, reject) {
+								var _txA = _quizDB.transaction(["quiz"], "readonly");
+								var _storeA = _txA.objectStore("quiz");
+								var _reqA = _storeA.getAll();
+								_reqA.onsuccess = function(e) { resolve(e.target.result); };
+								_reqA.onerror = function() { reject(new Error("getAll quiz failed")); };
+							});
+
+							var _slideRecs = _allRecs.filter(function(r) { return r && r.id === _restoreSlideIdx && Array.isArray(r.data); });
+							if (_slideRecs.length > 0) {
+								var _rec = _slideRecs.reduce(function(a, b) { return (a.version || 0) > (b.version || 0) ? a : b; });
+								var _vector = _restoreVectorInPlace(_rec.data.slice());
+								await new Promise(function(resolve, reject) {
+									var _txAw = _quizDB.transaction(["quiz"], "readwrite");
+									var _storeAw = _txAw.objectStore("quiz");
+									var _reqAw = _storeAw.put({ id: _rec.id, version: _rec.version, data: _vector });
+									_reqAw.onsuccess = function() { resolve(); };
+									_reqAw.onerror = function(e) { reject(new Error("put quiz failed: " + String(e))); };
+								});
+								window.__liaResetDebugWrite("tileControls: IDB quiz-store written");
+								_sendRestore(_vector);
+								_restored = true;
+							}
+							_quizDB.close();
+						}
+
+						// Path B: keyval-store/keyval fallback (observed in Firefox)
+						if (!_restored) {
+							var _kvDB = await _tryOpenDB("keyval-store");
+							if (_kvDB && _kvDB.objectStoreNames.contains("keyval")) {
+								var _kvData = await new Promise(function(resolve, reject) {
+									var _txB = _kvDB.transaction(["keyval"], "readonly");
+									var _stB = _txB.objectStore("keyval");
+									var _rk = _stB.getAllKeys();
+									var _rv = _stB.getAll();
+									var _keys = null;
+									var _vals = null;
+									function _done() { if (_keys && _vals) resolve({ keys: _keys, vals: _vals }); }
+									_rk.onsuccess = function(e) { _keys = e.target.result || []; _done(); };
+									_rv.onsuccess = function(e) { _vals = e.target.result || []; _done(); };
+									_rk.onerror = function() { reject(new Error("keyval getAllKeys failed")); };
+									_rv.onerror = function() { reject(new Error("keyval getAll failed")); };
+								});
+
+								window.__liaResetDebugWrite("tileControls: keyval entries=" + _kvData.vals.length);
+								for (var _ki = 0; _ki < _kvData.vals.length; _ki++) {
+									var _val = _kvData.vals[_ki];
+								window.__liaResetDebugWrite("tileControls: keyval[" + _ki + "]=" + JSON.stringify(_val).slice(0, 300));
+									var _path = "";
+									var _vec = null;
+
+									function _findVectorDeep(node, path, depth) {
+										if (_vec || depth > 7) return;
+										if (_looksLikeVector(node)) {
+											_vec = node;
+											_path = path || "self";
+											return;
+										}
+										if (!node || typeof node !== "object") return;
+										if (Array.isArray(node)) {
+											for (var ai = 0; ai < node.length; ai++) {
+												_findVectorDeep(node[ai], (path ? path : "self") + "[" + ai + "]", depth + 1);
+												if (_vec) return;
+											}
+											return;
+										}
+										for (var k in node) {
+											if (!Object.prototype.hasOwnProperty.call(node, k)) continue;
+											_findVectorDeep(node[k], (path ? path + "." : "") + k, depth + 1);
+											if (_vec) return;
+										}
+									}
+
+									_findVectorDeep(_val, "", 0);
+									if (!_vec) {
+										window.__liaResetDebugWrite("tileControls: keyval idx=" + _ki + " no vector; type=" + String(typeof _val));
+										continue;
+									}
+
+									var _vecNew = _restoreVectorInPlace(_vec.slice());
+									if (_path === "self") {
+										_val = _vecNew;
+									} else {
+										var _segs = _path.replace(/\[(\d+)\]/g, ".$1").split(".").filter(function(s){ return s.length > 0; });
+										var _cursor = _val;
+										for (var si = 0; si < _segs.length - 1; si++) {
+											var _seg = _segs[si];
+											if (!_cursor || typeof _cursor !== "object") { _cursor = null; break; }
+											_cursor = _cursor[_seg];
+										}
+										if (_cursor && typeof _cursor === "object") {
+											_cursor[_segs[_segs.length - 1]] = _vecNew;
+										}
+									}
+
+									await new Promise(function(resolve, reject) {
+										var _txBw = _kvDB.transaction(["keyval"], "readwrite");
+										var _stBw = _txBw.objectStore("keyval");
+										var _reqBw = _stBw.put(_val, _kvData.keys[_ki]);
+										_reqBw.onsuccess = function() { resolve(); };
+										_reqBw.onerror = function(e) { reject(new Error("keyval put failed: " + String(e))); };
+									});
+
+									window.__liaResetDebugWrite("tileControls: keyval updated; idx=" + _ki + "; path=" + _path + "; solvedBefore=" + String(_vec[_restoreQuizId] && _vec[_restoreQuizId].solved));
+									_sendRestore(_vecNew);
+									_restored = true;
+									break;
+								}
+								_kvDB.close();
+							}
+						}
+
+						// If IDB/keyval both failed, send a synthetic vector directly.
+						// Elm's mergeMap with randomize=Just calls reset(body.state) when solved=Open(0).
+						// State format from LiaScript Block.Json: Multi Drop slot = [false, false, []]
+						if (!_restored) {
+							window.__liaResetDebugWrite("tileControls: no IDB match; sending synthetic vector");
+							var _synVec = [];
+							for (var _ssi = 0; _ssi <= _restoreQuizId; _ssi++) {
+								_synVec.push({
+									solved: 0,
+									state: (_ssi === _restoreQuizId) ? { Multi: [[false, false, []]] } : { Multi: [] },
+									trial: 0, hint: -1, error_msg: ""
+								});
+							}
+							_sendRestore(_synVec);
+						}
+					} catch (_err) {
+						window.__liaResetDebugWrite("tileControls: restore error: " + String(_err).slice(0, 100));
+					}
+				})();
+			} else {
+				window.__liaResetDebugWrite("tileControls: no valid track/LIA; skipping restore");
+			}
+
+			target.classList.remove("is-disabled", "lia-btn--disabled");
+			target.style.removeProperty("pointer-events");
+			target.style.removeProperty("opacity");
+
+			// Poll until the chip leaves the target (Elm re-renders after restore).
+			var _pollTileRoot = tileRoot;
+			var _pollHost = host;
+			var _pollAttempt = 0;
+			var _pollMax = 12;       // 12 × 150ms = 1.8s max
+			var _pollMs = 150;
+
+			function _pollSettle() {
+				_pollAttempt++;
+				var pts = window.__liaResetGetTileQuizTargetsFromRoot(_pollTileRoot);
+				var pss = window.__liaResetGetTileQuizSourcesFromRoot(_pollTileRoot);
+
+				var stillIn = pss.filter(function (s) {
+					var c = window.__liaResetResolveTileChipNode(s, _pollTileRoot, pts) || s;
+					return pts.some(function (t) { return t === c || (t.contains && t.contains(c)); });
+				});
+
+				window.__liaResetDebugWrite(
+					"poll#" + _pollAttempt + ": chipsInTarget=" + stillIn.length +
+					"; tgt='" + String((pts[0] ? pts[0].textContent : "")).replace(/\s+/g, " ").trim().slice(0, 15) + "'"
+				);
+
+				var settled = stillIn.length === 0 || _pollAttempt >= _pollMax;
+				if (!settled) {
+					window.setTimeout(_pollSettle, _pollMs);
+					return;
+				}
+
+				// Re-prime now that Elm has (hopefully) updated the DOM.
+				window.__liaResetPrimeTileStructure(_pollHost);
+				window.__liaResetPrimeDragHomes(_pollHost);
+
+				var fTgts = window.__liaResetGetTileQuizTargetsFromRoot(_pollTileRoot);
+				var fSrcs = window.__liaResetGetTileQuizSourcesFromRoot(_pollTileRoot);
+
+				// Unlock chips that are outside targets.
+				fSrcs.forEach(function (s) {
+					var chip = window.__liaResetResolveTileChipNode(s, _pollTileRoot, fTgts) || s;
+					var inTgt = fTgts.some(function (t) { return t === chip || (t.contains && t.contains(chip)); });
+					var txt = String(chip.textContent || "").replace(/\s+/g, " ").trim().slice(0, 10);
+					window.__liaResetDebugWrite("settle: chip='" + txt + "'; inTarget=" + (inTgt ? 1 : 0));
+					if (!inTgt) {
+						var ul = [chip].concat(Array.from(chip.querySelectorAll ? chip.querySelectorAll("[draggable]") : []));
+						ul.forEach(function (n) {
+							if (!n || !(n instanceof Element)) return;
+							try { n.setAttribute("draggable", "true"); } catch (e) {}
+							n.classList.remove("is-disabled", "lia-btn--disabled");
+							n.style.removeProperty("pointer-events");
+							n.style.removeProperty("opacity");
+						});
+					}
+				});
+
+				// Unlock targets.
+				fTgts.forEach(function (lt) {
+					lt.classList.remove("is-disabled", "lia-btn--disabled");
+					lt.style.removeProperty("pointer-events");
+					lt.style.removeProperty("opacity");
+				});
+
+				if (stillIn.length > 0) {
+					window.__liaResetDebugWrite("settle: chip still in target after " + _pollAttempt + " polls");
+					// If Elm re-render didn't move the chip (restore may have failed or
+					// Block.toState has no Drop decoder), check for a duplicate outside.
+					stillIn.forEach(function (s) {
+						var chip = window.__liaResetResolveTileChipNode(s, _pollTileRoot, fTgts) || s;
+						var chipTxt = String(chip.textContent || "").replace(/\s+/g, " ").trim();
+						var hasDupe = fSrcs.some(function (s2) {
+							var chip2 = window.__liaResetResolveTileChipNode(s2, _pollTileRoot, fTgts) || s2;
+							if (chip2 === chip) return false;
+							var out2 = !fTgts.some(function (t) { return t === chip2 || (t.contains && t.contains(chip2)); });
+							return out2 && String(chip2.textContent || "").replace(/\s+/g, " ").trim() === chipTxt;
+						});
+						if (hasDupe) {
+							window.__liaResetDebugWrite("settle: orphan chip removed (dupe outside); text='" + chipTxt + "'");
+							try { if (chip.parentElement) chip.parentElement.removeChild(chip); } catch (e) {}
+						} else {
+							window.__liaResetDebugWrite("settle: chip still in target (restore pending or non-randomized quiz)");
+						}
+					});
+				}
+			}
+
+			window.setTimeout(_pollSettle, _pollMs);
+			changed += 1;
+		});
+
+		const sources = window.__liaResetGetTileQuizSourcesFromRoot(tileRoot).map(function (node) {
+			return window.__liaResetResolveTileChipNode(node, tileRoot, targets) || node;
+		}).filter(function (node, idx, arr) {
+			if (!node) return false;
+			if (arr.indexOf(node) !== idx) return false;
+			return !isInsideAnyTarget(node);
+		});
+		sources.forEach(function (source) {
+			const unlockNodes = [source].concat(Array.from(source.querySelectorAll("[draggable], [onclick*='dragsource'], [onkeydown*='dragsource'], [ondragstart*='dragstart'], [ondragend*='dragend']")));
+			unlockNodes.forEach(function (node) {
+				if (!node || !(node instanceof Element)) return;
+				node.style.display = "";
+				try { node.setAttribute("aria-grabbed", "false"); } catch (e) {}
+				try { node.setAttribute("draggable", "true"); } catch (e) {}
+				try { node.removeAttribute("tabindex"); } catch (e) {}
+				node.classList.remove("is-disabled", "lia-btn--disabled");
+				node.style.removeProperty("pointer-events");
+				node.style.removeProperty("opacity");
+				node.style.removeProperty("filter");
+				node.style.removeProperty("cursor");
+			});
+			changed += 1;
+		});
+	});
+
+	if (changed > 0) {
+		window.__liaResetDebugWrite("tile controls reset; roots=" + String(roots.length) + "; touched=" + String(changed));
+	}
 	return changed;
 };
 
@@ -855,6 +1595,76 @@ window.__liaResetRestoreNonQuizTargetsFromCatalog = function (host, hash, reason
 		window.__liaResetDebugWrite("non-quiz restore from catalog; hash=" + targetHash + "; count=" + String(replaced) + "; reason=" + String(reason || "unknown"));
 	}
 	return replaced;
+};
+
+window.__liaResetRestoreTilePristineRoots = function (host) {
+	if (!host || !host.querySelectorAll) return 0;
+	if (window.__liaResetDisableTilePristineRestore !== false) {
+		window.__liaResetDebugWrite("tile pristine restore disabled");
+		return 0;
+	}
+	let replaced = 0;
+	const roots = window.__liaResetCollectTileQuizRoots(host);
+	roots.forEach(function (tileRoot) {
+		if (!tileRoot || !(tileRoot instanceof Element) || !tileRoot.parentNode) return;
+		const tileTargets = window.__liaResetGetTileQuizTargetsFromRoot(tileRoot);
+		if (!tileTargets.length) return;
+		
+		// Safety check: only restore if this tile root owns exactly ONE quiz.
+		// If it contains multiple quiz elements (e.g., rs__2_8 and rs__2_9), skip pristine restore
+		// to avoid duplicating all of them.
+		const quizzes = Array.from(tileRoot.querySelectorAll(".lia-quiz, lia-quiz"));
+		if (quizzes.length !== 1) {
+			window.__liaResetDebugWrite("tile pristine restore skipped (multiQuiz root); quizzes=" + String(quizzes.length));
+			return;
+		}
+		
+		const ownerId = String(tileRoot.getAttribute("data-reset-tile-owner") || "");
+		let quizId = ownerId;
+		if (!quizId) {
+			const innerQuiz = window.__liaResetGetTileQuizInnerQuiz(tileRoot);
+			quizId = String(innerQuiz && innerQuiz.getAttribute ? innerQuiz.getAttribute("data-resetall-id") || "" : "");
+		}
+		const html = String((window.__liaResetTilePristineByQuizId && window.__liaResetTilePristineByQuizId[quizId]) || "");
+		if (!quizId || !html) return;
+
+		const probe = document.createElement("div");
+		probe.innerHTML = html;
+		const fresh = probe.firstElementChild;
+		if (!fresh) return;
+
+		try {
+			tileRoot.parentNode.replaceChild(fresh, tileRoot);
+			replaced += 1;
+		} catch (e) {}
+	});
+	if (replaced > 0) {
+		window.__liaResetDebugWrite("tile pristine restore; count=" + String(replaced));
+	}
+	return replaced;
+};
+
+window.__liaResetDedupeTileOwners = function (host) {
+	if (!host || !host.querySelectorAll) return 0;
+	let removed = 0;
+	const owners = Object.create(null);
+	Array.from(host.querySelectorAll("[data-reset-tile-owner]")).forEach(function (el) {
+		if (!el || !(el instanceof Element) || !el.parentNode) return;
+		const owner = String(el.getAttribute("data-reset-tile-owner") || "").trim();
+		if (!owner) return;
+		if (!owners[owner]) {
+			owners[owner] = el;
+			return;
+		}
+		try {
+			el.parentNode.removeChild(el);
+			removed += 1;
+		} catch (e) {}
+	});
+	if (removed > 0) {
+		window.__liaResetDebugWrite("tile owner dedupe removed=" + String(removed));
+	}
+	return removed;
 };
 
 window.__liaResetCaptureQuizSignature = function (quizRoot) {
@@ -1865,7 +2675,19 @@ window.__liaResetLearnExpectedFromSolved = function (host) {
 					if (selectedText) {
 						window.__liaResetExpectedByQuizId[id] = ["dropdown:" + selectedText];
 						window.__liaResetDebugWrite("learn dropdown expected; id=" + id + "; text='" + selectedText + "'");
+						return;
 					}
+				}
+
+				const tileRoot = window.__liaResetGetTileQuizRootFromNode(quizRoot, host || document.body);
+				const tileTargets = tileRoot ? window.__liaResetGetTileQuizTargetsFromRoot(tileRoot) : [];
+				if (tileTargets.length > 0) {
+					const vals = tileTargets.map(function (target) {
+						const txt = String((target.textContent || "")).replace(/\s+/g, " ").trim();
+						return (!txt || txt === "✛" || txt === "+") ? "" : txt;
+					});
+					window.__liaResetExpectedByQuizId[id] = ["tile:" + JSON.stringify(vals)];
+					window.__liaResetDebugWrite("learn tile expected; id=" + id + "; values=" + JSON.stringify(vals));
 				}
 			}
 			return;
@@ -1983,6 +2805,98 @@ window.__liaResetFallbackSolveDropdown = function (btn, quiz, dropdown, mode) {
 	return true;
 };
 
+window.__liaResetGetTileExpectedValues = function (quiz) {
+	if (!quiz || !(quiz instanceof Element)) return [];
+	const quizId = String(quiz.getAttribute("data-resetall-id") || "");
+	const rawExpected = String((window.__liaResetExpectedByQuizId[quizId] || [])[0] || "").trim();
+	if (!rawExpected || rawExpected.indexOf("tile:") !== 0) return [];
+	const payload = rawExpected.slice(5);
+	if (!payload) return [];
+	try {
+		const parsed = JSON.parse(payload);
+		if (!Array.isArray(parsed)) return [];
+		return parsed.map(function (v) {
+			return String(v == null ? "" : v).replace(/\s+/g, " ").trim();
+		});
+	} catch (e) {
+		window.__liaResetDebugWrite("tile fallback: parse expected failed; id=" + quizId);
+		return [];
+	}
+};
+
+window.__liaResetGetTileCurrentValues = function (targets) {
+	if (!Array.isArray(targets)) return [];
+	return targets.map(function (target) {
+		const txt = String((target && target.textContent) || "").replace(/\s+/g, " ").trim();
+		return (!txt || txt === "✛" || txt === "+") ? "" : txt;
+	});
+};
+
+window.__liaResetFallbackSolveTile = function (btn, quiz, tileRoot, mode) {
+	if (!quiz || !tileRoot) return false;
+	const quizId = String(quiz.getAttribute("data-resetall-id") || "");
+	const targets = window.__liaResetGetTileQuizTargetsFromRoot(tileRoot);
+	if (!targets.length) return false;
+
+	const expected = window.__liaResetGetTileExpectedValues(quiz);
+	if (!expected.length) {
+		window.__liaResetDebugWrite("tile fallback: no expected answer; id=" + quizId);
+		return false;
+	}
+
+	const fb = quiz.querySelector ? quiz.querySelector(".lia-quiz__feedback, [class*='feedback']") : null;
+	const solvedText = window.__liaResetReadNativeFeedbackText(quiz, "solved");
+	const resolvedText = window.__liaResetReadNativeFeedbackText(quiz, "resolved");
+	const failedText = window.__liaResetReadNativeFeedbackText(quiz, "failed") || "Leider war die Antwort nicht korrekt.";
+
+	if (mode === "resolve") {
+		quiz.classList.remove("solved", "open", "resolved");
+		quiz.classList.add("resolved");
+		if (fb) {
+			fb.classList.remove("text-success", "text-error");
+			fb.classList.add("text-disabled");
+			fb.textContent = resolvedText || "Aufgelöste Antwort";
+		}
+		window.__liaResetApplyQuizIconState(quiz, "resolve");
+		window.__liaResetSetQuizLocked(quiz, true);
+		window.__liaResetEnsureResolvedFeedbackText(quiz);
+		window.__liaResetCaptureSlideState(window.__liaGetResetHash(), window.__liaGetResetHost(btn), "fallback-tile-resolve");
+		window.__liaResetDebugWrite("tile fallback resolve; id=" + quizId + "; values=" + JSON.stringify(expected));
+		return true;
+	}
+
+	const got = window.__liaResetGetTileCurrentValues(targets);
+	const comparable = Math.max(expected.length, got.length, targets.length);
+	let ok = comparable > 0;
+	for (let i = 0; i < comparable; i++) {
+		const e = String(expected[i] || "").replace(/\s+/g, " ").trim();
+		const g = String(got[i] || "").replace(/\s+/g, " ").trim();
+		if (e !== g) {
+			ok = false;
+			break;
+		}
+	}
+
+	quiz.classList.remove("solved", "open", "resolved");
+	quiz.classList.add(ok ? "solved" : "open");
+	if (fb) {
+		fb.classList.remove("text-success", "text-error", "text-disabled");
+		if (ok) {
+			fb.classList.add("text-success");
+			fb.textContent = solvedText || "Herzlichen Glückwunsch, das war die richtige Antwort";
+		} else {
+			fb.classList.add("text-error");
+			fb.textContent = failedText;
+		}
+	}
+	window.__liaResetApplyQuizIconState(quiz, ok ? "success" : "error");
+	window.__liaResetSetQuizLocked(quiz, !!ok);
+	window.__liaResetSyncResolveVisibility(quiz);
+	window.__liaResetCaptureSlideState(window.__liaGetResetHash(), window.__liaGetResetHost(btn), "fallback-tile-check");
+	window.__liaResetDebugWrite("tile fallback check; ok=" + String(ok ? 1 : 0) + "; id=" + quizId + "; got=" + JSON.stringify(got) + "; expected=" + JSON.stringify(expected));
+	return true;
+};
+
 window.__liaResetFallbackSolve = function (btn, mode) {
 	const quiz = window.__liaResetResolveQuizRootFromButton(btn);
 	if (!quiz) return false;
@@ -2025,8 +2939,18 @@ window.__liaResetFallbackSolve = function (btn, mode) {
 		// Dropdown-Quiz: Geschwister-.lia-dropdown suchen und separat auswerten
 		const quizParent = quiz.parentElement;
 		const dropdownEl = quizParent ? quizParent.querySelector(".lia-dropdown") : null;
-		if (!dropdownEl) return false;
-		return window.__liaResetFallbackSolveDropdown(btn, quiz, dropdownEl, mode);
+		if (dropdownEl) {
+			return window.__liaResetFallbackSolveDropdown(btn, quiz, dropdownEl, mode);
+		}
+
+		// Kachelquiz ohne klassische Eingabefelder
+		const tileRoot = window.__liaResetGetTileQuizRootFromNode(quiz, window.__liaGetResetHost(btn) || document.body);
+		const tileTargets = tileRoot ? window.__liaResetGetTileQuizTargetsFromRoot(tileRoot) : [];
+		if (tileTargets.length > 0) {
+			return window.__liaResetFallbackSolveTile(btn, quiz, tileRoot, mode);
+		}
+
+		return false;
 	}
 
 	const hasChoiceLikeControls = controls.some(function (el) {
@@ -2540,7 +3464,9 @@ window.__liaResetPass = function (button, phaseLabel) {
 	const selectResetCount = window.__liaResetResetSelectControls(host);
 	const dropdownResetCount = window.__liaResetResetDropdownControls(host);
 	const hiddenResetCount = 0;
+	const pristineResetCount = 0;
 	const dragResetCount = window.__liaResetRestoreDragHomes(host);
+	const tileResetCount = window.__liaResetResetTileControls(host);
 
 	window.__liaResetDebugWrite(
 		phase + ": pass done; fieldsSeen=" + String(editableSeen) +
@@ -2552,6 +3478,8 @@ window.__liaResetPass = function (button, phaseLabel) {
 		"; expandoCleared=" + String(expandoCleared) +
 		"; selectsReset=" + String(selectResetCount) +
 		"; dropdownsReset=" + String(dropdownResetCount) +
+		"; pristineRestore=" + String(pristineResetCount) +
+		"; tilesReset=" + String(tileResetCount) +
 		"; hiddenReset=" + String(hiddenResetCount) +
 		"; draggablesReset=" + String(dragResetCount)
 	);
@@ -2615,7 +3543,8 @@ window.__liaPrimeSlideResetCatalog = function (button) {
 	window.__liaCollectResetTargets(host).forEach(function (el, idx) {
 		if (!el || !(el instanceof Element)) return;
 		const hashPart = String(hash || "#1").replace(/[^0-9a-zA-Z_-]+/g, "_");
-		const id = "rs_" + hashPart + "_" + String(idx + 1);
+		const existingId = String(el.getAttribute("data-resetall-id") || "");
+		const id = existingId || ("rs_" + hashPart + "_" + String(idx + 1));
 		el.setAttribute("data-resetall-id", id);
 		if (!window.__liaResetInitialCommentsByQuizId[id]) {
 			window.__liaResetInitialCommentsByQuizId[id] = window.__liaResetExtractQuizComments(el);
@@ -2623,7 +3552,20 @@ window.__liaPrimeSlideResetCatalog = function (button) {
 		if (!bucket[id]) {
 			bucket[id] = String(el.outerHTML || "");
 		}
+		if (el.matches && el.matches(".lia-quiz, lia-quiz")) {
+			const tileRoot = window.__liaResetGetTileQuizRootFromNode(el, host);
+			const tileTargets = tileRoot ? window.__liaResetGetTileQuizTargetsFromRoot(tileRoot) : [];
+			if (tileRoot && tileTargets.length > 0) {
+				if (!String(tileRoot.getAttribute("data-reset-tile-owner") || "")) {
+					try { tileRoot.setAttribute("data-reset-tile-owner", id); } catch (e) {}
+				}
+			}
+			if (tileRoot && tileTargets.length > 0 && !window.__liaResetTilePristineByQuizId[id]) {
+				window.__liaResetTilePristineByQuizId[id] = String(tileRoot.outerHTML || "");
+			}
+		}
 	});
+	window.__liaResetPrimeTileStructure(host);
 	window.__liaResetPrimeDragHomes(host);
 };
 
@@ -2657,6 +3599,7 @@ window.__liaResetCurrentSlideOnly = function (button) {
 		const hash = window.__liaGetResetHash() || "#1";
 		window.__liaResetDebugWrite("host found; hash=" + hash);
 		window.__liaResetDoneByHash[hash] = 1;
+		window.__liaResetDedupeTileOwners(host);
 
 		let replacedCount = 0;
 		try {
@@ -3013,24 +3956,162 @@ Wähle gelb aus.
 # Nutzung 3
 
 
-Was ist $3+8$?
-
-[[ 11 ]]
 
 
+__Aufgabe 1:__ Hör dir den Satz an und schreib ihn korrekt in das Eingabefeld.
 
 
-Was ist $3+8$?
+{{|> Deutsch Female}}
+<!-- style="position: absolute; left: -9999px;" -->
+Anna
 
-<!-- data-solution-button="2" -->
-[[ 11 ]]
+[[    Anna    ]]
 
 
 
-Was ist $3+8$?
+--- 
 
-<!-- data-solution-timer="3s" data-solution-timer-start="oncheck" -->
-[[ 11 ]]
+
+__Aufgabe 2:__ Lass dir die Wörter vorlesen, die in die Lücken kommen und schreibe diese in die Lücken.
+
+
+<!-- data-show-partial-solution="true" -->
+Anna ging in einen @diktat(Zoo). Dort konnte sie auf einem @diktat(Lama) reiten.
+
+
+
+
+--- 
+
+
+__Aufgabe 3:__ Setze das Komma an die richtige Stelle. (Auflösung ist blockiert.)
+
+
+
+@orthography(`<!-- data-solution-timer="10s" data-solution-timer-start="onclick" -->`,`Der Bruder den ich mag.`,`Der Bruder, den ich mag.`)
+
+
+
+
+
+--- 
+
+--- 
+
+**Stelle** die passende Teilung der Fläche **ein** und **markiere** den passenden Anteil, sodass der Bruch dargestellt wird.
+
+__$a)\;\;$__ $\dfrac{1}{4}$
+
+@rectQuiz(1/4)
+
+
+
+__$b)\;\;$__ $\dfrac{2}{5}$
+
+@circleQuiz(2/5)
+
+
+
+--- 
+
+--- 
+
+
+Markiere die korrekt.
+
+<div class="markerquiz">
+@markred(rot, rot)
+@TextmarkerQuiz
+</div>
+
+
+
+
+<div class="markerquiz">
+@markedred(rot, rot)
+@TextmarkerQuiz
+</div>
+
+
+
+
+--- 
+
+--- 
+
+
+Kommentare werden auch eingefroren
+
+[[___]]
+
+
+
+[[___ ___ ___ ___]]
+
+
+
+
+
+--- 
+
+--- 
+
+$x = 5 \;\;\wedge\;\; y= 3$ \
+
+
+$x$ = [[  5  ]] @canvas und $y$ = [[  3  ]] @canvas
+@Algebrite.check([ 5 ; 3 ])
+
+
+
+
+
+
+--- 
+
+--- 
+
+
+@Koordinatensystem(`xmin=-1;xmax=10;ymin=-1;ymax=10;width=700;id=A1`)
+
+@AchsenBeschriftung(`id=A1;xlabel=$x$;ylabel=$y$`)
+
+
+
+<section class="dynFlex">
+
+<div class="flex-child">
+
+__$a)\;\;$__ **Ziehe** den Punkt $A$ **auf** die Koordinaten $(1|4)$.
+
+@ErzeugePunkt(`A1;A;1;4`,`<!--  -->`)
+
+@ADetails(BE=1;Koordinatensystem)
+</div>
+
+<div class="flex-child">
+
+__$b)\;\;$__ **Ziehe** den Punkt $B$ **auf** die Koordinaten $(5|0)$.
+
+@ErzeugePunkt(`A1;B;5;0`,`<!--  -->`)
+
+@ADetails(BE=1;Koordinatensystem)
+
+</div>
+
+<div class="flex-child">
+
+__$c)\;\;$__ **Ziehe** den Punkt $C$ **auf** die Koordinaten $(7|6)$.
+
+@ErzeugePunkt(`A1;C;7;6`,`<!--  -->`)
+
+@ADetails(BE=1;Koordinatensystem)
+
+</div>
+</section>
+
+
+
 
 
 

@@ -18,7 +18,7 @@
   ROOT[STOREKEY] = ROOT[STOREKEY] || {
     slides: {},
     ui: {
-      mode: 'cursor',          // cursor | pen | eraser
+      mode: 'cursor',          // cursor | pen | eraser | ocr
       visible: true,
       panelOpen: false,
       panelMode: 'pen',        // pen | eraser
@@ -48,12 +48,24 @@
     resizeObserver: null,
     toolbar: null,
     eraserRing: null,
+    ocrActionBtn: null,
+    ocrCloseBtn: null,
+    ocrProgress: null,
+    ocrProgressFill: null,
+    ocrProgressText: null,
     lastPointer: {
       x: 0,
       y: 0,
       inside: false,
       pointerType: ''
-    }
+    },
+    ocrBusy: false,
+    ocrModelSynced: null,
+    ocrRect: null,
+    ocrDragging: false,
+    ocrPointerId: null,
+    ocrProgRAF: 0,
+    ocrProgStart: 0
   };
 
   // ---------------------------------------------------------
@@ -77,6 +89,33 @@
     if (parts.length < 3) return null;
     if (!isFinite(parts[0]) || !isFinite(parts[1]) || !isFinite(parts[2])) return null;
     return [parts[0], parts[1], parts[2]];
+  }
+
+  function rgbaFromAny(color, alpha){
+    const a = clamp(Number(alpha), 0, 1);
+    const c = String(color || '').trim();
+    if (!c) return 'rgba(11,95,255,' + a + ')';
+
+    if (c.startsWith('#')){
+      const hex = c.slice(1);
+      if (hex.length === 3){
+        const r = parseInt(hex[0] + hex[0], 16);
+        const g = parseInt(hex[1] + hex[1], 16);
+        const b = parseInt(hex[2] + hex[2], 16);
+        if (isFinite(r) && isFinite(g) && isFinite(b)) return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+      }
+      if (hex.length === 6){
+        const r = parseInt(hex.slice(0, 2), 16);
+        const g = parseInt(hex.slice(2, 4), 16);
+        const b = parseInt(hex.slice(4, 6), 16);
+        if (isFinite(r) && isFinite(g) && isFinite(b)) return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+      }
+    }
+
+    const rgb = parseRgbNoRegex(c);
+    if (rgb) return 'rgba(' + Math.round(rgb[0]) + ',' + Math.round(rgb[1]) + ',' + Math.round(rgb[2]) + ',' + a + ')';
+
+    return c;
   }
 
   function luminance(rgb){
@@ -278,6 +317,1132 @@ function refreshEraserRing(){
   updateEraserRing(STATE.lastPointer.x, STATE.lastPointer.y);
 }
 
+  function normalizeRect(r){
+    if (!r) return null;
+    const x0 = Math.min(Number(r.x0), Number(r.x1));
+    const y0 = Math.min(Number(r.y0), Number(r.y1));
+    const x1 = Math.max(Number(r.x0), Number(r.x1));
+    const y1 = Math.max(Number(r.y0), Number(r.y1));
+    if (!isFinite(x0) || !isFinite(y0) || !isFinite(x1) || !isFinite(y1)) return null;
+    return {
+      x0: clamp(x0, 0, STATE.cssW),
+      y0: clamp(y0, 0, STATE.cssH),
+      x1: clamp(x1, 0, STATE.cssW),
+      y1: clamp(y1, 0, STATE.cssH)
+    };
+  }
+
+  function clearOcrRect(){
+    STATE.ocrRect = null;
+    STATE.ocrDragging = false;
+    STATE.ocrPointerId = null;
+    updateOcrWidgetsPosition();
+    requestRedraw();
+  }
+
+  function ensureOcrWidgets(shellRef){
+    const shell = shellRef || STATE.shell;
+    const root = document.body || document.documentElement;
+    if (!root) return;
+
+    let action = document.getElementById('lia-annot-rect-action-global');
+    if (!action){
+      action = document.createElement('button');
+      action.id = 'lia-annot-rect-action-global';
+      action.className = 'lia-annot-rect-action';
+      action.type = 'button';
+      action.textContent = 'Als Lösung übergeben';
+      action.style.display = 'none';
+      action.setAttribute('data-snapshot-admin', '1');
+      root.appendChild(action);
+
+      action.addEventListener('pointerdown', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+      }, true);
+
+      action.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        transferAnnotationToNearestQuiz({ useRect:true });
+      }, true);
+    }
+
+    let closeBtn = document.getElementById('lia-annot-rect-close-global');
+    if (!closeBtn){
+      closeBtn = document.createElement('button');
+      closeBtn.id = 'lia-annot-rect-close-global';
+      closeBtn.className = 'lia-annot-rect-close';
+      closeBtn.type = 'button';
+      closeBtn.style.display = 'none';
+      closeBtn.setAttribute('aria-label', 'Marker-Rechteck entfernen');
+      closeBtn.setAttribute('data-snapshot-admin', '1');
+      closeBtn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7L17 17M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>';
+      root.appendChild(closeBtn);
+
+      closeBtn.addEventListener('pointerdown', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+      }, true);
+
+      closeBtn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        clearOcrRect();
+      }, true);
+    }
+
+    let prog = document.getElementById('lia-annot-rect-progress-global');
+    if (!prog){
+      prog = document.createElement('div');
+      prog.id = 'lia-annot-rect-progress-global';
+      prog.className = 'lia-annot-rect-progress';
+      prog.dataset.on = '0';
+      prog.innerHTML = '<div class="lia-annot-rect-progbar"><div class="lia-annot-rect-progfill"></div></div><div class="lia-annot-rect-progtxt">0%</div>';
+      prog.setAttribute('data-snapshot-admin', '1');
+      root.appendChild(prog);
+
+      prog.addEventListener('pointerdown', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+      }, true);
+    }
+
+    STATE.ocrActionBtn = action;
+    STATE.ocrCloseBtn = closeBtn;
+    STATE.ocrProgress = prog;
+    STATE.ocrProgressFill = prog.querySelector('.lia-annot-rect-progfill');
+    STATE.ocrProgressText = prog.querySelector('.lia-annot-rect-progtxt');
+  }
+
+  function setRectProgress01(v){
+    if (!STATE.ocrProgressFill || !STATE.ocrProgressText) return;
+    const p = clamp(Number(v) || 0, 0, 1);
+    STATE.ocrProgressFill.style.width = Math.round(p * 100) + '%';
+    STATE.ocrProgressText.textContent = Math.round(p * 100) + '%';
+  }
+
+  function showRectProgress(){
+    if (!STATE.ocrProgress) return;
+    STATE.ocrProgress.dataset.on = '1';
+    setRectProgress01(0);
+    updateOcrWidgetsPosition();
+  }
+
+  function hideRectProgress(){
+    if (!STATE.ocrProgress) return;
+    STATE.ocrProgress.dataset.on = '0';
+    setRectProgress01(0);
+  }
+
+  function startRectProgressPseudo(){
+    if (STATE.ocrProgRAF){
+      cancelAnimationFrame(STATE.ocrProgRAF);
+      STATE.ocrProgRAF = 0;
+    }
+
+    showRectProgress();
+    STATE.ocrProgStart = performance.now();
+
+    const tick = function(){
+      const t = performance.now() - STATE.ocrProgStart;
+      let v = 0;
+      if (t < 900){
+        v = (t / 900) * 0.70;
+      }else if (t < 2200){
+        v = 0.70 + ((t - 900) / 1300) * 0.20;
+      }else{
+        v = 0.90 + Math.min(0.08, ((t - 2200) / 5000) * 0.08);
+      }
+      setRectProgress01(v);
+      STATE.ocrProgRAF = requestAnimationFrame(tick);
+    };
+
+    STATE.ocrProgRAF = requestAnimationFrame(tick);
+  }
+
+  function stopRectProgressPseudo(final01){
+    if (STATE.ocrProgRAF){
+      cancelAnimationFrame(STATE.ocrProgRAF);
+      STATE.ocrProgRAF = 0;
+    }
+    setRectProgress01(final01 == null ? 1 : final01);
+    setTimeout(function(){
+      hideRectProgress();
+    }, 240);
+  }
+
+  function updateOcrWidgetsPosition(){
+    if (!STATE.ocrActionBtn || !STATE.ocrProgress){
+      ensureOcrWidgets();
+    }
+
+    if (!STATE.ocrActionBtn || !STATE.ocrProgress){
+      return;
+    }
+
+    if (STORE.ui.mode !== 'ocr' || !STORE.ui.visible){
+      STATE.ocrActionBtn.style.display = 'none';
+      if (STATE.ocrCloseBtn) STATE.ocrCloseBtn.style.display = 'none';
+      STATE.ocrProgress.style.display = 'none';
+      return;
+    }
+
+    const rect = normalizeRect(STATE.ocrRect);
+    if (!rect){
+      STATE.ocrActionBtn.style.display = 'none';
+      if (STATE.ocrCloseBtn) STATE.ocrCloseBtn.style.display = 'none';
+      STATE.ocrProgress.style.display = 'none';
+      return;
+    }
+
+    const w = rect.x1 - rect.x0;
+    const h = rect.y1 - rect.y0;
+    if (w < 8 || h < 8){
+      STATE.ocrActionBtn.style.display = 'none';
+      if (STATE.ocrCloseBtn) STATE.ocrCloseBtn.style.display = 'none';
+      STATE.ocrProgress.style.display = 'none';
+      return;
+    }
+
+    STATE.ocrActionBtn.style.display = 'block';
+
+    const bw = STATE.ocrActionBtn.offsetWidth || 188;
+    const bh = STATE.ocrActionBtn.offsetHeight || 30;
+
+    const cr = STATE.canvas ? STATE.canvas.getBoundingClientRect() : null;
+    if (!cr) return;
+
+    const right = cr.left + rect.x1;
+    const bottom = cr.top + rect.y1;
+    const pad = 6;
+    const gap = 8;
+
+    let left = right - bw;
+    let top = bottom + gap;
+
+    left = clamp(left, pad, Math.max(pad, window.innerWidth - bw - pad));
+    top = clamp(top, pad, Math.max(pad, window.innerHeight - bh - pad));
+
+    STATE.ocrActionBtn.style.left = left + 'px';
+    STATE.ocrActionBtn.style.top = top + 'px';
+
+    const pbh = STATE.ocrProgress.offsetHeight || 26;
+    STATE.ocrProgress.style.display = '';
+    STATE.ocrProgress.style.width = bw + 'px';
+    STATE.ocrProgress.style.left = left + 'px';
+    STATE.ocrProgress.style.top = clamp(top + bh + 6, pad, Math.max(pad, window.innerHeight - pbh - pad)) + 'px';
+
+    if (STATE.ocrCloseBtn){
+      STATE.ocrCloseBtn.style.display = 'block';
+      const cbw = STATE.ocrCloseBtn.offsetWidth || 24;
+      const cbh = STATE.ocrCloseBtn.offsetHeight || 24;
+      let cLeft = (cr.left + rect.x1) - cbw * 0.5;
+      let cTop = (cr.top + rect.y0) - cbh * 0.5;
+      cLeft = clamp(cLeft, pad, Math.max(pad, window.innerWidth - cbw - pad));
+      cTop = clamp(cTop, pad, Math.max(pad, window.innerHeight - cbh - pad));
+      STATE.ocrCloseBtn.style.left = cLeft + 'px';
+      STATE.ocrCloseBtn.style.top = cTop + 'px';
+    }
+  }
+
+  function isElementVisible(el){
+    if (!el || !(el instanceof Element)) return false;
+    if (!el.isConnected) return false;
+    const r = el.getBoundingClientRect();
+    if (r.width <= 0 || r.height <= 0) return false;
+    const cs = getComputedStyle(el);
+    if (cs.display === 'none' || cs.visibility === 'hidden') return false;
+    return true;
+  }
+
+  function isEditableInputField(el){
+    if (!el || !(el instanceof Element)) return false;
+    if (el.closest('.lia-annot-toolbar, .lia-annot-panel, .lia-ocrbar, .lia-ocr-loadwrap')) return false;
+    if (el.closest('[data-snapshot-admin="1"]')) return false;
+
+    if (el.matches('input')){
+      const type = String(el.type || 'text').toLowerCase();
+      if (el.disabled || el.readOnly) return false;
+      if (type === 'hidden' || type === 'button' || type === 'submit' || type === 'reset') return false;
+      if (type === 'checkbox' || type === 'radio' || type === 'range' || type === 'color' || type === 'file') return false;
+      return true;
+    }
+
+    if (el.matches('textarea')){
+      if (el.disabled || el.readOnly) return false;
+      return true;
+    }
+
+    if (el.getAttribute('contenteditable') === 'true') return true;
+    if (el.getAttribute('role') === 'textbox' && el.getAttribute('aria-readonly') !== 'true') return true;
+    return false;
+  }
+
+  function getQuizInputCandidates(){
+    const nodes = Array.from(document.querySelectorAll(
+      'input, textarea, [contenteditable="true"], [role="textbox"]'
+    ));
+
+    const out = [];
+    for (let i = 0; i < nodes.length; i++){
+      const el = nodes[i];
+      if (!isEditableInputField(el)) continue;
+      if (!isElementVisible(el)) continue;
+      out.push(el);
+    }
+    return out;
+  }
+
+  function getPathBBox(item){
+    if (!item || item.kind !== 'path' || item.tool !== 'pen' || !Array.isArray(item.points) || !item.points.length) return null;
+
+    let xMin = Infinity;
+    let yMin = Infinity;
+    let xMax = -Infinity;
+    let yMax = -Infinity;
+
+    for (let i = 0; i < item.points.length; i++){
+      const p = fromRel(item.points[i]);
+      if (!isFinite(p.x) || !isFinite(p.y)) continue;
+      if (p.x < xMin) xMin = p.x;
+      if (p.y < yMin) yMin = p.y;
+      if (p.x > xMax) xMax = p.x;
+      if (p.y > yMax) yMax = p.y;
+    }
+
+    if (!isFinite(xMin) || !isFinite(yMin) || !isFinite(xMax) || !isFinite(yMax)) return null;
+
+    const pad = Math.max(2, getLineWidthPx(item) * 0.8);
+    return {
+      x: xMin - pad,
+      y: yMin - pad,
+      w: Math.max(1, (xMax - xMin) + 2 * pad),
+      h: Math.max(1, (yMax - yMin) + 2 * pad)
+    };
+  }
+
+  function unionBox(a, b){
+    if (!a) return b ? { x:b.x, y:b.y, w:b.w, h:b.h } : null;
+    if (!b) return { x:a.x, y:a.y, w:a.w, h:a.h };
+
+    const x0 = Math.min(a.x, b.x);
+    const y0 = Math.min(a.y, b.y);
+    const x1 = Math.max(a.x + a.w, b.x + b.w);
+    const y1 = Math.max(a.y + a.h, b.y + b.h);
+    return { x:x0, y:y0, w:Math.max(1, x1 - x0), h:Math.max(1, y1 - y0) };
+  }
+
+  function boxDistance(a, b){
+    if (!a || !b) return Infinity;
+    const ax0 = a.x, ay0 = a.y, ax1 = a.x + a.w, ay1 = a.y + a.h;
+    const bx0 = b.x, by0 = b.y, bx1 = b.x + b.w, by1 = b.y + b.h;
+
+    const dx = Math.max(0, Math.max(bx0 - ax1, ax0 - bx1));
+    const dy = Math.max(0, Math.max(by0 - ay1, ay0 - by1));
+    return Math.hypot(dx, dy);
+  }
+
+  function getRecentAnnotationSource(){
+    const slide = currentSlide();
+    if (!slide || !Array.isArray(slide.items) || !slide.items.length) return null;
+
+    const recent = [];
+    for (let i = slide.items.length - 1; i >= 0; i--){
+      const it = slide.items[i];
+      if (!it || it.kind !== 'path' || it.tool !== 'pen') continue;
+      const bb = getPathBBox(it);
+      if (!bb) continue;
+      recent.push({ item: it, box: bb });
+      if (recent.length >= 50) break;
+    }
+
+    if (!recent.length) return null;
+
+    const selected = [recent[0]];
+    let cluster = recent[0].box;
+
+    for (let i = 1; i < recent.length; i++){
+      const cand = recent[i];
+      if (boxDistance(cluster, cand.box) > 110) continue;
+      selected.push(cand);
+      cluster = unionBox(cluster, cand.box);
+      if (selected.length >= 14) break;
+    }
+
+    return {
+      box: cluster,
+      paths: selected.map(v => v.item)
+    };
+  }
+
+  function renderAnnotationSourceToCanvas(source){
+    if (source && source.canvas instanceof HTMLCanvasElement){
+      return source.canvas;
+    }
+
+    if (!source || !source.box || !Array.isArray(source.paths) || !source.paths.length) return null;
+
+    const pad = 16;
+    const rawW = Math.max(1, Math.ceil(source.box.w + 2 * pad));
+    const rawH = Math.max(1, Math.ceil(source.box.h + 2 * pad));
+
+    const maxSide = Math.max(rawW, rawH);
+    const scale = clamp(maxSide < 380 ? (380 / maxSide) : 1, 1, 3);
+
+    const c = document.createElement('canvas');
+    c.width = Math.max(1, Math.round(rawW * scale));
+    c.height = Math.max(1, Math.round(rawH * scale));
+
+    const cx = c.getContext('2d', { willReadFrequently:true });
+    if (!cx) return null;
+
+    cx.setTransform(scale, 0, 0, scale, 0, 0);
+    cx.fillStyle = '#ffffff';
+    cx.fillRect(0, 0, rawW, rawH);
+
+    cx.strokeStyle = '#000000';
+    cx.fillStyle = '#000000';
+    cx.globalAlpha = 1;
+    cx.lineCap = 'round';
+    cx.lineJoin = 'round';
+
+    const offX = source.box.x - pad;
+    const offY = source.box.y - pad;
+
+    for (let i = 0; i < source.paths.length; i++){
+      const item = source.paths[i];
+      if (!item || !Array.isArray(item.points) || !item.points.length) continue;
+
+      const width = Math.max(1, getLineWidthPx(item));
+      cx.lineWidth = width;
+
+      if (item.points.length === 1){
+        const p = fromRel(item.points[0]);
+        cx.beginPath();
+        cx.arc(p.x - offX, p.y - offY, Math.max(0.8, width / 2), 0, Math.PI * 2);
+        cx.fill();
+        continue;
+      }
+
+      const p0 = fromRel(item.points[0]);
+      cx.beginPath();
+      cx.moveTo(p0.x - offX, p0.y - offY);
+
+      for (let j = 1; j < item.points.length; j++){
+        const p = fromRel(item.points[j]);
+        cx.lineTo(p.x - offX, p.y - offY);
+      }
+      cx.stroke();
+    }
+
+    return c;
+  }
+
+  function captureOverlayRectCanvas(rect){
+    const rr = normalizeRect(rect);
+    if (!rr || !STATE.canvas || !STATE.cssW || !STATE.cssH) return null;
+
+    const scaleX = STATE.canvas.width / Math.max(1, STATE.cssW);
+    const scaleY = STATE.canvas.height / Math.max(1, STATE.cssH);
+
+    const sx = Math.max(0, Math.floor(rr.x0 * scaleX));
+    const sy = Math.max(0, Math.floor(rr.y0 * scaleY));
+    const sw = Math.max(1, Math.ceil((rr.x1 - rr.x0) * scaleX));
+    const sh = Math.max(1, Math.ceil((rr.y1 - rr.y0) * scaleY));
+
+    if (sw < 1 || sh < 1) return null;
+
+    const maxSide = Math.max(sw, sh);
+    const upscale = clamp(maxSide < 640 ? (640 / maxSide) : 1, 1, 3);
+
+    const out = document.createElement('canvas');
+    out.width = Math.max(1, Math.round(sw * upscale));
+    out.height = Math.max(1, Math.round(sh * upscale));
+
+    const cx = out.getContext('2d', { willReadFrequently:true });
+    if (!cx) return null;
+
+    cx.fillStyle = '#ffffff';
+    cx.fillRect(0, 0, out.width, out.height);
+    cx.drawImage(STATE.canvas, sx, sy, sw, sh, 0, 0, out.width, out.height);
+
+    return out;
+  }
+
+  function findNearestQuizInputForSource(source){
+    if (!source || !source.box || !STATE.canvas) return null;
+    const candidates = getQuizInputCandidates();
+    if (!candidates.length) return null;
+
+    const r = STATE.canvas.getBoundingClientRect();
+    const ax = r.left + source.box.x + source.box.w / 2;
+    const ay = r.top + source.box.y + source.box.h / 2;
+
+    let best = null;
+    let bestDist = Infinity;
+
+    for (let i = 0; i < candidates.length; i++){
+      const el = candidates[i];
+      const er = el.getBoundingClientRect();
+      const ex = er.left + er.width / 2;
+      const ey = er.top + er.height / 2;
+      const d = Math.hypot(ex - ax, ey - ay);
+
+      if (d < bestDist){
+        bestDist = d;
+        best = el;
+      }
+    }
+
+    return best;
+  }
+
+  function pathIntersectsRect(item, rect){
+    if (!item || item.kind !== 'path' || item.tool !== 'pen' || !Array.isArray(item.points) || !item.points.length) return false;
+
+    const pad = Math.max(2, getLineWidthPx(item) * 0.8);
+    const x0 = rect.x0 - pad;
+    const y0 = rect.y0 - pad;
+    const x1 = rect.x1 + pad;
+    const y1 = rect.y1 + pad;
+
+    for (let i = 0; i < item.points.length; i++){
+      const p = fromRel(item.points[i]);
+      if (p.x >= x0 && p.x <= x1 && p.y >= y0 && p.y <= y1) return true;
+    }
+
+    return false;
+  }
+
+  function getRectAnnotationSource(){
+    const rect = normalizeRect(STATE.ocrRect);
+    if (!rect) return null;
+
+    const directCrop = captureOverlayRectCanvas(rect);
+    if (directCrop){
+      return {
+        box: {
+          x: rect.x0,
+          y: rect.y0,
+          w: Math.max(1, rect.x1 - rect.x0),
+          h: Math.max(1, rect.y1 - rect.y0)
+        },
+        canvas: directCrop
+      };
+    }
+
+    const slide = currentSlide();
+    if (!slide || !Array.isArray(slide.items)) return null;
+
+    const paths = [];
+    for (let i = 0; i < slide.items.length; i++){
+      const it = slide.items[i];
+      if (pathIntersectsRect(it, rect)) paths.push(it);
+    }
+
+    if (!paths.length) return null;
+    return {
+      box: {
+        x: rect.x0,
+        y: rect.y0,
+        w: Math.max(1, rect.x1 - rect.x0),
+        h: Math.max(1, rect.y1 - rect.y0)
+      },
+      paths: paths
+    };
+  }
+
+  function getOcrEngine(){
+    const own = window.__LIA_TEX_OCR__;
+    if (own && typeof own.recognize === 'function') return own;
+
+    try{
+      const rw = getRootWindow();
+      const rootOcr = rw && rw.__LIA_TEX_OCR__;
+      if (rootOcr && typeof rootOcr.recognize === 'function') return rootOcr;
+    }catch(_){ }
+
+    return null;
+  }
+
+  function applyValueToField(el, value){
+    const v = String(value == null ? '' : value);
+
+    try{
+      if (el.matches('input, textarea')){
+        el.value = v;
+        el.dispatchEvent(new Event('input', { bubbles:true }));
+        el.dispatchEvent(new Event('change', { bubbles:true }));
+        return true;
+      }
+
+      if (el.getAttribute('contenteditable') === 'true' || el.getAttribute('role') === 'textbox'){
+        el.textContent = v;
+        el.dispatchEvent(new Event('input', { bubbles:true }));
+        el.dispatchEvent(new Event('change', { bubbles:true }));
+        return true;
+      }
+    }catch(_){ }
+
+    return false;
+  }
+
+  function readFieldText(el){
+    if (!el || !(el instanceof Element)) return '';
+    try{
+      if (el.matches('input, textarea')) return String(el.value == null ? '' : el.value);
+      if (el.getAttribute('contenteditable') === 'true' || el.getAttribute('role') === 'textbox') return String(el.textContent == null ? '' : el.textContent);
+    }catch(_){ }
+    return '';
+  }
+
+  function restoreTexEditor(el){
+    if (!el || !(el instanceof Element)) return;
+    const box = el.__liaAnnotTexPreviewBox || null;
+    if (box && box.isConnected){
+      box.style.display = 'none';
+      box.dataset.on = '0';
+    }
+
+    const showDisplay = String(el.__liaAnnotDisplay || '').trim() || '';
+    el.style.display = showDisplay;
+
+    try{
+      if (!el.matches('input, textarea') && el.getAttribute('contenteditable') !== 'true') return;
+      el.focus({ preventScroll:true });
+      if (el.matches('input, textarea') && typeof el.select === 'function') el.select();
+    }catch(_){ }
+  }
+
+  function syncTexPreviewFromField(el){
+    if (!el || !(el instanceof Element)) return;
+    const text = readFieldText(el).trim();
+    const box = el.__liaAnnotTexPreviewBox || null;
+
+    if (!text){
+      if (box && box.isConnected){
+        box.style.display = 'none';
+        box.dataset.on = '0';
+      }
+      const showDisplay = String(el.__liaAnnotDisplay || '').trim() || '';
+      el.style.display = showDisplay;
+      return;
+    }
+
+    showTexPreviewNearField(el, text);
+  }
+
+  function bindTexPreviewBridge(el){
+    if (!el || !(el instanceof Element)) return;
+    if (el.__liaAnnotTexBridgeBound) return;
+    el.__liaAnnotTexBridgeBound = true;
+
+    try{
+      const cs = getComputedStyle(el);
+      const d = String(cs.display || '').trim();
+      if (d && d !== 'none') el.__liaAnnotDisplay = d;
+    }catch(_){ }
+
+    el.addEventListener('blur', function(){
+      setTimeout(function(){
+        syncTexPreviewFromField(el);
+      }, 0);
+    });
+
+    el.addEventListener('keydown', function(e){
+      const key = String((e && e.key) || '');
+      const isTextarea = el.matches('textarea') || el.getAttribute('contenteditable') === 'true';
+
+      if (key === 'Escape'){
+        e.preventDefault();
+        syncTexPreviewFromField(el);
+        return;
+      }
+
+      if (key === 'Enter' && !isTextarea){
+        e.preventDefault();
+        syncTexPreviewFromField(el);
+      }
+    });
+  }
+
+  let __liaAnnotKatexLoadPromise = null;
+  function ensureKatexForAnnotation(){
+    if (window.katex && typeof window.katex.render === 'function'){
+      return Promise.resolve(window.katex);
+    }
+
+    if (__liaAnnotKatexLoadPromise) return __liaAnnotKatexLoadPromise;
+
+    __liaAnnotKatexLoadPromise = (async function(){
+      if (!document.getElementById('__lia_annot_katex_css_v1')){
+        const link = document.createElement('link');
+        link.id = '__lia_annot_katex_css_v1';
+        link.rel = 'stylesheet';
+        link.href = 'https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css';
+        (document.head || document.documentElement).appendChild(link);
+      }
+
+      const mod = await import(/* @vite-ignore */ 'https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.mjs');
+      const k = mod && (mod.default || mod);
+      if (!k || typeof k.render !== 'function') throw new Error('KaTeX render not available');
+      try{ if (!window.katex) window.katex = k; }catch(_){ }
+      return k;
+    })();
+
+    return __liaAnnotKatexLoadPromise;
+  }
+
+  function showTexPreviewNearField(el, tex){
+    if (!el || !(el instanceof Element)) return;
+    const t = String(tex || '').trim();
+    if (!t) return;
+
+    bindTexPreviewBridge(el);
+
+    let box = el.__liaAnnotTexPreviewBox || null;
+    if (!box || !box.isConnected){
+      box = document.createElement('span');
+      box.className = 'lia-annot-tex-preview';
+      box.innerHTML = '<span class="lia-annot-tex-preview-math"></span><span class="lia-annot-tex-preview-hint">Bearbeiten</span>';
+      el.insertAdjacentElement('afterend', box);
+      el.__liaAnnotTexPreviewBox = box;
+
+      box.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        restoreTexEditor(el);
+      });
+    }
+
+    const target = box.querySelector('.lia-annot-tex-preview-math');
+    if (!target) return;
+
+    target.textContent = t;
+
+    ensureKatexForAnnotation().then(function(katex){
+      if (!target.isConnected) return;
+      target.textContent = '';
+      try{
+        katex.render(t, target, { throwOnError:false, displayMode:false });
+      }catch(_){
+        target.textContent = t;
+      }
+
+      box.dataset.on = '1';
+      box.style.display = 'inline-flex';
+      el.style.display = 'none';
+    }).catch(function(){
+      if (!target.isConnected) return;
+      target.textContent = t;
+      box.dataset.on = '1';
+      box.style.display = 'inline-flex';
+      el.style.display = 'none';
+    });
+  }
+
+  function cleanOcrText(s){
+    let t = String(s == null ? '' : s).trim();
+    if (!t) return '';
+
+    if (t.startsWith('$$') && t.endsWith('$$')) t = t.slice(2, -2).trim();
+    if (t.startsWith('$') && t.endsWith('$')) t = t.slice(1, -1).trim();
+    if (t.startsWith('\\[') && t.endsWith('\\]')) t = t.slice(2, -2).trim();
+
+    return t;
+  }
+
+  function squashWs(s){
+    const src = String(s || '');
+    let out = '';
+    let wasWs = false;
+    for (let i = 0; i < src.length; i++){
+      const ch = src[i];
+      const isWs = (ch === ' ' || ch === '\n' || ch === '\r' || ch === '\t' || ch === '\f');
+      if (isWs){
+        if (!wasWs) out += ' ';
+        wasWs = true;
+      }else{
+        out += ch;
+        wasWs = false;
+      }
+    }
+    return out.trim();
+  }
+
+  function normalizeTimesVsX(input){
+    const s = String(input || '');
+    const cmd = '\\times';
+    if (!s || s.indexOf(cmd) < 0) return s;
+
+    function isWs(ch){
+      return ch === ' ' || ch === '\n' || ch === '\r' || ch === '\t' || ch === '\f';
+    }
+    function isLeftOperand(ch){
+      if (!ch) return false;
+      const c = ch.charCodeAt(0);
+      return (c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c >= 97 && c <= 122) || ch === ')' || ch === ']' || ch === '}';
+    }
+    function isRightOperand(ch){
+      if (!ch) return false;
+      const c = ch.charCodeAt(0);
+      return (c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c >= 97 && c <= 122) || ch === '(' || ch === '[' || ch === '{' || ch === '\\';
+    }
+
+    let out = '';
+    let i = 0;
+    while (i < s.length){
+      if (s.slice(i, i + cmd.length) === cmd){
+        let j = out.length - 1;
+        while (j >= 0 && isWs(out[j])) j--;
+        const prev = j >= 0 ? out[j] : '';
+
+        let k = i + cmd.length;
+        while (k < s.length && isWs(s[k])) k++;
+        const next = k < s.length ? s[k] : '';
+
+        out += (isLeftOperand(prev) && isRightOperand(next)) ? '\\cdot' : 'x';
+        i += cmd.length;
+        continue;
+      }
+      out += s[i];
+      i += 1;
+    }
+
+    return out;
+  }
+
+  function tidyTrocrText(s){
+    const t = squashWs(s);
+    const ops = '+-=*/()[]{}';
+    let out = '';
+    for (let i = 0; i < t.length; i++){
+      const ch = t[i];
+      if (ch === ' '){
+        const prev = i > 0 ? t[i - 1] : '';
+        const next = i + 1 < t.length ? t[i + 1] : '';
+        if (ops.indexOf(prev) >= 0 || ops.indexOf(next) >= 0) continue;
+        out += ' ';
+      }else{
+        out += ch;
+      }
+    }
+    return out.trim();
+  }
+
+  function mathLooksIncomplete(s){
+    const t = String(s || '').trim();
+    if (!t) return true;
+    if (/[+\-*/=,:;\\]$/.test(t)) return true;
+    if (/[{[(]$/.test(t)) return true;
+
+    let curly = 0;
+    let square = 0;
+    let round = 0;
+    let escaped = false;
+
+    for (let i = 0; i < t.length; i++){
+      const ch = t[i];
+      if (escaped){ escaped = false; continue; }
+      if (ch === '\\'){ escaped = true; continue; }
+      if (ch === '{') curly++;
+      else if (ch === '}') curly--;
+      else if (ch === '[') square++;
+      else if (ch === ']') square--;
+      else if (ch === '(') round++;
+      else if (ch === ')') round--;
+    }
+
+    return curly !== 0 || square !== 0 || round !== 0;
+  }
+
+  function ocrNormalizeSize(c){
+    const maxSide = Math.max(c.width, c.height);
+    let scale = 1;
+    if (maxSide < 420) scale = 420 / maxSide;
+    if (maxSide > 1400) scale = 1400 / maxSide;
+    scale = clamp(scale, 0.5, 4.0);
+    if (Math.abs(scale - 1) < 0.06) return c;
+
+    const out = document.createElement('canvas');
+    out.width = Math.max(1, Math.round(c.width * scale));
+    out.height = Math.max(1, Math.round(c.height * scale));
+    const x = out.getContext('2d', { willReadFrequently:true });
+    if (!x) return c;
+    x.fillStyle = '#fff';
+    x.fillRect(0, 0, out.width, out.height);
+    x.drawImage(c, 0, 0, out.width, out.height);
+    return out;
+  }
+
+  function ocrPreprocessCanvas(src){
+    const c0 = document.createElement('canvas');
+    c0.width = Math.max(1, src.width | 0);
+    c0.height = Math.max(1, src.height | 0);
+    const x0 = c0.getContext('2d', { willReadFrequently:true });
+    if (!x0) return src;
+    x0.fillStyle = '#fff';
+    x0.fillRect(0, 0, c0.width, c0.height);
+    x0.drawImage(src, 0, 0);
+
+    const img = x0.getImageData(0, 0, c0.width, c0.height);
+    const d = img.data;
+    const W = c0.width;
+    const H = c0.height;
+    const thr = 200;
+    const bin = new Uint8Array(W * H);
+
+    for (let i = 0, p = 0; p < bin.length; p++, i += 4){
+      const gray = (d[i] * 0.299 + d[i + 1] * 0.587 + d[i + 2] * 0.114);
+      bin[p] = (gray < thr) ? 1 : 0;
+    }
+
+    let xMin = W, yMin = H, xMax = -1, yMax = -1;
+    for (let y = 0; y < H; y++){
+      for (let x = 0; x < W; x++){
+        if (!bin[y * W + x]) continue;
+        if (x < xMin) xMin = x;
+        if (y < yMin) yMin = y;
+        if (x > xMax) xMax = x;
+        if (y > yMax) yMax = y;
+      }
+    }
+    if (xMax < 0) return c0;
+
+    const pad = 18;
+    xMin = Math.max(0, xMin - pad);
+    yMin = Math.max(0, yMin - pad);
+    xMax = Math.min(W - 1, xMax + pad);
+    yMax = Math.min(H - 1, yMax + pad);
+
+    const cw = Math.max(1, xMax - xMin + 1);
+    const ch = Math.max(1, yMax - yMin + 1);
+
+    const c1 = document.createElement('canvas');
+    c1.width = cw;
+    c1.height = ch;
+    const x1 = c1.getContext('2d', { willReadFrequently:true });
+    if (!x1) return c0;
+
+    const out = x1.createImageData(cw, ch);
+    const od = out.data;
+    for (let y = 0; y < ch; y++){
+      for (let x = 0; x < cw; x++){
+        const v = bin[(yMin + y) * W + (xMin + x)] ? 0 : 255;
+        const idx = (y * cw + x) * 4;
+        od[idx] = v;
+        od[idx + 1] = v;
+        od[idx + 2] = v;
+        od[idx + 3] = 255;
+      }
+    }
+    x1.putImageData(out, 0, 0);
+
+    const target = 512;
+    const m = Math.max(cw, ch);
+    let scale = target / m;
+    if (scale < 0.75) scale = 0.75;
+    if (scale > 3.5) scale = 3.5;
+
+    const c2 = document.createElement('canvas');
+    c2.width = Math.max(1, Math.round(cw * scale));
+    c2.height = Math.max(1, Math.round(ch * scale));
+    const x2 = c2.getContext('2d', { willReadFrequently:true });
+    if (!x2) return c1;
+    x2.fillStyle = '#fff';
+    x2.fillRect(0, 0, c2.width, c2.height);
+    x2.imageSmoothingEnabled = true;
+    x2.drawImage(c1, 0, 0, c2.width, c2.height);
+    return c2;
+  }
+
+  function ocrAddPadding(canvas, px){
+    const c = document.createElement('canvas');
+    c.width = Math.max(1, canvas.width + px * 2);
+    c.height = Math.max(1, canvas.height + px * 2);
+    const ctx = c.getContext('2d', { willReadFrequently:true });
+    if (!ctx) return canvas;
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0, 0, c.width, c.height);
+    ctx.drawImage(canvas, px, px);
+    return c;
+  }
+
+  function ocrDarkenCrop(canvas, factor){
+    const c = document.createElement('canvas');
+    c.width = canvas.width;
+    c.height = canvas.height;
+    const ctx = c.getContext('2d', { willReadFrequently:true });
+    if (!ctx) return canvas;
+    ctx.drawImage(canvas, 0, 0);
+    const img = ctx.getImageData(0, 0, c.width, c.height);
+    const d = img.data;
+    const inv = 1 / Math.max(1, factor);
+    for (let i = 0; i < d.length; i += 4){
+      d[i] = Math.round(d[i] * inv);
+      d[i + 1] = Math.round(d[i + 1] * inv);
+      d[i + 2] = Math.round(d[i + 2] * inv);
+    }
+    ctx.putImageData(img, 0, 0);
+    return c;
+  }
+
+  function scoreLatex(s){
+    const t = String(s || '').trim();
+    if (!t) return -9999;
+    return mathLooksIncomplete(t) ? (t.length - 5000) : t.length;
+  }
+
+  async function ocrVotingRecognize(engine, crop){
+    let a = crop;
+    try{ a = ocrNormalizeSize(ocrPreprocessCanvas(crop)); }catch(_){ }
+
+    let b = a;
+    try{ b = ocrNormalizeSize(ocrAddPadding(ocrPreprocessCanvas(crop), 20)); }catch(_){ }
+
+    let c = a;
+    try{ c = ocrNormalizeSize(ocrPreprocessCanvas(ocrDarkenCrop(crop, 1.35))); }catch(_){ }
+
+    const opts = { max_new_tokens: 128, do_sample:false, temperature:0, __silent:true };
+    const results = await Promise.all([
+      engine.recognize(a, opts).catch(function(){ return ''; }),
+      engine.recognize(b, opts).catch(function(){ return ''; }),
+      engine.recognize(c, opts).catch(function(){ return ''; })
+    ]);
+
+    let best = results[0] || '';
+    let bestScore = scoreLatex(best);
+    for (let i = 1; i < results.length; i++){
+      const sc = scoreLatex(results[i]);
+      if (sc > bestScore){
+        bestScore = sc;
+        best = results[i];
+      }
+    }
+    return best;
+  }
+
+  async function ensurePreferredOcrModel(ocr){
+    if (!ocr || typeof ocr !== 'object') return;
+    let preferred = null;
+    try{ preferred = localStorage.getItem('__LIA_TEX_OCR_MODEL__'); }catch(_){ }
+    preferred = String(preferred || '').trim();
+    if (!preferred) return;
+
+    const current = String(ocr.model || '').trim();
+    if (current === preferred){
+      STATE.ocrModelSynced = preferred;
+      return;
+    }
+    if (STATE.ocrModelSynced === preferred) return;
+
+    if (typeof ocr.setModel === 'function'){
+      try{
+        await ocr.setModel(preferred);
+        STATE.ocrModelSynced = preferred;
+      }catch(_){ }
+    }
+  }
+
+  function isOcrAvailable(){
+    return !!getOcrEngine();
+  }
+
+  async function transferAnnotationToNearestQuiz(opts){
+    const o = (opts && typeof opts === 'object') ? opts : {};
+    const useRect = (o.useRect === true);
+
+    if (STATE.ocrBusy) return;
+    if (isReadOnly()) return;
+    if (!STORE.ui.visible) return;
+
+    const ocr = getOcrEngine();
+    if (!ocr || typeof ocr.recognize !== 'function') return;
+
+    await ensurePreferredOcrModel(ocr);
+
+    const source = useRect
+      ? (getRectAnnotationSource() || getRecentAnnotationSource())
+      : (getRectAnnotationSource() || getRecentAnnotationSource());
+    if (!source) return;
+
+    const target = findNearestQuizInputForSource(source);
+    if (!target) return;
+
+    const crop = renderAnnotationSourceToCanvas(source);
+    if (!crop) return;
+
+    STATE.ocrBusy = true;
+    if (STATE.ocrActionBtn){
+      STATE.ocrActionBtn.disabled = true;
+      STATE.ocrActionBtn.textContent = 'Schrifterkennung läuft...';
+    }
+    startRectProgressPseudo();
+    updateToolbar();
+
+    try{
+      if (typeof ocr.ensureLoaded === 'function'){
+        await ocr.ensureLoaded(false);
+      }
+
+      let raw = '';
+      try{
+        raw = await ocrVotingRecognize(ocr, crop);
+      }catch(_){
+        raw = await ocr.recognize(crop, {
+          max_new_tokens: 128,
+          do_sample: false,
+          temperature: 0
+        });
+      }
+
+      const modelName = String(ocr.model || '').toLowerCase();
+      let latex = modelName.indexOf('trocr') !== -1
+        ? tidyTrocrText(raw)
+        : cleanOcrText(raw);
+      latex = normalizeTimesVsX(latex);
+      latex = String(latex || '').replace(/\s*\\div\s*/g, ':');
+      if (!latex) return;
+
+      const ok = applyValueToField(target, latex);
+      if (!ok) return;
+
+      showTexPreviewNearField(target, latex);
+
+      if (STATE.ocrActionBtn) STATE.ocrActionBtn.textContent = '✅ übernommen';
+
+      try{
+        if (STATE.toolbar && STATE.toolbar.isConnected){
+          const b = STATE.toolbar.querySelector('.lia-annot-btn[data-act="ocr-transfer"]');
+          if (b){
+            const oldTitle = b.title;
+            b.title = 'Als Lösung übergeben: OK';
+            setTimeout(function(){
+              if (b && b.isConnected) b.title = oldTitle || 'Als Lösung übergeben';
+            }, 1200);
+          }
+        }
+      }catch(_){ }
+    }catch(_){
+      // intentionally silent to avoid blocking the annotation workflow
+      if (STATE.ocrActionBtn) STATE.ocrActionBtn.textContent = '⚠ Fehler';
+    }finally{
+      STATE.ocrBusy = false;
+      stopRectProgressPseudo(1);
+      if (STATE.ocrActionBtn){
+        const btnRef = STATE.ocrActionBtn;
+        setTimeout(function(){
+          if (!btnRef || !btnRef.isConnected) return;
+          btnRef.disabled = false;
+          btnRef.textContent = 'Als Lösung übergeben';
+        }, 900);
+      }
+      updateToolbar();
+      updateOcrWidgetsPosition();
+    }
+  }
+
   // ---------------------------------------------------------
   // CSS
   // ---------------------------------------------------------
@@ -369,7 +1534,113 @@ function ensureCss(){
     .lia-annot-btn[data-act="eraser"] svg{ transform: translateX(-4px); }
     .lia-annot-btn[data-act="undo"] svg{ transform: translateX(-4px); }
     .lia-annot-btn[data-act="redo"] svg{ transform: translateX(-3px); }
+    .lia-annot-btn[data-act="ocr-transfer"] svg{ transform: translateX(1px); }
     .lia-annot-btn[data-act="toggle"] svg{ transform: translateX(1px); }
+
+    .lia-annot-rect-action{
+      position: fixed;
+      z-index: 10041;
+      display: none;
+      right: auto;
+      bottom: auto;
+      padding: 6px 9px;
+      border-radius: 999px;
+      border: 2px solid var(--lia-annot-accent);
+      background: var(--lia-annot-accent);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.75em;
+      cursor: pointer;
+      user-select: none;
+      line-height: 1;
+      white-space: nowrap;
+      pointer-events: auto;
+    }
+
+    .lia-annot-rect-action:disabled{
+      opacity: .7;
+      cursor: wait;
+    }
+
+    .lia-annot-rect-action:active{
+      transform: translateY(1px);
+    }
+
+    .lia-annot-rect-close{
+      position: fixed;
+      z-index: 10042;
+      display: none;
+      width: 24px;
+      height: 24px;
+      padding: 0;
+      border-radius: 999px;
+      border: 2px solid var(--lia-annot-accent);
+      background: transparent;
+      cursor: pointer;
+      user-select: none;
+      line-height: 0;
+      pointer-events: auto;
+    }
+
+    .lia-annot-rect-close svg{
+      width: 14px;
+      height: 14px;
+      display: block;
+      margin: auto;
+    }
+
+    .lia-annot-rect-close:hover{
+      background: var(--lia-annot-accent);
+      color: #fff;
+    }
+
+    .lia-annot-rect-close:active{
+      transform: translateY(1px);
+    }
+
+    .lia-annot-rect-progress{
+      position: fixed;
+      z-index: 10041;
+      display: none;
+      left: 0;
+      top: 0;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 2px solid var(--lia-annot-border);
+      background: rgba(0,0,0,0.10);
+      backdrop-filter: blur(6px);
+      box-sizing: border-box;
+      align-items: center;
+      gap: 8px;
+      pointer-events: none;
+    }
+
+    .lia-annot-rect-progress[data-on="1"]{
+      display: flex;
+    }
+
+    .lia-annot-rect-progbar{
+      flex: 1 1 auto;
+      height: 8px;
+      border-radius: 999px;
+      border: 2px solid var(--lia-annot-border);
+      overflow: hidden;
+      box-sizing: border-box;
+      background: transparent;
+    }
+
+    .lia-annot-rect-progfill{
+      height: 100%;
+      width: 0%;
+      background: var(--lia-annot-accent);
+    }
+
+    .lia-annot-rect-progtxt{
+      font-weight: 850;
+      font-size: 0.8em;
+      min-width: 3.2em;
+      text-align: right;
+    }
 
     .lia-annot-btn .ico-stroke{
       stroke: var(--lia-annot-fg);
@@ -458,6 +1729,39 @@ function ensureCss(){
       font-weight: 750;
       opacity: .8;
       font-size: .95em;
+    }
+
+    .lia-annot-tex-preview{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: 8px;
+      max-width: min(72vw, 520px);
+      padding: 4px 10px;
+      border: 2px solid var(--lia-annot-accent);
+      border-radius: 999px;
+      box-sizing: border-box;
+      vertical-align: middle;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .lia-annot-tex-preview:hover{
+      background: rgba(0,0,0,0.04);
+    }
+
+    .lia-annot-tex-preview-math{
+      min-width: 0;
+      overflow: visible;
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+
+    .lia-annot-tex-preview-hint{
+      font-size: 0.78em;
+      font-weight: 800;
+      opacity: .72;
+      white-space: nowrap;
     }
 
     .lia-annot-danger{
@@ -593,6 +1897,21 @@ function ensureCss(){
     `;
   }
 
+  function iconOcrTransfer(){
+    return `
+    <svg viewBox="0 0 24 24" aria-hidden="true" style="transform: translateX(0.5px);">
+      <path class="ico-stroke" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"
+        d="M4.1 4.6 H19.2 Q20.9 4.6 20.9 6.3 V16.0 M17.2 19.8 H4.1 Q2.4 19.8 2.4 18.1 V6.3 Q2.4 4.6 4.1 4.6"/>
+      <path class="ico-stroke" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"
+        d="M5.2 12.7l1.9 1.9 4.0-4.8"/>
+      <path class="ico-stroke" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"
+        d="M13.8 9.9c0-2.2 4.8-2.2 4.8 0 0 1.6-2.4 1.8-2.4 3.6"/>
+      <circle cx="16.2" cy="16.6" r="0.92" class="ico-fill"/>
+      <path class="ico-stroke" stroke-width="1.4" stroke-linecap="round" d="M19.4 19.0H24.0 M21.7 16.7V21.3"/>
+      </svg>
+    `;
+  }
+
   function iconEye(open){
     if (open){
       return `
@@ -683,6 +2002,7 @@ function ensureCss(){
         <button class="lia-annot-btn" type="button" data-act="eraser" aria-label="Radierer" data-snapshot-admin="1">${iconEraser()}</button>
         <button class="lia-annot-btn" type="button" data-act="undo" aria-label="Rückgängig" data-snapshot-admin="1">${iconUndo()}</button>
         <button class="lia-annot-btn" type="button" data-act="redo" aria-label="Wiederherstellen" data-snapshot-admin="1">${iconRedo()}</button>
+        <button class="lia-annot-btn" type="button" data-act="ocr-transfer" aria-label="Marker-Rechteck" data-snapshot-admin="1">${iconOcrTransfer()}</button>
         <button class="lia-annot-btn" type="button" data-act="toggle" aria-label="Annotation anzeigen/ausblenden" data-snapshot-admin="1">${iconEye(true)}</button>
       </div>
 
@@ -761,6 +2081,19 @@ function ensureCss(){
       if (act === 'redo'){
         if (isReadOnly()) return;
         doRedo();
+        return;
+      }
+
+      if (act === 'ocr-transfer'){
+        if (isReadOnly()) return;
+        const same = (STORE.ui.mode === 'ocr');
+        STORE.ui.mode = same ? 'cursor' : 'ocr';
+        if (STORE.ui.mode !== 'ocr'){
+          clearOcrRect();
+        }
+        STORE.ui.panelOpen = false;
+        syncOverlayInteractivity();
+        updateToolbar();
         return;
       }
 
@@ -847,6 +2180,7 @@ function updateToolbar(){
     if (act === 'cursor' && STORE.ui.mode === 'cursor') btn.dataset.active = '1';
     if (act === 'pen'    && STORE.ui.mode === 'pen')    btn.dataset.active = '1';
     if (act === 'eraser' && STORE.ui.mode === 'eraser') btn.dataset.active = '1';
+    if (act === 'ocr-transfer' && STORE.ui.mode === 'ocr') btn.dataset.active = '1';
     if (act === 'toggle'){
       btn.dataset.active = STORE.ui.visible ? '1' : '0';
       btn.innerHTML = iconEye(!!STORE.ui.visible);
@@ -856,6 +2190,14 @@ function updateToolbar(){
       btn.disabled = ro || slide.items.length === 0;
     }else if (act === 'redo'){
       btn.disabled = ro || slide.redo.length === 0;
+    }else if (act === 'ocr-transfer'){
+      const hasOcr = isOcrAvailable();
+      btn.style.display = hasOcr ? '' : 'none';
+      btn.title = hasOcr
+        ? 'Marker-Rechteck'
+        : 'OCR ist noch nicht geladen';
+      btn.disabled = ro || !STORE.ui.visible || STATE.ocrBusy;
+      if (!hasOcr) btn.disabled = true;
     }else if (act === 'pen' || act === 'eraser'){
       btn.disabled = ro;
     }else{
@@ -1059,6 +2401,24 @@ function bindCanvasEvents(){
       hideEraserRing();
     }
 
+    if (mode === 'ocr'){
+      evt.preventDefault();
+      evt.stopPropagation();
+
+      if (STORE.ui.panelOpen){
+        STORE.ui.panelOpen = false;
+      }
+
+      STATE.ocrDragging = true;
+      STATE.ocrPointerId = evt.pointerId;
+      STATE.ocrRect = { x0:p.x, y0:p.y, x1:p.x, y1:p.y };
+      try{ STATE.canvas.setPointerCapture(evt.pointerId); }catch(_){ }
+      updateOcrWidgetsPosition();
+      requestRedraw();
+      updateToolbar();
+      return;
+    }
+
     if (mode !== 'pen' && mode !== 'eraser') return;
 
     evt.preventDefault();
@@ -1100,6 +2460,16 @@ function bindCanvasEvents(){
       hideEraserRing();
     }
 
+    if (effectiveMode() === 'ocr' && STATE.ocrDragging && STATE.ocrRect){
+      evt.preventDefault();
+      evt.stopPropagation();
+      STATE.ocrRect.x1 = p.x;
+      STATE.ocrRect.y1 = p.y;
+      updateOcrWidgetsPosition();
+      requestRedraw();
+      return;
+    }
+
     if (!STATE.drawing || !STATE.activePath) return;
 
     evt.preventDefault();
@@ -1110,16 +2480,47 @@ function bindCanvasEvents(){
   }, true);
 
   STATE.canvas.addEventListener('pointerup', function(evt){
+    if (effectiveMode() === 'ocr' && STATE.ocrDragging){
+      evt.preventDefault();
+      evt.stopPropagation();
+      try{ STATE.canvas.releasePointerCapture(evt.pointerId); }catch(_){ }
+      STATE.ocrDragging = false;
+      STATE.ocrPointerId = null;
+      const rr = normalizeRect(STATE.ocrRect);
+      if (!rr || (rr.x1 - rr.x0) < 10 || (rr.y1 - rr.y0) < 10){
+        clearOcrRect();
+      }else{
+        STATE.ocrRect = rr;
+        updateOcrWidgetsPosition();
+        requestRedraw();
+      }
+      return;
+    }
+
     finishStroke(evt, true);
   }, true);
 
   STATE.canvas.addEventListener('pointercancel', function(evt){
+    if (STATE.ocrDragging){
+      STATE.ocrDragging = false;
+      STATE.ocrPointerId = null;
+      updateOcrWidgetsPosition();
+      requestRedraw();
+      return;
+    }
+
     finishStroke(evt, false);
   }, true);
 
   STATE.canvas.addEventListener('pointerleave', function(){
     STATE.lastPointer.inside = false;
     hideEraserRing();
+    if (STATE.ocrDragging){
+      STATE.ocrDragging = false;
+      STATE.ocrPointerId = null;
+      updateOcrWidgetsPosition();
+      requestRedraw();
+    }
   }, true);
 
   STATE.canvas.addEventListener('contextmenu', function(evt){
@@ -1165,6 +2566,8 @@ function ensureOverlay(){
       shell.appendChild(ring);
     }
 
+    ensureOcrWidgets(shell);
+
     insertShellAfterHeader(host, shell);
 
     STATE.shell = shell;
@@ -1179,6 +2582,11 @@ function ensureOverlay(){
 
     STATE.canvas = STATE.shell.querySelector('.lia-annot-canvas');
     STATE.eraserRing = STATE.shell.querySelector('.lia-annot-eraser-ring');
+    STATE.ocrActionBtn = STATE.shell.querySelector('.lia-annot-rect-action');
+    STATE.ocrCloseBtn = STATE.shell.querySelector('.lia-annot-rect-close');
+    STATE.ocrProgress = STATE.shell.querySelector('.lia-annot-rect-progress');
+    STATE.ocrProgressFill = STATE.ocrProgress ? STATE.ocrProgress.querySelector('.lia-annot-rect-progfill') : null;
+    STATE.ocrProgressText = STATE.ocrProgress ? STATE.ocrProgress.querySelector('.lia-annot-rect-progtxt') : null;
   }
 
   if (slideChanged){
@@ -1211,11 +2619,17 @@ function syncOverlayInteractivity(){
 
   if (!visible){
     hideEraserRing();
+    if (STATE.ocrActionBtn) STATE.ocrActionBtn.style.display = 'none';
+    if (STATE.ocrCloseBtn) STATE.ocrCloseBtn.style.display = 'none';
+    if (STATE.ocrProgress) STATE.ocrProgress.style.display = 'none';
     return;
   }
 
   if (!STATE.shell || !STATE.canvas){
     hideEraserRing();
+    if (STATE.ocrActionBtn) STATE.ocrActionBtn.style.display = 'none';
+    if (STATE.ocrCloseBtn) STATE.ocrCloseBtn.style.display = 'none';
+    if (STATE.ocrProgress) STATE.ocrProgress.style.display = 'none';
     return;
   }
 
@@ -1224,7 +2638,7 @@ function syncOverlayInteractivity(){
   STATE.shell.dataset.mode = mode;
   STATE.shell.style.pointerEvents = 'none';
 
-  if (mode === 'pen' || mode === 'eraser'){
+  if (mode === 'pen' || mode === 'eraser' || mode === 'ocr'){
     STATE.canvas.style.pointerEvents = 'auto';
     STATE.canvas.style.touchAction = 'none';
     STATE.canvas.style.cursor = 'crosshair';
@@ -1239,6 +2653,8 @@ function syncOverlayInteractivity(){
   }else{
     hideEraserRing();
   }
+
+  updateOcrWidgetsPosition();
 }
 
   function syncCanvasSize(){
@@ -1279,6 +2695,7 @@ function syncOverlayInteractivity(){
     if (STATE.canvas.height !== pxH) STATE.canvas.height = pxH;
 
     refreshEraserRing();
+    updateOcrWidgetsPosition();
   }
 
 function requestSync(){
@@ -1353,6 +2770,21 @@ function requestSync(){
     const slide = ensureSlide(STATE.slideKey || getSlideKey());
     for (let i = 0; i < slide.items.length; i++){
       drawItem(ctx, slide.items[i]);
+    }
+
+    const rr = normalizeRect(STATE.ocrRect);
+    if (rr && STORE.ui.mode === 'ocr'){
+      const w = rr.x1 - rr.x0;
+      const h = rr.y1 - rr.y0;
+      if (w > 0 && h > 0){
+        const accent = getComputedStyle(document.documentElement).getPropertyValue('--lia-annot-accent').trim() || '#0b5fff';
+        ctx.save();
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = rgbaFromAny(accent, 0.28);
+        ctx.fillRect(rr.x0, rr.y0, w, h);
+        ctx.restore();
+      }
     }
   }
 
