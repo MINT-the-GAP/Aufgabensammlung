@@ -55,7 +55,7 @@ markedorange: <span class="lia-hl-prefill" data-hl-prefill="orange" data-hl-rest
 Markiere die korrekt.
 
 <div class="markerquiz">
-@markred(rot) und @markblue(blau bis blau)  
+@markred(rot) und @markblue(blau bis blau).  
 @TextmarkerQuiz
 </div>
 

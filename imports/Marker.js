@@ -2314,6 +2314,51 @@ function ensureItemSlide(item){
           return inter / tA; // 0..1
         }
 
+        function normalizeHLQText(v){
+          return String(v || "").replace(/\s+/g, "").trim();
+        }
+
+        function markerTextMatchIgnoringSpaces(scopeId, slideId, expectedColor, targetRects, targetAnchor){
+          const targetRange = rangeFromAnchor(targetAnchor);
+          if (!targetRange) return false;
+
+          const targetNorm = normalizeHLQText(targetRange.toString());
+          if (!targetNorm) return false;
+
+          const wantAny = (expectedColor === "any" || expectedColor === "*" || !expectedColor);
+          const parts = [];
+
+          for (const h of I.HL){
+            if ((h.kind || "user") !== "user") continue;
+            if ((h.scope || "global") !== scopeId) continue;
+            if ((h.slide || "global") !== slideId) continue;
+            if (!wantAny && h.color !== expectedColor) continue;
+
+            const hRects = Array.isArray(h.rects) ? h.rects : [];
+            if (!hRects.length) continue;
+            if (!rectsTouchTargets(hRects, targetRects, HLQ_PAD)) continue;
+
+            const hr = rangeFromAnchor(h.anchor);
+            if (!hr) continue;
+
+            const txt = normalizeHLQText(hr.toString());
+            if (!txt) continue;
+
+            const first = hRects[0] || { x: 0, y: 0 };
+            parts.push({ txt, x: first.x || 0, y: first.y || 0 });
+          }
+
+          if (!parts.length) return false;
+
+          for (const p of parts){
+            if (p.txt === targetNorm) return true;
+          }
+
+          parts.sort((a, b) => (a.y - b.y) || (a.x - b.x));
+          const joined = parts.map(p => p.txt).join("");
+          return joined === targetNorm;
+        }
+
         function collectTargetsInScope(scopeEl){
           const root = scopeEl || CONTENT_DOC;
           const els = Array.from(root.querySelectorAll(".lia-hl-target[data-hl-expected]"));
@@ -2435,7 +2480,8 @@ function mergedUserRects(scopeId, slideId, mode, refColor){
 
 
 
-function matchTarget(scopeId, slideId, expectedColor, targetRects){
+function matchTarget(scopeId, slideId, target, targetRects){
+  const expectedColor = target?.color;
   const wantAny = (expectedColor === "any" || expectedColor === "*" || !expectedColor);
 
   const goodAll = wantAny
@@ -2452,7 +2498,21 @@ function matchTarget(scopeId, slideId, expectedColor, targetRects){
   const sPrec = (uA > 0) ? (inter / uA) : 0;
 
   if (wantAny){
-    return { pass: (sGood >= HLQ_OK) && (sPrec >= HLQ_PREC), sGood, sBad: 0, sPrec };
+    if ((sGood >= HLQ_OK) && (sPrec >= HLQ_PREC)){
+      return { pass: true, sGood, sBad: 0, sPrec };
+    }
+
+    const textPass = markerTextMatchIgnoringSpaces(scopeId, slideId, expectedColor, targetRects, target?.anchor);
+    if (textPass){
+      return {
+        pass: true,
+        sGood: Math.max(sGood, HLQ_OK),
+        sBad: 0,
+        sPrec: Math.max(sPrec, HLQ_PREC)
+      };
+    }
+
+    return { pass: false, sGood, sBad: 0, sPrec };
   }
 
   const badAll  = mergedUserRects(scopeId, slideId, "except", expectedColor);
@@ -2465,6 +2525,18 @@ function matchTarget(scopeId, slideId, expectedColor, targetRects){
     (sGood >= HLQ_OK) &&
     (sPrec >= HLQ_PREC) &&
     (sBad  <= HLQ_WRONG);
+
+  if (pass) return { pass, sGood, sBad, sPrec };
+
+  const textPass = markerTextMatchIgnoringSpaces(scopeId, slideId, expectedColor, targetRects, target?.anchor);
+  if (textPass && (sBad <= HLQ_WRONG)){
+    return {
+      pass: true,
+      sGood: Math.max(sGood, HLQ_OK),
+      sBad,
+      sPrec: Math.max(sPrec, HLQ_PREC)
+    };
+  }
 
   return { pass, sGood, sBad, sPrec };
 }
@@ -2495,7 +2567,7 @@ function evalScope(scopeEl){
     const tRects = packedRectsFromRange(r);
     if (tRects?.length) allTargetRects.push(...tRects);
 
-    const m = matchTarget(scopeId, slideId, t.color, tRects); // >>> NEU
+    const m = matchTarget(scopeId, slideId, t, tRects); // >>> NEU
 
     if (m.sBad  > HLQ_WRONG) badColor++;
     if (m.sPrec < HLQ_PREC)  tooWide++;
