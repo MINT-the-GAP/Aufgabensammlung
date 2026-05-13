@@ -1435,6 +1435,101 @@ import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
 
 
 
+@Rekonstruktion: @Rekonstruktion_(@uid,@0)
+
+@Rekonstruktion_
+<span id="rek-spec-@0" data-spec="@1" style="display:none;"></span>
+
+<script modify="false">
+(function(){
+  const node = document.getElementById('rek-spec-@0');
+  const spec = node ? String(node.dataset.spec || '') : String.raw`@1`;
+  const boardId = String(spec.split(';')[0] || '').trim();
+  if (!boardId) return;
+
+  if (typeof window.__enableRekonstruktionBoard === 'function') {
+    window.__enableRekonstruktionBoard(boardId);
+    return;
+  }
+
+  window.__liaCoordRegressionSpecs = window.__liaCoordRegressionSpecs || {};
+  window.__liaCoordRegressionSpecs[boardId] = { enabled: true };
+
+  if (typeof window.__bootstrapRegression === 'function') {
+    window.__bootstrapRegression();
+  }
+  if (typeof window.__bootstrapPlotZeichnen === 'function') {
+    window.__bootstrapPlotZeichnen();
+  }
+})();
+</script>
+
+<div id="rek-check-@0">
+[[!]]
+<script modify="false">
+  (() => {
+    const node = document.getElementById('rek-spec-@0');
+    const spec = node ? String(node.dataset.spec || '') : String.raw`@1`;
+
+    if (typeof window.__checkRekonstruktionFromSpec === 'function') {
+      return window.__checkRekonstruktionFromSpec(spec);
+    }
+
+    return false;
+  })()
+</script>
+</div>
+
+<script modify="false">
+(function(){
+  const root = document.getElementById('rek-check-@0');
+  const node = document.getElementById('rek-spec-@0');
+  if (!root || !node) return;
+  if (root.__rekRevealBound) return;
+  root.__rekRevealBound = true;
+
+  function findButtons() {
+    return Array.from(root.querySelectorAll('button.lia-btn, input.lia-btn, button, input[type="button"], input[type="submit"]'));
+  }
+
+  function isResolveButton(targetBtn) {
+    const buttons = findButtons();
+    const idx = buttons.indexOf(targetBtn);
+    const text = String(targetBtn.textContent || targetBtn.value || '').trim().toLowerCase();
+    if (idx >= 1) return true;
+    if (/solution|aufl|show|loes/.test(text)) return true;
+    return false;
+  }
+
+  root.addEventListener('click', function(e) {
+    const btn = e.target && e.target.closest
+      ? e.target.closest('button, input[type="button"], input[type="submit"]')
+      : null;
+    if (!btn || !root.contains(btn)) return;
+    if (!isResolveButton(btn)) return;
+
+    const spec = String(node.dataset.spec || String.raw`@1`);
+    setTimeout(function() {
+      if (typeof window.__revealRekonstruktionFromSpec === 'function') {
+        window.__revealRekonstruktionFromSpec(spec);
+      }
+    }, 0);
+
+    setTimeout(function() {
+      if (typeof window.__revealRekonstruktionFromSpec === 'function') {
+        window.__revealRekonstruktionFromSpec(spec);
+      }
+    }, 80);
+  }, true);
+})();
+</script>
+
+@end
+
+
+
+
+
 
 
 
@@ -1742,10 +1837,14 @@ Mit Farbeinstellungen: @PunkteAufGraph(`A5;n=4;d=3;A;#ff00ff;g;2x-4;#b41f65;0.05
 
 @Regression(`A9`)
 
+Rekonstruiere oder zeichne die Funktion $f(x) = 2x -1$.
+
+@Rekonstruktion(`A9;2x-1;0.1`)
+
 
 @Punkt(`A9;A;2;3`)
-@Punkt(`A9;B;-2;-1`)
-@Punkt(`A9;C;5;-2`)
+@Punkt(`A9;B;0;-1`)
+@Punkt(`A9;C;-3;2`)
 
 ```
 @Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A9`)
@@ -1758,7 +1857,10 @@ Mit Farbeinstellungen: @PunkteAufGraph(`A5;n=4;d=3;A;#ff00ff;g;2x-4;#b41f65;0.05
 
 
 
-# Funktion schiebbar 1
+
+
+
+# Funktion schiebbar 1 - Quiz
 
 @Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A3`)
 
@@ -1766,22 +1868,50 @@ Mit Farbeinstellungen: @PunkteAufGraph(`A5;n=4;d=3;A;#ff00ff;g;2x-4;#b41f65;0.05
 
 @Schar(`f;x;mx+n;A3;term=1;#00ffff`)
 
+
+Passe die Funktion so an, dass $f(x) = 2x -1$ dargestellt ist.
+
+@Rekonstruktion(`A3;2x-1;0.1`)
+
+
+
+
+
+
+# Funktion schiebbar 2
+
+@Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A3`)
+
+@AchsenBeschriftung(`id=A3;xlabel=$x$;ylabel=$y$`)
+
 @Schar(`g;x;d{{x+b}}^2+c;A3;term=1;#ff00ff`)
 
 @Schar(`p;x;ax^3+bx^2+cx+d;A3;term=1;#ff0000`)
 
-@Schar(`h;x;A e^{{b{{x+c}}}}+d;A3;term=1;#00ff00`)
-
-@Schar(`l;x;A ln{{b{{x+c}}}}+d;A3;term=1;#22aa66`)
 
 
-# Funktion schiebbar 2
+
+
+
+# Funktion schiebbar 3
 
 @Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A11`)
 
 @AchsenBeschriftung(`id=A11;xlabel=$x$;ylabel=$y$`)
 
 @Schar(`f;x;A sin{{b{{x+c}}}}+d;A11;term=1;#0077ff`)
+
+@Schar(`h;x;A e^{{b{{x+c}}}}+d;A3;term=1;#00ff00`)
+
+@Schar(`l;x;A ln{{b{{x+c}}}}+d;A3;term=1;#22aa66`)
+
+
+
+# Funktion schiebbar 4
+
+@Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A11`)
+
+@AchsenBeschriftung(`id=A11;xlabel=$x$;ylabel=$y$`)
 
 @Schar(`k;x;A sqrt{{b{{x+c}}}}+d;A11;term=1;#ff9900`)
 

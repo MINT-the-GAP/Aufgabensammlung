@@ -11,6 +11,8 @@
   // KOORDINATENSYSTEM KERN
   // =========================
 
+window.__liaDisableLegacyScharEngines = true;
+
 
 if (window.__liaRunCoordHooks) {
   window.__liaRunCoordHooks();
@@ -34,6 +36,7 @@ if (window.__liaRunCoordHooks) {
     // =========================
 
   (function(){
+    if (window.__liaDisableLegacyScharEngines) return;
     if (window.__scharReadyV2) {
       try {
         if (window.__bootstrapScharen) window.__bootstrapScharen();
@@ -56,7 +59,7 @@ if (window.__liaRunCoordHooks) {
           top:10px;
           z-index:52;
           min-width:190px;
-          max-width:260px;
+          max-width:none;
           padding:8px 10px;
           border-radius:10px;
           background:rgba(255,255,255,.96);
@@ -79,6 +82,17 @@ if (window.__liaRunCoordHooks) {
         .lia-schar-slider{
           width:100%;
           margin:0;
+        }
+
+        .lia-schar-slider::-webkit-slider-thumb{
+          width:12px;
+          height:12px;
+        }
+
+        .lia-schar-slider::-moz-range-thumb{
+          width:12px;
+          height:12px;
+          border:none;
         }
 
         .lia-schar-term{
@@ -613,7 +627,7 @@ if (window.__liaRunCoordHooks) {
           panel.innerHTML = '' +
             '<div class="lia-schar-head">' +
               '<span class="lia-schar-label">a:</span>' +
-              '<input class="lia-schar-slider" type="range" min="-10" max="10" step="0.1" value="1" />' +
+              '<input class="lia-schar-slider" type="range" min="-10" max="10" step="0.05" value="1" />' +
             '</div>' +
             '<label class="lia-schar-term-toggle-wrap"><input class="lia-schar-term-toggle" type="checkbox" /> Term anzeigen</label>' +
             '<div class="lia-schar-term"></div>';
@@ -682,12 +696,12 @@ if (window.__liaRunCoordHooks) {
         const blockBoardGesture = function(evt) {
           try { evt.stopPropagation(); } catch (e) {}
         };
-        ['pointerdown', 'pointermove', 'pointerup', 'mousedown', 'mousemove', 'mouseup', 'touchstart', 'touchmove', 'touchend', 'click'].forEach(function(type) {
+        ['pointerdown', 'pointerup', 'pointercancel', 'mousedown', 'mouseup', 'touchstart', 'touchend', 'click'].forEach(function(type) {
           try { entry.sliderEl.addEventListener(type, blockBoardGesture, true); } catch (e) {}
         });
         entry.sliderEl.addEventListener('input', function() {
           entry.a = Math.max(-10, Math.min(10, Number(entry.sliderEl.value || 0)));
-          refreshEntry(entry);
+          refreshEntry(entry, true);
         });
       }
 
@@ -1078,6 +1092,7 @@ if (window.__liaRunCoordHooks) {
   // =========================
 
 (function(){
+  if (window.__liaDisableLegacyScharEngines) return;
   if (window.__scharReady) {
     try {
       if (window.__bootstrapScharen) window.__bootstrapScharen();
@@ -1123,6 +1138,17 @@ if (window.__liaRunCoordHooks) {
       .lia-schar-slider{
         width:100%;
         margin:0;
+      }
+
+      .lia-schar-slider::-webkit-slider-thumb{
+        width:12px;
+        height:12px;
+      }
+
+      .lia-schar-slider::-moz-range-thumb{
+        width:12px;
+        height:12px;
+        border:none;
       }
 
       .lia-schar-term{
@@ -1734,6 +1760,53 @@ if (window.__liaRunCoordHooks) {
     } catch (e) {}
   }
 
+  function getScharStateStore() {
+    window.__liaScharStateStore = window.__liaScharStateStore || {};
+    return window.__liaScharStateStore;
+  }
+
+  function getScharStateKey(uid, boardId) {
+    return String(uid || '') + '::' + String(boardId || '');
+  }
+
+  function restoreScharEntryState(entry) {
+    if (!entry) return;
+    const key = getScharStateKey(entry.uid, entry.boardId);
+    const raw = getScharStateStore()[key];
+    if (!raw || typeof raw !== 'object') return;
+
+    const readNum = function(v, fallback) {
+      const n = Number(v);
+      return Number.isFinite(n) ? n : fallback;
+    };
+
+    entry.a = Math.max(-10, Math.min(10, readNum(raw.a, entry.a)));
+    entry.b = Math.max(-10, Math.min(10, readNum(raw.b, entry.b)));
+    entry.c = Math.max(-10, Math.min(10, readNum(raw.c, entry.c)));
+    entry.d = Math.max(-10, Math.min(10, readNum(raw.d, entry.d)));
+    entry.n = readNum(raw.n, entry.n);
+    entry.termVisible = !!raw.termVisible;
+    entry.panelMinimized = !!raw.panelMinimized;
+
+    const scale = readNum(raw.panelScale, entry.panelScale);
+    entry.panelScale = Math.max(0.35, Math.min(1.2, scale));
+  }
+
+  function persistScharEntryState(entry) {
+    if (!entry) return;
+    const key = getScharStateKey(entry.uid, entry.boardId);
+    getScharStateStore()[key] = {
+      a: Number(entry.a),
+      b: Number(entry.b),
+      c: Number(entry.c),
+      d: Number(entry.d),
+      n: Number(entry.n),
+      termVisible: !!entry.termVisible,
+      panelMinimized: !!entry.panelMinimized,
+      panelScale: Number(entry.panelScale || 0.6)
+    };
+  }
+
   function removeExisting(uid) {
     const key = 'schar-' + uid;
     const entry = window.__scharEntries[key];
@@ -1761,8 +1834,59 @@ if (window.__liaRunCoordHooks) {
       if (typeof entry.stopDrag === 'function') entry.stopDrag();
     } catch (e) {}
 
+    try {
+      if (typeof persistScharEntryState === 'function') persistScharEntryState(entry);
+    } catch (e) {}
+
     delete window.__scharEntries[key];
     relayoutPanelsForBoard(boardIdRef, boardRef);
+  }
+
+  function getScharStateStore() {
+    window.__liaScharStateStore = window.__liaScharStateStore || {};
+    return window.__liaScharStateStore;
+  }
+
+  function getScharStateKey(uid, boardId) {
+    return String(uid || '') + '::' + String(boardId || '');
+  }
+
+  function restoreScharEntryState(entry) {
+    if (!entry) return;
+    const key = getScharStateKey(entry.uid, entry.boardId);
+    const raw = getScharStateStore()[key];
+    if (!raw || typeof raw !== 'object') return;
+
+    const readNum = function(v, fallback) {
+      const n = Number(v);
+      return Number.isFinite(n) ? n : fallback;
+    };
+
+    entry.a = Math.max(-10, Math.min(10, readNum(raw.a, entry.a)));
+    entry.b = Math.max(-10, Math.min(10, readNum(raw.b, entry.b)));
+    entry.c = Math.max(-10, Math.min(10, readNum(raw.c, entry.c)));
+    entry.d = Math.max(-10, Math.min(10, readNum(raw.d, entry.d)));
+    entry.n = readNum(raw.n, entry.n);
+    entry.termVisible = !!raw.termVisible;
+    entry.panelMinimized = !!raw.panelMinimized;
+
+    const scale = readNum(raw.panelScale, entry.panelScale);
+    entry.panelScale = Math.max(0.35, Math.min(1.2, scale));
+  }
+
+  function persistScharEntryState(entry) {
+    if (!entry) return;
+    const key = getScharStateKey(entry.uid, entry.boardId);
+    getScharStateStore()[key] = {
+      a: Number(entry.a),
+      b: Number(entry.b),
+      c: Number(entry.c),
+      d: Number(entry.d),
+      n: Number(entry.n),
+      termVisible: !!entry.termVisible,
+      panelMinimized: !!entry.panelMinimized,
+      panelScale: Number(entry.panelScale || 0.6)
+    };
   }
 
   function hasLiveGraph(entry, board) {
@@ -1882,7 +2006,7 @@ if (window.__liaRunCoordHooks) {
         panel.innerHTML = '' +
           '<div class="lia-schar-head">' +
             '<span class="lia-schar-label">\\(a\\):</span>' +
-            '<input class="lia-schar-slider" type="range" min="-10" max="10" step="0.1" value="1" />' +
+            '<input class="lia-schar-slider" type="range" min="-10" max="10" step="0.05" value="1" />' +
           '</div>' +
           '<label class="lia-schar-term-toggle-wrap"><input class="lia-schar-term-toggle" type="checkbox" /> Term anzeigen</label>' +
           '<div class="lia-schar-term"></div>';
@@ -1945,10 +2069,10 @@ if (window.__liaRunCoordHooks) {
 
     if (entry.sliderEl) {
       entry.sliderEl.style.display = 'block';
-      entry.sliderEl.style.flex = '0 0 140px';
-      entry.sliderEl.style.width = '140px';
-      entry.sliderEl.style.minWidth = '140px';
-      entry.sliderEl.style.maxWidth = '140px';
+      entry.sliderEl.style.flex = '0 0 220px';
+      entry.sliderEl.style.width = '220px';
+      entry.sliderEl.style.minWidth = '220px';
+      entry.sliderEl.style.maxWidth = '220px';
       entry.sliderEl.style.margin = '0';
       entry.sliderEl.style.visibility = 'visible';
       entry.sliderEl.style.opacity = '1';
@@ -1963,7 +2087,10 @@ if (window.__liaRunCoordHooks) {
     }
 
     if (entry.termToggleWrapEl) {
-      entry.termToggleWrapEl.style.display = entry.cfg && Number(entry.cfg.showTerm) !== 0 ? 'block' : 'none';
+      entry.termToggleWrapEl.style.display = entry.cfg && Number(entry.cfg.showTerm) !== 0 ? 'inline-flex' : 'none';
+      entry.termToggleWrapEl.style.alignItems = 'center';
+      entry.termToggleWrapEl.style.gap = '6px';
+      entry.termToggleWrapEl.style.whiteSpace = 'nowrap';
       entry.termToggleWrapEl.style.visibility = 'visible';
       entry.termToggleWrapEl.style.opacity = '1';
       entry.termToggleWrapEl.style.pointerEvents = 'auto';
@@ -1977,12 +2104,12 @@ if (window.__liaRunCoordHooks) {
       const blockBoardGesture = function(evt) {
         try { evt.stopPropagation(); } catch (e) {}
       };
-      ['pointerdown', 'pointermove', 'pointerup', 'mousedown', 'mousemove', 'mouseup', 'touchstart', 'touchmove', 'touchend', 'click'].forEach(function(type) {
+      ['pointerdown', 'pointerup', 'pointercancel', 'mousedown', 'mouseup', 'touchstart', 'touchend', 'click'].forEach(function(type) {
         try { entry.sliderEl.addEventListener(type, blockBoardGesture, true); } catch (e) {}
       });
       entry.sliderEl.addEventListener('input', function() {
         entry.a = Math.max(-10, Math.min(10, Number(entry.sliderEl.value || 0)));
-        refreshEntry(entry);
+        refreshEntry(entry, true);
       });
     }
 
@@ -2041,7 +2168,10 @@ if (window.__liaRunCoordHooks) {
     if (!allowTerm) entry.termVisible = false;
 
     if (entry.termToggleWrapEl) {
-      entry.termToggleWrapEl.style.display = allowTerm ? 'block' : 'none';
+      entry.termToggleWrapEl.style.display = allowTerm ? 'inline-flex' : 'none';
+      entry.termToggleWrapEl.style.alignItems = 'center';
+      entry.termToggleWrapEl.style.gap = '6px';
+      entry.termToggleWrapEl.style.whiteSpace = 'nowrap';
       entry.termToggleWrapEl.style.visibility = 'visible';
       entry.termToggleWrapEl.style.opacity = '1';
       entry.termToggleWrapEl.style.pointerEvents = 'auto';
@@ -2385,7 +2515,7 @@ if (window.__liaRunCoordHooks) {
         top:10px;
         z-index:52;
         min-width:190px;
-        max-width:260px;
+        max-width:none;
         padding:8px 10px;
         border-radius:10px;
         background:rgba(255,255,255,.97);
@@ -2408,6 +2538,17 @@ if (window.__liaRunCoordHooks) {
       .lia-schar-slider{
         width:100%;
         margin:0;
+      }
+
+      .lia-schar-slider::-webkit-slider-thumb{
+        width:12px;
+        height:12px;
+      }
+
+      .lia-schar-slider::-moz-range-thumb{
+        width:12px;
+        height:12px;
+        border:none;
       }
 
       .lia-schar-term{
@@ -3111,6 +3252,53 @@ if (window.__liaRunCoordHooks) {
     } catch (e) {}
   }
 
+  function getScharStateStore() {
+    window.__liaScharStateStore = window.__liaScharStateStore || {};
+    return window.__liaScharStateStore;
+  }
+
+  function getScharStateKey(uid, boardId) {
+    return String(uid || '') + '::' + String(boardId || '');
+  }
+
+  function restoreScharEntryState(entry) {
+    if (!entry) return;
+    const key = getScharStateKey(entry.uid, entry.boardId);
+    const raw = getScharStateStore()[key];
+    if (!raw || typeof raw !== 'object') return;
+
+    const readNum = function(v, fallback) {
+      const n = Number(v);
+      return Number.isFinite(n) ? n : fallback;
+    };
+
+    entry.a = Math.max(-10, Math.min(10, readNum(raw.a, entry.a)));
+    entry.b = Math.max(-10, Math.min(10, readNum(raw.b, entry.b)));
+    entry.c = Math.max(-10, Math.min(10, readNum(raw.c, entry.c)));
+    entry.d = Math.max(-10, Math.min(10, readNum(raw.d, entry.d)));
+    entry.n = readNum(raw.n, entry.n);
+    entry.termVisible = !!raw.termVisible;
+    entry.panelMinimized = !!raw.panelMinimized;
+
+    const scale = readNum(raw.panelScale, entry.panelScale);
+    entry.panelScale = Math.max(0.35, Math.min(1.2, scale));
+  }
+
+  function persistScharEntryState(entry) {
+    if (!entry) return;
+    const key = getScharStateKey(entry.uid, entry.boardId);
+    getScharStateStore()[key] = {
+      a: Number(entry.a),
+      b: Number(entry.b),
+      c: Number(entry.c),
+      d: Number(entry.d),
+      n: Number(entry.n),
+      termVisible: !!entry.termVisible,
+      panelMinimized: !!entry.panelMinimized,
+      panelScale: Number(entry.panelScale || 0.6)
+    };
+  }
+
   function removeExisting(uid) {
     const key = 'schar-' + uid;
     const entry = window.__scharEntries[key];
@@ -3136,6 +3324,10 @@ if (window.__liaRunCoordHooks) {
 
     try {
       if (typeof entry.stopDrag === 'function') entry.stopDrag();
+    } catch (e) {}
+
+    try {
+      persistScharEntryState(entry);
     } catch (e) {}
 
     delete window.__scharEntries[key];
@@ -3179,6 +3371,11 @@ if (window.__liaRunCoordHooks) {
       return match;
     });
     if (!idxs.length) return false;
+
+    const variable = String(entry && entry.cfg && entry.cfg.variableName ? entry.cfg.variableName : 'x').trim() || 'x';
+    const vEsc = escapeRegExp(variable);
+    const shiftedGroup = new RegExp('\\(\\s*(?:' + vEsc + '\\s*[+\\-]\\s*b|b\\s*[+\\-]\\s*' + vEsc + ')\\s*\\)', 'i');
+    if (shiftedGroup.test(expr)) return true;
 
     const prevNonSpace = function(i) {
       for (let p = i - 1; p >= 0; p--) {
@@ -3531,19 +3728,19 @@ if (window.__liaRunCoordHooks) {
         '<div class="lia-schar-mini-wrap"><span class="lia-schar-mini-name"></span><div class="lia-schar-mini-strip"></div></div>' +
         '<div class="lia-schar-head">' +
           '<span class="lia-schar-label">a:</span>' +
-          '<input class="lia-schar-slider" type="range" min="-10" max="10" step="0.1" value="1" />' +
+          '<input class="lia-schar-slider" type="range" min="-10" max="10" step="0.05" value="1" />' +
         '</div>' +
         '<div class="lia-schar-head lia-schar-head-b">' +
           '<span class="lia-schar-label-b">b:</span>' +
-          '<input class="lia-schar-slider-b" type="range" min="-10" max="10" step="0.1" value="0" />' +
+          '<input class="lia-schar-slider-b" type="range" min="-10" max="10" step="0.05" value="0" />' +
         '</div>' +
         '<div class="lia-schar-head lia-schar-head-c">' +
           '<span class="lia-schar-label-c">c:</span>' +
-          '<input class="lia-schar-slider-c" type="range" min="-10" max="10" step="0.1" value="0" />' +
+          '<input class="lia-schar-slider-c" type="range" min="-10" max="10" step="0.05" value="0" />' +
         '</div>' +
         '<div class="lia-schar-head lia-schar-head-d">' +
           '<span class="lia-schar-label-d">d:</span>' +
-          '<input class="lia-schar-slider-d" type="range" min="-10" max="10" step="0.1" value="0" />' +
+          '<input class="lia-schar-slider-d" type="range" min="-10" max="10" step="0.05" value="0" />' +
         '</div>' +
         '<label class="lia-schar-term-toggle-wrap"><input class="lia-schar-term-toggle" type="checkbox" /> Term anzeigen</label>' +
         '<div class="lia-schar-term"></div>';
@@ -3741,10 +3938,10 @@ if (window.__liaRunCoordHooks) {
     if (entry.sliderEl) {
       entry.sliderEl.style.accentColor = entry.cfg && entry.cfg.color ? entry.cfg.color : '#0b5fff';
       entry.sliderEl.style.display = 'block';
-      entry.sliderEl.style.width = '140px';
-      entry.sliderEl.style.minWidth = '140px';
-      entry.sliderEl.style.maxWidth = '140px';
-      entry.sliderEl.style.flex = '0 0 140px';
+      entry.sliderEl.style.width = '220px';
+      entry.sliderEl.style.minWidth = '220px';
+      entry.sliderEl.style.maxWidth = '220px';
+      entry.sliderEl.style.flex = '0 0 220px';
       entry.sliderEl.style.visibility = 'visible';
       entry.sliderEl.style.opacity = '1';
       entry.sliderEl.style.pointerEvents = 'auto';
@@ -3754,10 +3951,10 @@ if (window.__liaRunCoordHooks) {
     if (entry.sliderBEl) {
       entry.sliderBEl.style.accentColor = entry.cfg && entry.cfg.color ? entry.cfg.color : '#0b5fff';
       entry.sliderBEl.style.display = 'block';
-      entry.sliderBEl.style.width = '140px';
-      entry.sliderBEl.style.minWidth = '140px';
-      entry.sliderBEl.style.maxWidth = '140px';
-      entry.sliderBEl.style.flex = '0 0 140px';
+      entry.sliderBEl.style.width = '220px';
+      entry.sliderBEl.style.minWidth = '220px';
+      entry.sliderBEl.style.maxWidth = '220px';
+      entry.sliderBEl.style.flex = '0 0 220px';
       entry.sliderBEl.style.visibility = 'visible';
       entry.sliderBEl.style.opacity = '1';
       entry.sliderBEl.style.pointerEvents = 'auto';
@@ -3767,10 +3964,10 @@ if (window.__liaRunCoordHooks) {
     if (entry.sliderCEl) {
       entry.sliderCEl.style.accentColor = entry.cfg && entry.cfg.color ? entry.cfg.color : '#0b5fff';
       entry.sliderCEl.style.display = 'block';
-      entry.sliderCEl.style.width = '140px';
-      entry.sliderCEl.style.minWidth = '140px';
-      entry.sliderCEl.style.maxWidth = '140px';
-      entry.sliderCEl.style.flex = '0 0 140px';
+      entry.sliderCEl.style.width = '220px';
+      entry.sliderCEl.style.minWidth = '220px';
+      entry.sliderCEl.style.maxWidth = '220px';
+      entry.sliderCEl.style.flex = '0 0 220px';
       entry.sliderCEl.style.visibility = 'visible';
       entry.sliderCEl.style.opacity = '1';
       entry.sliderCEl.style.pointerEvents = 'auto';
@@ -3780,16 +3977,28 @@ if (window.__liaRunCoordHooks) {
     if (entry.sliderDEl) {
       entry.sliderDEl.style.accentColor = entry.cfg && entry.cfg.color ? entry.cfg.color : '#0b5fff';
       entry.sliderDEl.style.display = 'block';
-      entry.sliderDEl.style.width = '140px';
-      entry.sliderDEl.style.minWidth = '140px';
-      entry.sliderDEl.style.maxWidth = '140px';
-      entry.sliderDEl.style.flex = '0 0 140px';
+      entry.sliderDEl.style.width = '220px';
+      entry.sliderDEl.style.minWidth = '220px';
+      entry.sliderDEl.style.maxWidth = '220px';
+      entry.sliderDEl.style.flex = '0 0 220px';
       entry.sliderDEl.style.visibility = 'visible';
       entry.sliderDEl.style.opacity = '1';
       entry.sliderDEl.style.pointerEvents = 'auto';
       entry.sliderDEl.style.appearance = 'auto';
       entry.sliderDEl.style.webkitAppearance = 'auto';
     }
+
+    function applyFixedSliderRange(sl) {
+      if (!sl) return;
+      sl.step = '0.05';
+      sl.min = '-10';
+      sl.max = '10';
+    }
+
+    applyFixedSliderRange(entry.sliderEl);
+    applyFixedSliderRange(entry.sliderBEl);
+    applyFixedSliderRange(entry.sliderCEl);
+    applyFixedSliderRange(entry.sliderDEl);
 
     const showBSlider = shouldShowBSlider(entry);
     const showCSlider = /(^|[^A-Za-z0-9_])c([^A-Za-z0-9_]|$)/.test(String(entry.normalizedExpr || ''));
@@ -3826,17 +4035,28 @@ if (window.__liaRunCoordHooks) {
       entry.termToggleWrapEl.style.userSelect = 'none';
     }
 
+    function scheduleLightRefresh() {
+      if (entry.__sliderRefreshRaf) return;
+      entry.__sliderRefreshRaf = requestAnimationFrame(function() {
+        entry.__sliderRefreshRaf = 0;
+        refreshEntry(entry, true);
+      });
+    }
+
     if (entry.sliderEl && !entry.sliderEl.__liaScharBoundV3) {
       entry.sliderEl.__liaScharBoundV3 = true;
       const blockBoardGesture = function(evt) {
         try { evt.stopPropagation(); } catch (e) {}
       };
-      ['pointerdown', 'pointermove', 'pointerup', 'mousedown', 'mousemove', 'mouseup', 'touchstart', 'touchmove', 'touchend', 'click'].forEach(function(type) {
+      ['pointerdown', 'pointerup', 'pointercancel', 'mousedown', 'mouseup', 'touchstart', 'touchend', 'click'].forEach(function(type) {
         try { entry.sliderEl.addEventListener(type, blockBoardGesture, true); } catch (e) {}
       });
       entry.sliderEl.addEventListener('input', function() {
         entry.a = Math.max(-10, Math.min(10, Number(entry.sliderEl.value || 0)));
-        refreshEntry(entry);
+        scheduleLightRefresh();
+      });
+      entry.sliderEl.addEventListener('change', function() {
+        refreshEntry(entry, false);
       });
     }
 
@@ -3845,12 +4065,15 @@ if (window.__liaRunCoordHooks) {
       const blockBoardGesture = function(evt) {
         try { evt.stopPropagation(); } catch (e) {}
       };
-      ['pointerdown', 'pointermove', 'pointerup', 'mousedown', 'mousemove', 'mouseup', 'touchstart', 'touchmove', 'touchend', 'click'].forEach(function(type) {
+      ['pointerdown', 'pointerup', 'pointercancel', 'mousedown', 'mouseup', 'touchstart', 'touchend', 'click'].forEach(function(type) {
         try { entry.sliderBEl.addEventListener(type, blockBoardGesture, true); } catch (e) {}
       });
       entry.sliderBEl.addEventListener('input', function() {
         entry.b = Math.max(-10, Math.min(10, Number(entry.sliderBEl.value || 0)));
-        refreshEntry(entry);
+        scheduleLightRefresh();
+      });
+      entry.sliderBEl.addEventListener('change', function() {
+        refreshEntry(entry, false);
       });
     }
 
@@ -3859,12 +4082,15 @@ if (window.__liaRunCoordHooks) {
       const blockBoardGesture = function(evt) {
         try { evt.stopPropagation(); } catch (e) {}
       };
-      ['pointerdown', 'pointermove', 'pointerup', 'mousedown', 'mousemove', 'mouseup', 'touchstart', 'touchmove', 'touchend', 'click'].forEach(function(type) {
+      ['pointerdown', 'pointerup', 'pointercancel', 'mousedown', 'mouseup', 'touchstart', 'touchend', 'click'].forEach(function(type) {
         try { entry.sliderCEl.addEventListener(type, blockBoardGesture, true); } catch (e) {}
       });
       entry.sliderCEl.addEventListener('input', function() {
         entry.c = Math.max(-10, Math.min(10, Number(entry.sliderCEl.value || 0)));
-        refreshEntry(entry);
+        scheduleLightRefresh();
+      });
+      entry.sliderCEl.addEventListener('change', function() {
+        refreshEntry(entry, false);
       });
     }
 
@@ -3873,12 +4099,15 @@ if (window.__liaRunCoordHooks) {
       const blockBoardGesture = function(evt) {
         try { evt.stopPropagation(); } catch (e) {}
       };
-      ['pointerdown', 'pointermove', 'pointerup', 'mousedown', 'mousemove', 'mouseup', 'touchstart', 'touchmove', 'touchend', 'click'].forEach(function(type) {
+      ['pointerdown', 'pointerup', 'pointercancel', 'mousedown', 'mouseup', 'touchstart', 'touchend', 'click'].forEach(function(type) {
         try { entry.sliderDEl.addEventListener(type, blockBoardGesture, true); } catch (e) {}
       });
       entry.sliderDEl.addEventListener('input', function() {
         entry.d = Math.max(-10, Math.min(10, Number(entry.sliderDEl.value || 0)));
-        refreshEntry(entry);
+        scheduleLightRefresh();
+      });
+      entry.sliderDEl.addEventListener('change', function() {
+        refreshEntry(entry, false);
       });
     }
 
@@ -3964,6 +4193,19 @@ if (window.__liaRunCoordHooks) {
   function refreshEntry(entry, lightweight) {
     if (!entry) return false;
     if (!ensurePanel(entry)) return false;
+
+    if (lightweight) {
+      try {
+        const boardId = String(entry && entry.boardId || '').trim();
+        if (boardId) {
+          window.__liaActiveScharByBoard = window.__liaActiveScharByBoard || {};
+          window.__liaActiveScharByBoard[boardId] = String(entry.uid || '');
+          const now = Date.now();
+          entry.__lastSelectedAt = now;
+          entry.__lastChangedAt = now;
+        }
+      } catch (e) {}
+    }
 
     const allowTerm = !!(entry.cfg && Number(entry.cfg.showTerm) !== 0);
 
@@ -4051,41 +4293,15 @@ if (window.__liaRunCoordHooks) {
     }
 
     if (entry.termEl) {
-      const fitPanelToTerm = function() {
+      const fitPanelStable = function() {
         try {
-          if (!entry.panel || !entry.termEl) return;
+          if (!entry.panel) return;
           const panel = entry.panel;
-          let termWidth = 0;
-          const mjx = entry.termEl.querySelectorAll('mjx-container');
-          if (mjx && mjx.length) {
-            mjx.forEach(function(node) {
-              const w = Math.max(Number(node.scrollWidth || 0), Number(node.offsetWidth || 0));
-              if (w > termWidth) termWidth = w;
-            });
-          }
-          if (!termWidth) termWidth = entry.termEl.scrollWidth || 0;
-          let targetWidth = Math.ceil(Math.max(250, termWidth + 44));
-          const measuredHeight = Math.ceil(Math.max(112, panel.scrollHeight || panel.offsetHeight || 0));
-          const currentHeight = Number(entry._panelHeight || panel.offsetHeight || 0);
-          let stableHeight = currentHeight > 0 ? Math.max(currentHeight, measuredHeight) : measuredHeight;
-
-          if (entry._freezePanelDuringDrag) {
-            const lockedWidth = Number(entry._dragLockedWidth || entry._panelWidth || panel.offsetWidth || 0);
-            const lockedHeight = Number(entry._dragLockedHeight || panel.offsetHeight || 0);
-            if (lockedWidth > 0) targetWidth = Math.max(targetWidth, lockedWidth);
-            if (lockedHeight > 0) stableHeight = Math.max(stableHeight, lockedHeight);
-            entry._dragLockedWidth = targetWidth;
-            entry._dragLockedHeight = stableHeight;
-          }
-
           panel.style.maxWidth = 'none';
-          panel.style.minWidth = targetWidth + 'px';
-          panel.style.width = targetWidth + 'px';
-          panel.style.height = stableHeight + 'px';
-          panel.style.minHeight = stableHeight + 'px';
-          entry._panelWidth = targetWidth;
-          entry._panelHeight = stableHeight;
-          entry._panelReservedHeight = stableHeight;
+          panel.style.width = 'auto';
+          panel.style.minWidth = '294px';
+          panel.style.height = '';
+          panel.style.minHeight = '';
         } catch (e) {}
       };
 
@@ -4105,59 +4321,55 @@ if (window.__liaRunCoordHooks) {
       entry.termEl.style.whiteSpace = 'nowrap';
       entry.termEl.style.wordBreak = 'normal';
       entry.termEl.style.overflowWrap = 'normal';
+      entry.termEl.style.overflowX = 'auto';
+      entry.termEl.style.overflowY = 'hidden';
       const shouldShowTerm = allowTerm && (hasToggle ? !!entry.termVisible : true);
       entry.termEl.style.display = shouldShowTerm ? 'block' : 'none';
       if (shouldShowTerm) {
         if (lightweight) {
-          const dragTermText = toTexExpr(substitutedWithNShift(entry));
+          const dragTermRaw = substitutedWithNShift(entry);
+          const dragTermText = toTexExpr(dragTermRaw);
+          entry._currentTermRhs = String(dragTermRaw || '').trim();
           const expandedPoly = expandedPolyTerm(entry);
           const newLatex = '\\(' + entry.cfg.name + '(' + entry.cfg.variableName + ')=' + dragTermText + '\\)' +
             (expandedPoly !== null ? '<br>\\(' + entry.cfg.name + '(' + entry.cfg.variableName + ')=' + expandedPoly + '\\)' : '');
           const now = Date.now();
-          if (entry.panel && (!entry._lastDragPanelResize || now - entry._lastDragPanelResize > 70)) {
-            const approxTermWidth = Math.max(0, dragTermText.length * 8);
-            const approxTargetWidth = Math.ceil(Math.max(250, approxTermWidth + 44));
-            const currentWidth = Number(entry._dragLockedWidth || entry._panelWidth || entry.panel.offsetWidth || approxTargetWidth);
-            const smoothedWidth = Math.round(currentWidth * 0.6 + approxTargetWidth * 0.4);
-            const dragWidth = Math.max(currentWidth, smoothedWidth);
-            entry.panel.style.maxWidth = 'none';
-            entry.panel.style.width = dragWidth + 'px';
-            entry.panel.style.minWidth = dragWidth + 'px';
-            entry._panelWidth = dragWidth;
-            entry._dragLockedWidth = dragWidth;
             entry._lastDragPanelResize = now;
-          }
           if (!entry._lastDragTypeset || now - entry._lastDragTypeset > 90) {
             entry._lastDragTypeset = now;
             entry.termEl.innerHTML = newLatex;
             typesetMathNode(entry.termEl).then(function() {
               shrinkRenderedMath();
-              fitPanelToTerm();
             }).catch(function() {
               shrinkRenderedMath();
-              fitPanelToTerm();
             });
           }
           try {
             if (entry.board && typeof entry.board.update === 'function') entry.board.update();
           } catch (e) {}
-          relayoutPanelsForBoard(entry.boardId, entry.board);
+          // Avoid vertical panel jitter while dragging: keep stack layout stable
+          // and only relayout on non-lightweight refresh.
           return true;
         }
 
-        const termText = toTexExpr(substitutedWithNShift(entry));
+        const termRaw = substitutedWithNShift(entry);
+        const termText = toTexExpr(termRaw);
+        entry._currentTermRhs = String(termRaw || '').trim();
         const expandedPolyLine = expandedPolyTerm(entry);
+        entry._currentTermText = '\\(' + entry.cfg.name + '(' + entry.cfg.variableName + ')=' + termText + '\\)' +
+          (expandedPolyLine !== null ? '<br>\\(' + entry.cfg.name + '(' + entry.cfg.variableName + ')=' + expandedPolyLine + '\\)' : '');
         entry.termEl.innerHTML = '\\(' + entry.cfg.name + '(' + entry.cfg.variableName + ')=' + termText + '\\)' +
           (expandedPolyLine !== null ? '<br>\\(' + entry.cfg.name + '(' + entry.cfg.variableName + ')=' + expandedPolyLine + '\\)' : '');
         typesetMathNode(entry.termEl).then(function() {
           shrinkRenderedMath();
-          fitPanelToTerm();
+          fitPanelStable();
         }).catch(function() {
           shrinkRenderedMath();
-          fitPanelToTerm();
+          fitPanelStable();
         });
       } else {
         entry.termEl.textContent = '';
+        entry._currentTermRhs = '';
         if (entry.panel) {
           entry.panel.style.width = '';
           entry.panel.style.minWidth = '190px';
@@ -4165,9 +4377,6 @@ if (window.__liaRunCoordHooks) {
           entry.panel.style.height = '';
           entry.panel.style.minHeight = '';
         }
-        entry._panelWidth = 0;
-        entry._panelHeight = 0;
-        entry._panelReservedHeight = 0;
       }
     }
 
@@ -4193,7 +4402,11 @@ if (window.__liaRunCoordHooks) {
       if (entry.board && typeof entry.board.update === 'function') entry.board.update();
     } catch (e) {}
 
-    relayoutPanelsForBoard(entry.boardId, entry.board);
+    persistScharEntryState(entry);
+
+    if (!lightweight) {
+      relayoutPanelsForBoard(entry.boardId, entry.board);
+    }
 
     return true;
   }
@@ -4220,6 +4433,15 @@ if (window.__liaRunCoordHooks) {
     const onPointerDown = function(evt) {
       evt.preventDefault();
       evt.stopPropagation();
+
+      try {
+        const boardId = String(entry && entry.boardId || '').trim();
+        if (boardId) {
+          window.__liaActiveScharByBoard = window.__liaActiveScharByBoard || {};
+          window.__liaActiveScharByBoard[boardId] = String(entry.uid || '');
+          entry.__lastSelectedAt = Date.now();
+        }
+      } catch (e) {}
 
       stopDrag(entry);
       entry._freezePanelDuringDrag = true;
@@ -4454,9 +4676,11 @@ if (window.__liaRunCoordHooks) {
       bAutoInitialized: false,
       dragState: null,
       stopDrag: null,
-      panelScale: 1,
+      panelScale: 0.6,
       panelMinimized: false
     };
+
+    restoreScharEntryState(entry);
 
     // Keep legacy flag aligned with the explicit exponential mode.
     if (entry.expDragMode && entry.expDragMode.xShiftByC) {
@@ -6593,7 +6817,7 @@ if (window.__liaRunCoordHooks) {
 
     function stopPanelEventPropagation(el) {
       if (!el || !el.addEventListener) return;
-      ['pointerdown','pointermove','pointerup','mousedown','mousemove','mouseup','touchstart','touchmove','touchend','click'].forEach(function(t) {
+      ['pointerdown','pointerup','pointercancel','mousedown','mouseup','touchstart','touchend','click'].forEach(function(t) {
         el.addEventListener(t, function(e) { e.stopPropagation(); }, true);
       });
     }
@@ -7006,26 +7230,90 @@ if (window.__liaRunCoordHooks) {
           sl.type = 'range';
           sl.className = 'lia-schar-slider';
           sl.setAttribute('data-param-key', k);
-          sl.min = String(Math.min(-10, Math.floor(v * 2)));
-          sl.max = String(Math.max(10, Math.ceil(v * 2)));
+          const analysisStep = 0.05;
+          const analysisSpan = 12;
+          const analysisPad = 1.0;
+          const absMax = Math.max(10, Math.ceil(Math.abs(Number(v || 0))) + 2);
+
+          const snapAnalysis = function(val) {
+            return Math.round(Number(val || 0) / analysisStep) * analysisStep;
+          };
+
+          const setAnalysisWindow = function(center) {
+            const half = analysisSpan / 2;
+            let min = snapAnalysis(Number(center || 0) - half);
+            let max = snapAnalysis(Number(center || 0) + half);
+
+            if (min < -absMax) {
+              min = -absMax;
+              max = snapAnalysis(min + analysisSpan);
+            }
+            if (max > absMax) {
+              max = absMax;
+              min = snapAnalysis(max - analysisSpan);
+            }
+
+            sl.min = String(min);
+            sl.max = String(max);
+          };
+
+          const maybeShiftAnalysisWindow = function(value) {
+            const min = Number(sl.min);
+            const max = Number(sl.max);
+            const current = Number(value);
+            if (!Number.isFinite(min) || !Number.isFinite(max) || !Number.isFinite(current)) {
+              setAnalysisWindow(current);
+              return;
+            }
+            if (current <= min + analysisPad || current >= max - analysisPad) {
+              setAnalysisWindow(current);
+            }
+          };
+
+          setAnalysisWindow(v);
           sl.step = '0.05';
           sl.value = String(v);
           sl.style.accentColor = accentColor;
           sl.style.display = 'block';
-          sl.style.flex = '0 0 140px';
-          sl.style.width = '140px';
-          sl.style.minWidth = '140px';
-          sl.style.maxWidth = '140px';
+          sl.style.flex = '0 0 220px';
+          sl.style.width = '220px';
+          sl.style.minWidth = '220px';
+          sl.style.maxWidth = '220px';
           sl.style.margin = '0';
+          sl.style.touchAction = 'pan-x';
           stopPanelEventPropagation(sl);
-          sl.addEventListener('input', function() {
+
+          let pendingValue = Number(v);
+          let pendingRaf = 0;
+
+          const flushSliderUpdate = function(lightweight) {
             const nextValues = Object.assign({}, values, {});
-            nextValues[k] = Number(sl.value);
+            nextValues[k] = Number(pendingValue);
             currentValues = Object.assign({}, nextValues);
-            renderTerm(candidate, nextValues, false);
-            onSelectionChange(candidateIndex, nextValues);
+            renderTerm(candidate, nextValues, !!lightweight);
+            onSelectionChange(candidateIndex, nextValues, !!lightweight);
             values[k] = nextValues[k];
+          };
+
+          sl.addEventListener('input', function() {
+            pendingValue = Number(sl.value);
+            maybeShiftAnalysisWindow(pendingValue);
+            if (pendingRaf) return;
+            pendingRaf = requestAnimationFrame(function() {
+              pendingRaf = 0;
+              flushSliderUpdate(true);
+            });
           });
+
+          sl.addEventListener('change', function() {
+            pendingValue = Number(sl.value);
+            if (pendingRaf) {
+              try { cancelAnimationFrame(pendingRaf); } catch (e) {}
+              pendingRaf = 0;
+            }
+            flushSliderUpdate(false);
+          });
+
           row.appendChild(lbl);
           row.appendChild(sl);
           controlsHost.appendChild(row);
@@ -7056,6 +7344,10 @@ if (window.__liaRunCoordHooks) {
         sliders.forEach(function(sl) {
           const key = sl.getAttribute('data-param-key') || '';
           if (!Object.prototype.hasOwnProperty.call(nextValues, key)) return;
+          if (lightweight) {
+            const isActive = (document.activeElement === sl) || !!(sl.matches && sl.matches(':active'));
+            if (isActive) return;
+          }
           sl.value = String(nextValues[key]);
         });
       };
@@ -7111,7 +7403,9 @@ if (window.__liaRunCoordHooks) {
       }, true);
 
       // ---- Skalierungs-Logik ----
-      var panelScale = 1;
+      var panelScale = 0.6;
+      panel.style.transformOrigin = 'top left';
+      panel.style.transform = 'scale(' + panelScale + ')';
       (function bindResizeDrag() {
         let drag = null;
         const block = function(evt) { try { evt.stopPropagation(); } catch (e) {} };
@@ -7150,6 +7444,12 @@ if (window.__liaRunCoordHooks) {
 
     function renderAnalysisResult(result, curveColor, options) {
       if (!result) return;
+
+      // Leave interactive draw/analyze tools while parameter panel is in use.
+      state.tool = '';
+      state.drawing = false;
+      state.pointerId = null;
+      try { updateUi(boardId); } catch (e) {}
 
       const opts = options || {};
       const restoredResult = restorePersistedAnalysisResult(result);
@@ -7323,11 +7623,11 @@ if (window.__liaRunCoordHooks) {
       } catch (e) {}
 
       try {
-        pPanel = buildAnalysisOverlay(result, function(candidateIndex, params) {
+        pPanel = buildAnalysisOverlay(result, function(candidateIndex, params, lightweight) {
           activeIndex = candidateIndex;
           activeCandidate = (result.candidates || [])[activeIndex] || result.best;
           activeParams = Object.assign({}, params || {});
-          syncActiveFromParams(false);
+          syncActiveFromParams(!!lightweight);
         }, drawColor);
         pPanel.classList.add('lia-plot-analysis-param-panel');
         pPanel.__liaGraphRef = createdGraph;
@@ -8378,6 +8678,12 @@ if (window.__liaRunCoordHooks) {
         if (action === 'compute') {
           if (typeof state.__runRegressionFromSelectedPoints === 'function') {
             state.__runRegressionFromSelectedPoints();
+            state.tool = '';
+            state.drawing = false;
+            state.pointerId = null;
+            setRegressionMenuOpen(false);
+            updateUi(boardId);
+            scheduleRedraw(boardId);
           } else {
             setAnalyzePanel(board, state, 'Regression noch nicht initialisiert.');
           }
@@ -8433,6 +8739,897 @@ if (window.__liaRunCoordHooks) {
     scheduleRedraw(boardId);
     return true;
   }
+
+  function splitSpecTopLevel(str) {
+    const out = [];
+    let cur = '';
+    let quote = '';
+    let esc = false;
+    let depth = 0;
+
+    for (let i = 0; i < str.length; i++) {
+      const ch = str[i];
+
+      if (esc) {
+        cur += ch;
+        esc = false;
+        continue;
+      }
+
+      if (ch === '\\') {
+        cur += ch;
+        esc = true;
+        continue;
+      }
+
+      if (quote) {
+        cur += ch;
+        if (ch === quote) quote = '';
+        continue;
+      }
+
+      if (ch === '"' || ch === "'" || ch === '`') {
+        cur += ch;
+        quote = ch;
+        continue;
+      }
+
+      if (ch === '(' || ch === '[' || ch === '{') {
+        depth += 1;
+        cur += ch;
+        continue;
+      }
+
+      if (ch === ')' || ch === ']' || ch === '}') {
+        depth = Math.max(0, depth - 1);
+        cur += ch;
+        continue;
+      }
+
+      if (ch === ';' && depth === 0) {
+        out.push(cur.trim());
+        cur = '';
+        continue;
+      }
+
+      cur += ch;
+    }
+
+    if (cur.trim()) out.push(cur.trim());
+    return out;
+  }
+
+  function parseRekonstruktionSpec(spec) {
+    const raw = String(spec || '').trim();
+    const parts = splitSpecTopLevel(raw);
+
+    const boardId = String(parts[0] || '').trim();
+    let term = '';
+    let epsRaw = '';
+
+    if (parts.length >= 3) {
+      term = parts.slice(1, parts.length - 1).join(';').trim();
+      epsRaw = String(parts[parts.length - 1] || '').trim();
+    } else {
+      term = String(parts[1] || '').trim();
+      epsRaw = String(parts[2] || '').trim();
+    }
+
+    const epsNum = parseFloat(epsRaw.replace(',', '.'));
+    const eps = Number.isFinite(epsNum) ? Math.abs(epsNum) : 0.1;
+
+    return {
+      boardId: boardId,
+      term: term,
+      eps: eps
+    };
+  }
+
+  function normalizeRekExpr(expr) {
+    let s = String(expr || '').trim();
+
+    s = s.replace(/^[A-Za-z][A-Za-z0-9_]*\s*\(\s*x\s*\)\s*=\s*/i, '');
+    s = s.replace(/^[A-Za-z][A-Za-z0-9_]*\s*=\s*/i, '');
+
+    s = s
+      .replace(/[−–—]/g, '-')
+      .replace(/\^/g, '**')
+      .replace(/(\d),(\d)/g, '$1.$2');
+
+    s = s.replace(/(\d)\s*x\b/g, '$1*x');
+    s = s.replace(/(\d)\s*\(/g, '$1*(');
+    s = s.replace(/\bx\s*\(/g, 'x*(');
+    s = s.replace(/\)\s*(\d)/g, ')*$1');
+
+    return s.trim();
+  }
+
+  function compileRekExpr(expr) {
+    const src = normalizeRekExpr(expr);
+    if (!src) return null;
+
+    try {
+      return new Function(
+        'x',
+        `
+        const pi = Math.PI;
+        const e = Math.E;
+
+        const sin = Math.sin;
+        const cos = Math.cos;
+        const tan = Math.tan;
+        const asin = Math.asin;
+        const acos = Math.acos;
+        const atan = Math.atan;
+
+        const sinh = Math.sinh;
+        const cosh = Math.cosh;
+        const tanh = Math.tanh;
+
+        const exp = Math.exp;
+        const log = Math.log;
+        const ln = Math.log;
+        const sqrt = Math.sqrt;
+        const abs = Math.abs;
+        const floor = Math.floor;
+        const ceil = Math.ceil;
+        const round = Math.round;
+        const min = Math.min;
+        const max = Math.max;
+        const pow = Math.pow;
+
+        return (${src});
+        `
+      );
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function getSafeRekBBox(board) {
+    try {
+      const bb = board.getBoundingBox();
+      if (
+        Array.isArray(bb) &&
+        bb.length === 4 &&
+        bb.every(function(v) { return Number.isFinite(v); })
+      ) {
+        const xmin = Math.min(bb[0], bb[2]);
+        const xmax = Math.max(bb[0], bb[2]);
+        if (xmax > xmin) return [xmin, xmax];
+      }
+    } catch (e) {}
+    return [-5, 5];
+  }
+
+  function analyzeTermAsModel(boardId, board, term) {
+    const fn = compileRekExpr(term);
+    if (!fn) return null;
+
+    const xRange = getSafeRekBBox(board);
+    const xmin = xRange[0];
+    const xmax = xRange[1];
+    const count = 140;
+    const pts = [];
+
+    for (let i = 0; i <= count; i++) {
+      const x = xmin + (xmax - xmin) * (i / count);
+      let y = NaN;
+      try { y = fn(x); } catch (e) {}
+      if (Number.isFinite(y) && Math.abs(y) < 1e7) {
+        pts.push({ x: x, y: y });
+      }
+    }
+
+    if (pts.length < 2) return null;
+    return analyzeStroke(boardId, { points: pts }, { pointMode: true });
+  }
+
+  function extractActiveModelFromResultData(resultData, activeIndex, activeParams) {
+    if (!resultData || !Array.isArray(resultData.candidates) || !resultData.candidates.length) return null;
+
+    const idx = Math.max(0, Math.min(resultData.candidates.length - 1, Number(activeIndex) || 0));
+    const candidate = resultData.candidates[idx] || resultData.candidates[0];
+    if (!candidate) return null;
+
+    const params = Object.assign({}, candidate.params || {});
+    if (activeParams && typeof activeParams === 'object') {
+      Object.keys(activeParams).forEach(function(key) {
+        const value = Number(activeParams[key]);
+        if (Number.isFinite(value)) params[key] = value;
+      });
+    }
+
+    return {
+      name: String(candidate.name || ''),
+      params: params
+    };
+  }
+
+  function extractLearnerModel(boardId, board, state) {
+    const modelStates = (state && Array.isArray(state.analyzedModelStates))
+      ? state.analyzedModelStates
+      : [];
+
+    if (modelStates.length) {
+      const latest = modelStates[modelStates.length - 1];
+      const fromSaved = extractActiveModelFromResultData(
+        latest && latest.resultData,
+        latest && latest.activeIndex,
+        latest && latest.activeParams
+      );
+      if (fromSaved) return fromSaved;
+    }
+
+    if (state && Array.isArray(state.regressionPoints) && state.regressionPoints.length >= 2) {
+      const result = analyzeStroke(boardId, { points: state.regressionPoints.slice() }, { pointMode: true });
+      if (result && result.best) {
+        return {
+          name: String(result.best.name || ''),
+          params: Object.assign({}, result.best.params || {})
+        };
+      }
+    }
+
+    if (state && Array.isArray(state.strokes) && state.strokes.length) {
+      const lastStroke = state.strokes[state.strokes.length - 1];
+      const result = analyzeStroke(boardId, lastStroke, { pointMode: false });
+      if (result && result.best) {
+        return {
+          name: String(result.best.name || ''),
+          params: Object.assign({}, result.best.params || {})
+        };
+      }
+    }
+
+    return null;
+  }
+
+  function getScharEntriesForBoard(boardId, board) {
+    const id = String(boardId || '').trim();
+    if (!id) return [];
+
+    const entries = Object.keys(window.__scharEntries || {}).map(function(key) {
+      return window.__scharEntries[key];
+    }).filter(function(entry) {
+      if (!entry) return false;
+      if (String(entry.boardId || '').trim() !== id) return false;
+      if (board && entry.board && entry.board !== board) return false;
+      return typeof entry.fn === 'function';
+    });
+
+    return entries;
+  }
+
+  function isBoardVisibleForQuiz(board) {
+    if (!board || !board.containerObj) return false;
+    try {
+      const rect = board.containerObj.getBoundingClientRect();
+      if (!rect) return false;
+      if (!(rect.width > 10 && rect.height > 10)) return false;
+      if (rect.bottom <= 0 || rect.right <= 0) return false;
+      const vw = window.innerWidth || document.documentElement.clientWidth || 0;
+      const vh = window.innerHeight || document.documentElement.clientHeight || 0;
+      if (rect.left >= vw || rect.top >= vh) return false;
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function getPreferredScharEntriesForQuiz(boardId, board) {
+    const all = getScharEntriesForBoard(boardId, null);
+    if (!all.length) return all;
+
+    const visible = all.filter(function(entry) {
+      return entry && isBoardVisibleForQuiz(entry.board);
+    });
+
+    const base = visible.length ? visible : all;
+    if (!board) return base;
+
+    const sameBoard = base.filter(function(entry) {
+      return entry && entry.board === board;
+    });
+
+    return sameBoard.length ? sameBoard : base;
+  }
+
+  function getVisibleScharEntriesFromDom(boardId) {
+    const id = String(boardId || '').trim();
+    if (!id) return [];
+
+    const inViewport = function(node) {
+      if (!node || !node.getBoundingClientRect) return false;
+      try {
+        const r = node.getBoundingClientRect();
+        if (!(r.width > 0 && r.height > 0)) return false;
+        const vw = window.innerWidth || document.documentElement.clientWidth || 0;
+        const vh = window.innerHeight || document.documentElement.clientHeight || 0;
+        if (r.right <= 0 || r.bottom <= 0 || r.left >= vw || r.top >= vh) return false;
+        return true;
+      } catch (e) {
+        return false;
+      }
+    };
+
+    const nodes = Array.from(document.querySelectorAll('[id^="schar-spec-"][data-spec]'));
+    const selected = [];
+
+    nodes.forEach(function(node) {
+      const spec = String(node.dataset.spec || '').trim();
+      if (!spec) return;
+      const parts = splitSpecTopLevel(spec);
+      const boardFromSpec = String(parts[3] || '').trim();
+      if (boardFromSpec !== id) return;
+
+      const uid = String(node.id || '').replace(/^schar-spec-/, '');
+      if (!uid) return;
+      const key = 'schar-' + uid;
+      const entry = window.__scharEntries && window.__scharEntries[key];
+      if (!entry || typeof entry.fn !== 'function') return;
+      if (!inViewport(entry.board && entry.board.containerObj ? entry.board.containerObj : null)) return;
+      selected.push(entry);
+    });
+
+    return selected;
+  }
+
+  function getMostRecentScharEntriesForQuiz(boardId, board) {
+    const preferred = getPreferredScharEntriesForQuiz(boardId, board);
+    if (!preferred.length) return preferred;
+    return preferred.slice().sort(function(a, b) {
+      const ta = Number(a && a.__lastChangedAt || 0);
+      const tb = Number(b && b.__lastChangedAt || 0);
+      if (tb !== ta) return tb - ta;
+      return String(a && a.uid || '').localeCompare(String(b && b.uid || ''));
+    });
+  }
+
+  function getMostRecentChangedScharEntry(boardId) {
+    const id = String(boardId || '').trim();
+    if (!id) return null;
+    let best = null;
+    let bestTs = -1;
+    Object.keys(window.__scharEntries || {}).forEach(function(key) {
+      const entry = window.__scharEntries[key];
+      if (!entry) return;
+      if (String(entry.boardId || '').trim() !== id) return;
+      const ts = Number(entry.__lastChangedAt || 0);
+      if (!Number.isFinite(ts)) return;
+      if (ts > bestTs) {
+        bestTs = ts;
+        best = entry;
+      }
+    });
+    return best;
+  }
+
+  function markScharEntryActive(entry, asChanged) {
+    if (!entry) return;
+    const boardId = String(entry.boardId || '').trim();
+    if (!boardId) return;
+    window.__liaActiveScharByBoard = window.__liaActiveScharByBoard || {};
+    window.__liaActiveScharByBoard[boardId] = String(entry.uid || '');
+    entry.__lastSelectedAt = Date.now();
+    if (asChanged) entry.__lastChangedAt = entry.__lastSelectedAt;
+  }
+
+  function getActiveScharEntryForBoard(boardId) {
+    const id = String(boardId || '').trim();
+    if (!id) return null;
+
+    const byBoard = window.__liaActiveScharByBoard || {};
+    const activeUid = String(byBoard[id] || '').trim();
+    if (activeUid) {
+      const activeKey = 'schar-' + activeUid;
+      const activeEntry = window.__scharEntries && window.__scharEntries[activeKey];
+      if (activeEntry && String(activeEntry.boardId || '').trim() === id && typeof activeEntry.fn === 'function') {
+        return activeEntry;
+      }
+    }
+
+    let best = null;
+    let bestTs = -1;
+    Object.keys(window.__scharEntries || {}).forEach(function(key) {
+      const entry = window.__scharEntries[key];
+      if (!entry) return;
+      if (String(entry.boardId || '').trim() !== id) return;
+      if (typeof entry.fn !== 'function') return;
+      const ts = Number(entry.__lastSelectedAt || 0);
+      if (!Number.isFinite(ts)) return;
+      if (ts > bestTs) {
+        bestTs = ts;
+        best = entry;
+      }
+    });
+
+    return best;
+  }
+
+  function getAllVisibleScharEntries() {
+    const out = [];
+    Object.keys(window.__scharEntries || {}).forEach(function(key) {
+      const entry = window.__scharEntries[key];
+      if (!entry || typeof entry.fn !== 'function') return;
+      if (!isBoardVisibleForQuiz(entry.board)) return;
+      out.push(entry);
+    });
+    return out;
+  }
+
+  function extractLearnerModelFromSchar(boardId, board) {
+    const entries = getScharEntriesForBoard(boardId, board);
+    if (!entries.length) return null;
+
+    // Use the latest Schar entry on this board, which matches current task intent.
+    const entry = entries[entries.length - 1];
+    const xRange = getSafeRekBBox(board);
+    const xmin = xRange[0];
+    const xmax = xRange[1];
+    const count = 140;
+    const pts = [];
+
+    for (let i = 0; i <= count; i++) {
+      const x = xmin + (xmax - xmin) * (i / count);
+      let y = NaN;
+      try { y = evaluateAt(entry, x); } catch (e) {}
+      if (Number.isFinite(y) && Math.abs(y) < 1e7) {
+        pts.push({ x: x, y: y });
+      }
+    }
+
+    if (pts.length < 2) return null;
+    const result = analyzeStroke(boardId, { points: pts }, { pointMode: true });
+    if (!result || !result.best) return null;
+
+    return {
+      name: String(result.best.name || ''),
+      params: Object.assign({}, result.best.params || {})
+    };
+  }
+
+  function extractLearnerModelFromScharEntry(boardId, entry) {
+    if (!entry || typeof entry.fn !== 'function') return null;
+    const board = entry.board;
+    if (!board) return null;
+
+    const xRange = getSafeRekBBox(board);
+    const xmin = xRange[0];
+    const xmax = xRange[1];
+    const count = 140;
+    const pts = [];
+
+    for (let i = 0; i <= count; i++) {
+      const x = xmin + (xmax - xmin) * (i / count);
+      let y = NaN;
+      try { y = evaluateAt(entry, x); } catch (e) {}
+      if (Number.isFinite(y) && Math.abs(y) < 1e7) {
+        pts.push({ x: x, y: y });
+      }
+    }
+
+    if (pts.length < 2) return null;
+    const result = analyzeStroke(boardId, { points: pts }, { pointMode: true });
+    if (!result || !result.best) return null;
+
+    return {
+      name: String(result.best.name || ''),
+      params: Object.assign({}, result.best.params || {})
+    };
+  }
+
+  function extractLearnerModelsFromSchar(boardId, board) {
+    const entries = getScharEntriesForBoard(boardId, board);
+    if (!entries.length) return [];
+    const models = [];
+
+    entries.forEach(function(entry) {
+      const model = extractLearnerModelFromScharEntry(boardId, entry);
+      if (model) models.push(model);
+    });
+
+    return models;
+  }
+
+  function boardHasScharSpecNode(boardId) {
+    const id = String(boardId || '').trim();
+    if (!id) return false;
+
+    const nodes = document.querySelectorAll('[id^="schar-spec-"][data-spec]');
+    for (let i = 0; i < nodes.length; i++) {
+      const spec = String(nodes[i].dataset.spec || '').trim();
+      if (!spec) continue;
+      const parts = splitSpecTopLevel(spec);
+      const boardFromSpec = String(parts[3] || '').trim();
+      if (boardFromSpec === id) return true;
+    }
+
+    return false;
+  }
+
+  function getComparableParamValue(modelName, params, key) {
+    const value = Number(params && params[key]);
+    if (Number.isFinite(value)) return value;
+
+    if (key === 'b' && (modelName === 'wurzel' || modelName === 'hyperbel' || modelName === 'logarithmus')) {
+      return 1;
+    }
+
+    return NaN;
+  }
+
+  function compareModelParams(learnerModel, targetModel, eps) {
+    if (!learnerModel || !targetModel) return false;
+    if (String(learnerModel.name || '') !== String(targetModel.name || '')) return false;
+
+    const keys = Object.keys(targetModel.params || {});
+    if (!keys.length) return false;
+
+    for (let i = 0; i < keys.length; i++) {
+      const key = keys[i];
+      const targetValue = getComparableParamValue(targetModel.name, targetModel.params, key);
+      const learnerValue = getComparableParamValue(learnerModel.name, learnerModel.params, key);
+      if (!Number.isFinite(targetValue) || !Number.isFinite(learnerValue)) return false;
+      if (Math.abs(learnerValue - targetValue) > eps) return false;
+    }
+
+    return true;
+  }
+
+  function scharMatchesTargetNumerically(entry, targetFn, eps) {
+    if (!entry || typeof entry.fn !== 'function' || typeof targetFn !== 'function') return false;
+
+    const targetLinear = extractLinearParamsFromFn(targetFn);
+    const learnerLinear = extractLinearParamsFromSchar(entry);
+    if (targetLinear && learnerLinear) {
+      const tolLinear = Math.max(0.03, Number(eps) || 0.1);
+      return Math.abs(learnerLinear.m - targetLinear.m) <= tolLinear && Math.abs(learnerLinear.n - targetLinear.n) <= tolLinear;
+    }
+
+    const board = entry.board;
+    if (!board) return false;
+
+    const range = getSafeRekBBox(board);
+    const xmin = range[0];
+    const xmax = range[1];
+    if (!Number.isFinite(xmin) || !Number.isFinite(xmax) || xmax <= xmin) return false;
+
+    const samples = 80;
+    const tol = Math.max(0.03, Number(eps) || 0.1);
+    let valid = 0;
+
+    for (let i = 0; i <= samples; i++) {
+      const x = xmin + (xmax - xmin) * (i / samples);
+      let ys = NaN;
+      let yt = NaN;
+      try { ys = evaluateAt(entry, x); } catch (e) {}
+      try { yt = targetFn(x); } catch (e) {}
+      if (!Number.isFinite(ys) || !Number.isFinite(yt)) continue;
+      valid += 1;
+      if (Math.abs(ys - yt) > tol) return false;
+    }
+
+    return valid >= 20;
+  }
+
+  function extractLinearParamsFromFn(fn) {
+    if (typeof fn !== 'function') return null;
+    let y0 = NaN, y1 = NaN, y2 = NaN;
+    try { y0 = fn(0); } catch (e) {}
+    try { y1 = fn(1); } catch (e) {}
+    try { y2 = fn(2); } catch (e) {}
+    if (!Number.isFinite(y0) || !Number.isFinite(y1) || !Number.isFinite(y2)) return null;
+    const m = y1 - y0;
+    const n = y0;
+    const y2Pred = 2 * m + n;
+    if (!Number.isFinite(y2Pred)) return null;
+    if (Math.abs(y2 - y2Pred) > 0.02) return null;
+    return { m: m, n: n };
+  }
+
+  function extractLinearParamsFromSchar(entry) {
+    if (!entry || typeof entry.fn !== 'function') return null;
+    let y0 = NaN, y1 = NaN, y2 = NaN;
+    try { y0 = evaluateAt(entry, 0); } catch (e) {}
+    try { y1 = evaluateAt(entry, 1); } catch (e) {}
+    try { y2 = evaluateAt(entry, 2); } catch (e) {}
+    if (!Number.isFinite(y0) || !Number.isFinite(y1) || !Number.isFinite(y2)) return null;
+    const m = y1 - y0;
+    const n = y0;
+    const y2Pred = 2 * m + n;
+    if (!Number.isFinite(y2Pred)) return null;
+    if (Math.abs(y2 - y2Pred) > 0.05) return null;
+    return { m: m, n: n };
+  }
+
+  function scharMatchesTargetLinearParams(entry, targetFn, eps) {
+    const target = extractLinearParamsFromFn(targetFn);
+    const learner = extractLinearParamsFromSchar(entry);
+    if (!target || !learner) return false;
+    const tol = Math.max(0.03, Number(eps) || 0.1);
+    return Math.abs(learner.m - target.m) <= tol && Math.abs(learner.n - target.n) <= tol;
+  }
+
+  function getScharTermRhsFromEntry(entry) {
+    if (!entry) return '';
+
+    let rhs = '';
+    if (typeof entry._currentTermRhs === 'string' && entry._currentTermRhs.trim()) {
+      rhs = entry._currentTermRhs.trim();
+    } else if (typeof substitutedWithNShift === 'function') {
+      try { rhs = String(substitutedWithNShift(entry) || '').trim(); } catch (e) {}
+    }
+
+    if (!rhs && entry.termEl) {
+      const text = String((entry.termEl.textContent || entry.termEl.innerText || '')).trim();
+      const eqPos = text.indexOf('=');
+      rhs = eqPos >= 0 ? text.slice(eqPos + 1).trim() : text;
+    }
+
+    return String(rhs || '').trim();
+  }
+
+  function sanitizeDisplayedRhsForCompile(rhs) {
+    let s = String(rhs || '').trim();
+    if (!s) return '';
+    s = s.replace(/\u00a0/g, ' ');
+    s = s.replace(/\u2212/g, '-');
+    s = s.replace(/\u00b7/g, '*');
+    s = s.replace(/\\cdot/g, '*');
+    s = s.replace(/\s+/g, '');
+    s = s.replace(/,(?=\d)/g, '.');
+    return s;
+  }
+
+  function scharEntryRhsMatchesTarget(entry, targetFn, eps) {
+    if (!entry || typeof targetFn !== 'function') return false;
+    const rhsRaw = getScharTermRhsFromEntry(entry);
+    const rhs = sanitizeDisplayedRhsForCompile(rhsRaw);
+    if (!rhs) return false;
+    const rhsFn = compileRekExpr(rhs);
+    if (typeof rhsFn !== 'function') return false;
+
+    const targetLinear = extractLinearParamsFromFn(targetFn);
+    const rhsLinear = extractLinearParamsFromFn(rhsFn);
+    if (targetLinear && rhsLinear) {
+      const tolLinear = Math.max(0.03, Number(eps) || 0.1);
+      return Math.abs(rhsLinear.m - targetLinear.m) <= tolLinear && Math.abs(rhsLinear.n - targetLinear.n) <= tolLinear;
+    }
+
+    const board = entry.board;
+    if (!board) return false;
+    const range = getSafeRekBBox(board);
+    const xmin = range[0];
+    const xmax = range[1];
+    if (!Number.isFinite(xmin) || !Number.isFinite(xmax) || xmax <= xmin) return false;
+
+    const samples = 60;
+    const tol = Math.max(0.03, Number(eps) || 0.1);
+    let valid = 0;
+    for (let i = 0; i <= samples; i++) {
+      const x = xmin + (xmax - xmin) * (i / samples);
+      let yr = NaN;
+      let yt = NaN;
+      try { yr = rhsFn(x); } catch (e) {}
+      try { yt = targetFn(x); } catch (e) {}
+      if (!Number.isFinite(yr) || !Number.isFinite(yt)) continue;
+      valid += 1;
+      if (Math.abs(yr - yt) > tol) return false;
+    }
+
+    return valid >= 12;
+  }
+
+  function removeRekonstruktionPlot(boardId) {
+    window.__rekonstruktionPlots = window.__rekonstruktionPlots || {};
+    const key = String(boardId || '').trim();
+    if (!key) return;
+
+    const old = window.__rekonstruktionPlots[key];
+    if (!old) return;
+
+    try {
+      if (old.graph && old.graph.board) {
+        old.graph.board.removeObject(old.graph);
+      }
+    } catch (e) {}
+
+    delete window.__rekonstruktionPlots[key];
+  }
+
+  window.__revealRekonstruktionFromSpec = function(spec) {
+    const cfg = parseRekonstruktionSpec(spec);
+    if (!cfg.boardId || !cfg.term) return false;
+
+    let board = window.__boards && window.__boards[cfg.boardId];
+    const domPreferredEntries = getVisibleScharEntriesFromDom(cfg.boardId);
+    const scharEntries = domPreferredEntries.length
+      ? domPreferredEntries
+      : getPreferredScharEntriesForQuiz(cfg.boardId, board);
+    if (scharEntries.length) {
+      const preferred = scharEntries[scharEntries.length - 1];
+      if (preferred && preferred.board) board = preferred.board;
+    }
+    if (!board) return false;
+
+    const fn = compileRekExpr(cfg.term);
+    if (!fn) return false;
+
+    removeRekonstruktionPlot(cfg.boardId);
+
+    let graph = null;
+    try {
+      graph = board.create('functiongraph', [fn], {
+        strokeColor: '#00a86b',
+        highlightStrokeColor: '#00a86b',
+        strokeWidth: 3,
+        dash: 1,
+        fixed: true,
+        highlight: false,
+        withLabel: false
+      });
+      try { graph.setAttribute({ fixed: true, highlight: false }); } catch (e) {}
+    } catch (e) {
+      return false;
+    }
+
+    window.__rekonstruktionPlots = window.__rekonstruktionPlots || {};
+    window.__rekonstruktionPlots[String(cfg.boardId)] = {
+      boardId: String(cfg.boardId),
+      term: String(cfg.term),
+      graph: graph
+    };
+
+    try { board.update(); } catch (e) {}
+    return true;
+  };
+
+  window.__checkRekonstruktionFromSpec = function(spec) {
+    const cfg = parseRekonstruktionSpec(spec);
+    if (!cfg.boardId || !cfg.term) return false;
+
+    const board = window.__boards && window.__boards[cfg.boardId];
+    if (!board && !getScharEntriesForBoard(cfg.boardId, null).length) return false;
+
+    const targetFn = compileRekExpr(cfg.term);
+
+    const activeEntry = getActiveScharEntryForBoard(cfg.boardId);
+    if (activeEntry && targetFn && scharEntryRhsMatchesTarget(activeEntry, targetFn, cfg.eps)) {
+      if (typeof window.__revealRekonstruktionFromSpec === 'function') {
+        window.__revealRekonstruktionFromSpec(spec);
+      }
+      return true;
+    }
+
+    const mostRecentEntry = getMostRecentChangedScharEntry(cfg.boardId);
+    if (mostRecentEntry && targetFn && scharEntryRhsMatchesTarget(mostRecentEntry, targetFn, cfg.eps)) {
+      if (typeof window.__revealRekonstruktionFromSpec === 'function') {
+        window.__revealRekonstruktionFromSpec(spec);
+      }
+      return true;
+    }
+    if (mostRecentEntry && targetFn && scharMatchesTargetLinearParams(mostRecentEntry, targetFn, cfg.eps)) {
+      if (typeof window.__revealRekonstruktionFromSpec === 'function') {
+        window.__revealRekonstruktionFromSpec(spec);
+      }
+      return true;
+    }
+    if (mostRecentEntry && targetFn && scharMatchesTargetNumerically(mostRecentEntry, targetFn, cfg.eps)) {
+      if (typeof window.__revealRekonstruktionFromSpec === 'function') {
+        window.__revealRekonstruktionFromSpec(spec);
+      }
+      return true;
+    }
+
+    if (targetFn) {
+      const visibleScharEntries = getAllVisibleScharEntries();
+      for (let i = 0; i < visibleScharEntries.length; i++) {
+        const entry = visibleScharEntries[i];
+        if (scharMatchesTargetLinearParams(entry, targetFn, cfg.eps)) {
+          if (typeof window.__revealRekonstruktionFromSpec === 'function') {
+            window.__revealRekonstruktionFromSpec(spec);
+          }
+          return true;
+        }
+        if (scharMatchesTargetNumerically(entry, targetFn, cfg.eps)) {
+          if (typeof window.__revealRekonstruktionFromSpec === 'function') {
+            window.__revealRekonstruktionFromSpec(spec);
+          }
+          return true;
+        }
+      }
+    }
+
+    const domPreferredEntries = getVisibleScharEntriesFromDom(cfg.boardId);
+    const scharEntries = domPreferredEntries.length
+      ? domPreferredEntries
+      : getMostRecentScharEntriesForQuiz(cfg.boardId, board);
+    if (scharEntries.length) {
+      for (let i = 0; i < scharEntries.length; i++) {
+        const entry = scharEntries[i];
+        if (targetFn && scharMatchesTargetNumerically(entry, targetFn, cfg.eps)) {
+          if (typeof window.__revealRekonstruktionFromSpec === 'function') {
+            window.__revealRekonstruktionFromSpec(spec);
+          }
+          return true;
+        }
+
+        const learnerModel = extractLearnerModelFromScharEntry(cfg.boardId, entry);
+        if (!learnerModel) continue;
+
+        const targetResultFromEntryBoard = analyzeTermAsModel(cfg.boardId, entry.board || board, cfg.term);
+        if (!targetResultFromEntryBoard || !targetResultFromEntryBoard.best) continue;
+
+        const targetModelFromEntryBoard = {
+          name: String(targetResultFromEntryBoard.best.name || ''),
+          params: Object.assign({}, targetResultFromEntryBoard.best.params || {})
+        };
+
+        if (compareModelParams(learnerModel, targetModelFromEntryBoard, cfg.eps)) {
+          if (typeof window.__revealRekonstruktionFromSpec === 'function') {
+            window.__revealRekonstruktionFromSpec(spec);
+          }
+          return true;
+        }
+      }
+    }
+
+    const targetResult = analyzeTermAsModel(cfg.boardId, board, cfg.term);
+    if (!targetResult || !targetResult.best) return false;
+
+    const targetModel = {
+      name: String(targetResult.best.name || ''),
+      params: Object.assign({}, targetResult.best.params || {})
+    };
+
+    const scharModels = extractLearnerModelsFromSchar(cfg.boardId, board);
+    for (let i = 0; i < scharModels.length; i++) {
+      if (compareModelParams(scharModels[i], targetModel, cfg.eps)) {
+        if (typeof window.__revealRekonstruktionFromSpec === 'function') {
+          window.__revealRekonstruktionFromSpec(spec);
+        }
+        return true;
+      }
+    }
+
+    const state = window.__liaCoordDrawStates && window.__liaCoordDrawStates[cfg.boardId];
+    let learnerModel = extractLearnerModelFromSchar(cfg.boardId, board);
+    if (!learnerModel && state) {
+      learnerModel = extractLearnerModel(cfg.boardId, board, state);
+    }
+    if (!learnerModel) return false;
+
+    const ok = compareModelParams(learnerModel, targetModel, cfg.eps);
+    if (ok && typeof window.__revealRekonstruktionFromSpec === 'function') {
+      window.__revealRekonstruktionFromSpec(spec);
+    }
+
+    return ok;
+  };
+
+  window.__enableRekonstruktionBoard = function(boardId) {
+    const id = String(boardId || '').trim();
+    if (!id) return false;
+
+    const hasSchar = getScharEntriesForBoard(id, null).length > 0 || boardHasScharSpecNode(id);
+    if (hasSchar) {
+      // Schar-based Rekonstruktion should not force draw/regression controls.
+      return true;
+    }
+
+    window.__liaCoordRegressionSpecs = window.__liaCoordRegressionSpecs || {};
+    window.__liaCoordRegressionSpecs[id] = { enabled: true };
+
+    if (typeof window.__bootstrapRegression === 'function') {
+      window.__bootstrapRegression();
+    }
+    if (typeof window.__bootstrapPlotZeichnen === 'function') {
+      window.__bootstrapPlotZeichnen();
+    }
+
+    return true;
+  };
 
   window.__bootstrapPlotZeichnen = function() {
     const nodes = document.querySelectorAll('[id^="plot-zeichnen-spec-"][data-color]');
