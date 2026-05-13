@@ -3401,12 +3401,92 @@ if (window.__liaRunCoordHooks) {
       return outSqrt;
     };
 
+    const splitTopLevelAdditive = function(input) {
+      const src = String(input || '');
+      const parts = [];
+      let cur = '';
+      let depth = 0;
+
+      const prevSignificantChar = function(text, index) {
+        for (let i = index - 1; i >= 0; i -= 1) {
+          const ch = text[i];
+          if (!/\s/.test(ch)) return ch;
+        }
+        return '';
+      };
+
+      for (let i = 0; i < src.length; i += 1) {
+        const ch = src[i];
+
+        if (ch === '(' || ch === '[' || ch === '{') {
+          depth += 1;
+          cur += ch;
+          continue;
+        }
+
+        if (ch === ')' || ch === ']' || ch === '}') {
+          depth = Math.max(0, depth - 1);
+          cur += ch;
+          continue;
+        }
+
+        if (depth === 0 && (ch === '+' || ch === '-')) {
+          const prev = prevSignificantChar(src, i);
+          if (prev && !/[+\-*/^(,=]/.test(prev)) {
+            if (cur) parts.push(cur);
+            cur = ch;
+            continue;
+          }
+        }
+
+        cur += ch;
+      }
+
+      if (cur) parts.push(cur);
+      return parts;
+    };
+
+    const convertTopLevelFractions = function(input) {
+      const src = String(input || '');
+      const additiveParts = splitTopLevelAdditive(src);
+      if (additiveParts.length > 1) {
+        return additiveParts.map(function(part) {
+          return convertTopLevelFractions(part);
+        }).join('');
+      }
+
+      let depth = 0;
+      for (let i = 0; i < src.length; i += 1) {
+        const ch = src[i];
+
+        if (ch === '(' || ch === '[' || ch === '{') {
+          depth += 1;
+          continue;
+        }
+
+        if (ch === ')' || ch === ']' || ch === '}') {
+          depth = Math.max(0, depth - 1);
+          continue;
+        }
+
+        if (ch === '/' && depth === 0) {
+          const left = src.slice(0, i).trim();
+          const right = src.slice(i + 1).trim();
+          if (!left || !right) break;
+          return '\\dfrac{' + convertTopLevelFractions(left) + '}{' + convertTopLevelFractions(right) + '}';
+        }
+      }
+
+      return src;
+    };
+
     let out = String(expr || '').trim();
     out = convertSqrtCalls(out);
     out = powerParensToBraces(out);
     out = out.replace(/\^\(([^()]+)\)/g, '^{$1}');
     out = out.replace(/\^\{\(([^{}]+)\)\}/g, '^{$1}');
     out = out.replace(/\^([A-Za-z0-9.]+)/g, '^{$1}');
+    out = convertTopLevelFractions(out);
     out = out.replace(/\*/g, ' \\cdot ');
     // Remove \cdot before ( only when preceded by a letter or closing brace (not digits)
     out = out.replace(/([A-Za-z}])\s*\\cdot\s*\(/g, '$1(');
@@ -4687,6 +4767,7 @@ if (window.__liaRunCoordHooks) {
 
   window.__liaCoordDrawSpecs = window.__liaCoordDrawSpecs || {};
   window.__liaCoordDrawStates = window.__liaCoordDrawStates || {};
+  window.__liaCoordRegressionSpecs = window.__liaCoordRegressionSpecs || {};
   const DRAW_COLORS = [
     '#ff0000', '#ff7500', '#ffff00', '#ff00ff', '#0055ff',
     '#00ffff', '#00ff00', '#007500', '#000000', '#ffffff'
@@ -4760,23 +4841,27 @@ if (window.__liaRunCoordHooks) {
       }
 
       .lia-plot-analyze-panel{
-        position:fixed;
-        right:16px;
-        bottom:70px;
-        z-index:99999;
-        min-width:280px;
-        max-width:min(480px, calc(100vw - 32px));
+        position:absolute;
+        top:8px;
+        right:8px;
+        z-index:70;
+        min-width:0;
+        width:auto;
+        max-width:calc(100% - 16px);
+        min-height:0 !important;
+        height:auto !important;
+        max-height:none !important;
         border:1px solid rgba(255,255,255,.22);
         border-radius:14px;
         background:#111c;
         color:#fff;
         backdrop-filter:blur(6px);
-        padding:10px 14px;
+        padding:2px 6px;
         box-sizing:border-box;
-        font-size:13px;
+        font-size:10px;
         font-family:monospace;
-        line-height:1.45;
-        white-space:pre-wrap;
+        line-height:1.1;
+        white-space:normal;
         word-break:break-word;
         box-shadow:0 8px 28px rgba(0,0,0,.5);
         display:none;
@@ -4784,7 +4869,7 @@ if (window.__liaRunCoordHooks) {
       }
 
       .lia-plot-analyze-panel[data-open="1"]{
-        display:block;
+        display:inline-block;
       }
 
       .lia-plot-color-menu{
@@ -4830,6 +4915,99 @@ if (window.__liaRunCoordHooks) {
       .lia-plot-color-item[data-active="1"]{
         outline:2px solid var(--canvas-border, #000);
         outline-offset:2px;
+      }
+
+      .lia-plot-reg-menu{
+        row-gap:2px;
+        padding:3px;
+        min-width:95px;
+      }
+
+      .lia-plot-reg-item{
+        width:100%;
+        padding:1px 4px;
+        border-radius:999px;
+        border:1px solid currentColor;
+        background:transparent;
+        color:inherit;
+        cursor:pointer;
+        box-sizing:border-box;
+        text-align:left;
+        font-size:0.64em;
+      }
+
+      .lia-plot-panel-close{
+        position:absolute;
+        top:6px;
+        right:6px;
+        z-index:5;
+        width:20px;
+        height:20px;
+        padding:0;
+        border-radius:999px;
+        border:2px solid currentColor;
+        background:transparent;
+        cursor:pointer;
+        user-select:none;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        line-height:0;
+        transition:background 0.12s;
+      }
+
+      .lia-plot-panel-close:hover{
+        background:currentColor;
+      }
+
+      .lia-plot-panel-close:hover svg path{
+        stroke:#fff;
+      }
+
+      .lia-plot-panel-close svg{
+        width:10px;
+        height:10px;
+        display:block;
+      }
+
+      .lia-plot-panel-header{
+        width:100%;
+        height:8px;
+        border-radius:4px;
+        margin-bottom:8px;
+        cursor:move;
+        flex-shrink:0;
+        user-select:none;
+        touch-action:none;
+      }
+
+      .lia-plot-panel-resize{
+        position:absolute;
+        bottom:0;
+        right:0;
+        width:16px;
+        height:16px;
+        cursor:nwse-resize;
+        background:transparent;
+        border:0;
+        padding:0;
+        margin:0;
+        user-select:none;
+        touch-action:none;
+        display:flex;
+        align-items:flex-end;
+        justify-content:flex-end;
+        opacity:0.45;
+      }
+
+      .lia-plot-panel-resize svg{
+        width:10px;
+        height:10px;
+        display:block;
+      }
+
+      .lia-schar-panel{
+        overflow:visible !important;
       }
     `;
 
@@ -4977,15 +5155,26 @@ if (window.__liaRunCoordHooks) {
     return '#0b5fff';
   }
 
+  function normalizeDrawColor(rawColor, fallbackColor) {
+    const raw = String(rawColor || '').trim();
+    if (!raw) return fallbackColor;
+    if (/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(raw)) return raw;
+    if (/^rgba?\(/i.test(raw)) return raw;
+    if (/^hsla?\(/i.test(raw)) return raw;
+    if (/^[a-z]+$/i.test(raw)) return raw;
+    return fallbackColor;
+  }
+
   function getState(boardId) {
     const key = String(boardId || '');
     if (!key) return null;
 
     const specs = window.__liaCoordDrawSpecs || {};
     const spec = specs[key] || null;
+    const defaultDrawColor = normalizeDrawColor(spec && spec.color ? String(spec.color) : '', '#ff0000');
     const state = window.__liaCoordDrawStates[key] || (window.__liaCoordDrawStates[key] = {
       boardId: key,
-      color: spec && spec.color ? String(spec.color) : '#fff',
+      color: defaultDrawColor,
       strokes: [],
       tool: '',
       drawing: false,
@@ -4999,16 +5188,33 @@ if (window.__liaRunCoordHooks) {
       analyzedCurvePoints: null,
       analyzedGraph: null,
       analyzedGraphs: [],
+      analyzedModelStates: [],
+      analyzedModelSeq: 0,
       analyzedParamPanel: null,
       analyzedParamPanels: [],
+      regressionPoints: [],
+      regressionButton: null,
+      regressionMenu: null,
+      regressionMenuOpen: false,
       drawColorMenu: null,
       drawColorMenuOpen: false,
-      drawColor: (spec && spec.color ? String(spec.color) : '#fff'),
+      drawColor: defaultDrawColor,
       syncRaf: 0,
       hooksBound: false
     });
 
     return state;
+  }
+
+  function getToolBoardIds() {
+    const ids = new Set();
+    Object.keys(window.__liaCoordDrawSpecs || {}).forEach(function(boardId) {
+      ids.add(String(boardId));
+    });
+    Object.keys(window.__liaCoordRegressionSpecs || {}).forEach(function(boardId) {
+      ids.add(String(boardId));
+    });
+    return Array.from(ids);
   }
 
   function userToLocal(board, pt) {
@@ -5090,6 +5296,102 @@ if (window.__liaRunCoordHooks) {
     return -1;
   }
 
+  function getSelectableBoardPoints(board, boardId) {
+    if (!board) return [];
+
+    const out = [];
+    const seen = new Set();
+
+    function pushPoint(obj) {
+      if (!obj || typeof obj !== 'object') return;
+      const type = String(obj.elType || '').toLowerCase();
+      if (type !== 'point' && type !== 'glider') return;
+
+      try {
+        if (obj.visPropCalc && obj.visPropCalc.visible === false) return;
+        if (obj.visProp && obj.visProp.visible === false) return;
+      } catch (e) {}
+
+      let x = NaN;
+      let y = NaN;
+      try {
+        if (typeof obj.X === 'function' && typeof obj.Y === 'function') {
+          x = Number(obj.X());
+          y = Number(obj.Y());
+        }
+      } catch (e) {}
+
+      if (!Number.isFinite(x) || !Number.isFinite(y)) {
+        try {
+          const usr = obj.coords && obj.coords.usrCoords;
+          if (Array.isArray(usr) && usr.length >= 3) {
+            const w = Number(usr[0]);
+            if (Number.isFinite(w) && Math.abs(w) > 1e-12) {
+              x = Number(usr[1]) / w;
+              y = Number(usr[2]) / w;
+            }
+          }
+        } catch (e) {}
+      }
+
+      if (!Number.isFinite(x) || !Number.isFinite(y)) return;
+
+      const key = String(obj.id || obj.name || ('xy:' + x.toFixed(6) + ',' + y.toFixed(6)));
+      if (seen.has(key)) return;
+      seen.add(key);
+
+      out.push({ key: key, x: x, y: y });
+    }
+
+    const key = String(boardId || board.id || '');
+    const namedPoints = (window.__points && key && window.__points[key]) || null;
+
+    if (namedPoints && typeof namedPoints === 'object') {
+      Object.keys(namedPoints).forEach(function(name) {
+        pushPoint(namedPoints[name]);
+      });
+    }
+
+    if (!out.length) {
+      if (Array.isArray(board.objectsList)) {
+        board.objectsList.forEach(pushPoint);
+      }
+
+      if (board.objects && typeof board.objects === 'object') {
+        Object.keys(board.objects).forEach(function(k) {
+          pushPoint(board.objects[k]);
+        });
+      }
+    }
+
+    return out;
+  }
+
+  function findNearestSelectableBoardPoint(board, boardId, evt, maxDistancePx) {
+    if (!board || !evt) return null;
+    const candidates = getSelectableBoardPoints(board, boardId);
+    if (!candidates.length) return null;
+
+    const localPoint = eventToLocal(board, evt);
+    const maxDist = Number.isFinite(maxDistancePx) ? maxDistancePx : 14;
+
+    let best = null;
+    let bestDist = Infinity;
+    candidates.forEach(function(candidate) {
+      const localCandidate = userToLocal(board, candidate);
+      const dx = localCandidate.x - localPoint.x;
+      const dy = localCandidate.y - localPoint.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < bestDist) {
+        bestDist = dist;
+        best = candidate;
+      }
+    });
+
+    if (!best || bestDist > maxDist) return null;
+    return best;
+  }
+
   function syncCanvasSize(board, state) {
     if (!board || !state || !state.canvas) return;
 
@@ -5148,6 +5450,22 @@ if (window.__liaRunCoordHooks) {
 
       ctx.stroke();
     });
+
+    if (Array.isArray(state.regressionPoints) && state.regressionPoints.length) {
+      const pointColor = String(state.drawColor || state.color || '#ff0000');
+      const outline = resolveToolTone(board);
+      state.regressionPoints.forEach(function(point) {
+        if (!point || !Number.isFinite(point.x) || !Number.isFinite(point.y)) return;
+        const p = userToLocal(board, point);
+        ctx.beginPath();
+        ctx.fillStyle = pointColor;
+        ctx.strokeStyle = outline;
+        ctx.lineWidth = 1.5;
+        ctx.arc(p.x, p.y, 4.5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+      });
+    }
 
     const tone = resolveToolTone(board);
     if (state.analyzedStrokeIndex >= 0 && state.strokes[state.analyzedStrokeIndex]) {
@@ -5262,7 +5580,7 @@ if (window.__liaRunCoordHooks) {
     return gaussianSolve(mat, vec);
   }
 
-  function linear2FitFromFeature(points, featureFn) {
+  function linear2FitFromFeature(points, featureFn, minUsedOverride) {
     let s11 = 0, s12 = 0, s22 = 0, sy1 = 0, sy2 = 0;
     let used = 0;
     points.forEach(function(p) {
@@ -5275,7 +5593,8 @@ if (window.__liaRunCoordHooks) {
       sy2 += p.y;
       used += 1;
     });
-    if (used < 4) return null;
+    const minUsed = Number.isFinite(minUsedOverride) ? Math.max(2, Math.floor(minUsedOverride)) : 4;
+    if (used < minUsed) return null;
     const det = s11 * s22 - s12 * s12;
     if (Math.abs(det) < 1e-12) return null;
     const A = (sy1 * s22 - sy2 * s12) / det;
@@ -5311,6 +5630,50 @@ if (window.__liaRunCoordHooks) {
         out[out.length - 1].y = (out[out.length - 1].y + p.y) * 0.5;
       }
     }
+    return out;
+  }
+
+  function simplifyRegressionPoints(points) {
+    const pts = Array.isArray(points) ? points.slice() : [];
+    if (pts.length < 2) return [];
+    const sorted = pts
+      .filter(function(p) {
+        return p && Number.isFinite(p.x) && Number.isFinite(p.y);
+      })
+      .map(function(p) { return { x: p.x, y: p.y }; })
+      .sort(function(a, b) { return a.x - b.x; });
+    if (sorted.length < 2) return [];
+
+    const out = [];
+    const minStep = 0.02;
+    for (let i = 0; i < sorted.length; i++) {
+      const p = sorted[i];
+      if (!out.length || Math.abs(p.x - out[out.length - 1].x) >= minStep) {
+        out.push(p);
+      } else {
+        out[out.length - 1].y = (out[out.length - 1].y + p.y) * 0.5;
+      }
+    }
+    return out;
+  }
+
+  function collectStrokePointsByColor(state, color) {
+    if (!state || !Array.isArray(state.strokes)) return [];
+    const target = String(color || '').trim().toLowerCase();
+    if (!target) return [];
+
+    const out = [];
+    state.strokes.forEach(function(stroke) {
+      if (!stroke || !Array.isArray(stroke.points) || stroke.points.length === 0) return;
+      const strokeColor = String(stroke.color || '').trim().toLowerCase();
+      if (strokeColor !== target) return;
+      stroke.points.forEach(function(point) {
+        if (!point) return;
+        if (!Number.isFinite(point.x) || !Number.isFinite(point.y)) return;
+        out.push({ x: point.x, y: point.y });
+      });
+    });
+
     return out;
   }
 
@@ -5404,9 +5767,12 @@ if (window.__liaRunCoordHooks) {
     return best;
   }
 
-  function analyzeStroke(boardId, stroke) {
-    const pts = simplifyPoints(stroke);
-    if (pts.length < 8) return null;
+  function analyzeStroke(boardId, stroke, opts) {
+    const pointMode = !!(opts && opts.pointMode);
+    const pts = pointMode
+      ? simplifyRegressionPoints(stroke && stroke.points)
+      : simplifyPoints(stroke);
+    if (pts.length < (pointMode ? 2 : 8)) return null;
 
     const xs = pts.map(function(p) { return p.x; });
     const ys = pts.map(function(p) { return p.y; });
@@ -5456,7 +5822,7 @@ if (window.__liaRunCoordHooks) {
         const b = bMin + (bMax - bMin) * (bi / bSteps);
         for (let ci = 0; ci <= cSteps; ci++) {
           const c = cMin + (cMax - cMin) * (ci / cSteps);
-          const lin = linear2FitFromFeature(pts, function(x) { return featFn(x, b, c); });
+          const lin = linear2FitFromFeature(pts, function(x) { return featFn(x, b, c); }, pointMode ? 2 : 4);
           if (!lin) continue;
           const A = lin.A;
           const d = lin.d;
@@ -5528,7 +5894,7 @@ if (window.__liaRunCoordHooks) {
         const lin = linear2FitFromFeature(pts, function(x) {
           const t = x + c;
           return t > 0 ? Math.log(t) : NaN;
-        });
+        }, pointMode ? 2 : 4);
         if (!lin) continue;
 
         const A = lin.A;
@@ -5604,7 +5970,7 @@ if (window.__liaRunCoordHooks) {
         const lin = linear2FitFromFeature(pts, function(x) {
           const t = x + c;
           return t >= 0 ? Math.sqrt(t) : NaN;
-        });
+        }, pointMode ? 2 : 4);
         if (!lin) continue;
 
         const A = lin.A;
@@ -5629,6 +5995,101 @@ if (window.__liaRunCoordHooks) {
       );
     })();
 
+    // ── Hyperbel: fit y = A/(b*(x+c)) + d with asymptote search around largest x-gap ─
+    (function() {
+      let hyperBest = null;
+      const sortedX = xs.slice().sort(function(a, b) { return a - b; });
+      let maxGap = 0;
+      let gapMid = (xMin + xMax) * 0.5;
+      for (let i = 1; i < sortedX.length; i++) {
+        const g = sortedX[i] - sortedX[i - 1];
+        if (g > maxGap) {
+          maxGap = g;
+          gapMid = (sortedX[i] + sortedX[i - 1]) * 0.5;
+        }
+      }
+
+      function hyperWeightedError(A, b, c, d) {
+        const eps = Math.max(0.04 * xSpan, 0.04);
+        let se = 0;
+        let cnt = 0;
+        let invalid = 0;
+        let leftCnt = 0;
+        let rightCnt = 0;
+
+        for (let i = 0; i < pts.length; i++) {
+          const x = pts[i].x;
+          const t = b * (x + c);
+          if (Math.abs(t) < eps) {
+            invalid += 1;
+            continue;
+          }
+
+          if (t < 0) leftCnt += 1;
+          else rightCnt += 1;
+
+          const yHat = A / t + d;
+          if (!Number.isFinite(yHat)) continue;
+
+          const e = yHat - pts[i].y;
+          se += e * e;
+          cnt += 1;
+        }
+
+        if (!cnt) return Infinity;
+        const wrmse = Math.sqrt(se / cnt);
+        const invalidFrac = invalid / Math.max(pts.length, 1);
+        const r = -c;
+        const asymPenalty = (maxGap > 0.18 * xSpan)
+          ? (Math.abs(r - gapMid) / Math.max(xSpan, 0.001)) * ySpan * 0.35
+          : 0;
+        const invalidPenalty = invalidFrac * ySpan * 4.5;
+        const oneBranchPenalty = (leftCnt === 0 || rightCnt === 0) ? ySpan * 0.25 : 0;
+
+        return wrmse + asymPenalty + invalidPenalty + oneBranchPenalty;
+      }
+
+      const rCenter = gapMid;
+      const rSpan = Math.max(0.8 * xSpan, maxGap * 2);
+      const steps = 96;
+      const eps = Math.max(0.04 * xSpan, 0.04);
+
+      for (let ri = 0; ri <= steps; ri++) {
+        const r = rCenter - rSpan + (2 * rSpan) * (ri / steps);
+        const c = -r;
+        const b = 1;
+
+        const lin = linear2FitFromFeature(pts, function(x) {
+          const t = b * (x + c);
+          if (Math.abs(t) < eps) return NaN;
+          return 1 / t;
+        }, pointMode ? 2 : 4);
+        if (!lin) continue;
+
+        const A = lin.A;
+        const d = lin.d;
+        const err = hyperWeightedError(A, b, c, d);
+        if (!Number.isFinite(err)) continue;
+        if (!hyperBest || err < hyperBest.err) {
+          hyperBest = { A: A, b: b, c: c, d: d, err: err };
+        }
+      }
+
+      if (!hyperBest) return;
+      const A = hyperBest.A, b = hyperBest.b, c = hyperBest.c, d = hyperBest.d;
+      pushCandidate(
+        'hyperbel',
+        toFixedNum(A) + '/(' + toFixedNum(b) + '*(x' + signed(c) + '))' + signed(d),
+        toFixedNum(A) + '/{{' + toFixedNum(b) + '{{x' + signed(c) + '}}}}' + signed(d),
+        function(x) {
+          const t = b * (x + c);
+          return Math.abs(t) < 1e-9 ? NaN : A / t + d;
+        },
+        { A: A, b: b, c: c, d: d },
+        4
+      );
+    })();
+
     // ── Sinus: coarse-to-fine two-pass, extended b range ────────────────────────────
     (function() {
       const sinFeat = function(x, b, c) { return Math.sin(b * (x + c)); };
@@ -5648,7 +6109,7 @@ if (window.__liaRunCoordHooks) {
         const b = bMin + (bMax - bMin) * (bi / 44);
         for (let ci = 0; ci <= 34; ci++) {
           const c = -cRange + 2 * cRange * (ci / 34);
-          const lin = linear2FitFromFeature(pts, function(x) { return sinFeat(x, b, c); });
+          const lin = linear2FitFromFeature(pts, function(x) { return sinFeat(x, b, c); }, pointMode ? 2 : 4);
           if (!lin) continue;
           const A = lin.A, d = lin.d;
           const err = rmse(pts, function(x) { return A * sinFeat(x, b, c) + d; });
@@ -5664,7 +6125,7 @@ if (window.__liaRunCoordHooks) {
         const b = bFineMin + (bFineMax - bFineMin) * (bi / 30);
         for (let ci = 0; ci <= 34; ci++) {
           const c = -cRange + 2 * cRange * (ci / 34);
-          const lin = linear2FitFromFeature(pts, function(x) { return sinFeat(x, b, c); });
+          const lin = linear2FitFromFeature(pts, function(x) { return sinFeat(x, b, c); }, pointMode ? 2 : 4);
           if (!lin) continue;
           const A = lin.A, d = lin.d;
           const err = rmse(pts, function(x) { return A * sinFeat(x, b, c) + d; });
@@ -5741,24 +6202,24 @@ if (window.__liaRunCoordHooks) {
       );
 
       // ── Apply adjustments ──────────────────────────────────────────────────
-      if (isStronglyLinear) {
+      if (!pointMode && isStronglyLinear) {
         // Hard preference: almost straight curve should stay linear.
         candidates.forEach(function(cand) {
           if (cand.name === 'linear') cand.score *= 0.28;
           if (cand.name === 'quadratisch') cand.score *= 1.7;
           if (cand.name === 'kubisch') cand.score *= 2.0;
-          if (cand.name === 'sinus' || cand.name === 'exponential' || cand.name === 'wurzel' || cand.name === 'logarithmus') cand.score *= 2.0;
+          if (cand.name === 'sinus' || cand.name === 'exponential' || cand.name === 'wurzel' || cand.name === 'logarithmus' || cand.name === 'hyperbel') cand.score *= 2.0;
         });
         return;
       }
 
-      if (isNearlyLinear) {
+      if (!pointMode && isNearlyLinear) {
         // If slope change is small, prefer the simpler linear model.
         candidates.forEach(function(cand) {
           if (cand.name === 'linear') cand.score *= 0.5;
           if (cand.name === 'quadratisch') cand.score *= 1.45;
           if (cand.name === 'kubisch') cand.score *= 1.75;
-          if (cand.name === 'sinus' || cand.name === 'exponential' || cand.name === 'wurzel' || cand.name === 'logarithmus') cand.score *= 1.55;
+          if (cand.name === 'sinus' || cand.name === 'exponential' || cand.name === 'wurzel' || cand.name === 'logarithmus' || cand.name === 'hyperbel') cand.score *= 1.55;
         });
       }
 
@@ -5796,7 +6257,7 @@ if (window.__liaRunCoordHooks) {
       if (isMonotone && isSymmetric) {
         // Symmetric arch → sinus half-period
         candidates.forEach(function(cand) {
-          if (cand.name === 'wurzel' || cand.name === 'exponential' || cand.name === 'logarithmus') cand.score *= 2.5;
+          if (cand.name === 'wurzel' || cand.name === 'exponential' || cand.name === 'logarithmus' || cand.name === 'hyperbel') cand.score *= 2.5;
           if (cand.name === 'sinus') cand.score *= 0.55;
         });
       }
@@ -5812,7 +6273,7 @@ if (window.__liaRunCoordHooks) {
 
       // Explicit linear-vs-exponential preference:
       // if exp is only slightly better (or not better), keep linear as default.
-      if (linearCand && expCand && Number.isFinite(linearCand.error) && Number.isFinite(expCand.error)) {
+      if (!pointMode && linearCand && expCand && Number.isFinite(linearCand.error) && Number.isFinite(expCand.error)) {
         const expGain = (linearCand.error - expCand.error) / Math.max(linearCand.error, 1e-6);
         if (expGain < 0.18) {
           linearCand.score *= 0.62;
@@ -5824,7 +6285,7 @@ if (window.__liaRunCoordHooks) {
       }
 
       // Linear-vs-logarithmus tie handling for weakly curved monotone traces.
-      if (linearCand && logCand && Number.isFinite(linearCand.error) && Number.isFinite(logCand.error)) {
+      if (!pointMode && linearCand && logCand && Number.isFinite(linearCand.error) && Number.isFinite(logCand.error)) {
         const logGain = (linearCand.error - logCand.error) / Math.max(linearCand.error, 1e-6);
         if (logGain < 0.16) {
           linearCand.score *= 0.74;
@@ -5833,7 +6294,7 @@ if (window.__liaRunCoordHooks) {
       }
 
       // Tie-break toward linear if it is almost as good in absolute error.
-      if (linearCand && Number.isFinite(linearCand.error)) {
+      if (!pointMode && linearCand && Number.isFinite(linearCand.error)) {
         let bestErr = Infinity;
         for (let i = 0; i < candidates.length; i++) {
           if (Number.isFinite(candidates[i].error) && candidates[i].error < bestErr) bestErr = candidates[i].error;
@@ -5875,22 +6336,36 @@ if (window.__liaRunCoordHooks) {
       panel.className = 'lia-plot-analyze-panel';
       panel.id = 'lia-analyze-panel-' + (state.boardId || '');
       panel.dataset.open = '0';
-      (document.body || document.documentElement).appendChild(panel);
+      const host = (board && board.containerObj) ? board.containerObj : (document.body || document.documentElement);
+      host.appendChild(panel);
       state.analyzePanel = panel;
     }
 
     const hasText = !!(text);
-    panel.style.display = hasText ? 'block' : 'none';
+    panel.style.display = hasText ? 'inline-block' : 'none';
     panel.dataset.open = hasText ? '1' : '0';
     panel.textContent = text || '';
+    panel.style.minWidth = '0';
+    panel.style.width = 'auto';
+    panel.style.maxWidth = 'calc(100% - 16px)';
+    panel.style.minHeight = '0';
+    panel.style.height = 'auto';
+    panel.style.maxHeight = 'none';
+    panel.style.padding = '2px 6px';
+    panel.style.margin = '0';
+    panel.style.fontSize = '10px';
+    panel.style.lineHeight = '1.1';
+    panel.style.whiteSpace = 'normal';
 
-    // Anchor panel to board top-right if board is available
+    // Anchor panel to the board top-right if board is available
     if (hasText && board && board.containerObj) {
       try {
-        const rect = board.containerObj.getBoundingClientRect();
-        panel.style.position = 'fixed';
-        panel.style.top = Math.max(4, rect.top + 8) + 'px';
-        panel.style.right = Math.max(4, (window.innerWidth - rect.right) + 8) + 'px';
+        if (panel.parentNode !== board.containerObj) {
+          board.containerObj.appendChild(panel);
+        }
+        panel.style.position = 'absolute';
+        panel.style.top = '8px';
+        panel.style.right = '8px';
         panel.style.bottom = '';
         panel.style.left = '';
       } catch (e) {}
@@ -5900,40 +6375,117 @@ if (window.__liaRunCoordHooks) {
   function updateUi(boardId) {
     const board = window.__boards && window.__boards[boardId];
     const state = getState(boardId);
-    if (!board || !state || !state.drawButton || !state.eraseButton || !state.analyzeButton || !state.canvas) return;
+    if (!board || !state || !state.canvas) return;
 
     const tone = resolveToolTone(board);
     const activeBg = resolveActiveBgColor();
     const drawActive = state.tool === 'draw';
     const eraseActive = state.tool === 'erase';
     const analyzeActive = state.tool === 'analyze';
+    const regressionActive = state.tool === 'regression';
+    const showDrawButtons = !!state.showDrawButtons;
 
-    state.drawButton.style.color = tone;
-    state.drawButton.style.background = drawActive ? activeBg : 'transparent';
-    state.drawButton.style.borderColor = tone;
-    state.drawButton.style.outline = 'none';
-    state.drawButton.style.outlineOffset = '0';
-    state.drawButton.dataset.active = drawActive ? '1' : '0';
-    state.drawButton.title = drawActive ? 'Freihandzeichnen aktiv' : 'Freihandzeichnen aktivieren';
+    // Update Undo/Redo button states
+    const canUndo = state.history && state.historyIndex > 0;
+    const canRedo = state.history && state.historyIndex < state.history.length - 1;
+    
+    if (state.undoButton) {
+      state.undoButton.disabled = !canUndo;
+      state.undoButton.style.opacity = canUndo ? '1' : '0.4';
+      state.undoButton.style.cursor = canUndo ? 'pointer' : 'not-allowed';
+      state.undoButton.title = canUndo ? 'Rückgängig (Ctrl+Z)' : 'Nichts rückgängig zu machen';
+      state.undoButton.style.display = showDrawButtons ? 'grid' : 'none';
+      state.undoButton.style.color = tone;
+      state.undoButton.style.background = 'transparent';
+      state.undoButton.style.borderColor = tone;
+    }
+    
+    if (state.redoButton) {
+      state.redoButton.disabled = !canRedo;
+      state.redoButton.style.opacity = canRedo ? '1' : '0.4';
+      state.redoButton.style.cursor = canRedo ? 'pointer' : 'not-allowed';
+      state.redoButton.title = canRedo ? 'Wiederherstellen (Ctrl+Y)' : 'Nichts wiederherzustellen';
+      state.redoButton.style.display = showDrawButtons ? 'grid' : 'none';
+      state.redoButton.style.color = tone;
+      state.redoButton.style.background = 'transparent';
+      state.redoButton.style.borderColor = tone;
+    }
 
-    state.eraseButton.style.color = tone;
-    state.eraseButton.style.background = eraseActive ? activeBg : 'transparent';
-    state.eraseButton.style.borderColor = tone;
-    state.eraseButton.style.outline = 'none';
-    state.eraseButton.style.outlineOffset = '0';
-    state.eraseButton.dataset.active = eraseActive ? '1' : '0';
-    state.eraseButton.title = eraseActive ? 'Radierer aktiv' : 'Radierer aktivieren';
+    if (state.drawButton) {
+      state.drawButton.style.display = showDrawButtons ? 'grid' : 'none';
+      state.drawButton.style.color = tone;
+      state.drawButton.style.background = drawActive ? activeBg : 'transparent';
+      state.drawButton.style.borderColor = tone;
+      state.drawButton.style.borderWidth = '2px';
+      state.drawButton.style.borderStyle = 'solid';
+      state.drawButton.style.outline = 'none';
+      state.drawButton.style.outlineOffset = '0';
+      state.drawButton.dataset.active = drawActive ? '1' : '0';
+      state.drawButton.title = drawActive ? 'Freihandzeichnen aktiv' : 'Freihandzeichnen aktivieren';
+    }
 
-    state.analyzeButton.style.color = tone;
-    state.analyzeButton.style.background = analyzeActive ? activeBg : 'transparent';
-    state.analyzeButton.style.borderColor = tone;
-    state.analyzeButton.style.outline = 'none';
-    state.analyzeButton.style.outlineOffset = '0';
-    state.analyzeButton.dataset.active = analyzeActive ? '1' : '0';
-    state.analyzeButton.title = analyzeActive ? 'Funktionsanalyse aktiv' : 'Funktionsanalyse aktivieren';
+    if (state.eraseButton) {
+      state.eraseButton.style.display = showDrawButtons ? 'grid' : 'none';
+      state.eraseButton.style.color = tone;
+      state.eraseButton.style.background = eraseActive ? activeBg : 'transparent';
+      state.eraseButton.style.borderColor = tone;
+      state.eraseButton.style.borderWidth = '2px';
+      state.eraseButton.style.borderStyle = 'solid';
+      state.eraseButton.style.outline = 'none';
+      state.eraseButton.style.outlineOffset = '0';
+      state.eraseButton.dataset.active = eraseActive ? '1' : '0';
+      state.eraseButton.title = eraseActive ? 'Radierer aktiv' : 'Radierer aktivieren';
+    }
+
+    if (state.analyzeButton) {
+      state.analyzeButton.style.display = showDrawButtons ? 'grid' : 'none';
+      state.analyzeButton.style.color = tone;
+      state.analyzeButton.style.background = analyzeActive ? activeBg : 'transparent';
+      state.analyzeButton.style.borderColor = tone;
+      state.analyzeButton.style.borderWidth = '2px';
+      state.analyzeButton.style.borderStyle = 'solid';
+      state.analyzeButton.style.outline = 'none';
+      state.analyzeButton.style.outlineOffset = '0';
+      state.analyzeButton.dataset.active = analyzeActive ? '1' : '0';
+      state.analyzeButton.title = analyzeActive ? 'Funktionsanalyse aktiv' : 'Funktionsanalyse aktivieren';
+    }
+
+    if (state.regressionButton) {
+      state.regressionButton.style.display = 'grid';
+      state.regressionButton.style.color = tone;
+      state.regressionButton.style.background = regressionActive ? activeBg : 'transparent';
+      state.regressionButton.style.borderColor = tone;
+      state.regressionButton.style.borderWidth = '2px';
+      state.regressionButton.style.borderStyle = 'solid';
+      state.regressionButton.style.outline = 'none';
+      state.regressionButton.style.outlineOffset = '0';
+      state.regressionButton.dataset.active = regressionActive ? '1' : '0';
+      state.regressionButton.title = regressionActive ? 'Regressionspunkte auswaehlen' : 'Regression aus Punkten';
+    }
+
+    if (state.regressionMenu) {
+      const regOpen = !!regressionActive;
+      state.regressionMenuOpen = regOpen;
+      state.regressionMenu.dataset.open = regOpen ? '1' : '0';
+      state.regressionMenu.style.display = regOpen ? 'grid' : 'none';
+
+      state.regressionMenu.querySelectorAll('.lia-plot-reg-item').forEach(function(item) {
+        item.style.background = activeBg;
+        item.style.color = '#fff';
+        item.style.borderColor = 'rgba(255,255,255,.58)';
+        item.style.fontWeight = '600';
+        item.style.borderRadius = '999px';
+        item.style.padding = '4px 10px';
+        item.style.lineHeight = '1.2';
+      });
+    }
+
+    if (state.drawColorMenu) {
+      state.drawColorMenu.style.display = showDrawButtons && state.drawColorMenuOpen ? 'grid' : 'none';
+    }
 
     // Hard-set SVG stroke color to avoid external CSS overriding currentColor.
-    [state.drawButton, state.eraseButton, state.analyzeButton].forEach(function(btn) {
+    [state.drawButton, state.eraseButton, state.analyzeButton, state.undoButton, state.redoButton, state.regressionButton].forEach(function(btn) {
       if (!btn || !btn.querySelectorAll) return;
       btn.querySelectorAll('.ico-stroke').forEach(function(path) {
         path.style.stroke = tone;
@@ -5942,14 +6494,38 @@ if (window.__liaRunCoordHooks) {
       });
     });
 
+    if (state.drawButton && state.drawButton.querySelector) {
+      const dot = state.drawButton.querySelector('.ico-color-dot');
+      if (dot) {
+        const selectedColor = String(state.drawColor || state.color || '#ff0000');
+        dot.style.fill = selectedColor;
+        dot.style.stroke = tone;
+        dot.style.strokeWidth = '1.2';
+      }
+    }
+
     if (state.analyzePanel) {
+      const panelFill = tone === '#fff' ? 'rgba(0,0,0,.82)' : 'rgba(255,255,255,.94)';
       state.analyzePanel.style.color = tone;
-      state.analyzePanel.style.borderColor = tone;
+      state.analyzePanel.style.background = panelFill;
+      state.analyzePanel.style.borderColor = tone === '#fff' ? 'rgba(255,255,255,.62)' : 'rgba(0,0,0,.46)';
+      state.analyzePanel.style.borderStyle = 'solid';
+      state.analyzePanel.style.borderWidth = '1px';
+      state.analyzePanel.style.boxShadow = '0 6px 18px rgba(0,0,0,.18)';
+      state.analyzePanel.style.padding = '2px 6px';
+      state.analyzePanel.style.fontSize = '10px';
+      state.analyzePanel.style.lineHeight = '1.1';
     }
 
     state.canvas.dataset.active = state.tool ? '1' : '0';
     state.canvas.style.pointerEvents = state.tool ? 'auto' : 'none';
-    state.canvas.style.cursor = drawActive ? 'crosshair' : (eraseActive ? 'cell' : (analyzeActive ? 'pointer' : 'default'));
+    state.canvas.style.cursor = drawActive
+      ? 'crosshair'
+      : (eraseActive
+          ? 'cell'
+          : (analyzeActive
+              ? 'pointer'
+              : (regressionActive ? 'crosshair' : 'default')));
     state.canvas.style.zIndex = state.tool ? '47' : '46';
   }
 
@@ -5996,6 +6572,7 @@ if (window.__liaRunCoordHooks) {
     function removeAnalyzedGraph(targetGraph) {
       const graph = targetGraph || state.analyzedGraph;
       if (!graph) return;
+      const modelId = String((graph && graph.__liaModelId) || '');
       try { board.removeObject(graph); } catch (e) {}
       removeParamPanelsForGraph(graph);
 
@@ -6006,6 +6583,11 @@ if (window.__liaRunCoordHooks) {
         state.analyzedGraph = (Array.isArray(state.analyzedGraphs) && state.analyzedGraphs.length)
           ? state.analyzedGraphs[state.analyzedGraphs.length - 1]
           : null;
+      }
+      if (modelId && Array.isArray(state.analyzedModelStates)) {
+        state.analyzedModelStates = state.analyzedModelStates.filter(function(model) {
+          return String((model && model.id) || '') !== modelId;
+        });
       }
     }
 
@@ -6023,8 +6605,37 @@ if (window.__liaRunCoordHooks) {
       if (name === 'exponential') return function(x) { return params.A * Math.exp(params.b * (x + params.c)) + params.d; };
       if (name === 'logarithmus') return function(x) { var t = x + params.c; return t <= 0 ? NaN : params.A * Math.log(t) + params.d; };
       if (name === 'wurzel')      return function(x) { var bw = (params.b !== undefined ? params.b : 1); var t = bw * (x + params.c); return t < 0 ? NaN : params.A * Math.sqrt(t) + params.d; };
+      if (name === 'hyperbel')    return function(x) { var bh = (params.b !== undefined ? params.b : 1); var th = bh * (x + params.c); return Math.abs(th) < 1e-9 ? NaN : params.A / th + params.d; };
       if (name === 'sinus')       return function(x) { return params.A * Math.sin(params.b * (x + params.c)) + params.d; };
       return fallbackPredict;
+    }
+
+    function makePersistableAnalysisResult(result) {
+      if (!result || !Array.isArray(result.candidates) || !result.candidates.length) return null;
+      const candidates = result.candidates.map(function(candidate) {
+        return {
+          name: String((candidate && candidate.name) || ''),
+          probability: Number((candidate && candidate.probability) || 0),
+          expr: String((candidate && candidate.expr) || ''),
+          params: Object.assign({}, (candidate && candidate.params) || {})
+        };
+      });
+      const bestIndex = Math.max(0, Math.min(candidates.length - 1, (result.candidates || []).indexOf(result.best)));
+      return { candidates: candidates, bestIndex: bestIndex };
+    }
+
+    function restorePersistedAnalysisResult(data) {
+      if (!data || !Array.isArray(data.candidates) || !data.candidates.length) return null;
+      const candidates = data.candidates.map(function(candidate) {
+        return {
+          name: String((candidate && candidate.name) || ''),
+          probability: Number((candidate && candidate.probability) || 0),
+          expr: String((candidate && candidate.expr) || ''),
+          params: Object.assign({}, (candidate && candidate.params) || {})
+        };
+      });
+      const bestIndex = Math.max(0, Math.min(candidates.length - 1, Number(data.bestIndex) || 0));
+      return { candidates: candidates, best: candidates[bestIndex] };
     }
 
     function formatModelExpr(name, params, fallbackExpr) {
@@ -6040,6 +6651,13 @@ if (window.__liaRunCoordHooks) {
           : (toFixedNum(bw) + '*(x' + signed(params.c) + ')');
         return toFixedNum(params.A) + '*sqrt(' + inner + ')' + signed(params.d);
       }
+      if (name === 'hyperbel') {
+        var bh = params.b;
+        var innerH = (bh === undefined || Math.abs(bh - 1) < 0.02)
+          ? ('x' + signed(params.c))
+          : (toFixedNum(bh) + '*(x' + signed(params.c) + ')');
+        return toFixedNum(params.A) + '/(' + innerH + ')' + signed(params.d);
+      }
       if (name === 'sinus')       return toFixedNum(params.A) + '*sin(' + toFixedNum(params.b) + '*(x' + signed(params.c) + '))' + signed(params.d);
       return fallbackExpr || '';
     }
@@ -6049,6 +6667,7 @@ if (window.__liaRunCoordHooks) {
       if (name === 'quadratisch') return 'Quadratische Funktion';
       if (name === 'kubisch') return 'Kubische Funktion';
       if (name === 'wurzel') return 'Wurzelfunktion';
+      if (name === 'hyperbel') return 'Hyperbelfunktion';
       if (name === 'sinus') return 'Sinusfunktion';
       if (name === 'exponential') return 'Exponentialfunktion';
       if (name === 'logarithmus') return 'Logarithmusfunktion';
@@ -6155,6 +6774,7 @@ if (window.__liaRunCoordHooks) {
     }
 
     function buildAnalysisOverlay(result, onSelectionChange, drawColor) {
+      const accentColor = String(drawColor || '#ff4400');
       const panel = document.createElement('div');
       panel.className = 'lia-schar-panel';
       panel.style.zIndex = '60';
@@ -6162,9 +6782,12 @@ if (window.__liaRunCoordHooks) {
       panel.style.minWidth = '190px';
       panel.style.maxWidth = 'none';
       panel.style.padding = '8px 10px';
+      panel.style.paddingTop = '8px';
       panel.style.borderRadius = '12px';
       panel.style.boxSizing = 'border-box';
       panel.style.boxShadow = '0 6px 18px rgba(0,0,0,.18)';
+      panel.style.position = 'absolute';
+      panel.style.overflow = 'visible';
       const tone = neutralColor();
       const fill = tone === '#fff' ? 'rgba(0,0,0,.82)' : 'rgba(255,255,255,.94)';
       const uiFontFamily = resolveOverlayFontFamily(board);
@@ -6174,7 +6797,74 @@ if (window.__liaRunCoordHooks) {
       panel.style.borderStyle = 'solid';
       panel.style.borderWidth = '1px';
       panel.style.fontFamily = uiFontFamily;
-      stopPanelEventPropagation(panel);
+      // Bubble-Phase: Events erreichen zuerst Kinder, dann wird Bubbling zu JSXGraph gestoppt
+      var _panelEvts = ['pointerdown','pointermove','pointerup','mousedown','mousemove','mouseup','touchstart','touchmove','touchend','click'];
+      _panelEvts.forEach(function(t) {
+        panel.addEventListener(t, function(e) { e.stopPropagation(); }, false);
+      });
+
+      // ---- Minimier-Button × (wie bei Scharen) ----
+      const minBtn = document.createElement('button');
+      minBtn.type = 'button';
+      minBtn.textContent = '\u00d7';
+      minBtn.setAttribute('aria-label', 'Overlay minimieren');
+      minBtn.style.position = 'absolute';
+      minBtn.style.top = '5px';
+      minBtn.style.right = '6px';
+      minBtn.style.width = '18px';
+      minBtn.style.height = '18px';
+      minBtn.style.padding = '0';
+      minBtn.style.border = 'none';
+      minBtn.style.background = 'transparent';
+      minBtn.style.color = accentColor;
+      minBtn.style.fontSize = '18px';
+      minBtn.style.fontWeight = '900';
+      minBtn.style.lineHeight = '18px';
+      minBtn.style.cursor = 'pointer';
+      minBtn.style.zIndex = '6';
+      minBtn.style.pointerEvents = 'auto';
+      minBtn.style.userSelect = 'none';
+      panel.appendChild(minBtn);
+
+      // ---- Mini-Wrap (sichtbar im minimierten Zustand) ----
+      const miniWrap = document.createElement('div');
+      miniWrap.style.display = 'none';
+      miniWrap.style.alignItems = 'center';
+      miniWrap.style.justifyContent = 'center';
+      miniWrap.style.cursor = 'pointer';
+      miniWrap.style.minHeight = '16px';
+      miniWrap.style.pointerEvents = 'auto';
+      const miniStrip = document.createElement('div');
+      miniStrip.style.width = '28px';
+      miniStrip.style.height = '4px';
+      miniStrip.style.borderRadius = '99px';
+      miniStrip.style.background = accentColor;
+      miniStrip.style.cursor = 'pointer';
+      miniWrap.appendChild(miniStrip);
+      panel.appendChild(miniWrap);
+
+      // ---- L-förmige Skalierungsecke (wie bei Scharen) ----
+      const resizeHandle = document.createElement('div');
+      resizeHandle.style.position = 'absolute';
+      resizeHandle.style.right = '0';
+      resizeHandle.style.bottom = '0';
+      resizeHandle.style.width = '18px';
+      resizeHandle.style.height = '18px';
+      resizeHandle.style.cursor = 'nwse-resize';
+      resizeHandle.style.borderRight = '2px solid ' + accentColor;
+      resizeHandle.style.borderBottom = '2px solid ' + accentColor;
+      resizeHandle.style.borderBottomRightRadius = '10px';
+      resizeHandle.style.boxSizing = 'border-box';
+      resizeHandle.style.zIndex = '5';
+      resizeHandle.style.pointerEvents = 'auto';
+      resizeHandle.style.userSelect = 'none';
+      resizeHandle.style.touchAction = 'none';
+      panel.appendChild(resizeHandle);
+
+      // ---- Inhalts-Container ----
+      const content = document.createElement('div');
+      content.style.paddingRight = '22px';
+      panel.appendChild(content);
 
       const selectWrap = document.createElement('div');
       selectWrap.style.marginBottom = '8px';
@@ -6196,10 +6886,10 @@ if (window.__liaRunCoordHooks) {
       });
       stopPanelEventPropagation(select);
       selectWrap.appendChild(select);
-      panel.appendChild(selectWrap);
+      content.appendChild(selectWrap);
 
       const controlsHost = document.createElement('div');
-      panel.appendChild(controlsHost);
+      content.appendChild(controlsHost);
 
       const termBox = document.createElement('div');
       termBox.className = 'lia-schar-term';
@@ -6207,13 +6897,93 @@ if (window.__liaRunCoordHooks) {
       termBox.style.visibility = 'visible';
       termBox.style.opacity = '1';
       termBox.style.marginTop = '8px';
-      panel.appendChild(termBox);
+      content.appendChild(termBox);
+
+      let currentCandidateIndex = -1;
+      let currentValues = {};
+      let termRenderSeq = 0;
+      let termPendingExpr = '';
+      let termRenderTimer = null;
+
+      function getOverlayMathJax() {
+        let MJ = null;
+        try { if (window.MathJax) MJ = window.MathJax; } catch (e) {}
+        if (!MJ) {
+          try { if (window.parent && window.parent.MathJax) MJ = window.parent.MathJax; } catch (e) {}
+        }
+        return MJ;
+      }
+
+      function renderTermTexStable(texExpr) {
+        const seq = ++termRenderSeq;
+        const MJ = getOverlayMathJax();
+        if (!MJ || typeof MJ.typesetPromise !== 'function') {
+          termBox.textContent = texExpr;
+          return;
+        }
+
+        const staging = document.createElement('div');
+        staging.style.position = 'absolute';
+        staging.style.left = '-100000px';
+        staging.style.top = '-100000px';
+        staging.style.visibility = 'hidden';
+        staging.style.pointerEvents = 'none';
+        staging.textContent = texExpr;
+        panel.appendChild(staging);
+
+        const cleanup = function() {
+          try { staging.parentNode && staging.parentNode.removeChild(staging); } catch (e) {}
+        };
+
+        try {
+          if (typeof MJ.typesetClear === 'function') {
+            try { MJ.typesetClear([staging]); } catch (e) {}
+          }
+          MJ.typesetPromise([staging]).then(function() {
+            if (seq !== termRenderSeq) {
+              cleanup();
+              return;
+            }
+            termBox.innerHTML = staging.innerHTML;
+            cleanup();
+          }).catch(function() {
+            if (seq === termRenderSeq) {
+              termBox.textContent = texExpr;
+            }
+            cleanup();
+          });
+        } catch (e) {
+          cleanup();
+          termBox.textContent = texExpr;
+        }
+      }
+
+      function renderTerm(candidate, values, lightweight) {
+        const texExpr = '\\(f(x)=' + toTexModelExpr(formatModelExpr(candidate.name, values, candidate.expr)) + '\\)';
+        if (!lightweight) {
+          if (termRenderTimer) {
+            try { clearTimeout(termRenderTimer); } catch (e) {}
+            termRenderTimer = null;
+          }
+          termPendingExpr = texExpr;
+          renderTermTexStable(texExpr);
+          return;
+        }
+
+        termPendingExpr = texExpr;
+        if (termRenderTimer) return;
+        termRenderTimer = setTimeout(function() {
+          termRenderTimer = null;
+          renderTermTexStable(termPendingExpr);
+        }, 80);
+      }
 
       function renderControls(candidateIndex, params) {
         const candidate = (result.candidates || [])[candidateIndex] || result.best;
         const values = params || Object.assign({}, candidate.params || {});
-        termBox.textContent = '\\(f(x)=' + toTexModelExpr(formatModelExpr(candidate.name, values, candidate.expr)) + '\\)';
-        typesetOverlayMath(termBox);
+        currentCandidateIndex = candidateIndex;
+        currentValues = Object.assign({}, values);
+        renderTerm(candidate, values, false);
         controlsHost.innerHTML = '';
         Object.keys(values).forEach(function(k) {
           const v = values[k];
@@ -6235,11 +7005,12 @@ if (window.__liaRunCoordHooks) {
           const sl = document.createElement('input');
           sl.type = 'range';
           sl.className = 'lia-schar-slider';
+          sl.setAttribute('data-param-key', k);
           sl.min = String(Math.min(-10, Math.floor(v * 2)));
           sl.max = String(Math.max(10, Math.ceil(v * 2)));
           sl.step = '0.05';
           sl.value = String(v);
-          sl.style.accentColor = String(drawColor || '#ff4400');
+          sl.style.accentColor = accentColor;
           sl.style.display = 'block';
           sl.style.flex = '0 0 140px';
           sl.style.width = '140px';
@@ -6250,8 +7021,8 @@ if (window.__liaRunCoordHooks) {
           sl.addEventListener('input', function() {
             const nextValues = Object.assign({}, values, {});
             nextValues[k] = Number(sl.value);
-            termBox.textContent = '\\(f(x)=' + toTexModelExpr(formatModelExpr(candidate.name, nextValues, candidate.expr)) + '\\)';
-            typesetOverlayMath(termBox);
+            currentValues = Object.assign({}, nextValues);
+            renderTerm(candidate, nextValues, false);
             onSelectionChange(candidateIndex, nextValues);
             values[k] = nextValues[k];
           });
@@ -6268,19 +7039,269 @@ if (window.__liaRunCoordHooks) {
         onSelectionChange(idx, Object.assign({}, chosen.params || {}));
       });
 
+      panel.__liaSyncAnalysisParams = function(candidateIndex, params, lightweight) {
+        const idx = Math.max(0, Math.min((result.candidates || []).length - 1, Number(candidateIndex) || 0));
+        const candidate = (result.candidates || [])[idx] || result.best;
+        const nextValues = Object.assign({}, params || {});
+
+        if (!lightweight || idx !== currentCandidateIndex) {
+          select.value = String(idx);
+          renderControls(idx, nextValues);
+          return;
+        }
+
+        currentValues = Object.assign({}, nextValues);
+        renderTerm(candidate, nextValues, true);
+        const sliders = controlsHost.querySelectorAll('input[type="range"][data-param-key]');
+        sliders.forEach(function(sl) {
+          const key = sl.getAttribute('data-param-key') || '';
+          if (!Object.prototype.hasOwnProperty.call(nextValues, key)) return;
+          sl.value = String(nextValues[key]);
+        });
+      };
+
+      // ---- Minimieren / Wiederherstellen ----
+      function setMinimized(val) {
+        resizeHandle.style.display = val ? 'none' : 'block';
+        content.style.display = val ? 'none' : 'block';
+        minBtn.style.display = val ? 'none' : 'block';
+        miniWrap.style.display = val ? 'inline-flex' : 'none';
+        if (val) {
+          panel.style.padding = '4px';
+          panel.style.display = 'inline-flex';
+          panel.style.alignItems = 'center';
+          panel.style.justifyContent = 'center';
+          panel.style.width = 'auto';
+          panel.style.minWidth = '0';
+          panel.style.height = 'auto';
+          panel.style.minHeight = '0';
+        } else {
+          panel.style.padding = '8px 10px';
+          panel.style.display = 'block';
+          panel.style.alignItems = '';
+          panel.style.justifyContent = '';
+          panel.style.width = '';
+          panel.style.minWidth = '190px';
+          panel.style.height = '';
+          panel.style.minHeight = '';
+        }
+        relayoutAnalyzedParamPanels();
+      }
+
+      // Capture-Phase wie bei Scharen-minBtnEl
+      ['pointerdown','mousedown','touchstart','click'].forEach(function(t) {
+        minBtn.addEventListener(t, function(e) { try { e.stopPropagation(); } catch (ex) {} }, true);
+      });
+      minBtn.addEventListener('click', function(e) {
+        e.preventDefault(); e.stopPropagation();
+        setMinimized(true);
+      }, true);
+
+      ['pointerdown','mousedown','touchstart','click'].forEach(function(t) {
+        miniWrap.addEventListener(t, function(e) { try { e.stopPropagation(); } catch (ex) {} }, true);
+        miniStrip.addEventListener(t, function(e) { try { e.stopPropagation(); } catch (ex) {} }, true);
+      });
+      miniWrap.addEventListener('click', function(e) {
+        e.preventDefault(); e.stopPropagation();
+        setMinimized(false);
+      }, true);
+      miniStrip.addEventListener('click', function(e) {
+        e.preventDefault(); e.stopPropagation();
+        setMinimized(false);
+      }, true);
+
+      // ---- Skalierungs-Logik ----
+      var panelScale = 1;
+      (function bindResizeDrag() {
+        let drag = null;
+        const block = function(evt) { try { evt.stopPropagation(); } catch (e) {} };
+        ['pointerdown','pointermove','pointerup','mousedown','mouseup','click'].forEach(function(t) {
+          resizeHandle.addEventListener(t, block, true);
+        });
+        resizeHandle.addEventListener('pointerdown', function(e) {
+          e.preventDefault(); e.stopPropagation();
+          drag = { pointerId: e.pointerId, startX: e.clientX, startY: e.clientY, startScale: panelScale };
+          try { resizeHandle.setPointerCapture(e.pointerId); } catch (ex) {}
+        }, true);
+        const onMove = function(e) {
+          if (!drag || e.pointerId !== drag.pointerId) return;
+          e.preventDefault();
+          const dx = e.clientX - drag.startX;
+          const dy = e.clientY - drag.startY;
+          panelScale = Math.max(0.55, Math.min(1.45, drag.startScale + (Math.max(dx, dy) / 260)));
+          panel.style.transformOrigin = 'top left';
+          panel.style.transform = 'scale(' + panelScale + ')';
+          relayoutAnalyzedParamPanels();
+        };
+        const onUp = function(e) {
+          if (!drag || e.pointerId !== drag.pointerId) return;
+          drag = null;
+          relayoutAnalyzedParamPanels();
+        };
+        window.addEventListener('pointermove', onMove, true);
+        window.addEventListener('pointerup', onUp, true);
+        window.addEventListener('pointercancel', onUp, true);
+      })();
+
       renderControls(Math.max(0, (result.candidates || []).indexOf(result.best)));
+
       return panel;
     }
 
-    function renderAnalysisResult(result, curveColor) {
+    function renderAnalysisResult(result, curveColor, options) {
       if (!result) return;
+
+      const opts = options || {};
+      const restoredResult = restorePersistedAnalysisResult(result);
+      if (restoredResult) result = restoredResult;
+      if (!result || !Array.isArray(result.candidates) || !result.candidates.length) return;
+
+      if (!Array.isArray(state.analyzedModelStates)) state.analyzedModelStates = [];
+      state.analyzedModelSeq = Number(state.analyzedModelSeq || 0);
+
+      let modelState = opts.modelState || null;
+      if (!modelState) {
+        state.analyzedModelSeq += 1;
+        modelState = {
+          id: 'a' + state.analyzedModelSeq,
+          curveColor: String(curveColor || state.drawColor || state.color || '#ff4400'),
+          resultData: makePersistableAnalysisResult(result),
+          activeIndex: Math.max(0, (result.candidates || []).indexOf(result.best)),
+          activeParams: null
+        };
+        state.analyzedModelStates.push(modelState);
+      }
 
       var activeIndex = Math.max(0, (result.candidates || []).indexOf(result.best));
       var activeCandidate = (result.candidates || [])[activeIndex] || result.best;
       var activeParams = Object.assign({}, activeCandidate.params || {});
+      if (Number.isFinite(Number(modelState.activeIndex))) {
+        const idx = Math.max(0, Math.min((result.candidates || []).length - 1, Number(modelState.activeIndex) || 0));
+        activeIndex = idx;
+        activeCandidate = (result.candidates || [])[activeIndex] || result.best;
+      }
+      if (modelState && modelState.activeParams && typeof modelState.activeParams === 'object') {
+        activeParams = Object.assign({}, modelState.activeParams);
+      }
       var livePredict = predictFromModel(activeCandidate.name, activeParams, activeCandidate.predict);
-      const drawColor = String(curveColor || state.drawColor || state.color || '#ff4400');
+      const drawColor = String((modelState && modelState.curveColor) || curveColor || state.drawColor || state.color || '#ff4400');
       var createdGraph = null;
+      var pPanel = null;
+
+      function syncActiveFromParams(lightweight) {
+        modelState.activeIndex = activeIndex;
+        modelState.activeParams = Object.assign({}, activeParams || {});
+        livePredict = predictFromModel(activeCandidate.name, activeParams, activeCandidate.predict);
+        if (pPanel && typeof pPanel.__liaSyncAnalysisParams === 'function') {
+          pPanel.__liaSyncAnalysisParams(activeIndex, activeParams, !!lightweight);
+        }
+        try { board.update(); } catch (e) {}
+      }
+
+      function bindAnalysisGraphDrag(graph) {
+        if (!graph || graph.__liaAnalysisDragBound) return;
+        graph.__liaAnalysisDragBound = true;
+
+        function normalizePointerEvent(evt) {
+          if (!evt) return null;
+          if (evt.evt && Number.isFinite(evt.evt.clientX) && Number.isFinite(evt.evt.clientY)) return evt.evt;
+          if (Number.isFinite(evt.clientX) && Number.isFinite(evt.clientY)) return evt;
+          return null;
+        }
+
+        function getTargets() {
+          return [graph.rendNode, graph.rendNodeStroke].filter(Boolean);
+        }
+
+        var dragging = null;
+        const onPointerDown = function(evt) {
+          const downEvt = normalizePointerEvent(evt);
+          if (!downEvt) return;
+          try { if (evt && evt.preventDefault) evt.preventDefault(); } catch (e) {}
+          try { if (evt && evt.stopPropagation) evt.stopPropagation(); } catch (e) {}
+          try { downEvt.preventDefault && downEvt.preventDefault(); } catch (e) {}
+          try { downEvt.stopPropagation && downEvt.stopPropagation(); } catch (e) {}
+
+          if (dragging) {
+            try { window.removeEventListener('pointermove', dragging.onMove, true); } catch (e) {}
+            try { window.removeEventListener('pointerup', dragging.onUp, true); } catch (e) {}
+            try { window.removeEventListener('pointercancel', dragging.onUp, true); } catch (e) {}
+            dragging = null;
+          }
+
+          const pointerId = Number.isFinite(downEvt.pointerId) ? downEvt.pointerId : null;
+          const start = eventToUser(board, downEvt);
+          const startParams = Object.assign({}, activeParams || {});
+          const hasC = Number.isFinite(startParams.c);
+          const hasD = Number.isFinite(startParams.d);
+          const hasM = Number.isFinite(startParams.m);
+          const hasN = Number.isFinite(startParams.n);
+
+          const onMove = function(moveEvt) {
+            if (pointerId !== null && moveEvt.pointerId !== pointerId) return;
+            moveEvt.preventDefault();
+            moveEvt.stopPropagation();
+
+            const now = eventToUser(board, moveEvt);
+            const dx = now.x - start.x;
+            const dy = now.y - start.y;
+            const nextParams = Object.assign({}, startParams);
+
+            if (hasC) nextParams.c = startParams.c - dx;
+            if (hasD) nextParams.d = startParams.d + dy;
+
+            // Lineare Regression hat keinen c/d-Shift, deshalb ueber n verschieben.
+            if (!hasC && !hasD && hasM && hasN) {
+              nextParams.n = startParams.n - startParams.m * dx + dy;
+            } else if (!hasD && hasN && !hasC) {
+              nextParams.n = startParams.n + dy;
+            }
+
+            activeParams = nextParams;
+            syncActiveFromParams(true);
+          };
+
+          const onUp = function(upEvt) {
+            if (pointerId !== null && upEvt.pointerId !== pointerId) return;
+            upEvt.preventDefault();
+            upEvt.stopPropagation();
+            try { window.removeEventListener('pointermove', onMove, true); } catch (e) {}
+            try { window.removeEventListener('pointerup', onUp, true); } catch (e) {}
+            try { window.removeEventListener('pointercancel', onUp, true); } catch (e) {}
+            dragging = null;
+            syncActiveFromParams(false);
+          };
+
+          dragging = { onMove: onMove, onUp: onUp };
+          window.addEventListener('pointermove', onMove, true);
+          window.addEventListener('pointerup', onUp, true);
+          window.addEventListener('pointercancel', onUp, true);
+        };
+
+        function attachTargets() {
+          getTargets().forEach(function(target) {
+            if (!target || target.__liaAnalysisDragTargetBound) return;
+            target.__liaAnalysisDragTargetBound = true;
+            try {
+              target.style.cursor = 'move';
+              target.style.touchAction = 'none';
+              target.addEventListener('pointerdown', onPointerDown, true);
+            } catch (e) {}
+          });
+        }
+
+        attachTargets();
+        try {
+          requestAnimationFrame(function() {
+            attachTargets();
+            requestAnimationFrame(function() { attachTargets(); });
+          });
+        } catch (e) {}
+
+        if (typeof graph.on === 'function') {
+          try { graph.on('down', onPointerDown); } catch (e) {}
+        }
+      }
 
       try {
         createdGraph = board.create('functiongraph', [function(x) {
@@ -6294,6 +7315,7 @@ if (window.__liaRunCoordHooks) {
           withLabel: false
         });
         createdGraph.__liaPlotColor = drawColor;
+        createdGraph.__liaModelId = String((modelState && modelState.id) || '');
         state.analyzedGraph = createdGraph;
         if (!Array.isArray(state.analyzedGraphs)) state.analyzedGraphs = [];
         state.analyzedGraphs.push(createdGraph);
@@ -6301,15 +7323,15 @@ if (window.__liaRunCoordHooks) {
       } catch (e) {}
 
       try {
-        var pPanel = buildAnalysisOverlay(result, function(candidateIndex, params) {
+        pPanel = buildAnalysisOverlay(result, function(candidateIndex, params) {
           activeIndex = candidateIndex;
           activeCandidate = (result.candidates || [])[activeIndex] || result.best;
           activeParams = Object.assign({}, params || {});
-          livePredict = predictFromModel(activeCandidate.name, activeParams, activeCandidate.predict);
-          try { board.update(); } catch (e) {}
+          syncActiveFromParams(false);
         }, drawColor);
         pPanel.classList.add('lia-plot-analysis-param-panel');
         pPanel.__liaGraphRef = createdGraph;
+        pPanel.__liaModelId = String((modelState && modelState.id) || '');
         board.containerObj.appendChild(pPanel);
         if (!Array.isArray(state.analyzedParamPanels)) state.analyzedParamPanels = [];
         state.analyzedParamPanels.push(pPanel);
@@ -6317,8 +7339,68 @@ if (window.__liaRunCoordHooks) {
         state.analyzedParamPanel = pPanel;
       } catch (e) {}
 
+      try { bindAnalysisGraphDrag(createdGraph); } catch (e) {}
+      try { syncActiveFromParams(false); } catch (e) {}
+
       setAnalyzePanel(board, state, '');
     }
+
+    function runRegressionFromSelectedPoints() {
+      if (!Array.isArray(state.regressionPoints) || state.regressionPoints.length < 2) {
+        setAnalyzePanel(board, state, 'Regression braucht mindestens 2 ausgewaehlte Punkte.');
+        scheduleRedraw(boardId);
+        return;
+      }
+
+      const regressionColor = String(state.drawColor || state.color || '#ff0000');
+      state.drawColor = regressionColor;
+      state.color = regressionColor;
+
+      const regressionStroke = { points: state.regressionPoints.slice() };
+      const regressionResult = analyzeStroke(boardId, regressionStroke, { pointMode: true });
+      state.analyzedStrokeIndex = -1;
+      state.analyzedCurvePoints = null;
+
+      if (!regressionResult) {
+        setAnalyzePanel(board, state, 'Regression nicht moeglich (ungeeignete Punkte).');
+        scheduleRedraw(boardId);
+        return;
+      }
+
+      renderAnalysisResult(regressionResult, regressionColor);
+      scheduleRedraw(boardId);
+    }
+    state.__runRegressionFromSelectedPoints = runRegressionFromSelectedPoints;
+
+    function restoreAnalyzedModelsAfterBoardSwitch() {
+      if (!Array.isArray(state.analyzedModelStates) || !state.analyzedModelStates.length) return;
+
+      const hasGraphOnCurrentBoard = Array.isArray(state.analyzedGraphs) && state.analyzedGraphs.some(function(g) {
+        try { return !!(g && g.board === board); } catch (e) { return false; }
+      });
+      if (hasGraphOnCurrentBoard) return;
+
+      state.analyzedGraphs = [];
+      state.analyzedGraph = null;
+      if (Array.isArray(state.analyzedParamPanels)) {
+        state.analyzedParamPanels.forEach(function(panel) {
+          try { panel.parentNode && panel.parentNode.removeChild(panel); } catch (e) {}
+        });
+      }
+      state.analyzedParamPanels = [];
+      state.analyzedParamPanel = null;
+
+      const models = state.analyzedModelStates.slice();
+      models.forEach(function(modelState) {
+        if (!modelState || !modelState.resultData) return;
+        try {
+          renderAnalysisResult(modelState.resultData, modelState.curveColor, { modelState: modelState, restored: true });
+        } catch (e) {}
+      });
+      relayoutAnalyzedParamPanels();
+      scheduleRedraw(boardId);
+    }
+    restoreAnalyzedModelsAfterBoardSwitch();
 
     function handlePointerInteraction(evt) {
       if (!state.tool) return;
@@ -6331,9 +7413,58 @@ if (window.__liaRunCoordHooks) {
           state.strokes.splice(strokeIndex, 1);
           if (state.analyzedStrokeIndex === strokeIndex) state.analyzedStrokeIndex = -1;
           state.analyzedCurvePoints = null;
+          window.saveToHistory(boardId);
           scheduleRedraw(boardId);
           return;
         }
+        
+        // Check if clicking on an auto-created X point
+        if (Array.isArray(state.autoCreatedPoints) && state.autoCreatedPoints.length > 0) {
+          const clickPoint = eventToUser(board, evt);
+          let hitPointName = null;
+          let bestDist = Infinity;
+          
+          for (let i = 0; i < state.autoCreatedPoints.length; i++) {
+            const pointName = state.autoCreatedPoints[i];
+            const pt = window.__points && window.__points[boardId] && window.__points[boardId][pointName];
+            if (!pt) continue;
+            
+            const ptX = pt.X();
+            const ptY = pt.Y();
+            const dist = Math.sqrt((clickPoint.x - ptX) * (clickPoint.x - ptX) + (clickPoint.y - ptY) * (clickPoint.y - ptY));
+            
+            if (dist < 0.2 && dist < bestDist) {
+              bestDist = dist;
+              hitPointName = pointName;
+            }
+          }
+          
+          if (hitPointName) {
+            // Delete the point
+            try {
+              const pt = window.__points[boardId][hitPointName];
+              if (pt) board.removeObject(pt);
+              delete window.__points[boardId][hitPointName];
+            } catch (e) {}
+            
+            // Remove from autoCreatedPoints list
+            const idx = state.autoCreatedPoints.indexOf(hitPointName);
+            if (idx >= 0) state.autoCreatedPoints.splice(idx, 1);
+            
+            // Remove from regressionPoints if it's there
+            if (Array.isArray(state.regressionPoints)) {
+              state.regressionPoints = state.regressionPoints.filter(function(p) {
+                return String((p && p.key) || '') !== hitPointName;
+              });
+            }
+            
+            window.saveToHistory(boardId);
+            setAnalyzePanel(board, state, 'Punkt gelöscht.');
+            scheduleRedraw(boardId);
+            return;
+          }
+        }
+        
         // hit-test all analyzed fit curves
         const graphs = (Array.isArray(state.analyzedGraphs) && state.analyzedGraphs.length)
           ? state.analyzedGraphs.slice()
@@ -6401,7 +7532,10 @@ if (window.__liaRunCoordHooks) {
         }
 
         const stroke = state.strokes[strokeIndex];
-        const analysis = analyzeStroke(boardId, stroke);
+        const strokeColor = String(stroke && stroke.color || '').trim();
+        const groupedPoints = collectStrokePointsByColor(state, strokeColor);
+        const analysisStroke = groupedPoints.length ? { points: groupedPoints } : stroke;
+        const analysis = analyzeStroke(boardId, analysisStroke);
         state.analyzedStrokeIndex = strokeIndex;
         state.analyzedCurvePoints = null;
 
@@ -6411,13 +7545,39 @@ if (window.__liaRunCoordHooks) {
           return;
         }
 
-        renderAnalysisResult(analysis, (stroke && stroke.color) ? stroke.color : state.color);
+        renderAnalysisResult(analysis, strokeColor || state.color);
         scheduleRedraw(boardId);
         return;
         } catch (analyzeErr) {
           setAnalyzePanel(board, state, 'Fehler: ' + String(analyzeErr && analyzeErr.message || analyzeErr));
           return;
         }
+      }
+
+      if (state.tool === 'regression') {
+        if (!Array.isArray(state.regressionPoints)) state.regressionPoints = [];
+
+        const hitPoint = findNearestSelectableBoardPoint(board, boardId, evt, 14);
+        if (!hitPoint) {
+          setAnalyzePanel(board, state, 'Bitte einen vorhandenen Punkt anklicken.');
+          return;
+        }
+
+        setAnalyzePanel(board, state, '');
+        const key = String(hitPoint.key || '');
+        const existingIndex = state.regressionPoints.findIndex(function(p) {
+          return String((p && p.key) || '') === key;
+        });
+
+        if (existingIndex >= 0) {
+          state.regressionPoints.splice(existingIndex, 1);
+        } else {
+          state.regressionPoints.push({ x: hitPoint.x, y: hitPoint.y, key: key });
+        }
+
+        state.analyzedCurvePoints = null;
+        scheduleRedraw(boardId);
+        return;
       }
 
       const point = eventToUser(board, evt);
@@ -6455,12 +7615,144 @@ if (window.__liaRunCoordHooks) {
       scheduleRedraw(boardId);
     }, true);
 
+    // Helper: Check if point C lies on segment AB
+    function pointOnSegment(A, B, C) {
+      return Math.min(A.x, B.x) <= C.x && C.x <= Math.max(A.x, B.x) &&
+             Math.min(A.y, B.y) <= C.y && C.y <= Math.max(A.y, B.y);
+    }
+
+    // Helper: Calculate orientation of ordered triplet (p, q, r)
+    // Returns: 0 if collinear, 1 if clockwise, 2 if counterclockwise
+    function getOrientation(p, q, r) {
+      const val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);
+      if (Math.abs(val) < 1e-9) return 0;  // collinear
+      return (val > 0) ? 1 : 2;  // clockwise or counterclockwise
+    }
+
+    // Find intersection point of two line segments
+    // Returns {intersects: bool, x: number, y: number}
+    function findSegmentIntersection(p1, q1, p2, q2) {
+      const o1 = getOrientation(p1, q1, p2);
+      const o2 = getOrientation(p1, q1, q2);
+      const o3 = getOrientation(p2, q2, p1);
+      const o4 = getOrientation(p2, q2, q1);
+
+      // General case: segments intersect if they straddle each other
+      if (o1 !== o2 && o3 !== o4) {
+        // Calculate intersection point using parametric equations
+        const x1 = p1.x, y1 = p1.y;
+        const x2 = q1.x, y2 = q1.y;
+        const x3 = p2.x, y3 = p2.y;
+        const x4 = q2.x, y4 = q2.y;
+
+        const denom = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
+        if (Math.abs(denom) < 1e-9) return { intersects: false };
+
+        const t = ((x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4)) / denom;
+        const intersectX = x1 + t * (x2 - x1);
+        const intersectY = y1 + t * (y2 - y1);
+
+        return { intersects: true, x: intersectX, y: intersectY };
+      }
+
+      // Special cases: collinear
+      if (o1 === 0 && pointOnSegment(p1, q1, p2)) return { intersects: true, x: p2.x, y: p2.y };
+      if (o2 === 0 && pointOnSegment(p1, q1, q2)) return { intersects: true, x: q2.x, y: q2.y };
+      if (o3 === 0 && pointOnSegment(p2, q2, p1)) return { intersects: true, x: p1.x, y: p1.y };
+      if (o4 === 0 && pointOnSegment(p2, q2, q1)) return { intersects: true, x: q1.x, y: q1.y };
+
+      return { intersects: false };
+    }
+
+    // Check if two strokes (as collections of segments) intersect
+    function findStrokesIntersection(stroke1, stroke2) {
+      // stroke1 and stroke2 are arrays of points
+      if (!Array.isArray(stroke1) || !Array.isArray(stroke2) || stroke1.length < 2 || stroke2.length < 2) {
+        return { intersects: false };
+      }
+
+      // Find the closest intersection point between any pair of segments from the two strokes
+      let bestIntersection = null;
+      let bestDist = Infinity;
+
+      for (let i = 0; i < stroke1.length - 1; i++) {
+        for (let j = 0; j < stroke2.length - 1; j++) {
+          const result = findSegmentIntersection(stroke1[i], stroke1[i + 1], stroke2[j], stroke2[j + 1]);
+          if (result.intersects) {
+            const dist = Math.sqrt((result.x - result.x) * (result.x - result.x) + (result.y - result.y) * (result.y - result.y));
+            if (dist < bestDist) {
+              bestDist = dist;
+              bestIntersection = result;
+            }
+          }
+        }
+      }
+
+      return bestIntersection || { intersects: false };
+    }
+
     function stop(evt) {
       if (!state.drawing) return;
       if (evt && evt.pointerId != null && evt.pointerId !== state.pointerId) return;
 
       state.drawing = false;
       state.pointerId = null;
+      
+      // Check if last 2 strokes intersect to form an X
+      if (state.tool === 'draw' && Array.isArray(state.strokes) && state.strokes.length >= 2 && board) {
+        const stroke1 = state.strokes[state.strokes.length - 2];
+        const stroke2 = state.strokes[state.strokes.length - 1];
+        
+        if (stroke1 && stroke1.points && stroke2 && stroke2.points) {
+          const xDetection = findStrokesIntersection(stroke1.points, stroke2.points);
+          
+          if (xDetection.intersects && Number.isFinite(xDetection.x) && Number.isFinite(xDetection.y)) {
+            // X erkannt: Punkt auf dem Board erstellen (nicht automatisch ausgewählt)
+            try {
+              const pointName = 'auto-x-' + Date.now() + '-' + Math.floor(Math.random() * 1000000);
+              const pt = board.create('point', [xDetection.x, xDetection.y], {
+                name: pointName,
+                fixed: false,
+                withLabel: false,
+                showInfobox: false,
+                strokeColor: '#ff00ff',
+                fillColor: '#ff00ff',
+                highlightStrokeColor: '#ff00ff',
+                highlightFillColor: '#ff00ff',
+                strokeWidth: 3,
+                highlightStrokeWidth: 3,
+                face: 'x',
+                size: 7
+              });
+              
+              // Registriere den Punkt
+              if (!window.__points) window.__points = {};
+              if (!window.__points[boardId]) window.__points[boardId] = {};
+              window.__points[boardId][pointName] = pt;
+              
+              // Speichere den Punkt im State
+              if (!Array.isArray(state.autoCreatedPoints)) state.autoCreatedPoints = [];
+              state.autoCreatedPoints.push(pointName);
+              
+              // Speichere Koordinaten separat für Undo/Redo (NICHT in regressionPoints!)
+              if (!Array.isArray(state.autoCreatedPointsData)) state.autoCreatedPointsData = [];
+              state.autoCreatedPointsData.push({ x: xDetection.x, y: xDetection.y, key: pointName });
+              
+              // Feedback
+              setAnalyzePanel(board, state, 'X erkannt! Punkt bei (' + xDetection.x.toFixed(2) + ', ' + xDetection.y.toFixed(2) + ').');
+              console.log('[X-detect] X intersection found at:', xDetection.x, xDetection.y);
+              
+              try { board.update(); } catch (e) {}
+            } catch (err) {
+              console.error('[X-detect] Error creating point:', err);
+            }
+          }
+        }
+      }
+      
+      // Save to history
+      window.saveToHistory(boardId);
+      
       try {
         if (evt && evt.pointerId != null) canvas.releasePointerCapture(evt.pointerId);
       } catch (e) {}
@@ -6478,6 +7770,146 @@ if (window.__liaRunCoordHooks) {
     if (!board || !state || state.hooksBound) return;
     state.hooksBound = true;
 
+    // Initialize history system
+    if (!state.history) {
+      state.history = [JSON.stringify({ strokes: [], regressionPoints: [], autoCreatedPoints: [] })];
+      state.historyIndex = 0;
+    }
+
+    // Helper: Create state snapshot
+    window.createStateSnapshot = function(boardId) {
+      const state = getState(boardId);
+      if (!state) return null;
+      return JSON.stringify({
+        strokes: (state.strokes || []).map(function(s) {
+          return { points: s.points || [], color: s.color || '#000000', width: s.width || 3 };
+        }),
+        regressionPoints: (state.regressionPoints || []).slice(),
+        autoCreatedPoints: (state.autoCreatedPoints || []).slice(),
+        autoCreatedPointsData: (state.autoCreatedPointsData || []).slice()
+      });
+    };
+
+    // Helper: Restore state from snapshot
+    window.restoreStateSnapshot = function(boardId, snapshot) {
+      const board = window.__boards && window.__boards[boardId];
+      const state = getState(boardId);
+      if (!state || !snapshot) return;
+
+      try {
+        const data = JSON.parse(snapshot);
+        
+        // Clear current state
+        state.strokes = [];
+        state.regressionPoints = [];
+        
+        // Remove old auto-created points from board
+        if (Array.isArray(state.autoCreatedPoints)) {
+          state.autoCreatedPoints.forEach(function(pointName) {
+            try {
+              const pt = window.__points && window.__points[boardId] && window.__points[boardId][pointName];
+              if (pt && board) board.removeObject(pt);
+              if (window.__points && window.__points[boardId]) delete window.__points[boardId][pointName];
+            } catch (e) {}
+          });
+        }
+        state.autoCreatedPoints = [];
+        
+        // Restore strokes
+        if (Array.isArray(data.strokes)) {
+          state.strokes = data.strokes.map(function(s) {
+            return { points: s.points || [], color: s.color || '#000000', width: s.width || 3 };
+          });
+        }
+        
+        // Restore regression points
+        if (Array.isArray(data.regressionPoints)) {
+          state.regressionPoints = data.regressionPoints.slice();
+        }
+        
+        // Restore auto-created points
+        if (Array.isArray(data.autoCreatedPoints) && board) {
+          data.autoCreatedPoints.forEach(function(pointName) {
+            // Find point by checking autoCreatedPointsData for its coordinates
+            const ptData = data.autoCreatedPointsData && data.autoCreatedPointsData.find(function(p) { return p.key === pointName; });
+            if (ptData && board) {
+              try {
+                const createdPt = board.create('point', [ptData.x, ptData.y], {
+                  name: pointName,
+                  fixed: false,
+                  withLabel: false,
+                  showInfobox: false,
+                  strokeColor: '#ff00ff',
+                  fillColor: '#ff00ff',
+                  highlightStrokeColor: '#ff00ff',
+                  highlightFillColor: '#ff00ff',
+                  strokeWidth: 3,
+                  highlightStrokeWidth: 3,
+                  face: 'x',
+                  size: 7
+                });
+                if (!window.__points) window.__points = {};
+                if (!window.__points[boardId]) window.__points[boardId] = {};
+                window.__points[boardId][pointName] = createdPt;
+                state.autoCreatedPoints.push(pointName);
+              } catch (e) {}
+            }
+          });
+        }
+        
+        scheduleRedraw(boardId);
+      } catch (e) {
+        console.error('[Undo/Redo] Error restoring state:', e);
+      }
+    };
+
+    // Undo function
+    window.undoAction = function(boardId) {
+      const state = getState(boardId);
+      if (!state || !state.history || state.historyIndex <= 0) return;
+      
+      state.historyIndex -= 1;
+      const snapshot = state.history[state.historyIndex];
+      window.restoreStateSnapshot(boardId, snapshot);
+      updateUi(boardId);
+    };
+
+    // Redo function
+    window.redoAction = function(boardId) {
+      const state = getState(boardId);
+      if (!state || !state.history || state.historyIndex >= state.history.length - 1) return;
+      
+      state.historyIndex += 1;
+      const snapshot = state.history[state.historyIndex];
+      window.restoreStateSnapshot(boardId, snapshot);
+      updateUi(boardId);
+    };
+
+    // Helper: Save state to history
+    window.saveToHistory = function(boardId) {
+      const state = getState(boardId);
+      if (!state || !state.history) return;
+      
+      // Remove any redo history if we're not at the end
+      if (state.historyIndex < state.history.length - 1) {
+        state.history = state.history.slice(0, state.historyIndex + 1);
+      }
+      
+      const snapshot = window.createStateSnapshot(boardId);
+      if (snapshot && snapshot !== state.history[state.history.length - 1]) {
+        state.history.push(snapshot);
+        state.historyIndex = state.history.length - 1;
+        
+        // Limit history to 50 entries
+        if (state.history.length > 50) {
+          state.history.shift();
+          state.historyIndex -= 1;
+        }
+        
+        updateUi(boardId);
+      }
+    };
+
     try {
       board.on('boundingbox', function() {
         scheduleRedraw(boardId);
@@ -6493,6 +7925,15 @@ if (window.__liaRunCoordHooks) {
     const board = window.__boards && window.__boards[boardId];
     const state = getState(boardId);
     if (!board || !board.containerObj || !state) return false;
+    const hasDrawSpec = !!(window.__liaCoordDrawSpecs && window.__liaCoordDrawSpecs[boardId]);
+    const hasRegressionSpec = !!(window.__liaCoordRegressionSpecs && window.__liaCoordRegressionSpecs[boardId]);
+
+    state.showDrawButtons = hasDrawSpec;
+    if (!hasDrawSpec && (state.tool === 'draw' || state.tool === 'erase' || state.tool === 'analyze')) {
+      state.tool = '';
+      state.drawing = false;
+      state.pointerId = null;
+    }
 
     ensureCss();
 
@@ -6523,7 +7964,7 @@ if (window.__liaRunCoordHooks) {
       button.type = 'button';
       button.className = 'lia-plot-draw-toggle';
       button.setAttribute('aria-label', 'Freihandzeichnen');
-      button.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" style="display:block;overflow:visible"><path class="ico-stroke" d="M4 20l4.7-1.1L19 8.6 15.4 5 5.1 15.3z"></path><path class="ico-stroke" d="M13.9 6.5l3.6 3.6"></path></svg>';
+      button.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" style="width:22px;height:22px;display:block;"><path class="ico-stroke" d="M4 20l4.7-1.1L19 8.6 15.4 5 5.1 15.3z"></path><path class="ico-stroke" d="M13.9 6.5l3.6 3.6"></path><circle class="ico-color-dot" cx="16.5" cy="16.5" r="4.5"></circle></svg>';
       board.containerObj.appendChild(button);
     }
 
@@ -6533,7 +7974,7 @@ if (window.__liaRunCoordHooks) {
       eraseButton.type = 'button';
       eraseButton.className = 'lia-plot-draw-toggle lia-plot-erase-toggle';
       eraseButton.setAttribute('aria-label', 'Pinselstrich loeschen');
-      eraseButton.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" style="display:block;overflow:visible;transform:translate(-2px,-2px)"><path class="ico-stroke" d="M6.2 15.7l8-8a2 2 0 0 1 2.8 0l3.1 3.1a2 2 0 0 1 0 2.8L13.4 20.3H9.3l-3.1-3.1a2 2 0 0 1 0-1.5z"></path><path class="ico-stroke" d="M9.2 20.3h8"></path><path class="ico-stroke" d="M10 13.9l5.7 5.7"></path></svg>';
+      eraseButton.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" style="width:22px;height:22px;display:block;"><path class="ico-stroke" d="M6.2 15.7l8-8a2 2 0 0 1 2.8 0l3.1 3.1a2 2 0 0 1 0 2.8L13.4 20.3H9.3l-3.1-3.1a2 2 0 0 1 0-1.5z"></path><path class="ico-stroke" d="M9.2 20.3h8"></path><path class="ico-stroke" d="M10 13.9l5.7 5.7"></path></svg>';
       board.containerObj.appendChild(eraseButton);
     }
 
@@ -6547,7 +7988,59 @@ if (window.__liaRunCoordHooks) {
       board.containerObj.appendChild(analyzeButton);
     }
 
-    let colorMenu = board.containerObj.querySelector('.lia-plot-color-menu');
+    let undoButton = board.containerObj.querySelector('.lia-plot-undo-btn');
+    if (!undoButton) {
+      undoButton = document.createElement('button');
+      undoButton.type = 'button';
+      undoButton.className = 'lia-plot-undo-btn';
+      undoButton.setAttribute('aria-label', 'Rückgängig');
+      undoButton.innerHTML = '<svg viewBox="-4 0 24 24" aria-hidden="true" style="width:22px;height:22px;display:block;transform:translateX(-2px);"><path d="M21 8H10.2V4L2 12l8.2 8v-4H21V8z" fill="currentColor"/><rect x="10.2" y="10.6" width="10.8" height="2.8" rx="1.4" fill="currentColor"/></svg>';
+      undoButton.onclick = function() { window.undoAction(boardId); };
+      board.containerObj.appendChild(undoButton);
+    }
+
+    let redoButton = board.containerObj.querySelector('.lia-plot-redo-btn');
+    if (!redoButton) {
+      redoButton = document.createElement('button');
+      redoButton.type = 'button';
+      redoButton.className = 'lia-plot-redo-btn';
+      redoButton.setAttribute('aria-label', 'Wiederherstellen');
+      redoButton.innerHTML = '<svg viewBox="-4 0 24 24" aria-hidden="true" style="width:22px;height:22px;display:block;transform:translateX(-2px);"><path d="M3 8h10.8V4l8.2 8-8.2 8v-4H3V8z" fill="currentColor"/><rect x="3" y="10.6" width="10.8" height="2.8" rx="1.4" fill="currentColor"/></svg>';
+      redoButton.onclick = function() { window.redoAction(boardId); };
+      board.containerObj.appendChild(redoButton);
+    }
+
+    let regressionButton = board.containerObj.querySelector('.lia-plot-regression-toggle');
+    if (hasRegressionSpec && !regressionButton) {
+      regressionButton = document.createElement('button');
+      regressionButton.type = 'button';
+      regressionButton.className = 'lia-plot-draw-toggle lia-plot-regression-toggle';
+      regressionButton.setAttribute('aria-label', 'Regression aus Punkten');
+      regressionButton.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" style="width:22px;height:22px;display:block;"><path class="ico-stroke" d="M4 18l5-5 4 3 7-8"></path><path class="ico-stroke" d="M6 18a1.6 1.6 0 1 1 0 0.01"></path><path class="ico-stroke" d="M12.9 16a1.6 1.6 0 1 1 0 0.01"></path><path class="ico-stroke" d="M20 8a1.6 1.6 0 1 1 0 0.01"></path></svg>';
+      board.containerObj.appendChild(regressionButton);
+    }
+
+    let regressionMenu = board.containerObj.querySelector('.lia-plot-reg-menu');
+    if (hasRegressionSpec && !regressionMenu) {
+      regressionMenu = document.createElement('div');
+      regressionMenu.className = 'lia-plot-color-menu lia-plot-reg-menu';
+      regressionMenu.dataset.open = '0';
+      regressionMenu.innerHTML = '' +
+        '<button class="lia-plot-reg-item" type="button" data-action="compute">Regression berechnen</button>' +
+        '<button class="lia-plot-reg-item" type="button" data-action="clear">Auswahl aufheben</button>';
+      board.containerObj.appendChild(regressionMenu);
+    }
+
+    if (!hasRegressionSpec) {
+      if (regressionButton && regressionButton.parentNode) regressionButton.parentNode.removeChild(regressionButton);
+      if (regressionMenu && regressionMenu.parentNode) regressionMenu.parentNode.removeChild(regressionMenu);
+      regressionButton = null;
+      regressionMenu = null;
+      state.regressionMenuOpen = false;
+      if (state.tool === 'regression') state.tool = '';
+    }
+
+    let colorMenu = board.containerObj.querySelector('.lia-plot-color-menu:not(.lia-plot-reg-menu)');
     if (!colorMenu) {
       colorMenu = document.createElement('div');
       colorMenu.className = 'lia-plot-color-menu';
@@ -6577,66 +8070,144 @@ if (window.__liaRunCoordHooks) {
       analyzePanel.className = 'lia-plot-analyze-panel';
       analyzePanel.id = 'lia-analyze-panel-' + boardId;
       analyzePanel.dataset.open = '0';
-      (document.body || document.documentElement).appendChild(analyzePanel);
+      (board.containerObj || document.body || document.documentElement).appendChild(analyzePanel);
     }
 
     button.style.position = 'absolute';
-    button.style.left = '10px';
+    button.style.left = '82px';
     button.style.bottom = '10px';
-    button.style.width = '40px';
-    button.style.height = '40px';
-    button.style.minWidth = '40px';
-    button.style.minHeight = '40px';
-    button.style.display = 'flex';
-    button.style.alignItems = 'center';
-    button.style.justifyContent = 'center';
+    button.style.width = '28px';
+    button.style.height = '28px';
+    button.style.minWidth = '28px';
+    button.style.minHeight = '28px';
+    button.style.display = hasDrawSpec ? 'grid' : 'none';
+    button.style.placeItems = 'center';
     button.style.padding = '0';
     button.style.margin = '0';
     button.style.zIndex = '48';
     button.style.borderRadius = '999px';
     button.style.boxSizing = 'border-box';
     button.style.cursor = 'pointer';
-    button.style.boxShadow = '0 2px 10px rgba(0,0,0,.28)';
+    button.style.border = '2px solid currentColor';
+    button.style.background = 'transparent';
 
     eraseButton.style.position = 'absolute';
-    eraseButton.style.left = '56px';
+    eraseButton.style.left = '118px';
     eraseButton.style.bottom = '10px';
-    eraseButton.style.width = '40px';
-    eraseButton.style.height = '40px';
-    eraseButton.style.minWidth = '40px';
-    eraseButton.style.minHeight = '40px';
-    eraseButton.style.display = 'flex';
-    eraseButton.style.alignItems = 'center';
-    eraseButton.style.justifyContent = 'center';
+    eraseButton.style.width = '28px';
+    eraseButton.style.height = '28px';
+    eraseButton.style.minWidth = '28px';
+    eraseButton.style.minHeight = '28px';
+    eraseButton.style.display = hasDrawSpec ? 'grid' : 'none';
+    eraseButton.style.placeItems = 'center';
     eraseButton.style.padding = '0';
     eraseButton.style.margin = '0';
     eraseButton.style.zIndex = '48';
     eraseButton.style.borderRadius = '999px';
     eraseButton.style.boxSizing = 'border-box';
     eraseButton.style.cursor = 'pointer';
-    eraseButton.style.boxShadow = '0 2px 10px rgba(0,0,0,.28)';
+    eraseButton.style.border = '2px solid currentColor';
+    eraseButton.style.background = 'transparent';
 
     analyzeButton.style.position = 'absolute';
-    analyzeButton.style.left = '102px';
+    analyzeButton.style.left = '154px';
     analyzeButton.style.bottom = '10px';
-    analyzeButton.style.width = '40px';
-    analyzeButton.style.height = '40px';
-    analyzeButton.style.minWidth = '40px';
-    analyzeButton.style.minHeight = '40px';
-    analyzeButton.style.display = 'flex';
-    analyzeButton.style.alignItems = 'center';
-    analyzeButton.style.justifyContent = 'center';
+    analyzeButton.style.width = '28px';
+    analyzeButton.style.height = '28px';
+    analyzeButton.style.minWidth = '28px';
+    analyzeButton.style.minHeight = '28px';
+    analyzeButton.style.display = hasDrawSpec ? 'grid' : 'none';
+    analyzeButton.style.placeItems = 'center';
     analyzeButton.style.padding = '0';
     analyzeButton.style.margin = '0';
     analyzeButton.style.zIndex = '48';
     analyzeButton.style.borderRadius = '999px';
     analyzeButton.style.boxSizing = 'border-box';
     analyzeButton.style.cursor = 'pointer';
-    analyzeButton.style.boxShadow = '0 2px 10px rgba(0,0,0,.28)';
+    analyzeButton.style.border = '2px solid currentColor';
+    analyzeButton.style.background = 'transparent';
+
+    undoButton.style.position = 'absolute';
+    undoButton.style.left = '10px';
+    undoButton.style.bottom = '10px';
+    undoButton.style.width = '28px';
+    undoButton.style.height = '28px';
+    undoButton.style.minWidth = '28px';
+    undoButton.style.minHeight = '28px';
+    undoButton.style.display = hasDrawSpec ? 'grid' : 'none';
+    undoButton.style.placeItems = 'center';
+    undoButton.style.padding = '0';
+    undoButton.style.margin = '0';
+    undoButton.style.zIndex = '48';
+    undoButton.style.borderRadius = '999px';
+    undoButton.style.boxSizing = 'border-box';
+    undoButton.style.cursor = 'pointer';
+    undoButton.style.border = '2px solid currentColor';
+    undoButton.style.background = 'transparent';
+    undoButton.style.userSelect = 'none';
+
+    redoButton.style.position = 'absolute';
+    redoButton.style.left = '46px';
+    redoButton.style.bottom = '10px';
+    redoButton.style.width = '28px';
+    redoButton.style.height = '28px';
+    redoButton.style.minWidth = '28px';
+    redoButton.style.minHeight = '28px';
+    redoButton.style.display = hasDrawSpec ? 'grid' : 'none';
+    redoButton.style.placeItems = 'center';
+    redoButton.style.padding = '0';
+    redoButton.style.margin = '0';
+    redoButton.style.zIndex = '48';
+    redoButton.style.borderRadius = '999px';
+    redoButton.style.boxSizing = 'border-box';
+    redoButton.style.cursor = 'pointer';
+    redoButton.style.border = '2px solid currentColor';
+    redoButton.style.background = 'transparent';
+    redoButton.style.userSelect = 'none';
+
+    if (regressionButton) {
+      regressionButton.style.position = 'absolute';
+      regressionButton.style.left = hasDrawSpec ? '190px' : '10px';
+      regressionButton.style.bottom = '10px';
+      regressionButton.style.width = '28px';
+      regressionButton.style.height = '28px';
+      regressionButton.style.minWidth = '28px';
+      regressionButton.style.minHeight = '28px';
+      regressionButton.style.display = 'grid';
+      regressionButton.style.placeItems = 'center';
+      regressionButton.style.padding = '0';
+      regressionButton.style.margin = '0';
+      regressionButton.style.zIndex = '48';
+      regressionButton.style.borderRadius = '999px';
+      regressionButton.style.boxSizing = 'border-box';
+      regressionButton.style.cursor = 'pointer';
+      regressionButton.style.border = '2px solid currentColor';
+      regressionButton.style.background = 'transparent';
+    }
+
+    if (regressionMenu) {
+      regressionMenu.style.position = 'absolute';
+      regressionMenu.style.left = hasDrawSpec ? '220px' : '46px';
+      regressionMenu.style.bottom = '10px';
+      regressionMenu.style.zIndex = '56';
+      regressionMenu.style.padding = '4px';
+      {
+        const tone = neutralColor();
+        const fill = tone === '#fff' ? 'rgba(0,0,0,.82)' : 'rgba(255,255,255,.94)';
+        regressionMenu.style.color = tone;
+        regressionMenu.style.background = fill;
+        regressionMenu.style.borderRadius = '12px';
+        regressionMenu.style.overflow = 'hidden';
+        regressionMenu.style.borderColor = tone === '#fff' ? 'rgba(255,255,255,.62)' : 'rgba(0,0,0,.46)';
+        regressionMenu.style.borderStyle = 'solid';
+        regressionMenu.style.borderWidth = '1px';
+        regressionMenu.style.boxShadow = '0 6px 18px rgba(0,0,0,.18)';
+      }
+    }
 
     colorMenu.style.position = 'absolute';
     colorMenu.style.left = '10px';
-      colorMenu.style.bottom = '56px';
+    colorMenu.style.bottom = '56px';
     colorMenu.style.padding = '2px 8px';
     colorMenu.style.zIndex = '56';
       {
@@ -6653,17 +8224,33 @@ if (window.__liaRunCoordHooks) {
       }
 
     function setColorMenuOpen(open) {
-      const isOpen = !!open;
+      const isOpen = !!open && !!state.showDrawButtons;
       state.drawColorMenuOpen = isOpen;
       colorMenu.dataset.open = isOpen ? '1' : '0';
       colorMenu.style.display = isOpen ? 'grid' : 'none';
     }
     setColorMenuOpen(false);
 
+    function setRegressionMenuOpen(open) {
+      if (!regressionMenu) {
+        state.regressionMenuOpen = false;
+        return;
+      }
+      const isOpen = !!open;
+      state.regressionMenuOpen = isOpen;
+      regressionMenu.dataset.open = isOpen ? '1' : '0';
+      regressionMenu.style.display = isOpen ? 'grid' : 'none';
+    }
+    setRegressionMenuOpen(false);
+
     state.canvas = canvas;
     state.drawButton = button;
     state.eraseButton = eraseButton;
     state.analyzeButton = analyzeButton;
+    state.undoButton = undoButton;
+    state.redoButton = redoButton;
+    state.regressionButton = regressionButton;
+    state.regressionMenu = regressionMenu;
     state.analyzePanel = analyzePanel;
     state.drawColorMenu = colorMenu;
 
@@ -6679,6 +8266,7 @@ if (window.__liaRunCoordHooks) {
       } else {
         state.tool = 'draw';
         setColorMenuOpen(true);
+        setRegressionMenuOpen(false);
       }
       state.drawing = false;
       state.pointerId = null;
@@ -6717,6 +8305,7 @@ if (window.__liaRunCoordHooks) {
       state.drawing = false;
       state.pointerId = null;
       setColorMenuOpen(false);
+      setRegressionMenuOpen(false);
       updateUi(boardId);
     };
     eraseButton.addEventListener('click', eraseButton.__liaPlotEraseClickHandler);
@@ -6735,6 +8324,7 @@ if (window.__liaRunCoordHooks) {
         st.drawing = false;
         st.pointerId = null;
         setColorMenuOpen(false);
+        setRegressionMenuOpen(false);
         if (st.tool !== 'analyze') {
           st.analyzedStrokeIndex = -1;
           st.analyzedCurvePoints = null;
@@ -6750,18 +8340,88 @@ if (window.__liaRunCoordHooks) {
     };
     analyzeButton.addEventListener('click', analyzeButton.__liaPlotAnalyzeClickHandler);
 
+    if (regressionButton) {
+      if (regressionButton.__liaPlotRegressionClickHandler) {
+        try { regressionButton.removeEventListener('click', regressionButton.__liaPlotRegressionClickHandler); } catch (e) {}
+      }
+      regressionButton.__liaPlotRegressionClickHandler = function(evt) {
+        evt.preventDefault();
+        evt.stopPropagation();
+        state.tool = state.tool === 'regression' ? '' : 'regression';
+        state.drawing = false;
+        state.pointerId = null;
+        setColorMenuOpen(false);
+        setRegressionMenuOpen(state.tool === 'regression');
+        updateUi(boardId);
+        scheduleRedraw(boardId);
+      };
+      regressionButton.addEventListener('click', regressionButton.__liaPlotRegressionClickHandler);
+    }
+
+    if (regressionMenu) {
+      if (regressionMenu.__liaPlotRegressionMenuHandler) {
+        try { regressionMenu.removeEventListener('click', regressionMenu.__liaPlotRegressionMenuHandler, true); } catch (e) {}
+      }
+      regressionMenu.__liaPlotRegressionMenuHandler = function(evt) {
+        const btn = evt.target && evt.target.closest ? evt.target.closest('.lia-plot-reg-item') : null;
+        if (!btn) return;
+        evt.preventDefault();
+        evt.stopPropagation();
+        const action = String(btn.getAttribute('data-action') || '').trim();
+        if (action === 'clear') {
+          state.regressionPoints = [];
+          state.analyzedCurvePoints = null;
+          state.analyzedStrokeIndex = -1;
+          scheduleRedraw(boardId);
+          return;
+        }
+        if (action === 'compute') {
+          if (typeof state.__runRegressionFromSelectedPoints === 'function') {
+            state.__runRegressionFromSelectedPoints();
+          } else {
+            setAnalyzePanel(board, state, 'Regression noch nicht initialisiert.');
+          }
+        }
+      };
+      regressionMenu.addEventListener('click', regressionMenu.__liaPlotRegressionMenuHandler, true);
+    }
+
     bindCanvas(boardId);
     bindBoardHooks(boardId);
 
-    if (!board.containerObj.__liaPlotColorMenuDocBound) {
-      board.containerObj.__liaPlotColorMenuDocBound = true;
+    if (!board.containerObj.__liaPlotMenusDocBound) {
+      board.containerObj.__liaPlotMenusDocBound = true;
       document.addEventListener('pointerdown', function(evt) {
         const st = getState(boardId);
-        if (!st || !st.drawColorMenu) return;
-        if (!st.drawColorMenuOpen) return;
-        const inBtn = st.drawButton && st.drawButton.contains(evt.target);
-        const inMenu = st.drawColorMenu.contains(evt.target);
-        if (!inBtn && !inMenu) {
+        if (!st) return;
+
+        if (st.drawColorMenu && st.drawColorMenuOpen) {
+          const inBtn = st.drawButton && st.drawButton.contains(evt.target);
+          const inMenu = st.drawColorMenu.contains(evt.target);
+          if (!inBtn && !inMenu) {
+            st.drawColorMenuOpen = false;
+            st.drawColorMenu.dataset.open = '0';
+            st.drawColorMenu.style.display = 'none';
+          }
+        }
+
+        if (st.regressionMenu && st.regressionMenuOpen && st.tool !== 'regression') {
+          const inRegBtn = st.regressionButton && st.regressionButton.contains(evt.target);
+          const inRegMenu = st.regressionMenu.contains(evt.target);
+          if (!inRegBtn && !inRegMenu) {
+            st.regressionMenuOpen = false;
+            st.regressionMenu.dataset.open = '0';
+            st.regressionMenu.style.display = 'none';
+          }
+        }
+
+        if (st.tool !== 'regression' && st.regressionMenu && st.regressionMenu.style.display !== 'none') {
+          st.regressionMenuOpen = false;
+          st.regressionMenu.dataset.open = '0';
+          st.regressionMenu.style.display = 'none';
+        }
+
+        if (st.tool !== 'draw' && st.drawColorMenu && st.drawColorMenu.style.display !== 'none') {
           st.drawColorMenuOpen = false;
           st.drawColorMenu.dataset.open = '0';
           st.drawColorMenu.style.display = 'none';
@@ -6785,7 +8445,21 @@ if (window.__liaRunCoordHooks) {
       window.__liaCoordDrawSpecs[boardId] = { color: color };
     });
 
-    Object.keys(window.__liaCoordDrawSpecs || {}).forEach(function(boardId) {
+    getToolBoardIds().forEach(function(boardId) {
+      ensureBoardTools(boardId);
+    });
+  };
+
+  window.__bootstrapRegression = function() {
+    const nodes = document.querySelectorAll('[id^="regression-spec-"][data-board-id]');
+
+    nodes.forEach(function(node) {
+      const boardId = String(node.dataset.boardId || '').trim();
+      if (!boardId) return;
+      window.__liaCoordRegressionSpecs[boardId] = { enabled: true };
+    });
+
+    getToolBoardIds().forEach(function(boardId) {
       ensureBoardTools(boardId);
     });
   };
@@ -6793,6 +8467,7 @@ if (window.__liaRunCoordHooks) {
   try {
     const mo = new MutationObserver(function() {
       if (window.__bootstrapPlotZeichnen) window.__bootstrapPlotZeichnen();
+      if (window.__bootstrapRegression) window.__bootstrapRegression();
     });
 
     const root = document.body || document.documentElement;
@@ -6809,18 +8484,21 @@ if (window.__liaRunCoordHooks) {
   try {
     if (window.__registerLiaThemeListener) {
       window.__registerLiaThemeListener(function() {
-        Object.keys(window.__liaCoordDrawSpecs || {}).forEach(updateUi);
+        getToolBoardIds().forEach(updateUi);
       });
     }
   } catch (e) {}
 
   try {
     if (window.__bootstrapPlotZeichnen) window.__bootstrapPlotZeichnen();
+    if (window.__bootstrapRegression) window.__bootstrapRegression();
     setTimeout(function() {
       if (window.__bootstrapPlotZeichnen) window.__bootstrapPlotZeichnen();
+      if (window.__bootstrapRegression) window.__bootstrapRegression();
     }, 80);
     setTimeout(function() {
       if (window.__bootstrapPlotZeichnen) window.__bootstrapPlotZeichnen();
+      if (window.__bootstrapRegression) window.__bootstrapRegression();
     }, 220);
   } catch (e) {}
 
@@ -6832,7 +8510,7 @@ if (window.__liaRunCoordHooks) {
     const sig = tone + '|' + activeBg;
     if (sig === __lastPlotThemeSig) return;
     __lastPlotThemeSig = sig;
-    Object.keys(window.__liaCoordDrawSpecs || {}).forEach(updateUi);
+    getToolBoardIds().forEach(updateUi);
   }, 350);
 })();
 
@@ -9688,10 +11366,13 @@ function currentAccentColor() {
 
       function setMsg(text, isError){
         msg.textContent = text || '';
+        msg.style.display = text ? 'inline-block' : 'none';
         msg.style.marginTop = '.45rem';
-        msg.style.minHeight = '1.2em';
+        msg.style.minHeight = '0';
+        msg.style.height = 'auto';
         msg.style.fontSize = '.95rem';
         msg.style.lineHeight = '1.25';
+        msg.style.padding = '0';
         msg.style.fontWeight = text ? '600' : '400';
         msg.style.color = text ? (isError ? '#b00020' : '#1d6f42') : '';
       }

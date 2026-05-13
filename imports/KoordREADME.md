@@ -1298,49 +1298,61 @@ import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
 
 
 
-@PlotZeichnen: @PlotZeichnen_(@uid,@0)
+@Regression: @Regression_(@uid,@0)
 
-@PlotZeichnen_
-<span id="plot-zeichnen-spec-@0" data-color="@1" style="display:none;"></span>
+@Regression_
+<span id="plot-zeichnen-spec-@0" data-color="#ff0000" data-board-id="@1" style="display:none;"></span>
+<span id="regression-spec-@0" data-board-id="@1" style="display:none;"></span>
 <script modify="false">
 (function(){
-  const node = document.getElementById('plot-zeichnen-spec-@0');
-  if (!node) return;
+  const drawNode = document.getElementById('plot-zeichnen-spec-@0');
+  const regNode = document.getElementById('regression-spec-@0');
+  if (!drawNode || !regNode) return;
 
   function parseSpec(rawValue) {
     const raw = String(rawValue || '').trim();
-    if (!raw) return { color: '', boardId: '' };
+    if (!raw) return { color: '#ff0000', boardId: '' };
 
+    const idMatch = raw.match(/(?:^|;)\s*id\s*=\s*([^;]+)/i);
     const parts = raw.split(';').map(function(part) {
       return String(part || '').trim();
     }).filter(Boolean);
 
+    if (idMatch && idMatch[1]) {
+      return { color: '#ff0000', boardId: String(idMatch[1]).trim() };
+    }
+
     if (parts.length >= 2) {
       return {
-        color: parts[0],
-        boardId: parts[1]
+        color: String(parts[0] || '#ff0000').trim() || '#ff0000',
+        boardId: String(parts[parts.length - 1] || '').trim()
       };
     }
 
-    return {
-      color: raw,
-      boardId: ''
-    };
+    return { color: '#ff0000', boardId: raw };
   }
 
   function register() {
-    const parsed = parseSpec(node.dataset.color || String.raw`@1` || '');
-    const color = String(parsed.color || '').trim();
-    const boardId = String(node.dataset.boardId || parsed.boardId || window.__liaLastCoordBoardId || '').trim();
-    if (!color || !boardId) return false;
+    const parsed = parseSpec(String.raw`@1` || '');
+    const color = String(drawNode.dataset.color || parsed.color || '#ff0000').trim() || '#ff0000';
+    const boardId = String(drawNode.dataset.boardId || regNode.dataset.boardId || parsed.boardId || window.__liaLastCoordBoardId || '').trim();
+    if (!boardId) return false;
 
-    node.dataset.color = color;
-    node.dataset.boardId = boardId;
+    drawNode.dataset.color = color;
+    drawNode.dataset.boardId = boardId;
+    regNode.dataset.boardId = boardId;
+
     window.__liaCoordDrawSpecs = window.__liaCoordDrawSpecs || {};
     window.__liaCoordDrawSpecs[boardId] = { color: color };
 
+    window.__liaCoordRegressionSpecs = window.__liaCoordRegressionSpecs || {};
+    window.__liaCoordRegressionSpecs[boardId] = { enabled: true };
+
     if (typeof window.__bootstrapPlotZeichnen === 'function') {
       window.__bootstrapPlotZeichnen();
+    }
+    if (typeof window.__bootstrapRegression === 'function') {
+      window.__bootstrapRegression();
     }
     return true;
   }
@@ -1352,6 +1364,9 @@ import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
 })();
 </script>
 @end
+
+@Regession: @Regression(@0)
+@PlotZeichnen: @Regression(@0)
 
 
 
@@ -1719,21 +1734,25 @@ Mit Farbeinstellungen: @PunkteAufGraph(`A5;n=4;d=3;A;#ff00ff;g;2x-4;#b41f65;0.05
 
 
 
-# Funktion zeichnen
+# Funktion zeichnen / Regression
 
 @Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A9`)
 
 @AchsenBeschriftung(`id=A9;xlabel=$x$;ylabel=$y$`)
 
-@PlotZeichnen(`#fff;A9`)
+@Regression(`A9`)
 
+
+@Punkt(`A9;A;2;3`)
+@Punkt(`A9;B;-2;-1`)
+@Punkt(`A9;C;5;-2`)
 
 ```
 @Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A9`)
 
 @AchsenBeschriftung(`id=A9;xlabel=$x$;ylabel=$y$`)
 
-@PlotZeichnen(`#fff;A9`)
+@Regression(`A9`)
 ```
 
 
@@ -1753,6 +1772,7 @@ Mit Farbeinstellungen: @PunkteAufGraph(`A5;n=4;d=3;A;#ff00ff;g;2x-4;#b41f65;0.05
 
 @Schar(`h;x;A e^{{b{{x+c}}}}+d;A3;term=1;#00ff00`)
 
+@Schar(`l;x;A ln{{b{{x+c}}}}+d;A3;term=1;#22aa66`)
 
 
 # Funktion schiebbar 2
@@ -1765,7 +1785,9 @@ Mit Farbeinstellungen: @PunkteAufGraph(`A5;n=4;d=3;A;#ff00ff;g;2x-4;#b41f65;0.05
 
 @Schar(`k;x;A sqrt{{b{{x+c}}}}+d;A11;term=1;#ff9900`)
 
-@Schar(`l;x;A ln{{b{{x+c}}}}+d;A11;term=1;#22aa66`)
+@Schar(`q;x;A/{{b{{x+c}}}}+d;A11;term=1;#ffff00`)
+
+
 
 
 
