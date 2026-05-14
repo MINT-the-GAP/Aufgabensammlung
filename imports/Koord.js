@@ -266,9 +266,9 @@ if (window.__liaRunCoordHooks) {
       s = s.replace(/\^/g, '**');
       s = s.replace(/(\d)\s*([A-Za-z(])/g, '$1*$2');
       s = s.replace(/\)\s*([A-Za-z0-9(])/g, ')*$1');
-      s = s.replace(new RegExp('([abc])\\s*(' + vEsc + ')', 'g'), '$1*$2');
+      s = s.replace(new RegExp('([abcdf])\\s*(' + vEsc + ')', 'g'), '$1*$2');
       s = s.replace(new RegExp('(' + vEsc + ')\\s*\\(', 'g'), '$1*(');
-      s = s.replace(/([abc])\s*\(/g, '$1*(');
+      s = s.replace(/([abcdf])\s*\(/g, '$1*(');
 
       const reserved = {
         pi: true, e: true,
@@ -294,21 +294,21 @@ if (window.__liaRunCoordHooks) {
         return name;
       });
 
-      const usedCanonical = { a: false, b: false, c: false };
+      const usedCanonical = { a: false, b: false, c: false, d: false, f: false };
       s.replace(/\b([A-Za-z_][A-Za-z0-9_]*)\b/g, function(token) {
         const name = String(token || '');
-        if (name === 'a' || name === 'b' || name === 'c') usedCanonical[name] = true;
+        if (name === 'a' || name === 'b' || name === 'c' || name === 'd' || name === 'f') usedCanonical[name] = true;
         return token;
       });
 
       const slotByToken = Object.create(null);
-      const preferredSlots = ['a', 'b', 'c'].filter(function(slot) { return !usedCanonical[slot]; });
+      const preferredSlots = ['a', 'b', 'c', 'd', 'f'].filter(function(slot) { return !usedCanonical[slot]; });
 
       s = s.replace(/\b([A-Za-z_][A-Za-z0-9_]*)\b/g, function(token) {
         const name = String(token || '');
         const lower = name.toLowerCase();
         if (reserved[lower]) return name;
-        if (name === 'a' || name === 'b' || name === 'c') return name;
+        if (name === 'a' || name === 'b' || name === 'c' || name === 'd' || name === 'f') return name;
         if (slotByToken[lower]) return slotByToken[lower];
 
         const nextSlot = preferredSlots.shift();
@@ -317,9 +317,9 @@ if (window.__liaRunCoordHooks) {
         return nextSlot;
       });
 
-      s = s.replace(new RegExp('\\b([abc])\\s*(' + vEsc + ')', 'g'), '$1*$2');
-      s = s.replace(/\b([abc])\s*\(/g, '$1*(');
-      s = s.replace(/\b([abc])\s+(?=(?:pi|e|sin|cos|tan|asin|acos|atan|sinh|cosh|tanh|exp|log|ln|sqrt|abs|floor|ceil|round|min|max|pow)\b)/gi, '$1*');
+      s = s.replace(new RegExp('\\b([abcdf])\\s*(' + vEsc + ')', 'g'), '$1*$2');
+      s = s.replace(/\b([abcdf])\s*\(/g, '$1*(');
+      s = s.replace(/\b([abcdf])\s+(?=(?:pi|e|sin|cos|tan|asin|acos|atan|sinh|cosh|tanh|exp|log|ln|sqrt|abs|floor|ceil|round|min|max|pow)\b)/gi, '$1*');
 
       return s.trim();
     }
@@ -353,7 +353,9 @@ if (window.__liaRunCoordHooks) {
       return {
         a: found[0] || 'a',
         b: found[1] || 'b',
-        c: found[2] || 'c'
+        c: found[2] || 'c',
+        d: found[3] || 'd',
+        f: found[4] || 'f'
       };
     }
 
@@ -367,6 +369,8 @@ if (window.__liaRunCoordHooks) {
           'a',
           'b',
           'c',
+          'd',
+          'f',
           `
           const pi = Math.PI;
           const e = Math.E;
@@ -406,13 +410,17 @@ if (window.__liaRunCoordHooks) {
       return String(Math.round(n * 100) / 100);
     }
 
-    function substituteTerm(expr, variableName, aValue, bValue, cValue) {
+    function substituteTerm(expr, variableName, aValue, bValue, cValue, dValue, fValue) {
       const normalized = normalizeFamilyExpr(expr, variableName).replace(/\*\*/g, '^');
       const cResolved = (cValue == null) ? 0 : cValue;
-      let out = normalized.replace(/\b(a|b|c)\b/g, function(match) {
+      const dResolved = (dValue == null) ? 0 : dValue;
+      const fResolved = (fValue == null) ? 0 : fValue;
+      let out = normalized.replace(/\b(a|b|c|d|f)\b/g, function(match) {
         if (match === 'a') return formatNumber(aValue);
         if (match === 'b') return formatNumber(bValue);
-        return formatNumber(cResolved);
+        if (match === 'c') return formatNumber(cResolved);
+        if (match === 'd') return formatNumber(dResolved);
+        return formatNumber(fResolved);
       });
       out = out
         .replace(/\+\s*-/g, '- ')
@@ -427,14 +435,16 @@ if (window.__liaRunCoordHooks) {
       return out;
     }
 
-    function evaluateAt(entry, xValue, bValue, cValue) {
+    function evaluateAt(entry, xValue, bValue, cValue, dValue, fValue) {
       if (!entry || typeof entry.fn !== 'function') return NaN;
       try {
         const value = entry.fn(
           xValue,
           entry.a,
           bValue == null ? entry.b : bValue,
-          cValue == null ? ((entry && entry.c == null) ? 0 : entry.c) : cValue
+          cValue == null ? ((entry && entry.c == null) ? 0 : entry.c) : cValue,
+          dValue == null ? ((entry && entry.d == null) ? 0 : entry.d) : dValue,
+          fValue == null ? ((entry && entry.f == null) ? 0 : entry.f) : fValue
         );
         return Number.isFinite(value) ? value : NaN;
       } catch (e) {
@@ -499,6 +509,45 @@ if (window.__liaRunCoordHooks) {
           } catch (e) {}
         });
       } catch (e) {}
+    }
+
+    function getUsedParams(entry) {
+      const allowed = ['a', 'b', 'c', 'd', 'f'];
+      const seen = Object.create(null);
+      const out = [];
+
+      const src = Array.isArray(entry && entry.usedParams) ? entry.usedParams : [];
+      for (let i = 0; i < src.length; i++) {
+        const p = String(src[i] || '').trim();
+        if (!allowed.includes(p)) continue;
+        if (seen[p]) continue;
+        seen[p] = true;
+        out.push(p);
+      }
+
+      if (!out.length && entry && entry.cfg && entry.cfg.expr) {
+        let normalized = '';
+        try {
+          normalized = normalizeFamilyExpr(entry.cfg.expr, entry.cfg.variableName || 'x');
+        } catch (e) {
+          normalized = String(entry.cfg.expr || '');
+        }
+
+        for (let i = 0; i < allowed.length; i++) {
+          const p = allowed[i];
+          try {
+            if (new RegExp('\\b' + p + '\\b').test(normalized)) out.push(p);
+          } catch (e) {}
+        }
+      }
+
+      if (!out.length) out.push('a');
+      return out;
+    }
+
+    function getSliderLabelForParam(entry, param) {
+      const mapped = entry && entry.paramSlots ? entry.paramSlots[param] : '';
+      return String(mapped || param || 'a').trim() || 'a';
     }
 
     function ensureNameTag(entry) {
@@ -625,10 +674,7 @@ if (window.__liaRunCoordHooks) {
           panel = document.createElement('div');
           panel.className = 'lia-schar-panel';
           panel.innerHTML = '' +
-            '<div class="lia-schar-head">' +
-              '<span class="lia-schar-label">a:</span>' +
-              '<input class="lia-schar-slider" type="range" min="-10" max="10" step="0.05" value="1" />' +
-            '</div>' +
+            '<div class="lia-schar-sliders"></div>' +
             '<label class="lia-schar-term-toggle-wrap"><input class="lia-schar-term-toggle" type="checkbox" /> Term anzeigen</label>' +
             '<div class="lia-schar-term"></div>';
         }
@@ -636,11 +682,16 @@ if (window.__liaRunCoordHooks) {
       }
 
       entry.panel = panel;
-      entry.labelEl = panel.querySelector('.lia-schar-label');
-      entry.sliderEl = panel.querySelector('.lia-schar-slider');
+      entry.slidersRootEl = panel.querySelector('.lia-schar-sliders');
+      if (!entry.slidersRootEl) {
+        entry.slidersRootEl = document.createElement('div');
+        entry.slidersRootEl.className = 'lia-schar-sliders';
+        panel.insertBefore(entry.slidersRootEl, panel.firstChild || null);
+      }
       entry.termToggleWrapEl = panel.querySelector('.lia-schar-term-toggle-wrap');
       entry.termToggleEl = panel.querySelector('.lia-schar-term-toggle');
       entry.termEl = panel.querySelector('.lia-schar-term');
+      entry.sliderControls = entry.sliderControls || Object.create(null);
 
       if (!entry.termToggleWrapEl && entry.termEl) {
         const wrap = document.createElement('label');
@@ -659,26 +710,78 @@ if (window.__liaRunCoordHooks) {
       panel.style.zIndex = '52';
       panel.style.display = 'block';
 
-      const sliderParamName = (entry.paramSlots && entry.paramSlots.a) ? entry.paramSlots.a : 'a';
-      if (entry.labelEl) {
-        entry.labelEl.innerHTML = '\\(' + sliderParamName + '\\):';
+      const usedParams = getUsedParams(entry);
+      const sliderTone = entry.cfg && entry.cfg.color ? entry.cfg.color : '#0b5fff';
+
+      const expected = Object.create(null);
+      for (let i = 0; i < usedParams.length; i++) {
+        expected[usedParams[i]] = true;
+      }
+
+      Object.keys(entry.sliderControls).forEach(function(param) {
+        if (expected[param]) return;
+        const ctrl = entry.sliderControls[param];
+        try {
+          if (ctrl && ctrl.row && ctrl.row.parentNode) ctrl.row.parentNode.removeChild(ctrl.row);
+        } catch (e) {}
+        delete entry.sliderControls[param];
+      });
+
+      for (let i = 0; i < usedParams.length; i++) {
+        const param = usedParams[i];
+        let ctrl = entry.sliderControls[param];
+
+        if (!ctrl || !ctrl.row || !ctrl.row.parentNode) {
+          const row = document.createElement('div');
+          row.className = 'lia-schar-head';
+
+          const label = document.createElement('span');
+          label.className = 'lia-schar-label';
+
+          const slider = document.createElement('input');
+          slider.className = 'lia-schar-slider';
+          slider.type = 'range';
+          slider.min = '-10';
+          slider.max = '10';
+          slider.step = '0.05';
+
+          row.appendChild(label);
+          row.appendChild(slider);
+          entry.slidersRootEl.appendChild(row);
+
+          ctrl = { row: row, label: label, slider: slider, param: param };
+          entry.sliderControls[param] = ctrl;
+
+          if (!slider.__liaScharBound) {
+            slider.__liaScharBound = true;
+            const blockBoardGesture = function(evt) {
+              try { evt.stopPropagation(); } catch (e) {}
+            };
+            ['pointerdown', 'pointerup', 'pointercancel', 'mousedown', 'mouseup', 'touchstart', 'touchend', 'click'].forEach(function(type) {
+              try { slider.addEventListener(type, blockBoardGesture, true); } catch (e) {}
+            });
+            slider.addEventListener('input', function() {
+              const p = String(slider.dataset.param || param);
+              entry[p] = Math.max(-10, Math.min(10, Number(slider.value || 0)));
+              refreshEntry(entry, true);
+            });
+          }
+        }
+
+        ctrl.param = param;
+        ctrl.slider.dataset.param = param;
+        ctrl.slider.style.accentColor = sliderTone;
+        ctrl.label.innerHTML = '\\(' + getSliderLabelForParam(entry, param) + '\\):';
+
         try {
           const MJ = window.MathJax || (window.parent && window.parent.MathJax);
           if (MJ && typeof MJ.typesetPromise === 'function') {
             if (typeof MJ.typesetClear === 'function') {
-              try { MJ.typesetClear([entry.labelEl]); } catch (e) {}
+              try { MJ.typesetClear([ctrl.label]); } catch (e) {}
             }
-            MJ.typesetPromise([entry.labelEl]).catch(function(){});
-            if (typeof requestAnimationFrame === 'function') {
-              requestAnimationFrame(function() {
-                try { MJ.typesetPromise([entry.labelEl]).catch(function(){}); } catch (e) {}
-              });
-            }
+            MJ.typesetPromise([ctrl.label]).catch(function(){});
           }
         } catch (e) {}
-      }
-      if (entry.sliderEl) {
-        entry.sliderEl.style.accentColor = entry.cfg && entry.cfg.color ? entry.cfg.color : '#0b5fff';
       }
 
       if (entry.termToggleWrapEl) {
@@ -689,20 +792,6 @@ if (window.__liaRunCoordHooks) {
         entry.termToggleWrapEl.style.marginTop = '6px';
         entry.termToggleWrapEl.style.fontSize = '13px';
         entry.termToggleWrapEl.style.userSelect = 'none';
-      }
-
-      if (entry.sliderEl && !entry.sliderEl.__liaScharBound) {
-        entry.sliderEl.__liaScharBound = true;
-        const blockBoardGesture = function(evt) {
-          try { evt.stopPropagation(); } catch (e) {}
-        };
-        ['pointerdown', 'pointerup', 'pointercancel', 'mousedown', 'mouseup', 'touchstart', 'touchend', 'click'].forEach(function(type) {
-          try { entry.sliderEl.addEventListener(type, blockBoardGesture, true); } catch (e) {}
-        });
-        entry.sliderEl.addEventListener('input', function() {
-          entry.a = Math.max(-10, Math.min(10, Number(entry.sliderEl.value || 0)));
-          refreshEntry(entry, true);
-        });
       }
 
       if (entry.termToggleEl && !entry.termToggleEl.__liaScharBound) {
@@ -723,7 +812,7 @@ if (window.__liaRunCoordHooks) {
 
       relayoutPanelsForBoard(entry.boardId, entry.board);
 
-      return !!entry.sliderEl && !!entry.termEl;
+      return !!entry.termEl;
     }
 
     function refreshEntry(entry) {
@@ -731,8 +820,13 @@ if (window.__liaRunCoordHooks) {
       if (!ensurePanel(entry)) return false;
       ensureNameTag(entry);
 
-      if (entry.sliderEl) {
-        entry.sliderEl.value = String(entry.a);
+      const usedParams = getUsedParams(entry);
+      for (let i = 0; i < usedParams.length; i++) {
+        const param = usedParams[i];
+        const ctrl = entry.sliderControls && entry.sliderControls[param];
+        if (!ctrl || !ctrl.slider) continue;
+        const val = Number(entry[param]);
+        ctrl.slider.value = String(Number.isFinite(val) ? val : 0);
       }
 
       const allowTerm = !!(entry.cfg && Number(entry.cfg.showTerm) !== 0);
@@ -799,7 +893,7 @@ if (window.__liaRunCoordHooks) {
         const shouldShowTerm = allowTerm && (hasToggle ? !!entry.termVisible : true);
         entry.termEl.style.display = shouldShowTerm ? 'block' : 'none';
         if (shouldShowTerm) {
-          const termText = substituteTerm(entry.cfg.expr, entry.cfg.variableName, entry.a, entry.b, entry.c).replace(/\*/g, ' \\cdot ');
+          const termText = substituteTerm(entry.cfg.expr, entry.cfg.variableName, entry.a, entry.b, entry.c, entry.d, entry.f).replace(/\*/g, ' \\cdot ');
           entry.termEl.innerHTML = '\\(' + entry.cfg.name + '(' + entry.cfg.variableName + ')=' + termText + '\\)';
           fitPanelToTerm();
           shrinkRenderedMath();
@@ -948,6 +1042,10 @@ if (window.__liaRunCoordHooks) {
       const board = window.__boards && window.__boards[boardId];
       if (!uid || !boardId || !board || !cfg.expr) return false;
 
+      const normalizedExpr = normalizeFamilyExpr(cfg.expr, cfg.variableName);
+      const fn = compileFamilyExpr(cfg.expr, cfg.variableName);
+      if (!fn) return false;
+
       const key = 'schar-' + uid;
       let entry = window.__scharEntries[key];
 
@@ -965,12 +1063,19 @@ if (window.__liaRunCoordHooks) {
         entry.cfg.showTerm === cfg.showTerm
       ) {
         entry.cfg = cfg;
+        entry.paramSlots = extractParamSlots(cfg.expr, cfg.variableName);
+        entry.usedParams = ['a', 'b', 'c', 'd', 'f'].filter(function(param) {
+          try {
+            return new RegExp('\\b' + param + '\\b').test(normalizedExpr);
+          } catch (e) {
+            return false;
+          }
+        });
+        entry.fn = fn;
+        if (!Number.isFinite(entry.d)) entry.d = 0;
+        if (!Number.isFinite(entry.f)) entry.f = 0;
         return refreshEntry(entry);
       }
-
-      const normalizedExpr = normalizeFamilyExpr(cfg.expr, cfg.variableName);
-      const fn = compileFamilyExpr(cfg.expr, cfg.variableName);
-      if (!fn) return false;
 
       removeExisting(uid);
 
@@ -980,17 +1085,27 @@ if (window.__liaRunCoordHooks) {
         board: board,
         cfg: cfg,
         paramSlots: extractParamSlots(cfg.expr, cfg.variableName),
+        usedParams: ['a', 'b', 'c', 'd', 'f'].filter(function(param) {
+          try {
+            return new RegExp('\\b' + param + '\\b').test(normalizedExpr);
+          } catch (e) {
+            return false;
+          }
+        }),
         fn: fn,
         a: 1,
         b: 0,
         c: 0,
+        d: 0,
+        f: 0,
         dragUsesC: /[+\-]\s*c\b/.test(normalizedExpr),
         dragSupportsX: /\bb\b/.test(normalizedExpr),
         graph: null,
         nameTag: null,
         nameAnchor: null,
         panel: null,
-        sliderEl: null,
+        slidersRootEl: null,
+        sliderControls: null,
         valueEl: null,
         termToggleWrapEl: null,
         termToggleEl: null,
@@ -2750,7 +2865,7 @@ if (window.__liaRunCoordHooks) {
     });
 
     const slotByToken = Object.create(null);
-    const slots = ['a', 'b', 'c', 'd'];
+    const slots = ['a', 'b', 'c', 'd', 'f'];
     let slotIndex = 0;
 
     s = s.replace(/\b([A-Za-z_][A-Za-z0-9_]*)\b/g, function(token) {
@@ -2767,9 +2882,9 @@ if (window.__liaRunCoordHooks) {
       return nextSlot;
     });
 
-    s = s.replace(new RegExp('\\b([abcd])\\s*(' + vEsc + ')', 'g'), '$1*$2');
-    s = s.replace(/\b([abcd])\s*\(/g, '$1*(');
-    s = s.replace(/\b([abcd])\s+(?=(?:pi|e|sin|cos|tan|asin|acos|atan|sinh|cosh|tanh|exp|log|ln|sqrt|abs|floor|ceil|round|min|max|pow)\b)/gi, '$1*');
+    s = s.replace(new RegExp('\\b([abcdf])\\s*(' + vEsc + ')', 'g'), '$1*$2');
+    s = s.replace(/\b([abcdf])\s*\(/g, '$1*(');
+    s = s.replace(/\b([abcdf])\s+(?=(?:pi|e|sin|cos|tan|asin|acos|atan|sinh|cosh|tanh|exp|log|ln|sqrt|abs|floor|ceil|round|min|max|pow)\b)/gi, '$1*');
 
     return s.trim();
   }
@@ -2814,7 +2929,8 @@ if (window.__liaRunCoordHooks) {
       a: found[0] || 'a',
       b: found[1] || 'b',
       c: found[2] || 'c',
-      d: found[3] || 'd'
+      d: found[3] || 'd',
+      f: found[4] || 'f'
     };
   }
 
@@ -2829,6 +2945,7 @@ if (window.__liaRunCoordHooks) {
         'b',
         'c',
         'd',
+        'f',
         `
         const pi = Math.PI;
         const e = Math.E;
@@ -2868,15 +2985,17 @@ if (window.__liaRunCoordHooks) {
     return String(Math.round(n * 100) / 100);
   }
 
-  function substituteTerm(expr, variableName, aValue, bValue, cValue, dValue) {
+  function substituteTerm(expr, variableName, aValue, bValue, cValue, dValue, fValue) {
     const normalized = normalizeFamilyExpr(expr, variableName).replace(/\*\*/g, '^');
     const cResolved = (cValue == null) ? 0 : cValue;
     const dResolved = (dValue == null) ? 0 : dValue;
-    let out = normalized.replace(/\b(a|b|c|d)\b/g, function(match) {
+    const fResolved = (fValue == null) ? 0 : fValue;
+    let out = normalized.replace(/\b(a|b|c|d|f)\b/g, function(match) {
       if (match === 'a') return formatNumber(aValue);
       if (match === 'b') return formatNumber(bValue);
       if (match === 'c') return formatNumber(cResolved);
-      return formatNumber(dResolved);
+      if (match === 'd') return formatNumber(dResolved);
+      return formatNumber(fResolved);
     });
     out = out
       .replace(/\+\s*-/g, '- ')
@@ -2893,7 +3012,7 @@ if (window.__liaRunCoordHooks) {
 
   // Like substituteTerm, but also replaces the variable with (x+n) for n-shift polynomial families.
   function substitutedWithNShift(entry) {
-    const raw = substituteTerm(entry.cfg.expr, entry.cfg.variableName, entry.a, entry.b, entry.c, entry.d);
+    const raw = substituteTerm(entry.cfg.expr, entry.cfg.variableName, entry.a, entry.b, entry.c, entry.d, entry.f);
     const nVal = (entry.dragTranslatesPolyX && entry.n) ? entry.n : 0;
     if (nVal === 0) return raw;
     const v = String(entry.cfg && entry.cfg.variableName ? entry.cfg.variableName : 'x');
@@ -2904,19 +3023,33 @@ if (window.__liaRunCoordHooks) {
   }
 
   // Returns the expanded (Klammern aufgelöst) polynomial term as a TeX string for n-shift families.
-  // For p(x+n) = a(x+n)^3 + b(x+n)^2 + c(x+n) + d the expanded coefficients are:
-  //   A=a, B=b+3an, C=c+2bn+3an^2, D=d+cn+bn^2+an^3
-  // Only works for cubic (degree 3) right now; returns null if not applicable.
+  // Supports cubic:  p(x+n)=a(x+n)^3+b(x+n)^2+c(x+n)+d
+  // and quartic:     p(x+n)=a(x+n)^4+b(x+n)^3+c(x+n)^2+d(x+n)+f
   function expandedPolyTerm(entry) {
     if (!entry.dragTranslatesPolyX) return null;
     const n = entry.n || 0;
-    const a = entry.a, b = entry.b, c = entry.c, d = entry.d;
+    const a = entry.a, b = entry.b, c = entry.c, d = entry.d, f = entry.f;
     const v = String(entry.cfg && entry.cfg.variableName ? entry.cfg.variableName : 'x');
-    const A = a;
-    const B = b + 3 * a * n;
-    const C = c + 2 * b * n + 3 * a * n * n;
-    const D = d + c * n + b * n * n + a * n * n * n;
-    // Build the TeX polynomial from expanded coefficients
+    const vEsc = escapeRegExp(v);
+    const expr = String(entry.normalizedExpr || '');
+    const isQuartic = new RegExp('\\b' + vEsc + '\\s*\\*\\*\\s*4\\b', 'i').test(expr);
+
+    const coeffs = isQuartic
+      ? [
+          a,
+          b + 4 * a * n,
+          c + 3 * b * n + 6 * a * n * n,
+          d + 2 * c * n + 3 * b * n * n + 4 * a * n * n * n,
+          f + d * n + c * n * n + b * n * n * n + a * n * n * n * n
+        ]
+      : [
+          a,
+          b + 3 * a * n,
+          c + 2 * b * n + 3 * a * n * n,
+          d + c * n + b * n * n + a * n * n * n
+        ];
+
+    // Build the TeX polynomial from expanded coefficients.
     const fmtCoef = function(coef, isFirst) {
       const num = Math.round(coef * 1000) / 1000;
       if (Math.abs(num) < 0.0000001) return null;
@@ -2924,20 +3057,40 @@ if (window.__liaRunCoordHooks) {
       if (isFirst) return num < 0 ? '-' + absStr : absStr;
       return num < 0 ? '-' + absStr : '+' + absStr;
     };
+
     const parts = [];
-    const cA = fmtCoef(A, true);
-    if (cA !== null) parts.push((Math.abs(Math.abs(A) - 1) < 0.0000001 ? (A < 0 ? '-' : '') : cA) + v + '^3');
-    const cB = fmtCoef(B, parts.length === 0);
-    if (cB !== null) parts.push((Math.abs(Math.abs(B) - 1) < 0.0000001 ? (B < 0 ? '-' : (parts.length ? '+' : '')) : cB) + v + '^2');
-    const cC = fmtCoef(C, parts.length === 0);
-    if (cC !== null) parts.push((Math.abs(Math.abs(C) - 1) < 0.0000001 ? (C < 0 ? '-' : (parts.length ? '+' : '')) : cC) + v);
-    const cD = fmtCoef(D, parts.length === 0);
-    if (cD !== null) parts.push(cD);
+    const powers = isQuartic ? [4, 3, 2, 1, 0] : [3, 2, 1, 0];
+
+    for (let i = 0; i < coeffs.length; i += 1) {
+      const coef = Number(coeffs[i]);
+      const power = powers[i];
+      const token = fmtCoef(coef, parts.length === 0);
+      if (token === null) continue;
+
+      let term = '';
+      if (power === 0) {
+        term = token;
+      } else {
+        const nearOne = Math.abs(Math.abs(coef) - 1) < 0.0000001;
+        const signOnly = nearOne
+          ? (coef < 0 ? '-' : (parts.length ? '+' : ''))
+          : token;
+        term = signOnly + v + (power > 1 ? '^' + String(power) : '');
+      }
+      parts.push(term);
+    }
+
     if (parts.length === 0) return '0';
     return parts.join('\\,').replace(/\+\s*-/g, '-').replace(/-\s*-/g, '+');
   }
 
-  function evaluateAt(entry, xValue, bValue, cValue, dValue) {
+  function getPolyVerticalParam(entry) {
+    const expr = String(entry && entry.normalizedExpr || '');
+    if (hasStandaloneParamTerm(expr, 'f')) return 'f';
+    return 'd';
+  }
+
+  function evaluateAt(entry, xValue, bValue, cValue, dValue, fValue) {
     if (!entry || typeof entry.fn !== 'function') return NaN;
     try {
       // For n-shift polynomial families, apply the horizontal offset at evaluation time:
@@ -2948,7 +3101,8 @@ if (window.__liaRunCoordHooks) {
         entry.a,
         bValue == null ? entry.b : bValue,
         cValue == null ? ((entry && entry.c == null) ? 0 : entry.c) : cValue,
-        dValue == null ? ((entry && entry.d == null) ? 0 : entry.d) : dValue
+        dValue == null ? ((entry && entry.d == null) ? 0 : entry.d) : dValue,
+        fValue == null ? ((entry && entry.f == null) ? 0 : entry.f) : fValue
       );
       return Number.isFinite(value) ? value : NaN;
     } catch (e) {
@@ -3276,6 +3430,7 @@ if (window.__liaRunCoordHooks) {
     entry.b = Math.max(-10, Math.min(10, readNum(raw.b, entry.b)));
     entry.c = Math.max(-10, Math.min(10, readNum(raw.c, entry.c)));
     entry.d = Math.max(-10, Math.min(10, readNum(raw.d, entry.d)));
+    entry.f = Math.max(-10, Math.min(10, readNum(raw.f, entry.f)));
     entry.n = readNum(raw.n, entry.n);
     entry.termVisible = !!raw.termVisible;
     entry.panelMinimized = !!raw.panelMinimized;
@@ -3292,6 +3447,7 @@ if (window.__liaRunCoordHooks) {
       b: Number(entry.b),
       c: Number(entry.c),
       d: Number(entry.d),
+      f: Number(entry.f),
       n: Number(entry.n),
       termVisible: !!entry.termVisible,
       panelMinimized: !!entry.panelMinimized,
@@ -3518,17 +3674,35 @@ if (window.__liaRunCoordHooks) {
     return linearBxPlusC.test(expr) || groupedBxPlusC.test(expr) || groupedCxPlusB.test(expr) || groupedXPlusC.test(expr);
   }
 
-  // Detect standard polynomial a*x^n + b*x^m + c*x + d where horizontal drag
-  // should translate the whole graph by shifting all coefficients analytically.
+  function hasStandaloneParamTerm(expr, param) {
+    const p = escapeRegExp(String(param || '').trim());
+    if (!p) return false;
+    return new RegExp('(^|[+\\-])\\s*' + p + '(?!\\s*\\*)(?=\\s*(?:$|[+\\-]))', 'i').test(String(expr || ''));
+  }
+
+  // Detect standard polynomial families where horizontal drag should translate
+  // the whole graph by shifting coefficients analytically.
+  // Supported forms:
+  // cubic:   a*x^3 + b*x^2 + c*x + d
+  // quartic: a*x^4 + b*x^3 + c*x^2 + d*x + f
   function isStandardPolyDragFamily(normalizedExpr, cfg) {
     if (!normalizedExpr) return false;
     const v = String(cfg && cfg.variableName ? cfg.variableName : 'x').trim() || 'x';
     const vEsc = escapeRegExp(v);
-    // b appears as high-power coefficient: b*x**
-    const hasBHighPow = new RegExp('\\bb\\s*\\*\\s*' + vEsc + '\\s*\\*\\*', 'i').test(normalizedExpr);
-    // c appears as linear coefficient: c*x (not followed by **)
-    const hasCLinear = new RegExp('\\bc\\s*\\*\\s*' + vEsc + '(?!\\s*\\*\\*)', 'i').test(normalizedExpr);
-    if (!hasBHighPow || !hasCLinear) return false;
+    const hasA4 = new RegExp('\\ba\\s*\\*\\s*' + vEsc + '\\s*\\*\\*\\s*4\\b', 'i').test(normalizedExpr);
+    const hasB3 = new RegExp('\\bb\\s*\\*\\s*' + vEsc + '\\s*\\*\\*\\s*3\\b', 'i').test(normalizedExpr);
+    const hasC2 = new RegExp('\\bc\\s*\\*\\s*' + vEsc + '\\s*\\*\\*\\s*2\\b', 'i').test(normalizedExpr);
+    const hasD1 = new RegExp('\\bd\\s*\\*\\s*' + vEsc + '(?!\\s*\\*\\*)', 'i').test(normalizedExpr);
+    const hasFConst = hasStandaloneParamTerm(normalizedExpr, 'f');
+
+    const hasA3 = new RegExp('\\ba\\s*\\*\\s*' + vEsc + '\\s*\\*\\*\\s*3\\b', 'i').test(normalizedExpr);
+    const hasB2 = new RegExp('\\bb\\s*\\*\\s*' + vEsc + '\\s*\\*\\*\\s*2\\b', 'i').test(normalizedExpr);
+    const hasC1 = new RegExp('\\bc\\s*\\*\\s*' + vEsc + '(?!\\s*\\*\\*)', 'i').test(normalizedExpr);
+    const hasDConst = hasStandaloneParamTerm(normalizedExpr, 'd');
+
+    const isQuartic = hasA4 && hasB3 && hasC2 && hasD1 && hasFConst;
+    const isCubic = hasA3 && hasB2 && hasC1 && hasDConst;
+    if (!isQuartic && !isCubic) return false;
     // Must not already have a proper x-shift mechanism
     const tempEntry = { normalizedExpr: normalizedExpr, cfg: cfg };
     if (shouldDragByXShift(tempEntry)) return false;
@@ -3643,6 +3817,79 @@ if (window.__liaRunCoordHooks) {
       return parts;
     };
 
+    const stripOuterParens = function(input) {
+      let s = String(input || '').trim();
+      while (s.startsWith('(') && s.endsWith(')')) {
+        let depth = 0;
+        let balanced = true;
+        for (let i = 0; i < s.length; i += 1) {
+          const ch = s[i];
+          if (ch === '(') depth += 1;
+          else if (ch === ')') depth -= 1;
+          if (depth === 0 && i < s.length - 1) {
+            balanced = false;
+            break;
+          }
+          if (depth < 0) {
+            balanced = false;
+            break;
+          }
+        }
+        if (!balanced || depth !== 0) break;
+        s = s.slice(1, -1).trim();
+      }
+      return s;
+    };
+
+    const isZeroNumeric = function(input) {
+      const s = stripOuterParens(String(input || '').trim());
+      return /^[-+]?0(?:[.,]0+)?$/.test(s);
+    };
+
+    const isZeroLikeTerm = function(input) {
+      const core = stripOuterParens(String(input || '').trim());
+      if (!core) return true;
+      if (isZeroNumeric(core)) return true;
+
+      const factors = splitTopLevel(core, '*');
+      if (factors.length <= 1) return false;
+      for (let i = 0; i < factors.length; i += 1) {
+        if (isZeroNumeric(factors[i])) return true;
+      }
+      return false;
+    };
+
+    const pruneZeroAdditiveTerms = function(input) {
+      const parts = splitTopLevelAdditive(String(input || ''));
+      const kept = [];
+
+      parts.forEach(function(rawPart) {
+        let part = String(rawPart || '').trim();
+        if (!part) return;
+
+        let sign = '+';
+        if (part[0] === '+' || part[0] === '-') {
+          sign = part[0];
+          part = part.slice(1).trim();
+        }
+
+        if (isZeroLikeTerm(part)) return;
+        kept.push({ sign: sign, term: part });
+      });
+
+      if (!kept.length) return '0';
+
+      let out = '';
+      kept.forEach(function(item, index) {
+        if (index === 0) {
+          out += (item.sign === '-' ? '-' : '') + item.term;
+        } else {
+          out += ' ' + item.sign + ' ' + item.term;
+        }
+      });
+      return out;
+    };
+
     const convertTopLevelFractions = function(input) {
       const src = String(input || '');
       const additiveParts = splitTopLevelAdditive(src);
@@ -3678,6 +3925,7 @@ if (window.__liaRunCoordHooks) {
     };
 
     let out = String(expr || '').trim();
+    out = pruneZeroAdditiveTerms(out);
     out = convertSqrtCalls(out);
     out = powerParensToBraces(out);
     out = out.replace(/\^\(([^()]+)\)/g, '^{$1}');
@@ -3692,9 +3940,7 @@ if (window.__liaRunCoordHooks) {
     // Simplify coefficient 1 before ( (e.g. 1(x+c) -> (x+c))
     out = out.replace(/(^|[^0-9.,])1\s*\\cdot\s*\(/g, '$1(');
     out = out.replace(/(^|[^0-9.,])1\s*\(/g, '$1(');
-    // Remove trailing +0 and -0 before ), }, or end of expression
-    out = out.replace(/\+\s*0(?=[^0-9.,]|$)/g, '');
-    out = out.replace(/-\s*0(?=[^0-9.,]|$)/g, '');
+    out = pruneZeroAdditiveTerms(out);
     out = out.replace(/\s+/g, ' ').trim();
     return out;
   }
@@ -3742,6 +3988,10 @@ if (window.__liaRunCoordHooks) {
           '<span class="lia-schar-label-d">d:</span>' +
           '<input class="lia-schar-slider-d" type="range" min="-10" max="10" step="0.05" value="0" />' +
         '</div>' +
+        '<div class="lia-schar-head lia-schar-head-f">' +
+          '<span class="lia-schar-label-f">f:</span>' +
+          '<input class="lia-schar-slider-f" type="range" min="-10" max="10" step="0.05" value="0" />' +
+        '</div>' +
         '<label class="lia-schar-term-toggle-wrap"><input class="lia-schar-term-toggle" type="checkbox" /> Term anzeigen</label>' +
         '<div class="lia-schar-term"></div>';
       return panel;
@@ -3772,6 +4022,9 @@ if (window.__liaRunCoordHooks) {
     entry.sliderDRowEl = panel.querySelector('.lia-schar-head-d');
     entry.labelDEl = panel.querySelector('.lia-schar-label-d');
     entry.sliderDEl = panel.querySelector('.lia-schar-slider-d');
+    entry.sliderFRowEl = panel.querySelector('.lia-schar-head-f');
+    entry.labelFEl = panel.querySelector('.lia-schar-label-f');
+    entry.sliderFEl = panel.querySelector('.lia-schar-slider-f');
     entry.termToggleWrapEl = panel.querySelector('.lia-schar-term-toggle-wrap');
     entry.termToggleEl = panel.querySelector('.lia-schar-term-toggle');
     entry.termEl = panel.querySelector('.lia-schar-term');
@@ -3781,7 +4034,7 @@ if (window.__liaRunCoordHooks) {
     entry.miniStripEl = panel.querySelector('.lia-schar-mini-strip');
 
     // Recover from stale/legacy panel markup that misses required controls.
-    if (!entry.sliderEl || !entry.sliderBEl || !entry.sliderCEl || !entry.sliderDEl || !entry.termEl) {
+    if (!entry.sliderEl || !entry.sliderBEl || !entry.sliderCEl || !entry.sliderDEl || !entry.sliderFEl || !entry.termEl) {
       try {
         if (panel.parentNode) panel.parentNode.removeChild(panel);
       } catch (e) {}
@@ -3801,6 +4054,9 @@ if (window.__liaRunCoordHooks) {
       entry.sliderDRowEl = panel.querySelector('.lia-schar-head-d');
       entry.labelDEl = panel.querySelector('.lia-schar-label-d');
       entry.sliderDEl = panel.querySelector('.lia-schar-slider-d');
+      entry.sliderFRowEl = panel.querySelector('.lia-schar-head-f');
+      entry.labelFEl = panel.querySelector('.lia-schar-label-f');
+      entry.sliderFEl = panel.querySelector('.lia-schar-slider-f');
       entry.termToggleWrapEl = panel.querySelector('.lia-schar-term-toggle-wrap');
       entry.termToggleEl = panel.querySelector('.lia-schar-term-toggle');
       entry.termEl = panel.querySelector('.lia-schar-term');
@@ -3839,6 +4095,14 @@ if (window.__liaRunCoordHooks) {
     panel.style.display = 'block';
     panel.style.pointerEvents = 'auto';
     panel.style.overflow = 'visible';
+
+    if (!panel.__liaEvtStop) {
+      panel.__liaEvtStop = true;
+      var _panelEvts = ['pointerdown','pointermove','pointerup','mousedown','mousemove','mouseup','touchstart','touchmove','touchend','click'];
+      _panelEvts.forEach(function(t) {
+        panel.addEventListener(t, function(e) { e.stopPropagation(); }, false);
+      });
+    }
 
     if (entry.minBtnEl) {
       const c = entry.cfg && entry.cfg.color ? entry.cfg.color : '#0b5fff';
@@ -3905,6 +4169,7 @@ if (window.__liaRunCoordHooks) {
     const sliderBParamName = (entry.paramSlots && entry.paramSlots.b) ? entry.paramSlots.b : 'b';
     const sliderCParamName = (entry.paramSlots && entry.paramSlots.c) ? entry.paramSlots.c : 'c';
     const sliderDParamName = (entry.paramSlots && entry.paramSlots.d) ? entry.paramSlots.d : 'd';
+    const sliderFParamName = (entry.paramSlots && entry.paramSlots.f) ? entry.paramSlots.f : 'f';
 
     const typesetLabel = function(node) {
       if (!node) return;
@@ -3934,6 +4199,12 @@ if (window.__liaRunCoordHooks) {
       entry.labelDEl.style.display = 'inline-block';
       entry.labelDEl.style.whiteSpace = 'nowrap';
       typesetLabel(entry.labelDEl);
+    }
+    if (entry.labelFEl) {
+      entry.labelFEl.textContent = '\\(' + sliderFParamName + '\\):';
+      entry.labelFEl.style.display = 'inline-block';
+      entry.labelFEl.style.whiteSpace = 'nowrap';
+      typesetLabel(entry.labelFEl);
     }
     if (entry.sliderEl) {
       entry.sliderEl.style.accentColor = entry.cfg && entry.cfg.color ? entry.cfg.color : '#0b5fff';
@@ -3987,6 +4258,19 @@ if (window.__liaRunCoordHooks) {
       entry.sliderDEl.style.appearance = 'auto';
       entry.sliderDEl.style.webkitAppearance = 'auto';
     }
+    if (entry.sliderFEl) {
+      entry.sliderFEl.style.accentColor = entry.cfg && entry.cfg.color ? entry.cfg.color : '#0b5fff';
+      entry.sliderFEl.style.display = 'block';
+      entry.sliderFEl.style.width = '220px';
+      entry.sliderFEl.style.minWidth = '220px';
+      entry.sliderFEl.style.maxWidth = '220px';
+      entry.sliderFEl.style.flex = '0 0 220px';
+      entry.sliderFEl.style.visibility = 'visible';
+      entry.sliderFEl.style.opacity = '1';
+      entry.sliderFEl.style.pointerEvents = 'auto';
+      entry.sliderFEl.style.appearance = 'auto';
+      entry.sliderFEl.style.webkitAppearance = 'auto';
+    }
 
     function applyFixedSliderRange(sl) {
       if (!sl) return;
@@ -3999,10 +4283,12 @@ if (window.__liaRunCoordHooks) {
     applyFixedSliderRange(entry.sliderBEl);
     applyFixedSliderRange(entry.sliderCEl);
     applyFixedSliderRange(entry.sliderDEl);
+    applyFixedSliderRange(entry.sliderFEl);
 
     const showBSlider = shouldShowBSlider(entry);
     const showCSlider = /(^|[^A-Za-z0-9_])c([^A-Za-z0-9_]|$)/.test(String(entry.normalizedExpr || ''));
     const showDSlider = /(^|[^A-Za-z0-9_])d([^A-Za-z0-9_]|$)/.test(String(entry.normalizedExpr || ''));
+    const showFSlider = /(^|[^A-Za-z0-9_])f([^A-Za-z0-9_]|$)/.test(String(entry.normalizedExpr || ''));
     if (showBSlider && !entry.bAutoInitialized) {
       if (!Number.isFinite(entry.b) || Math.abs(entry.b) < 0.0000001) {
         entry.b = 1;
@@ -4023,6 +4309,11 @@ if (window.__liaRunCoordHooks) {
       entry.sliderDRowEl.style.display = showDSlider ? 'flex' : 'none';
       entry.sliderDRowEl.style.alignItems = 'center';
       entry.sliderDRowEl.style.gap = '8px';
+    }
+    if (entry.sliderFRowEl) {
+      entry.sliderFRowEl.style.display = showFSlider ? 'flex' : 'none';
+      entry.sliderFRowEl.style.alignItems = 'center';
+      entry.sliderFRowEl.style.gap = '8px';
     }
 
     if (entry.termToggleWrapEl) {
@@ -4107,6 +4398,23 @@ if (window.__liaRunCoordHooks) {
         scheduleLightRefresh();
       });
       entry.sliderDEl.addEventListener('change', function() {
+        refreshEntry(entry, false);
+      });
+    }
+
+    if (entry.sliderFEl && !entry.sliderFEl.__liaScharBoundV3) {
+      entry.sliderFEl.__liaScharBoundV3 = true;
+      const blockBoardGesture = function(evt) {
+        try { evt.stopPropagation(); } catch (e) {}
+      };
+      ['pointerdown', 'pointerup', 'pointercancel', 'mousedown', 'mouseup', 'touchstart', 'touchend', 'click'].forEach(function(type) {
+        try { entry.sliderFEl.addEventListener(type, blockBoardGesture, true); } catch (e) {}
+      });
+      entry.sliderFEl.addEventListener('input', function() {
+        entry.f = Math.max(-10, Math.min(10, Number(entry.sliderFEl.value || 0)));
+        scheduleLightRefresh();
+      });
+      entry.sliderFEl.addEventListener('change', function() {
         refreshEntry(entry, false);
       });
     }
@@ -4236,6 +4544,7 @@ if (window.__liaRunCoordHooks) {
     if (entry.sliderBRowEl) entry.sliderBRowEl.style.display = minimized ? 'none' : entry.sliderBRowEl.style.display;
     if (entry.sliderCRowEl) entry.sliderCRowEl.style.display = minimized ? 'none' : entry.sliderCRowEl.style.display;
     if (entry.sliderDRowEl) entry.sliderDRowEl.style.display = minimized ? 'none' : entry.sliderDRowEl.style.display;
+    if (entry.sliderFRowEl) entry.sliderFRowEl.style.display = minimized ? 'none' : entry.sliderFRowEl.style.display;
     if (entry.termToggleWrapEl) entry.termToggleWrapEl.style.display = minimized ? 'none' : (allowTerm ? 'block' : 'none');
     if (entry.termEl) entry.termEl.style.display = minimized ? 'none' : entry.termEl.style.display;
     const resizeHandle = entry.panel ? entry.panel.querySelector('.lia-schar-resize-handle') : null;
@@ -4277,6 +4586,7 @@ if (window.__liaRunCoordHooks) {
     if (entry.sliderBEl) entry.sliderBEl.value = String(entry.b == null ? 0 : entry.b);
     if (entry.sliderCEl) entry.sliderCEl.value = String(entry.c == null ? 0 : entry.c);
     if (entry.sliderDEl) entry.sliderDEl.value = String(entry.d == null ? 0 : entry.d);
+    if (entry.sliderFEl) entry.sliderFEl.value = String(entry.f == null ? 0 : entry.f);
 
     const hasToggle = !!entry.termToggleEl;
     if (allowTerm && !hasToggle) entry.termVisible = true;
@@ -4456,8 +4766,9 @@ if (window.__liaRunCoordHooks) {
       const startB = entry && entry.b == null ? 0 : entry.b;
       const startC = entry && entry.c == null ? 0 : entry.c;
       const startD = entry && entry.d == null ? 0 : entry.d;
+      const startF = entry && entry.f == null ? 0 : entry.f;
       const startN = entry && entry.n == null ? 0 : (entry.n || 0);
-      const startGraphY = evaluateAt(entry, start.x, startB, startC, startD);
+      const startGraphY = evaluateAt(entry, start.x, startB, startC, startD, startF);
       const offsetY = Number.isFinite(startGraphY) ? (start.y - startGraphY) : 0;
 
       const onMove = function(moveEvt) {
@@ -4496,11 +4807,17 @@ if (window.__liaRunCoordHooks) {
 
         if (entry && entry.dragUsesD) {
           // n-shift for standard polynomial families: evaluateAt uses fn(x+n, a, b, c, d)
-          // so horizontal drag only changes n (= x-offset), vertical drag changes d.
+          // so horizontal drag only changes n (= x-offset), vertical drag changes
+          // the additive constant term (d for cubic, f for quartic).
           // Sliders for a,b,c,d continue to work normally and independently.
           if (entry.dragTranslatesPolyX) {
+            const yShiftParam = getPolyVerticalParam(entry);
             entry.n = startN - dx;
-            entry.d = startD + dy;
+            if (yShiftParam === 'f') {
+              entry.f = startF + dy;
+            } else {
+              entry.d = startD + dy;
+            }
             refreshEntry(entry, true);
             return;
           }
@@ -4616,7 +4933,7 @@ if (window.__liaRunCoordHooks) {
       entry.expDragMode = getExponentialDragMode(entry);
       entry.dragShiftsCWithX = shouldDragByCShift(entry);
       entry.dragUsesC = /[+\-]\s*c\b/.test(entry.normalizedExpr) && !entry.dragShiftsCWithX;
-      entry.dragUsesD = /[+\-]\s*d\b/.test(entry.normalizedExpr);
+      entry.dragUsesD = hasStandaloneParamTerm(entry.normalizedExpr, 'd') || hasStandaloneParamTerm(entry.normalizedExpr, 'f');
       entry.dragSupportsX = shouldDragByXShift(entry);
       entry.dragScalesA = shouldDragByExpScale(entry);
       entry.dragTranslatesPolyX = isStandardPolyDragFamily(entry.normalizedExpr, entry.cfg);
@@ -4647,11 +4964,12 @@ if (window.__liaRunCoordHooks) {
       b: 0,
       c: 0,
       d: 0,
+      f: 0,
       n: 0,
       expDragMode: getExponentialDragMode({ normalizedExpr: normalizedExpr, cfg: cfg }),
       dragShiftsCWithX: shouldDragByCShift({ normalizedExpr: normalizedExpr, cfg: cfg }),
       dragUsesC: /[+\-]\s*c\b/.test(normalizedExpr) && !shouldDragByCShift({ normalizedExpr: normalizedExpr, cfg: cfg }),
-      dragUsesD: /[+\-]\s*d\b/.test(normalizedExpr),
+      dragUsesD: hasStandaloneParamTerm(normalizedExpr, 'd') || hasStandaloneParamTerm(normalizedExpr, 'f'),
       dragSupportsX: shouldDragByXShift({ normalizedExpr: normalizedExpr, cfg: cfg }),
       dragScalesA: shouldDragByExpScale({ normalizedExpr: normalizedExpr, cfg: cfg }),
       dragTranslatesPolyX: isStandardPolyDragFamily(normalizedExpr, cfg),
@@ -4668,6 +4986,9 @@ if (window.__liaRunCoordHooks) {
       sliderDRowEl: null,
       sliderDEl: null,
       labelDEl: null,
+      sliderFRowEl: null,
+      sliderFEl: null,
+      labelFEl: null,
       valueEl: null,
       termToggleWrapEl: null,
       termToggleEl: null,
@@ -5143,8 +5464,10 @@ if (window.__liaRunCoordHooks) {
 
       .lia-plot-reg-menu{
         row-gap:2px;
+        column-gap:2px;
         padding:3px;
-        min-width:95px;
+        min-width:190px;
+        grid-template-columns:1fr 1fr;
       }
 
       .lia-plot-reg-item{
@@ -5156,7 +5479,7 @@ if (window.__liaRunCoordHooks) {
         color:inherit;
         cursor:pointer;
         box-sizing:border-box;
-        text-align:left;
+        text-align:center;
         font-size:0.64em;
       }
 
@@ -6040,6 +6363,18 @@ if (window.__liaRunCoordHooks) {
       pushCandidate('kubisch', toFixedNum(d3) + '*x^3' + signed(d2) + '*x^2' + signed(d1) + '*x' + signed(d0), toFixedNum(d3) + 'x^3' + signed(d2) + 'x^2' + signed(d1) + 'x' + signed(d0), function(x) { return ((d3 * x + d2) * x + d1) * x + d0; }, { a: d3, b: d2, c: d1, d: d0 }, 4);
     }
 
+    const c4 = polyFit(pts, 4);
+    if (c4) {
+      const e0 = c4[0], e1 = c4[1], e2 = c4[2], e3 = c4[3], e4 = c4[4];
+      pushCandidate('quartisch',
+        toFixedNum(e4) + '*x^4' + signed(e3) + '*x^3' + signed(e2) + '*x^2' + signed(e1) + '*x' + signed(e0),
+        toFixedNum(e4) + 'x^4' + signed(e3) + 'x^3' + signed(e2) + 'x^2' + signed(e1) + 'x' + signed(e0),
+        function(x) { return ((((e4 * x + e3) * x + e2) * x + e1) * x + e0); },
+        { a: e4, b: e3, c: e2, d: e1, f: e0 },
+        5
+      );
+    }
+
     function fitByGrid(name, bMin, bMax, bSteps, cMin, cMax, cSteps, featFn, buildExpr) {
       let best = null;
       for (let bi = 0; bi <= bSteps; bi++) {
@@ -6268,7 +6603,10 @@ if (window.__liaRunCoordHooks) {
           ? (Math.abs(r - gapMid) / Math.max(xSpan, 0.001)) * ySpan * 0.35
           : 0;
         const invalidPenalty = invalidFrac * ySpan * 4.5;
-        const oneBranchPenalty = (leftCnt === 0 || rightCnt === 0) ? ySpan * 0.25 : 0;
+        // Only penalise a single-branch fit when the asymptote is far from the drawn range
+        // (avoids falsely penalising genuine one-branch curves approaching a pole).
+        const distToEdge = Math.min(Math.abs(r - xMin), Math.abs(r - xMax));
+        const oneBranchPenalty = (leftCnt === 0 || rightCnt === 0) && distToEdge > 0.45 * xSpan ? ySpan * 0.15 : 0;
 
         return wrmse + asymPenalty + invalidPenalty + oneBranchPenalty;
       }
@@ -6308,6 +6646,95 @@ if (window.__liaRunCoordHooks) {
         function(x) {
           const t = b * (x + c);
           return Math.abs(t) < 1e-9 ? NaN : A / t + d;
+        },
+        { A: A, b: b, c: c, d: d },
+        4
+      );
+    })();
+
+    // ── Quadratische Hyperbel: fit y = A/(b*(x+c)^2) + d with asymptote search ───
+    (function() {
+      let hyper2Best = null;
+      const sortedX = xs.slice().sort(function(a, b) { return a - b; });
+      let maxGap = 0;
+      let gapMid = (xMin + xMax) * 0.5;
+      for (let i = 1; i < sortedX.length; i++) {
+        const g = sortedX[i] - sortedX[i - 1];
+        if (g > maxGap) {
+          maxGap = g;
+          gapMid = (sortedX[i] + sortedX[i - 1]) * 0.5;
+        }
+      }
+
+      function hyper2WeightedError(A, b, c, d) {
+        const eps = Math.max(0.04 * xSpan, 0.04);
+        let se = 0;
+        let cnt = 0;
+        let invalid = 0;
+
+        for (let i = 0; i < pts.length; i++) {
+          const x = pts[i].x;
+          const t = b * (x + c) * (x + c);
+          if (t < eps) {
+            invalid += 1;
+            continue;
+          }
+
+          const yHat = A / t + d;
+          if (!Number.isFinite(yHat)) continue;
+
+          const e = yHat - pts[i].y;
+          se += e * e;
+          cnt += 1;
+        }
+
+        if (!cnt) return Infinity;
+        const wrmse = Math.sqrt(se / cnt);
+        const invalidFrac = invalid / Math.max(pts.length, 1);
+        const r = -c;
+        const asymPenalty = (maxGap > 0.18 * xSpan)
+          ? (Math.abs(r - gapMid) / Math.max(xSpan, 0.001)) * ySpan * 0.32
+          : 0;
+        const invalidPenalty = invalidFrac * ySpan * 4.0;
+
+        return wrmse + asymPenalty + invalidPenalty;
+      }
+
+      const rCenter = gapMid;
+      const rSpan = Math.max(0.8 * xSpan, maxGap * 2);
+      const steps = 96;
+      const eps = Math.max(0.04 * xSpan, 0.04);
+
+      for (let ri = 0; ri <= steps; ri++) {
+        const r = rCenter - rSpan + (2 * rSpan) * (ri / steps);
+        const c = -r;
+        const b = 1;
+
+        const lin = linear2FitFromFeature(pts, function(x) {
+          const t = b * (x + c) * (x + c);
+          if (t < eps) return NaN;
+          return 1 / t;
+        }, pointMode ? 2 : 4);
+        if (!lin) continue;
+
+        const A = lin.A;
+        const d = lin.d;
+        const err = hyper2WeightedError(A, b, c, d);
+        if (!Number.isFinite(err)) continue;
+        if (!hyper2Best || err < hyper2Best.err) {
+          hyper2Best = { A: A, b: b, c: c, d: d, err: err };
+        }
+      }
+
+      if (!hyper2Best) return;
+      const A = hyper2Best.A, b = hyper2Best.b, c = hyper2Best.c, d = hyper2Best.d;
+      pushCandidate(
+        'hyperbel2',
+        toFixedNum(A) + '/(' + toFixedNum(b) + '*(x' + signed(c) + ')^2)' + signed(d),
+        toFixedNum(A) + '/{{' + toFixedNum(b) + '{{x' + signed(c) + '}}^2}}' + signed(d),
+        function(x) {
+          const t = b * (x + c) * (x + c);
+          return t < 1e-9 ? NaN : A / t + d;
         },
         { A: A, b: b, c: c, d: d },
         4
@@ -6406,8 +6833,19 @@ if (window.__liaRunCoordHooks) {
       const linearCand = candidates.find(function(cand) { return cand.name === 'linear'; }) || null;
       const quadCand = candidates.find(function(cand) { return cand.name === 'quadratisch'; }) || null;
       const cubicCand = candidates.find(function(cand) { return cand.name === 'kubisch'; }) || null;
+      const quarticCand = candidates.find(function(cand) { return cand.name === 'quartisch'; }) || null;
       const expCand = candidates.find(function(cand) { return cand.name === 'exponential'; }) || null;
       const logCand = candidates.find(function(cand) { return cand.name === 'logarithmus'; }) || null;
+      const hyper2Cand = candidates.find(function(cand) { return cand.name === 'hyperbel2'; }) || null;
+      const isNearBiquad = !!(quarticCand && c4 && (function() {
+        const e4 = Math.abs(c4[4]) * Math.pow(xSpan, 4);
+        const e3 = Math.abs(c4[3]) * Math.pow(xSpan, 3);
+        const e2 = Math.abs(c4[2]) * xSpan * xSpan;
+        const e1 = Math.abs(c4[1]) * xSpan;
+        const evenRange = e4 + e2;
+        const oddRange  = e3 + e1;
+        return evenRange > 0.001 && oddRange / evenRange < 0.30;
+      })());
       const curvatureNorm = c2 ? Math.abs(c2[2]) * xSpan * xSpan / Math.max(ySpan, 0.001) : Infinity;
       const quadGain = (linearCand && quadCand && Number.isFinite(linearCand.error) && Number.isFinite(quadCand.error))
         ? (linearCand.error - quadCand.error) / Math.max(linearCand.error, 1e-6)
@@ -6415,11 +6853,18 @@ if (window.__liaRunCoordHooks) {
       const cubicGain = (linearCand && cubicCand && Number.isFinite(linearCand.error) && Number.isFinite(cubicCand.error))
         ? (linearCand.error - cubicCand.error) / Math.max(linearCand.error, 1e-6)
         : 0;
-      const isNearlyLinear = !!linearCand && (
+      const hyperbelCand = candidates.find(function(cand) { return cand.name === 'hyperbel'; }) || null;
+      const hyper2Gain = (linearCand && hyper2Cand && Number.isFinite(linearCand.error) && Number.isFinite(hyper2Cand.error))
+        ? (linearCand.error - hyper2Cand.error) / Math.max(linearCand.error, 1e-6)
+        : 0;
+      const hyperbelGain = (linearCand && hyperbelCand && Number.isFinite(linearCand.error) && Number.isFinite(hyperbelCand.error))
+        ? (linearCand.error - hyperbelCand.error) / Math.max(linearCand.error, 1e-6)
+        : 0;
+      const isNearlyLinear = !!linearCand && hyper2Gain < 0.15 && hyperbelGain < 0.15 && (
         curvatureNorm < 0.09 ||
         (curvatureNorm < 0.14 && quadGain < 0.14 && cubicGain < 0.18)
       );
-      const isStronglyLinear = !!linearCand && dirChanges <= 1 && (
+      const isStronglyLinear = !!linearCand && dirChanges <= 1 && hyper2Gain < 0.20 && hyperbelGain < 0.20 && (
         curvatureNorm < 0.18 &&
         quadGain < 0.22 &&
         cubicGain < 0.26
@@ -6432,7 +6877,9 @@ if (window.__liaRunCoordHooks) {
           if (cand.name === 'linear') cand.score *= 0.28;
           if (cand.name === 'quadratisch') cand.score *= 1.7;
           if (cand.name === 'kubisch') cand.score *= 2.0;
+          if (cand.name === 'quartisch') cand.score *= 2.35;
           if (cand.name === 'sinus' || cand.name === 'exponential' || cand.name === 'wurzel' || cand.name === 'logarithmus' || cand.name === 'hyperbel') cand.score *= 2.0;
+          if (cand.name === 'hyperbel2') cand.score *= 2.2;
         });
         return;
       }
@@ -6443,13 +6890,16 @@ if (window.__liaRunCoordHooks) {
           if (cand.name === 'linear') cand.score *= 0.5;
           if (cand.name === 'quadratisch') cand.score *= 1.45;
           if (cand.name === 'kubisch') cand.score *= 1.75;
+          if (cand.name === 'quartisch') cand.score *= 1.95;
           if (cand.name === 'sinus' || cand.name === 'exponential' || cand.name === 'wurzel' || cand.name === 'logarithmus' || cand.name === 'hyperbel') cand.score *= 1.55;
+          if (cand.name === 'hyperbel2') cand.score *= 1.65;
         });
       }
 
       if (isOscillating) {
         candidates.forEach(function(cand) {
           if (cand.name === 'wurzel' || cand.name === 'exponential' || cand.name === 'logarithmus') cand.score *= 4;
+          if (cand.name === 'hyperbel2') cand.score *= 3.2;
         });
       }
 
@@ -6467,13 +6917,17 @@ if (window.__liaRunCoordHooks) {
             if (cand.name === 'exponential') cand.score *= 2.5;
             if (cand.name === 'linear')      cand.score *= 1.8;
             if (cand.name === 'kubisch')     cand.score *= 1.8;
+            if (cand.name === 'quartisch')   cand.score *= 1.9;
           });
         } else if (isConvex) {
-          // Convex + monotone + asymmetric → typical exp shape
+          // Convex + monotone + asymmetric → exp shape or hyperbola approaching a pole
           candidates.forEach(function(cand) {
             if (cand.name === 'exponential') cand.score *= 0.78;
             if (cand.name === 'wurzel')      cand.score *= 2.5;
             if (cand.name === 'logarithmus') cand.score *= 2.5;
+            if (cand.name === 'hyperbel2')   cand.score *= 0.70;
+            if (cand.name === 'hyperbel')    cand.score *= 0.60;
+            if (cand.name === 'linear')      cand.score *= 1.70;
           });
         }
       }
@@ -6483,6 +6937,7 @@ if (window.__liaRunCoordHooks) {
         candidates.forEach(function(cand) {
           if (cand.name === 'wurzel' || cand.name === 'exponential' || cand.name === 'logarithmus' || cand.name === 'hyperbel') cand.score *= 2.5;
           if (cand.name === 'sinus') cand.score *= 0.55;
+          if (cand.name === 'quartisch') cand.score *= 0.85;
         });
       }
 
@@ -6517,6 +6972,28 @@ if (window.__liaRunCoordHooks) {
         }
       }
 
+      // Linear-vs-hyperbel2: protect the quadratic hyperbola when it fits clearly better.
+      if (!pointMode && linearCand && hyper2Cand && Number.isFinite(linearCand.error) && Number.isFinite(hyper2Cand.error)) {
+        if (hyper2Gain >= 0.12) {
+          linearCand.score  *= 1.55;
+          hyper2Cand.score  *= 0.68;
+        } else if (hyper2Gain >= 0.06) {
+          linearCand.score  *= 1.25;
+          hyper2Cand.score  *= 0.80;
+        }
+      }
+
+      // Linear-vs-hyperbel: protect the standard hyperbola when it fits clearly better.
+      if (!pointMode && linearCand && hyperbelCand && Number.isFinite(linearCand.error) && Number.isFinite(hyperbelCand.error)) {
+        if (hyperbelGain >= 0.12) {
+          linearCand.score   *= 1.55;
+          hyperbelCand.score *= 0.68;
+        } else if (hyperbelGain >= 0.06) {
+          linearCand.score   *= 1.25;
+          hyperbelCand.score *= 0.80;
+        }
+      }
+
       // Tie-break toward linear if it is almost as good in absolute error.
       if (!pointMode && linearCand && Number.isFinite(linearCand.error)) {
         let bestErr = Infinity;
@@ -6528,6 +7005,11 @@ if (window.__liaRunCoordHooks) {
           if (relGap <= 0.1) linearCand.score *= 0.58;
           else if (relGap <= 0.16) linearCand.score *= 0.78;
         }
+      }
+
+      // Prefer quartisch when its fit is near a biquadratic (odd-degree terms are small)
+      if (quarticCand && isNearBiquad) {
+        quarticCand.score *= 0.72;
       }
     })();
 
@@ -6662,7 +7144,7 @@ if (window.__liaRunCoordHooks) {
     }
 
     if (state.analyzeButton) {
-      state.analyzeButton.style.display = showDrawButtons ? 'grid' : 'none';
+      state.analyzeButton.style.display = 'none';
       state.analyzeButton.style.color = tone;
       state.analyzeButton.style.background = analyzeActive ? activeBg : 'transparent';
       state.analyzeButton.style.borderColor = tone;
@@ -6683,24 +7165,35 @@ if (window.__liaRunCoordHooks) {
       state.regressionButton.style.borderStyle = 'solid';
       state.regressionButton.style.outline = 'none';
       state.regressionButton.style.outlineOffset = '0';
-      state.regressionButton.dataset.active = regressionActive ? '1' : '0';
-      state.regressionButton.title = regressionActive ? 'Regressionspunkte auswaehlen' : 'Regression aus Punkten';
+      const regButtonActive = !!state.regressionMenuOpen || regressionActive;
+      state.regressionButton.style.background = regButtonActive ? activeBg : 'transparent';
+      state.regressionButton.dataset.active = regButtonActive ? '1' : '0';
+      state.regressionButton.title = regButtonActive ? 'Regressionspunkte auswaehlen' : 'Regression aus Punkten';
     }
 
     if (state.regressionMenu) {
-      const regOpen = !!regressionActive;
-      state.regressionMenuOpen = regOpen;
+      const regOpen = !!state.regressionMenuOpen;
       state.regressionMenu.dataset.open = regOpen ? '1' : '0';
       state.regressionMenu.style.display = regOpen ? 'grid' : 'none';
 
+      const regMode = state.regressionMode || '';
       state.regressionMenu.querySelectorAll('.lia-plot-reg-item').forEach(function(item) {
-        item.style.background = activeBg;
-        item.style.color = '#fff';
-        item.style.borderColor = 'rgba(255,255,255,.58)';
+        const itemAction = String(item.getAttribute('data-action') || '');
+        const isToggle = itemAction === 'recognize' || itemAction === 'select-points';
+        const isAction = itemAction === 'compute' || itemAction === 'clear';
+        const isActiveToggle = isToggle && regMode === itemAction;
+        const actionEnabled = !isAction || regMode === 'select-points';
+        const isActive = !isToggle || isActiveToggle;
+        item.style.background = isActive ? activeBg : 'transparent';
+        item.style.color = isActive ? '#fff' : tone;
+        item.style.borderColor = isActive ? 'rgba(255,255,255,.58)' : tone;
         item.style.fontWeight = '600';
         item.style.borderRadius = '999px';
         item.style.padding = '4px 10px';
         item.style.lineHeight = '1.2';
+        item.style.opacity = actionEnabled ? '1' : '0.35';
+        item.style.cursor = actionEnabled ? 'pointer' : 'not-allowed';
+        item.disabled = !actionEnabled;
       });
     }
 
@@ -6826,10 +7319,12 @@ if (window.__liaRunCoordHooks) {
       if (name === 'linear')      return function(x) { return params.m * x + params.n; };
       if (name === 'quadratisch') return function(x) { return params.A * (x + params.c) * (x + params.c) + params.d; };
       if (name === 'kubisch')     return function(x) { return ((params.a * x + params.b) * x + params.c) * x + params.d; };
+      if (name === 'quartisch')   return function(x) { return ((((params.a * x + params.b) * x + params.c) * x + params.d) * x + params.f); };
       if (name === 'exponential') return function(x) { return params.A * Math.exp(params.b * (x + params.c)) + params.d; };
       if (name === 'logarithmus') return function(x) { var t = x + params.c; return t <= 0 ? NaN : params.A * Math.log(t) + params.d; };
       if (name === 'wurzel')      return function(x) { var bw = (params.b !== undefined ? params.b : 1); var t = bw * (x + params.c); return t < 0 ? NaN : params.A * Math.sqrt(t) + params.d; };
       if (name === 'hyperbel')    return function(x) { var bh = (params.b !== undefined ? params.b : 1); var th = bh * (x + params.c); return Math.abs(th) < 1e-9 ? NaN : params.A / th + params.d; };
+      if (name === 'hyperbel2')   return function(x) { var bh2 = (params.b !== undefined ? params.b : 1); var th2 = bh2 * (x + params.c) * (x + params.c); return Math.abs(th2) < 1e-9 ? NaN : params.A / th2 + params.d; };
       if (name === 'sinus')       return function(x) { return params.A * Math.sin(params.b * (x + params.c)) + params.d; };
       return fallbackPredict;
     }
@@ -6866,6 +7361,7 @@ if (window.__liaRunCoordHooks) {
       if (name === 'linear')      return toFixedNum(params.m) + '*x' + signed(params.n);
       if (name === 'quadratisch') return toFixedNum(params.A) + '*(x' + signed(params.c) + ')^2' + signed(params.d);
       if (name === 'kubisch')     return toFixedNum(params.a) + '*x^3' + signed(params.b) + '*x^2' + signed(params.c) + '*x' + signed(params.d);
+      if (name === 'quartisch')   return toFixedNum(params.a) + '*x^4' + signed(params.b) + '*x^3' + signed(params.c) + '*x^2' + signed(params.d) + '*x' + signed(params.f);
       if (name === 'exponential') return toFixedNum(params.A) + '*exp(' + toFixedNum(params.b) + '*(x' + signed(params.c) + '))' + signed(params.d);
       if (name === 'logarithmus') return toFixedNum(params.A) + '*ln(x' + signed(params.c) + ')' + signed(params.d);
       if (name === 'wurzel') {
@@ -6882,6 +7378,13 @@ if (window.__liaRunCoordHooks) {
           : (toFixedNum(bh) + '*(x' + signed(params.c) + ')');
         return toFixedNum(params.A) + '/(' + innerH + ')' + signed(params.d);
       }
+      if (name === 'hyperbel2') {
+        var bh2 = params.b;
+        var innerH2 = (bh2 === undefined || Math.abs(bh2 - 1) < 0.02)
+          ? ('(x' + signed(params.c) + ')^2')
+          : (toFixedNum(bh2) + '*(x' + signed(params.c) + ')^2');
+        return toFixedNum(params.A) + '/(' + innerH2 + ')' + signed(params.d);
+      }
       if (name === 'sinus')       return toFixedNum(params.A) + '*sin(' + toFixedNum(params.b) + '*(x' + signed(params.c) + '))' + signed(params.d);
       return fallbackExpr || '';
     }
@@ -6890,8 +7393,10 @@ if (window.__liaRunCoordHooks) {
       if (name === 'linear') return 'Lineare Funktion';
       if (name === 'quadratisch') return 'Quadratische Funktion';
       if (name === 'kubisch') return 'Kubische Funktion';
+      if (name === 'quartisch') return 'Polynomfunktion 4. Grades';
       if (name === 'wurzel') return 'Wurzelfunktion';
       if (name === 'hyperbel') return 'Hyperbelfunktion';
+      if (name === 'hyperbel2') return 'Quadratische Hyperbelfunktion';
       if (name === 'sinus') return 'Sinusfunktion';
       if (name === 'exponential') return 'Exponentialfunktion';
       if (name === 'logarithmus') return 'Logarithmusfunktion';
@@ -8316,7 +8821,7 @@ if (window.__liaRunCoordHooks) {
       regressionButton.type = 'button';
       regressionButton.className = 'lia-plot-draw-toggle lia-plot-regression-toggle';
       regressionButton.setAttribute('aria-label', 'Regression aus Punkten');
-      regressionButton.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" style="width:22px;height:22px;display:block;"><path class="ico-stroke" d="M4 18l5-5 4 3 7-8"></path><path class="ico-stroke" d="M6 18a1.6 1.6 0 1 1 0 0.01"></path><path class="ico-stroke" d="M12.9 16a1.6 1.6 0 1 1 0 0.01"></path><path class="ico-stroke" d="M20 8a1.6 1.6 0 1 1 0 0.01"></path></svg>';
+      regressionButton.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" style="display:block;overflow:visible"><path class="ico-stroke" d="M5 18h4"></path><path class="ico-stroke" d="M7 16v4"></path><path class="ico-stroke" d="M12.8 4.5l1.7 3.5 3.9.5-2.8 2.7.7 3.8-3.5-1.8-3.5 1.8.7-3.8-2.8-2.7 3.9-.5z"></path></svg>';
       board.containerObj.appendChild(regressionButton);
     }
 
@@ -8326,6 +8831,8 @@ if (window.__liaRunCoordHooks) {
       regressionMenu.className = 'lia-plot-color-menu lia-plot-reg-menu';
       regressionMenu.dataset.open = '0';
       regressionMenu.innerHTML = '' +
+        '<button class="lia-plot-reg-item" type="button" data-action="recognize">Zeichnung erkennen</button>' +
+        '<button class="lia-plot-reg-item" type="button" data-action="select-points">Punkte auswählen</button>' +
         '<button class="lia-plot-reg-item" type="button" data-action="compute">Regression berechnen</button>' +
         '<button class="lia-plot-reg-item" type="button" data-action="clear">Auswahl aufheben</button>';
       board.containerObj.appendChild(regressionMenu);
@@ -8416,7 +8923,7 @@ if (window.__liaRunCoordHooks) {
     analyzeButton.style.height = '28px';
     analyzeButton.style.minWidth = '28px';
     analyzeButton.style.minHeight = '28px';
-    analyzeButton.style.display = hasDrawSpec ? 'grid' : 'none';
+    analyzeButton.style.display = 'none';
     analyzeButton.style.placeItems = 'center';
     analyzeButton.style.padding = '0';
     analyzeButton.style.margin = '0';
@@ -8467,7 +8974,7 @@ if (window.__liaRunCoordHooks) {
 
     if (regressionButton) {
       regressionButton.style.position = 'absolute';
-      regressionButton.style.left = hasDrawSpec ? '190px' : '10px';
+      regressionButton.style.left = hasDrawSpec ? '154px' : '10px';
       regressionButton.style.bottom = '10px';
       regressionButton.style.width = '28px';
       regressionButton.style.height = '28px';
@@ -8487,10 +8994,13 @@ if (window.__liaRunCoordHooks) {
 
     if (regressionMenu) {
       regressionMenu.style.position = 'absolute';
-      regressionMenu.style.left = hasDrawSpec ? '220px' : '46px';
+      regressionMenu.style.left = hasDrawSpec ? '184px' : '46px';
       regressionMenu.style.bottom = '10px';
       regressionMenu.style.zIndex = '56';
       regressionMenu.style.padding = '4px';
+      regressionMenu.style.display = 'none';
+      regressionMenu.style.gridTemplateColumns = '1fr 1fr';
+      regressionMenu.style.gap = '3px';
       {
         const tone = neutralColor();
         const fill = tone === '#fff' ? 'rgba(0,0,0,.82)' : 'rgba(255,255,255,.94)';
@@ -8541,7 +9051,7 @@ if (window.__liaRunCoordHooks) {
       regressionMenu.dataset.open = isOpen ? '1' : '0';
       regressionMenu.style.display = isOpen ? 'grid' : 'none';
     }
-    setRegressionMenuOpen(false);
+    setRegressionMenuOpen(!!state.regressionMenuOpen);
 
     state.canvas = canvas;
     state.drawButton = button;
@@ -8647,11 +9157,15 @@ if (window.__liaRunCoordHooks) {
       regressionButton.__liaPlotRegressionClickHandler = function(evt) {
         evt.preventDefault();
         evt.stopPropagation();
-        state.tool = state.tool === 'regression' ? '' : 'regression';
+        const wasOpen = !!state.regressionMenuOpen;
+        if (wasOpen) {
+          state.tool = '';
+          state.regressionMode = '';
+        }
         state.drawing = false;
         state.pointerId = null;
         setColorMenuOpen(false);
-        setRegressionMenuOpen(state.tool === 'regression');
+        setRegressionMenuOpen(!wasOpen);
         updateUi(boardId);
         scheduleRedraw(boardId);
       };
@@ -8668,6 +9182,27 @@ if (window.__liaRunCoordHooks) {
         evt.preventDefault();
         evt.stopPropagation();
         const action = String(btn.getAttribute('data-action') || '').trim();
+        if (action === 'recognize' || action === 'select-points') {
+          const newMode = (state.regressionMode === action) ? '' : action;
+          state.regressionMode = newMode;
+          if (newMode === 'recognize') {
+            state.tool = 'analyze';
+          } else if (newMode === 'select-points') {
+            state.tool = 'regression';
+          } else {
+            state.tool = '';
+          }
+          if (newMode !== 'recognize') {
+            state.analyzedStrokeIndex = -1;
+            state.analyzedCurvePoints = null;
+            setAnalyzePanel(board, state, '');
+          }
+          state.drawing = false;
+          state.pointerId = null;
+          updateUi(boardId);
+          scheduleRedraw(boardId);
+          return;
+        }
         if (action === 'clear') {
           state.regressionPoints = [];
           state.analyzedCurvePoints = null;
@@ -8711,21 +9246,7 @@ if (window.__liaRunCoordHooks) {
           }
         }
 
-        if (st.regressionMenu && st.regressionMenuOpen && st.tool !== 'regression') {
-          const inRegBtn = st.regressionButton && st.regressionButton.contains(evt.target);
-          const inRegMenu = st.regressionMenu.contains(evt.target);
-          if (!inRegBtn && !inRegMenu) {
-            st.regressionMenuOpen = false;
-            st.regressionMenu.dataset.open = '0';
-            st.regressionMenu.style.display = 'none';
-          }
-        }
-
-        if (st.tool !== 'regression' && st.regressionMenu && st.regressionMenu.style.display !== 'none') {
-          st.regressionMenuOpen = false;
-          st.regressionMenu.dataset.open = '0';
-          st.regressionMenu.style.display = 'none';
-        }
+        // Regressionsmenü bleibt offen – wird nur über den Hauptbutton geschlossen.
 
         if (st.tool !== 'draw' && st.drawColorMenu && st.drawColorMenu.style.display !== 'none') {
           st.drawColorMenuOpen = false;
@@ -9252,7 +9773,7 @@ if (window.__liaRunCoordHooks) {
     const value = Number(params && params[key]);
     if (Number.isFinite(value)) return value;
 
-    if (key === 'b' && (modelName === 'wurzel' || modelName === 'hyperbel' || modelName === 'logarithmus')) {
+    if (key === 'b' && (modelName === 'wurzel' || modelName === 'hyperbel' || modelName === 'hyperbel2' || modelName === 'logarithmus')) {
       return 1;
     }
 
@@ -9629,6 +10150,307 @@ if (window.__liaRunCoordHooks) {
     }
 
     return true;
+  };
+
+  function getRekQuizStore() {
+    window.__rekQuizStore = window.__rekQuizStore || {};
+    return window.__rekQuizStore;
+  }
+
+  function parseRekOptionDataAttrs(source) {
+    const src = String(source || '');
+    const re = /(data-[\w-]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'>/]+))/gi;
+    const attrs = [];
+    let m;
+
+    while ((m = re.exec(src)) !== null) {
+      const name = String(m[1] || '').toLowerCase();
+      if (!name) continue;
+      const value = m[2] != null ? m[2] : (m[3] != null ? m[3] : (m[4] != null ? m[4] : ''));
+      attrs.push({ name: name, value: String(value) });
+    }
+
+    return attrs;
+  }
+
+  function collectRekDataAttrsFromElement(el) {
+    if (!el || !el.attributes) return [];
+
+    const out = [];
+    for (let i = 0; i < el.attributes.length; i++) {
+      const attr = el.attributes[i];
+      const name = String(attr && attr.name || '').toLowerCase();
+      if (!/^data-/.test(name)) continue;
+      if (name !== 'data-solution-button' && !/^data-solution-timer(?:-|$)/.test(name)) continue;
+      out.push({ name: name, value: String(attr.value == null ? '' : attr.value) });
+    }
+    return out;
+  }
+
+  function mergeRekAttrs(list) {
+    const map = Object.create(null);
+    for (let i = 0; i < list.length; i++) {
+      const item = list[i];
+      if (!item || !item.name) continue;
+      map[String(item.name).toLowerCase()] = String(item.value == null ? '' : item.value);
+    }
+    return Object.keys(map).map(function(name) {
+      return { name: name, value: map[name] };
+    });
+  }
+
+  function collectRekLeadingOptionText(anchor) {
+    if (!anchor) return '';
+
+    const chunks = [];
+    let cur = anchor.previousSibling;
+    let guard = 0;
+
+    while (cur && guard < 30) {
+      guard += 1;
+
+      if (cur.nodeType === 8) {
+        const raw = String(cur.data || '').trim();
+        if (raw) chunks.unshift(raw);
+        cur = cur.previousSibling;
+        continue;
+      }
+
+      if (cur.nodeType === 3) {
+        const text = String(cur.textContent || '');
+        if (!text.trim()) {
+          cur = cur.previousSibling;
+          continue;
+        }
+
+        const matches = text.match(/<!--[\s\S]*?-->/g);
+        if (!matches || !matches.length) break;
+
+        for (let i = 0; i < matches.length; i++) {
+          const inner = String(matches[i]).replace(/^\s*<!--\s*|\s*-->\s*$/g, '').trim();
+          if (inner) chunks.unshift(inner);
+        }
+
+        cur = cur.previousSibling;
+        continue;
+      }
+
+      if (cur.nodeType === 1) {
+        const tag = String(cur.tagName || '').toLowerCase();
+        const isIgnorable = tag === 'br' || (tag === 'p' && !String(cur.textContent || '').trim());
+        if (isIgnorable) {
+          cur = cur.previousSibling;
+          continue;
+        }
+      }
+
+      break;
+    }
+
+    return chunks.join(' ').trim();
+  }
+
+  function parseRekRevealSetting(attrs) {
+    for (let i = 0; i < attrs.length; i++) {
+      const item = attrs[i];
+      if (item && item.name === 'data-solution-button') {
+        return String(item.value == null ? '' : item.value).trim().toLowerCase();
+      }
+    }
+    return '';
+  }
+
+  function findRekControlButtons(root) {
+    if (!root || !root.querySelectorAll) return [];
+    return Array.from(root.querySelectorAll('button.lia-btn, input.lia-btn, button, input[type="button"], input[type="submit"]'));
+  }
+
+  function isRekResolveButton(root, btn) {
+    if (!root || !btn) return false;
+
+    const cls = String(btn.className || '').toLowerCase();
+    if (/lia-quiz__resolve/.test(cls)) return true;
+    if (/lia-quiz__check/.test(cls)) return false;
+
+    const text = String(btn.textContent || btn.value || btn.getAttribute('aria-label') || '')
+      .trim()
+      .toLowerCase();
+    if (/(solution|aufl|show|loes|l\u00f6s)/.test(text)) return true;
+    if (/(check|pr\u00fcf|pruef)/.test(text)) return false;
+
+    const buttons = findRekControlButtons(root);
+    const idx = buttons.indexOf(btn);
+    return idx >= 1;
+  }
+
+  function applyRekOptionAttrs(state) {
+    if (!state || !state.root) return;
+    const attrs = state.optionAttrs || [];
+    if (!attrs.length) return;
+
+    for (let i = 0; i < attrs.length; i++) {
+      const item = attrs[i];
+      try { state.root.setAttribute(item.name, item.value); } catch (e) {}
+      try { if (state.specNode) state.specNode.setAttribute(item.name, item.value); } catch (e) {}
+    }
+
+    const applyToQuizzes = (retries) => {
+      if (!state || !state.root || !state.root.querySelectorAll) return;
+      let targets = [];
+      try {
+        targets = Array.from(state.root.querySelectorAll('lia-quiz, .lia-quiz'));
+      } catch (e) {}
+
+      if (!targets.length) {
+        if (retries < 320) requestAnimationFrame(function() { applyToQuizzes(retries + 1); });
+        return;
+      }
+
+      for (let i = 0; i < targets.length; i++) {
+        for (let j = 0; j < attrs.length; j++) {
+          try { targets[i].setAttribute(attrs[j].name, attrs[j].value); } catch (e) {}
+        }
+      }
+    };
+
+    applyToQuizzes(0);
+  }
+
+  function applyRekRevealState(state) {
+    if (!state || !state.root) return;
+    if (!state.revealSetting) return;
+
+    const buttons = findRekControlButtons(state.root).filter(function(btn) {
+      return isRekResolveButton(state.root, btn);
+    });
+    if (!buttons.length) return;
+
+    const attempts = Math.max(0, Number(state.failedChecks) || 0);
+    let show = true;
+
+    if (/^(off|false|disable|disabled|none)$/.test(state.revealSetting)) {
+      show = false;
+    } else if (/^(on|true|enable|enabled)$/.test(state.revealSetting)) {
+      show = true;
+    } else if (/^\d+$/.test(state.revealSetting)) {
+      const threshold = parseInt(state.revealSetting, 10);
+      show = attempts >= (Number.isFinite(threshold) ? threshold : 0);
+    }
+
+    for (let i = 0; i < buttons.length; i++) {
+      try { buttons[i].style.display = show ? '' : 'none'; } catch (e) {}
+    }
+  }
+
+  function resolveRekOptionAttrs(root, specNode) {
+    const commentText = collectRekLeadingOptionText(specNode) || collectRekLeadingOptionText(root);
+    const fromComment = parseRekOptionDataAttrs(commentText);
+    const fromSpecNode = collectRekDataAttrsFromElement(specNode);
+    const fromRoot = collectRekDataAttrsFromElement(root);
+
+    return mergeRekAttrs([].concat(fromComment, fromSpecNode, fromRoot));
+  }
+
+  window.__setupRekonstruktionQuiz = function(uid, spec) {
+    const id = String(uid || '').trim();
+    if (!id) return false;
+
+    const root = document.getElementById('rek-check-' + id);
+    const specNode = document.getElementById('rek-spec-' + id);
+    if (!root || !specNode) return false;
+
+    const rawSpec = String(spec == null ? (specNode.dataset.spec || '') : spec);
+    if (typeof window.__enableRekonstruktionBoard === 'function') {
+      try {
+        const boardId = String(rawSpec.split(';')[0] || '').trim();
+        if (boardId) window.__enableRekonstruktionBoard(boardId);
+      } catch (e) {}
+    }
+
+    const store = getRekQuizStore();
+    const state = store[id] || (store[id] = { uid: id, failedChecks: 0, clickBound: false, observed: false });
+    state.uid = id;
+    state.root = root;
+    state.specNode = specNode;
+    state.spec = rawSpec;
+    state.failedChecks = Math.max(0, Number(state.failedChecks) || 0);
+
+    const attrs = resolveRekOptionAttrs(root, specNode);
+    state.optionAttrs = attrs;
+    state.revealSetting = parseRekRevealSetting(attrs);
+
+    try { root.setAttribute('data-rek-failed-checks', String(state.failedChecks)); } catch (e) {}
+
+    applyRekOptionAttrs(state);
+
+    if (!state.clickBound) {
+      state.clickBound = true;
+      root.addEventListener('click', function(e) {
+        const btn = e.target && e.target.closest
+          ? e.target.closest('button, input[type="button"], input[type="submit"]')
+          : null;
+        if (!btn || !root.contains(btn)) return;
+        if (!isRekResolveButton(root, btn)) return;
+
+        const currentSpec = String((state.specNode && state.specNode.dataset && state.specNode.dataset.spec) || state.spec || '');
+        setTimeout(function() {
+          if (typeof window.__revealRekonstruktionFromSpec === 'function') {
+            window.__revealRekonstruktionFromSpec(currentSpec);
+          }
+        }, 0);
+        setTimeout(function() {
+          if (typeof window.__revealRekonstruktionFromSpec === 'function') {
+            window.__revealRekonstruktionFromSpec(currentSpec);
+          }
+        }, 80);
+      }, true);
+    }
+
+    if (!state.observed && typeof MutationObserver === 'function') {
+      state.observed = true;
+      try {
+        state.observer = new MutationObserver(function() {
+          applyRekOptionAttrs(state);
+          applyRekRevealState(state);
+        });
+        state.observer.observe(root, { childList: true, subtree: true });
+      } catch (e) {}
+    }
+
+    applyRekRevealState(state);
+    requestAnimationFrame(function() { applyRekRevealState(state); });
+    setTimeout(function() { applyRekRevealState(state); }, 80);
+    setTimeout(function() { applyRekRevealState(state); }, 220);
+    setTimeout(function() { applyRekRevealState(state); }, 500);
+
+    return true;
+  };
+
+  window.__checkRekonstruktionQuiz = function(uid, spec) {
+    const id = String(uid || '').trim();
+    if (!id) return false;
+
+    const store = getRekQuizStore();
+    const state = store[id] || (store[id] = { uid: id, failedChecks: 0, clickBound: false, observed: false });
+
+    if (typeof window.__setupRekonstruktionQuiz === 'function') {
+      window.__setupRekonstruktionQuiz(id, spec);
+    }
+
+    const effectiveSpec = String(spec == null ? (state.spec || '') : spec);
+    const passed = (typeof window.__checkRekonstruktionFromSpec === 'function')
+      ? !!window.__checkRekonstruktionFromSpec(effectiveSpec)
+      : false;
+
+    if (!passed) {
+      state.failedChecks = Math.max(0, Number(state.failedChecks) || 0) + 1;
+      try {
+        if (state.root) state.root.setAttribute('data-rek-failed-checks', String(state.failedChecks));
+      } catch (e) {}
+    }
+
+    applyRekRevealState(state);
+    return passed;
   };
 
   window.__bootstrapPlotZeichnen = function() {
@@ -12993,6 +13815,273 @@ function currentAccentColor() {
   window.__pointNeutralColor = currentNeutralColor;
   window.__punktGraphInstances = window.__punktGraphInstances || {};
   window.__punktGraphLocks = window.__punktGraphLocks || {};
+  window.__pointGraphQuizStore = window.__pointGraphQuizStore || {};
+
+  function parsePointGraphOptionAttrs(source) {
+    const src = String(source || '');
+    const re = /(data-[\w-]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'>/]+))/gi;
+    const attrs = [];
+    let m;
+
+    while ((m = re.exec(src)) !== null) {
+      const name = String(m[1] || '').toLowerCase();
+      if (!name) continue;
+      const value = m[2] != null ? m[2] : (m[3] != null ? m[3] : (m[4] != null ? m[4] : ''));
+      attrs.push({ name: name, value: String(value) });
+    }
+
+    return attrs;
+  }
+
+  function collectPointGraphDataAttrsFromElement(el) {
+    if (!el || !el.attributes) return [];
+
+    const out = [];
+    for (let i = 0; i < el.attributes.length; i++) {
+      const attr = el.attributes[i];
+      const name = String(attr && attr.name || '').toLowerCase();
+      if (!/^data-/.test(name)) continue;
+      if (name !== 'data-solution-button' && !/^data-solution-timer(?:-|$)/.test(name)) continue;
+      out.push({ name: name, value: String(attr.value == null ? '' : attr.value) });
+    }
+
+    return out;
+  }
+
+  function mergePointGraphAttrs(list) {
+    const map = Object.create(null);
+    for (let i = 0; i < list.length; i++) {
+      const item = list[i];
+      if (!item || !item.name) continue;
+      map[String(item.name).toLowerCase()] = String(item.value == null ? '' : item.value);
+    }
+
+    return Object.keys(map).map(function(name) {
+      return { name: name, value: map[name] };
+    });
+  }
+
+  function collectPointGraphLeadingOptionText(anchor) {
+    if (!anchor) return '';
+
+    const chunks = [];
+    let cur = anchor.previousSibling;
+    let guard = 0;
+
+    while (cur && guard < 30) {
+      guard += 1;
+
+      if (cur.nodeType === 8) {
+        const raw = String(cur.data || '').trim();
+        if (raw) chunks.unshift(raw);
+        cur = cur.previousSibling;
+        continue;
+      }
+
+      if (cur.nodeType === 3) {
+        const text = String(cur.textContent || '');
+        if (!text.trim()) {
+          cur = cur.previousSibling;
+          continue;
+        }
+
+        const matches = text.match(/<!--[\s\S]*?-->/g);
+        if (!matches || !matches.length) break;
+
+        for (let i = 0; i < matches.length; i++) {
+          const inner = String(matches[i]).replace(/^\s*<!--\s*|\s*-->\s*$/g, '').trim();
+          if (inner) chunks.unshift(inner);
+        }
+
+        cur = cur.previousSibling;
+        continue;
+      }
+
+      if (cur.nodeType === 1) {
+        const tag = String(cur.tagName || '').toLowerCase();
+        const isIgnorable = tag === 'br' || (tag === 'p' && !String(cur.textContent || '').trim());
+        if (isIgnorable) {
+          cur = cur.previousSibling;
+          continue;
+        }
+      }
+
+      break;
+    }
+
+    return chunks.join(' ').trim();
+  }
+
+  function parsePointGraphRevealSetting(attrs) {
+    for (let i = 0; i < attrs.length; i++) {
+      const item = attrs[i];
+      if (item && item.name === 'data-solution-button') {
+        return String(item.value == null ? '' : item.value).trim().toLowerCase();
+      }
+    }
+    return '';
+  }
+
+  function collectPointGraphOptionAttrs(uiRoot, checkRoot, inlineOptionText) {
+    const leadingText = collectPointGraphLeadingOptionText(uiRoot) || collectPointGraphLeadingOptionText(checkRoot);
+    const fromInline = parsePointGraphOptionAttrs(inlineOptionText);
+    const fromComment = parsePointGraphOptionAttrs(leadingText);
+    const fromUi = collectPointGraphDataAttrsFromElement(uiRoot);
+    const fromCheck = collectPointGraphDataAttrsFromElement(checkRoot);
+    return mergePointGraphAttrs([].concat(fromInline, fromComment, fromUi, fromCheck));
+  }
+
+  function applyPointGraphOptionAttrs(state) {
+    if (!state || !state.uiRoot || !state.checkRoot) return;
+
+    const attrs = state.optionAttrs || [];
+    if (!attrs.length) return;
+
+    for (let i = 0; i < attrs.length; i++) {
+      const item = attrs[i];
+      try { state.uiRoot.setAttribute(item.name, item.value); } catch (e) {}
+      try { state.checkRoot.setAttribute(item.name, item.value); } catch (e) {}
+    }
+
+    const applyToQuizzes = (retries) => {
+      if (!state || !state.checkRoot || !state.checkRoot.querySelectorAll) return;
+
+      let targets = [];
+      try {
+        targets = Array.from(state.checkRoot.querySelectorAll('lia-quiz, .lia-quiz'));
+      } catch (e) {}
+
+      if (!targets.length) {
+        if (retries < 320) requestAnimationFrame(function() { applyToQuizzes(retries + 1); });
+        return;
+      }
+
+      for (let i = 0; i < targets.length; i++) {
+        for (let j = 0; j < attrs.length; j++) {
+          try { targets[i].setAttribute(attrs[j].name, attrs[j].value); } catch (e) {}
+        }
+      }
+    };
+
+    applyToQuizzes(0);
+  }
+
+  function isPointGraphResolveButton(checkRoot, targetBtn) {
+    if (!checkRoot || !targetBtn) return false;
+
+    const cls = String(targetBtn.className || '').toLowerCase();
+    if (/lia-quiz__resolve/.test(cls)) return true;
+    if (/lia-quiz__check/.test(cls)) return false;
+
+    const text = String(targetBtn.textContent || targetBtn.value || targetBtn.getAttribute('aria-label') || '')
+      .trim()
+      .toLowerCase();
+
+    if (/(solution|aufl|show|loes|l\u00f6s)/.test(text)) return true;
+    if (/(check|pr\u00fcf|pruef)/.test(text)) return false;
+
+    const buttons = findAllQuizButtons(checkRoot);
+    const idx = buttons.indexOf(targetBtn);
+    return idx >= 1;
+  }
+
+  function applyPointGraphRevealState(state) {
+    if (!state || !state.checkRoot || !state.revealSetting) return;
+
+    const buttons = findAllQuizButtons(state.checkRoot).filter(function(btn) {
+      return isPointGraphResolveButton(state.checkRoot, btn);
+    });
+    if (!buttons.length) return;
+
+    const attempts = Math.max(0, Number(state.failedChecks) || 0);
+    let show = true;
+
+    if (/^(off|false|disable|disabled|none)$/.test(state.revealSetting)) {
+      show = false;
+    } else if (/^(on|true|enable|enabled)$/.test(state.revealSetting)) {
+      show = true;
+    } else if (/^\d+$/.test(state.revealSetting)) {
+      const threshold = parseInt(state.revealSetting, 10);
+      show = attempts >= (Number.isFinite(threshold) ? threshold : 0);
+    }
+
+    for (let i = 0; i < buttons.length; i++) {
+      try { buttons[i].style.display = show ? '' : 'none'; } catch (e) {}
+    }
+  }
+
+  window.__setupPointGraphQuiz = function(uid, spec, optionText) {
+    const id = String(uid || '').trim();
+    if (!id) return false;
+
+    const uiRoot = document.getElementById('graph-ui-' + id);
+    const checkRoot = document.getElementById('graph-check-' + id);
+    if (!uiRoot || !checkRoot) return false;
+
+    const effectiveSpec = String(spec == null ? getGraphUiSpecByUid(id) : spec);
+    const store = window.__pointGraphQuizStore || (window.__pointGraphQuizStore = {});
+    const state = store[id] || (store[id] = { uid: id, failedChecks: 0, observed: false });
+
+    state.uid = id;
+    state.uiRoot = uiRoot;
+    state.checkRoot = checkRoot;
+    state.spec = effectiveSpec;
+    state.inlineOptionText = String(optionText == null ? '' : optionText);
+    state.failedChecks = Math.max(0, Number(state.failedChecks) || 0);
+    state.optionAttrs = collectPointGraphOptionAttrs(uiRoot, checkRoot, state.inlineOptionText);
+    state.revealSetting = parsePointGraphRevealSetting(state.optionAttrs);
+
+    try { checkRoot.setAttribute('data-pointgraph-failed-checks', String(state.failedChecks)); } catch (e) {}
+
+    applyPointGraphOptionAttrs(state);
+    applyPointGraphRevealState(state);
+
+    if (!state.observed && typeof MutationObserver === 'function') {
+      state.observed = true;
+      try {
+        state.observer = new MutationObserver(function() {
+          applyPointGraphOptionAttrs(state);
+          applyPointGraphRevealState(state);
+        });
+        state.observer.observe(checkRoot, { childList: true, subtree: true });
+      } catch (e) {}
+    }
+
+    requestAnimationFrame(function() { applyPointGraphRevealState(state); });
+    setTimeout(function() { applyPointGraphRevealState(state); }, 80);
+    setTimeout(function() { applyPointGraphRevealState(state); }, 220);
+    setTimeout(function() { applyPointGraphRevealState(state); }, 500);
+
+    return true;
+  };
+
+  window.__checkPointGraphQuiz = function(uid, spec, optionText) {
+    const id = String(uid || '').trim();
+    if (!id) return false;
+
+    if (typeof window.__setupPointGraphQuiz === 'function') {
+      window.__setupPointGraphQuiz(id, spec, optionText);
+    }
+
+    const store = window.__pointGraphQuizStore || (window.__pointGraphQuizStore = {});
+    const state = store[id] || (store[id] = { uid: id, failedChecks: 0, observed: false });
+    const effectiveSpec = String(spec == null ? (state.spec || '') : spec);
+
+    const ok = !!(
+      typeof window.__checkPointGraphFromSpec === 'function' &&
+      window.__checkPointGraphFromSpec(id, effectiveSpec)
+    );
+
+    if (!ok) {
+      state.failedChecks = Math.max(0, Number(state.failedChecks) || 0) + 1;
+      try {
+        if (state.checkRoot) state.checkRoot.setAttribute('data-pointgraph-failed-checks', String(state.failedChecks));
+      } catch (e) {}
+    }
+
+    applyPointGraphRevealState(state);
+    return ok;
+  };
 
   if (!window.__liaThemeSync) {
     const listeners = new Set();
@@ -13841,14 +14930,7 @@ function currentAccentColor() {
   }
 
   function looksLikeResolveButton(checkRoot, targetBtn) {
-    const buttons = findAllQuizButtons(checkRoot);
-    const idx = buttons.indexOf(targetBtn);
-    const text = String(targetBtn.textContent || targetBtn.value || '').trim().toLowerCase();
-
-    if (idx >= 1) return true;
-    if (/l+�s|solution|aufl|show/.test(text)) return true;
-
-    return false;
+    return isPointGraphResolveButton(checkRoot, targetBtn);
   }
 
   function applyLockedStateToButton(uid, btn) {
@@ -14331,6 +15413,272 @@ function currentAccentColor() {
   window.__pointNeutralColor = currentNeutralColor;
   window.__punkteAufGraphInstances = window.__punkteAufGraphInstances || {};
   window.__punkteAufGraphLocks = window.__punkteAufGraphLocks || {};
+  window.__punkteAufGraphQuizStore = window.__punkteAufGraphQuizStore || {};
+
+  function parsePunkteQuizOptionAttrs(source) {
+    const src = String(source || '');
+    const re = /(data-[\w-]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'>/]+))/gi;
+    const attrs = [];
+    let m;
+
+    while ((m = re.exec(src)) !== null) {
+      const name = String(m[1] || '').toLowerCase();
+      if (!name) continue;
+      const value = m[2] != null ? m[2] : (m[3] != null ? m[3] : (m[4] != null ? m[4] : ''));
+      attrs.push({ name: name, value: String(value) });
+    }
+
+    return attrs;
+  }
+
+  function collectPunkteQuizDataAttrsFromElement(el) {
+    if (!el || !el.attributes) return [];
+
+    const out = [];
+    for (let i = 0; i < el.attributes.length; i++) {
+      const attr = el.attributes[i];
+      const name = String(attr && attr.name || '').toLowerCase();
+      if (!/^data-/.test(name)) continue;
+      if (name !== 'data-solution-button' && !/^data-solution-timer(?:-|$)/.test(name)) continue;
+      out.push({ name: name, value: String(attr.value == null ? '' : attr.value) });
+    }
+
+    return out;
+  }
+
+  function mergePunkteQuizAttrs(list) {
+    const map = Object.create(null);
+    for (let i = 0; i < list.length; i++) {
+      const item = list[i];
+      if (!item || !item.name) continue;
+      map[String(item.name).toLowerCase()] = String(item.value == null ? '' : item.value);
+    }
+
+    return Object.keys(map).map(function(name) {
+      return { name: name, value: map[name] };
+    });
+  }
+
+  function collectPunkteQuizLeadingOptionText(anchor) {
+    if (!anchor) return '';
+
+    const chunks = [];
+    let cur = anchor.previousSibling;
+    let guard = 0;
+
+    while (cur && guard < 30) {
+      guard += 1;
+
+      if (cur.nodeType === 8) {
+        const raw = String(cur.data || '').trim();
+        if (raw) chunks.unshift(raw);
+        cur = cur.previousSibling;
+        continue;
+      }
+
+      if (cur.nodeType === 3) {
+        const text = String(cur.textContent || '');
+        if (!text.trim()) {
+          cur = cur.previousSibling;
+          continue;
+        }
+
+        const matches = text.match(/<!--[\s\S]*?-->/g);
+        if (!matches || !matches.length) break;
+
+        for (let i = 0; i < matches.length; i++) {
+          const inner = String(matches[i]).replace(/^\s*<!--\s*|\s*-->\s*$/g, '').trim();
+          if (inner) chunks.unshift(inner);
+        }
+
+        cur = cur.previousSibling;
+        continue;
+      }
+
+      if (cur.nodeType === 1) {
+        const tag = String(cur.tagName || '').toLowerCase();
+        const isIgnorable = tag === 'br' || (tag === 'p' && !String(cur.textContent || '').trim());
+        if (isIgnorable) {
+          cur = cur.previousSibling;
+          continue;
+        }
+      }
+
+      break;
+    }
+
+    return chunks.join(' ').trim();
+  }
+
+  function parsePunkteQuizRevealSetting(attrs) {
+    for (let i = 0; i < attrs.length; i++) {
+      const item = attrs[i];
+      if (item && item.name === 'data-solution-button') {
+        return String(item.value == null ? '' : item.value).trim().toLowerCase();
+      }
+    }
+    return '';
+  }
+
+  function collectPunkteQuizOptionAttrs(uiRoot, checkRoot) {
+    const text = collectPunkteQuizLeadingOptionText(uiRoot) || collectPunkteQuizLeadingOptionText(checkRoot);
+    const fromComment = parsePunkteQuizOptionAttrs(text);
+    const fromUi = collectPunkteQuizDataAttrsFromElement(uiRoot);
+    const fromCheck = collectPunkteQuizDataAttrsFromElement(checkRoot);
+    return mergePunkteQuizAttrs([].concat(fromComment, fromUi, fromCheck));
+  }
+
+  function applyPunkteQuizOptionAttrs(state) {
+    if (!state || !state.uiRoot || !state.checkRoot) return;
+
+    const attrs = state.optionAttrs || [];
+    if (!attrs.length) return;
+
+    for (let i = 0; i < attrs.length; i++) {
+      const item = attrs[i];
+      try { state.uiRoot.setAttribute(item.name, item.value); } catch (e) {}
+      try { state.checkRoot.setAttribute(item.name, item.value); } catch (e) {}
+    }
+
+    const applyToQuizzes = (retries) => {
+      if (!state || !state.checkRoot || !state.checkRoot.querySelectorAll) return;
+
+      let targets = [];
+      try {
+        targets = Array.from(state.checkRoot.querySelectorAll('lia-quiz, .lia-quiz'));
+      } catch (e) {}
+
+      if (!targets.length) {
+        if (retries < 320) requestAnimationFrame(function() { applyToQuizzes(retries + 1); });
+        return;
+      }
+
+      for (let i = 0; i < targets.length; i++) {
+        for (let j = 0; j < attrs.length; j++) {
+          try { targets[i].setAttribute(attrs[j].name, attrs[j].value); } catch (e) {}
+        }
+      }
+    };
+
+    applyToQuizzes(0);
+  }
+
+  function isPunkteResolveButton(checkRoot, targetBtn) {
+    if (!checkRoot || !targetBtn) return false;
+
+    const cls = String(targetBtn.className || '').toLowerCase();
+    if (/lia-quiz__resolve/.test(cls)) return true;
+    if (/lia-quiz__check/.test(cls)) return false;
+
+    const text = String(targetBtn.textContent || targetBtn.value || targetBtn.getAttribute('aria-label') || '')
+      .trim()
+      .toLowerCase();
+    if (/(solution|aufl|show|loes|l\u00f6s)/.test(text)) return true;
+    if (/(check|pr\u00fcf|pruef)/.test(text)) return false;
+
+    const buttons = findAllQuizButtons(checkRoot);
+    const idx = buttons.indexOf(targetBtn);
+    return idx >= 1;
+  }
+
+  function applyPunkteQuizRevealState(state) {
+    if (!state || !state.checkRoot || !state.revealSetting) return;
+
+    const buttons = findAllQuizButtons(state.checkRoot).filter(function(btn) {
+      return isPunkteResolveButton(state.checkRoot, btn);
+    });
+    if (!buttons.length) return;
+
+    const attempts = Math.max(0, Number(state.failedChecks) || 0);
+    let show = true;
+
+    if (/^(off|false|disable|disabled|none)$/.test(state.revealSetting)) {
+      show = false;
+    } else if (/^(on|true|enable|enabled)$/.test(state.revealSetting)) {
+      show = true;
+    } else if (/^\d+$/.test(state.revealSetting)) {
+      const threshold = parseInt(state.revealSetting, 10);
+      show = attempts >= (Number.isFinite(threshold) ? threshold : 0);
+    }
+
+    for (let i = 0; i < buttons.length; i++) {
+      try { buttons[i].style.display = show ? '' : 'none'; } catch (e) {}
+    }
+  }
+
+  window.__setupPunkteAufGraphQuiz = function(uid, spec) {
+    const id = String(uid || '').trim();
+    if (!id) return false;
+
+    const uiRoot = document.getElementById('multi-graph-ui-' + id);
+    const checkRoot = document.getElementById('multi-graph-check-' + id);
+    if (!uiRoot || !checkRoot) return false;
+
+    const effectiveSpec = String(spec == null ? (uiRoot.dataset.spec || '') : spec);
+    uiRoot.dataset.spec = effectiveSpec;
+
+    const store = window.__punkteAufGraphQuizStore || (window.__punkteAufGraphQuizStore = {});
+    const state = store[id] || (store[id] = { uid: id, failedChecks: 0, observed: false });
+    state.uid = id;
+    state.uiRoot = uiRoot;
+    state.checkRoot = checkRoot;
+    state.spec = effectiveSpec;
+    state.failedChecks = Math.max(0, Number(state.failedChecks) || 0);
+
+    state.optionAttrs = collectPunkteQuizOptionAttrs(uiRoot, checkRoot);
+    state.revealSetting = parsePunkteQuizRevealSetting(state.optionAttrs);
+
+    try { checkRoot.setAttribute('data-punkte-failed-checks', String(state.failedChecks)); } catch (e) {}
+
+    applyPunkteQuizOptionAttrs(state);
+    applyPunkteQuizRevealState(state);
+
+    if (!state.observed && typeof MutationObserver === 'function') {
+      state.observed = true;
+      try {
+        state.observer = new MutationObserver(function() {
+          applyPunkteQuizOptionAttrs(state);
+          applyPunkteQuizRevealState(state);
+        });
+        state.observer.observe(checkRoot, { childList: true, subtree: true });
+      } catch (e) {}
+    }
+
+    requestAnimationFrame(function() { applyPunkteQuizRevealState(state); });
+    setTimeout(function() { applyPunkteQuizRevealState(state); }, 80);
+    setTimeout(function() { applyPunkteQuizRevealState(state); }, 220);
+    setTimeout(function() { applyPunkteQuizRevealState(state); }, 500);
+
+    return true;
+  };
+
+  window.__checkPunkteAufGraphQuiz = function(uid, spec) {
+    const id = String(uid || '').trim();
+    if (!id) return false;
+
+    if (typeof window.__setupPunkteAufGraphQuiz === 'function') {
+      window.__setupPunkteAufGraphQuiz(id, spec);
+    }
+
+    const store = window.__punkteAufGraphQuizStore || (window.__punkteAufGraphQuizStore = {});
+    const state = store[id] || (store[id] = { uid: id, failedChecks: 0, observed: false });
+    const effectiveSpec = String(spec == null ? (state.spec || '') : spec);
+
+    const ok = !!(
+      typeof window.__checkPunkteAufGraphFromSpec === 'function' &&
+      window.__checkPunkteAufGraphFromSpec(id, effectiveSpec)
+    );
+
+    if (!ok) {
+      state.failedChecks = Math.max(0, Number(state.failedChecks) || 0) + 1;
+      try {
+        if (state.checkRoot) state.checkRoot.setAttribute('data-punkte-failed-checks', String(state.failedChecks));
+      } catch (e) {}
+    }
+
+    applyPunkteQuizRevealState(state);
+    return ok;
+  };
 
   if (!window.__liaThemeSync) {
     const listeners = new Set();
@@ -15274,14 +16622,7 @@ function currentAccentColor() {
   }
 
   function looksLikeResolveButton(checkRoot, targetBtn) {
-    const buttons = findAllQuizButtons(checkRoot);
-    const idx = buttons.indexOf(targetBtn);
-    const text = String(targetBtn.textContent || targetBtn.value || '').trim().toLowerCase();
-
-    if (idx >= 1) return true;
-    if (/l+�s|solution|aufl|show/.test(text)) return true;
-
-    return false;
+    return isPunkteResolveButton(checkRoot, targetBtn);
   }
 
   function applyLockedStateToButton(uid, btn) {

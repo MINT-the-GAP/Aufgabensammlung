@@ -13,6 +13,8 @@ script: ./Koord.js
 
 import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
 
+import: OCRREADME.md
+
 
 
 
@@ -613,21 +615,21 @@ import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
   } catch (e) {}
 
   function styleResizeHandle(handle) {
-    const col = neutralColor();
+    const col = getGridColor('#0b5fff');
 
     handle.style.position = 'absolute';
     handle.style.right = '0';
     handle.style.bottom = '0';
     handle.style.left = 'auto';
-    handle.style.width = '22px';
-    handle.style.height = '22px';
+    handle.style.width = '24px';
+    handle.style.height = '24px';
     handle.style.cursor = 'nwse-resize';
     handle.style.zIndex = '50';
     handle.style.touchAction = 'none';
     handle.style.userSelect = 'none';
     handle.style.background = 'transparent';
-    handle.style.borderRight = '2px solid ' + col;
-    handle.style.borderBottom = '2px solid ' + col;
+    handle.style.borderRight = '5px solid ' + col;
+    handle.style.borderBottom = '5px solid ' + col;
     handle.style.borderLeft = '0';
     handle.style.borderTop = '0';
     handle.style.borderBottomRightRadius = '8px';
@@ -958,7 +960,7 @@ import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
 
   const board = JXG.JSXGraph.initBoard(jxgbox, {
     axis: false,
-    showNavigation: true,
+    showNavigation: false,
     showCopyright: false,
     boundingbox: START_BBOX,
     keepaspectratio: true,
@@ -1374,18 +1376,24 @@ import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
 
 
 
-@PunktGraph: @PunktGraph_(@uid,@0)
+@PunktGraph: @PunktGraph_(@uid,@0,@1)
 
 @PunktGraph_
 <div id="graph-ui-@0">
   <div id="graph-task-@0" class="lia-graph-task"></div>
 
   <div id="graph-check-@0">
+    @2
     [[!]]
     <script modify="false">
       (() => {
         const holder = document.getElementById('graph-spec-@0');
         const spec = holder ? String(holder.textContent || '') : String.raw`@1`;
+        const optionText = String.raw`@2`;
+
+        if (typeof window.__checkPointGraphQuiz === 'function') {
+          return window.__checkPointGraphQuiz('@0', spec, optionText);
+        }
 
         if (typeof window.__checkPointGraphFromSpec === 'function') {
           return window.__checkPointGraphFromSpec('@0', spec);
@@ -1398,6 +1406,17 @@ import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
 
 <span id="graph-spec-@0" style="display:none;">@1</span>
 
+<script modify="false">
+(function(){
+  const holder = document.getElementById('graph-spec-@0');
+  const spec = holder ? String(holder.textContent || '') : String.raw`@1`;
+  const optionText = String.raw`@2`;
+  if (typeof window.__setupPointGraphQuiz === 'function') {
+    window.__setupPointGraphQuiz('@0', spec, optionText);
+  }
+})();
+</script>
+
 @end
 
 
@@ -1406,19 +1425,24 @@ import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
 
 
 
-@PunkteAufGraph: @PunkteAufGraph_(@uid,@0)
+@PunkteAufGraph: @PunkteAufGraph_(@uid,@0,@1)
 
 @PunkteAufGraph_
 <div id="multi-graph-ui-@0" data-spec="@1">
   <div id="multi-graph-task-@0" class="lia-multi-graph-task"></div>
 
   <div id="multi-graph-check-@0">
+    @2
     [[!]]
     <script modify="false">
       (() => {
         const root = document.getElementById('multi-graph-ui-@0');
         const spec = root ? (root.dataset.spec || '') : String.raw`@1`;
         const uid  = '@0';
+
+        if (typeof window.__checkPunkteAufGraphQuiz === 'function') {
+          return window.__checkPunkteAufGraphQuiz(uid, spec);
+        }
 
         if (typeof window.__checkPunkteAufGraphFromSpec === 'function') {
           return window.__checkPunkteAufGraphFromSpec(uid, spec);
@@ -1428,6 +1452,16 @@ import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
     </script>
   </div>
 </div>
+
+<script modify="false">
+(function(){
+  const root = document.getElementById('multi-graph-ui-@0');
+  const spec = root ? String(root.dataset.spec || '') : String.raw`@1`;
+  if (typeof window.__setupPunkteAufGraphQuiz === 'function') {
+    window.__setupPunkteAufGraphQuiz('@0', spec);
+  }
+})();
+</script>
 
 @end
 
@@ -1440,36 +1474,16 @@ import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
 @Rekonstruktion_
 <span id="rek-spec-@0" data-spec="@1" style="display:none;"></span>
 
-<script modify="false">
-(function(){
-  const node = document.getElementById('rek-spec-@0');
-  const spec = node ? String(node.dataset.spec || '') : String.raw`@1`;
-  const boardId = String(spec.split(';')[0] || '').trim();
-  if (!boardId) return;
-
-  if (typeof window.__enableRekonstruktionBoard === 'function') {
-    window.__enableRekonstruktionBoard(boardId);
-    return;
-  }
-
-  window.__liaCoordRegressionSpecs = window.__liaCoordRegressionSpecs || {};
-  window.__liaCoordRegressionSpecs[boardId] = { enabled: true };
-
-  if (typeof window.__bootstrapRegression === 'function') {
-    window.__bootstrapRegression();
-  }
-  if (typeof window.__bootstrapPlotZeichnen === 'function') {
-    window.__bootstrapPlotZeichnen();
-  }
-})();
-</script>
-
 <div id="rek-check-@0">
 [[!]]
 <script modify="false">
   (() => {
     const node = document.getElementById('rek-spec-@0');
     const spec = node ? String(node.dataset.spec || '') : String.raw`@1`;
+
+    if (typeof window.__checkRekonstruktionQuiz === 'function') {
+      return window.__checkRekonstruktionQuiz('@0', spec);
+    }
 
     if (typeof window.__checkRekonstruktionFromSpec === 'function') {
       return window.__checkRekonstruktionFromSpec(spec);
@@ -1482,45 +1496,11 @@ import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
 
 <script modify="false">
 (function(){
-  const root = document.getElementById('rek-check-@0');
   const node = document.getElementById('rek-spec-@0');
-  if (!root || !node) return;
-  if (root.__rekRevealBound) return;
-  root.__rekRevealBound = true;
-
-  function findButtons() {
-    return Array.from(root.querySelectorAll('button.lia-btn, input.lia-btn, button, input[type="button"], input[type="submit"]'));
+  const spec = node ? String(node.dataset.spec || '') : String.raw`@1`;
+  if (typeof window.__setupRekonstruktionQuiz === 'function') {
+    window.__setupRekonstruktionQuiz('@0', spec);
   }
-
-  function isResolveButton(targetBtn) {
-    const buttons = findButtons();
-    const idx = buttons.indexOf(targetBtn);
-    const text = String(targetBtn.textContent || targetBtn.value || '').trim().toLowerCase();
-    if (idx >= 1) return true;
-    if (/solution|aufl|show|loes/.test(text)) return true;
-    return false;
-  }
-
-  root.addEventListener('click', function(e) {
-    const btn = e.target && e.target.closest
-      ? e.target.closest('button, input[type="button"], input[type="submit"]')
-      : null;
-    if (!btn || !root.contains(btn)) return;
-    if (!isResolveButton(btn)) return;
-
-    const spec = String(node.dataset.spec || String.raw`@1`);
-    setTimeout(function() {
-      if (typeof window.__revealRekonstruktionFromSpec === 'function') {
-        window.__revealRekonstruktionFromSpec(spec);
-      }
-    }, 0);
-
-    setTimeout(function() {
-      if (typeof window.__revealRekonstruktionFromSpec === 'function') {
-        window.__revealRekonstruktionFromSpec(spec);
-      }
-    }, 80);
-  }, true);
 })();
 </script>
 
@@ -1657,6 +1637,8 @@ import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
 
 Ziehe den Punkt $A$ auf die Koordinaten $(1|4)$.
 
+
+
 @ErzeugePunkt(`A2;A;1;4`,`<!-- data-solution-button="2" -->`)
 
 
@@ -1771,11 +1753,17 @@ Alles klappt nur wenn `https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/RE
 
 Ziehe den Punkt auf den Graphen von $f(x)=2x-4$.
 
-@PunktGraph(`A4;A;f;2x-4;0.05`) \
+
+
+@PunktGraph(`A4;A;f;2x-4;0.05`,`<!--   data-solution-button="2" -->`) 
+
+
 
 Ziehe den Punkt auf den Graphen von $g(x)=x-1$.
 
-@PunktGraph(`A4;B;#ff0000;g;x-1;#000fff;0.05`)
+
+
+@PunktGraph(`A4;B;#ff0000;g;x-1;#000fff;0.05`,`<!--    -->`)
 
 
 ```
@@ -1785,7 +1773,7 @@ Ziehe den Punkt auf den Graphen von $g(x)=x-1$.
 
 Ziehe den Punkt auf den Graphen von $f(x)=2x-4$.
 
-@PunktGraph(`A4;A;2x-4;0.05`)
+@PunktGraph(`A4;A;2x-4;0.05`,`<!--   data-solution-button="2" -->`)
 ```
 
 
@@ -1801,11 +1789,13 @@ Ziehe den Punkt auf den Graphen von $f(x)=2x-4$.
 
 Generiere drei Punkte und platziere sie auf den Graphen zur Funktion $f(x)=2x-4$, sodass die Punkte mindestens einen Abstand von $2LE$ zueinander haben.
 
-@PunkteAufGraph(`A5;n=4;d=3;A;f;2x-4;0.05`)
+@PunkteAufGraph(`A5;n=4;d=3;A;f;2x-4;0.05`,`<!-- -->`)
 
 Generiere drei Punkte und platziere sie auf den Graphen zur Funktion $g(x)=x-1$, sodass die Punkte mindestens einen Abstand von $1LE$ zueinander haben.
 
-@PunkteAufGraph(`A5;n=4;d=3;B;#0000ff;g;x-1;#fff000;0.05`)
+
+
+@PunkteAufGraph(`A5;n=4;d=3;B;#0000ff;g;x-1;#fff000;0.05`,`<!--   data-solution-button="2" -->`)
 
 
 ```
@@ -1813,7 +1803,7 @@ Generiere drei Punkte und platziere sie auf den Graphen zur Funktion $g(x)=x-1$,
 
 @AchsenBeschriftung(`id=A5;xlabel=$x$;ylabel=$y$`)
 
-@PunkteAufGraph(`A5;n=4;d=3;A;f;2x-4;0.05`)
+@PunkteAufGraph(`A5;n=4;d=3;A;f;2x-4;0.05`,`<!--   data-solution-button="2" -->`)
 
 Mit Farbeinstellungen: @PunkteAufGraph(`A5;n=4;d=3;A;#ff00ff;g;2x-4;#b41f65;0.05`)
 ```
@@ -1839,6 +1829,8 @@ Mit Farbeinstellungen: @PunkteAufGraph(`A5;n=4;d=3;A;#ff00ff;g;2x-4;#b41f65;0.05
 
 Rekonstruiere oder zeichne die Funktion $f(x) = 2x -1$.
 
+
+<!--   data-solution-button="2" -->
 @Rekonstruktion(`A9;2x-1;0.1`)
 
 
@@ -1888,6 +1880,8 @@ Passe die Funktion so an, dass $f(x) = 2x -1$ dargestellt ist.
 
 @Schar(`p;x;ax^3+bx^2+cx+d;A3;term=1;#ff0000`)
 
+@Schar(`r;x;ax^4+bx^3+cx^2+dx+f;A3;term=1;#55ff55`)
+
 
 
 
@@ -1901,9 +1895,9 @@ Passe die Funktion so an, dass $f(x) = 2x -1$ dargestellt ist.
 
 @Schar(`f;x;A sin{{b{{x+c}}}}+d;A11;term=1;#0077ff`)
 
-@Schar(`h;x;A e^{{b{{x+c}}}}+d;A3;term=1;#00ff00`)
+@Schar(`h;x;A e^{{b{{x+c}}}}+d;A11;term=1;#00ff00`)
 
-@Schar(`l;x;A ln{{b{{x+c}}}}+d;A3;term=1;#22aa66`)
+@Schar(`l;x;A ln{{b{{x+c}}}}+d;A11;term=1;#22aa66`)
 
 
 
@@ -1916,6 +1910,8 @@ Passe die Funktion so an, dass $f(x) = 2x -1$ dargestellt ist.
 @Schar(`k;x;A sqrt{{b{{x+c}}}}+d;A11;term=1;#ff9900`)
 
 @Schar(`q;x;A/{{b{{x+c}}}}+d;A11;term=1;#ffff00`)
+
+@Schar(`g;x;A/{{b{{x+c}}^2}}+d;A11;term=1;#0066ff`)
 
 
 
