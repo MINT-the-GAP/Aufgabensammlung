@@ -46,7 +46,7 @@ comment: Resetter v0.0.1
 		style.textContent = [
 			":root { --lia-tile-radius: 12px; --lia-target-width-scale: 0.65; --lia-target-min-width: calc(clamp(9rem, 22vw, 14rem) * var(--lia-target-width-scale)); --lia-tile-bg: rgba(0, 0, 0, 0.15); }",
 			".kachelfolge-wrap > span[data-kf-uid] { border-radius: var(--lia-tile-radius) !important; overflow: hidden !important; background-color: var(--lia-tile-bg) !important; }",
-			".kachelfolge-wrap > span[data-kf-uid].lia-target-placeholder { background-color: transparent !important; }",
+			".kachelfolge-wrap > span[data-kf-uid].lia-target-placeholder { background-color: var(--lia-tile-bg) !important; }",
 			".kachelfolge-wrap > div > span[role='button'] { border-radius: var(--lia-tile-radius) !important; overflow: hidden !important; background-color: var(--lia-tile-bg) !important; }",
 			".lia-paragraph:has(> .kachelfolge-wrap) + div > span[role='button'] { border-radius: var(--lia-tile-radius) !important; overflow: hidden !important; background-color: var(--lia-tile-bg) !important; }",
 			"[id^='kachelfolge-wrap-'] ~ div > span[role='button'] { border-radius: var(--lia-tile-radius) !important; overflow: hidden !important; background-color: var(--lia-tile-bg) !important; }",
@@ -338,16 +338,104 @@ comment: Resetter v0.0.1
 
 	function sourceCandidates(root) {
 		if (!root || !root.querySelectorAll) return [];
-		const raw = Array.from(root.querySelectorAll("[onclick],[onkeydown],[ondragstart],[draggable],[data-reset-tile-role='source']"));
+		const selector = "[onclick],[onkeydown],[ondragstart],[draggable],[data-reset-tile-role='source']";
+		const raw = Array.from(root.querySelectorAll(selector));
 		const out = [];
 		const seen = new Set();
+		const rawSet = new Set(raw);
 		raw.forEach(function (n) {
 			if (!n || !(n instanceof Element)) return;
+			let ancestor = n.parentElement && n.parentElement.closest ? n.parentElement.closest(selector) : null;
+			while (ancestor) {
+				if (rawSet.has(ancestor)) return;
+				ancestor = ancestor.parentElement && ancestor.parentElement.closest ? ancestor.parentElement.closest(selector) : null;
+			}
 			if (seen.has(n)) return;
 			seen.add(n);
 			out.push(n);
 		});
 		return out;
+	}
+
+	const __kfStateObservedRoots = new WeakSet();
+	const __kfStateSignatures = new WeakMap();
+
+	function collectTileState(root) {
+		if (!root) return { targets: [], sources: [] };
+		const targets = targetNodes(root);
+		const targetVals = targets.map(function (target) {
+			return targetDisplayText(target) || "✛";
+		});
+		const sourceVals = sourceCandidates(root)
+			.filter(function (source) {
+				return !!source && (source instanceof Element) && !isInsideAnyTarget(source, targets);
+			})
+			.map(function (source) {
+				return norm(source.textContent) || "";
+			})
+			.filter(Boolean);
+		return { targets: targetVals, sources: sourceVals };
+	}
+
+	function tileStateSignature(state) {
+		if (!state) return "";
+		return String((state.targets || []).join("|")) + " || " + String((state.sources || []).join("|"));
+	}
+
+	function logTileState(root, reason, force) {
+		if (!root) return;
+		const state = collectTileState(root);
+		const sig = tileStateSignature(state);
+		const prev = __kfStateSignatures.get(root) || "";
+		if (!force && sig === prev) return;
+		__kfStateSignatures.set(root, sig);
+		dlog("kf: state reason='" + String(reason || "unknown") + "' targets='" + state.targets.join("|") + "' sources='" + state.sources.join("|") + "'");
+	}
+
+	function ensureTileStateObserver(root, reason) {
+		if (!root || !(root instanceof Element)) return;
+		if (__kfStateObservedRoots.has(root)) {
+			logTileState(root, reason || "observer-known", false);
+			return;
+		}
+		__kfStateObservedRoots.add(root);
+		let pending = 0;
+		try {
+			const obs = new MutationObserver(function () {
+				if (pending) return;
+				pending = 1;
+				window.setTimeout(function () {
+					pending = 0;
+					logTileState(root, "mutation", false);
+				}, 0);
+			});
+			obs.observe(root, { subtree: true, childList: true, characterData: true, attributes: true });
+		} catch (e) {}
+		logTileState(root, reason || "observer-init", true);
+	}
+
+	function bootstrapTileStateObservers() {
+		const scope = document.body || document.documentElement;
+		if (!scope) return;
+		const candidates = [];
+		if (typeof window.__liaResetCollectTileQuizRoots === "function") {
+			try {
+				const roots = window.__liaResetCollectTileQuizRoots(scope) || [];
+				for (let i = 0; i < roots.length; i++) candidates.push(roots[i]);
+			} catch (e) {}
+		}
+		try {
+			const kBlocks = scope.querySelectorAll ? scope.querySelectorAll(".Kachel, [id^='kachelfolge-wrap-'], .kachelfolge-wrap") : [];
+			Array.from(kBlocks || []).forEach(function (el) { candidates.push(el); });
+		} catch (e) {}
+		const seen = new Set();
+		candidates.forEach(function (el) {
+			if (!el || !(el instanceof Element)) return;
+			if (seen.has(el)) return;
+			seen.add(el);
+			if (!targetNodes(el).length) return;
+			ensureTileStateObserver(el, "bootstrap");
+		});
 	}
 
 	function extractParamIdFromAttr(node, attrName, wantedCmd) {
@@ -594,6 +682,7 @@ comment: Resetter v0.0.1
 			}
 
 			try { applyThemeColorToTargetPlaceholders(block); } catch (e) {}
+			ensureTileStateObserver(block, "standalone-setup");
 		});
 	}
 
@@ -660,12 +749,51 @@ comment: Resetter v0.0.1
 		}
 	}
 
-	function applyTileStateDirectly(target, activeText, origin) {
+	function applyTileStateDirectly(target, activeText, origin, forceReleaseLabelText) {
 		const root = tileRootFrom(target);
 		if (!root) return false;
+		ensureTileStateObserver(root, "direct-attach");
 
 		const targets = targetNodes(root);
 		if (!targets.length) return false;
+
+		function isUsableSourceTile(source) {
+			if (!source || !(source instanceof Element)) return false;
+			if (isInsideAnyTarget(source, targets)) return false;
+			const txt = norm(source.textContent);
+			if (!txt || txt === "✛" || txt === "+") return false;
+			const attrs = ["onclick", "onkeydown", "ondragstart", "ondragend"].map(function (name) {
+				return String(source.getAttribute && source.getAttribute(name) || "");
+			}).join(" ").toLowerCase();
+			if (attrs.indexOf("dragsource") >= 0 || attrs.indexOf("dragend") >= 0 || attrs.indexOf("dragstart") >= 0) return true;
+			if ((source.getAttribute && source.getAttribute("data-reset-tile-role") === "source") || String(source.getAttribute && source.getAttribute("draggable") || "").toLowerCase() === "true") return true;
+			if (String(source.getAttribute && source.getAttribute("aria-hidden") || "").toLowerCase() === "true") return true;
+			return false;
+		}
+
+		function sourceHost(source) {
+			if (!source || !(source instanceof Element)) return source || null;
+			const parent = source.parentElement || null;
+			if (
+				parent &&
+				parent.parentElement === root &&
+				String(parent.tagName || "").toUpperCase() === "DIV" &&
+				parent.children && parent.children.length === 1 &&
+				parent.firstElementChild === source &&
+				String(source.tagName || "").toUpperCase() === "SPAN" &&
+				String(source.getAttribute && source.getAttribute("role") || "").toLowerCase() === "button" &&
+				norm(parent.textContent) === norm(source.textContent)
+			) {
+				return parent;
+			}
+			return source;
+		}
+
+		const outsideSources = sourceCandidates(root).filter(function (source) {
+			return isUsableSourceTile(source);
+		});
+		const poolAnchor = outsideSources.length ? sourceHost(outsideSources[0]) : null;
+		const poolParent = poolAnchor && poolAnchor.parentElement ? poolAnchor.parentElement : root;
 
 		let targetIndex = -1;
 		for (let i = 0; i < targets.length; i++) {
@@ -678,6 +806,47 @@ comment: Resetter v0.0.1
 		}
 
 		if (targetIndex < 0) return false;
+
+		function restoreNestedSources(node) {
+			if (!node || !poolParent) return;
+			const skipBox = node.firstElementChild || null;
+			const nested = Array.from(node.querySelectorAll ? node.querySelectorAll("[onclick], [onkeydown], [ondragstart], [ondragend], [draggable], [data-reset-tile-role='source']") : []).filter(function (source) {
+				if (!source || !(source instanceof Element) || source === node) return false;
+				if (skipBox && source === skipBox) return false;
+				const txt = norm(source.textContent);
+				if (!txt || txt === "✛" || txt === "+") return false;
+				if (!node.contains(source)) return false;
+				const attrs = ["onclick", "onkeydown", "ondragstart", "ondragend"].map(function (name) {
+					return String(source.getAttribute && source.getAttribute(name) || "");
+				}).join(" ").toLowerCase();
+				const attrLooksSource = attrs.indexOf("dragsource") >= 0 || attrs.indexOf("dragstart") >= 0 || attrs.indexOf("dragend") >= 0;
+				const roleLooksSource = String(source.getAttribute && source.getAttribute("data-reset-tile-role") || "") === "source";
+				const dragLooksSource = String(source.getAttribute && source.getAttribute("draggable") || "").toLowerCase() === "true";
+				if (!(attrLooksSource || roleLooksSource || dragLooksSource)) return false;
+				return true;
+			});
+			nested.forEach(function (source) {
+				if (!source || !poolParent) return;
+				const host = sourceHost(source) || source;
+				try { source.removeAttribute("aria-hidden"); } catch (e) {}
+				try { source.setAttribute("draggable", "true"); } catch (e) {}
+				try { source.style.pointerEvents = ""; } catch (e) {}
+				try { source.style.display = ""; } catch (e) {}
+				try { source.style.opacity = ""; } catch (e) {}
+				try { host.style.pointerEvents = ""; } catch (e) {}
+				try { host.style.display = ""; } catch (e) {}
+				try { host.style.opacity = ""; } catch (e) {}
+				try {
+					if (poolAnchor && poolAnchor.parentElement === poolParent) {
+						poolParent.insertBefore(host, poolAnchor);
+					} else {
+						poolParent.appendChild(host);
+					}
+				} catch (e) {
+					try { poolParent.appendChild(host); } catch (e2) {}
+				}
+			});
+		}
 
  		function getTargetText(node) {
 			if (!node) return "";
@@ -706,6 +875,26 @@ comment: Resetter v0.0.1
 				node.style.color = "";
 				box.style.color = "";
 			} else {
+				// Move nested source tiles out before writing placeholder text,
+				// otherwise textContent would delete them from the DOM.
+				restoreNestedSources(node);
+				const residualSelector = "[onclick], [onkeydown], [ondragstart], [ondragend], [draggable], [data-reset-tile-role='source']";
+				const residualHosts = [];
+				Array.from(node.querySelectorAll ? node.querySelectorAll(residualSelector) : []).forEach(function (source) {
+					if (!source || !(source instanceof Element)) return;
+					const host = sourceHost(source) || source;
+					if (host === node || host === box) return;
+					if (!node.contains(host)) return;
+					if (residualHosts.indexOf(host) >= 0) return;
+					residualHosts.push(host);
+				});
+				residualHosts.forEach(function (host) {
+					try { if (host.parentNode) host.parentNode.removeChild(host); } catch (e) {}
+				});
+				Array.from(node.childNodes || []).forEach(function (child) {
+					if (!child || child === box) return;
+					try { node.removeChild(child); } catch (e) {}
+				});
 				box.textContent = "✛";
 				try { node.classList.add("lia-target-placeholder"); } catch (e) {}
 				try { box.classList.add("lia-target-placeholder"); } catch (e) {}
@@ -744,7 +933,300 @@ comment: Resetter v0.0.1
 			}
 		}
 
+		function reconcileSourceVisibility(values) {
+			const usedCounts = Object.create(null);
+			(values || []).forEach(function (value) {
+				const txt = norm(value);
+				if (!txt || txt === "✛" || txt === "+") return;
+				usedCounts[txt] = (usedCounts[txt] || 0) + 1;
+			});
+
+			const liveOutsideSources = sourceCandidates(root).filter(function (source) {
+				return isUsableSourceTile(source);
+			});
+			const buckets = Object.create(null);
+			liveOutsideSources.forEach(function (source) {
+				const label = norm(source.textContent);
+				if (!label || label === "✛" || label === "+") return;
+				if (!buckets[label]) buckets[label] = [];
+				buckets[label].push(source);
+			});
+
+			Object.keys(buckets).forEach(function (label) {
+				const list = buckets[label] || [];
+				const used = Math.max(0, Number(usedCounts[label] || 0));
+				for (let i = 0; i < list.length; i++) {
+					const source = list[i];
+					const shouldHide = i < used;
+					if (shouldHide) {
+						try { source.setAttribute("aria-hidden", "true"); } catch (e) {}
+						try { source.setAttribute("draggable", "false"); } catch (e) {}
+						try { source.style.pointerEvents = "none"; } catch (e) {}
+						try { source.style.display = "none"; } catch (e) {}
+					} else {
+						try { source.removeAttribute("aria-hidden"); } catch (e) {}
+						try { source.setAttribute("draggable", "true"); } catch (e) {}
+						try { source.style.pointerEvents = ""; } catch (e) {}
+						try { source.style.display = ""; } catch (e) {}
+						try { source.style.opacity = ""; } catch (e) {}
+					}
+				}
+			});
+		}
+
+		function sourceIsVisible(node) {
+			if (!node || !(node instanceof Element)) return false;
+			const hiddenAttr = String(node.getAttribute && node.getAttribute("aria-hidden") || "").toLowerCase() === "true";
+			const displayHidden = String(node.style && node.style.display || "").toLowerCase() === "none";
+			const pointerNone = String(node.style && node.style.pointerEvents || "").toLowerCase() === "none";
+			const dragOff = String(node.getAttribute && node.getAttribute("draggable") || "").toLowerCase() === "false";
+			return !(hiddenAttr || displayHidden || pointerNone || dragOff);
+		}
+
+		function revealSource(node) {
+			if (!node || !(node instanceof Element)) return;
+			const host = sourceHost(node) || node;
+			try { node.removeAttribute("aria-hidden"); } catch (e) {}
+			try { node.setAttribute("draggable", "true"); } catch (e) {}
+			try { node.style.pointerEvents = ""; } catch (e) {}
+			try { node.style.display = ""; } catch (e) {}
+			try { node.style.opacity = ""; } catch (e) {}
+			try { host.style.pointerEvents = ""; } catch (e) {}
+			try { host.style.display = ""; } catch (e) {}
+			try { host.style.opacity = ""; } catch (e) {}
+		}
+
+		function restoreRememberedSource(node, label) {
+			if (!node || !window.__liaKfAssignedSources || typeof window.__liaKfAssignedSources.get !== "function") return false;
+			const remembered = window.__liaKfAssignedSources.get(node);
+			if (!remembered || !remembered.sourceEl || !(remembered.sourceEl instanceof Element)) return false;
+			const wanted = norm(label);
+			const source = remembered.sourceEl;
+			const host = sourceHost(source) || source;
+			const sourceLabel = norm(remembered.text || source.textContent);
+			if (wanted && sourceLabel && wanted !== sourceLabel) return false;
+			revealSource(source);
+			try {
+				if (node.contains && node.contains(host)) {
+					if (poolAnchor && poolAnchor.parentElement === poolParent) {
+						poolParent.insertBefore(host, poolAnchor);
+					} else {
+						poolParent.appendChild(host);
+					}
+				}
+			} catch (e) {
+				try { poolParent.appendChild(host); } catch (e2) {}
+			}
+			dlog("kf: restore remembered source label='" + sourceLabel + "'");
+			return true;
+		}
+
+		function createForcedSourceClone(label) {
+			const wanted = norm(label);
+			if (!wanted || !poolParent) return false;
+			if (wanted.length > 48 || /[.!?]/.test(wanted)) {
+				dlog("kf: skip forced clone suspicious label='" + wanted + "'");
+				return false;
+			}
+			const preferredSourceId = extractTargetId(targets[targetIndex]);
+			const existingForced = sourceCandidates(root).find(function (source) {
+				return !!source &&
+					(source instanceof Element) &&
+					String(source.getAttribute && source.getAttribute("data-kf-forced-source") || "") === "1" &&
+					norm(source.textContent) === wanted;
+			});
+			if (existingForced) {
+				revealSource(existingForced);
+				dlog("kf: reuse forced clone source label='" + wanted + "'");
+				return true;
+			}
+			const candidates = sourceCandidates(root).filter(function (source) {
+				if (!source || !(source instanceof Element)) return false;
+				if (!isUsableSourceTile(source)) return false;
+				const labelMatch = norm(source.textContent) === wanted;
+				const idMatch = preferredSourceId !== null && extractSourceId(source) === preferredSourceId;
+				return labelMatch || idMatch;
+			});
+			let template = candidates[0] || null;
+			if (!template && window.__liaKfAssignedSources && typeof window.__liaKfAssignedSources.get === "function") {
+				const remembered = window.__liaKfAssignedSources.get(targets[targetIndex]);
+				if (remembered && remembered.sourceEl instanceof Element && norm(remembered.sourceEl.textContent) === wanted) {
+					template = remembered.sourceEl;
+				}
+			}
+			if (!template) {
+				const any = Array.from(root.querySelectorAll ? root.querySelectorAll("[onclick], [onkeydown], [ondragstart], [ondragend], [draggable], [data-reset-tile-role='source']") : []);
+				template = any.find(function (source) {
+					if (!source || !(source instanceof Element)) return false;
+					if (!isUsableSourceTile(source)) return false;
+					const labelMatch = norm(source.textContent) === wanted;
+					const idMatch = preferredSourceId !== null && extractSourceId(source) === preferredSourceId;
+					return labelMatch || idMatch;
+				}) || null;
+			}
+			if (!template) {
+				template = sourceCandidates(root).find(function (source) {
+					return !!source && (source instanceof Element) && isUsableSourceTile(source) && !isInsideAnyTarget(source, targets);
+				}) || null;
+			}
+			if (!template) return false;
+
+			const templateHost = sourceHost(template) || template;
+			let clone = null;
+			try {
+				clone = templateHost.cloneNode(true);
+			} catch (e) {
+				clone = null;
+			}
+			if (!clone || !(clone instanceof Element)) return false;
+			try { clone.removeAttribute("id"); } catch (e) {}
+			Array.from(clone.querySelectorAll ? clone.querySelectorAll("[id]") : []).forEach(function (el) {
+				try { el.removeAttribute("id"); } catch (e) {}
+			});
+			[clone].concat(Array.from(clone.querySelectorAll ? clone.querySelectorAll("*") : [])).forEach(function (el) {
+				if (!el || !(el instanceof Element)) return;
+				["ondragover", "ondragleave", "ondrop"].forEach(function (attrName) {
+					try { el.removeAttribute(attrName); } catch (e) {}
+				});
+				["onclick", "onkeydown", "ondragstart", "ondragend"].forEach(function (attrName) {
+					const raw = String(el.getAttribute && el.getAttribute(attrName) || "");
+					if (!raw) return;
+					if (/cmd\s*:\s*['\"](dragtarget|dragenter)['\"]/i.test(raw)) {
+						try { el.removeAttribute(attrName); } catch (e) {}
+						return;
+					}
+					let next = raw;
+					if (preferredSourceId !== null) {
+						next = next.replace(/(param\s*:\s*\{[^}]*id\s*:\s*)\d+/i, "$1" + String(preferredSourceId));
+					}
+					if (norm(el.textContent) === norm(template.textContent) || el === clone || !el.children.length) {
+						try { el.textContent = String(label || wanted); } catch (e) {}
+					}
+					if (next !== raw) {
+						try { el.setAttribute(attrName, next); } catch (e) {}
+					}
+				});
+				try { el.classList.remove("lia-target-placeholder"); } catch (e) {}
+			});
+			try { clone.setAttribute("data-kf-forced-source", "1"); } catch (e) {}
+			try { clone.removeAttribute("data-reset-tile-role"); } catch (e) {}
+			Array.from(clone.querySelectorAll ? clone.querySelectorAll("[onclick], [onkeydown], [ondragstart], [ondragend], [draggable], [data-reset-tile-role='source']") : []).forEach(function (el) {
+				try { el.setAttribute("data-reset-tile-role", "source"); } catch (e) {}
+				try { el.setAttribute("draggable", "true"); } catch (e) {}
+			});
+			revealSource(clone);
+			try {
+				if (poolAnchor && poolAnchor.parentElement === poolParent) {
+					poolParent.insertBefore(clone, poolAnchor);
+				} else {
+					poolParent.appendChild(clone);
+				}
+			} catch (e) {
+				try { poolParent.appendChild(clone); } catch (e2) {}
+			}
+			dlog("kf: forced clone source label='" + wanted + "'");
+			return true;
+		}
+
+		function cleanupForcedSourceDuplicates(label) {
+			const wanted = norm(label);
+			if (!wanted) return;
+			const outside = sourceCandidates(root).filter(function (source) {
+				return !!source &&
+					(source instanceof Element) &&
+					!isInsideAnyTarget(source, targets) &&
+					norm(source.textContent) === wanted;
+			});
+			if (!outside.length) return;
+
+			const nonForcedVisible = outside.filter(function (source) {
+				return String(source.getAttribute && source.getAttribute("data-kf-forced-source") || "") !== "1" && sourceIsVisible(source);
+			});
+			const forced = outside.filter(function (source) {
+				return String(source.getAttribute && source.getAttribute("data-kf-forced-source") || "") === "1";
+			});
+
+			if (nonForcedVisible.length > 0) {
+				forced.forEach(function (source) {
+					try { if (source.parentNode) source.parentNode.removeChild(source); } catch (e) {}
+				});
+				if (forced.length) dlog("kf: cleanup forced clones label='" + wanted + "' removed=" + forced.length);
+				return;
+			}
+
+			if (forced.length > 1) {
+				for (let i = 1; i < forced.length; i++) {
+					const source = forced[i];
+					try { if (source.parentNode) source.parentNode.removeChild(source); } catch (e) {}
+				}
+				dlog("kf: cleanup extra forced clones label='" + wanted + "' removed=" + String(forced.length - 1));
+			}
+		}
+
+		function forceReleaseLabel(label, preferredNode) {
+			const wanted = norm(label);
+			if (!wanted || wanted === "✛" || wanted === "+") return false;
+
+			const outside = sourceCandidates(root).filter(function (source) {
+				return isUsableSourceTile(source) && norm(source.textContent) === wanted;
+			});
+			if (outside.some(sourceIsVisible)) return true;
+
+			const hiddenOutside = outside.find(function (source) { return !sourceIsVisible(source); }) || null;
+			if (hiddenOutside) {
+				const host = sourceHost(hiddenOutside) || hiddenOutside;
+				revealSource(hiddenOutside);
+				try {
+					if (host.parentElement !== poolParent) {
+						if (poolAnchor && poolAnchor.parentElement === poolParent) {
+							poolParent.insertBefore(host, poolAnchor);
+						} else {
+							poolParent.appendChild(host);
+						}
+					}
+				} catch (e) {}
+				dlog("kf: force-release outside label='" + wanted + "'");
+				return true;
+			}
+
+			const scopeNodes = [preferredNode].concat(targets).filter(Boolean);
+			for (let i = 0; i < scopeNodes.length; i++) {
+				const scope = scopeNodes[i];
+				const scopeBox = scope && scope.firstElementChild ? scope.firstElementChild : null;
+				const nested = Array.from(scope.querySelectorAll ? scope.querySelectorAll("[onclick], [onkeydown], [ondragstart], [ondragend], [draggable], [data-reset-tile-role='source']") : []).filter(function (source) {
+					if (!source || !(source instanceof Element) || source === scope) return false;
+					if (scopeBox && source === scopeBox) return false;
+					if (!scope.contains || !scope.contains(source)) return false;
+					if (norm(source.textContent) !== wanted) return false;
+					const attrs = ["onclick", "onkeydown", "ondragstart", "ondragend"].map(function (name) {
+						return String(source.getAttribute && source.getAttribute(name) || "");
+					}).join(" ").toLowerCase();
+					const attrLooksSource = attrs.indexOf("dragsource") >= 0 || attrs.indexOf("dragstart") >= 0 || attrs.indexOf("dragend") >= 0;
+					const roleLooksSource = String(source.getAttribute && source.getAttribute("data-reset-tile-role") || "") === "source";
+					const dragLooksSource = String(source.getAttribute && source.getAttribute("draggable") || "").toLowerCase() === "true";
+					return attrLooksSource || roleLooksSource || dragLooksSource;
+				});
+				if (!nested.length) continue;
+				const source = nested[0];
+				const host = sourceHost(source) || source;
+				revealSource(source);
+				try {
+					if (poolAnchor && poolAnchor.parentElement === poolParent) {
+						poolParent.insertBefore(host, poolAnchor);
+					} else {
+						poolParent.appendChild(host);
+					}
+				} catch (e) {
+					try { poolParent.appendChild(host); } catch (e2) {}
+				}
+				dlog("kf: force-release nested label='" + wanted + "'");
+				return true;
+			}
+			return false;
+		}
+
 		const values = targets.map(getTargetText);
+		const previousValue = norm(forceReleaseLabelText || values[targetIndex]);
 
 		values[targetIndex] = String(activeText || "").replace(/\s+/g, " ").trim();
 
@@ -752,8 +1234,18 @@ comment: Resetter v0.0.1
 			for (let i = 0; i < targets.length; i++) {
 				setTileTargetDisplay(targets[i], values[i] || "");
 			}
+			if (!norm(activeText)) {
+				restoreRememberedSource(targets[targetIndex], previousValue);
+			}
+			reconcileSourceVisibility(values);
+			if (!norm(activeText)) {
+				const released = forceReleaseLabel(previousValue, targets[targetIndex]);
+				if (!released) createForcedSourceClone(previousValue);
+				cleanupForcedSourceDuplicates(previousValue);
+			}
 
 			dlog((origin || "tile") + ": applied tile state directly index=" + targetIndex + " values='" + values.join("|") + "'");
+			logTileState(root, String(origin || "tile") + "-direct", true);
 			return true;
 		} catch (e) {
 			dlog((origin || "tile") + ": apply tile state failed: " + String(e).slice(0, 120));
@@ -771,6 +1263,7 @@ comment: Resetter v0.0.1
 	let lastDragOverTarget = null;
 	let lastDragOverTs = 0;
 	let lastHandledDropTs = 0;
+	let lastDirectClearTs = 0;
 	let touchDragActive = false;
 	let touchDragMoved = false;
 	let touchStartX = 0;
@@ -779,11 +1272,28 @@ comment: Resetter v0.0.1
 	let touchSourceTarget = null;
 	let touchHoverTarget = null;
 	let touchGhostEl = null;
+	window.__liaKfAssignedSources = window.__liaKfAssignedSources || new WeakMap();
 	dlog("patch active");
+
+	function rememberAssignedSource(target, sourceEl, text, reason) {
+		if (!target || !(target instanceof Element) || !sourceEl || !(sourceEl instanceof Element)) return;
+		const entry = {
+			sourceEl: sourceEl,
+			text: norm(text || sourceEl.textContent),
+			sourceId: extractSourceId(sourceEl),
+			ts: Date.now(),
+			reason: String(reason || "unknown")
+		};
+		try { window.__liaKfAssignedSources.set(target, entry); } catch (e) {}
+		dlog("kf: remember source reason='" + entry.reason + "' text='" + entry.text + "' sid='" + String(entry.sourceId === null ? "none" : entry.sourceId) + "'");
+	}
 
 	window.setTimeout(function () { setupStandaloneKachelAreas(document); }, 120);
 	window.setTimeout(function () { setupStandaloneKachelAreas(document); }, 520);
 	window.setTimeout(function () { setupStandaloneKachelAreas(document); }, 1100);
+	window.setTimeout(function () { bootstrapTileStateObservers(); }, 160);
+	window.setTimeout(function () { bootstrapTileStateObservers(); }, 760);
+	window.setTimeout(function () { bootstrapTileStateObservers(); }, 1500);
 
 	function clearState(reason) {
 		dlog("clear state; reason=" + String(reason || "unknown"));
@@ -869,10 +1379,10 @@ comment: Resetter v0.0.1
 		} catch (e) {}
 	}
 
-	function markSourceAsUsedAfterTouchDrop(sourceEl, sourceTarget, target) {
+	function markSourceAsUsedAfterTouchDrop(sourceEl, target) {
 		if (!sourceEl || !(sourceEl instanceof Element)) return;
 		const sourceNode = sourceFromNode(sourceEl) || sourceEl;
-		const sourceWasInTarget = !!sourceTarget || !!findTargetFromNode(sourceNode);
+		const sourceWasInTarget = !!findTargetFromNode(sourceNode);
 		if (sourceWasInTarget) return;
 		if (target && (target === sourceNode || (target.contains && target.contains(sourceNode)))) return;
 		try { sourceNode.setAttribute("aria-hidden", "true"); } catch (e) {}
@@ -931,6 +1441,7 @@ comment: Resetter v0.0.1
 			dlog(origin + ": no usable source element resolved");
 			return;
 		}
+		rememberAssignedSource(target, useSourceEl, activeText, origin);
 		const usedSourceId = extractSourceId(useSourceEl);
 		dlog("kf: drop-map origin='" + origin + "' srcId='" + String(usedSourceId === null ? "none" : usedSourceId) + "' tgtId='" + String(preferredSourceId === null ? "none" : preferredSourceId) + "' text='" + norm(activeText) + "'");
 		dlog(origin + ": using sourceEl text='" + norm(useSourceEl.textContent) + "' fromTargetRoot=1 preferredId=" + String(preferredSourceId === null ? "none" : preferredSourceId));
@@ -1050,28 +1561,25 @@ comment: Resetter v0.0.1
 		const t = primaryTouch(ev);
 		if (!t) return;
 		const hit = (typeof document.elementFromPoint === "function") ? document.elementFromPoint(t.clientX, t.clientY) : null;
-		const hitNode = hit || (ev.target || null);
-		const sourceEl = sourceFromNode(hitNode);
-		const sourceTarget = findTargetFromNode(hitNode) || (sourceEl ? findTargetFromNode(sourceEl) : null);
-		const effectiveSourceEl = sourceEl || sourceTarget;
-		if (!effectiveSourceEl) return;
+		const sourceEl = sourceFromNode(hit || (ev.target || null));
+		if (!sourceEl) return;
 
 		touchDragActive = true;
 		touchDragMoved = false;
 		touchStartX = Number(t.clientX) || 0;
 		touchStartY = Number(t.clientY) || 0;
-		touchSourceEl = effectiveSourceEl;
-		touchSourceTarget = sourceTarget;
+		touchSourceEl = sourceEl;
+		touchSourceTarget = findTargetFromNode(sourceEl);
 		touchHoverTarget = null;
 
-		pointerText = norm(sourceTarget ? targetDisplayText(sourceTarget) : effectiveSourceEl.textContent);
-		pointerRoot = quizNodeFrom(effectiveSourceEl) || tileRootFrom(effectiveSourceEl);
-		pointerEl = effectiveSourceEl;
-		pointerQuizKey = quizKeyFrom(effectiveSourceEl);
+		pointerText = norm(sourceEl.textContent);
+		pointerRoot = quizNodeFrom(sourceEl) || tileRootFrom(sourceEl);
+		pointerEl = sourceEl;
+		pointerQuizKey = quizKeyFrom(sourceEl);
 		lastDragOverTarget = null;
 		lastDragOverTs = 0;
 
-		ensureTouchGhost(effectiveSourceEl, effectiveSourceEl.textContent || pointerText || "");
+		ensureTouchGhost(sourceEl, sourceEl.textContent || pointerText || "");
 		moveTouchGhost(Number(t.clientX) || 0, Number(t.clientY) || 0);
 
 		dlog("touchstart source text='" + pointerText + "' inTarget=" + (touchSourceTarget ? 1 : 0));
@@ -1112,17 +1620,6 @@ comment: Resetter v0.0.1
 		const target = pointTarget || recentDragOverTarget || null;
 		const activeText = draggedText || pointerText;
 		const activeRoot = draggedRoot || pointerRoot;
-		const isDragGesture = !!touchDragMoved;
-
-		if (!isDragGesture) {
-			dlog("touchend tap/no-drag; ignore clear/drop");
-			scheduleClearState("touchend-tap", 180);
-			lastDragOverTarget = null;
-			lastDragOverTs = 0;
-			resetTouchDragState();
-			try { ev.preventDefault(); } catch (e) {}
-			return;
-		}
 
 		if (target && activeText) {
 			const sourceTarget = touchSourceTarget || null;
@@ -1131,7 +1628,7 @@ comment: Resetter v0.0.1
 			}
 			const dropped = applyTileStateDirectly(target, activeText, "touchend-drop");
 			if (dropped && touchSourceEl) {
-				markSourceAsUsedAfterTouchDrop(touchSourceEl, sourceTarget, target);
+				markSourceAsUsedAfterTouchDrop(touchSourceEl, target);
 			}
 			try { applyThemeColorToTargetPlaceholders(document); } catch (e) {}
 			try { if (typeof window.__liaResetRefreshTileTargetStyles === "function") window.__liaResetRefreshTileTargetStyles(document); } catch (e) {}
@@ -1206,6 +1703,20 @@ comment: Resetter v0.0.1
 		const activeText = draggedText || pointerText;
 		const activeRoot = draggedRoot || pointerRoot;
 		dlog("dragend; activeText='" + String(activeText || "") + "' hasTrackedTarget=" + (lastDragOverTarget ? 1 : 0));
+		if ((Date.now() - lastDirectClearTs) < 700) {
+			dlog("dragend soon after direct clear; skip");
+			scheduleClearState("dragend-after-clear", 80);
+			lastDragOverTarget = null;
+			lastDragOverTs = 0;
+			return;
+		}
+		if (activeText && !draggedEl && !pointerEl) {
+			dlog("dragend stale context without source refs; clear only");
+			scheduleClearState("dragend-stale", 80);
+			lastDragOverTarget = null;
+			lastDragOverTs = 0;
+			return;
+		}
 		if ((Date.now() - lastHandledDropTs) < 260) {
 			dlog("dragend after handled drop; skip fallback emulate");
 			scheduleClearState("dragend-after-drop", 140);
@@ -1270,6 +1781,7 @@ comment: Resetter v0.0.1
 		// Conservative routing: only emulate when cross-root is confirmed.
 		// If root detection is uncertain, prefer native LiaScript handling.
 		if (!isCrossRoot) {
+			if (sourceNode) rememberAssignedSource(target, sourceNode, activeText, "drop-native");
 			dlog("kf: drop native pass-through");
 			lastHandledDropTs = Date.now();
 			lastDragOverTarget = null;
@@ -1290,8 +1802,76 @@ comment: Resetter v0.0.1
 		scheduleClearState("drop-handled", 80);
 	}, true);
 
+	document.addEventListener("dblclick", function (ev) {
+		if (window.__liaTileCrossInternalDispatch) return;
+		const target = ev && ev.target ? findTargetFromNode(ev.target) : null;
+		if (!target) return;
+		if (window.__liaKfBlockDblclickClear !== false) {
+			dlog("kf: dblclick blocked");
+			try { ev.preventDefault(); } catch (e) {}
+			try { ev.stopPropagation(); } catch (e) {}
+			try { if (typeof ev.stopImmediatePropagation === "function") ev.stopImmediatePropagation(); } catch (e) {}
+			return;
+		}
+		const currentText = targetDisplayText(target);
+		if (!currentText) return;
+		const cleared = applyTileStateDirectly(target, "", "dblclick-clear", currentText);
+		dlog("dblclick clear target=" + (cleared ? 1 : 0) + " text='" + currentText + "'");
+		if (!cleared) return;
+		lastHandledDropTs = Date.now();
+		lastDirectClearTs = Date.now();
+		lastDragOverTarget = null;
+		lastDragOverTs = 0;
+		clearState("dblclick-clear-immediate");
+		scheduleClearState("dblclick-clear", 120);
+
+		function hasVisibleSourceWithLabel(rootNode, label) {
+			const wanted = norm(label);
+			if (!rootNode || !wanted) return false;
+			const targetsNow = targetNodes(rootNode);
+			const all = sourceCandidates(rootNode);
+			for (let i = 0; i < all.length; i++) {
+				const source = all[i];
+				if (!source || !(source instanceof Element)) continue;
+				if (isInsideAnyTarget(source, targetsNow)) continue;
+				if (norm(source.textContent) !== wanted) continue;
+				if (String(source.getAttribute && source.getAttribute("aria-hidden") || "").toLowerCase() === "true") continue;
+				if (String(source.style && source.style.display || "").toLowerCase() === "none") continue;
+				return true;
+			}
+			return false;
+		}
+
+		function enforceDblclickClear(tag) {
+			const rootNode = tileRootFrom(target);
+			if (!rootNode) return;
+			const targetTextNow = targetDisplayText(target);
+			const sourceVisible = hasVisibleSourceWithLabel(rootNode, currentText);
+			if (!targetTextNow) {
+				dlog("kf: dblclick-force tag='" + String(tag || "retry") + "' skipped target already clear sourceVisible=" + (sourceVisible ? 1 : 0));
+				return;
+			}
+			const ok = applyTileStateDirectly(target, "", "dblclick-force-" + String(tag || "retry"), currentText);
+			dlog("kf: dblclick-force tag='" + String(tag || "retry") + "' targetNow='" + String(targetTextNow || "") + "' sourceVisible=" + (sourceVisible ? 1 : 0) + " ok=" + (ok ? 1 : 0));
+			try { applyThemeColorToTargetPlaceholders(document); } catch (e) {}
+			try { if (typeof window.__liaResetRefreshTileTargetStyles === "function") window.__liaResetRefreshTileTargetStyles(document); } catch (e) {}
+		}
+
+		window.setTimeout(function () { enforceDblclickClear("t40"); }, 40);
+		try { applyThemeColorToTargetPlaceholders(document); } catch (e) {}
+		try { if (typeof window.__liaResetRefreshTileTargetStyles === "function") window.__liaResetRefreshTileTargetStyles(document); } catch (e) {}
+		try { ev.preventDefault(); } catch (e) {}
+		try { ev.stopPropagation(); } catch (e) {}
+		try { if (typeof ev.stopImmediatePropagation === "function") ev.stopImmediatePropagation(); } catch (e) {}
+	}, true);
+
 	document.addEventListener("pointerup", function (ev) {
 		if (window.__liaTileCrossInternalDispatch) return;
+		if (String(ev && ev.pointerType || "").toLowerCase() === "touch") return;
+		if (Number(ev && ev.detail || 0) > 1) {
+			dlog("pointerup dblclick detail; skip emulate");
+			return;
+		}
 		if ((Date.now() - lastHandledDropTs) < 260) {
 			dlog("pointerup after handled drop; skip emulate");
 			return;
@@ -1300,12 +1880,23 @@ comment: Resetter v0.0.1
 			dlog("pointerup during drag lifecycle; skip emulate");
 			return;
 		}
+		const recentDragOverTarget = lastDragOverTarget && (Date.now() - lastDragOverTs) < 1400 ? lastDragOverTarget : null;
+		if (!recentDragOverTarget) {
+			dlog("pointerup no tracked drag target; skip emulate");
+			return;
+		}
 		const activeText = draggedText || pointerText;
 		const activeRoot = draggedRoot || pointerRoot;
 		if (!activeText) return;
 		const node = ev && ev.target ? ev.target : null;
-		const target = findTargetFromNode(node);
+		const pointTarget = ev ? findTargetFromPoint(Number(ev.clientX), Number(ev.clientY)) : null;
+		const nodeTarget = findTargetFromNode(node);
+		const target = pointTarget || nodeTarget || recentDragOverTarget;
 		if (!target) return;
+		if (recentDragOverTarget && target !== recentDragOverTarget) {
+			dlog("pointerup target mismatch vs tracked drag target; skip emulate");
+			return;
+		}
 		dlog("pointerup target detected; text='" + activeText + "'; targetQuiz=" + String((quizNodeFrom(target) && (quizNodeFrom(target).getAttribute && quizNodeFrom(target).getAttribute("data-resetall-id") || quizNodeFrom(target).className || quizNodeFrom(target).tagName)) || "null"));
 		emulateLocalDrop(target, activeText, activeRoot, "pointerup");
 		scheduleClearState("pointerup-handled", 120);
@@ -1579,6 +2170,12 @@ In diese muss auch [->[(gelb)]] rein und in diese [->[(gelb)]] auch. \
 Das Adjektiv [->[(gelb)]] ist [->[pink|rot|blau|grün|(gelb)]].
 
 </div>
+
+
+[->[(Test)]] 
+
+# Neue Kachelquizarten 2
+
 
 
 ---
