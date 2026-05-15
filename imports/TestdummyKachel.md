@@ -1924,7 +1924,7 @@ comment: Resetter v0.0.1
 		const hit = (typeof document.elementFromPoint === "function") ? document.elementFromPoint(t.clientX, t.clientY) : null;
 		const sourceEl = sourceFromNode(hit || (ev.target || null));
 		if (!sourceEl) return;
-		const sourceRoot = quizNodeFrom(sourceEl) || tileRootFrom(sourceEl);
+		const sourceRoot = tileRootFrom(sourceEl) || quizNodeFrom(sourceEl);
 		if (!isManagedKachelTouchRoot(sourceRoot)) return;
 
 		touchDragActive = true;
