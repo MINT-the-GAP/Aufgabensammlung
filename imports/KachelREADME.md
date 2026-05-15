@@ -778,6 +778,7 @@ comment: Resetter v0.0.1
 	let touchSourceEl = null;
 	let touchSourceTarget = null;
 	let touchHoverTarget = null;
+	let touchGhostEl = null;
 	dlog("patch active");
 
 	window.setTimeout(function () { setupStandaloneKachelAreas(document); }, 120);
@@ -814,6 +815,54 @@ comment: Resetter v0.0.1
 		touchSourceEl = null;
 		touchSourceTarget = null;
 		touchHoverTarget = null;
+		if (touchGhostEl && touchGhostEl.parentNode) {
+			try { touchGhostEl.parentNode.removeChild(touchGhostEl); } catch (e) {}
+		}
+		touchGhostEl = null;
+	}
+
+	function ensureTouchGhost(text) {
+		if (touchGhostEl && touchGhostEl.parentNode) return touchGhostEl;
+		const ghost = document.createElement("div");
+		ghost.className = "lia-touch-ghost";
+		ghost.textContent = String(text || "");
+		ghost.style.position = "fixed";
+		ghost.style.left = "0";
+		ghost.style.top = "0";
+		ghost.style.transform = "translate(-50%, -50%)";
+		ghost.style.pointerEvents = "none";
+		ghost.style.zIndex = "2147483647";
+		ghost.style.opacity = "0.3";
+		ghost.style.padding = "0.35rem 0.6rem";
+		ghost.style.borderRadius = "var(--lia-tile-radius, 12px)";
+		ghost.style.background = "var(--lia-tile-bg, rgba(0, 0, 0, 0.15))";
+		ghost.style.color = "currentColor";
+		ghost.style.fontWeight = "600";
+		ghost.style.backdropFilter = "blur(1px)";
+		(document.body || document.documentElement).appendChild(ghost);
+		touchGhostEl = ghost;
+		return ghost;
+	}
+
+	function moveTouchGhost(x, y) {
+		if (!touchGhostEl) return;
+		if (!Number.isFinite(x) || !Number.isFinite(y)) return;
+		try {
+			touchGhostEl.style.left = String(x) + "px";
+			touchGhostEl.style.top = String(y) + "px";
+		} catch (e) {}
+	}
+
+	function markSourceAsUsedAfterTouchDrop(sourceEl, target) {
+		if (!sourceEl || !(sourceEl instanceof Element)) return;
+		const sourceNode = sourceFromNode(sourceEl) || sourceEl;
+		const sourceWasInTarget = !!findTargetFromNode(sourceNode);
+		if (sourceWasInTarget) return;
+		if (target && (target === sourceNode || (target.contains && target.contains(sourceNode)))) return;
+		try { sourceNode.setAttribute("aria-hidden", "true"); } catch (e) {}
+		try { sourceNode.setAttribute("draggable", "false"); } catch (e) {}
+		sourceNode.style.pointerEvents = "none";
+		sourceNode.style.display = "none";
 	}
 
 	function primaryTouch(ev) {
@@ -1003,6 +1052,9 @@ comment: Resetter v0.0.1
 		lastDragOverTarget = null;
 		lastDragOverTs = 0;
 
+		ensureTouchGhost(sourceEl.textContent || pointerText || "");
+		moveTouchGhost(Number(t.clientX) || 0, Number(t.clientY) || 0);
+
 		dlog("touchstart source text='" + pointerText + "' inTarget=" + (touchSourceTarget ? 1 : 0));
 		try { ev.preventDefault(); } catch (e) {}
 	}, { capture: true, passive: false });
@@ -1014,6 +1066,7 @@ comment: Resetter v0.0.1
 		const dx = Math.abs((Number(t.clientX) || 0) - touchStartX);
 		const dy = Math.abs((Number(t.clientY) || 0) - touchStartY);
 		if (!touchDragMoved && (dx > 6 || dy > 6)) touchDragMoved = true;
+		moveTouchGhost(Number(t.clientX) || 0, Number(t.clientY) || 0);
 
 		const hover = findTargetFromPoint(Number(t.clientX), Number(t.clientY));
 		if (hover) {
@@ -1047,6 +1100,9 @@ comment: Resetter v0.0.1
 				clearTargetBySource(touchSourceEl, "touchend-move-clear");
 			}
 			const dropped = applyTileStateDirectly(target, activeText, "touchend-drop");
+			if (dropped && touchSourceEl) {
+				markSourceAsUsedAfterTouchDrop(touchSourceEl, target);
+			}
 			try { applyThemeColorToTargetPlaceholders(document); } catch (e) {}
 			try { if (typeof window.__liaResetRefreshTileTargetStyles === "function") window.__liaResetRefreshTileTargetStyles(document); } catch (e) {}
 			dlog("touchend drop target=1 direct=" + (dropped ? 1 : 0) + " text='" + activeText + "'");
