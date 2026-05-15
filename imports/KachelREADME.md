@@ -1925,7 +1925,6 @@ comment: Resetter v0.0.1
 		const sourceEl = sourceFromNode(hit || (ev.target || null));
 		if (!sourceEl) return;
 		const sourceRoot = tileRootFrom(sourceEl) || quizNodeFrom(sourceEl);
-		if (!isManagedKachelTouchRoot(sourceRoot)) return;
 
 		touchDragActive = true;
 		touchDragMoved = false;
@@ -1983,22 +1982,25 @@ comment: Resetter v0.0.1
 		const target = pointTarget || recentDragOverTarget || null;
 		const activeText = draggedText || pointerText;
 		const activeRoot = draggedRoot || pointerRoot;
+		const managedTouchRoot = isManagedKachelTouchRoot(activeRoot);
 
 		if (target && activeText) {
 			const sourceTarget = touchSourceTarget || null;
-			if (sourceTarget && sourceTarget !== target && touchSourceEl) {
+			if (managedTouchRoot && sourceTarget && sourceTarget !== target && touchSourceEl) {
 				clearTargetBySource(touchSourceEl, "touchend-move-clear");
 			}
-			const dropped = applyTileStateDirectly(target, activeText, "touchend-drop");
-			if (dropped && touchSourceEl) {
+			const dropped = managedTouchRoot
+				? applyTileStateDirectly(target, activeText, "touchend-drop")
+				: (emulateLocalDrop(target, activeText, activeRoot, "touchend-drop"), true);
+			if (managedTouchRoot && dropped && touchSourceEl) {
 				markSourceAsUsedAfterTouchDrop(touchSourceEl, target);
 			}
 			try { applyThemeColorToTargetPlaceholders(document); } catch (e) {}
 			try { if (typeof window.__liaResetRefreshTileTargetStyles === "function") window.__liaResetRefreshTileTargetStyles(document); } catch (e) {}
-			dlog("touchend drop target=1 direct=" + (dropped ? 1 : 0) + " text='" + activeText + "'");
+			dlog("touchend drop target=1 managed=" + (managedTouchRoot ? 1 : 0) + " ok=" + (dropped ? 1 : 0) + " text='" + activeText + "'");
 			lastHandledDropTs = Date.now();
 			scheduleClearState("touchend-drop", 120);
-		} else if (touchSourceTarget && touchSourceEl) {
+		} else if (managedTouchRoot && touchSourceTarget && touchSourceEl) {
 			const cleared = clearTargetBySource(touchSourceEl, "touchend-clear");
 			dlog("touchend clear-by-drag=" + (cleared ? 1 : 0));
 			if (cleared) {
@@ -2575,7 +2577,7 @@ Das Adjektiv [->[(gelb)]] ist [->[pink|rot|blau|grün|(gelb)]].
 
 </div>
 
-
+Normales Quiz zum Testen:
 [->[(Test)]] 
 
 # Neue Kachelquizarten 2
