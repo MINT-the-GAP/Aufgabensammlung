@@ -535,6 +535,68 @@ comment: Resetter v0.0.1
 		return out;
 	}
 
+	function setupStandaloneKachelAreas(root) {
+		const scope = root && root.querySelectorAll ? root : document;
+		const blocks = scope.querySelectorAll ? Array.prototype.slice.call(scope.querySelectorAll("div.Kachel")) : [];
+		if (!blocks.length) return;
+
+		window.__liaKachelfolgeExpected = window.__liaKachelfolgeExpected || {};
+
+		function inferExpectedFromInstruction(block, targetCount) {
+			if (!block || !targetCount) return null;
+			const txt = String(block.textContent || "").replace(/\s+/g, " ").trim();
+			if (!txt) return null;
+
+			const m = txt.match(/w\S*hle\s+([^\s.,;:!?]+)/i);
+			if (!m || !m[1]) return null;
+
+			const token = String(m[1] || "").toLowerCase().trim();
+			if (!token || token === "aus") return null;
+
+			const out = [];
+			for (let i = 0; i < targetCount; i++) out.push(token);
+			return out;
+		}
+
+		blocks.forEach(function (block, idx) {
+			if (!block || !(block instanceof Element)) return;
+			if (String(block.getAttribute("data-kf-inline-ready") || "") === "1") return;
+
+			const targets = targetNodes(block);
+			if (!targets.length) return;
+
+			const existingUid = String(block.getAttribute("data-kf-uid") || "").trim();
+			const uid = existingUid || ("inline-" + String(idx + 1));
+
+			if (!block.id) {
+				try { block.id = "kachelfolge-wrap-" + uid; } catch (e) {}
+			}
+			try { block.setAttribute("data-kf-uid", uid); } catch (e) {}
+			try { block.setAttribute("data-kf-inline-ready", "1"); } catch (e) {}
+
+			const candidates = block.querySelectorAll ? Array.prototype.slice.call(block.querySelectorAll("[onclick],[ondragover],[ondragstart],[class*='lia-quiz']")) : [];
+			candidates.forEach(function (el) {
+				try { el.setAttribute("data-kf-uid", uid); } catch (e) {}
+			});
+
+			const inferred = inferExpectedFromInstruction(block, targets.length);
+			if (inferred && inferred.length) {
+				window.__liaKachelfolgeExpected[uid] = inferred;
+				dlog("kf: inline area setup uid='" + uid + "' expected='" + inferred.join("|") + "' from=instruction");
+			} else {
+				const expectedInfo = expectedTextsByTargetIds(block);
+				if (expectedInfo.complete && expectedInfo.expected.length) {
+					window.__liaKachelfolgeExpected[uid] = expectedInfo.expected.map(function (v) {
+						return String(v || "").toLowerCase().trim();
+					});
+					dlog("kf: inline area setup uid='" + uid + "' expected='" + window.__liaKachelfolgeExpected[uid].join("|") + "' from=ids");
+				}
+			}
+
+			try { applyThemeColorToTargetPlaceholders(block); } catch (e) {}
+		});
+	}
+
 	let draggedText = "";
 	let draggedRoot = null;
 
@@ -718,6 +780,10 @@ comment: Resetter v0.0.1
 	let touchHoverTarget = null;
 	dlog("patch active");
 
+	window.setTimeout(function () { setupStandaloneKachelAreas(document); }, 120);
+	window.setTimeout(function () { setupStandaloneKachelAreas(document); }, 520);
+	window.setTimeout(function () { setupStandaloneKachelAreas(document); }, 1100);
+
 	function clearState(reason) {
 		dlog("clear state; reason=" + String(reason || "unknown"));
 		draggedText = "";
@@ -769,6 +835,7 @@ comment: Resetter v0.0.1
 		const ok = applyTileStateDirectly(target, "", origin || "touch-clear");
 		if (ok) {
 			try { applyThemeColorToTargetPlaceholders(document); } catch (e) {}
+			try { if (typeof window.__liaResetRefreshTileTargetStyles === "function") window.__liaResetRefreshTileTargetStyles(document); } catch (e) {}
 		}
 		return ok;
 	}
@@ -975,11 +1042,17 @@ comment: Resetter v0.0.1
 		const activeRoot = draggedRoot || pointerRoot;
 
 		if (target && activeText) {
-			dlog("touchend drop target=1 text='" + activeText + "'");
-			emulateLocalDrop(target, activeText, activeRoot, "touchend");
+			const sourceTarget = touchSourceTarget || null;
+			if (sourceTarget && sourceTarget !== target && touchSourceEl) {
+				clearTargetBySource(touchSourceEl, "touchend-move-clear");
+			}
+			const dropped = applyTileStateDirectly(target, activeText, "touchend-drop");
+			try { applyThemeColorToTargetPlaceholders(document); } catch (e) {}
+			try { if (typeof window.__liaResetRefreshTileTargetStyles === "function") window.__liaResetRefreshTileTargetStyles(document); } catch (e) {}
+			dlog("touchend drop target=1 direct=" + (dropped ? 1 : 0) + " text='" + activeText + "'");
 			lastHandledDropTs = Date.now();
 			scheduleClearState("touchend-drop", 120);
-		} else if (touchDragMoved && touchSourceTarget && touchSourceEl) {
+		} else if (touchSourceTarget && touchSourceEl) {
 			const cleared = clearTargetBySource(touchSourceEl, "touchend-clear");
 			dlog("touchend clear-by-drag=" + (cleared ? 1 : 0));
 			if (cleared) {
@@ -1407,17 +1480,28 @@ comment: Resetter v0.0.1
 
 
 
+
+<div class="Kachel">
+
+Wähle gelb aus. (Welches Gelb in welcher Kachel ist, ist egal, und das ist eine neue Funktion.)\
+
+
 <!-- data-solution-button="5" 
 data-randomize="true" -->
-Wähle gelb aus.
-@Kachelfolge(`[->[(gelb)]][->[(gelb)]][->[(gelb)]][->[(gelb)]][->[pink|rot|blau|grün|(gelb)]]`)
+In diese Lücke muss [->[(gelb)]] rein. \
+In diese muss auch [->[(gelb)]] rein und in diese [->[(gelb)]] auch. \
+Das Adjektiv [->[(gelb)]] ist [->[pink|rot|blau|grün|(gelb)]].
+
+</div>
 
 
+---
 
+---
 
 
 <!-- data-randomize="true" -->
-Wähle Farben oben aus und unten Zahlen.
+Wähle Farben oben aus und unten Zahlen. (Reihenfolge egal.)
 @Kachelfolge(`[->[(gelb)]][->[(rot)]][->[(grün)|Haus]]`)
 
 
@@ -1426,17 +1510,25 @@ Wähle Farben oben aus und unten Zahlen.
 
 
 
+---
+
+---
+
 
 
 <!-- data-show-partial-solution="true" -->
-Wähle Farben oben aus und unten Zahlen.
+Wähle Farben oben aus und unten Zahlen.  (Reihenfolge egal.)
 @Kachelfolge(`[->[(gelb)]][->[(rot)]][->[(grün)|Haus]]`)
 @Kachelfolge(`[->[(1)]][->[(2)|Katze]][->[(3)]]`)
 
 
 
+---
+
+---
+
 
 <!-- data-show-partial-solution="true" -->
-Wähle Farben oben aus und unten Zahlen.
+Wähle Farben aus. (Reihenfolge egal und unbekannte Anzahl.)
 @KachelfolgeN(`[->[(gelb)]][->[(rot)]][->[(grün)|Haus]]`)
 
