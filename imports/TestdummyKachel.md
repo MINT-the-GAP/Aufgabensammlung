@@ -38,7 +38,8 @@ comment: Resetter v0.0.1
 	};
 
 	function ensureRoundedTileStyles() {
-		if (window.__liaTileCrossRoundedStylesApplied) return;
+		const existing = document.querySelector("style[data-lia-tile-rounded='1']");
+		if (window.__liaTileCrossRoundedStylesApplied && existing) return;
 		window.__liaTileCrossRoundedStylesApplied = 1;
 
 		const style = document.createElement("style");
@@ -64,6 +65,8 @@ comment: Resetter v0.0.1
 			"[onclick*='dragsource'], [onkeydown*='dragsource'], [ondragstart*='dragsource'], [ondragend*='dragsource'] { background-color: var(--lia-tile-bg) !important; }",
 			"[data-reset-tile-role='target'] [data-reset-tile-role='source'], [data-reset-tile-role='target'] [draggable='true'] { background-color: transparent !important; color: inherit !important; }",
 			"[data-reset-tile-role='target'] [data-reset-tile-role='source'] *, [data-reset-tile-role='target'] [draggable='true'] * { background-color: transparent !important; color: inherit !important; }",
+			"[onclick*='dragtarget'] *, [onkeydown*='dragtarget'] *, [ondragover*='dragtarget'] *, [onclick*='dragenter'] *, [onkeydown*='dragenter'] *, [ondragover*='dragenter'] *, [data-reset-tile-role='target'] * { background-color: transparent !important; color: inherit !important; }",
+			"span[style*='border: 3px dotted'][style*='padding: 1rem'][style*='vertical-align: middle'] * { background-color: transparent !important; color: inherit !important; }",
 			"[onclick*='dragtarget'] > *, [onkeydown*='dragtarget'] > *, [ondragover*='dragtarget'] > *,",
 			"[onclick*='dragenter'] > *, [onkeydown*='dragenter'] > *, [ondragover*='dragenter'] > * { border-radius: var(--lia-tile-radius) !important; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center; margin-inline: auto; }",
 			"[data-reset-tile-role='target'] [onclick*='dragsource'], [data-reset-tile-role='target'] [onkeydown*='dragsource'], [data-reset-tile-role='target'] [draggable='true'] { display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center; margin-inline: auto; }",
@@ -106,12 +109,19 @@ comment: Resetter v0.0.1
 
 	function applyThemeColorToTargetPlaceholders(root) {
 		const scope = root && root.querySelectorAll ? root : document;
-		const nodes = scope.querySelectorAll ? scope.querySelectorAll("[onclick*='dragtarget'], [onkeydown*='dragtarget'], [ondragover*='dragtarget'], [ondragleave*='dragtarget'], [onclick*='dragenter'], [onkeydown*='dragenter'], [ondragover*='dragenter'], [ondragleave*='dragenter'], [data-reset-tile-role='target']") : [];
+		const nodes = scope.querySelectorAll ? scope.querySelectorAll("[onclick*='dragtarget'], [onkeydown*='dragtarget'], [ondragover*='dragtarget'], [ondragleave*='dragtarget'], [onclick*='dragenter'], [onkeydown*='dragenter'], [ondragover*='dragenter'], [ondragleave*='dragenter'], [data-reset-tile-role='target'], span[style*='border: 3px dotted'][style*='padding: 1rem'][style*='vertical-align: middle']") : [];
 		const accent = pickAccentFrom(document) || "";
 		Array.from(nodes || []).forEach(function (target) {
 			if (!target) return;
 			const box = target.firstElementChild || target;
+			try { target.style.setProperty("border-radius", "var(--lia-tile-radius)", "important"); } catch (e) {}
+			try { target.style.setProperty("overflow", "hidden", "important"); } catch (e) {}
+			try { target.style.setProperty("background-color", "var(--lia-tile-bg)", "important"); } catch (e) {}
 			const txt = norm(box && box.textContent || "");
+			Array.from(target.querySelectorAll ? target.querySelectorAll("*") : []).forEach(function (el) {
+				if (!el || !(el instanceof Element)) return;
+				try { el.style.setProperty("background-color", "transparent", "important"); } catch (e) {}
+			});
 			if (txt === "✛" || txt === "+" || txt === "") {
 				try { target.classList.add("lia-target-placeholder"); } catch (e) {}
 				try { box.classList.add("lia-target-placeholder"); } catch (e) {}
@@ -124,6 +134,7 @@ comment: Resetter v0.0.1
 				try { box.classList.remove("lia-target-placeholder"); } catch (e) {}
 				target.style.color = "";
 				box.style.color = "";
+				try { target.style.setProperty("background-color", "var(--lia-tile-bg)", "important"); } catch (e) {}
 				Array.from(target.querySelectorAll ? target.querySelectorAll("[data-reset-tile-role='source'], [draggable='true']") : []).forEach(function (el) {
 					if (!el) return;
 					try { el.style.color = ""; } catch (e) {}
@@ -135,9 +146,81 @@ comment: Resetter v0.0.1
 
 	window.setTimeout(function () { applyThemeColorToTargetPlaceholders(document); }, 60);
 	window.setTimeout(function () { applyThemeColorToTargetPlaceholders(document); }, 500);
+	window.setTimeout(function () { applyThemeColorToTargetPlaceholders(document); }, 1100);
+
+	let __kfRepairTimer = 0;
+	function scheduleStyleRepair(reason, delay) {
+		if (__kfRepairTimer) {
+			try { window.clearTimeout(__kfRepairTimer); } catch (e) {}
+		}
+		__kfRepairTimer = window.setTimeout(function () {
+			__kfRepairTimer = 0;
+			try { ensureRoundedTileStyles(); } catch (e) {}
+			try { applyThemeColorToTargetPlaceholders(document); } catch (e) {}
+			try { if (typeof window.__liaResetRefreshTileTargetStyles === "function") window.__liaResetRefreshTileTargetStyles(document); } catch (e) {}
+			try { setupStandaloneKachelAreas(document); } catch (e) {}
+			try { freezeResolvedQuizzesInDocument("style-repair"); } catch (e) {}
+			dlog("kf: style-repair reason='" + String(reason || "unknown") + "'");
+		}, Number(delay || 0));
+	}
+
+	window.addEventListener("hashchange", function () {
+		scheduleStyleRepair("hashchange-30", 30);
+		scheduleStyleRepair("hashchange-220", 220);
+		scheduleStyleRepair("hashchange-700", 700);
+	}, true);
+	window.addEventListener("popstate", function () {
+		scheduleStyleRepair("popstate-30", 30);
+		scheduleStyleRepair("popstate-220", 220);
+	}, true);
+	window.addEventListener("pageshow", function () {
+		scheduleStyleRepair("pageshow-40", 40);
+		scheduleStyleRepair("pageshow-260", 260);
+	}, true);
+
+	try {
+		const navRoot = document.body || document.documentElement;
+		if (navRoot && !window.__liaKfNavObserverInstalled) {
+			window.__liaKfNavObserverInstalled = 1;
+			let navPending = 0;
+			const navObs = new MutationObserver(function (mutations) {
+				if (navPending) return;
+				for (let i = 0; i < mutations.length; i++) {
+					const m = mutations[i];
+					const added = m && m.addedNodes ? m.addedNodes.length : 0;
+					const removed = m && m.removedNodes ? m.removedNodes.length : 0;
+					if (!added && !removed) continue;
+					navPending = 1;
+					scheduleStyleRepair("dom-mutation", 80);
+					window.setTimeout(function () { navPending = 0; }, 220);
+					break;
+				}
+			});
+			navObs.observe(navRoot, { childList: true, subtree: true });
+		}
+	} catch (e) {}
+
+	scheduleStyleRepair("init", 20);
+	scheduleStyleRepair("init-late", 380);
 
 	function norm(s) {
-		return String(s || "").replace(/\s+/g, " ").trim().toLowerCase();
+		return String(s || "").replace(/\s+/g, " ").trim();
+	}
+
+	function normKey(s) {
+		return norm(s).toLowerCase();
+	}
+
+	function isReliableFreezeKey(key) {
+		const k = String(key || "").trim();
+		return /^id:/i.test(k) || /^owner:/i.test(k) || /^kf:/i.test(k) || /^sig:/i.test(k);
+	}
+
+	function isReliableFreezeUid(uid) {
+		const u = String(uid || "").trim();
+		if (!u) return false;
+		if (/^inline-\d+$/i.test(u)) return false;
+		return true;
 	}
 
 	function targetDisplayText(node) {
@@ -149,8 +232,8 @@ comment: Resetter v0.0.1
 	}
 
 	function sameMultiset(a, b) {
-		const aa = (Array.isArray(a) ? a : []).map(norm).filter(Boolean).sort();
-		const bb = (Array.isArray(b) ? b : []).map(norm).filter(Boolean).sort();
+		const aa = (Array.isArray(a) ? a : []).map(normKey).filter(Boolean).sort();
+		const bb = (Array.isArray(b) ? b : []).map(normKey).filter(Boolean).sort();
 		if (aa.length !== bb.length) return false;
 		for (let i = 0; i < aa.length; i++) {
 			if (aa[i] !== bb[i]) return false;
@@ -185,7 +268,192 @@ comment: Resetter v0.0.1
 			try { btn.disabled = true; } catch (e) {}
 			try { btn.setAttribute("tabindex", "-1"); } catch (e) {}
 			try { btn.setAttribute("aria-disabled", "true"); } catch (e) {}
+			try { btn.setAttribute("aria-hidden", "true"); } catch (e) {}
 			btn.style.pointerEvents = "none";
+		});
+	}
+
+	function isSolvedOrResolvedQuizNode(node) {
+		if (!node || !(node instanceof Element)) return false;
+		if (node.classList && (node.classList.contains("solved") || node.classList.contains("resolved"))) return true;
+		const cls = String(node.className || "").toLowerCase();
+		return cls.indexOf(" solved") >= 0 || cls.indexOf(" resolved") >= 0 || cls === "solved" || cls === "resolved";
+	}
+
+	window.__liaKfFrozenQuizKeys = window.__liaKfFrozenQuizKeys || new Set();
+	window.__liaKfFrozenQuizUids = window.__liaKfFrozenQuizUids || new Set();
+	window.__liaKfFrozenQuizFeedback = window.__liaKfFrozenQuizFeedback || new Map();
+
+	function collectQuizFreezeTokens(quiz, tileRoot) {
+		const out = { keys: [], uids: [] };
+		const q = quiz || null;
+		const r = tileRoot || null;
+		const keyCandidates = [];
+		if (q) keyCandidates.push(quizKeyFrom(q));
+		if (r) keyCandidates.push(quizKeyFrom(r));
+		keyCandidates.push(buildStableQuizSignatureKey(q, r));
+		keyCandidates.forEach(function (k) {
+			const key = String(k || "").trim();
+			if (!key || !isReliableFreezeKey(key) || out.keys.indexOf(key) >= 0) return;
+			out.keys.push(key);
+		});
+		const uidCandidates = [];
+		if (q && q.getAttribute) uidCandidates.push(String(q.getAttribute("data-kf-uid") || "").trim());
+		if (r && r.getAttribute) uidCandidates.push(String(r.getAttribute("data-kf-uid") || "").trim());
+		if (q && q.closest) {
+			const uq = q.closest("[data-kf-uid]");
+			uidCandidates.push(String(uq && uq.getAttribute && uq.getAttribute("data-kf-uid") || "").trim());
+		}
+		if (r && r.closest) {
+			const ur = r.closest("[data-kf-uid]");
+			uidCandidates.push(String(ur && ur.getAttribute && ur.getAttribute("data-kf-uid") || "").trim());
+		}
+		uidCandidates.forEach(function (u) {
+			const uid = String(u || "").trim();
+			if (!isReliableFreezeUid(uid) || out.uids.indexOf(uid) >= 0) return;
+			out.uids.push(uid);
+		});
+		return out;
+	}
+
+	function rememberFrozenQuiz(quiz, tileRoot, reason) {
+		const tokens = collectQuizFreezeTokens(quiz, tileRoot);
+		tokens.keys.forEach(function (k) {
+			try { window.__liaKfFrozenQuizKeys.add(k); } catch (e) {}
+		});
+		tokens.uids.forEach(function (u) {
+			try { window.__liaKfFrozenQuizUids.add(u); } catch (e) {}
+		});
+		try { rememberQuizFeedback(quiz, tileRoot, reason || "remember-freeze"); } catch (e) {}
+		dlog("kf: remember-freeze reason='" + String(reason || "unknown") + "' keys='" + tokens.keys.join("|") + "' uids='" + tokens.uids.join("|") + "'");
+	}
+
+	function feedbackMemoryTokens(quiz, tileRoot) {
+		const tokens = collectQuizFreezeTokens(quiz, tileRoot);
+		const out = [];
+		tokens.keys.forEach(function (k) {
+			if (!k) return;
+			out.push("k:" + k);
+		});
+		tokens.uids.forEach(function (u) {
+			if (!u) return;
+			out.push("u:" + u);
+		});
+		return out;
+	}
+
+	function readQuizFeedbackState(quiz) {
+		if (!quiz || !(quiz instanceof Element) || !quiz.querySelector) return null;
+		const fb = quiz.querySelector(".lia-quiz__feedback");
+		if (!fb) return null;
+		const text = String(fb.textContent || "").trim();
+		const className = String(fb.className || "").trim() || "lia-quiz__feedback";
+		const hidden = !!fb.hidden;
+		if (!text && hidden) return null;
+		return {
+			text: text,
+			className: className,
+			hidden: hidden ? 1 : 0
+		};
+	}
+
+	function rememberQuizFeedback(quiz, tileRoot, reason) {
+		const state = readQuizFeedbackState(quiz);
+		if (!state) return false;
+		const tokens = feedbackMemoryTokens(quiz, tileRoot);
+		if (!tokens.length) return false;
+		tokens.forEach(function (token) {
+			try {
+				window.__liaKfFrozenQuizFeedback.set(token, {
+					text: state.text,
+					className: state.className,
+					hidden: state.hidden
+				});
+			} catch (e) {}
+		});
+		dlog("kf: remember-feedback reason='" + String(reason || "unknown") + "' tokens='" + tokens.join("|") + "' text='" + state.text + "'");
+		return true;
+	}
+
+	function rememberedQuizFeedback(quiz, tileRoot) {
+		const tokens = feedbackMemoryTokens(quiz, tileRoot);
+		for (let i = 0; i < tokens.length; i++) {
+			const token = tokens[i];
+			try {
+				if (window.__liaKfFrozenQuizFeedback.has(token)) {
+					return window.__liaKfFrozenQuizFeedback.get(token) || null;
+				}
+			} catch (e) {}
+		}
+		return null;
+	}
+
+	function restoreQuizFeedbackFromMemory(quiz, tileRoot, reason) {
+		if (!quiz || !(quiz instanceof Element)) return false;
+		const state = rememberedQuizFeedback(quiz, tileRoot);
+		if (!state) return false;
+		let fb = quiz.querySelector ? quiz.querySelector(".lia-quiz__feedback") : null;
+		if (!fb && quiz.appendChild) {
+			try {
+				fb = document.createElement("div");
+				fb.className = "lia-quiz__feedback";
+				quiz.appendChild(fb);
+			} catch (e) {
+				fb = null;
+			}
+		}
+		if (!fb) return false;
+		try { fb.className = String(state.className || "lia-quiz__feedback"); } catch (e) {}
+		try { fb.textContent = String(state.text || ""); } catch (e) {}
+		try { fb.hidden = !!state.hidden && !state.text; } catch (e) {}
+		dlog("kf: restore-feedback reason='" + String(reason || "unknown") + "' text='" + String(state.text || "") + "'");
+		return true;
+	}
+
+	function shouldFreezeByMemory(quiz, tileRoot) {
+		const tokens = collectQuizFreezeTokens(quiz, tileRoot);
+		for (let i = 0; i < tokens.keys.length; i++) {
+			if (window.__liaKfFrozenQuizKeys.has(tokens.keys[i])) return true;
+		}
+		for (let i = 0; i < tokens.uids.length; i++) {
+			if (window.__liaKfFrozenQuizUids.has(tokens.uids[i])) return true;
+		}
+		return false;
+	}
+
+	function isQuizSuccessState(quiz) {
+		if (!quiz || !(quiz instanceof Element)) return false;
+		if (isSolvedOrResolvedQuizNode(quiz)) return true;
+		const fb = quiz.querySelector ? quiz.querySelector(".lia-quiz__feedback") : null;
+		const fbClass = String(fb && fb.className || "").toLowerCase();
+		const fbText = norm(fb && fb.textContent || "").toLowerCase();
+		if (fbClass.indexOf("text-success") >= 0) return true;
+		if (fbText.indexOf("herzlichen glückwunsch") >= 0) return true;
+		if (fbText.indexOf("aufgelöste antwort") >= 0) return true;
+		return false;
+	}
+
+	function freezeResolvedQuizzesInDocument(reason) {
+		const quizzes = Array.from(document.querySelectorAll ? document.querySelectorAll(".lia-quiz, lia-quiz") : []);
+		quizzes.forEach(function (quiz) {
+			const tileRoot = tileRootFrom(quiz) || (quiz.closest ? quiz.closest(".Kachel, .kachelfolge-wrap, [id^='kachelfolge-wrap-']") : null) || null;
+			if (!isSolvedOrResolvedQuizNode(quiz) && !shouldFreezeByMemory(quiz, tileRoot)) return;
+			try { restoreQuizFeedbackFromMemory(quiz, tileRoot, reason || "freeze-resolved"); } catch (e) {}
+			if (tileRoot) {
+				freezeSolvedTileQuiz(tileRoot, tileRoot);
+			}
+			Array.from(quiz.querySelectorAll ? quiz.querySelectorAll(".lia-quiz__check, .lia-quiz__resolve, button, [role='button']") : []).forEach(function (btn) {
+				if (!btn) return;
+				try { btn.disabled = true; } catch (e) {}
+				try { btn.setAttribute("tabindex", "-1"); } catch (e) {}
+				try { btn.setAttribute("aria-disabled", "true"); } catch (e) {}
+				try { btn.setAttribute("aria-hidden", "true"); } catch (e) {}
+				btn.style.pointerEvents = "none";
+			});
+			try { quiz.setAttribute("data-kf-frozen", "1"); } catch (e) {}
+			try { rememberQuizFeedback(quiz, tileRoot, reason || "freeze-resolved"); } catch (e) {}
+			rememberFrozenQuiz(quiz, tileRoot, reason || "freeze-resolved");
+			dlog("kf: freeze-resolved reason='" + String(reason || "unknown") + "'");
 		});
 	}
 
@@ -289,7 +557,65 @@ comment: Resetter v0.0.1
 		if (uid) return "id:" + uid;
 		const owner = String(n.getAttribute && n.getAttribute("data-reset-tile-owner") || "").trim();
 		if (owner) return "owner:" + owner;
-		return "node:" + String(n.tagName || "") + "|" + String(n.className || "") + "|" + String((n.textContent || "").trim().slice(0, 24));
+		const kfUid = String(n.getAttribute && n.getAttribute("data-kf-uid") || "").trim();
+		if (isReliableFreezeUid(kfUid)) return "kf:" + kfUid;
+		return "";
+	}
+
+	function getCurrentSlideHashToken() {
+		const raw = String((window && window.location && window.location.hash) || "").trim();
+		if (!raw) return "nohash";
+		const cutQ = raw.indexOf("?");
+		const cutAmp = raw.indexOf("&");
+		let end = raw.length;
+		if (cutQ >= 0) end = Math.min(end, cutQ);
+		if (cutAmp >= 0) end = Math.min(end, cutAmp);
+		const base = raw.slice(0, end) || raw;
+		return normKey(base);
+	}
+
+	function getStableTileRootForFreeze(quiz, tileRoot) {
+		return tileRoot || tileRootFrom(quiz) || (quiz && quiz.closest ? quiz.closest(".Kachel, .kachelfolge-wrap, [id^='kachelfolge-wrap-']") : null) || null;
+	}
+
+	function buildStableQuizSignatureKey(quiz, tileRoot) {
+		const root = getStableTileRootForFreeze(quiz, tileRoot);
+		if (!root) return "";
+
+		let localIndex = -1;
+		try {
+			const roots = [];
+			if (typeof window.__liaResetCollectTileQuizRoots === "function") {
+				const fromReset = window.__liaResetCollectTileQuizRoots(document.body || document.documentElement) || [];
+				for (let i = 0; i < fromReset.length; i++) {
+					if (fromReset[i] && roots.indexOf(fromReset[i]) < 0) roots.push(fromReset[i]);
+				}
+			}
+			const extras = Array.from(document.querySelectorAll ? document.querySelectorAll(".Kachel, .kachelfolge-wrap, [id^='kachelfolge-wrap-']") : []);
+			extras.forEach(function (el) {
+				if (!el || roots.indexOf(el) >= 0) return;
+				if (!targetNodes(el).length) return;
+				roots.push(el);
+			});
+			localIndex = roots.indexOf(root);
+		} catch (e) {
+			localIndex = -1;
+		}
+
+		const expectedMap = window.__liaKachelfolgeExpected || {};
+		const uid = String(root.getAttribute && root.getAttribute("data-kf-uid") || "").trim();
+		let expected = [];
+		if (uid && Array.isArray(expectedMap[uid]) && expectedMap[uid].length) {
+			expected = expectedMap[uid].slice();
+		} else {
+			const nativeInfo = expectedTextsByTargetIds(root);
+			if (nativeInfo && nativeInfo.complete && Array.isArray(nativeInfo.expected)) {
+				expected = nativeInfo.expected.slice();
+			}
+		}
+		const expectedSig = expected.map(normKey).filter(Boolean).sort().join("|") || "none";
+		const hashSig = getCurrentSlideHashToken();
+		return "sig:" + hashSig + ":" + String(localIndex) + ":" + expectedSig;
 	}
 
 	function rectCenter(node) {
@@ -638,8 +964,8 @@ comment: Resetter v0.0.1
 			const m = txt.match(/w\S*hle\s+([^\s.,;:!?]+)/i);
 			if (!m || !m[1]) return null;
 
-			const token = String(m[1] || "").toLowerCase().trim();
-			if (!token || token === "aus") return null;
+			const token = String(m[1] || "").trim();
+			if (!token || normKey(token) === "aus") return null;
 
 			const out = [];
 			for (let i = 0; i < targetCount; i++) out.push(token);
@@ -675,7 +1001,7 @@ comment: Resetter v0.0.1
 				const expectedInfo = expectedTextsByTargetIds(block);
 				if (expectedInfo.complete && expectedInfo.expected.length) {
 					window.__liaKachelfolgeExpected[uid] = expectedInfo.expected.map(function (v) {
-						return String(v || "").toLowerCase().trim();
+						return String(v || "").trim();
 					});
 					dlog("kf: inline area setup uid='" + uid + "' expected='" + window.__liaKachelfolgeExpected[uid].join("|") + "' from=ids");
 				}
@@ -1307,6 +1633,28 @@ comment: Resetter v0.0.1
 		pointerQuizKey = "";
 	}
 
+	function blockIfFrozenQuizEvent(ev, label) {
+		const quiz = ev && ev.target && ev.target.closest ? ev.target.closest(".lia-quiz, lia-quiz") : null;
+		if (!quiz) return false;
+		const frozenAttr = String(quiz.getAttribute && quiz.getAttribute("data-kf-frozen") || "") === "1";
+		if (!frozenAttr && !isSolvedOrResolvedQuizNode(quiz)) return false;
+		try { ev.preventDefault(); } catch (e) {}
+		try { ev.stopPropagation(); } catch (e) {}
+		try { if (typeof ev.stopImmediatePropagation === "function") ev.stopImmediatePropagation(); } catch (e) {}
+		dlog("kf: blocked frozen interaction kind='" + String(label || "event") + "'");
+		return true;
+	}
+
+	document.addEventListener("dragstart", function (ev) {
+		if (blockIfFrozenQuizEvent(ev, "dragstart-frozen")) return;
+	}, true);
+	document.addEventListener("touchstart", function (ev) {
+		if (blockIfFrozenQuizEvent(ev, "touchstart-frozen")) return;
+	}, { capture: true, passive: false });
+	document.addEventListener("drop", function (ev) {
+		if (blockIfFrozenQuizEvent(ev, "drop-frozen")) return;
+	}, true);
+
 	function scheduleClearState(reason, delay) {
 		if (clearStateTimer) {
 			try { window.clearTimeout(clearStateTimer); } catch (e) {}
@@ -1400,6 +1748,8 @@ comment: Resetter v0.0.1
 
 	function sourceFromNode(node) {
 		if (!node || !(node instanceof Element) || !node.closest) return null;
+		const preferred = node.closest("span[role='button'][draggable='true'], span[role='button'][data-reset-tile-role='source'], span[role='button'][onclick], span[role='button'][ondragstart]");
+		if (preferred) return preferred;
 		return node.closest("[onclick],[onkeydown],[ondragstart],[draggable],[data-reset-tile-role='source']");
 	}
 
@@ -1905,6 +2255,36 @@ comment: Resetter v0.0.1
 	// Content-based check for @Kachelfolge macro: order of targets is ignored.
 	// Quiz is tagged at setup time with data-kf-uid, so we don't depend on DOM wrapper position.
 	document.addEventListener("click", function (ev) {
+		const actionBtn = ev && ev.target && ev.target.closest ? ev.target.closest(".lia-quiz__check, .lia-quiz__resolve") : null;
+		if (blockIfFrozenQuizEvent(ev, "click-frozen")) return;
+		if (actionBtn) {
+			const actionQuiz = actionBtn && actionBtn.closest ? actionBtn.closest(".lia-quiz, lia-quiz") : null;
+			const actionRoot = tileRootFrom(actionBtn) || (actionQuiz ? tileRootFrom(actionQuiz) : null);
+			const isResolveAction = !!(actionBtn && actionBtn.classList && actionBtn.classList.contains("lia-quiz__resolve"));
+			if (isResolveAction) {
+				rememberFrozenQuiz(actionQuiz, actionRoot, "resolve-click");
+				window.setTimeout(function () { try { freezeResolvedQuizzesInDocument("resolve-60"); } catch (e) {} }, 60);
+			}
+			window.setTimeout(function () { try { applyThemeColorToTargetPlaceholders(document); } catch (e) {} }, 30);
+			window.setTimeout(function () { try { applyThemeColorToTargetPlaceholders(document); } catch (e) {} }, 180);
+			window.setTimeout(function () {
+				try { applyThemeColorToTargetPlaceholders(document); } catch (e) {}
+				try { if (typeof window.__liaResetRefreshTileTargetStyles === "function") window.__liaResetRefreshTileTargetStyles(document); } catch (e) {}
+			}, 420);
+			if (!isResolveAction) {
+				window.setTimeout(function () {
+					const q = actionQuiz && actionQuiz.isConnected ? actionQuiz : (actionBtn && actionBtn.closest ? actionBtn.closest(".lia-quiz, lia-quiz") : null);
+					const r = tileRootFrom(actionBtn) || (q ? tileRootFrom(q) : null);
+					if (isQuizSuccessState(q)) {
+						rememberFrozenQuiz(q, r, "check-success");
+					}
+				}, 80);
+			}
+			window.setTimeout(function () { try { freezeResolvedQuizzesInDocument("action-90"); } catch (e) {} }, 90);
+			window.setTimeout(function () { try { freezeResolvedQuizzesInDocument("action-320"); } catch (e) {} }, 320);
+			window.setTimeout(function () { try { freezeResolvedQuizzesInDocument("action-760"); } catch (e) {} }, 760);
+		}
+
 		const btn = ev && ev.target && ev.target.closest ? ev.target.closest(".lia-quiz__check") : null;
 		if (!btn) return;
 		logCheckProbe(btn, "check-click-sync");
@@ -1919,7 +2299,7 @@ comment: Resetter v0.0.1
 		const isNativeIdTextCorrect =
 			nativeExpectedInfo.complete &&
 			actualSync.length === nativeExpected.length &&
-			actualSync.every(function (val, idx) { return norm(val) === norm(nativeExpected[idx]); });
+			actualSync.every(function (val, idx) { return normKey(val) === normKey(nativeExpected[idx]); });
 		dlog("kf: native-check complete=" + (nativeExpectedInfo.complete ? 1 : 0) + " known=" + nativeExpectedInfo.knownTargets + "/" + nativeExpectedInfo.totalTargets + " actual='" + actualSync.join("|") + "' expected='" + nativeExpected.join("|") + "' ok=" + (isNativeIdTextCorrect ? 1 : 0));
 
 		// Resolve uid synchronously so we can block LiaScript's "wrong" flash if needed.
@@ -1928,10 +2308,16 @@ comment: Resetter v0.0.1
 		const uids = Object.keys(expectedMap);
 		const matchingUids = [];
 
+		// Standalone tile areas tag quiz-related nodes with data-kf-uid.
+		// Prefer this direct signal before wrapper-based lookup.
+		const uidNode = btn.closest && btn.closest("[data-kf-uid]");
+		const directUid = String(uidNode && uidNode.getAttribute && uidNode.getAttribute("data-kf-uid") || "").trim();
+		if (directUid && expectedMap[directUid]) matchingUids.push(directUid);
+
 		// First try: btn is directly inside a wrap
 		for (let i = 0; i < uids.length; i++) {
 			const wrap = document.getElementById("kachelfolge-wrap-" + uids[i]);
-			if (wrap && wrap.contains(btn)) matchingUids.push(uids[i]);
+			if (wrap && wrap.contains(btn) && matchingUids.indexOf(uids[i]) < 0) matchingUids.push(uids[i]);
 		}
 		// Second try: walk up to find a common ancestor containing one or more wraps
 		if (!matchingUids.length) {
@@ -1939,9 +2325,11 @@ comment: Resetter v0.0.1
 			for (let depth = 0; cur && cur !== document.body && depth < 12; depth++) {
 				const tag = (cur.tagName || "").toUpperCase();
 				if (/^(MAIN|ARTICLE|BODY|HTML)$/.test(tag)) break;
+				const curUid = String(cur.getAttribute && cur.getAttribute("data-kf-uid") || "").trim();
+				if (curUid && expectedMap[curUid] && matchingUids.indexOf(curUid) < 0) matchingUids.push(curUid);
 				for (let i = 0; i < uids.length; i++) {
 					const wrap = document.getElementById("kachelfolge-wrap-" + uids[i]);
-					if (wrap && cur.contains(wrap)) matchingUids.push(uids[i]);
+					if (wrap && cur.contains(wrap) && matchingUids.indexOf(uids[i]) < 0) matchingUids.push(uids[i]);
 				}
 				if (matchingUids.length) break;
 				cur = cur.parentElement;
@@ -2011,6 +2399,9 @@ comment: Resetter v0.0.1
 	window.__liaTileCrossDumpDebug = function () {
 		try { return (window.__liaTileCrossDebug || []).join("\n"); } catch (e) { return ""; }
 	};
+
+	window.setTimeout(function () { freezeResolvedQuizzesInDocument("init-freeze-120"); }, 120);
+	window.setTimeout(function () { freezeResolvedQuizzesInDocument("init-freeze-620"); }, 620);
 })();
 
 @end
@@ -2032,7 +2423,7 @@ comment: Resetter v0.0.1
 
 	raw.replace(/\[->\[([^\]]*)\]\]/g, function (_, inner) {
 		const m = inner.match(/\(([^)]*)\)/);
-		if (m) expected.push(String(m[1] || "").toLowerCase().trim());
+		if (m) expected.push(String(m[1] || "").trim());
 		return _;
 	});
 
