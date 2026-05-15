@@ -13,7 +13,6 @@ import: MatheREADME.md
 import: DeutschREADME.md
 import: KoordREADME.md
 import: FlexChildREADME.md
-import: OCRREADME.md
 import: AnnotationREADME.md
 
 
@@ -59,6 +58,36 @@ import: AnnotationREADME.md
 		} catch (e) {}
 		return "";
 	}
+
+	function ensureRoundedTileStyles() {
+		if (window.__liaResetRoundedTileStylesApplied) return;
+		window.__liaResetRoundedTileStylesApplied = 1;
+
+		const style = document.createElement("style");
+		style.setAttribute("data-lia-reset-tile-rounded", "1");
+		style.textContent = [
+			":root { --lia-tile-radius: 12px; --lia-target-width-scale: 0.65; --lia-target-min-width: calc(clamp(9rem, 22vw, 14rem) * var(--lia-target-width-scale)); --lia-tile-bg: rgba(0, 0, 0, 0.15); }",
+			".kachelfolge-wrap > span[data-kf-uid] { border-radius: var(--lia-tile-radius) !important; overflow: hidden !important; background-color: var(--lia-tile-bg) !important; }",
+			".kachelfolge-wrap > span[data-kf-uid].lia-target-placeholder { background-color: transparent !important; }",
+			".kachelfolge-wrap > div > span[role='button'] { border-radius: var(--lia-tile-radius) !important; overflow: hidden !important; background-color: var(--lia-tile-bg) !important; }",
+			".lia-paragraph:has(> .kachelfolge-wrap) + div > span[role='button'] { border-radius: var(--lia-tile-radius) !important; overflow: hidden !important; background-color: var(--lia-tile-bg) !important; }",
+			"[id^='kachelfolge-wrap-'] ~ div > span[role='button'] { border-radius: var(--lia-tile-radius) !important; overflow: hidden !important; background-color: var(--lia-tile-bg) !important; }",
+			".kachelfolge-wrap > span[data-kf-uid] > *, .kachelfolge-wrap > div > span[role='button'] > * { display: inline-flex !important; align-items: center; justify-content: center; width: 100%; text-align: center; margin-inline: auto; }",
+			".lia-paragraph:has(> .kachelfolge-wrap) + div > span[role='button'] > * { display: inline-flex !important; align-items: center; justify-content: center; width: 100%; text-align: center; margin-inline: auto; }",
+			"[id^='kachelfolge-wrap-'] ~ div > span[role='button'] > * { display: inline-flex !important; align-items: center; justify-content: center; width: 100%; text-align: center; margin-inline: auto; }",
+			"[data-reset-tile-role='target'], .lia-quiz.solved [data-reset-tile-role='target'], .lia-quiz.resolved [data-reset-tile-role='target'], .solved [data-reset-tile-role='target'], .resolved [data-reset-tile-role='target'] { border-radius: var(--lia-tile-radius) !important; overflow: hidden !important; min-width: var(--lia-target-min-width); max-width: 100%; display: inline-flex !important; align-items: center; justify-content: center; padding-inline: calc(0.8rem * var(--lia-target-width-scale)); text-align: center; background-color: var(--lia-tile-bg) !important; }",
+			"[data-reset-tile-role='source'], [draggable='true'], .lia-quiz.solved [data-reset-tile-role='source'], .lia-quiz.resolved [data-reset-tile-role='source'], .lia-quiz.solved [draggable='true'], .lia-quiz.resolved [draggable='true'], .solved [data-reset-tile-role='source'], .resolved [data-reset-tile-role='source'], .solved [draggable='true'], .resolved [draggable='true'] { border-radius: var(--lia-tile-radius) !important; overflow: hidden !important; background-color: var(--lia-tile-bg) !important; }",
+			"[data-reset-tile-role='target'] [data-reset-tile-role='source'], [data-reset-tile-role='target'] [draggable='true'] { background-color: transparent !important; color: inherit !important; }",
+			"[data-reset-tile-role='target'] [data-reset-tile-role='source'] *, [data-reset-tile-role='target'] [draggable='true'] * { background-color: transparent !important; color: inherit !important; }",
+			"[data-reset-tile-role='target'] > *, .lia-quiz.solved [data-reset-tile-role='target'] > *, .lia-quiz.resolved [data-reset-tile-role='target'] > * { border-radius: var(--lia-tile-radius) !important; display: inline-flex !important; align-items: center; justify-content: center; width: 100%; text-align: center; margin-inline: auto; }",
+			".lia-target-placeholder { color: var(--lia-theme-color, var(--lia-primary, var(--md-primary-fg-color, var(--color-primary, currentColor)))) !important; }",
+			".lia-target-placeholder *, .lia-target-placeholder [data-reset-tile-role='source'], .lia-target-placeholder [draggable='true'] { color: inherit !important; background-color: transparent !important; }"
+		].join("\n");
+
+		(document.head || document.documentElement).appendChild(style);
+	}
+
+	ensureRoundedTileStyles();
 
 	let lastAccent = "";
 	function updateResetAccent(force) {
@@ -1097,6 +1126,60 @@ window.__liaResetSetTileTargetDisplay = function (target, value) {
 	}
 };
 
+window.__liaResetRefreshTileTargetStyles = function (host) {
+	if (!host || !host.querySelectorAll) return 0;
+	let changed = 0;
+	const roots = window.__liaResetCollectTileQuizRoots(host);
+	roots.forEach(function (tileRoot) {
+		Array.from(tileRoot.querySelectorAll ? tileRoot.querySelectorAll(".kachelfolge-wrap") : []).forEach(function (wrap) {
+			if (!wrap) return;
+			const paragraph = wrap.parentElement;
+			const row = paragraph ? paragraph.nextElementSibling : null;
+			if (!row || !row.querySelectorAll) return;
+			Array.from(row.querySelectorAll("span[role='button']")).forEach(function (chip) {
+				if (!chip) return;
+				try { chip.style.setProperty("border-radius", "var(--lia-tile-radius)", "important"); } catch (e) {}
+				try { chip.style.setProperty("overflow", "hidden", "important"); } catch (e) {}
+				try { chip.style.setProperty("background-color", "var(--lia-tile-bg)", "important"); } catch (e) {}
+				Array.from(chip.children || []).forEach(function (sub) {
+					if (!sub) return;
+					try { sub.style.setProperty("display", "inline-flex", "important"); } catch (e) {}
+					try { sub.style.setProperty("align-items", "center", "important"); } catch (e) {}
+					try { sub.style.setProperty("justify-content", "center", "important"); } catch (e) {}
+					try { sub.style.setProperty("width", "100%", "important"); } catch (e) {}
+					try { sub.style.setProperty("text-align", "center", "important"); } catch (e) {}
+				});
+				changed += 1;
+			});
+		});
+
+		const targets = window.__liaResetGetTileQuizTargetsFromRoot(tileRoot);
+		targets.forEach(function (target) {
+			if (!target) return;
+			const txt = String((target.textContent || "")).replace(/\s+/g, " ").trim();
+			try { target.style.setProperty("border-radius", "var(--lia-tile-radius)", "important"); } catch (e) {}
+			try { target.style.setProperty("overflow", "hidden", "important"); } catch (e) {}
+			try { target.style.setProperty("min-width", "var(--lia-target-min-width)", "important"); } catch (e) {}
+			try { target.style.setProperty("max-width", "100%", "important"); } catch (e) {}
+			try { target.style.setProperty("display", "inline-flex", "important"); } catch (e) {}
+			try { target.style.setProperty("align-items", "center", "important"); } catch (e) {}
+			try { target.style.setProperty("justify-content", "center", "important"); } catch (e) {}
+			try { target.style.setProperty("padding-inline", "calc(0.8rem * var(--lia-target-width-scale))", "important"); } catch (e) {}
+			try { target.style.setProperty("text-align", "center", "important"); } catch (e) {}
+			try { target.style.setProperty("background-color", "var(--lia-tile-bg)", "important"); } catch (e) {}
+			Array.from(target.children || []).forEach(function (child) {
+				if (!child) return;
+				try { child.style.setProperty("border-radius", "var(--lia-tile-radius)", "important"); } catch (e) {}
+				try { child.style.setProperty("overflow", "hidden", "important"); } catch (e) {}
+				try { child.style.setProperty("background-color", "var(--lia-tile-bg)", "important"); } catch (e) {}
+			});
+			window.__liaResetSetTileTargetDisplay(target, txt && txt !== "✛" && txt !== "+" ? txt : "");
+			changed += 1;
+		});
+	});
+	return changed;
+};
+
 window.__liaResetResetTileControls = function (host) {
 	if (!host || !host.querySelectorAll) return 0;
 	let changed = 0;
@@ -1474,8 +1557,15 @@ window.__liaResetResetTileControls = function (host) {
 
 				if (stillIn.length > 0) {
 					window.__liaResetDebugWrite("settle: chip still in target after " + _pollAttempt + " polls");
-					// If Elm re-render didn't move the chip (restore may have failed or
-					// Block.toState has no Drop decoder), check for a duplicate outside.
+					// KRITIK: Elm re-render hat Chip nicht bewegt. Wir MÜSSEN Chip raus aus
+					// dem Target bringen — aber NIEMALS löschen, sonst geht die Kachel verloren.
+					// Bestimme Source-Bank (Parent eines außenstehenden Chips) als Rescue-Ziel.
+					var _outsideForBank = fSrcs.filter(function (sx) {
+						var cx = window.__liaResetResolveTileChipNode(sx, _pollTileRoot, fTgts) || sx;
+						return !fTgts.some(function (t) { return t === cx || (t.contains && t.contains(cx)); });
+					});
+					var _settleSourceBank = (_outsideForBank.length > 0 && _outsideForBank[0].parentElement) ? _outsideForBank[0].parentElement : null;
+
 					stillIn.forEach(function (s) {
 						var chip = window.__liaResetResolveTileChipNode(s, _pollTileRoot, fTgts) || s;
 						var chipTxt = String(chip.textContent || "").replace(/\s+/g, " ").trim();
@@ -1485,11 +1575,71 @@ window.__liaResetResetTileControls = function (host) {
 							var out2 = !fTgts.some(function (t) { return t === chip2 || (t.contains && t.contains(chip2)); });
 							return out2 && String(chip2.textContent || "").replace(/\s+/g, " ").trim() === chipTxt;
 						});
-						if (hasDupe) {
-							window.__liaResetDebugWrite("settle: orphan chip removed (dupe outside); text='" + chipTxt + "'");
-							try { if (chip.parentElement) chip.parentElement.removeChild(chip); } catch (e) {}
+
+						var moveSucceeded = false;
+
+						// Strategie 1: Original-Home über UID-Mapping
+						var chipUid = window.__liaResetEnsureNodeUid(chip);
+						var chipHome = chipUid ? window.__liaResetDragHomeById[chipUid] : null;
+						if (chipHome && chipHome.parentId) {
+							try {
+								var homeParent = _pollHost.querySelector("[data-reset-uid='" + String(chipHome.parentId) + "']");
+								var inTgtHP = homeParent ? fTgts.some(function (t) { return t === homeParent || (t.contains && t.contains(homeParent)); }) : false;
+								if (homeParent && homeParent instanceof Element && !inTgtHP) {
+									var homeNextEl = chipHome.nextId ? _pollHost.querySelector("[data-reset-uid='" + String(chipHome.nextId) + "']") : null;
+									homeParent.insertBefore(chip, (homeNextEl && homeNextEl.parentElement === homeParent) ? homeNextEl : null);
+									window.__liaResetDebugWrite("settle: chip moved to home; text='" + chipTxt + "'; uid=" + chipUid);
+									moveSucceeded = true;
+								}
+							} catch (e) {}
+						}
+
+						// Strategie 2: In den Source-Bank-Container verschieben
+						if (!moveSucceeded && _settleSourceBank) {
+							try {
+								_settleSourceBank.appendChild(chip);
+								window.__liaResetDebugWrite("settle: chip moved to sourceBank; text='" + chipTxt + "'");
+								moveSucceeded = true;
+							} catch (e) {}
+						}
+
+						// Strategie 3: Vor das Target im Tile-Root einhängen
+						if (!moveSucceeded) {
+							try {
+								var tParent = fTgts[0] && fTgts[0].parentElement;
+								var inTgtTP = tParent ? fTgts.some(function (t) { return t === tParent || (t.contains && t.contains(tParent)); }) : true;
+								if (tParent && !inTgtTP) {
+									tParent.insertBefore(chip, fTgts[0]);
+									window.__liaResetDebugWrite("settle: chip moved to targetParent; text='" + chipTxt + "'");
+									moveSucceeded = true;
+								}
+							} catch (e) {}
+						}
+
+						// NUR wenn Duplikat außerhalb existiert: löschen ist sicher
+						if (!moveSucceeded && hasDupe) {
+							try {
+								if (chip.parentElement) chip.parentElement.removeChild(chip);
+								window.__liaResetDebugWrite("settle: orphan chip removed (dupe outside); text='" + chipTxt + "'");
+								moveSucceeded = true;
+							} catch (e) {}
+						}
+
+						if (moveSucceeded) {
+							try { chip.setAttribute("draggable", "true"); } catch (e) {}
+							chip.classList.remove("is-disabled", "lia-btn--disabled");
+							chip.style.removeProperty("pointer-events");
+							chip.style.removeProperty("opacity");
+							chip.style.removeProperty("display");
 						} else {
-							window.__liaResetDebugWrite("settle: chip still in target (restore pending or non-randomized quiz)");
+							window.__liaResetDebugWrite("settle: chip rescue FAILED; text='" + chipTxt + "' — kept in place to preserve chip");
+						}
+					});
+
+					// Target-Display zurücksetzen, sofern leer
+					fTgts.forEach(function (lt) {
+						if (lt && lt.querySelector && lt.querySelector("[draggable]") === null) {
+							try { window.__liaResetSetTileTargetDisplay(lt, ""); } catch (e) {}
 						}
 					});
 				}
@@ -1527,6 +1677,141 @@ window.__liaResetResetTileControls = function (host) {
 	if (changed > 0) {
 		window.__liaResetDebugWrite("tile controls reset; roots=" + String(roots.length) + "; touched=" + String(changed));
 	}
+
+	// === ZUSÄTZLICHER SICHERHEITS-PASS: Verzögertes forciertes Cleanup ===
+	// Falls nach dem Restore/Polling noch Chips in Targets sind (Restore fehlgeschlagen oder zu langsam)
+	// Dieser Pass läuft NACH dem Polling und stellt sicher, dass alle Chips wirklich raus sind.
+	window.setTimeout(function () {
+		const finalRoots = window.__liaResetCollectTileQuizRoots(host);
+		let forcedRemoved = 0;
+		
+		finalRoots.forEach(function (tileRoot) {
+			const targets = window.__liaResetGetTileQuizTargetsFromRoot(tileRoot);
+			if (!targets.length) return;
+
+			const allSrcs = window.__liaResetGetTileQuizSourcesFromRoot(tileRoot);
+			function _safeIsInsideTarget(node) {
+				for (let i = 0; i < targets.length; i++) {
+					const t = targets[i];
+					if (!t) continue;
+					if (t === node || (t.contains && t.contains(node))) return true;
+				}
+				return false;
+			}
+			const safeOutside = allSrcs.filter(function (s) {
+				const c = window.__liaResetResolveTileChipNode(s, tileRoot, targets) || s;
+				return !_safeIsInsideTarget(c);
+			});
+			const safeBank = (safeOutside.length > 0 && safeOutside[0].parentElement) ? safeOutside[0].parentElement : null;
+
+			targets.forEach(function (target) {
+				if (!target || !target.querySelectorAll) return;
+
+				const embeddedSources = Array.from(target.querySelectorAll("[draggable], [onclick*='dragsource'], [ondragstart], [ondragend]"))
+					.map(function (node) {
+						return window.__liaResetResolveTileChipNode(node, tileRoot, targets) || node;
+					})
+					.filter(function (node, idx, arr) {
+						return !!node && node instanceof Element && arr.indexOf(node) === idx &&
+							window.__liaResetIsTileQuizSource(node);
+					});
+
+				if (embeddedSources.length === 0) {
+					const targetText = String((target.textContent || "")).replace(/\s+/g, " ").trim();
+					if (targetText && targetText !== "✛" && targetText !== "+") {
+						try { window.__liaResetSetTileTargetDisplay(target, ""); } catch (e) {}
+					}
+					return;
+				}
+
+				embeddedSources.forEach(function (chip) {
+					const chipText = String((chip.textContent || "")).replace(/\s+/g, " ").trim();
+					// Duplikat außerhalb? Wenn ja, ist der Chip im Target ein Orphan und darf gelöscht werden.
+					const hasDupeOutside = safeOutside.some(function (s2) {
+						const c2 = window.__liaResetResolveTileChipNode(s2, tileRoot, targets) || s2;
+						return c2 !== chip && String(c2.textContent || "").replace(/\s+/g, " ").trim() === chipText;
+					});
+					let rescued = false;
+
+					// Strategie 1: Original-Home über UID
+					try {
+						const uid = window.__liaResetEnsureNodeUid(chip);
+						const home = uid ? window.__liaResetDragHomeById[uid] : null;
+						if (home && home.parentId) {
+							const hp = host.querySelector("[data-reset-uid='" + String(home.parentId) + "']");
+							if (hp && hp instanceof Element && !_safeIsInsideTarget(hp)) {
+								const nx = home.nextId ? host.querySelector("[data-reset-uid='" + String(home.nextId) + "']") : null;
+								hp.insertBefore(chip, (nx && nx.parentElement === hp) ? nx : null);
+								window.__liaResetDebugWrite("tile safety: rescued to home; text='" + chipText + "'");
+								forcedRemoved += 1;
+								rescued = true;
+							}
+						}
+					} catch (e) {}
+
+					// Strategie 2: Source-Bank-Container
+					if (!rescued && safeBank) {
+						try {
+							safeBank.appendChild(chip);
+							window.__liaResetDebugWrite("tile safety: rescued to sourceBank; text='" + chipText + "'");
+							forcedRemoved += 1;
+							rescued = true;
+						} catch (e) {}
+					}
+
+					// Strategie 3: Vor das Target einhängen
+					if (!rescued) {
+						try {
+							const tp = target.parentElement;
+							if (tp && !_safeIsInsideTarget(tp)) {
+								tp.insertBefore(chip, target);
+								window.__liaResetDebugWrite("tile safety: rescued to targetParent; text='" + chipText + "'");
+								forcedRemoved += 1;
+								rescued = true;
+							}
+						} catch (e) {}
+					}
+
+					// Nur wenn Duplikat außerhalb existiert: löschen ist sicher
+					if (!rescued && hasDupeOutside) {
+						try {
+							if (chip.parentElement) chip.parentElement.removeChild(chip);
+							window.__liaResetDebugWrite("tile safety: orphan removed (dupe outside); text='" + chipText + "'");
+							forcedRemoved += 1;
+							rescued = true;
+						} catch (e) {}
+					}
+
+					if (rescued) {
+						try { chip.setAttribute("draggable", "true"); } catch (e) {}
+						chip.classList.remove("is-disabled", "lia-btn--disabled");
+						chip.style.removeProperty("pointer-events");
+						chip.style.removeProperty("opacity");
+						chip.style.removeProperty("display");
+					} else {
+						window.__liaResetDebugWrite("tile safety: rescue FAILED; text='" + chipText + "' — kept in place to preserve chip");
+					}
+				});
+
+				// Target leer? Display zurücksetzen.
+				if (target.querySelector("[draggable]") === null) {
+					try { window.__liaResetSetTileTargetDisplay(target, ""); } catch (e) {}
+				}
+
+				// Target wieder droppable machen
+				target.classList.remove("is-disabled", "lia-btn--disabled");
+				target.style.removeProperty("pointer-events");
+				target.style.removeProperty("opacity");
+			});
+		});
+
+		if (forcedRemoved > 0) {
+			window.__liaResetDebugWrite("tile safety cleanup completed; chipsForced=" + String(forcedRemoved));
+		}
+
+		try { window.__liaResetRefreshTileTargetStyles(host); } catch (e) {}
+	}, 2100);  // Nach dem Polling (max 1800ms) + Puffer
+
 	return changed;
 };
 
@@ -3468,6 +3753,135 @@ window.__liaResetPass = function (button, phaseLabel) {
 	const dragResetCount = window.__liaResetRestoreDragHomes(host);
 	const tileResetCount = window.__liaResetResetTileControls(host);
 
+	// === ZUSÄTZLICHE TILE-SICHERHEIT: Schneller Inline-Rescue ===
+	// Wenn nach dem Tile-Reset noch Chips in Targets stecken, MÜSSEN sie zurück
+	// in die Source-Bank verschoben werden — NIEMALS gelöscht, sonst geht die
+	// Kachel permanent verloren und kann nicht erneut gezogen werden.
+	if (tileResetCount > 0) {
+		window.setTimeout(function () {
+			try {
+				const tileRoots = window.__liaResetCollectTileQuizRoots(host);
+				let inlineFixed = 0;
+				tileRoots.forEach(function (tRoot) {
+					const targets = window.__liaResetGetTileQuizTargetsFromRoot(tRoot);
+					if (!targets.length) return;
+					const allSources = window.__liaResetGetTileQuizSourcesFromRoot(tRoot);
+
+					// Bestimme den Source-Bank-Container: Parent eines Chips, der NICHT
+					// in einem Target steckt. Das ist der „Heim"-Container.
+					function _isInsideAnyTarget(node) {
+						for (let i = 0; i < targets.length; i++) {
+							const t = targets[i];
+							if (!t) continue;
+							if (t === node || (t.contains && t.contains(node))) return true;
+						}
+						return false;
+					}
+					const outsideSources = allSources.filter(function (s) {
+						const c = window.__liaResetResolveTileChipNode(s, tRoot, targets) || s;
+						return !_isInsideAnyTarget(c);
+					});
+					let sourceBank = null;
+					if (outsideSources.length > 0 && outsideSources[0].parentElement) {
+						sourceBank = outsideSources[0].parentElement;
+					}
+
+					targets.forEach(function (target) {
+						if (!target || !target.querySelectorAll) return;
+						// Sammle alle Chips, die im Target stecken
+						const orphans = Array.from(target.querySelectorAll("[draggable], [onclick*='dragsource'], [ondragstart], [ondragend]"))
+							.map(function (n) { return window.__liaResetResolveTileChipNode(n, tRoot, targets) || n; })
+							.filter(function (n, i, arr) {
+								return !!n && n instanceof Element && arr.indexOf(n) === i &&
+									window.__liaResetIsTileQuizSource(n) && _isInsideAnyTarget(n);
+							});
+						if (orphans.length === 0) return;
+
+						orphans.forEach(function (orphan) {
+							const txt = String((orphan.textContent || "")).replace(/\s+/g, " ").trim().slice(0, 20);
+							let moved = false;
+
+							// Strategie 1: Über data-reset-uid den ursprünglichen Home-Parent finden
+							try {
+								const uid = window.__liaResetEnsureNodeUid(orphan);
+								const home = uid ? window.__liaResetDragHomeById[uid] : null;
+								if (home && home.parentId) {
+									const hp = host.querySelector("[data-reset-uid='" + String(home.parentId) + "']");
+									if (hp && hp instanceof Element && !_isInsideAnyTarget(hp)) {
+										const nx = home.nextId ? host.querySelector("[data-reset-uid='" + String(home.nextId) + "']") : null;
+										hp.insertBefore(orphan, (nx && nx.parentElement === hp) ? nx : null);
+										inlineFixed += 1;
+										moved = true;
+										window.__liaResetDebugWrite(
+											"pass: inline tile rescue (home); text='" + txt + "'; uid=" + uid
+										);
+									}
+								}
+							} catch (e) {}
+
+							// Strategie 2: In den ermittelten Source-Bank-Container verschieben
+							if (!moved && sourceBank && !_isInsideAnyTarget(sourceBank)) {
+								try {
+									sourceBank.appendChild(orphan);
+									inlineFixed += 1;
+									moved = true;
+									window.__liaResetDebugWrite(
+										"pass: inline tile rescue (sourceBank); text='" + txt + "'; bank=" + String(sourceBank.tagName || "")
+									);
+								} catch (e) {}
+							}
+
+							// Strategie 3: Vor das Target im Tile-Root einhängen (statt löschen)
+							if (!moved) {
+								try {
+									const beforeNode = targets[0];
+									const tParent = beforeNode && beforeNode.parentElement;
+									if (tParent && !_isInsideAnyTarget(tParent)) {
+										tParent.insertBefore(orphan, beforeNode);
+										inlineFixed += 1;
+										moved = true;
+										window.__liaResetDebugWrite(
+											"pass: inline tile rescue (targetParent); text='" + txt + "'"
+										);
+									}
+								} catch (e) {}
+							}
+
+							// KEIN DELETE-Fallback hier! Lieber stehen lassen, als Kachel zu verlieren.
+							if (!moved) {
+								window.__liaResetDebugWrite(
+									"pass: inline tile rescue FAILED; text='" + txt + "' — kept in place to preserve chip"
+								);
+							} else {
+								// Chip wieder draggable + sichtbar machen
+								try { orphan.setAttribute("draggable", "true"); } catch (e) {}
+								orphan.classList.remove("is-disabled", "lia-btn--disabled");
+								orphan.style.removeProperty("pointer-events");
+								orphan.style.removeProperty("opacity");
+								orphan.style.removeProperty("display");
+							}
+						});
+
+						// Target-Display nur zurücksetzen, wenn jetzt wirklich leer
+						if (target.querySelector("[draggable]") === null) {
+							window.__liaResetSetTileTargetDisplay(target, "");
+						}
+					});
+
+					// Re-Prime der Drag-Homes, damit verschobene Chips wieder gefunden werden
+					if (inlineFixed > 0) {
+						try { window.__liaResetPrimeDragHomes(host); } catch (e) {}
+					}
+				});
+				if (inlineFixed > 0) {
+					window.__liaResetDebugWrite("pass: inline tile rescue done; rescued=" + String(inlineFixed));
+				}
+			} catch (eOuter) {
+				window.__liaResetDebugWrite("pass: inline tile rescue error: " + String(eOuter).slice(0, 100));
+			}
+		}, 50);
+	}
+
 	window.__liaResetDebugWrite(
 		phase + ": pass done; fieldsSeen=" + String(editableSeen) +
 		"; fieldsReset=" + String(editableReset) +
@@ -3764,6 +4178,7 @@ if (!window.__liaResetQuizProbeInstalled) {
 						var _state = (isSolved || hasFeedbackSuccess) ? "success" : "error";
 						window.__liaResetApplyQuizIconState(_obsRoot, _state);
 						window.__liaResetSetQuizLocked(_obsRoot, _state === "success");
+						try { window.__liaResetRefreshTileTargetStyles(_obsRoot); } catch (e) {}
 						_obs.disconnect();
 					}
 				});
@@ -3788,6 +4203,7 @@ if (!window.__liaResetQuizProbeInstalled) {
 					const stateNow = (isSolved || hasFeedbackSuccess) ? "success" : "error";
 					window.__liaResetApplyQuizIconState(root, stateNow);
 					window.__liaResetSetQuizLocked(root, stateNow === "success");
+					try { window.__liaResetRefreshTileTargetStyles(root); } catch (e) {}
 				}
 				window.__liaResetSyncResolveVisibility(root);
 			}
@@ -3800,6 +4216,7 @@ if (!window.__liaResetQuizProbeInstalled) {
 					window.__liaResetApplyQuizIconState(root, "resolve");
 					window.__liaResetSetQuizLocked(root, true);
 					window.__liaResetEnsureResolvedFeedbackText(root);
+					try { window.__liaResetRefreshTileTargetStyles(root); } catch (e) {}
 				}
 			}
 			const state = root && root.classList

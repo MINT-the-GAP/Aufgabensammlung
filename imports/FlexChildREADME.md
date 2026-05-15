@@ -1,8 +1,8 @@
 <!--
-version: 0.0.8
+version: 0.0.9
 language: de
 author: Martin Lommatzsch
-comment: DynFlex Import V6.8 (Leerzeilen -> echte Blocks in flex-child => mehrere Prüfen-Buttons; section/div authoring, wrapper-robust for [[...]], css-injection, theme-update, end-resizer, % widths)
+comment: DynFlex Import V6.9 (First-Visit Auto-Width je Folie; Leerzeilen -> echte Blocks in flex-child => mehrere Prüfen-Buttons; section/div authoring, wrapper-robust for [[...]], css-injection, theme-update, end-resizer, % widths)
 
 @onload
 (function () {
@@ -23,6 +23,7 @@ comment: DynFlex Import V6.8 (Leerzeilen -> echte Blocks in flex-child => mehrer
 
   const REGKEY = "__LIA_DYNFLEX_V6_8__";
   ROOT_WIN[REGKEY] = ROOT_WIN[REGKEY] || { docs: {} };
+  ROOT_WIN[REGKEY].visitedSlides = ROOT_WIN[REGKEY].visitedSlides || {};
 
   const DOC_KEY_ATTR = "data-dynflex-doc";
   let docKey = CONTENT_DOC.documentElement.getAttribute(DOC_KEY_ATTR);
@@ -258,6 +259,13 @@ comment: DynFlex Import V6.8 (Leerzeilen -> echte Blocks in flex-child => mehrer
     item.style.setProperty("--w", pct.toFixed(2) + "%");
   }
 
+  function getCurrentSlideHash(){
+    const raw = String(ROOT_WIN.location.hash || CONTENT_WIN.location.hash || "");
+    const m = raw.match(/#\d+/);
+    if (m && m[0]) return m[0];
+    return raw || "#1";
+  }
+
   function getStoreKey(container){
     const k = container.getAttribute("data-store");
     return k ? ("dynFlexWidths::" + k) : null;
@@ -286,6 +294,23 @@ comment: DynFlex Import V6.8 (Leerzeilen -> echte Blocks in flex-child => mehrer
       const v = String(arr[i] || "").trim();
       if (v.endsWith("%")) it.style.setProperty("--w", v);
     });
+  }
+
+  function applyFirstVisitAutoWidth(container, items, isFirstVisit){
+    if (!isFirstVisit) return;
+    if (!items || !items.length) return;
+
+    const anySet = items.some(it => (it.style.getPropertyValue("--w") || "").trim());
+    if (anySet) return;
+
+    let pct = null;
+    if (items.length === 1) pct = 100;
+    else if (items.length === 2) pct = 49;
+    else if (items.length === 3) pct = 32;
+    else pct = Math.max(1, Math.floor(100 / items.length) - 1);
+
+    items.forEach(it => setItemPct(it, pct));
+    persist(container, items);
   }
 
   // Items deterministisch aus .flex-child ableiten (wrapper-robust)
@@ -350,7 +375,7 @@ comment: DynFlex Import V6.8 (Leerzeilen -> echte Blocks in flex-child => mehrer
     rz.addEventListener("pointercancel", onUp);
   }
 
-  function initContainer(container){
+  function initContainer(container, isFirstVisit){
     // config
     const gap   = container.getAttribute("data-gap");
     const hit   = container.getAttribute("data-hit");
@@ -364,10 +389,11 @@ comment: DynFlex Import V6.8 (Leerzeilen -> echte Blocks in flex-child => mehrer
     const maxPct = parsePct(container.getAttribute("data-max"), 100);
 
     const items = getItemsFromFlexChildren(container);
-    if (!items.length) return;
+    if (!items.length) return false;
 
     items.forEach(it => it.classList.add("dynFlexItem"));
     restore(container, items);
+    applyFirstVisitAutoWidth(container, items, isFirstVisit);
 
     for (let i = 0; i < items.length; i++){
       const item = items[i];
@@ -385,6 +411,8 @@ comment: DynFlex Import V6.8 (Leerzeilen -> echte Blocks in flex-child => mehrer
 
       ensureResizerBound(rz, container, item, items, minPct, maxPct);
     }
+
+    return true;
   }
 
   function scanInDoc(doc){
@@ -393,7 +421,20 @@ comment: DynFlex Import V6.8 (Leerzeilen -> echte Blocks in flex-child => mehrer
       blockifyAll(doc);
 
       // 2) DynFlex initialisieren
-      doc.querySelectorAll(".dynFlex").forEach(initContainer);
+      const containers = Array.from(doc.querySelectorAll(".dynFlex"));
+      if (!containers.length) return;
+
+      const slideHash = getCurrentSlideHash();
+      const isFirstVisit = !ROOT_WIN[REGKEY].visitedSlides[slideHash];
+
+      let initializedAny = false;
+      containers.forEach(c => {
+        if (initContainer(c, isFirstVisit)) initializedAny = true;
+      });
+
+      if (isFirstVisit && initializedAny){
+        ROOT_WIN[REGKEY].visitedSlides[slideHash] = 1;
+      }
     }catch(e){}
   }
 
