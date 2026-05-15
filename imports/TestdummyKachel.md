@@ -821,24 +821,40 @@ comment: Resetter v0.0.1
 		touchGhostEl = null;
 	}
 
-	function ensureTouchGhost(text) {
+	function ensureTouchGhost(sourceEl, fallbackText) {
 		if (touchGhostEl && touchGhostEl.parentNode) return touchGhostEl;
-		const ghost = document.createElement("div");
-		ghost.className = "lia-touch-ghost";
-		ghost.textContent = String(text || "");
+		let ghost = null;
+		if (sourceEl && sourceEl instanceof Element) {
+			try {
+				ghost = sourceEl.cloneNode(true);
+				ghost.removeAttribute("id");
+				const dupIds = ghost.querySelectorAll ? ghost.querySelectorAll("[id]") : [];
+				for (let i = 0; i < dupIds.length; i++) {
+					try { dupIds[i].removeAttribute("id"); } catch (e) {}
+				}
+			} catch (e) {
+				ghost = null;
+			}
+		}
+		if (!ghost) {
+			ghost = document.createElement("div");
+			ghost.textContent = String(fallbackText || "");
+		}
+		ghost.classList.add("lia-touch-ghost");
 		ghost.style.position = "fixed";
 		ghost.style.left = "0";
 		ghost.style.top = "0";
 		ghost.style.transform = "translate(-50%, -50%)";
 		ghost.style.pointerEvents = "none";
 		ghost.style.zIndex = "2147483647";
-		ghost.style.opacity = "0.3";
-		ghost.style.padding = "0.35rem 0.6rem";
-		ghost.style.borderRadius = "var(--lia-tile-radius, 12px)";
-		ghost.style.background = "var(--lia-tile-bg, rgba(0, 0, 0, 0.15))";
-		ghost.style.color = "currentColor";
-		ghost.style.fontWeight = "600";
-		ghost.style.backdropFilter = "blur(1px)";
+		ghost.style.opacity = "0.5";
+		ghost.style.margin = "0";
+		ghost.style.touchAction = "none";
+		if (sourceEl && sourceEl instanceof Element && typeof sourceEl.getBoundingClientRect === "function") {
+			const rect = sourceEl.getBoundingClientRect();
+			if (rect && Number.isFinite(rect.width) && rect.width > 0) ghost.style.width = String(rect.width) + "px";
+			if (rect && Number.isFinite(rect.height) && rect.height > 0) ghost.style.height = String(rect.height) + "px";
+		}
 		(document.body || document.documentElement).appendChild(ghost);
 		touchGhostEl = ghost;
 		return ghost;
@@ -1052,7 +1068,7 @@ comment: Resetter v0.0.1
 		lastDragOverTarget = null;
 		lastDragOverTs = 0;
 
-		ensureTouchGhost(sourceEl.textContent || pointerText || "");
+		ensureTouchGhost(sourceEl, sourceEl.textContent || pointerText || "");
 		moveTouchGhost(Number(t.clientX) || 0, Number(t.clientY) || 0);
 
 		dlog("touchstart source text='" + pointerText + "' inTarget=" + (touchSourceTarget ? 1 : 0));
