@@ -869,10 +869,10 @@ comment: Resetter v0.0.1
 		} catch (e) {}
 	}
 
-	function markSourceAsUsedAfterTouchDrop(sourceEl, target) {
+	function markSourceAsUsedAfterTouchDrop(sourceEl, sourceTarget, target) {
 		if (!sourceEl || !(sourceEl instanceof Element)) return;
 		const sourceNode = sourceFromNode(sourceEl) || sourceEl;
-		const sourceWasInTarget = !!findTargetFromNode(sourceNode);
+		const sourceWasInTarget = !!sourceTarget || !!findTargetFromNode(sourceNode);
 		if (sourceWasInTarget) return;
 		if (target && (target === sourceNode || (target.contains && target.contains(sourceNode)))) return;
 		try { sourceNode.setAttribute("aria-hidden", "true"); } catch (e) {}
@@ -1050,25 +1050,28 @@ comment: Resetter v0.0.1
 		const t = primaryTouch(ev);
 		if (!t) return;
 		const hit = (typeof document.elementFromPoint === "function") ? document.elementFromPoint(t.clientX, t.clientY) : null;
-		const sourceEl = sourceFromNode(hit || (ev.target || null));
-		if (!sourceEl) return;
+		const hitNode = hit || (ev.target || null);
+		const sourceEl = sourceFromNode(hitNode);
+		const sourceTarget = findTargetFromNode(hitNode) || (sourceEl ? findTargetFromNode(sourceEl) : null);
+		const effectiveSourceEl = sourceEl || sourceTarget;
+		if (!effectiveSourceEl) return;
 
 		touchDragActive = true;
 		touchDragMoved = false;
 		touchStartX = Number(t.clientX) || 0;
 		touchStartY = Number(t.clientY) || 0;
-		touchSourceEl = sourceEl;
-		touchSourceTarget = findTargetFromNode(sourceEl);
+		touchSourceEl = effectiveSourceEl;
+		touchSourceTarget = sourceTarget;
 		touchHoverTarget = null;
 
-		pointerText = norm(sourceEl.textContent);
-		pointerRoot = quizNodeFrom(sourceEl) || tileRootFrom(sourceEl);
-		pointerEl = sourceEl;
-		pointerQuizKey = quizKeyFrom(sourceEl);
+		pointerText = norm(sourceTarget ? targetDisplayText(sourceTarget) : effectiveSourceEl.textContent);
+		pointerRoot = quizNodeFrom(effectiveSourceEl) || tileRootFrom(effectiveSourceEl);
+		pointerEl = effectiveSourceEl;
+		pointerQuizKey = quizKeyFrom(effectiveSourceEl);
 		lastDragOverTarget = null;
 		lastDragOverTs = 0;
 
-		ensureTouchGhost(sourceEl, sourceEl.textContent || pointerText || "");
+		ensureTouchGhost(effectiveSourceEl, effectiveSourceEl.textContent || pointerText || "");
 		moveTouchGhost(Number(t.clientX) || 0, Number(t.clientY) || 0);
 
 		dlog("touchstart source text='" + pointerText + "' inTarget=" + (touchSourceTarget ? 1 : 0));
@@ -1109,6 +1112,17 @@ comment: Resetter v0.0.1
 		const target = pointTarget || recentDragOverTarget || null;
 		const activeText = draggedText || pointerText;
 		const activeRoot = draggedRoot || pointerRoot;
+		const isDragGesture = !!touchDragMoved;
+
+		if (!isDragGesture) {
+			dlog("touchend tap/no-drag; ignore clear/drop");
+			scheduleClearState("touchend-tap", 180);
+			lastDragOverTarget = null;
+			lastDragOverTs = 0;
+			resetTouchDragState();
+			try { ev.preventDefault(); } catch (e) {}
+			return;
+		}
 
 		if (target && activeText) {
 			const sourceTarget = touchSourceTarget || null;
@@ -1117,7 +1131,7 @@ comment: Resetter v0.0.1
 			}
 			const dropped = applyTileStateDirectly(target, activeText, "touchend-drop");
 			if (dropped && touchSourceEl) {
-				markSourceAsUsedAfterTouchDrop(touchSourceEl, target);
+				markSourceAsUsedAfterTouchDrop(touchSourceEl, sourceTarget, target);
 			}
 			try { applyThemeColorToTargetPlaceholders(document); } catch (e) {}
 			try { if (typeof window.__liaResetRefreshTileTargetStyles === "function") window.__liaResetRefreshTileTargetStyles(document); } catch (e) {}
