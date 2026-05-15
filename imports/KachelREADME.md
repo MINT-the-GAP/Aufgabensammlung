@@ -653,6 +653,17 @@ comment: Resetter v0.0.1
 		return null;
 	}
 
+	function isManagedKachelTouchRoot(root) {
+		if (!root || !(root instanceof Element)) return false;
+		if (root.matches && root.matches(".Kachel, .kachelfolge-wrap, [id^='kachelfolge-wrap-']")) return true;
+		if (root.closest && root.closest(".Kachel, .kachelfolge-wrap, [id^='kachelfolge-wrap-']")) return true;
+		const uid = String(root.getAttribute && root.getAttribute("data-kf-uid") || "").trim();
+		if (uid) return true;
+		const inlineReady = String(root.getAttribute && root.getAttribute("data-kf-inline-ready") || "").trim();
+		if (inlineReady === "1") return true;
+		return false;
+	}
+
 	function isInsideAnyTarget(node, targets) {
 		for (let i = 0; i < targets.length; i++) {
 			const t = targets[i];
@@ -1913,6 +1924,8 @@ comment: Resetter v0.0.1
 		const hit = (typeof document.elementFromPoint === "function") ? document.elementFromPoint(t.clientX, t.clientY) : null;
 		const sourceEl = sourceFromNode(hit || (ev.target || null));
 		if (!sourceEl) return;
+		const sourceRoot = quizNodeFrom(sourceEl) || tileRootFrom(sourceEl);
+		if (!isManagedKachelTouchRoot(sourceRoot)) return;
 
 		touchDragActive = true;
 		touchDragMoved = false;
@@ -1923,7 +1936,7 @@ comment: Resetter v0.0.1
 		touchHoverTarget = null;
 
 		pointerText = norm(sourceEl.textContent);
-		pointerRoot = quizNodeFrom(sourceEl) || tileRootFrom(sourceEl);
+		pointerRoot = sourceRoot;
 		pointerEl = sourceEl;
 		pointerQuizKey = quizKeyFrom(sourceEl);
 		lastDragOverTarget = null;
