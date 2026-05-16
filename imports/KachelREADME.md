@@ -967,16 +967,78 @@ comment: Resetter v0.0.1
 
 		window.__liaKachelfolgeExpected = window.__liaKachelfolgeExpected || {};
 
+		function isInstructionStopword(token) {
+			const t = normKey(token || "");
+			if (!t) return true;
+			const stop = {
+				"in": 1, "den": 1, "dem": 1, "der": 1, "die": 1, "das": 1,
+				"und": 1, "oder": 1, "danach": 1, "dann": 1, "anschliessend": 1,
+				"anschliesend": 1, "aus": 1, "mit": 1, "von": 1
+			};
+			return !!stop[t];
+		}
+
+		function parseSmallGermanNumber(token) {
+			const t = normKey(token || "");
+			if (!t) return null;
+			if (/^\d+$/.test(t)) {
+				const n = Number(t);
+				return Number.isFinite(n) ? n : null;
+			}
+			const map = {
+				"eins": 1, "ein": 1, "eine": 1,
+				"zwei": 2,
+				"drei": 3,
+				"vier": 4,
+				"fuenf": 5, "funf": 5,
+				"sechs": 6,
+				"sieben": 7,
+				"acht": 8,
+				"neun": 9,
+				"zehn": 10
+			};
+			return Object.prototype.hasOwnProperty.call(map, t) ? map[t] : null;
+		}
+
+		function sourceHasLabel(block, label) {
+			const wanted = normKey(label || "");
+			if (!wanted) return false;
+			const labels = sourceCandidates(block).map(function (n) { return normKey(n && n.textContent || ""); }).filter(Boolean);
+			for (let i = 0; i < labels.length; i++) {
+				if (labels[i] === wanted) return true;
+			}
+			return false;
+		}
+
 		function inferExpectedFromInstruction(block, targetCount) {
 			if (!block || !targetCount) return null;
 			const txt = String(block.textContent || "").replace(/\s+/g, " ").trim();
 			if (!txt) return null;
+			const lower = txt.toLowerCase();
+
+			const mixed = lower.match(/in\s+den\s+ersten\s+([^\s.,;:!?]+)\s+feldern?\s+([^\s.,;:!?]+)\s+und\s+(?:danach|dann|anschliessend)\s+([^\s.,;:!?]+)/i);
+			if (mixed && mixed[1] && mixed[2] && mixed[3]) {
+				const n = parseSmallGermanNumber(mixed[1]);
+				const first = String(mixed[2] || "").trim();
+				const second = String(mixed[3] || "").trim();
+				if (
+					Number.isFinite(n) && n > 0 && n < targetCount &&
+					!isInstructionStopword(first) &&
+					!isInstructionStopword(second) &&
+					sourceHasLabel(block, first) &&
+					sourceHasLabel(block, second)
+				) {
+					const out = [];
+					for (let i = 0; i < targetCount; i++) out.push(i < n ? first : second);
+					return out;
+				}
+			}
 
 			const m = txt.match(/w\S*hle\s+([^\s.,;:!?]+)/i);
 			if (!m || !m[1]) return null;
 
 			const token = String(m[1] || "").trim();
-			if (!token || normKey(token) === "aus") return null;
+			if (!token || isInstructionStopword(token) || !sourceHasLabel(block, token)) return null;
 
 			const out = [];
 			for (let i = 0; i < targetCount; i++) out.push(token);
@@ -2561,26 +2623,41 @@ comment: Resetter v0.0.1
 # Neue Kachelquizarten
 
 
+> Durch dieses Template wird das CSS des Kachelquiz ein wenig angepasst, sodass es sich mehr in das andere CSS von LiaScript einfügt. 
 
+> Außerdem wird nun eine Touchsteuerung für Drag and Drop unterstützt.
+
+
+---
+
+---
 
 
 <div class="Kachel">
 
-Wähle gelb aus. (Welches Gelb in welcher Kachel ist, ist egal, und das ist eine neue Funktion.)\
+Wähle in den ersten drei Feldern gelb und danach rot aus. (Welches Gelb in welcher Kachel ist, ist egal, und das ist eine neue Funktion.)\
 
 
 <!-- data-solution-button="5" 
 data-randomize="true" -->
 In diese Lücke muss [->[(gelb)]] rein. \
 In diese muss auch [->[(gelb)]] rein und in diese [->[(gelb)]] auch. \
-Das Adjektiv [->[(gelb)]] ist [->[pink|rot|blau|grün|(gelb)]].
+Das Adjektiv [->[(rot)]] ist [->[pink|grün|(rot)]]. \
 
 </div>
 
-Normales Quiz zum Testen:
-[->[(Test)]] 
 
-# Neue Kachelquizarten 2
+In einem Bereich werden Inhalte statt 
+
+```
+<div class="Kachel">
+	In diese Lücke muss [->[(gelb)]] rein. \
+	In diese muss auch [->[(gelb)]] rein und in diese [->[(gelb)]] auch. \
+	Das Adjektiv [->[(rot)]] ist [->[pink|grün|(rot)]]. \
+</div>
+```
+
+
 
 
 
@@ -2591,12 +2668,12 @@ Normales Quiz zum Testen:
 
 <!-- data-randomize="true" -->
 Wähle Farben oben aus und unten Zahlen. (Reihenfolge egal.)
-@Kachelfolge(`[->[(gelb)]][->[(rot)]][->[(grün)|Haus]]`)
+@Kachelfolge(`[->[(pink)]][->[(lila)]][->[(weiß)|Haus]]`)
+
 
 
 <!-- data-solution-button="2" -->
 @Kachelfolge(`[->[(1)]][->[(2)|Katze]][->[(3)]]`)
-
 
 
 ---
@@ -2612,6 +2689,12 @@ Wähle Farben oben aus und unten Zahlen.  (Reihenfolge egal.)
 
 
 
+Jede Reihenfolge wird akzeptiert:
+
+```
+@Kachelfolge(`[->[(1)]][->[(2)|Katze]][->[(3)]]`)
+```
+
 ---
 
 ---
@@ -2620,4 +2703,23 @@ Wähle Farben oben aus und unten Zahlen.  (Reihenfolge egal.)
 <!-- data-show-partial-solution="true" -->
 Wähle Farben aus. (Reihenfolge egal und unbekannte Anzahl.)
 @KachelfolgeN(`[->[(gelb)]][->[(rot)]][->[(grün)|Haus]]`)
+
+
+
+Jede Reihenfolge wird akzeptiert aber die Anzahl der Gesuchten ist unbekannt:
+
+```
+@KachelfolgeN(`[->[(gelb)]][->[(rot)]][->[(grün)|Haus]]`)
+```
+
+---
+
+---
+
+
+
+Normales Quiz zum Testen:
+[->[(Test)]] 
+
+
 
