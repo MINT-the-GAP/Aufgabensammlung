@@ -306,8 +306,7 @@ comment: DynFlex Import V6.9 (First-Visit Auto-Width je Folie; Leerzeilen -> ech
     let pct = null;
     if (items.length === 1) pct = 100;
     else if (items.length === 2) pct = 49;
-    else if (items.length === 3) pct = 32;
-    else pct = Math.max(1, Math.floor(100 / items.length) - 1);
+    else pct = 32;
 
     items.forEach(it => setItemPct(it, pct));
     persist(container, items);

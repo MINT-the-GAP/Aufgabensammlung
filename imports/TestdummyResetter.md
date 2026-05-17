@@ -1,10 +1,13 @@
-<!--
+﻿<!--
 version:  0.0.1
 language: de
 author: Martin Lommatzsch
 comment: Resetter v0.0.1
 
 
+
+import: https://cdn.jsdelivr.net/gh/LiaTemplates/algebrite@master/README.md
+import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
 
 
 import: TimerREADME.md
@@ -60,31 +63,7 @@ import: AnnotationREADME.md
 	}
 
 	function ensureRoundedTileStyles() {
-		if (window.__liaResetRoundedTileStylesApplied) return;
-		window.__liaResetRoundedTileStylesApplied = 1;
-
-		const style = document.createElement("style");
-		style.setAttribute("data-lia-reset-tile-rounded", "1");
-		style.textContent = [
-			":root { --lia-tile-radius: 12px; --lia-target-width-scale: 0.65; --lia-target-min-width: calc(clamp(9rem, 22vw, 14rem) * var(--lia-target-width-scale)); --lia-tile-bg: rgba(0, 0, 0, 0.15); }",
-			".kachelfolge-wrap > span[data-kf-uid] { border-radius: var(--lia-tile-radius) !important; overflow: hidden !important; background-color: var(--lia-tile-bg) !important; }",
-			".kachelfolge-wrap > span[data-kf-uid].lia-target-placeholder { background-color: transparent !important; }",
-			".kachelfolge-wrap > div > span[role='button'] { border-radius: var(--lia-tile-radius) !important; overflow: hidden !important; background-color: var(--lia-tile-bg) !important; }",
-			".lia-paragraph:has(> .kachelfolge-wrap) + div > span[role='button'] { border-radius: var(--lia-tile-radius) !important; overflow: hidden !important; background-color: var(--lia-tile-bg) !important; }",
-			"[id^='kachelfolge-wrap-'] ~ div > span[role='button'] { border-radius: var(--lia-tile-radius) !important; overflow: hidden !important; background-color: var(--lia-tile-bg) !important; }",
-			".kachelfolge-wrap > span[data-kf-uid] > *, .kachelfolge-wrap > div > span[role='button'] > * { display: inline-flex !important; align-items: center; justify-content: center; width: 100%; text-align: center; margin-inline: auto; }",
-			".lia-paragraph:has(> .kachelfolge-wrap) + div > span[role='button'] > * { display: inline-flex !important; align-items: center; justify-content: center; width: 100%; text-align: center; margin-inline: auto; }",
-			"[id^='kachelfolge-wrap-'] ~ div > span[role='button'] > * { display: inline-flex !important; align-items: center; justify-content: center; width: 100%; text-align: center; margin-inline: auto; }",
-			"[data-reset-tile-role='target'], .lia-quiz.solved [data-reset-tile-role='target'], .lia-quiz.resolved [data-reset-tile-role='target'], .solved [data-reset-tile-role='target'], .resolved [data-reset-tile-role='target'] { border-radius: var(--lia-tile-radius) !important; overflow: hidden !important; min-width: var(--lia-target-min-width); max-width: 100%; display: inline-flex !important; align-items: center; justify-content: center; padding-inline: calc(0.8rem * var(--lia-target-width-scale)); text-align: center; background-color: var(--lia-tile-bg) !important; }",
-			"[data-reset-tile-role='source'], [draggable='true'], .lia-quiz.solved [data-reset-tile-role='source'], .lia-quiz.resolved [data-reset-tile-role='source'], .lia-quiz.solved [draggable='true'], .lia-quiz.resolved [draggable='true'], .solved [data-reset-tile-role='source'], .resolved [data-reset-tile-role='source'], .solved [draggable='true'], .resolved [draggable='true'] { border-radius: var(--lia-tile-radius) !important; overflow: hidden !important; background-color: var(--lia-tile-bg) !important; }",
-			"[data-reset-tile-role='target'] [data-reset-tile-role='source'], [data-reset-tile-role='target'] [draggable='true'] { background-color: transparent !important; color: inherit !important; }",
-			"[data-reset-tile-role='target'] [data-reset-tile-role='source'] *, [data-reset-tile-role='target'] [draggable='true'] * { background-color: transparent !important; color: inherit !important; }",
-			"[data-reset-tile-role='target'] > *, .lia-quiz.solved [data-reset-tile-role='target'] > *, .lia-quiz.resolved [data-reset-tile-role='target'] > * { border-radius: var(--lia-tile-radius) !important; display: inline-flex !important; align-items: center; justify-content: center; width: 100%; text-align: center; margin-inline: auto; }",
-			".lia-target-placeholder { color: var(--lia-theme-color, var(--lia-primary, var(--md-primary-fg-color, var(--color-primary, currentColor)))) !important; }",
-			".lia-target-placeholder *, .lia-target-placeholder [data-reset-tile-role='source'], .lia-target-placeholder [draggable='true'] { color: inherit !important; background-color: transparent !important; }"
-		].join("\n");
-
-		(document.head || document.documentElement).appendChild(style);
+		return;
 	}
 
 	ensureRoundedTileStyles();
@@ -328,10 +307,15 @@ window.__liaResetDragHomeById = window.__liaResetDragHomeById || Object.create(n
 window.__liaResetTilePristineByQuizId = window.__liaResetTilePristineByQuizId || Object.create(null);
 window.__liaResetMaskToken = window.__liaResetMaskToken || 0;
 window.__liaResetDebugEnabled = window.__liaResetDebugEnabled !== false;
+window.__liaResetLastTextByUid = window.__liaResetLastTextByUid || Object.create(null);
+window.__liaResetDiktatFieldUidSet = window.__liaResetDiktatFieldUidSet || Object.create(null);
+window.__liaResetLastTextByField = window.__liaResetLastTextByField || (typeof WeakMap !== "undefined" ? new WeakMap() : null);
+window.__liaResetDiktatFieldSet = window.__liaResetDiktatFieldSet || (typeof WeakSet !== "undefined" ? new WeakSet() : null);
 
 window.__liaResetDebugWrite = function (message) {
 	if (!window.__liaResetDebugEnabled) return;
 	const msg = String(message || "");
+	if (!/^diktat:/i.test(msg)) return;
 	window.__liaResetDebug.count += 1;
 	window.__liaResetDebug.last = msg;
 
@@ -355,7 +339,7 @@ window.__liaResetApplyQuizIconState = function (quizRoot, state) {
 
 window.__liaResetSetQuizLocked = function (quizRoot, shouldLock) {
 	if (!quizRoot || !quizRoot.querySelectorAll) return;
-	const controls = Array.from(quizRoot.querySelectorAll("input, textarea, select, [contenteditable='true'], [role='textbox']")).filter(function (el) {
+	const controls = Array.from(quizRoot.querySelectorAll("input, textarea, select, [contenteditable]:not([contenteditable='false']), [role='textbox']")).filter(function (el) {
 		const tag = String(el.tagName || "").toLowerCase();
 		const t = String(el.type || "").toLowerCase();
 		const isChoice = t === "checkbox" || t === "radio" || tag === "select";
@@ -392,6 +376,23 @@ window.__liaResetSetQuizLocked = function (quizRoot, shouldLock) {
 			btn.style.removeProperty("opacity");
 		}
 	});
+};
+
+window.__liaResetForceEnableQuizActionButtons = function (host) {
+	if (!host || !host.querySelectorAll) return 0;
+	let touched = 0;
+	Array.from(host.querySelectorAll(".lia-quiz__check, .lia-quiz__resolve")).forEach(function (btn) {
+		if (!btn) return;
+		try { btn.disabled = false; } catch (e) {}
+		btn.removeAttribute("disabled");
+		btn.removeAttribute("aria-disabled");
+		btn.classList.remove("is-disabled", "lia-btn--disabled");
+		btn.style.removeProperty("pointer-events");
+		btn.style.removeProperty("opacity");
+		btn.style.removeProperty("filter");
+		touched += 1;
+	});
+	return touched;
 };
 
 window.__liaResetDumpQuizState = function (host, tag) {
@@ -1109,75 +1110,17 @@ window.__liaResetSetTileTargetDisplay = function (target, value) {
 	if (!box || window.__liaResetIsTileQuizSource(box)) {
 		box = document.createElement("div");
 		try { box.setAttribute("data-reset-tile-placeholder", "1"); } catch (e) {}
-		box.style.display = "flex";
-		box.style.justifyContent = "center";
-		box.style.alignItems = "center";
-		box.style.lineHeight = "1";
-		box.style.minWidth = "3rem";
 		target.appendChild(box);
 	}
-	box.style.pointerEvents = "none";
 	if (value) {
 		box.textContent = String(value);
-		box.style.color = "";
 	} else {
 		box.textContent = "✛";
-		box.style.color = "rgb(136, 136, 136)";
 	}
 };
 
 window.__liaResetRefreshTileTargetStyles = function (host) {
-	if (!host || !host.querySelectorAll) return 0;
-	let changed = 0;
-	const roots = window.__liaResetCollectTileQuizRoots(host);
-	roots.forEach(function (tileRoot) {
-		Array.from(tileRoot.querySelectorAll ? tileRoot.querySelectorAll(".kachelfolge-wrap") : []).forEach(function (wrap) {
-			if (!wrap) return;
-			const paragraph = wrap.parentElement;
-			const row = paragraph ? paragraph.nextElementSibling : null;
-			if (!row || !row.querySelectorAll) return;
-			Array.from(row.querySelectorAll("span[role='button']")).forEach(function (chip) {
-				if (!chip) return;
-				try { chip.style.setProperty("border-radius", "var(--lia-tile-radius)", "important"); } catch (e) {}
-				try { chip.style.setProperty("overflow", "hidden", "important"); } catch (e) {}
-				try { chip.style.setProperty("background-color", "var(--lia-tile-bg)", "important"); } catch (e) {}
-				Array.from(chip.children || []).forEach(function (sub) {
-					if (!sub) return;
-					try { sub.style.setProperty("display", "inline-flex", "important"); } catch (e) {}
-					try { sub.style.setProperty("align-items", "center", "important"); } catch (e) {}
-					try { sub.style.setProperty("justify-content", "center", "important"); } catch (e) {}
-					try { sub.style.setProperty("width", "100%", "important"); } catch (e) {}
-					try { sub.style.setProperty("text-align", "center", "important"); } catch (e) {}
-				});
-				changed += 1;
-			});
-		});
-
-		const targets = window.__liaResetGetTileQuizTargetsFromRoot(tileRoot);
-		targets.forEach(function (target) {
-			if (!target) return;
-			const txt = String((target.textContent || "")).replace(/\s+/g, " ").trim();
-			try { target.style.setProperty("border-radius", "var(--lia-tile-radius)", "important"); } catch (e) {}
-			try { target.style.setProperty("overflow", "hidden", "important"); } catch (e) {}
-			try { target.style.setProperty("min-width", "var(--lia-target-min-width)", "important"); } catch (e) {}
-			try { target.style.setProperty("max-width", "100%", "important"); } catch (e) {}
-			try { target.style.setProperty("display", "inline-flex", "important"); } catch (e) {}
-			try { target.style.setProperty("align-items", "center", "important"); } catch (e) {}
-			try { target.style.setProperty("justify-content", "center", "important"); } catch (e) {}
-			try { target.style.setProperty("padding-inline", "calc(0.8rem * var(--lia-target-width-scale))", "important"); } catch (e) {}
-			try { target.style.setProperty("text-align", "center", "important"); } catch (e) {}
-			try { target.style.setProperty("background-color", "var(--lia-tile-bg)", "important"); } catch (e) {}
-			Array.from(target.children || []).forEach(function (child) {
-				if (!child) return;
-				try { child.style.setProperty("border-radius", "var(--lia-tile-radius)", "important"); } catch (e) {}
-				try { child.style.setProperty("overflow", "hidden", "important"); } catch (e) {}
-				try { child.style.setProperty("background-color", "var(--lia-tile-bg)", "important"); } catch (e) {}
-			});
-			window.__liaResetSetTileTargetDisplay(target, txt && txt !== "✛" && txt !== "+" ? txt : "");
-			changed += 1;
-		});
-	});
-	return changed;
+	return 0;
 };
 
 window.__liaResetResetTileControls = function (host) {
@@ -1955,7 +1898,7 @@ window.__liaResetDedupeTileOwners = function (host) {
 window.__liaResetCaptureQuizSignature = function (quizRoot) {
 	if (!quizRoot || !(quizRoot instanceof Element)) return "";
 	const fb = quizRoot.querySelector ? quizRoot.querySelector(".lia-quiz__feedback, [class*='feedback']") : null;
-	const vals = Array.from(quizRoot.querySelectorAll("input, textarea, select, [contenteditable='true'], [role='textbox']")).map(function (el) {
+	const vals = Array.from(quizRoot.querySelectorAll("input, textarea, select, [contenteditable]:not([contenteditable='false']), [role='textbox']")).map(function (el) {
 		if (el.type === "checkbox" || el.type === "radio") return el.checked ? "1" : "0";
 		if ("value" in el) return String(el.value || "");
 		return String(el.textContent || "");
@@ -2106,7 +2049,7 @@ window.__liaResetCaptureSlideState = function (hash, host, reason) {
 		const check = quiz.querySelector ? quiz.querySelector(".lia-quiz__check") : null;
 		const resolve = quiz.querySelector ? quiz.querySelector(".lia-quiz__resolve") : null;
 		const feedback = quiz.querySelector ? quiz.querySelector(".lia-quiz__feedback, [class*='feedback']") : null;
-		const controls = Array.from(quiz.querySelectorAll("input, textarea, select, [contenteditable='true'], [role='textbox']")).filter(function (el) {
+		const controls = Array.from(quiz.querySelectorAll("input, textarea, select, [contenteditable]:not([contenteditable='false']), [role='textbox']")).filter(function (el) {
 			const t = String(el.type || "").toLowerCase();
 			return t !== "hidden" && t !== "button" && t !== "submit" && t !== "reset" && t !== "image" && t !== "file";
 		});
@@ -2208,7 +2151,7 @@ window.__liaResetApplySlideState = function (hash, host, reason) {
 		if (!row && idx < snap.rows.length) row = snap.rows[idx];
 		if (!row) return;
 
-		const controls = Array.from(quiz.querySelectorAll("input, textarea, select, [contenteditable='true'], [role='textbox']")).filter(function (el) {
+		const controls = Array.from(quiz.querySelectorAll("input, textarea, select, [contenteditable]:not([contenteditable='false']), [role='textbox']")).filter(function (el) {
 			const t = String(el.type || "").toLowerCase();
 			return t !== "hidden" && t !== "button" && t !== "submit" && t !== "reset" && t !== "image" && t !== "file";
 		});
@@ -2334,6 +2277,12 @@ window.__liaResetControlValue = function (el) {
 	if (!el) return "";
 	const t = String(el.type || "").toLowerCase();
 	if (t === "checkbox" || t === "radio") return el.checked ? "1" : "0";
+	const hasContentEditable = !!(el.hasAttribute && el.hasAttribute("contenteditable"));
+	const ceAttr = String(el.getAttribute && el.getAttribute("contenteditable") || "").toLowerCase();
+	const isEditableBox = hasContentEditable && ceAttr !== "false";
+	if (isEditableBox || String(el.getAttribute && el.getAttribute("role") || "").toLowerCase() === "textbox") {
+		return String((el.innerText || el.textContent || "")).trim();
+	}
 	if ("value" in el) return String(el.value || "").trim();
 	return String(el.textContent || "").trim();
 };
@@ -2342,24 +2291,215 @@ window.__liaResetFieldValueForDebug = function (el) {
 	if (!el) return "";
 	const t = String(el.type || "").toLowerCase();
 	if (t === "checkbox" || t === "radio") return el.checked ? "1" : "0";
+	const hasContentEditable = !!(el.hasAttribute && el.hasAttribute("contenteditable"));
+	const ceAttr = String(el.getAttribute && el.getAttribute("contenteditable") || "").toLowerCase();
+	const isEditableBox = hasContentEditable && ceAttr !== "false";
+	if (isEditableBox || String(el.getAttribute && el.getAttribute("role") || "").toLowerCase() === "textbox") {
+		return String((el.innerText || el.textContent || "")).trim();
+	}
 	if ("value" in el) return String(el.value || "");
 	return String(el.textContent || "");
 };
 
+window.__liaResetIsTextualEditableField = function (field) {
+	if (!field || !(field instanceof Element)) return false;
+	const tag = String(field.tagName || "").toLowerCase();
+	const type = String(field.type || "").toLowerCase();
+	if (tag === "textarea") return true;
+	if (tag === "input") {
+		if (!type) return true;
+		return !(type === "checkbox" || type === "radio" || type === "hidden" || type === "button" || type === "submit" || type === "reset" || type === "image" || type === "file" || type === "range" || type === "color" || type === "date" || type === "datetime-local" || type === "month" || type === "week" || type === "time");
+	}
+	const hasContentEditable = !!(field.hasAttribute && field.hasAttribute("contenteditable"));
+	const ceAttr = String(field.getAttribute && field.getAttribute("contenteditable") || "").toLowerCase();
+	if (hasContentEditable && ceAttr !== "false") return true;
+	if (String(field.getAttribute && field.getAttribute("role") || "").toLowerCase() === "textbox") return true;
+	return false;
+};
+
+window.__liaResetRememberTextField = function (field, source) {
+	if (!field || !(field instanceof Element)) return;
+	if (!window.__liaResetIsTextualEditableField(field)) return;
+	const live = String(window.__liaResetFieldValueForDebug(field) || "");
+	const byField = window.__liaResetLastTextByField || null;
+	if (byField && typeof byField.get === "function" && typeof byField.set === "function") {
+		const rowByField = byField.get(field) || { last: "", lastNonEmpty: "", ts: 0, source: "" };
+		rowByField.last = live;
+		if (String(live || "").trim().length > 0) rowByField.lastNonEmpty = live;
+		rowByField.ts = Date.now();
+		rowByField.source = String(source || "unknown");
+		byField.set(field, rowByField);
+		return;
+	}
+	const uid = window.__liaResetEnsureNodeUid(field);
+	if (!uid) return;
+	const store = window.__liaResetLastTextByUid || (window.__liaResetLastTextByUid = Object.create(null));
+	const row = store[uid] || { last: "", lastNonEmpty: "", ts: 0, source: "" };
+	row.last = live;
+	if (String(live || "").trim().length > 0) row.lastNonEmpty = live;
+	row.ts = Date.now();
+	row.source = String(source || "unknown");
+	store[uid] = row;
+};
+
+window.__liaResetGetRememberedFieldValue = function (field) {
+	if (!field || !(field instanceof Element)) return "";
+	const byField = window.__liaResetLastTextByField || null;
+	let row = null;
+	if (byField && typeof byField.get === "function") {
+		row = byField.get(field) || null;
+	}
+	if (!row) {
+		const uid = window.__liaResetEnsureNodeUid(field);
+		if (uid) {
+			const store = window.__liaResetLastTextByUid || Object.create(null);
+			row = store[uid] || null;
+		}
+	}
+	if (!row) return "";
+	const current = String(window.__liaResetFieldValueForDebug(field) || "");
+	if (String(current || "").trim().length > 0) return current;
+	if (String(row.lastNonEmpty || "").trim().length > 0) return String(row.lastNonEmpty || "");
+	return String(row.last || "");
+};
+
+window.__liaResetCollectDiktatEditableFields = function (host) {
+	if (!host || !host.querySelectorAll) return [];
+	const out = [];
+	const seen = new Set();
+	const hiddenHintSelector = "span.lia-diktat-measure, span[style*='left: -9999px'], span[style*='left:-9999px'], span[style*='left: -10000px'], span[style*='left:-10000px']";
+	window.__liaResetDiktatFieldUidSet = Object.create(null);
+
+	function addField(field) {
+		if (!field || !(field instanceof Element)) return;
+		if (!window.__liaResetIsTextualEditableField(field)) return;
+		if (seen.has(field)) return;
+		seen.add(field);
+		const setByField = window.__liaResetDiktatFieldSet || null;
+		if (setByField && typeof setByField.add === "function") {
+			setByField.add(field);
+		}
+		const uid = window.__liaResetEnsureNodeUid(field);
+		if (uid) window.__liaResetDiktatFieldUidSet[uid] = 1;
+		out.push(field);
+	}
+
+	function collectFromScope(scope) {
+		if (!scope || !scope.querySelectorAll) return;
+		Array.from(scope.querySelectorAll("input, textarea, select, [contenteditable]:not([contenteditable='false']), [role='textbox']")).forEach(addField);
+	}
+
+	function collectNearestInputFromHint(hint) {
+		if (!hint || !(hint instanceof Element)) return;
+		let cur = hint.parentElement;
+		let hops = 0;
+		while (cur && hops < 5) {
+			const local = cur.querySelector("input.lia-quiz__input, textarea.lia-quiz__input, input[aria-label='quiz answer'], textarea[aria-label='quiz answer']");
+			if (local) {
+				addField(local);
+				return;
+			}
+			cur = cur.parentElement;
+			hops += 1;
+		}
+
+		let sib = hint.parentElement ? hint.parentElement.nextElementSibling : null;
+		let s = 0;
+		while (sib && s < 8) {
+			const near = sib.matches && sib.matches("input.lia-quiz__input, textarea.lia-quiz__input, input[aria-label='quiz answer'], textarea[aria-label='quiz answer']")
+				? sib
+				: (sib.querySelector ? sib.querySelector("input.lia-quiz__input, textarea.lia-quiz__input, input[aria-label='quiz answer'], textarea[aria-label='quiz answer']") : null);
+			if (near) {
+				addField(near);
+				return;
+			}
+			sib = sib.nextElementSibling;
+			s += 1;
+		}
+	}
+
+	Array.from(host.querySelectorAll(".lia-diktat, [id^='lia-diktat-']")).forEach(collectFromScope);
+
+	const hiddenHints = Array.from(host.querySelectorAll(hiddenHintSelector));
+	hiddenHints.forEach(function (hint) {
+		const parent = hint && hint.parentElement ? hint.parentElement : null;
+		if (parent) collectFromScope(parent);
+		const near = hint && hint.closest ? hint.closest("label, .lia-quiz__item, .lia-quiz__input-wrap, .lia-quiz") : null;
+		if (near && near !== parent) collectFromScope(near);
+		collectNearestInputFromHint(hint);
+	});
+
+	return out;
+};
+
+window.__liaResetIsDiktatField = function (field) {
+	if (!field || !(field instanceof Element)) return false;
+	if (!window.__liaResetIsTextualEditableField(field)) return false;
+	const setByField = window.__liaResetDiktatFieldSet || null;
+	if (setByField && typeof setByField.has === "function" && setByField.has(field)) return true;
+	const uid = window.__liaResetEnsureNodeUid(field);
+	if (uid && window.__liaResetDiktatFieldUidSet && window.__liaResetDiktatFieldUidSet[uid]) return true;
+	const hiddenHintSelector = "span.lia-diktat-measure, span[style*='left: -9999px'], span[style*='left:-9999px'], span[style*='left: -10000px'], span[style*='left:-10000px']";
+	const host = field.closest ? field.closest(".lia-diktat, [id^='lia-diktat-']") : null;
+	if (host) return true;
+	const hintByOwnContainer = field.parentElement && field.parentElement.querySelector
+		? field.parentElement.querySelector(hiddenHintSelector)
+		: null;
+	if (hintByOwnContainer) return true;
+	let cur = field.parentElement;
+	let hops = 0;
+	while (cur && hops < 8) {
+		if (cur.querySelector) {
+			const hint = cur.querySelector(hiddenHintSelector);
+			if (hint) return true;
+		}
+		cur = cur.parentElement;
+		hops += 1;
+	}
+	return false;
+};
+
+window.__liaResetGetDiktatValues = function (scope) {
+	const root = scope && scope.querySelectorAll ? scope : null;
+	if (!root) return [];
+	const fields = Array.from(root.querySelectorAll("input, textarea, select, [contenteditable]:not([contenteditable='false']), [role='textbox']"))
+		.filter(function (field) { return window.__liaResetIsDiktatField(field); });
+	return fields.map(function (field, idx) {
+		const live = String(window.__liaResetFieldValueForDebug(field) || "");
+		const remembered = String(window.__liaResetGetRememberedFieldValue(field) || "");
+		return {
+			i: idx,
+			value: String(live || remembered || ""),
+			live: live,
+			remembered: remembered,
+		};
+	});
+};
+
 window.__liaResetCollectEditableFields = function (host) {
 	if (!host || !host.querySelectorAll) return [];
+	const selector = "input, textarea, select, [contenteditable]:not([contenteditable='false']), [role='textbox']";
 	const targets = window.__liaCollectResetTargets(host);
 	const pool = targets.length
-		? Array.from(host.querySelectorAll("input, textarea, select, [contenteditable='true'], [role='textbox']")).filter(function (field) {
+		? Array.from(host.querySelectorAll(selector)).filter(function (field) {
 			return targets.some(function (t) { return t && t.contains && t.contains(field); });
 		})
-		: Array.from(host.querySelectorAll("input, textarea, select, [contenteditable='true'], [role='textbox']"));
-	return pool.filter(function (field) {
+		: Array.from(host.querySelectorAll(selector));
+
+	const diktatPool = window.__liaResetCollectDiktatEditableFields(host);
+	const merged = pool.slice();
+	diktatPool.forEach(function (field) {
+		if (merged.indexOf(field) < 0) merged.push(field);
+	});
+
+	return merged.filter(function (field) {
+		const isDiktat = window.__liaResetIsDiktatField(field);
 		const type = String(field.type || "").toLowerCase();
 		const isHidden = type === "hidden";
 		const isControlInput = type === "button" || type === "submit" || type === "reset" || type === "image" || type === "file";
 		const isReadonlyDisplay = field.hasAttribute("readonly") || field.getAttribute("aria-readonly") === "true";
 		const isNonEditableRole = field.getAttribute("contenteditable") === "false";
+		if (isDiktat) return !(isHidden || isControlInput);
 		return !(isHidden || isControlInput || isReadonlyDisplay || isNonEditableRole);
 	});
 };
@@ -2390,7 +2530,7 @@ window.__liaResetTraceQuizOutcomes = function (host, tag) {
 	if (!host || !host.querySelectorAll) return;
 	const rows = Array.from(host.querySelectorAll(".lia-quiz, lia-quiz")).map(function (quiz, idx) {
 		const quizId = String(quiz.getAttribute("data-resetall-id") || "");
-		const controls = Array.from(quiz.querySelectorAll("input, textarea, select, [contenteditable='true'], [role='textbox']")).filter(function (el) {
+		const controls = Array.from(quiz.querySelectorAll("input, textarea, select, [contenteditable]:not([contenteditable='false']), [role='textbox']")).filter(function (el) {
 			const t = String(el.type || "").toLowerCase();
 			return t !== "hidden" && t !== "button" && t !== "submit" && t !== "reset" && t !== "image" && t !== "file";
 		});
@@ -2495,6 +2635,17 @@ window.__liaResetScheduleRehydrate = function (hash, source) {
 			if (!window.__liaResetRehydrateState || window.__liaResetRehydrateState.token !== token) return;
 			if ((window.__liaGetResetHash() || "#1") !== targetHash) return;
 			if (!window.__liaResetDoneByHash[targetHash]) return;
+			const host = window.__liaGetResetHost(null);
+			const active = document && document.activeElement ? document.activeElement : null;
+			const typingActive = !!(host && active && host.contains && host.contains(active) && window.__liaResetIsTextualEditableField(active));
+			if (typingActive) {
+				window.__liaResetDebugWrite(
+					"rehydrate pass skipped (active typing field); hash=" + targetHash +
+					"; source=" + String(source || "unknown") +
+					"; delay=" + String(ms)
+				);
+				return;
+			}
 			if (window.__liaResetInteractionState && Number(window.__liaResetInteractionState.lastTs || 0) > scheduleTs) {
 				window.__liaResetDebugWrite(
 					"rehydrate pass skipped (user interaction); hash=" + targetHash +
@@ -2504,7 +2655,6 @@ window.__liaResetScheduleRehydrate = function (hash, source) {
 				return;
 			}
 			window.__liaPrimeSlideResetCatalog(null);
-			const host = window.__liaGetResetHost(null);
 			if (restoredOnce) {
 				window.__liaResetDebugWrite(
 					"rehydrate pass skipped (state already restored); hash=" + targetHash +
@@ -2545,23 +2695,49 @@ window.__liaResetInstallInteractionGuard = function () {
 		if (!ev || ev.isTrusted !== true) return;
 		const t = ev && ev.target;
 		if (!t || !t.closest) return;
+		window.__liaResetRememberTextField(t, "input");
 		if (!t.closest(".lia-quiz, lia-quiz, .orthography-wrap, .fq-widget, .markerquiz, .lia-dropdown")) return;
 		window.__liaResetMarkQuizInteraction("input");
 		window.__liaResetMarkQuizTouched(t, "input");
+		let shouldSanitizeChoice = false;
 		const q = t.closest(".lia-quiz, lia-quiz");
 		if (q) {
 			const qid = String(q.getAttribute("data-resetall-id") || "");
 			const tag = String(t.tagName || "").toLowerCase();
 			const type = String(t.type || "").toLowerCase();
 			const isChoice = type === "checkbox" || type === "radio" || tag === "select";
+			shouldSanitizeChoice = isChoice;
 			if (qid && isChoice) {
 				window.__liaResetChoiceInputTouchById[qid] = Date.now();
 				window.__liaResetDebugWrite("choice input touched; id=" + qid + "; type=" + type + "; tag=" + tag);
 			}
 		}
-		const host = window.__liaGetResetHost(t);
-		window.__liaResetSanitizeUntouchedChoiceQuizzes(host, "interaction-input");
-		window.__liaResetScheduleSanitizeUntouchedChoiceQuizzes(host, "interaction-input");
+		if (shouldSanitizeChoice) {
+			const host = window.__liaGetResetHost(t);
+			window.__liaResetSanitizeUntouchedChoiceQuizzes(host, "interaction-input");
+			window.__liaResetScheduleSanitizeUntouchedChoiceQuizzes(host, "interaction-input");
+		}
+	}, true);
+
+	document.addEventListener("change", function (ev) {
+		if (!ev || ev.isTrusted !== true) return;
+		const t = ev && ev.target;
+		if (!t || !t.closest) return;
+		window.__liaResetRememberTextField(t, "change");
+	}, true);
+
+	document.addEventListener("blur", function (ev) {
+		if (!ev || ev.isTrusted !== true) return;
+		const t = ev && ev.target;
+		if (!t || !t.closest) return;
+		window.__liaResetRememberTextField(t, "blur");
+	}, true);
+
+	document.addEventListener("keyup", function (ev) {
+		if (!ev || ev.isTrusted !== true) return;
+		const t = ev && ev.target;
+		if (!t || !t.closest) return;
+		window.__liaResetRememberTextField(t, "keyup");
 	}, true);
 
 	document.addEventListener("click", function (ev) {
@@ -2631,6 +2807,15 @@ window.__liaResetInstallInteractionGuard = function () {
 		
 		const btn = t.closest(".lia-quiz__check, .lia-quiz__resolve");
 		if (!btn) return;
+		const diktatQuizRoot = btn.closest ? btn.closest(".lia-quiz, lia-quiz") : null;
+		const diktatValuesBefore = window.__liaResetGetDiktatValues(diktatQuizRoot);
+		if (diktatValuesBefore.length > 0) {
+			const modeBefore = btn.classList && btn.classList.contains("lia-quiz__resolve") ? "resolve" : "check";
+			window.__liaResetDebugWrite(
+				"diktat: button fire; mode=" + modeBefore +
+				"; valuesBefore=" + JSON.stringify(diktatValuesBefore)
+			);
+		}
 		// Thaw the quiz being checked/resolved so LiaScript can read correct state.
 		const quizEl = btn.closest ? btn.closest(".lia-quiz, lia-quiz") : null;
 		if (quizEl) {
@@ -2673,11 +2858,11 @@ window.__liaResetDebugNavigationChange = function (source) {
 	const sourceText = String(source || "unknown");
 	const hash = window.__liaGetResetHash() || "#1";
 	const sig = window.__liaResetActiveSlideSignature();
-	const changed = hash !== state.lastHash || sig !== state.lastSlideSig;
+	const isMutationLike = /^mutation|^poll-/i.test(sourceText);
+	const changed = hash !== state.lastHash || (!isMutationLike && sig !== state.lastSlideSig);
 	if (!changed) return false;
 
 	const now = Date.now();
-	const isMutationLike = /^mutation|^poll-/i.test(sourceText);
 	const hashReallyChanged = hash !== state.lastHash;
 	const shouldMutationRehydrate = !!(window.__liaResetDoneByHash[hash] && isMutationLike && hashReallyChanged);
 	let preMaskToken = 0;
@@ -2748,60 +2933,12 @@ window.__liaResetDebugNavigationChange = function (source) {
 		return true;
 	}
 	if (window.__liaResetDoneByHash[hash] && isMutationLike && hashReallyChanged) {
-		const delay = mutationGhostLike || !hashEventRecent ? 0 : 0;
-		if (mutationGhostLike || !hashEventRecent) {
-			if (state.lastLiteHash === hash && (now - Number(state.lastLiteTs || 0) < 260)) {
-				window.__liaResetDebugWrite(
-					"nav-change skipped (lite dedupe); source=" + sourceText +
-					"; hash=" + hash
-				);
-				window.__liaResetReleaseRehydrateMask(preMaskToken, "nav-mutation-lite-dedupe");
-				return true;
-			}
-			state.lastLiteHash = hash;
-			state.lastLiteTs = now;
-			const liteMaskToken = preMaskToken || window.__liaResetApplyRehydrateMask("nav-" + sourceText + "-mutation-lite");
-			window.setTimeout(function () {
-				window.__liaResetReleaseRehydrateMask(liteMaskToken, "nav-mutation-lite-failsafe");
-			}, 120);
-
-			(function runLiteAttempt(retry) {
-				if ((window.__liaGetResetHash() || "#1") !== hash) {
-					window.__liaResetReleaseRehydrateMask(liteMaskToken, "nav-mutation-lite-hash-changed");
-					return;
-				}
-				const applied = window.__liaResetTryImmediateRehydrate(hash, "nav-" + sourceText + "-mutation-lite-" + String(delay) + "ms");
-				if (!applied) {
-					if (retry <= 0) {
-						window.__liaResetScheduleRehydrate(hash, "nav-" + sourceText + "-mutation-lite-" + String(delay) + "ms");
-						window.__liaResetReleaseRehydrateMask(liteMaskToken, "nav-mutation-lite-scheduled");
-						return;
-					}
-					window.setTimeout(function () { runLiteAttempt(retry - 1); }, 24);
-					return;
-				}
-				window.__liaResetReleaseRehydrateMask(liteMaskToken, "nav-mutation-lite-restore");
-			})(1);
-		} else {
-			const maskToken = preMaskToken || window.__liaResetApplyRehydrateMask("nav-" + sourceText + "-mutation");
-			(function runMutationAttempt(retry) {
-				if ((window.__liaGetResetHash() || "#1") !== hash) {
-					window.__liaResetReleaseRehydrateMask(maskToken, "nav-mutation-hash-changed");
-					return;
-				}
-				const applied = window.__liaResetTryImmediateRehydrate(hash, "nav-" + sourceText + "-mutation-" + String(delay) + "ms");
-				if (!applied) {
-					if (retry <= 0) {
-						window.__liaResetScheduleRehydrate(hash, "nav-" + sourceText + "-mutation-" + String(delay) + "ms");
-						window.__liaResetReleaseRehydrateMask(maskToken, "nav-mutation-scheduled");
-						return;
-					}
-					window.setTimeout(function () { runMutationAttempt(retry - 1); }, 24);
-					return;
-				}
-				window.__liaResetReleaseRehydrateMask(maskToken, "nav-mutation-restore");
-			})(1);
-		}
+		window.__liaResetDebugWrite(
+			"nav-change skipped (mutation/poll rehydrate disabled); source=" + sourceText +
+			"; hash=" + hash
+		);
+		window.__liaResetReleaseRehydrateMask(preMaskToken, "nav-mutation-disabled");
+		return true;
 	}
 	return true;
 };
@@ -2944,7 +3081,7 @@ window.__liaResetLearnExpectedFromSolved = function (host) {
 		const isSolved = !!(quizRoot.classList && (quizRoot.classList.contains("solved") || quizRoot.classList.contains("resolved")));
 		if (!isSolved) return;
 
-		const controls = Array.from(quizRoot.querySelectorAll("input, textarea, select, [contenteditable='true'], [role='textbox']")).filter(function (el) {
+		const controls = Array.from(quizRoot.querySelectorAll("input, textarea, select, [contenteditable]:not([contenteditable='false']), [role='textbox']")).filter(function (el) {
 			const t = String(el.type || "").toLowerCase();
 			return t !== "hidden" && t !== "button" && t !== "submit" && t !== "reset" && t !== "image" && t !== "file";
 		});
@@ -2991,7 +3128,7 @@ window.__liaResetExtractExpectedFromControl = function (ctrl) {
 	const quizRoot = ctrl.closest ? ctrl.closest(".lia-quiz, lia-quiz") : null;
 	const quizId = quizRoot ? String(quizRoot.getAttribute("data-resetall-id") || "") : "";
 	if (quizRoot && quizId && window.__liaResetExpectedByQuizId[quizId]) {
-		const controls = Array.from(quizRoot.querySelectorAll("input, textarea, select, [contenteditable='true'], [role='textbox']")).filter(function (el) {
+		const controls = Array.from(quizRoot.querySelectorAll("input, textarea, select, [contenteditable]:not([contenteditable='false']), [role='textbox']")).filter(function (el) {
 			const t = String(el.type || "").toLowerCase();
 			return t !== "hidden" && t !== "button" && t !== "submit" && t !== "reset" && t !== "image" && t !== "file";
 		});
@@ -3216,7 +3353,7 @@ window.__liaResetFallbackSolve = function (btn, mode) {
 		}
 	}
 
-	const controls = Array.from(quiz.querySelectorAll("input, textarea, select, [contenteditable='true'], [role='textbox']")).filter(function (el) {
+	const controls = Array.from(quiz.querySelectorAll("input, textarea, select, [contenteditable]:not([contenteditable='false']), [role='textbox']")).filter(function (el) {
 		const t = String(el.type || "").toLowerCase();
 		return t !== "hidden" && t !== "button" && t !== "submit" && t !== "reset" && t !== "image" && t !== "file";
 	});
@@ -3463,6 +3600,14 @@ window.__liaResetPass = function (button, phaseLabel) {
 	}
 	const phase = String(phaseLabel || "pass");
 	const isRehydratePass = /^rehydrate-/i.test(phase);
+	if (isRehydratePass) {
+		const active = document && document.activeElement ? document.activeElement : null;
+		const typingActive = !!(active && host.contains && host.contains(active) && window.__liaResetIsTextualEditableField(active));
+		if (typingActive) {
+			window.__liaResetDebugWrite(phase + ": skipped (active typing field)");
+			return;
+		}
+	}
 	window.__liaResetPrimeDragHomes(host);
 	window.__liaResetDumpQuizState(host, phase + "-before");
 	window.__liaResetTraceFields(host, phase + "-fields-before");
@@ -3472,12 +3617,32 @@ window.__liaResetPass = function (button, phaseLabel) {
 	let editableReset = 0;
 	let editableSkipped = 0;
 	let expandoCleared = 0;
+	let diktatResetCount = 0;
 	const appliedRows = [];
 	const editableFields = window.__liaResetCollectEditableFields(host);
+	const diktatCandidates = editableFields.filter(function (field) {
+		return window.__liaResetIsDiktatField(field);
+	}).map(function (field, idx) {
+		const cls = String(field.className || "").replace(/\s+/g, " ").trim().slice(0, 80);
+		const live = String(window.__liaResetFieldValueForDebug(field) || "");
+		const remembered = String(window.__liaResetGetRememberedFieldValue(field) || "");
+		return {
+			i: idx,
+			tag: String(field.tagName || "").toLowerCase(),
+			type: String(field.type || "").toLowerCase(),
+			name: String(field.getAttribute && (field.getAttribute("name") || field.getAttribute("aria-label") || field.id) || "").slice(0, 80),
+			className: cls,
+			value: String(live || remembered || "").slice(0, 120),
+			live: live.slice(0, 120),
+			remembered: remembered.slice(0, 120),
+		};
+	});
+	window.__liaResetDebugWrite("diktat: candidates; count=" + String(diktatCandidates.length) + "; data=" + JSON.stringify(diktatCandidates));
 
 	editableFields.forEach(function (field) {
 		const tag = String(field.tagName || "").toLowerCase();
 		const type = String(field.type || "").toLowerCase();
+		const isDiktatField = window.__liaResetIsDiktatField(field);
 		const isHidden = type === "hidden";
 		const isControlInput = type === "button" || type === "submit" || type === "reset" || type === "image" || type === "file";
 		const isReadonlyDisplay = field.hasAttribute("readonly") || field.getAttribute("aria-readonly") === "true";
@@ -3485,14 +3650,38 @@ window.__liaResetPass = function (button, phaseLabel) {
 
 		editableSeen += 1;
 
-		if (isHidden || isControlInput || isReadonlyDisplay || isNonEditableRole) {
+		if (isHidden || isControlInput || (!isDiktatField && (isReadonlyDisplay || isNonEditableRole))) {
 			editableSkipped += 1;
 			return;
 		}
 
-		const beforeVal = window.__liaResetFieldValueForDebug(field);
+		const beforeLive = String(window.__liaResetFieldValueForDebug(field) || "");
+		const beforeRemembered = String(window.__liaResetGetRememberedFieldValue(field) || "");
+		const beforeVal = String(beforeLive || beforeRemembered || "");
 
-		if (type === "checkbox" || type === "radio") {
+		if (isDiktatField) {
+			if (String(beforeVal || "").length > 0) diktatResetCount += 1;
+			if (tag === "input" || tag === "textarea" || tag === "select") {
+				field.value = "";
+				try { field.defaultValue = ""; } catch (e) {}
+				field.removeAttribute("value");
+				if (tag === "select") {
+					try { field.selectedIndex = -1; } catch (e) {}
+				}
+			} else {
+				field.textContent = "";
+				if ("innerText" in field) {
+					try { field.innerText = ""; } catch (e) {}
+				}
+			}
+			window.__liaResetDebugWrite(
+				"diktat: reset field; before=" + JSON.stringify(String(beforeVal || "")) +
+				"; after=" + JSON.stringify(String(window.__liaResetFieldValueForDebug(field) || "")) +
+				"; liveBefore=" + JSON.stringify(beforeLive) +
+				"; rememberedBefore=" + JSON.stringify(beforeRemembered)
+			);
+			window.__liaResetRememberTextField(field, "reset-clear");
+		} else if (type === "checkbox" || type === "radio") {
 			const inQuiz = !!(field.closest && field.closest(".lia-quiz, lia-quiz"));
 			// For quiz options always reset to empty user selection.
 			field.checked = inQuiz ? false : !!field.defaultChecked;
@@ -3903,6 +4092,7 @@ window.__liaResetPass = function (button, phaseLabel) {
 	window.__liaResetDumpQuizState(host, phase + "-after");
 	window.__liaResetTraceFields(host, phase + "-fields-after");
 	window.__liaResetTraceQuizOutcomes(host, phase + "-quiz-after");
+	window.__liaResetDebugWrite("diktat: reset phase=" + phase + "; fields=" + String(diktatResetCount));
 	window.__liaResetSanitizeUntouchedChoiceQuizzes(host, phase + "-prime");
 	window.__liaResetCaptureSlideState(window.__liaGetResetHash(), host, phase + "-after");
 	window.__liaResetScheduleSanitizeUntouchedChoiceQuizzes(host, phase + "-after");
@@ -3988,6 +4178,12 @@ window.__liaResetTryImmediateRehydrate = function (hash, source) {
 	if (!window.__liaResetDoneByHash[targetHash]) return false;
 	const host = window.__liaGetResetHost(null);
 	if (!host || !host.querySelectorAll) return false;
+	const active = document && document.activeElement ? document.activeElement : null;
+	const typingActive = !!(active && host.contains && host.contains(active) && window.__liaResetIsTextualEditableField(active));
+	if (typingActive) {
+		window.__liaResetDebugWrite("immediate rehydrate skipped (active typing field); hash=" + targetHash + "; source=" + String(source || "nav"));
+		return false;
+	}
 	window.__liaPrimeSlideResetCatalog(null);
 	if (window.__liaResetApplySlideState(targetHash, host, "immediate-" + String(source || "nav"))) {
 		window.__liaResetEnforceTimerByQuizState(host);
@@ -4031,6 +4227,20 @@ window.__liaResetCurrentSlideOnly = function (button) {
 		}
 
 		window.__liaResetPass(btn, "primary");
+		const forceEnabledNow = window.__liaResetForceEnableQuizActionButtons(host);
+		if (forceEnabledNow > 0) {
+			window.__liaResetDebugWrite("primary: force-enabled quiz action buttons; count=" + String(forceEnabledNow));
+		}
+		window.setTimeout(function () {
+			const liveHost = window.__liaGetResetHost(btn);
+			if (!liveHost) return;
+			window.__liaResetForceEnableQuizActionButtons(liveHost);
+		}, 80);
+		window.setTimeout(function () {
+			const liveHost = window.__liaGetResetHost(btn);
+			if (!liveHost) return;
+			window.__liaResetForceEnableQuizActionButtons(liveHost);
+		}, 260);
 		// Keep reset deterministic: avoid a second asynchronous pass that can race with user input.
 		window.__liaResetDebugWrite("safe-mode reset applied");
 
@@ -4191,6 +4401,7 @@ if (!window.__liaResetQuizProbeInstalled) {
 		window.setTimeout(function () {
 			if (clickEpoch !== window.__liaResetEpoch) return;
 			const root = window.__liaResetResolveQuizRootFromButton(target) || target.parentElement;
+			const diktatValuesAfter = window.__liaResetGetDiktatValues(root);
 			const isCheckBtn = target.classList && target.classList.contains("lia-quiz__check");
 			const isResolveBtn = target.classList && target.classList.contains("lia-quiz__resolve");
 			if (isCheckBtn && root) {
@@ -4224,6 +4435,15 @@ if (!window.__liaResetQuizProbeInstalled) {
 				: "solved=?;resolved=?";
 			const feedback = root && root.querySelector ? root.querySelector(".lia-quiz__feedback, [class*='feedback']") : null;
 			const feedbackText = feedback ? String((feedback.textContent || "").trim()).slice(0, 90) : "";
+			if (diktatValuesAfter.length > 0) {
+				const modeAfter = isResolveBtn ? "resolve" : (isCheckBtn ? "check" : "unknown");
+				window.__liaResetDebugWrite(
+					"diktat: button post; mode=" + modeAfter +
+					"; " + state +
+					"; feedback=" + JSON.stringify(feedbackText) +
+					"; valuesAfter=" + JSON.stringify(diktatValuesAfter)
+				);
+			}
 			window.__liaResetDebugWrite("probe post-120ms; " + state + "; feedback='" + feedbackText + "'");
 			const host = window.__liaGetResetHost(target);
 			window.__liaResetDumpQuizState(host, "probe-post-120ms-dump");
@@ -4335,16 +4555,6 @@ Wähle rot aus.
 
 
 
-Wähle gelb aus.
-[->[rot|blau|grün|(gelb)]]
-
-
-
---- 
-
---- 
-
-
 
 
 
@@ -4355,6 +4565,44 @@ Wähle gelb aus.
 - [    [ ]           [ ]             [X]     ]  nicht definiert
 - [    ( )           (X)             ( )     ]  Skalar
 - [    [X]           [ ]             [ ]     ]  Vektor
+
+
+
+
+--- 
+
+--- 
+
+
+
+__Aufgabe 2:__ Lass dir die Wörter vorlesen, die in die Lücken kommen und schreibe diese in die Lücken.
+
+
+<!-- data-show-partial-solution="true" -->
+Anna ging in einen @diktat(Zoo). Dort konnte sie auf einem @diktat(Lama) reiten.
+
+
+
+
+--- 
+
+--- 
+
+
+
+
+--- 
+
+--- 
+
+
+
+
+
+--- 
+
+--- 
+
 
 
 
@@ -4375,25 +4623,9 @@ Wähle gelb aus.
 
 
 
-__Aufgabe 1:__ Hör dir den Satz an und schreib ihn korrekt in das Eingabefeld.
+Wähle gelb aus.
+[->[rot|blau|grün|(gelb)]]
 
-
-{{|> Deutsch Female}}
-<!-- style="position: absolute; left: -9999px;" -->
-Anna
-
-[[    Anna    ]]
-
-
-
---- 
-
-
-__Aufgabe 2:__ Lass dir die Wörter vorlesen, die in die Lücken kommen und schreibe diese in die Lücken.
-
-
-<!-- data-show-partial-solution="true" -->
-Anna ging in einen @diktat(Zoo). Dort konnte sie auf einem @diktat(Lama) reiten.
 
 
 
@@ -4444,10 +4676,7 @@ Markiere die korrekt.
 
 
 
-<div class="markerquiz">
 @markedred(rot, rot)
-@TextmarkerQuiz
-</div>
 
 
 
@@ -4540,3 +4769,4 @@ __$c)\;\;$__ **Ziehe** den Punkt $C$ **auf** die Koordinaten $(7|6)$.
 
 
 @resetall 
+
