@@ -54,22 +54,22 @@ author: Martin Lommatzsch
 
 <section class="dynFlex">
 <div class="flex-child">
-__$a)\;\;$__ $(-2)^7 = $ [[  -128  ]]
+__$a)\;\;$__ $(-2)^7 = $ [[  -128  ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$b)\;\;$__ $-3^5 = $ [[  -243  ]]
+__$b)\;\;$__ $-3^5 = $ [[  -243  ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$c)\;\;$__ $(-5)^4 = $ [[  625  ]]
+__$c)\;\;$__ $(-5)^4 = $ [[  625  ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ $ -8^3 = $ [[  -512  ]]
+__$d)\;\;$__ $ -8^3 = $ [[  -512  ]] @canvas
 
 
 </div>

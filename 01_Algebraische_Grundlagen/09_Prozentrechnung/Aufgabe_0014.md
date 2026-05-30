@@ -56,28 +56,28 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Wie viel sind $62,5\%$ von $400\,$€?  \
 
- [[  250  ]]€
+ [[  250  ]] @canvas€
 
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ Wie viel sind $0,7\%$ von $1100\,$€?  \
 
- [[  7,7  ]]€
+ [[  7,7  ]] @canvas€
 
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ Wie viel sind $225\%$ von $360\,$€?  \
 
- [[  810  ]]€
+ [[  810  ]] @canvas€
 
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ Wie viel sind $45\%$ von $6000\,$€?  \
 
- [[  2700  ]]€
+ [[  2700  ]] @canvas€
 
 </div>
 </section>

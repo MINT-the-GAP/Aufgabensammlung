@@ -57,7 +57,7 @@ Zwei Tätigkeiten werden an einem Tag erledigt. Zusammen beträgt die Arbeitszei
 **Berechne** die gearbeiteten Stunden der beiden Tätigkeiten.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  21/4  ]] und $y$ = [[  11/4  ]]
+$x$ = [[  21/4  ]] @canvas und $y$ = [[  11/4  ]] @canvas
 @Algebrite.check([ 21/4; 11/4 ])
 ************
 Bezeichne mit $x$ die Stunden der höher vergüteten Tätigkeit $\left( 12\, \dfrac{\text{€}}{\text{h}} \right)$ und mit $y$ die Stunden der anderen Tätigkeit $\left( 8\, \dfrac{\text{€}}{\text{h}} \right)$.

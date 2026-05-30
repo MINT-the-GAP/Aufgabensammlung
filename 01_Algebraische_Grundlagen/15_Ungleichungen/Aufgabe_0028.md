@@ -59,7 +59,7 @@ Ein Regal fasst maximal $50$ Bücher. Zu Beginn stehen bereits $18$ Bücher dari
 **Berechne** die Anzahl der Lieferungen $x$, sodass die Kapazität des Regals überschritten wird.
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \{ x \in \mathbb{N} \;|\; x \geq $ [[ 9 ]] $\}$
+$\mathbb{L} = \{ x \in \mathbb{N} \;|\; x \geq $ [[ 9 ]] @canvas $\}$
 @Algebrite.check(9)
 ******************
 $$

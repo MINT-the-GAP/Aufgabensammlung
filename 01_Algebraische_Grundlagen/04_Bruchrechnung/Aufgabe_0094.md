@@ -62,7 +62,7 @@ author: Martin Lommatzsch
 
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ 
-$ \dfrac{ \left( \dfrac{3}{5} + \dfrac{1}{10} \right) }{ \left( \dfrac{7}{12} - \dfrac{1}{4} \right) } = $ [[  21/10  ]]
+$ \dfrac{ \left( \dfrac{3}{5} + \dfrac{1}{10} \right) }{ \left( \dfrac{7}{12} - \dfrac{1}{4} \right) } = $ [[  21/10  ]] @canvas
 @Algebrite.check(21/10)
 ************
 $$
@@ -84,7 +84,7 @@ $$
 
 <!-- data-solution-button="5"-->
 __$b)\;\;$__ 
-$ \dfrac{ \left( \dfrac{5}{8} - \dfrac{1}{16} \right) }{ \left( \dfrac{2}{3} + \dfrac{1}{6} \right) } = $ [[  27/40  ]]
+$ \dfrac{ \left( \dfrac{5}{8} - \dfrac{1}{16} \right) }{ \left( \dfrac{2}{3} + \dfrac{1}{6} \right) } = $ [[  27/40  ]] @canvas
 @Algebrite.check(27/40)
 ************
 $$
@@ -106,7 +106,7 @@ $$
 
 <!-- data-solution-button="5"-->
 __$c)\;\;$__ 
-$ \dfrac{ \left( \dfrac{4}{9} + \dfrac{1}{3} \right) }{ \left( \dfrac{7}{10} : \dfrac{7}{5} \right) } = $ [[  14/9  ]]
+$ \dfrac{ \left( \dfrac{4}{9} + \dfrac{1}{3} \right) }{ \left( \dfrac{7}{10} : \dfrac{7}{5} \right) } = $ [[  14/9  ]] @canvas
 @Algebrite.check(14/9)
 ************
 $$
@@ -127,7 +127,7 @@ $$
 
 <!-- data-solution-button="5"-->
 __$d)\;\;$__ 
-$ \dfrac{ \left( \dfrac{5}{6} : \dfrac{5}{12} \right) }{ \left( \dfrac{1}{2} + \dfrac{1}{3} \right) } = $ [[  12/5  ]]
+$ \dfrac{ \left( \dfrac{5}{6} : \dfrac{5}{12} \right) }{ \left( \dfrac{1}{2} + \dfrac{1}{3} \right) } = $ [[  12/5  ]] @canvas
 @Algebrite.check(12/5)
 ************
 $$
@@ -148,7 +148,7 @@ $$
 
 <!-- data-solution-button="5"-->
 __$e)\;\;$__ 
-$ \dfrac{ \left( \dfrac{9}{10} - \dfrac{2}{5} \right) }{ \left( \dfrac{1}{4} \cdot \dfrac{8}{3} \right) } = $ [[  3/4  ]]
+$ \dfrac{ \left( \dfrac{9}{10} - \dfrac{2}{5} \right) }{ \left( \dfrac{1}{4} \cdot \dfrac{8}{3} \right) } = $ [[  3/4  ]] @canvas
 @Algebrite.check(3/4)
 ************
 $$
@@ -169,7 +169,7 @@ $$
 
 <!-- data-solution-button="5"-->
 __$f)\;\;$__ 
-$ \dfrac{ \left( \dfrac{7}{8} + \dfrac{1}{16} \right) }{ \left( \dfrac{3}{5} - \dfrac{1}{10} \right) } = $ [[  15/8  ]]
+$ \dfrac{ \left( \dfrac{7}{8} + \dfrac{1}{16} \right) }{ \left( \dfrac{3}{5} - \dfrac{1}{10} \right) } = $ [[  15/8  ]] @canvas
 @Algebrite.check(15/8)
 ************
 $$

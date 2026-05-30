@@ -58,7 +58,7 @@ Die Äpfel machen $\dfrac{5}{12}$ der gesamten Masse aus. Von den restlichen Kil
 **Bestimme**, wie viele Kilogramm Obst weder Äpfel noch Birnen sind. 
 
 <!-- data-solution-button="5"-->
-[[  28/3  ]] kg
+[[  28/3  ]] @canvas kg
 @Algebrite.check(28/3)
 ************
 $$

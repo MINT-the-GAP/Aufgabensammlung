@@ -64,7 +64,7 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $ \dfrac{ \left( \dfrac{2}{3} \right) }{ \left( \dfrac{5}{7} \right) } = $ [[  14/15  ]] 
+__$a)\;\;$__ $ \dfrac{ \left( \dfrac{2}{3} \right) }{ \left( \dfrac{5}{7} \right) } = $ [[  14/15  ]] @canvas 
 @Algebrite.check(14/15)
 ************
 $$
@@ -78,7 +78,7 @@ $$
 </div>
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $ \dfrac{\left(\dfrac{3}{4}\right)}{\left(\dfrac{2}{5}\right)} = $ [[  15/8  ]]
+__$b)\;\;$__ $ \dfrac{\left(\dfrac{3}{4}\right)}{\left(\dfrac{2}{5}\right)} = $ [[  15/8  ]] @canvas
 @Algebrite.check(15/8)
 ************
 $$
@@ -94,7 +94,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $ \dfrac{\left(\dfrac{5}{6}\right)}{\left(\dfrac{1}{3}\right)} = $ [[  5/2  ]]
+__$c)\;\;$__ $ \dfrac{\left(\dfrac{5}{6}\right)}{\left(\dfrac{1}{3}\right)} = $ [[  5/2  ]] @canvas
 @Algebrite.check(5/2)
 ************
 $$
@@ -111,7 +111,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $ \dfrac{\left(\dfrac{7}{9}\right)}{\left(\dfrac{7}{12}\right)} = $ [[  4/3  ]]
+__$d)\;\;$__ $ \dfrac{\left(\dfrac{7}{9}\right)}{\left(\dfrac{7}{12}\right)} = $ [[  4/3  ]] @canvas
 @Algebrite.check(4/3)
 ************
 $$
@@ -128,7 +128,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $ \dfrac{\left(\dfrac{4}{9}\right)}{\left(\dfrac{2}{3}\right)} = $ [[  2/3  ]]
+__$e)\;\;$__ $ \dfrac{\left(\dfrac{4}{9}\right)}{\left(\dfrac{2}{3}\right)} = $ [[  2/3  ]] @canvas
 @Algebrite.check(2/3)
 ************
 $$
@@ -145,7 +145,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$f)\;\;$__ $ \dfrac{\left(\dfrac{8}{15}\right)}{\left(\dfrac{4}{25}\right)} = $ [[  10/3  ]]
+__$f)\;\;$__ $ \dfrac{\left(\dfrac{8}{15}\right)}{\left(\dfrac{4}{25}\right)} = $ [[  10/3  ]] @canvas
 @Algebrite.check(10/3)
 ************
 $$

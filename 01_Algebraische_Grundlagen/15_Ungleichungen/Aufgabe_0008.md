@@ -70,7 +70,7 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $3x + 9 \leq 30$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \leq $   [[  7  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \leq $   [[  7  ]] @canvas   $\left.   \right\}$
 ******************
 $$
 \begin{align*}
@@ -86,7 +86,7 @@ $$
 __$b)\;\;$__ $\dfrac{x}{2} + 4 > 12$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $   [[  17  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $   [[  17  ]] @canvas   $\left.   \right\}$
 ******************
 $$
 \begin{align*}
@@ -102,7 +102,7 @@ $$
 __$c)\;\;$__ $5x - 5 \geq 20$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  5  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  5  ]] @canvas   $\left.   \right\}$
 ******************
 $$
 \begin{align*}
@@ -118,7 +118,7 @@ $$
 __$d)\;\;$__ $\dfrac{x}{6} + 3 < 10$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \leq $   [[  41  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \leq $   [[  41  ]] @canvas   $\left.   \right\}$
 ******************
 $$
 \begin{align*}
@@ -134,7 +134,7 @@ $$
 __$e)\;\;$__ $4x + 2 \geq 18$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  4  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  4  ]] @canvas   $\left.   \right\}$
 ******************
 $$
 \begin{align*}
@@ -150,7 +150,7 @@ $$
 __$f)\;\;$__ $6x - 12 < 24$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  5  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  5  ]] @canvas   $\left.   \right\}$
 ******************
 $$
 \begin{align*}

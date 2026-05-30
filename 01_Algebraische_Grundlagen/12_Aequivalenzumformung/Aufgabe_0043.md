@@ -59,7 +59,7 @@ Auf Band 2 liegen zu Beginn 44 Kisten, und pro Minute werden 1,75 Kisten abtrans
 
 
 <!-- data-solution-button="5"-->
-$x$ = [[  26/3  ]]
+$x$ = [[  26/3  ]] @canvas
 @Algebrite.check(26/3)
 ************
 $$

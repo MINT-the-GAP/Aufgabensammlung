@@ -57,7 +57,7 @@ In einem Klassenzimmer sind Stühle aus Holz, Kunststoff und Metall aufgestellt.
 
 
 <!-- data-solution-button="5"-->
-$x$ = [[  12  ]], $y$ = [[  16  ]] und $z$ = [[  8  ]]
+$x$ = [[  12  ]] @canvas, $y$ = [[  16  ]] @canvas und $z$ = [[  8  ]] @canvas
 @Algebrite.check([ 12; 16; 8 ])
 ************
 

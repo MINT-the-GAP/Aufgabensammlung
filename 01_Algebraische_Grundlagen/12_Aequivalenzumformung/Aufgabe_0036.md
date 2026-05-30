@@ -58,7 +58,7 @@ Ein zweites Auto startet zwei Stunden später, ist aber schneller und fährt mit
 **Berechne**, nach wie vielen Stunden beide Autos die gleiche Strecke zurückgelegt haben.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  6  ]]
+$x$ = [[  6  ]] @canvas
 @Algebrite.check(6)
 ************
 $$

@@ -58,7 +58,7 @@ Für ein Rezept werden $\dfrac{3}{8}$ eines Mehlsacks mit $4$ kg Inhalt benötig
 **Bestimme** die benötigte Mehlmenge als Bruch in kg. 
 
 <!-- data-solution-button="5"-->
-[[  3/2  ]] kg
+[[  3/2  ]] @canvas kg
 @Algebrite.check(3/2)
 ************
 $$

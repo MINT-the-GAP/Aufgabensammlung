@@ -56,7 +56,7 @@ Auf einem Parkplatz stehen insgesamt 28 Fahrzeuge. Darunter befinden sich Autos 
 **Berechne** die Anzahl der Autos und Motorräder.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  12  ]] und $y$ = [[  16  ]]
+$x$ = [[  12  ]] @canvas und $y$ = [[  16  ]] @canvas
 @Algebrite.check([ 12; 16 ])
 ************
 Bezeichnen wir mit $x$ die Anzahl der Autos und mit $y$ die Anzahl der Motorräder.

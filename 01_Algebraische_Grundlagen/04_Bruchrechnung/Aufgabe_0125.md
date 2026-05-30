@@ -59,7 +59,7 @@ Ein rechteckiger Garten besitzt eine Länge von $18\,\text{m}$. Die Breite betr�
 **Berechne** die Fläche des Blumenbeets.   
 
 <!-- data-solution-button="5"-->
-[[  486/5  ]] m$^2$
+[[  486/5  ]] @canvas m$^2$
 @Algebrite.check(486/5)
 ************
 $$

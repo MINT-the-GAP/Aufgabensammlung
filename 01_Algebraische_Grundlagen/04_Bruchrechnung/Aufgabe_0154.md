@@ -60,7 +60,7 @@ Anschließend muss wegen eines Fehldrucks noch einmal $\dfrac{1}{4}\,\text{m}^2$
 
 
 <!-- data-solution-button="5"-->
-[[  293/50  ]] m$^2$
+[[  293/50  ]] @canvas m$^2$
 @Algebrite.check(293/50)
 ************
 $$

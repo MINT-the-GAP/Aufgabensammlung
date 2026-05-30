@@ -60,7 +60,7 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 __$a)\;\;$__ $  4x + 6 - 2x + 3 = x + 17 $ \
-$x$ = [[  8  ]]
+$x$ = [[  8  ]] @canvas
 ************
 $$
 \begin{align*} 
@@ -75,7 +75,7 @@ $$
 <div class="flex-child">
 
 __$b)\;\;$__ $  6x - 5 + 2x = 3x + 25 $ \
-$x$ = [[  6  ]]
+$x$ = [[  6  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -91,7 +91,7 @@ $$
 <div class="flex-child">
 
 __$c)\;\;$__ $  7x + 3 - 2x = 4x + 8 $ \
-$x$ = [[  5  ]]
+$x$ = [[  5  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -106,7 +106,7 @@ $$
 <div class="flex-child">
 
 __$d)\;\;$__ $  9x - 4 + x = 5x + 26 $ \
-$x$ = [[  6  ]]
+$x$ = [[  6  ]] @canvas
 ************
 $$
 \begin{align*}

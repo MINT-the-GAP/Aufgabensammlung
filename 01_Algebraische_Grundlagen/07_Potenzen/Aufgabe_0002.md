@@ -54,22 +54,22 @@ author: Martin Lommatzsch
 
 <section class="dynFlex">
 <div class="flex-child">
-__$a)\;\;$__ $10^5 = $ [[ 100000 ]]
+__$a)\;\;$__ $10^5 = $ [[ 100000 ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$b)\;\;$__ $2^11 = $ [[  2048  ]]
+__$b)\;\;$__ $2^11 = $ [[  2048  ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$c)\;\;$__ $6^3 = $ [[  216   ]]
+__$c)\;\;$__ $6^3 = $ [[  216   ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ $13^2 = $ [[ 169 ]]
+__$d)\;\;$__ $13^2 = $ [[ 169 ]] @canvas
 
 
 

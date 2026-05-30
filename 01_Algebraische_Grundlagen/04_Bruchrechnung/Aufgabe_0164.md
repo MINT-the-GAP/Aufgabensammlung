@@ -70,7 +70,7 @@ __$a)\;\;$__
 Zu meinen drei Elftel werden vier Elftel hinzugefügt.
 
 <!-- data-solution-button="5"-->
-[[  7/11  ]] 
+[[  7/11  ]] @canvas 
 @Algebrite.check(7/11)
 
 
@@ -85,7 +85,7 @@ __$b)\;\;$__
 Ich habe drei Zehntel und nochmal vier Zehntel.
 
 <!-- data-solution-button="5"-->
-[[  7/10  ]] 
+[[  7/10  ]] @canvas 
 @Algebrite.check(7/10)
 
 
@@ -100,7 +100,7 @@ __$c)\;\;$__
 Zu meinen ein Sechstel, zu denen vier Sechstel hinzukommen.
 
 <!-- data-solution-button="5"-->
-[[  5/6  ]] 
+[[  5/6  ]] @canvas 
 @Algebrite.check(5/6)
 
 
@@ -115,7 +115,7 @@ __$d)\;\;$__
 Was habe ich, wenn ich fünf Zwölftel und sechs Zwölftel habe?
 
 <!-- data-solution-button="5"-->
-[[  11/12  ]] 
+[[  11/12  ]] @canvas 
 @Algebrite.check(11/12)
 
 

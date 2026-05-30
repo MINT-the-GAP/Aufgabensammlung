@@ -57,37 +57,37 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $20\,\text{cm} = $ [[  200  ]] $\,\text{mm}$ \
+__$a)\;\;$__ $20\,\text{cm} = $ [[  200  ]] @canvas $\,\text{mm}$ \
 
 </div>
 
 <div class="flex-child">
 
-__$b)\;\;$__ $3400\,\text{dm} = $ [[  340  ]] $\,\text{m}$ \
+__$b)\;\;$__ $3400\,\text{dm} = $ [[  340  ]] @canvas $\,\text{m}$ \
 
 </div>
 
 <div class="flex-child">
 
-__$c)\;\;$__ $7000\,\text{mm} = $ [[  70   ]] $\,\text{dm}$ \
+__$c)\;\;$__ $7000\,\text{mm} = $ [[  70   ]] @canvas $\,\text{dm}$ \
 
 </div>
 
 <div class="flex-child">
 
-__$d)\;\;$__ $3\,\text{km} = $ [[ 30000 ]] $\,\text{dm}$ \
+__$d)\;\;$__ $3\,\text{km} = $ [[ 30000 ]] @canvas $\,\text{dm}$ \
 
 </div>
 
 <div class="flex-child">
 
-__$e)\;\;$__ $65000\,\text{cm} = $ [[  650  ]] $\,\text{m}$ \
+__$e)\;\;$__ $65000\,\text{cm} = $ [[  650  ]] @canvas $\,\text{m}$ \
 
 </div>
 
 <div class="flex-child">
 
-__$f)\;\;$__ $4000000\,\text{cm} = $ [[   40  ]] $\,\text{km}$ \
+__$f)\;\;$__ $4000000\,\text{cm} = $ [[   40  ]] @canvas $\,\text{km}$ \
 
 </div>
 

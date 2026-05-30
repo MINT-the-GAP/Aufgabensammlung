@@ -56,7 +56,7 @@ Zwei Geräte laufen an einem Tag zusammen 5 Stunden. Gerät A kostet pro Stunde 
 **Berechne** die Laufzeiten beider Geräte.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  22/5  ]] und $y$ = [[  3/5  ]]
+$x$ = [[  22/5  ]] @canvas und $y$ = [[  3/5  ]] @canvas
 @Algebrite.check([ 22/5; 3/5 ])
 ************
 Bezeichne mit $x$ die Laufzeit von Gerät A (in Stunden) und mit $y$ die Laufzeit von Gerät B.

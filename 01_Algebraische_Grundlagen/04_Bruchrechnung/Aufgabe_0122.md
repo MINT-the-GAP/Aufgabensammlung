@@ -58,7 +58,7 @@ Ein Reissack enthält $6$ kg. Für ein Projekt wird $\dfrac{5}{12}$ des Inhalts 
 **Bestimme** die benötigte Masse als Bruch.  
 
 <!-- data-solution-button="5"-->
-[[  5/2  ]] kg
+[[  5/2  ]] @canvas kg
 @Algebrite.check(5/2)
 ************
 $$

@@ -72,7 +72,7 @@ const B = ri(100, 999);
 const P = A * B;
 
 // Aufgabe: TeX links, Eingabefeld rechts (außerhalb der TeX-Umgebung)
-const problem = `$${A} \\cdot ${B} = $ [[ ${P} ]]`;
+const problem = `$${A} \\cdot ${B} = $ [[ ${P} ]] @canvas`;
 
 // Lösung im Align-Stil
 function multiplicationAlign(a, b, p) {

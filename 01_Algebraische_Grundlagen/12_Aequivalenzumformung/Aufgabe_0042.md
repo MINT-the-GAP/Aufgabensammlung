@@ -59,7 +59,7 @@ Die zweite Pflanze ist anfangs 48 cm hoch und wächst pro Woche um 1 cm.
 
 
 <!-- data-solution-button="5"-->
-$x$ = [[  44/5  ]]
+$x$ = [[  44/5  ]] @canvas
 @Algebrite.check(44/5)
 ************
 $$

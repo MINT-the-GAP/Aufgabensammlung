@@ -63,7 +63,7 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $  \dfrac{4}{9} + \dfrac{5}{12} = $ [[  31/36  ]]
+__$a)\;\;$__ $  \dfrac{4}{9} + \dfrac{5}{12} = $ [[  31/36  ]] @canvas
 @Algebrite.check(31/36)
 ************
 $$
@@ -79,7 +79,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $  \dfrac{7}{10} - \dfrac{1}{4} = $ [[  9/20  ]]
+__$b)\;\;$__ $  \dfrac{7}{10} - \dfrac{1}{4} = $ [[  9/20  ]] @canvas
 @Algebrite.check(9/20)
 ************
 $$
@@ -95,7 +95,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $  \dfrac{3}{8} + \dfrac{7}{12} = $ [[  23/24  ]]
+__$c)\;\;$__ $  \dfrac{3}{8} + \dfrac{7}{12} = $ [[  23/24  ]] @canvas
 @Algebrite.check(23/24)
 ************
 $$
@@ -111,7 +111,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $  \dfrac{11}{18} - \dfrac{5}{12} = $ [[  7/36  ]]
+__$d)\;\;$__ $  \dfrac{11}{18} - \dfrac{5}{12} = $ [[  7/36  ]] @canvas
 @Algebrite.check(7/36)
 ************
 $$
@@ -127,7 +127,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $  \dfrac{5}{14} + \dfrac{9}{21} = $ [[  33/42  ]]
+__$e)\;\;$__ $  \dfrac{5}{14} + \dfrac{9}{21} = $ [[  33/42  ]] @canvas
 @Algebrite.check(33/42)
 ************
 $$
@@ -143,7 +143,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$f)\;\;$__ $  \dfrac{13}{20} - \dfrac{3}{8} = $ [[  11/40  ]]
+__$f)\;\;$__ $  \dfrac{13}{20} - \dfrac{3}{8} = $ [[  11/40  ]] @canvas
 @Algebrite.check(11/40)
 ************
 $$

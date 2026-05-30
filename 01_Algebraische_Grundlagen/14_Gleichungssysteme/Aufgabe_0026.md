@@ -57,7 +57,7 @@ Ein Mensch bearbeitet an einem Nachmittag zwei Textkapitel. Insgesamt arbeitet d
 **Berechne** die Arbeitszeiten für beide Kapitel.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  11/4  ]] und $y$ = [[  9/4  ]]
+$x$ = [[  11/4  ]] @canvas und $y$ = [[  9/4  ]] @canvas
 @Algebrite.check([ 11/4; 9/4 ])
 ************
 Bezeichne mit $x$ die Zeit am ersten Kapitel (in Stunden) und mit $y$ die Zeit am zweiten Kapitel.

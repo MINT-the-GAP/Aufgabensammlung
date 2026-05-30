@@ -57,28 +57,28 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Wie viel sind $\dfrac{4}{5}$ von $2500\,$kg?  \
 
- [[  2000  ]]kg
+ [[  2000  ]] @canvaskg
 
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ Wie viel sind $\dfrac{5}{9}$ von $180\,$cm?  \
 
- [[  100  ]]cm
+ [[  100  ]] @canvascm
 
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ Wie viel sind $\dfrac{1}{4}$ von $300\,$min?  \
 
- [[  75  ]]min
+ [[  75  ]] @canvasmin
 
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ Wie viel sind $\dfrac{6}{7}$ von $42\,$m?  \
 
- [[  36  ]]m
+ [[  36  ]] @canvasm
 
 </div>
 </section>

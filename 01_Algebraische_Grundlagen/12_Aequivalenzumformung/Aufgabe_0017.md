@@ -59,7 +59,7 @@ author: Martin Lommatzsch
 
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $  2x + 5 + 9 = 6x - 3 - 7 $ \
-$x$ = [[  6  ]]
+$x$ = [[  6  ]] @canvas
 @Algebrite.check(6)
 ************
 $$
@@ -77,7 +77,7 @@ $$
 
 <!-- data-solution-button="5"-->
 __$b)\;\;$__ $  3x + 5 + x = 2x + 17 - x $ \
-$x$ = [[  4  ]]
+$x$ = [[  4  ]] @canvas
 @Algebrite.check(4)
 ************
 $$
@@ -95,7 +95,7 @@ $$
 
 <!-- data-solution-button="5"-->
 __$c)\;\;$__ $  5x - 7 + 2x = 3x + 13 $ \
-$x$ = [[  5  ]]
+$x$ = [[  5  ]] @canvas
 @Algebrite.check(5)
 ************
 $$
@@ -113,7 +113,7 @@ $$
 
 <!-- data-solution-button="5"-->
 __$d)\;\;$__ $  $2x + 4 + 9x = 6x + 6 + 8$ \
-$x$ = [[  2  ]]
+$x$ = [[  2  ]] @canvas
 @Algebrite.check(2)
 ************
 $$

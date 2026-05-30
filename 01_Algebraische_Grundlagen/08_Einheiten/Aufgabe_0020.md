@@ -57,37 +57,37 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $3\,\text{dm}^3 = $ [[   3000    ]] $\,\text{ml}$ \
+__$a)\;\;$__ $3\,\text{dm}^3 = $ [[   3000    ]] @canvas $\,\text{ml}$ \
 
 </div>
 
 <div class="flex-child">
 
-__$b)\;\;$__ $80\,\text{cl} = $ [[    800    ]] $\,\text{ml}$ \
+__$b)\;\;$__ $80\,\text{cl} = $ [[    800    ]] @canvas $\,\text{ml}$ \
 
 </div>
 
 <div class="flex-child">
 
-__$c)\;\;$__ $410000\,\text{dm}^3 = $ [[    410    ]] $\,\text{m}^3$ \
+__$c)\;\;$__ $410000\,\text{dm}^3 = $ [[    410    ]] @canvas $\,\text{m}^3$ \
 
 </div>
 
 <div class="flex-child">
 
-__$d)\;\;$__ $9500000000\,\text{cm}^3 = $ [[    9500   ]] $\,\text{m}^3$ \
+__$d)\;\;$__ $9500000000\,\text{cm}^3 = $ [[    9500   ]] @canvas $\,\text{m}^3$ \
 
 </div>
 
 <div class="flex-child">
 
-__$e)\;\;$__ $120\,\ell = $ [[ 120000000 ]] $\,\text{mm}^3$ \
+__$e)\;\;$__ $120\,\ell = $ [[ 120000000 ]] @canvas $\,\text{mm}^3$ \
 
 </div>
 
 <div class="flex-child">
 
-__$f)\;\;$__ $50000\,\ell = $ [[     50     ]] $\,\text{m}^3$ \
+__$f)\;\;$__ $50000\,\ell = $ [[     50     ]] @canvas $\,\text{m}^3$ \
 
 </div>
 

@@ -61,7 +61,7 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 __$a)\;\;$__ $  \dfrac{5}{x-2} = \dfrac{3}{2x+1} $ \
-$x$ = [[  -11/7  ]]
+$x$ = [[  -11/7  ]] @canvas
 @Algebrite.check(-11/7)
 ************
 $$
@@ -80,7 +80,7 @@ $$
 <div class="flex-child">
 
 __$b)\;\;$__ $  \dfrac{7}{x+3} = \dfrac{2}{x-1} $ \
-$x$ = [[  13/5  ]]
+$x$ = [[  13/5  ]] @canvas
 @Algebrite.check(13/5)
 ************
 $$
@@ -99,7 +99,7 @@ $$
 <div class="flex-child">
 
 __$c)\;\;$__ $  \dfrac{4}{2x-3} = \dfrac{9}{x+6} $ \
-$x$ = [[  51/14  ]]
+$x$ = [[  51/14  ]] @canvas
 @Algebrite.check(51/14)
 ************
 $$
@@ -119,7 +119,7 @@ $$
 <div class="flex-child">
 
 __$d)\;\;$__ $  \dfrac{3}{x-4} = \dfrac{5}{2x+7} $ \
-$x$ = [[  -41  ]]
+$x$ = [[  -41  ]] @canvas
 @Algebrite.check(-41)
 ************
 $$
@@ -138,7 +138,7 @@ $$
 <div class="flex-child">
 
 __$e)\;\;$__ $  \dfrac{2}{x+5} = \dfrac{7}{3x-2} $ \
-$x$ = [[  -39  ]]
+$x$ = [[  -39  ]] @canvas
 @Algebrite.check(-39)
 ************
 $$
@@ -157,7 +157,7 @@ $$
 <div class="flex-child">
 
 __$f)\;\;$__ $  \dfrac{5}{x-1} = \dfrac{8}{x+6} $ \
-$x$ = [[  38/3  ]]
+$x$ = [[  38/3  ]] @canvas
 @Algebrite.check(38/3)
 ************
 $$

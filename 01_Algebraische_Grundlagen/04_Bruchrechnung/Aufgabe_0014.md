@@ -64,7 +64,7 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $  \dfrac{5}{12} + \dfrac{1}{6} = $ [[  7/12  ]]
+__$a)\;\;$__ $  \dfrac{5}{12} + \dfrac{1}{6} = $ [[  7/12  ]] @canvas
 @Algebrite.check(7/12)
 ************
 $$
@@ -79,7 +79,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $  \dfrac{11}{15} + \dfrac{2}{5} = $ [[  17/15  ]]
+__$b)\;\;$__ $  \dfrac{11}{15} + \dfrac{2}{5} = $ [[  17/15  ]] @canvas
 @Algebrite.check(17/15)
 ************
 $$
@@ -94,7 +94,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $  \dfrac{5}{21} + \dfrac{2}{7} = $ [[  11/21  ]]
+__$c)\;\;$__ $  \dfrac{5}{21} + \dfrac{2}{7} = $ [[  11/21  ]] @canvas
 @Algebrite.check(11/21)
 ************
 $$
@@ -109,7 +109,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $  \dfrac{5}{18} + \dfrac{1}{9} = $ [[  7/18  ]]
+__$d)\;\;$__ $  \dfrac{5}{18} + \dfrac{1}{9} = $ [[  7/18  ]] @canvas
 @Algebrite.check(7/18)
 ************
 $$
@@ -124,7 +124,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $  \dfrac{3}{28} + \dfrac{2}{7} = $ [[  11/28  ]]
+__$e)\;\;$__ $  \dfrac{3}{28} + \dfrac{2}{7} = $ [[  11/28  ]] @canvas
 @Algebrite.check(11/28)
 ************
 $$
@@ -139,7 +139,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$f)\;\;$__ $  \dfrac{3}{20} + \dfrac{1}{2} = $ [[  13/20  ]]
+__$f)\;\;$__ $  \dfrac{3}{20} + \dfrac{1}{2} = $ [[  13/20  ]] @canvas
 @Algebrite.check(13/20)
 ************
 $$

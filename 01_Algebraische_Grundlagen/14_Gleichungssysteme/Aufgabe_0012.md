@@ -69,7 +69,7 @@ II.& \qquad 2x + 3y - z = 7 \\
 III.& \qquad 3x - y + 2z = 15  
 \end{align*}
 $$  
-$x$ = [[  2  ]], $y$ = [[  3  ]], $z$ = [[  6  ]]
+$x$ = [[  2  ]] @canvas, $y$ = [[  3  ]] @canvas, $z$ = [[  6  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -103,7 +103,7 @@ II.& \qquad 2x + y - z = 1 \\
 III.& \qquad x + 2y + 3z = 30  
 \end{align*}
 $$  
-$x$ = [[  4  ]], $y$ = [[  1  ]], $z$ = [[  8  ]]
+$x$ = [[  4  ]] @canvas, $y$ = [[  1  ]] @canvas, $z$ = [[  8  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -133,7 +133,7 @@ II.& \qquad 2x - y + z = 4 \\
 III.& \qquad 3x + y - z = 11  
 \end{align*}
 $$  
-$x$ = [[  3  ]], $y$ = [[  4  ]], $z$ = [[  2  ]]
+$x$ = [[  3  ]] @canvas, $y$ = [[  4  ]] @canvas, $z$ = [[  2  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -168,7 +168,7 @@ II.& \qquad 3x - y + z = 7 \\
 III.& \qquad 2x + 3y - z = 13  
 \end{align*}
 $$  
-$x$ = [[  2  ]], $y$ = [[  5  ]], $z$ = [[  6  ]]
+$x$ = [[  2  ]] @canvas, $y$ = [[  5  ]] @canvas, $z$ = [[  6  ]] @canvas
 ************
 $$
 \begin{align*}

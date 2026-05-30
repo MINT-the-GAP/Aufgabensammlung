@@ -60,7 +60,7 @@ Von der verbleibenden Fläche wird anschließend $\dfrac{1}{5}$ für Wege reserv
 **Berechne** die am Ende nutzbare Gartenfläche. 
 
 <!-- data-solution-button="5"-->
-[[  252/5  ]] m^2
+[[  252/5  ]] @canvas m^2
 @Algebrite.check(252/5)
 ************
 $$

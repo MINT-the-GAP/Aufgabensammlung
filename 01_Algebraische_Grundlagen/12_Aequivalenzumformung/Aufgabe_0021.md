@@ -61,7 +61,7 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 __$a)\;\;$__ $  3x - 7 = \dfrac{1}{2}x + 5 $ \
-$x$ = [[  24/5  ]]
+$x$ = [[  24/5  ]] @canvas
 @Algebrite.check(24/5)
 ************
 $$
@@ -77,7 +77,7 @@ $$
 <div class="flex-child">
 
 __$b)\;\;$__ $  4x + 3 = 2x - \dfrac{5}{2} $ \
-$x$ = [[  -11/4  ]]
+$x$ = [[  -11/4  ]] @canvas
 @Algebrite.check(-11/4)
 ************
 $$
@@ -94,7 +94,7 @@ $$
 <div class="flex-child">
 
 __$c)\;\;$__ $  \dfrac{5}{3}x - 4 = x + 2 $ \
-$x$ = [[  18  ]]
+$x$ = [[  18  ]] @canvas
 @Algebrite.check(18)
 ************
 $$
@@ -110,7 +110,7 @@ $$
 <div class="flex-child">
 
 __$d)\;\;$__ $ 5(x-1) = 3x + \dfrac{7}{3}$ \
-$x$ = [[  11/3  ]]
+$x$ = [[  11/3  ]] @canvas
 @Algebrite.check(11/3)
 ************
 $$
@@ -128,7 +128,7 @@ $$
 <div class="flex-child">
 
 __$e)\;\;$__ $  2\left(x + \dfrac{3}{2}\right) = \dfrac{1}{2}x + 5 $ \
-$x$ = [[  4/3  ]]
+$x$ = [[  4/3  ]] @canvas
 @Algebrite.check(4/3)
 ************
 $$
@@ -145,7 +145,7 @@ $$
 <div class="flex-child">
 
 __$f)\;\;$__ $  \dfrac{2}{3}(3x+6) = x - 2 $ \
-$x$ = [[  -6  ]]
+$x$ = [[  -6  ]] @canvas
 @Algebrite.check(-6)
 ************
 $$

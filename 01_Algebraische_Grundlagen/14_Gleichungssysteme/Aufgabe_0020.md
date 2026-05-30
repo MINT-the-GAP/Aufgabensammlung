@@ -56,7 +56,7 @@ Auf einem Innenhof stehen Bänke: einige sind 2er-Bänke, andere 3er-Bänke. Ins
 **Berechne** die Anzahl der 2er-Bänke und der 3er-Bänke.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  10  ]] und $y$ = [[  12  ]]
+$x$ = [[  10  ]] @canvas und $y$ = [[  12  ]] @canvas
 @Algebrite.check([ 10; 12 ])
 ************
 Bezeichne mit $x$ die Anzahl der 2er-Bänke und mit $y$ die Anzahl der 3er-Bänke.

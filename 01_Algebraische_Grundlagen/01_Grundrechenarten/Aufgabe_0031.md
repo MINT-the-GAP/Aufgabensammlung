@@ -54,25 +54,25 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 __$a)\;\;$__ $ \textcolor{red}{5} \cdot 3 = 15$ \
-[[    Faktor          ]]
+[[    Faktor          ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ $ \textcolor{red}{5 + 6} = 11 $ \
-[[    Summe           ]]
+[[    Summe           ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ $ 85:\textcolor{red}{13} = 5$ \
-[[        Divisor    ]]
+[[        Divisor    ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ $ 27-12 = \textcolor{red}{15}$ \
-[[ Wert der Differenz ]]
+[[ Wert der Differenz ]] @canvas
 
 </div>
 </section>

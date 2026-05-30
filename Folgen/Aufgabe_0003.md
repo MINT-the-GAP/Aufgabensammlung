@@ -54,7 +54,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
-$1 \quad 8 \quad 27 \quad 64 \quad 125 \quad$ [[ 216 ]] $\quad$ [[ 343 ]] $\quad$ [[ 512 ]] \
+$1 \quad 8 \quad 27 \quad 64 \quad 125 \quad$ [[ 216 ]] @canvas $\quad$ [[ 343 ]] @canvas $\quad$ [[ 512 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen hoch $3$.
 
@@ -62,7 +62,7 @@ $1 \quad 8 \quad 27 \quad 64 \quad 125 \quad$ [[ 216 ]] $\quad$ [[ 343 ]] $\quad
 
 __$b)\;\;$__
 
-$3 \quad 5 \quad 8 \quad 11 \quad 16 \quad 19 \quad 24 \quad 27 \quad 32 \quad$ [[ 39 ]] $\quad$ [[ 42 ]] $\quad$ [[ 49 ]] \
+$3 \quad 5 \quad 8 \quad 11 \quad 16 \quad 19 \quad 24 \quad 27 \quad 32 \quad$ [[ 39 ]] @canvas $\quad$ [[ 42 ]] @canvas $\quad$ [[ 49 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen addiert mit den aufsteigenden Primzahlen: $1+2$ dann $2+3$ dann $3+5$ und so weiter.
 
@@ -70,7 +70,7 @@ $3 \quad 5 \quad 8 \quad 11 \quad 16 \quad 19 \quad 24 \quad 27 \quad 32 \quad$ 
 
 __$c)\;\;$__
 
-$1 \quad 5 \quad 14 \quad 30 \quad 55 \quad 91 \quad$ [[ 140 ]] $\quad$ [[ 204 ]] $\quad$ [[ 285 ]] \
+$1 \quad 5 \quad 14 \quad 30 \quad 55 \quad 91 \quad$ [[ 140 ]] @canvas $\quad$ [[ 204 ]] @canvas $\quad$ [[ 285 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die zuvorige Zahl wird mit der aufsteigenden Quadratzahl startend bei $2$ addiert.
 

@@ -69,7 +69,7 @@ I.& \qquad 3x + 2y = 7 \\
 II.& \qquad 4x - y = 1  
 \end{align*}
 $$
-$x$ = [[  9/11  ]] und  $y$ = [[  25/11  ]] 
+$x$ = [[  9/11  ]] @canvas und  $y$ = [[  25/11  ]] @canvas 
 @Algebrite.check([ 9/11; 25/11 ])
 ************
 $$
@@ -105,7 +105,7 @@ I.& \qquad 5x - 2y = 3 \\
 II.& \qquad x + 3y = 8  
 \end{align*}
 $$  
-$x$ = [[  25/17  ]] und  $y$ = [[  37/17  ]] 
+$x$ = [[  25/17  ]] @canvas und  $y$ = [[  37/17  ]] @canvas 
 @Algebrite.check([ 25/17; 37/17 ])
 ************
 $$
@@ -137,7 +137,7 @@ I.& \qquad 2x + y = -1 \\
 II.& \qquad 3x - 2y = -16  
 \end{align*}
 $$  
-$x$ = [[  -18/7  ]]  und  $y$ = [[  29/7  ]] 
+$x$ = [[  -18/7  ]] @canvas  und  $y$ = [[  29/7  ]] @canvas 
 @Algebrite.check([ -18/7; 29/7 ])
 ************
 $$
@@ -170,7 +170,7 @@ I.& \qquad 4x + 3y = 7 \\
 II.& \qquad 2x - y = -5  
 \end{align*}
 $$  
-$x$ = [[  -4/5  ]]   und  $y$ = [[  17/5  ]] 
+$x$ = [[  -4/5  ]] @canvas   und  $y$ = [[  17/5  ]] @canvas 
 @Algebrite.check([ -4/5; 17/5 ])
 ************
 

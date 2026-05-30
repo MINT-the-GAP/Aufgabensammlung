@@ -71,7 +71,7 @@ Zum Schluss werden noch zwei Zusatzleisten zu je $\dfrac{3}{20}\,\text{m}$ ergä
 
 
 <!-- data-solution-button="5"-->
-[[  799/80  ]] m
+[[  799/80  ]] @canvas m
 @Algebrite.check(799/80)
 ************
 $$

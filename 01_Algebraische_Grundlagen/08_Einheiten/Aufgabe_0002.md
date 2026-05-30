@@ -56,35 +56,35 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 __$a)\;\;$__ Wie viele Millimeter sind ein Meter? \
-[[1000]] mm
+[[1000]] @canvas mm
 
 
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ Wie viele Minuten sind eine Stunde? \
-[[60  ]] min
+[[60  ]] @canvas min
 
 
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ Wie viele Meter sind ein Kilometer? \
-[[1000]] m
+[[1000]] @canvas m
 
 
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ Wie viele Gramm sind ein Kilogramm? \
-[[1000]] g
+[[1000]] @canvas g
 
 
 </div>
 <div class="flex-child">
 
 __$e)\;\;$__ Wie viele Stunden sind ein Tag? \
-[[24  ]] h
+[[24  ]] @canvas h
 
 </div>
 

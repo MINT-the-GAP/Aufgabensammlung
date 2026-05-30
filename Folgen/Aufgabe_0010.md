@@ -55,7 +55,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
-$53 \quad 55 \quad 59 \quad 65 \quad 73 \quad 83 \quad 95 \quad $ [[ 109 ]] $\quad$ [[ 125 ]] $\quad$ [[ 143 ]] \
+$53 \quad 55 \quad 59 \quad 65 \quad 73 \quad 83 \quad 95 \quad $ [[ 109 ]] @canvas $\quad$ [[ 125 ]] @canvas $\quad$ [[ 143 ]] @canvas \
 
 [[?]] Musterbeschreibung: Zur vorherigen Zahl wird die nächst größere gerade Zahl addiert.
 
@@ -63,7 +63,7 @@ $53 \quad 55 \quad 59 \quad 65 \quad 73 \quad 83 \quad 95 \quad $ [[ 109 ]] $\qu
 
 __$b)\;\;$__
 
-$b \quad D \quad f \quad H \quad j \quad L \quad $ [[ n ]] $\quad$ [[ P ]] $\quad$ [[ r ]] \
+$b \quad D \quad f \quad H \quad j \quad L \quad $ [[ n ]] @canvas $\quad$ [[ P ]] @canvas $\quad$ [[ r ]] @canvas \
 
 [[?]] Musterbeschreibung: Immer jeweils der übernächste Buchstabe des Alphabets abwechselnd klein und groß geschrieben.
 
@@ -71,7 +71,7 @@ $b \quad D \quad f \quad H \quad j \quad L \quad $ [[ n ]] $\quad$ [[ P ]] $\qua
 
 __$c)\;\;$__
 
-$542 \quad  \quad 519 \quad 496 \quad 473 \quad 450 \quad 427 \quad 404 \quad $ [[ 381 ]] $\quad$ [[ 358 ]] $\quad$ [[ 335 ]] \
+$542 \quad  \quad 519 \quad 496 \quad 473 \quad 450 \quad 427 \quad 404 \quad $ [[ 381 ]] @canvas $\quad$ [[ 358 ]] @canvas $\quad$ [[ 335 ]] @canvas \
 
 [[?]] Musterbeschreibung: Von der vorherigen Zahl wird $23$ subtrahiert.
 

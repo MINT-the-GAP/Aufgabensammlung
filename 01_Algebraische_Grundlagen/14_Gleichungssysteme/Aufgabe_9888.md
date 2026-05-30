@@ -65,7 +65,7 @@ I.& \qquad 2x + 3y = 8 \\
 II.& \qquad 5x - y = 4  
 \end{align*}
 $$  
-$x$ = [[  1  ]] und  $y$ = [[  2  ]] 
+$x$ = [[  1  ]] @canvas und  $y$ = [[  2  ]] @canvas 
 @Algebrite.check([ 1; 2 ])
 ************
 $$
@@ -94,7 +94,7 @@ I.& \qquad 3x - 2y = -4 \\
 II.& \qquad x + y = 5  
 \end{align*}
 $$  
-$x$ = [[  2  ]] und  $y$ = [[  3  ]] 
+$x$ = [[  2  ]] @canvas und  $y$ = [[  3  ]] @canvas 
 @Algebrite.check([ 2; 3 ])
 ************
 $$
@@ -122,7 +122,7 @@ I.& \qquad 4x + y = 10 \\
 II.& \qquad 2x - 3y = -4  
 \end{align*}
 $$  
-$x$ = [[  2  ]] und  $y$ = [[  2  ]] 
+$x$ = [[  2  ]] @canvas und  $y$ = [[  2  ]] @canvas 
 @Algebrite.check([ 2; 2 ])
 ************
 $$
@@ -150,7 +150,7 @@ I.& \qquad 6x - y = 7 \\
 II.& \qquad 2x + 3y = 1  
 \end{align*}
 $$  
-$x$ = [[  1  ]] und  $y$ = [[  -1  ]] 
+$x$ = [[  1  ]] @canvas und  $y$ = [[  -1  ]] @canvas 
 @Algebrite.check([ 1; -1 ])
 ************
 $$

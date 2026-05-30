@@ -58,7 +58,7 @@ Eine Strecke ist $15$ km lang. Davon werden $\dfrac{2}{5}$ mit dem Bus zurückge
 **Bestimme**, wie viele Kilometer zu Fuß gegangen werden.  
 
 <!-- data-solution-button="5"-->
-[[  9  ]] km
+[[  9  ]] @canvas km
 ************
 $$
 15\,\text{km} - \dfrac{2}{5}\cdot 15\,\text{km}

@@ -66,7 +66,7 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $-2x + 10 \geq 4 - 5x + 2$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  -4/3  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  -4/3  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(-4/3)
 ******************
 $$
@@ -85,7 +85,7 @@ $$
 __$b)\;\;$__ $3x - 7 < 2x + 5$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  11  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  11  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(11)
 ******************
 $$
@@ -102,7 +102,7 @@ $$
 __$c)\;\;$__ $4x + 3 > 2x + 9$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $   [[  4  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $   [[  4  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(4)
 ******************
 $$
@@ -120,7 +120,7 @@ $$
 __$d)\;\;$__ $7 - 2x \leq x + 4$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  1  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  1  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(1)
 ******************
 $$
@@ -138,7 +138,7 @@ $$
 __$e)\;\;$__ $5x - 8 \geq 3x - 2$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \geq $   [[  3  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \geq $   [[  3  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(3)
 ******************
 $$
@@ -156,7 +156,7 @@ $$
 __$f)\;\;$__ $-4x + 5 < 2x - 7$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  3  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  3  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(3)
 ******************
 $$

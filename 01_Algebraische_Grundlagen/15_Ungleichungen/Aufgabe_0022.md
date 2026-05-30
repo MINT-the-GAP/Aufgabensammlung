@@ -59,7 +59,7 @@ Für ein Schulfest werden gleich viele Wasser- und Saftflaschen beschafft. Eine 
 **Berechne** die kleinste natürliche Zahl $x$ (Flaschen je Sorte), sodass mindestens 40 € ausgegeben werden.
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \{ x \in \mathbb{N} \;|\; x \geq $ [[ 5 ]] $\}$
+$\mathbb{L} = \{ x \in \mathbb{N} \;|\; x \geq $ [[ 5 ]] @canvas $\}$
 @Algebrite.check(5)
 ******************
 $$

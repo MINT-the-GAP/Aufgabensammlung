@@ -60,7 +60,7 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 __$a)\;\;$__ $  4x - 3 = \dfrac{1}{2}x + 9 $ \
-$x$ = [[  24/7  ]]
+$x$ = [[  24/7  ]] @canvas
 @Algebrite.check(24/7)
 ************
 $$
@@ -77,7 +77,7 @@ $$
 <div class="flex-child">
 
 __$b)\;\;$__ $  3(2x+1) - 4 = x + 5 $ \
-$x$ = [[  6/5  ]]
+$x$ = [[  6/5  ]] @canvas
 @Algebrite.check(6/5)
 ************
 $$
@@ -95,7 +95,7 @@ $$
 <div class="flex-child">
 
 __$c)\;\;$__ $  \dfrac{1}{3}x - 2 = \dfrac{3}{5}x + 1 $ \
-$x$ = [[  -45/4  ]]
+$x$ = [[  -45/4  ]] @canvas
 @Algebrite.check(-45/4)
 ************
 $$
@@ -114,7 +114,7 @@ $$
 <div class="flex-child">
 
 __$d)\;\;$__ $  2x + 5 = \dfrac{4}{3}x - 1 $ \
-$x$ = [[  -9  ]]
+$x$ = [[  -9  ]] @canvas
 @Algebrite.check(-9)
 ************
 $$
@@ -131,7 +131,7 @@ $$
 <div class="flex-child">
 
 __$e)\;\;$__ $  \dfrac{5}{4}x - 3 = 2 - \dfrac{1}{2}x $ \
-$x$ = [[  20/7  ]]
+$x$ = [[  20/7  ]] @canvas
 @Algebrite.check(20/7)
 ************
 $$
@@ -148,7 +148,7 @@ $$
 <div class="flex-child">
 
 __$f)\;\;$__ $  2\left(x - \dfrac{3}{2}\right) + \dfrac{1}{3} = \dfrac{5}{3}x - 1 $ \
-$x$ = [[  5  ]]
+$x$ = [[  5  ]] @canvas
 @Algebrite.check(5)
 ************
 $$

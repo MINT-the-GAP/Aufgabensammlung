@@ -68,7 +68,7 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $-\dfrac{3}{4}(x-2) + 5 \;\leq\; \dfrac{1}{2}(x+1) + 2$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \geq $ [[ 16/5 ]] $\left. \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \geq $ [[ 16/5 ]] @canvas $\left. \right\}$
 @Algebrite.check(16/5)
 ******************
 $$
@@ -88,7 +88,7 @@ $$
 __$b)\;\;$__ $\dfrac{2}{3}(x-6) \;>\; -\dfrac{1}{2}(x-4) + 1$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $ [[ 7 ]] $\left. \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $ [[ 7 ]] @canvas $\left. \right\}$
 @Algebrite.check(7)
 ******************
 $$
@@ -107,7 +107,7 @@ $$
 __$c)\;\;$__ $-2(x+5) + \dfrac{1}{3}(3x-6) \;\ge\; \dfrac{1}{4}(8-2x) - 1$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $ [[ -26 ]] $\left. \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $ [[ -26 ]] @canvas $\left. \right\}$
 @Algebrite.check(-26)
 ******************
 $$
@@ -127,7 +127,7 @@ $$
 __$d)\;\;$__ $\dfrac{3}{2}(x-2) - \dfrac{1}{3}(x+3) \;<\; x - \dfrac{1}{2}$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $ [[ 20 ]] $\left. \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $ [[ 20 ]] @canvas $\left. \right\}$
 @Algebrite.check(20)
 ******************
 $$
@@ -147,7 +147,7 @@ $$
 __$e)\;\;$__ $-\dfrac{1}{2}(2x-5) + 3 \;\ge\; \dfrac{3}{4}(x-1) + \dfrac{1}{2}$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \leq $ [[ 23/7 ]] $\left. \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \leq $ [[ 23/7 ]] @canvas $\left. \right\}$
 @Algebrite.check(23/7)
 ******************
 $$
@@ -167,7 +167,7 @@ $$
 __$f)\;\;$__ $4\!\left(x+\dfrac{1}{2}\right) - \dfrac{2}{3}(3x-1) \;>\; -x + 5$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $ [[ 1 ]] $\left. \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $ [[ 1 ]] @canvas $\left. \right\}$
 @Algebrite.check(1)
 ******************
 $$

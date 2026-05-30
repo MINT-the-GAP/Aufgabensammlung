@@ -73,17 +73,17 @@ __$a)\;\;$__ Welcher Bruchanteil des jeweiligen Rechteck ist farbig markiert?
 <section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$I\;\;$__ [[  1/3  ]]
+__$I\;\;$__ [[  1/3  ]] @canvas
 @Algebrite.check(1/3)
 </div>
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$II\;\;$__ [[  3/4  ]]
+__$II\;\;$__ [[  3/4  ]] @canvas
 @Algebrite.check(3/4)
 </div>
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$III\;\;$__ [[  3/5  ]]
+__$III\;\;$__ [[  3/5  ]] @canvas
 @Algebrite.check(3/5)
 </div>
 </section>
@@ -94,17 +94,17 @@ __$b)\;\;$__ Welcher Bruchanteil der farbigen Markierung ist bläulich markiert?
 <section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$I\;\;$__ [[  2/3  ]]
+__$I\;\;$__ [[  2/3  ]] @canvas
 @Algebrite.check(2/3)
 </div>
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$II\;\;$__ [[  1/6  ]]
+__$II\;\;$__ [[  1/6  ]] @canvas
 @Algebrite.check(1/6)
 </div>
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$III\;\;$__ [[  3/4  ]]
+__$III\;\;$__ [[  3/4  ]] @canvas
 @Algebrite.check(3/4)
 </div>
 </section>
@@ -115,17 +115,17 @@ __$c)\;\;$__ Welcher Bruchanteil der jeweiligen Rechteck ist bläulich markiert?
 <section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$I\;\;$__ [[  2/9  ]]
+__$I\;\;$__ [[  2/9  ]] @canvas
 @Algebrite.check(2/9)
 </div>
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$II\;\;$__ [[  3/24 ]]
+__$II\;\;$__ [[  3/24 ]] @canvas
 @Algebrite.check(3/24)
 </div>
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$III\;\;$__ [[  9/20  ]]
+__$III\;\;$__ [[  9/20  ]] @canvas
 @Algebrite.check(9/20)
 </div>
 </section>

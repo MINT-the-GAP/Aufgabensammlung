@@ -57,7 +57,7 @@ Ein Weg ist $9$ km lang. Mit dem Fahrrad werden $\dfrac{2}{3}$ gefahren, der Res
 **Bestimme**, wie viele Kilometer zu Fuß gegangen werden.  
 
 <!-- data-solution-button="5"-->
-[[  3  ]] km
+[[  3  ]] @canvas km
 @Algebrite.check(3)
 ************
 $$

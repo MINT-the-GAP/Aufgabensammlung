@@ -59,7 +59,7 @@ Die zweite Kerze ist anfangs 24 cm lang, wird aber erst fünf Stunden später an
 
 
 <!-- data-solution-button="5"-->
-$x$ = [[  35/3  ]]
+$x$ = [[  35/3  ]] @canvas
 @Algebrite.check(35/3)
 ************
 $$

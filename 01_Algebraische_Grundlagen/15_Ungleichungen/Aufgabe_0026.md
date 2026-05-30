@@ -59,7 +59,7 @@ Ein Konto weist zu Beginn einen Saldo von $-1200\,\mathrm{€}$ auf. Durch regel
 **Berechne** die Anzahl der Wochen, sodass der Saldo mindestens $300\,\mathrm{€}$ beträgt.
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \{ x \in \mathbb{R} \;|\; x \geq $ [[ 10/3 ]] $\}$
+$\mathbb{L} = \{ x \in \mathbb{R} \;|\; x \geq $ [[ 10/3 ]] @canvas $\}$
 @Algebrite.check(10/3)
 ******************
 $$

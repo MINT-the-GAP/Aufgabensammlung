@@ -66,42 +66,42 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $3x < 18$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x < $   [[  6  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x < $   [[  6  ]] @canvas   $\left.   \right\}$
 </div>
 
 <div class="flex-child">
 __$b)\;\;$__  $x + 7 \geq 12$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  5  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  5  ]] @canvas   $\left.   \right\}$
 </div>
 
 <div class="flex-child">
 __$c)\;\;$__  $\dfrac{x}{4} \leq 6$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \leq $   [[  24  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \leq $   [[  24  ]] @canvas   $\left.   \right\}$
 </div>
 
 <div class="flex-child">
 __$d)\;\;$__  $x - 5 > 10$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x > $   [[  15  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x > $   [[  15  ]] @canvas   $\left.   \right\}$
 </div>
 
 <div class="flex-child">
 __$e)\;\;$__  $2x \geq 14$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x > $   [[  6  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x > $   [[  6  ]] @canvas   $\left.   \right\}$
 </div>
 
 <div class="flex-child">
 __$f)\;\;$__  $\dfrac{x}{9} \geq 2$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x > $   [[  17  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x > $   [[  17  ]] @canvas   $\left.   \right\}$
 </div>
 
 </section>

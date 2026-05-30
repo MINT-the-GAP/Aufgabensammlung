@@ -55,28 +55,28 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Die positive Differenz aus $23$ und $47$ wird mit $4$ multipliziert. \
 
-[[  96  ]]
+[[  96  ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ Der Term ist ein Quotient mit dem Divisor $7$, während der Dividend sich aus der Summe von $23$ und $33$ bildet. \
 
-[[  8   ]]
+[[  8   ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ Die Summanden $13$, $54$ und $23$ werden mit $11$ multipliziert. \
 
-[[  990 ]]
+[[  990 ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ Die Summe aus $8$ und $7$ wird mit der Differenz aus dem Minuenden $19$ und dem Subtrahenden $14$ multipliziert. \
 
-[[  75  ]]
+[[  75  ]] @canvas
 
 </div>
 </section>

@@ -57,7 +57,7 @@ Eine Übung dauert $80$ Minuten. Die Aufwärmphase umfasst $\dfrac{3}{8}$ der Ge
 **Berechne** die Dauer der Aufwärmphase. 
 
 <!-- data-solution-button="5"-->
-[[  30  ]] min
+[[  30  ]] @canvas min
 ************
 $$
 \dfrac{3}{8}\cdot 80\,\text{min}

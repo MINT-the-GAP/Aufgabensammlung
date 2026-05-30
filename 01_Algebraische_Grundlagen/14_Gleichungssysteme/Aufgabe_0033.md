@@ -56,7 +56,7 @@ Es werden drei Fruchtsäfte mit unterschiedlichen Zuckergehalten gemischt: Saft 
 **Berechne** die Literanteile der drei Säfte.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  7/2  ]], $y$ = [[  4  ]] und $z$ = [[  3/2  ]]
+$x$ = [[  7/2  ]] @canvas, $y$ = [[  4  ]] @canvas und $z$ = [[  3/2  ]] @canvas
 @Algebrite.check([ 7/2; 4; 3/2 ])
 ************
 Bezeichne mit $x$ die Liter von Saft A, mit $y$ die Liter von Saft B und mit $z$ die Liter von Saft C.

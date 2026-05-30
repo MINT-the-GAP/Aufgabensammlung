@@ -63,7 +63,7 @@ I.& \qquad 2x + y = 11 \\
 II.& \qquad x + 3y = 13  
 \end{align*}
 $$  
-$x$ = [[  4  ]]  und  $y$ = [[  3  ]]
+$x$ = [[  4  ]] @canvas  und  $y$ = [[  3  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -91,7 +91,7 @@ I.& \qquad 3x + 2y = 19 \\
 II.& \qquad 2x + y  = 12  
 \end{align*}
 $$  
-$x$ = [[  5  ]]  und  $y$ = [[  2  ]]
+$x$ = [[  5  ]] @canvas  und  $y$ = [[  2  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -119,7 +119,7 @@ I.& \qquad x + y &= 9 \\
 II.& \qquad 2x - y &= 3  
 \end{align*}
 $$  
-$x$ = [[  4  ]]  und  $y$ = [[  5  ]]
+$x$ = [[  4  ]] @canvas  und  $y$ = [[  5  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -146,7 +146,7 @@ I.& \qquad 4x - y &= 7 \\
 II.& \qquad x + 2y &= 13  
 \end{align*}
 $$  
-$x$ = [[  3  ]]  und  $y$ = [[  5  ]]
+$x$ = [[  3  ]] @canvas  und  $y$ = [[  5  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -176,7 +176,7 @@ I.& \qquad 3x + y &= 16 \\
 II.& \qquad 2x + 3y &= 20  
 \end{align*}
 $$  
-$x$ = [[  4  ]]  und  $y$ = [[  4  ]]
+$x$ = [[  4  ]] @canvas  und  $y$ = [[  4  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -204,7 +204,7 @@ I.& \qquad 4x + y &= 24 \\
 II.& \qquad x + 2y &= 13  
 \end{align*}
 $$  
-$x$ = [[  5  ]]  und  $y$ = [[  4  ]]
+$x$ = [[  5  ]] @canvas  und  $y$ = [[  4  ]] @canvas
 ************
 $$
 \begin{align*}

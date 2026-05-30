@@ -58,7 +58,7 @@ Bei einer Veranstaltung werden drei Ticketarten verkauft: Einzeltickets zu 2 €
 **Berechne** die Anzahl der drei Ticketarten.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  10  ]], $y$ = [[  8  ]] und $z$ = [[  6  ]]
+$x$ = [[  10  ]] @canvas, $y$ = [[  8  ]] @canvas und $z$ = [[  6  ]] @canvas
 @Algebrite.check([ 10; 8; 6 ])
 ************
 Bezeichne mit $x$ die Anzahl der Einzeltickets, mit $y$ die Anzahl der Tagestickets und mit $z$ die Anzahl der ermäßigten Tickets.

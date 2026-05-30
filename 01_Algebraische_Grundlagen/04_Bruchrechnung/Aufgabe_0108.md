@@ -59,7 +59,7 @@ author: Martin Lommatzsch
 Ein Geldbetrag von $30$ € steht zur Verfügung. Es werden $\dfrac{1}{6}$ davon ausgegeben.  
 **Bestimme**, wie viele Euro übrig bleiben. 
 
-[[  25  ]] €
+[[  25  ]] @canvas €
 ************
 $$
 30\,\text{€} - \dfrac{1}{6}\cdot 30\,\text{€}

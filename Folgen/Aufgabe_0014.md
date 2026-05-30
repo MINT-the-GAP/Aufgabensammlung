@@ -53,7 +53,7 @@ author: Martin Lommatzsch
 
 
 
-$1 \quad 7 \quad 19 \quad 37 \quad 61 \quad 91 \quad 127 \quad $ [[ 169 ]] $\quad$ [[ 217 ]] $\quad$ [[ 271 ]] \
+$1 \quad 7 \quad 19 \quad 37 \quad 61 \quad 91 \quad 127 \quad $ [[ 169 ]] @canvas $\quad$ [[ 217 ]] @canvas $\quad$ [[ 271 ]] @canvas \
 
 [[?]] Musterbeschreibung: Von der kubischen Zahl wird die vorherige kubische Zahl subtrahiert.
 

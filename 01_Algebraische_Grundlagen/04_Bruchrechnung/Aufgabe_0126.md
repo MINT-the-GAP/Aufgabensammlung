@@ -59,7 +59,7 @@ Für die Reinigung steht eine $5\,\ell$-Kanisterlösung bereit. Zuerst verschüt
 **Berechne** das restliche Volumen im Kanister. 
 
 <!-- data-solution-button="5"-->
-[[  21/8  ]] $\ell$
+[[  21/8  ]] @canvas $\ell$
 @Algebrite.check(21/8)
 ************
 $$

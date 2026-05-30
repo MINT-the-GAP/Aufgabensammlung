@@ -61,7 +61,7 @@ __$a)\;\;$__
 </center>
 
 <!-- data-solution-button="5"-->
-[[  6-1   ]] $= 5$
+[[  6-1   ]] @canvas $= 5$
 
 </div>
 
@@ -75,7 +75,7 @@ __$b)\;\;$__
 </center>
 
 <!-- data-solution-button="5"-->
-[[  7-4   ]] $= 3$
+[[  7-4   ]] @canvas $= 3$
 
 </div>
 </section>

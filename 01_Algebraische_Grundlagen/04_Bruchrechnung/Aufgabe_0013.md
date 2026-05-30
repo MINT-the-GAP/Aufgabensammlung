@@ -60,7 +60,7 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $  \dfrac{5}{12} + \dfrac{1}{6} = $ [[  7/12  ]]
+__$a)\;\;$__ $  \dfrac{5}{12} + \dfrac{1}{6} = $ [[  7/12  ]] @canvas
 @Algebrite.check(7/12)
 ************
 $$
@@ -75,7 +75,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $  \dfrac{9}{16} + \dfrac{1}{8} = $ [[  11/16  ]]
+__$b)\;\;$__ $  \dfrac{9}{16} + \dfrac{1}{8} = $ [[  11/16  ]] @canvas
 @Algebrite.check(11/16)
 ************
 $$
@@ -90,7 +90,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $  \dfrac{5}{18} + \dfrac{1}{9} = $ [[  7/18  ]]
+__$c)\;\;$__ $  \dfrac{5}{18} + \dfrac{1}{9} = $ [[  7/18  ]] @canvas
 @Algebrite.check(7/18)
 ************
 $$
@@ -105,7 +105,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $  \dfrac{15}{28} + \dfrac{1}{7} = $ [[  19/28  ]]
+__$d)\;\;$__ $  \dfrac{15}{28} + \dfrac{1}{7} = $ [[  19/28  ]] @canvas
 @Algebrite.check(19/28)
 ************
 $$
@@ -120,7 +120,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $  \dfrac{8}{21} + \dfrac{1}{7} = $ [[  11/21  ]]
+__$e)\;\;$__ $  \dfrac{8}{21} + \dfrac{1}{7} = $ [[  11/21  ]] @canvas
 @Algebrite.check(11/21)
 ************
 $$
@@ -135,7 +135,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$f)\;\;$__ $  \dfrac{16}{30} + \dfrac{1}{10} = $ [[  19/30  ]]
+__$f)\;\;$__ $  \dfrac{16}{30} + \dfrac{1}{10} = $ [[  19/30  ]] @canvas
 @Algebrite.check(22/30)
 ************
 $$

@@ -61,7 +61,7 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $  \dfrac{1}{2} + \dfrac{2}{3} \cdot \dfrac{3}{4} = $ [[  1  ]]
+__$a)\;\;$__ $  \dfrac{1}{2} + \dfrac{2}{3} \cdot \dfrac{3}{4} = $ [[  1  ]] @canvas
 @Algebrite.check(1)
 ************
 $$
@@ -77,7 +77,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $  \dfrac{5}{6} - \dfrac{1}{2} \cdot \dfrac{2}{3} = $ [[  1/2  ]]
+__$b)\;\;$__ $  \dfrac{5}{6} - \dfrac{1}{2} \cdot \dfrac{2}{3} = $ [[  1/2  ]] @canvas
 @Algebrite.check(1/2)
 ************
 $$
@@ -93,7 +93,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $  \dfrac{3}{4} + \dfrac{2}{5} : \dfrac{1}{2} = $ [[  31/20  ]]
+__$c)\;\;$__ $  \dfrac{3}{4} + \dfrac{2}{5} : \dfrac{1}{2} = $ [[  31/20  ]] @canvas
 @Algebrite.check(31/20)
 ************
 $$
@@ -110,7 +110,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $  \dfrac{7}{8} - \dfrac{3}{4} : \dfrac{3}{2} = $ [[  3/8  ]]
+__$d)\;\;$__ $  \dfrac{7}{8} - \dfrac{3}{4} : \dfrac{3}{2} = $ [[  3/8  ]] @canvas
 @Algebrite.check(3/8)
 ************
 $$
@@ -129,7 +129,7 @@ $$
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $  \dfrac{2}{3} + \dfrac{4}{9} \cdot \dfrac{3}{8} = $ [[  5/6  ]]
+__$e)\;\;$__ $  \dfrac{2}{3} + \dfrac{4}{9} \cdot \dfrac{3}{8} = $ [[  5/6  ]] @canvas
 @Algebrite.check(5/6)
 ************
 $$
@@ -147,7 +147,7 @@ $$
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$f)\;\;$__ $  \dfrac{5}{12} - \dfrac{1}{6} \cdot \dfrac{3}{4} = $ [[  7/24  ]]
+__$f)\;\;$__ $  \dfrac{5}{12} - \dfrac{1}{6} \cdot \dfrac{3}{4} = $ [[  7/24  ]] @canvas
 @Algebrite.check(7/24)
 ************
 $$

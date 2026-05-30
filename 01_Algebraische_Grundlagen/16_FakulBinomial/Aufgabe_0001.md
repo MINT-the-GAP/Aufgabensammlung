@@ -52,22 +52,22 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 <div class="flex-child">
 
-__$a)\;\;$__ $ 5! = $ [[ 120  ]]
+__$a)\;\;$__ $ 5! = $ [[ 120  ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$b)\;\;$__ $ 7! = $ [[ 5040 ]]
+__$b)\;\;$__ $ 7! = $ [[ 5040 ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$c)\;\;$__ $ \dfrac{ 9! }{ 7! } = $ [[  72  ]]
+__$c)\;\;$__ $ \dfrac{ 9! }{ 7! } = $ [[  72  ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ $ \dfrac{ 8! }{ 5! \cdot 3! } = $ [[ 56   ]]
+__$d)\;\;$__ $ \dfrac{ 8! }{ 5! \cdot 3! } = $ [[ 56   ]] @canvas
 
 </div>
 </section>

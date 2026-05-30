@@ -55,31 +55,31 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ [[ 1000 ]] Millimeter sind ein Meter. \
+__$a)\;\;$__ [[ 1000 ]] @canvas Millimeter sind ein Meter. \
 
 
 </div>
 <div class="flex-child">
 
-__$b)\;\;$__ Eine Tonne sind [[ 1000 ]] Kilogramm. \
+__$b)\;\;$__ Eine Tonne sind [[ 1000 ]] @canvas Kilogramm. \
 
 
 </div>
 <div class="flex-child">
 
-__$c)\;\;$__ Ein Dezimeter entsprechen [[ 100  ]] Millimeter. \
+__$c)\;\;$__ Ein Dezimeter entsprechen [[ 100  ]] @canvas Millimeter. \
 
 
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ Eine Minute besitzt [[ 60   ]] Sekunden. \
+__$d)\;\;$__ Eine Minute besitzt [[ 60   ]] @canvas Sekunden. \
 
 
 </div>
 <div class="flex-child">
 
-__$e)\;\;$__ $10$ Dezimeter sind [[   1  ]] Meter. \
+__$e)\;\;$__ $10$ Dezimeter sind [[   1  ]] @canvas Meter. \
 
 </div>
 

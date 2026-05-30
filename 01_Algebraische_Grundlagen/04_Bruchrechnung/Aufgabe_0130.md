@@ -60,7 +60,7 @@ Im Laufe des Tages werden zusätzlich $\dfrac{1}{4}$ des **vollen Beckens** nach
 **Bestimme**, wie viele Liter Wasser am Abend im Becken sind. 
 
 <!-- data-solution-button="5"-->
-[[  78  ]] $\ell$
+[[  78  ]] @canvas $\ell$
 ************
 $$
 \text{Morgenfüllung:}\quad \dfrac{2}{5}\cdot 120 = 48\,\ell \\

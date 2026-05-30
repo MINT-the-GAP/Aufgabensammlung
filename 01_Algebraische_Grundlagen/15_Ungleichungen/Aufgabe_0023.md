@@ -59,7 +59,7 @@ Für eine Veranstaltung stehen bereits 12 Stühle bereit. Pro zusätzlich aufges
 **Berechne** die kleinste natürliche Zahl $x$ (zusätzliche Reihen), sodass insgesamt mindestens 47 Stühle vorhanden sind.
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \{ x \in \mathbb{N} \;|\; x \geq $ [[ 7 ]] $\}$
+$\mathbb{L} = \{ x \in \mathbb{N} \;|\; x \geq $ [[ 7 ]] @canvas $\}$
 @Algebrite.check(7)
 ******************
 $$

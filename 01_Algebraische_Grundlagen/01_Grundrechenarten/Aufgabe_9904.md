@@ -79,7 +79,7 @@ let B = ri(1000, A);
 const C = A - B;
 
 // Aufgabe: nur Differenz gesucht
-const problem = `${A} - ${B} = [[ ${C} ]]`;
+const problem = `${A} - ${B} = [[ ${C} ]] @canvas`;
 
 // Leih-Zeile für Subtraktion
 function borrowLineSub(minuend, subtrahend) {

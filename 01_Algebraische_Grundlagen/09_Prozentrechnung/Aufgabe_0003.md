@@ -53,32 +53,32 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $ 2,64 =$ [[  264  ]]%
+__$a)\;\;$__ $ 2,64 =$ [[  264  ]] @canvas%
 
 </div> 
 <div class="flex-child">
 
-__$b)\;\;$__ $ 0,212 =$ [[  21,2  ]]%
+__$b)\;\;$__ $ 0,212 =$ [[  21,2  ]] @canvas%
 
 </div> 
 <div class="flex-child">
 
-__$c)\;\;$__ $ 0,3658 =$ [[  36,58  ]]%
+__$c)\;\;$__ $ 0,3658 =$ [[  36,58  ]] @canvas%
 
 </div> 
 <div class="flex-child">
 
-__$d)\;\;$__ $ 0,025 =$ [[  2,5  ]]%
+__$d)\;\;$__ $ 0,025 =$ [[  2,5  ]] @canvas%
 
 </div> 
 <div class="flex-child">
 
-__$e)\;\;$__ $ 0,84 =$ [[  84  ]]%
+__$e)\;\;$__ $ 0,84 =$ [[  84  ]] @canvas%
 
 </div> 
 <div class="flex-child">
 
-__$f)\;\;$__ $ 0,9 =$ [[  90  ]]%
+__$f)\;\;$__ $ 0,9 =$ [[  90  ]] @canvas%
 
 </div> 
 </section>

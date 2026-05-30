@@ -64,7 +64,7 @@ author: Martin Lommatzsch
 
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ Wie viel sind $\dfrac{7}{4}$ von $\dfrac{2}{3}$ von $35\,$€?  \
-[[  245/6  ]]€
+[[  245/6  ]] @canvas€
 @Algebrite.check(245/6)
 ************
 $$
@@ -83,7 +83,7 @@ $$
 
 <!-- data-solution-button="5"-->
 __$b)\;\;$__ Wie viel sind $\dfrac{9}{8}$ von $\dfrac{2}{5}$ von $55\,$kg?  \
-[[  99/4  ]]kg
+[[  99/4  ]] @canvaskg
 @Algebrite.check(99/4)
 ************
 $$
@@ -102,7 +102,7 @@ $$
 
 <!-- data-solution-button="5"-->
 __$c)\;\;$__ Wie viel sind $\dfrac{11}{12}$ von $\dfrac{5}{7}$ von $80\,\ell$?  \
-[[  1100/21  ]] $\ell$
+[[  1100/21  ]] @canvas $\ell$
 @Algebrite.check(1100/21)
 ************
 $$
@@ -121,7 +121,7 @@ $$
 
 <!-- data-solution-button="5"-->
 __$d)\;\;$__ Wie viel sind $\dfrac{5}{6}$ von $\dfrac{7}{9}$ von $65\,$m?  \
-[[  2275/54  ]]m
+[[  2275/54  ]] @canvasm
 @Algebrite.check(2275/54)
 ************
 $$
@@ -139,7 +139,7 @@ $$
 
 <!-- data-solution-button="5"-->
 __$e)\;\;$__ Wie viel sind $\dfrac{4}{5}$ von $\dfrac{3}{8}$ von $96\,$min?  \
-[[  144/5  ]]min
+[[  144/5  ]] @canvasmin
 @Algebrite.check(144/5)
 ************
 $$
@@ -158,7 +158,7 @@ $$
 
 <!-- data-solution-button="5"-->
 __$f)\;\;$__ Wie viel sind $\dfrac{13}{10}$ von $\dfrac{3}{4}$ von $30\,$€?  \
-[[  117/4  ]]€
+[[  117/4  ]] @canvas€
 @Algebrite.check(117/4)
 ************
 $$

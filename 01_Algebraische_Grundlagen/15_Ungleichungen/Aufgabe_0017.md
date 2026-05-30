@@ -67,7 +67,7 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $\dfrac{4}{5}x + \dfrac{2}{3} \geq \dfrac{1}{2}x + \dfrac{5}{6}$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \geq $   [[  5/9  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \geq $   [[  5/9  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(5/9)
 ******************
 $$
@@ -85,7 +85,7 @@ $$
 __$b)\;\;$__ $\dfrac{3}{4}x - \dfrac{5}{2} < \dfrac{1}{2}x + 1$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  13  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  13  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(13)
 ******************
 $$
@@ -103,7 +103,7 @@ $$
 __$c)\;\;$__ $\dfrac{2}{3}x + \dfrac{1}{3} > x - \dfrac{4}{3}$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \leq $   [[  4  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \leq $   [[  4  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(4)
 ******************
 $$
@@ -121,7 +121,7 @@ $$
 __$d)\;\;$__ $-\dfrac{3}{2}x - 1 \ge \dfrac{1}{4}x - \dfrac{3}{2}$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  2/7  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  2/7  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(2/7)
 ******************
 $$
@@ -139,7 +139,7 @@ $$
 __$e)\;\;$__ $\dfrac{1}{3}x + \dfrac{2}{3} > -\dfrac{1}{6}x - \dfrac{1}{2}$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  -2  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  -2  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(-2)
 ******************
 $$
@@ -157,7 +157,7 @@ $$
 __$f)\;\;$__ $-\dfrac{1}{2}x + \dfrac{1}{3} > \dfrac{1}{6}x - \dfrac{1}{2}$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x < $   [[  5/4  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x < $   [[  5/4  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(5/4)
 ******************
 $$

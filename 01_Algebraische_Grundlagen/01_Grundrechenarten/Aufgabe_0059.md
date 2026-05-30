@@ -61,7 +61,7 @@ __$a)\;\;$__
 
 ![Holzperlen](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa5.jpg)
 
-[[ 380  ]] Holzperlen
+[[ 380  ]] @canvas Holzperlen
 @Algebrite.check_margin(350,410)
 
 
@@ -73,7 +73,7 @@ __$b)\;\;$__
 
 ![Reiskörner](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa6.jpg)
 
-[[ 2000 ]] Reiskörner
+[[ 2000 ]] @canvas Reiskörner
 @Algebrite.check_margin(1800,2300)
 
 

@@ -62,7 +62,7 @@ Von der bis dahin vorbereiteten Gesamtlänge werden anschließend $\dfrac{2}{15}
 
 
 <!-- data-solution-button="5"-->
-[[  4897/864  ]] m
+[[  4897/864  ]] @canvas m
 @Algebrite.check(4897/864)
 ************
 $$

@@ -53,12 +53,12 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $ 65:7 - 16:7 =$ [[  7  ]]
+__$a)\;\;$__ $ 65:7 - 16:7 =$ [[  7  ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$b)\;\;$__ $ 23:9 + 58:9 =$ [[  9  ]]
+__$b)\;\;$__ $ 23:9 + 58:9 =$ [[  9  ]] @canvas
 
 </div>
 </section>

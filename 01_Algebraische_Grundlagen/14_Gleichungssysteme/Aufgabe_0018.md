@@ -56,7 +56,7 @@ Beim Klassenflohmarkt verkauft die betrachte Klasse Postkarten und Lesezeichen. 
 
 
 <!-- data-solution-button="5"-->
-$x$ = [[  24  ]] und $y$ = [[  10  ]]
+$x$ = [[  24  ]] @canvas und $y$ = [[  10  ]] @canvas
 @Algebrite.check([ 24; 10 ])
 ************
 Bezeichne mit $x$ die Anzahl der Postkarten und mit $y$ die Anzahl der Lesezeichen.

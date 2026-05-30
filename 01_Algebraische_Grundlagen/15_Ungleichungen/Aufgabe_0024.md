@@ -59,7 +59,7 @@ Für Arbeitsblätter werden bereits 9 Kopien bereitgehalten. Ein zusätzliches B
 **Berechne** die kleinste natürliche Zahl $x$ (zusätzliche Bündel), sodass insgesamt mindestens 81 Kopien vorliegen.
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \{ x \in \mathbb{N} \;|\; x \geq $ [[ 6 ]] $\}$
+$\mathbb{L} = \{ x \in \mathbb{N} \;|\; x \geq $ [[ 6 ]] @canvas $\}$
 @Algebrite.check(6)
 ******************
 $$

@@ -70,7 +70,7 @@ II.& \qquad 4x - 6y + 10z = -3 \\
 III.& \qquad -4x + 12y - 30z = 13
 \end{align*}
 $$
-$x$ = [[  3/4  ]],  $y$ = [[  1/3  ]]  und  $z$ = [[  -2/5  ]]
+$x$ = [[  3/4  ]] @canvas,  $y$ = [[  1/3  ]] @canvas  und  $z$ = [[  -2/5  ]] @canvas
 @Algebrite.check([ 3/4; 1/3; -2/5 ])
 ************
 $$
@@ -99,7 +99,7 @@ II.& \qquad 12x - 8y + 3z = -10 \\
 III.& \qquad -6x + 16y - 12z = 7
 \end{align*}
 $$
-$x$ = [[  -1/2  ]],  $y$ = [[  3/4  ]]  und  $z$ = [[  2/3  ]]
+$x$ = [[  -1/2  ]] @canvas,  $y$ = [[  3/4  ]] @canvas  und  $z$ = [[  2/3  ]] @canvas
 @Algebrite.check([ -1/2; 3/4; 2/3 ])
 ************
 $$
@@ -128,7 +128,7 @@ II.& \qquad 12x - 6y + 6z = 15 \\
 III.& \qquad -9x + 12y - 15z = -19
 \end{align*}
 $$
-$x$ = [[  5/6  ]],  $y$ = [[  -1/3  ]]  und  $z$ = [[  1/2  ]]
+$x$ = [[  5/6  ]] @canvas,  $y$ = [[  -1/3  ]] @canvas  und  $z$ = [[  1/2  ]] @canvas
 @Algebrite.check([ 5/6; -1/3; 1/2 ])
 ************
 $$
@@ -157,7 +157,7 @@ II.& \qquad 15x - 10y + 8z = -3 \\
 III.& \qquad -5x + 20y - 12z = 15
 \end{align*}
 $$
-$x$ = [[  2/5  ]],  $y$ = [[  7/10  ]]  und  $z$ = [[  -1/4  ]]
+$x$ = [[  2/5  ]] @canvas,  $y$ = [[  7/10  ]] @canvas  und  $z$ = [[  -1/4  ]] @canvas
 @Algebrite.check([ 2/5; 7/10; -1/4 ])
 ************
 $$

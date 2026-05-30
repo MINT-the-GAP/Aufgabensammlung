@@ -54,22 +54,22 @@ author: Martin Lommatzsch
 
 <section class="dynFlex">
 <div class="flex-child">
-__$a)\;\;$__ $-10^3 = $ [[ -1000 ]]
+__$a)\;\;$__ $-10^3 = $ [[ -1000 ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$b)\;\;$__ $-10^2 = $ [[  -100  ]]
+__$b)\;\;$__ $-10^2 = $ [[  -100  ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$c)\;\;$__ $(-10)^3 = $ [[  -1000   ]]
+__$c)\;\;$__ $(-10)^3 = $ [[  -1000   ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ $(-10)^4 = $ [[ 10000 ]]
+__$d)\;\;$__ $(-10)^4 = $ [[ 10000 ]] @canvas
 
 
 </div>

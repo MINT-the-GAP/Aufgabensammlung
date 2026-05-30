@@ -60,7 +60,7 @@ Die Höhenanzeige der Aufzüge kann auch Zwischenwerte zwischen zwei Ebenen anze
 
 
 <!-- data-solution-button="5"-->
-$x$ = [[  24/7  ]]
+$x$ = [[  24/7  ]] @canvas
 @Algebrite.check(24/7)
 ************
 $$

@@ -57,37 +57,37 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $3\,\text{m} = $ [[  300  ]] $\,\text{cm}$ \
+__$a)\;\;$__ $3\,\text{m} = $ [[  300  ]] @canvas $\,\text{cm}$ \
 
 </div>
 
 <div class="flex-child">
 
-__$b)\;\;$__ $12\,\text{m} = $ [[  120  ]] $\,\text{dm}$ \
+__$b)\;\;$__ $12\,\text{m} = $ [[  120  ]] @canvas $\,\text{dm}$ \
 
 </div>
 
 <div class="flex-child">
 
-__$c)\;\;$__ $8000\,\text{mm} = $ [[   8   ]] $\,\text{m}$ \
+__$c)\;\;$__ $8000\,\text{mm} = $ [[   8   ]] @canvas $\,\text{m}$ \
 
 </div>
 
 <div class="flex-child">
 
-__$d)\;\;$__ $17\,\text{m} = $ [[ 17000 ]] $\,\text{mm}$ \
+__$d)\;\;$__ $17\,\text{m} = $ [[ 17000 ]] @canvas $\,\text{mm}$ \
 
 </div>
 
 <div class="flex-child">
 
-__$e)\;\;$__ $5000\,\text{m} = $ [[   5   ]] $\,\text{km}$ \
+__$e)\;\;$__ $5000\,\text{m} = $ [[   5   ]] @canvas $\,\text{km}$ \
 
 </div>
 
 <div class="flex-child">
 
-__$f)\;\;$__ $37\,\text{dm} = $ [[  370  ]] $\,\text{cm}$ \
+__$f)\;\;$__ $37\,\text{dm} = $ [[  370  ]] @canvas $\,\text{cm}$ \
 
 </div>
 

@@ -57,7 +57,7 @@ Ein Kartenspiel besteht aus grünen und blauen Karten. Insgesamt sind es 28 Kart
 **Berechne** die Anzahl der grünen und der blauen Karten.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  14  ]] und $y$ = [[  14  ]]
+$x$ = [[  14  ]] @canvas und $y$ = [[  14  ]] @canvas
 @Algebrite.check([ 14; 14 ])
 ************
 Bezeichne mit $x$ die Anzahl der grünen Karten (3 Punkte) und mit $y$ die Anzahl der blauen Karten (5 Punkte).

@@ -57,7 +57,7 @@ Ein zweiter Behälter enthält anfangs 14 Liter Wasser, verliert jedoch jeden Ta
 **Berechne**, nach wie vielen Tagen beide Behälter gleich viel Wasser enthalten.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  12/5  ]]
+$x$ = [[  12/5  ]] @canvas
 @Algebrite.check(12/5)
 ************
 $$

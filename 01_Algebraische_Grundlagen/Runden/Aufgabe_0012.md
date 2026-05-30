@@ -53,17 +53,17 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 <div class="flex-child">
 
-__$a)\;\;$__ $0,\overline{8} \approx$ [[ 0,889 ]] 
+__$a)\;\;$__ $0,\overline{8} \approx$ [[ 0,889 ]] @canvas 
 
 </div>
 <div class="flex-child">
 
-__$b)\;\;$__ $1,\overline{35} \approx$ [[ 1,354 ]] 
+__$b)\;\;$__ $1,\overline{35} \approx$ [[ 1,354 ]] @canvas 
 
 </div>
 <div class="flex-child">
 
-__$c)\;\;$__ $7,\overline{645891} \approx$ [[ 7,646 ]] 
+__$c)\;\;$__ $7,\overline{645891} \approx$ [[ 7,646 ]] @canvas 
 
 </div>
 </section>

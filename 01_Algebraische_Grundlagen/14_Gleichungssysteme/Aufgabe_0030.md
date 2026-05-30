@@ -57,7 +57,7 @@ Du planst in einer Woche Einheiten in drei Ausdauersportarten: Laufen, Radfahren
 **Berechne** die Anzahl der Einheiten in den drei Sportarten.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  5  ]], $y$ = [[  6  ]] und $z$ = [[  3  ]]
+$x$ = [[  5  ]] @canvas, $y$ = [[  6  ]] @canvas und $z$ = [[  3  ]] @canvas
 @Algebrite.check([ 5; 6; 3 ])
 ************
 Bezeichne mit $x$ die Anzahl der Laufeinheiten, mit $y$ die Anzahl der Radeinheiten und mit $z$ die Anzahl der Schwimmeinheiten.

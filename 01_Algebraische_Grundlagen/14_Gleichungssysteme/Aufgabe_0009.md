@@ -73,7 +73,7 @@ II.& \qquad 2x - y + z = 8 \\
 III.& \qquad x + 2y - z = 1  
 \end{align*}
 $$  
-$x$ = [[  2  ]], $y$ = [[  3  ]], $z$ = [[  7  ]]
+$x$ = [[  2  ]] @canvas, $y$ = [[  3  ]] @canvas, $z$ = [[  7  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -111,7 +111,7 @@ II.& \qquad 2x - y + z = 9 \\
 III.& \qquad x + 3y - z = 4  
 \end{align*}
 $$  
-$x$ = [[  3  ]], $y$ = [[  2  ]], $z$ = [[  5  ]]
+$x$ = [[  3  ]] @canvas, $y$ = [[  2  ]] @canvas, $z$ = [[  5  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -150,7 +150,7 @@ II.& \qquad x + 2y + 3z = 24 \\
 III.& \qquad 3x - y + z = 17  
 \end{align*}
 $$  
-$x$ = [[  4  ]], $y$ = [[  1  ]], $z$ = [[  6  ]]
+$x$ = [[  4  ]] @canvas, $y$ = [[  1  ]] @canvas, $z$ = [[  6  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -187,7 +187,7 @@ II.& \qquad 2x + y - z = 11 \\
 III.& \qquad x - y + 2z = 7  
 \end{align*}
 $$  
-$x$ = [[  5  ]], $y$ = [[  4  ]], $z$ = [[  3  ]]
+$x$ = [[  5  ]] @canvas, $y$ = [[  4  ]] @canvas, $z$ = [[  3  ]] @canvas
 ************
 $$
 \begin{align*}

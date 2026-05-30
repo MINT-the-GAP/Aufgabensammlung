@@ -53,17 +53,17 @@ author: Martin Lommatzsch
 
 
 
-$a)\;\; \text{kgV}(15;35):\text{ggT}(42;91) =$ [[  15 ]]
+$a)\;\; \text{kgV}(15;35):\text{ggT}(42;91) =$ [[  15 ]] @canvas
 
 
 
-$b)\;\; \text{ggT}(72;132) \cdot \text{ggT}(105;45) =$ [[  60 ]]
+$b)\;\; \text{ggT}(72;132) \cdot \text{ggT}(105;45) =$ [[  60 ]] @canvas
 
 
 
-$c)\;\; \text{kgV}\left(\text{ggT}(14;49);\text{ggT}(256;36)\right) =$ [[ 28  ]]
+$c)\;\; \text{kgV}\left(\text{ggT}(14;49);\text{ggT}(256;36)\right) =$ [[ 28  ]] @canvas
 
 
 
-$d)\;\; \text{ggT}\left(\text{kgV}(8;6);\text{kgV}(16;12)\right)  =$ [[ 12  ]]
+$d)\;\; \text{ggT}\left(\text{kgV}(8;6);\text{kgV}(16;12)\right)  =$ [[ 12  ]] @canvas
 

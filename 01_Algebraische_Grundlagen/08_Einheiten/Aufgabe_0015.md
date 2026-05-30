@@ -57,37 +57,37 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $2\,\text{cm}^2 = $ [[  200  ]] $\,\text{mm}^2$ \
+__$a)\;\;$__ $2\,\text{cm}^2 = $ [[  200  ]] @canvas $\,\text{mm}^2$ \
 
 </div>
 
 <div class="flex-child">
 
-__$b)\;\;$__ $1\,\text{m}^2 = $ [[ 10000 ]] $\,\text{cm}^2$ \
+__$b)\;\;$__ $1\,\text{m}^2 = $ [[ 10000 ]] @canvas $\,\text{cm}^2$ \
 
 </div>
 
 <div class="flex-child">
 
-__$c)\;\;$__ $11\,\text{dm}^2 = $ [[ 1100  ]] $\,\text{cm}^2$ \
+__$c)\;\;$__ $11\,\text{dm}^2 = $ [[ 1100  ]] @canvas $\,\text{cm}^2$ \
 
 </div>
 
 <div class="flex-child">
 
-__$d)\;\;$__ $3\,\text{m}^2 = $ [[  300  ]] $\,\text{dm}^2$ \
+__$d)\;\;$__ $3\,\text{m}^2 = $ [[  300  ]] @canvas $\,\text{dm}^2$ \
 
 </div>
 
 <div class="flex-child">
 
-__$e)\;\;$__ $400\,\text{dm}^2 = $ [[   4   ]] $\,\text{m}^2$ \
+__$e)\;\;$__ $400\,\text{dm}^2 = $ [[   4   ]] @canvas $\,\text{m}^2$ \
 
 </div>
 
 <div class="flex-child">
 
-__$f)\;\;$__ $1000\,\text{mm}^2 = $ [[   10  ]] $\,\text{cm}^2$ \
+__$f)\;\;$__ $1000\,\text{mm}^2 = $ [[   10  ]] @canvas $\,\text{cm}^2$ \
 
 </div>
 

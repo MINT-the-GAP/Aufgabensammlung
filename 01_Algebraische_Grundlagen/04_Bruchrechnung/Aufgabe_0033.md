@@ -63,7 +63,7 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $  \dfrac{3}{4} : 2 = $ [[  3/8  ]]
+__$a)\;\;$__ $  \dfrac{3}{4} : 2 = $ [[  3/8  ]] @canvas
 @Algebrite.check(3/8)
 ************
 $$
@@ -79,7 +79,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $  \dfrac{5}{6} : 5 = $ [[  1/6  ]]
+__$b)\;\;$__ $  \dfrac{5}{6} : 5 = $ [[  1/6  ]] @canvas
 @Algebrite.check(1/6)
 ************
 $$
@@ -95,7 +95,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $  \dfrac{7}{8} : 7 = $ [[  1/8  ]]
+__$c)\;\;$__ $  \dfrac{7}{8} : 7 = $ [[  1/8  ]] @canvas
 @Algebrite.check(1/8)
 ************
 $$
@@ -111,7 +111,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $  \dfrac{9}{10} : 3 = $ [[  3/10  ]]
+__$d)\;\;$__ $  \dfrac{9}{10} : 3 = $ [[  3/10  ]] @canvas
 @Algebrite.check(3/10)
 ************
 $$
@@ -128,7 +128,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $  \dfrac{4}{9} : 2 = $ [[  2/9  ]]
+__$e)\;\;$__ $  \dfrac{4}{9} : 2 = $ [[  2/9  ]] @canvas
 @Algebrite.check(2/9)
 ************
 $$
@@ -145,7 +145,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$f)\;\;$__ $  \dfrac{10}{11} : 5 = $ [[  2/11  ]]
+__$f)\;\;$__ $  \dfrac{10}{11} : 5 = $ [[  2/11  ]] @canvas
 @Algebrite.check(2/11)
 ************
 $$

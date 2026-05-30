@@ -54,25 +54,25 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 __$a)\;\;$__ $ \textcolor{red}{7} + 9 = 16$ \
-[[    Summand         ]]
+[[    Summand         ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ $ \textcolor{red}{9}-7 = 2 $ \
-[[    Minuend         ]]
+[[    Minuend         ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ $ \textcolor{red}{55}:11 = 11$ \
-[[        Dividend     ]]
+[[        Dividend     ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ $ 16 = \textcolor{red}{2 \cdot 8}$ \
-[[          Produkt   ]]
+[[          Produkt   ]] @canvas
 
 </div>
 </section>

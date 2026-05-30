@@ -68,7 +68,7 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $-\dfrac{3}{2}(x-4) + 1 > \dfrac{1}{3}(x+5) - 2$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x < $   [[  4  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x < $   [[  4  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(4)
 ******************
 $$
@@ -88,7 +88,7 @@ $$
 __$b)\;\;$__ $\dfrac{5}{4}(x+2) \leq x + \dfrac{9}{2}$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \leq $   [[  8  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \leq $   [[  8  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(8)
 ******************
 $$
@@ -107,7 +107,7 @@ $$
 __$c)\;\;$__ $-2\!\left(x-\dfrac{3}{2}\right) + \dfrac{1}{2} \;\ge\; \dfrac{1}{2}(x-1) - 3$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  14/5  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  14/5  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(14/5)
 ******************
 $$
@@ -127,7 +127,7 @@ $$
 __$d)\;\;$__ $\dfrac{3}{2}(x-4) - \dfrac{1}{3}x \;>\; -\dfrac{1}{6}(2x-3) + 5$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  8  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  8  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(8)
 ******************
 $$
@@ -147,7 +147,7 @@ $$
 __$e)\;\;$__ $-\,\dfrac{2}{3}(x+6) + \dfrac{5}{3} \;\le\; \dfrac{1}{2}(3x-2) - 1$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \geq $   [[  -2/13  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \geq $   [[  -2/13  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(-2/13)
 ******************
 $$
@@ -167,7 +167,7 @@ $$
 __$f)\;\;$__ $\dfrac{4}{3}(x-1) \;>\; \dfrac{2}{3}x + \dfrac{1}{3}$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $   [[  3  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $   [[  3  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(3)
 ******************
 $$

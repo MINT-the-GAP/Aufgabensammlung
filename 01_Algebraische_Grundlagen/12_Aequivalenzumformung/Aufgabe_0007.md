@@ -55,15 +55,15 @@ author: Martin Lommatzsch
 
 <!-- style="width:600px" -->
 __$a)\;\;$__ ![](Kap2/waage1c.png)  
-$x=$ [[  4    ]] kg
+$x=$ [[  4    ]] @canvas kg
 
 <!-- style="width:600px" -->
 __$b)\;\;$__ ![](Kap2/waage1f.png)  
-$x=$ [[  5    ]] kg
+$x=$ [[  5    ]] @canvas kg
 
 <!-- style="width:600px" -->
 __$c)\;\;$__ ![](Kap2/waage1i.png)  
-$x=$ [[  1,56  ]] kg
+$x=$ [[  1,56  ]] @canvas kg
 
 
 

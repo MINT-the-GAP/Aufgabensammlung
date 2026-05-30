@@ -57,7 +57,7 @@ Der zweite startet 10 m unter der Wasseroberfläche und taucht gleichmäßig pro
 **Berechne**, nach wie vielen Minuten beide Roboter in der gleichen Tiefe sind.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  100/11  ]]
+$x$ = [[  100/11  ]] @canvas
 @Algebrite.check(100/11)
 ************
 $$

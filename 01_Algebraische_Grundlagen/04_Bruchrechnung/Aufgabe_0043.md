@@ -62,7 +62,7 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $  \dfrac{2}{3} \cdot \dfrac{5}{7} = $ [[  10/21  ]]
+__$a)\;\;$__ $  \dfrac{2}{3} \cdot \dfrac{5}{7} = $ [[  10/21  ]] @canvas
 @Algebrite.check(10/21)
 ************
 $$
@@ -77,7 +77,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $  \dfrac{9}{14} : \dfrac{3}{7} = $ [[  3/2  ]]
+__$b)\;\;$__ $  \dfrac{9}{14} : \dfrac{3}{7} = $ [[  3/2  ]] @canvas
 @Algebrite.check(3/2)
 ************
 $$
@@ -93,7 +93,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $  \dfrac{7}{8} \cdot \dfrac{6}{11} = $  [[  21/44  ]]
+__$c)\;\;$__ $  \dfrac{7}{8} \cdot \dfrac{6}{11} = $  [[  21/44  ]] @canvas
 @Algebrite.check(21/44)
 ************
 $$
@@ -109,7 +109,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $  \dfrac{10}{21} : \dfrac{5}{14} = $ [[  4/3  ]]
+__$d)\;\;$__ $  \dfrac{10}{21} : \dfrac{5}{14} = $ [[  4/3  ]] @canvas
 @Algebrite.check(4/3)
 ************
 $$
@@ -125,7 +125,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $  \dfrac{3}{10} \cdot \dfrac{7}{9} = $  [[  7/30  ]]
+__$e)\;\;$__ $  \dfrac{3}{10} \cdot \dfrac{7}{9} = $  [[  7/30  ]] @canvas
 @Algebrite.check(7/30)
 ************
 $$
@@ -141,7 +141,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$f)\;\;$__ $  \dfrac{11}{12} : \dfrac{22}{18} = $ [[  3/4  ]]
+__$f)\;\;$__ $  \dfrac{11}{12} : \dfrac{22}{18} = $ [[  3/4  ]] @canvas
 @Algebrite.check(3/4)
 ************
 $$
@@ -157,7 +157,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$g)\;\;$__ $  \dfrac{4}{9} \cdot \dfrac{7}{10} = $ [[  14/45  ]]
+__$g)\;\;$__ $  \dfrac{4}{9} \cdot \dfrac{7}{10} = $ [[  14/45  ]] @canvas
 @Algebrite.check(14/45)
 ************
 $$
@@ -173,7 +173,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$h)\;\;$__ $  \dfrac{6}{11} : \dfrac{3}{22} = $ [[  4  ]]
+__$h)\;\;$__ $  \dfrac{6}{11} : \dfrac{3}{22} = $ [[  4  ]] @canvas
 @Algebrite.check(4)
 ************
 $$

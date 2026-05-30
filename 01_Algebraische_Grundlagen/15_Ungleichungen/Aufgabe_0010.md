@@ -62,7 +62,7 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $-2x + 4 < -6$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x > $   [[  5  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x > $   [[  5  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(5)
 ******************
 $$
@@ -79,7 +79,7 @@ $$
 __$b)\;\;$__ $3x - 12 \geq -3$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  3  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  3  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(3)
 ******************
 $$
@@ -96,7 +96,7 @@ $$
 __$c)\;\;$__ $-4x - 2 \geq 6$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  -2  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  -2  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(-2)
 ******************
 $$
@@ -113,7 +113,7 @@ $$
 __$d)\;\;$__ $5 - x < 1$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x > $   [[  4  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x > $   [[  4  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(4)
 ******************
 $$
@@ -130,7 +130,7 @@ $$
 __$e)\;\;$__ $\dfrac{x}{-2} + 7 > 3$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x < $   [[  -8  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x < $   [[  -8  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(-8)
 ******************
 $$
@@ -147,7 +147,7 @@ $$
 __$f)\;\;$__ $-6x + 9 \leq -3$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  2  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  2  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(2)
 ******************
 $$

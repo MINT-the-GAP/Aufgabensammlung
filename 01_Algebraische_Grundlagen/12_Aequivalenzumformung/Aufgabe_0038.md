@@ -56,7 +56,7 @@ Ein zweites Becken enthält anfangs 7,25 Liter, dabei werden pro Minute 0,5 Lite
 **Berechne**, nach wie vielen Minuten beide Becken gleich viel Wasser enthalten.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  19/5  ]]
+$x$ = [[  19/5  ]] @canvas
 @Algebrite.check(19/5)
 ************
 $$

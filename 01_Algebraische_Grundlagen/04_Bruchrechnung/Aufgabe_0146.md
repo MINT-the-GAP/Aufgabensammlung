@@ -60,7 +60,7 @@ Von der verbleibenden Strecke wird nach der Pause nochmals $\dfrac{5}{12}$ zurü
 **Berechne** die am Ende noch ausstehende Strecke als Bruch. 
 
 <!-- data-solution-button="5"-->
-[[  35/2  ]] km
+[[  35/2  ]] @canvas km
 @Algebrite.check(35/2)
 ************
 $$

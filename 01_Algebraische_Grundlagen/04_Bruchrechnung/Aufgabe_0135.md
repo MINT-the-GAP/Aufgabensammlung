@@ -59,7 +59,7 @@ Von den verbleibenden Büchern sind $\dfrac{2}{5}$ Sachbücher, der Rest sind Ze
 **Bestimme**, wie viele Zeitschriften es gibt. 
 
 <!-- data-solution-button="5"-->
-[[  90  ]] Zeitschriften
+[[  90  ]] @canvas Zeitschriften
 ************
 $$
 \text{Romane: } \dfrac{3}{8}\cdot 240 = 90 \\

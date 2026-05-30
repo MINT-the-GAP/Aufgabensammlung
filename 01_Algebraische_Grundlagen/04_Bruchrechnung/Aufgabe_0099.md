@@ -70,15 +70,15 @@ __$a)\;\;$__ Das jeweilige Rechteck wird durch die gestrichelten Linien in wie v
 <section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$I\;\;$__ [[  5  ]]
+__$I\;\;$__ [[  5  ]] @canvas
 </div>
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$II\;\;$__ [[  4  ]]
+__$II\;\;$__ [[  4  ]] @canvas
 </div>
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$III\;\;$__ [[  3  ]]
+__$III\;\;$__ [[  3  ]] @canvas
 </div>
 </section>
 
@@ -88,15 +88,15 @@ __$b)\;\;$__ Das jeweilige Rechteck wird durch die gepunkteten Linien in wie vie
 <section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$I\;\;$__ [[  3  ]]
+__$I\;\;$__ [[  3  ]] @canvas
 </div>
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$II\;\;$__ [[  4  ]]
+__$II\;\;$__ [[  4  ]] @canvas
 </div>
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$III\;\;$__ [[  6  ]]
+__$III\;\;$__ [[  6  ]] @canvas
 </div>
 </section>
 
@@ -106,15 +106,15 @@ __$c)\;\;$__ Das jeweilige Rechteck wird durch die gestrichelten und die gepunkt
 <section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$I\;\;$__ [[  15  ]]
+__$I\;\;$__ [[  15  ]] @canvas
 </div>
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$II\;\;$__ [[  16  ]]
+__$II\;\;$__ [[  16  ]] @canvas
 </div>
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$III\;\;$__ [[  18  ]]
+__$III\;\;$__ [[  18  ]] @canvas
 </div>
 </section>
 

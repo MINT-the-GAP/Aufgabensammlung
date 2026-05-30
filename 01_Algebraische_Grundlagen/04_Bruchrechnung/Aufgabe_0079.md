@@ -56,28 +56,28 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Wie viel sind $\dfrac{1}{7}$ von $84\,$€?  \
 
- [[  12  ]]€
+ [[  12  ]] @canvas€
 
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ Wie viel sind $\dfrac{8}{3}$ von $45\,$min?  \
 
- [[  120  ]]min
+ [[  120  ]] @canvasmin
 
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ Wie viel sind $\dfrac{3}{5}$ von $8000\,$dm$^2$?  \
 
- [[  4800  ]]dm$^2$
+ [[  4800  ]] @canvasdm$^2$
 
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ Wie viel sind $\dfrac{5}{12}$ von $144\,\ell$?  \
 
- [[  60  ]] $\ell$
+ [[  60  ]] @canvas $\ell$
 
 </div>
 </section>

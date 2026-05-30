@@ -54,7 +54,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
-$12 \quad 24 \quad 36 \quad 48 \quad 60 \quad 72 \quad 84 \quad$ [[ 96 ]] $\quad$ [[ 108 ]] $\quad$ [[ 120 ]] \
+$12 \quad 24 \quad 36 \quad 48 \quad 60 \quad 72 \quad 84 \quad$ [[ 96 ]] @canvas $\quad$ [[ 108 ]] @canvas $\quad$ [[ 120 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die $12$er-Reihe.
 
@@ -62,7 +62,7 @@ $12 \quad 24 \quad 36 \quad 48 \quad 60 \quad 72 \quad 84 \quad$ [[ 96 ]] $\quad
 
 __$b)\;\;$__
 
-$1 \quad 12 \quad 123 \quad 1234 \quad 12345 \quad $ [[ 123456 ]] $\quad$ [[ 1234567 ]] $\quad$ [[ 12345678 ]] \
+$1 \quad 12 \quad 123 \quad 1234 \quad 12345 \quad $ [[ 123456 ]] @canvas $\quad$ [[ 1234567 ]] @canvas $\quad$ [[ 12345678 ]] @canvas \
 
 [[?]] Musterbeschreibung: Es wird immer die nächst höhere natürliche Zahl als Ziffer angehangen.
 
@@ -70,7 +70,7 @@ $1 \quad 12 \quad 123 \quad 1234 \quad 12345 \quad $ [[ 123456 ]] $\quad$ [[ 123
 
 __$c)\;\;$__
 
-$11 \quad 101 \quad 1001 \quad 10001 \quad $ [[ 100001 ]] $\quad$ [[ 1000001 ]] $\quad$ [[ 10000001 ]] \
+$11 \quad 101 \quad 1001 \quad 10001 \quad $ [[ 100001 ]] @canvas $\quad$ [[ 1000001 ]] @canvas $\quad$ [[ 10000001 ]] @canvas \
 
 [[?]] Musterbeschreibung: Es wird immer eine $0$ in die Mitte der Zahl eingeschoben.
 

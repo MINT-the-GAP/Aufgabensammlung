@@ -56,37 +56,37 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $1\,\text{m}^3 = $ [[ 1000  ]] $\,\text{dm}^3$ \
+__$a)\;\;$__ $1\,\text{m}^3 = $ [[ 1000  ]] @canvas $\,\text{dm}^3$ \
 
 
 </div>
 <div class="flex-child">
 
-__$b)\;\;$__ $7\,\text{t} = $ [[ 7000  ]] $\,\text{kg}$ \
+__$b)\;\;$__ $7\,\text{t} = $ [[ 7000  ]] @canvas $\,\text{kg}$ \
 
 
 </div>
 <div class="flex-child">
 
-__$c)\;\;$__ $240\,\text{s} = $ [[   4   ]] $\,\text{min}$ \
+__$c)\;\;$__ $240\,\text{s} = $ [[   4   ]] @canvas $\,\text{min}$ \
 
 
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ $34000\,\text{cm} = $ [[  340  ]] $\,\text{m}$ \
+__$d)\;\;$__ $34000\,\text{cm} = $ [[  340  ]] @canvas $\,\text{m}$ \
 
 
 </div>
 <div class="flex-child">
 
-__$e)\;\;$__ $1\,\text{h} = $ [[ 3600  ]] $\,\text{s}$ \
+__$e)\;\;$__ $1\,\text{h} = $ [[ 3600  ]] @canvas $\,\text{s}$ \
 
 
 </div>
 <div class="flex-child">
 
-__$f)\;\;$__ $8\,\text{km} = $ [[ 80000 ]] $\,\text{dm}$ \
+__$f)\;\;$__ $8\,\text{km} = $ [[ 80000 ]] @canvas $\,\text{dm}$ \
 
 
 </div>

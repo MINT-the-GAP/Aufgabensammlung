@@ -63,7 +63,7 @@ author: Martin Lommatzsch
 
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ Wie viel sind $\dfrac{7}{4}$ von $\dfrac{5}{6}$ von $36\,$€?  \
-[[  105/2  ]]€
+[[  105/2  ]] @canvas€
 @Algebrite.check(105/2)
 ************
 $$
@@ -82,7 +82,7 @@ $$
 
 <!-- data-solution-button="5"-->
 __$b)\;\;$__ Wie viel sind $\dfrac{9}{8}$ von $\dfrac{2}{3}$ von $45\,$kg?  \
-[[  135/4  ]]kg
+[[  135/4  ]] @canvaskg
 @Algebrite.check(135/4)
 ************
 $$
@@ -100,7 +100,7 @@ $$
 
 <!-- data-solution-button="5"-->
 __$c)\;\;$__ Wie viel sind $\dfrac{4}{5}$ von $\dfrac{7}{9}$ von $80\,$min?  \
-[[  448/9  ]]min
+[[  448/9  ]] @canvasmin
 @Algebrite.check(448/9)
 ************
 $$
@@ -118,7 +118,7 @@ $$
 
 <!-- data-solution-button="5"-->
 __$d)\;\;$__ Wie viel sind $\dfrac{11}{12}$ von $\dfrac{3}{5}$ von $95\,\ell$?  \
-[[  209/4  ]] $\ell$
+[[  209/4  ]] @canvas $\ell$
 @Algebrite.check(209/4)
 ************
 $$
@@ -136,7 +136,7 @@ $$
 
 <!-- data-solution-button="5"-->
 __$e)\;\;$__ Wie viel sind $\dfrac{5}{6}$ von $\dfrac{7}{8}$ von $64\,$m?  \
-[[  140/3  ]]m
+[[  140/3  ]] @canvasm
 @Algebrite.check(140/3)
 ************
 $$
@@ -154,7 +154,7 @@ $$
 
 <!-- data-solution-button="5"-->
 __$f)\;\;$__ Wie viel sind $\dfrac{7}{5}$ von $\dfrac{3}{8}$ von $50\,$€?  \
-[[  105/4  ]]€
+[[  105/4  ]] @canvas€
 @Algebrite.check(105/4)
 ************
 $$

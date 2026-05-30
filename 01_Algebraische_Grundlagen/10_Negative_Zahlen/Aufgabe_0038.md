@@ -57,19 +57,19 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 __$a)\;\;$__ $2$ und $-10,5 \quad$ \
-[[ -4,25  ]] 
+[[ -4,25  ]] @canvas 
 </div>
 <div class="flex-child">
 __$b)\;\;$__ $-0,5$ und $ 0,75 \quad$ \
-[[  0,125 ]] 
+[[  0,125 ]] @canvas 
 </div> 
 <div class="flex-child">
 __$c)\;\;$__ $0,85$ und $-2,25 \quad$ \
-[[ -0,7   ]] 
+[[ -0,7   ]] @canvas 
 </div> 
 <div class="flex-child">
 __$d)\;\;$__ $-21,5$ und $-22 \quad$ \
-[[ -21,75 ]] 
+[[ -21,75 ]] @canvas 
 </div> 
 </section>
 

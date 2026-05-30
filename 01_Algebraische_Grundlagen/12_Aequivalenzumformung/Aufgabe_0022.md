@@ -61,7 +61,7 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 __$a)\;\;$__ $ \; 7x + \dfrac{1}{2} = 3x - \dfrac{7}{2} \;$ \
-$x$ = [[  -1  ]]
+$x$ = [[  -1  ]] @canvas
 @Algebrite.check(-1)
 ************
 $$
@@ -78,7 +78,7 @@ $$
 <div class="flex-child">
 
 __$b)\;\;$__ $ \; 2x - \dfrac{7}{3} = \dfrac{1}{3}x + 5 \;$ \
-$x$ = [[  22/5  ]]
+$x$ = [[  22/5  ]] @canvas
 @Algebrite.check(22/5)
 ************
 $$
@@ -95,7 +95,7 @@ $$
 <div class="flex-child">
 
 __$c)\;\;$__ $ \; \dfrac{3}{2}x + 4 = \dfrac{5}{4}x - 2 \;$ \
-$x$ = [[  -24  ]]
+$x$ = [[  -24  ]] @canvas
 @Algebrite.check(-24)
 ************
 $$
@@ -112,7 +112,7 @@ $$
 <div class="flex-child">
 
 __$d)\;\;$__ $ 2(x-3) = \dfrac{1}{2}x - 1 $ \
-$x$ = [[  10/3  ]]
+$x$ = [[  10/3  ]] @canvas
 @Algebrite.check(10/3)
 ************
 $$
@@ -130,7 +130,7 @@ $$
 <div class="flex-child">
 
 __$e)\;\;$__ $ 3(x+2) - \dfrac{5}{2} = 2x $ \
-$x$ = [[  -7/2  ]]
+$x$ = [[  -7/2  ]] @canvas
 @Algebrite.check(-7/2)
 ************
 $$
@@ -148,7 +148,7 @@ $$
 <div class="flex-child">
 
 __$f)\;\;$__ $  \dfrac{3}{4}(2x-1) = x + \dfrac{1}{2} $ \
-$x$ = [[  5/2  ]]
+$x$ = [[  5/2  ]] @canvas
 @Algebrite.check(5/2)
 ************
 $$

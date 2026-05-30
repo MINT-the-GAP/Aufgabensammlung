@@ -59,7 +59,7 @@ Am Nachmittag wird für eine zweite Charge die Hälfte der verbleibenden Masse g
 **Berechne** die am Ende noch vorhandene Mehlmenge als Bruch. 
 
 <!-- data-solution-button="5"-->
-[[  15/2  ]] kg
+[[  15/2  ]] @canvas kg
 @Algebrite.check(15/2)
 ************
 $$

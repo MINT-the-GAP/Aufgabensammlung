@@ -54,25 +54,25 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ $ \mathbb{K} = \{ 1,5,6,9 \} $\ und \mathbb{M} = \{ 3,4,6,8 \} $\
 
-$\mathbb{M} \setminus \mathbb{K} =  $ [[   {3,4,8}   ]] $  $\ 
+$\mathbb{M} \setminus \mathbb{K} =  $ [[   {3,4,8}   ]] @canvas $  $\ 
 
 
 
 __$b)\;\;$__ $  \mathbb{K} = \{ 1,2,3,4,5,6,7 \} $\ und \mathbb{M} = \{ 1,2,3,5,7 \} $\
 
-$\mathbb{M} \setminus \mathbb{K} =  $ [[   {}        ]] $  $\ 
+$\mathbb{M} \setminus \mathbb{K} =  $ [[   {}        ]] @canvas $  $\ 
 
 
 
 __$c)\;\;$__ $  \mathbb{K} = \{ 5,7,9,11 \} $\ und \mathbb{M} = \{ 4,5,8,10 \} $\
 
-$\mathbb{K} \setminus \mathbb{M} =  $ [[   {5,7,9,11}   ]] $  $\ 
+$\mathbb{K} \setminus \mathbb{M} =  $ [[   {5,7,9,11}   ]] @canvas $  $\ 
 
 
 
 __$d)\;\;$__ $  \mathbb{K} = \{ 5,7,9,11 \} $\ und \mathbb{M} = \{ 4,5,8,10 \} $\
 
-$\mathbb{M} \setminus \mathbb{K} =  $ [[   {7,9,11}   ]] $  $\ 
+$\mathbb{M} \setminus \mathbb{K} =  $ [[   {7,9,11}   ]] @canvas $  $\ 
 
 
 

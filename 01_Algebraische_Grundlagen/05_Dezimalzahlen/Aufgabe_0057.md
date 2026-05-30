@@ -57,7 +57,7 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $\dfrac{129}{100} \qquad$  \
 
 
- [[  1,29   ]] 
+ [[  1,29   ]] @canvas 
 
 </div>
 <div class="flex-child">
@@ -65,14 +65,14 @@ __$a)\;\;$__ $\dfrac{129}{100} \qquad$  \
 __$b)\;\;$__ $\dfrac{2}{1}+\dfrac{4}{10}+\dfrac{4}{100} \qquad$  \
 
 
- [[  2,44  ]] 
+ [[  2,44  ]] @canvas 
 
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ $\dfrac{3}{10}+\dfrac{8}{10000} \qquad$  \
 
-  [[  0,3008  ]] 
+  [[  0,3008  ]] @canvas 
 
 </div>
 <div class="flex-child">
@@ -80,7 +80,7 @@ __$c)\;\;$__ $\dfrac{3}{10}+\dfrac{8}{10000} \qquad$  \
 __$d)\;\;$__ $\dfrac{9}{100}+\dfrac{6}{1000}+\dfrac{11}{1} \qquad$  \
 
 
- [[  11,096  ]] 
+ [[  11,096  ]] @canvas 
 
 </div>
 <div class="flex-child">
@@ -88,7 +88,7 @@ __$d)\;\;$__ $\dfrac{9}{100}+\dfrac{6}{1000}+\dfrac{11}{1} \qquad$  \
 __$e)\;\;$__ $\dfrac{3}{1}+\dfrac{49}{1000} \qquad$  \
 
 
- [[  3,049   ]] 
+ [[  3,049   ]] @canvas 
 
 </div>
 <div class="flex-child">
@@ -96,7 +96,7 @@ __$e)\;\;$__ $\dfrac{3}{1}+\dfrac{49}{1000} \qquad$  \
 __$f)\;\;$__ $\dfrac{7}{1000000} \qquad$  \
 
 
- [[  0,000007 ]] 
+ [[  0,000007 ]] @canvas 
 
 
 </div>

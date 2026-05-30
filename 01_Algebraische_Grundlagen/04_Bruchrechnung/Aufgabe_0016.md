@@ -64,7 +64,7 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $  7 + \dfrac{3}{10} = $ [[  73/10  ]]
+__$a)\;\;$__ $  7 + \dfrac{3}{10} = $ [[  73/10  ]] @canvas
 @Algebrite.check(73/10)
 ************
 $$
@@ -80,7 +80,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $  2 + \dfrac{9}{13} = $ [[  35/13  ]]
+__$b)\;\;$__ $  2 + \dfrac{9}{13} = $ [[  35/13  ]] @canvas
 @Algebrite.check(35/13)
 ************
 $$
@@ -96,7 +96,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $  5 + \dfrac{4}{9} = $ [[  49/9  ]]
+__$c)\;\;$__ $  5 + \dfrac{4}{9} = $ [[  49/9  ]] @canvas
 @Algebrite.check(49/9)
 ************
 $$
@@ -112,7 +112,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $  8 + \dfrac{7}{12} = $ [[  103/12  ]]
+__$d)\;\;$__ $  8 + \dfrac{7}{12} = $ [[  103/12  ]] @canvas
 @Algebrite.check(103/12)
 ************
 $$
@@ -128,7 +128,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $  3 + \dfrac{5}{14} = $ [[  47/14  ]]
+__$e)\;\;$__ $  3 + \dfrac{5}{14} = $ [[  47/14  ]] @canvas
 @Algebrite.check(47/14)
 ************
 $$
@@ -144,7 +144,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$f)\;\;$__ $  4 + \dfrac{11}{15} = $ [[  71/15  ]]
+__$f)\;\;$__ $  4 + \dfrac{11}{15} = $ [[  71/15  ]] @canvas
 @Algebrite.check(71/15)
 ************
 $$

@@ -56,7 +56,7 @@ Auf einer Weide sind Hühner und Ziegen. Insgesamt zählst du 21 Tiere. Zusammen
 **Berechne** die Anzahl der Hühner und der Ziegen.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  11  ]] und $y$ = [[  10  ]]
+$x$ = [[  11  ]] @canvas und $y$ = [[  10  ]] @canvas
 @Algebrite.check([ 11; 10 ])
 ************
 Bezeichne mit $x$ die Anzahl der Hühner (je 2 Beine) und mit $y$ die Anzahl der Ziegen (je 4 Beine).

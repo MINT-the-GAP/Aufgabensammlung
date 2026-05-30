@@ -58,7 +58,7 @@ Ein Regionalzug B befindet sich 145 km östlich des Leuchtturms, fährt aber ers
 
 
 <!-- data-solution-button="5"-->
-$x$ = [[  22/19  ]]
+$x$ = [[  22/19  ]] @canvas
 @Algebrite.check(22/19)
 ************
 $$

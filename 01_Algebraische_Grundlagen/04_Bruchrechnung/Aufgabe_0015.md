@@ -62,7 +62,7 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $  3 + \dfrac{5}{11} = $ [[  38/11  ]]
+__$a)\;\;$__ $  3 + \dfrac{5}{11} = $ [[  38/11  ]] @canvas
 @Algebrite.check(38/11)
 ************
 $$
@@ -78,7 +78,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $  1 + \dfrac{7}{12} = $ [[  19/12  ]]
+__$b)\;\;$__ $  1 + \dfrac{7}{12} = $ [[  19/12  ]] @canvas
 @Algebrite.check(19/12)
 ************
 $$
@@ -94,7 +94,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $  4 + \dfrac{2}{9} = $ [[  38/9  ]]
+__$c)\;\;$__ $  4 + \dfrac{2}{9} = $ [[  38/9  ]] @canvas
 @Algebrite.check(38/9)
 ************
 $$
@@ -110,7 +110,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $  5 + \dfrac{3}{14} = $ [[  73/14  ]]
+__$d)\;\;$__ $  5 + \dfrac{3}{14} = $ [[  73/14  ]] @canvas
 @Algebrite.check(73/14)
 ************
 $$
@@ -126,7 +126,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $  2 + \dfrac{11}{15} = $ [[  41/15  ]]
+__$e)\;\;$__ $  2 + \dfrac{11}{15} = $ [[  41/15  ]] @canvas
 @Algebrite.check(41/15)
 ************
 $$
@@ -142,7 +142,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$f)\;\;$__ $  6 + \dfrac{1}{8} = $ [[  49/8  ]]
+__$f)\;\;$__ $  6 + \dfrac{1}{8} = $ [[  49/8  ]] @canvas
 @Algebrite.check(49/8)
 ************
 $$

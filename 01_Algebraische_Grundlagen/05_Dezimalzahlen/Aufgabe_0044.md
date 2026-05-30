@@ -53,32 +53,32 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $ 7,2-1,5 \cdot 2,5 =$ [[  3,45  ]]
+__$a)\;\;$__ $ 7,2-1,5 \cdot 2,5 =$ [[  3,45  ]] @canvas
 
 </div> 
 <div class="flex-child">
 
-__$b)\;\;$__ $ 1,44:12+0,56 =$ [[  0,68  ]]
+__$b)\;\;$__ $ 1,44:12+0,56 =$ [[  0,68  ]] @canvas
 
 </div> 
 <div class="flex-child">
 
-__$c)\;\;$__ $ (2,9-2,25):0,5 =$ [[  1,3  ]]
+__$c)\;\;$__ $ (2,9-2,25):0,5 =$ [[  1,3  ]] @canvas
 
 </div> 
 <div class="flex-child">
 
-__$d)\;\;$__ $ 1,5 \cdot 7 - 0,75 \cdot 8+8 =$ [[  12,5  ]]
+__$d)\;\;$__ $ 1,5 \cdot 7 - 0,75 \cdot 8+8 =$ [[  12,5  ]] @canvas
 
 </div> 
 <div class="flex-child">
 
-__$e)\;\;$__ $ 2,3:0,9 + 4:0,9 =$ [[  7  ]]
+__$e)\;\;$__ $ 2,3:0,9 + 4:0,9 =$ [[  7  ]] @canvas
 
 </div> 
 <div class="flex-child">
 
-__$f)\;\;$__ $ 4,5 \cdot (0,12 + 0,14 + 0,24) =$ [[  2,25  ]]
+__$f)\;\;$__ $ 4,5 \cdot (0,12 + 0,14 + 0,24) =$ [[  2,25  ]] @canvas
 
 </div> 
 </section>

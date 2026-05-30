@@ -60,7 +60,7 @@ Am Vormittag verkauft er $\dfrac{2}{3}$ seiner Kisten. Danach beschließt er, vo
 **Bestimme**, wie viele Kisten er schließlich noch selbst behalten kann. 
 
 <!-- data-solution-button="5"-->
- [[  6  ]] 
+ [[  6  ]] @canvas 
 ************
 $$
 \text{Verkauf:}\quad \dfrac{2}{3}\cdot 24 = 16 \quad \Rightarrow \; 24-16=8 \text{ Kisten übrig} \\

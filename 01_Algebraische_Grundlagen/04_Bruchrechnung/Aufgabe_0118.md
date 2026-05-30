@@ -57,7 +57,7 @@ Eine Strecke ist $18$ cm lang. Davon werden $\dfrac{2}{3}$ markiert, der Rest bl
 **Bestimme** die unmarkierte Länge.  
 
 <!-- data-solution-button="5"-->
-[[  6  ]] cm
+[[  6  ]] @canvas cm
 @Algebrite.check(6)
 ************
 $$

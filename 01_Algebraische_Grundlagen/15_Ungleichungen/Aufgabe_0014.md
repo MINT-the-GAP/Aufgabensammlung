@@ -67,7 +67,7 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $2x + 5 > x + 9$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $   [[  5  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $   [[  5  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(5)
 ******************
 $$
@@ -84,7 +84,7 @@ $$
 __$b)\;\;$__ $-3x + 7 \leq 2x - 8$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  3  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  3  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(3)
 ******************
 $$
@@ -102,7 +102,7 @@ $$
 __$c)\;\;$__ $4x - 6 < 3x + 2$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x < $   [[  8  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x < $   [[  8  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(8)
 ******************
 $$
@@ -119,7 +119,7 @@ $$
 __$d)\;\;$__ $5x + 4 \geq 2x + 16$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \geq $   [[  4  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \geq $   [[  4  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(4)
 ******************
 $$
@@ -137,7 +137,7 @@ $$
 __$e)\;\;$__ $7 - 2x > 5x - 14$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  2  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  2  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(2)
 ******************
 $$
@@ -155,7 +155,7 @@ $$
 __$f)\;\;$__ $-4x + 9 \leq 3x + 2$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $   [[  1  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $   [[  1  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(1)
 ******************
 $$

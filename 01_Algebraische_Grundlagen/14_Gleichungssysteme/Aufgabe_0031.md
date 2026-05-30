@@ -57,7 +57,7 @@ Es werden drei elektrische Geräte mit den Leistungen $1{,}2\,\text{kW}$, $0{,}9
 **Berechne** die Laufzeiten der drei Geräte.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  13/6  ]], $y$ = [[  8/3  ]] und $z$ = [[  1/6  ]]
+$x$ = [[  13/6  ]] @canvas, $y$ = [[  8/3  ]] @canvas und $z$ = [[  1/6  ]] @canvas
 @Algebrite.check([ 13/6; 8/3; 1/6 ])
 ************
 Bezeichne mit $x$ die Laufzeit des ersten Geräts ($1{,}2\,\text{kW}$), mit $y$ die Laufzeit des zweiten Geräts ($0{,}9\,\text{kW}$) und mit $z$ die Laufzeit des dritten Geräts ($0{,}6\,\text{kW}$).

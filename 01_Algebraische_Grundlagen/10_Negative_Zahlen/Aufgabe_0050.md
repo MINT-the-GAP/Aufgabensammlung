@@ -53,32 +53,32 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $ 26+(-43)=$ [[  -17  ]]
+__$a)\;\;$__ $ 26+(-43)=$ [[  -17  ]] @canvas
 
 </div> 
 <div class="flex-child">
 
-__$b)\;\;$__ $ -25+(72)=$ [[  47  ]]
+__$b)\;\;$__ $ -25+(72)=$ [[  47  ]] @canvas
 
 </div> 
 <div class="flex-child">
 
-__$c)\;\;$__ $ -31+(-36)=$ [[  -67  ]]
+__$c)\;\;$__ $ -31+(-36)=$ [[  -67  ]] @canvas
 
 </div> 
 <div class="flex-child">
 
-__$d)\;\;$__ $ -65+48=$ [[  -17  ]]
+__$d)\;\;$__ $ -65+48=$ [[  -17  ]] @canvas
 
 </div> 
 <div class="flex-child">
 
-__$e)\;\;$__ $ 48+(-23)=$ [[  25  ]]
+__$e)\;\;$__ $ 48+(-23)=$ [[  25  ]] @canvas
 
 </div> 
 <div class="flex-child">
 
-__$f)\;\;$__ $ 26+(-38)=$ [[  -12  ]]
+__$f)\;\;$__ $ 26+(-38)=$ [[  -12  ]] @canvas
 
 </div> 
 </section>

@@ -63,7 +63,7 @@ Der verbleibende Rest wird gleichmäßig auf sechs Kisten verteilt.
 
 
 <!-- data-solution-button="5"-->
-[[  68/75  ]] kg
+[[  68/75  ]] @canvas kg
 @Algebrite.check(68/75)
 ************
 $$

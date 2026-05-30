@@ -62,7 +62,7 @@ Am Ende bleiben insgesamt $\dfrac{1}{2}\,\text{m}$ Rest übrig, der abgezogen wi
 
 
 <!-- data-solution-button="5"-->
-[[  19/4  ]] m
+[[  19/4  ]] @canvas m
 @Algebrite.check(19/4)
 ************
 $$

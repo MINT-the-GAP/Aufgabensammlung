@@ -57,7 +57,7 @@ Ein Rechteck hat eine Seite von $20$ cm. Die zweite Seite beträgt $\dfrac{2}{5}
 **Bestimme** die Länge der zweiten Seite.  
 
 <!-- data-solution-button="5"-->
-[[  8  ]] cm
+[[  8  ]] @canvas cm
 ************
 $$
 \dfrac{2}{5}\cdot 20\,\text{cm}

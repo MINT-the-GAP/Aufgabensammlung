@@ -66,25 +66,25 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $2x < 12$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x < $   [[  6  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x < $   [[  6  ]] @canvas   $\left.   \right\}$
 </div>
 <div class="flex-child">
 __$b)\;\;$__  $x \geq 5$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  5  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  5  ]] @canvas   $\left.   \right\}$
 </div>
 <div class="flex-child">
 __$c)\;\;$__  $\dfrac{x}{3} \leq 4$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  12 ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  12 ]] @canvas   $\left.   \right\}$
 </div>
 <div class="flex-child">
 __$d)\;\;$__  $ x + 14 > 32$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x > $   [[  18 ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x > $   [[  18 ]] @canvas   $\left.   \right\}$
 </div>
 
 </section>

@@ -96,9 +96,9 @@ if (missing === 2) {
 
 // Aufgabe (gesuchte Zahl als Eingabefeld)
 const problem =
-  (missing === 0) ? `[[ ${A} ]] - ${B} = ${C}` :
-  (missing === 1) ? `${A} - [[ ${B} ]] = ${C}` :
-                    `${A} - ${B} = [[ ${C} ]]`;
+  (missing === 0) ? `[[ ${A} ]] @canvas - ${B} = ${C}` :
+  (missing === 1) ? `${A} - [[ ${B} ]] @canvas = ${C}` :
+                    `${A} - ${B} = [[ ${C} ]] @canvas`;
 
 // Leih-Zeile bauen: rote 1 WO +10 genommen wurde (Reihenfolge [H,Z,E])
 function borrowLineSub(minuend, subtrahend) {

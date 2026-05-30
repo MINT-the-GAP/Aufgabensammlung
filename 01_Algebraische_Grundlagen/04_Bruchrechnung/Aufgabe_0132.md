@@ -58,7 +58,7 @@ Für ein Schulfest wird $\dfrac{3}{4}$ der gesamten Gartenfläche genutzt.
 **Bestimme**, wie viele Quadratmeter nicht genutzt werden. 
 
 <!-- data-solution-button="5"-->
-[[  90  ]] m$^2$
+[[  90  ]] @canvas m$^2$
 ************
 $$
 \text{Breite:}\quad \dfrac{5}{8}\cdot 24 = 15\,\text{m} \\

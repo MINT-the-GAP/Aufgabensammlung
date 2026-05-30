@@ -64,69 +64,69 @@ author: Martin Lommatzsch
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ 
 $ \dfrac{ 3 }{ 5 } = \dfrac{ 21 }{ x }  $ \
-$x = $ [[  35  ]]
+$x = $ [[  35  ]] @canvas
 </div>
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$b)\;\;$__  
 $ \dfrac{ 4 }{ 7 } = \dfrac{ x }{ 21 } $ \
-$x = $ [[  12  ]]
+$x = $ [[  12  ]] @canvas
 </div>
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$c)\;\;$__  
 $ \dfrac{ x }{ 8 } = \dfrac{ 9 }{ 12 } $ \
-$x = $ [[  6  ]]
+$x = $ [[  6  ]] @canvas
 </div>
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$d)\;\;$__  
 $ \dfrac{ 5 }{ x } = \dfrac{ 15 }{ 18 } $ \
-$x = $ [[  6  ]]
+$x = $ [[  6  ]] @canvas
 </div>
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$e)\;\;$__  
 $ \dfrac{ 11 }{ 22 } = \dfrac{ x }{ 6 } $ \
-$x = $ [[  3  ]]
+$x = $ [[  3  ]] @canvas
 </div>
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$f)\;\;$__  
 $ \dfrac{ 7 }{ x } = \dfrac{ 14 }{ 20 } $ \
-$x = $ [[  10  ]]
+$x = $ [[  10  ]] @canvas
 </div>
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$g)\;\;$__  
 $ \dfrac{ 8 }{ 12 } = \dfrac{ 2 }{ x } $ \
-$x = $ [[  3  ]]
+$x = $ [[  3  ]] @canvas
 </div>
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$h)\;\;$__  
 $ \dfrac{ x }{ 15 } = \dfrac{ 6 }{ 10 } $ \
-$x = $ [[  9  ]]
+$x = $ [[  9  ]] @canvas
 </div>
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$i)\;\;$__  
 $ \dfrac{ 3 }{ 9 } = \dfrac{ 4 }{ x } $ \
-$x = $ [[  12  ]]
+$x = $ [[  12  ]] @canvas
 </div>
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$j)\;\;$__  
 $ \dfrac{ x }{ 18 } = \dfrac{ 5 }{ 9 } $ \
-$x = $ [[  10  ]]
+$x = $ [[  10  ]] @canvas
 </div>
 
 </section>

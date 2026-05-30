@@ -58,7 +58,7 @@ Ein Wassertank fasst $250$ Liter. Er ist zu $\dfrac{3}{10}$ gefüllt.
 **Bestimme**, wie viele Liter sich im Tank befinden. 
 
 <!-- data-solution-button="5"-->
-[[ 75 ]] $\ell$
+[[ 75 ]] @canvas $\ell$
 ************
 $$
 \dfrac{3}{10}\cdot 250\,\ell = \dfrac{750}{10}\,\ell = 75\,\ell

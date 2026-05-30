@@ -61,7 +61,7 @@ Von den verbleibenden Heften werden später $\dfrac{1}{2}$ an die Schüler verte
 **Bestimme**, wie viele Hefte am Ende noch übrig bleiben. 
 
 <!-- data-solution-button="5"-->
-[[  20  ]] Hefte
+[[  20  ]] @canvas Hefte
 ************
 $$
 \text{Erste Verteilung:}\quad \dfrac{1}{3}\cdot 60 = 20 \quad \Rightarrow \; 60-20=40 \text{ Hefte} \\

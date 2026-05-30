@@ -69,7 +69,7 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $\dfrac{1}{3}x + 1 \leq \dfrac{3}{5}x + \dfrac{2}{3}$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \geq $   [[  5/4  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \geq $   [[  5/4  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(5/4)
 ******************
 $$
@@ -87,7 +87,7 @@ $$
 __$b)\;\;$__ $\dfrac{2}{3}x - \dfrac{5}{3} > \dfrac{1}{6}x - \dfrac{1}{2}$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  3  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  3  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(3)
 ******************
 $$
@@ -105,7 +105,7 @@ $$
 __$c)\;\;$__ $-\dfrac{3}{4}x + 2 \leq \dfrac{1}{2}x - \dfrac{1}{4}$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  9/5  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  9/5  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(9/5)
 ******************
 $$
@@ -123,7 +123,7 @@ $$
 __$d)\;\;$__ $-x + \dfrac{7}{2} < \dfrac{1}{3}x + 2$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $   [[  2  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $   [[  2  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(2)
 ******************
 $$
@@ -141,7 +141,7 @@ $$
 __$e)\;\;$__ $\dfrac{1}{2}x - 1 \geq \dfrac{3}{4}x - \dfrac{5}{2}$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \leq $   [[  6  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \leq $   [[  6  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(6)
 ******************
 $$
@@ -159,7 +159,7 @@ $$
 __$f)\;\;$__ $-\dfrac{5}{6}x + \dfrac{1}{3} > \dfrac{1}{6}x - \dfrac{2}{3}$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  0  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  0  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(0)
 ******************
 $$

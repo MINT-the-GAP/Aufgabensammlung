@@ -54,17 +54,17 @@ author: Martin Lommatzsch
 
 
 
-$a)\;\; \text{kgV}(4;6) + \text{ggT}(55;35) =$ [[ 17  ]]
+$a)\;\; \text{kgV}(4;6) + \text{ggT}(55;35) =$ [[ 17  ]] @canvas
 
 
 
-$b)\;\; \text{kgV}\left(6;\text{ggT}(24;33) \right) =$ [[  6  ]]
+$b)\;\; \text{kgV}\left(6;\text{ggT}(24;33) \right) =$ [[  6  ]] @canvas
 
 
 
-$c)\;\; \text{ggT}(45;81) \cdot \text{kgV}(8;6) =$ [[ 216 ]]
+$c)\;\; \text{ggT}(45;81) \cdot \text{kgV}(8;6) =$ [[ 216 ]] @canvas
 
 
 
-$d)\;\; \text{ggT}\left( 72 ; \text{kgV}(9;4) \right) =$ [[ 36  ]]
+$d)\;\; \text{ggT}\left( 72 ; \text{kgV}(9;4) \right) =$ [[ 36  ]] @canvas
 

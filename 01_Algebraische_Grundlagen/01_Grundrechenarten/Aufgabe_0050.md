@@ -62,7 +62,7 @@ __$a)\;\;$__
 </center>
 
 <!-- data-solution-button="5"-->
-[[  8-6   ]] $= 2$
+[[  8-6   ]] @canvas $= 2$
 
 </div>
 
@@ -76,7 +76,7 @@ __$b)\;\;$__
 </center>
 
 <!-- data-solution-button="5"-->
-[[  3-3   ]] $= 0$
+[[  3-3   ]] @canvas $= 0$
 
 </div>
 </section>

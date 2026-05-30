@@ -60,7 +60,7 @@ __$a)\;\;$__
 
 ![Linsen](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa7.jpg)
 
-[[ 1200  ]] Linsen
+[[ 1200  ]] @canvas Linsen
 @Algebrite.check_margin(1100,1350)
 
 
@@ -72,7 +72,7 @@ __$b)\;\;$__
 
 ![Puffgerstenkörner](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa8.jpg)
 
-[[ 1050  ]] Puffgerstenkörner
+[[ 1050  ]] @canvas Puffgerstenkörner
 @Algebrite.check_margin(950,1250)
 
 

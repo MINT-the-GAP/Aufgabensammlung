@@ -60,7 +60,7 @@ Aus ästhetischen Gründen bleibt je Beet ein Randstreifen von $\dfrac{1}{10}$ d
 **Berechne** die gesamte bepflanzte Fläche der drei Beete. 
 
 <!-- data-solution-button="5"-->
-[[  1053/50  ]] m^2
+[[  1053/50  ]] @canvas m^2
 @Algebrite.check(1053/50)
 ************
 $$

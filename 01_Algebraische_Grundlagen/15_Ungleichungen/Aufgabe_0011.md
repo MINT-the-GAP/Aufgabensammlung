@@ -64,7 +64,7 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $-3x + 7 \leq 1$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  2  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  2  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(2)
 ******************
 $$
@@ -81,7 +81,7 @@ $$
 __$b)\;\;$__ $2x - 5 < 9$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \leq $   [[  6  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \leq $   [[  6  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(6)
 ******************
 $$
@@ -98,7 +98,7 @@ $$
 __$c)\;\;$__ $\dfrac{x}{-4} + 3 \geq -2$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \leq $   [[  20  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \leq $   [[  20  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(20)
 ******************
 $$
@@ -115,7 +115,7 @@ $$
 __$d)\;\;$__ $-2x - 8 > 0$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  -5  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  -5  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(-5)
 ******************
 $$
@@ -132,7 +132,7 @@ $$
 __$e)\;\;$__ $4x + 6 \geq -2$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  -2  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  -2  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(-2)
 ******************
 $$
@@ -149,7 +149,7 @@ $$
 __$f)\;\;$__ $\dfrac{x}{3} - 5 < -1$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  11  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  11  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(11)
 ******************
 $$

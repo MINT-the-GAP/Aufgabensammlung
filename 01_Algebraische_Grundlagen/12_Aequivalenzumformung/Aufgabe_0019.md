@@ -58,7 +58,7 @@ author: Martin Lommatzsch
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $  4(2x-3) = 2x + 10 $ \
-$x$ = [[  11/3  ]]
+$x$ = [[  11/3  ]] @canvas
 @Algebrite.check(11/3)
 ************
 $$
@@ -75,7 +75,7 @@ $$
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$b)\;\;$__ $  3(2x+4) = x + 19 $ \
-$x$ = [[  7/5  ]]
+$x$ = [[  7/5  ]] @canvas
 @Algebrite.check(7/5)
 ************
 $$
@@ -92,7 +92,7 @@ $$
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$c)\;\;$__ $  2(3x-1) + 5 = 4x + 7 $ \
-$x$ = [[  2  ]]
+$x$ = [[  2  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -109,7 +109,7 @@ $$
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$d)\;\;$__ $  5(x+2) - 3 = 2x + 12 $ \
-$x$ = [[  5/3  ]]
+$x$ = [[  5/3  ]] @canvas
 @Algebrite.check(5/3)
 ************
 $$

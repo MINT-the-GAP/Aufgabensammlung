@@ -66,49 +66,49 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $ \dfrac{8}{17} \;\;\Rightarrow\;\; $ [[  17/8  ]] 
+__$a)\;\;$__ $ \dfrac{8}{17} \;\;\Rightarrow\;\; $ [[  17/8  ]] @canvas 
 @Algebrite.check(17/8)
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $ \dfrac{5}{11} \;\;\Rightarrow\;\; $ [[  11/5  ]] 
+__$b)\;\;$__ $ \dfrac{5}{11} \;\;\Rightarrow\;\; $ [[  11/5  ]] @canvas 
 @Algebrite.check(11/5)
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $ \dfrac{6}{7} \;\;\Rightarrow\;\; $ [[  7/6  ]] 
+__$c)\;\;$__ $ \dfrac{6}{7} \;\;\Rightarrow\;\; $ [[  7/6  ]] @canvas 
 @Algebrite.check(7/6)
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $ \dfrac{12}{13} \;\;\Rightarrow\;\; $ [[  13/12  ]] 
+__$d)\;\;$__ $ \dfrac{12}{13} \;\;\Rightarrow\;\; $ [[  13/12  ]] @canvas 
 @Algebrite.check(13/12)
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $ \dfrac{21}{83} \;\;\Rightarrow\;\; $ [[  83/21  ]] 
+__$e)\;\;$__ $ \dfrac{21}{83} \;\;\Rightarrow\;\; $ [[  83/21  ]] @canvas 
 @Algebrite.check(83/21)
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$f)\;\;$__ $ \dfrac{25}{19} \;\;\Rightarrow\;\; $ [[  19/25  ]] 
+__$f)\;\;$__ $ \dfrac{25}{19} \;\;\Rightarrow\;\; $ [[  19/25  ]] @canvas 
 @Algebrite.check(19/25)
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$g)\;\;$__ $ \dfrac{8}{13} \;\;\Rightarrow\;\; $ [[  13/8  ]] 
+__$g)\;\;$__ $ \dfrac{8}{13} \;\;\Rightarrow\;\; $ [[  13/8  ]] @canvas 
 @Algebrite.check(13/8)
 </div>
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$h)\;\;$__ $ \dfrac{51}{23} \;\;\Rightarrow\;\; $ [[  23/51  ]] 
+__$h)\;\;$__ $ \dfrac{51}{23} \;\;\Rightarrow\;\; $ [[  23/51  ]] @canvas 
 @Algebrite.check(23/51)
 </div>
 

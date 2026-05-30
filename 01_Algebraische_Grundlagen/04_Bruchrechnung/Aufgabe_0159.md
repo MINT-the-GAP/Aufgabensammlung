@@ -62,7 +62,7 @@ Zum Schluss blockiert eine Bühne $ \dfrac{1}{5} $ der Gesamtfläche.
 
 
 <!-- data-solution-button="5"-->
-[[  50/3  ]] m$^2$
+[[  50/3  ]] @canvas m$^2$
 @Algebrite.check(50/3)
 ************
 $$

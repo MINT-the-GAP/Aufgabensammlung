@@ -56,28 +56,28 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Wie viel sind $\dfrac{3}{10}$ von $90\,$€?  \
 
- [[  27  ]]€
+ [[  27  ]] @canvas€
 
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ Wie viel sind $\dfrac{7}{4}$ von $840\,$kg?  \
 
- [[  1470  ]]kg
+ [[  1470  ]] @canvaskg
 
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ Wie viel sind $\dfrac{2}{3}$ von $6\,$m$^3$?  \
 
- [[  4  ]]m$^3$
+ [[  4  ]] @canvasm$^3$
 
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ Wie viel sind $\dfrac{11}{6}$ von $240\,\ell$?  \
 
- [[  440  ]] $\ell$
+ [[  440  ]] @canvas $\ell$
 
 </div>
 </section>

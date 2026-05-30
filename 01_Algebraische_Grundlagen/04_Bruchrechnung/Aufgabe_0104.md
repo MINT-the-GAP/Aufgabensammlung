@@ -57,7 +57,7 @@ author: Martin Lommatzsch
 **Bestimme** die Masse des restlichen Kuchens.  
 
 <!-- data-solution-button="5"-->
-[[  1/2  ]] kg
+[[  1/2  ]] @canvas kg
 @Algebrite.check(1/2)
 ************
 $$

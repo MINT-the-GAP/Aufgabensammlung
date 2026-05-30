@@ -54,22 +54,22 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 
-__$a)\;\;$__ $ -\left( -\left( -4 \right) \right)=$ [[  -4  ]]
+__$a)\;\;$__ $ -\left( -\left( -4 \right) \right)=$ [[  -4  ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$b)\;\;$__ $-\left( -\left( -\left( -\left( -9 \right) \right) \right) \right)=$ [[  -9  ]]
+__$b)\;\;$__ $-\left( -\left( -\left( -\left( -9 \right) \right) \right) \right)=$ [[  -9  ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$c)\;\;$__ $-\left( -\left( -\left( -12 \right) \right) \right)=$ [[  12  ]]
+__$c)\;\;$__ $-\left( -\left( -\left( -12 \right) \right) \right)=$ [[  12  ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ $-\left( -\left| -\left( -7 \right) \right| \right)=$ [[   7  ]]
+__$d)\;\;$__ $-\left( -\left| -\left( -7 \right) \right| \right)=$ [[   7  ]] @canvas
 
 </div>
 </section>

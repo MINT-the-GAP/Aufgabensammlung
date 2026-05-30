@@ -54,7 +54,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
-$1 \quad 2 \quad 4 \quad 8 \quad 16 \quad 32 \quad 64 \quad$ [[ 128 ]] $\quad$ [[ 256 ]] $\quad$ [[ 512 ]] \
+$1 \quad 2 \quad 4 \quad 8 \quad 16 \quad 32 \quad 64 \quad$ [[ 128 ]] @canvas $\quad$ [[ 256 ]] @canvas $\quad$ [[ 512 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die vorherige Zahl wird mit $2$ multipliziert.
 
@@ -63,7 +63,7 @@ $1 \quad 2 \quad 4 \quad 8 \quad 16 \quad 32 \quad 64 \quad$ [[ 128 ]] $\quad$ [
 
 __$b)\;\;$__
 
-$5 \quad 10 \quad 15 \quad 20 \quad 25 \quad 30 \quad $ [[ 35 ]] $\quad$ [[ 40 ]] $\quad$ [[ 45 ]] \
+$5 \quad 10 \quad 15 \quad 20 \quad 25 \quad 30 \quad $ [[ 35 ]] @canvas $\quad$ [[ 40 ]] @canvas $\quad$ [[ 45 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die $5$er-Reihe.
 
@@ -72,7 +72,7 @@ $5 \quad 10 \quad 15 \quad 20 \quad 25 \quad 30 \quad $ [[ 35 ]] $\quad$ [[ 40 ]
 
 __$c)\;\;$__
 
-$7 \quad 19 \quad 31 \quad 43 \quad 55 \quad 67 \quad$ [[ 79 ]] $\quad$ [[ 91 ]] $\quad$ [[ 103 ]] \
+$7 \quad 19 \quad 31 \quad 43 \quad 55 \quad 67 \quad$ [[ 79 ]] @canvas $\quad$ [[ 91 ]] @canvas $\quad$ [[ 103 ]] @canvas \
 
 [[?]] Musterbeschreibung: Startend bei der $7$ wird zur vorherigen Zahl immer $12$ addiert.
 

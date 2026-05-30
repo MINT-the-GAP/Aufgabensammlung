@@ -53,22 +53,22 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $ \text{sgn}\left(-94 \right) \cdot 92 =$ [[  -92  ]]
+__$a)\;\;$__ $ \text{sgn}\left(-94 \right) \cdot 92 =$ [[  -92  ]] @canvas
 
 </div> 
 <div class="flex-child">
 
-__$b)\;\;$__ $ -74:\text{sgn}\left( 74\right) =$ [[  -74  ]]
+__$b)\;\;$__ $ -74:\text{sgn}\left( 74\right) =$ [[  -74  ]] @canvas
 
 </div> 
 <div class="flex-child">
 
-__$c)\;\;$__ $ -14-\text{sgn}\left( -58\right) =$ [[  -15  ]]
+__$c)\;\;$__ $ -14-\text{sgn}\left( -58\right) =$ [[  -15  ]] @canvas
 
 </div> 
 <div class="flex-child">
 
-__$d)\;\;$__ $ 19:\text{sgn}\left( -65 \right) =$ [[  -19  ]]
+__$d)\;\;$__ $ 19:\text{sgn}\left( -65 \right) =$ [[  -19  ]] @canvas
 
 </div> 
 </section>

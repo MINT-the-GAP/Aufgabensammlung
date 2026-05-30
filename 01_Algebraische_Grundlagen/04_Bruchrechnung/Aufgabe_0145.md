@@ -61,7 +61,7 @@ Von der verbleibenden Fläche wird anschließend $\dfrac{1}{3}$ farbig lackiert.
 **Berechne** die am Ende nicht lackierte Nutzfläche als Bruch. 
 
 <!-- data-solution-button="5"-->
-[[  1600/9  ]] cm^2
+[[  1600/9  ]] @canvas cm^2
 @Algebrite.check(1600/9)
 ************
 $$

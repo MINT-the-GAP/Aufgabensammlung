@@ -56,37 +56,37 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $420\,\text{min} = $ [[    7   ]] $\,\text{h}$ \
+__$a)\;\;$__ $420\,\text{min} = $ [[    7   ]] @canvas $\,\text{h}$ \
 
 </div>
 
 <div class="flex-child">
 
-__$b)\;\;$__ $25\,\text{m} = $ [[  2500  ]] $\,\text{cm}$ \
+__$b)\;\;$__ $25\,\text{m} = $ [[  2500  ]] @canvas $\,\text{cm}$ \
 
 </div>
 
 <div class="flex-child">
 
-__$c)\;\;$__ $780000\,\text{kg} = $ [[   780  ]] $\,\text{t}$ \
+__$c)\;\;$__ $780000\,\text{kg} = $ [[   780  ]] @canvas $\,\text{t}$ \
 
 </div>
 
 <div class="flex-child">
 
-__$d)\;\;$__ $87\,\text{dm} = $ [[  8700  ]] $\,\text{mm}$ \
+__$d)\;\;$__ $87\,\text{dm} = $ [[  8700  ]] @canvas $\,\text{mm}$ \
 
 </div>
 
 <div class="flex-child">
 
-__$e)\;\;$__ $2\,\text{km} = $ [[ 200000 ]] $\,\text{cm}$ \
+__$e)\;\;$__ $2\,\text{km} = $ [[ 200000 ]] @canvas $\,\text{cm}$ \
 
 </div>
 
 <div class="flex-child">
 
-__$f)\;\;$__ $50000\,\text{cm}^2 = $ [[   5   ]] $\,\text{m}^2$ \
+__$f)\;\;$__ $50000\,\text{cm}^2 = $ [[   5   ]] @canvas $\,\text{m}^2$ \
 
 
 </div>

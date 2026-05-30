@@ -53,7 +53,7 @@ author: Martin Lommatzsch
 
 
 
-$0 \quad 1 \quad 6 \quad 15 \quad 28 \quad 45 \quad 66 \quad 91 \quad 120 \quad$ [[ 153 ]] $\quad$ [[ 190 ]] $\quad$ [[ 231 ]] \
+$0 \quad 1 \quad 6 \quad 15 \quad 28 \quad 45 \quad 66 \quad 91 \quad 120 \quad$ [[ 153 ]] @canvas $\quad$ [[ 190 ]] @canvas $\quad$ [[ 231 ]] @canvas \
 
 [[?]] Musterbeschreibung: Der Folgenterm ist $n\cdot(2\cdot n -1)$.
 

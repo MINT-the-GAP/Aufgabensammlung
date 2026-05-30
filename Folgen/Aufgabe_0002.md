@@ -54,7 +54,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
-$1 \quad 1 \quad 2 \quad 3 \quad 5 \quad 8 \quad 13 \quad$ [[ 21 ]] $\quad$ [[ 34 ]] $\quad$ [[ 55 ]] \
+$1 \quad 1 \quad 2 \quad 3 \quad 5 \quad 8 \quad 13 \quad$ [[ 21 ]] @canvas $\quad$ [[ 34 ]] @canvas $\quad$ [[ 55 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die beiden vorherigen Zahlen werden miteinander addiert.
 
@@ -62,7 +62,7 @@ $1 \quad 1 \quad 2 \quad 3 \quad 5 \quad 8 \quad 13 \quad$ [[ 21 ]] $\quad$ [[ 3
 
 __$b)\;\;$__
 
-$1 \quad 4 \quad 9 \quad 16 \quad 25 \quad 36 \quad 49 \quad$ [[ 64 ]] $\quad$ [[ 81 ]] $\quad$ [[ 100 ]] \
+$1 \quad 4 \quad 9 \quad 16 \quad 25 \quad 36 \quad 49 \quad$ [[ 64 ]] @canvas $\quad$ [[ 81 ]] @canvas $\quad$ [[ 100 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen werden quadriert.
 
@@ -70,7 +70,7 @@ $1 \quad 4 \quad 9 \quad 16 \quad 25 \quad 36 \quad 49 \quad$ [[ 64 ]] $\quad$ [
 
 __$c)\;\;$__
 
-$A \quad C \quad E \quad G \quad I \quad K \quad M \quad$ [[ O ]] $\quad$ [[ Q ]] $\quad$ [[ S ]] \
+$A \quad C \quad E \quad G \quad I \quad K \quad M \quad$ [[ O ]] @canvas $\quad$ [[ Q ]] @canvas $\quad$ [[ S ]] @canvas \
 
 [[?]] Musterbeschreibung: Immer der übernächste Buchstabe des Alphabets
 

@@ -65,8 +65,8 @@ __$a)\;\;$__
 </center>
 
 <!-- data-solution-button="5"-->
-Zähler: [[  3  ]] \
-Nenner: [[  8  ]] 
+Zähler: [[  3  ]] @canvas \
+Nenner: [[  8  ]] @canvas 
 
 </div>
 <div class="flex-child">
@@ -81,8 +81,8 @@ __$b)\;\;$__
 </center>
 
 <!-- data-solution-button="5"-->
-Zähler: [[  1  ]] \
-Nenner: [[  2  ]] 
+Zähler: [[  1  ]] @canvas \
+Nenner: [[  2  ]] @canvas 
 
 </div>
 <div class="flex-child">
@@ -97,8 +97,8 @@ __$c)\;\;$__
 </center>
 
 <!-- data-solution-button="5"-->
-Zähler: [[  1  ]] \
-Nenner: [[  4  ]] 
+Zähler: [[  1  ]] @canvas \
+Nenner: [[  4  ]] @canvas 
 
 </div>
 <div class="flex-child">
@@ -113,8 +113,8 @@ __$d)\;\;$__
 </center>
 
 <!-- data-solution-button="5"-->
-Zähler: [[  5  ]] \
-Nenner: [[  8  ]] 
+Zähler: [[  5  ]] @canvas \
+Nenner: [[  8  ]] @canvas 
 
 </div>
 <div class="flex-child">
@@ -129,8 +129,8 @@ __$e)\;\;$__
 </center>
 
 <!-- data-solution-button="5"-->
-Zähler: [[  7  ]] \
-Nenner: [[ 16  ]] 
+Zähler: [[  7  ]] @canvas \
+Nenner: [[ 16  ]] @canvas 
 
 </div>
 
@@ -146,8 +146,8 @@ __$f)\;\;$__
 </center>
 
 <!-- data-solution-button="5"-->
-Zähler: [[  1  ]] \
-Nenner: [[  8  ]] 
+Zähler: [[  1  ]] @canvas \
+Nenner: [[  8  ]] @canvas 
 
 </div>
 

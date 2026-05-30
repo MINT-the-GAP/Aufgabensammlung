@@ -57,7 +57,7 @@ Eine Trainingsrunde beträgt $8$ km. Bereits $\dfrac{1}{4}$ der Strecke sind ges
 **Bestimme**, wie viele Kilometer noch zu laufen sind. 
 
 <!-- data-solution-button="5"-->
-[[  6  ]] km
+[[  6  ]] @canvas km
 ************
 $$
 8\,\text{km} - \dfrac{1}{4}\cdot 8\,\text{km}

@@ -65,19 +65,19 @@ author: Martin Lommatzsch
 <!-- data-solution-button="5" 
 data-show-partial-solution -->
 __$a)\;\;$__ \
-$4 \cdot 4 =$ [[  16 ]] \
+$4 \cdot 4 =$ [[  16 ]] @canvas \
  \
-$4 \cdot 2 =$ [[  8  ]] \
+$4 \cdot 2 =$ [[  8  ]] @canvas \
  \
-$4 \cdot 1 =$ [[  4  ]] \
+$4 \cdot 1 =$ [[  4  ]] @canvas \
  \
-$4 \cdot \dfrac{1}{2} =$ [[  2  ]] \
+$4 \cdot \dfrac{1}{2} =$ [[  2  ]] @canvas \
  \
-$4 \cdot \dfrac{1}{4} =$ [[  1  ]] \
+$4 \cdot \dfrac{1}{4} =$ [[  1  ]] @canvas \
  \
-$4 \cdot \dfrac{1}{8} =$ [[ 1/2 ]] \
+$4 \cdot \dfrac{1}{8} =$ [[ 1/2 ]] @canvas \
  \
-$4 \cdot \dfrac{1}{16} =$ [[ 1/4 ]] \
+$4 \cdot \dfrac{1}{16} =$ [[ 1/4 ]] @canvas \
 @Algebrite.check([ 16;8;4;2;1;1/2;1/4 ])
 </div>
 <div class="flex-child">
@@ -85,19 +85,19 @@ $4 \cdot \dfrac{1}{16} =$ [[ 1/4 ]] \
 <!-- data-solution-button="5" 
 data-show-partial-solution -->
 __$b)\;\;$__ \
-$24 \cdot 8 =$ [[  192 ]] \
+$24 \cdot 8 =$ [[  192 ]] @canvas \
  \
-$24 \cdot 4 =$ [[  96  ]] \
+$24 \cdot 4 =$ [[  96  ]] @canvas \
  \
-$24 \cdot 2 =$ [[  48  ]] \
+$24 \cdot 2 =$ [[  48  ]] @canvas \
  \
-$24 \cdot 1 =$ [[  24  ]] \
+$24 \cdot 1 =$ [[  24  ]] @canvas \
  \
-$24 \cdot \dfrac{1}{2} =$ [[  12  ]] \
+$24 \cdot \dfrac{1}{2} =$ [[  12  ]] @canvas \
  \
-$24 \cdot \dfrac{1}{4} =$ [[   6  ]] \
+$24 \cdot \dfrac{1}{4} =$ [[   6  ]] @canvas \
  \
-$24 \cdot \dfrac{1}{8} =$ [[  3   ]] \
+$24 \cdot \dfrac{1}{8} =$ [[  3   ]] @canvas \
 @Algebrite.check([ 192;96;48;24;12;6;3 ])
 </div>
 <div class="flex-child">
@@ -105,19 +105,19 @@ $24 \cdot \dfrac{1}{8} =$ [[  3   ]] \
 <!-- data-solution-button="5" 
 data-show-partial-solution -->
 __$c)\;\;$__ \
-$27 \cdot \dfrac{1}{81} =$ [[  1/3 ]] \
+$27 \cdot \dfrac{1}{81} =$ [[  1/3 ]] @canvas \
  \
-$27 \cdot \dfrac{1}{27} =$ [[  1   ]] \
+$27 \cdot \dfrac{1}{27} =$ [[  1   ]] @canvas \
  \
-$27 \cdot \dfrac{1}{9} =$ [[  3   ]] \
+$27 \cdot \dfrac{1}{9} =$ [[  3   ]] @canvas \
  \
-$27 \cdot \dfrac{1}{3} =$ [[  9   ]] \
+$27 \cdot \dfrac{1}{3} =$ [[  9   ]] @canvas \
  \
-$27 \cdot 1 =$ [[  27  ]] \
+$27 \cdot 1 =$ [[  27  ]] @canvas \
  \
-$27 \cdot 3 =$ [[  81  ]] \
+$27 \cdot 3 =$ [[  81  ]] @canvas \
  \
-$27 \cdot 9 =$ [[ 243  ]] \
+$27 \cdot 9 =$ [[ 243  ]] @canvas \
 @Algebrite.check([ 1/3;1;3;9;27;81;243 ])
 </div>
 <div class="flex-child">
@@ -125,19 +125,19 @@ $27 \cdot 9 =$ [[ 243  ]] \
 <!-- data-solution-button="5" 
 data-show-partial-solution -->
 __$d)\;\;$__ \
-$10 \cdot 100 =$ [[  1000  ]] \
+$10 \cdot 100 =$ [[  1000  ]] @canvas \
  \
-$10 \cdot 10 =$  [[  100   ]] \
+$10 \cdot 10 =$  [[  100   ]] @canvas \
  \
-$10 \cdot 1 =$                [[  10    ]] \
+$10 \cdot 1 =$                [[  10    ]] @canvas \
  \
-$10 \cdot \dfrac{1}{10} =$    [[  1     ]] \
+$10 \cdot \dfrac{1}{10} =$    [[  1     ]] @canvas \
  \
-$10 \cdot \dfrac{1}{100} =$   [[  1/10  ]] \
+$10 \cdot \dfrac{1}{100} =$   [[  1/10  ]] @canvas \
  \
-$10 \cdot \dfrac{1}{1000} =$  [[ 1/100  ]] \
+$10 \cdot \dfrac{1}{1000} =$  [[ 1/100  ]] @canvas \
  \
-$10 \cdot \dfrac{1}{10000} =$ [[ 1/1000 ]] \
+$10 \cdot \dfrac{1}{10000} =$ [[ 1/1000 ]] @canvas \
 @Algebrite.check([ 1000;100;10;1;1/10;1/100;1/1000 ])
 </div>
 

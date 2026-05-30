@@ -57,42 +57,42 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 __$a)\;\;$__ Wie viel Zeit ist von 12:30$\,$Uhr bis 15:40$\,$Uhr vergangen? \
-[[   3   ]] $\,\text{h}$ und [[   10  ]] $\,\text{min}$
+[[   3   ]] @canvas $\,\text{h}$ und [[   10  ]] @canvas $\,\text{min}$
 
 </div>
 
 <div class="flex-child">
 
 __$b)\;\;$__ Wie viel Zeit ist von 09:15$\,$Uhr bis 17:40$\,$Uhr vergangen? \
-[[   8   ]] $\,\text{h}$ und [[   25  ]] $\,\text{min}$
+[[   8   ]] @canvas $\,\text{h}$ und [[   25  ]] @canvas $\,\text{min}$
 
 </div>
 
 <div class="flex-child">
 
 __$c)\;\;$__ Wie viel Zeit ist von 7:05$\,$Uhr bis 14:20$\,$Uhr vergangen? \
-[[   7   ]] $\,\text{h}$ und [[   15  ]] $\,\text{min}$
+[[   7   ]] @canvas $\,\text{h}$ und [[   15  ]] @canvas $\,\text{min}$
 
 </div>
 
 <div class="flex-child">
 
 __$d)\;\;$__ Wie viel Zeit ist von 10:40$\,$Uhr bis 19:30$\,$Uhr vergangen? \
-[[   8   ]] $\,\text{h}$ und [[   50  ]] $\,\text{min}$
+[[   8   ]] @canvas $\,\text{h}$ und [[   50  ]] @canvas $\,\text{min}$
 
 </div>
 
 <div class="flex-child">
 
 __$e)\;\;$__ Wie viel Zeit ist von 05:50$\,$Uhr bis 21:20$\,$Uhr vergangen? \
-[[  15   ]] $\,\text{h}$ und [[   30  ]] $\,\text{min}$
+[[  15   ]] @canvas $\,\text{h}$ und [[   30  ]] @canvas $\,\text{min}$
 
 </div>
 
 <div class="flex-child">
 
 __$f)\;\;$__ Wie viel Zeit ist von 07:25$\,$Uhr bis 18:40$\,$Uhr vergangen? \
-[[  11   ]] $\,\text{h}$ und [[   15  ]] $\,\text{min}$
+[[  11   ]] @canvas $\,\text{h}$ und [[   15  ]] @canvas $\,\text{min}$
 
 </div>
 

@@ -76,7 +76,7 @@ const C = ri(1000, A - 1000);
 const B = A - C; // 1000..8999
 
 // Aufgabe: nur der Subtrahend ist gesucht
-const problem = `${A} - [[ ${B} ]] = ${C}`;
+const problem = `${A} - [[ ${B} ]] @canvas = ${C}`;
 
 // Leih-Markierungen (rote 1 dort, WO +10 genommen wurde) in Reihenfolge [T,H,Z,E]
 function borrowLineSub(minuend, subtrahend) {

@@ -59,7 +59,7 @@ __$a)\;\;$__
 
 ![Kandiszuckerstückchen](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa9.jpg)
 
-[[ 600  ]] Kandiszuckerstückchen
+[[ 600  ]] @canvas Kandiszuckerstückchen
 @Algebrite.check_margin(550,725)
 
 
@@ -71,7 +71,7 @@ __$b)\;\;$__
 
 ![Erdnusskernstücke](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa10.jpg)
 
-[[ 280  ]] Erdnusskernstücke
+[[ 280  ]] @canvas Erdnusskernstücke
 @Algebrite.check_margin(250,350)
 
 

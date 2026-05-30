@@ -54,25 +54,25 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 __$a)\;\;$__ Von der Summe aus $44$ und $18$ wird $29$ subtrahiert.\
-[[  33  ]]
+[[  33  ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ Der ganzzahlige Quotient besteht aus den Zahlen $5$ und $70$.\
-[[  14  ]]
+[[  14  ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ Das Produkt der Zahlen $9$ und $4$ wird mit $5$ multipliziert.\
-[[  180 ]]
+[[  180 ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ Die positive Differenz aus $38$ und $57$ wird um $14$ addiert.\
-[[  33  ]]
+[[  33  ]] @canvas
 
 </div>
 </section>

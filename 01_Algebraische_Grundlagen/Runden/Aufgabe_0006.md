@@ -56,7 +56,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
-Auf Hunderter: $54164 \approx$ [[54200]]
+Auf Hunderter: $54164 \approx$ [[54200]] @canvas
 
 </div>
 
@@ -66,7 +66,7 @@ Auf Hunderter: $54164 \approx$ [[54200]]
 
 __$b)\;\;$__
 
-Auf Hunderttausender: $54164 \approx$ [[100000]]
+Auf Hunderttausender: $54164 \approx$ [[100000]] @canvas
 
 </div>
 
@@ -77,7 +77,7 @@ Auf Hunderttausender: $54164 \approx$ [[100000]]
 
 __$c)\;\;$__
 
-Auf Zehner: $8431 \approx$ [[8430]]
+Auf Zehner: $8431 \approx$ [[8430]] @canvas
 
 </div>
 
@@ -88,7 +88,7 @@ Auf Zehner: $8431 \approx$ [[8430]]
 
 __$d)\;\;$__
 
-Auf Millionen: $47081 \approx$ [[0]]
+Auf Millionen: $47081 \approx$ [[0]] @canvas
 
 </div>
 
@@ -99,7 +99,7 @@ Auf Millionen: $47081 \approx$ [[0]]
 
 __$e)\;\;$__
 
-Auf Hunderter: $94516 \approx$ [[94500]]
+Auf Hunderter: $94516 \approx$ [[94500]] @canvas
 
 </div>
 
@@ -109,7 +109,7 @@ Auf Hunderter: $94516 \approx$ [[94500]]
 
 __$f)\;\;$__
 
-Auf Zehntausender: $998146 \approx$ [[1000000]]
+Auf Zehntausender: $998146 \approx$ [[1000000]] @canvas
 
 </div>
 

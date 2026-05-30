@@ -57,7 +57,7 @@ Für eine Nussmischung werden Mandeln (6 €/kg), Erdnüsse (4 €/kg) und Cashe
 **Berechne** die eingesetzten Kilogramm der drei Sorten.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  5/2  ]], $y$ = [[  3  ]] und $z$ = [[  2  ]]
+$x$ = [[  5/2  ]] @canvas, $y$ = [[  3  ]] @canvas und $z$ = [[  2  ]] @canvas
 @Algebrite.check([ 5/2; 3; 2 ])
 ************
 Bezeichne mit $x$ die Kilogramm Mandeln, mit $y$ die Kilogramm Erdnüsse und mit $z$ die Kilogramm Cashews.

@@ -69,7 +69,7 @@ __$a)\;\;$__
 Ich habe zwei Siebtel und bekomme drei Siebtel hinzu.
 
 <!-- data-solution-button="5"-->
-[[  5/7  ]] 
+[[  5/7  ]] @canvas 
 @Algebrite.check(5/7)
 
 
@@ -84,7 +84,7 @@ __$b)\;\;$__
 Was habe ich, wenn ich sieben Neuntel und vier Neuntel habe?
 
 <!-- data-solution-button="5"-->
-[[  11/9  ]] 
+[[  11/9  ]] @canvas 
 @Algebrite.check(11/9)
 
 
@@ -99,7 +99,7 @@ __$c)\;\;$__
 Zu meinen drei Achtel kommen zwei Achtel hinzu.
 
 <!-- data-solution-button="5"-->
-[[  5/8  ]] 
+[[  5/8  ]] @canvas 
 @Algebrite.check(5/8)
 
 
@@ -114,7 +114,7 @@ __$d)\;\;$__
 Ich habe ein Drittel und noch ein Drittel.
 
 <!-- data-solution-button="5"-->
-[[  2/3  ]] 
+[[  2/3  ]] @canvas 
 @Algebrite.check(2/3)
 
 

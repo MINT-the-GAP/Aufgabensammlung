@@ -57,7 +57,7 @@ Ein Rechteck hat eine Seitenlänge von $12$ cm. Die andere Seitenlänge beträgt
 **Bestimme** die zweite Seitenlänge. 
 
 <!-- data-solution-button="5"-->
-[[ 9 ]] cm
+[[ 9 ]] @canvas cm
 ************
 $$
 \dfrac{3}{4}\cdot 12\,\text{cm} = \dfrac{36}{4}\,\text{cm} = 9\,\text{cm}

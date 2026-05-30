@@ -73,13 +73,13 @@ let problem = ""
 
 if (markedNumber === 0) {
   // Prozentsatz unbekannt
-  problem = `[[ ${percentage} ]] % von ${base} = ${result}`;
+  problem = `[[ ${percentage} ]] @canvas % von ${base} = ${result}`;
 } else if (markedNumber === 1) {
   // Basis unbekannt
-  problem = `${percentage}% von [[ ${base} ]] = ${result}`
+  problem = `${percentage}% von [[ ${base} ]] @canvas = ${result}`
 } else {
   // Ergebnis unbekannt
-  problem = `${percentage}% von ${base} = [[ ${result} ]]`
+  problem = `${percentage}% von ${base} = [[ ${result} ]] @canvas`
 }
 
 // Lösungsschritte vereinfacht und in einem aligned-Block

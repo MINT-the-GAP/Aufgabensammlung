@@ -58,7 +58,7 @@ Das andere Smartphone läuft ohne Netzteil mit einem grafikintensiven Spiel. Es 
 **Berechne**, nach wie vielen Minuten beide Geräte den gleichen Akkustand anzeigen.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  144/7  ]]
+$x$ = [[  144/7  ]] @canvas
 @Algebrite.check(144/7)
 ************
 $$

@@ -60,7 +60,7 @@ Aus der verbleibenden Stoffmenge wird anschließend noch $\dfrac{1}{4}$ für Tis
 **Berechne** die am Ende übrig bleibende Stofflänge. 
 
 <!-- data-solution-button="5"-->
-[[  15  ]] m
+[[  15  ]] @canvas m
 @Algebrite.check(15)
 ************
 $$

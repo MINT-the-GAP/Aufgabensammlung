@@ -57,7 +57,7 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 __$a)\;\;$__ $  $2(4x-5) = 3x + 5$ \
-$x$ = [[  3  ]]
+$x$ = [[  3  ]] @canvas
 @Algebrite.check(3)
 ************
 
@@ -76,7 +76,7 @@ $$
 <div class="flex-child">
 
 __$b)\;\;$__ $  3(2x+1) = 4x + 11 $ \
-$x$ = [[  4  ]]
+$x$ = [[  4  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -93,7 +93,7 @@ $$
 <div class="flex-child">
 
 __$c)\;\;$__ $  $2(5x-4) = 3x + 6$ \
-$x$ = [[  2  ]]
+$x$ = [[  2  ]] @canvas
 @Algebrite.check(2)
 ************
 $$
@@ -111,7 +111,7 @@ $$
 <div class="flex-child">
 
 __$d)\;\;$__ $  $7(x-2) + 1 = 3x - 1$ \
-$x$ = [[  3  ]]
+$x$ = [[  3  ]] @canvas
 @Algebrite.check(3)
 ************
 

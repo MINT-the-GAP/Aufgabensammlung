@@ -93,17 +93,17 @@ author: Martin Lommatzsch
 
 <section class="dynFlex">
 <div class="flex-child">
-$A($[[  -4 ]]$|$[[  2  ]]$)$ \
+$A($[[  -4 ]] @canvas$|$[[  2  ]] @canvas$)$ \
 
 </div>
 <div class="flex-child">
 
-$B($[[  -5 ]]$|$[[  -3  ]]$)$ \
+$B($[[  -5 ]] @canvas$|$[[  -3  ]] @canvas$)$ \
 
 </div>
 <div class="flex-child">
 
-[[  E  ]]$( 3 | -1 )$ \
+[[  E  ]] @canvas$( 3 | -1 )$ \
 
 </div>
 </section>

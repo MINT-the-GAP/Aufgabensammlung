@@ -58,7 +58,7 @@ Ein Wasserkanister fasst $12$ Liter Wasser. Es wird $\dfrac{1}{3}$ des Wassers e
 
 
 <!-- data-solution-button="5"-->
-[[  4  ]] $\ell$
+[[  4  ]] @canvas $\ell$
 @Algebrite.check(4)
 ************
 $$

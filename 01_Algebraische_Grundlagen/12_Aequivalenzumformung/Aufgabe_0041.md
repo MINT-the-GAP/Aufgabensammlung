@@ -56,7 +56,7 @@ Ein Abstieg startet gleichzeitig auf 1130 m und verliert pro Minute 6 m an Höhe
 **Berechne**, nach wie vielen Minuten beide Routen auf gleicher Höhe sind.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  62/3  ]]
+$x$ = [[  62/3  ]] @canvas
 @Algebrite.check(62/3)
 ************
 $$

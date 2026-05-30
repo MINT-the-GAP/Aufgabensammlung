@@ -56,7 +56,7 @@ Nimmt man stattdessen von derselben Zahl die Hälfte und addiert sieben, so ents
 **Berechne** die gesuchte Zahl.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  24/5  ]]
+$x$ = [[  24/5  ]] @canvas
 @Algebrite.check(24/5)
 ************
 $$

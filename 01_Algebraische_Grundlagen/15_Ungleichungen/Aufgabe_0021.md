@@ -59,7 +59,7 @@ Tarif A kostet 8 € Grundpreis und 3 € je GB. Tarif B kostet 2 € Grundpreis
 **Berechne**, ab welchem Datenvolumen $x$ (in GB) Tarif A nicht teurer als Tarif B ist.
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \{ x \in \mathbb{N} \;|\; x \geq $ [[ 3 ]] $\}$
+$\mathbb{L} = \{ x \in \mathbb{N} \;|\; x \geq $ [[ 3 ]] @canvas $\}$
 @Algebrite.check(3)
 ******************
 $$

@@ -59,7 +59,7 @@ Dann werden $\dfrac{3}{10}$ des gefüllten Wassers wieder abgelassen.
 **Bestimme**, wie viele Kubikmeter Wasser nun im Becken sind. 
 
 <!-- data-solution-button="5"-->
-[[  70  ]] m$^3$
+[[  70  ]] @canvas m$^3$
 ************
 $$
 \text{Gefüllt: } \dfrac{5}{6}\cdot 120 = 100\,\text{m}^3 \\

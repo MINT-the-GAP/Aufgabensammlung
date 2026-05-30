@@ -69,7 +69,7 @@ II.& \qquad 24x - 12y + 36z = -23 \\
 III.& \qquad -3x + 12y - 6z = 11
 \end{align*}
 $$
-$x$ = [[  1/2  ]],  $y$ = [[  2/3  ]]  und  $z$ = [[  -3/4  ]]
+$x$ = [[  1/2  ]] @canvas,  $y$ = [[  2/3  ]] @canvas  und  $z$ = [[  -3/4  ]] @canvas
 @Algebrite.check([ 1/2; 2/3; -3/4 ])
 ************
 $$
@@ -102,7 +102,7 @@ II.& \qquad 7x - 3y + 12z = 15 \\
 III.& \qquad -21x + 12y - 6z = -22
 \end{align*}
 $$
-$x$ = [[  3/7  ]],  $y$ = [[  -2/3  ]]  und  $z$ = [[  5/6  ]]
+$x$ = [[  3/7  ]] @canvas,  $y$ = [[  -2/3  ]] @canvas  und  $z$ = [[  5/6  ]] @canvas
 @Algebrite.check([ 3/7; -2/3; 5/6 ])
 ************
 $$
@@ -136,7 +136,7 @@ II.& \qquad 9x - 4y + 10z = -4 \\
 III.& \qquad -12x + 12y - 15z = 13
 \end{align*}
 $$
-$x$ = [[  -1/3  ]],  $y$ = [[  5/4  ]]  und  $z$ = [[  2/5  ]]
+$x$ = [[  -1/3  ]] @canvas,  $y$ = [[  5/4  ]] @canvas  und  $z$ = [[  2/5  ]] @canvas
 @Algebrite.check([ -1/3; 5/4; 2/5 ])
 ************
 $$
@@ -170,7 +170,7 @@ II.& \qquad 18x - 12y + 6z = 26 \\
 III.& \qquad -9x + 12y - 15z = -22
 \end{align*}
 $$
-$x$ = [[  7/9  ]],  $y$ = [[  -5/6  ]]  und  $z$ = [[  1/3  ]]
+$x$ = [[  7/9  ]] @canvas,  $y$ = [[  -5/6  ]] @canvas  und  $z$ = [[  1/3  ]] @canvas
 @Algebrite.check([ 7/9; -5/6; 1/3 ])
 ************
 $$

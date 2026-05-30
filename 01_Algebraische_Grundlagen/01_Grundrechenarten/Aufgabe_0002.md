@@ -54,25 +54,25 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 __$a)\;\;$__ Der Dividend ist $81$ und der Divisor $27$. \
-[[  3   ]]
+[[  3   ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ Eine Summe besteht aus den Summanden $12$, $34$ und $26$.\
-[[  72  ]]
+[[  72  ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ Es wird ein Produkt aus $11$ und $12$ gebildet. \
-[[  132 ]]
+[[  132 ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ Der Subtrahend einer Differenz ist $19$, während der Wert des Minuenden $45$ beträgt.\
-[[  26  ]]
+[[  26  ]] @canvas
 
 </div>
 </section>

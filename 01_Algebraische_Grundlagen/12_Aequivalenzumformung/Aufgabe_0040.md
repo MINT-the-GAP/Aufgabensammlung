@@ -58,7 +58,7 @@ In Raum 2 ist es anfangs 28 °C und die Temperatur sinkt pro Stunde um 0,75 °C.
 **Berechne**, nach wie vielen Stunden beide Räume die gleiche Temperatur haben.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  16/3  ]]
+$x$ = [[  16/3  ]] @canvas
 @Algebrite.check(16/3)
 ************
 $$

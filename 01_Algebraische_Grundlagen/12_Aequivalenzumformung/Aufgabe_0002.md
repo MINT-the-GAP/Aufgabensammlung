@@ -52,19 +52,19 @@ In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich viele Streichhöl
 
 <!-- style="width:600px" -->
 __$a)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholz1e.png)  
-$x=$ [[  2  ]] Streichhölzer
+$x=$ [[  2  ]] @canvas Streichhölzer
 
 <!-- style="width:600px" -->
 __$b)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholz1f.png)  
-$x=$ [[  2  ]] Streichhölzer
+$x=$ [[  2  ]] @canvas Streichhölzer
 
 <!-- style="width:600px" -->
 __$c)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholz1g.png)  
-$x=$ [[  1  ]] Streichhölzer
+$x=$ [[  1  ]] @canvas Streichhölzer
 
 <!-- style="width:600px" -->
 __$d)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholz1h.png)  
-$x=$ [[  5  ]] Streichhölzer
+$x=$ [[  5  ]] @canvas Streichhölzer
 
 
 

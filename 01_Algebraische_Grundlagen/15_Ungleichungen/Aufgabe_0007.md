@@ -67,7 +67,7 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $2x + 6 \leq 20$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  7  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  7  ]] @canvas   $\left.   \right\}$
 ******************
 $$
 \begin{align*}
@@ -83,7 +83,7 @@ $$
 __$b)\;\;$__ $3x - 4 < 14$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \leq $   [[  5  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \leq $   [[  5  ]] @canvas   $\left.   \right\}$
 ******************
 $$
 \begin{align*}
@@ -99,7 +99,7 @@ $$
 __$c)\;\;$__ $\dfrac{x}{4} + 5 \geq 11$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  24  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  24  ]] @canvas   $\left.   \right\}$
 ******************
 $$
 \begin{align*}
@@ -115,7 +115,7 @@ $$
 __$d)\;\;$__ $5x + 3 > 28$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $   [[  6  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $   [[  6  ]] @canvas   $\left.   \right\}$
 ******************
 $$
 \begin{align*}
@@ -131,7 +131,7 @@ $$
 __$e)\;\;$__ $\dfrac{x}{3} + 2 \leq 13$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \leq $   [[  33  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \leq $   [[  33  ]] @canvas   $\left.   \right\}$
 ******************
 $$
 \begin{align*}
@@ -147,7 +147,7 @@ $$
 __$f)\;\;$__ $6x - 6 > 30$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  7  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  7  ]] @canvas   $\left.   \right\}$
 ******************
 $$
 \begin{align*}

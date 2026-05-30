@@ -58,7 +58,7 @@ __$a)\;\;$__ 6449
 <!-- data-type="none" -->
 |  Millionen  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
 | :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
-|   [[ 0 ]]   |       [[ 0 ]]      |       [[ 0 ]]     |    [[ 6 ]]   |   [[ 4 ]]  |  [[ 4 ]]  | [[ 9 ]] |
+|   [[ 0 ]] @canvas   |       [[ 0 ]] @canvas      |       [[ 0 ]] @canvas     |    [[ 6 ]] @canvas   |   [[ 4 ]] @canvas  |  [[ 4 ]] @canvas  | [[ 9 ]] @canvas |
 
 
 
@@ -67,7 +67,7 @@ __$b)\;\;$__ 6459204
 <!-- data-type="none" -->
 |  Millionen  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
 | :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
-|   [[ 6 ]]   |       [[ 4 ]]      |       [[ 5 ]]     |    [[ 9 ]]   |   [[ 2 ]]  |  [[ 0 ]]  | [[ 4 ]] |
+|   [[ 6 ]] @canvas   |       [[ 4 ]] @canvas      |       [[ 5 ]] @canvas     |    [[ 9 ]] @canvas   |   [[ 2 ]] @canvas  |  [[ 0 ]] @canvas  | [[ 4 ]] @canvas |
 
 
 __$c)\;\;$__ 210079
@@ -75,7 +75,7 @@ __$c)\;\;$__ 210079
 <!-- data-type="none" -->
 |  Millionen  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
 | :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
-|   [[ 0 ]]   |       [[ 2 ]]      |       [[ 1 ]]     |    [[ 0 ]]   |   [[ 0 ]]  |  [[ 7 ]]  | [[ 9 ]] |
+|   [[ 0 ]] @canvas   |       [[ 2 ]] @canvas      |       [[ 1 ]] @canvas     |    [[ 0 ]] @canvas   |   [[ 0 ]] @canvas  |  [[ 7 ]] @canvas  | [[ 9 ]] @canvas |
 
 
 

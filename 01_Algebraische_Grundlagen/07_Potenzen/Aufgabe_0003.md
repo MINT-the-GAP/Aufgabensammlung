@@ -54,22 +54,22 @@ author: Martin Lommatzsch
 
 <section class="dynFlex">
 <div class="flex-child">
-__$a)\;\;$__ $4^4 = $ [[  256  ]]
+__$a)\;\;$__ $4^4 = $ [[  256  ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$b)\;\;$__ $7^3 = $ [[  343  ]]
+__$b)\;\;$__ $7^3 = $ [[  343  ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$c)\;\;$__ $5^4 = $ [[  625  ]]
+__$c)\;\;$__ $5^4 = $ [[  625  ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ $3^5 = $ [[  243  ]]
+__$d)\;\;$__ $3^5 = $ [[  243  ]] @canvas
 
 
 </div>

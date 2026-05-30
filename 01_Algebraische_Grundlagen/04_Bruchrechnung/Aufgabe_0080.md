@@ -56,7 +56,7 @@ author: Martin Lommatzsch
 
 
 __$a)\;\;$__ Wie viel sind $\dfrac{9}{4}$ von $72\,$kg?  \
- [[  162  ]]kg
+ [[  162  ]] @canvaskg
 ***************
 $$
 \begin{align*}
@@ -72,7 +72,7 @@ $$
 
 
 __$b)\;\;$__ Wie viel sind $\dfrac{7}{10}$ von $120\,$kg?  \
- [[  84  ]]kg
+ [[  84  ]] @canvaskg
 ***************
 $$
 \begin{align*}
@@ -88,7 +88,7 @@ $$
 
 
 __$c)\;\;$__ Wie viel sind $\dfrac{1}{8}$ von $480\,$m?  \
- [[  60  ]]m
+ [[  60  ]] @canvasm
 ***************
 $$
 \begin{align*}
@@ -104,7 +104,7 @@ $$
 
 
 __$d)\;\;$__ Wie viel sind $\dfrac{3}{20}$ von $500\,$€?  \
- [[  75  ]]€
+ [[  75  ]] @canvas€
 ***************
 $$
 \begin{align*}

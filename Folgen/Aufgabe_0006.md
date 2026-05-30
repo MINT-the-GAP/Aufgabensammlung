@@ -54,7 +54,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
-$97 \quad 91 \quad 85 \quad 79 \quad 73 \quad 67 \quad $ [[ 61 ]] $\quad$ [[ 55 ]] $\quad$ [[ 49 ]] \
+$97 \quad 91 \quad 85 \quad 79 \quad 73 \quad 67 \quad $ [[ 61 ]] @canvas $\quad$ [[ 55 ]] @canvas $\quad$ [[ 49 ]] @canvas \
 
 [[?]] Musterbeschreibung: Von der vorherigen Zahl wird $6$ subtrahiert.
 
@@ -63,7 +63,7 @@ $97 \quad 91 \quad 85 \quad 79 \quad 73 \quad 67 \quad $ [[ 61 ]] $\quad$ [[ 55 
 
 __$b)\;\;$__
 
-$1 \quad 11 \quad 111 \quad 1111 \quad 11111 \quad $ [[ 111111 ]] $\quad$ [[ 1111111 ]] $\quad$ [[ 11111111 ]] \
+$1 \quad 11 \quad 111 \quad 1111 \quad 11111 \quad $ [[ 111111 ]] @canvas $\quad$ [[ 1111111 ]] @canvas $\quad$ [[ 11111111 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die nächste $10$er-Potenz wird zur vorherigen Zahl addiert.
 
@@ -72,7 +72,7 @@ $1 \quad 11 \quad 111 \quad 1111 \quad 11111 \quad $ [[ 111111 ]] $\quad$ [[ 111
 
 __$c)\;\;$__
 
-$43 \quad 57 \quad 71 \quad 85 \quad 99 \quad 113 \quad$ [[ 127 ]] $\quad$ [[ 141 ]] $\quad$ [[ 155 ]] \
+$43 \quad 57 \quad 71 \quad 85 \quad 99 \quad 113 \quad$ [[ 127 ]] @canvas $\quad$ [[ 141 ]] @canvas $\quad$ [[ 155 ]] @canvas \
 
 [[?]] Musterbeschreibung: Startend bei der $43$ wird zur vorherigen Zahl immer $14$ addiert.
 

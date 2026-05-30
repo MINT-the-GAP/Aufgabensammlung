@@ -67,7 +67,7 @@ $$
 $$
 
 <!-- data-show-partial-solution -->
-Als erstes wird die Gleichung sortiert, indem auf [[  beiden Seiten  ]] des Gleichheitszeichen $+4$ gerechnet wird. Anschließend wird [[  -x  ]] auf beiden Seiten des [[  Gleichheitszeichen  ]] gerechnet, sodass in den nächsten Schritten nur noch die Punktrechnung zum Einsatz kommen kann. Der Vorfaktor stückweise entfernt. Zu nächst wird [[ mit   ]] $5$ [[  multipliziert  ]], dann nächst wird [[ durch ]] $2$ [[  dividiert      ]]. Das Vorzeichen wird abschließend noch mit der [[  Multiplikation  ]] mit $(-1)$ von der Unbekannten gelöst.
+Als erstes wird die Gleichung sortiert, indem auf [[  beiden Seiten  ]] @canvas des Gleichheitszeichen $+4$ gerechnet wird. Anschließend wird [[  -x  ]] @canvas auf beiden Seiten des [[  Gleichheitszeichen  ]] @canvas gerechnet, sodass in den nächsten Schritten nur noch die Punktrechnung zum Einsatz kommen kann. Der Vorfaktor stückweise entfernt. Zu nächst wird [[ mit   ]] @canvas $5$ [[  multipliziert  ]] @canvas, dann nächst wird [[ durch ]] @canvas $2$ [[  dividiert      ]] @canvas. Das Vorzeichen wird abschließend noch mit der [[  Multiplikation  ]] @canvas mit $(-1)$ von der Unbekannten gelöst.
 
 
 

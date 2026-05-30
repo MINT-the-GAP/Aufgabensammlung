@@ -67,28 +67,28 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $3x < 24$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x < $   [[  8  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x < $   [[  8  ]] @canvas   $\left.   \right\}$
 </div>
 
 <div class="flex-child">
 __$b)\;\;$__  $x - 6 \leq 10$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  16  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  16  ]] @canvas   $\left.   \right\}$
 </div>
 
 <div class="flex-child">
 __$c)\;\;$__  $\dfrac{x}{7} \geq 2$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  14  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  14  ]] @canvas   $\left.   \right\}$
 </div>
 
 <div class="flex-child">
 __$d)\;\;$__  $x + 5 > 18$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x > $   [[  13  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x > $   [[  13  ]] @canvas   $\left.   \right\}$
 </div>
 
 </section>

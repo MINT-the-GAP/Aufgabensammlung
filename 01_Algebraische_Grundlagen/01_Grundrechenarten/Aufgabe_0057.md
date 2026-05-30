@@ -59,7 +59,7 @@ __$a)\;\;$__
 
 ![Erbsen](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa1.jpg)
 
-[[ 1250 ]] Erbsen
+[[ 1250 ]] @canvas Erbsen
 @Algebrite.check_margin(1100,1400)
 
 </div>
@@ -69,7 +69,7 @@ __$b)\;\;$__
 
 ![Holzperlen](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa2.jpg)
 
-[[ 400  ]] Holzperlen
+[[ 400  ]] @canvas Holzperlen
 @Algebrite.check_margin(350,450)
 
 </div>

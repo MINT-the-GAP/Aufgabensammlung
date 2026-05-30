@@ -60,7 +60,7 @@ Ein Wassertank enthält anfangs $30\,\mathrm{l}$. Durch ein Leck verliert der Ta
 **Berechne** die Anzahl der Minuten, sodass der Inhalt höchstens $20\,\mathrm{l}$ beträgt.
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \{ x \in \mathbb{R} \;|\; x \geq $ [[ 40/7 ]] $\}$
+$\mathbb{L} = \{ x \in \mathbb{R} \;|\; x \geq $ [[ 40/7 ]] @canvas $\}$
 @Algebrite.check(40/7)
 ******************
 $$

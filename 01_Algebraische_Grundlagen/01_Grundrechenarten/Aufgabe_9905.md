@@ -77,7 +77,7 @@ let C = ri(1000, 9999 - B); // C so, dass A = B+C ≤ 9999
 let A = B + C;
 
 // Aufgabe: Minuend gesucht
-const problem = `[[ ${A} ]] - ${B} = ${C}`;
+const problem = `[[ ${A} ]] @canvas - ${B} = ${C}`;
 
 // Leih-Zeile für Subtraktion
 function borrowLineSub(minuend, subtrahend) {

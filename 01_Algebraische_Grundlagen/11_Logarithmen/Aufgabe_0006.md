@@ -54,22 +54,22 @@ author: Martin Lommatzsch
 
 <section class="dynFlex">
 <div class="flex-child">
-__$a)\;\;$__ $\log_{3}\left( \dfrac{1}{81} \right) = $ [[  -4  ]]
+__$a)\;\;$__ $\log_{3}\left( \dfrac{1}{81} \right) = $ [[  -4  ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$b)\;\;$__ $\log_{10}\left( 0,00001 \right) = $ [[  -5  ]]
+__$b)\;\;$__ $\log_{10}\left( 0,00001 \right) = $ [[  -5  ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$c)\;\;$__ $\log_{2}\left( 0,125 \right) = $ [[  -3  ]]
+__$c)\;\;$__ $\log_{2}\left( 0,125 \right) = $ [[  -3  ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ $\log_{5}\left( \dfrac{1}{3125} \right) = $ [[  -5  ]]
+__$d)\;\;$__ $\log_{5}\left( \dfrac{1}{3125} \right) = $ [[  -5  ]] @canvas
 
 
 

@@ -65,7 +65,7 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $ 2\tfrac{7}{9} = $ [[  25/9  ]] 
+__$a)\;\;$__ $ 2\tfrac{7}{9} = $ [[  25/9  ]] @canvas 
 @Algebrite.check(25/9)
 ************
 $$
@@ -81,7 +81,7 @@ $$
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $ 6\tfrac{1}{5} = $ [[  31/5  ]] 
+__$b)\;\;$__ $ 6\tfrac{1}{5} = $ [[  31/5  ]] @canvas 
 @Algebrite.check(31/5)
 ************
 $$
@@ -97,7 +97,7 @@ $$
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $ 9\tfrac{2}{7} = $ [[  65/7  ]] 
+__$c)\;\;$__ $ 9\tfrac{2}{7} = $ [[  65/7  ]] @canvas 
 @Algebrite.check(65/7)
 ************
 $$
@@ -113,7 +113,7 @@ $$
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $ 4\tfrac{3}{11} = $ [[  47/11  ]] 
+__$d)\;\;$__ $ 4\tfrac{3}{11} = $ [[  47/11  ]] @canvas 
 @Algebrite.check(47/11)
 ************
 $$
@@ -129,7 +129,7 @@ $$
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $ 7\tfrac{9}{10} = $ [[  79/10  ]] 
+__$e)\;\;$__ $ 7\tfrac{9}{10} = $ [[  79/10  ]] @canvas 
 @Algebrite.check(79/10)
 ************
 $$
@@ -145,7 +145,7 @@ $$
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$f)\;\;$__ $ 5\tfrac{8}{13} = $ [[  73/13  ]] 
+__$f)\;\;$__ $ 5\tfrac{8}{13} = $ [[  73/13  ]] @canvas 
 @Algebrite.check(73/13)
 ************
 $$
@@ -161,7 +161,7 @@ $$
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$g)\;\;$__ $ 3\tfrac{11}{12} = $ [[  47/12  ]] 
+__$g)\;\;$__ $ 3\tfrac{11}{12} = $ [[  47/12  ]] @canvas 
 @Algebrite.check(47/12)
 ************
 $$
@@ -177,7 +177,7 @@ $$
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$h)\;\;$__ $ 8\tfrac{4}{9} = $ [[  76/9  ]] 
+__$h)\;\;$__ $ 8\tfrac{4}{9} = $ [[  76/9  ]] @canvas 
 @Algebrite.check(76/9)
 ************
 $$
@@ -193,7 +193,7 @@ $$
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$i)\;\;$__ $ 1\tfrac{5}{6} = $ [[  11/6  ]] 
+__$i)\;\;$__ $ 1\tfrac{5}{6} = $ [[  11/6  ]] @canvas 
 @Algebrite.check(11/6)
 ************
 $$
@@ -209,7 +209,7 @@ $$
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$j)\;\;$__ $ 10\tfrac{7}{8} = $ [[  87/8  ]] 
+__$j)\;\;$__ $ 10\tfrac{7}{8} = $ [[  87/8  ]] @canvas 
 @Algebrite.check(87/8)
 ************
 $$

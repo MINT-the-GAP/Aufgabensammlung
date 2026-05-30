@@ -58,7 +58,7 @@ Eine Arbeitszeit beträgt $90$ Minuten. Davon sind $\dfrac{3}{10}$ Pause.
 **Bestimme**, wie viele Minuten gearbeitet werden. 
 
 <!-- data-solution-button="5"-->
-[[  63  ]] min
+[[  63  ]] @canvas min
 ************
 $$
 90\,\text{min} - \dfrac{3}{10}\cdot 90\,\text{min}

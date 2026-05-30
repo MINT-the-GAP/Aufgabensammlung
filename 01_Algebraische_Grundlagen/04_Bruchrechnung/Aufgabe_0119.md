@@ -57,7 +57,7 @@ Ein Budget umfasst $50$ €. Davon werden $\dfrac{3}{5}$ verplant.
 **Bestimme** den verbleibenden Betrag.  
 
 <!-- data-solution-button="5"-->
-[[  20  ]] €
+[[  20  ]] @canvas €
 ************
 $$
 50\,\text{€} - \dfrac{3}{5}\cdot 50\,\text{€}

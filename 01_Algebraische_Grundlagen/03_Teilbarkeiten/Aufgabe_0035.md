@@ -56,26 +56,26 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 __$a)\;\;$__ $z= 34786396$ \
-$Q(z) =$ [[ 46 ]]
+$Q(z) =$ [[ 46 ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ $z= 78258003$ \
-$Q(z) =$ [[ 33 ]]
+$Q(z) =$ [[ 33 ]] @canvas
 
 
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ $z= 28359015$ \
-$Q(z) =$ [[ 33 ]]
+$Q(z) =$ [[ 33 ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ $z= 81015806$ \
-$Q(z) =$ [[ 29 ]]
+$Q(z) =$ [[ 29 ]] @canvas
 
 </div>
 </section>

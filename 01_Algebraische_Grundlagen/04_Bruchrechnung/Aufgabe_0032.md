@@ -64,7 +64,7 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $  \dfrac{3}{8} \cdot 5 = $ [[  15/8  ]]
+__$a)\;\;$__ $  \dfrac{3}{8} \cdot 5 = $ [[  15/8  ]] @canvas
 @Algebrite.check(15/8)
 ************
 $$
@@ -79,7 +79,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $  \dfrac{7}{12} \cdot 4 = $ [[  7/4  ]]
+__$b)\;\;$__ $  \dfrac{7}{12} \cdot 4 = $ [[  7/4  ]] @canvas
 @Algebrite.check(7/4)
 ************
 $$
@@ -95,7 +95,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $  \dfrac{2}{9} \cdot 7 = $ [[  14/9  ]]
+__$c)\;\;$__ $  \dfrac{2}{9} \cdot 7 = $ [[  14/9  ]] @canvas
 @Algebrite.check(14/9)
 ************
 $$
@@ -110,7 +110,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $  \dfrac{11}{15} \cdot 3 = $ [[  33/15  ]]
+__$d)\;\;$__ $  \dfrac{11}{15} \cdot 3 = $ [[  33/15  ]] @canvas
 @Algebrite.check(33/15)
 ************
 $$
@@ -125,7 +125,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $  \dfrac{6}{17} \cdot 5 = $ [[  30/17  ]]
+__$e)\;\;$__ $  \dfrac{6}{17} \cdot 5 = $ [[  30/17  ]] @canvas
 @Algebrite.check(30/17)
 ************
 $$
@@ -140,7 +140,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$f)\;\;$__ $  \dfrac{8}{19} \cdot 2 = $ [[  16/19  ]]
+__$f)\;\;$__ $  \dfrac{8}{19} \cdot 2 = $ [[  16/19  ]] @canvas
 @Algebrite.check(16/19)
 ************
 $$

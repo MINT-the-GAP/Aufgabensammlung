@@ -63,7 +63,7 @@ Zum Schluss können $\dfrac{1}{4}\,\text{m}$ aus Reststücken wiederverwendet we
 **Berechne** die schließlich benötigte Leistenlänge.  
 
 <!-- data-solution-button="5"-->
-[[  293/45  ]] m
+[[  293/45  ]] @canvas m
 @Algebrite.check(293/45)
 ************
 $$

@@ -60,7 +60,7 @@ author: Martin Lommatzsch
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $  T = m g h \;\;$  mit $\;\;m=8 \;\;\wedge\;\; g=10 \;\;\wedge\;\; T=480$ \
-$h$ = [[  6  ]]
+$h$ = [[  6  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -76,7 +76,7 @@ $$
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$b)\;\;$__ $ \dfrac{G\,M\,m}{r} = F\;\;$  mit $\;\;F=50 \;\;\wedge\;\; r=8 \;\;\wedge\;\; m=2 \;\;\wedge\;\; G=\dfrac{1}{10}$ \
-$M$ = [[  2000  ]]
+$M$ = [[  2000  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -93,7 +93,7 @@ $$
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$c)\;\;$__ $  \dfrac{V}{A} - a = a + V  \;\;$  mit $\;\; V=36 \;\;\wedge\;\; A=7$ \
-$a$ = [[  -108/7  ]]
+$a$ = [[  -108/7  ]] @canvas
 @Algebrite.check(-108/7)
 ************
 $$
@@ -113,7 +113,7 @@ $$
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$d)\;\;$__ $   0 = \dfrac{1}{2} d r - d s a  \;\;$  mit $\;\;d=3 \;\;\wedge\;\; s=5 \;\;\wedge\;\; a=2$ \
-$r$ = [[  20  ]]
+$r$ = [[  20  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -130,7 +130,7 @@ $$
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$e)\;\;$__ $   m n + p o = m z \;\;$  mit $\;\; m=2 \;\;\wedge\;\; p=\dfrac{3}{2} \;\;\wedge\;\; z=3 \;\;\wedge\;\; n=\dfrac{5}{4}$ \
-$o$ = [[  7/3  ]]
+$o$ = [[  7/3  ]] @canvas
 @Algebrite.check(7/3)
 ************
 $$
@@ -151,7 +151,7 @@ $$
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$f)\;\;$__ $  m n + p o = m z - p q \;\;$  mit $\;\; m=\dfrac{1}{100} \;\;\wedge\;\;  p=8 \;\;\wedge\;\;  z=\dfrac{21}{5} \;\;\wedge\;\;  n=12 \;\;\wedge\;\;  q=\dfrac{3}{8}$ \
-$o$ = [[  -1539/4000  ]]
+$o$ = [[  -1539/4000  ]] @canvas
 @Algebrite.check(-1539/4000)
 ************
 $$
@@ -173,7 +173,7 @@ $$
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$g)\;\;$__ $   0 = \dfrac{1}{2} d r - d s a  \;\;$  mit $\;\; r=\dfrac{5}{2} \;\;\wedge\;\;  s=\dfrac{1}{4} \;\;\wedge\;\;  a=\dfrac{7}{8}$ \
-$d$ = [[  0  ]]
+$d$ = [[  0  ]] @canvas
 ************
 $$
 \begin{align*}

@@ -58,7 +58,7 @@ In einem Kassenfach liegen 1-€, 2-€ und 50-Cent-Münzen. Insgesamt sind es 3
 **Berechne** die Anzahl der 1-€, 2-€ und 50-Cent-Münzen.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  12  ]], $y$ = [[  8  ]] und $z$ = [[  10  ]]
+$x$ = [[  12  ]] @canvas, $y$ = [[  8  ]] @canvas und $z$ = [[  10  ]] @canvas
 @Algebrite.check([ 12; 8; 10 ])
 ************
 Bezeichne mit $x$ die Anzahl der 1-€-Münzen, mit $y$ die Anzahl der 2-€-Münzen und mit $z$ die Anzahl der 50-Cent-Münzen.

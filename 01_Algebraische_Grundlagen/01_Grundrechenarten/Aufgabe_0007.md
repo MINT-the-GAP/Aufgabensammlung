@@ -55,28 +55,28 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Dreimillionenvierhunderttausendneun.  \
 
-[[  3400009  ]]
+[[  3400009  ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ Neuntausendzweihundertvierundsechszig.\
 
-[[    9264   ]]
+[[    9264   ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ Zwölftausenddreihundertelf.\
 
-[[   12311   ]]
+[[   12311   ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ Sechshundertfünfundsiebzigtausendachthundertdreiundachtzig.\
 
-[[   675883  ]]
+[[   675883  ]] @canvas
 
 </div>
 </section>

@@ -56,7 +56,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
-Auf Tausender: $78163 \approx$ [[78000    ]]
+Auf Tausender: $78163 \approx$ [[78000    ]] @canvas
 
 </div>
 
@@ -66,7 +66,7 @@ Auf Tausender: $78163 \approx$ [[78000    ]]
 
 __$b)\;\;$__
 
-Auf Zehner: $78163 \approx$ [[78160    ]]
+Auf Zehner: $78163 \approx$ [[78160    ]] @canvas
 
 </div>
 
@@ -77,7 +77,7 @@ Auf Zehner: $78163 \approx$ [[78160    ]]
 
 __$c)\;\;$__
 
-Auf Hunderter: $29963 \approx$ [[30000    ]]
+Auf Hunderter: $29963 \approx$ [[30000    ]] @canvas
 
 </div>
 
@@ -88,7 +88,7 @@ Auf Hunderter: $29963 \approx$ [[30000    ]]
 
 __$d)\;\;$__
 
-Auf Tausender: $499 \approx$ [[    0    ]]
+Auf Tausender: $499 \approx$ [[    0    ]] @canvas
 
 </div>
 
@@ -99,7 +99,7 @@ Auf Tausender: $499 \approx$ [[    0    ]]
 
 __$e)\;\;$__
 
-Auf Zehner: $55164 \approx$ [[55160    ]]
+Auf Zehner: $55164 \approx$ [[55160    ]] @canvas
 
 </div>
 
@@ -109,7 +109,7 @@ Auf Zehner: $55164 \approx$ [[55160    ]]
 
 __$f)\;\;$__
 
-Auf Tausender: $854684 \approx$ [[855000    ]]
+Auf Tausender: $854684 \approx$ [[855000    ]] @canvas
 
 </div>
 

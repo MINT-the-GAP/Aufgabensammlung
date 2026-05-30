@@ -71,13 +71,13 @@ x \cap I. &\qquad 5\cdot 3 + y = 22 \\
 $$
 
 <!-- data-solution-button="5" data-show-partial-solution -->
-Zur Lösung des [[   Gleichungssystems   ]] wird das [[   Gleichsetzungsverfahren   ]] angewendet.
-Zunächst wird die [[   erste   ]] Gleichung nach $y$ aufgelöst und es ergibt sich $y = 22 - 5x$.
-Anschließend wird die [[   zweite   ]] Gleichung nach $y$ umgeformt, sodass $y = 2x + 1$ resultiert.
-Die beiden Terme für [[   y   ]] werden [[   gleichgesetzt   ]], wodurch $22 - 5x = 2x + 1$ entsteht.
-Nach dem [[  Zusammenfassen  ]] folgt $21 = 7x$.
-Durch Division mit [[   7   ]] ergibt sich $x = 3$.
-Der Wert für $x$ wird in die [[   erste   ]] Gleichung [[   eingesetzt  ]], sodass $y = 7$ bestimmt wird.
+Zur Lösung des [[   Gleichungssystems   ]] @canvas wird das [[   Gleichsetzungsverfahren   ]] @canvas angewendet.
+Zunächst wird die [[   erste   ]] @canvas Gleichung nach $y$ aufgelöst und es ergibt sich $y = 22 - 5x$.
+Anschließend wird die [[   zweite   ]] @canvas Gleichung nach $y$ umgeformt, sodass $y = 2x + 1$ resultiert.
+Die beiden Terme für [[   y   ]] @canvas werden [[   gleichgesetzt   ]] @canvas, wodurch $22 - 5x = 2x + 1$ entsteht.
+Nach dem [[  Zusammenfassen  ]] @canvas folgt $21 = 7x$.
+Durch Division mit [[   7   ]] @canvas ergibt sich $x = 3$.
+Der Wert für $x$ wird in die [[   erste   ]] @canvas Gleichung [[   eingesetzt  ]] @canvas, sodass $y = 7$ bestimmt wird.
 
 
 
@@ -101,14 +101,14 @@ x \cap I. &\qquad 5\cdot 4 + y = 26 \\
 $$
 
 <!-- data-solution-button="5" data-show-partial-solution -->
-Zur Lösung des [[   Gleichungssystems   ]] wird das [[   Einsetzungsverfahren   ]] angewendet.
-Zuerst wird die [[   erste   ]] Gleichung nach $y$ umgestellt, sodass $y = 26 - 5x$ entsteht.
-Dieser Ausdruck wird in die zweite [[  Gleichung  ]] eingesetzt, wodurch $2x + 3(26 - 5x) = 26$ gebildet wird.
-Nach dem [[   Ausmultiplizieren   ]] der Klammer ergibt sich $2x + 78 - 15x = 26$.
-Dies lässt sich zu $-13x + 78 = 26$ [[   zusammenfassen   ]].
-Durch [[  Subtraktion  ]] von [[ 78 ]] auf beiden Seiten folgt $-13x = -52$.
-Durch Division mit [[  -13  ]] wird $x = 4$ erhalten.
-Der Wert für $x$ wird in die [[   erste  ]] Gleichung [[   eingesetzt   ]], sodass schließlich $y = 6$ bestimmt wird.
+Zur Lösung des [[   Gleichungssystems   ]] @canvas wird das [[   Einsetzungsverfahren   ]] @canvas angewendet.
+Zuerst wird die [[   erste   ]] @canvas Gleichung nach $y$ umgestellt, sodass $y = 26 - 5x$ entsteht.
+Dieser Ausdruck wird in die zweite [[  Gleichung  ]] @canvas eingesetzt, wodurch $2x + 3(26 - 5x) = 26$ gebildet wird.
+Nach dem [[   Ausmultiplizieren   ]] @canvas der Klammer ergibt sich $2x + 78 - 15x = 26$.
+Dies lässt sich zu $-13x + 78 = 26$ [[   zusammenfassen   ]] @canvas.
+Durch [[  Subtraktion  ]] @canvas von [[ 78 ]] @canvas auf beiden Seiten folgt $-13x = -52$.
+Durch Division mit [[  -13  ]] @canvas wird $x = 4$ erhalten.
+Der Wert für $x$ wird in die [[   erste  ]] @canvas Gleichung [[   eingesetzt   ]] @canvas, sodass schließlich $y = 6$ bestimmt wird.
 
 
 
@@ -132,11 +132,11 @@ x \cap II.\, &\qquad 4\cdot 4 - y = 11 \\
 $$
 
 <!-- data-solution-button="5" data-show-partial-solution -->
-Zur Lösung des [[   Gleichungssystems   ]] wird das [[   Additionsverfahren   ]] angewendet.
-Zuerst wird die zweite Gleichung mit [[  3  ]] [[  multipliziert  ]], sodass $12x - 3y = 33$ entsteht.
-Nun wird diese Gleichung mit der ersten [[  addiert  ]]. Dabei fallen die Teile mit $y$ weg und es bleibt $14x = 56$.
-Durch [[  Division  ]] mit [[  14  ]] ergibt sich $x = 4$.
-Der erhaltene Wert wird in die zweite [[  Gleichung  ]] [[   eingesetzt   ]], woraus $16 - y = 11$ folgt.
-Durch [[  Subtraktion  ]] von [[  16  ]] auf beiden Seiten ergibt sich $-y = -5$.
-Durch [[  Multiplikation  ]] mit [[  -1  ]] wird schließlich $y = 5$ bestimmt.
+Zur Lösung des [[   Gleichungssystems   ]] @canvas wird das [[   Additionsverfahren   ]] @canvas angewendet.
+Zuerst wird die zweite Gleichung mit [[  3  ]] @canvas [[  multipliziert  ]] @canvas, sodass $12x - 3y = 33$ entsteht.
+Nun wird diese Gleichung mit der ersten [[  addiert  ]] @canvas. Dabei fallen die Teile mit $y$ weg und es bleibt $14x = 56$.
+Durch [[  Division  ]] @canvas mit [[  14  ]] @canvas ergibt sich $x = 4$.
+Der erhaltene Wert wird in die zweite [[  Gleichung  ]] @canvas [[   eingesetzt   ]] @canvas, woraus $16 - y = 11$ folgt.
+Durch [[  Subtraktion  ]] @canvas von [[  16  ]] @canvas auf beiden Seiten ergibt sich $-y = -5$.
+Durch [[  Multiplikation  ]] @canvas mit [[  -1  ]] @canvas wird schließlich $y = 5$ bestimmt.
 

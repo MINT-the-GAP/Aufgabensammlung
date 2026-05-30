@@ -58,7 +58,7 @@ In der Werkhalle liegt eine Papierrolle von $30\,\text{m}$ Länge bereit. Für e
 **Bestimme** die Länge des zugeschnittenen Stücks. 
 
 <!-- data-solution-button="5"-->
-[[  9  ]] m
+[[  9  ]] @canvas m
 ************
 $$
 \dfrac{3}{10}\cdot 30\,\text{m}

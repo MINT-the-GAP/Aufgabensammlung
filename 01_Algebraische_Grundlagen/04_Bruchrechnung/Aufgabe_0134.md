@@ -60,7 +60,7 @@ Von der verbleibenden Strecke werden anschließend nochmals $\dfrac{3}{4}$ gefah
 **Bestimme**, wie viele Kilometer am Ende noch übrig sind. 
 
 <!-- data-solution-button="5"-->
-[[  27  ]] km
+[[  27  ]] @canvas km
 ************
 $$
 \text{Erste Strecke:}\quad \dfrac{2}{5}\cdot 180 = 72\,\text{km} \quad \Rightarrow \; 180-72=108\,\text{km} \\

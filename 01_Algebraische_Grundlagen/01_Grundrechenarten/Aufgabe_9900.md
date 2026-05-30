@@ -83,9 +83,9 @@ const marked = Math.floor(Math.random() * 3);
 
 // Aufgabe (dein Format)
 const problem =
-  (marked === 0) ? `[[ ${a} ]] + ${b} = ${c}` :
-  (marked === 1) ? `${a} + [[ ${b} ]] = ${c}` :
-                   `${a} + ${b} = [[ ${c} ]]`;
+  (marked === 0) ? `[[ ${a} ]] @canvas + ${b} = ${c}` :
+  (marked === 1) ? `${a} + [[ ${b} ]] @canvas = ${c}` :
+                   `${a} + ${b} = [[ ${c} ]] @canvas`;
 
 // Übertragszeile für Addition (rote 1 IN der Zielspalte: E→Z, Z→H, H→T)
 function carryLineAdd(a, b) {

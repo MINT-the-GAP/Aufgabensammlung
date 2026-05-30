@@ -60,7 +60,7 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 __$a)\;\;$__ $  \dfrac{6}{x-2} = \dfrac{18}{x+4} $ \
-$x$ = [[  5  ]]
+$x$ = [[  5  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -78,7 +78,7 @@ $$
 <div class="flex-child">
 
 __$b)\;\;$__ $  \dfrac{9}{2x+5} = \dfrac{3}{x+1} $ \
-$x$ = [[  2  ]]
+$x$ = [[  2  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -96,7 +96,7 @@ $$
 <div class="flex-child">
 
 __$c)\;\;$__ $  \dfrac{7}{x+3} = \dfrac{11}{3x-1} $ \
-$x$ = [[  4  ]]
+$x$ = [[  4  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -114,7 +114,7 @@ $$
 <div class="flex-child">
 
 __$d)\;\;$__ $  \dfrac{3}{x} = \dfrac{9}{4x-3} $ \
-$x$ = [[  3  ]]
+$x$ = [[  3  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -133,7 +133,7 @@ $$
 <div class="flex-child">
 
 __$e)\;\;$__ $  \dfrac{3}{x-1} = \dfrac{13}{2x+5} $ \
-$x$ = [[  4  ]]
+$x$ = [[  4  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -152,7 +152,7 @@ $$
 <div class="flex-child">
 
 __$f)\;\;$__ $  \dfrac{8}{3x+2} = \dfrac{9}{x+7} $ \
-$x$ = [[  2  ]]
+$x$ = [[  2  ]] @canvas
 ************
 $$
 \begin{align*}

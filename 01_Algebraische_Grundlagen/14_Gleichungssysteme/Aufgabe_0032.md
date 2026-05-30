@@ -58,7 +58,7 @@ Drei Maschinen produzieren Teile. Zusammen laufen sie 5 Stunden. Pro Stunde fert
 **Berechne** die Laufzeiten der drei Maschinen.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  13/6  ]], $y$ = [[  8/3  ]] und $z$ = [[  1/6  ]]
+$x$ = [[  13/6  ]] @canvas, $y$ = [[  8/3  ]] @canvas und $z$ = [[  1/6  ]] @canvas
 @Algebrite.check([ 13/6; 8/3; 1/6 ])
 ************
 Bezeichne mit $x$ die Laufzeit der ersten Maschine (in Stunden), mit $y$ die der zweiten und mit $z$ die der dritten.

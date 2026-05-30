@@ -66,7 +66,7 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $\dfrac{5}{6}x - 1 > \dfrac{1}{2}x + \dfrac{1}{2}$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x > $   [[  9/2  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x > $   [[  9/2  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(9/2)
 ******************
 $$
@@ -84,7 +84,7 @@ $$
 __$b)\;\;$__ $2x - 1 < x + \dfrac{5}{2}$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  3  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  3  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(3)
 ******************
 $$
@@ -101,7 +101,7 @@ $$
 __$c)\;\;$__ $-\,\dfrac{3}{2}x + 4 \geq \dfrac{1}{2}x - 1$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  5/2  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  5/2  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(5/2)
 ******************
 $$
@@ -119,7 +119,7 @@ $$
 __$d)\;\;$__ $\dfrac{2}{3}x - 1 > \dfrac{1}{2}x - \dfrac{1}{4}$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $   [[  5  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $   [[  5  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(5)
 ******************
 $$
@@ -137,7 +137,7 @@ $$
 __$e)\;\;$__ $3x - 4 > 2x + \dfrac{7}{2}$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  8  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  8  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(8)
 ******************
 $$
@@ -154,7 +154,7 @@ $$
 __$f)\;\;$__ $\dfrac{1}{2}x + 1 \leq -x + \dfrac{4}{3}$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \leq $   [[  2/9  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \leq $   [[  2/9  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(2/9)
 ******************
 $$

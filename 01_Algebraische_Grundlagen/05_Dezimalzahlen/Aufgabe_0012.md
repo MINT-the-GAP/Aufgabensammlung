@@ -58,7 +58,7 @@ __$a)\;\;$__ 7,058
 <!-- data-type="none" -->
 |  Hunderter  |  Zehner |  Einer  |  Zehntel  | Hundertstel | Tausendstel |  Zehntausendstel  |
 | :---------: | :-----: | :-----: | :-------: | :---------: | :---------: | :---------------: |
-|   [[ 0 ]]   | [[ 0 ]] | [[ 7 ]] |  [[ 0 ]]  |    [[ 5 ]]  |  [[ 8 ]]    |     [[ 0 ]]       |
+|   [[ 0 ]] @canvas   | [[ 0 ]] @canvas | [[ 7 ]] @canvas |  [[ 0 ]] @canvas  |    [[ 5 ]] @canvas  |  [[ 8 ]] @canvas    |     [[ 0 ]] @canvas       |
 
 
 
@@ -67,7 +67,7 @@ __$b)\;\;$__ 614,82
 <!-- data-type="none" -->
 |  Hunderter  |  Zehner |  Einer  |  Zehntel  | Hundertstel | Tausendstel |  Zehntausendstel  |
 | :---------: | :-----: | :-----: | :-------: | :---------: | :---------: | :---------------: |
-|   [[ 6 ]]   | [[ 1 ]] | [[ 4 ]] |  [[ 8 ]]  |    [[ 2 ]]  |  [[ 0 ]]    |     [[ 0 ]]       |
+|   [[ 6 ]] @canvas   | [[ 1 ]] @canvas | [[ 4 ]] @canvas |  [[ 8 ]] @canvas  |    [[ 2 ]] @canvas  |  [[ 0 ]] @canvas    |     [[ 0 ]] @canvas       |
 
 
 
@@ -76,7 +76,7 @@ __$c)\;\;$__ 50,1903
 <!-- data-type="none" -->
 |  Hunderter  |  Zehner |  Einer  |  Zehntel  | Hundertstel | Tausendstel |  Zehntausendstel  |
 | :---------: | :-----: | :-----: | :-------: | :---------: | :---------: | :---------------: |
-|   [[ 0 ]]   | [[ 5 ]] | [[ 0 ]] |  [[ 1 ]]  |    [[ 9 ]]  |  [[ 0 ]]    |     [[ 3 ]]       |
+|   [[ 0 ]] @canvas   | [[ 5 ]] @canvas | [[ 0 ]] @canvas |  [[ 1 ]] @canvas  |    [[ 9 ]] @canvas  |  [[ 0 ]] @canvas    |     [[ 3 ]] @canvas       |
 
 
 

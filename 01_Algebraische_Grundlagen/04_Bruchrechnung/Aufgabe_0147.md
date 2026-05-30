@@ -59,7 +59,7 @@ Es werden $3$ Musterstücke gefertigt; anschließend wird für eine Probe noch $
 **Berechne** die gesamte Stofflänge. 
 
 <!-- data-solution-button="5"-->
-[[  13/4  ]] m
+[[  13/4  ]] @canvas m
 @Algebrite.check(13/4)
 ************
 $$

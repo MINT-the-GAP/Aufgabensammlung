@@ -54,25 +54,25 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 __$a)\;\;$__ $ \textcolor{red}{5} - 3 = 2$ \
-[[    Minuend         ]]
+[[    Minuend         ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ $ \textcolor{red}{7 \cdot 3} = 21 $ \
-[[    Produkt         ]]
+[[    Produkt         ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ $ 45:9=\textcolor{red}{5}$ \
-[[ Wert des Quotienten ]]
+[[ Wert des Quotienten ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ $ \textcolor{red}{15}+12 = 27$ \
-[[      Summand       ]]
+[[      Summand       ]] @canvas
 
 </div>
 </section>

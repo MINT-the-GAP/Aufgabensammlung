@@ -58,7 +58,7 @@ Von der Fläche wird ein Teil als Garten angelegt, der $\dfrac{2}{3}$ der Gesamt
 **Bestimme**, wie groß die Gartenfläche ist. 
 
 <!-- data-solution-button="5"-->
-[[  1152  ]] m$^2$
+[[  1152  ]] @canvas m$^2$
 ************
 $$
 \text{Breite: } \dfrac{3}{4}\cdot 48 = 36\,\text{m} \\

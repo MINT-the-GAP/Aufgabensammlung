@@ -76,7 +76,7 @@ const q = ri(1000, 9999);    // Quotient
 const N = d * q;             // Dividend, damit die Division aufgeht
 
 // Aufgabe: Dividend : Divisor = Quotient (Eingabe im Feld)
-const problem = `$${N} : ${d} = $ [[ ${q} ]]`;
+const problem = `$${N} : ${d} = $ [[ ${q} ]] @canvas`;
 
 // Schriftliche Division mit \hspace, farbig
 function longDivisionAlign(N, d, q) {

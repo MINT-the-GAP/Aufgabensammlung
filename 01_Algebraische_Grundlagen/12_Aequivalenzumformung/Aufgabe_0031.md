@@ -60,7 +60,7 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 __$a)\;\;$__ $  2a + b = c \;\;$  mit $\;\; b=4a \;\;\wedge\;\; c=24$ \
-$a$ = [[  4  ]]
+$a$ = [[  4  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -75,7 +75,7 @@ $$
 <div class="flex-child">
 
 __$b)\;\;$__ $  x + 6y = y + 9z \;\;$  mit $\;\; y=4 \;\;\wedge\;\; x=4z$ \
-$z$ = [[  4  ]]
+$z$ = [[  4  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -92,7 +92,7 @@ $$
 <div class="flex-child">
 
 __$c)\;\;$__ $  11k + 2r = 5t + c \;\;$  mit $\;\; r=6 \;\;\wedge\;\; t=6 \;\;\wedge\;\; c=4k$ \
-$k$ = [[  18/7  ]]
+$k$ = [[  18/7  ]] @canvas
 @Algebrite.check(18/7)
 ************
 $$
@@ -110,7 +110,7 @@ $$
 <div class="flex-child">
 
 __$d)\;\;$__ $   5n + 3m + 9s = n\cdot m + a \;\;$  mit $\;\; n=3 \;\;\wedge\;\; m=6 \;\;\wedge\;\; a=17s$ \
-$s$ = [[  15/8  ]]
+$s$ = [[  15/8  ]] @canvas
 @Algebrite.check(15/8)
 ************
 $$
@@ -128,7 +128,7 @@ $$
 <div class="flex-child">
 
 __$e)\;\;$__ $  r + t = u + v \;\;$  mit $\;\; r=2+u \;\;\wedge\;\; t=7+6u \;\;\wedge\;\; v=19+2u$ \
-$u$ = [[  5/2  ]]
+$u$ = [[  5/2  ]] @canvas
 @Algebrite.check(5/2)
 ************
 $$
@@ -146,7 +146,7 @@ $$
 <div class="flex-child">
 
 __$f)\;\;$__ $   5(c+6)+5t = 4(r+n) \;\;$  mit $\;\; c=5t+3 \;\;\wedge\;\; r=2t+2 \;\;\wedge\;\; n=4t+3$ \
-$t$ = [[  -25/6  ]]
+$t$ = [[  -25/6  ]] @canvas
 @Algebrite.check(-25/6)
 ************
 $$

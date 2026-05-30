@@ -55,7 +55,7 @@ author: Martin Lommatzsch
 
 __$a)$__
 
-$4 \quad 9 \quad 25 \quad 49 \quad 121 \quad 169 \quad 289 \quad $ [[ 361 ]] $\quad$ [[ 529 ]] $\quad$ [[ 841 ]] \
+$4 \quad 9 \quad 25 \quad 49 \quad 121 \quad 169 \quad 289 \quad $ [[ 361 ]] @canvas $\quad$ [[ 529 ]] @canvas $\quad$ [[ 841 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die Primzahlen werden quadriert.
 
@@ -63,7 +63,7 @@ $4 \quad 9 \quad 25 \quad 49 \quad 121 \quad 169 \quad 289 \quad $ [[ 361 ]] $\q
 
 __$b)$__
 
-$1 \quad 5 \quad 14 \quad 30 \quad 55 \quad 91 \quad 140 \quad 204 \quad$ [[ 285 ]] $\quad$ [[ 385 ]] $\quad$ [[ 506 ]] \
+$1 \quad 5 \quad 14 \quad 30 \quad 55 \quad 91 \quad 140 \quad 204 \quad$ [[ 285 ]] @canvas $\quad$ [[ 385 ]] @canvas $\quad$ [[ 506 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die vorherigen Zahlen werden mit den aufsteigenden Quadratzahlen addiert.
 
@@ -71,7 +71,7 @@ $1 \quad 5 \quad 14 \quad 30 \quad 55 \quad 91 \quad 140 \quad 204 \quad$ [[ 285
 
 __$c)$__
 
-$A \quad Z \quad b \quad y \quad C \quad X \quad d \quad $ [[ w ]] $\quad$ [[ E ]] $\quad$ [[ V ]] \
+$A \quad Z \quad b \quad y \quad C \quad X \quad d \quad $ [[ w ]] @canvas $\quad$ [[ E ]] @canvas $\quad$ [[ V ]] @canvas \
 
 [[?]] Musterbeschreibung: Abwechselnd vom Anfang und Ende des Alphabets wird ein Buchstabe weiter zur Mitte gegangen, nach zwei Buchstaben wird zwischen Groß- und Kleinschreibung gewechselt.
 

@@ -68,7 +68,7 @@ II.& \qquad 2x - y + z = 13 \\
 III.& \qquad x + 2y - z = 0  
 \end{align*}
 $$  
-$x$ = [[  4  ]], $y$ = [[  1  ]], $z$ = [[  6  ]]
+$x$ = [[  4  ]] @canvas, $y$ = [[  1  ]] @canvas, $z$ = [[  6  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -107,7 +107,7 @@ II.& \qquad 2x + y - z = 7 \\
 III.& \qquad x + 3y + z = 22  
 \end{align*}
 $$  
-$x$ = [[  3  ]], $y$ = [[  5  ]], $z$ = [[  4  ]]
+$x$ = [[  3  ]] @canvas, $y$ = [[  5  ]] @canvas, $z$ = [[  4  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -140,7 +140,7 @@ II.& \qquad 2x - y + z = 13 \\
 III.& \qquad x + 3y - z = 3  
 \end{align*}
 $$  
-$x$ = [[  4  ]], $y$ = [[  2  ]], $z$ = [[  7  ]]
+$x$ = [[  4  ]] @canvas, $y$ = [[  2  ]] @canvas, $z$ = [[  7  ]] @canvas
 ************
 $$
 \begin{align*}
@@ -178,7 +178,7 @@ II.& \qquad 2x + y - z = 10 \\
 III.& \qquad x + 2y + 3z = 27  
 \end{align*}
 $$  
-$x$ = [[  6  ]], $y$ = [[  3  ]], $z$ = [[  5  ]]
+$x$ = [[  6  ]] @canvas, $y$ = [[  3  ]] @canvas, $z$ = [[  5  ]] @canvas
 ************
 $$
 \begin{align*}

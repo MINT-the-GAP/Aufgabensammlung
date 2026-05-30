@@ -86,8 +86,8 @@ const missing = ri(0,1);
 
 // Aufgabe-Text
 let problem = (missing === 0)
-  ? `[[ ${a} ]] + ${b} = ${c}`
-  : `${a} + [[ ${b} ]] = ${c}`;
+  ? `[[ ${a} ]] @canvas + ${b} = ${c}`
+  : `${a} + [[ ${b} ]] @canvas = ${c}`;
 
 // Leihzeile für Subtraktion (rote 1 WO +10 genommen wurde)
 function borrowLineSub(minuend, subtrahend) {

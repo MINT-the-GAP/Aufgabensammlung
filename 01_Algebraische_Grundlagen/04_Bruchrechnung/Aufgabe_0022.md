@@ -61,7 +61,7 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $  3 - \dfrac{2}{9} = $ [[  25/9  ]]
+__$a)\;\;$__ $  3 - \dfrac{2}{9} = $ [[  25/9  ]] @canvas
 @Algebrite.check(25/9)
 ************
 $$
@@ -77,7 +77,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $  \dfrac{11}{6} - 1 = $ [[  5/6  ]]
+__$b)\;\;$__ $  \dfrac{11}{6} - 1 = $ [[  5/6  ]] @canvas
 @Algebrite.check(5/6)
 ************
 $$
@@ -93,7 +93,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $  7 - \dfrac{5}{12} = $ [[  79/12  ]]
+__$c)\;\;$__ $  7 - \dfrac{5}{12} = $ [[  79/12  ]] @canvas
 @Algebrite.check(79/12)
 ************
 $$
@@ -109,7 +109,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $  \dfrac{9}{5} - 1 = $ [[  4/5  ]]
+__$d)\;\;$__ $  \dfrac{9}{5} - 1 = $ [[  4/5  ]] @canvas
 @Algebrite.check(4/5)
 ************
 $$
@@ -125,7 +125,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $  4 - \dfrac{7}{16} = $ [[  57/16  ]]
+__$e)\;\;$__ $  4 - \dfrac{7}{16} = $ [[  57/16  ]] @canvas
 @Algebrite.check(57/16)
 ************
 $$
@@ -141,7 +141,7 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$f)\;\;$__ $  \dfrac{13}{8} - 1 = $ [[  5/8  ]]
+__$f)\;\;$__ $  \dfrac{13}{8} - 1 = $ [[  5/8  ]] @canvas
 @Algebrite.check(5/8)
 ************
 $$

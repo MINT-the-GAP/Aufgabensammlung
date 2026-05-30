@@ -63,7 +63,7 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $-2x + 10 \geq 4$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  3  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  3  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(3)
 ******************
 $$
@@ -80,7 +80,7 @@ $$
 __$b)\;\;$__ $3x - 2 < 7$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \leq $   [[  2  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \leq $   [[  2  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(2)
 ******************
 $$
@@ -97,7 +97,7 @@ $$
 __$c)\;\;$__ $\dfrac{x}{-5} - 1 \leq 2$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \geq $   [[  -15  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \geq $   [[  -15  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(-15)
 ******************
 $$
@@ -114,7 +114,7 @@ $$
 __$d)\;\;$__ $-4x - 6 > 2$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  -3  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  -3  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(-3)
 ******************
 $$
@@ -131,7 +131,7 @@ $$
 __$e)\;\;$__ $5x + 4 \geq -6$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  -2  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  -2  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(-2)
 ******************
 $$
@@ -148,7 +148,7 @@ $$
 __$f)\;\;$__ $\dfrac{x}{3} + 2 > -4$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  -17  ]]   $\left.   \right\}$
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  -17  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(-17)
 ******************
 $$

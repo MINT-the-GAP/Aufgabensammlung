@@ -62,7 +62,7 @@ __$a)\;\;$__
 </center>
 
 <!-- data-solution-button="5"--> 
-[[  -9   ]]
+[[  -9   ]] @canvas
 
 </div> 
 
@@ -76,7 +76,7 @@ __$b)\;\;$__
 </center>
 
 <!-- data-solution-button="5"--> 
-[[  -17  ]]
+[[  -17  ]] @canvas
 
 </div> 
 
@@ -90,7 +90,7 @@ __$c)\;\;$__
 </center>
 
 <!-- data-solution-button="5"--> 
-[[   18  ]]
+[[   18  ]] @canvas
 
 </div> 
 
@@ -103,7 +103,7 @@ __$d)\;\;$__
 
 </center>
 <!-- data-solution-button="5"--> 
-[[  -70  ]]
+[[  -70  ]] @canvas
 
 </div> 
 </section>

@@ -61,7 +61,7 @@ Es werden $4$ identische Rahmen gefertigt.
 **Berechne** die gesamte tatsächlich benötigte Leistenlänge. 
 
 <!-- data-solution-button="5"-->
-[[  25/3  ]] m
+[[  25/3  ]] @canvas m
 @Algebrite.check(25/3)
 ************
 $$

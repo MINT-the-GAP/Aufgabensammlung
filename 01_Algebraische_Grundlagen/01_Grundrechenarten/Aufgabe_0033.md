@@ -54,25 +54,25 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 __$a)\;\;$__ $ 9 \cdot 6 = \textcolor{red}{54}$ \
-[[ Wert des Produkts  ]]
+[[ Wert des Produkts  ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ $ \textcolor{red}{18:6} = 3 $ \
-[[    Quotient        ]]
+[[    Quotient        ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ $ 63-\textcolor{red}{34} = 29$ \
-[[      Subtrahend    ]]
+[[      Subtrahend    ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ $ 32 = \textcolor{red}{72-40}$ \
-[[          Differenz ]]
+[[          Differenz ]] @canvas
 
 </div>
 </section>

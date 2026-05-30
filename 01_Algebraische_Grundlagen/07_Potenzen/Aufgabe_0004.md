@@ -55,22 +55,22 @@ author: Martin Lommatzsch
 
 <section class="dynFlex">
 <div class="flex-child">
-__$a)\;\;$__ $-2^4 = $ [[  -16  ]]
+__$a)\;\;$__ $-2^4 = $ [[  -16  ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$b)\;\;$__ $(-4)^4 = $ [[  256  ]]
+__$b)\;\;$__ $(-4)^4 = $ [[  256  ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$c)\;\;$__ $(-5)^3 = $ [[ -125  ]]
+__$c)\;\;$__ $(-5)^3 = $ [[ -125  ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ $-4^3 = $ [[ -64  ]]
+__$d)\;\;$__ $-4^3 = $ [[ -64  ]] @canvas
 
 
 

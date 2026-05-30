@@ -60,7 +60,7 @@ __$a)\;\;$__
 
 ![Kandiszuckerstückchen](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa11.jpg)
 
-[[ 200  ]] Kandiszuckerstückchen
+[[ 200  ]] @canvas Kandiszuckerstückchen
 @Algebrite.check_margin(180,250)
 
 
@@ -72,7 +72,7 @@ __$b)\;\;$__
 
 ![getrocknete Mehlwürmer](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa12.jpg)
 
-[[ 420  ]] getrocknete Mehlwürmer
+[[ 420  ]] @canvas getrocknete Mehlwürmer
 @Algebrite.check_margin(390,470)
 
 

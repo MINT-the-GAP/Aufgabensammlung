@@ -59,7 +59,7 @@ Ein Vorratstank enthält zu Beginn $48\,\ell$ Wasser. Am Vormittag werden $\dfra
 **Berechne** das Restvolumen im Tank.  
 
 <!-- data-solution-button="5"-->
-[[  45/2  ]] $\ell$
+[[  45/2  ]] @canvas $\ell$
 @Algebrite.check(45/2)
 ************
 $$

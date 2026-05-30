@@ -59,7 +59,7 @@ Ein Kühlraum hat zu Beginn eine Temperatur von $-6^\circ\mathrm{C}$. Durch Aufh
 **Berechne** die kleinste natürliche Zahl $x$ (Stunden), sodass die Temperatur mindestens $2^\circ\mathrm{C}$ beträgt.
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \{ x \in \mathbb{N} \;|\; x \geq $ [[ 11 ]] $\}$
+$\mathbb{L} = \{ x \in \mathbb{N} \;|\; x \geq $ [[ 11 ]] @canvas $\}$
 @Algebrite.check(11)
 ******************
 $$

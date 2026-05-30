@@ -74,7 +74,7 @@ const B = ri(2, 9);
 const P = A * B;
 
 // Aufgabe: TeX für Rechnung, Eingabefeld außerhalb
-const problem = `$${A} \\cdot ${B} =$ [[ ${P} ]]`;
+const problem = `$${A} \\cdot ${B} =$ [[ ${P} ]] @canvas`;
 
 // Lösung im Align-Stil
 function multiplicationAlign(a, b, p) {

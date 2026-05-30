@@ -55,24 +55,24 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $ \mathbb{K} = \{ 45,39,48,51,37,52,46,50,47,38,43,46,51,39,40 \} $\
 
 
-$\inf(\mathbb{K}) = $ [[ 37 ]] \
-$\sup(\mathbb{K}) = $ [[ 52 ]] \
+$\inf(\mathbb{K}) = $ [[ 37 ]] @canvas \
+$\sup(\mathbb{K}) = $ [[ 52 ]] @canvas \
 @Algebrite.check([ 37 ; 52 ])
 
 
 __$b)\;\;$__ $ \mathbb{K} = \{ 34,37,31,32,39,33,34,35,38,32,30,34,39,38,34,33,31 \} $\
 
 
-$\inf(\mathbb{K}) = $ [[ 30 ]] \
-$\sup(\mathbb{K}) = $ [[ 39 ]] \
+$\inf(\mathbb{K}) = $ [[ 30 ]] @canvas \
+$\sup(\mathbb{K}) = $ [[ 39 ]] @canvas \
 @Algebrite.check([ 30 ; 39 ])
 
 
 __$c)\;\;$__ $ \mathbb{K} = \{ 64,67,61,58,60,64,66,68,63,64,60,69,64,65,59,67,68,60 \} $\
 
 
-$\inf(\mathbb{K}) = $ [[ 56 ]] \
-$\sup(\mathbb{K}) = $ [[ 69 ]] \
+$\inf(\mathbb{K}) = $ [[ 56 ]] @canvas \
+$\sup(\mathbb{K}) = $ [[ 69 ]] @canvas \
 @Algebrite.check([ 56 ; 69 ])
 
 

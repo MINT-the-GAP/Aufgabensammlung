@@ -58,7 +58,7 @@ Ein Läufer hat eine Strecke von $18$ km zurückzulegen. Am Vormittag läuft er 
 **Bestimme**, wie viele Kilometer am Nachmittag noch zu laufen sind. 
 
 <!-- data-solution-button="5"-->
-[[ 8 ]] km
+[[ 8 ]] @canvas km
 ************
 $$
 18\,\text{km} - \dfrac{5}{9}\cdot 18\,\text{km} = 18\,\text{km} - 10\,\text{km} = 8\,\text{km}

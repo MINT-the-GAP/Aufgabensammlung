@@ -53,7 +53,7 @@ author: Martin Lommatzsch
 
 
 
-$1 \quad 1 \quad 2 \quad 5 \quad 14 \quad  42 \quad  132 \quad 429 \quad $ [[ 1430 ]] $\quad$ [[ 4862 ]] $\quad$ [[ 16796 ]] \
+$1 \quad 1 \quad 2 \quad 5 \quad 14 \quad  42 \quad  132 \quad 429 \quad $ [[ 1430 ]] @canvas $\quad$ [[ 4862 ]] @canvas $\quad$ [[ 16796 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die Catalan-Zahlen, die die Anzahl von nichtüberlappenden Verbindungen in einem $n$-Eck (Polygon) gemacht werden können.
 

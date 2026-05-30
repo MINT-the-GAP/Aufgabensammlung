@@ -64,7 +64,7 @@ Zum Schluss werden pro hergestellter Dose nochmals $\dfrac{1}{5}\,\ell$ destilli
 
 
 <!-- data-solution-button="5"-->
-[[  2171/480  ]] $\ell$
+[[  2171/480  ]] @canvas $\ell$
 @Algebrite.check(2171/480)
 ************
 $$

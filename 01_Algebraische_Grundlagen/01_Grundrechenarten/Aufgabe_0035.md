@@ -54,25 +54,25 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 __$a)\;\;$__ $ \textcolor{red}{18+24} = 42$ \
-[[    Summe          ]]
+[[    Summe          ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ $ \textcolor{red}{12} \cdot 7 = 84 $ \
-[[       Faktor      ]]
+[[       Faktor      ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ $ \textcolor{red}{36} = 24+12$ \
-[[ Wert der Summe    ]]
+[[ Wert der Summe    ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ $ \textcolor{red}{63-48}=15$ \
-[[         Differenz ]]
+[[         Differenz ]] @canvas
 
 </div>
 </section>

@@ -57,37 +57,37 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-$a)\;\; \text{ggT}(24;40) =$ [[  8  ]]
+$a)\;\; \text{ggT}(24;40) =$ [[  8  ]] @canvas
 
 </div>
 
 <div class="flex-child">
 
-$b)\;\; \text{ggT}(39;75) =$ [[  13 ]]
+$b)\;\; \text{ggT}(39;75) =$ [[  13 ]] @canvas
 
 </div>
 
 <div class="flex-child">
 
-$c)\;\; \text{ggT}(35;85) =$ [[  5  ]]
+$c)\;\; \text{ggT}(35;85) =$ [[  5  ]] @canvas
 
 </div>
 
 <div class="flex-child">
 
-$d)\;\; \text{ggT}(63;14) =$ [[  7  ]]
+$d)\;\; \text{ggT}(63;14) =$ [[  7  ]] @canvas
 
 </div>
 
 <div class="flex-child">
 
-$e)\;\; \text{ggT}(80;110) =$ [[ 10  ]]
+$e)\;\; \text{ggT}(80;110) =$ [[ 10  ]] @canvas
 
 </div>
 
 <div class="flex-child">
 
-$f)\;\; \text{ggT}(17;19) =$ [[  1  ]]
+$f)\;\; \text{ggT}(17;19) =$ [[  1  ]] @canvas
 
 </div>
 

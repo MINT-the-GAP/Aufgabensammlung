@@ -72,7 +72,7 @@ __$a)\;\;$__
 </center>
 
 <!-- data-solution-button="5"-->
-[[  10/32  ]]
+[[  10/32  ]] @canvas
 @Algebrite.check(10/32)
 
 </div>
@@ -89,7 +89,7 @@ __$b)\;\;$__
 </center>
 
 <!-- data-solution-button="5"-->
-[[  3/8  ]]
+[[  3/8  ]] @canvas
 @Algebrite.check(3/8)
 
 </div>
@@ -106,7 +106,7 @@ __$c)\;\;$__
 </center>
 
 <!-- data-solution-button="5"-->
-[[  14/32  ]]
+[[  14/32  ]] @canvas
 @Algebrite.check(14/32)
 
 </div>
@@ -123,7 +123,7 @@ __$d)\;\;$__
 </center>
 
 <!-- data-solution-button="5"-->
-[[  8/19  ]]
+[[  8/19  ]] @canvas
 @Algebrite.check(8/19)
 
 </div>
@@ -140,7 +140,7 @@ __$e)\;\;$__
 </center>
 
 <!-- data-solution-button="5"-->
-[[  4/12  ]]
+[[  4/12  ]] @canvas
 @Algebrite.check(4/12)
 
 </div>
@@ -157,7 +157,7 @@ __$f)\;\;$__
 </center>
 
 <!-- data-solution-button="5"-->
-[[  5/12  ]]
+[[  5/12  ]] @canvas
 @Algebrite.check(5/12)
 
 </div>

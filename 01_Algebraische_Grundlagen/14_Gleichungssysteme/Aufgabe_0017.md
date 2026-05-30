@@ -58,7 +58,7 @@ Beim Schulfest verkauft die betrachtet Klasse Kuchenstücke und Waffeln. Am Ende
 
 
 <!-- data-solution-button="5"-->
-$x$ = [[  16  ]] und $y$ = [[  10  ]] 
+$x$ = [[  16  ]] @canvas und $y$ = [[  10  ]] @canvas 
 @Algebrite.check([ 16; 10 ])
 ************
 Bezeichne mit $x$ die Anzahl der Kuchenstücke und mit $y$ die Anzahl der Waffeln.

@@ -87,7 +87,7 @@ while (!ok) {
 c = a + b;
 
 // Aufgabe (nur: Summe eingeben)
-const problem = `${a} + ${b} = [[ ${c} ]]`;
+const problem = `${a} + ${b} = [[ ${c} ]] @canvas`;
 
 // Übertragszeile (rote 1 IN der Zielspalte: E→Z, Z→H, H→T)
 function carryLineAdd(a, b) {

@@ -63,7 +63,7 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $  \dfrac{1}{3} \;\;\wedge\;\; \dfrac{3}{5}  \;\;\Rightarrow\;\; $ [[  7/15  ]] 
+__$a)\;\;$__ $  \dfrac{1}{3} \;\;\wedge\;\; \dfrac{3}{5}  \;\;\Rightarrow\;\; $ [[  7/15  ]] @canvas 
 @Algebrite.check(7/15)
 ************
 $$
@@ -80,7 +80,7 @@ $$
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $  \dfrac{2}{7} \;\;\wedge\;\; \dfrac{5}{6}  \;\;\Rightarrow\;\; $ [[  47/84  ]] 
+__$b)\;\;$__ $  \dfrac{2}{7} \;\;\wedge\;\; \dfrac{5}{6}  \;\;\Rightarrow\;\; $ [[  47/84  ]] @canvas 
 @Algebrite.check(47/84)
 ************
 $$
@@ -97,7 +97,7 @@ $$
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $  \dfrac{4}{9} \;\;\wedge\;\; \dfrac{2}{3}  \;\;\Rightarrow\;\; $ [[  5/9  ]] 
+__$c)\;\;$__ $  \dfrac{4}{9} \;\;\wedge\;\; \dfrac{2}{3}  \;\;\Rightarrow\;\; $ [[  5/9  ]] @canvas 
 @Algebrite.check(5/9)
 ************
 $$
@@ -114,7 +114,7 @@ $$
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $  \dfrac{5}{8} \;\;\wedge\;\; \dfrac{1}{12}  \;\;\Rightarrow\;\; $ [[  17/48  ]] 
+__$d)\;\;$__ $  \dfrac{5}{8} \;\;\wedge\;\; \dfrac{1}{12}  \;\;\Rightarrow\;\; $ [[  17/48  ]] @canvas 
 @Algebrite.check(17/48)
 ************
 $$
@@ -131,7 +131,7 @@ $$
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $  \dfrac{3}{10} \;\;\wedge\;\; \dfrac{7}{12}  \;\;\Rightarrow\;\; $ [[  53/120  ]] 
+__$e)\;\;$__ $  \dfrac{3}{10} \;\;\wedge\;\; \dfrac{7}{12}  \;\;\Rightarrow\;\; $ [[  53/120  ]] @canvas 
 @Algebrite.check(53/120)
 ************
 $$
@@ -148,7 +148,7 @@ $$
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$f)\;\;$__ $  \dfrac{11}{20} \;\;\wedge\;\; \dfrac{3}{4}  \;\;\Rightarrow\;\; $ [[  13/20  ]] 
+__$f)\;\;$__ $  \dfrac{11}{20} \;\;\wedge\;\; \dfrac{3}{4}  \;\;\Rightarrow\;\; $ [[  13/20  ]] @canvas 
 @Algebrite.check(13/20)
 ************
 $$

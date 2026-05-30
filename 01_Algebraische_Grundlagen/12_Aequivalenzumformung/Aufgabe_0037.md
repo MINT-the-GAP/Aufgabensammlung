@@ -54,7 +54,7 @@ author: Martin Lommatzsch
 In einem Copyshop kann zwischen zwei Bezahlmodellen gewählt werden. In Modell A fällt eine einmalige Grundgebühr von 0,75 € an; jede Kopie kostet zusätzlich 0,30 €. In Modell B beträgt die einmalige Grundgebühr 3,75 €, dafür kostet jede Kopie nur 0,15 €. **Berechne**, nach wie vielen Kopien die Gesamtkosten beider Modelle genau gleich sind.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  20  ]]
+$x$ = [[  20  ]] @canvas
 @Algebrite.check(20)
 ************
 $$

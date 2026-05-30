@@ -58,7 +58,7 @@ Die zweite Drohne steht anfangs 130 m rechts vom Mittelpunkt, hebt aber erst 15 
 **Berechne**, nach wie vielen Sekunden (ab Start der ersten Drohne) beide Drohnen an derselben Position sind.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  510/11  ]]
+$x$ = [[  510/11  ]] @canvas
 @Algebrite.check(510/11)
 ************
 $$

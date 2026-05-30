@@ -55,7 +55,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
-$194 \quad 183 \quad 169 \quad 152 \quad 132 \quad 109 \quad $ [[ 83 ]] $\quad$ [[ 57 ]] $\quad$ [[ 28 ]] \
+$194 \quad 183 \quad 169 \quad 152 \quad 132 \quad 109 \quad $ [[ 83 ]] @canvas $\quad$ [[ 57 ]] @canvas $\quad$ [[ 28 ]] @canvas \
 
 [[?]] Musterbeschreibung: Um $3$ wachsender Subtrahend wird vom vorherigen Wert subtrahiert.
 
@@ -63,7 +63,7 @@ $194 \quad 183 \quad 169 \quad 152 \quad 132 \quad 109 \quad $ [[ 83 ]] $\quad$ 
 
 __$b)\;\;$__
 
-$1 \quad 16 \quad 81 \quad 256 \quad 625 \quad $ [[ 1296 ]] $\quad$ [[ 2401 ]] $\quad$ [[ 4096 ]] \
+$1 \quad 16 \quad 81 \quad 256 \quad 625 \quad $ [[ 1296 ]] @canvas $\quad$ [[ 2401 ]] @canvas $\quad$ [[ 4096 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen hoch $4$.
 
@@ -72,7 +72,7 @@ $1 \quad 16 \quad 81 \quad 256 \quad 625 \quad $ [[ 1296 ]] $\quad$ [[ 2401 ]] $
 
 __$c)\;\;$__
 
-$0 \quad 1 \quad 10 \quad 11 \quad 100 \quad 101 \quad 110 \quad 111 \quad $ [[ 1000 ]] $\quad$ [[ 1001 ]] $\quad$ [[ 1010 ]] \
+$0 \quad 1 \quad 10 \quad 11 \quad 100 \quad 101 \quad 110 \quad 111 \quad $ [[ 1000 ]] @canvas $\quad$ [[ 1001 ]] @canvas $\quad$ [[ 1010 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die aufsteigenden Zahlen in binär.
 

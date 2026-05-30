@@ -59,7 +59,7 @@ Die Anzeigen der Ordner werden im Mittel über mehrere Minuten gemessen.
 **Berechne**, nach wie vielen Minuten beide Schlangen **gleich lang** sind.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  96/5  ]]
+$x$ = [[  96/5  ]] @canvas
 @Algebrite.check(96/5)
 ************
 $$

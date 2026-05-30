@@ -59,7 +59,7 @@ Ein Mensch legt an einem Tag eine Strecke zurück: Einen Teil fährt der Mensch 
 **Berechne** die Zeitanteile der beiden Abschnitte.
 
 <!-- data-solution-button="5"-->
-$x$ = [[  9/10  ]] und $y$ = [[  21/10  ]]
+$x$ = [[  9/10  ]] @canvas und $y$ = [[  21/10  ]] @canvas
 @Algebrite.check([ 9/10; 21/10 ])
 ************
 Bezeichne mit $x$ die Fahrzeit mit dem Fahrrad (in Stunden) und mit $y$ die Gehzeit.

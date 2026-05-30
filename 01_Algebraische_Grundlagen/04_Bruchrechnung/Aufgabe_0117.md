@@ -58,7 +58,7 @@ Ein Seil ist $24$ m lang. Es wird $\dfrac{5}{8}$ der Länge benötigt.
 **Bestimme** die benötigte Seillänge.  
 
 <!-- data-solution-button="5"-->
-[[  15  ]] m
+[[  15  ]] @canvas m
 ************
 $$
 \dfrac{5}{8}\cdot 24\,\text{m}

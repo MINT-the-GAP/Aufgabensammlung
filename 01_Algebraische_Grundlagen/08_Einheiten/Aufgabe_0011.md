@@ -57,37 +57,37 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $9\,\text{h} = $ [[  540  ]] $\,\text{min}$ \
+__$a)\;\;$__ $9\,\text{h} = $ [[  540  ]] @canvas $\,\text{min}$ \
 
 </div>
 
 <div class="flex-child">
 
-__$b)\;\;$__ $3\,\text{h} = $ [[ 10800 ]] $\,\text{s}$ \
+__$b)\;\;$__ $3\,\text{h} = $ [[ 10800 ]] @canvas $\,\text{s}$ \
 
 </div>
 
 <div class="flex-child">
 
-__$c)\;\;$__ $12\,\text{min} = $ [[  720  ]] $\,\text{s}$ \
+__$c)\;\;$__ $12\,\text{min} = $ [[  720  ]] @canvas $\,\text{s}$ \
 
 </div>
 
 <div class="flex-child">
 
-__$d)\;\;$__ $7200\,\text{s} = $ [[   2   ]] $\,\text{h}$ \
+__$d)\;\;$__ $7200\,\text{s} = $ [[   2   ]] @canvas $\,\text{h}$ \
 
 </div>
 
 <div class="flex-child">
 
-__$e)\;\;$__ $660\,\text{s} = $ [[   11   ]] $\,\text{min}$ \
+__$e)\;\;$__ $660\,\text{s} = $ [[   11   ]] @canvas $\,\text{min}$ \
 
 </div>
 
 <div class="flex-child">
 
-__$f)\;\;$__ $960\,\text{min} = $ [[   16   ]] $\,\text{h}$ \
+__$f)\;\;$__ $960\,\text{min} = $ [[   16   ]] @canvas $\,\text{h}$ \
 
 </div>
 

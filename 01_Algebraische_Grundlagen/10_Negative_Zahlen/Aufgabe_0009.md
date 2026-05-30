@@ -54,22 +54,22 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 
-__$a)\;\;$__ $|-9|=$ [[  9   ]]
+__$a)\;\;$__ $|-9|=$ [[  9   ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$b)\;\;$__ $\text{sgn}(-5)=$ [[  -1  ]]
+__$b)\;\;$__ $\text{sgn}(-5)=$ [[  -1  ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$c)\;\;$__ $\text{sgn}(85)=$ [[  +1  ]]
+__$c)\;\;$__ $\text{sgn}(85)=$ [[  +1  ]] @canvas
 
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ $|72|=$ [[  72  ]]
+__$d)\;\;$__ $|72|=$ [[  72  ]] @canvas
 
 </div>
 </section>

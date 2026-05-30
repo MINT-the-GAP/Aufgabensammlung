@@ -57,37 +57,37 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-$a)\;\; \text{kgV}(8;5) =$ [[ 40  ]]
+$a)\;\; \text{kgV}(8;5) =$ [[ 40  ]] @canvas
 
 </div>
 
 <div class="flex-child">
 
-$b)\;\; \text{kgV}(6;9) =$ [[  18 ]]
+$b)\;\; \text{kgV}(6;9) =$ [[  18 ]] @canvas
 
 </div>
 
 <div class="flex-child">
 
-$c)\;\; \text{kgV}(16;6) =$ [[  48 ]]
+$c)\;\; \text{kgV}(16;6) =$ [[  48 ]] @canvas
 
 </div>
 
 <div class="flex-child">
 
-$d)\;\; \text{kgV}(12;18) =$ [[  36 ]]
+$d)\;\; \text{kgV}(12;18) =$ [[  36 ]] @canvas
 
 </div>
 
 <div class="flex-child">
 
-$e)\;\; \text{kgV}(10;25) =$ [[ 50  ]]
+$e)\;\; \text{kgV}(10;25) =$ [[ 50  ]] @canvas
 
 </div>
 
 <div class="flex-child">
 
-$f)\;\; \text{kgV}(35;7) =$ [[ 35  ]]
+$f)\;\; \text{kgV}(35;7) =$ [[ 35  ]] @canvas
 
 </div>
 

@@ -56,7 +56,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
-$534 \approx$ [[530    ]]
+$534 \approx$ [[530    ]] @canvas
 
 </div>
 
@@ -66,7 +66,7 @@ $534 \approx$ [[530    ]]
 
 __$b)\;\;$__
 
-$119 \approx$ [[120    ]]
+$119 \approx$ [[120    ]] @canvas
 
 </div>
 
@@ -77,7 +77,7 @@ $119 \approx$ [[120    ]]
 
 __$c)\;\;$__
 
-$346 \approx$ [[350    ]]
+$346 \approx$ [[350    ]] @canvas
 
 </div>
 
@@ -88,7 +88,7 @@ $346 \approx$ [[350    ]]
 
 __$d)\;\;$__
 
-$971 \approx$ [[970    ]]
+$971 \approx$ [[970    ]] @canvas
 
 </div>
 
@@ -99,7 +99,7 @@ $971 \approx$ [[970    ]]
 
 __$e)\;\;$__
 
-$289 \approx$ [[290    ]]
+$289 \approx$ [[290    ]] @canvas
 
 </div>
 
@@ -109,7 +109,7 @@ $289 \approx$ [[290    ]]
 
 __$f)\;\;$__
 
-$654 \approx$ [[650    ]]
+$654 \approx$ [[650    ]] @canvas
 
 </div>
 

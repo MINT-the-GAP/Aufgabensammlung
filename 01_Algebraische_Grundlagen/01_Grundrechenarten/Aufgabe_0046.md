@@ -61,7 +61,7 @@ __$a)\;\;$__
 </center>
 
 <!-- data-solution-button="5"-->
-[[  5+2   ]] $= 7$
+[[  5+2   ]] @canvas $= 7$
 
 </div>
 
@@ -75,7 +75,7 @@ __$b)\;\;$__
 </center>
 
 <!-- data-solution-button="5"-->
-[[  3+5   ]] $= 8$
+[[  3+5   ]] @canvas $= 8$
 
 </div>
 </section>

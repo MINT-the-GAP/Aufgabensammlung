@@ -54,24 +54,24 @@ In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich viele Streichhöl
 
 <!-- style="width:600px" -->
 __$a)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem1a.png)  
-$x=$ [[  1  ]] Streichhölzer \
-$y=$ [[  4  ]] Streichhölzer
+$x=$ [[  1  ]] @canvas Streichhölzer \
+$y=$ [[  4  ]] @canvas Streichhölzer
 
 <!-- style="width:600px" -->
 __$b)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem2a.png)  
-$x=$ [[  2  ]] Streichhölzer \
-$y=$ [[ 12  ]] Streichhölzer
+$x=$ [[  2  ]] @canvas Streichhölzer \
+$y=$ [[ 12  ]] @canvas Streichhölzer
 
 <!-- style="width:600px" -->
 __$c)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem3a.png)  
-$x=$ [[  3  ]] Streichhölzer \
-$y=$ [[  5  ]] Streichhölzer
+$x=$ [[  3  ]] @canvas Streichhölzer \
+$y=$ [[  5  ]] @canvas Streichhölzer
 
 <!-- style="width:600px" -->
 __$d)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem4a.png)  
-$x=$ [[  1  ]] Streichhölzer \
-$y=$ [[  7  ]] Streichhölzer \
-$z=$ [[  2  ]] Streichhölzer
+$x=$ [[  1  ]] @canvas Streichhölzer \
+$y=$ [[  7  ]] @canvas Streichhölzer \
+$z=$ [[  2  ]] @canvas Streichhölzer
 
 
 

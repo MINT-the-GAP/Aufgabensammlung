@@ -64,7 +64,7 @@ Zum Schluss wird ein Materialschuppen aufgebaut, der $\dfrac{1}{8}$ der Gesamtfl
 **Berechne** die am Ende frei nutzbare Fläche (ohne Spielfelder, ohne Rasen, ohne Schuppen). 
 
 <!-- data-solution-button="5"-->
-[[  405/4  ]] m$^2$
+[[  405/4  ]] @canvas m$^2$
 @Algebrite.check(405/4)
 ************
 $$

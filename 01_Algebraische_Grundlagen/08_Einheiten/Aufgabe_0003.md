@@ -55,31 +55,31 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ [[  120  ]] Sekunden entsprechen $2$ Minuten. \
+__$a)\;\;$__ [[  120  ]] @canvas Sekunden entsprechen $2$ Minuten. \
 
 
 </div>
 <div class="flex-child">
 
-__$b)\;\;$__ [[ 1000 ]] Milliliter entsprechen ein Liter. \
+__$b)\;\;$__ [[ 1000 ]] @canvas Milliliter entsprechen ein Liter. \
 
 
 </div>
 <div class="flex-child">
 
-__$c)\;\;$__ Ein Zentimeter entspricht [[  10  ]] Millimeter. \
+__$c)\;\;$__ Ein Zentimeter entspricht [[  10  ]] @canvas Millimeter. \
 
 
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ Ein Kilogramm entspricht [[ 1000000 ]] Milligramm. \
+__$d)\;\;$__ Ein Kilogramm entspricht [[ 1000000 ]] @canvas Milligramm. \
 
 
 </div>
 <div class="flex-child">
 
-__$e)\;\;$__ [[   1  ]] Dezimeter entspricht $10$ Zentimeter. \
+__$e)\;\;$__ [[   1  ]] @canvas Dezimeter entspricht $10$ Zentimeter. \
 
 
 </div>

@@ -54,25 +54,25 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 __$a)\;\;$__ Ein Produkt besteht aus den Summen aus $4$ und $3$ sowie $6$ und $2$. \
-[[  56  ]]
+[[  56  ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ Der Minuend ist die positive Differenz aus $95$ und $33$, während der Subtrahend $27$ ist. \
-[[  35  ]]
+[[  35  ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ Der Dividend ist die Summe aus $41$ und $54$, während der Divisor aus der positiven Differenz aus $83$ und $78$ besteht. \
-[[  19  ]]
+[[  19  ]] @canvas
 
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ Die ganzzahligen Quotienten aus $56$ und $8$ sowie $84$ und $12$ werden miteinander multipliziert.\
-[[  49  ]]
+[[  49  ]] @canvas
 
 </div>
 </section>
