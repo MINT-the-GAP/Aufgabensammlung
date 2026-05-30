@@ -2,6 +2,10 @@
 version:  0.0.1
 language: de
 narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
 
 @style
 main > *:not(:last-child) {
@@ -12,7 +16,7 @@ input {
     text-align: center;
 }
 
-.flex-container {
+.dynFlex {
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
@@ -172,9 +176,9 @@ svg.tree2 foreignObject button {
 
 
 
-import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
-script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
+
+
 
 
 tags: Erklärung, Kontingenztafeln, bedingte Wahrscheinlichkeit, Vierfeldertafeln

@@ -3,6 +3,10 @@
 version:  0.0.1
 language: de
 narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
 
 
 
@@ -10,39 +14,9 @@ author: Martin Lommatzsch
 
 
 
-@style
-main > *:not(:last-child) {
-  margin-bottom: 3rem;
-}
 
-input {
-    text-align: center;
-}
 
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    gap: 20px;
-}
 
-.flex-child {
-    flex: 1;
-    min-width: 350px;
-    margin-right: 20px;
-}
-
-@media (max-width: 400px) {
-    .flex-child {
-        flex: 100%;
-        margin-right: 0;
-    }
-}
-@end
-
-formula: \carry   \textcolor{red}{\scriptsize #1}
-formula: \digit   \rlap{\carry{#1}}\phantom{#2}#2
-formula: \permil  \text{‰}
 
 
 
@@ -307,9 +281,9 @@ if (!window.rects['@0'] || window.rects['@0'].length !== total) {
 
 
 
-import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
-script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
+
+
 
 import: https://cdn.jsdelivr.net/gh/LiaTemplates/algebrite@master/README.md
         https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
@@ -336,7 +310,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 __Aufgabe 1:__ **Gib** den Wert des Terms **an**
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 __$a)\;\;$__ $ 5! = $ [[ 120  ]]
@@ -368,7 +342,7 @@ __$d)\;\;$__ $ \dfrac{ 8! }{ 5! \cdot 3! } = $ [[ 56   ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 __Aufgabe 2:__ **Gib** den Wert des Terms **an**
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 __$a)\;\;$__ $ 4! = $ [[ 24  ]]
@@ -399,7 +373,7 @@ __$d)\;\;$__ $ \dfrac{ 12! }{ 7! \cdot 4! \cdot 3! } = $ [[ 660  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 __Aufgabe 3:__ **Gib** den Wert des Terms **an**
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 __$a)\;\;$__ $  \left( \begin{array}{c} 4 \\ 3 \end{array} \right) = $ [[  4  ]]
@@ -430,7 +404,7 @@ __$d)\;\;$__ $  \left( \begin{array}{c} 7 \\ 4 \end{array} \right) = $ [[  35  ]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 __Aufgabe 4:__ **Gib** den Wert des Terms **an**
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 __$a)\;\;$__ $  \left( \begin{array}{c} 6 \\ 5 \end{array} \right) = $ [[  6  ]]

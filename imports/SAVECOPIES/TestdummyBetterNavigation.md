@@ -1,6 +1,11 @@
 <!--
 version:  0.0.1
 language: de
+narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
 author: Martin Lommatzsch
 comment: TOC PDF-Bookmarks V0.1 — eigener Baum-TOC (▶/▼), import-sicher, Original-TOC+Search entfernt, Übersicht bleibt unten, Cleanup beim Übersicht-Klick & auf Overview-Root
 

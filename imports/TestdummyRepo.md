@@ -2,6 +2,10 @@
 version:  0.0.1
 language: de
 narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
 
 
 import: https://cdn.jsdelivr.net/gh/LiaTemplates/algebrite@master/README.md
@@ -11,7 +15,6 @@ import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-annotation/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-board-mode/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-marker/refs/heads/main/README.md
-import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-orthography/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/NavigationREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-timer/refs/heads/main/README.md

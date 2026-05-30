@@ -2,6 +2,10 @@
 version:  0.0.1
 language: de
 narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
 author: Martin Lommatzsch
 
 comment: FractionQuizzes (circle+rect) — 200x200 + Label IM Slider (wie Button), nur Schieber (kein Reset/keine Zahlen), import-sicher, kein ||-Parsefehler

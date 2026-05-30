@@ -1,6 +1,11 @@
 <!--
 version:  0.0.1
 language: de
+narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
 author: Martin Lommatzsch
 comment: LaTeX-OCR (Browser/LiaScript) v0.0.1 — robust: Canvas->RawImage, Output-Key-Fallback, Preview der Preprocess-Grafik, JSON-Debug wenn leer.
 

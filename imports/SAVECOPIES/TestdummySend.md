@@ -1,10 +1,14 @@
 <!--
 version: 0.0.1
 language: de
+narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
 author: Martin Lommatzsch
 comment: LiaScript-Abgabelink mit exakterer Zustandsprotokollierung und Freeze
 
-mode: Presentation
 
 import: https://cdn.jsdelivr.net/gh/LiaTemplates/algebrite@master/README.md
 import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
@@ -267,7 +271,6 @@ async function encodeSnapshotToken(payload) {
   if (gzipToken && gzipToken.length < plainToken.length) {
     return {
       token: gzipToken,
-      mode: "gzip",
       plainLength: plainToken.length,
       finalLength: gzipToken.length
     };
@@ -275,7 +278,6 @@ async function encodeSnapshotToken(payload) {
 
   return {
     token: plainToken,
-    mode: "plain",
     plainLength: plainToken.length,
     finalLength: plainToken.length
   };
@@ -343,7 +345,6 @@ async function runSnapshotTokenSelfTest(samplePayload) {
 
     return {
       ok: ok,
-      mode: encoded.mode,
       plainLength: encoded.plainLength,
       finalLength: encoded.finalLength,
       token: encoded.token,

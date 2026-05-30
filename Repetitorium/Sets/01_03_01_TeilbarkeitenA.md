@@ -3,6 +3,10 @@
 version:  0.0.1
 language: de
 narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
 
 
 
@@ -10,39 +14,9 @@ author: Martin Lommatzsch
 
 
 
-@style
-main > *:not(:last-child) {
-  margin-bottom: 3rem;
-}
 
-input {
-    text-align: center;
-}
 
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    gap: 20px;
-}
 
-.flex-child {
-    flex: 1;
-    min-width: 350px;
-    margin-right: 20px;
-}
-
-@media (max-width: 400px) {
-    .flex-child {
-        flex: 100%;
-        margin-right: 0;
-    }
-}
-@end
-
-formula: \carry   \textcolor{red}{\scriptsize #1}
-formula: \digit   \rlap{\carry{#1}}\phantom{#2}#2
-formula: \permil  \text{‰}
 
 
 
@@ -307,9 +281,9 @@ if (!window.rects['@0'] || window.rects['@0'].length !== total) {
 
 
 
-import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
-script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
+
+
 
 import: https://cdn.jsdelivr.net/gh/LiaTemplates/algebrite@master/README.md
         https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
@@ -336,7 +310,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 __Aufgabe 1:__ **Gib** den Wert der Quersumme **an**.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
@@ -379,7 +353,7 @@ __Aufgabe 2:__ **Gib** den Wert der Quersumme **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
@@ -423,7 +397,7 @@ __Aufgabe 3:__ **Gib** den Wert der Quersumme **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
@@ -465,7 +439,7 @@ __Aufgabe 4:__ **Gib** den Wert der Quersumme **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
@@ -506,7 +480,7 @@ $Q(z) =$ [[ 26 ]]
 __Aufgabe 5:__ **Kreuze** die zutreffenden Antworten auf die Fragen **an**.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -607,7 +581,7 @@ __Aufgabe 6:__ **Entscheide**, ob die es sich um einen Teiler $\mid$ oder keinem
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 __$a)\;\;$__ $3$ [[ $\mid$ | ($\nmid$) ]] $6436$ \
 
@@ -648,7 +622,7 @@ __Aufgabe 7:__ **Entscheide**, ob die es sich um einen Teiler $\mid$ oder keinem
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 __$a)\;\;$__ $2$ [[ ($\mid$) | $\nmid$ ]] $7613$ \
 
@@ -689,7 +663,7 @@ __Aufgabe 8:__ **Entscheide**, ob die es sich um einen Teiler $\mid$ oder keinem
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 __$a)\;\;$__ $7$ [[ ($\mid$) | $\nmid$ ]] $7399$ \
 
@@ -729,7 +703,7 @@ __Aufgabe 9:__ **Entscheide**, ob die es sich um einen Teiler $\mid$ oder keinem
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 __$a)\;\;$__ $8$ [[ ($\mid$) | $\nmid$ ]] $1416$ \
 
@@ -770,7 +744,7 @@ __Aufgabe 10:__ **Entscheide**, ob die es sich um einen Teiler $\mid$ oder keine
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 __$a)\;\;$__ $8425$ [[ $\mid$ | ($\nmid$) ]] $5$ \
 
@@ -813,7 +787,7 @@ __Aufgabe 11:__ **Gib** den Wert des Terms **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -871,7 +845,7 @@ $f)\;\; \text{ggT}(17;19) =$ [[  1  ]]
 __Aufgabe 12:__ **Gib** den Wert des Terms **an**.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -927,7 +901,7 @@ $f)\;\; \text{ggT}(100;20) =$ [[  20  ]]
 __Aufgabe 13:__ **Gib** den Wert des Terms **an**.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -983,7 +957,7 @@ $f)\;\; \text{ggT}(12;72) =$ [[ 12  ]]
 __Aufgabe 14:__ **Gib** den Wert des Terms **an**.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1040,7 +1014,7 @@ __Aufgabe 15:__ **Gib** den Wert des Terms **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1099,7 +1073,7 @@ __Aufgabe 16:__ **Gib** den Wert des Terms **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1159,7 +1133,7 @@ __Aufgabe 17:__ **Gib** den Wert des Terms **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1206,7 +1180,7 @@ __Aufgabe 18:__ **Gib** den Wert des Terms **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1254,7 +1228,7 @@ __Aufgabe 19:__ **Gib** den Wert des Terms **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1309,7 +1283,7 @@ $d)\;\; \text{ggT}(48;144;176) =$ [[  16 ]]
 __Aufgabe 20:__ **Gib** den Wert des Terms **an**.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1376,7 +1350,7 @@ __Aufgabe 21:__ **Gib** den Wert des Terms **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1437,7 +1411,7 @@ __Aufgabe 22:__ **Gib** den Wert des Terms **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1500,7 +1474,7 @@ $f)\;\; \text{kgV}(36;24) =$ [[  72 ]]
 __Aufgabe 23:__ **Gib** den Wert des Terms **an**.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1564,7 +1538,7 @@ __Aufgabe 24:__ **Gib** den Wert des Terms **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1626,7 +1600,7 @@ __Aufgabe 25:__ **Gib** den Wert des Terms **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1684,7 +1658,7 @@ $f)\;\; \text{kgV}(40;100) =$ [[ 200 ]]
 __Aufgabe 26:__ **Gib** den Wert des Terms **an**.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1724,7 +1698,7 @@ __Aufgabe 27:__ **Gib** den Wert des Terms **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 
 <div class="flex-child">
@@ -1766,7 +1740,7 @@ __Aufgabe 28:__ **Gib** den Wert des Terms **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 

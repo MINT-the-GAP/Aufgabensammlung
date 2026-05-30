@@ -1,6 +1,11 @@
 <!--
 version: 0.0.9
 language: de
+narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
 author: Martin Lommatzsch
 comment: DynFlex Import V6.9 (First-Visit Auto-Width je Folie; Leerzeilen -> echte Blocks in flex-child => mehrere Prüfen-Buttons; section/div authoring, wrapper-robust for [[...]], css-injection, theme-update, end-resizer, % widths)
 

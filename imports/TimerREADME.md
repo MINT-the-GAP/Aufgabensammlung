@@ -1,6 +1,11 @@
 <!--
 version:  0.0.1
 language: de
+narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
 author: Martin Lommatzsch
 comment: Solution-Button per Timer — per-Folie init + pending-arm + onclick/oncheck + Badge optional — dedupe über Solution-Button (keine doppelten UI) — alles in @onload
 

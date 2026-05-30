@@ -1,6 +1,11 @@
 <!--
 version:  0.0.2
 language: de
+narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
 comment: LiaScript – Presentation 98% Breite + Auto-Font-Boost + Schriftgrößen-Regler (Overlay-Button, nur Presentation) – import-sicher, kollisionsarm
 author: Martin Lommatzsch
 

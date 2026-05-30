@@ -1,7 +1,12 @@
 <!--
 version:  0.0.1
-
 language: de
+narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
+
 
 @style
 main > *:not(:last-child) {
@@ -9,13 +14,11 @@ main > *:not(:last-child) {
 }
 @end
 
-formula: \carry   \textcolor{red}{\scriptsize #1}
-formula: \digit   \rlap{\carry{#1}}\phantom{#2}#2
-formula: \permil  \text{‰}
 
-import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
-script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
+
+
+
 
 
 tags: Vektoren, Algebra, Skalarprodukt, Vektorprodukt, Betrag, Potenzen, Vorrangsregeln, sehr leicht, normal, Angeben

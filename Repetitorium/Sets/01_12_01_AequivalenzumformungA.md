@@ -3,45 +3,19 @@
 version:  0.0.1
 language: de
 narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
 
 
 author: Martin Lommatzsch
 
 
 
-@style
-main > *:not(:last-child) {
-  margin-bottom: 3rem;
-}
 
-input {
-    text-align: center;
-}
 
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    gap: 20px;
-}
 
-.flex-child {
-    flex: 1;
-    min-width: 350px;
-    margin-right: 20px;
-}
-
-@media (max-width: 400px) {
-    .flex-child {
-        flex: 100%;
-        margin-right: 0;
-    }
-}
-@end
-
-formula: \carry   \textcolor{red}{\scriptsize #1}
-formula: \digit   \rlap{\carry{#1}}\phantom{#2}#2
-formula: \permil  \text{‰}
 
 
 
@@ -306,9 +280,9 @@ if (!window.rects['@0'] || window.rects['@0'].length !== total) {
 
 
 
-import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
-script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
+
+
 
 import: https://cdn.jsdelivr.net/gh/LiaTemplates/algebrite@master/README.md
         https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
@@ -584,7 +558,7 @@ __Aufgabe 11:__ **Berechne** den Lösungswert für die Unbekannte.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
@@ -700,7 +674,7 @@ __Aufgabe 12:__ **Berechne** den Lösungswert für die Unbekannte.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
@@ -825,7 +799,7 @@ __Aufgabe 13:__ **Berechne** den Lösungswert für die Unbekannte.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
@@ -916,7 +890,7 @@ __Aufgabe 14:__ **Berechne** den Lösungswert für die Unbekannte.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
@@ -1001,7 +975,7 @@ __Aufgabe 15:__ **Berechne** den Lösungswert für die Unbekannte.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
@@ -1086,7 +1060,7 @@ __Aufgabe 16:__ **Berechne** den Lösungswert für die Unbekannte.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
@@ -1172,7 +1146,7 @@ $$
 __Aufgabe 17:__ **Berechne** den Lösungswert für die Unbekannte.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
@@ -1254,7 +1228,7 @@ __Aufgabe 18:__ **Berechne** den Lösungswert für die Unbekannte.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $  4x + 6 - 2x + 3 = x + 17 $ \
@@ -1327,7 +1301,7 @@ __Aufgabe 19:__ **Berechne** den Lösungswert für die Unbekannte.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $  4(2x-3) = 2x + 10 $ \
@@ -1409,7 +1383,7 @@ __Aufgabe 20:__ **Berechne** den Lösungswert für die Unbekannte.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $  2(4x-5) = 3x + 13 $ \
@@ -1490,7 +1464,7 @@ __Aufgabe 21:__ **Berechne** den Lösungswert für die Unbekannte.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $  3x - 7 = \dfrac{1}{2}x + 5 $ \
@@ -1604,7 +1578,7 @@ __Aufgabe 22:__ **Berechne** den Lösungswert für die Unbekannte.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $ \; 7x + \dfrac{1}{2} = 3x - \dfrac{7}{2} \;$ \
@@ -1726,7 +1700,7 @@ __Aufgabe 23:__ **Berechne** den Lösungswert für die Unbekannte.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $  2x + 3x - 7 = x + 5 $ \
@@ -1840,7 +1814,7 @@ __Aufgabe 24:__ **Berechne** den Lösungswert für die Unbekannte.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $  4x - 3 = \dfrac{1}{2}x + 9 $ \
@@ -1961,7 +1935,7 @@ __Aufgabe 25:__ **Berechne** den Lösungswert für die Unbekannte.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $  \dfrac{5}{x-1} = \dfrac{10}{x+1} $ \
@@ -2085,7 +2059,7 @@ __Aufgabe 26:__ **Berechne** den Lösungswert für die Unbekannte.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $  \dfrac{6}{x-2} = \dfrac{18}{x+4} $ \
@@ -2210,7 +2184,7 @@ __Aufgabe 27:__ **Berechne** den Lösungswert für die Unbekannte.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $  \dfrac{5}{x-2} = \dfrac{7}{3x+1} $ \
@@ -2343,7 +2317,7 @@ __Aufgabe 28:__ **Berechne** den Lösungswert für die Unbekannte.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $  \dfrac{5}{x-2} = \dfrac{3}{2x+1} $ \
@@ -2474,7 +2448,7 @@ __Aufgabe 29:__ **Berechne** den Lösungswert für die fehlende Größe.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $  T = m g h \;\;$  mit $\;\;m=8 \;\;\wedge\;\; g=10 \;\;\wedge\;\; T=480$ \
@@ -2622,7 +2596,7 @@ __Aufgabe 30:__ **Berechne** den Lösungswert für die fehlende Größe.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $   F = m a \;\;$  mit $\;\;a=2 \;\;\wedge\;\; F=30$ \
@@ -2771,7 +2745,7 @@ __Aufgabe 31:__ **Berechne** den Lösungswert für die fehlende Größe.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $  2a + b = c \;\;$  mit $\;\; b=4a \;\;\wedge\;\; c=24$ \
@@ -2893,7 +2867,7 @@ __Aufgabe 32:__ **Berechne** den Lösungswert für die fehlende Größe.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $  3a + 2b = c + 4 \;\;$  mit $\;\; b = a - 5 \;\;\wedge\;\; c = 2a - 1$ \

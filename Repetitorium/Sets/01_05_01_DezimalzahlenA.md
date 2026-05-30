@@ -3,6 +3,10 @@
 version:  0.0.1
 language: de
 narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
 
 
 
@@ -10,39 +14,9 @@ author: Martin Lommatzsch
 
 
 
-@style
-main > *:not(:last-child) {
-  margin-bottom: 3rem;
-}
 
-input {
-    text-align: center;
-}
 
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    gap: 20px;
-}
 
-.flex-child {
-    flex: 1;
-    min-width: 350px;
-    margin-right: 20px;
-}
-
-@media (max-width: 400px) {
-    .flex-child {
-        flex: 100%;
-        margin-right: 0;
-    }
-}
-@end
-
-formula: \carry   \textcolor{red}{\scriptsize #1}
-formula: \digit   \rlap{\carry{#1}}\phantom{#2}#2
-formula: \permil  \text{‰}
 
 
 
@@ -307,9 +281,9 @@ if (!window.rects['@0'] || window.rects['@0'].length !== total) {
 
 
 
-import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
-script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
+
+
 
 import: https://cdn.jsdelivr.net/gh/LiaTemplates/algebrite@master/README.md
         https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
@@ -340,7 +314,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 __Aufgabe 1:__ **Entscheide** welches Relationszeichen eine wahre mathematische Aussage darstellt.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
@@ -391,7 +365,7 @@ __$f)\;\;$__ $0,825$ [[($>$)|$=$|$<$]] $\dfrac{4}{5}$
 __Aufgabe 2:__ **Entscheide** welches Relationszeichen eine wahre mathematische Aussage darstellt.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
@@ -440,7 +414,7 @@ __$f)\;\;$__ $0,6$ [[$>$|$=$|($<$)]] $\dfrac{2}{3}$
 __Aufgabe 3:__ **Entscheide** welches Relationszeichen eine wahre mathematische Aussage darstellt.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
@@ -489,7 +463,7 @@ __$f)\;\;$__ $\dfrac{1}{3}$ [[($>$)|$=$|$<$]] $0,333$
 __Aufgabe 4:__ **Entscheide** welches Relationszeichen eine wahre mathematische Aussage darstellt.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
@@ -536,7 +510,7 @@ __$f)\;\;$__ $\dfrac{9}{8}$ [[($>$)|$=$|$<$]] $\dfrac{10}{9}$
 __Aufgabe 5:__ **Entscheide** welches Relationszeichen eine wahre mathematische Aussage darstellt.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
@@ -584,7 +558,7 @@ __$f)\;\;$__ $\dfrac{5}{12}$ [[$>$|$=$|($<$)]] $0,\bar{4}$
 __Aufgabe 6:__ **Entscheide** welches Relationszeichen eine wahre mathematische Aussage darstellt.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
@@ -901,7 +875,7 @@ __Aufgabe 13:__ **Gib** die Zahl als Dezimalzahl **an**, die sich genau in der M
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -936,7 +910,7 @@ __Aufgabe 14:__ **Gib** die Zahl als Dezimalzahl **an**, die sich genau in der M
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -971,7 +945,7 @@ __Aufgabe 15:__ **Gib** die Zahl als Dezimalzahl **an**, die sich genau in der M
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -1004,7 +978,7 @@ __$d)\;\;$__ $0,02$ und $2 \quad$ \
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 16:__ **Gib** den Wert für die rot markierte Stelle auf dem Zahlenstrahl als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1073,7 +1047,7 @@ __$d)\;\;$__
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 17:__ **Gib** den Wert für die rot markierte Stelle auf dem Zahlenstrahl als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1144,7 +1118,7 @@ __$d)\;\;$__
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 18:__ **Gib** den Wert für die rot markierte Stelle auf dem Zahlenstrahl als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1214,7 +1188,7 @@ __$d)\;\;$__
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 19:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1261,7 +1235,7 @@ __$f)\;\;$__ $  4,78 + 0,75 =$ [[  5,53  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 20:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1314,7 +1288,7 @@ __$f)\;\;$__ $ 1,74+ 6,54=$ [[  8,28  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 21:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1362,7 +1336,7 @@ __$f)\;\;$__ $ 1,57+ 3,74=$ [[  5,31  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 22:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1409,7 +1383,7 @@ __$f)\;\;$__ $ 2,748 + 0,494=$ [[  3,242  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 23:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1457,7 +1431,7 @@ __$f)\;\;$__ $ 11,6-8,9 =$ [[  2,7  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 24:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1504,7 +1478,7 @@ __$f)\;\;$__ $ 4,53-2,68 =$ [[  1,85  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 25:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1554,7 +1528,7 @@ __$f)\;\;$__ $ 5,97-2,64 =$ [[  3,33  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 26:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1604,7 +1578,7 @@ __$f)\;\;$__ $ 2,64-1,83 =$ [[  0,81  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 27:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1652,7 +1626,7 @@ __$f)\;\;$__ $ 2,2 \cdot 1,5 =$ [[  3,3  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 28:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1701,7 +1675,7 @@ __$f)\;\;$__ $ 0,7 \cdot 4,5 =$ [[  3,15  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 29:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1749,7 +1723,7 @@ __$f)\;\;$__ $ 1,3 \cdot 2,5 =$ [[  3,25  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 30:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1803,7 +1777,7 @@ __$f)\;\;$__ $ 0,75 \cdot 0,2 =$ [[  0,15  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 31:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1851,7 +1825,7 @@ __$f)\;\;$__ $ 0,125:0,1 =$ [[  1,25  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 32:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1900,7 +1874,7 @@ __$f)\;\;$__ $ 1,1:0,125 =$ [[  8,8  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 33:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1948,7 +1922,7 @@ __$f)\;\;$__ $ 3,6:0,009 =$ [[  400  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 34:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1997,7 +1971,7 @@ __$f)\;\;$__ $ 0,002:0,1 =$ [[  0,02  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30"> \
 __Aufgabe 35:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2032,7 +2006,7 @@ __$d)\;\;$__ $ 0,\bar{7} : 0,\bar{4} =$ [[  1,75  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30"> \
 __Aufgabe 36:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2070,7 +2044,7 @@ __$d)\;\;$__ $ 1,7\bar{3}+0,\bar{6} =$ [[  2,4  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30"> \
 __Aufgabe 37:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2106,7 +2080,7 @@ __$d)\;\;$__ $ 5,42\bar{1}+1,5\bar{8} =$ [[  7,011  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30"> \
 __Aufgabe 38:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2141,7 +2115,7 @@ __$d)\;\;$__ $ 3,1\bar{4}+0,123\bar{5} =$ [[  3,268  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30"> \
 __Aufgabe 39:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2188,7 +2162,7 @@ __$f)\;\;$__ $ 0,05:2,5+1,5 =$ [[  1,52  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30"> \
 __Aufgabe 40:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2242,7 +2216,7 @@ __$f)\;\;$__ $ 2,4:8+2,045 =$ [[  2,345  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30"> \
 __Aufgabe 41:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2289,7 +2263,7 @@ __$f)\;\;$__ $ (0,8-0,45):0,7 =$ [[  0,5  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30"> \
 __Aufgabe 42:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2337,7 +2311,7 @@ __$f)\;\;$__ $ 9,6:0,08 - 2,5 =$ [[  117,5  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30"> \
 __Aufgabe 43:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2385,7 +2359,7 @@ __$f)\;\;$__ $ (4,5 - 2,84) : 0,1 =$ [[  16,6  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30"> \
 __Aufgabe 44:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2434,7 +2408,7 @@ __$f)\;\;$__ $ 4,5 \cdot (0,12 + 0,14 + 0,24) =$ [[  2,25  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 45:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2483,7 +2457,7 @@ __$f)\;\;$__ $ \dfrac{3}{20} =$ [[  0,15  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 46:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2531,7 +2505,7 @@ __$f)\;\;$__ $ \dfrac{987}{1000} =$ [[  0,987  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 47:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2579,7 +2553,7 @@ __$f)\;\;$__ $ \dfrac{8}{50} =$ [[  0,16  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 48:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2626,7 +2600,7 @@ __$f)\;\;$__ $ \dfrac{13}{10000} =$ [[  0,0013  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 49:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2691,7 +2665,7 @@ $ 0,09 \cdot 0,04 =$ [[  0,0036 ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 50:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2759,7 +2733,7 @@ $ 0,024 \cdot 4000 =$ [[  96   ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 51:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2823,7 +2797,7 @@ $ 0,0009 \cdot 7000 =$ [[  6,3  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 52:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2890,7 +2864,7 @@ $ 0,4 : 0,05 =$ [[  8  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 53:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2956,7 +2930,7 @@ $ 36 : 6000 =$ [[  0,006  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30"> \
 __Aufgabe 54:__ **Gib** den Wert des Terms als Dezimalzahl **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -3023,7 +2997,7 @@ __Aufgabe 55:__ **Gib** die durch den Term angezeigte Dezimalzahl **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 __$a)\;\;$__ $\dfrac{3}{10}+\dfrac{9}{100} \qquad$  \
@@ -3091,7 +3065,7 @@ __Aufgabe 56:__ **Gib** die durch den Term angezeigte Dezimalzahl **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 __$a)\;\;$__ $\dfrac{1}{10}+\dfrac{5}{100}+\dfrac{2}{100} \qquad$  \
@@ -3160,7 +3134,7 @@ __Aufgabe 57:__ **Gib** die durch den Term angezeigte Dezimalzahl **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 __$a)\;\;$__ $\dfrac{129}{100} \qquad$  \
@@ -3253,7 +3227,7 @@ __$f)\;\;$__ $\dfrac{7}{1000000} \qquad$  \
 __Aufgabe 58:__ *Gib* die Zahl gerundet auf drei Nachkommastellen *an*.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
@@ -3286,7 +3260,7 @@ __$c)\;\;$__ $1,\overline{633} \approx$ [[ 1,634 ]]
 __Aufgabe 59:__ *Gib* die Zahl gerundet auf drei Nachkommastellen *an*.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
@@ -3317,7 +3291,7 @@ __$c)\;\;$__ $7,\overline{645891} \approx$ [[ 7,646 ]]
 __Aufgabe 60:__ *Gib* die Zahl gerundet auf drei Nachkommastellen *an*.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
@@ -3347,7 +3321,7 @@ __$c)\;\;$__ $0,\overline{45} \approx$ [[ 0,455 ]]
 __Aufgabe 61:__ *Gib* die Zahl gerundet auf drei Nachkommastellen *an*.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->

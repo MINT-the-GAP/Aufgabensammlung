@@ -3,45 +3,19 @@
 version:  0.0.1
 language: de
 narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
 
 
 author: Martin Lommatzsch
 
 
 
-@style
-main > *:not(:last-child) {
-  margin-bottom: 3rem;
-}
 
-input {
-    text-align: center;
-}
 
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    gap: 20px;
-}
 
-.flex-child {
-    flex: 1;
-    min-width: 350px;
-    margin-right: 20px;
-}
-
-@media (max-width: 400px) {
-    .flex-child {
-        flex: 100%;
-        margin-right: 0;
-    }
-}
-@end
-
-formula: \carry   \textcolor{red}{\scriptsize #1}
-formula: \digit   \rlap{\carry{#1}}\phantom{#2}#2
-formula: \permil  \text{‰}
 
 
 
@@ -306,9 +280,9 @@ if (!window.rects['@0'] || window.rects['@0'].length !== total) {
 
 
 
-import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
-script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
+
+
 
 import: https://cdn.jsdelivr.net/gh/LiaTemplates/algebrite@master/README.md
         https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
@@ -338,7 +312,7 @@ __Aufgabe 1:__ **Gib** den gesuchten Wert innerhalb der Lösungsmenge, die die U
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$a)\;\;$__ $2x < 12$ 
@@ -376,7 +350,7 @@ $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x > $   [[  18 ]]   $\left.   \ri
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 __Aufgabe 2:__ **Gib** den gesuchten Wert innerhalb der Lösungsmenge, die die Ungleichung beschreibt, **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$a)\;\;$__ $3x < 21$ 
@@ -416,7 +390,7 @@ $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x > $   [[  11  ]]   $\left.   \r
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 __Aufgabe 3:__ **Gib** den gesuchten Wert innerhalb der Lösungsmenge, die die Ungleichung beschreibt, **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 __$a)\;\;$__ $4x < 20$ 
 
@@ -455,7 +429,7 @@ $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x > $   [[  15  ]]   $\left.   \r
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 __Aufgabe 4:__ **Gib** den gesuchten Wert innerhalb der Lösungsmenge, die die Ungleichung beschreibt, **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$a)\;\;$__ $3x < 24$ 
@@ -497,7 +471,7 @@ $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x > $   [[  13  ]]   $\left.   \r
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 __Aufgabe 5:__ **Gib** den gesuchten Wert innerhalb der Lösungsmenge, die die Ungleichung beschreibt, **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$a)\;\;$__ $ 2x \leq 18$ 
@@ -552,7 +526,7 @@ $\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \leq $   [[  7  ]]   $\left.   
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 __Aufgabe 6:__ **Gib** den gesuchten Wert innerhalb der Lösungsmenge, die die Ungleichung beschreibt, **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$a)\;\;$__ $3x < 18$ 
@@ -615,7 +589,7 @@ $\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x > $   [[  17  ]]   $\left.   \r
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 7:__ **Bestimme** den gesuchten Wert innerhalb der Lösungsmenge, die die Ungleichung beschreibt.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$a)\;\;$__ $2x + 6 \leq 20$ 
@@ -723,7 +697,7 @@ $$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 8:__ **Bestimme** den gesuchten Wert innerhalb der Lösungsmenge, die die Ungleichung beschreibt.
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 __$a)\;\;$__ $3x + 9 \leq 30$ 
 
@@ -829,7 +803,7 @@ $$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 9:__ **Bestimme** den gesuchten Wert innerhalb der Lösungsmenge, die die Ungleichung beschreibt.
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 __$a)\;\;$__ $-3x + 9 \geq 0$ 
 
@@ -941,7 +915,7 @@ $$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 10:__ **Bestimme** den gesuchten Wert innerhalb der Lösungsmenge, die die Ungleichung beschreibt.
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 __$a)\;\;$__ $-2x + 4 < -6$ 
 
@@ -1058,7 +1032,7 @@ $$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 11:__ **Bestimme** den gesuchten Wert innerhalb der Lösungsmenge, die die Ungleichung beschreibt.
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 __$a)\;\;$__ $-3x + 7 \leq 1$ 
 
@@ -1170,7 +1144,7 @@ $$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 12:__ **Bestimme** den gesuchten Wert innerhalb der Lösungsmenge, die die Ungleichung beschreibt.
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 __$a)\;\;$__ $-2x + 10 \geq 4$ 
 
@@ -1287,7 +1261,7 @@ $$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 __Aufgabe 13:__ **Berechne** den gesuchten Wert innerhalb der Lösungsmenge, die die Ungleichung beschreibt.
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 __$a)\;\;$__ $-2x + 10 \geq 4 - 5x + 2$ 
 
@@ -1405,7 +1379,7 @@ $$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 __Aufgabe 14:__ **Berechne** den gesuchten Wert innerhalb der Lösungsmenge, die die Ungleichung beschreibt.
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 __$a)\;\;$__ $2x + 5 > x + 9$ 
 
@@ -1522,7 +1496,7 @@ $$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 __Aufgabe 15:__ **Berechne** den gesuchten Wert innerhalb der Lösungsmenge, die die Ungleichung beschreibt.
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 __$a)\;\;$__ $\dfrac{5}{6}x - 1 > \dfrac{1}{2}x + \dfrac{1}{2}$ 
 
@@ -1639,7 +1613,7 @@ $$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 __Aufgabe 16:__ **Berechne** den gesuchten Wert innerhalb der Lösungsmenge, die die Ungleichung beschreibt.
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 __$a)\;\;$__ $\,\dfrac{3}{5}x + 2 \leq \dfrac{1}{5}x + \dfrac{11}{5}\,$ 
 
@@ -1757,7 +1731,7 @@ $$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 __Aufgabe 17:__ **Berechne** den gesuchten Wert innerhalb der Lösungsmenge, die die Ungleichung beschreibt.
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 __$a)\;\;$__ $\dfrac{4}{5}x + \dfrac{2}{3} \geq \dfrac{1}{2}x + \dfrac{5}{6}$ 
 
@@ -1875,7 +1849,7 @@ $$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 __Aufgabe 18:__ **Berechne** den gesuchten Wert innerhalb der Lösungsmenge, die die Ungleichung beschreibt.
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 __$a)\;\;$__ $\dfrac{1}{3}x + 1 \leq \dfrac{3}{5}x + \dfrac{2}{3}$ 
 
@@ -1993,7 +1967,7 @@ $$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
 __Aufgabe 19:__ **Berechne** den gesuchten Wert innerhalb der Lösungsmenge, die die Ungleichung beschreibt.
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 __$a)\;\;$__ $-\dfrac{3}{2}(x-4) + 1 > \dfrac{1}{3}(x+5) - 2$ 
 
@@ -2121,7 +2095,7 @@ $$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
 __Aufgabe 20:__ **Berechne** den gesuchten Wert innerhalb der Lösungsmenge, die die Ungleichung beschreibt.
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 __$a)\;\;$__ $-\dfrac{3}{4}(x-2) + 5 \;\leq\; \dfrac{1}{2}(x+1) + 2$ 
 

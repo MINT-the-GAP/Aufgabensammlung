@@ -2,6 +2,10 @@
 version:  0.0.1
 language: de
 narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
 
 @style
 main > *:not(:last-child) {
@@ -12,7 +16,7 @@ input {
     text-align: center;
 }
 
-.flex-container {
+.dynFlex {
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
@@ -172,9 +176,9 @@ svg.tree2 foreignObject button {
 
 
 
-import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
-script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
+
+
 
 import: https://cdn.jsdelivr.net/gh/LiaTemplates/algebrite@master/README.md
         https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
@@ -1549,7 +1553,7 @@ __Aufgabe 7:__ In einem Gefäß befinden sich 6 schwarze und 14 weiße Kugeln f�
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2090,7 +2094,7 @@ __Aufgabe 8:__ In einem Gefäß befinden sich 11 schwarze und 15 weiße Kugeln f
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2600,7 +2604,7 @@ __Aufgabe 9:__ In einem Gefäß befinden sich 5 schwarze (S), 7 grüne (G) und 1
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -3110,7 +3114,7 @@ __Aufgabe 10:__ In einem Gefäß befinden sich 8 rote (R), 3 grüne (G) und 12 b
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 

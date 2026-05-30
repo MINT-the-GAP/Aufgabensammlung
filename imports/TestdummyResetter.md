@@ -1,6 +1,11 @@
-ï»¿<!--
+<!--
 version:  0.0.1
 language: de
+narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
 author: Martin Lommatzsch
 comment: Resetter v0.0.1
 
@@ -87,7 +92,7 @@ import: AnnotationREADME.md
 })();
 
 // =========================
-// Timer-Reset-Funktionen (fÃ¼r Problem 1, 2, 3)
+// Timer-Reset-Funktionen (für Problem 1, 2, 3)
 // =========================
 window.__liaResetCleanupTimerUI = function (host) {
 	if (!host || !host.querySelectorAll) return 0;
@@ -99,7 +104,7 @@ window.__liaResetCleanupTimerUI = function (host) {
 			try { el.remove(); removed += 1; } catch (e) {}
 		});
 	} catch (e) {}
-	// Zeige versteckte PrÃ¼fen-Buttons wieder
+	// Zeige versteckte Prüfen-Buttons wieder
 	try {
 		const hiddenChecks = Array.from(host.querySelectorAll("[data-__solTimerChkHidden='1']"));
 		hiddenChecks.forEach(function (el) {
@@ -111,7 +116,7 @@ window.__liaResetCleanupTimerUI = function (host) {
 			delete el.dataset.__solTimerPrevDisplayChk;
 		});
 	} catch (e) {}
-	// Zeige versteckte LÃ¶sungs-Buttons wieder
+	// Zeige versteckte Lösungs-Buttons wieder
 	try {
 		const hiddenSols = Array.from(host.querySelectorAll("[data-__solTimerPrevDisplay]"));
 		hiddenSols.forEach(function (el) {
@@ -145,13 +150,13 @@ window.__liaResetResetTimerState = function (host) {
 		});
 	} catch (e) {}
 	
-	// 2. Spezielle Behandlung fÃ¼r Quiz-Elemente mit data-solution-timer
-	// Stelle sicher, dass diese auch wirklich gelÃ¶scht werden
+	// 2. Spezielle Behandlung für Quiz-Elemente mit data-solution-timer
+	// Stelle sicher, dass diese auch wirklich gelöscht werden
 	try {
 		const timerTargets = Array.from(host.querySelectorAll("[data-solution-timer]"));
 		timerTargets.forEach(function (el) {
 			if (!el || !el.dataset) return;
-			// Doppelte ÃœberprÃ¼fung - manchmal werden die Marker nicht wirklich gelÃ¶scht
+			// Doppelte Überprüfung - manchmal werden die Marker nicht wirklich gelöscht
 			Object.keys(el.dataset).forEach(function (k) {
 				if (/^__solTimer/i.test(k)) {
 					try { 
@@ -244,21 +249,21 @@ window.__liaResetEnforceTimerByQuizState = function (scope) {
 
 window.__liaResetReinitializeTimer = function (host) {
 	if (!host || !host.querySelectorAll) return;
-	// Trigger Timer-Reinitialisierung nur fÃ¼r OFFENE Quizzes (nicht fÃ¼r resolved/solved!)
+	// Trigger Timer-Reinitialisierung nur für OFFENE Quizzes (nicht für resolved/solved!)
 	try {
 		const timerElements = Array.from(host.querySelectorAll("[data-solution-timer]"));
 		timerElements.forEach(function (el) {
 			if (!el) return;
-			// PrÃ¼fe: Ist das Quiz noch offen?
+			// Prüfe: Ist das Quiz noch offen?
 			const quiz = el.closest ? el.closest(".lia-quiz, lia-quiz") : null;
 			if (quiz && quiz.classList) {
-				// Wenn resolved oder solved â†’ Timer NICHT neu initialisieren
+				// Wenn resolved oder solved ? Timer NICHT neu initialisieren
 				if (quiz.classList.contains("resolved") || quiz.classList.contains("solved")) {
 					window.__liaResetDebugWrite("timer reinit skipped (quiz already resolved/solved)");
 					return;
 				}
 			}
-			// Nur fÃ¼r offene Quizzes: Triggere Mutation durch Attribute-Change
+			// Nur für offene Quizzes: Triggere Mutation durch Attribute-Change
 			const attr = el.getAttribute("data-solution-timer") || "";
 			el.removeAttribute("data-solution-timer");
 			window.setTimeout(function () {
@@ -558,7 +563,7 @@ window.__liaResetClearChoiceControl = function (ctrl, emitEvents) {
 window.__liaResetFreezeChoiceInput = function (ctrl) {
 	if (!ctrl) return false;
 	if (ctrl.__liaFrozen) {
-		// Already frozen â€” still ensure defaultChecked/attribute are cleared.
+		// Already frozen — still ensure defaultChecked/attribute are cleared.
 		try { ctrl.defaultChecked = false; } catch (e) {}
 		ctrl.removeAttribute("checked");
 		return false;
@@ -576,7 +581,7 @@ window.__liaResetFreezeChoiceInput = function (ctrl) {
 			enumerable: true,
 		});
 	} catch (e) {
-		// defineProperty failed (e.g. cross-origin) â€” fall back silently.
+		// defineProperty failed (e.g. cross-origin) — fall back silently.
 		return wasChecked;
 	}
 	ctrl.__liaFrozen = true;
@@ -1115,7 +1120,7 @@ window.__liaResetSetTileTargetDisplay = function (target, value) {
 	if (value) {
 		box.textContent = String(value);
 	} else {
-		box.textContent = "âœ›";
+		box.textContent = "?";
 	}
 };
 
@@ -1197,7 +1202,7 @@ window.__liaResetResetTileControls = function (host) {
 			window.__liaResetDebugWrite("tileControls: target=" + String(target.tagName || "") + "; embeddedSources=" + String(embeddedSources.length));
 
 			const targetText = String((target.textContent || "")).replace(/\s+/g, " ").trim();
-			const targetSeemsOccupied = embeddedSources.length > 0 || (targetText && targetText !== "âœ›" && targetText !== "+");
+			const targetSeemsOccupied = embeddedSources.length > 0 || (targetText && targetText !== "?" && targetText !== "+");
 			if (!targetSeemsOccupied) {
 				target.classList.remove("is-disabled", "lia-btn--disabled");
 				target.style.removeProperty("pointer-events");
@@ -1442,7 +1447,7 @@ window.__liaResetResetTileControls = function (host) {
 			var _pollTileRoot = tileRoot;
 			var _pollHost = host;
 			var _pollAttempt = 0;
-			var _pollMax = 12;       // 12 Ã— 150ms = 1.8s max
+			var _pollMax = 12;       // 12 × 150ms = 1.8s max
 			var _pollMs = 150;
 
 			function _pollSettle() {
@@ -1500,9 +1505,9 @@ window.__liaResetResetTileControls = function (host) {
 
 				if (stillIn.length > 0) {
 					window.__liaResetDebugWrite("settle: chip still in target after " + _pollAttempt + " polls");
-					// KRITIK: Elm re-render hat Chip nicht bewegt. Wir MÃœSSEN Chip raus aus
-					// dem Target bringen â€” aber NIEMALS lÃ¶schen, sonst geht die Kachel verloren.
-					// Bestimme Source-Bank (Parent eines auÃŸenstehenden Chips) als Rescue-Ziel.
+					// KRITIK: Elm re-render hat Chip nicht bewegt. Wir MÜSSEN Chip raus aus
+					// dem Target bringen — aber NIEMALS löschen, sonst geht die Kachel verloren.
+					// Bestimme Source-Bank (Parent eines außenstehenden Chips) als Rescue-Ziel.
 					var _outsideForBank = fSrcs.filter(function (sx) {
 						var cx = window.__liaResetResolveTileChipNode(sx, _pollTileRoot, fTgts) || sx;
 						return !fTgts.some(function (t) { return t === cx || (t.contains && t.contains(cx)); });
@@ -1521,7 +1526,7 @@ window.__liaResetResetTileControls = function (host) {
 
 						var moveSucceeded = false;
 
-						// Strategie 1: Original-Home Ã¼ber UID-Mapping
+						// Strategie 1: Original-Home über UID-Mapping
 						var chipUid = window.__liaResetEnsureNodeUid(chip);
 						var chipHome = chipUid ? window.__liaResetDragHomeById[chipUid] : null;
 						if (chipHome && chipHome.parentId) {
@@ -1546,7 +1551,7 @@ window.__liaResetResetTileControls = function (host) {
 							} catch (e) {}
 						}
 
-						// Strategie 3: Vor das Target im Tile-Root einhÃ¤ngen
+						// Strategie 3: Vor das Target im Tile-Root einhängen
 						if (!moveSucceeded) {
 							try {
 								var tParent = fTgts[0] && fTgts[0].parentElement;
@@ -1559,7 +1564,7 @@ window.__liaResetResetTileControls = function (host) {
 							} catch (e) {}
 						}
 
-						// NUR wenn Duplikat auÃŸerhalb existiert: lÃ¶schen ist sicher
+						// NUR wenn Duplikat außerhalb existiert: löschen ist sicher
 						if (!moveSucceeded && hasDupe) {
 							try {
 								if (chip.parentElement) chip.parentElement.removeChild(chip);
@@ -1575,11 +1580,11 @@ window.__liaResetResetTileControls = function (host) {
 							chip.style.removeProperty("opacity");
 							chip.style.removeProperty("display");
 						} else {
-							window.__liaResetDebugWrite("settle: chip rescue FAILED; text='" + chipTxt + "' â€” kept in place to preserve chip");
+							window.__liaResetDebugWrite("settle: chip rescue FAILED; text='" + chipTxt + "' — kept in place to preserve chip");
 						}
 					});
 
-					// Target-Display zurÃ¼cksetzen, sofern leer
+					// Target-Display zurücksetzen, sofern leer
 					fTgts.forEach(function (lt) {
 						if (lt && lt.querySelector && lt.querySelector("[draggable]") === null) {
 							try { window.__liaResetSetTileTargetDisplay(lt, ""); } catch (e) {}
@@ -1621,9 +1626,9 @@ window.__liaResetResetTileControls = function (host) {
 		window.__liaResetDebugWrite("tile controls reset; roots=" + String(roots.length) + "; touched=" + String(changed));
 	}
 
-	// === ZUSÃ„TZLICHER SICHERHEITS-PASS: VerzÃ¶gertes forciertes Cleanup ===
+	// === ZUSÄTZLICHER SICHERHEITS-PASS: Verzögertes forciertes Cleanup ===
 	// Falls nach dem Restore/Polling noch Chips in Targets sind (Restore fehlgeschlagen oder zu langsam)
-	// Dieser Pass lÃ¤uft NACH dem Polling und stellt sicher, dass alle Chips wirklich raus sind.
+	// Dieser Pass läuft NACH dem Polling und stellt sicher, dass alle Chips wirklich raus sind.
 	window.setTimeout(function () {
 		const finalRoots = window.__liaResetCollectTileQuizRoots(host);
 		let forcedRemoved = 0;
@@ -1661,7 +1666,7 @@ window.__liaResetResetTileControls = function (host) {
 
 				if (embeddedSources.length === 0) {
 					const targetText = String((target.textContent || "")).replace(/\s+/g, " ").trim();
-					if (targetText && targetText !== "âœ›" && targetText !== "+") {
+					if (targetText && targetText !== "?" && targetText !== "+") {
 						try { window.__liaResetSetTileTargetDisplay(target, ""); } catch (e) {}
 					}
 					return;
@@ -1669,14 +1674,14 @@ window.__liaResetResetTileControls = function (host) {
 
 				embeddedSources.forEach(function (chip) {
 					const chipText = String((chip.textContent || "")).replace(/\s+/g, " ").trim();
-					// Duplikat auÃŸerhalb? Wenn ja, ist der Chip im Target ein Orphan und darf gelÃ¶scht werden.
+					// Duplikat außerhalb? Wenn ja, ist der Chip im Target ein Orphan und darf gelöscht werden.
 					const hasDupeOutside = safeOutside.some(function (s2) {
 						const c2 = window.__liaResetResolveTileChipNode(s2, tileRoot, targets) || s2;
 						return c2 !== chip && String(c2.textContent || "").replace(/\s+/g, " ").trim() === chipText;
 					});
 					let rescued = false;
 
-					// Strategie 1: Original-Home Ã¼ber UID
+					// Strategie 1: Original-Home über UID
 					try {
 						const uid = window.__liaResetEnsureNodeUid(chip);
 						const home = uid ? window.__liaResetDragHomeById[uid] : null;
@@ -1702,7 +1707,7 @@ window.__liaResetResetTileControls = function (host) {
 						} catch (e) {}
 					}
 
-					// Strategie 3: Vor das Target einhÃ¤ngen
+					// Strategie 3: Vor das Target einhängen
 					if (!rescued) {
 						try {
 							const tp = target.parentElement;
@@ -1715,7 +1720,7 @@ window.__liaResetResetTileControls = function (host) {
 						} catch (e) {}
 					}
 
-					// Nur wenn Duplikat auÃŸerhalb existiert: lÃ¶schen ist sicher
+					// Nur wenn Duplikat außerhalb existiert: löschen ist sicher
 					if (!rescued && hasDupeOutside) {
 						try {
 							if (chip.parentElement) chip.parentElement.removeChild(chip);
@@ -1732,11 +1737,11 @@ window.__liaResetResetTileControls = function (host) {
 						chip.style.removeProperty("opacity");
 						chip.style.removeProperty("display");
 					} else {
-						window.__liaResetDebugWrite("tile safety: rescue FAILED; text='" + chipText + "' â€” kept in place to preserve chip");
+						window.__liaResetDebugWrite("tile safety: rescue FAILED; text='" + chipText + "' — kept in place to preserve chip");
 					}
 				});
 
-				// Target leer? Display zurÃ¼cksetzen.
+				// Target leer? Display zurücksetzen.
 				if (target.querySelector("[draggable]") === null) {
 					try { window.__liaResetSetTileTargetDisplay(target, ""); } catch (e) {}
 				}
@@ -2234,8 +2239,8 @@ window.__liaResetApplySlideState = function (hash, host, reason) {
 		applyBtnState(resolve, !!row.resolveDisabled, row.resolveText);
 		window.__liaResetSyncResolveVisibility(quiz);
 
-		// WICHTIG: Comments (mit Timer-Attributen) sollten NUR fÃ¼r OFFENE Quizzes wiederhergestellt werden!
-		// Nicht fÃ¼r bereits solved/resolved Quizzes, sonst triggert das Timer-Reinitialisierung
+		// WICHTIG: Comments (mit Timer-Attributen) sollten NUR für OFFENE Quizzes wiederhergestellt werden!
+		// Nicht für bereits solved/resolved Quizzes, sonst triggert das Timer-Reinitialisierung
 		if (!row.solved && !row.resolved && row.quizComments && Array.isArray(row.quizComments)) {
 			window.__liaResetRestoreQuizComments(quiz, row.quizComments);
 			window.__liaResetDebugWrite("state-restore: comments restored (open quiz only); quiz=" + String(quizId) + "; count=" + String(row.quizComments.length));
@@ -2605,7 +2610,7 @@ window.__liaResetNeedsRehydrate = function (host) {
 		if (val.length > 0) return true;
 	}
 
-	// Auch prÃ¼fen ob ein Dropdown noch gesperrt ist
+	// Auch prüfen ob ein Dropdown noch gesperrt ist
 	const lockedDropdowns = Array.from(host.querySelectorAll(".lia-dropdown.is-disabled"));
 	if (lockedDropdowns.length > 0) return true;
 
@@ -2760,7 +2765,7 @@ window.__liaResetInstallInteractionGuard = function () {
 		}
 
 		// Dropdown-Toggle: Falls Elm den Klick auf .lia-dropdown__selected ignoriert
-		// (weil kein Handler registriert), Ã¶ffnen/schlieÃŸen wir die Optionen manuell.
+		// (weil kein Handler registriert), öffnen/schließen wir die Optionen manuell.
 		const selectedToggle = t.closest(".lia-dropdown__selected");
 		if (selectedToggle && !dropdownOption) {
 			const ddForToggle = selectedToggle.closest(".lia-dropdown");
@@ -2771,7 +2776,7 @@ window.__liaResetInstallInteractionGuard = function () {
 					if (!optionsEl) return;
 					const isNowVisible = optionsEl.classList.contains("is-visible");
 					if (isNowVisible === wasVisible) {
-						// Elm hat nicht reagiert â€“ manuell toggeln
+						// Elm hat nicht reagiert – manuell toggeln
 						if (wasVisible) {
 							optionsEl.classList.remove("is-visible");
 							selectedToggle.setAttribute("aria-expanded", "false");
@@ -2785,7 +2790,7 @@ window.__liaResetInstallInteractionGuard = function () {
 			}
 		}
 
-		// Nach Optionsklick: Dropdown schlieÃŸen falls Elm es nicht tut
+		// Nach Optionsklick: Dropdown schließen falls Elm es nicht tut
 		if (dropdownOption) {
 			const ddForClose = dropdownOption.closest(".lia-dropdown");
 			if (ddForClose && !ddForClose.classList.contains("is-disabled")) {
@@ -2793,7 +2798,7 @@ window.__liaResetInstallInteractionGuard = function () {
 				const optEl = ddForClose.querySelector(".lia-dropdown__options");
 				window.setTimeout(function () {
 					if (optEl && optEl.classList.contains("is-visible")) {
-						// Noch offen â€“ LiaScript hat nicht geschlossen, manuell schlieÃŸen
+						// Noch offen – LiaScript hat nicht geschlossen, manuell schließen
 						optEl.classList.remove("is-visible");
 						if (selEl) selEl.setAttribute("aria-expanded", "false");
 						// Angezeigte Auswahl aktualisieren (Text aus geklickter Option)
@@ -3014,7 +3019,7 @@ window.__liaResetEnsureResolvedFeedbackText = function (quiz) {
 	if (!fb || !fb.classList) return;
 	const current = String((fb.textContent || "").trim());
 	if (current.length > 0) return;
-	const txt = String(window.__liaResetReadNativeFeedbackText(quiz, "resolved") || "AufgelÃ¶ste Antwort").trim();
+	const txt = String(window.__liaResetReadNativeFeedbackText(quiz, "resolved") || "Aufgelöste Antwort").trim();
 	fb.classList.remove("text-success", "text-error");
 	fb.classList.add("text-disabled");
 	fb.textContent = txt;
@@ -3106,7 +3111,7 @@ window.__liaResetLearnExpectedFromSolved = function (host) {
 				if (tileTargets.length > 0) {
 					const vals = tileTargets.map(function (target) {
 						const txt = String((target.textContent || "")).replace(/\s+/g, " ").trim();
-						return (!txt || txt === "âœ›" || txt === "+") ? "" : txt;
+						return (!txt || txt === "?" || txt === "+") ? "" : txt;
 					});
 					window.__liaResetExpectedByQuizId[id] = ["tile:" + JSON.stringify(vals)];
 					window.__liaResetDebugWrite("learn tile expected; id=" + id + "; values=" + JSON.stringify(vals));
@@ -3218,7 +3223,7 @@ window.__liaResetFallbackSolveDropdown = function (btn, quiz, dropdown, mode) {
 	if (checkBtn) {
 		const m = String(checkBtn.textContent || "").match(/\s(\d+)\s*$/);
 		const n = m ? Number(m[1]) + 1 : 1;
-		const base = String(checkBtn.textContent || "").replace(/\s+\d+\s*$/, "").trim() || "PrÃ¼fen";
+		const base = String(checkBtn.textContent || "").replace(/\s+\d+\s*$/, "").trim() || "Prüfen";
 		checkBtn.textContent = base + " " + String(n);
 	}
 	window.__liaResetSyncResolveVisibility(quiz);
@@ -3250,7 +3255,7 @@ window.__liaResetGetTileCurrentValues = function (targets) {
 	if (!Array.isArray(targets)) return [];
 	return targets.map(function (target) {
 		const txt = String((target && target.textContent) || "").replace(/\s+/g, " ").trim();
-		return (!txt || txt === "âœ›" || txt === "+") ? "" : txt;
+		return (!txt || txt === "?" || txt === "+") ? "" : txt;
 	});
 };
 
@@ -3277,7 +3282,7 @@ window.__liaResetFallbackSolveTile = function (btn, quiz, tileRoot, mode) {
 		if (fb) {
 			fb.classList.remove("text-success", "text-error");
 			fb.classList.add("text-disabled");
-			fb.textContent = resolvedText || "AufgelÃ¶ste Antwort";
+			fb.textContent = resolvedText || "Aufgelöste Antwort";
 		}
 		window.__liaResetApplyQuizIconState(quiz, "resolve");
 		window.__liaResetSetQuizLocked(quiz, true);
@@ -3305,7 +3310,7 @@ window.__liaResetFallbackSolveTile = function (btn, quiz, tileRoot, mode) {
 		fb.classList.remove("text-success", "text-error", "text-disabled");
 		if (ok) {
 			fb.classList.add("text-success");
-			fb.textContent = solvedText || "Herzlichen GlÃ¼ckwunsch, das war die richtige Antwort";
+			fb.textContent = solvedText || "Herzlichen Glückwunsch, das war die richtige Antwort";
 		} else {
 			fb.classList.add("text-error");
 			fb.textContent = failedText;
@@ -3434,7 +3439,7 @@ window.__liaResetFallbackSolve = function (btn, mode) {
 		if (fb) {
 			fb.classList.remove("text-success", "text-error");
 			fb.classList.add("text-disabled");
-			fb.textContent = resolvedText ? resolvedText : "AufgelÃ¶ste Antwort";
+			fb.textContent = resolvedText ? resolvedText : "Aufgelöste Antwort";
 		}
 		window.__liaResetApplyQuizIconState(quiz, "resolve");
 		window.__liaResetSetQuizLocked(quiz, true);
@@ -3875,7 +3880,7 @@ window.__liaResetPass = function (button, phaseLabel) {
 		}
 
 		// Dropdown entsperren: is-disabled entfernen und mit MutationObserver
-		// verhindern, dass LiaScript es beim nÃ¤chsten Re-Render wieder setzt.
+		// verhindern, dass LiaScript es beim nächsten Re-Render wieder setzt.
 		function __clearDropdownDisabled(el) {
 			el.classList.remove("is-disabled");
 			try { el.removeAttribute("disabled"); } catch (e) {}
@@ -3887,7 +3892,7 @@ window.__liaResetPass = function (button, phaseLabel) {
 		}
 		__clearDropdownDisabled(dropdown);
 
-		// Bewache das Attribut fÃ¼r 800 ms gegen LiaScript-Re-Render
+		// Bewache das Attribut für 800 ms gegen LiaScript-Re-Render
 		if (typeof MutationObserver !== "undefined") {
 			(function (dd, clearFn) {
 				const obs = new MutationObserver(function (mutations) {
@@ -3942,9 +3947,9 @@ window.__liaResetPass = function (button, phaseLabel) {
 	const dragResetCount = window.__liaResetRestoreDragHomes(host);
 	const tileResetCount = window.__liaResetResetTileControls(host);
 
-	// === ZUSÃ„TZLICHE TILE-SICHERHEIT: Schneller Inline-Rescue ===
-	// Wenn nach dem Tile-Reset noch Chips in Targets stecken, MÃœSSEN sie zurÃ¼ck
-	// in die Source-Bank verschoben werden â€” NIEMALS gelÃ¶scht, sonst geht die
+	// === ZUSÄTZLICHE TILE-SICHERHEIT: Schneller Inline-Rescue ===
+	// Wenn nach dem Tile-Reset noch Chips in Targets stecken, MÜSSEN sie zurück
+	// in die Source-Bank verschoben werden — NIEMALS gelöscht, sonst geht die
 	// Kachel permanent verloren und kann nicht erneut gezogen werden.
 	if (tileResetCount > 0) {
 		window.setTimeout(function () {
@@ -3957,7 +3962,7 @@ window.__liaResetPass = function (button, phaseLabel) {
 					const allSources = window.__liaResetGetTileQuizSourcesFromRoot(tRoot);
 
 					// Bestimme den Source-Bank-Container: Parent eines Chips, der NICHT
-					// in einem Target steckt. Das ist der â€žHeim"-Container.
+					// in einem Target steckt. Das ist der „Heim"-Container.
 					function _isInsideAnyTarget(node) {
 						for (let i = 0; i < targets.length; i++) {
 							const t = targets[i];
@@ -3990,7 +3995,7 @@ window.__liaResetPass = function (button, phaseLabel) {
 							const txt = String((orphan.textContent || "")).replace(/\s+/g, " ").trim().slice(0, 20);
 							let moved = false;
 
-							// Strategie 1: Ãœber data-reset-uid den ursprÃ¼nglichen Home-Parent finden
+							// Strategie 1: Über data-reset-uid den ursprünglichen Home-Parent finden
 							try {
 								const uid = window.__liaResetEnsureNodeUid(orphan);
 								const home = uid ? window.__liaResetDragHomeById[uid] : null;
@@ -4020,7 +4025,7 @@ window.__liaResetPass = function (button, phaseLabel) {
 								} catch (e) {}
 							}
 
-							// Strategie 3: Vor das Target im Tile-Root einhÃ¤ngen (statt lÃ¶schen)
+							// Strategie 3: Vor das Target im Tile-Root einhängen (statt löschen)
 							if (!moved) {
 								try {
 									const beforeNode = targets[0];
@@ -4039,7 +4044,7 @@ window.__liaResetPass = function (button, phaseLabel) {
 							// KEIN DELETE-Fallback hier! Lieber stehen lassen, als Kachel zu verlieren.
 							if (!moved) {
 								window.__liaResetDebugWrite(
-									"pass: inline tile rescue FAILED; text='" + txt + "' â€” kept in place to preserve chip"
+									"pass: inline tile rescue FAILED; text='" + txt + "' — kept in place to preserve chip"
 								);
 							} else {
 								// Chip wieder draggable + sichtbar machen
@@ -4051,7 +4056,7 @@ window.__liaResetPass = function (button, phaseLabel) {
 							}
 						});
 
-						// Target-Display nur zurÃ¼cksetzen, wenn jetzt wirklich leer
+						// Target-Display nur zurücksetzen, wenn jetzt wirklich leer
 						if (target.querySelector("[draggable]") === null) {
 							window.__liaResetSetTileTargetDisplay(target, "");
 						}
@@ -4258,8 +4263,8 @@ window.__liaResetCurrentSlideOnly = function (button) {
 			if (btn) {
 				btn.disabled = false;
 				btn.title = "Reset ausgefuehrt";
-				btn.textContent = "Folie zurÃ¼ckgesetzt";
-				window.setTimeout(function () { btn.textContent = "Folie zurÃ¼cksetzen"; }, 700);
+				btn.textContent = "Folie zurückgesetzt";
+				window.setTimeout(function () { btn.textContent = "Folie zurücksetzen"; }, 700);
 			}
 		}, 260);
 	}
@@ -4471,7 +4476,7 @@ if (!window.__liaResetQuizProbeInstalled) {
 }
 @end
 
-@resetall: <br><hr class="lia-resetall-sep"/><br><hr class="lia-resetall-sep"/><div style="text-align:center"><br><button class="lia-btn lia-btn--outline lia-resetall-btn" data-resetall-btn="1" type="button" onclick="window.__liaResetDebugWrite && window.__liaResetDebugWrite('inline click'); window.__liaResetCurrentSlideOnly && window.__liaResetCurrentSlideOnly(this); return false;">Folie zurÃ¼cksetzen</button></div>
+@resetall: <br><hr class="lia-resetall-sep"/><br><hr class="lia-resetall-sep"/><div style="text-align:center"><br><button class="lia-btn lia-btn--outline lia-resetall-btn" data-resetall-btn="1" type="button" onclick="window.__liaResetDebugWrite && window.__liaResetDebugWrite('inline click'); window.__liaResetCurrentSlideOnly && window.__liaResetCurrentSlideOnly(this); return false;">Folie zurücksetzen</button></div>
 
 
 -->
@@ -4521,11 +4526,11 @@ Was ist $3+8$?
 --- 
 
 
-WÃ¤hle blau aus.
+Wähle blau aus.
 - [[X]] Blau
 - [[ ]] Gelb
 - [[ ]] Rot
-- [[ ]] GrÃ¼n
+- [[ ]] Grün
 
 
 --- 
@@ -4534,19 +4539,19 @@ WÃ¤hle blau aus.
 
 
 
-WÃ¤hle blau aus.
+Wähle blau aus.
 - [(X)] Blau
 - [( )] Gelb
 - [( )] Rot
-- [( )] GrÃ¼n
+- [( )] Grün
 
 
 --- 
 
 --- 
 
-WÃ¤hle rot aus.
-[[(rot)|blau|grÃ¼n|gelb]]
+Wähle rot aus.
+[[(rot)|blau|grün|gelb]]
 
 
 --- 
@@ -4575,7 +4580,7 @@ WÃ¤hle rot aus.
 
 
 
-__Aufgabe 2:__ Lass dir die WÃ¶rter vorlesen, die in die LÃ¼cken kommen und schreibe diese in die LÃ¼cken.
+__Aufgabe 2:__ Lass dir die Wörter vorlesen, die in die Lücken kommen und schreibe diese in die Lücken.
 
 
 <!-- data-show-partial-solution="true" -->
@@ -4623,8 +4628,8 @@ Anna ging in einen @diktat(Zoo). Dort konnte sie auf einem @diktat(Lama) reiten.
 
 
 
-WÃ¤hle gelb aus.
-[->[rot|blau|grÃ¼n|(gelb)]]
+Wähle gelb aus.
+[->[rot|blau|grün|(gelb)]]
 
 
 
@@ -4633,7 +4638,7 @@ WÃ¤hle gelb aus.
 --- 
 
 
-__Aufgabe 3:__ Setze das Komma an die richtige Stelle. (AuflÃ¶sung ist blockiert.)
+__Aufgabe 3:__ Setze das Komma an die richtige Stelle. (Auflösung ist blockiert.)
 
 
 
@@ -4647,7 +4652,7 @@ __Aufgabe 3:__ Setze das Komma an die richtige Stelle. (AuflÃ¶sung ist blockiert
 
 --- 
 
-**Stelle** die passende Teilung der FlÃ¤che **ein** und **markiere** den passenden Anteil, sodass der Bruch dargestellt wird.
+**Stelle** die passende Teilung der Fläche **ein** und **markiere** den passenden Anteil, sodass der Bruch dargestellt wird.
 
 __$a)\;\;$__ $\dfrac{1}{4}$
 

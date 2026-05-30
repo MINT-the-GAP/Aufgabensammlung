@@ -3,6 +3,10 @@
 version:  0.0.1
 language: de
 narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
 
 
 
@@ -10,39 +14,9 @@ author: Martin Lommatzsch
 
 
 
-@style
-main > *:not(:last-child) {
-  margin-bottom: 3rem;
-}
 
-input {
-    text-align: center;
-}
 
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    gap: 20px;
-}
 
-.flex-child {
-    flex: 1;
-    min-width: 350px;
-    margin-right: 20px;
-}
-
-@media (max-width: 400px) {
-    .flex-child {
-        flex: 100%;
-        margin-right: 0;
-    }
-}
-@end
-
-formula: \carry   \textcolor{red}{\scriptsize #1}
-formula: \digit   \rlap{\carry{#1}}\phantom{#2}#2
-formula: \permil  \text{‰}
 
 
 
@@ -307,9 +281,9 @@ if (!window.rects['@0'] || window.rects['@0'].length !== total) {
 
 
 
-import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
-script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
+
+
 
 import: https://cdn.jsdelivr.net/gh/LiaTemplates/algebrite@master/README.md
         https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
@@ -335,7 +309,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 __Aufgabe 1:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -384,7 +358,7 @@ $=$ [[ 24 ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 __Aufgabe 2:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -436,7 +410,7 @@ $=$ [[ 126 ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 __Aufgabe 3:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -489,7 +463,7 @@ $=$ [[ 26 ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 __Aufgabe 4:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -540,7 +514,7 @@ $=$ [[ 75 ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 5:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -594,7 +568,7 @@ $=$ [[  63  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 6:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -656,7 +630,7 @@ $=$ [[  59   ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 7:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -718,7 +692,7 @@ $=$ [[ 18   ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 8:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -780,7 +754,7 @@ $=$  [[ -128  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 9:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -842,7 +816,7 @@ $=$ [[ 5,6   ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 10:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -908,7 +882,7 @@ $=$ [[ 1,25 ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 11:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -971,7 +945,7 @@ $=$ [[ 2,31  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 12:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1032,7 +1006,7 @@ $=$ [[  9,35 ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 __Aufgabe 13:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1095,7 +1069,7 @@ $=$ [[ -3,04     ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 __Aufgabe 14:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1157,7 +1131,7 @@ $=$ [[  12,975 ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 __Aufgabe 15:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1217,7 +1191,7 @@ $=$ [[  -22,6  ]]
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/31.png" width="120" height="30">  \
 __Aufgabe 16:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 

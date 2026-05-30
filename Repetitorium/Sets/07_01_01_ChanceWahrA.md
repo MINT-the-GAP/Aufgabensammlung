@@ -3,6 +3,10 @@
 version:  0.0.1
 language: de
 narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
 
 
 
@@ -10,39 +14,9 @@ author: Martin Lommatzsch
 
 
 
-@style
-main > *:not(:last-child) {
-  margin-bottom: 3rem;
-}
 
-input {
-    text-align: center;
-}
 
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    gap: 20px;
-}
 
-.flex-child {
-    flex: 1;
-    min-width: 350px;
-    margin-right: 20px;
-}
-
-@media (max-width: 400px) {
-    .flex-child {
-        flex: 100%;
-        margin-right: 0;
-    }
-}
-@end
-
-formula: \carry   \textcolor{red}{\scriptsize #1}
-formula: \digit   \rlap{\carry{#1}}\phantom{#2}#2
-formula: \permil  \text{‰}
 
 
 
@@ -307,9 +281,9 @@ if (!window.rects['@0'] || window.rects['@0'].length !== total) {
 
 
 
-import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
-script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
+
+
 
 import: https://cdn.jsdelivr.net/gh/LiaTemplates/algebrite@master/README.md
         https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
@@ -946,7 +920,7 @@ __Aufgabe 7:__ Gegeben sei die folgende Ergebnismenge: \
 $\{ 7,8,8,6,11,14,12,12,13,8,10,7,7,11,9 \}$
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -989,7 +963,7 @@ __Aufgabe 8:__ Gegeben sei die folgende Ergebnismenge: \
 $\{ 83,46,55,64,91,75,61,39,84,55,47 \}$
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1032,7 +1006,7 @@ __Aufgabe 9:__ Gegeben sei die folgende Ergebnismenge: \
 $\{ 56,54,55,56,57,55,56,54,53,58,55,56,54,52,56,57 \}$
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1073,7 +1047,7 @@ __Aufgabe 10:__ Gegeben sei die folgende Ergebnismenge: \
 $\{ 29,33,28,31,35,24,36,32,28,27,35,34,29,30,35 \}$
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1122,7 +1096,7 @@ $\bar{x}=$ [[  33,067  ]]
 __Aufgabe 11:__ In den dargestellten Gefäßen befinden sich Kugeln unterschiedlicher Farben. 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$a)\;\;$__ 
@@ -1153,7 +1127,7 @@ $R(R)=$ [[  25:4  ]]
 
 ---
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 __$b)\;\;$__ 
 
@@ -1184,7 +1158,7 @@ $R(B)=$ [[  7:6  ]]
 ---
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 __$c)\;\;$__ 
 
@@ -1218,7 +1192,7 @@ $R(R)=$ [[  7:16  ]]
 ---
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 __$d)\;\;$__ 
 
@@ -1261,7 +1235,7 @@ __Aufgabe 12:__ In den dargestellten Gefäßen befinden sich Kugeln unterschiedl
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$a)\;\;$__ 
@@ -1296,7 +1270,7 @@ $R(R)=$ [[  7:15  ]]
 ---
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$b)\;\;$__ 
@@ -1331,7 +1305,7 @@ $R(R)=$ [[  5:12  ]]
 ---
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$c)\;\;$__ 
@@ -1366,7 +1340,7 @@ $R(B)=$ [[  6:6  ]]
 ---
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$d)\;\;$__ 
@@ -1417,7 +1391,7 @@ __Aufgabe 13:__ In den dargestellten Gefäßen befinden sich Kugeln unterschiedl
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$a)\;\;$__ 
@@ -1452,7 +1426,7 @@ $R(R)=$ [[  8:15  ]]
 ---
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$b)\;\;$__ 
@@ -1487,7 +1461,7 @@ $R(R)=$ [[  2:8  ]]
 ---
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$c)\;\;$__ 
@@ -1522,7 +1496,7 @@ $R(G)=$ [[  7:16  ]]
 ---
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$d)\;\;$__ 
@@ -1564,7 +1538,7 @@ __Aufgabe 14:__ In den dargestellten Gefäßen befinden sich Kugeln unterschiedl
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$a)\;\;$__ 
@@ -1599,7 +1573,7 @@ $R(B)=$ [[  11:13  ]]
 ---
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$b)\;\;$__
@@ -1634,7 +1608,7 @@ $R(G)=$ [[  9:14  ]]
 ---
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$c)\;\;$__
@@ -1669,7 +1643,7 @@ $R(B)=$ [[  9:14  ]]
 ---
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$d)\;\;$__ 
@@ -1711,7 +1685,7 @@ $R(G)=$ [[  10:17  ]]
 __Aufgabe 15:__ **Gib** die angegebene Chance als Wahrscheinlichkeit **an**.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$a)\;\;$__ Die Chance wird mit $2:3$ angegeben.
@@ -1765,7 +1739,7 @@ $p=$[[ 45/47 ]]
 __Aufgabe 16:__ **Gib** die angegebene Chance als Wahrscheinlichkeit **an**.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$a)\;\;$__ Die Chance wird mit $1:5$ angegeben.
@@ -1824,7 +1798,7 @@ __Aufgabe 17:__ **Gib** die Wahrscheinlichkeit für das beschriebene Szenario **
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1879,7 +1853,7 @@ $p=$[[  1/10  ]]
 __Aufgabe 18:__ **Gib** die Wahrscheinlichkeit für das beschriebene Szenario **an**.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2059,7 +2033,7 @@ __Aufgabe 23:__ In den dargestellten Gefäßen befinden sich Kugeln unterschiedl
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$a)\;\;$__ 
@@ -2101,7 +2075,7 @@ $R(R \cup B)=$ [[  10:8  ]]
 ---
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$b)\;\;$__
@@ -2143,7 +2117,7 @@ $R(O \cup V)=$ [[  9:11  ]]
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$c)\;\;$__
@@ -2201,7 +2175,7 @@ __Aufgabe 24:__ In den dargestellten Gefäßen befinden sich Kugeln unterschiedl
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$a)\;\;$__ 
@@ -2244,7 +2218,7 @@ $P(R \cup B \cup G)=$ [[  15/20  ]]
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$b)\;\;$__
@@ -2287,7 +2261,7 @@ $P(\bar{V} \cup \bar{B})=$ [[  11/22  ]]
 ---
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$c)\;\;$__
@@ -2345,7 +2319,7 @@ __Aufgabe 25:__ In den dargestellten Gefäßen befinden sich Kugeln unterschiedl
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$a)\;\;$__ 
@@ -2387,7 +2361,7 @@ $R(V)=$ [[  4:15  ]]
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$b)\;\;$__
@@ -2430,7 +2404,7 @@ $P(\bar{G})=$ [[  10/20  ]]
 ---
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$c)\;\;$__
@@ -2483,7 +2457,7 @@ __Aufgabe 26:__ In den dargestellten Gefäßen befinden sich Kugeln unterschiedl
 <!-- Stochastik Grundlagen 0029 -->
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$a)\;\;$__ 
@@ -2526,7 +2500,7 @@ $P(\bar{R} \cup \bar{O})=$ [[  17/24  ]]
 ---
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$b)\;\;$__
@@ -2569,7 +2543,7 @@ $p(B \cup R)=$ [[  13/22  ]]
 ---
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$c)\;\;$__
@@ -2627,7 +2601,7 @@ __Aufgabe 27:__ In den dargestellten Gefäßen befinden sich Kugeln unterschiedl
 In den dargestellten Gefäßen befinden sich Kugeln unterschiedlicher Farben. 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$a)\;\;$__ 
@@ -2669,7 +2643,7 @@ $P(B)=$ [[  4/14  ]]
 ---
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$b)\;\;$__
@@ -2711,7 +2685,7 @@ $R(R)=$ [[  14:5  ]]
 ---
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$c)\;\;$__

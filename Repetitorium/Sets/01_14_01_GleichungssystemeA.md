@@ -3,45 +3,19 @@
 version:  0.0.1
 language: de
 narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
 
 
 author: Martin Lommatzsch
 
 
 
-@style
-main > *:not(:last-child) {
-  margin-bottom: 3rem;
-}
 
-input {
-    text-align: center;
-}
 
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    gap: 20px;
-}
 
-.flex-child {
-    flex: 1;
-    min-width: 350px;
-    margin-right: 20px;
-}
-
-@media (max-width: 400px) {
-    .flex-child {
-        flex: 100%;
-        margin-right: 0;
-    }
-}
-@end
-
-formula: \carry   \textcolor{red}{\scriptsize #1}
-formula: \digit   \rlap{\carry{#1}}\phantom{#2}#2
-formula: \permil  \text{‰}
 
 
 
@@ -306,9 +280,9 @@ if (!window.rects['@0'] || window.rects['@0'].length !== total) {
 
 
 
-import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
-script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
+
+
 
 import: https://cdn.jsdelivr.net/gh/LiaTemplates/algebrite@master/README.md
         https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
@@ -924,7 +898,7 @@ Durch [[  Multiplikation  ]] mit [[  -1  ]] wird schließlich $y = 5$ bestimmt.
 __Aufgabe 7:__ **Berechne** die Lösungen des gegebenen Gleichungssystems.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
@@ -1116,7 +1090,7 @@ __Aufgabe 8:__ **Berechne** die Lösungen des gegebenen Gleichungssystems.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$a)\;\;$__  
@@ -1311,7 +1285,7 @@ __Aufgabe 9:__ **Berechne** die Lösungen des gegebenen Gleichungssystems.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$a)\;\;$__  
@@ -1475,7 +1449,7 @@ __Aufgabe 10:__ **Berechne** die Lösungen des gegebenen Gleichungssystems.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$a)\;\;$__  
@@ -1640,7 +1614,7 @@ __Aufgabe 11:__ **Berechne** die Lösungen des gegebenen Gleichungssystems mit d
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$a)\;\;$__  
@@ -1794,7 +1768,7 @@ __Aufgabe 12:__ **Berechne** die Lösungen des gegebenen Gleichungssystems mit d
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$a)\;\;$__  
@@ -1942,7 +1916,7 @@ $$
 __Aufgabe 13:__ **Berechne** die Lösungen des gegebenen Gleichungssystems.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
@@ -2097,7 +2071,7 @@ __Aufgabe 14:__ **Berechne** die Lösungen des gegebenen Gleichungssystems.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -2249,7 +2223,7 @@ __Aufgabe 15:__ **Berechne** die Lösungen des gegebenen Gleichungssystems.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -2402,7 +2376,7 @@ __Aufgabe 16:__ **Berechne** die Lösungen des gegebenen Gleichungssystems.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->

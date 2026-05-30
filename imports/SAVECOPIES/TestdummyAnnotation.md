@@ -2,6 +2,10 @@
 version:  0.0.1
 language: de
 narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
 
 author: Martin Lommatzsch
 
@@ -38,7 +42,6 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
   ROOT[STOREKEY] = ROOT[STOREKEY] || {
     slides: {},
     ui: {
-      mode: 'cursor',          // cursor | pen | eraser
       visible: true,
       panelOpen: false,
       panelMode: 'pen',        // pen | eraser

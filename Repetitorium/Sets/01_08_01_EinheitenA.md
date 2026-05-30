@@ -3,6 +3,10 @@
 version:  0.0.1
 language: de
 narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
 
 
 
@@ -10,39 +14,9 @@ author: Martin Lommatzsch
 
 
 
-@style
-main > *:not(:last-child) {
-  margin-bottom: 3rem;
-}
 
-input {
-    text-align: center;
-}
 
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    gap: 20px;
-}
 
-.flex-child {
-    flex: 1;
-    min-width: 350px;
-    margin-right: 20px;
-}
-
-@media (max-width: 400px) {
-    .flex-child {
-        flex: 100%;
-        margin-right: 0;
-    }
-}
-@end
-
-formula: \carry   \textcolor{red}{\scriptsize #1}
-formula: \digit   \rlap{\carry{#1}}\phantom{#2}#2
-formula: \permil  \text{‰}
 
 
 
@@ -307,9 +281,9 @@ if (!window.rects['@0'] || window.rects['@0'].length !== total) {
 
 
 
-import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
-script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
+
+
 
 import: https://cdn.jsdelivr.net/gh/LiaTemplates/algebrite@master/README.md
         https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
@@ -337,7 +311,7 @@ __Aufgabe 1:__ **Fülle** die Lücken **aus**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -392,7 +366,7 @@ __Aufgabe 2:__ **Gib** die Antwort auf die Frage **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -453,7 +427,7 @@ __Aufgabe 3:__ **Fülle** die Lücken **aus**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -511,7 +485,7 @@ __Aufgabe 4:__ **Rechne** in die angebene Einheit **um**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -577,7 +551,7 @@ __Aufgabe 5:__ **Rechne** in die angebene Einheit **um**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -643,7 +617,7 @@ __Aufgabe 6:__ **Rechne** in die angebene Einheit **um**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -710,7 +684,7 @@ __Aufgabe 7:__ **Gib** die Antwort **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -781,7 +755,7 @@ __Aufgabe 8:__ **Gib** die Antwort **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -852,7 +826,7 @@ __Aufgabe 9:__ **Fülle** die Lücken mit der richtigen Einheitenabkürzung **au
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -917,7 +891,7 @@ __Aufgabe 10:__ **Gib** die Antwort **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -992,7 +966,7 @@ __Aufgabe 11:__ **Rechne** in die angebene Einheit **um**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1057,7 +1031,7 @@ __Aufgabe 12:__ **Rechne** in die angebene Einheit **um**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1122,7 +1096,7 @@ __Aufgabe 13:__ **Rechne** in die angebene Einheit **um**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1188,7 +1162,7 @@ __Aufgabe 14:__ **Rechne** in die angebene Einheit **um**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1254,7 +1228,7 @@ __Aufgabe 15:__ **Rechne** alles in die angegebene Einheit **um**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1319,7 +1293,7 @@ __Aufgabe 16:__ **Rechne** alles in die angegebene Einheit **um**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1383,7 +1357,7 @@ __Aufgabe 17:__ **Rechne** alles in die angegebene Einheit **um**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1448,7 +1422,7 @@ __Aufgabe 18:__ **Rechne** alles in die angegebene Einheit **um**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1514,7 +1488,7 @@ __Aufgabe 19:__ **Rechne** alles in die angegebene Einheit **um**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1579,7 +1553,7 @@ __Aufgabe 20:__ **Rechne** alles in die angegebene Einheit **um**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1649,7 +1623,7 @@ __Aufgabe 21:__ **Wähle** die passende Einheit **aus**, sodass eine wahre mathe
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1701,7 +1675,7 @@ __Aufgabe 22:__ **Wähle** die passende Einheit **aus**, sodass eine wahre mathe
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1750,7 +1724,7 @@ __Aufgabe 23:__ **Wähle** die passende Einheit **aus**, sodass eine wahre mathe
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1799,7 +1773,7 @@ __Aufgabe 24:__ **Wähle** die passende Einheit **aus**, sodass eine wahre mathe
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1848,7 +1822,7 @@ __Aufgabe 25:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1897,7 +1871,7 @@ __Aufgabe 26:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1946,7 +1920,7 @@ __Aufgabe 27:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1995,7 +1969,7 @@ __Aufgabe 28:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2044,7 +2018,7 @@ __Aufgabe 29:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2095,7 +2069,7 @@ __Aufgabe 30:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2150,7 +2124,7 @@ __Aufgabe 31:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2201,7 +2175,7 @@ __Aufgabe 32:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2251,7 +2225,7 @@ __Aufgabe 33:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2301,7 +2275,7 @@ __Aufgabe 34:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2351,7 +2325,7 @@ __Aufgabe 35:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2401,7 +2375,7 @@ __Aufgabe 36:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -2451,7 +2425,7 @@ __Aufgabe 37:__ **Wähle** das passende Relationszeichen **aus**, sodass eine wa
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 

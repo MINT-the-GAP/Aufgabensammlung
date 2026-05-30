@@ -3,7 +3,6 @@ comment: Hier sind alle wichtigen Features für SchulLia zusammengefasst.
 author: Martin Lommatzsch
 
 
-mode: Presentation
 
 
 
@@ -1547,6 +1546,12 @@ function fqdbg(tag) {
   if (!ROOT[STORE_KEY]) {
     ROOT[STORE_KEY] = {
       version: 3,
+language: de
+narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
       circle: Object.create(null),
       rect: Object.create(null),
       rectDims: Object.create(null),

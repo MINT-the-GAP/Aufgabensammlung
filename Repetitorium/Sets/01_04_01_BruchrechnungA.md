@@ -3,6 +3,10 @@
 version:  0.0.1
 language: de
 narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
 
 
 
@@ -10,39 +14,9 @@ author: Martin Lommatzsch
 
 
 
-@style
-main > *:not(:last-child) {
-  margin-bottom: 3rem;
-}
 
-input {
-    text-align: center;
-}
 
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    gap: 20px;
-}
 
-.flex-child {
-    flex: 1;
-    min-width: 350px;
-    margin-right: 20px;
-}
-
-@media (max-width: 400px) {
-    .flex-child {
-        flex: 100%;
-        margin-right: 0;
-    }
-}
-@end
-
-formula: \carry   \textcolor{red}{\scriptsize #1}
-formula: \digit   \rlap{\carry{#1}}\phantom{#2}#2
-formula: \permil  \text{‰}
 
 
 
@@ -307,9 +281,9 @@ if (!window.rects['@0'] || window.rects['@0'].length !== total) {
 
 
 
-import: https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
-script: https://cdn.jsdelivr.net/gh/LiaTemplates/Tikz-Jax@main/dist/index.js
+
+
 
 import: https://cdn.jsdelivr.net/gh/LiaTemplates/algebrite@master/README.md
         https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
@@ -339,7 +313,7 @@ __Aufgabe 1:__ **Gib** den Nenner und Zähler des jeweiligen dargestellten Bruch
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -521,7 +495,7 @@ Nenner: [[  6  ]]
 __Aufgabe 2:__ **Gib** den Nenner und Zähler des jeweiligen dargestellten Bruchs **an**. (Es ist der jeweilige graue Anteil gefragt.)
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -711,7 +685,7 @@ __Aufgabe 3:__ **Gib** den Nenner und Zähler des jeweiligen dargestellten Bruch
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -895,7 +869,7 @@ __Aufgabe 4:__ **Gib** den Nenner und Zähler des jeweiligen dargestellten Bruch
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1078,7 +1052,7 @@ __Aufgabe 5:__ **Gib** den Nenner und Zähler des jeweiligen dargestellten Bruch
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -1198,7 +1172,7 @@ __Aufgabe 6:__ **Entscheide** welches Relationszeichen eine wahre mathematische 
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 __$a)\;\;$__ $\dfrac{1}{5}$ [[$>$|$=$|($<$)]] $\dfrac{1}{3}$ 
@@ -1249,7 +1223,7 @@ __Aufgabe 7:__ **Entscheide** welches Relationszeichen eine wahre mathematische 
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 __$a)\;\;$__ $\dfrac{2}{5}$ [[$>$|($=$)|$<$]] $\dfrac{4}{10}$ 
@@ -1308,7 +1282,7 @@ __Aufgabe 8:__ **Entscheide** welches Relationszeichen eine wahre mathematische 
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 __$a)\;\;$__ $\dfrac{7}{10}$ [[$>$|$=$|($<$)]] $\dfrac{9}{10}$ 
@@ -1367,7 +1341,7 @@ __Aufgabe 9:__ **Entscheide** welches Relationszeichen eine wahre mathematische 
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 __$a)\;\;$__ $\dfrac{5}{8}$ [[$>$|$=$|($<$)]] $\dfrac{3}{4}$ 
@@ -1418,7 +1392,7 @@ __Aufgabe 10:__ **Entscheide** welches Relationszeichen eine wahre mathematische
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 __$a)\;\;$__ $\dfrac{8}{9}$ [[($>$)|$=$|$<$]] $\dfrac{2}{3}$ 
@@ -1467,7 +1441,7 @@ __Aufgabe 11:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -1586,7 +1560,7 @@ __Aufgabe 12:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -1694,7 +1668,7 @@ __Aufgabe 12:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$a)\;\;$__ $  \dfrac{5}{12} + \dfrac{1}{6} = $ [[  7/12  ]]
@@ -1803,7 +1777,7 @@ __Aufgabe 14:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -1911,7 +1885,7 @@ __Aufgabe 15:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -2025,7 +1999,7 @@ __Aufgabe 16:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -2141,7 +2115,7 @@ __Aufgabe 17:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -2255,7 +2229,7 @@ __Aufgabe 18:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -2373,7 +2347,7 @@ __Aufgabe 19:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -2491,7 +2465,7 @@ __Aufgabe 20:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -2607,7 +2581,7 @@ __Aufgabe 21:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -2721,7 +2695,7 @@ __Aufgabe 22:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -2837,7 +2811,7 @@ __Aufgabe 23:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -2953,7 +2927,7 @@ __Aufgabe 24:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -3069,7 +3043,7 @@ __Aufgabe 25:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -3185,7 +3159,7 @@ __Aufgabe 26:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -3305,7 +3279,7 @@ __Aufgabe 27:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -3424,7 +3398,7 @@ __Aufgabe 28:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -3536,7 +3510,7 @@ __Aufgabe 29:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -3655,7 +3629,7 @@ __Aufgabe 30:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -3771,7 +3745,7 @@ __Aufgabe 31:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -3880,7 +3854,7 @@ __Aufgabe 32:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -3991,7 +3965,7 @@ __Aufgabe 33:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -4108,7 +4082,7 @@ __Aufgabe 34:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -4231,7 +4205,7 @@ __Aufgabe 35:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -4336,7 +4310,7 @@ __Aufgabe 36:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -4441,7 +4415,7 @@ __Aufgabe 37:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -4551,7 +4525,7 @@ __Aufgabe 38:__ **Gib** den Kehrwert **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -4616,7 +4590,7 @@ __Aufgabe 39:__ **Gib** den Kehrwert **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -4689,7 +4663,7 @@ __Aufgabe 40:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -4809,7 +4783,7 @@ __Aufgabe 41:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -4926,7 +4900,7 @@ __Aufgabe 42:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -5044,7 +5018,7 @@ __Aufgabe 43:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -5186,7 +5160,7 @@ __Aufgabe 44:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -5326,7 +5300,7 @@ __Aufgabe 45:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -5442,7 +5416,7 @@ __Aufgabe 46:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -5559,7 +5533,7 @@ __Aufgabe 47:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -5676,7 +5650,7 @@ __Aufgabe 48:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -5793,7 +5767,7 @@ __Aufgabe 49:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -5910,7 +5884,7 @@ __Aufgabe 50:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -6031,7 +6005,7 @@ __Aufgabe 51:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -6147,7 +6121,7 @@ __Aufgabe 52:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 
 <div class="flex-child">
@@ -6268,7 +6242,7 @@ __Aufgabe 53:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -6385,7 +6359,7 @@ __Aufgabe 54:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -6511,7 +6485,7 @@ __Aufgabe 55:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 
 <div class="flex-child">
@@ -6626,7 +6600,7 @@ __Aufgabe 56:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -6747,7 +6721,7 @@ __Aufgabe 57:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -6897,7 +6871,7 @@ __Aufgabe 58:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 
 <div class="flex-child">
@@ -7053,7 +7027,7 @@ __Aufgabe 59:__ **Bestimme** den Wert zwischen den gegeneben beiden Brüchen, de
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -7184,7 +7158,7 @@ __Aufgabe 60:__ **Bestimme** den Wert zwischen den gegeneben beiden Brüchen, de
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -7309,7 +7283,7 @@ __Aufgabe 61:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -7441,7 +7415,7 @@ __Aufgabe 62:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -7575,7 +7549,7 @@ __Aufgabe 63:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -7711,7 +7685,7 @@ __Aufgabe 64:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -7850,7 +7824,7 @@ __Aufgabe 65:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -7994,7 +7968,7 @@ __Aufgabe 66:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
@@ -8138,7 +8112,7 @@ __Aufgabe 67:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -8274,7 +8248,7 @@ __Aufgabe 68:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -8416,7 +8390,7 @@ __Aufgabe 69:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -8547,7 +8521,7 @@ __Aufgabe 70:__
 **Berechne** den Wert des Terms.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -8667,7 +8641,7 @@ __Aufgabe 71:__ **Bestimme** unechten Bruch aus der gemischten Zahl.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -8845,7 +8819,7 @@ __Aufgabe 72:__ **Bestimme** unechten Bruch aus der gemischten Zahl.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -9023,7 +8997,7 @@ __Aufgabe 73:__ **Bestimme** unechten Bruch aus der gemischten Zahl.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -9201,7 +9175,7 @@ __Aufgabe 74:__ **Bestimme** unechten Bruch aus der gemischten Zahl.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -9379,7 +9353,7 @@ __Aufgabe 75:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -9519,7 +9493,7 @@ __Aufgabe 76:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -9657,7 +9631,7 @@ __Aufgabe 77:__ **Gib** den beschriebenen Anteilswert **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 __$a)\;\;$__ Wie viel sind $\dfrac{4}{5}$ von $2500\,$kg?  
@@ -9706,7 +9680,7 @@ __Aufgabe 78:__ **Gib** den beschriebenen Anteilswert **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 __$a)\;\;$__ Wie viel sind $\dfrac{3}{10}$ von $90\,$€?  
@@ -9757,7 +9731,7 @@ __Aufgabe 79:__ **Gib** den beschriebenen Anteilswert **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 __$a)\;\;$__ Wie viel sind $\dfrac{1}{7}$ von $84\,$€?  
@@ -9810,7 +9784,7 @@ __Aufgabe 80:__ **Gib** den beschriebenen Anteilswert **an**.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5" -->
@@ -9893,7 +9867,7 @@ __Aufgabe 81:__ **Gib** den dargestellten Bruch **an**. (Es ist der jeweilige gr
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -10010,7 +9984,7 @@ __Aufgabe 82:__ **Gib** den dargestellten Bruch **an**. (Es ist der jeweilige gr
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -10133,7 +10107,7 @@ __Aufgabe 83:__ **Gib** den dargestellten Bruch **an**. (Es ist der jeweilige gr
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -10250,7 +10224,7 @@ __Aufgabe 84:__ **Gib** den dargestellten Bruch **an**. (Es ist der jeweilige gr
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -10367,7 +10341,7 @@ __Aufgabe 85:__ **Gib** den dargestellten Bruch **an**. (Es ist der jeweilige gr
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -10453,7 +10427,7 @@ __Aufgabe 86:__ **Gib** den dargestellten Bruch **an**. (Es ist der jeweilige gr
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -10537,7 +10511,7 @@ __Aufgabe 87:__ **Gib** den dargestellten Bruch **an**. (Es ist der jeweilige gr
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -10621,7 +10595,7 @@ __Aufgabe 88:__ **Gib** den dargestellten Bruch **an**. (Es ist der jeweilige gr
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -10708,7 +10682,7 @@ __Aufgabe 89:__ **Berechne** den Wert des Terms hinter der Fragestellung.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -10830,7 +10804,7 @@ __Aufgabe 90:__ **Berechne** den Wert des Terms hinter der Fragestellung.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
@@ -10958,7 +10932,7 @@ __Aufgabe 91:__ **Berechne** den Wert des Terms hinter der Fragestellung.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -11085,7 +11059,7 @@ $$
 __Aufgabe 92:__ **Berechne** den Wert des Terms hinter der Fragestellung.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -11211,7 +11185,7 @@ __Aufgabe 93:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -11352,7 +11326,7 @@ __Aufgabe 94:__ **Berechne** den Wert des Terms.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -11493,7 +11467,7 @@ __Aufgabe 95:__ **Gib** die Zahl **an**, die $x$ sein muss, sodass die Brüche g
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -11576,7 +11550,7 @@ __Aufgabe 96:__ **Gib** die Zahl **an**, die $x$ sein muss, sodass die Brüche g
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
@@ -11660,7 +11634,7 @@ __Aufgabe 97:__ **Bestimme** den farbigen Anteil an der Gesamtfläche.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 
 <div class="flex-child">
@@ -11783,7 +11757,7 @@ __Aufgabe 98:__ **Bestimme** den farbigen Anteil an der Gesamtfläche.
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 
 <div class="flex-child">
@@ -11916,7 +11890,7 @@ __Aufgabe 99:__ **Gib** die Antwort auf die Fragen zu jeder Darstellung **an**.
 __$a)\;\;$__ Das jeweilige Rechteck wird durch die gestrichelten Linien in wie viele Teile geteilt? 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$I\;\;$__ [[  5  ]]
@@ -11934,7 +11908,7 @@ __$III\;\;$__ [[  3  ]]
 __$b)\;\;$__ Das jeweilige Rechteck wird durch die gepunkteten Linien in wie viele Teile geteilt? 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$I\;\;$__ [[  3  ]]
@@ -11952,7 +11926,7 @@ __$III\;\;$__ [[  6  ]]
 __$c)\;\;$__ Das jeweilige Rechteck wird durch die gestrichelten und die gepunkteten Linien in wie viele Teile geteilt? 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$I\;\;$__ [[  15  ]]
@@ -11995,7 +11969,7 @@ __Aufgabe 100:__ **Gib** die Antwort auf die Fragen zu jeder Darstellung **an**.
 __$a)\;\;$__ Welcher Bruchanteil des jeweiligen Rechteck ist farbig markiert?
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$I\;\;$__ [[  1/3  ]]
@@ -12016,7 +11990,7 @@ __$III\;\;$__ [[  3/5  ]]
 __$b)\;\;$__ Welcher Bruchanteil der farbigen Markierung ist bläulich markiert?
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$I\;\;$__ [[  2/3  ]]
@@ -12037,7 +12011,7 @@ __$III\;\;$__ [[  3/4  ]]
 __$c)\;\;$__ Welcher Bruchanteil der jeweiligen Rechteck ist bläulich markiert? 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$I\;\;$__ [[  2/9  ]]
@@ -14166,7 +14140,7 @@ __$c)\;\;$__
 __Aufgabe 163:__ Höre die Tonspur an und **gib** den Wert des beschriebenen Terms **an**.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -14241,7 +14215,7 @@ Ich habe ein Drittel und noch ein Drittel.
 __Aufgabe 164:__ Höre die Tonspur an und **gib** den Wert des beschriebenen Terms **an**.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -14630,7 +14604,7 @@ $= 1$
 __Aufgabe 169:__ **Gib** den Wert der Terme **an**. Achte dabei auf die Muster dieser Permanenzreihe.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -14727,7 +14701,7 @@ $10 \cdot \dfrac{1}{10000} =$ [[ 1/1000 ]] \
 __Aufgabe 170:__ **Gib** den Wert der Terme **an**. Achte dabei auf die Muster dieser Permanenzreihe.
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 
@@ -14839,7 +14813,7 @@ __Aufgabe 171:__ **Stelle** die passende Teilung der Fläche **ein** und **marki
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$a)\;\;$__ $\dfrac{4}{5}$
@@ -14896,7 +14870,7 @@ __Aufgabe 172:__ **Stelle** die passende Teilung der Fläche **ein** und **marki
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$a)\;\;$__ $\dfrac{7}{8}$
@@ -14953,7 +14927,7 @@ __Aufgabe 173:__ **Stelle** die passende Teilung der Fläche **ein** und **marki
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$a)\;\;$__ $\dfrac{7}{10}$
@@ -15017,7 +14991,7 @@ __Aufgabe 174:__ **Stelle** die passende Teilung der Fläche **ein** und **marki
 
 
 
-<section class="flex-container">
+<section class="dynFlex">
 
 <div class="flex-child">
 __$a)\;\;$__ $\dfrac{11}{18}$
