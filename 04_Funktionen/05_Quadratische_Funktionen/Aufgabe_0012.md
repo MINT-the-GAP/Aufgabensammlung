@@ -56,7 +56,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Gegeben sei die quadratische Funktion $f(x) = -2x^2 + 5x$. 
 
-<br>
+
 
 <!-- data-type="none"
 data-sortable="false" -->
@@ -64,13 +64,13 @@ data-sortable="false" -->
 | :---: | :-------: | :-------: | :-------: | :-------: |
 |  f(x) | [[ -18 ]] | [[  -7 ]] | [[  0 ]]  | [[  2  ]] |
 
-<br>
-<br>
-<br>
+
+
+
 
 __$b)\;\;$__ Gegeben sei die quadratische Funktion $f(x) = -3x^2 + 9  $. 
 
-<br>
+
 
 <!-- data-type="none"
 data-sortable="false" -->
@@ -78,6 +78,5 @@ data-sortable="false" -->
 | :---: | :-------: | :-------: | :-------: | :-------: |
 |  f(x) | [[ -66 ]] | [[ -3  ]] | [[  6  ]] | [[ -39 ]] |
 
-<br>
-<br>
-<br>
+
+

@@ -49,7 +49,7 @@ author: Martin Lommatzsch
 
 **Entscheide**, ob die dargestellte Tabelle eine beliebe, eine proportionale oder antiproportionale Zuordnung ist. (Der $x$-Wert wird dem $y$-Wert zugeordnet.)
 
-<br>
+
 
 __$a)\;\;$__
 
@@ -59,7 +59,7 @@ __$a)\;\;$__
 
 [[(Proportionale)|Antiproportionale|Beliebige]] Zuordnung.
 
-<br>
+
 
 __$b)\;\;$__
 
@@ -69,11 +69,10 @@ __$b)\;\;$__
 
 [[Proportionale|Antiproportionale|(Beliebige)]] Zuordnung.
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+
+
+

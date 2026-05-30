@@ -45,7 +45,7 @@ author: Martin Lommatzsch
 
 
 
-# Rechenmauer der Additon
+# Rechenmauer der Addition
 
 **Bestimme** die fehlenden Felder der Rechenmauer. Hierbei werden zwei benachbarte Felder miteinander addiert und die Summe in dem Feld darüber eingetragen.
 

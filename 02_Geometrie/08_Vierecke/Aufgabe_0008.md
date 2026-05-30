@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 **Wähle** die Vierecksarten **aus**, die die beschriebenen Eigenschaften erfüllen.
 
-<br>
+
 <section class="dynFlex">
 
 <div class="flex-child">
@@ -67,7 +67,7 @@ Alle Seiten sind gleich lang.
 [[ ]] Trapez
 [[ ]] symmetrischer Drachen
 
-<br>
+
 </div>
 
 
@@ -87,7 +87,7 @@ Die Diagonalen sind gleich lang.
 [[ ]] Trapez
 [[ ]] symmetrischer Drachen
 
-<br>
+
 </div> 
 
 
@@ -107,7 +107,7 @@ Das Viereck ist achsensymmetrisch.
 [[ ]] Trapez
 [[X]] symmetrischer Drachen
 
-<br>
+
 </div> 
 
 
@@ -127,14 +127,13 @@ Die gegenüberliegenden Seiten sind parallel zu einander, während die benachbar
 [[ ]] Trapez
 [[ ]] symmetrischer Drachen
 
-<br>
+
 </div> 
 
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

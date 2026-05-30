@@ -56,7 +56,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Gegeben sei die quadratische Funktion $f(x) = x^2 - x - 2 $. 
 
-<br>
+
 
 <!-- data-type="none"
 data-sortable="false" -->
@@ -64,14 +64,14 @@ data-sortable="false" -->
 | :---: | :------: | :------: | :------: | :------: |
 |  f(x) | [[  0 ]] | [[ 10 ]] | [[ 18 ]] | [[ 40 ]] |
 
-<br>
-<br>
-<br>
+
+
+
 
 
 __$b)\;\;$__ Gegeben sei die quadratische Funktion $f(x) = x^2 + 4x $. 
 
-<br>
+
 
 <!-- data-type="none"
 data-sortable="false" -->
@@ -79,6 +79,6 @@ data-sortable="false" -->
 | :---: | :------: | :------: | :------: | :------: |
 |  f(x) | [[  5 ]] | [[ 32 ]] | [[ 77 ]] | [[165 ]] |
 
-<br>
-<br>
-<br>
+
+
+

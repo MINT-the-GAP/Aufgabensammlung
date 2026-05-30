@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 **Wähle** die Vierecksarten **aus**, die die beschriebenen Eigenschaften erfüllen.
 
-<br>
+
 <section class="dynFlex">
 
 <div class="flex-child">
@@ -68,7 +68,7 @@ Mindestens ein Paar von gegenüberliegenden Seiten ist gleich lang aber nicht pa
 [[ ]] Trapez
 [[ ]] symmetrischer Drachen
 
-<br>
+
 </div> 
 
 
@@ -88,7 +88,7 @@ Die Diagonalen sind nicht orthogonal zu einander.
 [[X]] Trapez
 [[ ]] symmetrischer Drachen
 
-<br>
+
 </div> 
 
 
@@ -108,7 +108,7 @@ Es existieren zwei Winkel die gleich groß sind, aber nicht alle Winkel haben da
 [[ ]] Trapez
 [[X]] symmetrischer Drachen
 
-<br>
+
 </div> 
 
 
@@ -126,14 +126,13 @@ Das Viereck kann genau einen rechten Winkel haben.
 [[ ]] Trapez
 [[X]] symmetrischer Drachen
 
-<br>
+
 </div> 
 
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

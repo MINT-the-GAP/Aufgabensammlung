@@ -76,9 +76,9 @@ __$d)\;\;$__ $\log_{2}\left( 1024 \right) = $ [[ 10  ]]
 </div>
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+
  

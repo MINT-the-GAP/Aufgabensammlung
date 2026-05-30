@@ -51,7 +51,7 @@ author: Martin Lommatzsch
 
 **Gib** den Flächeninhalt des beschriebenen Dreiecks **an**.
 
-<br>
+
 
 
 <section class="dynFlex">
@@ -61,7 +61,7 @@ __$a)\;\;$__ $g= 1,4\,$dm $\;\;\wedge\;\; h= 5,1\,$cm
 
 $A=$[[  3570  ]]mm$^2$
 
-<br>
+
 </div>
 
 <div class="flex-child">
@@ -80,8 +80,7 @@ $A=$[[   0,6   ]]cm$^2$
 
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

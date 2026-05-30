@@ -65,7 +65,7 @@ __$b)\;\;$__ Die Zahl $17$ ist der Minuend, während die Zahl $11$ der Subtrahen
 </div>
 <div class="flex-child">
 
-__$c)\;\;$__ Der Quotient wird aus dem Dividenden $84$ und dem Divisor $14$ gebildet.\
+__$c)\;\;$__ Der Quotient wird aus dem Dividend $84$ und dem Divisor $14$ gebildet.\
 [[  6   ]]
 
 </div>

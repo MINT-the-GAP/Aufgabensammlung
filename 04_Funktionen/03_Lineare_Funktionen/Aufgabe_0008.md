@@ -56,7 +56,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 8 \cdot x - 9 $. 
 
-<br>
+
 
 <!-- data-type="none"
 data-sortable="false" -->
@@ -64,13 +64,13 @@ data-sortable="false" -->
 | :---: | :------: | :------: | :------: | :------: |
 |  f(x) | [[ 7  ]] | [[ 31 ]] | [[ 63 ]] | [[ 79 ]] |
 
-<br>
-<br>
-<br>
+
+
+
 
 __$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 6 \cdot x + 7$. 
 
-<br>
+
 
 <!-- data-type="none"
 data-sortable="false" -->
@@ -78,6 +78,5 @@ data-sortable="false" -->
 | :---: | :------: | :------: | :------: | :------: |
 |  f(x) | [[ 25 ]] |    37    | [[ 49 ]] |    91    |
 
-<br>
-<br>
-<br>
+
+

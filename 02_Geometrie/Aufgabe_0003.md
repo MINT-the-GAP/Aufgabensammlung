@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 **Gib** die Stelle der angegebenen Punkte **an**.
 
-<br>
+
 
 <center>
 
@@ -108,29 +108,28 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
  Der Punkt $A$ liegt an der Stelle $x=$[[  0  ]] \
-<br>
+
 </div>
 
 <div class="flex-child">
 
  Der Punkt $B$ liegt an der Stelle $x=$[[  7  ]] \
-<br>
+
 </div>
 
 <div class="flex-child">
 
  Der Punkt $C$ liegt an der Stelle $x=$[[  8  ]] \
-<br>
+
 
 </div>
 
 </section>
-<br>
-<br>
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+
+

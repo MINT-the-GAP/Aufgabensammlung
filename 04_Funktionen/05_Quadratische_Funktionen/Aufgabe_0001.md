@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 **Gib** Funktionsnamen **an**, wie er in den Graphen dargestellt ist.
 
-<br>
+
 
 <center>
 
@@ -303,33 +303,32 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 [[$f(x)$|$g(x)$|$h(x)$|$k(x)$|($l(x)$)|$m(x)$]] $= -\dfrac{1}{4} \left( x + \dfrac{1}{2} \right)^2 + 3$ \
-<br>
+
 
 
 </div>
 
 <div class="flex-child">
 
-<br>
+
 [[($f(x)$)|$g(x)$|$h(x)$|$k(x)$|$l(x)$|$m(x)$]] $= \left( x + 2 \right)^2 - 2$ \
-<br>
+
 
 
 </div>
 
 <div class="flex-child">
 
-<br>
+
 [[$f(x)$|($g(x)$)|$h(x)$|$k(x)$|$l(x)$|$m(x)$]] $= -\dfrac{1}{2} \left( x - \dfrac{1}{2} \right)^2 + 1$ \
-<br>
+
 
 </div>
 
 </section>
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 **Kreuze** die zutreffenden Antworten auf die Fragen **an**.
 
-<br>
+
  
 
 
@@ -70,13 +70,13 @@ __$a)\;\;$__ Welche der angegebenen Wertepaare beschreibt den größten Flächen
 - [[ ]] $a=7\,$cm$\;\;\wedge\;\; b=4\,$cm
 - [[X]] $a=2\,$cm$\;\;\wedge\;\; b=16\,$cm
 
-<br>
-<br>
-<br>
 
-<br>
-<br>
-<br>
+
+
+
+
+
+
 
 </div>
 
@@ -92,17 +92,16 @@ __$b)\;\;$__ Welche der angegebenen Wertepaare beschreibt den kleinsten Umfang e
 - [[X]] $a=7\,$cm$\;\;\wedge\;\; b=4\,$cm
 - [[ ]] $a=2\,$cm$\;\;\wedge\;\; b=16\,$cm
 
-<br>
-<br>
-<br>
+
+
+
 
 </div>
 
 </section>
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

@@ -51,7 +51,7 @@ author: Martin Lommatzsch
 
 **Gib** die fehlende Seitenlänge **an**.
 
-<br>
+
 
 
 <section class="dynFlex">
@@ -61,7 +61,7 @@ __$a)\;\;$__ $u=62\,$cm$\;\;\wedge\;\; a=21\,$cm
 
 $b=$[[  10  ]]cm
 
-<br>
+
 </div>
 
 <div class="flex-child">
@@ -80,8 +80,7 @@ $b=$[[  1  ]]cm
 
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

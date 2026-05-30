@@ -51,7 +51,7 @@ author: Martin Lommatzsch
 
 **Gib** den Flächeninhalt des beschriebenen Rechtecks **an**.
 
-<br>
+
 
 
 <section class="dynFlex">
@@ -61,7 +61,7 @@ __$a)\;\;$__ $a=1,6\,$m $\;\;\wedge\;\; b=2,1\,$m
 
 $A=$[[  3,36  ]]m$^2$
 
-<br>
+
 </div>
 
 <div class="flex-child">
@@ -77,8 +77,7 @@ $A=$[[  1,2   ]]cm$^2$
 
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

@@ -51,15 +51,14 @@ author: Martin Lommatzsch
 
 
 
-<br>
+
 
 $1 \quad 7 \quad 19 \quad 37 \quad 61 \quad 91 \quad 127 \quad $ [[ 169 ]] $\quad$ [[ 217 ]] $\quad$ [[ 271 ]] \
 
 [[?]] Musterbeschreibung: Von der kubischen Zahl wird die vorherige kubische Zahl subtrahiert.
 
-<br>
 
-<br>
-<br>
-<br>
-<br>
+
+
+
+

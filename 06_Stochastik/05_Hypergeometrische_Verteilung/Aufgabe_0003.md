@@ -53,27 +53,26 @@ author: Martin Lommatzsch
 
 **Gib** den Erwartungswert der hypergeometrischen Verteilung **an**.
 
-<br>
+
 
 __$a)\;\;$__ In einer Urne befinden sich $26$ rote und $14$ schwarze Kugeln. **Gib** den Erwartungswert der getroffnenen schwarzen Kugeln **an**, wenn aus der Urne eine Kugel ohne Zurücklegen $13$-mal hintereinander gezogen wird.
 
 $\mu =$ [[  4,55  ]]
 
-<br>
+
 
 __$b)\;\;$__ Auf fünf Stelle bewerben sich $32$ Personen, wovon $12$ männlich sind. Die Stellen werden per Losverfahren vergeben. **Gib** den Erwartungswert für männliche Personen **an**.
 
 $\mu =$ [[  1,875 ]]
 
-<br>
+
 
 __$c)\;\;$__ Bei einem Kartenspiel werden zu Beginn sechs Karten gezogen. Insgesamt gibt es vier Joker unter den insgesamt $48$ Karten. **Gib** den Erwartungswert bezüglich der Joker **an**.
 
 $\mu =$ [[  0,5   ]]
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

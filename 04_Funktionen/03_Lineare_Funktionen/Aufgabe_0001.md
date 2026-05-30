@@ -55,13 +55,13 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -x+5$. Bestimme die jeweilige fehlende Koordinate der Punkte $A$ und $B$. 
 
-<br>
+
 
 $A(9|$ [[  -4  ]] $)$ und $B($ [[  -3  ]] $|8)$
 
-<br>
-<br>
-<br>
+
+
+
 
 </div>
 
@@ -70,13 +70,13 @@ $A(9|$ [[  -4  ]] $)$ und $B($ [[  -3  ]] $|8)$
 
 __$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 4x-6$. Bestimme die jeweilige fehlende Koordinate der Punkte $A$ und $B$. 
 
-<br>
+
 
 $A(7|$ [[  22  ]] $)$ und $B($ [[  -3  ]] $|-18)$
 
-<br>
-<br>
-<br>
+
+
+
 
 </div>
 

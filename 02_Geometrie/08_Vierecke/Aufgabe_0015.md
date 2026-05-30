@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 **Gib** den Flächeninhalt des dargestellten Vierecks **an**.
 
-<br>
+
 <section class="dynFlex">
 
 <div class="flex-child">
@@ -108,7 +108,7 @@ __$a)\;\;$__
 ```
 </center>
  $A=$[[  36  ]]$FE$ \
-<br>
+
 </div> 
 
 
@@ -169,14 +169,13 @@ __$b)\;\;$__
 ```
 </center>
  $A=$[[  9   ]]$FE$ \
-<br>
+
 </div> 
 
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

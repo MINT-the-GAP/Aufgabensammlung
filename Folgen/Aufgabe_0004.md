@@ -51,7 +51,7 @@ author: Martin Lommatzsch
 
 
 
-<br>
+
 
 __$a)\;\;$__
 
@@ -59,7 +59,7 @@ $194 \quad 183 \quad 169 \quad 152 \quad 132 \quad 109 \quad $ [[ 83 ]] $\quad$ 
 
 [[?]] Musterbeschreibung: Um $3$ wachsender Subtrahend wird vom vorherigen Wert subtrahiert.
 
-<br>
+
 
 __$b)\;\;$__
 
@@ -68,7 +68,7 @@ $1 \quad 16 \quad 81 \quad 256 \quad 625 \quad $ [[ 1296 ]] $\quad$ [[ 2401 ]] $
 [[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen hoch $4$.
 
 
-<br>
+
 
 __$c)\;\;$__
 
@@ -76,9 +76,8 @@ $0 \quad 1 \quad 10 \quad 11 \quad 100 \quad 101 \quad 110 \quad 111 \quad $ [[ 
 
 [[?]] Musterbeschreibung: Die aufsteigenden Zahlen in binär.
 
-<br>
 
-<br>
-<br>
-<br>
-<br>
+
+
+
+

@@ -76,9 +76,9 @@ __$d)\;\;$__ $\log_{4}\left( 4096 \right) = $ [[  6  ]]
 </div>
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+
  

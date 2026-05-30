@@ -49,7 +49,7 @@ author: Martin Lommatzsch
 
 **Kreuze** die zutreffenden Antworten auf die Fragen **an**.
 
-<br>
+
 
 <section class="dynFlex">
 
@@ -64,9 +64,9 @@ __$a)\;\;$__ Welche der angegebenen Wertepaare beschreibt einen Volumeninhalt ei
 - [[X]] $a=4\,$cm$\;\;\wedge\;\; b=2\,$cm$\;\;\wedge\;\; c=6\,$cm
 - [[ ]] $a=4\,$cm$\;\;\wedge\;\; b=6\,$cm$\;\;\wedge\;\; c=3\,$cm
 
-<br>
-<br>
-<br>
+
+
+
 
 </div>
 
@@ -82,9 +82,9 @@ __$b)\;\;$__ Welche der angegebenen Wertepaare beschreibt den größten Volumeni
 - [[X]] $a=4\,$cm$\;\;\wedge\;\; b=6\,$cm$\;\;\wedge\;\; c=3\,$cm
 
 
-<br>
-<br>
-<br>
+
+
+
 
 </div>
 
@@ -92,8 +92,7 @@ __$b)\;\;$__ Welche der angegebenen Wertepaare beschreibt den größten Volumeni
 
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

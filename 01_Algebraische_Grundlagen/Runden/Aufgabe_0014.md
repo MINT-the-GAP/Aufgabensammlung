@@ -49,27 +49,27 @@ author: Martin Lommatzsch
 
 **Gib** die Zahl gerundet auf drei Nachkommastellen **an**.
 
-<br>
+
 <section class="dynFlex">
 <div class="flex-child">
-<br>
+
 __$a)\;\;$__ $0,\overline{9} \approx$ [[  1,000 ]] 
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$b)\;\;$__ $13,\overline{97} \approx$ [[ 13,980 ]] 
-<br>
+
 </div>
 <div class="flex-child">
-<br>
+
 __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]] 
 
 </div>
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+

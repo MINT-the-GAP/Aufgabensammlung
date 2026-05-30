@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 **Wähle** die Vierecksarten **aus**, die die beschriebenen Eigenschaften erfüllen.
 
-<br>
+
 <section class="dynFlex">
 
 <div class="flex-child">
@@ -67,7 +67,7 @@ Die Diagonalen halbieren sich.
 [[ ]] Trapez
 [[ ]] symmetrischer Drachen
 
-<br>
+
 </div> 
 
 
@@ -87,7 +87,7 @@ Kann genau zwei rechte Winkel haben.
 [[X]] Trapez
 [[ ]] symmetrischer Drachen
 
-<br>
+
 </div> 
 
 
@@ -107,7 +107,7 @@ Die Diagronalen sind orthogonal zu einander.
 [[ ]] Trapez
 [[X]] symmetrischer Drachen
 
-<br>
+
 </div> 
 
 
@@ -127,14 +127,13 @@ Jeweils zwei Paare von Winkeln haben das gleiche Winkelmaß, während nicht alle
 [[ ]] Trapez
 [[ ]] symmetrischer Drachen
 
-<br>
+
 </div> 
 
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

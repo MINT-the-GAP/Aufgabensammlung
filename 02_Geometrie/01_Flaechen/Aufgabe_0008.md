@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 **Gib** Anzahl der umrandenden Strecken **an**.
 
-<br>
+
  
 <section class="dynFlex">
 <div class="flex-child">
@@ -157,13 +157,13 @@ __$a)\;\;$__
 
 \end{tikzpicture}
 ```
-<br>
+
 
 Es sind [[ 30  ]] umrandende Strecken.
 
-<br>
-<br>
-<br>
+
+
+
 
 </div>
 <div class="flex-child">
@@ -244,13 +244,13 @@ __$b)\;\;$__
 
 \end{tikzpicture}
 ```
-<br>
+
 
 Es sind [[ 16  ]] umrandende Strecken.
 
-<br>
-<br>
-<br>
+
+
+
 
 </div>
 </section>
@@ -259,8 +259,7 @@ Es sind [[ 16  ]] umrandende Strecken.
  
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

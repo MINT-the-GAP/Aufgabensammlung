@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 **Gib an**, welcher Graphen die Ableitung welches Graphen ist.
 
-<br>
+
 
 <center>
 
@@ -300,16 +300,15 @@ author: Martin Lommatzsch
 </center>
 
 [[ f ]] ist äquivalent zur ersten Ableitung von [[ k ]]. \
-<br>
-<br>
-<br>
-
-<br>
-<br>
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+
+
+
+
+
+

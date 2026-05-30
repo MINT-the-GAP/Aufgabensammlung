@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 **Gib an**, welche der Eigenschaften zum im Koordinatensystem dargestellten Graphen passen.
 
-<br>
+
 
 
 <section class="dynFlex">
@@ -104,7 +104,7 @@ __$a)\;\;$__
 ```
 </center>
 
-<br>
+
 
 [[ ]] $\mathbb{D} = \mathbb{R}^-$
 [[X]] $\mathbb{W} = \mathbb{R}^-$
@@ -164,7 +164,7 @@ __$b)\;\;$__
 ```
 </center>
 
-<br>
+
 
 [[X]] $\mathbb{D} = \mathbb{R}$
 [[ ]] $\mathbb{W} = \mathbb{R}$
@@ -177,12 +177,11 @@ __$b)\;\;$__
 </div>
 </section>
 
-<br>
-<br>
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+
+

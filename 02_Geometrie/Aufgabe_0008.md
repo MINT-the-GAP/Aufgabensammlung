@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 **Gib** die fehlende Information zu den Punkten **an**.
 
-<br>
+
 
 <center>
 
@@ -115,26 +115,25 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
  $A($[[  1  ]]$|$[[  5  ]]$)$ \
-<br>
+
 </div>
 
 <div class="flex-child">
 
  $B($[[ 10  ]]$|$[[  4  ]]$)$ \
-<br>
+
 </div>
 
 <div class="flex-child">
 
  [[  D  ]]$( 5 | 4 )$ \
-<br>
+
 
 </div>
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

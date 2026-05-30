@@ -50,12 +50,12 @@ author: Martin Lommatzsch
 
 **Gib** das gesuchte Winkelmaß **an**. Es gilt $f \parallel g$. (Die graphische Darstellung dient zur Orientierung und entspricht nicht den realen Werten.)
 
-<br>
+
 <section class="dynFlex">
 
 <div class="flex-child">
 
-<br>
+
 __$a)\;\;$__
 
 <center>
@@ -93,11 +93,11 @@ __$a)\;\;$__
 
 $\nu =$ [[ 128 ]]$^\circ$
 
-<br>
+
 </div>
 
 <div class="flex-child">
-<br>
+
 
 
 __$b)\;\;$__
@@ -146,8 +146,7 @@ $\tau =$ [[ 109 ]]$^\circ$
 </div>
 
 </section>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

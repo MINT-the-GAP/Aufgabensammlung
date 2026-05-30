@@ -55,13 +55,13 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -2x-1$. Bestimme die jeweilige fehlende Koordinate der Punkte $A$ und $B$. 
 
-<br>
+
 
 $A(-2|$ [[  3  ]] $)$ und $B($ [[  6  ]] $|-13)$
 
-<br>
-<br>
-<br>
+
+
+
 
 </div>
 
@@ -70,13 +70,13 @@ $A(-2|$ [[  3  ]] $)$ und $B($ [[  6  ]] $|-13)$
 
 __$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 3x+2$. Bestimme die jeweilige fehlende Koordinate der Punkte $A$ und $B$. 
 
-<br>
+
 
 $A(-1|$ [[  -1  ]] $)$ und $B($ [[  5  ]] $|17)$
 
-<br>
-<br>
-<br>
+
+
+
 
 </div>
 

@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 **Gib** den Flächeninhalt des dargestellten Dreiecks **an**.
 
-<br>
+
 <section class="dynFlex">
 
 <div class="flex-child">
@@ -63,7 +63,7 @@ __$a)\;\;$__
 
 </center>
  $A=$[[  21  ]]$FE$ \
-<br>
+
 </div> 
 
 
@@ -79,14 +79,13 @@ __$b)\;\;$__
 
 </center>
  $A=$[[  10  ]]$FE$ \
-<br>
+
 </div> 
 
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

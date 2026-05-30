@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 **Gib** die Koordinaten des fehlenden Punktes für das beschriebene Viereck **an**.
 
-<br>
+
 <section class="dynFlex">
 
 <div class="flex-child">
@@ -119,7 +119,7 @@ __$a)\;\;$__
 </center>
 Es handelt sich um einen symmetrischen Drachen. \
 $B($[[  4  ]]$|$[[  0  ]]$)$ \
-<br>
+
 </div> 
 
 
@@ -191,14 +191,13 @@ __$b)\;\;$__
 </center>
 Es handelt sich um eine Quadrat. \
 $D($[[  1  ]]$|$[[  6  ]]$)$ \
-<br>
+
 </div> 
 
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

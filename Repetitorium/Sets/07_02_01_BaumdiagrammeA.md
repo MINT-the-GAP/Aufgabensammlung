@@ -64,7 +64,7 @@ svg.tree3 foreignObject .lia-quiz * {
   padding: 0 !important;
 }
 
-/* explizit alle <br>, die LiaScript ggf. einfügt, unsichtbar machen */
+/* explizit alle , die LiaScript ggf. einfügt, unsichtbar machen */
 svg.tree3 foreignObject .lia-quiz br {
   display: none !important;
   height: 0 !important;
@@ -131,7 +131,7 @@ svg.tree2 foreignObject .lia-quiz * {
   padding: 0 !important;
 }
 
-/* explizit alle <br>, die LiaScript ggf. einfügt, unsichtbar machen */
+/* explizit alle , die LiaScript ggf. einfügt, unsichtbar machen */
 svg.tree2 foreignObject .lia-quiz br {
   display: none !important;
   height: 0 !important;

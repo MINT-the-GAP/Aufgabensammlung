@@ -49,13 +49,13 @@ author: Martin Lommatzsch
 
 
 **Berechne** die Länge der gegebenen Vektoren. Gib die Werte falls nötig gerundet auf drei Nachkommastellen an.
-<br>
+
 
 <section class="dynFlex">
 <div class="flex-child">
 
 __$a)\;\;$__ $\vec{a} = \left(\begin{array}{c} -4 \\ 2 \\ 5 \end{array}\right)$  \
-<br>
+
  $ \left| \vec{a} \right| = $ [[  6,708  ]] $LE$
 ***************
 $$
@@ -64,14 +64,14 @@ $$
  \end{align*}
 $$
 ***************
-<br>
-<br>
-<br>
+
+
+
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ $\vec{a} = \left(\begin{array}{c} 2,5 \\ -1,5 \\ 4 \end{array}\right)$  \
-<br>
+
  $ \left| \vec{a} \right| = $ [[  4,950  ]] $LE$
 ***************
 $$
@@ -80,14 +80,14 @@ $$
  \end{align*}
 $$
 ***************
-<br>
-<br>
-<br>
+
+
+
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ $\vec{a} = \left(\begin{array}{c} 3 \\ -2 \\ 7 \end{array}\right)$  \
-<br>
+
  $ \left| \vec{a} \right| = $ [[  7,874  ]] $LE$
 ***************
 $$
@@ -96,14 +96,14 @@ $$
  \end{align*}
 $$
 ***************
-<br>
-<br>
-<br>
+
+
+
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ $\vec{a} = \left(\begin{array}{c} -4 \\ -5 \\ 1 \end{array}\right)$  \
-<br>
+
  $ \left| \vec{a} \right| = $ [[  6,481  ]] $LE$
 ***************
 $$
@@ -112,16 +112,15 @@ $$
  \end{align*}
 $$
 ***************
-<br>
-<br>
-<br>
+
+
+
 </div>
 </section>
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+

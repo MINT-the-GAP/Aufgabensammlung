@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 **Gib** nächsten Glieder der Folge **an**.
 
 
-<br>
+
 
 __$a)\;\;$__
 
@@ -58,7 +58,7 @@ $1 \quad 1 \quad 2 \quad 3 \quad 5 \quad 8 \quad 13 \quad$ [[ 21 ]] $\quad$ [[ 3
 
 [[?]] Musterbeschreibung: Die beiden vorherigen Zahlen werden miteinander addiert.
 
-<br>
+
 
 __$b)\;\;$__
 
@@ -66,7 +66,7 @@ $1 \quad 4 \quad 9 \quad 16 \quad 25 \quad 36 \quad 49 \quad$ [[ 64 ]] $\quad$ [
 
 [[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen werden quadriert.
 
-<br>
+
 
 __$c)\;\;$__
 
@@ -74,11 +74,10 @@ $A \quad C \quad E \quad G \quad I \quad K \quad M \quad$ [[ O ]] $\quad$ [[ Q ]
 
 [[?]] Musterbeschreibung: Immer der übernächste Buchstabe des Alphabets
 
-<br>
 
 
 
-<br>
-<br>
-<br>
-<br>
+
+
+
+

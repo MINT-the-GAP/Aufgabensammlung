@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 **Wähle** die Vierecksarten **aus**, die die beschriebenen Eigenschaften erfüllen.
 
-<br>
+
 <section class="dynFlex">
 
 <div class="flex-child">
@@ -67,7 +67,7 @@ Zwei benachbarte Winkel sind gleich groß.
 [[ ]] Trapez
 [[ ]] symmetrischer Drachen
 
-<br>
+
 </div> 
 
 
@@ -87,7 +87,7 @@ Eine Diagonale halbiert die andere.
 [[ ]] Trapez
 [[X]] symmetrischer Drachen
 
-<br>
+
 </div> 
 
 
@@ -107,7 +107,7 @@ Es gibt mindestens ein Paar von benachbarten Seiten, die gleichlang aber nicht o
 [[ ]] Trapez
 [[X]] symmetrischer Drachen
 
-<br>
+
 </div> 
 
 
@@ -126,14 +126,13 @@ Die Innenwinkelsumme beträgt $360\circ$.
 [[X]] Trapez
 [[X]] symmetrischer Drachen
 
-<br>
+
 </div> 
 
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 **Gib an**, welche der Eigenschaften zum im Koordinatensystem dargestellten Graphen passen.
 
-<br>
+
 
 
 <section class="dynFlex">
@@ -104,7 +104,7 @@ __$a)\;\;$__
 ```
 </center>
 
-<br>
+
 
 [[ ]] $\mathbb{D} = \mathbb{R}$
 [[ ]] $\mathbb{W} = \mathbb{R}$
@@ -166,7 +166,7 @@ __$b)\;\;$__
 ```
 </center>
 
-<br>
+
 
 [[X]] $\mathbb{D} = \left\{ x \in \mathbb{R}  \setminus \left\{-1;1\right\}  \right\}$
 [[X]] $\mathbb{W} =\left\{ f(x) \in \mathbb{R}  \left| f(x) \geq 0 \wedge  f(x) \leq -1 \right. \right\}$
@@ -179,12 +179,11 @@ __$b)\;\;$__
 </div>
 </section>
 
-<br>
-<br>
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+
+

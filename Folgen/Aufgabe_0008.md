@@ -50,16 +50,15 @@ author: Martin Lommatzsch
 **Gib** nächsten Glieder der Folge **an**.
 
 
-<br>
+
 
 $1 \quad 4 \quad 18 \quad 48 \quad 125 \quad 288 \quad  367 \quad $ [[ 1344 ]] $\quad$ [[ 2754 ]] $\quad$ [[ 5500 ]] \
 
 [[?]] Musterbeschreibung: Die Fibonacci Zahlen werden mit den aufsteigenden Quadratzahlen multipliziert.
 
-<br>
 
 
-<br>
-<br>
-<br>
-<br>
+
+
+
+

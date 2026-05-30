@@ -51,7 +51,7 @@ author: Martin Lommatzsch
 
 **Gib** den Umfang des beschriebenen Rechtecks in der angegebenen Einheit **an**.
 
-<br>
+
 
 
 <section class="dynFlex">
@@ -61,7 +61,7 @@ __$a)\;\;$__ $a=0,04\,$km $\;\;\wedge\;\; b=6\,$dm
 
 $u=$[[  81,2  ]]m
 
-<br>
+
 </div>
 
 <div class="flex-child">
@@ -80,8 +80,7 @@ $u=$[[ 21,226 ]]dm
 
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

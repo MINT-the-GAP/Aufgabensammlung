@@ -76,9 +76,9 @@ __$d)\;\;$__ $\log_{4}\left( \dfrac{1}{1024} \right) = $ [[  -5  ]]
 </div>
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+
  

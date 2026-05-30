@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 **Gib** Anzahl der Flächen **an**.
 
-<br>
+
  
 <section class="dynFlex">
 <div class="flex-child">
@@ -124,9 +124,9 @@ __$a)\;\;$__
 
 Es sind [[ 45  ]] Flächen.
 
-<br>
-<br>
-<br>
+
+
+
 
 </div>
 <div class="flex-child">
@@ -216,9 +216,9 @@ __$b)\;\;$__
 
 Es sind [[ 60  ]] Flächen.
 
-<br>
-<br>
-<br>
+
+
+
 
 </div>
 </section>
@@ -227,8 +227,7 @@ Es sind [[ 60  ]] Flächen.
  
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

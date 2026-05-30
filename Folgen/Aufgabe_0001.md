@@ -54,7 +54,7 @@ author: Martin Lommatzsch
 **Gib** nächsten Glieder der Folge **an**.
 
 
-<br>
+
 
 __$a)\;\;$__
 
@@ -62,7 +62,7 @@ $1 \quad 3 \quad 9 \quad 27 \quad 81 \quad $ [[ 243 ]] $\quad$ [[ 729 ]] $\quad$
 
 [[?]] Musterbeschreibung: Die vorherige Zahl wird mit $3$ multipliziert.
 
-<br>
+
 
 __$b)\;\;$__
 
@@ -70,7 +70,7 @@ $2 \quad 3 \quad 5 \quad 7 \quad 11 \quad 13 \quad 17 \quad $ [[ 23 ]] $\quad$ [
 
 [[?]] Musterbeschreibung: Die aufsteigenden Primzahlen
 
-<br>
+
 
 __$c)\;\;$__
 
@@ -79,8 +79,7 @@ $3 \quad 8 \quad 15 \quad 24 \quad 35 \quad $ [[ 48 ]] $\quad$ [[ 63 ]] $\quad$ 
 
 [[?]] Musterbeschreibung: Die Ausgangszahl wird mit der aufsteigenden ungeraden Zahl addiert, startend bei $3$.
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

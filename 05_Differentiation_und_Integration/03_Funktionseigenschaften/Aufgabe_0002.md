@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 **Gib an**, welche der Eigenschaften zum im Koordinatensystem dargestellten Graphen passen.
 
-<br>
+
 
 
 <section class="dynFlex">
@@ -103,7 +103,7 @@ __$a)\;\;$__
 ```
 </center>
 
-<br>
+
 
 [[ ]] $\mathbb{D} = \left\{x \in \mathbb{R}  \left| x \leq -3 \right. \right\}$
 [[X]] $\mathbb{D} = \left\{x \in \mathbb{R}  \left| x \geq -3 \right. \right\}$
@@ -163,7 +163,7 @@ __$b)\;\;$__
 ```
 </center>
 
-<br>
+
 
 [[X]] $\mathbb{D} = \mathbb{R}$
 [[X]] $\mathbb{W} = \left\{f(x) \in \mathbb{R}  \left| x \leq 2 \right. \right\}$
@@ -176,12 +176,11 @@ __$b)\;\;$__
 </div>
 </section>
 
-<br>
-<br>
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+
+

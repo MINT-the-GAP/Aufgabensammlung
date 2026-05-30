@@ -51,7 +51,7 @@ author: Martin Lommatzsch
 
 **Gib** den Umfang des beschriebenen Dreiecks **an**.
 
-<br>
+
 
 
 <section class="dynFlex">
@@ -61,7 +61,7 @@ __$a)\;\;$__ $a=1,4\,$cm $\;\;\wedge\;\; b=0,3\,$dm $\;\;\wedge\;\; c=28\,$mm
 
  $u=$[[  7,2  ]]cm
 
-<br>
+
 </div>
 
 <div class="flex-child">
@@ -80,8 +80,7 @@ $u=$[[  4500  ]]dm
 
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

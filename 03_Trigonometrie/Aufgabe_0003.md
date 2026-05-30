@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 **Fülle** die Lücke in der Gleichung aus, sodass die Gleichung eine wahre mathematische Aussage zum gegebenen Dreieck darstellt.
 
-<br>
+
 <section class="dynFlex">
 
 <div class="flex-child">
@@ -83,7 +83,7 @@ __$a)\;\;$__
 
 Gleichung: $\quad$ [[ c ]]$^2 = $ [[ d ]]$^2 + a^2$
 
-<br>
+
 </div>
 
 <div class="flex-child">
@@ -151,7 +151,7 @@ __$c)\;\;$__
 
 Gleichung: $\quad$  [[($\sin$)|$\cos$|$\tan$|$\text{cot}$]] $(\psi)= \frac{z}{u}$
 
-<br>
+
 </div>
 
 <div class="flex-child">
@@ -187,8 +187,7 @@ Gleichung: $\quad$  [[$\sin$|$\cos$|($\tan$)|$\text{cot}$]] $(\sigma)= \frac{r}{
 </div>
 
 </section>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

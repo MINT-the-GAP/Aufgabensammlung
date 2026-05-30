@@ -51,7 +51,7 @@ author: Martin Lommatzsch
 
 **Gib** die fehlende Seitenlänge aus den beschriebenen Werten eines Dreiecks **an**.
 
-<br>
+
 
 
 <section class="dynFlex">
@@ -62,7 +62,7 @@ __$a)\;\;$__ $u=2,7\,$dm $\;\;\wedge\;\; b=1,3\,$dm $\;\;\wedge\;\; c=9,7\,$cm
 
 $a=$[[  4,3  ]]cm
 
-<br>
+
 </div>
 
 <div class="flex-child">
@@ -81,8 +81,7 @@ $a=$[[  1,64  ]]dm
 
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

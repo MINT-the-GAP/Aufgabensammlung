@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 **Gib** nächsten Glieder der Folge **an**.
 
 
-<br>
+
 
 __$a)\;\;$__
 
@@ -58,7 +58,7 @@ $100 \quad 99 \quad 97 \quad 94 \quad 90 \quad 85 \quad 79 \quad$ [[ 72 ]] $\qua
 
 [[?]] Musterbeschreibung: Es wird von der vorherigen Zahl eine aufsteigende natürliche Zahl subtrahiert.
 
-<br>
+
 
 __$b)\;\;$__
 
@@ -66,7 +66,7 @@ $11 \quad 22 \quad 33 \quad 44 \quad 55 \quad 66 \quad $ [[ 77 ]] $\quad$ [[ 88 
 
 [[?]] Musterbeschreibung: Die $11$er-Reihe.
 
-<br>
+
 
 __$c)\;\;$__
 
@@ -74,11 +74,10 @@ $1 \quad 121 \quad 12321 \quad 1234321 \quad $ [[ 123454321 ]] $\quad$ [[ 123456
 
 [[?]] Musterbeschreibung: Es wird immer eine nächst höhere Ziffer in die Mitte eingefügt, sodass die Zahl sich aus den aufsteigenden und absteigenden Ziffern ergibt.
 
-<br>
 
 
 
-<br>
-<br>
-<br>
-<br>
+
+
+
+

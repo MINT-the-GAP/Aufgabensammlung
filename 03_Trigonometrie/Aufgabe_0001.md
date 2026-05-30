@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 **Fülle** die Lücke in der Gleichung aus, sodass die Gleichung eine wahre mathematische Aussage zum gegebenen Dreieck darstellt.
 
-<br>
+
 <section class="dynFlex">
 
 <div class="flex-child">
@@ -83,7 +83,7 @@ __$a)\;\;$__
 
 Gleichung: $\quad$  [[($\sin$)|$\cos$|$\tan$|$\text{cot}$]] $(\delta)= \frac{h}{g}$
 
-<br>
+
 </div>
 
 <div class="flex-child">
@@ -151,7 +151,7 @@ __$c)\;\;$__
 
 Gleichung: $\quad$  [[$\sin$|$\cos$|($\tan$)|$\text{cot}$]] $(\xi)= \frac{h}{g}$
 
-<br>
+
 </div>
 
 <div class="flex-child">
@@ -187,8 +187,7 @@ Gleichung: $\quad$ [[ v ]]$^2 = $ [[ k ]]$^2 + p^2$
 </div>
 
 </section>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

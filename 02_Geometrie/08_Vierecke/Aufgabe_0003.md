@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 **Gib** die Koordinaten des fehlenden Punktes für das beschriebene Viereck **an**.
 
-<br>
+
 <section class="dynFlex">
 
 <div class="flex-child">
@@ -119,7 +119,7 @@ __$a)\;\;$__
 </center>
 Es handelt sich um ein Quadrat. \
 $A($[[  6  ]]$|$[[  1  ]]$)$ \
-<br>
+
 </div> 
 
 
@@ -191,14 +191,13 @@ __$b)\;\;$__
 </center>
 Es handelt sich um ein symmetrisches Trapez mit einer Symmetrieachse, die orthogonal zur Stecke $\overline{AB}$ ist. \
 $D($[[  2  ]]$|$[[  8  ]]$)$ \
-<br>
+
 </div> 
 
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

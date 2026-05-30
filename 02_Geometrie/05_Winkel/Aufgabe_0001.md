@@ -50,11 +50,11 @@ author: Martin Lommatzsch
 
 **Gib** das gesuchte Winkelmaß sowie die Winkelbeziehung zum gegebenen Winkel **an**. Es gilt $f \parallel g$. (Die graphische Darstellung dient zur Orientierung und entspricht nicht den realen Werten.)
 
-<br>
+
 <section class="dynFlex">
 
 <div class="flex-child">
-<br>
+
 
 __$a)\;\;$__
 
@@ -85,11 +85,11 @@ __$a)\;\;$__
 
 $\chi =$ [[ 55 ]]$^\circ$ und es handelt sich um die Beziehung eines [[Nebenwinkels|Scheitelwinkels|(Stufenwinkels)|Wechselwinkels]].
 
-<br>
+
 </div>
 
 <div class="flex-child">
-<br>
+
 
 
 __$b)\;\;$__
@@ -126,8 +126,7 @@ $\delta =$ [[ 63 ]]$^\circ$ und es handelt sich um die Beziehung eines [[(Nebenw
 </div>
 
 </section>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

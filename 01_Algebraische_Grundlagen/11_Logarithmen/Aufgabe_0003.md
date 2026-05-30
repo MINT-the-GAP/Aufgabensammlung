@@ -77,9 +77,9 @@ __$d)\;\;$__ $\log_{17}\left( 1 \right) = $ [[  0  ]]
 </div>
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+
  

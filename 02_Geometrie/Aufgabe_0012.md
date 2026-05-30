@@ -62,26 +62,25 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
  $A($[[  7,3  ]]$|$[[  9,5  ]]$)$ \
-<br>
+
 </div>
 
 <div class="flex-child">
 
  $B($[[  0,3  ]]$|$[[  0,6  ]]$)$ \
-<br>
+
 </div>
 
 <div class="flex-child">
 
  [[  F  ]]$( 0,8 | 8,2 )$ \
-<br>
+
 
 </div>
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

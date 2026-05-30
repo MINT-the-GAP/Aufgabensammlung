@@ -48,23 +48,23 @@ author: Martin Lommatzsch
 
 **Wähle** die passende Lagebeziehung **aus**.
 
-<br>
+
 
 
 <section class="dynFlex">
 
 <div class="flex-child">
 __$a)\;\;$__ Die Gerade $f$ ist orthogonal zur Geraden $g$, während $g$ orthogonal zur Geraden $k$ ist. \
-<br>
+
 $f$ [[$\bot$|($\parallel$)]] $k$
 
-<br>
+
 </div>
 
 <div class="flex-child">
 
 __$b)\;\;$__ Die Gerade $f$ ist parallel zur Geraden $g$, während $g$ orthogonal zur Geraden $k$ ist. Die Gerade $k$ ist parallel zur Geraden $h$. \
-<br>
+
 $f$ [[($\bot$)|$\parallel$]] $h$
 
 </div>
@@ -74,8 +74,7 @@ $f$ [[($\bot$)|$\parallel$]] $h$
 
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

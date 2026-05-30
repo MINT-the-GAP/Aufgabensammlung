@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 **Fülle** die Lücke in der Gleichung aus, sodass die Gleichung eine wahre mathematische Aussage zum gegebenen Dreieck darstellt.
 
-<br>
+
 <section class="dynFlex">
 
 <div class="flex-child">
@@ -83,7 +83,7 @@ __$a)\;\;$__
 
 Gleichung: $\quad$  [[$\sin$|($\cos$)|$\tan$|$\text{cot}$]] $(\alpha)= \frac{b}{f}$
 
-<br>
+
 </div>
 
 <div class="flex-child">
@@ -151,7 +151,7 @@ __$c)\;\;$__
 
 Gleichung: $\quad$  [[$\sin$|$\cos$|($\tan$)|($\text{cot}$)]] $(\rho)= \frac{x}{y}$
 
-<br>
+
 </div>
 
 <div class="flex-child">
@@ -187,8 +187,7 @@ Gleichung: $\quad$   $\sin(\zeta)$= [[$\frac{p}{v}$|$\frac{v}{p}$|$\frac{k}{p}$|
 </div>
 
 </section>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

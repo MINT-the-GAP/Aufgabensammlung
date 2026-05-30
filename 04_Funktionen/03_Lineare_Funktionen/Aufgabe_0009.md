@@ -56,7 +56,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 5 \cdot x - 2$. 
 
-<br>
+
 
 <!-- data-type="none"
 data-sortable="false" -->
@@ -64,14 +64,14 @@ data-sortable="false" -->
 | :---: | :------: | :------: | :------: | :------: |
 |  f(x) | [[ 12 ]] | [[ 23 ]] | [[ 38 ]] | [[ 53 ]] |
 
-<br>
-<br>
-<br>
+
+
+
 
 
 __$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 3 \cdot x + 7$. 
 
-<br>
+
 
 <!-- data-type="none"
 data-sortable="false" -->
@@ -79,6 +79,6 @@ data-sortable="false" -->
 | :---: | :------: | :------: | :------: | :------: |
 |  f(x) |    13    | [[ 28 ]] |    43    | [[ 52 ]] |
 
-<br>
-<br>
-<br>
+
+
+

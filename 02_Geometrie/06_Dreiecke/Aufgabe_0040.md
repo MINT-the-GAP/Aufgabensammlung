@@ -51,7 +51,7 @@ author: Martin Lommatzsch
 
 **Gib** die fehlende Grundseitenlänge beziehungsweise Höhenlänge aus den beschriebenen Werten eines Dreiecks **an**.
 
-<br>
+
 
 
 <section class="dynFlex">
@@ -61,7 +61,7 @@ __$a)\;\;$__ $A= 1000\,$cm$^2\;\;\wedge\;\; h= 4\,$dm
 
 $g=$[[  5  ]]dm
 
-<br>
+
 </div>
 
 <div class="flex-child">
@@ -80,8 +80,7 @@ $h=$[[  500  ]]mm
 
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

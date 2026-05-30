@@ -51,7 +51,7 @@ author: Martin Lommatzsch
 
 Gegeben sei die im Koordinatensystem abgebildeten Graphen. **Ordne** den Funktionen einen zum Graph passenden Funktionsterm **zu**. 
 
-<br>
+
 
 ```latex  @tikz 
 \begin{tikzpicture}[scale=2, >=latex]
@@ -92,17 +92,17 @@ Gegeben sei die im Koordinatensystem abgebildeten Graphen. **Ordne** den Funktio
 	\end{tikzpicture}
 ```
 
-<br>
+
 <section class="dynFlex">
 
 <div class="flex-child">
 $f(x)=$ [[$\frac{1}{3} \cdot x + 1$|$\frac{1}{4} \cdot x + 1$|$\frac{1}{5} \cdot x + 1$|$\frac{1}{8} \cdot x + 1$|($\frac{1}{3} \cdot x + 1.5$)|$\frac{1}{4} \cdot x + 1.5$|$\frac{1}{5} \cdot x + \frac{3}{2}$|$\frac{1}{8} \cdot x + \frac{3}{2}$|$\frac{x}{3} + 3$|$\frac{x}{4} + 3$|$\frac{x}{5} + 3$|$\frac{x}{8} + 3$]] \
-<br>
+
 </div>
 
 <div class="flex-child">
 $g(x)=$ [[$\frac{1}{3} \cdot x + 1$|$\frac{1}{4} \cdot x + 1$|($\frac{1}{5} \cdot x + 1$)|$\frac{1}{8} \cdot x + 1$|$\frac{1}{3} \cdot x + 1.5$|$\frac{1}{4} \cdot x + 1.5$|$\frac{1}{5} \cdot x + \frac{3}{2}$|$\frac{1}{8} \cdot x + \frac{3}{2}$|$\frac{x}{3} + 3$|$\frac{x}{4} + 3$|$\frac{x}{5} + 3$|$\frac{x}{8} + 3$]] \
-<br>
+
 </div>
 
 <div class="flex-child">
@@ -111,6 +111,6 @@ $h(x)=$ [[$\frac{1}{3} \cdot x + 1$|$\frac{1}{4} \cdot x + 1$|$\frac{1}{5} \cdot
 </div>
 
 </section>
-<br>
-<br>
+
+
 

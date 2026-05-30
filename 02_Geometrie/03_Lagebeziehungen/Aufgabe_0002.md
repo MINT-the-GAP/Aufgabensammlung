@@ -48,23 +48,23 @@ author: Martin Lommatzsch
 
 **Wähle** die passende Lagebeziehung **aus**.
 
-<br>
+
 
 
 <section class="dynFlex">
 
 <div class="flex-child">
 __$a)\;\;$__ Es gilt: $f \bot g \;\;\wedge\;\; g \bot h \;\;\wedge\;\; h \parallel k \;\;\wedge\;\; h \bot l$ \
-<br>
+
 $g$ [[$\bot$|($\parallel$)]] $l$
 
-<br>
+
 </div>
 
 <div class="flex-child">
 
 __$b)\;\;$__  Es gilt: $f \bot g \;\;\wedge\;\; g \parallel h \;\;\wedge\;\; h \bot k$ \
-<br>
+
 $f$ [[$\bot$|($\parallel$)]] $k$
 
 
@@ -74,8 +74,7 @@ $f$ [[$\bot$|($\parallel$)]] $k$
 
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

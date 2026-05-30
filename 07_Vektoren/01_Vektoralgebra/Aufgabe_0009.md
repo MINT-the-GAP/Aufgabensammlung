@@ -49,13 +49,13 @@ author: Martin Lommatzsch
 
 
 **Berechne** den Abstand zwischen den gegebenen Punkten. Gib die Werte falls nötig gerundet auf drei Nachkommastellen an.
-<br>
+
 
 <section class="dynFlex">
 <div class="flex-child">
 
 __$a)\;\;$__ $P\left( 1 | 4 | 5 \right) \;\;\wedge\;\; Q\left( 3 | 1 | 1 \right)$  \
-<br>
+
  $ d = $ [[  5,385  ]] $LE$
 ***************
 $$
@@ -68,14 +68,14 @@ $$
  \end{align*}
 $$
 ***************
-<br>
-<br>
-<br>
+
+
+
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ $P\left( 6 | 3 | -2 \right) \;\;\wedge\;\; Q\left( -2 | 3 | -4 \right)$  \
-<br>
+
  $ d = $ [[  8,246  ]] $LE$
 ***************
 $$
@@ -88,14 +88,14 @@ $$
  \end{align*}
 $$
 ***************
-<br>
-<br>
-<br>
+
+
+
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ $P\left( 5 | -3 | -2 \right) \;\;\wedge\;\; Q\left( -7 | 2 | -5 \right)$  \
-<br>
+
  $ d = $ [[  13,342  ]] $LE$
 ***************
 $$
@@ -108,14 +108,14 @@ $$
  \end{align*}
 $$
 ***************
-<br>
-<br>
-<br>
+
+
+
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ $P\left( -6 | 3 | 1,5 \right) \;\;\wedge\;\; Q\left( -3 | 2 | 4 \right)$  \
-<br>
+
  $ d = $ [[  4,387  ]] $LE$
 ***************
 $$
@@ -128,16 +128,15 @@ $$
  \end{align*}
 $$
 ***************
-<br>
-<br>
-<br>
+
+
+
 </div>
 </section>
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+

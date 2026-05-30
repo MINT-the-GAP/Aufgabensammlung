@@ -55,7 +55,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 7 x - 22$. 
 
-<br>
+
 
 <!-- data-type="none"
 data-sortable="false" -->
@@ -63,14 +63,14 @@ data-sortable="false" -->
 | :---: | :-------: | :-------: | :-------: | :-------: |
 |  f(x) | [[ -50 ]] | [[ -1  ]] | [[ 41  ]] | [[ -64 ]] |
 
-<br>
-<br>
-<br>
+
+
+
 
 
 __$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -8 \cdot x - 14$. 
 
-<br>
+
 
 <!-- data-type="none"
 data-sortable="false" -->
@@ -78,6 +78,6 @@ data-sortable="false" -->
 | :---: | :-------: | :-------: | :-------: | :-------: |
 |  f(x) |    -46    | [[ -62 ]] |    42     | [[  26 ]] |
 
-<br>
-<br>
-<br>
+
+
+

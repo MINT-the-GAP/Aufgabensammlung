@@ -37,7 +37,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 tags: Addition, leicht, niedrig, Bestimmen, Random
 
-comment: Hier werden zufällige Addittionsaufgaben generiert, die vierstellige Summanden haben. Hier wird die Summe gesucht. 
+comment: Hier werden zufällige Additionsaufgaben generiert, die vierstellige Summanden haben. Hier wird die Summe gesucht. 
 
 author: Martin Lommatzsch
 

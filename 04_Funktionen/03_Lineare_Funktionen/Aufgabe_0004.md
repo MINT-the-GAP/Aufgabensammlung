@@ -51,7 +51,7 @@ author: Martin Lommatzsch
 
 Gegeben sei die im Koordinatensystem abgebildeten Graphen. **Ordne** den Funktionen einen zum Graph passenden Funktionsterm **zu**. 
 
-<br>
+
 
 ```latex  @tikz 
 \begin{tikzpicture}[scale=2, >=latex]
@@ -86,17 +86,17 @@ Gegeben sei die im Koordinatensystem abgebildeten Graphen. **Ordne** den Funktio
 	\end{tikzpicture}
 ```
 
-<br>
+
 <section class="dynFlex">
 
 <div class="flex-child">
 $f(x)=$ [[($x$)|$4 \cdot x$|$2 \cdot x$|$\frac{1}{2} \cdot x$|$\frac{1}{4} \cdot x$|$x+1$|$x+0,5$|$x+\frac{1}{4}$|$2 \cdot x+1$|$\frac{1}{2} \cdot x+1$|$\frac{1}{4} \cdot x+1$]] \
-<br>
+
 </div>
 
 <div class="flex-child">
 $g(x)=$ [[$x$|$4 \cdot x$|$2 \cdot x$|$\frac{1}{2} \cdot x$|$\frac{1}{4} \cdot x$|$x+1$|$x+0,5$|$x+\frac{1}{4}$|$2 \cdot x+1$|$\frac{1}{2} \cdot x+1$|($\frac{1}{4} \cdot x+1$)]] \
-<br>
+
 </div>
 
 <div class="flex-child">
@@ -105,6 +105,6 @@ $h(x)=$ [[$x$|$4 \cdot x$|$2 \cdot x$|($\frac{1}{2} \cdot x$)|$\frac{1}{4} \cdot
 </div>
 
 </section>
-<br>
-<br>
+
+
 

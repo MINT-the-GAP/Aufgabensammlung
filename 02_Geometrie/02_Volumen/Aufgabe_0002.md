@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 **Kreuze** die zutreffenden Antworten auf die Fragen **an**.
 
-<br>
+
 
 
 <section class="dynFlex">
@@ -66,9 +66,9 @@ __$a)\;\;$__ Ein Würfel besitzt einen Volumeninhalt von $64\,$cm$^3$. Wie groß
 - [[ ]] $a=8\,$cm
 - [[ ]] $a=16\,$cm
 
-<br>
-<br>
-<br>
+
+
+
 
 
 </div>
@@ -84,17 +84,16 @@ __$b)\;\;$__ Ein Würfel besitzt einen Oberflächeninhalt von $150\,$cm$^2$. Wie
 - [[ ]] $a=6\,$cm
 - [[ ]] $a=8\,$cm
 
-<br>
-<br>
-<br>
+
+
+
 
 </div>
 
 </section>
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

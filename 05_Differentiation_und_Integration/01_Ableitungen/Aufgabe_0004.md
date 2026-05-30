@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 **Gib an**, welcher Graphen die Ableitung welches Graphen ist.
 
-<br>
+
 
 <center>
 
@@ -302,16 +302,15 @@ author: Martin Lommatzsch
 </center>
 
 [[ h ]] ist äquivalent zur ersten Ableitung von [[ l ]]. \
-<br>
-<br>
-<br>
-
-<br>
-<br>
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+
+
+
+
+
+

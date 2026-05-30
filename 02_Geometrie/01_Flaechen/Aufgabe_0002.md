@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 **Kreuze** die zutreffenden Antworten auf die Fragen **an**.
 
-<br>
+
 
 <section class="dynFlex">
 
@@ -65,9 +65,9 @@ __$a)\;\;$__ Welche der angegebenen Wertepaare beschreibt einen Flächeninhalt e
 - [[X]] $a=4\,$cm$\;\;\wedge\;\; b=6$cm
 - [[ ]] $a=9\,$cm$\;\;\wedge\;\; b=3$cm
 
-<br>
-<br>
-<br>
+
+
+
 
 </div>
 
@@ -84,9 +84,9 @@ __$b)\;\;$__ Welche der angegebenen Wertepaare beschreibt einen Umfang eines Rec
 - [[X]] $a=7\,$cm$\;\;\wedge\;\; b=9\,$cm
 
 
-<br>
-<br>
-<br>
+
+
+
 
 </div>
 
@@ -95,8 +95,7 @@ __$b)\;\;$__ Welche der angegebenen Wertepaare beschreibt einen Umfang eines Rec
 
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

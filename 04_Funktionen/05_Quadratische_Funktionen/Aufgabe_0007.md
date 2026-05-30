@@ -56,7 +56,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Gegeben sei die quadratische Funktion $f(x) = 2 \cdot x^2 + 3$. 
 
-<br>
+
 
 <!-- data-type="none"
 data-sortable="false" -->
@@ -64,14 +64,14 @@ data-sortable="false" -->
 | :---: | :------: | :------: | :------: | :------: |
 |  f(x) | [[  5 ]] | [[ 21 ]] | [[ 39 ]] | [[ 53 ]] |
 
-<br>
-<br>
-<br>
+
+
+
 
 
 __$b)\;\;$__ Gegeben sei die quadratische Funktion $f(x) = x^2 + x + 1$. 
 
-<br>
+
 
 <!-- data-type="none"
 data-sortable="false" -->
@@ -79,6 +79,6 @@ data-sortable="false" -->
 | :---: | :------: | :------: | :------: | :------: |
 |  f(x) | [[  1 ]] | [[  7 ]] | [[ 31 ]] | [[ 43 ]] |
 
-<br>
-<br>
-<br>
+
+
+

@@ -56,7 +56,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Gegeben sei die quadratische Funktion $f(x) = 4x^2 - 6$. 
 
-<br>
+
 
 <!-- data-type="none"
 data-sortable="false" -->
@@ -64,13 +64,13 @@ data-sortable="false" -->
 | :---: | :-------: | :-------: | :-------: | :-------: |
 |  f(x) | [[ 6   ]] | [[  -2 ]] | [[  -6 ]] | [[  10 ]] |
 
-<br>
-<br>
-<br>
+
+
+
 
 __$b)\;\;$__ Gegeben sei die quadratische Funktion $f(x) = x^2 - 3x $. 
 
-<br>
+
 
 <!-- data-type="none"
 data-sortable="false" -->
@@ -78,6 +78,5 @@ data-sortable="false" -->
 | :---: | :-------: | :-------: | :-------: | :-------: |
 |  f(x) | [[  28 ]] | [[ -2  ]] | [[ -2  ]] | [[  18 ]] |
 
-<br>
-<br>
-<br>
+
+

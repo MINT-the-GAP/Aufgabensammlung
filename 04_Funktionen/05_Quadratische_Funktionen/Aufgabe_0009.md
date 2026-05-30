@@ -56,7 +56,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Gegeben sei die quadratische Funktion $f(x) = x^2 - 2 x$. 
 
-<br>
+
 
 <!-- data-type="none"
 data-sortable="false" -->
@@ -64,13 +64,13 @@ data-sortable="false" -->
 | :---: | :------: | :------: | :------: | :------: |
 |  f(x) | [[  0 ]] | [[ 0  ]] | [[ 3  ]] | [[ 15 ]] |
 
-<br>
-<br>
-<br>
+
+
+
 
 __$b)\;\;$__ Gegeben sei die quadratische Funktion $f(x) = 3x^2 - 4 $. 
 
-<br>
+
 
 <!-- data-type="none"
 data-sortable="false" -->
@@ -78,6 +78,5 @@ data-sortable="false" -->
 | :---: | :------: | :------: | :------: | :------: |
 |  f(x) | [[  8 ]] | [[ 23 ]] | [[ 104]] | [[ 188]] |
 
-<br>
-<br>
-<br>
+
+

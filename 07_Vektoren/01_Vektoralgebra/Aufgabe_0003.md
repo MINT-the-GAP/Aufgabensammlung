@@ -53,7 +53,7 @@ author: Martin Lommatzsch
 
 
 **Entscheide**, ob es sich bei dem Term um einen Vektor, ein Skalar oder einen nicht definierten Ausdruck handelt.
-<br>
+
 
 - [[Vektor]       (Skalar)    [nicht definiert]]
 - [    [ ]           [X]             [ ]     ]  $$ \vec{a} \circ \left( \vec{b} - \mu \vec{r} \right) $$

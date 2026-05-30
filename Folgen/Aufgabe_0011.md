@@ -51,15 +51,14 @@ author: Martin Lommatzsch
 
 
 
-<br>
+
 
 $0 \quad 1 \quad 6 \quad 15 \quad 28 \quad 45 \quad 66 \quad 91 \quad 120 \quad$ [[ 153 ]] $\quad$ [[ 190 ]] $\quad$ [[ 231 ]] \
 
 [[?]] Musterbeschreibung: Der Folgenterm ist $n\cdot(2\cdot n -1)$.
 
-<br>
 
-<br>
-<br>
-<br>
-<br>
+
+
+
+

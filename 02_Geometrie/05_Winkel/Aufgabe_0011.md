@@ -50,11 +50,11 @@ author: Martin Lommatzsch
 
 **Gib** das gesuchte Winkelmaß **an**. Es gilt $f \parallel g$. (Die graphische Darstellung dient zur Orientierung und entspricht nicht den realen Werten.)
 
-<br>
+
 <section class="dynFlex">
 
 <div class="flex-child">
-<br>
+
 
 __$a)\;\;$__
 
@@ -106,11 +106,11 @@ __$a)\;\;$__
 
 $\gamma =$ [[ 33 ]]$^\circ$
 
-<br>
+
 </div>
 
 <div class="flex-child">
-<br>
+
 
 
 __$b)\;\;$__
@@ -166,8 +166,7 @@ $\omega =$ [[ 116 ]]$^\circ$
 </div>
 
 </section>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

@@ -76,9 +76,9 @@ __$d)\;\;$__ $\log_{5}\left( 125 \right) = $ [[  3  ]]
 </div>
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+
  

@@ -76,9 +76,9 @@ __$d)\;\;$__ $\log_{5}\left( \dfrac{1}{3125} \right) = $ [[  -5  ]]
 </div>
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+
  

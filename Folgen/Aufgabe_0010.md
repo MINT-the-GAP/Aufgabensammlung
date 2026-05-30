@@ -51,7 +51,7 @@ author: Martin Lommatzsch
 
 
 
-<br>
+
 
 __$a)\;\;$__
 
@@ -59,7 +59,7 @@ $53 \quad 55 \quad 59 \quad 65 \quad 73 \quad 83 \quad 95 \quad $ [[ 109 ]] $\qu
 
 [[?]] Musterbeschreibung: Zur vorherigen Zahl wird die nächst größere gerade Zahl addiert.
 
-<br>
+
 
 __$b)\;\;$__
 
@@ -67,7 +67,7 @@ $b \quad D \quad f \quad H \quad j \quad L \quad $ [[ n ]] $\quad$ [[ P ]] $\qua
 
 [[?]] Musterbeschreibung: Immer jeweils der übernächste Buchstabe des Alphabets abwechselnd klein und groß geschrieben.
 
-<br>
+
 
 __$c)\;\;$__
 
@@ -75,9 +75,8 @@ $542 \quad  \quad 519 \quad 496 \quad 473 \quad 450 \quad 427 \quad 404 \quad $ 
 
 [[?]] Musterbeschreibung: Von der vorherigen Zahl wird $23$ subtrahiert.
 
-<br>
 
-<br>
-<br>
-<br>
-<br>
+
+
+
+

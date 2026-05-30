@@ -56,7 +56,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -2 x + 3$. 
 
-<br>
+
 
 <!-- data-type="none"
 data-sortable="false" -->
@@ -64,14 +64,14 @@ data-sortable="false" -->
 | :---: | :-------: | :-------: | :-------: | :-------: |
 |  f(x) | [[ 7   ]] | [[ -5  ]] | [[ 13  ]] | [[ -11 ]] |
 
-<br>
-<br>
-<br>
+
+
+
 
 
 __$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -3 \cdot x - 5$. 
 
-<br>
+
 
 <!-- data-type="none"
 data-sortable="false" -->
@@ -79,6 +79,6 @@ data-sortable="false" -->
 | :---: | :-------: | :-------: | :-------: | :-------: |
 |  f(x) |    -17    | [[ -23 ]] |    16     | [[  10 ]] |
 
-<br>
-<br>
-<br>
+
+
+

@@ -49,14 +49,14 @@ author: Martin Lommatzsch
 
 **Entscheide**, ob der beschriebene Sachzusammenhang eine mehrdeutige, eindeutige oder eineindeutige Zuordnung darstellt.
 
-<br>
+
 
 __$a)\;\;$__ Jeder Körpergröße wird ein Mensch zugeordnet.
 
 
 Es handelt sich um eine [[(mehrdeutige)|eindeutige|eineindeutige]] Zuordnung.
 
-<br>
+
 
 __$b)\;\;$__ Jedem Mensch wird ein Fingerabdruck zugeordnet.
 
@@ -64,11 +64,11 @@ __$b)\;\;$__ Jedem Mensch wird ein Fingerabdruck zugeordnet.
 Es handelt sich um eine [[mehrdeutige|eindeutige|(eineindeutige)]] Zuordnung.
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+
+
+
+

@@ -62,26 +62,25 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
  $A($[[  -3,6  ]]$|$[[  -3,4  ]]$)$ \
-<br>
+
 </div>
 
 <div class="flex-child">
 
  $B($[[  2,2  ]]$|$[[  4,1  ]]$)$ \
-<br>
+
 </div>
 
 <div class="flex-child">
 
  [[  E  ]]$( 1,8 | -4,3 )$ \
-<br>
+
 
 </div>
 
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+

@@ -55,7 +55,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Gegeben sei die lineare Funktion $f(x) = -9 x + 11$. 
 
-<br>
+
 
 <!-- data-type="none"
 data-sortable="false" -->
@@ -63,13 +63,13 @@ data-sortable="false" -->
 | :---: | :-------: | :-------: | :-------: | :-------: |
 |  f(x) | [[ -16 ]] | [[ 83  ]] | [[ 29  ]] | [[ -52 ]] |
 
-<br>
-<br>
-<br>
+
+
+
 
 __$b)\;\;$__ Gegeben sei die lineare Funktion $f(x) = 4 \cdot x - 15$. 
 
-<br>
+
 
 <!-- data-type="none"
 data-sortable="false" -->
@@ -77,6 +77,6 @@ data-sortable="false" -->
 | :---: | :-------: | :-------: | :-------: | :-------: |
 |  f(x) |     1     | [[  9  ]] |    13     | [[ -35 ]] |
 
-<br>
-<br>
-<br>
+
+
+
