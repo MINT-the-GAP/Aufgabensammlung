@@ -174,42 +174,37 @@ function patchIndexHtml(html) {
     </script>`
   )
 
-  // 4. Füge Sterne zu jeder Karte anhand des Schwierigkeitsgrads hinzu (jetzt im .card-body)
+  // 4. Füge Sterne pro Karte anhand ihres eigenen data-category-Werts hinzu.
+  //    Zuerst alte Stern-Container entfernen, damit der Patch idempotent bleibt.
   html = html.replace(
-    /(<div class="card-body" style="transform[^>]*>)([\s\S]*?)(<p>([\s\S]*?)(sehr leicht|leicht|mittel|schwer|sehr schwer)([\s\S]*?)<\/p>)/g,
-    (
-      match,
-      cardBodyStart,
-      cardBodyContent,
-      pBlock,
-      beforeDiff,
-      diffText,
-      afterDiff
-    ) => {
-      // Schwierigkeitsgrad bestimmen
+    /<div style="position:absolute;top:8px;right:16px;margin-bottom:57px;">[\s\S]*?<\/div><br>/g,
+    ''
+  )
+
+  html = html.replace(
+    /(<div class="card shadow-sm m-1"[^>]*data-category="([^"]+)"[^>]*>\s*(?:<div class="card-img-top"[^>]*><\/div>\s*)?<div class="card-body" style="transform[^>]*>)/g,
+    (match, cardBodyStart, dataCategory) => {
+      const tags = dataCategory.split('|').map(s => s.trim())
       const difficultyOrder = [
         ['sehr schwer', 5],
-        ['sehr leicht', 1],
-        ['leicht', 2],
-        ['mittel', 3],
         ['schwer', 4],
+        ['mittel', 3],
+        ['leicht', 2],
+        ['sehr leicht', 1],
       ]
-      let found = ['sehr leicht', -1] // Standardwert, falls kein Schwierigkeitsgrad gefunden wird
-      for (const diff of difficultyOrder) {
-        if (pBlock.includes(diff[0])) {
-          found = diff
+
+      let starsCount = 0
+      for (const [label, value] of difficultyOrder) {
+        if (tags.includes(label)) {
+          starsCount = value
           break
         }
       }
 
-      if (found[1] === -1) {
-        // Wenn kein Schwierigkeitsgrad gefunden wurde, gib den Inhalt unverändert zurück
+      if (!starsCount) {
         return match
       }
 
-      const starsCount = found[1]
-
-      // Sterne-HTML generieren (angepasster Stil)
       const star = '<span style="color:gold;font-size:1.2em;">★</span>'
       const starGray = '<span style="color:#ccc;font-size:1.2em;">★</span>'
       const starsHtml =
@@ -218,12 +213,16 @@ function patchIndexHtml(html) {
         starGray.repeat(5 - starsCount) +
         '</div><br>'
 
-      // Sterne als erstes Element im card-body einfügen
-      return cardBodyStart + starsHtml + cardBodyContent + pBlock
+      return cardBodyStart + starsHtml
     }
   )
 
   // 5. Füge Vernetzungsgrad-Bild vor den Kartentitel ein (robust für beliebige Attribute)
+  html = html.replace(
+    /<h6 class="card-title">\s*(?:<img src="pic\/[1-5]\.png" style="height: 20px; margin-right: 4px;">\s*)+/g,
+    '<h6 class="card-title">'
+  )
+
   html = html.replace(
     /(<div[^>]*data-category="([^"]+)"[^>]*>[\s\S]*?<h6 class="card-title">)([\s\S]*?)(<\/h6>)/g,
     (match, before, dataCategory, title, h6End) => {
