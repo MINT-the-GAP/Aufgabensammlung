@@ -6,6 +6,82 @@ const SCRIPT_START = '<!-- SCHULLIA_CUSTOM_SCRIPT_START -->'
 const SCRIPT_END = '<!-- SCHULLIA_CUSTOM_SCRIPT_END -->'
 const STYLE_START = '<!-- SCHULLIA_THEME_START -->'
 const STYLE_END = '<!-- SCHULLIA_THEME_END -->'
+const NAVBAR_FIX_SCRIPT_START = '<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->'
+const NAVBAR_FIX_SCRIPT_END = '<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_END -->'
+const NAVBAR_FIX_STYLE_START = '<!-- SCHULLIA_NAVBAR_FIX_STYLE_START -->'
+const NAVBAR_FIX_STYLE_END = '<!-- SCHULLIA_NAVBAR_FIX_STYLE_END -->'
+
+const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
+<script>
+  (function () {
+    function applyNavbarFix() {
+      const navbar =
+        document.getElementById('mainNavbar') ||
+        document.querySelector('nav.navbar.sticky-top')
+      if (!navbar) return
+
+      navbar.style.background = '#147375'
+      navbar.style.backgroundColor = '#147375'
+
+      const brand = navbar.querySelector('.navbar-brand')
+      if (brand) {
+        brand.style.fontWeight = '700'
+
+        if (!brand.querySelector('img')) {
+          const img = document.createElement('img')
+          img.src = './pics/grad/SchulLia.png'
+          img.alt = 'SchulLia Icon'
+          img.style.height = '1.1em'
+          img.style.width = '1.1em'
+          img.style.marginRight = '0.35em'
+          img.style.verticalAlign = '-0.12em'
+          brand.prepend(img)
+        }
+      }
+
+      navbar.querySelectorAll('.nav-link, .btn.nav-link').forEach(function (link) {
+        link.style.fontWeight = '700'
+      })
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', applyNavbarFix)
+    } else {
+      applyNavbarFix()
+    }
+
+    window.addEventListener('load', applyNavbarFix)
+    window.setTimeout(applyNavbarFix, 600)
+  })()
+</script>
+${NAVBAR_FIX_SCRIPT_END}`
+
+const NAVBAR_FIX_STYLE = `${NAVBAR_FIX_STYLE_START}
+<style>
+  #mainNavbar,
+  nav.navbar.sticky-top {
+    background: #147375 !important;
+    background-color: #147375 !important;
+  }
+
+  #mainNavbar .navbar-brand,
+  nav.navbar.sticky-top .navbar-brand,
+  #mainNavbar .nav-link,
+  nav.navbar.sticky-top .nav-link,
+  #mainNavbar .btn.nav-link,
+  nav.navbar.sticky-top .btn.nav-link {
+    font-weight: 700 !important;
+  }
+
+  #mainNavbar .navbar-brand img,
+  nav.navbar.sticky-top .navbar-brand img {
+    height: 1.1em;
+    width: 1.1em;
+    margin-right: 0.35em;
+    vertical-align: -0.12em;
+  }
+</style>
+${NAVBAR_FIX_STYLE_END}`
 
 function replaceOnce(html, regex, replacer) {
   return regex.test(html) ? html.replace(regex, replacer) : html
@@ -104,9 +180,20 @@ function patchIndexHtml(html, targetParts) {
     new RegExp(`${STYLE_START}[\\s\\S]*?${STYLE_END}`, 'g'),
     ''
   )
+  html = html.replace(
+    new RegExp(`${NAVBAR_FIX_SCRIPT_START}[\\s\\S]*?${NAVBAR_FIX_SCRIPT_END}`, 'g'),
+    ''
+  )
+  html = html.replace(
+    new RegExp(`${NAVBAR_FIX_STYLE_START}[\\s\\S]*?${NAVBAR_FIX_STYLE_END}`, 'g'),
+    ''
+  )
 
   if (html.includes('</head>')) {
-    html = html.replace('</head>', `\n${targetParts.script}\n${targetParts.style}\n</head>`)
+    html = html.replace(
+      '</head>',
+      `\n${targetParts.script}\n${targetParts.style}\n${NAVBAR_FIX_STYLE}\n${NAVBAR_FIX_SCRIPT}\n</head>`
+    )
   }
 
   return html
