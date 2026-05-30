@@ -1,279 +1,51 @@
 const fs = require('fs')
 const path = require('path')
 
-// Patch-Funktion für index.html
+function injectAfter(source, anchor, insert) {
+  if (source.includes(insert)) return source
+  return source.includes(anchor) ? source.replace(anchor, `${anchor}${insert}`) : source
+}
+
 function patchIndexHtml(html) {
+  html = html.replace('<option value="" selected>All categories</option>', '<option value="" selected>Alle Kategorien</option>')
+
+  // SchulLia icon (requested origami SVG)
   html = html.replace(
-    '<option value="" selected>All categories</option>',
-    `<option value="" selected>Alle Kategorien</option>`
+    /<h1 class="project-title">[\s\S]*?<\/h1>/,
+    '<h1 class="project-title"><img src="https://liascript.github.io/course/icon.svg" alt="LiaScript Icon" style="height: 1em; width: 1em; margin-right: 0.28em; vertical-align: -0.12em;">SchulLia</h1>'
   )
 
-  // 1. Entferne Schwierigkeitsgrade aus dem ursprünglichen Dropdown
-  const difficultyOptions = [
-    'sehr leicht',
-    'leicht',
-    'mittel',
-    'schwer',
-    'sehr schwer',
-    'sehr hoch',
-    'hoch',
-    'normal',
-    'niedrig',
-    'sehr niedrig',
-  ]
-  html = html.replace(
-    /(<select[^>]*id="categorySelect"[^>]*>)([\s\S]*?)(<\/select>)/,
-    (match, start, options, end) => {
-      // Entferne die Schwierigkeitsgrade aus den Optionen
-      const filteredOptions = options.replace(
-        new RegExp(
-          `<option value="(?:${difficultyOptions.join(
-            '|'
-          )})"[^>]*>.*?<\\/option>`,
-          'gi'
-        ),
-        ''
-      )
-      return start + filteredOptions + end
-    }
+  // Keep native sources hidden when custom dropdowns are used
+  html = injectAfter(
+    html,
+    'select.form-select:focus {\n                border-color: var(--accent);\n                box-shadow: 0 0 0 0.2rem rgba(20, 115, 117, 0.2);\n            }',
+    '\n\n            .native-select-source {\n                display: none !important;\n            }\n'
   )
 
-  // 2. Füge ein neues Dropdown für Schwierigkeitsgrade nach dem Kategorie-Dropdown ein
-  const difficultyDropdown = `
-<select id="difficultySelect" class="form-select mt-2" aria-label="Schwierigkeitsgrad wählen" onchange="addDifficultyChip(this.value)">
-  <option value="" selected>Alle Schwierigkeitsgrade</option>
-  <option value="sehr leicht">sehr leicht</option>
-  <option value="leicht">leicht</option>
-  <option value="mittel">mittel</option>
-  <option value="schwer">schwer</option>
-  <option value="sehr schwer">sehr schwer</option>
-</select>
-`
+  // Ensure custom dropdown max 12 lines and consistent typography
   html = html.replace(
-    /(<select[^>]*id="categorySelect"[^>]*>[\s\S]*?<\/select>)/,
-    `$1${difficultyDropdown}`
+    /select\.form-select \{[\s\S]*?\}/,
+    `select.form-select {\n                border: 2px solid rgba(20, 115, 117, 0.42);\n                border-radius: 12px;\n                background-color: rgba(255, 255, 255, 0.95);\n                color: var(--accent-ink);\n                font-weight: 700;\n                font-size: 1rem;\n                line-height: 1.25;\n                box-shadow: 0 8px 18px rgba(8, 34, 40, 0.12);\n            }`
+  )
+  html = injectAfter(
+    html,
+    '.difficulty-menu {',
+    '\n                max-height: calc(12 * 2.35em);\n                overflow-y: auto;'
   )
 
-  // 2. Füge ein neues Dropdown für Vernetzungsgrade nach dem Kategorie-Dropdown ein
-  const networkingDropdown = `
-   <select id="networkingSelect" class="form-select mt-2" aria-label="Vernetzungsgrad wählen" onchange="addNetworkingChip(this.value)">
-     <option value="" selected>Alle Vernetzungsgrade</option>
-     <option value="sehr niedrig">sehr niedrig</option>
-     <option value="niedrig">niedrig</option>
-     <option value="normal">normal</option>
-     <option value="hoch">hoch</option>
-     <option value="sehr hoch">sehr hoch</option>
-   </select>
-   `
+  // Hide native selects for category/operator as source stores
   html = html.replace(
-    /(<select[^>]*id="categorySelect"[^>]*>[\s\S]*?<\/select>)/,
-    `$1${networkingDropdown}`
+    /<select id="categorySelect" class="form-select"/,
+    '<select id="categorySelect" class="form-select native-select-source"'
   )
-
-  // 3. Ersetze das bisherige Script durch das gewünschte Script
   html = html.replace(
-    /<script>[\s\S]*?<\/script>/i,
-    `<script>
-      // Globale Variable zum Speichern der ausgewählten Kategorien
-      window.selectedCategories = []
-      window.selectedDifficulty = ''
-      window.selectedNetworking = ''
-
-      // Fügt einen Chip hinzu, wenn eine Kategorie gewählt wurde
-      function addCategoryChip(category) {
-        if (!category) return // falls "All categories" gewählt wurde, nichts tun
-        if (window.selectedCategories.indexOf(category) === -1) {
-          window.selectedCategories.push(category)
-          // Option im Select-Menü deaktivieren
-          document.querySelector(
-            '#categorySelect option[value="' + category + '"]'
-          ).disabled = true
-          updateChipsDisplay()
-          filterCards()
-        }
-        // Setze das Select-Element zurück
-        document.getElementById('categorySelect').value = ''
-      }
-
-      function addDifficultyChip(category) {
-        window.selectedDifficulty = category
-        filterCards()
-      }
-
-      function addNetworkingChip(category) {
-        window.selectedNetworking = category
-        filterCards()
-      }
-
-      // Entfernt einen Chip
-      function removeCategoryChip(category) {
-        const index = window.selectedCategories.indexOf(category)
-        if (index > -1) {
-          window.selectedCategories.splice(index, 1)
-          // Option im Select-Menü wieder aktivieren
-          document.querySelector(
-            '#categorySelect option[value="' + category + '"]'
-          ).disabled = false
-          updateChipsDisplay()
-          filterCards()
-        }
-      }
-
-      // Aktualisiert die Anzeige der Chips
-      function updateChipsDisplay() {
-        const chipsContainer = document.getElementById('chipsContainer')
-        chipsContainer.innerHTML = ''
-        window.selectedCategories.forEach(function (cat) {
-          const chip = document.createElement('span')
-          chip.className = 'badge rounded-pill bg-primary me-2'
-          chip.style.cursor = 'pointer'
-          chip.style.fontSize = '1rem'
-          chip.textContent = cat + ' ×'
-          chip.onclick = function () {
-            removeCategoryChip(cat)
-          }
-          chipsContainer.appendChild(chip)
-        })
-      }
-
-      function filterCards() {
-        const cards = document.querySelectorAll('div[data-category]')
-        cards.forEach(function (card) {
-          // Falls keine Filterkategorien ausgewählt wurden, zeige alle Karten
-          if (
-            window.selectedCategories.length === 0 &&
-            window.selectedDifficulty === '' &&
-            window.selectedNetworking === ''
-          ) {
-            card.parentNode.style.display = 'block'
-            return
-          }
-          // Zerlege die im data-Attribut hinterlegten Kategorien
-          const cardCategories = card.dataset.category.split('|')
-          // Prüfe, ob alle ausgewählten Kategorien in der Karte vorhanden sind
-          let show = window.selectedCategories.every(function (cat) {
-            return cardCategories.indexOf(cat) !== -1
-          })
-          if (show) {
-            if (
-              (window.selectedDifficulty === '' ||
-              cardCategories.indexOf(window.selectedDifficulty) !== -1) &&
-              (window.selectedNetworking === '' ||
-              cardCategories.indexOf(window.selectedNetworking) !== -1)
-            ) {
-              // Wenn eine Schwierigkeit ausgewählt ist, prüfe auch diese
-              card.parentNode.style.display = 'block'
-            } else {
-              card.parentNode.style.display = 'none'
-            }
-          } else {
-            card.parentNode.style.display = 'none'
-          }
-        })
-      }
-    </script>`
+    /<select id="operatorSelect" class="form-select mt-2"/,
+    '<select id="operatorSelect" class="form-select native-select-source"'
   )
-
-  // 4. Füge Sterne pro Karte anhand ihres eigenen data-category-Werts hinzu.
-  //    Zuerst alte Stern-Container entfernen, damit der Patch idempotent bleibt.
-  html = html.replace(
-    /<div style="position:absolute;top:8px;right:16px;margin-bottom:57px;">[\s\S]*?<\/div><br>/g,
-    ''
-  )
-
-  html = html.replace(
-    /(<div class="card shadow-sm m-1"[^>]*data-category="([^"]+)"[^>]*>\s*(?:<div class="card-img-top"[^>]*><\/div>\s*)?<div class="card-body" style="transform[^>]*>)/g,
-    (match, cardBodyStart, dataCategory) => {
-      const tags = dataCategory.split('|').map(s => s.trim())
-      const difficultyOrder = [
-        ['sehr schwer', 5],
-        ['schwer', 4],
-        ['mittel', 3],
-        ['leicht', 2],
-        ['sehr leicht', 1],
-      ]
-
-      let starsCount = 0
-      for (const [label, value] of difficultyOrder) {
-        if (tags.includes(label)) {
-          starsCount = value
-          break
-        }
-      }
-
-      if (!starsCount) {
-        return match
-      }
-
-      const star = '<span style="color:gold;font-size:1.2em;">★</span>'
-      const starGray = '<span style="color:#ccc;font-size:1.2em;">★</span>'
-      const starsHtml =
-        '<div style="position:absolute;top:8px;right:16px;margin-bottom:57px;">' +
-        star.repeat(starsCount) +
-        starGray.repeat(5 - starsCount) +
-        '</div><br>'
-
-      return cardBodyStart + starsHtml
-    }
-  )
-
-  // 5. Füge Vernetzungsgrad-Bild vor den Kartentitel ein (robust für beliebige Attribute)
-  html = html.replace(
-    /<h6 class="card-title">\s*(?:<img src="pic\/[1-5]\.png" style="height: 20px; margin-right: 4px;">\s*)+/g,
-    '<h6 class="card-title">'
-  )
-
-  html = html.replace(
-    /(<div[^>]*data-category="([^"]+)"[^>]*>[\s\S]*?<h6 class="card-title">)([\s\S]*?)(<\/h6>)/g,
-    (match, before, dataCategory, title, h6End) => {
-      const networkingOrder = [
-        ['sehr niedrig', 1],
-        ['niedrig', 2],
-        ['normal', 3],
-        ['hoch', 4],
-        ['sehr hoch', 5],
-      ]
-      let found = null
-      for (const [grad, num] of networkingOrder) {
-        if (dataCategory.split('|').map(s => s.trim()).includes(grad)) {
-          found = num
-          break
-        }
-      }
-      if (found) {
-        return `${before}<img src="pic/${found}.png" style="height: 20px; margin-right: 4px;"> ${title}${h6End}`
-      } else {
-        return match
-      }
-    }
-  )
-
-  for (const diff of [
-    'sehr leicht',
-    'sehr schwer',
-    'mittel',
-    'leicht',
-    'schwer',
-    'sehr hoch',
-    'hoch',
-    'normal',
-    'sehr niedrig',
-    'niedrig',
-  ]) {
-    // 5. Entferne die Schwierigkeitsgrade aus den Karten
-    html = html.replace(
-      new RegExp(
-        `<span style="display: inline; white-space: break-spaces;" class="badge rounded-pill bg-light text-dark">${diff}</span>`,
-        'g'
-      ),
-      ''
-    )
-  }
 
   return html
 }
 
-// Einlesen und Überschreiben von index.html
 const indexPath = path.join(__dirname, 'index.html')
 const html = fs.readFileSync(indexPath, 'utf8')
 const patchedHtml = patchIndexHtml(html)

@@ -18803,8 +18803,8 @@
                         "name": "Sonstiges",
                         "description": "Hier befinden sich Aufgaben, die nicht in die anderen Kategorien passen."
                 }],
-                    "name": "Aufgabensammlung",
-                    "description": "Projektnamen hier einfügen :-)"
+                    "name": "Aufgabensammlung für Mathematik",
+                    "description": "SchulLia"
             }
         </script>
         <link rel="icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Logo_TU_Bergakademie_Freiberg.svg/242px-Logo_TU_Bergakademie_Freiberg.svg.png">
@@ -18814,42 +18814,361 @@
       window.selectedCategories = []
       window.selectedDifficulty = ''
       window.selectedNetworking = ''
+    window.selectedOperator = ''
+
+        const OPERATOR_LABELS = [
+            'Angeben', 'Ausfüllen', 'Auswählen', 'Ankreuzen', 'Ordnen',
+            'Skizzieren', 'Zeichnen', 'Abschätzen', 'Vergleichen', 'Aufstellen',
+            'Ermitteln', 'Bestimmen', 'Berechnen', 'Planen', 'Untersuchen',
+            'Ableiten', 'Herleiten', 'Beschreiben', 'Erklären', 'Erläutern',
+            'Erörtern', 'Diskutieren', 'Beurteilen', 'Bewerten', 'Begründen',
+            'Interpretieren', 'Deuten', 'Analysieren', 'Auswerten', 'Darstellen'
+        ]
+
+            function normalizeTag(value) {
+                return (value || '')
+                    .toString()
+                    .trim()
+                    .toLowerCase()
+                    .replace(/ä/g, 'ae')
+                    .replace(/ö/g, 'oe')
+                    .replace(/ü/g, 'ue')
+                    .replace(/ß/g, 'ss')
+            }
+
+            function findCategoryOption(value) {
+                const select = document.getElementById('categorySelect')
+                if (!select) return null
+                const normalized = normalizeTag(value)
+                return Array.from(select.options).find(function (opt) {
+                    return normalizeTag(opt.value) === normalized
+                })
+            }
+
+            function formatTagLabel(value) {
+                const specials = {
+                    blf: 'BLF',
+                    ggt: 'ggT',
+                    kgv: 'kgV'
+                }
+
+                return (value || '')
+                    .toString()
+                    .trim()
+                    .split(/\s+/)
+                    .filter(Boolean)
+                    .map(function (word) {
+                        const key = normalizeTag(word)
+                        if (specials[key]) return specials[key]
+                        return word.charAt(0).toLocaleUpperCase('de-DE') + word.slice(1)
+                    })
+                    .join(' ')
+            }
+
+            function prettifyCategoryDropdown() {
+                const select = document.getElementById('categorySelect')
+                if (!select) return
+
+                Array.from(select.options).forEach(function (opt) {
+                    const normalizedValue = normalizeTag(opt.value)
+                    const normalizedText = normalizeTag(opt.textContent)
+
+                    // Entfernt leere Platzhalter-Optionen ohne sichtbaren Text
+                    if (!normalizedValue && normalizedText !== 'alle kategorien') {
+                        opt.remove()
+                        return
+                    }
+
+                    if (!normalizedValue) {
+                        opt.textContent = 'Alle Kategorien'
+                        return
+                    }
+
+                    opt.textContent = formatTagLabel(opt.textContent || opt.value)
+                })
+            }
+
+            function setupOperatorDropdown() {
+                const categorySelect = document.getElementById('categorySelect')
+                const operatorSelect = document.getElementById('operatorSelect')
+                if (!categorySelect || !operatorSelect) return
+
+                const operatorKeys = new Set(
+                    OPERATOR_LABELS.map(function (label) {
+                        return normalizeTag(label)
+                    })
+                )
+
+                const collected = new Map()
+
+                Array.from(categorySelect.options).forEach(function (opt) {
+                    const key = normalizeTag(opt.value)
+                    if (!key || !operatorKeys.has(key)) return
+
+                    if (!collected.has(key)) {
+                        collected.set(key, {
+                            value: opt.value,
+                            label: formatTagLabel(opt.textContent || opt.value)
+                        })
+                    }
+                    opt.remove()
+                })
+
+                operatorSelect.innerHTML = '<option value="" selected>Alle Operatoren</option>'
+
+                OPERATOR_LABELS.forEach(function (label) {
+                    const key = normalizeTag(label)
+                    if (!collected.has(key)) return
+
+                    const entry = collected.get(key)
+                    const option = document.createElement('option')
+                    option.value = entry.value
+                    option.textContent = entry.label
+                    operatorSelect.appendChild(option)
+                })
+
+                const difficultyAndNetworkingKeys = new Set([
+                    'sehr leicht',
+                    'leicht',
+                    'mittel',
+                    'schwer',
+                    'sehr schwer',
+                    'sehr niedrig',
+                    'niedrig',
+                    'normal',
+                    'hoch',
+                    'sehr hoch'
+                ].map(function (value) {
+                    return normalizeTag(value)
+                }))
+
+                Array.from(categorySelect.options).forEach(function (opt) {
+                    if (difficultyAndNetworkingKeys.has(normalizeTag(opt.value))) {
+                        opt.remove()
+                    }
+                })
+            }
+
+            function buildCustomMenuFromSelect(selectId, menuId, onSelectFnName, placeholder) {
+                const select = document.getElementById(selectId)
+                const menu = document.getElementById(menuId)
+                if (!select || !menu) return
+
+                menu.innerHTML = ''
+                const options = Array.from(select.options)
+
+                options.forEach(function (opt) {
+                    const normalizedValue = normalizeTag(opt.value)
+                    const text = (opt.textContent || '').trim()
+                    const normalizedText = normalizeTag(text)
+
+                    if (!normalizedValue && normalizedText !== normalizeTag(placeholder)) {
+                        return
+                    }
+
+                    const item = document.createElement('button')
+                    item.type = 'button'
+                    item.className = 'difficulty-item'
+                    item.dataset.value = opt.value
+                    item.textContent = text || placeholder
+                    item.disabled = !!opt.disabled
+                    item.addEventListener('click', function () {
+                        if (typeof window[onSelectFnName] === 'function') {
+                            window[onSelectFnName](opt.value)
+                        }
+                    })
+                    menu.appendChild(item)
+                })
+            }
+
+            function syncCustomMenuDisabledState(selectId, menuId) {
+                const select = document.getElementById(selectId)
+                const menu = document.getElementById(menuId)
+                if (!select || !menu) return
+
+                const optionByValue = new Map(
+                    Array.from(select.options).map(function (opt) {
+                        return [opt.value, !!opt.disabled]
+                    })
+                )
+
+                Array.from(menu.querySelectorAll('.difficulty-item')).forEach(function (item) {
+                    const value = item.dataset.value || ''
+                    item.disabled = optionByValue.get(value) || false
+                })
+            }
+
+            function setCustomToggleLabel(labelId, text, fallback) {
+                const label = document.getElementById(labelId)
+                if (!label) return
+                label.textContent = (text || '').trim() || fallback
+            }
+
+            function closeCustomMenu(toggleId, menuId) {
+                const toggle = document.getElementById(toggleId)
+                const menu = document.getElementById(menuId)
+                if (menu) menu.classList.remove('show')
+                if (toggle) toggle.setAttribute('aria-expanded', 'false')
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                setupOperatorDropdown()
+                prettifyCategoryDropdown()
+
+                buildCustomMenuFromSelect('categorySelect', 'categoryMenu', 'addCategoryChip', 'Alle Kategorien')
+                buildCustomMenuFromSelect('operatorSelect', 'operatorMenu', 'addOperatorChip', 'Alle Operatoren')
+                syncCustomMenuDisabledState('categorySelect', 'categoryMenu')
+
+                ;[
+                    ['categoryToggle', 'categoryMenu'],
+                    ['difficultyToggle', 'difficultyMenu'],
+                    ['networkingToggle', 'networkingMenu'],
+                    ['operatorToggle', 'operatorMenu']
+                ].forEach(function (pair) {
+                    const toggle = document.getElementById(pair[0])
+                    const menu = document.getElementById(pair[1])
+                    if (!toggle || !menu) return
+
+                    toggle.addEventListener('click', function () {
+                        const isOpen = menu.classList.toggle('show')
+                        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false')
+                    })
+
+                    document.addEventListener('click', function (event) {
+                        if (!toggle.contains(event.target) && !menu.contains(event.target)) {
+                            menu.classList.remove('show')
+                            toggle.setAttribute('aria-expanded', 'false')
+                        }
+                    })
+                })
+            })
 
       // Fügt einen Chip hinzu, wenn eine Kategorie gewählt wurde
       function addCategoryChip(category) {
         if (!category) return // falls "All categories" gewählt wurde, nichts tun
-        if (window.selectedCategories.indexOf(category) === -1) {
+                const normalizedCategory = normalizeTag(category)
+                const alreadySelected = window.selectedCategories.some(function (item) {
+                    return normalizeTag(item) === normalizedCategory
+                })
+
+                if (!alreadySelected) {
           window.selectedCategories.push(category)
           // Option im Select-Menü deaktivieren
-          document.querySelector(
-            '#categorySelect option[value="' + category + '"]'
-          ).disabled = true
+                    const option = findCategoryOption(category)
+                    if (option) option.disabled = true
+                                        syncCustomMenuDisabledState('categorySelect', 'categoryMenu')
           updateChipsDisplay()
           filterCards()
         }
         // Setze das Select-Element zurück
         document.getElementById('categorySelect').value = ''
+                                setCustomToggleLabel('categorySelectedLabel', '', 'Alle Kategorien')
+                                closeCustomMenu('categoryToggle', 'categoryMenu')
       }
 
-      function addDifficultyChip(category) {
-        window.selectedDifficulty = category
-        filterCards()
-      }
+            function addDifficultyChip(category) {
+                window.selectedDifficulty = category
+
+                const selectedLabel = document.getElementById('difficultySelectedLabel')
+                const selectedIcon = document.getElementById('difficultySelectedIcon')
+                const labelMap = {
+                    '': 'Alle Schwierigkeitsgrade',
+                    'sehr leicht': 'sehr leicht',
+                    leicht: 'leicht',
+                    mittel: 'mittel',
+                    schwer: 'schwer',
+                    'sehr schwer': 'sehr schwer'
+                }
+                const iconMap = {
+                    'sehr leicht': 'pics/sgrad/1.png',
+                    leicht: 'pics/sgrad/2.png',
+                    mittel: 'pics/sgrad/3.png',
+                    schwer: 'pics/sgrad/4.png',
+                    'sehr schwer': 'pics/sgrad/5.png'
+                }
+
+                if (selectedLabel) {
+                    selectedLabel.textContent = labelMap[category] || category || 'Alle Schwierigkeitsgrade'
+                }
+
+                if (selectedIcon) {
+                    if (iconMap[category]) {
+                        selectedIcon.src = iconMap[category]
+                        selectedIcon.style.display = 'inline-block'
+                    } else {
+                        selectedIcon.style.display = 'none'
+                    }
+                }
+
+                const menu = document.getElementById('difficultyMenu')
+                const trigger = document.getElementById('difficultyToggle')
+                if (menu) menu.classList.remove('show')
+                if (trigger) trigger.setAttribute('aria-expanded', 'false')
+
+                filterCards()
+            }
 
       function addNetworkingChip(category) {
-        window.selectedNetworking = category
-        filterCards()
+                window.selectedNetworking = category
+
+                const selectedLabel = document.getElementById('networkingSelectedLabel')
+                const selectedIcon = document.getElementById('networkingSelectedIcon')
+                const labelMap = {
+                    '': 'Alle Vernetzungsgrade',
+                    'sehr niedrig': 'sehr niedrig',
+                    niedrig: 'niedrig',
+                    normal: 'normal',
+                    hoch: 'hoch',
+                    'sehr hoch': 'sehr hoch'
+                }
+                const iconMap = {
+                    'sehr niedrig': 'pics/grad/1.png',
+                    niedrig: 'pics/grad/2.png',
+                    normal: 'pics/grad/3.png',
+                    hoch: 'pics/grad/4.png',
+                    'sehr hoch': 'pics/grad/5.png'
+                }
+
+                if (selectedLabel) {
+                    selectedLabel.textContent = labelMap[category] || category || 'Alle Vernetzungsgrade'
+                }
+
+                if (selectedIcon) {
+                    if (iconMap[category]) {
+                        selectedIcon.src = iconMap[category]
+                        selectedIcon.style.display = 'inline-block'
+                    } else {
+                        selectedIcon.style.display = 'none'
+                    }
+                }
+
+                const menu = document.getElementById('networkingMenu')
+                const trigger = document.getElementById('networkingToggle')
+                if (menu) menu.classList.remove('show')
+                if (trigger) trigger.setAttribute('aria-expanded', 'false')
+
+                filterCards()
       }
+
+            function addOperatorChip(category) {
+                window.selectedOperator = category
+                setCustomToggleLabel('operatorSelectedLabel', category, 'Alle Operatoren')
+                closeCustomMenu('operatorToggle', 'operatorMenu')
+                filterCards()
+            }
 
       // Entfernt einen Chip
       function removeCategoryChip(category) {
-        const index = window.selectedCategories.indexOf(category)
+                const normalizedCategory = normalizeTag(category)
+                const index = window.selectedCategories.findIndex(function (item) {
+                    return normalizeTag(item) === normalizedCategory
+                })
         if (index > -1) {
           window.selectedCategories.splice(index, 1)
           // Option im Select-Menü wieder aktivieren
-          document.querySelector(
-            '#categorySelect option[value="' + category + '"]'
-          ).disabled = false
+                    const option = findCategoryOption(category)
+                    if (option) option.disabled = false
+                                        syncCustomMenuDisabledState('categorySelect', 'categoryMenu')
           updateChipsDisplay()
           filterCards()
         }
@@ -18858,6 +19177,7 @@
       // Aktualisiert die Anzeige der Chips
       function updateChipsDisplay() {
         const chipsContainer = document.getElementById('chipsContainer')
+                if (!chipsContainer) return
         chipsContainer.innerHTML = ''
         window.selectedCategories.forEach(function (cat) {
           const chip = document.createElement('span')
@@ -18879,23 +19199,29 @@
           if (
             window.selectedCategories.length === 0 &&
             window.selectedDifficulty === '' &&
-            window.selectedNetworking === ''
+                        window.selectedNetworking === '' &&
+                        window.selectedOperator === ''
           ) {
             card.parentNode.style.display = 'block'
             return
           }
           // Zerlege die im data-Attribut hinterlegten Kategorien
           const cardCategories = card.dataset.category.split('|')
+                    const normalizedCardCategories = cardCategories.map(function (entry) {
+                        return normalizeTag(entry)
+                    })
           // Prüfe, ob alle ausgewählten Kategorien in der Karte vorhanden sind
           let show = window.selectedCategories.every(function (cat) {
-            return cardCategories.indexOf(cat) !== -1
+                        return normalizedCardCategories.indexOf(normalizeTag(cat)) !== -1
           })
           if (show) {
             if (
               (window.selectedDifficulty === '' ||
-              cardCategories.indexOf(window.selectedDifficulty) !== -1) &&
+                            normalizedCardCategories.indexOf(normalizeTag(window.selectedDifficulty)) !== -1) &&
               (window.selectedNetworking === '' ||
-              cardCategories.indexOf(window.selectedNetworking) !== -1)
+                                                        normalizedCardCategories.indexOf(normalizeTag(window.selectedNetworking)) !== -1) &&
+                            (window.selectedOperator === '' ||
+                                                        normalizedCardCategories.indexOf(normalizeTag(window.selectedOperator)) !== -1)
             ) {
               // Wenn eine Schwierigkeit ausgewählt ist, prüfe auch diese
               card.parentNode.style.display = 'block'
@@ -18908,25 +19234,451 @@
         })
       }
     </script>
+
+        <style>
+            :root {
+                --color-background: 30, 32, 36;
+                --color-highlight: 57, 145, 147;
+                --color-highlight-light: 76, 201, 240;
+
+                --accent: #147375;
+                --accent-light: #38cccc;
+                --accent-ink: #0f4f50;
+
+                --surface-glass: rgba(255, 255, 255, 0.72);
+                --surface-card: rgba(255, 255, 255, 0.9);
+                --text-strong: #143032;
+                --text-muted: #355b60;
+                --header-surface: linear-gradient(140deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.14));
+                --category-surface: linear-gradient(140deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.18));
+                --card-surface: linear-gradient(140deg, rgba(255, 255, 255, 0.012), rgba(255, 255, 255, 0.03));
+                --card-surface-soft: linear-gradient(140deg, rgba(255, 255, 255, 0.006), rgba(255, 255, 255, 0.02));
+
+                --radius-xl: 24px;
+                --radius-lg: 18px;
+                --radius-md: 12px;
+            }
+
+            body {
+                margin: 0;
+                min-height: 100vh;
+                font-family: "Segoe UI", "Trebuchet MS", "Verdana", sans-serif;
+                background:
+                    radial-gradient(circle at 20% 0%, rgba(var(--color-highlight-light), 0.14), transparent 34%),
+                    radial-gradient(circle at 85% 12%, rgba(var(--color-highlight), 0.14), transparent 30%),
+                    linear-gradient(rgba(18, 20, 24, 0.88), rgba(18, 20, 24, 0.88)),
+                    url("pics/grad/bg.png"),
+                    linear-gradient(135deg, rgb(18, 20, 24), rgb(var(--color-background)));
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+                background-position: center;
+            }
+
+            body::before {
+                content: "";
+                position: fixed;
+                inset: 0;
+                pointer-events: none;
+                background:
+                    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+                background-size: 42px 42px;
+                mask-image: linear-gradient(to bottom, black, transparent 85%);
+            }
+
+            main {
+                position: relative;
+                z-index: 1;
+                width: min(1320px, calc(100% - 28px));
+                margin: 0 auto;
+                padding: 20px 0 40px;
+            }
+
+            .album.bg-light {
+                background-color: transparent !important;
+                padding-top: 16px !important;
+            }
+
+            main > .container-fluid {
+                margin-bottom: 18px;
+                border: 1px solid rgba(var(--color-highlight-light), 0.34);
+                border-radius: var(--radius-xl);
+                overflow: visible;
+                position: relative;
+                z-index: 3000;
+                background: var(--header-surface);
+                box-shadow: 0 22px 52px rgba(0, 0, 0, 0.28);
+                backdrop-filter: blur(5px);
+            }
+
+            #categorySelect,
+            #networkingSelect,
+            #operatorSelect {
+                position: relative;
+                z-index: 1400;
+            }
+
+            #difficultySelect {
+                position: relative;
+                z-index: 3600;
+            }
+
+            .album.bg-light {
+                position: relative;
+                z-index: 1;
+            }
+
+            .album .card {
+                border: 2px solid var(--accent);
+                border-radius: var(--radius-lg);
+            }
+
+            .album .card:not(.shadow-sm) > .card-header {
+                background: linear-gradient(135deg, var(--accent), #1b8588);
+                color: #ffffff;
+                font-weight: 900;
+                font-size: 1.25rem;
+                letter-spacing: 0.01em;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.26);
+                line-height: 1.45;
+                padding: 12px 16px;
+                border-top-left-radius: calc(var(--radius-lg) - 2px);
+                border-top-right-radius: calc(var(--radius-lg) - 2px);
+            }
+
+            .album .col-12 > .card:not(.shadow-sm) {
+                background: var(--header-surface);
+                box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+                overflow: hidden;
+                backdrop-filter: blur(6px) saturate(112%);
+                -webkit-backdrop-filter: blur(6px) saturate(112%);
+            }
+
+            .album .col-12 > .card:not(.shadow-sm) > .card-body {
+                background: var(--header-surface);
+                color: #def7f7;
+                border-bottom-left-radius: calc(var(--radius-lg) - 2px);
+                border-bottom-right-radius: calc(var(--radius-lg) - 2px);
+            }
+
+            .album .card:not(.shadow-sm) > .card-header:last-child {
+                border-bottom-left-radius: calc(var(--radius-lg) - 2px);
+                border-bottom-right-radius: calc(var(--radius-lg) - 2px);
+            }
+
+            .album .card:not(.shadow-sm) .card-text {
+                color: rgba(221, 245, 245, 0.96);
+            }
+
+            .album .card.shadow-sm {
+                border-width: 2px;
+                border-color: rgba(168, 174, 182, 0.34);
+                border-radius: 16px;
+                background: linear-gradient(145deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.06));
+                box-shadow: 0 10px 20px rgba(8, 34, 40, 0.12);
+                transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+                backdrop-filter: blur(5px) saturate(110%);
+                -webkit-backdrop-filter: blur(5px) saturate(110%);
+                overflow: hidden;
+            }
+
+            .album .card.shadow-sm > .card-body {
+                background: linear-gradient(145deg, rgba(0, 0, 0, 0.025), rgba(0, 0, 0, 0.05));
+                border-bottom-left-radius: 14px;
+                border-bottom-right-radius: 14px;
+            }
+
+            .album .card.shadow-sm .card-img-top {
+                border-top-left-radius: 14px;
+                border-top-right-radius: 14px;
+            }
+
+            .album .card.shadow-sm:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 16px 30px rgba(8, 34, 40, 0.22);
+                border-color: var(--accent);
+            }
+
+            .album .card.shadow-sm .card-title {
+                color: #f2f4f6;
+                font-weight: 800;
+            }
+
+            .album .card.shadow-sm .card-text,
+            .album .card.shadow-sm small {
+                color: #d5dbe1;
+            }
+
+            .album .card.shadow-sm a.link-dark,
+            .album .card.shadow-sm a.link-dark:hover,
+            .album .card.shadow-sm a.link-dark:focus {
+                color: #eefcfc !important;
+                text-decoration: none;
+            }
+
+            .album .badge.rounded-pill {
+                background: rgba(0, 0, 0, 0.24) !important;
+                color: #85f3f3 !important;
+                border: 1px solid rgba(133, 243, 243, 0.72);
+                font-weight: 700;
+            }
+
+            h1.fw-light > span {
+                display: inline-block;
+                padding: 8px 14px !important;
+                border-radius: 14px;
+                background: linear-gradient(135deg, rgba(20, 115, 117, 0.9), rgba(56, 204, 204, 0.78)) !important;
+                border: 1px solid rgba(255, 255, 255, 0.24);
+                box-shadow: 0 16px 30px rgba(9, 48, 49, 0.36);
+                color: #ffffff;
+            }
+
+            p.lead.text-muted > span {
+                display: inline-block;
+                padding: 7px 12px;
+                border-radius: 10px;
+                background-color: rgba(255, 255, 255, 0.86) !important;
+                color: var(--accent-ink) !important;
+                border: 1px solid rgba(20, 115, 117, 0.22);
+                font-weight: 700;
+            }
+
+            select.form-select {
+                border: 2px solid rgba(20, 115, 117, 0.42);
+                border-radius: 12px;
+                background-color: rgba(255, 255, 255, 0.95);
+                color: var(--accent-ink);
+                font-weight: 700;
+                font-size: 1rem;
+                line-height: 1.25;
+                box-shadow: 0 8px 18px rgba(8, 34, 40, 0.12);
+            }
+
+            #categorySelect,
+            #operatorSelect,
+            #difficultyToggle,
+            #networkingToggle,
+            .difficulty-item {
+                font-size: 1rem;
+                line-height: 1.25;
+                font-weight: 700;
+            }
+
+            select.form-select:focus {
+                border-color: var(--accent);
+                box-shadow: 0 0 0 0.2rem rgba(20, 115, 117, 0.2);
+            }
+
+            .native-select-source {
+                display: none !important;
+            }
+
+            .difficulty-dropdown {
+                position: relative;
+            }
+
+            .difficulty-toggle {
+                width: 100%;
+                border: 2px solid rgba(20, 115, 117, 0.42);
+                border-radius: 12px;
+                background-color: rgba(255, 255, 255, 0.95);
+                color: var(--accent-ink);
+                font-weight: 700;
+                box-shadow: 0 8px 18px rgba(8, 34, 40, 0.12);
+                display: flex;
+                align-items: center;
+                gap: 0.45em;
+            }
+
+            .difficulty-toggle:focus {
+                border-color: var(--accent);
+                box-shadow: 0 0 0 0.2rem rgba(20, 115, 117, 0.2);
+            }
+
+            .difficulty-menu {
+                position: absolute;
+                z-index: 5000;
+                top: calc(100% + 6px);
+                left: 0;
+                right: 0;
+                display: none;
+                background: rgba(255, 255, 255, 0.97);
+                border: 1px solid rgba(20, 115, 117, 0.26);
+                border-radius: 12px;
+                box-shadow: 0 10px 24px rgba(8, 34, 40, 0.2);
+                padding: 6px;
+                max-height: calc(12 * 2.35em);
+                overflow-y: auto;
+            }
+
+            .difficulty-menu.show {
+                display: block;
+            }
+
+            .difficulty-item {
+                width: 100%;
+                border: 0;
+                background: transparent;
+                color: var(--accent-ink);
+                font-weight: 700;
+                text-align: left;
+                border-radius: 8px;
+                padding: 8px 10px;
+                display: flex;
+                align-items: center;
+                gap: 0.45em;
+            }
+
+            .difficulty-item:hover {
+                background: rgba(20, 115, 117, 0.08);
+            }
+
+            .difficulty-icon {
+                height: 1em;
+                width: auto;
+                display: inline-block;
+            }
+
+            .header-icon-strip {
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                flex-wrap: wrap;
+                gap: 12px;
+                margin: 0 0 18px;
+            }
+
+            .header-icon-item {
+                width: 86px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 6px;
+            }
+
+            .header-icon-pill {
+                width: 56px;
+                height: 56px;
+                border-radius: 999px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(255, 255, 255, 0.14);
+                border: 1px solid rgba(255, 255, 255, 0.24);
+                box-shadow: 0 10px 20px rgba(9, 48, 49, 0.22);
+                backdrop-filter: blur(3px);
+            }
+
+            .header-icon-pill img {
+                width: 40px;
+                height: 40px;
+                object-fit: contain;
+                display: block;
+            }
+
+            .header-icon-caption {
+                color: rgba(255, 255, 255, 0.94);
+                font-size: 0.8rem;
+                font-weight: 700;
+                letter-spacing: 0.01em;
+                text-align: center;
+                line-height: 1.2;
+            }
+
+            .project-title {
+                margin: 0;
+                font-size: clamp(2.1rem, 5vw, 3.4rem);
+                font-weight: 900;
+                letter-spacing: -0.03em;
+                color: #ffffff;
+                text-shadow: 0 10px 24px rgba(9, 48, 49, 0.45);
+            }
+
+            .project-title-sub {
+                margin: 6px 0 0;
+                color: rgba(255, 255, 255, 0.9);
+                font-weight: 700;
+            }
+
+            .project-label {
+                margin: 14px 0 8px;
+                color: rgba(255, 255, 255, 0.94);
+                font-weight: 800;
+                letter-spacing: 0.01em;
+            }
+
+            @media (max-width: 768px) {
+                main {
+                    width: calc(100% - 16px);
+                    padding-top: 12px;
+                }
+
+                .album .card:not(.shadow-sm) > .card-header {
+                    font-size: 0.95rem;
+                }
+
+                .header-icon-pill {
+                    width: 48px;
+                    height: 48px;
+                }
+
+                .header-icon-pill img {
+                    width: 34px;
+                    height: 34px;
+                }
+
+                .header-icon-item {
+                    width: 72px;
+                }
+
+                .header-icon-caption {
+                    font-size: 0.72rem;
+                }
+            }
+        </style>
     </head>
     
     <body>
         <main>
-            <div class="container-fluid" style="background-size: cover; background-image: url('https://www.bildung-bedeutet-freiheit.de/dev/wp-content/uploads/2014/06/cropped-BannerHP.png'); background-position: center center; background-repeat: no-repeat;">
+            <div class="container-fluid">
                 <section class="py-5 text-center container">
                     <div class="row py-lg-5">
                         <div class="col-lg-6 col-md-8 mx-auto">
-                             <h1 class="fw-light"><span style="background-color: rgba(0,106,179,0.75); padding: 5px; color: white">
-  Aufgabensammlung
-</span>
-</h1>
+                            <h1 class="project-title"><img src="./pics/grad/SchulLia.png" alt="LiaScript Icon" style="height: 1em; width: 1em; margin-right: 0.28em; vertical-align: -0.12em;">SchulLia</h1>
+                            <p class="project-title-sub">Aufgabensammlung für Mathematik</p>
+<br>
+                            <div class="header-icon-strip" aria-label="Lernphasen">
+                                <div class="header-icon-item">
+                                    <span class="header-icon-pill"><img src="pics/grad/1.png" alt="Icon 1" /></span>
+                                    <span class="header-icon-caption">Orientieren</span>
+                                </div>
+                                <div class="header-icon-item">
+                                    <span class="header-icon-pill"><img src="pics/grad/2.png" alt="Icon 2" /></span>
+                                    <span class="header-icon-caption">Erkunden</span>
+                                </div>
+                                <div class="header-icon-item">
+                                    <span class="header-icon-pill"><img src="pics/grad/3.png" alt="Icon 3" /></span>
+                                    <span class="header-icon-caption">Ordnen</span>
+                                </div>
+                                <div class="header-icon-item">
+                                    <span class="header-icon-pill"><img src="pics/grad/4.png" alt="Icon 4" /></span>
+                                    <span class="header-icon-caption">Vernetzen</span>
+                                </div>
+                                <div class="header-icon-item">
+                                    <span class="header-icon-pill"><img src="pics/grad/5.png" alt="Icon 5" /></span>
+                                    <span class="header-icon-caption">Reflektieren</span>
+                                </div>
+                            </div>
 
-                            <p class="lead text-muted"><span style="color: rgb(0,106,179); background-color: rgba(255,255,255,0.85)">
-  Projektnamen hier einfügen :-)
-</span>
+                            <div id="categorySelectCustom" class="difficulty-dropdown">
+                                <button id="categoryToggle" type="button" class="form-select difficulty-toggle" aria-expanded="false" aria-label="Kategorie wählen">
+                                    <span id="categorySelectedLabel">Alle Kategorien</span>
+                                </button>
+                                <div id="categoryMenu" class="difficulty-menu" role="listbox" aria-label="Alle Kategorien"></div>
+                            </div>
 
-                            </p>
-                            <select class="form-select" aria-label="Default select example" onchange="window.blur(this.value)">
+                            <select id="categorySelect" class="form-select native-select-source" aria-label="Kategorie wählen" onchange="addCategoryChip(this.value)">
                                 <option value="" selected>Alle Kategorien</option>
                                 <option value=""></option>
                                 <option value="ableitungen">ableitungen</option>
@@ -19063,6 +19815,78 @@
                                 <option value="äquivalenzumformung">äquivalenzumformung</option>
                                 <option value="überschlagen">überschlagen</option>
                             </select>
+                            <div id="difficultySelect" class="difficulty-dropdown mt-2">
+                                <button id="difficultyToggle" type="button" class="form-select difficulty-toggle" aria-expanded="false" aria-label="Schwierigkeitsgrad wählen">
+                                    <img id="difficultySelectedIcon" src="" alt="" class="difficulty-icon" style="display:none;">
+                                    <span id="difficultySelectedLabel">Alle Schwierigkeitsgrade</span>
+                                </button>
+                                <div id="difficultyMenu" class="difficulty-menu" role="listbox" aria-label="Alle Schwierigkeitsgrade">
+                                    <button type="button" class="difficulty-item" onclick="addDifficultyChip('')">
+                                        <span>Alle Schwierigkeitsgrade</span>
+                                    </button>
+                                    <button type="button" class="difficulty-item" onclick="addDifficultyChip('sehr leicht')">
+                                        <img src="pics/sgrad/1.png" alt="1 Stern" class="difficulty-icon">
+                                        <span>sehr leicht</span>
+                                    </button>
+                                    <button type="button" class="difficulty-item" onclick="addDifficultyChip('leicht')">
+                                        <img src="pics/sgrad/2.png" alt="2 Sterne" class="difficulty-icon">
+                                        <span>leicht</span>
+                                    </button>
+                                    <button type="button" class="difficulty-item" onclick="addDifficultyChip('mittel')">
+                                        <img src="pics/sgrad/3.png" alt="3 Sterne" class="difficulty-icon">
+                                        <span>mittel</span>
+                                    </button>
+                                    <button type="button" class="difficulty-item" onclick="addDifficultyChip('schwer')">
+                                        <img src="pics/sgrad/4.png" alt="4 Sterne" class="difficulty-icon">
+                                        <span>schwer</span>
+                                    </button>
+                                    <button type="button" class="difficulty-item" onclick="addDifficultyChip('sehr schwer')">
+                                        <img src="pics/sgrad/5.png" alt="5 Sterne" class="difficulty-icon">
+                                        <span>sehr schwer</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="networkingSelect" class="difficulty-dropdown mt-2">
+                                <button id="networkingToggle" type="button" class="form-select difficulty-toggle" aria-expanded="false" aria-label="Vernetzungsgrad wählen">
+                                    <img id="networkingSelectedIcon" src="" alt="" class="difficulty-icon" style="display:none;">
+                                    <span id="networkingSelectedLabel">Alle Vernetzungsgrade</span>
+                                </button>
+                                <div id="networkingMenu" class="difficulty-menu" role="listbox" aria-label="Alle Vernetzungsgrade">
+                                    <button type="button" class="difficulty-item" onclick="addNetworkingChip('')">
+                                        <span>Alle Vernetzungsgrade</span>
+                                    </button>
+                                    <button type="button" class="difficulty-item" onclick="addNetworkingChip('sehr niedrig')">
+                                        <img src="pics/grad/1.png" alt="Vernetzungsgrad sehr niedrig" class="difficulty-icon">
+                                        <span>sehr niedrig</span>
+                                    </button>
+                                    <button type="button" class="difficulty-item" onclick="addNetworkingChip('niedrig')">
+                                        <img src="pics/grad/2.png" alt="Vernetzungsgrad niedrig" class="difficulty-icon">
+                                        <span>niedrig</span>
+                                    </button>
+                                    <button type="button" class="difficulty-item" onclick="addNetworkingChip('normal')">
+                                        <img src="pics/grad/3.png" alt="Vernetzungsgrad normal" class="difficulty-icon">
+                                        <span>normal</span>
+                                    </button>
+                                    <button type="button" class="difficulty-item" onclick="addNetworkingChip('hoch')">
+                                        <img src="pics/grad/4.png" alt="Vernetzungsgrad hoch" class="difficulty-icon">
+                                        <span>hoch</span>
+                                    </button>
+                                    <button type="button" class="difficulty-item" onclick="addNetworkingChip('sehr hoch')">
+                                        <img src="pics/grad/5.png" alt="Vernetzungsgrad sehr hoch" class="difficulty-icon">
+                                        <span>sehr hoch</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="operatorSelectCustom" class="difficulty-dropdown mt-2">
+                                <button id="operatorToggle" type="button" class="form-select difficulty-toggle" aria-expanded="false" aria-label="Operator wählen">
+                                    <span id="operatorSelectedLabel">Alle Operatoren</span>
+                                </button>
+                                <div id="operatorMenu" class="difficulty-menu" role="listbox" aria-label="Alle Operatoren"></div>
+                            </div>
+                            <select id="operatorSelect" class="form-select native-select-source" aria-label="Operator wählen" onchange="addOperatorChip(this.value)">
+                                <option value="" selected>Alle Operatoren</option>
+                            </select>
+                            <div id="chipsContainer" class="mt-2"></div>
                         </div>
                     </div>
                 </section>
@@ -19071,7 +19895,9 @@
                 <div class="container">
                     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-xl-3 g-3">
                         <div class='col-12'>
-                            <p>In dieser Aufgabensammlung sind mehrere Schwierigkeitsgrade, Vernetzungsgrade und Anforderungsbereiche abgedeckt. Sie wird kontinuierlich weiterentwickelt und bietet eine Vielzahl an Aufgaben für die Sekundarstufe I und II.</p>
+                            <div class="card">
+                                <div class="card-header">In dieser Aufgabensammlung sind mehrere Schwierigkeitsgrade, Vernetzungsgrade und Anforderungsbereiche abgedeckt. Sie wird kontinuierlich weiterentwickelt und bietet eine Vielzahl an Aufgaben für die Sekundarstufe I und II.</div>
+                            </div>
                         </div>
                         <div class="col-12">
                             <div class="card">

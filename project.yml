@@ -1,12 +1,6 @@
-title: >
-  <span style="background-color: rgba(0,106,179,0.75); padding: 5px; color: white">
-    Aufgabensammlung
-  </span>
-comment: >
-  <span style="color: rgb(0,106,179); background-color: rgba(255,255,255,0.85)">
-    Projektnamen hier einfügen :-)
-  </span>
-logo: https://www.bildung-bedeutet-freiheit.de/dev/wp-content/uploads/2014/06/cropped-BannerHP.png
+title: SchulLia
+comment: Aufgabensammlung fuer Mathematik
+logo: 
 
 icon: https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/TUBAF_Siegel.svg/250px-TUBAF_Siegel.svg.png
 
@@ -22,7 +16,7 @@ meta:
   #image:
 
 navbar:
-  brand: Aufgabensammlung
+  brand: SchulLia
   background: "#006AB3"
   theme: dark
   links:
