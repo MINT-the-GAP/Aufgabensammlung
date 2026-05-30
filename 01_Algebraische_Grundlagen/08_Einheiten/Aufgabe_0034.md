@@ -57,7 +57,7 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $ 1,2\,$min [[($>$)|$=$|$<$]] $80\,$s \
+__$a)\;\;$__ $ 1,2\,$min [[$>$|$=$|($<$)]] $80\,$s \
 
 </div>
 <div class="flex-child">
@@ -69,7 +69,7 @@ __$c)\;\;$__ $ 0,025\,$kg [[($>$)|$=$|$<$]] $25\,$mg \
 
 </div>
 <div class="flex-child">
-__$d)\;\;$__ $ 100\,$min [[$>$|($=$)|$<$]] $1,4\,$h \
+__$d)\;\;$__ $ 100\,$min [[$>$|($=$)|$<$]] $1,\bar{6}\,$h \
 
 </div>
 <div class="flex-child">

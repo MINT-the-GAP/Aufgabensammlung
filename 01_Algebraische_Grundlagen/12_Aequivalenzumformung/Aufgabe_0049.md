@@ -74,8 +74,8 @@ $$
 36 &= \dfrac{51}{2} + \left(\dfrac{6}{5} - \dfrac{3}{10}\right)x 
 = \dfrac{51}{2} + \dfrac{9}{10}x \quad \left|\, -\dfrac{51}{2} \right.\\[2pt]
 36 - \dfrac{51}{2} &= \dfrac{9}{10}x 
-\quad\Rightarrow\quad -\dfrac{21}{2} = \dfrac{9}{10}x \quad \left|\, :\dfrac{9}{10} \right.\\[2pt]
-x &= -\dfrac{21}{2}\cdot \dfrac{10}{9} = \dfrac{105}{9} = \dfrac{35}{3}
+\quad\Rightarrow\quad \dfrac{21}{2} = \dfrac{9}{10}x \quad \left|\, :\dfrac{9}{10} \right.\\[2pt]
+x &= \dfrac{21}{2}\cdot \dfrac{10}{9} = \dfrac{105}{9} = \dfrac{35}{3}
 \end{align*}
 $$
 

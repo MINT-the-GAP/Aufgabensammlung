@@ -59,11 +59,13 @@ author: Martin Lommatzsch
 
 <section class="dynFlex">
 <div class="flex-child">
+
+
 <!-- data-solution-button="5"-->
 __$a)\;\;$__  
 $$
 \begin{align*}
-I.& \qquad 3x + y = 14 \\  
+I.& \qquad 3x + y = 10 \\  
 II.& \qquad x + 2y = 10  
 \end{align*}
 $$  
@@ -71,22 +73,25 @@ $x$ = [[  2  ]]  und  $y$ = [[  4  ]]
 ************
 $$
 \begin{align*}
-I. &\qquad 3x + y = 14 \quad \left| -3x \right. \\
+I. &\qquad 3x + y = 10 \quad \left| -3x \right. \\
 II. &\qquad x + 2y = 10 \\ \hline
-I. &\qquad y = 14 - 3x \\
-I. \cap II. &\qquad x + 2(14 - 3x) = 10 \\
-&\qquad x + 28 - 6x = 10 \quad \left| -28 \right. \\
-&\qquad -5x = -18 \quad \left| :(-5) \right. \\
+I. &\qquad y = 10 - 3x \\
+I. \cap II. &\qquad x + 2(10 - 3x) = 10 \\
+&\qquad x + 20 - 6x = 10 \quad \left| -20 \right. \\
+&\qquad -5x = -10 \quad \left| :(-5) \right. \\
 &\qquad x = 2 \\
-x \cap I. &\qquad 3\cdot 2 + y = 14 \\
-&\qquad 6 + y = 14 \quad \left| -6 \right. \\
-&\qquad y = 8
+x \cap I. &\qquad 3\cdot 2 + y = 10 \\
+&\qquad 6 + y = 10 \quad \left| -6 \right. \\
+&\qquad y = 4
 \end{align*}
 $$
 ************
 
 </div>
 <div class="flex-child">
+
+
+<!-- data-solution-button="5"-->
 __$b)\;\;$__  
 $$
 \begin{align*}
@@ -116,6 +121,7 @@ $$
 ************
 </div>
 <div class="flex-child">
+
 <!-- data-solution-button="5"-->
 __$c)\;\;$__  
 $$
@@ -144,6 +150,7 @@ $$
 ************
 </div>
 <div class="flex-child">
+
 <!-- data-solution-button="5"-->
 __$d)\;\;$__  
 $$
@@ -172,6 +179,8 @@ $$
 ************
 </div>
 <div class="flex-child">
+
+
 <!-- data-solution-button="5"-->
 __$e)\;\;$__  
 $$
@@ -200,6 +209,7 @@ $$
 ************
 </div>
 <div class="flex-child">
+
 <!-- data-solution-button="5"-->
 __$f)\;\;$__  
 $$

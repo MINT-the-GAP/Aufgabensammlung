@@ -46,7 +46,7 @@ author: Martin Lommatzsch
 
 
 
-# Fächeninhalt von Rechtecken
+# Flächeninhalt von Rechtecken
 
 
 **Gib** die fehlende Seitenlänge **an**.

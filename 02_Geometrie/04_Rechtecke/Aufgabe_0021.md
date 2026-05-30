@@ -45,7 +45,7 @@ author: Martin Lommatzsch
 
 
 
-# Fächeninhalt von Rechtecken
+# Flächeninhalt von Rechtecken
 
 
 **Gib** den Flächeninhalt des beschriebenen Rechtecks in der angegebenen Einheit **an**.

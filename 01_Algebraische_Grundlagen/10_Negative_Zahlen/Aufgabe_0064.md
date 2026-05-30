@@ -73,7 +73,7 @@ __$d)\;\;$__ $ \left| -17 \right| - 85 =$ [[  -68  ]]
 </div> 
 <div class="flex-child">
 
-__$e)\;\;$__ $ \left| -26 - (84) \right| =$ [[  58  ]]
+__$e)\;\;$__ $ \left| -26 - (84) \right| =$ [[  110 ]]
 
 </div> 
 <div class="flex-child">

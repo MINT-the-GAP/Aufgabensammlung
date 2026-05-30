@@ -67,7 +67,7 @@ $\mu =$ [[  1,44  ]]
 
 
 
-__$c)\;\;$__ In einer Urne befinden sich $72$ schwarze und $8$ weiße Kugeln. **Gib** den Erwartungswert der getroffnenen schwarzen Kugeln **an**, wenn aus der Urne eine Kugel ohne Zurücklegen siebenmal hintereinander gezogen wird.
+__$c)\;\;$__ In einer Urne befinden sich $72$ schwarze und $8$ weiße Kugeln. **Gib** den Erwartungswert der getroffenen schwarzen Kugeln **an**, wenn aus der Urne eine Kugel ohne Zurücklegen siebenmal hintereinander gezogen wird.
 
 $\mu =$ [[  6,3  ]]
 

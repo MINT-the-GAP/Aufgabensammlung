@@ -61,7 +61,7 @@ $\mu =$ [[  2,25  ]]
 
 
 
-__$b)\;\;$__ In einer Urne befinden sich $13$ grüne und $12$ blaue Kugeln. **Gib** den Erwartungswert der getroffnenen grünen Kugeln **an**, wenn aus der Urne eine Kugel ohne Zurücklegen elfmal hintereinander gezogen wird.
+__$b)\;\;$__ In einer Urne befinden sich $13$ grüne und $12$ blaue Kugeln. **Gib** den Erwartungswert der getroffenen grünen Kugeln **an**, wenn aus der Urne eine Kugel ohne Zurücklegen elfmal hintereinander gezogen wird.
 
 $\mu =$ [[  5,72  ]]
 

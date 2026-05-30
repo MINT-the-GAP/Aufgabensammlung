@@ -59,8 +59,6 @@ author: Martin Lommatzsch
 
 
 
-**Berechne** den Wert des Terms.
-
 
 
 <section class="dynFlex">

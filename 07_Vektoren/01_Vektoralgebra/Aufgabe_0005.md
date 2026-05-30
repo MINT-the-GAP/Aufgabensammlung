@@ -88,11 +88,11 @@ $$
 
 __$c)\;\;$__ $\vec{a} = \left(\begin{array}{c} 3 \\ 2 \\ 7 \end{array}\right)$  \
 
- $ \left| \vec{a} \right| = $ [[  8,124  ]] $LE$
+ $ \left| \vec{a} \right| = $ [[  7,874  ]] $LE$
 ***************
 $$
  \begin{align*}
-  \left| \vec{a} \right| = \left| \left(\begin{array}{c} 3 \\ 2 \\ 7 \end{array}\right) \right| = \sqrt{3^2+2^2+7^2} = \sqrt{66} \approx 8,124
+  \left| \vec{a} \right| = \left| \left(\begin{array}{c} 3 \\ 2 \\ 7 \end{array}\right) \right| = \sqrt{3^2+2^2+7^2} = \sqrt{62} \approx 7,874
  \end{align*}
 $$
 ***************

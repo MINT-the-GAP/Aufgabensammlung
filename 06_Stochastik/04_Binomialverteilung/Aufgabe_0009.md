@@ -55,7 +55,7 @@ author: Martin Lommatzsch
 
 
 
-__$a)\;\;$__ In einer Urne befinden sich $64$ schwarze und $16$ weiße Kugeln. **Gib** die Standardabweichung der getroffnenen schwarzen Kugeln **an**, wenn aus der Urne eine Kugel mit Zurücklegen neunmal hintereinander gezogen wird.
+__$a)\;\;$__ In einer Urne befinden sich $64$ schwarze und $16$ weiße Kugeln. **Gib** die Standardabweichung der getroffenen schwarzen Kugeln **an**, wenn aus der Urne eine Kugel mit Zurücklegen neunmal hintereinander gezogen wird.
 
 $\sigma =$ [[  1,2    ]]
 
@@ -69,7 +69,7 @@ $\sigma \approx$ [[  2,718  ]]
 
 __$c)\;\;$__ In einem kleinen Waldstück leben von einer speziellen Ameisenart $18$ Stämme. Jeder Stamm überlebt den Winter mit einer Wahrscheinlichkeit von $92\%$. **Gib** die Standardabweichung für das Überleben der Stämme im kommenden Frühling **an**.
 
-$\sigma \approx$ [[  16,56  ]]
+$\sigma \approx$ [[  1,151  ]]
 
 
 

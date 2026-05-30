@@ -52,31 +52,44 @@ author: Martin Lommatzsch
 # Textaufgabe Gleichungssysteme - Stühle im Klassenzimmer
 
 
-In einem Klassenzimmer sind Stühle aus Holz, Kunststoff und Metall aufgestellt. Insgesamt gibt es 36 Stühle. Die Holzstühle wiegen jeweils 5 kg, die Kunststoffstühle 3 kg und die Metallstühle 7 kg. Zusammen beträgt das Gewicht aller Stühle 180 kg. Außerdem sind doppelt so viele Kunststoffstühle vorhanden wie Metallstühle.  
+In einem Klassenzimmer sind Stühle aus Holz, Kunststoff und Metall aufgestellt. Insgesamt gibt es 36 Stühle. Die Holzstühle wiegen jeweils 5 kg, die Kunststoffstühle 3 kg und die Metallstühle 7 kg. Zusammen beträgt das Gewicht aller Stühle 164 kg. Außerdem sind doppelt so viele Kunststoffstühle vorhanden wie Metallstühle.  
 **Berechne** die Anzahl der Holz-, Kunststoff- und Metallstühle.
+
 
 <!-- data-solution-button="5"-->
 $x$ = [[  12  ]], $y$ = [[  16  ]] und $z$ = [[  8  ]]
 @Algebrite.check([ 12; 16; 8 ])
 ************
+
 Bezeichne mit $x$ die Anzahl der Holzstühle, mit $y$ die Anzahl der Kunststoffstühle und mit $z$ die Anzahl der Metallstühle.
+
 $$
 \begin{align*}
 I.& \qquad x + y + z = 36 \\
-II.& \qquad 5x + 3y + 7z = 180 \\
+II.& \qquad 5x + 3y + 7z = 164 \\
 III.& \qquad y = 2z \\ \hline
 I \cap III:& \qquad x + 2z + z = 36 \\
 & \qquad x + 3z = 36 \quad \text{(IV)} \\[6pt]
-II \cap III:& \qquad 5x + 3(2z) + 7z = 180 \\
-& \qquad 5x + 6z + 7z = 180 \\
-& \qquad 5x + 13z = 180 \quad \text{(V)} \\ \hline
+II \cap III:& \qquad 5x + 3(2z) + 7z = 164 \\
+& \qquad 5x + 6z + 7z = 164 \\
+& \qquad 5x + 13z = 164 \quad \text{(V)} \\ \hline
 \text{Aus (IV):}& \qquad x = 36 - 3z \\[6pt]
-\text{In (V):}& \qquad 5(36 - 3z) + 13z = 180 \\
-& \qquad 180 - 15z + 13z = 180 \\
-& \qquad -2z = 0 \;\Rightarrow\; z = 0 \;\; \text{(Fehler!)} 
+\text{In (V):}& \qquad 5(36 - 3z) + 13z = 164 \\
+& \qquad 180 - 15z + 13z = 164 \\
+& \qquad 180 - 2z = 164 \quad \left| -180 \right. \\
+& \qquad -2z = -16 \quad \left| :(-2) \right. \\
+& \qquad z = 8 \\[6pt]
+z \text{ in } III:& \qquad y = 2 \cdot 8 \\
+& \qquad y = 16 \\[6pt]
+y,z \text{ in } I:& \qquad x + 16 + 8 = 36 \\
+& \qquad x + 24 = 36 \quad \left| -24 \right. \\
+& \qquad x = 12
 \end{align*}
 $$
 
+Es gibt also $12$ Holzstühle, $16$ Kunststoffstühle und $8$ Metallstühle.
+
+************
 
 
 

@@ -53,7 +53,7 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $ -2,2 \cdot (-0,6) =$ [[  -1,32  ]]
+__$a)\;\;$__ $ -2,2 \cdot (-0,6) =$ [[  1,32  ]]
 
 </div> 
 <div class="flex-child">

@@ -112,16 +112,16 @@ $$
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $  2x + 4 + 9x = 6x - 3 - 7 $ \
+__$d)\;\;$__ $  $2x + 4 + 9x = 6x + 6 + 8$ \
 $x$ = [[  2  ]]
 @Algebrite.check(2)
 ************
 $$
 \begin{align*}
-2x + 4 + 9x &= 6x - 3 - 7 \\
-11x + 4 &= 6x - 10 \quad \left| -6x \right. \\
-5x + 4 &= -10 \quad \left| -4 \right. \\
-5x &= -14 \quad \left| :(-5) \right. \\
+2x + 4 + 9x &= 6x + 6 + 8 \\
+11x + 4 &= 6x + 14 \quad \left| -6x \right. \\
+5x + 4 &= 14 \quad \left| -4 \right. \\
+5x &= 10 \quad \left| :5 \right. \\
 x &= 2
 \end{align*}
 $$

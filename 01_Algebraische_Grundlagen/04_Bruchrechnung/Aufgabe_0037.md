@@ -76,7 +76,7 @@ $$
 <div class="flex-child">
 <!-- data-solution-button="5"-->
 __$b)\;\;$__ $  \dfrac{11}{9} \cdot \dfrac{7}{10} = $ [[  77/90  ]]
-@Algebrite.check(28/90)
+@Algebrite.check(77/90)
 ************
 $$
 \begin{align*}

@@ -137,15 +137,15 @@ $$
 __$e)\;\;$__ $7 - 2x > 5x - 14$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  3  ]]   $\left.   \right\}$
-@Algebrite.check(3)
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  2  ]]   $\left.   \right\}$
+@Algebrite.check(2)
 ******************
 $$
 \begin{align*}
 7 - 2x &> 5x - 14 \quad \left| -5x \right. \\
 7 - 7x &> -14 \quad \left| -7 \right. \\
 -7x &> -21 \quad \left| :(-7) \right. \\
-x &< 3 \;\;\Rightarrow\;\; x \leq 3 \text{ für } \mathbb{Z}
+x &< 3 \;\;\Rightarrow\;\; x \leq 2 \text{ für } \mathbb{Z}
 \end{align*}
 $$
 ******************

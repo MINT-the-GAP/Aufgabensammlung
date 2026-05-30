@@ -45,7 +45,7 @@ author: Martin Lommatzsch
 
 
 
-# Zufallsaufgaben - Anspruchsvoller Prozentrechnung
+# Zufallsaufgaben - Anspruchsvollere Prozentrechnung
 
 
 **Bestimme** den Wert der dargestellten Lücke. Klicke danach gerne auf "Neue Aufgabe", um eine weitere Aufgabe zu erhalten.

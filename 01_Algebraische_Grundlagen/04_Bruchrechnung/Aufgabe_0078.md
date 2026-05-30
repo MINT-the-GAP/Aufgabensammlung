@@ -63,7 +63,7 @@ __$a)\;\;$__ Wie viel sind $\dfrac{3}{10}$ von $90\,$€?  \
 
 __$b)\;\;$__ Wie viel sind $\dfrac{7}{4}$ von $840\,$kg?  \
 
- [[  147  ]]kg
+ [[  1470  ]]kg
 
 </div>
 <div class="flex-child">

@@ -56,24 +56,27 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 <div class="flex-child">
 
-__$a)\;\;$__ $  2(4x-5) = 3x + 13 $ \
+__$a)\;\;$__ $  $2(4x-5) = 3x + 5$ \
 $x$ = [[  3  ]]
+@Algebrite.check(3)
 ************
+
 $$
 \begin{align*}
-2(4x-5) &= 3x + 13 \\
-8x - 10 &= 3x + 13 \quad \left| -3x \right. \\
-5x - 10 &= 13 \quad \left| +10 \right. \\
-5x &= 23 \quad \left| :5 \right. \\
+2(4x-5) &= 3x + 5 \\
+8x - 10 &= 3x + 5 \quad \left| -3x \right. \\
+5x - 10 &= 5 \quad \left| +10 \right. \\
+5x &= 15 \quad \left| :5 \right. \\
 x &= 3
 \end{align*}
 $$
+
 ************
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ $  3(2x+1) = 4x + 11 $ \
-$x$ = [[  2  ]]
+$x$ = [[  4  ]]
 ************
 $$
 \begin{align*}
@@ -89,35 +92,40 @@ $$
 </div>
 <div class="flex-child">
 
-__$c)\;\;$__ $  2(5x-4) = 3x + 14 $ \
+__$c)\;\;$__ $  $2(5x-4) = 3x + 6$ \
 $x$ = [[  2  ]]
+@Algebrite.check(2)
 ************
 $$
 \begin{align*}
-2(5x-4) &= 3x + 14 \\
-10x - 8 &= 3x + 14 \quad \left| -3x \right. \\
-7x - 8 &= 14 \quad \left| +8 \right. \\
-7x &= 22 \quad \left| :7 \right. \\
+2(5x-4) &= 3x + 6 \\
+10x - 8 &= 3x + 6 \quad \left| -3x \right. \\
+7x - 8 &= 6 \quad \left| +8 \right. \\
+7x &= 14 \quad \left| :7 \right. \\
 x &= 2
 \end{align*}
 $$
+
 ************
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ $  7(x-2) + 1 = 3x + 8 $ \
+__$d)\;\;$__ $  $7(x-2) + 1 = 3x - 1$ \
 $x$ = [[  3  ]]
+@Algebrite.check(3)
 ************
+
 $$
 \begin{align*}
- 7(x-2) + 1 &= 3x + 8 \\
-7x - 14 + 1 &= 3x + 8 \\
-7x - 13 &= 3x + 8 \quad \left| -3x \right. \\
-4x - 13 &= 8 \quad \left| +13 \right. \\
-4x &= 21 \quad \left| :4 \right. \\
+7(x-2) + 1 &= 3x - 1 \\
+7x - 14 + 1 &= 3x - 1 \\
+7x - 13 &= 3x - 1 \quad \left| -3x \right. \\
+4x - 13 &= -1 \quad \left| +13 \right. \\
+4x &= 12 \quad \left| :4 \right. \\
 x &= 3
 \end{align*}
 $$
+
 ************
 </div>
 </section>

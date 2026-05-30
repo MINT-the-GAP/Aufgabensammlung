@@ -36,7 +36,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 tags: Division, Dezimalzahlen, sehr leicht, sehr niedrig, Angeben
 
-comment: Multipliziere Dezimalzahlen im Kopf.
+comment: Dividiere Dezimalzahlen im Kopf.
 
 author: Martin Lommatzsch
 

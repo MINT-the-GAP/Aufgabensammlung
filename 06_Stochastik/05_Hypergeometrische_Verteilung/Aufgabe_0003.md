@@ -55,7 +55,7 @@ author: Martin Lommatzsch
 
 
 
-__$a)\;\;$__ In einer Urne befinden sich $26$ rote und $14$ schwarze Kugeln. **Gib** den Erwartungswert der getroffnenen schwarzen Kugeln **an**, wenn aus der Urne eine Kugel ohne Zurücklegen $13$-mal hintereinander gezogen wird.
+__$a)\;\;$__ In einer Urne befinden sich $26$ rote und $14$ schwarze Kugeln. **Gib** den Erwartungswert der getroffenen schwarzen Kugeln **an**, wenn aus der Urne eine Kugel ohne Zurücklegen $13$-mal hintereinander gezogen wird.
 
 $\mu =$ [[  4,55  ]]
 

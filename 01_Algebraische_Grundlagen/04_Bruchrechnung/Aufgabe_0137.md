@@ -58,11 +58,11 @@ Von der Fläche wird ein Teil als Garten angelegt, der $\dfrac{2}{3}$ der Gesamt
 **Bestimme**, wie groß die Gartenfläche ist. 
 
 <!-- data-solution-button="5"-->
-[[  576  ]] m$^2$
+[[  1152  ]] m$^2$
 ************
 $$
 \text{Breite: } \dfrac{3}{4}\cdot 48 = 36\,\text{m} \\
 \text{Fläche: } 48\cdot 36 = 1728\,\text{m}^2 \\
-\text{Gartenfläche: } \dfrac{2}{3}\cdot 1728 = 576\,\text{m}^2
+\text{Gartenfläche: } \dfrac{2}{3}\cdot 1728 = 1152\,\text{m}^2
 $$
 ************

@@ -56,7 +56,7 @@ author: Martin Lommatzsch
 
 
 $I.\;\;\;\; \left( \begin{array}{c} 7 \\ 4 \end{array} \right) \left( \dfrac{3}{7} \right)^3 \cdot \left( \dfrac{4}{7} \right)^4 $ 
-$II.\;\;\;\; 1- 35 \left( \dfrac{3}{7} \right)^4 \cdot \left( \dfrac{4}{7} \right)^3$ 
+$II.\;\;\;\; 35 \left( \dfrac{3}{7} \right)^4 \cdot \left( \dfrac{4}{7} \right)^3$ 
 $III.\;\;\;\; \ \left( \dfrac{3}{7} \right)^4 \cdot \left( \dfrac{4}{7} \right)^3 $ 
 $IV.\;\;\;\; \left( \dfrac{3}{7} \right)^3 \cdot \left( \dfrac{4}{7} \right)^4 $ 
 $V.\;\;\;\; 1- \left( \begin{array}{c} 7 \\ 3 \end{array} \right) \left( \dfrac{3}{7} \right)^3 \cdot \left( \dfrac{4}{7} \right)^4 $ 

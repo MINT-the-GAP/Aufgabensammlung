@@ -57,7 +57,7 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $\dfrac{1}{10}+\dfrac{5}{100}+\dfrac{2}{100} \qquad$  \
 
 
- [[  0,152   ]] 
+ [[  0,17   ]] 
 
 </div>
 <div class="flex-child">

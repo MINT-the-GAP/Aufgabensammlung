@@ -58,7 +58,7 @@ __$a)\;\;$__ $ \text{sgn}\left( -81\right) + (-8) =$ [[  -9  ]]
 </div> 
 <div class="flex-child">
 
-__$b)\;\;$__ $ \text{sgn}\left( -21 \right) - (-17)=$ [[  -16  ]]
+__$b)\;\;$__ $ \text{sgn}\left( -21 \right) - (-17)=$ [[   16  ]]
 
 </div> 
 <div class="flex-child">

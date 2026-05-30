@@ -53,7 +53,7 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $ 1,4 + 2,1 \cdot 0,3 =$ [[  2,09  ]]
+__$a)\;\;$__ $ 1,4 + 2,1 \cdot 0,3 =$ [[  2,03  ]]
 
 </div> 
 <div class="flex-child">
@@ -63,7 +63,7 @@ __$b)\;\;$__ $ 6,5 : 1,25 -1,6 =$ [[  3,6  ]]
 </div> 
 <div class="flex-child">
 
-__$c)\;\;$__ $ 3,4 - 0,6 \cdot 1,1 =$ [[  2,84  ]]
+__$c)\;\;$__ $ 3,4 - 0,6 \cdot 1,1 =$ [[  2,74  ]]
 
 </div> 
 <div class="flex-child">

@@ -60,7 +60,7 @@ __$a)\;\;$__ $ \dfrac{7}{8}\,$kg [[($>$)|$=$|$<$]] $\dfrac{1000}{2}\,$g \
 
 </div>
 <div class="flex-child">
-__$b)\;\;$__ $ \dfrac{4}{5}\,$min [[$>$|($=$)|$<$]] $\dfrac{36}{3}\,$s \
+__$b)\;\;$__ $ \dfrac{4}{5}\,$min [[$>$|$=$|($<$)]] $\dfrac{36}{3}\,$s \
 
 </div>
 <div class="flex-child">

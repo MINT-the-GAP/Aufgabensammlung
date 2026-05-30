@@ -62,7 +62,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ $  \dfrac{5}{x-2} = \dfrac{3}{2x+1} $ \
 $x$ = [[  -11/7  ]]
-@Algebrite.check(11/7)
+@Algebrite.check(-11/7)
 ************
 $$
 \begin{align*}

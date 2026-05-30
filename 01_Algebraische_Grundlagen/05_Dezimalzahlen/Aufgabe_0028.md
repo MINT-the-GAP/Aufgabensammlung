@@ -68,7 +68,7 @@ __$c)\;\;$__ $ 2,25 \cdot 1,2 =$ [[  2,7  ]]
 </div> 
 <div class="flex-child">
 
-__$d)\;\;$__ $ 0,9 \cdot 5,4 =$ [[  4,8  ]]
+__$d)\;\;$__ $ 0,9 \cdot 5,4 =$ [[  4,86  ]]
 
 </div> 
 <div class="flex-child">

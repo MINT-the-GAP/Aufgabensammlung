@@ -302,7 +302,7 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 
 <div class="flex-child">
-[[$f(x)$|$g(x)$|$h(x)$|($k(x)$)|$l(x)$|$m(x)$]] $= -\left( x + 3 \right)^2 -2$ \
+[[$f(x)$|$g(x)$|$h(x)$|($k(x)$)|$l(x)$|$m(x)$]] $= -\left( x + 3 \right)^2 +2$ \
 
 
 

@@ -66,8 +66,8 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $-2x + 10 \geq 4 - 5x + 2$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  -4  ]]   $\left.   \right\}$
-@Algebrite.check(-4)
+$\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  -4/3  ]]   $\left.   \right\}$
+@Algebrite.check(-4/3)
 ******************
 $$
 \begin{align*}
@@ -156,15 +156,15 @@ $$
 __$f)\;\;$__ $-4x + 5 < 2x - 7$ 
 
 <!-- data-solution-button="5"-->
-$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  2  ]]   $\left.   \right\}$
-@Algebrite.check(2)
+$\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  3  ]]   $\left.   \right\}$
+@Algebrite.check(3)
 ******************
 $$
 \begin{align*}
 -4x + 5 &< 2x - 7 \quad \left| -2x \right. \\
 -6x + 5 &< -7 \quad \left| -5 \right. \\
 -6x &< -12 \quad \left| :(-6) \right. \\
-x &> 2 \;\;\Rightarrow\;\; x \geq 2 \text{ für } \mathbb{Z}
+x &> 2 \;\;\Rightarrow\;\; x \geq 3 \text{ für } \mathbb{Z}
 \end{align*}
 $$
 ******************

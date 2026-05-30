@@ -95,8 +95,8 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $  \dfrac{11}{12} - \dfrac{5}{6} = $ [[  1/4  ]]
-@Algebrite.check(1/4)
+__$c)\;\;$__ $  \dfrac{11}{12} - \dfrac{5}{6} = $ [[  1/12  ]]
+@Algebrite.check(1/12)
 ************
 $$
 \begin{align*}

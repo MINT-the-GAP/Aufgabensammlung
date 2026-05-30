@@ -170,9 +170,10 @@ I.& \qquad 4x + 3y = 7 \\
 II.& \qquad 2x - y = -5  
 \end{align*}
 $$  
-$x$ = [[  -2/5  ]]   und  $y$ = [[  13/5  ]] 
-@Algebrite.check([ -2/5; 13/5 ])
+$x$ = [[  -4/5  ]]   und  $y$ = [[  17/5  ]] 
+@Algebrite.check([ -4/5; 17/5 ])
 ************
+
 $$
 \begin{align*}
 I.& \qquad 4x + 3y = 7 \\  
@@ -184,13 +185,14 @@ I. \cap II.\; &\qquad 4x + 3(5 + 2x) = 7 \\
 &\qquad 4x + 15 + 6x = 7 \\
 &\qquad 10x + 15 = 7 \quad \left| -15 \right. \\
 &\qquad 10x = -8 \quad \left| :10 \right. \\
-&\qquad x = -\dfrac{2}{5} \\[6pt]
-x \cap II.\; &\qquad 2\!\left(-\dfrac{2}{5}\right) - y = -5 \\
-&\qquad -\dfrac{4}{5} - y = -5 \quad \left| +\dfrac{4}{5} \right. \\
-&\qquad -y = -\dfrac{21}{5} \quad \left| \cdot(-1) \right. \\
-&\qquad y = \dfrac{21}{5} = \dfrac{13}{5}
+&\qquad x = -\dfrac{4}{5} \\[6pt]
+x \cap II.\; &\qquad 2\!\left(-\dfrac{4}{5}\right) - y = -5 \\
+&\qquad -\dfrac{8}{5} - y = -5 \quad \left| +\dfrac{8}{5} \right. \\
+&\qquad -y = -\dfrac{17}{5} \quad \left| \cdot(-1) \right. \\
+&\qquad y = \dfrac{17}{5}
 \end{align*}
 $$
+
 ************
 
 </div>

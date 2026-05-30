@@ -75,21 +75,20 @@ $$
 [[(Einsetzungsverfahren)|Gleichsetzungsverfahren|Additionsverfahren]]
 
 
-__$b)\;\;$__ 
 $$
 \begin{align*}
-I.& \qquad 5x + 2y = 19 \\
-II.& \qquad 2x + 3y = 17 \\ \hline
-I.& \qquad 5x + 2y = 19 \quad \left|\cdot 3 \right. \\
-& \qquad 15x + 6y = 57 \\
-II.& \qquad 2x + 3y = 17 \quad \left|\cdot 2 \right. \\
-& \qquad 4x + 6y = 34 \\ \hline
-(I.-II.)& \qquad (15x-4x) + (6y-6y) = 57-34 \\
-& \qquad 11x = 23 \quad \left| :11 \right. \\
+I.& \qquad 5x + 2y = 20 \\
+II.& \qquad 2x + 3y = 19 \\ \hline
+I.& \qquad 5x + 2y = 20 \quad \left|\cdot 3 \right. \\
+& \qquad 15x + 6y = 60 \\
+II.& \qquad 2x + 3y = 19 \quad \left|\cdot 2 \right. \\
+& \qquad 4x + 6y = 38 \\ \hline
+(I.-II.)& \qquad (15x-4x) + (6y-6y) = 60-38 \\
+& \qquad 11x = 22 \quad \left| :11 \right. \\
 & \qquad x = 2 \\
-x \cap II.& \qquad 2\cdot 2 + 3y = 17 \\
-& \qquad 4 + 3y = 17 \quad \left| -4 \right. \\
-& \qquad 3y = 13 \quad \left| :3 \right. \\
+x \text{ in } II.& \qquad 2\cdot 2 + 3y = 19 \\
+& \qquad 4 + 3y = 19 \quad \left| -4 \right. \\
+& \qquad 3y = 15 \quad \left| :3 \right. \\
 & \qquad y = 5
 \end{align*}
 $$

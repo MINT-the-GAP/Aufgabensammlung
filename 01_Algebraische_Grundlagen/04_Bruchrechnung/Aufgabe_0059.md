@@ -53,8 +53,7 @@ author: Martin Lommatzsch
 # Zahl zwischen zwei Brüchen
 
 
-**Bestimme** den Wert zwischen den gegeneben beiden Brüchen, der exakt in der Mitte liegt.
-
+**Bestimme** den Wert zwischen den gegebenen beiden Brüchen, der exakt in der Mitte liegt.
 
 
 
@@ -63,111 +62,125 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $  \dfrac{1}{4} \;\;\wedge\;\; \dfrac{5}{6}  \;\;\Rightarrow\;\; $ [[  19/24  ]] 
-@Algebrite.check(19/24)
+__$a)\;\;$__ $  \dfrac{1}{4} \;\;\wedge\;\; \dfrac{5}{6}  \;\;\Rightarrow\;\; $ [[  13/24  ]] 
+@Algebrite.check(13/24)
 ************
+
 $$
 \begin{align*}
- \left( \dfrac{1}{4} + \dfrac{5}{6} \right) : 2 
+\left( \dfrac{1}{4} + \dfrac{5}{6} \right) : 2 
 &= \left( \dfrac{3}{12} + \dfrac{10}{12} \right) : 2  \\ 
-&=  \dfrac{13}{12} : 2  \\
-&=  \dfrac{13}{24}   \\
+&= \dfrac{13}{12} : 2  \\
+&= \dfrac{13}{24}
 \end{align*}
 $$
+
 ************
+
 </div>
 
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$b)\;\;$__ $  \dfrac{3}{7} \;\;\wedge\;\; \dfrac{5}{9}  \;\;\Rightarrow\;\; $ [[  43/126  ]] 
-@Algebrite.check(43/126)
+__$b)\;\;$__ $  \dfrac{3}{7} \;\;\wedge\;\; \dfrac{5}{9}  \;\;\Rightarrow\;\; $ [[  31/63  ]] 
+@Algebrite.check(31/63)
 ************
+
 $$
 \begin{align*}
- \left( \dfrac{3}{7} + \dfrac{5}{9} \right) : 2 
+\left( \dfrac{3}{7} + \dfrac{5}{9} \right) : 2 
 &= \left( \dfrac{27}{63} + \dfrac{35}{63} \right) : 2  \\ 
-&=  \dfrac{62}{63} : 2  \\
-&=  \dfrac{31}{63} 
-= \dfrac{43}{126}   \\
+&= \dfrac{62}{63} : 2  \\
+&= \dfrac{31}{63}
 \end{align*}
 $$
+
 ************
+
 </div>
 
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$c)\;\;$__ $  \dfrac{2}{3} \;\;\wedge\;\; \dfrac{4}{5}  \;\;\Rightarrow\;\; $ [[  19/30  ]] 
-@Algebrite.check(19/30)
+__$c)\;\;$__ $  \dfrac{2}{3} \;\;\wedge\;\; \dfrac{4}{5}  \;\;\Rightarrow\;\; $ [[  11/15  ]] 
+@Algebrite.check(11/15)
 ************
+
 $$
 \begin{align*}
- \left( \dfrac{2}{3} + \dfrac{4}{5} \right) : 2 
+\left( \dfrac{2}{3} + \dfrac{4}{5} \right) : 2 
 &= \left( \dfrac{10}{15} + \dfrac{12}{15} \right) : 2  \\ 
-&=  \dfrac{22}{15} : 2  \\
-&=  \dfrac{22}{30} 
-= \dfrac{11}{15} 
-= \dfrac{19}{30}   \\
+&= \dfrac{22}{15} : 2  \\
+&= \dfrac{22}{30} \\
+&= \dfrac{11}{15}
 \end{align*}
 $$
+
 ************
+
 </div>
 
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$d)\;\;$__ $  \dfrac{1}{8} \;\;\wedge\;\; \dfrac{3}{4}  \;\;\Rightarrow\;\; $ [[  13/32  ]] 
-@Algebrite.check(13/32)
+__$d)\;\;$__ $  \dfrac{1}{8} \;\;\wedge\;\; \dfrac{3}{4}  \;\;\Rightarrow\;\; $ [[  7/16  ]] 
+@Algebrite.check(7/16)
 ************
+
 $$
 \begin{align*}
- \left( \dfrac{1}{8} + \dfrac{3}{4} \right) : 2 
+\left( \dfrac{1}{8} + \dfrac{3}{4} \right) : 2 
 &= \left( \dfrac{1}{8} + \dfrac{6}{8} \right) : 2  \\ 
-&=  \dfrac{7}{8} : 2  \\
-&=  \dfrac{7}{16} 
-= \dfrac{13}{32}   \\
+&= \dfrac{7}{8} : 2  \\
+&= \dfrac{7}{16}
 \end{align*}
 $$
+
 ************
+
 </div>
 
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
-__$e)\;\;$__ $  \dfrac{5}{12} \;\;\wedge\;\; \dfrac{7}{10}  \;\;\Rightarrow\;\; $ [[  59/120  ]] 
-@Algebrite.check(59/120)
+__$e)\;\;$__ $  \dfrac{5}{12} \;\;\wedge\;\; \dfrac{7}{10}  \;\;\Rightarrow\;\; $ [[  67/120  ]] 
+@Algebrite.check(67/120)
 ************
+
 $$
 \begin{align*}
- \left( \dfrac{5}{12} + \dfrac{7}{10} \right) : 2 
+\left( \dfrac{5}{12} + \dfrac{7}{10} \right) : 2 
 &= \left( \dfrac{25}{60} + \dfrac{42}{60} \right) : 2  \\ 
-&=  \dfrac{67}{60} : 2  \\
-&=  \dfrac{67}{120} 
-= \dfrac{59}{120}   \\
+&= \dfrac{67}{60} : 2  \\
+&= \dfrac{67}{120}
 \end{align*}
 $$
+
 ************
+
 </div>
 
 <div class="flex-child">
 
 <!-- data-solution-button="5"-->
 __$f)\;\;$__ $  \dfrac{2}{5} \;\;\wedge\;\; \dfrac{7}{8}  \;\;\Rightarrow\;\; $ [[  51/80  ]] 
-@Algebrite.check(14/15)
+@Algebrite.check(51/80)
 ************
+
 $$
 \begin{align*}
- \left( \dfrac{2}{5} + \dfrac{7}{8} \right) : 2 & = \left( \dfrac{16}{40} + \dfrac{35}{40} \right) : 2  \\ 
- & =  \dfrac{51}{40} : 2  \\
- & =  \dfrac{51}{80}   \\
+\left( \dfrac{2}{5} + \dfrac{7}{8} \right) : 2 
+&= \left( \dfrac{16}{40} + \dfrac{35}{40} \right) : 2  \\ 
+&= \dfrac{51}{40} : 2  \\
+&= \dfrac{51}{80}
 \end{align*}
 $$
+
 ************
+
 </div>
 
 </section>
-
 
 
 

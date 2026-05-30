@@ -55,13 +55,13 @@ author: Martin Lommatzsch
 
 
 
-__$a)\;\;$__ An einem Glücksrad befinden sich $30$ Gewinnzahlen und $70$ andere Zahlen, die alle gleichgroße Bereiche zugewiesen bekommen haben. **Gib** die Standardabweichung von getroffnenen Gewinnzahlen der beschriebenen Binomialverteilung **an**, wenn das Glücksrad achtmal gedreht wird.
+__$a)\;\;$__ An einem Glücksrad befinden sich $30$ Gewinnzahlen und $70$ andere Zahlen, die alle gleichgroße Bereiche zugewiesen bekommen haben. **Gib** die Standardabweichung von getroffenen Gewinnzahlen der beschriebenen Binomialverteilung **an**, wenn das Glücksrad achtmal gedreht wird.
 
 $\sigma \approx$ [[  1,296  ]]
 
 
 
-__$b)\;\;$__ In einer Urne befinden sich $4$ rote und $21$ blaue Kugeln. **Gib** die Standardabweichung der getroffnenen roten Kugeln **an**, wenn aus der Urne eine Kugel mit Zurücklegen fünfmal hintereinander gezogen wird.
+__$b)\;\;$__ In einer Urne befinden sich $4$ rote und $21$ blaue Kugeln. **Gib** die Standardabweichung der getroffenen roten Kugeln **an**, wenn aus der Urne eine Kugel mit Zurücklegen fünfmal hintereinander gezogen wird.
 
 $\sigma \approx$ [[  0,820  ]]
 

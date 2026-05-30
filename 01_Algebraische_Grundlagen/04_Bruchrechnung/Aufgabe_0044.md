@@ -168,15 +168,15 @@ $$
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$h)\;\;$__ $  \dfrac{8}{15} : \dfrac{4}{9} = $ [[  6/5  ]]
-@Algebrite.check(6/5)
+__$h)\;\;$__ $  \dfrac{7}{12} : \dfrac{14}{15} = $ [[  5/8  ]]
+@Algebrite.check(5/8)
 ************
 $$
 \begin{align*}
-\dfrac{8}{15} : \dfrac{4}{9}
-&= \dfrac{8}{15} \cdot \dfrac{9}{4} \\
-&= \dfrac{72}{60} \\
-&= \dfrac{6}{5}
+\dfrac{7}{12} : \dfrac{14}{15}
+&= \dfrac{7}{12} \cdot \dfrac{15}{14} \\
+&= \dfrac{105}{168} \\
+&= \dfrac{5}{8}
 \end{align*}
 $$
 ************

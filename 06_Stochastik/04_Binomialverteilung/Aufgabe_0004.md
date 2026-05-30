@@ -55,13 +55,13 @@ author: Martin Lommatzsch
 
 
 
-__$a)\;\;$__ An einem Glücksrad befinden sich $30$ Gewinnzahlen und $70$ andere Zahlen, die alle gleichgroße Bereiche zugewiesen bekommen haben. **Gib** den Erwartungswert an getroffnenen Gewinnzahlen der beschriebenen Binomialverteilung **an**, wenn das Glücksrad achtmal gedreht wird.
+__$a)\;\;$__ An einem Glücksrad befinden sich $30$ Gewinnzahlen und $70$ andere Zahlen, die alle gleichgroße Bereiche zugewiesen bekommen haben. **Gib** den Erwartungswert an getroffenen Gewinnzahlen der beschriebenen Binomialverteilung **an**, wenn das Glücksrad achtmal gedreht wird.
 
 $\mu =$ [[  2,4  ]]
 
 
 
-__$b)\;\;$__ In einer Urne befinden sich $4$ rote und $21$ blaue Kugeln. **Gib** den Erwartungswert der getroffnenen roten Kugeln **an**, wenn aus der Urne eine Kugel mit Zurücklegen fünfmal hintereinander gezogen wird.
+__$b)\;\;$__ In einer Urne befinden sich $4$ rote und $21$ blaue Kugeln. **Gib** den Erwartungswert der getroffenen roten Kugeln **an**, wenn aus der Urne eine Kugel mit Zurücklegen fünfmal hintereinander gezogen wird.
 
 $\mu =$ [[  0,8  ]]
 

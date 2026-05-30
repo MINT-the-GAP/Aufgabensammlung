@@ -52,7 +52,7 @@ author: Martin Lommatzsch
 
 
 
-$a)\;\; \text{kgV}\left(6;\text{ggT}(63;49)\right):\text{ggT}(144;54) 42:18 - \text{kgV}(5;6):\text{ggT}(90;126)  =$ [[  4  ]]
+$a)\;\; \text{kgV}\left(6;\text{ggT}(63;49)\right):\text{ggT}(144;54) - \text{kgV}(5;6):\text{ggT}(90;126)  =$ [[  4  ]]
 
 
 

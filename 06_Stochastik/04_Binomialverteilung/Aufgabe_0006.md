@@ -55,7 +55,7 @@ author: Martin Lommatzsch
 
 
 
-__$a)\;\;$__ In einer Urne befinden sich $64$ schwarze und $16$ weiße Kugeln. **Gib** den Erwartungswert der getroffnenen schwarzen Kugeln **an**, wenn aus der Urne eine Kugel mit Zurücklegen neunmal hintereinander gezogen wird.
+__$a)\;\;$__ In einer Urne befinden sich $64$ schwarze und $16$ weiße Kugeln. **Gib** den Erwartungswert der getroffenen schwarzen Kugeln **an**, wenn aus der Urne eine Kugel mit Zurücklegen neunmal hintereinander gezogen wird.
 
 $\mu =$ [[  7,2   ]]
 

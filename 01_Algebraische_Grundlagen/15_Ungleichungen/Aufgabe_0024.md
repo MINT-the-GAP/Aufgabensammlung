@@ -43,7 +43,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
 tags: Ungleichungen, Sachaufgabe, sehr leicht, niedrig, Berechnen
 
-comment: Löse eine Sachaufgabe zu mithilfe von Ungleichungen.
+comment: Löse eine Sachaufgabe zu Kopien mithilfe von Ungleichungen.
 
 author: Martin Lommatzsch
 
@@ -52,7 +52,7 @@ author: Martin Lommatzsch
 
 
 
-# Textaufgabe Ungleichungen - 
+# Textaufgabe Ungleichungen - Kopien
 
 
 Für Arbeitsblätter werden bereits 9 Kopien bereitgehalten. Ein zusätzliches Bündel enthält 12 Kopien.  

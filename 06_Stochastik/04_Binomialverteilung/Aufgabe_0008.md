@@ -56,19 +56,19 @@ author: Martin Lommatzsch
 
 
 
-__$a)\;\;$__ Ein Kleingärtner hat vergessene eine besondere Staudenblume im Herbst auszubuddeln und im Keller einzulagern. Durch die Wetterbedingungen der letzten Jahre weiß der Kleingärtner, dass die Stauden zu $65\%$ überleben. **Gib** die Standardabweichung für das Überleben der Stauden **an**, wenn er insgesamt $25$ dieser Stauden gepflanzt hat.
+__$a)\;\;$__ Ein Kleingärtner hat vergessen eine besondere Staudenblume im Herbst auszubuddeln und im Keller einzulagern. Durch die Wetterbedingungen der letzten Jahre weiß der Kleingärtner, dass die Stauden zu $65\%$ überleben. **Gib** die Standardabweichung für das Überleben der Stauden **an**, wenn er insgesamt $25$ dieser Stauden gepflanzt hat.
 
 $\sigma \approx$ [[  2,385  ]]
 
 
 
-__$b)\;\;$__ In einer Urne befinden sich $17$ grüne und $8$ gelbe Kugeln. **Gib** die Standardabweichung der getroffnenen grünen Kugeln **an**, wenn aus der Urne eine Kugel mit Zurücklegen zwölfmal hintereinander gezogen wird.
+__$b)\;\;$__ In einer Urne befinden sich $17$ grüne und $8$ gelbe Kugeln. **Gib** die Standardabweichung der getroffenen grünen Kugeln **an**, wenn aus der Urne eine Kugel mit Zurücklegen zwölfmal hintereinander gezogen wird.
 
 $\sigma \approx$ [[  1,616  ]]
 
 
 
-__$c)\;\;$__ Es wird mit einem zwölfseitigen Würfel gewürfelt, bei beim erwürfeln einer Primzahl der Wurf als gewonnen gilt. **Gib** die Standardabweichung für die Anzahl der Gewinne nach $24$ Würfen **an**.
+__$c)\;\;$__ Es wird mit einem zwölfseitigen Würfel gewürfelt, bei beim Erwürfeln einer Primzahl der Wurf als gewonnen gilt. **Gib** die Standardabweichung für die Anzahl der Gewinne nach $24$ Würfen **an**.
 
 $\sigma \approx$ [[  2,415  ]]
 

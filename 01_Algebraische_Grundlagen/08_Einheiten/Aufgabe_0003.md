@@ -67,7 +67,7 @@ __$b)\;\;$__ [[ 1000 ]] Milliliter entsprechen ein Liter. \
 </div>
 <div class="flex-child">
 
-__$c)\;\;$__ Ein Zentimeter entsprechen [[  10  ]] Millimeter. \
+__$c)\;\;$__ Ein Zentimeter entspricht [[  10  ]] Millimeter. \
 
 
 </div>
@@ -79,7 +79,7 @@ __$d)\;\;$__ Ein Kilogramm entspricht [[ 1000000 ]] Milligramm. \
 </div>
 <div class="flex-child">
 
-__$e)\;\;$__ [[   1  ]] Dezimeter entspricht $10$ Zentrimeter. \
+__$e)\;\;$__ [[   1  ]] Dezimeter entspricht $10$ Zentimeter. \
 
 
 </div>

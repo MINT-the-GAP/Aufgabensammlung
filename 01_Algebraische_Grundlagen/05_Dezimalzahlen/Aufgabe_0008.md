@@ -34,7 +34,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-tags: Vokabeln,, Dezimalzahlen, Zahlenverständnis, sehr leicht, sehr niedrig, Angeben
+tags: Vokabeln, Dezimalzahlen, Zahlenverständnis, sehr leicht, sehr niedrig, Angeben
 
 comment: Schreibe aus der Stellenwerttafel die Zahl nieder.
 

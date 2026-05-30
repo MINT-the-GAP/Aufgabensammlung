@@ -63,17 +63,19 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 <!-- data-solution-button="5"-->
-__$a)\;\;$__ $  \left(\dfrac{2}{3} - \dfrac{4}{7}\right) \cdot \dfrac{4}{5} = $ [[  8/105  ]]
+__$a)\;\;$__ $  $ \left(\dfrac{2}{3} - \dfrac{4}{7}\right) \cdot \dfrac{4}{5} = $ [[  8/105  ]]
 @Algebrite.check(8/105)
 ************
 $$
 \begin{align*}
-\left(\dfrac{2}{3} - \dfrac{5}{7}\right) \cdot \dfrac{4}{5}   & = \left(\dfrac{14}{21} - \dfrac{12}{21}\right) \cdot \dfrac{4}{5} \\
- & = \dfrac{2}{21} \cdot \dfrac{4}{5} \\
- & = \dfrac{8}{105}  \\
+\left(\dfrac{2}{3} - \dfrac{4}{7}\right) \cdot \dfrac{4}{5}
+&= \left(\dfrac{14}{21} - \dfrac{12}{21}\right) \cdot \dfrac{4}{5} \\
+&= \dfrac{2}{21} \cdot \dfrac{4}{5} \\
+&= \dfrac{8}{105}
 \end{align*}
 $$
 ************
+
 </div>
 <div class="flex-child">
 <!-- data-solution-button="5"-->

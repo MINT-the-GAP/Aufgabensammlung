@@ -58,7 +58,7 @@ __$a)\;\;$__ $ 144:\left| -12 \right| =$ [[  12  ]]
 </div> 
 <div class="flex-child">
 
-__$b)\;\;$__ $ \left| -54-(-37) \right| =$ [[  14  ]]
+__$b)\;\;$__ $ \left| -54-(-37) \right| =$ [[  17  ]]
 
 </div> 
 <div class="flex-child">

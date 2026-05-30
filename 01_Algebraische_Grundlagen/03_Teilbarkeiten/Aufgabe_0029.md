@@ -70,7 +70,7 @@ __$d)\;\;$__ $4$ [[ ($\mid$) | $\nmid$ ]] $3120$ \
 
 </div>
 <div class="flex-child">
-__$e)\;\;$__ $8$ [[ $\mid$ | ($\nmid$) ]] $8744$ \
+__$e)\;\;$__ $8$ [[ ($\mid$) | $\nmid$ ]] $8744$ \
 
 </div>
 <div class="flex-child">

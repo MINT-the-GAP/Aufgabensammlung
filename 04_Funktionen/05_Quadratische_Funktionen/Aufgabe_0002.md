@@ -311,7 +311,7 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 
-[[$f(x)$|($g(x)$)|$h(x)$|$k(x)$|$l(x)$|$m(x)$]] $= 2\left( x + 2 \right)^2 + 3$ \
+[[$f(x)$|($g(x)$)|$h(x)$|$k(x)$|$l(x)$|$m(x)$]] $= -2\left( x + 2 \right)^2 + 3$ \
 
 
 

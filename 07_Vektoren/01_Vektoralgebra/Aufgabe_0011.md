@@ -62,7 +62,7 @@ $$
  \begin{align*}
   d=\left| \stackrel{\longrightarrow}{PQ} \right| & = \left| \left(\begin{array}{c} 4 \\ -5 \\ -7 \end{array}\right)  - \left(\begin{array}{c} -7 \\ 0 \\ 9 \end{array}\right)\right| \\
    & = \left| \left(\begin{array}{c} 11 \\ -5 \\ -16 \end{array}\right) \right| \\
-   &= \sqrt{11^2+3^2+4^2} \\
+   &= \sqrt{11^2+5^2+16^2} \\
    &= \sqrt{402} \\
    &\approx 20,050 \\
  \end{align*}

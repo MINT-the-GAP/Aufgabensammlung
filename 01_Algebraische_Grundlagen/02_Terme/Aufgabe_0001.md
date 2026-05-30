@@ -47,7 +47,7 @@ author: Martin Lommatzsch
 
 # Termeumformen mit Grundrechenarten
 
-**Gib** die Werte in den Lücken Lücken der Rechnung **an**.
+**Gib** die Werte in den Lücken der Rechnung **an**.
 
 <section class="dynFlex">
 
