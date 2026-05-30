@@ -12,7 +12,7 @@ function patchIndexHtml(html) {
   // SchulLia icon (requested origami SVG)
   html = html.replace(
     /<h1 class="project-title">[\s\S]*?<\/h1>/,
-    '<h1 class="project-title"><img src="https://liascript.github.io/course/icon.svg" alt="LiaScript Icon" style="height: 1em; width: 1em; margin-right: 0.28em; vertical-align: -0.12em;">SchulLia</h1>'
+    '<h1 class="project-title"><img src="./pics/grad/SchulLia.png" alt="LiaScript Icon" style="height: 1em; width: 1em; margin-right: 0.28em; vertical-align: -0.12em;">SchulLia</h1>'
   )
 
   // Keep native sources hidden when custom dropdowns are used
