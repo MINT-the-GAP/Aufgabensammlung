@@ -162,7 +162,7 @@ svg.tree2 foreignObject button {
 
 
 
-        https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
+        
 
 tags: Baumdiagramm, Hypergeometrische Verteilung, leicht, niedrig, Bestimme, Skizziere
 

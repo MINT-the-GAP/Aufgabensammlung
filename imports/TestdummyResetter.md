@@ -29,7 +29,7 @@ comment: Resetter v0.0.1
 
 
 
-import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
+import: 
 
 
 import: TimerREADME.md

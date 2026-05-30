@@ -29,7 +29,7 @@ comment:
 author: Martin Lommatzsch
 
 
-        https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
+        
 
 
 @style

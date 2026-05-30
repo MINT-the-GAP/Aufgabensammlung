@@ -35,7 +35,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main/README.md
+
 
 
 tags: Bruchrechnung, Kehrwert, sehr leicht, sehr niedrig, Angeben

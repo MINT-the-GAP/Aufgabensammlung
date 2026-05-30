@@ -38,7 +38,7 @@ input {
 
 
 
-        https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
+        
 
 
 tags: Kontingenztafel, Vierfeldertafel, bedingte Wahrscheinlichkeit, sehr leicht, sehr niedrig, Angeben

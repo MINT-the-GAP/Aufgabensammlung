@@ -26,7 +26,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
+import: 
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/AnnotationREADME.md

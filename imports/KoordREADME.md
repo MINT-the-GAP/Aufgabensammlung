@@ -31,7 +31,7 @@ script: ./Koord.js
 
 
 
-import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
+import: 
 
 import: OCRREADME.md
 
@@ -1718,7 +1718,7 @@ Punkte schon vorgeben ($A_1$ ist beweglich und $B$ nicht.)
 # Plot Funktion
 
 
-Alles klappt nur wenn `https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md` im Header importiert wurde!
+Alles klappt nur wenn `` im Header importiert wurde!
 
 @Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A1`)
 

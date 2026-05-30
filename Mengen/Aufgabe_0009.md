@@ -31,7 +31,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-        https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
+        
 
 
 

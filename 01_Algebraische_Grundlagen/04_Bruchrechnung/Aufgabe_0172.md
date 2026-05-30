@@ -281,7 +281,7 @@ if (!window.rects['@0'] || window.rects['@0'].length !== total) {
 
 
 
-import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main/README.md
+
 
 
 

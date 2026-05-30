@@ -28,7 +28,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
+import: 
 
 
 
@@ -7063,7 +7063,7 @@ if (window.__liaRunCoordHooks) {
 
 
 
-Alles klappt nur wenn `https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md` im Header importiert wurde!
+Alles klappt nur wenn `` im Header importiert wurde!
 
 
 @Koordinatensystem(`xmin=-7;xmax=7;ymin=-5;ymax=5;width=800;id=A1`)

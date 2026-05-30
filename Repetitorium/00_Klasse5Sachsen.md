@@ -45,7 +45,7 @@ author: Martin Lommatzsch
 
 
 
-import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main/README.md
+
 -->
 
 

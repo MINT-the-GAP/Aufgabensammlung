@@ -27,7 +27,7 @@ comment: LiaScript-Abgabelink mit exakterer Zustandsprotokollierung und Freeze
 
 
 
-import: https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
+import: 
 
 script: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/Freeze.js
 

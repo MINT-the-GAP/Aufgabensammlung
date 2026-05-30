@@ -40,7 +40,7 @@ author: Martin Lommatzsch
         https://raw.githubusercontent.com/liaTemplates/ABCjs/main/README.md
         https://raw.githubusercontent.com/LiaTemplates/Speech-Recognition-Quiz/refs/heads/main/README.md
         https://raw.githubusercontent.com/liaTemplates/AVR8js/main/README.md
-        https://cdn.jsdelivr.net/gh/LiaTemplates/JSXGraph@main/README.md
+        
         https://raw.githubusercontent.com/LiaTemplates/mec2/main/README.md
         https://raw.githubusercontent.com/LiaTemplates/CollaborativeDrawing/main/README.md
         https://raw.githubusercontent.com/LiaTemplates/SpreadSheet/refs/heads/main/README.md
