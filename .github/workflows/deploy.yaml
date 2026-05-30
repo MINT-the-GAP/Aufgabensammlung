@@ -11,6 +11,8 @@ permissions:
 jobs:
   run_exporter:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Set up dependencies
         run: npm install -g @liascript/exporter
