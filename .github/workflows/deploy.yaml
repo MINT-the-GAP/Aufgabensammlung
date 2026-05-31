@@ -29,8 +29,8 @@ jobs:
       - name: Patch index
         run: node patch.js
 
-      - name: Minify HTML
-        run: npm install -g minify@ && minify index.html > index.min.html && mv index.min.html index.html
+      - name: Minify HTML (disabled for JS stability)
+        run: echo "Skipping minify: custom JS must remain unmodified to avoid regex parse errors."
 
       - name: Prepare Deployment Directory
         run: |
