@@ -54,6 +54,7 @@ author: Martin Lommatzsch
 # Textaufgabe Bruchrechnung - Holzplatte
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 Für eine Ausstellungsfläche wird eine Holzplatte als Rechteck verwendet.  
 Die Länge beträgt $32\,\text{cm}$, die Breite ist $\dfrac{5}{12}$ der Länge.  
 Von der gesamten Fläche wird zunächst $\dfrac{3}{8}$ für Befestigungen reserviert.  

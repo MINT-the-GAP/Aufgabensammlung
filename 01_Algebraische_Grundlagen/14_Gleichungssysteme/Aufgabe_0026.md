@@ -53,6 +53,7 @@ author: Martin Lommatzsch
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 Ein Mensch bearbeitet an einem Nachmittag zwei Textkapitel. Insgesamt arbeitet dieser 5 Stunden. Beim ersten Kapitel schafft er 60 Seiten pro Stunde, beim zweiten 40 Seiten pro Stunde. Am Ende hast der Mensch zusammen 255 Seiten bearbeitet.  
 **Berechne** die Arbeitszeiten für beide Kapitel.
 

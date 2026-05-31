@@ -52,6 +52,7 @@ author: Martin Lommatzsch
 # Textaufgabe Äquivalenzumformung - Kerzen
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/5.png" width="120" height="30">  \
 Im Kaminzimmer stehen zwei Kerzen auf dem Kaminsims.  
 Die erste Kerze wird um 18:00 Uhr angezündet; sie ist anfangs 36 cm lang und wird pro Stunde um 1,2 cm kürzer.  
 Die zweite Kerze ist anfangs 24 cm lang, wird aber erst fünf Stunden später angezündet; sie brennt dann langsamer und verliert pro Stunde 0,3 cm.  

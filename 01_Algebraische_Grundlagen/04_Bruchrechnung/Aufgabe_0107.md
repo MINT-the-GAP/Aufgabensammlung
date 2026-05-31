@@ -53,6 +53,7 @@ author: Martin Lommatzsch
 
 # Textaufgabe Bruchrechnung - Rechteckseitenlängen
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 Ein Rechteck hat eine Seite von $20$ cm. Die zweite Seite beträgt $\dfrac{2}{5}$ der ersten.  
 **Bestimme** die Länge der zweiten Seite.  
 

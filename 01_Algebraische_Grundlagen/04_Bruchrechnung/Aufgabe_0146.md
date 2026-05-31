@@ -54,6 +54,7 @@ author: Martin Lommatzsch
 # Textaufgabe Bruchrechnung - Tagesetappe
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 Eine Buslinie hat eine Tagesetappe von $54\,\text{km}$.  
 Am Morgen werden $\dfrac{4}{9}$ der Gesamtdistanz gefahren.  
 Von der verbleibenden Strecke wird nach der Pause nochmals $\dfrac{5}{12}$ zurückgelegt.  

@@ -51,6 +51,7 @@ author: Martin Lommatzsch
 
 # Textaufgabe Äquivalenzumformung - Tauchroboter
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
 Im großen Schaubecken werden zwei Tauchroboter getestet.  
 Der erste startet 60 m unter der Wasseroberfläche und steigt gleichmäßig pro Minute um 3 m auf.  
 Der zweite startet 10 m unter der Wasseroberfläche und taucht gleichmäßig pro Minute um 2,5 m weiter ab.  

@@ -51,6 +51,7 @@ author: Martin Lommatzsch
 
 # Textaufgabe Äquivalenzumformung - Aufzüge
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
 Im Neubau eines Museums werden die Aufzüge im Probebetrieb getestet.  
 Ein Aufzug startet in der Tiefgarage Ebene −3 und fährt gleichmäßig nach oben; die Anzeige steigt dabei pro Minute um 1,5 Ebenen.  
 Der andere Aufzug startet im 9. Obergeschoss und fährt gleichmäßig nach unten; die Anzeige sinkt pro Minute um 2 Ebenen.  

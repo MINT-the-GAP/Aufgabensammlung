@@ -54,6 +54,7 @@ author: Martin Lommatzsch
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 Zwei Schüler sammeln Sticker für ein Album. Die betrachtete Schülerin startet mit sechs Stickern. Jeden Tag fügt sie drei weitere Sticker hinzu. Der betrachtete Schüler beginnt mit 18 Stickern, bekommt aber pro Tag nur ein weiteren Sticker. **Berechne**, nach wie vielen Tagen beide gleich viele Sticker haben.
 
 <!-- data-solution-button="5"-->

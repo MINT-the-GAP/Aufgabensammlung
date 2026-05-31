@@ -54,6 +54,7 @@ author: Martin Lommatzsch
 # Textaufgabe Bruchrechnung - Laborreihe
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/5.png" width="120" height="30">  \
 Für eine Laborreihe werden Mischungen angesetzt.  
 Pro Dose werden $\dfrac{2}{3}\,\ell$ Grundlösung und $\dfrac{3}{10}\,\ell$ Zusatzlösung kombiniert.  
 Beim Ansetzen geht je Dose $\dfrac{1}{12}$ der Mischsumme als Verlust ab (die Mischsumme ist $\dfrac{2}{3}\,\ell+\dfrac{3}{10}\,\ell$).  

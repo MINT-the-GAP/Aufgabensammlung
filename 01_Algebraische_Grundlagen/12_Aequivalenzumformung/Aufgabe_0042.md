@@ -51,6 +51,7 @@ author: Martin Lommatzsch
 
 # Textaufgabe Äquivalenzumformung - Pflanzenwachstum
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 Zwei Pflanzen wachsen in gleichmäßiger Höhe pro Woche.  
 Die erste Pflanze ist zu Beginn 26 cm hoch und wächst jede Woche um 3,5 cm.  
 Die zweite Pflanze ist anfangs 48 cm hoch und wächst pro Woche um 1 cm.  

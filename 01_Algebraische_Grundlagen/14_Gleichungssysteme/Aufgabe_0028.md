@@ -54,6 +54,7 @@ author: Martin Lommatzsch
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 Bei einer Veranstaltung werden drei Ticketarten verkauft: Einzeltickets zu 2 €, Tagestickets zu 5 € und ermäßigte Tickets zu 3 €. Insgesamt werden 24 Tickets verkauft und der Umsatz beträgt 78 €. Außerdem gibt es vier ermäßigte Tickets weniger als Einzeltickets.  
 **Berechne** die Anzahl der drei Ticketarten.
 

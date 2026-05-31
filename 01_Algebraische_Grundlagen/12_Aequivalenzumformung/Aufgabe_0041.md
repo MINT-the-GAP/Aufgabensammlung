@@ -51,6 +51,7 @@ author: Martin Lommatzsch
 
 # Textaufgabe Äquivalenzumformung - Anstieg und Abstieg
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 Ein Anstieg beginnt auf 820 m und gewinnt pro Minute 9 m an Höhe.  
 Ein Abstieg startet gleichzeitig auf 1130 m und verliert pro Minute 6 m an Höhe.  
 **Berechne**, nach wie vielen Minuten beide Routen auf gleicher Höhe sind.

@@ -55,6 +55,7 @@ author: Martin Lommatzsch
 # Textaufgabe Bruchrechnung - Wasserbecken
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 Ein Wasserbecken fasst insgesamt $120\,\ell$. Am Morgen wird es nur zu $\dfrac{2}{5}$ gefüllt.  
 Im Laufe des Tages werden zusätzlich $\dfrac{1}{4}$ des **vollen Beckens** nachgefüllt.  
 **Bestimme**, wie viele Liter Wasser am Abend im Becken sind. 

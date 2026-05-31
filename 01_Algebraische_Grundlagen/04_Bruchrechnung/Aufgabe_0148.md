@@ -54,6 +54,7 @@ author: Martin Lommatzsch
 # Textaufgabe Bruchrechnung - Reinigungsmischungen
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
 In einem Labor werden Reinigungsmischungen angesetzt.  
 Eine Mischung besteht aus $\dfrac{3}{8}\,\ell$ Lösung A und $\dfrac{1}{4}\,\ell$ Lösung B.  
 Es werden $6$ Mischungen hergestellt; danach werden für Tests $\dfrac{2}{3}\,\ell$ des **Gesamtergebnisses** entnommen.  

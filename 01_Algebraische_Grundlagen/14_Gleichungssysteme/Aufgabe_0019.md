@@ -52,6 +52,7 @@ author: Martin Lommatzsch
 # Textaufgabe Gleichungssysteme - Fahrzeuge auf einem Parkplatz
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 Auf einem Parkplatz stehen insgesamt 28 Fahrzeuge. Darunter befinden sich Autos und Motorräder. Zusammen haben alle Fahrzeuge 80 Räder.  
 **Berechne** die Anzahl der Autos und Motorräder.
 

@@ -53,6 +53,7 @@ author: Martin Lommatzsch
 
 # Textaufgabe Bruchrechnung - Teiglinge
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 In der Backstube steht ein Mehlsack mit $24\,\text{kg}$.  
 Am Vormittag werden für Teiglinge $\dfrac{3}{8}$ der Gesamtmasse verbraucht.  
 Am Nachmittag wird für eine zweite Charge die Hälfte der verbleibenden Masse genutzt.  

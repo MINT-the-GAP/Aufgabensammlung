@@ -53,6 +53,7 @@ author: Martin Lommatzsch
 
 # Textaufgabe Bruchrechnung - Trainingsrunde
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 Eine Trainingsrunde beträgt $8$ km. Bereits $\dfrac{1}{4}$ der Strecke sind geschafft.  
 **Bestimme**, wie viele Kilometer noch zu laufen sind. 
 

@@ -47,6 +47,7 @@ author: Martin Lommatzsch
 
 # Vokabeln der Grundrechenarten
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 **Gib** die korrekte Bezeichnung in Fachsprache für den rot markierten Teil **an**.
 
 <section class="dynFlex">

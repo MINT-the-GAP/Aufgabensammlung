@@ -54,6 +54,7 @@ author: Martin Lommatzsch
 # Textaufgabe Gleichungssysteme - Laufzeiten von Maschinen
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
 Drei Maschinen produzieren Teile. Zusammen laufen sie 5 Stunden. Pro Stunde fertigen sie $12$, $18$ bzw. $30$ Teile. Insgesamt entstehen $79$ Teile. Außerdem läuft die zweite Maschine eine halbe Stunde länger als die erste.  
 **Berechne** die Laufzeiten der drei Maschinen.
 

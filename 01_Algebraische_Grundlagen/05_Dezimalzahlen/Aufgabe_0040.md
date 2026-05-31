@@ -47,6 +47,7 @@ author: Martin Lommatzsch
 
 # Vorrangsregeln bei Dezimalzahlen
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 **Gib** den Wert des Terms als Dezimalzahl **an**.
 
 <section class="dynFlex">

@@ -54,6 +54,7 @@ author: Martin Lommatzsch
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 In einem Kassenfach liegen 1-€, 2-€ und 50-Cent-Münzen. Insgesamt sind es 30 Münzen. Der Gesamtwert beträgt 33 €. Außerdem gibt es zwei 50-Cent-Münzen weniger als 1-€-Münzen.  
 **Berechne** die Anzahl der 1-€, 2-€ und 50-Cent-Münzen.
 

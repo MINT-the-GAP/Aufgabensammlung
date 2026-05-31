@@ -53,6 +53,7 @@ author: Martin Lommatzsch
 
 # Textaufgabe Bruchrechnung - Kuchen
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
  Ein Kuchen hat eine Masse von $2\,$kg. Davon bleiben $\dfrac{1}{4}$ übrig.  
 **Bestimme** die Masse des restlichen Kuchens.  
 

@@ -54,6 +54,7 @@ author: Martin Lommatzsch
 # Textaufgabe Bruchrechnung - Mehl
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 Für ein Rezept werden $\dfrac{3}{8}$ eines Mehlsacks mit $4$ kg Inhalt benötigt.  
 **Bestimme** die benötigte Mehlmenge als Bruch in kg. 
 

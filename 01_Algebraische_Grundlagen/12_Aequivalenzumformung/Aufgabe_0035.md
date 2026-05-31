@@ -52,6 +52,7 @@ author: Martin Lommatzsch
 
 # Textaufgabe Äquivalenzumformung - Wasser in Behältern
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 Ein Behälter wird täglich mit vier Litern Wasser aufgefüllt. Zu Beginn sind bereits zwei Liter enthalten.  
 Ein zweiter Behälter enthält anfangs 14 Liter Wasser, verliert jedoch jeden Tag einen Liter.  
 **Berechne**, nach wie vielen Tagen beide Behälter gleich viel Wasser enthalten.

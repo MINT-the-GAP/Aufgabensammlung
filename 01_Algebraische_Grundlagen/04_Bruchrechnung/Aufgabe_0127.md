@@ -54,6 +54,7 @@ author: Martin Lommatzsch
 # Textaufgabe Bruchrechnung - Bibliothek
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 In einer Bibliothek werden neue Bücher geliefert. Insgesamt kommen $40$ Exemplare an.  
 Am Vormittag wird $\dfrac{1}{5}$ der Bücher sofort in die Regale einsortiert.  
 Am Nachmittag wird von den übrigen Büchern erneut die Hälfte in die Regale gestellt.  

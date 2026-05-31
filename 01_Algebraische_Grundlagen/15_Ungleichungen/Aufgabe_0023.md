@@ -55,6 +55,7 @@ author: Martin Lommatzsch
 # Textaufgabe Ungleichungen - Bestuhlung einer Veranstaltung
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 Für eine Veranstaltung stehen bereits 12 Stühle bereit. Pro zusätzlich aufgestellter Reihe kommen 5 Stühle hinzu.  
 **Berechne** die kleinste natürliche Zahl $x$ (zusätzliche Reihen), sodass insgesamt mindestens 47 Stühle vorhanden sind.
 

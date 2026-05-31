@@ -56,6 +56,7 @@ author: Martin Lommatzsch
 # Textaufgabe Bruchrechnung - verfügbares Geld
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 Ein Geldbetrag von $30$ € steht zur Verfügung. Es werden $\dfrac{1}{6}$ davon ausgegeben.  
 **Bestimme**, wie viele Euro übrig bleiben. 
 

@@ -51,6 +51,7 @@ author: Martin Lommatzsch
 
 # Textaufgabe Äquivalenzumformung - Zahlentrick
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 Eine gesuchte Zahl wird verdreifacht und anschließend um fünf verringert.  
 Nimmt man stattdessen von derselben Zahl die Hälfte und addiert sieben, so entsteht derselbe Wert.  
 **Berechne** die gesuchte Zahl.

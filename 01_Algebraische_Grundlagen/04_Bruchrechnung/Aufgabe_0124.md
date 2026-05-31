@@ -55,6 +55,7 @@ author: Martin Lommatzsch
 # Textaufgabe Bruchrechnung - Vorratstank
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 Ein Vorratstank enthält zu Beginn $48\,\ell$ Wasser. Am Vormittag werden $\dfrac{3}{8}$ des Inhalts verwendet, am Nachmittag danach $\dfrac{1}{4}$ des verbleibenden Inhalts.  
 **Berechne** das Restvolumen im Tank.  
 

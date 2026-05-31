@@ -47,6 +47,7 @@ author: Martin Lommatzsch
 
 # Folgen von Zahlen und Symbolen
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/5.png" width="120" height="30">  \
 **Gib** nächsten Glieder der Folge **an**.
 
 

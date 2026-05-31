@@ -55,6 +55,7 @@ author: Martin Lommatzsch
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
 In einem Labor werden Mischungen angesetzt.  
 Eine \emph{Mischung} besteht aus $\dfrac{3}{5}\,\ell$ Lösung A und $\dfrac{1}{4}\,\ell$ Lösung B.  
 Es werden sieben Mischungen hergestellt. Anschließend werden $\dfrac{2}{7}$ der gesamten hergestellten Menge zur Kalibrierung entnommen, danach werden noch $\dfrac{1}{3}\,\ell$ destilliertes Wasser zugegeben.  

@@ -51,6 +51,7 @@ author: Martin Lommatzsch
 
 # Textaufgabe Äquivalenzumformung - Züge an der Küstenlinie
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/5.png" width="120" height="30">  \
 Entlang einer geraden Küstenlinie steht ein Leuchtturm als Nullpunkt der Entfernungsskala.  
 Ein Schnellzug A startet 55 km westlich des Leuchtturms und fährt ostwärts mit $110\,\dfrac{\text{km}}{\text{h}}$.  
 Ein Regionalzug B befindet sich 145 km östlich des Leuchtturms, fährt aber erst 15 Minuten später westwärts mit $80\,\dfrac{\text{km}}{\text{h}}$ los.  

@@ -52,6 +52,7 @@ author: Martin Lommatzsch
 # Textaufgabe Äquivalenzumformung - Raumtemperaturen 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 In zwei Räumen ändert sich die Temperatur gleichmäßig: 
 In Raum 1 ist es anfangs 16 °C und die Temperatur steigt pro Stunde um 1,5 °C.  
 In Raum 2 ist es anfangs 28 °C und die Temperatur sinkt pro Stunde um 0,75 °C.  

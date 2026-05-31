@@ -49,6 +49,7 @@ author: Martin Lommatzsch
 # Zeiteinheiten
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 **Rechne** in die angebene Einheit **um**.
 
 

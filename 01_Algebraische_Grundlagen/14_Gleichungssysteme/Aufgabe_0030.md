@@ -53,6 +53,7 @@ author: Martin Lommatzsch
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 Du planst in einer Woche Einheiten in drei Ausdauersportarten: Laufen, Radfahren und Schwimmen. Insgesamt absolvierst du 14 Einheiten. Pro Laufeinheit rechnest du mit 500 kcal, pro Radeinheit mit 300 kcal und pro Schwimmeinheit mit 200 kcal. Zusammen ergeben sich 4900 kcal. Außerdem fährst du doppelt so oft Rad wie du schwimmst.  
 **Berechne** die Anzahl der Einheiten in den drei Sportarten.
 

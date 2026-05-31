@@ -178,6 +178,7 @@ author: Martin Lommatzsch
 # Bedingte Wahrscheinlichkeit am Baumdiagramm
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 Beim folgenden Baumdiagramm ist ein Szenario dargestellt, indem rote (R), pinke (P), blaue (B), grüne (G), weiße (W) und schwarze (S) Kugeln vorkommen. Löse alle Teilaufgaben. 
 
 

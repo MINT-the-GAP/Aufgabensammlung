@@ -48,6 +48,7 @@ author: Martin Lommatzsch
 # Punkte ablesen
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 **Gib** die fehlende Information zu den Punkten als Dezimalzahl **an**.
 
 <center>

@@ -49,6 +49,7 @@ author: Martin Lommatzsch
 # Äquivalenzumformung mit natürlichen Zahlen
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 **Berechne** den Lösungswert für die Unbekannte.
 
 

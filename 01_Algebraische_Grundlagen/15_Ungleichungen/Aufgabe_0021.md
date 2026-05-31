@@ -55,6 +55,7 @@ author: Martin Lommatzsch
 # Textaufgabe Ungleichungen - Datenvolumen bei Handytarifen
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 Tarif A kostet 8 € Grundpreis und 3 € je GB. Tarif B kostet 2 € Grundpreis und 5 € je GB.  
 **Berechne**, ab welchem Datenvolumen $x$ (in GB) Tarif A nicht teurer als Tarif B ist.
 

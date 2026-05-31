@@ -53,6 +53,7 @@ author: Martin Lommatzsch
 
 # Textaufgabe Bruchrechnung - Schwimmbecken
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 Ein Schwimmbecken fasst $120\,\text{m}^3$ Wasser.  
 Zunächst wird es zu $\dfrac{5}{6}$ gefüllt.  
 Dann werden $\dfrac{3}{10}$ des gefüllten Wassers wieder abgelassen.  

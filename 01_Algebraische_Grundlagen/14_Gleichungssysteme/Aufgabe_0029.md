@@ -52,6 +52,7 @@ author: Martin Lommatzsch
 # Textaufgabe Gleichungssysteme - Stühle im Klassenzimmer
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 In einem Klassenzimmer sind Stühle aus Holz, Kunststoff und Metall aufgestellt. Insgesamt gibt es 36 Stühle. Die Holzstühle wiegen jeweils 5 kg, die Kunststoffstühle 3 kg und die Metallstühle 7 kg. Zusammen beträgt das Gewicht aller Stühle 164 kg. Außerdem sind doppelt so viele Kunststoffstühle vorhanden wie Metallstühle.  
 **Berechne** die Anzahl der Holz-, Kunststoff- und Metallstühle.
 

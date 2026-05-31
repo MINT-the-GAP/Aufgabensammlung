@@ -55,6 +55,7 @@ author: Martin Lommatzsch
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 Ein Mensch legt an einem Tag eine Strecke zurück: Einen Teil fährt der Mensch mit dem Fahrrad $\left(15 \,\dfrac{\text{km}}{\text{h}} \right)$, den anderen geht dieser zu Fuß $\left(5 \,\dfrac{\text{km}}{\text{h}} \right)$. Insgesamt ist der Mensch 3 Stunden unterwegs und die Strecke ist 24 km lang.  
 **Berechne** die Zeitanteile der beiden Abschnitte.
 

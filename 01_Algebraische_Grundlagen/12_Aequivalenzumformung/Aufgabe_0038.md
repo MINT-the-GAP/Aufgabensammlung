@@ -51,6 +51,7 @@ author: Martin Lommatzsch
 
 # Textaufgabe Äquivalenzumformung - Wasserbecken 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 Ein Becken wird pro Minute um 0,75 Liter aufgefüllt; zu Beginn sind 2,5 Liter enthalten.  
 Ein zweites Becken enthält anfangs 7,25 Liter, dabei werden pro Minute 0,5 Liter abgelassen.  
 **Berechne**, nach wie vielen Minuten beide Becken gleich viel Wasser enthalten.

@@ -56,6 +56,7 @@ author: Martin Lommatzsch
 # Bruchrechnungsdomino
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 **Ordne** die Dominosteine in der richtigen Reihenfolge **an**.
 
 

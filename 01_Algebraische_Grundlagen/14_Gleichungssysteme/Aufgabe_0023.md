@@ -53,6 +53,7 @@ author: Martin Lommatzsch
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 Zwei Tätigkeiten werden an einem Tag erledigt. Zusammen beträgt die Arbeitszeit 8 Stunden. Die eine Tätigkeit wird mit 12 € pro Stunde vergütet, die andere mit 8 € pro Stunde. Insgesamt werden 85 € ausgezahlt.  
 **Berechne** die gearbeiteten Stunden der beiden Tätigkeiten.
 

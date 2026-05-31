@@ -51,6 +51,7 @@ author: Martin Lommatzsch
 
 # Textaufgabe Äquivalenzumformung - Drohnen
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/5.png" width="120" height="30">  \
 In einer großen Versuchshalle werden zwei Drohnen auf einer geraden Linie getestet.  
 Der Boden ist mit einer Skala markiert: 0 m liegt in der Hallenmitte.  
 Die erste Drohne startet 50 m links vom Mittelpunkt und fliegt gleichmäßig nach rechts; pro Sekunde legt sie 2,8 m zurück.  

@@ -53,6 +53,7 @@ author: Martin Lommatzsch
 # Textaufgabe Äquivalenzumformung - Zwei Autos
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 Ein Auto fährt mit einer konstanten Geschwindigkeit von $60\,\dfrac{\text{km}}{\text{h}}$ los.  
 Ein zweites Auto startet zwei Stunden später, ist aber schneller und fährt mit $90\,\dfrac{\text{km}}{\text{h}}$.  
 **Berechne**, nach wie vielen Stunden beide Autos die gleiche Strecke zurückgelegt haben.

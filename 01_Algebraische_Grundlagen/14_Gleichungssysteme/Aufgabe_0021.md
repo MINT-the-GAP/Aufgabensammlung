@@ -52,6 +52,7 @@ author: Martin Lommatzsch
 # Textaufgabe Gleichungssysteme - Tiere auf einer Weide
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 Auf einer Weide sind Hühner und Ziegen. Insgesamt zählst du 21 Tiere. Zusammen haben die Tiere 62 Beine.  
 **Berechne** die Anzahl der Hühner und der Ziegen.
 

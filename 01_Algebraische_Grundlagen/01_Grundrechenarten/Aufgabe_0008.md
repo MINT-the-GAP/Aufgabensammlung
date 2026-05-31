@@ -47,6 +47,7 @@ author: Martin Lommatzsch
 
 # Schrift als Ziffern
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 **Gib** die in Sprache dargestellt Zahl in Ziffern **an**.
 
 <section class="dynFlex">

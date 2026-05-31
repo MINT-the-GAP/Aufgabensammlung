@@ -54,6 +54,7 @@ author: Martin Lommatzsch
 # Textaufgabe Bruchrechnung - markierte Rechtecksfläche
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 Die Fläche eines Rechtecks beträgt $40\,\text{cm}^2$. Ein Anteil von $\dfrac{3}{8}$ wird farbig markiert.  
 **Berechne** die markierte Fläche. 
 

@@ -52,6 +52,7 @@ author: Martin Lommatzsch
 # Textaufgabe Äquivalenzumformung - Förderbänder
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 Auf zwei Förderbändern liegen Kisten.  
 Auf Band 1 liegen zu Beginn 18 Kisten, und pro Minute kommen 1,25 Kisten dazu.  
 Auf Band 2 liegen zu Beginn 44 Kisten, und pro Minute werden 1,75 Kisten abtransportiert.  

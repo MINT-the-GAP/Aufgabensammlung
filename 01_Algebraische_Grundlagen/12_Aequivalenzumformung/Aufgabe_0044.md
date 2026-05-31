@@ -52,6 +52,7 @@ author: Martin Lommatzsch
 # Textaufgabe Äquivalenzumformung - Schnellladestation
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 Im Wartebereich eines Bahnhofs stehen zwei Sitzplätze mit Steckdosen.  
 Ein Smartphone wird an eine Schnellladestation angeschlossen. Zu Beginn zeigt es 22 Prozent Akkustand und gewinnt pro Minute 1,5 Prozentpunkte hinzu.  
 Das andere Smartphone läuft ohne Netzteil mit einem grafikintensiven Spiel. Es startet bei 94 Prozent und verliert pro Minute 2 Prozentpunkte.  

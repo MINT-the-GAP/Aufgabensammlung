@@ -47,6 +47,7 @@ author: Martin Lommatzsch
 
 # Eigenschaften von Ergebnismengen
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 Gegeben sei die folgende Ergebnismenge: \
 $\{ 83,46,55,64,91,75,61,39,84,55,47 \}$
 

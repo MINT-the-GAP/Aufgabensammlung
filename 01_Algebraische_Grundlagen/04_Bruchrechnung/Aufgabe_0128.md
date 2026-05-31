@@ -55,6 +55,7 @@ author: Martin Lommatzsch
 # Textaufgabe Bruchrechnung - Markthändler
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 Ein Markthändler bringt $24$ Kisten Obst auf den Wochenmarkt.  
 Am Vormittag verkauft er $\dfrac{2}{3}$ seiner Kisten. Danach beschließt er, von den verbleibenden Kisten $\dfrac{1}{4}$ an eine Nachbarhändlerin abzugeben.  
 **Bestimme**, wie viele Kisten er schließlich noch selbst behalten kann. 

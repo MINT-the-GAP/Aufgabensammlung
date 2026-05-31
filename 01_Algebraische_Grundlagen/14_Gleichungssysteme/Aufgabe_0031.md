@@ -53,6 +53,7 @@ author: Martin Lommatzsch
 
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
 Es werden drei elektrische Geräte mit den Leistungen $1{,}2\,\text{kW}$, $0{,}9\,\text{kW}$ und $0{,}6\,\text{kW}$ verwendet. Zusammen laufen sie $5$ Stunden. Insgesamt werden $5{,}1\,\text{kWh}$ zugeführt. Außerdem läuft das zweite Gerät eine halbe Stunde länger als das erste.  
 **Berechne** die Laufzeiten der drei Geräte.
 

@@ -52,6 +52,7 @@ author: Martin Lommatzsch
 # Textaufgabe Gleichungssysteme - Zuckergehalten in Säften
 
 
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
 Es werden drei Fruchtsäfte mit unterschiedlichen Zuckergehalten gemischt: Saft A enthält $120\,\text{g}$ Zucker je Liter, Saft B $80\,\text{g}$ je Liter und Saft C $50\,\text{g}$ je Liter. Insgesamt werden $9$ Liter gemischt. Der Gesamtzuckergehalt beträgt $815\,\text{g}$. Außerdem wird von Saft B einen halben Liter mehr als von Saft A verwendet.  
 **Berechne** die Literanteile der drei Säfte.
 
