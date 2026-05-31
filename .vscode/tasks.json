@@ -1,0 +1,17 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "git-status-short-2",
+			"type": "shell",
+			"command": "git status --short",
+			"isBackground": false
+		},
+		{
+			"label": "git-commit-navfix",
+			"type": "shell",
+			"command": "git add patch.js index.html; git commit -m navfix_liaex_proof; git push origin main",
+			"isBackground": false
+		}
+	]
+}
