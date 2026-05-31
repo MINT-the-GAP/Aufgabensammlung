@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 version:  0.0.1
 language: de
 narrator: Deutsch Female
@@ -301,7 +301,7 @@ author: Martin Lommatzsch
 ```
 </center>
 
-[[ f ]] ist Ã¤quivalent zur ersten Ableitung von [[ k ]]. \
+[[ f ]] ist äquivalent zur ersten Ableitung von [[ k ]]. \
 
 
 

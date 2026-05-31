@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 version:  0.0.1
 language: de
 narrator: Deutsch Female
@@ -303,7 +303,7 @@ author: Martin Lommatzsch
 ```
 </center>
 
-[[ h ]] ist Ã¤quivalent zur ersten Ableitung von [[ l ]]. \
+[[ h ]] ist äquivalent zur ersten Ableitung von [[ l ]]. \
 
 
 

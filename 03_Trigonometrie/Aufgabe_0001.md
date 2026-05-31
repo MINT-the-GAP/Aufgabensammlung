@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 version:  0.0.1
 language: de
 narrator: Deutsch Female
@@ -37,7 +37,7 @@ import:  https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
 tags: Trigonometrie, sehr leicht, sehr niedrig, Angeben
 
-comment: Setze die passende GrÃ¶ÃŸe in die gegebene Gleichung zum gegebenen rechtwinkligen Dreieck ein.
+comment: Setze die passende Größe in die gegebene Gleichung zum gegebenen rechtwinkligen Dreieck ein.
 
 author: Martin Lommatzsch
 
@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-**FÃ¼lle** die LÃ¼cke in der Gleichung aus, sodass die Gleichung eine wahre mathematische Aussage zum gegebenen Dreieck darstellt.
+**Fülle** die Lücke in der Gleichung aus, sodass die Gleichung eine wahre mathematische Aussage zum gegebenen Dreieck darstellt.
 
 
 <section class="dynFlex">

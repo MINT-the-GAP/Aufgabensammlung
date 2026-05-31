@@ -12,6 +12,62 @@
 			"type": "shell",
 			"command": "git add patch.js index.html; git commit -m navfix_liaex_proof; git push origin main",
 			"isBackground": false
+		},
+		{
+			"label": "repair-tikz-encoding",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"repair_tikz_encoding.py"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "repair-tikz-encoding",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"repair_tikz_encoding.py"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "repair-tikz-encoding",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"repair_tikz_encoding.py"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "repair-tikz-encoding",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"repair_tikz_encoding.py"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "show-head-testdummyresetter",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"show",
+				"HEAD:imports/TestdummyResetter.md"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
 		}
 	]
 }

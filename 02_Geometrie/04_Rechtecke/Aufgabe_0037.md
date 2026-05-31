@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 version:  0.0.1
 language: de
 narrator: Deutsch Female
@@ -35,9 +35,9 @@ import:  https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
 
 
-tags: Koordinatensystem, Punkt, Rechteck, FlÃ¤che, sehr leicht, niedrig, Angeben
+tags: Koordinatensystem, Punkt, Rechteck, Fläche, sehr leicht, niedrig, Angeben
 
-comment: Im Koodinatensystem ist ein Rechteck dargestellt. Bestimme den FlÃ¤cheninhalt.
+comment: Im Koodinatensystem ist ein Rechteck dargestellt. Bestimme den Flächeninhalt.
 
 author: Martin Lommatzsch
 
@@ -50,7 +50,7 @@ author: Martin Lommatzsch
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-**Gib** den FlÃ¤cheninhalt des dargestellten Vierecks **an**.
+**Gib** den Flächeninhalt des dargestellten Vierecks **an**.
 
 
 <section class="dynFlex">

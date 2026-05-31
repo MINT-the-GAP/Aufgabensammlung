@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 version:  0.0.1
 language: de
 narrator: Deutsch Female
@@ -301,7 +301,7 @@ author: Martin Lommatzsch
 ```
 </center>
 
-Die erste Ableitung von [[ g ]] ist Ã¤quivalent zum Graphen [[ m ]]. \
+Die erste Ableitung von [[ g ]] ist äquivalent zum Graphen [[ m ]]. \
 
 
 
