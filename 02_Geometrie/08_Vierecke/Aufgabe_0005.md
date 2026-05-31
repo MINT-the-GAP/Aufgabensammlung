@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 version:  0.0.1
 language: de
 narrator: Deutsch Female
@@ -23,6 +23,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
+import:  https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
 
 
@@ -36,7 +37,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 tags: Koordinatensystem, Punkt, Vierecke, sehr leicht, sehr niedrig, Angeben
 
-comment: Ein Punkt fehlt für das beschriebene Viereck im Koordinatensystem. Kannst du die Koordinaten des Punktes finden?
+comment: Ein Punkt fehlt fÃ¼r das beschriebene Viereck im Koordinatensystem. Kannst du die Koordinaten des Punktes finden?
 
 author: Martin Lommatzsch
 
@@ -49,7 +50,7 @@ author: Martin Lommatzsch
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-**Gib** die Koordinaten des fehlenden Punktes für das beschriebene Viereck **an**.
+**Gib** die Koordinaten des fehlenden Punktes fÃ¼r das beschriebene Viereck **an**.
 
 
 <section class="dynFlex">
@@ -197,6 +198,7 @@ $D($[[  1  ]]$|$[[  6  ]]$)$ \
 
 
 </section>
+
 
 
 

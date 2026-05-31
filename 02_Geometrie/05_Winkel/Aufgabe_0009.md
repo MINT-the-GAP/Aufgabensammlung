@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 version:  0.0.1
 language: de
 narrator: Deutsch Female
@@ -23,6 +23,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
+import:  https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
 
 
@@ -36,7 +37,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 tags: Winkel, Winkelbeziehungen, leicht, sehr niedrig, Angeben
 
-comment: Ein Winkelmaß ist bekannt, wie groß ist das gesuchte Winkelmaß?
+comment: Ein WinkelmaÃŸ ist bekannt, wie groÃŸ ist das gesuchte WinkelmaÃŸ?
 
 author: Martin Lommatzsch
 
@@ -49,7 +50,7 @@ author: Martin Lommatzsch
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
-**Gib** das gesuchte Winkelmaß **an**. Es gilt $f \parallel g$. (Die graphische Darstellung dient zur Orientierung und entspricht nicht den realen Werten.)
+**Gib** das gesuchte WinkelmaÃŸ **an**. Es gilt $f \parallel g$. (Die graphische Darstellung dient zur Orientierung und entspricht nicht den realen Werten.)
 
 
 
@@ -139,6 +140,7 @@ $\psi =$ [[ 128 ]]$^\circ$
 </div>
 
 </section>
+
 
 
 

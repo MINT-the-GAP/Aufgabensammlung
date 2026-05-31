@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 version:  0.0.1
 language: de
 narrator: Deutsch Female
@@ -23,6 +23,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
+import:  https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
 
 
@@ -34,9 +35,9 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-tags: Koordinatensystem, Punkt, Vierecke, Fläche, sehr leicht, niedrig, Angeben
+tags: Koordinatensystem, Punkt, Vierecke, FlÃ¤che, sehr leicht, niedrig, Angeben
 
-comment: Im Koodinatensystem ist ein Viereck dargestellt. Bestimme den Flächeninhalt.
+comment: Im Koodinatensystem ist ein Viereck dargestellt. Bestimme den FlÃ¤cheninhalt.
 
 author: Martin Lommatzsch
 
@@ -45,11 +46,11 @@ author: Martin Lommatzsch
 
 
 
-# Vierecksfläche im Koordinatensystem
+# VierecksflÃ¤che im Koordinatensystem
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-**Gib** den Flächeninhalt des dargestellten Vierecks **an**.
+**Gib** den FlÃ¤cheninhalt des dargestellten Vierecks **an**.
 
 
 <section class="dynFlex">
@@ -175,6 +176,7 @@ __$b)\;\;$__
 
 
 </section>
+
 
 
 

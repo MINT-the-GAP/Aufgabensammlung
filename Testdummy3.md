@@ -35,17 +35,17 @@ author: Martin Lommatzsch
 
 
 
-        https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
-        https://raw.githubusercontent.com/LiaTemplates/mermaid_template/0.1.4/README.md
-        https://raw.githubusercontent.com/liaTemplates/ABCjs/main/README.md
-        https://raw.githubusercontent.com/LiaTemplates/Speech-Recognition-Quiz/refs/heads/main/README.md
-        https://raw.githubusercontent.com/liaTemplates/AVR8js/main/README.md
-        
-        https://raw.githubusercontent.com/LiaTemplates/mec2/main/README.md
-        https://raw.githubusercontent.com/LiaTemplates/CollaborativeDrawing/main/README.md
-        https://raw.githubusercontent.com/LiaTemplates/SpreadSheet/refs/heads/main/README.md
-        https://github.com/LiaTemplates/PeriodicTable/blob/main/README.md
-        https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main/README.md
+import:  https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
+import:  https://raw.githubusercontent.com/LiaTemplates/mermaid_template/0.1.4/README.md
+import:  https://raw.githubusercontent.com/liaTemplates/ABCjs/main/README.md
+import:  https://raw.githubusercontent.com/LiaTemplates/Speech-Recognition-Quiz/refs/heads/main/README.md
+import:  https://raw.githubusercontent.com/liaTemplates/AVR8js/main/README.md
+
+import:  https://raw.githubusercontent.com/LiaTemplates/mec2/main/README.md
+import:  https://raw.githubusercontent.com/LiaTemplates/CollaborativeDrawing/main/README.md
+import:  https://raw.githubusercontent.com/LiaTemplates/SpreadSheet/refs/heads/main/README.md
+import:  https://github.com/LiaTemplates/PeriodicTable/blob/main/README.md
+import:  https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main/README.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/README.md
 

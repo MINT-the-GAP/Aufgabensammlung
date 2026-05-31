@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 version:  0.0.1
 language: de
 narrator: Deutsch Female
@@ -23,6 +23,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
+import:  https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
 
 
@@ -34,9 +35,9 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-tags: Rechteck, Länge, Fläche, sehr leicht, sehr niedrig, Angeben
+tags: Rechteck, LÃ¤nge, FlÃ¤che, sehr leicht, sehr niedrig, Angeben
 
-comment: Wie viele kleine Flächen bilden die gesamte Fläche?
+comment: Wie viele kleine FlÃ¤chen bilden die gesamte FlÃ¤che?
 
 author: Martin Lommatzsch
 
@@ -45,11 +46,11 @@ author: Martin Lommatzsch
 
 
 
-# Einheitsflächen
+# EinheitsflÃ¤chen
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-**Gib** Anzahl der Flächen **an**.
+**Gib** Anzahl der FlÃ¤chen **an**.
 
 
  
@@ -88,7 +89,7 @@ __$a)\;\;$__
 \end{tikzpicture}
 ```
 
-Es sind [[ 15  ]] Flächen.
+Es sind [[ 15  ]] FlÃ¤chen.
 
 
 
@@ -177,7 +178,7 @@ __$b)\;\;$__
 \end{tikzpicture}
 ```
 
-Es sind [[ 48  ]] Flächen.
+Es sind [[ 48  ]] FlÃ¤chen.
 
 
 
@@ -188,6 +189,7 @@ Es sind [[ 48  ]] Flächen.
 
 
  
+
 
 
 

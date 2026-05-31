@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 version:  0.0.1
 language: de
 narrator: Deutsch Female
@@ -23,6 +23,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
+import:  https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
 
 
@@ -34,9 +35,9 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-tags: Rechteck, Länge, Fläche, Umfang, sehr leicht, sehr niedrig, Angeben
+tags: Rechteck, LÃ¤nge, FlÃ¤che, Umfang, sehr leicht, sehr niedrig, Angeben
 
-comment: Wie viele kleine Strecken umranden die gesamte Fläche?
+comment: Wie viele kleine Strecken umranden die gesamte FlÃ¤che?
 
 author: Martin Lommatzsch
 
@@ -266,6 +267,7 @@ Es sind [[ 42  ]] umrandende Strecken.
 
 
  
+
 
 
 
