@@ -18,6 +18,491 @@ const CARD_DECORATION_SCRIPT_END = '<!-- SCHULLIA_CARD_DECORATION_SCRIPT_END -->
 const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
 <script>
   (function () {
+    function normalizeText(value) {
+      return String(value == null ? '' : value)
+        .toLowerCase()
+        .replace(/\\s+/g, ' ')
+        .trim()
+    }
+
+    function getHeaderColumn() {
+      return (
+        document.querySelector('section.py-5.text-center.container .row.py-lg-5 > .col-lg-6.col-md-8.mx-auto') ||
+        document.querySelector('section.py-5.text-center.container .row.py-lg-5 > .col-12')
+      )
+    }
+
+    function populateCourseThemeOptions() {
+      const sourceSelect = document.getElementById('categorySelect')
+      const themeSelect = document.getElementById('courseThemeSelect')
+      if (!sourceSelect || !themeSelect) return
+
+      const seen = new Set()
+      const options = []
+
+      Array.from(sourceSelect.options).forEach(function (opt) {
+        const value = String(opt.value || '').trim()
+        const text = String(opt.textContent || '').trim()
+        const key = normalizeText(value || text)
+
+        if (!value) return
+        if (!key || key === 'alle themen') return
+        if (seen.has(key)) return
+
+        seen.add(key)
+        options.push({ value: value, text: text || value })
+      })
+
+      options.sort(function (a, b) {
+        return a.text.localeCompare(b.text, 'de')
+      })
+
+      themeSelect.innerHTML = ''
+      const placeholder = document.createElement('option')
+      placeholder.value = ''
+      placeholder.textContent = 'Thema wählen'
+      placeholder.selected = true
+      themeSelect.appendChild(placeholder)
+
+      options.forEach(function (entry) {
+        const option = document.createElement('option')
+        option.value = entry.value
+        option.textContent = entry.text
+        themeSelect.appendChild(option)
+      })
+    }
+
+    function getCandidateCardsForTheme(themeValue) {
+      const normalizedTheme = normalizeText(themeValue)
+      if (!normalizedTheme) return []
+
+      return Array.from(document.querySelectorAll('.card.shadow-sm[data-category]')).filter(function (card) {
+        const categories = String(card.dataset.category || '')
+          .split('|')
+          .map(function (entry) {
+            return normalizeText(entry)
+          })
+        return categories.includes(normalizedTheme)
+      })
+    }
+
+    function extractRawTaskUrl(card) {
+      if (!card) return ''
+
+      const link = card.querySelector('a.stretched-link[href], a[href]')
+      if (!link) return ''
+
+      const href = String(link.getAttribute('href') || '').trim()
+      if (!href) return ''
+
+      try {
+        const url = new URL(href, window.location.href)
+        if (url.pathname.toLowerCase().includes('/course/') && url.search.length > 1) {
+          const embedded = decodeURIComponent(url.search.slice(1))
+          const cleaned = embedded.split('#')[0].split('?')[0].trim()
+          return cleaned
+        }
+
+        if (url.href.toLowerCase().endsWith('.md')) {
+          return url.href.split('#')[0].split('?')[0]
+        }
+      } catch (error) {
+        return ''
+      }
+
+      return ''
+    }
+
+    function pickRandomItems(items, count) {
+      const pool = items.slice()
+      for (let i = pool.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        const temp = pool[i]
+        pool[i] = pool[j]
+        pool[j] = temp
+      }
+      return pool.slice(0, count)
+    }
+
+    function splitHeaderAndBody(markdown) {
+      const source = String(markdown || '')
+      const match = source.match(/^\\s*<!--[\\r\\n]*([\\s\\S]*?)-->[\\r\\n]*/)
+
+      if (!match) {
+        return {
+          headerLines: [],
+          body: source.trim(),
+        }
+      }
+
+      const headerLines = match[1]
+        .split(/\\r?\\n/)
+        .map(function (line) {
+          return String(line || '').trim()
+        })
+        .filter(function (line) {
+          return line.length > 0
+        })
+
+      return {
+        headerLines: headerLines,
+        body: source.slice(match[0].length).trim(),
+      }
+    }
+
+    function splitDashList(value) {
+      return String(value || '')
+        .split(/\\s+-\\s+|\\s*,\\s*|\\s*;\\s*/)
+        .map(function (entry) {
+          return String(entry || '').trim()
+        })
+        .filter(function (entry) {
+          return entry.length > 0
+        })
+    }
+
+    function mergeCourseHeaders(rawTexts) {
+      const seenGenericLines = new Set()
+      const genericLines = []
+      const tags = []
+      const tagsSeen = new Set()
+      const authors = []
+      const authorsSeen = new Set()
+      const comments = []
+
+      rawTexts.forEach(function (text) {
+        const parsed = splitHeaderAndBody(text)
+
+        parsed.headerLines.forEach(function (line) {
+          const kv = line.match(/^([A-Za-z0-9_-]+)\\s*:\\s*(.*)$/)
+          if (!kv) {
+            if (!seenGenericLines.has(line)) {
+              seenGenericLines.add(line)
+              genericLines.push(line)
+            }
+            return
+          }
+
+          const key = String(kv[1] || '').toLowerCase()
+          const value = String(kv[2] || '').trim()
+
+          if (key === 'tags') {
+            splitDashList(value).forEach(function (entry) {
+              const normalized = normalizeText(entry)
+              if (!normalized || tagsSeen.has(normalized)) return
+              tagsSeen.add(normalized)
+              tags.push(entry)
+            })
+            return
+          }
+
+          if (key === 'author') {
+            splitDashList(value).forEach(function (entry) {
+              const normalized = normalizeText(entry)
+              if (!normalized || authorsSeen.has(normalized)) return
+              authorsSeen.add(normalized)
+              authors.push(entry)
+            })
+            return
+          }
+
+          if (key === 'comment') {
+            if (value) comments.push(value)
+            return
+          }
+
+          if (!seenGenericLines.has(line)) {
+            seenGenericLines.add(line)
+            genericLines.push(line)
+          }
+        })
+      })
+
+      const mergedLines = genericLines.slice()
+
+      if (tags.length) {
+        mergedLines.push('tags: ' + tags.join(' - '))
+      }
+
+      if (comments.length) {
+        mergedLines.push('comment: ' + comments.join(' - '))
+      }
+
+      if (authors.length) {
+        mergedLines.push('author: ' + authors.join(' - '))
+      }
+
+      return mergedLines.length ? '<!--\\n\\n' + mergedLines.join('\\n') + '\\n\\n-->\\n\\n' : ''
+    }
+
+    async function buildCourseSource(themeValue, requestedCount) {
+      const candidates = getCandidateCardsForTheme(themeValue)
+      if (!candidates.length) {
+        throw new Error('Keine Aufgaben zum gewaehlten Thema gefunden.')
+      }
+
+      const selectionCount = Math.max(1, Math.min(requestedCount, candidates.length))
+      const selectedCards = pickRandomItems(candidates, selectionCount)
+      const selectedUrls = selectedCards
+        .map(extractRawTaskUrl)
+        .filter(function (url) {
+          return !!url
+        })
+
+      if (!selectedUrls.length) {
+        throw new Error('Es konnten keine Aufgaben-Quellen aufgeloest werden.')
+      }
+
+      const rawContents = await Promise.all(
+        selectedUrls.map(async function (url) {
+          const response = await fetch(url)
+          if (!response.ok) {
+            throw new Error('Aufgabe konnte nicht geladen werden: ' + url)
+          }
+          return response.text()
+        })
+      )
+
+      const chunks = rawContents
+        .map(function (text) {
+          return splitHeaderAndBody(text)
+        })
+        .filter(function (entry) {
+          return entry.body.length > 0
+        })
+
+      if (!chunks.length) {
+        throw new Error('Die geladenen Aufgaben waren leer.')
+      }
+
+      const mergedHeader = mergeCourseHeaders(rawContents)
+      const mergedBody = chunks
+        .map(function (entry) {
+          return entry.body
+        })
+        .join('\\n\\n\\n')
+
+      return mergedHeader + mergedBody
+    }
+
+    async function copyTextToClipboard(text) {
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+        await navigator.clipboard.writeText(text)
+        return
+      }
+
+      const helper = document.createElement('textarea')
+      helper.value = text
+      helper.setAttribute('readonly', '')
+      helper.style.position = 'fixed'
+      helper.style.left = '-9999px'
+      helper.style.top = '-9999px'
+      document.body.appendChild(helper)
+      helper.focus()
+      helper.select()
+
+      const ok = document.execCommand('copy')
+      document.body.removeChild(helper)
+
+      if (!ok) {
+        throw new Error('Zwischenablage konnte nicht beschrieben werden.')
+      }
+    }
+
+    async function gzipToBase64(text) {
+      if (typeof CompressionStream !== 'function') {
+        throw new Error('CompressionStream ist nicht verfuegbar.')
+      }
+
+      const stream = new CompressionStream('gzip')
+      const writer = stream.writable.getWriter()
+      writer.write(new TextEncoder().encode(text))
+      writer.close()
+
+      const compressed = new Uint8Array(await new Response(stream.readable).arrayBuffer())
+      let binary = ''
+
+      const chunkSize = 0x8000
+      for (let i = 0; i < compressed.length; i += chunkSize) {
+        const chunk = compressed.subarray(i, i + chunkSize)
+        binary += String.fromCharCode.apply(null, Array.from(chunk))
+      }
+
+      return btoa(binary)
+    }
+
+    async function buildLiveEditorShowCodeUrl(content) {
+      const zipCode = await gzipToBase64(content)
+      const route = '/show/code/' + zipCode
+      return 'https://liascript.github.io/LiveEditor/?' + encodeURIComponent(route)
+    }
+
+    function setManualOpenFallback(url, message) {
+      const holder = document.getElementById('courseGeneratorManualOpen')
+      if (!holder) return
+
+      holder.style.display = 'block'
+      holder.innerHTML =
+        '<p style="margin:0.6rem 0 0.45rem 0;">' + (message || 'Browser blockiert Auto-Tab. Bitte manuell oeffnen:') + '</p>' +
+        '<a href="' + url + '" target="_blank" rel="noopener" class="schullia-course-submit-btn" style="display:inline-block;text-decoration:none;">Kurs im neuen Tab oeffnen</a>'
+    }
+
+    function clearManualOpenFallback() {
+      const holder = document.getElementById('courseGeneratorManualOpen')
+      if (!holder) return
+      holder.style.display = 'none'
+      holder.innerHTML = ''
+    }
+
+    async function openLiveEditorWithCourseSource(content, popup) {
+      try {
+        const targetUrl = await buildLiveEditorShowCodeUrl(content)
+        popup.location.href = targetUrl
+      } catch (error) {
+        await copyTextToClipboard(content)
+        window.alert('Der LiveEditor wurde in einem neuen Tab geoeffnet. Der Kursinhalt ist in der Zwischenablage. Bitte im Editor Strg+V druecken.')
+      }
+    }
+
+    function closeCourseGeneratorOverlay() {
+      const overlay = document.getElementById('courseGeneratorOverlay')
+      if (!overlay) return
+      overlay.classList.remove('is-open')
+      document.body.classList.remove('schullia-modal-open')
+    }
+
+    function openCourseGeneratorOverlay() {
+      const overlay = document.getElementById('courseGeneratorOverlay')
+      if (!overlay) return
+      populateCourseThemeOptions()
+      overlay.classList.add('is-open')
+      document.body.classList.add('schullia-modal-open')
+
+      const amountInput = document.getElementById('courseTaskCountInput')
+      if (amountInput) amountInput.focus()
+    }
+
+    function ensureCourseGeneratorUI() {
+      const host = getHeaderColumn()
+      if (!host) return
+
+      let launchContainer = document.getElementById('courseGeneratorLaunchContainer')
+      if (!launchContainer) {
+        launchContainer = document.createElement('div')
+        launchContainer.id = 'courseGeneratorLaunchContainer'
+        launchContainer.className = 'schullia-course-launch-wrap'
+
+        const openButton = document.createElement('button')
+        openButton.type = 'button'
+        openButton.id = 'courseGeneratorOpenButton'
+        openButton.className = 'schullia-course-launch-btn'
+        openButton.textContent = 'Erzeuge Kurs'
+        openButton.addEventListener('click', openCourseGeneratorOverlay)
+
+        launchContainer.appendChild(openButton)
+      }
+
+      const category = document.getElementById('categorySelectCustom')
+      if (category && launchContainer.parentElement !== host) {
+        host.insertBefore(launchContainer, category)
+      } else if (!launchContainer.parentElement) {
+        host.appendChild(launchContainer)
+      }
+
+      let overlay = document.getElementById('courseGeneratorOverlay')
+      if (!overlay) {
+        overlay = document.createElement('div')
+        overlay.id = 'courseGeneratorOverlay'
+        overlay.className = 'schullia-course-overlay'
+        overlay.innerHTML =
+          '<div class="schullia-course-modal" role="dialog" aria-modal="true" aria-labelledby="courseGeneratorTitle">' +
+          '<button type="button" class="schullia-course-close" id="courseGeneratorCloseButton" aria-label="Schliessen">&times;</button>' +
+          '<h3 id="courseGeneratorTitle">Kurs Erzeugen</h3>' +
+          '<label for="courseThemeSelect">Hauptthema:</label>' +
+          '<select id="courseThemeSelect" class="form-select" aria-label="Hauptthema"></select>' +
+          '<label for="courseTaskCountInput">Anzahl Aufgaben:</label>' +
+          '<input id="courseTaskCountInput" type="number" min="1" step="1" value="5" class="form-control" aria-label="Anzahl Aufgaben" />' +
+          '<button type="button" id="courseGeneratorSubmit" class="schullia-course-submit-btn">Kurs Generieren</button>' +
+          '<div id="courseGeneratorManualOpen" style="display:none;"></div>' +
+          '</div>'
+
+        overlay.addEventListener('click', function (event) {
+          if (event.target === overlay) {
+            closeCourseGeneratorOverlay()
+          }
+        })
+
+        document.body.appendChild(overlay)
+      }
+
+      const closeButton = document.getElementById('courseGeneratorCloseButton')
+      if (closeButton && !closeButton.dataset.bound) {
+        closeButton.addEventListener('click', closeCourseGeneratorOverlay)
+        closeButton.dataset.bound = '1'
+      }
+
+      const submitButton = document.getElementById('courseGeneratorSubmit')
+      if (submitButton && !submitButton.dataset.bound) {
+        submitButton.addEventListener('click', async function () {
+          const theme = document.getElementById('courseThemeSelect')
+          const taskCount = document.getElementById('courseTaskCountInput')
+
+          const themeValue = theme ? String(theme.value || '').trim() : ''
+          const requestedCount = taskCount ? Number.parseInt(taskCount.value || '5', 10) : 5
+
+          if (!themeValue) {
+            window.alert('Bitte zuerst ein Hauptthema waehlen.')
+            return
+          }
+
+          submitButton.disabled = true
+          const oldText = submitButton.textContent
+          submitButton.textContent = 'Kurs wird erzeugt...'
+          clearManualOpenFallback()
+
+          const popup = window.open('https://liascript.github.io/LiveEditor/?/edit', '_blank', 'noopener')
+          const popupBlocked = !popup
+
+          try {
+            const courseSource = await buildCourseSource(themeValue, Number.isFinite(requestedCount) ? requestedCount : 5)
+
+            if (popupBlocked) {
+              try {
+                const targetUrl = await buildLiveEditorShowCodeUrl(courseSource)
+                setManualOpenFallback(targetUrl, 'Auto-Tab wurde blockiert. Bitte hier klicken:')
+              } catch (error) {
+                await copyTextToClipboard(courseSource)
+                setManualOpenFallback('https://liascript.github.io/LiveEditor/?/edit', 'Auto-Tab wurde blockiert. LiveEditor oeffnen und Inhalt mit Strg+V einfuegen:')
+              }
+            } else {
+              await openLiveEditorWithCourseSource(courseSource, popup)
+              closeCourseGeneratorOverlay()
+            }
+          } catch (error) {
+            if (popup && !popup.closed) {
+              popup.close()
+            }
+            window.alert('Kurs konnte nicht erzeugt werden. ' + (error && error.message ? error.message : ''))
+          } finally {
+            submitButton.disabled = false
+            submitButton.textContent = oldText || 'Kurs Generieren'
+          }
+        })
+        submitButton.dataset.bound = '1'
+      }
+
+      if (!window.__schulliaCourseOverlayEscBound) {
+        document.addEventListener('keydown', function (event) {
+          if (event.key === 'Escape') {
+            closeCourseGeneratorOverlay()
+          }
+        })
+        window.__schulliaCourseOverlayEscBound = true
+      }
+
+      populateCourseThemeOptions()
+    }
+
     function reorderHeaderFilters() {
       const category = document.getElementById('categorySelectCustom')
       const operator = document.getElementById('operatorSelectCustom')
@@ -36,32 +521,33 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
       const navbar =
         document.getElementById('mainNavbar') ||
         document.querySelector('nav.navbar.sticky-top')
-      if (!navbar) return
+      if (navbar) {
+        navbar.style.background = '#147375'
+        navbar.style.backgroundColor = '#147375'
 
-      navbar.style.background = '#147375'
-      navbar.style.backgroundColor = '#147375'
+        const brand = navbar.querySelector('.navbar-brand')
+        if (brand) {
+          brand.style.fontWeight = '700'
 
-      const brand = navbar.querySelector('.navbar-brand')
-      if (brand) {
-        brand.style.fontWeight = '700'
-
-        if (!brand.querySelector('img')) {
-          const img = document.createElement('img')
-          img.src = './pics/grad/SchulLia.png'
-          img.alt = 'SchulLia Icon'
-          img.style.height = '1.1em'
-          img.style.width = '1.1em'
-          img.style.marginRight = '0.35em'
-          img.style.verticalAlign = '-0.12em'
-          brand.prepend(img)
+          if (!brand.querySelector('img')) {
+            const img = document.createElement('img')
+            img.src = './pics/grad/SchulLia.png'
+            img.alt = 'SchulLia Icon'
+            img.style.height = '1.1em'
+            img.style.width = '1.1em'
+            img.style.marginRight = '0.35em'
+            img.style.verticalAlign = '-0.12em'
+            brand.prepend(img)
+          }
         }
+
+        navbar.querySelectorAll('.nav-link, .btn.nav-link').forEach(function (link) {
+          link.style.fontWeight = '700'
+        })
       }
 
-      navbar.querySelectorAll('.nav-link, .btn.nav-link').forEach(function (link) {
-        link.style.fontWeight = '700'
-      })
-
       reorderHeaderFilters()
+      ensureCourseGeneratorUI()
     }
 
     if (document.readyState === 'loading') {
@@ -130,6 +616,123 @@ const NAVBAR_FIX_STYLE = `${NAVBAR_FIX_STYLE_START}
     flex: 0 0 auto;
   }
 
+  .schullia-course-launch-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0.15rem 0 0.4rem;
+  }
+
+  .schullia-course-launch-btn {
+    border: 2px solid rgba(255, 255, 255, 0.55);
+    border-radius: 12px;
+    background: linear-gradient(135deg, #1a9b9e, #147375);
+    color: #ffffff;
+    font-weight: 800;
+    padding: 0.48rem 1.15rem;
+    letter-spacing: 0.01em;
+    box-shadow: 0 10px 22px rgba(8, 34, 40, 0.2);
+    transition: transform 130ms ease, box-shadow 130ms ease, filter 130ms ease;
+  }
+
+  .schullia-course-launch-btn:hover,
+  .schullia-course-launch-btn:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 26px rgba(8, 34, 40, 0.27);
+    filter: brightness(1.03);
+  }
+
+  .schullia-course-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.58);
+    backdrop-filter: blur(4px);
+  }
+
+  .schullia-course-overlay.is-open {
+    display: flex;
+  }
+
+  .schullia-course-modal {
+    width: min(520px, 94vw);
+    background: rgba(0, 0, 0, 0.9);
+    color: #eefcfc;
+    border: 1px solid rgba(133, 243, 243, 0.35);
+    border-radius: 16px;
+    box-shadow: 0 26px 54px rgba(0, 0, 0, 0.35);
+    padding: 1rem 1rem 1.1rem;
+    position: relative;
+    display: grid;
+    gap: 0.62rem;
+  }
+
+  .schullia-course-modal h3 {
+    margin: 0 2rem 0.2rem 0;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #ffffff;
+  }
+
+  .schullia-course-modal label {
+    font-weight: 700;
+    color: #dff6f6;
+  }
+
+  .schullia-course-modal .form-select,
+  .schullia-course-modal .form-control {
+    border: 1px solid rgba(133, 243, 243, 0.42);
+    background: rgba(245, 255, 255, 0.95);
+    color: #134648;
+    font-weight: 700;
+  }
+
+  .schullia-course-submit-btn {
+    margin-top: 0.35rem;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #36b9bb, #1b7f82);
+    color: #ffffff;
+    font-weight: 800;
+    padding: 0.6rem 0.95rem;
+    box-shadow: 0 12px 24px rgba(6, 26, 31, 0.28);
+  }
+
+  .schullia-course-submit-btn:hover,
+  .schullia-course-submit-btn:focus {
+    filter: brightness(1.05);
+  }
+
+  .schullia-course-close {
+    position: absolute;
+    top: 0.45rem;
+    right: 0.6rem;
+    border: none;
+    background: transparent;
+    color: #d6f8f8;
+    font-size: 1.7rem;
+    line-height: 1;
+    padding: 0.1rem 0.45rem;
+    border-radius: 10px;
+  }
+
+  .schullia-course-close:hover,
+  .schullia-course-close:focus {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  body.schullia-modal-open main {
+    filter: blur(3px);
+  }
+
+  body.schullia-modal-open {
+    overflow: hidden;
+  }
+
   @media (min-width: 1200px) {
     main {
       width: 94vw !important;
@@ -156,6 +759,7 @@ const NAVBAR_FIX_STYLE = `${NAVBAR_FIX_STYLE_START}
     section.py-5.text-center.container .row.py-lg-5 > .col-lg-6.col-md-8.mx-auto > .project-title-sub,
     section.py-5.text-center.container .row.py-lg-5 > .col-lg-6.col-md-8.mx-auto > br,
     section.py-5.text-center.container .row.py-lg-5 > .col-lg-6.col-md-8.mx-auto > .header-icon-strip,
+    section.py-5.text-center.container .row.py-lg-5 > .col-lg-6.col-md-8.mx-auto > .schullia-course-launch-wrap,
     section.py-5.text-center.container .row.py-lg-5 > .col-lg-6.col-md-8.mx-auto > #chipsContainer {
       flex: 0 0 100%;
       width: 100%;
