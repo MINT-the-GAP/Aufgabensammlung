@@ -20,6 +20,9 @@ jobs:
       - name: Check out current repository
         uses: actions/checkout@v4
 
+      - name: Prepare patch template
+        run: cp index.html ziel.html
+
       - name: Generate WebSite
         run: liaex -i project.yml --format project --output index --project-search
 
