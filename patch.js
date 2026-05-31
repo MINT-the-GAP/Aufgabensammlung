@@ -124,6 +124,522 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
       return pool.slice(0, count)
     }
 
+    const COURSE_TARGET_GROUP_PROFILES = {
+      einsteiger: {
+        difficulty: new Map([
+          [1, 0.35],
+          [2, 0.25],
+          [3, 0.15],
+          [4, 0.15],
+          [5, 0.1],
+        ]),
+        network: new Map([
+          [1, 0.6],
+          [2, 0.3],
+          [3, 0.05],
+          [4, 0.05],
+          [5, 0.0],
+        ]),
+      },
+      fortgeschrittene: {
+        difficulty: new Map([
+          [1, 0.1],
+          [2, 0.25],
+          [3, 0.4],
+          [4, 0.15],
+          [5, 0.1],
+        ]),
+        network: new Map([
+          [1, 0.1],
+          [2, 0.25],
+          [3, 0.4],
+          [4, 0.15],
+          [5, 0.1],
+        ]),
+      },
+      experten: {
+        difficulty: new Map([
+          [1, 0.1],
+          [2, 0.2],
+          [3, 0.35],
+          [4, 0.2],
+          [5, 0.15],
+        ]),
+        network: new Map([
+          [1, 0.1],
+          [2, 0.2],
+          [3, 0.3],
+          [4, 0.2],
+          [5, 0.2],
+        ]),
+      },
+    }
+
+    const COURSE_OPERATOR_RULES = [
+      { key: 'angeben', min: 0.05, max: 0.15 },
+      { key: 'ordnen', min: 0.0, max: 0.05 },
+      { key: 'skizzieren', min: 0.0, max: 0.2 },
+      { key: 'zeichnen', min: 0.0, max: 0.4 },
+      { key: 'abschaetzen', min: 0.0, max: 0.1 },
+      { key: 'vergleichen', min: 0.0, max: 0.1 },
+      { key: 'aufstellen', min: 0.0, max: 0.05 },
+      { key: 'ermitteln_bestimmen', min: 0.2, max: 0.5 },
+      { key: 'berechnen', min: 0.3, max: 0.75 },
+      { key: 'planen', min: 0.0, max: 0.05 },
+      { key: 'untersuchen', min: 0.0, max: 0.1 },
+      { key: 'ableiten', min: 0.0, max: 0.1 },
+      { key: 'herleiten', min: 0.0, max: 0.1 },
+      { key: 'beschreiben', min: 0.0, max: 0.1 },
+      { key: 'erklaeren', min: 0.0, max: 0.1 },
+      { key: 'erlaeutern', min: 0.0, max: 0.05 },
+      { key: 'eroertern', min: 0.0, max: 0.05 },
+      { key: 'diskutieren', min: 0.0, max: 0.05 },
+      { key: 'beurteilen', min: 0.0, max: 0.1 },
+      { key: 'bewerten', min: 0.0, max: 0.1 },
+      { key: 'begruenden', min: 0.0, max: 0.1 },
+      { key: 'interpretieren_deuten', min: 0.0, max: 0.1 },
+      { key: 'analysieren', min: 0.0, max: 0.1 },
+      { key: 'auswerten', min: 0.0, max: 0.1 },
+      { key: 'darstellen', min: 0.0, max: 0.1 },
+    ]
+
+    function buildCourseOperatorAliasMap() {
+      const map = new Map()
+
+      function add(key, aliases) {
+        aliases.forEach(function (alias) {
+          map.set(alias, key)
+        })
+      }
+
+      add('angeben', ['angeben', 'ausfullen', 'auswahlen', 'ankreuzen'])
+      add('ordnen', ['ordnen'])
+      add('skizzieren', ['skizzieren'])
+      add('zeichnen', ['zeichnen'])
+      add('abschaetzen', ['abschatzen'])
+      add('vergleichen', ['vergleichen'])
+      add('aufstellen', ['aufstellen'])
+      add('ermitteln_bestimmen', ['ermitteln', 'bestimmen', 'bestimme'])
+      add('berechnen', ['berechnen'])
+      add('planen', ['planen'])
+      add('untersuchen', ['untersuchen'])
+      add('ableiten', ['ableiten'])
+      add('herleiten', ['herleiten'])
+      add('beschreiben', ['beschreiben'])
+      add('erklaeren', ['erklaren', 'erklaere'])
+      add('erlaeutern', ['erlautern'])
+      add('eroertern', ['erortern'])
+      add('diskutieren', ['diskutieren'])
+      add('beurteilen', ['beurteilen'])
+      add('bewerten', ['bewerten'])
+      add('begruenden', ['begrunden', 'begruenden'])
+      add('interpretieren_deuten', ['interpretieren', 'deuten'])
+      add('analysieren', ['analysieren'])
+      add('auswerten', ['auswerten'])
+      add('darstellen', ['darstellen'])
+
+      return map
+    }
+
+    const COURSE_OPERATOR_ALIAS_TO_KEY = buildCourseOperatorAliasMap()
+
+    function normalizeOperatorText(value) {
+      return String(value == null ? '' : value)
+        .toLowerCase()
+        .replace(/ß/g, 'ss')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim()
+    }
+
+    function resolveOperatorKey(value) {
+      const normalized = normalizeOperatorText(value)
+      return normalized ? COURSE_OPERATOR_ALIAS_TO_KEY.get(normalized) || null : null
+    }
+
+    function getTargetGroupProfile(groupValue) {
+      const normalized = normalizeText(groupValue)
+      return COURSE_TARGET_GROUP_PROFILES[normalized] || COURSE_TARGET_GROUP_PROFILES.fortgeschrittene
+    }
+
+    function getCardDifficultyLevel(card) {
+      if (!card) return null
+
+      const cardBody = card.querySelector('.card-body')
+      if (!cardBody) return null
+
+      const level = Number.parseInt(cardBody.dataset.schulliaDifficultyLevel || '', 10)
+      return Number.isFinite(level) && level >= 1 && level <= 5 ? level : null
+    }
+
+    function getCardNetworkLevel(card) {
+      if (!card) return null
+
+      const cardBody = card.querySelector('.card-body')
+      if (!cardBody) return null
+
+      const level = Number.parseInt(cardBody.dataset.schulliaNetworkLevel || '', 10)
+      return Number.isFinite(level) && level >= 1 && level <= 5 ? level : null
+    }
+
+    function getCardOperatorKey(card) {
+      if (!card) return null
+
+      const cardBody = card.querySelector('.card-body')
+      if (!cardBody) return null
+
+      const stored = String(cardBody.dataset.schulliaOperatorKey || '').trim()
+      if (stored) return stored
+
+      const badges = Array.from(cardBody.querySelectorAll('.badge'))
+      for (let i = 0; i < badges.length; i += 1) {
+        const key = resolveOperatorKey(badges[i].textContent)
+        if (key) return key
+      }
+
+      return null
+    }
+
+    function allocateTargetsByWeights(total, weights, availability) {
+      const targets = new Map()
+      if (total <= 0) return targets
+
+      const activeLevels = []
+      let weightSum = 0
+
+      weights.forEach(function (weight, level) {
+        const available = Number(availability.get(level) || 0)
+        if (available > 0 && weight > 0) {
+          activeLevels.push(level)
+          weightSum += weight
+        }
+      })
+
+      if (!activeLevels.length) return targets
+
+      const bucket = []
+      let assigned = 0
+
+      activeLevels.forEach(function (level) {
+        const available = Number(availability.get(level) || 0)
+        const expected = (total * weights.get(level)) / weightSum
+        const base = Math.min(available, Math.floor(expected))
+        targets.set(level, base)
+        assigned += base
+        bucket.push({
+          level: level,
+          rest: expected - base,
+          room: Math.max(0, available - base),
+        })
+      })
+
+      let remaining = total - assigned
+      while (remaining > 0) {
+        bucket
+          .sort(function (a, b) {
+            if (b.rest !== a.rest) return b.rest - a.rest
+            return b.room - a.room
+          })
+          .some(function (entry) {
+            if (entry.room <= 0) return false
+            targets.set(entry.level, (targets.get(entry.level) || 0) + 1)
+            entry.room -= 1
+            entry.rest = 0
+            remaining -= 1
+            return true
+          })
+
+        const hasRoom = bucket.some(function (entry) {
+          return entry.room > 0
+        })
+        if (!hasRoom) break
+      }
+
+      return targets
+    }
+
+    function buildOperatorConstraints(total, availability) {
+      const base = COURSE_OPERATOR_RULES.map(function (rule) {
+        const available = Number(availability.get(rule.key) || 0)
+        if (!available) {
+          return { key: rule.key, min: 0, max: 0, available: 0 }
+        }
+
+        let min = Math.min(available, Math.ceil(rule.min * total))
+        let max = Math.min(available, Math.floor(rule.max * total))
+        if (max < min) max = min
+
+        return { key: rule.key, min: min, max: max, available: available }
+      })
+
+      const withMin = base.filter(function (entry) {
+        return entry.min > 0
+      })
+
+      const minSum = withMin.reduce(function (sum, entry) {
+        return sum + entry.min
+      }, 0)
+
+      if (minSum > total && minSum > 0) {
+        const scaled = withMin.map(function (entry) {
+          const exact = (entry.min * total) / minSum
+          return {
+            key: entry.key,
+            exact: exact,
+            base: Math.floor(exact),
+            rest: exact - Math.floor(exact),
+            max: entry.max,
+          }
+        })
+
+        let assigned = scaled.reduce(function (sum, entry) {
+          return sum + entry.base
+        }, 0)
+        let remaining = total - assigned
+
+        scaled.sort(function (a, b) {
+          return b.rest - a.rest
+        })
+
+        for (let i = 0; i < scaled.length && remaining > 0; i += 1) {
+          scaled[i].base += 1
+          remaining -= 1
+        }
+
+        const minByKey = new Map(
+          scaled.map(function (entry) {
+            return [entry.key, entry.base]
+          })
+        )
+
+        base.forEach(function (entry) {
+          const newMin = Number(minByKey.get(entry.key) || 0)
+          entry.min = Math.min(newMin, entry.max)
+        })
+      }
+
+      return new Map(
+        base.map(function (entry) {
+          return [entry.key, entry]
+        })
+      )
+    }
+
+    function scoreEntryForTargets(entry, diffCounts, diffTargets, networkCounts, networkTargets) {
+      let score = Math.random() * 0.05
+
+      if (Number.isFinite(entry.difficulty)) {
+        const target = Number(diffTargets.get(entry.difficulty) || 0)
+        const current = Number(diffCounts.get(entry.difficulty) || 0)
+        score += current < target ? 22 : -6
+      }
+
+      if (Number.isFinite(entry.network)) {
+        const target = Number(networkTargets.get(entry.network) || 0)
+        const current = Number(networkCounts.get(entry.network) || 0)
+        score += current < target ? 16 : -4
+      }
+
+      return score
+    }
+
+    function pickBestFromPool(pool, predicate, scorer) {
+      const matches = pool.filter(predicate)
+      if (!matches.length) return null
+
+      let best = matches[0]
+      let bestScore = scorer(best)
+
+      for (let i = 1; i < matches.length; i += 1) {
+        const current = matches[i]
+        const currentScore = scorer(current)
+        if (currentScore > bestScore) {
+          best = current
+          bestScore = currentScore
+        }
+      }
+
+      return best
+    }
+
+    function removeEntry(pool, entry) {
+      const index = pool.indexOf(entry)
+      if (index >= 0) pool.splice(index, 1)
+    }
+
+    function selectCardsByCourseCriteria(candidates, count, groupValue) {
+      const targetCount = Math.max(1, Math.min(count, candidates.length))
+      const profile = getTargetGroupProfile(groupValue)
+      const entries = candidates.map(function (card) {
+        return {
+          card: card,
+          difficulty: getCardDifficultyLevel(card),
+          network: getCardNetworkLevel(card),
+          operator: getCardOperatorKey(card),
+        }
+      })
+
+      const pool = pickRandomItems(entries, entries.length)
+      const selected = []
+
+      const diffAvailability = new Map()
+      const networkAvailability = new Map()
+      const operatorAvailability = new Map()
+
+      entries.forEach(function (entry) {
+        if (Number.isFinite(entry.difficulty)) {
+          diffAvailability.set(entry.difficulty, Number(diffAvailability.get(entry.difficulty) || 0) + 1)
+        }
+
+        if (Number.isFinite(entry.network)) {
+          networkAvailability.set(entry.network, Number(networkAvailability.get(entry.network) || 0) + 1)
+        }
+
+        if (entry.operator) {
+          operatorAvailability.set(entry.operator, Number(operatorAvailability.get(entry.operator) || 0) + 1)
+        }
+      })
+
+      const diffTargets = allocateTargetsByWeights(targetCount, profile.difficulty, diffAvailability)
+      const networkTargets = allocateTargetsByWeights(targetCount, profile.network, networkAvailability)
+      const operatorConstraints = buildOperatorConstraints(targetCount, operatorAvailability)
+
+      const diffCounts = new Map()
+      const networkCounts = new Map()
+      const operatorCounts = new Map()
+
+      function register(entry) {
+        selected.push(entry)
+        removeEntry(pool, entry)
+
+        if (Number.isFinite(entry.difficulty)) {
+          diffCounts.set(entry.difficulty, Number(diffCounts.get(entry.difficulty) || 0) + 1)
+        }
+
+        if (Number.isFinite(entry.network)) {
+          networkCounts.set(entry.network, Number(networkCounts.get(entry.network) || 0) + 1)
+        }
+
+        if (entry.operator) {
+          operatorCounts.set(entry.operator, Number(operatorCounts.get(entry.operator) || 0) + 1)
+        }
+      }
+
+      const minRules = Array.from(operatorConstraints.values())
+        .filter(function (entry) {
+          return entry.min > 0
+        })
+        .sort(function (a, b) {
+          return b.min - a.min
+        })
+
+      minRules.forEach(function (rule) {
+        while (selected.length < targetCount && Number(operatorCounts.get(rule.key) || 0) < rule.min) {
+          const best = pickBestFromPool(
+            pool,
+            function (entry) {
+              return entry.operator === rule.key
+            },
+            function (entry) {
+              return scoreEntryForTargets(entry, diffCounts, diffTargets, networkCounts, networkTargets) + 35
+            }
+          )
+
+          if (!best) break
+          register(best)
+        }
+      })
+
+      function respectsOperatorMax(entry) {
+        if (!entry.operator) return true
+        const rule = operatorConstraints.get(entry.operator)
+        if (!rule) return true
+        return Number(operatorCounts.get(entry.operator) || 0) < rule.max
+      }
+
+      Array.from(diffTargets.keys())
+        .sort(function (a, b) {
+          return a - b
+        })
+        .forEach(function (level) {
+          while (selected.length < targetCount && Number(diffCounts.get(level) || 0) < Number(diffTargets.get(level) || 0)) {
+            const best = pickBestFromPool(
+              pool,
+              function (entry) {
+                return entry.difficulty === level && respectsOperatorMax(entry)
+              },
+              function (entry) {
+                return scoreEntryForTargets(entry, diffCounts, diffTargets, networkCounts, networkTargets) + 18
+              }
+            )
+            if (!best) break
+            register(best)
+          }
+        })
+
+      Array.from(networkTargets.keys())
+        .sort(function (a, b) {
+          return a - b
+        })
+        .forEach(function (level) {
+          while (selected.length < targetCount && Number(networkCounts.get(level) || 0) < Number(networkTargets.get(level) || 0)) {
+            const best = pickBestFromPool(
+              pool,
+              function (entry) {
+                return entry.network === level && respectsOperatorMax(entry)
+              },
+              function (entry) {
+                return scoreEntryForTargets(entry, diffCounts, diffTargets, networkCounts, networkTargets) + 14
+              }
+            )
+            if (!best) break
+            register(best)
+          }
+        })
+
+      while (selected.length < targetCount && pool.length) {
+        const bestWithMax = pickBestFromPool(
+          pool,
+          function (entry) {
+            return respectsOperatorMax(entry)
+          },
+          function (entry) {
+            return scoreEntryForTargets(entry, diffCounts, diffTargets, networkCounts, networkTargets)
+          }
+        )
+
+        const bestAny =
+          bestWithMax ||
+          pickBestFromPool(
+            pool,
+            function () {
+              return true
+            },
+            function (entry) {
+              return scoreEntryForTargets(entry, diffCounts, diffTargets, networkCounts, networkTargets)
+            }
+          )
+
+        if (!bestAny) break
+        register(bestAny)
+      }
+
+      return selected
+        .sort(function (a, b) {
+          const aLevel = Number.isFinite(a.difficulty) ? a.difficulty : 99
+          const bLevel = Number.isFinite(b.difficulty) ? b.difficulty : 99
+          if (aLevel !== bLevel) return aLevel - bLevel
+
+          const aNetwork = Number.isFinite(a.network) ? a.network : 99
+          const bNetwork = Number.isFinite(b.network) ? b.network : 99
+          return aNetwork - bNetwork
+        })
+        .map(function (entry) {
+          return entry.card
+        })
+    }
+
     function splitHeaderAndBody(markdown) {
       const source = String(markdown || '')
       const match = source.match(/^\\s*<!--[\\r\\n]*([\\s\\S]*?)-->[\\r\\n]*/)
@@ -221,7 +737,7 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
       const mergedLines = genericLines.slice()
 
       if (tags.length) {
-        mergedLines.push('tags: ' + tags.join(' - '))
+        mergedLines.push('tags: ' + tags.join(', '))
       }
 
       if (comments.length) {
@@ -229,20 +745,20 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
       }
 
       if (authors.length) {
-        mergedLines.push('author: ' + authors.join(' - '))
+        mergedLines.push('author: ' + authors.join(', '))
       }
 
       return mergedLines.length ? '<!--\\n\\n' + mergedLines.join('\\n') + '\\n\\n-->\\n\\n' : ''
     }
 
-    async function buildCourseSource(themeValue, requestedCount) {
+    async function buildCourseSource(themeValue, requestedCount, groupValue) {
       const candidates = getCandidateCardsForTheme(themeValue)
       if (!candidates.length) {
-        throw new Error('Keine Aufgaben zum gewaehlten Thema gefunden.')
+        throw new Error('Keine Aufgaben zum gewählten Thema gefunden.')
       }
 
       const selectionCount = Math.max(1, Math.min(requestedCount, candidates.length))
-      const selectedCards = pickRandomItems(candidates, selectionCount)
+      const selectedCards = selectCardsByCourseCriteria(candidates, selectionCount, groupValue)
       const selectedUrls = selectedCards
         .map(extractRawTaskUrl)
         .filter(function (url) {
@@ -250,7 +766,7 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
         })
 
       if (!selectedUrls.length) {
-        throw new Error('Es konnten keine Aufgaben-Quellen aufgeloest werden.')
+        throw new Error('Es konnten keine Aufgaben-Quellen aufgelöst werden.')
       }
 
       const rawContents = await Promise.all(
@@ -311,7 +827,7 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
 
     async function gzipToBase64(text) {
       if (typeof CompressionStream !== 'function') {
-        throw new Error('CompressionStream ist nicht verfuegbar.')
+        throw new Error('CompressionStream ist nicht verfügbar.')
       }
 
       const stream = new CompressionStream('gzip')
@@ -343,8 +859,8 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
 
       holder.style.display = 'block'
       holder.innerHTML =
-        '<p style="margin:0.6rem 0 0.45rem 0;">' + (message || 'Browser blockiert Auto-Tab. Bitte manuell oeffnen:') + '</p>' +
-        '<a href="' + url + '" target="_blank" rel="noopener" class="schullia-course-submit-btn" style="display:inline-block;text-decoration:none;">Kurs im neuen Tab oeffnen</a>'
+        '<p style="margin:0.6rem 0 0.45rem 0;">' + (message || 'Browser blockiert Auto-Tab. Bitte manuell öffnen:') + '</p>' +
+        '<a href="' + url + '" target="_blank" rel="noopener" class="schullia-course-submit-btn" style="display:inline-block;text-decoration:none;">Kurs im neuen Tab öffnen</a>'
     }
 
     function clearManualOpenFallback() {
@@ -360,7 +876,7 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
         popup.location.href = targetUrl
       } catch (error) {
         await copyTextToClipboard(content)
-        window.alert('Der LiveEditor wurde in einem neuen Tab geoeffnet. Der Kursinhalt ist in der Zwischenablage. Bitte im Editor Strg+V druecken.')
+        window.alert('Der LiveEditor wurde in einem neuen Tab geöffnet. Der Kursinhalt ist in der Zwischenablage. Bitte im Editor Strg+V drücken.')
       }
     }
 
@@ -416,10 +932,16 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
         overlay.className = 'schullia-course-overlay'
         overlay.innerHTML =
           '<div class="schullia-course-modal" role="dialog" aria-modal="true" aria-labelledby="courseGeneratorTitle">' +
-          '<button type="button" class="schullia-course-close" id="courseGeneratorCloseButton" aria-label="Schliessen">&times;</button>' +
+          '<button type="button" class="schullia-course-close" id="courseGeneratorCloseButton" aria-label="Schließen">&times;</button>' +
           '<h3 id="courseGeneratorTitle">Kurs Erzeugen</h3>' +
           '<label for="courseThemeSelect">Hauptthema:</label>' +
           '<select id="courseThemeSelect" class="form-select" aria-label="Hauptthema"></select>' +
+          '<label for="courseTargetGroupSelect">Zielgruppe:</label>' +
+          '<select id="courseTargetGroupSelect" class="form-select" aria-label="Zielgruppe">' +
+          '<option value="einsteiger">Einsteiger</option>' +
+          '<option value="fortgeschrittene" selected>Fortgeschrittene</option>' +
+          '<option value="experten">Experten</option>' +
+          '</select>' +
           '<label for="courseTaskCountInput">Anzahl Aufgaben:</label>' +
           '<input id="courseTaskCountInput" type="number" min="1" step="1" value="5" class="form-control" aria-label="Anzahl Aufgaben" />' +
           '<button type="button" id="courseGeneratorSubmit" class="schullia-course-submit-btn">Kurs Generieren</button>' +
@@ -445,13 +967,15 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
       if (submitButton && !submitButton.dataset.bound) {
         submitButton.addEventListener('click', async function () {
           const theme = document.getElementById('courseThemeSelect')
+          const targetGroup = document.getElementById('courseTargetGroupSelect')
           const taskCount = document.getElementById('courseTaskCountInput')
 
           const themeValue = theme ? String(theme.value || '').trim() : ''
+          const targetGroupValue = targetGroup ? String(targetGroup.value || 'fortgeschrittene').trim() : 'fortgeschrittene'
           const requestedCount = taskCount ? Number.parseInt(taskCount.value || '5', 10) : 5
 
           if (!themeValue) {
-            window.alert('Bitte zuerst ein Hauptthema waehlen.')
+            window.alert('Bitte zuerst ein Hauptthema wählen.')
             return
           }
 
@@ -460,11 +984,15 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
           submitButton.textContent = 'Kurs wird erzeugt...'
           clearManualOpenFallback()
 
-          const popup = window.open('https://liascript.github.io/LiveEditor/?/edit', '_blank', 'noopener')
+          const popup = window.open('https://liascript.github.io/LiveEditor/?/edit', '_blank')
           const popupBlocked = !popup
 
           try {
-            const courseSource = await buildCourseSource(themeValue, Number.isFinite(requestedCount) ? requestedCount : 5)
+            const courseSource = await buildCourseSource(
+              themeValue,
+              Number.isFinite(requestedCount) ? requestedCount : 5,
+              targetGroupValue
+            )
 
             if (popupBlocked) {
               try {
@@ -472,7 +1000,7 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
                 setManualOpenFallback(targetUrl, 'Auto-Tab wurde blockiert. Bitte hier klicken:')
               } catch (error) {
                 await copyTextToClipboard(courseSource)
-                setManualOpenFallback('https://liascript.github.io/LiveEditor/?/edit', 'Auto-Tab wurde blockiert. LiveEditor oeffnen und Inhalt mit Strg+V einfuegen:')
+                setManualOpenFallback('https://liascript.github.io/LiveEditor/?/edit', 'Auto-Tab wurde blockiert. LiveEditor öffnen und Inhalt mit Strg+V einfügen:')
               }
             } else {
               await openLiveEditorWithCourseSource(courseSource, popup)
@@ -877,29 +1405,57 @@ const CARD_DECORATION_SCRIPT = `${CARD_DECORATION_SCRIPT_START}
       ['sehr hoch', 5],
     ])
 
-    const operatorWords = new Set([
-      'angeben',
-      'bestimme',
-      'bestimmen',
-      'berechnen',
-      'beschreibe',
-      'begruende',
-      'begrunde',
-      'erklaere',
-      'nenne',
-      'ordne',
-      'vergleiche',
-      'zeichne',
-      'loese',
-      'setze ein',
+    const operatorAliasToKey = new Map([
+      ['angeben', 'angeben'],
+      ['ausfullen', 'angeben'],
+      ['auswahlen', 'angeben'],
+      ['ankreuzen', 'angeben'],
+      ['ordnen', 'ordnen'],
+      ['skizzieren', 'skizzieren'],
+      ['zeichnen', 'zeichnen'],
+      ['abschatzen', 'abschaetzen'],
+      ['vergleichen', 'vergleichen'],
+      ['aufstellen', 'aufstellen'],
+      ['ermitteln', 'ermitteln_bestimmen'],
+      ['bestimmen', 'ermitteln_bestimmen'],
+      ['bestimme', 'ermitteln_bestimmen'],
+      ['berechnen', 'berechnen'],
+      ['planen', 'planen'],
+      ['untersuchen', 'untersuchen'],
+      ['ableiten', 'ableiten'],
+      ['herleiten', 'herleiten'],
+      ['beschreiben', 'beschreiben'],
+      ['beschreibe', 'beschreiben'],
+      ['erklaren', 'erklaeren'],
+      ['erklaere', 'erklaeren'],
+      ['erlautern', 'erlaeutern'],
+      ['erortern', 'eroertern'],
+      ['diskutieren', 'diskutieren'],
+      ['beurteilen', 'beurteilen'],
+      ['bewerten', 'bewerten'],
+      ['begruenden', 'begruenden'],
+      ['begrunden', 'begruenden'],
+      ['interpretieren', 'interpretieren_deuten'],
+      ['deuten', 'interpretieren_deuten'],
+      ['analysieren', 'analysieren'],
+      ['auswerten', 'auswerten'],
+      ['darstellen', 'darstellen'],
     ])
 
     function normalize(value) {
       return String(value == null ? '' : value)
         .toLowerCase()
+        .replace(/ß/g, 'ss')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
         .replace(/\u00a0/g, ' ')
         .replace(/\\s+/g, ' ')
         .trim()
+    }
+
+    function getOperatorKey(label) {
+      const normalized = normalize(label)
+      return normalized ? operatorAliasToKey.get(normalized) || null : null
     }
 
     function removeEmptyBadgeParagraphs(cardBody) {
@@ -919,6 +1475,7 @@ const CARD_DECORATION_SCRIPT = `${CARD_DECORATION_SCRIPT_START}
       const badgeNodes = [...cardBody.querySelectorAll('.badge')]
       let difficultyLevel = null
       let networkLevel = null
+      let operatorKey = String(cardBody.dataset.schulliaOperatorKey || '').trim()
 
       const storedDifficultyLevel = Number.parseInt(cardBody.dataset.schulliaDifficultyLevel || '', 10)
       const storedNetworkLevel = Number.parseInt(cardBody.dataset.schulliaNetworkLevel || '', 10)
@@ -938,7 +1495,9 @@ const CARD_DECORATION_SCRIPT = `${CARD_DECORATION_SCRIPT_START}
           return
         }
 
-        if (operatorWords.has(label)) {
+        const resolvedOperator = getOperatorKey(label)
+        if (resolvedOperator) {
+          operatorKey = operatorKey || resolvedOperator
           badge.remove()
         }
       })
@@ -957,6 +1516,10 @@ const CARD_DECORATION_SCRIPT = `${CARD_DECORATION_SCRIPT_START}
 
       if (networkLevel) {
         cardBody.dataset.schulliaNetworkLevel = String(networkLevel)
+      }
+
+      if (operatorKey) {
+        cardBody.dataset.schulliaOperatorKey = operatorKey
       }
 
       cardBody.classList.toggle('schullia-card-has-difficulty', !!difficultyLevel)
@@ -1073,7 +1636,7 @@ function extractTargetParts(targetHtml) {
   )
 
   if (!styleMatch || !heroMatch || !scriptMatch) {
-    throw new Error('Konnte Design-Bloecke in ziel.html nicht eindeutig finden.')
+    throw new Error('Konnte Design-Blöcke in ziel.html nicht eindeutig finden.')
   }
 
   return {
@@ -1136,7 +1699,7 @@ function patchIndexHtml(html, targetParts) {
   // Keep the introductory card text bold as requested.
   html = html.replace(
     /<p class="card-text">\s*In dieser Kachel befinden sich zusammengestellte Aufgaben zum Ueben fuer Abschlusspruefungen\.\s*<\/p>/g,
-    '<p class="card-text"><strong>In dieser Kachel befinden sich zusammengestellte Aufgaben zum Ueben fuer Abschlusspruefungen.</strong></p>'
+    '<p class="card-text"><strong>In dieser Kachel befinden sich zusammengestellte Aufgaben zum Üben für Abschlussprüfungen.</strong></p>'
   )
   html = html.replace(
     /<p class="card-text">\s*In dieser Kachel befinden sich zusammengestellte Aufgaben zum Üben für Abschlussprüfungen\.\s*<\/p>/g,
