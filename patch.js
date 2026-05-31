@@ -15,13 +15,13 @@ const CARD_DECORATION_STYLE_END = '<!-- SCHULLIA_CARD_DECORATION_STYLE_END -->'
 const CARD_DECORATION_SCRIPT_START = '<!-- SCHULLIA_CARD_DECORATION_SCRIPT_START -->'
 const CARD_DECORATION_SCRIPT_END = '<!-- SCHULLIA_CARD_DECORATION_SCRIPT_END -->'
 
-const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
+const NAVBAR_FIX_SCRIPT = `<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
 <script>
   (function () {
     function normalizeText(value) {
       return String(value == null ? '' : value)
         .toLowerCase()
-        .replace(/\\s+/g, ' ')
+        .replace(/\s+/g, ' ')
         .trim()
     }
 
@@ -32,10 +32,11 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
       )
     }
 
-    function populateCourseThemeOptions() {
-      const sourceSelect = document.getElementById('categorySelect')
-      const themeSelect = document.getElementById('courseThemeSelect')
-      if (!sourceSelect || !themeSelect) return
+        function populateCourseThemeOptions() {
+            const sourceSelect = document.getElementById('categorySelect')
+            const themeSelect = document.getElementById('courseThemeSelect')
+            const blockedThemeSelect = document.getElementById('courseBlockedThemeSelect')
+            if (!sourceSelect || !themeSelect || !blockedThemeSelect) return
 
       const seen = new Set()
       const options = []
@@ -43,10 +44,12 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
       Array.from(sourceSelect.options).forEach(function (opt) {
         const value = String(opt.value || '').trim()
         const text = String(opt.textContent || '').trim()
-        const key = normalizeText(value || text)
+        const key = normalizeTag(value || text)
 
         if (!value) return
         if (!key || key === 'alle themen') return
+                if (key === 'erklaerung' || key === 'erklaerungen') return
+        if (isOperatorTag(value || text)) return
         if (seen.has(key)) return
 
         seen.add(key)
@@ -57,34 +60,247 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
         return a.text.localeCompare(b.text, 'de')
       })
 
-      themeSelect.innerHTML = ''
-      const placeholder = document.createElement('option')
-      placeholder.value = ''
-      placeholder.textContent = 'Thema wählen'
-      placeholder.selected = true
-      themeSelect.appendChild(placeholder)
+            function fillThemeSelect(selectEl) {
+                selectEl.innerHTML = ''
+                const placeholder = document.createElement('option')
+                placeholder.value = ''
+                placeholder.textContent = 'Thema wählen'
+                placeholder.selected = true
+                selectEl.appendChild(placeholder)
 
-      options.forEach(function (entry) {
-        const option = document.createElement('option')
-        option.value = entry.value
-        option.textContent = entry.text
-        themeSelect.appendChild(option)
-      })
-    }
+                options.forEach(function (entry) {
+                    const option = document.createElement('option')
+                    option.value = entry.value
+                    option.textContent = entry.text
+                    selectEl.appendChild(option)
+                })
+            }
 
-    function getCandidateCardsForTheme(themeValue) {
-      const normalizedTheme = normalizeText(themeValue)
-      if (!normalizedTheme) return []
+            function buildOverlayThemeMenu(selectEl, menuId, handler) {
+                const menu = document.getElementById(menuId)
+                if (!menu) return
 
-      return Array.from(document.querySelectorAll('.card.shadow-sm[data-category]')).filter(function (card) {
-        const categories = String(card.dataset.category || '')
-          .split('|')
-          .map(function (entry) {
-            return normalizeText(entry)
-          })
-        return categories.includes(normalizedTheme)
-      })
-    }
+                menu.innerHTML = ''
+                Array.from(selectEl.options).forEach(function (opt) {
+                    const normalizedValue = normalizeTag(opt.value)
+                    const text = String(opt.textContent || '').trim()
+                    const normalizedText = normalizeTag(text)
+
+                    if (!normalizedValue && normalizedText !== normalizeTag('Thema wählen')) {
+                        return
+                    }
+
+                    const item = document.createElement('button')
+                    item.type = 'button'
+                    item.className = 'difficulty-item'
+                    item.dataset.value = opt.value
+                    item.textContent = text || 'Thema wählen'
+                    item.disabled = !!opt.disabled
+                    item.addEventListener('click', function (event) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                        handler(opt.value)
+                    })
+                    menu.appendChild(item)
+                })
+            }
+
+            fillThemeSelect(themeSelect)
+            fillThemeSelect(blockedThemeSelect)
+            buildOverlayThemeMenu(themeSelect, 'courseThemeMenu', setCourseThemeValue)
+            buildOverlayThemeMenu(blockedThemeSelect, 'courseBlockedThemeMenu', setBlockedCourseThemeValue)
+
+            setCustomToggleLabel('courseThemeSelectedLabel', '', 'Thema wählen')
+            setCustomToggleLabel('courseBlockedThemeSelectedLabel', '', 'Thema wählen')
+            updateCourseThemeSelectionState()
+            updateCourseThemeChipsDisplay()
+            updateBlockedCourseThemeChipsDisplay()
+        }
+
+        function getSelectedCourseThemes() {
+            if (!Array.isArray(window.selectedCourseThemes)) {
+                window.selectedCourseThemes = []
+            }
+            return window.selectedCourseThemes
+        }
+
+        function getBlockedCourseThemes() {
+            if (!Array.isArray(window.blockedCourseThemes)) {
+                window.blockedCourseThemes = []
+            }
+            return window.blockedCourseThemes
+        }
+
+        function updateCourseThemeSelectionState() {
+            const includeSelect = document.getElementById('courseThemeSelect')
+            const blockSelect = document.getElementById('courseBlockedThemeSelect')
+            if (!includeSelect || !blockSelect) return
+
+            const includeSet = new Set(getSelectedCourseThemes().map(normalizeText))
+            const blockSet = new Set(getBlockedCourseThemes().map(normalizeText))
+
+            Array.from(includeSelect.options).forEach(function (opt) {
+                const key = normalizeText(opt.value)
+                if (!key) {
+                    opt.disabled = false
+                    return
+                }
+                opt.disabled = includeSet.has(key) || blockSet.has(key)
+            })
+
+            Array.from(blockSelect.options).forEach(function (opt) {
+                const key = normalizeText(opt.value)
+                if (!key) {
+                    opt.disabled = false
+                    return
+                }
+                opt.disabled = includeSet.has(key) || blockSet.has(key)
+            })
+
+            syncCustomMenuDisabledState('courseThemeSelect', 'courseThemeMenu')
+            syncCustomMenuDisabledState('courseBlockedThemeSelect', 'courseBlockedThemeMenu')
+        }
+
+        function updateCourseThemeChipsDisplay() {
+            const chipsContainer = document.getElementById('courseThemeChips')
+            if (!chipsContainer) return
+
+            chipsContainer.innerHTML = ''
+            getSelectedCourseThemes().forEach(function (theme) {
+                const chip = document.createElement('span')
+                chip.className = 'badge rounded-pill me-2 schullia-filter-chip'
+                chip.textContent = getCategoryDisplayLabel(theme) + ' ×'
+                chip.onclick = function () {
+                    removeCourseThemeChip(theme)
+                }
+                chipsContainer.appendChild(chip)
+            })
+        }
+
+        function updateBlockedCourseThemeChipsDisplay() {
+            const chipsContainer = document.getElementById('courseBlockedThemeChips')
+            if (!chipsContainer) return
+
+            chipsContainer.innerHTML = ''
+            getBlockedCourseThemes().forEach(function (theme) {
+                const chip = document.createElement('span')
+                chip.className = 'badge rounded-pill me-2 schullia-filter-chip schullia-filter-chip-blocked'
+                chip.textContent = getCategoryDisplayLabel(theme) + ' ×'
+                chip.onclick = function () {
+                    removeBlockedCourseThemeChip(theme)
+                }
+                chipsContainer.appendChild(chip)
+            })
+        }
+
+        function addCourseThemeChip(themeValue) {
+            const value = String(themeValue || '').trim()
+            if (!value) return
+
+            const selectedThemes = getSelectedCourseThemes()
+            const blockedThemes = getBlockedCourseThemes()
+            const normalized = normalizeText(value)
+
+            if (blockedThemes.some(function (entry) { return normalizeText(entry) === normalized })) return
+            if (selectedThemes.some(function (entry) { return normalizeText(entry) === normalized })) return
+
+            selectedThemes.push(value)
+            updateCourseThemeSelectionState()
+            updateCourseThemeChipsDisplay()
+            setCustomToggleLabel('courseThemeSelectedLabel', '', 'Thema wählen')
+        }
+
+        function addBlockedCourseThemeChip(themeValue) {
+            const value = String(themeValue || '').trim()
+            if (!value) return
+
+            const selectedThemes = getSelectedCourseThemes()
+            const blockedThemes = getBlockedCourseThemes()
+            const normalized = normalizeText(value)
+
+            if (selectedThemes.some(function (entry) { return normalizeText(entry) === normalized })) return
+            if (blockedThemes.some(function (entry) { return normalizeText(entry) === normalized })) return
+
+            blockedThemes.push(value)
+            updateCourseThemeSelectionState()
+            updateBlockedCourseThemeChipsDisplay()
+            setCustomToggleLabel('courseBlockedThemeSelectedLabel', '', 'Thema wählen')
+        }
+
+        function removeCourseThemeChip(themeValue) {
+            const selectedThemes = getSelectedCourseThemes()
+            const normalized = normalizeText(themeValue)
+            const index = selectedThemes.findIndex(function (entry) {
+                return normalizeText(entry) === normalized
+            })
+            if (index < 0) return
+
+            selectedThemes.splice(index, 1)
+            updateCourseThemeSelectionState()
+            updateCourseThemeChipsDisplay()
+        }
+
+        function removeBlockedCourseThemeChip(themeValue) {
+            const blockedThemes = getBlockedCourseThemes()
+            const normalized = normalizeText(themeValue)
+            const index = blockedThemes.findIndex(function (entry) {
+                return normalizeText(entry) === normalized
+            })
+            if (index < 0) return
+
+            blockedThemes.splice(index, 1)
+            updateCourseThemeSelectionState()
+            updateBlockedCourseThemeChipsDisplay()
+        }
+
+        function setCourseThemeValue(themeValue) {
+            addCourseThemeChip(themeValue)
+            closeCustomMenu('courseThemeToggle', 'courseThemeMenu')
+        }
+
+        function setBlockedCourseThemeValue(themeValue) {
+            addBlockedCourseThemeChip(themeValue)
+            closeCustomMenu('courseBlockedThemeToggle', 'courseBlockedThemeMenu')
+        }
+
+        function getCandidateCardsForThemes(themeValues, blockedThemeValues) {
+            const normalizedThemes = new Set(
+                (Array.isArray(themeValues) ? themeValues : [themeValues])
+                    .map(function (entry) {
+                        return normalizeText(entry)
+                    })
+                    .filter(Boolean)
+            )
+            if (!normalizedThemes.size) return []
+
+            const blockedThemes = new Set(
+                (Array.isArray(blockedThemeValues) ? blockedThemeValues : [blockedThemeValues])
+                    .map(function (entry) {
+                        return normalizeText(entry)
+                    })
+                    .filter(Boolean)
+            )
+
+            const requiredThemes = Array.from(normalizedThemes)
+
+            return Array.from(document.querySelectorAll('.card.shadow-sm[data-category]')).filter(function (card) {
+                const categories = String(card.dataset.category || '')
+                    .split('|')
+                    .map(function (entry) {
+                        return normalizeText(entry)
+                    })
+
+                const hasAllRequired = requiredThemes.every(function (requiredTheme) {
+                    return categories.indexOf(requiredTheme) !== -1
+                })
+
+                if (!hasAllRequired) return false
+
+                return !Array.from(blockedThemes).some(function (blockedTheme) {
+                    return categories.indexOf(blockedTheme) !== -1
+                })
+            })
+        }
 
     function extractRawTaskUrl(card) {
       if (!card) return ''
@@ -248,8 +464,8 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
         .toLowerCase()
         .replace(/ß/g, 'ss')
         .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .replace(/\s+/g, ' ')
+        .replace(/[̀-ͯ]/g, '')
+        .replace(/s+/g, ' ')
         .trim()
     }
 
@@ -642,7 +858,7 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
 
     function splitHeaderAndBody(markdown) {
       const source = String(markdown || '')
-      const match = source.match(/^\\s*<!--[\\r\\n]*([\\s\\S]*?)-->[\\r\\n]*/)
+      const match = source.match(/^\s*<!--[\r\n]*([\s\S]*?)-->[\r\n]*/)
 
       if (!match) {
         return {
@@ -652,7 +868,7 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
       }
 
       const headerLines = match[1]
-        .split(/\\r?\\n/)
+        .split(/\r?\n/)
         .map(function (line) {
           return String(line || '').trim()
         })
@@ -668,7 +884,7 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
 
     function splitDashList(value) {
       return String(value || '')
-        .split(/\\s+-\\s+|\\s*,\\s*|\\s*;\\s*/)
+        .split(/\s+-\s+|\s*,\s*|\s*;\s*/)
         .map(function (entry) {
           return String(entry || '').trim()
         })
@@ -690,7 +906,7 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
         const parsed = splitHeaderAndBody(text)
 
         parsed.headerLines.forEach(function (line) {
-          const kv = line.match(/^([A-Za-z0-9_-]+)\\s*:\\s*(.*)$/)
+          const kv = line.match(/^([A-Za-z0-9_-]+)\s*:\s*(.*)$/)
           if (!kv) {
             if (!seenGenericLines.has(line)) {
               seenGenericLines.add(line)
@@ -748,13 +964,13 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
         mergedLines.push('author: ' + authors.join(', '))
       }
 
-      return mergedLines.length ? '<!--\\n\\n' + mergedLines.join('\\n') + '\\n\\n-->\\n\\n' : ''
+      return mergedLines.length ? '<!--\n\n' + mergedLines.join('\n') + '\n\n-->\n\n' : ''
     }
 
-    async function buildCourseSource(themeValue, requestedCount, groupValue) {
-      const candidates = getCandidateCardsForTheme(themeValue)
-      if (!candidates.length) {
-        throw new Error('Keine Aufgaben zum gewählten Thema gefunden.')
+        async function buildCourseSource(themeValues, blockedThemeValues, requestedCount, groupValue) {
+            const candidates = getCandidateCardsForThemes(themeValues, blockedThemeValues)
+            if (!candidates.length) {
+                throw new Error('Keine Aufgaben für die gewählten/gesperrten Themen gefunden.')
       }
 
       const selectionCount = Math.max(1, Math.min(requestedCount, candidates.length))
@@ -796,7 +1012,7 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
         .map(function (entry) {
           return entry.body
         })
-        .join('\\n\\n\\n')
+        .join('\n\n\n')
 
       return mergedHeader + mergedBody
     }
@@ -890,6 +1106,8 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
     function openCourseGeneratorOverlay() {
       const overlay = document.getElementById('courseGeneratorOverlay')
       if (!overlay) return
+        window.selectedCourseThemes = []
+        window.blockedCourseThemes = []
       populateCourseThemeOptions()
       overlay.classList.add('is-open')
       document.body.classList.add('schullia-modal-open')
@@ -934,8 +1152,24 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
           '<div class="schullia-course-modal" role="dialog" aria-modal="true" aria-labelledby="courseGeneratorTitle">' +
           '<button type="button" class="schullia-course-close" id="courseGeneratorCloseButton" aria-label="Schließen">&times;</button>' +
           '<h3 id="courseGeneratorTitle">Kurs Erzeugen</h3>' +
-          '<label for="courseThemeSelect">Hauptthema:</label>' +
-          '<select id="courseThemeSelect" class="form-select" aria-label="Hauptthema"></select>' +
+                                        '<div id="courseThemeChips" class="schullia-theme-chip-container"></div>' +
+                                        '<div id="courseBlockedThemeChips" class="schullia-theme-chip-container"></div>' +
+                    '<label for="courseThemeToggle">Thema hinzufügen:</label>' +
+                    '<div id="courseThemeSelectCustom" class="difficulty-dropdown">' +
+                    '<button type="button" id="courseThemeToggle" class="btn difficulty-toggle form-select text-start d-flex justify-content-between align-items-center" aria-haspopup="listbox" aria-expanded="false">' +
+                    '<span id="courseThemeSelectedLabel">Thema wählen</span><span aria-hidden="true">&#9662;</span>' +
+                    '</button>' +
+                    '<div id="courseThemeMenu" class="difficulty-menu" role="listbox" aria-label="Thema hinzufügen"></div>' +
+                    '</div>' +
+                    '<select id="courseThemeSelect" class="form-select native-select-source" aria-label="Thema hinzufügen"></select>' +
+                    '<label for="courseBlockedThemeToggle">Thema sperren:</label>' +
+                    '<div id="courseBlockedThemeSelectCustom" class="difficulty-dropdown">' +
+                    '<button type="button" id="courseBlockedThemeToggle" class="btn difficulty-toggle form-select text-start d-flex justify-content-between align-items-center" aria-haspopup="listbox" aria-expanded="false">' +
+                    '<span id="courseBlockedThemeSelectedLabel">Thema wählen</span><span aria-hidden="true">&#9662;</span>' +
+                    '</button>' +
+                    '<div id="courseBlockedThemeMenu" class="difficulty-menu" role="listbox" aria-label="Thema sperren"></div>' +
+                    '</div>' +
+                    '<select id="courseBlockedThemeSelect" class="form-select native-select-source" aria-label="Thema sperren"></select>' +
           '<label for="courseTargetGroupSelect">Zielgruppe:</label>' +
           '<select id="courseTargetGroupSelect" class="form-select" aria-label="Zielgruppe">' +
           '<option value="einsteiger">Einsteiger</option>' +
@@ -963,19 +1197,53 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
         closeButton.dataset.bound = '1'
       }
 
+            const themeToggle = document.getElementById('courseThemeToggle')
+            const themeMenu = document.getElementById('courseThemeMenu')
+            if (themeToggle && themeMenu && !themeToggle.dataset.bound) {
+                themeToggle.addEventListener('click', function () {
+                    const isOpen = themeMenu.classList.toggle('show')
+                    themeToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false')
+                })
+
+                document.addEventListener('click', function (event) {
+                    if (!themeToggle.contains(event.target) && !themeMenu.contains(event.target)) {
+                        closeCustomMenu('courseThemeToggle', 'courseThemeMenu')
+                    }
+                })
+
+                themeToggle.dataset.bound = '1'
+            }
+
+            const blockedThemeToggle = document.getElementById('courseBlockedThemeToggle')
+            const blockedThemeMenu = document.getElementById('courseBlockedThemeMenu')
+            if (blockedThemeToggle && blockedThemeMenu && !blockedThemeToggle.dataset.bound) {
+                blockedThemeToggle.addEventListener('click', function () {
+                    const isOpen = blockedThemeMenu.classList.toggle('show')
+                    blockedThemeToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false')
+                })
+
+                document.addEventListener('click', function (event) {
+                    if (!blockedThemeToggle.contains(event.target) && !blockedThemeMenu.contains(event.target)) {
+                        closeCustomMenu('courseBlockedThemeToggle', 'courseBlockedThemeMenu')
+                    }
+                })
+
+                blockedThemeToggle.dataset.bound = '1'
+            }
+
       const submitButton = document.getElementById('courseGeneratorSubmit')
       if (submitButton && !submitButton.dataset.bound) {
         submitButton.addEventListener('click', async function () {
-          const theme = document.getElementById('courseThemeSelect')
           const targetGroup = document.getElementById('courseTargetGroupSelect')
           const taskCount = document.getElementById('courseTaskCountInput')
 
-          const themeValue = theme ? String(theme.value || '').trim() : ''
+          const selectedThemes = getSelectedCourseThemes().slice()
+          const blockedThemes = getBlockedCourseThemes().slice()
           const targetGroupValue = targetGroup ? String(targetGroup.value || 'fortgeschrittene').trim() : 'fortgeschrittene'
           const requestedCount = taskCount ? Number.parseInt(taskCount.value || '5', 10) : 5
 
-          if (!themeValue) {
-            window.alert('Bitte zuerst ein Hauptthema wählen.')
+                    if (!selectedThemes.length) {
+                        window.alert('Bitte zuerst mindestens ein Thema hinzufügen.')
             return
           }
 
@@ -989,7 +1257,8 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
 
           try {
             const courseSource = await buildCourseSource(
-              themeValue,
+                            selectedThemes,
+                            blockedThemes,
               Number.isFinite(requestedCount) ? requestedCount : 5,
               targetGroupValue
             )
@@ -1088,9 +1357,9 @@ const NAVBAR_FIX_SCRIPT = `${NAVBAR_FIX_SCRIPT_START}
     window.setTimeout(applyNavbarFix, 600)
   })()
 </script>
-${NAVBAR_FIX_SCRIPT_END}`
+<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_END -->`
 
-const NAVBAR_FIX_STYLE = `${NAVBAR_FIX_STYLE_START}
+const NAVBAR_FIX_STYLE = `<!-- SCHULLIA_NAVBAR_FIX_STYLE_START -->
 <style>
   #mainNavbar,
   nav.navbar.sticky-top {
@@ -1131,6 +1400,42 @@ const NAVBAR_FIX_STYLE = `${NAVBAR_FIX_STYLE_START}
     min-width: 100%;
     box-sizing: border-box;
   }
+
+    #chipsContainer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        justify-content: center;
+    }
+
+    .schullia-theme-chip-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        justify-content: center;
+        min-height: 1.8rem;
+    }
+
+    .schullia-filter-chip {
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #2cb8bb, #15888b);
+        color: #ffffff;
+        border: 1px solid rgba(17, 109, 111, 0.75);
+        box-shadow: 0 6px 14px rgba(8, 34, 40, 0.18);
+        padding: 0.43rem 0.75rem;
+    }
+
+    .schullia-filter-chip:hover,
+    .schullia-filter-chip:focus {
+        filter: brightness(1.05);
+    }
+
+    .schullia-filter-chip-blocked {
+        background: linear-gradient(135deg, #db4b5f, #b52238);
+        border-color: rgba(124, 15, 28, 0.82);
+    }
 
   .header-icon-strip {
     display: flex;
@@ -1336,7 +1641,7 @@ const NAVBAR_FIX_STYLE = `${NAVBAR_FIX_STYLE_START}
     }
   }
 </style>
-${NAVBAR_FIX_STYLE_END}`
+<!-- SCHULLIA_NAVBAR_FIX_STYLE_END -->`
 
 const CARD_DECORATION_STYLE = `${CARD_DECORATION_STYLE_START}
 <style>
