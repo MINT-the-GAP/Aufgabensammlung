@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 version:  0.0.1
 language: de
 narrator: Deutsch Female
@@ -34,9 +34,9 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-tags: Einheiten, Länge, Masse, Zeit, sehr leich, sehr niedrig, Angeben
+tags: Einheiten, Zeit, sehr leicht, sehr niedrig, Angeben
 
-comment: Wähle die richtige Einheit aus, um den kleinsten Unterschied richtig darzustellen.
+comment: Rechne Zeiteinheiten zwischen Stunden, Minuten und Sekunden um.
 
 author: Martin Lommatzsch
 
@@ -45,10 +45,14 @@ author: Martin Lommatzsch
 
 
 
-# Einheitenwahl
+# Zeiteinheiten umrechnen I
 
 
-**Wähle** die passende Einheit **aus**, sodass die Differenz zwischen den beiden angegebenen Werten die kleinste ist.
+<!-- data-solution-button="on" -->
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+**Rechne** die Zeiten in die angegebene Einheit **um**.
 
 
 
@@ -56,30 +60,91 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $4\,$m und $ 19\,$ [[km|m|dm|cm|mm]] \
+__$a)\;\;$__ $3\,\text{h} = $ [[ 180 ]] @canvas $\,\text{min}$ \
+@Algebrite.check(180)
+
+@ADetails(BE=1;Einheiten, Zeit)
 
 </div>
+
 <div class="flex-child">
-__$b)\;\;$__ $4\,$s und $ 19\,$ [[d|h|min|s|ms]] \
+
+__$b)\;\;$__ $480\,\text{min} = $ [[ 8 ]] @canvas $\,\text{h}$ \
+@Algebrite.check(8)
+
+
+
+@ADetails(BE=1;Einheiten, Zeit)
 
 </div>
+
 <div class="flex-child">
-__$c)\;\;$__ $4\,$g$ = 4\,$ [[t|kg|g|mg]] \
+
+__$c)\;\;$__ $11\,\text{min} = $ [[ 660 ]] @canvas $\,\text{s}$ \
+@Algebrite.check(660)
+
+
+
+@ADetails(BE=1;Einheiten, Zeit)
 
 </div>
+
 <div class="flex-child">
-__$d)\;\;$__ $4\,$m und $ 19\,$ [[km|m|dm|cm|mm]] \
+
+__$d)\;\;$__ $1440\,\text{s} = $ [[ 24 ]] @canvas $\,\text{min}$ \
+@Algebrite.check(24)
+
+
+
+@ADetails(BE=1;Einheiten, Zeit)
 
 </div>
+
 <div class="flex-child">
-__$e)\;\;$__ $4\,$m und $ 19\,$ [[km|m|dm|cm|mm]] \
 
+__$e)\;\;$__ $3\,\text{h} = $ [[ 10800 ]] @canvas $\,\text{s}$ \
+@Algebrite.check(10800)
+
+
+
+@ADetails(BE=1;Einheiten, Zeit)
 
 </div>
 
+<div class="flex-child">
+
+__$f)\;\;$__ $25200\,\text{s} = $ [[ 7 ]] @canvas $\,\text{h}$ \
+@Algebrite.check(7)
+
+
+
+@ADetails(BE=1;Einheiten, Zeit)
+
+</div>
+
+<div class="flex-child">
+
+__$g)\;\;$__ $13\,\text{h} = $ [[ 780 ]] @canvas $\,\text{min}$ \
+@Algebrite.check(780)
+
+
+
+@ADetails(BE=1;Einheiten, Zeit)
+
+</div>
+
+<div class="flex-child">
+
+__$h)\;\;$__ $1980\,\text{min} = $ [[ 33 ]] @canvas $\,\text{h}$ \
+@Algebrite.check(33)
+
+
+
+@ADetails(BE=1;Einheiten, Zeit)
+
+</div>
 
 </section>
-
 
 
 
