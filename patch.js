@@ -1302,16 +1302,17 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
 
     function reorderHeaderFilters() {
       const category = document.getElementById('categorySelectCustom')
+      const blocked = document.getElementById('blockedCategorySelectCustom')
       const operator = document.getElementById('operatorSelectCustom')
       const difficulty = document.getElementById('difficultySelect')
       const networking = document.getElementById('networkingSelect')
 
-      if (!category || !operator || !difficulty || !networking) return
+      if (!category || !blocked || !operator || !difficulty || !networking) return
 
       const parent = category.parentElement
       if (!parent) return
 
-      parent.append(category, operator, difficulty, networking)
+      parent.append(category, blocked, operator, difficulty, networking)
     }
 
     function applyNavbarFix() {
@@ -1385,6 +1386,7 @@ const NAVBAR_FIX_STYLE = `<!-- SCHULLIA_NAVBAR_FIX_STYLE_START -->
   }
 
   #categorySelectCustom,
+  #blockedCategorySelectCustom,
   #operatorSelectCustom,
   #difficultySelect,
   #networkingSelect,
@@ -1436,6 +1438,17 @@ const NAVBAR_FIX_STYLE = `<!-- SCHULLIA_NAVBAR_FIX_STYLE_START -->
         background: linear-gradient(135deg, #db4b5f, #b52238);
         border-color: rgba(124, 15, 28, 0.82);
     }
+
+  .card.shadow-sm .card-body > p:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    align-items: flex-start;
+  }
+
+  .card.shadow-sm .card-body .badge {
+    white-space: nowrap !important;
+  }
 
   .header-icon-strip {
     display: flex;
@@ -1599,11 +1612,18 @@ const NAVBAR_FIX_STYLE = `<!-- SCHULLIA_NAVBAR_FIX_STYLE_START -->
     }
 
     #categorySelectCustom,
+    #blockedCategorySelectCustom {
+      flex: 0 0 calc((100% - 1%) / 2) !important;
+      width: calc((100% - 1%) / 2) !important;
+      min-width: 0;
+      margin-top: 0 !important;
+    }
+
+    #operatorSelectCustom,
     #difficultySelect,
-    #networkingSelect,
-    #operatorSelectCustom {
-      flex: 0 0 260px !important;
-      width: 260px !important;
+    #networkingSelect {
+      flex: 0 0 calc((100% - 2%) / 3) !important;
+      width: calc((100% - 2%) / 3) !important;
       min-width: 0;
       margin-top: 0 !important;
     }
@@ -1612,16 +1632,20 @@ const NAVBAR_FIX_STYLE = `<!-- SCHULLIA_NAVBAR_FIX_STYLE_START -->
       order: 1;
     }
 
-    #operatorSelectCustom {
+    #blockedCategorySelectCustom {
       order: 2;
     }
 
-    #difficultySelect {
+    #operatorSelectCustom {
       order: 3;
     }
 
-    #networkingSelect {
+    #difficultySelect {
       order: 4;
+    }
+
+    #networkingSelect {
+      order: 5;
     }
 
     #categoryToggle,
