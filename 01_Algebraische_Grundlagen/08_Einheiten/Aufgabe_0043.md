@@ -36,7 +36,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 tags: Einheiten, Zeit, mittel, niedrig, Angeben
 
-comment: Rechne groÃŸe Zeiteinheiten um.
+comment: Rechne große Zeiteinheiten um.
 
 author: Martin Lommatzsch
 

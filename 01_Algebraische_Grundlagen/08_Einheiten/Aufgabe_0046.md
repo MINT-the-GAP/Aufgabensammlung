@@ -36,7 +36,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 tags: Einheiten, Zeit, Dezimalzahlen, Bruchrechnung, mittel, niedrig, Angeben
 
-comment: Rechne grÃ¶ÃŸere Zeitangaben mit Dezimalzahlen und BrÃ¼chen in die geforderte Einheit um.
+comment: Rechne größere Zeitangaben mit Dezimalzahlen und Brüchen in die geforderte Einheit um.
 
 author: Martin Lommatzsch
 

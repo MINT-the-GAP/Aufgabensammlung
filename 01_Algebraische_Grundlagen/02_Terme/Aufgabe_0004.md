@@ -57,8 +57,8 @@ author: Martin Lommatzsch
 __$a)\;\;$__ \
 $\;\;\;\; 82 - 5 \cdot 3 - 6 \cdot 4 $ \
 $= 82 - $ [[ 15 ]] @canvas $ - 6 \cdot 4  $ \
-$= [[ 67 ]] @canvas $ - 6 \cdot 4  $ \
-$= [[ 67 ]] @canvas $ - $[[ 24 ]] @canvas \
+$=$ [[ 67 ]] @canvas $ - 6 \cdot 4  $ \
+$=$ [[ 67 ]] @canvas $ - $[[ 24 ]] @canvas \
 $=$ [[ 43 ]] @canvas 
 
 </div> 
