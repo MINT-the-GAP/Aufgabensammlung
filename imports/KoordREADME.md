@@ -19,7 +19,6 @@ import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/KoordREADME.md
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
 
@@ -31,7 +30,6 @@ script: ./Koord.js
 
 
 
-import: 
 
 import: OCRREADME.md
 
