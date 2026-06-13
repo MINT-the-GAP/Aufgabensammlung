@@ -172,7 +172,7 @@ svg.tree2 foreignObject button {
 
 
 
-tags: Erklärung, Kontingenztafeln, bedingte Wahrscheinlichkeit, Vierfeldertafeln
+tags: Erklärung, Kontingenztafeln, bedingte Wahrscheinlichkeit, Vierfeldertafel
 
 comment: In diesem Abschnitt werden Vierfeldertafeln (Kontingenztafeln) und bedingte Wahrscheinlichkeit ausführlich erklärt.
 

@@ -33,7 +33,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-tags: Erklärung, Chance, Wahrscheinlichkeit, Häufigkeit, Median, arithmetische Mittelwert, Spannweite
+tags: Erklärung, Chance, Wahrscheinlichkeit, Häufigkeit, Median, arithmetisches Mittel, Spannweite
 
 comment: In diesem Abschnitt werden die Grundlagen der Stochastik ausführlich erklärt.
 

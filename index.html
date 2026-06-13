@@ -20820,6 +20820,43 @@
     filter: brightness(1.05);
   }
 
+  .schullia-course-conditional {
+    display: none;
+    gap: 0.4rem;
+  }
+
+  .schullia-course-radio-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .schullia-course-radio {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-weight: 700;
+    color: #dff6f6;
+    cursor: pointer;
+  }
+
+  .schullia-course-lb-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.9rem;
+    align-items: center;
+  }
+
+  .schullia-course-lb-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.32rem;
+    font-weight: 700;
+    color: #eefcfc;
+    cursor: pointer;
+  }
+
   .schullia-course-close {
     position: absolute;
     top: 0.45rem;
@@ -20943,6 +20980,140 @@
         .trim()
     }
 
+    var SCHULLIA_SACHSEN_LB = /* SCHULLIA_SACHSEN_LB_START */{
+      "5": {
+        "1": ["addition", "subtraktion", "multiplikation", "division", "grundrechenarten", "differenz", "vorrangsregeln", "kommutativgesetz", "assoziativgesetz", "distributivgesetz", "potenzen", "runden", "überschlagen", "zahlenstrahl", "zahlenverständnis", "quersumme", "teilbarkeiten", "teilermengen", "vielfachmengen", "ggt", "kgv", "gleichung", "folgen", "sachaufgabe"],
+        "2": ["dezimalzahlen", "prozent", "arithmetisches mittel", "arithmetische mittelwert", "durchschnitt", "periodizität"],
+        "3": ["punkt", "koordinatensystem", "lagebeziehung", "winkel", "winkelbeziehungen"],
+        "4": ["rechteck", "quader", "umfang", "fläche", "volumen"],
+        "5": ["einheiten", "zeit", "länge", "masse"],
+        "extra": ["zahlensysteme"]
+      },
+      "6": {
+        "1": ["bruchrechnung", "kehrwert", "variable", "mengen"],
+        "2": ["zuordnung", "beliebige zuordnung", "proportional", "antiproportional", "verhältnisse", "tabelle", "chance", "häufigkeit", "eindeutigkeit"],
+        "3": ["dreieck", "dreiecke", "vierecke"]
+      },
+      "7": {
+        "2": ["negative zahlen", "betrag", "algebra", "äquivalenzumformung", "prozentrechnung", "wurzeln"]
+      },
+      "8": {
+        "1": ["term", "terme", "ungleichungen"],
+        "2": ["wahrscheinlichkeit", "unbedingte wahrscheinlichkeit", "baumdiagramm", "kombinatorik", "vereinigung", "median", "spannweite"],
+        "3": ["lineare funktionen", "definitionsbereich", "wertebereich", "stelle", "parameter", "verhalten", "gleichungssysteme", "einsetzungsverfahren", "additionsverfahren"]
+      },
+      "9": {
+        "1": ["quadratische funktionen", "scheitelpunktsform", "quadratische ergänzung"],
+        "3": ["trigonometrie"],
+        "4": ["standardabweichung"]
+      },
+      "10": {
+        "2": ["erwartungswert"],
+        "4": ["logarithmus", "logarithmen", "grenzwerte", "infimum", "supremum"]
+      },
+      "11": {
+        "1": ["ableitungen", "grafisches ableiten", "signum"],
+        "3": ["vektoren"],
+        "4": ["fakultät", "binomialkoeffizient", "binomialverteilung", "vierfeldertafel", "vierfeldertafeln", "kontingenztafel", "kontingenztafeln", "hypergeometrische verteilung", "bedingte wahrscheinlichkeit"],
+        "7": ["abstand", "skalarprodukt", "vektorprodukt"],
+        "8": ["abstand", "skalarprodukt", "vektorprodukt"]
+      },
+      "12": {
+        "1": ["ableitungen", "grafisches ableiten", "signum"],
+        "3": ["vektoren"],
+        "4": ["fakultät", "binomialkoeffizient", "binomialverteilung", "vierfeldertafel", "vierfeldertafeln", "kontingenztafel", "kontingenztafeln", "hypergeometrische verteilung", "bedingte wahrscheinlichkeit"],
+        "7": ["abstand", "skalarprodukt", "vektorprodukt"],
+        "8": ["abstand", "skalarprodukt", "vektorprodukt"]
+      }
+    }/* SCHULLIA_SACHSEN_LB_END */;
+
+    function schulliaLowerClasses(klasse) {
+      var n = Number.parseInt(klasse, 10)
+      if (!Number.isFinite(n)) return []
+      if (n === 11 || n === 12) return ['5', '6', '7', '8', '9', '10']
+      var out = []
+      for (var i = 5; i < n; i++) out.push(String(i))
+      return out
+    }
+
+    function schulliaCurriculumUniverse() {
+      if (window.__schulliaCurriculumUniverse) return window.__schulliaCurriculumUniverse
+      var set = new Set()
+      Object.keys(SCHULLIA_SACHSEN_LB).forEach(function (klasse) {
+        var lbs = SCHULLIA_SACHSEN_LB[klasse]
+        Object.keys(lbs).forEach(function (lbKey) {
+          lbs[lbKey].forEach(function (theme) { set.add(normalizeText(theme)) })
+        })
+      })
+      window.__schulliaCurriculumUniverse = set
+      return set
+    }
+
+    function schulliaThemesForClass(klasse) {
+      var lbs = SCHULLIA_SACHSEN_LB[String(klasse)]
+      var out = []
+      if (!lbs) return out
+      Object.keys(lbs).forEach(function (lbKey) {
+        lbs[lbKey].forEach(function (theme) { out.push(theme) })
+      })
+      return out
+    }
+
+    function schulliaThemesForClassLb(klasse, lbNumber) {
+      var lbs = SCHULLIA_SACHSEN_LB[String(klasse)]
+      if (!lbs) return []
+      return lbs[String(lbNumber)] || []
+    }
+
+    function schulliaCheckedLbNumbers() {
+      var checks = document.querySelectorAll('#courseLbGroup input[name="courseLb"]:checked')
+      return Array.from(checks).map(function (cb) { return String(cb.value) })
+    }
+
+    function computeCurriculumAllowedSet() {
+      var bundeslandEl = document.getElementById('courseBundeslandSelect')
+      var klasseEl = document.getElementById('courseKlasseSelect')
+      var bundesland = bundeslandEl ? String(bundeslandEl.value || '') : ''
+      if (bundesland !== 'sachsen') return null
+      var klasse = klasseEl ? String(klasseEl.value || '') : ''
+      if (!klasse) return null
+
+      var allowed = new Set()
+      schulliaLowerClasses(klasse).forEach(function (lowerKlasse) {
+        schulliaThemesForClass(lowerKlasse).forEach(function (theme) {
+          allowed.add(normalizeText(theme))
+        })
+      })
+      schulliaCheckedLbNumbers().forEach(function (lbNumber) {
+        schulliaThemesForClassLb(klasse, lbNumber).forEach(function (theme) {
+          allowed.add(normalizeText(theme))
+        })
+      })
+      return allowed
+    }
+
+    function pruneCurriculumChips() {
+      var allowed = computeCurriculumAllowedSet()
+      if (!allowed) return
+      var selected = (window.selectedCourseThemes || []).slice()
+      selected.forEach(function (theme) {
+        if (!allowed.has(normalizeText(theme)) && typeof removeCourseThemeChip === 'function') {
+          removeCourseThemeChip(theme)
+        }
+      })
+      var blocked = (window.blockedCourseThemes || []).slice()
+      blocked.forEach(function (theme) {
+        if (!allowed.has(normalizeText(theme)) && typeof removeBlockedCourseThemeChip === 'function') {
+          removeBlockedCourseThemeChip(theme)
+        }
+      })
+    }
+
+    function refreshCourseCurriculumFilter() {
+      pruneCurriculumChips()
+      if (typeof populateCourseThemeOptions === 'function') populateCourseThemeOptions()
+    }
+
     function getHeaderColumn() {
       return (
         document.querySelector('section.py-5.text-center.container .row.py-lg-5 > .col-lg-6.col-md-8.mx-auto') ||
@@ -20978,6 +21149,11 @@
         return a.text.localeCompare(b.text, 'de')
       })
 
+      var curriculumAllowed = computeCurriculumAllowedSet()
+      var visibleOptions = curriculumAllowed
+        ? options.filter(function (entry) { return curriculumAllowed.has(normalizeText(entry.value)) })
+        : options
+
             function fillThemeSelect(selectEl) {
                 selectEl.innerHTML = ''
                 const placeholder = document.createElement('option')
@@ -20986,7 +21162,7 @@
                 placeholder.selected = true
                 selectEl.appendChild(placeholder)
 
-                options.forEach(function (entry) {
+                visibleOptions.forEach(function (entry) {
                     const option = document.createElement('option')
                     option.value = entry.value
                     option.textContent = entry.text
@@ -21217,6 +21393,43 @@
                 return !Array.from(blockedThemes).some(function (blockedTheme) {
                     return categories.indexOf(blockedTheme) !== -1
                 })
+            })
+        }
+
+        function getCurriculumCandidateCards(allowedSet, manualIncludes, manualBlocks) {
+            const allowed = allowedSet
+            const universe = schulliaCurriculumUniverse()
+            const blockedComplement = new Set()
+            universe.forEach(function (theme) {
+                if (!allowed.has(theme)) blockedComplement.add(theme)
+            })
+
+            const manualBlockSet = new Set(
+                (Array.isArray(manualBlocks) ? manualBlocks : [])
+                    .map(function (entry) { return normalizeText(entry) })
+                    .filter(Boolean)
+            )
+            const manualIncludeList = (Array.isArray(manualIncludes) ? manualIncludes : [])
+                .map(function (entry) { return normalizeText(entry) })
+                .filter(Boolean)
+
+            return Array.from(document.querySelectorAll('.card.shadow-sm[data-category]')).filter(function (card) {
+                const categories = String(card.dataset.category || '')
+                    .split('|')
+                    .map(function (entry) { return normalizeText(entry) })
+
+                if (!categories.some(function (cat) { return allowed.has(cat) })) return false
+                if (categories.some(function (cat) { return blockedComplement.has(cat) })) return false
+                if (categories.some(function (cat) { return manualBlockSet.has(cat) })) return false
+
+                if (manualIncludeList.length) {
+                    const hasAllIncludes = manualIncludeList.every(function (inc) {
+                        return categories.indexOf(inc) !== -1
+                    })
+                    if (!hasAllIncludes) return false
+                }
+
+                return true
             })
         }
 
@@ -21885,8 +22098,10 @@
       return mergedLines.length ? '<!--\n\n' + mergedLines.join('\n') + '\n\n-->\n\n' : ''
     }
 
-        async function buildCourseSource(themeValues, blockedThemeValues, requestedCount, groupValue) {
-            const candidates = getCandidateCardsForThemes(themeValues, blockedThemeValues)
+        async function buildCourseSource(themeValues, blockedThemeValues, requestedCount, groupValue, curriculumAllowed) {
+            const candidates = curriculumAllowed
+                ? getCurriculumCandidateCards(curriculumAllowed, themeValues, blockedThemeValues)
+                : getCandidateCardsForThemes(themeValues, blockedThemeValues)
             if (!candidates.length) {
                 throw new Error('Keine Aufgaben für die gewählten/gesperrten Themen gefunden.')
       }
@@ -22070,6 +22285,36 @@
           '<div class="schullia-course-modal" role="dialog" aria-modal="true" aria-labelledby="courseGeneratorTitle">' +
           '<button type="button" class="schullia-course-close" id="courseGeneratorCloseButton" aria-label="Schließen">&times;</button>' +
           '<h3 id="courseGeneratorTitle">Kurs Erzeugen</h3>' +
+          '<label for="courseBundeslandSelect">Bundesland:</label>' +
+          '<select id="courseBundeslandSelect" class="form-select" aria-label="Bundesland">' +
+          '<option value="sachsen" selected>Sachsen</option>' +
+          '<option value="anderes">anderes Bundesland</option>' +
+          '</select>' +
+          '<div id="courseKlasseWrap" class="schullia-course-conditional">' +
+          '<label for="courseKlasseSelect">Zielklasse:</label>' +
+          '<select id="courseKlasseSelect" class="form-select" aria-label="Zielklasse">' +
+          '<option value="" selected>Klasse w\u00e4hlen</option>' +
+          '<option value="5">Klasse 5</option>' +
+          '<option value="6">Klasse 6</option>' +
+          '<option value="7">Klasse 7</option>' +
+          '<option value="8">Klasse 8</option>' +
+          '<option value="9">Klasse 9</option>' +
+          '<option value="10">Klasse 10</option>' +
+          '<option value="11">Klasse 11</option>' +
+          '<option value="12">Klasse 12</option>' +
+          '</select>' +
+          '</div>' +
+          '<div id="courseKursartWrap" class="schullia-course-conditional">' +
+          '<label>Kursart:</label>' +
+          '<div id="courseKursartGroup" class="schullia-course-radio-row" role="radiogroup" aria-label="Kursart">' +
+          '<label class="schullia-course-radio"><input type="radio" name="courseKursart" value="gk" /> GK</label>' +
+          '<label class="schullia-course-radio"><input type="radio" name="courseKursart" value="lk" /> LK</label>' +
+          '</div>' +
+          '</div>' +
+          '<div id="courseLbWrap" class="schullia-course-conditional">' +
+          '<label>Welche Lernbereiche wurden schon unterrichtet?</label>' +
+          '<div id="courseLbGroup" class="schullia-course-lb-row"></div>' +
+          '</div>' +
                                         '<div id="courseThemeChips" class="schullia-theme-chip-container"></div>' +
                                         '<div id="courseBlockedThemeChips" class="schullia-theme-chip-container"></div>' +
                     '<label for="courseThemeToggle">Thema hinzufügen:</label>' +
@@ -22114,6 +22359,89 @@
         closeButton.addEventListener('click', closeCourseGeneratorOverlay)
         closeButton.dataset.bound = '1'
       }
+
+      const bundeslandSelect = document.getElementById('courseBundeslandSelect')
+      const klasseSelect = document.getElementById('courseKlasseSelect')
+      const klasseWrap = document.getElementById('courseKlasseWrap')
+      const kursartWrap = document.getElementById('courseKursartWrap')
+      const lbWrap = document.getElementById('courseLbWrap')
+      const lbGroup = document.getElementById('courseLbGroup')
+
+      function getLbCountForClass(klasse, kursart) {
+        const lbBaseCounts = { '5': 5, '6': 5, '7': 4, '8': 5, '9': 5, '10': 5 }
+        if (Object.prototype.hasOwnProperty.call(lbBaseCounts, klasse)) {
+          return lbBaseCounts[klasse]
+        }
+        if (klasse === '11' || klasse === '12') {
+          if (kursart === 'lk') return 9
+          if (kursart === 'gk') return 8
+          return 0
+        }
+        return 0
+      }
+
+      function getSelectedKursart() {
+        const checked = document.querySelector('input[name="courseKursart"]:checked')
+        return checked ? String(checked.value) : ''
+      }
+
+      function renderLbCheckboxes(count) {
+        if (!lbGroup) return
+        lbGroup.innerHTML = ''
+        for (let i = 1; i <= count; i++) {
+          const item = document.createElement('label')
+          item.className = 'schullia-course-lb-item'
+          const checkbox = document.createElement('input')
+          checkbox.type = 'checkbox'
+          checkbox.value = String(i)
+          checkbox.name = 'courseLb'
+          item.appendChild(checkbox)
+          item.appendChild(document.createTextNode(' LB ' + i))
+          lbGroup.appendChild(item)
+        }
+      }
+
+      function updateCourseCascade() {
+        const bundesland = bundeslandSelect ? String(bundeslandSelect.value || '') : ''
+        const isSachsen = bundesland === 'sachsen'
+        const klasse = klasseSelect ? String(klasseSelect.value || '') : ''
+        const needsKursart = isSachsen && (klasse === '11' || klasse === '12')
+        const kursart = getSelectedKursart()
+
+        if (klasseWrap) klasseWrap.style.display = isSachsen ? 'grid' : 'none'
+        if (kursartWrap) kursartWrap.style.display = needsKursart ? 'grid' : 'none'
+
+        const lbCount = isSachsen ? getLbCountForClass(klasse, kursart) : 0
+        if (lbCount > 0) {
+          renderLbCheckboxes(lbCount)
+          if (lbWrap) lbWrap.style.display = 'grid'
+        } else {
+          if (lbGroup) lbGroup.innerHTML = ''
+          if (lbWrap) lbWrap.style.display = 'none'
+        }
+
+        refreshCourseCurriculumFilter()
+      }
+
+      if (bundeslandSelect && !bundeslandSelect.dataset.bound) {
+        bundeslandSelect.addEventListener('change', updateCourseCascade)
+        bundeslandSelect.dataset.bound = '1'
+      }
+      if (klasseSelect && !klasseSelect.dataset.bound) {
+        klasseSelect.addEventListener('change', updateCourseCascade)
+        klasseSelect.dataset.bound = '1'
+      }
+      const kursartGroup = document.getElementById('courseKursartGroup')
+      if (kursartGroup && !kursartGroup.dataset.bound) {
+        kursartGroup.addEventListener('change', updateCourseCascade)
+        kursartGroup.dataset.bound = '1'
+      }
+      if (lbGroup && !lbGroup.dataset.bound) {
+        lbGroup.addEventListener('change', refreshCourseCurriculumFilter)
+        lbGroup.dataset.bound = '1'
+      }
+
+      updateCourseCascade()
 
             const themeToggle = document.getElementById('courseThemeToggle')
             const themeMenu = document.getElementById('courseThemeMenu')
@@ -22160,8 +22488,14 @@
           const targetGroupValue = targetGroup ? String(targetGroup.value || 'fortgeschrittene').trim() : 'fortgeschrittene'
           const requestedCount = taskCount ? Number.parseInt(taskCount.value || '5', 10) : 5
 
-                    if (!selectedThemes.length) {
+          const curriculumAllowed = computeCurriculumAllowedSet()
+
+                    if (!curriculumAllowed && !selectedThemes.length) {
                         window.alert('Bitte zuerst mindestens ein Thema hinzufügen.')
+            return
+          }
+          if (curriculumAllowed && curriculumAllowed.size === 0) {
+            window.alert('Für die aktuelle Klassen- und Lernbereichsauswahl sind noch keine Themen freigegeben.')
             return
           }
 
@@ -22178,7 +22512,8 @@
                             selectedThemes,
                             blockedThemes,
               Number.isFinite(requestedCount) ? requestedCount : 5,
-              targetGroupValue
+              targetGroupValue,
+              curriculumAllowed
             )
 
             if (popupBlocked) {

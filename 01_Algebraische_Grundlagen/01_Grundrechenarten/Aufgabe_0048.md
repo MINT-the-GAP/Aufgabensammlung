@@ -34,7 +34,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-tags: Zahlenstrahl, Zahlenverständnis, Term, Subtraktion, leicht, sehr niedrig, Angeben
+tags: Zahlenstrahl, Zahlenverständnis, Terme, Subtraktion, leicht, sehr niedrig, Angeben
 
 comment: Welcher Term ist hier am Zahlenstrahl dargestellt?
 

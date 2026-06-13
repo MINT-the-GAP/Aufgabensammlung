@@ -33,7 +33,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-tags: Erklärung, Term, Gleichung
+tags: Erklärung, Terme, Gleichung
 
 comment: In diesem Abschnitt werden Gleichungen sowie Terme besprochen.
 
