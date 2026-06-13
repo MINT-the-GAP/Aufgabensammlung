@@ -39,7 +39,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-tags: Bruchrechnung, niedrig, normal, Bestimmen
+tags: Bruchrechnung, niedrig, mittel, Bestimmen
 
 comment: Welche Zahl liegt exakt in der Mitte zwischen den gegebenen Brüchen?
 

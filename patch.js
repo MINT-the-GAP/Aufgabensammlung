@@ -191,7 +191,8 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
       })
 
       options.sort(function (a, b) {
-        return a.text.localeCompare(b.text, 'de')
+        var umlautKey = function(s) { return s.replace(/ä/gi, 'a').replace(/ö/gi, 'o').replace(/ü/gi, 'u').replace(/ß/g, 's') }
+        return umlautKey(a.text).localeCompare(umlautKey(b.text))
       })
 
       var curriculumAllowed = computeCurriculumAllowedSet()
@@ -1746,6 +1747,10 @@ const NAVBAR_FIX_STYLE = `<!-- SCHULLIA_NAVBAR_FIX_STYLE_START -->
 
   .card.shadow-sm .card-body .badge {
     white-space: nowrap !important;
+  }
+
+  .card.shadow-sm .card-body .badge:empty {
+    display: none !important;
   }
 
   .header-icon-strip {

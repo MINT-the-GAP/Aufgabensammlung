@@ -19155,6 +19155,20 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- SCHULLIA_CUSTOM_SCRIPT_START -->
 <script>
             window.blur = function (category) {
@@ -19502,8 +19516,7 @@
       window.selectedCategories = []
       window.selectedDifficulty = ''
       window.selectedNetworking = ''
-      window.selectedOperator = ''
-      window.blockedCategories = []
+    window.selectedOperator = ''
 
         const OPERATOR_LABELS = [
             'Angeben', 'Ausfüllen', 'Auswählen', 'Ankreuzen', 'Ordnen',
@@ -19673,61 +19686,6 @@
                 })
             }
 
-            function setupBlockedCategorySelect() {
-                const categorySelect = document.getElementById('categorySelect')
-                const blockedSelect = document.getElementById('blockedCategorySelect')
-                if (!categorySelect || !blockedSelect) return
-
-                blockedSelect.innerHTML = '<option value="" selected>Themen sperren</option>'
-
-                Array.from(categorySelect.options).forEach(function (opt) {
-                    const value = String(opt.value || '').trim()
-                    const text = String(opt.textContent || '').trim()
-
-                    if (!value || normalizeTag(text) === 'alle themen') return
-                    if (isOperatorTag(value || text)) return
-
-                    const option = document.createElement('option')
-                    option.value = value
-                    option.textContent = text
-                    blockedSelect.appendChild(option)
-                })
-            }
-
-            function updateCategorySelectionState() {
-                const categorySelect = document.getElementById('categorySelect')
-                const blockedSelect = document.getElementById('blockedCategorySelect')
-                if (!categorySelect || !blockedSelect) return
-
-                const selectedSet = new Set(window.selectedCategories.map(function (cat) {
-                    return normalizeTag(cat)
-                }))
-                const blockedSet = new Set(window.blockedCategories.map(function (cat) {
-                    return normalizeTag(cat)
-                }))
-
-                Array.from(categorySelect.options).forEach(function (opt) {
-                    const key = normalizeTag(opt.value)
-                    if (!key) {
-                        opt.disabled = false
-                        return
-                    }
-                    opt.disabled = selectedSet.has(key) || blockedSet.has(key)
-                })
-
-                Array.from(blockedSelect.options).forEach(function (opt) {
-                    const key = normalizeTag(opt.value)
-                    if (!key) {
-                        opt.disabled = false
-                        return
-                    }
-                    opt.disabled = selectedSet.has(key) || blockedSet.has(key)
-                })
-
-                syncCustomMenuDisabledState('categorySelect', 'categoryMenu')
-                syncCustomMenuDisabledState('blockedCategorySelect', 'blockedCategoryMenu')
-            }
-
             function buildCustomMenuFromSelect(selectId, menuId, onSelectFnName, placeholder) {
                 const select = document.getElementById(selectId)
                 const menu = document.getElementById(menuId)
@@ -19756,7 +19714,6 @@
                     item.dataset.value = opt.value
                     item.textContent = text || placeholder
                     item.disabled = !!opt.disabled
-                    item.tabIndex = -1
                     item.addEventListener('click', function () {
                         invokeSelectHandler(onSelectFnName, opt.value)
                     })
@@ -19814,157 +19771,27 @@
                 if (toggle) toggle.setAttribute('aria-expanded', 'false')
             }
 
-            window.dropdownKeyboardStates = {}
-
-            function setupKeyboardNavigationForMenu(menuId, toggleId) {
-                const menu = document.getElementById(menuId)
-                const toggle = document.getElementById(toggleId)
-                if (!menu || !toggle) return
-
-                if (!window.dropdownKeyboardStates[menuId]) {
-                    window.dropdownKeyboardStates[menuId] = {
-                        searchString: '',
-                        searchTimeout: null,
-                        currentIndex: -1
-                    }
-                }
-
-                toggle.addEventListener('keydown', function (event) {
-                    if (!menu.classList.contains('show')) return
-                    handleDropdownKeyboard(event, menuId)
-                })
-
-                menu.addEventListener('keydown', function (event) {
-                    handleDropdownKeyboard(event, menuId)
-                })
-            }
-
-            function handleDropdownKeyboard(event, menuId) {
-                const state = window.dropdownKeyboardStates[menuId]
-                if (!state) return
-
-                const menu = document.getElementById(menuId)
-                const items = menu.querySelectorAll('.difficulty-item:not([disabled])')
-
-                // Alphabetische Suche (buchstaben)
-                if (event.key && event.key.length === 1 && /[a-z0-9äöüß]/i.test(event.key)) {
-                    event.preventDefault()
-                    
-                    // Append character to search string
-                    state.searchString += event.key.toLowerCase()
-                    
-                    // Clear the timeout and set a new one
-                    if (state.searchTimeout) clearTimeout(state.searchTimeout)
-                    state.searchTimeout = setTimeout(function () {
-                        state.searchString = ''
-                        state.currentIndex = -1
-                    }, 500)
-
-                    // Find first item starting with search string
-                    let found = false
-                    for (let i = 0; i < items.length; i++) {
-                        const itemText = normalizeTag(items[i].textContent)
-                        const searchText = normalizeTag(state.searchString)
-                        
-                        if (itemText.startsWith(searchText)) {
-                            items[i].focus()
-                            items[i].scrollIntoView({ block: 'nearest' })
-                            state.currentIndex = i
-                            found = true
-                            break
-                        }
-                    }
-
-                    if (!found && state.searchString.length > 1) {
-                        // Try with just last character
-                        const lastChar = state.searchString[state.searchString.length - 1]
-                        for (let i = 0; i < items.length; i++) {
-                            const itemText = normalizeTag(items[i].textContent)
-                            if (itemText.startsWith(lastChar)) {
-                                items[i].focus()
-                                items[i].scrollIntoView({ block: 'nearest' })
-                                state.currentIndex = i
-                                break
-                            }
-                        }
-                    }
-                }
-                // Arrow navigation
-                else if (event.key === 'ArrowDown') {
-                    event.preventDefault()
-                    state.currentIndex = Math.min(state.currentIndex + 1, items.length - 1)
-                    items[state.currentIndex].focus()
-                    items[state.currentIndex].scrollIntoView({ block: 'nearest' })
-                }
-                else if (event.key === 'ArrowUp') {
-                    event.preventDefault()
-                    state.currentIndex = Math.max(state.currentIndex - 1, 0)
-                    items[state.currentIndex].focus()
-                    items[state.currentIndex].scrollIntoView({ block: 'nearest' })
-                }
-                // Enter to select
-                else if (event.key === 'Enter') {
-                    event.preventDefault()
-                    if (state.currentIndex >= 0 && items[state.currentIndex]) {
-                        items[state.currentIndex].click()
-                    }
-                }
-                // Escape to close
-                else if (event.key === 'Escape') {
-                    event.preventDefault()
-                    closeCustomMenu(findToggleById(menuId), menuId)
-                }
-            }
-
-            function findToggleById(menuId) {
-                const pair = [
-                    ['categoryToggle', 'categoryMenu'],
-                    ['difficultyToggle', 'difficultyMenu'],
-                    ['networkingToggle', 'networkingMenu'],
-                    ['operatorToggle', 'operatorMenu'],
-                    ['blockedCategoryToggle', 'blockedCategoryMenu']
-                ]
-                for (let i = 0; i < pair.length; i++) {
-                    if (pair[i][1] === menuId) return pair[i][0]
-                }
-                return null
-            }
-
             document.addEventListener('DOMContentLoaded', function () {
                 setupOperatorDropdown()
                 prettifyCategoryDropdown()
-                setupBlockedCategorySelect()
 
                 buildCustomMenuFromSelect('categorySelect', 'categoryMenu', 'addCategoryChip', 'Alle Themen')
                 buildCustomMenuFromSelect('operatorSelect', 'operatorMenu', 'addOperatorChip', 'Alle Operatoren')
-                buildCustomMenuFromSelect('blockedCategorySelect', 'blockedCategoryMenu', 'addBlockedCategoryChip', 'Themen sperren')
                 syncCustomMenuDisabledState('categorySelect', 'categoryMenu')
-                syncCustomMenuDisabledState('blockedCategorySelect', 'blockedCategoryMenu')
-                updateCategorySelectionState()
 
                 ;[
                     ['categoryToggle', 'categoryMenu'],
                     ['difficultyToggle', 'difficultyMenu'],
                     ['networkingToggle', 'networkingMenu'],
-                    ['operatorToggle', 'operatorMenu'],
-                    ['blockedCategoryToggle', 'blockedCategoryMenu']
+                    ['operatorToggle', 'operatorMenu']
                 ].forEach(function (pair) {
                     const toggle = document.getElementById(pair[0])
                     const menu = document.getElementById(pair[1])
                     if (!toggle || !menu) return
 
-                    setupKeyboardNavigationForMenu(pair[1], pair[0])
-
                     toggle.addEventListener('click', function () {
                         const isOpen = menu.classList.toggle('show')
                         toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false')
-                        if (isOpen) {
-                            menu.focus()
-                            const firstItem = menu.querySelector('.difficulty-item:not([disabled])')
-                            if (firstItem) {
-                                window.dropdownKeyboardStates[pair[1]].currentIndex = 0
-                            }
-                        }
                     })
 
                     document.addEventListener('click', function (event) {
@@ -19986,7 +19813,10 @@
 
                 if (!alreadySelected) {
           window.selectedCategories.push(category)
-          updateCategorySelectionState()
+          // Option im Select-Menü deaktivieren
+                    const option = findCategoryOption(category)
+                    if (option) option.disabled = true
+                                        syncCustomMenuDisabledState('categorySelect', 'categoryMenu')
           updateChipsDisplay()
           filterCards()
         }
@@ -20087,24 +19917,6 @@
                 filterCards()
             }
 
-            function addBlockedCategoryChip(category) {
-                if (!category) return
-                const normalizedCategory = normalizeTag(category)
-                const alreadySelected = window.blockedCategories.some(function (item) {
-                    return normalizeTag(item) === normalizedCategory
-                })
-
-                if (!alreadySelected) {
-                    window.blockedCategories.push(category)
-                    updateCategorySelectionState()
-                    updateBlockedChipsDisplay()
-                    filterCards()
-                }
-                document.getElementById('blockedCategorySelect').value = ''
-                setCustomToggleLabel('blockedCategorySelectedLabel', '', 'Themen sperren')
-                closeCustomMenu('blockedCategoryToggle', 'blockedCategoryMenu')
-            }
-
       // Entfernt einen Chip
       function removeCategoryChip(category) {
                 const normalizedCategory = normalizeTag(category)
@@ -20113,24 +19925,14 @@
                 })
         if (index > -1) {
           window.selectedCategories.splice(index, 1)
-          updateCategorySelectionState()
+          // Option im Select-Menü wieder aktivieren
+                    const option = findCategoryOption(category)
+                    if (option) option.disabled = false
+                                        syncCustomMenuDisabledState('categorySelect', 'categoryMenu')
           updateChipsDisplay()
           filterCards()
         }
       }
-
-            function removeBlockedCategoryChip(category) {
-                const normalizedCategory = normalizeTag(category)
-                const index = window.blockedCategories.findIndex(function (item) {
-                    return normalizeTag(item) === normalizedCategory
-                })
-                if (index > -1) {
-                    window.blockedCategories.splice(index, 1)
-                    updateCategorySelectionState()
-                    updateBlockedChipsDisplay()
-                    filterCards()
-                }
-            }
 
       // Aktualisiert die Anzeige der Chips
       function updateChipsDisplay() {
@@ -20148,62 +19950,36 @@
         })
       }
 
-      function updateBlockedChipsDisplay() {
-        const chipsContainer = document.getElementById('blockedChipsContainer')
-        if (!chipsContainer) return
-        chipsContainer.innerHTML = ''
-        window.blockedCategories.forEach(function (cat) {
-          const chip = document.createElement('span')
-          chip.className = 'badge rounded-pill me-2 schullia-filter-chip schullia-filter-chip-blocked'
-          chip.textContent = getCategoryDisplayLabel(cat) + ' ×'
-          chip.onclick = function () {
-            removeBlockedCategoryChip(cat)
-          }
-          chipsContainer.appendChild(chip)
-        })
-      }
-
       function filterCards() {
         const cards = document.querySelectorAll('div[data-category]')
         cards.forEach(function (card) {
-          // Zerlege die im data-Attribut hinterlegten Kategorien
-          const cardCategories = card.dataset.category.split('|')
-          const normalizedCardCategories = cardCategories.map(function (entry) {
-            return normalizeTag(entry)
-          })
-
-          // Prüfe ob eine gesperrte Kategorie in der Karte vorhanden ist
-          const hasBlockedCategory = window.blockedCategories.some(function (blocked) {
-            return normalizedCardCategories.indexOf(normalizeTag(blocked)) !== -1
-          })
-
-          if (hasBlockedCategory) {
-            card.parentNode.style.display = 'none'
-            return
-          }
-
           // Falls keine Filterkategorien ausgewählt wurden, zeige alle Karten
           if (
             window.selectedCategories.length === 0 &&
             window.selectedDifficulty === '' &&
-            window.selectedNetworking === '' &&
-            window.selectedOperator === ''
+                        window.selectedNetworking === '' &&
+                        window.selectedOperator === ''
           ) {
             card.parentNode.style.display = 'block'
             return
           }
+          // Zerlege die im data-Attribut hinterlegten Kategorien
+          const cardCategories = card.dataset.category.split('|')
+                    const normalizedCardCategories = cardCategories.map(function (entry) {
+                        return normalizeTag(entry)
+                    })
           // Prüfe, ob alle ausgewählten Kategorien in der Karte vorhanden sind
           let show = window.selectedCategories.every(function (cat) {
-            return normalizedCardCategories.indexOf(normalizeTag(cat)) !== -1
+                        return normalizedCardCategories.indexOf(normalizeTag(cat)) !== -1
           })
           if (show) {
             if (
               (window.selectedDifficulty === '' ||
-                normalizedCardCategories.indexOf(normalizeTag(window.selectedDifficulty)) !== -1) &&
+                            normalizedCardCategories.indexOf(normalizeTag(window.selectedDifficulty)) !== -1) &&
               (window.selectedNetworking === '' ||
-                normalizedCardCategories.indexOf(normalizeTag(window.selectedNetworking)) !== -1) &&
-              (window.selectedOperator === '' ||
-                normalizedCardCategories.indexOf(normalizeTag(window.selectedOperator)) !== -1)
+                                                        normalizedCardCategories.indexOf(normalizeTag(window.selectedNetworking)) !== -1) &&
+                            (window.selectedOperator === '' ||
+                                                        normalizedCardCategories.indexOf(normalizeTag(window.selectedOperator)) !== -1)
             ) {
               // Wenn eine Schwierigkeit ausgewählt ist, prüfe auch diese
               card.parentNode.style.display = 'block'
@@ -20517,12 +20293,6 @@
                 background: rgba(20, 115, 117, 0.08);
             }
 
-            .difficulty-item:focus-visible {
-                outline: 2px solid var(--accent, #147375);
-                outline-offset: -2px;
-                background: rgba(20, 115, 117, 0.12);
-            }
-
             .difficulty-icon {
                 height: 1em;
                 width: auto;
@@ -20653,7 +20423,7 @@
   }
 
   #categorySelectCustom,
-    #blockedCategorySelectCustom,
+  #blockedCategorySelectCustom,
   #operatorSelectCustom,
   #difficultySelect,
   #networkingSelect,
@@ -20706,16 +20476,20 @@
         border-color: rgba(124, 15, 28, 0.82);
     }
 
-    .card.shadow-sm .card-body > p:last-child {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.35rem;
-        align-items: flex-start;
-    }
+  .card.shadow-sm .card-body > p:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    align-items: flex-start;
+  }
 
-    .card.shadow-sm .card-body .badge {
-        white-space: nowrap !important;
-    }
+  .card.shadow-sm .card-body .badge {
+    white-space: nowrap !important;
+  }
+
+  .card.shadow-sm .card-body .badge:empty {
+    display: none !important;
+  }
 
   .header-icon-strip {
     display: flex;
@@ -20915,41 +20689,41 @@
       width: 100%;
     }
 
-        #categorySelectCustom,
-        #blockedCategorySelectCustom {
-            flex: 0 0 calc((100% - 1%) / 2) !important;
-            width: calc((100% - 1%) / 2) !important;
-            min-width: 0;
-            margin-top: 0 !important;
-        }
+    #categorySelectCustom,
+    #blockedCategorySelectCustom {
+      flex: 0 0 calc((100% - 1%) / 2) !important;
+      width: calc((100% - 1%) / 2) !important;
+      min-width: 0;
+      margin-top: 0 !important;
+    }
 
-        #operatorSelectCustom,
-        #difficultySelect,
-        #networkingSelect {
-            flex: 0 0 calc((100% - 2%) / 3) !important;
-            width: calc((100% - 2%) / 3) !important;
-            min-width: 0;
-            margin-top: 0 !important;
-        }
+    #operatorSelectCustom,
+    #difficultySelect,
+    #networkingSelect {
+      flex: 0 0 calc((100% - 2%) / 3) !important;
+      width: calc((100% - 2%) / 3) !important;
+      min-width: 0;
+      margin-top: 0 !important;
+    }
 
     #categorySelectCustom {
       order: 1;
     }
 
-        #blockedCategorySelectCustom {
-            order: 2;
-        }
+    #blockedCategorySelectCustom {
+      order: 2;
+    }
 
     #operatorSelectCustom {
-            order: 3;
+      order: 3;
     }
 
     #difficultySelect {
-            order: 4;
+      order: 4;
     }
 
     #networkingSelect {
-            order: 5;
+      order: 5;
     }
 
     #categoryToggle,
@@ -20980,52 +20754,7 @@
         .trim()
     }
 
-    var SCHULLIA_SACHSEN_LB = /* SCHULLIA_SACHSEN_LB_START */{
-      "5": {
-        "1": ["addition", "subtraktion", "multiplikation", "division", "grundrechenarten", "differenz", "vorrangsregeln", "kommutativgesetz", "assoziativgesetz", "distributivgesetz", "potenzen", "runden", "überschlagen", "zahlenstrahl", "zahlenverständnis", "quersumme", "teilbarkeiten", "teilermengen", "vielfachmengen", "ggt", "kgv", "gleichung", "folgen", "sachaufgabe"],
-        "2": ["dezimalzahlen", "prozent", "arithmetisches mittel", "arithmetische mittelwert", "durchschnitt", "periodizität"],
-        "3": ["punkt", "koordinatensystem", "lagebeziehung", "winkel", "winkelbeziehungen"],
-        "4": ["rechteck", "quader", "umfang", "fläche", "volumen"],
-        "5": ["einheiten", "zeit", "länge", "masse"],
-        "extra": ["zahlensysteme"]
-      },
-      "6": {
-        "1": ["bruchrechnung", "kehrwert", "variable", "mengen"],
-        "2": ["zuordnung", "beliebige zuordnung", "proportional", "antiproportional", "verhältnisse", "tabelle", "chance", "häufigkeit", "eindeutigkeit"],
-        "3": ["dreieck", "dreiecke", "vierecke"]
-      },
-      "7": {
-        "2": ["negative zahlen", "betrag", "algebra", "äquivalenzumformung", "prozentrechnung", "wurzeln"]
-      },
-      "8": {
-        "1": ["term", "terme", "ungleichungen"],
-        "2": ["wahrscheinlichkeit", "unbedingte wahrscheinlichkeit", "baumdiagramm", "kombinatorik", "vereinigung", "median", "spannweite"],
-        "3": ["lineare funktionen", "definitionsbereich", "wertebereich", "stelle", "parameter", "verhalten", "gleichungssysteme", "einsetzungsverfahren", "additionsverfahren"]
-      },
-      "9": {
-        "1": ["quadratische funktionen", "scheitelpunktsform", "quadratische ergänzung"],
-        "3": ["trigonometrie"],
-        "4": ["standardabweichung"]
-      },
-      "10": {
-        "2": ["erwartungswert"],
-        "4": ["logarithmus", "logarithmen", "grenzwerte", "infimum", "supremum"]
-      },
-      "11": {
-        "1": ["ableitungen", "grafisches ableiten", "signum"],
-        "3": ["vektoren"],
-        "4": ["fakultät", "binomialkoeffizient", "binomialverteilung", "vierfeldertafel", "vierfeldertafeln", "kontingenztafel", "kontingenztafeln", "hypergeometrische verteilung", "bedingte wahrscheinlichkeit"],
-        "7": ["abstand", "skalarprodukt", "vektorprodukt"],
-        "8": ["abstand", "skalarprodukt", "vektorprodukt"]
-      },
-      "12": {
-        "1": ["ableitungen", "grafisches ableiten", "signum"],
-        "3": ["vektoren"],
-        "4": ["fakultät", "binomialkoeffizient", "binomialverteilung", "vierfeldertafel", "vierfeldertafeln", "kontingenztafel", "kontingenztafeln", "hypergeometrische verteilung", "bedingte wahrscheinlichkeit"],
-        "7": ["abstand", "skalarprodukt", "vektorprodukt"],
-        "8": ["abstand", "skalarprodukt", "vektorprodukt"]
-      }
-    }/* SCHULLIA_SACHSEN_LB_END */;
+    var SCHULLIA_SACHSEN_LB = /* SCHULLIA_SACHSEN_LB_START */{"5":{"1":["terme","addition","subtraktion","multiplikation","division","grundrechenarten","differenz","vorrangsregeln","kommutativgesetz","assoziativgesetz","distributivgesetz","potenzen","runden","überschlagen","zahlenstrahl","zahlenverständnis","quersumme","teilbarkeiten","teilermengen","vielfachmengen","ggt","kgv","gleichung","folgen","sachaufgabe"],"2":["dezimalzahlen","prozent","arithmetisches mittel","durchschnitt","periodizität"],"3":["punkt","koordinatensystem","lagebeziehung","winkel","winkelbeziehungen"],"4":["rechteck","quader","umfang","fläche","volumen"],"5":["einheiten","zeit","länge","masse"],"extra":["zahlensysteme"]},"6":{"1":["bruchrechnung","kehrwert","variable","mengen"],"2":["zuordnung","beliebige zuordnung","proportional","antiproportional","verhältnisse","tabelle","chance","häufigkeit","eindeutigkeit"],"3":["dreieck","dreiecke","vierecke"]},"7":{"2":["negative zahlen","betrag","algebra","äquivalenzumformung","prozentrechnung","wurzeln"]},"8":{"1":["terme","ungleichungen"],"2":["wahrscheinlichkeit","unbedingte wahrscheinlichkeit","baumdiagramm","kombinatorik","vereinigung","median","spannweite"],"3":["lineare funktionen","definitionsbereich","wertebereich","stelle","parameter","verhalten","gleichungssysteme","einsetzungsverfahren","additionsverfahren"]},"9":{"1":["quadratische funktionen","scheitelpunktsform","quadratische ergänzung"],"3":["trigonometrie"],"4":["standardabweichung"]},"10":{"2":["erwartungswert"],"4":["logarithmus","logarithmen","grenzwerte","infimum","supremum"]},"11":{"1":["ableitungen","grafisches ableiten","signum","ableitungen","grafisches ableiten","signum"],"3":["vektoren","vektoren"],"4":["fakultät","binomialkoeffizient","binomialverteilung","vierfeldertafel","kontingenztafel","kontingenztafeln","hypergeometrische verteilung","bedingte wahrscheinlichkeit","fakultät","binomialkoeffizient","binomialverteilung","vierfeldertafel","kontingenztafel","kontingenztafeln","hypergeometrische verteilung","bedingte wahrscheinlichkeit"],"7":["abstand","skalarprodukt","vektorprodukt"],"8":["abstand","skalarprodukt","vektorprodukt"]},"12":{"1":["ableitungen","grafisches ableiten","signum","ableitungen","grafisches ableiten","signum"],"3":["vektoren","vektoren"],"4":["fakultät","binomialkoeffizient","binomialverteilung","vierfeldertafel","kontingenztafel","kontingenztafeln","hypergeometrische verteilung","bedingte wahrscheinlichkeit","fakultät","binomialkoeffizient","binomialverteilung","vierfeldertafel","kontingenztafel","kontingenztafeln","hypergeometrische verteilung","bedingte wahrscheinlichkeit"],"7":["abstand","skalarprodukt","vektorprodukt"],"8":["abstand","skalarprodukt","vektorprodukt"]}}/* SCHULLIA_SACHSEN_LB_END */;
 
     function schulliaLowerClasses(klasse) {
       var n = Number.parseInt(klasse, 10)
@@ -21146,7 +20875,8 @@
       })
 
       options.sort(function (a, b) {
-        return a.text.localeCompare(b.text, 'de')
+        var umlautKey = function(s) { return s.replace(/ä/gi, 'a').replace(/ö/gi, 'o').replace(/ü/gi, 'u').replace(/ß/g, 's') }
+        return umlautKey(a.text).localeCompare(umlautKey(b.text))
       })
 
       var curriculumAllowed = computeCurriculumAllowedSet()
@@ -22555,17 +22285,17 @@
 
     function reorderHeaderFilters() {
       const category = document.getElementById('categorySelectCustom')
-            const blocked = document.getElementById('blockedCategorySelectCustom')
+      const blocked = document.getElementById('blockedCategorySelectCustom')
       const operator = document.getElementById('operatorSelectCustom')
       const difficulty = document.getElementById('difficultySelect')
       const networking = document.getElementById('networkingSelect')
 
-            if (!category || !blocked || !operator || !difficulty || !networking) return
+      if (!category || !blocked || !operator || !difficulty || !networking) return
 
       const parent = category.parentElement
       if (!parent) return
 
-            parent.append(category, blocked, operator, difficulty, networking)
+      parent.append(category, blocked, operator, difficulty, networking)
     }
 
     function applyNavbarFix() {
@@ -23072,24 +22802,6 @@
                                 <option value="äquivalenzumformung">äquivalenzumformung</option>
                                 <option value="überschlagen">überschlagen</option>
                             </select>
-                            <div id="blockedCategorySelectCustom" class="difficulty-dropdown mt-2">
-                                <button id="blockedCategoryToggle" type="button" class="form-select difficulty-toggle" aria-expanded="false" aria-label="Themen sperren">
-                                    <span id="blockedCategorySelectedLabel">Themen sperren</span>
-                                </button>
-                                <div id="blockedCategoryMenu" class="difficulty-menu" role="listbox" aria-label="Themen sperren"></div>
-                            </div>
-                            <select id="blockedCategorySelect" class="form-select native-select-source" aria-label="Themen sperren" onchange="addBlockedCategoryChip(this.value)">
-                                <option value="" selected>Themen sperren</option>
-                            </select>
-                            <div id="operatorSelectCustom" class="difficulty-dropdown mt-2">
-                                <button id="operatorToggle" type="button" class="form-select difficulty-toggle" aria-expanded="false" aria-label="Operator wählen">
-                                    <span id="operatorSelectedLabel">Alle Operatoren</span>
-                                </button>
-                                <div id="operatorMenu" class="difficulty-menu" role="listbox" aria-label="Alle Operatoren"></div>
-                            </div>
-                            <select id="operatorSelect" class="form-select native-select-source" aria-label="Operator wählen" onchange="addOperatorChip(this.value)">
-                                <option value="" selected>Alle Operatoren</option>
-                            </select>
                             <div id="difficultySelect" class="difficulty-dropdown mt-2">
                                 <button id="difficultyToggle" type="button" class="form-select difficulty-toggle" aria-expanded="false" aria-label="Schwierigkeitsgrad wählen">
                                     <img id="difficultySelectedIcon" src="" alt="" class="difficulty-icon" style="display:none;">
@@ -23152,8 +22864,16 @@
                                     </button>
                                 </div>
                             </div>
+                            <div id="operatorSelectCustom" class="difficulty-dropdown mt-2">
+                                <button id="operatorToggle" type="button" class="form-select difficulty-toggle" aria-expanded="false" aria-label="Operator wählen">
+                                    <span id="operatorSelectedLabel">Alle Operatoren</span>
+                                </button>
+                                <div id="operatorMenu" class="difficulty-menu" role="listbox" aria-label="Alle Operatoren"></div>
+                            </div>
+                            <select id="operatorSelect" class="form-select native-select-source" aria-label="Operator wählen" onchange="addOperatorChip(this.value)">
+                                <option value="" selected>Alle Operatoren</option>
+                            </select>
                             <div id="chipsContainer" class="mt-2"></div>
-                            <div id="blockedChipsContainer" class="mt-2"></div>
                         </div>
                     </div>
                 </section>
@@ -23169,7 +22889,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                     <h4 id='aufgabensets'><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Aufgabensets</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></h4>
+                                     <h4 id='aufgabensets'><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Aufgabensets</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></h4>
 
                                 </div>
                                 <div class="card-body">
@@ -23213,7 +22933,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                     <h4 id='erklaerungen'><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Erklärungen</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></h4>
+                                     <h4 id='erklaerungen'><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Erklärungen</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></h4>
 
                                 </div>
                                 <div class="card-body">
@@ -23691,7 +23411,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                     <h4 id='algebraische-grundlagen'><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Algebraische Grundlagen</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></h4>
+                                     <h4 id='algebraische-grundlagen'><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Algebraische Grundlagen</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></h4>
 
                                 </div>
                                 <div class="card-body">
@@ -33784,7 +33504,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                     <h4 id='geometrie'><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Geometrie</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></h4>
+                                     <h4 id='geometrie'><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Geometrie</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></h4>
 
                                 </div>
                                 <div class="card-body">
@@ -35912,7 +35632,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                     <h4 id='trigonometrie'><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Trigonometrie</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></h4>
+                                     <h4 id='trigonometrie'><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Trigonometrie</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></h4>
 
                                 </div>
                                 <div class="card-body">
@@ -35970,7 +35690,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                     <h4 id='funktionen'><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Funktionen</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></h4>
+                                     <h4 id='funktionen'><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Funktionen</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></h4>
 
                                 </div>
                                 <div class="card-body">
@@ -36433,7 +36153,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                     <h4 id='differentiation-und-integration'><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Differentiation und Integration</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></h4>
+                                     <h4 id='differentiation-und-integration'><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Differentiation und Integration</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></h4>
 
                                 </div>
                                 <div class="card-body">
@@ -36581,7 +36301,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                     <h4 id='stochastik'><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Stochastik</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></h4>
+                                     <h4 id='stochastik'><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Stochastik</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></h4>
 
                                 </div>
                                 <div class="card-body">
@@ -37584,7 +37304,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                     <h4 id='vektoren'><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Vektoren</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></h4>
+                                     <h4 id='vektoren'><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Vektoren</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></h4>
 
                                 </div>
                                 <div class="card-body">
@@ -37777,7 +37497,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                     <h4 id='sonstiges'><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Sonstiges</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></h4>
+                                     <h4 id='sonstiges'><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Sonstiges</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></h4>
 
                                 </div>
                                 <div class="card-body">
