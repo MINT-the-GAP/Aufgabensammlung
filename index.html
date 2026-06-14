@@ -19517,6 +19517,7 @@
       window.selectedDifficulty = ''
       window.selectedNetworking = ''
     window.selectedOperator = ''
+      window.blockedCategories = []
 
         const OPERATOR_LABELS = [
             'Angeben', 'Ausfüllen', 'Auswählen', 'Ankreuzen', 'Ordnen',
@@ -19629,6 +19630,26 @@
 
                     opt.textContent = formatTagLabel(opt.textContent || opt.value)
                 })
+
+                // Alphabetische Sortierung mit Umlaut-Faltung (ä→a, ö→o, ü→u, ß→ss),
+                // damit z. B. "Äquivalenzumformung" bei A und "Überschlagen" bei U
+                // einsortiert wird statt am Ende hinter Z zu landen.
+                const allOptions = Array.from(select.options)
+                const placeholders = allOptions.filter(function (opt) {
+                    return !normalizeTag(opt.value)
+                })
+                const sortable = allOptions.filter(function (opt) {
+                    return normalizeTag(opt.value)
+                })
+                sortable.sort(function (a, b) {
+                    return normalizeTag(a.value).localeCompare(normalizeTag(b.value), 'de')
+                })
+                placeholders.forEach(function (opt) {
+                    select.appendChild(opt)
+                })
+                sortable.forEach(function (opt) {
+                    select.appendChild(opt)
+                })
             }
 
             function setupOperatorDropdown() {
@@ -19684,6 +19705,61 @@
                         opt.remove()
                     }
                 })
+            }
+
+            function setupBlockedCategorySelect() {
+                const categorySelect = document.getElementById('categorySelect')
+                const blockedSelect = document.getElementById('blockedCategorySelect')
+                if (!categorySelect || !blockedSelect) return
+
+                blockedSelect.innerHTML = '<option value="" selected>Themen sperren</option>'
+
+                Array.from(categorySelect.options).forEach(function (opt) {
+                    const value = String(opt.value || '').trim()
+                    const text = String(opt.textContent || '').trim()
+
+                    if (!value || normalizeTag(text) === 'alle themen') return
+                    if (isOperatorTag(value || text)) return
+
+                    const option = document.createElement('option')
+                    option.value = value
+                    option.textContent = text
+                    blockedSelect.appendChild(option)
+                })
+            }
+
+            function updateCategorySelectionState() {
+                const categorySelect = document.getElementById('categorySelect')
+                const blockedSelect = document.getElementById('blockedCategorySelect')
+                if (!categorySelect || !blockedSelect) return
+
+                const selectedSet = new Set(window.selectedCategories.map(function (cat) {
+                    return normalizeTag(cat)
+                }))
+                const blockedSet = new Set(window.blockedCategories.map(function (cat) {
+                    return normalizeTag(cat)
+                }))
+
+                Array.from(categorySelect.options).forEach(function (opt) {
+                    const key = normalizeTag(opt.value)
+                    if (!key) {
+                        opt.disabled = false
+                        return
+                    }
+                    opt.disabled = selectedSet.has(key) || blockedSet.has(key)
+                })
+
+                Array.from(blockedSelect.options).forEach(function (opt) {
+                    const key = normalizeTag(opt.value)
+                    if (!key) {
+                        opt.disabled = false
+                        return
+                    }
+                    opt.disabled = selectedSet.has(key) || blockedSet.has(key)
+                })
+
+                syncCustomMenuDisabledState('categorySelect', 'categoryMenu')
+                syncCustomMenuDisabledState('blockedCategorySelect', 'blockedCategoryMenu')
             }
 
             function buildCustomMenuFromSelect(selectId, menuId, onSelectFnName, placeholder) {
@@ -19774,16 +19850,21 @@
             document.addEventListener('DOMContentLoaded', function () {
                 setupOperatorDropdown()
                 prettifyCategoryDropdown()
+                setupBlockedCategorySelect()
 
                 buildCustomMenuFromSelect('categorySelect', 'categoryMenu', 'addCategoryChip', 'Alle Themen')
                 buildCustomMenuFromSelect('operatorSelect', 'operatorMenu', 'addOperatorChip', 'Alle Operatoren')
+                buildCustomMenuFromSelect('blockedCategorySelect', 'blockedCategoryMenu', 'addBlockedCategoryChip', 'Themen sperren')
                 syncCustomMenuDisabledState('categorySelect', 'categoryMenu')
+                syncCustomMenuDisabledState('blockedCategorySelect', 'blockedCategoryMenu')
+                updateCategorySelectionState()
 
                 ;[
                     ['categoryToggle', 'categoryMenu'],
                     ['difficultyToggle', 'difficultyMenu'],
                     ['networkingToggle', 'networkingMenu'],
-                    ['operatorToggle', 'operatorMenu']
+                    ['operatorToggle', 'operatorMenu'],
+                    ['blockedCategoryToggle', 'blockedCategoryMenu']
                 ].forEach(function (pair) {
                     const toggle = document.getElementById(pair[0])
                     const menu = document.getElementById(pair[1])
@@ -19813,10 +19894,7 @@
 
                 if (!alreadySelected) {
           window.selectedCategories.push(category)
-          // Option im Select-Menü deaktivieren
-                    const option = findCategoryOption(category)
-                    if (option) option.disabled = true
-                                        syncCustomMenuDisabledState('categorySelect', 'categoryMenu')
+          updateCategorySelectionState()
           updateChipsDisplay()
           filterCards()
         }
@@ -19917,6 +19995,24 @@
                 filterCards()
             }
 
+            function addBlockedCategoryChip(category) {
+                if (!category) return
+                const normalizedCategory = normalizeTag(category)
+                const alreadySelected = window.blockedCategories.some(function (item) {
+                    return normalizeTag(item) === normalizedCategory
+                })
+
+                if (!alreadySelected) {
+                    window.blockedCategories.push(category)
+                    updateCategorySelectionState()
+                    updateBlockedChipsDisplay()
+                    filterCards()
+                }
+                document.getElementById('blockedCategorySelect').value = ''
+                setCustomToggleLabel('blockedCategorySelectedLabel', '', 'Themen sperren')
+                closeCustomMenu('blockedCategoryToggle', 'blockedCategoryMenu')
+            }
+
       // Entfernt einen Chip
       function removeCategoryChip(category) {
                 const normalizedCategory = normalizeTag(category)
@@ -19925,14 +20021,24 @@
                 })
         if (index > -1) {
           window.selectedCategories.splice(index, 1)
-          // Option im Select-Menü wieder aktivieren
-                    const option = findCategoryOption(category)
-                    if (option) option.disabled = false
-                                        syncCustomMenuDisabledState('categorySelect', 'categoryMenu')
+          updateCategorySelectionState()
           updateChipsDisplay()
           filterCards()
         }
       }
+
+            function removeBlockedCategoryChip(category) {
+                const normalizedCategory = normalizeTag(category)
+                const index = window.blockedCategories.findIndex(function (item) {
+                    return normalizeTag(item) === normalizedCategory
+                })
+                if (index > -1) {
+                    window.blockedCategories.splice(index, 1)
+                    updateCategorySelectionState()
+                    updateBlockedChipsDisplay()
+                    filterCards()
+                }
+            }
 
       // Aktualisiert die Anzeige der Chips
       function updateChipsDisplay() {
@@ -19950,9 +20056,40 @@
         })
       }
 
+      function updateBlockedChipsDisplay() {
+        const chipsContainer = document.getElementById('blockedChipsContainer')
+        if (!chipsContainer) return
+        chipsContainer.innerHTML = ''
+        window.blockedCategories.forEach(function (cat) {
+          const chip = document.createElement('span')
+          chip.className = 'badge rounded-pill me-2 schullia-filter-chip schullia-filter-chip-blocked'
+          chip.textContent = getCategoryDisplayLabel(cat) + ' ×'
+          chip.onclick = function () {
+            removeBlockedCategoryChip(cat)
+          }
+          chipsContainer.appendChild(chip)
+        })
+      }
+
       function filterCards() {
         const cards = document.querySelectorAll('div[data-category]')
         cards.forEach(function (card) {
+          // Zerlege die im data-Attribut hinterlegten Kategorien
+          const cardCategories = card.dataset.category.split('|')
+                    const normalizedCardCategories = cardCategories.map(function (entry) {
+                        return normalizeTag(entry)
+                    })
+
+          // Prüfe ob eine gesperrte Kategorie in der Karte vorhanden ist
+          const hasBlockedCategory = window.blockedCategories.some(function (blocked) {
+            return normalizedCardCategories.indexOf(normalizeTag(blocked)) !== -1
+          })
+
+          if (hasBlockedCategory) {
+            card.parentNode.style.display = 'none'
+            return
+          }
+
           // Falls keine Filterkategorien ausgewählt wurden, zeige alle Karten
           if (
             window.selectedCategories.length === 0 &&
@@ -19963,11 +20100,6 @@
             card.parentNode.style.display = 'block'
             return
           }
-          // Zerlege die im data-Attribut hinterlegten Kategorien
-          const cardCategories = card.dataset.category.split('|')
-                    const normalizedCardCategories = cardCategories.map(function (entry) {
-                        return normalizeTag(entry)
-                    })
           // Prüfe, ob alle ausgewählten Kategorien in der Karte vorhanden sind
           let show = window.selectedCategories.every(function (cat) {
                         return normalizedCardCategories.indexOf(normalizeTag(cat)) !== -1
@@ -22802,6 +22934,15 @@
                                 <option value="äquivalenzumformung">äquivalenzumformung</option>
                                 <option value="überschlagen">überschlagen</option>
                             </select>
+                            <div id="blockedCategorySelectCustom" class="difficulty-dropdown mt-2">
+                                <button id="blockedCategoryToggle" type="button" class="form-select difficulty-toggle" aria-expanded="false" aria-label="Themen sperren">
+                                    <span id="blockedCategorySelectedLabel">Themen sperren</span>
+                                </button>
+                                <div id="blockedCategoryMenu" class="difficulty-menu" role="listbox" aria-label="Themen sperren"></div>
+                            </div>
+                            <select id="blockedCategorySelect" class="form-select native-select-source" aria-label="Themen sperren" onchange="addBlockedCategoryChip(this.value)">
+                                <option value="" selected>Themen sperren</option>
+                            </select>
                             <div id="difficultySelect" class="difficulty-dropdown mt-2">
                                 <button id="difficultyToggle" type="button" class="form-select difficulty-toggle" aria-expanded="false" aria-label="Schwierigkeitsgrad wählen">
                                     <img id="difficultySelectedIcon" src="" alt="" class="difficulty-icon" style="display:none;">
@@ -22874,6 +23015,7 @@
                                 <option value="" selected>Alle Operatoren</option>
                             </select>
                             <div id="chipsContainer" class="mt-2"></div>
+                            <div id="blockedChipsContainer" class="mt-2"></div>
                         </div>
                     </div>
                 </section>
