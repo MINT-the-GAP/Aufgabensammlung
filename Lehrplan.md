@@ -21,14 +21,12 @@ edit: true
 
 
 
-## Oberschule
-
 
 ## Oberschule
 
 | Klassenstufe / Bildungsgang | Lernbereich | Themen-Tags, die hier frühestens eingeordnet werden |
 |---|---|---|
-| 5 | LB 1: Natürliche Zahlen | addition, assoziativgesetz, differenz, distributivgesetz, division, ggt, gleichung, grundrechenarten, kgv, kommutativgesetz, multiplikation, potenzen, quersumme, runden, subtraktion, teilbarkeiten, teilermengen, überschlagen, ungleichungen, variable, vielfachmengen, vorrangsregeln, wurzeln, zahlenstrahl, zahlenverständnis |
+| 5 | LB 1: Natürliche Zahlen | addition, assoziativgesetz, differenz, distributivgesetz, division, ggt, gleichung, grundrechenarten, kgv, kommutativgesetz, multiplikation, potenzen, quersumme, runden, subtraktion, teilbarkeiten, teilermengen, überschlagen, ungleichungen, variable, vielfachmengen, vorrangsregeln, wurzeln, zahlenstrahl, zahlenverständnis, terme |
 | 5 | LB 2: Gemeine Brüche, Dezimalzahlen und Größen | arithmetische mittelwert, arithmetisches mittel, bruchrechnung, dezimalzahlen, durchschnitt, einheiten, länge, masse, periodizität, prozent, sachaufgabe, zeit |
 | 5 | LB 3: Geometrische Grundformen | fläche, koordinatensystem, lagebeziehung, punkt, rechteck, umfang, volumen, winkel |
 | 5 | LB 4: Symmetrie und deckungsgleiche Figuren |  |
@@ -45,7 +43,7 @@ edit: true
 | 6 | Wahlbereich 3: Erfassen und Auswerten von Daten |  |
 | 7 HS | LB 1: Zusammengesetzte Flächen und Körper |  |
 | 7 HS | LB 2: Anteile und Prozente | prozentrechnung |
-| 7 HS | LB 3: Rationale Zahlen | algebra, betrag, negative zahlen, term, terme |
+| 7 HS | LB 3: Rationale Zahlen | algebra, betrag, negative zahlen |
 | 7 HS | LB 4: Vielecke und Prismen |  |
 | 7 HS | Wahlbereich 1: Bandornamente und Parkettierungen |  |
 | 7 HS | Wahlbereich 2: Optische Täuschungen |  |
@@ -67,7 +65,7 @@ edit: true
 | 9 HS | Wahlbereich 3: Technisches Zeichnen |  |
 | 7 RS | LB 1: Prozent- und Zinsrechnung | prozentrechnung |
 | 7 RS | LB 2: Elemente der Stochastik | wahrscheinlichkeit |
-| 7 RS | LB 3: Rationale Zahlen und Gleichungen | algebra, äquivalenzumformung, betrag, negative zahlen, terme |
+| 7 RS | LB 3: Rationale Zahlen und Gleichungen | algebra, äquivalenzumformung, betrag, negative zahlen |
 | 7 RS | LB 4: Vielecke und Prismen |  |
 | 7 RS | Wahlbereich 1: Technisches Zeichnen |  |
 | 7 RS | Wahlbereich 2: Unterhaltungsmathematik und Rechenverfahren |  |
@@ -165,7 +163,7 @@ edit: true
 | 7 | Wahlbereich 1: Tabellenkalkulation - ein mathematisches Werkzeug |  |
 | 7 | Wahlbereich 2: Maßstäbe und ihre Anwendungen |  |
 | 7 | Wahlbereich 3: Platonische Körper |  |
-| 8 | LB 1: Arbeiten mit Termen und Gleichungen | terme, ungleichungen |
+| 8 | LB 1: Arbeiten mit Termen und Gleichungen | ungleichungen |
 | 8 | LB 2: Zufallsversuche | baumdiagramm, kombinatorik, median, spannweite, unbedingte wahrscheinlichkeit, vereinigung, wahrscheinlichkeit |
 | 8 | LB 3: Funktionen und lineare Gleichungssysteme | additionsverfahren, definitionsbereich, einsetzungsverfahren, gleichungssysteme, lineare funktionen, parameter, stelle, verhalten, wertebereich |
 | 8 | LB 4: Ähnlichkeit |  |

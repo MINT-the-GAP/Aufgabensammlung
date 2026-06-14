@@ -12,9 +12,8 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-marker/refs/heads/mai
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-annotation/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-canvas-ocr/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-orthography/refs/heads/main/README.md
-import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main/README.md
-import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
@@ -23,6 +22,8 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
+
+
 
 
 
@@ -52,12 +53,78 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
 
 
-
+import: file:///Z:/Drive/BBF/Projekte%20Martin/Software/Kachel/README.md
 
 
 -->
 
 
+
+
+
+
+### `@Kachelfolge` — Reihenfolge egal
+
+`import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md`
+
+
+Erzeugt eine Kachelsequenz, bei der die Reihenfolge der Antworten egal ist.
+
+```markdown
+<!-- data-randomize="true" -->
+Wähle die richtigen Farben aus:
+@Kachelfolge(`[->[(rot)]][->[(blau)]][->[(grün)|Haus]]`)
+```
+
+**Syntax der Kacheln:** `[->[(Antwort)]]` oder `[->[(Antwort)|Beschriftung]]`
+
+- `(Antwort)` — die korrekte Antwort (in runden Klammern)
+- Alternativen ohne Klammern werden als falsche Optionen angeboten (z.B. `[->[(rot)|blau|grün]]`)
+
+Wähle die richtigen Farben aus:
+@Kachelfolge(`[->[(rot)]][->[(blau)]][->[(grün)|Haus]]`)
+
+### `@KachelfolgeN` — Sequenziell (unbekannte Anzahl)
+
+Zeigt immer nur das nächste freie Feld an — nützlich wenn die Anzahl der zu wählenden Kacheln unbekannt ist.
+
+```markdown
+Wähle alle roten Farbtöne aus:
+@KachelfolgeN(`[->[(Karmesin)]][->[(Scharlach)]][->[(Rubinrot)|Kobalt]]`)
+```
+
+Wähle alle roten Farbtöne aus:
+@KachelfolgeN(`[->[(Karmesin)]][->[(Scharlach)]][->[(Rubinrot)|Kobalt]]`)
+
+### `<div class="Kachel">` — Inline-Kachelbereich
+
+Für normale LiaScript-Tile-Quizze (ohne Makro) kann der Drag-&-Drop-Bereich mit einem `<div class="Kachel">` umschlossen werden, damit das Plugin ihn erkennt und Touch-Support aktiviert:
+
+```markdown
+<div class="Kachel">
+
+Wähle in den ersten drei Feldern gelb und danach rot aus.
+
+<!-- data-solution-button="5" data-randomize="true" -->
+In diese Lücke muss [->[(gelb)]] rein. \
+In diese muss auch [->[(gelb)]] rein und in diese [->[(gelb)]] auch. \
+Das Adjektiv [->[(rot)]] ist [->[pink|grün|(rot)]].
+
+</div>
+```
+
+
+
+<div class="Kachel">
+
+Wähle in den ersten drei Feldern gelb und danach rot aus.
+
+<!-- data-solution-button="5" data-randomize="true" -->
+In diese Lücke muss [->[(Test)]] rein. \
+In diese muss auch [->[(Test)]] rein und in diese [->[(Nope)]] auch. \
+Das Adjektiv [->[(Nope)]] ist [->[(Test)]].
+
+</div>
 
 
 

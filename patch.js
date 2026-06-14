@@ -1,5 +1,6 @@
 const fs = require('fs')
 const path = require('path')
+const { execFileSync } = require('child_process')
 
 const TARGET_FILE = 'ziel.html'
 const SCRIPT_START = '<!-- SCHULLIA_CUSTOM_SCRIPT_START -->'
@@ -14,6 +15,14 @@ const CARD_DECORATION_STYLE_START = '<!-- SCHULLIA_CARD_DECORATION_STYLE_START -
 const CARD_DECORATION_STYLE_END = '<!-- SCHULLIA_CARD_DECORATION_STYLE_END -->'
 const CARD_DECORATION_SCRIPT_START = '<!-- SCHULLIA_CARD_DECORATION_SCRIPT_START -->'
 const CARD_DECORATION_SCRIPT_END = '<!-- SCHULLIA_CARD_DECORATION_SCRIPT_END -->'
+const SECTION_COLLAPSE_STYLE_START = '<!-- SCHULLIA_SECTION_COLLAPSE_STYLE_START -->'
+const SECTION_COLLAPSE_STYLE_END = '<!-- SCHULLIA_SECTION_COLLAPSE_STYLE_END -->'
+const SECTION_COLLAPSE_SCRIPT_START = '<!-- SCHULLIA_SECTION_COLLAPSE_SCRIPT_START -->'
+const SECTION_COLLAPSE_SCRIPT_END = '<!-- SCHULLIA_SECTION_COLLAPSE_SCRIPT_END -->'
+const SECTION_META_STYLE_START = '<!-- SCHULLIA_SECTION_META_STYLE_START -->'
+const SECTION_META_STYLE_END = '<!-- SCHULLIA_SECTION_META_STYLE_END -->'
+const SECTION_META_SCRIPT_START = '<!-- SCHULLIA_SECTION_META_SCRIPT_START -->'
+const SECTION_META_SCRIPT_END = '<!-- SCHULLIA_SECTION_META_SCRIPT_END -->'
 
 const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
 <script>
@@ -2505,6 +2514,329 @@ const CARD_DECORATION_SCRIPT = String.raw`${CARD_DECORATION_SCRIPT_START}
 </script>
 ${CARD_DECORATION_SCRIPT_END}`
 
+const SECTION_COLLAPSE_STYLE = `${SECTION_COLLAPSE_STYLE_START}
+<style>
+  .album .card > .card-header.schullia-collapsible-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .album .card > .card-header.schullia-collapsible-header > h4 {
+    margin-bottom: 0;
+    flex: 1 1 auto;
+  }
+
+  .schullia-collapse-chevron {
+    flex: 0 0 auto;
+    width: 1.15em;
+    height: 1.15em;
+    transform: rotate(0deg);
+    transition: transform 0.2s ease;
+    color: inherit;
+  }
+
+  .album .card.schullia-section-collapsed > .card-header.schullia-collapsible-header .schullia-collapse-chevron {
+    transform: rotate(-90deg);
+  }
+
+  .album .card.schullia-section-collapsed > .card-body {
+    display: none !important;
+  }
+
+  .album .card > .card-header.schullia-collapsible-header:focus-visible {
+    outline: 2px solid rgba(20, 115, 117, 0.65);
+    outline-offset: 2px;
+  }
+</style>
+${SECTION_COLLAPSE_STYLE_END}`
+
+const SECTION_COLLAPSE_SCRIPT = String.raw`${SECTION_COLLAPSE_SCRIPT_START}
+<script>
+  (function () {
+    const SVG_NS = 'http://www.w3.org/2000/svg'
+
+    function buildChevron() {
+      const svg = document.createElementNS(SVG_NS, 'svg')
+      svg.setAttribute('viewBox', '0 0 24 24')
+      svg.setAttribute('fill', 'none')
+      svg.setAttribute('stroke', 'currentColor')
+      svg.setAttribute('stroke-width', '2.5')
+      svg.setAttribute('stroke-linecap', 'round')
+      svg.setAttribute('stroke-linejoin', 'round')
+      svg.setAttribute('aria-hidden', 'true')
+      svg.classList.add('schullia-collapse-chevron')
+
+      const path = document.createElementNS(SVG_NS, 'path')
+      path.setAttribute('d', 'M6 9l6 6 6-6')
+      svg.appendChild(path)
+      return svg
+    }
+
+    function setupHeader(header) {
+      if (!header || header.dataset.schulliaCollapsible === '1') return
+
+      const card = header.closest('.card')
+      if (!card || card.classList.contains('shadow-sm')) return
+      if (!header.querySelector('h4')) return
+
+      const body = card.querySelector(':scope > .card-body')
+      if (!body) return
+
+      header.dataset.schulliaCollapsible = '1'
+      header.classList.add('schullia-collapsible-header')
+      header.setAttribute('role', 'button')
+      header.setAttribute('tabindex', '0')
+      header.setAttribute('aria-expanded', 'true')
+
+      if (!header.querySelector('.schullia-collapse-chevron')) {
+        header.appendChild(buildChevron())
+      }
+
+      function toggle() {
+        const collapsed = card.classList.toggle('schullia-section-collapsed')
+        header.setAttribute('aria-expanded', collapsed ? 'false' : 'true')
+      }
+
+      header.addEventListener('click', function (event) {
+        if (event.target.closest('a')) return
+        toggle()
+      })
+
+      header.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' || event.key === ' ' || event.key === 'Spacebar') {
+          event.preventDefault()
+          toggle()
+        }
+      })
+    }
+
+    function setupAll() {
+      document.querySelectorAll('.album .card > .card-header').forEach(setupHeader)
+    }
+
+    function expandFromHash() {
+      const hash = String(window.location.hash || '').replace(/^#/, '')
+      if (!hash) return
+
+      const target = document.getElementById(hash)
+      if (!target) return
+
+      const card = target.closest('.card.schullia-section-collapsed')
+      if (!card) return
+
+      card.classList.remove('schullia-section-collapsed')
+      const header = card.querySelector(':scope > .card-header.schullia-collapsible-header')
+      if (header) header.setAttribute('aria-expanded', 'true')
+    }
+
+    function start() {
+      setupAll()
+      window.setTimeout(setupAll, 250)
+      window.setTimeout(setupAll, 800)
+      expandFromHash()
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', start)
+    } else {
+      start()
+    }
+
+    window.addEventListener('load', setupAll)
+    window.addEventListener('hashchange', expandFromHash)
+  })()
+</script>
+${SECTION_COLLAPSE_SCRIPT_END}`
+
+const SECTION_META_STYLE = `${SECTION_META_STYLE_START}
+<style>
+  .album .card > .card-header h4 .schullia-section-meta {
+    display: block;
+    margin-top: 0.15rem;
+    font-size: 6pt;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0;
+    opacity: 0.72;
+  }
+
+  .album .card > .card-header .schullia-collection-summary {
+    display: block;
+    margin-top: 0.5rem;
+    text-align: left;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+  }
+</style>
+${SECTION_META_STYLE_END}`
+
+const SECTION_META_SCRIPT = String.raw`${SECTION_META_SCRIPT_START}
+<script>
+  (function () {
+    var SCHULLIA_TASK_DATES = /* SCHULLIA_TASK_DATES_START */{}/* SCHULLIA_TASK_DATES_END */
+
+    // Sections that should be excluded from the overall collection totals.
+    var SUMMARY_EXCLUDED_IDS = { aufgabensets: true, erklaerungen: true }
+
+    function rawPathFromHref(href) {
+      if (!href) return ''
+      var m = String(href).match(/raw\.githubusercontent\.com\/[^\/]+\/[^\/]+\/(?:refs\/heads\/)?[^\/]+\/([^?#]+?\.md)/i)
+      if (!m) return ''
+      try { return decodeURIComponent(m[1]) } catch (e) { return m[1] }
+    }
+
+    function formatDE(iso) {
+      var parts = String(iso || '').slice(0, 10).split('-')
+      if (parts.length !== 3) return ''
+      return parts[2] + '.' + parts[1] + '.' + parts[0]
+    }
+
+    function sectionLabel(sectionId, count) {
+      if (sectionId === 'aufgabensets') return count === 1 ? 'Set' : 'Sets'
+      if (sectionId === 'erklaerungen') return count === 1 ? 'Erklärung' : 'Erklärungen'
+      return count === 1 ? 'Aufgabe' : 'Aufgaben'
+    }
+
+    function maxDateForCards(taskCards, dateSink) {
+      var maxISO = ''
+      Array.prototype.forEach.call(taskCards, function (tc) {
+        var link = tc.querySelector('a[href]')
+        if (!link) return
+        var p = rawPathFromHref(link.getAttribute('href'))
+        if (!p) return
+        if (dateSink) dateSink.paths[p] = true
+        var d = SCHULLIA_TASK_DATES[p]
+        if (d && d > maxISO) maxISO = d
+      })
+      return maxISO
+    }
+
+    function buildSectionMeta() {
+      var headers = document.querySelectorAll('.album .card > .card-header')
+      Array.prototype.forEach.call(headers, function (header) {
+        var h4 = header.querySelector('h4')
+        if (!h4) return
+        var card = header.closest('.card')
+        if (!card || card.classList.contains('shadow-sm')) return
+        var body = card.querySelector(':scope > .card-body')
+        if (!body) return
+
+        var taskCards = body.querySelectorAll('.card.shadow-sm')
+        var count = taskCards.length
+        if (!count) return
+
+        var sectionId = (h4.getAttribute('id') || '').toLowerCase()
+        var maxISO = maxDateForCards(taskCards, null)
+
+        var text = '(' + count + ' ' + sectionLabel(sectionId, count)
+        if (maxISO) text += ' - letztes Update am ' + formatDE(maxISO)
+        text += ')'
+
+        var existing = h4.querySelector('.schullia-section-meta')
+        if (existing && existing.textContent === text) return
+        if (existing) existing.remove()
+
+        var meta = document.createElement('span')
+        meta.className = 'schullia-section-meta'
+        meta.textContent = text
+        h4.appendChild(meta)
+      })
+    }
+
+    function findIntroHeader() {
+      var headers = document.querySelectorAll('.album .card > .card-header')
+      for (var i = 0; i < headers.length; i++) {
+        if (headers[i].querySelector('h4')) continue
+        var t = (headers[i].textContent || '').replace(/\s+/g, ' ').trim()
+        if (t.indexOf('In dieser Aufgabensammlung sind mehrere Schwierigkeitsgrade') === 0) {
+          return headers[i]
+        }
+      }
+      return null
+    }
+
+    function buildCollectionSummary() {
+      var introHeader = findIntroHeader()
+      if (!introHeader) return
+
+      var headers = document.querySelectorAll('.album .card > .card-header')
+      var distinctPaths = {}
+      var unresolvedCount = 0
+      var maxISO = ''
+
+      Array.prototype.forEach.call(headers, function (header) {
+        var h4 = header.querySelector('h4')
+        if (!h4) return
+        var card = header.closest('.card')
+        if (!card || card.classList.contains('shadow-sm')) return
+        var body = card.querySelector(':scope > .card-body')
+        if (!body) return
+
+        var sectionId = (h4.getAttribute('id') || '').toLowerCase()
+        if (SUMMARY_EXCLUDED_IDS[sectionId]) return
+
+        var taskCards = body.querySelectorAll('.card.shadow-sm')
+        Array.prototype.forEach.call(taskCards, function (tc) {
+          var link = tc.querySelector('a[href]')
+          var p = link ? rawPathFromHref(link.getAttribute('href')) : ''
+          if (p) {
+            distinctPaths[p] = true
+            var d = SCHULLIA_TASK_DATES[p]
+            if (d && d > maxISO) maxISO = d
+          } else {
+            unresolvedCount++
+          }
+        })
+      })
+
+      var total = Object.keys(distinctPaths).length + unresolvedCount
+      if (!total) return
+
+      var text = 'Die Aufgabensammlung umfasst ' + total + ' Aufgaben'
+      if (maxISO) text += ' und wurde am ' + formatDE(maxISO) + ' das letzte mal aktualisiert.'
+      else text += '.'
+
+      var existing = introHeader.querySelector('.schullia-collection-summary')
+      if (existing && existing.textContent === text) return
+      if (existing) existing.remove()
+
+      var summary = document.createElement('span')
+      summary.className = 'schullia-collection-summary'
+      summary.textContent = text
+      introHeader.appendChild(summary)
+    }
+
+    function refresh() {
+      buildSectionMeta()
+      buildCollectionSummary()
+    }
+
+    function start() {
+      refresh()
+      window.setTimeout(refresh, 300)
+      window.setTimeout(refresh, 900)
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', start)
+    } else {
+      start()
+    }
+
+    window.addEventListener('load', refresh)
+  })()
+</script>
+${SECTION_META_SCRIPT_END}`
+
 function replaceOnce(html, regex, replacer) {
   return regex.test(html) ? html.replace(regex, replacer) : html
 }
@@ -2624,6 +2956,22 @@ function patchIndexHtml(html, targetParts) {
     new RegExp(`${CARD_DECORATION_SCRIPT_START}[\\s\\S]*?${CARD_DECORATION_SCRIPT_END}`, 'g'),
     ''
   )
+  html = html.replace(
+    new RegExp(`${SECTION_COLLAPSE_STYLE_START}[\\s\\S]*?${SECTION_COLLAPSE_STYLE_END}`, 'g'),
+    ''
+  )
+  html = html.replace(
+    new RegExp(`${SECTION_COLLAPSE_SCRIPT_START}[\\s\\S]*?${SECTION_COLLAPSE_SCRIPT_END}`, 'g'),
+    ''
+  )
+  html = html.replace(
+    new RegExp(`${SECTION_META_STYLE_START}[\\s\\S]*?${SECTION_META_STYLE_END}`, 'g'),
+    ''
+  )
+  html = html.replace(
+    new RegExp(`${SECTION_META_SCRIPT_START}[\\s\\S]*?${SECTION_META_SCRIPT_END}`, 'g'),
+    ''
+  )
 
   // Remove legacy literal template blocks that were previously injected as text.
   html = html.replace(
@@ -2638,7 +2986,7 @@ function patchIndexHtml(html, targetParts) {
   if (html.includes('</head>')) {
     html = html.replace(
       '</head>',
-      `\n${targetParts.script}\n${targetParts.style}\n${NAVBAR_FIX_STYLE}\n${NAVBAR_FIX_SCRIPT_FINAL}\n${CARD_DECORATION_STYLE}\n${CARD_DECORATION_SCRIPT}\n</head>`
+      `\n${targetParts.script}\n${targetParts.style}\n${NAVBAR_FIX_STYLE}\n${NAVBAR_FIX_SCRIPT_FINAL}\n${CARD_DECORATION_STYLE}\n${CARD_DECORATION_SCRIPT}\n${SECTION_COLLAPSE_STYLE}\n${SECTION_COLLAPSE_SCRIPT}\n${SECTION_META_STYLE}\n${SECTION_META_SCRIPT_FINAL}\n</head>`
     )
   }
 
@@ -2734,6 +3082,44 @@ const NAVBAR_FIX_SCRIPT_FINAL = SACHSEN_CURRICULUM_DATA
       '/* SCHULLIA_SACHSEN_LB_START */' + JSON.stringify(SACHSEN_CURRICULUM_DATA) + '/* SCHULLIA_SACHSEN_LB_END */'
     )
   : NAVBAR_FIX_SCRIPT
+
+// Build a map of repo-relative .md paths -> ISO date the file was last changed
+// (added or modified) in git. Used to show "letztes Update am ..." per section
+// and the overall collection summary. Requires full git history (the CI checkout
+// sets fetch-depth: 0). Falls back to an empty map.
+function buildTaskUpdatedDates() {
+  try {
+    const out = execFileSync(
+      'git',
+      ['log', '--name-only', '--format=C%aI'],
+      { cwd: __dirname, encoding: 'utf8', maxBuffer: 1024 * 1024 * 256 }
+    )
+    const map = {}
+    let currentDate = null
+    out.split(/\r?\n/).forEach(function (line) {
+      if (line.charAt(0) === 'C' && /^C\d{4}-\d{2}-\d{2}T/.test(line)) {
+        currentDate = line.slice(1).trim()
+        return
+      }
+      const p = line.trim()
+      if (!p || !/\.md$/i.test(p)) return
+      // git log is newest-first, so the first time we see a path is its most
+      // recent commit that touched it (= last update, add or modify).
+      if (currentDate && !Object.prototype.hasOwnProperty.call(map, p)) {
+        map[p] = currentDate
+      }
+    })
+    return map
+  } catch (error) {
+    return {}
+  }
+}
+
+const TASK_ADDED_DATES = buildTaskUpdatedDates()
+const SECTION_META_SCRIPT_FINAL = SECTION_META_SCRIPT.replace(
+  /\/\* SCHULLIA_TASK_DATES_START \*\/[\s\S]*?\/\* SCHULLIA_TASK_DATES_END \*\//,
+  '/* SCHULLIA_TASK_DATES_START */' + JSON.stringify(TASK_ADDED_DATES) + '/* SCHULLIA_TASK_DATES_END */'
+)
 
 const indexPath = path.join(__dirname, 'index.html')
 const targetPath = path.join(__dirname, TARGET_FILE)
