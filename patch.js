@@ -25,77 +25,14 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
         .trim()
     }
 
-    var SCHULLIA_SACHSEN_LB = /* SCHULLIA_SACHSEN_LB_START */{
-      "5": {
-        "1": ["addition", "subtraktion", "multiplikation", "division", "grundrechenarten", "differenz", "vorrangsregeln", "kommutativgesetz", "assoziativgesetz", "distributivgesetz", "potenzen", "runden", "überschlagen", "zahlenstrahl", "zahlenverständnis", "quersumme", "teilbarkeiten", "teilermengen", "vielfachmengen", "ggt", "kgv", "gleichung", "folgen", "sachaufgabe"],
-        "2": ["dezimalzahlen", "prozent", "arithmetisches mittel", "arithmetische mittelwert", "durchschnitt", "periodizität"],
-        "3": ["punkt", "koordinatensystem", "lagebeziehung", "winkel", "winkelbeziehungen"],
-        "4": ["rechteck", "quader", "umfang", "fläche", "volumen"],
-        "5": ["einheiten", "zeit", "länge", "masse"],
-        "extra": ["zahlensysteme"]
-      },
-      "6": {
-        "1": ["bruchrechnung", "kehrwert", "variable", "mengen"],
-        "2": ["zuordnung", "beliebige zuordnung", "proportional", "antiproportional", "verhältnisse", "tabelle", "chance", "häufigkeit", "eindeutigkeit"],
-        "3": ["dreieck", "dreiecke", "vierecke"]
-      },
-      "7": {
-        "2": ["negative zahlen", "betrag", "algebra", "äquivalenzumformung", "prozentrechnung", "wurzeln"]
-      },
-      "8": {
-        "1": ["term", "terme", "ungleichungen"],
-        "2": ["wahrscheinlichkeit", "unbedingte wahrscheinlichkeit", "baumdiagramm", "kombinatorik", "vereinigung", "median", "spannweite"],
-        "3": ["lineare funktionen", "definitionsbereich", "wertebereich", "stelle", "parameter", "verhalten", "gleichungssysteme", "einsetzungsverfahren", "additionsverfahren"]
-      },
-      "9": {
-        "1": ["quadratische funktionen", "scheitelpunktsform", "quadratische ergänzung"],
-        "3": ["trigonometrie"],
-        "4": ["standardabweichung"]
-      },
-      "10": {
-        "2": ["erwartungswert"],
-        "4": ["logarithmus", "logarithmen", "grenzwerte", "infimum", "supremum"]
-      },
-      "11": {
-        "1": ["ableitungen", "grafisches ableiten", "signum"],
-        "3": ["vektoren"],
-        "4": ["fakultät", "binomialkoeffizient", "binomialverteilung", "vierfeldertafel", "vierfeldertafeln", "kontingenztafel", "kontingenztafeln", "hypergeometrische verteilung", "bedingte wahrscheinlichkeit"],
-        "7": ["abstand", "skalarprodukt", "vektorprodukt"],
-        "8": ["abstand", "skalarprodukt", "vektorprodukt"]
-      },
-      "12": {
-        "1": ["ableitungen", "grafisches ableiten", "signum"],
-        "3": ["vektoren"],
-        "4": ["fakultät", "binomialkoeffizient", "binomialverteilung", "vierfeldertafel", "vierfeldertafeln", "kontingenztafel", "kontingenztafeln", "hypergeometrische verteilung", "bedingte wahrscheinlichkeit"],
-        "7": ["abstand", "skalarprodukt", "vektorprodukt"],
-        "8": ["abstand", "skalarprodukt", "vektorprodukt"]
-      }
-    }/* SCHULLIA_SACHSEN_LB_END */;
+    var SCHULLIA_SACHSEN = /* SCHULLIA_SACHSEN_LB_START */{"themes":{"oberschule":{"5":{"1":["addition","assoziativgesetz","differenz","distributivgesetz","division","ggt","gleichung","grundrechenarten","kgv","kommutativgesetz","multiplikation","potenzen","quersumme","runden","subtraktion","teilbarkeiten","teilermengen","überschlagen","ungleichungen","variable","vielfachmengen","vorrangsregeln","wurzeln","zahlenstrahl","zahlenverständnis"],"2":["arithmetische mittelwert","arithmetisches mittel","bruchrechnung","dezimalzahlen","durchschnitt","einheiten","länge","masse","periodizität","prozent","sachaufgabe","zeit"],"3":["fläche","koordinatensystem","lagebeziehung","punkt","rechteck","umfang","volumen","winkel"],"extra":["zahlensysteme","häufigkeit","kombinatorik","tabelle"]},"6":{"1":["kehrwert","mengen","verhältnisse"],"2":["antiproportional","beliebige zuordnung","proportional","zuordnung"],"3":["dreieck","dreiecke","eindeutigkeit","vierecke","winkelbeziehungen"],"4":["quader"],"5":["chance","wahrscheinlichkeit"]},"7HS":{"2":["prozentrechnung"],"3":["algebra","betrag","negative zahlen","term","terme"]},"8HS":{"2":["äquivalenzumformung"]},"9HS":{"1":["trigonometrie"],"3":["lineare funktionen"],"extra":["median","spannweite"]},"7RS":{"1":["prozentrechnung"],"2":["wahrscheinlichkeit"],"3":["algebra","äquivalenzumformung","betrag","negative zahlen","terme"]},"8RS":{"2":["additionsverfahren","definitionsbereich","einsetzungsverfahren","gleichungssysteme","lineare funktionen","parameter","stelle","wertebereich"],"5":["baumdiagramm","fakultät"]},"9RS":{"1":["trigonometrie"],"3":["quadratische ergänzung","quadratische funktionen","scheitelpunktsform","verhalten"],"4":["median","spannweite"]},"10RS":{"3":["erwartungswert"]}},"bgy":{"11":{"1":["bedingte wahrscheinlichkeit","kontingenztafel","kontingenztafeln","unbedingte wahrscheinlichkeit","vereinigung","vierfeldertafel","vierfeldertafeln"],"3":["logarithmen","logarithmus"]},"12GK":{"1":["binomialkoeffizient","binomialverteilung","standardabweichung"],"2":["ableitungen","grafisches ableiten","grenzwerte"],"5":["skalarprodukt","vektoren"],"6":["abstand"],"extra":["vektorprodukt"]},"12LK":{}},"gymnasium":{"5":{"1":["addition","assoziativgesetz","differenz","distributivgesetz","division","folgen","ggt","gleichung","grundrechenarten","kgv","kommutativgesetz","multiplikation","potenzen","quersumme","runden","sachaufgabe","subtraktion","teilbarkeiten","teilermengen","terme","überschlagen","vielfachmengen","vorrangsregeln","zahlenstrahl","zahlenverständnis"],"2":["arithmetisches mittel","dezimalzahlen","durchschnitt","periodizität","prozent"],"3":["koordinatensystem","lagebeziehung","punkt","winkel","winkelbeziehungen"],"4":["fläche","quader","rechteck","umfang","volumen"],"5":["einheiten","länge","masse","zeit"],"extra":["zahlensysteme"]},"6":{"1":["bruchrechnung","kehrwert","mengen","variable"],"2":["antiproportional","beliebige zuordnung","chance","eindeutigkeit","häufigkeit","proportional","tabelle","verhältnisse","zuordnung"],"3":["dreieck","dreiecke","vierecke"]},"7":{"2":["algebra","äquivalenzumformung","betrag","negative zahlen","prozentrechnung","wurzeln"]},"8":{"1":["terme","ungleichungen"],"2":["baumdiagramm","kombinatorik","median","spannweite","unbedingte wahrscheinlichkeit","vereinigung","wahrscheinlichkeit"],"3":["additionsverfahren","definitionsbereich","einsetzungsverfahren","gleichungssysteme","lineare funktionen","parameter","stelle","verhalten","wertebereich"]},"9":{"1":["quadratische ergänzung","quadratische funktionen","scheitelpunktsform"],"3":["trigonometrie"],"4":["standardabweichung"]},"10":{"2":["erwartungswert"],"4":["grenzwerte","infimum","logarithmen","logarithmus","supremum"]},"11GK":{"1":["ableitungen","grafisches ableiten","signum"],"3":["vektoren"],"4":["bedingte wahrscheinlichkeit","binomialkoeffizient","binomialverteilung","fakultät","hypergeometrische verteilung","kontingenztafel","kontingenztafeln","vierfeldertafel"],"7":["abstand","skalarprodukt","vektorprodukt"]},"11LK":{"1":["ableitungen","grafisches ableiten","signum"],"3":["vektoren"],"4":["bedingte wahrscheinlichkeit","binomialkoeffizient","binomialverteilung","fakultät","hypergeometrische verteilung","kontingenztafel","kontingenztafeln","vierfeldertafel"],"8":["abstand","skalarprodukt","vektorprodukt"]}}},"lbCount":{"oberschule":{"5":4,"6":5,"7HS":4,"8HS":5,"9HS":4,"7RS":4,"8RS":6,"9RS":4,"10RS":4},"bgy":{"11":4,"12GK":6,"12LK":7},"gymnasium":{"5":5,"6":5,"7":4,"8":5,"9":5,"10":5,"11GK":8,"11LK":9}},"lbTitles":{"oberschule":{"5":{"1":"Natürliche Zahlen","2":"Gemeine Brüche, Dezimalzahlen und Größen","3":"Geometrische Grundformen","4":"Symmetrie und deckungsgleiche Figuren"},"6":{"1":"Gebrochene Zahlen","2":"Zuordnungen in der Umwelt","3":"Geometrie in der Ebene","4":"Geometrische Körper","5":"Mathematik im Alltag"},"7HS":{"1":"Zusammengesetzte Flächen und Körper","2":"Anteile und Prozente","3":"Rationale Zahlen","4":"Vielecke und Prismen"},"8HS":{"1":"Wirtschaftliches Rechnen","2":"Formeln und Gleichungen","3":"Vom Vieleck zum Kreis","4":"Kreiszylinder und Hohlzylinder","5":"Mathematik im Alltag"},"9HS":{"1":"Rechtwinklige Dreiecke","2":"Körperdarstellung und Körperberechnung","3":"Funktionale Zusammenhänge","4":"Mathematik im Alltag"},"7RS":{"1":"Prozent- und Zinsrechnung","2":"Elemente der Stochastik","3":"Rationale Zahlen und Gleichungen","4":"Vielecke und Prismen"},"8RS":{"1":"Lineare Gleichungen","2":"Lineare Funktionen und Gleichungssysteme","3":"Kreis und Kreiszylinder","4":"Ähnlichkeit","5":"Zufällige Ereignisse","6":"Mathematik im Alltag"},"9RS":{"1":"Rechtwinklige Dreiecke","2":"Pyramiden, Kreiskegel, Kugel","3":"Quadratische Funktionen und quadratische Gleichungen","4":"Beschreibende Statistik"},"10RS":{"1":"Dreiecke und Vierecke","2":"Funktionale Zusammenhänge","3":"Zufallsgrößen","4":"Mathematik im Alltag"}},"bgy":{"11":{"1":"Ermitteln von Wahrscheinlichkeiten bei mehrstufigen Zufallsversuchen","2":"Beschreiben und Lösen inner- und außermathematischer Probleme","3":"Funktionale Zusammenhänge","4":"Lineare Gleichungssysteme und Matrizen"},"12GK":{"1":"Diskrete Zufallsgrößen","2":"Differenzialrechnung","3":"Integralrechnung","4":"Beurteilende Statistik","5":"Vektorgeometrie","6":"Weitere Anwendungen"},"12LK":{"1":"Diskrete Zufallsgrößen","2":"Differenzialrechnung","3":"Integralrechnung","4":"Normalverteilte Zufallsgrößen","5":"Beurteilende Statistik","6":"Vektorgeometrie","7":"Weitere Anwendungen"}},"gymnasium":{"5":{"1":"Arbeiten mit natürlichen Zahlen","2":"Gemeine Brüche und Dezimalzahlen","3":"Lagebeziehungen geometrischer Objekte","4":"Rechtecke und Quader","5":"Vernetzung: Mathematik im Alltag"},"6":{"1":"Arbeiten mit gebrochenen Zahlen","2":"Zuordnungen in der Umwelt","3":"Dreiecke und Vierecke","4":"Prismen","5":"Vernetzung: Anteile"},"7":{"1":"Geometrie in der Ebene","2":"Arbeiten mit rationalen Zahlen","3":"Darstellen und Berechnen von Prismen und Pyramiden","4":"Vernetzung: Darstellen von Daten"},"8":{"1":"Arbeiten mit Termen und Gleichungen","2":"Zufallsversuche","3":"Funktionen und lineare Gleichungssysteme","4":"Ähnlichkeit","5":"Vernetzung: Heuristische Strategien"},"9":{"1":"Funktionen und Potenzen","2":"Kreise, Kreiszylinder und Kugeln","3":"Rechtwinklige Dreiecke","4":"Auswerten von Daten","5":"Vernetzung: Mathematik und moderne Rechentechnik"},"10":{"1":"Wachstumsvorgänge und periodische Vorgänge","2":"Diskrete Zufallsgrößen","3":"Algebraisches Lösen geometrischer Probleme","4":"Funktionale Zusammenhänge","5":"Vernetzung: Zinsrechnung"},"11GK":{"1":"Differentialrechnung","2":"Matrizen","3":"Vektoren, Geraden und Ebenen","4":"Binomialverteilte Zufallsgrößen","5":"Integralrechnung","6":"Beurteilende Statistik","7":"Abstände und Winkel","8":"Weitere Anwendungen"},"11LK":{"1":"Differentialrechnung","2":"Matrizen","3":"Vektoren, Geraden und Ebenen","4":"Binomialverteilte Zufallsgrößen","5":"Integralrechnung","6":"Normalverteilte Zufallsgrößen","7":"Beurteilende Statistik","8":"Abstände und Winkel","9":"Weitere Anwendungen"}}}}/* SCHULLIA_SACHSEN_LB_END */;
 
-    function schulliaLowerClasses(klasse) {
-      var n = Number.parseInt(klasse, 10)
-      if (!Number.isFinite(n)) return []
-      if (n === 11 || n === 12) return ['5', '6', '7', '8', '9', '10']
-      var out = []
-      for (var i = 5; i < n; i++) out.push(String(i))
-      return out
+    function schulliaSchoolThemes(schoolType) {
+      return (SCHULLIA_SACHSEN.themes && SCHULLIA_SACHSEN.themes[schoolType]) || {}
     }
 
-    function schulliaCurriculumUniverse() {
-      if (window.__schulliaCurriculumUniverse) return window.__schulliaCurriculumUniverse
-      var set = new Set()
-      Object.keys(SCHULLIA_SACHSEN_LB).forEach(function (klasse) {
-        var lbs = SCHULLIA_SACHSEN_LB[klasse]
-        Object.keys(lbs).forEach(function (lbKey) {
-          lbs[lbKey].forEach(function (theme) { set.add(normalizeText(theme)) })
-        })
-      })
-      window.__schulliaCurriculumUniverse = set
-      return set
-    }
-
-    function schulliaThemesForClass(klasse) {
-      var lbs = SCHULLIA_SACHSEN_LB[String(klasse)]
+    function schulliaThemesForClassKey(schoolType, classKey) {
+      var lbs = schulliaSchoolThemes(schoolType)[classKey]
       var out = []
       if (!lbs) return out
       Object.keys(lbs).forEach(function (lbKey) {
@@ -104,10 +41,90 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
       return out
     }
 
-    function schulliaThemesForClassLb(klasse, lbNumber) {
-      var lbs = SCHULLIA_SACHSEN_LB[String(klasse)]
+    function schulliaThemesForClassKeyLb(schoolType, classKey, lbNumber) {
+      var lbs = schulliaSchoolThemes(schoolType)[classKey]
       if (!lbs) return []
       return lbs[String(lbNumber)] || []
+    }
+
+    function schulliaLbCount(schoolType, classKey) {
+      var counts = (SCHULLIA_SACHSEN.lbCount && SCHULLIA_SACHSEN.lbCount[schoolType]) || {}
+      return counts[classKey] || 0
+    }
+
+    function schulliaLbTitle(schoolType, classKey, lbNumber) {
+      var titlesBySchool = (SCHULLIA_SACHSEN.lbTitles && SCHULLIA_SACHSEN.lbTitles[schoolType]) || {}
+      var titlesByClass = titlesBySchool[classKey] || {}
+      return titlesByClass[String(lbNumber)] || ''
+    }
+
+    function schulliaResolveClassKey(schulart, klasse, zweig, kursart) {
+      if (schulart === 'oberschule') {
+        if (klasse === '5' || klasse === '6') return klasse
+        if (klasse === '10') return '10RS'
+        if (klasse === '7' || klasse === '8' || klasse === '9') {
+          if (zweig === 'hs') return klasse + 'HS'
+          if (zweig === 'rs') return klasse + 'RS'
+          return null
+        }
+        return null
+      }
+      if (schulart === 'bgy') {
+        if (klasse === '11') return '11'
+        if (klasse === '12') {
+          if (kursart === 'gk') return '12GK'
+          if (kursart === 'lk') return '12LK'
+          return null
+        }
+        return null
+      }
+      if (schulart === 'gymnasium') {
+        if (['5', '6', '7', '8', '9', '10'].indexOf(klasse) !== -1) return klasse
+        if (klasse === '11' || klasse === '12') {
+          if (kursart === 'gk') return '11GK'
+          if (kursart === 'lk') return '11LK'
+          return null
+        }
+        return null
+      }
+      return null
+    }
+
+    // Returns lower-class prerequisite references as [schoolType, classKey] pairs.
+    function schulliaLowerClassRefs(schulart, klasse, zweig) {
+      var refs = []
+      var n = Number.parseInt(klasse, 10)
+      if (schulart === 'oberschule') {
+        if (n >= 6) refs.push(['oberschule', '5'])
+        if (n >= 7) refs.push(['oberschule', '6'])
+        var z = (klasse === '10') ? 'RS' : (zweig === 'hs' ? 'HS' : 'RS')
+        for (var g = 7; g < n; g++) refs.push(['oberschule', String(g) + z])
+      } else if (schulart === 'bgy') {
+        Object.keys(schulliaSchoolThemes('oberschule')).forEach(function (ck) {
+          refs.push(['oberschule', ck])
+        })
+        if (klasse === '12') refs.push(['bgy', '11'])
+      } else if (schulart === 'gymnasium') {
+        for (var gy = 5; gy < n && gy <= 10; gy++) refs.push(['gymnasium', String(gy)])
+      }
+      return refs
+    }
+
+    function schulliaCurriculumUniverse() {
+      if (window.__schulliaCurriculumUniverse) return window.__schulliaCurriculumUniverse
+      var set = new Set()
+      var allThemes = SCHULLIA_SACHSEN.themes || {}
+      Object.keys(allThemes).forEach(function (schoolType) {
+        var classes = allThemes[schoolType]
+        Object.keys(classes).forEach(function (classKey) {
+          var lbs = classes[classKey]
+          Object.keys(lbs).forEach(function (lbKey) {
+            lbs[lbKey].forEach(function (theme) { set.add(normalizeText(theme)) })
+          })
+        })
+      })
+      window.__schulliaCurriculumUniverse = set
+      return set
     }
 
     function schulliaCheckedLbNumbers() {
@@ -115,22 +132,34 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
       return Array.from(checks).map(function (cb) { return String(cb.value) })
     }
 
+    function schulliaSelectedRadioValue(name) {
+      var checked = document.querySelector('input[name="' + name + '"]:checked')
+      return checked ? String(checked.value) : ''
+    }
+
     function computeCurriculumAllowedSet() {
       var bundeslandEl = document.getElementById('courseBundeslandSelect')
-      var klasseEl = document.getElementById('courseKlasseSelect')
       var bundesland = bundeslandEl ? String(bundeslandEl.value || '') : ''
       if (bundesland !== 'sachsen') return null
+      var schulartEl = document.getElementById('courseSchulartSelect')
+      var schulart = schulartEl ? String(schulartEl.value || '') : ''
+      if (!schulart) return null
+      var klasseEl = document.getElementById('courseKlasseSelect')
       var klasse = klasseEl ? String(klasseEl.value || '') : ''
       if (!klasse) return null
+      var zweig = schulliaSelectedRadioValue('courseZweig')
+      var kursart = schulliaSelectedRadioValue('courseKursart')
+      var classKey = schulliaResolveClassKey(schulart, klasse, zweig, kursart)
+      if (!classKey) return null
 
       var allowed = new Set()
-      schulliaLowerClasses(klasse).forEach(function (lowerKlasse) {
-        schulliaThemesForClass(lowerKlasse).forEach(function (theme) {
+      schulliaLowerClassRefs(schulart, klasse, zweig).forEach(function (ref) {
+        schulliaThemesForClassKey(ref[0], ref[1]).forEach(function (theme) {
           allowed.add(normalizeText(theme))
         })
       })
       schulliaCheckedLbNumbers().forEach(function (lbNumber) {
-        schulliaThemesForClassLb(klasse, lbNumber).forEach(function (theme) {
+        schulliaThemesForClassKeyLb(schulart, classKey, lbNumber).forEach(function (theme) {
           allowed.add(normalizeText(theme))
         })
       })
@@ -1336,19 +1365,27 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
           '<option value="sachsen" selected>Sachsen</option>' +
           '<option value="anderes">anderes Bundesland</option>' +
           '</select>' +
+          '<div id="courseSchulartWrap" class="schullia-course-conditional">' +
+          '<label for="courseSchulartSelect">Schulart:</label>' +
+          '<select id="courseSchulartSelect" class="form-select" aria-label="Schulart">' +
+          '<option value="" selected>Schulart w\u00e4hlen</option>' +
+          '<option value="gymnasium">Gymnasium</option>' +
+          '<option value="bgy">Berufliches Gymnasium</option>' +
+          '<option value="oberschule">Oberschule</option>' +
+          '</select>' +
+          '</div>' +
           '<div id="courseKlasseWrap" class="schullia-course-conditional">' +
           '<label for="courseKlasseSelect">Zielklasse:</label>' +
           '<select id="courseKlasseSelect" class="form-select" aria-label="Zielklasse">' +
           '<option value="" selected>Klasse w\u00e4hlen</option>' +
-          '<option value="5">Klasse 5</option>' +
-          '<option value="6">Klasse 6</option>' +
-          '<option value="7">Klasse 7</option>' +
-          '<option value="8">Klasse 8</option>' +
-          '<option value="9">Klasse 9</option>' +
-          '<option value="10">Klasse 10</option>' +
-          '<option value="11">Klasse 11</option>' +
-          '<option value="12">Klasse 12</option>' +
           '</select>' +
+          '</div>' +
+          '<div id="courseZweigWrap" class="schullia-course-conditional">' +
+          '<label>Schulzweig:</label>' +
+          '<div id="courseZweigGroup" class="schullia-course-radio-row" role="radiogroup" aria-label="Schulzweig">' +
+          '<label class="schullia-course-radio"><input type="radio" name="courseZweig" value="hs" /> HS</label>' +
+          '<label class="schullia-course-radio"><input type="radio" name="courseZweig" value="rs" /> RS</label>' +
+          '</div>' +
           '</div>' +
           '<div id="courseKursartWrap" class="schullia-course-conditional">' +
           '<label>Kursart:</label>' +
@@ -1407,23 +1444,33 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
       }
 
       const bundeslandSelect = document.getElementById('courseBundeslandSelect')
+      const schulartSelect = document.getElementById('courseSchulartSelect')
+      const schulartWrap = document.getElementById('courseSchulartWrap')
       const klasseSelect = document.getElementById('courseKlasseSelect')
       const klasseWrap = document.getElementById('courseKlasseWrap')
+      const zweigWrap = document.getElementById('courseZweigWrap')
       const kursartWrap = document.getElementById('courseKursartWrap')
       const lbWrap = document.getElementById('courseLbWrap')
       const lbGroup = document.getElementById('courseLbGroup')
 
-      function getLbCountForClass(klasse, kursart) {
-        const lbBaseCounts = { '5': 5, '6': 5, '7': 4, '8': 5, '9': 5, '10': 5 }
-        if (Object.prototype.hasOwnProperty.call(lbBaseCounts, klasse)) {
-          return lbBaseCounts[klasse]
-        }
-        if (klasse === '11' || klasse === '12') {
-          if (kursart === 'lk') return 9
-          if (kursart === 'gk') return 8
-          return 0
-        }
-        return 0
+      const SCHULART_KLASSEN = {
+        gymnasium: ['5', '6', '7', '8', '9', '10', '11', '12'],
+        bgy: ['11', '12'],
+        oberschule: ['5', '6', '7', '8', '9', '10']
+      }
+
+      function rebuildKlasseOptions(schulart) {
+        if (!klasseSelect) return
+        const opts = SCHULART_KLASSEN[schulart] || []
+        const prev = String(klasseSelect.value || '')
+        klasseSelect.innerHTML = '<option value="" selected>Klasse w\u00e4hlen</option>'
+        opts.forEach(function (k) {
+          const option = document.createElement('option')
+          option.value = k
+          option.textContent = 'Klasse ' + k
+          klasseSelect.appendChild(option)
+        })
+        if (opts.indexOf(prev) !== -1) klasseSelect.value = prev
       }
 
       function getSelectedKursart() {
@@ -1431,10 +1478,31 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
         return checked ? String(checked.value) : ''
       }
 
-      function renderLbCheckboxes(count) {
+      function getSelectedZweig() {
+        const checked = document.querySelector('input[name="courseZweig"]:checked')
+        return checked ? String(checked.value) : ''
+      }
+
+      function hideAllLbTooltips() {
+        var tips = document.querySelectorAll('#courseLbGroup .schullia-lb-tooltip')
+        Array.prototype.forEach.call(tips, function (t) {
+          t.classList.remove('is-visible')
+          t.dataset.pinned = ''
+        })
+      }
+
+      if (!window.__schulliaLbTooltipDocBound) {
+        document.addEventListener('click', hideAllLbTooltips)
+        window.__schulliaLbTooltipDocBound = true
+      }
+
+      function renderLbCheckboxes(count, schoolType, classKey) {
         if (!lbGroup) return
         lbGroup.innerHTML = ''
         for (let i = 1; i <= count; i++) {
+          const wrap = document.createElement('span')
+          wrap.className = 'schullia-course-lb-wrap'
+
           const item = document.createElement('label')
           item.className = 'schullia-course-lb-item'
           const checkbox = document.createElement('input')
@@ -1443,23 +1511,74 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
           checkbox.name = 'courseLb'
           item.appendChild(checkbox)
           item.appendChild(document.createTextNode(' LB ' + i))
-          lbGroup.appendChild(item)
+          wrap.appendChild(item)
+
+          const title = (schoolType && classKey) ? schulliaLbTitle(schoolType, classKey, i) : ''
+          if (title) {
+            const info = document.createElement('button')
+            info.type = 'button'
+            info.className = 'schullia-lb-info'
+            info.setAttribute('aria-label', 'Info zu Lernbereich ' + i)
+            info.textContent = 'i'
+            wrap.appendChild(info)
+
+            const tip = document.createElement('span')
+            tip.className = 'schullia-lb-tooltip'
+            tip.setAttribute('role', 'tooltip')
+            tip.textContent = 'Lernbereich ' + i + ': ' + title
+            wrap.appendChild(tip)
+
+            info.addEventListener('mouseenter', function () {
+              tip.classList.add('is-visible')
+            })
+            info.addEventListener('mouseleave', function () {
+              if (tip.dataset.pinned !== '1') tip.classList.remove('is-visible')
+            })
+            info.addEventListener('click', function (event) {
+              event.preventDefault()
+              event.stopPropagation()
+              const wasPinned = tip.dataset.pinned === '1'
+              hideAllLbTooltips()
+              if (!wasPinned) {
+                tip.dataset.pinned = '1'
+                tip.classList.add('is-visible')
+              }
+            })
+          }
+
+          lbGroup.appendChild(wrap)
         }
       }
 
       function updateCourseCascade() {
         const bundesland = bundeslandSelect ? String(bundeslandSelect.value || '') : ''
         const isSachsen = bundesland === 'sachsen'
-        const klasse = klasseSelect ? String(klasseSelect.value || '') : ''
-        const needsKursart = isSachsen && (klasse === '11' || klasse === '12')
-        const kursart = getSelectedKursart()
+        const schulart = schulartSelect ? String(schulartSelect.value || '') : ''
 
-        if (klasseWrap) klasseWrap.style.display = isSachsen ? 'grid' : 'none'
+        if (schulartWrap) schulartWrap.style.display = isSachsen ? 'grid' : 'none'
+
+        if (isSachsen && schulart && schulartSelect && schulartSelect.dataset.lastSchulart !== schulart) {
+          rebuildKlasseOptions(schulart)
+          schulartSelect.dataset.lastSchulart = schulart
+        }
+
+        const klasse = klasseSelect ? String(klasseSelect.value || '') : ''
+        const showKlasse = isSachsen && !!schulart
+        if (klasseWrap) klasseWrap.style.display = showKlasse ? 'grid' : 'none'
+
+        const isOberschule = schulart === 'oberschule'
+        const needsZweig = isSachsen && isOberschule && (klasse === '7' || klasse === '8' || klasse === '9')
+        if (zweigWrap) zweigWrap.style.display = needsZweig ? 'grid' : 'none'
+
+        const needsKursart = isSachsen && (schulart === 'gymnasium' || schulart === 'bgy') && (klasse === '11' || klasse === '12')
         if (kursartWrap) kursartWrap.style.display = needsKursart ? 'grid' : 'none'
 
-        const lbCount = isSachsen ? getLbCountForClass(klasse, kursart) : 0
+        const zweig = getSelectedZweig()
+        const kursart = getSelectedKursart()
+        const classKey = (isSachsen && schulart) ? schulliaResolveClassKey(schulart, klasse, zweig, kursart) : null
+        const lbCount = classKey ? schulliaLbCount(schulart, classKey) : 0
         if (lbCount > 0) {
-          renderLbCheckboxes(lbCount)
+          renderLbCheckboxes(lbCount, schulart, classKey)
           if (lbWrap) lbWrap.style.display = 'grid'
         } else {
           if (lbGroup) lbGroup.innerHTML = ''
@@ -1473,9 +1592,18 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
         bundeslandSelect.addEventListener('change', updateCourseCascade)
         bundeslandSelect.dataset.bound = '1'
       }
+      if (schulartSelect && !schulartSelect.dataset.bound) {
+        schulartSelect.addEventListener('change', updateCourseCascade)
+        schulartSelect.dataset.bound = '1'
+      }
       if (klasseSelect && !klasseSelect.dataset.bound) {
         klasseSelect.addEventListener('change', updateCourseCascade)
         klasseSelect.dataset.bound = '1'
+      }
+      const zweigGroup = document.getElementById('courseZweigGroup')
+      if (zweigGroup && !zweigGroup.dataset.bound) {
+        zweigGroup.addEventListener('change', updateCourseCascade)
+        zweigGroup.dataset.bound = '1'
       }
       const kursartGroup = document.getElementById('courseKursartGroup')
       if (kursartGroup && !kursartGroup.dataset.bound) {
@@ -1809,6 +1937,8 @@ const NAVBAR_FIX_STYLE = `<!-- SCHULLIA_NAVBAR_FIX_STYLE_START -->
 
   .schullia-course-modal {
     width: min(520px, 94vw);
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
     background: rgba(0, 0, 0, 0.9);
     color: #eefcfc;
     border: 1px solid rgba(133, 243, 243, 0.35);
@@ -1893,10 +2023,75 @@ const NAVBAR_FIX_STYLE = `<!-- SCHULLIA_NAVBAR_FIX_STYLE_START -->
     cursor: pointer;
   }
 
-  .schullia-course-close {
+  .schullia-course-lb-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.28rem;
+  }
+
+  .schullia-lb-info {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.05rem;
+    height: 1.05rem;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #2bd4d4;
+    color: #06363a;
+    font-size: 0.72rem;
+    font-weight: 800;
+    font-style: italic;
+    line-height: 1;
+    cursor: pointer;
+    flex: 0 0 auto;
+  }
+
+  .schullia-lb-info:hover,
+  .schullia-lb-info:focus {
+    background: #5ce8e8;
+    outline: none;
+  }
+
+  .schullia-lb-tooltip {
     position: absolute;
-    top: 0.45rem;
-    right: 0.6rem;
+    left: 0;
+    bottom: calc(100% + 0.4rem);
+    z-index: 20;
+    min-width: 11rem;
+    max-width: 16rem;
+    padding: 0.45rem 0.6rem;
+    border-radius: 8px;
+    background: rgba(8, 40, 44, 0.97);
+    border: 1px solid rgba(133, 243, 243, 0.5);
+    color: #eefcfc;
+    font-size: 0.82rem;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 1.25;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(4px);
+    transition: opacity 0.12s ease, transform 0.12s ease;
+    pointer-events: none;
+    white-space: normal;
+  }
+
+  .schullia-lb-tooltip.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .schullia-course-close {
+    position: sticky;
+    top: 0;
+    justify-self: end;
+    margin-bottom: -2.2rem;
+    z-index: 5;
     border: none;
     background: transparent;
     color: #d6f8f8;
@@ -2435,43 +2630,79 @@ function patchIndexHtml(html, targetParts) {
   return html
 }
 
+// Resolve a class label like "5", "7 HS", "10 RS", "12/13 GK", "11/12 LK"
+// into a normalized curriculum class key ("5", "7HS", "10RS", "12GK", "11GK").
+function resolveLehrplanClassKey(cell) {
+  const c = String(cell || '').trim()
+  let m = c.match(/(\d+)\s*HS/i)
+  if (m) return m[1] + 'HS'
+  m = c.match(/(\d+)\s*RS/i)
+  if (m) return m[1] + 'RS'
+  const gradeMatch = c.match(/(\d+)/)
+  if (!gradeMatch) return null
+  if (/GK/i.test(c)) return gradeMatch[1] + 'GK'
+  if (/LK/i.test(c)) return gradeMatch[1] + 'LK'
+  return gradeMatch[1]
+}
+
 // Parse Lehrplan.md at build time so the embedded curriculum stays in sync.
+// Produces a structure keyed by school type:
+//   { themes: { oberschule|bgy|gymnasium: { classKey: { lbKey: [themes] } } },
+//     lbCount: { oberschule|bgy|gymnasium: { classKey: maxLbNumber } } }
 function buildSachsenCurriculum() {
   try {
     const lehrplanPath = path.join(__dirname, 'Lehrplan.md')
     if (!fs.existsSync(lehrplanPath)) return null
     const md = fs.readFileSync(lehrplanPath, 'utf8')
-    const data = {}
-    md.split(/\r?\n/).forEach(function (line) {
-      const trimmed = line.trim()
+    const themes = {}
+    const lbCount = {}
+    const lbTitles = {}
+    let currentSchool = null
+    md.split(/\r?\n/).forEach(function (rawLine) {
+      const trimmed = rawLine.trim()
+      const headerMatch = trimmed.match(/^#{1,6}\s+(.*)$/)
+      if (headerMatch) {
+        const title = headerMatch[1].toLowerCase()
+        if (title.indexOf('berufliches gymnasium') !== -1) currentSchool = 'bgy'
+        else if (title.indexOf('oberschule') !== -1) currentSchool = 'oberschule'
+        else if (title.indexOf('gymnasium') !== -1) currentSchool = 'gymnasium'
+        return
+      }
       if (trimmed.indexOf('|') !== 0) return
+      if (!currentSchool) return
       const cells = trimmed.split('|').slice(1, -1).map(function (c) { return c.trim() })
       if (cells.length < 3) return
       const klasseCell = cells[0]
       const lbCell = cells[1]
       const themenCell = cells[2]
-      if (/Klasse\s*\/\s*Jahrgang/i.test(klasseCell)) return
+      if (/Klasse\s*\/\s*Jahrgang|Klassenstufe/i.test(klasseCell)) return
       if (/^-+$/.test(klasseCell.replace(/[\s|]/g, ''))) return
-      const gradeMatch = klasseCell.match(/(\d+)(?:\s*\/\s*(\d+))?/)
-      if (!gradeMatch) return
-      const grades = [gradeMatch[1]]
-      if (gradeMatch[2]) grades.push(gradeMatch[2])
-      let lbMatch = lbCell.match(/LB\s*(\d+)(?:\s*\/\s*(\d+))?/i)
-      if (!lbMatch) lbMatch = klasseCell.match(/LB\s*(\d+)(?:\s*\/\s*(\d+))?/i)
-      const themes = themenCell.split(',').map(function (t) { return t.trim().toLowerCase() }).filter(Boolean)
-      if (!themes.length) return
-      grades.forEach(function (g) {
-        if (!data[g]) data[g] = {}
-        if (lbMatch) {
-          const keys = [lbMatch[1]]
-          if (lbMatch[2]) keys.push(lbMatch[2])
-          keys.forEach(function (k) { data[g][k] = (data[g][k] || []).concat(themes) })
-        } else {
-          data[g]['extra'] = (data[g]['extra'] || []).concat(themes)
+      const classKey = resolveLehrplanClassKey(klasseCell)
+      if (!classKey) return
+      const themeList = themenCell.split(',').map(function (t) { return t.trim().toLowerCase() }).filter(Boolean)
+      if (!themes[currentSchool]) themes[currentSchool] = {}
+      if (!lbCount[currentSchool]) lbCount[currentSchool] = {}
+      if (!lbTitles[currentSchool]) lbTitles[currentSchool] = {}
+      if (!themes[currentSchool][classKey]) themes[currentSchool][classKey] = {}
+      if (!lbTitles[currentSchool][classKey]) lbTitles[currentSchool][classKey] = {}
+      const lbMatch = lbCell.match(/LB\s*(\d+)/i)
+      if (lbMatch) {
+        const lbNum = parseInt(lbMatch[1], 10)
+        lbCount[currentSchool][classKey] = Math.max(lbCount[currentSchool][classKey] || 0, lbNum)
+        const titleMatch = lbCell.match(/LB\s*\d+\s*:\s*(.+)$/i)
+        if (titleMatch) {
+          lbTitles[currentSchool][classKey][String(lbNum)] = titleMatch[1].trim()
         }
-      })
+        if (themeList.length) {
+          const key = String(lbNum)
+          themes[currentSchool][classKey][key] = (themes[currentSchool][classKey][key] || []).concat(themeList)
+        }
+      } else if (themeList.length) {
+        themes[currentSchool][classKey]['extra'] = (themes[currentSchool][classKey]['extra'] || []).concat(themeList)
+      }
     })
-    return Object.keys(data).length ? data : null
+    if (!Object.keys(themes).length) return null
+    return { themes: themes, lbCount: lbCount, lbTitles: lbTitles }
   } catch (error) {
     return null
   }
