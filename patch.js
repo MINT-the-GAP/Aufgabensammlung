@@ -1491,6 +1491,22 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
         })
       }
 
+      function positionLbTooltip(tip) {
+        var modal = document.querySelector('.schullia-course-modal')
+        if (!modal) return
+        tip.style.left = '0px'
+        tip.style.right = 'auto'
+        var tipRect = tip.getBoundingClientRect()
+        var modalRect = modal.getBoundingClientRect()
+        var margin = 8
+        var rightEdge = modalRect.right - margin
+        var leftEdge = modalRect.left + margin
+        var shift = 0
+        if (tipRect.right > rightEdge) shift = tipRect.right - rightEdge
+        if (tipRect.left - shift < leftEdge) shift = tipRect.left - leftEdge
+        if (shift !== 0) tip.style.left = (-shift) + 'px'
+      }
+
       if (!window.__schulliaLbTooltipDocBound) {
         document.addEventListener('click', hideAllLbTooltips)
         window.__schulliaLbTooltipDocBound = true
@@ -1529,6 +1545,7 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
             wrap.appendChild(tip)
 
             info.addEventListener('mouseenter', function () {
+              positionLbTooltip(tip)
               tip.classList.add('is-visible')
             })
             info.addEventListener('mouseleave', function () {
@@ -1541,6 +1558,7 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
               hideAllLbTooltips()
               if (!wasPinned) {
                 tip.dataset.pinned = '1'
+                positionLbTooltip(tip)
                 tip.classList.add('is-visible')
               }
             })
@@ -1936,9 +1954,10 @@ const NAVBAR_FIX_STYLE = `<!-- SCHULLIA_NAVBAR_FIX_STYLE_START -->
   }
 
   .schullia-course-modal {
-    width: min(520px, 94vw);
+    width: min(560px, 94vw);
     max-height: calc(100vh - 2rem);
     overflow-y: auto;
+    overflow-x: hidden;
     background: rgba(0, 0, 0, 0.9);
     color: #eefcfc;
     border: 1px solid rgba(133, 243, 243, 0.35);
