@@ -2658,8 +2658,8 @@ const SECTION_META_STYLE = `${SECTION_META_STYLE_START}
   .album .card > .card-header h4 .schullia-section-meta {
     display: block;
     margin-top: 0.15rem;
-    font-size: 6pt;
-    font-weight: 400;
+    font-size: 10pt;
+    font-weight: 700;
     line-height: 1.2;
     letter-spacing: 0;
     opacity: 0.72;
