@@ -42,6 +42,11 @@ base:   https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/hea
 <div class="flex-child">
 $a)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $1205 \cdot 24=$[[ 28920 ]]
 ****************
 $$
@@ -60,6 +65,11 @@ $$
 <div class="flex-child">
 $b)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $2347 \cdot 15=$[[ 35205 ]]
 ****************
 $$
@@ -78,6 +88,11 @@ $$
 <div class="flex-child">
 $c)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $4096 \cdot 12=$[[ 49152 ]]
 ****************
 $$
@@ -96,6 +111,11 @@ $$
 <div class="flex-child">
 $d)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $3750 \cdot 18=$[[ 67500 ]]
 ****************
 $$
@@ -114,6 +134,11 @@ $$
 <div class="flex-child">
 $e)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $2814 \cdot 27=$[[ 75978 ]]
 ****************
 $$
@@ -132,6 +157,11 @@ $$
 <div class="flex-child">
 $f)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $6408 \cdot 14=$[[ 89712 ]]
 ****************
 $$
@@ -150,6 +180,11 @@ $$
 <div class="flex-child">
 $g)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $9025 \cdot 16=$[[ 144400 ]]
 ****************
 $$
@@ -168,6 +203,11 @@ $$
 <div class="flex-child">
 $h)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $7312 \cdot 19=$[[ 138928 ]]
 ****************
 $$

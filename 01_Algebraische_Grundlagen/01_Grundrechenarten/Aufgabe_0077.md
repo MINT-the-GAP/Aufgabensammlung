@@ -42,6 +42,11 @@ base:   https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/hea
 <div class="flex-child">
 $a)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $842 \cdot 915=$[[ 770430 ]]
 ****************
 $$
@@ -61,6 +66,11 @@ $$
 <div class="flex-child">
 $b)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $937 \cdot 826=$[[ 773962 ]]
 ****************
 $$
@@ -80,6 +90,11 @@ $$
 <div class="flex-child">
 $c)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $764 \cdot 893=$[[ 682252 ]]
 ****************
 $$
@@ -99,6 +114,11 @@ $$
 <div class="flex-child">
 $d)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $658 \cdot 947=$[[ 623126 ]]
 ****************
 $$
@@ -118,6 +138,11 @@ $$
 <div class="flex-child">
 $e)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $879 \cdot 968=$[[ 850872 ]]
 ****************
 $$
@@ -137,6 +162,11 @@ $$
 <div class="flex-child">
 $f)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $986 \cdot 754=$[[ 743444 ]]
 ****************
 $$
@@ -156,6 +186,11 @@ $$
 <div class="flex-child">
 $g)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $999 \cdot 888=$[[ 887112 ]]
 ****************
 $$
@@ -175,6 +210,11 @@ $$
 <div class="flex-child">
 $h)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $735 \cdot 924=$[[ 679140 ]]
 ****************
 $$

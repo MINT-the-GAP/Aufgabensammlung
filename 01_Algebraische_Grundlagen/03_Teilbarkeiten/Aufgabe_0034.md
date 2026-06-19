@@ -55,29 +55,57 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$a)\;\;$__ $z= 20355726$ \
 $Q(z) =$ [[ 30 ]] @canvas
 
+@ADetails(1=BE; Quersumme)
+
 </div>
 <div class="flex-child">
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$b)\;\;$__ $z=  94101501$ \
 $Q(z) =$ [[ 21 ]] @canvas
 
+@ADetails(1=BE; Quersumme)
+
 </div>
 <div class="flex-child">
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$c)\;\;$__ $z=  34620512$\
 $Q(z) =$ [[ 23 ]] @canvas
 
+@ADetails(1=BE; Quersumme)
+
 </div>
 <div class="flex-child">
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$d)\;\;$__ $z=  23500325$\
 $Q(z) =$ [[ 20 ]] @canvas
+
+@ADetails(1=BE; Quersumme)
 
 </div>
 </section>

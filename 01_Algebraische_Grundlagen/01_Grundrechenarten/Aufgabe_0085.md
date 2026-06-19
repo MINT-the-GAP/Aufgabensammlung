@@ -43,74 +43,104 @@ base:   https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/hea
 
 $a)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $30 \cdot 5 =$ [[ 150 ]] @canvas \
 $3 \cdot 50 =$ [[ 150 ]] @canvas \
 $3 \cdot 5 \cdot 10 =$ [[ 150 ]] @canvas
 
-@ADetails(1=BE;Multiplikation, Grundrechenarten)
+@ADetails(1=BE;Multiplikation, Grundrechenarten, Zahlenverständnis)
 </div>
 
 <div class="flex-child">
 
 $b)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $60 \cdot 90 =$ [[ 5400 ]] @canvas \
 $6 \cdot 900 =$ [[ 5400 ]] @canvas \
 $600 \cdot 9 =$ [[ 5400 ]] @canvas \
 $6 \cdot 9 \cdot 100 =$ [[ 5400 ]] @canvas
 
-@ADetails(1=BE;Multiplikation, Grundrechenarten)
+@ADetails(1=BE;Multiplikation, Grundrechenarten, Zahlenverständnis)
 </div>
 
 <div class="flex-child">
 
 $c)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $120 \cdot 400 =$ [[ 48000 ]] @canvas \
 $12 \cdot 4000 =$ [[ 48000 ]] @canvas \
 $12000 \cdot 4 =$ [[ 48000 ]] @canvas \
 $12 \cdot 4 \cdot 1000 =$ [[ 48000 ]] @canvas
 
-@ADetails(1=BE;Multiplikation, Grundrechenarten)
+@ADetails(1=BE;Multiplikation, Grundrechenarten, Zahlenverständnis)
 </div>
 
 <div class="flex-child">
 
 $d)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $300 \cdot 700 =$ [[ 210000 ]] @canvas \
 $30000 \cdot 7 =$ [[ 210000 ]] @canvas \
 $3 \cdot 70000 =$ [[ 210000 ]] @canvas \
 $30 \cdot 7000 =$ [[ 210000 ]] @canvas \
 $3 \cdot 7 \cdot 10000 =$ [[ 210000 ]] @canvas
 
-@ADetails(1=BE;Multiplikation, Grundrechenarten)
+@ADetails(1=BE;Multiplikation, Grundrechenarten, Zahlenverständnis)
 </div>
 
 <div class="flex-child">
 
 $e)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $5000 \cdot 600 =$ [[ 3000000 ]] @canvas \
 $50000 \cdot 60 =$ [[ 3000000 ]] @canvas \
 $500 \cdot 6000 =$ [[ 3000000 ]] @canvas \
 $5 \cdot 600000 =$ [[ 3000000 ]] @canvas \
 $5 \cdot 6 \cdot 100000 =$ [[ 3000000 ]] @canvas
 
-@ADetails(1=BE;Multiplikation, Grundrechenarten)
+@ADetails(1=BE;Multiplikation, Grundrechenarten, Zahlenverständnis)
 </div>
 
 <div class="flex-child">
 
 $f)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $8000 \cdot 9000 =$ [[ 72000000 ]] @canvas \
 $800 \cdot 90000 =$ [[ 72000000 ]] @canvas \
 $80 \cdot 900000 =$ [[ 72000000 ]] @canvas \
 $8 \cdot 9000000 =$ [[ 72000000 ]] @canvas \
 $8 \cdot 9 \cdot 1000000 =$ [[ 72000000 ]] @canvas
 
-@ADetails(1=BE;Multiplikation, Grundrechenarten)
+@ADetails(1=BE;Multiplikation, Grundrechenarten, Zahlenverständnis)
 </div>
 
 </section>

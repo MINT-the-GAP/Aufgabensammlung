@@ -56,6 +56,11 @@ base:   https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/hea
 <div class="flex-child">
 $a)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $9625 - 3814=$[[ 5811 ]]
 ****************
 $$
@@ -74,6 +79,11 @@ $$
 <div class="flex-child">
 $b)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $8742 - 5296=$[[ 3446 ]]
 ****************
 $$
@@ -92,6 +102,11 @@ $$
 <div class="flex-child">
 $c)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $6804 - 3597=$[[ 3207 ]]
 ****************
 $$
@@ -110,6 +125,11 @@ $$
 <div class="flex-child">
 $d)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $5917 - 2834=$[[ 3083 ]]
 ****************
 $$
@@ -128,6 +148,11 @@ $$
 <div class="flex-child">
 $e)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $8421 - 5796=$[[ 2625 ]]
 ****************
 $$
@@ -146,6 +171,11 @@ $$
 <div class="flex-child">
 $f)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $7250 - 4189=$[[ 3061 ]]
 ****************
 $$
@@ -164,6 +194,11 @@ $$
 <div class="flex-child">
 $g)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $6398 - 2547=$[[ 3851 ]]
 ****************
 $$
@@ -182,6 +217,11 @@ $$
 <div class="flex-child">
 $h)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $9573 - 6842=$[[ 2731 ]]
 ****************
 $$
@@ -200,6 +240,11 @@ $$
 <div class="flex-child">
 $i)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $9040 - 5768=$[[ 3272 ]]
 ****************
 $$

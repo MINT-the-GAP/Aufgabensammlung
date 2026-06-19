@@ -57,6 +57,11 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ 976416
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 - [[X]] 2
 - [[X]] 3
 - [[X]] 4
@@ -67,12 +72,19 @@ __$a)\;\;$__ 976416
 - [[ ]] 9
 - [[ ]] 10
 
+@ADetails(1=BE; Teiler)
+
 </div>
 
 <div class="flex-child">
 
 __$b)\;\;$__ 964350
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 - [[X]] 2
 - [[X]] 3
 - [[ ]] 4
@@ -83,12 +95,19 @@ __$b)\;\;$__ 964350
 - [[X]] 9
 - [[X]] 10
 
+@ADetails(1=BE; Teiler)
+
 </div>
 
 <div class="flex-child">
 
 __$c)\;\;$__ 946137
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 - [[ ]] 2
 - [[X]] 3
 - [[ ]] 4
@@ -99,12 +118,19 @@ __$c)\;\;$__ 946137
 - [[ ]] 9
 - [[ ]] 10
 
+@ADetails(1=BE; Teiler)
+
 </div>
 
 <div class="flex-child">
 
 __$d)\;\;$__ 139175
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 - [[ ]] 2
 - [[ ]] 3
 - [[ ]] 4
@@ -115,12 +141,19 @@ __$d)\;\;$__ 139175
 - [[ ]] 9
 - [[ ]] 10
 
+@ADetails(1=BE; Teiler)
+
 </div>
 
 <div class="flex-child">
 
 __$e)\;\;$__ 600347
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 - [[ ]] 2
 - [[ ]] 3
 - [[ ]] 4
@@ -131,12 +164,19 @@ __$e)\;\;$__ 600347
 - [[ ]] 9
 - [[ ]] 10
 
+@ADetails(1=BE; Teiler)
+
 </div>
 
 <div class="flex-child">
 
 __$f)\;\;$__ 102431
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 - [[ ]] 2
 - [[ ]] 3
 - [[ ]] 4
@@ -147,12 +187,19 @@ __$f)\;\;$__ 102431
 - [[ ]] 9
 - [[ ]] 10
 
+@ADetails(1=BE; Teiler)
+
 </div>
 
 <div class="flex-child">
 
 __$g)\;\;$__ 657328
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 - [[X]] 2
 - [[ ]] 3
 - [[X]] 4
@@ -163,12 +210,19 @@ __$g)\;\;$__ 657328
 - [[ ]] 9
 - [[ ]] 10
 
+@ADetails(1=BE; Teiler)
+
 </div>
 
 <div class="flex-child">
 
 __$h)\;\;$__ 195460
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 - [[X]] 2
 - [[ ]] 3
 - [[X]] 4
@@ -179,12 +233,19 @@ __$h)\;\;$__ 195460
 - [[ ]] 9
 - [[X]] 10
 
+@ADetails(1=BE; Teiler)
+
 </div>
 
 <div class="flex-child">
 
 __$i)\;\;$__ 643076
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 - [[X]] 2
 - [[ ]] 3
 - [[X]] 4
@@ -194,6 +255,8 @@ __$i)\;\;$__ 643076
 - [[ ]] 8
 - [[ ]] 9
 - [[ ]] 10
+
+@ADetails(1=BE; Teiler)
 
 </div>
 </section>

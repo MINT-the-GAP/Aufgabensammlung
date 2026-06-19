@@ -54,27 +54,47 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$a)\;\;$__ $ \textcolor{red}{5} - 3 = 2$ \
 [[    Minuend         ]] @canvas
 
+@ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$b)\;\;$__ $ \textcolor{red}{7 \cdot 3} = 21 $ \
 [[    Produkt         ]] @canvas
 
+@ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$c)\;\;$__ $ 45:9=\textcolor{red}{5}$ \
 [[ Wert des Quotienten ]] @canvas
 
+@ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$d)\;\;$__ $ \textcolor{red}{15}+12 = 27$ \
 [[      Summand       ]] @canvas
 
+@ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
 </section>
 

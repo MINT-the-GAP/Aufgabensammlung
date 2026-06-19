@@ -54,18 +54,33 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$a)\;\;$__ $97$ [[$+$|($-$)|$\cdot$|$:$]] $4$ [[$+$|$-$|($\cdot$)|$:$]] $3$ [[$+$|$-$|($\cdot$)|$:$]] $6 = 25$
 
+@ADetails(BE=1;Operatoren, Vorrangsregeln)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$b)\;\;$__ $7$ [[($+$)|$-$|$\cdot$|$:$]] $6$ [[$+$|$-$|($\cdot$)|$:$]] $5$ [[($+$)|$-$|$\cdot$|$:$]] $4 = 41$
 
+@ADetails(BE=1;Operatoren, Vorrangsregeln)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$c)\;\;$__ $7$ [[$+$|$-$|($\cdot$)|$:$]] $5$ [[$+$|$-$|($\cdot$)|$:$]] $3$ [[$+$|$-$|$\cdot$|($:$)]] $105 = 1$
 
+@ADetails(BE=1;Operatoren, Vorrangsregeln)
 </div>
 </section>
 

@@ -54,27 +54,47 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$a)\;\;$__ $ \textcolor{red}{7} + 9 = 16$ \
 [[    Summand         ]] @canvas
 
+@ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$b)\;\;$__ $ \textcolor{red}{9}-7 = 2 $ \
 [[    Minuend         ]] @canvas
 
+@ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$c)\;\;$__ $ \textcolor{red}{55}:11 = 11$ \
 [[        Dividend     ]] @canvas
 
+@ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$d)\;\;$__ $ 16 = \textcolor{red}{2 \cdot 8}$ \
 [[          Produkt   ]] @canvas
 
+@ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
 </section>
 

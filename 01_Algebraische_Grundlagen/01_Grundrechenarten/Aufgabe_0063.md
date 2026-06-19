@@ -62,7 +62,12 @@ base:   https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/hea
 <div class="flex-child">
 $a)\;\;$
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $3821 + 1347=$[[  5168  ]] 
 ****************
 $$
@@ -82,7 +87,12 @@ $$
 <div class="flex-child">
 $b)\;\;$
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $5962 + 8912=$[[  14874  ]] 
 ****************
 $$
@@ -101,7 +111,12 @@ $$
 <div class="flex-child">
 $c)\;\;$
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $2512 + 3246=$[[  5758  ]] 
 ****************
 $$
@@ -120,7 +135,11 @@ $$
 <div class="flex-child">
 $d)\;\;$
 
-<!-- data-solution-button="5"-->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $2353 + 4636=$[[  6989  ]] 
 ****************
 $$
@@ -139,7 +158,12 @@ $$
 <div class="flex-child">
 $e)\;\;$
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $4462 + 9543=$[[  14005  ]] 
 ****************
 $$
@@ -158,7 +182,12 @@ $$
 <div class="flex-child">
 $f)\;\;$
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $4156 + 3737=$[[  7893  ]] 
 ****************
 $$
@@ -177,7 +206,12 @@ $$
 <div class="flex-child">
 $g)\;\;$
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $9948 + 5499=$[[  15447  ]] 
 ****************
 $$
@@ -196,7 +230,12 @@ $$
 <div class="flex-child">
 $h)\;\;$
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $4784 + 8377=$[[  13161  ]] 
 ****************
 $$
@@ -216,7 +255,12 @@ $$
 <div class="flex-child">
 $i)\;\;$
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $8437 + 4567=$[[  13004  ]] 
 ****************
 $$

@@ -54,26 +54,48 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" -->
 __$a)\;\;$__ Der Summand $14$ wird mit $19$ addiert.\
 [[  33  ]] @canvas
 
+
+@ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" -->
 __$b)\;\;$__ Die Zahl $17$ ist der Minuend, während die Zahl $11$ der Subtrahend ist.\
 [[  6   ]] @canvas
 
+@ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" -->
 __$c)\;\;$__ Der Quotient wird aus dem Dividend $84$ und dem Divisor $14$ gebildet.\
 [[  6   ]] @canvas
 
+@ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" -->
 __$d)\;\;$__ Der Term besteht aus den Faktoren $4$, $6$ und $3$.\
 [[  72  ]] @canvas
+
+@ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
 </section>
 

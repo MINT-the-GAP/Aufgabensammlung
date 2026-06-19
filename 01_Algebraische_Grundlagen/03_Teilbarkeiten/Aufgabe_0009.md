@@ -33,21 +33,6 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-@round
-<script>
-  let value = `@input`;
-  if (value.startsWith("@")) {
-    ""
-  } else {
-    value = JSON.parse(value);
-    value = value[0]
-    value = value.replace(/,/g, ".");
-    value = parseFloat(value);
-    value = Math.round(value * Math.pow(10,@1)) / Math.pow(10,@1);
-    value == @0
-  }
-</script>
-@end
 
 tags: ggT, mittel, sehr niedrig, Angeben
 
@@ -73,25 +58,49 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $a)\;\; \text{ggT}(35;105;115) =$ [[  5  ]] @canvas
 
+@ADetails(1=BE;größter gemeinsamer Teiler)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $b)\;\; \text{ggT}(20;64;96) =$ [[  4  ]] @canvas
 
+@ADetails(1=BE;größter gemeinsamer Teiler)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $c)\;\; \text{ggT}(36;83;144) =$ [[  1  ]] @canvas
 
+@ADetails(1=BE;größter gemeinsamer Teiler)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $d)\;\; \text{ggT}(48;144;176) =$ [[  16 ]] @canvas
+
+@ADetails(1=BE;größter gemeinsamer Teiler)
 
 </div> 
 

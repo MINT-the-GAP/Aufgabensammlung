@@ -54,37 +54,72 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$a)\;\;$__ \
 $\;\;\;\; 13 \cdot 5 + 14 $ \
 $=$ [[ 65 ]] @canvas $  + 14 $ \
 $=$ [[ 79 ]] @canvas 
 
+@ADetails(1=BE; Terme, Grundrechenarten)
+
 </div> 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$b)\;\;$__ \
 $\;\;\;\; 75 - 7 \cdot 5 + 23  $ \
 $=  75 - $ [[ 35 ]] @canvas $  + 23 $ \
 $=$ [[ 40 ]] @canvas  $  + 23 $ \
 $=$ [[ 63 ]] @canvas
 
+@ADetails(1=BE; Terme, Grundrechenarten)
+
 </div> 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$c)\;\;$__ \
 $\;\;\;\; 65 : 13 + 85 : 5   $ \
 $=$ $ 65 : 13 +$ [[ 17 ]] @canvas  \
 $=$ [[  5 ]] @canvas $+$ [[ 17 ]] @canvas  \
 $=$ [[ 22 ]] @canvas 
 
+@ADetails(1=BE; Terme, Grundrechenarten)
+
 </div> 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$d)\;\;$__ \
 $\;\;\;\; 9 \cdot 8 - 12 \cdot 4  $ \
 $=$ [[ 72 ]] @canvas $ - 12 \cdot 4  $ \
 $=$ [[ 72 ]] @canvas $-$ [[ 48 ]] @canvas \
 $=$ [[ 24 ]] @canvas 
+
+@ADetails(1=BE; Terme, Grundrechenarten)
 
 </div> 
 </section>

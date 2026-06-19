@@ -69,13 +69,32 @@ author: Martin Lommatzsch
 
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $a)\;\; \text{kgV}\left(\text{kgV}(6;7);\text{kgV}(3;5)\right)-\text{kgV}(18;16) =$ [[  66 ]] @canvas
 
 
+@ADetails(1=BE;kleinstes gemeinsames Vielfaches, größter gemeinsamer Teiler, Subtraktion)
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $b)\;\; \text{kgV}(17;19) - \text{ggT}\left(128;\text{ggT}(1024;256)\right) =$ [[ 195 ]] @canvas
 
 
+@ADetails(1=BE;kleinstes gemeinsames Vielfaches, größter gemeinsamer Teiler, Subtraktion)
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $c)\;\; \left(\text{kgV}(24;11) + \text{ggT}(83;91)\right) : \text{ggT}(105;215) =$ [[ 53 ]] @canvas
 
+@ADetails(1=BE;kleinstes gemeinsames Vielfaches, größter gemeinsamer Teiler, Grundrechenarten, Vorrangsregeln)

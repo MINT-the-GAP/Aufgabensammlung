@@ -56,29 +56,47 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ 6449
 
-<!-- data-type="none" -->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-type="none" -->
 |  Millionen  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
 | :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
-|   [[ 0 ]] @canvas   |       [[ 0 ]] @canvas      |       [[ 0 ]] @canvas     |    [[ 6 ]] @canvas   |   [[ 4 ]] @canvas  |  [[ 4 ]] @canvas  | [[ 9 ]] @canvas |
+|   [[ 0 ]]    |       [[ 0 ]]       |       [[ 0 ]]      |    [[ 6 ]]    |   [[ 4 ]]   |  [[ 4 ]]   | [[ 9 ]]  |
 
+@ADetails(BE=1;Zahlenverständnis)
 
 
 __$b)\;\;$__ 6459204
 
-<!-- data-type="none" -->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-type="none" -->
 |  Millionen  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
 | :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
-|   [[ 6 ]] @canvas   |       [[ 4 ]] @canvas      |       [[ 5 ]] @canvas     |    [[ 9 ]] @canvas   |   [[ 2 ]] @canvas  |  [[ 0 ]] @canvas  | [[ 4 ]] @canvas |
+|   [[ 6 ]]    |       [[ 4 ]]       |       [[ 5 ]]      |    [[ 9 ]]    |   [[ 2 ]]   |  [[ 0 ]]   | [[ 4 ]]  |
 
+@ADetails(BE=1;Zahlenverständnis)
 
 __$c)\;\;$__ 210079
 
-<!-- data-type="none" -->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-type="none" -->
 |  Millionen  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
 | :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
-|   [[ 0 ]] @canvas   |       [[ 2 ]] @canvas      |       [[ 1 ]] @canvas     |    [[ 0 ]] @canvas   |   [[ 0 ]] @canvas  |  [[ 7 ]] @canvas  | [[ 9 ]] @canvas |
+|   [[ 0 ]]    |       [[ 2 ]]       |       [[ 1 ]]      |    [[ 0 ]]    |   [[ 0 ]]   |  [[ 7 ]]   | [[ 9 ]]  |
 
 
+@ADetails(BE=1;Zahlenverständnis)
 
 
 

@@ -58,6 +58,12 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+style="max-width: 1200px" -->
 ``` ascii
                            +-----------------+
                            |                 |
@@ -78,11 +84,18 @@ __$a)\;\;$__
 +--------+--------+--------+--------+--------+--------+--------+--------+                                       
 ```
 
- 
- 
+
+
+@ADetails(BE=1;Grundrechenarten)
 
 __$b)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+style="max-width: 1200px" -->
 ``` ascii
                            +-----------------+
                            |                 |
@@ -103,6 +116,8 @@ __$b)\;\;$__
 +--------+--------+--------+--------+--------+--------+--------+--------+                                       
 ```
 
+
+@ADetails(BE=1;Grundrechenarten)
 
 
 

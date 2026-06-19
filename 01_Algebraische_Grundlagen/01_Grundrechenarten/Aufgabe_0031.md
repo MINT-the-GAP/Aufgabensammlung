@@ -54,27 +54,47 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$a)\;\;$__ $ \textcolor{red}{5} \cdot 3 = 15$ \
 [[    Faktor          ]] @canvas
 
+@ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$b)\;\;$__ $ \textcolor{red}{5 + 6} = 11 $ \
 [[    Summe           ]] @canvas
 
+@ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$c)\;\;$__ $ 85:\textcolor{red}{13} = 5$ \
 [[        Divisor    ]] @canvas
 
+@ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$d)\;\;$__ $ 27-12 = \textcolor{red}{15}$ \
 [[ Wert der Differenz ]] @canvas
 
+@ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
 </section>
 

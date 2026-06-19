@@ -54,17 +54,45 @@ author: Martin Lommatzsch
 
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $a)\;\; \text{kgV}(15;35):\text{ggT}(42;91) =$ [[  15 ]] @canvas
 
+@ADetails(1=BE;kleinstes gemeinsames Vielfaches, größter gemeinsamer Teiler, Division)
 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $b)\;\; \text{ggT}(72;132) \cdot \text{ggT}(105;45) =$ [[  60 ]] @canvas
 
+@ADetails(1=BE;kleinstes gemeinsames Vielfaches, größter gemeinsamer Teiler, Multiplikation)
 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $c)\;\; \text{kgV}\left(\text{ggT}(14;49);\text{ggT}(256;36)\right) =$ [[ 28  ]] @canvas
 
+@ADetails(1=BE;kleinstes gemeinsames Vielfaches, größter gemeinsamer Teiler)
 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $d)\;\; \text{ggT}\left(\text{kgV}(8;6);\text{kgV}(16;12)\right)  =$ [[ 12  ]] @canvas
+
+@ADetails(1=BE;kleinstes gemeinsames Vielfaches, größter gemeinsamer Teiler)
 

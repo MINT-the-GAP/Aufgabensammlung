@@ -58,37 +58,79 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $a)\;\; \text{kgV}(16;10) =$ [[ 80  ]] @canvas
 
+@ADetails(1=BE;kleinstes gemeinsames Vielfaches)
+
 </div>
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $b)\;\; \text{kgV}(12;7) =$ [[  84 ]] @canvas
 
+@ADetails(1=BE;kleinstes gemeinsames Vielfaches)
+
 </div>
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $c)\;\; \text{kgV}(6;8) =$ [[  24 ]] @canvas
 
+@ADetails(1=BE;kleinstes gemeinsames Vielfaches)
+
 </div>
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $d)\;\; \text{kgV}(15;12) =$ [[  60 ]] @canvas
 
+@ADetails(1=BE;kleinstes gemeinsames Vielfaches)
+
 </div>
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $e)\;\; \text{kgV}(13;11) =$ [[ 143 ]] @canvas
 
+@ADetails(1=BE;kleinstes gemeinsames Vielfaches)
+
 </div>
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $f)\;\; \text{kgV}(32;3) =$ [[  96  ]] @canvas
+
+@ADetails(1=BE;kleinstes gemeinsames Vielfaches)
 
 </div>
 

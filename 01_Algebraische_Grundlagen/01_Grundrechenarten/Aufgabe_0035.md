@@ -54,27 +54,47 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$a)\;\;$__ $ \textcolor{red}{18+24} = 42$ \
 [[    Summe          ]] @canvas
 
+@ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$b)\;\;$__ $ \textcolor{red}{12} \cdot 7 = 84 $ \
 [[       Faktor      ]] @canvas
 
+@ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$c)\;\;$__ $ \textcolor{red}{36} = 24+12$ \
 [[ Wert der Summe    ]] @canvas
 
+@ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$d)\;\;$__ $ \textcolor{red}{63-48}=15$ \
 [[         Differenz ]] @canvas
 
+@ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
 </section>
 

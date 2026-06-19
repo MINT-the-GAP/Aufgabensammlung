@@ -59,25 +59,53 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $a)\;\; \text{kgV}(24;5;9) =$ [[ 360 ]] @canvas
 
+@ADetails(1=BE;kleinstes gemeinsames Vielfaches)
+
 </div>
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $b)\;\; \text{kgV}(12;16;18) =$ [[ 144 ]] @canvas
 
+@ADetails(1=BE;kleinstes gemeinsames Vielfaches)
+
 </div>
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $c)\;\; \text{kgV}(5;8;6) =$ [[ 120 ]] @canvas
 
+@ADetails(1=BE;kleinstes gemeinsames Vielfaches)
+
 </div>
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $d)\;\; \text{kgV}(2;7;5) =$ [[ 70  ]] @canvas
+
+@ADetails(1=BE;kleinstes gemeinsames Vielfaches)
 
 </div>
 

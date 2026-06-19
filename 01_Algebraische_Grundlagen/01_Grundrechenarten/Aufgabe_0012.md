@@ -56,7 +56,11 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ 
 
-<!-- data-type="none" -->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-type="none" -->
 |  Millionener  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
 | :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
 |             |         4          |         0         |      0       |     7      |     5     |    2    |
@@ -64,10 +68,15 @@ __$a)\;\;$__
 
 [[   400752  ]] @canvas
 
+@ADetails(BE=1;Zahlenverständnis)
 
 __$b)\;\;$__ 
 
-<!-- data-type="none" -->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-type="none" -->
 |  Millionener  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
 | :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
 |      3      |          8         |         5         |      1       |     1      |     6     |    7    |
@@ -76,9 +85,15 @@ __$b)\;\;$__
  [[  3851167  ]] @canvas
 
 
+@ADetails(BE=1;Zahlenverständnis)
+
 __$c)\;\;$__ 
 
-<!-- data-type="none" -->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-type="none" -->
 |  Millionener  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
 | :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
 |             |                    |          7        |       5      |     0      |     0     |     9   |
@@ -86,6 +101,7 @@ __$c)\;\;$__
 
  [[   75009   ]] @canvas
 
+@ADetails(BE=1;Zahlenverständnis)
 
 
 

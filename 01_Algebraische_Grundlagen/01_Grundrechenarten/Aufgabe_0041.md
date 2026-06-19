@@ -54,12 +54,23 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$a)\;\;$__ $ 65:7 - 16:7 =$ [[  7  ]] @canvas
 
+@ADetails(BE=1;Division, Distributivgesetz)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$b)\;\;$__ $ 23:9 + 58:9 =$ [[  9  ]] @canvas
+
+@ADetails(BE=1;Division, Distributivgesetz)
 
 </div>
 </section>

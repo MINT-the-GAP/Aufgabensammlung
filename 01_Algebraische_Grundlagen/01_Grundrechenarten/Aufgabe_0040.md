@@ -61,9 +61,14 @@ __$a)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 [[  35   ]] @canvas
 
+@ADetails(BE=1;Zahlenstral, Zahlenverständnis)
 </div> 
 
 <div class="flex-child">
@@ -75,9 +80,14 @@ __$b)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 [[  39   ]] @canvas
 
+@ADetails(BE=1;Zahlenstral, Zahlenverständnis)
 </div> 
 
 <div class="flex-child">
@@ -89,9 +99,14 @@ __$c)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 [[   46  ]] @canvas
 
+@ADetails(BE=1;Zahlenstral, Zahlenverständnis)
 </div> 
 
 <div class="flex-child">
@@ -103,8 +118,13 @@ __$d)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 [[   37  ]] @canvas
 
+@ADetails(BE=1;Zahlenstral, Zahlenverständnis)
 </div> 
 </section>

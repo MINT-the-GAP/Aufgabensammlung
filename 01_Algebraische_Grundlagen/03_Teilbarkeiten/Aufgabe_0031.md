@@ -55,27 +55,75 @@ author: Martin Lommatzsch
 
 <section class="dynFlex">
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$a)\;\;$__ $7$ [[ ($\mid$) | $\nmid$ ]] $7399$ \
 
+
+@ADetails(1=BE; Teiler)
+
 </div>
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$b)\;\;$__ $5$ [[ $\mid$ | ($\nmid$) ]] $2046$ \
 
+
+@ADetails(1=BE; Teiler)
+
 </div>
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$c)\;\;$__ $6$ [[ ($\mid$) | $\nmid$ ]] $3408$ \
 
+
+@ADetails(1=BE; Teiler)
+
 </div>
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$d)\;\;$__ $3$ [[ $\mid$ | ($\nmid$) ]] $6410$ \
 
-</div>
-<div class="flex-child">
-__$e)\;\;$__ $4$ [[ $\mid$ | ($\nmid$) ]] $8211$ \
+
+@ADetails(1=BE; Teiler)
 
 </div>
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
+__$e)\;\;$__ $4$ [[ $\mid$ | ($\nmid$) ]] $8211$ \
+
+
+@ADetails(1=BE; Teiler)
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$f)\;\;$__ $8$ [[ $\mid$ | ($\nmid$) ]] $7924$ 
+
+
+@ADetails(1=BE; Teiler)
 
 
 </div>

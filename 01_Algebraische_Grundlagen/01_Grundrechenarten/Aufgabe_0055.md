@@ -54,32 +54,74 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$a)\;\;$__ $ 96:8 + 3 \cdot 5  =$ [[  27  ]] @canvas
 
+@ADetails(BE=1;Grundrechenarten, Vorrangsregeln)
+
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$b)\;\;$__ $ (9 + 2 \cdot 4) \cdot 3 =$ [[  51  ]] @canvas
 
+@ADetails(BE=1;Grundrechenarten, Vorrangsregeln)
+
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$c)\;\;$__ $ 6 \cdot 9 - 5 \cdot 5  =$ [[  29  ]] @canvas
 
+@ADetails(BE=1;Grundrechenarten, Vorrangsregeln)
+
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$d)\;\;$__ $ 13 + 7 \cdot 8  =$ [[  69  ]] @canvas
 
+@ADetails(BE=1;Grundrechenarten, Vorrangsregeln)
+
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$e)\;\;$__ $ 73 - 13 \cdot 4  =$ [[  21  ]] @canvas
 
+@ADetails(BE=1;Grundrechenarten, Vorrangsregeln)
+
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$f)\;\;$__ $ 108:12 + 85:5  =$ [[  26  ]] @canvas
+
+@ADetails(BE=1;Grundrechenarten, Vorrangsregeln)
 
 </div>
 </section>

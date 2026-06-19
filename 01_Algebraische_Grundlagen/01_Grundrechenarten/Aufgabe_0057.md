@@ -60,8 +60,15 @@ __$a)\;\;$__
 
 ![Erbsen](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa1.jpg)
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 [[ 1250 ]] @canvas Erbsen
 @Algebrite.check_margin(1100,1400)
+
+@ADetails(BE=1;Schätzen, Überschlagen)
 
 </div>
 <div class="flex-child">
@@ -70,8 +77,15 @@ __$b)\;\;$__
 
 ![Holzperlen](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa2.jpg)
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 [[ 400  ]] @canvas Holzperlen
 @Algebrite.check_margin(350,450)
+
+@ADetails(BE=1;Schätzen, Überschlagen)
 
 </div>
 </section>

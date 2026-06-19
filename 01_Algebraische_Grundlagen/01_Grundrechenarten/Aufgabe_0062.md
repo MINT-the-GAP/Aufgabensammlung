@@ -61,8 +61,15 @@ __$a)\;\;$__
 
 ![Kandiszuckerstückchen](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa11.jpg)
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 [[ 200  ]] @canvas Kandiszuckerstückchen
 @Algebrite.check_margin(180,250)
+
+@ADetails(BE=1;Schätzen, Überschlagen)
 
 
 </div>
@@ -73,8 +80,15 @@ __$b)\;\;$__
 
 ![getrocknete Mehlwürmer](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa12.jpg)
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 [[ 420  ]] @canvas getrocknete Mehlwürmer
 @Algebrite.check_margin(390,470)
+
+@ADetails(BE=1;Schätzen, Überschlagen)
 
 
 </div>

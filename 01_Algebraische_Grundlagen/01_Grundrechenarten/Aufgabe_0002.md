@@ -54,27 +54,47 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" -->
 __$a)\;\;$__ Der Dividend ist $81$ und der Divisor $27$. \
 [[  3   ]] @canvas
 
+@ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" -->
 __$b)\;\;$__ Eine Summe besteht aus den Summanden $12$, $34$ und $26$.\
 [[  72  ]] @canvas
 
+@ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" -->
 __$c)\;\;$__ Es wird ein Produkt aus $11$ und $12$ gebildet. \
 [[  132 ]] @canvas
 
+@ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" -->
 __$d)\;\;$__ Der Subtrahend einer Differenz ist $19$, während der Wert des Minuenden $45$ beträgt.\
 [[  26  ]] @canvas
 
+@ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
 </section>
 

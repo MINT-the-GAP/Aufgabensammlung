@@ -61,8 +61,15 @@ __$a)\;\;$__
 
 ![Linsen](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa7.jpg)
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 [[ 1200  ]] @canvas Linsen
 @Algebrite.check_margin(1100,1350)
+
+@ADetails(BE=1;Schätzen, Überschlagen)
 
 
 </div>
@@ -73,8 +80,15 @@ __$b)\;\;$__
 
 ![Puffgerstenkörner](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa8.jpg)
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 [[ 1050  ]] @canvas Puffgerstenkörner
 @Algebrite.check_margin(950,1250)
+
+@ADetails(BE=1;Schätzen, Überschlagen)
 
 
 </div>

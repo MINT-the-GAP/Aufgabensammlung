@@ -62,8 +62,15 @@ __$a)\;\;$__
 
 ![Holzperlen](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa5.jpg)
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 [[ 380  ]] @canvas Holzperlen
 @Algebrite.check_margin(350,410)
+
+@ADetails(BE=1;Schätzen, Überschlagen)
 
 
 </div>
@@ -74,8 +81,15 @@ __$b)\;\;$__
 
 ![Reiskörner](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa6.jpg)
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 [[ 2000 ]] @canvas Reiskörner
 @Algebrite.check_margin(1800,2300)
+
+@ADetails(BE=1;Schätzen, Überschlagen)
 
 
 </div>

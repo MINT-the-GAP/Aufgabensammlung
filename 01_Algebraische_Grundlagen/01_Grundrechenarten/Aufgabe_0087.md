@@ -43,74 +43,104 @@ base:   https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/hea
 
 $a)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $210 : 7 =$ [[ 30 ]] @canvas \
 $2100 : 70 =$ [[ 30 ]] @canvas \
 $21000 : 700 =$ [[ 30 ]] @canvas
 
-@ADetails(1=BE;Division, Grundrechenarten)
+@ADetails(1=BE;Division, Grundrechenarten, Zahlenverständnis)
 </div>
 
 <div class="flex-child">
 
 $b)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $720 : 9 =$ [[ 80 ]] @canvas \
 $7200 : 90 =$ [[ 80 ]] @canvas \
 $72000 : 900 =$ [[ 80 ]] @canvas \
 $720000 : 9000 =$ [[ 80 ]] @canvas
 
-@ADetails(1=BE;Division, Grundrechenarten)
+@ADetails(1=BE;Division, Grundrechenarten, Zahlenverständnis)
 </div>
 
 <div class="flex-child">
 
 $c)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $440 : 4 =$ [[ 110 ]] @canvas \
 $4400 : 40 =$ [[ 110 ]] @canvas \
 $44000 : 400 =$ [[ 110 ]] @canvas \
 $440000 : 4000 =$ [[ 110 ]] @canvas
 
-@ADetails(1=BE;Division, Grundrechenarten)
+@ADetails(1=BE;Division, Grundrechenarten, Zahlenverständnis)
 </div>
 
 <div class="flex-child">
 
 $d)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $3600 : 6 =$ [[ 600 ]] @canvas \
 $36000 : 60 =$ [[ 600 ]] @canvas \
 $360000 : 600 =$ [[ 600 ]] @canvas \
 $3600000 : 6000 =$ [[ 600 ]] @canvas \
 $36000000 : 60000 =$ [[ 600 ]] @canvas
 
-@ADetails(1=BE;Division, Grundrechenarten)
+@ADetails(1=BE;Division, Grundrechenarten, Zahlenverständnis)
 </div>
 
 <div class="flex-child">
 
 $e)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $2700 : 9 =$ [[ 300 ]] @canvas \
 $27000 : 90 =$ [[ 300 ]] @canvas \
 $270000 : 900 =$ [[ 300 ]] @canvas \
 $2700000 : 9000 =$ [[ 300 ]] @canvas \
 $27000000 : 90000 =$ [[ 300 ]] @canvas
 
-@ADetails(1=BE;Division, Grundrechenarten)
+@ADetails(1=BE;Division, Grundrechenarten, Zahlenverständnis)
 </div>
 
 <div class="flex-child">
 
 $f)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $6300 : 7 =$ [[ 900 ]] @canvas \
 $63000 : 70 =$ [[ 900 ]] @canvas \
 $630000 : 700 =$ [[ 900 ]] @canvas \
 $6300000 : 7000 =$ [[ 900 ]] @canvas \
 $63000000 : 70000 =$ [[ 900 ]] @canvas
 
-@ADetails(1=BE;Division, Grundrechenarten)
+@ADetails(1=BE;Division, Grundrechenarten, Zahlenverständnis)
 </div>
 
 </section>

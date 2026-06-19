@@ -56,6 +56,11 @@ base:   https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/hea
 <div class="flex-child">
 $a)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $8642 - 3210=$[[ 5432 ]]
 ****************
 $$
@@ -74,6 +79,11 @@ $$
 <div class="flex-child">
 $b)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $9753 - 6421=$[[ 3332 ]]
 ****************
 $$
@@ -92,6 +102,11 @@ $$
 <div class="flex-child">
 $c)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $7531 - 4210=$[[ 3321 ]]
 ****************
 $$
@@ -104,12 +119,18 @@ $$
 $$
 ****************
 
+
 @ADetails(1=BE;Subtraktion, Grundrechenarten)
 </div>
 
 <div class="flex-child">
 $d)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $8640 - 4200=$[[ 4440 ]]
 ****************
 $$
@@ -128,6 +149,11 @@ $$
 <div class="flex-child">
 $e)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $9751 - 6420=$[[ 3331 ]]
 ****************
 $$
@@ -146,6 +172,11 @@ $$
 <div class="flex-child">
 $f)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $7532 - 4210=$[[ 3322 ]]
 ****************
 $$
@@ -164,6 +195,11 @@ $$
 <div class="flex-child">
 $g)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $9754 - 6421=$[[ 3333 ]]
 ****************
 $$
@@ -182,6 +218,11 @@ $$
 <div class="flex-child">
 $h)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $8531 - 3210=$[[ 5321 ]]
 ****************
 $$
@@ -200,6 +241,11 @@ $$
 <div class="flex-child">
 $i)\;\;$
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $7642 - 5310=$[[ 2332 ]]
 ****************
 $$

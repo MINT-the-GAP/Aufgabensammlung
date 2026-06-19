@@ -54,6 +54,12 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$a)\;\;$__ \
 $\;\;\;\; 20 + 2 \cdot 3 \cdot 4 \cdot 5 $ \
 $= 20 +$ [[  6  ]] @canvas $\cdot 4 \cdot 5 $ \
@@ -61,9 +67,17 @@ $= 20 +$ [[ 24  ]] @canvas $ \cdot 5 $ \
 $= 20 +$ [[ 120 ]] @canvas   \
 $=$ [[ 140 ]] @canvas 
 
+@ADetails(1=BE; Terme, Grundrechenarten)
+
 </div> 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$b)\;\;$__ \
 $\;\;\;\; 187 - 17 - 31 -25 - 41  $ \
 $=$ [[ 160 ]] @canvas  $  - 31 -25 - 41 $ \
@@ -71,9 +85,17 @@ $=$ [[ 129 ]] @canvas  $   -25 - 41 $ \
 $=$ [[ 104 ]] @canvas  $    - 41 $ \
 $=$ [[ 63 ]] @canvas
 
+@ADetails(1=BE; Terme, Grundrechenarten)
+
 </div> 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$c)\;\;$__ \
 $\;\;\;\; 81 : 3 + 105 : 5 + 6 \cdot 4  $ \
 $=$ $ 81 : 3 + 105 : 5 +$ [[ 24 ]] @canvas  \
@@ -82,14 +104,24 @@ $=$ $ 81 : 3 +$ [[ 45 ]] @canvas  \
 $=$ [[ 27 ]] @canvas $+$ [[ 45 ]] @canvas  \
 $=$ [[ 72 ]] @canvas 
 
+@ADetails(1=BE; Terme, Grundrechenarten)
+
 </div> 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$d)\;\;$__ \
 $\;\;\;\; 11 \cdot 7 - 17 \cdot 3  $ \
 $=$ [[ 77 ]] @canvas $ - 17 \cdot 3  $ \
 $=$ [[ 77 ]] @canvas $-$ [[ 51 ]] @canvas \
 $=$ [[ 26 ]] @canvas 
+
+@ADetails(1=BE; Terme, Grundrechenarten)
 
 </div> 
 </section>

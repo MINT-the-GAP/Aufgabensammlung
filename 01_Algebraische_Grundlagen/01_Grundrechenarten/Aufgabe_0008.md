@@ -54,31 +54,48 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" -->
 __$a)\;\;$__ Viertausendzweihundertneunundzwanzig.  \
-
 [[  4229  ]] @canvas
 
+@ADetails(BE=1;Zahlenverständnis)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" -->
 __$b)\;\;$__ Achttausendvier.\
-
 [[  8004  ]] @canvas
 
+@ADetails(BE=1;Zahlenverständnis)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" -->
 __$c)\;\;$__ Zweitausendsiebhundertelf.\
-
 [[  2711  ]] @canvas
 
+@ADetails(BE=1;Zahlenverständnis)
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ Dreihundertneuntausendvierhundertsechsunddreißig.\
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" -->
+__$d)\;\;$__ Dreihundertneuntausendvierhundertsechsunddreißig.\
 [[ 309436 ]] @canvas
 
+@ADetails(BE=1;Zahlenverständnis)
 </div>
 </section>
 

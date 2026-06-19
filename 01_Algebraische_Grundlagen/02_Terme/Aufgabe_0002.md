@@ -54,15 +54,29 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$a)\;\;$__ \
 $\;\;\;\; 72:18 + 26 + 22 $ \
 $=$ [[ 4 ]] @canvas $ + 26 + 22  $ \
 $=$ [[ 30 ]] @canvas $ + 22  $ \
 $=$ [[ 52 ]] @canvas 
 
+@ADetails(1=BE; Terme, Grundrechenarten)
+
 </div> 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$b)\;\;$__ \
 $\;\;\;\; 5 \cdot 9 + 6 \cdot 7 + 2 $ \
 $= $ [[ 45 ]] @canvas $ + 6 \cdot 7 + 2$ \
@@ -70,24 +84,42 @@ $=$ [[ 45 ]] @canvas  $+$ [[ 42 ]] @canvas $+ 2$  \
 $=$ [[ 87 ]] @canvas  $+ 2$  \
 $=$ [[ 89 ]] @canvas
 
+@ADetails(1=BE; Terme, Grundrechenarten)
+
 </div> 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$c)\;\;$__ \
 $\;\;\;\; 34 + 64 + 25 + 21   $ \
 $=$ $ 34 + 64 + $ [[ 46 ]] @canvas  \
 $=$ $ 34 +$ [[ 110 ]] @canvas  \
 $=$ [[ 144 ]] @canvas 
 
+@ADetails(1=BE; Terme, Grundrechenarten)
+
 </div> 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$d)\;\;$__ \
 $\;\;\;\; 7 \cdot 3 \cdot ( 14 - 2 \cdot 4 ) $ \
 $= 7 \cdot 3 \cdot ( 14 -$ [[  8 ]] @canvas $) $ \
 $= 7 \cdot 3 \cdot$  [[  6 ]] @canvas  \
 $= 7 \cdot $  [[  18 ]] @canvas \
 $=$ [[ 126 ]] @canvas 
+
+@ADetails(1=BE; Terme, Grundrechenarten)
 
 </div> 
 </section>

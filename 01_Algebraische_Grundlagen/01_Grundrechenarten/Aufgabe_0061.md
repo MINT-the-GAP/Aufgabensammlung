@@ -60,8 +60,15 @@ __$a)\;\;$__
 
 ![Kandiszuckerstückchen](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa9.jpg)
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 [[ 600  ]] @canvas Kandiszuckerstückchen
 @Algebrite.check_margin(550,725)
+
+@ADetails(BE=1;Schätzen, Überschlagen)
 
 
 </div>
@@ -72,8 +79,15 @@ __$b)\;\;$__
 
 ![Erdnusskernstücke](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/circa10.jpg)
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 [[ 280  ]] @canvas Erdnusskernstücke
 @Algebrite.check_margin(250,350)
+
+@ADetails(BE=1;Schätzen, Überschlagen)
 
 
 </div>

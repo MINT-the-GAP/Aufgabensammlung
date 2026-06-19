@@ -54,18 +54,33 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$a)\;\;$__ $12$ [[$+$|$-$|$\cdot$|($:$)]] $3$ [[($+$)|$-$|$\cdot$|$:$]] $5 = 9$
 
+@ADetails(BE=1;Operatoren, Vorrangsregeln)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$b)\;\;$__ $6$ [[$+$|$-$|($\cdot$)|$:$]] $3$ [[$+$|($-$)|$\cdot$|$:$]] $8$ [[$+$|$-$|($\cdot$)|$:$]] $2 = 2$
 
+@ADetails(BE=1;Operatoren, Vorrangsregeln)
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 __$c)\;\;$__ $25$ [[$+$|($-$)|$\cdot$|$:$]] $11$ [[$+$|($-$)|$\cdot$|$:$]] $9$  [[($+$)|$-$|$\cdot$|$:$]] $3 = 8$
 
+@ADetails(BE=1;Operatoren, Vorrangsregeln)
 </div>
 </section>
 

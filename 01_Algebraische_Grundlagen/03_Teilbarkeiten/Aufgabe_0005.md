@@ -58,37 +58,73 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $a)\;\; \text{ggT}(28;91) =$ [[  7  ]] @canvas
 
+@ADetails(1=BE;größter gemeinsamer Teiler)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $b)\;\; \text{ggT}(23;29) =$ [[  1  ]] @canvas
 
+@ADetails(1=BE;größter gemeinsamer Teiler)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $c)\;\; \text{ggT}(68;51) =$ [[ 17  ]] @canvas
 
+@ADetails(1=BE;größter gemeinsamer Teiler)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $d)\;\; \text{ggT}(24;60) =$ [[ 12  ]] @canvas
 
+@ADetails(1=BE;größter gemeinsamer Teiler)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $e)\;\; \text{ggT}(81;27) =$ [[  9  ]] @canvas
 
+@ADetails(1=BE;größter gemeinsamer Teiler)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $f)\;\; \text{ggT}(175;325) =$ [[ 25  ]] @canvas
+
+@ADetails(1=BE;größter gemeinsamer Teiler)
 
 </div>
 

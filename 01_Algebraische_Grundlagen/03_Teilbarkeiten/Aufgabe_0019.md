@@ -55,17 +55,45 @@ author: Martin Lommatzsch
 
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $a)\;\; \text{kgV}(4;6) + \text{ggT}(55;35) =$ [[ 17  ]] @canvas
 
+@ADetails(1=BE;kleinstes gemeinsames Vielfaches, größter gemeinsamer Teiler, Addition)
 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $b)\;\; \text{kgV}\left(6;\text{ggT}(24;33) \right) =$ [[  6  ]] @canvas
 
+@ADetails(1=BE;kleinstes gemeinsames Vielfaches, größter gemeinsamer Teiler)
 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $c)\;\; \text{ggT}(45;81) \cdot \text{kgV}(8;6) =$ [[ 216 ]] @canvas
 
+@ADetails(1=BE;kleinstes gemeinsames Vielfaches, größter gemeinsamer Teiler, Multiplikation)
 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 $d)\;\; \text{ggT}\left( 72 ; \text{kgV}(9;4) \right) =$ [[ 36  ]] @canvas
+
+@ADetails(1=BE;kleinstes gemeinsames Vielfaches, größter gemeinsamer Teiler)
 

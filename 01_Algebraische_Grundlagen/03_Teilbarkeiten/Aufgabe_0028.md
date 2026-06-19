@@ -60,12 +60,17 @@ author: Martin Lommatzsch
 __$a)\;\;$__ Welche der folgenden Zahlen ist durch $2$ teilbar?
 
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 - [[X]] $952$
 - [[ ]] $843$
 - [[ ]] $657$
 - [[X]] $254$
 - [[X]] $380$
 
+@ADetails(1=BE; Teiler)
 
 
 
@@ -76,6 +81,11 @@ __$a)\;\;$__ Welche der folgenden Zahlen ist durch $2$ teilbar?
 __$b)\;\;$__ Welche der folgenden Zahlen ist durch $5$ teilbar?
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 - [[X]] $325$
 - [[ ]] $621$
 - [[X]] $840$
@@ -83,7 +93,7 @@ __$b)\;\;$__ Welche der folgenden Zahlen ist durch $5$ teilbar?
 - [[ ]] $674$
 
 
-
+@ADetails(1=BE; Teiler)
 
 
 
@@ -95,6 +105,11 @@ __$b)\;\;$__ Welche der folgenden Zahlen ist durch $5$ teilbar?
 __$c)\;\;$__ Welche der folgenden Zahlen ist durch $3$ teilbar?
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 - [[ ]] $512$
 - [[X]] $360$
 - [[X]] $135$
@@ -102,6 +117,7 @@ __$c)\;\;$__ Welche der folgenden Zahlen ist durch $3$ teilbar?
 - [[X]] $681$
 
 
+@ADetails(1=BE; Teiler)
 
 
 
@@ -113,6 +129,11 @@ __$c)\;\;$__ Welche der folgenden Zahlen ist durch $3$ teilbar?
 __$d)\;\;$__ Welche der folgenden Zahlen ist durch $8$ teilbar?
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 - [[ ]] $355$
 - [[X]] $464$
 - [[ ]] $789$
@@ -120,6 +141,7 @@ __$d)\;\;$__ Welche der folgenden Zahlen ist durch $8$ teilbar?
 - [[ ]] $639$
 
 
+@ADetails(1=BE; Teiler)
 
 
 
@@ -131,6 +153,11 @@ __$d)\;\;$__ Welche der folgenden Zahlen ist durch $8$ teilbar?
 __$e)\;\;$__ Welche der folgenden Zahlen ist durch $9$ teilbar?
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 - [[X]] $504$
 - [[ ]] $821$
 - [[X]] $927$
@@ -139,6 +166,7 @@ __$e)\;\;$__ Welche der folgenden Zahlen ist durch $9$ teilbar?
 
 
 
+@ADetails(1=BE; Teiler)
 
 
 </div>
@@ -149,6 +177,11 @@ __$e)\;\;$__ Welche der folgenden Zahlen ist durch $9$ teilbar?
 __$f)\;\;$__ Welche der folgenden Zahlen ist durch $4$ teilbar?
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5"  -->
 - [[ ]] $474$
 - [[ ]] $954$
 - [[X]] $796$
@@ -156,6 +189,7 @@ __$f)\;\;$__ Welche der folgenden Zahlen ist durch $4$ teilbar?
 - [[X]] $512$
 
 
+@ADetails(1=BE; Teiler)
 
 
 

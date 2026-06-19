@@ -65,9 +65,16 @@ __$a)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 Zähler: [[  1  ]] @canvas \
 Nenner: [[  4  ]] @canvas 
+
+@ADetails(1=BE; Zahlenverständnis, Bruch)
 
 </div>
 <div class="flex-child">
