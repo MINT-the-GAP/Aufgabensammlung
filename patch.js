@@ -2693,6 +2693,10 @@ const SECTION_META_STYLE = `${SECTION_META_STYLE_START}
     align-items: stretch;
   }
 
+  .album .card.schullia-section-collapsed > .card-body.schullia-has-subsections {
+    display: none !important;
+  }
+
   .album .card:not(.shadow-sm) > .card-body.schullia-has-subsections > .card-text {
     flex: 0 0 100%;
     max-width: 100%;
