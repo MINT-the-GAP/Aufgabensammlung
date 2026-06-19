@@ -2597,6 +2597,14 @@ const SECTION_COLLAPSE_SCRIPT = String.raw`${SECTION_COLLAPSE_SCRIPT_START}
         header.appendChild(buildChevron())
       }
 
+      // Default state: collapse all main sections except "Aufgabensets".
+      const h4 = header.querySelector('h4')
+      const sectionId = h4 ? String(h4.id || '').trim() : ''
+      if (sectionId !== 'aufgabensets') {
+        card.classList.add('schullia-section-collapsed')
+        header.setAttribute('aria-expanded', 'false')
+      }
+
       function toggle() {
         const collapsed = card.classList.toggle('schullia-section-collapsed')
         header.setAttribute('aria-expanded', collapsed ? 'false' : 'true')
@@ -2675,6 +2683,90 @@ const SECTION_META_STYLE = `${SECTION_META_STYLE_START}
     line-height: inherit;
     letter-spacing: inherit;
     color: inherit;
+  }
+
+  .album .card:not(.shadow-sm) > .card-body.schullia-has-subsections {
+    display: flex !important;
+    flex-wrap: wrap;
+    column-gap: 0;
+    row-gap: 0.55rem;
+    align-items: stretch;
+  }
+
+  .album .card:not(.shadow-sm) > .card-body.schullia-has-subsections > .card-text {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 0.3rem;
+  }
+
+  .schullia-subsection {
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+  }
+
+  .schullia-subsection-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.42rem;
+    padding: 0.42rem 0.65rem;
+    cursor: pointer;
+    user-select: none;
+    color: rgba(255, 255, 255, 0.92);
+    background: rgba(0, 0, 0, 0.25);
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .schullia-subsection-title-wrap {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .schullia-subsection-title {
+    display: block;
+  }
+
+  .schullia-subsection-header .schullia-section-meta {
+    display: block;
+    margin-top: 0.08rem;
+    font-size: 8pt;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0;
+    opacity: 0.76;
+  }
+
+  .schullia-subsection-chevron {
+    flex: 0 0 auto;
+    width: 0.9em;
+    height: 0.9em;
+    margin-top: 0.2em;
+    transition: transform 0.18s ease;
+  }
+
+  .schullia-subsection-collapsed .schullia-subsection-chevron {
+    transform: rotate(-90deg);
+  }
+
+  .schullia-subsection-header:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.65);
+    outline-offset: -2px;
+  }
+
+  .schullia-subsection-body {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.2rem;
+  }
+
+  .schullia-subsection-collapsed .schullia-subsection-body {
+    display: none;
   }
 </style>
 ${SECTION_META_STYLE_END}`
@@ -2815,15 +2907,161 @@ const SECTION_META_SCRIPT = String.raw`${SECTION_META_SCRIPT_START}
       introHeader.appendChild(summary)
     }
 
+    function normalizeSubsectionLabel(raw) {
+      var label = String(raw || '')
+        .replace(/^\d+_/, '')
+        .replace(/_/g, ' ')
+        .replace(/Ae/g, 'Ä')
+        .replace(/Oe/g, 'Ö')
+        .replace(/Ue/g, 'Ü')
+        .replace(/ae/g, 'ä')
+        .replace(/oe/g, 'ö')
+        .replace(/ue/g, 'ü')
+        .trim()
+
+      if (label === 'FakulBinomial') return 'Fakultät und Binomialkoeffizient'
+      return label
+    }
+
+    function extractSubsectionKey(taskCard) {
+      var link = taskCard.querySelector('a[href]')
+      if (!link) return '__root__'
+      var p = rawPathFromHref(link.getAttribute('href'))
+      if (!p) return '__root__'
+      var parts = p.split('/')
+      if (parts.length < 3) return '__root__'
+      return parts[parts.length - 2] || '__root__'
+    }
+
+    function buildSubSections() {
+      var mainCards = document.querySelectorAll('.album .card:not(.shadow-sm)')
+      Array.prototype.forEach.call(mainCards, function (mainCard) {
+        var body = mainCard.querySelector(':scope > .card-body')
+        if (!body || body.dataset.schulliaSubsections === '1') return
+        var row = body.querySelector(':scope > .row')
+        if (!row) return
+
+        var cols = Array.prototype.filter.call(
+          row.querySelectorAll(':scope > [class*="col-"]'),
+          function (col) { return !!col.querySelector('.card.shadow-sm') }
+        )
+        if (cols.length < 2) return
+
+        var grouped = {}
+        var order = []
+        cols.forEach(function (col) {
+          var card = col.querySelector('.card.shadow-sm')
+          if (!card) return
+          var key = extractSubsectionKey(card)
+          if (!grouped[key]) {
+            grouped[key] = []
+            order.push(key)
+          }
+          grouped[key].push(col)
+        })
+
+        var namedGroups = order.filter(function (k) { return k !== '__root__' })
+        if (namedGroups.length < 2) return
+
+        body.dataset.schulliaSubsections = '1'
+        body.classList.add('schullia-has-subsections')
+        row.remove()
+
+        var svgNS = 'http://www.w3.org/2000/svg'
+        order.forEach(function (key) {
+          var tile = document.createElement('div')
+          tile.className = 'schullia-subsection schullia-subsection-collapsed'
+
+          var header = document.createElement('div')
+          header.className = 'schullia-subsection-header'
+          header.setAttribute('role', 'button')
+          header.setAttribute('tabindex', '0')
+          header.setAttribute('aria-expanded', 'false')
+
+          var titleWrap = document.createElement('span')
+          titleWrap.className = 'schullia-subsection-title-wrap'
+
+          var title = document.createElement('span')
+          title.className = 'schullia-subsection-title'
+          title.textContent = key === '__root__' ? 'Sonstige' : normalizeSubsectionLabel(key)
+
+          var count = grouped[key].length
+          var maxISO = ''
+          grouped[key].forEach(function (col) {
+            var c = col.querySelector('.card.shadow-sm')
+            if (!c) return
+            var l = c.querySelector('a[href]')
+            if (!l) return
+            var p = rawPathFromHref(l.getAttribute('href'))
+            if (!p) return
+            var d = SCHULLIA_TASK_DATES[p]
+            if (d && d > maxISO) maxISO = d
+          })
+
+          var meta = document.createElement('span')
+          meta.className = 'schullia-section-meta'
+          var label = count === 1 ? 'Aufgabe' : 'Aufgaben'
+          var text = '(' + count + ' ' + label
+          if (maxISO) text += ' - letztes Update am ' + formatDE(maxISO)
+          text += ')'
+          meta.textContent = text
+
+          titleWrap.appendChild(title)
+          titleWrap.appendChild(meta)
+
+          var chevron = document.createElementNS(svgNS, 'svg')
+          chevron.setAttribute('viewBox', '0 0 24 24')
+          chevron.setAttribute('fill', 'none')
+          chevron.setAttribute('stroke', 'currentColor')
+          chevron.setAttribute('stroke-width', '2.5')
+          chevron.setAttribute('stroke-linecap', 'round')
+          chevron.setAttribute('stroke-linejoin', 'round')
+          chevron.setAttribute('aria-hidden', 'true')
+          chevron.classList.add('schullia-subsection-chevron')
+
+          var path = document.createElementNS(svgNS, 'path')
+          path.setAttribute('d', 'M6 9l6 6 6-6')
+          chevron.appendChild(path)
+
+          header.appendChild(titleWrap)
+          header.appendChild(chevron)
+
+          var subBody = document.createElement('div')
+          subBody.className = 'schullia-subsection-body'
+          grouped[key].forEach(function (col) { subBody.appendChild(col) })
+
+          header.addEventListener('click', function (event) {
+            if (event.target.closest('a')) return
+            var collapsed = tile.classList.toggle('schullia-subsection-collapsed')
+            header.setAttribute('aria-expanded', collapsed ? 'false' : 'true')
+          })
+
+          header.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter' || event.key === ' ' || event.key === 'Spacebar') {
+              event.preventDefault()
+              var collapsed = tile.classList.toggle('schullia-subsection-collapsed')
+              header.setAttribute('aria-expanded', collapsed ? 'false' : 'true')
+            }
+          })
+
+          tile.appendChild(header)
+          tile.appendChild(subBody)
+          body.appendChild(tile)
+        })
+      })
+    }
+
     function refresh() {
       buildSectionMeta()
       buildCollectionSummary()
+      buildSubSections()
     }
 
     function start() {
       refresh()
       window.setTimeout(refresh, 300)
       window.setTimeout(refresh, 900)
+      window.setTimeout(refresh, 2200)
     }
 
     if (document.readyState === 'loading') {
