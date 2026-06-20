@@ -38,7 +38,7 @@ input {
 
 
 
-tags: Tabelle, Parameter, Negative Zahlen, Vorrangsregeln, leicht, niedrig, Angeben
+tags: Tabelle, Parameter, Dezimalzahlen, Vorrangsregeln, Periodizitäten, leicht, niedrig, Angeben
 
 comment: Setze für die Parameter Werte ein und fülle alle Felder der Tabelle aus.
 
@@ -49,7 +49,7 @@ author: Martin Lommatzsch
 
 
 
-# Tabellenarbeit mit negativen Zahlen
+# Tabellenarbeit mit positiven Dezimalzahlen und Periodizitäten
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 **Fülle** die freien Felder der Tabelle **aus**.
@@ -66,12 +66,15 @@ data-hint-button="3"
 data-show-partial-solution 
 data-type="none" 
 data-sortable="false" -->
-|  $z$  |   $r$  |   $s$   |  $ z+r\cdot s $  |  $ z+r+2 \cdot s $ | $ |s|\cdot s - r $ |
-| :---: | :----: | :-----: | :---------:      | :----------:       | :-----------:      |
-|  6    |   -5   |   -4    | [[ 26  ]]         |   [[ -7  ]]         |  [[ -11 ]]          |
-|  -8   |   3    |    -6   | [[ -26 ]]         |   [[ -17 ]]         |  [[ -39 ]]          |
-|   -3  |   7    |    -4   | [[ -31 ]]         |   [[ -4  ]]         |  [[ -23 ]]          |
-|   7   |   -9   |    -5   | [[ 52  ]]         |   [[ -12 ]]         |  [[ -16 ]]          |
+|  $r$  |  $k$  |  $v$  | $r\cdot v+k$ | $(r+k)\cdot v$ | $r:k\cdot v$ |
+| :---: | :---: | :---: | :-----------: | :-------------: | :-----------: |
+| $0{,}\overline{6}$ | $0{,}4$ | $1{,}5$ | [[ 1,4 ]] @canvas | [[ 1,6 ]] @canvas | [[ 2,5 ]] @canvas |
+| $1{,}\overline{3}$ | $0{,}8$ | $0{,}75$ | [[ 1,8 ]] @canvas | [[ 1,6 ]] @canvas | [[ 1,25 ]] @canvas |
+| $0{,}\overline{8}$ | $0{,}4$ | $4{,}5$ | [[ 4,4 ]] @canvas | [[ 5,8 ]] @canvas | [[ 10 ]] @canvas |
+| $1{,}\overline{6}$ | $0{,}5$ | $0{,}6$ | [[ 1,5 ]] @canvas | [[ 1,3 ]] @canvas | [[ 2 ]] @canvas |
+@Algebrite.check([ 1.4; 1.6; 2.5; 1.8; 1.6; 1.25; 4.4; 5.8; 10; 1.5; 1.3; 2 ])
 
 
-@ADetails(1=BE; Einsetzungsverfahren, Tabelle, Negative Zahlen)
+
+
+@ADetails(1=BE; Einsetzungsverfahren, Tabelle, Dezimalzahlen, Periodizitäten)

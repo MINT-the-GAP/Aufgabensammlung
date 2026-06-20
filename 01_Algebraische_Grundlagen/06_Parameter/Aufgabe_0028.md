@@ -38,7 +38,7 @@ input {
 
 
 
-tags: Tabelle, Parameter, Negative Zahlen, Vorrangsregeln, leicht, niedrig, Angeben
+tags: Tabelle, Parameter, Dezimalzahlen, Negative Zahlen, Bruchrechnung, Vorrangsregeln, leicht, hoch, Angeben
 
 comment: Setze für die Parameter Werte ein und fülle alle Felder der Tabelle aus.
 
@@ -49,9 +49,9 @@ author: Martin Lommatzsch
 
 
 
-# Tabellenarbeit mit negativen Zahlen
+# Tabellenarbeit mit rationalen Zahlen
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/4.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 **Fülle** die freien Felder der Tabelle **aus**.
 
 
@@ -66,12 +66,18 @@ data-hint-button="3"
 data-show-partial-solution 
 data-type="none" 
 data-sortable="false" -->
-|  $z$  |   $r$  |   $s$   |  $ z+r\cdot s $  |  $ z+r+2 \cdot s $ | $ |s|\cdot s - r $ |
-| :---: | :----: | :-----: | :---------:      | :----------:       | :-----------:      |
-|  6    |   -5   |   -4    | [[ 26  ]]         |   [[ -7  ]]         |  [[ -11 ]]          |
-|  -8   |   3    |    -6   | [[ -26 ]]         |   [[ -17 ]]         |  [[ -39 ]]          |
-|   -3  |   7    |    -4   | [[ -31 ]]         |   [[ -4  ]]         |  [[ -23 ]]          |
-|   7   |   -9   |    -5   | [[ 52  ]]         |   [[ -12 ]]         |  [[ -16 ]]          |
+|  $j$  |  $b$  |  $t$  | $j\cdot b-t$ | $(j-t):b$ | $j+b:t$ |
+| :---: | :---: | :---: | :-----------: | :-------: | :-----: |
+| $-\dfrac{2}{3}$ | $0{,}75$ | $-0{,}5$ | [[ 0 ]] @canvas | [[ -2/9 ]] @canvas | [[ -13/6 ]] @canvas |
+| $1{,}2$ | $-\dfrac{3}{4}$ | $0{,}4$ | [[ -1,3 ]] @canvas | [[ -16/15 ]] @canvas | [[ -0,675 ]] @canvas |
+| $-1{,}5$ | $\dfrac{2}{5}$ | $-0{,}25$ | [[ -0,35 ]] @canvas | [[ -25/8 ]] @canvas | [[ -3,1 ]] @canvas |
+| $\dfrac{7}{8}$ | $-0{,}6$ | $0{,}75$ | [[ -1,275 ]] @canvas | [[ -5/24 ]] @canvas | [[ 0,075 ]] @canvas |
+@Algebrite.check([ 0; -2/9; -13/6; -13/10; -16/15; -27/40; -7/20; -25/8; -31/10; -51/40; -5/24; 3/40 ])
 
 
-@ADetails(1=BE; Einsetzungsverfahren, Tabelle, Negative Zahlen)
+
+
+
+
+
+@ADetails(1=BE; Einsetzungsverfahren, Tabelle, Bruchrechnung, Dezimalzahlen, Negative Zahlen)

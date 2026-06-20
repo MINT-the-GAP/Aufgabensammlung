@@ -38,7 +38,7 @@ input {
 
 
 
-tags: Tabelle, Parameter, Negative Zahlen, Vorrangsregeln, leicht, niedrig, Angeben
+tags: Tabelle, Parameter, Dezimalzahlen, Bruchrechnung, Vorrangsregeln, Periodizitäten, mittel, normal, Angeben
 
 comment: Setze für die Parameter Werte ein und fülle alle Felder der Tabelle aus.
 
@@ -49,9 +49,9 @@ author: Martin Lommatzsch
 
 
 
-# Tabellenarbeit mit negativen Zahlen
+# Tabellenarbeit mit positiven rationalen Zahlen und Periodizitäten
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 **Fülle** die freien Felder der Tabelle **aus**.
 
 
@@ -66,12 +66,15 @@ data-hint-button="3"
 data-show-partial-solution 
 data-type="none" 
 data-sortable="false" -->
-|  $z$  |   $r$  |   $s$   |  $ z+r\cdot s $  |  $ z+r+2 \cdot s $ | $ |s|\cdot s - r $ |
-| :---: | :----: | :-----: | :---------:      | :----------:       | :-----------:      |
-|  6    |   -5   |   -4    | [[ 26  ]]         |   [[ -7  ]]         |  [[ -11 ]]          |
-|  -8   |   3    |    -6   | [[ -26 ]]         |   [[ -17 ]]         |  [[ -39 ]]          |
-|   -3  |   7    |    -4   | [[ -31 ]]         |   [[ -4  ]]         |  [[ -23 ]]          |
-|   7   |   -9   |    -5   | [[ 52  ]]         |   [[ -12 ]]         |  [[ -16 ]]          |
+|  $p$  |  $u$  |  $k$  | $p+u:k$ | $(p+k)\cdot u$ | $p\cdot k+u$ |
+| :---: | :---: | :---: | :-----: | :-------------: | :-----------: |
+| $0{,}\overline{6}$ | $0{,}\overline{3}$ | $0{,}5$ | [[ 4/3 ]] @canvas | [[ 7/18 ]] @canvas | [[ 2/3 ]] @canvas |
+| $1{,}\overline{3}$ | $0{,}\overline{6}$ | $0{,}25$ | [[ 4 ]] @canvas | [[ 19/18 ]] @canvas | [[ 1 ]] @canvas |
+| $0{,}\overline{8}$ | $0{,}\overline{2}$ | $0{,}5$ | [[ 4/3 ]] @canvas | [[ 25/81 ]] @canvas | [[ 2/3 ]] @canvas |
+| $1{,}\overline{6}$ | $0{,}\overline{1}$ | $0{,}\overline{4}$ | [[ 23/12 ]] @canvas | [[ 19/81 ]] @canvas | [[ 23/27 ]] @canvas |
+@Algebrite.check([ 4/3; 7/18; 2/3; 4; 19/18; 1; 4/3; 25/81; 2/3; 23/12; 19/81; 23/27 ])
 
 
-@ADetails(1=BE; Einsetzungsverfahren, Tabelle, Negative Zahlen)
+
+
+@ADetails(1=BE; Einsetzungsverfahren, Tabelle, Bruchrechnung, Dezimalzahlen, Periodizitäten)

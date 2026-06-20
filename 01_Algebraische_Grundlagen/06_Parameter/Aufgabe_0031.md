@@ -38,7 +38,7 @@ input {
 
 
 
-tags: Tabelle, Parameter, Negative Zahlen, Vorrangsregeln, leicht, niedrig, Angeben
+tags: Tabelle, Parameter, Dezimalzahlen, Negative Zahlen, Vorrangsregeln, Periodizitäten, mittel, normal, Angeben
 
 comment: Setze für die Parameter Werte ein und fülle alle Felder der Tabelle aus.
 
@@ -49,9 +49,9 @@ author: Martin Lommatzsch
 
 
 
-# Tabellenarbeit mit negativen Zahlen
+# Tabellenarbeit mit Dezimalzahlen und Periodizitäten
 
-<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" width="120" height="30">  \
 **Fülle** die freien Felder der Tabelle **aus**.
 
 
@@ -66,12 +66,15 @@ data-hint-button="3"
 data-show-partial-solution 
 data-type="none" 
 data-sortable="false" -->
-|  $z$  |   $r$  |   $s$   |  $ z+r\cdot s $  |  $ z+r+2 \cdot s $ | $ |s|\cdot s - r $ |
-| :---: | :----: | :-----: | :---------:      | :----------:       | :-----------:      |
-|  6    |   -5   |   -4    | [[ 26  ]]         |   [[ -7  ]]         |  [[ -11 ]]          |
-|  -8   |   3    |    -6   | [[ -26 ]]         |   [[ -17 ]]         |  [[ -39 ]]          |
-|   -3  |   7    |    -4   | [[ -31 ]]         |   [[ -4  ]]         |  [[ -23 ]]          |
-|   7   |   -9   |    -5   | [[ 52  ]]         |   [[ -12 ]]         |  [[ -16 ]]          |
+|  $g$  |  $t$  |  $s$  | $g\cdot s+t$ | $(g+t)\cdot s$ | $g\cdot s-t$ |
+| :---: | :---: | :---: | :-----------: | :-------------: | :-----------: |
+| $0{,}\overline{6}$ | $-0{,}4$ | $3{,}0$ | [[ 1,6 ]] @canvas | [[ 0,8 ]] @canvas | [[ 2,4 ]] @canvas |
+| $-1{,}\overline{3}$ | $0{,}25$ | $6{,}0$ | [[ -7,75 ]] @canvas | [[ -6,5 ]] @canvas | [[ -8,25 ]] @canvas |
+| $0{,}\overline{8}$ | $-0{,}5$ | $9{,}0$ | [[ 7,5 ]] @canvas | [[ 3,5 ]] @canvas | [[ 8,5 ]] @canvas |
+| $-0{,}\overline{5}$ | $1{,}2$ | $9{,}0$ | [[ -3,8 ]] @canvas | [[ 5,8 ]] @canvas | [[ -6,2 ]] @canvas |
+@Algebrite.check([ 1.6; 0.8; 2.4; -7.75; -6.5; -8.25; 7.5; 3.5; 8.5; -3.8; 5.8; -6.2 ])
 
 
-@ADetails(1=BE; Einsetzungsverfahren, Tabelle, Negative Zahlen)
+
+
+@ADetails(1=BE; Einsetzungsverfahren, Tabelle, Dezimalzahlen, Negative Zahlen, Periodizitäten)

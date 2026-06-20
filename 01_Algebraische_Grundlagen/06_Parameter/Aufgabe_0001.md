@@ -61,6 +61,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3" 
+data-show-partial-solution 
 data-type="none" 
 data-sortable="false" -->
 |  $a$  |   $b$   |  $a+b$   |  $a \cdot b$ |  $b-a$   | $2 \cdot a$ |

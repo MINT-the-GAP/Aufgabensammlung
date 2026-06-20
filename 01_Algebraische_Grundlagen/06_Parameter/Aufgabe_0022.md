@@ -38,7 +38,7 @@ input {
 
 
 
-tags: Tabelle, Parameter, Negative Zahlen, Vorrangsregeln, leicht, niedrig, Angeben
+tags: Tabelle, Parameter, Dezimalzahlen, Vorrangsregeln, leicht, niedrig, Angeben
 
 comment: Setze für die Parameter Werte ein und fülle alle Felder der Tabelle aus.
 
@@ -49,7 +49,7 @@ author: Martin Lommatzsch
 
 
 
-# Tabellenarbeit mit negativen Zahlen
+# Tabellenarbeit mit Dezimalzahlen
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 **Fülle** die freien Felder der Tabelle **aus**.
@@ -66,12 +66,18 @@ data-hint-button="3"
 data-show-partial-solution 
 data-type="none" 
 data-sortable="false" -->
-|  $z$  |   $r$  |   $s$   |  $ z+r\cdot s $  |  $ z+r+2 \cdot s $ | $ |s|\cdot s - r $ |
-| :---: | :----: | :-----: | :---------:      | :----------:       | :-----------:      |
-|  6    |   -5   |   -4    | [[ 26  ]]         |   [[ -7  ]]         |  [[ -11 ]]          |
-|  -8   |   3    |    -6   | [[ -26 ]]         |   [[ -17 ]]         |  [[ -39 ]]          |
-|   -3  |   7    |    -4   | [[ -31 ]]         |   [[ -4  ]]         |  [[ -23 ]]          |
-|   7   |   -9   |    -5   | [[ 52  ]]         |   [[ -12 ]]         |  [[ -16 ]]          |
+|  $f$  |  $n$  |  $w$  | $f:n+w$ | $(f+w)\cdot n$ | $f-n\cdot w$ |
+| :---: | :---: | :---: | :-----: | :-------------: | :-----------: |
+| $1{,}8$ | $0{,}6$ | $0{,}5$ | [[ 3,5 ]] @canvas | [[ 1,38 ]] @canvas | [[ 1,5 ]] @canvas |
+| $2{,}4$ | $0{,}8$ | $0{,}75$ | [[ 3,75 ]] @canvas | [[ 2,52 ]] @canvas | [[ 1,8 ]] @canvas |
+| $1{,}75$ | $0{,}5$ | $0{,}4$ | [[ 3,9 ]] @canvas | [[ 1,075 ]] @canvas | [[ 1,55 ]] @canvas |
+| $3{,}6$ | $1{,}2$ | $0{,}5$ | [[ 3,5 ]] @canvas | [[ 4,92 ]] @canvas | [[ 3 ]] @canvas |
+@Algebrite.check([ 3.5; 1.38; 1.5; 3.75; 2.52; 1.8; 3.9; 1.075; 1.55; 3.5; 4.92; 3 ])
 
 
-@ADetails(1=BE; Einsetzungsverfahren, Tabelle, Negative Zahlen)
+
+
+
+
+
+@ADetails(1=BE; Einsetzungsverfahren, Tabelle, Dezimalzahlen)

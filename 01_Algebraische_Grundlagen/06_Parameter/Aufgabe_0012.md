@@ -38,7 +38,7 @@ input {
 
 
 
-tags: Tabelle, Parameter, Negative Zahlen, Vorrangsregeln, leicht, niedrig, Angeben
+tags: Tabelle, Parameter, Bruchrechnung, Vorrangsregeln, leicht, niedrig, Angeben
 
 comment: Setze für die Parameter Werte ein und fülle alle Felder der Tabelle aus.
 
@@ -49,7 +49,7 @@ author: Martin Lommatzsch
 
 
 
-# Tabellenarbeit mit negativen Zahlen
+# Tabellenarbeit mit Brüchen
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 **Fülle** die freien Felder der Tabelle **aus**.
@@ -66,12 +66,17 @@ data-hint-button="3"
 data-show-partial-solution 
 data-type="none" 
 data-sortable="false" -->
-|  $z$  |   $r$  |   $s$   |  $ z+r\cdot s $  |  $ z+r+2 \cdot s $ | $ |s|\cdot s - r $ |
-| :---: | :----: | :-----: | :---------:      | :----------:       | :-----------:      |
-|  6    |   -5   |   -4    | [[ 26  ]]         |   [[ -7  ]]         |  [[ -11 ]]          |
-|  -8   |   3    |    -6   | [[ -26 ]]         |   [[ -17 ]]         |  [[ -39 ]]          |
-|   -3  |   7    |    -4   | [[ -31 ]]         |   [[ -4  ]]         |  [[ -23 ]]          |
-|   7   |   -9   |    -5   | [[ 52  ]]         |   [[ -12 ]]         |  [[ -16 ]]          |
+|  $u$  |  $k$  |  $r$  | $u-k\cdot r$ | $(u+r):k$ | $u\cdot k+r$ |
+| :---: | :---: | :---: | :------------: | :---------: | :------------: |
+| $\dfrac{5}{6}$ | $\dfrac{1}{3}$ | $\dfrac{1}{2}$ | [[ 2/3 ]] @canvas | [[ 4 ]] @canvas | [[ 7/9 ]] @canvas |
+| $\dfrac{3}{4}$ | $\dfrac{2}{5}$ | $\dfrac{1}{4}$ | [[ 13/20 ]] @canvas | [[ 5/2 ]] @canvas | [[ 11/20 ]] @canvas |
+| $\dfrac{7}{8}$ | $\dfrac{1}{2}$ | $\dfrac{1}{3}$ | [[ 17/24 ]] @canvas | [[ 29/12 ]] @canvas | [[ 37/48 ]] @canvas |
+| $\dfrac{4}{5}$ | $\dfrac{3}{10}$ | $\dfrac{1}{2}$ | [[ 13/20 ]] @canvas | [[ 13/3 ]] @canvas | [[ 37/50 ]] @canvas |
+@Algebrite.check([ 2/3; 4; 7/9; 13/20; 5/2; 11/20; 17/24; 29/12; 37/48; 13/20; 13/3; 37/50 ])
 
 
-@ADetails(1=BE; Einsetzungsverfahren, Tabelle, Negative Zahlen)
+
+
+
+
+@ADetails(1=BE; Einsetzungsverfahren, Tabelle, Bruchrechnung)

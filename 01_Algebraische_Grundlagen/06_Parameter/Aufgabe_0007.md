@@ -63,6 +63,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3" 
+data-show-partial-solution 
 data-type="none" 
 data-sortable="false" -->
 |  $k$  |   $g$  |   $u$   |  $ (k-g):u $  |  $ k - g \cdot u $ | $ u \cdot u + k \cdot g $ |
