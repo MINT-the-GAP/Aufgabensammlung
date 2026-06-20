@@ -59,7 +59,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $z= 20355726$ \
 $Q(z) =$ [[ 30 ]] @canvas
 
@@ -73,7 +74,8 @@ $Q(z) =$ [[ 30 ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $z=  94101501$ \
 $Q(z) =$ [[ 21 ]] @canvas
 
@@ -87,7 +89,8 @@ $Q(z) =$ [[ 21 ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $z=  34620512$\
 $Q(z) =$ [[ 23 ]] @canvas
 
@@ -101,7 +104,8 @@ $Q(z) =$ [[ 23 ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ $z=  23500325$\
 $Q(z) =$ [[ 20 ]] @canvas
 

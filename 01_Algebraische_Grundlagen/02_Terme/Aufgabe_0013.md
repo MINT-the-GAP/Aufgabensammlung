@@ -59,7 +59,8 @@ author: Martin Lommatzsch
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ \
 $\;\;\;\; - 1,6 \cdot 4,25 - 0,85:0,5 + 1,25 \cdot 0,6 $ \
 $= - 1,6 \cdot 4,25 - 0,85:0,5 + $ [[ 0,75   ]] @canvas  \
@@ -78,7 +79,8 @@ $=$ [[ -7,75 ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ \
 $\;\;\;\; -0,75 \cdot 5,8 - 0,7 \cdot 2,5 + 1,2 \cdot 0,9 $ \
 $=$ [[ -4,35 ]] @canvas $ - 0,7 \cdot 2,5 + 1,2 \cdot 0,9 $ \
@@ -97,7 +99,8 @@ $=$ [[ -5,02 ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ \
 $\;\;\;\; 1,6 \cdot (-0,25) \cdot 2,5 - 6,3 : 70 $ \
 $= 1,6 \cdot $ [[ (-0,625) ]] @canvas $ - 6,3 : 70 $ \
@@ -115,7 +118,8 @@ $=$ [[  -1,09   ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ \
 $\;\;\;\; -(-0,7 \cdot 0,2):0,25 + 0,8 \cdot (-4,5)  $ \
 $= -($[[ -0,14   ]] @canvas$):0,25 + 0,8 \cdot (-4,5)  $ \

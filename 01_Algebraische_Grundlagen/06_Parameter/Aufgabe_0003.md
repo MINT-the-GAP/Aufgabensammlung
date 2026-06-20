@@ -56,11 +56,21 @@ author: Martin Lommatzsch
 
 
 
-<!-- data-type="none"
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-type="none" 
 data-sortable="false" -->
 |  $r$  |   $s$   |  $4\cdot s$   |  $r + s$     | $s \cdot s$ | $r \cdot r \cdot r$ |
 | :---: | :-----: | :-----------: | :----------: | :---------: | :---------: |
-|   4   |    6   |    [[ 24 ]] @canvas    |   [[ 10 ]] @canvas   |  [[ 36  ]] @canvas  |  [[ 64  ]] @canvas  |
-|   3   |    4   |    [[ 16 ]] @canvas    |   [[ 7  ]] @canvas   |  [[ 16  ]] @canvas  |  [[ 27  ]] @canvas  |
-|   6   |    8   |    [[ 32 ]] @canvas    |   [[ 14 ]] @canvas   |  [[ 64  ]] @canvas  |  [[ 216 ]] @canvas  |
-|   5   |    11  |    [[ 44 ]] @canvas    |   [[ 16 ]] @canvas   |  [[ 121 ]] @canvas  |  [[ 125 ]] @canvas  |
+|   4   |    6   |    [[ 24 ]]     |   [[ 10 ]]    |  [[ 36  ]]   |  [[ 64  ]]   |
+|   3   |    4   |    [[ 16 ]]     |   [[ 7  ]]    |  [[ 16  ]]   |  [[ 27  ]]   |
+|   6   |    8   |    [[ 32 ]]     |   [[ 14 ]]    |  [[ 64  ]]   |  [[ 216 ]]   |
+|   5   |    11  |    [[ 44 ]]     |   [[ 16 ]]    |  [[ 121 ]]   |  [[ 125 ]]   |
+
+
+@ADetails(1=BE; Einsetzungsverfahren, Tabelle, Grundrechenarten)

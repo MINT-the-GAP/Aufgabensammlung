@@ -58,7 +58,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $a)\;\; \text{kgV}(12;7) - \text{ggT}(24;144;4) \cdot \text{ggT}(66;121) = $ [[  40 ]] @canvas
 
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches, größter gemeinsamer Teiler, Grundrechenarten, Vorrangsregeln)
@@ -69,7 +70,8 @@ $a)\;\; \text{kgV}(12;7) - \text{ggT}(24;144;4) \cdot \text{ggT}(66;121) = $ [[ 
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $b)\;\; \text{kgV}\left(3;\text{kgV}(5;7)\right)-\text{ggT}\left(24;\text{ggT}(36;60)\right) =$ [[  93 ]] @canvas
 
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches, größter gemeinsamer Teiler, Subtraktion)
@@ -80,7 +82,8 @@ $b)\;\; \text{kgV}\left(3;\text{kgV}(5;7)\right)-\text{ggT}\left(24;\text{ggT}(3
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $c)\;\; \text{kgV}\left(\text{ggT}(45;115);\text{ggT}(51;187)\right) - \text{kgV}(7;3) =$ [[  44 ]] @canvas
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches, größter gemeinsamer Teiler, Subtraktion)
 

@@ -54,6 +54,12 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ \
 $ 250 : 5 =$ [[  50      ]] @canvas \
 $ 25 : 5 =$  [[  5       ]] @canvas \
@@ -63,9 +69,19 @@ $ 0,025 : 5 =$ [[  0,005    ]] @canvas \
 $ 0,0025 : 5 =$ [[  0,0005   ]] @canvas \
 $ 0,00025 : 5 =$ [[  0,00005  ]] @canvas 
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Division, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ \
 $ 84000 : 12000 =$ [[  7  ]] @canvas \
 $ 8400 : 1200 =$ [[  7  ]] @canvas \
@@ -75,9 +91,19 @@ $ 8,4 : 1,2 =$ [[  7  ]] @canvas \
 $ 0,84 : 0,12 =$ [[  7  ]] @canvas \
 $ 0,084 : 0,012 =$ [[  7  ]] @canvas 
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Division, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ \
 $ 1200 : 4 =$ [[  300     ]] @canvas \
 $ 120 : 4 =$ [[  30      ]] @canvas \
@@ -87,9 +113,19 @@ $ 0,12 : 4 =$ [[  0,03    ]] @canvas \
 $ 0,012 : 4 =$ [[  0,003   ]] @canvas \
 $ 0,0012 : 4 =$ [[  0,0003  ]] @canvas 
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Division, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ \
 $ 36 : 0,006 =$ [[  6000   ]] @canvas \
 $ 36 : 0,06 =$ [[  600    ]] @canvas \
@@ -99,7 +135,11 @@ $ 36 : 60 =$ [[  0,6    ]] @canvas \
 $ 36 : 600 =$ [[  0,06   ]] @canvas \
 $ 36 : 6000 =$ [[  0,006  ]] @canvas 
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Division, Zahlenverständnis)
+
+</div> 
 </section>
 
 

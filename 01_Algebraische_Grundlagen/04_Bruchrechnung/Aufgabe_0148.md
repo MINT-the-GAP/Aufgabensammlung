@@ -66,7 +66,8 @@ Es werden $6$ Mischungen hergestellt; danach werden für Tests $\dfrac{2}{3}\,\e
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  37/12  ]]   $\ell$ @canvas
 @Algebrite.check(37/12)
 ************

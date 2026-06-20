@@ -77,7 +77,8 @@ Zum Schluss werden noch zwei Zusatzleisten zu je $\dfrac{3}{20}\,\text{m}$ ergä
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  799/80  ]]  m @canvas
 @Algebrite.check(799/80)
 ************

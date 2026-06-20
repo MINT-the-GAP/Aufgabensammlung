@@ -54,17 +54,20 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ $ \mathbb{K} = \{ 2,3,5,6,8 \} $  und $\mathbb{M} = \{ 1,2,4,5,7,8 \} $ 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{K} \cup \mathbb{M} =  $ [[   {2,3,4,5,6,7,8}   ]] @canvas 
 
 __$b)\;\;$__ $  \mathbb{K} = \{ 3,6,9 \} $  und $\mathbb{M} = \{ 2,3,5,6,8 \} $ 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{K} \cup \mathbb{M} =  $ [[    {2,3,5,6,8,9}    ]] @canvas  
 
 __$c)\;\;$__ $  \mathbb{K} = \{ 1,3,5,7,9 \} $  und $\mathbb{M} = \{ 3,4,5,6,7 \} $ 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{K} \cup \mathbb{M} =  $ [[   {1,3,4,5,6,7,9}   ]] @canvas  
 
 

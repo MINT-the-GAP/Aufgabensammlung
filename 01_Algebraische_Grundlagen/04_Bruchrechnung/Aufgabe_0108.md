@@ -66,7 +66,8 @@ Ein Geldbetrag von $30$ € steht zur Verfügung. Es werden $\dfrac{1}{6}$ davon
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  25  ]] € @canvas
 ************
 $$

@@ -69,7 +69,8 @@ author: Martin Lommatzsch
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__  
 $ \dfrac{ 2 }{ 3 } = \dfrac{ x }{ 12 } $ \
 $x = $ [[  8  ]] @canvas
@@ -86,7 +87,8 @@ $x = $ [[  8  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__  
 $ \dfrac{ 7 }{ x } = \dfrac{ 14 }{ 30 } $ \
 $x = $ [[  15  ]] @canvas
@@ -103,7 +105,8 @@ $x = $ [[  15  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__  
 $ \dfrac{ x }{ 9 } = \dfrac{ 5 }{ 15 } $ \
 $x = $ [[  3  ]] @canvas
@@ -120,7 +123,8 @@ $x = $ [[  3  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__  
 $ \dfrac{ 6 }{ 8 } = \dfrac{ x }{ 20 } $ \
 $x = $ [[  15  ]] @canvas
@@ -137,7 +141,8 @@ $x = $ [[  15  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__  
 $ \dfrac{ x }{ 14 } = \dfrac{ 9 }{ 21 } $ \
 $x = $ [[  6  ]] @canvas
@@ -154,7 +159,8 @@ $x = $ [[  6  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$f)\;\;$__  
 $ \dfrac{ 10 }{ x } = \dfrac{ 15 }{ 12 } $ \
 $x = $ [[  8  ]] @canvas
@@ -171,7 +177,8 @@ $x = $ [[  8  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$g)\;\;$__  
 $ \dfrac{ x }{ 5 } = \dfrac{ 12 }{ 15 } $ \
 $x = $ [[  4  ]] @canvas
@@ -188,7 +195,8 @@ $x = $ [[  4  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$h)\;\;$__  
 $ \dfrac{ 8 }{ 20 } = \dfrac{ x }{ 25 } $ \
 $x = $ [[  10  ]] @canvas
@@ -205,7 +213,8 @@ $x = $ [[  10  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$i)\;\;$__  
 $ \dfrac{ x }{ 16 } = \dfrac{ 9 }{ 24 } $ \
 $x = $ [[  6  ]] @canvas
@@ -222,7 +231,8 @@ $x = $ [[  6  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$j)\;\;$__  
 $ \dfrac{ 4 }{ x } = \dfrac{ 6 }{ 18 } $ \
 $x = $ [[  12  ]] @canvas

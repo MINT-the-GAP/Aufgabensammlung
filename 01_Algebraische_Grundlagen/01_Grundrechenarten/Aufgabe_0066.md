@@ -60,7 +60,8 @@ $a)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $8642 - 3210=$[[ 5432 ]]
 ****************
 $$
@@ -83,7 +84,8 @@ $b)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $9753 - 6421=$[[ 3332 ]]
 ****************
 $$
@@ -106,7 +108,8 @@ $c)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $7531 - 4210=$[[ 3321 ]]
 ****************
 $$
@@ -130,7 +133,8 @@ $d)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $8640 - 4200=$[[ 4440 ]]
 ****************
 $$
@@ -153,7 +157,8 @@ $e)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $9751 - 6420=$[[ 3331 ]]
 ****************
 $$
@@ -176,7 +181,8 @@ $f)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $7532 - 4210=$[[ 3322 ]]
 ****************
 $$
@@ -199,7 +205,8 @@ $g)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $9754 - 6421=$[[ 3333 ]]
 ****************
 $$
@@ -222,7 +229,8 @@ $h)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $8531 - 3210=$[[ 5321 ]]
 ****************
 $$
@@ -245,7 +253,8 @@ $i)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $7642 - 5310=$[[ 2332 ]]
 ****************
 $$

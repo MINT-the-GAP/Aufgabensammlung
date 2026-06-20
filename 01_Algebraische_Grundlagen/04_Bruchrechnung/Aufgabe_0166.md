@@ -65,6 +65,7 @@ author: Martin Lommatzsch
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-solution-button="5" 
+data-hint-button="3" 
 data-randomize="true"  -->
 __$a)\;\;$__ $\dfrac{3}{4}$ 
  [->[$\left. \boxed{ = \dfrac{1}{2} + \dfrac{1}{4}} \right\| \boxed{ \dfrac{5}{4} : \dfrac{5}{2}}  $]]
@@ -80,6 +81,7 @@ $= \dfrac{2}{3}$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-solution-button="5" 
+data-hint-button="3" 
 data-randomize="true"  -->
 __$b)\;\;$__ $\dfrac{2}{5}$ 
  [->[$\left. \boxed{ =  \dfrac{4}{10}} \right\|\boxed{ \dfrac{3}{2} \cdot \dfrac{2}{5}}  $]]
@@ -95,6 +97,7 @@ $= \dfrac{5}{6}$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-solution-button="5" 
+data-hint-button="3" 
 data-randomize="true"  -->
 __$c)\;\;$__ $\dfrac{7}{10}$ 
  [->[$\left. \boxed{ = \dfrac{1}{2} + \dfrac{1}{5}} \right\| \boxed{ \dfrac{3}{4} : \dfrac{3}{2}}  $]]
@@ -110,6 +113,7 @@ $= \dfrac{1}{4}$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-solution-button="5" 
+data-hint-button="3" 
 data-randomize="true"  -->
 __$d)\;\;$__ $\dfrac{5}{12}$
  [->[$\left. \boxed{ = \dfrac{10}{24}} \right\| \boxed{ \dfrac{3}{2} - \dfrac{5}{6}} $]]
@@ -125,6 +129,7 @@ $= \dfrac{7}{9}$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-solution-button="5" 
+data-hint-button="3" 
 data-randomize="true"  -->
 __$e)\;\;$__ $\dfrac{4}{9}$
  [->[$\left. \boxed{ = \dfrac{1}{3} + \dfrac{1}{9}} \right\| \boxed{ \dfrac{8}{3} : \dfrac{4}{1}} $]]
@@ -140,6 +145,7 @@ $= \dfrac{5}{12}$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-solution-button="5" 
+data-hint-button="3" 
 data-randomize="true"  -->
 __$f)\;\;$__ $\dfrac{2}{7}$
  [->[$\left. \boxed{ = \dfrac{4}{14}} \right\| \boxed{ \dfrac{9}{8} : \dfrac{15}{8}} $]]

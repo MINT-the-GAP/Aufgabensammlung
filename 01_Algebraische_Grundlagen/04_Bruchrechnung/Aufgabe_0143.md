@@ -66,7 +66,8 @@ Aus der verbleibenden Stoffmenge wird anschließend noch $\dfrac{1}{4}$ für Tis
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  15  ]]  m @canvas
 @Algebrite.check(15)
 ************

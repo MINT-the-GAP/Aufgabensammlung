@@ -57,7 +57,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $a)\;\; \text{kgV}\left(4;\text{kgV}\left(3;\text{ggT}\left(36;\text{kgV}\left(4;8\right)\right)\right)\right) =$ [[  12 ]] @canvas
 
 
@@ -69,7 +70,8 @@ $a)\;\; \text{kgV}\left(4;\text{kgV}\left(3;\text{ggT}\left(36;\text{kgV}\left(4
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $b)\;\; \text{kgV}(25;15):\text{ggT}(81;93) 25- \text{kgV}\left(\text{ggT}(48;104);\text{ggT}(72;102)\right) =$ [[  1  ]] @canvas
 
 

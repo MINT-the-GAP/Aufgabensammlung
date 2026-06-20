@@ -529,7 +529,8 @@ __Aufgabe 10:__ **Sortiere** die Zahlen in die Stellenwerttafel **ein**. (Falls 
 
 __$a)\;\;$__ 0,0041
 
-<!-- data-type="none" data-solution-button="5"  -->
+<!-- data-type="none" data-solution-button="5" 
+data-hint-button="3"  -->
 |  Hunderter  |  Zehner |  Einer  |  Zehntel  | Hundertstel | Tausendstel |  Zehntausendstel  |
 | :---------: | :-----: | :-----: | :-------: | :---------: | :---------: | :---------------: |
 |   [[ 0 ]]   | [[ 0 ]] | [[ 0 ]] |  [[ 0 ]]  |    [[ 0 ]]  |  [[ 4 ]]    |     [[ 1 ]]       |
@@ -538,7 +539,8 @@ __$a)\;\;$__ 0,0041
 
 __$b)\;\;$__ 2,45
 
-<!-- data-type="none" data-solution-button="5"  -->
+<!-- data-type="none" data-solution-button="5" 
+data-hint-button="3"  -->
 |  Hunderter  |  Zehner |  Einer  |  Zehntel  | Hundertstel | Tausendstel |  Zehntausendstel  |
 | :---------: | :-----: | :-----: | :-------: | :---------: | :---------: | :---------------: |
 |   [[ 0 ]]   | [[ 0 ]] | [[ 2 ]] |  [[ 4 ]]  |    [[ 5 ]]  |  [[ 0 ]]    |     [[ 0 ]]       |
@@ -547,7 +549,8 @@ __$b)\;\;$__ 2,45
 
 __$c)\;\;$__ 32,409
 
-<!-- data-type="none" data-solution-button="5"  -->
+<!-- data-type="none" data-solution-button="5" 
+data-hint-button="3"  -->
 |  Hunderter  |  Zehner |  Einer  |  Zehntel  | Hundertstel | Tausendstel |  Zehntausendstel  |
 | :---------: | :-----: | :-----: | :-------: | :---------: | :---------: | :---------------: |
 |   [[ 0 ]]   | [[ 3 ]] | [[ 2 ]] |  [[ 4 ]]  |    [[ 0 ]]  |  [[ 9 ]]    |     [[ 0 ]]       |
@@ -571,7 +574,8 @@ __Aufgabe 11:__ **Sortiere** die Zahlen in die Stellenwerttafel **ein**. (Falls 
 
 __$a)\;\;$__ 17,054
 
-<!-- data-type="none"  data-solution-button="5" -->
+<!-- data-type="none"  data-solution-button="5" 
+data-hint-button="3" -->
 |  Hunderter  |  Zehner |  Einer  |  Zehntel  | Hundertstel | Tausendstel |  Zehntausendstel  |
 | :---------: | :-----: | :-----: | :-------: | :---------: | :---------: | :---------------: |
 |   [[ 0 ]]   | [[ 1 ]] | [[ 7 ]] |  [[ 0 ]]  |    [[ 5 ]]  |  [[ 4 ]]    |     [[ 0 ]]       |
@@ -580,7 +584,8 @@ __$a)\;\;$__ 17,054
 
 __$b)\;\;$__ 146,7912
 
-<!-- data-type="none"  data-solution-button="5" -->
+<!-- data-type="none"  data-solution-button="5" 
+data-hint-button="3" -->
 |  Hunderter  |  Zehner |  Einer  |  Zehntel  | Hundertstel | Tausendstel |  Zehntausendstel  |
 | :---------: | :-----: | :-----: | :-------: | :---------: | :---------: | :---------------: |
 |   [[ 1 ]]   | [[ 4 ]] | [[ 6 ]] |  [[ 7 ]]  |    [[ 9 ]]  |  [[ 1 ]]    |     [[ 2 ]]       |
@@ -589,7 +594,8 @@ __$b)\;\;$__ 146,7912
 
 __$c)\;\;$__ 0,0077
 
-<!-- data-type="none"  data-solution-button="5" -->
+<!-- data-type="none"  data-solution-button="5" 
+data-hint-button="3" -->
 |  Hunderter  |  Zehner |  Einer  |  Zehntel  | Hundertstel | Tausendstel |  Zehntausendstel  |
 | :---------: | :-----: | :-----: | :-------: | :---------: | :---------: | :---------------: |
 |   [[ 0 ]]   | [[ 0 ]] | [[ 0 ]] |  [[ 0 ]]  |    [[ 0 ]]  |  [[ 7 ]]    |     [[ 7 ]]       |
@@ -612,7 +618,8 @@ __Aufgabe 12:__ **Sortiere** die Zahlen in die Stellenwerttafel **ein**. (Falls 
 
 __$a)\;\;$__ 7,058
 
-<!-- data-type="none"  data-solution-button="5" -->
+<!-- data-type="none"  data-solution-button="5" 
+data-hint-button="3" -->
 |  Hunderter  |  Zehner |  Einer  |  Zehntel  | Hundertstel | Tausendstel |  Zehntausendstel  |
 | :---------: | :-----: | :-----: | :-------: | :---------: | :---------: | :---------------: |
 |   [[ 0 ]]   | [[ 0 ]] | [[ 7 ]] |  [[ 0 ]]  |    [[ 5 ]]  |  [[ 8 ]]    |     [[ 0 ]]       |
@@ -621,7 +628,8 @@ __$a)\;\;$__ 7,058
 
 __$b)\;\;$__ 614,82
 
-<!-- data-type="none"  data-solution-button="5" -->
+<!-- data-type="none"  data-solution-button="5" 
+data-hint-button="3" -->
 |  Hunderter  |  Zehner |  Einer  |  Zehntel  | Hundertstel | Tausendstel |  Zehntausendstel  |
 | :---------: | :-----: | :-----: | :-------: | :---------: | :---------: | :---------------: |
 |   [[ 6 ]]   | [[ 1 ]] | [[ 4 ]] |  [[ 8 ]]  |    [[ 2 ]]  |  [[ 0 ]]    |     [[ 0 ]]       |
@@ -630,7 +638,8 @@ __$b)\;\;$__ 614,82
 
 __$c)\;\;$__ 50,1903
 
-<!-- data-type="none"  data-solution-button="5" -->
+<!-- data-type="none"  data-solution-button="5" 
+data-hint-button="3" -->
 |  Hunderter  |  Zehner |  Einer  |  Zehntel  | Hundertstel | Tausendstel |  Zehntausendstel  |
 | :---------: | :-----: | :-----: | :-------: | :---------: | :---------: | :---------------: |
 |   [[ 0 ]]   | [[ 5 ]] | [[ 0 ]] |  [[ 1 ]]  |    [[ 9 ]]  |  [[ 0 ]]    |     [[ 3 ]]       |

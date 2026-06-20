@@ -61,8 +61,17 @@ __$a)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-type="none" -->
 [[  1,25  ]] @canvas
+
+@ADetails(1=BE; Dezimalzahlen, Zahlenstrahl, Zahlenverständnis)
 
 </div> 
 
@@ -75,8 +84,17 @@ __$b)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-type="none" -->
 [[  0,75  ]] @canvas
+
+@ADetails(1=BE; Dezimalzahlen, Zahlenstrahl, Zahlenverständnis)
 
 </div> 
 
@@ -89,8 +107,18 @@ __$c)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-type="none" -->
 [[  3,28  ]] @canvas
+
+
+@ADetails(1=BE; Dezimalzahlen, Zahlenstrahl, Zahlenverständnis)
 
 </div> 
 
@@ -103,8 +131,17 @@ __$d)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-type="none" -->
 [[  0,25  ]] @canvas
+
+@ADetails(1=BE; Dezimalzahlen, Zahlenstrahl, Zahlenverständnis)
 
 </div> 
 </section>

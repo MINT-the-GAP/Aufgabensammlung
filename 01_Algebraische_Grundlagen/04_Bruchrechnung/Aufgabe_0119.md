@@ -63,7 +63,8 @@ Ein Budget umfasst $50$ €. Davon werden $\dfrac{3}{5}$ verplant.
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  20  ]]  € @canvas
 ************
 $$

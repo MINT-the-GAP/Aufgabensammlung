@@ -60,7 +60,8 @@ $a)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $7421 + 1265=$[[ 8686 ]]
 ****************
 $$
@@ -83,7 +84,8 @@ $b)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $5310 + 2487=$[[ 7797 ]]
 ****************
 $$
@@ -106,7 +108,8 @@ $c)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $8632 + 1254=$[[ 9886 ]]
 ****************
 $$
@@ -129,7 +132,8 @@ $d)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $4201 + 3578=$[[ 7779 ]]
 ****************
 $$
@@ -152,7 +156,8 @@ $e)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $6143 + 2756=$[[ 8899 ]]
 ****************
 $$
@@ -175,7 +180,8 @@ $f)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $3520 + 4167=$[[ 7687 ]]
 ****************
 $$
@@ -198,7 +204,8 @@ $g)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $7004 + 1885=$[[ 8889 ]]
 ****************
 $$
@@ -221,7 +228,8 @@ $h)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $2413 + 5364=$[[ 7777 ]]
 ****************
 $$
@@ -244,7 +252,8 @@ $i)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $5602 + 2384=$[[ 7986 ]]
 ****************
 $$

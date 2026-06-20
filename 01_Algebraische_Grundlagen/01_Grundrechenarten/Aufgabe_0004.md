@@ -57,7 +57,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ Ein Produkt aus $7$ und $8$ wird durch $4$ dividiert.\
 [[  14  ]] @canvas
 
@@ -68,7 +69,8 @@ __$a)\;\;$__ Ein Produkt aus $7$ und $8$ wird durch $4$ dividiert.\
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ Der Term besteht aus den Faktoren $2$, $6$, $3$ und  $5$.\
 [[  180 ]] @canvas
 
@@ -79,7 +81,8 @@ __$b)\;\;$__ Der Term besteht aus den Faktoren $2$, $6$, $3$ und  $5$.\
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ Der Divisor $6$ und der Dividend $78$ bilden ein Produkt mit $8$.\
 [[  104 ]] @canvas
 
@@ -90,7 +93,8 @@ __$c)\;\;$__ Der Divisor $6$ und der Dividend $78$ bilden ein Produkt mit $8$.\
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ Der Subtrahend $19$ und der Minuend $73$ bilden eine Differenz, die mit $17$ addiert wird.\
 [[  71  ]] @canvas
 

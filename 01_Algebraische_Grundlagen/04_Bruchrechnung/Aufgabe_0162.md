@@ -65,6 +65,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-show-partial-solution 
 data-solution-button="5" 
+data-hint-button="3" 
 data-randomize="true"  -->
 __$a)\;\;$__
 [->[($\dfrac{3}{7}$)]] $<$ 
@@ -83,6 +84,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-show-partial-solution 
 data-solution-button="5" 
+data-hint-button="3" 
 data-randomize="true"  -->
 __$b)\;\;$__
 [->[($\dfrac{2}{11}$)]] $<$ 
@@ -101,6 +103,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-show-partial-solution 
 data-solution-button="5" 
+data-hint-button="3" 
 data-randomize="true"  -->
 __$c)\;\;$__
 [->[($\dfrac{2}{5}$)]] $<$ 

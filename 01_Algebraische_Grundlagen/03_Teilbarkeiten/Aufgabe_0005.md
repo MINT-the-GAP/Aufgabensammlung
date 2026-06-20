@@ -61,7 +61,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $a)\;\; \text{ggT}(28;91) =$ [[  7  ]] @canvas
 
 @ADetails(1=BE;größter gemeinsamer Teiler)
@@ -73,7 +74,8 @@ $a)\;\; \text{ggT}(28;91) =$ [[  7  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $b)\;\; \text{ggT}(23;29) =$ [[  1  ]] @canvas
 
 @ADetails(1=BE;größter gemeinsamer Teiler)
@@ -85,7 +87,8 @@ $b)\;\; \text{ggT}(23;29) =$ [[  1  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $c)\;\; \text{ggT}(68;51) =$ [[ 17  ]] @canvas
 
 @ADetails(1=BE;größter gemeinsamer Teiler)
@@ -97,7 +100,8 @@ $c)\;\; \text{ggT}(68;51) =$ [[ 17  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $d)\;\; \text{ggT}(24;60) =$ [[ 12  ]] @canvas
 
 @ADetails(1=BE;größter gemeinsamer Teiler)
@@ -109,7 +113,8 @@ $d)\;\; \text{ggT}(24;60) =$ [[ 12  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $e)\;\; \text{ggT}(81;27) =$ [[  9  ]] @canvas
 
 @ADetails(1=BE;größter gemeinsamer Teiler)
@@ -121,7 +126,8 @@ $e)\;\; \text{ggT}(81;27) =$ [[  9  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $f)\;\; \text{ggT}(175;325) =$ [[ 25  ]] @canvas
 
 @ADetails(1=BE;größter gemeinsamer Teiler)

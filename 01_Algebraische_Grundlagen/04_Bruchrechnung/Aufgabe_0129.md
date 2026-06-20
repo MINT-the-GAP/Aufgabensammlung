@@ -67,7 +67,8 @@ Von der gesamten Fläche soll für ein Turnier nur $\dfrac{5}{6}$ genutzt werden
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  100  ]]  m$^2$ @canvas
 ************
 $$

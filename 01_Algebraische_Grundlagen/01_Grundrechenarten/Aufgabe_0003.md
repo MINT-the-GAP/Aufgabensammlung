@@ -57,7 +57,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ Von der Summe aus $44$ und $18$ wird $29$ subtrahiert.\
 [[  33  ]] @canvas
 
@@ -68,7 +69,8 @@ __$a)\;\;$__ Von der Summe aus $44$ und $18$ wird $29$ subtrahiert.\
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ Der ganzzahlige Quotient besteht aus den Zahlen $5$ und $70$.\
 [[  14  ]] @canvas
 
@@ -79,7 +81,8 @@ __$b)\;\;$__ Der ganzzahlige Quotient besteht aus den Zahlen $5$ und $70$.\
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ Das Produkt der Zahlen $9$ und $4$ wird mit $5$ multipliziert.\
 [[  180 ]] @canvas
 
@@ -90,7 +93,8 @@ __$c)\;\;$__ Das Produkt der Zahlen $9$ und $4$ wird mit $5$ multipliziert.\
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ Die positive Differenz aus $38$ und $57$ wird um $14$ addiert.\
 [[  33  ]] @canvas
 

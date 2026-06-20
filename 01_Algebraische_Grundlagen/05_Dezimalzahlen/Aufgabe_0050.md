@@ -54,6 +54,12 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ \
 $ 14 \cdot 20 =$ [[  280  ]] @canvas \
 $ 14 \cdot 2 =$ [[  28   ]] @canvas \
@@ -62,9 +68,19 @@ $ 14 \cdot 0,02 =$ [[  0,28  ]] @canvas \
 $ 14 \cdot 0,002 =$ [[  0,028  ]] @canvas \
 $ 14 \cdot 0,0002 =$ [[  0,0028  ]] @canvas
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Multiplikation, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ \
 $ 5 \cdot 500 =$ [[  2500  ]] @canvas \
 $ 5 \cdot 50 =$ [[  250   ]] @canvas \
@@ -74,9 +90,19 @@ $ 5 \cdot 0,05 =$ [[  0,25  ]] @canvas \
 $ 5 \cdot 0,005 =$ [[  0,025  ]] @canvas \
 $ 5 \cdot 0,0005 =$ [[  0,0025  ]] @canvas
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Multiplikation, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ \
 $ 400 \cdot 800 =$ [[  320000  ]] @canvas \
 $ 40 \cdot 80 =$ [[  3200   ]] @canvas \
@@ -85,9 +111,19 @@ $ 0,4 \cdot 0,8 =$ [[  0,32      ]] @canvas \
 $ 0,04 \cdot 0,08 =$ [[  0,0032  ]] @canvas \
 $ 0,004 \cdot 0,008 =$ [[  0,000032  ]] @canvas 
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Multiplikation, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ \
 $ 24000 \cdot 0,004 =$ [[  96   ]] @canvas \
 $ 2400 \cdot 0,04 =$ [[  96   ]] @canvas \
@@ -97,7 +133,11 @@ $ 2,4 \cdot 40 =$ [[  96   ]] @canvas \
 $ 0,24 \cdot 400 =$ [[  96   ]] @canvas \
 $ 0,024 \cdot 4000 =$ [[  96   ]] @canvas
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Multiplikation, Zahlenverständnis)
+
+</div> 
 </section>
 
 

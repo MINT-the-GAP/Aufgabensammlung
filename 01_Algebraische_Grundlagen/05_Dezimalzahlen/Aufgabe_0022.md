@@ -54,34 +54,88 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $ 4,7+ 3,41=$ [[  8,11  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Addition)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $ 1,56+ 2,85=$ [[  4,41  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Addition)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $ 0,85+ 2,846=$ [[  3,696  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Addition)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $ 3,45+ 2,97=$ [[  6,42  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Addition)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$e)\;\;$__ $ 8,43+ 0,76=$ [[  9,19  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Addition)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$f)\;\;$__ $ 2,748 + 0,494=$ [[  3,242  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Addition)
+
+</div>  
 </section>
 
 

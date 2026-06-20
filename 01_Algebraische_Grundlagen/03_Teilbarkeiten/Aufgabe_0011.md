@@ -62,7 +62,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $a)\;\; \text{kgV}(8;5) =$ [[ 40  ]] @canvas
 
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches)
@@ -75,7 +76,8 @@ $a)\;\; \text{kgV}(8;5) =$ [[ 40  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $b)\;\; \text{kgV}(6;9) =$ [[  18 ]] @canvas
 
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches)
@@ -88,7 +90,8 @@ $b)\;\; \text{kgV}(6;9) =$ [[  18 ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $c)\;\; \text{kgV}(16;6) =$ [[  48 ]] @canvas
 
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches)
@@ -101,7 +104,8 @@ $c)\;\; \text{kgV}(16;6) =$ [[  48 ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $d)\;\; \text{kgV}(12;18) =$ [[  36 ]] @canvas
 
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches)
@@ -114,7 +118,8 @@ $d)\;\; \text{kgV}(12;18) =$ [[  36 ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $e)\;\; \text{kgV}(10;25) =$ [[ 50  ]] @canvas
 
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches)
@@ -127,7 +132,8 @@ $e)\;\; \text{kgV}(10;25) =$ [[ 50  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $f)\;\; \text{kgV}(35;7) =$ [[ 35  ]] @canvas
 
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches)

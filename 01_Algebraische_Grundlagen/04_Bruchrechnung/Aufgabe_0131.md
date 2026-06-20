@@ -67,7 +67,8 @@ Von den verbleibenden Heften werden später $\dfrac{1}{2}$ an die Schüler verte
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  20  ]] Hefte @canvas
 ************
 $$

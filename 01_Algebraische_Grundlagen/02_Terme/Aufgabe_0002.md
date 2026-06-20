@@ -59,7 +59,8 @@ author: Martin Lommatzsch
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ \
 $\;\;\;\; 72:18 + 26 + 22 $ \
 $=$ [[ 4 ]] @canvas $ + 26 + 22  $ \
@@ -76,7 +77,8 @@ $=$ [[ 52 ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ \
 $\;\;\;\; 5 \cdot 9 + 6 \cdot 7 + 2 $ \
 $= $ [[ 45 ]] @canvas $ + 6 \cdot 7 + 2$ \
@@ -94,7 +96,8 @@ $=$ [[ 89 ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ \
 $\;\;\;\; 34 + 64 + 25 + 21   $ \
 $=$ $ 34 + 64 + $ [[ 46 ]] @canvas  \
@@ -111,7 +114,8 @@ $=$ [[ 144 ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ \
 $\;\;\;\; 7 \cdot 3 \cdot ( 14 - 2 \cdot 4 ) $ \
 $= 7 \cdot 3 \cdot ( 14 -$ [[  8 ]] @canvas $) $ \

@@ -64,7 +64,8 @@ In der Werkhalle liegt eine Papierrolle von $30\,\text{m}$ Länge bereit. Für e
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  9  ]]  m @canvas
 ************
 $$

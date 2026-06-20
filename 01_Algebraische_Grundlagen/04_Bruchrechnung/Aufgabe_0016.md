@@ -70,7 +70,8 @@ author: Martin Lommatzsch
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $  7 + \dfrac{3}{10} = $ [[  73/10  ]] @canvas
 @Algebrite.check(73/10)
 ************
@@ -96,7 +97,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $  2 + \dfrac{9}{13} = $ [[  35/13  ]] @canvas
 @Algebrite.check(35/13)
 ************
@@ -122,7 +124,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $  5 + \dfrac{4}{9} = $ [[  49/9  ]] @canvas
 @Algebrite.check(49/9)
 ************
@@ -148,7 +151,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ $  8 + \dfrac{7}{12} = $ [[  103/12  ]] @canvas
 @Algebrite.check(103/12)
 ************
@@ -174,7 +178,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ $  3 + \dfrac{5}{14} = $ [[  47/14  ]] @canvas
 @Algebrite.check(47/14)
 ************
@@ -200,7 +205,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$f)\;\;$__ $  4 + \dfrac{11}{15} = $ [[  71/15  ]] @canvas
 @Algebrite.check(71/15)
 ************

@@ -59,7 +59,8 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $\dfrac{4}{5}$
 
 
-@circleQuiz(4/5, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" -->)
+@circleQuiz(4/5, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
+data-hint-button="3" -->)
 
 
 
@@ -71,7 +72,8 @@ __$a)\;\;$__ $\dfrac{4}{5}$
 __$b)\;\;$__ $\dfrac{7}{11}$
 
 
-@circleQuiz(7/11, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" -->)
+@circleQuiz(7/11, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
+data-hint-button="3" -->)
 
 
 
@@ -82,7 +84,8 @@ __$b)\;\;$__ $\dfrac{7}{11}$
 __$c)\;\;$__ $\dfrac{13}{15}$
 
 
-@circleQuiz(13/15, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" -->)
+@circleQuiz(13/15, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
+data-hint-button="3" -->)
 
 
 
@@ -93,7 +96,8 @@ __$c)\;\;$__ $\dfrac{13}{15}$
 __$d)\;\;$__ $\dfrac{11}{24}$
 
 
-@circleQuiz(11/24, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" -->)
+@circleQuiz(11/24, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
+data-hint-button="3" -->)
 
 
 
@@ -104,7 +108,8 @@ __$d)\;\;$__ $\dfrac{11}{24}$
 __$e)\;\;$__ $\dfrac{17}{29}$
 
 
-@circleQuiz(17/29, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" -->)
+@circleQuiz(17/29, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
+data-hint-button="3" -->)
 
 
 
@@ -115,7 +120,8 @@ __$e)\;\;$__ $\dfrac{17}{29}$
 __$f)\;\;$__ $\dfrac{7}{32}$
 
 
-@circleQuiz(7/32, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" -->)
+@circleQuiz(7/32, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
+data-hint-button="3" -->)
 
 
 

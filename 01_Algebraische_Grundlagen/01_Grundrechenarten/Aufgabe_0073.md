@@ -46,7 +46,8 @@ $a)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $936 : 12=$[[ 78 ]]
 ****************
 $$
@@ -70,7 +71,8 @@ $b)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $1155 : 15=$[[ 77 ]]
 ****************
 $$
@@ -94,7 +96,8 @@ $c)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $1248 : 16=$[[ 78 ]]
 ****************
 $$
@@ -118,7 +121,8 @@ $d)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $1452 : 22=$[[ 66 ]]
 ****************
 $$
@@ -142,7 +146,8 @@ $e)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $1728 : 24=$[[ 72 ]]
 ****************
 $$
@@ -166,7 +171,8 @@ $f)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $1800 : 25=$[[ 72 ]]
 ****************
 $$
@@ -190,7 +196,8 @@ $g)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $1936 : 22=$[[ 88 ]]
 ****************
 $$
@@ -214,7 +221,8 @@ $h)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $2016 : 28=$[[ 72 ]]
 ****************
 $$

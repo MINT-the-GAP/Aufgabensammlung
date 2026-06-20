@@ -54,24 +54,60 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $ 0,\bar{6} \cdot 6 =$ [[  3  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Periodizität, Multiplikation)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $ 1,\bar{3} : 0,\bar{2} =$ [[  6,5  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Periodizität, Division)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $ 7,\bar{5}+1,\bar{4} =$ [[  9  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Periodizität, Addition)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $ 0,\bar{7} : 0,\bar{4} =$ [[  1,75  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Periodizität, Division)
+
+</div>  
 </section>
 
 

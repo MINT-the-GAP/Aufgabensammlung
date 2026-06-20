@@ -64,7 +64,8 @@ Von der Fläche wird ein Teil als Garten angelegt, der $\dfrac{2}{3}$ der Gesamt
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  1152  ]]  m$^2$ @canvas
 ************
 $$

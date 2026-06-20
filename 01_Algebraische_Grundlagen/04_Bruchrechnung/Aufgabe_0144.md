@@ -66,7 +66,8 @@ Am Abend wird eine feste Nachfüllmenge von $\dfrac{1}{8}$ des vollen Kanisters 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  165/8  ]]   $\ell$ @canvas
 @Algebrite.check(165/8)
 ************

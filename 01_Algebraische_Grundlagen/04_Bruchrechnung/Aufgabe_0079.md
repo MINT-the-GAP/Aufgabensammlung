@@ -63,7 +63,8 @@ __$a)\;\;$__ Wie viel sind $\dfrac{1}{7}$ von $84\,$€?  \
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
  [[  12  ]] € @canvas
 
 
@@ -82,7 +83,8 @@ __$b)\;\;$__ Wie viel sind $\dfrac{8}{3}$ von $45\,$min?  \
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
  [[  120  ]] min @canvas
 
 
@@ -101,7 +103,8 @@ __$c)\;\;$__ Wie viel sind $\dfrac{3}{5}$ von $8000\,$dm$^2$?  \
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
  [[  4800  ]] dm$^2$ @canvas
 
 
@@ -120,7 +123,8 @@ __$d)\;\;$__ Wie viel sind $\dfrac{5}{12}$ von $144\,\ell$?  \
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
  [[  60  ]]  $\ell$ @canvas
 
 

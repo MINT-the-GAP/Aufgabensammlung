@@ -2661,6 +2661,7 @@ Wähle in den ersten drei Feldern gelb und danach rot aus. (Welches Gelb in welc
 
 
 <!-- data-solution-button="5" 
+data-hint-button="3" 
 data-randomize="true" -->
 In diese Lücke muss [->[(gelb)]] rein. \
 In diese muss auch [->[(gelb)]] rein und in diese [->[(gelb)]] auch. \

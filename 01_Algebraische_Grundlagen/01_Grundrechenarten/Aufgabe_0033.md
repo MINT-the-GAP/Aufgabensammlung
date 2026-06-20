@@ -57,7 +57,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $ 9 \cdot 6 = \textcolor{red}{54}$ \
 [[ Wert des Produkts  ]] @canvas
 
@@ -68,7 +69,8 @@ __$a)\;\;$__ $ 9 \cdot 6 = \textcolor{red}{54}$ \
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $ \textcolor{red}{18:6} = 3 $ \
 [[    Quotient        ]] @canvas
 
@@ -79,7 +81,8 @@ __$b)\;\;$__ $ \textcolor{red}{18:6} = 3 $ \
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $ 63-\textcolor{red}{34} = 29$ \
 [[      Subtrahend    ]] @canvas
 
@@ -90,7 +93,8 @@ __$c)\;\;$__ $ 63-\textcolor{red}{34} = 29$ \
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ $ 32 = \textcolor{red}{72-40}$ \
 [[          Differenz ]] @canvas
 

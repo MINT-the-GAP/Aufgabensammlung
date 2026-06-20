@@ -61,7 +61,8 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $\dfrac{7}{10}$
 
 
-@rectQuiz(7/10, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" -->)
+@rectQuiz(7/10, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
+data-hint-button="3" -->)
 
 
 
@@ -74,7 +75,8 @@ __$a)\;\;$__ $\dfrac{7}{10}$
 __$b)\;\;$__ $\dfrac{11}{15}$
 
 
-@rectQuiz(11/15, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" -->)
+@rectQuiz(11/15, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
+data-hint-button="3" -->)
 
 
 
@@ -85,7 +87,8 @@ __$b)\;\;$__ $\dfrac{11}{15}$
 <div class="flex-child">
 __$c)\;\;$__ $\dfrac{17}{24}$
 
-@rectQuiz(17/24, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" -->)
+@rectQuiz(17/24, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
+data-hint-button="3" -->)
 
 
 
@@ -97,7 +100,8 @@ __$c)\;\;$__ $\dfrac{17}{24}$
 <div class="flex-child">
 __$d)\;\;$__ $\dfrac{5}{9}$
 
-@rectQuiz(5/9, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" -->)
+@rectQuiz(5/9, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
+data-hint-button="3" -->)
 
 
 
@@ -110,7 +114,8 @@ __$d)\;\;$__ $\dfrac{5}{9}$
 __$e)\;\;$__ $\dfrac{19}{28}$
 
 
-@rectQuiz(19/28, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" -->)
+@rectQuiz(19/28, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
+data-hint-button="3" -->)
 
 
 
@@ -122,7 +127,8 @@ __$e)\;\;$__ $\dfrac{19}{28}$
 __$f)\;\;$__ $\dfrac{7}{45}$
 
 
-@rectQuiz(7/45, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" -->)
+@rectQuiz(7/45, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
+data-hint-button="3" -->)
 
 
 

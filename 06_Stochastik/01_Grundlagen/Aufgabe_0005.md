@@ -73,7 +73,8 @@ $\{$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> 
 $\}$
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\bar{x}=$ [[  3,9  ]]
 @Algebrite.check(39/10)
 *******************
@@ -109,7 +110,8 @@ $\{ \{$
 $\} \}$
 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\bar{x}=$ [[  7,125  ]]
 @Algebrite.check(57/8)
 *******************
@@ -145,7 +147,8 @@ $\} \}$
 
 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\bar{x}=$ [[  6,6  ]]
 @Algebrite.check(66/10)
 *******************

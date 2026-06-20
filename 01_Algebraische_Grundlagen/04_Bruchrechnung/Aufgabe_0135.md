@@ -65,7 +65,8 @@ Von den verbleibenden Büchern sind $\dfrac{2}{5}$ Sachbücher, der Rest sind Ze
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  90  ]]  Zeitschriften @canvas
 ************
 $$

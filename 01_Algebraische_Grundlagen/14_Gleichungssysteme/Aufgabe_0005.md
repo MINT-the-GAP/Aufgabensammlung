@@ -74,7 +74,8 @@ x \cap I. &\qquad 3\cdot 5 - y = 13 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 Um das [[   Gleichungssystem   ]] @canvas zu lösen, wird das [[    Einsetzungsverfahren    ]] @canvas angewendet.  
 Zunächst wird eine der beiden [[   Gleichungen   ]] @canvas gewählt, hier die erste, und nach [[  y  ]] @canvas umgestellt.  
 Aus $3x - y = 13$ folgt durch Umformen, dass $y = 3x - 13$. Diesen Ausdruck setzen wir in die zweite [[  Gleichung  ]] @canvas ein.  
@@ -100,7 +101,8 @@ x \cap II.\, &\qquad 5\cdot 3 - y = 11 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 Um das [[   Gleichungssystem   ]] @canvas zu lösen, wird das [[   Additionsverfahren   ]] @canvas angewendet.
 Dazu wird zunächst die [[   zweite   ]] @canvas Gleichung so umgeformt, dass die Variable $y$ in beiden Gleichungen mit entgegengesetzten [[ Vorzeichen ]] @canvas auftritt.
 Deshalb wird  die zweite Gleichung mit [[  2  ]] @canvas multiplizieren und es ergibt sich $10x - 2y = 22$.
@@ -135,7 +137,8 @@ x \cap I. &\qquad 4\cdot 4 - y = 13 \\
 $$
 
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 Zur Lösung des [[   Gleichungssystems   ]] @canvas wird das [[   Gleichsetzungsverfahren   ]] @canvas angewendet.
 Zunächst wird die [[   erste   ]] @canvas Gleichung nach $y$ aufgelöst und es ergibt sich $y = 4x - 13$.
 Anschließend wird die [[   zweite   ]] @canvas Gleichung ebenfalls nach $y$ umgeformt, sodass $y = \dfrac{10 - x}{2}$ resultiert.

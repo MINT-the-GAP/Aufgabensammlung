@@ -58,7 +58,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $ 6 \cdot 4 \cdot 3  - 33 =$ [[  39  ]] @canvas
 
 @ADetails(BE=1;Grundrechenarten, Vorrangsregeln)
@@ -70,7 +71,8 @@ __$a)\;\;$__ $ 6 \cdot 4 \cdot 3  - 33 =$ [[  39  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $ 83 - 5 \cdot 9  =$ [[  38  ]] @canvas
 
 @ADetails(BE=1;Grundrechenarten, Vorrangsregeln)
@@ -82,7 +84,8 @@ __$b)\;\;$__ $ 83 - 5 \cdot 9  =$ [[  38  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $ 63 : 7 + 75:5  =$ [[  24  ]] @canvas
 
 @ADetails(BE=1;Grundrechenarten, Vorrangsregeln)
@@ -94,7 +97,8 @@ __$c)\;\;$__ $ 63 : 7 + 75:5  =$ [[  24  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ $ 5 \cdot 7 + 32:8  =$ [[  39  ]] @canvas
 
 @ADetails(BE=1;Grundrechenarten, Vorrangsregeln)
@@ -106,7 +110,8 @@ __$d)\;\;$__ $ 5 \cdot 7 + 32:8  =$ [[  39  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ $ (24+36) \cdot 3  =$ [[  180  ]] @canvas
 
 @ADetails(BE=1;Grundrechenarten, Vorrangsregeln)
@@ -118,7 +123,8 @@ __$e)\;\;$__ $ (24+36) \cdot 3  =$ [[  180  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$f)\;\;$__ $  (2 + 9) \cdot ( 16 - 7)  =$ [[  99  ]] @canvas
 
 @ADetails(BE=1;Grundrechenarten, Vorrangsregeln)

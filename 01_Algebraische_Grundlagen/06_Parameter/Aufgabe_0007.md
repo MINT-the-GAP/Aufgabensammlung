@@ -56,11 +56,21 @@ author: Martin Lommatzsch
 
 
 
-<!-- data-type="none"
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-type="none" 
 data-sortable="false" -->
 |  $k$  |   $g$  |   $u$   |  $ (k-g):u $  |  $ k - g \cdot u $ | $ u \cdot u + k \cdot g $ |
 | :---: | :----: | :-----: | :------:      | :----------:       | :-----------:             |
-|   23  |   5    |    3    | [[ 6 ]] @canvas       |   [[ 8 ]] @canvas          |  [[  124  ]] @canvas              |
-|   21  |   7    |    2    | [[ 7 ]] @canvas       |   [[ 7 ]] @canvas          |  [[  151  ]] @canvas              |
-|   54  |   9    |    5    | [[ 9 ]] @canvas       |   [[ 9 ]] @canvas          |  [[  511  ]] @canvas              |
-|   57  |   13   |    4    | [[ 11 ]] @canvas      |   [[ 5 ]] @canvas          |  [[  757  ]] @canvas              |
+|   23  |   5    |    3    | [[ 6 ]]        |   [[ 8 ]]           |  [[  124  ]]               |
+|   21  |   7    |    2    | [[ 7 ]]        |   [[ 7 ]]           |  [[  151  ]]               |
+|   54  |   9    |    5    | [[ 9 ]]        |   [[ 9 ]]           |  [[  511  ]]               |
+|   57  |   13   |    4    | [[ 11 ]]       |   [[ 5 ]]           |  [[  757  ]]               |
+
+
+@ADetails(1=BE; Einsetzungsverfahren, Tabelle, Grundrechenarten)

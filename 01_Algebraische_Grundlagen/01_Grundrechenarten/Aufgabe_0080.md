@@ -46,7 +46,8 @@ $a)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $12960 : 8=$[[ 1620 ]]
 ****************
 $$
@@ -70,7 +71,8 @@ $b)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $16848 : 4=$[[ 4212 ]]
 ****************
 $$
@@ -98,7 +100,8 @@ $c)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $21600 : 5=$[[ 4320 ]]
 ****************
 $$
@@ -124,7 +127,8 @@ $d)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $24192 : 6=$[[ 4032 ]]
 ****************
 $$
@@ -152,7 +156,8 @@ $e)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $18900 : 7=$[[ 2700 ]]
 ****************
 $$
@@ -178,7 +183,8 @@ $f)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $23040 : 8=$[[ 2880 ]]
 ****************
 $$
@@ -204,7 +210,8 @@ $g)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $14175 : 9=$[[ 1575 ]]
 ****************
 $$
@@ -232,7 +239,8 @@ $h)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $15246 : 6=$[[ 2541 ]]
 ****************
 $$

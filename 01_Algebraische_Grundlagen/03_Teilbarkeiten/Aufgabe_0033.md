@@ -59,7 +59,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $8425$ [[ $\mid$ | ($\nmid$) ]] $5$ \
 
 
@@ -71,7 +72,8 @@ __$a)\;\;$__ $8425$ [[ $\mid$ | ($\nmid$) ]] $5$ \
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $3609$ [[ $\mid$ | ($\nmid$) ]] $9$ \
 
 
@@ -83,7 +85,8 @@ __$b)\;\;$__ $3609$ [[ $\mid$ | ($\nmid$) ]] $9$ \
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $6142$ [[ $\mid$ | ($\nmid$) ]] $2$ \
 
 
@@ -95,7 +98,8 @@ __$c)\;\;$__ $6142$ [[ $\mid$ | ($\nmid$) ]] $2$ \
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ $3$ [[ ($\mid$) | $\nmid$ ]] $12$ \
 
 
@@ -107,7 +111,8 @@ __$d)\;\;$__ $3$ [[ ($\mid$) | $\nmid$ ]] $12$ \
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ $4176$ [[ $\mid$ | ($\nmid$) ]] $4$ \
 
 
@@ -119,7 +124,8 @@ __$e)\;\;$__ $4176$ [[ $\mid$ | ($\nmid$) ]] $4$ \
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$f)\;\;$__ $2511$ [[ $\mid$ | ($\nmid$) ]] $3$ 
 
 

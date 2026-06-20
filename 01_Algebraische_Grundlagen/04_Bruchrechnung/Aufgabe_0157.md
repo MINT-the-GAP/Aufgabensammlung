@@ -69,7 +69,8 @@ Zum Schluss können $\dfrac{1}{4}\,\text{m}$ aus Reststücken wiederverwendet we
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  293/45  ]]  m @canvas
 @Algebrite.check(293/45)
 ************

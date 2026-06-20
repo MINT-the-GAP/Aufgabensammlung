@@ -58,7 +58,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $  7 \cdot 8 - 14  =$ [[  42  ]] @canvas
 
 @ADetails(BE=1;Grundrechenarten, Vorrangsregeln)
@@ -70,7 +71,8 @@ __$a)\;\;$__ $  7 \cdot 8 - 14  =$ [[  42  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $ 2 + 3 \cdot 9  =$ [[  29  ]] @canvas
 
 @ADetails(BE=1;Grundrechenarten, Vorrangsregeln)
@@ -82,7 +84,8 @@ __$b)\;\;$__ $ 2 + 3 \cdot 9  =$ [[  29  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $  4 \cdot  5 + 6 \cdot 3  =$ [[  38  ]] @canvas
 
 @ADetails(BE=1;Grundrechenarten, Vorrangsregeln)
@@ -94,7 +97,8 @@ __$c)\;\;$__ $  4 \cdot  5 + 6 \cdot 3  =$ [[  38  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ $  72 : 9 + 15  =$ [[  23  ]] @canvas
 
 @ADetails(BE=1;Grundrechenarten, Vorrangsregeln)
@@ -106,7 +110,8 @@ __$d)\;\;$__ $  72 : 9 + 15  =$ [[  23  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ $  48 - 36:4  =$ [[  39  ]] @canvas
 
 @ADetails(BE=1;Grundrechenarten, Vorrangsregeln)
@@ -118,7 +123,8 @@ __$e)\;\;$__ $  48 - 36:4  =$ [[  39  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$f)\;\;$__ $ 41:7 + 15:7  =$ [[   8  ]] @canvas
 
 @ADetails(BE=1;Grundrechenarten, Vorrangsregeln)

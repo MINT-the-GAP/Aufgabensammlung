@@ -54,6 +54,12 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ \
 $ 500 \cdot 70 =$ [[  35000  ]] @canvas \
 $ 500 \cdot 7 =$ [[  3500   ]] @canvas \
@@ -63,9 +69,19 @@ $ 500 \cdot 0,007 =$ [[  3,5  ]] @canvas \
 $ 500 \cdot 0,0007 =$ [[  0,35  ]] @canvas \
 $ 500 \cdot 0,00007 =$ [[  0,035  ]] @canvas
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Multiplikation, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ \
 $ 11 \cdot 60 =$ [[  660  ]] @canvas \
 $ 11 \cdot 6 =$ [[  66   ]] @canvas \
@@ -75,9 +91,19 @@ $ 11 \cdot 0,006 =$ [[  0,066  ]] @canvas \
 $ 11 \cdot 0,0006 =$ [[  0,0066  ]] @canvas \
 $ 11 \cdot 0,00006 =$ [[  0,00066  ]] @canvas
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Multiplikation, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ \
 $ 400 \cdot 20 =$ [[  8000  ]] @canvas \
 $ 40 \cdot 2 =$ [[  80   ]] @canvas \
@@ -87,9 +113,19 @@ $ 0,04 \cdot 0,002 =$ [[  0,00008  ]] @canvas \
 $ 0,004 \cdot 0,0002 =$ [[  0,0000008  ]] @canvas \
 $ 0,0004 \cdot 0,00002 =$ [[  0,000000008  ]] @canvas
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Multiplikation, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ \
 $ 900 \cdot 0,007 =$ [[  6,3  ]] @canvas \
 $ 90 \cdot 0,07 =$ [[  6,3  ]] @canvas \
@@ -99,7 +135,11 @@ $ 0,09 \cdot 70 =$ [[  6,3  ]] @canvas \
 $ 0,009 \cdot 700 =$ [[  6,3  ]] @canvas \
 $ 0,0009 \cdot 7000 =$ [[  6,3  ]] @canvas
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Multiplikation, Zahlenverständnis)
+
+</div> 
 </section>
 
 

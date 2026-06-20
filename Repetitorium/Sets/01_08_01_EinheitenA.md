@@ -2251,6 +2251,7 @@ __Aufgabe 38:__ **Sortiere** das die Kacheln nach Größe und **ordne** sie der 
 
 <!-- data-randomize="true"  
 data-solution-button="5" 
+data-hint-button="3" 
 data-show-partial-solution -->
 Masse: [->[($\dfrac{3}{8}$ t)]]  $>$ [->[($\dfrac{2000}{6}$ kg)]] $>$ [->[($333$ kg)]] $>$ [->[($3 \cdot 10^6$ g)]]  \
 Zeit:  [->[($250$ min)]] $>$ [->[(14640$ s)]] $>$ [->[($4,1$ h)]] $>$ [->[($120^2$ s)]]  \
@@ -2271,6 +2272,7 @@ __Aufgabe 39:__ **Sortiere** das die Kacheln nach Größe und **ordne** sie der 
 
 <!-- data-randomize="true"  
 data-solution-button="5" 
+data-hint-button="3" 
 data-show-partial-solution -->
 Masse:  [->[($\dfrac{13}{25}\ \text{t}$)]] $>$ [->[($5{,}1\cdot 10^5\ \text{g}$)]] $>$ [->[($4{,}95\cdot 10^2\ \text{kg}$)]] $>$ [->[($0{,}48\ \text{t}$)]]  \
 Zeit:   [->[($2{,}11\ \text{h}$)]] $>$ [->[($7{,}55\cdot 10^3\ \text{s}$)]] $>$ [->[($125\ \text{min}$)]] $>$ [->[($7{,}35\cdot 10^3\ \text{s}$)]]  \
@@ -2290,6 +2292,7 @@ __Aufgabe 40:__ **Sortiere** das die Kacheln nach Größe und **ordne** sie der 
 
 <!-- data-randomize="true"  
 data-solution-button="5" 
+data-hint-button="3" 
 data-show-partial-solution -->
 Masse:  [->[($0{,}62\ \text{t}$)]] $>$ [->[($6,15\cdot 10^2\ \text{kg}$)]] $>$ [->[($\dfrac{12400}{20}\ \text{kg}$)]] $>$ [->[($615000\ \text{g}$)]]  \
 Zeit:   [->[($9{,}1\cdot 10^3\ \text{s}$)]] $>$ [->[($152\ \text{min}$)]] $>$ [->[($2,55\ \text{h}$)]] $>$ [->[($9100\ \text{s}$)]]  \

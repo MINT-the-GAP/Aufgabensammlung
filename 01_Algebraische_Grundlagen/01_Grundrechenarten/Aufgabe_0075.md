@@ -46,7 +46,8 @@ $a)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $123 \cdot 234=$[[ 28782 ]]
 ****************
 $$
@@ -70,7 +71,8 @@ $b)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $142 \cdot 315=$[[ 44730 ]]
 ****************
 $$
@@ -94,7 +96,8 @@ $c)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $207 \cdot 408=$[[ 84456 ]]
 ****************
 $$
@@ -118,7 +121,8 @@ $d)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $256 \cdot 327=$[[ 83712 ]]
 ****************
 $$
@@ -142,7 +146,8 @@ $e)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $318 \cdot 245=$[[ 77910 ]]
 ****************
 $$
@@ -166,7 +171,8 @@ $f)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $364 \cdot 512=$[[ 186368 ]]
 ****************
 $$
@@ -190,7 +196,8 @@ $g)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $427 \cdot 306=$[[ 130662 ]]
 ****************
 $$
@@ -214,7 +221,8 @@ $h)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $509 \cdot 214=$[[ 108926 ]]
 ****************
 $$

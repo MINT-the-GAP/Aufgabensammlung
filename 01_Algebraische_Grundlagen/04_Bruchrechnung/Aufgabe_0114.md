@@ -63,7 +63,8 @@ Ein Rechteck hat eine Seitenlänge von $12$ cm. Die andere Seitenlänge beträgt
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[ 9 ]]  cm @canvas
 ************
 $$

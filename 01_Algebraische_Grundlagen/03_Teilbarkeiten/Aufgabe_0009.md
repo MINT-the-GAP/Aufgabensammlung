@@ -61,7 +61,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $a)\;\; \text{ggT}(35;105;115) =$ [[  5  ]] @canvas
 
 @ADetails(1=BE;größter gemeinsamer Teiler)
@@ -73,7 +74,8 @@ $a)\;\; \text{ggT}(35;105;115) =$ [[  5  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $b)\;\; \text{ggT}(20;64;96) =$ [[  4  ]] @canvas
 
 @ADetails(1=BE;größter gemeinsamer Teiler)
@@ -85,7 +87,8 @@ $b)\;\; \text{ggT}(20;64;96) =$ [[  4  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $c)\;\; \text{ggT}(36;83;144) =$ [[  1  ]] @canvas
 
 @ADetails(1=BE;größter gemeinsamer Teiler)
@@ -97,7 +100,8 @@ $c)\;\; \text{ggT}(36;83;144) =$ [[  1  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $d)\;\; \text{ggT}(48;144;176) =$ [[  16 ]] @canvas
 
 @ADetails(1=BE;größter gemeinsamer Teiler)

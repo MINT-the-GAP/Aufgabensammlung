@@ -66,7 +66,8 @@ Von der verbleibenden Fläche wird anschließend $\dfrac{1}{5}$ für Wege reserv
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  252/5  ]] m^2
 @Algebrite.check(252/5)
 ************

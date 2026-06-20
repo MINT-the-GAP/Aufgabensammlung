@@ -61,7 +61,8 @@ author: Martin Lommatzsch
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ \
 $\;\;\;\; \dfrac{7}{9} : \dfrac{14}{15} - \dfrac{1}{6}$ \
 $=$ [[ 5/6 ]] @canvas $ - \dfrac{1}{6}$ \
@@ -78,7 +79,8 @@ $=$ [[ 2/3 ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ \
 $\;\;\;\; \left(\dfrac{3}{5} + \dfrac{7}{10}\right) \cdot \dfrac{4}{13} - \dfrac{1}{5}$ \
 $=$ [[ 13/10 ]] @canvas $ \cdot \dfrac{4}{13} - \dfrac{1}{5}$ \
@@ -96,7 +98,8 @@ $=$ [[ 1/5 ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ \
 $\;\;\;\; \dfrac{11}{12} - \dfrac{2}{3} : \dfrac{8}{9} + \left(\dfrac{5}{6} - \dfrac{1}{2}\right)$ \
 $= \dfrac{11}{12} -$ [[ 3/4 ]] @canvas $ +$ [[ 1/3 ]] @canvas \
@@ -114,7 +117,8 @@ $=$ [[ 1/2 ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ \
 $\;\;\;\; \left(\dfrac{7}{8} - \dfrac{1}{4}\right) : \dfrac{5}{6} + \left(\dfrac{2}{3} + \dfrac{1}{6}\right) \cdot \dfrac{3}{5}$ \
 $=$ [[ 5/8 ]] @canvas $ : \dfrac{5}{6} +$ [[ 5/6 ]] @canvas $ \cdot \dfrac{3}{5}$ \

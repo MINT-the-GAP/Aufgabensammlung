@@ -56,11 +56,21 @@ author: Martin Lommatzsch
 
 
 
-<!-- data-type="none"
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-type="none" 
 data-sortable="false" -->
 |  $a$  |   $b$   |   $c$   |  $a+c$   |  $c + b$     |  $b : a$ | $2 \cdot a \cdot c$ |
 | :---: | :-----: | :-----: | :------: | :----------: | :------: | :---------: |
-|   4   |     8   |     2   | [[ 6  ]] @canvas |   [[  10 ]] @canvas  | [[  2 ]] @canvas |  [[ 16 ]] @canvas   |
-|   6   |    12   |     7   | [[ 13 ]] @canvas |   [[  19 ]] @canvas  | [[  2 ]] @canvas |  [[ 84 ]] @canvas   |
-|   5   |    25   |     3   | [[ 8  ]] @canvas |   [[ 28  ]] @canvas  | [[  5 ]] @canvas |  [[ 30 ]] @canvas   |
-|   9   |    27   |     2   | [[ 11 ]] @canvas |   [[  11 ]] @canvas  | [[  3 ]] @canvas |  [[ 36 ]] @canvas   |
+|   4   |     8   |     2   | [[ 6  ]]  |   [[  10 ]]   | [[  2 ]]  |  [[ 16 ]]    |
+|   6   |    12   |     7   | [[ 13 ]]  |   [[  19 ]]   | [[  2 ]]  |  [[ 84 ]]    |
+|   5   |    25   |     3   | [[ 8  ]]  |   [[ 28  ]]   | [[  5 ]]  |  [[ 30 ]]    |
+|   9   |    27   |     2   | [[ 11 ]]  |   [[  11 ]]   | [[  3 ]]  |  [[ 36 ]]    |
+
+
+@ADetails(1=BE; Einsetzungsverfahren, Tabelle, Grundrechenarten)

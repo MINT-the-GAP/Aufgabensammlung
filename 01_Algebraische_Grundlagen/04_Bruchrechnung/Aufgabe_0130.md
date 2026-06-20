@@ -66,7 +66,8 @@ Im Laufe des Tages werden zusätzlich $\dfrac{1}{4}$ des **vollen Beckens** nach
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  78  ]]  $\ell$ @canvas
 ************
 $$

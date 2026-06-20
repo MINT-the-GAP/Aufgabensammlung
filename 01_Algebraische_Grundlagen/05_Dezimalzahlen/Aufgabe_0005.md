@@ -54,32 +54,80 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $\dfrac{1}{40}$ [[$>$|$=$|($<$)]] $0,03$ 
 
+
+@ADetails(1=BE; Bruchrechnung, Dezimalzahlen, Vergleich)
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $0,45$ [[($>$)|$=$|$<$]] $\dfrac{4}{9}$ 
 
+
+@ADetails(1=BE; Bruchrechnung, Dezimalzahlen, Vergleich)
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $0,\overline{428571}$ [[($>$)|($=$)|$<$]] $\dfrac{3}{7}$ 
 
+
+@ADetails(1=BE; Bruchrechnung, Dezimalzahlen, Vergleich, Periodizität)
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $\dfrac{7}{6}$ [[$>$|$=$|($<$)]] $1,2$ 
 
+
+@ADetails(1=BE; Bruchrechnung, Dezimalzahlen, Vergleich)
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$e)\;\;$__ $5,2$ [[($>$)|$=$|$<$]] $\dfrac{5}{2}$ 
 
+
+@ADetails(1=BE; Bruchrechnung, Dezimalzahlen, Vergleich)
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$f)\;\;$__ $\dfrac{5}{12}$ [[$>$|$=$|($<$)]] $0,\bar{4}$ 
+
+
+@ADetails(1=BE; Bruchrechnung, Dezimalzahlen, Vergleich, Periodizität)
 
 </div>
 </section>

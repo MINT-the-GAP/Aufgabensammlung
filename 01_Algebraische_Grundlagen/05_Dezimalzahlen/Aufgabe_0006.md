@@ -54,32 +54,80 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $0,78$ [[($>$)|$=$|$<$]] $\dfrac{12}{16}$ 
 
+
+@ADetails(1=BE; Bruchrechnung, Dezimalzahlen, Vergleich)
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $\dfrac{5}{6}$ [[$>$|($=$)|$<$]] $0,8\bar{3}$ 
 
+
+@ADetails(1=BE; Bruchrechnung, Dezimalzahlen, Vergleich, Periodizität)
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $\dfrac{8}{3}$ [[($>$)|$=$|($<$)]] $2,7$ 
 
+
+@ADetails(1=BE; Bruchrechnung, Dezimalzahlen, Vergleich)
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $\dfrac{20}{9}$ [[$>$|$=$|($<$)]] $2,25$ 
 
+
+@ADetails(1=BE; Bruchrechnung, Dezimalzahlen, Vergleich)
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$e)\;\;$__ $0,85$ [[$>$|($=$)|$<$]] $\dfrac{17}{20}$ 
 
+
+@ADetails(1=BE; Bruchrechnung, Dezimalzahlen, Vergleich)
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$f)\;\;$__ $\dfrac{8}{25}$ [[$>$|$=$|($<$)]] $0,\bar{3}$ 
+
+
+@ADetails(1=BE; Bruchrechnung, Dezimalzahlen, Vergleich, Periodizität)
 
 </div>
 </section>

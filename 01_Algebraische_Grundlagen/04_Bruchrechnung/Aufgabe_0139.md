@@ -64,7 +64,8 @@ In der zweiten Pause werden anschließend $\dfrac{3}{8}$ der verbleibenden Brüh
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  35/2  ]]   $\ell$ @canvas
 @Algebrite.check(35/2)
 ************

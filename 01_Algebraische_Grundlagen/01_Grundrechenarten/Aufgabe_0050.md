@@ -67,7 +67,8 @@ __$a)\;\;$__
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  8-6   ]] @canvas $= 2$
 
 @ADetails(BE=1;Zahlenstrahl, Zahlenverständnis)
@@ -88,7 +89,8 @@ __$b)\;\;$__
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  3-3   ]] @canvas $= 0$
 
 @ADetails(BE=1;Zahlenstrahl, Zahlenverständnis)

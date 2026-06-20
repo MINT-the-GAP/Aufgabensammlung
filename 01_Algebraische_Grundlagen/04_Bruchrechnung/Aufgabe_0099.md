@@ -76,7 +76,8 @@ __$a)\;\;$__ Das jeweilige Rechteck wird durch die gestrichelten Linien in wie v
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$I\;\;$__ [[  5  ]] @canvas
 
 
@@ -90,7 +91,8 @@ __$I\;\;$__ [[  5  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$II\;\;$__ [[  4  ]] @canvas
 
 
@@ -104,7 +106,8 @@ __$II\;\;$__ [[  4  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$III\;\;$__ [[  3  ]] @canvas
 
 
@@ -124,7 +127,8 @@ __$b)\;\;$__ Das jeweilige Rechteck wird durch die gepunkteten Linien in wie vie
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$I\;\;$__ [[  3  ]] @canvas
 
 
@@ -138,7 +142,8 @@ __$I\;\;$__ [[  3  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$II\;\;$__ [[  4  ]] @canvas
 
 
@@ -152,7 +157,8 @@ __$II\;\;$__ [[  4  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$III\;\;$__ [[  6  ]] @canvas
 
 
@@ -172,7 +178,8 @@ __$c)\;\;$__ Das jeweilige Rechteck wird durch die gestrichelten und die gepunkt
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$I\;\;$__ [[  15  ]] @canvas
 
 
@@ -186,7 +193,8 @@ __$I\;\;$__ [[  15  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$II\;\;$__ [[  16  ]] @canvas
 
 
@@ -200,7 +208,8 @@ __$II\;\;$__ [[  16  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$III\;\;$__ [[  18  ]] @canvas
 
 

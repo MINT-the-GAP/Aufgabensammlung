@@ -61,7 +61,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $a)\;\; \text{ggT}(12;8) =$ [[  4  ]] @canvas
 
 @ADetails(1=BE;größter gemeinsamer Teiler)
@@ -73,7 +74,8 @@ $a)\;\; \text{ggT}(12;8) =$ [[  4  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $b)\;\; \text{ggT}(48;56) =$ [[  8  ]] @canvas
 
 @ADetails(1=BE;größter gemeinsamer Teiler)
@@ -85,7 +87,8 @@ $b)\;\; \text{ggT}(48;56) =$ [[  8  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $c)\;\; \text{ggT}(77;99) =$ [[  11 ]] @canvas
 
 @ADetails(1=BE;größter gemeinsamer Teiler)
@@ -97,7 +100,8 @@ $c)\;\; \text{ggT}(77;99) =$ [[  11 ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $d)\;\; \text{ggT}(45;25) =$ [[  5  ]] @canvas
 
 @ADetails(1=BE;größter gemeinsamer Teiler)
@@ -109,7 +113,8 @@ $d)\;\; \text{ggT}(45;25) =$ [[  5  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $e)\;\; \text{ggT}(42;63) =$ [[  7  ]] @canvas
 
 @ADetails(1=BE;größter gemeinsamer Teiler)
@@ -121,7 +126,8 @@ $e)\;\; \text{ggT}(42;63) =$ [[  7  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $f)\;\; \text{ggT}(100;20) =$ [[  20  ]] @canvas
 
 @ADetails(1=BE;größter gemeinsamer Teiler)

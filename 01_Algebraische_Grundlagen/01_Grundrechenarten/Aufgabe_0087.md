@@ -47,7 +47,8 @@ $a)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $210 : 7 =$ [[ 30 ]] @canvas \
 $2100 : 70 =$ [[ 30 ]] @canvas \
 $21000 : 700 =$ [[ 30 ]] @canvas
@@ -63,7 +64,8 @@ $b)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $720 : 9 =$ [[ 80 ]] @canvas \
 $7200 : 90 =$ [[ 80 ]] @canvas \
 $72000 : 900 =$ [[ 80 ]] @canvas \
@@ -80,7 +82,8 @@ $c)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $440 : 4 =$ [[ 110 ]] @canvas \
 $4400 : 40 =$ [[ 110 ]] @canvas \
 $44000 : 400 =$ [[ 110 ]] @canvas \
@@ -97,7 +100,8 @@ $d)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $3600 : 6 =$ [[ 600 ]] @canvas \
 $36000 : 60 =$ [[ 600 ]] @canvas \
 $360000 : 600 =$ [[ 600 ]] @canvas \
@@ -115,7 +119,8 @@ $e)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $2700 : 9 =$ [[ 300 ]] @canvas \
 $27000 : 90 =$ [[ 300 ]] @canvas \
 $270000 : 900 =$ [[ 300 ]] @canvas \
@@ -133,7 +138,8 @@ $f)\;\;$
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $6300 : 7 =$ [[ 900 ]] @canvas \
 $63000 : 70 =$ [[ 900 ]] @canvas \
 $630000 : 700 =$ [[ 900 ]] @canvas \

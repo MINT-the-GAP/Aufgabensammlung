@@ -70,7 +70,8 @@ Zum Schluss werden pro hergestellter Dose nochmals $\dfrac{1}{5}\,\ell$ destilli
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  2171/480  ]]  $\ell$ @canvas
 @Algebrite.check(2171/480)
 ************

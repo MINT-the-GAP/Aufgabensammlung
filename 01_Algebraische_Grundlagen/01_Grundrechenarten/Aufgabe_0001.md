@@ -57,7 +57,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ Der Summand $14$ wird mit $19$ addiert.\
 [[  33  ]] @canvas
 
@@ -69,7 +70,8 @@ __$a)\;\;$__ Der Summand $14$ wird mit $19$ addiert.\
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ Die Zahl $17$ ist der Minuend, während die Zahl $11$ der Subtrahend ist.\
 [[  6   ]] @canvas
 
@@ -80,7 +82,8 @@ __$b)\;\;$__ Die Zahl $17$ ist der Minuend, während die Zahl $11$ der Subtrahen
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ Der Quotient wird aus dem Dividend $84$ und dem Divisor $14$ gebildet.\
 [[  6   ]] @canvas
 
@@ -91,7 +94,8 @@ __$c)\;\;$__ Der Quotient wird aus dem Dividend $84$ und dem Divisor $14$ gebild
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ Der Term besteht aus den Faktoren $4$, $6$ und $3$.\
 [[  72  ]] @canvas
 

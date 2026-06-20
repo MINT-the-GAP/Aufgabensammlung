@@ -155,7 +155,8 @@ __Aufgabe 4:__ **Fülle** die freien Felder der Tabelle **aus**.
 
 
 <!-- data-type="none"
-data-sortable="false" data-solution-button="5" -->
+data-sortable="false" data-solution-button="5" 
+data-hint-button="3" -->
 |  $u$  |   $v$   |   $x$   |  $v-u$   |  $v - x$     | $u \cdot x$  | $v \cdot x$ |
 | :---: | :-----: | :-----: | :------: | :----------: | :---------:  | :---------: |
 |   7   |    28   |     5   | [[ 21 ]] |   [[  23 ]]  |  [[  35  ]]  |  [[ 140 ]]  |
@@ -177,7 +178,8 @@ __Aufgabe 5:__ **Fülle** die freien Felder der Tabelle **aus**.
 
 <!-- data-type="none"
 data-sortable="false" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 |  $a$  |   $c$  |   $r$   |  $a\cdot c - r$  |  $ r + a \cdot c$ | $(r+c)\cdot a$ |
 | :---: | :----: | :-----: | :------:         | :----------:      | :-----------:  |
 |   8   |    7   |     6   | [[ 50 ]]         |   [[ 62 ]]        |  [[  104  ]]   |
@@ -198,7 +200,8 @@ __Aufgabe 6:__ **Fülle** die freien Felder der Tabelle **aus**.
 
 <!-- data-type="none"
 data-sortable="false" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 |  $z$  |   $x$  |   $n$   |  $n - x - z$  |  $ n - x \cdot z$ | $ n - 4 \cdot z$ |
 | :---: | :----: | :-----: | :------:      | :----------:      | :-----------:    |
 |   8   |    6   |    96   | [[ 82 ]]      |   [[ 40 ]]        |  [[  64  ]]      |
@@ -219,7 +222,8 @@ __Aufgabe 7:__ **Fülle** die freien Felder der Tabelle **aus**.
 
 <!-- data-type="none"
 data-sortable="false" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 |  $k$  |   $g$  |   $u$   |  $ (k-g):u $  |  $ k - g \cdot u $ | $ u \cdot u + k \cdot g $ |
 | :---: | :----: | :-----: | :------:      | :----------:       | :-----------:             |
 |   23  |   5    |    3    | [[ 6 ]]       |   [[ 8 ]]          |  [[  124  ]]              |
@@ -240,7 +244,8 @@ __Aufgabe 8:__ **Fülle** die freien Felder der Tabelle **aus**.
 
 <!-- data-type="none"
 data-sortable="false"
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 |  $t$  |   $k$  |   $d$   |  $ t+k-d $  |  $ t \cdot d $ | $ d - k \cdot t $ |
 | :---: | :----: | :-----: | :------:    | :----------:   | :-----------:     |
 |  5    |   -6   |    8    | [[ -9  ]]   |   [[  40 ]]    |  [[ 38  ]]        |
@@ -261,7 +266,8 @@ __Aufgabe 9:__ **Fülle** die freien Felder der Tabelle **aus**.
 
 <!-- data-type="none"
 data-sortable="false"
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 |  $a$  |   $c$  |   $e$   |  $ e \cdot e - c $  |  $ |a|-|c| $ | $ a \cdot c \cdot e $ |
 | :---: | :----: | :-----: | :------------:      | :----------: | :-------------------: |
 |   -2  |    -7  |    -4   | [[ 23 ]]            |   [[ -5 ]]   |  [[ -56  ]]           |
@@ -282,7 +288,8 @@ __Aufgabe 10:__ **Fülle** die freien Felder der Tabelle **aus**.
 
 <!-- data-type="none"
 data-sortable="false"
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 |  $z$  |   $r$  |   $s$   |  $ z+r\cdot s $  |  $ z+r+2 \cdot s $ | $ |s|\cdot s - r $ |
 | :---: | :----: | :-----: | :---------:      | :----------:       | :-----------:      |
 |  6    |   -5   |   -4    | [[ 26  ]]        |   [[ -7  ]]        |  [[ -11 ]]         |

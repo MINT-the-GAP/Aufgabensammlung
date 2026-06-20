@@ -68,7 +68,8 @@ Von der bis dahin vorbereiteten Gesamtlänge werden anschließend $\dfrac{2}{15}
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  4897/864  ]]  m @canvas
 @Algebrite.check(4897/864)
 ************

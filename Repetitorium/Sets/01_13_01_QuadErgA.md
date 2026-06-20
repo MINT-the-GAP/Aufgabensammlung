@@ -90,6 +90,7 @@ __Aufgabe 1:__ **Ordne** den Termen einen äquivalenten Term **zu**.
 <div class="flex-child">
 
 <!-- data-solution-button="5" 
+data-hint-button="3" 
 data-randomize="true" -->
 __$a)\;\;$__  $  (x-2)^2  =$ [->[($x^2-4x+4$)|$x^2+8x+16$|$x^2-2x+1$|$x^2+3x+9$|$x^2-8x+16$|$x^2+10x+25$|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|$x^2-10x+25$|$x^2-5x+10$]]
 
@@ -97,6 +98,7 @@ __$a)\;\;$__  $  (x-2)^2  =$ [->[($x^2-4x+4$)|$x^2+8x+16$|$x^2-2x+1$|$x^2+3x+9$|
 <div class="flex-child">
 
 <!-- data-solution-button="5" 
+data-hint-button="3" 
 data-randomize="true" -->
 __$b)\;\;$__  $  (x+5)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|$x^2-2x+1$|$x^2+3x+9$|$x^2-8x+16$|($x^2+10x+25$)|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|$x^2-10x+25$|$x^2-5x+10$]]
 
@@ -115,6 +117,7 @@ __Aufgabe 2:__ **Ordne** den Termen einen äquivalenten Term **zu**.
 <div class="flex-child">
 
 <!-- data-solution-button="5" 
+data-hint-button="3" 
 data-randomize="true" -->
 __$a)\;\;$__  $  (x+4)^2  =$ [->[$x^2-4x+4$|($x^2+8x+16$)|$x^2-2x+1$|$x^2+3x+9$|$x^2-8x+16$|$x^2+10x+25$|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|$x^2-10x+25$|$x^2-5x+10$]]
 
@@ -122,6 +125,7 @@ __$a)\;\;$__  $  (x+4)^2  =$ [->[$x^2-4x+4$|($x^2+8x+16$)|$x^2-2x+1$|$x^2+3x+9$|
 <div class="flex-child">
 
 <!-- data-solution-button="5" 
+data-hint-button="3" 
 data-randomize="true" -->
 __$b)\;\;$__  $  (x+1)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|$x^2-2x+1$|$x^2+3x+9$|$x^2-8x+16$|$x^2+10x+25$|($x^2+2x+1$)|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|$x^2-10x+25$|$x^2-5x+10$]]
 
@@ -140,6 +144,7 @@ __Aufgabe 3:__ **Ordne** den Termen einen äquivalenten Term **zu**.
 <div class="flex-child">
 
 <!-- data-solution-button="5" 
+data-hint-button="3" 
 data-randomize="true" -->
 __$a)\;\;$__  $  (x-5)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|$x^2-2x+1$|$x^2+3x+9$|$x^2-8x+16$|$x^2+10x+25$|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|($x^2-10x+25$)|$x^2-5x+10$]]
 
@@ -147,6 +152,7 @@ __$a)\;\;$__  $  (x-5)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|$x^2-2x+1$|$x^2+3x+9$|$x
 <div class="flex-child">
 
 <!-- data-solution-button="5" 
+data-hint-button="3" 
 data-randomize="true" -->
 __$b)\;\;$__  $  (x-1)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|($x^2-2x+1$)|$x^2+3x+9$|$x^2-8x+16$|$x^2+10x+25$|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|$x^2-10x+25$|$x^2-5x+10$]]
 
@@ -167,6 +173,7 @@ __Aufgabe 4:__ **Ordne** den Termen einen äquivalenten Term **zu**.
 <div class="flex-child">
 
 <!-- data-solution-button="5" 
+data-hint-button="3" 
 data-randomize="true" -->
 __$a)\;\;$__  $  (x+2)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|$x^2-2x+1$|$x^2+3x+9$|$x^2-8x+16$|$x^2+10x+25$|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|($x^2+4x+4$)|$x^2-10x+25$|$x^2-5x+10$]]
 
@@ -174,6 +181,7 @@ __$a)\;\;$__  $  (x+2)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|$x^2-2x+1$|$x^2+3x+9$|$x
 <div class="flex-child">
 
 <!-- data-solution-button="5" 
+data-hint-button="3" 
 data-randomize="true" -->
 __$b)\;\;$__  $  (x-4)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|$x^2-2x+1$|$x^2+3x+9$|($x^2-8x+16$)|$x^2+10x+25$|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|$x^2-10x+25$|$x^2-5x+10$]]
 

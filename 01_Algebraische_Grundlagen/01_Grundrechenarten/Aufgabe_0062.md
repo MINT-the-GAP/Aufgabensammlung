@@ -65,7 +65,8 @@ __$a)\;\;$__
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[ 200  ]] @canvas Kandiszuckerstückchen
 @Algebrite.check_margin(180,250)
 
@@ -84,7 +85,8 @@ __$b)\;\;$__
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[ 420  ]] @canvas getrocknete Mehlwürmer
 @Algebrite.check_margin(390,470)
 

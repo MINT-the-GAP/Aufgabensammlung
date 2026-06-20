@@ -63,6 +63,7 @@ __$a)\;\;$__
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-solution-button="5" 
+data-hint-button="3" 
 style="max-width: 1200px" -->
 ``` ascii
                            +-----------------+
@@ -95,6 +96,7 @@ __$b)\;\;$__
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-solution-button="5" 
+data-hint-button="3" 
 style="max-width: 1200px" -->
 ``` ascii
                            +-----------------+

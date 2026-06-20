@@ -64,7 +64,8 @@ Ein Läufer hat eine Strecke von $18$ km zurückzulegen. Am Vormittag läuft er 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[ 8 ]]  km @canvas
 ************
 $$

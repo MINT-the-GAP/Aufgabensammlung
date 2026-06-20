@@ -59,7 +59,8 @@ author: Martin Lommatzsch
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ \
 $\;\;\;\; -2 \cdot 7 + 8 \cdot (-3) - 34 $ \
 $=$ [[ -14   ]] @canvas $ + $ [[ (-24) ]] @canvas $ - 34 $ \
@@ -76,7 +77,8 @@ $=$ [[ -72   ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ \
 $\;\;\;\; -34-75:5-12 \cdot (-9) $ \
 $= -34-75:5-$ [[ (-108) ]] @canvas  \
@@ -94,7 +96,8 @@ $=$ [[ 59    ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ \
 $\;\;\;\; 85:(-5) + (-4) \cdot (-3) \cdot (-5) - 44 $ \
 $=$ [[ -17   ]] @canvas $ + (-4) \cdot (-3) \cdot (-5) - 44 $ \
@@ -113,7 +116,8 @@ $=$ [[ -121  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ \
 $\;\;\;\; - ( 3 - (-5) \cdot 7 + 23 ) + 54 $ \
 $= - ( 3 - $  [[ (-35) ]] @canvas  $ + 23 ) + 54 $ \

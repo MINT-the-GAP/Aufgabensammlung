@@ -67,7 +67,8 @@ author: Martin Lommatzsch
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ Wie viel sind $\dfrac{7}{12}$ von $50\,$kg?  \
 [[  175/6  ]] kg @canvas
 @Algebrite.check(175/6)
@@ -96,7 +97,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ Wie viel sind $\dfrac{9}{14}$ von $25\,\ell$?  \
 [[  225/14  ]] $\ell$ @canvas
 @Algebrite.check(225/14)
@@ -124,7 +126,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ Wie viel sind $\dfrac{11}{15}$ von $40\,$m?  \
 [[  88/3  ]] m @canvas
 @Algebrite.check(88/3)
@@ -153,7 +156,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ Wie viel sind $\dfrac{5}{9}$ von $22\,$cm?  \
 [[  110/9  ]] cm @canvas
 @Algebrite.check(110/9)
@@ -181,7 +185,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ Wie viel sind $\dfrac{13}{16}$ von $18\,$kg?  \
 [[  117/8  ]] kg @canvas
 @Algebrite.check(117/8)
@@ -210,7 +215,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$f)\;\;$__ Wie viel sind $\dfrac{7}{20}$ von $33\,$m?  \
 [[  231/20  ]] m @canvas
 @Algebrite.check(231/20)

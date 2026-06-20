@@ -65,7 +65,8 @@ Ein rechteckiger Garten besitzt eine LÃ¤nge von $18\,\text{m}$. Die Breite betrÃ
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  486/5  ]]  m$^2$ @canvas
 @Algebrite.check(486/5)
 ************

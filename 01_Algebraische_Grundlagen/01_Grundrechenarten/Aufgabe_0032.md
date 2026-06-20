@@ -57,7 +57,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $ \textcolor{red}{7} + 9 = 16$ \
 [[    Summand         ]] @canvas
 
@@ -68,7 +69,8 @@ __$a)\;\;$__ $ \textcolor{red}{7} + 9 = 16$ \
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $ \textcolor{red}{9}-7 = 2 $ \
 [[    Minuend         ]] @canvas
 
@@ -79,7 +81,8 @@ __$b)\;\;$__ $ \textcolor{red}{9}-7 = 2 $ \
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $ \textcolor{red}{55}:11 = 11$ \
 [[        Dividend     ]] @canvas
 
@@ -90,7 +93,8 @@ __$c)\;\;$__ $ \textcolor{red}{55}:11 = 11$ \
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ $ 16 = \textcolor{red}{2 \cdot 8}$ \
 [[          Produkt   ]] @canvas
 

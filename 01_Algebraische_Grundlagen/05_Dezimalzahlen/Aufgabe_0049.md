@@ -54,6 +54,12 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ \
 $ 80 \cdot 10 =$ [[  800  ]] @canvas \
 $ 80 \cdot 1 =$ [[  80   ]] @canvas \
@@ -62,9 +68,19 @@ $ 80 \cdot 0,01 =$ [[  0,8  ]] @canvas \
 $ 80 \cdot 0,001 =$ [[  0,08  ]] @canvas \
 $ 80 \cdot 0,0001 =$ [[  0,008  ]] @canvas
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Multiplikation, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ \
 $ 4 \cdot 300 =$ [[  1200  ]] @canvas \
 $ 4 \cdot 30 =$ [[  120   ]] @canvas \
@@ -74,9 +90,19 @@ $ 4 \cdot 0,03 =$ [[  0,12  ]] @canvas \
 $ 4 \cdot 0,003 =$ [[  0,012  ]] @canvas \
 $ 4 \cdot 0,0003 =$ [[  0,0012  ]] @canvas
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Multiplikation, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ \
 $ 5 \cdot 60 =$ [[  300  ]] @canvas \
 $ 5 \cdot 6 =$ [[  30   ]] @canvas \
@@ -86,9 +112,19 @@ $ 0,5 \cdot 0,06 =$ [[  0,03  ]] @canvas \
 $ 0,5 \cdot 0,006 =$ [[  0,003  ]] @canvas \
 $ 0,5 \cdot 0,0006 =$ [[  0,0003  ]] @canvas
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Multiplikation, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ \
 $ 900 \cdot 4 =$ [[  3600  ]] @canvas \
 $ 90 \cdot 4 =$ [[  360   ]] @canvas \
@@ -98,7 +134,11 @@ $ 0,09 \cdot 4 =$ [[  0,36  ]] @canvas \
 $ 0,09 \cdot 0,4 =$ [[  0,036  ]] @canvas \
 $ 0,09 \cdot 0,04 =$ [[  0,0036 ]] @canvas
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Multiplikation, Zahlenverständnis)
+
+</div> 
 </section>
 
 

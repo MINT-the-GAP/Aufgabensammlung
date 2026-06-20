@@ -78,7 +78,8 @@ __$a)\;\;$__
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  10/32  ]] @canvas
 @Algebrite.check(10/32)
 
@@ -105,7 +106,8 @@ __$b)\;\;$__
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  3/8  ]] @canvas
 @Algebrite.check(3/8)
 
@@ -132,7 +134,8 @@ __$c)\;\;$__
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  14/32  ]] @canvas
 @Algebrite.check(14/32)
 
@@ -159,7 +162,8 @@ __$d)\;\;$__
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  8/19  ]] @canvas
 @Algebrite.check(8/19)
 
@@ -186,7 +190,8 @@ __$e)\;\;$__
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  4/12  ]] @canvas
 @Algebrite.check(4/12)
 
@@ -213,7 +218,8 @@ __$f)\;\;$__
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  5/12  ]] @canvas
 @Algebrite.check(5/12)
 

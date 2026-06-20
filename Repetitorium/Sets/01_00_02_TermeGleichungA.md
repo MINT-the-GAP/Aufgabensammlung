@@ -76,7 +76,8 @@ __Aufgabe 1:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$a)\;\;$__ \
 $\;\;\;\; 13 \cdot 5 + 14 $ \
 $=$ [[ 65 ]] $  + 14 $ \
@@ -85,7 +86,8 @@ $=$ [[ 79 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$b)\;\;$__ \
 $\;\;\;\; 75 - 7 \cdot 5 + 23  $ \
 $=  75 - $ [[ 35 ]] $  + 23 $ \
@@ -95,7 +97,8 @@ $=$ [[ 63 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$c)\;\;$__ \
 $\;\;\;\; 65 : 13 + 85 : 5   $ \
 $=$ $ 65 : 13 +$ [[ 17 ]]  \
@@ -105,7 +108,8 @@ $=$ [[ 22 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$d)\;\;$__ \
 $\;\;\;\; 9 \cdot 8 - 12 \cdot 4  $ \
 $=$ [[ 72 ]] $ - 12 \cdot 4  $ \
@@ -125,7 +129,8 @@ __Aufgabe 2:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$a)\;\;$__ \
 $\;\;\;\; 72:18 + 26 + 22 $ \
 $=$ [[ 4 ]] $ + 26 + 22  $ \
@@ -135,7 +140,8 @@ $=$ [[ 52 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$b)\;\;$__ \
 $\;\;\;\; 5 \cdot 9 + 6 \cdot 7 + 2 $ \
 $= $ [[ 45 ]] $ + 6 \cdot 7 + 2$ \
@@ -146,7 +152,8 @@ $=$ [[ 89 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$c)\;\;$__ \
 $\;\;\;\; 34 + 64 + 25 + 21   $ \
 $=$ $ 34 + 64 + $ [[ 46 ]]  \
@@ -156,7 +163,8 @@ $=$ [[ 144 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$d)\;\;$__ \
 $\;\;\;\; 7 \cdot 3 \cdot ( 14 - 2 \cdot 4 ) $ \
 $= 7 \cdot 3 \cdot ( 14 -$ [[  8 ]] $) $ \
@@ -177,7 +185,8 @@ __Aufgabe 3:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$a)\;\;$__ \
 $\;\;\;\; 20 + 2 \cdot 3 \cdot 4 \cdot 5 $ \
 $= 20 +$ [[  6  ]] $\cdot 4 \cdot 5 $ \
@@ -188,7 +197,8 @@ $=$ [[ 140 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$b)\;\;$__ \
 $\;\;\;\; 187 - 17 - 31 -25 - 41  $ \
 $=$ [[ 160 ]]  $  - 31 -25 - 41 $ \
@@ -199,7 +209,8 @@ $=$ [[ 63 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$c)\;\;$__ \
 $\;\;\;\; 81 : 3 + 105 : 5 + 6 \cdot 4  $ \
 $=$ $ 81 : 3 + 105 : 5 +$ [[ 24 ]]  \
@@ -211,7 +222,8 @@ $=$ [[ 72 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$d)\;\;$__ \
 $\;\;\;\; 11 \cdot 7 - 17 \cdot 3  $ \
 $=$ [[ 77 ]] $ - 17 \cdot 3  $ \
@@ -230,7 +242,8 @@ __Aufgabe 4:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$a)\;\;$__ \
 $\;\;\;\; 82 - 5 \cdot 3 - 6 \cdot 4 $ \
 $= 82 - $ [[ 15 ]] $ - 6 \cdot 4  $ \
@@ -241,7 +254,8 @@ $=$ [[ 43 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$b)\;\;$__ \
 $\;\;\;\; 144 - ( 7 \cdot 6 + 17)  $ \
 $= 144 - ( $[[ 42 ]]$ + 17)  $ \
@@ -251,7 +265,8 @@ $=$ [[ 85 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$c)\;\;$__ \
 $\;\;\;\; ( 9 \cdot 5 + 18 ) : 7   $ \
 $= ( $[[ 45 ]] $ + 18 ) : 7   $ \
@@ -261,7 +276,8 @@ $=$ [[ 9 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$d)\;\;$__ \
 $\;\;\;\; 13 + 5 \cdot 7 + 108 : 4  $ \
 $= 13 +$ [[ 35 ]] $+ 108 : 4  $ \
@@ -281,7 +297,8 @@ __Aufgabe 5:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$a)\;\;$__ \
 $\;\;\;\; -2 \cdot 7 + 8 \cdot (-3) - 34 $ \
 $=$ [[ -14   ]] $ + $ [[ (-24) ]] $ - 34 $ \
@@ -291,7 +308,8 @@ $=$ [[ -72   ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$b)\;\;$__ \
 $\;\;\;\; -34-75:5-12 \cdot (-9) $ \
 $= -34-75:5-$ [[ (-108) ]]  \
@@ -302,7 +320,8 @@ $=$ [[ 59    ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$c)\;\;$__ \
 $\;\;\;\; 85:(-5) + (-4) \cdot (-3) \cdot (-5) - 44 $ \
 $=$ [[ -17   ]] $ + (-4) \cdot (-3) \cdot (-5) - 44 $ \
@@ -314,7 +333,8 @@ $=$ [[ -121  ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$d)\;\;$__ \
 $\;\;\;\; - ( 3 - (-5) \cdot 7 + 23 ) + 54 $ \
 $= - ( 3 - $  [[ (-35) ]]  $ + 23 ) + 54 $ \
@@ -335,7 +355,8 @@ __Aufgabe 6:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$a)\;\;$__ \
 $\;\;\;\; - 5 \cdot (-9) - 46 + 11 \cdot (-4) $ \
 $= $ [[  45   ]] $ - 46 + 11 \cdot (-4) $ \
@@ -346,7 +367,8 @@ $=$ [[  -45  ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$b)\;\;$__ \
 $\;\;\;\; -92 + 7 \cdot (-4) - 144 : (-4) $ \
 $= -92 +$ [[ (-28) ]] $ - 144 : (-4) $ \
@@ -357,7 +379,8 @@ $=$ [[ -84  ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$c)\;\;$__ \
 $\;\;\;\; -3 \cdot (-4) \cdot (-2) \cdot (-5) : (-6) $ \
 $=$ [[  12  ]] $ \cdot (-2) \cdot (-5) : (-6) $ \
@@ -368,7 +391,8 @@ $=$ [[ -20 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$d)\;\;$__ \
 $\;\;\;\; -8 \cdot (-7) - 4 \cdot (-3) + 72:(-8) $ \
 $=$ [[  56   ]] $- 4 \cdot (-3) + 72:(-8) $ \
@@ -397,7 +421,8 @@ __Aufgabe 7:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$a)\;\;$__ \
 $\;\;\;\; 44 - 2 \cdot (13 - 5 \cdot (3 + 2 \cdot (-4)) ) $ \
 $= 44 - 2 \cdot (13 - 5 \cdot (3 +$ [[ (-8)  ]] $ ) ) $ \
@@ -410,7 +435,8 @@ $=$ [[  -32  ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$b)\;\;$__ \
 $\;\;\;\; -45 + (-3) \cdot (-8) - 92: (-4) $ \
 $= -45 +$ [[   24  ]] $- 92: (-4) $ \
@@ -421,7 +447,8 @@ $=$ [[   2   ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$c)\;\;$__ \
 $\;\;\;\; -4 \cdot (-3) + 5 \cdot (-9) - 74 $ \
 $= -4 \cdot (-3) +$ [[ (-45)  ]] $ - 74 $ \
@@ -432,7 +459,8 @@ $=$ [[ -107   ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$d)\;\;$__ \
 $\;\;\;\; -(-56 : (-2)) : (-7) - (-14) $ \
 $= -(-56 : (-2)) : (-7) + $ [[ 14   ]] \
@@ -459,7 +487,8 @@ __Aufgabe 8:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$a)\;\;$__ \
 $\;\;\;\; -7 \cdot (-47 + 2 \cdot (-4) \cdot (-6) ) $ \
 $= -7 \cdot (-47 + 2 \cdot $ [[  24  ]] $) $ \
@@ -470,7 +499,8 @@ $=$ [[  -7  ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$b)\;\;$__ \
 $\;\;\;\; -65-(-25)-42+8 \cdot (-6) $ \
 $= -65-(-25)-42+ $ [[ (-48) ]] \
@@ -482,7 +512,8 @@ $=$ [[  -130 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$c)\;\;$__ \
 $\;\;\;\; -(-45:(-9) - 54:(-6)) \cdot (-2) $ \
 $= -($ [[   5   ]] $ - 54:(-6)) \cdot (-2) $ \
@@ -493,7 +524,8 @@ $=$ [[  28   ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$d)\;\;$__ \
 $\;\;\;\; -(-6 \cdot (-5) \cdot 4) : (-8) - 13 \cdot 11 $ \
 $= -($ [[  30   ]] $\cdot 4) : (-8) - 13 \cdot 11 $ \
@@ -521,7 +553,8 @@ __Aufgabe 9:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$a)\;\;$__ \
 $\;\;\;\; 1,7 + 0,5 \cdot 0,3 + 1,3 \cdot 0,25 $ \
 $= 1,7 +$ [[  0,15   ]] $+ 1,3 \cdot 0,25 $ \
@@ -532,7 +565,8 @@ $=$ [[  2,135  ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$b)\;\;$__ \
 $\;\;\;\; 0,81:0,9 + 5,4:6 + 0,125 \cdot 5 $ \
 $=$ [[  0,9  ]] $+ 5,4:6 + 0,125 \cdot 5 $ \
@@ -544,7 +578,8 @@ $=$ [[ 2,425 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$c)\;\;$__ \
 $\;\;\;\; 9,2 - 0,4 \cdot 1,5 \cdot 0,6 - 0,48:0,6 $ \
 $= 9,2 -$ [[  0,6  ]] $\cdot 0,6 - 0,48:0,6 $ \
@@ -556,7 +591,8 @@ $=$ [[ 8,04 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$d)\;\;$__ \
 $\;\;\;\; (0,12 \cdot 0,4) : 0,08 + 6,5 : 1,3  $ \
 $= $ [[ 0,048 ]] $ : 0,08 + 6,5 : 1,3  $ \
@@ -583,7 +619,8 @@ __Aufgabe 10:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$a)\;\;$__ \
 $\;\;\;\; 1,4 \cdot 6 - 0,4 \cdot 0,7 - 1,69:1,3 $ \
 $=$ [[  8,4  ]] $- 0,4 \cdot 0,7 - 1,69:1,3 $ \
@@ -595,7 +632,8 @@ $=$ [[ 7,82 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$b)\;\;$__ \
 $\;\;\;\; 1,8 \cdot 0,4 + 0,75 \cdot 6,4 - 0,125 \cdot 0,96 $ \
 $= 1,8 \cdot 0,4 +$ [[  4,8   ]] $- 0,125 \cdot 0,96 $ \
@@ -607,7 +645,8 @@ $=$ [[  5,4   ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$c)\;\;$__ \
 $\;\;\;\; (3,4 - 1,4 \cdot 1,6) \cdot 0,5 + 2,1 \cdot 0,75  $ \
 $= (3,4 - $ [[ 2,24  ]] $) \cdot 0,5 + 2,1 \cdot 0,75  $ \
@@ -619,7 +658,8 @@ $=$ [[ 2,155 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$d)\;\;$__ \
 $\;\;\;\; (0,056:0,7) \cdot 2,5 + (0,42 : 0,6) \cdot 1,5  $ \
 $= $ [[ 0,08 ]] $ \cdot 2,5 + (0,42 : 0,6) \cdot 1,5  $ \
@@ -649,7 +689,8 @@ __Aufgabe 11:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$a)\;\;$__ \
 $\;\;\;\; 3,5 \cdot 2,5 - 0,8 \cdot 1,2 - 0,875 \cdot 1,6 $ \
 $=$ [[ 8,75 ]] $ - 0,8 \cdot 1,2 - 0,875 \cdot 1,6 $ \
@@ -661,7 +702,8 @@ $=$ [[ 6,39  ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$b)\;\;$__ \
 $\;\;\;\; 0,25 \cdot 0,8 \cdot 5,2 + 0,6 \cdot 5,5 - 2,75 $ \
 $= $ [[ 0,2  ]] $ \cdot 5,2 + 0,6 \cdot 5,5 - 2,75 $ \
@@ -673,7 +715,8 @@ $=$ [[ 1,85 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$c)\;\;$__ \
 $\;\;\;\; 9,87-2,3-0,45-0,37-1,87 $ \
 $= $ [[ 7,57  ]] $ -0,45-0,37-1,87 $ \
@@ -684,7 +727,8 @@ $=$ [[ 4,88  ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$d)\;\;$__ \
 $\;\;\;\; 0,75 \cdot (1,6 - 0,4 \cdot 0,8) + 0,9 \cdot 1,5 $ \
 $= 0,75 \cdot (1,6 - $ [[ 0,32  ]] $) + 0,9 \cdot 1,5 $ \
@@ -712,7 +756,8 @@ __Aufgabe 12:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$a)\;\;$__ \
 $\;\;\;\; 0,84 : 0,7 + 2,54 + 1,75 \cdot 4,8 $ \
 $=$ [[  1,2  ]] $ + 2,54 + 1,75 \cdot 4,8 $ \
@@ -723,7 +768,8 @@ $=$ [[ 12,14 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$b)\;\;$__ \
 $\;\;\;\; 1,25 \cdot 0,4 \cdot 7,5 + 3,4 \cdot 3,5 \cdot 0,1 $ \
 $=$ [[ 0,5  ]] $ \cdot 7,5 + 3,4 \cdot 3,5 \cdot 0,1 $ \
@@ -735,7 +781,8 @@ $=$ [[ 4,94 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$c)\;\;$__ \
 $\;\;\;\; 9,4 \cdot 0,25 + 1,4 \cdot 0,45 + 0,375 $ \
 $= $ [[ 2,3   ]] $ + 1,4 \cdot 0,45 + 0,375 $ \
@@ -746,7 +793,8 @@ $=$  [[ 3,305 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$d)\;\;$__ \
 $\;\;\;\; 1,75 \cdot 2,4 + 5,31 - 2,56 : 16 $ \
 $=$ [[  4,2  ]] $ + 5,31 - 2,56 : 16 $ \
@@ -773,7 +821,8 @@ __Aufgabe 13:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$a)\;\;$__ \
 $\;\;\;\; - 1,6 \cdot 4,25 - 0,85:0,5 + 1,25 \cdot 0,6 $ \
 $= - 1,6 \cdot 4,25 - 0,85:0,5 + $ [[ 0,75   ]]  \
@@ -785,7 +834,8 @@ $=$ [[ -7,75 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$b)\;\;$__ \
 $\;\;\;\; -0,75 \cdot 5,8 - 0,7 \cdot 2,5 + 1,2 \cdot 0,9 $ \
 $=$ [[ -4,35 ]] $ - 0,7 \cdot 2,5 + 1,2 \cdot 0,9 $ \
@@ -797,7 +847,8 @@ $=$ [[ -5,02 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$c)\;\;$__ \
 $\;\;\;\; 1,6 \cdot (-0,25) \cdot 2,5 - 6,3 : 70 $ \
 $= 1,6 \cdot $ [[ (-0,625) ]] $ - 6,3 : 70 $ \
@@ -808,7 +859,8 @@ $=$ [[  -1,09   ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$d)\;\;$__ \
 $\;\;\;\; -(-0,7 \cdot 0,2):0,25 + 0,8 \cdot (-4,5)  $ \
 $= -($[[ -0,14   ]]$):0,25 + 0,8 \cdot (-4,5)  $ \
@@ -836,7 +888,8 @@ __Aufgabe 14:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$a)\;\;$__ \
 $\;\;\;\; -(-7,2:(-4)):20 - 0,4 \cdot 0,125 $ \
 $= -($ [[  1,8  ]] $):20 - 0,4 \cdot 0,125 $ \
@@ -848,7 +901,8 @@ $=$ [[ -0,14 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$b)\;\;$__ \
 $\;\;\;\; 0,65:5 - 0,4 \cdot 1,7 - 0,7 : 0,2 $ \
 $=$ [[  0,13  ]] $ - 0,4 \cdot 1,7 - 0,7 : 0,2 $ \
@@ -860,7 +914,8 @@ $=$ [[ -4,05  ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$c)\;\;$__ \
 $\;\;\;\; 1,7 \cdot (-0,75) + (-0,85 : 1,7) \cdot (-3,5)   $ \
 $=$ [[ -1,275 ]] $ + (-0,85 : 1,7) \cdot (-3,5)   $ \
@@ -871,7 +926,8 @@ $=$ [[  0,475 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$d)\;\;$__ \
 $\;\;\;\; (1,9:(-0,25) - 4,2 \cdot 0,25) \cdot (-1,5) $ \
 $= ($ [[  -7,6   ]] $ - 4,2 \cdot 0,25) \cdot (-1,5) $ \
@@ -898,7 +954,8 @@ __Aufgabe 15:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$a)\;\;$__ \
 $\;\;\;\;   -0,8 \cdot (-0,3) - 1,4 \cdot (-0,75) + 2,25$  \
 $=$ [[ 0,24 ]] $ - 1,4 \cdot (-0,75) + 2,25 $ \
@@ -909,7 +966,8 @@ $=$ [[   3,54  ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$b)\;\;$__ \
 $\;\;\;\; -0,15 : 0,2 + 0,7 \cdot (-2,1) - 2,3 $ \
 $=$ [[  -0,75  ]] $ + 0,7 \cdot (-2,1) - 2,3 $ \
@@ -920,7 +978,8 @@ $=$ [[ -4,52  ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$c)\;\;$__ \
 $\;\;\;\; (1,44 : 0,8 -2,5) \cdot 0,7 - 0,85 $ \
 $= ($ [[   1,6  ]]  $ -2,5) \cdot 0,7 - 0,85 $ \
@@ -931,7 +990,8 @@ $=$   [[  -1,48 ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$d)\;\;$__ \
 $\;\;\;\; (0,12 : (-0,125) - 5,2 \cdot 0,25) : (-0,1) $ \
 $=($ [[  -0,96  ]] $ - 5,2 \cdot 0,25) : (-0,1) $ \
@@ -958,7 +1018,8 @@ __Aufgabe 16:__ **Gib** die Werte in den Lücken der Rechnung **an**.
 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$a)\;\;$__ \
 $\;\;\;\; (-0,63:0,9-0,25) : (-0,05) + 2,5 \cdot (-6,5)   $ \
 $= ($ [[  -0,7   ]]$-0,25) : (-0,05) + 2,5 \cdot (-6,5)   $ \
@@ -970,7 +1031,8 @@ $=$ [[ 2,75    ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$b)\;\;$__ \
 $\;\;\;\; -0,7 : 0,125 + 3,2 \cdot (-0,125) - 2,8 $ \
 $=$ [[   -5,6  ]] $ + 3,2 \cdot (-0,125) - 2,8 $ \
@@ -981,7 +1043,8 @@ $=$ [[  -8,8   ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$c)\;\;$__ \
 $\;\;\;\; -(-2,1 \cdot 0,4 +1,25) : 0,5 - 1,1 $ \
 $= -( $ [[  -0,84  ]] $ +1,25) : 0,5 - 1,1 $ \
@@ -992,7 +1055,8 @@ $=$ [[ -1,92  ]]
 </div> 
 <div class="flex-child">
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 __$d)\;\;$__ \
 $\;\;\;\; -0,225: (-1,5) + 0,8 \cdot (-4) \cdot 0,375 $ \
 $=  $ [[  0,15  ]] $ + 0,8 \cdot (-4) \cdot 0,375 $ \

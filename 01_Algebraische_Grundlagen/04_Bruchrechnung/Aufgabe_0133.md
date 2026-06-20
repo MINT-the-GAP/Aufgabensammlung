@@ -64,7 +64,8 @@ Die Äpfel machen $\dfrac{5}{12}$ der gesamten Masse aus. Von den restlichen Kil
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  28/3  ]]  kg @canvas
 @Algebrite.check(28/3)
 ************

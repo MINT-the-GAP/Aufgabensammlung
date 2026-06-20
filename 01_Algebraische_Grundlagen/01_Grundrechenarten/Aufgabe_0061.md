@@ -64,7 +64,8 @@ __$a)\;\;$__
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[ 600  ]] @canvas Kandiszuckerstückchen
 @Algebrite.check_margin(550,725)
 
@@ -83,7 +84,8 @@ __$b)\;\;$__
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[ 280  ]] @canvas Erdnusskernstücke
 @Algebrite.check_margin(250,350)
 

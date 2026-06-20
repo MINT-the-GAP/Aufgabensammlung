@@ -61,6 +61,7 @@ __$a)\;\;$__ 6449
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-solution-button="5" 
+data-hint-button="3" 
 data-type="none" -->
 |  Millionen  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
 | :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
@@ -76,6 +77,7 @@ __$b)\;\;$__ 6459204
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-solution-button="5" 
+data-hint-button="3" 
 data-type="none" -->
 |  Millionen  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
 | :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
@@ -90,6 +92,7 @@ __$c)\;\;$__ 210079
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-solution-button="5" 
+data-hint-button="3" 
 data-type="none" -->
 |  Millionen  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
 | :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |

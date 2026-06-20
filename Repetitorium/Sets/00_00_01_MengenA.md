@@ -56,25 +56,29 @@ __Aufgabe 1:__ **Wähle** die kleinste Zahlenmenge **aus**, in der die jeweilige
 <section class="dynFlex">
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $ -4 \in $ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $ 6  \in $ [[($\mathbb{N}$)|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $ 0,03  \in $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $ \frac{7}{8}  \in $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
 
 </div>
@@ -89,25 +93,29 @@ __Aufgabe 2:__ **Wähle** die kleinste Zahlenmenge **aus**, in der die jeweilige
 <section class="dynFlex">
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $ -\frac{3}{7}  \in $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $ \sqrt{3}  \in $ [[$\mathbb{N}$|$\mathbb{Z}$|$\mathbb{Q}$|($\mathbb{R}$)]] 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $ 13^2  \in $ [[($\mathbb{N}$)|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $ -7  \in $ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
 
 </div>
@@ -123,25 +131,29 @@ __Aufgabe 3:__ **Wähle** die kleinste Zahlenmenge **aus**, in der die jeweilige
 <section class="dynFlex">
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $ 7,23  \in $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $ -2  \in $ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $ \pi  \in $ [[$\mathbb{N}$|$\mathbb{Z}$|$\mathbb{Q}$|($\mathbb{R}$)]] 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $ 3,\bar{3}  \in $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
 
 </div>
@@ -157,25 +169,29 @@ __Aufgabe 4:__ **Wähle** die kleinste Zahlenmenge **aus**, in der die jeweilige
 <section class="dynFlex">
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $ \frac{12}{4}  \in $ [[$(\mathbb{N})$|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $ 0,0001  \in $ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $ -\sqrt{9}  \in $ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $ -\sqrt[5]{7}  \in $ [[$\mathbb{N}$|$\mathbb{Z}$|$\mathbb{Q}$|($\mathbb{R}$)]] 
 
 </div>
@@ -191,25 +207,29 @@ __Aufgabe 5:__ **Wähle** die kleinste Zahlenmenge **aus**, in der der beschrieb
 <section class="dynFlex">
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $ 41:7 + 57:7 \in$ [[$(\mathbb{N})$|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $ \sqrt{49}-11,5 \in$ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $ \dfrac{2}{3}-\dfrac{14}{9}-0,\bar{1} \in$ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $ \dfrac{8}{7}-\pi  \in$ [[$\mathbb{N}$|$\mathbb{Z}$|$\mathbb{Q}$|($\mathbb{R}$)]] 
 
 </div>
@@ -225,25 +245,29 @@ __Aufgabe 6:__ **Wähle** die kleinste Zahlenmenge **aus**, in der der beschrieb
 <section class="dynFlex">
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $ \dfrac{3}{8} + 1,625 \in$ [[($\mathbb{N}$)|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $ (-5)^3-\sqrt{81} \in$ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $ \dfrac{7}{3}+\dfrac{8}{7} \in$ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $ \pi^0-4 \in$ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
 
 </div>
@@ -259,25 +283,29 @@ __Aufgabe 7:__ **Wähle** die kleinste Zahlenmenge **aus**, in der der beschrieb
 <section class="dynFlex">
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $ \sqrt{2^5-3^2} \in$ [[$\mathbb{N}$|$\mathbb{Z}$|$\mathbb{Q}$|($\mathbb{R}$)]] 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $ \dfrac{\sqrt{8}+\sqrt{18}}{\sqrt{2}} \in$ [[($\mathbb{N}$)|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $ 0,15-\dfrac{23}{20} \in$ [[$\mathbb{N}$|($\mathbb{Z}$)|$\mathbb{Q}$|$\mathbb{R}$]] 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $ 1,\bar{4} + 0,\bar{5} \in$ [[($\mathbb{N}$)|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
 
 </div>
@@ -293,25 +321,29 @@ __Aufgabe 8:__ **Wähle** die kleinste Zahlenmenge **aus**, in der der beschrieb
 <section class="dynFlex">
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $ -4^3+(-3)^4 \in$ [[($\mathbb{N}$)|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $ \left(\sqrt{7}+\sqrt{11}\right)^2 \in$ [[$\mathbb{N}$|$\mathbb{Z}$|$\mathbb{Q}$|($\mathbb{R}$)]] 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $ 8-\sqrt{6,25} \in$ [[$\mathbb{N}$|$\mathbb{Z}$|($\mathbb{Q}$)|$\mathbb{R}$]] 
 
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $ -0,45+\sqrt{0,25}+\dfrac{19}{20} \in$ [[($\mathbb{N}$)|$\mathbb{Z}$|$\mathbb{Q}$|$\mathbb{R}$]] 
 
 </div>
@@ -511,17 +543,20 @@ __Aufgabe 15:__ **Gib** die Vereinigung der beiden gegebenen Mengen $\mathbb{K}$
  
 __$a)\;\;$__ $ \mathbb{K} = \{ 1,5,6,9 \} $  und $\mathbb{M} = \{ 3,4,6,8 \} $ 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{K} \cup \mathbb{M} =  $ [[   {1,3,4,5,6,8,9}   ]]  
  
 __$b)\;\;$__ $  \mathbb{K} = \{ 1,2,3,4,5,6,7 \} $  und $\mathbb{M} = \{ 1,2,3,5,7 \} $ 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{K} \cup \mathbb{M} =  $ [[   {1,2,3,4,5,6,7}   ]] 
  
 __$c)\;\;$__ $  \mathbb{K} = \{ 5,7,9,11 \} $  und $\mathbb{M} = \{ 4,5,8,10 \} $ 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{K} \cup \mathbb{M} =  $ [[   {4,5,7,8,9,10,11}   ]]  
 
 
@@ -532,17 +567,20 @@ __Aufgabe 16:__ **Gib** die Vereinigung der beiden gegebenen Mengen $\mathbb{K}$
  
 __$a)\;\;$__ $ \mathbb{K} = \{ 2,3,5,6,8 \} $  und $\mathbb{M} = \{ 1,2,4,5,7,8 \} $ 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{K} \cup \mathbb{M} =  $ [[   {1,2,3,4,5,6,7,8}   ]]  
  
 __$b)\;\;$__ $  \mathbb{K} = \{ 3,6,9 \} $  und $\mathbb{M} = \{ 2,3,5,6,8 \} $ 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{K} \cup \mathbb{M} =  $ [[      {2,3,5,6,8,9}    ]]  
  
 __$c)\;\;$__ $  \mathbb{K} = \{ 1,3,5,7,9 \} $  und $\mathbb{M} = \{ 3,4,5,6,7 \} $ 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{K} \cup \mathbb{M} =  $ [[   {1,3,4,5,6,7,9}     ]]  
 
 
@@ -555,19 +593,22 @@ __Aufgabe 17:__
 
 __$a)\;\;$__ $ \mathbb{K} = \{ 1,5,6,9 \} $  und $\mathbb{M} = \{ 3,4,6,8 \} $ 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{K} \cap \mathbb{M} =  $ [[   {6}           ]]  
 
 
 __$b)\;\;$__ $  \mathbb{K} = \{ 1,2,3,4,5,6,7 \} $  und $\mathbb{M} = \{ 1,2,3,5,7 \} $ 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{K} \cap \mathbb{M} =  $ [[   {1,2,3,5,7}   ]]  
 
 
 __$c)\;\;$__ $  \mathbb{K} = \{ 5,7,9,11 \} $  und $\mathbb{M} = \{ 4,5,8,10 \} $ 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{K} \cap \mathbb{M} =  $ [[   {}            ]]  
 
 
@@ -578,17 +619,20 @@ __Aufgabe 18:__ **Gib** die Vereinigung der beiden gegebenen Mengen $\mathbb{K}$
 
 __$a)\;\;$__ $ \mathbb{K} = \{ 2,3,5,6,8 \} $  und $\mathbb{M} = \{ 1,2,4,5,7,8 \} $ 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{K} \cup \mathbb{M} =  $ [[   {2,3,4,5,6,7,8}   ]] 
 
 __$b)\;\;$__ $  \mathbb{K} = \{ 3,6,9 \} $  und $\mathbb{M} = \{ 2,3,5,6,8 \} $ 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{K} \cup \mathbb{M} =  $ [[    {2,3,5,6,8,9}    ]]  
 
 __$c)\;\;$__ $  \mathbb{K} = \{ 1,3,5,7,9 \} $  und $\mathbb{M} = \{ 3,4,5,6,7 \} $ 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{K} \cup \mathbb{M} =  $ [[   {1,3,4,5,6,7,9}   ]]  
 
 
@@ -665,15 +709,18 @@ $\mathbb{K} \setminus \mathbb{M} =  $ [[   {1,9}     ]] $  $\
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 __Aufgabe 21:__ **Gib** die resultierende Menge **an**. Gegebenen sind die Mengen $\mathbb{M}= \{ 2,3,5,6,8 \}$, $\mathbb{L} = \{ 3,6,9 \} $  und $\mathbb{K} = \{ 1,3,5,7,9 \}$.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__  $ \left(\mathbb{K} \setminus \mathbb{M}\right) \cup \mathbb{L} =  $     [[   {1,3,6,7,9}   ]]    
 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__    $ \left(\mathbb{K} \cap \mathbb{L} \right) \setminus \mathbb{M} =  $  [[     {9}         ]]    
 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__    $\mathbb{K} \cup  \left( \mathbb{L} \setminus \mathbb{M} \right) =  $ [[   {1,3,5,7,9}   ]]  
 
 
@@ -683,15 +730,18 @@ __$c)\;\;$__    $\mathbb{K} \cup  \left( \mathbb{L} \setminus \mathbb{M} \right)
 __Aufgabe 22:__ **Gib** die resultierende Menge **an**. Gegebenen sind die Mengen $\mathbb{M}= \{ 1,4,7,8 \}$, $\mathbb{L} = \{ 1,5,8,9 \} $  und $\mathbb{K} = \{ 2,4,8,9 \}$.
 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__  $\mathbb{K} \setminus \left( \mathbb{M} \cup \mathbb{L} \right) =  $ [[   {2}         ]]  
 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__    $\mathbb{L} \cap \left( \mathbb{K} \cup \mathbb{M} \right) =  $    [[  {1,8,9}      ]]  
 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__   $ \left( \mathbb{L} \cap \mathbb{K}  \right) \cup \mathbb{M} =  $   [[ {1,4,7,8,9}   ]]  
 
 
@@ -705,15 +755,18 @@ __$c)\;\;$__   $ \left( \mathbb{L} \cap \mathbb{K}  \right) \cup \mathbb{M} =  $
 __Aufgabe 23:__ **Gib** die resultierende Menge **an**. Gegebenen sind die Mengen $\mathbb{M}= \{ 2,6,7,8,9 \}$, $\mathbb{L} = \{ 1,2,4,6,8 \} $  und $\mathbb{K} = \{ 2,3,4,9 \}$.
 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__  $  \mathbb{K} \cap \left( \mathbb{M} \setminus \mathbb{L} \right)  =  $       [[   {9}       ]] 
 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $   \mathbb{K} \setminus \left( \mathbb{M} \setminus  \mathbb{L} \right)  =  $ [[  {2,3,4}    ]] 
 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $  \left( \mathbb{K} \cap  \mathbb{L} \right) \cap  \mathbb{M} =  $            [[   {2}       ]] 
 
 
@@ -777,10 +830,12 @@ __$d)\;\;$__   $  \text{sup}  \left( \left(  \mathbb{L} \cup  \mathbb{M} \right)
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/4.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/4.png" width="120" height="30">  \
 __Aufgabe 27:__ Gegebenen sind die Mengen $\mathbb{M}= \{ 1,2,3,6 \}$, $\mathbb{L} = \{ 4,5,7,9 \} $  und $\mathbb{K} = \{ 3,4,6,8,9 \}$.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__  **Bestimme** das resultierende Mengenelement. $  \left(  \mathbb{L} \cup \mathbb{K}  \right) \setminus \left(  \mathbb{L} \cap \mathbb{K}  \right)  := \mathbb{L} \Delta \mathbb{K}  = $ [[   {3,5,6,7,8}   ]] 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__  Im Aufgabenteil $a)$ wurde der Mengenoperator der symmetrischen Differenz $\Delta$ definiert. **Bestimme** das resultierende Mengenelement.  $  \mathbb{M} \Delta \mathbb{K} =  $ [[  {1,2,4,8,9}    ]] 
 
 __$c)\;\;$__  Skizziere $ \mathbb{M} \Delta \mathbb{K} $ über Mengenkreise. 

@@ -62,7 +62,15 @@ __$a)\;\;$__
 |             |          |     3     |    0       |       2      |        9       |                  |
 
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
  [[  3,029  ]] @canvas
+
+
+@ADetails(1=BE; Dezimalzahlen, Stellenwerttafel, Zahlenverständnis)
 
 
 __$b)\;\;$__ 
@@ -73,7 +81,15 @@ __$b)\;\;$__
 |             |          |           |            |       6      |        0       |         2         |
 
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
  [[   0,0602   ]] @canvas
+
+
+@ADetails(1=BE; Dezimalzahlen, Stellenwerttafel, Zahlenverständnis)
 
 
 __$c)\;\;$__ 
@@ -84,7 +100,15 @@ __$c)\;\;$__
 |      4      |    0     |    2      |    1       |       6      |        3       |         9         |
 
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
  [[  402,1639   ]] @canvas
+
+
+@ADetails(1=BE; Dezimalzahlen, Stellenwerttafel, Zahlenverständnis)
 
 
 

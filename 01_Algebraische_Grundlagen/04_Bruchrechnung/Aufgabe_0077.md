@@ -64,7 +64,8 @@ __$a)\;\;$__ Wie viel sind $\dfrac{4}{5}$ von $2500\,$kg?  \
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
  [[  2000  ]] kg @canvas
 
 
@@ -83,7 +84,8 @@ __$b)\;\;$__ Wie viel sind $\dfrac{5}{9}$ von $180\,$cm?  \
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
  [[  100  ]] cm @canvas
 
 
@@ -102,7 +104,8 @@ __$c)\;\;$__ Wie viel sind $\dfrac{1}{4}$ von $300\,$min?  \
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
  [[  75  ]] min @canvas
 
 
@@ -121,7 +124,8 @@ __$d)\;\;$__ Wie viel sind $\dfrac{6}{7}$ von $42\,$m?  \
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
  [[  36  ]] m @canvas
 
 

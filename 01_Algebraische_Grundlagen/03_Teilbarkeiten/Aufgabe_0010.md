@@ -61,7 +61,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $a)\;\; \text{kgV}(4;7) =$ [[ 28  ]] @canvas
 
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches)
@@ -73,7 +74,8 @@ $a)\;\; \text{kgV}(4;7) =$ [[ 28  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $b)\;\; \text{kgV}(9;3) =$ [[  9  ]] @canvas
 
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches)
@@ -85,7 +87,8 @@ $b)\;\; \text{kgV}(9;3) =$ [[  9  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $c)\;\; \text{kgV}(10;8) =$ [[  40 ]] @canvas
 
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches)
@@ -97,7 +100,8 @@ $c)\;\; \text{kgV}(10;8) =$ [[  40 ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $d)\;\; \text{kgV}(7;9) =$ [[  63 ]] @canvas
 
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches)
@@ -109,7 +113,8 @@ $d)\;\; \text{kgV}(7;9) =$ [[  63 ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $e)\;\; \text{kgV}(15;10) =$ [[ 30  ]] @canvas
 
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches)
@@ -121,7 +126,8 @@ $e)\;\; \text{kgV}(15;10) =$ [[ 30  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $f)\;\; \text{kgV}(11;7) =$ [[ 77  ]] @canvas
 
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches)

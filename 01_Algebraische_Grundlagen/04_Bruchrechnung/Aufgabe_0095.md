@@ -68,7 +68,8 @@ author: Martin Lommatzsch
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ 
 $ \dfrac{ 3 }{ 5 } = \dfrac{ 21 }{ x }  $ \
 $x = $ [[  35  ]] @canvas
@@ -84,7 +85,8 @@ $x = $ [[  35  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__  
 $ \dfrac{ 4 }{ 7 } = \dfrac{ x }{ 21 } $ \
 $x = $ [[  12  ]] @canvas
@@ -101,7 +103,8 @@ $x = $ [[  12  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__  
 $ \dfrac{ x }{ 8 } = \dfrac{ 9 }{ 12 } $ \
 $x = $ [[  6  ]] @canvas
@@ -118,7 +121,8 @@ $x = $ [[  6  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__  
 $ \dfrac{ 5 }{ x } = \dfrac{ 15 }{ 18 } $ \
 $x = $ [[  6  ]] @canvas
@@ -135,7 +139,8 @@ $x = $ [[  6  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__  
 $ \dfrac{ 11 }{ 22 } = \dfrac{ x }{ 6 } $ \
 $x = $ [[  3  ]] @canvas
@@ -152,7 +157,8 @@ $x = $ [[  3  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$f)\;\;$__  
 $ \dfrac{ 7 }{ x } = \dfrac{ 14 }{ 20 } $ \
 $x = $ [[  10  ]] @canvas
@@ -169,7 +175,8 @@ $x = $ [[  10  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$g)\;\;$__  
 $ \dfrac{ 8 }{ 12 } = \dfrac{ 2 }{ x } $ \
 $x = $ [[  3  ]] @canvas
@@ -186,7 +193,8 @@ $x = $ [[  3  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$h)\;\;$__  
 $ \dfrac{ x }{ 15 } = \dfrac{ 6 }{ 10 } $ \
 $x = $ [[  9  ]] @canvas
@@ -203,7 +211,8 @@ $x = $ [[  9  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$i)\;\;$__  
 $ \dfrac{ 3 }{ 9 } = \dfrac{ 4 }{ x } $ \
 $x = $ [[  12  ]] @canvas
@@ -220,7 +229,8 @@ $x = $ [[  12  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$j)\;\;$__  
 $ \dfrac{ x }{ 18 } = \dfrac{ 5 }{ 9 } $ \
 $x = $ [[  10  ]] @canvas

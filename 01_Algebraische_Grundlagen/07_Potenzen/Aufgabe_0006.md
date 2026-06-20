@@ -55,22 +55,55 @@ author: Martin Lommatzsch
 
 <section class="dynFlex">
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $(-2)^7 = $ [[  -128  ]] @canvas
 
+
+@ADetails(1=BE; Potenzen, Negative Zahlen)
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $-3^5 = $ [[  -243  ]] @canvas
 
+
+@ADetails(1=BE; Potenzen, Negative Zahlen)
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $(-5)^4 = $ [[  625  ]] @canvas
 
+
+@ADetails(1=BE; Potenzen, Negative Zahlen)
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ $ -8^3 = $ [[  -512  ]] @canvas
+
+
+@ADetails(1=BE; Potenzen, Negative Zahlen)
 
 
 </div>

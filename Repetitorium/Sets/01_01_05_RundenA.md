@@ -88,7 +88,8 @@ __Aufgabe 1:__ *Gib* den auf Zehner gerundeten Wert *an*.
 
 __$a)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $534 \approx$ [[  530  ]]
 
 </div>
@@ -96,7 +97,8 @@ $534 \approx$ [[  530  ]]
 
 __$b)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $119 \approx$ [[  120  ]]
 
 </div>
@@ -104,7 +106,8 @@ $119 \approx$ [[  120  ]]
 
 __$c)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $346 \approx$ [[  350  ]]
 
 </div>
@@ -112,7 +115,8 @@ $346 \approx$ [[  350  ]]
 
 __$d)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $971 \approx$ [[  970  ]]
 
 </div>
@@ -120,7 +124,8 @@ $971 \approx$ [[  970  ]]
 
 __$e)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $289 \approx$ [[  290  ]]
 
 </div>
@@ -128,7 +133,8 @@ $289 \approx$ [[  290  ]]
 
 __$f)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $654 \approx$ [[  650  ]]
 
 </div>
@@ -147,7 +153,8 @@ __Aufgabe 2:__ *Gib* den auf Hunderter gerundeten Wert *an*.
 
 __$a)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $7664 \approx$ [[7700    ]]
 
 </div>
@@ -158,7 +165,8 @@ $7664 \approx$ [[7700    ]]
 
 __$b)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $4467 \approx$ [[4500    ]]
 
 </div>
@@ -170,7 +178,8 @@ $4467 \approx$ [[4500    ]]
 
 __$c)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $2454 \approx$ [[2400    ]]
 
 </div>
@@ -182,7 +191,8 @@ $2454 \approx$ [[2400    ]]
 
 __$d)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $2163 \approx$ [[2200    ]]
 
 </div>
@@ -194,7 +204,8 @@ $2163 \approx$ [[2200    ]]
 
 __$e)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $2389 \approx$ [[2500    ]]
 
 </div>
@@ -205,7 +216,8 @@ $2389 \approx$ [[2500    ]]
 
 __$f)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $15314 \approx$ [[15300    ]]
 
 </div>
@@ -227,7 +239,8 @@ __Aufgabe 3:__ *Gib* den auf Tausender gerundeten Wert *an*.
 
 __$a)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $78961 \approx$ [[79000    ]]
 
 </div>
@@ -238,7 +251,8 @@ $78961 \approx$ [[79000    ]]
 
 __$b)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $18207 \approx$ [[18000    ]]
 
 </div>
@@ -250,7 +264,8 @@ $18207 \approx$ [[18000    ]]
 
 __$c)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $138499 \approx$ [[138000    ]]
 
 </div>
@@ -262,7 +277,8 @@ $138499 \approx$ [[138000    ]]
 
 __$d)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $316418 \approx$ [[316000    ]]
 
 </div>
@@ -274,7 +290,8 @@ $316418 \approx$ [[316000    ]]
 
 __$e)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $218640 \approx$ [[219000    ]]
 
 </div>
@@ -285,7 +302,8 @@ $218640 \approx$ [[219000    ]]
 
 __$f)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $450748 \approx$ [[451000    ]]
 
 </div>
@@ -311,7 +329,8 @@ __Aufgabe 4:__ *Gib* den auf Zehntausender gerundeten Wert *an*.
 
 __$a)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $464861 \approx$ [[460000    ]]
 
 </div>
@@ -322,7 +341,8 @@ $464861 \approx$ [[460000    ]]
 
 __$b)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $1103486 \approx$ [[1100000    ]]
 
 </div>
@@ -334,7 +354,8 @@ $1103486 \approx$ [[1100000    ]]
 
 __$c)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $1586404 \approx$ [[1590000    ]]
 
 </div>
@@ -346,7 +367,8 @@ $1586404 \approx$ [[1590000    ]]
 
 __$d)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $3185048 \approx$ [[3190000    ]]
 
 </div>
@@ -358,7 +380,8 @@ $3185048 \approx$ [[3190000    ]]
 
 __$e)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $8075604 \approx$ [[8080000    ]]
 
 </div>
@@ -369,7 +392,8 @@ $8075604 \approx$ [[8080000    ]]
 
 __$f)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $3446045 \approx$ [[3450000    ]]
 
 </div>
@@ -390,7 +414,8 @@ __Aufgabe 5:__ *Gib* den auf die angegebene Stelle gerundeten Wert *an*.
 
 __$a)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 Auf Tausender: $78163 \approx$ [[78000    ]]
 
 </div>
@@ -401,7 +426,8 @@ Auf Tausender: $78163 \approx$ [[78000    ]]
 
 __$b)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 Auf Zehner: $78163 \approx$ [[78160    ]]
 
 </div>
@@ -413,7 +439,8 @@ Auf Zehner: $78163 \approx$ [[78160    ]]
 
 __$c)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 Auf Hunderter: $29963 \approx$ [[30000    ]]
 
 </div>
@@ -425,7 +452,8 @@ Auf Hunderter: $29963 \approx$ [[30000    ]]
 
 __$d)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 Auf Tausender: $499 \approx$ [[    0    ]]
 
 </div>
@@ -437,7 +465,8 @@ Auf Tausender: $499 \approx$ [[    0    ]]
 
 __$e)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 Auf Zehner: $55164 \approx$ [[55160    ]]
 
 </div>
@@ -448,7 +477,8 @@ Auf Zehner: $55164 \approx$ [[55160    ]]
 
 __$f)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 Auf Tausender: $854684 \approx$ [[855000    ]]
 
 </div>
@@ -469,7 +499,8 @@ __Aufgabe 6:__ *Gib* den auf die angegebene Stelle gerundeten Wert *an*.
 
 __$a)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 Auf Hunderter: $54164 \approx$ [[54200    ]]
 
 </div>
@@ -480,7 +511,8 @@ Auf Hunderter: $54164 \approx$ [[54200    ]]
 
 __$b)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 Auf Hunderttausender: $54164 \approx$ [[100000    ]]
 
 </div>
@@ -492,7 +524,8 @@ Auf Hunderttausender: $54164 \approx$ [[100000    ]]
 
 __$c)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 Auf Zehner: $8431 \approx$ [[8430      ]]
 
 </div>
@@ -504,7 +537,8 @@ Auf Zehner: $8431 \approx$ [[8430      ]]
 
 __$d)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 Auf Millionen: $47081 \approx$ [[    0    ]]
 
 </div>
@@ -516,7 +550,8 @@ Auf Millionen: $47081 \approx$ [[    0    ]]
 
 __$e)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 Auf Hunderter: $94516 \approx$ [[94500    ]]
 
 </div>
@@ -527,7 +562,8 @@ Auf Hunderter: $94516 \approx$ [[94500    ]]
 
 __$f)\;\;$__
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 Auf Zehntausender: $998146 \approx$ [[1000000    ]]
 
 </div>

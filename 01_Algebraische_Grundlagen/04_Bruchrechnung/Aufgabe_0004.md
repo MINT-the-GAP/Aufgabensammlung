@@ -70,7 +70,8 @@ __$a)\;\;$__
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 Zähler: [[  3  ]] @canvas \
 Nenner: [[  4  ]] @canvas 
 
@@ -93,7 +94,8 @@ __$b)\;\;$__
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 Zähler: [[  5  ]] @canvas \
 Nenner: [[ 12  ]] @canvas 
 
@@ -116,7 +118,8 @@ __$c)\;\;$__
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 Zähler: [[  7  ]] @canvas \
 Nenner: [[ 16  ]] @canvas 
 
@@ -139,7 +142,8 @@ __$d)\;\;$__
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 Zähler: [[  12 ]] @canvas \
 Nenner: [[  16 ]] @canvas 
 
@@ -162,7 +166,8 @@ __$e)\;\;$__
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 Zähler: [[  5  ]] @canvas \
 Nenner: [[  6  ]] @canvas 
 
@@ -186,7 +191,8 @@ __$f)\;\;$__
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 Zähler: [[  8  ]] @canvas \
 Nenner: [[ 16  ]] @canvas 
 
@@ -210,7 +216,8 @@ __$g)\;\;$__
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 Zähler: [[  6  ]] @canvas \
 Nenner: [[  6  ]] @canvas 
 
@@ -234,7 +241,8 @@ __$h)\;\;$__
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 Zähler: [[  2  ]] @canvas \
 Nenner: [[  8  ]] @canvas 
 
@@ -258,7 +266,8 @@ __$i)\;\;$__
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 Zähler: [[  8  ]] @canvas \
 Nenner: [[  12 ]] @canvas 
 
@@ -282,7 +291,8 @@ __$j)\;\;$__
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 Zähler: [[  0  ]] @canvas \
 Nenner: [[  16 ]] @canvas 
 

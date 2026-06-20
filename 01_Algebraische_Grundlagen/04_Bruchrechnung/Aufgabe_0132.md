@@ -64,7 +64,8 @@ Für ein Schulfest wird $\dfrac{3}{4}$ der gesamten Gartenfläche genutzt.
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  90  ]] m$^2$ @canvas
 ************
 $$

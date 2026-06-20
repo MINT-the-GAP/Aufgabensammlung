@@ -66,7 +66,8 @@ Von der verbleibenden Strecke wird nach der Pause nochmals $\dfrac{5}{12}$ zurü
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  35/2  ]]  km @canvas
 @Algebrite.check(35/2)
 ************

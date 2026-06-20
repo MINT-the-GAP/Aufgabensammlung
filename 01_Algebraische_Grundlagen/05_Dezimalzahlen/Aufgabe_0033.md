@@ -54,34 +54,88 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $ 4,7:0,25 =$ [[  18,8  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Division)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $ 0,225:1,5 =$ [[  0,15  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Division)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $ 4,5:9 =$ [[  0,5  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Division)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $ 0,54:0,6 =$ [[  0,9  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Division)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$e)\;\;$__ $ 8,75:12,5 =$ [[  0,7  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Division)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$f)\;\;$__ $ 3,6:0,009 =$ [[  400  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Division)
+
+</div>  
 </section>
 
 

@@ -56,11 +56,21 @@ author: Martin Lommatzsch
 
 
 
-<!-- data-type="none"
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-type="none" 
 data-sortable="false" -->
 |  $t$  |   $k$  |   $d$   |  $ t+k-d $  |  $ t \cdot d $ | $ d - k \cdot t $ |
 | :---: | :----: | :-----: | :------:    | :----------:   | :-----------:     |
-|  5    |   -6   |    8    | [[ -9  ]] @canvas   |   [[  40 ]] @canvas    |  [[ 38  ]] @canvas        |
-|  -8   |   4    |    -6   | [[  2  ]] @canvas   |   [[  48 ]] @canvas    |  [[ 26  ]] @canvas        |
-|  -4   |   -7   |    9    | [[ -20 ]] @canvas   |   [[ -36 ]] @canvas    |  [[ -19 ]] @canvas        |
-|   3   |   -5   |    -8   | [[ 6   ]] @canvas   |   [[ -24 ]] @canvas    |  [[ 7   ]] @canvas        |
+|  5    |   -6   |    8    | [[ -9  ]]    |   [[  40 ]]     |  [[ 38  ]]         |
+|  -8   |   4    |    -6   | [[  2  ]]    |   [[  48 ]]     |  [[ 26  ]]         |
+|  -4   |   -7   |    9    | [[ -20 ]]    |   [[ -36 ]]     |  [[ -19 ]]         |
+|   3   |   -5   |    -8   | [[ 6   ]]    |   [[ -24 ]]     |  [[ 7   ]]         |
+
+
+@ADetails(1=BE; Einsetzungsverfahren, Tabelle, Negative Zahlen)

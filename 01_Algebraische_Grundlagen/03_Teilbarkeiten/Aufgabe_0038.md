@@ -66,7 +66,8 @@ __$a)\;\;$__ 851872
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 - [[X]] 2
 - [[ ]] 3
 - [[X]] 4
@@ -89,7 +90,8 @@ __$b)\;\;$__ 918273
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 - [[ ]] 2
 - [[X]] 3
 - [[ ]] 4
@@ -112,7 +114,8 @@ __$c)\;\;$__ 246824
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 - [[X]] 2
 - [[ ]] 3
 - [[X]] 4
@@ -135,7 +138,8 @@ __$d)\;\;$__ 135790
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 - [[X]] 2
 - [[ ]] 3
 - [[ ]] 4
@@ -158,7 +162,8 @@ __$e)\;\;$__ 1234560
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 - [[X]] 2
 - [[X]] 3
 - [[X]] 4
@@ -181,7 +186,8 @@ __$f)\;\;$__ 987654
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 - [[X]] 2
 - [[X]] 3
 - [[ ]] 4
@@ -204,7 +210,8 @@ __$g)\;\;$__ 444440
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 - [[X]] 2
 - [[ ]] 3
 - [[X]] 4
@@ -227,7 +234,8 @@ __$h)\;\;$__ 765432
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 - [[X]] 2
 - [[X]] 3
 - [[X]] 4
@@ -250,7 +258,8 @@ __$i)\;\;$__ 864210
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 - [[X]] 2
 - [[X]] 3
 - [[ ]] 4

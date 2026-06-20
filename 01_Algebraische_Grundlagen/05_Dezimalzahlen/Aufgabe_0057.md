@@ -58,49 +58,109 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $\dfrac{129}{100} \qquad$  \
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
  [[  1,29   ]] @canvas 
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Bruchrechnung, Addition, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
 __$b)\;\;$__ $\dfrac{2}{1}+\dfrac{4}{10}+\dfrac{4}{100} \qquad$  \
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
  [[  2,44  ]] @canvas 
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Bruchrechnung, Addition, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
 __$c)\;\;$__ $\dfrac{3}{10}+\dfrac{8}{10000} \qquad$  \
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
   [[  0,3008  ]] @canvas 
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Bruchrechnung, Addition, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
 __$d)\;\;$__ $\dfrac{9}{100}+\dfrac{6}{1000}+\dfrac{11}{1} \qquad$  \
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
  [[  11,096  ]] @canvas 
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Bruchrechnung, Addition, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
 __$e)\;\;$__ $\dfrac{3}{1}+\dfrac{49}{1000} \qquad$  \
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
  [[  3,049   ]] @canvas 
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Bruchrechnung, Addition, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
 __$f)\;\;$__ $\dfrac{7}{1000000} \qquad$  \
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
  [[  0,000007 ]] @canvas 
 
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Bruchrechnung, Addition, Zahlenverständnis)
+
+</div> 
 </section>
 
 

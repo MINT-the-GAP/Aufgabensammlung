@@ -69,7 +69,8 @@ $\{$ <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/r
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> 
 $\}$
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $R=$ [[  5  ]]
 *******************
 $R = x_{max} - x_{min} = 6 - 2 = 5$
@@ -103,7 +104,8 @@ $\{ \{$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> 
 $\} \}$
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $R=$ [[  0  ]]
 *******************
 $R = x_{max} - x_{min} = 8 - 8 = 0$
@@ -138,7 +140,8 @@ $\{ \{$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> 
 $\} \}$
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $R=$ [[  9  ]]
 *******************
 $R = x_{max} - x_{min} = 12 - 3 = 9$

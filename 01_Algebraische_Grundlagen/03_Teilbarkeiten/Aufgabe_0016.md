@@ -62,7 +62,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $a)\;\; \text{kgV}(4;5;6) =$ [[ 60  ]] @canvas
 
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches)
@@ -75,7 +76,8 @@ $a)\;\; \text{kgV}(4;5;6) =$ [[ 60  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $b)\;\; \text{kgV}(9;2;5) =$ [[ 90  ]] @canvas
 
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches)
@@ -88,7 +90,8 @@ $b)\;\; \text{kgV}(9;2;5) =$ [[ 90  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $c)\;\; \text{kgV}(9;4;6) =$ [[ 36  ]] @canvas
 
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches)
@@ -101,7 +104,8 @@ $c)\;\; \text{kgV}(9;4;6) =$ [[ 36  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 $d)\;\; \text{kgV}(7;3;11) =$ [[ 231 ]] @canvas
 
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches)

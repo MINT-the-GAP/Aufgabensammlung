@@ -54,34 +54,88 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $ 8,25 - 2,4 \cdot 2,5 =$ [[  2,25  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Vorrangsregeln)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $ 0,8 \cdot 1,1 + 0,3 \cdot 0,5 =$ [[  1,03  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Vorrangsregeln)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $ (0,75-0,64) \cdot 0,5 =$ [[  0,055  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Vorrangsregeln, Distributivgesetz)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $ 16,9 : 13 - 0,5 =$ [[  0,8  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Vorrangsregeln)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$e)\;\;$__ $ 0,25 \cdot 3,6 + 0,75 =$ [[  1,65  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Vorrangsregeln)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$f)\;\;$__ $ 9,6:0,08 - 2,5 =$ [[  117,5  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Vorrangsregeln)
+
+</div>  
 </section>
 
 

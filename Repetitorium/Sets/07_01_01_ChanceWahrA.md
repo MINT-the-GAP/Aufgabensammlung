@@ -102,7 +102,8 @@ $\{$ <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/r
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> 
 $\}$
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $R=$ [[  3  ]]
 *******************
 $R = x_{max} - x_{min} = 4 - 1 = 3$
@@ -136,7 +137,8 @@ $\{ \{$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30"> 
 $\} \}$
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $R=$ [[  3  ]]
 *******************
 $R = x_{max} - x_{min} = 9 - 6 = 5$
@@ -171,7 +173,8 @@ $\{ \{$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> 
 $\} \}$
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $R=$ [[  8  ]]
 *******************
 $R = x_{max} - x_{min} = 11 - 3 = 8$
@@ -203,7 +206,8 @@ $\{$ <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/r
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> 
 $\}$
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $R=$ [[  5  ]]
 *******************
 $R = x_{max} - x_{min} = 6 - 2 = 5$
@@ -237,7 +241,8 @@ $\{ \{$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> 
 $\} \}$
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $R=$ [[  0  ]]
 *******************
 $R = x_{max} - x_{min} = 8 - 8 = 0$
@@ -272,7 +277,8 @@ $\{ \{$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb4.png" width="30" height="30"> 
 $\} \}$
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $R=$ [[  9  ]]
 *******************
 $R = x_{max} - x_{min} = 12 - 3 = 9$
@@ -305,7 +311,8 @@ $\{$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> 
 $\}$
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\tilde{x}=$ [[  4  ]]
 *******************
 $\{ 1;1;1;2;3;\textcolor{red}{4};4;5;5;6;6 \}$
@@ -337,7 +344,8 @@ $\{ \{$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb3.png" width="30" height="30"> 
 $\} \}$
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\tilde{x}=$ [[  7  ]]
 *******************
 $\{ 4;5;6;\textcolor{red}{7};8;9;9 \}$
@@ -373,7 +381,8 @@ $\{ \{$
 $\} \}$
 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\tilde{x}=$ [[  7  ]]
 *******************
 $\{ 2;3;4;6;7;\textcolor{red}{7};8;10;11;11;11 \}$
@@ -403,7 +412,8 @@ $\{$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> 
 $\}$
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\tilde{x}=$ [[  2  ]]
 *******************
 $\{ 1;1;1;1;2;\textcolor{red}{2};4;4;5;6;6 \}$
@@ -436,7 +446,8 @@ $\{ \{$
 $\} \}$
 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\tilde{x}=$ [[  7  ]]
 *******************
 $\{ 6;7;7;\textcolor{red}{7};7;7;10; \}$
@@ -472,7 +483,8 @@ $\{ \{$
 $\} \}$
 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\tilde{x}=$ [[  7  ]]
 *******************
 $\{ 2;3;4;4;7;\textcolor{red}{7};7;8;9;9;12  \}$
@@ -501,7 +513,8 @@ $\{$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> 
 $\}$
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\bar{x}=$ [[  3,9  ]]
 @Algebrite.check(39/10)
 *******************
@@ -537,7 +550,8 @@ $\{ \{$
 $\} \}$
 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\bar{x}=$ [[  7,125  ]]
 @Algebrite.check(57/8)
 *******************
@@ -573,7 +587,8 @@ $\} \}$
 
 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\bar{x}=$ [[  6,6  ]]
 @Algebrite.check(66/10)
 *******************
@@ -605,7 +620,8 @@ $\{$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> 
 $\}$
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\bar{x}=$ [[  2,7  ]]
 @Algebrite.check(27/10)
 *******************
@@ -641,7 +657,8 @@ $\{ \{$
 $\} \}$
 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\bar{x}=$ [[  7,25  ]]
 @Algebrite.check(58/8)
 *******************
@@ -677,7 +694,8 @@ $\} \}$
 
 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\bar{x}=$ [[  7,6  ]]
 @Algebrite.check(76/10)
 *******************
@@ -700,7 +718,8 @@ $\{ 7,8,8,6,11,14,12,12,13,8,10,7,7,11,9 \}$
 
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ **Gib** die Spannweite **an**.\
 $R=$ [[  8  ]]
 *******************
@@ -711,7 +730,8 @@ $R = x_{max} - x_{min} = 14 - 6 = 8$
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ **Gib** den Median **an**.\
 $\tilde{x}=$ [[  9  ]]
 *******************
@@ -722,7 +742,8 @@ $\{ 6,7,7,7,8,8,8,\textcolor{red}{9},10,11,11,12,12,13,14 \}$
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ **Gib** das arithmetische Mittel gerundet auf drei Nachkommastellen **an**.\
 $\bar{x}=$ [[  9,533  ]]
 
@@ -743,7 +764,8 @@ $\{ 83,46,55,64,91,75,61,39,84,55,47 \}$
 
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ **Gib** die Spannweite **an**.\
 $R=$ [[ 52  ]]
 *******************
@@ -754,7 +776,8 @@ $R = x_{max} - x_{min} = 91 - 39 = 52$
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ **Gib** den Median **an**.\
 $\tilde{x}=$ [[  61  ]]
 *******************
@@ -765,7 +788,8 @@ $\{ 39,46,47,55,55,\textcolor{red}{61},64,75,83,84,91 \}$
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ **Gib** das arithmetische Mittel gerundet auf drei Nachkommastellen **an**.\
 $\bar{x}=$ [[  63,636  ]]
 
@@ -786,7 +810,8 @@ $\{ 56,54,55,56,57,55,56,54,53,58,55,56,54,52,56,57 \}$
 
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ **Gib** die Spannweite **an**.\
 $R=$ [[  6  ]]
 *******************
@@ -827,7 +852,8 @@ $\{ 29,33,28,31,35,24,36,32,28,27,35,34,29,30,35 \}$
 
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ **Gib** die Spannweite **an**.\
 $R=$ [[ 12  ]]
 *******************
@@ -838,7 +864,8 @@ $R = x_{max} - x_{min} = 36 - 24 = 12$
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ **Gib** den Median **an**.\
 $\tilde{x}=$ [[ 31  ]]
 *******************
@@ -849,7 +876,8 @@ $\{ 24,27,28,28,29,29,30,\textcolor{red}{31},32,33,34,35,35,35,36 \}$
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ **Gib** das arithmetische Mittel gerundet auf drei Nachkommastellen **an**.\
 $\bar{x}=$ [[  33,067  ]]
 
@@ -1466,42 +1494,48 @@ __Aufgabe 15:__ **Gib** die angegebene Chance als Wahrscheinlichkeit **an**.
 <div class="flex-child">
 __$a)\;\;$__ Die Chance wird mit $2:3$ angegeben.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$[[ 2/5 ]]
 @Algebrite.check(2/5)
 </div>
 <div class="flex-child">
 __$b)\;\;$__ Die Chance wird mit $5:2$ angegeben.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$[[ 5/7 ]]
 @Algebrite.check(5/7)
 </div>
 <div class="flex-child">
 __$c)\;\;$__ Die Chance wird mit $11:9$ angegeben.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$[[ 11/20 ]]
 @Algebrite.check(11/20)
 </div>
 <div class="flex-child">
 __$d)\;\;$__ Die Chance wird mit $17:23$ angegeben.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$[[ 17/40 ]]
 @Algebrite.check(17/40)
 </div>
 <div class="flex-child">
 __$e)\;\;$__ Die Chance wird mit $1:22$ angegeben.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$[[ 1/23 ]]
 @Algebrite.check(1/23)
 </div>
 <div class="flex-child">
 __$f)\;\;$__ Die Chance wird mit $45:2$ angegeben.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$[[ 45/47 ]]
 @Algebrite.check(45/47)
 </div>
@@ -1520,42 +1554,48 @@ __Aufgabe 16:__ **Gib** die angegebene Chance als Wahrscheinlichkeit **an**.
 <div class="flex-child">
 __$a)\;\;$__ Die Chance wird mit $1:5$ angegeben.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$[[ 1/6 ]]
 @Algebrite.check(1/6)
 </div>
 <div class="flex-child">
 __$b)\;\;$__ Die Chance wird mit $4:5$ angegeben.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$[[ 4/9 ]]
 @Algebrite.check(4/9)
 </div>
 <div class="flex-child">
 __$c)\;\;$__ Die Chance wird mit $18:11$ angegeben.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$[[ 18/29 ]]
 @Algebrite.check(18/29)
 </div>
 <div class="flex-child">
 __$d)\;\;$__ Die Chance wird mit $13:2$ angegeben.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$[[ 13/15 ]]
 @Algebrite.check(13/15)
 </div>
 <div class="flex-child">
 __$e)\;\;$__ Die Chance wird mit $4:81$ angegeben.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$[[ 4/85 ]]
 @Algebrite.check(4/85)
 </div>
 <div class="flex-child">
 __$f)\;\;$__ Die Chance wird mit $7:111$ angegeben.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$[[ 7/118 ]]
 @Algebrite.check(7/118)
 </div>
@@ -1580,7 +1620,8 @@ __Aufgabe 17:__ **Gib** die Wahrscheinlichkeit für das beschriebene Szenario **
 
 __$a)\;\;$__ Eine ideale Münze wird hochgeworfen. Beim Aufkommen liegt die Kopf-Seite oben.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$[[  1/2  ]]
 @Algebrite.check(1/2)
 </div>
@@ -1588,7 +1629,8 @@ $p=$[[  1/2  ]]
 
 __$b)\;\;$__ Mit einem idealen sechsseitigen Würfel wird gewürfelt. Nach dem Wurf ist die 4 oben.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$[[  1/6  ]]
 @Algebrite.check(1/6)
 </div>
@@ -1596,7 +1638,8 @@ $p=$[[  1/6  ]]
 
 __$c)\;\;$__ Mit einem idealen zwanzigseitigen Würfel wird gewürfelt. Nach dem Wurf ist keine 13 oben.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$[[  19/20  ]]
 @Algebrite.check(19/20)
 </div>
@@ -1604,7 +1647,8 @@ $p=$[[  19/20  ]]
 
 __$d)\;\;$__ Ein Glücksrad ist in 25 gleichgroße Flächen eingeteilt. Zwei dieser Flächen sind rot und es kommt auf einer roten Fläche zum Stoppen.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$[[  2/25  ]]
 @Algebrite.check(2/25)
 </div>
@@ -1612,7 +1656,8 @@ $p=$[[  2/25  ]]
 
 __$e)\;\;$__ Ein Glücksrad ist in 10 gleichgroße unterschiedlich gefärbte Flächen eingeteilt. Das Rad kommt auf einer orangen Fläche zum Stoppen.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$[[  1/10  ]]
 @Algebrite.check(1/10)
 </div>
@@ -1635,7 +1680,8 @@ __Aufgabe 18:__ **Gib** die Wahrscheinlichkeit für das beschriebene Szenario **
 
 __$a)\;\;$__ Mit einem idealen achtsseitigen Würfel wird gewürfelt. Nach dem Wurf ist die 7 oben.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$[[  1/8  ]]
 @Algebrite.check(1/8)
 </div>
@@ -1643,7 +1689,8 @@ $p=$[[  1/8  ]]
 
 __$b)\;\;$__ Ein Glücksrad ist in vier gleichgroße unterschiedlich gefärbte Flächen eingeteilt. Das Rad kommt auf einer blauen Fläche zum Stoppen.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$[[  1/4  ]]
 @Algebrite.check(1/4)
 </div>
@@ -1651,7 +1698,8 @@ $p=$[[  1/4  ]]
 
 __$c)\;\;$__ In einer Losbox befinden sich 3 Gewinnlose und 7 Nieten. Es wird eine Niete gezogen.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$[[  7/10  ]]
 @Algebrite.check(7/10)
 </div>
@@ -1659,7 +1707,8 @@ $p=$[[  7/10  ]]
 
 __$d)\;\;$__ Mit einem idealen zwölfseitigen Würfel wird gewürfelt. Nach dem Wurf ist keine 13 oben.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$[[  1  ]]
 @Algebrite.check(1)
 </div>
@@ -1667,7 +1716,8 @@ $p=$[[  1  ]]
 
 __$e)\;\;$__ Mit einem idealen vierseitigen Würfel wird gewürfelt. Nach dem Wurf liegt eine Primzahl oben.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$[[  1/2  ]]
 @Algebrite.check(1/2)
 </div>
@@ -1688,21 +1738,24 @@ __Aufgabe 19:__ **Gib** die Wahrscheinlichkeit für das beschriebene Szenario **
 
 __$a)\;\;$__ In einer Urne befinden sich $24$ blaue, $18$ grüne und $8$ rote Kugeln. **Gib** die Wahrscheinlichkeit in Prozent **an** eine grüne Kugel zu ziehen.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$ [[ 36  ]]$\%$ 
 
 
 
 __$b)\;\;$__ Ein Glücksrad ist in gleich große Segmente unterteilt. Dabei sind $5$ Felder rot, $13$ Felder weiß und $7$ Felder schwarz. **Gib** die Wahrscheinlichkeit in Prozent **an**, dass beim Drehen des Glücksrades ein rotes Feld resultiert.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$ [[ 20  ]]$\%$ 
 
 
 
 __$c)\;\;$__ Bei einer Stichprobe im Supermarkt von $125$ Produkten waren $4$ fehlerhaft. **Gib** die Wahrscheinlichkeit in Prozent **an** ein fehlerhaftes Produkt zu kaufen.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$ [[ 3,2 ]]$\%$ 
 
 
@@ -1715,21 +1768,24 @@ __Aufgabe 20:__ **Gib** die Wahrscheinlichkeit für das beschriebene Szenario **
 
 __$a)\;\;$__ In einer Urne befinden sich $17$ grüne und $23$ rote Kugeln. **Gib** die Wahrscheinlichkeit in Prozent **an** eine rote Kugel zu ziehen.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$ [[ 57,5 ]]$\%$ 
 
 
 
 __$b)\;\;$__ Ein Glücksrad ist in gleich große Segmente unterteilt. Dabei sind $9$ Felder gelb, $5$ Felder blau und $6$ Felder geld. **Gib** die Wahrscheinlichkeit in Prozent **an**, dass beim Drehen des Glücksrades ein gelbes Feld resultiert.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$ [[  45  ]]$\%$ 
 
 
 
 __$c)\;\;$__ Bei einem Kartenspiel mit $32$ Karten sind $4$ Asse. **Gib** die Wahrscheinlichkeit in Prozent **an** ein Ass als erste Karte zu ziehen.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$ [[ 12,5 ]]$\%$ 
 
 
@@ -1749,21 +1805,24 @@ __Aufgabe 21:__ **Gib** die Wahrscheinlichkeit für das beschriebene Szenario **
 
 __$a)\;\;$__ In einer Urne befinden sich $9$ weiße, $22$ gelbe und $29$ schwarze Kugeln. **Gib** die Wahrscheinlichkeit in Prozent **an** eine weiße Kugel zu ziehen.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$ [[  15   ]]$\%$ 
 
 
 
 __$b)\;\;$__ Ein Glücksrad ist in gleich große Segmente unterteilt. Dabei sind $17$ Felder rot und $63$ Felder schwarz. **Gib** die Wahrscheinlichkeit in Prozent **an**, dass beim Drehen des Glücksrades ein schwarzes Feld resultiert.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$ [[ 78,75 ]]$\%$ 
 
 
 
 __$c)\;\;$__ Eine Reißzwecke wurde $70$-mal hochgeworfen und landete $49$-mal auf der Seite. **Gib** die Wahrscheinlichkeit in Prozent **an**, dass die Reißzwecke nicht auf der Seite landet.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$ [[  30   ]]$\%$ 
 
 
@@ -1777,21 +1836,24 @@ __Aufgabe 22:__ **Gib** die Wahrscheinlichkeit für das beschriebene Szenario **
 
 __$a)\;\;$__ In einer Urne befinden sich $25$ rote und $15$ grüne Kugeln. **Gib** die Wahrscheinlichkeit in Prozent **an** eine rote Kugel zu ziehen.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$ [[ 62,5 ]]$\%$ 
 
 
 
 __$b)\;\;$__ Ein Glücksrad ist in gleich große Segmente unterteilt. Dabei sind $24$ Felder blau, $36$ Felder gelb und $15$ Felder schwarz. **Gib** die Wahrscheinlichkeit in Prozent **an**, dass beim Drehen des Glücksrades ein blaues Feld resultiert.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$ [[ 32   ]]$\%$ 
 
 
 
 __$c)\;\;$__ In einer Packung Streichhölzer sind beim Anzünden durch ein und dieselbe Person $5$ zerbrochen, während $35$ heil blieben. **Gib** die Wahrscheinlichkeit in Prozent **an**, dass ein Streichholz beim Anzünden durch diese Person zerbricht.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $p=$ [[ 12,5  ]]$\%$ 
 
 

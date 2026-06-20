@@ -95,7 +95,8 @@ __Aufgabe 1:__ **Bestimme** die Anzahl der Permutationen.
 
 __$a)\;\;$__ Es gibt $6$ unterschiedliche Kugeln. 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 [[  720    ]] 
 **********
 $6! = 720$
@@ -107,7 +108,8 @@ $6! = 720$
 
 __$b)\;\;$__ Es gibt $5$ rote und $3$ blaue Kugeln. 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 [[  56     ]] 
 **********
 $\dfrac{8!}{5!3!} = 56$
@@ -120,7 +122,8 @@ $\dfrac{8!}{5!3!} = 56$
 
 __$c)\;\;$__ Es gibt $9$ rote und $3$ blaue Kugeln. 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 [[  220    ]] 
 **********
 $\dfrac{12!}{6!3!} = 220$
@@ -145,7 +148,8 @@ __Aufgabe 2:__ **Bestimme** die Anzahl der Permutationen.
 
 __$a)\;\;$__ Es gibt $7$ unterschiedliche Kugeln. 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 [[  5040   ]] 
 **********
 $7! = 5040$
@@ -157,7 +161,8 @@ $7! = 5040$
 
 __$b)\;\;$__ Es gibt $4$ rote und $2$ blaue Kugeln.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 [[  15     ]] 
 **********
 $\dfrac{6!}{4!2!} = 15$
@@ -170,7 +175,8 @@ $\dfrac{6!}{4!2!} = 15$
 
 __$c)\;\;$__ Es gibt $6$ rote, $2$ grüne und $2$ blaue Kugeln.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 [[  1260   ]] 
 **********
 $\dfrac{10!}{6!2!2!} = 1260$
@@ -197,7 +203,8 @@ __Aufgabe 3:__ **Bestimme** die Anzahl der Permutationen.
 
 __$a)\;\;$__ Es gibt $5$ unterschiedliche Kugeln. 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 [[  120    ]] 
 **********
 $6! = 720$
@@ -209,7 +216,8 @@ $6! = 720$
 
 __$b)\;\;$__ Es gibt $13$ rote und $2$ blaue Kugeln.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 [[  105    ]] 
 **********
 $\dfrac{15!}{13!2!} = 105$
@@ -222,7 +230,8 @@ $\dfrac{15!}{13!2!} = 105$
 
 __$c)\;\;$__ Es gibt $1$ rote, $2$ grüne und $9$ blaue Kugeln.
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 [[   660   ]] 
 **********
 $\dfrac{12!}{9!2!1!} = 660$

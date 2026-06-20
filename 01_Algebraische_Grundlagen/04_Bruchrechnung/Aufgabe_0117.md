@@ -64,7 +64,8 @@ Ein Seil ist $24$ m lang. Es wird $\dfrac{5}{8}$ der Länge benötigt.
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  15  ]]  m @canvas
 ************
 $$

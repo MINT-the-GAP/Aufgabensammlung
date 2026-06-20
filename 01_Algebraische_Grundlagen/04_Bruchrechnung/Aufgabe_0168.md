@@ -64,6 +64,7 @@ author: Martin Lommatzsch
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-solution-button="5" 
+data-hint-button="3" 
 data-randomize="true"  -->
 __$a)\;\;$__  $\dfrac{2}{3}$
  [->[$\left. \boxed{ = \dfrac{4}{6}} \right\| \boxed{ \dfrac{7}{8} - \dfrac{5}{24}} $]]
@@ -82,6 +83,7 @@ $= \dfrac{5}{6}$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-solution-button="5" 
+data-hint-button="3" 
 data-randomize="true"  -->
 __$b)\;\;$__  $\dfrac{3}{7}$
  [->[$\left. \boxed{ = \dfrac{6}{14}} \right\| \boxed{ \dfrac{9}{8} : \dfrac{21}{16}} $]]
@@ -100,6 +102,7 @@ $= \dfrac{2}{3}$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-solution-button="5" 
+data-hint-button="3" 
 data-randomize="true"  -->
 __$c)\;\;$__  $\dfrac{5}{12}$
  [->[$\left. \boxed{ = \dfrac{10}{24}} \right\| \boxed{ \dfrac{3}{4} - \dfrac{1}{6}} $]]
@@ -118,6 +121,7 @@ $= \dfrac{3}{4}$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-solution-button="5" 
+data-hint-button="3" 
 data-randomize="true"  -->
 __$d)\;\;$__  $\dfrac{2}{9}$
  [->[$\left. \boxed{ = \dfrac{4}{18}} \right\| \boxed{ \dfrac{7}{6} - \dfrac{5}{18}} $]]
@@ -136,6 +140,7 @@ $= \dfrac{4}{6}$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-solution-button="5" 
+data-hint-button="3" 
 data-randomize="true"  -->
 __$e)\;\;$__  $\dfrac{7}{8}$
  [->[$\left. \boxed{ = 1 - \dfrac{1}{8}} \right\| \boxed{ \dfrac{3}{2} \cdot \dfrac{7}{12}} $]]
@@ -154,6 +159,7 @@ $= \dfrac{3}{4}$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-solution-button="5" 
+data-hint-button="3" 
 data-randomize="true"  -->
 __$f)\;\;$__  $\dfrac{5}{16}$
  [->[$\left. \boxed{ = \dfrac{10}{32}} \right\| \boxed{ \dfrac{1}{2} - \dfrac{3}{16}} $]]

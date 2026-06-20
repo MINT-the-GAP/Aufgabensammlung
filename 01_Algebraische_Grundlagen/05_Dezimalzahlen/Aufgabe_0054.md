@@ -54,6 +54,12 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ \
 $ 56 : 7000 =$ [[  0,008  ]] @canvas \
 $ 56 : 700 =$ [[  0,08  ]] @canvas \
@@ -63,9 +69,19 @@ $ 56 : 0,7 =$ [[  80  ]] @canvas \
 $ 56 : 0,07 =$ [[  800  ]] @canvas \
 $ 56 : 0,007 =$ [[  8000  ]] @canvas 
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Division, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ \
 $ 7500 : 15 =$ [[  500  ]] @canvas \
 $ 750 : 15 =$ [[  50  ]] @canvas \
@@ -75,9 +91,19 @@ $ 0,75 : 15 =$ [[  0,05  ]] @canvas \
 $ 0,075 : 15 =$ [[  0,005  ]] @canvas \
 $ 0,0075 : 15 =$ [[  0,0005  ]] @canvas 
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Division, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ \
 $ 9600 : 1600 =$ [[  6  ]] @canvas \
 $ 960 : 160 =$ [[  6  ]] @canvas \
@@ -87,9 +113,19 @@ $ 0,96 : 0,16 =$ [[  6  ]] @canvas \
 $ 0,096 : 0,016 =$ [[  6  ]] @canvas \
 $ 0,0096 : 0,0016 =$ [[  6  ]] @canvas 
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Division, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ \
 $ 48000 : 0,006 =$ [[  8000000    ]] @canvas \
 $ 4800 : 0,06 =$ [[  80000     ]] @canvas \
@@ -99,7 +135,11 @@ $ 4,8 : 60 =$ [[  0,08      ]] @canvas \
 $ 0,48 : 600 =$ [[  0,0008    ]] @canvas \
 $ 0,048 : 6000 =$ [[  0,000008  ]] @canvas 
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Division, Zahlenverständnis)
+
+</div> 
 </section>
 
 

@@ -66,7 +66,8 @@ Von der verbleibenden Menge werden dann $\dfrac{3}{5}$ für den Verkauf abgefül
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  28  ]]  kg @canvas
 ************
 $$

@@ -57,7 +57,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ Dreimillionenvierhunderttausendneun.  \
 [[  3400009  ]] @canvas
 
@@ -68,7 +69,8 @@ __$a)\;\;$__ Dreimillionenvierhunderttausendneun.  \
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ Neuntausendzweihundertvierundsechszig.\
 [[    9264   ]] @canvas
 
@@ -79,7 +81,8 @@ __$b)\;\;$__ Neuntausendzweihundertvierundsechszig.\
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ Zwölftausenddreihundertelf.\
 [[   12311   ]] @canvas
 
@@ -90,7 +93,8 @@ __$c)\;\;$__ Zwölftausenddreihundertelf.\
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ Sechshundertfünfundsiebzigtausendachthundertdreiundachtzig.\
 [[   675883  ]] @canvas
 

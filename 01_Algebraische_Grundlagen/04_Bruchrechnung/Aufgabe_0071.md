@@ -69,7 +69,8 @@ author: Martin Lommatzsch
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $ 2\tfrac{5}{6} = $ [[  17/6  ]] @canvas 
 @Algebrite.check(17/6)
 ************
@@ -96,7 +97,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $ 7\tfrac{1}{3} = $ [[  22/3  ]] @canvas 
 @Algebrite.check(22/3)
 ************
@@ -123,7 +125,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $ 4\tfrac{7}{8} = $ [[  39/8  ]] @canvas 
 @Algebrite.check(39/8)
 ************
@@ -150,7 +153,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ $ 9\tfrac{2}{5} = $ [[  47/5  ]] @canvas 
 @Algebrite.check(47/5)
 ************
@@ -177,7 +181,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ $ 3\tfrac{3}{10} = $ [[  33/10  ]] @canvas 
 @Algebrite.check(33/10)
 ************
@@ -204,7 +209,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$f)\;\;$__ $ 6\tfrac{5}{12} = $ [[  77/12  ]] @canvas 
 @Algebrite.check(77/12)
 ************
@@ -231,7 +237,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$g)\;\;$__ $ 1\tfrac{7}{9} = $ [[  16/9  ]] @canvas 
 @Algebrite.check(16/9)
 ************
@@ -258,7 +265,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$h)\;\;$__ $ 8\tfrac{11}{12} = $ [[  107/12  ]] @canvas 
 @Algebrite.check(107/12)
 ************
@@ -285,7 +293,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$i)\;\;$__ $ 10\tfrac{1}{2} = $ [[  21/2  ]] @canvas 
 @Algebrite.check(21/2)
 ************
@@ -312,7 +321,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$j)\;\;$__ $ 2\tfrac{4}{7} = $ [[  18/7  ]] @canvas 
 @Algebrite.check(18/7)
 ************

@@ -79,7 +79,8 @@ __$a)\;\;$__ Welcher Bruchanteil des jeweiligen Rechteck ist farbig markiert?
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$I\;\;$__ [[  1/3  ]] @canvas
 @Algebrite.check(1/3)
 
@@ -94,7 +95,8 @@ __$I\;\;$__ [[  1/3  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$II\;\;$__ [[  3/4  ]] @canvas
 @Algebrite.check(3/4)
 
@@ -109,7 +111,8 @@ __$II\;\;$__ [[  3/4  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$III\;\;$__ [[  3/5  ]] @canvas
 @Algebrite.check(3/5)
 
@@ -130,7 +133,8 @@ __$b)\;\;$__ Welcher Bruchanteil der farbigen Markierung ist bläulich markiert?
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$I\;\;$__ [[  2/3  ]] @canvas
 @Algebrite.check(2/3)
 
@@ -145,7 +149,8 @@ __$I\;\;$__ [[  2/3  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$II\;\;$__ [[  1/6  ]] @canvas
 @Algebrite.check(1/6)
 
@@ -160,7 +165,8 @@ __$II\;\;$__ [[  1/6  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$III\;\;$__ [[  3/4  ]] @canvas
 @Algebrite.check(3/4)
 
@@ -181,7 +187,8 @@ __$c)\;\;$__ Welcher Bruchanteil der jeweiligen Rechteck ist bläulich markiert?
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$I\;\;$__ [[  2/9  ]] @canvas
 @Algebrite.check(2/9)
 
@@ -196,7 +203,8 @@ __$I\;\;$__ [[  2/9  ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$II\;\;$__ [[  3/24 ]] @canvas
 @Algebrite.check(3/24)
 
@@ -211,7 +219,8 @@ __$II\;\;$__ [[  3/24 ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$III\;\;$__ [[  9/20  ]] @canvas
 @Algebrite.check(9/20)
 

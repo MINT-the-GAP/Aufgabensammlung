@@ -57,11 +57,21 @@ author: Martin Lommatzsch
 
 
 
-<!-- data-type="none"
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-type="none" 
 data-sortable="false" -->
 |  $z$  |   $x$  |   $n$   |  $n - x - z$  |  $ n - x \cdot z$ | $ n - 4 \cdot z$ |
 | :---: | :----: | :-----: | :------:      | :----------:      | :-----------:    |
-|   8   |    6   |    96   | [[ 82 ]] @canvas      |   [[ 48 ]] @canvas        |  [[  64  ]] @canvas      |
-|   12  |    5   |    84   | [[ 67 ]] @canvas      |   [[ 24 ]] @canvas        |  [[  36  ]] @canvas      |
-|   3   |    14  |    67   | [[ 50 ]] @canvas      |   [[ 25 ]] @canvas        |  [[  55  ]] @canvas      |
-|   7   |    9   |    79   | [[ 63 ]] @canvas      |   [[ 16 ]] @canvas        |  [[  51  ]] @canvas      |
+|   8   |    6   |    96   | [[ 82 ]]       |   [[ 48 ]]         |  [[  64  ]]       |
+|   12  |    5   |    84   | [[ 67 ]]       |   [[ 24 ]]         |  [[  36  ]]       |
+|   3   |    14  |    67   | [[ 50 ]]       |   [[ 25 ]]         |  [[  55  ]]       |
+|   7   |    9   |    79   | [[ 63 ]]       |   [[ 16 ]]         |  [[  51  ]]       |
+
+
+@ADetails(1=BE; Einsetzungsverfahren, Tabelle, Grundrechenarten)

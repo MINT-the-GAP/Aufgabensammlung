@@ -68,7 +68,8 @@ author: Martin Lommatzsch
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ Wie viel sind $\dfrac{7}{12}$ von $54\,$kg?  \
 [[  63/2  ]] kg @canvas
 @Algebrite.check(63/2)
@@ -96,7 +97,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ Wie viel sind $\dfrac{5}{6}$ von $49\,$m$^2$?  \
 [[  245/6  ]] m$^2$ @canvas
 @Algebrite.check(245/6)
@@ -123,7 +125,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ Wie viel sind $\dfrac{9}{8}$ von $20\,$h?  \
 [[  45/2  ]] h @canvas
 @Algebrite.check(45/2)
@@ -151,7 +154,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ Wie viel sind $\dfrac{13}{15}$ von $36\,$kg?  \
 [[  156/5  ]] kg @canvas
 @Algebrite.check(156/5)
@@ -179,7 +183,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ Wie viel sind $\dfrac{3}{7}$ von $85\,$min?  \
 [[  255/7  ]] min @canvas
 @Algebrite.check(255/7)
@@ -206,7 +211,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$f)\;\;$__ Wie viel sind $\dfrac{17}{12}$ von $18\,$m?  \
 [[  51/2  ]] m @canvas
 @Algebrite.check(51/2)

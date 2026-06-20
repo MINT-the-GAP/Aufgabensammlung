@@ -56,11 +56,19 @@ author: Martin Lommatzsch
 
 
 
-<!-- data-type="none"
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-type="none" 
 data-sortable="false" -->
 |  $a$  |   $b$   |  $a+b$   |  $a \cdot b$ |  $b-a$   | $2 \cdot a$ |
 | :---: | :-----: | :------: | :----------: | :------: | :---------: |
-|   3   |     7   | [[ 10 ]] @canvas |   [[  21 ]] @canvas  | [[  4 ]] @canvas |  [[  6 ]] @canvas   |
-|   5   |     6   | [[ 11 ]] @canvas |   [[  30 ]] @canvas  | [[  1 ]] @canvas |  [[ 10 ]] @canvas   |
-|   9   |    14   | [[ 23 ]] @canvas |   [[ 126 ]] @canvas  | [[  5 ]] @canvas |  [[ 18 ]] @canvas   |
-|   8   |    16   | [[ 24 ]] @canvas |   [[ 128 ]] @canvas  | [[  8 ]] @canvas |  [[ 16 ]] @canvas   |
+|   3   |     7   | [[ 10 ]]  |   [[  21 ]]   | [[  4 ]]  |  [[  6 ]]    |
+|   5   |     6   | [[ 11 ]]  |   [[  30 ]]   | [[  1 ]]  |  [[ 10 ]]    |
+|   9   |    14   | [[ 23 ]]  |   [[ 126 ]]   | [[  5 ]]  |  [[ 18 ]]    |
+|   8   |    16   | [[ 24 ]]  |   [[ 128 ]]   | [[  8 ]]  |  [[ 16 ]]    |
+
+
+@ADetails(1=BE; Einsetzungsverfahren, Tabelle, Grundrechenarten)

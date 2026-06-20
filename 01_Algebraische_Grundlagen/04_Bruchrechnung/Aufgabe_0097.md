@@ -78,7 +78,8 @@ __$a)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $20\,$m$^2$.
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 rot: [[  6  ]] m$^2$  @canvas\
 blau: [[  4  ]]  m$^2$  @canvas\
 violett: [[  4  ]] m$^2$ @canvas
@@ -105,7 +106,8 @@ __$b)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $80\,$m$^2$.
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 rot: [[  48  ]]  m$^2$  @canvas\
 blau: [[  4   ]]  m$^2$  @canvas\
 violett: [[  12  ]]  m$^2$ @canvas
@@ -132,7 +134,8 @@ __$c)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $120\,$m$^2$.
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 rot: [[  18  ]]  m$^2$  @canvas\
 blau: [[  45  ]]  m$^2$  @canvas\
 violett: [[  27  ]]  m$^2$ @canvas
@@ -159,7 +162,8 @@ __$d)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $240\,$m$^2$.
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 rot: [[  105 ]]  m$^2$  @canvas\
 blau: [[  27  ]]  m$^2$  @canvas\
 violett: [[  45  ]]  m$^2$ @canvas
@@ -186,7 +190,8 @@ __$e)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $200\,$m$^2$.
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 rot: [[  35  ]]  m$^2$  @canvas\
 blau: [[  45  ]]  m$^2$  @canvas\
 violett: [[  15  ]]  m$^2$ @canvas
@@ -213,7 +218,8 @@ __$f)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $60\,$m$^2$.
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 rot: [[  9  ]]  m$^2$  @canvas\
 blau: [[  12 ]]  m$^2$  @canvas\
 violett: [[  6  ]]  m$^2$ @canvas

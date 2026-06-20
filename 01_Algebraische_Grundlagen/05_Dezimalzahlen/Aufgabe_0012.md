@@ -56,29 +56,53 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ 7,058
 
-<!-- data-type="none" -->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-type="none" -->
 |  Hunderter  |  Zehner |  Einer  |  Zehntel  | Hundertstel | Tausendstel |  Zehntausendstel  |
 | :---------: | :-----: | :-----: | :-------: | :---------: | :---------: | :---------------: |
-|   [[ 0 ]] @canvas   | [[ 0 ]] @canvas | [[ 7 ]] @canvas |  [[ 0 ]] @canvas  |    [[ 5 ]] @canvas  |  [[ 8 ]] @canvas    |     [[ 0 ]] @canvas       |
+|   [[ 0 ]]    | [[ 0 ]]  | [[ 7 ]]  |  [[ 0 ]]   |    [[ 5 ]]   |  [[ 8 ]]     |     [[ 0 ]]        |
 
+
+
+@ADetails(1=BE; Dezimalzahlen, Stellenwerttafel, Zahlenverständnis)
 
 
 __$b)\;\;$__ 614,82
 
-<!-- data-type="none" -->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-type="none" -->
 |  Hunderter  |  Zehner |  Einer  |  Zehntel  | Hundertstel | Tausendstel |  Zehntausendstel  |
 | :---------: | :-----: | :-----: | :-------: | :---------: | :---------: | :---------------: |
-|   [[ 6 ]] @canvas   | [[ 1 ]] @canvas | [[ 4 ]] @canvas |  [[ 8 ]] @canvas  |    [[ 2 ]] @canvas  |  [[ 0 ]] @canvas    |     [[ 0 ]] @canvas       |
+|   [[ 6 ]]    | [[ 1 ]]  | [[ 4 ]]  |  [[ 8 ]]   |    [[ 2 ]]   |  [[ 0 ]]     |     [[ 0 ]]        |
 
+
+
+@ADetails(1=BE; Dezimalzahlen, Stellenwerttafel, Zahlenverständnis)
 
 
 __$c)\;\;$__ 50,1903
 
-<!-- data-type="none" -->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-type="none" -->
 |  Hunderter  |  Zehner |  Einer  |  Zehntel  | Hundertstel | Tausendstel |  Zehntausendstel  |
 | :---------: | :-----: | :-----: | :-------: | :---------: | :---------: | :---------------: |
-|   [[ 0 ]] @canvas   | [[ 5 ]] @canvas | [[ 0 ]] @canvas |  [[ 1 ]] @canvas  |    [[ 9 ]] @canvas  |  [[ 0 ]] @canvas    |     [[ 3 ]] @canvas       |
+|   [[ 0 ]]    | [[ 5 ]]  | [[ 0 ]]  |  [[ 1 ]]   |    [[ 9 ]]   |  [[ 0 ]]     |     [[ 3 ]]        |
 
+
+
+@ADetails(1=BE; Dezimalzahlen, Stellenwerttafel, Zahlenverständnis)
 
 
 

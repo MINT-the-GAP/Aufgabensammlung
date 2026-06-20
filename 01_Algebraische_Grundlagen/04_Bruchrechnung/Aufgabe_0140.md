@@ -65,7 +65,8 @@ Am Nachmittag wird für eine zweite Charge die Hälfte der verbleibenden Masse g
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  15/2  ]]  kg @canvas
 @Algebrite.check(15/2)
 ************

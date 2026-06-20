@@ -66,7 +66,8 @@ __$a)\;\;$__
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[ 380  ]] @canvas Holzperlen
 @Algebrite.check_margin(350,410)
 
@@ -85,7 +86,8 @@ __$b)\;\;$__
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[ 2000 ]] @canvas Reiskörner
 @Algebrite.check_margin(1800,2300)
 

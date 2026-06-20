@@ -57,7 +57,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $ 29:11 + 70:11 =$ [[  9  ]] @canvas
 
 @ADetails(BE=1;Division, Distributivgesetz)
@@ -69,7 +70,8 @@ __$a)\;\;$__ $ 29:11 + 70:11 =$ [[  9  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $ 74:8 - 26:8 =$ [[  6  ]] @canvas
 
 @ADetails(BE=1;Division, Distributivgesetz)

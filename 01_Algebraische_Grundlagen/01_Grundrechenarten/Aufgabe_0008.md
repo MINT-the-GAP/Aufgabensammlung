@@ -57,7 +57,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ Viertausendzweihundertneunundzwanzig.  \
 [[  4229  ]] @canvas
 
@@ -68,7 +69,8 @@ __$a)\;\;$__ Viertausendzweihundertneunundzwanzig.  \
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ Achttausendvier.\
 [[  8004  ]] @canvas
 
@@ -79,7 +81,8 @@ __$b)\;\;$__ Achttausendvier.\
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ Zweitausendsiebhundertelf.\
 [[  2711  ]] @canvas
 
@@ -91,7 +94,8 @@ __$c)\;\;$__ Zweitausendsiebhundertelf.\
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ Dreihundertneuntausendvierhundertsechsunddreißig.\
 [[ 309436 ]] @canvas
 

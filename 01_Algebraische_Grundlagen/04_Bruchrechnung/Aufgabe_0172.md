@@ -64,7 +64,8 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $\dfrac{7}{8}$
 
 
-@circleQuiz(7/8, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" -->)
+@circleQuiz(7/8, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
+data-hint-button="3" -->)
 
 
 
@@ -75,7 +76,8 @@ __$a)\;\;$__ $\dfrac{7}{8}$
 __$b)\;\;$__ $\dfrac{2}{13}$
 
 
-@circleQuiz(2/13, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" -->)
+@circleQuiz(2/13, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
+data-hint-button="3" -->)
 
 
 
@@ -86,7 +88,8 @@ __$b)\;\;$__ $\dfrac{2}{13}$
 __$c)\;\;$__ $\dfrac{4}{17}$
 
 
-@circleQuiz(4/17, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" -->)
+@circleQuiz(4/17, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
+data-hint-button="3" -->)
 
 
 
@@ -97,7 +100,8 @@ __$c)\;\;$__ $\dfrac{4}{17}$
 __$d)\;\;$__ $\dfrac{15}{22}$
 
 
-@circleQuiz(15/22, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" -->)
+@circleQuiz(15/22, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
+data-hint-button="3" -->)
 
 
 
@@ -108,7 +112,8 @@ __$d)\;\;$__ $\dfrac{15}{22}$
 __$e)\;\;$__ $\dfrac{3}{20}$
 
 
-@circleQuiz(3/20, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" -->)
+@circleQuiz(3/20, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
+data-hint-button="3" -->)
 
 
 
@@ -119,7 +124,8 @@ __$e)\;\;$__ $\dfrac{3}{20}$
 __$f)\;\;$__ $\dfrac{8}{19}$
 
 
-@circleQuiz(8/19, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" -->)
+@circleQuiz(8/19, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
+data-hint-button="3" -->)
 
 
 

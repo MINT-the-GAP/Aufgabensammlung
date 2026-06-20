@@ -62,7 +62,8 @@ author: Martin Lommatzsch
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ Wie viel sind $\dfrac{9}{4}$ von $72\,$kg?  \
  [[  162  ]] kg @canvas
 ***************
@@ -90,7 +91,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ Wie viel sind $\dfrac{7}{10}$ von $120\,$kg?  \
  [[  84  ]] kg @canvas
 ***************
@@ -118,7 +120,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ Wie viel sind $\dfrac{1}{8}$ von $480\,$m?  \
  [[  60  ]] m @canvas
 ***************
@@ -146,7 +149,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ Wie viel sind $\dfrac{3}{20}$ von $500\,$€?  \
  [[  75  ]] € @canvas
 ***************

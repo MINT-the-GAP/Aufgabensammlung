@@ -57,7 +57,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $ 65:7 - 16:7 =$ [[  7  ]] @canvas
 
 @ADetails(BE=1;Division, Distributivgesetz)
@@ -67,7 +68,8 @@ __$a)\;\;$__ $ 65:7 - 16:7 =$ [[  7  ]] @canvas
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $ 23:9 + 58:9 =$ [[  9  ]] @canvas
 
 @ADetails(BE=1;Division, Distributivgesetz)

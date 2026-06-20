@@ -82,19 +82,23 @@ author: Martin Lommatzsch
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 __Aufgabe 1:__ In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich viele Streichhölzer. Auf jeder Seite des Gleichheitszeichen befindet sich die selbe Anzahl an Streichhölzern. **Bestimme** bei allen Streichholzschachtelgleichungen wie viele Streichhölzer sich in einer Schachtel befinden.
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ ![](Kap2/streichholz1a.png)  
 $x=$ [[  3  ]] Streichhölzer
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ ![](Kap2/streichholz1b.png)  
 $x=$ [[  1  ]] Streichhölzer
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ ![](Kap2/streichholz1c.png)  
 $x=$ [[  8  ]] Streichhölzer
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ ![](Kap2/streichholz1d.png)  
 $x=$ [[  3  ]] Streichhölzer
 
@@ -107,19 +111,23 @@ $x=$ [[  3  ]] Streichhölzer
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 __Aufgabe 2:__ In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich viele Streichhölzer. Auf jeder Seite des Gleichheitszeichen befindet sich die selbe Anzahl an Streichhölzern. **Bestimme** bei allen Streichholzschachtelgleichungen wie viele Streichhölzer sich in einer Schachtel befinden.
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ ![](Kap2/streichholz1e.png)  
 $x=$ [[  2  ]] Streichhölzer
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ ![](Kap2/streichholz1f.png)  
 $x=$ [[  2  ]] Streichhölzer
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ ![](Kap2/streichholz1g.png)  
 $x=$ [[  1  ]] Streichhölzer
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ ![](Kap2/streichholz1h.png)  
 $x=$ [[  5  ]] Streichhölzer
 
@@ -134,19 +142,23 @@ $x=$ [[  5  ]] Streichhölzer
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 __Aufgabe 3:__ In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich viele Streichhölzer. Auf jeder Seite des Gleichheitszeichen befindet sich die selbe Anzahl an Streichhölzern. **Bestimme** bei allen Streichholzschachtelgleichungen wie viele Streichhölzer sich in einer Schachtel befinden.
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ ![](Kap2/streichholz1i.png)  
 $x=$ [[  4  ]] Streichhölzer
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ ![](Kap2/streichholz1j.png)  
 $x=$ [[  1  ]] Streichhölzer
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ ![](Kap2/streichholz1k.png)  
 $x=$ [[  4  ]] Streichhölzer
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ ![](Kap2/streichholz1l.png)  
 $x=$ [[  2  ]] Streichhölzer
 
@@ -161,19 +173,23 @@ $x=$ [[  2  ]] Streichhölzer
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 __Aufgabe 4:__ In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich viele Streichhölzer. Auf jeder Seite des Gleichheitszeichen befindet sich die selbe Anzahl an Streichhölzern. **Bestimme** bei allen Streichholzschachtelgleichungen wie viele Streichhölzer sich in einer Schachtel befinden.
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ ![](Kap2/streichholz1m.png)  
 $x=$ [[  5  ]] Streichhölzer
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ ![](Kap2/streichholz1n.png)  
 $x=$ [[  2  ]] Streichhölzer
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ ![](Kap2/streichholz1o.png)  
 $x=$ [[  1  ]] Streichhölzer
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ ![](Kap2/streichholz1p.png)  
 $x=$ [[  3  ]] Streichhölzer
 
@@ -184,15 +200,18 @@ $x=$ [[  3  ]] Streichhölzer
 __Aufgabe 5:__ **Bestimme** die Massenwert des Massestückchens $x$.
 
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ ![](Kap2/waage1a.png)  
 $x=$ [[  5    ]] kg
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ ![](Kap2/waage1d.png)  
 $x=$ [[  2    ]] kg
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ ![](Kap2/waage1g.png)  
 $x=$ [[  0,75  ]] kg
 
@@ -206,15 +225,18 @@ $x=$ [[  0,75  ]] kg
 __Aufgabe 6:__ **Bestimme** die Massenwert des Massestückchens $x$.
 
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ ![](Kap2/waage1b.png)  
 $x=$ [[  3    ]] kg
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ ![](Kap2/waage1e.png)  
 $x=$ [[  2    ]] kg
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ ![](Kap2/waage1h.png)  
 $x=$ [[  1,83  ]] kg
 
@@ -228,15 +250,18 @@ $x=$ [[  1,83  ]] kg
 __Aufgabe 7:__ **Bestimme** die Massenwert des Massestückchens $x$.
 
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ ![](Kap2/waage1c.png)  
 $x=$ [[  4    ]] kg
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ ![](Kap2/waage1f.png)  
 $x=$ [[  5    ]] kg
 
-<!-- style="width:600px" data-solution-button="5" -->
+<!-- style="width:600px" data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ ![](Kap2/waage1i.png)  
 $x=$ [[  1,56  ]] kg
 
@@ -268,6 +293,7 @@ $$
 $$
 
 <!-- data-solution-button="5" 
+data-hint-button="3" 
 data-show-partial-solution -->
 Um die Gleichung zu sortieren, wird zu nächst auf beiden Seiten des Gleichungszeichen [[  -3  ]] gerechnet. Anschließend wird $-6x$ auf [[     beiden Seiten des Gleichheitszeichen     ]] gerechnet, sodass alles, was mit der Variable $x$ multipliziert ist, auf einer Seite des Gleichheitszeichen ist und alles andere auf der anderen Seite. Abschließend wird durch den Vorfaktor [[  2  ]] [[  dividiert  ]]. Nachdem die [[  Lösung  ]] der Gleichung gefunden wurde, wird die [[  Probe  ]] durchgeführt, indem die Lösung für $x$ in die [[  Gleichung  ]] vom Anfang eingesetzt wird. Ist auf beiden Seiten des Gleichheitszeichen der gleiche Wert, dann ist die Lösung korrekt.
 
@@ -292,6 +318,7 @@ $$
 
 
 <!-- data-solution-button="5" 
+data-hint-button="3" 
 data-show-partial-solution -->
 Bei dieser Gleichung steht die gesuchte Unbekannte auf beiden Seiten des Gleichheitszeichen im [[  Nenner  ]]. Um dies aufzuheben wird mit $(x-2)$ und dann mit $(3x+7)$ auf beiden Seiten des Gleichheitszeichen [[  multipliziert  ]]. Die [[  Klammern  ]] sind dabei wichtig, aufgrund der Regel: Punkt- vor [[  Strichrechnung  ]]. Anschließend wird das [[  Distributivgesetz  ]] benutzt, um die Klammern aufzulösen. Nun wird die Gleichung mit der Strichrechnung sortiert, indem erst $-4x$ und dann [[  -21  ]] auf beiden Seiten des Gleichheitszeichen gerechnet wird. Abschließend wird durch den [[  Vorfaktor  ]] $5$ dividiert.
 
@@ -315,6 +342,7 @@ $$
 $$
 
 <!-- data-solution-button="5" 
+data-hint-button="3" 
 data-show-partial-solution -->
 Als erstes wird die Gleichung sortiert, indem auf [[  beiden Seiten  ]] des Gleichheitszeichen $+4$ gerechnet wird. Anschließend wird [[  -x  ]] auf beiden Seiten des [[  Gleichheitszeichen  ]] gerechnet, sodass in den nächsten Schritten nur noch die Punktrechnung zum Einsatz kommen kann. Der Vorfaktor stückweise entfernt. Zu nächst wird [[ mit   ]] $5$ [[  multipliziert  ]], dann nächst wird [[ durch ]] $2$ [[  dividiert      ]]. Das Vorzeichen wird abschließend noch mit der [[  Multiplikation  ]] mit $(-1)$ von der Unbekannten gelöst.
 

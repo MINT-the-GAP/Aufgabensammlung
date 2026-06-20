@@ -57,7 +57,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $ \textcolor{red}{18+24} = 42$ \
 [[    Summe          ]] @canvas
 
@@ -68,7 +69,8 @@ __$a)\;\;$__ $ \textcolor{red}{18+24} = 42$ \
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $ \textcolor{red}{12} \cdot 7 = 84 $ \
 [[       Faktor      ]] @canvas
 
@@ -79,7 +81,8 @@ __$b)\;\;$__ $ \textcolor{red}{12} \cdot 7 = 84 $ \
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $ \textcolor{red}{36} = 24+12$ \
 [[ Wert der Summe    ]] @canvas
 
@@ -90,7 +93,8 @@ __$c)\;\;$__ $ \textcolor{red}{36} = 24+12$ \
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ $ \textcolor{red}{63-48}=15$ \
 [[         Differenz ]] @canvas
 

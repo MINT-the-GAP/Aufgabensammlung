@@ -54,32 +54,80 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $1,1$ [[$>$|$=$|($<$)]] $\dfrac{4}{3}$ 
 
+
+@ADetails(1=BE; Bruchrechnung, Dezimalzahlen, Vergleich)
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $\dfrac{3}{7}$ [[$>$|$=$|($<$)]] $0,49$ 
 
+
+@ADetails(1=BE; Bruchrechnung, Dezimalzahlen, Vergleich)
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $\dfrac{7}{5}$ [[($>$)|($=$)|$<$]] $1,400$ 
 
+
+@ADetails(1=BE; Bruchrechnung, Dezimalzahlen, Vergleich)
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $1,9$ [[($>$)|$=$|$<$]] $\dfrac{199}{200}$ 
 
+
+@ADetails(1=BE; Bruchrechnung, Dezimalzahlen, Vergleich)
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$e)\;\;$__ $\dfrac{0}{75}$ [[$>$|$=$|($<$)]] $0,00001$ 
 
+
+@ADetails(1=BE; Bruchrechnung, Dezimalzahlen, Vergleich)
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$f)\;\;$__ $0,6$ [[$>$|$=$|($<$)]] $\dfrac{2}{3}$ 
+
+
+@ADetails(1=BE; Bruchrechnung, Dezimalzahlen, Vergleich)
 
 </div>
 </section>

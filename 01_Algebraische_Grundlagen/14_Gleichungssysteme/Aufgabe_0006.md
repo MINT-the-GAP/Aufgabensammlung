@@ -71,7 +71,8 @@ x \cap I. &\qquad 5\cdot 3 + y = 22 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 Zur Lösung des [[   Gleichungssystems   ]] @canvas wird das [[   Gleichsetzungsverfahren   ]] @canvas angewendet.
 Zunächst wird die [[   erste   ]] @canvas Gleichung nach $y$ aufgelöst und es ergibt sich $y = 22 - 5x$.
 Anschließend wird die [[   zweite   ]] @canvas Gleichung nach $y$ umgeformt, sodass $y = 2x + 1$ resultiert.
@@ -101,7 +102,8 @@ x \cap I. &\qquad 5\cdot 4 + y = 26 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 Zur Lösung des [[   Gleichungssystems   ]] @canvas wird das [[   Einsetzungsverfahren   ]] @canvas angewendet.
 Zuerst wird die [[   erste   ]] @canvas Gleichung nach $y$ umgestellt, sodass $y = 26 - 5x$ entsteht.
 Dieser Ausdruck wird in die zweite [[  Gleichung  ]] @canvas eingesetzt, wodurch $2x + 3(26 - 5x) = 26$ gebildet wird.
@@ -132,7 +134,8 @@ x \cap II.\, &\qquad 4\cdot 4 - y = 11 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 Zur Lösung des [[   Gleichungssystems   ]] @canvas wird das [[   Additionsverfahren   ]] @canvas angewendet.
 Zuerst wird die zweite Gleichung mit [[  3  ]] @canvas [[  multipliziert  ]] @canvas, sodass $12x - 3y = 33$ entsteht.
 Nun wird diese Gleichung mit der ersten [[  addiert  ]] @canvas. Dabei fallen die Teile mit $y$ weg und es bleibt $14x = 56$.

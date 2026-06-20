@@ -62,7 +62,8 @@ author: Martin Lommatzsch
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ \
 $\;\;\;\; 0{,}6 + \dfrac{3}{4} \cdot \dfrac{4}{5}$ \
 $= 0{,}6 +$ [[ 3/5 ]] @canvas \
@@ -79,7 +80,8 @@ $=$ [[ 1,2 ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ \
 $\;\;\;\; \left(1{,}25 + \dfrac{3}{4}\right) : 2{,}5 + \dfrac{1}{5}$ \
 $=$ [[ 2 ]] @canvas $ : 2{,}5 + \dfrac{1}{5}$ \
@@ -97,7 +99,8 @@ $=$ [[ 1 ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ \
 $\;\;\;\; \dfrac{2}{3} : 0{,}5 + \left(1{,}2 - \dfrac{1}{5}\right) \cdot \dfrac{3}{4}$ \
 $=$ [[ 4/3 ]] @canvas $ + \left(1{,}2 - \dfrac{1}{5}\right) \cdot \dfrac{3}{4}$ \
@@ -116,7 +119,8 @@ $=$ [[ 25/12 ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ \
 $\;\;\;\; \left(1{,}5 - \dfrac{3}{4}\right) : 0{,}5 + \left(\dfrac{2}{3} + 0{,}5\right) \cdot \dfrac{6}{7}$ \
 $=$ [[ 3/4 ]] @canvas $ : 0{,}5 + \left(\dfrac{2}{3} + 0{,}5\right) \cdot \dfrac{6}{7}$ \

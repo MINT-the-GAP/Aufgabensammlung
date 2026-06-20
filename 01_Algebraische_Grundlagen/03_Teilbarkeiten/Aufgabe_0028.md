@@ -63,7 +63,8 @@ __$a)\;\;$__ Welche der folgenden Zahlen ist durch $2$ teilbar?
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 - [[X]] $952$
 - [[ ]] $843$
 - [[ ]] $657$
@@ -85,7 +86,8 @@ __$b)\;\;$__ Welche der folgenden Zahlen ist durch $5$ teilbar?
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 - [[X]] $325$
 - [[ ]] $621$
 - [[X]] $840$
@@ -109,7 +111,8 @@ __$c)\;\;$__ Welche der folgenden Zahlen ist durch $3$ teilbar?
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 - [[ ]] $512$
 - [[X]] $360$
 - [[X]] $135$
@@ -133,7 +136,8 @@ __$d)\;\;$__ Welche der folgenden Zahlen ist durch $8$ teilbar?
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 - [[ ]] $355$
 - [[X]] $464$
 - [[ ]] $789$
@@ -157,7 +161,8 @@ __$e)\;\;$__ Welche der folgenden Zahlen ist durch $9$ teilbar?
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 - [[X]] $504$
 - [[ ]] $821$
 - [[X]] $927$
@@ -181,7 +186,8 @@ __$f)\;\;$__ Welche der folgenden Zahlen ist durch $4$ teilbar?
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 - [[ ]] $474$
 - [[ ]] $954$
 - [[X]] $796$

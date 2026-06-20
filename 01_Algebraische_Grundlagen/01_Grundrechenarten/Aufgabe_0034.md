@@ -57,7 +57,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $ \textcolor{red}{5} - 3 = 2$ \
 [[    Minuend         ]] @canvas
 
@@ -68,7 +69,8 @@ __$a)\;\;$__ $ \textcolor{red}{5} - 3 = 2$ \
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $ \textcolor{red}{7 \cdot 3} = 21 $ \
 [[    Produkt         ]] @canvas
 
@@ -79,7 +81,8 @@ __$b)\;\;$__ $ \textcolor{red}{7 \cdot 3} = 21 $ \
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $ 45:9=\textcolor{red}{5}$ \
 [[ Wert des Quotienten ]] @canvas
 
@@ -90,7 +93,8 @@ __$c)\;\;$__ $ 45:9=\textcolor{red}{5}$ \
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ $ \textcolor{red}{15}+12 = 27$ \
 [[      Summand       ]] @canvas
 

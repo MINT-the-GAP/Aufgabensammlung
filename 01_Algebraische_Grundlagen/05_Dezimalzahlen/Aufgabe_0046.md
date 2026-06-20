@@ -54,34 +54,94 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $ \dfrac{3}{4} =$ [[  0,75  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Bruchzahlen)
+
+</div>  
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $ \dfrac{6}{5} =$ [[  1,2  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Bruchzahlen)
+
+</div>  
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $ \dfrac{15}{2} =$ [[  7,5  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Bruchzahlen)
+
+</div>  
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $ \dfrac{1}{16} =$ [[  0,0625  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Bruchzahlen)
+
+</div>  
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$e)\;\;$__ $ \dfrac{1}{25} =$ [[  0,04  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Bruchzahlen)
+
+</div>  
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$f)\;\;$__ $ \dfrac{987}{1000} =$ [[  0,987  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Bruchzahlen)
+
+</div>  
 </section>
 
 

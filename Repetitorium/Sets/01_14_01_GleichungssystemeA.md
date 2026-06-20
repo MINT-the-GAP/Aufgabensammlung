@@ -476,7 +476,8 @@ x \cap I. &\qquad 3\cdot 5 - y = 13 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 Um das [[   Gleichungssystem   ]] zu lösen, wird das [[    Einsetzungsverfahren    ]] angewendet.  
 Zunächst wird eine der beiden [[   Gleichungen   ]] gewählt, hier die erste, und nach [[  y  ]] umgestellt.  
 Aus $3x - y = 13$ folgt durch Umformen, dass $y = 3x - 13$. Diesen Ausdruck setzen wir in die zweite [[  Gleichung  ]] ein.  
@@ -502,7 +503,8 @@ x \cap II.\, &\qquad 5\cdot 3 - y = 11 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 Um das [[   Gleichungssystem   ]] zu lösen, wird das [[   Additionsverfahren   ]] angewendet.
 Dazu wird zunächst die [[   zweite   ]] Gleichung so umgeformt, dass die Variable $y$ in beiden Gleichungen mit entgegengesetzten [[ Vorzeichen ]] auftritt.
 Deshalb wird  die zweite Gleichung mit [[  2  ]] multiplizieren und es ergibt sich $10x - 2y = 22$.
@@ -537,7 +539,8 @@ x \cap I. &\qquad 4\cdot 4 - y = 13 \\
 $$
 
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 Zur Lösung des [[   Gleichungssystems   ]] wird das [[   Gleichsetzungsverfahren   ]] angewendet.
 Zunächst wird die [[   erste   ]] Gleichung nach $y$ aufgelöst und es ergibt sich $y = 4x - 13$.
 Anschließend wird die [[   zweite   ]] Gleichung ebenfalls nach $y$ umgeformt, sodass $y = \dfrac{10 - x}{2}$ resultiert.
@@ -587,7 +590,8 @@ x \cap I. &\qquad 5\cdot 3 + y = 22 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 Zur Lösung des [[   Gleichungssystems   ]] wird das [[   Gleichsetzungsverfahren   ]] angewendet.
 Zunächst wird die [[   erste   ]] Gleichung nach $y$ aufgelöst und es ergibt sich $y = 22 - 5x$.
 Anschließend wird die [[   zweite   ]] Gleichung nach $y$ umgeformt, sodass $y = 2x + 1$ resultiert.
@@ -617,7 +621,8 @@ x \cap I. &\qquad 5\cdot 4 + y = 26 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 Zur Lösung des [[   Gleichungssystems   ]] wird das [[   Einsetzungsverfahren   ]] angewendet.
 Zuerst wird die [[   erste   ]] Gleichung nach $y$ umgestellt, sodass $y = 26 - 5x$ entsteht.
 Dieser Ausdruck wird in die zweite [[  Gleichung  ]] eingesetzt, wodurch $2x + 3(26 - 5x) = 26$ gebildet wird.
@@ -648,7 +653,8 @@ x \cap II.\, &\qquad 4\cdot 4 - y = 11 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="5" data-show-partial-solution -->
+<!-- data-solution-button="5" 
+data-hint-button="3" data-show-partial-solution -->
 Zur Lösung des [[   Gleichungssystems   ]] wird das [[   Additionsverfahren   ]] angewendet.
 Zuerst wird die zweite Gleichung mit [[  3  ]] [[  multipliziert  ]], sodass $12x - 3y = 33$ entsteht.
 Nun wird diese Gleichung mit der ersten [[  addiert  ]]. Dabei fallen die Teile mit $y$ weg und es bleibt $14x = 56$.

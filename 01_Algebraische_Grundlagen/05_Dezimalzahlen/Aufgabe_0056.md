@@ -58,50 +58,110 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $\dfrac{1}{10}+\dfrac{5}{100}+\dfrac{2}{100} \qquad$  \
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
  [[  0,17   ]] @canvas 
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Bruchrechnung, Addition, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
 __$b)\;\;$__ $\dfrac{8}{10}+\dfrac{9}{100}+\dfrac{3}{1000}+\dfrac{5}{10000} \qquad$  \
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
  [[  0,8935  ]] @canvas 
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Bruchrechnung, Addition, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
 __$c)\;\;$__ $\dfrac{9}{100}+\dfrac{8}{10000} \qquad$  \
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
  [[  0,0908  ]] @canvas 
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Bruchrechnung, Addition, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
 __$d)\;\;$__ $\dfrac{7}{1000}+\dfrac{9}{10000} \qquad$  \
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
  [[  0,0079  ]] @canvas 
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Bruchrechnung, Addition, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
 __$e)\;\;$__ $\dfrac{7}{1}+\dfrac{15}{1000} \qquad$  \
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
  [[  7,015   ]] @canvas 
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Bruchrechnung, Addition, Zahlenverständnis)
+
+</div> 
 <div class="flex-child">
 
 __$f)\;\;$__ $\dfrac{5}{1000}+\dfrac{5}{1000000} \qquad$  \
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
  [[  0,005005 ]] @canvas 
 
 
-</div>
+
+
+@ADetails(1=BE; Dezimalzahlen, Bruchrechnung, Addition, Zahlenverständnis)
+
+</div> 
 </section>
 
 

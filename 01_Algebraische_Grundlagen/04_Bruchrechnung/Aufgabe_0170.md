@@ -67,6 +67,7 @@ author: Martin Lommatzsch
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-solution-button="5" 
+data-hint-button="3" 
 data-show-partial-solution -->
 __$a)\;\;$__ \
 $4 : 4 =$ [[  1 ]] @canvas \
@@ -93,6 +94,7 @@ $4 : \dfrac{1}{16} =$ [[ 64  ]] @canvas \
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-solution-button="5" 
+data-hint-button="3" 
 data-show-partial-solution -->
 __$b)\;\;$__ \
 $24 : 8 =$ [[  3  ]] @canvas \
@@ -119,6 +121,7 @@ $24 : \dfrac{1}{8} =$ [[  192 ]] @canvas \
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-solution-button="5" 
+data-hint-button="3" 
 data-show-partial-solution -->
 __$c)\;\;$__ \
 $27 : \dfrac{1}{9} =$ [[  243   ]] @canvas \
@@ -145,6 +148,7 @@ $27 : 81 =$ [[ 1/3  ]] @canvas \
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-solution-button="5" 
+data-hint-button="3" 
 data-show-partial-solution -->
 __$d)\;\;$__ \
 $10 : 100 =$              [[  1/10  ]] @canvas \

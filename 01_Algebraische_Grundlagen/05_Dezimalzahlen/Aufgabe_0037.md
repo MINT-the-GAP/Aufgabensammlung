@@ -54,24 +54,60 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $ 1,\bar{8} : 0,\bar{4} =$ [[  4,25  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Periodizität, Division)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $ 0,\bar{2} \cdot 0,09 =$ [[  0,02  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Periodizität, Multiplikation)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $ 1,1\bar{6} - 0,\bar{6} =$ [[  0,5  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Periodizität, Subtraktion)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $ 5,42\bar{1}+1,5\bar{8} =$ [[  7,01  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Periodizität, Addition)
+
+</div>  
 </section>
 
 

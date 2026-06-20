@@ -67,7 +67,8 @@ author: Martin Lommatzsch
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $  3 - \dfrac{2}{9} = $ [[  25/9  ]] @canvas
 @Algebrite.check(25/9)
 ************
@@ -93,7 +94,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $  \dfrac{11}{6} - 1 = $ [[  5/6  ]] @canvas
 @Algebrite.check(5/6)
 ************
@@ -119,7 +121,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $  7 - \dfrac{5}{12} = $ [[  79/12  ]] @canvas
 @Algebrite.check(79/12)
 ************
@@ -145,7 +148,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ $  \dfrac{9}{5} - 1 = $ [[  4/5  ]] @canvas
 @Algebrite.check(4/5)
 ************
@@ -171,7 +175,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ $  4 - \dfrac{7}{16} = $ [[  57/16  ]] @canvas
 @Algebrite.check(57/16)
 ************
@@ -197,7 +202,8 @@ $$
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$f)\;\;$__ $  \dfrac{13}{8} - 1 = $ [[  5/8  ]] @canvas
 @Algebrite.check(5/8)
 ************

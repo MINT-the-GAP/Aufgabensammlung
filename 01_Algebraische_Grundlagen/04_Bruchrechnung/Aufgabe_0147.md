@@ -65,7 +65,8 @@ Es werden $3$ Musterstücke gefertigt; anschließend wird für eine Probe noch $
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  13/4  ]]  m @canvas
 @Algebrite.check(13/4)
 ************

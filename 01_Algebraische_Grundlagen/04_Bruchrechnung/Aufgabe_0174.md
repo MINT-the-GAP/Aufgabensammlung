@@ -59,7 +59,8 @@ author: Martin Lommatzsch
 __$a)\;\;$__ $\dfrac{11}{18}$
 
 
-@rectQuiz(11/18, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" -->)
+@rectQuiz(11/18, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
+data-hint-button="3" -->)
 
 
 
@@ -70,7 +71,8 @@ __$a)\;\;$__ $\dfrac{11}{18}$
 <div class="flex-child">
 __$b)\;\;$__ $\dfrac{23}{42}$
 
-@rectQuiz(23/42, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" -->)
+@rectQuiz(23/42, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
+data-hint-button="3" -->)
 
 
 
@@ -83,7 +85,8 @@ __$b)\;\;$__ $\dfrac{23}{42}$
 __$c)\;\;$__ $\dfrac{5}{72}$
 
 
-@rectQuiz(5/72, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" -->)
+@rectQuiz(5/72, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
+data-hint-button="3" -->)
 
 
 
@@ -95,7 +98,8 @@ __$c)\;\;$__ $\dfrac{5}{72}$
 __$d)\;\;$__ $\dfrac{13}{36}$
 
 
-@rectQuiz(13/36, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" -->)
+@rectQuiz(13/36, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
+data-hint-button="3" -->)
 
 
 
@@ -107,7 +111,8 @@ __$d)\;\;$__ $\dfrac{13}{36}$
 __$e)\;\;$__ $\dfrac{9}{70}$
 
 
-@rectQuiz(9/70, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" -->)
+@rectQuiz(9/70, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
+data-hint-button="3" -->)
 
 
 
@@ -118,7 +123,8 @@ __$e)\;\;$__ $\dfrac{9}{70}$
 <div class="flex-child">
 __$f)\;\;$__ $\dfrac{7}{150}$
 
-@rectQuiz(7/150, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" -->)
+@rectQuiz(7/150, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
+data-hint-button="3" -->)
 
 
 

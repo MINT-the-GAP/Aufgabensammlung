@@ -63,7 +63,8 @@ __$a)\;\;$__ Wie viel sind $\dfrac{3}{10}$ von $90\,$€?  \
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
  [[  27  ]] € @canvas
 
 
@@ -82,7 +83,8 @@ __$b)\;\;$__ Wie viel sind $\dfrac{7}{4}$ von $840\,$kg?  \
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
  [[  1470  ]] kg @canvas
 
 
@@ -101,7 +103,8 @@ __$c)\;\;$__ Wie viel sind $\dfrac{2}{3}$ von $6\,$m$^3$?  \
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
  [[  4  ]] m$^3$ @canvas
 
 
@@ -120,7 +123,8 @@ __$d)\;\;$__ Wie viel sind $\dfrac{11}{6}$ von $240\,\ell$?  \
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
  [[  440  ]] $\ell$ @canvas
 
 

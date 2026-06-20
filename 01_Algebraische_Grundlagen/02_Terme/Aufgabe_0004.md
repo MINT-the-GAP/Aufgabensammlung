@@ -59,7 +59,8 @@ author: Martin Lommatzsch
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ \
 $\;\;\;\; 82 - 5 \cdot 3 - 6 \cdot 4 $ \
 $= 82 - $ [[ 15 ]] @canvas $ - 6 \cdot 4  $ \
@@ -77,7 +78,8 @@ $=$ [[ 43 ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ \
 $\;\;\;\; 144 - ( 7 \cdot 6 + 17)  $ \
 $= 144 - ( $[[ 42 ]] @canvas$ + 17)  $ \
@@ -94,7 +96,8 @@ $=$ [[ 85 ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ \
 $\;\;\;\; ( 9 \cdot 5 + 18 ) : 7   $ \
 $= ( $[[ 45 ]] @canvas $ + 18 ) : 7   $ \
@@ -111,7 +114,8 @@ $=$ [[ 9 ]] @canvas
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ \
 $\;\;\;\; 13 + 5 \cdot 7 + 108 : 4  $ \
 $= 13 +$ [[ 35 ]] @canvas $+ 108 : 4  $ \

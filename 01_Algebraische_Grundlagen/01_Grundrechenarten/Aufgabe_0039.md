@@ -65,7 +65,8 @@ __$a)\;\;$__
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[   6   ]] @canvas
 
 @ADetails(BE=1;Zahlenstral, Zahlenverständnis)
@@ -84,7 +85,8 @@ __$b)\;\;$__
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  102  ]] @canvas
 
 @ADetails(BE=1;Zahlenstral, Zahlenverständnis)
@@ -103,7 +105,8 @@ __$c)\;\;$__
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[   48  ]] @canvas
 
 @ADetails(BE=1;Zahlenstral, Zahlenverständnis)
@@ -122,7 +125,8 @@ __$d)\;\;$__
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[   48  ]] @canvas
 
 @ADetails(BE=1;Zahlenstral, Zahlenverständnis)

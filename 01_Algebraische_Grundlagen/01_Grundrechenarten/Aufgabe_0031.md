@@ -57,7 +57,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $ \textcolor{red}{5} \cdot 3 = 15$ \
 [[    Faktor          ]] @canvas
 
@@ -68,7 +69,8 @@ __$a)\;\;$__ $ \textcolor{red}{5} \cdot 3 = 15$ \
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $ \textcolor{red}{5 + 6} = 11 $ \
 [[    Summe           ]] @canvas
 
@@ -79,7 +81,8 @@ __$b)\;\;$__ $ \textcolor{red}{5 + 6} = 11 $ \
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $ 85:\textcolor{red}{13} = 5$ \
 [[        Divisor    ]] @canvas
 
@@ -90,7 +93,8 @@ __$c)\;\;$__ $ 85:\textcolor{red}{13} = 5$ \
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ $ 27-12 = \textcolor{red}{15}$ \
 [[ Wert der Differenz ]] @canvas
 

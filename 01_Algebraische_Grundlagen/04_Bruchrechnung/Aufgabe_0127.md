@@ -66,7 +66,8 @@ Am Nachmittag wird von den übrigen Büchern erneut die Hälfte in die Regale ge
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
  [[  16  ]]  @canvas 
 ************
 $$

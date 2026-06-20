@@ -65,7 +65,8 @@ Dann werden $\dfrac{3}{10}$ des gefüllten Wassers wieder abgelassen.
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  70  ]]  m$^3$ @canvas
 ************
 $$

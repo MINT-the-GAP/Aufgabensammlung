@@ -56,22 +56,56 @@ author: Martin Lommatzsch
 
 <section class="dynFlex">
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $-2^4 = $ [[  -16  ]] @canvas
 
+
+@ADetails(1=BE; Potenzen, Negative Zahlen)
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $(-4)^4 = $ [[  256  ]] @canvas
 
+
+@ADetails(1=BE; Potenzen, Negative Zahlen)
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $(-5)^3 = $ [[ -125  ]] @canvas
 
+
+@ADetails(1=BE; Potenzen, Negative Zahlen)
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ $-4^3 = $ [[ -64  ]] @canvas
+
+
+@ADetails(1=BE; Potenzen, Negative Zahlen)
+
 
 
 

@@ -71,7 +71,8 @@ $\{$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew2.png" width="30" height="30"> 
 $\}$
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\tilde{x}=$ [[  4  ]]
 *******************
 $\{ 1;1;1;2;3;\textcolor{red}{4};4;5;5;6;6 \}$
@@ -103,7 +104,8 @@ $\{ \{$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb3.png" width="30" height="30"> 
 $\} \}$
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\tilde{x}=$ [[  7  ]]
 *******************
 $\{ 4;5;6;\textcolor{red}{7};8;9;9 \}$
@@ -139,7 +141,8 @@ $\{ \{$
 $\} \}$
 
 
-<!-- data-solution-button="5" -->
+<!-- data-solution-button="5" 
+data-hint-button="3" -->
 $\tilde{x}=$ [[  7  ]]
 *******************
 $\{ 2;3;4;6;7;\textcolor{red}{7};8;10;11;11;11 \}$

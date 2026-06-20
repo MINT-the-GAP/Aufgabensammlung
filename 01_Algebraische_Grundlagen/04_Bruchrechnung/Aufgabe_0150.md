@@ -66,7 +66,8 @@ Aus ästhetischen Gründen bleibt je Beet ein Randstreifen von $\dfrac{1}{10}$ d
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  1053/50  ]]  m^2 @canvas
 @Algebrite.check(1053/50)
 ************

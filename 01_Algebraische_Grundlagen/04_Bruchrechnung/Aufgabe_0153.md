@@ -69,7 +69,8 @@ Der verbleibende Rest wird gleichmäßig auf sechs Kisten verteilt.
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  68/75  ]]  kg @canvas
 @Algebrite.check(68/75)
 ************

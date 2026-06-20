@@ -67,7 +67,8 @@ Von der verbleibenden Fläche wird anschließend $\dfrac{1}{3}$ farbig lackiert.
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  1600/9  ]]  cm^2 @canvas
 @Algebrite.check(1600/9)
 ************

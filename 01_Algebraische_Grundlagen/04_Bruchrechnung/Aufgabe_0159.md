@@ -68,7 +68,8 @@ Zum Schluss blockiert eine Bühne $ \dfrac{1}{5} $ der Gesamtfläche.
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  50/3  ]]  m$^2$ @canvas
 @Algebrite.check(50/3)
 ************

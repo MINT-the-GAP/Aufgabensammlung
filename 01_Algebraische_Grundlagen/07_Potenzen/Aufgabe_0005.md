@@ -55,22 +55,55 @@ author: Martin Lommatzsch
 
 <section class="dynFlex">
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $-10^3 = $ [[ -1000 ]] @canvas
 
+
+@ADetails(1=BE; Potenzen, Negative Zahlen)
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $-10^2 = $ [[  -100  ]] @canvas
 
+
+@ADetails(1=BE; Potenzen, Negative Zahlen)
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $(-10)^3 = $ [[  -1000   ]] @canvas
 
+
+@ADetails(1=BE; Potenzen, Negative Zahlen)
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ $(-10)^4 = $ [[ 10000 ]] @canvas
+
+
+@ADetails(1=BE; Potenzen, Negative Zahlen)
 
 
 </div>

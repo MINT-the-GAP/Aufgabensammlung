@@ -57,20 +57,60 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-type="none" -->
 __$a)\;\;$__ $6,5$ und $8 \quad$ \
 [[ 7,25  ]] @canvas 
+
+
+@ADetails(1=BE; Dezimalzahlen, Mittelwert)
 </div>
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-type="none" -->
 __$b)\;\;$__ $0,05$ und $0,75 \quad$ \
 [[ 0,4   ]] @canvas 
+
+
+@ADetails(1=BE; Dezimalzahlen, Mittelwert)
 </div> 
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-type="none" -->
 __$c)\;\;$__ $1,9$ und $3,5 \quad$ \
 [[ 2,6   ]] @canvas 
+
+
+@ADetails(1=BE; Dezimalzahlen, Mittelwert)
 </div> 
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-type="none" -->
 __$d)\;\;$__ $0,02$ und $2 \quad$ \
 [[ 0,99  ]] @canvas 
+
+
+@ADetails(1=BE; Dezimalzahlen, Mittelwert)
 </div> 
 </section>
 

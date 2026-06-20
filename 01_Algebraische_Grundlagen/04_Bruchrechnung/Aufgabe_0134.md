@@ -66,7 +66,8 @@ Von der verbleibenden Strecke werden anschließend nochmals $\dfrac{3}{4}$ gefah
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
 data-show-partial-solution 
-data-solution-button="5"  -->
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  27  ]]  km @canvas
 ************
 $$

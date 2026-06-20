@@ -57,7 +57,8 @@ author: Martin Lommatzsch
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ Der Dividend ist $81$ und der Divisor $27$. \
 [[  3   ]] @canvas
 
@@ -68,7 +69,8 @@ __$a)\;\;$__ Der Dividend ist $81$ und der Divisor $27$. \
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ Eine Summe besteht aus den Summanden $12$, $34$ und $26$.\
 [[  72  ]] @canvas
 
@@ -79,7 +81,8 @@ __$b)\;\;$__ Eine Summe besteht aus den Summanden $12$, $34$ und $26$.\
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ Es wird ein Produkt aus $11$ und $12$ gebildet. \
 [[  132 ]] @canvas
 
@@ -90,7 +93,8 @@ __$c)\;\;$__ Es wird ein Produkt aus $11$ und $12$ gebildet. \
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
 data-solution-timer-badge="off" 
-data-solution-button="5" -->
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ Der Subtrahend einer Differenz ist $19$, während der Wert des Minuenden $45$ beträgt.\
 [[  26  ]] @canvas
 

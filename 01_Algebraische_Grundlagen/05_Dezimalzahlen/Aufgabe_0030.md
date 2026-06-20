@@ -54,34 +54,88 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $ 2,8 \cdot 0,25 =$ [[  0,7  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Multiplikation)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $ 1,5 \cdot 8,7 =$ [[  13,05  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Multiplikation)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $ 1,2 \cdot 8,5 =$ [[  10,2  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Multiplikation)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $ 0,8 \cdot 0,05 =$ [[  0,04  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Multiplikation)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$e)\;\;$__ $ 0,3 \cdot 8,1 =$ [[  2,43  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Multiplikation)
+
+</div>  
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$f)\;\;$__ $ 0,75 \cdot 0,2 =$ [[  0,15  ]] @canvas
 
-</div> 
+
+
+@ADetails(1=BE; Dezimalzahlen, Multiplikation)
+
+</div>  
 </section>
 
 
