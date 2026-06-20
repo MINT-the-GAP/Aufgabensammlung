@@ -72,9 +72,19 @@ __$a)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 [[  1/4  ]] @canvas
 @Algebrite.check(1/4)
+
+
+
+@ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
 </div>
 
@@ -89,9 +99,19 @@ __$b)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 [[  11/30  ]] @canvas
 @Algebrite.check(11/30)
+
+
+
+@ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
 </div>
 
@@ -106,9 +126,19 @@ __$c)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 [[  2/5  ]] @canvas
 @Algebrite.check(2/5)
+
+
+
+@ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
 </div>
 
@@ -123,9 +153,19 @@ __$d)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 [[  19/40  ]] @canvas
 @Algebrite.check(19/40)
+
+
+
+@ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
 </div>
 

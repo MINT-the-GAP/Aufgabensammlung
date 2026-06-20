@@ -64,7 +64,13 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$a)\;\;$__ $ \;(3:4)\,\cdot\,(7:9)\;-\;(1:8)\;=\; $ [[  11/24  ]] @canvas
 @Algebrite.check(11/24)
 ************
@@ -79,12 +85,23 @@ $$
 \end{align*}
 $$
 ************
+
+
+
+@ADetails(1=BE; Bruchrechnung, Vorrangsregeln)
+
 </div>
 
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$b)\;\;$__ $ \;(5:6)\;+\;(3:8):(9:4)\;=\; $ [[  1  ]] @canvas
 @Algebrite.check(1)
 ************
@@ -99,12 +116,23 @@ $$
 \end{align*}
 $$
 ************
+
+
+
+@ADetails(1=BE; Bruchrechnung, Vorrangsregeln)
+
 </div>
 
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$c)\;\;$__ $ \;(2:5):(3:10)\;+\;(1:2)\cdot(3:7)\;=\; $ [[  65/42  ]] @canvas
 @Algebrite.check(65/42)
 ************
@@ -120,12 +148,23 @@ $$
 \end{align*}
 $$
 ************
+
+
+
+@ADetails(1=BE; Bruchrechnung, Vorrangsregeln)
+
 </div>
 
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$d)\;\;$__ $ \;(7:12)\;+\;(5:18)\;-\;(1:9)\cdot(3:2)\;=\; $ [[  25/36  ]] @canvas
 @Algebrite.check(25/36)
 ************
@@ -140,12 +179,23 @@ $$
 \end{align*}
 $$
 ************
+
+
+
+@ADetails(1=BE; Bruchrechnung, Vorrangsregeln)
+
 </div>
 
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$e)\;\;$__ $ \;(4:9):(2:3)\;+\;(5:12):(5:18)\;=\; $ [[  13/6  ]] @canvas
 @Algebrite.check(13/6)
 ************
@@ -161,12 +211,23 @@ $$
 \end{align*}
 $$
 ************
+
+
+
+@ADetails(1=BE; Bruchrechnung, Vorrangsregeln)
+
 </div>
 
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$f)\;\;$__ $ \;(3:5)\cdot\big((7:8)-(1:4)\big)\;+\;(2:3):(4:9)\;=\; $ [[  15/8  ]] @canvas
 @Algebrite.check(15/8)
 ************
@@ -182,6 +243,11 @@ $$
 \end{align*}
 $$
 ************
+
+
+
+@ADetails(1=BE; Bruchrechnung, Vorrangsregeln)
+
 </div>
 
 </section>

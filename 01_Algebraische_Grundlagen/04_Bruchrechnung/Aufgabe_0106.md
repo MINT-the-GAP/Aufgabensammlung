@@ -55,11 +55,18 @@ author: Martin Lommatzsch
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+
 Eine Strecke ist $15$ km lang. Davon werden $\dfrac{2}{5}$ mit dem Bus zurückgelegt, der Rest zu Fuß.  
 **Bestimme**, wie viele Kilometer zu Fuß gegangen werden.  
 
-<!-- data-solution-button="5"-->
-[[  9  ]] @canvas km
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  9  ]] km @canvas
 ************
 $$
 15\,\text{km} - \dfrac{2}{5}\cdot 15\,\text{km}
@@ -69,3 +76,5 @@ $$
 = 9\,\text{km}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Sachaufgabe)

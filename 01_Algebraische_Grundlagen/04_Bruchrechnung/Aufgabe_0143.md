@@ -60,8 +60,14 @@ Zunächst wird ein Anteil von $\dfrac{3}{5}$ der gesamten Rolle für Vorhänge z
 Aus der verbleibenden Stoffmenge wird anschließend noch $\dfrac{1}{4}$ für Tischdecken verwendet.  
 **Berechne** die am Ende übrig bleibende Stofflänge. 
 
-<!-- data-solution-button="5"-->
-[[  15  ]] @canvas m
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  15  ]]  m @canvas
 @Algebrite.check(15)
 ************
 $$
@@ -76,3 +82,5 @@ $$
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)

@@ -57,10 +57,18 @@ author: Martin Lommatzsch
 Ein Rechteck hat eine Seitenlänge von $12$ cm. Die andere Seitenlänge beträgt $\dfrac{3}{4}$ davon.  
 **Bestimme** die zweite Seitenlänge. 
 
-<!-- data-solution-button="5"-->
-[[ 9 ]] @canvas cm
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[ 9 ]]  cm @canvas
 ************
 $$
 \dfrac{3}{4}\cdot 12\,\text{cm} = \dfrac{36}{4}\,\text{cm} = 9\,\text{cm}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Sachaufgabe)

@@ -62,8 +62,14 @@ Von der bis dahin vorbereiteten Gesamtlänge werden anschließend $\dfrac{2}{15}
 **Berechne** die schließlich benötigte Stofflänge. 
 
 
-<!-- data-solution-button="5"-->
-[[  4897/864  ]] @canvas m
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  4897/864  ]]  m @canvas
 @Algebrite.check(4897/864)
 ************
 $$
@@ -100,3 +106,5 @@ $$
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)

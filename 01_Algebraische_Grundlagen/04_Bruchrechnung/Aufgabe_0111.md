@@ -57,8 +57,14 @@ author: Martin Lommatzsch
 Ein Wasserbecken fasst $200$ Liter. Es ist zu $\dfrac{7}{10}$ gefüllt.  
 **Bestimme**, wie viele Liter Wasser im Becken sind.  
 
-<!-- data-solution-button="5"-->
-[[  140  ]] @canvas $\ell$
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  140  ]]  $\ell$ @canvas
 ************
 $$
 \dfrac{7}{10}\cdot 200\,\ell
@@ -67,3 +73,6 @@ $$
 = 140\,\ell
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Sachaufgabe)

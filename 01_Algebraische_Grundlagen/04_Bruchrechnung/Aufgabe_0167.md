@@ -59,8 +59,12 @@ author: Martin Lommatzsch
 **Ordne** die Dominosteine in der richtigen Reihenfolge **an**.
 
 
-<!-- data-randomize="true"  
-data-solution-button="5"  -->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-randomize="true"  -->
 __$a)\;\;$__  $\dfrac{3}{5}$
  [->[$\left. \boxed{ = \dfrac{1}{2} + \dfrac{1}{10}} \right\| \boxed{ \dfrac{12}{7} \cdot \dfrac{7}{18}} $]]
  [->[$\left. \boxed{ = \dfrac{5}{6} - \dfrac{1}{6}} \right\| \boxed{ \dfrac{9}{8} : \dfrac{3}{2}} $]]
@@ -70,9 +74,15 @@ __$a)\;\;$__  $\dfrac{3}{5}$
  [->[$\left. \boxed{ = \dfrac{3}{5} \cdot \dfrac{5}{2}} \right\| \boxed{ \dfrac{2}{3} + \dfrac{1}{6}} $]]
 $= \dfrac{5}{6}$
 
+@ADetails(1=BE; Bruchrechnung)
 
-<!-- data-randomize="true"  
-data-solution-button="5"  -->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-randomize="true"  -->
 __$b)\;\;$__ $\dfrac{4}{9}$
  [->[$\left. \boxed{ = \dfrac{2}{3} \cdot \dfrac{2}{3}} \right\| \boxed{ \dfrac{7}{5} - \dfrac{2}{5}} $]]
  [->[$\left. \boxed{ = \dfrac{5}{8} + \dfrac{3}{8}} \right\| \boxed{ \dfrac{10}{7} : \dfrac{5}{7}} $]]
@@ -82,10 +92,16 @@ __$b)\;\;$__ $\dfrac{4}{9}$
  [->[$\left. \boxed{ = \dfrac{7}{9} : \dfrac{2}{3}} \right\| \boxed{ \dfrac{3}{4} - \dfrac{1}{4}} $]]
 $= \dfrac{1}{2}$
 
+@ADetails(1=BE; Bruchrechnung)
 
 
-<!-- data-randomize="true"  
-data-solution-button="5"  -->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-randomize="true"  -->
 __$c)\;\;$__ $\dfrac{3}{8}$
  [->[$\left. \boxed{ = \dfrac{1}{2} - \dfrac{1}{8}} \right\| \boxed{ \dfrac{3}{4} \cdot \dfrac{3}{4}} $]]
  [->[$\left. \boxed{ = \dfrac{1}{2} + \dfrac{1}{16}} \right\| \boxed{ \dfrac{5}{12} + \dfrac{1}{3}} $]]
@@ -95,10 +111,15 @@ __$c)\;\;$__ $\dfrac{3}{8}$
  [->[$\left. \boxed{ = \dfrac{4}{3} : \dfrac{2}{1}} \right\| \boxed{ \dfrac{7}{3} : \dfrac{3}{1}} $]]
 $= \dfrac{7}{9}$
 
+@ADetails(1=BE; Bruchrechnung)
 
 
-<!-- data-randomize="true"  
-data-solution-button="5"  -->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-randomize="true"  -->
 __$d)\;\;$__ $\dfrac{4}{9}$
  [->[$\left. \boxed{ = \dfrac{1}{3} + \dfrac{1}{9}} \right\| \boxed{ \dfrac{8}{9} : \dfrac{4}{3}} $]]
  [->[$\left. \boxed{ = \dfrac{5}{6} - \dfrac{1}{6}} \right\| \boxed{ \dfrac{1}{2} + \dfrac{1}{8}} $]]
@@ -108,10 +129,16 @@ __$d)\;\;$__ $\dfrac{4}{9}$
  [->[$\left. \boxed{ = \dfrac{1}{4} + \dfrac{1}{6}} \right\| \boxed{ \dfrac{8}{9} : \dfrac{4}{3}} $]]
 $= \dfrac{2}{3}$
 
+@ADetails(1=BE; Bruchrechnung)
 
 
-<!-- data-randomize="true"  
-data-solution-button="5"  -->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-randomize="true"  -->
 __$e)\;\;$__ $\dfrac{5}{14}$
  [->[$\left. \boxed{ = \dfrac{3}{7} - \dfrac{1}{14}} \right\| \boxed{ \dfrac{3}{2} : \dfrac{2}{1}} $]]
  [->[$\left. \boxed{ = 1 - \dfrac{1}{4}} \right\| \boxed{ \dfrac{7}{3} : \dfrac{2}{1}} $]]
@@ -121,10 +148,16 @@ __$e)\;\;$__ $\dfrac{5}{14}$
  [->[$\left. \boxed{ = \dfrac{6}{7} : \dfrac{2}{1}} \right\| \boxed{ \dfrac{2}{3} - \dfrac{1}{6}} $]]
 $= \dfrac{1}{2}$
 
+@ADetails(1=BE; Bruchrechnung)
 
 
-<!-- data-randomize="true"  
-data-solution-button="5"  -->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-randomize="true"  -->
 __$f)\;\;$__ $\dfrac{5}{18}$
  [->[$\left. \boxed{ = \dfrac{2}{9} + \dfrac{1}{18}} \right\| \boxed{ \dfrac{7}{6} : \dfrac{2}{1}} $]]
  [->[$\left. \boxed{ = \dfrac{1}{3} + \dfrac{1}{4}} \right\| \boxed{ \dfrac{5}{4} : \dfrac{2}{1}} $]]
@@ -133,6 +166,8 @@ __$f)\;\;$__ $\dfrac{5}{18}$
  [->[$\left. \boxed{ = \dfrac{4}{3} : \dfrac{2}{1}} \right\| \boxed{ \dfrac{7}{3} : \dfrac{3}{1}} $]]
  [->[$\left. \boxed{ = 1 - \dfrac{2}{9}} \right\| \boxed{ \dfrac{1}{2} + \dfrac{2}{9}} $]]
 $= \dfrac{13}{18}$
+
+@ADetails(1=BE; Bruchrechnung)
 
 
 

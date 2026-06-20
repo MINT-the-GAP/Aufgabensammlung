@@ -58,10 +58,18 @@ author: Martin Lommatzsch
 Ein Läufer hat eine Strecke von $18$ km zurückzulegen. Am Vormittag läuft er $\dfrac{5}{9}$ der Strecke.  
 **Bestimme**, wie viele Kilometer am Nachmittag noch zu laufen sind. 
 
-<!-- data-solution-button="5"-->
-[[ 8 ]] @canvas km
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[ 8 ]]  km @canvas
 ************
 $$
 18\,\text{km} - \dfrac{5}{9}\cdot 18\,\text{km} = 18\,\text{km} - 10\,\text{km} = 8\,\text{km}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Sachaufgabe)

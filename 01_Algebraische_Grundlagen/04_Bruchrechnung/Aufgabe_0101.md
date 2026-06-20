@@ -55,10 +55,17 @@ author: Martin Lommatzsch
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+
 Eine Pizza wird in $16$ gleich große Stücke geteilt. $\dfrac{3}{8}$ der Pizza werden gegessen.  
 **Bestimme**, wie viele Stücke das sind. 
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
  [[  6  ]] @canvas 
 @Algebrite.check(6)
 ************
@@ -69,3 +76,6 @@ $$
   & = 6
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Sachaufgabe)

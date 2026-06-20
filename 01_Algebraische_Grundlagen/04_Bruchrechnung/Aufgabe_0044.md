@@ -60,7 +60,13 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$a)\;\;$__ $  \dfrac{3}{5} \cdot \dfrac{7}{8} = $ [[  21/40  ]] @canvas
 @Algebrite.check(21/40)
 ************
@@ -72,10 +78,20 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Multiplikation)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$b)\;\;$__ $  \dfrac{5}{6} : \dfrac{10}{9} = $ [[  3/4  ]] @canvas
 @Algebrite.check(3/4)
 ************
@@ -88,10 +104,20 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Division)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$c)\;\;$__ $  \dfrac{4}{7} \cdot \dfrac{6}{11} = $ [[  24/77  ]] @canvas
 @Algebrite.check(24/77)
 ************
@@ -103,10 +129,20 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Multiplikation)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$d)\;\;$__ $  \dfrac{9}{10} : \dfrac{3}{20} = $ [[  6  ]] @canvas
 @Algebrite.check(6)
 ************
@@ -119,10 +155,20 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Division)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$e)\;\;$__ $  \dfrac{7}{12} \cdot \dfrac{5}{9} = $ [[  35/108  ]] @canvas
 @Algebrite.check(35/108)
 ************
@@ -134,10 +180,20 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Multiplikation)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$f)\;\;$__ $  \dfrac{8}{15} : \dfrac{4}{9} = $ [[  6/5  ]] @canvas
 @Algebrite.check(6/5)
 ************
@@ -150,9 +206,19 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Division)
+
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$g)\;\;$__ $  \dfrac{5}{12} \cdot \dfrac{9}{14} = $ [[  15/56  ]] @canvas
 @Algebrite.check(15/56)
 ************
@@ -165,10 +231,20 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Multiplikation)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$h)\;\;$__ $  \dfrac{7}{12} : \dfrac{14}{15} = $ [[  5/8  ]] @canvas
 @Algebrite.check(5/8)
 ************
@@ -181,6 +257,10 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Division)
+
 </div>
 
 

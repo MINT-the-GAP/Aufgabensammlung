@@ -59,8 +59,14 @@ Eine Schulbibliothek besitzt $240$ Bücher. Davon sind $\dfrac{3}{8}$ Romane.
 Von den verbleibenden Büchern sind $\dfrac{2}{5}$ Sachbücher, der Rest sind Zeitschriften.  
 **Bestimme**, wie viele Zeitschriften es gibt. 
 
-<!-- data-solution-button="5"-->
-[[  90  ]] @canvas Zeitschriften
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  90  ]]  Zeitschriften @canvas
 ************
 $$
 \text{Romane: } \dfrac{3}{8}\cdot 240 = 90 \\
@@ -69,4 +75,6 @@ $$
 \text{Zeitschriften: } 150 - 60 = 90
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)
 

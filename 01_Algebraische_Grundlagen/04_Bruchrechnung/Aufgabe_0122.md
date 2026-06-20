@@ -58,8 +58,14 @@ author: Martin Lommatzsch
 Ein Reissack enthält $6$ kg. Für ein Projekt wird $\dfrac{5}{12}$ des Inhalts benötigt.  
 **Bestimme** die benötigte Masse als Bruch.  
 
-<!-- data-solution-button="5"-->
-[[  5/2  ]] @canvas kg
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  5/2  ]]  kg @canvas
 @Algebrite.check(5/2)
 ************
 $$
@@ -70,3 +76,5 @@ $$
 = \dfrac{5}{2}\,\text{kg}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Sachaufgabe)

@@ -65,7 +65,13 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$a)\;\;$__ $  \dfrac{3}{7} : \dfrac{9}{14} = $ [[  2/3  ]] @canvas
 @Algebrite.check(2/3)
 ************
@@ -79,10 +85,20 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Division)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$b)\;\;$__ $  \dfrac{8}{15} : \dfrac{4}{9} = $ [[  6/5  ]] @canvas
 @Algebrite.check(6/5)
 ************
@@ -96,10 +112,20 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Division)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$c)\;\;$__ $  \dfrac{5}{12} : \dfrac{10}{21} = $ [[  7/8  ]] @canvas
 @Algebrite.check(7/8)
 ************
@@ -113,10 +139,20 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Division)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$d)\;\;$__ $  \dfrac{7}{18} : \dfrac{14}{27} = $ [[  3/4  ]] @canvas
 @Algebrite.check(3/4)
 ************
@@ -131,10 +167,20 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Division)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$e)\;\;$__ $  \dfrac{9}{20} : \dfrac{3}{25} = $ [[  15/4  ]] @canvas
 @Algebrite.check(15/4)
 ************
@@ -148,10 +194,20 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Division)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$f)\;\;$__ $  \dfrac{11}{24} : \dfrac{22}{36} = $ [[  3/4  ]] @canvas
 @Algebrite.check(3/4)
 ************
@@ -165,6 +221,10 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Division)
+
 </div>
 
 </section>

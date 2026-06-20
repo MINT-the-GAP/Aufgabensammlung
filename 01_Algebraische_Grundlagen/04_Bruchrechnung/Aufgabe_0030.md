@@ -63,7 +63,13 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$a)\;\;$__ $  \dfrac{4}{9} + \dfrac{5}{12} = $ [[  31/36  ]] @canvas
 @Algebrite.check(31/36)
 ************
@@ -76,10 +82,20 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Addition)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$b)\;\;$__ $  \dfrac{7}{10} - \dfrac{1}{4} = $ [[  9/20  ]] @canvas
 @Algebrite.check(9/20)
 ************
@@ -92,10 +108,20 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Subtraktion)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$c)\;\;$__ $  \dfrac{3}{8} + \dfrac{7}{12} = $ [[  23/24  ]] @canvas
 @Algebrite.check(23/24)
 ************
@@ -108,10 +134,20 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Addition)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$d)\;\;$__ $  \dfrac{11}{18} - \dfrac{5}{12} = $ [[  7/36  ]] @canvas
 @Algebrite.check(7/36)
 ************
@@ -124,10 +160,20 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Subtraktion)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$e)\;\;$__ $  \dfrac{5}{14} + \dfrac{9}{21} = $ [[  33/42  ]] @canvas
 @Algebrite.check(33/42)
 ************
@@ -140,10 +186,20 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Addition)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$f)\;\;$__ $  \dfrac{13}{20} - \dfrac{3}{8} = $ [[  11/40  ]] @canvas
 @Algebrite.check(11/40)
 ************
@@ -156,6 +212,10 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Subtraktion)
+
 </div>
 
 </section>

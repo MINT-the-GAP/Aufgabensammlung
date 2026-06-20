@@ -61,8 +61,14 @@ Von der gesamten Fläche wird zunächst $\dfrac{3}{8}$ für Befestigungen reserv
 Von der verbleibenden Fläche wird anschließend $\dfrac{1}{3}$ farbig lackiert.  
 **Berechne** die am Ende nicht lackierte Nutzfläche als Bruch. 
 
-<!-- data-solution-button="5"-->
-[[  1600/9  ]] @canvas cm^2
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  1600/9  ]]  cm^2 @canvas
 @Algebrite.check(1600/9)
 ************
 $$
@@ -86,3 +92,5 @@ $$
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)

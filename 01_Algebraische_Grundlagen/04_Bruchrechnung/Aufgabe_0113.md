@@ -58,10 +58,18 @@ author: Martin Lommatzsch
 Ein Tank enthält $60$ Liter Benzin. Davon werden $\dfrac{2}{5}$ verbraucht.  
 **Bestimme**, wie viele Liter übrig bleiben. 
 
-<!-- data-solution-button="5"-->
-[[ 36 ]] @canvas $\ell$
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[ 36 ]]  $\ell$ @canvas
 ************
 $$
 60\,\ell - \dfrac{2}{5}\cdot 60\,\ell = 60\,\ell - \dfrac{120}{5} = 60\,\ell - 24\,\ell = 36\,\ell
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Sachaufgabe)

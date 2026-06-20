@@ -58,8 +58,14 @@ Eine Obstkiste wiegt $48\,\text{kg}$. Darin befinden sich Äpfel und Birnen.
 Die Äpfel machen $\dfrac{5}{12}$ der gesamten Masse aus. Von den restlichen Kilogramm entfallen $\dfrac{2}{3}$ auf Birnen.  
 **Bestimme**, wie viele Kilogramm Obst weder Äpfel noch Birnen sind. 
 
-<!-- data-solution-button="5"-->
-[[  28/3  ]] @canvas kg
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  28/3  ]]  kg @canvas
 @Algebrite.check(28/3)
 ************
 $$
@@ -69,3 +75,5 @@ $$
 \text{Sonstiges: } 28-\dfrac{56}{3} = \dfrac{28}{3}\,\text{kg}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)

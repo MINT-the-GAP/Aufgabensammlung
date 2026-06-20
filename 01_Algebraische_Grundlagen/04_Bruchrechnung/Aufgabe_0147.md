@@ -59,8 +59,14 @@ Pro Musterstück werden $\dfrac{2}{3}\,\text{m}$ Stoff für die Fläche und zus�
 Es werden $3$ Musterstücke gefertigt; anschließend wird für eine Probe noch $\dfrac{1}{2}\,\text{m}$ Stoff bereitgelegt.  
 **Berechne** die gesamte Stofflänge. 
 
-<!-- data-solution-button="5"-->
-[[  13/4  ]] @canvas m
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  13/4  ]]  m @canvas
 @Algebrite.check(13/4)
 ************
 $$
@@ -75,4 +81,6 @@ $$
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)
 

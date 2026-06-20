@@ -74,7 +74,9 @@ data-solution-button="5"  -->
 Zähler: [[  1  ]] @canvas \
 Nenner: [[  4  ]] @canvas 
 
-@ADetails(1=BE; Zahlenverständnis, Bruch)
+
+
+@ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
 </div>
 <div class="flex-child">
@@ -88,9 +90,16 @@ __$b)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 Zähler: [[  4  ]] @canvas \
 Nenner: [[  16 ]] @canvas 
+
+
+@ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
 </div>
 <div class="flex-child">
@@ -104,9 +113,16 @@ __$c)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 Zähler: [[  6  ]] @canvas \
 Nenner: [[ 16  ]] @canvas 
+
+
+@ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
 </div>
 <div class="flex-child">
@@ -120,9 +136,16 @@ __$d)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 Zähler: [[  8  ]] @canvas \
 Nenner: [[  16 ]] @canvas 
+
+
+@ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
 </div>
 <div class="flex-child">
@@ -136,9 +159,15 @@ __$e)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 Zähler: [[  12 ]] @canvas \
 Nenner: [[  16 ]] @canvas 
+
+@ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
 </div>
 
@@ -153,9 +182,15 @@ __$f)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 Zähler: [[  4  ]] @canvas \
 Nenner: [[ 16  ]] @canvas 
+
+@ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
 </div>
 
@@ -170,9 +205,16 @@ __$g)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 Zähler: [[  1  ]] @canvas \
 Nenner: [[  3  ]] @canvas 
+
+@ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
 </div>
 
@@ -187,9 +229,16 @@ __$h)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 Zähler: [[  2  ]] @canvas \
 Nenner: [[  9  ]] @canvas 
+
+@ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
 </div>
 
@@ -204,9 +253,16 @@ __$i)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 Zähler: [[  16 ]] @canvas \
 Nenner: [[  32 ]] @canvas 
+
+@ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
 </div>
 
@@ -221,9 +277,16 @@ __$j)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 Zähler: [[  3  ]] @canvas \
 Nenner: [[  6  ]] @canvas 
+
+@ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
 </div>
 

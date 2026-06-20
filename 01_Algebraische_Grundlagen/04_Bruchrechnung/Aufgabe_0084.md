@@ -72,9 +72,19 @@ __$a)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 [[  11/25  ]] @canvas
 @Algebrite.check(11/25)
+
+
+
+@ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
 </div>
 
@@ -89,9 +99,19 @@ __$b)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 [[  14/37  ]] @canvas
 @Algebrite.check(14/37)
+
+
+
+@ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
 </div>
 
@@ -106,9 +126,19 @@ __$c)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 [[  9/14  ]] @canvas
 @Algebrite.check(9/14)
+
+
+
+@ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
 </div>
 
@@ -123,9 +153,19 @@ __$d)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 [[  13/37  ]] @canvas
 @Algebrite.check(13/37)
+
+
+
+@ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
 </div>
 
@@ -140,9 +180,19 @@ __$e)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 [[  9/14  ]] @canvas
 @Algebrite.check(9/14)
+
+
+
+@ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
 </div>
 
@@ -157,9 +207,19 @@ __$f)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 [[  6/9  ]] @canvas
 @Algebrite.check(6/9)
+
+
+
+@ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
 </div>
 

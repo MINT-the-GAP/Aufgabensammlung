@@ -60,8 +60,14 @@ Eine Mischung besteht aus $\dfrac{3}{8}\,\ell$ Lösung A und $\dfrac{1}{4}\,\ell
 Es werden $6$ Mischungen hergestellt; danach werden für Tests $\dfrac{2}{3}\,\ell$ des **Gesamtergebnisses** entnommen.  
 **Bestimme** die verbleibende Flüssigkeitsmenge. 
 
-<!-- data-solution-button="5"-->
-[[  37/12  ]] @canvas  $\ell$
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  37/12  ]]   $\ell$ @canvas
 @Algebrite.check(37/12)
 ************
 $$
@@ -77,3 +83,5 @@ $$
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)

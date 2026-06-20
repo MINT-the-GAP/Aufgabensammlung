@@ -57,28 +57,76 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Wie viel sind $\dfrac{1}{7}$ von $84\,$€?  \
 
- [[  12  ]] @canvas€
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+ [[  12  ]] € @canvas
+
+
+
+
+@ADetails(1=BE; Bruchrechnung, Anteile)
 
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ Wie viel sind $\dfrac{8}{3}$ von $45\,$min?  \
 
- [[  120  ]] @canvasmin
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+ [[  120  ]] min @canvas
+
+
+
+
+@ADetails(1=BE; Bruchrechnung, Anteile)
 
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ Wie viel sind $\dfrac{3}{5}$ von $8000\,$dm$^2$?  \
 
- [[  4800  ]] @canvasdm$^2$
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+ [[  4800  ]] dm$^2$ @canvas
+
+
+
+
+@ADetails(1=BE; Bruchrechnung, Anteile)
 
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ Wie viel sind $\dfrac{5}{12}$ von $144\,\ell$?  \
 
- [[  60  ]] @canvas $\ell$
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+ [[  60  ]]  $\ell$ @canvas
+
+
+
+
+@ADetails(1=BE; Bruchrechnung, Anteile)
 
 </div>
 </section>

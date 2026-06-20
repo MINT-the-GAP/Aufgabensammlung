@@ -57,28 +57,76 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Wie viel sind $\dfrac{3}{10}$ von $90\,$€?  \
 
- [[  27  ]] @canvas€
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+ [[  27  ]] € @canvas
+
+
+
+
+@ADetails(1=BE; Bruchrechnung, Anteile)
 
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ Wie viel sind $\dfrac{7}{4}$ von $840\,$kg?  \
 
- [[  1470  ]] @canvaskg
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+ [[  1470  ]] kg @canvas
+
+
+
+
+@ADetails(1=BE; Bruchrechnung, Anteile)
 
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ Wie viel sind $\dfrac{2}{3}$ von $6\,$m$^3$?  \
 
- [[  4  ]] @canvasm$^3$
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+ [[  4  ]] m$^3$ @canvas
+
+
+
+
+@ADetails(1=BE; Bruchrechnung, Anteile)
 
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ Wie viel sind $\dfrac{11}{6}$ von $240\,\ell$?  \
 
- [[  440  ]] @canvas $\ell$
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+ [[  440  ]] $\ell$ @canvas
+
+
+
+
+@ADetails(1=BE; Bruchrechnung, Anteile)
 
 </div>
 </section>

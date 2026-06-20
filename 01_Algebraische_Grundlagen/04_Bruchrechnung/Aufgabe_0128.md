@@ -60,7 +60,13 @@ Ein Markthändler bringt $24$ Kisten Obst auf den Wochenmarkt.
 Am Vormittag verkauft er $\dfrac{2}{3}$ seiner Kisten. Danach beschließt er, von den verbleibenden Kisten $\dfrac{1}{4}$ an eine Nachbarhändlerin abzugeben.  
 **Bestimme**, wie viele Kisten er schließlich noch selbst behalten kann. 
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
  [[  6  ]] @canvas 
 ************
 $$
@@ -68,3 +74,5 @@ $$
 \text{Abgabe:}\quad \dfrac{1}{4}\cdot 8 = 2 \quad \Rightarrow \; 8-2=6 \text{ Kisten übrig}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)

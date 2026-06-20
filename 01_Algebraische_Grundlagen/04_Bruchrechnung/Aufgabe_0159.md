@@ -62,8 +62,14 @@ Zum Schluss blockiert eine Bühne $ \dfrac{1}{5} $ der Gesamtfläche.
 **Berechne** die am Ende frei begehbare Fläche. 
 
 
-<!-- data-solution-button="5"-->
-[[  50/3  ]] @canvas m$^2$
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  50/3  ]]  m$^2$ @canvas
 @Algebrite.check(50/3)
 ************
 $$
@@ -83,3 +89,5 @@ $$
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)

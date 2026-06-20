@@ -58,8 +58,14 @@ author: Martin Lommatzsch
 Die Fläche eines Rechtecks beträgt $40\,\text{cm}^2$. Ein Anteil von $\dfrac{3}{8}$ wird farbig markiert.  
 **Berechne** die markierte Fläche. 
 
-<!-- data-solution-button="5"-->
-[[  15  ]] @canvas cm$^2$
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  15  ]]  cm$^2$ @canvas
 ************
 $$
 \dfrac{3}{8}\cdot 40\,\text{cm}^2
@@ -69,3 +75,5 @@ $$
 = 15\,\text{cm}^2
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Sachaufgabe)

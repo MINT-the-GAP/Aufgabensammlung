@@ -63,8 +63,14 @@ Der verbleibende Rest wird gleichmäßig auf sechs Kisten verteilt.
 **Berechne** die Masse pro Kiste als Bruch. 
 
 
-<!-- data-solution-button="5"-->
-[[  68/75  ]] @canvas kg
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  68/75  ]]  kg @canvas
 @Algebrite.check(68/75)
 ************
 $$
@@ -89,3 +95,5 @@ $$
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)

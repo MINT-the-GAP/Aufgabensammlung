@@ -54,11 +54,18 @@ author: Martin Lommatzsch
 # Textaufgabe Bruchrechnung - Fahrradstrecke
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+
 Ein Weg ist $9$ km lang. Mit dem Fahrrad werden $\dfrac{2}{3}$ gefahren, der Rest wird zu Fuß zurückgelegt.  
 **Bestimme**, wie viele Kilometer zu Fuß gegangen werden.  
 
-<!-- data-solution-button="5"-->
-[[  3  ]] @canvas km
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  3  ]] km @canvas
 @Algebrite.check(3)
 ************
 $$
@@ -68,3 +75,6 @@ $$
  & = 3\,\text{km}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Sachaufgabe)

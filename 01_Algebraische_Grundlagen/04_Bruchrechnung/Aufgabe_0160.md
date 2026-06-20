@@ -71,8 +71,14 @@ Zum Schluss werden noch zwei Zusatzleisten zu je $\dfrac{3}{20}\,\text{m}$ ergä
 **Berechne** die schließlich benötigte Leistenlänge.  \
 
 
-<!-- data-solution-button="5"-->
-[[  799/80  ]] @canvas m
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  799/80  ]]  m @canvas
 @Algebrite.check(799/80)
 ************
 $$
@@ -103,4 +109,6 @@ $$
 $$
 ************
 
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)
 

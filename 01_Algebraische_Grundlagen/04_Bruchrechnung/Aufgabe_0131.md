@@ -61,12 +61,20 @@ Zuerst verteilt die Lehrerin $\dfrac{1}{3}$ der Hefte an die Schülerinnen.
 Von den verbleibenden Heften werden später $\dfrac{1}{2}$ an die Schüler verteilt.  
 **Bestimme**, wie viele Hefte am Ende noch übrig bleiben. 
 
-<!-- data-solution-button="5"-->
-[[  20  ]] @canvas Hefte
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  20  ]] Hefte @canvas
 ************
 $$
 \text{Erste Verteilung:}\quad \dfrac{1}{3}\cdot 60 = 20 \quad \Rightarrow \; 60-20=40 \text{ Hefte} \\
 \text{Zweite Verteilung:}\quad \dfrac{1}{2}\cdot 40 = 20 \quad \Rightarrow \; 40-20=20 \text{ Hefte} \\
 \text{Rest: } 20 \text{ Hefte}
 $$
-************
+************ 
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)

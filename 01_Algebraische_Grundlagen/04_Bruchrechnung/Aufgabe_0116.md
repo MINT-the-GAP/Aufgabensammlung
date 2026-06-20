@@ -58,10 +58,18 @@ author: Martin Lommatzsch
 Ein Wassertank fasst $250$ Liter. Er ist zu $\dfrac{3}{10}$ gefüllt.  
 **Bestimme**, wie viele Liter sich im Tank befinden. 
 
-<!-- data-solution-button="5"-->
-[[ 75 ]] @canvas $\ell$
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[ 75 ]]  $\ell$ @canvas
 ************
 $$
 \dfrac{3}{10}\cdot 250\,\ell = \dfrac{750}{10}\,\ell = 75\,\ell
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Sachaufgabe)

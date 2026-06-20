@@ -64,8 +64,14 @@ Zum Schluss werden pro hergestellter Dose nochmals $\dfrac{1}{5}\,\ell$ destilli
 
 
 
-<!-- data-solution-button="5"-->
-[[  2171/480  ]] @canvas $\ell$
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  2171/480  ]]  $\ell$ @canvas
 @Algebrite.check(2171/480)
 ************
 $$
@@ -98,3 +104,5 @@ $$
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)

@@ -63,8 +63,14 @@ Es werden sechs Sets fertiggestellt. Anschließend werden $\dfrac{2}{9}$ der bis
 Zum Schluss können $\dfrac{1}{4}\,\text{m}$ aus Reststücken wiederverwendet werden (werden addiert).  
 **Berechne** die schließlich benötigte Leistenlänge.  
 
-<!-- data-solution-button="5"-->
-[[  293/45  ]] @canvas m
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  293/45  ]]  m @canvas
 @Algebrite.check(293/45)
 ************
 $$
@@ -95,5 +101,7 @@ $$
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)
 
 

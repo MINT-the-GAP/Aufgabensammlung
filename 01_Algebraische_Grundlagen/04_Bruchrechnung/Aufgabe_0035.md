@@ -61,7 +61,13 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$a)\;\;$__ $  \dfrac{2}{3} \cdot \dfrac{5}{7} = $ [[  10/21  ]] @canvas
 @Algebrite.check(10/21)
 ************
@@ -73,10 +79,20 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Multiplikation)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$b)\;\;$__ $  \dfrac{3}{4} \cdot \dfrac{5}{7} = $ [[  15/28  ]] @canvas
 @Algebrite.check(15/28)
 ************
@@ -88,10 +104,20 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Multiplikation)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$c)\;\;$__ $  \dfrac{4}{9} \cdot \dfrac{5}{7} = $ [[  20/63  ]] @canvas
 @Algebrite.check(20/63)
 ************
@@ -103,10 +129,20 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Multiplikation)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$d)\;\;$__ $  \dfrac{5}{8} \cdot \dfrac{7}{9} = $ [[  35/72  ]] @canvas
 @Algebrite.check(35/72)
 ************
@@ -118,10 +154,20 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Multiplikation)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$e)\;\;$__ $  \dfrac{3}{10} \cdot \dfrac{7}{11} = $ [[  21/110  ]] @canvas
 @Algebrite.check(21/110)
 ************
@@ -133,10 +179,20 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Multiplikation)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$f)\;\;$__ $  \dfrac{5}{12} \cdot \dfrac{7}{13} = $ [[  35/156  ]] @canvas
 @Algebrite.check(35/156)
 ************
@@ -148,6 +204,10 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Multiplikation)
+
 </div>
 
 </section>

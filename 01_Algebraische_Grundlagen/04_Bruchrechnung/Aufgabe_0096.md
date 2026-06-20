@@ -63,73 +63,173 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$a)\;\;$__  
 $ \dfrac{ 2 }{ 3 } = \dfrac{ x }{ 12 } $ \
 $x = $ [[  8  ]] @canvas
+
+
+@ADetails(1=BE; Bruchrechnung, Erweitern)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$b)\;\;$__  
 $ \dfrac{ 7 }{ x } = \dfrac{ 14 }{ 30 } $ \
 $x = $ [[  15  ]] @canvas
+
+
+@ADetails(1=BE; Bruchrechnung, Kürzen)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$c)\;\;$__  
 $ \dfrac{ x }{ 9 } = \dfrac{ 5 }{ 15 } $ \
 $x = $ [[  3  ]] @canvas
+
+
+@ADetails(1=BE; Bruchrechnung, Erweitern)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$d)\;\;$__  
 $ \dfrac{ 6 }{ 8 } = \dfrac{ x }{ 20 } $ \
 $x = $ [[  15  ]] @canvas
+
+
+@ADetails(1=BE; Bruchrechnung, Erweitern)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$e)\;\;$__  
 $ \dfrac{ x }{ 14 } = \dfrac{ 9 }{ 21 } $ \
 $x = $ [[  6  ]] @canvas
+
+
+@ADetails(1=BE; Bruchrechnung, Kürzen)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$f)\;\;$__  
 $ \dfrac{ 10 }{ x } = \dfrac{ 15 }{ 12 } $ \
 $x = $ [[  8  ]] @canvas
+
+
+@ADetails(1=BE; Bruchrechnung, Kürzen)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$g)\;\;$__  
 $ \dfrac{ x }{ 5 } = \dfrac{ 12 }{ 15 } $ \
 $x = $ [[  4  ]] @canvas
+
+
+@ADetails(1=BE; Bruchrechnung, Kürzen)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$h)\;\;$__  
 $ \dfrac{ 8 }{ 20 } = \dfrac{ x }{ 25 } $ \
 $x = $ [[  10  ]] @canvas
+
+
+@ADetails(1=BE; Bruchrechnung, Erweitern)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$i)\;\;$__  
 $ \dfrac{ x }{ 16 } = \dfrac{ 9 }{ 24 } $ \
 $x = $ [[  6  ]] @canvas
+
+
+@ADetails(1=BE; Bruchrechnung, Kürzen)
+
 </div>
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$j)\;\;$__  
 $ \dfrac{ 4 }{ x } = \dfrac{ 6 }{ 18 } $ \
 $x = $ [[  12  ]] @canvas
+
+
+@ADetails(1=BE; Bruchrechnung, Kürzen)
+
 </div>
 
 </section>

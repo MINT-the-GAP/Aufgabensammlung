@@ -58,28 +58,76 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Wie viel sind $\dfrac{4}{5}$ von $2500\,$kg?  \
 
- [[  2000  ]] @canvaskg
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+ [[  2000  ]] kg @canvas
+
+
+
+
+@ADetails(1=BE; Bruchrechnung, Anteile)
 
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ Wie viel sind $\dfrac{5}{9}$ von $180\,$cm?  \
 
- [[  100  ]] @canvascm
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+ [[  100  ]] cm @canvas
+
+
+
+
+@ADetails(1=BE; Bruchrechnung, Anteile)
 
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ Wie viel sind $\dfrac{1}{4}$ von $300\,$min?  \
 
- [[  75  ]] @canvasmin
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+ [[  75  ]] min @canvas
+
+
+
+
+@ADetails(1=BE; Bruchrechnung, Anteile)
 
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ Wie viel sind $\dfrac{6}{7}$ von $42\,$m?  \
 
- [[  36  ]] @canvasm
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+ [[  36  ]] m @canvas
+
+
+
+
+@ADetails(1=BE; Bruchrechnung, Anteile)
 
 </div>
 </section>

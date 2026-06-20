@@ -59,8 +59,14 @@ author: Martin Lommatzsch
 Für die Reinigung steht eine $5\,\ell$-Kanisterlösung bereit. Zuerst verschüttet sich $\dfrac{3}{10}$ des Inhalts, danach wird $\dfrac{1}{4}$ der verbleibenden Menge für die Gerätepflege genutzt.  
 **Berechne** das restliche Volumen im Kanister. 
 
-<!-- data-solution-button="5"-->
-[[  21/8  ]] @canvas $\ell$
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  21/8  ]]  $\ell$ @canvas
 @Algebrite.check(21/8)
 ************
 $$
@@ -79,3 +85,5 @@ $$
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)

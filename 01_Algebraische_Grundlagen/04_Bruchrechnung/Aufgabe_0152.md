@@ -62,8 +62,14 @@ Es werden sieben Mischungen hergestellt. Anschließend werden $\dfrac{2}{7}$ der
 **Berechne** das endgültige Volumen.  
 
 
-<!-- data-solution-button="5"-->
-[[  55/12  ]] @canvas  $\ell$
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  55/12  ]]   $\ell$ @canvas
 @Algebrite.check(55/12)
 ************
 $$
@@ -91,3 +97,5 @@ $$
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)

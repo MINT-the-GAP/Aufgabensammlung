@@ -58,8 +58,14 @@ author: Martin Lommatzsch
 Ein Seil ist $24$ m lang. Es wird $\dfrac{5}{8}$ der Länge benötigt.  
 **Bestimme** die benötigte Seillänge.  
 
-<!-- data-solution-button="5"-->
-[[  15  ]] @canvas m
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  15  ]]  m @canvas
 ************
 $$
 \dfrac{5}{8}\cdot 24\,\text{m}
@@ -69,3 +75,5 @@ $$
 = 15\,\text{m}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Sachaufgabe)

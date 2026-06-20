@@ -70,16 +70,46 @@ __$a)\;\;$__ Das jeweilige Rechteck wird durch die gestrichelten Linien in wie v
 
 <section class="dynFlex">
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$I\;\;$__ [[  5  ]] @canvas
+
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
+
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$II\;\;$__ [[  4  ]] @canvas
+
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
+
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$III\;\;$__ [[  3  ]] @canvas
+
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
+
 </div>
 </section>
 
@@ -88,16 +118,46 @@ __$b)\;\;$__ Das jeweilige Rechteck wird durch die gepunkteten Linien in wie vie
 
 <section class="dynFlex">
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$I\;\;$__ [[  3  ]] @canvas
+
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
+
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$II\;\;$__ [[  4  ]] @canvas
+
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
+
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$III\;\;$__ [[  6  ]] @canvas
+
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
+
 </div>
 </section>
 
@@ -106,16 +166,46 @@ __$c)\;\;$__ Das jeweilige Rechteck wird durch die gestrichelten und die gepunkt
 
 <section class="dynFlex">
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$I\;\;$__ [[  15  ]] @canvas
+
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
+
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$II\;\;$__ [[  16  ]] @canvas
+
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
+
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$III\;\;$__ [[  18  ]] @canvas
+
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
+
 </div>
 </section>
 

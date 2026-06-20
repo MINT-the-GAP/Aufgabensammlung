@@ -62,7 +62,13 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$a)\;\;$__ $  \dfrac{1}{4} \;\;\wedge\;\; \dfrac{5}{6}  \;\;\Rightarrow\;\; $ [[  13/24  ]] @canvas 
 @Algebrite.check(13/24)
 ************
@@ -78,11 +84,21 @@ $$
 
 ************
 
+
+
+@ADetails(1=BE; Bruchrechnung, Mittelwert)
+
 </div>
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$b)\;\;$__ $  \dfrac{3}{7} \;\;\wedge\;\; \dfrac{5}{9}  \;\;\Rightarrow\;\; $ [[  31/63  ]] @canvas 
 @Algebrite.check(31/63)
 ************
@@ -98,11 +114,21 @@ $$
 
 ************
 
+
+
+@ADetails(1=BE; Bruchrechnung, Mittelwert)
+
 </div>
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$c)\;\;$__ $  \dfrac{2}{3} \;\;\wedge\;\; \dfrac{4}{5}  \;\;\Rightarrow\;\; $ [[  11/15  ]] @canvas 
 @Algebrite.check(11/15)
 ************
@@ -119,11 +145,21 @@ $$
 
 ************
 
+
+
+@ADetails(1=BE; Bruchrechnung, Mittelwert)
+
 </div>
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$d)\;\;$__ $  \dfrac{1}{8} \;\;\wedge\;\; \dfrac{3}{4}  \;\;\Rightarrow\;\; $ [[  7/16  ]] @canvas 
 @Algebrite.check(7/16)
 ************
@@ -139,11 +175,21 @@ $$
 
 ************
 
+
+
+@ADetails(1=BE; Bruchrechnung, Mittelwert)
+
 </div>
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$e)\;\;$__ $  \dfrac{5}{12} \;\;\wedge\;\; \dfrac{7}{10}  \;\;\Rightarrow\;\; $ [[  67/120  ]] @canvas 
 @Algebrite.check(67/120)
 ************
@@ -159,11 +205,21 @@ $$
 
 ************
 
+
+
+@ADetails(1=BE; Bruchrechnung, Mittelwert)
+
 </div>
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$f)\;\;$__ $  \dfrac{2}{5} \;\;\wedge\;\; \dfrac{7}{8}  \;\;\Rightarrow\;\; $ [[  51/80  ]] @canvas 
 @Algebrite.check(51/80)
 ************
@@ -178,6 +234,10 @@ $$
 $$
 
 ************
+
+
+
+@ADetails(1=BE; Bruchrechnung, Mittelwert)
 
 </div>
 

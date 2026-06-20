@@ -57,8 +57,14 @@ author: Martin Lommatzsch
 Eine Übung dauert $80$ Minuten. Die Aufwärmphase umfasst $\dfrac{3}{8}$ der Gesamtzeit.  
 **Berechne** die Dauer der Aufwärmphase. 
 
-<!-- data-solution-button="5"-->
-[[  30  ]] @canvas min
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  30  ]]  min @canvas
 ************
 $$
 \dfrac{3}{8}\cdot 80\,\text{min}
@@ -67,3 +73,5 @@ $$
 = 30\,\text{min}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Sachaufgabe)

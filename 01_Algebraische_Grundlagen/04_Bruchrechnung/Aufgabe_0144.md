@@ -60,8 +60,14 @@ Zunächst werden $\dfrac{3}{10}$ der gesamten Menge entnommen.
 Am Abend wird eine feste Nachfüllmenge von $\dfrac{1}{8}$ des vollen Kanisters wieder aufgefüllt.  
 **Berechne** das Flüssigkeitsvolumen im Kanister am Ende des Tages als Bruch. 
 
-<!-- data-solution-button="5"-->
-[[  165/8  ]] @canvas  $\ell$
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  165/8  ]]   $\ell$ @canvas
 @Algebrite.check(165/8)
 ************
 $$
@@ -80,3 +86,5 @@ $$
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)

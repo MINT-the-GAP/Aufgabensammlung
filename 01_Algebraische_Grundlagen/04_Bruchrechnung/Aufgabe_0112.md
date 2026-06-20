@@ -57,8 +57,14 @@ author: Martin Lommatzsch
 Eine Trainingsrunde beträgt $8$ km. Bereits $\dfrac{1}{4}$ der Strecke sind geschafft.  
 **Bestimme**, wie viele Kilometer noch zu laufen sind. 
 
-<!-- data-solution-button="5"-->
-[[  6  ]] @canvas km
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  6  ]] km @canvas
 ************
 $$
 8\,\text{km} - \dfrac{1}{4}\cdot 8\,\text{km}
@@ -68,3 +74,6 @@ $$
 = 6\,\text{km}
 $$
 ************
+
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Sachaufgabe)

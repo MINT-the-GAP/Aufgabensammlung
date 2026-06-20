@@ -58,8 +58,14 @@ Ein rechteckiger Garten ist $24\,\text{m}$ lang. Die Breite beträgt $\dfrac{5}{
 Für ein Schulfest wird $\dfrac{3}{4}$ der gesamten Gartenfläche genutzt.  
 **Bestimme**, wie viele Quadratmeter nicht genutzt werden. 
 
-<!-- data-solution-button="5"-->
-[[  90  ]] @canvas m$^2$
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  90  ]] m$^2$ @canvas
 ************
 $$
 \text{Breite:}\quad \dfrac{5}{8}\cdot 24 = 15\,\text{m} \\
@@ -68,3 +74,5 @@ $$
 \text{Nicht genutzt: } 360-270 = 90\,\text{m}^2
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)

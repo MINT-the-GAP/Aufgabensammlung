@@ -64,8 +64,14 @@ Von der verbleibenden Fläche werden anschließend $\dfrac{3}{7}$ als Rasen ange
 Zum Schluss wird ein Materialschuppen aufgebaut, der $\dfrac{1}{8}$ der Gesamtfläche beansprucht.  
 **Berechne** die am Ende frei nutzbare Fläche (ohne Spielfelder, ohne Rasen, ohne Schuppen). 
 
-<!-- data-solution-button="5"-->
-[[  405/4  ]] @canvas m$^2$
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  405/4  ]]  m$^2$ @canvas
 @Algebrite.check(405/4)
 ************
 $$
@@ -103,4 +109,6 @@ $$
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)
 

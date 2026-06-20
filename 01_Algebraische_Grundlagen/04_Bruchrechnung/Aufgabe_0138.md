@@ -60,8 +60,14 @@ Davon werden zunächst $\dfrac{2}{9}$ verfüttert.
 Von der verbleibenden Menge werden dann $\dfrac{3}{5}$ für den Verkauf abgefüllt.  
 **Bestimme**, wie viele Kilogramm Getreide am Ende noch im Silo verbleiben. 
 
-<!-- data-solution-button="5"-->
-[[  28  ]] @canvas kg
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  28  ]]  kg @canvas
 ************
 $$
 \text{Verfüttert: } \dfrac{2}{9}\cdot 90 = 20\,\text{kg} \\
@@ -70,3 +76,5 @@ $$
 \text{Endbestand: } 70-42 = 28\,\text{kg}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)

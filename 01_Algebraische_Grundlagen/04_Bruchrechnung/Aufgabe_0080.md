@@ -56,8 +56,15 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$a)\;\;$__ Wie viel sind $\dfrac{9}{4}$ von $72\,$kg?  \
- [[  162  ]] @canvaskg
+ [[  162  ]] kg @canvas
 ***************
 $$
 \begin{align*}
@@ -68,12 +75,24 @@ $$
 $$
 ***************
 
+
+
+
+@ADetails(1=BE; Bruchrechnung, Anteile)
+
 </div>
 <div class="flex-child">
 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$b)\;\;$__ Wie viel sind $\dfrac{7}{10}$ von $120\,$kg?  \
- [[  84  ]] @canvaskg
+ [[  84  ]] kg @canvas
 ***************
 $$
 \begin{align*}
@@ -84,12 +103,24 @@ $$
 $$
 ***************
 
+
+
+
+@ADetails(1=BE; Bruchrechnung, Anteile)
+
 </div>
 <div class="flex-child">
 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$c)\;\;$__ Wie viel sind $\dfrac{1}{8}$ von $480\,$m?  \
- [[  60  ]] @canvasm
+ [[  60  ]] m @canvas
 ***************
 $$
 \begin{align*}
@@ -100,12 +131,24 @@ $$
 $$
 ***************
 
+
+
+
+@ADetails(1=BE; Bruchrechnung, Anteile)
+
 </div>
 <div class="flex-child">
 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$d)\;\;$__ Wie viel sind $\dfrac{3}{20}$ von $500\,$€?  \
- [[  75  ]] @canvas€
+ [[  75  ]] € @canvas
 ***************
 $$
 \begin{align*}
@@ -116,6 +159,11 @@ $$
 \end{align*}
 $$
 ***************
+
+
+
+
+@ADetails(1=BE; Bruchrechnung, Anteile)
 
 </div>
 </section>

@@ -60,8 +60,14 @@ Ein Wasserbecken fasst insgesamt $120\,\ell$. Am Morgen wird es nur zu $\dfrac{2
 Im Laufe des Tages werden zusätzlich $\dfrac{1}{4}$ des **vollen Beckens** nachgefüllt.  
 **Bestimme**, wie viele Liter Wasser am Abend im Becken sind. 
 
-<!-- data-solution-button="5"-->
-[[  78  ]] @canvas $\ell$
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  78  ]]  $\ell$ @canvas
 ************
 $$
 \text{Morgenfüllung:}\quad \dfrac{2}{5}\cdot 120 = 48\,\ell \\
@@ -69,3 +75,5 @@ $$
 \text{Gesamt:}\quad 48\,\ell + 30\,\ell = 78\,\ell
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)

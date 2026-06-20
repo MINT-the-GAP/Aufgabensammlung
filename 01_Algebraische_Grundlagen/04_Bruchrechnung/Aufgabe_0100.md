@@ -73,19 +73,49 @@ __$a)\;\;$__ Welcher Bruchanteil des jeweiligen Rechteck ist farbig markiert?
 
 <section class="dynFlex">
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$I\;\;$__ [[  1/3  ]] @canvas
 @Algebrite.check(1/3)
+
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
+
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$II\;\;$__ [[  3/4  ]] @canvas
 @Algebrite.check(3/4)
+
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
+
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$III\;\;$__ [[  3/5  ]] @canvas
 @Algebrite.check(3/5)
+
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
+
 </div>
 </section>
 
@@ -94,19 +124,49 @@ __$b)\;\;$__ Welcher Bruchanteil der farbigen Markierung ist bläulich markiert?
 
 <section class="dynFlex">
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$I\;\;$__ [[  2/3  ]] @canvas
 @Algebrite.check(2/3)
+
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
+
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$II\;\;$__ [[  1/6  ]] @canvas
 @Algebrite.check(1/6)
+
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
+
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$III\;\;$__ [[  3/4  ]] @canvas
 @Algebrite.check(3/4)
+
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
+
 </div>
 </section>
 
@@ -115,18 +175,48 @@ __$c)\;\;$__ Welcher Bruchanteil der jeweiligen Rechteck ist bläulich markiert?
 
 <section class="dynFlex">
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$I\;\;$__ [[  2/9  ]] @canvas
 @Algebrite.check(2/9)
+
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
+
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$II\;\;$__ [[  3/24 ]] @canvas
 @Algebrite.check(3/24)
+
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
+
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$III\;\;$__ [[  9/20  ]] @canvas
 @Algebrite.check(9/20)
+
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
+
 </div>
 </section>

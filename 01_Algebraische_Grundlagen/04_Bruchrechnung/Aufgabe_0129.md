@@ -61,8 +61,14 @@ Ein rechteckiger Sportplatz hat eine Länge von $30\,\text{m}$. Die Breite betr�
 Von der gesamten Fläche soll für ein Turnier nur $\dfrac{5}{6}$ genutzt werden, der Rest wird gesperrt.  
 **Bestimme**, wie groß die gesperrte Fläche ist. 
 
-<!-- data-solution-button="5"-->
-[[  100  ]] @canvas m$^2$
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  100  ]]  m$^2$ @canvas
 ************
 $$
 \text{Breite:}\quad \dfrac{2}{3}\cdot 30\,\text{m} = 20\,\text{m} \\
@@ -71,3 +77,5 @@ $$
 \text{Gesperrt:}\quad 600-500 = 100\,\text{m}^2
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)

@@ -40,7 +40,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-tags: Bruchrechnung, Sachaufgabe, mittel, niedrig, Angeben
+tags: Bruchrechnung, mittel, niedrig, Angeben
 
 comment: Sortiere die Brüche nach ihrer Größe.
 
@@ -60,8 +60,12 @@ author: Martin Lommatzsch
 
 
 
-<!-- data-solution-button="5" 
-data-randomize="true" -->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5" 
+data-randomize="true"  -->
 __$a)\;\;$__
 [->[($\dfrac{3}{7}$)]] $<$ 
 [->[($\dfrac{3}{5}$)]] $<$ 
@@ -71,9 +75,15 @@ __$a)\;\;$__
 [->[($\dfrac{7}{4}$)]]
 
 
+@ADetails(1=BE; Bruchrechnung, Vergleich)
 
-<!-- data-solution-button="5" 
-data-randomize="true" -->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5" 
+data-randomize="true"  -->
 __$b)\;\;$__
 [->[($\dfrac{2}{11}$)]] $<$ 
 [->[($\dfrac{1}{3}$)]] $<$ 
@@ -83,9 +93,15 @@ __$b)\;\;$__
 [->[($\dfrac{8}{9}$)]]
 
 
+@ADetails(1=BE; Bruchrechnung, Vergleich)
 
-<!-- data-solution-button="5" 
-data-randomize="true" -->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5" 
+data-randomize="true"  -->
 __$c)\;\;$__
 [->[($\dfrac{2}{5}$)]] $<$ 
 [->[($\dfrac{7}{12}$)]] $<$ 
@@ -94,4 +110,6 @@ __$c)\;\;$__
 [->[($\dfrac{7}{6}$)]] $<$ 
 [->[($\dfrac{8}{7}$)]]
 
+
+@ADetails(1=BE; Bruchrechnung, Vergleich)
 

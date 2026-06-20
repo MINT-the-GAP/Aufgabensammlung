@@ -57,8 +57,14 @@ author: Martin Lommatzsch
 Ein Budget umfasst $50$ €. Davon werden $\dfrac{3}{5}$ verplant.  
 **Bestimme** den verbleibenden Betrag.  
 
-<!-- data-solution-button="5"-->
-[[  20  ]] @canvas €
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  20  ]]  € @canvas
 ************
 $$
 50\,\text{€} - \dfrac{3}{5}\cdot 50\,\text{€}
@@ -68,3 +74,5 @@ $$
 = 20\,\text{€}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Sachaufgabe)

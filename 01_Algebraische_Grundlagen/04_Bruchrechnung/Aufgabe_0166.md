@@ -61,8 +61,11 @@ author: Martin Lommatzsch
 
 
 
-<!-- data-randomize="true"  
-data-solution-button="5"  -->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-randomize="true"  -->
 __$a)\;\;$__ $\dfrac{3}{4}$ 
  [->[$\left. \boxed{ = \dfrac{1}{2} + \dfrac{1}{4}} \right\| \boxed{ \dfrac{5}{4} : \dfrac{5}{2}}  $]]
  [->[$\left. \boxed{ =  \dfrac{3}{6}} \right\|\boxed{ \dfrac{3}{5} + \dfrac{1}{10}}  $]]
@@ -70,9 +73,14 @@ __$a)\;\;$__ $\dfrac{3}{4}$
  [->[$\left. \boxed{ =  \dfrac{9}{6}} \right\|\boxed{ 1 - \dfrac{1}{3}}  $]]
 $= \dfrac{2}{3}$
 
+@ADetails(1=BE; Bruchrechnung)
 
-<!-- data-randomize="true"  
-data-solution-button="5"  -->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-randomize="true"  -->
 __$b)\;\;$__ $\dfrac{2}{5}$ 
  [->[$\left. \boxed{ =  \dfrac{4}{10}} \right\|\boxed{ \dfrac{3}{2} \cdot \dfrac{2}{5}}  $]]
  [->[$\left. \boxed{ =  \dfrac{6}{10}} \right\|\boxed{ \dfrac{9}{4} : \dfrac{3}{2}}  $]]
@@ -80,9 +88,14 @@ __$b)\;\;$__ $\dfrac{2}{5}$
  [->[$\left. \boxed{ =  \dfrac{4}{6}} \right\|\boxed{ \dfrac{1}{2} + \dfrac{1}{3}}  $]]
 $= \dfrac{5}{6}$
 
+@ADetails(1=BE; Bruchrechnung)
 
-<!-- data-randomize="true"  
-data-solution-button="5"  -->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-randomize="true"  -->
 __$c)\;\;$__ $\dfrac{7}{10}$ 
  [->[$\left. \boxed{ = \dfrac{1}{2} + \dfrac{1}{5}} \right\| \boxed{ \dfrac{3}{4} : \dfrac{3}{2}}  $]]
  [->[$\left. \boxed{ =  \dfrac{2}{4}} \right\|\boxed{ \dfrac{9}{8} : \dfrac{3}{2}}  $]]
@@ -90,9 +103,14 @@ __$c)\;\;$__ $\dfrac{7}{10}$
  [->[$\left. \boxed{ =  \dfrac{5}{10}} \right\|\boxed{ \dfrac{1}{2} : \dfrac{2}{1}}  $]]
 $= \dfrac{1}{4}$
 
+@ADetails(1=BE; Bruchrechnung)
 
-<!-- data-randomize="true"  
-data-solution-button="5"  -->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-randomize="true"  -->
 __$d)\;\;$__ $\dfrac{5}{12}$
  [->[$\left. \boxed{ = \dfrac{10}{24}} \right\| \boxed{ \dfrac{3}{2} - \dfrac{5}{6}} $]]
  [->[$\left. \boxed{ = \dfrac{8}{12}} \right\| \boxed{ \dfrac{7}{4} - \dfrac{5}{6}} $]]
@@ -100,9 +118,14 @@ __$d)\;\;$__ $\dfrac{5}{12}$
  [->[$\left. \boxed{ = \dfrac{9}{6}} \right\| \boxed{ \dfrac{7}{3} : \dfrac{3}{1}} $]]
 $= \dfrac{7}{9}$
 
+@ADetails(1=BE; Bruchrechnung)
 
-<!-- data-randomize="true"  
-data-solution-button="5"  -->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-randomize="true"  -->
 __$e)\;\;$__ $\dfrac{4}{9}$
  [->[$\left. \boxed{ = \dfrac{1}{3} + \dfrac{1}{9}} \right\| \boxed{ \dfrac{8}{3} : \dfrac{4}{1}} $]]
  [->[$\left. \boxed{ = \dfrac{6}{9}} \right\| \boxed{ \dfrac{3}{5} + \dfrac{1}{4}} $]]
@@ -110,14 +133,21 @@ __$e)\;\;$__ $\dfrac{4}{9}$
  [->[$\left. \boxed{ = \dfrac{24}{10}} \right\| \boxed{ \dfrac{5}{6} - \dfrac{5}{12}} $]]
 $= \dfrac{5}{12}$
 
+@ADetails(1=BE; Bruchrechnung)
 
-<!-- data-randomize="true"  
-data-solution-button="5"  -->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-randomize="true"  -->
 __$f)\;\;$__ $\dfrac{2}{7}$
  [->[$\left. \boxed{ = \dfrac{4}{14}} \right\| \boxed{ \dfrac{9}{8} : \dfrac{15}{8}} $]]
  [->[$\left. \boxed{ = \dfrac{6}{10}} \right\| \boxed{ \dfrac{7}{6} - \dfrac{1}{3}} $]]
  [->[$\left. \boxed{ = \dfrac{10}{12}} \right\| \boxed{ \dfrac{9}{5} - \dfrac{3}{10}} $]]
  [->[$\left. \boxed{ = \dfrac{12}{8}} \right\| \boxed{ \dfrac{9}{5} : \dfrac{3}{1}} $]]
 $= \dfrac{3}{5}$
+
+@ADetails(1=BE; Bruchrechnung)
 
 

@@ -57,8 +57,14 @@ author: Martin Lommatzsch
 Eine Strecke ist $18$ cm lang. Davon werden $\dfrac{2}{3}$ markiert, der Rest bleibt unmarkiert.  
 **Bestimme** die unmarkierte Länge.  
 
-<!-- data-solution-button="5"-->
-[[  6  ]] @canvas cm
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  6  ]]  cm @canvas
 @Algebrite.check(6)
 ************
 $$
@@ -69,3 +75,5 @@ $$
 = 6\,\text{cm}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Sachaufgabe)

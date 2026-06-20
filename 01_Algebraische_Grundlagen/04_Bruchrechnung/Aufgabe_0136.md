@@ -59,8 +59,14 @@ Zunächst wird es zu $\dfrac{5}{6}$ gefüllt.
 Dann werden $\dfrac{3}{10}$ des gefüllten Wassers wieder abgelassen.  
 **Bestimme**, wie viele Kubikmeter Wasser nun im Becken sind. 
 
-<!-- data-solution-button="5"-->
-[[  70  ]] @canvas m$^3$
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  70  ]]  m$^3$ @canvas
 ************
 $$
 \text{Gefüllt: } \dfrac{5}{6}\cdot 120 = 100\,\text{m}^3 \\
@@ -68,3 +74,5 @@ $$
 \text{Rest: } 100-30 = 70\,\text{m}^3
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)

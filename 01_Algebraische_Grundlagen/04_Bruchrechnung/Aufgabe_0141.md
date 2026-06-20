@@ -60,8 +60,14 @@ Zunächst werden für Beete $\dfrac{2}{3}$ der gesamten Rasenfläche vorgesehen.
 Von der verbleibenden Fläche wird anschließend $\dfrac{1}{5}$ für Wege reserviert.  
 **Berechne** die am Ende nutzbare Gartenfläche. 
 
-<!-- data-solution-button="5"-->
-[[  252/5  ]] @canvas m^2
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  252/5  ]] m^2
 @Algebrite.check(252/5)
 ************
 $$
@@ -85,3 +91,5 @@ $$
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)

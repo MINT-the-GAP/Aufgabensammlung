@@ -59,8 +59,14 @@ author: Martin Lommatzsch
 Ein Vorratstank enthält zu Beginn $48\,\ell$ Wasser. Am Vormittag werden $\dfrac{3}{8}$ des Inhalts verwendet, am Nachmittag danach $\dfrac{1}{4}$ des verbleibenden Inhalts.  
 **Berechne** das Restvolumen im Tank.  
 
-<!-- data-solution-button="5"-->
-[[  45/2  ]] @canvas $\ell$
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  45/2  ]]  $\ell$ @canvas
 @Algebrite.check(45/2)
 ************
 $$
@@ -78,4 +84,6 @@ $$
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)
 

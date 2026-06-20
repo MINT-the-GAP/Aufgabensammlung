@@ -53,7 +53,14 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" -->
 __$a)\;\;$__ $0,75$ [[$>$|$=$|($<$)]] $\dfrac{4}{5}$ 
+
+
+@ADetails(1=BE; Bruchrechnung, Dezimalzahlen, Vergleich)
 
 </div>
 <div class="flex-child">

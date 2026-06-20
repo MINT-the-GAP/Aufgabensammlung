@@ -57,10 +57,17 @@ author: Martin Lommatzsch
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+
 Ein Geldbetrag von $30$ € steht zur Verfügung. Es werden $\dfrac{1}{6}$ davon ausgegeben.  
 **Bestimme**, wie viele Euro übrig bleiben. 
 
-[[  25  ]] @canvas €
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  25  ]] € @canvas
 ************
 $$
 30\,\text{€} - \dfrac{1}{6}\cdot 30\,\text{€}
@@ -70,3 +77,5 @@ $$
 = 25\,\text{€}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Sachaufgabe)

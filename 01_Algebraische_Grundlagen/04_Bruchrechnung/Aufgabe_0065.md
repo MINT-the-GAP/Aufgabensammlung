@@ -66,7 +66,13 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$a)\;\;$__ $ \left( 2a : b \right) \cdot c = $ [[  10/3  ]] @canvas $\;\;\text{mit:}\;\; a=\dfrac{3}{5}\;\; \wedge\;\; b=\dfrac{9}{10}\;\; \wedge\;\; c=\dfrac{5}{2}$
 @Algebrite.check(10/3)
 ************
@@ -81,12 +87,23 @@ $$
 \end{align*}
 $$
 ************
+
+
+
+@ADetails(1=BE; Bruchrechnung, Einsetzungsverfahren)
+
 </div>
 
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$b)\;\;$__ $ \left( a + b \right) : c = $ [[  1  ]] @canvas $\;\;\text{mit:}\;\; a=\dfrac{1}{2}\;\; \wedge\;\; b=\dfrac{1}{3}\;\; \wedge\;\; c=\dfrac{5}{6}$
 @Algebrite.check(1)
 ************
@@ -101,12 +118,23 @@ $$
 \end{align*}
 $$
 ************
+
+
+
+@ADetails(1=BE; Bruchrechnung, Einsetzungsverfahren, Distributivgesetz)
+
 </div>
 
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$c)\;\;$__ $ \left( a : b \right)\cdot\left( c : a \right) = $ [[  15/4  ]] @canvas $\;\;\text{mit:}\;\; a=\dfrac{4}{7}\;\; \wedge\;\; b=\dfrac{2}{5}\;\; \wedge\;\; c=\dfrac{3}{2}$
 @Algebrite.check(15/4)
 ************
@@ -123,12 +151,23 @@ $$
 \end{align*}
 $$
 ************
+
+
+
+@ADetails(1=BE; Bruchrechnung, Einsetzungsverfahren)
+
 </div>
 
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$d)\;\;$__ $ 3a \cdot \left( b : c \right) = $ [[  3  ]] @canvas $\;\;\text{mit:}\;\; a=\dfrac{2}{3}\;\; \wedge\;\; b=\dfrac{9}{10}\;\; \wedge\;\; c=\dfrac{3}{5}$
 @Algebrite.check(3)
 ************
@@ -143,12 +182,23 @@ $$
 \end{align*}
 $$
 ************
+
+
+
+@ADetails(1=BE; Bruchrechnung, Einsetzungsverfahren)
+
 </div>
 
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$e)\;\;$__ $ \left( a + c \right)\cdot\left( b : 2a \right) = $ [[  25/36  ]] @canvas $\;\;\text{mit:}\;\; a=\dfrac{3}{4}\;\; \wedge\;\; b=\dfrac{5}{6}\;\; \wedge\;\; c=\dfrac{1}{2}$
 @Algebrite.check(25/36)
 ************
@@ -164,12 +214,23 @@ $$
 \end{align*}
 $$
 ************
+
+
+
+@ADetails(1=BE; Bruchrechnung, Einsetzungsverfahren, Distributivgesetz)
+
 </div>
 
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$f)\;\;$__ $ \dfrac{ab + c}{\,\dfrac{b}{2}\,} = $ [[  64/25  ]] @canvas $\;\;\text{mit:}\;\; a=\dfrac{4}{5}\;\; \wedge\;\; b=\dfrac{5}{8}\;\; \wedge\;\; c=\dfrac{3}{10}$
 @Algebrite.check(64/25)
 ************
@@ -187,6 +248,11 @@ $$
 \end{align*}
 $$
 ************
+
+
+
+@ADetails(1=BE; Bruchrechnung, Einsetzungsverfahren, Distributivgesetz, Vorrangsregeln)
+
 </div>
 
 </section>

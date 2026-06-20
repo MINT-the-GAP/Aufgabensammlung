@@ -59,8 +59,12 @@ author: Martin Lommatzsch
 **Ordne** die Dominosteine in der richtigen Reihenfolge **an**.
 
 
-<!-- data-randomize="true"  
-data-solution-button="5"  -->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-randomize="true"  -->
 __$a)\;\;$__  $\dfrac{2}{3}$
  [->[$\left. \boxed{ = \dfrac{4}{6}} \right\| \boxed{ \dfrac{7}{8} - \dfrac{5}{24}} $]]
  [->[$\left. \boxed{ = \dfrac{16}{24}} \right\| \boxed{ \dfrac{4}{5} \cdot \dfrac{5}{6}} $]]
@@ -70,9 +74,15 @@ __$a)\;\;$__  $\dfrac{2}{3}$
  [->[$\left. \boxed{ = \dfrac{1}{2} + \dfrac{1}{6}} \right\| \boxed{ \dfrac{3}{2} : \dfrac{9}{4}} $]]
 $= \dfrac{5}{6}$
 
+@ADetails(1=BE; Bruchrechnung)
 
-<!-- data-randomize="true"  
-data-solution-button="5"  -->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-randomize="true"  -->
 __$b)\;\;$__  $\dfrac{3}{7}$
  [->[$\left. \boxed{ = \dfrac{6}{14}} \right\| \boxed{ \dfrac{9}{8} : \dfrac{21}{16}} $]]
  [->[$\left. \boxed{ = \dfrac{24}{32}} \right\| \boxed{ \dfrac{7}{5} - \dfrac{2}{5}} $]]
@@ -82,9 +92,15 @@ __$b)\;\;$__  $\dfrac{3}{7}$
  [->[$\left. \boxed{ = \dfrac{5}{6}} \right\| \boxed{ \dfrac{2}{3} + \dfrac{1}{6}} $]]
 $= \dfrac{2}{3}$
 
+@ADetails(1=BE; Bruchrechnung)
 
-<!-- data-randomize="true"  
-data-solution-button="5"  -->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-randomize="true"  -->
 __$c)\;\;$__  $\dfrac{5}{12}$
  [->[$\left. \boxed{ = \dfrac{10}{24}} \right\| \boxed{ \dfrac{3}{4} - \dfrac{1}{6}} $]]
  [->[$\left. \boxed{ = \dfrac{7}{12}} \right\| \boxed{ \dfrac{7}{3} : \dfrac{4}{3}} $]]
@@ -94,9 +110,15 @@ __$c)\;\;$__  $\dfrac{5}{12}$
  [->[$\left. \boxed{ = \dfrac{1}{2}} \right\| \boxed{ \dfrac{3}{4} - \dfrac{1}{4}} $]]
 $= \dfrac{3}{4}$
 
+@ADetails(1=BE; Bruchrechnung)
 
-<!-- data-randomize="true"  
-data-solution-button="5"  -->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-randomize="true"  -->
 __$d)\;\;$__  $\dfrac{2}{9}$
  [->[$\left. \boxed{ = \dfrac{4}{18}} \right\| \boxed{ \dfrac{7}{6} - \dfrac{5}{18}} $]]
  [->[$\left. \boxed{ = \dfrac{21}{18} - \dfrac{5}{18}} \right\| \boxed{ \dfrac{8}{5} \cdot \dfrac{5}{12}} $]]
@@ -106,9 +128,15 @@ __$d)\;\;$__  $\dfrac{2}{9}$
  [->[$\left. \boxed{ = \dfrac{8}{12}} \right\| \boxed{ \dfrac{2}{4} + \dfrac{2}{6}} $]]
 $= \dfrac{4}{6}$
 
+@ADetails(1=BE; Bruchrechnung)
 
-<!-- data-randomize="true"  
-data-solution-button="5"  -->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-randomize="true"  -->
 __$e)\;\;$__  $\dfrac{7}{8}$
  [->[$\left. \boxed{ = 1 - \dfrac{1}{8}} \right\| \boxed{ \dfrac{3}{2} \cdot \dfrac{7}{12}} $]]
  [->[$\left. \boxed{ = \dfrac{21}{24}} \right\| \boxed{ \dfrac{9}{10} - \dfrac{3}{20}} $]]
@@ -118,9 +146,15 @@ __$e)\;\;$__  $\dfrac{7}{8}$
  [->[$\left. \boxed{ = \dfrac{15}{20} : \dfrac{6}{5}} \right\| \boxed{ \dfrac{1}{2} + \dfrac{1}{4}} $]]
 $= \dfrac{3}{4}$
 
+@ADetails(1=BE; Bruchrechnung)
 
-<!-- data-randomize="true"  
-data-solution-button="5"  -->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-randomize="true"  -->
 __$f)\;\;$__  $\dfrac{5}{16}$
  [->[$\left. \boxed{ = \dfrac{10}{32}} \right\| \boxed{ \dfrac{1}{2} - \dfrac{3}{16}} $]]
  [->[$\left. \boxed{ = \dfrac{5}{16}} \right\| \boxed{ \dfrac{3}{8} + \dfrac{7}{16}} $]]
@@ -129,6 +163,8 @@ __$f)\;\;$__  $\dfrac{5}{16}$
  [->[$\left. \boxed{ = \dfrac{12}{9}} \right\| \boxed{ \dfrac{2}{3} + \dfrac{2}{9}} $]]
  [->[$\left. \boxed{ = \dfrac{8}{9}} \right\| \boxed{ \dfrac{7}{9} + \dfrac{1}{9}} $]]
 $= 1$
+
+@ADetails(1=BE; Bruchrechnung)
 
 
 

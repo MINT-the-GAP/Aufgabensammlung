@@ -65,7 +65,13 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$a)\;\;$__ $ 3\tfrac{2}{7} = $ [[  23/7  ]] @canvas 
 @Algebrite.check(23/7)
 ************
@@ -77,11 +83,22 @@ $$
 \end{align*}
 $$
 ************
+
+
+
+@ADetails(1=BE; Bruchrechnung, Gemischter Bruch)
+
 </div>
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$b)\;\;$__ $ 6\tfrac{5}{8} = $ [[  53/8  ]] @canvas 
 @Algebrite.check(53/8)
 ************
@@ -93,11 +110,22 @@ $$
 \end{align*}
 $$
 ************
+
+
+
+@ADetails(1=BE; Bruchrechnung, Gemischter Bruch)
+
 </div>
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$c)\;\;$__ $ 1\tfrac{3}{10} = $ [[  13/10  ]] @canvas 
 @Algebrite.check(13/10)
 ************
@@ -109,11 +137,22 @@ $$
 \end{align*}
 $$
 ************
+
+
+
+@ADetails(1=BE; Bruchrechnung, Gemischter Bruch)
+
 </div>
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$d)\;\;$__ $ 9\tfrac{4}{9} = $ [[  85/9  ]] @canvas 
 @Algebrite.check(85/9)
 ************
@@ -125,11 +164,22 @@ $$
 \end{align*}
 $$
 ************
+
+
+
+@ADetails(1=BE; Bruchrechnung, Gemischter Bruch)
+
 </div>
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$e)\;\;$__ $ 7\tfrac{11}{12} = $ [[  95/12  ]] @canvas 
 @Algebrite.check(95/12)
 ************
@@ -141,11 +191,22 @@ $$
 \end{align*}
 $$
 ************
+
+
+
+@ADetails(1=BE; Bruchrechnung, Gemischter Bruch)
+
 </div>
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$f)\;\;$__ $ 2\tfrac{5}{13} = $ [[  31/13  ]] @canvas 
 @Algebrite.check(31/13)
 ************
@@ -157,11 +218,22 @@ $$
 \end{align*}
 $$
 ************
+
+
+
+@ADetails(1=BE; Bruchrechnung, Gemischter Bruch)
+
 </div>
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$g)\;\;$__ $ 4\tfrac{7}{15} = $ [[  67/15  ]] @canvas 
 @Algebrite.check(67/15)
 ************
@@ -173,11 +245,22 @@ $$
 \end{align*}
 $$
 ************
+
+
+
+@ADetails(1=BE; Bruchrechnung, Gemischter Bruch)
+
 </div>
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$h)\;\;$__ $ 10\tfrac{3}{4} = $ [[  43/4  ]] @canvas 
 @Algebrite.check(43/4)
 ************
@@ -189,11 +272,22 @@ $$
 \end{align*}
 $$
 ************
+
+
+
+@ADetails(1=BE; Bruchrechnung, Gemischter Bruch)
+
 </div>
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$i)\;\;$__ $ 5\tfrac{1}{6} = $ [[  31/6  ]] @canvas 
 @Algebrite.check(31/6)
 ************
@@ -205,11 +299,22 @@ $$
 \end{align*}
 $$
 ************
+
+
+
+@ADetails(1=BE; Bruchrechnung, Gemischter Bruch)
+
 </div>
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
 __$j)\;\;$__ $ 8\tfrac{2}{11} = $ [[  90/11  ]] @canvas 
 @Algebrite.check(90/11)
 ************
@@ -221,6 +326,11 @@ $$
 \end{align*}
 $$
 ************
+
+
+
+@ADetails(1=BE; Bruchrechnung, Gemischter Bruch)
+
 </div>
 
 </section>

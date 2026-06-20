@@ -58,8 +58,14 @@ author: Martin Lommatzsch
 In der Werkhalle liegt eine Papierrolle von $30\,\text{m}$ Länge bereit. Für einen Zuschnitt wird ein Anteil von $\dfrac{3}{10}$ der Rolle verwendet.  
 **Bestimme** die Länge des zugeschnittenen Stücks. 
 
-<!-- data-solution-button="5"-->
-[[  9  ]] @canvas m
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  9  ]]  m @canvas
 ************
 $$
 \dfrac{3}{10}\cdot 30\,\text{m}
@@ -68,3 +74,5 @@ $$
 = 9\,\text{m}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Anteil, Sachaufgabe)

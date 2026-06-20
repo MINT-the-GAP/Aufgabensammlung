@@ -60,8 +60,14 @@ Zunächst werden für Materialien $\dfrac{3}{10}$ des Budgets ausgegeben.
 Später erhält die Gruppe eine Rückerstattung in Höhe von $\dfrac{1}{8}$ des **gesamten** Budgets (Gutschrift).  
 **Berechne** den am Ende verfügbare Betrag als Bruch. 
 
-<!-- data-solution-button="5"-->
-[[  561/8  ]] @canvas €
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  561/8  ]]  € @canvas
 @Algebrite.check(561/8)
 ************
 $$
@@ -80,3 +86,5 @@ $$
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)

@@ -70,10 +70,18 @@ __$a)\;\;$__
 <!-- style="position: absolute; left: -9999px;" -->
 Zu meinen drei Elftel werden vier Elftel hinzugefügt.
 
-<!-- data-solution-button="5"-->
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" -->
 [[  7/11  ]] @canvas 
 @Algebrite.check(7/11)
 
+
+@ADetails(1=BE; Bruchrechnung, Addition, Zahlenverständnis)
 
 </div>
 
@@ -85,10 +93,18 @@ __$b)\;\;$__
 <!-- style="position: absolute; left: -9999px;" -->
 Ich habe drei Zehntel und nochmal vier Zehntel.
 
-<!-- data-solution-button="5"-->
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" -->
 [[  7/10  ]] @canvas 
 @Algebrite.check(7/10)
 
+
+@ADetails(1=BE; Bruchrechnung, Addition, Zahlenverständnis)
 
 </div>
 
@@ -100,10 +116,18 @@ __$c)\;\;$__
 <!-- style="position: absolute; left: -9999px;" -->
 Zu meinen ein Sechstel, zu denen vier Sechstel hinzukommen.
 
-<!-- data-solution-button="5"-->
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" -->
 [[  5/6  ]] @canvas 
 @Algebrite.check(5/6)
 
+
+@ADetails(1=BE; Bruchrechnung, Addition, Zahlenverständnis)
 
 </div>
 
@@ -115,10 +139,18 @@ __$d)\;\;$__
 <!-- style="position: absolute; left: -9999px;" -->
 Was habe ich, wenn ich fünf Zwölftel und sechs Zwölftel habe?
 
-<!-- data-solution-button="5"-->
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" -->
 [[  11/12  ]] @canvas 
 @Algebrite.check(11/12)
 
+
+@ADetails(1=BE; Bruchrechnung, Addition, Zahlenverständnis)
 
 </div>
 

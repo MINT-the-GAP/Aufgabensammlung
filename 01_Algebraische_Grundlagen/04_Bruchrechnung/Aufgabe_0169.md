@@ -63,7 +63,11 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-<!-- data-solution-button="5" 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
 data-show-partial-solution -->
 __$a)\;\;$__ \
 $4 \cdot 4 =$ [[  16 ]] @canvas \
@@ -80,10 +84,16 @@ $4 \cdot \dfrac{1}{8} =$ [[ 1/2 ]] @canvas \
  \
 $4 \cdot \dfrac{1}{16} =$ [[ 1/4 ]] @canvas \
 @Algebrite.check([ 16;8;4;2;1;1/2;1/4 ])
+
+
+@ADetails(1=BE; Bruchrechnung, Multiplikation, Zahlenverständnis)
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
 data-show-partial-solution -->
 __$b)\;\;$__ \
 $24 \cdot 8 =$ [[  192 ]] @canvas \
@@ -100,10 +110,16 @@ $24 \cdot \dfrac{1}{4} =$ [[   6  ]] @canvas \
  \
 $24 \cdot \dfrac{1}{8} =$ [[  3   ]] @canvas \
 @Algebrite.check([ 192;96;48;24;12;6;3 ])
+
+
+@ADetails(1=BE; Bruchrechnung, Multiplikation, Zahlenverständnis)
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
 data-show-partial-solution -->
 __$c)\;\;$__ \
 $27 \cdot \dfrac{1}{81} =$ [[  1/3 ]] @canvas \
@@ -120,10 +136,16 @@ $27 \cdot 3 =$ [[  81  ]] @canvas \
  \
 $27 \cdot 9 =$ [[ 243  ]] @canvas \
 @Algebrite.check([ 1/3;1;3;9;27;81;243 ])
+
+
+@ADetails(1=BE; Bruchrechnung, Multiplikation, Zahlenverständnis)
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5" 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
 data-show-partial-solution -->
 __$d)\;\;$__ \
 $10 \cdot 100 =$ [[  1000  ]] @canvas \
@@ -140,7 +162,11 @@ $10 \cdot \dfrac{1}{1000} =$  [[ 1/100  ]] @canvas \
  \
 $10 \cdot \dfrac{1}{10000} =$ [[ 1/1000 ]] @canvas \
 @Algebrite.check([ 1000;100;10;1;1/10;1/100;1/1000 ])
+
+
+@ADetails(1=BE; Bruchrechnung, Multiplikation, Zahlenverständnis)
 </div>
+
 
 </section>
 

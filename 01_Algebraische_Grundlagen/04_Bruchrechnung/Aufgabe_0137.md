@@ -58,8 +58,14 @@ Ein rechteckiges Grundstück ist $48\,\text{m}$ lang und $\dfrac{3}{4}$ so breit
 Von der Fläche wird ein Teil als Garten angelegt, der $\dfrac{2}{3}$ der Gesamtfläche einnimmt.  
 **Bestimme**, wie groß die Gartenfläche ist. 
 
-<!-- data-solution-button="5"-->
-[[  1152  ]] @canvas m$^2$
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-show-partial-solution 
+data-solution-button="5"  -->
+[[  1152  ]]  m$^2$ @canvas
 ************
 $$
 \text{Breite: } \dfrac{3}{4}\cdot 48 = 36\,\text{m} \\
@@ -67,3 +73,5 @@ $$
 \text{Gartenfläche: } \dfrac{2}{3}\cdot 1728 = 1152\,\text{m}^2
 $$
 ************
+
+@ADetails(1=BE; Bruchrechnung, Sachaufgabe)
