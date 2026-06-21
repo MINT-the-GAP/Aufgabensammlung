@@ -54,32 +54,80 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $ 23 \%=$ [[  0,23  ]] @canvas
+@Algebrite.check([ 0.23 ])
+
+@ADetails(1=BE; Prozent, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $ 0,07 \%=$ [[  0,0007  ]] @canvas
+@Algebrite.check([ 0.0007 ])
+
+@ADetails(1=BE; Prozent, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $ 102 \%=$ [[  1,02  ]] @canvas
+@Algebrite.check([ 1.02 ])
+
+@ADetails(1=BE; Prozent, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ $ 97,3 \%=$ [[  0,973  ]] @canvas
+@Algebrite.check([ 0.973 ])
+
+@ADetails(1=BE; Prozent, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ $ 2,87 \%=$ [[   0,0287 ]] @canvas
+@Algebrite.check([ 0.0287 ])
+
+@ADetails(1=BE; Prozent, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$f)\;\;$__ $ 42,84 \%=$ [[  0,4284  ]] @canvas
+@Algebrite.check([ 0.4284 ])
+
+@ADetails(1=BE; Prozent, Dezimalzahlen)
 
 </div> 
 </section>

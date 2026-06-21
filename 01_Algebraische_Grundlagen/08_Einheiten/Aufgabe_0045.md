@@ -59,6 +59,12 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $3349\,\text{min} = $ [[ 3349/60 ]] @canvas $\,\text{h}$ \
 @Algebrite.check(3349/60)
 
@@ -70,6 +76,12 @@ __$a)\;\;$__ $3349\,\text{min} = $ [[ 3349/60 ]] @canvas $\,\text{h}$ \
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $11{,}45\,\text{h} = $ [[ 687 ]] @canvas $\,\text{min}$ \
 @Algebrite.check(687)
 
@@ -81,6 +93,12 @@ __$b)\;\;$__ $11{,}45\,\text{h} = $ [[ 687 ]] @canvas $\,\text{min}$ \
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $459270\,\text{s} = $ [[ 5103/40 ]] @canvas $\,\text{h}$ \
 @Algebrite.check(5103/40)
 
@@ -92,6 +110,12 @@ __$c)\;\;$__ $459270\,\text{s} = $ [[ 5103/40 ]] @canvas $\,\text{h}$ \
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ $6704\,\text{s} = $ [[ 1676/15 ]] @canvas $\,\text{min}$ \
 @Algebrite.check(1676/15)
 
@@ -103,6 +127,12 @@ __$d)\;\;$__ $6704\,\text{s} = $ [[ 1676/15 ]] @canvas $\,\text{min}$ \
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ $0{,}6\,\text{d} = $ [[ 72/5 ]] @canvas $\,\text{h}$ \
 @Algebrite.check(72/5)
 
@@ -114,6 +144,12 @@ __$e)\;\;$__ $0{,}6\,\text{d} = $ [[ 72/5 ]] @canvas $\,\text{h}$ \
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$f)\;\;$__ $9528\,\text{min} = $ [[ 397/60 ]] @canvas $\,\text{d}$ \
 @Algebrite.check(397/60)
 
@@ -125,6 +161,12 @@ __$f)\;\;$__ $9528\,\text{min} = $ [[ 397/60 ]] @canvas $\,\text{d}$ \
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$g)\;\;$__ $7614\,\text{min} = $ [[ 1269/10 ]] @canvas $\,\text{h}$ \
 @Algebrite.check(1269/10)
 
@@ -136,6 +178,12 @@ __$g)\;\;$__ $7614\,\text{min} = $ [[ 1269/10 ]] @canvas $\,\text{h}$ \
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$h)\;\;$__ $0{,}04\,\text{d} = $ [[ 3456 ]] @canvas $\,\text{s}$ \
 @Algebrite.check(3456)
 

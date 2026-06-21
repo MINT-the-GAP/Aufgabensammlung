@@ -57,37 +57,79 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $1\,\text{m}^3 = $ [[ 1000  ]] @canvas $\,\text{dm}^3$ \
 
+@ADetails(1=BE; Einheiten, Volumen)
+
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $7\,\text{t} = $ [[ 7000  ]] @canvas $\,\text{kg}$ \
 
+@ADetails(1=BE; Einheiten, Masse)
+
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $240\,\text{s} = $ [[   4   ]] @canvas $\,\text{min}$ \
 
+@ADetails(1=BE; Einheiten, Zeit)
+
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ $34000\,\text{cm} = $ [[  340  ]] @canvas $\,\text{m}$ \
 
+@ADetails(1=BE; Einheiten, Länge)
+
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ $1\,\text{h} = $ [[ 3600  ]] @canvas $\,\text{s}$ \
 
+@ADetails(1=BE; Einheiten, Zeit)
+
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$f)\;\;$__ $8\,\text{km} = $ [[ 80000 ]] @canvas $\,\text{dm}$ \
+
+@ADetails(1=BE; Einheiten, Länge)
 
 
 </div>

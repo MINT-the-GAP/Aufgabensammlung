@@ -57,23 +57,63 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $ \dfrac{7}{8}\,$kg [[($>$)|$=$|$<$]] $\dfrac{1000}{2}\,$g \
 
+@ADetails(1=BE; Einheiten, Masse)
+
 </div>
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $ \dfrac{4}{5}\,$min [[$>$|$=$|($<$)]] $\dfrac{36}{3}\,$s \
 
+@ADetails(1=BE; Einheiten, Zeit)
+
 </div>
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $ \dfrac{40}{7}\,$m [[($>$)|$=$|$<$]] $\dfrac{4}{70}\,$dm \
 
-</div>
-<div class="flex-child">
-__$d)\;\;$__ $ \dfrac{8}{9}\,cm$ [[$>$|($=$)|$<$]] $\dfrac{80}{9}\,$mm \
+@ADetails(1=BE; Einheiten, Länge)
 
 </div>
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+__$d)\;\;$__ $ \dfrac{8}{9}\,cm$ [[$>$|($=$)|$<$]] $\dfrac{80}{9}\,$mm \
+
+@ADetails(1=BE; Einheiten, Länge)
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ $ \dfrac{8}{3}\,$mm [[($>$)|$=$|$<$]] $\dfrac{8}{300}\,$cm \
+
+@ADetails(1=BE; Einheiten, Länge)
 
 
 </div>

@@ -57,23 +57,63 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $ 2,3\,$min [[$>$|$=$|($<$)]] $\dfrac{23}{60}\,$h \
 
+@ADetails(1=BE; Einheiten, Zeit)
+
 </div>
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $ \dfrac{7}{400}\,$dm [[($>$)|$=$|$<$]] $0,175\,$mm \
 
+@ADetails(1=BE; Einheiten, Länge)
+
 </div>
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $ \dfrac{500}{3}\,$cm [[$>$|$=$|($<$)]] $1,67\,$m \
 
-</div>
-<div class="flex-child">
-__$d)\;\;$__ $ 2,4\,$kg [[$>$|$=$|($<$)]] $\dfrac{3}{1000}\,$t \
+@ADetails(1=BE; Einheiten, Länge)
 
 </div>
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+__$d)\;\;$__ $ 2,4\,$kg [[$>$|$=$|($<$)]] $\dfrac{3}{1000}\,$t \
+
+@ADetails(1=BE; Einheiten, Masse)
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ $ \dfrac{4000}{9}\,$mm [[$>$|($=$)|$<$]] $0,\bar{4}\,$m \
+
+@ADetails(1=BE; Einheiten, Länge)
 
 
 </div>

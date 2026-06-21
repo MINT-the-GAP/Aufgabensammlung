@@ -56,31 +56,70 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ [[ 1000 ]] @canvas Millimeter sind ein Meter. \
 
+@ADetails(1=BE; Einheiten, Länge)
+
 
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ Eine Tonne sind [[ 1000 ]] @canvas Kilogramm. \
 
+@ADetails(1=BE; Einheiten, Masse)
+
 
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ Ein Dezimeter entsprechen [[ 100  ]] @canvas Millimeter. \
 
+@ADetails(1=BE; Einheiten, Länge)
+
 
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ Eine Minute besitzt [[ 60   ]] @canvas Sekunden. \
 
+@ADetails(1=BE; Einheiten, Zeit)
+
 
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ $10$ Dezimeter sind [[   1  ]] @canvas Meter. \
+
+@ADetails(1=BE; Einheiten, Länge)
 
 </div>
 

@@ -57,23 +57,63 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $0,01275\,$km$ = 127,5\,$ [[km|m|(dm)|cm|mm]] \
 
+@ADetails(1=BE; Einheiten, Länge)
+
 </div>
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $450000\,$ml$ = 0,45\,$ [[km$^3$|(m$^3$)|dm$^3$|cm$^3$|mm$^3$]] \
 
+@ADetails(1=BE; Einheiten, Volumen)
+
 </div>
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $1200000\,$mm$ = 1,2\,$ [[(km)|m|dm|cm|mm]] \
 
-</div>
-<div class="flex-child">
-__$d)\;\;$__ $0,0053\,$ha$ = 530000\,$ [[km$^2$|ha|m$^2$|dm$^2$|(cm$^2$)|mm$^2$]] \
+@ADetails(1=BE; Einheiten, Länge)
 
 </div>
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+__$d)\;\;$__ $0,0053\,$ha$ = 530000\,$ [[km$^2$|ha|m$^2$|dm$^2$|(cm$^2$)|mm$^2$]] \
+
+@ADetails(1=BE; Einheiten, Fläche)
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ $0,0654\,$m$ = 65,4\,$ [[km|m|dm|cm|(mm)]] \
+
+@ADetails(1=BE; Einheiten, Länge)
 
 
 </div>

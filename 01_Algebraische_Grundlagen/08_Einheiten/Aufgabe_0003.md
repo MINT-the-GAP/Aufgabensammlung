@@ -56,31 +56,66 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ [[  120  ]] @canvas Sekunden entsprechen $2$ Minuten. \
 
+@ADetails(1=BE; Einheiten, Zeit)
+
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ [[ 1000 ]] @canvas Milliliter entsprechen ein Liter. \
 
+@ADetails(1=BE; Einheiten, Volumen)
+
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ Ein Zentimeter entspricht [[  10  ]] @canvas Millimeter. \
 
+@ADetails(1=BE; Einheiten, Länge)
+
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ Ein Kilogramm entspricht [[ 1000000 ]] @canvas Milligramm. \
 
+@ADetails(1=BE; Einheiten, Masse)
+
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ [[   1  ]] @canvas Dezimeter entspricht $10$ Zentimeter. \
+
+@ADetails(1=BE; Einheiten, Länge)
 
 
 </div>

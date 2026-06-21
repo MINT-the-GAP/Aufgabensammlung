@@ -57,28 +57,60 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Wie viel sind $0,1\%$ von $850\,$€?  \
 
- [[ 0,85   ]] @canvas€
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+ [[ 0,85   ]]  € @canvas
+@Algebrite.check([ 0.85 ])
+
+@ADetails(1=BE; Prozent, Dezimalzahlen, Anteil)
 
 </div>
 <div class="flex-child">
 
 __$b)\;\;$__ Wie viel sind $25\%$ von $460\,$€?  \
 
- [[  115  ]] @canvas€
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+ [[  115  ]]  € @canvas
+@Algebrite.check([ 115 ])
+
+@ADetails(1=BE; Prozent, Anteil)
 
 </div>
 <div class="flex-child">
 
 __$c)\;\;$__ Wie viel sind $0,5\%$ von $750\,$€?  \
 
- [[  3,75  ]] @canvas€
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+ [[  3,75  ]]  € @canvas
+@Algebrite.check([ 3.75 ])
+
+@ADetails(1=BE; Prozent, Dezimalzahlen, Anteil)
 
 </div>
 <div class="flex-child">
 
 __$d)\;\;$__ Wie viel sind $99\%$ von $5000\,$€?  \
 
- [[  4950  ]] @canvas€
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+ [[  4950  ]]  € @canvas
+@Algebrite.check([ 4950 ])
+
+@ADetails(1=BE; Prozent, Anteil)
 
 </div>
 </section>

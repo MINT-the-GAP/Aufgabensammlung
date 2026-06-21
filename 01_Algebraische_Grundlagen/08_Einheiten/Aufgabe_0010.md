@@ -57,43 +57,85 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ Wie viele Minuten sind von 14:44$\,$Uhr bis 18:52$\,$Uhr vergangen? \
 [[  248  ]] @canvas $\,\text{min}$
 
+
+@ADetails(1=BE; Einheiten, Zeit)
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ Wie viele Minuten sind von 07:30$\,$Uhr bis 13:28$\,$Uhr vergangen? \
 [[  358  ]] @canvas $\,\text{min}$
 
+@ADetails(1=BE; Einheiten, Zeit)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ Wie viele Sekunden sind von 19:37$\,$Uhr bis 19:49$\,$Uhr vergangen? \
 [[  720  ]] @canvas $\,\text{s}$
 
+@ADetails(1=BE; Einheiten, Zeit)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ Wie viele Stunden sind von 09:30$\,$Uhr bis 03:30$\,$Uhr vergangen? \
 [[  18   ]] @canvas $\,\text{h}$
 
+@ADetails(1=BE; Einheiten, Zeit)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ Wie viele Minuten sind von 22:45$\,$Uhr bis 05:15$\,$Uhr vergangen? \
 [[  390  ]] @canvas $\,\text{min}$
 
+@ADetails(1=BE; Einheiten, Zeit)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$f)\;\;$__ Wie viele Minuten sind von 23:54$\,$Uhr bis 11:32$\,$Uhr vergangen? \
 [[  698  ]] @canvas $\,\text{min}$
+
+@ADetails(1=BE; Einheiten, Zeit)
 
 </div>
 

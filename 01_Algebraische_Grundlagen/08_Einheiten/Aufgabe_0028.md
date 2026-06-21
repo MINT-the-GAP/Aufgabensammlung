@@ -57,23 +57,63 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $ 5\,$h [[($>$)|$=$|$<$]] $15000\,$s \
 
+@ADetails(1=BE; Einheiten, Zeit)
+
 </div>
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $ 120\,$m [[$>$|$=$|($<$)]] $840000\,$cm \
 
+@ADetails(1=BE; Einheiten, Länge)
+
 </div>
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $ 10800\,$s [[$>$|($=$)|$<$]] $3\,$h \
 
-</div>
-<div class="flex-child">
-__$d)\;\;$__ $ 12\,$dm$^3$ [[($>$)|$=$|$<$]] $9000\,$cm$^3$ \
+@ADetails(1=BE; Einheiten, Zeit)
 
 </div>
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+__$d)\;\;$__ $ 12\,$dm$^3$ [[($>$)|$=$|$<$]] $9000\,$cm$^3$ \
+
+@ADetails(1=BE; Einheiten, Volumen)
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ $ 800000\,$mg [[$>$|$=$|($<$)]] $2\,$kg \
+
+@ADetails(1=BE; Einheiten, Masse)
 
 
 </div>

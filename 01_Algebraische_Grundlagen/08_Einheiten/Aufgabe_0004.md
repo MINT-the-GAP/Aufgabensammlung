@@ -57,37 +57,79 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $9\,\text{m} = $ [[ 900   ]] @canvas $\,\text{cm}$ \
 
+@ADetails(1=BE; Einheiten, Länge)
+
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $85000\,\text{g} = $ [[ 85    ]] @canvas $\,\text{kg}$ \
 
+@ADetails(1=BE; Einheiten, Masse)
+
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $3\,\text{h} = $ [[ 180   ]] @canvas $\,\text{min}$ \
 
+@ADetails(1=BE; Einheiten, Zeit)
+
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ $5000\,\text{mm} = $ [[  50   ]] @canvas $\,\text{dm}$ \
 
+@ADetails(1=BE; Einheiten, Länge)
+
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ $1\,\text{m}^2 = $ [[  100  ]] @canvas $\,\text{dm}^2$ \
 
+@ADetails(1=BE; Einheiten, Fläche)
+
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$f)\;\;$__ $3600\,\text{s} = $ [[   1   ]] @canvas $\,\text{h}$ \
+
+@ADetails(1=BE; Einheiten, Zeit)
 
 
 </div>

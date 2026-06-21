@@ -58,37 +58,79 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $20\,\text{dm}^3 = $ [[   20000000  ]] @canvas $\,\text{mm}^3$ \
 
+@ADetails(1=BE; Einheiten, Volumen)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $49\,\text{dm}^3 = $ [[     49     ]] @canvas $\ell$ \
 
+@ADetails(1=BE; Einheiten, Volumen)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $51\,\ell = $ [[     51000  ]] @canvas $\,\text{m}\ell$ \
 
+@ADetails(1=BE; Einheiten, Volumen)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ $2\,\text{m}^3 = $ [[ 2000000000 ]] @canvas $\,\text{mm}^3$ \
 
+@ADetails(1=BE; Einheiten, Volumen)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ $8000000\,\text{cm}^3 = $ [[    8000    ]] @canvas $\,\text{dm}^3$ \
 
+@ADetails(1=BE; Einheiten, Volumen)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$f)\;\;$__ $117\,\ell = $ [[   117000   ]] @canvas $\,\text{cm}^3$ \
+
+@ADetails(1=BE; Einheiten, Volumen)
 
 </div>
 

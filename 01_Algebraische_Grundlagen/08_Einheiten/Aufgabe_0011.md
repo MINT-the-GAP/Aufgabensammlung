@@ -58,37 +58,79 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $9\,\text{h} = $ [[  540  ]] @canvas $\,\text{min}$ \
 
+@ADetails(1=BE; Einheiten, Zeit)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $3\,\text{h} = $ [[ 10800 ]] @canvas $\,\text{s}$ \
 
+@ADetails(1=BE; Einheiten, Zeit)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $12\,\text{min} = $ [[  720  ]] @canvas $\,\text{s}$ \
 
+@ADetails(1=BE; Einheiten, Zeit)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ $7200\,\text{s} = $ [[   2   ]] @canvas $\,\text{h}$ \
 
+@ADetails(1=BE; Einheiten, Zeit)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ $660\,\text{s} = $ [[   11   ]] @canvas $\,\text{min}$ \
 
+@ADetails(1=BE; Einheiten, Zeit)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$f)\;\;$__ $960\,\text{min} = $ [[   16   ]] @canvas $\,\text{h}$ \
+
+@ADetails(1=BE; Einheiten, Zeit)
 
 </div>
 

@@ -60,6 +60,12 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $3\,\text{h} = $ [[ 180 ]] @canvas $\,\text{min}$ \
 @Algebrite.check(180)
 
@@ -69,6 +75,12 @@ __$a)\;\;$__ $3\,\text{h} = $ [[ 180 ]] @canvas $\,\text{min}$ \
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $480\,\text{min} = $ [[ 8 ]] @canvas $\,\text{h}$ \
 @Algebrite.check(8)
 
@@ -80,6 +92,12 @@ __$b)\;\;$__ $480\,\text{min} = $ [[ 8 ]] @canvas $\,\text{h}$ \
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $11\,\text{min} = $ [[ 660 ]] @canvas $\,\text{s}$ \
 @Algebrite.check(660)
 
@@ -91,6 +109,12 @@ __$c)\;\;$__ $11\,\text{min} = $ [[ 660 ]] @canvas $\,\text{s}$ \
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ $1440\,\text{s} = $ [[ 24 ]] @canvas $\,\text{min}$ \
 @Algebrite.check(24)
 
@@ -102,6 +126,12 @@ __$d)\;\;$__ $1440\,\text{s} = $ [[ 24 ]] @canvas $\,\text{min}$ \
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ $3\,\text{h} = $ [[ 10800 ]] @canvas $\,\text{s}$ \
 @Algebrite.check(10800)
 
@@ -113,6 +143,12 @@ __$e)\;\;$__ $3\,\text{h} = $ [[ 10800 ]] @canvas $\,\text{s}$ \
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$f)\;\;$__ $25200\,\text{s} = $ [[ 7 ]] @canvas $\,\text{h}$ \
 @Algebrite.check(7)
 
@@ -124,6 +160,12 @@ __$f)\;\;$__ $25200\,\text{s} = $ [[ 7 ]] @canvas $\,\text{h}$ \
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$g)\;\;$__ $13\,\text{h} = $ [[ 780 ]] @canvas $\,\text{min}$ \
 @Algebrite.check(780)
 
@@ -135,6 +177,12 @@ __$g)\;\;$__ $13\,\text{h} = $ [[ 780 ]] @canvas $\,\text{min}$ \
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$h)\;\;$__ $1980\,\text{min} = $ [[ 33 ]] @canvas $\,\text{h}$ \
 @Algebrite.check(33)
 

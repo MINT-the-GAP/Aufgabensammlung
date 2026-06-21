@@ -58,23 +58,63 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $ 2,5\,$h [[$>$|$=$|($<$)]] $250\,$min \
 
+@ADetails(1=BE; Einheiten, Zeit)
+
 </div>
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $ 240\,$mm [[$>$|($=$)|$<$]] $0,24\,$m \
 
+@ADetails(1=BE; Einheiten, Länge)
+
 </div>
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $ 0,0014\,$km [[($>$)|$=$|$<$]] $63\,$cm \
 
-</div>
-<div class="flex-child">
-__$d)\;\;$__ $ 310\,$mg [[($>$)|$=$|$<$]] $0,00026\,$kg \
+@ADetails(1=BE; Einheiten, Länge)
 
 </div>
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+__$d)\;\;$__ $ 310\,$mg [[($>$)|$=$|$<$]] $0,00026\,$kg \
+
+@ADetails(1=BE; Einheiten, Masse)
+
+</div>
+<div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ $ 80\,$min [[($>$)|$=$|$<$]] $1,33\,$h \
+
+@ADetails(1=BE; Einheiten, Zeit)
 
 
 </div>

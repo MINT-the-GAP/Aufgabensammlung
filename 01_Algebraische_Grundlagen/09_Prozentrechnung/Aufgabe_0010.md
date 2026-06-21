@@ -54,32 +54,80 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $ \dfrac{7}{4} =$ [[  175  ]] @canvas%
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+__$a)\;\;$__ $ \dfrac{7}{4} =$ [[  175  ]]  % @canvas
+@Algebrite.check([ 175 ])
+
+@ADetails(1=BE; Prozent, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
-__$b)\;\;$__ $ \dfrac{3}{10000} =$ [[  0,03  ]] @canvas%
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+__$b)\;\;$__ $ \dfrac{3}{10000} =$ [[  0,03  ]]  % @canvas
+@Algebrite.check([ 0.03 ])
+
+@ADetails(1=BE; Prozent, Dezimalzahlen, Bruchrechnung)
 
 </div> 
 <div class="flex-child">
 
-__$c)\;\;$__ $ \dfrac{9}{8} =$ [[  112,5  ]] @canvas%
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+__$c)\;\;$__ $ \dfrac{9}{8} =$ [[  112,5  ]]  % @canvas
+@Algebrite.check([ 112.5 ])
+
+@ADetails(1=BE; Prozent, Dezimalzahlen, Bruchrechnung)
 
 </div> 
 <div class="flex-child">
 
-__$d)\;\;$__ $ \dfrac{24}{25} =$ [[  96  ]] @canvas%
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+__$d)\;\;$__ $ \dfrac{24}{25} =$ [[  96  ]]  % @canvas
+@Algebrite.check([ 96 ])
+
+@ADetails(1=BE; Prozent, Bruchrechnung)
 
 </div> 
 <div class="flex-child">
 
-__$e)\;\;$__ $ \dfrac{21}{20} =$ [[  105  ]] @canvas%
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+__$e)\;\;$__ $ \dfrac{21}{20} =$ [[  105  ]]  % @canvas
+@Algebrite.check([ 105 ])
+
+@ADetails(1=BE; Prozent, Bruchrechnung)
 
 </div> 
 <div class="flex-child">
 
-__$f)\;\;$__ $ \dfrac{15647}{1000} =$ [[  1564,7  ]] @canvas%
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+__$f)\;\;$__ $ \dfrac{15647}{1000} =$ [[  1564,7  ]]  % @canvas
+@Algebrite.check([ 1564.7 ])
+
+@ADetails(1=BE; Prozent, Dezimalzahlen, Bruchrechnung)
 
 </div> 
 </section>

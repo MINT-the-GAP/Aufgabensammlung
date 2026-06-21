@@ -57,37 +57,79 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ Von 12:00$\,$Uhr bis 15:00$\,$Uhr sind $3\,$[[  h  ]] @canvas vergangen. \
 
+@ADetails(1=BE; Einheiten, Zeit)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ Von 17:00$\,$Uhr bis 19:00$\,$Uhr sind $120\,$[[ min ]] @canvas vergangen. \
 
+@ADetails(1=BE; Einheiten, Zeit)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ Von 14:37$\,$Uhr bis 14:38$\,$Uhr sind $60\,$[[  s  ]] @canvas vergangen. \
 
+@ADetails(1=BE; Einheiten, Zeit)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ Von 06:15$\,$Uhr bis 17:15$\,$Uhr sind $11\,$[[  h  ]] @canvas vergangen. \
 
+@ADetails(1=BE; Einheiten, Zeit)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ Von 04:15$\,$Uhr bis 05:45$\,$Uhr sind $90\,$[[ min ]] @canvas vergangen. \
 
+@ADetails(1=BE; Einheiten, Zeit)
+
 </div>
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$f)\;\;$__ Von 21:45$\,$Uhr bis 22:15$\,$Uhr sind $30\,$[[ min ]] @canvas vergangen. \
+
+@ADetails(1=BE; Einheiten, Zeit)
 
 </div>
 

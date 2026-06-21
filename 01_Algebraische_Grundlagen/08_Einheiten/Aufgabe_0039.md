@@ -53,7 +53,13 @@ author: Martin Lommatzsch
 
 
 
-<!-- data-randomize="true"  -->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-randomize="true"  -->
 Masse:  [->[($\dfrac{13}{25}\ \text{t}$)]] $>$ [->[($5{,}1\cdot 10^5\ \text{g}$)]] $>$ [->[($4{,}95\cdot 10^2\ \text{kg}$)]] $>$ [->[($0{,}48\ \text{t}$)]]  \
 Zeit:   [->[($2{,}11\ \text{h}$)]] $>$ [->[($7{,}55\cdot 10^3\ \text{s}$)]] $>$ [->[($125\ \text{min}$)]] $>$ [->[($7{,}35\cdot 10^3\ \text{s}$)]]  \
 Länge:  [->[($2{,}01\ \text{m}$)]] $>$ [->[($2{,}0\cdot 10^3\ \text{mm}$)]] $>$ [->[($\dfrac{1995}{10}\ \text{cm}$)]] $>$ [->[($19{,}9\ \text{dm}$)]]  \
@@ -61,6 +67,7 @@ Fläche: [->[($0{,}031\ \text{a}$)]] $>$ [->[($3{,}08\ \text{m}^2$)]] $>$ [->[($
 Volumen:[->[($1{,}5\cdot 10^{-2}\ \text{m}^3$)]] $>$ [->[($1{,}49\cdot 10^4\ \text{cm}^3$)]] $>$ [->[($14{,}8\ \text{dm}^3$)]] $>$ [->[($14{,}7\ \ell$)]]  \
 
 
+@ADetails(1=BE; Einheiten, Länge, Masse, Zeit, Fläche, Volumen)
 
 
 

@@ -56,6 +56,11 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ Wie viele Millimeter sind ein Meter? \
 [[1000]] @canvas mm
 
@@ -63,6 +68,11 @@ __$a)\;\;$__ Wie viele Millimeter sind ein Meter? \
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ Wie viele Minuten sind eine Stunde? \
 [[60  ]] @canvas min
 
@@ -70,6 +80,11 @@ __$b)\;\;$__ Wie viele Minuten sind eine Stunde? \
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ Wie viele Meter sind ein Kilometer? \
 [[1000]] @canvas m
 
@@ -77,6 +92,11 @@ __$c)\;\;$__ Wie viele Meter sind ein Kilometer? \
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ Wie viele Gramm sind ein Kilogramm? \
 [[1000]] @canvas g
 
@@ -84,6 +104,11 @@ __$d)\;\;$__ Wie viele Gramm sind ein Kilogramm? \
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ Wie viele Stunden sind ein Tag? \
 [[24  ]] @canvas h
 

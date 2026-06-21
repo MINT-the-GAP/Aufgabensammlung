@@ -54,32 +54,80 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $ 0,37 =$ [[  37  ]] @canvas%
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+__$a)\;\;$__ $ 0,37 =$ [[  37  ]]  % @canvas
+@Algebrite.check([ 37 ])
+
+@ADetails(1=BE; Prozent, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
-__$b)\;\;$__ $ 1,12 =$ [[  112  ]] @canvas%
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+__$b)\;\;$__ $ 1,12 =$ [[  112  ]]  % @canvas
+@Algebrite.check([ 112 ])
+
+@ADetails(1=BE; Prozent, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
-__$c)\;\;$__ $ 0,0649 =$ [[  6,49  ]] @canvas%
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+__$c)\;\;$__ $ 0,0649 =$ [[  6,49  ]]  % @canvas
+@Algebrite.check([ 6.49 ])
+
+@ADetails(1=BE; Prozent, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
-__$d)\;\;$__ $ 644,1 =$ [[  64410  ]] @canvas%
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+__$d)\;\;$__ $ 644,1 =$ [[  64410  ]]  % @canvas
+@Algebrite.check([ 64410 ])
+
+@ADetails(1=BE; Prozent, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
-__$e)\;\;$__ $ 2,364 =$ [[  236,4  ]] @canvas%
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+__$e)\;\;$__ $ 2,364 =$ [[  236,4  ]]  % @canvas
+@Algebrite.check([ 236.4 ])
+
+@ADetails(1=BE; Prozent, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
-__$f)\;\;$__ $ 0,00061 =$ [[  0,061  ]] @canvas%
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+__$f)\;\;$__ $ 0,00061 =$ [[  0,061  ]]  % @canvas
+@Algebrite.check([ 0.061 ])
+
+@ADetails(1=BE; Prozent, Dezimalzahlen)
 
 </div> 
 </section>
