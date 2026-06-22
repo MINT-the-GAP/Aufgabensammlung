@@ -57,7 +57,15 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Auf Tausender: $78163 \approx$ [[78000    ]] @canvas
+
+@ADetails(1=BE; Runden)
 
 </div>
 
@@ -67,7 +75,15 @@ Auf Tausender: $78163 \approx$ [[78000    ]] @canvas
 
 __$b)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Auf Zehner: $78163 \approx$ [[78160    ]] @canvas
+
+@ADetails(1=BE; Runden)
 
 </div>
 
@@ -78,7 +94,15 @@ Auf Zehner: $78163 \approx$ [[78160    ]] @canvas
 
 __$c)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Auf Hunderter: $29963 \approx$ [[30000    ]] @canvas
+
+@ADetails(1=BE; Runden)
 
 </div>
 
@@ -89,7 +113,15 @@ Auf Hunderter: $29963 \approx$ [[30000    ]] @canvas
 
 __$d)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Auf Tausender: $499 \approx$ [[    0    ]] @canvas
+
+@ADetails(1=BE; Runden)
 
 </div>
 
@@ -100,7 +132,15 @@ Auf Tausender: $499 \approx$ [[    0    ]] @canvas
 
 __$e)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Auf Zehner: $55164 \approx$ [[55160    ]] @canvas
+
+@ADetails(1=BE; Runden)
 
 </div>
 
@@ -110,7 +150,15 @@ Auf Zehner: $55164 \approx$ [[55160    ]] @canvas
 
 __$f)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Auf Tausender: $854684 \approx$ [[855000    ]] @canvas
+
+@ADetails(1=BE; Runden)
 
 </div>
 

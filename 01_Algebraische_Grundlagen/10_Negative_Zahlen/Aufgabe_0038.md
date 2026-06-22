@@ -57,20 +57,60 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $2$ und $-10,5 \quad$ \
 [[ -4,25  ]] @canvas 
+@Algebrite.check([ -4.25 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
+
 </div>
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $-0,5$ und $ 0,75 \quad$ \
 [[  0,125 ]] @canvas 
+@Algebrite.check([ 0.125 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
+
 </div> 
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $0,85$ und $-2,25 \quad$ \
 [[ -0,7   ]] @canvas 
+@Algebrite.check([ -0.7 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
+
 </div> 
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $-21,5$ und $-22 \quad$ \
 [[ -21,75 ]] @canvas 
+@Algebrite.check([ -21.75 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
+
 </div> 
 </section>
 

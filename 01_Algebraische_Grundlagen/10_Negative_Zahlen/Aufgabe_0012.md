@@ -55,22 +55,58 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 
-__$a)\;\;$__ $ -\left( -\left( -4 \right) \right)=$ [[  -4  ]] @canvas
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$a)\;\;$__ $ -\left( -\left( -4 \right) \right)=$ [[  -4  ]] @canvas 
+@Algebrite.check([ -4 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
 
 </div>
 <div class="flex-child">
 
-__$b)\;\;$__ $-\left( -\left( -\left( -\left( -9 \right) \right) \right) \right)=$ [[  -9  ]] @canvas
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$b)\;\;$__ $-\left( -\left( -\left( -\left( -9 \right) \right) \right) \right)=$ [[  -9  ]] @canvas 
+@Algebrite.check([ -9 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
 
 </div>
 <div class="flex-child">
 
-__$c)\;\;$__ $-\left( -\left( -\left( -12 \right) \right) \right)=$ [[  12  ]] @canvas
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$c)\;\;$__ $-\left( -\left( -\left( -12 \right) \right) \right)=$ [[  12  ]] @canvas 
+@Algebrite.check([ 12 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
 
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ $-\left( -\left| -\left( -7 \right) \right| \right)=$ [[   7  ]] @canvas
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$d)\;\;$__ $-\left( -\left| -\left( -7 \right) \right| \right)=$ [[   7  ]] @canvas 
+@Algebrite.check([ 7 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
 
 </div>
 </section>

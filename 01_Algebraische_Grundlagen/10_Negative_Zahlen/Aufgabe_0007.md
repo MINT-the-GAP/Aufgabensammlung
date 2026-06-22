@@ -55,22 +55,54 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $|-0,\bar{7}|$ [[$>$|($=$)|$<$]] $\dfrac{7}{9}$ 
 
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis, Bruchrechnung, Dezimalzahlen, Betrag, Periodizitäten)
+
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $-\dfrac{5}{6}$ [[$>$|$=$|($<$)]] $-\dfrac{5}{12}$ 
 
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis, Bruchrechnung)
+
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $\left|-\dfrac{7}{8}\right|$ [[($>$)|$=$|$<$]] $\left|-\dfrac{7}{16}\right|$ 
 
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis, Bruchrechnung, Betrag)
+
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $-0,\bar{2}$ [[$>$|$=$|($<$)]] $-|-0,2|$ 
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis, Periodizitäten, Dezimalzahlen, Betrag)
 
 </div>
 </section>

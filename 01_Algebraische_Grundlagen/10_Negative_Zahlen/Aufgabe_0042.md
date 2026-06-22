@@ -61,8 +61,15 @@ __$a)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"--> 
-[[  -34  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+[[  -34  ]] @canvas 
+@Algebrite.check([ -34 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis, Zahlenstrahl)
 
 </div> 
 
@@ -75,8 +82,15 @@ __$b)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"--> 
-[[  -18  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+[[  -18  ]] @canvas 
+@Algebrite.check([ -18 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis, Zahlenstrahl)
 
 </div> 
 
@@ -89,8 +103,15 @@ __$c)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"--> 
-[[   24  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+[[   24  ]] @canvas 
+@Algebrite.check([ 24 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis, Zahlenstrahl)
 
 </div> 
 
@@ -103,8 +124,15 @@ __$d)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"--> 
-[[  168  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+[[  168  ]] @canvas 
+@Algebrite.check([ 168 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis, Zahlenstrahl)
 
 </div> 
 </section>

@@ -54,32 +54,80 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $ \left| -126 \right|:9 =$ [[  14  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$a)\;\;$__ $ \left| -126 \right|:9 =$ [[  14  ]] @canvas 
+@Algebrite.check([ 14 ])
+
+@ADetails(1=BE; Negative Zahlen, Betrag)
 
 </div> 
 <div class="flex-child">
 
-__$b)\;\;$__ $ -13 + \left| -29 \right| =$ [[  16  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$b)\;\;$__ $ -13 + \left| -29 \right| =$ [[  16  ]] @canvas 
+@Algebrite.check([ 13 ])
+
+@ADetails(1=BE; Negative Zahlen, Betrag)
 
 </div> 
 <div class="flex-child">
 
-__$c)\;\;$__ $ \left| -76 \right| + (-98) =$ [[  -22  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$c)\;\;$__ $ \left| -76 \right| + (-98) =$ [[  -22  ]] @canvas 
+@Algebrite.check([ -22 ])
+
+@ADetails(1=BE; Negative Zahlen, Betrag)
 
 </div> 
 <div class="flex-child">
 
-__$d)\;\;$__ $ \left| 42 + (-67) \right| =$ [[  25  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$d)\;\;$__ $ \left| 42 + (-67) \right| =$ [[  25  ]] @canvas 
+@Algebrite.check([ 25 ])
+
+@ADetails(1=BE; Negative Zahlen, Betrag)
 
 </div> 
 <div class="flex-child">
 
-__$e)\;\;$__ $ -8 \cdot \left| -9 \right| =$ [[  -72  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$e)\;\;$__ $ -8 \cdot \left| -9 \right| =$ [[  -72  ]] @canvas 
+@Algebrite.check([ -72 ])
+
+@ADetails(1=BE; Negative Zahlen, Betrag)
 
 </div> 
 <div class="flex-child">
 
-__$f)\;\;$__ $ \left| -225 \right|:\left| -15 \right| =$ [[  15  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$f)\;\;$__ $ \left| -225 \right|:\left| -15 \right| =$ [[  15  ]] @canvas 
+@Algebrite.check([ 15 ])
+
+@ADetails(1=BE; Negative Zahlen, Betrag)
 
 </div> 
 </section>

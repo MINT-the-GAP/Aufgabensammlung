@@ -62,8 +62,15 @@ __$a)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"--> 
-[[  -9   ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+[[  -9   ]] @canvas 
+@Algebrite.check([ -9 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis, Zahlenstrahl)
 
 </div> 
 
@@ -76,8 +83,15 @@ __$b)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"--> 
-[[  -17  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+[[  -17  ]] @canvas 
+@Algebrite.check([ -17 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis, Zahlenstrahl)
 
 </div> 
 
@@ -90,8 +104,15 @@ __$c)\;\;$__
 
 </center>
 
-<!-- data-solution-button="5"--> 
-[[   18  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+[[   18  ]] @canvas 
+@Algebrite.check([ 18 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis, Zahlenstrahl)
 
 </div> 
 
@@ -103,8 +124,16 @@ __$d)\;\;$__
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ43_4.png)
 
 </center>
-<!-- data-solution-button="5"--> 
-[[  -70  ]] @canvas
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+[[  -70  ]] @canvas 
+@Algebrite.check([ -70 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis, Zahlenstrahl)
 
 </div> 
 </section>

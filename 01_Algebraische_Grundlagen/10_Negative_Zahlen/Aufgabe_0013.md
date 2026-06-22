@@ -55,22 +55,58 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 
-__$a)\;\;$__ $ -\left( -\left( -\left( -11 \right) \right) \right)=$ [[  11  ]] @canvas
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$a)\;\;$__ $ -\left( -\left( -\left( -11 \right) \right) \right)=$ [[  11  ]] @canvas 
+@Algebrite.check([ 11 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
 
 </div>
 <div class="flex-child">
 
-__$b)\;\;$__ $-\left( -|-5| \right)=$ [[  5   ]] @canvas
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$b)\;\;$__ $-\left( -|-5| \right)=$ [[  5   ]] @canvas 
+@Algebrite.check([ 5 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis, Betrag)
 
 </div>
 <div class="flex-child">
 
-__$c)\;\;$__ $ -\left( -\left( -25 \right) \right)=$ [[  -25 ]] @canvas
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$c)\;\;$__ $ -\left( -\left( -25 \right) \right)=$ [[  -25 ]] @canvas 
+@Algebrite.check([ -25 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
 
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ $-\left| -\left( -\left( -3 \right) \right) \right|=$ [[  -3  ]] @canvas
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$d)\;\;$__ $-\left| -\left( -\left( -3 \right) \right) \right|=$ [[  -3  ]] @canvas 
+@Algebrite.check([ -3 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis, Betrag)
 
 </div>
 </section>

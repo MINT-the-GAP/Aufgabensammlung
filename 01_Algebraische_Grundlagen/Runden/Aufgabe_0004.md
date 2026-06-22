@@ -57,7 +57,15 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $464861 \approx$ [[460000    ]] @canvas
+
+@ADetails(1=BE; Runden)
 
 </div>
 
@@ -67,7 +75,15 @@ $464861 \approx$ [[460000    ]] @canvas
 
 __$b)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $1103486 \approx$ [[1100000    ]] @canvas
+
+@ADetails(1=BE; Runden)
 
 </div>
 
@@ -78,7 +94,15 @@ $1103486 \approx$ [[1100000    ]] @canvas
 
 __$c)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $1586404 \approx$ [[1590000    ]] @canvas
+
+@ADetails(1=BE; Runden)
 
 </div>
 
@@ -89,7 +113,15 @@ $1586404 \approx$ [[1590000    ]] @canvas
 
 __$d)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $3185048 \approx$ [[3190000    ]] @canvas
+
+@ADetails(1=BE; Runden)
 
 </div>
 
@@ -100,7 +132,15 @@ $3185048 \approx$ [[3190000    ]] @canvas
 
 __$e)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $8075604 \approx$ [[8080000    ]] @canvas
+
+@ADetails(1=BE; Runden)
 
 </div>
 
@@ -110,7 +150,15 @@ $8075604 \approx$ [[8080000    ]] @canvas
 
 __$f)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $3446045 \approx$ [[3450000    ]] @canvas
+
+@ADetails(1=BE; Runden)
 
 </div>
 

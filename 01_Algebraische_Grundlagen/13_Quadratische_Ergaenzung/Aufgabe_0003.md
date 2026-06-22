@@ -54,14 +54,28 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 <div class="flex-child">
 
-<!-- data-randomize="true"  -->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  
+data-randomize="true"  -->
 __$a)\;\;$__  $  (x-5)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|$x^2-2x+1$|$x^2+3x+9$|$x^2-8x+16$|$x^2+10x+25$|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|($x^2-10x+25$)|$x^2-5x+10$]]
+
+@ADetails(1=BE; Quadratische Ergänzung)
 
 </div>
 <div class="flex-child">
 
-<!-- data-randomize="true"  -->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  
+data-randomize="true"  -->
 __$b)\;\;$__  $  (x-1)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|($x^2-2x+1$)|$x^2+3x+9$|$x^2-8x+16$|$x^2+10x+25$|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|$x^2-10x+25$|$x^2-5x+10$]]
+
+@ADetails(1=BE; Quadratische Ergänzung)
 
 </div> 
 </section>

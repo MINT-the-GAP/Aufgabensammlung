@@ -55,22 +55,54 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $-\dfrac{6}{5}$ [[($>$)|$=$|$<$]] $-\dfrac{17}{10}$ 
 
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis, Bruchrechnung)
+
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $|-1,\bar{3}|$ [[($>$)|$=$|$<$]] $-\dfrac{4}{3}$ 
 
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis, Bruchrechnung, Dezimalzahlen, Periodizitäten, Betrag)
+
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $0,04$ [[($>$)|$=$|$<$]] $-\dfrac{7}{10}$ 
 
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis, Bruchrechnung, Dezimalzahlen)
+
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $\dfrac{1}{25}$ [[$>$|$=$|($<$)]] $|-0,05|$ 
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis, Bruchrechnung, Dezimalzahlen, Betrag)
 
 </div>
 </section>

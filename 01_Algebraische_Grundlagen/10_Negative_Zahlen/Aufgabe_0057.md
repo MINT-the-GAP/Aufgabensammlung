@@ -54,32 +54,80 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $ -14 \cdot 6 =$ [[  -84  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$a)\;\;$__ $ -14 \cdot 6 =$ [[  -84  ]] @canvas 
+@Algebrite.check([ -84 ])
+
+@ADetails(1=BE; Negative Zahlen, Multiplikation)
 
 </div> 
 <div class="flex-child">
 
-__$b)\;\;$__ $ -13 \cdot (-14) =$ [[  182  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$b)\;\;$__ $ -13 \cdot (-14) =$ [[  182  ]] @canvas 
+@Algebrite.check([ 182 ])
+
+@ADetails(1=BE; Negative Zahlen, Multiplikation)
 
 </div> 
 <div class="flex-child">
 
-__$c)\;\;$__ $ 12 \cdot (-3) =$ [[  -36  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$c)\;\;$__ $ 12 \cdot (-3) =$ [[  -36  ]] @canvas 
+@Algebrite.check([ -36 ])
+
+@ADetails(1=BE; Negative Zahlen, Multiplikation)
 
 </div> 
 <div class="flex-child">
 
-__$d)\;\;$__ $ -5 \cdot 18 =$ [[  -90  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$d)\;\;$__ $ -5 \cdot 18 =$ [[  -90  ]] @canvas 
+@Algebrite.check([ -90 ])
+
+@ADetails(1=BE; Negative Zahlen, Multiplikation)
 
 </div> 
 <div class="flex-child">
 
-__$e)\;\;$__ $ 16 \cdot (-4) =$ [[  -64  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$e)\;\;$__ $ 16 \cdot (-4) =$ [[  -64  ]] @canvas 
+@Algebrite.check([ -64 ])
+
+@ADetails(1=BE; Negative Zahlen, Multiplikation)
 
 </div> 
 <div class="flex-child">
 
-__$f)\;\;$__ $ -25 \cdot 6 =$ [[  -150  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$f)\;\;$__ $ -25 \cdot 6 =$ [[  -150  ]] @canvas 
+@Algebrite.check([ -150 ])
+
+@ADetails(1=BE; Negative Zahlen, Multiplikation)
 
 </div> 
 </section>

@@ -54,46 +54,78 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ \
-$ 2 \cdot (-3)  =$ [[  -6  ]] @canvas \
-$ 2 \cdot (-(-3)) =$ [[  6  ]] @canvas \
-$ 2 \cdot (-(-(-3))) =$ [[  -6  ]] @canvas \
-$ 2 \cdot (-(-(-(-3)))) =$ [[  6  ]] @canvas \
-$ 2 \cdot (-(-(-(-(-3))))) =$ [[  -6  ]] @canvas \
-$ 2 \cdot (-(-(-(-(-(-3)))))) =$ [[  6  ]] @canvas  
+$ 2 \cdot (-3)  =$ [[  -6  ]]  \
+$ 2 \cdot (-(-3)) =$ [[  6  ]]  \
+$ 2 \cdot (-(-(-3))) =$ [[  -6  ]]  \
+$ 2 \cdot (-(-(-(-3)))) =$ [[  6  ]]  \
+$ 2 \cdot (-(-(-(-(-3))))) =$ [[  -6  ]]  \
+$ 2 \cdot (-(-(-(-(-(-3)))))) =$ [[  6  ]]   
+@Algebrite.check([ -6;6;-6;6;-6;6 ])
+
+@ADetails(1=BE; Negative Zahlen, Multiplikation, Zahlenverständnis)
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ \
-$ -4 \cdot 8 =$ [[  -32  ]] @canvas \
-$ -4 \cdot (-8) =$ [[  32  ]] @canvas \
-$ -(-4) \cdot (-8) =$ [[  -32  ]] @canvas \
-$ -(-4) \cdot (-(-8)) =$ [[  32  ]] @canvas \
-$ -(-(-4)) \cdot (-(-8)) =$ [[  -32  ]] @canvas \
-$ -(-(-4)) \cdot (-(-(-8)))  =$ [[  32  ]] @canvas  
+$ -4 \cdot 8 =$ [[  -32  ]]  \
+$ -4 \cdot (-8) =$ [[  32  ]]  \
+$ -(-4) \cdot (-8) =$ [[  -32  ]]  \
+$ -(-4) \cdot (-(-8)) =$ [[  32  ]]  \
+$ -(-(-4)) \cdot (-(-8)) =$ [[  -32  ]]  \
+$ -(-(-4)) \cdot (-(-(-8)))  =$ [[  32  ]]   
+@Algebrite.check([ -32;32;-32;32;-32;32 ])
+
+@ADetails(1=BE; Negative Zahlen, Multiplikation, Zahlenverständnis)
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ \
-$  -9 \cdot 5 =$ [[  -45  ]] @canvas \
-$  -(-9) \cdot 5 =$ [[  45  ]] @canvas \
-$  -(-(-9)) \cdot 5 =$ [[  -45  ]] @canvas \
-$  -(-(-(-9))) \cdot 5 =$ [[  45  ]] @canvas \
-$  -(-(-(-(-9)))) \cdot 5 =$ [[  -45  ]] @canvas \
-$  -(-(-(-(-(-9))))) \cdot 5 =$ [[  45  ]] @canvas 
+$  -9 \cdot 5 =$ [[  -45  ]]  \
+$  -(-9) \cdot 5 =$ [[  45  ]]  \
+$  -(-(-9)) \cdot 5 =$ [[  -45  ]]  \
+$  -(-(-(-9))) \cdot 5 =$ [[  45  ]]  \
+$  -(-(-(-(-9)))) \cdot 5 =$ [[  -45  ]]  \
+$  -(-(-(-(-(-9))))) \cdot 5 =$ [[  45  ]]  
+@Algebrite.check([ -45;45;-45;45;-45;45 ])
+
+@ADetails(1=BE; Negative Zahlen, Multiplikation, Zahlenverständnis)
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ \
-$ -8 \cdot (-7)  =$ [[  56  ]] @canvas \
-$ -(-8) \cdot (-(-7)) =$ [[  56  ]] @canvas \
-$ -(-(-8)) \cdot (-(-(-7))) =$ [[  56  ]] @canvas \
-$ -(-(-(-8))) \cdot (-(-(-(-7)))) =$ [[  56  ]] @canvas \
-$ -(-(-(-(-8)))) \cdot (-(-(-(-(-7))))) =$ [[  56  ]] @canvas \
-$ -(-(-(-(-(-8))))) \cdot (-(-(-(-(-(-7)))))) =$ [[  56  ]] @canvas  
+$ -8 \cdot (-7)  =$ [[  56  ]]  \
+$ -(-8) \cdot (-(-7)) =$ [[  56  ]]  \
+$ -(-(-8)) \cdot (-(-(-7))) =$ [[  56  ]]  \
+$ -(-(-(-8))) \cdot (-(-(-(-7)))) =$ [[  56  ]]  \
+$ -(-(-(-(-8)))) \cdot (-(-(-(-(-7))))) =$ [[  56  ]]  \
+$ -(-(-(-(-(-8))))) \cdot (-(-(-(-(-(-7)))))) =$ [[  56  ]]   
+@Algebrite.check([ 56;56;56;56;56;56 ])
+
+@ADetails(1=BE; Negative Zahlen, Multiplikation, Zahlenverständnis)
 
 </div>
 </section>

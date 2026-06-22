@@ -57,7 +57,15 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
-Auf Hunderter: $54164 \approx$ [[54200]] @canvas
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+Auf Hunderter: $54164 \approx$ [[54200  ]] @canvas
+
+@ADetails(1=BE; Runden)
 
 </div>
 
@@ -67,7 +75,15 @@ Auf Hunderter: $54164 \approx$ [[54200]] @canvas
 
 __$b)\;\;$__
 
-Auf Hunderttausender: $54164 \approx$ [[100000]] @canvas
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+Auf Hunderttausender: $54164 \approx$ [[100000 ]] @canvas
+
+@ADetails(1=BE; Runden)
 
 </div>
 
@@ -78,7 +94,15 @@ Auf Hunderttausender: $54164 \approx$ [[100000]] @canvas
 
 __$c)\;\;$__
 
-Auf Zehner: $8431 \approx$ [[8430]] @canvas
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+Auf Zehner: $8431 \approx$ [[8430   ]] @canvas
+
+@ADetails(1=BE; Runden)
 
 </div>
 
@@ -89,7 +113,15 @@ Auf Zehner: $8431 \approx$ [[8430]] @canvas
 
 __$d)\;\;$__
 
-Auf Millionen: $47081 \approx$ [[0]] @canvas
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+Auf Millionen: $47081 \approx$ [[0      ]] @canvas
+
+@ADetails(1=BE; Runden)
 
 </div>
 
@@ -100,7 +132,15 @@ Auf Millionen: $47081 \approx$ [[0]] @canvas
 
 __$e)\;\;$__
 
-Auf Hunderter: $94516 \approx$ [[94500]] @canvas
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+Auf Hunderter: $94516 \approx$ [[94500  ]] @canvas
+
+@ADetails(1=BE; Runden)
 
 </div>
 
@@ -110,7 +150,15 @@ Auf Hunderter: $94516 \approx$ [[94500]] @canvas
 
 __$f)\;\;$__
 
-Auf Zehntausender: $998146 \approx$ [[1000000]] @canvas
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+Auf Zehntausender: $998146 \approx$ [[1000000 ]] @canvas
+
+@ADetails(1=BE; Runden)
 
 </div>
 

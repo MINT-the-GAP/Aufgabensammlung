@@ -53,22 +53,58 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $  \left( \begin{array}{c} 6 \\ 5 \end{array} \right) = $ [[  6  ]] @canvas
+@Algebrite.check([ 6 ])
+
+@ADetails(1=BE; Binomialkoeffizient)
 
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $  \left( \begin{array}{c} 9 \\ 7 \end{array} \right) = $ [[  36  ]] @canvas
+@Algebrite.check([ 36 ])
+
+@ADetails(1=BE; Binomialkoeffizient)
 
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $  \left( \begin{array}{c} 5 \\ 3 \end{array} \right) = $ [[  10  ]] @canvas
+@Algebrite.check([ 10 ])
+
+@ADetails(1=BE; Binomialkoeffizient)
 
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $  \left( \begin{array}{c} 7 \\ 2 \end{array} \right) = $ [[  21  ]] @canvas
+@Algebrite.check([ 21 ])
+
+@ADetails(1=BE; Binomialkoeffizient)
 
 </div>
 </section>

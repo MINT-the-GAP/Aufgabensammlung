@@ -54,32 +54,80 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $ -0,52-(-1,78) =$ [[  1,26  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$a)\;\;$__ $ -0,52-(-1,78) =$ [[  1,26  ]] @canvas 
+@Algebrite.check([ 1.26 ])
+
+@ADetails(1=BE; Negative Zahlen, Subtraktion, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
-__$b)\;\;$__ $ 2,14-(-4,8) =$ [[  6,94  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$b)\;\;$__ $ 2,14-(-4,8) =$ [[  6,94  ]] @canvas 
+@Algebrite.check([ 6.94 ])
+
+@ADetails(1=BE; Negative Zahlen, Subtraktion, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
-__$c)\;\;$__ $ -8,46-(-3,9) =$ [[  -4,56  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$c)\;\;$__ $ -8,46-(-3,9) =$ [[  -4,56  ]] @canvas 
+@Algebrite.check([ -4.56 ])
+
+@ADetails(1=BE; Negative Zahlen, Subtraktion, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
-__$d)\;\;$__ $ -2,5-(-0,25) =$ [[  -2,25  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$d)\;\;$__ $ -2,5-(-0,25) =$ [[  -2,25  ]] @canvas 
+@Algebrite.check([ -2.25 ])
+
+@ADetails(1=BE; Negative Zahlen, Subtraktion, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
-__$e)\;\;$__ $ 0,62-(-6,14) =$ [[  6,76  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$e)\;\;$__ $ 0,62-(-6,14) =$ [[  6,76  ]] @canvas 
+@Algebrite.check([ 6.76 ])
+
+@ADetails(1=BE; Negative Zahlen, Subtraktion, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
-__$f)\;\;$__ $ -1,23-(-2,46) =$ [[  1,23  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$f)\;\;$__ $ -1,23-(-2,46) =$ [[  1,23  ]] @canvas 
+@Algebrite.check([ 1.23 ])
+
+@ADetails(1=BE; Negative Zahlen, Subtraktion, Dezimalzahlen)
 
 </div> 
 </section>

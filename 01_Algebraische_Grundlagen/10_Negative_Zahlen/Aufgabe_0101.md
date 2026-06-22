@@ -54,32 +54,80 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $ 0,25 : (-0,05) =$ [[  -5  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$a)\;\;$__ $ 0,25 : (-0,05) =$ [[  -5  ]] @canvas 
+@Algebrite.check([ -5 ])
+
+@ADetails(1=BE; Negative Zahlen, Division, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
-__$b)\;\;$__ $ -8,1 : (-9) =$ [[  0,9  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$b)\;\;$__ $ -8,1 : (-9) =$ [[  0,9  ]] @canvas 
+@Algebrite.check([ 0.9 ])
+
+@ADetails(1=BE; Negative Zahlen, Division, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
-__$c)\;\;$__ $ -0,4:0,025 =$ [[  -16  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$c)\;\;$__ $ -0,4:0,025 =$ [[  -16  ]] @canvas 
+@Algebrite.check([ -16 ])
+
+@ADetails(1=BE; Negative Zahlen, Division, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
-__$d)\;\;$__ $ -9,6 : (-120) =$ [[  0,08  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$d)\;\;$__ $ -9,6 : (-120) =$ [[  0,08  ]] @canvas 
+@Algebrite.check([ 0.08 ])
+
+@ADetails(1=BE; Negative Zahlen, Division, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
-__$e)\;\;$__ $ 5,5 : (-2,5) =$ [[  -2,2  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$e)\;\;$__ $ 5,5 : (-2,5) =$ [[  -2,2  ]] @canvas 
+@Algebrite.check([ -2.2 ])
+
+@ADetails(1=BE; Negative Zahlen, Division, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
-__$f)\;\;$__ $ -3,5:0,07 =$ [[  -50  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$f)\;\;$__ $ -3,5:0,07 =$ [[  -50  ]] @canvas 
+@Algebrite.check([ -50 ])
+
+@ADetails(1=BE; Negative Zahlen, Division, Dezimalzahlen)
 
 </div> 
 </section>

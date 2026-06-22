@@ -54,46 +54,78 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ \
-$ 18:(-2) =$ [[  -9  ]] @canvas \
-$ 18:(-(-2)) =$ [[  9  ]] @canvas \
-$ 18:(-(-(-2))) =$ [[  -9  ]] @canvas \
-$ 18:(-(-(-(-2)))) =$ [[  9  ]] @canvas \
-$ 18:(-(-(-(-(-2))))) =$ [[  -9  ]] @canvas \
-$ 18:(-(-(-(-(-(-2)))))) =$ [[  9  ]] @canvas  
+$ 18:(-2) =$ [[  -9  ]]  \
+$ 18:(-(-2)) =$ [[  9  ]]  \
+$ 18:(-(-(-2))) =$ [[  -9  ]]  \
+$ 18:(-(-(-(-2)))) =$ [[  9  ]]  \
+$ 18:(-(-(-(-(-2))))) =$ [[  -9  ]]  \
+$ 18:(-(-(-(-(-(-2)))))) =$ [[  9  ]]   
+@Algebrite.check([ -9;9;-9;9;-9;9 ])
+
+@ADetails(1=BE; Negative Zahlen, Division, Zahlenverständnis)
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ \
-$ -33 : 3 =$ [[  -11  ]] @canvas \
-$ -(-33) : (-3) =$ [[  -11  ]] @canvas \
-$ -(-(-33)) : (-(-3)) =$ [[  -11  ]] @canvas \
-$ -(-(-(-33))) : (-(-(-3))) =$ [[  -11  ]] @canvas \
-$ -(-(-(-(-33)))) : (-(-(-(-3)))) =$ [[  -11  ]] @canvas \
-$ -(-(-(-(-(-33))))) : (-(-(-(-(-3))))) =$ [[  -11  ]] @canvas  
+$ -33 : 3 =$ [[  -11  ]]  \
+$ -(-33) : (-3) =$ [[  -11  ]]  \
+$ -(-(-33)) : (-(-3)) =$ [[  -11  ]]  \
+$ -(-(-(-33))) : (-(-(-3))) =$ [[  -11  ]]  \
+$ -(-(-(-(-33)))) : (-(-(-(-3)))) =$ [[  -11  ]]  \
+$ -(-(-(-(-(-33))))) : (-(-(-(-(-3))))) =$ [[  -11  ]]   
+@Algebrite.check([ -11;-11;-11;-11;-11;-11 ])
+
+@ADetails(1=BE; Negative Zahlen, Division, Zahlenverständnis)
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ \
-$ 24 : (-8) =$ [[  -3  ]] @canvas \
-$ -24 : (-8) =$ [[  3  ]] @canvas \
-$ -(-24) : (-8) =$ [[ -3   ]] @canvas \
-$ -(-(-24)) : (-8) =$ [[  3  ]] @canvas \
-$ -(-(-(-24))) : (-8) =$ [[  -3  ]] @canvas \
-$ -(-(-(-(-24)))) : (-8) =$ [[  3  ]] @canvas  
+$ 24 : (-8) =$ [[  -3  ]]  \
+$ -24 : (-8) =$ [[  3  ]]  \
+$ -(-24) : (-8) =$ [[ -3   ]]  \
+$ -(-(-24)) : (-8) =$ [[  3  ]]  \
+$ -(-(-(-24))) : (-8) =$ [[  -3  ]]  \
+$ -(-(-(-(-24)))) : (-8) =$ [[  3  ]]   
+@Algebrite.check([ -3;3;-3;3;-3;3 ])
+
+@ADetails(1=BE; Negative Zahlen, Division, Zahlenverständnis)
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ \
-$ -48 : (-8) =$ [[  6  ]] @canvas \
-$ -(-48) : (-8) =$ [[  -6  ]] @canvas \
-$ -(-48) : (-(-8)) =$ [[  6  ]] @canvas \
-$ -(-(-48)) : (-(-8)) =$ [[  -6  ]] @canvas \
-$ -(-(-48)) : (-(-(-8))) =$ [[  6  ]] @canvas \
-$ -(-(-(-48))) : (-(-(-8))) =$ [[  -6  ]] @canvas  
+$ -48 : (-8) =$ [[  6  ]]  \
+$ -(-48) : (-8) =$ [[  -6  ]]  \
+$ -(-48) : (-(-8)) =$ [[  6  ]]  \
+$ -(-(-48)) : (-(-8)) =$ [[  -6  ]]  \
+$ -(-(-48)) : (-(-(-8))) =$ [[  6  ]]  \
+$ -(-(-(-48))) : (-(-(-8))) =$ [[  -6  ]]   
+@Algebrite.check([ 6;-6;6;-6;6;-6 ])
+
+@ADetails(1=BE; Negative Zahlen, Division, Zahlenverständnis)
 
 </div>
 </section>

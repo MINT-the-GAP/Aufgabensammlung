@@ -51,16 +51,48 @@ author: Martin Lommatzsch
 **Gib** den Wert des Terms **an**.
  
 
-__$a)\;\;$__ $ -(-(-(-7))) \cdot (-(-(-(-8)))) =$ [[  56  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$a)\;\;$__ $ -(-(-(-7))) \cdot (-(-(-(-8)))) =$ [[  56  ]] @canvas 
+@Algebrite.check([ 56 ])
+
+@ADetails(1=BE; Negative Zahlen)
  
 
-__$b)\;\;$__ $ -18 \cdot (-(-(-(-(-6))))) =$ [[  108  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$b)\;\;$__ $ -18 \cdot (-(-(-(-(-6))))) =$ [[  108  ]] @canvas 
+@Algebrite.check([ 108 ])
+
+@ADetails(1=BE; Negative Zahlen)
  
 
-__$c)\;\;$__ $ -(-(-(-(-64)))) : (-(-8)) =$ [[  -8  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$c)\;\;$__ $ -(-(-(-(-64)))) : (-(-8)) =$ [[  -8  ]] @canvas 
+@Algebrite.check([ -8 ])
+
+@ADetails(1=BE; Negative Zahlen)
  
 
-__$d)\;\;$__ $ (-(-(-(72))) : (-(-2))) : (-(-(-(-18))))  =$ [[  -2  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$d)\;\;$__ $ (-(-(-(72))) : (-(-2))) : (-(-(-(-18))))  =$ [[  -2  ]] @canvas 
+@Algebrite.check([ -2 ])
+
+@ADetails(1=BE; Negative Zahlen)
  
 
 

@@ -54,32 +54,80 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $ -35:7 =$ [[  -5  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$a)\;\;$__ $ -35:7 =$ [[  -5  ]] @canvas 
+@Algebrite.check([ -5 ])
+
+@ADetails(1=BE; Negative Zahlen, Division)
 
 </div> 
 <div class="flex-child">
 
-__$b)\;\;$__ $ 72:(-8) =$ [[  -9  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$b)\;\;$__ $ 72:(-8) =$ [[  -9  ]] @canvas 
+@Algebrite.check([ -9 ])
+
+@ADetails(1=BE; Negative Zahlen, Division)
 
 </div> 
 <div class="flex-child">
 
-__$c)\;\;$__ $ -95:(-5) =$ [[  19  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$c)\;\;$__ $ -95:(-5) =$ [[  19  ]] @canvas 
+@Algebrite.check([ 19 ])
+
+@ADetails(1=BE; Negative Zahlen, Division)
 
 </div> 
 <div class="flex-child">
 
-__$d)\;\;$__ $ -42:7 =$ [[  -6  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$d)\;\;$__ $ -42:7 =$ [[  -6  ]] @canvas 
+@Algebrite.check([ -6 ])
+
+@ADetails(1=BE; Negative Zahlen, Division)
 
 </div> 
 <div class="flex-child">
 
-__$e)\;\;$__ $ 72:(-18) =$ [[  -4  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$e)\;\;$__ $ 72:(-18) =$ [[  -4  ]] @canvas 
+@Algebrite.check([ -4 ])
+
+@ADetails(1=BE; Negative Zahlen, Division)
 
 </div> 
 <div class="flex-child">
 
-__$f)\;\;$__ $ -186:(-6) =$ [[  31  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$f)\;\;$__ $ -186:(-6) =$ [[  31  ]] @canvas 
+@Algebrite.check([ 31 ])
+
+@ADetails(1=BE; Negative Zahlen, Division)
 
 </div> 
 </section>

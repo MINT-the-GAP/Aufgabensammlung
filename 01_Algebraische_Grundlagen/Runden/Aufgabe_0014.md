@@ -54,17 +54,41 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $0,\overline{9} \approx$ [[  1,000 ]] @canvas 
 
+@ADetails(1=BE; Runden, Dezimalzahlen, Periodizität)
+
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $13,\overline{97} \approx$ [[ 13,980 ]] @canvas 
 
+@ADetails(1=BE; Runden, Dezimalzahlen, Periodizität)
+
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $3,\overline{2486} \approx$ [[  3,249 ]] @canvas 
+
+@ADetails(1=BE; Runden, Dezimalzahlen, Periodizität)
 
 </div>
 </section>

@@ -52,13 +52,21 @@ author: Martin Lommatzsch
 Gegeben sei eine gerundete Zahl. **Gib** jeweils die kleinste und die größte Zahl **an**, die nach dem Runden zur gegebenen Zahl wird.
 
 
-<!-- data-type="none"
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-type="none"
 data-sortable="false" -->
 | gerundete Zahl | wurde gerundet auf | kleinste Zahl |  größte Zahl  |
 |  :----------:  | :-----------------: | :-----------: |  :---------:  |
-|    $445000$    |      Tausender      | [[ 444500  ]] @canvas | [[ 445499  ]] @canvas |
-|      $1700$    |      Hunderter      | [[   1650  ]] @canvas | [[ 1749    ]] @canvas |
-|    $5000000$   |      Millionen      | [[ 4500000 ]] @canvas | [[ 5499999 ]] @canvas |
-|      $1970$    |        Zehner       | [[ 1965    ]] @canvas | [[ 1974    ]] @canvas |
-|    $780000$    |    Zehntausender    | [[ 775000  ]] @canvas | [[ 784999  ]] @canvas |
+|    $445000$    |      Tausender      | [[ 444500  ]]  | [[ 445499  ]]  |
+|      $1700$    |      Hunderter      | [[   1650  ]]  | [[ 1749    ]]  |
+|    $5000000$   |      Millionen      | [[ 4500000 ]]  | [[ 5499999 ]]  |
+|      $1970$    |        Zehner       | [[ 1965    ]]  | [[ 1974    ]]  |
+|    $780000$    |    Zehntausender    | [[ 775000  ]]  | [[ 784999  ]]  |
 
+
+
+@ADetails(1=BE; Runden)

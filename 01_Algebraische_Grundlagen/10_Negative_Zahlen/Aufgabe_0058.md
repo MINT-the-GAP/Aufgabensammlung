@@ -54,32 +54,68 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $ -8 \cdot 12 =$ [[  -96  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$a)\;\;$__ $ -8 \cdot 12 =$ [[  -96  ]] @canvas 
+@Algebrite.check([  ])
 
 </div> 
 <div class="flex-child">
 
-__$b)\;\;$__ $ -7 \cdot (-20) =$ [[  140  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$b)\;\;$__ $ -7 \cdot (-20) =$ [[  140  ]] @canvas 
+@Algebrite.check([  ])
 
 </div> 
 <div class="flex-child">
 
-__$c)\;\;$__ $ 5 \cdot (-45) =$ [[  -225  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$c)\;\;$__ $ 5 \cdot (-45) =$ [[  -225  ]] @canvas 
+@Algebrite.check([  ])
 
 </div> 
 <div class="flex-child">
 
-__$d)\;\;$__ $ -16 \cdot (-12) =$ [[  192  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$d)\;\;$__ $ -16 \cdot (-12) =$ [[  192  ]] @canvas 
+@Algebrite.check([  ])
 
 </div> 
 <div class="flex-child">
 
-__$e)\;\;$__ $ 11 \cdot (-31) =$ [[  -341  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$e)\;\;$__ $ 11 \cdot (-31) =$ [[  -341  ]] @canvas 
+@Algebrite.check([  ])
 
 </div> 
 <div class="flex-child">
 
-__$f)\;\;$__ $ -14 \cdot 6 =$ [[  -84  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$f)\;\;$__ $ -14 \cdot 6 =$ [[  -84  ]] @canvas 
+@Algebrite.check([  ])
 
 </div> 
 </section>

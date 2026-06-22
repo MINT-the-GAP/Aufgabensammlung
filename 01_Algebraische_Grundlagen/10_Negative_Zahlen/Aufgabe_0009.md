@@ -55,22 +55,58 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 
-__$a)\;\;$__ $|-9|=$ [[  9   ]] @canvas
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$a)\;\;$__ $|-9|=$ [[  9   ]] @canvas 
+@Algebrite.check([ 9 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis, Betrag)
 
 </div>
 <div class="flex-child">
 
-__$b)\;\;$__ $\text{sgn}(-5)=$ [[  -1  ]] @canvas
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$b)\;\;$__ $\text{sgn}(-5)=$ [[  -1  ]] @canvas 
+@Algebrite.check([ -1 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis, Signum)
 
 </div>
 <div class="flex-child">
 
-__$c)\;\;$__ $\text{sgn}(85)=$ [[  +1  ]] @canvas
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$c)\;\;$__ $\text{sgn}(85)=$ [[  +1  ]] @canvas 
+@Algebrite.check([ +1 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis, Signum)
 
 </div>
 <div class="flex-child">
 
-__$d)\;\;$__ $|72|=$ [[  72  ]] @canvas
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$d)\;\;$__ $|72|=$ [[  72  ]] @canvas 
+@Algebrite.check([ 72 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis, Betrag)
 
 </div>
 </section>

@@ -55,22 +55,54 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $-6$ [[($>$)|$=$|$<$]] $-8$ 
 
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
+
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $-3$ [[$>$|$=$|($<$)]] $3$ 
 
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
+
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $-15$ [[$>$|($=$)|$<$]] $-|-15|$ 
 
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis, Betrag)
+
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $-1$ [[$>$|$=$|($<$)]] $0$ 
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
 
 </div>
 </section>

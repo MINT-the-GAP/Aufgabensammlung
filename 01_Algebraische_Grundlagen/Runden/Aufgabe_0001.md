@@ -57,7 +57,14 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $534 \approx$ [[530    ]] @canvas
+
+@ADetails(1=BE; Runden)
 
 </div>
 
@@ -67,7 +74,15 @@ $534 \approx$ [[530    ]] @canvas
 
 __$b)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $119 \approx$ [[120    ]] @canvas
+
+@ADetails(1=BE; Runden)
 
 </div>
 
@@ -78,7 +93,15 @@ $119 \approx$ [[120    ]] @canvas
 
 __$c)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $346 \approx$ [[350    ]] @canvas
+
+@ADetails(1=BE; Runden)
 
 </div>
 
@@ -89,7 +112,15 @@ $346 \approx$ [[350    ]] @canvas
 
 __$d)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $971 \approx$ [[970    ]] @canvas
+
+@ADetails(1=BE; Runden)
 
 </div>
 
@@ -100,7 +131,15 @@ $971 \approx$ [[970    ]] @canvas
 
 __$e)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $289 \approx$ [[290    ]] @canvas
+
+@ADetails(1=BE; Runden)
 
 </div>
 
@@ -110,7 +149,15 @@ $289 \approx$ [[290    ]] @canvas
 
 __$f)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $654 \approx$ [[650    ]] @canvas
+
+@ADetails(1=BE; Runden)
 
 </div>
 

@@ -54,50 +54,82 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ \
-$ 8+8 =$ [[  16  ]] @canvas \
-$ 8+4 =$ [[  12  ]] @canvas \
-$ 8+0 =$ [[  8  ]] @canvas \
-$ 8+(-4) =$ [[  4  ]] @canvas \
-$ 8+(-8) =$ [[  0  ]] @canvas \
-$ 8+(-12) =$ [[  -4  ]] @canvas \
-$ 8+(-16) =$ [[  -8  ]] @canvas  
+$ 8+8 =$ [[  16  ]]  \
+$ 8+4 =$ [[  12  ]]  \
+$ 8+0 =$ [[  8  ]]  \
+$ 8+(-4) =$ [[  4  ]]  \
+$ 8+(-8) =$ [[  0  ]]  \
+$ 8+(-12) =$ [[  -4  ]]  \
+$ 8+(-16) =$ [[  -8  ]]   
+@Algebrite.check([ 16;12;8;4;0;-4;-8 ])
+
+@ADetails(1=BE; Negative Zahlen, Addition, Zahlenverständnis)
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ \
-$ 10+5 =$ [[  15  ]] @canvas \
-$ 10+0 =$ [[  10  ]] @canvas \
-$ 10+(-5) =$ [[  5  ]] @canvas \
-$ 10+(-10) =$ [[  0  ]] @canvas \
-$ 10+(-15) =$ [[  -5  ]] @canvas \
-$ 10+(-20) =$ [[  -10  ]] @canvas \
-$ 10+(-25) =$ [[  -15  ]] @canvas  
+$ 10+5 =$ [[  15  ]]  \
+$ 10+0 =$ [[  10  ]]  \
+$ 10+(-5) =$ [[  5  ]]  \
+$ 10+(-10) =$ [[  0  ]]  \
+$ 10+(-15) =$ [[  -5  ]]  \
+$ 10+(-20) =$ [[  -10  ]]  \
+$ 10+(-25) =$ [[  -15  ]]   
+@Algebrite.check([ 15; 10; 5; 0; -5; -10; -15 ])
+
+@ADetails(1=BE; Negative Zahlen, Addition, Zahlenverständnis)
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ \
-$ 6+9 =$ [[  15  ]] @canvas \
-$ 6+0 =$ [[  6  ]] @canvas \
-$ 6+(-9) =$ [[  -3  ]] @canvas \
-$ 6+(-18) =$ [[  -12  ]] @canvas \
-$ 6+(-27) =$ [[  -21  ]] @canvas \
-$ 6+(-36) =$ [[  -30  ]] @canvas \
-$ 6+(-45) =$ [[  -39  ]] @canvas  
+$ 6+9 =$ [[  15  ]]  \
+$ 6+0 =$ [[  6  ]]  \
+$ 6+(-9) =$ [[  -3  ]]  \
+$ 6+(-18) =$ [[  -12  ]]  \
+$ 6+(-27) =$ [[  -21  ]]  \
+$ 6+(-36) =$ [[  -30  ]]  \
+$ 6+(-45) =$ [[  -39  ]]   
+@Algebrite.check([ 15; 6; -3; -12; -21; -30; -39 ])
+
+@ADetails(1=BE; Negative Zahlen, Addition, Zahlenverständnis)
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ \
-$ 7+12 =$ [[  19  ]] @canvas \
-$ 7+6 =$ [[  13  ]] @canvas \
-$ 7+0 =$ [[  7  ]] @canvas \
-$ 7+(-6) =$ [[  1  ]] @canvas \
-$ 7+(-12) =$ [[  -5  ]] @canvas \
-$ 7+(-18) =$ [[  -11  ]] @canvas \
-$ 7+(-24) =$ [[  -17  ]] @canvas  
+$ 7+12 =$ [[  19  ]]  \
+$ 7+6 =$ [[  13  ]]  \
+$ 7+0 =$ [[  7  ]]  \
+$ 7+(-6) =$ [[  1  ]]  \
+$ 7+(-12) =$ [[  -5  ]]  \
+$ 7+(-18) =$ [[  -11  ]]  \
+$ 7+(-24) =$ [[  -17  ]]   
+@Algebrite.check([ 19; 13; 7; 1; -5; -11; -17 ])
+
+@ADetails(1=BE; Negative Zahlen, Addition, Zahlenverständnis)
 
 </div>
 </section>

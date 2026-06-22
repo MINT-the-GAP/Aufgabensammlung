@@ -25,41 +25,6 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
 
 
-@style
-input {
-    text-align: center;
-}
-
-.dynFlex {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    gap: 20px;
-}
-
-.flex-child {
-    flex: 1;
-    min-width: 350px;
-    margin-right: 20px;
-}
-
-@media (max-width: 400px) {
-    .flex-child {
-        flex: 100%;
-        margin-right: 0;
-    }
-}
-
-
-.vertical-text {
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    text-align: center;
-}
-@end
-
-
-
 
 
 
@@ -87,6 +52,16 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
+
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+style="max-width: 1200px" -->
 ``` ascii
                            +-----------------+
                            |                 |
@@ -100,17 +75,30 @@ __$a)\;\;$__
          |                 |                 |                 |
          | " [[  4    ]] " |      " 7 "      | " [[  -6   ]] " |
          |                 |                 |                 |
-+--------+--------+--------+--------+--------+--------+--------+--------+                                       
++--------+--------+--------+--------+--------+--------+--------+--------+
 |                 |                 |                 |                 |
 | " [[  -5   ]] " |      " 9 "      | " [[  -2   ]] " | " [[  -4   ]] " |
 |                 |                 |                 |                 |
-+--------+--------+--------+--------+--------+--------+--------+--------+                                       
++--------+--------+--------+--------+--------+--------+--------+--------+
 ```
+@Algebrite.check([ 11; 4; -6; -5; -2; -4 ])
+
+@ADetails(1=BE; Negative Zahlen, Addition, Subtraktion)
 
 
 
 __$b)\;\;$__
 
+
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+style="max-width: 1200px" -->
 ``` ascii
                            +-----------------+
                            |                 |
@@ -124,13 +112,16 @@ __$b)\;\;$__
          |                 |                 |                 |
          |     " -21 "     | " [[  33   ]] " |      " 16 "     |
          |                 |                 |                 |
-+--------+--------+--------+--------+--------+--------+--------+--------+                                       
++--------+--------+--------+--------+--------+--------+--------+--------+
 |                 |                 |                 |                 |
 | " [[  -13  ]] " |     " -8 "      | " [[  41   ]] " | " [[  -24  ]] " |
 |                 |                 |                 |                 |
-+--------+--------+--------+--------+--------+--------+--------+--------+                                       
++--------+--------+--------+--------+--------+--------+--------+--------+
 ```
+@Algebrite.check([ 61; 49; 33; -13; 41; -24 ])
 
+
+@ADetails(1=BE; Negative Zahlen, Addition, Subtraktion)
 
 
 

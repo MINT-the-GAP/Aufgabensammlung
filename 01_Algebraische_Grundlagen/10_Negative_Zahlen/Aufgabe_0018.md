@@ -25,40 +25,6 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
 
 
-@style
-input {
-    text-align: center;
-}
-
-.dynFlex {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    gap: 20px;
-}
-
-.flex-child {
-    flex: 1;
-    min-width: 350px;
-    margin-right: 20px;
-}
-
-@media (max-width: 400px) {
-    .flex-child {
-        flex: 100%;
-        margin-right: 0;
-    }
-}
-
-
-.vertical-text {
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    text-align: center;
-}
-@end
-
-
 
 
 
@@ -87,6 +53,16 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
+
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+style="max-width: 1200px" -->
 ``` ascii
                   +-----------------+
                   |                 |
@@ -100,14 +76,27 @@ __$a)\;\;$__
 |                 |                 |                 |
 |     " -61 "     | " [[  34   ]] " | " [[  -11  ]] " |
 |                 |                 |                 |
-+--------+--------+--------+--------+--------+--------+                                       
++--------+--------+--------+--------+--------+--------+
 ```
+@Algebrite.check([ -27; 34; -11 ])
+
+@ADetails(1=BE; Negative Zahlen, Addition, Subtraktion)
 
 
 
 
 __$b)\;\;$__
 
+
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+style="max-width: 1200px" -->
 ``` ascii
                   +-----------------+
                   |                 |
@@ -121,8 +110,11 @@ __$b)\;\;$__
 |                 |                 |                 |
 |     " 37 "      | " [[  -59  ]] " | " [[  44   ]] " |
 |                 |                 |                 |
-+--------+--------+--------+--------+--------+--------+                                       
++--------+--------+--------+--------+--------+--------+
 ```
+@Algebrite.check([ -15; -59; 44 ])
+
+@ADetails(1=BE; Negative Zahlen, Addition, Subtraktion)
 
 
 

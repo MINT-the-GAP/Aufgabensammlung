@@ -31,9 +31,6 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-
-
-
 tags: Negative Zahlen, Zahlenverständnis, sehr leicht, sehr niedrig, Angeben
 
 comment: Wie heißt die Zahl, die genau in der Mitte zwischen den beiden gegebenen Zahlen liegt?
@@ -57,20 +54,60 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $7$ und $-5 \quad$ \
 [[ -1   ]] @canvas 
+@Algebrite.check([ -1 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
+
 </div>
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $-6$ und $-22 \quad$ \
 [[ -13  ]] @canvas 
+@Algebrite.check([ -13 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
+
 </div> 
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $-7$ und $3 \quad$ \
 [[ -2   ]] @canvas 
+@Algebrite.check([ -2 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
+
 </div> 
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $11$ und $-7 \quad$ \
 [[ 2    ]] @canvas 
+@Algebrite.check([ 2 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
+
 </div> 
 </section>
 

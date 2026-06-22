@@ -54,22 +54,54 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $ -8 + 5 \cdot (-11) =$ [[  -63  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$a)\;\;$__ $ -8 + 5 \cdot (-11) =$ [[  -63  ]] @canvas 
+@Algebrite.check([ -63 ])
+
+@ADetails(1=BE; Negative Zahlen, Vorrangsregeln)
 
 </div> 
 <div class="flex-child">
 
-__$b)\;\;$__ $ -92:4 - (-8) =$ [[  -15  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$b)\;\;$__ $ -92:4 - (-8) =$ [[  -15  ]] @canvas 
+@Algebrite.check([ -15 ])
+
+@ADetails(1=BE; Negative Zahlen, Vorrangsregeln)
 
 </div> 
 <div class="flex-child">
 
-__$c)\;\;$__ $ -43:8-21:8 =$ [[  -8  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$c)\;\;$__ $ -43:8-21:8 =$ [[  -8  ]] @canvas 
+@Algebrite.check([ -8 ])
+
+@ADetails(1=BE; Negative Zahlen, Vorrangsregeln)
 
 </div> 
 <div class="flex-child">
 
-__$d)\;\;$__ $ -4 \cdot (-5) \cdot (-9) =$ [[  -180  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$d)\;\;$__ $ -4 \cdot (-5) \cdot (-9) =$ [[  -180  ]] @canvas 
+@Algebrite.check([ -180 ])
+
+@ADetails(1=BE; Negative Zahlen, Vorrangsregeln)
 
 </div> 
 </section>

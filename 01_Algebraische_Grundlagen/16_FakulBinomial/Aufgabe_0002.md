@@ -53,22 +53,58 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $ 4! = $ [[ 24  ]] @canvas
+@Algebrite.check([ 24 ])
+
+@ADetails(1=BE; Fakultät)
 
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $ 6! = $ [[ 720 ]] @canvas
+@Algebrite.check([ 720 ])
+
+@ADetails(1=BE; Fakultät)
 
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $ \dfrac{ 15! }{ 13! } = $ [[  105  ]] @canvas
+@Algebrite.check([ 105 ])
+
+@ADetails(1=BE; Fakultät)
 
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $ \dfrac{ 12! }{ 7! \cdot 4! \cdot 3! } = $ [[ 660  ]] @canvas
+@Algebrite.check([ 660 ])
+
+@ADetails(1=BE; Fakultät)
 
 </div>
 </section>

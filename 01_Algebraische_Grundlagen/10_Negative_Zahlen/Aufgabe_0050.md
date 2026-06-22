@@ -54,32 +54,92 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $ 26+(-43)=$ [[  -17  ]] @canvas
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$a)\;\;$__ $ 26+(-43)=$ [[  -17  ]] @canvas 
+@Algebrite.check([ -17 ])
+
+@ADetails(1=BE; Negative Zahlen, Addition)
 
 </div> 
 <div class="flex-child">
 
-__$b)\;\;$__ $ -25+(72)=$ [[  47  ]] @canvas
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$b)\;\;$__ $ -25+(72)=$ [[  47  ]] @canvas 
+@Algebrite.check([ 47 ])
+
+@ADetails(1=BE; Negative Zahlen, Addition)
 
 </div> 
 <div class="flex-child">
 
-__$c)\;\;$__ $ -31+(-36)=$ [[  -67  ]] @canvas
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$c)\;\;$__ $ -31+(-36)=$ [[  -67  ]] @canvas 
+@Algebrite.check([ -67 ])
+
+@ADetails(1=BE; Negative Zahlen, Addition)
 
 </div> 
 <div class="flex-child">
 
-__$d)\;\;$__ $ -65+48=$ [[  -17  ]] @canvas
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$d)\;\;$__ $ -65+48=$ [[  -17  ]] @canvas 
+@Algebrite.check([ -17 ])
+
+@ADetails(1=BE; Negative Zahlen, Addition)
 
 </div> 
 <div class="flex-child">
 
-__$e)\;\;$__ $ 48+(-23)=$ [[  25  ]] @canvas
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$e)\;\;$__ $ 48+(-23)=$ [[  25  ]] @canvas 
+@Algebrite.check([ 25 ])
+
+@ADetails(1=BE; Negative Zahlen, Addition)
 
 </div> 
 <div class="flex-child">
 
-__$f)\;\;$__ $ 26+(-38)=$ [[  -12  ]] @canvas
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$f)\;\;$__ $ 26+(-38)=$ [[  -12  ]] @canvas 
+@Algebrite.check([ -12 ])
+
+@ADetails(1=BE; Negative Zahlen, Addition)
 
 </div> 
 </section>

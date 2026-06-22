@@ -54,22 +54,54 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $ \text{sgn}\left( -81\right) + (-8) =$ [[  -9  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$a)\;\;$__ $ \text{sgn}\left( -81\right) + (-8) =$ [[  -9  ]] @canvas 
+@Algebrite.check([ -9 ])
+
+@ADetails(1=BE; Negative Zahlen, Signum)
 
 </div> 
 <div class="flex-child">
 
-__$b)\;\;$__ $ \text{sgn}\left( -21 \right) - (-17)=$ [[   16  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$b)\;\;$__ $ \text{sgn}\left( -21 \right) - (-17)=$ [[   16  ]] @canvas 
+@Algebrite.check([ 16 ])
+
+@ADetails(1=BE; Negative Zahlen, Signum)
 
 </div> 
 <div class="flex-child">
 
-__$c)\;\;$__ $ \text{sgn}\left( -63 \right) \cdot (-83) =$ [[  83  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$c)\;\;$__ $ \text{sgn}\left( -63 \right) \cdot (-83) =$ [[  83  ]] @canvas 
+@Algebrite.check([ 83 ])
+
+@ADetails(1=BE; Negative Zahlen, Signum)
 
 </div> 
 <div class="flex-child">
 
-__$d)\;\;$__ $ 81:\text{sgn}\left( 45 \right) =$ [[  81  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$d)\;\;$__ $ 81:\text{sgn}\left( 45 \right) =$ [[  81  ]] @canvas 
+@Algebrite.check([ 81 ])
+
+@ADetails(1=BE; Negative Zahlen, Signum)
 
 </div> 
 </section>

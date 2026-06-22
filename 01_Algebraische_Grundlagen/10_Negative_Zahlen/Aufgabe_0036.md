@@ -57,20 +57,60 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $-8$ und $-24 \quad$ \
 [[ -16  ]] @canvas 
+@Algebrite.check([ -16 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
+
 </div>
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $9$ und $-1 \quad$ \
 [[ 4    ]] @canvas 
+@Algebrite.check([ 4 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
+
 </div> 
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $5$ und $-13 \quad$ \
 [[ -4   ]] @canvas 
+@Algebrite.check([ -4 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
+
 </div> 
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $-14$ und $-18 \quad$ \
 [[ -16  ]] @canvas 
+@Algebrite.check([ -16 ])
+
+@ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
+
 </div> 
 </section>
 

@@ -54,32 +54,80 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ $ 1,2 \cdot (-1,3) =$ [[  -1,56  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$a)\;\;$__ $ 1,2 \cdot (-1,3) =$ [[  -1,56  ]] @canvas 
+@Algebrite.check([ -1.56 ])
+
+@ADetails(1=BE; Negative Zahlen, Multiplikation, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
-__$b)\;\;$__ $ -0,9 \cdot (-1,2) =$ [[  1,08  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$b)\;\;$__ $ -0,9 \cdot (-1,2) =$ [[  1,08  ]] @canvas 
+@Algebrite.check([ 1.08 ])
+
+@ADetails(1=BE; Negative Zahlen, Multiplikation, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
-__$c)\;\;$__ $ -0,875 \cdot 4 =$ [[  -3,5  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$c)\;\;$__ $ -0,875 \cdot 4 =$ [[  -3,5  ]] @canvas 
+@Algebrite.check([ -3.5 ])
+
+@ADetails(1=BE; Negative Zahlen, Multiplikation, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
-__$d)\;\;$__ $ 0,4 \cdot (-0,6) =$ [[  -0,24  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$d)\;\;$__ $ 0,4 \cdot (-0,6) =$ [[  -0,24  ]] @canvas 
+@Algebrite.check([ -0.24 ])
+
+@ADetails(1=BE; Negative Zahlen, Multiplikation, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
-__$e)\;\;$__ $ -1,2 \cdot (-0,325) =$ [[  0,39  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$e)\;\;$__ $ -1,2 \cdot (-0,325) =$ [[  0,39  ]] @canvas 
+@Algebrite.check([ 0.39 ])
+
+@ADetails(1=BE; Negative Zahlen, Multiplikation, Dezimalzahlen)
 
 </div> 
 <div class="flex-child">
 
-__$f)\;\;$__ $ 3,2 \cdot 0,875 =$ [[  2,8  ]] @canvas
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
+__$f)\;\;$__ $ 3,2 \cdot 0,875 =$ [[  2,8  ]] @canvas 
+@Algebrite.check([ 2.8 ])
+
+@ADetails(1=BE; Negative Zahlen, Multiplikation, Dezimalzahlen)
 
 </div> 
 </section>

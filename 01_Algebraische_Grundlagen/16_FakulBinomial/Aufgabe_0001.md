@@ -53,22 +53,57 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $ 5! = $ [[ 120  ]] @canvas
+@Algebrite.check([ 120 ])
+
+@ADetails(1=BE; Fakultät)
 
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $ 7! = $ [[ 5040 ]] @canvas
+@Algebrite.check([ 5040 ])
+
+@ADetails(1=BE; Fakultät)
 
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $ \dfrac{ 9! }{ 7! } = $ [[  72  ]] @canvas
+@Algebrite.check([ 72 ])
+
+@ADetails(1=BE; Fakultät)
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $ \dfrac{ 8! }{ 5! \cdot 3! } = $ [[ 56   ]] @canvas
+@Algebrite.check([ 56 ])
+
+@ADetails(1=BE; Fakultät)
 
 </div>
 </section>

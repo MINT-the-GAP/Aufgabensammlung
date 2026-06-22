@@ -55,23 +55,59 @@ author: Martin Lommatzsch
 
 <section class="dynFlex">
 <div class="flex-child">
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $\log_{2}\left( 8 \right) = $ [[  3  ]] @canvas
+@Algebrite.check([ 3 ])
+
+
+@ADetails(1=BE; Logarithmen)
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $\log_{8}\left( 64 \right) = $ [[  2  ]] @canvas
+@Algebrite.check([ 2 ])
+
+
+@ADetails(1=BE; Logarithmen)
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $\log_{4}\left( 256 \right) = $ [[  4  ]] @canvas
+@Algebrite.check([ 4 ])
+
+
+@ADetails(1=BE; Logarithmen)
 
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ $\log_{5}\left( 125 \right) = $ [[  3  ]] @canvas
+@Algebrite.check([ 3 ])
 
+
+@ADetails(1=BE; Logarithmen)
 
 
 </div>
