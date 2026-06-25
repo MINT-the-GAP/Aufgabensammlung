@@ -60,7 +60,16 @@ author: Martin Lommatzsch
 <div class="flex-child">
 __$a)\;\;$__ $a=15\,$cm $\;\;\wedge\;\; b=7\,$cm
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $A=$[[  105  ]]cm$^2$
+
+@ADetails(1=BE; Fläche)
 
 
 </div>
@@ -69,7 +78,16 @@ $A=$[[  105  ]]cm$^2$
 
 __$b)\;\;$__ $a=6\,$cm $\;\;\wedge\;\; b=9\,$cm
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $A=$[[  54   ]]cm$^2$
+
+@ADetails(1=BE; Fläche)
 
 
 </div>

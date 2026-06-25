@@ -54,19 +54,49 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ In einer Urne befinden sich $17$ grüne und $23$ rote Kugeln. **Gib** die Wahrscheinlichkeit in Prozent **an** eine rote Kugel zu ziehen.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$ [[ 57,5 ]]$\%$ 
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
 
 
 
 __$b)\;\;$__ Ein Glücksrad ist in gleich große Segmente unterteilt. Dabei sind $9$ Felder gelb, $5$ Felder blau und $6$ Felder geld. **Gib** die Wahrscheinlichkeit in Prozent **an**, dass beim Drehen des Glücksrades ein gelbes Feld resultiert.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$ [[  45  ]]$\%$ 
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
 
 
 
 __$c)\;\;$__ Bei einem Kartenspiel mit $32$ Karten sind $4$ Asse. **Gib** die Wahrscheinlichkeit in Prozent **an** ein Ass als erste Karte zu ziehen.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$ [[ 12,5 ]]$\%$ 
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
 
 
 

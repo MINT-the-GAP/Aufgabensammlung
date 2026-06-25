@@ -25,12 +25,6 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
 
 
-@style
-main > *:not(:last-child) {
-  margin-bottom: 3rem;
-}
-@end
-
 
 
 
@@ -56,6 +50,12 @@ author: Martin Lommatzsch
 **Entscheide**, ob es sich bei dem Term um einen Vektor, ein Skalar oder einen nicht definierten Ausdruck handelt.
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 - [[Vektor]       (Skalar)    [nicht definiert]]
 - [    [ ]           [X]             [ ]     ]  $$ \vec{a} \circ \left( \vec{b} - \mu \vec{r} \right) $$
 - [    (X)           ( )             ( )     ]  $$ \left( \lambda \vec{z} \right) - \left( \vec{c} \circ \vec{s} \right) \cdot \vec{r} $$
@@ -63,3 +63,5 @@ author: Martin Lommatzsch
 - [    ( )           ( )             (X)     ]  $$ \left| \vec{x} - \mu \vec{r} \right| \times \vec{u} $$
 - [    [ ]           [X]             [ ]     ]  $$ \dfrac{ \left| \vec{c} \times \vec{a} \right| }{ \vec{a} \circ \vec{c} } $$
 
+
+@ADetails(1=BE; Vektoren, Algebra)

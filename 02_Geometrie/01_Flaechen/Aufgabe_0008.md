@@ -161,7 +161,15 @@ __$a)\;\;$__
 ```
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Es sind [[ 30  ]] umrandende Strecken.
+
+@ADetails(1=BE; Umfang)
 
 
 
@@ -248,7 +256,15 @@ __$b)\;\;$__
 ```
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Es sind [[ 16  ]] umrandende Strecken.
+
+@ADetails(1=BE; Umfang)
 
 
 

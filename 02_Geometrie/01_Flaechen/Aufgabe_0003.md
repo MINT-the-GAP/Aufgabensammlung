@@ -89,7 +89,15 @@ __$a)\;\;$__
 \end{tikzpicture}
 ```
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Es sind [[ 15  ]] Flächen.
+
+@ADetails(1=BE; Fläche)
 
 
 
@@ -178,7 +186,15 @@ __$b)\;\;$__
 \end{tikzpicture}
 ```
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Es sind [[ 48  ]] Flächen.
+
+@ADetails(1=BE; Fläche)
 
 
 

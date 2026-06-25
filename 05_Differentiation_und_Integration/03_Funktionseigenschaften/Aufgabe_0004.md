@@ -108,12 +108,22 @@ __$a)\;\;$__
 
 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[ ]] $\mathbb{D} = \mathbb{R}$
 [[ ]] $\mathbb{W} = \mathbb{R}$
 [[X]] $\lim\limits_{x \rightarrow -\infty} f(x) =  1$
 [[X]] $\lim\limits_{x \rightarrow \infty} f(x) = 1$
 [[ ]] $\lim\limits_{x \nearrow -2} f(x) = -\infty$
 [[ ]] $\lim\limits_{x \searrow -2} f(x) = \infty$
+
+
+@ADetails(1=BE; Definitionsbereich, Wertebereich, Verhalten)
 
 </div>
 <div class="flex-child">
@@ -170,12 +180,22 @@ __$b)\;\;$__
 
 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[X]] $\mathbb{D} = \left\{ x \in \mathbb{R}  \setminus \left\{-1;1\right\}  \right\}$
 [[X]] $\mathbb{W} =\left\{ f(x) \in \mathbb{R}  \left| f(x) \geq 0 \wedge  f(x) \leq -1 \right. \right\}$
 [[X]] $\lim\limits_{x \rightarrow -\infty} f(x) = 0$
 [[X]] $\lim\limits_{x \rightarrow \infty} f(x) = 0$
 [[X]] $\lim\limits_{x \nearrow -1} f(x) = -1$
 [[X]] $\lim\limits_{x \nearrow 1} f(x) = 1$
+
+
+@ADetails(1=BE; Definitionsbereich, Wertebereich, Verhalten)
 
 
 </div>

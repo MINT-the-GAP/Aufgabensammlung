@@ -60,6 +60,7 @@ author: Martin Lommatzsch
 __$a)\;\;$__
 
 <center>
+
 ```latex  @tikz 
 
 \begin{tikzpicture} [scale=1.66]
@@ -83,7 +84,18 @@ __$a)\;\;$__
 ```
 </center>
 
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Gleichung: $\quad$  [[$\sin$|($\cos$)|$\tan$|$\text{cot}$]] $(\alpha)= \frac{b}{f}$
+
+
+@ADetails(1=BE; Trigonometrie)
 
 
 </div>
@@ -93,6 +105,7 @@ Gleichung: $\quad$  [[$\sin$|($\cos$)|$\tan$|$\text{cot}$]] $(\alpha)= \frac{b}{
 __$b)\;\;$__
 
 <center>
+
 ```latex  @tikz 
 
 \begin{tikzpicture} [scale=1.66]
@@ -116,7 +129,18 @@ __$b)\;\;$__
 ```
 </center>
 
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Gleichung: $\quad$ [[ s ]]$^2 = $ [[ c ]]$^2 - k^2$
+
+
+@ADetails(1=BE; Trigonometrie, Satz des Pythagoras)
 
 </div>
 
@@ -128,6 +152,7 @@ Gleichung: $\quad$ [[ s ]]$^2 = $ [[ c ]]$^2 - k^2$
 __$c)\;\;$__
 
 <center>
+
 ```latex  @tikz 
 
 \begin{tikzpicture} [scale=1.66]
@@ -151,7 +176,18 @@ __$c)\;\;$__
 ```
 </center>
 
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Gleichung: $\quad$  [[$\sin$|$\cos$|($\tan$)|($\text{cot}$)]] $(\rho)= \frac{x}{y}$
+
+
+@ADetails(1=BE; Trigonometrie)
 
 
 </div>
@@ -161,6 +197,7 @@ Gleichung: $\quad$  [[$\sin$|$\cos$|($\tan$)|($\text{cot}$)]] $(\rho)= \frac{x}{
 __$d)\;\;$__
 
 <center>
+
 ```latex  @tikz 
 
 \begin{tikzpicture} [scale=1.66]
@@ -184,7 +221,18 @@ __$d)\;\;$__
 ```
 </center>
 
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Gleichung: $\quad$   $\sin(\zeta)$= [[$\frac{p}{v}$|$\frac{v}{p}$|$\frac{k}{p}$|$\frac{p}{k}$|($\frac{k}{v}$)|$\frac{v}{k}$]]
+
+
+@ADetails(1=BE; Trigonometrie)
 
 </div>
 

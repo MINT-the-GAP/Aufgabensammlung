@@ -58,19 +58,49 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ In einer Urne befinden sich $64$ schwarze und $16$ weiße Kugeln. **Gib** den Erwartungswert der getroffenen schwarzen Kugeln **an**, wenn aus der Urne eine Kugel mit Zurücklegen neunmal hintereinander gezogen wird.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\mu =$ [[  7,2   ]]
+@Algebrite.check(7.2)
+
+
+@ADetails(1=BE; Binomialverteilung, Erwartungswert)
 
 
 
 __$b)\;\;$__ Bei der Produktion eines Produktes kommt es bei der Fertigung zu $1,5\%$ zu einem Produktionsfehler. **Gib** den Erwartungswert an fehlerhaften Produkten nach $500$ Fertigungen **an**.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\mu =$ [[  7,5   ]]
+@Algebrite.check(7.5)
+
+
+@ADetails(1=BE; Binomialverteilung, Erwartungswert)
 
 
 
 __$c)\;\;$__ In einem kleinen Waldstück leben von einer speziellen Ameisenart $18$ Stämme. Jeder Stamm überlebt den Winter mit einer Wahrscheinlichkeit von $92\%$. **Gib an**, mit wie vielen Stämmen im kommenden Frühling gerechnet werden kann.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\mu =$ [[  16,56  ]]
+@Algebrite.check(16.56)
+
+
+@ADetails(1=BE; Binomialverteilung, Erwartungswert)
 
 
 

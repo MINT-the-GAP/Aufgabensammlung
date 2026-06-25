@@ -56,7 +56,16 @@ author: Martin Lommatzsch
 <div class="flex-child">
 __$a)\;\;$__ Es gilt: $f \parallel g \;\;\wedge\;\; g \bot h \;\;\wedge\;\; h \parallel k$ \
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $f$ [[($\bot$)|$\parallel$]] $k$
+
+@ADetails(1=BE; Lagebeziehung)
 
 
 </div>
@@ -65,7 +74,16 @@ $f$ [[($\bot$)|$\parallel$]] $k$
 
 __$b)\;\;$__  Es gilt: $f \bot g \;\;\wedge\;\; g \bot h \;\;\wedge\;\; h \parallel k$ \
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $f$ [[$\bot$|($\parallel$)]] $k$
+
+@ADetails(1=BE; Lagebeziehung)
 
 </div>
 

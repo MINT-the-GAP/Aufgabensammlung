@@ -65,11 +65,19 @@ author: Martin Lommatzsch
 __$a)\;\;$__ Welche der angegebenen Wertepaare beschreibt den größten Flächeninhalt eines Rechtecks?
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 - [[ ]] $a=5\,$cm$\;\;\wedge\;\; b=6\,$cm
 - [[ ]] $a=8\,$cm$\;\;\wedge\;\; b=3\,$cm
 - [[ ]] $a=3\,$cm$\;\;\wedge\;\; b=10\,$cm
 - [[ ]] $a=7\,$cm$\;\;\wedge\;\; b=4\,$cm
 - [[X]] $a=2\,$cm$\;\;\wedge\;\; b=16\,$cm
+
+@ADetails(1=BE; Fläche)
 
 
 
@@ -87,11 +95,19 @@ __$a)\;\;$__ Welche der angegebenen Wertepaare beschreibt den größten Flächen
 __$b)\;\;$__ Welche der angegebenen Wertepaare beschreibt den kleinsten Umfang eines Rechtecks?
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 - [[X]] $a=5\,$cm$\;\;\wedge\;\; b=6\,$cm
 - [[X]] $a=8\,$cm$\;\;\wedge\;\; b=3\,$cm
 - [[ ]] $a=3\,$cm$\;\;\wedge\;\; b=10\,$cm
 - [[X]] $a=7\,$cm$\;\;\wedge\;\; b=4\,$cm
 - [[ ]] $a=2\,$cm$\;\;\wedge\;\; b=16\,$cm
+
+@ADetails(1=BE; Umfang)
 
 
 

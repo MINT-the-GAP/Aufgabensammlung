@@ -58,32 +58,82 @@ author: Martin Lommatzsch
 <div class="flex-child">
 __$a)\;\;$__ Eine ideale Münze wird hochgeworfen. Beim Aufkommen liegt die Kopf-Seite oben.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$[[  1/2  ]]
 @Algebrite.check(1/2)
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
 </div>
 <div class="flex-child">
 __$b)\;\;$__ Mit einem idealen sechsseitigen Würfel wird gewürfelt. Nach dem Wurf ist die 4 oben.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$[[  1/6  ]]
 @Algebrite.check(1/6)
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
 </div>
 <div class="flex-child">
 __$c)\;\;$__ Mit einem idealen zwanzigseitigen Würfel wird gewürfelt. Nach dem Wurf ist keine 13 oben.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$[[  19/20  ]]
 @Algebrite.check(19/20)
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
 </div>
 <div class="flex-child">
 __$d)\;\;$__ Ein Glücksrad ist in 25 gleichgroße Flächen eingeteilt. Zwei dieser Flächen sind rot und es kommt auf einer roten Fläche zum Stoppen.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$[[  2/25  ]]
 @Algebrite.check(2/25)
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
 </div>
 <div class="flex-child">
 __$e)\;\;$__ Ein Glücksrad ist in 10 gleichgroße unterschiedlich gefärbte Flächen eingeteilt. Das Rad kommt auf einer orangen Fläche zum Stoppen.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$[[  1/10  ]]
 @Algebrite.check(1/10)
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
 </div>
 </section>
 

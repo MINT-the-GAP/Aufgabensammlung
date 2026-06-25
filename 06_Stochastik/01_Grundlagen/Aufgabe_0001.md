@@ -68,12 +68,21 @@ $\{$ <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/r
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew3.png" width="30" height="30"> 
 $\}$
 
-<!-- data-solution-button="5" 
-data-hint-button="3" -->
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $R=$ [[  3  ]]
 *******************
 $R = x_{max} - x_{min} = 4 - 1 = 3$
 *******************
+
+
+@ADetails(1=BE; Spannweite)
 
 
 
@@ -103,12 +112,21 @@ $\{ \{$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb2.png" width="30" height="30"> 
 $\} \}$
 
-<!-- data-solution-button="5" 
-data-hint-button="3" -->
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $R=$ [[  3  ]]
 *******************
 $R = x_{max} - x_{min} = 9 - 6 = 3$
 *******************
+
+
+@ADetails(1=BE; Spannweite)
 
 
 
@@ -139,12 +157,21 @@ $\{ \{$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/dieb5.png" width="30" height="30"> 
 $\} \}$
 
-<!-- data-solution-button="5" 
-data-hint-button="3" -->
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $R=$ [[  8  ]]
 *******************
 $R = x_{max} - x_{min} = 11 - 3 = 8$
 *******************
+
+
+@ADetails(1=BE; Spannweite)
 
 
 

@@ -119,8 +119,18 @@ __$a)\;\;$__
 
 ```
 </center>
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Es handelt sich um ein Parallelogramm. \
 $D($[[  3  ]]$|$[[  6  ]]$)$ \
+
+
+@ADetails(1=BE; Viereck, Parallelogramm, Koordinatensystem)
 
 </div> 
 
@@ -191,8 +201,19 @@ __$b)\;\;$__
 
 ```
 </center>
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Es handelt sich um eine Raute. \
 $C($[[  4  ]]$|$[[  9  ]]$)$ \
+
+
+@ADetails(1=BE; Viereck, Raute, Koordinatensystem)
+
 
 </div> 
 

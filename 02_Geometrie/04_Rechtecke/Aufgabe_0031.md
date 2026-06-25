@@ -58,9 +58,20 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 
 <div class="flex-child">
+
 __$a)\;\;$__ $u=280\,$cm$\;\;\wedge\;\; a=7\,$dm
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $b=$[[  20  ]]cm
+@Algebrite.check( 20 )
+
+@ADetails(1=BE; Umfang, Einheiten)
 
 
 </div>
@@ -69,7 +80,17 @@ $b=$[[  20  ]]cm
 
 __$b)\;\;$__ $u=4\,$dm$\;\;\wedge\;\; a=60\,$mm
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $b=$[[  14  ]]cm
+@Algebrite.check( 14 )
+
+@ADetails(1=BE; Umfang, Einheiten)
 
 
 

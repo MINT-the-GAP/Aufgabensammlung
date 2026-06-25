@@ -55,27 +55,73 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 
 <div class="flex-child">
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ $\alpha = 360^\circ$. Somit ist $\alpha$ ein [[Nullwinkel|spitzer Winkel|rechter Winkel|stumpfer Winkel|gestreckter Winkel|überstumpfer Winkel|(voller Winkel)]]
+
+@ADetails(1=BE; Winkel)
  
 </div>
 
 <div class="flex-child">
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ $\beta = 57^\circ$. Somit ist $\beta$ ein [[Nullwinkel|(spitzer Winkel)|rechter Winkel|stumpfer Winkel|gestreckter Winkel|überstumpfer Winkel|voller Winkel]]
+
+@ADetails(1=BE; Winkel)
  
 </div>
 
 <div class="flex-child">
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ $\gamma = 90^\circ$. Somit ist $\gamma$ ein [[Nullwinkel|spitzer Winkel|(rechter Winkel)|stumpfer Winkel|gestreckter Winkel|überstumpfer Winkel|voller Winkel]]
+
+@ADetails(1=BE; Winkel)
  
 </div>
 
 <div class="flex-child">
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$d)\;\;$__ $\delta = 270^\circ$. Somit ist $\delta$ ein [[Nullwinkel|spitzer Winkel|rechter Winkel|stumpfer Winkel|gestreckter Winkel|(überstumpfer Winkel)|voller Winkel]]
+
+@ADetails(1=BE; Winkel)
  
 </div>
 
 <div class="flex-child">
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$e)\;\;$__ $\epsilon = 124^\circ$. Somit ist $\epsilon$ ein [[Nullwinkel|spitzer Winkel|rechter Winkel|(stumpfer Winkel)|gestreckter Winkel|überstumpfer Winkel|voller Winkel]]
+
+@ADetails(1=BE; Winkel)
 
 
 </div>

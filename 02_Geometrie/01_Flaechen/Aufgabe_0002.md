@@ -60,11 +60,19 @@ author: Martin Lommatzsch
 __$a)\;\;$__ Welche der angegebenen Wertepaare beschreibt einen Flächeninhalt eines Rechtecks von $24\,$cm$^2$?
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 - [[X]] $a=8\,$cm$\;\;\wedge\;\; b=3$cm
 - [[ ]] $a=14\,$cm$\;\;\wedge\;\; b=10$cm
 - [[ ]] $a=4\,$cm$\;\;\wedge\;\; b=8$cm
 - [[X]] $a=4\,$cm$\;\;\wedge\;\; b=6$cm
 - [[ ]] $a=9\,$cm$\;\;\wedge\;\; b=3$cm
+
+@ADetails(1=BE; Fläche)
 
 
 
@@ -78,11 +86,19 @@ __$a)\;\;$__ Welche der angegebenen Wertepaare beschreibt einen Flächeninhalt e
 __$b)\;\;$__ Welche der angegebenen Wertepaare beschreibt einen Umfang eines Rechtecks von $32\,$cm?
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 - [[ ]] $a=12\,$cm$\;\;\wedge\;\; b=20\,$cm
 - [[ ]] $a=4\,$cm$\;\;\wedge\;\; b=8\,$cm
 - [[X]] $a=5\,$cm$\;\;\wedge\;\; b=11\,$cm
 - [[ ]] $a=16\,$cm$\;\;\wedge\;\; b=16\,$cm
 - [[X]] $a=7\,$cm$\;\;\wedge\;\; b=9\,$cm
+
+@ADetails(1=BE; Umfang)
 
 
 

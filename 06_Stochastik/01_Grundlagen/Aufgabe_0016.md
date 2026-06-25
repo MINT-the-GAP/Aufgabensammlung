@@ -58,38 +58,98 @@ author: Martin Lommatzsch
 <div class="flex-child">
 __$a)\;\;$__ Die Chance wird mit $2:3$ angegeben.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$[[ 2/5 ]]
 @Algebrite.check(2/5)
+
+
+@ADetails(1=BE; Chance)
 </div>
 <div class="flex-child">
 __$b)\;\;$__ Die Chance wird mit $5:2$ angegeben.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$[[ 5/7 ]]
 @Algebrite.check(5/7)
+
+
+@ADetails(1=BE; Chance)
 </div>
 <div class="flex-child">
 __$c)\;\;$__ Die Chance wird mit $11:9$ angegeben.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$[[ 11/20 ]]
 @Algebrite.check(11/20)
+
+
+@ADetails(1=BE; Chance)
 </div>
 <div class="flex-child">
 __$d)\;\;$__ Die Chance wird mit $17:23$ angegeben.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$[[ 17/40 ]]
 @Algebrite.check(17/40)
+
+
+@ADetails(1=BE; Chance)
 </div>
 <div class="flex-child">
 __$e)\;\;$__ Die Chance wird mit $1:22$ angegeben.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$[[ 1/23 ]]
 @Algebrite.check(1/23)
+
+
+@ADetails(1=BE; Chance)
 </div>
 <div class="flex-child">
 __$f)\;\;$__ Die Chance wird mit $45:2$ angegeben.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$[[ 45/47 ]]
 @Algebrite.check(45/47)
+
+
+@ADetails(1=BE; Chance)
 </div>
 
 </section>

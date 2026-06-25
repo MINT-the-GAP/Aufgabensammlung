@@ -62,19 +62,52 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 
 <div class="flex-child">
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
  $A($[[  1    ]]$|$[[  6,7  ]]$)$ \
 
+
+@ADetails(1=BE; Koordinatensystem, Dezimalzahlen, Punkt)
+
 </div>
 
 <div class="flex-child">
 
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
  $B($[[  8,6  ]]$|$[[  4,1  ]]$)$ \
 
+
+@ADetails(1=BE; Koordinatensystem, Dezimalzahlen, Punkt)
+
 </div>
 
 <div class="flex-child">
 
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
  [[  C  ]]$( 6,6 | 8,6 )$ \
+
+
+@ADetails(1=BE; Koordinatensystem, Dezimalzahlen, Punkt)
 
 
 </div>

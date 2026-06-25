@@ -60,6 +60,12 @@ __$a)\;\;$__
 
 Zwei benachbarte Winkel sind gleich groß.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[X]] Quadrat
 [[X]] Rechteck
 [[ ]] Raute
@@ -67,6 +73,9 @@ Zwei benachbarte Winkel sind gleich groß.
 [[X]] symmetrisches Trapez
 [[ ]] Trapez
 [[ ]] symmetrischer Drachen
+
+
+@ADetails(1=BE; Viereck)
 
 
 </div> 
@@ -80,6 +89,12 @@ __$b)\;\;$__
 
 Eine Diagonale halbiert die andere.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[X]] Quadrat
 [[X]] Rechteck
 [[X]] Raute
@@ -87,6 +102,9 @@ Eine Diagonale halbiert die andere.
 [[ ]] symmetrisches Trapez
 [[ ]] Trapez
 [[X]] symmetrischer Drachen
+
+
+@ADetails(1=BE; Viereck)
 
 
 </div> 
@@ -100,6 +118,12 @@ __$c)\;\;$__
 
 Es gibt mindestens ein Paar von benachbarten Seiten, die gleichlang aber nicht orthogonal zu einander sind.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[ ]] Quadrat
 [[ ]] Rechteck
 [[X]] Raute
@@ -107,6 +131,9 @@ Es gibt mindestens ein Paar von benachbarten Seiten, die gleichlang aber nicht o
 [[ ]] symmetrisches Trapez
 [[ ]] Trapez
 [[X]] symmetrischer Drachen
+
+
+@ADetails(1=BE; Viereck)
 
 
 </div> 
@@ -119,6 +146,12 @@ __$d)\;\;$__
 
 Die Innenwinkelsumme beträgt $360\circ$.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[X]] Quadrat
 [[X]] Rechteck
 [[X]] Raute
@@ -126,6 +159,9 @@ Die Innenwinkelsumme beträgt $360\circ$.
 [[X]] symmetrisches Trapez
 [[X]] Trapez
 [[X]] symmetrischer Drachen
+
+
+@ADetails(1=BE; Viereck)
 
 
 </div> 

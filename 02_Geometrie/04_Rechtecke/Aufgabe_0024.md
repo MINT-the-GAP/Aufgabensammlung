@@ -58,9 +58,20 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 
 <div class="flex-child">
+
 __$a)\;\;$__ $a=64\,$m $\;\;\wedge\;\; b=0,24\,$km
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $u=$[[  0,608  ]]km
+@Algebrite.check( 0.608 )
+
+@ADetails(1=BE; Umfang, Einheiten, Dezimalzahlen)
 
 
 </div>
@@ -69,7 +80,17 @@ $u=$[[  0,608  ]]km
 
 __$b)\;\;$__ $a=4,1\,$m $\;\;\wedge\;\; b=52\,$cm
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $u=$[[  213,2  ]]dm
+@Algebrite.check( 213.2 )
+
+@ADetails(1=BE; Umfang, Einheiten, Dezimalzahlen)
 
 
 

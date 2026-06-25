@@ -59,9 +59,19 @@ author: Martin Lommatzsch
 
 
 <div class="flex-child">
+
 __$a)\;\;$__ $u=2\,$km $\;\;\wedge\;\; b=751\,$m $\;\;\wedge\;\; c=486\,$m
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $a=$[[  763  ]]m
+
+
+@ADetails(1=BE; Dreieck, Umfang, Einheiten)
 
 
 </div>
@@ -70,7 +80,16 @@ $a=$[[  763  ]]m
 
 __$b)\;\;$__ $u=3\,$cm $\;\;\wedge\;\; b=9\,$mm $\;\;\wedge\;\; c=8\,$mm
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $a=$[[  13  ]]mm
+
+
+@ADetails(1=BE; Dreieck, Umfang, Einheiten)
 
 
 

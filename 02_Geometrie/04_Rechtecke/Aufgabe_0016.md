@@ -60,7 +60,17 @@ author: Martin Lommatzsch
 <div class="flex-child">
 __$a)\;\;$__ $a=4,7\,$dm $\;\;\wedge\;\; b=3,16\,$dm
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $u=$[[  15,72  ]]dm
+@Algebrite.check( 15.72 )
+
+@ADetails(1=BE; Umfang, Dezimalzahlen)
 
 
 </div>
@@ -69,7 +79,17 @@ $u=$[[  15,72  ]]dm
 
 __$b)\;\;$__ $a=3,2\,$cm $\;\;\wedge\;\; b=0,054\,$cm
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $u=$[[  6,508  ]]cm
+@Algebrite.check( 6.508 )
+
+@ADetails(1=BE; Umfang, Dezimalzahlen)
 
 
 </div>

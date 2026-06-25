@@ -55,6 +55,13 @@ $\{ 83,46,55,64,91,75,61,39,84,55,47 \}$
 <section class="dynFlex">
 
 <div class="flex-child">
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ **Gib** die Spannweite **an**.\
 $R=$ [[ 52  ]]
 *******************
@@ -62,9 +69,19 @@ $R = x_{max} - x_{min} = 91 - 39 = 52$
 *******************
 
 
+@ADetails(1=BE; Spannweite)
+
+
 </div>
 <div class="flex-child">
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ **Gib** den Median **an**.\
 $\tilde{x}=$ [[  61  ]]
 *******************
@@ -72,11 +89,24 @@ $\{ 39,46,47,55,55,\textcolor{red}{61},64,75,83,84,91 \}$
 *******************
 
 
+@ADetails(1=BE; Median)
+
+
 </div>
 <div class="flex-child">
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ **Gib** das arithmetische Mittel gerundet auf drei Nachkommastellen **an**.\
 $\bar{x}=$ [[  63,636  ]]
+
+
+@ADetails(1=BE; Arithmetisches Mittel, Runden)
 
 
 </div> 

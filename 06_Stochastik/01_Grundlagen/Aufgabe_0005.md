@@ -73,13 +73,22 @@ $\{$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew6.png" width="30" height="30"> 
 $\}$
 
-<!-- data-solution-button="5" 
-data-hint-button="3" -->
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\bar{x}=$ [[  3,9  ]]
 @Algebrite.check(39/10)
 *******************
 $\bar{x} = \dfrac{2+3+1+4+5+4+5+6+3+6}{10}$
 *******************
+
+
+@ADetails(1=BE; Arithmetisches Mittel)
 
 
 
@@ -110,13 +119,22 @@ $\{ \{$
 $\} \}$
 
 
-<!-- data-solution-button="5" 
-data-hint-button="3" -->
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\bar{x}=$ [[  7,125  ]]
 @Algebrite.check(57/8)
 *******************
 $\bar{x} = \dfrac{7+8+4+9+10+10+9+3+7}{8}$
 *******************
+
+
+@ADetails(1=BE; Arithmetisches Mittel)
 
 
 
@@ -147,12 +165,21 @@ $\} \}$
 
 
 
-<!-- data-solution-button="5" 
-data-hint-button="3" -->
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\bar{x}=$ [[  6,6  ]]
 @Algebrite.check(66/10)
 *******************
 $\bar{x} = \dfrac{9+4+6+8+5+4+6+10+9+5}{10}$
 *******************
+
+
+@ADetails(1=BE; Arithmetisches Mittel)
 
 

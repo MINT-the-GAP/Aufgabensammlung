@@ -58,9 +58,19 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 
 <div class="flex-child">
+
 __$a)\;\;$__ $a=2\,$m $\;\;\wedge\;\; b=1\,$m $\;\;\wedge\;\; c=12\,$dm
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $u=$[[  420   ]]cm
+
+
+@ADetails(1=BE; Dreieck, Umfang, Einheiten)
 
 
 </div>
@@ -69,7 +79,16 @@ $u=$[[  420   ]]cm
 
 __$b)\;\;$__ $a=14\,$dm $\;\;\wedge\;\; b=12\,$dm $\;\;\wedge\;\; c=2\,$m
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $u=$[[  4600  ]]mm
+
+
+@ADetails(1=BE; Dreieck, Umfang, Einheiten)
 
 
 

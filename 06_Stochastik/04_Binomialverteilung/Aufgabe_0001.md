@@ -64,15 +64,42 @@ $V.\;\;\;\; 1- \left( \dfrac{5}{6} \right)^8  $ \
 
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ Bei einem Würfelspiel mit einem sechsseitigen Würfel wurde nach acht Würfen fünfmal keine Sechs gewürfelt. Term [[I.|II.|(III.)|IV.|V.]] beschreibt dieses Szenario.
 
 
+@ADetails(1=BE; Binomialverteilung)
 
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ Bei einem Würfelspiel mit einem sechsseitigen Würfel wurde nach acht Würfen keinmal eine Sechs gewürfelt. Term [[(I.)|II.|III.|IV.|V.]] beschreibt dieses Szenario.
 
 
+@ADetails(1=BE; Binomialverteilung)
 
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ Bei einem Würfelspiel mit einem sechsseitigen Würfel wurde nach fünf Würfen insgesamt eine Sechs gewürfelt. Anschließend wurde im sechsten Wurf keine Sechs gewürfelt, aber in den beiden Würfel darauf. Term [[I.|II.|III.|(IV.)|V.]] beschreibt dieses Szenario.
+
+
+@ADetails(1=BE; Binomialverteilung)
 
 
 

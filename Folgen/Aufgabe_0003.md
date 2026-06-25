@@ -55,26 +55,50 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $1 \quad 8 \quad 27 \quad 64 \quad 125 \quad$ [[ 216 ]] @canvas $\quad$ [[ 343 ]] @canvas $\quad$ [[ 512 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen hoch $3$.
 
 
+@ADetails(1=BE; Folge)
+
 
 __$b)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $3 \quad 5 \quad 8 \quad 11 \quad 16 \quad 19 \quad 24 \quad 27 \quad 32 \quad$ [[ 39 ]] @canvas $\quad$ [[ 42 ]] @canvas $\quad$ [[ 49 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen addiert mit den aufsteigenden Primzahlen: $1+2$ dann $2+3$ dann $3+5$ und so weiter.
 
 
+@ADetails(1=BE; Folge)
+
 
 __$c)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $1 \quad 5 \quad 14 \quad 30 \quad 55 \quad 91 \quad$ [[ 140 ]] @canvas $\quad$ [[ 204 ]] @canvas $\quad$ [[ 285 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die zuvorige Zahl wird mit der aufsteigenden Quadratzahl startend bei $2$ addiert.
 
+
+@ADetails(1=BE; Folge)
 
 
 

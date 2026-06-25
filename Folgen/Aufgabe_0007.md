@@ -53,11 +53,19 @@ author: Martin Lommatzsch
 
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $1 \quad 1 \quad 2 \quad 6 \quad 30 \quad 240 \quad  3120 \quad $ [[ 65520 ]] @canvas $\quad$ [[ 2227680 ]] @canvas $\quad$ [[ 122522400 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die Fibonacci Zahlen werden aufmultipliziert.
 
 
+
+@ADetails(1=BE; Folge)
 
 
 

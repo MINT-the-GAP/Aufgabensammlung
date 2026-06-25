@@ -60,7 +60,17 @@ author: Martin Lommatzsch
 <div class="flex-child">
 __$a)\;\;$__ $a=1,3\,$m $\;\;\wedge\;\; b=1,6\,$m
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $A=$[[  2,08  ]]m$^2$
+@Algebrite.check( 2.08 )
+
+@ADetails(1=BE; Fläche, Dezimalzahlen)
 
 
 </div>
@@ -69,7 +79,17 @@ $A=$[[  2,08  ]]m$^2$
 
 __$b)\;\;$__ $a=48\,$cm $\;\;\wedge\;\; b=0,05\,$cm
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $A=$[[  2,4  ]]cm$^2$
+@Algebrite.check( 2.4 )
+
+@ADetails(1=BE; Fläche, Dezimalzahlen)
 
 
 </div>

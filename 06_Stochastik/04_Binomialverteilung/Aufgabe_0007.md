@@ -58,19 +58,49 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ An einem Glücksrad befinden sich $30$ Gewinnzahlen und $70$ andere Zahlen, die alle gleichgroße Bereiche zugewiesen bekommen haben. **Gib** die Standardabweichung von getroffenen Gewinnzahlen der beschriebenen Binomialverteilung **an**, wenn das Glücksrad achtmal gedreht wird.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\sigma \approx$ [[  1,296  ]]
+@Algebrite.check(1.296)
+
+
+@ADetails(1=BE; Binomialverteilung, Standardabweichung, Runden)
 
 
 
 __$b)\;\;$__ In einer Urne befinden sich $4$ rote und $21$ blaue Kugeln. **Gib** die Standardabweichung der getroffenen roten Kugeln **an**, wenn aus der Urne eine Kugel mit Zurücklegen fünfmal hintereinander gezogen wird.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\sigma \approx$ [[  0,820  ]]
+@Algebrite.check(0.820)
+
+
+@ADetails(1=BE; Binomialverteilung, Standardabweichung, Runden)
 
 
 
 __$c)\;\;$__ Bei der Produktion eines Produktes kommt es bei der Fertigung zu $3\%$ zu einem Produktionsfehler. **Gib** die Standardabweichung für fehlerhafte Produkte nach $300$ Fertigungen **an**.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\sigma \approx$ [[  2,955  ]]
+@Algebrite.check(2.955)
+
+
+@ADetails(1=BE; Binomialverteilung, Standardabweichung, Runden)
 
 
 

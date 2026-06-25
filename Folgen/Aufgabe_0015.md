@@ -56,26 +56,50 @@ author: Martin Lommatzsch
 
 __$a)$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $4 \quad 9 \quad 25 \quad 49 \quad 121 \quad 169 \quad 289 \quad $ [[ 361 ]] @canvas $\quad$ [[ 529 ]] @canvas $\quad$ [[ 841 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die Primzahlen werden quadriert.
 
 
+@ADetails(1=BE; Folge)
+
 
 __$b)$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $1 \quad 5 \quad 14 \quad 30 \quad 55 \quad 91 \quad 140 \quad 204 \quad$ [[ 285 ]] @canvas $\quad$ [[ 385 ]] @canvas $\quad$ [[ 506 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die vorherigen Zahlen werden mit den aufsteigenden Quadratzahlen addiert.
 
 
+@ADetails(1=BE; Folge)
+
 
 __$c)$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $A \quad Z \quad b \quad y \quad C \quad X \quad d \quad $ [[ w ]] @canvas $\quad$ [[ E ]] @canvas $\quad$ [[ V ]] @canvas \
 
 [[?]] Musterbeschreibung: Abwechselnd vom Anfang und Ende des Alphabets wird ein Buchstabe weiter zur Mitte gegangen, nach zwei Buchstaben wird zwischen Groß- und Kleinschreibung gewechselt.
 
+
+@ADetails(1=BE; Folge)
 
 
 

@@ -25,14 +25,6 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
 
 
-@style
-main > *:not(:last-child) {
-  margin-bottom: 3rem;
-}
-@end
-
-
-
 
 
 
@@ -56,6 +48,12 @@ author: Martin Lommatzsch
 **Entscheide**, ob es sich bei dem Term um einen Vektor, ein Skalar oder einen nicht definierten Ausdruck handelt.
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 - [[Vektor]       (Skalar)    [nicht definiert]]
 - [    [ ]           [X]             [ ]     ]  $$\left|\vec{a} \times \vec{b}\right|$$
 - [    ( )           ( )             (X)     ]  $$\vec{c} \times \left( \vec{a} \circ \vec{b}\right) $$
@@ -63,3 +61,5 @@ author: Martin Lommatzsch
 - [    (X)           ( )             ( )     ]  $$\left( \vec{c} \circ \vec{b}\right)  \cdot \vec{a}  $$
 - [    [ ]           [ ]             [X]     ]  $$\dfrac{\left(\vec{a} \times \vec{c}\right)^2}{\vec{a} \times \vec{b}}$$
 
+
+@ADetails(1=BE; Vektoren, Algebra)

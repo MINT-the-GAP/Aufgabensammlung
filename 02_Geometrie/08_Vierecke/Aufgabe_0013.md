@@ -109,7 +109,16 @@ __$a)\;\;$__
 
 ```
 </center>
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
  $A=$[[  30  ]]$FE$ \
+
+
+@ADetails(1=BE; Viereck)
 
 </div> 
 
@@ -170,7 +179,16 @@ __$b)\;\;$__
 
 ```
 </center>
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
  $A=$[[  24  ]]$FE$ \
+
+
+@ADetails(1=BE; Viereck)
 
 </div> 
 

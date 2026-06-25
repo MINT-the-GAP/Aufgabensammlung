@@ -58,32 +58,82 @@ author: Martin Lommatzsch
 <div class="flex-child">
 __$a)\;\;$__ Mit einem idealen achtsseitigen Würfel wird gewürfelt. Nach dem Wurf ist die 7 oben.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$[[  1/8  ]]
 @Algebrite.check(1/8)
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
 </div>
 <div class="flex-child">
 __$b)\;\;$__ Ein Glücksrad ist in vier gleichgroße unterschiedlich gefärbte Flächen eingeteilt. Das Rad kommt auf einer blauen Fläche zum Stoppen.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$[[  1/4  ]]
 @Algebrite.check(1/4)
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
 </div>
 <div class="flex-child">
 __$c)\;\;$__ In einer Losbox befinden sich 3 Gewinnlose und 7 Nieten. Es wird eine Niete gezogen.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$[[  7/10  ]]
 @Algebrite.check(7/10)
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
 </div>
 <div class="flex-child">
 __$d)\;\;$__ Mit einem idealen zwölfseitigen Würfel wird gewürfelt. Nach dem Wurf ist keine 13 oben.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$[[  1  ]]
 @Algebrite.check(1)
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
 </div>
 <div class="flex-child">
 __$e)\;\;$__ Mit einem idealen vierseitigen Würfel wird gewürfelt. Nach dem Wurf liegt eine Primzahl oben.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$[[  1/2  ]]
 @Algebrite.check(1/2)
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
 </div>
 </section>
 

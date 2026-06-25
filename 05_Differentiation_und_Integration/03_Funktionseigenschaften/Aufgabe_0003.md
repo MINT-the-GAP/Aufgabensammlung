@@ -108,12 +108,22 @@ __$a)\;\;$__
 
 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[ ]] $\mathbb{D} = \mathbb{R}^-$
 [[X]] $\mathbb{W} = \mathbb{R}^-$
 [[X]] $\lim\limits_{x \rightarrow -\infty} f(x) =  0$
 [[X]] $\lim\limits_{x \rightarrow \infty} f(x) = 0$
 [[X]] $\lim\limits_{x \nearrow 0} f(x) = -\infty$
 [[ ]] $\lim\limits_{x \searrow 0} f(x) = \infty$
+
+
+@ADetails(1=BE; Definitionsbereich, Wertebereich, Verhalten)
 
 </div>
 <div class="flex-child">
@@ -168,12 +178,22 @@ __$b)\;\;$__
 
 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[X]] $\mathbb{D} = \mathbb{R}$
 [[ ]] $\mathbb{W} = \mathbb{R}$
 [[ ]] $\mathbb{D} = \left\{x \in \mathbb{R} \left|  -2 > x > 2  \right. \right\} $
 [[ ]] $\mathbb{W} = \left\{f(x) \in \mathbb{R} \left|  -2 > f(x) > 2  \right. \right\}   $
 [[ ]] $\mathbb{D} = \left\{x \in \mathbb{R} \left|  -2 \geq x \geq 2  \right. \right\}   $
 [[ ]] $\mathbb{W} = \left\{f(x) \in \mathbb{R} \left|  -2 \geq f(x) \geq 2  \right. \right\}   $
+
+
+@ADetails(1=BE; Definitionsbereich, Wertebereich, Verhalten)
 
 
 </div>

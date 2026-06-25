@@ -60,6 +60,12 @@ __$a)\;\;$__
 
 Die Diagonalen halbieren sich.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[X]] Quadrat
 [[X]] Rechteck
 [[X]] Raute
@@ -67,6 +73,9 @@ Die Diagonalen halbieren sich.
 [[ ]] symmetrisches Trapez
 [[ ]] Trapez
 [[ ]] symmetrischer Drachen
+
+
+@ADetails(1=BE; Viereck)
 
 
 </div> 
@@ -80,6 +89,12 @@ __$b)\;\;$__
 
 Kann genau zwei rechte Winkel haben.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[ ]] Quadrat
 [[ ]] Rechteck
 [[ ]] Raute
@@ -87,6 +102,9 @@ Kann genau zwei rechte Winkel haben.
 [[ ]] symmetrisches Trapez
 [[X]] Trapez
 [[ ]] symmetrischer Drachen
+
+
+@ADetails(1=BE; Viereck)
 
 
 </div> 
@@ -100,6 +118,12 @@ __$c)\;\;$__
 
 Die Diagronalen sind orthogonal zu einander.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[X]] Quadrat
 [[ ]] Rechteck
 [[X]] Raute
@@ -107,6 +131,9 @@ Die Diagronalen sind orthogonal zu einander.
 [[ ]] symmetrisches Trapez
 [[ ]] Trapez
 [[X]] symmetrischer Drachen
+
+
+@ADetails(1=BE; Viereck)
 
 
 </div> 
@@ -120,6 +147,12 @@ __$d)\;\;$__
 
 Jeweils zwei Paare von Winkeln haben das gleiche Winkelmaß, während nicht alle Winkel das gleiche Winkelmaß besitzen.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[ ]] Quadrat
 [[ ]] Rechteck
 [[X]] Raute
@@ -127,6 +160,9 @@ Jeweils zwei Paare von Winkeln haben das gleiche Winkelmaß, während nicht alle
 [[X]] symmetrisches Trapez
 [[ ]] Trapez
 [[ ]] symmetrischer Drachen
+
+
+@ADetails(1=BE; Viereck)
 
 
 </div> 

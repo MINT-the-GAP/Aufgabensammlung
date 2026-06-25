@@ -54,19 +54,49 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ In einer Urne befinden sich $9$ weiße, $22$ gelbe und $29$ schwarze Kugeln. **Gib** die Wahrscheinlichkeit in Prozent **an** eine weiße Kugel zu ziehen.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$ [[  15   ]]$\%$ 
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
 
 
 
 __$b)\;\;$__ Ein Glücksrad ist in gleich große Segmente unterteilt. Dabei sind $17$ Felder rot und $63$ Felder schwarz. **Gib** die Wahrscheinlichkeit in Prozent **an**, dass beim Drehen des Glücksrades ein schwarzes Feld resultiert.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$ [[ 78,75 ]]$\%$ 
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
 
 
 
 __$c)\;\;$__ Eine Reißzwecke wurde $70$-mal hochgeworfen und landete $49$-mal auf der Seite. **Gib** die Wahrscheinlichkeit in Prozent **an**, dass die Reißzwecke nicht auf der Seite landet.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$ [[  30   ]]$\%$ 
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
 
 
 

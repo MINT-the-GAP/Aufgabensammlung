@@ -59,19 +59,49 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Ein Kleingärtner hat vergessen eine besondere Staudenblume im Herbst auszubuddeln und im Keller einzulagern. Durch die Wetterbedingungen der letzten Jahre weiß der Kleingärtner, dass die Stauden zu $65\%$ überleben. **Gib** die Standardabweichung für das Überleben der Stauden **an**, wenn er insgesamt $25$ dieser Stauden gepflanzt hat.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\sigma \approx$ [[  2,385  ]]
+@Algebrite.check(2.385)
+
+
+@ADetails(1=BE; Binomialverteilung, Standardabweichung, Runden)
 
 
 
 __$b)\;\;$__ In einer Urne befinden sich $17$ grüne und $8$ gelbe Kugeln. **Gib** die Standardabweichung der getroffenen grünen Kugeln **an**, wenn aus der Urne eine Kugel mit Zurücklegen zwölfmal hintereinander gezogen wird.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\sigma \approx$ [[  1,616  ]]
+@Algebrite.check(1.616)
+
+
+@ADetails(1=BE; Binomialverteilung, Standardabweichung, Runden)
 
 
 
 __$c)\;\;$__ Es wird mit einem zwölfseitigen Würfel gewürfelt, bei beim Erwürfeln einer Primzahl der Wurf als gewonnen gilt. **Gib** die Standardabweichung für die Anzahl der Gewinne nach $24$ Würfen **an**.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\sigma \approx$ [[  2,415  ]]
+@Algebrite.check(2.415)
+
+
+@ADetails(1=BE; Binomialverteilung, Standardabweichung, Runden)
 
 
 

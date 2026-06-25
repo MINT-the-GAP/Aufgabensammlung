@@ -60,6 +60,7 @@ author: Martin Lommatzsch
 __$a)\;\;$__
 
 <center>
+
 ```latex  @tikz 
 
 \begin{tikzpicture} [scale=1.66]
@@ -83,7 +84,18 @@ __$a)\;\;$__
 ```
 </center>
 
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Gleichung: $\quad$ [[ c ]]$^2 = $ [[ d ]]$^2 + a^2$
+
+
+@ADetails(1=BE; Trigonometrie, Satz des Pythagoras)
 
 
 </div>
@@ -93,6 +105,7 @@ Gleichung: $\quad$ [[ c ]]$^2 = $ [[ d ]]$^2 + a^2$
 __$b)\;\;$__
 
 <center>
+
 ```latex  @tikz 
 
 \begin{tikzpicture} [scale=1.66]
@@ -116,7 +129,18 @@ __$b)\;\;$__
 ```
 </center>
 
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Gleichung: $\quad$ $\cos($ [[$l$|($\delta$)|$\rho$]] $)= \frac{k}{h}$
+
+
+@ADetails(1=BE; Trigonometrie)
 
 </div>
 
@@ -128,6 +152,7 @@ Gleichung: $\quad$ $\cos($ [[$l$|($\delta$)|$\rho$]] $)= \frac{k}{h}$
 __$c)\;\;$__
 
 <center>
+
 ```latex  @tikz 
 
 \begin{tikzpicture} [scale=1.66]
@@ -151,7 +176,18 @@ __$c)\;\;$__
 ```
 </center>
 
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Gleichung: $\quad$  [[($\sin$)|$\cos$|$\tan$|$\text{cot}$]] $(\psi)= \frac{z}{u}$
+
+
+@ADetails(1=BE; Trigonometrie)
 
 
 </div>
@@ -161,6 +197,7 @@ Gleichung: $\quad$  [[($\sin$)|$\cos$|$\tan$|$\text{cot}$]] $(\psi)= \frac{z}{u}
 __$d)\;\;$__
 
 <center>
+
 ```latex  @tikz 
 
 \begin{tikzpicture} [scale=1.66]
@@ -184,7 +221,18 @@ __$d)\;\;$__
 ```
 </center>
 
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Gleichung: $\quad$  [[$\sin$|$\cos$|($\tan$)|$\text{cot}$]] $(\sigma)= \frac{r}{s}$
+
+
+@ADetails(1=BE; Trigonometrie)
 
 </div>
 

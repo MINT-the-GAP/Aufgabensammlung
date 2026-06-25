@@ -116,19 +116,52 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 
 <div class="flex-child">
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
  $A($[[  3  ]]$|$[[  5  ]]$)$ \
 
+
+@ADetails(1=BE; Koordinatensystem, Punkt)
+
 </div>
 
 <div class="flex-child">
 
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
  $B($[[  8  ]]$|$[[  2  ]]$)$ \
 
+
+@ADetails(1=BE; Koordinatensystem, Punkt)
+
 </div>
 
 <div class="flex-child">
 
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
  [[  E  ]]$( 1 | 4 )$ \
+
+
+@ADetails(1=BE; Koordinatensystem, Punkt)
 
 
 </div>

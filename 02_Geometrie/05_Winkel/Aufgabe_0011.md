@@ -61,6 +61,7 @@ author: Martin Lommatzsch
 __$a)\;\;$__
 
 <center>
+
 ```latex  @tikz 
 \begin{tikzpicture} [scale=2]
 \begin{scope}[yshift=0cm]
@@ -106,7 +107,16 @@ __$a)\;\;$__
 ```
 </center>
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\gamma =$ [[ 33 ]]$^\circ$
+
+@ADetails(1=BE; Winkelbeziehung)
 
 
 </div>
@@ -118,6 +128,7 @@ $\gamma =$ [[ 33 ]]$^\circ$
 __$b)\;\;$__
 
 <center>
+
 ```latex  @tikz 
 \begin{tikzpicture} [scale=2]
 \begin{scope}[yshift=0cm]
@@ -163,7 +174,16 @@ __$b)\;\;$__
 ```
 </center>
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\omega =$ [[ 116 ]]$^\circ$
+
+@ADetails(1=BE; Winkelbeziehung)
 
 </div>
 

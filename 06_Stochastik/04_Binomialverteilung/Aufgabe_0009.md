@@ -58,19 +58,49 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ In einer Urne befinden sich $64$ schwarze und $16$ weiße Kugeln. **Gib** die Standardabweichung der getroffenen schwarzen Kugeln **an**, wenn aus der Urne eine Kugel mit Zurücklegen neunmal hintereinander gezogen wird.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\sigma =$ [[  1,2    ]]
+@Algebrite.check(1.2)
+
+
+@ADetails(1=BE; Binomialverteilung, Standardabweichung)
 
 
 
 __$b)\;\;$__ Bei der Produktion eines Produktes kommt es bei der Fertigung zu $1,5\%$ zu einem Produktionsfehler. **Gib** die Standardabweichung für fehlerhafte Produkte nach $500$ Fertigungen **an**.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\sigma \approx$ [[  2,718  ]]
+@Algebrite.check(2.718)
+
+
+@ADetails(1=BE; Binomialverteilung, Standardabweichung, Runden)
 
 
 
 __$c)\;\;$__ In einem kleinen Waldstück leben von einer speziellen Ameisenart $18$ Stämme. Jeder Stamm überlebt den Winter mit einer Wahrscheinlichkeit von $92\%$. **Gib** die Standardabweichung für das Überleben der Stämme im kommenden Frühling **an**.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\sigma \approx$ [[  1,151  ]]
+@Algebrite.check(1.151)
+
+
+@ADetails(1=BE; Binomialverteilung, Standardabweichung, Runden)
 
 
 

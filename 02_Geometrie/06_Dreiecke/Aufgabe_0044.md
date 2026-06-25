@@ -65,7 +65,16 @@ __$a)\;\;$__
 
 </center>
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
  $A=$[[  32  ]]$FE$ \
+
+
+@ADetails(1=BE; Dreieck, Fläche)
 
 </div> 
 
@@ -81,7 +90,16 @@ __$b)\;\;$__
 ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap3/Dreieck44b.png)
 
 </center>
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
  $A=$[[  25  ]]$FE$ \
+
+
+@ADetails(1=BE; Dreieck, Fläche)
 
 </div> 
 

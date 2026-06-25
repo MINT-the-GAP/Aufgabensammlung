@@ -55,26 +55,50 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $1 \quad 1 \quad 2 \quad 3 \quad 5 \quad 8 \quad 13 \quad$ [[ 21 ]] @canvas $\quad$ [[ 34 ]] @canvas $\quad$ [[ 55 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die beiden vorherigen Zahlen werden miteinander addiert.
 
 
+@ADetails(1=BE; Folge)
+
 
 __$b)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $1 \quad 4 \quad 9 \quad 16 \quad 25 \quad 36 \quad 49 \quad$ [[ 64 ]] @canvas $\quad$ [[ 81 ]] @canvas $\quad$ [[ 100 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen werden quadriert.
 
 
+@ADetails(1=BE; Folge)
+
 
 __$c)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $A \quad C \quad E \quad G \quad I \quad K \quad M \quad$ [[ O ]] @canvas $\quad$ [[ Q ]] @canvas $\quad$ [[ S ]] @canvas \
 
 [[?]] Musterbeschreibung: Immer der übernächste Buchstabe des Alphabets
 
+
+@ADetails(1=BE; Folge)
 
 
 

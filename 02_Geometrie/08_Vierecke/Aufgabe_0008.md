@@ -60,6 +60,12 @@ __$a)\;\;$__
 
 Alle Seiten sind gleich lang.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[X]] Quadrat
 [[ ]] Rechteck
 [[X]] Raute
@@ -67,6 +73,9 @@ Alle Seiten sind gleich lang.
 [[ ]] symmetrisches Trapez
 [[ ]] Trapez
 [[ ]] symmetrischer Drachen
+
+
+@ADetails(1=BE; Viereck)
 
 
 </div>
@@ -80,6 +89,12 @@ __$b)\;\;$__
 
 Die Diagonalen sind gleich lang.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[X]] Quadrat
 [[X]] Rechteck
 [[ ]] Raute
@@ -87,6 +102,9 @@ Die Diagonalen sind gleich lang.
 [[ ]] symmetrisches Trapez
 [[ ]] Trapez
 [[ ]] symmetrischer Drachen
+
+
+@ADetails(1=BE; Viereck)
 
 
 </div> 
@@ -100,6 +118,12 @@ __$c)\;\;$__
 
 Das Viereck ist achsensymmetrisch.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[X]] Quadrat
 [[X]] Rechteck
 [[X]] Raute
@@ -107,6 +131,9 @@ Das Viereck ist achsensymmetrisch.
 [[X]] symmetrisches Trapez
 [[ ]] Trapez
 [[X]] symmetrischer Drachen
+
+
+@ADetails(1=BE; Viereck)
 
 
 </div> 
@@ -120,6 +147,12 @@ __$d)\;\;$__
 
 Die gegenüberliegenden Seiten sind parallel zu einander, während die benachbarten Seiten nicht orthogonal zu einander sind.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[ ]] Quadrat
 [[ ]] Rechteck
 [[X]] Raute
@@ -127,6 +160,9 @@ Die gegenüberliegenden Seiten sind parallel zu einander, während die benachbar
 [[ ]] symmetrisches Trapez
 [[ ]] Trapez
 [[ ]] symmetrischer Drachen
+
+
+@ADetails(1=BE; Viereck)
 
 
 </div> 

@@ -107,12 +107,22 @@ __$a)\;\;$__
 
 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[ ]] $\mathbb{D} = \left\{x \in \mathbb{R}  \left| x \leq -3 \right. \right\}$
 [[X]] $\mathbb{D} = \left\{x \in \mathbb{R}  \left| x \geq -3 \right. \right\}$
 [[ ]] $\mathbb{W} = \left\{f(x) \in \mathbb{R}  \left| x > 2 \right. \right\}$
 [[ ]] $\mathbb{W} = \left\{f(x) \in \mathbb{R}  \left| x < 2 \right. \right\}$
 [[X]] $\mathbb{W} = \left\{f(x) \in \mathbb{R}  \left| x \leq 2 \right. \right\}$
 [[ ]] $\mathbb{W} = \left\{f(x) \in \mathbb{R}  \left| x \geq 2 \right. \right\}$
+
+
+@ADetails(1=BE; Definitionsbereich, Wertebereich, Verhalten)
 
 </div>
 <div class="flex-child">
@@ -167,12 +177,22 @@ __$b)\;\;$__
 
 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[X]] $\mathbb{D} = \mathbb{R}$
 [[X]] $\mathbb{W} = \left\{f(x) \in \mathbb{R}  \left| x \leq 2 \right. \right\}$
 [[ ]] $\mathbb{W} = \left\{f(x) \in \mathbb{R}  \left| x \geq 2 \right. \right\}$
 [[X]] $\lim\limits_{x \rightarrow -\infty} f(x) = \infty$
 [[ ]] $\lim\limits_{x \rightarrow \infty} f(x) = \infty$
 [[X]] $\lim\limits_{x \rightarrow \infty} f(x) = 0$
+
+
+@ADetails(1=BE; Definitionsbereich, Wertebereich, Verhalten)
 
 
 </div>

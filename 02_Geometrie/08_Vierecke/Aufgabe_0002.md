@@ -119,8 +119,18 @@ __$a)\;\;$__
 
 ```
 </center>
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Es handelt sich um eine Rechteck. \
 $B($[[  8  ]]$|$[[  3  ]]$)$ \
+
+
+@ADetails(1=BE; Viereck, Rechteck, Koordinatensystem)
 
 </div> 
 
@@ -191,8 +201,18 @@ __$b)\;\;$__
 
 ```
 </center>
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Es handelt sich um einen symmetrischen Drachen. \
 $B($[[  4  ]]$|$[[  1  ]]$)$ \
+
+
+@ADetails(1=BE; Viereck, Drachen, Koordinatensystem)
 
 </div> 
 

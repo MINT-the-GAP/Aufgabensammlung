@@ -59,13 +59,21 @@ author: Martin Lommatzsch
 
 
 
-<!-- data-type="none" 
-     data-sortable="false"
-     data-group="true" 
-     data-show-partial-solution="true" -->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  
+data-type="none" 
+data-sortable="false"
+data-group="true" 
+data-show-partial-solution="true" -->
 |           |     $A$    | $\bar{A}$  |            |
 | :-------: | :--------: | :-------:  | :--------: |
 | $B$       | [[ 0,21 ]] | [[ 0,45 ]] |    0,66    |
 | $\bar{B}$ |    0,22    | [[ 0,12 ]] | [[ 0,34 ]] |
 |           | [[ 0,43 ]] |    0,57    |      1     |
 @Algebrite.check([ 21/100; 45/100; 12/100; 34/100; 43/100 ])
+
+
+@ADetails(1=BE; Vierfeldertafel, bedingte Wahrscheinlichkeit)

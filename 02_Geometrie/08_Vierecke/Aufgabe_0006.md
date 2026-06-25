@@ -119,8 +119,18 @@ __$a)\;\;$__
 
 ```
 </center>
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Es handelt sich um eine Raute. \
 $A($[[  2  ]]$|$[[  3  ]]$)$ \
+
+
+@ADetails(1=BE; Viereck, Raute, Koordinatensystem)
 
 </div> 
 
@@ -191,8 +201,17 @@ __$b)\;\;$__
 
 ```
 </center>
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Es handelt sich um ein symmetrisches Trapez mit einer Symmetrieachse, die orthogonal zur Stecke $\overline{AB}$ ist. \
 $D($[[  7  ]]$|$[[  0  ]]$)$ \
+
+
+@ADetails(1=BE; Viereck, Trapez, Koordinatensystem)
 
 </div> 
 

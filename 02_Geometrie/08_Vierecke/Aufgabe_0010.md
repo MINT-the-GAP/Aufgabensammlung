@@ -61,6 +61,12 @@ __$a)\;\;$__
 
 Mindestens ein Paar von gegenüberliegenden Seiten ist gleich lang aber nicht parallel zu einander.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[ ]] Quadrat
 [[ ]] Rechteck
 [[ ]] Raute
@@ -68,6 +74,9 @@ Mindestens ein Paar von gegenüberliegenden Seiten ist gleich lang aber nicht pa
 [[X]] symmetrisches Trapez
 [[ ]] Trapez
 [[ ]] symmetrischer Drachen
+
+
+@ADetails(1=BE; Viereck)
 
 
 </div> 
@@ -81,6 +90,12 @@ __$b)\;\;$__
 
 Die Diagonalen sind nicht orthogonal zu einander.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[ ]] Quadrat
 [[ ]] Rechteck
 [[ ]] Raute
@@ -88,6 +103,9 @@ Die Diagonalen sind nicht orthogonal zu einander.
 [[X]] symmetrisches Trapez
 [[X]] Trapez
 [[ ]] symmetrischer Drachen
+
+
+@ADetails(1=BE; Viereck)
 
 
 </div> 
@@ -101,6 +119,12 @@ __$c)\;\;$__
 
 Es existieren zwei Winkel die gleich groß sind, aber nicht alle Winkel haben das gleiche Winkelmaß.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[ ]] Quadrat
 [[ ]] Rechteck
 [[X]] Raute
@@ -108,6 +132,9 @@ Es existieren zwei Winkel die gleich groß sind, aber nicht alle Winkel haben da
 [[X]] symmetrisches Trapez
 [[ ]] Trapez
 [[X]] symmetrischer Drachen
+
+
+@ADetails(1=BE; Viereck)
 
 
 </div> 
@@ -119,6 +146,12 @@ __$d)\;\;$__
 
 Das Viereck kann genau einen rechten Winkel haben.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[ ]] Quadrat
 [[ ]] Rechteck
 [[ ]] Raute
@@ -126,6 +159,9 @@ Das Viereck kann genau einen rechten Winkel haben.
 [[ ]] symmetrisches Trapez
 [[ ]] Trapez
 [[X]] symmetrischer Drachen
+
+
+@ADetails(1=BE; Viereck)
 
 
 </div> 

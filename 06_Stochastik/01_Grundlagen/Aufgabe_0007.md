@@ -55,6 +55,14 @@ $\{ 7,8,8,6,11,14,12,12,13,8,10,7,7,11,9 \}$
 <section class="dynFlex">
 
 <div class="flex-child">
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ **Gib** die Spannweite **an**.\
 $R=$ [[  8  ]]
 *******************
@@ -62,9 +70,19 @@ $R = x_{max} - x_{min} = 14 - 6 = 8$
 *******************
 
 
+@ADetails(1=BE; Spannweite)
+
+
 </div>
 <div class="flex-child">
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ **Gib** den Median **an**.\
 $\tilde{x}=$ [[  9  ]]
 *******************
@@ -72,11 +90,24 @@ $\{ 6,7,7,7,8,8,8,\textcolor{red}{9},10,11,11,12,12,13,14 \}$
 *******************
 
 
+@ADetails(1=BE; Median)
+
+
 </div>
 <div class="flex-child">
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ **Gib** das arithmetische Mittel gerundet auf drei Nachkommastellen **an**.\
 $\bar{x}=$ [[  9,533  ]]
+
+
+@ADetails(1=BE; Arithmetisches Mittel, Runden)
 
 
 </div> 

@@ -57,7 +57,16 @@ author: Martin Lommatzsch
 <div class="flex-child">
 __$a)\;\;$__ Die Gerade $f$ ist orthogonal zur Geraden $g$, während $g$ orthogonal zur Geraden $k$ ist. \
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $f$ [[$\bot$|($\parallel$)]] $k$
+
+@ADetails(1=BE; Lagebeziehung)
 
 
 </div>
@@ -66,7 +75,16 @@ $f$ [[$\bot$|($\parallel$)]] $k$
 
 __$b)\;\;$__ Die Gerade $f$ ist parallel zur Geraden $g$, während $g$ orthogonal zur Geraden $k$ ist. Die Gerade $k$ ist parallel zur Geraden $h$. \
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $f$ [[($\bot$)|$\parallel$]] $h$
+
+@ADetails(1=BE; Lagebeziehung)
 
 </div>
 

@@ -53,10 +53,18 @@ author: Martin Lommatzsch
 
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $1 \quad 1 \quad 2 \quad 5 \quad 15 \quad 52 \quad 203 \quad 877 \quad $ [[ 4140 ]] @canvas $\quad$ [[ 21147 ]] @canvas $\quad$ [[ 115975 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die Bell'schen Zahlen beschreiben die Anzahl von Verbindungen in $n$-Ecken.
 
+
+@ADetails(1=BE; Folge)
 
 
 

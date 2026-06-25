@@ -54,19 +54,49 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ In einer Urne befinden sich $24$ blaue, $18$ grüne und $8$ rote Kugeln. **Gib** die Wahrscheinlichkeit in Prozent **an** eine grüne Kugel zu ziehen.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$ [[ 36  ]]$\%$ 
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
 
 
 
 __$b)\;\;$__ Ein Glücksrad ist in gleich große Segmente unterteilt. Dabei sind $5$ Felder rot, $13$ Felder weiß und $7$ Felder schwarz. **Gib** die Wahrscheinlichkeit in Prozent **an**, dass beim Drehen des Glücksrades ein rotes Feld resultiert.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$ [[ 20  ]]$\%$ 
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
 
 
 
 __$c)\;\;$__ Bei einer Stichprobe im Supermarkt von $125$ Produkten waren $4$ fehlerhaft. **Gib** die Wahrscheinlichkeit in Prozent **an** ein fehlerhaftes Produkt zu kaufen.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $p=$ [[ 3,2 ]]$\%$ 
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
 
 
 

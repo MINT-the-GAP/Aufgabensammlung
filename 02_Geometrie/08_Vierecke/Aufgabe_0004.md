@@ -119,8 +119,17 @@ __$a)\;\;$__
 
 ```
 </center>
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Es handelt sich um ein Rechteck. \
 $B($[[  9  ]]$|$[[  7  ]]$)$ \
+
+
+@ADetails(1=BE; Viereck, Rechteck, Koordinatensystem)
 
 </div> 
 
@@ -191,8 +200,17 @@ __$b)\;\;$__
 
 ```
 </center>
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 Es handelt sich um ein Parallelogramm. \
 $D($[[  5  ]]$|$[[  8  ]]$)$ \
+
+
+@ADetails(1=BE; Viereck, Parallelogramm, Koordinatensystem)
 
 </div> 
 

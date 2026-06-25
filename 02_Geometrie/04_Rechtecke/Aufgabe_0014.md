@@ -60,7 +60,17 @@ author: Martin Lommatzsch
 <div class="flex-child">
 __$a)\;\;$__ $a=4,4\,$dm $\;\;\wedge\;\; b=0,1\,$dm
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $A=$[[  0,44   ]]dm$^2$
+@Algebrite.check( 0.44 )
+
+@ADetails(1=BE; Fläche, Dezimalzahlen)
 
 
 </div>
@@ -69,7 +79,17 @@ $A=$[[  0,44   ]]dm$^2$
 
 __$b)\;\;$__ $a=3,5\,$mm $\;\;\wedge\;\; b=0,75\,$mm
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $A=$[[  2,625  ]]mm$^2$
+@Algebrite.check( 2.625 )
+
+@ADetails(1=BE; Fläche, Dezimalzahlen)
 
 
 </div>

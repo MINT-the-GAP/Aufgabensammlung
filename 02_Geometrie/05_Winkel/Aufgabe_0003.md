@@ -89,8 +89,17 @@ __$a)\;\;$__
 ```
 </center>
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\mu =$ [[ 47 ]]$^\circ$ und es handelt sich um die Beziehung eines [[(Nebenwinkels)|Scheitelwinkels|Stufenwinkels|Wechselwinkels]].
 
+
+@ADetails(1=BE; Winkelbeziehung)
 
 </div>
 
@@ -131,7 +140,16 @@ __$b)\;\;$__
 ```
 </center>
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\eta =$ [[ 61 ]]$^\circ$ und es handelt sich um die Beziehung eines [[Nebenwinkels|Scheitelwinkels|Stufenwinkels|(Wechselwinkels)]].
+
+@ADetails(1=BE; Winkelbeziehung)
 
 </div>
 

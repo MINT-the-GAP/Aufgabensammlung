@@ -56,27 +56,51 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $194 \quad 183 \quad 169 \quad 152 \quad 132 \quad 109 \quad $ [[ 83 ]] @canvas $\quad$ [[ 57 ]] @canvas $\quad$ [[ 28 ]] @canvas \
 
 [[?]] Musterbeschreibung: Um $3$ wachsender Subtrahend wird vom vorherigen Wert subtrahiert.
 
 
+@ADetails(1=BE; Folge)
+
 
 __$b)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $1 \quad 16 \quad 81 \quad 256 \quad 625 \quad $ [[ 1296 ]] @canvas $\quad$ [[ 2401 ]] @canvas $\quad$ [[ 4096 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen hoch $4$.
 
 
+@ADetails(1=BE; Folge)
+
 
 
 __$c)\;\;$__
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $0 \quad 1 \quad 10 \quad 11 \quad 100 \quad 101 \quad 110 \quad 111 \quad $ [[ 1000 ]] @canvas $\quad$ [[ 1001 ]] @canvas $\quad$ [[ 1010 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die aufsteigenden Zahlen in binär.
 
+
+@ADetails(1=BE; Folge)
 
 
 

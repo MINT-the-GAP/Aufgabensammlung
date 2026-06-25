@@ -58,19 +58,49 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ In einer Urne befinden sich $26$ rote und $14$ schwarze Kugeln. **Gib** den Erwartungswert der getroffenen schwarzen Kugeln **an**, wenn aus der Urne eine Kugel ohne Zurücklegen $13$-mal hintereinander gezogen wird.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\mu =$ [[  4,55  ]]
+@Algebrite.check(4.55)
+
+
+@ADetails(1=BE; Hypergeometrische Verteilung, Erwartungswert)
 
 
 
 __$b)\;\;$__ Auf fünf Stelle bewerben sich $32$ Personen, wovon $12$ männlich sind. Die Stellen werden per Losverfahren vergeben. **Gib** den Erwartungswert für männliche Personen **an**.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\mu =$ [[  1,875 ]]
+@Algebrite.check(1.875)
+
+
+@ADetails(1=BE; Hypergeometrische Verteilung, Erwartungswert)
 
 
 
 __$c)\;\;$__ Bei einem Kartenspiel werden zu Beginn sechs Karten gezogen. Insgesamt gibt es vier Joker unter den insgesamt $48$ Karten. **Gib** den Erwartungswert bezüglich der Joker **an**.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\mu =$ [[  0,5   ]]
+@Algebrite.check(0.5)
+
+
+@ADetails(1=BE; Hypergeometrische Verteilung, Erwartungswert)
 
 
 

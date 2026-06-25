@@ -64,15 +64,42 @@ $V.\;\;\;\; 1- \left( \begin{array}{c} 7 \\ 3 \end{array} \right) \left( \dfrac{
 
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ Beim Ziehen mit Zurücklegen aus einer Urne mit drei roten und vier blauen Kugeln, gewinnt ein Spieler den Hauptgewinn, wenn dieser genau dreimal blau und viermal rot zieht. Term [[I.|(II.)|III.|IV.|V.]] beschreibt dieses Szenario.
 
 
+@ADetails(1=BE; Binomialverteilung)
 
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ Es wurde dreimal hinter einander blau und dann viermal rot gezogen. Term [[I.|II.|III.|(IV.)|V.]] beschreibt dieses Szenario.
 
 
+@ADetails(1=BE; Binomialverteilung)
 
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ Es wurde $\{$ blau, rot, blau, rot, blau, rot, blau $\}$ gezogen. Term [[I.|II.|III.|(IV.)|V.]] beschreibt dieses Szenario.
+
+
+@ADetails(1=BE; Binomialverteilung)
 
 
 

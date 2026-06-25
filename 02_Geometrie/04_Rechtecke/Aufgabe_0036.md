@@ -58,9 +58,20 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 
 <div class="flex-child">
+
 __$a)\;\;$__ $A=64\,$km$^2\;\;\wedge\;\; a=4\,$km
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $b=$[[  1600000  ]]cm
+@Algebrite.check( 1600000 )
+
+@ADetails(1=BE; Fläche, Einheiten)
 
 
 </div>
@@ -69,7 +80,17 @@ $b=$[[  1600000  ]]cm
 
 __$b)\;\;$__ $A=250000\,$cm$^2\;\;\wedge\;\; a=5\,$dm
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $b=$[[  50       ]]m
+@Algebrite.check( 50 )
+
+@ADetails(1=BE; Fläche, Einheiten)
 
 
 

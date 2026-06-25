@@ -60,7 +60,16 @@ author: Martin Lommatzsch
 <div class="flex-child">
 __$a)\;\;$__ $a=11\,$cm $\;\;\wedge\;\; b=14\,$cm
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $u=$[[  50  ]]cm
+
+@ADetails(1=BE; Umfang)
 
 
 </div>
@@ -69,7 +78,16 @@ $u=$[[  50  ]]cm
 
 __$b)\;\;$__ $a=18\,$cm $\;\;\wedge\;\; b=21\,$cm
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $u=$[[  78  ]]cm
+
+@ADetails(1=BE; Umfang)
 
 
 </div>

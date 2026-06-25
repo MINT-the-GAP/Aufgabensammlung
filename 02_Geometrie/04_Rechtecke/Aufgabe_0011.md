@@ -60,7 +60,16 @@ author: Martin Lommatzsch
 <div class="flex-child">
 __$a)\;\;$__ $a=46\,$mm $\;\;\wedge\;\; b=24\,$mm
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $u=$[[  14   ]]cm
+
+@ADetails(1=BE; Umfang, Einheiten)
 
 
 </div>
@@ -69,7 +78,16 @@ $u=$[[  14   ]]cm
 
 __$b)\;\;$__ $a=4\,$dm $\;\;\wedge\;\; b=2\,$m
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $u=$[[  2800 ]]mm
+
+@ADetails(1=BE; Umfang, Einheiten)
 
 
 

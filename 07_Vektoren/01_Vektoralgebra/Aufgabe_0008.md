@@ -57,6 +57,12 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ $\vec{a} = \left(\begin{array}{c} 1 \\ 8 \\ -1 \end{array}\right)$  \
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
  $ \left| \vec{a} \right| = $ [[  8,124  ]] $LE$
 ***************
 $$
@@ -66,6 +72,8 @@ $$
 $$
 ***************
 
+@ADetails(1=BE; Vektoren, Länge, Runden)
+
 
 
 </div>
@@ -73,6 +81,12 @@ $$
 
 __$b)\;\;$__ $\vec{a} = \left(\begin{array}{c} 6 \\ -6 \\ 7 \end{array}\right)$  \
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
  $ \left| \vec{a} \right| = $ [[   11   ]] $LE$
 ***************
 $$
@@ -82,6 +96,8 @@ $$
 $$
 ***************
 
+@ADetails(1=BE; Vektoren, Länge, Runden)
+
 
 
 </div>
@@ -89,6 +105,12 @@ $$
 
 __$c)\;\;$__ $\vec{a} = \left(\begin{array}{c} 5 \\ -7 \\ 3 \end{array}\right)$  \
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
  $ \left| \vec{a} \right| = $ [[  9,110  ]] $LE$
 ***************
 $$
@@ -98,6 +120,8 @@ $$
 $$
 ***************
 
+@ADetails(1=BE; Vektoren, Länge, Runden)
+
 
 
 </div>
@@ -105,6 +129,12 @@ $$
 
 __$d)\;\;$__ $\vec{a} = \left(\begin{array}{c} -11 \\ 3 \\ -3 \end{array}\right)$  \
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
  $ \left| \vec{a} \right| = $ [[  11,790 ]] $LE$
 ***************
 $$
@@ -113,6 +143,8 @@ $$
  \end{align*}
 $$
 ***************
+
+@ADetails(1=BE; Vektoren, Länge, Runden)
 
 
 

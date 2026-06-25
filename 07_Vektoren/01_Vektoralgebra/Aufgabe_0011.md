@@ -57,6 +57,12 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ $P\left( -7 | 0 | 9 \right) \;\;\wedge\;\; Q\left( 4 | -5 | -7 \right)$  \
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
  $ d = $ [[ 20,050  ]] $LE$
 ***************
 $$
@@ -70,6 +76,8 @@ $$
 $$
 ***************
 
+@ADetails(1=BE; Vektoren, Länge, Runden)
+
 
 
 </div>
@@ -77,6 +85,12 @@ $$
 
 __$b)\;\;$__ $P\left( 4 | -6 | -4 \right) \;\;\wedge\;\; Q\left( 7 | -8 | 5 \right)$  \
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
  $ d = $ [[  9,695  ]] $LE$
 ***************
 $$
@@ -90,6 +104,8 @@ $$
 $$
 ***************
 
+@ADetails(1=BE; Vektoren, Länge, Runden)
+
 
 
 </div>
@@ -97,6 +113,12 @@ $$
 
 __$c)\;\;$__ $P\left( 2 | 0 | -4 \right) \;\;\wedge\;\; Q\left( 8 | -7 | 0 \right)$  \
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
  $ d = $ [[  10,050  ]] $LE$
 ***************
 $$
@@ -110,6 +132,8 @@ $$
 $$
 ***************
 
+@ADetails(1=BE; Vektoren, Länge, Runden)
+
 
 
 </div>
@@ -117,6 +141,12 @@ $$
 
 __$d)\;\;$__ $P\left( 7 | 7 | 9 \right) \;\;\wedge\;\; Q\left( -6 | -8 | -7 \right)$  \
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
  $ d = $ [[  25,495  ]] $LE$
 ***************
 $$
@@ -129,6 +159,8 @@ $$
  \end{align*}
 $$
 ***************
+
+@ADetails(1=BE; Vektoren, Länge, Runden)
 
 
 

@@ -58,9 +58,19 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 
 <div class="flex-child">
+
 __$a)\;\;$__ $g=8\,$cm $\;\;\wedge\;\; h=3\,$cm
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $A=$[[  12  ]]cm$^2$
+
+
+@ADetails(1=BE; Dreieck, Fläche)
 
 
 </div>
@@ -69,7 +79,16 @@ $A=$[[  12  ]]cm$^2$
 
 __$b)\;\;$__ $g=15\,$cm $\;\;\wedge\;\; h=8\,$cm
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $A=$[[  60  ]]cm$^2$
+
+
+@ADetails(1=BE; Dreieck, Fläche)
 
 
 

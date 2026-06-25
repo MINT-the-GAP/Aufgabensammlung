@@ -58,10 +58,20 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Es gibt $6$ unterschiedliche Kugeln. 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  720    ]] 
 **********
 $6! = 720$
 **********
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
 
 
 </div>
@@ -69,10 +79,20 @@ $6! = 720$
 
 __$b)\;\;$__ Es gibt $5$ rote und $3$ blaue Kugeln. 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  56     ]] 
 **********
 $\dfrac{8!}{5!3!} = 56$
 **********
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
 
 
 </div>
@@ -81,10 +101,20 @@ $\dfrac{8!}{5!3!} = 56$
 
 __$c)\;\;$__ Es gibt $9$ rote und $3$ blaue Kugeln. 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  220    ]] 
 **********
 $\dfrac{12!}{6!3!} = 220$
 **********
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
 
 </div>
 </section>

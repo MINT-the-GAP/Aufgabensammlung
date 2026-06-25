@@ -109,7 +109,17 @@ __$a)\;\;$__
 
 ```
 </center>
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
  $A=$[[  35  ]]$FE$ \
+@Algebrite.check( 35 )
+
+@ADetails(1=BE; Fläche)
 
 </div> 
 
@@ -170,7 +180,17 @@ __$b)\;\;$__
 
 ```
 </center>
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
  $A=$[[  24  ]]$FE$ \
+@Algebrite.check( 24 )
+
+@ADetails(1=BE; Fläche)
 
 </div> 
 

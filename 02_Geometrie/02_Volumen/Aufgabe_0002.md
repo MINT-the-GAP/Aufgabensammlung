@@ -61,11 +61,19 @@ author: Martin Lommatzsch
 __$a)\;\;$__ Ein Würfel besitzt einen Volumeninhalt von $64\,$cm$^3$. Wie groß ist die Kantenlänge?
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 - [[ ]] $a=3\,$cm
 - [[X]] $a=4\,$cm
 - [[ ]] $a=6\,$cm
 - [[ ]] $a=8\,$cm
 - [[ ]] $a=16\,$cm
+
+@ADetails(1=BE; Volumen)
 
 
 
@@ -79,11 +87,19 @@ __$a)\;\;$__ Ein Würfel besitzt einen Volumeninhalt von $64\,$cm$^3$. Wie groß
 __$b)\;\;$__ Ein Würfel besitzt einen Oberflächeninhalt von $150\,$cm$^2$. Wie groß ist die Kantenlänge?
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 - [[ ]] $a=3\,$cm
 - [[ ]] $a=4\,$cm
 - [[X]] $a=5\,$cm
 - [[ ]] $a=6\,$cm
 - [[ ]] $a=8\,$cm
+
+@ADetails(1=BE; Oberfläche)
 
 
 

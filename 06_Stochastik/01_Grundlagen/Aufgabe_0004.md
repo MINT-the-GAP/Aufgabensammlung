@@ -72,12 +72,21 @@ $\{$
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap7/diew1.png" width="30" height="30"> 
 $\}$
 
-<!-- data-solution-button="5" 
-data-hint-button="3" -->
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\tilde{x}=$ [[  2  ]]
 *******************
 $\{ 1;1;1;1;2;\textcolor{red}{2};4;4;5;6;6 \}$
 *******************
+
+
+@ADetails(1=BE; Median)
 
 
 
@@ -106,12 +115,21 @@ $\{ \{$
 $\} \}$
 
 
-<!-- data-solution-button="5" 
-data-hint-button="3" -->
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\tilde{x}=$ [[  7  ]]
 *******************
 $\{ 6;7;7;\textcolor{red}{7};7;7;10; \}$
 *******************
+
+
+@ADetails(1=BE; Median)
 
 
 
@@ -143,11 +161,20 @@ $\{ \{$
 $\} \}$
 
 
-<!-- data-solution-button="5" 
-data-hint-button="3" -->
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\tilde{x}=$ [[  7  ]]
 *******************
 $\{ 2;3;4;4;7;\textcolor{red}{7};7;8;9;9;12  \}$
 *******************
+
+
+@ADetails(1=BE; Median)
 
 

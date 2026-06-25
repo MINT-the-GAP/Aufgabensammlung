@@ -60,7 +60,16 @@ author: Martin Lommatzsch
 <div class="flex-child">
 __$a)\;\;$__ $a=2\,$cm $\;\;\wedge\;\; b=3\,$dm
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $A=$[[  6000  ]]mm$^2$
+
+@ADetails(1=BE; Fläche, Einheiten)
 
 
 </div>
@@ -69,7 +78,16 @@ $A=$[[  6000  ]]mm$^2$
 
 __$b)\;\;$__ $a=7\,$cm $\;\;\wedge\;\; b=80\,$cm
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $A=$[[  56    ]]cm$^2$
+
+@ADetails(1=BE; Fläche)
 
 
 </div>

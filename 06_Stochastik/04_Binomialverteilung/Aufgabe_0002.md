@@ -64,15 +64,42 @@ $V.\;\;\;\; \dfrac{1}{10} \cdot \left( \dfrac{9}{10} \right)^3  $ \
 
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ Beim Drehen eines Glücksrades mit einer Trefferwahrscheinlichkeit von $10\%$ wurde bei vier Versuchen einmal ein Treffer erzielt. Term [[I.|II.|(III.)|IV.|V.]] beschreibt dieses Szenario.
 
 
+@ADetails(1=BE; Binomialverteilung)
 
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ Um den Hauptpreis bei einem Glücksrad mit zehn gleich großen Feldern zu bekommen, müssen alle vier Versuche ein Treffer sein. Term [[(I.)|II.|III.|IV.|V.]] beschreibt dieses Szenario.
 
 
+@ADetails(1=BE; Binomialverteilung)
 
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ Beim Drehen des Glücksrades mit einer Trefferwahrscheinlichkeit von $10\%$ wurden das Ereignis $\{$ Treffer, Nichttreffer, Nichttreffer, Nichttreffer $\}$ festgehalten. Term [[I.|II.|III.|IV.|(V.)]] beschreibt dieses Szenario.
+
+
+@ADetails(1=BE; Binomialverteilung)
 
 
 

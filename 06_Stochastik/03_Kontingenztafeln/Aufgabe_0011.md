@@ -73,6 +73,13 @@ data-sortable="false" -->
 
 __$a)\;\;$__  **Bestimme** aus den Werten der Vierfeldertafel den Wert für $P(\bar{A}|B)=P_{B}(\bar{A})$ in Prozent. Runde falls nötig auf drei Nachkommastellen.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $P(\bar{A}|B)=P_{B}(\bar{A}) = $ [[ 90    ]] $\%$ 
  @Algebrite.check(90/100)
 *************
@@ -80,15 +87,28 @@ $P(\bar{A}|B)=P_{B}(\bar{A}) = \dfrac{ P(\bar{A} \cap B) }{ P(B) } = \dfrac{0,54
 *************
 
 
+@ADetails(1=BE; Vierfeldertafel, bedingte Wahrscheinlichkeit)
+
+
 
 
 __$b)\;\;$__  **Bestimme** aus den Werten der Vierfeldertafel den Wert für $P(\bar{B}|\bar{A})=P_{\bar{A}}(\bar{B})$ in Prozent. Runde falls nötig auf drei Nachkommastellen.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $P(\bar{B}|\bar{A})=P_{\bar{A}}(\bar{B}) = $ [[ 27,5  ]] $\%$ 
  @Algebrite.check(275/1000)
 *************
 $P(\bar{B}|\bar{A})=P_{\bar{A}}(\bar{B}) = \dfrac{ P(\bar{B} \cap \bar{A}) }{ P(\bar{A}) } = \dfrac{0,22}{0,8} = 27,5\%$
 *************
+
+
+@ADetails(1=BE; Vierfeldertafel, bedingte Wahrscheinlichkeit)
 
 
 
@@ -97,11 +117,21 @@ $P(\bar{B}|\bar{A})=P_{\bar{A}}(\bar{B}) = \dfrac{ P(\bar{B} \cap \bar{A}) }{ P(
 
 __$c)\;\;$__  **Bestimme** aus den Werten der Vierfeldertafel den Wert für $P(B|A)=P_{A}(B)$ in Prozent. Runde falls nötig auf drei Nachkommastellen.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $P(B|A)=P_{A}(B) = $ [[ 30    ]] $\%$ 
  @Algebrite.check(30/100)
 *************
 $P(B|A)=P_{A}(B) = \dfrac{ P(B \cap A) }{ P(A) } = \dfrac{0,06}{0,2} = 30\%$
 *************
+
+
+@ADetails(1=BE; Vierfeldertafel, bedingte Wahrscheinlichkeit)
 
 
 

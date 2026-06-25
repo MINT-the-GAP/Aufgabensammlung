@@ -57,10 +57,20 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Es gibt $7$ unterschiedliche Kugeln. 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  5040   ]] 
 **********
 $7! = 5040$
 **********
+
+
+@ADetails(1=BE; Permutationen)
 
 </div>
 <div class="flex-child">
@@ -68,10 +78,20 @@ $7! = 5040$
 
 __$b)\;\;$__ Es gibt $4$ rote und $2$ blaue Kugeln.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  15     ]] 
 **********
 $\dfrac{6!}{4!2!} = 15$
 **********
+
+
+@ADetails(1=BE; Permutationen)
 
 
 </div>
@@ -80,10 +100,20 @@ $\dfrac{6!}{4!2!} = 15$
 
 __$c)\;\;$__ Es gibt $6$ rote, $2$ grüne und $2$ blaue Kugeln.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  1260   ]] 
 **********
 $\dfrac{10!}{6!2!2!} = 1260$
 **********
+
+
+@ADetails(1=BE; Permutationen)
 
 
 </div>

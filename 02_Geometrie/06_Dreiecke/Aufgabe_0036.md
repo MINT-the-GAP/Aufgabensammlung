@@ -58,9 +58,19 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 
 <div class="flex-child">
+
 __$a)\;\;$__ $g= 1,4\,$dm $\;\;\wedge\;\; h= 5,1\,$cm
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $A=$[[  3570  ]]mm$^2$
+
+
+@ADetails(1=BE; Dreieck, Fläche, Einheiten, Dezimalzahlen)
 
 
 </div>
@@ -69,7 +79,17 @@ $A=$[[  3570  ]]mm$^2$
 
 __$b)\;\;$__ $g= 0,4\,$dm $\;\;\wedge\;\; h= 2,4\,$mm
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $A=$[[   0,6   ]]cm$^2$
+@Algebrite.check( 0.6 )
+
+
+@ADetails(1=BE; Dreieck, Fläche, Einheiten, Dezimalzahlen)
 
 
 

@@ -89,8 +89,16 @@ __$a)\;\;$__
 ```
 </center>
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\varphi =$ [[ 43 ]]$^\circ$ und es handelt sich um die Beziehung eines [[Nebenwinkels|Scheitelwinkels|(Stufenwinkels)|Wechselwinkels]].
 
+@ADetails(1=BE; Winkelbeziehung)
 
 </div>
 
@@ -131,7 +139,16 @@ __$b)\;\;$__
 ```
 </center>
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\theta =$ [[ 122 ]]$^\circ$ und es handelt sich um die Beziehung eines [[Nebenwinkels|(Scheitelwinkels)|Stufenwinkels|Wechselwinkels]].
+
+@ADetails(1=BE; Winkelbeziehung)
 
 </div>
 

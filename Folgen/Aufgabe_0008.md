@@ -53,11 +53,19 @@ author: Martin Lommatzsch
 
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $1 \quad 4 \quad 18 \quad 48 \quad 125 \quad 288 \quad  637 \quad $ [[ 1344 ]] @canvas $\quad$ [[ 2754 ]] @canvas $\quad$ [[ 5500 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die Fibonacci Zahlen werden mit den aufsteigenden Quadratzahlen multipliziert.
 
 
+
+@ADetails(1=BE; Folge)
 
 
 

@@ -60,7 +60,16 @@ author: Martin Lommatzsch
 <div class="flex-child">
 __$a)\;\;$__ $a=2500\,$m $\;\;\wedge\;\; b=15\,$km
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $u=$[[  35    ]]km
+
+@ADetails(1=BE; Umfang, Einheiten)
 
 
 </div>
@@ -69,7 +78,16 @@ $u=$[[  35    ]]km
 
 __$b)\;\;$__ $a=21\,$m $\;\;\wedge\;\; b=36\,$cm
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $u=$[[ 42720  ]]mm
+
+@ADetails(1=BE; Umfang, Einheiten)
 
 
 

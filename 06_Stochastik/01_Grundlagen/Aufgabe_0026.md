@@ -69,27 +69,87 @@ __$a)\;\;$__
 <div class="flex-child">
 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 **Gib** die absolute Häufigkeit der grünen Kugeln **an**.\
 $\#(G)=$ [[  5  ]]
 
+
+
+@ADetails(1=BE; absolute Häufigkeit)
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 **Gib** die relative Häufigkeit der orangen Kugeln **an**.\
 $p(O)=$ [[ 3/18  ]]
 @Algebrite.check(3/18)
 
+
+
+@ADetails(1=BE; relative Häufigkeit)
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 **Gib** die Wahrscheinlichkeit **an**, eine blaue Kugel zu ziehen.\
 $P(B)=$ [[  6/18  ]]
 @Algebrite.check(6/18)
 
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 **Gib** die Chance **an**, eine rote Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R)=$ [[  4:14  ]]
 
+
+
+@ADetails(1=BE; Chance)
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 **Gib** die Wahrscheinlichkeit **an**, eine orange oder grüne Kugel zu ziehen.\
 $P(O \cup G)=$ [[  8/18  ]]
 @Algebrite.check(8/18)
 
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 **Gib** die Chance **an**, eine rote oder blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R \cup B)=$ [[  10:8  ]]
 
+
+
+@ADetails(1=BE; Chance)
 
 </div>
 </section>
@@ -111,27 +171,87 @@ __$b)\;\;$__
 <div class="flex-child">
 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 **Gib** die absolute Häufigkeit der violette Kugeln **an**.\
 $\#(V)=$ [[  6  ]]
 
+
+
+@ADetails(1=BE; absolute Häufigkeit)
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 **Gib** die relative Häufigkeit der grünen Kugeln **an**.\
 $p(G)=$ [[  4/20  ]]
 @Algebrite.check(4/20)
 
+
+
+@ADetails(1=BE; relative Häufigkeit)
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 **Gib** die Wahrscheinlichkeit **an**, eine blaue Kugel zu ziehen.\
 $P(B)=$ [[  6/20  ]]
 @Algebrite.check(6/20)
 
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 **Gib** die Chance **an**, eine orange Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(O)=$ [[  3:17  ]]
 
+
+
+@ADetails(1=BE; Chance)
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 **Gib** die Wahrscheinlichkeit **an**, keine rote Kugel zu ziehen.\
 $P(\bar{R})=$ [[  19/20  ]]
 @Algebrite.check(19/20)
 
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 **Gib** die Chance **an**, eine violette oder orange Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(O \cup V)=$ [[  9:11  ]]
 
+
+
+@ADetails(1=BE; Chance)
 
 </div>
 
@@ -154,28 +274,88 @@ __$c)\;\;$__
 
 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 **Gib** die relative Häufigkeit der violetten und grünen Kugeln **an**.\
 $p(V \cup G)=$ [[  7/22  ]]
 @Algebrite.check(7/22)
 
+
+
+@ADetails(1=BE; relative Häufigkeit)
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 **Gib** die Wahrscheinlichkeit **an**, keine grüne oder blaue Kugel zu ziehen.\
 $P(\bar{G} \cup \bar{B})=$ [[  13/22  ]]
 @Algebrite.check(16/22)
 
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 **Gib** die Chance **an**, eine blaue oder violette Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(V \cup B)=$ [[  11:11  ]]
 
+
+
+@ADetails(1=BE; Chance)
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 **Gib** die Wahrscheinlichkeit **an**, eine rote oder grüne Kugel zu ziehen.\
 $P(R \cup G)=$ [[  7/22  ]]
 @Algebrite.check(7/22)
 
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 **Gib** die Wahrscheinlichkeit **an**, eine orange, blaue oder violette Kugel zu ziehen.\
 $P(O \cup B \cup V) =$ [[  15/22  ]]
 @Algebrite.check(15/22)
 
+
+
+@ADetails(1=BE; Wahrscheinlichkeit)
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 **Gib** die Chance **an**, keine rote oder violette Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(\bar{R} \cup \bar{V})=$ [[  13:9  ]]
 
+
+
+@ADetails(1=BE; Chance)
 
 </div>
 

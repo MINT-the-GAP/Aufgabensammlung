@@ -58,9 +58,19 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 
 <div class="flex-child">
+
 __$a)\;\;$__ $a=24\,$cm $\;\;\wedge\;\; b=15\,$cm
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $u=$[[  78  ]]cm
+
+@ADetails(1=BE; Umfang)
 
 
 </div>
@@ -69,7 +79,16 @@ $u=$[[  78  ]]cm
 
 __$b)\;\;$__ $a=13\,$cm $\;\;\wedge\;\; b=18\,$cm
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $u=$[[  62  ]]cm
+
+@ADetails(1=BE; Umfang)
 
 
 

@@ -59,9 +59,20 @@ author: Martin Lommatzsch
 
 
 <div class="flex-child">
+
 __$a)\;\;$__ $u=5,44\,$cm $\;\;\wedge\;\; b=2,2\,$cm $\;\;\wedge\;\; c=2,12\,$cm
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $a=$[[  1,12  ]]cm
+@Algebrite.check( 1.12 )
+
+
+@ADetails(1=BE; Dreieck, Umfang, Einheiten, Dezimalzahlen)
 
 
 </div>
@@ -70,7 +81,17 @@ $a=$[[  1,12  ]]cm
 
 __$b)\;\;$__ $u=13,8\,$cm $\;\;\wedge\;\; b=4,7\,$cm $\;\;\wedge\;\; c=5,9\,$cm
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $a=$[[  3,2  ]]cm
+@Algebrite.check( 3.2 )
+
+
+@ADetails(1=BE; Dreieck, Umfang, Einheiten, Dezimalzahlen)
 
 
 

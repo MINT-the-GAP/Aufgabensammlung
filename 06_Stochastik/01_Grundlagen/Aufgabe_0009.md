@@ -55,6 +55,13 @@ $\{ 56,54,55,56,57,55,56,54,53,58,55,56,54,52,56,57 \}$
 <section class="dynFlex">
 
 <div class="flex-child">
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$a)\;\;$__ **Gib** die Spannweite **an**.\
 $R=$ [[  6  ]]
 *******************
@@ -62,9 +69,19 @@ $R = x_{max} - x_{min} = 58 - 52 = 6$
 *******************
 
 
+@ADetails(1=BE; Spannweite)
+
+
 </div>
 <div class="flex-child">
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$b)\;\;$__ **Gib** den Median **an**.\
 $\tilde{x}=$ [[ 55,5  ]]
 *******************
@@ -72,11 +89,24 @@ $\{ 52,53,54,54,54,55,55,\textcolor{red}{55},\textcolor{red}{56},56,56,56,56,57,
 *******************
 
 
+@ADetails(1=BE; Median)
+
+
 </div>
 <div class="flex-child">
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 __$c)\;\;$__ **Gib** das arithmetische Mittel **an**.\
 $\bar{x}=$ [[  55,25  ]]
+
+
+@ADetails(1=BE; Arithmetisches Mittel)
 
 
 </div> 

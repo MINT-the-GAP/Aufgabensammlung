@@ -59,10 +59,20 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Es gibt $5$ unterschiedliche Kugeln. 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  120    ]] 
 **********
 $6! = 720$
 **********
+
+
+@ADetails(1=BE; Permutationen)
 
 </div>
 <div class="flex-child">
@@ -70,10 +80,20 @@ $6! = 720$
 
 __$b)\;\;$__ Es gibt $13$ rote und $2$ blaue Kugeln.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[  105    ]] 
 **********
 $\dfrac{15!}{13!2!} = 105$
 **********
+
+
+@ADetails(1=BE; Permutationen)
 
 
 </div>
@@ -82,10 +102,20 @@ $\dfrac{15!}{13!2!} = 105$
 
 __$c)\;\;$__ Es gibt $1$ rote, $2$ grüne und $9$ blaue Kugeln.
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 [[   660   ]] 
 **********
 $\dfrac{12!}{9!2!1!} = 660$
 **********
+
+
+@ADetails(1=BE; Permutationen)
 
 </div>
 </section>

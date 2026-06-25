@@ -58,19 +58,49 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ Auf vier Stelle bewerben sich $20$ Personen, wovon $7$ Berufserfahrung für genau diese Stelle mitbringen würden. Die Stellen werden per Losverfahren vergeben. **Gib** den Erwartungswert für Personen mit Berufserfahrung **an**.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\mu =$ [[  1,4   ]]
+@Algebrite.check(1.4)
+
+
+@ADetails(1=BE; Hypergeometrische Verteilung, Erwartungswert)
 
 
 
 __$b)\;\;$__ Bei einer Verlosung existieren $30$ Gewinnlose und $220$ Nieten. Es wurden $12$ Lose gekauft. **Gib** den Erwartungswert bezüglich der Gewinnlose **an**.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\mu =$ [[  1,44  ]]
+@Algebrite.check(1.44)
+
+
+@ADetails(1=BE; Hypergeometrische Verteilung, Erwartungswert)
 
 
 
 __$c)\;\;$__ In einer Urne befinden sich $72$ schwarze und $8$ weiße Kugeln. **Gib** den Erwartungswert der getroffenen schwarzen Kugeln **an**, wenn aus der Urne eine Kugel ohne Zurücklegen siebenmal hintereinander gezogen wird.
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
 $\mu =$ [[  6,3  ]]
+@Algebrite.check(6.3)
+
+
+@ADetails(1=BE; Hypergeometrische Verteilung, Erwartungswert)
 
 
 
