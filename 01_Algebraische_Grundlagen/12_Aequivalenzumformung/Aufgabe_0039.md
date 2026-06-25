@@ -56,7 +56,13 @@ Eine gesuchte Zahl wird verdreifacht und anschließend um fünf verringert.
 Nimmt man stattdessen von derselben Zahl die Hälfte und addiert sieben, so entsteht derselbe Wert.  
 **Berechne** die gesuchte Zahl.
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $x$ = [[  24/5  ]] @canvas
 @Algebrite.check(24/5)
 ************
@@ -90,3 +96,6 @@ $$
 
 Deutung: Die gesuchte Zahl ist $\dfrac{24}{5}=4{,}8$.
 ************
+
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Sachaufgabe)

@@ -71,8 +71,17 @@ $$
 \end{align*}
 $$
 
-<!-- data-show-partial-solution -->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 Um die Gleichung zu sortieren, wird zu nächst auf beiden Seiten des Gleichungszeichen [[  -3  ]]  gerechnet. Anschließend wird $-6x$ auf [[     beiden Seiten des Gleichheitszeichen     ]]  gerechnet, sodass alles, was mit der Variable $x$ multipliziert ist, auf einer Seite des Gleichheitszeichen ist und alles andere auf der anderen Seite. Abschließend wird durch den Vorfaktor [[  2  ]]  [[  dividiert  ]]. Nachdem die [[  Lösung  ]]  der Gleichung gefunden wurde, wird die [[  Probe  ]]  durchgeführt, indem die Lösung für $x$ in die [[  Gleichung  ]]  vom Anfang eingesetzt wird. Ist auf beiden Seiten des Gleichheitszeichen der gleiche Wert, dann ist die Lösung korrekt.
+
+
+@ADetails(1=BE; Äquivalenzumformung)
 
 
 

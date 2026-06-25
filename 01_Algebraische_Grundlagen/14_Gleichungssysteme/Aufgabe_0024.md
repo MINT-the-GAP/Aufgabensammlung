@@ -56,7 +56,14 @@ author: Martin Lommatzsch
 Zwei Geräte laufen an einem Tag zusammen 5 Stunden. Gerät A kostet pro Stunde 1,40 €, Gerät B pro Stunde 0,90 €. Am Ende betragen die Gesamtkosten 6,70 €.  
 **Berechne** die Laufzeiten beider Geräte.
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 $x$ = [[  22/5  ]] @canvas und $y$ = [[  3/5  ]] @canvas
 @Algebrite.check([ 22/5; 3/5 ])
 ************
@@ -73,6 +80,9 @@ x \cap I:& \qquad \dfrac{22}{5} + y = 5 \;\Rightarrow\; y = 5 - \dfrac{22}{5} = 
 $$
 Die Laufzeiten betragen $ \dfrac{22}{5}\,\text{h} $ und $ \dfrac{3}{5}\,\text{h} $.
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Bruchrechnung, Sachaufgabe)
 
 
 

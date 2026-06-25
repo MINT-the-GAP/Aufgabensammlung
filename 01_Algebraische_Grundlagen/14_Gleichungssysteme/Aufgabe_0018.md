@@ -56,7 +56,14 @@ author: Martin Lommatzsch
 Beim Klassenflohmarkt verkauft die betrachte Klasse Postkarten und Lesezeichen. Insgesamt wurden 34 Artikel verkauft. Eine Postkarte kostet 1 €, ein Lesezeichen 2 €. Am Ende zählen die Schüler:innen 44 € Einnahmen. **Berechne**, wie viele Postkarten und wie viele Lesezeichen verkauft wurden.
 
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 $x$ = [[  24  ]] @canvas und $y$ = [[  10  ]] @canvas
 @Algebrite.check([ 24; 10 ])
 ************
@@ -74,6 +81,9 @@ x \cap I:& \qquad 24 + y = 34 \quad \left| -24 \right. \\
 $$
 Es wurden 24 Postkarten und 10 Lesezeichen verkauft.
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Sachaufgabe)
 
 
 

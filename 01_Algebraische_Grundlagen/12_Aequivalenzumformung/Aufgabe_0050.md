@@ -58,7 +58,13 @@ Ein Regionalzug B befindet sich 145 km östlich des Leuchtturms, fährt aber ers
 **Berechne**, nach wie vielen Stunden seit Abfahrt von Zug A beide Züge an derselben Position relativ zum Leuchtturm sind.  
 
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $x$ = [[  22/19  ]] @canvas
 @Algebrite.check(22/19)
 ************
@@ -94,3 +100,5 @@ $$
 Deutung: Nach $\dfrac{22}{19}\approx 1{,}16$ Stunden (ca. 69,5 Minuten) treffen sich die Züge $\dfrac{1375}{19}\approx 72{,}4$ km östlich vom Leuchtturm.
 
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Sachaufgabe)

@@ -56,7 +56,14 @@ author: Martin Lommatzsch
 Auf einem Innenhof stehen Bänke: einige sind 2er-Bänke, andere 3er-Bänke. Insgesamt sind es 22 Bänke mit zusammen 56 Sitzplätzen.  
 **Berechne** die Anzahl der 2er-Bänke und der 3er-Bänke.
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 $x$ = [[  10  ]] @canvas und $y$ = [[  12  ]] @canvas
 @Algebrite.check([ 10; 12 ])
 ************
@@ -75,6 +82,9 @@ y \cap I:& \qquad x + 12 = 22 \quad \left| -12 \right. \\
 $$
 Es gibt 10 2er-Bänke und 12 3er-Bänke.
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Sachaufgabe)
 
 
 

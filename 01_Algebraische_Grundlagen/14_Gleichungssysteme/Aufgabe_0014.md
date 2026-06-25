@@ -61,7 +61,14 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$a)\;\;$__  
 $$
 \begin{align*}
@@ -92,12 +99,22 @@ x \cap II.& \qquad y = 5\cdot \dfrac{19}{17} - 4 \\
 $$
 
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 </div>
 
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$b)\;\;$__  
 $$
 \begin{align*}
@@ -127,11 +144,21 @@ x \cap II.& \qquad y = 7 - 4\cdot \dfrac{15}{11} \\
 $$
 
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 </div>
 
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$c)\;\;$__  
 $$
 \begin{align*}
@@ -162,12 +189,22 @@ x \cap II.& \qquad y = 3\cdot \dfrac{12}{11} - 2 \\
 $$
 
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 </div>
 
 
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$d)\;\;$__  
 $$
 \begin{align*}
@@ -197,6 +234,9 @@ x \cap II.& \qquad y = 4 - 2\cdot \dfrac{17}{13} \\
 $$
 
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 </div>
 
 

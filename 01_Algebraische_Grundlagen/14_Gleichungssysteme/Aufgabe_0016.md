@@ -62,8 +62,15 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
-__$e)\;\;$__  
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
+__$a)\;\;$__  
 $$
 \begin{align*}
 I.& \qquad 8x + 6y + 5z = 6 \\
@@ -87,12 +94,22 @@ z,x \cap I:&\qquad 8\cdot\dfrac{3}{4} + 6y + 5\!\left(-\dfrac{2}{5}\right) = 6 \
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 </div>
 
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
-__$f)\;\;$__  
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
+__$b)\;\;$__  
 $$
 \begin{align*}
 I.& \qquad 6x + 8y + 9z = 9 \\
@@ -116,12 +133,22 @@ x,z \cap I:&\qquad 6\!\left(-\dfrac{1}{2}\right) + 8y + 9\!\left(\dfrac{2}{3}\ri
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 </div>
 
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
-__$g)\;\;$__  
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
+__$c)\;\;$__  
 $$
 \begin{align*}
 I.& \qquad 9x + 6y + 3z = 7 \\
@@ -145,12 +172,21 @@ x,z \cap I:&\qquad 9\!\left(\dfrac{5}{6}\right) + 6y + 3\!\left(\dfrac{1}{2}\rig
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 </div>
 
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
-__$h)\;\;$__  
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
+__$d)\;\;$__  
 $$
 \begin{align*}
 I.& \qquad 5x + 10y + 4z = 8 \\
@@ -174,6 +210,9 @@ x,z \cap I:&\qquad 5\!\left(\dfrac{2}{5}\right) + 10y + 4\!\left(-\dfrac{1}{4}\r
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 </div>
 
 

@@ -60,8 +60,16 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$a)\;\;$__ $  4x + 6 - 2x + 3 = x + 17 $ \
 $x$ = [[  8  ]] @canvas
+@Algebrite.check([ 8 ])
 ************
 $$
 \begin{align*} 
@@ -72,11 +80,22 @@ x &= 8
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Äquivalenzumformung)
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$b)\;\;$__ $  6x - 5 + 2x = 3x + 25 $ \
 $x$ = [[  6  ]] @canvas
+@Algebrite.check([ 6 ])
 ************
 $$
 \begin{align*}
@@ -88,11 +107,22 @@ x &= 6
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Äquivalenzumformung)
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$c)\;\;$__ $  7x + 3 - 2x = 4x + 8 $ \
 $x$ = [[  5  ]] @canvas
+@Algebrite.check([ 5 ])
 ************
 $$
 \begin{align*}
@@ -103,11 +133,22 @@ x &= 5
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Äquivalenzumformung)
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$d)\;\;$__ $  9x - 4 + x = 5x + 26 $ \
 $x$ = [[  6  ]] @canvas
+@Algebrite.check([ 6 ])
 ************
 $$
 \begin{align*}
@@ -119,6 +160,9 @@ x &= 6
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Äquivalenzumformung)
 </div>
 </section>
 

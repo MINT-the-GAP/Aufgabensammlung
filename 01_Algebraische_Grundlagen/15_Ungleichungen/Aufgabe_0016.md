@@ -66,7 +66,11 @@ author: Martin Lommatzsch
 <div class="flex-child">
 __$a)\;\;$__ $\,\dfrac{3}{5}x + 2 \leq \dfrac{1}{5}x + \dfrac{11}{5}\,$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \leq $   [[  1/2  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(1/2)
 ******************
@@ -79,12 +83,19 @@ x &\le \dfrac{1}{2}
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung)
 </div>
 
 <div class="flex-child">
 __$b)\;\;$__ $\,\dfrac{2}{3}x - \dfrac{5}{3} > \dfrac{1}{6}x + \dfrac{1}{3}\,$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $   [[  5  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(5)
 ******************
@@ -97,12 +108,19 @@ x &> 4 \;\;\Rightarrow\;\; x \ge 5 \text{ für } \mathbb{N}
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung)
 </div>
 
 <div class="flex-child">
 __$c)\;\;$__ $-\dfrac{3}{4}x + \dfrac{7}{2} \ge \dfrac{1}{4}x - 1$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  9/2  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(9/2)
 ******************
@@ -114,12 +132,19 @@ $$
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung)
 </div>
 
 <div class="flex-child">
 __$d)\;\;$__ $\,5x - \dfrac{7}{2} < 3x + \dfrac{1}{2}\,$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  1  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(1)
 ******************
@@ -132,12 +157,19 @@ x &< 2 \;\;\Rightarrow\;\; x \le 1 \text{ für } \mathbb{Z}
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung)
 </div>
 
 <div class="flex-child">
 __$e)\;\;$__ $\, -2x + \dfrac{5}{3} > -\dfrac{1}{3}x + 1 \,$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x < $   [[  2/5  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(2/5)
 ******************
@@ -150,12 +182,19 @@ x &< \dfrac{2}{5}
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung)
 </div>
 
 <div class="flex-child">
 __$f)\;\;$__ $\,\dfrac{1}{2}x + \dfrac{5}{4} \ge -\dfrac{3}{4}x + \dfrac{1}{2}\,$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  0  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(0)
 ******************
@@ -168,6 +207,9 @@ x &\ge -\dfrac{3}{5} \;\;\Rightarrow\;\; x \ge 0 \text{ für } \mathbb{Z}
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung)
 </div>
 </section>
 

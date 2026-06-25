@@ -57,7 +57,14 @@ author: Martin Lommatzsch
 Für eine Nussmischung werden Mandeln (6 €/kg), Erdnüsse (4 €/kg) und Cashews (10 €/kg) gemischt. Insgesamt entstehen $ \dfrac{15}{2}\,\text{kg} $ Mischung. Der Materialwert beträgt 47 €. Außerdem werden um ein halbes Kilogramm mehr Erdnüsse als Mandeln verwendet.  
 **Berechne** die eingesetzten Kilogramm der drei Sorten.
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 $x$ = [[  5/2  ]] @canvas, $y$ = [[  3  ]] @canvas und $z$ = [[  2  ]] @canvas
 @Algebrite.check([ 5/2; 3; 2 ])
 ************
@@ -81,6 +88,9 @@ IV:& \qquad 2\cdot \dfrac{5}{2} + z = 7 \;\Rightarrow\; 5 + z = 7 \;\Rightarrow\
 $$
 Es werden $ \dfrac{5}{2}\,\text{kg} $ Mandeln, $ 3\,\text{kg} $ Erdnüsse und $ 2\,\text{kg} $ Cashews verwendet.
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Bruchrechnung, Sachaufgabe)
 
 
 

@@ -64,6 +64,12 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $  \dfrac{5}{x-2} = \dfrac{7}{3x+1} $ \
 $x$ = [[  -19/8  ]] @canvas
 @Algebrite.check(-19/8)
@@ -80,9 +86,17 @@ x &= \dfrac{-19}{8}
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $  \dfrac{4}{2x-3} = \dfrac{3}{x+5} $ \
 $x$ = [[  29/2  ]] @canvas
 @Algebrite.check(29/2)
@@ -99,9 +113,17 @@ x &= \dfrac{29}{2}
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $  \dfrac{9}{x+4} = \dfrac{2}{x-1} $ \
 $x$ = [[  17/7  ]] @canvas
 @Algebrite.check(17/7)
@@ -118,9 +140,17 @@ x &= \dfrac{17}{7}
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $  \dfrac{7}{3x-2} = \dfrac{5}{x+6} $ \
 $x$ = [[  13/2  ]] @canvas
 @Algebrite.check(13/2)
@@ -137,9 +167,17 @@ x &= \dfrac{13}{2}
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$e)\;\;$__ $ \; -\dfrac{3}{x+2} = \dfrac{6}{2x-1} \;$ \
 $x$ = [[  -3/4  ]] @canvas
 @Algebrite.check(-3/4)
@@ -156,9 +194,17 @@ x &= -\dfrac{3}{4}
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$f)\;\;$__ $  \dfrac{5}{x-4} = -\dfrac{10}{3x+2} $ \
 $x$ = [[  6/5  ]] @canvas
 @Algebrite.check(6/5)
@@ -175,6 +221,8 @@ x &= \dfrac{6}{5}
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
 </section>
 

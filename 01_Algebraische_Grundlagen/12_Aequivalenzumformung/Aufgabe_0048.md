@@ -58,7 +58,13 @@ Die erste Drohne startet 50 m links vom Mittelpunkt und fliegt gleichmäßig nac
 Die zweite Drohne steht anfangs 130 m rechts vom Mittelpunkt, hebt aber erst 15 Sekunden später ab und fliegt dann gleichmäßig nach links mit 1,6 m pro Sekunde.  
 **Berechne**, nach wie vielen Sekunden (ab Start der ersten Drohne) beide Drohnen an derselben Position sind.
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $x$ = [[  510/11  ]] @canvas
 @Algebrite.check(510/11)
 ************
@@ -93,3 +99,5 @@ $$
 
 Deutung: Nach $\dfrac{510}{11}\approx 46{,}36$ s treffen sich beide bei $\dfrac{878}{11}\approx 79{,}82$ m rechts vom Mittelpunkt. Die zweite Drohne war dabei $\dfrac{510}{11}-15=\dfrac{345}{11}\approx 31{,}36$ s in der Luft.
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Sachaufgabe)

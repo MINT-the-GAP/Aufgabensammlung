@@ -57,6 +57,13 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$a)\;\;$__ $  $2(4x-5) = 3x + 5$ \
 $x$ = [[  3  ]] @canvas
 @Algebrite.check(3)
@@ -73,9 +80,18 @@ x &= 3
 $$
 
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Distributivgesetz)
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$b)\;\;$__ $  3(2x+1) = 4x + 11 $ \
 $x$ = [[  4  ]] @canvas
 ************
@@ -90,9 +106,18 @@ x &= 4
 $$
 ************
 
+@ADetails(1=BE; Äquivalenzumformung, Distributivgesetz)
+
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$c)\;\;$__ $  $2(5x-4) = 3x + 6$ \
 $x$ = [[  2  ]] @canvas
 @Algebrite.check(2)
@@ -108,9 +133,18 @@ x &= 2
 $$
 
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Distributivgesetz)
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$d)\;\;$__ $  $7(x-2) + 1 = 3x - 1$ \
 $x$ = [[  3  ]] @canvas
 @Algebrite.check(3)
@@ -128,5 +162,7 @@ x &= 3
 $$
 
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Distributivgesetz)
 </div>
 </section>

@@ -60,7 +60,14 @@ author: Martin Lommatzsch
 
 <section class="dynFlex">
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$a)\;\;$__  
 $$
 \begin{align*}
@@ -70,6 +77,7 @@ III.& \qquad x + 3y - z = 5
 \end{align*}
 $$  
 $x$ = [[  3  ]] @canvas, $y$ = [[  2  ]] @canvas, $z$ = [[  4  ]] @canvas
+@Algebrite.check([ 3;2;4 ])
 ************
 $$
 \begin{align*}
@@ -93,9 +101,19 @@ x \cap (A):& \qquad 2\cdot 3 + 4y = 14 \\
 $$
 ************
 
+
+@ADetails(1=BE; Gleichungssysteme)
+
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$b)\;\;$__  
 $$
 \begin{align*}
@@ -105,6 +123,7 @@ III.& \qquad 3x - y + 2z = 19
 \end{align*}
 $$  
 $x$ = [[  4  ]] @canvas, $y$ = [[  3  ]] @canvas, $z$ = [[  5  ]] @canvas
+@Algebrite.check([ 4;3;5 ])
 ************
 $$
 \begin{align*}
@@ -129,10 +148,20 @@ x \cap (A):& \qquad 3\cdot 4 + 3y = 21 \\
 $$
 ************
 
+
+@ADetails(1=BE; Gleichungssysteme)
+
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$c)\;\;$__  
 $$
 \begin{align*}
@@ -142,6 +171,7 @@ III.& \qquad 3x - y + 2z = 12
 \end{align*}
 $$  
 $x$ = [[  2  ]] @canvas, $y$ = [[  4  ]] @canvas, $z$ = [[  5  ]] @canvas
+@Algebrite.check([ 2;4;5 ])
 ************
 $$
 \begin{align*}
@@ -164,10 +194,20 @@ x \cap (A):& \qquad 3\cdot 2 + 4y = 22 \\
 $$
 ************
 
+
+@ADetails(1=BE; Gleichungssysteme)
+
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$d)\;\;$__  
 $$
 \begin{align*}
@@ -177,6 +217,7 @@ III.& \qquad 2x + 3y + z = 22
 \end{align*}
 $$  
 $x$ = [[  5  ]] @canvas, $y$ = [[  2  ]] @canvas, $z$ = [[  6  ]] @canvas
+@Algebrite.check([ 5;2;6 ])
 ************
 $$
 \begin{align*}
@@ -198,6 +239,9 @@ y \cap (A):& \qquad 2x + 2 = 12 \quad \left| -2 \right. \\
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme)
 
 
 </div>

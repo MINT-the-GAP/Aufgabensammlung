@@ -59,7 +59,13 @@ Die zweite Kerze ist anfangs 24 cm lang, wird aber erst fünf Stunden später an
 **Berechne**, nach wie vielen Stunden seit dem Anzünden der ersten Kerze beide Kerzen gleich lang sind.  
 
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $x$ = [[  35/3  ]] @canvas
 @Algebrite.check(35/3)
 ************
@@ -94,3 +100,5 @@ $$
 
 Deutung: Nach $\dfrac{35}{3} \approx 11{,}7$ Stunden (also gegen 05:40 Uhr) sind beide Kerzen 22 cm lang.
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Sachaufgabe)

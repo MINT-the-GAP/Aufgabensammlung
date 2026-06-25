@@ -60,6 +60,12 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $  \dfrac{5}{x-1} = \dfrac{10}{x+1} $ \
 $x$ = [[  3  ]] @canvas
 ************
@@ -75,9 +81,17 @@ x &= 3
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $  \dfrac{6}{x+1} = \dfrac{9}{2x+1} $ \
 $x$ = [[  1  ]] @canvas
 ************
@@ -93,9 +107,17 @@ x &= 1
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $  \dfrac{9}{2x-1} = \dfrac{3}{x-4} $ \
 $x$ = [[  11  ]] @canvas
 ************
@@ -111,9 +133,17 @@ x &= 11
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $  \dfrac{12}{x+3} = \dfrac{8}{x+1} $ \
 $x$ = [[  3  ]] @canvas
 ************
@@ -129,9 +159,17 @@ x &= 3
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$e)\;\;$__ $  \dfrac{3}{x+1} = \dfrac{7}{x+5} $ \
 $x$ = [[  2  ]] @canvas
 ************
@@ -147,9 +185,17 @@ x &= 2
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$f)\;\;$__ $  \dfrac{6}{x+2} = \dfrac{11}{2x+3} $ \
 $x$ = [[  4  ]] @canvas
 ************
@@ -164,6 +210,8 @@ x &= 4
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
 </section>
 

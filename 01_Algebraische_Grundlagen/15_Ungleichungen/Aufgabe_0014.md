@@ -67,7 +67,11 @@ author: Martin Lommatzsch
 <div class="flex-child">
 __$a)\;\;$__ $2x + 5 > x + 9$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $   [[  5  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(5)
 ******************
@@ -79,12 +83,19 @@ x &> 4 \;\;\Rightarrow\;\; x \geq 5 \text{ für } \mathbb{N}
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen)
 </div>
 
 <div class="flex-child">
 __$b)\;\;$__ $-3x + 7 \leq 2x - 8$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  3  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(3)
 ******************
@@ -97,12 +108,19 @@ $$
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen)
 </div>
 
 <div class="flex-child">
 __$c)\;\;$__ $4x - 6 < 3x + 2$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x < $   [[  8  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(8)
 ******************
@@ -114,12 +132,19 @@ x &< 8
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen)
 </div>
 
 <div class="flex-child">
 __$d)\;\;$__ $5x + 4 \geq 2x + 16$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \geq $   [[  4  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(4)
 ******************
@@ -132,12 +157,19 @@ x &\geq 4
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen)
 </div>
 
 <div class="flex-child">
 __$e)\;\;$__ $7 - 2x > 5x - 14$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  2  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(2)
 ******************
@@ -150,12 +182,19 @@ x &< 3 \;\;\Rightarrow\;\; x \leq 2 \text{ für } \mathbb{Z}
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen)
 </div>
 
 <div class="flex-child">
 __$f)\;\;$__ $-4x + 9 \leq 3x + 2$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $   [[  1  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(1)
 ******************
@@ -168,6 +207,9 @@ x &\geq 1
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen)
 </div>
 </section>
 

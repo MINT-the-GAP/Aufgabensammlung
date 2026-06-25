@@ -66,29 +66,61 @@ author: Martin Lommatzsch
 <div class="flex-child">
 __$a)\;\;$__ $4x < 20$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x < $   [[  5  ]] @canvas   $\left.   \right\}$
+@Algebrite.check(5)
+
+
+@ADetails(1=BE; Ungleichung)
 </div>
 
 <div class="flex-child">
 __$b)\;\;$__  $x : 5 \geq 2$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  10  ]] @canvas   $\left.   \right\}$
+@Algebrite.check(10)
+
+
+@ADetails(1=BE; Ungleichung)
 </div>
 
 <div class="flex-child">
 __$c)\;\;$__  $\dfrac{x}{5} \leq 6$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  30  ]] @canvas   $\left.   \right\}$
+@Algebrite.check(30)
+
+
+@ADetails(1=BE; Ungleichung)
 </div>
 
 <div class="flex-child">
 __$d)\;\;$__  $ x - 3 > 12$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x > $   [[  15  ]] @canvas   $\left.   \right\}$
+@Algebrite.check(15)
+
+
+@ADetails(1=BE; Ungleichung)
 </div>
 </section>
 

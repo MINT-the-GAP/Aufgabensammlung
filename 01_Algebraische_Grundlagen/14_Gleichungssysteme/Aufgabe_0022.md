@@ -57,7 +57,14 @@ author: Martin Lommatzsch
 Ein Kartenspiel besteht aus grünen und blauen Karten. Insgesamt sind es 28 Karten. Jede grüne Karte zählt 3 Punkte, jede blaue Karte 5 Punkte. Zusammen ergeben alle Karten 112 Punkte.  
 **Berechne** die Anzahl der grünen und der blauen Karten.
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 $x$ = [[  14  ]] @canvas und $y$ = [[  14  ]] @canvas
 @Algebrite.check([ 14; 14 ])
 ************
@@ -77,6 +84,9 @@ y \cap I:& \qquad x + 14 = 28 \quad \left| -14 \right. \\
 $$
 Es gibt 14 grüne und 14 blaue Karten.
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Sachaufgabe)
 
 
 

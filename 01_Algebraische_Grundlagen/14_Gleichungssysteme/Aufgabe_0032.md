@@ -58,7 +58,14 @@ author: Martin Lommatzsch
 Drei Maschinen produzieren Teile. Zusammen laufen sie 5 Stunden. Pro Stunde fertigen sie $12$, $18$ bzw. $30$ Teile. Insgesamt entstehen $79$ Teile. Außerdem läuft die zweite Maschine eine halbe Stunde länger als die erste.  
 **Berechne** die Laufzeiten der drei Maschinen.
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 $x$ = [[  13/6  ]] @canvas, $y$ = [[  8/3  ]] @canvas und $z$ = [[  1/6  ]] @canvas
 @Algebrite.check([ 13/6; 8/3; 1/6 ])
 ************
@@ -84,6 +91,9 @@ II \cap III:& \qquad 12x + 18\!\left(x + \dfrac{1}{2}\right) + 30z = 79 \\
 $$
 Die Laufzeiten betragen $ \dfrac{13}{6}\,\text{h}$, $ \dfrac{8}{3}\,\text{h}$ und $ \dfrac{1}{6}\,\text{h}$.
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Bruchrechnung, Sachaufgabe)
 
 
 

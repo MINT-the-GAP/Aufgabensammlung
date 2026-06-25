@@ -61,8 +61,18 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$a)\;\;$__ $  72 = 8 \cdot x $ \
 $x$ = [[  9   ]] @canvas
+@Algebrite.check([ 9 ])
+
 ************
 $$
 \begin{align*}
@@ -72,12 +82,24 @@ $$
 $$
 ************
 
+
+@ADetails(1=BE; Äquivalenzumformung)
+
 </div>
 <div class="flex-child">
 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$b)\;\;$__ $  \dfrac{x}{7} = 5 $ \
 $x$ =  [[  35  ]] @canvas
+@Algebrite.check([ 35 ])
 ************
 $$
 \begin{align*}
@@ -88,12 +110,24 @@ $$
 ************
 
 
+@ADetails(1=BE; Äquivalenzumformung)
+
+
 </div>
 <div class="flex-child">
 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$c)\;\;$__ $  x + 7 = 19  $ \
 $x$ =  [[  12  ]] @canvas
+@Algebrite.check([ 12 ])
 ************
 $$
 \begin{align*}
@@ -104,12 +138,22 @@ $$
 ************
 
 
+@ADetails(1=BE; Äquivalenzumformung)
+
+
 </div>
 <div class="flex-child">
 
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$d)\;\;$__ $ 17 = x - 8 $ \
 $x$ =  [[  25  ]] @canvas
+@Algebrite.check([ 25 ])
 ************
 $$
 \begin{align*}
@@ -120,12 +164,22 @@ $$
 ************
 
 
+@ADetails(1=BE; Äquivalenzumformung)
+
+
 </div>
 <div class="flex-child">
 
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$e)\;\;$__ $  7x = 84 $ \
 $x$ =  [[  12  ]] @canvas
+@Algebrite.check([ 12 ])
 ************
 $$
 \begin{align*}
@@ -136,12 +190,23 @@ $$
 ************
 
 
+@ADetails(1=BE; Äquivalenzumformung)
+
+
 </div>
 <div class="flex-child">
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$f)\;\;$__ $  3 = \dfrac{x}{17}  $ \
 $x$ =  [[  51  ]] @canvas
+@Algebrite.check([ 51 ])
 ************
 $$
 \begin{align*}
@@ -150,6 +215,9 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Äquivalenzumformung)
 
 
 </div>

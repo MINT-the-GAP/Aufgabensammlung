@@ -72,8 +72,16 @@ x \cap I. &\qquad 3\cdot 5 + y = 16 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="2"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 [[(Einsetzungsverfahren)|Gleichsetzungsverfahren|Additionsverfahren]]
+
+@ADetails(1=BE; Gleichungssysteme)
 
 
 $$
@@ -94,8 +102,16 @@ x \text{ in } II.& \qquad 2\cdot 2 + 3y = 19 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="2"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 [[Einsetzungsverfahren|Gleichsetzungsverfahren|(Additionsverfahren)]]
+
+@ADetails(1=BE; Gleichungssysteme)
 
 
 __$c)\;\;$__ 
@@ -119,8 +135,16 @@ x \cap II. &\qquad 3\cdot 4 - y = 9 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="2"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 [[Einsetzungsverfahren|(Gleichsetzungsverfahren)|Additionsverfahren]]
+
+@ADetails(1=BE; Gleichungssysteme)
 
 
 __$d)\;\;$__ 
@@ -143,8 +167,16 @@ x \cap I. &\qquad 3\cdot 2 + y = 11 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="2"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 [[Einsetzungsverfahren|(Gleichsetzungsverfahren)|Additionsverfahren]]
+
+@ADetails(1=BE; Gleichungssysteme)
 
 
 __$e)\;\;$__ 
@@ -164,8 +196,16 @@ y \cap II. &\qquad x + 3\cdot 4 = 15 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="2"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 [[(Einsetzungsverfahren)|Gleichsetzungsverfahren|Additionsverfahren]]
+
+@ADetails(1=BE; Gleichungssysteme)
 
 
 __$f)\;\;$__ 
@@ -183,5 +223,13 @@ y \cap I.& \qquad x + 4\cdot 5 = 22 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="2"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 [[Einsetzungsverfahren|Gleichsetzungsverfahren|(Additionsverfahren)]]
+
+@ADetails(1=BE; Gleichungssysteme)

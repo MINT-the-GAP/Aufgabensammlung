@@ -69,8 +69,15 @@ x \cap I.& \qquad 2\cdot 3 + y = 11 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="2"-->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 [[Einsetzungsverfahren|Gleichsetzungsverfahren|(Additionsverfahren)]]
+
+@ADetails(1=BE; Gleichungssysteme)
 
 
 __$b)\;\;$__ 
@@ -90,8 +97,16 @@ x \cap II. &\qquad y = 4 - 2 = 2
 \end{align*}
 $$
 
-<!-- data-solution-button="2"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 [[(Einsetzungsverfahren)|Gleichsetzungsverfahren|Additionsverfahren]]
+
+@ADetails(1=BE; Gleichungssysteme)
 
 
 __$c)\;\;$__ 
@@ -114,8 +129,15 @@ x \cap I. &\qquad 4\cdot 3 - y = 10 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="2"-->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 [[(Einsetzungsverfahren)|Gleichsetzungsverfahren|Additionsverfahren]]
+
+@ADetails(1=BE; Gleichungssysteme)
 
 
 __$d)\;\;$__ 
@@ -138,8 +160,16 @@ x \cap I. &\qquad 2\cdot 3 + y = 11 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="2"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 [[Einsetzungsverfahren|(Gleichsetzungsverfahren)|Additionsverfahren]]
+
+@ADetails(1=BE; Gleichungssysteme)
 
 
 __$e)\;\;$__ 
@@ -159,8 +189,15 @@ x \cap II.& \qquad 3\cdot 1 + y = 11 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="2"-->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 [[Einsetzungsverfahren|Gleichsetzungsverfahren|(Additionsverfahren)]]
+
+@ADetails(1=BE; Gleichungssysteme)
 
 
 __$f)\;\;$__ 
@@ -185,6 +222,14 @@ x \cap I. &\qquad 3\cdot 3 - y = 2 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="2"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 [[Einsetzungsverfahren|(Gleichsetzungsverfahren)|Additionsverfahren]]
+
+@ADetails(1=BE; Gleichungssysteme)
 

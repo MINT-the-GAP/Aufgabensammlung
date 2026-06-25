@@ -56,7 +56,13 @@ Ein Anstieg beginnt auf 820 m und gewinnt pro Minute 9 m an Höhe.
 Ein Abstieg startet gleichzeitig auf 1130 m und verliert pro Minute 6 m an Höhe.  
 **Berechne**, nach wie vielen Minuten beide Routen auf gleicher Höhe sind.
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $x$ = [[  62/3  ]] @canvas
 @Algebrite.check(62/3)
 ************
@@ -93,3 +99,5 @@ $$
 Deutung: Nach $\dfrac{62}{3}\approx 20{,}7$ Minuten liegen beide bei 1006 m Höhe.
 
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Sachaufgabe)

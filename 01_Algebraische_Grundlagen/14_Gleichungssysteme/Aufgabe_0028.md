@@ -58,7 +58,14 @@ author: Martin Lommatzsch
 Bei einer Veranstaltung werden drei Ticketarten verkauft: Einzeltickets zu 2 €, Tagestickets zu 5 € und ermäßigte Tickets zu 3 €. Insgesamt werden 24 Tickets verkauft und der Umsatz beträgt 78 €. Außerdem gibt es vier ermäßigte Tickets weniger als Einzeltickets.  
 **Berechne** die Anzahl der drei Ticketarten.
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 $x$ = [[  10  ]] @canvas, $y$ = [[  8  ]] @canvas und $z$ = [[  6  ]] @canvas
 @Algebrite.check([ 10; 8; 6 ])
 ************
@@ -80,6 +87,9 @@ II \cap III:& \qquad 2x + 5y + 3(x - 4) = 78 \\
 $$
 Es wurden $10$ Einzeltickets, $8$ Tagestickets und $6$ ermäßigte Tickets verkauft.
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Sachaufgabe)
 
 
 

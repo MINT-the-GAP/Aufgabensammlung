@@ -59,7 +59,13 @@ Die zweite Pflanze ist anfangs 48 cm hoch und wächst pro Woche um 1 cm.
 
 
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $x$ = [[  44/5  ]] @canvas
 @Algebrite.check(44/5)
 ************
@@ -92,3 +98,5 @@ $$
 Deutung: Nach $\dfrac{44}{5} \approx 8{,}8$ Wochen sind beide Pflanzen gleich hoch ($\dfrac{284}{5} = 56{,}8$ cm).
 
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Sachaufgabe)

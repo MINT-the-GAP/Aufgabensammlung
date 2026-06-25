@@ -58,6 +58,12 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $   F = m a \;\;$  mit $\;\;a=2 \;\;\wedge\;\; F=30$ \
 $m$ = [[  15  ]] @canvas
 ************
@@ -70,9 +76,17 @@ m &= 15  \\
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $   U - T = \dfrac{1}{2} v \;\;$  mit $\;\; v=5 \;\;\wedge\;\; U=7$ \
 $T$ = [[  9/2  ]] @canvas
 @Algebrite.check(9/2)
@@ -89,9 +103,17 @@ T &= \dfrac{9}{2} \\
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $   r = 2x + 2y + z \;\;$  mit $\;\; r=12 \;\;\wedge\;\; x=0,4 \;\;\wedge\;\; z=1,5$ \
 $y$ = [[  97/20  ]] @canvas
 @Algebrite.check(97/20)
@@ -109,9 +131,17 @@ y &= \dfrac{97}{20} \\
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $   pV = \dfrac{3}{2}kNT \;\;$  mit $\;\; N=100 \;\;\wedge\;\; k=5 \;\;\wedge\;\; p=30 \;\;\wedge\;\; V=20$ \
 $T$ = [[  4/5  ]] @canvas
 @Algebrite.check(4/5)
@@ -126,9 +156,17 @@ T &= \dfrac{4}{5}  \\
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$e)\;\;$__ $   8ab - c = cb + b \;\;$  mit $\;\; b=3 \;\;\wedge\;\; c=0,75$ \
 
 $a$ = [[  1/4  ]] @canvas
@@ -146,9 +184,17 @@ a &= \dfrac{1}{4} \\
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$f)\;\;$__ $   G\dfrac{M m}{r} = F \;\;$  mit $\;\; F=120 \;\;\wedge\;\; M=4,5 \;\;\wedge\;\; m=9,5 \;\;\wedge\;\; G=1,2$ \
 $r$ = [[  4275/10000  ]] @canvas
 @Algebrite.check(4275/10000)
@@ -164,9 +210,17 @@ r &= 0,4275  \\
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$g)\;\;$__ $  \dfrac{A}{B} = \dfrac{C}{D} \;\;$  mit $\;\; A=0,2 \;\;\wedge\;\; B=0,5 \;\;\wedge\;\; C=6$ \
 $D$ = [[  15  ]] @canvas
 ************
@@ -182,5 +236,7 @@ D &= 15
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
 </section>

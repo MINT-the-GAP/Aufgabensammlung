@@ -71,8 +71,14 @@ x \cap I. &\qquad 5\cdot 3 + y = 22 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="5" 
-data-hint-button="3" data-show-partial-solution -->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 Zur Lösung des [[   Gleichungssystems   ]] @canvas wird das [[   Gleichsetzungsverfahren   ]] @canvas angewendet.
 Zunächst wird die [[   erste   ]] @canvas Gleichung nach $y$ aufgelöst und es ergibt sich $y = 22 - 5x$.
 Anschließend wird die [[   zweite   ]] @canvas Gleichung nach $y$ umgeformt, sodass $y = 2x + 1$ resultiert.
@@ -80,6 +86,8 @@ Die beiden Terme für [[   y   ]] @canvas werden [[   gleichgesetzt   ]] @canvas
 Nach dem [[  Zusammenfassen  ]] @canvas folgt $21 = 7x$.
 Durch Division mit [[   7   ]] @canvas ergibt sich $x = 3$.
 Der Wert für $x$ wird in die [[   erste   ]] @canvas Gleichung [[   eingesetzt  ]] @canvas, sodass $y = 7$ bestimmt wird.
+
+@ADetails(1=BE; Gleichungssysteme)
 
 
 
@@ -102,8 +110,14 @@ x \cap I. &\qquad 5\cdot 4 + y = 26 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="5" 
-data-hint-button="3" data-show-partial-solution -->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 Zur Lösung des [[   Gleichungssystems   ]] @canvas wird das [[   Einsetzungsverfahren   ]] @canvas angewendet.
 Zuerst wird die [[   erste   ]] @canvas Gleichung nach $y$ umgestellt, sodass $y = 26 - 5x$ entsteht.
 Dieser Ausdruck wird in die zweite [[  Gleichung  ]] @canvas eingesetzt, wodurch $2x + 3(26 - 5x) = 26$ gebildet wird.
@@ -112,6 +126,8 @@ Dies lässt sich zu $-13x + 78 = 26$ [[   zusammenfassen   ]] @canvas.
 Durch [[  Subtraktion  ]] @canvas von [[ 78 ]] @canvas auf beiden Seiten folgt $-13x = -52$.
 Durch Division mit [[  -13  ]] @canvas wird $x = 4$ erhalten.
 Der Wert für $x$ wird in die [[   erste  ]] @canvas Gleichung [[   eingesetzt   ]] @canvas, sodass schließlich $y = 6$ bestimmt wird.
+
+@ADetails(1=BE; Gleichungssysteme)
 
 
 
@@ -134,8 +150,14 @@ x \cap II.\, &\qquad 4\cdot 4 - y = 11 \\
 \end{align*}
 $$
 
-<!-- data-solution-button="5" 
-data-hint-button="3" data-show-partial-solution -->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 Zur Lösung des [[   Gleichungssystems   ]] @canvas wird das [[   Additionsverfahren   ]] @canvas angewendet.
 Zuerst wird die zweite Gleichung mit [[  3  ]] @canvas [[  multipliziert  ]] @canvas, sodass $12x - 3y = 33$ entsteht.
 Nun wird diese Gleichung mit der ersten [[  addiert  ]] @canvas. Dabei fallen die Teile mit $y$ weg und es bleibt $14x = 56$.
@@ -143,4 +165,6 @@ Durch [[  Division  ]] @canvas mit [[  14  ]] @canvas ergibt sich $x = 4$.
 Der erhaltene Wert wird in die zweite [[  Gleichung  ]] @canvas [[   eingesetzt   ]] @canvas, woraus $16 - y = 11$ folgt.
 Durch [[  Subtraktion  ]] @canvas von [[  16  ]] @canvas auf beiden Seiten ergibt sich $-y = -5$.
 Durch [[  Multiplikation  ]] @canvas mit [[  -1  ]] @canvas wird schließlich $y = 5$ bestimmt.
+
+@ADetails(1=BE; Gleichungssysteme)
 

@@ -56,7 +56,14 @@ author: Martin Lommatzsch
 Auf einem Parkplatz stehen insgesamt 28 Fahrzeuge. Darunter befinden sich Autos und Motorräder. Zusammen haben alle Fahrzeuge 80 Räder.  
 **Berechne** die Anzahl der Autos und Motorräder.
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 $x$ = [[  12  ]] @canvas und $y$ = [[  16  ]] @canvas
 @Algebrite.check([ 12; 16 ])
 ************
@@ -73,6 +80,9 @@ x \cap I:& \qquad 12 + y = 28 \;\Rightarrow\; y = 16
 $$
 Es stehen 12 Autos und 16 Motorräder auf dem Parkplatz.
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Sachaufgabe)
 
 
 

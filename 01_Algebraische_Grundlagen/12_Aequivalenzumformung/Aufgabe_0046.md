@@ -57,7 +57,13 @@ Der erste startet 60 m unter der Wasseroberfläche und steigt gleichmäßig pro 
 Der zweite startet 10 m unter der Wasseroberfläche und taucht gleichmäßig pro Minute um 2,5 m weiter ab.  
 **Berechne**, nach wie vielen Minuten beide Roboter in der gleichen Tiefe sind.
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $x$ = [[  100/11  ]] @canvas
 @Algebrite.check(100/11)
 ************
@@ -93,4 +99,6 @@ Deutung: Nach $\dfrac{100}{11}\approx 9{,}09$ Minuten befinden sich beide in der
 
 
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Sachaufgabe)
 

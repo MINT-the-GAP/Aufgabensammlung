@@ -57,7 +57,13 @@ Ein Behälter wird täglich mit vier Litern Wasser aufgefüllt. Zu Beginn sind b
 Ein zweiter Behälter enthält anfangs 14 Liter Wasser, verliert jedoch jeden Tag einen Liter.  
 **Berechne**, nach wie vielen Tagen beide Behälter gleich viel Wasser enthalten.
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $x$ = [[  12/5  ]] @canvas
 @Algebrite.check(12/5)
 ************
@@ -89,3 +95,5 @@ $$
 
 Deutung: Nach $\dfrac{12}{5} = 2{,}4$ Tagen haben beide Behälter gleich viel Wasser.
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Sachaufgabe)

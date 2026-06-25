@@ -58,7 +58,13 @@ Ein Smartphone wird an eine Schnellladestation angeschlossen. Zu Beginn zeigt es
 Das andere Smartphone läuft ohne Netzteil mit einem grafikintensiven Spiel. Es startet bei 94 Prozent und verliert pro Minute 2 Prozentpunkte.  
 **Berechne**, nach wie vielen Minuten beide Geräte den gleichen Akkustand anzeigen.
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $x$ = [[  144/7  ]] @canvas
 @Algebrite.check(144/7)
 ************
@@ -93,3 +99,5 @@ $$
 Deutung: Nach $\dfrac{144}{7}\approx 20{,}6$ Minuten zeigen beide etwa $\dfrac{370}{7}\approx 52{,}9\,\% Akkustand.
 
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Sachaufgabe)

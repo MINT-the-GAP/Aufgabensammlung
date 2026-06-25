@@ -66,6 +66,13 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$a)\;\;$__  
 $$
 \begin{align*}
@@ -75,6 +82,7 @@ III.& \qquad x + 2y - z = 1
 \end{align*}
 $$  
 $x$ = [[  2  ]] @canvas, $y$ = [[  3  ]] @canvas, $z$ = [[  7  ]] @canvas
+@Algebrite.check([ 2;3;7 ])
 ************
 $$
 \begin{align*}
@@ -101,9 +109,19 @@ y \cap \left( I. \cap II. \right)  &\qquad  x = 2y-4 = 2 \cdot 3-4 = 2 \\
 $$
 ************
 
+
+@ADetails(1=BE; Gleichungssysteme)
+
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$b)\;\;$__  
 $$
 \begin{align*}
@@ -113,6 +131,7 @@ III.& \qquad x + 3y - z = 4
 \end{align*}
 $$  
 $x$ = [[  3  ]] @canvas, $y$ = [[  2  ]] @canvas, $z$ = [[  5  ]] @canvas
+@Algebrite.check([ 3;2;5 ])
 ************
 $$
 \begin{align*}
@@ -139,10 +158,19 @@ y \cap \left( I. \cap II. \right)  &\qquad  x = 2y-1 = 2\cdot 2 - 1 = 3 \\
 $$
 ************
 
+@ADetails(1=BE; Gleichungssysteme)
+
 
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$c)\;\;$__  
 $$
 \begin{align*}
@@ -152,6 +180,7 @@ III.& \qquad 3x - y + z = 17
 \end{align*}
 $$  
 $x$ = [[  4  ]] @canvas, $y$ = [[  1  ]] @canvas, $z$ = [[  6  ]] @canvas
+@Algebrite.check([ 4;1;6 ])
 ************
 $$
 \begin{align*}
@@ -177,9 +206,18 @@ I \cap II\; &\qquad x + 2(15 - 2x - z) + 3z = 24 \\
 $$
 ************
 
+@ADetails(1=BE; Gleichungssysteme)
+
+
 </div>
 <div class="flex-child">
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$d)\;\;$__  
 $$
 \begin{align*}
@@ -189,6 +227,7 @@ III.& \qquad x - y + 2z = 7
 \end{align*}
 $$  
 $x$ = [[  5  ]] @canvas, $y$ = [[  4  ]] @canvas, $z$ = [[  3  ]] @canvas
+@Algebrite.check([ 5;4;3 ])
 ************
 $$
 \begin{align*}
@@ -209,6 +248,8 @@ I.\cdot 2 \; &\qquad 2x + 4y + 2z = 32 \\
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Gleichungssysteme)
 
 </div>
 </section>

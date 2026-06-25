@@ -63,7 +63,11 @@ author: Martin Lommatzsch
 <div class="flex-child">
 __$a)\;\;$__ $-2x + 10 \geq 4$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  3  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(3)
 ******************
@@ -75,12 +79,19 @@ x &\leq 3
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen)
 </div>
 
 <div class="flex-child">
 __$b)\;\;$__ $3x - 2 < 7$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \leq $   [[  2  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(2)
 ******************
@@ -92,12 +103,19 @@ x &< 3 \;\;\Rightarrow\;\; x \leq 2 \text{ für } \mathbb{N}
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen)
 </div>
 
 <div class="flex-child">
 __$c)\;\;$__ $\dfrac{x}{-5} - 1 \leq 2$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \geq $   [[  -15  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(-15)
 ******************
@@ -109,12 +127,19 @@ x &\geq -15
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen)
 </div>
 
 <div class="flex-child">
 __$d)\;\;$__ $-4x - 6 > 2$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  -3  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(-3)
 ******************
@@ -126,12 +151,19 @@ x &< -2 \;\;\Rightarrow\;\; x \leq -3 \text{ für } \mathbb{Z}
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen)
 </div>
 
 <div class="flex-child">
 __$e)\;\;$__ $5x + 4 \geq -6$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  -2  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(-2)
 ******************
@@ -143,12 +175,19 @@ x &\geq -2
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen)
 </div>
 
 <div class="flex-child">
 __$f)\;\;$__ $\dfrac{x}{3} + 2 > -4$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  -17  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(-17)
 ******************
@@ -160,6 +199,9 @@ x &> -18 \;\;\Rightarrow\;\; x \geq -17 \text{ für } \mathbb{Z}
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen)
 </div>
 </section>
 

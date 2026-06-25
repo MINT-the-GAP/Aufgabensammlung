@@ -59,8 +59,18 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$a)\;\;$__ $  3x-7 = 8 - 2x $ \
 $x$ = [[  3   ]] @canvas
+@Algebrite.check([ 3 ])
 ************
 $$
 \begin{align*}
@@ -72,12 +82,25 @@ x    & = 3   \\
 $$
 ************
 
+
+@ADetails(1=BE; Äquivalenzumformung)
+
 </div>
 <div class="flex-child">
 
 
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$b)\;\;$__  $ 3x - 2 = 2x + 1 $ \
 $x$ = [[  3  ]] @canvas
+@Algebrite.check([ 3 ])
 ************
 $$
 \begin{align*}
@@ -89,12 +112,24 @@ $$
 ************
 
 
+@ADetails(1=BE; Äquivalenzumformung)
+
+
 </div>
 <div class="flex-child">
 
 
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$c)\;\;$__    $ 5x + 3 = 2x + 18 $ \
 $x$ = [[  5  ]] @canvas
+@Algebrite.check([ 5 ])
 ************
 $$
 \begin{align*}
@@ -107,12 +142,23 @@ $$
 ************
 
 
+@ADetails(1=BE; Äquivalenzumformung)
+
+
 </div>
 <div class="flex-child">
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$d)\;\;$__  $ 4x - 4 = 2x + 10 $ \
 $x$ = [[  7  ]] @canvas
+@Algebrite.check([ 7 ])
 ************
 $$
 \begin{align*}
@@ -123,6 +169,9 @@ x &= 7
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Äquivalenzumformung)
 
 
 </div>

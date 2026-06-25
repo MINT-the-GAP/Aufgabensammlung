@@ -53,26 +53,62 @@ In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich viele Streichhöl
 
 
 
-<!-- style="width:600px" -->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+style="width:600px" -->
 __$a)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem1b.png)  
 $x=$ [[  2  ]] @canvas Streichhölzer \
 $y=$ [[  6  ]] @canvas Streichhölzer
+@Algebrite.check([ 2;6 ])
 
-<!-- style="width:600px" -->
+@ADetails(1=BE; Gleichungssysteme)
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+style="width:600px" -->
 __$b)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem2b.png)  
 $x=$ [[  2   ]] @canvas Streichhölzer \
 $y=$ [[  3   ]] @canvas Streichhölzer
+@Algebrite.check([ 2;3 ])
 
-<!-- style="width:600px" -->
+@ADetails(1=BE; Gleichungssysteme)
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+style="width:600px" -->
 __$c)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem3b.png)  
 $x=$ [[  1  ]] @canvas Streichhölzer \
 $y=$ [[  2  ]] @canvas Streichhölzer
+@Algebrite.check([ 1;2 ])
 
-<!-- style="width:600px" -->
+@ADetails(1=BE; Gleichungssysteme)
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+style="width:600px" -->
 __$d)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholzsystem4b.png)  
 $x=$ [[  2  ]] @canvas Streichhölzer \
 $y=$ [[  6  ]] @canvas Streichhölzer \
 $z=$ [[  4  ]] @canvas Streichhölzer
+@Algebrite.check([ 2;6;4 ])
+
+@ADetails(1=BE; Gleichungssysteme)
 
 
 

@@ -54,17 +54,47 @@ author: Martin Lommatzsch
 **Bestimme** die Massenwert des Massestückchens $x$.
 
 
-<!-- style="width:600px" -->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+style="max-width:600px" -->
 __$a)\;\;$__ ![](Kap2/waage1b.png)  
-$x=$ [[  3    ]] @canvas kg
+$x=$ [[  3    ]]  kg @canvas
+@Algebrite.check([ 3 ])
 
-<!-- style="width:600px" -->
+
+@ADetails(1=BE; Gleichung, Äquivalenzumformung)
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+style="max-width:600px" -->
 __$b)\;\;$__ ![](Kap2/waage1e.png)  
-$x=$ [[  2    ]] @canvas kg
+$x=$ [[  2    ]]  kg @canvas
+@Algebrite.check([ 2 ])
 
-<!-- style="width:600px" -->
+
+@ADetails(1=BE; Gleichung, Äquivalenzumformung)
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+style="max-width:600px" -->
 __$c)\;\;$__ ![](Kap2/waage1h.png)  
-$x=$ [[  1,83  ]] @canvas kg
+$x=$ [[  1,83  ]]  kg @canvas
+@Algebrite.check([ 1.83 ])
+
+
+@ADetails(1=BE; Gleichung, Äquivalenzumformung)
 
 
 

@@ -58,7 +58,13 @@ Ein Auto fährt mit einer konstanten Geschwindigkeit von $60\,\dfrac{\text{km}}{
 Ein zweites Auto startet zwei Stunden später, ist aber schneller und fährt mit $90\,\dfrac{\text{km}}{\text{h}}$.  
 **Berechne**, nach wie vielen Stunden beide Autos die gleiche Strecke zurückgelegt haben.
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $x$ = [[  6  ]] @canvas
 @Algebrite.check(6)
 ************
@@ -87,4 +93,6 @@ $$
 Deutung: Nach 6 Stunden Fahrzeit des ersten Autos bzw. nach 4 Stunden des zweiten Autos haben beide die gleiche Strecke zurückgelegt.
 
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Sachaufgabe)
 

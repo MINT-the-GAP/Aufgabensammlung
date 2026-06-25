@@ -61,6 +61,13 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$a)\;\;$__  
 $$
 \begin{align*}
@@ -70,6 +77,7 @@ III.& \qquad x + 2y - z = 0
 \end{align*}
 $$  
 $x$ = [[  4  ]] @canvas, $y$ = [[  1  ]] @canvas, $z$ = [[  6  ]] @canvas
+@Algebrite.check([ 4;1;6 ])
 ************
 $$
 \begin{align*}
@@ -97,9 +105,19 @@ $$
 ************
 
 
+@ADetails(1=BE; Gleichungssysteme)
+
+
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$b)\;\;$__  
 $$
 \begin{align*}
@@ -109,6 +127,7 @@ III.& \qquad x + 3y + z = 22
 \end{align*}
 $$  
 $x$ = [[  3  ]] @canvas, $y$ = [[  5  ]] @canvas, $z$ = [[  4  ]] @canvas
+@Algebrite.check([ 3;5;4 ])
 ************
 $$
 \begin{align*}
@@ -130,9 +149,19 @@ y \cap (I.+II.)\; &\qquad 3x + 2\cdot 5 = 19 \\
 $$
 ************
 
+
+@ADetails(1=BE; Gleichungssysteme)
+
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$c)\;\;$__  
 $$
 \begin{align*}
@@ -142,6 +171,7 @@ III.& \qquad x + 3y - z = 3
 \end{align*}
 $$  
 $x$ = [[  4  ]] @canvas, $y$ = [[  2  ]] @canvas, $z$ = [[  7  ]] @canvas
+@Algebrite.check([ 4;2;7 ])
 ************
 $$
 \begin{align*}
@@ -168,9 +198,19 @@ y \cap \left( I. \cap II. \right)  &\qquad  x = 2y = 2 \cdot 2 = 4 \\
 $$
 ************
 
+
+@ADetails(1=BE; Gleichungssysteme)
+
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$d)\;\;$__  
 $$
 \begin{align*}
@@ -180,6 +220,7 @@ III.& \qquad x + 2y + 3z = 27
 \end{align*}
 $$  
 $x$ = [[  6  ]] @canvas, $y$ = [[  3  ]] @canvas, $z$ = [[  5  ]] @canvas
+@Algebrite.check([ 6;3;5 ])
 ************
 $$
 \begin{align*}
@@ -204,6 +245,9 @@ x \cap (B)\; &\qquad 2\cdot 6 + y = 15 \;\Rightarrow\; y = 3 \\
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme)
 
 </div>
 </section>

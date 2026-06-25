@@ -61,6 +61,12 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $  \dfrac{5}{x-2} = \dfrac{3}{2x+1} $ \
 $x$ = [[  -11/7  ]] @canvas
 @Algebrite.check(-11/7)
@@ -77,9 +83,17 @@ x &= -\dfrac{11}{7}
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $  \dfrac{7}{x+3} = \dfrac{2}{x-1} $ \
 $x$ = [[  13/5  ]] @canvas
 @Algebrite.check(13/5)
@@ -96,9 +110,17 @@ x &= \dfrac{13}{5}
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $  \dfrac{4}{2x-3} = \dfrac{9}{x+6} $ \
 $x$ = [[  51/14  ]] @canvas
 @Algebrite.check(51/14)
@@ -116,9 +138,17 @@ x &= \dfrac{51}{14}
 $$
 ************
 
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
+
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $  \dfrac{3}{x-4} = \dfrac{5}{2x+7} $ \
 $x$ = [[  -41  ]] @canvas
 @Algebrite.check(-41)
@@ -135,9 +165,17 @@ x &= -41
 $$
 ************
 
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
+
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$e)\;\;$__ $  \dfrac{2}{x+5} = \dfrac{7}{3x-2} $ \
 $x$ = [[  -39  ]] @canvas
 @Algebrite.check(-39)
@@ -154,9 +192,17 @@ x &= -39
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
 <div class="flex-child">
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$f)\;\;$__ $  \dfrac{5}{x-1} = \dfrac{8}{x+6} $ \
 $x$ = [[  38/3  ]] @canvas
 @Algebrite.check(38/3)
@@ -173,5 +219,7 @@ x &= \dfrac{38}{3}
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
 </section>

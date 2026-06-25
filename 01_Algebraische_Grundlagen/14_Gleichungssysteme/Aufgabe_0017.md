@@ -58,7 +58,14 @@ Beim Schulfest verkauft die betrachtet Klasse Kuchenstücke und Waffeln. Am Ende
 
 
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 $x$ = [[  16  ]] @canvas und $y$ = [[  10  ]] @canvas 
 @Algebrite.check([ 16; 10 ])
 ************
@@ -77,6 +84,9 @@ y \cap I:& \qquad x + 10 = 26 \quad \left| -10 \right. \\
 $$
 Es wurden 16 Kuchenstücke und 10 Waffeln verkauft.
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Sachaufgabe)
 
 
 

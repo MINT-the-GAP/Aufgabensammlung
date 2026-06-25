@@ -51,21 +51,61 @@ author: Martin Lommatzsch
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 In jeder Schachtel mit der Aufschrift $x$ befinden sich gleich viele Streichhölzer. Auf jeder Seite des Gleichheitszeichen befindet sich die selbe Anzahl an Streichhölzern. **Bestimme** bei allen Streichholzschachtelgleichungen wie viele Streichhölzer sich in einer Schachtel befinden.
 
-<!-- style="width:600px" -->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+style="max-width:600px" -->
 __$a)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholz1e.png)  
-$x=$ [[  2  ]] @canvas Streichhölzer
+$x=$ [[  2  ]]  Streichhölzer @canvas
+@Algebrite.check([ 2 ])
 
-<!-- style="width:600px" -->
+
+@ADetails(1=BE; Gleichung, Äquivalenzumformung)
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+style="max-width:600px" -->
 __$b)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholz1f.png)  
-$x=$ [[  2  ]] @canvas Streichhölzer
+$x=$ [[  2  ]]  Streichhölzer @canvas
+@Algebrite.check([ 2 ])
 
-<!-- style="width:600px" -->
+
+@ADetails(1=BE; Gleichung, Äquivalenzumformung)
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+style="max-width:600px" -->
 __$c)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholz1g.png)  
-$x=$ [[  1  ]] @canvas Streichhölzer
+$x=$ [[  1  ]]  Streichhölzer @canvas
+@Algebrite.check([ 1 ])
 
-<!-- style="width:600px" -->
+
+@ADetails(1=BE; Gleichung, Äquivalenzumformung)
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+style="max-width:600px" -->
 __$d)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholz1h.png)  
-$x=$ [[  5  ]] @canvas Streichhölzer
+$x=$ [[  5  ]]  Streichhölzer @canvas
+@Algebrite.check([ 5 ])
+
+
+@ADetails(1=BE; Gleichung, Äquivalenzumformung)
 
 
 

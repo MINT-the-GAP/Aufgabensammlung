@@ -60,7 +60,13 @@ author: Martin Lommatzsch
 
 <section class="dynFlex">
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$a)\;\;$__ $  3a + 2b = c + 4 \;\;$  mit $\;\; b = a - 5 \;\;\wedge\;\; c = 2a - 1$ \
 $a$ = [[  13/3  ]] @canvas
 @Algebrite.check(13/3)
@@ -76,9 +82,17 @@ a &= \dfrac{13}{3} \\
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$b)\;\;$__ $   x + 6y = y + 9z \;\;$  mit $\;\; y = 2x - 1 \;\;\wedge\;\; z = x + 2$ \
 $x$ = [[  23/2  ]] @canvas
 @Algebrite.check(23/2)
@@ -95,9 +109,17 @@ x &= \dfrac{23}{2} \\
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$c)\;\;$__ $   r + t = u + v \;\;$  mit $\;\; r = 1 + 3u \;\;\wedge\;\; t = 2u - 4 \;\;\wedge\;\; v = 5u - 2$ \
 $u$ = [[  -1  ]] @canvas
 @Algebrite.check(-1)
@@ -112,9 +134,17 @@ r + t &= u + v \\
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$d)\;\;$__ $   5n + 3m + 9s = n m + a \;\;$  mit $\;\; n=2 \;\;\wedge\;\; m = 4s + 1 \;\;\wedge\;\; a = s - 5$ \
 $s$ = [[  -4/3  ]] @canvas
 @Algebrite.check(-4/3)
@@ -131,9 +161,17 @@ s &= -\dfrac{4}{3} \\
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$e)\;\;$__ $ \; 5(c+6) + 5t = 4(r + n) \;$  mit $\,c = 2t - 1 \;\;\wedge\;\; r = t + 3 \;\;\wedge\;\; n = 3t + 5$ \
 $t$ = [[  -7  ]] @canvas
 @Algebrite.check(-7)
@@ -149,9 +187,17 @@ $$
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 __$f)\;\;$__ $   r + s = t \;\;$  mit $\;\; s = 2r + 1 \;\;\wedge\;\;  t = 2s + 3$ \
 $r$ = [[  -4  ]] @canvas
 @Algebrite.check(-4)
@@ -166,6 +212,8 @@ r + (2r+1) &= 2(2r+1) + 3 \\
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
 </section>
 

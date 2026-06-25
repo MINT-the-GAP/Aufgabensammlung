@@ -58,7 +58,13 @@ In Raum 1 ist es anfangs 16 °C und die Temperatur steigt pro Stunde um 1,5 °C.
 In Raum 2 ist es anfangs 28 °C und die Temperatur sinkt pro Stunde um 0,75 °C.  
 **Berechne**, nach wie vielen Stunden beide Räume die gleiche Temperatur haben.
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $x$ = [[  16/3  ]] @canvas
 @Algebrite.check(16/3)
 ************
@@ -92,3 +98,5 @@ $$
 
 Deutung: Nach $\dfrac{16}{3}\approx 5{,}3$ Stunden haben beide Räume $24^\circ\mathrm{C}$.
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Sachaufgabe)

@@ -60,8 +60,16 @@ author: Martin Lommatzsch
 <div class="flex-child">
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$a)\;\;$__ $  x - 4 = 9 $ \
 $x$ = [[  13  ]] @canvas
+@Algebrite.check([ 13 ])
 ************
 $$
 \begin{align*}
@@ -71,12 +79,23 @@ x   & = 13  \\
 $$
 ************
 
+
+@ADetails(1=BE; Äquivalenzumformung)
+
 </div>
 <div class="flex-child">
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$b)\;\;$__ $  4 \cdot x = 36$ \
 $x$ =  [[  9   ]] @canvas
+@Algebrite.check([ 9 ])
 ************
 $$
 \begin{align*}
@@ -87,12 +106,23 @@ $$
 ************
 
 
+@ADetails(1=BE; Äquivalenzumformung)
+
+
 </div>
 <div class="flex-child">
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$c)\;\;$__ $  7 = \dfrac{x}{6}  $ \
 $x$ =  [[  42  ]] @canvas
+@Algebrite.check([ 42 ])
 ************
 $$
 \begin{align*}
@@ -103,12 +133,23 @@ $$
 ************
 
 
+@ADetails(1=BE; Äquivalenzumformung)
+
+
 </div>
 <div class="flex-child">
 
 
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$d)\;\;$__ $ 3 = x - 5 $ \
 $x$ =  [[  8   ]] @canvas
+@Algebrite.check([ 8 ])
 ************
 $$
 \begin{align*}
@@ -119,11 +160,22 @@ $$
 ************
 
 
+@ADetails(1=BE; Äquivalenzumformung)
+
+
 </div>
 <div class="flex-child">
  
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$e)\;\;$__ $  x + 8  = 13 $ \
 $x$ =  [[  5   ]] @canvas
+@Algebrite.check([ 5 ])
 ************
 $$
 \begin{align*}
@@ -134,11 +186,22 @@ $$
 ************
 
 
+@ADetails(1=BE; Äquivalenzumformung)
+
+
 </div>
 <div class="flex-child">
  
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$f)\;\;$__ $  64 = 4 \cdot x  $ \
 $x$ =  [[  16  ]] @canvas
+@Algebrite.check([ 16 ])
 ************
 $$
 \begin{align*}
@@ -147,6 +210,9 @@ $$
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Äquivalenzumformung)
 
 
 </div>

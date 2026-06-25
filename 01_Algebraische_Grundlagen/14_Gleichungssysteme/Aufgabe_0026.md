@@ -57,7 +57,14 @@ author: Martin Lommatzsch
 Ein Mensch bearbeitet an einem Nachmittag zwei Textkapitel. Insgesamt arbeitet dieser 5 Stunden. Beim ersten Kapitel schafft er 60 Seiten pro Stunde, beim zweiten 40 Seiten pro Stunde. Am Ende hast der Mensch zusammen 255 Seiten bearbeitet.  
 **Berechne** die Arbeitszeiten für beide Kapitel.
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 $x$ = [[  11/4  ]] @canvas und $y$ = [[  9/4  ]] @canvas
 @Algebrite.check([ 11/4; 9/4 ])
 ************
@@ -77,6 +84,9 @@ x \cap I\!:& \qquad \dfrac{11}{4} + y = 5
 $$
 Die Arbeitszeiten betragen $ \dfrac{11}{4}\,\text{h}$ (erstes Kapitel) und $ \dfrac{9}{4}\,\text{h}$ (zweites Kapitel).
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Bruchrechnung, Sachaufgabe)
 
 
 

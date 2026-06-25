@@ -59,7 +59,11 @@ author: Martin Lommatzsch
 Für Arbeitsblätter werden bereits 9 Kopien bereitgehalten. Ein zusätzliches Bündel enthält 12 Kopien.  
 **Berechne** die kleinste natürliche Zahl $x$ (zusätzliche Bündel), sodass insgesamt mindestens 81 Kopien vorliegen.
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \{ x \in \mathbb{N} \;|\; x \geq $ [[ 6 ]] @canvas $\}$
 @Algebrite.check(6)
 ******************
@@ -72,3 +76,6 @@ x &\geq 6
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung, Sachaufgabe)

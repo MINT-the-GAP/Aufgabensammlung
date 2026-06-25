@@ -56,7 +56,14 @@ author: Martin Lommatzsch
 Es werden drei Fruchtsäfte mit unterschiedlichen Zuckergehalten gemischt: Saft A enthält $120\,\text{g}$ Zucker je Liter, Saft B $80\,\text{g}$ je Liter und Saft C $50\,\text{g}$ je Liter. Insgesamt werden $9$ Liter gemischt. Der Gesamtzuckergehalt beträgt $815\,\text{g}$. Außerdem wird von Saft B einen halben Liter mehr als von Saft A verwendet.  
 **Berechne** die Literanteile der drei Säfte.
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 $x$ = [[  7/2  ]] @canvas, $y$ = [[  4  ]] @canvas und $z$ = [[  3/2  ]] @canvas
 @Algebrite.check([ 7/2; 4; 3/2 ])
 ************
@@ -79,6 +86,9 @@ I:& \qquad z = 9 - x - y = 9 - \dfrac{7}{2} - 4 = \dfrac{3}{2}
 $$
 Die Anteile betragen $ \dfrac{7}{2}\,\ell$ (Saft A), $4\,\ell$ (Saft B) und $ \dfrac{3}{2}\,\ell$ (Saft C).
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Bruchrechnung, Sachaufgabe)
 
 
 

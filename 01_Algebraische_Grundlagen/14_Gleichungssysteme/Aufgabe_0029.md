@@ -57,7 +57,14 @@ In einem Klassenzimmer sind Stühle aus Holz, Kunststoff und Metall aufgestellt.
 **Berechne** die Anzahl der Holz-, Kunststoff- und Metallstühle.
 
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 $x$ = [[  12  ]] @canvas, $y$ = [[  16  ]] @canvas und $z$ = [[  8  ]] @canvas
 @Algebrite.check([ 12; 16; 8 ])
 ************
@@ -91,6 +98,9 @@ $$
 Es gibt also $12$ Holzstühle, $16$ Kunststoffstühle und $8$ Metallstühle.
 
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Sachaufgabe)
 
 
 

@@ -57,7 +57,14 @@ author: Martin Lommatzsch
 Zwei Tätigkeiten werden an einem Tag erledigt. Zusammen beträgt die Arbeitszeit 8 Stunden. Die eine Tätigkeit wird mit 12 € pro Stunde vergütet, die andere mit 8 € pro Stunde. Insgesamt werden 85 € ausgezahlt.  
 **Berechne** die gearbeiteten Stunden der beiden Tätigkeiten.
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 $x$ = [[  21/4  ]] @canvas und $y$ = [[  11/4  ]] @canvas
 @Algebrite.check([ 21/4; 11/4 ])
 ************
@@ -77,6 +84,9 @@ x \cap I:& \qquad \dfrac{21}{4} + y = 8
 $$
 Die Arbeitszeiten betragen $\dfrac{21}{4}$ h und $\dfrac{11}{4}$ h.
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Bruchrechnung, Sachaufgabe)
 
 
 

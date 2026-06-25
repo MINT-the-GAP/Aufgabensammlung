@@ -70,8 +70,13 @@ author: Martin Lommatzsch
 <div class="flex-child">
 __$a)\;\;$__ $3x + 9 \leq 30$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \leq $   [[  7  ]] @canvas   $\left.   \right\}$
+@Algebrite.check(7)
 ******************
 $$
 \begin{align*}
@@ -81,13 +86,21 @@ x &\le 7
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen)
 </div>
 
 <div class="flex-child">
 __$b)\;\;$__ $\dfrac{x}{2} + 4 > 12$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $   [[  17  ]] @canvas   $\left.   \right\}$
+@Algebrite.check(17)
 ******************
 $$
 \begin{align*}
@@ -97,13 +110,21 @@ x &> 16 \;\;\Rightarrow\;\; x \ge 17 \text{ für } \mathbb{N}
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung)
 </div>
 
 <div class="flex-child">
 __$c)\;\;$__ $5x - 5 \geq 20$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  5  ]] @canvas   $\left.   \right\}$
+@Algebrite.check(5)
 ******************
 $$
 \begin{align*}
@@ -113,13 +134,21 @@ x &\ge 5
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen)
 </div>
 
 <div class="flex-child">
 __$d)\;\;$__ $\dfrac{x}{6} + 3 < 10$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \leq $   [[  41  ]] @canvas   $\left.   \right\}$
+@Algebrite.check(41)
 ******************
 $$
 \begin{align*}
@@ -129,13 +158,22 @@ x &< 42 \;\;\Rightarrow\;\; x \le 41 \text{ für } \mathbb{N}
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung)
 </div>
 
 <div class="flex-child">
 __$e)\;\;$__ $4x + 2 \geq 18$ 
 
-<!-- data-solution-button="5"-->
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  4  ]] @canvas   $\left.   \right\}$
+@Algebrite.check(4)
 ******************
 $$
 \begin{align*}
@@ -145,13 +183,21 @@ x &\ge 4
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen)
 </div>
 
 <div class="flex-child">
 __$f)\;\;$__ $6x - 12 < 24$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  5  ]] @canvas   $\left.   \right\}$
+@Algebrite.check(5)
 ******************
 $$
 \begin{align*}
@@ -161,6 +207,9 @@ x &< 6 \;\;\Rightarrow\;\; x \le 5 \text{ für } \mathbb{Z}
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen)
 </div>
 
 </section>

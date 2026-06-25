@@ -59,7 +59,11 @@ author: Martin Lommatzsch
 Ein Regal fasst maximal $50$ Bücher. Zu Beginn stehen bereits $18$ Bücher darin. Jede neue Lieferung enthält $\dfrac{11}{3}$ Bücher im Durchschnitt (z. B. durch wechselnde Buchmengen pro Paket).  
 **Berechne** die Anzahl der Lieferungen $x$, sodass die Kapazität des Regals überschritten wird.
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \{ x \in \mathbb{N} \;|\; x \geq $ [[ 9 ]] @canvas $\}$
 @Algebrite.check(9)
 ******************
@@ -72,5 +76,8 @@ x &> \dfrac{96}{11} \\[4pt]
 \end{align*}
 $$
 ******************
+
+
+@ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung, Sachaufgabe)
 
 

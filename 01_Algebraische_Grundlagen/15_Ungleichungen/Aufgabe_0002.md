@@ -67,29 +67,61 @@ author: Martin Lommatzsch
 <div class="flex-child">
 __$a)\;\;$__ $3x < 21$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x < $   [[  7  ]] @canvas   $\left.   \right\}$
+@Algebrite.check(7)
+
+
+@ADetails(1=BE; Ungleichung)
 </div>
 
 <div class="flex-child">
 __$b)\;\;$__  $x \geq 4$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  4  ]] @canvas   $\left.   \right\}$
+@Algebrite.check(4)
+
+
+@ADetails(1=BE; Ungleichung)
 </div>
 
 <div class="flex-child">
 __$c)\;\;$__  $\dfrac{x}{2} \leq 9$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  18  ]] @canvas   $\left.   \right\}$
+@Algebrite.check(18)
+
+
+@ADetails(1=BE; Ungleichung)
 </div>
 
 <div class="flex-child">
 __$d)\;\;$__  $ x + 9 > 20$ 
 
-<!-- data-solution-button="5"-->
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x > $   [[  11  ]] @canvas   $\left.   \right\}$
+@Algebrite.check(11)
+
+
+@ADetails(1=BE; Ungleichung)
 </div>
 
 </section>

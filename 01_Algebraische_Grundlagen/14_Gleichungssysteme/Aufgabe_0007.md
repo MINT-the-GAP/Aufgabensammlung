@@ -56,7 +56,14 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$a)\;\;$__  
 $$
 \begin{align*}
@@ -65,6 +72,7 @@ II.& \qquad x + 3y = 13
 \end{align*}
 $$  
 $x$ = [[  4  ]] @canvas  und  $y$ = [[  3  ]] @canvas
+@Algebrite.check([ 4;3 ])
 ************
 $$
 \begin{align*}
@@ -82,9 +90,18 @@ x \cap I. &\qquad 2\cdot 4 + y = 11 \\
 $$
 ************
 
+@ADetails(1=BE; Gleichungssysteme)
+
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$b)\;\;$__  
 $$
 \begin{align*}
@@ -93,6 +110,7 @@ II.& \qquad 2x + y  = 12
 \end{align*}
 $$  
 $x$ = [[  5  ]] @canvas  und  $y$ = [[  2  ]] @canvas
+@Algebrite.check([ 5;2 ])
 ************
 $$
 \begin{align*}
@@ -110,9 +128,18 @@ x\cap II. &  \qquad 2\cdot 5 + y = 12 \\
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Gleichungssysteme)
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$c)\;\;$__  
 $$
 \begin{align*}
@@ -121,6 +148,7 @@ II.& \qquad 2x - y &= 3
 \end{align*}
 $$  
 $x$ = [[  4  ]] @canvas  und  $y$ = [[  5  ]] @canvas
+@Algebrite.check([ 4;5 ])
 ************
 $$
 \begin{align*}
@@ -137,9 +165,18 @@ x\cap I.\ &\qquad 4 + y = 9 \quad \left| -4 \right. \\
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Gleichungssysteme)
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$d)\;\;$__  
 $$
 \begin{align*}
@@ -148,6 +185,7 @@ II.& \qquad x + 2y &= 13
 \end{align*}
 $$  
 $x$ = [[  3  ]] @canvas  und  $y$ = [[  5  ]] @canvas
+@Algebrite.check([ 3;5 ])
 ************
 $$
 \begin{align*}
@@ -167,9 +205,18 @@ x\cap I.\ &\qquad 4\cdot 3 - y = 7 \\
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Gleichungssysteme)
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$e)\;\;$__  
 $$
 \begin{align*}
@@ -178,6 +225,7 @@ II.& \qquad 2x + 3y &= 20
 \end{align*}
 $$  
 $x$ = [[  4  ]] @canvas  und  $y$ = [[  4  ]] @canvas
+@Algebrite.check([ 4;4 ])
 ************
 $$
 \begin{align*}
@@ -195,9 +243,18 @@ x\cap I.  &\qquad 3\cdot 4 + y = 16 \\
 \end{align*}
 $$
 ************
+
+@ADetails(1=BE; Gleichungssysteme)
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$f)\;\;$__  
 $$
 \begin{align*}
@@ -206,6 +263,7 @@ II.& \qquad x + 2y &= 13
 \end{align*}
 $$  
 $x$ = [[  5  ]] @canvas  und  $y$ = [[  4  ]] @canvas
+@Algebrite.check([ 5;4 ])
 ************
 $$
 \begin{align*}
@@ -225,3 +283,5 @@ $$
 ************
 </div>
 </section>
+
+@ADetails(1=BE; Gleichungssysteme)

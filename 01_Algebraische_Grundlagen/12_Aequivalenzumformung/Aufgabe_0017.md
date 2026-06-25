@@ -58,7 +58,14 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$a)\;\;$__ $  2x + 5 + 9 = 6x - 3 - 7 $ \
 $x$ = [[  6  ]] @canvas
 @Algebrite.check(6)
@@ -73,10 +80,20 @@ x &= 6
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Äquivalenzumformung)
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$b)\;\;$__ $  3x + 5 + x = 2x + 17 - x $ \
 $x$ = [[  4  ]] @canvas
 @Algebrite.check(4)
@@ -91,10 +108,20 @@ x &= 4
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Äquivalenzumformung)
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$c)\;\;$__ $  5x - 7 + 2x = 3x + 13 $ \
 $x$ = [[  5  ]] @canvas
 @Algebrite.check(5)
@@ -109,10 +136,20 @@ x &= 5
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Äquivalenzumformung)
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$d)\;\;$__ $  $2x + 4 + 9x = 6x + 6 + 8$ \
 $x$ = [[  2  ]] @canvas
 @Algebrite.check(2)
@@ -127,6 +164,9 @@ x &= 2
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Äquivalenzumformung)
 </div>
 </section>
 

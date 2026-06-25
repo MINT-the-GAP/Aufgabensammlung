@@ -61,7 +61,14 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$a)\;\;$__  
 $$
 \begin{align*}
@@ -92,9 +99,19 @@ z,x \cap I:&\qquad 12\cdot\dfrac{1}{2} + 12y + 12\cdot\left(-\dfrac{3}{4}\right)
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 </div>
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$b)\;\;$__  
 $$
 \begin{align*}
@@ -124,11 +141,21 @@ z,x \cap II:& \qquad 7\cdot \dfrac{3}{7} - 3y + 12\cdot \dfrac{5}{6} = 15 \\
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 </div>
 
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$c)\;\;$__  
 $$
 \begin{align*}
@@ -158,11 +185,21 @@ z,x \cap I:& \qquad 6\cdot \left(-\dfrac{1}{3}\right) + 8y + 5\cdot \dfrac{2}{5}
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 </div>
 
 
 <div class="flex-child">
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$d)\;\;$__  
 $$
 \begin{align*}
@@ -191,6 +228,9 @@ z,x \cap I:& \qquad 9\cdot \dfrac{7}{9} + 6y + 3\cdot \dfrac{1}{3} = 3 \\
 \end{align*}
 $$
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 </div>
 
 

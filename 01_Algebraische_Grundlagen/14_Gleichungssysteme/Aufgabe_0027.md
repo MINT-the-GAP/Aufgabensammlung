@@ -58,7 +58,14 @@ author: Martin Lommatzsch
 In einem Kassenfach liegen 1-€, 2-€ und 50-Cent-Münzen. Insgesamt sind es 30 Münzen. Der Gesamtwert beträgt 33 €. Außerdem gibt es zwei 50-Cent-Münzen weniger als 1-€-Münzen.  
 **Berechne** die Anzahl der 1-€, 2-€ und 50-Cent-Münzen.
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 $x$ = [[  12  ]] @canvas, $y$ = [[  8  ]] @canvas und $z$ = [[  10  ]] @canvas
 @Algebrite.check([ 12; 8; 10 ])
 ************
@@ -83,6 +90,9 @@ II \cap III:& \qquad 100x + 200y + 50(x - 2) = 3300 \\
 $$
 Es liegen $12$ Stück 1-€-Münzen, $8$ Stück 2-€-Münzen und $10$ Stück 50-Cent-Münzen im Kassenfach.
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Sachaufgabe)
 
 
 

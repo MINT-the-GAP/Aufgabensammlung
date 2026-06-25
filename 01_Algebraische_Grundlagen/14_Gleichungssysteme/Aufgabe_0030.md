@@ -57,7 +57,14 @@ author: Martin Lommatzsch
 Du planst in einer Woche Einheiten in drei Ausdauersportarten: Laufen, Radfahren und Schwimmen. Insgesamt absolvierst du 14 Einheiten. Pro Laufeinheit rechnest du mit 500 kcal, pro Radeinheit mit 300 kcal und pro Schwimmeinheit mit 200 kcal. Zusammen ergeben sich 4900 kcal. Außerdem fährst du doppelt so oft Rad wie du schwimmst.  
 **Berechne** die Anzahl der Einheiten in den drei Sportarten.
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 $x$ = [[  5  ]] @canvas, $y$ = [[  6  ]] @canvas und $z$ = [[  3  ]] @canvas
 @Algebrite.check([ 5; 6; 3 ])
 ************
@@ -80,6 +87,9 @@ II \cap III:& \qquad 500x + 300(2z) + 200z = 4900 \\
 $$
 Es ergeben sich $5$ Laufeinheiten, $6$ Radeinheiten und $3$ Schwimmeinheiten.
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Sachaufgabe)
 
 
 

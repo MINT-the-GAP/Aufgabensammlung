@@ -56,7 +56,14 @@ author: Martin Lommatzsch
 Auf einer Weide sind Hühner und Ziegen. Insgesamt zählst du 21 Tiere. Zusammen haben die Tiere 62 Beine.  
 **Berechne** die Anzahl der Hühner und der Ziegen.
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 $x$ = [[  11  ]] @canvas und $y$ = [[  10  ]] @canvas
 @Algebrite.check([ 11; 10 ])
 ************
@@ -74,6 +81,9 @@ y \cap I:& \qquad x + 10 = 21 \quad \left| -10 \right. \\
 $$
 Es gibt 11 Hühner und 10 Ziegen.
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Sachaufgabe)
 
 
 

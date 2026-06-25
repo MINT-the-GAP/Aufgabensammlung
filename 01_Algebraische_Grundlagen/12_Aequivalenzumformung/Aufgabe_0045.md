@@ -60,7 +60,13 @@ Die Höhenanzeige der Aufzüge kann auch Zwischenwerte zwischen zwei Ebenen anze
 
 
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $x$ = [[  24/7  ]] @canvas
 @Algebrite.check(24/7)
 ************
@@ -95,3 +101,5 @@ $$
 Deutung: Nach $\dfrac{24}{7}\approx 3{,}43$ Minuten sind beide auf gleicher Höhe, nämlich bei $\dfrac{15}{7}\approx 2{,}14$ Ebenen über dem Erdgeschoss (zwischen 2. und 3. OG).
 
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Sachaufgabe)

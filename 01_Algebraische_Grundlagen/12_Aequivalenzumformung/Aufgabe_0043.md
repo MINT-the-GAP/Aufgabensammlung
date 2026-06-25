@@ -59,7 +59,13 @@ Auf Band 2 liegen zu Beginn 44 Kisten, und pro Minute werden 1,75 Kisten abtrans
 **Berechne**, nach wie vielen Minuten auf beiden Bändern gleich viele Kisten liegen.
 
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $x$ = [[  26/3  ]] @canvas
 @Algebrite.check(26/3)
 ************
@@ -96,3 +102,5 @@ $$
 Deutung: Nach $\dfrac{26}{3}\approx 8{,}7$  Minuten liegen auf beiden Bändern gleich viele Kisten ($\dfrac{173}{6}\approx 28{,}8$ Kisten).
 
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Sachaufgabe)

@@ -59,7 +59,13 @@ Am Süd-Eingang warten zunächst 64 Personen. Pro Minute werden 3,5 Personen ein
 Die Anzeigen der Ordner werden im Mittel über mehrere Minuten gemessen.  
 **Berechne**, nach wie vielen Minuten beide Schlangen **gleich lang** sind.
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $x$ = [[  96/5  ]] @canvas
 @Algebrite.check(96/5)
 ************
@@ -96,3 +102,5 @@ $$
 Deutung: Nach $\dfrac{96}{5}\approx 19{,}2$ Minuten sind beide Schlangen gleich lang (je 16 Personen). Vorher ist die Schlange am Süd-Eingang länger, danach die am Nord-Eingang.
 
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Sachaufgabe)

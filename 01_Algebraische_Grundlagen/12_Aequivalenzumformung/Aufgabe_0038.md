@@ -56,7 +56,13 @@ Ein Becken wird pro Minute um 0,75 Liter aufgefüllt; zu Beginn sind 2,5 Liter e
 Ein zweites Becken enthält anfangs 7,25 Liter, dabei werden pro Minute 0,5 Liter abgelassen.  
 **Berechne**, nach wie vielen Minuten beide Becken gleich viel Wasser enthalten.
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" -->
 $x$ = [[  19/5  ]] @canvas
 @Algebrite.check(19/5)
 ************
@@ -90,3 +96,5 @@ $$
 Deutung:
 Nach $\dfrac{19}{5}\approx 3,8$ Minuten ist der Füllstand in beiden Becken gleich ( $\dfrac{107}{20}=5,35$ Liter)
 ************
+
+@ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Sachaufgabe)

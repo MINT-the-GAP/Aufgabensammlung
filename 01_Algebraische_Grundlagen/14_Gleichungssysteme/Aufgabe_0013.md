@@ -62,7 +62,14 @@ author: Martin Lommatzsch
 <section class="dynFlex">
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$a)\;\;$__  
 $$
 \begin{align*}
@@ -93,12 +100,22 @@ x \cap II. &\qquad 4 \cdot \dfrac{9}{11} - y = 1 \\
 $$
 ************
 
+
+@ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
+
 </div>
 <div class="flex-child">
 
 
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$b)\;\;$__  
 $$
 \begin{align*}
@@ -127,10 +144,20 @@ y \cap II. &\qquad x + 3\cdot \dfrac{37}{17} = 8 \\
 $$
 ************
 
+
+@ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
+
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$c)\;\;$__  
 $$
 \begin{align*}
@@ -160,10 +187,20 @@ $$
 ************
 
 
+@ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
+
+
 </div>
 <div class="flex-child">
 
-<!-- data-solution-button="5"-->
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-show-partial-solution -->
 __$d)\;\;$__  
 $$
 \begin{align*}
@@ -174,6 +211,9 @@ $$
 $x$ = [[  -4/5  ]] @canvas   und  $y$ = [[  17/5  ]] @canvas 
 @Algebrite.check([ -4/5; 17/5 ])
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 
 $$
 \begin{align*}
@@ -195,6 +235,9 @@ x \cap II.\; &\qquad 2\!\left(-\dfrac{4}{5}\right) - y = -5 \\
 $$
 
 ************
+
+
+@ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 
 </div>
 </section>
