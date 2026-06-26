@@ -53,13 +53,18 @@ author: Martin Lommatzsch
 
 
 
-<center>
+@Koordinatensystem(`xmin=-1;xmax=10;ymin=-1;ymax=10;width=700;id=K0009`)
+
+@AchsenBeschriftung(`id=K0009;xlabel=$x$;ylabel=$y$`)
 
 
-<!-- style="width:1000px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap3/Koord9.png)
+@Punkt(`K0009;A;4.4;8.2;fix`)
+@Punkt(`K0009;B;1.7;2.8;fix`)
+@Punkt(`K0009;C;5.9;3.8;fix`)
+@Punkt(`K0009;D;7.4;6.7;fix`)
+@Punkt(`K0009;E;9.4;0.3;fix`)
 
-</center>
+
 
 <section class="dynFlex">
 

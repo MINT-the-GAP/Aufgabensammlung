@@ -51,13 +51,21 @@ author: Martin Lommatzsch
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
 **Gib** die fehlende Information zu den Punkten als Dezimalzahl **an**.
 
-<center>
 
 
-<!-- style="width:1000px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap3/Koord11.png)
 
-</center>
+@Koordinatensystem(`xmin=-1;xmax=10;ymin=-1;ymax=10;width=700;id=K0011`)
+
+@AchsenBeschriftung(`id=K0011;xlabel=$x$;ylabel=$y$`)
+
+
+@Punkt(`K0011;A;9.7;0.1;fix`)
+@Punkt(`K0011;B;6.2;5.7;fix`)
+@Punkt(`K0011;C;4.7;3.3;fix`)
+@Punkt(`K0011;D;1.1;9.3;fix`)
+@Punkt(`K0011;E;9.3;1.1;fix`)
+
+
 
 <section class="dynFlex">
 

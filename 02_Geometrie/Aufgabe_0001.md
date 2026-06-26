@@ -23,7 +23,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
-import:  https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
+
 
 
 
@@ -54,54 +54,18 @@ author: Martin Lommatzsch
 
 
 
-<center>
 
-```latex  @tikz
 
-\begin{tikzpicture} [scale=2, >=latex]
+@Koordinatensystem(`xmin=-1;xmax=10;ymin=-1;ymax=5;width=700;id=K0001`)
 
-\draw[black!70, step=5mm,   thin, dashed] (-0,-0) grid (8,4);  
-\draw[black!70, step=10mm,   thin] (-0,-0) grid (8,4);
+@AchsenBeschriftung(`id=K0001;xlabel=$x$;ylabel=$y$`)
 
-  \coordinate (ya) at (0,-0.25);
-  \coordinate (xa) at (-0.25,0);
-  \coordinate (o) at (0,0);
-  \coordinate (y) at (0,4.25);
-  \coordinate (x) at (8.25,0);
-  
-    \draw[<->, black!100, thick] (y) node[above] {\large $y$} -- (0,0) --  (x) node[right]   {\large $x$};
 
-\draw[-, black!100, thin]  (0,0.1) -- (0,-0.1) node[below=0.25cm,left] {\Large 0};
-\draw[-, black!100, thin]  (1,0.1) -- (1,-0.1) node[below] {\Large 1};
-\draw[-, black!100, thin]  (2,0.1) -- (2,-0.1) node[below] {\Large 2};
-\draw[-, black!100, thin]  (3,0.1) -- (3,-0.1) node[below] {\Large 3};
-\draw[-, black!100, thin]  (4,0.1) -- (4,-0.1) node[below] {\Large 4};
-\draw[-, black!100, thin]  (5,0.1) -- (5,-0.1) node[below] {\Large 5};
-\draw[-, black!100, thin]  (6,0.1) -- (6,-0.1) node[below] {\Large 6};
-\draw[-, black!100, thin]  (7,0.1) -- (7,-0.1) node[below] {\Large 7};
-\draw[-, black!100, thin]  (8,0.1) -- (8,-0.1) node[below] {\Large 8};
-\draw[-, black!100, thin]  (0.1,1) -- (-0.1,1) node[left] {\Large 1};
-\draw[-, black!100, thin]  (0.1,2) -- (-0.1,2) node[left] {\Large 2};
-\draw[-, black!100, thin]  (0.1,3) -- (-0.1,3) node[left] {\Large 3};
-\draw[-, black!100, thin]  (0.1,4) -- (-0.1,4) node[left] {\Large 4};
- 
- \draw [ black!100, thick]  (ya) --(o) --  (xa);
+@Punkt(`K0001;A;3;4;fix`)
+@Punkt(`K0001;B;7;2;fix`)
+@Punkt(`K0001;C;1;3;fix`)
 
-  \coordinate[label=center:\LARGE$\times$] (a) at (3+0.03,4-0.02);
-  \node[below right] at (3,4) {\LARGE $A$};
 
-  \coordinate[label=center:\LARGE$\times$] (b) at (7+0.03,2-0.02);
-  \node[below right] at (7,2) {\LARGE $B$};
-
-  \coordinate[label=center:\LARGE$\times$] (c) at (1+0.03,3-0.02);
-  \node[below right] at (1,3) {\LARGE $C$};
-
-	%\draw[thick,color=black, ]  plot[samples=100, domain=-0:4] (\x, {2*\x } ) node[right] {\large $f$};  
-  
-\end{tikzpicture}
-
-```
-</center>
 
 <section class="dynFlex">
 

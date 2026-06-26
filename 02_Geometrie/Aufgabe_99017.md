@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 version:  0.0.1
 language: de
 narrator: Deutsch Female
@@ -36,7 +36,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 tags: Koordinatensystem, Stelle, Punkt, sehr leicht, sehr niedrig, Angeben
 
-comment: Stellen und Punkte aus dem Koordinatensystem auslesen.
+comment: Stellen und Punkte aus dem Koordinatensystem auslesen mit negativen Dezimalzahlen.
 
 author: Martin Lommatzsch
 
@@ -45,83 +45,85 @@ author: Martin Lommatzsch
 
 
 
-# Punkte ablesen
+# Punkte einzeichnen
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-**Gib** die fehlende Information zu den Punkten **an**.
+**Ziehe** den jweiligen Punkt **auf** die angegebenen Koordinaten
 
 
 
-@Koordinatensystem(`xmin=-1;xmax=10;ymin=-1;ymax=10;width=700;id=K0007`)
 
-@AchsenBeschriftung(`id=K0007;xlabel=$x$;ylabel=$y$`)
+@Koordinatensystem(`xmin=-1;xmax=10;ymin=-1;ymax=10;width=700;id=A14`)
 
-
-@Punkt(`K0007;A;5;4;fix`)
-@Punkt(`K0007;B;7;0;fix`)
-@Punkt(`K0007;C;8;6;fix`)
-@Punkt(`K0007;D;2;1;fix`)
-@Punkt(`K0007;E;4;3;fix`)
+@AchsenBeschriftung(`id=A14;xlabel=$x$;ylabel=$y$`)
 
 
 <section class="dynFlex">
 
 <div class="flex-child">
 
+__$a)\;\;$__ **Ziehe** den Punkt $A$ **auf** die Koordinaten $(3|8)$.
 
+@ErzeugePunkt(`A14;A;3;8`,`<!-- data-solution-timer="180s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->`)
 
-<!-- data-solution-timer="5s" 
-data-solution-timer-start="oncheck" 
-data-solution-timer-badge="off" 
-data-solution-button="5" 
-data-hint-button="3"  -->
- $A($[[  5  ]]$|$[[  4  ]]$)$ \
-
-
-@ADetails(1=BE; Koordinatensystem, Punkt)
+@ADetails(BE=1;Koordinatensystem, Punkt)
 
 </div>
 
 <div class="flex-child">
 
+__$b)\;\;$__ **Ziehe** den Punkt $B$ **auf** die Koordinaten $(7|5)$.
 
+@ErzeugePunkt(`A14;B;7;5`,`<!-- data-solution-timer="180s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->`)
 
-
-<!-- data-solution-timer="5s" 
-data-solution-timer-start="oncheck" 
-data-solution-timer-badge="off" 
-data-solution-button="5" 
-data-hint-button="3"  -->
- $B($[[  7  ]]$|$[[  0  ]]$)$ \
-
-
-@ADetails(1=BE; Koordinatensystem, Punkt)
+@ADetails(BE=1;Koordinatensystem, Punkt)
 
 </div>
 
 <div class="flex-child">
 
+__$c)\;\;$__ **Ziehe** den Punkt $C$ **auf** die Koordinaten $(2|4)$.
 
+@ErzeugePunkt(`A14;C;2;4`,`<!-- data-solution-timer="180s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->`)
 
+@ADetails(BE=1;Koordinatensystem, Punkt)
 
-<!-- data-solution-timer="5s" 
-data-solution-timer-start="oncheck" 
-data-solution-timer-badge="off" 
-data-solution-button="5" 
-data-hint-button="3"  -->
- [[  C  ]]$( 8 | 6 )$ \
+</div>
 
+<div class="flex-child">
 
-@ADetails(1=BE; Koordinatensystem, Punkt)
+__$d)\;\;$__ **Ziehe** den Punkt $D$ **auf** die Koordinaten $(9|2)$.
 
+@ErzeugePunkt(`A14;D;9;2`,`<!-- data-solution-timer="180s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->`)
+
+@ADetails(BE=1;Koordinatensystem, Punkt)
+
+</div>
+
+<div class="flex-child">
+
+__$e)\;\;$__ **Ziehe** den Punkt $E$ **auf** die Koordinaten $(5|7)$.
+
+@ErzeugePunkt(`A14;E;5;7`,`<!-- data-solution-timer="180s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->`)
+
+@ADetails(BE=1;Koordinatensystem, Punkt)
+
+</div>
+
+<div class="flex-child">
+
+__$f)\;\;$__ **Ziehe** den Punkt $F$ **auf** die Koordinaten $(1|6)$.
+
+@ErzeugePunkt(`A14;F;1;6`,`<!-- data-solution-timer="180s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->`)
+
+@ADetails(BE=1;Koordinatensystem, Punkt)
+
+</div>
 
 </div>
 
 </section>
-
-
-
 
 
 
