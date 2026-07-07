@@ -48,6 +48,20 @@ author: Martin Lommatzsch
 
 
 
+@Koordinatensystem(`xmin=-5;xmax=6;ymin=-5;ymax=6;width=700;id=N0033`)
+
+@AchsenBeschriftung(`id=N0033;xlabel=$x$;ylabel=$y$`)
+
+
+@Punkt(`N0033;A;3;-2;fix`)
+@Punkt(`N0033;B;-4;2;fix`)
+@Punkt(`N0033;C;1;-5;fix`)
+@Punkt(`N0033;D;-4;-3;fix`)
+@Punkt(`N0033;E;4;3;fix`)
+@Punkt(`N0033;F;-1;5;fix`)
+
+
+
 <center>
 
 

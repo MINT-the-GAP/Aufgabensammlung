@@ -33,7 +33,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-tags: Erklärung, Fakultät, Zahlensysteme
+tags: Erklärung, Zahlensysteme
 
 comment: In diesem Abschnitt werden Zahlensysteme ausführlich erklärt.
 

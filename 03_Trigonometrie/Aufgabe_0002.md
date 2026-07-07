@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 version:  0.0.1
 language: de
 narrator: Deutsch Female
@@ -19,11 +19,10 @@ import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.m
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/KoordREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/Proposal/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
-import:  https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
 
 
@@ -59,30 +58,20 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
-<center>
-
-```latex  @tikz 
-
-\begin{tikzpicture} [scale=1.66]
-
-\begin{scope}[yshift=0cm] 
-  \draw[very thick] (-2,0) -- (2,0) node[midway, below] {\LARGE $b$};
-  \draw[very thick] (2,0) -- (2,3) node[midway, right] {\LARGE $d$};
-  \draw[very thick] (2,3) -- (-2,0)  node[midway, above] {\LARGE $f$};
-
-    \draw[very thick] (1.7,0) arc (180:90:0.3);
-    \node at (1.875,0.125) {\Large $\cdot$};
-
-    \draw[very thick] (-1.4,0) arc (0:37:0.6);
-    \node at (-1.6,0.115) {\Large $\alpha$};
-
-    \draw[very thick] (2,2.4) arc (270:270-53:0.6);
-    \node at (1.875,2.66) {\Large $\chi$};
-\end{scope} 
-
-\end{tikzpicture}
-```
-</center>
+@CoordinateSystem(`xmin=-2.8;xmax=2.8;ymin=-0.8;ymax=3.8;width=360;id=TR0002a;0;0;0`)
+@Punkt(`TR0002a;A;-2;0;#000000;0;fix`)
+@Punkt(`TR0002a;B;2;0;#000000;0;fix`)
+@Punkt(`TR0002a;C;2;3;#000000;0;fix`)
+@Strecke(`TR0002a;[A;B];#ff00ff;1;0`)
+@Strecke(`TR0002a;[B;C];#ff00ff;1;0`)
+@Strecke(`TR0002a;[C;A];#ff00ff;1;0`)
+@KoordText(`TR0002a;[0;-0.35];$b$;#ff00ff;1`)
+@KoordText(`TR0002a;[2.25;1.5];$d$;#ff00ff;1`)
+@KoordText(`TR0002a;[-0.2;2.0];$f$;#ff00ff;1`)
+@Winkel(`TR0002a;\,;[C;B;A];#00ffff;0.45;0`)
+@KoordText(`TR0002a;[1.78;0.18];$\cdot$;#00ffff;1`)
+@Winkel(`TR0002a;\alpha;[B;A;C];#00ffff;0.7;0`)
+@Winkel(`TR0002a;\chi;[A;C;B];#00ffff;0.7;0`)
 
 
 
@@ -104,30 +93,20 @@ Gleichung: $\quad$  [[$\sin$|($\cos$)|$\tan$|$\text{cot}$]] $(\alpha)= \frac{b}{
 
 __$b)\;\;$__
 
-<center>
-
-```latex  @tikz 
-
-\begin{tikzpicture} [scale=1.66]
-
-\begin{scope}[rotate=124] 
-  \draw[very thick] (-2,0) -- (2,0) node[midway, left] {\LARGE $k$};
-  \draw[very thick] (2,0) -- (2,3) node[midway, below] {\LARGE $s$};
-  \draw[very thick] (2,3) -- (-2,0)  node[midway, above] {\LARGE $c$};
-
-    \draw[very thick] (1.7,0) arc (180:90:0.3);
-    \node at (1.875,0.125) {\Large $\cdot$};
-
-    \draw[very thick] (-1.4,0) arc (0:37:0.6);
-    \node at (-1.6,0.115) {\Large $\psi$};
-
-    \draw[very thick] (2,2.4) arc (270:270-53:0.6);
-    \node at (1.875,2.66) {\Large $\epsilon$};
-\end{scope} 
-
-\end{tikzpicture}
-```
-</center>
+@CoordinateSystem(`xmin=-2.8;xmax=2.8;ymin=-0.8;ymax=3.8;width=360;id=TR0002b;0;0;0`)
+@Punkt(`TR0002b;A;-2;0;#000000;0;fix`)
+@Punkt(`TR0002b;B;2;0;#000000;0;fix`)
+@Punkt(`TR0002b;C;2;3;#000000;0;fix`)
+@Strecke(`TR0002b;[A;B];#ff00ff;1;0`)
+@Strecke(`TR0002b;[B;C];#ff00ff;1;0`)
+@Strecke(`TR0002b;[C;A];#ff00ff;1;0`)
+@KoordText(`TR0002b;[0;-0.35];$k$;#ff00ff;1`)
+@KoordText(`TR0002b;[2.25;1.5];$s$;#ff00ff;1`)
+@KoordText(`TR0002b;[-0.2;2.0];$c$;#ff00ff;1`)
+@Winkel(`TR0002b;\,;[C;B;A];#00ffff;0.45;0`)
+@KoordText(`TR0002b;[1.78;0.18];$\cdot$;#00ffff;1`)
+@Winkel(`TR0002b;\psi;[B;A;C];#00ffff;0.7;0`)
+@Winkel(`TR0002b;\epsilon;[A;C;B];#00ffff;0.7;0`)
 
 
 
@@ -151,30 +130,20 @@ Gleichung: $\quad$ [[ s ]]$^2 = $ [[ c ]]$^2 - k^2$
 
 __$c)\;\;$__
 
-<center>
-
-```latex  @tikz 
-
-\begin{tikzpicture} [scale=1.66]
-
-\begin{scope}[rotate=320] 
-  \draw[very thick] (-2,0) -- (2,0) node[midway, below] {\LARGE $x$};
-  \draw[very thick] (2,0) -- (2,3) node[midway, right] {\LARGE $y$};
-  \draw[very thick] (2,3) -- (-2,0)  node[midway, above] {\LARGE $t$};
-
-    \draw[very thick] (1.7,0) arc (180:90:0.3);
-    \node at (1.875,0.125) {\Large $\cdot$};
-
-    \draw[very thick] (-1.4,0) arc (0:37:0.6);
-    \node at (-1.6,0.115) {\Large $\rho$};
-
-    \draw[very thick] (2,2.4) arc (270:270-53:0.6);
-    \node at (1.875,2.66) {\Large $\nu$};
-\end{scope} 
-
-\end{tikzpicture}
-```
-</center>
+@CoordinateSystem(`xmin=-2.8;xmax=2.8;ymin=-0.8;ymax=3.8;width=360;id=TR0002c;0;0;0`)
+@Punkt(`TR0002c;A;-2;0;#000000;0;fix`)
+@Punkt(`TR0002c;B;2;0;#000000;0;fix`)
+@Punkt(`TR0002c;C;2;3;#000000;0;fix`)
+@Strecke(`TR0002c;[A;B];#ff00ff;1;0`)
+@Strecke(`TR0002c;[B;C];#ff00ff;1;0`)
+@Strecke(`TR0002c;[C;A];#ff00ff;1;0`)
+@KoordText(`TR0002c;[0;-0.35];$x$;#ff00ff;1`)
+@KoordText(`TR0002c;[2.25;1.5];$y$;#ff00ff;1`)
+@KoordText(`TR0002c;[-0.2;2.0];$t$;#ff00ff;1`)
+@Winkel(`TR0002c;\,;[C;B;A];#00ffff;0.45;0`)
+@KoordText(`TR0002c;[1.78;0.18];$\cdot$;#00ffff;1`)
+@Winkel(`TR0002c;\rho;[B;A;C];#00ffff;0.7;0`)
+@Winkel(`TR0002c;\nu;[A;C;B];#00ffff;0.7;0`)
 
 
 
@@ -196,30 +165,20 @@ Gleichung: $\quad$  [[$\sin$|$\cos$|($\tan$)|($\text{cot}$)]] $(\rho)= \frac{x}{
 
 __$d)\;\;$__
 
-<center>
-
-```latex  @tikz 
-
-\begin{tikzpicture} [scale=1.66]
-
-\begin{scope}[xscale=-1, yscale=1, rotate=25] 
-  \draw[very thick] (-2,0) -- (2,0) node[midway, below] {\LARGE $k$};
-  \draw[very thick] (2,0) -- (2,3) node[midway, right] {\LARGE $p$};
-  \draw[very thick] (2,3) -- (-2,0)  node[midway, above] {\LARGE $v$};
-
-    \draw[very thick] (1.7,0) arc (180:90:0.3);
-    \node at (1.875,0.125) {\Large $\cdot$};
-
-    \draw[very thick] (-1.4,0) arc (0:37:0.6);
-    \node at (-1.6,0.115) {\Large $\beta$};
-
-    \draw[very thick] (2,2.4) arc (270:270-53:0.6);
-    \node at (1.875,2.66) {\Large $\zeta$};
-\end{scope} 
-
-\end{tikzpicture}
-```
-</center>
+@CoordinateSystem(`xmin=-2.8;xmax=2.8;ymin=-0.8;ymax=3.8;width=360;id=TR0002d;0;0;0`)
+@Punkt(`TR0002d;A;-2;0;#000000;0;fix`)
+@Punkt(`TR0002d;B;2;0;#000000;0;fix`)
+@Punkt(`TR0002d;C;2;3;#000000;0;fix`)
+@Strecke(`TR0002d;[A;B];#ff00ff;1;0`)
+@Strecke(`TR0002d;[B;C];#ff00ff;1;0`)
+@Strecke(`TR0002d;[C;A];#ff00ff;1;0`)
+@KoordText(`TR0002d;[0;-0.35];$k$;#ff00ff;1`)
+@KoordText(`TR0002d;[2.25;1.5];$p$;#ff00ff;1`)
+@KoordText(`TR0002d;[-0.2;2.0];$v$;#ff00ff;1`)
+@Winkel(`TR0002d;\,;[C;B;A];#00ffff;0.45;0`)
+@KoordText(`TR0002d;[1.78;0.18];$\cdot$;#00ffff;1`)
+@Winkel(`TR0002d;\beta;[B;A;C];#00ffff;0.7;0`)
+@Winkel(`TR0002d;\zeta;[A;C;B];#00ffff;0.7;0`)
 
 
 
@@ -237,6 +196,14 @@ Gleichung: $\quad$   $\sin(\zeta)$= [[$\frac{p}{v}$|$\frac{v}{p}$|$\frac{k}{p}$|
 </div>
 
 </section>
+
+
+
+
+
+
+
+
 
 
 

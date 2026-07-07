@@ -47,13 +47,19 @@ author: Martin Lommatzsch
 
 
 
-<center>
+@Koordinatensystem(`xmin=-5;xmax=6;ymin=-5;ymax=6;width=700;id=N0031`)
+
+@AchsenBeschriftung(`id=N0031;xlabel=$x$;ylabel=$y$`)
 
 
-<!-- style="width:1000px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ31.png)
+@Punkt(`N0031;A;-4;2;fix`)
+@Punkt(`N0031;B;-5;-3;fix`)
+@Punkt(`N0031;C;2;-4;fix`)
+@Punkt(`N0031;D;3;4;fix`)
+@Punkt(`N0031;E;3;-1;fix`)
+@Punkt(`N0031;F;-1;2;fix`)
 
-</center>
+
 
 <section class="dynFlex">
 <div class="flex-child">

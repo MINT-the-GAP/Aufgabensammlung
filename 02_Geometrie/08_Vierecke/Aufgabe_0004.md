@@ -19,11 +19,10 @@ import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.m
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/KoordREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/Proposal/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
-import:  https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
 
 
@@ -59,66 +58,15 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
-<center>
 
-```latex  @tikz
+@CoordinateSystem(`xmin=-0.5;xmax=10.5;ymin=-0.5;ymax=10.5;width=500;id=VQ0004a;1;1;0`)
+@AxisLabel(`id=VQ0004a;xlabel=$x$;ylabel=$y$`)
 
-\begin{tikzpicture} [scale=1, >=latex]
+@Punkt(`VQ0004a;A;2;0;#ff00ff;1;fix`)
+@Punkt(`VQ0004a;C;7;9;#ff00ff;1;fix`)
+@Punkt(`VQ0004a;D;0;2;#ff00ff;1;fix`)
 
-%\draw[blue!50, step=1mm, very thin] (-0,-0) grid (10,10);  
-\draw[black!90, step=5mm,    dashed] (-0,-0) grid (10,10);  
-\draw[black!90, step=10mm,   ] (-0,-0) grid (10,10);
 
-  \coordinate (ya) at (0,-0.25);
-  \coordinate (xa) at (-0.25,0);
-  \coordinate (o) at (0,0);
-  \coordinate (y) at (0,10.25);
-  \coordinate (x) at (10.25,0);
-  
-    \draw[<->, black!100, thick] (y) node[above] {\large $y$} -- (0,0) --  (x) node[right]   {\large $x$};
-
-\draw[-, black!100, thin]  (0,0.1) -- (0,-0.1) node[below=0.25cm,left] {\Large 0};
-\draw[-, black!100, thin]  (1,0.1) -- (1,-0.1) node[below] {\Large 1};
-\draw[-, black!100, thin]  (2,0.1) -- (2,-0.1) node[below] {\Large 2};
-\draw[-, black!100, thin]  (3,0.1) -- (3,-0.1) node[below] {\Large 3};
-\draw[-, black!100, thin]  (4,0.1) -- (4,-0.1) node[below] {\Large 4};
-\draw[-, black!100, thin]  (5,0.1) -- (5,-0.1) node[below] {\Large 5};
-\draw[-, black!100, thin]  (6,0.1) -- (6,-0.1) node[below] {\Large 6};
-\draw[-, black!100, thin]  (7,0.1) -- (7,-0.1) node[below] {\Large 7};
-\draw[-, black!100, thin]  (8,0.1) -- (8,-0.1) node[below] {\Large 8};
-\draw[-, black!100, thin]  (9,0.1) -- (9,-0.1) node[below] {\Large 9};
-\draw[-, black!100, thin]  (10,0.1) -- (10,-0.1) node[below] {\Large 10};
-\draw[-, black!100, thin]  (0.1,1) -- (-0.1,1) node[left] {\Large 1};
-\draw[-, black!100, thin]  (0.1,2) -- (-0.1,2) node[left] {\Large 2};
-\draw[-, black!100, thin]  (0.1,3) -- (-0.1,3) node[left] {\Large 3};
-\draw[-, black!100, thin]  (0.1,4) -- (-0.1,4) node[left] {\Large 4};
-\draw[-, black!100, thin]  (0.1,5) -- (-0.1,5) node[left] {\Large 5};
-\draw[-, black!100, thin]  (0.1,6) -- (-0.1,6) node[left] {\Large 6};
-\draw[-, black!100, thin]  (0.1,7) -- (-0.1,7) node[left] {\Large 7};
-\draw[-, black!100, thin]  (0.1,8) -- (-0.1,8) node[left] {\Large 8};
-\draw[-, black!100, thin]  (0.1,9) -- (-0.1,9) node[left] {\Large 9};
-\draw[-, black!100, thin]  (0.1,10) -- (-0.1,10) node[left] {\Large 10};
- 
- \draw [ black!100, thick]  (ya) --(o) --  (xa);
-
-  \coordinate[label=center:\LARGE$\times$] (a) at (2+0.055,0-0.055);
-  \node[below right] at (a) {\LARGE $A$};
-
-  %\coordinate[label=center:\LARGE$\times$] (b) at (9+0.055,7-0.055);
-  %\node[below right] at (b) {\LARGE $B$};
-
-  \coordinate[label=center:\LARGE$\times$] (c) at (7+0.055,9-0.055);
-  \node[below right] at (c) {\LARGE $C$};
-
-  \coordinate[label=center:\LARGE$\times$] (d) at (0+0.055,2-0.055);
-  \node[below right] at (d) {\LARGE $D$}; 
-
-	%\draw[thick,color=black, ]  plot[samples=100, domain=-0:4] (\x, {2*\x } ) node[right] {\large $f$};  
-  
-\end{tikzpicture}
-
-```
-</center>
 
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 
@@ -140,66 +88,15 @@ $B($[[  9  ]]$|$[[  7  ]]$)$ \
 
 __$b)\;\;$__
 
-<center>
 
-```latex  @tikz
+@CoordinateSystem(`xmin=-0.5;xmax=10.5;ymin=-0.5;ymax=10.5;width=500;id=VQ0004b;1;1;0`)
+@AxisLabel(`id=VQ0004b;xlabel=$x$;ylabel=$y$`)
 
-\begin{tikzpicture} [scale=1, >=latex]
+@Punkt(`VQ0004b;A;0;3;#ff00ff;1;fix`)
+@Punkt(`VQ0004b;B;4;4;#ff00ff;1;fix`)
+@Punkt(`VQ0004b;C;9;9;#ff00ff;1;fix`)
 
-%\draw[blue!50, step=1mm, very thin] (-0,-0) grid (10,10);  
-\draw[black!90, step=5mm,    dashed] (-0,-0) grid (10,10);  
-\draw[black!90, step=10mm,   ] (-0,-0) grid (10,10);
 
-  \coordinate (ya) at (0,-0.25);
-  \coordinate (xa) at (-0.25,0);
-  \coordinate (o) at (0,0);
-  \coordinate (y) at (0,10.25);
-  \coordinate (x) at (10.25,0);
-  
-    \draw[<->, black!100, thick] (y) node[above] {\large $y$} -- (0,0) --  (x) node[right]   {\large $x$};
-
-\draw[-, black!100, thin]  (0,0.1) -- (0,-0.1) node[below=0.25cm,left] {\Large 0};
-\draw[-, black!100, thin]  (1,0.1) -- (1,-0.1) node[below] {\Large 1};
-\draw[-, black!100, thin]  (2,0.1) -- (2,-0.1) node[below] {\Large 2};
-\draw[-, black!100, thin]  (3,0.1) -- (3,-0.1) node[below] {\Large 3};
-\draw[-, black!100, thin]  (4,0.1) -- (4,-0.1) node[below] {\Large 4};
-\draw[-, black!100, thin]  (5,0.1) -- (5,-0.1) node[below] {\Large 5};
-\draw[-, black!100, thin]  (6,0.1) -- (6,-0.1) node[below] {\Large 6};
-\draw[-, black!100, thin]  (7,0.1) -- (7,-0.1) node[below] {\Large 7};
-\draw[-, black!100, thin]  (8,0.1) -- (8,-0.1) node[below] {\Large 8};
-\draw[-, black!100, thin]  (9,0.1) -- (9,-0.1) node[below] {\Large 9};
-\draw[-, black!100, thin]  (10,0.1) -- (10,-0.1) node[below] {\Large 10};
-\draw[-, black!100, thin]  (0.1,1) -- (-0.1,1) node[left] {\Large 1};
-\draw[-, black!100, thin]  (0.1,2) -- (-0.1,2) node[left] {\Large 2};
-\draw[-, black!100, thin]  (0.1,3) -- (-0.1,3) node[left] {\Large 3};
-\draw[-, black!100, thin]  (0.1,4) -- (-0.1,4) node[left] {\Large 4};
-\draw[-, black!100, thin]  (0.1,5) -- (-0.1,5) node[left] {\Large 5};
-\draw[-, black!100, thin]  (0.1,6) -- (-0.1,6) node[left] {\Large 6};
-\draw[-, black!100, thin]  (0.1,7) -- (-0.1,7) node[left] {\Large 7};
-\draw[-, black!100, thin]  (0.1,8) -- (-0.1,8) node[left] {\Large 8};
-\draw[-, black!100, thin]  (0.1,9) -- (-0.1,9) node[left] {\Large 9};
-\draw[-, black!100, thin]  (0.1,10) -- (-0.1,10) node[left] {\Large 10};
- 
- \draw [ black!100, thick]  (ya) --(o) --  (xa);
-
-  \coordinate[label=center:\LARGE$\times$] (a) at (0+0.055,3-0.055);
-  \node[below right] at (a) {\LARGE $A$};
-
-  \coordinate[label=center:\LARGE$\times$] (b) at (4+0.055,4-0.055);
-  \node[below right] at (b) {\LARGE $B$};
-
-  \coordinate[label=center:\LARGE$\times$] (c) at (9+0.055,9-0.055);
-  \node[below right] at (c) {\LARGE $C$};
-
-  %\coordinate[label=center:\LARGE$\times$] (d) at (5+0.055,8-0.055);
-  %\node[below right] at (d) {\LARGE $D$}; 
-
-	%\draw[thick,color=black, ]  plot[samples=100, domain=-0:4] (\x, {2*\x } ) node[right] {\large $f$};  
-  
-\end{tikzpicture}
-
-```
-</center>
 
 <!-- data-solution-timer="5s" 
 data-solution-timer-start="oncheck" 

@@ -14,16 +14,15 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-canvas-ocr/refs/heads
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-orthography/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/Proposal/README.md
 
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/KoordREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
-import:  https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
 
 
@@ -60,34 +59,30 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
-<center>
-```latex  @tikz 
-\begin{tikzpicture} [scale=2]
-\begin{scope}[yshift=0cm]
-  \coordinate[label=center:$ $] (Z) at (0,0);
-  \coordinate[label=center:$ $] (B) at (0:2.5);
-  \coordinate[label=center:$ $] (A) at (0:-1.5);
-  \coordinate[label=center:$ $] (G) at (60:3);
-  \coordinate[label=center:$ $] (H) at (60:-1);
-    \begin{scope}[yshift=1.5cm]      
-      \coordinate[label=center:$ $] (C) at (0:2.5);
-      \coordinate[label=center:$ $] (D) at (0:-1.5);
-    \end{scope} 
-  \draw[very thick] (A) -- (B) node[right] {\LARGE $f$};
-  \draw[very thick] (D) -- (C) node[right] {\LARGE $g$};
-  \draw[very thick] (H) -- (Z) -- (G)  node[right] {\LARGE $h$};
-    %\draw[very thick] (0.5,0) arc (0:60:0.5);
-    %\node at (0.3,0.15) {\Large $55^\circ$};
-    \draw[very thick] (0.5,0) arc (0:-120:0.5);
-    \node at (0.2,-0.175) {\Large $109^\circ$};
-    %\draw[very thick] (0.875+0.5,1.5) arc (0:60:0.5);
-    %\node at (0.875+0.3,1.65) {\LARGE $\xi$};
-    \draw[very thick] (0.875-0.5,1.5) arc (180:60:0.5);
-    \node at (0.875-0.15,1.65) {\LARGE $\xi$};
-\end{scope} 
-\end{tikzpicture}
-```
-</center>
+
+
+
+@CoordinateSystem(`xmin=-2.5;xmax=4;ymin=-2;ymax=3.5;width=500;id=WA0002a;0;0;0`)
+
+@Punkt(`WA0002a;Z;0;0;#e63946;0;fix`)
+@Punkt(`WA0002a;Y;1.5;1.5;#e63946;0;fix`)
+@Punkt(`WA0002a;B;2.5;0;#e63946;0;fix`)
+@Punkt(`WA0002a;A;-1.5;0;#e63946;0;fix`)
+@Punkt(`WA0002a;C;3;1.5;#e63946;0;fix`)
+@Punkt(`WA0002a;D;-1.5;1.5;#e63946;0;fix`)
+@Punkt(`WA0002a;G;2.5;2.5;#e63946;0;fix`)
+@Punkt(`WA0002a;H;-1;-1;#e63946;0;fix`)
+
+@Strecke(`WA0002a;[A;B];#ff00ff;0.5;0`)
+@Strecke(`WA0002a;[C;D];#ff00ff;0.5;0`)
+@Strecke(`WA0002a;[H;G];#ff00ff;0.5;0`)
+
+@KoordText(`WA0002a;[3.2;1.5];$f$;#ff00ff;1`)
+@KoordText(`WA0002a;[2.7;0];$g$;#ff00ff;1`)
+
+@Winkel(`WA0002a;\epsilon=71^\circ\;\;\;;[A;Z;H];#00ffff;0.99;0`)
+
+@Winkel(`WA0002a;\xi;[G;Y;D];#00ffff;0.99;0`)
 
 
 
@@ -109,34 +104,29 @@ $\xi =$ [[ 109 ]]$^\circ$ und es handelt sich um die Beziehung eines [[Nebenwink
 
 __$b)\;\;$__
 
-<center>
-```latex  @tikz 
-\begin{tikzpicture} [scale=2]
-\begin{scope}[yshift=0cm]
-  \coordinate[label=center:$ $] (Z) at (0,0);
-  \coordinate[label=center:$ $] (B) at (0:2.5);
-  \coordinate[label=center:$ $] (A) at (0:-1.5);
-  \coordinate[label=center:$ $] (G) at (60:3);
-  \coordinate[label=center:$ $] (H) at (60:-1);
-    \begin{scope}[yshift=1.5cm]      
-      \coordinate[label=center:$ $] (C) at (0:2.5);
-      \coordinate[label=center:$ $] (D) at (0:-1.5);
-    \end{scope} 
-  \draw[very thick] (A) -- (B) node[right] {\LARGE $f$};
-  \draw[very thick] (D) -- (C) node[right] {\LARGE $g$};
-  \draw[very thick] (H) -- (Z) -- (G)  node[right] {\LARGE $h$};
-    \draw[very thick] (0.5,0) arc (0:60:0.5);
-    \node at (0.3,0.15) {\Large $\gamma$};
-    %\draw[very thick] (0.875+0.5,1.5) arc (0:60:0.5);
-    %\node at (0.875+0.3,1.65) {\LARGE $\chi$};
-    %\draw[very thick] (-0.5,0) arc (180:60:0.5);
-    %\node at (-0.175,0.15) {\Large $117^\circ$};
-    \draw[very thick] (-0.5,0) arc (180:240:0.5);
-    \node at (-0.225,-0.15) {\Large $34^\circ$};
-\end{scope} 
-\end{tikzpicture}
-```
-</center>
+
+@CoordinateSystem(`xmin=-2.5;xmax=4;ymin=-2;ymax=3.5;width=500;id=WA0002b;0;0;0`)
+
+@Punkt(`WA0002b;Z;0;0;#e63946;0;fix`)
+@Punkt(`WA0002b;Y;1.5;1.5;#e63946;0;fix`)
+@Punkt(`WA0002b;B;2.5;0;#e63946;0;fix`)
+@Punkt(`WA0002b;A;-1.5;0;#e63946;0;fix`)
+@Punkt(`WA0002b;C;3;1.5;#e63946;0;fix`)
+@Punkt(`WA0002b;D;-1.5;1.5;#e63946;0;fix`)
+@Punkt(`WA0002b;G;2.5;2.5;#e63946;0;fix`)
+@Punkt(`WA0002b;H;-1;-1;#e63946;0;fix`)
+
+@Strecke(`WA0002b;[A;B];#ff00ff;0.5;0`)
+@Strecke(`WA0002b;[C;D];#ff00ff;0.5;0`)
+@Strecke(`WA0002b;[H;G];#ff00ff;0.5;0`)
+
+@KoordText(`WA0002b;[3.2;1.5];$f$;#ff00ff;1`)
+@KoordText(`WA0002b;[2.7;0];$g$;#ff00ff;1`)
+
+@Winkel(`WA0002b;\gamma;[C;Y;G];#00ffff;0.99;0`)
+
+@Winkel(`WA0002b;\omega=34^\circ\;\;;[D;Y;Z];#00ffff;0.99;0`)
+
 
 
 

@@ -19,11 +19,10 @@ import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.m
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/KoordREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/Proposal/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
-import:  https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
 
 
@@ -60,51 +59,9 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
-<center>
-
-```latex  @tikz
-
-\begin{tikzpicture}[>=latex, scale=0.75] 
-
-\draw[black!70, step= 10mm, very thin] (- 4,- 4) grid ( 4, 4);
-
-  \coordinate (ya) at (0,- 4.25);
-  \coordinate (xa) at (- 4.25,0);
-  \coordinate (o) at (0,0);
-
-  \coordinate (y) at (0,4.25);
-    \coordinate (x) at (4.25,0);
-    \draw[<->, black!100, thick] (y) node[above] {\scriptsize$y$} -- (0,0) --  (x) node[right]     {\scriptsize$x$};
-
-\draw[-, black!100, thin]  ( 0,0.1) -- ( 0,-0.1) node[below=0.25cm,left] {\scriptsize$0$};
-\draw[-, black!100, thin]  ( 1,0.1) -- ( 1,-0.1) node[below] {\scriptsize$1$};
-\draw[-, black!100, thin]  ( 2,0.1) -- ( 2,-0.1) node[below] {\scriptsize$2$};
-\draw[-, black!100, thin]  ( 3,0.1) -- ( 3,-0.1) node[below] {\scriptsize$3$}; 
-\draw[-, black!100, thin]  ( 4,0.1) -- ( 4,-0.1) node[below] {\scriptsize$4$}; 
-\draw[-, black!100, thin]  (0.1, 1) -- (-0.1, 1) node[left] {\scriptsize$1$};
-\draw[-, black!100, thin]  (0.1, 2) -- (-0.1, 2) node[left] {\scriptsize$2$};
-\draw[-, black!100, thin]  (0.1, 3) -- (-0.1, 3) node[left] {\scriptsize$3$}; 
-\draw[-, black!100, thin]  (0.1, 4) -- (-0.1, 4) node[left] {\scriptsize$4$}; 
-
-\draw[-, black!100, thin]  (- 1,0.1) -- (- 1,-0.1) node[below] {\scriptsize$-1$};
-\draw[-, black!100, thin]  (- 2,0.1) -- (- 2,-0.1) node[below] {\scriptsize$-2$};
-\draw[-, black!100, thin]  (- 3,0.1) -- (- 3,-0.1) node[below] {\scriptsize$-3$}; 
-\draw[-, black!100, thin]  (- 4,0.1) -- (- 4,-0.1) node[below] {\scriptsize$-4$}; 
-\draw[-, black!100, thin]  (0.1,- 1) -- (-0.1,- 1) node[left] {\scriptsize$-1$};
-\draw[-, black!100, thin]  (0.1,- 2) -- (-0.1,- 2) node[left] {\scriptsize$-2$};
-\draw[-, black!100, thin]  (0.1,- 3) -- (-0.1,- 3) node[left] {\scriptsize$-3$}; 
-\draw[-, black!100, thin]  (0.1,- 4) -- (-0.1,- 4) node[left] {\scriptsize$-4$}; 
-	
- \draw [ black!100, thick]  (ya) --(o) --  (xa);	 
-	
-  
-	\draw[thick,color=red, ] plot[samples=100, domain=-4:-2.2] (\x, { 1/(\x+2)+1 } ) node[above] {$ $}; 
-	\draw[thick,color=red, ] plot[samples=100, domain=4:-1.65] (\x, { 1/(\x+2)+1 } ) node[above] {$ $};   
-
-\end{tikzpicture}
-
-```
-</center>
+@CoordinateSystem(`xmin=-4;xmax=4;ymin=-4;ymax=4;width=300;id=FEIG0004_a;1;1;1`)
+@AxisLabel(`id=FEIG0004_a;xlabel=$x$;ylabel=$y$`)
+@PlotFunction(`FEIG0004_a;f1;1/(x+2)+1;#ff0000`)
 
 
 
@@ -131,52 +88,9 @@ data-hint-button="3"  -->
 
 __$b)\;\;$__
 
-<center>
-
-```latex  @tikz
-
-\begin{tikzpicture}[>=latex, scale=0.75] 
-
-\draw[black!70, step= 10mm, very thin] (- 4,- 4) grid ( 4, 4);
-
-  \coordinate (ya) at (0,- 4.25);
-  \coordinate (xa) at (- 4.25,0);
-  \coordinate (o) at (0,0);
-
-  \coordinate (y) at (0,4.25);
-    \coordinate (x) at (4.25,0);
-    \draw[<->, black!100, thick] (y) node[above] {\scriptsize$y$} -- (0,0) --  (x) node[right]     {\scriptsize$x$};
-
-\draw[-, black!100, thin]  ( 0,0.1) -- ( 0,-0.1) node[below=0.25cm,left] {\scriptsize$0$};
-\draw[-, black!100, thin]  ( 1,0.1) -- ( 1,-0.1) node[below] {\scriptsize$1$};
-\draw[-, black!100, thin]  ( 2,0.1) -- ( 2,-0.1) node[below] {\scriptsize$2$};
-\draw[-, black!100, thin]  ( 3,0.1) -- ( 3,-0.1) node[below] {\scriptsize$3$}; 
-\draw[-, black!100, thin]  ( 4,0.1) -- ( 4,-0.1) node[below] {\scriptsize$4$}; 
-\draw[-, black!100, thin]  (0.1, 1) -- (-0.1, 1) node[left] {\scriptsize$1$};
-\draw[-, black!100, thin]  (0.1, 2) -- (-0.1, 2) node[left] {\scriptsize$2$};
-\draw[-, black!100, thin]  (0.1, 3) -- (-0.1, 3) node[left] {\scriptsize$3$}; 
-\draw[-, black!100, thin]  (0.1, 4) -- (-0.1, 4) node[left] {\scriptsize$4$}; 
-
-\draw[-, black!100, thin]  (- 1,0.1) -- (- 1,-0.1) node[below] {\scriptsize$-1$};
-\draw[-, black!100, thin]  (- 2,0.1) -- (- 2,-0.1) node[below] {\scriptsize$-2$};
-\draw[-, black!100, thin]  (- 3,0.1) -- (- 3,-0.1) node[below] {\scriptsize$-3$}; 
-\draw[-, black!100, thin]  (- 4,0.1) -- (- 4,-0.1) node[below] {\scriptsize$-4$}; 
-\draw[-, black!100, thin]  (0.1,- 1) -- (-0.1,- 1) node[left] {\scriptsize$-1$};
-\draw[-, black!100, thin]  (0.1,- 2) -- (-0.1,- 2) node[left] {\scriptsize$-2$};
-\draw[-, black!100, thin]  (0.1,- 3) -- (-0.1,- 3) node[left] {\scriptsize$-3$}; 
-\draw[-, black!100, thin]  (0.1,- 4) -- (-0.1,- 4) node[left] {\scriptsize$-4$}; 
-	
- \draw [ black!100, thick]  (ya) --(o) --  (xa);	 
-	
-  
-	\draw[thick,color=red, ] plot[samples=100, domain=-0.85:0.85] (\x, { 1/(\x*\x-1) } ) node[above] {$ $};  
-	\draw[thick,color=red, ] plot[samples=100, domain=-1.11:-4] (\x, { 1/(\x*\x-1) } ) node[above] {$ $};  
-	\draw[thick,color=red, ] plot[samples=100, domain=1.11:4] (\x, { 1/(\x*\x-1) } ) node[above] {$ $};  
-
-\end{tikzpicture}
-
-```
-</center>
+@CoordinateSystem(`xmin=-4;xmax=4;ymin=-4;ymax=4;width=300;id=FEIG0004_b;1;1;1`)
+@AxisLabel(`id=FEIG0004_b;xlabel=$x$;ylabel=$y$`)
+@PlotFunction(`FEIG0004_b;f2;1/(x^2-1);#ff0000`)
 
 
 
@@ -200,6 +114,7 @@ data-hint-button="3"  -->
 
 </div>
 </section>
+
 
 
 

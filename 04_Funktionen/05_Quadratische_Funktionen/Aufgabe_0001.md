@@ -19,11 +19,10 @@ import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.m
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/KoordREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/Proposal/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
-import:  https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
 
 
@@ -45,7 +44,6 @@ author: Martin Lommatzsch
 
 
 
-
 # Scheitelpunktsformen zuordnen
 
 
@@ -54,252 +52,64 @@ author: Martin Lommatzsch
 
 
 
-<center>
+<section class="dynFlex">
 
-```latex  @tikz
-
-\begin{tikzpicture} [scale=0.8, >=latex]
-
-\begin{scope}[xshift=0cm]
-\draw[black!70, step=5mm,   thin, dashed] (-4,-4) grid (4,4);  
-\draw[black!70, step=10mm,   thin] (-4,-4) grid (4,4);
-
-  \coordinate (ya) at (0,-4.25);
-  \coordinate (xa) at (-4.25,0);
-  \coordinate (o) at (0,0);
-  \coordinate (y) at (0,4.25);
-  \coordinate (x) at (4.25,0);
-  
-    \draw[<->, black!100, thick] (y) node[above] {\large $y$} -- (0,0) --  (x) node[right]   {\large $x$};
-
-\draw[-, black!100, thin]  (0,0.1) -- (0,-0.1) node[below=0.25cm,left] {\large 0};
-\draw[-, black!100, thin]  (1,0.1) -- (1,-0.1) node[below] {\large 1};
-\draw[-, black!100, thin]  (2,0.1) -- (2,-0.1) node[below] {\large 2};
-\draw[-, black!100, thin]  (3,0.1) -- (3,-0.1) node[below] {\large 3};
-\draw[-, black!100, thin]  (4,0.1) -- (4,-0.1) node[below] {\large 4};
-\draw[-, black!100, thin]  (0.1,1) -- (-0.1,1) node[left] {\large 1};
-\draw[-, black!100, thin]  (0.1,2) -- (-0.1,2) node[left] {\large 2};
-\draw[-, black!100, thin]  (0.1,3) -- (-0.1,3) node[left] {\large 3};
-\draw[-, black!100, thin]  (0.1,4) -- (-0.1,4) node[left] {\large 4};
-
-\draw[-, black!100, thin]  (-1,0.1) -- (-1,-0.1) node[below] {\large -1};
-\draw[-, black!100, thin]  (-2,0.1) -- (-2,-0.1) node[below] {\large -2};
-\draw[-, black!100, thin]  (-3,0.1) -- (-3,-0.1) node[below] {\large -3};
-\draw[-, black!100, thin]  (-4,0.1) -- (-4,-0.1) node[below] {\large -4};
-\draw[-, black!100, thin]  (0.1,-1) -- (-0.1,-1) node[left] {\large -1};
-\draw[-, black!100, thin]  (0.1,-2) -- (-0.1,-2) node[left] {\large -2};
-\draw[-, black!100, thin]  (0.1,-3) -- (-0.1,-3) node[left] {\large -3};
-\draw[-, black!100, thin]  (0.1,-4) -- (-0.1,-4) node[left] {\large -4};
- 
- \draw [ black!100, thick]  (ya) --(o) --  (xa);
-
-	\draw[thick,color=red, ]  plot[samples=100, domain=-4:0.475] (\x, {1*pow((\x+2),2)-2 } ) node[above] {\Large $f$};  
-  \end{scope}
-
-  
+<div class="flex-child">
 
 
-\begin{scope}[xshift=10cm]
-\draw[black!70, step=5mm,   thin, dashed] (-4,-4) grid (4,4);  
-\draw[black!70, step=10mm,   thin] (-4,-4) grid (4,4);
+@CoordinateSystem(`xmin=-4;xmax=4;ymin=-4;ymax=4;width=300;id=QF0001_f;1;1;1`)
+@AxisLabel(`id=QF0001_f;xlabel=$x$;ylabel=$y$`)
+@PlotFunction(`QF0001_f;f;(x+2)^2-2;#ff0000`)
 
-  \coordinate (ya) at (0,-4.25);
-  \coordinate (xa) at (-4.25,0);
-  \coordinate (o) at (0,0);
-  \coordinate (y) at (0,4.25);
-  \coordinate (x) at (4.25,0);
-  
-    \draw[<->, black!100, thick] (y) node[above] {\large $y$} -- (0,0) --  (x) node[right]   {\large $x$};
+</div>
 
-\draw[-, black!100, thin]  (0,0.1) -- (0,-0.1) node[below=0.25cm,left] {\large 0};
-\draw[-, black!100, thin]  (1,0.1) -- (1,-0.1) node[below] {\large 1};
-\draw[-, black!100, thin]  (2,0.1) -- (2,-0.1) node[below] {\large 2};
-\draw[-, black!100, thin]  (3,0.1) -- (3,-0.1) node[below] {\large 3};
-\draw[-, black!100, thin]  (4,0.1) -- (4,-0.1) node[below] {\large 4};
-\draw[-, black!100, thin]  (0.1,1) -- (-0.1,1) node[left] {\large 1};
-\draw[-, black!100, thin]  (0.1,2) -- (-0.1,2) node[left] {\large 2};
-\draw[-, black!100, thin]  (0.1,3) -- (-0.1,3) node[left] {\large 3};
-\draw[-, black!100, thin]  (0.1,4) -- (-0.1,4) node[left] {\large 4};
+<div class="flex-child">
 
-\draw[-, black!100, thin]  (-1,0.1) -- (-1,-0.1) node[below] {\large -1};
-\draw[-, black!100, thin]  (-2,0.1) -- (-2,-0.1) node[below] {\large -2};
-\draw[-, black!100, thin]  (-3,0.1) -- (-3,-0.1) node[below] {\large -3};
-\draw[-, black!100, thin]  (-4,0.1) -- (-4,-0.1) node[below] {\large -4};
-\draw[-, black!100, thin]  (0.1,-1) -- (-0.1,-1) node[left] {\large -1};
-\draw[-, black!100, thin]  (0.1,-2) -- (-0.1,-2) node[left] {\large -2};
-\draw[-, black!100, thin]  (0.1,-3) -- (-0.1,-3) node[left] {\large -3};
-\draw[-, black!100, thin]  (0.1,-4) -- (-0.1,-4) node[left] {\large -4};
- 
- \draw [ black!100, thick]  (ya) --(o) --  (xa);
+@CoordinateSystem(`xmin=-4;xmax=4;ymin=-4;ymax=4;width=300;id=QF0001_g;1;1;1`)
+@AxisLabel(`id=QF0001_g;xlabel=$x$;ylabel=$y$`)
+@PlotFunction(`QF0001_g;g;-0.5*(x-0.5)^2+1;#ff0000`)
 
-	\draw[thick,color=red, ]  plot[samples=100, domain=-2.66:3.66] (\x, {-0.5*pow((\x-0.5),2)+1 }  ) node[below] {\Large $g$};  
-  \end{scope}
+</div>
 
-  
-
-  
-
-\begin{scope}[xshift=20cm]
-\draw[black!70, step=5mm,   thin, dashed] (-4,-4) grid (4,4);  
-\draw[black!70, step=10mm,   thin] (-4,-4) grid (4,4);
-
-  \coordinate (ya) at (0,-4.25);
-  \coordinate (xa) at (-4.25,0);
-  \coordinate (o) at (0,0);
-  \coordinate (y) at (0,4.25);
-  \coordinate (x) at (4.25,0);
-  
-    \draw[<->, black!100, thick] (y) node[above] {\large $y$} -- (0,0) --  (x) node[right]   {\large $x$};
-
-\draw[-, black!100, thin]  (0,0.1) -- (0,-0.1) node[below=0.25cm,left] {\large 0};
-\draw[-, black!100, thin]  (1,0.1) -- (1,-0.1) node[below] {\large 1};
-\draw[-, black!100, thin]  (2,0.1) -- (2,-0.1) node[below] {\large 2};
-\draw[-, black!100, thin]  (3,0.1) -- (3,-0.1) node[below] {\large 3};
-\draw[-, black!100, thin]  (4,0.1) -- (4,-0.1) node[below] {\large 4};
-\draw[-, black!100, thin]  (0.1,1) -- (-0.1,1) node[left] {\large 1};
-\draw[-, black!100, thin]  (0.1,2) -- (-0.1,2) node[left] {\large 2};
-\draw[-, black!100, thin]  (0.1,3) -- (-0.1,3) node[left] {\large 3};
-\draw[-, black!100, thin]  (0.1,4) -- (-0.1,4) node[left] {\large 4};
-
-\draw[-, black!100, thin]  (-1,0.1) -- (-1,-0.1) node[below] {\large -1};
-\draw[-, black!100, thin]  (-2,0.1) -- (-2,-0.1) node[below] {\large -2};
-\draw[-, black!100, thin]  (-3,0.1) -- (-3,-0.1) node[below] {\large -3};
-\draw[-, black!100, thin]  (-4,0.1) -- (-4,-0.1) node[below] {\large -4};
-\draw[-, black!100, thin]  (0.1,-1) -- (-0.1,-1) node[left] {\large -1};
-\draw[-, black!100, thin]  (0.1,-2) -- (-0.1,-2) node[left] {\large -2};
-\draw[-, black!100, thin]  (0.1,-3) -- (-0.1,-3) node[left] {\large -3};
-\draw[-, black!100, thin]  (0.1,-4) -- (-0.1,-4) node[left] {\large -4};
- 
- \draw [ black!100, thick]  (ya) --(o) --  (xa);
-
-	\draw[thick,color=red, ]  plot[samples=100, domain=-3.25:4] (\x, {0.5*pow((\x-0.5),2)-3 } ) node[right] {\Large $h$};  
-  \end{scope}
+<div class="flex-child">
 
 
+@CoordinateSystem(`xmin=-4;xmax=4;ymin=-4;ymax=4;width=300;id=QF0001_h;1;1;1`)
+@AxisLabel(`id=QF0001_h;xlabel=$x$;ylabel=$y$`)
+@PlotFunction(`QF0001_h;h;0.5*(x-0.5)^2-3;#ff0000`)
+
+</div>
+
+<div class="flex-child">
 
 
+@CoordinateSystem(`xmin=-4;xmax=4;ymin=-4;ymax=4;width=300;id=QF0001_k;1;1;1`)
+@AxisLabel(`id=QF0001_k;xlabel=$x$;ylabel=$y$`)
+@PlotFunction(`QF0001_k;k;-1*(x-3)^2+2;#ff0000`)
+
+</div>
+
+<div class="flex-child">
+
+@CoordinateSystem(`xmin=-4;xmax=4;ymin=-4;ymax=4;width=300;id=QF0001_l;1;1;1`)
+@AxisLabel(`id=QF0001_l;xlabel=$x$;ylabel=$y$`)
+@PlotFunction(`QF0001_l;l;-0.25*(x+0.5)^2+3;#ff0000`)
+
+</div>
+
+<div class="flex-child">
 
 
-\begin{scope}[xshift=0cm, yshift=-10cm]
-\draw[black!70, step=5mm,   thin, dashed] (-4,-4) grid (4,4);  
-\draw[black!70, step=10mm,   thin] (-4,-4) grid (4,4);
+@CoordinateSystem(`xmin=-4;xmax=4;ymin=-4;ymax=4;width=300;id=QF0001_m;1;1;1`)
+@AxisLabel(`id=QF0001_m;xlabel=$x$;ylabel=$y$`)
+@PlotFunction(`QF0001_m;m;0.25*(x+1)^2;#ff0000`)
 
-  \coordinate (ya) at (0,-4.25);
-  \coordinate (xa) at (-4.25,0);
-  \coordinate (o) at (0,0);
-  \coordinate (y) at (0,4.25);
-  \coordinate (x) at (4.25,0);
-  
-    \draw[<->, black!100, thick] (y) node[above] {\large $y$} -- (0,0) --  (x) node[right]   {\large $x$};
+</div>
 
-\draw[-, black!100, thin]  (0,0.1) -- (0,-0.1) node[below=0.25cm,left] {\large 0};
-\draw[-, black!100, thin]  (1,0.1) -- (1,-0.1) node[below] {\large 1};
-\draw[-, black!100, thin]  (2,0.1) -- (2,-0.1) node[below] {\large 2};
-\draw[-, black!100, thin]  (3,0.1) -- (3,-0.1) node[below] {\large 3};
-\draw[-, black!100, thin]  (4,0.1) -- (4,-0.1) node[below] {\large 4};
-\draw[-, black!100, thin]  (0.1,1) -- (-0.1,1) node[left] {\large 1};
-\draw[-, black!100, thin]  (0.1,2) -- (-0.1,2) node[left] {\large 2};
-\draw[-, black!100, thin]  (0.1,3) -- (-0.1,3) node[left] {\large 3};
-\draw[-, black!100, thin]  (0.1,4) -- (-0.1,4) node[left] {\large 4};
+</section>
 
-\draw[-, black!100, thin]  (-1,0.1) -- (-1,-0.1) node[below] {\large -1};
-\draw[-, black!100, thin]  (-2,0.1) -- (-2,-0.1) node[below] {\large -2};
-\draw[-, black!100, thin]  (-3,0.1) -- (-3,-0.1) node[below] {\large -3};
-\draw[-, black!100, thin]  (-4,0.1) -- (-4,-0.1) node[below] {\large -4};
-\draw[-, black!100, thin]  (0.1,-1) -- (-0.1,-1) node[left] {\large -1};
-\draw[-, black!100, thin]  (0.1,-2) -- (-0.1,-2) node[left] {\large -2};
-\draw[-, black!100, thin]  (0.1,-3) -- (-0.1,-3) node[left] {\large -3};
-\draw[-, black!100, thin]  (0.1,-4) -- (-0.1,-4) node[left] {\large -4};
- 
- \draw [ black!100, thick]  (ya) --(o) --  (xa);
+---
 
-	\draw[thick,color=red, ]  plot[samples=100, domain=0.525:4] (\x, {-1*pow((\x-3),2)+2 } ) node[right] {\Large $k$};  
-  \end{scope}
-
-  
-
-
-\begin{scope}[xshift=10cm, yshift=-10cm]
-\draw[black!70, step=5mm,   thin, dashed] (-4,-4) grid (4,4);  
-\draw[black!70, step=10mm,   thin] (-4,-4) grid (4,4);
-
-  \coordinate (ya) at (0,-4.25);
-  \coordinate (xa) at (-4.25,0);
-  \coordinate (o) at (0,0);
-  \coordinate (y) at (0,4.25);
-  \coordinate (x) at (4.25,0);
-  
-    \draw[<->, black!100, thick] (y) node[above] {\large $y$} -- (0,0) --  (x) node[right]   {\large $x$};
-
-\draw[-, black!100, thin]  (0,0.1) -- (0,-0.1) node[below=0.25cm,left] {\large 0};
-\draw[-, black!100, thin]  (1,0.1) -- (1,-0.1) node[below] {\large 1};
-\draw[-, black!100, thin]  (2,0.1) -- (2,-0.1) node[below] {\large 2};
-\draw[-, black!100, thin]  (3,0.1) -- (3,-0.1) node[below] {\large 3};
-\draw[-, black!100, thin]  (4,0.1) -- (4,-0.1) node[below] {\large 4};
-\draw[-, black!100, thin]  (0.1,1) -- (-0.1,1) node[left] {\large 1};
-\draw[-, black!100, thin]  (0.1,2) -- (-0.1,2) node[left] {\large 2};
-\draw[-, black!100, thin]  (0.1,3) -- (-0.1,3) node[left] {\large 3};
-\draw[-, black!100, thin]  (0.1,4) -- (-0.1,4) node[left] {\large 4};
-
-\draw[-, black!100, thin]  (-1,0.1) -- (-1,-0.1) node[below] {\large -1};
-\draw[-, black!100, thin]  (-2,0.1) -- (-2,-0.1) node[below] {\large -2};
-\draw[-, black!100, thin]  (-3,0.1) -- (-3,-0.1) node[below] {\large -3};
-\draw[-, black!100, thin]  (-4,0.1) -- (-4,-0.1) node[below] {\large -4};
-\draw[-, black!100, thin]  (0.1,-1) -- (-0.1,-1) node[left] {\large -1};
-\draw[-, black!100, thin]  (0.1,-2) -- (-0.1,-2) node[left] {\large -2};
-\draw[-, black!100, thin]  (0.1,-3) -- (-0.1,-3) node[left] {\large -3};
-\draw[-, black!100, thin]  (0.1,-4) -- (-0.1,-4) node[left] {\large -4};
- 
- \draw [ black!100, thick]  (ya) --(o) --  (xa);
-
-	\draw[thick,color=red, ]  plot[samples=100, domain=-4:4] (\x, {-0.25*pow((\x+0.5),2)+3 } ) node[right] {\Large $l$};  
-  \end{scope}
-
-  
-
-  
-
-\begin{scope}[xshift=20cm, yshift=-10cm]
-\draw[black!70, step=5mm,   thin, dashed] (-4,-4) grid (4,4);  
-\draw[black!70, step=10mm,   thin] (-4,-4) grid (4,4);
-
-  \coordinate (ya) at (0,-4.25);
-  \coordinate (xa) at (-4.25,0);
-  \coordinate (o) at (0,0);
-  \coordinate (y) at (0,4.25);
-  \coordinate (x) at (4.25,0);
-  
-    \draw[<->, black!100, thick] (y) node[above] {\large $y$} -- (0,0) --  (x) node[right]   {\large $x$};
-
-\draw[-, black!100, thin]  (0,0.1) -- (0,-0.1) node[below=0.25cm,left] {\large 0};
-\draw[-, black!100, thin]  (1,0.1) -- (1,-0.1) node[below] {\large 1};
-\draw[-, black!100, thin]  (2,0.1) -- (2,-0.1) node[below] {\large 2};
-\draw[-, black!100, thin]  (3,0.1) -- (3,-0.1) node[below] {\large 3};
-\draw[-, black!100, thin]  (4,0.1) -- (4,-0.1) node[below] {\large 4};
-\draw[-, black!100, thin]  (0.1,1) -- (-0.1,1) node[left] {\large 1};
-\draw[-, black!100, thin]  (0.1,2) -- (-0.1,2) node[left] {\large 2};
-\draw[-, black!100, thin]  (0.1,3) -- (-0.1,3) node[left] {\large 3};
-\draw[-, black!100, thin]  (0.1,4) -- (-0.1,4) node[left] {\large 4};
-
-\draw[-, black!100, thin]  (-1,0.1) -- (-1,-0.1) node[below] {\large -1};
-\draw[-, black!100, thin]  (-2,0.1) -- (-2,-0.1) node[below] {\large -2};
-\draw[-, black!100, thin]  (-3,0.1) -- (-3,-0.1) node[below] {\large -3};
-\draw[-, black!100, thin]  (-4,0.1) -- (-4,-0.1) node[below] {\large -4};
-\draw[-, black!100, thin]  (0.1,-1) -- (-0.1,-1) node[left] {\large -1};
-\draw[-, black!100, thin]  (0.1,-2) -- (-0.1,-2) node[left] {\large -2};
-\draw[-, black!100, thin]  (0.1,-3) -- (-0.1,-3) node[left] {\large -3};
-\draw[-, black!100, thin]  (0.1,-4) -- (-0.1,-4) node[left] {\large -4};
- 
- \draw [ black!100, thick]  (ya) --(o) --  (xa);
-
-	\draw[thick,color=red, ]  plot[samples=100, domain=-4:3] (\x, {0.25*pow((\x+3)-2,2) } ) node[above] {\Large $m$};  
-  \end{scope}
-
-
-\end{tikzpicture}
-
-```
-</center>
 
 <section class="dynFlex">
 

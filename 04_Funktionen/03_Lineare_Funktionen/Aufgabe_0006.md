@@ -19,11 +19,10 @@ import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.m
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/KoordREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/Proposal/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
-import:  https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
 
 
 
@@ -55,44 +54,13 @@ Gegeben sei die im Koordinatensystem abgebildeten Graphen. **Ordne** den Funktio
 
 
 
-```latex  @tikz 
-\begin{tikzpicture}[scale=2, >=latex]
+@CoordinateSystem(`xmin=-1;xmax=9;ymin=-1;ymax=5;width=600;id=LF0006;1;1;1`)
+@AxisLabel(`id=LF0006;xlabel=$x$;ylabel=$y$`)
 
-\draw[black!70, step=5mm,   thin, dashed] (-0,-0) grid (9,5);  
-\draw[black!70, step=10mm,   thin] (-0,-0) grid (9,5);
+@PlotFunction(`LF0006;f;x/3+1.5;#00ff00`)
+@PlotFunction(`LF0006;g;x/5+1;#ff0000`)
+@PlotFunction(`LF0006;h;x/8+3;#0000ff`)
 
-  \coordinate (ya) at (0,-0.25);
-  \coordinate (xa) at (-0.25,0);
-  \coordinate (o) at (0,0);
-  \coordinate (y) at (0,5.25);
-  \coordinate (x) at (9.25,0);
-  
-    \draw[<->, black!100, thick] (y) node[above] {\large $y$} -- (0,0) --  (x) node[right]   {\large $x$};
-
-\draw[-, black!100, thin]  (0,0.1) -- (0,-0.1) node[below=0.25cm,left] {0};
-\draw[-, black!100, thin]  (1,0.1) -- (1,-0.1) node[below] {1};
-\draw[-, black!100, thin]  (2,0.1) -- (2,-0.1) node[below] {2};
-\draw[-, black!100, thin]  (3,0.1) -- (3,-0.1) node[below] {3};
-\draw[-, black!100, thin]  (4,0.1) -- (4,-0.1) node[below] {4};
-\draw[-, black!100, thin]  (5,0.1) -- (5,-0.1) node[below] {5};
-\draw[-, black!100, thin]  (6,0.1) -- (6,-0.1) node[below] {6};
-\draw[-, black!100, thin]  (7,0.1) -- (7,-0.1) node[below] {7};
-\draw[-, black!100, thin]  (8,0.1) -- (8,-0.1) node[below] {8};
-\draw[-, black!100, thin]  (9,0.1) -- (9,-0.1) node[below] {9};
-\draw[-, black!100, thin]  (0.1,1) -- (-0.1,1) node[left] {1};
-\draw[-, black!100, thin]  (0.1,2) -- (-0.1,2) node[left] {2};
-\draw[-, black!100, thin]  (0.1,3) -- (-0.1,3) node[left] {3};
-\draw[-, black!100, thin]  (0.1,4) -- (-0.1,4) node[left] {4};
-\draw[-, black!100, thin]  (0.1,5) -- (-0.1,5) node[left] {5};
- 
- \draw [ black!100, thick]  (ya) --(o) --  (xa);
-
-	\draw[thick,color=black, ]  plot[samples=100, domain=-0:9] (\x, {\x/3 +1.5 } ) node[right] {\large $f$};  
-	\draw[thick,color=red, ]    plot[samples=100, domain=-0:9] (\x, {\x/5 + 1 } ) node[right] {\large $g$};  
-	\draw[thick,color=blue, ]   plot[samples=100, domain=-0:9] (\x, {\x/8 + 3 } ) node[right] {\large $h$};   
-    
-	\end{tikzpicture}
-```
 
 
 <section class="dynFlex">

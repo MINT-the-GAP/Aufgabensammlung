@@ -14,16 +14,16 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-canvas-ocr/refs/heads
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-orthography/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/Proposal/README.md
 
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/KoordREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
-import:  https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
+
 
 
 
@@ -60,34 +60,28 @@ author: Martin Lommatzsch
 __$a)\;\;$__ 
 
 
-```latex  @tikz 
-\begin{tikzpicture} [scale=2.5]
+@CoordinateSystem(`xmin=-0.5;xmax=6;ymin=-0.5;ymax=5.25;width=300;id=A0003a;0;0;0`)
 
-\begin{scope}[yshift=0cm]
-\begin{scope}[xshift=0cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=0.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=1cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=1.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=2cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\end{scope}  
+@Flaeche(`A0003a;[[0.1;0.1];[0.1;0.9];[0.9;0.9];[0.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003a;[[1.1;0.1];[1.1;0.9];[1.9;0.9];[1.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003a;[[2.1;0.1];[2.1;0.9];[2.9;0.9];[2.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)
 
-\begin{scope}[yshift=-0.5cm]
-\begin{scope}[xshift=0cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=0.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=1cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=1.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=2cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\end{scope}
+@Flaeche(`A0003a;[[0.1;1.1];[0.1;1.9];[0.9;1.9];[0.9;1.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003a;[[1.1;1.1];[1.1;1.9];[1.9;1.9];[1.9;1.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003a;[[2.1;1.1];[2.1;1.9];[2.9;1.9];[2.9;1.1]];#00ff00;1.0;inhalt=0;umfang=0`)
 
-\begin{scope}[yshift=-1cm]
-\begin{scope}[xshift=0cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=0.5cm]\fill[fill=green!45, draw=black] (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=1cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=1.5cm]\fill[fill=green!45, draw=black] (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=2cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\end{scope}    
-\end{tikzpicture}
-```
+@Flaeche(`A0003a;[[0.1;2.1];[0.1;2.9];[0.9;2.9];[0.9;2.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003a;[[1.1;2.1];[1.1;2.9];[1.9;2.9];[1.9;2.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003a;[[2.1;2.1];[2.1;2.9];[2.9;2.9];[2.9;2.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+
+@Flaeche(`A0003a;[[0.1;3.1];[0.1;3.9];[0.9;3.9];[0.9;3.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003a;[[1.1;3.1];[1.1;3.9];[1.9;3.9];[1.9;3.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003a;[[2.1;3.1];[2.1;3.9];[2.9;3.9];[2.9;3.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+
+@Flaeche(`A0003a;[[0.1;4.1];[0.1;4.9];[0.9;4.9];[0.9;4.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003a;[[1.1;4.1];[1.1;4.9];[1.9;4.9];[1.9;4.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003a;[[2.1;4.1];[2.1;4.9];[2.9;4.9];[2.9;4.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+
 
 
 <!-- data-solution-timer="5s" 
@@ -109,82 +103,63 @@ Es sind [[ 15  ]] Flächen.
 __$b)\;\;$__ 
 
 
-```latex  @tikz 
-\begin{tikzpicture} [scale=2.5]
+@CoordinateSystem(`xmin=-0.5;xmax=8.25;ymin=-0.5;ymax=6.25;width=400;id=A0003b;0;0;0`)
 
-\begin{scope}[yshift=0cm]
-\begin{scope}[xshift=0cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=0.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=1cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=1.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=2cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=2.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope}  
-\end{scope}  
+@Flaeche(`A0003b;[[0.1;0.1];[0.1;0.9];[0.9;0.9];[0.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[1.1;0.1];[1.1;0.9];[1.9;0.9];[1.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[2.1;0.1];[2.1;0.9];[2.9;0.9];[2.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[3.1;0.1];[3.1;0.9];[3.9;0.9];[3.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[4.1;0.1];[4.1;0.9];[4.9;0.9];[4.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[5.1;0.1];[5.1;0.9];[5.9;0.9];[5.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[6.1;0.1];[6.1;0.9];[6.9;0.9];[6.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[7.1;0.1];[7.1;0.9];[7.9;0.9];[7.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)
 
-\begin{scope}[yshift=-0.5cm]
-\begin{scope}[xshift=0cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=0.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=1cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=1.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=2cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=2.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope}  
-\end{scope} 
+@Flaeche(`A0003b;[[0.1;1.1];[0.1;1.9];[0.9;1.9];[0.9;1.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[1.1;1.1];[1.1;1.9];[1.9;1.9];[1.9;1.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[2.1;1.1];[2.1;1.9];[2.9;1.9];[2.9;1.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[3.1;1.1];[3.1;1.9];[3.9;1.9];[3.9;1.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[4.1;1.1];[4.1;1.9];[4.9;1.9];[4.9;1.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[5.1;1.1];[5.1;1.9];[5.9;1.9];[5.9;1.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[6.1;1.1];[6.1;1.9];[6.9;1.9];[6.9;1.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[7.1;1.1];[7.1;1.9];[7.9;1.9];[7.9;1.1]];#00ff00;1.0;inhalt=0;umfang=0`)
 
-\begin{scope}[yshift=-1cm]
-\begin{scope}[xshift=0cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=0.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=1cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=1.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=2cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=2.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope}  
-\end{scope} 
+@Flaeche(`A0003b;[[0.1;2.1];[0.1;2.9];[0.9;2.9];[0.9;2.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[1.1;2.1];[1.1;2.9];[1.9;2.9];[1.9;2.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[2.1;2.1];[2.1;2.9];[2.9;2.9];[2.9;2.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[3.1;2.1];[3.1;2.9];[3.9;2.9];[3.9;2.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[4.1;2.1];[4.1;2.9];[4.9;2.9];[4.9;2.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[5.1;2.1];[5.1;2.9];[5.9;2.9];[5.9;2.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[6.1;2.1];[6.1;2.9];[6.9;2.9];[6.9;2.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[7.1;2.1];[7.1;2.9];[7.9;2.9];[7.9;2.1]];#00ff00;1.0;inhalt=0;umfang=0`)
 
-\begin{scope}[yshift=-1.5cm]
-\begin{scope}[xshift=0cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=0.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=1cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=1.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=2cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=2.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope}  
-\end{scope} 
+@Flaeche(`A0003b;[[0.1;3.1];[0.1;3.9];[0.9;3.9];[0.9;3.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[1.1;3.1];[1.1;3.9];[1.9;3.9];[1.9;3.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[2.1;3.1];[2.1;3.9];[2.9;3.9];[2.9;3.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[3.1;3.1];[3.1;3.9];[3.9;3.9];[3.9;3.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[4.1;3.1];[4.1;3.9];[4.9;3.9];[4.9;3.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[5.1;3.1];[5.1;3.9];[5.9;3.9];[5.9;3.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[6.1;3.1];[6.1;3.9];[6.9;3.9];[6.9;3.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[7.1;3.1];[7.1;3.9];[7.9;3.9];[7.9;3.1]];#00ff00;1.0;inhalt=0;umfang=0`)
 
-\begin{scope}[yshift=-2cm]
-\begin{scope}[xshift=0cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=0.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=1cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=1.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=2cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=2.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope}  
-\end{scope} 
+@Flaeche(`A0003b;[[0.1;4.1];[0.1;4.9];[0.9;4.9];[0.9;4.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[1.1;4.1];[1.1;4.9];[1.9;4.9];[1.9;4.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[2.1;4.1];[2.1;4.9];[2.9;4.9];[2.9;4.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[3.1;4.1];[3.1;4.9];[3.9;4.9];[3.9;4.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[4.1;4.1];[4.1;4.9];[4.9;4.9];[4.9;4.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[5.1;4.1];[5.1;4.9];[5.9;4.9];[5.9;4.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[6.1;4.1];[6.1;4.9];[6.9;4.9];[6.9;4.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[7.1;4.1];[7.1;4.9];[7.9;4.9];[7.9;4.1]];#00ff00;1.0;inhalt=0;umfang=0`)
 
-\begin{scope}[yshift=-2.5cm]
-\begin{scope}[xshift=0cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=0.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=1cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=1.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=2cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=2.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope}  
-\end{scope} 
+@Flaeche(`A0003b;[[0.1;5.1];[0.1;5.9];[0.9;5.9];[0.9;5.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[1.1;5.1];[1.1;5.9];[1.9;5.9];[1.9;5.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[2.1;5.1];[2.1;5.9];[2.9;5.9];[2.9;5.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[3.1;5.1];[3.1;5.9];[3.9;5.9];[3.9;5.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[4.1;5.1];[4.1;5.9];[4.9;5.9];[4.9;5.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[5.1;5.1];[5.1;5.9];[5.9;5.9];[5.9;5.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[6.1;5.1];[6.1;5.9];[6.9;5.9];[6.9;5.1]];#00ff00;1.0;inhalt=0;umfang=0`)
+@Flaeche(`A0003b;[[7.1;5.1];[7.1;5.9];[7.9;5.9];[7.9;5.1]];#00ff00;1.0;inhalt=0;umfang=0`)
 
-\begin{scope}[yshift=-3cm]
-\begin{scope}[xshift=0cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=0.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=1cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=1.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=2cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=2.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope}  
-\end{scope} 
 
-\begin{scope}[yshift=-3.5cm]
-\begin{scope}[xshift=0cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=0.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=1cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=1.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=2cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope} 
-\begin{scope}[xshift=2.5cm]\fill[fill=green!45, draw=black]  (0,0)--(0.47,0)--(0.47,0.47)--(0,0.47)--(0,0) ;\end{scope}  
-\end{scope} 
-\end{tikzpicture}
-```
 
 
 <!-- data-solution-timer="5s" 
