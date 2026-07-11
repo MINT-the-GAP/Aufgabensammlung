@@ -18,7 +18,7 @@ import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.m
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/KoordREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/Proposal/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
