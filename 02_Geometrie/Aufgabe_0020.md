@@ -44,38 +44,27 @@ author: Martin Lommatzsch
 
 
 
-
 # Punkte einzeichnen
 
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
-**Ziehe** den jweiligen Punkt **auf** die angegebenen Koordinaten
+**Ziehe** den jeweiligen Punkt **auf** die angegebenen Koordinaten.
 
 
 
 
-@Koordinatensystem(`xmin=-1;xmax=10;ymin=-1;ymax=10;width=700;id=A14`)
+@Koordinatensystem(`xmin=-1;xmax=10;ymin=-1;ymax=10;width=600;id=GKA0020`)
 
-@AchsenBeschriftung(`id=A14;xlabel=$x$;ylabel=$y$`)
+@AchsenBeschriftung(`id=GKA0020;xlabel=$x$;ylabel=$y$`)
 
 
 <section class="dynFlex">
 
 <div class="flex-child">
 
-__$a)\;\;$__ **Ziehe** den Punkt $A$ **auf** die Koordinaten $(3|8)$.
+__$a)\;\;$__ **Ziehe** den Punkt $A$ **auf** die Koordinaten $(2|5)$.
 
-@ErzeugePunkt(`A14;A;3;8`,`<!-- data-solution-timer="180s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->`)
-
-@ADetails(BE=1;Koordinatensystem, Punkt)
-
-</div>
-
-<div class="flex-child">
-
-__$b)\;\;$__ **Ziehe** den Punkt $B$ **auf** die Koordinaten $(7|5)$.
-
-@ErzeugePunkt(`A14;B;7;5`,`<!-- data-solution-timer="180s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->`)
+@ErzeugePunkt(`GKA0020;A;2;5`,`<!-- data-solution-timer="180s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" data-hint-button="3" -->`)
 
 @ADetails(BE=1;Koordinatensystem, Punkt)
 
@@ -83,19 +72,9 @@ __$b)\;\;$__ **Ziehe** den Punkt $B$ **auf** die Koordinaten $(7|5)$.
 
 <div class="flex-child">
 
-__$c)\;\;$__ **Ziehe** den Punkt $C$ **auf** die Koordinaten $(2|4)$.
+__$b)\;\;$__ **Ziehe** den Punkt $B$ **auf** die Koordinaten $(9|7)$.
 
-@ErzeugePunkt(`A14;C;2;4`,`<!-- data-solution-timer="180s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->`)
-
-@ADetails(BE=1;Koordinatensystem, Punkt)
-
-</div>
-
-<div class="flex-child">
-
-__$d)\;\;$__ **Ziehe** den Punkt $D$ **auf** die Koordinaten $(9|2)$.
-
-@ErzeugePunkt(`A14;D;9;2`,`<!-- data-solution-timer="180s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->`)
+@ErzeugePunkt(`GKA0020;B;9;7`,`<!-- data-solution-timer="180s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" data-hint-button="3" -->`)
 
 @ADetails(BE=1;Koordinatensystem, Punkt)
 
@@ -103,9 +82,9 @@ __$d)\;\;$__ **Ziehe** den Punkt $D$ **auf** die Koordinaten $(9|2)$.
 
 <div class="flex-child">
 
-__$e)\;\;$__ **Ziehe** den Punkt $E$ **auf** die Koordinaten $(5|7)$.
+__$c)\;\;$__ **Ziehe** den Punkt $C$ **auf** die Koordinaten $(4|2)$.
 
-@ErzeugePunkt(`A14;E;5;7`,`<!-- data-solution-timer="180s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->`)
+@ErzeugePunkt(`GKA0020;C;4;2`,`<!-- data-solution-timer="180s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" data-hint-button="3" -->`)
 
 @ADetails(BE=1;Koordinatensystem, Punkt)
 
@@ -113,17 +92,33 @@ __$e)\;\;$__ **Ziehe** den Punkt $E$ **auf** die Koordinaten $(5|7)$.
 
 <div class="flex-child">
 
-__$f)\;\;$__ **Ziehe** den Punkt $F$ **auf** die Koordinaten $(1|6)$.
+__$d)\;\;$__ **Ziehe** den Punkt $D$ **auf** die Koordinaten $(7|9)$.
 
-@ErzeugePunkt(`A14;F;1;6`,`<!-- data-solution-timer="180s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" -->`)
+@ErzeugePunkt(`GKA0020;D;7;9`,`<!-- data-solution-timer="180s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" data-hint-button="3" -->`)
 
 @ADetails(BE=1;Koordinatensystem, Punkt)
 
 </div>
 
+<div class="flex-child">
+
+__$e)\;\;$__ **Ziehe** den Punkt $E$ **auf** die Koordinaten $(1|3)$.
+
+@ErzeugePunkt(`GKA0020;E;1;3`,`<!-- data-solution-timer="180s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" data-hint-button="3" -->`)
+
+@ADetails(BE=1;Koordinatensystem, Punkt)
+
 </div>
+
+<div class="flex-child">
+
+__$f)\;\;$__ **Ziehe** den Punkt $F$ **auf** die Koordinaten $(6|4)$.
+
+@ErzeugePunkt(`GKA0020;F;6;4`,`<!-- data-solution-timer="180s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" data-hint-button="3" -->`)
+
+@ADetails(BE=1;Koordinatensystem, Punkt)
+
+</div>
+
 
 </section>
-
-
-
