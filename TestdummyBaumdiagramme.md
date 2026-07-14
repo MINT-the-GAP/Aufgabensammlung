@@ -15,12 +15,13 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-canvas-ocr/refs/heads
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-orthography/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/Proposal/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
@@ -33,22 +34,6 @@ author: Martin Lommatzsch
 
 
 
-
-
-
-        https://raw.githubusercontent.com/LiaTemplates/Tikz-Jax/main/README.md
-        https://raw.githubusercontent.com/LiaTemplates/mermaid_template/0.1.4/README.md
-        https://raw.githubusercontent.com/liaTemplates/ABCjs/main/README.md
-        https://raw.githubusercontent.com/LiaTemplates/Speech-Recognition-Quiz/refs/heads/main/README.md
-        https://raw.githubusercontent.com/liaTemplates/AVR8js/main/README.md
-        
-        https://raw.githubusercontent.com/LiaTemplates/mec2/main/README.md
-        https://raw.githubusercontent.com/LiaTemplates/CollaborativeDrawing/main/README.md
-        https://raw.githubusercontent.com/LiaTemplates/SpreadSheet/refs/heads/main/README.md
-        https://github.com/LiaTemplates/PeriodicTable/blob/main/README.md
-        https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main/README.md
-
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/README.md
 
 
 
