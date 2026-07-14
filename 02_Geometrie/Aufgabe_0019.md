@@ -35,7 +35,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-tags: Koordinatensystem, Stelle, Punkt, sehr leicht, sehr niedrig, Angeben
+tags: Koordinatensystem, Stelle, Punkt, sehr leicht, sehr niedrig, Zeichnen
 
 comment: Stellen und Punkte aus dem Koordinatensystem auslesen mit negativen Dezimalzahlen.
 
