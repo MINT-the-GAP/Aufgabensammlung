@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -74,6 +78,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $ \dfrac{5}{12} : 5 = $ [[  1/12  ]] @canvas
 @Algebrite.check(1/12)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -87,6 +92,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Division)
 
@@ -103,6 +110,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $ \dfrac{7}{15} : 3 = $ [[  7/45  ]] @canvas
 @Algebrite.check(7/45)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -115,6 +123,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Division)
 
@@ -131,6 +141,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $ \dfrac{9}{14} : 6 = $ [[  3/28  ]] @canvas
 @Algebrite.check(3/28)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -144,6 +155,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Division)
 
@@ -160,6 +173,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $ \dfrac{11}{18} : 2 = $ [[  11/36  ]] @canvas
 @Algebrite.check(11/36)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -172,6 +186,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Division)
 
@@ -188,6 +204,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ $ \dfrac{8}{9} : 4 = $ [[  2/9  ]] @canvas
 @Algebrite.check(2/9)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -201,6 +218,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Division)
 
@@ -217,6 +236,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$f)\;\;$__ $ \dfrac{13}{20} : 5 = $ [[  13/100  ]] @canvas
 @Algebrite.check(13/100)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -229,6 +249,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Division)
 

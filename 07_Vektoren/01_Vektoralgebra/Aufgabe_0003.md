@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -63,6 +67,9 @@ data-hint-button="3"  -->
 - [    [ ]           [ ]             [X]     ]  $$ \vec{m} \times \left( \lambda \vec{z} \circ \left( \lambda \vec{v} \right) \right) $$
 - [    ( )           ( )             (X)     ]  $$ \left| \vec{x} - \mu \vec{r} \right| \times \vec{u} $$
 - [    [ ]           [X]             [ ]     ]  $$ \dfrac{ \left| \vec{c} \times \vec{a} \right| }{ \vec{a} \circ \vec{c} } $$
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Vektoren, Algebra)

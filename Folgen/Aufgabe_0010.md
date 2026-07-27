@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -66,8 +70,11 @@ data-hint-button="3"  -->
 $53 \quad 55 \quad 59 \quad 65 \quad 73 \quad 83 \quad 95 \quad $ [[ 109 ]] @canvas $\quad$ [[ 125 ]] @canvas $\quad$ [[ 143 ]] @canvas \
 
 [[?]] Musterbeschreibung: Zur vorherigen Zahl wird die nächst größere gerade Zahl addiert.
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Folge)
 
@@ -82,8 +89,11 @@ data-hint-button="3"  -->
 $b \quad D \quad f \quad H \quad j \quad L \quad $ [[ n ]] @canvas $\quad$ [[ P ]] @canvas $\quad$ [[ r ]] @canvas \
 
 [[?]] Musterbeschreibung: Immer jeweils der übernächste Buchstabe des Alphabets abwechselnd klein und groß geschrieben.
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Folge)
 
@@ -98,8 +108,11 @@ data-hint-button="3"  -->
 $542 \quad  \quad 519 \quad 496 \quad 473 \quad 450 \quad 427 \quad 404 \quad $ [[ 381 ]] @canvas $\quad$ [[ 358 ]] @canvas $\quad$ [[ 335 ]] @canvas \
 
 [[?]] Musterbeschreibung: Von der vorherigen Zahl wird $23$ subtrahiert.
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Folge)
 

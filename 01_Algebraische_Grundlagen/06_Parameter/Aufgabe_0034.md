@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -74,10 +78,13 @@ data-sortable="false" -->
 | $36$ | [[ 6 ]] @canvas | $3$ | [[ 54 ]] @canvas | [[ 16 ]] @canvas | $15$ |
 | $40$ | $8$ | [[ 4 ]] @canvas | [[ 72 ]] @canvas | $14$ | [[ 17 ]] @canvas |
 @Algebrite.check([ f; 2; 3; 32; 16; 12; 30; 8; 21; 6; 54; 16; 4; 72; 17 ])
+[[?]] @Explain
 
 
 
 
 
+
+@resetter
 
 @ADetails(1=BE; Einsetzungsverfahren, Tabelle, Äquivalenzumformung)

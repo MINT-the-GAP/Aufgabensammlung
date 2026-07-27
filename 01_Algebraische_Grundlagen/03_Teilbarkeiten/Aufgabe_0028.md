@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -71,6 +75,9 @@ data-hint-button="3"  -->
 - [[ ]] $657$
 - [[X]] $254$
 - [[X]] $380$
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Teiler)
 
@@ -94,7 +101,10 @@ data-hint-button="3"  -->
 - [[X]] $840$
 - [[ ]] $942$
 - [[ ]] $674$
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Teiler)
 
@@ -119,7 +129,10 @@ data-hint-button="3"  -->
 - [[X]] $135$
 - [[ ]] $784$
 - [[X]] $681$
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Teiler)
 
@@ -144,7 +157,10 @@ data-hint-button="3"  -->
 - [[ ]] $789$
 - [[ ]] $388$
 - [[ ]] $639$
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Teiler)
 
@@ -169,8 +185,11 @@ data-hint-button="3"  -->
 - [[X]] $927$
 - [[ ]] $487$
 - [[X]] $1017$
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Teiler)
 
@@ -194,7 +213,10 @@ data-hint-button="3"  -->
 - [[X]] $796$
 - [[ ]] $326$
 - [[X]] $512$
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Teiler)
 

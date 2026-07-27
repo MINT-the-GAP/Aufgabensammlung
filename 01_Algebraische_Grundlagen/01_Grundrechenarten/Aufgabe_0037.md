@@ -16,11 +16,15 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/Proposal/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
@@ -58,7 +62,22 @@ author: Martin Lommatzsch
 __$a)\;\;$__ 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund37_1.png)
+@Koordinatensystem(`xmin=-2;xmax=80;ymin=-8;ymax=4;width=900;id=G3701;achsen=0;grid=0;border=0`)
+
+@Vektor(`G3701;[[0;0];[76;0]];#000000;u=0`)
+
+@Strecke(`G3701;[[0;-0.8];[0;0.8]];#000000;;-;3px`)
+@Strecke(`G3701;[[12;-0.8];[12;0.8]];#000000;;-;3px`)
+@Strecke(`G3701;[[24;-0.8];[24;0.8]];#000000;;-;3px`)
+@Strecke(`G3701;[[36;-0.8];[36;0.8]];#000000;;-;3px`)
+@Strecke(`G3701;[[48;-0.8];[48;0.8]];#000000;;-;3px`)
+@Strecke(`G3701;[[60;-0.8];[60;0.8]];#000000;;-;3px`)
+@Bogen(`G3701;[72;-0.8];90;[72;0.8];270;;-;5px;#ff0000`)
+
+@KoordText(`G3701;[0;-5.1];$0$;#000000;1`)
+@KoordText(`G3701;[12;-5.1];$8$;#000000;1`)
+@KoordText(`G3701;[24;-5.1];$16$;#000000;1`)
+@KoordText(`G3701;[79.3;-0.15];$x$;#000000;1`)
 
 </center>
 
@@ -69,8 +88,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 [[   48  ]] @canvas
+[[?]] @Explain
 
-@ADetails(BE=1;Zahlenstral, Zahlenverständnis)
+@resetter
+
+@ADetails(BE=1;Zahlenstrahl, Zahlenverständnis)
 </div> 
 
 <div class="flex-child">
@@ -78,7 +100,21 @@ data-hint-button="3"  -->
 __$b)\;\;$__ 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund37_2.png)
+@Koordinatensystem(`xmin=-2;xmax=80;ymin=-8;ymax=4;width=900;id=G3702;achsen=0;grid=0;border=0`)
+
+@Vektor(`G3702;[[0;0];[76;0]];#000000;u=0`)
+
+@Strecke(`G3702;[[0;-0.8];[0;0.8]];#000000;;-;3px`)
+@Strecke(`G3702;[[12;-0.8];[12;0.8]];#000000;;-;3px`)
+@Strecke(`G3702;[[24;-0.8];[24;0.8]];#000000;;-;3px`)
+@Strecke(`G3702;[[36;-0.8];[36;0.8]];#000000;;-;3px`)
+@Bogen(`G3702;[48;-0.8];90;[48;0.8];270;;-;5px;#ff0000`)
+@Strecke(`G3702;[[60;-0.8];[60;0.8]];#000000;;-;3px`)
+@Strecke(`G3702;[[72;-0.8];[72;0.8]];#000000;;-;3px`)
+
+@KoordText(`G3702;[0;-5.1];$0$;#000000;1`)
+@KoordText(`G3702;[72;-5.1];$150$;#000000;1`)
+@KoordText(`G3702;[79.3;-0.15];$x$;#000000;1`)
 
 </center>
 
@@ -89,8 +125,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 [[  100  ]] @canvas
+[[?]] @Explain
 
-@ADetails(BE=1;Zahlenstral, Zahlenverständnis)
+@resetter
+
+@ADetails(BE=1;Zahlenstrahl, Zahlenverständnis)
 </div> 
 
 <div class="flex-child">
@@ -98,7 +137,21 @@ data-hint-button="3"  -->
 __$c)\;\;$__ 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund37_3.png)
+@Koordinatensystem(`xmin=-8;xmax=86;ymin=-8;ymax=4;width=900;id=G3703;achsen=0;grid=0;border=0`)
+
+@Vektor(`G3703;[[-5;0];[80;0]];#000000;u=0`)
+
+@Bogen(`G3703;[0;-0.8];90;[0;0.8];270;;-;5px;#ff0000`)
+@Strecke(`G3703;[[12;-0.8];[12;0.8]];#000000;;-;3px`)
+@Strecke(`G3703;[[24;-0.8];[24;0.8]];#000000;;-;3px`)
+@Strecke(`G3703;[[36;-0.8];[36;0.8]];#000000;;-;3px`)
+@Strecke(`G3703;[[48;-0.8];[48;0.8]];#000000;;-;3px`)
+@Strecke(`G3703;[[60;-0.8];[60;0.8]];#000000;;-;3px`)
+@Strecke(`G3703;[[72;-0.8];[72;0.8]];#000000;;-;3px`)
+
+@KoordText(`G3703;[36;-5.1];$77$;#000000;1`)
+@KoordText(`G3703;[72;-5.1];$110$;#000000;1`)
+@KoordText(`G3703;[84.8;-0.15];$x$;#000000;1`)
 
 </center>
 
@@ -109,8 +162,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 [[   44  ]] @canvas
+[[?]] @Explain
 
-@ADetails(BE=1;Zahlenstral, Zahlenverständnis)
+@resetter
+
+@ADetails(BE=1;Zahlenstrahl, Zahlenverständnis)
 </div> 
 
 <div class="flex-child">
@@ -118,7 +174,21 @@ data-hint-button="3"  -->
 __$d)\;\;$__ 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund37_4.png)
+@Koordinatensystem(`xmin=-8;xmax=86;ymin=-8;ymax=4;width=900;id=G3704;achsen=0;grid=0;border=0`)
+
+@Vektor(`G3704;[[-5;0];[80;0]];#000000;u=0`)
+
+@Strecke(`G3704;[[0;-0.8];[0;0.8]];#000000;;-;3px`)
+@Strecke(`G3704;[[12;-0.8];[12;0.8]];#000000;;-;3px`)
+@Strecke(`G3704;[[24;-0.8];[24;0.8]];#000000;;-;3px`)
+@Strecke(`G3704;[[36;-0.8];[36;0.8]];#000000;;-;3px`)
+@Bogen(`G3704;[48;-0.8];90;[48;0.8];270;;-;5px;#ff0000`)
+@Strecke(`G3704;[[60;-0.8];[60;0.8]];#000000;;-;3px`)
+@Strecke(`G3704;[[72;-0.8];[72;0.8]];#000000;;-;3px`)
+
+@KoordText(`G3704;[0;-5.1];$72$;#000000;1`)
+@KoordText(`G3704;[72;-5.1];$120$;#000000;1`)
+@KoordText(`G3704;[84.8;-0.15];$x$;#000000;1`)
 
 </center>
 
@@ -129,7 +199,10 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 [[  104  ]] @canvas
+[[?]] @Explain
 
-@ADetails(BE=1;Zahlenstral, Zahlenverständnis)
+@resetter
+
+@ADetails(BE=1;Zahlenstrahl, Zahlenverständnis)
 </div> 
 </section>

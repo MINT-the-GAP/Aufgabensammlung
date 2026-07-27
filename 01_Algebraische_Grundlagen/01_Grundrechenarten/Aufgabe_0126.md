@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 version:  0.0.1
 language: de
 narrator: Deutsch Female
@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
@@ -49,6 +53,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $9530 - 4679 - 2858=$[[ 1993  ]] @canvas
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -60,6 +65,8 @@ $$
 \end{align*}
 $$
 ****************
+
+@resetter
 
 @ADetails(1=BE;Subtraktion, Grundrechenarten)
 </div>
@@ -73,6 +80,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $8841 - 3765 - 2489=$[[ 2587  ]] @canvas
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -84,6 +92,8 @@ $$
 \end{align*}
 $$
 ****************
+
+@resetter
 
 @ADetails(1=BE;Subtraktion, Grundrechenarten)
 </div>
@@ -97,6 +107,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $9726 - 4587 - 1938=$[[ 3201  ]] @canvas
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -108,6 +119,8 @@ $$
 \end{align*}
 $$
 ****************
+
+@resetter
 
 @ADetails(1=BE;Subtraktion, Grundrechenarten)
 </div>
@@ -121,6 +134,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $9055 - 2897 - 3168=$[[ 2990  ]] @canvas
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -132,6 +146,8 @@ $$
 \end{align*}
 $$
 ****************
+
+@resetter
 
 @ADetails(1=BE;Subtraktion, Grundrechenarten)
 </div>
@@ -145,6 +161,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $8602 - 4758 - 1836=$[[ 2008  ]] @canvas
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -156,6 +173,8 @@ $$
 \end{align*}
 $$
 ****************
+
+@resetter
 
 @ADetails(1=BE;Subtraktion, Grundrechenarten)
 </div>
@@ -169,6 +188,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $9417 - 3684 - 2729=$[[ 3004  ]] @canvas
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -180,6 +200,8 @@ $$
 \end{align*}
 $$
 ****************
+
+@resetter
 
 @ADetails(1=BE;Subtraktion, Grundrechenarten)
 </div>

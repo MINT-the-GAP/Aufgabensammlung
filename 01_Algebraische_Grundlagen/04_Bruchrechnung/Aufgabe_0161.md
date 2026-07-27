@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -76,7 +80,10 @@ __$a)\;\;$__
 [->[($\dfrac{13}{6 }$)]] $<$ 
 [->[($\dfrac{23}{8 }$)]] $<$ 
 [->[($\dfrac{13}{4 }$)]]
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Vergleich)
 
@@ -95,7 +102,10 @@ __$b)\;\;$__
 [->[($\dfrac{6}{5 }$)]] $<$ 
 [->[($\dfrac{5}{3 }$)]] $<$ 
 [->[($\dfrac{17}{9 }$)]]
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Vergleich)
 
@@ -114,7 +124,10 @@ __$c)\;\;$__
 [->[($\dfrac{3}{5 }$)]] $<$ 
 [->[($\dfrac{2}{3 }$)]] $<$ 
 [->[($\dfrac{5}{6 }$)]]
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Vergleich)
 

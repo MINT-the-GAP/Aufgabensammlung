@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -68,6 +72,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \{ x \in \mathbb{R} \;|\; x \geq $ [[ 40/7 ]] @canvas $\}$
 @Algebrite.check(40/7)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -79,5 +84,7 @@ x &\ge \dfrac{40}{7} \\[4pt]
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung, Sachaufgabe)

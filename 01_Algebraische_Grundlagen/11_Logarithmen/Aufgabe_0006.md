@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -64,7 +68,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $\log_{3}\left( \dfrac{1}{81} \right) = $ [[  -4  ]] @canvas
 @Algebrite.check([ -4 ])
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Logarithmen, Negative Zahlen, Bruchrechnung)
 
@@ -78,7 +85,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $\log_{10}\left( 0,00001 \right) = $ [[  -5  ]] @canvas
 @Algebrite.check([ -5 ])
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Logarithmen, Negative Zahlen, Dezimalzahlen)
 
@@ -92,7 +102,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $\log_{2}\left( 0,125 \right) = $ [[  -3  ]] @canvas
 @Algebrite.check([ -3 ])
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Logarithmen, Negative Zahlen, Dezimalzahlen)
 
@@ -106,7 +119,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $\log_{5}\left( \dfrac{1}{3125} \right) = $ [[  -5  ]] @canvas
 @Algebrite.check([ -5 ])
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Logarithmen, Negative Zahlen, Bruchrechnung)
 

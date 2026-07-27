@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -80,6 +84,7 @@ II.& \qquad x + 2y = 10
 $$  
 $x$ = [[  2  ]] @canvas  und  $y$ = [[  4  ]] @canvas
 @Algebrite.check([ 2;4 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -96,6 +101,8 @@ x \cap I. &\qquad 3\cdot 2 + y = 10 \\
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 
@@ -120,6 +127,7 @@ II.& \qquad x + 3y = 19
 $$  
 $x$ = [[  4  ]] @canvas  und  $y$ = [[  5  ]] @canvas
 @Algebrite.check([ 4;5 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -139,6 +147,8 @@ x \cap I. &\qquad 4\cdot 4 - y = 7 \\
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 </div>
@@ -161,6 +171,7 @@ II.& \qquad x - y = 1
 $$  
 $x$ = [[  3  ]] @canvas  und  $y$ = [[  2  ]] @canvas
 @Algebrite.check([ 3;2 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -178,6 +189,8 @@ x \cap II. &\qquad y = 3 - 1 \\
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 </div>
@@ -200,6 +213,7 @@ II.& \qquad 3x - y = 4
 $$  
 $x$ = [[  2  ]] @canvas  und  $y$ = [[  5  ]] @canvas
 @Algebrite.check([ 2;5 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -217,6 +231,8 @@ x \cap II. &\qquad y = 3\cdot 2 - 4 \\
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 </div>
@@ -240,6 +256,7 @@ II.& \qquad 4x - y = 6
 $$  
 $x$ = [[  2  ]] @canvas  und  $y$ = [[  6  ]] @canvas
 @Algebrite.check([ 2;6 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -257,6 +274,8 @@ x \cap I. &\qquad 2\cdot 2 + y = 10 \\
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 </div>
@@ -279,6 +298,7 @@ II.& \qquad x + y = 7
 $$  
 $x$ = [[  4  ]] @canvas  und  $y$ = [[  3  ]] @canvas
 @Algebrite.check([ 4;3 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -294,6 +314,8 @@ x \cap II. &\qquad 8 + y = 7 \quad \left| -8 \right. \\
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 </div>

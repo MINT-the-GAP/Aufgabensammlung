@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -77,6 +81,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $  \dfrac{3}{8} + \dfrac{5}{12} = $ [[  19/24  ]] @canvas
 @Algebrite.check(19/24)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -88,6 +93,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Addition)
 
@@ -104,6 +111,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $  \dfrac{7}{9} - \dfrac{2}{15} = $ [[  29/45  ]] @canvas
 @Algebrite.check(29/45)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -115,6 +123,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Subtraktion)
 
@@ -131,6 +141,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $  \dfrac{5}{6} + \dfrac{7}{18} = $ [[  11/9  ]] @canvas
 @Algebrite.check(11/9)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -143,6 +154,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Addition)
 
@@ -159,6 +172,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $  \dfrac{11}{20} - \dfrac{1}{10} = $ [[  9/20  ]] @canvas
 @Algebrite.check(9/20)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -170,6 +184,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Subtraktion)
 
@@ -186,6 +202,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ $  \dfrac{2}{7} + \dfrac{3}{14} = $ [[  1/2  ]] @canvas
 @Algebrite.check(1/2)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -198,6 +215,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Addition)
 
@@ -214,6 +233,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$f)\;\;$__ $  \dfrac{9}{16} - \dfrac{1}{8} = $ [[  7/16  ]] @canvas
 @Algebrite.check(7/16)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -225,6 +245,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Subtraktion)
 

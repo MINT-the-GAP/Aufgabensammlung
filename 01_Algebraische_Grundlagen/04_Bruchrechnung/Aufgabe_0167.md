@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -75,6 +79,9 @@ __$a)\;\;$__  $\dfrac{3}{5}$
  [->[$\left. \boxed{ = \dfrac{12}{16} \cdot \dfrac{4}{3}} \right\| \boxed{ \dfrac{3}{4} : \dfrac{1}{2}} $]]
  [->[$\left. \boxed{ = \dfrac{3}{5} \cdot \dfrac{5}{2}} \right\| \boxed{ \dfrac{2}{3} + \dfrac{1}{6}} $]]
 $= \dfrac{5}{6}$
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung)
 
@@ -94,6 +101,9 @@ __$b)\;\;$__ $\dfrac{4}{9}$
  [->[$\left. \boxed{ = \dfrac{8}{9} : \dfrac{2}{3}} \right\| \boxed{ \dfrac{11}{12} + \dfrac{1}{4}} $]]
  [->[$\left. \boxed{ = \dfrac{7}{9} : \dfrac{2}{3}} \right\| \boxed{ \dfrac{3}{4} - \dfrac{1}{4}} $]]
 $= \dfrac{1}{2}$
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung)
 
@@ -114,6 +124,9 @@ __$c)\;\;$__ $\dfrac{3}{8}$
  [->[$\left. \boxed{ = \dfrac{1}{3} + \dfrac{1}{12}} \right\| \boxed{ \dfrac{1}{6} + \dfrac{1}{2}} $]]
  [->[$\left. \boxed{ = \dfrac{4}{3} : \dfrac{2}{1}} \right\| \boxed{ \dfrac{7}{3} : \dfrac{3}{1}} $]]
 $= \dfrac{7}{9}$
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung)
 
@@ -133,6 +146,9 @@ __$d)\;\;$__ $\dfrac{4}{9}$
  [->[$\left. \boxed{ = \dfrac{7}{4} : \dfrac{2}{1}} \right\| \boxed{ \dfrac{3}{4} - \dfrac{1}{3}} $]]
  [->[$\left. \boxed{ = \dfrac{1}{4} + \dfrac{1}{6}} \right\| \boxed{ \dfrac{8}{9} : \dfrac{4}{3}} $]]
 $= \dfrac{2}{3}$
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung)
 
@@ -153,6 +169,9 @@ __$e)\;\;$__ $\dfrac{5}{14}$
  [->[$\left. \boxed{ = 1 - \dfrac{1}{10}} \right\| \boxed{ \dfrac{9}{7} : \dfrac{3}{1}} $]]
  [->[$\left. \boxed{ = \dfrac{6}{7} : \dfrac{2}{1}} \right\| \boxed{ \dfrac{2}{3} - \dfrac{1}{6}} $]]
 $= \dfrac{1}{2}$
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung)
 
@@ -173,6 +192,9 @@ __$f)\;\;$__ $\dfrac{5}{18}$
  [->[$\left. \boxed{ = \dfrac{4}{3} : \dfrac{2}{1}} \right\| \boxed{ \dfrac{7}{3} : \dfrac{3}{1}} $]]
  [->[$\left. \boxed{ = 1 - \dfrac{2}{9}} \right\| \boxed{ \dfrac{1}{2} + \dfrac{2}{9}} $]]
 $= \dfrac{13}{18}$
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung)
 

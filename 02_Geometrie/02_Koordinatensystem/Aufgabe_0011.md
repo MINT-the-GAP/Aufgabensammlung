@@ -1,0 +1,142 @@
+<!--
+version:  0.0.1
+language: de
+narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-timer/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-board-mode/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-marker/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-annotation/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-canvas-ocr/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-orthography/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
+import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
+import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
+
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
+
+
+
+
+
+
+
+
+
+
+
+tags: Koordinatensystem, Stelle, Punkt, Dezimalzahlen, leicht, niedrig, Angeben
+
+comment: Stellen und Punkte aus dem Koordinatensystem auslesen mit Dezimalzahlen.
+
+author: Martin Lommatzsch
+
+-->
+
+
+
+
+# Punkte ablesen
+
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">  \
+**Gib** die fehlende Information zu den Punkten als Dezimalzahl **an**.
+
+
+
+
+@Koordinatensystem(`xmin=-1;xmax=10;ymin=-1;ymax=10;width=700;id=K0011`)
+
+@AchsenBeschriftung(`id=K0011;xlabel=$x$;ylabel=$y$`)
+
+
+@Punkt(`K0011;A;9.7;0.1;fix`)
+@Punkt(`K0011;B;6.2;5.7;fix`)
+@Punkt(`K0011;C;4.7;3.3;fix`)
+@Punkt(`K0011;D;1.1;9.3;fix`)
+@Punkt(`K0011;E;9.3;1.1;fix`)
+
+
+
+<section class="dynFlex">
+
+<div class="flex-child">
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+ $A($[[  9,7  ]]$|$[[  0,1 ]]$)$ \
+[[?]] @Explain
+
+
+@resetter
+
+@ADetails(1=BE; Koordinatensystem, Dezimalzahlen, Punkt)
+
+</div>
+
+<div class="flex-child">
+
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+ $B($[[  6,2  ]]$|$[[  5,7  ]]$)$ \
+[[?]] @Explain
+
+
+@resetter
+
+@ADetails(1=BE; Koordinatensystem, Dezimalzahlen, Punkt)
+
+</div>
+
+<div class="flex-child">
+
+
+
+
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3"  -->
+ [[  D  ]]$( 1,1 | 9,3 )$ \
+[[?]] @Explain
+
+
+@resetter
+
+@ADetails(1=BE; Koordinatensystem, Dezimalzahlen, Punkt)
+
+
+</div>
+
+</section>
+
+
+
+
+

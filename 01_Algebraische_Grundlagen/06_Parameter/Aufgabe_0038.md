@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -74,8 +78,11 @@ data-sortable="false" -->
 | $30$ | [[ -5 ]] @canvas | $-5$ | [[ 55 ]] @canvas | [[ -9 ]] @canvas | $-1$ |
 | $-36$ | $6$ | [[ -6 ]] @canvas | [[ -72 ]] @canvas | $-3$ | [[ 0 ]] @canvas |
 @Algebrite.check([ c; 3; c; -36; -4; 3; -16; 14; -2; -5; 55; -9; -6; -72; 0 ])
+[[?]] @Explain
 
 
 
+
+@resetter
 
 @ADetails(1=BE; Einsetzungsverfahren, Tabelle, Negative Zahlen, Äquivalenzumformung)

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -61,8 +65,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$a)\;\;$__ $ 0,2 \cdot 4,5 + 0,6 =$ [[  1,5  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Vorrangsregeln)
 
@@ -75,8 +82,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$b)\;\;$__ $ 8,4:0,14 - 22,5 =$ [[  47,5  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Vorrangsregeln)
 
@@ -89,8 +99,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$c)\;\;$__ $ 2,56+1,28-0,75 =$ [[  3,09  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Vorrangsregeln)
 
@@ -103,8 +116,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$d)\;\;$__ $ 0,4 \cdot 0,6 + 0,7 \cdot 0,3 =$ [[  0,45  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Vorrangsregeln)
 
@@ -117,8 +133,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$e)\;\;$__ $ 0,75 \cdot 4,8 - 1,125 =$ [[  2,475  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Vorrangsregeln)
 
@@ -131,8 +150,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$f)\;\;$__ $ 0,05:2,5+1,5 =$ [[  1,52  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Vorrangsregeln)
 

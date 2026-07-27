@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -69,6 +73,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$a)\;\;$__ $  2a + b = c \;\;$  mit $\;\; b=4a \;\;\wedge\;\; c=24$ \
 $a$ = [[  4  ]] @canvas
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -79,6 +84,8 @@ a &= 4 \\
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
@@ -92,6 +99,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$b)\;\;$__ $  x + 6y = y + 9z \;\;$  mit $\;\; y=4 \;\;\wedge\;\; x=4z$ \
 $z$ = [[  4  ]] @canvas
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -104,6 +112,8 @@ z &= 4 \\
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
@@ -118,6 +128,7 @@ data-hint-button="3" -->
 __$c)\;\;$__ $  11k + 2r = 5t + c \;\;$  mit $\;\; r=6 \;\;\wedge\;\; t=6 \;\;\wedge\;\; c=4k$ \
 $k$ = [[  18/7  ]] @canvas
 @Algebrite.check(18/7)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -130,6 +141,8 @@ k &= \dfrac{18}{7} \\
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
@@ -144,6 +157,7 @@ data-hint-button="3" -->
 __$d)\;\;$__ $   5n + 3m + 9s = n\cdot m + a \;\;$  mit $\;\; n=3 \;\;\wedge\;\; m=6 \;\;\wedge\;\; a=17s$ \
 $s$ = [[  15/8  ]] @canvas
 @Algebrite.check(15/8)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -156,6 +170,8 @@ s &= \dfrac{15}{8} \\
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
@@ -170,6 +186,7 @@ data-hint-button="3" -->
 __$e)\;\;$__ $  r + t = u + v \;\;$  mit $\;\; r=2+u \;\;\wedge\;\; t=7+6u \;\;\wedge\;\; v=19+2u$ \
 $u$ = [[  5/2  ]] @canvas
 @Algebrite.check(5/2)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -182,6 +199,8 @@ u &= \dfrac{5}{2} \\
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
@@ -196,6 +215,7 @@ data-hint-button="3" -->
 __$f)\;\;$__ $   5(c+6)+5t = 4(r+n) \;\;$  mit $\;\; c=5t+3 \;\;\wedge\;\; r=2t+2 \;\;\wedge\;\; n=4t+3$ \
 $t$ = [[  -25/6  ]] @canvas
 @Algebrite.check(-25/6)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -209,6 +229,8 @@ t &= -\dfrac{25}{6}  \\
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>

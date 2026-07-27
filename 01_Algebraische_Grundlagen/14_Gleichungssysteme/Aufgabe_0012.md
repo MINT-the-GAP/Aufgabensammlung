@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -80,6 +84,7 @@ III.& \qquad 3x - y + 2z = 15
 $$  
 $x$ = [[  2  ]] @canvas, $y$ = [[  3  ]] @canvas, $z$ = [[  6  ]] @canvas
 @Algebrite.check([ 2;3;6 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -99,6 +104,8 @@ y \cap (B):& \qquad x - 3\cdot 3 = -7 \;\Rightarrow\; x = 2 \\[6pt]
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 
@@ -125,6 +132,7 @@ III.& \qquad x + 2y + 3z = 30
 $$  
 $x$ = [[  4  ]] @canvas, $y$ = [[  1  ]] @canvas, $z$ = [[  8  ]] @canvas
 @Algebrite.check([ 4;1;8 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -143,6 +151,8 @@ x \cap (B):& \qquad 4 + y = 5 \;\Rightarrow\; y = 1 \\[6pt]
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 
@@ -166,6 +176,7 @@ III.& \qquad 3x + y - z = 11
 $$  
 $x$ = [[  3  ]] @canvas, $y$ = [[  4  ]] @canvas, $z$ = [[  2  ]] @canvas
 @Algebrite.check([ 3;4;2 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -186,6 +197,8 @@ x \cap (A)\; &\qquad -3 + 2y = 5 \quad \left| +3 \right. \\
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 
@@ -212,6 +225,7 @@ III.& \qquad 2x + 3y - z = 13
 $$  
 $x$ = [[  2  ]] @canvas, $y$ = [[  5  ]] @canvas, $z$ = [[  6  ]] @canvas
 @Algebrite.check([ 2;5;6 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -236,6 +250,8 @@ x \cap (A)\; &\qquad 5\cdot 2 + 2y = 20 \\
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 

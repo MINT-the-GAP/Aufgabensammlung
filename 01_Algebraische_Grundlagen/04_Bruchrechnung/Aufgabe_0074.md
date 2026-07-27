@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -74,6 +78,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $ 4\tfrac{2}{5} = $ [[  22/5  ]] @canvas 
 @Algebrite.check(22/5)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -85,6 +90,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Gemischter Bruch)
 
@@ -102,6 +109,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $ 3\tfrac{7}{8} = $ [[  31/8  ]] @canvas 
 @Algebrite.check(31/8)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -113,6 +121,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Gemischter Bruch)
 
@@ -130,6 +140,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $ 7\tfrac{5}{6} = $ [[  47/6  ]] @canvas 
 @Algebrite.check(47/6)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -141,6 +152,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Gemischter Bruch)
 
@@ -158,6 +171,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $ 2\tfrac{9}{10} = $ [[  29/10  ]] @canvas 
 @Algebrite.check(29/10)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -169,6 +183,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Gemischter Bruch)
 
@@ -186,6 +202,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ $ 5\tfrac{11}{12} = $ [[  71/12  ]] @canvas 
 @Algebrite.check(71/12)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -197,6 +214,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Gemischter Bruch)
 
@@ -214,6 +233,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$f)\;\;$__ $ 9\tfrac{4}{7} = $ [[  67/7  ]] @canvas 
 @Algebrite.check(67/7)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -225,6 +245,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Gemischter Bruch)
 
@@ -242,6 +264,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$g)\;\;$__ $ 6\tfrac{3}{11} = $ [[  69/11  ]] @canvas 
 @Algebrite.check(69/11)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -253,6 +276,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Gemischter Bruch)
 
@@ -270,6 +295,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$h)\;\;$__ $ 8\tfrac{2}{9} = $ [[  74/9  ]] @canvas 
 @Algebrite.check(74/9)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -281,6 +307,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Gemischter Bruch)
 
@@ -298,6 +326,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$i)\;\;$__ $ 1\tfrac{6}{7} = $ [[  13/7  ]] @canvas 
 @Algebrite.check(13/7)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -309,6 +338,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Gemischter Bruch)
 
@@ -326,6 +357,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$j)\;\;$__ $ 10\tfrac{5}{6} = $ [[  65/6  ]] @canvas 
 @Algebrite.check(65/6)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -337,6 +369,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Gemischter Bruch)
 

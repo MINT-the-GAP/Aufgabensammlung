@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -84,8 +88,11 @@ data-hint-button="3"  -->
 rot: [[  6  ]] m$^2$  @canvas\
 blau: [[  4  ]]  m$^2$  @canvas\
 violett: [[  4  ]] m$^2$ @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
 
@@ -112,8 +119,11 @@ data-hint-button="3"  -->
 rot: [[  48  ]]  m$^2$  @canvas\
 blau: [[  4   ]]  m$^2$  @canvas\
 violett: [[  12  ]]  m$^2$ @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
 
@@ -140,8 +150,11 @@ data-hint-button="3"  -->
 rot: [[  18  ]]  m$^2$  @canvas\
 blau: [[  45  ]]  m$^2$  @canvas\
 violett: [[  27  ]]  m$^2$ @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
 
@@ -168,8 +181,11 @@ data-hint-button="3"  -->
 rot: [[  105 ]]  m$^2$  @canvas\
 blau: [[  27  ]]  m$^2$  @canvas\
 violett: [[  45  ]]  m$^2$ @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
 
@@ -196,8 +212,11 @@ data-hint-button="3"  -->
 rot: [[  35  ]]  m$^2$  @canvas\
 blau: [[  45  ]]  m$^2$  @canvas\
 violett: [[  15  ]]  m$^2$ @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
 
@@ -224,8 +243,11 @@ data-hint-button="3"  -->
 rot: [[  9  ]]  m$^2$  @canvas\
 blau: [[  12 ]]  m$^2$  @canvas\
 violett: [[  6  ]]  m$^2$ @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
 

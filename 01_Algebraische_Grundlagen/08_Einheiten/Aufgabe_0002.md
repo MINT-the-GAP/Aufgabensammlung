@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -64,6 +68,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ Wie viele Millimeter sind ein Meter? \
 [[1000]] @canvas mm
+[[?]] @Explain
 
 
 </div>
@@ -76,6 +81,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ Wie viele Minuten sind eine Stunde? \
 [[60  ]] @canvas min
+[[?]] @Explain
 
 
 </div>
@@ -88,6 +94,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ Wie viele Meter sind ein Kilometer? \
 [[1000]] @canvas m
+[[?]] @Explain
 
 
 </div>
@@ -100,6 +107,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ Wie viele Gramm sind ein Kilogramm? \
 [[1000]] @canvas g
+[[?]] @Explain
 
 
 </div>
@@ -112,6 +120,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ Wie viele Stunden sind ein Tag? \
 [[24  ]] @canvas h
+[[?]] @Explain
 
 </div>
 

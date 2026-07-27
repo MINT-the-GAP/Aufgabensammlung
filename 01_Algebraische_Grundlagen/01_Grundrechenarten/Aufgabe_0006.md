@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -62,6 +66,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$a)\;\;$__ Ein Produkt besteht aus den Summen aus $4$ und $3$ sowie $6$ und $2$. \
 [[  56  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
@@ -74,6 +81,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$b)\;\;$__ Der Minuend ist die positive Differenz aus $95$ und $33$, während der Subtrahend $27$ ist. \
 [[  35  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
@@ -86,6 +96,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$c)\;\;$__ Der Dividend ist die Summe aus $41$ und $54$, während der Divisor aus der positiven Differenz aus $83$ und $78$ besteht. \
 [[  19  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
@@ -98,6 +111,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$d)\;\;$__ Die ganzzahligen Quotienten aus $56$ und $8$ sowie $84$ und $12$ werden miteinander multipliziert.\
 [[  49  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -79,7 +83,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 **Gib** die absolute Häufigkeit der orangen Kugeln **an**.\
 $\#(O)=$ [[  4  ]]
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; absolute Häufigkeit)
 
@@ -93,7 +100,10 @@ data-hint-button="3"  -->
 **Gib** die relative Häufigkeit der blauen und roten Kugeln **an**.\
 $p(B \cup R)=$ [[ 8/24  ]]
 @Algebrite.check(8/24)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; relative Häufigkeit)
 
@@ -107,7 +117,10 @@ data-hint-button="3"  -->
 **Gib** die Wahrscheinlichkeit **an**, keine grüne oder graue Kugel zu ziehen.\
 $P(R \cup B \cup O)=$ [[  12/24  ]]
 @Algebrite.check(12/24)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Wahrscheinlichkeit)
 
@@ -120,7 +133,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 **Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(B)=$ [[  5:19  ]]
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Chance)
 
@@ -133,7 +149,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 **Gib** die absolute Häufigkeit der nicht roten Kugeln **an**.\
 $\#(\bar{R})=$ [[  21  ]]
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; absolute Häufigkeit)
 
@@ -147,7 +166,10 @@ data-hint-button="3"  -->
 **Gib** die Wahrscheinlichkeit **an**, keine rote oder orange Kugel zu ziehen.\
 $P(\bar{R} \cup \bar{O})=$ [[  17/24  ]]
 @Algebrite.check(17/24)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Wahrscheinlichkeit)
 
@@ -182,7 +204,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 **Gib** die absolute Häufigkeit der orangen Kugeln **an**.\
 $\#(O)=$ [[  3  ]]
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; absolute Häufigkeit)
 
@@ -196,7 +221,10 @@ data-hint-button="3"  -->
 **Gib** die relative Häufigkeit der blauen Kugeln **an**.\
 $p(B)=$ [[  8/22  ]]
 @Algebrite.check(8/22)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; relative Häufigkeit)
 
@@ -210,7 +238,10 @@ data-hint-button="3"  -->
 **Gib** die Wahrscheinlichkeit **an**, eine rote oder orange Kugel zu ziehen.\
 $P(R \cup O)=$ [[  14/22  ]]
 @Algebrite.check(14/22)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Wahrscheinlichkeit)
 
@@ -223,7 +254,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 **Gib** die Chance **an**, eine nicht orange Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(\bar{O})=$ [[  19:3  ]]
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Chance)
 
@@ -237,7 +271,10 @@ data-hint-button="3"  -->
 **Gib** die relative Häufigkeit der grünen und roten Kugeln **an**.\
 $p(G \cup R)=$ [[  9/22  ]]
 @Algebrite.check(9/22)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; relative Häufigkeit)
 
@@ -251,7 +288,10 @@ data-hint-button="3"  -->
 **Gib** die relative Häufigkeit der blauen und roten Kugeln **an**.\
 $p(B \cup R)=$ [[  13/22  ]]
 @Algebrite.check(13/22)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; relative Häufigkeit)
 
@@ -285,7 +325,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 **Gib** die absolute Häufigkeit der grauen Kugeln **an**.\
 $\#(G)=$ [[  3  ]]
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; absolute Häufigkeit)
 
@@ -299,7 +342,10 @@ data-hint-button="3"  -->
 **Gib** die relative Häufigkeit der violette Kugeln **an**.\
 $p(B)=$ [[  8/18  ]]
 @Algebrite.check(8/18)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; relative Häufigkeit)
 
@@ -313,7 +359,10 @@ data-hint-button="3"  -->
 **Gib** die Wahrscheinlichkeit **an**, eine grüne Kugel zu ziehen.\
 $P(R)=$ [[  10/18  ]]
 @Algebrite.check(10/18)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Wahrscheinlichkeit)
 
@@ -326,7 +375,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 **Gib** die Chance **an**, eine graue oder violette Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(G \cup V)=$ [[  11:7  ]]
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Chance)
 
@@ -340,7 +392,10 @@ data-hint-button="3"  -->
 **Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
 $P(R)=$  [[  0  ]]
 @Algebrite.check(0)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Wahrscheinlichkeit)
 
@@ -353,7 +408,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 **Gib** die absolute Häufigkeit der nicht orangen Kugeln **an**.\
 $\#(R)=$ [[  11  ]]
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; absolute Häufigkeit)
 

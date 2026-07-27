@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -66,6 +70,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $x$ = [[  19/5  ]] @canvas
 @Algebrite.check(19/5)
+[[?]] @Explain
 ************
 $$
 \textbf{Gleichung aus dem Text:}\quad 
@@ -97,5 +102,7 @@ $$
 Deutung:
 Nach $\dfrac{19}{5}\approx 3,8$ Minuten ist der Füllstand in beiden Becken gleich ( $\dfrac{107}{20}=5,35$ Liter)
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Sachaufgabe)

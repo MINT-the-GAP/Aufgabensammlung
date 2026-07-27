@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -66,6 +70,9 @@ Zeit:   [->[($9{,}2\cdot 10^3\ \text{s}$)]]  $>$ [->[($2,55\ \text{h}$)]] $>$ [-
 Länge:  [->[($5{,}05\ \text{m}$)]] $>$ [->[($504,5\ \text{cm}$)]] $>$ [->[($5,04\cdot 10^3\ \text{mm}$)]] $>$ [->[($50{,}3\ \text{dm}$)]]  \
 Fläche: [->[($4200\ \text{dm}^2$)]] $>$ [->[($0{,}042\ \text{a}$)]] $>$ [->[($4,19\ \text{m}^2$)]]$>$ [->[($4,18\cdot 10^4\ \text{cm}^2$)]]   \
 Volumen: [->[($21,2\ \ell$)]] $>$ [->[($2,11\cdot 10^4\ \text{cm}^3$)]] $>$ [->[($2,1\cdot 10^{-2}\ \text{m}^3$)]] $>$ [->[($2,1\ \text{dm}^3$)]]  \
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Einheiten, Länge, Masse, Zeit, Fläche, Volumen)
 

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -74,8 +78,11 @@ data-sortable="false" -->
 | $2{,}4$ | [[ 0,4 ]] @canvas | $0{,}6$ | [[ 2,64 ]] @canvas | [[ 6,75 ]] @canvas | $4{,}6$ |
 | $3{,}0$ | $0{,}6$ | [[ 1,2 ]] @canvas | [[ 3,72 ]] @canvas | $6{,}0$ | [[ 3,4 ]] @canvas |
 @Algebrite.check([ w; 0.5; 1.5; 1.52; 4.0; 2.1; 1.8; 4.6; 2.55; 0.4; 2.64; 6.75; 1.2; 3.72; 3.4 ])
+[[?]] @Explain
 
 
 
+
+@resetter
 
 @ADetails(1=BE; Einsetzungsverfahren, Tabelle, Dezimalzahlen, Äquivalenzumformung)

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -66,6 +70,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$a)\;\;$__ $ 2,5\,$h [[$>$|$=$|($<$)]] $250\,$min \
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Einheiten, Zeit)
 
@@ -78,6 +85,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$b)\;\;$__ $ 240\,$mm [[$>$|($=$)|$<$]] $0,24\,$m \
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Einheiten, Länge)
 
@@ -90,6 +100,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$c)\;\;$__ $ 0,0014\,$km [[($>$)|$=$|$<$]] $63\,$cm \
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Einheiten, Länge)
 
@@ -102,6 +115,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$d)\;\;$__ $ 310\,$mg [[($>$)|$=$|$<$]] $0,00026\,$kg \
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Einheiten, Masse)
 
@@ -114,6 +130,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$e)\;\;$__ $ 80\,$min [[($>$)|$=$|$<$]] $1,33\,$h \
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Einheiten, Zeit)
 

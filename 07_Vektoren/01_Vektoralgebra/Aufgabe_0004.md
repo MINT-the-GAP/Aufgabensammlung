@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -63,7 +67,10 @@ data-hint-button="3"  -->
 - [    [X]           [ ]             [ ]     ]  $$ (r \cdot s) \vec{m} - \left( \lambda \vec{z} \times \vec{v} \right) $$
 - [    ( )           (X)             ( )     ]  $$ \left( \vec{x} \times \vec{r} \right)^2 - u $$
 - [    [X]           [ ]             [ ]     ]  $$ \left( \left( \vec{v} + \vec{u} \right) \times \left( \vec{v} - \vec{u} \right) \right) \times \vec{n} $$
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Vektoren, Algebra)

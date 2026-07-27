@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -62,6 +66,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$a)\;\;$__ $ -4 \cdot (-5) - (-6) =$ [[  26  ]] @canvas 
 @Algebrite.check([ 26 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Vorrangsregeln)
 
@@ -75,6 +82,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$b)\;\;$__ $ 63 : (-7) + (-11) =$ [[  -20  ]] @canvas 
 @Algebrite.check([ -20 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Vorrangsregeln)
 
@@ -88,6 +98,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$c)\;\;$__ $ -2 \cdot (-6) - (-7) \cdot (-5) =$ [[  -23  ]] @canvas 
 @Algebrite.check([ -23 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Vorrangsregeln)
 
@@ -101,6 +114,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$d)\;\;$__ $ -61 + (-56) : 8 =$ [[  -68  ]] @canvas 
 @Algebrite.check([ -68 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Vorrangsregeln)
 

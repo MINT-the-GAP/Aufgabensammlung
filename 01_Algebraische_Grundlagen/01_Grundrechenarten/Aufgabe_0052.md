@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -62,6 +66,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$a)\;\;$__ $  7 \cdot 4 - 3 \cdot 6 =$ [[  10  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Grundrechenarten, Vorrangsregeln)
 
@@ -75,6 +82,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$b)\;\;$__ $  14 \cdot 9 + 6  =$ [[  132  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Grundrechenarten, Vorrangsregeln)
 
@@ -88,6 +98,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$c)\;\;$__ $  7 + 3 \cdot 17  =$ [[  58  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Grundrechenarten, Vorrangsregeln)
 
@@ -101,6 +114,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$d)\;\;$__ $ 55:5 - 42:6  =$ [[  4  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Grundrechenarten, Vorrangsregeln)
 
@@ -114,6 +130,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$e)\;\;$__ $  11 \cdot 25 - 144:18  =$ [[  267  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Grundrechenarten, Vorrangsregeln)
 
@@ -127,6 +146,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$f)\;\;$__ $ 16 \cdot 5 - 51   =$ [[  29  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Grundrechenarten, Vorrangsregeln)
 

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -63,7 +67,10 @@ style="max-width:600px" -->
 __$a)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholz1m.png)  
 $x=$ [[  5  ]]  Streichhölzer @canvas
 @Algebrite.check([ 5 ])
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Gleichung, Äquivalenzumformung)
 
@@ -77,7 +84,10 @@ style="max-width:600px" -->
 __$b)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholz1n.png)  
 $x=$ [[  2  ]]  Streichhölzer @canvas
 @Algebrite.check([ 2 ])
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Gleichung, Äquivalenzumformung)
 
@@ -91,7 +101,10 @@ style="max-width:600px" -->
 __$c)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholz1o.png)  
 $x=$ [[  1  ]]  Streichhölzer @canvas
 @Algebrite.check([ 1 ])
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Gleichung, Äquivalenzumformung)
 
@@ -105,7 +118,10 @@ style="max-width:600px" -->
 __$d)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/streichholz1p.png)  
 $x=$ [[  3  ]]  Streichhölzer @canvas
 @Algebrite.check([ 3 ])
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Gleichung, Äquivalenzumformung)
 

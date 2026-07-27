@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -62,6 +66,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $ 0,37 =$ [[  37  ]]  % @canvas
 @Algebrite.check([ 37 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Prozent, Dezimalzahlen)
 
@@ -75,6 +82,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $ 1,12 =$ [[  112  ]]  % @canvas
 @Algebrite.check([ 112 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Prozent, Dezimalzahlen)
 
@@ -88,6 +98,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $ 0,0649 =$ [[  6,49  ]]  % @canvas
 @Algebrite.check([ 6.49 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Prozent, Dezimalzahlen)
 
@@ -101,6 +114,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $ 644,1 =$ [[  64410  ]]  % @canvas
 @Algebrite.check([ 64410 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Prozent, Dezimalzahlen)
 
@@ -114,6 +130,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ $ 2,364 =$ [[  236,4  ]]  % @canvas
 @Algebrite.check([ 236.4 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Prozent, Dezimalzahlen)
 
@@ -127,6 +146,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$f)\;\;$__ $ 0,00061 =$ [[  0,061  ]]  % @canvas
 @Algebrite.check([ 0.061 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Prozent, Dezimalzahlen)
 

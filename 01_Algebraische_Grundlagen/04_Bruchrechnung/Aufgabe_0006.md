@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -63,6 +67,9 @@ data-show-partial-solution
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$a)\;\;$__ $\dfrac{1}{5}$ [[$>$|$=$|($<$)]] $\dfrac{1}{3}$ 
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Zahlenverständnis)
 
@@ -76,6 +83,9 @@ data-show-partial-solution
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$b)\;\;$__ $\dfrac{5}{10}$ [[$>$|($=$)|$<$]] $\dfrac{1}{2}$ 
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Zahlenverständnis)
 
@@ -89,6 +99,9 @@ data-show-partial-solution
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$c)\;\;$__ $\dfrac{4}{7}$ [[($>$)|$=$|$<$]] $\dfrac{3}{7}$ 
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Zahlenverständnis)
 
@@ -102,6 +115,9 @@ data-show-partial-solution
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$d)\;\;$__ $\dfrac{3}{4}$ [[($>$)|$=$|$<$]] $\dfrac{4}{8}$ 
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Zahlenverständnis)
 
@@ -115,6 +131,9 @@ data-show-partial-solution
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$e)\;\;$__ $\dfrac{3}{20}$ [[$>$|$=$|($<$)]] $\dfrac{3}{8}$ 
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Zahlenverständnis)
 
@@ -128,6 +147,9 @@ data-show-partial-solution
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$f)\;\;$__ $\dfrac{9}{8}$ [[($>$)|$=$|$<$]] $\dfrac{7}{7}$ 
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Zahlenverständnis)
 

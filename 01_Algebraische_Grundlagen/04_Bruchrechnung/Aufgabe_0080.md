@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -67,6 +71,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ Wie viel sind $\dfrac{9}{4}$ von $72\,$kg?  \
  [[  162  ]] kg @canvas
+[[?]] @Explain
 ***************
 $$
 \begin{align*}
@@ -79,6 +84,8 @@ $$
 
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteile)
 
@@ -96,6 +103,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ Wie viel sind $\dfrac{7}{10}$ von $120\,$kg?  \
  [[  84  ]] kg @canvas
+[[?]] @Explain
 ***************
 $$
 \begin{align*}
@@ -108,6 +116,8 @@ $$
 
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteile)
 
@@ -125,6 +135,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ Wie viel sind $\dfrac{1}{8}$ von $480\,$m?  \
  [[  60  ]] m @canvas
+[[?]] @Explain
 ***************
 $$
 \begin{align*}
@@ -137,6 +148,8 @@ $$
 
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteile)
 
@@ -154,6 +167,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ Wie viel sind $\dfrac{3}{20}$ von $500\,$€?  \
  [[  75  ]] € @canvas
+[[?]] @Explain
 ***************
 $$
 \begin{align*}
@@ -167,6 +181,8 @@ $$
 
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteile)
 

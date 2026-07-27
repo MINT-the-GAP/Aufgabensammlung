@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -62,6 +66,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $ 9 \cdot 6 = \textcolor{red}{54}$ \
 [[ Wert des Produkts  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
@@ -74,6 +81,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $ \textcolor{red}{18:6} = 3 $ \
 [[    Quotient        ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
@@ -86,6 +96,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $ 63-\textcolor{red}{34} = 29$ \
 [[      Subtrahend    ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
@@ -98,6 +111,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $ 32 = \textcolor{red}{72-40}$ \
 [[          Differenz ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>

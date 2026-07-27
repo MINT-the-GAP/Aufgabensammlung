@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -72,7 +76,10 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$a)\;\;$__ Beim Drehen eines Glücksrades mit einer Trefferwahrscheinlichkeit von $10\%$ wurde bei vier Versuchen einmal ein Treffer erzielt. Term [[I.|II.|(III.)|IV.|V.]] beschreibt dieses Szenario.
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Binomialverteilung)
 
@@ -85,7 +92,10 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$b)\;\;$__ Um den Hauptpreis bei einem Glücksrad mit zehn gleich großen Feldern zu bekommen, müssen alle vier Versuche ein Treffer sein. Term [[(I.)|II.|III.|IV.|V.]] beschreibt dieses Szenario.
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Binomialverteilung)
 
@@ -98,7 +108,10 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$c)\;\;$__ Beim Drehen des Glücksrades mit einer Trefferwahrscheinlichkeit von $10\%$ wurden das Ereignis $\{$ Treffer, Nichttreffer, Nichttreffer, Nichttreffer $\}$ festgehalten. Term [[I.|II.|III.|IV.|(V.)]] beschreibt dieses Szenario.
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Binomialverteilung)
 

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -65,6 +69,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
  [[ 0,85   ]]  € @canvas
 @Algebrite.check([ 0.85 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Prozent, Dezimalzahlen, Anteil)
 
@@ -80,6 +87,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
  [[  115  ]]  € @canvas
 @Algebrite.check([ 115 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Prozent, Anteil)
 
@@ -95,6 +105,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
  [[  3,75  ]]  € @canvas
 @Algebrite.check([ 3.75 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Prozent, Dezimalzahlen, Anteil)
 
@@ -110,6 +123,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
  [[  4950  ]]  € @canvas
 @Algebrite.check([ 4950 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Prozent, Anteil)
 

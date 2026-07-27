@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/Proposal/README.md
@@ -79,7 +83,10 @@ data-hint-button="3"  -->
 [[X]] $\lim\limits_{x \rightarrow \infty} f(x) = 0$
 [[X]] $\lim\limits_{x \nearrow 0} f(x) = -\infty$
 [[ ]] $\lim\limits_{x \searrow 0} f(x) = \infty$
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Definitionsbereich, Wertebereich, Verhalten)
 
@@ -108,7 +115,10 @@ data-hint-button="3"  -->
 [[ ]] $\mathbb{W} = \left\{f(x) \in \mathbb{R} \left|  -2 > f(x) > 2  \right. \right\}   $
 [[ ]] $\mathbb{D} = \left\{x \in \mathbb{R} \left|  -2 \geq x \geq 2  \right. \right\}   $
 [[ ]] $\mathbb{W} = \left\{f(x) \in \mathbb{R} \left|  -2 \geq f(x) \geq 2  \right. \right\}   $
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Definitionsbereich, Wertebereich, Verhalten)
 

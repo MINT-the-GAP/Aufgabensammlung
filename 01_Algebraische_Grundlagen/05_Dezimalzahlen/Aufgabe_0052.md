@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -69,8 +73,11 @@ $ 0,08 : 2 =$ [[  0,04  ]] @canvas \
 $ 0,008 : 2 =$ [[  0,004  ]] @canvas \
 $ 0,0008 : 2 =$ [[  0,0004  ]] @canvas \
 $ 0,00008 : 2 =$ [[  0,00004  ]] @canvas 
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Division, Zahlenverständnis)
 
@@ -91,8 +98,11 @@ $ 360 : 0,12 =$ [[  3000    ]] @canvas \
 $ 360 : 0,012 =$ [[  30000   ]] @canvas \
 $ 360 : 0,0012 =$ [[  300000  ]] @canvas \
 $ 360 : 0,00012 =$ [[  3000000 ]] @canvas 
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Division, Zahlenverständnis)
 
@@ -113,8 +123,11 @@ $ 0,54 : 0,009 =$ [[  60  ]] @canvas \
 $ 0,054 : 0,0009 =$ [[  60  ]] @canvas \
 $ 0,0054 : 0,00009 =$ [[  60  ]] @canvas \
 $ 0,00054 : 0,000009 =$ [[  60  ]] @canvas 
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Division, Zahlenverständnis)
 
@@ -135,8 +148,11 @@ $ 4 : 5 =$ [[  0,8  ]] @canvas \
 $ 4 : 0,5 =$ [[  8  ]] @canvas \
 $ 0,4 : 0,5 =$ [[  0,8  ]] @canvas \
 $ 0,4 : 0,05 =$ [[  8  ]] @canvas 
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Division, Zahlenverständnis)
 

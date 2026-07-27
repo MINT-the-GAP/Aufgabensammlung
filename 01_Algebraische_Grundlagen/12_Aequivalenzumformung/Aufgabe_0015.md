@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -70,6 +74,7 @@ data-show-partial-solution -->
 __$a)\;\;$__ $ 2x - 8 = 3x - 10 $ \
 $x$ = [[  2  ]] @canvas
 @Algebrite.check([ 2 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -80,6 +85,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung)
 
@@ -98,6 +105,7 @@ data-show-partial-solution -->
 __$b)\;\;$__  $ 5x - 12 = 3x + 6 \;$ \
 $x$ = [[  9  ]] @canvas
 @Algebrite.check([ 9 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -109,6 +117,8 @@ x &= 9
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung)
 
@@ -127,6 +137,7 @@ data-show-partial-solution -->
 __$c)\;\;$__   $ 3x + 12 = 5x - 2 $ \
 $x$ = [[  7  ]] @canvas
 @Algebrite.check([ 7 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -138,6 +149,8 @@ x &= 7
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung)
 
@@ -156,6 +169,7 @@ data-show-partial-solution -->
 __$d)\;\;$__  $ 8x - 5 = 3x + 20 $ \
 $x$ = [[  5  ]] @canvas
 @Algebrite.check([ 5 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -167,6 +181,8 @@ x &= 5
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung)
 

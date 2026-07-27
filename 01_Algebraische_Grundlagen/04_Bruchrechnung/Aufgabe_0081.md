@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -83,8 +87,11 @@ data-solution-button="5"
 data-hint-button="3"  -->
 [[  10/32  ]] @canvas
 @Algebrite.check(10/32)
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
@@ -111,8 +118,11 @@ data-solution-button="5"
 data-hint-button="3"  -->
 [[  3/8  ]] @canvas
 @Algebrite.check(3/8)
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
@@ -139,8 +149,11 @@ data-solution-button="5"
 data-hint-button="3"  -->
 [[  14/32  ]] @canvas
 @Algebrite.check(14/32)
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
@@ -167,8 +180,11 @@ data-solution-button="5"
 data-hint-button="3"  -->
 [[  8/19  ]] @canvas
 @Algebrite.check(8/19)
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
@@ -195,8 +211,11 @@ data-solution-button="5"
 data-hint-button="3"  -->
 [[  4/12  ]] @canvas
 @Algebrite.check(4/12)
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
@@ -223,8 +242,11 @@ data-solution-button="5"
 data-hint-button="3"  -->
 [[  5/12  ]] @canvas
 @Algebrite.check(5/12)
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 

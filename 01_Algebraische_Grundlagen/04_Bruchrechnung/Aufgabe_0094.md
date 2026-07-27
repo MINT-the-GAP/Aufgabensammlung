@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -73,6 +77,7 @@ data-hint-button="3"  -->
 __$a)\;\;$__ 
 $ \dfrac{ \left( \dfrac{3}{5} + \dfrac{1}{10} \right) }{ \left( \dfrac{7}{12} - \dfrac{1}{4} \right) } = $ [[  21/10  ]] @canvas
 @Algebrite.check(21/10)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -87,6 +92,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung)
 
@@ -106,6 +113,7 @@ data-hint-button="3"  -->
 __$b)\;\;$__ 
 $ \dfrac{ \left( \dfrac{5}{8} - \dfrac{1}{16} \right) }{ \left( \dfrac{2}{3} + \dfrac{1}{6} \right) } = $ [[  27/40  ]] @canvas
 @Algebrite.check(27/40)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -120,6 +128,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung)
 
@@ -139,6 +149,7 @@ data-hint-button="3"  -->
 __$c)\;\;$__ 
 $ \dfrac{ \left( \dfrac{4}{9} + \dfrac{1}{3} \right) }{ \left( \dfrac{7}{10} : \dfrac{7}{5} \right) } = $ [[  14/9  ]] @canvas
 @Algebrite.check(14/9)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -152,6 +163,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung)
 
@@ -171,6 +184,7 @@ data-hint-button="3"  -->
 __$d)\;\;$__ 
 $ \dfrac{ \left( \dfrac{5}{6} : \dfrac{5}{12} \right) }{ \left( \dfrac{1}{2} + \dfrac{1}{3} \right) } = $ [[  12/5  ]] @canvas
 @Algebrite.check(12/5)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -184,6 +198,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung)
 
@@ -203,6 +219,7 @@ data-hint-button="3"  -->
 __$e)\;\;$__ 
 $ \dfrac{ \left( \dfrac{9}{10} - \dfrac{2}{5} \right) }{ \left( \dfrac{1}{4} \cdot \dfrac{8}{3} \right) } = $ [[  3/4  ]] @canvas
 @Algebrite.check(3/4)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -216,6 +233,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung)
 
@@ -235,6 +254,7 @@ data-hint-button="3"  -->
 __$f)\;\;$__ 
 $ \dfrac{ \left( \dfrac{7}{8} + \dfrac{1}{16} \right) }{ \left( \dfrac{3}{5} - \dfrac{1}{10} \right) } = $ [[  15/8  ]] @canvas
 @Algebrite.check(15/8)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -248,6 +268,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung)
 

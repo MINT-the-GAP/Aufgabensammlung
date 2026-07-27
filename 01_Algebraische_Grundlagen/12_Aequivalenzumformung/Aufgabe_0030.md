@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -67,6 +71,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$a)\;\;$__ $   F = m a \;\;$  mit $\;\;a=2 \;\;\wedge\;\; F=30$ \
 $m$ = [[  15  ]] @canvas
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -77,6 +82,8 @@ m &= 15  \\
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
@@ -91,6 +98,7 @@ data-hint-button="3" -->
 __$b)\;\;$__ $   U - T = \dfrac{1}{2} v \;\;$  mit $\;\; v=5 \;\;\wedge\;\; U=7$ \
 $T$ = [[  9/2  ]] @canvas
 @Algebrite.check(9/2)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -105,6 +113,8 @@ T &= \dfrac{9}{2} \\
 $$
 ************
 
+@resetter
+
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
 <div class="flex-child">
@@ -118,6 +128,7 @@ data-hint-button="3" -->
 __$c)\;\;$__ $   r = 2x + 2y + z \;\;$  mit $\;\; r=12 \;\;\wedge\;\; x=0,4 \;\;\wedge\;\; z=1,5$ \
 $y$ = [[  97/20  ]] @canvas
 @Algebrite.check(97/20)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -133,6 +144,8 @@ y &= \dfrac{97}{20} \\
 $$
 ************
 
+@resetter
+
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
 <div class="flex-child">
@@ -146,6 +159,7 @@ data-hint-button="3" -->
 __$d)\;\;$__ $   pV = \dfrac{3}{2}kNT \;\;$  mit $\;\; N=100 \;\;\wedge\;\; k=5 \;\;\wedge\;\; p=30 \;\;\wedge\;\; V=20$ \
 $T$ = [[  4/5  ]] @canvas
 @Algebrite.check(4/5)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -157,6 +171,8 @@ T &= \dfrac{4}{5}  \\
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
@@ -172,6 +188,7 @@ __$e)\;\;$__ $   8ab - c = cb + b \;\;$  mit $\;\; b=3 \;\;\wedge\;\; c=0,75$ \
 
 $a$ = [[  1/4  ]] @canvas
 @Algebrite.check(1/4)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -186,6 +203,8 @@ a &= \dfrac{1}{4} \\
 $$
 ************
 
+@resetter
+
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
 <div class="flex-child">
@@ -199,6 +218,7 @@ data-hint-button="3" -->
 __$f)\;\;$__ $   G\dfrac{M m}{r} = F \;\;$  mit $\;\; F=120 \;\;\wedge\;\; M=4,5 \;\;\wedge\;\; m=9,5 \;\;\wedge\;\; G=1,2$ \
 $r$ = [[  4275/10000  ]] @canvas
 @Algebrite.check(4275/10000)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -212,6 +232,8 @@ r &= 0,4275  \\
 $$
 ************
 
+@resetter
+
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
 <div class="flex-child">
@@ -224,6 +246,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$g)\;\;$__ $  \dfrac{A}{B} = \dfrac{C}{D} \;\;$  mit $\;\; A=0,2 \;\;\wedge\;\; B=0,5 \;\;\wedge\;\; C=6$ \
 $D$ = [[  15  ]] @canvas
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -237,6 +260,8 @@ D &= 15
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -73,7 +77,7 @@ data-show-partial-solution -->
 __$a)\;\;$__ $  72 = 8 \cdot x $ \
 $x$ = [[  9   ]] @canvas
 @Algebrite.check([ 9 ])
-
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -83,6 +87,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung)
 
@@ -101,6 +107,7 @@ data-show-partial-solution -->
 __$b)\;\;$__ $  \dfrac{x}{7} = 5 $ \
 $x$ =  [[  35  ]] @canvas
 @Algebrite.check([ 35 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -110,6 +117,8 @@ x   & = 35  \\
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung)
 
@@ -129,6 +138,7 @@ data-show-partial-solution -->
 __$c)\;\;$__ $  x + 7 = 19  $ \
 $x$ =  [[  12  ]] @canvas
 @Algebrite.check([ 12 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -138,6 +148,8 @@ x   & = 12  \\
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung)
 
@@ -155,6 +167,7 @@ data-show-partial-solution -->
 __$d)\;\;$__ $ 17 = x - 8 $ \
 $x$ =  [[  25  ]] @canvas
 @Algebrite.check([ 25 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -164,6 +177,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung)
 
@@ -181,6 +196,7 @@ data-show-partial-solution -->
 __$e)\;\;$__ $  7x = 84 $ \
 $x$ =  [[  12  ]] @canvas
 @Algebrite.check([ 12 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -190,6 +206,8 @@ x   & = 12  \\
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung)
 
@@ -208,6 +226,7 @@ data-show-partial-solution -->
 __$f)\;\;$__ $  3 = \dfrac{x}{17}  $ \
 $x$ =  [[  51  ]] @canvas
 @Algebrite.check([ 51 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -217,6 +236,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung)
 

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -79,6 +83,7 @@ III.& \qquad x + 3y - z = 5
 $$  
 $x$ = [[  3  ]] @canvas, $y$ = [[  2  ]] @canvas, $z$ = [[  4  ]] @canvas
 @Algebrite.check([ 3;2;4 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -103,6 +108,8 @@ $$
 ************
 
 
+@resetter
+
 @ADetails(1=BE; Gleichungssysteme)
 
 </div>
@@ -125,6 +132,7 @@ III.& \qquad 3x - y + 2z = 19
 $$  
 $x$ = [[  4  ]] @canvas, $y$ = [[  3  ]] @canvas, $z$ = [[  5  ]] @canvas
 @Algebrite.check([ 4;3;5 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -150,6 +158,8 @@ $$
 ************
 
 
+@resetter
+
 @ADetails(1=BE; Gleichungssysteme)
 
 </div>
@@ -173,6 +183,7 @@ III.& \qquad 3x - y + 2z = 12
 $$  
 $x$ = [[  2  ]] @canvas, $y$ = [[  4  ]] @canvas, $z$ = [[  5  ]] @canvas
 @Algebrite.check([ 2;4;5 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -195,6 +206,8 @@ x \cap (A):& \qquad 3\cdot 2 + 4y = 22 \\
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 
@@ -219,6 +232,7 @@ III.& \qquad 2x + 3y + z = 22
 $$  
 $x$ = [[  5  ]] @canvas, $y$ = [[  2  ]] @canvas, $z$ = [[  6  ]] @canvas
 @Algebrite.check([ 5;2;6 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -241,6 +255,8 @@ y \cap (A):& \qquad 2x + 2 = 12 \quad \left| -2 \right. \\
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -63,8 +67,11 @@ data-solution-button="5"
 data-hint-button="3" 
 data-type="none" -->
 __$a)\;\;$__ $2,3 + 0,39 =$ [[  2,69  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Addition)
 
@@ -79,8 +86,11 @@ data-solution-button="5"
 data-hint-button="3" 
 data-type="none" -->
 __$b)\;\;$__ $ 1,25 + 0,84 =$ [[  2,19  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Addition)
 
@@ -95,8 +105,11 @@ data-solution-button="5"
 data-hint-button="3" 
 data-type="none" -->
 __$c)\;\;$__ $ 8,4 + 0,098 =$ [[  8,498  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Addition)
 
@@ -111,8 +124,11 @@ data-solution-button="5"
 data-hint-button="3" 
 data-type="none" -->
 __$d)\;\;$__ $ 2,27 + 6,54 =$ [[  8,81  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Addition)
 
@@ -127,8 +143,11 @@ data-solution-button="5"
 data-hint-button="3" 
 data-type="none" -->
 __$e)\;\;$__ $ 5,8 + 0,89 =$ [[  6,69  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Addition)
 
@@ -143,8 +162,11 @@ data-solution-button="5"
 data-hint-button="3" 
 data-type="none" -->
 __$f)\;\;$__ $  4,78 + 0,75 =$ [[  5,53  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Addition)
 

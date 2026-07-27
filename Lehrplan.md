@@ -26,16 +26,16 @@ edit: true
 
 | Klassenstufe / Bildungsgang | Lernbereich | Themen-Tags, die hier frühestens eingeordnet werden |
 |---|---|---|
-| 5 | LB 1: Natürliche Zahlen | addition, assoziativgesetz, differenz, distributivgesetz, division, ggt, gleichung, grundrechenarten, kgv, kommutativgesetz, multiplikation, potenzen, quersumme, runden, subtraktion, teilbarkeiten, teilermengen, überschlagen, ungleichungen, variable, vielfachmengen, vorrangsregeln, wurzeln, zahlenstrahl, zahlenverständnis, terme |
+| 5 | LB 1: Natürliche Zahlen | addition, assoziativgesetz, differenz, distributivgesetz, division, ggt, gleichung, grundrechenarten, kgv, kommutativgesetz, messen, multiplikation, potenzen, quersumme, runden, subtraktion, teilbarkeiten, teilermengen, überschlagen, ungleichungen, variable, vielfachmengen, vorrangsregeln, wurzeln, zahlenstrahl, zahlenverständnis, terme |
 | 5 | LB 2: Gemeine Brüche, Dezimalzahlen und Größen | arithmetische mittelwert, arithmetisches mittel, bruchrechnung, dezimalzahlen, durchschnitt, einheiten, länge, masse, periodizität, prozent, sachaufgabe, zeit |
-| 5 | LB 3: Geometrische Grundformen | fläche, koordinatensystem, lagebeziehung, punkt, rechteck, umfang, volumen, winkel |
+| 5 | LB 3: Geometrische Grundformen | fläche, koordinatensystem, lagebeziehung, punkt, rechteck, strecke, umfang, volumen, winkel |
 | 5 | LB 4: Symmetrie und deckungsgleiche Figuren |  |
 | 5 | Wahlbereich 1: Wie die Menschen Zählen und Rechnen lernten | zahlensysteme |
 | 5 | Wahlbereich 2: Meine neue Klasse | häufigkeit, kombinatorik, tabelle |
 | 5 | Wahlbereich 3: Planen einer Klassenfahrt |  |
 | 6 | LB 1: Gebrochene Zahlen | kehrwert, mengen, verhältnisse |
 | 6 | LB 2: Zuordnungen in der Umwelt | antiproportional, beliebige zuordnung, proportional, zuordnung |
-| 6 | LB 3: Geometrie in der Ebene | dreieck, dreiecke, eindeutigkeit, vierecke, winkelbeziehungen |
+| 6 | LB 3: Geometrie in der Ebene | dreieck, dreiecke, eindeutigkeit, konstruktion, kongruenz, vierecke, winkelbeziehungen |
 | 6 | LB 4: Geometrische Körper | quader |
 | 6 | LB 5: Mathematik im Alltag | chance, wahrscheinlichkeit |
 | 6 | Wahlbereich 1: Dynamisieren geometrischer Objekte |  |
@@ -140,9 +140,9 @@ edit: true
 
 | Klasse / Jahrgang | Lernbereich | Themen, die hier frühestens sinnvoll eingeordnet werden |
 | --- | --- | --- |
-| 5 | LB 1: Arbeiten mit natürlichen Zahlen | addition, assoziativgesetz, differenz, distributivgesetz, division, folgen, ggt, gleichung, grundrechenarten, kgv, kommutativgesetz, multiplikation, potenzen, quersumme, runden, sachaufgabe, subtraktion, teilbarkeiten, teilermengen, terme, überschlagen, vielfachmengen, vorrangsregeln, zahlenstrahl, zahlenverständnis |
+| 5 | LB 1: Arbeiten mit natürlichen Zahlen | addition, assoziativgesetz, differenz, distributivgesetz, division, folgen, ggt, gleichung, grundrechenarten, kgv, kommutativgesetz, messen, multiplikation, potenzen, quersumme, runden, sachaufgabe, subtraktion, teilbarkeiten, teilermengen, terme, überschlagen, vielfachmengen, vorrangsregeln, zahlenstrahl, zahlenverständnis |
 | 5 | LB 2: Gemeine Brüche und Dezimalzahlen | arithmetisches mittel, dezimalzahlen, durchschnitt, periodizität, prozent |
-| 5 | LB 3: Lagebeziehungen geometrischer Objekte | koordinatensystem, lagebeziehung, punkt, winkel, winkelbeziehungen |
+| 5 | LB 3: Lagebeziehungen geometrischer Objekte | koordinatensystem, lagebeziehung, punkt, strecke, winkel, winkelbeziehungen |
 | 5 | LB 4: Rechtecke und Quader | fläche, quader, rechteck, umfang, volumen |
 | 5 | LB 5: Vernetzung: Mathematik im Alltag | einheiten, länge, masse, zeit |
 | 5 | Wahlbereich 1: Dynamisieren geometrischer Objekte |  |
@@ -150,7 +150,7 @@ edit: true
 | 5 | Wahlbereich 3: Zählen und Rechnen - einst und jetzt | zahlensysteme |
 | 6 | LB 1: Arbeiten mit gebrochenen Zahlen | bruchrechnung, kehrwert, mengen, variable |
 | 6 | LB 2: Zuordnungen in der Umwelt | antiproportional, beliebige zuordnung, chance, eindeutigkeit, häufigkeit, proportional, tabelle, verhältnisse, zuordnung |
-| 6 | LB 3: Dreiecke und Vierecke | dreieck, dreiecke, vierecke |
+| 6 | LB 3: Dreiecke und Vierecke | dreieck, dreiecke, konstruktion, kongruenz, vierecke |
 | 6 | LB 4: Prismen |  |
 | 6 | LB 5: Vernetzung: Anteile |  |
 | 6 | Wahlbereich 1: Finden von Vermutungen mit dynamischer Geometrie |  |

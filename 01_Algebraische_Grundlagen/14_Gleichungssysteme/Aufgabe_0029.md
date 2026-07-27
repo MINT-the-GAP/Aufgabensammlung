@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -68,6 +72,7 @@ data-hint-button="3"
 data-show-partial-solution -->
 $x$ = [[  12  ]] @canvas, $y$ = [[  16  ]] @canvas und $z$ = [[  8  ]] @canvas
 @Algebrite.check([ 12; 16; 8 ])
+[[?]] @Explain
 ************
 
 Bezeichne mit $x$ die Anzahl der Holzstühle, mit $y$ die Anzahl der Kunststoffstühle und mit $z$ die Anzahl der Metallstühle.
@@ -100,6 +105,8 @@ Es gibt also $12$ Holzstühle, $16$ Kunststoffstühle und $8$ Metallstühle.
 
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme, Sachaufgabe)
 

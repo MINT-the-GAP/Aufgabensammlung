@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -76,7 +80,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 Es handelt sich um ein Quadrat. \
 $A($[[  6  ]]$|$[[  1  ]]$)$ \
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Viereck, Quadrat, Koordinatensystem)
 
@@ -106,7 +113,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 Es handelt sich um ein symmetrisches Trapez mit einer Symmetrieachse, die orthogonal zur Stecke $\overline{AB}$ ist. \
 $D($[[  2  ]]$|$[[  8  ]]$)$ \
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Viereck, Trapez, Koordinatensystem)
 

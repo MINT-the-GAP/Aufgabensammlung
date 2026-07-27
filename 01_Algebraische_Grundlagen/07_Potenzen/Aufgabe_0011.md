@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -69,6 +73,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $(0{,}6)^3 = $ [[ 0,216 ]] @canvas
 @Algebrite.check([ 0.216 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Dezimalzahlen)
 
@@ -82,6 +89,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $1{,}4^2 = $ [[ 1,96 ]] @canvas
 @Algebrite.check([ 1.96 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Dezimalzahlen)
 
@@ -95,6 +105,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $(0{,}25)^2 = $ [[ 0,0625 ]] @canvas
 @Algebrite.check([ 0.0625 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Dezimalzahlen)
 
@@ -108,6 +121,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $3{,}2^3 = $ [[ 32,768 ]] @canvas
 @Algebrite.check([ 32.768 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Dezimalzahlen)
 
@@ -121,6 +137,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ $0{,}8^4 = $ [[ 0,4096 ]] @canvas
 @Algebrite.check([ 0.4096 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Dezimalzahlen)
 
@@ -134,6 +153,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$f)\;\;$__ $(1{,}25)^3 = $ [[ 1,953125 ]] @canvas
 @Algebrite.check([ 1.953125 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Dezimalzahlen)
 

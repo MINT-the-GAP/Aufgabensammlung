@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -67,6 +71,9 @@ $\;\;\;\; 72:18 + 26 + 22 $ \
 $=$ [[ 4 ]] @canvas $ + 26 + 22  $ \
 $=$ [[ 30 ]] @canvas $ + 22  $ \
 $=$ [[ 52 ]] @canvas 
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Terme, Grundrechenarten)
 
@@ -86,6 +93,9 @@ $= $ [[ 45 ]] @canvas $ + 6 \cdot 7 + 2$ \
 $=$ [[ 45 ]] @canvas  $+$ [[ 42 ]] @canvas $+ 2$  \
 $=$ [[ 87 ]] @canvas  $+ 2$  \
 $=$ [[ 89 ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Terme, Grundrechenarten)
 
@@ -104,6 +114,9 @@ $\;\;\;\; 34 + 64 + 25 + 21   $ \
 $=$ $ 34 + 64 + $ [[ 46 ]] @canvas  \
 $=$ $ 34 +$ [[ 110 ]] @canvas  \
 $=$ [[ 144 ]] @canvas 
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Terme, Grundrechenarten)
 
@@ -123,6 +136,9 @@ $= 7 \cdot 3 \cdot ( 14 -$ [[  8 ]] @canvas $) $ \
 $= 7 \cdot 3 \cdot$  [[  6 ]] @canvas  \
 $= 7 \cdot $  [[  18 ]] @canvas \
 $=$ [[ 126 ]] @canvas 
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Terme, Grundrechenarten)
 

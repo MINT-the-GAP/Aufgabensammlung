@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/Proposal/README.md
@@ -79,7 +83,10 @@ data-hint-button="3"  -->
 [[X]] $\lim\limits_{x \rightarrow \infty} f(x) = \infty$
 [[ ]] $\lim\limits_{x \nearrow -1} f(x) = -\infty$
 [[X]] $\lim\limits_{x \searrow -1} f(x) = \infty$
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Definitionsbereich, Wertebereich, Verhalten)
 
@@ -108,7 +115,10 @@ data-hint-button="3"  -->
 [[X]] $\lim\limits_{x \rightarrow \infty} f(x) = \infty$
 [[X]] $\lim\limits_{x \nearrow -1} f(x) = 1$
 [[ ]] $\lim\limits_{x \searrow -1} f(x) = -1$
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Definitionsbereich, Wertebereich, Verhalten)
 

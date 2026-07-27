@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -71,6 +75,7 @@ data-hint-button="3" -->
 __$a)\;\;$__ $ \; 7x + \dfrac{1}{2} = 3x - \dfrac{7}{2} \;$ \
 $x$ = [[  -1  ]] @canvas
 @Algebrite.check(-1)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -82,6 +87,8 @@ x &= -1
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
@@ -96,6 +103,7 @@ data-hint-button="3" -->
 __$b)\;\;$__ $ \; 2x - \dfrac{7}{3} = \dfrac{1}{3}x + 5 \;$ \
 $x$ = [[  22/5  ]] @canvas
 @Algebrite.check(22/5)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -107,6 +115,8 @@ x &= \dfrac{22}{5}
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
@@ -121,6 +131,7 @@ data-hint-button="3" -->
 __$c)\;\;$__ $ \; \dfrac{3}{2}x + 4 = \dfrac{5}{4}x - 2 \;$ \
 $x$ = [[  -24  ]] @canvas
 @Algebrite.check(-24)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -132,6 +143,8 @@ x &= -24
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
@@ -146,6 +159,7 @@ data-hint-button="3" -->
 __$d)\;\;$__ $ 2(x-3) = \dfrac{1}{2}x - 1 $ \
 $x$ = [[  10/3  ]] @canvas
 @Algebrite.check(10/3)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -158,6 +172,8 @@ x &= \dfrac{10}{3}
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Distributivgesetz, Bruchrechnung)
 </div>
@@ -172,6 +188,7 @@ data-hint-button="3" -->
 __$e)\;\;$__ $ 3(x+2) - \dfrac{5}{2} = 2x $ \
 $x$ = [[  -7/2  ]] @canvas
 @Algebrite.check(-7/2)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -184,6 +201,8 @@ x &= -\dfrac{7}{2}
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Distributivgesetz, Bruchrechnung)
 </div>
@@ -198,6 +217,7 @@ data-hint-button="3" -->
 __$f)\;\;$__ $  \dfrac{3}{4}(2x-1) = x + \dfrac{1}{2} $ \
 $x$ = [[  5/2  ]] @canvas
 @Algebrite.check(5/2)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -209,6 +229,8 @@ x &= \dfrac{5}{2}
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Distributivgesetz, Bruchrechnung)
 </div>

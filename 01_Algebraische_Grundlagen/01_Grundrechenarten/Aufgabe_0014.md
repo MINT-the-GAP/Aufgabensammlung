@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -67,7 +71,16 @@ data-type="none" -->
 |      17     |         2          |         4         |      1       |     0      |     0     |    7    |
 
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-type="none" -->
  [[  17241007  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Zahlenverständnis)
 
@@ -84,7 +97,16 @@ data-type="none" -->
 |             |          1         |         17        |      4       |     5      |     12    |    4    |
 
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-type="none" -->
  [[   274624  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Zahlenverständnis)
 
@@ -101,8 +123,16 @@ data-type="none" -->
 |             |                    |        287        |       0      |     24     |     0     |   117   |
 
 
+<!-- data-solution-timer="5s" 
+data-solution-timer-start="oncheck" 
+data-solution-timer-badge="off" 
+data-solution-button="5" 
+data-hint-button="3" 
+data-type="none" -->
  [[  2872517  ]] @canvas
+[[?]] @Explain
 
+@resetter
 
 @ADetails(BE=1;Zahlenverständnis)
 

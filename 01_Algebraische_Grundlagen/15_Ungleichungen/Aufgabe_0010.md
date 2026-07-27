@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -70,6 +74,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x > $   [[  5  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(5)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -80,6 +85,8 @@ x &> 5
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen)
 </div>
@@ -94,6 +101,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  3  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(3)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -104,6 +112,8 @@ x &\geq 3
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen)
 </div>
@@ -118,6 +128,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  -2  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(-2)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -128,6 +139,8 @@ x &\leq -2
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen)
 </div>
@@ -142,6 +155,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x > $   [[  4  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(4)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -152,6 +166,8 @@ x &> 4
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen)
 </div>
@@ -166,6 +182,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x < $   [[  -8  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(-8)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -176,6 +193,8 @@ x &< -8
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen)
 </div>
@@ -190,6 +209,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  2  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(2)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -200,6 +220,8 @@ x &\geq 2
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen)
 </div>

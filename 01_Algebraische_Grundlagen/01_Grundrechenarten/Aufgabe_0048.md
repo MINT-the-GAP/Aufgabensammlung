@@ -16,11 +16,16 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
+
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/Proposal/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
@@ -58,7 +63,32 @@ author: Martin Lommatzsch
 __$a)\;\;$__ 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund48_1.png)
+@Koordinatensystem(`xmin=-2;xmax=80;ymin=-8;ymax=12;width=900;id=G4801;achsen=0;grid=0;border=0`)
+
+@Vektor(`G4801;[[0;0];[76;0]];#000000;u=0`)
+
+@Strecke(`G4801;[[0;-0.8];[0;0.8]];#000000;;-;3px`)
+@Strecke(`G4801;[[9;-0.8];[9;0.8]];#000000;;-;3px`)
+@Strecke(`G4801;[[18;-0.8];[18;0.8]];#000000;;-;3px`)
+@Strecke(`G4801;[[27;-0.8];[27;0.8]];#000000;;-;3px`)
+@Strecke(`G4801;[[36;-0.8];[36;0.8]];#000000;;-;3px`)
+@Strecke(`G4801;[[45;-0.8];[45;0.8]];#000000;;-;3px`)
+@Strecke(`G4801;[[54;-0.8];[54;0.8]];#000000;;-;3px`)
+@Strecke(`G4801;[[63;-0.8];[63;0.8]];#000000;;-;3px`)
+@Strecke(`G4801;[[72;-0.8];[72;0.8]];#000000;;-;3px`)
+
+@Bogen(`G4801;[63;2];150;[18;2];30;;->;3px;#000000`)
+
+@KoordText(`G4801;[0;-5.1];$0$;#000000;1`)
+@KoordText(`G4801;[9;-5.1];$1$;#000000;1`)
+@KoordText(`G4801;[18;-5.1];$2$;#000000;1`)
+@KoordText(`G4801;[27;-5.1];$3$;#000000;1`)
+@KoordText(`G4801;[36;-5.1];$4$;#000000;1`)
+@KoordText(`G4801;[45;-5.1];$5$;#000000;1`)
+@KoordText(`G4801;[54;-5.1];$6$;#000000;1`)
+@KoordText(`G4801;[63;-5.1];$7$;#000000;1`)
+@KoordText(`G4801;[72;-5.1];$8$;#000000;1`)
+@KoordText(`G4801;[79.3;-0.15];$x$;#000000;1`)
 
 </center>
 
@@ -70,6 +100,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 [[  7-5   ]] @canvas $= 2$
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Zahlenstrahl, Zahlenverständnis)
 
@@ -80,7 +113,32 @@ data-hint-button="3"  -->
 __$b)\;\;$__ 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Grund48_2.png)
+@Koordinatensystem(`xmin=-2;xmax=80;ymin=-8;ymax=12;width=900;id=G4802;achsen=0;grid=0;border=0`)
+
+@Vektor(`G4802;[[0;0];[76;0]];#000000;u=0`)
+
+@Strecke(`G4802;[[0;-0.8];[0;0.8]];#000000;;-;3px`)
+@Strecke(`G4802;[[9;-0.8];[9;0.8]];#000000;;-;3px`)
+@Strecke(`G4802;[[18;-0.8];[18;0.8]];#000000;;-;3px`)
+@Strecke(`G4802;[[27;-0.8];[27;0.8]];#000000;;-;3px`)
+@Strecke(`G4802;[[36;-0.8];[36;0.8]];#000000;;-;3px`)
+@Strecke(`G4802;[[45;-0.8];[45;0.8]];#000000;;-;3px`)
+@Strecke(`G4802;[[54;-0.8];[54;0.8]];#000000;;-;3px`)
+@Strecke(`G4802;[[63;-0.8];[63;0.8]];#000000;;-;3px`)
+@Strecke(`G4802;[[72;-0.8];[72;0.8]];#000000;;-;3px`)
+
+@Bogen(`G4802;[72;2];155;[9;2];25;;->;3px;#000000`)
+
+@KoordText(`G4802;[0;-5.1];$0$;#000000;1`)
+@KoordText(`G4802;[9;-5.1];$1$;#000000;1`)
+@KoordText(`G4802;[18;-5.1];$2$;#000000;1`)
+@KoordText(`G4802;[27;-5.1];$3$;#000000;1`)
+@KoordText(`G4802;[36;-5.1];$4$;#000000;1`)
+@KoordText(`G4802;[45;-5.1];$5$;#000000;1`)
+@KoordText(`G4802;[54;-5.1];$6$;#000000;1`)
+@KoordText(`G4802;[63;-5.1];$7$;#000000;1`)
+@KoordText(`G4802;[72;-5.1];$8$;#000000;1`)
+@KoordText(`G4802;[79.3;-0.15];$x$;#000000;1`)
 
 </center>
 
@@ -92,6 +150,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 [[  8-7   ]] @canvas $= 1$
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Zahlenstrahl, Zahlenverständnis)
 

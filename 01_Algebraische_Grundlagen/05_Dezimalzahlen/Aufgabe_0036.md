@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -61,8 +65,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$a)\;\;$__ $ 5,8\bar{7} - 0,\bar{7} =$ [[  5,1  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Periodizität, Subtraktion)
 
@@ -75,8 +82,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$b)\;\;$__ $ 3,\bar{8} \cdot 0,9 =$ [[  2,78  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Periodizität, Multiplikation)
 
@@ -89,8 +99,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$c)\;\;$__ $ 5,\bar{6} : 0,\bar{8} =$ [[  6,375  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Periodizität, Division)
 
@@ -103,8 +116,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$d)\;\;$__ $ 1,7\bar{3}+0,\bar{6} =$ [[  2,4  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Periodizität, Addition)
 

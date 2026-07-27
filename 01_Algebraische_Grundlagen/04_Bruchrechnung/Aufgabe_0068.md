@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -74,6 +78,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $ \; a : b + 2c \; = $ [[  11/6  ]] @canvas $\;\;\text{mit:}\;\; a=\dfrac{3}{5}\;\; \wedge\;\; b=\dfrac{9}{10}\;\; \wedge\;\; c=\dfrac{7}{12}$
 @Algebrite.check(11/6)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -89,6 +94,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Einsetzungsverfahren, Vorrangsregeln)
 
@@ -106,6 +113,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $ \; 3a - b : 2 + c : b \; = $ [[  161/72  ]] @canvas $\;\;\text{mit:}\;\; a=\dfrac{1}{2}\;\; \wedge\;\; b=\dfrac{3}{4}\;\; \wedge\;\; c=\dfrac{5}{6}$
 @Algebrite.check(161/72)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -124,6 +132,8 @@ $$
 
 
 
+@resetter
+
 @ADetails(1=BE; Bruchrechnung, Einsetzungsverfahren, Vorrangsregeln)
 
 </div>
@@ -140,6 +150,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $ \; ab + c : 2 - a : c \; = $ [[  1/45  ]] @canvas $\;\;\text{mit:}\;\; a=\dfrac{2}{3}\;\; \wedge\;\; b=\dfrac{5}{4}\;\; \wedge\;\; c=\dfrac{3}{5}$
 @Algebrite.check(1/45)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -155,6 +166,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Einsetzungsverfahren, Vorrangsregeln)
 
@@ -172,6 +185,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $ \; a : (3b) + 2c - b : a \; = $ [[  17/30  ]] @canvas $\;\;\text{mit:}\;\; a=\dfrac{4}{5}\;\; \wedge\;\; b=\dfrac{2}{3}\;\; \wedge\;\; c=\dfrac{1}{2}$
 @Algebrite.check(17/30)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -187,6 +201,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Einsetzungsverfahren, Vorrangsregeln)
 
@@ -204,6 +220,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ $ \; 2a + bc : a - c : 2 \; = $ [[  89/27  ]] @canvas $\;\;\text{mit:}\;\; a=\dfrac{3}{8}\;\; \wedge\;\; b=\dfrac{4}{3}\;\; \wedge\;\; c=\dfrac{5}{6}$
 @Algebrite.check(89/27)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -221,6 +238,8 @@ $$
 
 
 
+@resetter
+
 @ADetails(1=BE; Bruchrechnung, Einsetzungsverfahren, Vorrangsregeln)
 
 </div>
@@ -237,6 +256,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$f)\;\;$__ $ \; a : b + c : (2a) + 3b - a \; = $ [[  263/90  ]] @canvas $\;\;\text{mit:}\;\; a=\dfrac{5}{12}\;\; \wedge\;\; b=\dfrac{3}{10}\;\; \wedge\;\; c=\dfrac{7}{8}$
 @Algebrite.check(263/90)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -253,6 +273,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Einsetzungsverfahren, Vorrangsregeln)
 

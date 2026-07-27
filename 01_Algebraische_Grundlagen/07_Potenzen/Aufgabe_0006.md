@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -63,7 +67,10 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$a)\;\;$__ $(-2)^7 = $ [[  -128  ]] @canvas
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Negative Zahlen)
 
@@ -76,7 +83,10 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$b)\;\;$__ $-3^5 = $ [[  -243  ]] @canvas
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Negative Zahlen)
 
@@ -89,7 +99,10 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$c)\;\;$__ $(-5)^4 = $ [[  625  ]] @canvas
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Negative Zahlen)
 
@@ -102,7 +115,10 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$d)\;\;$__ $ -8^3 = $ [[  -512  ]] @canvas
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Negative Zahlen)
 

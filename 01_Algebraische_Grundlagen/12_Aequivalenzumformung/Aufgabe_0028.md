@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -71,6 +75,7 @@ data-hint-button="3" -->
 __$a)\;\;$__ $  \dfrac{5}{x-2} = \dfrac{3}{2x+1} $ \
 $x$ = [[  -11/7  ]] @canvas
 @Algebrite.check(-11/7)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -85,6 +90,8 @@ x &= -\dfrac{11}{7}
 $$
 ************
 
+@resetter
+
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
 <div class="flex-child">
@@ -98,6 +105,7 @@ data-hint-button="3" -->
 __$b)\;\;$__ $  \dfrac{7}{x+3} = \dfrac{2}{x-1} $ \
 $x$ = [[  13/5  ]] @canvas
 @Algebrite.check(13/5)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -112,6 +120,8 @@ x &= \dfrac{13}{5}
 $$
 ************
 
+@resetter
+
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
 <div class="flex-child">
@@ -125,6 +135,7 @@ data-hint-button="3" -->
 __$c)\;\;$__ $  \dfrac{4}{2x-3} = \dfrac{9}{x+6} $ \
 $x$ = [[  51/14  ]] @canvas
 @Algebrite.check(51/14)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -138,6 +149,8 @@ x &= \dfrac{51}{14}
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 
@@ -153,6 +166,7 @@ data-hint-button="3" -->
 __$d)\;\;$__ $  \dfrac{3}{x-4} = \dfrac{5}{2x+7} $ \
 $x$ = [[  -41  ]] @canvas
 @Algebrite.check(-41)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -165,6 +179,8 @@ x &= -41
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 
@@ -180,6 +196,7 @@ data-hint-button="3" -->
 __$e)\;\;$__ $  \dfrac{2}{x+5} = \dfrac{7}{3x-2} $ \
 $x$ = [[  -39  ]] @canvas
 @Algebrite.check(-39)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -194,6 +211,8 @@ x &= -39
 $$
 ************
 
+@resetter
+
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
 <div class="flex-child">
@@ -207,6 +226,7 @@ data-hint-button="3" -->
 __$f)\;\;$__ $  \dfrac{5}{x-1} = \dfrac{8}{x+6} $ \
 $x$ = [[  38/3  ]] @canvas
 @Algebrite.check(38/3)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -220,6 +240,8 @@ x &= \dfrac{38}{3}
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>

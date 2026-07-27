@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -83,10 +87,13 @@ data-solution-button="5"
 data-hint-button="3"  -->
 $P(\bar{B}|A)=P_{A}(\bar{B}) = $ [[ 60    ]] $\%$  
 @Algebrite.check(60/100)
+[[?]] @Explain
 *************
 $P(\bar{B}|A)=P_{A}(\bar{B}) = \dfrac{ P(A \cap \bar{B}) }{ P(A) } = \dfrac{0,12}{0,20} = 60\%$
 *************
 
+
+@resetter
 
 @ADetails(1=BE; Vierfeldertafel, bedingte Wahrscheinlichkeit)
 
@@ -104,10 +111,13 @@ data-solution-button="5"
 data-hint-button="3"  -->
 $P(\bar{B}|\bar{A})=P_{\bar{A}}(\bar{B}) = $ [[ 53,75 ]] $\%$ 
  @Algebrite.check(5375/10000)
+[[?]] @Explain
 *************
 $P(\bar{B}|\bar{A})=P_{\bar{A}}(\bar{B}) = \dfrac{ P(\bar{B} \cap \bar{A}) }{ P(\bar{A}) } = \dfrac{0,43}{0,80} = 53,75\%$
 *************
 
+
+@resetter
 
 @ADetails(1=BE; Vierfeldertafel, bedingte Wahrscheinlichkeit)
 
@@ -127,10 +137,13 @@ data-solution-button="5"
 data-hint-button="3"  -->
 $P(B|A)=P_{A}(B) = $ [[ 40    ]] $\%$  
 @Algebrite.check(40/100)
+[[?]] @Explain
 *************
 $P(B|A)=P_{A}(B) = \dfrac{ P(B \cap A) }{ P(A) } = \dfrac{0,08}{0,20} = 40\%$
 *************
 
+
+@resetter
 
 @ADetails(1=BE; Vierfeldertafel, bedingte Wahrscheinlichkeit)
 

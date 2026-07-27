@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -69,6 +73,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 [[  28/3  ]]  kg @canvas
 @Algebrite.check(28/3)
+[[?]] @Explain
 ************
 $$
 \text{Äpfel:}\quad \dfrac{5}{12}\cdot 48 = 20\,\text{kg} \\
@@ -77,5 +82,7 @@ $$
 \text{Sonstiges: } 28-\dfrac{56}{3} = \dfrac{28}{3}\,\text{kg}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Sachaufgabe)

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -62,6 +66,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$a)\;\;$__ $ \dfrac{5}{8} =$ [[  0,625  ]] @canvas
+[[?]] @Explain
 
 </div> 
 <div class="flex-child">
@@ -73,6 +78,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$b)\;\;$__ $ \dfrac{7}{5} =$ [[  1,4  ]] @canvas
+[[?]] @Explain
 
 </div> 
 <div class="flex-child">
@@ -84,6 +90,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$c)\;\;$__ $ \dfrac{12}{25} =$ [[  0,48  ]] @canvas
+[[?]] @Explain
 
 </div> 
 <div class="flex-child">
@@ -95,6 +102,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$d)\;\;$__ $ \dfrac{9}{10} =$ [[  0,9  ]] @canvas
+[[?]] @Explain
 
 </div> 
 <div class="flex-child">
@@ -106,6 +114,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$e)\;\;$__ $ \dfrac{17}{4} =$ [[  4,25  ]] @canvas
+[[?]] @Explain
 
 </div> 
 <div class="flex-child">
@@ -117,6 +126,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$f)\;\;$__ $ \dfrac{13}{10000} =$ [[  0,0013  ]] @canvas
+[[?]] @Explain
 
 </div> 
 </section>

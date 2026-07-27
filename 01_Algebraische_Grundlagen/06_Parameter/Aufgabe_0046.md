@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -74,10 +78,13 @@ data-sortable="false" -->
 | $\dfrac{3}{4}$ | [[ 2/3 ]] @canvas | $-\dfrac{1}{2}$ | [[ -7/12 ]] @canvas | $\dfrac{2}{3}$ | [[ -1 ]] @canvas |
 | $-1{,}5$ | $\dfrac{1}{4}$ | [[ 3/4 ]] @canvas | [[ -7/6 ]] @canvas | [[ -15/32 ]] @canvas | $-\dfrac{29}{16}$ |
 @Algebrite.check([ r; 0.5; 3/4; -5/2; -3/16; 43/24; 6/5; -4/5; 12/5; 2/3; -7/12; -1; 3/4; -7/6; -15/32 ])
+[[?]] @Explain
 
 
 
 
 
+
+@resetter
 
 @ADetails(1=BE; Einsetzungsverfahren, Tabelle, Dezimalzahlen, negative Zahlen, Bruchrechnung, Äquivalenzumformung)

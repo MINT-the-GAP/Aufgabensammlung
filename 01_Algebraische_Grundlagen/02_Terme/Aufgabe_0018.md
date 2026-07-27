@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -67,6 +71,9 @@ $\;\;\;\; \dfrac{5}{6} \cdot \dfrac{9}{10} - \dfrac{1}{4}$ \
 $=$ [[ 3/4 ]] @canvas $ - \dfrac{1}{4}$ \
 $=$ [[ 1/2 ]] @canvas
 @Algebrite.check([ 3/4; 1/2 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;Bruchrechnung, Terme)
 
@@ -86,6 +93,9 @@ $=$ [[ 9/8 ]] @canvas $ : \dfrac{9}{5} - \dfrac{1}{6}$ \
 $=$ [[ 5/8 ]] @canvas $ - \dfrac{1}{6}$ \
 $=$ [[ 11/24 ]] @canvas
 @Algebrite.check([ 9/8; 5/8; 11/24 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;Bruchrechnung, Terme)
 
@@ -105,6 +115,9 @@ $=$ [[ 5/6 ]] @canvas $ +$ [[ 1/2 ]] @canvas $ \cdot \dfrac{3}{2}$ \
 $= \dfrac{5}{6} +$ [[ 3/4 ]] @canvas \
 $=$ [[ 19/12 ]] @canvas
 @Algebrite.check([ 5/6; 1/2; 3/4; 19/12 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;Bruchrechnung, Terme)
 
@@ -124,6 +137,9 @@ $=$ [[ 1/2 ]] @canvas $ :$ [[ 9/10 ]] @canvas $ + \dfrac{3}{4} \cdot \dfrac{2}{9
 $=$ [[ 5/9 ]] @canvas $ +$ [[ 1/6 ]] @canvas \
 $=$ [[ 13/18 ]] @canvas
 @Algebrite.check([ 1/2; 9/10; 5/9; 1/6; 13/18 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;Bruchrechnung, Terme)
 

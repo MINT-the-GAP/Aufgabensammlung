@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -84,10 +88,13 @@ data-solution-button="5"
 data-hint-button="3"  -->
 $\bar{x}=$ [[  3,9  ]]
 @Algebrite.check(39/10)
+[[?]] @Explain
 *******************
 $\bar{x} = \dfrac{2+3+1+4+5+4+5+6+3+6}{10}$
 *******************
 
+
+@resetter
 
 @ADetails(1=BE; Arithmetisches Mittel)
 
@@ -130,10 +137,13 @@ data-solution-button="5"
 data-hint-button="3"  -->
 $\bar{x}=$ [[  7,125  ]]
 @Algebrite.check(57/8)
+[[?]] @Explain
 *******************
 $\bar{x} = \dfrac{7+8+4+9+10+10+9+3+7}{8}$
 *******************
 
+
+@resetter
 
 @ADetails(1=BE; Arithmetisches Mittel)
 
@@ -176,10 +186,13 @@ data-solution-button="5"
 data-hint-button="3"  -->
 $\bar{x}=$ [[  6,6  ]]
 @Algebrite.check(66/10)
+[[?]] @Explain
 *******************
 $\bar{x} = \dfrac{9+4+6+8+5+4+6+10+9+5}{10}$
 *******************
 
+
+@resetter
 
 @ADetails(1=BE; Arithmetisches Mittel)
 

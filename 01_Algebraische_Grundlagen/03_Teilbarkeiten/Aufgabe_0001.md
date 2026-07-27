@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -65,6 +69,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $a)\;\; \text{ggT}(24;40) =$ [[  8  ]] @canvas
+[[?]] @Explain
 
 </div>
 
@@ -76,6 +81,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $b)\;\; \text{ggT}(39;75) =$ [[  13 ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;größter gemeinsamer Teiler)
 
@@ -89,6 +97,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $c)\;\; \text{ggT}(35;85) =$ [[  5  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;größter gemeinsamer Teiler)
 
@@ -102,6 +113,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $d)\;\; \text{ggT}(63;14) =$ [[  7  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;größter gemeinsamer Teiler)
 
@@ -115,6 +129,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $e)\;\; \text{ggT}(80;110) =$ [[ 10  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;größter gemeinsamer Teiler)
 
@@ -128,6 +145,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $f)\;\; \text{ggT}(17;19) =$ [[  1  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;größter gemeinsamer Teiler)
 

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -74,6 +78,7 @@ II.& \qquad x + 3y = 13
 $$  
 $x$ = [[  4  ]] @canvas  und  $y$ = [[  3  ]] @canvas
 @Algebrite.check([ 4;3 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -90,6 +95,8 @@ x \cap I. &\qquad 2\cdot 4 + y = 11 \\
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 
@@ -112,6 +119,7 @@ II.& \qquad 2x + y  = 12
 $$  
 $x$ = [[  5  ]] @canvas  und  $y$ = [[  2  ]] @canvas
 @Algebrite.check([ 5;2 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -129,6 +137,8 @@ x\cap II. &  \qquad 2\cdot 5 + y = 12 \\
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 </div>
@@ -150,6 +160,7 @@ II.& \qquad 2x - y &= 3
 $$  
 $x$ = [[  4  ]] @canvas  und  $y$ = [[  5  ]] @canvas
 @Algebrite.check([ 4;5 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -166,6 +177,8 @@ x\cap I.\ &\qquad 4 + y = 9 \quad \left| -4 \right. \\
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 </div>
@@ -187,6 +200,7 @@ II.& \qquad x + 2y &= 13
 $$  
 $x$ = [[  3  ]] @canvas  und  $y$ = [[  5  ]] @canvas
 @Algebrite.check([ 3;5 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -206,6 +220,8 @@ x\cap I.\ &\qquad 4\cdot 3 - y = 7 \\
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 </div>
@@ -227,6 +243,7 @@ II.& \qquad 2x + 3y &= 20
 $$  
 $x$ = [[  4  ]] @canvas  und  $y$ = [[  4  ]] @canvas
 @Algebrite.check([ 4;4 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -244,6 +261,8 @@ x\cap I.  &\qquad 3\cdot 4 + y = 16 \\
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 </div>
@@ -265,6 +284,7 @@ II.& \qquad x + 2y &= 13
 $$  
 $x$ = [[  5  ]] @canvas  und  $y$ = [[  4  ]] @canvas
 @Algebrite.check([ 5;4 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -284,5 +304,7 @@ $$
 ************
 </div>
 </section>
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)

@@ -1,0 +1,201 @@
+<!--
+version:  0.0.1
+language: de
+narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-timer/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-board-mode/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-marker/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-annotation/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-canvas-ocr/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-orthography/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
+import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
+import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/Proposal/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
+
+tags: Strecke, Messen, sehr leicht, sehr niedrig, Angeben
+
+comment: Miss die dargestellten Strecken mit dem Geodreieck und gib die Streckenlänge an.
+
+author: Martin Lommatzsch
+
+-->
+
+# Streckenlängen messen
+
+<img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+**Miss** die markierten Strecken mit dem Geodreieck und **gib** die Länge in LE an.
+
+<section class="dynFlex">
+
+<div class="flex-child">
+
+__$a)\;\;$__
+
+@CoordinateSystem(`xmin=-1;xmax=11;ymin=-4;ymax=4;width=600;id=GL0011a;0;0;1`)
+@SetSquare(`GL0011a`)
+
+@Point(`GL0011a;A;1;0;#ff00ff;1;fix`)
+@Point(`GL0011a;B;4;0;#ff00ff;1;fix`)
+@Strecke(`GL0011a;[A;B];#ff00ff;s=0`)
+
+<!-- data-solution-timer="5s"
+data-solution-timer-start="oncheck"
+data-solution-timer-badge="off"
+data-solution-button="5"
+data-hint-button="3"  -->
+$|\overline{AB}| =$ [[ 3 ]] LE
+@Algebrite.check2(3)
+[[?]] @Explain
+
+@resetter
+
+@ADetails(1=BE; Strecke, Messen)
+
+</div>
+
+<div class="flex-child">
+
+__$b)\;\;$__
+
+@CoordinateSystem(`xmin=-1;xmax=11;ymin=-4;ymax=4;width=600;id=GL0011b;0;0;1`)
+@SetSquare(`GL0011b`)
+
+@Point(`GL0011b;C;2;0;#ff00ff;1;fix`)
+@Point(`GL0011b;D;8;0;#ff00ff;1;fix`)
+@Strecke(`GL0011b;[C;D];#ff00ff;t=0`)
+
+<!-- data-solution-timer="5s"
+data-solution-timer-start="oncheck"
+data-solution-timer-badge="off"
+data-solution-button="5"
+data-hint-button="3"  -->
+$|\overline{CD}| =$ [[ 6 ]] LE
+@Algebrite.check2(6)
+[[?]] @Explain
+
+@resetter
+
+@ADetails(1=BE; Strecke, Messen)
+
+</div>
+
+<div class="flex-child">
+
+__$c)\;\;$__
+
+@CoordinateSystem(`xmin=-1;xmax=11;ymin=-4;ymax=4;width=600;id=GL0011c;0;0;1`)
+@SetSquare(`GL0011c`)
+
+@Point(`GL0011c;E;1;0;#ff00ff;1;fix`)
+@Point(`GL0011c;F;10;0;#ff00ff;1;fix`)
+@Strecke(`GL0011c;[E;F];#ff00ff;u=0`)
+
+<!-- data-solution-timer="5s"
+data-solution-timer-start="oncheck"
+data-solution-timer-badge="off"
+data-solution-button="5"
+data-hint-button="3"  -->
+$|\overline{EF}| =$ [[ 9 ]] LE
+@Algebrite.check2(9)
+[[?]] @Explain
+
+@resetter
+
+@ADetails(1=BE; Strecke, Messen)
+
+</div>
+
+<div class="flex-child">
+
+__$d)\;\;$__
+
+@CoordinateSystem(`xmin=-1;xmax=11;ymin=-4;ymax=4;width=600;id=GL0011d;0;0;1`)
+@SetSquare(`GL0011d`)
+
+@Point(`GL0011d;G;2;0;#ff00ff;1;fix`)
+@Point(`GL0011d;H;4;0;#ff00ff;1;fix`)
+@Strecke(`GL0011d;[G;H];#ff00ff;v=0`)
+
+<!-- data-solution-timer="5s"
+data-solution-timer-start="oncheck"
+data-solution-timer-badge="off"
+data-solution-button="5"
+data-hint-button="3"  -->
+$|\overline{GH}| =$ [[ 2 ]] LE
+@Algebrite.check2(2)
+[[?]] @Explain
+
+@resetter
+
+@ADetails(1=BE; Strecke, Messen)
+
+</div>
+
+<div class="flex-child">
+
+__$e)\;\;$__
+
+@CoordinateSystem(`xmin=-1;xmax=11;ymin=-4;ymax=4;width=600;id=GL0011e;0;0;1`)
+@SetSquare(`GL0011e`)
+
+@Point(`GL0011e;I;3;0;#ff00ff;1;fix`)
+@Point(`GL0011e;J;8;0;#ff00ff;1;fix`)
+@Strecke(`GL0011e;[I;J];#ff00ff;w=0`)
+
+<!-- data-solution-timer="5s"
+data-solution-timer-start="oncheck"
+data-solution-timer-badge="off"
+data-solution-button="5"
+data-hint-button="3"  -->
+$|\overline{IJ}| =$ [[ 5 ]] LE
+@Algebrite.check2(5)
+[[?]] @Explain
+
+@resetter
+
+@ADetails(1=BE; Strecke, Messen)
+
+</div>
+
+<div class="flex-child">
+
+__$f)\;\;$__
+
+@CoordinateSystem(`xmin=-1;xmax=11;ymin=-4;ymax=4;width=600;id=GL0011f;0;0;1`)
+@SetSquare(`GL0011f`)
+
+@Point(`GL0011f;K;2;0;#ff00ff;1;fix`)
+@Point(`GL0011f;L;10;0;#ff00ff;1;fix`)
+@Strecke(`GL0011f;[K;L];#ff00ff;x=0`)
+
+<!-- data-solution-timer="5s"
+data-solution-timer-start="oncheck"
+data-solution-timer-badge="off"
+data-solution-button="5"
+data-hint-button="3"  -->
+$|\overline{KL}| =$ [[ 8 ]] LE
+@Algebrite.check2(8)
+[[?]] @Explain
+
+@resetter
+
+@ADetails(1=BE; Strecke, Messen)
+
+</div>
+
+</section>

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -65,6 +69,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$a)\;\;$__ $750000\,\text{m}^2 = $ [[      75      ]] @canvas $\,\text{ha}$ \
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Einheiten, Fläche)
 
@@ -78,6 +85,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$b)\;\;$__ $7\,\text{km}^2 = $ [[ 70000000000 ]] @canvas $\,\text{cm}^2$ \
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Einheiten, Fläche)
 
@@ -91,6 +101,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$c)\;\;$__ $8000\,\text{ha} = $ [[      800000  ]] @canvas $\,\text{a}$ \
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Einheiten, Fläche)
 
@@ -104,6 +117,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$d)\;\;$__ $20000\,\text{km}^2 = $ [[      2000000 ]] @canvas $\,\text{ha}$ \
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Einheiten, Fläche)
 
@@ -117,6 +133,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$e)\;\;$__ $2000000000000\,\text{mm}^2 = $ [[       2      ]] @canvas $\,\text{km}^2$ \
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Einheiten, Fläche)
 
@@ -130,6 +149,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$f)\;\;$__ $180\,\text{km}^2 = $ [[ 18000000000 ]] @canvas $\,\text{dm}^2$ \
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Einheiten, Fläche)
 

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
@@ -53,6 +57,9 @@ data-hint-button="3"  -->
 $180 : 6 =$ [[ 30 ]] @canvas \
 $1800 : 60 =$ [[ 30 ]] @canvas \
 $18000 : 600 =$ [[ 30 ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;Division, Grundrechenarten, Zahlenverständnis)
 </div>
@@ -71,6 +78,9 @@ $560 : 7 =$ [[ 80 ]] @canvas \
 $5600 : 70 =$ [[ 80 ]] @canvas \
 $56000 : 700 =$ [[ 80 ]] @canvas \
 $560000 : 7000 =$ [[ 80 ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;Division, Grundrechenarten, Zahlenverständnis)
 </div>
@@ -89,6 +99,9 @@ $330 : 3 =$ [[ 110 ]] @canvas \
 $3300 : 30 =$ [[ 110 ]] @canvas \
 $33000 : 300 =$ [[ 110 ]] @canvas \
 $330000 : 3000 =$ [[ 110 ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;Division, Grundrechenarten, Zahlenverständnis)
 </div>
@@ -108,6 +121,9 @@ $45000 : 90 =$ [[ 500 ]] @canvas \
 $450000 : 900 =$ [[ 500 ]] @canvas \
 $4500000 : 9000 =$ [[ 500 ]] @canvas \
 $45000000 : 90000 =$ [[ 500 ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;Division, Grundrechenarten, Zahlenverständnis)
 </div>
@@ -127,6 +143,9 @@ $32000 : 80 =$ [[ 400 ]] @canvas \
 $320000 : 800 =$ [[ 400 ]] @canvas \
 $3200000 : 8000 =$ [[ 400 ]] @canvas \
 $32000000 : 80000 =$ [[ 400 ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;Division, Grundrechenarten, Zahlenverständnis)
 </div>
@@ -146,6 +165,9 @@ $42000 : 60 =$ [[ 700 ]] @canvas \
 $420000 : 600 =$ [[ 700 ]] @canvas \
 $4200000 : 6000 =$ [[ 700 ]] @canvas \
 $42000000 : 60000 =$ [[ 700 ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;Division, Grundrechenarten, Zahlenverständnis)
 </div>

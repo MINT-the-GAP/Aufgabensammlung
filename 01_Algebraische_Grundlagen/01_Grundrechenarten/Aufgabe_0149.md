@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
@@ -49,6 +53,7 @@ data-solution-timer-badge="off"
 data-solution-button="5"
 data-hint-button="3"  -->
 $37 + 24\approx$[[ 60 ]] @canvas
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -58,6 +63,8 @@ $$
 \end{align*}
 $$
 ****************
+
+@resetter
 
 @ADetails(1=BE;Addition, Grundrechenarten, Überschlagen)
 </div>
@@ -71,6 +78,7 @@ data-solution-timer-badge="off"
 data-solution-button="5"
 data-hint-button="3"  -->
 $1860 - 740\approx$[[ 1200 ]] @canvas
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -80,6 +88,8 @@ $$
 \end{align*}
 $$
 ****************
+
+@resetter
 
 @ADetails(1=BE;Subtraktion, Grundrechenarten, Überschlagen)
 </div>
@@ -93,6 +103,7 @@ data-solution-timer-badge="off"
 data-solution-button="5"
 data-hint-button="3"  -->
 $23 \cdot 18\approx$[[ 400 ]] @canvas
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -102,6 +113,8 @@ $$
 \end{align*}
 $$
 ****************
+
+@resetter
 
 @ADetails(1=BE;Multiplikation, Grundrechenarten, Überschlagen)
 </div>
@@ -115,6 +128,7 @@ data-solution-timer-badge="off"
 data-solution-button="5"
 data-hint-button="3"  -->
 $420 : 19\approx$[[ 20 ]] @canvas
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -124,6 +138,8 @@ $$
 \end{align*}
 $$
 ****************
+
+@resetter
 
 @ADetails(1=BE;Division, Grundrechenarten, Überschlagen)
 </div>
@@ -137,6 +153,7 @@ data-solution-timer-badge="off"
 data-solution-button="5"
 data-hint-button="3"  -->
 $2450 + 1320\approx$[[ 3000 ]] @canvas
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -146,6 +163,8 @@ $$
 \end{align*}
 $$
 ****************
+
+@resetter
 
 @ADetails(1=BE;Addition, Grundrechenarten, Überschlagen)
 </div>
@@ -159,6 +178,7 @@ data-solution-timer-badge="off"
 data-solution-button="5"
 data-hint-button="3"  -->
 $8610 - 2410\approx$[[ 7000 ]] @canvas
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -168,6 +188,8 @@ $$
 \end{align*}
 $$
 ****************
+
+@resetter
 
 @ADetails(1=BE;Subtraktion, Grundrechenarten, Überschlagen)
 </div>
@@ -181,6 +203,7 @@ data-solution-timer-badge="off"
 data-solution-button="5"
 data-hint-button="3"  -->
 $184 \cdot 63\approx$[[ 12000 ]] @canvas
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -190,6 +213,8 @@ $$
 \end{align*}
 $$
 ****************
+
+@resetter
 
 @ADetails(1=BE;Multiplikation, Grundrechenarten, Überschlagen)
 </div>
@@ -203,6 +228,7 @@ data-solution-timer-badge="off"
 data-solution-button="5"
 data-hint-button="3"  -->
 $39800 : 205\approx$[[ 200 ]] @canvas
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -212,6 +238,8 @@ $$
 \end{align*}
 $$
 ****************
+
+@resetter
 
 @ADetails(1=BE;Division, Grundrechenarten, Überschlagen)
 </div>
@@ -225,6 +253,7 @@ data-solution-timer-badge="off"
 data-solution-button="5"
 data-hint-button="3"  -->
 $46800 + 73100\approx$[[ 120000 ]] @canvas
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -234,6 +263,8 @@ $$
 \end{align*}
 $$
 ****************
+
+@resetter
 
 @ADetails(1=BE;Addition, Grundrechenarten, Überschlagen)
 </div>

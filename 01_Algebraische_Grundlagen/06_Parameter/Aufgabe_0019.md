@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -74,11 +78,14 @@ data-sortable="false" -->
 | $1{,}5$ | $\dfrac{2}{3}$ | $0{,}75$ | [[ 2 ]] @canvas | [[ 10/9 ]] @canvas | [[ 8/3 ]] @canvas |
 | $\dfrac{5}{6}$ | $0{,}3$ | $0{,}5$ | [[ 59/60 ]] @canvas | [[ 16/15 ]] @canvas | [[ 59/30 ]] @canvas |
 @Algebrite.check([ 7/5; 7/4; 7/2; 7/8; 1; 7/4; 2; 10/9; 8/3; 59/60; 16/15; 59/30 ])
+[[?]] @Explain
 
 
 
 
 
 
+
+@resetter
 
 @ADetails(1=BE; Einsetzungsverfahren, Tabelle, Bruchrechnung, Dezimalzahlen)

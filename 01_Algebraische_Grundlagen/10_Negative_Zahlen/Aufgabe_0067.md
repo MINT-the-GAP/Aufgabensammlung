@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -62,6 +66,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$a)\;\;$__ $ \text{sgn}\left(-94 \right) \cdot 92 =$ [[  -92  ]] @canvas 
 @Algebrite.check([ -92 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Signum)
 
@@ -75,6 +82,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$b)\;\;$__ $ -74:\text{sgn}\left( 74\right) =$ [[  -74  ]] @canvas 
 @Algebrite.check([ -74 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Signum)
 
@@ -88,6 +98,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$c)\;\;$__ $ -14-\text{sgn}\left( -58\right) =$ [[  -15  ]] @canvas 
 @Algebrite.check([ -15 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Signum)
 
@@ -101,6 +114,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$d)\;\;$__ $ 19:\text{sgn}\left( -65 \right) =$ [[  -19  ]] @canvas 
 @Algebrite.check([ -19 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Signum)
 

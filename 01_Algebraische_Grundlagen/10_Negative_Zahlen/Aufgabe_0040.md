@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -67,6 +71,9 @@ data-hint-button="3" -->
 __$a)\;\;$__ $-4,4$ und $7 \quad$ \
 [[ 1,3    ]] @canvas 
 @Algebrite.check([ 1.3 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
 
@@ -81,6 +88,9 @@ data-hint-button="3" -->
 __$b)\;\;$__ $0,25$ und $-1,25 \quad$ \
 [[ -0,5   ]] @canvas 
 @Algebrite.check([ -0.5 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
 
@@ -95,6 +105,9 @@ data-hint-button="3" -->
 __$c)\;\;$__ $0,65$ und $-0,85 \quad$ \
 [[ -0,1   ]] @canvas 
 @Algebrite.check([ -0.1 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
 
@@ -109,6 +122,9 @@ data-hint-button="3" -->
 __$d)\;\;$__ $-7$ und $-7,75 \quad$ \
 [[ -7,375 ]] @canvas 
 @Algebrite.check([ -7.375 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Zahlenverständnis)
 

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -68,6 +72,9 @@ $ -4 \cdot 3 \cdot (-1) \cdot (-1)  \cdot (-1)  =$ [[  12  ]]  \
 $ -4 \cdot 3 \cdot (-1) \cdot (-1)  \cdot (-1)  \cdot (-1)  =$ [[  -12  ]]  \
 $ -4 \cdot 3 \cdot (-1) \cdot (-1)  \cdot (-1)  \cdot (-1)  \cdot (-1)  =$ [[  12  ]]   
 @Algebrite.check([ -12;12;-12;12;-12;12 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Multiplikation, Zahlenverständnis)
 
@@ -87,6 +94,9 @@ $ -(-(-(-5))) \cdot (-(-(-(-12)))) =$ [[  60  ]]  \
 $ -(-(-(-(-5)))) \cdot (-(-(-(-(-12))))) =$ [[  60  ]]  \
 $ -(-(-(-(-(-5))))) \cdot (-(-(-(-(-(-12)))))) =$ [[  60  ]]   
 @Algebrite.check([ 60;60;60;60;60;60 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Multiplikation, Zahlenverständnis)
 
@@ -106,6 +116,9 @@ $ -6 \cdot (-(-(-(-7)))) =$ [[  -42  ]]  \
 $ -6 \cdot (-(-(-(-(-7))))) =$ [[  42  ]]  \
 $ -6 \cdot (-(-(-(-(-(-7)))))) =$ [[  -42  ]]   
 @Algebrite.check([ 42;-42;42;-42;42;-42 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Multiplikation, Zahlenverständnis)
 
@@ -125,6 +138,9 @@ $  -(-(-(-4))) \cdot (-7) =$ [[  -28  ]]  \
 $  -(-(-(-(-4)))) \cdot (-7) =$ [[  28  ]]  \
 $  -(-(-(-(-(-4))))) \cdot (-7) =$ [[  -28  ]]  
 @Algebrite.check([ 28;-28;28,-28;28;-28 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Multiplikation, Zahlenverständnis)
 

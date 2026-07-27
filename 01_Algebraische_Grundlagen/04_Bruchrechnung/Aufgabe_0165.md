@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -73,8 +77,11 @@ __$a)\;\;$__ $\dfrac{5}{6}$
  [->[$\left. \boxed{ =  \dfrac{36}{56} \cdot \dfrac{8}{3} } \right\|\boxed{ \dfrac{5}{8} + \dfrac{1}{2} }  $]]
  [->[$\left. \boxed{ =  \dfrac{3}{4} \cdot \dfrac{3}{2} } \right\|\boxed{ \dfrac{7}{10} - \dfrac{1}{2} }  $]]
 $= \dfrac{1}{5}$
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung)
 
@@ -91,7 +98,10 @@ __$b)\;\;$__ $\dfrac{1}{5}$
  [->[$\left. \boxed{ =  \dfrac{11}{6} - \dfrac{2}{3} } \right\|\boxed{ \dfrac{7}{8} \cdot \dfrac{6}{21} }  $]]
  [->[$\left. \boxed{ =  \dfrac{7}{12} - \dfrac{1}{4} } \right\|\boxed{ \dfrac{6}{5} - \dfrac{3}{4} }  $]]  
 $= \dfrac{9}{20}$
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung)
 
@@ -107,7 +117,10 @@ __$c)\;\;$__ $\dfrac{5}{6}$
  [->[$\left. \boxed{ =  \dfrac{36}{56} \cdot \dfrac{8}{3} } \right\|\boxed{ \dfrac{5}{8} + \dfrac{1}{2} }  $]]
  [->[$\left. \boxed{ =  \dfrac{3}{4} \cdot \dfrac{3}{2} } \right\|\boxed{ \dfrac{7}{10} - \dfrac{1}{2} }  $]]
 $= \dfrac{1}{5}$
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung)
 
@@ -123,7 +136,10 @@ __$d)\;\;$__ $\dfrac{7}{12}$
  [->[$\left. \boxed{ = \dfrac{7}{5} \cdot \dfrac{1}{3}} \right\| \boxed{ \dfrac{11}{12} - \dfrac{1}{4}} $]]
  [->[$\left. \boxed{ = \dfrac{4}{9} : \dfrac{2}{3}} \right\| \boxed{ \dfrac{5}{6} - \dfrac{1}{3}} $]]
 $= \dfrac{1}{2}$
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung)
 
@@ -140,9 +156,12 @@ __$e)\;\;$__ $\dfrac{3}{4}$
  [->[$\left. \boxed{ = \dfrac{5}{6} - \dfrac{1}{6}} \right\| \boxed{ \dfrac{7}{8} - \dfrac{1}{4}} $]]
  [->[$\left. \boxed{ = \dfrac{5}{4} : \dfrac{2}{1}} \right\| \boxed{ \dfrac{1}{3} + \dfrac{5}{12}} $]]
 $= \dfrac{3}{4}$
+[[?]] @Explain
 
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung)
 
@@ -158,6 +177,9 @@ __$f)\;\;$__ $\dfrac{4}{7}$
  [->[$\left. \boxed{ = \dfrac{1}{2} - \dfrac{1}{5}} \right\| \boxed{ \dfrac{7}{12} + \dfrac{1}{6}} $]]
  [->[$\left. \boxed{ = \dfrac{3}{2} : \dfrac{2}{1}} \right\| \boxed{ \dfrac{15}{28} - \dfrac{5}{28}} $]]
 $= \dfrac{5}{14}$
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung)

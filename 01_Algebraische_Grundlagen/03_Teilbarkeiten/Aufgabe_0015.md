@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -66,6 +70,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $a)\;\; \text{kgV}(18;16) =$ [[ 144 ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches)
 
@@ -80,6 +87,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $b)\;\; \text{kgV}(15;25) =$ [[ 75  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches)
 
@@ -94,6 +104,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $c)\;\; \text{kgV}(14;42) =$ [[ 42  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches)
 
@@ -108,6 +121,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $d)\;\; \text{kgV}(28;16) =$ [[ 112 ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches)
 
@@ -122,6 +138,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $e)\;\; \text{kgV}(27;18) =$ [[ 54  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches)
 
@@ -136,6 +155,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $f)\;\; \text{kgV}(40;100) =$ [[ 200 ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;kleinstes gemeinsames Vielfaches)
 

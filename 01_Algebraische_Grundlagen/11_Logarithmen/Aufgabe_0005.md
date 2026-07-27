@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -64,7 +68,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $\log_{3}\left( 0,\bar{1} \right) = $ [[  -2  ]] @canvas
 @Algebrite.check([ -2 ])
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Logarithmen, Negative Zahlen, Bruchrechnung)
 
@@ -78,7 +85,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $\log_{5}\left( 0,008 \right) = $ [[  -3  ]] @canvas
 @Algebrite.check([ -3 ])
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Logarithmen, Negative Zahlen, Bruchrechnung)
 
@@ -92,7 +102,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $\log_{7}\left( \dfrac{1}{343} \right) = $ [[  -3  ]] @canvas
 @Algebrite.check([ -3 ])
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Logarithmen, Negative Zahlen, Bruchrechnung)
 
@@ -106,7 +119,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $\log_{4}\left( 4096 \right) = $ [[  6  ]] @canvas
 @Algebrite.check([ 6 ])
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Logarithmen)
 

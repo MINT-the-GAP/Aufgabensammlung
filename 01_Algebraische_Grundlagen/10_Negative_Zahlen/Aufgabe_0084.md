@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -69,6 +73,9 @@ $ -17-(-18) =$ [[  1  ]]  \
 $ -17-(-27) =$ [[  10  ]]  \
 $ -17-(-36) =$ [[ 19   ]]   
 @Algebrite.check([ -35;-26;-17;-8;1;10;19 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Subtraktion, Zahlenverständnis)
 
@@ -89,6 +96,9 @@ $ 22-(-12) =$ [[  34  ]]  \
 $ 22-(-24) =$ [[  46  ]]  \
 $ 22-(-36) =$ [[  58  ]]   
 @Algebrite.check([ -14;-2;10;22;34;46;58 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Subtraktion, Zahlenverständnis)
 
@@ -109,6 +119,9 @@ $ -1-(-5) =$ [[  4  ]]  \
 $ -1-(-10) =$ [[  9  ]]  \
 $ -1-(-15) =$ [[  14  ]]   
 @Algebrite.check([ -16;-11;-6;-1;4;9;14 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Subtraktion, Zahlenverständnis)
 
@@ -129,6 +142,9 @@ $ 17-(-8) =$ [[  25  ]]  \
 $ 17-(-16) =$ [[ 33   ]]  \
 $ 17-(-24) =$ [[  41  ]]   
 @Algebrite.check([ -7;1;9;17;25;33;41 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Subtraktion, Zahlenverständnis)
 

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -74,6 +78,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $  \dfrac{5}{6} - \dfrac{1}{3} = $ [[  1/2  ]] @canvas
 @Algebrite.check(1/2)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -86,6 +91,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Subtraktion)
 
@@ -102,6 +109,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $  \dfrac{7}{10} - \dfrac{1}{5} = $ [[  1/2  ]] @canvas
 @Algebrite.check(1/2)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -114,6 +122,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Subtraktion)
 
@@ -130,6 +140,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $  \dfrac{11}{12} - \dfrac{1}{4} = $ [[  2/3  ]] @canvas
 @Algebrite.check(2/3)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -142,6 +153,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Subtraktion)
 
@@ -158,6 +171,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $  \dfrac{13}{15} - \dfrac{1}{5} = $ [[  2/3  ]] @canvas
 @Algebrite.check(2/3)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -170,6 +184,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Subtraktion)
 
@@ -186,6 +202,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ $  \dfrac{17}{18} - \dfrac{2}{9} = $ [[  13/18  ]] @canvas
 @Algebrite.check(13/18)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -197,6 +214,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Subtraktion)
 
@@ -213,6 +232,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$f)\;\;$__ $  \dfrac{19}{20} - \dfrac{1}{10} = $ [[  17/20  ]] @canvas
 @Algebrite.check(17/20)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -224,6 +244,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Subtraktion)
 

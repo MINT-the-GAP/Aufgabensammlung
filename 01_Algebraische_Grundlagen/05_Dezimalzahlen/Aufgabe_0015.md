@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -67,7 +71,10 @@ data-hint-button="3"
 data-type="none" -->
 __$a)\;\;$__ $6,5$ und $8 \quad$ \
 [[ 7,25  ]] @canvas 
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Mittelwert)
 </div>
@@ -81,7 +88,10 @@ data-hint-button="3"
 data-type="none" -->
 __$b)\;\;$__ $0,05$ und $0,75 \quad$ \
 [[ 0,4   ]] @canvas 
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Mittelwert)
 </div> 
@@ -95,7 +105,10 @@ data-hint-button="3"
 data-type="none" -->
 __$c)\;\;$__ $1,9$ und $3,5 \quad$ \
 [[ 2,6   ]] @canvas 
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Mittelwert)
 </div> 
@@ -109,7 +122,10 @@ data-hint-button="3"
 data-type="none" -->
 __$d)\;\;$__ $0,02$ und $2 \quad$ \
 [[ 0,99  ]] @canvas 
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Mittelwert)
 </div> 

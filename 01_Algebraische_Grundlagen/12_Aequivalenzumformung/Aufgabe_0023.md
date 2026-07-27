@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -70,6 +74,7 @@ data-hint-button="3" -->
 __$a)\;\;$__ $  2x + 3x - 7 = x + 5 $ \
 $x$ = [[  3  ]] @canvas
 @Algebrite.check(3)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -81,6 +86,8 @@ x &= 3
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
@@ -95,6 +102,7 @@ data-hint-button="3" -->
 __$b)\;\;$__ $  4(2x-3) = 5x + 1 $ \
 $x$ = [[  13/3  ]] @canvas
 @Algebrite.check(13/3)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -106,6 +114,8 @@ x &= \dfrac{13}{3}
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
@@ -120,6 +130,7 @@ data-hint-button="3" -->
 __$c)\;\;$__ $  \dfrac{3}{2}x - 5 = \dfrac{1}{2}x + 4 $ \
 $x$ = [[  9  ]] @canvas
 @Algebrite.check(9)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -129,6 +140,8 @@ x &= 9
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
@@ -143,6 +156,7 @@ data-hint-button="3" -->
 __$d)\;\;$__ $  5x + 2 - x = \dfrac{1}{3}x - 7 $ \
 $x$ = [[  -27/11  ]] @canvas
 @Algebrite.check(-27/11)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -154,6 +168,8 @@ x &= -\dfrac{27}{11}
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
@@ -168,6 +184,7 @@ data-hint-button="3" -->
 __$e)\;\;$__ $  2(3x+4) - x = 7x - 10 $ \
 $x$ = [[  6  ]] @canvas
 @Algebrite.check(6)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -180,6 +197,8 @@ x &= 6
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Distributivgesetz, Bruchrechnung)
 </div>
@@ -194,6 +213,7 @@ data-hint-button="3" -->
 __$f)\;\;$__ $  \dfrac{5}{4}x + 7 = \dfrac{3}{2}x - 1 $ \
 $x$ = [[  16  ]] @canvas
 @Algebrite.check(16)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -205,6 +225,8 @@ x &= 16
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>

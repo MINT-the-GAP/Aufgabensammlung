@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -74,6 +78,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $  \dfrac{1}{3} + \dfrac{1}{4} + \dfrac{1}{6} = $ [[  3/4  ]] @canvas
 @Algebrite.check(3/4)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -87,6 +92,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Addition)
 
@@ -103,6 +110,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $  \dfrac{5}{6} - \dfrac{1}{3} + \dfrac{1}{12} = $ [[  7/12  ]] @canvas
 @Algebrite.check(7/12)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -115,6 +123,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Addition, Subtraktion)
 
@@ -131,6 +141,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $  \dfrac{3}{8} + \dfrac{1}{16} - \dfrac{1}{4} = $ [[  3/16  ]] @canvas
 @Algebrite.check(1/16)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -143,6 +154,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Addition, Subtraktion)
 
@@ -159,6 +172,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $  \dfrac{2}{5} + \dfrac{1}{10} + \dfrac{3}{20} = $ [[  13/20  ]] @canvas
 @Algebrite.check(13/20)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -171,6 +185,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Addition)
 
@@ -187,6 +203,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ $  \dfrac{7}{9} - \dfrac{2}{3} + \dfrac{1}{6} = $ [[  5/18  ]] @canvas
 @Algebrite.check(5/18)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -198,6 +215,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Addition, Subtraktion)
 
@@ -214,6 +233,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$f)\;\;$__ $  \dfrac{4}{7} + \dfrac{2}{21} - \dfrac{1}{3} = $ [[  1/3  ]] @canvas
 @Algebrite.check(1/3)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -226,6 +246,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Addition, Subtraktion)
 

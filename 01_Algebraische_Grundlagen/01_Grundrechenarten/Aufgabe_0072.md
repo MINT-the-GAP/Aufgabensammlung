@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 version:  0.0.1
 language: de
 narrator: Deutsch Female
@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
@@ -50,6 +54,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $648 : 3=$[[ 216 ]]
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -64,6 +69,8 @@ $$
 $$
 ****************
 
+@resetter
+
 @ADetails(1=BE;Division, Grundrechenarten)
 </div>
 
@@ -77,6 +84,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $924 : 4=$[[ 231 ]]
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -91,6 +99,8 @@ $$
 $$
 ****************
 
+@resetter
+
 @ADetails(1=BE;Division, Grundrechenarten)
 </div>
 
@@ -104,6 +114,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $735 : 5=$[[ 147 ]]
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -118,6 +129,8 @@ $$
 $$
 ****************
 
+@resetter
+
 @ADetails(1=BE;Division, Grundrechenarten)
 </div>
 
@@ -131,6 +144,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $816 : 6=$[[ 136 ]]
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -145,6 +159,8 @@ $$
 $$
 ****************
 
+@resetter
+
 @ADetails(1=BE;Division, Grundrechenarten)
 </div>
 
@@ -158,6 +174,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $952 : 7=$[[ 136 ]]
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -172,6 +189,8 @@ $$
 $$
 ****************
 
+@resetter
+
 @ADetails(1=BE;Division, Grundrechenarten)
 </div>
 
@@ -185,6 +204,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $864 : 8=$[[ 108 ]]
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -199,6 +219,8 @@ $$
 $$
 ****************
 
+@resetter
+
 @ADetails(1=BE;Division, Grundrechenarten)
 </div>
 
@@ -212,6 +234,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $945 : 9=$[[ 105 ]]
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -226,6 +249,8 @@ $$
 $$
 ****************
 
+@resetter
+
 @ADetails(1=BE;Division, Grundrechenarten)
 </div>
 
@@ -239,6 +264,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $726 : 3=$[[ 242 ]]
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -252,6 +278,8 @@ $$
 \end{align*}
 $$
 ****************
+
+@resetter
 
 @ADetails(1=BE;Division, Grundrechenarten)
 </div>

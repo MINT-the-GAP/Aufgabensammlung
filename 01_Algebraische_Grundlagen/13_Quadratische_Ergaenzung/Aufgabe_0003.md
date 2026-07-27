@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -62,6 +66,9 @@ data-solution-button="5"
 data-hint-button="3"  
 data-randomize="true"  -->
 __$a)\;\;$__  $  (x-5)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|$x^2-2x+1$|$x^2+3x+9$|$x^2-8x+16$|$x^2+10x+25$|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|($x^2-10x+25$)|$x^2-5x+10$]]
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Quadratische Ergänzung)
 
@@ -75,6 +82,9 @@ data-solution-button="5"
 data-hint-button="3"  
 data-randomize="true"  -->
 __$b)\;\;$__  $  (x-1)^2  =$ [->[$x^2-4x+4$|$x^2+8x+16$|($x^2-2x+1$)|$x^2+3x+9$|$x^2-8x+16$|$x^2+10x+25$|$x^2+2x+1$|$x^2-3x+9$|$x^2+5x+10$|$x^2+4x+4$|$x^2-10x+25$|$x^2-5x+10$]]
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Quadratische Ergänzung)
 

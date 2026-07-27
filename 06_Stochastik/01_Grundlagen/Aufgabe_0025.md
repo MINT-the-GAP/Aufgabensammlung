@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -68,10 +72,13 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 [[  120    ]] 
+[[?]] @Explain
 **********
 $6! = 720$
 **********
 
+
+@resetter
 
 @ADetails(1=BE; Permutationen)
 
@@ -89,10 +96,13 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 [[  105    ]] 
+[[?]] @Explain
 **********
 $\dfrac{15!}{13!2!} = 105$
 **********
 
+
+@resetter
 
 @ADetails(1=BE; Permutationen)
 
@@ -111,10 +121,13 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 [[   660   ]] 
+[[?]] @Explain
 **********
 $\dfrac{12!}{9!2!1!} = 660$
 **********
 
+
+@resetter
 
 @ADetails(1=BE; Permutationen)
 

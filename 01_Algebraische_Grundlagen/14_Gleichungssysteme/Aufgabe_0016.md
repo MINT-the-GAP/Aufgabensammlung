@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -81,6 +85,7 @@ III.& \qquad -4x + 12y - 30z = 13
 $$
 $x$ = [[  3/4  ]] @canvas,  $y$ = [[  1/3  ]] @canvas  und  $z$ = [[  -2/5  ]] @canvas
 @Algebrite.check([ 3/4; 1/3; -2/5 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -96,6 +101,8 @@ z,x \cap I:&\qquad 8\cdot\dfrac{3}{4} + 6y + 5\!\left(-\dfrac{2}{5}\right) = 6 \
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 </div>
@@ -120,6 +127,7 @@ III.& \qquad -6x + 16y - 12z = 7
 $$
 $x$ = [[  -1/2  ]] @canvas,  $y$ = [[  3/4  ]] @canvas  und  $z$ = [[  2/3  ]] @canvas
 @Algebrite.check([ -1/2; 3/4; 2/3 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -135,6 +143,8 @@ x,z \cap I:&\qquad 6\!\left(-\dfrac{1}{2}\right) + 8y + 9\!\left(\dfrac{2}{3}\ri
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 </div>
@@ -159,6 +169,7 @@ III.& \qquad -9x + 12y - 15z = -19
 $$
 $x$ = [[  5/6  ]] @canvas,  $y$ = [[  -1/3  ]] @canvas  und  $z$ = [[  1/2  ]] @canvas
 @Algebrite.check([ 5/6; -1/3; 1/2 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -174,6 +185,8 @@ x,z \cap I:&\qquad 9\!\left(\dfrac{5}{6}\right) + 6y + 3\!\left(\dfrac{1}{2}\rig
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 </div>
@@ -197,6 +210,7 @@ III.& \qquad -5x + 20y - 12z = 15
 $$
 $x$ = [[  2/5  ]] @canvas,  $y$ = [[  7/10  ]] @canvas  und  $z$ = [[  -1/4  ]] @canvas
 @Algebrite.check([ 2/5; 7/10; -1/4 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -212,6 +226,8 @@ x,z \cap I:&\qquad 5\!\left(\dfrac{2}{5}\right) + 10y + 4\!\left(-\dfrac{1}{4}\r
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 </div>

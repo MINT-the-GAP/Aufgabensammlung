@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -67,7 +71,10 @@ data-sortable="false" -->
 | $126443$  | [[ 126440  ]]  |  [[ 126400  ]]  | [[ 126000  ]]   | [[ 130000  ]]  |   [[ 100000  ]]   |
 |  $24367$  | [[ 24370   ]]  |  [[ 24400   ]]  | [[ 24000   ]]   | [[ 20000   ]]  |   [[ 0       ]]   |
 | $2306637$ | [[ 2306640 ]]  |  [[ 2306600 ]]  | [[ 2307000 ]]   | [[ 2310000 ]]  |   [[ 2300000 ]]   |
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Runden)

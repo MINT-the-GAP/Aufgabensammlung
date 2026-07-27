@@ -15,8 +15,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -91,6 +95,8 @@ script: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 <div data-snapshot-eval="1" style="display:none;"></div>
 @end
 
+@resetter
+
 @ADetails
 <span class="lia-assignment-details" data-adetails="@0" style="display:none !important;"></span>
 @end
@@ -157,6 +163,8 @@ Aufgaben ohne Bewertung: \
 
 $a)\;\;$ $7000+123=$ [[  7123  ]] @canvas
 
+@resetter
+
 @ADetails(1=BE;Normal)
 
 --- 
@@ -170,6 +178,8 @@ Wähle blau aus.
 - [[ ]] Gelb
 - [[ ]] Rot
 - [[ ]] Grün
+
+@resetter
 
 @ADetails(1=BE;Multiple)
 
@@ -185,6 +195,8 @@ Wähle blau aus.
 - [( )] Rot
 - [( )] Grün
 
+@resetter
+
 @ADetails(1=BE;Radio)
 
 --- 
@@ -193,6 +205,8 @@ Wähle blau aus.
 
 Wähle rot aus.
 [[(rot)|blau|grün|gelb]]
+
+@resetter
 
 @ADetails(1=BE;Auswahl)
 
@@ -205,6 +219,8 @@ Wähle rot aus.
 Wähle gelb aus.
 [->[rot|blau|grün|(gelb)]]
 
+@resetter
+
 @ADetails(1=BE;Kachel)
 
 
@@ -215,6 +231,8 @@ Wähle gelb aus.
 
 
 $b)\;\;$ $6000+123=$ [[  6123  ]] m @canvas
+
+@resetter
 
 @ADetails(1=BE;Tag1,Tag2)
 
@@ -232,6 +250,8 @@ $b)\;\;$ $6000+123=$ [[  6123  ]] m @canvas
 - [    ( )           (X)             ( )     ]  Skalar
 - [    [X]           [ ]             [ ]     ]  Vektor
 
+
+@resetter
 
 @ADetails(3=BE;Tabelle)
 
@@ -252,6 +272,8 @@ Anna
 
 [[    Anna    ]]
 
+@resetter
+
 @ADetails(4=BE; Diktat)
 
 
@@ -264,6 +286,8 @@ __Aufgabe 2:__ Lass dir die Wörter vorlesen, die in die Lücken kommen und schr
 <!-- data-show-partial-solution="true" -->
 Anna ging in einen @diktat(Zoo). Dort konnte sie auf einem @diktat(Lama) reiten.
 
+@resetter
+
 @ADetails(2=BE; Lückendiktat)
 
 
@@ -275,6 +299,8 @@ __Aufgabe 3:__ Setze das Komma an die richtige Stelle. (Auflösung ist blockiert
 
 
 @orthography(`<!-- data-solution-timer="10s" data-solution-timer-start="onclick" -->`,`Der Bruder den ich mag.`,`Der Bruder, den ich mag.`)
+
+@resetter
 
 @ADetails(1=BE; Komma)
 
@@ -289,11 +315,15 @@ __$a)\;\;$__ $\dfrac{1}{4}$
 
 @rectQuiz(1/4)
 
+@resetter
+
 @ADetails(1=BE;Rechteckbruch)
 
 __$b)\;\;$__ $\dfrac{2}{5}$
 
 @circleQuiz(2/5)
+
+@resetter
 
 @ADetails(1=BE;Kreisbruch)
 
@@ -310,6 +340,8 @@ Markiere die korrekt.
 @TextmarkerQuiz
 </div>
 
+@resetter
+
 @ADetails(1=BE;Marker)
 
 
@@ -322,13 +354,19 @@ Kommentare werden auch eingefroren
 
 [[___]]
 
+@resetter
+
 @ADetails(0=BE)
 
 [[___ ___ ___ ___]]
 
+@resetter
+
 @ADetails(0=BE)
 
 Einfach noch ein KaTeX-Testfeld: [[     passt     ]]  @canvas
+
+@resetter
 
 @ADetails(0=BE)
 
@@ -343,6 +381,8 @@ $x = 5 \;\;\wedge\;\; y= 3$ \
 $x$ = [[  5  ]] @canvas und $y$ = [[  3  ]] @canvas
 @Algebrite.check([ 5 ; 3 ])
 
+
+@resetter
 
 @ADetails(4=BE;Gleichungssysteme)
 
@@ -373,6 +413,8 @@ __$a)\;\;$__ **Ziehe** den Punkt $A$ **auf** die Koordinaten $(1|4)$.
 
 @ErzeugePunkt(`A1;A;1;4`,`<!--  -->`)
 
+@resetter
+
 @ADetails(BE=1;Koordinatensystem)
 </div>
 
@@ -381,6 +423,8 @@ __$a)\;\;$__ **Ziehe** den Punkt $A$ **auf** die Koordinaten $(1|4)$.
 __$b)\;\;$__ **Ziehe** den Punkt $B$ **auf** die Koordinaten $(5|0)$.
 
 @ErzeugePunkt(`A1;B;5;0`,`<!--  -->`)
+
+@resetter
 
 @ADetails(BE=1;Koordinatensystem)
 
@@ -391,6 +435,8 @@ __$b)\;\;$__ **Ziehe** den Punkt $B$ **auf** die Koordinaten $(5|0)$.
 __$c)\;\;$__ **Ziehe** den Punkt $C$ **auf** die Koordinaten $(7|6)$.
 
 @ErzeugePunkt(`A1;C;7;6`,`<!--  -->`)
+
+@resetter
 
 @ADetails(BE=1;Koordinatensystem)
 

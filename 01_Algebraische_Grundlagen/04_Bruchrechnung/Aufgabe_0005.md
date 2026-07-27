@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -61,8 +65,15 @@ __$a)\;\;$__
 
 <center>
 
-<!-- style="width:250px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha41.png)
+<!-- style="max-width:400px" -->
+@Koordinatensystem(`xmin=-0.3;xmax=32.3;ymin=-0.3;ymax=1.3;width=400;id=BR0005a;achsen=0;grid=0;border=0`)
+
+@Flaeche(`BR0005a;[[-0.2;-0.2];[32.2;-0.2];[32.2;1.2];[-0.2;1.2]];#ffffff;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0005a;[[8;0];[12;0];[12;1];[8;1]];#8f8f8f;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0005a;[[16;0];[20;0];[20;1];[16;1]];#8f8f8f;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0005a;[[24;0];[28;0];[28;1];[24;1]];#8f8f8f;1;inhalt=0;umfang=0`)
+@Strecke(`BR0005a;[[4;0];[4;1];[8;1];[8;0];[12;0];[12;1];[16;1];[16;0];[20;0];[20;1];[24;1];[24;0];[28;0];[28;1]];#000000;\,=0;design=-;1px`)
+@Strecke(`BR0005a;[[0;0];[32;0];[32;1];[0;1];[0;0]];#000000;\,=0;design=-;4px`)
 
 </center>
 
@@ -75,6 +86,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 Zähler: [[  3  ]] @canvas \
 Nenner: [[  8  ]] @canvas 
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
@@ -85,8 +99,13 @@ __$b)\;\;$__
 
 <center>
 
-<!-- style="width:250px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha42.png)
+<!-- style="max-width:400px" -->
+@Koordinatensystem(`xmin=-0.3;xmax=32.3;ymin=-0.3;ymax=1.3;width=400;id=BR0005b;achsen=0;grid=0;border=0`)
+
+@Flaeche(`BR0005b;[[-0.2;-0.2];[32.2;-0.2];[32.2;1.2];[-0.2;1.2]];#ffffff;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0005b;[[16;0];[32;0];[32;1];[16;1]];#8f8f8f;1;inhalt=0;umfang=0`)
+@Strecke(`BR0005b;[[16;0];[16;1]];#000000;\,=0;design=-;1px`)
+@Strecke(`BR0005b;[[0;0];[32;0];[32;1];[0;1];[0;0]];#000000;\,=0;design=-;4px`)
 
 </center>
 
@@ -99,6 +118,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 Zähler: [[  1  ]] @canvas \
 Nenner: [[  2  ]] @canvas 
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
@@ -109,8 +131,13 @@ __$c)\;\;$__
 
 <center>
 
-<!-- style="width:250px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha43.png)
+<!-- style="max-width:400px" -->
+@Koordinatensystem(`xmin=-0.3;xmax=32.3;ymin=-0.3;ymax=1.3;width=400;id=BR0005c;achsen=0;grid=0;border=0`)
+
+@Flaeche(`BR0005c;[[-0.2;-0.2];[32.2;-0.2];[32.2;1.2];[-0.2;1.2]];#ffffff;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0005c;[[16;0];[24;0];[24;1];[16;1]];#8f8f8f;1;inhalt=0;umfang=0`)
+@Strecke(`BR0005c;[[8;0];[8;1];[16;1];[16;0];[24;0];[24;1]];#000000;\,=0;design=-;1px`)
+@Strecke(`BR0005c;[[0;0];[32;0];[32;1];[0;1];[0;0]];#000000;\,=0;design=-;4px`)
 
 </center>
 
@@ -123,6 +150,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 Zähler: [[  1  ]] @canvas \
 Nenner: [[  4  ]] @canvas 
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
@@ -133,8 +163,14 @@ __$d)\;\;$__
 
 <center>
 
-<!-- style="width:250px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha44.png)
+<!-- style="max-width:400px" -->
+@Koordinatensystem(`xmin=-0.3;xmax=32.3;ymin=-0.3;ymax=1.3;width=400;id=BR0005d;achsen=0;grid=0;border=0`)
+
+@Flaeche(`BR0005d;[[-0.2;-0.2];[32.2;-0.2];[32.2;1.2];[-0.2;1.2]];#ffffff;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0005d;[[0;0];[12;0];[12;1];[0;1]];#8f8f8f;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0005d;[[16;0];[24;0];[24;1];[16;1]];#8f8f8f;1;inhalt=0;umfang=0`)
+@Strecke(`BR0005d;[[4;0];[4;1];[8;1];[8;0];[12;0];[12;1];[16;1];[16;0];[20;0];[20;1];[24;1];[24;0];[28;0];[28;1]];#000000;\,=0;design=-;1px`)
+@Strecke(`BR0005d;[[0;0];[32;0];[32;1];[0;1];[0;0]];#000000;\,=0;design=-;4px`)
 
 </center>
 
@@ -147,6 +183,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 Zähler: [[  5  ]] @canvas \
 Nenner: [[  8  ]] @canvas 
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
@@ -157,8 +196,15 @@ __$e)\;\;$__
 
 <center>
 
-<!-- style="width:250px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha45.png)
+<!-- style="max-width:400px" -->
+@Koordinatensystem(`xmin=-0.3;xmax=32.3;ymin=-0.3;ymax=1.3;width=400;id=BR0005e;achsen=0;grid=0;border=0`)
+
+@Flaeche(`BR0005e;[[-0.2;-0.2];[32.2;-0.2];[32.2;1.2];[-0.2;1.2]];#ffffff;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0005e;[[4;0];[8;0];[8;1];[4;1]];#8f8f8f;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0005e;[[14;0];[20;0];[20;1];[14;1]];#8f8f8f;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0005e;[[24;0];[28;0];[28;1];[24;1]];#8f8f8f;1;inhalt=0;umfang=0`)
+@Strecke(`BR0005e;[[2;0];[2;1];[4;1];[4;0];[6;0];[6;1];[8;1];[8;0];[10;0];[10;1];[12;1];[12;0];[14;0];[14;1];[16;1];[16;0];[18;0];[18;1];[20;1];[20;0];[22;0];[22;1];[24;1];[24;0];[26;0];[26;1];[28;1];[28;0];[30;0];[30;1]];#000000;\,=0;design=-;1px`)
+@Strecke(`BR0005e;[[0;0];[32;0];[32;1];[0;1];[0;0]];#000000;\,=0;design=-;4px`)
 
 </center>
 
@@ -171,6 +217,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 Zähler: [[  7  ]] @canvas \
 Nenner: [[ 16  ]] @canvas 
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 
@@ -182,8 +231,13 @@ __$f)\;\;$__
 
 <center>
 
-<!-- style="width:250px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/brucha46.png)
+<!-- style="max-width:400px" -->
+@Koordinatensystem(`xmin=-0.3;xmax=32.3;ymin=-0.3;ymax=1.3;width=400;id=BR0005f;achsen=0;grid=0;border=0`)
+
+@Flaeche(`BR0005f;[[-0.2;-0.2];[32.2;-0.2];[32.2;1.2];[-0.2;1.2]];#ffffff;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0005f;[[8;0];[12;0];[12;1];[8;1]];#8f8f8f;1;inhalt=0;umfang=0`)
+@Strecke(`BR0005f;[[4;0];[4;1];[8;1];[8;0];[12;0];[12;1];[16;1];[16;0];[20;0];[20;1];[24;1];[24;0];[28;0];[28;1]];#000000;\,=0;design=-;1px`)
+@Strecke(`BR0005f;[[0;0];[32;0];[32;1];[0;1];[0;0]];#000000;\,=0;design=-;4px`)
 
 </center>
 
@@ -196,6 +250,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 Zähler: [[  1  ]] @canvas \
 Nenner: [[  8  ]] @canvas 
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Zahlenverständnis, Bruch erkennen)
 

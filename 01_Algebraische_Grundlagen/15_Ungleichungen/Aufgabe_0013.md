@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -74,6 +78,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  -4/3  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(-4/3)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -86,6 +91,8 @@ x &\geq -\tfrac{4}{3}
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen)
 </div>
@@ -100,6 +107,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  11  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(11)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -110,6 +118,8 @@ x &< 12 \;\;\Rightarrow\;\; x \leq 11 \text{ für } \mathbb{Z}
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen)
 </div>
@@ -124,6 +134,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $   [[  4  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(4)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -135,6 +146,8 @@ x &> 3 \;\;\Rightarrow\;\; x \geq 4 \text{ für } \mathbb{N}
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen)
 </div>
@@ -149,6 +162,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  1  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(1)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -160,6 +174,8 @@ x &\geq 1
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen)
 </div>
@@ -174,6 +190,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \geq $   [[  3  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(3)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -185,6 +202,8 @@ x &\geq 3
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen)
 </div>
@@ -199,6 +218,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  3  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(3)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -210,6 +230,8 @@ x &> 2 \;\;\Rightarrow\;\; x \geq 3 \text{ für } \mathbb{Z}
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen)
 </div>

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -61,8 +65,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$a)\;\;$__ $ 8,25 - 2,4 \cdot 2,5 =$ [[  2,25  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Vorrangsregeln)
 
@@ -75,8 +82,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$b)\;\;$__ $ 0,8 \cdot 1,1 + 0,3 \cdot 0,5 =$ [[  1,03  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Vorrangsregeln)
 
@@ -89,8 +99,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$c)\;\;$__ $ (0,75-0,64) \cdot 0,5 =$ [[  0,055  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Vorrangsregeln, Distributivgesetz)
 
@@ -103,8 +116,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$d)\;\;$__ $ 16,9 : 13 - 0,5 =$ [[  0,8  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Vorrangsregeln)
 
@@ -117,8 +133,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$e)\;\;$__ $ 0,25 \cdot 3,6 + 0,75 =$ [[  1,65  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Vorrangsregeln)
 
@@ -131,8 +150,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$f)\;\;$__ $ 9,6:0,08 - 2,5 =$ [[  117,5  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Vorrangsregeln)
 

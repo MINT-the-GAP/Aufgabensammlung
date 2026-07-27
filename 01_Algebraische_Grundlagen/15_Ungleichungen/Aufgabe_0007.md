@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -75,6 +79,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  7  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(7)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -85,6 +90,8 @@ x &\leq 7
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen)
 </div>
@@ -99,6 +106,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \leq $   [[  5  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(5)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -109,6 +117,8 @@ x &< 6 \;\;\Rightarrow\;\; x \le 5 \text{ für } \mathbb{N}
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen)
 </div>
@@ -123,6 +133,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  24  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(24)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -133,6 +144,8 @@ x &\ge 24
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen)
 </div>
@@ -147,6 +160,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $   [[  6  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(6)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -157,6 +171,8 @@ x &> 5 \;\;\Rightarrow\;\; x \ge 6 \text{ für } \mathbb{N}
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen)
 </div>
@@ -171,6 +187,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \leq $   [[  33  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(33)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -181,6 +198,8 @@ x &\le 33
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung)
 </div>
@@ -195,6 +214,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  7  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(7)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -205,6 +225,8 @@ x &> 6 \;\;\Rightarrow\;\; x \ge 7 \text{ für } \mathbb{Z}
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen)
 </div>

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -73,6 +77,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 [[  3 * s + r + 2 * a  ]] @canvas
 @Algebrite.check(` 3 * s + r + 2 * a `)
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Term, Parameter)
 
@@ -99,6 +106,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 [[  2 * m + n + p + q  ]] @canvas
 @Algebrite.check(` 2 * m + n + p + q `)
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Term, Parameter)
 
@@ -127,6 +137,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 [[  4 * k + 2 * t + w  ]] @canvas
 @Algebrite.check(` 4 * k + 2 * t + w `)
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Term, Parameter)
 
@@ -152,6 +165,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 [[  2 * b + c + d + e  ]] @canvas
 @Algebrite.check(` 2 * b + c + d + e `)
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Term, Parameter)
 
@@ -180,6 +196,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 [[  3 * u + 2 * v + g + h  ]] @canvas
 @Algebrite.check(` 3 * u + 2 * v + g + h `)
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Term, Parameter)
 
@@ -207,6 +226,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 [[  2 * r + l + 2 * n + o  ]] @canvas
 @Algebrite.check(` 2 * r + l + 2 * n + o `)
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Term, Parameter)
 

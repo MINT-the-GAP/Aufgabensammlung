@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -79,10 +83,13 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $R=$ [[  5  ]]
+[[?]] @Explain
 *******************
 $R = x_{max} - x_{min} = 6 - 2 = 5$
 *******************
 
+
+@resetter
 
 @ADetails(1=BE; Spannweite)
 
@@ -123,10 +130,13 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $R=$ [[  0  ]]
+[[?]] @Explain
 *******************
 $R = x_{max} - x_{min} = 8 - 8 = 0$
 *******************
 
+
+@resetter
 
 @ADetails(1=BE; Spannweite)
 
@@ -168,9 +178,12 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $R=$ [[  9  ]]
+[[?]] @Explain
 *******************
 $R = x_{max} - x_{min} = 12 - 3 = 9$
 *******************
 
+
+@resetter
 
 @ADetails(1=BE; Spannweite)

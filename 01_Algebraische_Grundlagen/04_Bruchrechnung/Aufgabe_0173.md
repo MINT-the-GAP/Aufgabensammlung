@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -64,10 +68,13 @@ __$a)\;\;$__ $\dfrac{7}{10}$
 
 @rectQuiz(7/10, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
 data-hint-button="3" -->)
+[[?]] @Explain
 
 
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruch darstellen, Zahlenverständnis)
 
@@ -78,9 +85,12 @@ __$b)\;\;$__ $\dfrac{11}{15}$
 
 @rectQuiz(11/15, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
 data-hint-button="3" -->)
+[[?]] @Explain
 
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruch darstellen, Zahlenverständnis)
 
@@ -90,10 +100,13 @@ __$c)\;\;$__ $\dfrac{17}{24}$
 
 @rectQuiz(17/24, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
 data-hint-button="3" -->)
+[[?]] @Explain
 
 
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruch darstellen, Zahlenverständnis)
 
@@ -103,10 +116,13 @@ __$d)\;\;$__ $\dfrac{5}{9}$
 
 @rectQuiz(5/9, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
 data-hint-button="3" -->)
+[[?]] @Explain
 
 
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruch darstellen, Zahlenverständnis)
 
@@ -117,9 +133,12 @@ __$e)\;\;$__ $\dfrac{19}{28}$
 
 @rectQuiz(19/28, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
 data-hint-button="3" -->)
+[[?]] @Explain
 
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruch darstellen, Zahlenverständnis)
 
@@ -130,9 +149,12 @@ __$f)\;\;$__ $\dfrac{7}{45}$
 
 @rectQuiz(7/45, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
 data-hint-button="3" -->)
+[[?]] @Explain
 
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruch darstellen, Zahlenverständnis)
 

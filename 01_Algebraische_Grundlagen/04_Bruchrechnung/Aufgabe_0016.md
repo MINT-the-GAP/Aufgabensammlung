@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -75,6 +79,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $  7 + \dfrac{3}{10} = $ [[  73/10  ]] @canvas
 @Algebrite.check(73/10)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -86,6 +91,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Addition)
 
@@ -102,6 +109,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $  2 + \dfrac{9}{13} = $ [[  35/13  ]] @canvas
 @Algebrite.check(35/13)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -113,6 +121,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Addition)
 
@@ -129,6 +139,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $  5 + \dfrac{4}{9} = $ [[  49/9  ]] @canvas
 @Algebrite.check(49/9)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -140,6 +151,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Addition)
 
@@ -156,6 +169,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $  8 + \dfrac{7}{12} = $ [[  103/12  ]] @canvas
 @Algebrite.check(103/12)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -167,6 +181,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Addition)
 
@@ -183,6 +199,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ $  3 + \dfrac{5}{14} = $ [[  47/14  ]] @canvas
 @Algebrite.check(47/14)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -194,6 +211,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Addition)
 
@@ -210,6 +229,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$f)\;\;$__ $  4 + \dfrac{11}{15} = $ [[  71/15  ]] @canvas
 @Algebrite.check(71/15)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -221,6 +241,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Addition)
 

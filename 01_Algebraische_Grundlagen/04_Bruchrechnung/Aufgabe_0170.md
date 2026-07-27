@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -85,7 +89,10 @@ $4 : \dfrac{1}{8} =$ [[  32 ]] @canvas \
  \
 $4 : \dfrac{1}{16} =$ [[ 64  ]] @canvas \
 @Algebrite.check([ 1;2;4;8;16;32;64 ])
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Division, Zahlenverständnis)
 </div>
@@ -112,7 +119,10 @@ $24 : \dfrac{1}{4} =$ [[  96  ]] @canvas \
  \
 $24 : \dfrac{1}{8} =$ [[  192 ]] @canvas \
 @Algebrite.check([ 3;6;12;24;48;96;192 ])
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Division, Zahlenverständnis)
 </div>
@@ -139,7 +149,10 @@ $27 : 27 =$ [[  1   ]] @canvas \
  \
 $27 : 81 =$ [[ 1/3  ]] @canvas \
 @Algebrite.check([ 243;81;27;9;3;1;1/3 ])
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Division, Zahlenverständnis)
 </div>
@@ -166,7 +179,10 @@ $10 : \dfrac{1}{1000} =$  [[ 10000  ]] @canvas \
  \
 $10 : \dfrac{1}{10000} =$ [[ 100000 ]] @canvas \
 @Algebrite.check([ 1/10;1;10;100;1000;10000;100000 ])
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Division, Zahlenverständnis)
 </div>

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -67,6 +71,7 @@ data-hint-button="3"
 data-show-partial-solution -->
 $x$ = [[  11  ]] @canvas und $y$ = [[  10  ]] @canvas
 @Algebrite.check([ 11; 10 ])
+[[?]] @Explain
 ************
 Bezeichne mit $x$ die Anzahl der Hühner (je 2 Beine) und mit $y$ die Anzahl der Ziegen (je 4 Beine).
 $$
@@ -83,6 +88,8 @@ $$
 Es gibt 11 Hühner und 10 Ziegen.
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme, Sachaufgabe)
 

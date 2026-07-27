@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -64,7 +68,10 @@ data-hint-button="3"  -->
 $1 \quad 1 \quad 2 \quad 5 \quad 14 \quad  42 \quad  132 \quad 429 \quad $ [[ 1430 ]] @canvas $\quad$ [[ 4862 ]] @canvas $\quad$ [[ 16796 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die Catalan-Zahlen, die die Anzahl von nichtüberlappenden Verbindungen in einem $n$-Eck (Polygon) gemacht werden können.
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Folge)
 

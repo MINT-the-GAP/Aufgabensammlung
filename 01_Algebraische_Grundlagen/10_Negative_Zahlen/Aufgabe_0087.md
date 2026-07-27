@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -68,6 +72,9 @@ $ -(-(-144)) : (-(-36)) =$ [[  -4  ]]  \
 $ -(-(-144)) : (-(-(-36))) =$ [[  4  ]]  \
 $ -(-(-(-144))) : (-(-(-36))) =$ [[  -4  ]]   
 @Algebrite.check([ 4;-4;4;-4;4;-4 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Division, Zahlenverständnis)
 
@@ -87,6 +94,9 @@ $ -(-(-63)) : (-7) =$ [[  9  ]]  \
 $ -(-(-(-63))) : (-7) =$ [[  -9  ]]  \
 $ -(-(-(-(-63)))) : (-7) =$ [[  9  ]]   
 @Algebrite.check([ -9;9;-9;9;-9;9 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Division, Zahlenverständnis)
 
@@ -106,6 +116,9 @@ $ 35:(-(-(-(-7)))) =$ [[  5  ]]  \
 $ 35:(-(-(-(-(-7))))) =$ [[  -5  ]]  \
 $ 35:(-(-(-(-(-(-7)))))) =$ [[  5  ]]   
 @Algebrite.check([ -5;5;-5;5;-5;5 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Division, Zahlenverständnis)
 
@@ -125,6 +138,9 @@ $ -(-(-(-84))) : (-(-(-7))) =$ [[  -12  ]]  \
 $ -(-(-(-(-84)))) : (-(-(-(-7)))) =$ [[  -12  ]]  \
 $ -(-(-(-(-(-84))))) : (-(-(-(-(-7))))) =$ [[  -12  ]]   
 @Algebrite.check([ -12;-12;-12;-12;-12;-12 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Division, Zahlenverständnis)
 

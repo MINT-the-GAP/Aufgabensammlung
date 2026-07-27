@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -65,7 +69,10 @@ data-hint-button="3"  -->
 $1 \quad 8 \quad 27 \quad 64 \quad 125 \quad$ [[ 216 ]] @canvas $\quad$ [[ 343 ]] @canvas $\quad$ [[ 512 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen hoch $3$.
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Folge)
 
@@ -81,7 +88,10 @@ data-hint-button="3"  -->
 $3 \quad 5 \quad 8 \quad 11 \quad 16 \quad 19 \quad 24 \quad 27 \quad 32 \quad$ [[ 39 ]] @canvas $\quad$ [[ 42 ]] @canvas $\quad$ [[ 49 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die aufsteigenden natürlichen Zahlen addiert mit den aufsteigenden Primzahlen: $1+2$ dann $2+3$ dann $3+5$ und so weiter.
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Folge)
 
@@ -97,7 +107,10 @@ data-hint-button="3"  -->
 $1 \quad 5 \quad 14 \quad 30 \quad 55 \quad 91 \quad$ [[ 140 ]] @canvas $\quad$ [[ 204 ]] @canvas $\quad$ [[ 285 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die zuvorige Zahl wird mit der aufsteigenden Quadratzahl startend bei $2$ addiert.
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Folge)
 

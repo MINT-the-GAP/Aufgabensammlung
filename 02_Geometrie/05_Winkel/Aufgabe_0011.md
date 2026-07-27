@@ -15,10 +15,14 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-orthography/refs/head
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
 
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
@@ -88,6 +92,9 @@ data-solution-timer-badge="off"
 data-solution-button="5"
 data-hint-button="3"  -->
 $\eta =$ [[ 106 ]]$^\circ$
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Winkelbeziehung)
 
@@ -129,6 +136,9 @@ data-solution-timer-badge="off"
 data-solution-button="5"
 data-hint-button="3"  -->
 $\sigma =$ [[ 63 ]]$^\circ$
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Winkelbeziehung)
 
@@ -165,6 +175,9 @@ data-solution-timer-badge="off"
 data-solution-button="5"
 data-hint-button="3"  -->
 $\kappa =$ [[ 59 ]]$^\circ$
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Winkelbeziehung)
 
@@ -201,6 +214,9 @@ data-solution-timer-badge="off"
 data-solution-button="5"
 data-hint-button="3"  -->
 $\lambda =$ [[ 134 ]]$^\circ$
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Winkelbeziehung)
 
@@ -237,6 +253,9 @@ data-solution-timer-badge="off"
 data-solution-button="5"
 data-hint-button="3"  -->
 $\omega =$ [[ 68 ]]$^\circ$
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Winkelbeziehung)
 
@@ -273,6 +292,9 @@ data-solution-timer-badge="off"
 data-solution-button="5"
 data-hint-button="3"  -->
 $\chi =$ [[ 148 ]]$^\circ$
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Winkelbeziehung)
 

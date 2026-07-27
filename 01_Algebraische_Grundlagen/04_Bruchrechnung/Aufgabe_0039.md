@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -77,7 +81,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $ \dfrac{8}{17} \;\;\Rightarrow\;\; $ [[  17/8  ]] @canvas 
 @Algebrite.check(17/8)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Kehrwert)
 
@@ -94,7 +101,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $ \dfrac{5}{11} \;\;\Rightarrow\;\; $ [[  11/5  ]] @canvas 
 @Algebrite.check(11/5)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Kehrwert)
 
@@ -111,7 +121,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $ \dfrac{6}{7} \;\;\Rightarrow\;\; $ [[  7/6  ]] @canvas 
 @Algebrite.check(7/6)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Kehrwert)
 
@@ -128,7 +141,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $ \dfrac{12}{13} \;\;\Rightarrow\;\; $ [[  13/12  ]] @canvas 
 @Algebrite.check(13/12)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Kehrwert)
 
@@ -145,7 +161,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ $ \dfrac{21}{83} \;\;\Rightarrow\;\; $ [[  83/21  ]] @canvas 
 @Algebrite.check(83/21)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Kehrwert)
 
@@ -162,7 +181,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$f)\;\;$__ $ \dfrac{25}{19} \;\;\Rightarrow\;\; $ [[  19/25  ]] @canvas 
 @Algebrite.check(19/25)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Kehrwert)
 
@@ -179,7 +201,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$g)\;\;$__ $ \dfrac{8}{13} \;\;\Rightarrow\;\; $ [[  13/8  ]] @canvas 
 @Algebrite.check(13/8)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Kehrwert)
 
@@ -196,7 +221,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$h)\;\;$__ $ \dfrac{51}{23} \;\;\Rightarrow\;\; $ [[  23/51  ]] @canvas 
 @Algebrite.check(23/51)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Kehrwert)
 

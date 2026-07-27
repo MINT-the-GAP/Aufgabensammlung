@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -62,6 +66,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$a)\;\;$__ Ein Produkt aus $7$ und $8$ wird durch $4$ dividiert.\
 [[  14  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
@@ -74,6 +81,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$b)\;\;$__ Der Term besteht aus den Faktoren $2$, $6$, $3$ und  $5$.\
 [[  180 ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
@@ -86,6 +96,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$c)\;\;$__ Der Divisor $6$ und der Dividend $78$ bilden ein Produkt mit $8$.\
 [[  104 ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
@@ -98,6 +111,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$d)\;\;$__ Der Subtrahend $19$ und der Minuend $73$ bilden eine Differenz, die mit $17$ addiert wird.\
 [[  71  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>

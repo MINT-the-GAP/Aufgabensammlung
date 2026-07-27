@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -67,6 +71,9 @@ $\;\;\;\; -2 \cdot 7 + 8 \cdot (-3) - 34 $ \
 $=$ [[ -14   ]] @canvas $ + $ [[ (-24) ]] @canvas $ - 34 $ \
 $=$ [[ -38   ]] @canvas $ - 34 $ \
 $=$ [[ -72   ]] @canvas 
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Terme, negative Zahlen)
 
@@ -86,6 +93,9 @@ $= -34-75:5-$ [[ (-108) ]] @canvas  \
 $= -34-$[[ 15    ]] @canvas$+$ [[ 108    ]] @canvas  \
 $= -34+$[[ 93    ]] @canvas  \
 $=$ [[ 59    ]] @canvas 
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Terme, negative Zahlen)
 
@@ -106,6 +116,9 @@ $=$ [[ -17   ]] @canvas $ + $ [[ 12    ]] @canvas $ \cdot (-5) - 44 $ \
 $=$ [[ -17   ]] @canvas $ + $ [[ (-60) ]] @canvas $ - 44 $ \
 $=$ [[ -77   ]] @canvas $ - 44 $ \
 $=$ [[ -121  ]] @canvas 
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Terme, negative Zahlen)
 
@@ -125,6 +138,9 @@ $= - ( 3 - $  [[ (-35) ]] @canvas  $ + 23 ) + 54 $ \
 $= - ( $ [[   -9  ]] @canvas  $  ) + 54 $ \
 $=$   [[   9  ]] @canvas  $  + 54 $ \
 $=$ [[  63  ]] @canvas 
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Terme, negative Zahlen)
 

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -73,6 +77,9 @@ data-sortable="false" -->
 |   4   |   -9   |    3    | [[ 18 ]]             |   [[ -5 ]]    |  [[ -108 ]]            |
 |   -5  |   4    |   -2    | [[ 0  ]]             |   [[ 1  ]]    |  [[ 40   ]]            |
 |   -7  |   -5   |    9    | [[ 86 ]]             |   [[ 2  ]]    |  [[ 315  ]]            |
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Einsetzungsverfahren, Tabelle, Negative Zahlen)

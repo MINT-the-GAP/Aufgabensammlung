@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -70,6 +74,9 @@ $\;\;\;\; -\dfrac{7}{12} : \dfrac{14}{9} - \dfrac{1}{8}$ \
 $=$ [[ -3/8 ]] @canvas $ - \dfrac{1}{8}$ \
 $=$ [[ -1/2 ]] @canvas
 @Algebrite.check([ -3/8; -1/2 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;Bruchrechnung, negative Zahlen, Terme)
 
@@ -89,6 +96,9 @@ $=$ [[ -2/9 ]] @canvas $ \cdot \left(-\dfrac{9}{4}\right) + \dfrac{1}{6}$ \
 $=$ [[ 1/2 ]] @canvas $ + \dfrac{1}{6}$ \
 $=$ [[ 2/3 ]] @canvas
 @Algebrite.check([ -2/9; 1/2; 2/3 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;Bruchrechnung, negative Zahlen, Terme)
 
@@ -109,6 +119,9 @@ $=$ [[ 19/12 ]] @canvas $ + \left(-\dfrac{3}{4}\right) : \dfrac{9}{10}$ \
 $= \dfrac{19}{12} +$ [[ -5/6 ]] @canvas \
 $=$ [[ 3/4 ]] @canvas
 @Algebrite.check([ -3/4; 19/12; -5/6; 3/4 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;Bruchrechnung, negative Zahlen, Terme)
 
@@ -129,6 +142,9 @@ $=$ [[ -1/4 ]] @canvas $ - \dfrac{5}{8} : \left(-\dfrac{15}{4}\right)$ \
 $= -\dfrac{1}{4} - \biggl($ [[ -1/6 ]] @canvas $\biggr)$ \
 $=$ [[ -1/12 ]] @canvas
 @Algebrite.check([ -1/2; 1/2; -1/4; -1/6; -1/12 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;Bruchrechnung, negative Zahlen, Terme)
 

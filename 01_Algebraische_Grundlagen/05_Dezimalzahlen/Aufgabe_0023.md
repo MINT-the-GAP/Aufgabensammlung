@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -61,8 +65,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$a)\;\;$__ $ 9,3-5,5 =$ [[  3,8  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Subtraktion)
 
@@ -75,8 +82,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$b)\;\;$__ $ 2,5-0,47 =$ [[  2,03  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Subtraktion)
 
@@ -89,8 +99,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$c)\;\;$__ $ 6,4-2,22 =$ [[  4,18  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Subtraktion)
 
@@ -103,8 +116,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$d)\;\;$__ $ 0,28-0,125 =$ [[  0,155  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Subtraktion)
 
@@ -117,8 +133,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$e)\;\;$__ $1,75-0,8 =$ [[  0,95  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Subtraktion)
 
@@ -131,8 +150,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
 __$f)\;\;$__ $ 11,6-8,9 =$ [[  2,7  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Subtraktion)
 

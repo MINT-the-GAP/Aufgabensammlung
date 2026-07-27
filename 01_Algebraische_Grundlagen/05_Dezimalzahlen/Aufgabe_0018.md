@@ -16,11 +16,15 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/Proposal/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
@@ -58,7 +62,21 @@ author: Martin Lommatzsch
 __$a)\;\;$__ 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi18_1.png)
+@Koordinatensystem(`xmin=-2;xmax=80;ymin=-8;ymax=4;width=900;id=D1801;achsen=0;grid=0;border=0`)
+
+@Vektor(`D1801;[[0;0];[76;0]];#000000;u=0`)
+
+@Strecke(`D1801;[[0;-0.8];[0;0.8]];#000000;;-;3px`)
+@Strecke(`D1801;[[12;-0.8];[12;0.8]];#000000;;-;3px`)
+@Strecke(`D1801;[[24;-0.8];[24;0.8]];#000000;;-;3px`)
+@Strecke(`D1801;[[36;-0.8];[36;0.8]];#000000;;-;3px`)
+@Strecke(`D1801;[[48;-0.8];[48;0.8]];#000000;;-;3px`)
+@Strecke(`D1801;[[60;-0.8];[60;0.8]];#000000;;-;3px`)
+@Bogen(`D1801;[72;-0.8];90;[72;0.8];270;;-;5px;#ff0000`)
+
+@KoordText(`D1801;[0;-5.1];$0$;#000000;1`)
+@KoordText(`D1801;[24;-5.1];$0{,}\overline{6}$;#000000;1`)
+@KoordText(`D1801;[79.3;-0.15];$x$;#000000;1`)
 
 </center>
 
@@ -71,6 +89,9 @@ data-solution-button="5"
 data-hint-button="3" 
 data-type="none" -->
 [[   2   ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Zahlenstrahl, Zahlenverständnis)
 
@@ -81,7 +102,21 @@ data-type="none" -->
 __$b)\;\;$__ 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi18_2.png)
+@Koordinatensystem(`xmin=-2;xmax=80;ymin=-8;ymax=4;width=900;id=D1802;achsen=0;grid=0;border=0`)
+
+@Vektor(`D1802;[[0;0];[76;0]];#000000;u=0`)
+
+@Strecke(`D1802;[[0;-0.8];[0;0.8]];#000000;;-;3px`)
+@Bogen(`D1802;[12;-0.8];90;[12;0.8];270;;-;5px;#ff0000`)
+@Strecke(`D1802;[[24;-0.8];[24;0.8]];#000000;;-;3px`)
+@Strecke(`D1802;[[36;-0.8];[36;0.8]];#000000;;-;3px`)
+@Strecke(`D1802;[[48;-0.8];[48;0.8]];#000000;;-;3px`)
+@Strecke(`D1802;[[60;-0.8];[60;0.8]];#000000;;-;3px`)
+@Strecke(`D1802;[[72;-0.8];[72;0.8]];#000000;;-;3px`)
+
+@KoordText(`D1802;[0;-5.1];$0$;#000000;1`)
+@KoordText(`D1802;[60;-5.1];$0{,}2$;#000000;1`)
+@KoordText(`D1802;[79.3;-0.15];$x$;#000000;1`)
 
 </center>
 
@@ -94,6 +129,9 @@ data-solution-button="5"
 data-hint-button="3" 
 data-type="none" -->
 [[  0,04  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Zahlenstrahl, Zahlenverständnis)
 
@@ -104,7 +142,21 @@ data-type="none" -->
 __$c)\;\;$__ 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi18_3.png)
+@Koordinatensystem(`xmin=-8;xmax=86;ymin=-8;ymax=4;width=900;id=D1803;achsen=0;grid=0;border=0`)
+
+@Vektor(`D1803;[[-5;0];[80;0]];#000000;u=0`)
+
+@Strecke(`D1803;[[0;-0.8];[0;0.8]];#000000;;-;3px`)
+@Strecke(`D1803;[[12;-0.8];[12;0.8]];#000000;;-;3px`)
+@Strecke(`D1803;[[24;-0.8];[24;0.8]];#000000;;-;3px`)
+@Strecke(`D1803;[[36;-0.8];[36;0.8]];#000000;;-;3px`)
+@Bogen(`D1803;[48;-0.8];90;[48;0.8];270;;-;5px;#ff0000`)
+@Strecke(`D1803;[[60;-0.8];[60;0.8]];#000000;;-;3px`)
+@Strecke(`D1803;[[72;-0.8];[72;0.8]];#000000;;-;3px`)
+
+@KoordText(`D1803;[0;-5.1];$1{,}4$;#000000;1`)
+@KoordText(`D1803;[72;-5.1];$1{,}88$;#000000;1`)
+@KoordText(`D1803;[84.8;-0.15];$x$;#000000;1`)
 
 </center>
 
@@ -117,6 +169,9 @@ data-solution-button="5"
 data-hint-button="3" 
 data-type="none" -->
 [[  1,72  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Zahlenstrahl, Zahlenverständnis)
 
@@ -127,7 +182,21 @@ data-type="none" -->
 __$d)\;\;$__ 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Dezi18_4.png)
+@Koordinatensystem(`xmin=-8;xmax=86;ymin=-8;ymax=4;width=900;id=D1804;achsen=0;grid=0;border=0`)
+
+@Vektor(`D1804;[[-5;0];[80;0]];#000000;u=0`)
+
+@Strecke(`D1804;[[0;-0.8];[0;0.8]];#000000;;-;3px`)
+@Strecke(`D1804;[[12;-0.8];[12;0.8]];#000000;;-;3px`)
+@Strecke(`D1804;[[24;-0.8];[24;0.8]];#000000;;-;3px`)
+@Strecke(`D1804;[[36;-0.8];[36;0.8]];#000000;;-;3px`)
+@Bogen(`D1804;[48;-0.8];90;[48;0.8];270;;-;5px;#ff0000`)
+@Strecke(`D1804;[[60;-0.8];[60;0.8]];#000000;;-;3px`)
+@Strecke(`D1804;[[72;-0.8];[72;0.8]];#000000;;-;3px`)
+
+@KoordText(`D1804;[0;-5.1];$1{,}12$;#000000;1`)
+@KoordText(`D1804;[60;-5.1];$1{,}14$;#000000;1`)
+@KoordText(`D1804;[84.8;-0.15];$x$;#000000;1`)
 
 </center>
 
@@ -140,6 +209,9 @@ data-solution-button="5"
 data-hint-button="3" 
 data-type="none" -->
 [[  1,136  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Zahlenstrahl, Zahlenverständnis)
 

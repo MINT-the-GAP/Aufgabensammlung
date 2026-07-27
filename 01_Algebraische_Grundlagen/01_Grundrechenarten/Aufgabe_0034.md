@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -62,6 +66,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $ \textcolor{red}{5} - 3 = 2$ \
 [[    Minuend         ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
@@ -74,6 +81,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $ \textcolor{red}{7 \cdot 3} = 21 $ \
 [[    Produkt         ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
@@ -86,6 +96,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $ 45:9=\textcolor{red}{5}$ \
 [[ Wert des Quotienten ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
@@ -98,6 +111,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $ \textcolor{red}{15}+12 = 27$ \
 [[      Summand       ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>

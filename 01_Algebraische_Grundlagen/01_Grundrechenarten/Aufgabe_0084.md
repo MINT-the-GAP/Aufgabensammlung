@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
@@ -53,6 +57,9 @@ data-hint-button="3"  -->
 $40 \cdot 6 =$ [[ 240 ]] @canvas \
 $4 \cdot 60 =$ [[ 240 ]] @canvas \
 $4 \cdot 6 \cdot 10 =$ [[ 240 ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;Multiplikation, Grundrechenarten, Zahlenverständnis)
 </div>
@@ -71,6 +78,9 @@ $70 \cdot 80 =$ [[ 5600 ]] @canvas \
 $7 \cdot 800 =$ [[ 5600 ]] @canvas \
 $700 \cdot 8 =$ [[ 5600 ]] @canvas \
 $7 \cdot 8 \cdot 100 =$ [[ 5600 ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;Multiplikation, Grundrechenarten, Zahlenverständnis)
 </div>
@@ -89,6 +99,9 @@ $110 \cdot 300 =$ [[ 33000 ]] @canvas \
 $11 \cdot 3000 =$ [[ 33000 ]] @canvas \
 $11000 \cdot 3 =$ [[ 33000 ]] @canvas \
 $11 \cdot 3 \cdot 1000 =$ [[ 33000 ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;Multiplikation, Grundrechenarten, Zahlenverständnis)
 </div>
@@ -108,6 +121,9 @@ $50000 \cdot 9 =$ [[ 450000 ]] @canvas \
 $5 \cdot 90000 =$ [[ 450000 ]] @canvas \
 $50 \cdot 9000 =$ [[ 450000 ]] @canvas \
 $5 \cdot 9 \cdot 10000 =$ [[ 450000 ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;Multiplikation, Grundrechenarten, Zahlenverständnis)
 </div>
@@ -127,6 +143,9 @@ $40000 \cdot 80 =$ [[ 3200000 ]] @canvas \
 $400 \cdot 8000 =$ [[ 3200000 ]] @canvas \
 $4 \cdot 800000 =$ [[ 3200000 ]] @canvas \
 $4 \cdot 8 \cdot 100000 =$ [[ 3200000 ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;Multiplikation, Grundrechenarten, Zahlenverständnis)
 </div>
@@ -146,6 +165,9 @@ $600 \cdot 70000 =$ [[ 42000000 ]] @canvas \
 $60 \cdot 700000 =$ [[ 42000000 ]] @canvas \
 $6 \cdot 7000000 =$ [[ 42000000 ]] @canvas \
 $6 \cdot 7 \cdot 1000000 =$ [[ 42000000 ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;Multiplikation, Grundrechenarten, Zahlenverständnis)
 </div>

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -74,6 +78,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \leq $   [[  1/2  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(1/2)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -85,6 +90,8 @@ x &\le \dfrac{1}{2}
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung)
 </div>
@@ -99,6 +106,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $   [[  5  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(5)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -110,6 +118,8 @@ x &> 4 \;\;\Rightarrow\;\; x \ge 5 \text{ für } \mathbb{N}
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung)
 </div>
@@ -124,6 +134,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  9/2  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(9/2)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -134,6 +145,8 @@ $$
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung)
 </div>
@@ -148,6 +161,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $   [[  1  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(1)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -159,6 +173,8 @@ x &< 2 \;\;\Rightarrow\;\; x \le 1 \text{ für } \mathbb{Z}
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung)
 </div>
@@ -173,6 +189,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x < $   [[  2/5  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(2/5)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -184,6 +201,8 @@ x &< \dfrac{2}{5}
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung)
 </div>
@@ -198,6 +217,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  0  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(0)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -209,6 +229,8 @@ x &\ge -\dfrac{3}{5} \;\;\Rightarrow\;\; x \ge 0 \text{ für } \mathbb{Z}
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung)
 </div>

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -72,6 +76,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $  3 - \dfrac{2}{9} = $ [[  25/9  ]] @canvas
 @Algebrite.check(25/9)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -83,6 +88,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Subtraktion)
 
@@ -99,6 +106,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $  \dfrac{11}{6} - 1 = $ [[  5/6  ]] @canvas
 @Algebrite.check(5/6)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -110,6 +118,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Subtraktion)
 
@@ -126,6 +136,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $  7 - \dfrac{5}{12} = $ [[  79/12  ]] @canvas
 @Algebrite.check(79/12)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -137,6 +148,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Subtraktion)
 
@@ -153,6 +166,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $  \dfrac{9}{5} - 1 = $ [[  4/5  ]] @canvas
 @Algebrite.check(4/5)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -164,6 +178,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Subtraktion)
 
@@ -180,6 +196,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ $  4 - \dfrac{7}{16} = $ [[  57/16  ]] @canvas
 @Algebrite.check(57/16)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -191,6 +208,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Subtraktion)
 
@@ -207,6 +226,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$f)\;\;$__ $  \dfrac{13}{8} - 1 = $ [[  5/8  ]] @canvas
 @Algebrite.check(5/8)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -218,6 +238,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Subtraktion)
 

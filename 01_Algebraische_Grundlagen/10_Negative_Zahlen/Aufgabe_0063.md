@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -62,6 +66,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$a)\;\;$__ $ \left| -4 \right| \cdot (-35) =$ [[  -140  ]] @canvas 
 @Algebrite.check([ -140 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Betrag)
 
@@ -75,6 +82,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$b)\;\;$__ $ \left| -45 - (-12) \right| =$ [[  33  ]] @canvas 
 @Algebrite.check([ 33 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Betrag)
 
@@ -88,6 +98,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$c)\;\;$__ $ 15-\left| -37 \right| =$ [[  -22  ]] @canvas 
 @Algebrite.check([ -22 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Betrag)
 
@@ -101,6 +114,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$d)\;\;$__ $ \left| -18 \right|+(-47) =$ [[  -29  ]] @canvas 
 @Algebrite.check([ -29 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Betrag)
 
@@ -114,6 +130,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$e)\;\;$__ $ \left| 14 - \left| -52 \right| \right| =$ [[  38  ]] @canvas 
 @Algebrite.check([ 38 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Betrag)
 
@@ -127,6 +146,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$f)\;\;$__ $ \left| -96 \right| : (-8) =$ [[  -12  ]] @canvas 
 @Algebrite.check([ -12 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Betrag)
 

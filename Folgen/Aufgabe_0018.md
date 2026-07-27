@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -65,6 +69,9 @@ data-hint-button="3"  -->
 $12 \quad 24 \quad 36 \quad 48 \quad 60 \quad 72 \quad 84 \quad$ [[ 96 ]] @canvas $\quad$ [[ 108 ]] @canvas $\quad$ [[ 120 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die $12$er-Reihe.
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Folge)
 
@@ -81,7 +88,10 @@ data-hint-button="3"  -->
 $1 \quad 12 \quad 123 \quad 1234 \quad 12345 \quad $ [[ 123456 ]] @canvas $\quad$ [[ 1234567 ]] @canvas $\quad$ [[ 12345678 ]] @canvas \
 
 [[?]] Musterbeschreibung: Es wird immer die nächst höhere natürliche Zahl als Ziffer angehangen.
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Folge)
 
@@ -98,6 +108,9 @@ data-hint-button="3"  -->
 $11 \quad 101 \quad 1001 \quad 10001 \quad $ [[ 100001 ]] @canvas $\quad$ [[ 1000001 ]] @canvas $\quad$ [[ 10000001 ]] @canvas \
 
 [[?]] Musterbeschreibung: Es wird immer eine $0$ in die Mitte der Zahl eingeschoben.
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Folge)
 

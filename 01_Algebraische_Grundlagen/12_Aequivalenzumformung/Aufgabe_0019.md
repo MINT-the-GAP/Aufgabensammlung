@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -68,6 +72,7 @@ data-show-partial-solution -->
 __$a)\;\;$__ $  4(2x-3) = 2x + 10 $ \
 $x$ = [[  11/3  ]] @canvas
 @Algebrite.check(11/3)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -80,6 +85,8 @@ x &= \dfrac{11}{3}
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Distributivgesetz, Bruchrechnung)
 </div>
@@ -94,6 +101,7 @@ data-show-partial-solution -->
 __$b)\;\;$__ $  3(2x+4) = x + 19 $ \
 $x$ = [[  7/5  ]] @canvas
 @Algebrite.check(7/5)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -107,6 +115,8 @@ $$
 ************
 
 
+@resetter
+
 @ADetails(1=BE; Äquivalenzumformung, Distributivgesetz, Bruchrechnung)
 </div>
 <div class="flex-child">
@@ -119,6 +129,7 @@ data-hint-button="3"
 data-show-partial-solution -->
 __$c)\;\;$__ $  2(3x-1) + 5 = 4x + 7 $ \
 $x$ = [[  2  ]] @canvas
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -133,6 +144,8 @@ $$
 ************
 
 
+@resetter
+
 @ADetails(1=BE; Äquivalenzumformung, Distributivgesetz, Bruchrechnung)
 </div>
 <div class="flex-child">
@@ -146,6 +159,7 @@ data-show-partial-solution -->
 __$d)\;\;$__ $  5(x+2) - 3 = 2x + 12 $ \
 $x$ = [[  5/3  ]] @canvas
 @Algebrite.check(5/3)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -159,6 +173,8 @@ x &= \dfrac{5}{3}
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Distributivgesetz, Bruchrechnung)
 </div>

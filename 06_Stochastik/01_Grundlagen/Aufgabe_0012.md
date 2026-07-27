@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -75,7 +79,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  7  ]]
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; absolute Häufigkeit)
 
@@ -89,7 +96,10 @@ data-hint-button="3"  -->
 **Gib** die relative Häufigkeit der blauen Kugeln **an**.\
 $p(B)=$ [[ 15/22  ]]
 @Algebrite.check(15/22)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; relative Häufigkeit)
 
@@ -103,7 +113,10 @@ data-hint-button="3"  -->
 **Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
 $P(R)=$ [[ 7/22  ]]
 @Algebrite.check(7/22)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Wahrscheinlichkeit)
 
@@ -116,7 +129,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 **Gib** die Chance **an**, eine rote Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R)=$ [[  7:15  ]]
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Chance)
 
@@ -150,7 +166,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  5  ]]
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; absolute Häufigkeit)
 
@@ -164,7 +183,10 @@ data-hint-button="3"  -->
 **Gib** die relative Häufigkeit der blauen Kugeln **an**.\
 $p(B)=$ [[ 12/17  ]]
 @Algebrite.check(12/17)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; relative Häufigkeit)
 
@@ -178,7 +200,10 @@ data-hint-button="3"  -->
 **Gib** die Wahrscheinlichkeit **an**, eine blaue Kugel zu ziehen.\
 $P(B)=$ [[ 12/17  ]]
 @Algebrite.check(12/17)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Wahrscheinlichkeit)
 
@@ -191,7 +216,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 **Gib** die Chance **an**, eine rote Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(R)=$ [[  5:12  ]]
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Chance)
 
@@ -225,7 +253,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 **Gib** die absolute Häufigkeit der blauen Kugeln **an**.\
 $\#(B)=$ [[  6  ]]
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; absolute Häufigkeit)
 
@@ -239,7 +270,10 @@ data-hint-button="3"  -->
 **Gib** die relative Häufigkeit der roten Kugeln **an**.\
 $p(R)=$ [[ 6/12  ]]
 @Algebrite.check(6/12)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; relative Häufigkeit)
 
@@ -253,7 +287,10 @@ data-hint-button="3"  -->
 **Gib** die Wahrscheinlichkeit **an**, eine rote Kugel zu ziehen.\
 $P(R)=$ [[ 6/12  ]]
 @Algebrite.check(7/22)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Wahrscheinlichkeit)
 
@@ -266,7 +303,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 **Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(B)=$ [[  6:6  ]]
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Chance)
 
@@ -299,7 +339,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 **Gib** die absolute Häufigkeit der roten Kugeln **an**.\
 $\#(R)=$ [[  10  ]]
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; absolute Häufigkeit)
 
@@ -313,7 +356,10 @@ data-hint-button="3"  -->
 **Gib** die relative Häufigkeit der roten Kugeln **an**.\
 $p(R)=$ [[  10/25  ]]
 @Algebrite.check(10/25)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; relative Häufigkeit)
 
@@ -327,7 +373,10 @@ data-hint-button="3"  -->
 **Gib** die Wahrscheinlichkeit **an**, eine blaue Kugel zu ziehen.\
 $P(B)=$ [[  15/25  ]]
 @Algebrite.check(15/25)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Wahrscheinlichkeit)
 
@@ -340,7 +389,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 **Gib** die Chance **an**, eine blaue Kugel im Vergleich zu den anderen Kugeln zu ziehen.\
 $R(B)=$ [[  15:25  ]]
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Chance)
 

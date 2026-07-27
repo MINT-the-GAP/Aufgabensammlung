@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -62,6 +66,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $ 60 \%=$ [[  0,6  ]] @canvas
 @Algebrite.check([ 0.6 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Prozent, Dezimalzahlen)
 
@@ -75,6 +82,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $ 0,9 \%=$ [[  0,009  ]] @canvas
 @Algebrite.check([ 0.009 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Prozent, Dezimalzahlen)
 
@@ -88,6 +98,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $ 107 \%=$ [[  1,07  ]] @canvas
 @Algebrite.check([ 1.07 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Prozent, Dezimalzahlen)
 
@@ -101,6 +114,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $ 4,7 \%=$ [[  0,047  ]] @canvas
 @Algebrite.check([ 0.047 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Prozent, Dezimalzahlen)
 
@@ -114,6 +130,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ $ 2064,2 \%=$ [[  20,642  ]] @canvas
 @Algebrite.check([ 20.642 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Prozent, Dezimalzahlen)
 
@@ -127,6 +146,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$f)\;\;$__ $ 0,017 \%=$ [[  0,00017  ]] @canvas
 @Algebrite.check([ 0.00017 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Prozent, Dezimalzahlen)
 

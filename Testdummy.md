@@ -13,12 +13,14 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-annotation/refs/heads
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-canvas-ocr/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-orthography/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
-import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
-import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -28,7 +30,9 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/Proposal/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
 
 
 
@@ -58,13 +62,51 @@ import: https://raw.githubusercontent.com/LiaTemplates/GGBScript/refs/heads/main
 
 
 
+# Tutorial
+
+
+<section class="dynFlex">
+
+<div class="flex-child">
+
+Das hier ist ein Tutorial. Hier steht viel Text in einem Feld.
+
+
+</div>
+
+</section>
+
+
+
+
+## Aufgabe 1
+
+## Aufgabe 2
+
+## Aufgabe 3
+
+## Aufgabe 4
+
+## Aufgabe 5
+
+
+
+
+
+
 ### Zeug
+
+
+
+
 
 Bruchrechnung, Einheiten
 
 <!-- data-hint-button="5"  -->
 Test : [[ Test ]]
 [[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1; Bruchrechnung)
 
@@ -78,8 +120,7 @@ https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-G
 
 ### `@Kachelfolge` — Reihenfolge egal
 
-`import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
-import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md`
+`import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md`
 
 
 Erzeugt eine Kachelsequenz, bei der die Reihenfolge der Antworten egal ist.

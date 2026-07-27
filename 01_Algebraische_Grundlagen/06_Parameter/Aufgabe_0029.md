@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -74,8 +78,11 @@ data-sortable="false" -->
 | $-0{,}\overline{6}$ | $0{,}\overline{3}$ | $-\dfrac{1}{2}$ | [[ -4/3 ]] @canvas | [[ -1/18 ]] @canvas | [[ 0 ]] @canvas |
 | $0{,}\overline{8}$ | $-0{,}\overline{3}$ | $\dfrac{1}{2}$ | [[ 2/9 ]] @canvas | [[ -7/54 ]] @canvas | [[ 7/9 ]] @canvas |
 @Algebrite.check([ 4/3; 1/18; 0; 4; 13/18; -1/3; -4/3; -1/18; 0; 2/9; -7/54; 7/9 ])
+[[?]] @Explain
 
 
 
+
+@resetter
 
 @ADetails(1=BE; Einsetzungsverfahren, Tabelle, Bruchrechnung, Dezimalzahlen, Negative Zahlen, Periodizitäten)

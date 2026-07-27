@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -69,7 +73,10 @@ data-hint-button="3"  -->
 $1 \quad 3 \quad 9 \quad 27 \quad 81 \quad $ [[ 243 ]] @canvas $\quad$ [[ 729 ]] @canvas $\quad$ [[ 2187 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die vorherige Zahl wird mit $3$ multipliziert.
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Folge)
 
@@ -85,8 +92,11 @@ data-hint-button="3"  -->
 $2 \quad 3 \quad 5 \quad 7 \quad 11 \quad 13 \quad 17 \quad $ [[ 23 ]] @canvas $\quad$ [[ 29 ]] @canvas $\quad$ [[ 31 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die aufsteigenden Primzahlen
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Folge)
 
@@ -102,7 +112,10 @@ $3 \quad 8 \quad 15 \quad 24 \quad 35 \quad $ [[ 48 ]] @canvas $\quad$ [[ 63 ]] 
 \
 
 [[?]] Musterbeschreibung: Die Ausgangszahl wird mit der aufsteigenden ungeraden Zahl addiert, startend bei $3$.
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Folge)
 

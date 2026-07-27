@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -66,6 +70,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $x$ = [[  24/5  ]] @canvas
 @Algebrite.check(24/5)
+[[?]] @Explain
 ************
 $$
 \textbf{Gleichung aus dem Text:}\quad 
@@ -98,5 +103,7 @@ $$
 Deutung: Die gesuchte Zahl ist $\dfrac{24}{5}=4{,}8$.
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Sachaufgabe)

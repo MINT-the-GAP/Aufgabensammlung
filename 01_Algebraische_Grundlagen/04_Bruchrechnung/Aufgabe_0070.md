@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -76,6 +80,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $ \dfrac{9}{8} \cdot \dfrac{4}{5}  \cdot \dfrac{25}{2}  \cdot \dfrac{4}{15} = $ [[  3/16  ]] @canvas
 @Algebrite.check(3/16)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -89,6 +94,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Multiplikation)
 
@@ -105,6 +112,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $  \dfrac{8}{13} \cdot \dfrac{7}{2}  \cdot \dfrac{9}{7}  \cdot \dfrac{13}{4} = $ [[  9  ]] @canvas
 @Algebrite.check(9)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -117,6 +125,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Multiplikation)
 
@@ -133,6 +143,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $ \dfrac{2}{9} \cdot \dfrac{12}{5}  \cdot \dfrac{9}{8}  \cdot \dfrac{7}{6} \cdot \dfrac{7}{4}  = $ [[  49/40  ]] @canvas
 @Algebrite.check(49/40)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -146,6 +157,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Multiplikation)
 
@@ -162,6 +175,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $ \dfrac{11}{4} \cdot \dfrac{10}{9}  \cdot \dfrac{4}{7}  \cdot \dfrac{7}{11} \cdot \dfrac{6}{5} =  $ [[  4/3  ]] @canvas
 @Algebrite.check(4/3)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -175,6 +189,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Multiplikation)
 
@@ -191,6 +207,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ $  \dfrac{5}{12} \cdot \dfrac{16}{15}  \cdot \dfrac{9}{4}  \cdot \dfrac{7}{8} \cdot \dfrac{2}{3} \cdot \dfrac{4}{7} = $ [[  1/3  ]] @canvas
 @Algebrite.check(1/3)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -204,6 +221,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Multiplikation)
 
@@ -220,6 +239,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$f)\;\;$__ $  \dfrac{10}{18} \cdot \dfrac{7}{8}  \cdot \dfrac{3}{8}  \cdot \dfrac{9}{4} \cdot \dfrac{16}{5} \cdot \dfrac{5}{21} = $ [[  5/16  ]] @canvas
 @Algebrite.check(5/16)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -234,6 +254,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Multiplikation)
 

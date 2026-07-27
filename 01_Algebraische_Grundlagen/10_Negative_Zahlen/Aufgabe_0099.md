@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -62,6 +66,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$a)\;\;$__ $ -1,5 \cdot (-0,25) =$ [[  0,375  ]] @canvas 
 @Algebrite.check([ 0.375 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Multiplikation, Dezimalzahlen)
 
@@ -75,6 +82,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$b)\;\;$__ $ 7,5 \cdot (-0,2) =$ [[  -1,5  ]] @canvas 
 @Algebrite.check([ -1.5 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Multiplikation, Dezimalzahlen)
 
@@ -88,6 +98,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$c)\;\;$__ $ -0,03 \cdot 0,8 =$ [[  -0,024  ]] @canvas 
 @Algebrite.check([ -0.024 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Multiplikation, Dezimalzahlen)
 
@@ -101,6 +114,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$d)\;\;$__ $ 1,7 \cdot (-0,4) =$ [[  -0,68  ]] @canvas 
 @Algebrite.check([ -0.68 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Multiplikation, Dezimalzahlen)
 
@@ -114,6 +130,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$e)\;\;$__ $ -4,4 \cdot (-0,2) =$ [[  0,88  ]] @canvas 
 @Algebrite.check([ 0.88 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Multiplikation, Dezimalzahlen)
 
@@ -127,6 +146,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$f)\;\;$__ $ -0,8 \cdot (-0,09) =$ [[  0,072  ]] @canvas 
 @Algebrite.check([ 0.072 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Multiplikation, Dezimalzahlen)
 

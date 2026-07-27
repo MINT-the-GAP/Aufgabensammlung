@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -65,6 +69,9 @@ __$a)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung
 $x=$ [[  2  ]] @canvas Streichhölzer \
 $y=$ [[  6  ]] @canvas Streichhölzer
 @Algebrite.check([ 2;6 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 
@@ -79,6 +86,9 @@ __$b)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung
 $x=$ [[  2   ]] @canvas Streichhölzer \
 $y=$ [[  3   ]] @canvas Streichhölzer
 @Algebrite.check([ 2;3 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 
@@ -93,6 +103,9 @@ __$c)\;\;$__ ![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung
 $x=$ [[  1  ]] @canvas Streichhölzer \
 $y=$ [[  2  ]] @canvas Streichhölzer
 @Algebrite.check([ 1;2 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 
@@ -108,6 +121,9 @@ $x=$ [[  2  ]] @canvas Streichhölzer \
 $y=$ [[  6  ]] @canvas Streichhölzer \
 $z=$ [[  4  ]] @canvas Streichhölzer
 @Algebrite.check([ 2;6;4 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -74,7 +78,10 @@ data-hint-button="3"  -->
 __$a)\;\;$__ 
 $ \dfrac{ 3 }{ 5 } = \dfrac{ 21 }{ x }  $ \
 $x = $ [[  35  ]] @canvas
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Erweitern)
 
@@ -91,7 +98,10 @@ data-hint-button="3"  -->
 __$b)\;\;$__  
 $ \dfrac{ 4 }{ 7 } = \dfrac{ x }{ 21 } $ \
 $x = $ [[  12  ]] @canvas
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Erweitern)
 
@@ -109,7 +119,10 @@ data-hint-button="3"  -->
 __$c)\;\;$__  
 $ \dfrac{ x }{ 8 } = \dfrac{ 9 }{ 12 } $ \
 $x = $ [[  6  ]] @canvas
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Kürzen)
 
@@ -127,7 +140,10 @@ data-hint-button="3"  -->
 __$d)\;\;$__  
 $ \dfrac{ 5 }{ x } = \dfrac{ 15 }{ 18 } $ \
 $x = $ [[  6  ]] @canvas
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Kürzen)
 
@@ -145,7 +161,10 @@ data-hint-button="3"  -->
 __$e)\;\;$__  
 $ \dfrac{ 11 }{ 22 } = \dfrac{ x }{ 6 } $ \
 $x = $ [[  3  ]] @canvas
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Erweitern)
 
@@ -163,7 +182,10 @@ data-hint-button="3"  -->
 __$f)\;\;$__  
 $ \dfrac{ 7 }{ x } = \dfrac{ 14 }{ 20 } $ \
 $x = $ [[  10  ]] @canvas
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Kürzen)
 
@@ -181,7 +203,10 @@ data-hint-button="3"  -->
 __$g)\;\;$__  
 $ \dfrac{ 8 }{ 12 } = \dfrac{ 2 }{ x } $ \
 $x = $ [[  3  ]] @canvas
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Kürzen)
 
@@ -199,7 +224,10 @@ data-hint-button="3"  -->
 __$h)\;\;$__  
 $ \dfrac{ x }{ 15 } = \dfrac{ 6 }{ 10 } $ \
 $x = $ [[  9  ]] @canvas
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Erweitern)
 
@@ -217,7 +245,10 @@ data-hint-button="3"  -->
 __$i)\;\;$__  
 $ \dfrac{ 3 }{ 9 } = \dfrac{ 4 }{ x } $ \
 $x = $ [[  12  ]] @canvas
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Erweitern)
 
@@ -235,7 +266,10 @@ data-hint-button="3"  -->
 __$j)\;\;$__  
 $ \dfrac{ x }{ 18 } = \dfrac{ 5 }{ 9 } $ \
 $x = $ [[  10  ]] @canvas
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Erweitern)
 

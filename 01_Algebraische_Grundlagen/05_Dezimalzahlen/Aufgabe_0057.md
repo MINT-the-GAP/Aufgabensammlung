@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -66,8 +70,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
  [[  1,29   ]] @canvas 
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Bruchrechnung, Addition, Zahlenverständnis)
 
@@ -84,8 +91,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
  [[  2,44  ]] @canvas 
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Bruchrechnung, Addition, Zahlenverständnis)
 
@@ -101,8 +111,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
   [[  0,3008  ]] @canvas 
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Bruchrechnung, Addition, Zahlenverständnis)
 
@@ -119,8 +132,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
  [[  11,096  ]] @canvas 
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Bruchrechnung, Addition, Zahlenverständnis)
 
@@ -137,8 +153,11 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
  [[  3,049   ]] @canvas 
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Bruchrechnung, Addition, Zahlenverständnis)
 
@@ -155,9 +174,12 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" -->
  [[  0,000007 ]] @canvas 
+[[?]] @Explain
 
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Bruchrechnung, Addition, Zahlenverständnis)
 

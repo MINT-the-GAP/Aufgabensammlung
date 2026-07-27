@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -80,7 +84,10 @@ data-show-partial-solution
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$I\;\;$__ [[  5  ]] @canvas
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
 
@@ -95,7 +102,10 @@ data-show-partial-solution
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$II\;\;$__ [[  4  ]] @canvas
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
 
@@ -110,7 +120,10 @@ data-show-partial-solution
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$III\;\;$__ [[  3  ]] @canvas
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
 
@@ -131,7 +144,10 @@ data-show-partial-solution
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$I\;\;$__ [[  3  ]] @canvas
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
 
@@ -146,7 +162,10 @@ data-show-partial-solution
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$II\;\;$__ [[  4  ]] @canvas
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
 
@@ -161,7 +180,10 @@ data-show-partial-solution
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$III\;\;$__ [[  6  ]] @canvas
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
 
@@ -182,7 +204,10 @@ data-show-partial-solution
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$I\;\;$__ [[  15  ]] @canvas
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
 
@@ -197,7 +222,10 @@ data-show-partial-solution
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$II\;\;$__ [[  16  ]] @canvas
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
 
@@ -212,7 +240,10 @@ data-show-partial-solution
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$III\;\;$__ [[  18  ]] @canvas
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil, Zahlenverständnis)
 

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -78,6 +82,9 @@ data-show-partial-solution="true" -->
 | $\bar{B}$ | [[ 0,02 ]] | [[ 0,11 ]] | [[ 0,13 ]] |
 |           |    0,11    | [[ 0,89 ]] |      1     |
 @Algebrite.check([ 9/100; 2/100; 11/100; 13/100; 89/100 ])
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Vierfeldertafel, bedingte Wahrscheinlichkeit)

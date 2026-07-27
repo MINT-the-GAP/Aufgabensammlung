@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -65,6 +69,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 Auf Tausender: $78163 \approx$ [[78000    ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Runden)
 
@@ -83,6 +90,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 Auf Zehner: $78163 \approx$ [[78160    ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Runden)
 
@@ -102,6 +112,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 Auf Hunderter: $29963 \approx$ [[30000    ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Runden)
 
@@ -121,6 +134,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 Auf Tausender: $499 \approx$ [[    0    ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Runden)
 
@@ -140,6 +156,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 Auf Zehner: $55164 \approx$ [[55160    ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Runden)
 
@@ -158,6 +177,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 Auf Tausender: $854684 \approx$ [[855000    ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Runden)
 

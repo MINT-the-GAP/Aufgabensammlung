@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -66,6 +70,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $0{,}2^{-2} = $ [[ 25 ]] @canvas
 @Algebrite.check([ 25 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Dezimalzahlen, Negative Zahlen)
 
@@ -79,6 +86,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $\left(-0{,}4\right)^{-2} = $ [[ 6,25 ]] @canvas
 @Algebrite.check([ 6.25 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Dezimalzahlen, Negative Zahlen)
 
@@ -92,6 +102,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $-0{,}5^{-3} = $ [[ -8 ]] @canvas
 @Algebrite.check([ -8 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Dezimalzahlen, Negative Zahlen)
 
@@ -105,6 +118,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $\left(-2{,}5\right)^{-2} = $ [[ 0,16 ]] @canvas
 @Algebrite.check([ 0.16 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Dezimalzahlen, Negative Zahlen)
 
@@ -118,6 +134,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ $1{,}25^{-3} = $ [[ 0,512 ]] @canvas
 @Algebrite.check([ 0.512 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Dezimalzahlen, Negative Zahlen)
 
@@ -131,6 +150,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$f)\;\;$__ $-\left(-0{,}8\right)^{-2} = $ [[ -1,5625 ]] @canvas
 @Algebrite.check([ -1.5625 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Dezimalzahlen, Negative Zahlen)
 

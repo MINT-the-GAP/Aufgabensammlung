@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -63,7 +67,10 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$a)\;\;$__ $7$ [[ ($\mid$) | $\nmid$ ]] $7399$ \
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Teiler)
 
@@ -76,7 +83,10 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$b)\;\;$__ $5$ [[ $\mid$ | ($\nmid$) ]] $2046$ \
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Teiler)
 
@@ -89,7 +99,10 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$c)\;\;$__ $6$ [[ ($\mid$) | $\nmid$ ]] $3408$ \
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Teiler)
 
@@ -102,7 +115,10 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$d)\;\;$__ $3$ [[ $\mid$ | ($\nmid$) ]] $6410$ \
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Teiler)
 
@@ -115,7 +131,10 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$e)\;\;$__ $4$ [[ $\mid$ | ($\nmid$) ]] $8211$ \
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Teiler)
 
@@ -128,7 +147,10 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$f)\;\;$__ $8$ [[ $\mid$ | ($\nmid$) ]] $7924$ 
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Teiler)
 

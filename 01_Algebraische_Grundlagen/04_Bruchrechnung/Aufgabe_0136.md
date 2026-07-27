@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -69,6 +73,7 @@ data-show-partial-solution
 data-solution-button="5" 
 data-hint-button="3"  -->
 [[  70  ]]  m$^3$ @canvas
+[[?]] @Explain
 ************
 $$
 \text{Gefüllt: } \dfrac{5}{6}\cdot 120 = 100\,\text{m}^3 \\
@@ -76,5 +81,7 @@ $$
 \text{Rest: } 100-30 = 70\,\text{m}^3
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Sachaufgabe)

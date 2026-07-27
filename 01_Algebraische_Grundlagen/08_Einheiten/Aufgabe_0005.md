@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -64,6 +68,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$a)\;\;$__ $1\,\text{m}^3 = $ [[ 1000  ]] @canvas $\,\text{dm}^3$ \
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Einheiten, Volumen)
 
@@ -77,6 +84,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$b)\;\;$__ $7\,\text{t} = $ [[ 7000  ]] @canvas $\,\text{kg}$ \
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Einheiten, Masse)
 
@@ -90,6 +100,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$c)\;\;$__ $240\,\text{s} = $ [[   4   ]] @canvas $\,\text{min}$ \
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Einheiten, Zeit)
 
@@ -103,6 +116,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$d)\;\;$__ $34000\,\text{cm} = $ [[  340  ]] @canvas $\,\text{m}$ \
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Einheiten, Länge)
 
@@ -116,6 +132,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$e)\;\;$__ $1\,\text{h} = $ [[ 3600  ]] @canvas $\,\text{s}$ \
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Einheiten, Zeit)
 
@@ -129,6 +148,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 __$f)\;\;$__ $8\,\text{km} = $ [[ 80000 ]] @canvas $\,\text{dm}$ \
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Einheiten, Länge)
 

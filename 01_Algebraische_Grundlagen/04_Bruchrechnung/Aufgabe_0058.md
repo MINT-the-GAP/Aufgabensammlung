@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -76,6 +80,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $ \dfrac{ \left[ \dfrac{ \left(\dfrac{ 1 }{ 4 }\right) }{  \left(\dfrac{ 5 }{ 6 }\right) }  \right] }{ 3 } \;= $ [[  1/10  ]] @canvas
 @Algebrite.check(1/10)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -92,6 +97,8 @@ $$
 ************
 
 
+@resetter
+
 @ADetails(1=BE; Bruchrechnung, Division)
 
 </div>
@@ -107,6 +114,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $ \dfrac{ 9 }{ \left[ \dfrac{ \left(\dfrac{ 3 }{ 7 }\right) }{  \left(\dfrac{ 2 }{ 5 }\right) }  \right] } \;= $ [[  42/5  ]] @canvas
 @Algebrite.check(42/5)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -121,6 +129,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Division)
 
@@ -137,6 +147,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $ \dfrac{ \left[\dfrac{3}{4}\right] }{ \left[ \dfrac{ \left(\dfrac{ 7 }{ 5 }\right) }{  2 }  \right] } \;= $ [[  15/14  ]] @canvas
 @Algebrite.check(15/14)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -151,6 +162,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Division)
 
@@ -167,6 +180,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $ \dfrac{ \left[ \dfrac{ \left(\dfrac{ 4 }{ 5 }\right) }{  \left(\dfrac{ 3 }{ 2 }\right) }  \right] }{ \left[ \dfrac{ \left(\dfrac{ 3 }{ 2 }\right) }{  \left(\dfrac{ 5 }{ 6 }\right) }  \right] } \;= $ [[  8/27  ]] @canvas
 @Algebrite.check(8/27)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -188,6 +202,8 @@ $$
 ************
 
 
+@resetter
+
 @ADetails(1=BE; Bruchrechnung, Division)
 
 </div>
@@ -203,6 +219,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ $ \dfrac{ \left[ \dfrac{ \left(\dfrac{ 1 }{ 2 } + \dfrac{3}{4}\right) }{  \left(\dfrac{ 2 }{ 5 }\right) }  \right] }{ \left[ \dfrac{ \left(\dfrac{ 9 }{ 4 }\right) }{  \left(\dfrac{ 9 }{ 10 }\right) }  \right] } \;= $ [[  5/4  ]] @canvas
 @Algebrite.check(5/4)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -225,6 +242,8 @@ $$
 ************
 
 
+@resetter
+
 @ADetails(1=BE; Bruchrechnung, Division)
 
 </div>
@@ -240,6 +259,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$f)\;\;$__ $ \dfrac{ \left[ \dfrac{ \left(\dfrac{ 7 }{ 9 }\right) }{  \left(\dfrac{ 5 }{ 6 }\right) }  \right] }{ \left[ \dfrac{ \left(\dfrac{ 4 }{ 3 }\right) }{  \left(\dfrac{ 7 }{ 2 } + \dfrac{1}{3}\right) }  \right] } \;= $ [[  161/60  ]] @canvas
 @Algebrite.check(161/60)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -262,6 +282,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Division)
 

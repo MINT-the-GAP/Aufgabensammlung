@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -68,6 +72,9 @@ $=$ [[  1,2  ]] @canvas $ + 2,54 + 1,75 \cdot 4,8 $ \
 $=$ [[ 3,74  ]] @canvas $ + 1,75 \cdot 4,8 $ \
 $=$ [[ 3,74  ]] @canvas $ + $ [[ 8,4   ]] @canvas \
 $=$ [[ 12,14 ]] @canvas 
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Terme, Dezimalzahlen)
 
@@ -88,6 +95,9 @@ $=$ [[ 3,75 ]] @canvas $ + 3,4 \cdot 3,5 \cdot 0,1 $ \
 $=$ [[ 3,75 ]] @canvas $ + $ [[ 11,9 ]] @canvas $ \cdot 0,1 $ \
 $=$ [[ 3,75 ]] @canvas $ + $ [[ 1,19 ]] @canvas  \
 $=$ [[ 4,94 ]] @canvas 
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Terme, Dezimalzahlen)
 
@@ -107,6 +117,9 @@ $= $ [[ 2,35  ]] @canvas $ + 1,4 \cdot 0,45 + 0,375 $ \
 $= $ [[ 2,35  ]] @canvas $ + $ [[ 0,63  ]] @canvas $ + 0,375 $ \
 $= $ [[ 2,98  ]] @canvas $ + 0,375 $ \
 $=$  [[ 3,355 ]] @canvas 
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Terme, Dezimalzahlen)
 
@@ -126,6 +139,9 @@ $=$ [[  4,2  ]] @canvas $ + 5,31 - 2,56 : 16 $ \
 $=$ [[  9,51 ]] @canvas $ - 2,56 : 16 $ \
 $=$ [[  9,51 ]] @canvas $ -$ [[  0,16 ]] @canvas \
 $=$ [[  9,35 ]] @canvas 
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Terme, Dezimalzahlen)
 

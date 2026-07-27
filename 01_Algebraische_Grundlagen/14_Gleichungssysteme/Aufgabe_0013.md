@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -80,6 +84,7 @@ II.& \qquad 4x - y = 1
 $$
 $x$ = [[  9/11  ]] @canvas und  $y$ = [[  25/11  ]] @canvas 
 @Algebrite.check([ 9/11; 25/11 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -101,6 +106,8 @@ x \cap II. &\qquad 4 \cdot \dfrac{9}{11} - y = 1 \\
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 
@@ -126,6 +133,7 @@ II.& \qquad x + 3y = 8
 $$  
 $x$ = [[  25/17  ]] @canvas und  $y$ = [[  37/17  ]] @canvas 
 @Algebrite.check([ 25/17; 37/17 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -145,6 +153,8 @@ y \cap II. &\qquad x + 3\cdot \dfrac{37}{17} = 8 \\
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 
@@ -168,6 +178,7 @@ II.& \qquad 3x - 2y = -16
 $$  
 $x$ = [[  -18/7  ]] @canvas  und  $y$ = [[  29/7  ]] @canvas 
 @Algebrite.check([ -18/7; 29/7 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -187,6 +198,8 @@ x \cap I.\; &\qquad 2\!\left(-\dfrac{18}{7}\right) + y = -1 \\
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 
@@ -211,8 +224,11 @@ II.& \qquad 2x - y = -5
 $$  
 $x$ = [[  -4/5  ]] @canvas   und  $y$ = [[  17/5  ]] @canvas 
 @Algebrite.check([ -4/5; 17/5 ])
+[[?]] @Explain
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 
@@ -237,6 +253,8 @@ $$
 
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 

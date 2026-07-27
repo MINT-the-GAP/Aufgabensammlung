@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -74,6 +78,9 @@ data-sortable="false" -->
 |   12  |    5   |    84   | [[ 67 ]]       |   [[ 24 ]]         |  [[  36  ]]       |
 |   3   |    14  |    67   | [[ 50 ]]       |   [[ 25 ]]         |  [[  55  ]]       |
 |   7   |    9   |    79   | [[ 63 ]]       |   [[ 16 ]]         |  [[  51  ]]       |
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Einsetzungsverfahren, Tabelle, Grundrechenarten)

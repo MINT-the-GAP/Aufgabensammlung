@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -71,6 +75,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $  \dfrac{3}{8} \cdot \dfrac{5}{7} = $ [[  15/56  ]] @canvas
 @Algebrite.check(15/56)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -81,6 +86,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Multiplikation)
 
@@ -97,6 +104,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $  \dfrac{11}{9} \cdot \dfrac{7}{10} = $ [[  77/90  ]] @canvas
 @Algebrite.check(77/90)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -107,6 +115,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Multiplikation)
 
@@ -123,6 +133,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $  \dfrac{2}{11} \cdot \dfrac{9}{13} = $ [[  18/143  ]] @canvas
 @Algebrite.check(18/143)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -133,6 +144,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Multiplikation)
 
@@ -149,6 +162,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $  \dfrac{5}{12} \cdot \dfrac{7}{8} = $ [[  35/96  ]] @canvas
 @Algebrite.check(35/96)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -159,6 +173,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Multiplikation)
 
@@ -175,6 +191,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ $  \dfrac{5}{13} \cdot \dfrac{5}{14} = $ [[  25/182  ]] @canvas
 @Algebrite.check(30/182)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -185,6 +202,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Multiplikation)
 
@@ -201,6 +220,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$f)\;\;$__ $  \dfrac{7}{15} \cdot \dfrac{4}{11} = $ [[  28/165  ]] @canvas
 @Algebrite.check(28/165)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -211,6 +231,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Multiplikation)
 

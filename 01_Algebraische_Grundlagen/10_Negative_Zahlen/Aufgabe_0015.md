@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -79,7 +83,10 @@ style="max-width: 1200px" -->
 +--------+--------+--------+--------+--------+--------+                                       
 ```
 @Algebrite.check([ 0; 1; -1 ])
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Addition, Subtraktion)
 
@@ -109,6 +116,9 @@ style="max-width: 1200px" -->
 +--------+--------+--------+--------+--------+--------+                                       
 ```
 @Algebrite.check([ -13; 2; -15 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Negative Zahlen, Addition, Subtraktion)
 

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -68,6 +72,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$a)\;\;$__ $  T = m g h \;\;$  mit $\;\;m=8 \;\;\wedge\;\; g=10 \;\;\wedge\;\; T=480$ \
 $h$ = [[  6  ]] @canvas
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -79,6 +84,8 @@ h &=   6 \\
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
@@ -92,6 +99,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$b)\;\;$__ $ \dfrac{G\,M\,m}{r} = F\;\;$  mit $\;\;F=50 \;\;\wedge\;\; r=8 \;\;\wedge\;\; m=2 \;\;\wedge\;\; G=\dfrac{1}{10}$ \
 $M$ = [[  2000  ]] @canvas
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -104,6 +112,8 @@ M &= 2000 \\
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
@@ -118,6 +128,7 @@ data-hint-button="3" -->
 __$c)\;\;$__ $  \dfrac{V}{A} - a = a + V  \;\;$  mit $\;\; V=36 \;\;\wedge\;\; A=7$ \
 $a$ = [[  -108/7  ]] @canvas
 @Algebrite.check(-108/7)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -133,6 +144,8 @@ a &= -\dfrac{108}{7} \\
 $$
 ************
 
+@resetter
+
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
 <div class="flex-child">
@@ -145,6 +158,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$d)\;\;$__ $   0 = \dfrac{1}{2} d r - d s a  \;\;$  mit $\;\;d=3 \;\;\wedge\;\; s=5 \;\;\wedge\;\; a=2$ \
 $r$ = [[  20  ]] @canvas
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -157,6 +171,8 @@ r & = 20
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
@@ -171,6 +187,7 @@ data-hint-button="3" -->
 __$e)\;\;$__ $   m n + p o = m z \;\;$  mit $\;\; m=2 \;\;\wedge\;\; p=\dfrac{3}{2} \;\;\wedge\;\; z=3 \;\;\wedge\;\; n=\dfrac{5}{4}$ \
 $o$ = [[  7/3  ]] @canvas
 @Algebrite.check(7/3)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -187,6 +204,8 @@ o &= \dfrac{7}{3} \\
 $$
 ************
 
+@resetter
+
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
 <div class="flex-child">
@@ -200,6 +219,7 @@ data-hint-button="3" -->
 __$f)\;\;$__ $  m n + p o = m z - p q \;\;$  mit $\;\; m=\dfrac{1}{100} \;\;\wedge\;\;  p=8 \;\;\wedge\;\;  z=\dfrac{21}{5} \;\;\wedge\;\;  n=12 \;\;\wedge\;\;  q=\dfrac{3}{8}$ \
 $o$ = [[  -1539/4000  ]] @canvas
 @Algebrite.check(-1539/4000)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -217,6 +237,8 @@ o &= -\dfrac{1539}{4000} \\
 $$
 ************
 
+@resetter
+
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>
 <div class="flex-child">
@@ -229,6 +251,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$g)\;\;$__ $   0 = \dfrac{1}{2} d r - d s a  \;\;$  mit $\;\; r=\dfrac{5}{2} \;\;\wedge\;\;  s=\dfrac{1}{4} \;\;\wedge\;\;  a=\dfrac{7}{8}$ \
 $d$ = [[  0  ]] @canvas
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -242,6 +265,8 @@ d &= 0 \\
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung, Einsetzungsverfahren)
 </div>

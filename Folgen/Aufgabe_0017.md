@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -65,7 +69,10 @@ data-hint-button="3"  -->
 $100 \quad 99 \quad 97 \quad 94 \quad 90 \quad 85 \quad 79 \quad$ [[ 72 ]] @canvas $\quad$ [[ 64 ]] @canvas $\quad$ [[ 57 ]] @canvas \
 
 [[?]] Musterbeschreibung: Es wird von der vorherigen Zahl eine aufsteigende natürliche Zahl subtrahiert.
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Folge)
 
@@ -81,6 +88,9 @@ data-hint-button="3"  -->
 $11 \quad 22 \quad 33 \quad 44 \quad 55 \quad 66 \quad $ [[ 77 ]] @canvas $\quad$ [[ 88 ]] @canvas $\quad$ [[ 99 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die $11$er-Reihe.
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Folge)
 
@@ -97,6 +107,9 @@ data-hint-button="3"  -->
 $1 \quad 121 \quad 12321 \quad 1234321 \quad $ [[ 123454321 ]] @canvas $\quad$ [[ 12345654321 ]] @canvas $\quad$ [[ 1234567654321 ]] @canvas \
 
 [[?]] Musterbeschreibung: Es wird immer eine nächst höhere Ziffer in die Mitte eingefügt, sodass die Zahl sich aus den aufsteigenden und absteigenden Ziffern ergibt.
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Folge)
 

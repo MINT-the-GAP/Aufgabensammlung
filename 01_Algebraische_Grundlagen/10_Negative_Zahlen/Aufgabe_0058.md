@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -62,6 +66,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$a)\;\;$__ $ -8 \cdot 12 =$ [[  -96  ]] @canvas 
 @Algebrite.check([  ])
+[[?]] @Explain
 
 </div> 
 <div class="flex-child">
@@ -73,6 +78,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$b)\;\;$__ $ -7 \cdot (-20) =$ [[  140  ]] @canvas 
 @Algebrite.check([  ])
+[[?]] @Explain
 
 </div> 
 <div class="flex-child">
@@ -84,6 +90,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$c)\;\;$__ $ 5 \cdot (-45) =$ [[  -225  ]] @canvas 
 @Algebrite.check([  ])
+[[?]] @Explain
 
 </div> 
 <div class="flex-child">
@@ -95,6 +102,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$d)\;\;$__ $ -16 \cdot (-12) =$ [[  192  ]] @canvas 
 @Algebrite.check([  ])
+[[?]] @Explain
 
 </div> 
 <div class="flex-child">
@@ -106,6 +114,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$e)\;\;$__ $ 11 \cdot (-31) =$ [[  -341  ]] @canvas 
 @Algebrite.check([  ])
+[[?]] @Explain
 
 </div> 
 <div class="flex-child">
@@ -117,6 +126,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$f)\;\;$__ $ -14 \cdot 6 =$ [[  -84  ]] @canvas 
 @Algebrite.check([  ])
+[[?]] @Explain
 
 </div> 
 </section>

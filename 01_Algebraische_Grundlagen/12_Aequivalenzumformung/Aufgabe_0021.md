@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -70,6 +74,7 @@ data-hint-button="3" -->
 __$a)\;\;$__ $  3x - 7 = \dfrac{1}{2}x + 5 $ \
 $x$ = [[  24/5  ]] @canvas
 @Algebrite.check(24/5)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -80,6 +85,8 @@ x &= \dfrac{24}{5}
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
@@ -93,6 +100,7 @@ data-hint-button="3" -->
 __$b)\;\;$__ $  4x + 3 = 2x - \dfrac{5}{2} $ \
 $x$ = [[  -11/4  ]] @canvas
 @Algebrite.check(-11/4)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -104,6 +112,8 @@ x &= -\dfrac{11}{4}
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
@@ -118,6 +128,7 @@ data-hint-button="3" -->
 __$c)\;\;$__ $  \dfrac{5}{3}x - 4 = x + 2 $ \
 $x$ = [[  18  ]] @canvas
 @Algebrite.check(18)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -128,6 +139,8 @@ x &= 18
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
@@ -142,6 +155,7 @@ data-hint-button="3" -->
 __$d)\;\;$__ $ 5(x-1) = 3x + \dfrac{7}{3}$ \
 $x$ = [[  11/3  ]] @canvas
 @Algebrite.check(11/3)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -154,6 +168,8 @@ x &= \dfrac{11}{3}
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Distributivgesetz, Bruchrechnung)
 </div>
@@ -168,6 +184,7 @@ data-hint-button="3" -->
 __$e)\;\;$__ $  2\left(x + \dfrac{3}{2}\right) = \dfrac{1}{2}x + 5 $ \
 $x$ = [[  4/3  ]] @canvas
 @Algebrite.check(4/3)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -179,6 +196,8 @@ x &= \dfrac{4}{3}
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Distributivgesetz, Bruchrechnung)
 </div>
@@ -193,6 +212,7 @@ data-hint-button="3" -->
 __$f)\;\;$__ $  \dfrac{2}{3}(3x+6) = x - 2 $ \
 $x$ = [[  -6  ]] @canvas
 @Algebrite.check(-6)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -203,6 +223,8 @@ x &= -6
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Distributivgesetz, Bruchrechnung)
 </div>

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -75,6 +79,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $  \dfrac{3}{8} \cdot 5 = $ [[  15/8  ]] @canvas
 @Algebrite.check(15/8)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -85,6 +90,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Multiplikation)
 
@@ -101,6 +108,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $  \dfrac{7}{12} \cdot 4 = $ [[  7/4  ]] @canvas
 @Algebrite.check(7/4)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -112,6 +120,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Multiplikation)
 
@@ -128,6 +138,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $  \dfrac{2}{9} \cdot 7 = $ [[  14/9  ]] @canvas
 @Algebrite.check(14/9)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -138,6 +149,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Multiplikation)
 
@@ -154,6 +167,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $  \dfrac{11}{15} \cdot 3 = $ [[  33/15  ]] @canvas
 @Algebrite.check(33/15)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -164,6 +178,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Multiplikation)
 
@@ -180,6 +196,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ $  \dfrac{6}{17} \cdot 5 = $ [[  30/17  ]] @canvas
 @Algebrite.check(30/17)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -190,6 +207,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Multiplikation)
 
@@ -206,6 +225,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$f)\;\;$__ $  \dfrac{8}{19} \cdot 2 = $ [[  16/19  ]] @canvas
 @Algebrite.check(16/19)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -216,6 +236,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Multiplikation)
 

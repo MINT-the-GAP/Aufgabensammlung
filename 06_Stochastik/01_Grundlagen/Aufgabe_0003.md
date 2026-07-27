@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -81,10 +85,13 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $\tilde{x}=$ [[  4  ]]
+[[?]] @Explain
 *******************
 $\{ 1;1;1;2;3;\textcolor{red}{4};4;5;5;6;6 \}$
 *******************
 
+
+@resetter
 
 @ADetails(1=BE; Median)
 
@@ -123,10 +130,13 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $\tilde{x}=$ [[  7  ]]
+[[?]] @Explain
 *******************
 $\{ 4;5;6;\textcolor{red}{7};8;9;9 \}$
 *******************
 
+
+@resetter
 
 @ADetails(1=BE; Median)
 
@@ -169,10 +179,13 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $\tilde{x}=$ [[  7  ]]
+[[?]] @Explain
 *******************
 $\{ 2;3;4;6;7;\textcolor{red}{7};8;10;11;11;11 \}$
 *******************
 
+
+@resetter
 
 @ADetails(1=BE; Median)
 

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -73,6 +77,7 @@ data-hint-button="3"  -->
 __$a)\;\;$__ Wie viel sind $\dfrac{7}{12}$ von $50\,$kg?  \
 [[  175/6  ]] kg @canvas
 @Algebrite.check(175/6)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -84,6 +89,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil)
 
@@ -103,6 +110,7 @@ data-hint-button="3"  -->
 __$b)\;\;$__ Wie viel sind $\dfrac{9}{14}$ von $25\,\ell$?  \
 [[  225/14  ]] $\ell$ @canvas
 @Algebrite.check(225/14)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -113,6 +121,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil)
 
@@ -132,6 +142,7 @@ data-hint-button="3"  -->
 __$c)\;\;$__ Wie viel sind $\dfrac{11}{15}$ von $40\,$m?  \
 [[  88/3  ]] m @canvas
 @Algebrite.check(88/3)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -143,6 +154,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil)
 
@@ -162,6 +175,7 @@ data-hint-button="3"  -->
 __$d)\;\;$__ Wie viel sind $\dfrac{5}{9}$ von $22\,$cm?  \
 [[  110/9  ]] cm @canvas
 @Algebrite.check(110/9)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -172,6 +186,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil)
 
@@ -191,6 +207,7 @@ data-hint-button="3"  -->
 __$e)\;\;$__ Wie viel sind $\dfrac{13}{16}$ von $18\,$kg?  \
 [[  117/8  ]] kg @canvas
 @Algebrite.check(117/8)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -202,6 +219,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil)
 
@@ -221,6 +240,7 @@ data-hint-button="3"  -->
 __$f)\;\;$__ Wie viel sind $\dfrac{7}{20}$ von $33\,$m?  \
 [[  231/20  ]] m @canvas
 @Algebrite.check(231/20)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -231,6 +251,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil)
 

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -65,10 +69,13 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ **Gib** die Spannweite **an**.\
 $R=$ [[  6  ]]
+[[?]] @Explain
 *******************
 $R = x_{max} - x_{min} = 58 - 52 = 6$
 *******************
 
+
+@resetter
 
 @ADetails(1=BE; Spannweite)
 
@@ -85,10 +92,13 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ **Gib** den Median **an**.\
 $\tilde{x}=$ [[ 55,5  ]]
+[[?]] @Explain
 *******************
 $\{ 52,53,54,54,54,55,55,\textcolor{red}{55},\textcolor{red}{56},56,56,56,56,57,57,58  \}$
 *******************
 
+
+@resetter
 
 @ADetails(1=BE; Median)
 
@@ -105,7 +115,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ **Gib** das arithmetische Mittel **an**.\
 $\bar{x}=$ [[  55,25  ]]
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Arithmetisches Mittel)
 

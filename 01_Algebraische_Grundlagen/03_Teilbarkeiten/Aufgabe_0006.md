@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -65,6 +69,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $a)\;\; \text{ggT}(12;56) =$ [[  4  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;größter gemeinsamer Teiler)
 
@@ -78,6 +85,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $b)\;\; \text{ggT}(81;36) =$ [[  9  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;größter gemeinsamer Teiler)
 
@@ -91,6 +101,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $c)\;\; \text{ggT}(64;48) =$ [[ 16  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;größter gemeinsamer Teiler)
 
@@ -104,6 +117,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $d)\;\; \text{ggT}(75;85) =$ [[  5  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;größter gemeinsamer Teiler)
 
@@ -117,6 +133,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $e)\;\; \text{ggT}(102;78) =$ [[  2  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;größter gemeinsamer Teiler)
 
@@ -130,6 +149,9 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $f)\;\; \text{ggT}(243;256) =$ [[  1  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE;größter gemeinsamer Teiler)
 

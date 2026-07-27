@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -64,8 +68,11 @@ data-hint-button="3"  -->
 $1 \quad 4 \quad 11 \quad 24 \quad 50 \quad 80 \quad 154 \quad 220 \quad $ [[ 375 ]] @canvas $\quad$ [[ 444 ]] @canvas $\quad$ [[ 781 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die Folge beschreibt, wie viele Teilflächen durch die Diagonalen in einem $n$-Eck entstehen. Startend mit einem Dreieck.
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Folge)
 

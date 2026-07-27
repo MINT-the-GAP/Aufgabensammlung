@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -68,8 +72,11 @@ $ 80 \cdot 0,1 =$ [[  8    ]] @canvas \
 $ 80 \cdot 0,01 =$ [[  0,8  ]] @canvas \
 $ 80 \cdot 0,001 =$ [[  0,08  ]] @canvas \
 $ 80 \cdot 0,0001 =$ [[  0,008  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Multiplikation, Zahlenverständnis)
 
@@ -90,8 +97,11 @@ $ 4 \cdot 0,3 =$ [[  1,2    ]] @canvas \
 $ 4 \cdot 0,03 =$ [[  0,12  ]] @canvas \
 $ 4 \cdot 0,003 =$ [[  0,012  ]] @canvas \
 $ 4 \cdot 0,0003 =$ [[  0,0012  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Multiplikation, Zahlenverständnis)
 
@@ -112,8 +122,11 @@ $ 0,5 \cdot 0,6 =$ [[  0,3    ]] @canvas \
 $ 0,5 \cdot 0,06 =$ [[  0,03  ]] @canvas \
 $ 0,5 \cdot 0,006 =$ [[  0,003  ]] @canvas \
 $ 0,5 \cdot 0,0006 =$ [[  0,0003  ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Multiplikation, Zahlenverständnis)
 
@@ -134,8 +147,11 @@ $ 0,9 \cdot 4 =$ [[  3,6  ]] @canvas \
 $ 0,09 \cdot 4 =$ [[  0,36  ]] @canvas \
 $ 0,09 \cdot 0,4 =$ [[  0,036  ]] @canvas \
 $ 0,09 \cdot 0,04 =$ [[  0,0036 ]] @canvas
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Multiplikation, Zahlenverständnis)
 

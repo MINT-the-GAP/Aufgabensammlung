@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -66,8 +70,11 @@ data-type="none" -->
 |  Hunderter  |  Zehner |  Einer  |  Zehntel  | Hundertstel | Tausendstel |  Zehntausendstel  |
 | :---------: | :-----: | :-----: | :-------: | :---------: | :---------: | :---------------: |
 |   [[ 0 ]]    | [[ 0 ]]  | [[ 7 ]]  |  [[ 0 ]]   |    [[ 5 ]]   |  [[ 8 ]]     |     [[ 0 ]]        |
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Stellenwerttafel, Zahlenverständnis)
 
@@ -83,8 +90,11 @@ data-type="none" -->
 |  Hunderter  |  Zehner |  Einer  |  Zehntel  | Hundertstel | Tausendstel |  Zehntausendstel  |
 | :---------: | :-----: | :-----: | :-------: | :---------: | :---------: | :---------------: |
 |   [[ 6 ]]    | [[ 1 ]]  | [[ 4 ]]  |  [[ 8 ]]   |    [[ 2 ]]   |  [[ 0 ]]     |     [[ 0 ]]        |
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Stellenwerttafel, Zahlenverständnis)
 
@@ -100,8 +110,11 @@ data-type="none" -->
 |  Hunderter  |  Zehner |  Einer  |  Zehntel  | Hundertstel | Tausendstel |  Zehntausendstel  |
 | :---------: | :-----: | :-----: | :-------: | :---------: | :---------: | :---------------: |
 |   [[ 0 ]]    | [[ 5 ]]  | [[ 0 ]]  |  [[ 1 ]]   |    [[ 9 ]]   |  [[ 0 ]]     |     [[ 3 ]]        |
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Dezimalzahlen, Stellenwerttafel, Zahlenverständnis)
 

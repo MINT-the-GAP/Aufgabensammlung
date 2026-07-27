@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -62,6 +66,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$a)\;\;$__ Die positive Differenz aus $23$ und $47$ wird mit $4$ multipliziert. \
 [[  96  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
@@ -74,6 +81,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$b)\;\;$__ Der Term ist ein Quotient mit dem Divisor $7$, während der Dividend sich aus der Summe von $23$ und $33$ bildet. \
 [[  8   ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
@@ -86,6 +96,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$c)\;\;$__ Die Summanden $13$, $54$ und $23$ werden mit $11$ multipliziert. \
 [[  990 ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>
@@ -98,6 +111,9 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$d)\;\;$__ Die Summe aus $8$ und $7$ wird mit der Differenz aus dem Minuenden $19$ und dem Subtrahenden $14$ multipliziert. \
 [[  75  ]] @canvas
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Vokabeln, Grundrechenarten)
 </div>

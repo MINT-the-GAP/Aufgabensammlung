@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -68,6 +72,7 @@ data-show-partial-solution -->
 __$a)\;\;$__ $  $2(4x-5) = 3x + 5$ \
 $x$ = [[  3  ]] @canvas
 @Algebrite.check(3)
+[[?]] @Explain
 ************
 
 $$
@@ -82,6 +87,8 @@ $$
 
 ************
 
+@resetter
+
 @ADetails(1=BE; Äquivalenzumformung, Distributivgesetz)
 </div>
 <div class="flex-child">
@@ -95,6 +102,7 @@ data-hint-button="3"
 data-show-partial-solution -->
 __$b)\;\;$__ $  3(2x+1) = 4x + 11 $ \
 $x$ = [[  4  ]] @canvas
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -106,6 +114,8 @@ x &= 4
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Distributivgesetz)
 
@@ -122,6 +132,7 @@ data-show-partial-solution -->
 __$c)\;\;$__ $  $2(5x-4) = 3x + 6$ \
 $x$ = [[  2  ]] @canvas
 @Algebrite.check(2)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -134,6 +145,8 @@ x &= 2
 $$
 
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Distributivgesetz)
 </div>
@@ -149,6 +162,7 @@ data-show-partial-solution -->
 __$d)\;\;$__ $  $7(x-2) + 1 = 3x - 1$ \
 $x$ = [[  3  ]] @canvas
 @Algebrite.check(3)
+[[?]] @Explain
 ************
 
 $$
@@ -163,6 +177,8 @@ x &= 3
 $$
 
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Distributivgesetz)
 </div>

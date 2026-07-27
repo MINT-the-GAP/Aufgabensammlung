@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -74,6 +78,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $ \left( 3a + b \right) : \left( 2c \right) = $ [[  7/3  ]] @canvas $\;\;\text{mit:}\;\; a=\dfrac{1}{3}\;\; \wedge\;\; b=\dfrac{1}{6}\;\; \wedge\;\; c=\dfrac{1}{4}$
 @Algebrite.check(7/3)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -90,6 +95,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Einsetzungsverfahren, Distributivgesetz, Vorrangsregeln)
 
@@ -108,6 +115,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $ \left( a : b \right) + \left( c : a \right) = $ [[  31/20  ]] @canvas $\;\;\text{mit:}\;\; a=\dfrac{2}{5}\;\; \wedge\;\; b=\dfrac{1}{2}\;\; \wedge\;\; c=\dfrac{3}{10}$
 @Algebrite.check(31/20)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -122,6 +130,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Einsetzungsverfahren, Vorrangsregeln)
 
@@ -140,6 +150,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $ \left( 2a - b \right)\cdot\left( c : a \right) = $ [[  6/5  ]] @canvas $\;\;\text{mit:}\;\; a=\dfrac{3}{8}\;\; \wedge\;\; b=\dfrac{1}{4}\;\; \wedge\;\; c=\dfrac{9}{10}$
 @Algebrite.check(6/5)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -155,6 +166,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Einsetzungsverfahren, Distributivgesetz, Vorrangsregeln)
 
@@ -173,6 +186,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $ \left( a + c \right) : \left( b - a \right) = $ [[  5/2  ]] @canvas $\;\;\text{mit:}\;\; a=\dfrac{1}{6}\;\; \wedge\;\; b=\dfrac{1}{2}\;\; \wedge\;\; c=\dfrac{2}{3}$
 @Algebrite.check(5/2)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -187,6 +201,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Einsetzungsverfahren, Distributivgesetz)
 
@@ -205,6 +221,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ $ \left( a : 2 + b : 3 \right)\cdot \left( 3c \right) = $ [[  13/8  ]] @canvas $\;\;\text{mit:}\;\; a=\dfrac{4}{5}\;\; \wedge\;\; b=\dfrac{3}{4}\;\; \wedge\;\; c=\dfrac{5}{6}$
 @Algebrite.check(13/8)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -221,6 +238,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Einsetzungsverfahren, Distributivgesetz, Vorrangsregeln)
 
@@ -239,6 +258,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$f)\;\;$__ $ \left( a + b \right) : \left( c - a \right)\cdot b = $ [[  13/25  ]] @canvas $\;\;\text{mit:}\;\; a=\dfrac{1}{4}\;\; \wedge\;\; b=\dfrac{2}{5}\;\; \wedge\;\; c=\dfrac{3}{4}$
 @Algebrite.check(13/25)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -255,6 +275,8 @@ $$
 ************
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Einsetzungsverfahren, Distributivgesetz)
 

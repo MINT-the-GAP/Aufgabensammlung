@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -80,6 +84,7 @@ III.& \qquad -3x + 12y - 6z = 11
 $$
 $x$ = [[  1/2  ]] @canvas,  $y$ = [[  2/3  ]] @canvas  und  $z$ = [[  -3/4  ]] @canvas
 @Algebrite.check([ 1/2; 2/3; -3/4 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -102,6 +107,8 @@ $$
 ************
 
 
+@resetter
+
 @ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 </div>
 <div class="flex-child">
@@ -123,6 +130,7 @@ III.& \qquad -21x + 12y - 6z = -22
 $$
 $x$ = [[  3/7  ]] @canvas,  $y$ = [[  -2/3  ]] @canvas  und  $z$ = [[  5/6  ]] @canvas
 @Algebrite.check([ 3/7; -2/3; 5/6 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -143,6 +151,8 @@ z,x \cap II:& \qquad 7\cdot \dfrac{3}{7} - 3y + 12\cdot \dfrac{5}{6} = 15 \\
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 </div>
@@ -167,6 +177,7 @@ III.& \qquad -12x + 12y - 15z = 13
 $$
 $x$ = [[  -1/3  ]] @canvas,  $y$ = [[  5/4  ]] @canvas  und  $z$ = [[  2/5  ]] @canvas
 @Algebrite.check([ -1/3; 5/4; 2/5 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -187,6 +198,8 @@ z,x \cap I:& \qquad 6\cdot \left(-\dfrac{1}{3}\right) + 8y + 5\cdot \dfrac{2}{5}
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 </div>
@@ -211,6 +224,7 @@ III.& \qquad -9x + 12y - 15z = -22
 $$
 $x$ = [[  7/9  ]] @canvas,  $y$ = [[  -5/6  ]] @canvas  und  $z$ = [[  1/3  ]] @canvas
 @Algebrite.check([ 7/9; -5/6; 1/3 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -230,6 +244,8 @@ z,x \cap I:& \qquad 9\cdot \dfrac{7}{9} + 6y + 3\cdot \dfrac{1}{3} = 3 \\
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 </div>

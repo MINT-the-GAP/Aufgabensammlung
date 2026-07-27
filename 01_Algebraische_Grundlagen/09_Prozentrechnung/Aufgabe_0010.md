@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -62,6 +66,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $ \dfrac{7}{4} =$ [[  175  ]]  % @canvas
 @Algebrite.check([ 175 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Prozent, Dezimalzahlen)
 
@@ -75,6 +82,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $ \dfrac{3}{10000} =$ [[  0,03  ]]  % @canvas
 @Algebrite.check([ 0.03 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Prozent, Dezimalzahlen, Bruchrechnung)
 
@@ -88,6 +98,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $ \dfrac{9}{8} =$ [[  112,5  ]]  % @canvas
 @Algebrite.check([ 112.5 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Prozent, Dezimalzahlen, Bruchrechnung)
 
@@ -101,6 +114,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $ \dfrac{24}{25} =$ [[  96  ]]  % @canvas
 @Algebrite.check([ 96 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Prozent, Bruchrechnung)
 
@@ -114,6 +130,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ $ \dfrac{21}{20} =$ [[  105  ]]  % @canvas
 @Algebrite.check([ 105 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Prozent, Bruchrechnung)
 
@@ -127,6 +146,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$f)\;\;$__ $ \dfrac{15647}{1000} =$ [[  1564,7  ]]  % @canvas
 @Algebrite.check([ 1564.7 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Prozent, Dezimalzahlen, Bruchrechnung)
 

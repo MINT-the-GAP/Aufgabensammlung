@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -65,6 +69,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $\left(-\dfrac{4}{7}\right)^{-1} = $ [[ -7/4 ]] @canvas
 @Algebrite.check([ -7/4 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Bruchrechnung, Negative Zahlen)
 
@@ -78,6 +85,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $-\left(\dfrac{5}{2}\right)^{-2} = $ [[ -4/25 ]] @canvas
 @Algebrite.check([ -4/25 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Bruchrechnung, Negative Zahlen)
 
@@ -91,6 +101,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $\dfrac{-3^{-2}}{4} = $ [[ -1/36 ]] @canvas
 @Algebrite.check([ -1/36 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Bruchrechnung, Negative Zahlen)
 
@@ -104,6 +117,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $\dfrac{2}{(-3)^{-2}} = $ [[ 18 ]] @canvas
 @Algebrite.check([ 18 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Bruchrechnung, Negative Zahlen)
 
@@ -117,6 +133,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ $\left(\dfrac{3}{-5}\right)^{-3} = $ [[ -125/27 ]] @canvas
 @Algebrite.check([ -125/27 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Bruchrechnung, Negative Zahlen)
 
@@ -130,6 +149,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$f)\;\;$__ $-\dfrac{(-2)^{-4}}{3} = $ [[ -1/48 ]] @canvas
 @Algebrite.check([ -1/48 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Bruchrechnung, Negative Zahlen)
 
@@ -143,6 +165,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$g)\;\;$__ $\dfrac{(-4)^{-2}}{-2^{-3}} = $ [[ -1/2 ]] @canvas
 @Algebrite.check([ -1/2 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Bruchrechnung, Negative Zahlen)
 
@@ -156,6 +181,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$h)\;\;$__ $-\left(-\dfrac{2}{3}\right)^{-3} = $ [[ 27/8 ]] @canvas
 @Algebrite.check([ 27/8 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Bruchrechnung, Negative Zahlen)
 

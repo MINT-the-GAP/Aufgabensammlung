@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -84,6 +88,7 @@ III.& \qquad x + 2y - z = 1
 $$  
 $x$ = [[  2  ]] @canvas, $y$ = [[  3  ]] @canvas, $z$ = [[  7  ]] @canvas
 @Algebrite.check([ 2;3;7 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -111,6 +116,8 @@ $$
 ************
 
 
+@resetter
+
 @ADetails(1=BE; Gleichungssysteme)
 
 </div>
@@ -133,6 +140,7 @@ III.& \qquad x + 3y - z = 4
 $$  
 $x$ = [[  3  ]] @canvas, $y$ = [[  2  ]] @canvas, $z$ = [[  5  ]] @canvas
 @Algebrite.check([ 3;2;5 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -159,6 +167,8 @@ y \cap \left( I. \cap II. \right)  &\qquad  x = 2y-1 = 2\cdot 2 - 1 = 3 \\
 $$
 ************
 
+@resetter
+
 @ADetails(1=BE; Gleichungssysteme)
 
 
@@ -182,6 +192,7 @@ III.& \qquad 3x - y + z = 17
 $$  
 $x$ = [[  4  ]] @canvas, $y$ = [[  1  ]] @canvas, $z$ = [[  6  ]] @canvas
 @Algebrite.check([ 4;1;6 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -207,6 +218,8 @@ I \cap II\; &\qquad x + 2(15 - 2x - z) + 3z = 24 \\
 $$
 ************
 
+@resetter
+
 @ADetails(1=BE; Gleichungssysteme)
 
 
@@ -229,6 +242,7 @@ III.& \qquad x - y + 2z = 7
 $$  
 $x$ = [[  5  ]] @canvas, $y$ = [[  4  ]] @canvas, $z$ = [[  3  ]] @canvas
 @Algebrite.check([ 5;4;3 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -249,6 +263,8 @@ I.\cdot 2 \; &\qquad 2x + 4y + 2z = 32 \\
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 

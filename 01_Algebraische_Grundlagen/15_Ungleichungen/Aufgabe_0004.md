@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -75,7 +79,10 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x < $   [[  8  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(8)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung)
 </div>
@@ -90,7 +97,10 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  16  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(16)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung)
 </div>
@@ -105,7 +115,10 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \geq $   [[  14  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(14)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung)
 </div>
@@ -120,7 +133,10 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x > $   [[  13  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(13)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung)
 </div>

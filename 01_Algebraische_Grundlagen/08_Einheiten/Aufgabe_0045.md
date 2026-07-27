@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -68,8 +72,11 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $3349\,\text{min} = $ [[ 3349/60 ]] @canvas $\,\text{h}$ \
 @Algebrite.check(3349/60)
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(BE=1;Einheiten, Zeit)
 
@@ -85,8 +92,11 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $11{,}45\,\text{h} = $ [[ 687 ]] @canvas $\,\text{min}$ \
 @Algebrite.check(687)
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(BE=1;Einheiten, Zeit)
 
@@ -102,8 +112,11 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $459270\,\text{s} = $ [[ 5103/40 ]] @canvas $\,\text{h}$ \
 @Algebrite.check(5103/40)
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(BE=1;Einheiten, Zeit)
 
@@ -119,8 +132,11 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $6704\,\text{s} = $ [[ 1676/15 ]] @canvas $\,\text{min}$ \
 @Algebrite.check(1676/15)
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(BE=1;Einheiten, Zeit)
 
@@ -136,8 +152,11 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ $0{,}6\,\text{d} = $ [[ 72/5 ]] @canvas $\,\text{h}$ \
 @Algebrite.check(72/5)
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(BE=1;Einheiten, Zeit)
 
@@ -153,8 +172,11 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$f)\;\;$__ $9528\,\text{min} = $ [[ 397/60 ]] @canvas $\,\text{d}$ \
 @Algebrite.check(397/60)
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(BE=1;Einheiten, Zeit)
 
@@ -170,8 +192,11 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$g)\;\;$__ $7614\,\text{min} = $ [[ 1269/10 ]] @canvas $\,\text{h}$ \
 @Algebrite.check(1269/10)
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(BE=1;Einheiten, Zeit)
 
@@ -187,8 +212,11 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$h)\;\;$__ $0{,}04\,\text{d} = $ [[ 3456 ]] @canvas $\,\text{s}$ \
 @Algebrite.check(3456)
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(BE=1;Einheiten, Zeit)
 

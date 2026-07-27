@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -62,7 +66,10 @@ data-hint-button="3"  -->
 - [    [ ]           [ ]             [X]     ]  $$ \left|\vec{a}\right| \times s \cdot \vec{b} $$
 - [    ( )           (X)             ( )     ]  $$ \left( \vec{z} \times \lambda\vec{x}\right) \circ \vec{c} $$
 - [    [ ]           [ ]             [X]     ]  $$ \dfrac{\vec{u}-\mu \vec{v}}{\vec{u}+\vec{v}} $$
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Vektoren, Algebra)

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -76,6 +80,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x < $   [[  4  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(4)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -90,6 +95,8 @@ $$
 ******************
 
 
+@resetter
+
 @ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung, Distributivgesetz)
 </div>
 
@@ -103,6 +110,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \leq $   [[  8  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(8)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -115,6 +123,8 @@ x &\le 8
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung, Distributivgesetz)
 </div>
@@ -129,6 +139,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $   [[  14/5  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(14/5)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -143,6 +154,8 @@ $$
 ******************
 
 
+@resetter
+
 @ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung, Distributivgesetz)
 </div>
 
@@ -156,6 +169,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \geq $   [[  8  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(8)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -170,6 +184,8 @@ $$
 ******************
 
 
+@resetter
+
 @ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung, Distributivgesetz)
 </div>
 
@@ -183,6 +199,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \geq $   [[  -2/13  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(-2/13)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -197,6 +214,8 @@ $$
 ******************
 
 
+@resetter
+
 @ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung, Distributivgesetz)
 </div>
 
@@ -210,6 +229,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $   [[  3  ]] @canvas   $\left.   \right\}$
 @Algebrite.check(3)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -222,6 +242,8 @@ x &> \dfrac{5}{2} \;\;\Rightarrow\;\; x \ge 3 \text{ für } \mathbb{N}
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung, Distributivgesetz)
 </div>

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -65,6 +69,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $\dfrac{-3^3}{8} = $ [[ -27/8 ]] @canvas
 @Algebrite.check([ -27/8 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Bruchrechnung, Negative Zahlen)
 
@@ -78,6 +85,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $\dfrac{(-2)^4}{-5} = $ [[ -16/5 ]] @canvas
 @Algebrite.check([ -16/5 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Bruchrechnung, Negative Zahlen)
 
@@ -91,6 +101,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $-\left(-\dfrac{1}{4}\right)^2 = $ [[ -1/16 ]] @canvas
 @Algebrite.check([ -1/16 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Bruchrechnung, Negative Zahlen)
 
@@ -104,6 +117,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $\left(\dfrac{5}{-6}\right)^3 = $ [[ -125/216 ]] @canvas
 @Algebrite.check([ -125/216 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Bruchrechnung, Negative Zahlen)
 
@@ -117,6 +133,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ $\dfrac{-(-3)^2}{7} = $ [[ -9/7 ]] @canvas
 @Algebrite.check([ -9/7 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Bruchrechnung, Negative Zahlen)
 
@@ -130,6 +149,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$f)\;\;$__ $\dfrac{5}{-3^2} = $ [[ -5/9 ]] @canvas
 @Algebrite.check([ -5/9 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Bruchrechnung, Negative Zahlen)
 
@@ -143,6 +165,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$g)\;\;$__ $-\dfrac{-2^3}{9} = $ [[ 8/9 ]] @canvas
 @Algebrite.check([ 8/9 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Bruchrechnung, Negative Zahlen)
 
@@ -156,6 +181,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$h)\;\;$__ $\left(-\dfrac{3^2}{10}\right)^2 = $ [[ 81/100 ]] @canvas
 @Algebrite.check([ 81/100 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Bruchrechnung, Negative Zahlen)
 

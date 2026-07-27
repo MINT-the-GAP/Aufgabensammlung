@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -67,7 +71,9 @@ data-type="none" -->
 |  Millionen  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
 | :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
 |   [[ 0 ]]    |       [[ 8 ]]       |       [[ 3 ]]      |    [[ 5 ]]    |   [[ 0 ]]   |  [[ 6 ]]   | [[ 9 ]]  |
+[[?]] @Explain
 
+@resetter
 
 @ADetails(BE=1;Zahlenverständnis)
 
@@ -83,6 +89,9 @@ data-type="none" -->
 |  Millionen  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
 | :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
 |   [[ 9 ]]    |       [[ 8 ]]       |       [[ 4 ]]      |    [[ 1 ]]    |   [[ 6 ]]   |  [[ 3 ]]   | [[ 1 ]]  |
+[[?]] @Explain
+
+@resetter
 
 @ADetails(BE=1;Zahlenverständnis)
 
@@ -98,7 +107,9 @@ data-type="none" -->
 |  Millionen  |  Hunderttausender  |   Zehntausender   |  Tausender   |  Hunderter |  Zehner   |  Einer  |
 | :---------: | :----------------: | :---------------: | :----------: | :--------: | :-------: | :-----: |
 |   [[ 0 ]]    |       [[ 6 ]]       |       [[ 2 ]]      |    [[ 0 ]]    |   [[ 5 ]]   |  [[ 5 ]]   | [[ 1 ]]  |
+[[?]] @Explain
 
+@resetter
 
 @ADetails(BE=1;Zahlenverständnis)
 

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -69,6 +73,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$a)\;\;$__ $  \dfrac{5}{x-1} = \dfrac{10}{x+1} $ \
 $x$ = [[  3  ]] @canvas
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -83,6 +88,8 @@ x &= 3
 $$
 ************
 
+@resetter
+
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
 <div class="flex-child">
@@ -95,6 +102,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$b)\;\;$__ $  \dfrac{6}{x+1} = \dfrac{9}{2x+1} $ \
 $x$ = [[  1  ]] @canvas
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -109,6 +117,8 @@ x &= 1
 $$
 ************
 
+@resetter
+
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
 <div class="flex-child">
@@ -121,6 +131,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$c)\;\;$__ $  \dfrac{9}{2x-1} = \dfrac{3}{x-4} $ \
 $x$ = [[  11  ]] @canvas
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -135,6 +146,8 @@ x &= 11
 $$
 ************
 
+@resetter
+
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
 <div class="flex-child">
@@ -147,6 +160,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$d)\;\;$__ $  \dfrac{12}{x+3} = \dfrac{8}{x+1} $ \
 $x$ = [[  3  ]] @canvas
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -161,6 +175,8 @@ x &= 3
 $$
 ************
 
+@resetter
+
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
 <div class="flex-child">
@@ -173,6 +189,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$e)\;\;$__ $  \dfrac{3}{x+1} = \dfrac{7}{x+5} $ \
 $x$ = [[  2  ]] @canvas
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -187,6 +204,8 @@ x &= 2
 $$
 ************
 
+@resetter
+
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>
 <div class="flex-child">
@@ -199,6 +218,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 __$f)\;\;$__ $  \dfrac{6}{x+2} = \dfrac{11}{2x+3} $ \
 $x$ = [[  4  ]] @canvas
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -211,6 +231,8 @@ x &= 4
 \end{align*}
 $$
 ************
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung, Bruchrechnung)
 </div>

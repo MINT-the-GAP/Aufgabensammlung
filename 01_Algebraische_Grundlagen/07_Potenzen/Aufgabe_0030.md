@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -65,6 +69,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $11^{-1} = $ [[ 1/11 ]] @canvas
 @Algebrite.check([ 1/11 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Bruchrechnung, Negative Zahlen)
 
@@ -78,6 +85,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $4^{-2} = $ [[ 1/16 ]] @canvas
 @Algebrite.check([ 1/16 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Bruchrechnung, Negative Zahlen)
 
@@ -91,6 +101,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $2^{-6} = $ [[ 1/64 ]] @canvas
 @Algebrite.check([ 1/64 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Bruchrechnung, Negative Zahlen)
 
@@ -104,6 +117,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $12^{-2} = $ [[ 1/144 ]] @canvas
 @Algebrite.check([ 1/144 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Bruchrechnung, Negative Zahlen)
 
@@ -117,6 +133,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ $6^{-3} = $ [[ 1/216 ]] @canvas
 @Algebrite.check([ 1/216 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Bruchrechnung, Negative Zahlen)
 
@@ -130,6 +149,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$f)\;\;$__ $8^{-1} = $ [[ 1/8 ]] @canvas
 @Algebrite.check([ 1/8 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Bruchrechnung, Negative Zahlen)
 

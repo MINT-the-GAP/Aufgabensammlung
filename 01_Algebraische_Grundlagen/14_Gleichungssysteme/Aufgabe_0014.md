@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -79,6 +83,7 @@ II.& \qquad 5x - y = 4
 $$  
 $x$ = [[  19/17  ]] @canvas und  $y$ = [[  27/17  ]] @canvas 
 @Algebrite.check([ 19/17; 27/17 ])
+[[?]] @Explain
 ************
 
 $$
@@ -101,6 +106,8 @@ $$
 
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 </div>
@@ -125,6 +132,7 @@ II.& \qquad 4x + y = 7
 $$  
 $x$ = [[  15/11  ]] @canvas und  $y$ = [[  17/11  ]] @canvas 
 @Algebrite.check([ 15/11; 17/11 ])
+[[?]] @Explain
 ************
 
 $$
@@ -146,6 +154,8 @@ $$
 
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 </div>
@@ -169,6 +179,7 @@ II.& \qquad 3x - y = 2
 $$  
 $x$ = [[  12/11  ]] @canvas und  $y$ = [[  14/11  ]] @canvas 
 @Algebrite.check([ 12/11; 14/11 ])
+[[?]] @Explain
 ************
 
 $$
@@ -191,6 +202,8 @@ $$
 
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 </div>
@@ -215,6 +228,7 @@ II.& \qquad 2x + y = 4
 $$  
 $x$ = [[  17/13  ]] @canvas und  $y$ = [[  18/13  ]] @canvas 
 @Algebrite.check([ 17/13; 18/13 ])
+[[?]] @Explain
 ************
 
 $$
@@ -236,6 +250,8 @@ $$
 
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme, Bruchrechnung)
 </div>

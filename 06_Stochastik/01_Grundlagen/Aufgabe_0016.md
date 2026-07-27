@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -68,7 +72,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 $p=$[[ 2/5 ]]
 @Algebrite.check(2/5)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Chance)
 </div>
@@ -84,7 +91,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 $p=$[[ 5/7 ]]
 @Algebrite.check(5/7)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Chance)
 </div>
@@ -100,7 +110,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 $p=$[[ 11/20 ]]
 @Algebrite.check(11/20)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Chance)
 </div>
@@ -116,7 +129,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 $p=$[[ 17/40 ]]
 @Algebrite.check(17/40)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Chance)
 </div>
@@ -132,7 +148,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 $p=$[[ 1/23 ]]
 @Algebrite.check(1/23)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Chance)
 </div>
@@ -148,7 +167,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 $p=$[[ 45/47 ]]
 @Algebrite.check(45/47)
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Chance)
 </div>

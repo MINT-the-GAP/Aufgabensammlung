@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -67,10 +71,13 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 [[  720    ]] 
+[[?]] @Explain
 **********
 $6! = 720$
 **********
 
+
+@resetter
 
 @ADetails(1=BE; Wahrscheinlichkeit)
 
@@ -88,10 +95,13 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 [[  56     ]] 
+[[?]] @Explain
 **********
 $\dfrac{8!}{5!3!} = 56$
 **********
 
+
+@resetter
 
 @ADetails(1=BE; Wahrscheinlichkeit)
 
@@ -110,10 +120,13 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 [[  220    ]] 
+[[?]] @Explain
 **********
 $\dfrac{12!}{6!3!} = 220$
 **********
 
+
+@resetter
 
 @ADetails(1=BE; Wahrscheinlichkeit)
 

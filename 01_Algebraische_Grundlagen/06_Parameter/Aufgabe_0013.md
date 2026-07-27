@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -74,10 +78,13 @@ data-sortable="false" -->
 | $\dfrac{5}{6}$ | $\dfrac{2}{5}$ | $\dfrac{1}{3}$ | [[ 61/30 ]] @canvas | [[ 7/15 ]] @canvas | [[ 7/4 ]] @canvas |
 | $\dfrac{7}{8}$ | $\dfrac{3}{4}$ | $\dfrac{1}{2}$ | [[ 19/8 ]] @canvas | [[ 33/32 ]] @canvas | [[ 2/3 ]] @canvas |
 @Algebrite.check([ 11/4; 1/2; 5/4; 8/3; 5/18; 11/6; 61/30; 7/15; 7/4; 19/8; 33/32; 2/3 ])
+[[?]] @Explain
 
 
 
 
 
+
+@resetter
 
 @ADetails(1=BE; Einsetzungsverfahren, Tabelle, Bruchrechnung)

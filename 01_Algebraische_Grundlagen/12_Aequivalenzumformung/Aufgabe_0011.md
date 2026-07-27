@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -71,6 +75,7 @@ data-show-partial-solution -->
 __$a)\;\;$__ $  x - 4 = 9 $ \
 $x$ = [[  13  ]] @canvas
 @Algebrite.check([ 13 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -80,6 +85,8 @@ x   & = 13  \\
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung)
 
@@ -97,6 +104,7 @@ data-show-partial-solution -->
 __$b)\;\;$__ $  4 \cdot x = 36$ \
 $x$ =  [[  9   ]] @canvas
 @Algebrite.check([ 9 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -106,6 +114,8 @@ x   & = 9  \\
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung)
 
@@ -124,6 +134,7 @@ data-show-partial-solution -->
 __$c)\;\;$__ $  7 = \dfrac{x}{6}  $ \
 $x$ =  [[  42  ]] @canvas
 @Algebrite.check([ 42 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -133,6 +144,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung)
 
@@ -151,6 +164,7 @@ data-show-partial-solution -->
 __$d)\;\;$__ $ 3 = x - 5 $ \
 $x$ =  [[  8   ]] @canvas
 @Algebrite.check([ 8 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -160,6 +174,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung)
 
@@ -177,6 +193,7 @@ data-show-partial-solution -->
 __$e)\;\;$__ $  x + 8  = 13 $ \
 $x$ =  [[  5   ]] @canvas
 @Algebrite.check([ 5 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -186,6 +203,8 @@ x   & = 5  \\
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung)
 
@@ -203,6 +222,7 @@ data-show-partial-solution -->
 __$f)\;\;$__ $  64 = 4 \cdot x  $ \
 $x$ =  [[  16  ]] @canvas
 @Algebrite.check([ 16 ])
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -212,6 +232,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Äquivalenzumformung)
 

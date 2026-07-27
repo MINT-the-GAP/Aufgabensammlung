@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -87,6 +91,9 @@ Die beiden Terme für [[   y   ]] @canvas werden [[   gleichgesetzt   ]] @canvas
 Nach dem [[  Zusammenfassen  ]] @canvas folgt $21 = 7x$.
 Durch Division mit [[   7   ]] @canvas ergibt sich $x = 3$.
 Der Wert für $x$ wird in die [[   erste   ]] @canvas Gleichung [[   eingesetzt  ]] @canvas, sodass $y = 7$ bestimmt wird.
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 
@@ -127,6 +134,9 @@ Dies lässt sich zu $-13x + 78 = 26$ [[   zusammenfassen   ]] @canvas.
 Durch [[  Subtraktion  ]] @canvas von [[ 78 ]] @canvas auf beiden Seiten folgt $-13x = -52$.
 Durch Division mit [[  -13  ]] @canvas wird $x = 4$ erhalten.
 Der Wert für $x$ wird in die [[   erste  ]] @canvas Gleichung [[   eingesetzt   ]] @canvas, sodass schließlich $y = 6$ bestimmt wird.
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 
@@ -166,6 +176,9 @@ Durch [[  Division  ]] @canvas mit [[  14  ]] @canvas ergibt sich $x = 4$.
 Der erhaltene Wert wird in die zweite [[  Gleichung  ]] @canvas [[   eingesetzt   ]] @canvas, woraus $16 - y = 11$ folgt.
 Durch [[  Subtraktion  ]] @canvas von [[  16  ]] @canvas auf beiden Seiten ergibt sich $-y = -5$.
 Durch [[  Multiplikation  ]] @canvas mit [[  -1  ]] @canvas wird schließlich $y = 5$ bestimmt.
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Gleichungssysteme)
 

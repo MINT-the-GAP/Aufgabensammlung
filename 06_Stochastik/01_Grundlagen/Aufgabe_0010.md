@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -64,10 +68,13 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ **Gib** die Spannweite **an**.\
 $R=$ [[ 12  ]]
+[[?]] @Explain
 *******************
 $R = x_{max} - x_{min} = 36 - 24 = 12$
 *******************
 
+
+@resetter
 
 @ADetails(1=BE; Spannweite)
 
@@ -84,10 +91,13 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ **Gib** den Median **an**.\
 $\tilde{x}=$ [[ 31  ]]
+[[?]] @Explain
 *******************
 $\{ 24,27,28,28,29,29,30,\textcolor{red}{31},32,33,34,35,35,35,36 \}$
 *******************
 
+
+@resetter
 
 @ADetails(1=BE; Median)
 
@@ -104,7 +114,10 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ **Gib** das arithmetische Mittel gerundet auf drei Nachkommastellen **an**.\
 $\bar{x}=$ [[  33,067  ]]
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Arithmetisches Mittel, Runden)
 

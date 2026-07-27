@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -65,7 +69,10 @@ data-hint-button="3"  -->
 $97 \quad 91 \quad 85 \quad 79 \quad 73 \quad 67 \quad $ [[ 61 ]] @canvas $\quad$ [[ 55 ]] @canvas $\quad$ [[ 49 ]] @canvas \
 
 [[?]] Musterbeschreibung: Von der vorherigen Zahl wird $6$ subtrahiert.
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Folge)
 
@@ -82,7 +89,10 @@ data-hint-button="3"  -->
 $1 \quad 11 \quad 111 \quad 1111 \quad 11111 \quad $ [[ 111111 ]] @canvas $\quad$ [[ 1111111 ]] @canvas $\quad$ [[ 11111111 ]] @canvas \
 
 [[?]] Musterbeschreibung: Die nächste $10$er-Potenz wird zur vorherigen Zahl addiert.
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Folge)
 
@@ -99,7 +109,10 @@ data-hint-button="3"  -->
 $43 \quad 57 \quad 71 \quad 85 \quad 99 \quad 113 \quad$ [[ 127 ]] @canvas $\quad$ [[ 141 ]] @canvas $\quad$ [[ 155 ]] @canvas \
 
 [[?]] Musterbeschreibung: Startend bei der $43$ wird zur vorherigen Zahl immer $14$ addiert.
+[[?]] @Explain
 
+
+@resetter
 
 @ADetails(1=BE; Folge)
 

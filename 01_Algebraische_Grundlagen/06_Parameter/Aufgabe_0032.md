@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -74,8 +78,11 @@ data-sortable="false" -->
 | $0{,}\overline{8}$ | $0{,}4$ | $4{,}5$ | [[ 4,4 ]] @canvas | [[ 5,8 ]] @canvas | [[ 10 ]] @canvas |
 | $1{,}\overline{6}$ | $0{,}5$ | $0{,}6$ | [[ 1,5 ]] @canvas | [[ 1,3 ]] @canvas | [[ 2 ]] @canvas |
 @Algebrite.check([ 1.4; 1.6; 2.5; 1.8; 1.6; 1.25; 4.4; 5.8; 10; 1.5; 1.3; 2 ])
+[[?]] @Explain
 
 
 
+
+@resetter
 
 @ADetails(1=BE; Einsetzungsverfahren, Tabelle, Dezimalzahlen, Periodizitäten)

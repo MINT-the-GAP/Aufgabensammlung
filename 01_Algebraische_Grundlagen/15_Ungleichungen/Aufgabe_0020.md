@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -76,6 +80,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \geq $ [[ 16/5 ]] @canvas $\left. \right\}$
 @Algebrite.check(16/5)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -90,6 +95,8 @@ $$
 ******************
 
 
+@resetter
+
 @ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung, Distributivgesetz)
 </div>
 
@@ -103,6 +110,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $ [[ 7 ]] @canvas $\left. \right\}$
 @Algebrite.check(7)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -115,6 +123,8 @@ x &> 6 \;\;\Rightarrow\;\; x \ge 7 \text{ für } \mathbb{N}
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung, Distributivgesetz)
 </div>
@@ -129,6 +139,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{R} \right| x \leq $ [[ -26 ]] @canvas $\left. \right\}$
 @Algebrite.check(-26)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -143,6 +154,8 @@ $$
 ******************
 
 
+@resetter
+
 @ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung, Distributivgesetz)
 </div>
 
@@ -156,6 +169,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Z} \right| x \leq $ [[ 20 ]] @canvas $\left. \right\}$
 @Algebrite.check(20)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -170,6 +184,8 @@ $$
 ******************
 
 
+@resetter
+
 @ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung, Distributivgesetz)
 </div>
 
@@ -183,6 +199,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{Q} \right| x \leq $ [[ 23/7 ]] @canvas $\left. \right\}$
 @Algebrite.check(23/7)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -197,6 +214,8 @@ $$
 ******************
 
 
+@resetter
+
 @ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung, Distributivgesetz)
 </div>
 
@@ -210,6 +229,7 @@ data-solution-button="5"
 data-hint-button="3" -->
 $\mathbb{L} = \left\{ x \in \mathbb{N} \right| x \geq $ [[ 1 ]] @canvas $\left. \right\}$
 @Algebrite.check(1)
+[[?]] @Explain
 ******************
 $$
 \begin{align*}
@@ -223,6 +243,8 @@ x &> \dfrac{7}{9} \;\;\Rightarrow\;\; x \ge 1 \text{ für } \mathbb{N}
 $$
 ******************
 
+
+@resetter
 
 @ADetails(1=BE; Ungleichung, Mengen, Bruchrechnung, Distributivgesetz)
 </div>

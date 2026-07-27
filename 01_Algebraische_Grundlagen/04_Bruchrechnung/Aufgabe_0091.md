@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -74,6 +78,7 @@ data-hint-button="3"  -->
 __$a)\;\;$__ Wie viel sind $\dfrac{7}{4}$ von $\dfrac{5}{6}$ von $36\,$€?  \
 [[  105/2  ]] € @canvas
 @Algebrite.check(105/2)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -86,6 +91,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil)
 
@@ -104,6 +111,7 @@ data-hint-button="3"  -->
 __$b)\;\;$__ Wie viel sind $\dfrac{9}{8}$ von $\dfrac{2}{3}$ von $45\,$kg?  \
 [[  135/4  ]] kg @canvas
 @Algebrite.check(135/4)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -115,6 +123,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil)
 
@@ -133,6 +143,7 @@ data-hint-button="3"  -->
 __$c)\;\;$__ Wie viel sind $\dfrac{4}{5}$ von $\dfrac{7}{9}$ von $80\,$min?  \
 [[  448/9  ]] min @canvas
 @Algebrite.check(448/9)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -144,6 +155,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil)
 
@@ -162,6 +175,7 @@ data-hint-button="3"  -->
 __$d)\;\;$__ Wie viel sind $\dfrac{11}{12}$ von $\dfrac{3}{5}$ von $95\,\ell$?  \
 [[  209/4  ]] $\ell$ @canvas
 @Algebrite.check(209/4)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -173,6 +187,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil)
 
@@ -191,6 +207,7 @@ data-hint-button="3"  -->
 __$e)\;\;$__ Wie viel sind $\dfrac{5}{6}$ von $\dfrac{7}{8}$ von $64\,$m?  \
 [[  140/3  ]] m @canvas
 @Algebrite.check(140/3)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -202,6 +219,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil)
 
@@ -220,6 +239,7 @@ data-hint-button="3"  -->
 __$f)\;\;$__ Wie viel sind $\dfrac{7}{5}$ von $\dfrac{3}{8}$ von $50\,$€?  \
 [[  105/4  ]] € @canvas
 @Algebrite.check(105/4)
+[[?]] @Explain
 ************
 $$
 \begin{align*}
@@ -231,6 +251,8 @@ $$
 $$
 ************
 
+
+@resetter
 
 @ADetails(1=BE; Bruchrechnung, Anteil)
 

@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -62,9 +66,12 @@ __$a)\;\;$__ $\dfrac{4}{5}$
 
 @circleQuiz(4/5, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
 data-hint-button="3" -->)
+[[?]] @Explain
 
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruch darstellen, Zahlenverständnis)
 
@@ -75,8 +82,11 @@ __$b)\;\;$__ $\dfrac{7}{11}$
 
 @circleQuiz(7/11, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
 data-hint-button="3" -->)
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruch darstellen, Zahlenverständnis)
 
@@ -87,8 +97,11 @@ __$c)\;\;$__ $\dfrac{13}{15}$
 
 @circleQuiz(13/15, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
 data-hint-button="3" -->)
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruch darstellen, Zahlenverständnis)
 
@@ -99,8 +112,11 @@ __$d)\;\;$__ $\dfrac{11}{24}$
 
 @circleQuiz(11/24, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
 data-hint-button="3" -->)
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruch darstellen, Zahlenverständnis)
 
@@ -111,8 +127,11 @@ __$e)\;\;$__ $\dfrac{17}{29}$
 
 @circleQuiz(17/29, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
 data-hint-button="3" -->)
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruch darstellen, Zahlenverständnis)
 
@@ -123,8 +142,11 @@ __$f)\;\;$__ $\dfrac{7}{32}$
 
 @circleQuiz(7/32, <!-- data-solution-timer="5s" data-solution-timer-start="oncheck" data-solution-timer-badge="off" data-solution-button="5" 
 data-hint-button="3" -->)
+[[?]] @Explain
 
 
+
+@resetter
 
 @ADetails(1=BE; Bruch darstellen, Zahlenverständnis)
 

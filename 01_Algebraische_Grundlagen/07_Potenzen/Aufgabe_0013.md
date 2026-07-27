@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
@@ -64,6 +68,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$a)\;\;$__ $(-0{,}5)^3 = $ [[ -0,125 ]] @canvas
 @Algebrite.check([ -0.125 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Dezimalzahlen, Negative Zahlen)
 
@@ -77,6 +84,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$b)\;\;$__ $-1{,}3^2 = $ [[ -1,69 ]] @canvas
 @Algebrite.check([ -1.69 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Dezimalzahlen, Negative Zahlen)
 
@@ -90,6 +100,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$c)\;\;$__ $(-0{,}45)^2 = $ [[ 0,2025 ]] @canvas
 @Algebrite.check([ 0.2025 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Dezimalzahlen, Negative Zahlen)
 
@@ -103,6 +116,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$d)\;\;$__ $(-1{,}2)^3 = $ [[ -1,728 ]] @canvas
 @Algebrite.check([ -1.728 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Dezimalzahlen, Negative Zahlen)
 
@@ -116,6 +132,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$e)\;\;$__ $-0{,}9^4 = $ [[ -0,6561 ]] @canvas
 @Algebrite.check([ -0.6561 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Dezimalzahlen, Negative Zahlen)
 
@@ -129,6 +148,9 @@ data-solution-button="5"
 data-hint-button="3"  -->
 __$f)\;\;$__ $(-2{,}4)^2 = $ [[ 5,76 ]] @canvas
 @Algebrite.check([ 5.76 ])
+[[?]] @Explain
+
+@resetter
 
 @ADetails(1=BE; Potenzen, Dezimalzahlen, Negative Zahlen)
 

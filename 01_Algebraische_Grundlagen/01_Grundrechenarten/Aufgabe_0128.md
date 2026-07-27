@@ -16,8 +16,12 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
 
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
@@ -49,6 +53,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $4827 + 3968 + 2749 + 1856=$[[ 13400  ]] @canvas
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -62,6 +67,8 @@ $$
 $$
 ****************
 
+@resetter
+
 @ADetails(1=BE;Addition, Grundrechenarten)
 </div>
 
@@ -74,6 +81,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $6315 + 2487 + 3596 + 1742=$[[ 14140  ]] @canvas
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -87,6 +95,8 @@ $$
 $$
 ****************
 
+@resetter
+
 @ADetails(1=BE;Addition, Grundrechenarten)
 </div>
 
@@ -99,6 +109,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $4206 + 3114 + 1523 + 2051=$[[ 10894  ]] @canvas
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -112,6 +123,8 @@ $$
 $$
 ****************
 
+@resetter
+
 @ADetails(1=BE;Addition, Grundrechenarten)
 </div>
 
@@ -124,6 +137,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $5784 + 2679 + 1846 + 3925=$[[ 14234  ]] @canvas
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -137,6 +151,8 @@ $$
 $$
 ****************
 
+@resetter
+
 @ADetails(1=BE;Addition, Grundrechenarten)
 </div>
 
@@ -149,6 +165,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $8045 + 1678 + 2459 + 1337=$[[ 13519  ]] @canvas
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -162,6 +179,8 @@ $$
 $$
 ****************
 
+@resetter
+
 @ADetails(1=BE;Addition, Grundrechenarten)
 </div>
 
@@ -174,6 +193,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 $9250 + 3184 + 1466 + 2073=$[[ 15973  ]] @canvas
+[[?]] @Explain
 ****************
 $$
 \begin{align*}
@@ -186,6 +206,8 @@ $$
 \end{align*}
 $$
 ****************
+
+@resetter
 
 @ADetails(1=BE;Addition, Grundrechenarten)
 </div>
