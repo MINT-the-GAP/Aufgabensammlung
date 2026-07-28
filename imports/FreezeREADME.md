@@ -95,8 +95,6 @@ script: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 <div data-snapshot-eval="1" style="display:none;"></div>
 @end
 
-@resetter
-
 @ADetails
 <span class="lia-assignment-details" data-adetails="@0" style="display:none !important;"></span>
 @end

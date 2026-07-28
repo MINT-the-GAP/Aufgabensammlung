@@ -24,6 +24,9 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Test template macros
+        run: node scripts/test-template-macros.cjs
+
       - name: Set up dependencies
         run: npm install -g @liascript/exporter
 
