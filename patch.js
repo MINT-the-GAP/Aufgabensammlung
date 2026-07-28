@@ -34,6 +34,11 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
         .trim()
     }
 
+    function normalizeThemeText(value) {
+      const normalized = normalizeText(value)
+      return normalized === 'dreieck' ? 'dreiecke' : normalized
+    }
+
     var SCHULLIA_SACHSEN = /* SCHULLIA_SACHSEN_LB_START */{"themes":{"oberschule":{"5":{"1":["addition","assoziativgesetz","differenz","distributivgesetz","division","ggt","gleichung","grundrechenarten","kgv","kommutativgesetz","multiplikation","potenzen","quersumme","runden","subtraktion","teilbarkeiten","teilermengen","überschlagen","ungleichungen","variable","vielfachmengen","vorrangsregeln","wurzeln","zahlenstrahl","zahlenverständnis"],"2":["arithmetische mittelwert","arithmetisches mittel","bruchrechnung","dezimalzahlen","durchschnitt","einheiten","länge","masse","periodizität","prozent","sachaufgabe","zeit"],"3":["fläche","koordinatensystem","lagebeziehung","punkt","rechteck","umfang","volumen","winkel"],"extra":["zahlensysteme","häufigkeit","kombinatorik","tabelle"]},"6":{"1":["kehrwert","mengen","verhältnisse"],"2":["antiproportional","beliebige zuordnung","proportional","zuordnung"],"3":["dreieck","dreiecke","eindeutigkeit","vierecke","winkelbeziehungen"],"4":["quader"],"5":["chance","wahrscheinlichkeit"]},"7HS":{"2":["prozentrechnung"],"3":["algebra","betrag","negative zahlen","term","terme"]},"8HS":{"2":["äquivalenzumformung"]},"9HS":{"1":["trigonometrie"],"3":["lineare funktionen"],"extra":["median","spannweite"]},"7RS":{"1":["prozentrechnung"],"2":["wahrscheinlichkeit"],"3":["algebra","äquivalenzumformung","betrag","negative zahlen","terme"]},"8RS":{"2":["additionsverfahren","definitionsbereich","einsetzungsverfahren","gleichungssysteme","lineare funktionen","parameter","stelle","wertebereich"],"5":["baumdiagramm","fakultät"]},"9RS":{"1":["trigonometrie"],"3":["quadratische ergänzung","quadratische funktionen","scheitelpunktsform","verhalten"],"4":["median","spannweite"]},"10RS":{"3":["erwartungswert"]}},"bgy":{"11":{"1":["bedingte wahrscheinlichkeit","kontingenztafel","kontingenztafeln","unbedingte wahrscheinlichkeit","vereinigung","vierfeldertafel","vierfeldertafeln"],"3":["logarithmen","logarithmus"]},"12GK":{"1":["binomialkoeffizient","binomialverteilung","standardabweichung"],"2":["ableitungen","grafisches ableiten","grenzwerte"],"5":["skalarprodukt","vektoren"],"6":["abstand"],"extra":["vektorprodukt"]},"12LK":{}},"gymnasium":{"5":{"1":["addition","assoziativgesetz","differenz","distributivgesetz","division","folgen","ggt","gleichung","grundrechenarten","kgv","kommutativgesetz","multiplikation","potenzen","quersumme","runden","sachaufgabe","subtraktion","teilbarkeiten","teilermengen","terme","überschlagen","vielfachmengen","vorrangsregeln","zahlenstrahl","zahlenverständnis"],"2":["arithmetisches mittel","dezimalzahlen","durchschnitt","periodizität","prozent"],"3":["koordinatensystem","lagebeziehung","punkt","winkel","winkelbeziehungen"],"4":["fläche","quader","rechteck","umfang","volumen"],"5":["einheiten","länge","masse","zeit"],"extra":["zahlensysteme"]},"6":{"1":["bruchrechnung","kehrwert","mengen","variable"],"2":["antiproportional","beliebige zuordnung","chance","eindeutigkeit","häufigkeit","proportional","tabelle","verhältnisse","zuordnung"],"3":["dreieck","dreiecke","vierecke"]},"7":{"2":["algebra","äquivalenzumformung","betrag","negative zahlen","prozentrechnung","wurzeln"]},"8":{"1":["terme","ungleichungen"],"2":["baumdiagramm","kombinatorik","median","spannweite","unbedingte wahrscheinlichkeit","vereinigung","wahrscheinlichkeit"],"3":["additionsverfahren","definitionsbereich","einsetzungsverfahren","gleichungssysteme","lineare funktionen","parameter","stelle","verhalten","wertebereich"]},"9":{"1":["quadratische ergänzung","quadratische funktionen","scheitelpunktsform"],"3":["trigonometrie"],"4":["standardabweichung"]},"10":{"2":["erwartungswert"],"4":["grenzwerte","infimum","logarithmen","logarithmus","supremum"]},"11GK":{"1":["ableitungen","grafisches ableiten","signum"],"3":["vektoren"],"4":["bedingte wahrscheinlichkeit","binomialkoeffizient","binomialverteilung","fakultät","hypergeometrische verteilung","kontingenztafel","kontingenztafeln","vierfeldertafel"],"7":["abstand","skalarprodukt","vektorprodukt"]},"11LK":{"1":["ableitungen","grafisches ableiten","signum"],"3":["vektoren"],"4":["bedingte wahrscheinlichkeit","binomialkoeffizient","binomialverteilung","fakultät","hypergeometrische verteilung","kontingenztafel","kontingenztafeln","vierfeldertafel"],"8":["abstand","skalarprodukt","vektorprodukt"]}}},"lbCount":{"oberschule":{"5":4,"6":5,"7HS":4,"8HS":5,"9HS":4,"7RS":4,"8RS":6,"9RS":4,"10RS":4},"bgy":{"11":4,"12GK":6,"12LK":7},"gymnasium":{"5":5,"6":5,"7":4,"8":5,"9":5,"10":5,"11GK":8,"11LK":9}},"lbTitles":{"oberschule":{"5":{"1":"Natürliche Zahlen","2":"Gemeine Brüche, Dezimalzahlen und Größen","3":"Geometrische Grundformen","4":"Symmetrie und deckungsgleiche Figuren"},"6":{"1":"Gebrochene Zahlen","2":"Zuordnungen in der Umwelt","3":"Geometrie in der Ebene","4":"Geometrische Körper","5":"Mathematik im Alltag"},"7HS":{"1":"Zusammengesetzte Flächen und Körper","2":"Anteile und Prozente","3":"Rationale Zahlen","4":"Vielecke und Prismen"},"8HS":{"1":"Wirtschaftliches Rechnen","2":"Formeln und Gleichungen","3":"Vom Vieleck zum Kreis","4":"Kreiszylinder und Hohlzylinder","5":"Mathematik im Alltag"},"9HS":{"1":"Rechtwinklige Dreiecke","2":"Körperdarstellung und Körperberechnung","3":"Funktionale Zusammenhänge","4":"Mathematik im Alltag"},"7RS":{"1":"Prozent- und Zinsrechnung","2":"Elemente der Stochastik","3":"Rationale Zahlen und Gleichungen","4":"Vielecke und Prismen"},"8RS":{"1":"Lineare Gleichungen","2":"Lineare Funktionen und Gleichungssysteme","3":"Kreis und Kreiszylinder","4":"Ähnlichkeit","5":"Zufällige Ereignisse","6":"Mathematik im Alltag"},"9RS":{"1":"Rechtwinklige Dreiecke","2":"Pyramiden, Kreiskegel, Kugel","3":"Quadratische Funktionen und quadratische Gleichungen","4":"Beschreibende Statistik"},"10RS":{"1":"Dreiecke und Vierecke","2":"Funktionale Zusammenhänge","3":"Zufallsgrößen","4":"Mathematik im Alltag"}},"bgy":{"11":{"1":"Ermitteln von Wahrscheinlichkeiten bei mehrstufigen Zufallsversuchen","2":"Beschreiben und Lösen inner- und außermathematischer Probleme","3":"Funktionale Zusammenhänge","4":"Lineare Gleichungssysteme und Matrizen"},"12GK":{"1":"Diskrete Zufallsgrößen","2":"Differenzialrechnung","3":"Integralrechnung","4":"Beurteilende Statistik","5":"Vektorgeometrie","6":"Weitere Anwendungen"},"12LK":{"1":"Diskrete Zufallsgrößen","2":"Differenzialrechnung","3":"Integralrechnung","4":"Normalverteilte Zufallsgrößen","5":"Beurteilende Statistik","6":"Vektorgeometrie","7":"Weitere Anwendungen"}},"gymnasium":{"5":{"1":"Arbeiten mit natürlichen Zahlen","2":"Gemeine Brüche und Dezimalzahlen","3":"Lagebeziehungen geometrischer Objekte","4":"Rechtecke und Quader","5":"Vernetzung: Mathematik im Alltag"},"6":{"1":"Arbeiten mit gebrochenen Zahlen","2":"Zuordnungen in der Umwelt","3":"Dreiecke und Vierecke","4":"Prismen","5":"Vernetzung: Anteile"},"7":{"1":"Geometrie in der Ebene","2":"Arbeiten mit rationalen Zahlen","3":"Darstellen und Berechnen von Prismen und Pyramiden","4":"Vernetzung: Darstellen von Daten"},"8":{"1":"Arbeiten mit Termen und Gleichungen","2":"Zufallsversuche","3":"Funktionen und lineare Gleichungssysteme","4":"Ähnlichkeit","5":"Vernetzung: Heuristische Strategien"},"9":{"1":"Funktionen und Potenzen","2":"Kreise, Kreiszylinder und Kugeln","3":"Rechtwinklige Dreiecke","4":"Auswerten von Daten","5":"Vernetzung: Mathematik und moderne Rechentechnik"},"10":{"1":"Wachstumsvorgänge und periodische Vorgänge","2":"Diskrete Zufallsgrößen","3":"Algebraisches Lösen geometrischer Probleme","4":"Funktionale Zusammenhänge","5":"Vernetzung: Zinsrechnung"},"11GK":{"1":"Differentialrechnung","2":"Matrizen","3":"Vektoren, Geraden und Ebenen","4":"Binomialverteilte Zufallsgrößen","5":"Integralrechnung","6":"Beurteilende Statistik","7":"Abstände und Winkel","8":"Weitere Anwendungen"},"11LK":{"1":"Differentialrechnung","2":"Matrizen","3":"Vektoren, Geraden und Ebenen","4":"Binomialverteilte Zufallsgrößen","5":"Integralrechnung","6":"Normalverteilte Zufallsgrößen","7":"Beurteilende Statistik","8":"Abstände und Winkel","9":"Weitere Anwendungen"}}}}/* SCHULLIA_SACHSEN_LB_END */;
 
     function schulliaSchoolThemes(schoolType) {
@@ -128,7 +133,7 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
         Object.keys(classes).forEach(function (classKey) {
           var lbs = classes[classKey]
           Object.keys(lbs).forEach(function (lbKey) {
-            lbs[lbKey].forEach(function (theme) { set.add(normalizeText(theme)) })
+            lbs[lbKey].forEach(function (theme) { set.add(normalizeThemeText(theme)) })
           })
         })
       })
@@ -164,12 +169,12 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
       var allowed = new Set()
       schulliaLowerClassRefs(schulart, klasse, zweig).forEach(function (ref) {
         schulliaThemesForClassKey(ref[0], ref[1]).forEach(function (theme) {
-          allowed.add(normalizeText(theme))
+          allowed.add(normalizeThemeText(theme))
         })
       })
       schulliaCheckedLbNumbers().forEach(function (lbNumber) {
         schulliaThemesForClassKeyLb(schulart, classKey, lbNumber).forEach(function (theme) {
-          allowed.add(normalizeText(theme))
+          allowed.add(normalizeThemeText(theme))
         })
       })
       return allowed
@@ -180,13 +185,13 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
       if (!allowed) return
       var selected = (window.selectedCourseThemes || []).slice()
       selected.forEach(function (theme) {
-        if (!allowed.has(normalizeText(theme)) && typeof removeCourseThemeChip === 'function') {
+        if (!allowed.has(normalizeThemeText(theme)) && typeof removeCourseThemeChip === 'function') {
           removeCourseThemeChip(theme)
         }
       })
       var blocked = (window.blockedCourseThemes || []).slice()
       blocked.forEach(function (theme) {
-        if (!allowed.has(normalizeText(theme)) && typeof removeBlockedCourseThemeChip === 'function') {
+        if (!allowed.has(normalizeThemeText(theme)) && typeof removeBlockedCourseThemeChip === 'function') {
           removeBlockedCourseThemeChip(theme)
         }
       })
@@ -235,7 +240,7 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
 
       var curriculumAllowed = computeCurriculumAllowedSet()
       var visibleOptions = curriculumAllowed
-        ? options.filter(function (entry) { return curriculumAllowed.has(normalizeText(entry.value)) })
+        ? options.filter(function (entry) { return curriculumAllowed.has(normalizeThemeText(entry.value)) })
         : options
 
             function fillThemeSelect(selectEl) {
@@ -318,7 +323,7 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
             const blockSet = new Set(getBlockedCourseThemes().map(normalizeText))
 
             Array.from(includeSelect.options).forEach(function (opt) {
-                const key = normalizeText(opt.value)
+                const key = normalizeThemeText(opt.value)
                 if (!key) {
                     opt.disabled = false
                     return
@@ -327,7 +332,7 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
             })
 
             Array.from(blockSelect.options).forEach(function (opt) {
-                const key = normalizeText(opt.value)
+                const key = normalizeThemeText(opt.value)
                 if (!key) {
                     opt.disabled = false
                     return
@@ -377,10 +382,10 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
 
             const selectedThemes = getSelectedCourseThemes()
             const blockedThemes = getBlockedCourseThemes()
-            const normalized = normalizeText(value)
+            const normalized = normalizeThemeText(value)
 
-            if (blockedThemes.some(function (entry) { return normalizeText(entry) === normalized })) return
-            if (selectedThemes.some(function (entry) { return normalizeText(entry) === normalized })) return
+            if (blockedThemes.some(function (entry) { return normalizeThemeText(entry) === normalized })) return
+            if (selectedThemes.some(function (entry) { return normalizeThemeText(entry) === normalized })) return
 
             selectedThemes.push(value)
             updateCourseThemeSelectionState()
@@ -394,10 +399,10 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
 
             const selectedThemes = getSelectedCourseThemes()
             const blockedThemes = getBlockedCourseThemes()
-            const normalized = normalizeText(value)
+            const normalized = normalizeThemeText(value)
 
-            if (selectedThemes.some(function (entry) { return normalizeText(entry) === normalized })) return
-            if (blockedThemes.some(function (entry) { return normalizeText(entry) === normalized })) return
+            if (selectedThemes.some(function (entry) { return normalizeThemeText(entry) === normalized })) return
+            if (blockedThemes.some(function (entry) { return normalizeThemeText(entry) === normalized })) return
 
             blockedThemes.push(value)
             updateCourseThemeSelectionState()
@@ -407,9 +412,9 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
 
         function removeCourseThemeChip(themeValue) {
             const selectedThemes = getSelectedCourseThemes()
-            const normalized = normalizeText(themeValue)
+            const normalized = normalizeThemeText(themeValue)
             const index = selectedThemes.findIndex(function (entry) {
-                return normalizeText(entry) === normalized
+                return normalizeThemeText(entry) === normalized
             })
             if (index < 0) return
 
@@ -420,9 +425,9 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
 
         function removeBlockedCourseThemeChip(themeValue) {
             const blockedThemes = getBlockedCourseThemes()
-            const normalized = normalizeText(themeValue)
+            const normalized = normalizeThemeText(themeValue)
             const index = blockedThemes.findIndex(function (entry) {
-                return normalizeText(entry) === normalized
+                return normalizeThemeText(entry) === normalized
             })
             if (index < 0) return
 
@@ -445,7 +450,7 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
             const normalizedThemes = new Set(
                 (Array.isArray(themeValues) ? themeValues : [themeValues])
                     .map(function (entry) {
-                        return normalizeText(entry)
+                        return normalizeThemeText(entry)
                     })
                     .filter(Boolean)
             )
@@ -454,7 +459,7 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
             const blockedThemes = new Set(
                 (Array.isArray(blockedThemeValues) ? blockedThemeValues : [blockedThemeValues])
                     .map(function (entry) {
-                        return normalizeText(entry)
+                        return normalizeThemeText(entry)
                     })
                     .filter(Boolean)
             )
@@ -465,7 +470,7 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
                 const categories = String(card.dataset.category || '')
                     .split('|')
                     .map(function (entry) {
-                        return normalizeText(entry)
+                        return normalizeThemeText(entry)
                     })
 
                 const hasAllRequired = requiredThemes.every(function (requiredTheme) {
@@ -490,17 +495,17 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
 
             const manualBlockSet = new Set(
                 (Array.isArray(manualBlocks) ? manualBlocks : [])
-                    .map(function (entry) { return normalizeText(entry) })
+                    .map(function (entry) { return normalizeThemeText(entry) })
                     .filter(Boolean)
             )
             const manualIncludeList = (Array.isArray(manualIncludes) ? manualIncludes : [])
-                .map(function (entry) { return normalizeText(entry) })
+                .map(function (entry) { return normalizeThemeText(entry) })
                 .filter(Boolean)
 
             return Array.from(document.querySelectorAll('.card.shadow-sm[data-category]')).filter(function (card) {
                 const categories = String(card.dataset.category || '')
                     .split('|')
-                    .map(function (entry) { return normalizeText(entry) })
+                    .map(function (entry) { return normalizeThemeText(entry) })
 
                 if (!categories.some(function (cat) { return allowed.has(cat) })) return false
                 if (categories.some(function (cat) { return blockedComplement.has(cat) })) return false
@@ -643,31 +648,31 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
         })
       }
 
-      add('angeben', ['angeben', 'ausfullen', 'auswahlen', 'ankreuzen'])
-      add('ordnen', ['ordnen'])
-      add('skizzieren', ['skizzieren'])
-      add('zeichnen', ['zeichnen'])
-      add('abschaetzen', ['abschatzen'])
-      add('vergleichen', ['vergleichen'])
-      add('aufstellen', ['aufstellen'])
-      add('ermitteln_bestimmen', ['ermitteln', 'bestimmen', 'bestimme'])
-      add('berechnen', ['berechnen'])
-      add('planen', ['planen'])
-      add('untersuchen', ['untersuchen'])
-      add('ableiten', ['ableiten'])
-      add('herleiten', ['herleiten'])
-      add('beschreiben', ['beschreiben'])
-      add('erklaeren', ['erklaren', 'erklaere'])
-      add('erlaeutern', ['erlautern'])
-      add('eroertern', ['erortern'])
-      add('diskutieren', ['diskutieren'])
-      add('beurteilen', ['beurteilen'])
-      add('bewerten', ['bewerten'])
-      add('begruenden', ['begrunden', 'begruenden'])
-      add('interpretieren_deuten', ['interpretieren', 'deuten'])
-      add('analysieren', ['analysieren'])
-      add('auswerten', ['auswerten'])
-      add('darstellen', ['darstellen'])
+      add('angeben', ['angeben', 'gib an', 'ausfullen', 'fulle aus', 'auswahlen', 'wahle aus', 'ankreuzen', 'kreuze an'])
+      add('ordnen', ['ordnen', 'ordne'])
+      add('skizzieren', ['skizzieren', 'skizziere'])
+      add('zeichnen', ['zeichnen', 'zeichne'])
+      add('abschaetzen', ['abschatzen', 'schatze ab'])
+      add('vergleichen', ['vergleichen', 'vergleiche'])
+      add('aufstellen', ['aufstellen', 'stelle auf'])
+      add('ermitteln_bestimmen', ['ermitteln', 'ermittle', 'bestimmen', 'bestimme'])
+      add('berechnen', ['berechnen', 'berechne'])
+      add('planen', ['planen', 'plane'])
+      add('untersuchen', ['untersuchen', 'untersuche'])
+      add('ableiten', ['ableiten', 'leite ab'])
+      add('herleiten', ['herleiten', 'leite her'])
+      add('beschreiben', ['beschreiben', 'beschreibe'])
+      add('erklaeren', ['erklaren', 'erklare'])
+      add('erlaeutern', ['erlautern', 'erlautere'])
+      add('eroertern', ['erortern', 'erortere'])
+      add('diskutieren', ['diskutieren', 'diskutiere'])
+      add('beurteilen', ['beurteilen', 'beurteile'])
+      add('bewerten', ['bewerten', 'bewerte'])
+      add('begruenden', ['begrunden', 'begrunde'])
+      add('interpretieren_deuten', ['interpretieren', 'interpretiere', 'deuten', 'deute'])
+      add('analysieren', ['analysieren', 'analysiere'])
+      add('auswerten', ['auswerten', 'werte aus'])
+      add('darstellen', ['darstellen', 'stelle dar'])
 
       return map
     }
@@ -679,7 +684,7 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
         .toLowerCase()
         .replace(/ß/g, 'ss')
         .normalize('NFD')
-        .replace(/[̀-ͯ]/g, '')
+        .replace(/[\u0300-\u036f]/g, '')
         .replace(/\s+/g, ' ')
         .trim()
     }
@@ -797,11 +802,33 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
           return { key: rule.key, min: 0, max: 0, available: 0 }
         }
 
-        let min = Math.min(available, Math.ceil(rule.min * total))
-        let max = Math.min(available, Math.floor(rule.max * total))
-        if (max < min) max = min
+        // Relax percentage bounds outwards for small integer course sizes.
+        // Example: 5-15% of five tasks permits 0 or 1 task; it must not force
+        // one task (20%) into every generated course.
+        let min = Math.min(available, Math.floor(rule.min * total + 1e-9))
+        let max = Math.min(available, Math.ceil(rule.max * total - 1e-9))
+        if (max < min) min = max
 
-        return { key: rule.key, min: min, max: max, available: available }
+        // Positive target ranges need an integer target as well as hard bounds.
+        // Stochastic rounding avoids systematically forcing a 5-15% operator
+        // into every five-task course (0.5 expected tasks becomes 0 or 1).
+        let preferredMax = max
+        if (rule.min > 0) {
+          const exactTarget = ((rule.min + rule.max) / 2) * total
+          const baseTarget = Math.floor(exactTarget)
+          const roundedTarget = baseTarget + (Math.random() < exactTarget - baseTarget ? 1 : 0)
+          preferredMax = Math.max(min, Math.min(max, available, roundedTarget))
+        }
+
+        return {
+          key: rule.key,
+          min: min,
+          max: max,
+          minShare: rule.min,
+          maxShare: rule.max,
+          preferredMax: preferredMax,
+          available: available,
+        }
       })
 
       const withMin = base.filter(function (entry) {
@@ -986,7 +1013,22 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
         if (!entry.operator) return true
         const rule = operatorConstraints.get(entry.operator)
         if (!rule) return true
-        return Number(operatorCounts.get(entry.operator) || 0) < rule.max
+        const preferredMax = Number.isFinite(rule.preferredMax) ? rule.preferredMax : rule.max
+        return Number(operatorCounts.get(entry.operator) || 0) < preferredMax
+      }
+
+      function operatorOverflowPenalty(entry) {
+        if (!entry.operator) return 0
+        const rule = operatorConstraints.get(entry.operator)
+        if (!rule) return 0
+
+        const nextCount = Number(operatorCounts.get(entry.operator) || 0) + 1
+        const preferredMax = Number.isFinite(rule.preferredMax) ? rule.preferredMax : rule.max
+        const preferencePenalty = nextCount > preferredMax ? (nextCount - preferredMax) * 100 : 0
+        if (nextCount <= rule.max) return preferencePenalty
+
+        const excessShare = Math.max(0, nextCount / targetCount - rule.maxShare)
+        return preferencePenalty + excessShare * 1000 + (nextCount - rule.max) * 10
       }
 
       Array.from(diffTargets.keys())
@@ -1048,7 +1090,10 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
               return true
             },
             function (entry) {
-              return scoreEntryForTargets(entry, diffCounts, diffTargets, networkCounts, networkTargets)
+              return (
+                scoreEntryForTargets(entry, diffCounts, diffTargets, networkCounts, networkTargets) -
+                operatorOverflowPenalty(entry)
+              )
             }
           )
 
@@ -1769,6 +1814,180 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
       parent.append(category, blocked, operator, difficulty, networking)
     }
 
+    function normalizeTypeaheadText(value) {
+      return normalizeText(value)
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+    }
+
+    function setupCustomDropdownKeyboard(toggleId, menuId) {
+      const toggle = document.getElementById(toggleId)
+      const menu = document.getElementById(menuId)
+      if (!toggle || !menu || toggle.dataset.schulliaKeyboardBound === '1') return
+
+      toggle.dataset.schulliaKeyboardBound = '1'
+      toggle.setAttribute('aria-haspopup', 'menu')
+      toggle.setAttribute('aria-controls', menuId)
+      menu.setAttribute('role', 'menu')
+      menu.setAttribute('aria-labelledby', toggleId)
+      menu.removeAttribute('aria-label')
+
+      let typeaheadBuffer = ''
+      let typeaheadTime = 0
+
+      function getItems() {
+        const items = Array.from(menu.querySelectorAll('.difficulty-item'))
+        items.forEach(function (item) {
+          item.setAttribute('role', 'menuitem')
+        })
+        return items.filter(function (item) {
+          return !item.disabled && item.getAttribute('aria-disabled') !== 'true'
+        })
+      }
+
+      function openMenu() {
+        menu.classList.add('show')
+        toggle.setAttribute('aria-expanded', 'true')
+      }
+
+      function closeMenuAndFocusToggle() {
+        menu.classList.remove('show')
+        toggle.setAttribute('aria-expanded', 'false')
+        toggle.focus()
+      }
+
+      function focusItem(item) {
+        if (!item) return false
+        item.focus()
+        if (typeof item.scrollIntoView === 'function') {
+          item.scrollIntoView({ block: 'nearest' })
+        }
+        return true
+      }
+
+      function focusByIndex(index) {
+        const items = getItems()
+        if (!items.length) return false
+        const normalizedIndex = (index + items.length) % items.length
+        return focusItem(items[normalizedIndex])
+      }
+
+      function focusByTypeahead(key) {
+        const items = getItems()
+        if (!items.length) return false
+
+        const now = Date.now()
+        const normalizedKey = normalizeTypeaheadText(key)
+        if (!normalizedKey) return false
+
+        if (now - typeaheadTime > 700) typeaheadBuffer = ''
+        typeaheadTime = now
+        typeaheadBuffer += normalizedKey
+
+        const repeatedCharacter = typeaheadBuffer
+          .split('')
+          .every(function (character) { return character === normalizedKey })
+        const query = repeatedCharacter ? normalizedKey : typeaheadBuffer
+        const activeIndex = items.indexOf(document.activeElement)
+
+        for (let offset = 1; offset <= items.length; offset += 1) {
+          const candidate = items[(activeIndex + offset + items.length) % items.length]
+          if (normalizeTypeaheadText(candidate.textContent).startsWith(query)) {
+            return focusItem(candidate)
+          }
+        }
+
+        return false
+      }
+
+      function isPrintableKey(event) {
+        return (
+          event.key &&
+          event.key.length === 1 &&
+          !/\s/.test(event.key) &&
+          !event.altKey &&
+          !event.ctrlKey &&
+          !event.metaKey
+        )
+      }
+
+      toggle.addEventListener('keydown', function (event) {
+        if (event.key === 'ArrowDown' || event.key === 'Home') {
+          event.preventDefault()
+          openMenu()
+          focusByIndex(0)
+          return
+        }
+
+        if (event.key === 'ArrowUp' || event.key === 'End') {
+          event.preventDefault()
+          openMenu()
+          focusByIndex(-1)
+          return
+        }
+
+        if (event.key === 'Escape') {
+          event.preventDefault()
+          event.stopPropagation()
+          closeMenuAndFocusToggle()
+          return
+        }
+
+        if (isPrintableKey(event)) {
+          event.preventDefault()
+          openMenu()
+          focusByTypeahead(event.key)
+        }
+      })
+
+      menu.addEventListener('keydown', function (event) {
+        const items = getItems()
+        const activeIndex = items.indexOf(document.activeElement)
+
+        if (event.key === 'ArrowDown') {
+          event.preventDefault()
+          focusByIndex(activeIndex + 1)
+        } else if (event.key === 'ArrowUp') {
+          event.preventDefault()
+          focusByIndex(activeIndex - 1)
+        } else if (event.key === 'Home') {
+          event.preventDefault()
+          focusByIndex(0)
+        } else if (event.key === 'End') {
+          event.preventDefault()
+          focusByIndex(-1)
+        } else if (event.key === 'Escape') {
+          event.preventDefault()
+          event.stopPropagation()
+          closeMenuAndFocusToggle()
+        } else if (event.key === 'Tab') {
+          menu.classList.remove('show')
+          toggle.setAttribute('aria-expanded', 'false')
+        } else if (isPrintableKey(event)) {
+          event.preventDefault()
+          focusByTypeahead(event.key)
+        }
+      })
+
+      const observer = new MutationObserver(getItems)
+      observer.observe(menu, { childList: true })
+      getItems()
+    }
+
+    function setupAllCustomDropdownKeyboards() {
+      ;[
+        ['categoryToggle', 'categoryMenu'],
+        ['blockedCategoryToggle', 'blockedCategoryMenu'],
+        ['operatorToggle', 'operatorMenu'],
+        ['difficultyToggle', 'difficultyMenu'],
+        ['networkingToggle', 'networkingMenu'],
+        ['courseThemeToggle', 'courseThemeMenu'],
+        ['courseBlockedThemeToggle', 'courseBlockedThemeMenu'],
+      ].forEach(function (pair) {
+        setupCustomDropdownKeyboard(pair[0], pair[1])
+      })
+    }
+
     function applyNavbarFix() {
       const navbar =
         document.getElementById('mainNavbar') ||
@@ -1800,6 +2019,7 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
 
       reorderHeaderFilters()
       ensureCourseGeneratorUI()
+      setupAllCustomDropdownKeyboards()
     }
 
     if (document.readyState === 'loading') {
@@ -2299,39 +2519,66 @@ const CARD_DECORATION_SCRIPT = String.raw`${CARD_DECORATION_SCRIPT_START}
 
     const operatorAliasToKey = new Map([
       ['angeben', 'angeben'],
+      ['gib an', 'angeben'],
       ['ausfullen', 'angeben'],
+      ['fulle aus', 'angeben'],
       ['auswahlen', 'angeben'],
+      ['wahle aus', 'angeben'],
       ['ankreuzen', 'angeben'],
+      ['kreuze an', 'angeben'],
       ['ordnen', 'ordnen'],
+      ['ordne', 'ordnen'],
       ['skizzieren', 'skizzieren'],
+      ['skizziere', 'skizzieren'],
       ['zeichnen', 'zeichnen'],
+      ['zeichne', 'zeichnen'],
       ['abschatzen', 'abschaetzen'],
+      ['schatze ab', 'abschaetzen'],
       ['vergleichen', 'vergleichen'],
+      ['vergleiche', 'vergleichen'],
       ['aufstellen', 'aufstellen'],
+      ['stelle auf', 'aufstellen'],
       ['ermitteln', 'ermitteln_bestimmen'],
+      ['ermittle', 'ermitteln_bestimmen'],
       ['bestimmen', 'ermitteln_bestimmen'],
       ['bestimme', 'ermitteln_bestimmen'],
       ['berechnen', 'berechnen'],
+      ['berechne', 'berechnen'],
       ['planen', 'planen'],
+      ['plane', 'planen'],
       ['untersuchen', 'untersuchen'],
+      ['untersuche', 'untersuchen'],
       ['ableiten', 'ableiten'],
+      ['leite ab', 'ableiten'],
       ['herleiten', 'herleiten'],
+      ['leite her', 'herleiten'],
       ['beschreiben', 'beschreiben'],
       ['beschreibe', 'beschreiben'],
       ['erklaren', 'erklaeren'],
-      ['erklaere', 'erklaeren'],
+      ['erklare', 'erklaeren'],
       ['erlautern', 'erlaeutern'],
+      ['erlautere', 'erlaeutern'],
       ['erortern', 'eroertern'],
+      ['erortere', 'eroertern'],
       ['diskutieren', 'diskutieren'],
+      ['diskutiere', 'diskutieren'],
       ['beurteilen', 'beurteilen'],
+      ['beurteile', 'beurteilen'],
       ['bewerten', 'bewerten'],
+      ['bewerte', 'bewerten'],
       ['begruenden', 'begruenden'],
       ['begrunden', 'begruenden'],
+      ['begrunde', 'begruenden'],
       ['interpretieren', 'interpretieren_deuten'],
+      ['interpretiere', 'interpretieren_deuten'],
       ['deuten', 'interpretieren_deuten'],
+      ['deute', 'interpretieren_deuten'],
       ['analysieren', 'analysieren'],
+      ['analysiere', 'analysieren'],
       ['auswerten', 'auswerten'],
+      ['werte aus', 'auswerten'],
       ['darstellen', 'darstellen'],
+      ['stelle dar', 'darstellen'],
     ])
 
     function normalize(value) {
@@ -2341,7 +2588,7 @@ const CARD_DECORATION_SCRIPT = String.raw`${CARD_DECORATION_SCRIPT_START}
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '')
         .replace(/\u00a0/g, ' ')
-        .replace(/\\s+/g, ' ')
+        .replace(/\s+/g, ' ')
         .trim()
     }
 
@@ -3084,41 +3331,140 @@ function replaceOnce(html, regex, replacer) {
   return regex.test(html) ? html.replace(regex, replacer) : html
 }
 
+function normalizeBuildTag(value) {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\u00df/g, 'ss')
+    .trim()
+    .toLowerCase()
+}
+
+function canonicalBuildTheme(value) {
+  const trimmed = String(value || '').trim()
+  return normalizeBuildTag(trimmed) === 'dreieck' ? 'dreiecke' : trimmed
+}
+
+function canonicalizeCardCategoryAttributes(html) {
+  return html.replace(/data-category=(['\x22])(.*?)\1/gi, function (_match, quote, rawValue) {
+    const categories = String(rawValue || '')
+      .split('|')
+      .map(canonicalBuildTheme)
+      .filter(Boolean)
+    return 'data-category=' + quote + categories.join('|') + quote
+  })
+}
+
+function escapeHtmlAttribute(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/'/g, '&#39;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+}
+
+function escapeHtmlText(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+}
+
+function rebuildCategorySelectFromCards(html) {
+  const collected = new Map()
+  const categoryPattern = /data-category=(['\x22])(.*?)\1/gi
+  let match
+
+  while ((match = categoryPattern.exec(html)) !== null) {
+    String(match[2] || '').split('|').forEach(function (rawCategory) {
+      const value = canonicalBuildTheme(rawCategory)
+      const key = normalizeBuildTag(value)
+      if (key && !collected.has(key)) collected.set(key, value)
+    })
+  }
+
+  const options = Array.from(collected.entries())
+    .sort(function (a, b) { return a[0].localeCompare(b[0], 'de') })
+    .map(function (entry) {
+      return '                    <option value=\'' + escapeHtmlAttribute(entry[1]) + '\'>' + escapeHtmlText(entry[1]) + '</option>'
+    })
+
+  const optionHtml = ['                    <option value=\'\' selected>Alle Themen</option>']
+    .concat(options)
+    .join('\n')
+
+  return html.replace(
+    /(<select\b[^>]*\bid=(?:'categorySelect'|\x22categorySelect\x22)[^>]*>)[\s\S]*?(<\/select>)/i,
+    '$1\n' + optionHtml + '\n                $2'
+  )
+}
+
 function enhanceOperatorDropdownScript(script) {
-  if (!script.includes('function enrichCategoryDropdownFromCards()')) {
-    script = script.replace(
-      '            function setupOperatorDropdown() {',
-      `            function enrichCategoryDropdownFromCards() {
+  const categorySyncFunction = `            function normalizeThemeTagKey(value) {
+                const key = normalizeTag(value)
+                return key === 'dreieck' ? 'dreiecke' : key
+            }
+
+            function canonicalThemeTag(value) {
+                const trimmed = String(value || '').trim()
+                return normalizeThemeTagKey(trimmed) === 'dreiecke' ? 'dreiecke' : trimmed
+            }
+
+            function syncCategoryDropdownFromCards() {
                 const categorySelect = document.getElementById('categorySelect')
                 if (!categorySelect) return
 
-                const collected = new Set(Array.from(categorySelect.options).map(function (opt) {
-                    return normalizeTag(opt.value || opt.textContent)
-                }).filter(Boolean))
-
+                const collected = new Map()
                 document.querySelectorAll('.card.shadow-sm[data-category]').forEach(function (card) {
-                    String(card.dataset.category || '').split('|').forEach(function (category) {
-                        const value = String(category || '').trim()
-                        const key = normalizeTag(value)
-                        if (!key || collected.has(key)) return
+                    const canonicalCategories = String(card.dataset.category || '')
+                        .split('|')
+                        .map(canonicalThemeTag)
+                        .filter(Boolean)
 
-                        collected.add(key)
-                        const option = document.createElement('option')
-                        option.value = value
-                        option.textContent = value
-                        categorySelect.appendChild(option)
+                    card.dataset.category = canonicalCategories.join('|')
+                    canonicalCategories.forEach(function (value) {
+                        const key = normalizeThemeTagKey(value)
+                        if (key && !collected.has(key)) collected.set(key, value)
                     })
                 })
+
+                categorySelect.innerHTML = ''
+                const placeholder = document.createElement('option')
+                placeholder.value = ''
+                placeholder.textContent = 'Alle Themen'
+                placeholder.selected = true
+                categorySelect.appendChild(placeholder)
+
+                Array.from(collected.entries())
+                    .sort(function (a, b) {
+                        return a[0].localeCompare(b[0], 'de')
+                    })
+                    .forEach(function (entry) {
+                        const option = document.createElement('option')
+                        option.value = entry[1]
+                        option.textContent = entry[1]
+                        categorySelect.appendChild(option)
+                    })
             }
 
-            function setupOperatorDropdown() {`
+`
+
+  const existingSyncPattern = /[ \t]*function (?:enrich|sync)CategoryDropdownFromCards\(\) \{[\s\S]*?\n[ \t]*\}\r?\n\r?\n(?=[ \t]*function setupOperatorDropdown\(\))/
+  if (existingSyncPattern.test(script)) {
+    script = script.replace(existingSyncPattern, categorySyncFunction)
+  } else {
+    script = script.replace(
+      '            function setupOperatorDropdown() {',
+      categorySyncFunction + '            function setupOperatorDropdown() {'
     )
   }
 
-  if (!/enrichCategoryDropdownFromCards\(\)\s*setupOperatorDropdown\(\)/.test(script)) {
+  script = script.replace(/enrichCategoryDropdownFromCards\(\)/g, 'syncCategoryDropdownFromCards()')
+
+  if (!/syncCategoryDropdownFromCards\(\)\s*setupOperatorDropdown\(\)/.test(script)) {
     script = script.replace(
       /^([ \t]*)setupOperatorDropdown\(\)\r?\n[ \t]*prettifyCategoryDropdown\(\)/m,
-      '$1enrichCategoryDropdownFromCards()\n$1setupOperatorDropdown()\n$1prettifyCategoryDropdown()'
+      '$1syncCategoryDropdownFromCards()\n$1setupOperatorDropdown()\n$1prettifyCategoryDropdown()'
     )
   }
 
@@ -3170,8 +3516,8 @@ function enhanceOperatorDropdownScript(script) {
     throw new Error('Operatorfilter konnte nicht vollständig erweitert werden.')
   }
 
-  if (!script.includes('function enrichCategoryDropdownFromCards()') ||
-      !/enrichCategoryDropdownFromCards\(\)\s*setupOperatorDropdown\(\)/.test(script)) {
+  if (!script.includes('function syncCategoryDropdownFromCards()') ||
+      !/syncCategoryDropdownFromCards\(\)\s*setupOperatorDropdown\(\)/.test(script)) {
     throw new Error('Themenliste konnte nicht aus den Karten-Tags ergänzt werden.')
   }
 
@@ -3287,6 +3633,11 @@ function patchIndexHtml(html, targetParts) {
     /<select id="operatorSelect" class="form-select mt-2"/i,
     '<select id="operatorSelect" class="form-select native-select-source"'
   )
+
+  // The generated cards are authoritative. This removes stale template options
+  // and canonicalizes the former singular spelling 'dreieck' to 'dreiecke'.
+  html = canonicalizeCardCategoryAttributes(html)
+  html = rebuildCategorySelectFromCards(html)
 
   // Remove previous injected blocks to keep patch idempotent.
   html = html.replace(
@@ -3480,8 +3831,13 @@ const SECTION_META_SCRIPT_FINAL = SECTION_META_SCRIPT.replace(
   '/* SCHULLIA_TASK_DATES_START */' + JSON.stringify(TASK_ADDED_DATES) + '/* SCHULLIA_TASK_DATES_END */'
 )
 
-const indexPath = path.join(__dirname, 'index.html')
-const targetPath = path.join(__dirname, TARGET_FILE)
+function resolveConfiguredPath(envName, fallbackFile) {
+  const configured = String(process.env[envName] || '').trim()
+  return configured ? path.resolve(configured) : path.join(__dirname, fallbackFile)
+}
+
+const indexPath = resolveConfiguredPath('SCHULLIA_INDEX_PATH', 'index.html')
+const targetPath = resolveConfiguredPath('SCHULLIA_TEMPLATE_PATH', TARGET_FILE)
 const html = fs.readFileSync(indexPath, 'utf8')
 
 let patchedHtml = html
@@ -3489,17 +3845,17 @@ let patchedHtml = html
 if (!fs.existsSync(targetPath)) {
   patchedHtml = applyFallbackPatch(html)
   fs.writeFileSync(indexPath, patchedHtml, 'utf8')
-  console.log('index.html wurde mit Fallback gepatcht (ziel.html nicht gefunden).')
+  console.log(path.basename(indexPath) + ' wurde mit Fallback gepatcht (' + path.basename(targetPath) + ' nicht gefunden).')
 } else {
   try {
     const targetHtml = fs.readFileSync(targetPath, 'utf8')
     const targetParts = extractTargetParts(targetHtml)
     patchedHtml = patchIndexHtml(html, targetParts)
     fs.writeFileSync(indexPath, patchedHtml, 'utf8')
-    console.log('index.html wurde gepatcht (SchulLia Design aus ziel.html).')
+    console.log(path.basename(indexPath) + ' wurde gepatcht (SchulLia-Design aus ' + path.basename(targetPath) + ').')
   } catch (error) {
     patchedHtml = applyFallbackPatch(html)
     fs.writeFileSync(indexPath, patchedHtml, 'utf8')
-    console.log('index.html wurde mit Fallback gepatcht (ziel.html konnte nicht ausgewertet werden).')
+    console.log(path.basename(indexPath) + ' wurde mit Fallback gepatcht (' + path.basename(targetPath) + ' konnte nicht ausgewertet werden).')
   }
 }

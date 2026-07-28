@@ -14,22 +14,35 @@ jobs:
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
-      - name: Set up dependencies
-        run: npm install -g @liascript/exporter
-
       - name: Check out current repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Prepare patch template
-        run: cp index.html ziel.html
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Set up dependencies
+        run: npm install -g @liascript/exporter
+
+      - name: Prepare isolated build directory
+        run: mkdir -p $RUNNER_TEMP/schullia-site
 
       - name: Generate WebSite
-        run: liaex -i project.yml --format project --output index --project-search
+        run: liaex -i project.yml --format project --output $RUNNER_TEMP/schullia-site/index --project-search
 
       - name: Patch index
+        env:
+          SCHULLIA_INDEX_PATH: ${{ runner.temp }}/schullia-site/index.html
+          SCHULLIA_TEMPLATE_PATH: ${{ github.workspace }}/index.html
         run: node patch.js
+
+      - name: Test generated site
+        env:
+          SCHULLIA_INDEX_PATH: ${{ runner.temp }}/schullia-site/index.html
+        run: node scripts/test-site.js $SCHULLIA_INDEX_PATH
 
       - name: Minify HTML (disabled for JS stability)
         run: 'echo "Skipping minify: custom JS must remain unmodified to avoid regex parse errors."'
@@ -37,12 +50,13 @@ jobs:
       - name: Prepare Deployment Directory
         run: |
           mkdir -p gh-pages-deploy
-          mv index.html gh-pages-deploy/
+          cp $RUNNER_TEMP/schullia-site/index.html gh-pages-deploy/index.html
           cp -r pics gh-pages-deploy/
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: gh-pages-deploy
+          force_orphan: true

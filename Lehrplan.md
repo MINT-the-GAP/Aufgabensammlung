@@ -35,7 +35,7 @@ edit: true
 | 5 | Wahlbereich 3: Planen einer Klassenfahrt |  |
 | 6 | LB 1: Gebrochene Zahlen | kehrwert, mengen, verhältnisse |
 | 6 | LB 2: Zuordnungen in der Umwelt | antiproportional, beliebige zuordnung, proportional, zuordnung |
-| 6 | LB 3: Geometrie in der Ebene | dreieck, dreiecke, eindeutigkeit, konstruktion, kongruenz, vierecke, winkelbeziehungen |
+| 6 | LB 3: Geometrie in der Ebene | dreiecke, eindeutigkeit, konstruktion, kongruenz, vierecke, winkelbeziehungen |
 | 6 | LB 4: Geometrische Körper | quader |
 | 6 | LB 5: Mathematik im Alltag | chance, wahrscheinlichkeit |
 | 6 | Wahlbereich 1: Dynamisieren geometrischer Objekte |  |
@@ -150,7 +150,7 @@ edit: true
 | 5 | Wahlbereich 3: Zählen und Rechnen - einst und jetzt | zahlensysteme |
 | 6 | LB 1: Arbeiten mit gebrochenen Zahlen | bruchrechnung, kehrwert, mengen, variable |
 | 6 | LB 2: Zuordnungen in der Umwelt | antiproportional, beliebige zuordnung, chance, eindeutigkeit, häufigkeit, proportional, tabelle, verhältnisse, zuordnung |
-| 6 | LB 3: Dreiecke und Vierecke | dreieck, dreiecke, konstruktion, kongruenz, vierecke |
+| 6 | LB 3: Dreiecke und Vierecke | dreiecke, konstruktion, kongruenz, vierecke |
 | 6 | LB 4: Prismen |  |
 | 6 | LB 5: Vernetzung: Anteile |  |
 | 6 | Wahlbereich 1: Finden von Vermutungen mit dynamischer Geometrie |  |
