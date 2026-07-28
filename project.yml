@@ -49,7 +49,7 @@ collection:
       </p>
       
   - title:  "<h4 id='aufgabensets'>Aufgabensets</h4>"
-    comment: "In dieser Kachel befinden sich zusammengestellte Aufgaben zum Ãœben für Abschlussprüfungen."
+    comment: "In dieser Kachel befinden sich zusammengestellte Aufgaben zum Üben für Abschlussprüfungen."
     grid: true
     collection:
       - url: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/00_Repetitorium.md

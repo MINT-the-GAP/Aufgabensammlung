@@ -41,7 +41,7 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ **Konstruiere** ein Dreieck mit der Eigenschaft $W35,S6,W75$.
+__$a)\;\;$__ **Konstruiere** das Dreieck $ABC$ mit der Seitenlänge $c=6\,\mathrm{cm}$ sowie den Winkeln $\alpha=35^\circ$ und $\beta=75^\circ$.
 
 @Koordinatensystem(`xmin=-1;xmax=11;ymin=-1;ymax=9;width=600;id=D6401`)
 @AchsenBeschriftung(`id=D6401;xlabel=$x$;ylabel=$y$`)
@@ -57,7 +57,7 @@ __$a)\;\;$__ **Konstruiere** ein Dreieck mit der Eigenschaft $W35,S6,W75$.
 
 <div class="flex-child">
 
-__$b)\;\;$__ **Konstruiere** ein Dreieck mit der Eigenschaft $S7,S6,S5$.
+__$b)\;\;$__ **Konstruiere** das Dreieck $ABC$ mit den Seitenlängen $a=7\,\mathrm{cm}$, $b=6\,\mathrm{cm}$ und $c=5\,\mathrm{cm}$.
 
 @Koordinatensystem(`xmin=-1;xmax=11;ymin=-1;ymax=8;width=600;id=D6402`)
 @AchsenBeschriftung(`id=D6402;xlabel=$x$;ylabel=$y$`)
@@ -73,7 +73,7 @@ __$b)\;\;$__ **Konstruiere** ein Dreieck mit der Eigenschaft $S7,S6,S5$.
 
 <div class="flex-child">
 
-__$c)\;\;$__ **Konstruiere** ein Dreieck mit der Eigenschaft $S9,S5,W40$.
+__$c)\;\;$__ **Konstruiere** das Dreieck $ABC$ mit den Seitenlängen $a=9\,\mathrm{cm}$ und $b=5\,\mathrm{cm}$ sowie dem Winkel $\alpha=40^\circ$.
 
 @Koordinatensystem(`xmin=-1;xmax=13;ymin=-1;ymax=9;width=600;id=D6403`)
 @AchsenBeschriftung(`id=D6403;xlabel=$x$;ylabel=$y$`)

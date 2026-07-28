@@ -41,7 +41,7 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ **Konstruiere** ein Dreieck mit der Eigenschaft $W60,W50,S7$.
+__$a)\;\;$__ **Konstruiere** das Dreieck $ABC$ mit den Winkeln $\alpha=60^\circ$ und $\beta=50^\circ$ sowie der Seitenlänge $a=7\,\mathrm{cm}$.
 
 @Koordinatensystem(`xmin=-1;xmax=12;ymin=-1;ymax=9;width=600;id=D6101`)
 @AchsenBeschriftung(`id=D6101;xlabel=$x$;ylabel=$y$`)
@@ -57,7 +57,7 @@ __$a)\;\;$__ **Konstruiere** ein Dreieck mit der Eigenschaft $W60,W50,S7$.
 
 <div class="flex-child">
 
-__$b)\;\;$__ **Konstruiere** ein Dreieck mit der Eigenschaft $W35,W95,S5$.
+__$b)\;\;$__ **Konstruiere** das Dreieck $ABC$ mit den Winkeln $\alpha=35^\circ$ und $\beta=95^\circ$ sowie der Seitenlänge $a=5\,\mathrm{cm}$.
 
 @Koordinatensystem(`xmin=-1;xmax=10;ymin=-1;ymax=10;width=600;id=D6102`)
 @AchsenBeschriftung(`id=D6102;xlabel=$x$;ylabel=$y$`)
@@ -73,7 +73,7 @@ __$b)\;\;$__ **Konstruiere** ein Dreieck mit der Eigenschaft $W35,W95,S5$.
 
 <div class="flex-child">
 
-__$c)\;\;$__ **Konstruiere** ein Dreieck mit der Eigenschaft $W45,W70,S9$.
+__$c)\;\;$__ **Konstruiere** das Dreieck $ABC$ mit den Winkeln $\alpha=45^\circ$ und $\beta=70^\circ$ sowie der Seitenlänge $a=9\,\mathrm{cm}$.
 
 @Koordinatensystem(`xmin=-1;xmax=14;ymin=-1;ymax=10;width=600;id=D6103`)
 @AchsenBeschriftung(`id=D6103;xlabel=$x$;ylabel=$y$`)

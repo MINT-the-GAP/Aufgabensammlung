@@ -249,7 +249,7 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
                 visibleOptions.forEach(function (entry) {
                     const option = document.createElement('option')
                     option.value = entry.value
-                    option.textContent = entry.text
+                  option.textContent = entry.text
                     selectEl.appendChild(option)
                 })
             }
@@ -2923,6 +2923,7 @@ const SECTION_META_SCRIPT = String.raw`${SECTION_META_SCRIPT_START}
         .replace(/ue/g, 'ü')
         .trim()
 
+      if (label === 'Kongrünz') return 'Kongruenz'
       if (label === 'FakulBinomial') return 'Fakultät und Binomialkoeffizient'
       return label
     }
@@ -3083,23 +3084,91 @@ function replaceOnce(html, regex, replacer) {
   return regex.test(html) ? html.replace(regex, replacer) : html
 }
 
+function enhanceOperatorDropdownScript(script) {
+  if (!script.includes("document.querySelectorAll('.card.shadow-sm[data-category]')")) {
+    script = script.replace(
+      "                operatorSelect.innerHTML = '<option value=\"\" selected>Alle Operatoren</option>'",
+      `                document.querySelectorAll('.card.shadow-sm[data-category]').forEach(function (card) {
+                    String(card.dataset.category || '').split('|').forEach(function (category) {
+                        const key = normalizeOperatorTagKey(category)
+                        if (!key || !isOperatorTag(category) || collected.has(key)) return
+
+                        collected.set(key, {
+                            value: key,
+                            label: formatTagLabel(category)
+                        })
+                    })
+                })
+
+                operatorSelect.innerHTML = '<option value="" selected>Alle Operatoren</option>'`
+    )
+  }
+
+  if (!script.includes('const normalizedCardOperators = cardCategories.map')) {
+    script = script.replace(
+      /(const normalizedCardCategories = cardCategories\.map\(function \(entry\) \{\s*return normalizeTag\(entry\)\s*\}\))/,
+      `$1
+                    const normalizedCardOperators = cardCategories.map(function (entry) {
+                        return normalizeOperatorTagKey(entry)
+                    })`
+    )
+  }
+
+  script = script
+    .replace('option.textContent = entry.label', 'option.textContent = label')
+    .replace(
+      "setCustomToggleLabel('operatorSelectedLabel', category, 'Alle Operatoren')",
+      `const operatorLabel = OPERATOR_LABELS.find(function (label) {
+                    return normalizeOperatorTagKey(label) === normalizeOperatorTagKey(category)
+                }) || category
+                setCustomToggleLabel('operatorSelectedLabel', operatorLabel, 'Alle Operatoren')`
+    )
+    .replace(
+      'normalizedCardCategories.indexOf(normalizeTag(window.selectedOperator)) !== -1',
+      'normalizedCardOperators.indexOf(normalizeOperatorTagKey(window.selectedOperator)) !== -1'
+    )
+
+  if (script.includes('normalizedCardOperators.indexOf') &&
+      !script.includes('const normalizedCardOperators = cardCategories.map')) {
+    throw new Error('Operatorfilter konnte nicht vollständig erweitert werden.')
+  }
+
+  return script
+}
+
+function repairKnownEncoding(text) {
+  return text
+    .replace(/Ãœben/g, 'Üben')
+    .replace(/äâ†’a, öâ†’o, üâ†’u, ßâ†’ss/g, 'ä→a, ö→o, ü→u, ß→ss')
+    .replace(/Ã„quivalenzumformung/g, 'Äquivalenzumformung')
+    .replace(/Ãœberschlagen/g, 'Überschlagen')
+    .replace(/ Ã—/g, ' ×')
+}
+
 function extractTargetParts(targetHtml) {
   const styleMatch = targetHtml.match(/<style>[\s\S]*?--color-background[\s\S]*?<\/style>/i)
   const heroMatch = targetHtml.match(
     /<div class="col-lg-6 col-md-8 mx-auto">[\s\S]*?<\/div>\s*(?=<\/div>\s*<\/section>)/i
   )
-  const scriptMatch = targetHtml.match(
-    /<script>[\s\S]*?buildCustomMenuFromSelect[\s\S]*?<\/script>/i
-  )
+  const scriptEnd = targetHtml.indexOf(SCRIPT_END)
+  const scriptStart = targetHtml.lastIndexOf(SCRIPT_START, scriptEnd)
+  const markedScript = scriptStart >= 0 && scriptEnd > scriptStart
+    ? targetHtml.slice(scriptStart + SCRIPT_START.length, scriptEnd)
+    : ''
+  const openScript = markedScript.indexOf('<script>')
+  const closeScript = markedScript.lastIndexOf('</script>')
+  const script = openScript >= 0 && closeScript > openScript
+    ? markedScript.slice(openScript, closeScript + '</script>'.length)
+    : ''
 
-  if (!styleMatch || !heroMatch || !scriptMatch) {
+  if (!styleMatch || !heroMatch || !script || !script.includes('buildCustomMenuFromSelect')) {
     throw new Error('Konnte Design-Blöcke in ziel.html nicht eindeutig finden.')
   }
 
   return {
     style: `${STYLE_START}\n${styleMatch[0]}\n${STYLE_END}`,
     hero: heroMatch[0],
-    script: `${SCRIPT_START}\n${scriptMatch[0]}\n${SCRIPT_END}`,
+    script: `${SCRIPT_START}\n${enhanceOperatorDropdownScript(script)}\n${SCRIPT_END}`,
   }
 }
 
@@ -3119,6 +3188,10 @@ function applyFallbackPatch(html) {
 }
 
 function patchIndexHtml(html, targetParts) {
+  if (!/<meta\s+charset=/i.test(html)) {
+    html = html.replace(/<head>/i, '<head>\n        <meta charset="utf-8">')
+  }
+
   html = html.replace(
     /<option value="" selected>All categories<\/option>/i,
     '<option value="" selected>Alle Themen</option>'
@@ -3146,7 +3219,7 @@ function patchIndexHtml(html, targetParts) {
 
   // Ensure category section headers are bold (e.g. #### Aufgabensets).
   html = html.replace(
-    /<div class="card-header">\s*<h4 id='([^']+)'>(.*?)<\/h4>\s*<\/div>/g,
+    /<div class="card-header">\s*<h4 id='([^']+)'>(?:<strong>)*(.*?)(?:<\/strong>)*<\/h4>\s*<\/div>/g,
     `<div class="card-header">
                                      <h4 id='$1'><strong>$2</strong></h4>
 
@@ -3236,7 +3309,9 @@ function patchIndexHtml(html, targetParts) {
   html = html.replace(/Alle Kategorien/g, 'Alle Themen')
   html = html.replace(/alle kategorien/g, 'alle themen')
 
-  return html
+  return repairKnownEncoding(html)
+    .replace(/[ \t]+(?=\r?$)/gm, '')
+    .replace(/(?:\r?\n[ \t]*){3,}/g, '\n\n')
 }
 
 // Resolve a class label like "5", "7 HS", "10 RS", "12/13 GK", "11/12 LK"

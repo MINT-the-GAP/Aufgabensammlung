@@ -41,7 +41,7 @@ author: Martin Lommatzsch
 
 <div class="flex-child">
 
-__$a)\;\;$__ **Konstruiere** ein Dreieck mit der Eigenschaft $S5,S4,S4$.
+__$a)\;\;$__ **Konstruiere** das Dreieck $ABC$ mit den Seitenlängen $a=5\,\mathrm{cm}$, $b=4\,\mathrm{cm}$ und $c=4\,\mathrm{cm}$.
 
 @Koordinatensystem(`xmin=-1;xmax=10;ymin=-1;ymax=7;width=600;id=D4801`)
 @AchsenBeschriftung(`id=D4801;xlabel=$x$;ylabel=$y$`)
@@ -57,7 +57,7 @@ __$a)\;\;$__ **Konstruiere** ein Dreieck mit der Eigenschaft $S5,S4,S4$.
 
 <div class="flex-child">
 
-__$b)\;\;$__ **Konstruiere** ein Dreieck mit der Eigenschaft $S9,S6,S7$.
+__$b)\;\;$__ **Konstruiere** das Dreieck $ABC$ mit den Seitenlängen $a=9\,\mathrm{cm}$, $b=6\,\mathrm{cm}$ und $c=7\,\mathrm{cm}$.
 
 @Koordinatensystem(`xmin=-1;xmax=12;ymin=-1;ymax=8;width=600;id=D4802`)
 @AchsenBeschriftung(`id=D4802;xlabel=$x$;ylabel=$y$`)
@@ -73,7 +73,7 @@ __$b)\;\;$__ **Konstruiere** ein Dreieck mit der Eigenschaft $S9,S6,S7$.
 
 <div class="flex-child">
 
-__$c)\;\;$__ **Konstruiere** ein Dreieck mit der Eigenschaft $S10,S8,S6$.
+__$c)\;\;$__ **Konstruiere** das Dreieck $ABC$ mit den Seitenlängen $a=10\,\mathrm{cm}$, $b=8\,\mathrm{cm}$ und $c=6\,\mathrm{cm}$.
 
 @Koordinatensystem(`xmin=-1;xmax=13;ymin=-1;ymax=9;width=600;id=D4803`)
 @AchsenBeschriftung(`id=D4803;xlabel=$x$;ylabel=$y$`)
