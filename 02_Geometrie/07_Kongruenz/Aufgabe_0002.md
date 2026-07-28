@@ -27,7 +27,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/Proposal/R
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
 
-tags: Dreieck, Konstruktion, Kongruenz, SSS,  sehr leicht, sehr niedrig, Zeichnen
+tags: Dreiecke, Konstruktion, Kongruenz, SSS,  sehr leicht, sehr niedrig, Zeichnen
 comment: Konstruiere Dreiecke im Koordinatensystem mit dem Kongruenzsatz SSS.
 author: Martin Lommatzsch
 -->

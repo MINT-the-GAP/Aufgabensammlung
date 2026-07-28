@@ -680,7 +680,7 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
         .replace(/ß/g, 'ss')
         .normalize('NFD')
         .replace(/[̀-ͯ]/g, '')
-        .replace(/s+/g, ' ')
+        .replace(/\s+/g, ' ')
         .trim()
     }
 
@@ -3085,7 +3085,44 @@ function replaceOnce(html, regex, replacer) {
 }
 
 function enhanceOperatorDropdownScript(script) {
-  if (!script.includes("document.querySelectorAll('.card.shadow-sm[data-category]')")) {
+  if (!script.includes('function enrichCategoryDropdownFromCards()')) {
+    script = script.replace(
+      '            function setupOperatorDropdown() {',
+      `            function enrichCategoryDropdownFromCards() {
+                const categorySelect = document.getElementById('categorySelect')
+                if (!categorySelect) return
+
+                const collected = new Set(Array.from(categorySelect.options).map(function (opt) {
+                    return normalizeTag(opt.value || opt.textContent)
+                }).filter(Boolean))
+
+                document.querySelectorAll('.card.shadow-sm[data-category]').forEach(function (card) {
+                    String(card.dataset.category || '').split('|').forEach(function (category) {
+                        const value = String(category || '').trim()
+                        const key = normalizeTag(value)
+                        if (!key || collected.has(key)) return
+
+                        collected.add(key)
+                        const option = document.createElement('option')
+                        option.value = value
+                        option.textContent = value
+                        categorySelect.appendChild(option)
+                    })
+                })
+            }
+
+            function setupOperatorDropdown() {`
+    )
+  }
+
+  if (!/enrichCategoryDropdownFromCards\(\)\s*setupOperatorDropdown\(\)/.test(script)) {
+    script = script.replace(
+      /^([ \t]*)setupOperatorDropdown\(\)\r?\n[ \t]*prettifyCategoryDropdown\(\)/m,
+      '$1enrichCategoryDropdownFromCards()\n$1setupOperatorDropdown()\n$1prettifyCategoryDropdown()'
+    )
+  }
+
+  if (!script.includes('if (!key || !isOperatorTag(category) || collected.has(key)) return')) {
     script = script.replace(
       "                operatorSelect.innerHTML = '<option value=\"\" selected>Alle Operatoren</option>'",
       `                document.querySelectorAll('.card.shadow-sm[data-category]').forEach(function (card) {
@@ -3131,6 +3168,11 @@ function enhanceOperatorDropdownScript(script) {
   if (script.includes('normalizedCardOperators.indexOf') &&
       !script.includes('const normalizedCardOperators = cardCategories.map')) {
     throw new Error('Operatorfilter konnte nicht vollständig erweitert werden.')
+  }
+
+  if (!script.includes('function enrichCategoryDropdownFromCards()') ||
+      !/enrichCategoryDropdownFromCards\(\)\s*setupOperatorDropdown\(\)/.test(script)) {
+    throw new Error('Themenliste konnte nicht aus den Karten-Tags ergänzt werden.')
   }
 
   return script

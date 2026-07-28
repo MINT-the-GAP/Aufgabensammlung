@@ -39,7 +39,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-tags: Koordinatensystem, Punkt, Dreieck, Fläche, sehr leicht, niedrig, Angeben
+tags: Koordinatensystem, Punkt, Dreiecke, Fläche, sehr leicht, niedrig, Angeben
 
 comment: Im Koodinatensystem ist ein Dreieck dargestellt. Bestimme den Flächeninhalt.
 

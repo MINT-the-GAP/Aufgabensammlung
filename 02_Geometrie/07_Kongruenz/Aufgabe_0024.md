@@ -27,7 +27,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/Proposal/R
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
 
-tags: Dreieck, Konstruktion, Kongruenz, leicht, sehr niedrig, Beschreiben
+tags: Dreiecke, Konstruktion, Kongruenz, leicht, sehr niedrig, Beschreiben
 
 comment: Beschreibe die Konstruktion eines Dreiecks mit dem Kongruenzsatz WWS.
 

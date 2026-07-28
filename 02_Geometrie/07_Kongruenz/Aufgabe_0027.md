@@ -27,7 +27,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/Proposal/R
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
 
-tags: Dreieck, Konstruktion, Kongruenz, leicht, niedrig, Begründen
+tags: Dreiecke, Konstruktion, Kongruenz, leicht, niedrig, Begründen
 
 comment: Begründe, warum drei vorgegebene Winkel für die eindeutige Konstruktion eines Dreiecks nicht ausreichen.
 

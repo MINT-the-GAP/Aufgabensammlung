@@ -44,7 +44,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-tags: Dreieck, Konstruktion, Kongruenz, SSS, sehr leicht, sehr niedrig, Zeichnen
+tags: Dreiecke, Konstruktion, Kongruenz, SSS, sehr leicht, sehr niedrig, Zeichnen
 
 comment: Konstruiere Dreiecke im Koordinatensystem mit dem Kongruenzsatz SSS.
 
