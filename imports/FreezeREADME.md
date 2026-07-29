@@ -24,7 +24,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.
 
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
 author: Martin Lommatzsch
@@ -118,7 +118,7 @@ script: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 Einfaches importieren: \
-`import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md`
+`import: https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README.md`
 
 Abgabefeld über Makro: Am sinnvollsten wäre eine eigene letzte Folie dafür einzurichten. \
 `@Abgabe`

@@ -1,5 +1,5 @@
 <!--
-version:  0.0.1
+version:  1.0.0
 language: de
 narrator: Deutsch Female
 mode: Presentation
@@ -23,8 +23,8 @@ import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/Proposal/README.md
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/FreezeREADME.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
 
 tags: Dreiecke, Konstruktion, Kongruenz, sehr leicht, sehr niedrig, Zeichnen
