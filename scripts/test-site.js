@@ -136,6 +136,7 @@ assert.deepStrictEqual(duplicateUrls, [], 'Doppelte URLs in project.yml: ' + dup
 const deployWorkflow = fs.readFileSync(path.join(repositoryRoot, '.github', 'workflows', 'deploy.yaml'), 'utf8')
 ;[
   'actions/setup-node@v4',
+  'node scripts/test-template-macros.cjs',
   '--output $RUNNER_TEMP/schullia-site/index',
   'SCHULLIA_INDEX_PATH: ${{ runner.temp }}/schullia-site/index.html',
   'SCHULLIA_TEMPLATE_PATH: ${{ github.workspace }}/index.html',
