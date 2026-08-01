@@ -61,20 +61,11 @@ author: Martin Lommatzsch
 
 @Punkt(`N0034;A;2;-5;fix`)
 @Punkt(`N0034;B;-3;-1;fix`)
-@Punkt(`N0034;C;2;4;fix`)
-@Punkt(`N0034;D;-3;1;fix`)
+@Punkt(`N0034;C;4;2;fix`)
+@Punkt(`N0034;D;1;-3;fix`)
 @Punkt(`N0034;E;-5;4;fix`)
-@Punkt(`N0034;F;4;3;fix`)
+@Punkt(`N0034;F;-2;-1;fix`)
 
-
-
-<center>
-
-
-<!-- style="width:1000px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/GanzeZ34.png)
-
-</center>
 
 
 <section class="dynFlex">

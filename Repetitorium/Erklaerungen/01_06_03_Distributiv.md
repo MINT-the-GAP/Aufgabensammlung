@@ -74,7 +74,25 @@ $$
 <center>
 
 <!-- style="width:750px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Distributiv1.png)
+@Koordinatensystem(`xmin=-0.65;xmax=8.45;ymin=-0.15;ymax=5.55;width=750;id=DISTRIBUTIV01;achsen=0;grid=0;border=0`)
+
+@Flaeche(`DISTRIBUTIV01;[[-0.64;-0.14];[8.44;-0.14];[8.44;5.54];[-0.64;5.54]];#ffffff;1;inhalt=0;umfang=0`)
+@Flaeche(`DISTRIBUTIV01;[[0;0];[3;0];[3;3];[0;3]];#80f580;1;inhalt=0;umfang=0`)
+@Flaeche(`DISTRIBUTIV01;[[0;3];[3;3];[3;5];[0;5]];#8888ee;1;inhalt=0;umfang=0`)
+@Flaeche(`DISTRIBUTIV01;[[5;0];[8;0];[8;3];[5;3]];#80f580;1;inhalt=0;umfang=0`)
+@Flaeche(`DISTRIBUTIV01;[[5;3.25];[8;3.25];[8;5.25];[5;5.25]];#8888ee;1;inhalt=0;umfang=0`)
+
+@Strecke(`DISTRIBUTIV01;[[0;0];[3;0];[3;5];[0;5];[0;0]];#000000;;-;4px`)
+@Strecke(`DISTRIBUTIV01;[[0;3];[3;3]];#000000;;-;2px`)
+@Strecke(`DISTRIBUTIV01;[[5;0];[8;0];[8;3];[5;3];[5;0]];#000000;;-;4px`)
+@Strecke(`DISTRIBUTIV01;[[5;3.25];[8;3.25];[8;5.25];[5;5.25];[5;3.25]];#000000;;-;4px`)
+
+@KoordText(`DISTRIBUTIV01;[1.5;5.3];$a$;#000000;1`)
+@KoordText(`DISTRIBUTIV01;[-0.35;4];$c$;#000000;1`)
+@KoordText(`DISTRIBUTIV01;[-0.35;1.5];$b$;#000000;1`)
+@KoordText(`DISTRIBUTIV01;[6.5;5.48];$a$;#000000;1`)
+@KoordText(`DISTRIBUTIV01;[4.65;4.25];$c$;#000000;1`)
+@KoordText(`DISTRIBUTIV01;[4.65;1.5];$b$;#000000;1`)
 
 </center>
 

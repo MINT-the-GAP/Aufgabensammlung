@@ -96,13 +96,61 @@ $$
 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Mult1.png)
+@Koordinatensystem(`xmin=-0.25;xmax=9.7;ymin=-0.5;ymax=0.9;width=800;id=MULT01;achsen=0;grid=0;border=0`)
+
+@Flaeche(`MULT01;[[-0.24;-0.49];[9.69;-0.49];[9.69;0.89];[-0.24;0.89]];#ffffff;1;inhalt=0;umfang=0`)
+@Vektor(`MULT01;[[0;0];[9.5;0]];#000000;x=0`)
+@Strecke(`MULT01;[[0;-0.1];[0;0.1]];#000000;;-;3px`)
+@Strecke(`MULT01;[[1;-0.1];[1;0.1]];#000000;;-;3px`)
+@Strecke(`MULT01;[[2;-0.1];[2;0.1]];#000000;;-;3px`)
+@Strecke(`MULT01;[[3;-0.1];[3;0.1]];#000000;;-;3px`)
+@Strecke(`MULT01;[[4;-0.1];[4;0.1]];#000000;;-;3px`)
+@Strecke(`MULT01;[[5;-0.1];[5;0.1]];#000000;;-;3px`)
+@Strecke(`MULT01;[[6;-0.1];[6;0.1]];#000000;;-;3px`)
+@Strecke(`MULT01;[[7;-0.1];[7;0.1]];#000000;;-;3px`)
+@Strecke(`MULT01;[[8;-0.1];[8;0.1]];#000000;;-;3px`)
+@Strecke(`MULT01;[[9;-0.1];[9;0.1]];#000000;;-;3px`)
+@Bogen(`MULT01;[0;0.3];35;[2;0.3];145;;->;3px;#000000`)
+@Bogen(`MULT01;[2;0.3];35;[4;0.3];145;;->;3px;#000000`)
+@Bogen(`MULT01;[4;0.3];35;[6;0.3];145;;->;3px;#000000`)
+@Bogen(`MULT01;[6;0.3];35;[8;0.3];145;;->;3px;#000000`)
+@KoordText(`MULT01;[1;0.62];$+2$;#000000;1`)
+@KoordText(`MULT01;[3;0.62];$+2$;#000000;1`)
+@KoordText(`MULT01;[5;0.62];$+2$;#000000;1`)
+@KoordText(`MULT01;[7;0.62];$+2$;#000000;1`)
+@KoordText(`MULT01;[0;-0.32];$0$;#000000;1`)
+@KoordText(`MULT01;[1;-0.32];$1$;#000000;1`)
+@KoordText(`MULT01;[2;-0.32];$2$;#000000;1`)
+@KoordText(`MULT01;[3;-0.32];$3$;#000000;1`)
+@KoordText(`MULT01;[4;-0.32];$4$;#000000;1`)
+@KoordText(`MULT01;[5;-0.32];$5$;#000000;1`)
+@KoordText(`MULT01;[6;-0.32];$6$;#000000;1`)
+@KoordText(`MULT01;[7;-0.32];$7$;#000000;1`)
+@KoordText(`MULT01;[8;-0.32];$8$;#000000;1`)
+@KoordText(`MULT01;[9;-0.32];$9$;#000000;1`)
+@KoordText(`MULT01;[9.62;0];$x$;#000000;1`)
 
 </center>
 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Mult2.png)
+@Koordinatensystem(`xmin=-0.5;xmax=9.5;ymin=-0.5;ymax=4.5;width=800;id=MULT02;achsen=0;grid=0;border=0`)
+
+@Flaeche(`MULT02;[[-0.49;-0.49];[9.49;-0.49];[9.49;4.49];[-0.49;4.49]];#ffffff;1;inhalt=0;umfang=0`)
+@Flaeche(`MULT02;[[0;1];[4;1];[4;3];[0;3]];#80f580;1;inhalt=0;umfang=0`)
+@Flaeche(`MULT02;[[7;0];[9;0];[9;4];[7;4]];#80f580;1;inhalt=0;umfang=0`)
+
+@Strecke(`MULT02;[[0;1];[4;1];[4;3];[0;3];[0;1]];#000000;;-;2px`)
+@Strecke(`MULT02;[[1;1];[1;3]];#000000;;-;2px`)
+@Strecke(`MULT02;[[2;1];[2;3]];#000000;;-;2px`)
+@Strecke(`MULT02;[[3;1];[3;3]];#000000;;-;2px`)
+@Strecke(`MULT02;[[0;2];[4;2]];#000000;;-;2px`)
+
+@Strecke(`MULT02;[[7;0];[9;0];[9;4];[7;4];[7;0]];#000000;;-;2px`)
+@Strecke(`MULT02;[[8;0];[8;4]];#000000;;-;2px`)
+@Strecke(`MULT02;[[7;1];[9;1]];#000000;;-;2px`)
+@Strecke(`MULT02;[[7;2];[9;2]];#000000;;-;2px`)
+@Strecke(`MULT02;[[7;3];[9;3]];#000000;;-;2px`)
 
 </center>
 

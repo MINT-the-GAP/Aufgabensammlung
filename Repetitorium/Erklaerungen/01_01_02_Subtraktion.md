@@ -57,7 +57,31 @@ Die *Subtraktion* ist die Umkehroperation der *Addition* und wird durch den *Sub
 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Subt1.png)
+@Koordinatensystem(`xmin=-0.25;xmax=6.7;ymin=-0.5;ymax=0.9;width=800;id=SUBT01;achsen=0;grid=0;border=0`)
+
+@Flaeche(`SUBT01;[[-0.24;-0.49];[6.69;-0.49];[6.69;0.89];[-0.24;0.89]];#ffffff;1;inhalt=0;umfang=0`)
+@Vektor(`SUBT01;[[0;0];[6.5;0]];#000000;x=0`)
+@Strecke(`SUBT01;[[0;-0.1];[0;0.1]];#000000;;-;3px`)
+@Strecke(`SUBT01;[[1;-0.1];[1;0.1]];#000000;;-;3px`)
+@Strecke(`SUBT01;[[2;-0.1];[2;0.1]];#000000;;-;3px`)
+@Strecke(`SUBT01;[[3;-0.1];[3;0.1]];#000000;;-;3px`)
+@Strecke(`SUBT01;[[4;-0.1];[4;0.1]];#000000;;-;3px`)
+@Strecke(`SUBT01;[[5;-0.1];[5;0.1]];#000000;;-;3px`)
+@Strecke(`SUBT01;[[6;-0.1];[6;0.1]];#000000;;-;3px`)
+@Bogen(`SUBT01;[5;0.3];145;[4;0.3];35;;->;3px;#000000`)
+@Bogen(`SUBT01;[4;0.3];145;[3;0.3];35;;->;3px;#000000`)
+@Bogen(`SUBT01;[3;0.3];145;[2;0.3];35;;->;3px;#000000`)
+@KoordText(`SUBT01;[4.5;0.62];$-1$;#000000;1`)
+@KoordText(`SUBT01;[3.5;0.62];$-1$;#000000;1`)
+@KoordText(`SUBT01;[2.5;0.62];$-1$;#000000;1`)
+@KoordText(`SUBT01;[0;-0.32];$0$;#000000;1`)
+@KoordText(`SUBT01;[1;-0.32];$1$;#000000;1`)
+@KoordText(`SUBT01;[2;-0.32];$2$;#000000;1`)
+@KoordText(`SUBT01;[3;-0.32];$3$;#000000;1`)
+@KoordText(`SUBT01;[4;-0.32];$4$;#000000;1`)
+@KoordText(`SUBT01;[5;-0.32];$5$;#000000;1`)
+@KoordText(`SUBT01;[6;-0.32];$6$;#000000;1`)
+@KoordText(`SUBT01;[6.62;0];$x$;#000000;1`)
 
 </center>
 
@@ -93,7 +117,27 @@ $$
 
 <center>
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Subt2.png)
+@Koordinatensystem(`xmin=-0.25;xmax=6.7;ymin=-0.5;ymax=1.05;width=800;id=SUBT02;achsen=0;grid=0;border=0`)
+
+@Flaeche(`SUBT02;[[-0.24;-0.49];[6.69;-0.49];[6.69;1.04];[-0.24;1.04]];#ffffff;1;inhalt=0;umfang=0`)
+@Vektor(`SUBT02;[[0;0];[6.5;0]];#000000;x=0`)
+@Strecke(`SUBT02;[[0;-0.1];[0;0.1]];#000000;;-;3px`)
+@Strecke(`SUBT02;[[1;-0.1];[1;0.1]];#000000;;-;3px`)
+@Strecke(`SUBT02;[[2;-0.1];[2;0.1]];#000000;;-;3px`)
+@Strecke(`SUBT02;[[3;-0.1];[3;0.1]];#000000;;-;3px`)
+@Strecke(`SUBT02;[[4;-0.1];[4;0.1]];#000000;;-;3px`)
+@Strecke(`SUBT02;[[5;-0.1];[5;0.1]];#000000;;-;3px`)
+@Strecke(`SUBT02;[[6;-0.1];[6;0.1]];#000000;;-;3px`)
+@Bogen(`SUBT02;[5;0.3];145;[2;0.3];35;;->;3px;#000000`)
+@KoordText(`SUBT02;[3.5;0.82];$-3$;#000000;1`)
+@KoordText(`SUBT02;[0;-0.32];$0$;#000000;1`)
+@KoordText(`SUBT02;[1;-0.32];$1$;#000000;1`)
+@KoordText(`SUBT02;[2;-0.32];$2$;#000000;1`)
+@KoordText(`SUBT02;[3;-0.32];$3$;#000000;1`)
+@KoordText(`SUBT02;[4;-0.32];$4$;#000000;1`)
+@KoordText(`SUBT02;[5;-0.32];$5$;#000000;1`)
+@KoordText(`SUBT02;[6;-0.32];$6$;#000000;1`)
+@KoordText(`SUBT02;[6.62;0];$x$;#000000;1`)
 
 </center>
 

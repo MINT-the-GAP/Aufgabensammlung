@@ -256,7 +256,22 @@ $$
 <center>
 
 <!-- style="width:500px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Potenzer.png)
+@Koordinatensystem(`xmin=-0.65;xmax=4.25;ymin=-0.15;ymax=4.55;width=500;id=POTENZER01;achsen=0;grid=0;border=0`)
+
+@Flaeche(`POTENZER01;[[-0.64;-0.14];[4.24;-0.14];[4.24;4.54];[-0.64;4.54]];#ffffff;1;inhalt=0;umfang=0`)
+@Flaeche(`POTENZER01;[[0;0];[3;0];[3;3];[0;3]];#80f580;1;inhalt=0;umfang=0`)
+@Flaeche(`POTENZER01;[[0;3];[3;3];[3;4];[0;4]];#8888ee;1;inhalt=0;umfang=0`)
+@Flaeche(`POTENZER01;[[3;0];[4;0];[4;3];[3;3]];#f2bd84;1;inhalt=0;umfang=0`)
+@Flaeche(`POTENZER01;[[3;3];[4;3];[4;4];[3;4]];#f28c8c;1;inhalt=0;umfang=0`)
+
+@Strecke(`POTENZER01;[[0;0];[4;0];[4;4];[0;4];[0;0]];#000000;;-;4px`)
+@Strecke(`POTENZER01;[[3;0];[3;4]];#000000;;-;2px`)
+@Strecke(`POTENZER01;[[0;3];[4;3]];#000000;;-;2px`)
+
+@KoordText(`POTENZER01;[1.5;4.3];$a$;#000000;1`)
+@KoordText(`POTENZER01;[3.5;4.3];$b$;#000000;1`)
+@KoordText(`POTENZER01;[-0.35;3.5];$b$;#000000;1`)
+@KoordText(`POTENZER01;[-0.35;1.5];$a$;#000000;1`)
 
 </center>
 
