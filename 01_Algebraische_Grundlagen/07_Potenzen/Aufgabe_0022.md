@@ -41,7 +41,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 tags: Potenzen, Bruchrechnung, Negative Zahlen, mittel, normal, Bestimme
 
-comment: Betimme den Wert einer Potenz mit Bruchrechnung und ganzen Zahlen.
+comment: Bestimme den Wert einer Potenz mit Bruchrechnung und ganzen Zahlen.
 
 author: Martin Lommatzsch
 

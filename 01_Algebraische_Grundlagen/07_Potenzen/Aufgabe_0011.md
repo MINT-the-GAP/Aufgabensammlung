@@ -41,7 +41,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 tags: Potenzen, Dezimalzahlen, leicht, niedrig, Bestimme
 
-comment: Betimme den Wert einer Potenz mit Dezimalzahlen.
+comment: Bestimme den Wert einer Potenz mit Dezimalzahlen.
 
 author: Martin Lommatzsch
 

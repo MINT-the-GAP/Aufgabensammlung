@@ -41,7 +41,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 tags: Potenzen, Dezimalzahlen, Negative Zahlen, mittel, normal, Bestimme
 
-comment: Betimme den Wert einer Potenz mit negativen Dezimalzahlen.
+comment: Bestimme den Wert einer Potenz mit negativen Dezimalzahlen.
 
 author: Martin Lommatzsch
 

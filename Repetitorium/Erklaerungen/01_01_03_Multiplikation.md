@@ -96,7 +96,7 @@ $$
 
 <center>
 
-@Koordinatensystem(`xmin=-0.25;xmax=9.7;ymin=-0.5;ymax=0.9;width=800;id=MULT01;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=-0.25;xmax=9.7;ymin=-0.5;ymax=0.9;width=800;id=MULT01;achsen=0;grid=0;border=0;static=1`)
 
 @Flaeche(`MULT01;[[-0.24;-0.49];[9.69;-0.49];[9.69;0.89];[-0.24;0.89]];#ffffff;1;inhalt=0;umfang=0`)
 @Vektor(`MULT01;[[0;0];[9.5;0]];#000000;x=0`)
@@ -134,7 +134,7 @@ $$
 
 <center>
 
-@Koordinatensystem(`xmin=-0.5;xmax=9.5;ymin=-0.5;ymax=4.5;width=800;id=MULT02;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=-0.5;xmax=9.5;ymin=-0.5;ymax=4.5;width=800;id=MULT02;achsen=0;grid=0;border=0;static=1`)
 
 @Flaeche(`MULT02;[[-0.49;-0.49];[9.49;-0.49];[9.49;4.49];[-0.49;4.49]];#ffffff;1;inhalt=0;umfang=0`)
 @Flaeche(`MULT02;[[0;1];[4;1];[4;3];[0;3]];#80f580;1;inhalt=0;umfang=0`)

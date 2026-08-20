@@ -92,7 +92,7 @@ data-hint-button="3"  -->
 
 <center>
 
-@Koordinatensystem(`xmin=0;xmax=10;ymin=0;ymax=7;width=420;id=ME0027c;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=0;xmax=10;ymin=0;ymax=7;width=420;id=ME0027c;achsen=0;grid=0;border=0;static=1`)
 
 @Flaeche(`ME0027c;[[0.1;0.1];[9.9;0.1];[9.9;6.9];[0.1;6.9]];#ffffff;1;inhalt=0;umfang=0`)
 @Punkt(`ME0027c;M_0=0;3.8;3.7;#000000;0;fix`)

@@ -64,8 +64,27 @@ author: Martin Lommatzsch
 
 <center>
 
-<!-- style="width:750px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruch99.png)
+<!-- style="max-width:800px" -->
+@Koordinatensystem(`xmin=-0.5;xmax=32.5;ymin=-0.5;ymax=8.2;width=800;id=BR0099;achsen=0;grid=0;border=0;static=1`)
+
+@KoordText(`BR0099;[0.4;7.2];I);#000000;1`)
+@KoordText(`BR0099;[12.4;7.2];II);#000000;1`)
+@KoordText(`BR0099;[24.4;7.2];III);#000000;1`)
+
+@Flaeche(`BR0099;[[-0.12;-0.12];[8.12;-0.12];[8.12;6.12];[-0.12;6.12]];#ffffff;1;inhalt=0;umfang=0`)
+@Strecke(`BR0099;[[1.6;0];[1.6;6];[3.2;6];[3.2;0];[4.8;0];[4.8;6];[6.4;6];[6.4;0]];#000000;;-;2px;linestyle=dashed`)
+@Strecke(`BR0099;[[0;2];[8;2];[8;4];[0;4]];#000000;;-;2px;linestyle=dotted`)
+@Strecke(`BR0099;[[0;0];[8;0];[8;6];[0;6];[0;0]];#000000;;-;4px`)
+
+@Flaeche(`BR0099;[[11.88;-0.12];[20.12;-0.12];[20.12;6.12];[11.88;6.12]];#ffffff;1;inhalt=0;umfang=0`)
+@Strecke(`BR0099;[[14;0];[14;6];[16;6];[16;0];[18;0];[18;6]];#000000;;-;2px;linestyle=dashed`)
+@Strecke(`BR0099;[[12;1.5];[20;1.5];[20;3];[12;3];[12;4.5];[20;4.5]];#000000;;-;2px;linestyle=dotted`)
+@Strecke(`BR0099;[[12;0];[20;0];[20;6];[12;6];[12;0]];#000000;;-;4px`)
+
+@Flaeche(`BR0099;[[23.88;-0.12];[32.12;-0.12];[32.12;6.12];[23.88;6.12]];#ffffff;1;inhalt=0;umfang=0`)
+@Strecke(`BR0099;[[26.6667;0];[26.6667;6];[29.3333;6];[29.3333;0]];#000000;;-;2px;linestyle=dashed`)
+@Strecke(`BR0099;[[24;1];[32;1];[32;2];[24;2];[24;3];[32;3];[32;4];[24;4];[24;5];[32;5]];#000000;;-;2px;linestyle=dotted`)
+@Strecke(`BR0099;[[24;0];[32;0];[32;6];[24;6];[24;0]];#000000;;-;4px`)
 
 </center>
 

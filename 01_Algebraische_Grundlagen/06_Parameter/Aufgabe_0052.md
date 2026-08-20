@@ -60,7 +60,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
-@Koordinatensystem(`xmin=-1;xmax=12;ymin=-1;ymax=8;width=450;id=PA0052a;0;0;0`)
+@Koordinatensystem(`xmin=-1;xmax=12;ymin=-1;ymax=8;width=450;id=PA0052a;0;0;0;static=1`)
 
 @Flaeche(`PA0052a;[[1;1];[4;1];[4;3];[1;3]];#577590;0.35`)
 @Flaeche(`PA0052a;[[1;4.2];[4;4.2];[4;6.2];[1;6.2]];#577590;0.35`)
@@ -87,7 +87,7 @@ data-hint-button="3"  -->
 
 __$b)\;\;$__
 
-@Koordinatensystem(`xmin=-1;xmax=13;ymin=-1;ymax=8;width=450;id=PA0052b;0;0;0`)
+@Koordinatensystem(`xmin=-1;xmax=13;ymin=-1;ymax=8;width=450;id=PA0052b;0;0;0;static=1`)
 
 @Flaeche(`PA0052b;[[0;1];[2.5;1];[1.25;3.4]];#90be6d;0.35`)
 @Flaeche(`PA0052b;[[3.5;1];[6.5;1];[6;3.2];[4;3.2]];#f3722c;0.35`)
@@ -118,7 +118,7 @@ data-hint-button="3"  -->
 
 __$c)\;\;$__
 
-@Koordinatensystem(`xmin=-1;xmax=14;ymin=-1;ymax=9;width=450;id=PA0052c;0;0;0`)
+@Koordinatensystem(`xmin=-1;xmax=14;ymin=-1;ymax=9;width=450;id=PA0052c;0;0;0;static=1`)
 
 @Flaeche(`PA0052c;[[0;1];[2;1];[3;2.5];[1.5;4];[-0.2;2.8]];#277da1;0.35`)
 @Flaeche(`PA0052c;[[4;1];[6;1];[7;2.5];[5.5;4];[3.8;2.8]];#277da1;0.35`)
@@ -149,7 +149,7 @@ data-hint-button="3"  -->
 
 __$d)\;\;$__
 
-@Koordinatensystem(`xmin=-1;xmax=14;ymin=-1;ymax=9;width=450;id=PA0052d;0;0;0`)
+@Koordinatensystem(`xmin=-1;xmax=14;ymin=-1;ymax=9;width=450;id=PA0052d;0;0;0;static=1`)
 
 @Flaeche(`PA0052d;[[0.5;1];[2.5;1];[3.5;2.3];[2.5;3.8];[0.5;3.8];[-0.5;2.3]];#4d908e;0.35`)
 @Flaeche(`PA0052d;[[4.5;1];[6.5;1];[7.5;2.3];[6.5;3.8];[4.5;3.8];[3.5;2.3]];#4d908e;0.35`)
@@ -180,7 +180,7 @@ data-hint-button="3"  -->
 
 __$e)\;\;$__
 
-@Koordinatensystem(`xmin=-1;xmax=15;ymin=-1;ymax=9;width=450;id=PA0052e;0;0;0`)
+@Koordinatensystem(`xmin=-1;xmax=15;ymin=-1;ymax=9;width=450;id=PA0052e;0;0;0;static=1`)
 
 @Flaeche(`PA0052e;[[0;1];[2;1];[1;3]];#f72585;0.35`)
 @Flaeche(`PA0052e;[[3;1];[5;1];[4;3]];#f72585;0.35`)
@@ -215,7 +215,7 @@ data-hint-button="3"  -->
 
 __$f)\;\;$__
 
-@Koordinatensystem(`xmin=-1;xmax=16;ymin=-1;ymax=10;width=450;id=PA0052f;0;0;0`)
+@Koordinatensystem(`xmin=-1;xmax=16;ymin=-1;ymax=10;width=450;id=PA0052f;0;0;0;static=1`)
 
 @Flaeche(`PA0052f;[[0;1];[3;1];[3;3.5];[0;3.5]];#577590;0.35`)
 @Flaeche(`PA0052f;[[0;4.5];[3;4.5];[3;7];[0;7]];#577590;0.35`)

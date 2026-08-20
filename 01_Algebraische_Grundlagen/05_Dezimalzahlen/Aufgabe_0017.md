@@ -62,7 +62,7 @@ author: Martin Lommatzsch
 __$a)\;\;$__ 
 <center>
 
-@Koordinatensystem(`xmin=-2;xmax=80;ymin=-8;ymax=4;width=900;id=D1701;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=-2;xmax=80;ymin=-8;ymax=4;width=900;id=D1701;achsen=0;grid=0;border=0;static=1`)
 
 @Vektor(`D1701;[[0;0];[76;0]];#000000;u=0`)
 
@@ -103,7 +103,7 @@ data-type="none" -->
 __$b)\;\;$__ 
 <center>
 
-@Koordinatensystem(`xmin=-2;xmax=80;ymin=-8;ymax=4;width=900;id=D1702;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=-2;xmax=80;ymin=-8;ymax=4;width=900;id=D1702;achsen=0;grid=0;border=0;static=1`)
 
 @Vektor(`D1702;[[0;0];[76;0]];#000000;u=0`)
 
@@ -143,7 +143,7 @@ data-type="none" -->
 __$c)\;\;$__ 
 <center>
 
-@Koordinatensystem(`xmin=-8;xmax=86;ymin=-8;ymax=4;width=900;id=D1703;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=-8;xmax=86;ymin=-8;ymax=4;width=900;id=D1703;achsen=0;grid=0;border=0;static=1`)
 
 @Vektor(`D1703;[[-5;0];[80;0]];#000000;u=0`)
 
@@ -184,7 +184,7 @@ data-type="none" -->
 __$d)\;\;$__ 
 <center>
 
-@Koordinatensystem(`xmin=-8;xmax=86;ymin=-8;ymax=4;width=900;id=D1704;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=-8;xmax=86;ymin=-8;ymax=4;width=900;id=D1704;achsen=0;grid=0;border=0;static=1`)
 
 @Vektor(`D1704;[[-5;0];[80;0]];#000000;u=0`)
 

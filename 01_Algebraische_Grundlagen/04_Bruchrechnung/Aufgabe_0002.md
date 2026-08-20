@@ -66,7 +66,7 @@ __$a)\;\;$__
 <center>
 
 <!-- style="max-width:300px" -->
-@Koordinatensystem(`xmin=-1.1;xmax=1.1;ymin=-1.1;ymax=1.1;width=220;id=BR0002a;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=-1.1;xmax=1.1;ymin=-1.1;ymax=1.1;width=220;id=BR0002a;achsen=0;grid=0;border=0;static=1`)
 
 @Flaeche(`BR0002a;[[-1.08;-1.08];[1.08;-1.08];[1.08;1.08];[-1.08;1.08]];#ffffff;1;inhalt=0;umfang=0`)
 @Punkt(`BR0002a;M=0;0;0;#000000;0;fix`)
@@ -104,7 +104,7 @@ __$b)\;\;$__
 <center>
 
 <!-- style="max-width:300px" -->
-@Koordinatensystem(`xmin=-1.1;xmax=1.1;ymin=-1.1;ymax=1.1;width=220;id=BR0002b;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=-1.1;xmax=1.1;ymin=-1.1;ymax=1.1;width=220;id=BR0002b;achsen=0;grid=0;border=0;static=1`)
 
 @Flaeche(`BR0002b;[[-1.08;-1.08];[1.08;-1.08];[1.08;1.08];[-1.08;1.08]];#ffffff;1;inhalt=0;umfang=0`)
 @Punkt(`BR0002b;M=0;0;0;#000000;0;fix`)
@@ -139,7 +139,7 @@ __$c)\;\;$__
 <center>
 
 <!-- style="max-width:300px" -->
-@Koordinatensystem(`xmin=-1.1;xmax=1.1;ymin=-1.1;ymax=1.1;width=220;id=BR0002c;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=-1.1;xmax=1.1;ymin=-1.1;ymax=1.1;width=220;id=BR0002c;achsen=0;grid=0;border=0;static=1`)
 
 @Flaeche(`BR0002c;[[-1.08;-1.08];[1.08;-1.08];[1.08;1.08];[-1.08;1.08]];#ffffff;1;inhalt=0;umfang=0`)
 @Punkt(`BR0002c;M=0;0;0;#000000;0;fix`)
@@ -183,7 +183,7 @@ __$d)\;\;$__
 <center>
 
 <!-- style="max-width:300px" -->
-@Koordinatensystem(`xmin=-1.1;xmax=1.1;ymin=-1.1;ymax=1.1;width=220;id=BR0002d;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=-1.1;xmax=1.1;ymin=-1.1;ymax=1.1;width=220;id=BR0002d;achsen=0;grid=0;border=0;static=1`)
 
 @Flaeche(`BR0002d;[[-1.08;-1.08];[1.08;-1.08];[1.08;1.08];[-1.08;1.08]];#ffffff;1;inhalt=0;umfang=0`)
 @Punkt(`BR0002d;M=0;0;0;#000000;0;fix`)
@@ -216,7 +216,7 @@ __$e)\;\;$__
 <center>
 
 <!-- style="max-width:300px" -->
-@Koordinatensystem(`xmin=-1.1;xmax=1.1;ymin=-1.1;ymax=1.1;width=220;id=BR0002e;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=-1.1;xmax=1.1;ymin=-1.1;ymax=1.1;width=220;id=BR0002e;achsen=0;grid=0;border=0;static=1`)
 
 @Flaeche(`BR0002e;[[-1.08;-1.08];[1.08;-1.08];[1.08;1.08];[-1.08;1.08]];#ffffff;1;inhalt=0;umfang=0`)
 @Punkt(`BR0002e;M=0;0;0;#000000;0;fix`)
@@ -254,7 +254,7 @@ __$f)\;\;$__
 <center>
 
 <!-- style="max-width:300px" -->
-@Koordinatensystem(`xmin=-1.1;xmax=1.1;ymin=-1.1;ymax=1.1;width=220;id=BR0002f;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=-1.1;xmax=1.1;ymin=-1.1;ymax=1.1;width=220;id=BR0002f;achsen=0;grid=0;border=0;static=1`)
 
 @Flaeche(`BR0002f;[[-1.08;-1.08];[1.08;-1.08];[1.08;1.08];[-1.08;1.08]];#ffffff;1;inhalt=0;umfang=0`)
 @Punkt(`BR0002f;M=0;0;0;#000000;0;fix`)
@@ -298,7 +298,7 @@ __$g)\;\;$__
 <center>
 
 <!-- style="max-width:300px" -->
-@Koordinatensystem(`xmin=-1.1;xmax=1.1;ymin=-1.1;ymax=1.1;width=220;id=BR0002g;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=-1.1;xmax=1.1;ymin=-1.1;ymax=1.1;width=220;id=BR0002g;achsen=0;grid=0;border=0;static=1`)
 
 @Flaeche(`BR0002g;[[-1.08;-1.08];[1.08;-1.08];[1.08;1.08];[-1.08;1.08]];#ffffff;1;inhalt=0;umfang=0`)
 @Punkt(`BR0002g;M=0;0;0;#000000;0;fix`)
@@ -331,7 +331,7 @@ __$h)\;\;$__
 <center>
 
 <!-- style="max-width:300px" -->
-@Koordinatensystem(`xmin=-1.1;xmax=1.1;ymin=-1.1;ymax=1.1;width=220;id=BR0002h;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=-1.1;xmax=1.1;ymin=-1.1;ymax=1.1;width=220;id=BR0002h;achsen=0;grid=0;border=0;static=1`)
 
 @Flaeche(`BR0002h;[[-1.08;-1.08];[1.08;-1.08];[1.08;1.08];[-1.08;1.08]];#ffffff;1;inhalt=0;umfang=0`)
 @Punkt(`BR0002h;M=0;0;0;#000000;0;fix`)
@@ -372,7 +372,7 @@ __$i)\;\;$__
 <center>
 
 <!-- style="max-width:300px" -->
-@Koordinatensystem(`xmin=-1.1;xmax=1.1;ymin=-1.1;ymax=1.1;width=220;id=BR0002i;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=-1.1;xmax=1.1;ymin=-1.1;ymax=1.1;width=220;id=BR0002i;achsen=0;grid=0;border=0;static=1`)
 
 @Flaeche(`BR0002i;[[-1.08;-1.08];[1.08;-1.08];[1.08;1.08];[-1.08;1.08]];#ffffff;1;inhalt=0;umfang=0`)
 @Punkt(`BR0002i;M=0;0;0;#000000;0;fix`)
@@ -417,7 +417,7 @@ __$j)\;\;$__
 <center>
 
 <!-- style="max-width:300px" -->
-@Koordinatensystem(`xmin=-1.1;xmax=1.1;ymin=-1.1;ymax=1.1;width=220;id=BR0002j;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=-1.1;xmax=1.1;ymin=-1.1;ymax=1.1;width=220;id=BR0002j;achsen=0;grid=0;border=0;static=1`)
 
 @Flaeche(`BR0002j;[[-1.08;-1.08];[1.08;-1.08];[1.08;1.08];[-1.08;1.08]];#ffffff;1;inhalt=0;umfang=0`)
 @Punkt(`BR0002j;M=0;0;0;#000000;0;fix`)

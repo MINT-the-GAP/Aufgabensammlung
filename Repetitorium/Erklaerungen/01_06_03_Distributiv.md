@@ -74,7 +74,7 @@ $$
 <center>
 
 <!-- style="width:750px" -->
-@Koordinatensystem(`xmin=-0.65;xmax=8.45;ymin=-0.15;ymax=5.55;width=750;id=DISTRIBUTIV01;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=-0.65;xmax=8.45;ymin=-0.15;ymax=5.55;width=750;id=DISTRIBUTIV01;achsen=0;grid=0;border=0;static=1`)
 
 @Flaeche(`DISTRIBUTIV01;[[-0.64;-0.14];[8.44;-0.14];[8.44;5.54];[-0.64;5.54]];#ffffff;1;inhalt=0;umfang=0`)
 @Flaeche(`DISTRIBUTIV01;[[0;0];[3;0];[3;3];[0;3]];#80f580;1;inhalt=0;umfang=0`)

@@ -66,7 +66,7 @@ __$a)\;\;$__
 
 
 
-@CoordinateSystem(`xmin=-0.5;xmax=3.25;ymin=-0.5;ymax=3.25;width=400;id=A0006a;0;0;0`)
+@CoordinateSystem(`xmin=-0.5;xmax=3.25;ymin=-0.5;ymax=3.25;width=400;id=A0006a;0;0;0;static=1`)
 
 @Flaeche(`A0006a;[[0.1;0.1];[0.1;0.9];[0.9;0.9];[0.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)
 @Flaeche(`A0006a;[[1.1;0.1];[1.1;0.9];[1.9;0.9];[1.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)
@@ -131,7 +131,7 @@ Es sind [[ 34  ]] umrandende Strecken.
 
 
 
-@CoordinateSystem(`xmin=-0.5;xmax=10.25;ymin=-0.5;ymax=7.25;width=400;id=A0006b;0;0;0`)
+@CoordinateSystem(`xmin=-0.5;xmax=10.25;ymin=-0.5;ymax=7.25;width=400;id=A0006b;0;0;0;static=1`)
 
 @Flaeche(`A0006b;[[0.1;0.1];[0.1;0.9];[0.9;0.9];[0.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)
 @Flaeche(`A0006b;[[1.1;0.1];[1.1;0.9];[1.9;0.9];[1.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)

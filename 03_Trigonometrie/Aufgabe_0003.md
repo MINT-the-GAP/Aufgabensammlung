@@ -63,7 +63,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
-@CoordinateSystem(`xmin=-2.8;xmax=2.8;ymin=-0.8;ymax=3.8;width=360;id=TR0003a;0;0;0`)
+@CoordinateSystem(`xmin=-2.8;xmax=2.8;ymin=-0.8;ymax=3.8;width=360;id=TR0003a;0;0;0;static=1`)
 @Punkt(`TR0003a;A;-2;0;#000000;0;fix`)
 @Punkt(`TR0003a;B;2;0;#000000;0;fix`)
 @Punkt(`TR0003a;C;2;3;#000000;0;fix`)
@@ -101,7 +101,7 @@ Gleichung: $\quad$ [[ c ]]$^2 = $ [[ d ]]$^2 + a^2$
 
 __$b)\;\;$__
 
-@CoordinateSystem(`xmin=-2.8;xmax=2.8;ymin=-0.8;ymax=3.8;width=360;id=TR0003b;0;0;0`)
+@CoordinateSystem(`xmin=-2.8;xmax=2.8;ymin=-0.8;ymax=3.8;width=360;id=TR0003b;0;0;0;static=1`)
 @Punkt(`TR0003b;A;-2;0;#000000;0;fix`)
 @Punkt(`TR0003b;B;2;0;#000000;0;fix`)
 @Punkt(`TR0003b;C;2;3;#000000;0;fix`)
@@ -141,7 +141,7 @@ Gleichung: $\quad$ $\cos($ [[$l$|($\delta$)|$\rho$]] $)= \frac{k}{h}$
 
 __$c)\;\;$__
 
-@CoordinateSystem(`xmin=-2.8;xmax=2.8;ymin=-0.8;ymax=3.8;width=360;id=TR0003c;0;0;0`)
+@CoordinateSystem(`xmin=-2.8;xmax=2.8;ymin=-0.8;ymax=3.8;width=360;id=TR0003c;0;0;0;static=1`)
 @Punkt(`TR0003c;A;-2;0;#000000;0;fix`)
 @Punkt(`TR0003c;B;2;0;#000000;0;fix`)
 @Punkt(`TR0003c;C;2;3;#000000;0;fix`)
@@ -179,7 +179,7 @@ Gleichung: $\quad$  [[($\sin$)|$\cos$|$\tan$|$\text{cot}$]] $(\psi)= \frac{z}{u}
 
 __$d)\;\;$__
 
-@CoordinateSystem(`xmin=-2.8;xmax=2.8;ymin=-0.8;ymax=3.8;width=360;id=TR0003d;0;0;0`)
+@CoordinateSystem(`xmin=-2.8;xmax=2.8;ymin=-0.8;ymax=3.8;width=360;id=TR0003d;0;0;0;static=1`)
 @Punkt(`TR0003d;A;-2;0;#000000;0;fix`)
 @Punkt(`TR0003d;B;2;0;#000000;0;fix`)
 @Punkt(`TR0003d;C;2;3;#000000;0;fix`)

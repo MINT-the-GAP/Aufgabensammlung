@@ -71,8 +71,37 @@ __$a)\;\;$__
 
 <center>
 
-<!-- style="width:150px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb7.png)
+<!-- style="max-width:300px" -->
+@Koordinatensystem(`xmin=-0.1;xmax=4.1;ymin=-0.1;ymax=4.1;width=220;id=BR0082a;achsen=0;grid=0;border=0;static=1`)
+
+@Flaeche(`BR0082a;[[-0.08;-0.08];[4.08;-0.08];[4.08;4.08];[-0.08;4.08]];#ffffff;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082a;[[0;3];[1;3];[1;4];[0;4]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082a;[[2;3];[2;4];[3;3]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082a;[[1;2];[1;3];[2;2]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082a;[[2;3];[3;3];[3;2]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082a;[[1;2];[2;2];[2;1]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082a;[[3;1];[3;2];[4;1]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082a;[[1;0];[1;1];[2;0]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082a;[[3;1];[4;1];[4;0]];#c3c3c3;1;inhalt=0;umfang=0`)
+
+@Strecke(`BR0082a;[[0;4];[3;4];[3;3];[4;3];[4;0];[3;1];[2;1];[2;0];[1;0];[1;3];[0;3];[0;4]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082a;[[0;3];[4;3]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082a;[[1;2];[4;2]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082a;[[1;1];[4;1]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082a;[[1;0];[1;4]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082a;[[2;0];[2;4]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082a;[[3;1];[3;4]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082a;[[4;0];[4;3]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082a;[[0;4];[1;3]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082a;[[1;4];[2;3]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082a;[[2;4];[3;3]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082a;[[1;3];[2;2]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082a;[[2;3];[3;2]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082a;[[3;3];[4;2]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082a;[[1;2];[2;1]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082a;[[2;2];[3;1]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082a;[[3;2];[4;1]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082a;[[1;1];[2;0]];#000000;\,=0;design=-;4px`)
 
 </center>
 
@@ -102,8 +131,23 @@ __$b)\;\;$__
 
 <center>
 
-<!-- style="width:150px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb8.png)
+<!-- style="max-width:300px" -->
+@Koordinatensystem(`xmin=-0.1;xmax=2.1;ymin=-0.1;ymax=2.1;width=220;id=BR0082b;achsen=0;grid=0;border=0;static=1`)
+
+@Flaeche(`BR0082b;[[-0.08;-0.08];[2.08;-0.08];[2.08;2.08];[-0.08;2.08]];#ffffff;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082b;[[1;1];[2;1];[2;2];[1;2]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082b;[[0;0];[0;1];[1;0]];#c3c3c3;1;inhalt=0;umfang=0`)
+
+@Strecke(`BR0082b;[[0;0];[0;2]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082b;[[1;0];[1;2]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082b;[[2;0];[2;2]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082b;[[0;0];[1;0]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082b;[[0;1];[2;1]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082b;[[1;2];[2;2]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082b;[[0;2];[1;1]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082b;[[1;2];[2;1]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082b;[[0;1];[1;0]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082b;[[1;1];[2;0]];#000000;\,=0;design=-;4px`)
 
 </center>
 
@@ -133,8 +177,38 @@ __$c)\;\;$__
 
 <center>
 
-<!-- style="width:150px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb9.png)
+<!-- style="max-width:300px" -->
+@Koordinatensystem(`xmin=-0.1;xmax=4.1;ymin=-0.1;ymax=4.1;width=220;id=BR0082c;achsen=0;grid=0;border=0;static=1`)
+
+@Flaeche(`BR0082c;[[-0.08;-0.08];[4.08;-0.08];[4.08;4.08];[-0.08;4.08]];#ffffff;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082c;[[1;3];[1;4];[2;3]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082c;[[0;3];[1;3];[1;2]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082c;[[1;2];[2;2];[2;1]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082c;[[2;1];[3;1];[3;2];[2;2]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082c;[[3;2];[4;2];[4;1]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082c;[[0;0];[1;0];[1;1];[0;1]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082c;[[2;0];[3;0];[3;1];[2;1]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082c;[[3;1];[4;1];[4;0]];#c3c3c3;1;inhalt=0;umfang=0`)
+
+@Strecke(`BR0082c;[[0;0];[4;0];[4;2];[2;2];[2;4];[0;4];[0;0]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082c;[[0;1];[4;1]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082c;[[0;2];[4;2]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082c;[[0;3];[2;3]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082c;[[1;0];[1;4]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082c;[[2;0];[2;4]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082c;[[3;0];[3;2]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082c;[[0;4];[1;3]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082c;[[1;4];[2;3]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082c;[[0;3];[1;2]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082c;[[1;3];[2;2]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082c;[[0;2];[1;1]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082c;[[1;2];[2;1]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082c;[[2;2];[3;1]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082c;[[3;2];[4;1]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082c;[[0;1];[1;0]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082c;[[1;1];[2;0]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082c;[[2;1];[3;0]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082c;[[3;1];[4;0]];#000000;\,=0;design=-;4px`)
 
 </center>
 
@@ -164,8 +238,31 @@ __$d)\;\;$__
 
 <center>
 
-<!-- style="width:150px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb10.png)
+<!-- style="max-width:300px" -->
+@Koordinatensystem(`xmin=-0.1;xmax=6.1;ymin=-0.1;ymax=2.1;width=300;id=BR0082d;achsen=0;grid=0;border=0;static=1`)
+
+@Flaeche(`BR0082d;[[-0.08;-0.08];[6.08;-0.08];[6.08;2.08];[-0.08;2.08]];#ffffff;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082d;[[2;1];[3;1];[3;2]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082d;[[3;1];[4;1];[4;2]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082d;[[5;1];[5;2];[6;2]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082d;[[0;0];[1;0];[1;1]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082d;[[2;0];[2;1];[3;1]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082d;[[3;0];[3;1];[4;1]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082d;[[4;0];[4;1];[5;1]];#c3c3c3;1;inhalt=0;umfang=0`)
+
+@Strecke(`BR0082d;[[0;0];[4;0];[5;1];[6;2];[2;2];[1;1];[0;0]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082d;[[1;1];[5;1]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082d;[[1;0];[1;1]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082d;[[2;0];[2;2]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082d;[[3;0];[3;2]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082d;[[4;0];[4;2]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082d;[[5;1];[5;2]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082d;[[1;0];[2;1]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082d;[[2;0];[3;1]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082d;[[3;0];[4;1]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082d;[[2;1];[3;2]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082d;[[3;1];[4;2]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082d;[[4;1];[5;2]];#000000;\,=0;design=-;4px`)
 
 </center>
 
@@ -195,8 +292,27 @@ __$e)\;\;$__
 
 <center>
 
-<!-- style="width:150px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb11.png)
+<!-- style="max-width:300px" -->
+@Koordinatensystem(`xmin=-0.1;xmax=2.1;ymin=-0.1;ymax=2.1;width=220;id=BR0082e;achsen=0;grid=0;border=0;static=1`)
+
+@Flaeche(`BR0082e;[[-0.08;-0.08];[2.08;-0.08];[2.08;2.08];[-0.08;2.08]];#ffffff;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082e;[[0.5;1.5];[1;2];[1;1]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082e;[[1.5;1.5];[1;1];[1;2]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082e;[[0.5;0.5];[0;0];[0;1]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082e;[[0.5;0.5];[0;0];[1;0]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082e;[[1.5;0.5];[1;1];[2;1]];#c3c3c3;1;inhalt=0;umfang=0`)
+
+@Strecke(`BR0082e;[[0;0];[2;0];[2;2];[0;2];[0;0]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082e;[[1;0];[1;2]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082e;[[0;1];[2;1]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082e;[[0;2];[1;1]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082e;[[0;1];[1;2]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082e;[[1;2];[2;1]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082e;[[1;1];[2;2]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082e;[[0;1];[1;0]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082e;[[0;0];[1;1]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082e;[[1;1];[2;0]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082e;[[1;0];[2;1]];#000000;\,=0;design=-;4px`)
 
 </center>
 
@@ -226,8 +342,19 @@ __$f)\;\;$__
 
 <center>
 
-<!-- style="width:150px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/bruchb12.png)
+<!-- style="max-width:300px" -->
+@Koordinatensystem(`xmin=-0.1;xmax=2.1;ymin=-0.1;ymax=2.1;width=220;id=BR0082f;achsen=0;grid=0;border=0;static=1`)
+
+@Flaeche(`BR0082f;[[-0.08;-0.08];[2.08;-0.08];[2.08;2.08];[-0.08;2.08]];#ffffff;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082f;[[0;1];[1;1];[1;2];[0;2]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082f;[[0;1];[1;1];[1;0]];#c3c3c3;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0082f;[[1;0];[2;0];[2;1];[1;1]];#c3c3c3;1;inhalt=0;umfang=0`)
+
+@Strecke(`BR0082f;[[0;2];[1;2];[2;1];[2;0];[1;0];[0;1];[0;2]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082f;[[1;0];[1;2]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082f;[[0;1];[2;1]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082f;[[0;2];[1;1]];#000000;\,=0;design=-;4px`)
+@Strecke(`BR0082f;[[1;1];[2;0]];#000000;\,=0;design=-;4px`)
 
 </center>
 

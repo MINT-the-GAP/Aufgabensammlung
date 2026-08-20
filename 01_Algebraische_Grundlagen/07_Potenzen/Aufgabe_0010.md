@@ -41,7 +41,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 tags: Potenzen, Bruchrechnung, leicht, niedrig, Bestimme
 
-comment: Betimme den Wert einer Potenz mit Brüchen.
+comment: Bestimme den Wert einer Potenz mit Brüchen.
 
 author: Martin Lommatzsch
 

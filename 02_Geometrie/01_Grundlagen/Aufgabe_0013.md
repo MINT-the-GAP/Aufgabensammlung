@@ -46,7 +46,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
-@CoordinateSystem(`xmin=-1;xmax=12;ymin=-4;ymax=4;width=600;id=GL0013a;0;0;1`)
+@CoordinateSystem(`xmin=-1;xmax=12;ymin=-4;ymax=4;width=600;id=GL0013a;0;0`)
 @SetSquare(`GL0013a`)
 
 @Point(`GL0013a;A;1.1;0;#ff00ff;1;fix`)
@@ -60,7 +60,7 @@ data-solution-button="5"
 data-hint-button="3"  -->
 
 $|\overline{AB}| =$ [[ 3,2 ]] LE
-@Algebrite.check2(3.2)
+@Algebrite.check(3.2)
 [[?]] @Explain
 
 @resetter
@@ -73,7 +73,7 @@ $|\overline{AB}| =$ [[ 3,2 ]] LE
 
 __$b)\;\;$__
 
-@CoordinateSystem(`xmin=-1;xmax=12;ymin=-4;ymax=4;width=600;id=GL0013b;0;0;1`)
+@CoordinateSystem(`xmin=-1;xmax=12;ymin=-4;ymax=4;width=600;id=GL0013b;0;0`)
 @SetSquare(`GL0013b`)
 
 @Point(`GL0013b;C;2.4;0;#ff00ff;1;fix`)
@@ -86,7 +86,7 @@ data-solution-timer-badge="off"
 data-solution-button="5"
 data-hint-button="3"  -->
 $|\overline{CD}| =$ [[ 5,4 ]] LE
-@Algebrite.check2(5.4)
+@Algebrite.check(5.4)
 [[?]] @Explain
 
 @resetter
@@ -99,7 +99,7 @@ $|\overline{CD}| =$ [[ 5,4 ]] LE
 
 __$c)\;\;$__
 
-@CoordinateSystem(`xmin=-1;xmax=12;ymin=-4;ymax=4;width=600;id=GL0013c;0;0;1`)
+@CoordinateSystem(`xmin=-1;xmax=12;ymin=-4;ymax=4;width=600;id=GL0013c;0;0`)
 @SetSquare(`GL0013c`)
 
 @Point(`GL0013c;E;1.7;0;#ff00ff;1;fix`)
@@ -112,7 +112,7 @@ data-solution-timer-badge="off"
 data-solution-button="5"
 data-hint-button="3"  -->
 $|\overline{EF}| =$ [[ 5,9 ]] LE
-@Algebrite.check2(5.9)
+@Algebrite.check(5.9)
 [[?]] @Explain
 
 @resetter
@@ -125,7 +125,7 @@ $|\overline{EF}| =$ [[ 5,9 ]] LE
 
 __$d)\;\;$__
 
-@CoordinateSystem(`xmin=-1;xmax=12;ymin=-4;ymax=4;width=600;id=GL0013d;0;0;1`)
+@CoordinateSystem(`xmin=-1;xmax=12;ymin=-4;ymax=4;width=600;id=GL0013d;0;0`)
 @SetSquare(`GL0013d`)
 
 @Point(`GL0013d;G;3.2;0;#ff00ff;1;fix`)
@@ -138,7 +138,7 @@ data-solution-timer-badge="off"
 data-solution-button="5"
 data-hint-button="3"  -->
 $|\overline{GH}| =$ [[ 2,6 ]] LE
-@Algebrite.check2(2.6)
+@Algebrite.check(2.6)
 [[?]] @Explain
 
 @resetter
@@ -151,7 +151,7 @@ $|\overline{GH}| =$ [[ 2,6 ]] LE
 
 __$e)\;\;$__
 
-@CoordinateSystem(`xmin=-1;xmax=12;ymin=-4;ymax=4;width=600;id=GL0013e;0;0;1`)
+@CoordinateSystem(`xmin=-1;xmax=12;ymin=-4;ymax=4;width=600;id=GL0013e;0;0`)
 @SetSquare(`GL0013e`)
 
 @Point(`GL0013e;I;2.3;0;#ff00ff;1;fix`)
@@ -164,7 +164,7 @@ data-solution-timer-badge="off"
 data-solution-button="5"
 data-hint-button="3"  -->
 $|\overline{IJ}| =$ [[ 7,1 ]] LE
-@Algebrite.check2(7.1)
+@Algebrite.check(7.1)
 [[?]] @Explain
 
 @resetter
@@ -177,7 +177,7 @@ $|\overline{IJ}| =$ [[ 7,1 ]] LE
 
 __$f)\;\;$__
 
-@CoordinateSystem(`xmin=-1;xmax=12;ymin=-4;ymax=4;width=600;id=GL0013f;0;0;1`)
+@CoordinateSystem(`xmin=-1;xmax=12;ymin=-4;ymax=4;width=600;id=GL0013f;0;0`)
 @SetSquare(`GL0013f`)
 
 @Point(`GL0013f;K;4.6;0;#ff00ff;1;fix`)
@@ -190,7 +190,7 @@ data-solution-timer-badge="off"
 data-solution-button="5"
 data-hint-button="3"  -->
 $|\overline{KL}| =$ [[ 6,2 ]] LE
-@Algebrite.check2(6.2)
+@Algebrite.check(6.2)
 [[?]] @Explain
 
 @resetter

@@ -67,7 +67,7 @@ __$a)\;\;$__
 
 
 
-@CoordinateSystem(`xmin=-2.5;xmax=4;ymin=-2;ymax=3.5;width=500;id=WA0002a;0;0;0`)
+@CoordinateSystem(`xmin=-2.5;xmax=4;ymin=-2;ymax=3.5;width=500;id=WA0002a;0;0;0;static=1`)
 
 @Punkt(`WA0002a;Z;0;0;#e63946;0;fix`)
 @Punkt(`WA0002a;Y;1.5;1.5;#e63946;0;fix`)
@@ -113,7 +113,7 @@ $\xi =$ [[ 109 ]]$^\circ$ und es handelt sich um die Beziehung eines [[Nebenwink
 __$b)\;\;$__
 
 
-@CoordinateSystem(`xmin=-2.5;xmax=4;ymin=-2;ymax=3.5;width=500;id=WA0002b;0;0;0`)
+@CoordinateSystem(`xmin=-2.5;xmax=4;ymin=-2;ymax=3.5;width=500;id=WA0002b;0;0;0;static=1`)
 
 @Punkt(`WA0002b;Z;0;0;#e63946;0;fix`)
 @Punkt(`WA0002b;Y;1.5;1.5;#e63946;0;fix`)

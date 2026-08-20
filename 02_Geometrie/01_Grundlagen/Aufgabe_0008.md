@@ -65,7 +65,7 @@ author: Martin Lommatzsch
 __$a)\;\;$__ 
 
 
-@CoordinateSystem(`xmin=-0.5;xmax=10.25;ymin=-0.5;ymax=7.25;width=400;id=A0008a;0;0;0`)
+@CoordinateSystem(`xmin=-0.5;xmax=10.25;ymin=-0.5;ymax=7.25;width=400;id=A0008a;0;0;0;static=1`)
 
 @Flaeche(`A0008a;[[0.1;0.1];[0.1;0.9];[0.9;0.9];[0.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)
 @Flaeche(`A0008a;[[1.1;0.1];[1.1;0.9];[1.9;0.9];[1.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)
@@ -190,7 +190,7 @@ Es sind [[ 30  ]] umrandende Strecken.
 __$b)\;\;$__ 
 
 
-@CoordinateSystem(`xmin=-0.5;xmax=10.25;ymin=-0.5;ymax=5.25;width=400;id=A0008b;0;0;0`)
+@CoordinateSystem(`xmin=-0.5;xmax=10.25;ymin=-0.5;ymax=5.25;width=400;id=A0008b;0;0;0;static=1`)
 
 @Flaeche(`A0008b;[[0.1;0.1];[0.1;0.9];[0.9;0.9];[0.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)
 @Flaeche(`A0008b;[[1.1;0.1];[1.1;0.9];[1.9;0.9];[1.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)

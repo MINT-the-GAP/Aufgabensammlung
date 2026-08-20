@@ -57,7 +57,7 @@ Die *Subtraktion* ist die Umkehroperation der *Addition* und wird durch den *Sub
 
 <center>
 
-@Koordinatensystem(`xmin=-0.25;xmax=6.7;ymin=-0.5;ymax=0.9;width=800;id=SUBT01;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=-0.25;xmax=6.7;ymin=-0.5;ymax=0.9;width=800;id=SUBT01;achsen=0;grid=0;border=0;static=1`)
 
 @Flaeche(`SUBT01;[[-0.24;-0.49];[6.69;-0.49];[6.69;0.89];[-0.24;0.89]];#ffffff;1;inhalt=0;umfang=0`)
 @Vektor(`SUBT01;[[0;0];[6.5;0]];#000000;x=0`)
@@ -117,7 +117,7 @@ $$
 
 <center>
 
-@Koordinatensystem(`xmin=-0.25;xmax=6.7;ymin=-0.5;ymax=1.05;width=800;id=SUBT02;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=-0.25;xmax=6.7;ymin=-0.5;ymax=1.05;width=800;id=SUBT02;achsen=0;grid=0;border=0;static=1`)
 
 @Flaeche(`SUBT02;[[-0.24;-0.49];[6.69;-0.49];[6.69;1.04];[-0.24;1.04]];#ffffff;1;inhalt=0;umfang=0`)
 @Vektor(`SUBT02;[[0;0];[6.5;0]];#000000;x=0`)

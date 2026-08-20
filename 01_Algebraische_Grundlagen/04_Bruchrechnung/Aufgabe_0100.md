@@ -65,7 +65,7 @@ author: Martin Lommatzsch
 
 
 <!-- style="max-width:800px" -->
-@Koordinatensystem(`xmin=-0.5;xmax=32.5;ymin=-0.5;ymax=8.2;width=800;id=BR0100;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=-0.5;xmax=32.5;ymin=-0.5;ymax=8.2;width=800;id=BR0100;achsen=0;grid=0;border=0;static=1`)
 
 @KoordText(`BR0100;[0.4;7.2];I);#000000;1`)
 @KoordText(`BR0100;[11.4;7.2];II);#000000;1`)

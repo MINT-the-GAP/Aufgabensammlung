@@ -41,7 +41,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 tags: Potenzen, Bruchrechnung, Negative Zahlen, leicht, normal, Bestimme
 
-comment: Betimme den Wert einer Potenz mit negativem Exponenten.
+comment: Bestimme den Wert einer Potenz mit negativem Exponenten.
 
 author: Martin Lommatzsch
 

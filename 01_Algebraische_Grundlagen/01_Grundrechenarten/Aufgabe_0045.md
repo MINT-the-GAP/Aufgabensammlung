@@ -62,7 +62,7 @@ author: Martin Lommatzsch
 __$a)\;\;$__ 
 <center>
 
-@Koordinatensystem(`xmin=-2;xmax=80;ymin=-8;ymax=12;width=900;id=G4501;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=-2;xmax=80;ymin=-8;ymax=12;width=900;id=G4501;achsen=0;grid=0;border=0;static=1`)
 
 @Vektor(`G4501;[[0;0];[76;0]];#000000;u=0`)
 
@@ -112,7 +112,7 @@ data-hint-button="3"  -->
 __$b)\;\;$__ 
 <center>
 
-@Koordinatensystem(`xmin=-2;xmax=80;ymin=-8;ymax=12;width=900;id=G4502;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=-2;xmax=80;ymin=-8;ymax=12;width=900;id=G4502;achsen=0;grid=0;border=0;static=1`)
 
 @Vektor(`G4502;[[0;0];[76;0]];#000000;u=0`)
 

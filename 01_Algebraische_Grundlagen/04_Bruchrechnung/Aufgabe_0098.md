@@ -75,8 +75,16 @@ __$a)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $90\,$m$^2$.
 
 <center>
 
-<!-- style="width:150px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Bruchc7.png)
+<!-- style="max-width:220px" -->
+@Koordinatensystem(`xmin=-0.15;xmax=6.15;ymin=-0.15;ymax=6.15;width=220;id=BR0098a;achsen=0;grid=0;border=0;static=1`)
+
+@Flaeche(`BR0098a;[[-0.08;-0.08];[6.08;-0.08];[6.08;6.08];[-0.08;6.08]];#ffffff;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0098a;[[0;5];[2;5];[2;6];[0;6]];#FF8C8C;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0098a;[[0;0];[2;0];[2;5];[0;5]];#C6538C;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0098a;[[2;0];[6;0];[6;5];[2;5]];#8C8CFF;1;inhalt=0;umfang=0`)
+@Strecke(`BR0098a;[[2;0];[2;6];[4;6];[4;0]];#000000;;-;2px`)
+@Strecke(`BR0098a;[[0;1];[6;1];[6;2];[0;2];[0;3];[6;3];[6;4];[0;4];[0;5];[6;5]];#000000;;-;2px`)
+@Strecke(`BR0098a;[[0;0];[6;0];[6;6];[0;6];[0;0]];#000000;;-;4px`)
 
 </center>
 
@@ -106,8 +114,16 @@ __$b)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $96\,$m$^2$.
 
 <center>
 
-<!-- style="width:150px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Bruchc8.png)
+<!-- style="max-width:220px" -->
+@Koordinatensystem(`xmin=-0.15;xmax=6.15;ymin=-0.15;ymax=6.15;width=220;id=BR0098b;achsen=0;grid=0;border=0;static=1`)
+
+@Flaeche(`BR0098b;[[-0.08;-0.08];[6.08;-0.08];[6.08;6.08];[-0.08;6.08]];#ffffff;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0098b;[[0;0];[0.75;0];[0.75;4];[0;4]];#FF8C8C;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0098b;[[0;4];[0.75;4];[0.75;6];[0;6]];#C6538C;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0098b;[[0.75;4];[6;4];[6;6];[0.75;6]];#8C8CFF;1;inhalt=0;umfang=0`)
+@Strecke(`BR0098b;[[0.75;0];[0.75;6];[1.5;6];[1.5;0];[2.25;0];[2.25;6];[3;6];[3;0];[3.75;0];[3.75;6];[4.5;6];[4.5;0];[5.25;0];[5.25;6]];#000000;;-;2px`)
+@Strecke(`BR0098b;[[0;1];[6;1];[6;2];[0;2];[0;3];[6;3];[6;4];[0;4];[0;5];[6;5]];#000000;;-;2px`)
+@Strecke(`BR0098b;[[0;0];[6;0];[6;6];[0;6];[0;0]];#000000;;-;4px`)
 
 </center>
 
@@ -137,8 +153,16 @@ __$c)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $81\,$m$^2$.
 
 <center>
 
-<!-- style="width:150px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Bruchc9.png)
+<!-- style="max-width:220px" -->
+@Koordinatensystem(`xmin=-0.15;xmax=6.15;ymin=-0.15;ymax=6.15;width=220;id=BR0098c;achsen=0;grid=0;border=0;static=1`)
+
+@Flaeche(`BR0098c;[[-0.08;-0.08];[6.08;-0.08];[6.08;6.08];[-0.08;6.08]];#ffffff;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0098c;[[1.3333;0];[6;0];[6;2];[1.3333;2]];#FF8C8C;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0098c;[[0;2];[1.3333;2];[1.3333;6];[0;6]];#8C8CFF;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0098c;[[1.3333;2];[6;2];[6;6];[1.3333;6]];#C6538C;1;inhalt=0;umfang=0`)
+@Strecke(`BR0098c;[[0.6667;0];[0.6667;6];[1.3333;6];[1.3333;0];[2;0];[2;6];[2.6667;6];[2.6667;0];[3.3333;0];[3.3333;6];[4;6];[4;0];[4.6667;0];[4.6667;6];[5.3333;6];[5.3333;0]];#000000;;-;2px`)
+@Strecke(`BR0098c;[[0;2];[6;2];[6;4];[0;4]];#000000;;-;2px`)
+@Strecke(`BR0098c;[[0;0];[6;0];[6;6];[0;6];[0;0]];#000000;;-;4px`)
 
 </center>
 
@@ -168,8 +192,16 @@ __$d)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $560\,$m$^2$.
 
 <center>
 
-<!-- style="width:150px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Bruchc10.png)
+<!-- style="max-width:220px" -->
+@Koordinatensystem(`xmin=-0.15;xmax=6.15;ymin=-0.15;ymax=6.15;width=220;id=BR0098d;achsen=0;grid=0;border=0;static=1`)
+
+@Flaeche(`BR0098d;[[-0.08;-0.08];[6.08;-0.08];[6.08;6.08];[-0.08;6.08]];#ffffff;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0098d;[[4.5;0];[6;0];[6;4.2];[4.5;4.2]];#FF8C8C;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0098d;[[0;4.2];[4.5;4.2];[4.5;6];[0;6]];#8C8CFF;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0098d;[[4.5;4.2];[6;4.2];[6;6];[4.5;6]];#C6538C;1;inhalt=0;umfang=0`)
+@Strecke(`BR0098d;[[0.75;0];[0.75;6];[1.5;6];[1.5;0];[2.25;0];[2.25;6];[3;6];[3;0];[3.75;0];[3.75;6];[4.5;6];[4.5;0];[5.25;0];[5.25;6]];#000000;;-;2px`)
+@Strecke(`BR0098d;[[0;0.6];[6;0.6];[6;1.2];[0;1.2];[0;1.8];[6;1.8];[6;2.4];[0;2.4];[0;3];[6;3];[6;3.6];[0;3.6];[0;4.2];[6;4.2];[6;4.8];[0;4.8];[0;5.4];[6;5.4]];#000000;;-;2px`)
+@Strecke(`BR0098d;[[0;0];[6;0];[6;6];[0;6];[0;0]];#000000;;-;4px`)
 
 </center>
 
@@ -199,8 +231,16 @@ __$e)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $126\,$m$^2$.
 
 <center>
 
-<!-- style="width:150px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Bruchc11.png)
+<!-- style="max-width:220px" -->
+@Koordinatensystem(`xmin=-0.15;xmax=6.15;ymin=-0.15;ymax=6.15;width=220;id=BR0098e;achsen=0;grid=0;border=0;static=1`)
+
+@Flaeche(`BR0098e;[[-0.08;-0.08];[6.08;-0.08];[6.08;6.08];[-0.08;6.08]];#ffffff;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0098e;[[0;0];[3.4286;0];[3.4286;3.3333];[0;3.3333]];#FF8C8C;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0098e;[[0;3.3333];[3.4286;3.3333];[3.4286;6];[0;6]];#C6538C;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0098e;[[3.4286;3.3333];[6;3.3333];[6;6];[3.4286;6]];#8C8CFF;1;inhalt=0;umfang=0`)
+@Strecke(`BR0098e;[[0.8571;0];[0.8571;6];[1.7143;6];[1.7143;0];[2.5714;0];[2.5714;6];[3.4286;6];[3.4286;0];[4.2857;0];[4.2857;6];[5.1429;6];[5.1429;0]];#000000;;-;2px`)
+@Strecke(`BR0098e;[[0;0.6667];[6;0.6667];[6;1.3333];[0;1.3333];[0;2];[6;2];[6;2.6667];[0;2.6667];[0;3.3333];[6;3.3333];[6;4];[0;4];[0;4.6667];[6;4.6667];[6;5.3333];[0;5.3333]];#000000;;-;2px`)
+@Strecke(`BR0098e;[[0;0];[6;0];[6;6];[0;6];[0;0]];#000000;;-;4px`)
 
 </center>
 
@@ -230,8 +270,16 @@ __$f)\;\;$__ Die Gesamtfläche besitzt einen Flächeninhalt von $192\,$m$^2$.
 
 <center>
 
-<!-- style="width:150px" -->
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Bruchc12.png)
+<!-- style="max-width:220px" -->
+@Koordinatensystem(`xmin=-0.15;xmax=6.15;ymin=-0.15;ymax=6.15;width=220;id=BR0098f;achsen=0;grid=0;border=0;static=1`)
+
+@Flaeche(`BR0098f;[[-0.08;-0.08];[6.08;-0.08];[6.08;6.08];[-0.08;6.08]];#ffffff;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0098f;[[0;0];[3.75;0];[3.75;3];[0;3]];#FF8C8C;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0098f;[[0;3];[3.75;3];[3.75;6];[0;6]];#C6538C;1;inhalt=0;umfang=0`)
+@Flaeche(`BR0098f;[[3.75;3];[6;3];[6;6];[3.75;6]];#8C8CFF;1;inhalt=0;umfang=0`)
+@Strecke(`BR0098f;[[0.75;0];[0.75;6];[1.5;6];[1.5;0];[2.25;0];[2.25;6];[3;6];[3;0];[3.75;0];[3.75;6];[4.5;6];[4.5;0];[5.25;0];[5.25;6]];#000000;;-;2px`)
+@Strecke(`BR0098f;[[0;1];[6;1];[6;2];[0;2];[0;3];[6;3];[6;4];[0;4];[0;5];[6;5]];#000000;;-;2px`)
+@Strecke(`BR0098f;[[0;0];[6;0];[6;6];[0;6];[0;0]];#000000;;-;4px`)
 
 </center>
 

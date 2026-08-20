@@ -65,7 +65,7 @@ author: Martin Lommatzsch
 __$a)\;\;$__ 
 
 
-@CoordinateSystem(`xmin=-0.5;xmax=6;ymin=-0.5;ymax=5.25;width=300;id=A0003a;0;0;0`)
+@CoordinateSystem(`xmin=-0.5;xmax=6;ymin=-0.5;ymax=5.25;width=300;id=A0003a;0;0;0;static=1`)
 
 @Flaeche(`A0003a;[[0.1;0.1];[0.1;0.9];[0.9;0.9];[0.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)
 @Flaeche(`A0003a;[[1.1;0.1];[1.1;0.9];[1.9;0.9];[1.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)
@@ -111,7 +111,7 @@ Es sind [[ 15  ]] Flächen.
 __$b)\;\;$__ 
 
 
-@CoordinateSystem(`xmin=-0.5;xmax=8.25;ymin=-0.5;ymax=6.25;width=400;id=A0003b;0;0;0`)
+@CoordinateSystem(`xmin=-0.5;xmax=8.25;ymin=-0.5;ymax=6.25;width=400;id=A0003b;0;0;0;static=1`)
 
 @Flaeche(`A0003b;[[0.1;0.1];[0.1;0.9];[0.9;0.9];[0.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)
 @Flaeche(`A0003b;[[1.1;0.1];[1.1;0.9];[1.9;0.9];[1.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)

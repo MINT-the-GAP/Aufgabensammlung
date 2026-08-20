@@ -66,7 +66,7 @@ __$a)\;\;$__
 
 
 
-@CoordinateSystem(`xmin=-0.5;xmax=9.25;ymin=-0.5;ymax=5.25;width=400;id=A0005a;0;0;0`)
+@CoordinateSystem(`xmin=-0.5;xmax=9.25;ymin=-0.5;ymax=5.25;width=400;id=A0005a;0;0;0;static=1`)
 
 @Flaeche(`A0005a;[[0.1;0.1];[0.1;0.9];[0.9;0.9];[0.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)
 @Flaeche(`A0005a;[[1.1;0.1];[1.1;0.9];[1.9;0.9];[1.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)
@@ -146,7 +146,7 @@ __$b)\;\;$__
 
 
 
-@CoordinateSystem(`xmin=-0.5;xmax=10.25;ymin=-0.5;ymax=6.25;width=400;id=A0005b;0;0;0`)
+@CoordinateSystem(`xmin=-0.5;xmax=10.25;ymin=-0.5;ymax=6.25;width=400;id=A0005b;0;0;0;static=1`)
 
 @Flaeche(`A0005b;[[0.1;0.1];[0.1;0.9];[0.9;0.9];[0.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)
 @Flaeche(`A0005b;[[1.1;0.1];[1.1;0.9];[1.9;0.9];[1.9;0.1]];#00ff00;1.0;inhalt=0;umfang=0`)

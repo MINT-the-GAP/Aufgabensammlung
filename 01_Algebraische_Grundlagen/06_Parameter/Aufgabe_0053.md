@@ -60,7 +60,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__
 
-@Koordinatensystem(`xmin=-1;xmax=13;ymin=-1;ymax=8;width=450;id=PA0053a;0;0;0`)
+@Koordinatensystem(`xmin=-1;xmax=13;ymin=-1;ymax=8;width=450;id=PA0053a;0;0;0;static=1`)
 
 @Flaeche(`PA0053a;[[0;1];[2;1];[1;3]];#ef476f;0.35`)
 @Flaeche(`PA0053a;[[3;1];[5;1];[4;3]];#ef476f;0.35`)
@@ -89,7 +89,7 @@ data-hint-button="3"  -->
 
 __$b)\;\;$__
 
-@Koordinatensystem(`xmin=-1;xmax=14;ymin=-1;ymax=8;width=450;id=PA0053b;0;0;0`)
+@Koordinatensystem(`xmin=-1;xmax=14;ymin=-1;ymax=8;width=450;id=PA0053b;0;0;0;static=1`)
 
 @Flaeche(`PA0053b;[[0;1];[3;1];[2.5;3];[0.5;3]];#f6bd60;0.35`)
 @Flaeche(`PA0053b;[[4;1];[7;1];[6.5;3];[4.5;3]];#f6bd60;0.35`)
@@ -120,7 +120,7 @@ data-hint-button="3"  -->
 
 __$c)\;\;$__
 
-@Koordinatensystem(`xmin=-1;xmax=14;ymin=-1;ymax=8;width=450;id=PA0053c;0;0;0`)
+@Koordinatensystem(`xmin=-1;xmax=14;ymin=-1;ymax=8;width=450;id=PA0053c;0;0;0;static=1`)
 
 @Flaeche(`PA0053c;[[0;1];[2;1];[2.8;2.5];[1;4];[-0.8;2.5]];#ff006e;0.35`)
 @Flaeche(`PA0053c;[[4;1];[6;1];[6.8;2.5];[5;4];[3.2;2.5]];#ff006e;0.35`)
@@ -151,7 +151,7 @@ data-hint-button="3"  -->
 
 __$d)\;\;$__
 
-@Koordinatensystem(`xmin=-1;xmax=14;ymin=-1;ymax=8;width=450;id=PA0053d;0;0;0`)
+@Koordinatensystem(`xmin=-1;xmax=14;ymin=-1;ymax=8;width=450;id=PA0053d;0;0;0;static=1`)
 
 @Flaeche(`PA0053d;[[0;1];[2;1];[1;3]];#e63946;0.35`)
 @Flaeche(`PA0053d;[[3;1];[5;1];[4;3]];#e63946;0.35`)
@@ -182,7 +182,7 @@ data-hint-button="3"  -->
 
 __$e)\;\;$__
 
-@Koordinatensystem(`xmin=-1;xmax=14;ymin=-1;ymax=9;width=450;id=PA0053e;0;0;0`)
+@Koordinatensystem(`xmin=-1;xmax=14;ymin=-1;ymax=9;width=450;id=PA0053e;0;0;0;static=1`)
 
 @Flaeche(`PA0053e;[[0;1];[2;1];[1;3]];#b5179e;0.35`)
 @Flaeche(`PA0053e;[[3;1];[5;1];[4;3]];#b5179e;0.35`)
@@ -217,7 +217,7 @@ data-hint-button="3"  -->
 
 __$f)\;\;$__
 
-@Koordinatensystem(`xmin=-1;xmax=15;ymin=-1;ymax=9;width=450;id=PA0053f;0;0;0`)
+@Koordinatensystem(`xmin=-1;xmax=15;ymin=-1;ymax=9;width=450;id=PA0053f;0;0;0;static=1`)
 
 @Flaeche(`PA0053f;[[0;1];[2;1];[1;3]];#ffafcc;0.35`)
 @Flaeche(`PA0053f;[[3;1];[5;1];[4;3]];#ffafcc;0.35`)

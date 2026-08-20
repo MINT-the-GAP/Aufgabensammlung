@@ -68,7 +68,7 @@ __$a)\;\;$__
 
 
 
-@CoordinateSystem(`xmin=-2.5;xmax=4;ymin=-2;ymax=3.5;width=500;id=WA0003a;0;0;0`)
+@CoordinateSystem(`xmin=-2.5;xmax=4;ymin=-2;ymax=3.5;width=500;id=WA0003a;0;0;0;static=1`)
 
 @Punkt(`WA0003a;Z;0;0;#e63946;0;fix`)
 @Punkt(`WA0003a;Y;1.5;1.5;#e63946;0;fix`)
@@ -116,7 +116,7 @@ __$b)\;\;$__
 
 
 
-@CoordinateSystem(`xmin=-2.5;xmax=4;ymin=-2;ymax=3.5;width=500;id=WA0003b;0;0;0`)
+@CoordinateSystem(`xmin=-2.5;xmax=4;ymin=-2;ymax=3.5;width=500;id=WA0003b;0;0;0;static=1`)
 
 @Punkt(`WA0003b;Z;0;0;#e63946;0;fix`)
 @Punkt(`WA0003b;Y;1.5;1.5;#e63946;0;fix`)

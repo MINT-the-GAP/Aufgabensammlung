@@ -60,7 +60,7 @@ author: Martin Lommatzsch
 
 __$a)\;\;$__ 
 
-@Koordinatensystem(`xmin=-1;xmax=8;ymin=-1;ymax=7;width=450;id=PA0049a;0;0;0`)
+@Koordinatensystem(`xmin=-1;xmax=8;ymin=-1;ymax=7;width=450;id=PA0049a;0;0;0;static=1`)
 
 
 @Strecke(`PA0049a;[[0;0];[3;0]];#ff595e;p;0`)
@@ -90,7 +90,7 @@ data-hint-button="3"  -->
 
 __$b)\;\;$__ 
 
-@Koordinatensystem(`xmin=-1;xmax=9;ymin=-1;ymax=7;width=450;id=PA0049b;0;0;0`)
+@Koordinatensystem(`xmin=-1;xmax=9;ymin=-1;ymax=7;width=450;id=PA0049b;0;0;0;static=1`)
 
 
 @Strecke(`PA0049b;[[0;0];[5;0]];#ffca3a;m;0`)
@@ -119,7 +119,7 @@ data-hint-button="3"  -->
 
 __$c)\;\;$__ 
 
-@Koordinatensystem(`xmin=-1;xmax=9;ymin=-1;ymax=7;width=450;id=PA0049c;0;0;0`)
+@Koordinatensystem(`xmin=-1;xmax=9;ymin=-1;ymax=7;width=450;id=PA0049c;0;0;0;static=1`)
 
 
 @Strecke(`PA0049c;[[0;0];[0;2]];#3a86ff;k;0`)
@@ -150,7 +150,7 @@ data-hint-button="3"  -->
 
 __$d)\;\;$__ 
 
-@Koordinatensystem(`xmin=-1;xmax=10;ymin=-1;ymax=8;width=450;id=PA0049d;0;0;0`)
+@Koordinatensystem(`xmin=-1;xmax=10;ymin=-1;ymax=8;width=450;id=PA0049d;0;0;0;static=1`)
 
 @Strecke(`PA0049d;[[0;0];[4;0]];#ff9f1c;u;0`)
 @Strecke(`PA0049d;[[6;1];[6;5]];#ff9f1c;u;0`)
@@ -178,7 +178,7 @@ data-hint-button="3"  -->
 
 __$e)\;\;$__ 
 
-@Koordinatensystem(`xmin=-1;xmax=10;ymin=-1;ymax=8;width=450;id=PA0049e;0;0;0`)
+@Koordinatensystem(`xmin=-1;xmax=10;ymin=-1;ymax=8;width=450;id=PA0049e;0;0;0;static=1`)
 
 
 @Strecke(`PA0049e;[[0;0];[3;0]];#118ab2;g;0`)
@@ -207,7 +207,7 @@ data-hint-button="3"  -->
 
 __$f)\;\;$__ 
 
-@Koordinatensystem(`xmin=-1;xmax=10;ymin=-1;ymax=8;width=450;id=PA0049f;0;0;0`)
+@Koordinatensystem(`xmin=-1;xmax=10;ymin=-1;ymax=8;width=450;id=PA0049f;0;0;0;static=1`)
 
 
 @Strecke(`PA0049f;[[0;0];[5;0]];#ef476f;a;0`)

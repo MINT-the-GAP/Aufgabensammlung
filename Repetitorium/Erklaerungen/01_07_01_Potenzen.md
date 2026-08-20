@@ -256,7 +256,7 @@ $$
 <center>
 
 <!-- style="width:500px" -->
-@Koordinatensystem(`xmin=-0.65;xmax=4.25;ymin=-0.15;ymax=4.55;width=500;id=POTENZER01;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=-0.65;xmax=4.25;ymin=-0.15;ymax=4.55;width=500;id=POTENZER01;achsen=0;grid=0;border=0;static=1`)
 
 @Flaeche(`POTENZER01;[[-0.64;-0.14];[4.24;-0.14];[4.24;4.54];[-0.64;4.54]];#ffffff;1;inhalt=0;umfang=0`)
 @Flaeche(`POTENZER01;[[0;0];[3;0];[3;3];[0;3]];#80f580;1;inhalt=0;umfang=0`)
