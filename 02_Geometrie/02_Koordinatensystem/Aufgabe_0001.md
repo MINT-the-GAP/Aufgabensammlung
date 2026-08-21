@@ -84,7 +84,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
- Der Punkt $A$ liegt an der Stelle $x=$[[  3  ]] \
+ Der Punkt $A$ liegt an der Stelle $x=$[[  3  ]] 
 [[?]] @Explain
 
 
@@ -104,7 +104,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
- Der Punkt $B$ liegt an der Stelle $x=$[[  7  ]] \
+ Der Punkt $B$ liegt an der Stelle $x=$[[  7  ]] 
 [[?]] @Explain
 
 
@@ -124,7 +124,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
- Der Punkt $C$ liegt an der Stelle $x=$[[  1  ]] \
+ Der Punkt $C$ liegt an der Stelle $x=$[[  1  ]] 
 [[?]] @Explain
 
 

@@ -79,7 +79,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 Es handelt sich um eine Raute. \
-$A($[[  2  ]]$|$[[  3  ]]$)$ \
+$A($[[  2  ]]$|$[[  3  ]]$)$ 
 [[?]] @Explain
 
 
@@ -112,7 +112,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 Es handelt sich um ein symmetrisches Trapez mit einer Symmetrieachse, die orthogonal zur Stecke $\overline{AB}$ ist. \
-$D($[[  7  ]]$|$[[  0  ]]$)$ \
+$D($[[  7  ]]$|$[[  0  ]]$)$ 
 [[?]] @Explain
 
 

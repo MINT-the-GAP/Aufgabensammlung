@@ -76,7 +76,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$b)\;\;$__ $0,05\,$d$ = 72\,$ [[d|h|(min)|s|ms]] \
+__$b)\;\;$__ $0,05\,$d$ = 72\,$ [[d|h|(min)|s|ms]] 
 [[?]] @Explain
 
 @resetter
@@ -91,7 +91,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$c)\;\;$__ $0,000037\,$m$ = 0,0037\,$ [[km|m|dm|(cm)|mm]] \
+__$c)\;\;$__ $0,000037\,$m$ = 0,0037\,$ [[km|m|dm|(cm)|mm]] 
 [[?]] @Explain
 
 @resetter
@@ -106,7 +106,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$d)\;\;$__ $6300\,$s$ = 1,75\,$ [[d|(h)|min|s|ms]] \
+__$d)\;\;$__ $6300\,$s$ = 1,75\,$ [[d|(h)|min|s|ms]] 
 [[?]] @Explain
 
 @resetter
@@ -121,7 +121,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$e)\;\;$__ $2,5\,$h$ = 150\,$ [[d|h|(min)|s|ms]] \
+__$e)\;\;$__ $2,5\,$h$ = 150\,$ [[d|h|(min)|s|ms]] 
 [[?]] @Explain
 
 @resetter

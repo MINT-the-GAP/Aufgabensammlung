@@ -84,7 +84,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
- $A($[[  3,2  ]]$|$[[  -4,6  ]]$)$ \
+ $A($[[  3,2  ]]$|$[[  -4,6  ]]$)$ 
 [[?]] @Explain
 
 
@@ -104,7 +104,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
- $B($[[  0,4  ]]$|$[[  0,9  ]]$)$ \
+ $B($[[  0,4  ]]$|$[[  0,9  ]]$)$ 
 [[?]] @Explain
 
 
@@ -124,7 +124,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
- [[  C  ]]$( -1,4 | -1,6 )$ \
+ [[  C  ]]$( -1,4 | -1,6 )$ 
 [[?]] @Explain
 
 

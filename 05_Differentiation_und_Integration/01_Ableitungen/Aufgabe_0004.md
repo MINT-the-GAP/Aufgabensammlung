@@ -105,7 +105,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-[[ h ]] ist äquivalent zur ersten Ableitung von [[ l ]]. \
+[[ h ]] ist äquivalent zur ersten Ableitung von [[ l ]]. 
 [[?]] @Explain
 
 

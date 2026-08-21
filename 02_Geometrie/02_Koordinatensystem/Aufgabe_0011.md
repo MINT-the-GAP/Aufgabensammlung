@@ -83,7 +83,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
- $A($[[  9,7  ]]$|$[[  0,1 ]]$)$ \
+ $A($[[  9,7  ]]$|$[[  0,1 ]]$)$ 
 [[?]] @Explain
 
 
@@ -103,7 +103,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
- $B($[[  6,2  ]]$|$[[  5,7  ]]$)$ \
+ $B($[[  6,2  ]]$|$[[  5,7  ]]$)$ 
 [[?]] @Explain
 
 
@@ -123,7 +123,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
- [[  D  ]]$( 1,1 | 9,3 )$ \
+ [[  D  ]]$( 1,1 | 9,3 )$ 
 [[?]] @Explain
 
 

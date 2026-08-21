@@ -66,7 +66,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$a)\;\;$__ [[  120  ]] @canvas Sekunden entsprechen $2$ Minuten. \
+__$a)\;\;$__ [[  120  ]] @canvas Sekunden entsprechen $2$ Minuten. 
 [[?]] @Explain
 
 @resetter
@@ -82,7 +82,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$b)\;\;$__ [[ 1000 ]] @canvas Milliliter entsprechen ein Liter. \
+__$b)\;\;$__ [[ 1000 ]] @canvas Milliliter entsprechen ein Liter. 
 [[?]] @Explain
 
 @resetter
@@ -98,7 +98,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$c)\;\;$__ Ein Zentimeter entspricht [[  10  ]] @canvas Millimeter. \
+__$c)\;\;$__ Ein Zentimeter entspricht [[  10  ]] @canvas Millimeter. 
 [[?]] @Explain
 
 @resetter
@@ -114,7 +114,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$d)\;\;$__ Ein Kilogramm entspricht [[ 1000000 ]] @canvas Milligramm. \
+__$d)\;\;$__ Ein Kilogramm entspricht [[ 1000000 ]] @canvas Milligramm. 
 [[?]] @Explain
 
 @resetter
@@ -130,7 +130,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$e)\;\;$__ [[   1  ]] @canvas Dezimeter entspricht $10$ Zentimeter. \
+__$e)\;\;$__ [[   1  ]] @canvas Dezimeter entspricht $10$ Zentimeter. 
 [[?]] @Explain
 
 @resetter

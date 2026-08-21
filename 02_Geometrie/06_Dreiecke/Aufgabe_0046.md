@@ -74,7 +74,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
- $A=$[[  15  ]]$FE$ \
+ $A=$[[  15  ]]$FE$ 
 [[?]] @Explain
 
 
@@ -102,7 +102,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
- $A=$[[  14  ]]$FE$ \
+ $A=$[[  14  ]]$FE$ 
 [[?]] @Explain
 
 

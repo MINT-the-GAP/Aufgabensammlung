@@ -83,7 +83,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
- $A($[[  1  ]]$|$[[  5  ]]$)$ \
+ $A($[[  1  ]]$|$[[  5  ]]$)$ 
 [[?]] @Explain
 
 
@@ -103,7 +103,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
- $B($[[ 10  ]]$|$[[  4  ]]$)$ \
+ $B($[[ 10  ]]$|$[[  4  ]]$)$ 
 [[?]] @Explain
 
 
@@ -123,7 +123,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
- [[  D  ]]$( 5 | 4 )$ \
+ [[  D  ]]$( 5 | 4 )$ 
 [[?]] @Explain
 
 

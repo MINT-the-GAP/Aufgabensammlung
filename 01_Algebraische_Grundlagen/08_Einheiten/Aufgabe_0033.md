@@ -69,7 +69,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$a)\;\;$__ $ 2,5\,$h [[$>$|$=$|($<$)]] $250\,$min \
+__$a)\;\;$__ $ 2,5\,$h [[$>$|$=$|($<$)]] $250\,$min 
 [[?]] @Explain
 
 @resetter
@@ -84,7 +84,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$b)\;\;$__ $ 240\,$mm [[$>$|($=$)|$<$]] $0,24\,$m \
+__$b)\;\;$__ $ 240\,$mm [[$>$|($=$)|$<$]] $0,24\,$m 
 [[?]] @Explain
 
 @resetter
@@ -99,7 +99,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$c)\;\;$__ $ 0,0014\,$km [[($>$)|$=$|$<$]] $63\,$cm \
+__$c)\;\;$__ $ 0,0014\,$km [[($>$)|$=$|$<$]] $63\,$cm 
 [[?]] @Explain
 
 @resetter
@@ -114,7 +114,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$d)\;\;$__ $ 310\,$mg [[($>$)|$=$|$<$]] $0,00026\,$kg \
+__$d)\;\;$__ $ 310\,$mg [[($>$)|$=$|$<$]] $0,00026\,$kg 
 [[?]] @Explain
 
 @resetter
@@ -129,7 +129,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$e)\;\;$__ $ 80\,$min [[($>$)|$=$|$<$]] $1,33\,$h \
+__$e)\;\;$__ $ 80\,$min [[($>$)|$=$|$<$]] $1,33\,$h 
 [[?]] @Explain
 
 @resetter

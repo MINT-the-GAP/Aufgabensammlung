@@ -38,7 +38,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-tags: Erklärung, Ableitungen, Ableitungsregeln, Potenzregel, Summenregel, Produktregel, Kettenregel, Umkehrfunktion, Exponentialfunktionen, Logarithmen
+tags: Erklärung, Ableitungen, Produktregel, Kettenregel
 
 comment: In diesem Abschnitt werden die Ableitungsregeln ausführlich erklärt.
 

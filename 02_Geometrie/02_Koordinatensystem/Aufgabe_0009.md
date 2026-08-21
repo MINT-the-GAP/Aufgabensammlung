@@ -82,7 +82,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
- $A($[[  4,4  ]]$|$[[  8,2  ]]$)$ \
+ $A($[[  4,4  ]]$|$[[  8,2  ]]$)$ 
 [[?]] @Explain
 
 
@@ -102,7 +102,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
- $B($[[  1,7  ]]$|$[[  2,8  ]]$)$ \
+ $B($[[  1,7  ]]$|$[[  2,8  ]]$)$ 
 [[?]] @Explain
 
 
@@ -122,7 +122,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
- [[  E  ]]$( 9,4 | 0,3 )$ \
+ [[  E  ]]$( 9,4 | 0,3 )$ 
 [[?]] @Explain
 
 

@@ -79,7 +79,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 Es handelt sich um ein Quadrat. \
-$A($[[  6  ]]$|$[[  1  ]]$)$ \
+$A($[[  6  ]]$|$[[  1  ]]$)$ 
 [[?]] @Explain
 
 
@@ -112,7 +112,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 Es handelt sich um ein symmetrisches Trapez mit einer Symmetrieachse, die orthogonal zur Stecke $\overline{AB}$ ist. \
-$D($[[  2  ]]$|$[[  8  ]]$)$ \
+$D($[[  2  ]]$|$[[  8  ]]$)$ 
 [[?]] @Explain
 
 

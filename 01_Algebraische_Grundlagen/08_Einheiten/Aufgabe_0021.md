@@ -68,7 +68,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$a)\;\;$__ $75\,$cm$ = 7,5\,$ [[km|m|(dm)|cm|mm]] \
+__$a)\;\;$__ $75\,$cm$ = 7,5\,$ [[km|m|(dm)|cm|mm]] 
 [[?]] @Explain
 
 @resetter
@@ -83,7 +83,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$b)\;\;$__ $3\,$h$ = 10800\,$ [[d|h|min|(s)]] \
+__$b)\;\;$__ $3\,$h$ = 10800\,$ [[d|h|min|(s)]] 
 [[?]] @Explain
 
 @resetter
@@ -98,7 +98,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$c)\;\;$__ $64000\,$mg$ = 0,064\,$ [[t|(kg)|g|mg]] \
+__$c)\;\;$__ $64000\,$mg$ = 0,064\,$ [[t|(kg)|g|mg]] 
 [[?]] @Explain
 
 @resetter
@@ -113,7 +113,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$d)\;\;$__ $2,5\,$dm$^2 = 25000\,$ [[km$^2$|ha|m$^2$|dm$^2$|cm$^2$|(mm$^2$)]] \
+__$d)\;\;$__ $2,5\,$dm$^2 = 25000\,$ [[km$^2$|ha|m$^2$|dm$^2$|cm$^2$|(mm$^2$)]] 
 [[?]] @Explain
 
 @resetter
@@ -130,7 +130,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$e)\;\;$__ $43\,$l$ = 43000\,$ [[km$^3$|m$^3$|dm$^3$|(cm$^3$)|mm$^3$]] \
+__$e)\;\;$__ $43\,$l$ = 43000\,$ [[km$^3$|m$^3$|dm$^3$|(cm$^3$)|mm$^3$]] 
 [[?]] @Explain
 
 @resetter

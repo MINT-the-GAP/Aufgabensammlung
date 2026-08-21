@@ -102,7 +102,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-[[ l ]] ist äquivalent zur ersten Ableitung von [[ f ]]. \
+[[ l ]] ist äquivalent zur ersten Ableitung von [[ f ]]. 
 [[?]] @Explain
 
 

@@ -68,7 +68,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$a)\;\;$__ $ 2,3\,$min [[$>$|$=$|($<$)]] $\dfrac{23}{60}\,$h \
+__$a)\;\;$__ $ 2,3\,$min [[$>$|$=$|($<$)]] $\dfrac{23}{60}\,$h 
 [[?]] @Explain
 
 @resetter
@@ -83,7 +83,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$b)\;\;$__ $ \dfrac{7}{400}\,$dm [[($>$)|$=$|$<$]] $0,175\,$mm \
+__$b)\;\;$__ $ \dfrac{7}{400}\,$dm [[($>$)|$=$|$<$]] $0,175\,$mm 
 [[?]] @Explain
 
 @resetter
@@ -98,7 +98,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$c)\;\;$__ $ \dfrac{500}{3}\,$cm [[$>$|$=$|($<$)]] $1,67\,$m \
+__$c)\;\;$__ $ \dfrac{500}{3}\,$cm [[$>$|$=$|($<$)]] $1,67\,$m 
 [[?]] @Explain
 
 @resetter
@@ -113,7 +113,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$d)\;\;$__ $ 2,4\,$kg [[$>$|$=$|($<$)]] $\dfrac{3}{1000}\,$t \
+__$d)\;\;$__ $ 2,4\,$kg [[$>$|$=$|($<$)]] $\dfrac{3}{1000}\,$t 
 [[?]] @Explain
 
 @resetter
@@ -128,7 +128,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$e)\;\;$__ $ \dfrac{4000}{9}\,$mm [[$>$|($=$)|$<$]] $0,\bar{4}\,$m \
+__$e)\;\;$__ $ \dfrac{4000}{9}\,$mm [[$>$|($=$)|$<$]] $0,\bar{4}\,$m 
 [[?]] @Explain
 
 @resetter

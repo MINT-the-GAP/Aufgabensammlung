@@ -79,7 +79,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 Es handelt sich um ein Rechteck. \
-$B($[[  9  ]]$|$[[  7  ]]$)$ \
+$B($[[  9  ]]$|$[[  7  ]]$)$ 
 [[?]] @Explain
 
 
@@ -112,7 +112,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 Es handelt sich um ein Parallelogramm. \
-$D($[[  5  ]]$|$[[  8  ]]$)$ \
+$D($[[  5  ]]$|$[[  8  ]]$)$ 
 [[?]] @Explain
 
 

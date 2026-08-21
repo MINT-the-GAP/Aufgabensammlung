@@ -105,7 +105,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-Die erste Ableitung von [[ g ]] ist äquivalent zum Graphen [[ m ]]. \
+Die erste Ableitung von [[ g ]] ist äquivalent zum Graphen [[ m ]]. 
 [[?]] @Explain
 
 

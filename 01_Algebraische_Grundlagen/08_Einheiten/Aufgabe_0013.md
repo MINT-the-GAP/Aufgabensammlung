@@ -68,7 +68,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$a)\;\;$__ $3\,\text{m} = $ [[  300  ]] @canvas $\,\text{cm}$ \
+__$a)\;\;$__ $3\,\text{m} = $ [[  300  ]] @canvas $\,\text{cm}$ 
 [[?]] @Explain
 
 @resetter
@@ -84,7 +84,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$b)\;\;$__ $12\,\text{m} = $ [[  120  ]] @canvas $\,\text{dm}$ \
+__$b)\;\;$__ $12\,\text{m} = $ [[  120  ]] @canvas $\,\text{dm}$ 
 [[?]] @Explain
 
 @resetter
@@ -100,7 +100,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$c)\;\;$__ $8000\,\text{mm} = $ [[   8   ]] @canvas $\,\text{m}$ \
+__$c)\;\;$__ $8000\,\text{mm} = $ [[   8   ]] @canvas $\,\text{m}$ 
 [[?]] @Explain
 
 @resetter
@@ -116,7 +116,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$d)\;\;$__ $17\,\text{m} = $ [[ 17000 ]] @canvas $\,\text{mm}$ \
+__$d)\;\;$__ $17\,\text{m} = $ [[ 17000 ]] @canvas $\,\text{mm}$ 
 [[?]] @Explain
 
 @resetter
@@ -132,7 +132,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$e)\;\;$__ $5000\,\text{m} = $ [[   5   ]] @canvas $\,\text{km}$ \
+__$e)\;\;$__ $5000\,\text{m} = $ [[   5   ]] @canvas $\,\text{km}$ 
 [[?]] @Explain
 
 @resetter
@@ -148,7 +148,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$f)\;\;$__ $37\,\text{dm} = $ [[  370  ]] @canvas $\,\text{cm}$ \
+__$f)\;\;$__ $37\,\text{dm} = $ [[  370  ]] @canvas $\,\text{cm}$ 
 [[?]] @Explain
 
 @resetter

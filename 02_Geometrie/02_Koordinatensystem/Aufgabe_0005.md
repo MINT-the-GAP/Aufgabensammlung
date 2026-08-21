@@ -81,7 +81,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
- $A($[[  9  ]]$|$[[  6  ]]$)$ \
+ $A($[[  9  ]]$|$[[  6  ]]$)$ 
 [[?]] @Explain
 
 
@@ -101,7 +101,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
- $B($[[  2  ]]$|$[[  1  ]]$)$ \
+ $B($[[  2  ]]$|$[[  1  ]]$)$ 
 [[?]] @Explain
 
 
@@ -121,7 +121,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
- [[  D  ]]$( 3 | 4 )$ \
+ [[  D  ]]$( 3 | 4 )$ 
 [[?]] @Explain
 
 

@@ -79,7 +79,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 Es handelt sich um ein Parallelogramm. \
-$D($[[  3  ]]$|$[[  6  ]]$)$ \
+$D($[[  3  ]]$|$[[  6  ]]$)$ 
 [[?]] @Explain
 
 
@@ -112,7 +112,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 Es handelt sich um eine Raute. \
-$C($[[  4  ]]$|$[[  9  ]]$)$ \
+$C($[[  4  ]]$|$[[  9  ]]$)$ 
 [[?]] @Explain
 
 

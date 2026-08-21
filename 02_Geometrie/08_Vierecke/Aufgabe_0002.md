@@ -79,7 +79,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 Es handelt sich um eine Rechteck. \
-$B($[[  8  ]]$|$[[  3  ]]$)$ \
+$B($[[  8  ]]$|$[[  3  ]]$)$ 
 [[?]] @Explain
 
 
@@ -112,7 +112,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 Es handelt sich um einen symmetrischen Drachen. \
-$B($[[  4  ]]$|$[[  1  ]]$)$ \
+$B($[[  4  ]]$|$[[  1  ]]$)$ 
 [[?]] @Explain
 
 

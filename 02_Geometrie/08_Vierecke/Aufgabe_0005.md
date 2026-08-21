@@ -79,7 +79,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 Es handelt sich um einen symmetrischen Drachen. \
-$B($[[  4  ]]$|$[[  0  ]]$)$ \
+$B($[[  4  ]]$|$[[  0  ]]$)$ 
 [[?]] @Explain
 
 
@@ -112,7 +112,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3"  -->
 Es handelt sich um eine Quadrat. \
-$D($[[  1  ]]$|$[[  6  ]]$)$ \
+$D($[[  1  ]]$|$[[  6  ]]$)$ 
 [[?]] @Explain
 
 

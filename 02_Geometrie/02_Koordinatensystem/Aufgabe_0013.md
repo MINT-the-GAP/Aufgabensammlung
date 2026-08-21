@@ -83,7 +83,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
- $A($[[  -2,2  ]]$|$[[  1,5  ]]$)$ \
+ $A($[[  -2,2  ]]$|$[[  1,5  ]]$)$ 
 [[?]] @Explain
 
 
@@ -103,7 +103,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
- $B($[[  3,7  ]]$|$[[  -4,4  ]]$)$ \
+ $B($[[  3,7  ]]$|$[[  -4,4  ]]$)$ 
 [[?]] @Explain
 
 
@@ -123,7 +123,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
- [[  F  ]]$( 1,7 | -4,9 )$ \
+ [[  F  ]]$( 1,7 | -4,9 )$ 
 [[?]] @Explain
 
 

@@ -67,7 +67,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$a)\;\;$__ $1\,\text{m}^3 = $ [[ 1000  ]] @canvas $\,\text{dm}^3$ \
+__$a)\;\;$__ $1\,\text{m}^3 = $ [[ 1000  ]] @canvas $\,\text{dm}^3$ 
 [[?]] @Explain
 
 @resetter
@@ -83,7 +83,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$b)\;\;$__ $7\,\text{t} = $ [[ 7000  ]] @canvas $\,\text{kg}$ \
+__$b)\;\;$__ $7\,\text{t} = $ [[ 7000  ]] @canvas $\,\text{kg}$ 
 [[?]] @Explain
 
 @resetter
@@ -99,7 +99,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$c)\;\;$__ $240\,\text{s} = $ [[   4   ]] @canvas $\,\text{min}$ \
+__$c)\;\;$__ $240\,\text{s} = $ [[   4   ]] @canvas $\,\text{min}$ 
 [[?]] @Explain
 
 @resetter
@@ -115,7 +115,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$d)\;\;$__ $34000\,\text{cm} = $ [[  340  ]] @canvas $\,\text{m}$ \
+__$d)\;\;$__ $34000\,\text{cm} = $ [[  340  ]] @canvas $\,\text{m}$ 
 [[?]] @Explain
 
 @resetter
@@ -131,7 +131,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$e)\;\;$__ $1\,\text{h} = $ [[ 3600  ]] @canvas $\,\text{s}$ \
+__$e)\;\;$__ $1\,\text{h} = $ [[ 3600  ]] @canvas $\,\text{s}$ 
 [[?]] @Explain
 
 @resetter
@@ -147,7 +147,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$f)\;\;$__ $8\,\text{km} = $ [[ 80000 ]] @canvas $\,\text{dm}$ \
+__$f)\;\;$__ $8\,\text{km} = $ [[ 80000 ]] @canvas $\,\text{dm}$ 
 [[?]] @Explain
 
 @resetter

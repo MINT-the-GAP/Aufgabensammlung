@@ -68,7 +68,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$a)\;\;$__ $5\,\text{dm}^3 = $ [[   5000  ]] @canvas $\,\text{cm}^3$ \
+__$a)\;\;$__ $5\,\text{dm}^3 = $ [[   5000  ]] @canvas $\,\text{cm}^3$ 
 [[?]] @Explain
 
 @resetter
@@ -84,7 +84,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$b)\;\;$__ $7\,\text{m}^3 = $ [[   7000  ]] @canvas $\,\text{dm}^3$ \
+__$b)\;\;$__ $7\,\text{m}^3 = $ [[   7000  ]] @canvas $\,\text{dm}^3$ 
 [[?]] @Explain
 
 @resetter
@@ -100,7 +100,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$c)\;\;$__ $12000\,\text{mm}^3 = $ [[   12     ]] @canvas $\,\text{cm}^3$ \
+__$c)\;\;$__ $12000\,\text{mm}^3 = $ [[   12     ]] @canvas $\,\text{cm}^3$ 
 [[?]] @Explain
 
 @resetter
@@ -116,7 +116,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$d)\;\;$__ $4\,\text{m}^3 = $ [[ 4000000 ]] @canvas $\,\text{cm}^3$ \
+__$d)\;\;$__ $4\,\text{m}^3 = $ [[ 4000000 ]] @canvas $\,\text{cm}^3$ 
 [[?]] @Explain
 
 @resetter
@@ -132,7 +132,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$e)\;\;$__ $17000\,\text{cm}^3 = $ [[    17    ]] @canvas $\,\text{dm}^3$ \
+__$e)\;\;$__ $17000\,\text{cm}^3 = $ [[    17    ]] @canvas $\,\text{dm}^3$ 
 [[?]] @Explain
 
 @resetter
@@ -148,7 +148,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$f)\;\;$__ $90000\,\text{mm}^3 = $ [[    90    ]] @canvas $\,\text{cm}^3$ \
+__$f)\;\;$__ $90000\,\text{mm}^3 = $ [[    90    ]] @canvas $\,\text{cm}^3$ 
 [[?]] @Explain
 
 @resetter

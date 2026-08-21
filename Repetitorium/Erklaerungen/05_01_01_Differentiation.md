@@ -38,7 +38,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imp
 
 
 
-tags: Erklärung, Ableitungen, Differentiation, Differentialoperator, Potenzregel
+tags: Erklärung, Ableitungen
 
 comment: In diesem Abschnitt werden die Grundlagen der Differentiation ausführlich erklärt.
 

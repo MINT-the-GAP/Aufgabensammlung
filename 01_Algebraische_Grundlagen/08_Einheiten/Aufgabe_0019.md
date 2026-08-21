@@ -68,7 +68,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$a)\;\;$__ $750000\,\text{m}^2 = $ [[      75      ]] @canvas $\,\text{ha}$ \
+__$a)\;\;$__ $750000\,\text{m}^2 = $ [[      75      ]] @canvas $\,\text{ha}$ 
 [[?]] @Explain
 
 @resetter
@@ -84,7 +84,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$b)\;\;$__ $7\,\text{km}^2 = $ [[ 70000000000 ]] @canvas $\,\text{cm}^2$ \
+__$b)\;\;$__ $7\,\text{km}^2 = $ [[ 70000000000 ]] @canvas $\,\text{cm}^2$ 
 [[?]] @Explain
 
 @resetter
@@ -100,7 +100,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$c)\;\;$__ $8000\,\text{ha} = $ [[      800000  ]] @canvas $\,\text{a}$ \
+__$c)\;\;$__ $8000\,\text{ha} = $ [[      800000  ]] @canvas $\,\text{a}$ 
 [[?]] @Explain
 
 @resetter
@@ -116,7 +116,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$d)\;\;$__ $20000\,\text{km}^2 = $ [[      2000000 ]] @canvas $\,\text{ha}$ \
+__$d)\;\;$__ $20000\,\text{km}^2 = $ [[      2000000 ]] @canvas $\,\text{ha}$ 
 [[?]] @Explain
 
 @resetter
@@ -132,7 +132,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$e)\;\;$__ $2000000000000\,\text{mm}^2 = $ [[       2      ]] @canvas $\,\text{km}^2$ \
+__$e)\;\;$__ $2000000000000\,\text{mm}^2 = $ [[       2      ]] @canvas $\,\text{km}^2$ 
 [[?]] @Explain
 
 @resetter
@@ -148,7 +148,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$f)\;\;$__ $180\,\text{km}^2 = $ [[ 18000000000 ]] @canvas $\,\text{dm}^2$ \
+__$f)\;\;$__ $180\,\text{km}^2 = $ [[ 18000000000 ]] @canvas $\,\text{dm}^2$ 
 [[?]] @Explain
 
 @resetter

@@ -66,7 +66,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$a)\;\;$__ $7$ [[ ($\mid$) | $\nmid$ ]] $7399$ \
+__$a)\;\;$__ $7$ [[ ($\mid$) | $\nmid$ ]] $7399$ 
 [[?]] @Explain
 
 
@@ -82,7 +82,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$b)\;\;$__ $5$ [[ $\mid$ | ($\nmid$) ]] $2046$ \
+__$b)\;\;$__ $5$ [[ $\mid$ | ($\nmid$) ]] $2046$ 
 [[?]] @Explain
 
 
@@ -98,7 +98,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$c)\;\;$__ $6$ [[ ($\mid$) | $\nmid$ ]] $3408$ \
+__$c)\;\;$__ $6$ [[ ($\mid$) | $\nmid$ ]] $3408$ 
 [[?]] @Explain
 
 
@@ -114,7 +114,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$d)\;\;$__ $3$ [[ $\mid$ | ($\nmid$) ]] $6410$ \
+__$d)\;\;$__ $3$ [[ $\mid$ | ($\nmid$) ]] $6410$ 
 [[?]] @Explain
 
 
@@ -130,7 +130,7 @@ data-solution-timer-start="oncheck"
 data-solution-timer-badge="off" 
 data-solution-button="5" 
 data-hint-button="3"  -->
-__$e)\;\;$__ $4$ [[ $\mid$ | ($\nmid$) ]] $8211$ \
+__$e)\;\;$__ $4$ [[ $\mid$ | ($\nmid$) ]] $8211$ 
 [[?]] @Explain
 
 
