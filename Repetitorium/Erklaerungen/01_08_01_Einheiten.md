@@ -1,5 +1,5 @@
 <!--
-version:  1.0.0
+version:  1.0.1
 language: de
 narrator: Deutsch Female
 mode: Presentation
@@ -28,6 +28,54 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README.md
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
+
+@style
+.unit-ladders {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 1.5rem;
+  align-items: start;
+  max-width: 1100px;
+  margin: 1.5rem auto;
+}
+
+.unit-ladder {
+  width: 100%;
+  height: auto;
+  color: currentColor;
+}
+
+.unit-ladder rect,
+.unit-ladder path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.unit-ladder marker path {
+  fill: currentColor;
+  stroke: none;
+}
+
+.unit-ladder text {
+  fill: currentColor;
+  font-family: Georgia, "Times New Roman", serif;
+  text-anchor: middle;
+}
+
+.unit-ladder .unit-title {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.unit-ladder .unit-name {
+  font-size: 25px;
+}
+
+.unit-ladder .unit-factor {
+  font-size: 15px;
+}
+@end
 
 
 
@@ -142,11 +190,120 @@ $$
 
 
 
-<center>
+<div class="unit-ladders">
 
-![](https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Kap2/Einheit1.png)
+<svg class="unit-ladder" viewBox="0 0 340 470" role="img" aria-labelledby="unit-length-title unit-length-desc">
+  <title id="unit-length-title">Umrechnungsleiter für Längeneinheiten</title>
+  <desc id="unit-length-desc">Von Kilometer bis Millimeter: abwärts wird multipliziert, aufwärts dividiert.</desc>
+  <defs>
+    <marker id="unit-arrow-length" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" />
+    </marker>
+  </defs>
 
-</center>
+  <rect x="85" y="10" width="170" height="55" rx="4" />
+  <text class="unit-title" x="170" y="46">Länge</text>
+  <rect x="105" y="80" width="130" height="70" />
+  <rect x="105" y="150" width="130" height="70" />
+  <rect x="105" y="220" width="130" height="70" />
+  <rect x="105" y="290" width="130" height="70" />
+  <rect x="105" y="360" width="130" height="70" />
+  <text class="unit-name" x="170" y="124">km</text>
+  <text class="unit-name" x="170" y="194">m</text>
+  <text class="unit-name" x="170" y="264">dm</text>
+  <text class="unit-name" x="170" y="334">cm</text>
+  <text class="unit-name" x="170" y="404">mm</text>
+  <path d="M105,122 C70,127 70,173 105,178" marker-end="url(#unit-arrow-length)" />
+  <path d="M235,178 C270,173 270,127 235,122" marker-end="url(#unit-arrow-length)" />
+  <text class="unit-factor" x="38" y="155">· 1000</text>
+  <text class="unit-factor" x="302" y="155">: 1000</text>
+  <path d="M105,192 C70,197 70,243 105,248" marker-end="url(#unit-arrow-length)" />
+  <path d="M235,248 C270,243 270,197 235,192" marker-end="url(#unit-arrow-length)" />
+  <text class="unit-factor" x="42" y="225">· 10</text>
+  <text class="unit-factor" x="298" y="225">: 10</text>
+  <path d="M105,262 C70,267 70,313 105,318" marker-end="url(#unit-arrow-length)" />
+  <path d="M235,318 C270,313 270,267 235,262" marker-end="url(#unit-arrow-length)" />
+  <text class="unit-factor" x="42" y="295">· 10</text>
+  <text class="unit-factor" x="298" y="295">: 10</text>
+  <path d="M105,332 C70,337 70,383 105,388" marker-end="url(#unit-arrow-length)" />
+  <path d="M235,388 C270,383 270,337 235,332" marker-end="url(#unit-arrow-length)" />
+  <text class="unit-factor" x="42" y="365">· 10</text>
+  <text class="unit-factor" x="298" y="365">: 10</text>
+</svg>
+
+<svg class="unit-ladder" viewBox="0 0 340 470" role="img" aria-labelledby="unit-mass-title unit-mass-desc">
+  <title id="unit-mass-title">Umrechnungsleiter für Masseneinheiten</title>
+  <desc id="unit-mass-desc">Von Tonne bis Milligramm: abwärts wird mit 1000 multipliziert, aufwärts durch 1000 dividiert.</desc>
+  <defs>
+    <marker id="unit-arrow-mass" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" />
+    </marker>
+  </defs>
+
+  <rect x="85" y="10" width="170" height="55" rx="4" />
+  <text class="unit-title" x="170" y="46">Masse</text>
+  <rect x="105" y="80" width="130" height="85" />
+  <rect x="105" y="165" width="130" height="85" />
+  <rect x="105" y="250" width="130" height="85" />
+  <rect x="105" y="335" width="130" height="85" />
+  <text class="unit-name" x="170" y="132">t</text>
+  <text class="unit-name" x="170" y="217">kg</text>
+  <text class="unit-name" x="170" y="302">g</text>
+  <text class="unit-name" x="170" y="387">mg</text>
+  <path d="M105,129 C70,134 70,195 105,200" marker-end="url(#unit-arrow-mass)" />
+  <path d="M235,200 C270,195 270,134 235,129" marker-end="url(#unit-arrow-mass)" />
+  <text class="unit-factor" x="38" y="168">· 1000</text>
+  <text class="unit-factor" x="302" y="168">: 1000</text>
+  <path d="M105,214 C70,219 70,280 105,285" marker-end="url(#unit-arrow-mass)" />
+  <path d="M235,285 C270,280 270,219 235,214" marker-end="url(#unit-arrow-mass)" />
+  <text class="unit-factor" x="38" y="253">· 1000</text>
+  <text class="unit-factor" x="302" y="253">: 1000</text>
+  <path d="M105,299 C70,304 70,365 105,370" marker-end="url(#unit-arrow-mass)" />
+  <path d="M235,370 C270,365 270,304 235,299" marker-end="url(#unit-arrow-mass)" />
+  <text class="unit-factor" x="38" y="338">· 1000</text>
+  <text class="unit-factor" x="302" y="338">: 1000</text>
+</svg>
+
+<svg class="unit-ladder" viewBox="0 0 340 470" role="img" aria-labelledby="unit-time-title unit-time-desc">
+  <title id="unit-time-title">Umrechnungsleiter für Zeiteinheiten</title>
+  <desc id="unit-time-desc">Von Jahr bis Sekunde mit den Umrechnungsfaktoren 365,25636, 24, 60 und 60.</desc>
+  <defs>
+    <marker id="unit-arrow-time" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" />
+    </marker>
+  </defs>
+
+  <rect x="85" y="10" width="170" height="55" rx="4" />
+  <text class="unit-title" x="170" y="46">Zeit</text>
+  <rect x="105" y="80" width="130" height="70" />
+  <rect x="105" y="150" width="130" height="70" />
+  <rect x="105" y="220" width="130" height="70" />
+  <rect x="105" y="290" width="130" height="70" />
+  <rect x="105" y="360" width="130" height="70" />
+  <text class="unit-name" x="170" y="124">a</text>
+  <text class="unit-name" x="170" y="194">d</text>
+  <text class="unit-name" x="170" y="264">h</text>
+  <text class="unit-name" x="170" y="334">min</text>
+  <text class="unit-name" x="170" y="404">s</text>
+  <path d="M105,122 C70,127 70,173 105,178" marker-end="url(#unit-arrow-time)" />
+  <path d="M235,178 C270,173 270,127 235,122" marker-end="url(#unit-arrow-time)" />
+  <text class="unit-factor" x="38" y="152" style="font-size: 11px">· 365,25636</text>
+  <text class="unit-factor" x="302" y="152" style="font-size: 11px">: 365,25636</text>
+  <path d="M105,192 C70,197 70,243 105,248" marker-end="url(#unit-arrow-time)" />
+  <path d="M235,248 C270,243 270,197 235,192" marker-end="url(#unit-arrow-time)" />
+  <text class="unit-factor" x="42" y="225">· 24</text>
+  <text class="unit-factor" x="298" y="225">: 24</text>
+  <path d="M105,262 C70,267 70,313 105,318" marker-end="url(#unit-arrow-time)" />
+  <path d="M235,318 C270,313 270,267 235,262" marker-end="url(#unit-arrow-time)" />
+  <text class="unit-factor" x="42" y="295">· 60</text>
+  <text class="unit-factor" x="298" y="295">: 60</text>
+  <path d="M105,332 C70,337 70,383 105,388" marker-end="url(#unit-arrow-time)" />
+  <path d="M235,388 C270,383 270,337 235,332" marker-end="url(#unit-arrow-time)" />
+  <text class="unit-factor" x="42" y="365">· 60</text>
+  <text class="unit-factor" x="298" y="365">: 60</text>
+</svg>
+
+</div>
 
 
 
