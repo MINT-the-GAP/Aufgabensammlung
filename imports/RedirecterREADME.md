@@ -370,3 +370,6 @@ comment: Nightly-Switch — oben (links versetzt), transparent, Themefarbe aus L
 
 
 # Nightly Switch
+
+
+`import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md`

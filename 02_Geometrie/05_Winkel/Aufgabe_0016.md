@@ -27,7 +27,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README.md
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
+
 
 
 tags: Winkel, Messen, sehr leicht, sehr niedrig, Angeben

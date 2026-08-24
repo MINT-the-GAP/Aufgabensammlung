@@ -1572,7 +1572,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README.md
 
-import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md
+
       circle: Object.create(null),
       rect: Object.create(null),
       rectDims: Object.create(null),
@@ -5087,7 +5087,7 @@ Das hier ist ein Beispiel bei dem man bei den verschiedenen Modi unterschiedlich
 ---
 
 
-> Einzeltemplate - Nightlychecker: `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/RedirecterREADME.md`
+> Einzeltemplate - Nightlychecker: ``
 
 > Einzeltemplate - Tafelmodus: `import: https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/main/imports/TafelREADME.md`
 
