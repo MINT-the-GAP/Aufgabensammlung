@@ -47,8 +47,19 @@ Gegeben sei ein Dreieck $ABC$ mit den Seitenlängen $b=5\,\mathrm{cm}$ und $c=7\
 <!-- data-solution-button="off" data-llm-textarea="6" -->
 [[Antwort]]
 [[?]] @Explain
-```text @LLMQuiz(0.66;solution=1;feedback=1)
-Zuerst wird die Seite $\overline{AB}$ mit der Länge $c=7\,\mathrm{cm}$ gezeichnet. Dann wird in $A$ an der Seite $\overline{AB}$ der Winkel $\alpha=60^\circ$ gezeichnet. Anschließend wird ein Kreis um $A$ mit dem Radius $b=5\,\mathrm{cm}$ gezeichnet. Der Schnittpunkt des Kreises mit dem freien Schenkel des Winkels wird mit $C$ gekennzeichnet. Abschließend wird $C$ mit $B$ verbunden. So entsteht das Dreieck $ABC$ mit den zwei vorgegebenen Seitenlängen und dem eingeschlossenen Winkel.
+```text @LLMQuiz.question(0.55;solution=1;feedback=1;Rechtschreibung=1;Satzbau=1,`Beschreibe schrittweise, wie das gegebene Dreieck mit Zirkel und Lineal konstruiert wird.`)
+<!-- lia-llm:criterion -->
+Eine der beiden gegebenen Seiten, die den Winkel $\alpha$ einschließen, wird in ihrer vorgegebenen Länge mit dem Endpunkt $A$ gezeichnet.
+<!-- lia-llm:criterion -->
+In $A$ wird an dieser Seite der Winkel $\alpha=60^\circ$ konstruiert.
+<!-- lia-llm:criterion -->
+Auf dem freien Winkelschenkel wird von $A$ aus die Länge der anderen gegebenen Seite abgetragen.
+<!-- lia-llm:criterion -->
+Der Endpunkt der abgetragenen Strecke wird als dritter Eckpunkt markiert.
+<!-- lia-llm:criterion -->
+Die beiden noch nicht verbundenen Eckpunkte $B$ und $C$ werden verbunden.
+<!-- lia-llm:solution -->
+Zuerst wird die Seite $\overline{AB}$ mit der Länge $c=7\,\mathrm{cm}$ gezeichnet. In $A$ wird an $\overline{AB}$ der Winkel $\alpha=60^\circ$ konstruiert. Auf dem freien Winkelschenkel wird von $A$ aus die Länge $b=5\,\mathrm{cm}$ abgetragen und der Endpunkt als $C$ markiert. Abschließend werden $B$ und $C$ verbunden.
 ```
 
 

@@ -47,8 +47,17 @@ Gegeben sei ein Dreieck $ABC$ mit der Seitenlänge $c=6\,\mathrm{cm}$ sowie den 
 <!-- data-solution-button="off" data-llm-textarea="6" -->
 [[Antwort]]
 [[?]] @Explain
-```text @LLMQuiz(0.66;solution=1;feedback=1)
-Zuerst wird die Seite $\overline{AB}$ mit der Länge $c=6\,\mathrm{cm}$ gezeichnet. Dann wird in $A$ an der Seite $\overline{AB}$ der Winkel $\alpha=45^\circ$ gezeichnet. In $B$ wird auf derselben Seite der Strecke $\overline{AB}$ der Winkel $\beta=60^\circ$ gezeichnet. Der Schnittpunkt der beiden freien Winkelschenkel wird mit $C$ gekennzeichnet. So entsteht das Dreieck $ABC$ mit der vorgegebenen Seite und den beiden anliegenden Winkeln.
+```text @LLMQuiz.question(0.55;solution=1;feedback=1;Rechtschreibung=1;Satzbau=1,`Beschreibe schrittweise, wie das gegebene Dreieck mit Zirkel und Lineal konstruiert wird.`)
+<!-- lia-llm:criterion -->
+Die Seite $\overline{AB}$ wird mit der Länge $c=6\,\mathrm{cm}$ gezeichnet.
+<!-- lia-llm:criterion -->
+In $A$ wird an $\overline{AB}$ der Winkel $\alpha=45^\circ$ konstruiert.
+<!-- lia-llm:criterion -->
+In $B$ wird auf derselben Seite der Strecke der Winkel $\beta=60^\circ$ konstruiert.
+<!-- lia-llm:criterion -->
+Der Schnittpunkt der beiden freien Winkelschenkel wird als $C$ markiert.
+<!-- lia-llm:solution -->
+Zuerst wird die Seite $\overline{AB}$ mit der Länge $c=6\,\mathrm{cm}$ gezeichnet. In $A$ wird an $\overline{AB}$ der Winkel $\alpha=45^\circ$ konstruiert. In $B$ wird auf derselben Seite der Strecke der Winkel $\beta=60^\circ$ abgetragen. Der Schnittpunkt der beiden freien Winkelschenkel wird als $C$ markiert.
 ```
 
 

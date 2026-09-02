@@ -45,10 +45,21 @@ Für ein Dreieck $ABC$ seien die drei Winkel $\alpha=60^\circ$, $\beta=60^\circ$
 <!-- data-solution-button="off" data-llm-textarea="6" -->
 [[Antwort]]
 [[?]] @Explain
-```text @LLMQuiz(0.66;solution=1;feedback=1)
-Die drei Winkel legen nur die Form eines Dreiecks fest, nicht aber seine Größe. Bei den gegebenen Winkeln entsteht zwar immer ein gleichseitiges Dreieck, seine Seitenlänge kann jedoch beliebig gewählt werden. So können beispielsweise ein Dreieck mit der Seitenlänge $4\,\mathrm{cm}$ und ein Dreieck mit der Seitenlänge $8\,\mathrm{cm}$ dieselben drei Winkel besitzen.
-
-Diese Dreiecke sind ähnlich, aber wegen ihrer unterschiedlichen Seitenlängen nicht kongruent. Außerdem ist der dritte Winkel keine zusätzliche unabhängige Angabe, da er sich bereits aus den beiden anderen Winkeln und der Winkelsumme von $180^\circ$ ergibt. Ohne mindestens eine vorgegebene Seitenlänge ist der Maßstab nicht festgelegt. Deshalb sind mit denselben drei Winkeln unendlich viele unterschiedlich große Dreiecke möglich und WWW reicht für eine eindeutige Konstruktion nicht aus.
+```text @LLMQuiz.question(0.55;solution=1;feedback=1;Rechtschreibung=1;Satzbau=1,`Begründe, warum diese drei Winkel für die eindeutige Konstruktion des Dreiecks nicht ausreichen und WWW deshalb kein Kongruenzsatz ist.`)
+<!-- lia-llm:criterion -->
+Die drei Winkel von jeweils $60^\circ$ legen fest, dass das Dreieck gleichseitig ist.
+<!-- lia-llm:criterion -->
+Die Winkel legen keine Seitenlänge und damit nicht die Größe des Dreiecks fest.
+<!-- lia-llm:criterion -->
+Zu denselben drei Winkeln können Dreiecke mit unterschiedlichen Seitenlängen konstruiert werden.
+<!-- lia-llm:criterion -->
+Die unterschiedlich großen Dreiecke sind nicht kongruent.
+<!-- lia-llm:criterion -->
+Ohne eine vorgegebene Seitenlänge ist die Konstruktion nicht eindeutig.
+<!-- lia-llm:criterion -->
+Deshalb ist WWW kein Kongruenzsatz.
+<!-- lia-llm:solution -->
+Die drei Winkel legen nur die Form eines Dreiecks fest, nicht aber seine Größe. Bei drei Winkeln von jeweils $60^\circ$ entsteht zwar immer ein gleichseitiges Dreieck, seine Seitenlänge kann jedoch beliebig gewählt werden. Beispielsweise besitzen gleichseitige Dreiecke mit den Seitenlängen $4\,\mathrm{cm}$ und $8\,\mathrm{cm}$ dieselben Winkel. Sie sind ähnlich, aber wegen ihrer verschiedenen Seitenlängen nicht kongruent. Ohne eine vorgegebene Seitenlänge fehlt somit der Maßstab, weshalb WWW kein Kongruenzsatz ist.
 ```
 
 

@@ -47,8 +47,19 @@ Gegeben sei ein Dreieck $ABC$ mit den Seitenlängen $a=6\,\mathrm{cm}$ und $b=4\
 <!-- data-solution-button="off" data-llm-textarea="6" -->
 [[Antwort]]
 [[?]] @Explain
-```text @LLMQuiz(0.66;solution=1;feedback=1)
-Zuerst wird die Seite $\overline{AC}$ mit der Länge $b=4\,\mathrm{cm}$ gezeichnet. Dann wird in $A$ an der Seite $\overline{AC}$ der Winkel $\alpha=60^\circ$ gezeichnet. Anschließend wird ein Kreis um $C$ mit dem Radius $a=6\,\mathrm{cm}$ gezeichnet. Der Schnittpunkt des Kreises mit dem freien Schenkel des Winkels wird mit $B$ gekennzeichnet. Abschließend wird $B$ mit $C$ verbunden. So entsteht das Dreieck $ABC$ mit den zwei vorgegebenen Seitenlängen und dem Winkel, der der längeren gegebenen Seite gegenüberliegt.
+```text @LLMQuiz.question(0.55;solution=1;feedback=1;Rechtschreibung=1;Satzbau=1,`Beschreibe schrittweise, wie das gegebene Dreieck mit Zirkel und Lineal konstruiert wird.`)
+<!-- lia-llm:criterion -->
+Die Seite $\overline{AC}$ wird mit der Länge $b=4\,\mathrm{cm}$ gezeichnet.
+<!-- lia-llm:criterion -->
+In $A$ wird an $\overline{AC}$ der Winkel $\alpha=60^\circ$ konstruiert.
+<!-- lia-llm:criterion -->
+Um $C$ wird ein Kreis oder Kreisbogen mit dem Radius $a=6\,\mathrm{cm}$ konstruiert.
+<!-- lia-llm:criterion -->
+Der Schnittpunkt des Kreises oder Kreisbogens mit dem freien Winkelschenkel wird als $B$ markiert.
+<!-- lia-llm:criterion -->
+$B$ und $C$ werden verbunden.
+<!-- lia-llm:solution -->
+Zuerst wird die Seite $\overline{AC}$ mit der Länge $b=4\,\mathrm{cm}$ gezeichnet. In $A$ wird an $\overline{AC}$ der Winkel $\alpha=60^\circ$ konstruiert. Danach wird ein Kreis um $C$ mit dem Radius $a=6\,\mathrm{cm}$ gezeichnet. Sein Schnittpunkt mit dem freien Winkelschenkel wird als $B$ markiert. Abschließend werden $B$ und $C$ verbunden.
 ```
 
 

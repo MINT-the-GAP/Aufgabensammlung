@@ -47,8 +47,19 @@ Gegeben sei ein Dreieck $ABC$ mit den Winkeln $\alpha=60^\circ$ und $\beta=90^\c
 <!-- data-solution-button="off" data-llm-textarea="6" -->
 [[Antwort]]
 [[?]] @Explain
-```text @LLMQuiz(0.66;solution=1;feedback=1)
-Zuerst wird der dritte Winkel mit $\gamma=180^\circ-60^\circ-90^\circ=30^\circ$ berechnet. Dann wird die Seite $\overline{BC}$ mit der Länge $a=5\,\mathrm{cm}$ gezeichnet. In $B$ wird an der Seite $\overline{BC}$ der Winkel $\beta=90^\circ$ gezeichnet. In $C$ wird auf derselben Seite der Strecke $\overline{BC}$ der berechnete Winkel $\gamma=30^\circ$ gezeichnet. Der Schnittpunkt der beiden freien Winkelschenkel wird mit $A$ gekennzeichnet. So entsteht das Dreieck $ABC$ mit den zwei vorgegebenen Winkeln und der vorgegebenen Seite.
+```text @LLMQuiz.question(0.55;solution=1;feedback=1;Rechtschreibung=1;Satzbau=1,`Beschreibe schrittweise, wie das gegebene Dreieck mit Zirkel und Lineal konstruiert wird.`)
+<!-- lia-llm:criterion -->
+Der dritte Winkel wird mit $\gamma=180^\circ-60^\circ-90^\circ=30^\circ$ berechnet.
+<!-- lia-llm:criterion -->
+Die Seite $\overline{BC}$ wird mit der Länge $a=5\,\mathrm{cm}$ gezeichnet.
+<!-- lia-llm:criterion -->
+In $B$ wird an $\overline{BC}$ der Winkel $\beta=90^\circ$ konstruiert.
+<!-- lia-llm:criterion -->
+In $C$ wird auf derselben Seite der Strecke der Winkel $\gamma=30^\circ$ konstruiert.
+<!-- lia-llm:criterion -->
+Der Schnittpunkt der beiden freien Winkelschenkel wird als $A$ markiert.
+<!-- lia-llm:solution -->
+Zuerst wird der dritte Winkel mit $\gamma=180^\circ-60^\circ-90^\circ=30^\circ$ berechnet. Danach wird die Seite $\overline{BC}$ mit der Länge $a=5\,\mathrm{cm}$ gezeichnet. In $B$ wird an $\overline{BC}$ der Winkel $\beta=90^\circ$ konstruiert. In $C$ wird auf derselben Seite der Strecke der Winkel $\gamma=30^\circ$ abgetragen. Der Schnittpunkt der freien Winkelschenkel wird als $A$ markiert.
 ```
 
 

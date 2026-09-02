@@ -45,10 +45,17 @@ Ein Dreieck $ABC$ soll mit den Seitenlängen $a=8\,\mathrm{cm}$, $b=3\,\mathrm{c
 <!-- data-solution-button="off" data-llm-textarea="6" -->
 [[Antwort]]
 [[?]] @Explain
-```text @LLMQuiz(0.66;solution=1;feedback=1)
-In jedem Dreieck muss die Summe der Längen zweier Seiten größer als die Länge der dritten Seite sein. Hier gilt jedoch $b+c=3\,\mathrm{cm}+4\,\mathrm{cm}=7\,\mathrm{cm}<8\,\mathrm{cm}=a$. Damit ist die Dreiecksungleichung verletzt.
-
-Auch bei der Konstruktion wird das Problem sichtbar: Zuerst wird die Seite $\overline{BC}$ mit der Länge $a=8\,\mathrm{cm}$ gezeichnet. Der Kreis um $B$ mit dem Radius $c=4\,\mathrm{cm}$ und der Kreis um $C$ mit dem Radius $b=3\,\mathrm{cm}$ haben keinen Schnittpunkt, da die Summe ihrer Radien mit $7\,\mathrm{cm}$ kleiner als der Abstand ihrer Mittelpunkte ist. Deshalb kann kein Punkt $A$ gefunden und somit kein Dreieck mit diesen Seitenlängen konstruiert werden.
+```text @LLMQuiz.question(0.55;solution=1;feedback=1;Rechtschreibung=1;Satzbau=1,`Begründe, warum ein Dreieck mit diesen Seitenlängen nicht konstruiert werden kann.`)
+<!-- lia-llm:criterion -->
+In einem Dreieck muss die Summe der beiden kürzeren Seiten größer als die längste Seite sein.
+<!-- lia-llm:criterion -->
+Hier gilt jedoch $b+c=3\,\mathrm{cm}+4\,\mathrm{cm}=7\,\mathrm{cm}<8\,\mathrm{cm}=a$.
+<!-- lia-llm:criterion -->
+Damit ist die Dreiecksungleichung verletzt.
+<!-- lia-llm:criterion -->
+Wegen der verletzten Dreiecksungleichung kann kein Dreieck konstruiert werden.
+<!-- lia-llm:solution -->
+In jedem Dreieck muss die Summe der Längen zweier Seiten größer als die Länge der dritten Seite sein. Hier gilt jedoch $b+c=3\,\mathrm{cm}+4\,\mathrm{cm}=7\,\mathrm{cm}<8\,\mathrm{cm}=a$. Damit ist die Dreiecksungleichung verletzt. Bei der Konstruktion haben der Kreis um $B$ mit dem Radius $4\,\mathrm{cm}$ und der Kreis um $C$ mit dem Radius $3\,\mathrm{cm}$ keinen Schnittpunkt, weil ihre Radien zusammen kleiner als der Abstand $8\,\mathrm{cm}$ ihrer Mittelpunkte sind. Daher kann der Punkt $A$ nicht bestimmt werden.
 ```
 
 @resetter
