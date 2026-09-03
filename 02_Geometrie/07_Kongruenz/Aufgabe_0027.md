@@ -45,19 +45,13 @@ Für ein Dreieck $ABC$ seien die drei Winkel $\alpha=60^\circ$, $\beta=60^\circ$
 <!-- data-solution-button="off" data-llm-textarea="6" -->
 [[Antwort]]
 [[?]] @Explain
-```text @LLMQuiz.question(0.55;solution=1;feedback=1;Rechtschreibung=1;Satzbau=1,`Begründe, warum diese drei Winkel für die eindeutige Konstruktion des Dreiecks nicht ausreichen und WWW deshalb kein Kongruenzsatz ist.`)
+```text @LLMQuiz(0.55;coverage=0.66;solution=1;feedback=1,`Für ein Dreieck $ABC$ sind die Winkel $\alpha=60^\circ$, $\beta=60^\circ$ und $\gamma=60^\circ$ gegeben. Begründe, warum diese drei Winkel für die eindeutige Konstruktion des Dreiecks nicht ausreichen und WWW deshalb kein Kongruenzsatz ist.`)
 <!-- lia-llm:criterion -->
-Die drei Winkel von jeweils $60^\circ$ legen fest, dass das Dreieck gleichseitig ist.
+Die drei Winkel legen nur die Form, aber keine Seitenlänge und damit nicht die Größe des Dreiecks fest.
 <!-- lia-llm:criterion -->
-Die Winkel legen keine Seitenlänge und damit nicht die Größe des Dreiecks fest.
+Dreiecke mit denselben Winkeln können verschieden groß und deshalb nicht kongruent sein.
 <!-- lia-llm:criterion -->
-Zu denselben drei Winkeln können Dreiecke mit unterschiedlichen Seitenlängen konstruiert werden.
-<!-- lia-llm:criterion -->
-Die unterschiedlich großen Dreiecke sind nicht kongruent.
-<!-- lia-llm:criterion -->
-Ohne eine vorgegebene Seitenlänge ist die Konstruktion nicht eindeutig.
-<!-- lia-llm:criterion -->
-Deshalb ist WWW kein Kongruenzsatz.
+Darum ist die Konstruktion nicht eindeutig und WWW kein Kongruenzsatz.
 <!-- lia-llm:solution -->
 Die drei Winkel legen nur die Form eines Dreiecks fest, nicht aber seine Größe. Bei drei Winkeln von jeweils $60^\circ$ entsteht zwar immer ein gleichseitiges Dreieck, seine Seitenlänge kann jedoch beliebig gewählt werden. Beispielsweise besitzen gleichseitige Dreiecke mit den Seitenlängen $4\,\mathrm{cm}$ und $8\,\mathrm{cm}$ dieselben Winkel. Sie sind ähnlich, aber wegen ihrer verschiedenen Seitenlängen nicht kongruent. Ohne eine vorgegebene Seitenlänge fehlt somit der Maßstab, weshalb WWW kein Kongruenzsatz ist.
 ```

@@ -44,23 +44,13 @@ author: Martin Lommatzsch
 <!-- data-solution-button="off" data-llm-textarea="6" -->
 [[Antwort]]
 [[?]] @Explain
-```text @LLMQuiz.question(0.55;solution=1;feedback=1;Rechtschreibung=1;Satzbau=1,`Erkläre, warum die Konstruktionen von Dreiecken nach den Kongruenzsätzen WWS und WSW fast gleich ablaufen.`)
+```text @LLMQuiz(0.55;coverage=0.66;solution=1;feedback=1,`Erkläre, warum die Konstruktionen von Dreiecken nach den Kongruenzsätzen WWS und WSW fast gleich ablaufen.`)
 <!-- lia-llm:criterion -->
-Bei WSW liegt die gegebene Seite zwischen den beiden gegebenen Winkeln.
+Bei WWS wird zuerst der fehlende dritte Winkel mit der Innenwinkelsumme von $180^\circ$ berechnet.
 <!-- lia-llm:criterion -->
-Bei WSW wird die gegebene Seite zuerst gezeichnet.
+Danach sind wie bei WSW eine Seite und die beiden an ihren Endpunkten liegenden Winkel bekannt.
 <!-- lia-llm:criterion -->
-An den beiden Endpunkten der Seite werden die gegebenen Winkel konstruiert.
-<!-- lia-llm:criterion -->
-Der Schnittpunkt der freien Winkelschenkel ergibt den dritten Eckpunkt.
-<!-- lia-llm:criterion -->
-Bei WWS liegt die gegebene Seite nicht zwischen den beiden gegebenen Winkeln.
-<!-- lia-llm:criterion -->
-Bei WWS wird der fehlende anliegende Winkel mit der Innenwinkelsumme von $180^\circ$ berechnet.
-<!-- lia-llm:criterion -->
-Nach der Winkelberechnung sind auch bei WWS eine Seite und die beiden an ihr anliegenden Winkel bekannt.
-<!-- lia-llm:criterion -->
-Die weitere Konstruktion verläuft bei WWS genauso wie bei WSW.
+Mit diesen Angaben wird in beiden Fällen dieselbe Konstruktion ausgeführt.
 <!-- lia-llm:solution -->
 Bei WSW sind eine Seite und die beiden an dieser Seite anliegenden Winkel gegeben. Deshalb wird die Seite gezeichnet, an ihren Endpunkten werden die beiden Winkel konstruiert und der Schnittpunkt der freien Winkelschenkel ergibt den dritten Eckpunkt. Bei WWS liegt die gegebene Seite zunächst nicht zwischen den beiden gegebenen Winkeln. Aus der Winkelsumme wird daher zuerst der fehlende dritte Winkel berechnet. Danach sind ebenfalls eine Seite und ihre beiden anliegenden Winkel bekannt, sodass die weitere Konstruktion genauso wie bei WSW verläuft.
 ```

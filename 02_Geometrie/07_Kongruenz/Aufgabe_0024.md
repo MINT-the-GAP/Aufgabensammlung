@@ -47,7 +47,7 @@ Gegeben sei ein Dreieck $ABC$ mit den Winkeln $\alpha=60^\circ$ und $\beta=90^\c
 <!-- data-solution-button="off" data-llm-textarea="6" -->
 [[Antwort]]
 [[?]] @Explain
-```text @LLMQuiz.question(0.55;solution=1;feedback=1;Rechtschreibung=1;Satzbau=1,`Beschreibe schrittweise, wie das gegebene Dreieck mit Zirkel und Lineal konstruiert wird.`)
+```text @LLMQuiz(0.55;coverage=0.75;solution=1;feedback=1,`Gegeben sei ein Dreieck $ABC$ mit den Winkeln $\alpha=60^\circ$ und $\beta=90^\circ$ sowie der Seitenlänge $a=5\,\mathrm{cm}$. Beschreibe schrittweise, wie das Dreieck mit dem Kongruenzsatz WWS mit Zirkel und Lineal konstruiert wird.`)
 <!-- lia-llm:criterion -->
 Der dritte Winkel wird mit $\gamma=180^\circ-60^\circ-90^\circ=30^\circ$ berechnet.
 <!-- lia-llm:criterion -->
