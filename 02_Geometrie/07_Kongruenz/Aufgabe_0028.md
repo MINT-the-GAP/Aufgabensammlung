@@ -45,7 +45,7 @@ Ein Dreieck $ABC$ soll mit den Seitenlängen $a=8\,\mathrm{cm}$, $b=3\,\mathrm{c
 <!-- data-solution-button="off" data-llm-textarea="6" -->
 [[Antwort]]
 [[?]] @Explain
-```text @LLMQuiz(0.55;coverage=0.66;solution=1;feedback=1,`Ein Dreieck $ABC$ soll mit den Seitenlängen $a=8\,\mathrm{cm}$, $b=3\,\mathrm{cm}$ und $c=4\,\mathrm{cm}$ konstruiert werden. Begründe, warum ein Dreieck mit diesen Seitenlängen nicht konstruiert werden kann.`)
+```text @LLMQuiz(0.55;coverage=0.55;solution=1;feedback=1;assessmentengine=quality;Rechtschreibung=1;Satzbau=1,`Ein Dreieck $ABC$ soll mit den Seitenlängen $a=8\,\mathrm{cm}$, $b=3\,\mathrm{cm}$ und $c=4\,\mathrm{cm}$ konstruiert werden. Begründe, warum ein Dreieck mit diesen Seitenlängen nicht konstruiert werden kann.`)
 <!-- lia-llm:criterion -->
 In einem Dreieck muss die Summe der beiden kürzeren Seiten größer als die längste Seite sein.
 <!-- lia-llm:criterion -->

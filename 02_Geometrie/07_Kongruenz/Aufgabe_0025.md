@@ -47,7 +47,7 @@ Gegeben sei ein Dreieck $ABC$ mit den Seitenlängen $b=5\,\mathrm{cm}$ und $c=7\
 <!-- data-solution-button="off" data-llm-textarea="6" -->
 [[Antwort]]
 [[?]] @Explain
-```text @LLMQuiz(0.55;coverage=0.75;solution=1;feedback=1,`Gegeben sei ein Dreieck $ABC$ mit den Seitenlängen $b=5\,\mathrm{cm}$ und $c=7\,\mathrm{cm}$ sowie dem Winkel $\alpha=60^\circ$. Beschreibe schrittweise, wie das Dreieck mit dem Kongruenzsatz SWS mit Zirkel und Lineal konstruiert wird.`)
+```text @LLMQuiz(0.55;coverage=0.55;solution=1;feedback=1;assessmentengine=quality;Rechtschreibung=1;Satzbau=1,`Gegeben sei ein Dreieck $ABC$ mit den Seitenlängen $b=5\,\mathrm{cm}$ und $c=7\,\mathrm{cm}$ sowie dem Winkel $\alpha=60^\circ$. Beschreibe schrittweise, wie das Dreieck mit dem Kongruenzsatz SWS mit Zirkel und Lineal konstruiert wird.`)
 <!-- lia-llm:criterion -->
 Eine der beiden gegebenen Seiten, die den Winkel $\alpha$ einschließen, wird in ihrer vorgegebenen Länge mit dem Endpunkt $A$ gezeichnet.
 <!-- lia-llm:criterion -->

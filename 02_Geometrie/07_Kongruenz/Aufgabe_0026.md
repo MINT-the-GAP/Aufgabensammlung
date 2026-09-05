@@ -44,7 +44,7 @@ author: Martin Lommatzsch
 <!-- data-solution-button="off" data-llm-textarea="6" -->
 [[Antwort]]
 [[?]] @Explain
-```text @LLMQuiz(0.55;coverage=0.66;solution=1;feedback=1,`Erkläre, warum die Konstruktionen von Dreiecken nach den Kongruenzsätzen WWS und WSW fast gleich ablaufen.`)
+```text @LLMQuiz(0.55;coverage=0.55;solution=1;feedback=1;assessmentengine=quality;Rechtschreibung=1;Satzbau=1,`Erkläre, warum die Konstruktionen von Dreiecken nach den Kongruenzsätzen WWS und WSW fast gleich ablaufen.`)
 <!-- lia-llm:criterion -->
 Bei WWS wird zuerst der fehlende dritte Winkel mit der Innenwinkelsumme von $180^\circ$ berechnet.
 <!-- lia-llm:criterion -->

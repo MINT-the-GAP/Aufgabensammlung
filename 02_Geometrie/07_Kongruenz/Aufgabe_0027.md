@@ -45,7 +45,7 @@ Für ein Dreieck $ABC$ seien die drei Winkel $\alpha=60^\circ$, $\beta=60^\circ$
 <!-- data-solution-button="off" data-llm-textarea="6" -->
 [[Antwort]]
 [[?]] @Explain
-```text @LLMQuiz(0.55;coverage=0.66;solution=1;feedback=1,`Für ein Dreieck $ABC$ sind die Winkel $\alpha=60^\circ$, $\beta=60^\circ$ und $\gamma=60^\circ$ gegeben. Begründe, warum diese drei Winkel für die eindeutige Konstruktion des Dreiecks nicht ausreichen und WWW deshalb kein Kongruenzsatz ist.`)
+```text @LLMQuiz(0.55;coverage=0.55;solution=1;feedback=1;assessmentengine=quality;Rechtschreibung=1;Satzbau=1,`Für ein Dreieck $ABC$ sind die Winkel $\alpha=60^\circ$, $\beta=60^\circ$ und $\gamma=60^\circ$ gegeben. Begründe, warum diese drei Winkel für die eindeutige Konstruktion des Dreiecks nicht ausreichen und WWW deshalb kein Kongruenzsatz ist.`)
 <!-- lia-llm:criterion -->
 Die drei Winkel legen nur die Form, aber keine Seitenlänge und damit nicht die Größe des Dreiecks fest.
 <!-- lia-llm:criterion -->
