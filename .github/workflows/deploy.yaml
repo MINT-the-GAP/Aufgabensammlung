@@ -28,7 +28,11 @@ jobs:
         run: node scripts/test-template-macros.cjs
 
       - name: Set up dependencies
-        run: npm install -g @liascript/exporter
+        # 3.4.2--2.1.0 fails on existing courses (Regular expression too large).
+        # Keep the tested parser version until that regression is resolved.
+        run: |
+          npm install -g @liascript/exporter@3.3.8--1.1.0
+          liaex --version
 
       - name: Prepare isolated build directory
         run: mkdir -p $RUNNER_TEMP/schullia-site
