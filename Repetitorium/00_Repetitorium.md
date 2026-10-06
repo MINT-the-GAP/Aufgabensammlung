@@ -748,7 +748,7 @@ Das Wort „*Stochastik*“ geht auf das griechische stochastikos zurück und be
 <h3> 1. Grundgrößen der Wahrscheinlichkeit </h3>
 
 
-- Link [Erklärungen zu Grundgrößen der Wahrscheinlichkeit](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_01_01_ChanceWahr.md)
+- Link [Erklärungen zu Grundgrößen der Wahrscheinlichkeit](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/06_01_01_ChanceWahr.md)
 - Link [Übungsaufgaben zu Grundgrößen der Wahrscheinlichkeit](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/07_01_01_ChanceWahrA.md)
 
 
@@ -759,7 +759,7 @@ Das Wort „*Stochastik*“ geht auf das griechische stochastikos zurück und be
 <h3> 2. Kombinatorik </h3>
 
 
-- Link [Erklärungen zur Kombinatorik](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_01_02_Kombinatorik.md)
+- Link [Erklärungen zur Kombinatorik](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/06_01_02_Kombinatorik.md)
 - Link [Übungsaufgaben zur Kombinatorik](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/07_01_02_KombinatorikA.md)
 
 
@@ -770,8 +770,8 @@ Das Wort „*Stochastik*“ geht auf das griechische stochastikos zurück und be
 <h3> 3. Baumdiagramme </h3>
 
 
-- Link [Erklärungen zum "Von"-Prinzip](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_02_02_VonPrinzip.md)
-- Link [Erklärungen zu Baumdiagrammen und bedingter Wahrscheinlichkeit](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_02_01_Baumdiagramme.md)
+- Link [Erklärungen zum "Von"-Prinzip](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/06_02_02_VonPrinzip.md)
+- Link [Erklärungen zu Baumdiagrammen und bedingter Wahrscheinlichkeit](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/06_02_01_Baumdiagramme.md)
 - Link [Aufgaben zu Baumdiagrammen und bedingter Wahrscheinlichkeit](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Sets/07_02_01_BaumdiagrammeA.md)
 
 
@@ -783,7 +783,7 @@ Das Wort „*Stochastik*“ geht auf das griechische stochastikos zurück und be
 
 
 
-- Link [Erklärungen zu Kontingenztafeln, Vierfeldertafeln und zur bedingten Wahrscheinlichkeit](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_03_01_Kontingenztafeln.md)
+- Link [Erklärungen zu Kontingenztafeln, Vierfeldertafeln und zur bedingten Wahrscheinlichkeit](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/06_03_01_Kontingenztafeln.md)
 
 
 
@@ -793,22 +793,52 @@ Das Wort „*Stochastik*“ geht auf das griechische stochastikos zurück und be
 
 <h3> 5. Binomialverteilungen </h3>
 
+- Link [Erklärungen zur Binomialverteilung, zum Erwartungswert und zur Streuung](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/06_04_01_Binomial.md)
+
 
 ---
 
 
 <h3> 6. Hypergeometrische Verteilungen </h3>
 
+- Link [Erklärung zur hypergeometrischen Verteilung](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/06_05_01_Hypergeo.md)
+
 ---
 
 
 <h3> 7. Gauß-Verteilungen </h3>
+
+- Link [Erklärung zur Normalverteilung](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/06_06_01_Normal.md)
 
 
 ---
 
 
 <h3> 8. Gemischte Übungen zur Stochastik </h3>
+
+---
+
+## Vektoren
+
+<h3> 1. Grundlagen der Vektorrechnung </h3>
+
+- Link [Erklärung zu Vektoren und Linearkombinationen](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_01_01_Vektor.md)
+- Link [Erklärung zur Vektornorm und zu Einheitsvektoren](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_01_02_Vektornorm.md)
+- Link [Erklärung zum Skalarprodukt](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_01_03_Skalarprodukt.md)
+- Link [Erklärung zum Vektorprodukt](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_01_03_Vektorprodukt.md)
+
+<h3> 2. Vektorielle Geraden </h3>
+
+- Link [Erklärung zu vektoriellen Geraden, Abständen und Schnittwinkeln](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_02_01_Vektorgerade.md)
+
+<h3> 3. Vektorielle Ebenen </h3>
+
+- Link [Erklärung zu vektoriellen Ebenen, Schnittgeraden und Lotfußpunkten](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_03_01_Ebene.md)
+- Link [Erklärung zum Wechsel der Darstellungsformen von Ebenen](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_03_02_Formen.md)
+
+<h3> 4. Vektorielle Geometrie </h3>
+
+- Link [Erklärung zu Spatprodukt, Kugelgleichung, Tangential- und Polarebenen](https://liascript.github.io/nightly/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/07_04_01_VekGeo.md)
 
 
 

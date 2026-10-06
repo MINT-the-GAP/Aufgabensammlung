@@ -59,104 +59,23 @@ Die *Differentiation* und die *Integration* sind wichtige Kernelemente der *Anal
 {{|>}} Seien die *Geraden* $f(x) = x$ und $f'(x) = 1$ gegeben. Anhand der Veranschaulichung im *Koordinatensystem* ist zu erkennen, dass die *Steigung* der *Geraden* $f(x)$ gleich dem Wert der *Geraden* $f'(x)$, also gleich eins, ist. Die *Steigung* der *Geraden* $f'(x)$ ist null, da es sich, wie im *Koordinatensystem* zu erkennen ist, um eine *Konstante* handelt.
 
 
+
+
 <center>
 
-@Koordinatensystem(`xmin=-0.75;xmax=4.75;ymin=-0.75;ymax=4.25;width=820;id=DIFF_E1;achsen=0;grid=0;border=0`)
+@Koordinatensystem(`xmin=-0.8;xmax=4.8;ymin=-0.8;ymax=4.2;width=680;id=DIFF01;achsen=1;grid=1;border=0;static=1`)
+@AchsenBeschriftung(`id=DIFF01;xlabel=$\Large x$;ylabel=$\Large y$`)
 
-@Flaeche(`DIFF_E1;[[-0.74;-0.74];[4.74;-0.74];[4.74;4.24];[-0.74;4.24]];#ffffff;1;inhalt=0;umfang=0`)
-
-@Strecke(`DIFF_E1;[[-0.25;-0.5];[-0.25;3.75]];#b8b8b8;;design=-;1px;linestyle=dashed`)
-@Strecke(`DIFF_E1;[[0.25;-0.5];[0.25;3.75]];#b8b8b8;;design=-;1px;linestyle=dashed`)
-@Strecke(`DIFF_E1;[[0.75;-0.5];[0.75;3.75]];#b8b8b8;;design=-;1px;linestyle=dashed`)
-@Strecke(`DIFF_E1;[[1.25;-0.5];[1.25;3.75]];#b8b8b8;;design=-;1px;linestyle=dashed`)
-@Strecke(`DIFF_E1;[[1.75;-0.5];[1.75;3.75]];#b8b8b8;;design=-;1px;linestyle=dashed`)
-@Strecke(`DIFF_E1;[[2.25;-0.5];[2.25;3.75]];#b8b8b8;;design=-;1px;linestyle=dashed`)
-@Strecke(`DIFF_E1;[[2.75;-0.5];[2.75;3.75]];#b8b8b8;;design=-;1px;linestyle=dashed`)
-@Strecke(`DIFF_E1;[[3.25;-0.5];[3.25;3.75]];#b8b8b8;;design=-;1px;linestyle=dashed`)
-@Strecke(`DIFF_E1;[[3.75;-0.5];[3.75;3.75]];#b8b8b8;;design=-;1px;linestyle=dashed`)
-
-@Strecke(`DIFF_E1;[[-0.5;-0.25];[3.75;-0.25]];#b8b8b8;;design=-;1px;linestyle=dashed`)
-@Strecke(`DIFF_E1;[[-0.5;0.25];[3.75;0.25]];#b8b8b8;;design=-;1px;linestyle=dashed`)
-@Strecke(`DIFF_E1;[[-0.5;0.75];[3.75;0.75]];#b8b8b8;;design=-;1px;linestyle=dashed`)
-@Strecke(`DIFF_E1;[[-0.5;1.25];[3.75;1.25]];#b8b8b8;;design=-;1px;linestyle=dashed`)
-@Strecke(`DIFF_E1;[[-0.5;1.75];[3.75;1.75]];#b8b8b8;;design=-;1px;linestyle=dashed`)
-@Strecke(`DIFF_E1;[[-0.5;2.25];[3.75;2.25]];#b8b8b8;;design=-;1px;linestyle=dashed`)
-@Strecke(`DIFF_E1;[[-0.5;2.75];[3.75;2.75]];#b8b8b8;;design=-;1px;linestyle=dashed`)
-@Strecke(`DIFF_E1;[[-0.5;3.25];[3.75;3.25]];#b8b8b8;;design=-;1px;linestyle=dashed`)
-@Strecke(`DIFF_E1;[[-0.5;3.75];[3.75;3.75]];#b8b8b8;;design=-;1px;linestyle=dashed`)
-
-@Strecke(`DIFF_E1;[[-0.5;-0.5];[-0.5;3.75]];#8f8f8f;;design=-;1px`)
-@Strecke(`DIFF_E1;[[0.5;-0.5];[0.5;3.75]];#8f8f8f;;design=-;1px`)
-@Strecke(`DIFF_E1;[[1;-0.5];[1;3.75]];#8f8f8f;;design=-;1px`)
-@Strecke(`DIFF_E1;[[1.5;-0.5];[1.5;3.75]];#8f8f8f;;design=-;1px`)
-@Strecke(`DIFF_E1;[[2;-0.5];[2;3.75]];#8f8f8f;;design=-;1px`)
-@Strecke(`DIFF_E1;[[2.5;-0.5];[2.5;3.75]];#8f8f8f;;design=-;1px`)
-@Strecke(`DIFF_E1;[[3;-0.5];[3;3.75]];#8f8f8f;;design=-;1px`)
-@Strecke(`DIFF_E1;[[3.5;-0.5];[3.5;3.75]];#8f8f8f;;design=-;1px`)
-
-@Strecke(`DIFF_E1;[[-0.5;-0.5];[3.75;-0.5]];#8f8f8f;;design=-;1px`)
-@Strecke(`DIFF_E1;[[-0.5;0.5];[3.75;0.5]];#8f8f8f;;design=-;1px`)
-@Strecke(`DIFF_E1;[[-0.5;1];[3.75;1]];#8f8f8f;;design=-;1px`)
-@Strecke(`DIFF_E1;[[-0.5;1.5];[3.75;1.5]];#8f8f8f;;design=-;1px`)
-@Strecke(`DIFF_E1;[[-0.5;2];[3.75;2]];#8f8f8f;;design=-;1px`)
-@Strecke(`DIFF_E1;[[-0.5;2.5];[3.75;2.5]];#8f8f8f;;design=-;1px`)
-@Strecke(`DIFF_E1;[[-0.5;3];[3.75;3]];#8f8f8f;;design=-;1px`)
-@Strecke(`DIFF_E1;[[-0.5;3.5];[3.75;3.5]];#8f8f8f;;design=-;1px`)
-
-@Strecke(`DIFF_E1;[[-0.75;0];[3.8;0]];#000000;;design=->;2px`)
-@Strecke(`DIFF_E1;[[0;-0.75];[0;3.8]];#000000;;design=->;2px`)
-
-@Strecke(`DIFF_E1;[[-0.5;-0.5];[4;4]];#ff0000;;design=-;3px`)
-@Strecke(`DIFF_E1;[[-0.5;1];[4.05;1]];#000000;;design=-;3px`)
-
-@Strecke(`DIFF_E1;[[2;2];[3;2]];#000000;;design=->;2px`)
-@Strecke(`DIFF_E1;[[3;2];[3;3]];#000000;;design=->;2px`)
-
-@Strecke(`DIFF_E1;[[-0.5;-0.05];[-0.5;0.05]];#000000;;design=-;1px`)
-@Strecke(`DIFF_E1;[[0.5;-0.05];[0.5;0.05]];#000000;;design=-;1px`)
-@Strecke(`DIFF_E1;[[1;-0.05];[1;0.05]];#000000;;design=-;1px`)
-@Strecke(`DIFF_E1;[[1.5;-0.05];[1.5;0.05]];#000000;;design=-;1px`)
-@Strecke(`DIFF_E1;[[2;-0.05];[2;0.05]];#000000;;design=-;1px`)
-@Strecke(`DIFF_E1;[[2.5;-0.05];[2.5;0.05]];#000000;;design=-;1px`)
-@Strecke(`DIFF_E1;[[3;-0.05];[3;0.05]];#000000;;design=-;1px`)
-@Strecke(`DIFF_E1;[[3.5;-0.05];[3.5;0.05]];#000000;;design=-;1px`)
-
-@Strecke(`DIFF_E1;[[-0.05;-0.5];[0.05;-0.5]];#000000;;design=-;1px`)
-@Strecke(`DIFF_E1;[[-0.05;0.5];[0.05;0.5]];#000000;;design=-;1px`)
-@Strecke(`DIFF_E1;[[-0.05;1];[0.05;1]];#000000;;design=-;1px`)
-@Strecke(`DIFF_E1;[[-0.05;1.5];[0.05;1.5]];#000000;;design=-;1px`)
-@Strecke(`DIFF_E1;[[-0.05;2];[0.05;2]];#000000;;design=-;1px`)
-@Strecke(`DIFF_E1;[[-0.05;2.5];[0.05;2.5]];#000000;;design=-;1px`)
-@Strecke(`DIFF_E1;[[-0.05;3];[0.05;3]];#000000;;design=-;1px`)
-@Strecke(`DIFF_E1;[[-0.05;3.5];[0.05;3.5]];#000000;;design=-;1px`)
-
-@KoordText(`DIFF_E1;[-0.5;-0.2];$-0{,}5$;#000000;1`)
-@KoordText(`DIFF_E1;[-0.12;-0.2];$0$;#000000;1`)
-@KoordText(`DIFF_E1;[0.5;-0.2];$0{,}5$;#000000;1`)
-@KoordText(`DIFF_E1;[1;-0.2];$1$;#000000;1`)
-@KoordText(`DIFF_E1;[1.5;-0.2];$1{,}5$;#000000;1`)
-@KoordText(`DIFF_E1;[2;-0.2];$2$;#000000;1`)
-@KoordText(`DIFF_E1;[2.5;-0.2];$2{,}5$;#000000;1`)
-@KoordText(`DIFF_E1;[3;-0.2];$3$;#000000;1`)
-@KoordText(`DIFF_E1;[3.5;-0.2];$3{,}5$;#000000;1`)
-
-@KoordText(`DIFF_E1;[-0.22;-0.5];$-0{,}5$;#000000;1`)
-@KoordText(`DIFF_E1;[-0.18;0.5];$0{,}5$;#000000;1`)
-@KoordText(`DIFF_E1;[-0.14;1];$1$;#000000;1`)
-@KoordText(`DIFF_E1;[-0.18;1.5];$1{,}5$;#000000;1`)
-@KoordText(`DIFF_E1;[-0.14;2];$2$;#000000;1`)
-@KoordText(`DIFF_E1;[-0.18;2.5];$2{,}5$;#000000;1`)
-@KoordText(`DIFF_E1;[-0.14;3];$3$;#000000;1`)
-@KoordText(`DIFF_E1;[-0.18;3.5];$3{,}5$;#000000;1`)
-
-@KoordText(`DIFF_E1;[3.93;-0.02];$x$;#000000;1`)
-@KoordText(`DIFF_E1;[0;3.95];$y$;#000000;1`)
-@KoordText(`DIFF_E1;[4.34;4.03];$f(x)=x$;#ff0000;1`)
-@KoordText(`DIFF_E1;[4.35;1];$f^{\prime}(x)=1$;#000000;1`)
-@KoordText(`DIFF_E1;[2.5;1.84];$1$;#000000;1`)
-@KoordText(`DIFF_E1;[3.14;2.5];$m$;#000000;1`)
+@PlotFunktion(`DIFF01;f=0;x;color-mix(in srgb, rgb(var(--color-text,51,51,51)) 55%, #ff2020);linestyle=solid`)
+@PlotFunktion(`DIFF01;df=0;1;rgb(var(--color-text,51,51,51));linestyle=solid`)
+@Strecke(`DIFF01;[[2;2];[3;2];[3;3]];rgb(var(--color-text,51,51,51));;-;2px`)
+@KoordText(`DIFF01;[2.5;1.72];$\Large \Delta x=1$;rgb(var(--color-text,51,51,51));1`)
+@KoordText(`DIFF01;[3.6;2.45];$\Large \Delta y=m$;rgb(var(--color-text,51,51,51));1`)
+@KoordText(`DIFF01;[2.25;3.5];$\Large f(x)=x$;color-mix(in srgb, rgb(var(--color-text,51,51,51)) 55%, #ff2020);1`)
+@KoordText(`DIFF01;[3.8;0.65];$\Large f'(x)=1$;rgb(var(--color-text,51,51,51));1`)
 
 </center>
+
 
 
 {{|>}} Dabei ist der Begriff „*Steigung*“ folgendermaßen *definiert*: „Wenn man von der *Geraden* aus einen Einheitsschritt nach rechts geht, entspricht die *Steigung* der *Geraden* der Anzahl der Einheitsschritte *orthogonal* zum gegangenen Schritt – folglich nach oben bei positiver *Steigung* und nach unten bei negativer *Steigung*.“
