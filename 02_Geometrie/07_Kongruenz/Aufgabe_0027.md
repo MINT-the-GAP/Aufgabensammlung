@@ -42,7 +42,14 @@ Für ein Dreieck $ABC$ seien die drei Winkel $\alpha=60^\circ$, $\beta=60^\circ$
 
 **Begründe**, warum diese drei Winkel für die eindeutige Konstruktion des Dreiecks nicht ausreichen und WWW deshalb kein Kongruenzsatz ist.
 
-<!-- data-solution-button="off" data-llm-textarea="6" -->
+<!--
+data-solution-timer="5s"
+data-solution-timer-start="oncheck"
+data-solution-timer-badge="off"
+data-solution-button="5"
+data-hint-button="3"
+data-llm-textarea="6"
+-->
 [[Antwort]]
 [[?]] @Explain
 ```text @LLMQuiz(0.55;coverage=0.55;solution=1;feedback=1;assessmentengine=quality;Rechtschreibung=1;Satzbau=1,`Für ein Dreieck $ABC$ sind die Winkel $\alpha=60^\circ$, $\beta=60^\circ$ und $\gamma=60^\circ$ gegeben. Begründe, warum diese drei Winkel für die eindeutige Konstruktion des Dreiecks nicht ausreichen und WWW deshalb kein Kongruenzsatz ist.`)

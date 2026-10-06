@@ -44,7 +44,14 @@ Gegeben sei ein Dreieck $ABC$ mit der Seitenlänge $c=6\,\mathrm{cm}$ sowie den 
 
 **Beschreibe** schrittweise, wie das gegebene Dreieck mit Zirkel und Lineal konstruiert wird.
 
-<!-- data-solution-button="off" data-llm-textarea="6" -->
+<!--
+data-solution-timer="5s"
+data-solution-timer-start="oncheck"
+data-solution-timer-badge="off"
+data-solution-button="5"
+data-hint-button="3"
+data-llm-textarea="6"
+-->
 [[Antwort]]
 [[?]] @Explain
 ```text @LLMQuiz(0.55;coverage=0.55;solution=1;feedback=1;assessmentengine=quality;Rechtschreibung=1;Satzbau=1,`Gegeben sei ein Dreieck $ABC$ mit der Seitenlänge $c=6\,\mathrm{cm}$ sowie den Winkeln $\alpha=45^\circ$ und $\beta=60^\circ$. Beschreibe schrittweise, wie das Dreieck mit dem Kongruenzsatz WSW mit Zirkel und Lineal konstruiert wird.`)
