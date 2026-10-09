@@ -38,7 +38,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README
 
 
 
-tags: Koordinatensystem, Brüche, Dezimalzahlen, Stelle, Punkt, leicht, normal, Zeichnen
+tags: Koordinatensystem, Bruchrechnung, Dezimalzahlen, Stelle, Punkt, leicht, normal, Zeichnen
 
 comment: Punkte im Koordinatensystem von -1 bis 6 mit Brüchen und Dezimalzahlen zwischen 0 und 5 einzeichnen.
 

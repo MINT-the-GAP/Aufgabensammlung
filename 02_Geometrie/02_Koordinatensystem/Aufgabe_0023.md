@@ -38,7 +38,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README
 
 
 
-tags: Koordinatensystem, Brüche, Stelle, Punkt, sehr leicht, niedrig, Zeichnen
+tags: Koordinatensystem, Bruchrechnung, Stelle, Punkt, sehr leicht, niedrig, Zeichnen
 
 comment: Stellen und Punkte im Koordinatensystem mit Brüchen zwischen 0 und 5 auslesen.
 

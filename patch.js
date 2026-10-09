@@ -24,6 +24,15 @@ const SECTION_META_STYLE_END = '<!-- SCHULLIA_SECTION_META_STYLE_END -->'
 const SECTION_META_SCRIPT_START = '<!-- SCHULLIA_SECTION_META_SCRIPT_START -->'
 const SECTION_META_SCRIPT_END = '<!-- SCHULLIA_SECTION_META_SCRIPT_END -->'
 
+// Shared aliases for generated card metadata, filters and course headers.
+const THEME_TAG_ALIASES = {
+  dreieck: 'dreiecke',
+  dreiecke: 'dreiecke',
+  bruche: 'bruchrechnung',
+  brueche: 'bruchrechnung',
+  bruchrechnung: 'bruchrechnung',
+}
+
 const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
 <script>
   (function () {
@@ -35,8 +44,7 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
     }
 
     function normalizeThemeText(value) {
-      const normalized = normalizeText(value)
-      return normalized === 'dreieck' ? 'dreiecke' : normalized
+      return normalizeText(canonicalThemeTag(value))
     }
 
     var SCHULLIA_SACHSEN = /* SCHULLIA_SACHSEN_LB_START */{"themes":{"oberschule":{"5":{"1":["addition","assoziativgesetz","differenz","distributivgesetz","division","ggt","gleichung","grundrechenarten","kgv","kommutativgesetz","multiplikation","potenzen","quersumme","runden","subtraktion","teilbarkeiten","teilermengen","überschlagen","ungleichungen","variable","vielfachmengen","vorrangsregeln","wurzeln","zahlenstrahl","zahlenverständnis"],"2":["arithmetische mittelwert","arithmetisches mittel","bruchrechnung","dezimalzahlen","durchschnitt","einheiten","länge","masse","periodizität","prozent","sachaufgabe","zeit"],"3":["fläche","koordinatensystem","lagebeziehung","punkt","rechteck","umfang","volumen","winkel"],"extra":["zahlensysteme","häufigkeit","kombinatorik","tabelle"]},"6":{"1":["kehrwert","mengen","verhältnisse"],"2":["antiproportional","beliebige zuordnung","proportional","zuordnung"],"3":["dreieck","dreiecke","eindeutigkeit","vierecke","winkelbeziehungen"],"4":["quader"],"5":["chance","wahrscheinlichkeit"]},"7HS":{"2":["prozentrechnung"],"3":["algebra","betrag","negative zahlen","term","terme"]},"8HS":{"2":["äquivalenzumformung"]},"9HS":{"1":["trigonometrie"],"3":["lineare funktionen"],"extra":["median","spannweite"]},"7RS":{"1":["prozentrechnung"],"2":["wahrscheinlichkeit"],"3":["algebra","äquivalenzumformung","betrag","negative zahlen","terme"]},"8RS":{"2":["additionsverfahren","definitionsbereich","einsetzungsverfahren","gleichungssysteme","lineare funktionen","parameter","stelle","wertebereich"],"5":["baumdiagramm","fakultät"]},"9RS":{"1":["trigonometrie"],"3":["quadratische ergänzung","quadratische funktionen","scheitelpunktsform","verhalten"],"4":["median","spannweite"]},"10RS":{"3":["erwartungswert"]}},"bgy":{"11":{"1":["bedingte wahrscheinlichkeit","kontingenztafel","kontingenztafeln","unbedingte wahrscheinlichkeit","vereinigung","vierfeldertafel","vierfeldertafeln"],"3":["logarithmen","logarithmus"]},"12GK":{"1":["binomialkoeffizient","binomialverteilung","standardabweichung"],"2":["ableitungen","grafisches ableiten","grenzwerte"],"5":["skalarprodukt","vektoren"],"6":["abstand"],"extra":["vektorprodukt"]},"12LK":{}},"gymnasium":{"5":{"1":["addition","assoziativgesetz","differenz","distributivgesetz","division","folgen","ggt","gleichung","grundrechenarten","kgv","kommutativgesetz","multiplikation","potenzen","quersumme","runden","sachaufgabe","subtraktion","teilbarkeiten","teilermengen","terme","überschlagen","vielfachmengen","vorrangsregeln","zahlenstrahl","zahlenverständnis"],"2":["arithmetisches mittel","dezimalzahlen","durchschnitt","periodizität","prozent"],"3":["koordinatensystem","lagebeziehung","punkt","winkel","winkelbeziehungen"],"4":["fläche","quader","rechteck","umfang","volumen"],"5":["einheiten","länge","masse","zeit"],"extra":["zahlensysteme"]},"6":{"1":["bruchrechnung","kehrwert","mengen","variable"],"2":["antiproportional","beliebige zuordnung","chance","eindeutigkeit","häufigkeit","proportional","tabelle","verhältnisse","zuordnung"],"3":["dreieck","dreiecke","vierecke"]},"7":{"2":["algebra","äquivalenzumformung","betrag","negative zahlen","prozentrechnung","wurzeln"]},"8":{"1":["terme","ungleichungen"],"2":["baumdiagramm","kombinatorik","median","spannweite","unbedingte wahrscheinlichkeit","vereinigung","wahrscheinlichkeit"],"3":["additionsverfahren","definitionsbereich","einsetzungsverfahren","gleichungssysteme","lineare funktionen","parameter","stelle","verhalten","wertebereich"]},"9":{"1":["quadratische ergänzung","quadratische funktionen","scheitelpunktsform"],"3":["trigonometrie"],"4":["standardabweichung"]},"10":{"2":["erwartungswert"],"4":["grenzwerte","infimum","logarithmen","logarithmus","supremum"]},"11GK":{"1":["ableitungen","grafisches ableiten","signum"],"3":["vektoren"],"4":["bedingte wahrscheinlichkeit","binomialkoeffizient","binomialverteilung","fakultät","hypergeometrische verteilung","kontingenztafel","kontingenztafeln","vierfeldertafel"],"7":["abstand","skalarprodukt","vektorprodukt"]},"11LK":{"1":["ableitungen","grafisches ableiten","signum"],"3":["vektoren"],"4":["bedingte wahrscheinlichkeit","binomialkoeffizient","binomialverteilung","fakultät","hypergeometrische verteilung","kontingenztafel","kontingenztafeln","vierfeldertafel"],"8":["abstand","skalarprodukt","vektorprodukt"]}}},"lbCount":{"oberschule":{"5":4,"6":5,"7HS":4,"8HS":5,"9HS":4,"7RS":4,"8RS":6,"9RS":4,"10RS":4},"bgy":{"11":4,"12GK":6,"12LK":7},"gymnasium":{"5":5,"6":5,"7":4,"8":5,"9":5,"10":5,"11GK":8,"11LK":9}},"lbTitles":{"oberschule":{"5":{"1":"Natürliche Zahlen","2":"Gemeine Brüche, Dezimalzahlen und Größen","3":"Geometrische Grundformen","4":"Symmetrie und deckungsgleiche Figuren"},"6":{"1":"Gebrochene Zahlen","2":"Zuordnungen in der Umwelt","3":"Geometrie in der Ebene","4":"Geometrische Körper","5":"Mathematik im Alltag"},"7HS":{"1":"Zusammengesetzte Flächen und Körper","2":"Anteile und Prozente","3":"Rationale Zahlen","4":"Vielecke und Prismen"},"8HS":{"1":"Wirtschaftliches Rechnen","2":"Formeln und Gleichungen","3":"Vom Vieleck zum Kreis","4":"Kreiszylinder und Hohlzylinder","5":"Mathematik im Alltag"},"9HS":{"1":"Rechtwinklige Dreiecke","2":"Körperdarstellung und Körperberechnung","3":"Funktionale Zusammenhänge","4":"Mathematik im Alltag"},"7RS":{"1":"Prozent- und Zinsrechnung","2":"Elemente der Stochastik","3":"Rationale Zahlen und Gleichungen","4":"Vielecke und Prismen"},"8RS":{"1":"Lineare Gleichungen","2":"Lineare Funktionen und Gleichungssysteme","3":"Kreis und Kreiszylinder","4":"Ähnlichkeit","5":"Zufällige Ereignisse","6":"Mathematik im Alltag"},"9RS":{"1":"Rechtwinklige Dreiecke","2":"Pyramiden, Kreiskegel, Kugel","3":"Quadratische Funktionen und quadratische Gleichungen","4":"Beschreibende Statistik"},"10RS":{"1":"Dreiecke und Vierecke","2":"Funktionale Zusammenhänge","3":"Zufallsgrößen","4":"Mathematik im Alltag"}},"bgy":{"11":{"1":"Ermitteln von Wahrscheinlichkeiten bei mehrstufigen Zufallsversuchen","2":"Beschreiben und Lösen inner- und außermathematischer Probleme","3":"Funktionale Zusammenhänge","4":"Lineare Gleichungssysteme und Matrizen"},"12GK":{"1":"Diskrete Zufallsgrößen","2":"Differenzialrechnung","3":"Integralrechnung","4":"Beurteilende Statistik","5":"Vektorgeometrie","6":"Weitere Anwendungen"},"12LK":{"1":"Diskrete Zufallsgrößen","2":"Differenzialrechnung","3":"Integralrechnung","4":"Normalverteilte Zufallsgrößen","5":"Beurteilende Statistik","6":"Vektorgeometrie","7":"Weitere Anwendungen"}},"gymnasium":{"5":{"1":"Arbeiten mit natürlichen Zahlen","2":"Gemeine Brüche und Dezimalzahlen","3":"Lagebeziehungen geometrischer Objekte","4":"Rechtecke und Quader","5":"Vernetzung: Mathematik im Alltag"},"6":{"1":"Arbeiten mit gebrochenen Zahlen","2":"Zuordnungen in der Umwelt","3":"Dreiecke und Vierecke","4":"Prismen","5":"Vernetzung: Anteile"},"7":{"1":"Geometrie in der Ebene","2":"Arbeiten mit rationalen Zahlen","3":"Darstellen und Berechnen von Prismen und Pyramiden","4":"Vernetzung: Darstellen von Daten"},"8":{"1":"Arbeiten mit Termen und Gleichungen","2":"Zufallsversuche","3":"Funktionen und lineare Gleichungssysteme","4":"Ähnlichkeit","5":"Vernetzung: Heuristische Strategien"},"9":{"1":"Funktionen und Potenzen","2":"Kreise, Kreiszylinder und Kugeln","3":"Rechtwinklige Dreiecke","4":"Auswerten von Daten","5":"Vernetzung: Mathematik und moderne Rechentechnik"},"10":{"1":"Wachstumsvorgänge und periodische Vorgänge","2":"Diskrete Zufallsgrößen","3":"Algebraisches Lösen geometrischer Probleme","4":"Funktionale Zusammenhänge","5":"Vernetzung: Zinsrechnung"},"11GK":{"1":"Differentialrechnung","2":"Matrizen","3":"Vektoren, Geraden und Ebenen","4":"Binomialverteilte Zufallsgrößen","5":"Integralrechnung","6":"Beurteilende Statistik","7":"Abstände und Winkel","8":"Weitere Anwendungen"},"11LK":{"1":"Differentialrechnung","2":"Matrizen","3":"Vektoren, Geraden und Ebenen","4":"Binomialverteilte Zufallsgrößen","5":"Integralrechnung","6":"Normalverteilte Zufallsgrößen","7":"Beurteilende Statistik","8":"Abstände und Winkel","9":"Weitere Anwendungen"}}}}/* SCHULLIA_SACHSEN_LB_END */;
@@ -217,16 +225,23 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
 
       const seen = new Set()
       const options = []
+      const taskThemes = new Set()
+      getCourseTaskCards().forEach(function (card) {
+        String(card.dataset.category || '').split('|').forEach(function (category) {
+          taskThemes.add(normalizeThemeText(category))
+        })
+      })
 
       Array.from(sourceSelect.options).forEach(function (opt) {
         const value = String(opt.value || '').trim()
         const text = String(opt.textContent || '').trim()
-        const key = normalizeTag(value || text)
+        const key = normalizeThemeTagKey(value || text)
 
         if (!value) return
         if (!key || key === 'alle themen') return
                 if (key === 'erklaerung' || key === 'erklaerungen') return
         if (isOperatorTag(value || text)) return
+        if (!taskThemes.has(normalizeThemeText(value))) return
         if (seen.has(key)) return
 
         seen.add(key)
@@ -446,6 +461,27 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
             closeCustomMenu('courseBlockedThemeToggle', 'courseBlockedThemeMenu')
         }
 
+        function getCourseTaskCards() {
+            return Array.from(document.querySelectorAll('.card.shadow-sm[data-category]')).filter(function (card) {
+                const categories = String(card.dataset.category || '').split('|').map(normalizeTag)
+                if (categories.some(function (category) {
+                    return category === 'erklaerung' || category === 'erklaerungen'
+                })) return false
+
+                const section = card.parentElement && card.parentElement.closest('.card')
+                if (section && section.querySelector('.card-header #erklaerungen, .card-header #aufgabensets')) return false
+
+                const rawUrl = extractRawTaskUrl(card)
+                if (!rawUrl) return false
+                try {
+                    const pathname = normalizeTag(decodeURIComponent(new URL(rawUrl).pathname))
+                    return !/\/erklaerungen?\//.test(pathname)
+                } catch (error) {
+                    return false
+                }
+            })
+        }
+
         function getCandidateCardsForThemes(themeValues, blockedThemeValues) {
             const normalizedThemes = new Set(
                 (Array.isArray(themeValues) ? themeValues : [themeValues])
@@ -466,7 +502,7 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
 
             const requiredThemes = Array.from(normalizedThemes)
 
-            return Array.from(document.querySelectorAll('.card.shadow-sm[data-category]')).filter(function (card) {
+            return getCourseTaskCards().filter(function (card) {
                 const categories = String(card.dataset.category || '')
                     .split('|')
                     .map(function (entry) {
@@ -502,7 +538,7 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
                 .map(function (entry) { return normalizeThemeText(entry) })
                 .filter(Boolean)
 
-            return Array.from(document.querySelectorAll('.card.shadow-sm[data-category]')).filter(function (card) {
+            return getCourseTaskCards().filter(function (card) {
                 const categories = String(card.dataset.category || '')
                     .split('|')
                     .map(function (entry) { return normalizeThemeText(entry) })
@@ -1180,10 +1216,10 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
 
           if (key === 'tags') {
             splitDashList(value).forEach(function (entry) {
-              const normalized = normalizeText(entry)
+              const normalized = normalizeThemeText(entry)
               if (!normalized || tagsSeen.has(normalized)) return
               tagsSeen.add(normalized)
-              tags.push(entry)
+              tags.push(normalized === 'bruchrechnung' ? 'Bruchrechnung' : canonicalThemeTag(entry))
             })
             return
           }
@@ -3435,7 +3471,7 @@ function normalizeBuildTag(value) {
 
 function canonicalBuildTheme(value) {
   const trimmed = String(value || '').trim()
-  return normalizeBuildTag(trimmed) === 'dreieck' ? 'dreiecke' : trimmed
+  return THEME_TAG_ALIASES[normalizeBuildTag(trimmed)] || trimmed
 }
 
 function canonicalizeCardCategoryAttributes(html) {
@@ -3444,7 +3480,7 @@ function canonicalizeCardCategoryAttributes(html) {
       .split('|')
       .map(canonicalBuildTheme)
       .filter(Boolean)
-    return 'data-category=' + quote + categories.join('|') + quote
+    return 'data-category=' + quote + Array.from(new Set(categories)).join('|') + quote
   })
 }
 
@@ -3494,13 +3530,13 @@ function rebuildCategorySelectFromCards(html) {
 
 function enhanceOperatorDropdownScript(script) {
   const categorySyncFunction = `            function normalizeThemeTagKey(value) {
-                const key = normalizeTag(value)
-                return key === 'dreieck' ? 'dreiecke' : key
+                return normalizeTag(canonicalThemeTag(value))
             }
 
             function canonicalThemeTag(value) {
                 const trimmed = String(value || '').trim()
-                return normalizeThemeTagKey(trimmed) === 'dreiecke' ? 'dreiecke' : trimmed
+                const aliases = ${JSON.stringify(THEME_TAG_ALIASES)}
+                return aliases[normalizeTag(trimmed)] || trimmed
             }
 
             function syncCategoryDropdownFromCards() {
@@ -3514,7 +3550,10 @@ function enhanceOperatorDropdownScript(script) {
                         .map(canonicalThemeTag)
                         .filter(Boolean)
 
-                    card.dataset.category = canonicalCategories.join('|')
+                    card.dataset.category = Array.from(new Set(canonicalCategories)).join('|')
+                    card.querySelectorAll('.badge').forEach(function (badge) {
+                        if (normalizeTag(badge.textContent) === 'brueche') badge.textContent = 'Bruchrechnung'
+                    })
                     canonicalCategories.forEach(function (value) {
                         const key = normalizeThemeTagKey(value)
                         if (key && !collected.has(key)) collected.set(key, value)
@@ -3542,7 +3581,7 @@ function enhanceOperatorDropdownScript(script) {
 
 `
 
-  const existingSyncPattern = /[ \t]*function (?:enrich|sync)CategoryDropdownFromCards\(\) \{[\s\S]*?\n[ \t]*\}\r?\n\r?\n(?=[ \t]*function setupOperatorDropdown\(\))/
+  const existingSyncPattern = /(?:[ \t]*function (?:normalizeThemeTagKey|canonicalThemeTag)\(value\) \{[\s\S]*?\n[ \t]*\}\r?\n\r?\n)*[ \t]*function (?:enrich|sync)CategoryDropdownFromCards\(\) \{[\s\S]*?\n[ \t]*\}\r?\n\r?\n(?=[ \t]*function setupOperatorDropdown\(\))/
   if (existingSyncPattern.test(script)) {
     script = script.replace(existingSyncPattern, categorySyncFunction)
   } else {
@@ -3731,7 +3770,7 @@ function patchIndexHtml(html, targetParts) {
   )
 
   // The generated cards are authoritative. This removes stale template options
-  // and canonicalizes the former singular spelling 'dreieck' to 'dreiecke'.
+  // and maps synonymous topic spellings to the same filter value.
   html = canonicalizeCardCategoryAttributes(html)
   html = rebuildCategorySelectFromCards(html)
 

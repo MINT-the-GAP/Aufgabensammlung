@@ -38,7 +38,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README
 
 
 
-tags: Koordinatensystem, negative Zahlen, Brüche, Stelle, Punkt, leicht, normal, Zeichnen
+tags: Koordinatensystem, negative Zahlen, Bruchrechnung, Stelle, Punkt, leicht, normal, Zeichnen
 
 comment: Punkte im Koordinatensystem von -6 bis 6 mit negativen Brüchen zwischen -5 und 5 anordnen.
 

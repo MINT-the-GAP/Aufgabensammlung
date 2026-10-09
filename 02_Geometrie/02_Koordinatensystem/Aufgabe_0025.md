@@ -38,7 +38,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README
 
 
 
-tags: Koordinatensystem, Brüche, Stelle, Punkt, leicht, niedrig, Zeichnen
+tags: Koordinatensystem, Bruchrechnung, Stelle, Punkt, leicht, niedrig, Zeichnen
 
 comment: Stellen und Punkte im Koordinatensystem mit Dritteln, Vierteln, Fünfteln, Zehnteln und Achteln einzeichnen.
 
