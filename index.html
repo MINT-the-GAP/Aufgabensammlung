@@ -3,6 +3,7 @@
 
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>SchulLia</title>
         <script type="application/ld+json">
             {
@@ -24739,6 +24740,30 @@
     filter: brightness(1.05);
   }
 
+  .schullia-course-transfer-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  #courseGeneratorManualOpen a.schullia-course-submit-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #ffffff;
+  }
+
+  #courseGeneratorSourceDetails {
+    margin-top: 1rem;
+  }
+
+  .schullia-course-source {
+    width: 100%;
+    margin-top: 0.5rem;
+    font-family: monospace;
+    resize: vertical;
+  }
+
   .schullia-course-conditional {
     display: none;
     gap: 0.4rem;
@@ -26209,10 +26234,19 @@
       return mergedHeader + mergedBody
     }
 
+    const LIVE_EDITOR_EMPTY_URL = 'https://liascript.github.io/LiveEditor/?/edit'
+    // Stay below the server's request-URL limit, including encoding overhead.
+    const LIVE_EDITOR_MAX_URL_LENGTH = 6000
+    let courseDownloadUrl = null
+
     async function copyTextToClipboard(text) {
       if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
-        await navigator.clipboard.writeText(text)
-        return
+        try {
+          await navigator.clipboard.writeText(text)
+          return
+        } catch (error) {
+          // Some browsers deny Clipboard API access but still allow selection copying.
+        }
       }
 
       const helper = document.createElement('textarea')
@@ -26225,8 +26259,12 @@
       helper.focus()
       helper.select()
 
-      const ok = document.execCommand('copy')
-      document.body.removeChild(helper)
+      let ok = false
+      try {
+        ok = document.execCommand('copy')
+      } finally {
+        document.body.removeChild(helper)
+      }
 
       if (!ok) {
         throw new Error('Zwischenablage konnte nicht beschrieben werden.')
@@ -26258,7 +26296,8 @@
     async function buildLiveEditorShowCodeUrl(content) {
       const zipCode = await gzipToBase64(content)
       const route = '/show/code/' + zipCode
-      return 'https://liascript.github.io/LiveEditor/?' + encodeURIComponent(route)
+      const url = 'https://liascript.github.io/LiveEditor/?' + encodeURIComponent(route)
+      return url.length <= LIVE_EDITOR_MAX_URL_LENGTH ? url : null
     }
 
     function setManualOpenFallback(url, message) {
@@ -26272,20 +26311,83 @@
     }
 
     function clearManualOpenFallback() {
+      if (courseDownloadUrl) {
+        URL.revokeObjectURL(courseDownloadUrl)
+        courseDownloadUrl = null
+      }
       const holder = document.getElementById('courseGeneratorManualOpen')
       if (!holder) return
       holder.style.display = 'none'
       holder.innerHTML = ''
     }
 
+    function setCourseSourceFallback(content) {
+      clearManualOpenFallback()
+      const holder = document.getElementById('courseGeneratorManualOpen')
+      if (!holder) return
+
+      holder.style.display = 'block'
+      holder.innerHTML =
+        '<p>Dein Kurs ist fertig. Übertrage ihn in drei Schritten:</p>' +
+        '<div class="schullia-course-transfer-actions">' +
+        '<button type="button" id="courseGeneratorCopy" class="schullia-course-submit-btn">1. Kurstext kopieren</button>' +
+        '<a id="courseGeneratorEditor" class="schullia-course-submit-btn" target="_blank" rel="noopener">2. LiveEditor öffnen</a>' +
+        '</div>' +
+        '<p>3. Ersetze im LiveEditor den vorhandenen Quelltext durch den kopierten Kurs. Tastatur: Strg+A, dann Strg+V (Mac: Cmd+A, Cmd+V). Smartphone/Tablet: Text gedrückt halten, „Alles auswählen“, dann „Einfügen“.</p>' +
+        '<p id="courseGeneratorCopyStatus" role="status" aria-live="polite"></p>' +
+        '<a id="courseGeneratorDownload" class="schullia-course-submit-btn" download="SchulLia-Kurs.md">Markdown herunterladen</a>' +
+        '<details id="courseGeneratorSourceDetails"><summary>Kurstext anzeigen / manuell kopieren</summary>' +
+        '<textarea id="courseGeneratorSource" class="form-control schullia-course-source" aria-label="Erzeugter Kurstext" readonly spellcheck="false" rows="8"></textarea>' +
+        '</details>'
+
+      const source = document.getElementById('courseGeneratorSource')
+      const sourceDetails = document.getElementById('courseGeneratorSourceDetails')
+      const editorLink = document.getElementById('courseGeneratorEditor')
+      source.value = content
+      editorLink.href = LIVE_EDITOR_EMPTY_URL
+      courseDownloadUrl = URL.createObjectURL(new Blob([content], { type: 'text/markdown;charset=utf-8' }))
+      document.getElementById('courseGeneratorDownload').href = courseDownloadUrl
+
+      const copyButton = document.getElementById('courseGeneratorCopy')
+      const status = document.getElementById('courseGeneratorCopyStatus')
+      copyButton.addEventListener('click', async function () {
+        copyButton.disabled = true
+        try {
+          await copyTextToClipboard(content)
+          status.textContent = 'Kurstext kopiert. Öffne jetzt den LiveEditor und füge ihn dort ein.'
+          editorLink.focus()
+        } catch (error) {
+          status.textContent = 'Automatisches Kopieren ist gesperrt. Kopiere den markierten Text über das Auswahlmenü oder mit Strg+C (Mac: Cmd+C). Alternativ kannst du die Markdown-Datei herunterladen.'
+          sourceDetails.open = true
+          source.focus()
+          source.select()
+        } finally {
+          copyButton.disabled = false
+        }
+      })
+
+      copyButton.focus()
+    }
+
     async function openLiveEditorWithCourseSource(content, popup) {
+      let targetUrl = null
       try {
-        const targetUrl = await buildLiveEditorShowCodeUrl(content)
-        popup.location.href = targetUrl
+        targetUrl = await buildLiveEditorShowCodeUrl(content)
       } catch (error) {
-        await copyTextToClipboard(content)
-        window.alert('Der LiveEditor wurde in einem neuen Tab geöffnet. Der Kursinhalt ist in der Zwischenablage. Bitte im Editor Strg+V drücken.')
+        // Browsers without gzip support use the same lossless text handoff.
       }
+
+      if (targetUrl) {
+        if (popup && !popup.closed) {
+          popup.location.href = targetUrl
+          return true
+        }
+        setManualOpenFallback(targetUrl, 'Dein Kurs ist fertig. Bitte hier öffnen:')
+      } else {
+        if (popup && !popup.closed) popup.close()
+        setCourseSourceFallback(content)
+      }
+      return false
     }
 
     function closeCourseGeneratorOverlay() {
@@ -26680,8 +26782,8 @@
           submitButton.textContent = 'Kurs wird erzeugt...'
           clearManualOpenFallback()
 
-          const popup = window.open('https://liascript.github.io/LiveEditor/?/edit', '_blank')
-          const popupBlocked = !popup
+          // Reserve a tab during the click; choose the handoff after generating the course.
+          const popup = window.open('about:blank', '_blank')
 
           try {
             const courseSource = await buildCourseSource(
@@ -26692,16 +26794,8 @@
               curriculumAllowed
             )
 
-            if (popupBlocked) {
-              try {
-                const targetUrl = await buildLiveEditorShowCodeUrl(courseSource)
-                setManualOpenFallback(targetUrl, 'Auto-Tab wurde blockiert. Bitte hier klicken:')
-              } catch (error) {
-                await copyTextToClipboard(courseSource)
-                setManualOpenFallback('https://liascript.github.io/LiveEditor/?/edit', 'Auto-Tab wurde blockiert. LiveEditor öffnen und Inhalt mit Strg+V einfügen:')
-              }
-            } else {
-              await openLiveEditorWithCourseSource(courseSource, popup)
+            const opened = await openLiveEditorWithCourseSource(courseSource, popup)
+            if (opened) {
               closeCourseGeneratorOverlay()
             }
           } catch (error) {

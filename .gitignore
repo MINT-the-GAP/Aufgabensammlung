@@ -1,5 +1,5 @@
-# Optionale lokale Inhaltspruefungen; nicht fuer den Website-Build erforderlich.
-/scripts/test-*.cjs
+# Lokale Skripte und Tests.
+/scripts/
 
-# Diese bestehende Pruefung wird vom Push-Workflow benoetigt.
-!/scripts/test-template-macros.cjs
+# Lokale Browser-Pruefberichte und Screenshots.
+/test-results/
