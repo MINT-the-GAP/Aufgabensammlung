@@ -1,0 +1,163 @@
+const assert = require('node:assert/strict')
+const fs = require('node:fs')
+const path = require('node:path')
+const vm = require('node:vm')
+const { webcrypto } = require('node:crypto')
+const assembler = require('../assets/course-source.js')
+
+const code = fs.readFileSync(path.join(__dirname, '../assets/course-player.js'), 'utf8')
+const origin = 'https://school.example'
+const sourceUrl = 'https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/11_Logarithmen/Aufgabe_0001.md'
+const markdown = '<!--\nlanguage: de\nversion: 1.0.0\nedit: true\n-->\n\n# Brüche äöü 🧮\n\n[[ 3 ]]'
+const manifest = { v: 1, urls: [sourceUrl], group: 'einsteiger', themes: ['Brüche 🧮'] }
+const hash = value => '#course=' + encodeURIComponent(JSON.stringify(value))
+const settle = () => new Promise(resolve => setImmediate(resolve))
+
+function harness(options = {}) {
+  const handlers = new Map()
+  const timers = new Map()
+  const posts = []
+  const requests = []
+  const elements = new Map()
+  let nextTimer = 0
+  for (const id of ['courseFrame', 'courseLoading', 'courseHeading', 'courseStatus', 'courseRetry']) {
+    const classes = new Set()
+    elements.set(id, {
+      hidden: false, textContent: '', src: '',
+      classList: { add: name => classes.add(name), remove: name => classes.delete(name), contains: name => classes.has(name) },
+      addEventListener(name, callback) { this[name] = callback }
+    })
+  }
+  const frame = elements.get('courseFrame')
+  frame.contentWindow = { postMessage: (data, target) => posts.push({ data, target }) }
+  const location = { hash: options.hash === undefined ? hash(manifest) : options.hash }
+  location.href = origin + '/Aufgabensammlung/course.html' + location.hash
+  const window = {
+    location,
+    document: { title: '', getElementById: id => elements.get(id) },
+    SchulLiaCourseSource: options.missingAssembler ? undefined : assembler,
+    async fetch(url, request) {
+      requests.push({ url, signal: request.signal })
+      return options.fetch ? options.fetch(url, request) : { ok: true, text: async () => markdown }
+    },
+    addEventListener(name, callback) {
+      if (!handlers.has(name)) handlers.set(name, [])
+      handlers.get(name).push(callback)
+    }
+  }
+  const context = vm.createContext({
+    window, URL, URLSearchParams, AbortController, TextEncoder,
+    setTimeout(callback, delay) { const id = ++nextTimer; timers.set(id, { callback, delay }); return id },
+    clearTimeout(id) { timers.delete(id) }
+  })
+  vm.runInContext(code, context, { filename: 'assets/course-player.js' })
+  const dispatch = (name, event = {}) => (handlers.get(name) || []).forEach(callback => callback(event))
+  const uri = () => new URL(frame.src).search.slice(1)
+  const message = (data, overrides = {}) => dispatch('message', { origin, source: frame.contentWindow, data, ...overrides })
+  return { window, elements, frame, timers, requests, posts, dispatch, uri, message, api: window.SchulLiaCoursePlayer }
+}
+
+async function main() {
+  const h = harness()
+  await settle()
+  assert.equal(h.requests.length, 1)
+  assert.equal(h.requests[0].url, sourceUrl)
+  assert.ok(h.frame.src.startsWith(origin + '/Aufgabensammlung/course-frame.html?parent:schullia-'), 'Unterpfad und gleicher Ursprung bleiben erhalten')
+  assert.equal(h.frame.hidden, true, 'Kurs erst nach passendem Handshake zeigen')
+  assert.deepEqual(Array.from(h.api.readManifest().themes), manifest.themes, 'UTF-8 im Kurslink bleibt erhalten')
+  const data = { cmd: 'lia-course', param: { uri: h.uri() } }
+  h.message(data, { origin: 'https://other.example' })
+  h.message(data, { source: { postMessage() { throw new Error('Falsches Fenster') } } })
+  h.message({ cmd: 'lia-course', param: { uri: 'parent:other' } })
+  assert.equal(h.posts.length, 0, 'Nur der eigene Kursframe darf die Kursquelle abrufen')
+  h.message(data)
+  assert.equal(h.posts.length, 1)
+  assert.equal(h.posts[0].target, origin)
+  assert.match(h.posts[0].data.param.body, /edit: false/)
+  assert.ok(h.posts[0].data.param.body.includes('Brüche äöü 🧮'))
+  assert.equal(h.frame.hidden, false)
+  assert.equal(h.elements.get('courseLoading').hidden, true)
+  assert.equal(h.timers.size, 0)
+
+  const initialIdentity = h.uri()
+  await h.api.start()
+  assert.equal(h.uri(), initialIdentity, 'Neuladen derselben Auswahl behält die Kurskennung')
+  h.window.fetch = async () => ({ ok: true, text: async () => markdown + '\n\n[[ 4 ]]' })
+  await h.api.start()
+  assert.notEqual(h.uri(), initialIdentity, 'Geänderte Aufgabenstruktur bekommt einen eigenen Lernstand')
+  h.message({ cmd: 'schullia-course-error', param: { uri: initialIdentity, message: 'Veralteter Fehler' } })
+  assert.notEqual(h.elements.get('courseStatus').textContent, 'Veralteter Fehler')
+  h.message({ cmd: 'schullia-course-error', param: { uri: h.uri(), message: 'Runtime nicht erreichbar' } })
+  assert.equal(h.elements.get('courseStatus').textContent, 'Runtime nicht erreichbar')
+  assert.equal(h.elements.get('courseRetry').hidden, false)
+  await h.elements.get('courseRetry').click()
+  assert.ok(h.frame.src.includes('?parent:'))
+  h.dispatch('pagehide')
+  assert.equal(h.requests[0].signal.aborted, true)
+  assert.equal(h.timers.size, 0)
+  h.dispatch('pageshow', { persisted: true })
+  await settle()
+  assert.ok(h.frame.src.includes('?parent:'), 'Zurücknavigation aus dem Browsercache startet den Kurs erneut')
+  h.dispatch('pagehide')
+
+  const invalidSources = [
+    'javascript:alert(1)',
+    'https://example.org/Aufgabe_0001.md',
+    sourceUrl.replace('https:', 'http:'),
+    sourceUrl.replace('https://', 'https://user:pass@'),
+    sourceUrl + '?other=1', sourceUrl + '#other',
+    sourceUrl.replace('Aufgabe_0001.md', 'README.md')
+  ]
+  for (const url of invalidSources) assert.throws(() => h.api.normalizeManifest({ ...manifest, urls: [url] }), /Aufgabenquelle/)
+  assert.throws(() => h.api.normalizeManifest({ ...manifest, v: 2 }), /Format/)
+  assert.throws(() => h.api.normalizeManifest({ ...manifest, urls: [] }), /Aufgabenauswahl/)
+  assert.throws(() => h.api.normalizeManifest({ ...manifest, group: 'unknown' }), /Zielgruppe/)
+  assert.throws(() => h.api.normalizeManifest({ ...manifest, themes: ['broken\nvalue'] }), /Themenauswahl/)
+  for (const malformed of ['', '#course=%7Bbroken', hash({ ...manifest, urls: ['https://other.example/Aufgabe.md'] })]) {
+    const broken = harness({ hash: malformed })
+    await settle()
+    assert.equal(broken.requests.length, 0)
+    assert.equal(broken.frame.hidden, true)
+    assert.equal(broken.elements.get('courseRetry').hidden, false)
+    broken.dispatch('pagehide')
+  }
+
+  const unavailable = harness({ fetch: async () => ({ ok: false, status: 503 }) })
+  await settle()
+  assert.match(unavailable.elements.get('courseStatus').textContent, /HTTP 503/)
+  unavailable.window.fetch = async () => ({ ok: true, text: async () => markdown })
+  await unavailable.elements.get('courseRetry').click()
+  assert.ok(unavailable.frame.src.includes('?parent:'))
+  unavailable.dispatch('pagehide')
+
+  const missing = harness({ missingAssembler: true })
+  await settle()
+  assert.match(missing.elements.get('courseStatus').textContent, /Kursvorbereitung/)
+  assert.equal(missing.requests.length, 0)
+  missing.dispatch('pagehide')
+
+  const pending = harness({ fetch: (url, { signal }) => new Promise((resolve, reject) => {
+    signal.addEventListener('abort', () => reject(new Error('Aborted')))
+  }) })
+  const timeout = Array.from(pending.timers.values()).find(timer => timer.delay === 30000)
+  timeout.callback()
+  await settle()
+  assert.match(pending.elements.get('courseStatus').textContent, /dauert zu lange/)
+  assert.equal(pending.elements.get('courseRetry').hidden, false)
+  pending.dispatch('pagehide')
+
+  const waiting = harness()
+  await settle()
+  Array.from(waiting.timers.values()).find(timer => timer.delay === 35000).callback()
+  assert.match(waiting.elements.get('courseStatus').textContent, /nicht gestartet/)
+  waiting.dispatch('pagehide')
+
+  h.window.crypto = webcrypto
+  const identity = await h.api.courseIdentity(manifest, markdown)
+  assert.match(identity, /^schullia-[a-f0-9]{64}$/)
+  assert.equal(await h.api.courseIdentity(manifest, markdown), identity)
+  assert.notEqual(await h.api.courseIdentity(manifest, markdown + '\n[[5]]'), identity)
+  console.log('Schülerkurs: Unterpfad, Kurslink, Nachrichten, Wiederherstellung, Fehler und Timeouts bestanden.')
+}
+
+main().catch(error => { console.error(error); process.exitCode = 1 })

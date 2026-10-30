@@ -34,6 +34,7 @@ const THEME_TAG_ALIASES = {
 }
 
 const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
+<script src="assets/course-source.js"></script>
 <script>
   (function () {
     function normalizeText(value) {
@@ -1152,167 +1153,50 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
         })
     }
 
-    function splitHeaderAndBody(markdown) {
-      const source = String(markdown || '')
-      const match = source.match(/^\s*<!--[\r\n]*([\s\S]*?)-->[\r\n]*/)
-
-      if (!match) {
-        return {
-          headerLines: [],
-          body: source.trim(),
-        }
-      }
-
-      const headerLines = match[1]
-        .split(/\r?\n/)
-        .map(function (line) {
-          return String(line || '').trim()
-        })
-        .filter(function (line) {
-          return line.length > 0
-        })
-
-      return {
-        headerLines: headerLines,
-        body: source.slice(match[0].length).trim(),
-      }
-    }
-
-    function splitDashList(value) {
-      return String(value || '')
-        .split(/\s+-\s+|\s*,\s*|\s*;\s*/)
-        .map(function (entry) {
-          return String(entry || '').trim()
-        })
-        .filter(function (entry) {
-          return entry.length > 0
-        })
-    }
-
-    function mergeCourseHeaders(rawTexts) {
-      const seenGenericLines = new Set()
-      const genericLines = []
-      const tags = []
-      const tagsSeen = new Set()
-      const authors = []
-      const authorsSeen = new Set()
-      const comments = []
-
-      rawTexts.forEach(function (text) {
-        const parsed = splitHeaderAndBody(text)
-
-        parsed.headerLines.forEach(function (line) {
-          const kv = line.match(/^([A-Za-z0-9_-]+)\s*:\s*(.*)$/)
-          if (!kv) {
-            if (!seenGenericLines.has(line)) {
-              seenGenericLines.add(line)
-              genericLines.push(line)
-            }
-            return
-          }
-
-          const key = String(kv[1] || '').toLowerCase()
-          const value = String(kv[2] || '').trim()
-
-          if (key === 'tags') {
-            splitDashList(value).forEach(function (entry) {
-              const normalized = normalizeThemeText(entry)
-              if (!normalized || tagsSeen.has(normalized)) return
-              tagsSeen.add(normalized)
-              tags.push(normalized === 'bruchrechnung' ? 'Bruchrechnung' : canonicalThemeTag(entry))
-            })
-            return
-          }
-
-          if (key === 'author') {
-            splitDashList(value).forEach(function (entry) {
-              const normalized = normalizeText(entry)
-              if (!normalized || authorsSeen.has(normalized)) return
-              authorsSeen.add(normalized)
-              authors.push(entry)
-            })
-            return
-          }
-
-          if (key === 'comment') {
-            if (value) comments.push(value)
-            return
-          }
-
-          if (!seenGenericLines.has(line)) {
-            seenGenericLines.add(line)
-            genericLines.push(line)
-          }
-        })
+    function selectCourseTaskUrls(themeValues, blockedThemeValues, requestedCount, groupValue, curriculumAllowed) {
+      const candidates = curriculumAllowed
+        ? getCurriculumCandidateCards(curriculumAllowed, themeValues, blockedThemeValues)
+        : getCandidateCardsForThemes(themeValues, blockedThemeValues)
+      const seenUrls = new Set()
+      const uniqueCandidates = candidates.filter(function (card) {
+        const url = extractRawTaskUrl(card)
+        if (!url || seenUrls.has(url)) return false
+        seenUrls.add(url)
+        return true
       })
-
-      const mergedLines = genericLines.slice()
-
-      if (tags.length) {
-        mergedLines.push('tags: ' + tags.join(', '))
+      if (!uniqueCandidates.length) {
+        throw new Error('Keine Aufgaben für die gewählten/gesperrten Themen gefunden.')
       }
 
-      if (comments.length) {
-        mergedLines.push('comment: ' + comments.join(' - '))
-      }
-
-      if (authors.length) {
-        mergedLines.push('author: ' + authors.join(', '))
-      }
-
-      return mergedLines.length ? '<!--\n\n' + mergedLines.join('\n') + '\n\n-->\n\n' : ''
-    }
-
-        async function buildCourseSource(themeValues, blockedThemeValues, requestedCount, groupValue, curriculumAllowed) {
-            const candidates = curriculumAllowed
-                ? getCurriculumCandidateCards(curriculumAllowed, themeValues, blockedThemeValues)
-                : getCandidateCardsForThemes(themeValues, blockedThemeValues)
-            if (!candidates.length) {
-                throw new Error('Keine Aufgaben für die gewählten/gesperrten Themen gefunden.')
-      }
-
-      const selectionCount = Math.max(1, Math.min(requestedCount, candidates.length))
-      const selectedCards = selectCardsByCourseCriteria(candidates, selectionCount, groupValue)
-      const selectedUrls = selectedCards
+      const selectionCount = Math.max(1, Math.min(requestedCount, uniqueCandidates.length))
+      const selectedUrls = selectCardsByCourseCriteria(uniqueCandidates, selectionCount, groupValue)
         .map(extractRawTaskUrl)
-        .filter(function (url) {
-          return !!url
-        })
-
+        .filter(Boolean)
       if (!selectedUrls.length) {
         throw new Error('Es konnten keine Aufgaben-Quellen aufgelöst werden.')
       }
+      return selectedUrls
+    }
 
-      const rawContents = await Promise.all(
-        selectedUrls.map(async function (url) {
-          const response = await fetch(url)
-          if (!response.ok) {
-            throw new Error('Aufgabe konnte nicht geladen werden: ' + url)
-          }
-          return response.text()
-        })
+    async function buildCourseSource(themeValues, blockedThemeValues, requestedCount, groupValue, curriculumAllowed) {
+      const selectedUrls = selectCourseTaskUrls(
+        themeValues, blockedThemeValues, requestedCount, groupValue, curriculumAllowed
       )
-
-      const chunks = rawContents
-        .map(function (text) {
-          return splitHeaderAndBody(text)
-        })
-        .filter(function (entry) {
-          return entry.body.length > 0
-        })
-
-      if (!chunks.length) {
-        throw new Error('Die geladenen Aufgaben waren leer.')
+      const documents = await Promise.all(selectedUrls.map(async function (url) {
+        const response = await fetch(url)
+        if (!response.ok) throw new Error('Aufgabe konnte nicht geladen werden: ' + url)
+        return { url: url, content: await response.text() }
+      }))
+      if (!window.SchulLiaCourseSource) {
+        throw new Error('Der Kursgenerator konnte nicht geladen werden. Bitte die Seite neu laden.')
       }
+      return window.SchulLiaCourseSource.build(documents, { group: groupValue, themes: themeValues })
+    }
 
-      const mergedHeader = mergeCourseHeaders(rawContents)
-      const mergedBody = chunks
-        .map(function (entry) {
-          return entry.body
-        })
-        .join('\n\n\n')
-
-      return mergedHeader + mergedBody
+    function buildDirectCourseUrl(manifest) {
+      const url = new URL('course.html', window.location.href)
+      url.hash = 'course=' + encodeURIComponent(JSON.stringify(manifest))
+      return url.href
     }
 
     const LIVE_EDITOR_EMPTY_URL = 'https://liascript.github.io/LiveEditor/?/edit'
@@ -1591,7 +1475,8 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
           '</select>' +
           '<label for="courseTaskCountInput">Anzahl Aufgaben:</label>' +
           '<input id="courseTaskCountInput" type="number" min="1" step="1" value="5" class="form-control" aria-label="Anzahl Aufgaben" />' +
-          '<button type="button" id="courseGeneratorSubmit" class="schullia-course-submit-btn">Kurs Generieren</button>' +
+          '<button type="button" id="courseGeneratorSubmit" class="schullia-course-submit-btn">Kurs im LiveEditor generieren</button>' +
+          '<button type="button" id="courseGeneratorDirectSubmit" class="schullia-course-submit-btn">Kurs direkt generieren</button>' +
           '<div id="courseGeneratorManualOpen" style="display:none;"></div>' +
           '</div>'
 
@@ -1836,21 +1721,24 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
                 blockedThemeToggle.dataset.bound = '1'
             }
 
-      const submitButton = document.getElementById('courseGeneratorSubmit')
-      if (submitButton && !submitButton.dataset.bound) {
+      const generationButtons = [
+        { button: document.getElementById('courseGeneratorSubmit'), direct: false },
+        { button: document.getElementById('courseGeneratorDirectSubmit'), direct: true },
+      ]
+      generationButtons.forEach(function (entry) {
+        const submitButton = entry.button
+        if (!submitButton || submitButton.dataset.bound) return
         submitButton.addEventListener('click', async function () {
           const targetGroup = document.getElementById('courseTargetGroupSelect')
           const taskCount = document.getElementById('courseTaskCountInput')
-
           const selectedThemes = getSelectedCourseThemes().slice()
           const blockedThemes = getBlockedCourseThemes().slice()
           const targetGroupValue = targetGroup ? String(targetGroup.value || 'fortgeschrittene').trim() : 'fortgeschrittene'
           const requestedCount = taskCount ? Number.parseInt(taskCount.value || '5', 10) : 5
-
           const curriculumAllowed = computeCurriculumAllowedSet()
 
-                    if (!curriculumAllowed && !selectedThemes.length) {
-                        window.alert('Bitte zuerst mindestens ein Thema hinzufügen.')
+          if (!curriculumAllowed && !selectedThemes.length) {
+            window.alert('Bitte zuerst mindestens ein Thema hinzufügen.')
             return
           }
           if (curriculumAllowed && curriculumAllowed.size === 0) {
@@ -1858,39 +1746,54 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
             return
           }
 
-          submitButton.disabled = true
+          generationButtons.forEach(function (item) { if (item.button) item.button.disabled = true })
           const oldText = submitButton.textContent
           submitButton.textContent = 'Kurs wird erzeugt...'
           clearManualOpenFallback()
-
-          // Reserve a tab during the click; choose the handoff after generating the course.
-          const popup = window.open('about:blank', '_blank')
-
+          let popup = null
           try {
-            const courseSource = await buildCourseSource(
-                            selectedThemes,
-                            blockedThemes,
-              Number.isFinite(requestedCount) ? requestedCount : 5,
-              targetGroupValue,
-              curriculumAllowed
-            )
+            if (entry.direct) {
+              const urls = selectCourseTaskUrls(
+                selectedThemes, blockedThemes,
+                Number.isFinite(requestedCount) ? requestedCount : 5,
+                targetGroupValue, curriculumAllowed
+              )
+              const url = buildDirectCourseUrl({
+                v: 1, urls: urls, group: targetGroupValue, themes: selectedThemes,
+              })
+              // Open synchronously during the click; the new page loads the sources.
+              popup = window.open('about:blank', '_blank')
+              if (popup && !popup.closed) {
+                popup.opener = null
+                popup.location.href = url
+                closeCourseGeneratorOverlay()
+              } else {
+                setManualOpenFallback(url)
+              }
+              return
+            }
 
-            const opened = await openLiveEditorWithCourseSource(courseSource, popup)
-            if (opened) {
+            // Reserve a tab during the click; large editor courses use the existing fallback.
+            popup = window.open('about:blank', '_blank')
+            if (popup) popup.opener = null
+            const courseSource = await buildCourseSource(
+              selectedThemes, blockedThemes,
+              Number.isFinite(requestedCount) ? requestedCount : 5,
+              targetGroupValue, curriculumAllowed
+            )
+            if (await openLiveEditorWithCourseSource(courseSource, popup)) {
               closeCourseGeneratorOverlay()
             }
           } catch (error) {
-            if (popup && !popup.closed) {
-              popup.close()
-            }
+            if (popup && !popup.closed) popup.close()
             window.alert('Kurs konnte nicht erzeugt werden. ' + (error && error.message ? error.message : ''))
           } finally {
-            submitButton.disabled = false
-            submitButton.textContent = oldText || 'Kurs Generieren'
+            generationButtons.forEach(function (item) { if (item.button) item.button.disabled = false })
+            submitButton.textContent = oldText
           }
         })
         submitButton.dataset.bound = '1'
-      }
+      })
 
       if (!window.__schulliaCourseOverlayEscBound) {
         document.addEventListener('keydown', function (event) {

@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SchulLia – Schülerkurs</title>
+  <!--
+    Same-origin LiaScript interpreter shell. The current official entry page is
+    fetched from https://liascript.github.io/course/ instead of pinning asset
+    hashes that can change with a LiaScript deployment. Its runtime executes
+    in this document, preserving course-frame.html?parent:... and this site's
+    origin so imported course plugins can access their containing frame.
+    Relative runtime assets resolve against the official course URL. The
+    official host's service worker and PWA manifest are deliberately omitted.
+  -->
+  <style>
+    body { margin: 0; font: 1rem/1.6 system-ui, sans-serif; color: #173f43; background: #eff8f8; }
+    main { min-height: 100vh; box-sizing: border-box; display: grid; place-content: center; padding: 2rem; text-align: center; }
+  </style>
+</head>
+<body>
+  <main><p id="frameStatus" role="status">Dein Kurs wird geladen …</p></main>
+  <noscript>Zum Bearbeiten dieses Kurses muss JavaScript im Browser aktiviert sein.</noscript>
+  <script>
+    ;(async function () {
+      'use strict'
+      const source = 'https://liascript.github.io/course/'
+      const controller = new AbortController()
+      const timer = setTimeout(function () { controller.abort() }, 30000)
+      try {
+        const response = await fetch(source, { signal: controller.signal })
+        if (!response.ok) throw new Error('HTTP ' + response.status)
+        const html = await response.text()
+        const official = new DOMParser().parseFromString(html, 'text/html')
+        if (!official.head || !official.body || !official.querySelector('script[src]')) {
+          throw new Error('Unvollständige LiaScript-Startseite')
+        }
+        official.querySelectorAll('base, link[rel="manifest"]').forEach(function (node) { node.remove() })
+        official.querySelectorAll('script:not([src])').forEach(function (script) {
+          if (/navigator\s*\.\s*serviceWorker\s*\.\s*register\s*\(/.test(script.textContent || '')) script.remove()
+        })
+        const base = official.createElement('base')
+        base.href = source
+        official.head.prepend(base)
+        // Runtime assets use the official base URL. Native in-course hash
+        // links must retain this frame's own URL and its parent course ID.
+        const navigation = official.createElement('script')
+        navigation.textContent = '(' + function () {
+          // Some course templates read colors from their parent document.
+          // Mirror the interpreter's actual theme, including later switches.
+          const parentDocument = window.parent !== window && window.parent.document
+          if (parentDocument && parentDocument.documentElement && parentDocument.body) {
+            let pendingTheme = false
+            let themeSignature = ''
+            let mirroredClasses = String(parentDocument.documentElement.className || '').split(/\s+/).filter(function (name) {
+              return /^lia-(?:theme|variant)-/.test(name)
+            })
+            let observedBody
+            const root = document.documentElement
+            const rootObserver = new MutationObserver(scheduleTheme)
+            const bodyObserver = new MutationObserver(scheduleTheme)
+            const mountObserver = new MutationObserver(scheduleTheme)
+            rootObserver.observe(root, { attributes: true, attributeFilter: ['class', 'style', 'data-theme'] })
+            mountObserver.observe(root, { childList: true, subtree: true })
+
+            function syncTheme() {
+              pendingTheme = false
+              if (!document.body) return
+              if (observedBody !== document.body) {
+                bodyObserver.disconnect()
+                observedBody = document.body
+                bodyObserver.observe(observedBody, { attributes: true, attributeFilter: ['class', 'style', 'data-theme'] })
+              }
+              const bodyStyle = window.getComputedStyle(document.body)
+              const rootStyle = window.getComputedStyle(root)
+              const button = document.querySelector('.lia-btn')
+              const accent = button && window.getComputedStyle(button)
+              const classes = String(root.className || '').split(/\s+/).filter(function (name) {
+                return /^lia-(?:theme|variant)-/.test(name)
+              })
+              const background = bodyStyle.backgroundColor === 'rgba(0, 0, 0, 0)'
+                ? rootStyle.backgroundColor : bodyStyle.backgroundColor
+              if (!background || background === 'rgba(0, 0, 0, 0)') return
+              const scheme = classes.includes('lia-variant-dark') ? 'dark'
+                : classes.includes('lia-variant-light') ? 'light' : bodyStyle.colorScheme
+              const signature = JSON.stringify([background, bodyStyle.color, scheme, classes,
+                accent && accent.backgroundColor, accent && accent.borderTopColor, accent && accent.color])
+              if (button) mountObserver.disconnect()
+              if (signature === themeSignature) return
+              themeSignature = signature
+              const parentRoot = parentDocument.documentElement
+              parentRoot.style.backgroundColor = background
+              parentRoot.style.color = bodyStyle.color
+              if (scheme) parentRoot.style.colorScheme = scheme
+              parentDocument.body.style.backgroundColor = background
+              parentDocument.body.style.color = bodyStyle.color
+              mirroredClasses.forEach(function (name) { if (!classes.includes(name)) parentRoot.classList.remove(name) })
+              classes.forEach(function (name) { parentRoot.classList.add(name) })
+              mirroredClasses = classes
+              const sample = parentDocument.getElementById('courseThemeSample')
+              if (sample && accent) {
+                sample.style.backgroundColor = accent.backgroundColor
+                sample.style.borderTopColor = accent.borderTopColor
+                sample.style.color = accent.color
+              }
+            }
+
+            function scheduleTheme() {
+              if (!pendingTheme) {
+                pendingTheme = true
+                window.requestAnimationFrame(syncTheme)
+              }
+            }
+
+            document.addEventListener('DOMContentLoaded', scheduleTheme)
+            document.addEventListener('load', scheduleTheme, true)
+            window.addEventListener('pagehide', function () {
+              rootObserver.disconnect()
+              bodyObserver.disconnect()
+              mountObserver.disconnect()
+            })
+            scheduleTheme()
+          }
+          // Plugins such as lia-freeze read the current course through fetch.
+          // A generated parent: course has no network URL; expose only the
+          // exact source that this frame received from its own parent.
+          const courseUri = decodeURIComponent(window.location.search.slice(1))
+          let courseSource
+          window.addEventListener('message', function (event) {
+            const data = event.data
+            if (window.parent !== window && event.source === window.parent &&
+                event.origin === window.location.origin && data && data.cmd === 'lia-course' &&
+                data.param && data.param.uri === courseUri && data.param.ok === true &&
+                typeof data.param.body === 'string') courseSource = data.param.body
+          })
+          const nativeFetch = window.fetch.bind(window)
+          window.fetch = function (input, options) {
+            const requestedUri = typeof input === 'string' ? input : input && (input.url || input.href)
+            const method = String(options && options.method || input && input.method || 'GET').toUpperCase()
+            if (courseUri.startsWith('parent:') && requestedUri === courseUri &&
+                typeof courseSource === 'string' && (method === 'GET' || method === 'HEAD')) {
+              const signal = options && options.signal || input && input.signal
+              if (signal && signal.aborted) {
+                return Promise.reject(signal.reason || new DOMException('The operation was aborted.', 'AbortError'))
+              }
+              return Promise.resolve(new Response(method === 'HEAD' ? null : courseSource, {
+                status: 200,
+                headers: { 'Content-Type': 'text/markdown; charset=utf-8' }
+              }))
+            }
+            return nativeFetch(input, options)
+          }
+          // LiaScript's indentation parser can generate tens of thousands
+          // of literal spaces for large inline diagrams. The equivalent
+          // counted form avoids browser regex limits without changing input.
+          const NativeRegExp = window.RegExp
+          function compactIndentation(args) {
+            const pattern = args[0]
+            if (typeof pattern !== 'string' || pattern.length <= 4096 || pattern.charAt(0) !== '^') return args
+            for (let i = 1; i < pattern.length; i++) {
+              if (pattern.charAt(i) !== ' ') return args
+            }
+            const compact = args.slice()
+            compact[0] = '^ {' + (pattern.length - 1) + '}'
+            return compact
+          }
+          window.RegExp = new Proxy(NativeRegExp, {
+            construct: function (target, args, newTarget) {
+              return Reflect.construct(target, compactIndentation(args), newTarget)
+            },
+            apply: function (target, thisArg, args) {
+              return Reflect.apply(target, thisArg, compactIndentation(args))
+            },
+            get: function (target, key) { return Reflect.get(target, key, target) },
+            set: function (target, key, value) { return Reflect.set(target, key, value, target) }
+          })
+          // Parcel emits an ESM-import blob for LiaScript's classic worker
+          // when its bundle runs on another origin. Preserve the worker's
+          // original classic behavior; leave all other blobs/workers intact.
+          const NativeBlob = window.Blob
+          const nativeCreateObjectURL = URL.createObjectURL.bind(URL)
+          const bootstrapBlobs = new WeakMap()
+          const bootstrapUrls = new Map()
+          window.Blob = new Proxy(NativeBlob, {
+            construct: function (target, args, newTarget) {
+              const blob = Reflect.construct(target, args, newTarget)
+              const parts = args[0]
+              if (Array.isArray(parts) && parts.length === 1 && typeof parts[0] === 'string') {
+                const match = parts[0].match(/^import\s+["'](https:\/\/liascript\.github\.io\/course\/Worker\.[a-z0-9]+\.js)["'];?\s*$/i)
+                if (match) bootstrapBlobs.set(blob, match[1])
+              }
+              return blob
+            }
+          })
+          URL.createObjectURL = function (blob) {
+            const url = nativeCreateObjectURL(blob)
+            if (bootstrapBlobs.has(blob)) bootstrapUrls.set(url, bootstrapBlobs.get(blob))
+            return url
+          }
+          window.Worker = new Proxy(window.Worker, {
+            construct: function (target, args, newTarget) {
+              const source = bootstrapUrls.get(String(args[0]))
+              const options = args[1]
+              if (!source || (options && options.type && options.type !== 'classic')) {
+                return Reflect.construct(target, args, newTarget)
+              }
+              const url = nativeCreateObjectURL(new NativeBlob([
+                'importScripts(' + JSON.stringify(source) + ');'
+              ], { type: 'application/javascript' }))
+              const worker = Reflect.construct(target, [url].concat(args.slice(1)), newTarget)
+              const release = function () { URL.revokeObjectURL(url) }
+              worker.addEventListener('message', release, { once: true })
+              worker.addEventListener('error', release, { once: true })
+              return worker
+            }
+          })
+          document.addEventListener('click', function (event) {
+            const target = event.target && (event.target.closest ? event.target : event.target.parentElement)
+            const link = target && target.closest('a[href]')
+            const href = link && link.getAttribute('href')
+            if (href && href.charAt(0) === '#') {
+              link.setAttribute('href', new URL(href, window.location.href).href)
+            }
+          }, true)
+        }.toString() + ')()'
+        base.after(navigation)
+        // Parsing the fetched entry page as a fresh document preserves the
+        // official parser order, module/nomodule behavior and bootstrap scripts.
+        const page = '<!doctype html>\n' + official.documentElement.outerHTML
+        clearTimeout(timer)
+        document.open()
+        document.write(page)
+        document.close()
+      } catch (_) {
+        const message = 'LiaScript konnte nicht geladen werden. Prüfe die Internetverbindung und versuche es erneut.'
+        const status = document.getElementById('frameStatus')
+        if (status) status.textContent = message
+        if (window.parent !== window) {
+          window.parent.postMessage({
+            cmd: 'schullia-course-error',
+            param: { uri: decodeURIComponent(window.location.search.slice(1)), message: message }
+          }, window.location.origin)
+        }
+      } finally {
+        clearTimeout(timer)
+      }
+    })()
+  </script>
+</body>
+</html>

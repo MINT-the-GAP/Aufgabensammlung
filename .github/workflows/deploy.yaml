@@ -27,6 +27,13 @@ jobs:
       - name: Test template macros
         run: node scripts/test-template-macros.cjs
 
+      - name: Test course generation
+        run: |
+          node tests/direct-course.test.cjs
+          node tests/course-player.test.cjs
+          node tests/generator.test.cjs
+          node tests/course-source.test.cjs
+
       - name: Set up dependencies
         # 3.4.2--2.1.0 fails on existing courses (Regular expression too large).
         # Keep the tested parser version until that regression is resolved.
@@ -51,6 +58,9 @@ jobs:
           SCHULLIA_INDEX_PATH: ${{ runner.temp }}/schullia-site/index.html
         run: node scripts/test-site.js $SCHULLIA_INDEX_PATH
 
+      - name: Test generated course generator
+        run: node tests/generator.test.cjs $RUNNER_TEMP/schullia-site/index.html
+
       - name: Minify HTML (disabled for JS stability)
         run: 'echo "Skipping minify: custom JS must remain unmodified to avoid regex parse errors."'
 
@@ -58,7 +68,13 @@ jobs:
         run: |
           mkdir -p gh-pages-deploy
           cp $RUNNER_TEMP/schullia-site/index.html gh-pages-deploy/index.html
+          cp course.html gh-pages-deploy/course.html
+          cp course-frame.html gh-pages-deploy/course-frame.html
+          cp -r assets gh-pages-deploy/
           cp -r pics gh-pages-deploy/
+
+      - name: Test deployment files
+        run: node tests/deployment.test.cjs gh-pages-deploy
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4

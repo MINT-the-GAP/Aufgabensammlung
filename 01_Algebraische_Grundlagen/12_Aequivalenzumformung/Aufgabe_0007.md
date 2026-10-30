@@ -66,7 +66,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" 
 style="max-width:600px" -->
-__$a)\;\;$__ ![](Kap2/waage1c.png)  
+__$a)\;\;$__ ![](../../Repetitorium/Kap2/waage1c.png)  
 $x=$ [[  4    ]]  kg @canvas
 @Algebrite.check([ 4 ])
 [[?]] @Explain
@@ -83,7 +83,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" 
 style="max-width:600px" -->
-__$b)\;\;$__ ![](Kap2/waage1f.png)  
+__$b)\;\;$__ ![](../../Repetitorium/Kap2/waage1f.png)  
 $x=$ [[  5    ]]  kg @canvas
 @Algebrite.check([ 5 ])
 [[?]] @Explain
@@ -100,7 +100,7 @@ data-solution-timer-badge="off"
 data-solution-button="5" 
 data-hint-button="3" 
 style="max-width:600px" -->
-__$c)\;\;$__ ![](Kap2/waage1i.png)  
+__$c)\;\;$__ ![](../../Repetitorium/Kap2/waage1i.png)  
 $x=$ [[  1,56  ]]  kg @canvas
 @Algebrite.check([ 1.56 ])
 [[?]] @Explain
