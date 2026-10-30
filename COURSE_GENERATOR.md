@@ -28,11 +28,11 @@ Empfohlene Ladereihenfolge:
 
 Die Generator-Runtime trägt
 `schema: 'schullia-course-generator'`, `version: 1` und das gemeinsame
-Runtime-Release `release: '1.0.5'`. Der Katalog trägt
+Runtime-Release `release: '1.0.6'`. Der Katalog trägt
 `schema: 'schullia-course-catalog'` und `version: 1`.
 
 Alle eigenen, von `index.html` und `course.html` geladenen Runtime-Scripts tragen
-denselben Cache-Parameter `?v=1.0.5`; der gepinnte Codec trägt
+denselben Cache-Parameter `?v=1.0.6`; der gepinnte Codec trägt
 `?v=0.8.2`. Auch
 `buildDirectCourseUrl(...)` versieht `course.html` damit; das Kursmanifest
 bleibt ausschließlich im Hash.
@@ -67,6 +67,22 @@ kanonischer Normalisierung exakt gefiltert; es gibt keinen unsichtbaren
 Themen-Fallback. Bei `strictCount: true` führt ein Bestand unter vier zu
 `CourseGeneratorError` mit `code: 'INSUFFICIENT_TASKS'`.
 
+Für Lernpfade kann der Request den bereits belegten Themenkontext zusätzlich
+hart begrenzen:
+
+```js
+request.allowedThemes = ['Addition', 'Grundrechenarten']
+request.curriculumThemes = Array.from(new Set(
+  SchulLiaCourseCatalog.tasks.flatMap(task => task.topics)
+))
+```
+
+Dann muss mindestens ein erlaubtes Thema passen und kein Katalogthema der
+Aufgabe darf außerhalb von `allowedThemes` liegen. So wird bei `Addition` etwa
+eine Aufgabe mit dem Zusatzthema `Negative Zahlen` nicht ausgewählt, solange
+dieses Thema im Ausgangskurs nicht belegt wurde. Ein zu kleiner Trefferbestand
+bleibt auch hier ein Fehler; der Generator lockert den Lernkontext nicht.
+
 ## Lernpfad-Direktkurs
 
 ```js
@@ -94,10 +110,12 @@ Die sichtbaren Angebote heißen „Grundlagen wiederholen“, „Weitere Übunge
 und „Vertiefungen“; die stabilen Manifestwerte ändern sich dadurch nicht. Die
 Startfolie erklärt das jeweilige Lernziel, übernimmt das Bedienmuster der
 Wochenaufgaben und verweist in einem CAUTION-Block auf den LiaScript-Tutorialkurs.
+Zusätzlich ersetzt der Generator die geerbten Aufgabenkommentare durch genau
+einen verständlichen Kurs-Infotext, der zum Angebot und gewählten Thema passt.
 
 `course.html` lädt die gemeinsamen Runtime-Scripts, entfernt Freeze-Importe
 und ersetzt alle aus Aufgaben geerbten MathPath-README-Importe durch genau den
-cache-stabilen Import `README.md?v=0.0.18`. Der Direktkurs setzt den Lernpfad ausdrücklich auf
+cache-stabilen Import `README.md?v=0.0.19`. Der Direktkurs setzt den Lernpfad ausdrücklich auf
 `mode: Presentation`, ergänzt `lernpfad-level` und hängt eine Abschlussfolie
 mit `@Lernpfad` an. Danach wird der Quelltext mit dem lokal ausgelieferten
 `fflate` 0.8.2 und dem vollständig festgelegten Optionssatz

@@ -300,12 +300,12 @@ async function testDirectCourse(html) {
   assert.ok(source.indexOf('id="courseGeneratorSubmit"') < source.indexOf('id="courseGeneratorDirectSubmit"'), 'Direkt-Button steht unter dem LiveEditor-Button')
   const playerHtml = fs.readFileSync(path.join(root, 'course.html'), 'utf8')
   assert.match(playerHtml, /<meta[^>]*name="viewport"/)
-  assert.match(playerHtml, /course-source\.js\?v=1\.0\.5/)
-  assert.match(playerHtml, /course-generator\.js\?v=1\.0\.5/)
-  assert.match(playerHtml, /course-player\.js\?v=1\.0\.5/)
+  assert.match(playerHtml, /course-source\.js\?v=1\.0\.6/)
+  assert.match(playerHtml, /course-generator\.js\?v=1\.0\.6/)
+  assert.match(playerHtml, /course-player\.js\?v=1\.0\.6/)
   assert.match(playerHtml, /vendor\/fflate-0\.8\.2\.min\.js\?v=0\.8\.2/)
   assert.ok(
-    playerHtml.indexOf('vendor/fflate-0.8.2.min.js?v=0.8.2') < playerHtml.indexOf('course-player.js?v=1.0.5'),
+    playerHtml.indexOf('vendor/fflate-0.8.2.min.js?v=0.8.2') < playerHtml.indexOf('course-player.js?v=1.0.6'),
     'Der deterministische gzip-Codec wird vor dem Course-Player geladen'
   )
   assert.match(playerHtml, /id="courseThemeSample"[^>]*class="lia-btn"[^>]*hidden[^>]*aria-hidden="true"/)

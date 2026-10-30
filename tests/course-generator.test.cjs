@@ -33,11 +33,11 @@ const catalog = {
 async function main() {
   assert.equal(generator.schema, 'schullia-course-generator')
   assert.equal(generator.version, 1)
-  assert.equal(generator.release, '1.0.5')
-  assert.equal(generator.mathPathRelease, '0.0.18')
+  assert.equal(generator.release, '1.0.6')
+  assert.equal(generator.mathPathRelease, '0.0.19')
   assert.equal(
     generator.mathPathImport,
-    'https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md?v=0.0.18'
+    'https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md?v=0.0.19'
   )
   assert.equal(generator.validateCatalog(catalog), catalog)
   assert.throws(
@@ -61,6 +61,43 @@ async function main() {
     allowedThemes: ['Addition'],
     curriculumThemes: ['Addition', 'Subtraktion', 'Dreiecke'],
   }).length, 6)
+
+  const learningContextTasks = [
+    task(101, ['Addition', 'Grundrechenarten'], 1, 1, 'berechnen'),
+    task(102, ['Addition', 'Grundrechenarten'], 2, 1, 'berechnen'),
+    task(103, ['Addition'], 1, 1, 'berechnen'),
+    task(104, ['Addition'], 2, 1, 'berechnen'),
+    task(105, ['Addition', 'Negative Zahlen'], 1, 1, 'berechnen'),
+    task(106, ['Addition', 'Bruchrechnung'], 1, 1, 'berechnen'),
+    task(107, ['Addition', 'Dezimalzahlen'], 1, 1, 'berechnen'),
+  ]
+  const learningContextCatalog = {
+    schema: generator.catalogSchema,
+    version: generator.catalogVersion,
+    tasks: learningContextTasks,
+  }
+  const curriculumThemes = Array.from(new Set(
+    learningContextTasks.flatMap(item => item.topics)
+  ))
+  const safeContextRequest = {
+    themes: ['Addition'],
+    allowedThemes: ['Addition', 'Grundrechenarten'],
+    curriculumThemes,
+  }
+  assert.deepEqual(
+    generator.filterTasks(learningContextCatalog, safeContextRequest).map(item => item.id),
+    learningContextTasks.slice(0, 4).map(item => item.id)
+  )
+  assert.throws(
+    () => generator.selectTasks(learningContextCatalog, {
+      ...safeContextRequest, count: 5, group: 'einsteiger', strictCount: true,
+    }),
+    error => error.code === 'INSUFFICIENT_TASKS' && error.details.available === 4
+  )
+  assert.ok(generator.selectTasks(learningContextCatalog, {
+    ...safeContextRequest, count: 4, group: 'einsteiger', strictCount: true, seed: 'context',
+  }).every(item => !item.topics.includes('Negative Zahlen') &&
+    !item.topics.includes('Bruchrechnung') && !item.topics.includes('Dezimalzahlen')))
 
   for (const group of generator.groups) {
     const selected = generator.selectTasks(catalog, {
@@ -140,13 +177,29 @@ async function main() {
   const fourSpacers = ['---', '---', '---', '---'].join('\n\n')
   const weeklyTutorialBlock = fourSpacers + '\n\n> [!CAUTION]\n> <h2>[Tutorial öffnen](' + tutorialUrl + ')</h2>\n\n' + fourSpacers
   const offerIntros = [
-    ['schwaechen-ueben', 'Grundlagen wiederholen', 'wichtige Grundlagen noch einmal wiederholen und festigen'],
-    ['weitere-uebungen', 'Weitere Übungen', 'auf deinem bisherigen Schwierigkeitsniveau'],
-    ['vertiefungen', 'Vertiefungen', 'auf der nächsten Schwierigkeitsstufe'],
+    [
+      'schwaechen-ueben',
+      'Grundlagen wiederholen',
+      'wichtige Grundlagen noch einmal wiederholen und festigen',
+      'Wiederhole wichtige Grundlagen zum Thema „Bruchrechnung“ und festige Inhalte, bei denen du noch unsicher bist.',
+    ],
+    [
+      'weitere-uebungen',
+      'Weitere Übungen',
+      'auf deinem bisherigen Schwierigkeitsniveau',
+      'Übe das Thema „Bruchrechnung“ auf deinem bisherigen Niveau weiter und gewinne mehr Sicherheit.',
+    ],
+    [
+      'vertiefungen',
+      'Vertiefungen',
+      'auf der nächsten Schwierigkeitsstufe',
+      'Stelle dich neuen Herausforderungen und vertiefe das Thema „Bruchrechnung“ auf der nächsten Schwierigkeitsstufe.',
+    ],
   ]
-  for (const [offer, label, excerpt] of offerIntros) {
+  for (const [offer, label, excerpt, comment] of offerIntros) {
     const sourceOptions = generator.learningPathSourceOptions({ ...manifest, offer })
     assert.equal(sourceOptions.title, label + ': Bruchrechnung')
+    assert.equal(sourceOptions.comment, comment)
     assert.match(sourceOptions.prependBody, new RegExp(excerpt))
     assert.equal((sourceOptions.prependBody.match(/^---$/gm) || []).length, 8)
     assert.equal((sourceOptions.prependBody.match(/\[Tutorial öffnen\]\(/g) || []).length, 1)
@@ -183,14 +236,14 @@ async function main() {
   const sharedDocuments = [
     {
       url: tasks[0].url,
-      content: '<!--\nlanguage: de\nmode: Presentation\nimport: ' + sharedImport + '\nimport: ' + inheritedMathPathImports[0] +
+      content: '<!--\nlanguage: de\nmode: Presentation\ncomment: Erste technische Aufgabenbeschreibung\nimport: ' + sharedImport + '\nimport: ' + inheritedMathPathImports[0] +
         '\nimport: ' + inheritedMathPathImports[1] +
         '\nimport: https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README.md\n-->\n\n' +
         firstBody,
     },
     {
       url: tasks[1].url,
-      content: '<!--\nlanguage: de\nmode: Presentation\nimport: ' + sharedImport + '\nimport: ' + inheritedMathPathImports[2] +
+      content: '<!--\nlanguage: de\nmode: Presentation\ncomment: Zweite technische Aufgabenbeschreibung\nimport: ' + sharedImport + '\nimport: ' + inheritedMathPathImports[2] +
         '\nimport: ' + mathPathImport +
         '\nimport: https://raw.githubusercontent.com/MINT-the-GAP/Freeze/main/FreezeREADME.md\n-->\n\n' +
         secondBody,
@@ -213,6 +266,11 @@ async function main() {
   assert.ok(!/lia-freeze|FreezeREADME/i.test(sharedHeader))
   assert.equal((sharedHeader.match(/^lernpfad-level: Fortgeschritten$/gm) || []).length, 1)
   assert.equal((sharedHeader.match(/^mode: Presentation$/gm) || []).length, 1)
+  assert.deepEqual(
+    sharedHeader.split('\n').filter(line => /^comment:/i.test(line)),
+    ['comment: Übe das Thema „Bruchrechnung“ auf deinem bisherigen Niveau weiter und gewinne mehr Sicherheit.']
+  )
+  assert.ok(!/technische Aufgabenbeschreibung/.test(sharedHeader))
   assert.ok(!/^mode: Textbook$/m.test(sharedHeader))
   assert.ok(sharedSource.includes(firstBody), 'Backticks, Komma-Tags und BE=0 bytegetreu erhalten')
   assert.ok(sharedSource.includes(secondBody), 'Backticks, Komma-Tags und Teilpunkte bytegetreu erhalten')

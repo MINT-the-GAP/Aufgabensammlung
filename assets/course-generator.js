@@ -6,11 +6,11 @@
 })(typeof window === 'object' ? window : typeof globalThis === 'object' ? globalThis : this, function (root) {
   'use strict'
 
-  const RELEASE = '1.0.5'
+  const RELEASE = '1.0.6'
   const CATALOG_SCHEMA = 'schullia-course-catalog'
   const CATALOG_VERSION = 1
   const GROUPS = ['einsteiger', 'fortgeschrittene', 'experten']
-  const MATHPATH_RELEASE = '0.0.18'
+  const MATHPATH_RELEASE = '0.0.19'
   const MATHPATH_IMPORT = 'https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md?v=' + MATHPATH_RELEASE
   const profiles = {
     einsteiger: {
@@ -537,6 +537,17 @@
       LEARNING_PATH_SPACER
   }
 
+  function learningPathComment(offer, topic) {
+    const normalizedTopic = String(topic || '').trim().replace(/\s+/g, ' ')
+    const topicText = normalizedTopic ? ' „' + normalizedTopic + '“' : ''
+    const comments = {
+      'schwaechen-ueben': 'Wiederhole wichtige Grundlagen zum Thema' + topicText + ' und festige Inhalte, bei denen du noch unsicher bist.',
+      'weitere-uebungen': 'Übe das Thema' + topicText + ' auf deinem bisherigen Niveau weiter und gewinne mehr Sicherheit.',
+      vertiefungen: 'Stelle dich neuen Herausforderungen und vertiefe das Thema' + topicText + ' auf der nächsten Schwierigkeitsstufe.',
+    }
+    return comments[offer] || comments['weitere-uebungen']
+  }
+
   function learningPathSourceOptions(manifest, options) {
     const settings = options || {}
     const mathPathImport = String(settings.mathPathImport || MATHPATH_IMPORT).trim()
@@ -554,6 +565,7 @@
       edit: false,
       mode: 'Presentation',
       title: (labels[manifest.offer] || 'Lernpfad') + ': ' + String(manifest.topic || '').trim(),
+      comment: learningPathComment(manifest.offer, manifest.topic),
       imports: [mathPathImport],
       header: ['lernpfad-level: ' + (levelLabels[manifest.level] || manifest.level)],
       resourceFilter: function (key, url) {

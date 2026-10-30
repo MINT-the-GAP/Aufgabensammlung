@@ -51,6 +51,29 @@ for (const topic of ['Bruchrechnung', 'Grundrechenarten', 'Dreiecke']) {
   assert.ok(Number(topics.get(generator.normalizeTag(topic)) || 0) >= 4, topic + ' braucht mindestens vier Aufgaben')
 }
 
+const curriculumThemes = Array.from(new Set(catalog.tasks.flatMap(task => task.topics)))
+const unrestrictedAddition = generator.filterTasks(catalog, { themes: ['Addition'] })
+assert.ok(unrestrictedAddition.some(task =>
+  task.topics.some(topic => ['negative zahlen', 'bruchrechnung', 'dezimalzahlen'].includes(generator.normalizeTag(topic)))
+), 'Der reale Addition-Bestand enthält bewusst verschiedene Lernbereiche')
+const basicAdditionContext = {
+  themes: ['Addition'],
+  allowedThemes: ['Addition', 'Grundrechenarten'],
+  curriculumThemes,
+}
+const safeAddition = generator.filterTasks(catalog, basicAdditionContext)
+assert.ok(safeAddition.length >= 4, 'Mindestens vier Addition-Aufgaben im belegten Grundlagenkontext')
+assert.ok(safeAddition.every(task => task.topics.every(topic =>
+  ['addition', 'grundrechenarten'].includes(generator.normalizeTag(topic))
+)), 'Keine unbekannten Lernbereiche in den gefilterten Addition-Aufgaben')
+for (const group of generator.groups) {
+  const selected = generator.selectTasks(catalog, {
+    ...basicAdditionContext, count: 4, group, strictCount: true, seed: 'grade-context-' + group,
+  })
+  assert.equal(selected.length, 4)
+  assert.ok(selected.every(task => safeAddition.some(candidate => candidate.id === task.id)))
+}
+
 console.log(
   'Kurskatalog: ' + catalog.tasks.length + ' Quellen; fehlend Themen/Schwierigkeit/Vernetzung/Operator = ' +
   [missingTopics, missingDifficulty, missingNetwork, missingOperator].join('/')

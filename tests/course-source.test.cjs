@@ -43,6 +43,36 @@ assert.ok(framed.indexOf('> Startfolie') < framed.indexOf('# Unveränderte Aufga
 assert.ok(framed.indexOf('# Unveränderte Aufgabe') < framed.indexOf('# Abschlussfolie'))
 assert.equal((framed.match(/> Startfolie/g) || []).length, 1)
 assert.ok(framed.includes('# Unveränderte Aufgabe\n\nAufgabentext'))
+const commentedDocuments = [
+  {
+    url: 'https://example.org/one.md',
+    content: '<!--\ncomment: Erste Aufgabenbeschreibung\n-->\n\n# Eins',
+  },
+  {
+    url: 'https://example.org/two.md',
+    content: '<!--\ncomment: Zweite Aufgabenbeschreibung\n-->\n\n# Zwei',
+  },
+]
+const inheritedComments = assembler.split(assembler.build(commentedDocuments)).header
+assert.equal(
+  inheritedComments.match(/^comment: Erste Aufgabenbeschreibung - Zweite Aufgabenbeschreibung$/gm)?.length,
+  1
+)
+const overriddenComments = assembler.split(assembler.build(commentedDocuments, {
+  comment: 'Ein gemeinsamer,\n lernendenfreundlicher Infotext.',
+})).header
+assert.deepEqual(
+  overriddenComments.split('\n').filter(line => /^comment:/m.test(line)),
+  ['comment: Ein gemeinsamer, lernendenfreundlicher Infotext.']
+)
+assert.ok(!/Erste Aufgabenbeschreibung|Zweite Aufgabenbeschreibung/.test(overriddenComments))
+const suppressedComments = assembler.split(assembler.build(commentedDocuments, { comment: '' })).header
+assert.ok(!/^comment:/m.test(suppressedComments))
+const guardedComment = assembler.split(assembler.build(commentedDocuments, {
+  comment: 'Sicherer Infotext --> bleibt im Kurskopf.',
+})).header
+assert.match(guardedComment, /^comment: Sicherer Infotext --&gt; bleibt im Kurskopf\.$/m)
+assert.ok(!guardedComment.includes('-->'))
 let checkedResources = 0
 for (const document of documents) {
   const built = assembler.build([document], { edit: false })

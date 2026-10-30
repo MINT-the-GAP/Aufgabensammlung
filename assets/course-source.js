@@ -302,7 +302,14 @@
     if (settings.edit !== undefined && !metadata.has('edit')) header.push('edit: ' + (settings.edit ? 'true' : 'false'))
     if (requestedMode !== undefined && !metadata.has('mode')) header.push('mode: ' + requestedMode)
     if (tags.size) header.push('tags: ' + Array.from(tags.values()).join(', '))
-    if (comments.size) header.push('comment: ' + Array.from(comments).join(' - '))
+    if (settings.comment === undefined) {
+      if (comments.size) header.push('comment: ' + Array.from(comments).join(' - '))
+    } else {
+      const comment = settings.comment == null
+        ? ''
+        : String(settings.comment).trim().replace(/\s+/g, ' ').replace(/-->/g, '--&gt;')
+      if (comment) header.push('comment: ' + comment)
+    }
     if (authors.size) header.push('author: ' + Array.from(authors.values()).join('; '))
     ;(Array.isArray(settings.header) ? settings.header : settings.header ? [settings.header] : [])
       .map(function (line) { return String(line || '').trim() })
