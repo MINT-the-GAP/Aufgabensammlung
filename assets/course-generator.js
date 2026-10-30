@@ -6,7 +6,7 @@
 })(typeof window === 'object' ? window : typeof globalThis === 'object' ? globalThis : this, function (root) {
   'use strict'
 
-  const RELEASE = '1.0.0'
+  const RELEASE = '1.0.1'
   const CATALOG_SCHEMA = 'schullia-course-catalog'
   const CATALOG_VERSION = 1
   const GROUPS = ['einsteiger', 'fortgeschrittene', 'experten']

@@ -294,9 +294,9 @@ async function testDirectCourse(html) {
   assert.ok(source.indexOf('id="courseGeneratorSubmit"') < source.indexOf('id="courseGeneratorDirectSubmit"'), 'Direkt-Button steht unter dem LiveEditor-Button')
   const playerHtml = fs.readFileSync(path.join(root, 'course.html'), 'utf8')
   assert.match(playerHtml, /<meta[^>]*name="viewport"/)
-  assert.match(playerHtml, /course-source\.js\?v=1\.0\.0/)
-  assert.match(playerHtml, /course-generator\.js\?v=1\.0\.0/)
-  assert.match(playerHtml, /course-player\.js\?v=1\.0\.0/)
+  assert.match(playerHtml, /course-source\.js\?v=1\.0\.1/)
+  assert.match(playerHtml, /course-generator\.js\?v=1\.0\.1/)
+  assert.match(playerHtml, /course-player\.js\?v=1\.0\.1/)
   assert.match(playerHtml, /id="courseThemeSample"[^>]*class="lia-btn"[^>]*hidden[^>]*aria-hidden="true"/)
   for (const name of ['course-source.js', 'course-generator.js', 'course-player.js']) {
     new vm.Script(fs.readFileSync(productFile(name), 'utf8'), { filename: name })

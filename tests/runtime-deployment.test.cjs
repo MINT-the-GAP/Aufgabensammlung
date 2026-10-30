@@ -3,7 +3,7 @@ const fs = require('node:fs')
 const path = require('node:path')
 
 const repository = path.resolve(__dirname, '..')
-const expectedRelease = '1.0.0'
+const expectedRelease = '1.0.1'
 const required = [
   'course.html',
   'course-frame.html',

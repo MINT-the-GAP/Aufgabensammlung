@@ -27,11 +27,11 @@ Empfohlene Ladereihenfolge:
 
 Die Generator-Runtime trägt
 `schema: 'schullia-course-generator'`, `version: 1` und das gemeinsame
-Runtime-Release `release: '1.0.0'`. Der Katalog trägt
+Runtime-Release `release: '1.0.1'`. Der Katalog trägt
 `schema: 'schullia-course-catalog'` und `version: 1`.
 
 Alle von `index.html` und `course.html` geladenen Runtime-Scripts tragen
-denselben Cache-Parameter `?v=1.0.0`. Auch
+denselben Cache-Parameter `?v=1.0.1`. Auch
 `buildDirectCourseUrl(...)` versieht `course.html` damit; das Kursmanifest
 bleibt ausschließlich im Hash.
 
