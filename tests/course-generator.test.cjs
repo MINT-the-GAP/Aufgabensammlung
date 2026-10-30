@@ -33,7 +33,12 @@ const catalog = {
 async function main() {
   assert.equal(generator.schema, 'schullia-course-generator')
   assert.equal(generator.version, 1)
-  assert.equal(generator.release, '1.0.4')
+  assert.equal(generator.release, '1.0.5')
+  assert.equal(generator.mathPathRelease, '0.0.18')
+  assert.equal(
+    generator.mathPathImport,
+    'https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md?v=0.0.18'
+  )
   assert.equal(generator.validateCatalog(catalog), catalog)
   assert.throws(
     () => generator.validateCatalog({ ...catalog, version: 2 }),
@@ -130,6 +135,7 @@ async function main() {
   const options = generator.learningPathSourceOptions(manifest)
   assert.deepEqual(options.header, ['lernpfad-level: Experte'])
   assert.equal(options.mode, 'Presentation')
+  assert.deepEqual(options.imports, [generator.mathPathImport])
   const tutorialUrl = 'https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/00_00_00_Tutorial.md'
   const fourSpacers = ['---', '---', '---', '---'].join('\n\n')
   const weeklyTutorialBlock = fourSpacers + '\n\n> [!CAUTION]\n> <h2>[Tutorial öffnen](' + tutorialUrl + ')</h2>\n\n' + fourSpacers
@@ -164,7 +170,12 @@ async function main() {
   assert.deepEqual(JSON.parse(new URLSearchParams(direct.hash.slice(1)).get('course')), manifest)
 
   const sharedImport = 'https://example.org/shared-template.md'
-  const mathPathImport = 'https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md'
+  const mathPathImport = generator.mathPathImport
+  const inheritedMathPathImports = [
+    'https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md',
+    'https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/master/README.md?v=0.0.17',
+    'https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/tags/0.0.16/README.md',
+  ]
   const firstDetails = '@ADetails(`BE=0;Bruchrechnung, Terme`)'
   const secondDetails = '@ADetails(`BE=0.5;Bruchrechnung, Addition`)'
   const firstBody = '## Nullpunkte\n\n[[ 0 ]]\n\n' + firstDetails + '\n\n[[?]] @Explain'
@@ -172,13 +183,15 @@ async function main() {
   const sharedDocuments = [
     {
       url: tasks[0].url,
-      content: '<!--\nlanguage: de\nmode: Presentation\nimport: ' + sharedImport + '\nimport: ' + mathPathImport +
+      content: '<!--\nlanguage: de\nmode: Presentation\nimport: ' + sharedImport + '\nimport: ' + inheritedMathPathImports[0] +
+        '\nimport: ' + inheritedMathPathImports[1] +
         '\nimport: https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README.md\n-->\n\n' +
         firstBody,
     },
     {
       url: tasks[1].url,
-      content: '<!--\nlanguage: de\nmode: Presentation\nimport: ' + sharedImport + '\nimport: ' + mathPathImport +
+      content: '<!--\nlanguage: de\nmode: Presentation\nimport: ' + sharedImport + '\nimport: ' + inheritedMathPathImports[2] +
+        '\nimport: ' + mathPathImport +
         '\nimport: https://raw.githubusercontent.com/MINT-the-GAP/Freeze/main/FreezeREADME.md\n-->\n\n' +
         secondBody,
     },
@@ -193,7 +206,10 @@ async function main() {
   })
   const sharedHeader = assembler.split(sharedSource).header
   assert.equal((sharedHeader.match(new RegExp('^import: ' + sharedImport + '$', 'gm')) || []).length, 1)
-  assert.equal((sharedHeader.match(new RegExp('^import: ' + mathPathImport + '$', 'gm')) || []).length, 1)
+  assert.deepEqual(
+    sharedHeader.split('\n').filter(line => /^import: .*lia-mathpath.*README\.md/i.test(line)),
+    ['import: ' + mathPathImport]
+  )
   assert.ok(!/lia-freeze|FreezeREADME/i.test(sharedHeader))
   assert.equal((sharedHeader.match(/^lernpfad-level: Fortgeschritten$/gm) || []).length, 1)
   assert.equal((sharedHeader.match(/^mode: Presentation$/gm) || []).length, 1)

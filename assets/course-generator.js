@@ -6,11 +6,12 @@
 })(typeof window === 'object' ? window : typeof globalThis === 'object' ? globalThis : this, function (root) {
   'use strict'
 
-  const RELEASE = '1.0.4'
+  const RELEASE = '1.0.5'
   const CATALOG_SCHEMA = 'schullia-course-catalog'
   const CATALOG_VERSION = 1
   const GROUPS = ['einsteiger', 'fortgeschrittene', 'experten']
-  const MATHPATH_IMPORT = 'https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md'
+  const MATHPATH_RELEASE = '0.0.18'
+  const MATHPATH_IMPORT = 'https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md?v=' + MATHPATH_RELEASE
   const profiles = {
     einsteiger: {
       difficulty: { 1: 0.35, 2: 0.25, 3: 0.15, 4: 0.15, 5: 0.1 },
@@ -512,6 +513,13 @@
       !/(?:\/lia-freeze(?:-v2)?\/|\/Freeze\/|FreezeREADME\.md)/i.test(String(url || ''))
   }
 
+  function isMathPathReadme(url) {
+    let parsed
+    try { parsed = new URL(String(url || '').trim()) } catch (_) { return false }
+    return parsed.hostname.toLowerCase() === 'raw.githubusercontent.com' &&
+      /^\/MINT-the-GAP\/lia-mathpath\/.+\/README\.md$/i.test(parsed.pathname)
+  }
+
   const LEARNING_PATH_TUTORIAL_URL = 'https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/00_00_00_Tutorial.md'
   const LEARNING_PATH_SPACER = ['---', '---', '---', '---'].join('\n\n')
   const LEARNING_PATH_COMMON_INTRO = 'Am besten nimmst du dir ein Blatt Papier oder nutzt die Schrifterkennung und arbeitest die Aufgaben Schritt für Schritt durch. Danach trägst du deine Lösungen ein und bekommst eine Musterlösung zum Vergleichen. Wenn du dich ein paar Mal vertan hast, kannst du dir auch die komplette Lösung anzeigen lassen. Versuche, ohne Hilfsmittel wie andere Apps zu arbeiten. Du kannst die Aufgaben auf deinem Handy, Tablet oder Laptop öffnen und jederzeit neu starten. Viel Erfolg!'
@@ -531,6 +539,7 @@
 
   function learningPathSourceOptions(manifest, options) {
     const settings = options || {}
+    const mathPathImport = String(settings.mathPathImport || MATHPATH_IMPORT).trim()
     const labels = {
       'schwaechen-ueben': 'Grundlagen wiederholen',
       'weitere-uebungen': 'Weitere Übungen',
@@ -545,9 +554,12 @@
       edit: false,
       mode: 'Presentation',
       title: (labels[manifest.offer] || 'Lernpfad') + ': ' + String(manifest.topic || '').trim(),
-      imports: [settings.mathPathImport || MATHPATH_IMPORT],
+      imports: [mathPathImport],
       header: ['lernpfad-level: ' + (levelLabels[manifest.level] || manifest.level)],
-      resourceFilter: isNotFreezeResource,
+      resourceFilter: function (key, url) {
+        if (!isNotFreezeResource(key, url)) return false
+        return key !== 'import' || !isMathPathReadme(url) || String(url || '').trim() === mathPathImport
+      },
       prependBody: learningPathIntro(manifest.offer),
       appendBody: '# Dein weiterer Lernpfad\n\n@Lernpfad',
     }
@@ -564,6 +576,8 @@
     schema: 'schullia-course-generator',
     version: 1,
     release: RELEASE,
+    mathPathRelease: MATHPATH_RELEASE,
+    mathPathImport: MATHPATH_IMPORT,
     catalogSchema: CATALOG_SCHEMA,
     catalogVersion: CATALOG_VERSION,
     groups: GROUPS.slice(),
