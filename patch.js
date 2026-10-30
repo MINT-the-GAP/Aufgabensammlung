@@ -34,9 +34,9 @@ const THEME_TAG_ALIASES = {
 }
 
 const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
-<script src='assets/course-generator.js'></script>
-<script src='assets/course-catalog.js'></script>
-<script src="assets/course-source.js"></script>
+<script src="assets/course-generator.js?v=1.0.0"></script>
+<script src="assets/course-catalog.js?v=1.0.0"></script>
+<script src="assets/course-source.js?v=1.0.0"></script>
 <script>
   (function () {
     function normalizeText(value) {

@@ -157,7 +157,8 @@ async function main() {
   const manifest = { v: 1, urls: selected, group: 'einsteiger', themes: ['Brüche'] }
   const direct = new URL(context.buildDirectCourseUrl(manifest))
   assert.equal(direct.pathname, '/Aufgabensammlung/course.html', 'GitHub-Pages-Unterpfad erhalten')
-  assert.equal(direct.search, '', 'Keine vollständigen Kursquellen in HTTP-Query übertragen')
+  assert.equal(direct.searchParams.get('v'), generator.release, 'Nur die kleine Runtime-Version steht im HTTP-Query')
+  assert.equal([...direct.searchParams].length, 1, 'Keine vollständigen Kursquellen in HTTP-Query übertragen')
   assert.deepEqual(JSON.parse(new URLSearchParams(direct.hash.slice(1)).get('course')), manifest)
   console.log('Kursauswahl: Themen, Ausschlüsse, Duplikate, Zielgruppen, Anzahl, Sachsen-Lehrplan und Pages-Unterpfad bestanden.')
 }

@@ -6,6 +6,7 @@
 })(typeof window === 'object' ? window : typeof globalThis === 'object' ? globalThis : this, function (root) {
   'use strict'
 
+  const RELEASE = '1.0.0'
   const CATALOG_SCHEMA = 'schullia-course-catalog'
   const CATALOG_VERSION = 1
   const GROUPS = ['einsteiger', 'fortgeschrittene', 'experten']
@@ -535,6 +536,7 @@
 
   function buildDirectCourseUrl(base, manifest) {
     const url = new URL('course.html', base)
+    url.searchParams.set('v', RELEASE)
     url.hash = 'course=' + encodeURIComponent(JSON.stringify(manifest))
     return url.href
   }
@@ -542,7 +544,7 @@
   return {
     schema: 'schullia-course-generator',
     version: 1,
-    release: '1.0.0',
+    release: RELEASE,
     catalogSchema: CATALOG_SCHEMA,
     catalogVersion: CATALOG_VERSION,
     groups: GROUPS.slice(),

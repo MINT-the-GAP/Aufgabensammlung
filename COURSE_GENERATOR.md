@@ -26,8 +26,14 @@ Empfohlene Ladereihenfolge:
 3. `course-catalog.js`
 
 Die Generator-Runtime trägt
-`schema: 'schullia-course-generator'` und `version: 1`. Der Katalog trägt
+`schema: 'schullia-course-generator'`, `version: 1` und das gemeinsame
+Runtime-Release `release: '1.0.0'`. Der Katalog trägt
 `schema: 'schullia-course-catalog'` und `version: 1`.
+
+Alle von `index.html` und `course.html` geladenen Runtime-Scripts tragen
+denselben Cache-Parameter `?v=1.0.0`. Auch
+`buildDirectCourseUrl(...)` versieht `course.html` damit; das Kursmanifest
+bleibt ausschließlich im Hash.
 
 ## Auswahl und Build
 
@@ -82,11 +88,21 @@ Zulässige Angebote sind `schwaechen-ueben`, `weitere-uebungen` und
 `fortgeschrittene` und `experten`. Ein Lernpfad-Manifest muss genau vier
 verschiedene Aufgaben-URLs enthalten.
 
-`course.html` lädt die vier öffentlichen Quellen, entfernt Freeze-Importe,
+`course.html` lädt die gemeinsamen Runtime-Scripts, entfernt Freeze-Importe,
 erzwingt den MathPath-Import, ergänzt `lernpfad-level` und hängt eine
 Abschlussfolie mit `@Lernpfad` an. Der vorhandene `parent:`-Handshake zum
 gleichursprünglichen LiaScript-Frame bleibt unverändert. Auswahl und
 Kursquellen werden an keinen neuen Server übertragen.
+
+## Runtime-Veröffentlichung
+
+Der Pages-Workflow veröffentlicht `course.html`, `course-frame.html` und
+die benötigten `assets/course-*`-Dateien direkt nach den Kernprüfungen. Dieser
+kleine Publish verwendet `keep_files: true`, damit die bestehende Website
+erhalten bleibt, und läuft vor dem langsameren Liaex-Export. Dadurch wird das
+Zeitfenster zwischen Quelländerung und verfügbarer Runtime deutlich verkürzt.
+Anschließend ersetzt der vollständige Deploy die Website samt frisch erzeugter
+`index.html`. Eine Workflow-Concurrency-Gruppe bricht überholte Läufe ab.
 
 ## Katalog aktualisieren
 

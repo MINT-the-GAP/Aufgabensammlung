@@ -8,6 +8,7 @@ const { gunzipSync } = require('node:zlib')
 const { createHash } = require('node:crypto')
 const pw = require(process.env.SCHULLIA_PLAYWRIGHT_PATH || 'playwright')
 const root = path.resolve(__dirname, '../..')
+const runtimeRelease = require(path.join(root, 'assets/course-generator.js')).release
 const runLabel = String(process.env.SCHULLIA_TEST_RUN || 'all').replace(/[^a-z0-9_-]/gi, '_')
 const output = path.join(root, 'test-results/push-check/browser', runLabel)
 const stage = path.resolve(process.env.SCHULLIA_PAGES_DIR || process.argv[2] || '')
@@ -38,7 +39,7 @@ const server = http.createServer((request, response) => {
   } catch (_) { local404.push(pathname); response.writeHead(404).end('Not in the Pages artifact') }
 })
 function courseUrl(paths) {
-  return base + 'course.html#course=' + encodeURIComponent(JSON.stringify({ v: 1, urls: paths.map(task => rawBase + task), group: 'einsteiger', themes: ['logarithmen'] }))
+  return base + 'course.html?v=' + encodeURIComponent(runtimeRelease) + '#course=' + encodeURIComponent(JSON.stringify({ v: 1, urls: paths.map(task => rawBase + task), group: 'einsteiger', themes: ['logarithmen'] }))
 }
 async function test(name, action) {
   const began = Date.now()
@@ -151,7 +152,7 @@ async function boundary(engine) {
     const opened = context.waitForEvent('page')
     await page.locator('#courseGeneratorDirectSubmit').click()
     const popup = await opened
-    await popup.waitForURL(url => url.href.startsWith(base + 'course.html#course='))
+    await popup.waitForURL(url => url.href.startsWith(base + 'course.html?v=' + runtimeRelease + '#course='))
     const manifest = JSON.parse(decodeURIComponent(new URL(popup.url()).hash.slice('#course='.length)))
     assert.equal(manifest.urls.length, 4)
     assert.equal(new Set(manifest.urls).size, 4)
@@ -196,12 +197,13 @@ async function boundary(engine) {
     const stressEvent = context.waitForEvent('page')
     await page.locator('#courseGeneratorDirectSubmit').click()
     const stress = await stressEvent
-    await stress.waitForURL(url => url.href.startsWith(base + 'course.html#course='))
+    await stress.waitForURL(url => url.href.startsWith(base + 'course.html?v=' + runtimeRelease + '#course='))
     const stressUrl = new URL(stress.url())
     const stressManifest = JSON.parse(decodeURIComponent(stressUrl.hash.slice('#course='.length)))
     assert.equal(stressManifest.urls.length, 100)
     assert.equal(new Set(stressManifest.urls).size, 100)
-    assert.equal(stressUrl.search, '', 'A 100-task course does not create an oversized HTTP query')
+    assert.equal(stressUrl.searchParams.get('v'), runtimeRelease)
+    assert.equal([...stressUrl.searchParams].length, 1, 'A 100-task course keeps sources out of the HTTP query')
     await stress.frameLocator('#courseFrame').locator('#source').waitFor({ timeout: 60000 })
     const stressCharacters = (await stress.frameLocator('#courseFrame').locator('#source').innerText()).length
     assert.ok(stressCharacters > 10000)
@@ -211,8 +213,8 @@ async function boundary(engine) {
     await page.locator('#courseGeneratorDirectSubmit').click()
     const fallback = page.locator('#courseGeneratorManualOpen a')
     await fallback.waitFor()
-    assert.ok((await fallback.getAttribute('href')).startsWith(base + 'course.html#course='))
-    await page.goto(base + 'course.html#course=invalid')
+    assert.ok((await fallback.getAttribute('href')).startsWith(base + 'course.html?v=' + runtimeRelease + '#course='))
+    await page.goto(base + 'course.html?v=' + runtimeRelease + '#course=invalid')
     await page.locator('#courseRetry').waitFor({ state: 'visible' })
     assert.match(await page.locator('#courseStatus').innerText(), /unvollständig|Format|Aufgaben/)
     assert.deepEqual(evidence.errors.filter(error => !error.includes('ResizeObserver loop completed')), [])

@@ -33,6 +33,7 @@ const catalog = {
 async function main() {
   assert.equal(generator.schema, 'schullia-course-generator')
   assert.equal(generator.version, 1)
+  assert.equal(generator.release, '1.0.0')
   assert.equal(generator.validateCatalog(catalog), catalog)
   assert.throws(
     () => generator.validateCatalog({ ...catalog, version: 2 }),
@@ -138,6 +139,7 @@ async function main() {
     manifest
   ))
   assert.equal(direct.pathname, '/Aufgabensammlung/course.html')
+  assert.equal(direct.searchParams.get('v'), generator.release)
   assert.deepEqual(JSON.parse(new URLSearchParams(direct.hash.slice(1)).get('course')), manifest)
 
   const sharedImport = 'https://example.org/shared-template.md'
