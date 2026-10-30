@@ -146,7 +146,8 @@ async function main() {
     assert.equal((sourceOptions.prependBody.match(/\[Tutorial öffnen\]\(/g) || []).length, 1)
     assert.ok(sourceOptions.prependBody.includes('> [!CAUTION]\n> <h2>[Tutorial öffnen](' + tutorialUrl + ')</h2>'))
     assert.ok(sourceOptions.prependBody.includes('nutzt die Schrifterkennung'))
-    assert.ok(sourceOptions.prependBody.includes('wenn du Fragen oder Ideen hast, melde dich einfach bei mir'))
+    assert.ok(sourceOptions.prependBody.includes('Viel Erfolg!'))
+    assert.ok(!sourceOptions.prependBody.includes('wenn du Fragen oder Ideen hast, melde dich einfach bei mir'))
     assert.ok(sourceOptions.prependBody.endsWith(weeklyTutorialBlock))
   }
   assert.equal(options.resourceFilter('import', 'https://example.org/template.md'), true)

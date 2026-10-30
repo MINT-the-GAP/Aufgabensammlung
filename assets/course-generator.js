@@ -514,7 +514,7 @@
 
   const LEARNING_PATH_TUTORIAL_URL = 'https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/00_00_00_Tutorial.md'
   const LEARNING_PATH_SPACER = ['---', '---', '---', '---'].join('\n\n')
-  const LEARNING_PATH_COMMON_INTRO = 'Am besten nimmst du dir ein Blatt Papier oder nutzt die Schrifterkennung und arbeitest die Aufgaben Schritt für Schritt durch. Danach trägst du deine Lösungen ein und bekommst eine Musterlösung zum Vergleichen. Wenn du dich ein paar Mal vertan hast, kannst du dir auch die komplette Lösung anzeigen lassen. Versuche, ohne Hilfsmittel wie andere Apps zu arbeiten. Du kannst die Aufgaben auf deinem Handy, Tablet oder Laptop öffnen und jederzeit neu starten. Viel Erfolg – und wenn du Fragen oder Ideen hast, melde dich einfach bei mir!'
+  const LEARNING_PATH_COMMON_INTRO = 'Am besten nimmst du dir ein Blatt Papier oder nutzt die Schrifterkennung und arbeitest die Aufgaben Schritt für Schritt durch. Danach trägst du deine Lösungen ein und bekommst eine Musterlösung zum Vergleichen. Wenn du dich ein paar Mal vertan hast, kannst du dir auch die komplette Lösung anzeigen lassen. Versuche, ohne Hilfsmittel wie andere Apps zu arbeiten. Du kannst die Aufgaben auf deinem Handy, Tablet oder Laptop öffnen und jederzeit neu starten. Viel Erfolg!'
 
   function learningPathIntro(offer) {
     const introductions = {
