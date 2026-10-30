@@ -8,6 +8,7 @@
 
   const RESOURCE_KEYS = new Set(['import', 'script', 'link'])
   const MULTIPLE_KEYS = new Set(['attribute', 'translation'])
+  const COURSE_MODES = new Set(['Presentation', 'Slides', 'Textbook'])
 
   function normalize(value) {
     return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
@@ -202,6 +203,10 @@
   function build(documents, options) {
     if (!Array.isArray(documents) || !documents.length) throw new Error('Es wurden keine Aufgaben ausgewählt.')
     const settings = options || {}
+    const requestedMode = settings.mode === undefined ? undefined : String(settings.mode).trim()
+    if (requestedMode !== undefined && !COURSE_MODES.has(requestedMode)) {
+      throw new Error('Der angeforderte LiaScript-Modus ist ungültig.')
+    }
     const chunks = []
     const records = []
     const resources = new Map()
@@ -255,6 +260,7 @@
             let text = entry.text
             if (entry.key === 'logo' || entry.key === 'icon') text = entry.key + ': ' + resolveResource(entry.value, base)
             if (entry.key === 'edit' && settings.edit !== undefined) text = 'edit: ' + (settings.edit ? 'true' : 'false')
+            if (entry.key === 'mode' && requestedMode !== undefined) text = 'mode: ' + requestedMode
             records.push({ type: 'text', text: text })
           }
           return
@@ -294,6 +300,7 @@
       return record.type === 'resources' ? Array.from(record.values).map(function (url) { return record.key + ': ' + url }).join('\n') : record.text
     }).filter(Boolean)
     if (settings.edit !== undefined && !metadata.has('edit')) header.push('edit: ' + (settings.edit ? 'true' : 'false'))
+    if (requestedMode !== undefined && !metadata.has('mode')) header.push('mode: ' + requestedMode)
     if (tags.size) header.push('tags: ' + Array.from(tags.values()).join(', '))
     if (comments.size) header.push('comment: ' + Array.from(comments).join(' - '))
     if (authors.size) header.push('author: ' + Array.from(authors.values()).join('; '))

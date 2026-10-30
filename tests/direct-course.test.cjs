@@ -67,7 +67,7 @@ function testCourseAssembly() {
 
   const learningDocument = {
     url: firstUrl,
-    content: '<!--\nlanguage: de\nimport: https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README.md\nimport: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md\nauthor: Anna\nlicense: CC BY 4.0\n-->\n\n# Aufgabe\n\n[[ 2 ]]\n\n@ADetails(BE=2;Bruchrechnung)\n\n[[?]] @Explain',
+    content: '<!--\nlanguage: de\nmode: Presentation\nimport: https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README.md\nimport: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md\nauthor: Anna\nlicense: CC BY 4.0\n-->\n\n# Aufgabe\n\n[[ 2 ]]\n\n@ADetails(BE=2;Bruchrechnung)\n\n[[?]] @Explain',
   }
   const learningManifest = {
     offer: 'weitere-uebungen',
@@ -82,6 +82,8 @@ function testCourseAssembly() {
   assert.ok(!/lia-freeze|FreezeREADME/i.test(learningHeader), 'Lernpfad importiert Freeze nicht')
   assert.match(learningHeader, /lia-mathpath/)
   assert.match(learningHeader, /^lernpfad-level: Fortgeschritten$/m)
+  assert.match(learningHeader, /^mode: Textbook$/m)
+  assert.ok(!/^mode: Presentation$/m.test(learningHeader), 'Lernpfadkurse öffnen nicht im geerbten Präsentationsmodus')
   assert.match(learningHeader, /^author: Anna$/m)
   assert.match(learningHeader, /^license: CC BY 4\.0$/m)
   assert.ok(learningSource.includes('@ADetails(BE=2;Bruchrechnung)') && learningSource.includes('@Explain'))
@@ -294,9 +296,9 @@ async function testDirectCourse(html) {
   assert.ok(source.indexOf('id="courseGeneratorSubmit"') < source.indexOf('id="courseGeneratorDirectSubmit"'), 'Direkt-Button steht unter dem LiveEditor-Button')
   const playerHtml = fs.readFileSync(path.join(root, 'course.html'), 'utf8')
   assert.match(playerHtml, /<meta[^>]*name="viewport"/)
-  assert.match(playerHtml, /course-source\.js\?v=1\.0\.1/)
-  assert.match(playerHtml, /course-generator\.js\?v=1\.0\.1/)
-  assert.match(playerHtml, /course-player\.js\?v=1\.0\.1/)
+  assert.match(playerHtml, /course-source\.js\?v=1\.0\.2/)
+  assert.match(playerHtml, /course-generator\.js\?v=1\.0\.2/)
+  assert.match(playerHtml, /course-player\.js\?v=1\.0\.2/)
   assert.match(playerHtml, /id="courseThemeSample"[^>]*class="lia-btn"[^>]*hidden[^>]*aria-hidden="true"/)
   for (const name of ['course-source.js', 'course-generator.js', 'course-player.js']) {
     new vm.Script(fs.readFileSync(productFile(name), 'utf8'), { filename: name })

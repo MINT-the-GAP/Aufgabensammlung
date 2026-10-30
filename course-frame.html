@@ -36,6 +36,14 @@
           throw new Error('Unvollständige LiaScript-Startseite')
         }
         official.querySelectorAll('base, link[rel="manifest"]').forEach(function (node) { node.remove() })
+        // LiaScript reads the official stylesheet CSSOM when it creates
+        // shadow-DOM components such as <lia-formula>. Without an explicit
+        // anonymous CORS request, a stylesheet loaded from the official host
+        // is opaque inside this same-origin Pages shell and KaTeX's base rules
+        // are replaced by the first readable course style.
+        official.querySelectorAll('link[rel~="stylesheet"][href]').forEach(function (link) {
+          link.crossOrigin = 'anonymous'
+        })
         official.querySelectorAll('script:not([src])').forEach(function (script) {
           if (/navigator\s*\.\s*serviceWorker\s*\.\s*register\s*\(/.test(script.textContent || '')) script.remove()
         })

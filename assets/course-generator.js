@@ -6,7 +6,7 @@
 })(typeof window === 'object' ? window : typeof globalThis === 'object' ? globalThis : this, function (root) {
   'use strict'
 
-  const RELEASE = '1.0.1'
+  const RELEASE = '1.0.2'
   const CATALOG_SCHEMA = 'schullia-course-catalog'
   const CATALOG_VERSION = 1
   const GROUPS = ['einsteiger', 'fortgeschrittene', 'experten']
@@ -526,6 +526,7 @@
     }
     return {
       edit: false,
+      mode: 'Textbook',
       title: (labels[manifest.offer] || 'Lernpfad') + ': ' + String(manifest.topic || '').trim(),
       imports: [settings.mathPathImport || MATHPATH_IMPORT],
       header: ['lernpfad-level: ' + (levelLabels[manifest.level] || manifest.level)],

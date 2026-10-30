@@ -3,7 +3,7 @@ const fs = require('node:fs')
 const path = require('node:path')
 
 const repository = path.resolve(__dirname, '..')
-const expectedRelease = '1.0.1'
+const expectedRelease = '1.0.2'
 const required = [
   'course.html',
   'course-frame.html',
@@ -54,7 +54,10 @@ function testRuntimeDeployment(directory) {
   const frame = fs.readFileSync(path.join(root, 'course-frame.html'), 'utf8')
   const player = fs.readFileSync(path.join(root, 'assets/course-player.js'), 'utf8')
   assert.match(frame, /courseUri\.startsWith\('parent:'\)/, 'course-frame.html muss parent:-Quellen weiter annehmen')
+  assert.match(frame, /link\[rel~="stylesheet"\]\[href\]/, 'Offizielle Stylesheets müssen vor dem Frame-Start markiert werden')
+  assert.match(frame, /crossOrigin\s*=\s*'anonymous'/, 'Shadow-DOM-CSSOM benötigt einen anonymen CORS-Stylesheetabruf')
   assert.match(player, /const uri = 'parent:' \+ identity/, 'course-player.js muss den parent:-Handshake weiter verwenden')
+  assert.match(player, /const RUNTIME_RELEASE = '1\.0\.2'/, 'Die Frame-Identität muss die Runtime-Release cache-busten')
 
   const index = fs.readFileSync(path.join(repository, 'index.html'), 'utf8')
   const patch = fs.readFileSync(path.join(repository, 'patch.js'), 'utf8')

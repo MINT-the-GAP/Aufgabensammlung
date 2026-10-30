@@ -22,6 +22,12 @@ const tasks = {
   circle: '02_Geometrie/09_Kreis/Aufgabe_0001.md',
   coordinate: '02_Geometrie/02_Koordinatensystem/Aufgabe_0001.md'
 }
+const learningFractions = [
+  '01_Algebraische_Grundlagen/04_Bruchrechnung/Aufgabe_0027.md',
+  '01_Algebraische_Grundlagen/04_Bruchrechnung/Aufgabe_0028.md',
+  '01_Algebraische_Grundlagen/04_Bruchrechnung/Aufgabe_0029.md',
+  '01_Algebraische_Grundlagen/04_Bruchrechnung/Aufgabe_0030.md',
+]
 const results = []
 const local404 = []
 let base
@@ -40,6 +46,18 @@ const server = http.createServer((request, response) => {
 })
 function courseUrl(paths) {
   return base + 'course.html?v=' + encodeURIComponent(runtimeRelease) + '#course=' + encodeURIComponent(JSON.stringify({ v: 1, urls: paths.map(task => rawBase + task), group: 'einsteiger', themes: ['logarithmen'] }))
+}
+function learningPathCourseUrl(paths) {
+  const manifest = {
+    v: 1,
+    kind: 'lernpfad',
+    offer: 'weitere-uebungen',
+    topic: 'Addition',
+    level: 'einsteiger',
+    urls: paths.map(task => rawBase + task),
+  }
+  return base + 'course.html?v=' + encodeURIComponent(runtimeRelease) +
+    '#course=' + encodeURIComponent(JSON.stringify(manifest))
 }
 async function test(name, action) {
   const began = Date.now()
@@ -77,6 +95,37 @@ async function readyFrame(page) {
   await frame.locator('.lia-quiz').first().waitFor({ state: 'visible', timeout: 90000 })
   await frame.getByText(/Loading scripts and styles required by this course/).first().waitFor({ state: 'hidden', timeout: 90000 })
   return frame
+}
+async function checkFormulaRendering(frame) {
+  const formula = frame.locator('lia-formula').filter({ visible: true }).first()
+  await formula.waitFor({ state: 'visible', timeout: 30000 })
+  const evidence = await formula.evaluate(element => {
+    const root = element.shadowRoot
+    const mathml = root && root.querySelector('.katex-mathml')
+    const html = root && root.querySelector('.katex-html')
+    const mathmlStyle = mathml && getComputedStyle(mathml)
+    const htmlStyle = html && getComputedStyle(html)
+    const mathmlBox = mathml && mathml.getBoundingClientRect()
+    const htmlBox = html && html.getBoundingClientRect()
+    return {
+      hasShadow: !!root,
+      hasKatexBaseCss: !!root && Array.from(root.querySelectorAll('style'))
+        .some(style => style.textContent.includes('.katex .katex-mathml')),
+      mathmlPosition: mathmlStyle && mathmlStyle.position,
+      mathmlClipPath: mathmlStyle && mathmlStyle.clipPath,
+      mathmlWidth: mathmlBox && mathmlBox.width,
+      mathmlHeight: mathmlBox && mathmlBox.height,
+      htmlDisplay: htmlStyle && htmlStyle.display,
+      htmlWidth: htmlBox && htmlBox.width,
+    }
+  })
+  assert.equal(evidence.hasShadow, true, 'LiaScript-Formel besitzt ein Shadow-DOM')
+  assert.equal(evidence.hasKatexBaseCss, true, 'KaTeX-Basis-CSS muss aus der offiziellen Stylesheet-CSSOM übernommen werden')
+  assert.equal(evidence.mathmlPosition, 'absolute', 'Barrierefreies MathML darf nicht als zweite sichtbare Formel erscheinen')
+  assert.ok(evidence.mathmlWidth <= 1.5 && evidence.mathmlHeight <= 1.5, 'MathML bleibt visuell verborgen')
+  assert.notEqual(evidence.htmlDisplay, 'none', 'Die formatierte KaTeX-HTML-Ausgabe bleibt sichtbar')
+  assert.ok(evidence.htmlWidth > 4, 'Die sichtbare KaTeX-Ausgabe besitzt eine echte Breite')
+  return evidence
 }
 async function answer(frame, value, expected) {
   const block = frame.locator('.flex-child').first()
@@ -233,6 +282,7 @@ async function native(engine, mobile = false) {
     const paths = [tasks.log, tasks.tree, tasks.circle, tasks.coordinate]
     await page.goto(courseUrl(paths), { waitUntil: 'domcontentloaded' })
     const frame = await readyFrame(page)
+    const formula = await checkFormulaRendering(frame)
     await answer(frame, '999', /Die richtige Antwort wurde noch nicht gegeben|falsch|wrong/i)
     await answer(frame, '3', /richtige Antwort|correct/i)
     const sourceAccess = await checkSourceAccess(frame)
@@ -270,12 +320,49 @@ async function native(engine, mobile = false) {
     assert.deepEqual(evidence.errors, [], 'No browser JavaScript errors')
     assert.deepEqual(unexpectedNetworkFailures(evidence, engine), [], 'No failed external resource requests')
     await context.close()
-    return { engine, mobile, sources: 'real public Markdown and imports over HTTPS', interpreter: 'real current LiaScript', taskPaths: paths, checks: ['four-source course', 'wrong and correct Algebrite answer', 'tree SVG and CSS', 'circle check2 answer', 'coordinate rendering', 'ToC', 'previous/next', 'reload', 'project subpath', 'no script/resource errors'], treeStyle, evidence }
+    return { engine, mobile, sources: 'real public Markdown and imports over HTTPS', interpreter: 'real current LiaScript', taskPaths: paths, checks: ['four-source course', 'KaTeX shadow CSS without visible MathML duplicate', 'wrong and correct Algebrite answer', 'tree SVG and CSS', 'circle check2 answer', 'coordinate rendering', 'ToC', 'previous/next', 'reload', 'project subpath', 'no script/resource errors'], formula, treeStyle, evidence }
   } catch (error) {
     error.evidence = evidence
     error.message += '\nEvidence: ' + JSON.stringify(evidence)
     const page = browser.contexts()[0]?.pages()[0]
     if (page) await page.screenshot({ path: path.join(output, engine + (mobile ? '-mobile' : '') + '-native-failed.png'), fullPage: false }).catch(() => {})
+    throw error
+  } finally { await browser.close() }
+}
+async function learningPathFormula() {
+  const browser = await pw.chromium.launch({ headless: true })
+  const evidence = { errors: [], failedRequests: [], httpErrors: [] }
+  try {
+    const context = await browser.newContext({ viewport: { width: 1800, height: 900 }, locale: 'de-DE', serviceWorkers: 'block' })
+    context.setDefaultTimeout(30000)
+    const page = await context.newPage()
+    Object.assign(evidence, observe(page))
+    await page.goto(learningPathCourseUrl(learningFractions), { waitUntil: 'domcontentloaded' })
+    await page.locator('#courseFrame').waitFor({ state: 'visible', timeout: 60000 })
+    const frame = await (await page.locator('#courseFrame').elementHandle()).contentFrame()
+    assert.ok(frame.url().startsWith(base + 'course-frame.html?parent:'))
+    await frame.locator('.lia-mode--textbook').waitFor({ state: 'visible', timeout: 90000 })
+    if (!(await frame.locator('.lia-quiz').first().isVisible())) {
+      await frame.locator('button[title="weiter"]').first().click()
+    }
+    await frame.locator('.lia-quiz').first().waitFor({ state: 'visible', timeout: 90000 })
+    const formula = await checkFormulaRendering(frame)
+    const mode = await frame.locator('.lia-canvas').first().getAttribute('class')
+    assert.match(mode, /\blia-mode--textbook\b/, 'Lernpfadkurs überschreibt geerbtes mode: Presentation')
+    assert.equal(await frame.getByText('Subtraktion oder Addition von Brüchen', { exact: true }).count() >= 4, true)
+    await page.screenshot({ path: path.join(output, 'chromium-learning-path-formula.png'), fullPage: false })
+    assert.deepEqual(evidence.errors, [])
+    assert.deepEqual(unexpectedNetworkFailures(evidence, 'chromium'), [])
+    return {
+      engine: 'chromium',
+      sources: 'four real public fraction tasks',
+      checks: ['Textbook override', 'cross-origin CSSOM', 'KaTeX formatting', 'hidden MathML duplicate'],
+      formula,
+      evidence,
+    }
+  } catch (error) {
+    error.evidence = evidence
+    error.message += '\nEvidence: ' + JSON.stringify(evidence)
     throw error
   } finally { await browser.close() }
 }
@@ -390,6 +477,7 @@ async function main() {
   const engines = (process.env.SCHULLIA_BROWSERS || 'chromium,firefox,webkit').split(',').filter(Boolean)
   if (process.env.SCHULLIA_NATIVE_ONLY !== '1') for (const engine of engines) await test(engine + ' published UI/transport', () => boundary(engine))
   if (process.env.SCHULLIA_BOUNDARY_ONLY !== '1') for (const engine of engines) await test(engine + ' real public course', () => process.env.SCHULLIA_NATIVE_SMOKE === '1' ? nativeSmoke(engine) : native(engine))
+  if (process.env.SCHULLIA_BOUNDARY_ONLY !== '1') await test('chromium generated learning path formula and textbook mode', learningPathFormula)
   if (process.env.SCHULLIA_MOBILE === '1') await test('chromium mobile real public course', () => native('chromium', true))
   if (process.env.SCHULLIA_EXTRA === '1') {
     for (const kind of (process.env.SCHULLIA_EXTRA_CASES || 'random,coordinate-mix').split(',')) {

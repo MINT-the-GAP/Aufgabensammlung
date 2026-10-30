@@ -3,6 +3,7 @@
   'use strict'
 
   const COURSE_URL = new URL('./course-frame.html', window.location.href).href
+  const RUNTIME_RELEASE = '1.0.2'
   const COURSE_ORIGIN = new URL(COURSE_URL).origin
   const SOURCE_TIMEOUT_MS = 30000
   const FRAME_TIMEOUT_MS = 35000
@@ -85,7 +86,9 @@
   }
 
   async function courseIdentity(manifest, source) {
-    const text = JSON.stringify(manifest) + '\n' + source
+    // A runtime release can change the interpreter shell without changing the
+    // selected Markdown. Include it so the frame URL also cache-busts then.
+    const text = RUNTIME_RELEASE + '\n' + JSON.stringify(manifest) + '\n' + source
     if (window.crypto && window.crypto.subtle && typeof TextEncoder !== 'undefined') {
       try {
         const digest = await window.crypto.subtle.digest('SHA-256', new TextEncoder().encode(text))
