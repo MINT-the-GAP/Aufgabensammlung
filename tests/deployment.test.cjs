@@ -5,7 +5,8 @@ const vm = require('node:vm')
 
 const required = [
   'index.html', 'course.html', 'course-frame.html',
-  'assets/course-source.js', 'assets/course-player.js'
+  'assets/course-source.js', 'assets/course-generator.js', 'assets/course-player.js',
+  'assets/course-catalog.js', 'assets/course-catalog.json'
 ]
 const prefix = '/Aufgabensammlung/'
 const site = 'https://deployment.example'
@@ -27,6 +28,8 @@ function testDeployment(directory) {
   assert.match(index, /id="courseGeneratorSubmit"[^>]*>Kurs im LiveEditor generieren</)
   assert.match(index, /id="courseGeneratorDirectSubmit"[^>]*>Kurs direkt generieren</)
   assert.match(index, /function buildDirectCourseUrl\(/)
+  assert.match(index, /src=[\x22\x27]assets\/course-generator\.js[\x22\x27]/)
+  assert.match(index, /src=[\x22\x27]assets\/course-catalog\.js[\x22\x27]/)
   assert.match(index, /src="assets\/course-source\.js"/)
   let resources = 0
   let scripts = 0

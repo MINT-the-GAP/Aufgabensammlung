@@ -8,6 +8,7 @@
   const FRAME_TIMEOUT_MS = 35000
   const MAX_SOURCES = 2000
   const GROUPS = ['einsteiger', 'fortgeschrittene', 'experten']
+  const LEARNING_PATH_OFFERS = ['schwaechen-ueben', 'weitere-uebungen', 'vertiefungen']
 
   function normalizeManifest(value) {
     if (!value || typeof value !== 'object' || value.v !== 1) {
@@ -28,6 +29,36 @@
       }
       return url.href
     })
+
+    if (value.kind !== undefined && value.kind !== 'lernpfad') {
+      throw new Error('Dieser Kurslink enthält einen unbekannten Kurstyp.')
+    }
+    if (value.kind === 'lernpfad') {
+      if (urls.length !== 4 || new Set(urls).size !== 4) {
+        throw new Error('Ein Lernpfad muss genau vier verschiedene Aufgaben enthalten.')
+      }
+      if (!LEARNING_PATH_OFFERS.includes(value.offer)) {
+        throw new Error('Dieser Kurslink enthält ein unbekanntes Lernpfad-Angebot.')
+      }
+      if (!GROUPS.includes(value.level)) {
+        throw new Error('Dieser Kurslink enthält ein unbekanntes Lernpfad-Niveau.')
+      }
+      if (typeof value.topic !== 'string' || !value.topic.trim() ||
+          /[\r\n\u0000]/.test(value.topic) || value.topic.length > 200) {
+        throw new Error('Dieser Kurslink enthält ein ungültiges Lernpfad-Thema.')
+      }
+      const topic = value.topic.trim()
+      return {
+        v: 1,
+        kind: 'lernpfad',
+        offer: value.offer,
+        topic: topic,
+        level: value.level,
+        urls: urls,
+        group: value.level,
+        themes: [topic],
+      }
+    }
 
     const group = value.group === undefined ? 'fortgeschrittene' : value.group
     if (!GROUPS.includes(group)) throw new Error('Dieser Kurslink enthält eine unbekannte Zielgruppe.')
@@ -116,6 +147,11 @@
       if (!window.SchulLiaCourseSource || typeof window.SchulLiaCourseSource.build !== 'function') {
         throw new Error('Die Kursvorbereitung konnte nicht geladen werden. Bitte lade diese Seite erneut.')
       }
+      if (!window.SchulLiaCourseGenerator ||
+          window.SchulLiaCourseGenerator.schema !== 'schullia-course-generator' ||
+          window.SchulLiaCourseGenerator.version !== 1) {
+        throw new Error('Die gemeinsame Kursgenerierung konnte nicht geladen werden. Bitte lade diese Seite erneut.')
+      }
       sourceTimer = setTimeout(function () {
         timedOut = true
         currentController.abort()
@@ -128,10 +164,12 @@
       clearTimeout(sourceTimer)
       if (currentRun !== run) return
 
-      const source = window.SchulLiaCourseSource.build(documents, {
-        group: manifest.group,
-        themes: manifest.themes,
-        edit: false
+      const sourceOptions = manifest.kind === 'lernpfad'
+        ? window.SchulLiaCourseGenerator.learningPathSourceOptions(manifest)
+        : { group: manifest.group, themes: manifest.themes, edit: false }
+      const source = window.SchulLiaCourseGenerator.buildCourse(documents, {
+        assembler: window.SchulLiaCourseSource,
+        sourceOptions: sourceOptions,
       })
       if (typeof source !== 'string' || !source.trim()) throw new Error('Die ausgewählten Aufgaben enthalten keinen Kurstext.')
       const identity = await courseIdentity(manifest, source)

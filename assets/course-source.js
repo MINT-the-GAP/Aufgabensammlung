@@ -213,6 +213,15 @@
     const authors = new Map()
     const comments = new Set()
 
+    function resourceValues(key) {
+      if (!resources.has(key)) {
+        const values = new Set()
+        resources.set(key, values)
+        records.push({ type: 'resources', key: key, values: values })
+      }
+      return resources.get(key)
+    }
+
     documents.forEach(function (document) {
       const parsed = split(document && document.content)
       const base = document && document.url
@@ -220,12 +229,12 @@
       headerEntries(parsed.header).forEach(function (entry) {
         if (entry.type === 'metadata') {
           if (RESOURCE_KEYS.has(entry.key)) {
-            if (!resources.has(entry.key)) {
-              const values = new Set()
-              resources.set(entry.key, values)
-              records.push({ type: 'resources', key: entry.key, values: values })
-            }
-            entry.value.split(/\s+/).filter(Boolean).forEach(function (url) { resources.get(entry.key).add(resolveResource(url, base)) })
+            entry.value.split(/\s+/).filter(Boolean).forEach(function (url) {
+              const resolved = resolveResource(url, base)
+              if (!settings.resourceFilter || settings.resourceFilter(entry.key, resolved) !== false) {
+                resourceValues(entry.key).add(resolved)
+              }
+            })
           } else if (entry.key === 'tags') {
             entry.value.split(/[,;]|\s+-\s+/).forEach(function (value) {
               const tag = canonicalTag(value)
@@ -274,6 +283,12 @@
     })
 
     if (!chunks.length) throw new Error('Die geladenen Aufgaben waren leer.')
+    ;(Array.isArray(settings.imports) ? settings.imports : []).forEach(function (url) {
+      const resolved = String(url || '').trim()
+      if (resolved && (!settings.resourceFilter || settings.resourceFilter('import', resolved) !== false)) {
+        resourceValues('import').add(resolved)
+      }
+    })
     reconcileCoordinateImports(resources.get('import'))
     const header = records.map(function (record) {
       return record.type === 'resources' ? Array.from(record.values).map(function (url) { return record.key + ': ' + url }).join('\n') : record.text
@@ -282,8 +297,14 @@
     if (tags.size) header.push('tags: ' + Array.from(tags.values()).join(', '))
     if (comments.size) header.push('comment: ' + Array.from(comments).join(' - '))
     if (authors.size) header.push('author: ' + Array.from(authors.values()).join('; '))
+    ;(Array.isArray(settings.header) ? settings.header : settings.header ? [settings.header] : [])
+      .map(function (line) { return String(line || '').trim() })
+      .filter(Boolean)
+      .forEach(function (line) { header.push(line) })
     const title = settings.title ? '# ' + String(settings.title).replace(/[\r\n]+/g, ' ').trim() + '\n\n' : ''
-    return (header.length ? '<!--\n\n' + header.join('\n\n') + '\n\n-->\n\n' : '') + title + chunks.join('\n\n\n')
+    const appendBody = settings.appendBody ? '\n\n\n' + String(settings.appendBody).trim() : ''
+    return (header.length ? '<!--\n\n' + header.join('\n\n') + '\n\n-->\n\n' : '') +
+      title + chunks.join('\n\n\n') + appendBody
   }
 
   return { build: build, split: split, rebase: rebaseMarkdown }

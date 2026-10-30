@@ -34,6 +34,8 @@ const THEME_TAG_ALIASES = {
 }
 
 const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
+<script src='assets/course-generator.js'></script>
+<script src='assets/course-catalog.js'></script>
 <script src="assets/course-source.js"></script>
 <script>
   (function () {
@@ -586,619 +588,58 @@ const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
       return ''
     }
 
-    function pickRandomItems(items, count) {
-      const pool = items.slice()
-      for (let i = pool.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1))
-        const temp = pool[i]
-        pool[i] = pool[j]
-        pool[j] = temp
+    function sharedCourseGenerator() {
+      const generator = window.SchulLiaCourseGenerator
+      const catalog = window.SchulLiaCourseCatalog
+      if (!generator || generator.schema !== 'schullia-course-generator' ||
+          generator.version !== 1 || !catalog) {
+        throw new Error('Der gemeinsame Kursgenerator konnte nicht geladen werden. Bitte die Seite neu laden.')
       }
-      return pool.slice(0, count)
+      generator.validateCatalog(catalog)
+      return { generator: generator, catalog: catalog }
     }
 
-    const COURSE_TARGET_GROUP_PROFILES = {
-      einsteiger: {
-        difficulty: new Map([
-          [1, 0.35],
-          [2, 0.25],
-          [3, 0.15],
-          [4, 0.15],
-          [5, 0.1],
-        ]),
-        network: new Map([
-          [1, 0.6],
-          [2, 0.3],
-          [3, 0.05],
-          [4, 0.05],
-          [5, 0.0],
-        ]),
-      },
-      fortgeschrittene: {
-        difficulty: new Map([
-          [1, 0.1],
-          [2, 0.25],
-          [3, 0.4],
-          [4, 0.15],
-          [5, 0.1],
-        ]),
-        network: new Map([
-          [1, 0.1],
-          [2, 0.25],
-          [3, 0.4],
-          [4, 0.15],
-          [5, 0.1],
-        ]),
-      },
-      experten: {
-        difficulty: new Map([
-          [1, 0.1],
-          [2, 0.2],
-          [3, 0.35],
-          [4, 0.2],
-          [5, 0.15],
-        ]),
-        network: new Map([
-          [1, 0.1],
-          [2, 0.2],
-          [3, 0.3],
-          [4, 0.2],
-          [5, 0.2],
-        ]),
-      },
-    }
-
-    const COURSE_OPERATOR_RULES = [
-      { key: 'angeben', min: 0.05, max: 0.15 },
-      { key: 'ordnen', min: 0.0, max: 0.05 },
-      { key: 'skizzieren', min: 0.0, max: 0.2 },
-      { key: 'zeichnen', min: 0.0, max: 0.4 },
-      { key: 'abschaetzen', min: 0.0, max: 0.1 },
-      { key: 'vergleichen', min: 0.0, max: 0.1 },
-      { key: 'aufstellen', min: 0.0, max: 0.05 },
-      { key: 'ermitteln_bestimmen', min: 0.2, max: 0.5 },
-      { key: 'berechnen', min: 0.3, max: 0.75 },
-      { key: 'planen', min: 0.0, max: 0.05 },
-      { key: 'untersuchen', min: 0.0, max: 0.1 },
-      { key: 'ableiten', min: 0.0, max: 0.1 },
-      { key: 'herleiten', min: 0.0, max: 0.1 },
-      { key: 'beschreiben', min: 0.0, max: 0.1 },
-      { key: 'erklaeren', min: 0.0, max: 0.1 },
-      { key: 'erlaeutern', min: 0.0, max: 0.05 },
-      { key: 'eroertern', min: 0.0, max: 0.05 },
-      { key: 'diskutieren', min: 0.0, max: 0.05 },
-      { key: 'beurteilen', min: 0.0, max: 0.1 },
-      { key: 'bewerten', min: 0.0, max: 0.1 },
-      { key: 'begruenden', min: 0.0, max: 0.1 },
-      { key: 'interpretieren_deuten', min: 0.0, max: 0.1 },
-      { key: 'analysieren', min: 0.0, max: 0.1 },
-      { key: 'auswerten', min: 0.0, max: 0.1 },
-      { key: 'darstellen', min: 0.0, max: 0.1 },
-    ]
-
-    function buildCourseOperatorAliasMap() {
-      const map = new Map()
-
-      function add(key, aliases) {
-        aliases.forEach(function (alias) {
-          map.set(alias, key)
-        })
+    function courseSelectionRequest(themeValues, blockedThemeValues, requestedCount, groupValue, curriculumAllowed) {
+      const request = {
+        themes: themeValues,
+        blockedThemes: blockedThemeValues,
+        count: requestedCount,
+        group: groupValue,
       }
-
-      add('angeben', ['angeben', 'gib an', 'ausfullen', 'fulle aus', 'auswahlen', 'wahle aus', 'ankreuzen', 'kreuze an'])
-      add('ordnen', ['ordnen', 'ordne'])
-      add('skizzieren', ['skizzieren', 'skizziere'])
-      add('zeichnen', ['zeichnen', 'zeichne'])
-      add('abschaetzen', ['abschatzen', 'schatze ab'])
-      add('vergleichen', ['vergleichen', 'vergleiche'])
-      add('aufstellen', ['aufstellen', 'stelle auf'])
-      add('ermitteln_bestimmen', ['ermitteln', 'ermittle', 'bestimmen', 'bestimme'])
-      add('berechnen', ['berechnen', 'berechne'])
-      add('planen', ['planen', 'plane'])
-      add('untersuchen', ['untersuchen', 'untersuche'])
-      add('ableiten', ['ableiten', 'leite ab'])
-      add('herleiten', ['herleiten', 'leite her'])
-      add('beschreiben', ['beschreiben', 'beschreibe'])
-      add('erklaeren', ['erklaren', 'erklare'])
-      add('erlaeutern', ['erlautern', 'erlautere'])
-      add('eroertern', ['erortern', 'erortere'])
-      add('diskutieren', ['diskutieren', 'diskutiere'])
-      add('beurteilen', ['beurteilen', 'beurteile'])
-      add('bewerten', ['bewerten', 'bewerte'])
-      add('begruenden', ['begrunden', 'begrunde'])
-      add('interpretieren_deuten', ['interpretieren', 'interpretiere', 'deuten', 'deute'])
-      add('analysieren', ['analysieren', 'analysiere'])
-      add('auswerten', ['auswerten', 'werte aus'])
-      add('darstellen', ['darstellen', 'stelle dar'])
-
-      return map
-    }
-
-    const COURSE_OPERATOR_ALIAS_TO_KEY = buildCourseOperatorAliasMap()
-
-    function normalizeOperatorText(value) {
-      return String(value == null ? '' : value)
-        .toLowerCase()
-        .replace(/ß/g, 'ss')
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .replace(/\s+/g, ' ')
-        .trim()
-    }
-
-    function resolveOperatorKey(value) {
-      const normalized = normalizeOperatorText(value)
-      return normalized ? COURSE_OPERATOR_ALIAS_TO_KEY.get(normalized) || null : null
-    }
-
-    function getTargetGroupProfile(groupValue) {
-      const normalized = normalizeText(groupValue)
-      return COURSE_TARGET_GROUP_PROFILES[normalized] || COURSE_TARGET_GROUP_PROFILES.fortgeschrittene
-    }
-
-    function getCardDifficultyLevel(card) {
-      if (!card) return null
-
-      const cardBody = card.querySelector('.card-body')
-      if (!cardBody) return null
-
-      const level = Number.parseInt(cardBody.dataset.schulliaDifficultyLevel || '', 10)
-      return Number.isFinite(level) && level >= 1 && level <= 5 ? level : null
-    }
-
-    function getCardNetworkLevel(card) {
-      if (!card) return null
-
-      const cardBody = card.querySelector('.card-body')
-      if (!cardBody) return null
-
-      const level = Number.parseInt(cardBody.dataset.schulliaNetworkLevel || '', 10)
-      return Number.isFinite(level) && level >= 1 && level <= 5 ? level : null
-    }
-
-    function getCardOperatorKey(card) {
-      if (!card) return null
-
-      const cardBody = card.querySelector('.card-body')
-      if (!cardBody) return null
-
-      const stored = String(cardBody.dataset.schulliaOperatorKey || '').trim()
-      if (stored) return stored
-
-      const badges = Array.from(cardBody.querySelectorAll('.badge'))
-      for (let i = 0; i < badges.length; i += 1) {
-        const key = resolveOperatorKey(badges[i].textContent)
-        if (key) return key
+      if (curriculumAllowed) {
+        request.allowedThemes = Array.from(curriculumAllowed)
+        request.curriculumThemes = Array.from(schulliaCurriculumUniverse())
       }
-
-      return null
-    }
-
-    function allocateTargetsByWeights(total, weights, availability) {
-      const targets = new Map()
-      if (total <= 0) return targets
-
-      const activeLevels = []
-      let weightSum = 0
-
-      weights.forEach(function (weight, level) {
-        const available = Number(availability.get(level) || 0)
-        if (available > 0 && weight > 0) {
-          activeLevels.push(level)
-          weightSum += weight
-        }
-      })
-
-      if (!activeLevels.length) return targets
-
-      const bucket = []
-      let assigned = 0
-
-      activeLevels.forEach(function (level) {
-        const available = Number(availability.get(level) || 0)
-        const expected = (total * weights.get(level)) / weightSum
-        const base = Math.min(available, Math.floor(expected))
-        targets.set(level, base)
-        assigned += base
-        bucket.push({
-          level: level,
-          rest: expected - base,
-          room: Math.max(0, available - base),
-        })
-      })
-
-      let remaining = total - assigned
-      while (remaining > 0) {
-        bucket
-          .sort(function (a, b) {
-            if (b.rest !== a.rest) return b.rest - a.rest
-            return b.room - a.room
-          })
-          .some(function (entry) {
-            if (entry.room <= 0) return false
-            targets.set(entry.level, (targets.get(entry.level) || 0) + 1)
-            entry.room -= 1
-            entry.rest = 0
-            remaining -= 1
-            return true
-          })
-
-        const hasRoom = bucket.some(function (entry) {
-          return entry.room > 0
-        })
-        if (!hasRoom) break
-      }
-
-      return targets
-    }
-
-    function buildOperatorConstraints(total, availability) {
-      const base = COURSE_OPERATOR_RULES.map(function (rule) {
-        const available = Number(availability.get(rule.key) || 0)
-        if (!available) {
-          return { key: rule.key, min: 0, max: 0, available: 0 }
-        }
-
-        // Relax percentage bounds outwards for small integer course sizes.
-        // Example: 5-15% of five tasks permits 0 or 1 task; it must not force
-        // one task (20%) into every generated course.
-        let min = Math.min(available, Math.floor(rule.min * total + 1e-9))
-        let max = Math.min(available, Math.ceil(rule.max * total - 1e-9))
-        if (max < min) min = max
-
-        // Positive target ranges need an integer target as well as hard bounds.
-        // Stochastic rounding avoids systematically forcing a 5-15% operator
-        // into every five-task course (0.5 expected tasks becomes 0 or 1).
-        let preferredMax = max
-        if (rule.min > 0) {
-          const exactTarget = ((rule.min + rule.max) / 2) * total
-          const baseTarget = Math.floor(exactTarget)
-          const roundedTarget = baseTarget + (Math.random() < exactTarget - baseTarget ? 1 : 0)
-          preferredMax = Math.max(min, Math.min(max, available, roundedTarget))
-        }
-
-        return {
-          key: rule.key,
-          min: min,
-          max: max,
-          minShare: rule.min,
-          maxShare: rule.max,
-          preferredMax: preferredMax,
-          available: available,
-        }
-      })
-
-      const withMin = base.filter(function (entry) {
-        return entry.min > 0
-      })
-
-      const minSum = withMin.reduce(function (sum, entry) {
-        return sum + entry.min
-      }, 0)
-
-      if (minSum > total && minSum > 0) {
-        const scaled = withMin.map(function (entry) {
-          const exact = (entry.min * total) / minSum
-          return {
-            key: entry.key,
-            exact: exact,
-            base: Math.floor(exact),
-            rest: exact - Math.floor(exact),
-            max: entry.max,
-          }
-        })
-
-        let assigned = scaled.reduce(function (sum, entry) {
-          return sum + entry.base
-        }, 0)
-        let remaining = total - assigned
-
-        scaled.sort(function (a, b) {
-          return b.rest - a.rest
-        })
-
-        for (let i = 0; i < scaled.length && remaining > 0; i += 1) {
-          scaled[i].base += 1
-          remaining -= 1
-        }
-
-        const minByKey = new Map(
-          scaled.map(function (entry) {
-            return [entry.key, entry.base]
-          })
-        )
-
-        base.forEach(function (entry) {
-          const newMin = Number(minByKey.get(entry.key) || 0)
-          entry.min = Math.min(newMin, entry.max)
-        })
-      }
-
-      return new Map(
-        base.map(function (entry) {
-          return [entry.key, entry]
-        })
-      )
-    }
-
-    function scoreEntryForTargets(entry, diffCounts, diffTargets, networkCounts, networkTargets) {
-      let score = Math.random() * 0.05
-
-      if (Number.isFinite(entry.difficulty)) {
-        const target = Number(diffTargets.get(entry.difficulty) || 0)
-        const current = Number(diffCounts.get(entry.difficulty) || 0)
-        score += current < target ? 22 : -6
-      }
-
-      if (Number.isFinite(entry.network)) {
-        const target = Number(networkTargets.get(entry.network) || 0)
-        const current = Number(networkCounts.get(entry.network) || 0)
-        score += current < target ? 16 : -4
-      }
-
-      return score
-    }
-
-    function pickBestFromPool(pool, predicate, scorer) {
-      const matches = pool.filter(predicate)
-      if (!matches.length) return null
-
-      let best = matches[0]
-      let bestScore = scorer(best)
-
-      for (let i = 1; i < matches.length; i += 1) {
-        const current = matches[i]
-        const currentScore = scorer(current)
-        if (currentScore > bestScore) {
-          best = current
-          bestScore = currentScore
-        }
-      }
-
-      return best
-    }
-
-    function removeEntry(pool, entry) {
-      const index = pool.indexOf(entry)
-      if (index >= 0) pool.splice(index, 1)
-    }
-
-    function selectCardsByCourseCriteria(candidates, count, groupValue) {
-      const targetCount = Math.max(1, Math.min(count, candidates.length))
-      const profile = getTargetGroupProfile(groupValue)
-      const entries = candidates.map(function (card) {
-        return {
-          card: card,
-          difficulty: getCardDifficultyLevel(card),
-          network: getCardNetworkLevel(card),
-          operator: getCardOperatorKey(card),
-        }
-      })
-
-      const pool = pickRandomItems(entries, entries.length)
-      const selected = []
-
-      const diffAvailability = new Map()
-      const networkAvailability = new Map()
-      const operatorAvailability = new Map()
-
-      entries.forEach(function (entry) {
-        if (Number.isFinite(entry.difficulty)) {
-          diffAvailability.set(entry.difficulty, Number(diffAvailability.get(entry.difficulty) || 0) + 1)
-        }
-
-        if (Number.isFinite(entry.network)) {
-          networkAvailability.set(entry.network, Number(networkAvailability.get(entry.network) || 0) + 1)
-        }
-
-        if (entry.operator) {
-          operatorAvailability.set(entry.operator, Number(operatorAvailability.get(entry.operator) || 0) + 1)
-        }
-      })
-
-      const diffTargets = allocateTargetsByWeights(targetCount, profile.difficulty, diffAvailability)
-      const networkTargets = allocateTargetsByWeights(targetCount, profile.network, networkAvailability)
-      const operatorConstraints = buildOperatorConstraints(targetCount, operatorAvailability)
-
-      const diffCounts = new Map()
-      const networkCounts = new Map()
-      const operatorCounts = new Map()
-
-      function register(entry) {
-        selected.push(entry)
-        removeEntry(pool, entry)
-
-        if (Number.isFinite(entry.difficulty)) {
-          diffCounts.set(entry.difficulty, Number(diffCounts.get(entry.difficulty) || 0) + 1)
-        }
-
-        if (Number.isFinite(entry.network)) {
-          networkCounts.set(entry.network, Number(networkCounts.get(entry.network) || 0) + 1)
-        }
-
-        if (entry.operator) {
-          operatorCounts.set(entry.operator, Number(operatorCounts.get(entry.operator) || 0) + 1)
-        }
-      }
-
-      const minRules = Array.from(operatorConstraints.values())
-        .filter(function (entry) {
-          return entry.min > 0
-        })
-        .sort(function (a, b) {
-          return b.min - a.min
-        })
-
-      minRules.forEach(function (rule) {
-        while (selected.length < targetCount && Number(operatorCounts.get(rule.key) || 0) < rule.min) {
-          const best = pickBestFromPool(
-            pool,
-            function (entry) {
-              return entry.operator === rule.key
-            },
-            function (entry) {
-              return scoreEntryForTargets(entry, diffCounts, diffTargets, networkCounts, networkTargets) + 35
-            }
-          )
-
-          if (!best) break
-          register(best)
-        }
-      })
-
-      function respectsOperatorMax(entry) {
-        if (!entry.operator) return true
-        const rule = operatorConstraints.get(entry.operator)
-        if (!rule) return true
-        const preferredMax = Number.isFinite(rule.preferredMax) ? rule.preferredMax : rule.max
-        return Number(operatorCounts.get(entry.operator) || 0) < preferredMax
-      }
-
-      function operatorOverflowPenalty(entry) {
-        if (!entry.operator) return 0
-        const rule = operatorConstraints.get(entry.operator)
-        if (!rule) return 0
-
-        const nextCount = Number(operatorCounts.get(entry.operator) || 0) + 1
-        const preferredMax = Number.isFinite(rule.preferredMax) ? rule.preferredMax : rule.max
-        const preferencePenalty = nextCount > preferredMax ? (nextCount - preferredMax) * 100 : 0
-        if (nextCount <= rule.max) return preferencePenalty
-
-        const excessShare = Math.max(0, nextCount / targetCount - rule.maxShare)
-        return preferencePenalty + excessShare * 1000 + (nextCount - rule.max) * 10
-      }
-
-      Array.from(diffTargets.keys())
-        .sort(function (a, b) {
-          return a - b
-        })
-        .forEach(function (level) {
-          while (selected.length < targetCount && Number(diffCounts.get(level) || 0) < Number(diffTargets.get(level) || 0)) {
-            const best = pickBestFromPool(
-              pool,
-              function (entry) {
-                return entry.difficulty === level && respectsOperatorMax(entry)
-              },
-              function (entry) {
-                return scoreEntryForTargets(entry, diffCounts, diffTargets, networkCounts, networkTargets) + 18
-              }
-            )
-            if (!best) break
-            register(best)
-          }
-        })
-
-      Array.from(networkTargets.keys())
-        .sort(function (a, b) {
-          return a - b
-        })
-        .forEach(function (level) {
-          while (selected.length < targetCount && Number(networkCounts.get(level) || 0) < Number(networkTargets.get(level) || 0)) {
-            const best = pickBestFromPool(
-              pool,
-              function (entry) {
-                return entry.network === level && respectsOperatorMax(entry)
-              },
-              function (entry) {
-                return scoreEntryForTargets(entry, diffCounts, diffTargets, networkCounts, networkTargets) + 14
-              }
-            )
-            if (!best) break
-            register(best)
-          }
-        })
-
-      while (selected.length < targetCount && pool.length) {
-        const bestWithMax = pickBestFromPool(
-          pool,
-          function (entry) {
-            return respectsOperatorMax(entry)
-          },
-          function (entry) {
-            return scoreEntryForTargets(entry, diffCounts, diffTargets, networkCounts, networkTargets)
-          }
-        )
-
-        const bestAny =
-          bestWithMax ||
-          pickBestFromPool(
-            pool,
-            function () {
-              return true
-            },
-            function (entry) {
-              return (
-                scoreEntryForTargets(entry, diffCounts, diffTargets, networkCounts, networkTargets) -
-                operatorOverflowPenalty(entry)
-              )
-            }
-          )
-
-        if (!bestAny) break
-        register(bestAny)
-      }
-
-      return selected
-        .sort(function (a, b) {
-          const aLevel = Number.isFinite(a.difficulty) ? a.difficulty : 99
-          const bLevel = Number.isFinite(b.difficulty) ? b.difficulty : 99
-          if (aLevel !== bLevel) return aLevel - bLevel
-
-          const aNetwork = Number.isFinite(a.network) ? a.network : 99
-          const bNetwork = Number.isFinite(b.network) ? b.network : 99
-          return aNetwork - bNetwork
-        })
-        .map(function (entry) {
-          return entry.card
-        })
+      return request
     }
 
     function selectCourseTaskUrls(themeValues, blockedThemeValues, requestedCount, groupValue, curriculumAllowed) {
-      const candidates = curriculumAllowed
-        ? getCurriculumCandidateCards(curriculumAllowed, themeValues, blockedThemeValues)
-        : getCandidateCardsForThemes(themeValues, blockedThemeValues)
-      const seenUrls = new Set()
-      const uniqueCandidates = candidates.filter(function (card) {
-        const url = extractRawTaskUrl(card)
-        if (!url || seenUrls.has(url)) return false
-        seenUrls.add(url)
-        return true
-      })
-      if (!uniqueCandidates.length) {
-        throw new Error('Keine Aufgaben für die gewählten/gesperrten Themen gefunden.')
-      }
-
-      const selectionCount = Math.max(1, Math.min(requestedCount, uniqueCandidates.length))
-      const selectedUrls = selectCardsByCourseCriteria(uniqueCandidates, selectionCount, groupValue)
-        .map(extractRawTaskUrl)
-        .filter(Boolean)
-      if (!selectedUrls.length) {
-        throw new Error('Es konnten keine Aufgaben-Quellen aufgelöst werden.')
-      }
-      return selectedUrls
+      const shared = sharedCourseGenerator()
+      return shared.generator.selectTasks(
+        shared.catalog,
+        courseSelectionRequest(
+          themeValues, blockedThemeValues, requestedCount, groupValue, curriculumAllowed
+        )
+      ).map(function (task) { return task.url })
     }
 
     async function buildCourseSource(themeValues, blockedThemeValues, requestedCount, groupValue, curriculumAllowed) {
+      const shared = sharedCourseGenerator()
       const selectedUrls = selectCourseTaskUrls(
         themeValues, blockedThemeValues, requestedCount, groupValue, curriculumAllowed
       )
-      const documents = await Promise.all(selectedUrls.map(async function (url) {
-        const response = await fetch(url)
-        if (!response.ok) throw new Error('Aufgabe konnte nicht geladen werden: ' + url)
-        return { url: url, content: await response.text() }
-      }))
-      if (!window.SchulLiaCourseSource) {
-        throw new Error('Der Kursgenerator konnte nicht geladen werden. Bitte die Seite neu laden.')
-      }
-      return window.SchulLiaCourseSource.build(documents, { group: groupValue, themes: themeValues })
+      const byUrl = new Map(shared.catalog.tasks.map(function (task) { return [task.url, task] }))
+      const tasks = selectedUrls.map(function (url) { return byUrl.get(url) })
+      const documents = await shared.generator.loadDocuments(tasks, { fetch: fetch })
+      return shared.generator.buildCourse(documents, {
+        assembler: window.SchulLiaCourseSource,
+        sourceOptions: { group: groupValue, themes: themeValues },
+      })
     }
 
     function buildDirectCourseUrl(manifest) {
-      const url = new URL('course.html', window.location.href)
-      url.hash = 'course=' + encodeURIComponent(JSON.stringify(manifest))
-      return url.href
+      return sharedCourseGenerator().generator.buildDirectCourseUrl(window.location.href, manifest)
     }
-
     const LIVE_EDITOR_EMPTY_URL = 'https://liascript.github.io/LiveEditor/?/edit'
     // Stay below the server's request-URL limit, including encoding overhead.
     const LIVE_EDITOR_MAX_URL_LENGTH = 6000

@@ -63,17 +63,24 @@ markerNames.forEach(function (name) {
 const requiredFeatures = [
   'function setupCustomDropdownKeyboard',
   'function syncCategoryDropdownFromCards',
-  'function operatorOverflowPenalty',
-  'preferredMax: preferredMax',
-  'Math.floor(rule.min * total + 1e-9)',
-  'Math.ceil(rule.max * total - 1e-9)',
-  'berechne',
-  'skizziere'
+  'assets/course-generator.js',
+  'assets/course-catalog.js',
+  'function courseSelectionRequest',
+  'shared.generator.selectTasks'
 ]
 
 requiredFeatures.forEach(function (feature) {
   assert.ok(html.includes(feature), 'Erwartete Build-Funktion fehlt: ' + feature)
 })
+
+for (const legacy of [
+  'COURSE_TARGET_GROUP_PROFILES',
+  'COURSE_OPERATOR_RULES',
+  'function selectCardsByCourseCriteria',
+  'function allocateTargetsByWeights',
+]) {
+  assert.ok(!html.includes(legacy), 'Veraltete parallele Auswahlpolitik gefunden: ' + legacy)
+}
 
 const categorySelectMatch = html.match(/<select\b(?=[^>]*\bid=(?:'categorySelect'|\x22categorySelect\x22))[^>]*>([\s\S]*?)<\/select>/i)
 assert.ok(categorySelectMatch, 'categorySelect fehlt')

@@ -4,6 +4,7 @@ const path = require('node:path')
 const vm = require('node:vm')
 const { webcrypto } = require('node:crypto')
 const assembler = require('../assets/course-source.js')
+const generator = require('../assets/course-generator.js')
 
 const code = fs.readFileSync(path.join(__dirname, '../assets/course-player.js'), 'utf8')
 const origin = 'https://school.example'
@@ -36,6 +37,7 @@ function harness(options = {}) {
     location,
     document: { title: '', getElementById: id => elements.get(id) },
     SchulLiaCourseSource: options.missingAssembler ? undefined : assembler,
+    SchulLiaCourseGenerator: options.missingGenerator ? undefined : generator,
     async fetch(url, request) {
       requests.push({ url, signal: request.signal })
       return options.fetch ? options.fetch(url, request) : { ok: true, text: async () => markdown }
@@ -113,6 +115,38 @@ async function main() {
   assert.throws(() => h.api.normalizeManifest({ ...manifest, urls: [] }), /Aufgabenauswahl/)
   assert.throws(() => h.api.normalizeManifest({ ...manifest, group: 'unknown' }), /Zielgruppe/)
   assert.throws(() => h.api.normalizeManifest({ ...manifest, themes: ['broken\nvalue'] }), /Themenauswahl/)
+  const learningUrls = [1, 2, 3, 4].map(number =>
+    sourceUrl.replace('Aufgabe_0001.md', 'Aufgabe_000' + number + '.md')
+  )
+  const learningManifest = {
+    v: 1,
+    kind: 'lernpfad',
+    offer: 'weitere-uebungen',
+    topic: 'Bruchrechnung',
+    level: 'fortgeschrittene',
+    urls: learningUrls,
+  }
+  const normalizedLearning = h.api.normalizeManifest(learningManifest)
+  assert.equal(normalizedLearning.group, 'fortgeschrittene')
+  assert.deepEqual(Array.from(normalizedLearning.themes), ['Bruchrechnung'])
+  assert.throws(() => h.api.normalizeManifest({ ...learningManifest, urls: learningUrls.slice(0, 3) }), /genau vier/)
+  assert.throws(() => h.api.normalizeManifest({ ...learningManifest, urls: [learningUrls[0], learningUrls[0], learningUrls[2], learningUrls[3]] }), /verschiedene/)
+  assert.throws(() => h.api.normalizeManifest({ ...learningManifest, offer: 'unknown' }), /Angebot/)
+  assert.throws(() => h.api.normalizeManifest({ ...learningManifest, level: 'unknown' }), /Niveau/)
+  const learningMarkdown = '<!--\nlanguage: de\nimport: https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README.md\n-->\n# Aufgabe\n\n[[ 2 ]]\n\n@ADetails(BE=2;Bruchrechnung)\n\n[[?]] @Explain'
+  const learning = harness({
+    hash: hash(learningManifest),
+    fetch: async () => ({ ok: true, text: async () => learningMarkdown }),
+  })
+  await settle()
+  assert.equal(learning.requests.length, 4)
+  learning.message({ cmd: 'lia-course', param: { uri: learning.uri() } })
+  const learningSource = learning.posts[0].data.param.body
+  assert.ok(!/lia-freeze|FreezeREADME/i.test(learningSource))
+  assert.match(learningSource, /lia-mathpath/)
+  assert.match(learningSource, /^lernpfad-level: Fortgeschritten$/m)
+  assert.ok(learningSource.trim().endsWith('# Dein weiterer Lernpfad\n\n@Lernpfad'))
+  learning.dispatch('pagehide')
   for (const malformed of ['', '#course=%7Bbroken', hash({ ...manifest, urls: ['https://other.example/Aufgabe.md'] })]) {
     const broken = harness({ hash: malformed })
     await settle()

@@ -29,6 +29,9 @@ jobs:
 
       - name: Test course generation
         run: |
+          node scripts/build-course-catalog.cjs --check
+          node tests/course-catalog.test.cjs
+          node tests/course-generator.test.cjs
           node tests/direct-course.test.cjs
           node tests/course-player.test.cjs
           node tests/generator.test.cjs

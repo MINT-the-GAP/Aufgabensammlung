@@ -16,6 +16,7 @@ function productFile(name) {
 
 function testCourseAssembly() {
   const assembler = require(productFile('course-source.js'))
+  const generator = require(productFile('course-generator.js'))
   assert.equal(typeof assembler.build, 'function')
   const firstUrl = raw + '06_Stochastik/02_Baumdiagramme/Aufgabe_0001.md'
   const secondUrl = raw + '01_Algebraische_Grundlagen/04_Bruchrechnung/Aufgabe_0001.md'
@@ -63,6 +64,28 @@ function testCourseAssembly() {
   assert.equal((header.match(/^language:/gm) || []).length, 1)
   assert.equal((header.match(/^version:/gm) || []).length, 1)
   assert.ok(!source.includes('@Auswertung') && !source.includes('@Abgabe'), 'Keine unbestellten zusätzlichen Kursfolien erzeugen')
+
+  const learningDocument = {
+    url: firstUrl,
+    content: '<!--\nlanguage: de\nimport: https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README.md\nimport: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md\nauthor: Anna\nlicense: CC BY 4.0\n-->\n\n# Aufgabe\n\n[[ 2 ]]\n\n@ADetails(BE=2;Bruchrechnung)\n\n[[?]] @Explain',
+  }
+  const learningManifest = {
+    offer: 'weitere-uebungen',
+    topic: 'Bruchrechnung',
+    level: 'fortgeschrittene',
+  }
+  const learningSource = generator.buildCourse([learningDocument], {
+    assembler,
+    sourceOptions: generator.learningPathSourceOptions(learningManifest),
+  })
+  const learningHeader = assembler.split(learningSource).header
+  assert.ok(!/lia-freeze|FreezeREADME/i.test(learningHeader), 'Lernpfad importiert Freeze nicht')
+  assert.match(learningHeader, /lia-mathpath/)
+  assert.match(learningHeader, /^lernpfad-level: Fortgeschritten$/m)
+  assert.match(learningHeader, /^author: Anna$/m)
+  assert.match(learningHeader, /^license: CC BY 4\.0$/m)
+  assert.ok(learningSource.includes('@ADetails(BE=2;Bruchrechnung)') && learningSource.includes('@Explain'))
+  assert.ok(learningSource.trim().endsWith('# Dein weiterer Lernpfad\n\n@Lernpfad'))
 
   // Exercise a real complex source: this catches line-wise de-duplication of
   // repeated CSS braces in addition to the small synthetic example above.
@@ -272,9 +295,10 @@ async function testDirectCourse(html) {
   const playerHtml = fs.readFileSync(path.join(root, 'course.html'), 'utf8')
   assert.match(playerHtml, /<meta[^>]*name="viewport"/)
   assert.match(playerHtml, /course-source\.js/)
+  assert.match(playerHtml, /course-generator\.js/)
   assert.match(playerHtml, /course-player\.js/)
   assert.match(playerHtml, /id="courseThemeSample"[^>]*class="lia-btn"[^>]*hidden[^>]*aria-hidden="true"/)
-  for (const name of ['course-source.js', 'course-player.js']) {
+  for (const name of ['course-source.js', 'course-generator.js', 'course-player.js']) {
     new vm.Script(fs.readFileSync(productFile(name), 'utf8'), { filename: name })
   }
   const frameHtml = fs.readFileSync(path.join(root, 'course-frame.html'), 'utf8')

@@ -5,6 +5,7 @@ const vm = require('node:vm')
 const root = path.resolve(__dirname, '..')
 const source = fs.readFileSync(process.argv[2] || path.join(root, 'index.html'), 'utf8')
 const assembler = require('../assets/course-source.js')
+const generator = require('../assets/course-generator.js')
 const raw = 'https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/'
 
 function between(start, end) {
@@ -30,6 +31,7 @@ let radios = {}
 context.window = {
   location: { href: 'https://mint-the-gap.github.io/Aufgabensammlung/index.html' },
   SchulLiaCourseSource: assembler,
+  SchulLiaCourseGenerator: generator,
 }
 context.document = {
   querySelectorAll: selector => selector.includes('courseLbGroup') ? checkedAreas.map(value => ({ value })) : cards,
@@ -61,6 +63,28 @@ function card(id, tags, filename, options = {}) {
 
 const ids = list => Array.from(list, item => item.id)
 
+function syncCatalog() {
+  const seen = new Set()
+  context.window.SchulLiaCourseCatalog = {
+    schema: generator.catalogSchema,
+    version: generator.catalogVersion,
+    tasks: Array.from(context.getCourseTaskCards()).map(item => {
+      const url = context.extractRawTaskUrl(item)
+      const body = item.querySelector('.card-body')
+      return {
+        id: item.id,
+        url,
+        title: item.id,
+        tags: String(item.dataset.category || '').split('|'),
+        topics: String(item.dataset.category || '').split('|'),
+        difficulty: Number(body.dataset.schulliaDifficultyLevel),
+        network: Number(body.dataset.schulliaNetworkLevel),
+        operator: body.dataset.schulliaOperatorKey,
+      }
+    }).filter(task => task.url && !seen.has(task.url) && seen.add(task.url))
+  }
+}
+
 async function main() {
   cards = [
     card('first', 'Bruchrechnung|Koordinatensystem', 'Aufgabe_0001.md'),
@@ -81,30 +105,13 @@ async function main() {
 
   // Both start buttons share this selection. Count applies to unique source
   // files, and must never be spent twice on two cards for the same source.
+  syncCatalog()
   const selected = Array.from(context.selectCourseTaskUrls(['Brüche'], ['Negative Zahlen'], 100, 'einsteiger', null))
   assert.equal(selected.length, 2)
   assert.equal(new Set(selected).size, 2)
   assert.ok(selected.every(url => !url.includes('Example') && !url.endsWith('0003.md')))
   assert.throws(() => context.selectCourseTaskUrls(['Unknown'], [], 4, 'einsteiger', null), /Keine Aufgaben/)
   assert.throws(() => context.selectCourseTaskUrls(['Brüche'], ['Bruchrechnung'], 4, 'einsteiger', null), /Keine Aufgaben/)
-
-  // Exercise the actual weighted selector at each target profile and several
-  // course lengths, including a request larger than the available pool.
-  cards = Array.from({ length: 45 }, (_, index) => card('task-' + index, 'Bruchrechnung', 'Aufgabe_' + index + '.md', {
-    difficulty: index % 5 + 1,
-    network: Math.floor(index / 5) % 5 + 1,
-    operator: ['berechnen', 'angeben', 'ermitteln_bestimmen'][index % 3],
-  }))
-  for (const group of ['einsteiger', 'fortgeschrittene', 'experten']) {
-    for (const count of [1, 4, 5, 17, 100]) {
-      const result = context.selectCardsByCourseCriteria(cards, count, group)
-      assert.equal(result.length, Math.min(count, cards.length), group + '/' + count)
-      assert.equal(new Set(result).size, result.length)
-      const levels = Array.from(result, item => context.getCardDifficultyLevel(item))
-      assert.deepEqual(levels, levels.slice().sort((a, b) => a - b), 'Aufgaben bleiben nach Schwierigkeit geordnet')
-    }
-  }
-  assert.notEqual(context.getTargetGroupProfile('einsteiger').difficulty.get(1), context.getTargetGroupProfile('experten').difficulty.get(1))
 
   // Curriculum selection grants prerequisites and checked current learning
   // areas, while explicitly excluding tasks that require a later topic.
@@ -135,6 +142,7 @@ async function main() {
   // The real editor path must fetch only selected sources and preserve every
   // chosen body through the shared assembler; a failed source is explicit.
   cards = [card('first', 'Bruchrechnung', 'Aufgabe_0001.md'), card('second', 'Bruchrechnung', 'Aufgabe_0002.md')]
+  syncCatalog()
   const fetched = []
   context.fetch = async url => {
     fetched.push(url)

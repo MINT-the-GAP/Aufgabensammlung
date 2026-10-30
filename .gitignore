@@ -1,5 +1,6 @@
 # Lokale Skripte und Tests.
-/scripts/
+/scripts/*
+!/scripts/build-course-catalog.cjs
 
 # Lokale Browser-Pruefberichte und Screenshots.
 /test-results/
