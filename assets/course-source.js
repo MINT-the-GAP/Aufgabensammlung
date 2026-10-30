@@ -296,6 +296,11 @@
       }
     })
     reconcileCoordinateImports(resources.get('import'))
+    ;(Array.isArray(settings.tags) ? settings.tags : settings.tags == null ? [] : [settings.tags])
+      .forEach(function (value) {
+        const tag = canonicalTag(value)
+        if (tag && !tags.has(normalize(tag))) tags.set(normalize(tag), tag)
+      })
     const header = records.map(function (record) {
       return record.type === 'resources' ? Array.from(record.values).map(function (url) { return record.key + ': ' + url }).join('\n') : record.text
     }).filter(Boolean)

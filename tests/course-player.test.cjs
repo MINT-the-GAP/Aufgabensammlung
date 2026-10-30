@@ -149,15 +149,22 @@ async function main() {
     offer: 'weitere-uebungen',
     topic: 'Bruchrechnung',
     level: 'fortgeschrittene',
+    grade: 7,
+    schoolType: 'gymnasium',
     urls: learningUrls,
   }
   const normalizedLearning = h.api.normalizeManifest(learningManifest)
   assert.equal(normalizedLearning.group, 'fortgeschrittene')
   assert.deepEqual(Array.from(normalizedLearning.themes), ['Bruchrechnung'])
+  assert.equal(normalizedLearning.grade, 7)
+  assert.equal(normalizedLearning.schoolType, 'gymnasium')
   assert.throws(() => h.api.normalizeManifest({ ...learningManifest, urls: learningUrls.slice(0, 3) }), /genau vier/)
   assert.throws(() => h.api.normalizeManifest({ ...learningManifest, urls: [learningUrls[0], learningUrls[0], learningUrls[2], learningUrls[3]] }), /verschiedene/)
   assert.throws(() => h.api.normalizeManifest({ ...learningManifest, offer: 'unknown' }), /Angebot/)
   assert.throws(() => h.api.normalizeManifest({ ...learningManifest, level: 'unknown' }), /Niveau/)
+  assert.throws(() => h.api.normalizeManifest({ ...learningManifest, grade: '7' }), /Klassenstufe/)
+  assert.throws(() => h.api.normalizeManifest({ ...learningManifest, grade: 14 }), /Klassenstufe/)
+  assert.throws(() => h.api.normalizeManifest({ ...learningManifest, schoolType: 'unknown' }), /Schulart/)
   const learningMarkdown = '<!--\nlanguage: de\nimport: https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README.md\n-->\n# Aufgabe\n\n[[ 2 ]]\n\n@ADetails(BE=2;Bruchrechnung)\n\n[[?]] @Explain'
   const learning = harness({
     hash: hash(learningManifest),
@@ -183,6 +190,7 @@ async function main() {
   assert.match(learningSource, /lia-mathpath/)
   assert.match(learningSource, /^lernpfad-level: Fortgeschritten$/m)
   assert.match(learningSource, /^mode: Presentation$/m)
+  assert.match(learningSource, /^tags: Mathematik, Klasse 7, Gymnasium$/m)
   assert.ok(!/^mode: Textbook$/m.test(learningSource))
   const learningTaskOffset = learningSource.indexOf('# Aufgabe')
   assert.ok(learningSource.indexOf('Hier findest du vier weitere Aufgaben') < learningTaskOffset)

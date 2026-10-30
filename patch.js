@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const { execFileSync } = require('child_process')
+const { buildSachsenCurriculum: parseSachsenCurriculum } = require('./scripts/sachsen-curriculum.cjs')
 
 const TARGET_FILE = 'ziel.html'
 const SCRIPT_START = '<!-- SCHULLIA_CUSTOM_SCRIPT_START -->'
@@ -34,9 +35,9 @@ const THEME_TAG_ALIASES = {
 }
 
 const NAVBAR_FIX_SCRIPT = String.raw`<!-- SCHULLIA_NAVBAR_FIX_SCRIPT_START -->
-<script src="assets/course-generator.js?v=1.0.6"></script>
-<script src="assets/course-catalog.js?v=1.0.6"></script>
-<script src="assets/course-source.js?v=1.0.6"></script>
+<script src="assets/course-generator.js?v=1.0.7"></script>
+<script src="assets/course-catalog.js?v=1.0.7"></script>
+<script src="assets/course-source.js?v=1.0.7"></script>
 <script>
   (function () {
     function normalizeText(value) {
@@ -3188,19 +3189,6 @@ function patchIndexHtml(html, targetParts) {
 
 // Resolve a class label like "5", "7 HS", "10 RS", "12/13 GK", "11/12 LK"
 // into a normalized curriculum class key ("5", "7HS", "10RS", "12GK", "11GK").
-function resolveLehrplanClassKey(cell) {
-  const c = String(cell || '').trim()
-  let m = c.match(/(\d+)\s*HS/i)
-  if (m) return m[1] + 'HS'
-  m = c.match(/(\d+)\s*RS/i)
-  if (m) return m[1] + 'RS'
-  const gradeMatch = c.match(/(\d+)/)
-  if (!gradeMatch) return null
-  if (/GK/i.test(c)) return gradeMatch[1] + 'GK'
-  if (/LK/i.test(c)) return gradeMatch[1] + 'LK'
-  return gradeMatch[1]
-}
-
 // Parse Lehrplan.md at build time so the embedded curriculum stays in sync.
 // Produces a structure keyed by school type:
 //   { themes: { oberschule|bgy|gymnasium: { classKey: { lbKey: [themes] } } },
@@ -3208,57 +3196,7 @@ function resolveLehrplanClassKey(cell) {
 function buildSachsenCurriculum() {
   try {
     const lehrplanPath = path.join(__dirname, 'Lehrplan.md')
-    if (!fs.existsSync(lehrplanPath)) return null
-    const md = fs.readFileSync(lehrplanPath, 'utf8')
-    const themes = {}
-    const lbCount = {}
-    const lbTitles = {}
-    let currentSchool = null
-    md.split(/\r?\n/).forEach(function (rawLine) {
-      const trimmed = rawLine.trim()
-      const headerMatch = trimmed.match(/^#{1,6}\s+(.*)$/)
-      if (headerMatch) {
-        const title = headerMatch[1].toLowerCase()
-        if (title.indexOf('berufliches gymnasium') !== -1) currentSchool = 'bgy'
-        else if (title.indexOf('oberschule') !== -1) currentSchool = 'oberschule'
-        else if (title.indexOf('gymnasium') !== -1) currentSchool = 'gymnasium'
-        return
-      }
-      if (trimmed.indexOf('|') !== 0) return
-      if (!currentSchool) return
-      const cells = trimmed.split('|').slice(1, -1).map(function (c) { return c.trim() })
-      if (cells.length < 3) return
-      const klasseCell = cells[0]
-      const lbCell = cells[1]
-      const themenCell = cells[2]
-      if (/Klasse\s*\/\s*Jahrgang|Klassenstufe/i.test(klasseCell)) return
-      if (/^-+$/.test(klasseCell.replace(/[\s|]/g, ''))) return
-      const classKey = resolveLehrplanClassKey(klasseCell)
-      if (!classKey) return
-      const themeList = themenCell.split(',').map(function (t) { return t.trim().toLowerCase() }).filter(Boolean)
-      if (!themes[currentSchool]) themes[currentSchool] = {}
-      if (!lbCount[currentSchool]) lbCount[currentSchool] = {}
-      if (!lbTitles[currentSchool]) lbTitles[currentSchool] = {}
-      if (!themes[currentSchool][classKey]) themes[currentSchool][classKey] = {}
-      if (!lbTitles[currentSchool][classKey]) lbTitles[currentSchool][classKey] = {}
-      const lbMatch = lbCell.match(/LB\s*(\d+)/i)
-      if (lbMatch) {
-        const lbNum = parseInt(lbMatch[1], 10)
-        lbCount[currentSchool][classKey] = Math.max(lbCount[currentSchool][classKey] || 0, lbNum)
-        const titleMatch = lbCell.match(/LB\s*\d+\s*:\s*(.+)$/i)
-        if (titleMatch) {
-          lbTitles[currentSchool][classKey][String(lbNum)] = titleMatch[1].trim()
-        }
-        if (themeList.length) {
-          const key = String(lbNum)
-          themes[currentSchool][classKey][key] = (themes[currentSchool][classKey][key] || []).concat(themeList)
-        }
-      } else if (themeList.length) {
-        themes[currentSchool][classKey]['extra'] = (themes[currentSchool][classKey]['extra'] || []).concat(themeList)
-      }
-    })
-    if (!Object.keys(themes).length) return null
-    return { themes: themes, lbCount: lbCount, lbTitles: lbTitles }
+    return parseSachsenCurriculum(lehrplanPath)
   } catch (error) {
     return null
   }

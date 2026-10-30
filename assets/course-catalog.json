@@ -4,7 +4,1116 @@
   "source": {
     "repository": "https://github.com/MINT-the-GAP/Aufgabensammlung",
     "ref": "main",
-    "project": "project.yml"
+    "project": "project.yml",
+    "curriculum": "Lehrplan.md"
+  },
+  "curriculum": {
+    "schema": "schullia-sachsen-curriculum",
+    "version": 1,
+    "jurisdiction": "DE-SN",
+    "source": "Lehrplan.md",
+    "themes": {
+      "oberschule": {
+        "5": {
+          "1": [
+            "addition",
+            "assoziativgesetz",
+            "differenz",
+            "distributivgesetz",
+            "division",
+            "ggt",
+            "gleichung",
+            "grundrechenarten",
+            "kgv",
+            "kommutativgesetz",
+            "messen",
+            "multiplikation",
+            "potenzen",
+            "quersumme",
+            "runden",
+            "subtraktion",
+            "teilbarkeiten",
+            "teilermengen",
+            "überschlagen",
+            "ungleichungen",
+            "variable",
+            "vielfachmengen",
+            "vorrangsregeln",
+            "wurzeln",
+            "zahlenstrahl",
+            "zahlenverständnis",
+            "terme"
+          ],
+          "2": [
+            "arithmetische mittelwert",
+            "arithmetisches mittel",
+            "bruchrechnung",
+            "dezimalzahlen",
+            "durchschnitt",
+            "einheiten",
+            "länge",
+            "masse",
+            "periodizität",
+            "prozent",
+            "sachaufgabe",
+            "zeit"
+          ],
+          "3": [
+            "fläche",
+            "koordinatensystem",
+            "lagebeziehung",
+            "punkt",
+            "quadrat",
+            "rechteck",
+            "strecke",
+            "umfang",
+            "volumen",
+            "winkel",
+            "würfel"
+          ],
+          "4": [
+            "achsenspiegelung",
+            "drehung",
+            "punktspiegelung"
+          ],
+          "extra": [
+            "zahlensysteme",
+            "balkendiagramm",
+            "häufigkeit",
+            "kombinatorik",
+            "säulendiagramm",
+            "tabelle"
+          ]
+        },
+        "6": {
+          "1": [
+            "kehrwert",
+            "mengen",
+            "verhältnisse"
+          ],
+          "2": [
+            "antiproportional",
+            "beliebige zuordnung",
+            "proportional",
+            "wertepaar",
+            "wertetabelle",
+            "zuordnung"
+          ],
+          "3": [
+            "drachen",
+            "dreiecke",
+            "eindeutigkeit",
+            "eulersche gerade",
+            "inkreis",
+            "konstruktion",
+            "kongruenz",
+            "mittelsenkrechte",
+            "parallelogramm",
+            "raute",
+            "schwerpunkt",
+            "symmetrisches trapez",
+            "trapez",
+            "umkreis",
+            "vierecke",
+            "winkelbeziehungen",
+            "winkelhalbierende"
+          ],
+          "4": [
+            "quader"
+          ],
+          "5": [
+            "chance",
+            "wahrscheinlichkeit"
+          ]
+        },
+        "7HS": {
+          "2": [
+            "kreisdiagramm",
+            "prozentrechnung",
+            "streifendiagramm"
+          ],
+          "3": [
+            "algebra",
+            "betrag",
+            "intervalle",
+            "negative zahlen"
+          ],
+          "4": [
+            "prisma"
+          ]
+        },
+        "8HS": {
+          "2": [
+            "äquivalenzumformung"
+          ],
+          "3": [
+            "kreis",
+            "kreisabschnitt",
+            "kreisausschnitt",
+            "satz des thales",
+            "sekante",
+            "tangente"
+          ],
+          "4": [
+            "zylinder"
+          ],
+          "5": [
+            "ähnlichkeit",
+            "strahlensatz",
+            "zentrische streckung"
+          ]
+        },
+        "9HS": {
+          "1": [
+            "höhensatz",
+            "kathetensatz",
+            "kosinus",
+            "kotangens",
+            "satz des pythagoras",
+            "sinus",
+            "tangens",
+            "trigonometrie"
+          ],
+          "2": [
+            "kegel",
+            "kugel",
+            "oktaeder",
+            "pyramide",
+            "tetraeder"
+          ],
+          "3": [
+            "funktionsgraph",
+            "funktionswert",
+            "lineare funktionen",
+            "nullstellen",
+            "ordinatenabschnitt",
+            "schnittpunkt",
+            "steigung",
+            "steigungsdreieck"
+          ],
+          "extra": [
+            "median",
+            "spannweite"
+          ]
+        },
+        "7RS": {
+          "1": [
+            "kreisdiagramm",
+            "prozentrechnung",
+            "streifendiagramm"
+          ],
+          "2": [
+            "wahrscheinlichkeit"
+          ],
+          "3": [
+            "algebra",
+            "äquivalenzumformung",
+            "betrag",
+            "intervalle",
+            "negative zahlen"
+          ],
+          "4": [
+            "prisma"
+          ]
+        },
+        "8RS": {
+          "2": [
+            "additionsverfahren",
+            "definitionsbereich",
+            "einsetzungsverfahren",
+            "funktionsgraph",
+            "funktionswert",
+            "gleichungssysteme",
+            "lineare funktionen",
+            "nullstellen",
+            "ordinatenabschnitt",
+            "parameter",
+            "schnittpunkt",
+            "steigung",
+            "steigungsdreieck",
+            "stelle",
+            "wertebereich"
+          ],
+          "3": [
+            "kreis",
+            "kreisabschnitt",
+            "kreisausschnitt",
+            "satz des thales",
+            "sekante",
+            "tangente",
+            "zylinder"
+          ],
+          "4": [
+            "ähnlichkeit",
+            "strahlensatz",
+            "zentrische streckung"
+          ],
+          "5": [
+            "baumdiagramm",
+            "fakultät"
+          ]
+        },
+        "9RS": {
+          "1": [
+            "höhensatz",
+            "kathetensatz",
+            "kosinus",
+            "kotangens",
+            "satz des pythagoras",
+            "sinus",
+            "tangens",
+            "trigonometrie"
+          ],
+          "2": [
+            "kegel",
+            "kugel",
+            "oktaeder",
+            "pyramide",
+            "tetraeder"
+          ],
+          "3": [
+            "betragsfunktion",
+            "graphspiegelung",
+            "graphstreckung",
+            "graphverschiebung",
+            "quadratische ergänzung",
+            "quadratische funktionen",
+            "scheitelpunktsform",
+            "stufenfunktion",
+            "verhalten"
+          ],
+          "4": [
+            "median",
+            "spannweite"
+          ]
+        },
+        "10RS": {
+          "1": [
+            "kosinussatz",
+            "sinussatz"
+          ],
+          "2": [
+            "asymptote",
+            "bogenmaß",
+            "exponentialfunktion",
+            "funktionssymmetrie",
+            "hyperbel",
+            "umkehrfunktion"
+          ],
+          "3": [
+            "erwartungswert"
+          ],
+          "4": [
+            "kegelstumpf",
+            "pyramidenstumpf"
+          ]
+        }
+      },
+      "bgy": {
+        "11": {
+          "1": [
+            "bedingte wahrscheinlichkeit",
+            "kontingenztafel",
+            "kontingenztafeln",
+            "unbedingte wahrscheinlichkeit",
+            "vereinigung",
+            "vierfeldertafel",
+            "vierfeldertafeln"
+          ],
+          "3": [
+            "additionstheoreme",
+            "logarithmen",
+            "logarithmische skala",
+            "logarithmus",
+            "trigonometrische funktionen"
+          ]
+        },
+        "12GK": {
+          "1": [
+            "binomialkoeffizient",
+            "binomialverteilung",
+            "hypergeometrische verteilung",
+            "standardabweichung",
+            "varianz"
+          ],
+          "2": [
+            "ableitungen",
+            "differenzenquotient",
+            "differentialquotient",
+            "extrempunkte",
+            "extremwertaufgaben",
+            "funktionsschar",
+            "gebrochen rationale funktionen",
+            "grafisches ableiten",
+            "grenzwerte",
+            "konkav",
+            "konvex",
+            "kurvendiskussion",
+            "monotonie",
+            "ortskurve",
+            "polynomdivision",
+            "polynomfunktion",
+            "reihen",
+            "rekonstruktion",
+            "sattelpunkte",
+            "satz von l'hôpital",
+            "tangentengleichung",
+            "taylorentwicklung",
+            "wendepunkte"
+          ],
+          "3": [
+            "integralmittelwert",
+            "integration",
+            "obersumme",
+            "partielle integration",
+            "substitution",
+            "untersumme"
+          ],
+          "5": [
+            "einheitsvektor",
+            "linearkombination",
+            "skalarprodukt",
+            "vektoren",
+            "vektornorm"
+          ],
+          "6": [
+            "abstand"
+          ],
+          "extra": [
+            "koordinatenform",
+            "kugelgleichung",
+            "normalenform",
+            "parameterform",
+            "polarebene",
+            "schnittwinkel",
+            "spatprodukt",
+            "tangentialebene",
+            "vektorebene",
+            "vektorgerade",
+            "vektorprodukt"
+          ]
+        },
+        "12LK": {
+          "1": [
+            "binomialverteilung",
+            "hypergeometrische verteilung",
+            "standardabweichung",
+            "varianz"
+          ],
+          "2": [
+            "differenzenquotient",
+            "differentialquotient",
+            "extrempunkte",
+            "extremwertaufgaben",
+            "funktionsschar",
+            "gebrochen rationale funktionen",
+            "grenzwerte",
+            "konkav",
+            "konvex",
+            "kurvendiskussion",
+            "monotonie",
+            "ortskurve",
+            "polynomdivision",
+            "polynomfunktion",
+            "reihen",
+            "rekonstruktion",
+            "sattelpunkte",
+            "satz von l'hôpital",
+            "tangentengleichung",
+            "taylorentwicklung",
+            "wendepunkte"
+          ],
+          "3": [
+            "bogenlänge",
+            "integralmittelwert",
+            "integration",
+            "obersumme",
+            "partielle integration",
+            "rotationskörper",
+            "substitution",
+            "untersumme"
+          ],
+          "4": [
+            "normalverteilung"
+          ],
+          "5": [
+            "hypothesentest",
+            "konfidenzintervall"
+          ],
+          "6": [
+            "einheitsvektor",
+            "linearkombination",
+            "skalarprodukt",
+            "vektoren",
+            "vektornorm"
+          ],
+          "7": [
+            "abstand"
+          ],
+          "extra": [
+            "koordinatenform",
+            "kugelgleichung",
+            "normalenform",
+            "parameterform",
+            "polarebene",
+            "schnittwinkel",
+            "spatprodukt",
+            "tangentialebene",
+            "vektorebene",
+            "vektorgerade",
+            "vektorprodukt"
+          ]
+        }
+      },
+      "gymnasium": {
+        "5": {
+          "1": [
+            "addition",
+            "assoziativgesetz",
+            "differenz",
+            "distributivgesetz",
+            "division",
+            "folgen",
+            "ggt",
+            "gleichung",
+            "grundrechenarten",
+            "kgv",
+            "kommutativgesetz",
+            "messen",
+            "multiplikation",
+            "potenzen",
+            "quersumme",
+            "runden",
+            "sachaufgabe",
+            "subtraktion",
+            "teilbarkeiten",
+            "teilermengen",
+            "terme",
+            "überschlagen",
+            "vielfachmengen",
+            "vorrangsregeln",
+            "zahlenstrahl",
+            "zahlenverständnis"
+          ],
+          "2": [
+            "arithmetisches mittel",
+            "dezimalzahlen",
+            "durchschnitt",
+            "periodizität",
+            "prozent"
+          ],
+          "3": [
+            "achsenspiegelung",
+            "drehung",
+            "koordinatensystem",
+            "lagebeziehung",
+            "punkt",
+            "punktspiegelung",
+            "strecke",
+            "winkel",
+            "winkelbeziehungen"
+          ],
+          "4": [
+            "fläche",
+            "quader",
+            "quadrat",
+            "rechteck",
+            "umfang",
+            "volumen",
+            "würfel"
+          ],
+          "5": [
+            "einheiten",
+            "länge",
+            "masse",
+            "zeit"
+          ],
+          "extra": [
+            "zahlensysteme"
+          ]
+        },
+        "6": {
+          "1": [
+            "bruchrechnung",
+            "kehrwert",
+            "mengen",
+            "variable"
+          ],
+          "2": [
+            "antiproportional",
+            "balkendiagramm",
+            "beliebige zuordnung",
+            "chance",
+            "eindeutigkeit",
+            "häufigkeit",
+            "proportional",
+            "säulendiagramm",
+            "tabelle",
+            "verhältnisse",
+            "wertepaar",
+            "wertetabelle",
+            "zuordnung"
+          ],
+          "3": [
+            "drachen",
+            "dreiecke",
+            "eulersche gerade",
+            "inkreis",
+            "konstruktion",
+            "kongruenz",
+            "mittelsenkrechte",
+            "parallelogramm",
+            "raute",
+            "schwerpunkt",
+            "symmetrisches trapez",
+            "trapez",
+            "umkreis",
+            "vierecke",
+            "winkelhalbierende"
+          ],
+          "4": [
+            "prisma"
+          ],
+          "5": [
+            "kreisdiagramm",
+            "streifendiagramm"
+          ]
+        },
+        "7": {
+          "1": [
+            "satz des thales",
+            "sekante",
+            "tangente"
+          ],
+          "2": [
+            "algebra",
+            "äquivalenzumformung",
+            "betrag",
+            "intervalle",
+            "negative zahlen",
+            "prozentrechnung",
+            "wurzeln"
+          ]
+        },
+        "8": {
+          "1": [
+            "ungleichungen"
+          ],
+          "2": [
+            "baumdiagramm",
+            "kombinatorik",
+            "median",
+            "spannweite",
+            "unbedingte wahrscheinlichkeit",
+            "vereinigung",
+            "wahrscheinlichkeit"
+          ],
+          "3": [
+            "additionsverfahren",
+            "definitionsbereich",
+            "einsetzungsverfahren",
+            "funktionsgraph",
+            "funktionssymmetrie",
+            "funktionswert",
+            "gleichungssysteme",
+            "lineare funktionen",
+            "nullstellen",
+            "ordinatenabschnitt",
+            "parameter",
+            "schnittpunkt",
+            "steigung",
+            "steigungsdreieck",
+            "stelle",
+            "verhalten",
+            "wertebereich"
+          ],
+          "4": [
+            "ähnlichkeit",
+            "strahlensatz",
+            "zentrische streckung"
+          ]
+        },
+        "9": {
+          "1": [
+            "asymptote",
+            "betragsfunktion",
+            "graphspiegelung",
+            "graphstreckung",
+            "graphverschiebung",
+            "hyperbel",
+            "polynomfunktion",
+            "quadratische ergänzung",
+            "quadratische funktionen",
+            "scheitelpunktsform",
+            "stufenfunktion"
+          ],
+          "2": [
+            "kreis",
+            "kreisabschnitt",
+            "kreisausschnitt",
+            "kugel",
+            "zylinder"
+          ],
+          "3": [
+            "höhensatz",
+            "kathetensatz",
+            "kegel",
+            "kosinus",
+            "kotangens",
+            "oktaeder",
+            "pyramide",
+            "satz des pythagoras",
+            "sinus",
+            "tangens",
+            "tetraeder",
+            "trigonometrie"
+          ],
+          "4": [
+            "standardabweichung",
+            "varianz"
+          ]
+        },
+        "10": {
+          "1": [
+            "bogenmaß",
+            "exponentialfunktion"
+          ],
+          "2": [
+            "erwartungswert"
+          ],
+          "3": [
+            "kegelstumpf",
+            "kosinussatz",
+            "pyramidenstumpf",
+            "sinussatz"
+          ],
+          "4": [
+            "additionstheoreme",
+            "grenzwerte",
+            "infimum",
+            "logarithmen",
+            "logarithmische skala",
+            "logarithmus",
+            "reihen",
+            "supremum",
+            "trigonometrische funktionen",
+            "umkehrfunktion"
+          ]
+        },
+        "11GK": {
+          "1": [
+            "ableitungen",
+            "differenzenquotient",
+            "differentialquotient",
+            "extrempunkte",
+            "extremwertaufgaben",
+            "funktionsschar",
+            "gebrochen rationale funktionen",
+            "grafisches ableiten",
+            "konkav",
+            "konvex",
+            "kurvendiskussion",
+            "monotonie",
+            "ortskurve",
+            "polynomdivision",
+            "rekonstruktion",
+            "sattelpunkte",
+            "satz von l'hôpital",
+            "signum",
+            "tangentengleichung",
+            "taylorentwicklung",
+            "wendepunkte"
+          ],
+          "3": [
+            "einheitsvektor",
+            "koordinatenform",
+            "linearkombination",
+            "parameterform",
+            "vektorebene",
+            "vektoren",
+            "vektorgerade",
+            "vektornorm"
+          ],
+          "4": [
+            "bedingte wahrscheinlichkeit",
+            "binomialkoeffizient",
+            "binomialverteilung",
+            "fakultät",
+            "hypergeometrische verteilung",
+            "kontingenztafel",
+            "kontingenztafeln",
+            "vierfeldertafel"
+          ],
+          "5": [
+            "integralmittelwert",
+            "integration",
+            "obersumme",
+            "partielle integration",
+            "substitution",
+            "untersumme"
+          ],
+          "7": [
+            "abstand",
+            "normalenform",
+            "schnittwinkel",
+            "skalarprodukt",
+            "vektorprodukt"
+          ],
+          "8": [
+            "kugelgleichung",
+            "polarebene",
+            "spatprodukt",
+            "tangentialebene"
+          ]
+        },
+        "11LK": {
+          "1": [
+            "ableitungen",
+            "differenzenquotient",
+            "differentialquotient",
+            "extrempunkte",
+            "extremwertaufgaben",
+            "funktionsschar",
+            "gebrochen rationale funktionen",
+            "grafisches ableiten",
+            "konkav",
+            "konvex",
+            "kurvendiskussion",
+            "monotonie",
+            "ortskurve",
+            "polynomdivision",
+            "rekonstruktion",
+            "sattelpunkte",
+            "satz von l'hôpital",
+            "signum",
+            "tangentengleichung",
+            "taylorentwicklung",
+            "wendepunkte"
+          ],
+          "3": [
+            "einheitsvektor",
+            "koordinatenform",
+            "linearkombination",
+            "parameterform",
+            "vektorebene",
+            "vektoren",
+            "vektorgerade",
+            "vektornorm"
+          ],
+          "4": [
+            "bedingte wahrscheinlichkeit",
+            "binomialkoeffizient",
+            "binomialverteilung",
+            "fakultät",
+            "hypergeometrische verteilung",
+            "kontingenztafel",
+            "kontingenztafeln",
+            "vierfeldertafel"
+          ],
+          "5": [
+            "bogenlänge",
+            "integralmittelwert",
+            "integration",
+            "obersumme",
+            "partielle integration",
+            "rotationskörper",
+            "substitution",
+            "untersumme"
+          ],
+          "6": [
+            "normalverteilung"
+          ],
+          "7": [
+            "hypothesentest",
+            "konfidenzintervall"
+          ],
+          "8": [
+            "abstand",
+            "normalenform",
+            "schnittwinkel",
+            "skalarprodukt",
+            "vektorprodukt"
+          ],
+          "9": [
+            "kugelgleichung",
+            "polarebene",
+            "spatprodukt",
+            "tangentialebene"
+          ],
+          "extra": [
+            "partielle ableitung",
+            "totales differential"
+          ]
+        }
+      }
+    },
+    "classRanges": {
+      "oberschule": {
+        "5": {
+          "startGrade": 5,
+          "endGrade": 5
+        },
+        "6": {
+          "startGrade": 6,
+          "endGrade": 6
+        },
+        "7HS": {
+          "startGrade": 7,
+          "endGrade": 7
+        },
+        "8HS": {
+          "startGrade": 8,
+          "endGrade": 8
+        },
+        "9HS": {
+          "startGrade": 9,
+          "endGrade": 9
+        },
+        "7RS": {
+          "startGrade": 7,
+          "endGrade": 7
+        },
+        "8RS": {
+          "startGrade": 8,
+          "endGrade": 8
+        },
+        "9RS": {
+          "startGrade": 9,
+          "endGrade": 9
+        },
+        "10RS": {
+          "startGrade": 10,
+          "endGrade": 10
+        }
+      },
+      "bgy": {
+        "11": {
+          "startGrade": 11,
+          "endGrade": 11
+        },
+        "12GK": {
+          "startGrade": 12,
+          "endGrade": 13
+        },
+        "12LK": {
+          "startGrade": 12,
+          "endGrade": 13
+        }
+      },
+      "gymnasium": {
+        "5": {
+          "startGrade": 5,
+          "endGrade": 5
+        },
+        "6": {
+          "startGrade": 6,
+          "endGrade": 6
+        },
+        "7": {
+          "startGrade": 7,
+          "endGrade": 7
+        },
+        "8": {
+          "startGrade": 8,
+          "endGrade": 8
+        },
+        "9": {
+          "startGrade": 9,
+          "endGrade": 9
+        },
+        "10": {
+          "startGrade": 10,
+          "endGrade": 10
+        },
+        "11GK": {
+          "startGrade": 11,
+          "endGrade": 12
+        },
+        "11LK": {
+          "startGrade": 11,
+          "endGrade": 12
+        }
+      }
+    },
+    "lbCount": {
+      "oberschule": {
+        "5": 4,
+        "6": 5,
+        "7HS": 4,
+        "8HS": 5,
+        "9HS": 4,
+        "7RS": 4,
+        "8RS": 6,
+        "9RS": 4,
+        "10RS": 4
+      },
+      "bgy": {
+        "11": 4,
+        "12GK": 6,
+        "12LK": 7
+      },
+      "gymnasium": {
+        "5": 5,
+        "6": 5,
+        "7": 4,
+        "8": 5,
+        "9": 5,
+        "10": 5,
+        "11GK": 8,
+        "11LK": 9
+      }
+    },
+    "lbTitles": {
+      "oberschule": {
+        "5": {
+          "1": "Natürliche Zahlen",
+          "2": "Gemeine Brüche, Dezimalzahlen und Größen",
+          "3": "Geometrische Grundformen",
+          "4": "Symmetrie und deckungsgleiche Figuren"
+        },
+        "6": {
+          "1": "Gebrochene Zahlen",
+          "2": "Zuordnungen in der Umwelt",
+          "3": "Geometrie in der Ebene",
+          "4": "Geometrische Körper",
+          "5": "Mathematik im Alltag"
+        },
+        "7HS": {
+          "1": "Zusammengesetzte Flächen und Körper",
+          "2": "Anteile und Prozente",
+          "3": "Rationale Zahlen",
+          "4": "Vielecke und Prismen"
+        },
+        "8HS": {
+          "1": "Wirtschaftliches Rechnen",
+          "2": "Formeln und Gleichungen",
+          "3": "Vom Vieleck zum Kreis",
+          "4": "Kreiszylinder und Hohlzylinder",
+          "5": "Mathematik im Alltag"
+        },
+        "9HS": {
+          "1": "Rechtwinklige Dreiecke",
+          "2": "Körperdarstellung und Körperberechnung",
+          "3": "Funktionale Zusammenhänge",
+          "4": "Mathematik im Alltag"
+        },
+        "7RS": {
+          "1": "Prozent- und Zinsrechnung",
+          "2": "Elemente der Stochastik",
+          "3": "Rationale Zahlen und Gleichungen",
+          "4": "Vielecke und Prismen"
+        },
+        "8RS": {
+          "1": "Lineare Gleichungen",
+          "2": "Lineare Funktionen und Gleichungssysteme",
+          "3": "Kreis und Kreiszylinder",
+          "4": "Ähnlichkeit",
+          "5": "Zufällige Ereignisse",
+          "6": "Mathematik im Alltag"
+        },
+        "9RS": {
+          "1": "Rechtwinklige Dreiecke",
+          "2": "Pyramiden, Kreiskegel, Kugel",
+          "3": "Quadratische Funktionen und quadratische Gleichungen",
+          "4": "Beschreibende Statistik"
+        },
+        "10RS": {
+          "1": "Dreiecke und Vielecke",
+          "2": "Funktionale Zusammenhänge",
+          "3": "Zufallsgrößen",
+          "4": "Mathematik im Alltag"
+        }
+      },
+      "bgy": {
+        "11": {
+          "1": "Ermitteln von Wahrscheinlichkeiten bei mehrstufigen Zufallsversuchen",
+          "2": "Beschreiben und Lösen inner- und außermathematischer Probleme",
+          "3": "Funktionale Zusammenhänge",
+          "4": "Lineare Gleichungssysteme und Matrizen"
+        },
+        "12GK": {
+          "1": "Diskrete Zufallsgrößen",
+          "2": "Differenzialrechnung",
+          "3": "Integralrechnung",
+          "4": "Beurteilende Statistik",
+          "5": "Vektorgeometrie",
+          "6": "Weitere Anwendungen"
+        },
+        "12LK": {
+          "1": "Diskrete Zufallsgrößen",
+          "2": "Differenzialrechnung",
+          "3": "Integralrechnung",
+          "4": "Normalverteilte Zufallsgrößen",
+          "5": "Beurteilende Statistik",
+          "6": "Vektorgeometrie",
+          "7": "Weitere Anwendungen"
+        }
+      },
+      "gymnasium": {
+        "5": {
+          "1": "Arbeiten mit natürlichen Zahlen",
+          "2": "Gemeine Brüche und Dezimalzahlen",
+          "3": "Lagebeziehungen geometrischer Objekte",
+          "4": "Rechtecke und Quader",
+          "5": "Vernetzung: Mathematik im Alltag"
+        },
+        "6": {
+          "1": "Arbeiten mit gebrochenen Zahlen",
+          "2": "Zuordnungen in der Umwelt",
+          "3": "Dreiecke und Vierecke",
+          "4": "Prismen",
+          "5": "Vernetzung: Anteile"
+        },
+        "7": {
+          "1": "Geometrie in der Ebene",
+          "2": "Arbeiten mit rationalen Zahlen",
+          "3": "Darstellen und Berechnen von Prismen und Pyramiden",
+          "4": "Vernetzung: Darstellen von Daten"
+        },
+        "8": {
+          "1": "Arbeiten mit Termen und Gleichungen",
+          "2": "Zufallsversuche",
+          "3": "Funktionen und lineare Gleichungssysteme",
+          "4": "Ähnlichkeit",
+          "5": "Vernetzung: Heuristische Strategien"
+        },
+        "9": {
+          "1": "Funktionen und Potenzen",
+          "2": "Kreise, Kreiszylinder und Kugeln",
+          "3": "Rechtwinklige Dreiecke",
+          "4": "Auswerten von Daten",
+          "5": "Vernetzung: Mathematik und moderne Rechentechnik"
+        },
+        "10": {
+          "1": "Wachstumsvorgänge und periodische Vorgänge",
+          "2": "Diskrete Zufallsgrößen",
+          "3": "Algebraisches Lösen geometrischer Probleme",
+          "4": "Funktionale Zusammenhänge",
+          "5": "Vernetzung: Zinsrechnung"
+        },
+        "11GK": {
+          "1": "Differentialrechnung",
+          "2": "Matrizen",
+          "3": "Vektoren, Geraden und Ebenen",
+          "4": "Binomialverteilte Zufallsgrößen",
+          "5": "Integralrechnung",
+          "6": "Beurteilende Statistik",
+          "7": "Abstände und Winkel",
+          "8": "Weitere Anwendungen"
+        },
+        "11LK": {
+          "1": "Differentialrechnung",
+          "2": "Matrizen",
+          "3": "Vektoren, Geraden und Ebenen",
+          "4": "Binomialverteilte Zufallsgrößen",
+          "5": "Integralrechnung",
+          "6": "Normalverteilte Zufallsgrößen",
+          "7": "Beurteilende Statistik",
+          "8": "Abstände und Winkel",
+          "9": "Weitere Anwendungen"
+        }
+      }
+    }
   },
   "tasks": [
     {

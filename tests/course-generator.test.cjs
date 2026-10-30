@@ -33,11 +33,11 @@ const catalog = {
 async function main() {
   assert.equal(generator.schema, 'schullia-course-generator')
   assert.equal(generator.version, 1)
-  assert.equal(generator.release, '1.0.6')
-  assert.equal(generator.mathPathRelease, '0.0.19')
+  assert.equal(generator.release, '1.0.7')
+  assert.equal(generator.mathPathRelease, '0.0.20')
   assert.equal(
     generator.mathPathImport,
-    'https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md?v=0.0.19'
+    'https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md?v=0.0.20'
   )
   assert.equal(generator.validateCatalog(catalog), catalog)
   assert.throws(
@@ -58,7 +58,7 @@ async function main() {
     blockedThemes: ['Addition'],
   }).length, 6)
   assert.equal(generator.filterTasks(catalog, {
-    allowedThemes: ['Addition'],
+    allowedThemes: ['Addition', 'Bruchrechnung'],
     curriculumThemes: ['Addition', 'Subtraktion', 'Dreiecke'],
   }).length, 6)
 
@@ -167,12 +167,15 @@ async function main() {
     offer: 'vertiefungen',
     topic: 'Bruchrechnung',
     level: 'experten',
+    grade: 7,
+    schoolType: 'gymnasium',
     urls: generated.tasks.map(item => item.url),
   }
   const options = generator.learningPathSourceOptions(manifest)
   assert.deepEqual(options.header, ['lernpfad-level: Experte'])
   assert.equal(options.mode, 'Presentation')
   assert.deepEqual(options.imports, [generator.mathPathImport])
+  assert.deepEqual(options.tags, ['Mathematik', 'Klasse 7', 'Gymnasium'])
   const tutorialUrl = 'https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/00_00_00_Tutorial.md'
   const fourSpacers = ['---', '---', '---', '---'].join('\n\n')
   const weeklyTutorialBlock = fourSpacers + '\n\n> [!CAUTION]\n> <h2>[Tutorial öffnen](' + tutorialUrl + ')</h2>\n\n' + fourSpacers
@@ -266,6 +269,7 @@ async function main() {
   assert.ok(!/lia-freeze|FreezeREADME/i.test(sharedHeader))
   assert.equal((sharedHeader.match(/^lernpfad-level: Fortgeschritten$/gm) || []).length, 1)
   assert.equal((sharedHeader.match(/^mode: Presentation$/gm) || []).length, 1)
+  assert.match(sharedHeader, /^tags: .*Mathematik/m)
   assert.deepEqual(
     sharedHeader.split('\n').filter(line => /^comment:/i.test(line)),
     ['comment: Übe das Thema „Bruchrechnung“ auf deinem bisherigen Niveau weiter und gewinne mehr Sicherheit.']

@@ -2,9 +2,11 @@ const fs = require('node:fs')
 const path = require('node:path')
 const assembler = require('../assets/course-source.js')
 const generator = require('../assets/course-generator.js')
+const { buildSachsenCurriculum } = require('./sachsen-curriculum.cjs')
 
 const root = path.resolve(__dirname, '..')
 const projectFile = path.join(root, 'project.yml')
+const curriculumFile = path.join(root, 'Lehrplan.md')
 const jsonFile = path.join(root, 'assets', 'course-catalog.json')
 const scriptFile = path.join(root, 'assets', 'course-catalog.js')
 const checkOnly = process.argv.includes('--check')
@@ -77,7 +79,9 @@ function buildCatalog() {
       repository: 'https://github.com/MINT-the-GAP/Aufgabensammlung',
       ref: 'main',
       project: 'project.yml',
+      curriculum: 'Lehrplan.md',
     },
+    curriculum: buildSachsenCurriculum(curriculumFile),
     tasks,
   }
   return generator.validateCatalog(catalog)

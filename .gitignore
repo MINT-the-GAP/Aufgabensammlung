@@ -1,6 +1,7 @@
 # Lokale Skripte und Tests.
 /scripts/*
 !/scripts/build-course-catalog.cjs
+!/scripts/sachsen-curriculum.cjs
 
 # Lokale Browser-Pruefberichte und Screenshots.
 /test-results/

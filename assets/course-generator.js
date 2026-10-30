@@ -6,11 +6,13 @@
 })(typeof window === 'object' ? window : typeof globalThis === 'object' ? globalThis : this, function (root) {
   'use strict'
 
-  const RELEASE = '1.0.6'
+  const RELEASE = '1.0.7'
   const CATALOG_SCHEMA = 'schullia-course-catalog'
   const CATALOG_VERSION = 1
+  const CURRICULUM_SCHEMA = 'schullia-sachsen-curriculum'
+  const CURRICULUM_VERSION = 1
   const GROUPS = ['einsteiger', 'fortgeschrittene', 'experten']
-  const MATHPATH_RELEASE = '0.0.19'
+  const MATHPATH_RELEASE = '0.0.20'
   const MATHPATH_IMPORT = 'https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md?v=' + MATHPATH_RELEASE
   const profiles = {
     einsteiger: {
@@ -167,7 +169,226 @@
       ids.add(task.id)
       urls.add(task.url)
     })
+    if (catalog.curriculum !== undefined) validateCurriculum(catalog.curriculum)
     return catalog
+  }
+
+  function validateCurriculum(curriculum) {
+    if (!curriculum || typeof curriculum !== 'object' ||
+        curriculum.schema !== CURRICULUM_SCHEMA ||
+        curriculum.version !== CURRICULUM_VERSION ||
+        !curriculum.themes || typeof curriculum.themes !== 'object' ||
+        !curriculum.classRanges || typeof curriculum.classRanges !== 'object') {
+      throw new CourseGeneratorError('INVALID_CURRICULUM', 'Der Lehrplankatalog hat ein unbekanntes Format.')
+    }
+    ;['oberschule', 'gymnasium', 'bgy'].forEach(function (school) {
+      const classes = curriculum.themes[school]
+      const ranges = curriculum.classRanges[school]
+      if (!classes || typeof classes !== 'object' || Array.isArray(classes)) {
+        throw new CourseGeneratorError('INVALID_CURRICULUM', 'Im Lehrplankatalog fehlt der Bildungsgang ' + school + '.')
+      }
+      if (!ranges || typeof ranges !== 'object' || Array.isArray(ranges)) {
+        throw new CourseGeneratorError('INVALID_CURRICULUM', 'Im Lehrplankatalog fehlen Klassenbereiche fuer ' + school + '.')
+      }
+      Object.keys(classes).forEach(function (classKey) {
+        if (!/^\d+(?:HS|RS|GK|LK)?$/.test(classKey)) {
+          throw new CourseGeneratorError('INVALID_CURRICULUM', 'Der Lehrplankatalog enthaelt eine ungueltige Klassenstufe.')
+        }
+        const areas = classes[classKey]
+        const range = ranges[classKey]
+        if (!range || !Number.isInteger(range.startGrade) || !Number.isInteger(range.endGrade) ||
+            range.startGrade < 1 || range.endGrade > 13 || range.startGrade > range.endGrade) {
+          throw new CourseGeneratorError('INVALID_CURRICULUM', 'Der Lehrplankatalog enthaelt einen ungueltigen Klassenbereich.')
+        }
+        if (!areas || typeof areas !== 'object' || Array.isArray(areas)) {
+          throw new CourseGeneratorError('INVALID_CURRICULUM', 'Der Lehrplankatalog enthaelt einen ungueltigen Lernbereich.')
+        }
+        Object.keys(areas).forEach(function (area) {
+          if (!Array.isArray(areas[area]) ||
+              areas[area].some(function (theme) { return typeof theme !== 'string' || !theme.trim() })) {
+            throw new CourseGeneratorError('INVALID_CURRICULUM', 'Der Lehrplankatalog enthaelt ungueltige Themen.')
+          }
+        })
+      })
+    })
+    return curriculum
+  }
+
+  function normalizeSchoolType(value) {
+    const key = normalizeTag(value).replace(/[._-]+/g, ' ')
+    if (key === 'oberschule' || key === 'os' || key === 'hauptschule' || key === 'realschule') {
+      return 'oberschule'
+    }
+    if (key === 'gymnasium' || key === 'gym') return 'gymnasium'
+    if (key === 'bgy' || key === 'berufliches gymnasium' || key === 'berufliche gymnasium') return 'bgy'
+    return null
+  }
+
+  function normalizeGrade(value) {
+    if (Number.isInteger(value) && value >= 1 && value <= 13) return value
+    const match = String(value == null ? '' : value).match(/(?:^|\D)(1[0-3]|[1-9])(?:\D|$)/)
+    return match ? Number(match[1]) : null
+  }
+
+  function introductionMap(curriculum, school, branch) {
+    const result = new Map()
+    const classes = curriculum.themes[school] || {}
+    Object.keys(classes).forEach(function (classKey) {
+      const suffix = classKey.match(/(HS|RS)$/)
+      if (school === 'oberschule' && branch && suffix &&
+          suffix[1].toLowerCase() !== branch) return
+      const range = curriculum.classRanges[school] && curriculum.classRanges[school][classKey]
+      if (!range) return
+      const areas = classes[classKey] || {}
+      Object.keys(areas).forEach(function (area) {
+        ;(areas[area] || []).forEach(function (theme) {
+          const key = topicKey(theme)
+          const current = result.get(key)
+          if (key && (!current ||
+              range.startGrade < current.startGrade ||
+              range.startGrade === current.startGrade && range.endGrade < current.endGrade)) {
+            result.set(key, {
+              startGrade: range.startGrade,
+              endGrade: range.endGrade,
+              theme: canonicalTopic(theme),
+            })
+          }
+        })
+      })
+    })
+    return result
+  }
+
+  function mergeIntroductionMaps(maps) {
+    const result = new Map()
+    maps.forEach(function (map) {
+      map.forEach(function (entry, key) {
+        const current = result.get(key)
+        if (!current ||
+            entry.startGrade < current.startGrade ||
+            entry.startGrade === current.startGrade && entry.endGrade < current.endGrade) {
+          result.set(key, entry)
+        }
+      })
+    })
+    return result
+  }
+
+  function addCompletedIntersection(target, maps, grade) {
+    if (!maps.length) return
+    maps[0].forEach(function (entry, key) {
+      if (entry.endGrade >= grade) return
+      if (maps.slice(1).every(function (map) {
+        const candidate = map.get(key)
+        return candidate && candidate.endGrade < grade
+      })) target.add(key)
+    })
+  }
+
+  function uniqueTopics(values) {
+    const list = Array.isArray(values) ? values : values == null ? [] : [values]
+    const seen = new Set()
+    const result = []
+    list.forEach(function (value) {
+      const theme = canonicalTopic(value)
+      const key = topicKey(theme)
+      if (!key || seen.has(key)) return
+      seen.add(key)
+      result.push(theme)
+    })
+    return result
+  }
+
+  function deriveCurriculumContext(catalog, options) {
+    const validated = validateCatalog(catalog)
+    const curriculum = validated.curriculum
+    if (!curriculum) {
+      throw new CourseGeneratorError(
+        'CURRICULUM_MISSING',
+        'Der Aufgabenkatalog enthaelt keine Lehrplandaten.'
+      )
+    }
+    validateCurriculum(curriculum)
+    const settings = options || {}
+    const observedThemes = uniqueTopics(settings.observedThemes)
+    const observedKeys = new Set(observedThemes.map(topicKey))
+    const schoolType = normalizeSchoolType(settings.schoolType)
+    const explicitGrade = normalizeGrade(settings.grade)
+    const maps = {
+      oberschuleHs: introductionMap(curriculum, 'oberschule', 'hs'),
+      oberschuleRs: introductionMap(curriculum, 'oberschule', 'rs'),
+      gymnasium: introductionMap(curriculum, 'gymnasium'),
+      bgy: introductionMap(curriculum, 'bgy'),
+    }
+    const oberschule = mergeIntroductionMaps([maps.oberschuleHs, maps.oberschuleRs])
+    const bgyHsPath = mergeIntroductionMaps([maps.oberschuleHs, maps.bgy])
+    const bgyRsPath = mergeIntroductionMaps([maps.oberschuleRs, maps.bgy])
+    const bgy = mergeIntroductionMaps([bgyHsPath, bgyRsPath])
+    const inferenceMap = schoolType === 'oberschule'
+      ? oberschule
+      : schoolType === 'gymnasium'
+        ? maps.gymnasium
+        : schoolType === 'bgy'
+          ? bgy
+          : mergeIntroductionMaps([maps.oberschuleHs, maps.oberschuleRs, maps.gymnasium])
+    const knownObservedGrades = []
+    const unmappedObservedThemes = []
+    observedThemes.forEach(function (theme) {
+      const entry = inferenceMap.get(topicKey(theme))
+      if (entry) knownObservedGrades.push({ theme: theme, grade: entry.startGrade })
+      else unmappedObservedThemes.push(theme)
+    })
+    const inferredGrade = knownObservedGrades.length
+      ? Math.max.apply(null, knownObservedGrades.map(function (entry) { return entry.grade }))
+      : null
+    const grade = explicitGrade === null ? inferredGrade : explicitGrade
+    const gradeSource = explicitGrade !== null ? 'explicit' : inferredGrade !== null ? 'themes' : 'unavailable'
+    const catalogTopics = new Map()
+    validated.tasks.forEach(function (task) {
+      ;(task.topics || []).forEach(function (theme) {
+        const key = topicKey(theme)
+        if (key && !catalogTopics.has(key)) catalogTopics.set(key, canonicalTopic(theme))
+      })
+    })
+    const priorKeys = new Set()
+    if (grade !== null) {
+      if (schoolType === 'oberschule') {
+        addCompletedIntersection(priorKeys, [maps.oberschuleHs, maps.oberschuleRs], grade)
+      } else if (schoolType === 'gymnasium') {
+        maps.gymnasium.forEach(function (entry, key) {
+          if (entry.endGrade < grade) priorKeys.add(key)
+        })
+      } else if (schoolType === 'bgy') {
+        addCompletedIntersection(priorKeys, [bgyHsPath, bgyRsPath], grade)
+      } else {
+        addCompletedIntersection(
+          priorKeys,
+          [maps.oberschuleHs, maps.oberschuleRs, maps.gymnasium],
+          grade
+        )
+      }
+    }
+    observedKeys.forEach(function (key) { priorKeys.delete(key) })
+    const priorThemes = Array.from(priorKeys)
+      .filter(function (key) { return catalogTopics.has(key) })
+      .map(function (key) { return catalogTopics.get(key) })
+      .sort(function (left, right) { return left.localeCompare(right, 'de') })
+    const allowedThemes = observedThemes.concat(priorThemes)
+    const gradeConflicts = explicitGrade === null
+      ? []
+      : knownObservedGrades.filter(function (entry) { return entry.grade > explicitGrade })
+        .map(function (entry) { return entry.theme })
+    return {
+      observedThemes: observedThemes,
+      priorThemes: priorThemes,
+      allowedThemes: allowedThemes,
+      curriculumThemes: Array.from(catalogTopics.values()),
+      grade: grade,
+      gradeSource: gradeSource,
+      schoolType: schoolType,
+      unmappedObservedThemes: unmappedObservedThemes,
+      gradeConflicts: gradeConflicts,
+    }
   }
 
   function taskList(catalog) {
@@ -185,7 +406,6 @@
     const required = normalizedSet(settings.themes)
     const blocked = normalizedSet(settings.blockedThemes)
     const allowed = normalizedSet(settings.allowedThemes)
-    const curriculum = normalizedSet(settings.curriculumThemes)
     const useCurriculum = Array.isArray(settings.allowedThemes)
     const seen = new Set()
     return taskList(catalog).filter(function (task) {
@@ -196,7 +416,7 @@
       if (Array.from(blocked).some(function (key) { return topics.has(key) })) return false
       if (useCurriculum) {
         if (!Array.from(topics).some(function (key) { return allowed.has(key) })) return false
-        if (Array.from(topics).some(function (key) { return curriculum.has(key) && !allowed.has(key) })) return false
+        if (!Array.from(topics).every(function (key) { return allowed.has(key) })) return false
       }
       return true
     })
@@ -561,11 +781,22 @@
       fortgeschrittene: 'Fortgeschritten',
       experten: 'Experte',
     }
+    const schoolLabels = {
+      oberschule: 'Oberschule',
+      gymnasium: 'Gymnasium',
+      bgy: 'Berufliches Gymnasium',
+    }
+    const grade = normalizeGrade(manifest.grade)
+    const schoolType = normalizeSchoolType(manifest.schoolType)
+    const contextTags = ['Mathematik']
+    if (grade !== null) contextTags.push('Klasse ' + grade)
+    if (schoolType) contextTags.push(schoolLabels[schoolType])
     return {
       edit: false,
       mode: 'Presentation',
       title: (labels[manifest.offer] || 'Lernpfad') + ': ' + String(manifest.topic || '').trim(),
       comment: learningPathComment(manifest.offer, manifest.topic),
+      tags: contextTags,
       imports: [mathPathImport],
       header: ['lernpfad-level: ' + (levelLabels[manifest.level] || manifest.level)],
       resourceFilter: function (key, url) {
@@ -599,6 +830,8 @@
     canonicalTopic: canonicalTopic,
     classifyTags: classifyTags,
     validateCatalog: validateCatalog,
+    validateCurriculum: validateCurriculum,
+    deriveCurriculumContext: deriveCurriculumContext,
     filterTasks: filterTasks,
     selectTasks: selectTasks,
     createSeededRandom: createSeededRandom,

@@ -3,7 +3,7 @@
   'use strict'
 
   const COURSE_URL = new URL('./course-frame.html', window.location.href).href
-  const RUNTIME_RELEASE = '1.0.6'
+  const RUNTIME_RELEASE = '1.0.7'
   const OFFICIAL_VIEWER_URL = 'https://liascript.github.io/course/?'
   const DATA_COURSE_PREFIX = 'data:text/plain;charset=utf-8;Content-Encoding=gzip;base64,'
   const GZIP_OPTIONS = Object.freeze({ level: 6, mem: 8, mtime: 0 })
@@ -16,6 +16,7 @@
   const MAX_SOURCES = 2000
   const GROUPS = ['einsteiger', 'fortgeschrittene', 'experten']
   const LEARNING_PATH_OFFERS = ['schwaechen-ueben', 'weitere-uebungen', 'vertiefungen']
+  const LEARNING_PATH_SCHOOL_TYPES = ['oberschule', 'gymnasium', 'bgy']
 
   function normalizeManifest(value) {
     if (!value || typeof value !== 'object' || value.v !== 1) {
@@ -55,7 +56,14 @@
         throw new Error('Dieser Kurslink enthält ein ungültiges Lernpfad-Thema.')
       }
       const topic = value.topic.trim()
-      return {
+      if (value.grade !== undefined &&
+          (!Number.isInteger(value.grade) || value.grade < 1 || value.grade > 13)) {
+        throw new Error('Dieser Kurslink enthaelt eine ungueltige Klassenstufe.')
+      }
+      if (value.schoolType !== undefined && !LEARNING_PATH_SCHOOL_TYPES.includes(value.schoolType)) {
+        throw new Error('Dieser Kurslink enthaelt eine unbekannte Schulart.')
+      }
+      const normalized = {
         v: 1,
         kind: 'lernpfad',
         offer: value.offer,
@@ -65,6 +73,9 @@
         group: value.level,
         themes: [topic],
       }
+      if (value.grade !== undefined) normalized.grade = value.grade
+      if (value.schoolType !== undefined) normalized.schoolType = value.schoolType
+      return normalized
     }
 
     const group = value.group === undefined ? 'fortgeschrittene' : value.group

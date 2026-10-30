@@ -28,11 +28,11 @@ Empfohlene Ladereihenfolge:
 
 Die Generator-Runtime trägt
 `schema: 'schullia-course-generator'`, `version: 1` und das gemeinsame
-Runtime-Release `release: '1.0.6'`. Der Katalog trägt
+Runtime-Release `release: '1.0.7'`. Der Katalog trägt
 `schema: 'schullia-course-catalog'` und `version: 1`.
 
 Alle eigenen, von `index.html` und `course.html` geladenen Runtime-Scripts tragen
-denselben Cache-Parameter `?v=1.0.6`; der gepinnte Codec trägt
+denselben Cache-Parameter `?v=1.0.7`; der gepinnte Codec trägt
 `?v=0.8.2`. Auch
 `buildDirectCourseUrl(...)` versieht `course.html` damit; das Kursmanifest
 bleibt ausschließlich im Hash.
@@ -67,21 +67,38 @@ kanonischer Normalisierung exakt gefiltert; es gibt keinen unsichtbaren
 Themen-Fallback. Bei `strictCount: true` führt ein Bestand unter vier zu
 `CourseGeneratorError` mit `code: 'INSUFFICIENT_TASKS'`.
 
-Für Lernpfade kann der Request den bereits belegten Themenkontext zusätzlich
-hart begrenzen:
+Für Lernpfade leitet die Runtime den zulässigen Themenkontext zentral aus den
+beobachteten Tags und den aus `Lehrplan.md` erzeugten Katalogdaten ab:
 
 ```js
-request.allowedThemes = ['Addition', 'Grundrechenarten']
-request.curriculumThemes = Array.from(new Set(
-  SchulLiaCourseCatalog.tasks.flatMap(task => task.topics)
-))
+const context = SchulLiaCourseGenerator.deriveCurriculumContext(
+  SchulLiaCourseCatalog,
+  {
+    observedThemes: ['Addition', 'Grundrechenarten'],
+    grade: 7,                 // optional; sonst konservativ aus Tags abgeleitet
+    schoolType: 'gymnasium'  // optional
+  }
+)
+
+request.allowedThemes = context.allowedThemes
+request.curriculumThemes = context.curriculumThemes
 ```
 
-Dann muss mindestens ein erlaubtes Thema passen und kein Katalogthema der
-Aufgabe darf außerhalb von `allowedThemes` liegen. So wird bei `Addition` etwa
-eine Aufgabe mit dem Zusatzthema `Negative Zahlen` nicht ausgewählt, solange
-dieses Thema im Ausgangskurs nicht belegt wurde. Ein zu kleiner Trefferbestand
-bleibt auch hier ein Fehler; der Generator lockert den Lernkontext nicht.
+`allowedThemes` enthält die beobachteten Themen sowie ausschließlich Themen,
+die in der ermittelten Schulart in einer früheren Klassenstufe eingeführt und
+abgeschlossen wurden. Ohne Schulart wird die Klassenstufe aus der
+frühestmöglichen Einführung eines beobachteten Tags abgeleitet; neue
+Vorkenntnisthemen müssen aber in Hauptschul-, Realschul- und Gymnasialpfad
+jeweils strikt früher abgeschlossen sein. Ein Thema der aktuellen oder einer
+höheren Klassenstufe wird nur zugelassen, wenn es bereits beobachtet wurde.
+Unbekannte Co-Tags werden ebenfalls gesperrt. Für „Grundlagen wiederholen“
+verwendet MathPath statt `context.allowedThemes` bewusst nur
+`context.observedThemes`.
+
+Die Rückgabe dokumentiert zusätzlich `priorThemes`, `grade`,
+`gradeSource`, `schoolType`, `unmappedObservedThemes` und
+`gradeConflicts`. Ein zu kleiner Trefferbestand bleibt ein Fehler; der
+Generator lockert den Lernkontext nicht.
 
 ## Lernpfad-Direktkurs
 
@@ -92,6 +109,8 @@ const manifest = {
   offer: 'weitere-uebungen',
   topic: 'Bruchrechnung',
   level: 'fortgeschrittene',
+  grade: 7,                 // optional
+  schoolType: 'gymnasium', // optional: oberschule | gymnasium | bgy
   urls: result.tasks.map(task => task.url)
 }
 
@@ -106,6 +125,11 @@ Zulässige Angebote sind `schwaechen-ueben`, `weitere-uebungen` und
 `fortgeschrittene` und `experten`. Ein Lernpfad-Manifest muss genau vier
 verschiedene Aufgaben-URLs enthalten.
 
+Optionale `grade`- und `schoolType`-Felder werden vom Launcher validiert und
+in den erzeugten Kurskopf übernommen, beispielsweise als
+`tags: Mathematik, Klasse 7, Gymnasium`. Dadurch bleibt der explizite Kontext
+auch für das erneut enthaltene `@Lernpfad` erhalten.
+
 Die sichtbaren Angebote heißen „Grundlagen wiederholen“, „Weitere Übungen“
 und „Vertiefungen“; die stabilen Manifestwerte ändern sich dadurch nicht. Die
 Startfolie erklärt das jeweilige Lernziel, übernimmt das Bedienmuster der
@@ -115,7 +139,7 @@ einen verständlichen Kurs-Infotext, der zum Angebot und gewählten Thema passt.
 
 `course.html` lädt die gemeinsamen Runtime-Scripts, entfernt Freeze-Importe
 und ersetzt alle aus Aufgaben geerbten MathPath-README-Importe durch genau den
-cache-stabilen Import `README.md?v=0.0.19`. Der Direktkurs setzt den Lernpfad ausdrücklich auf
+cache-stabilen Import `README.md?v=0.0.20`. Der Direktkurs setzt den Lernpfad ausdrücklich auf
 `mode: Presentation`, ergänzt `lernpfad-level` und hängt eine Abschlussfolie
 mit `@Lernpfad` an. Danach wird der Quelltext mit dem lokal ausgelieferten
 `fflate` 0.8.2 und dem vollständig festgelegten Optionssatz
@@ -152,5 +176,8 @@ node scripts/build-course-catalog.cjs
 node scripts/build-course-catalog.cjs --check
 ```
 
-Der Builder liest `project.yml` und die LiaScript-Dokumentköpfe, erzeugt die
-beiden Katalog-Assets deterministisch und wird im Deployment-Workflow geprüft.
+Der Builder liest `project.yml`, die LiaScript-Dokumentköpfe und
+`Lehrplan.md`, erzeugt die beiden Katalog-Assets deterministisch und wird im
+Deployment-Workflow geprüft. Der zentrale Parser
+`scripts/sachsen-curriculum.cjs` speist sowohl diesen Katalog als auch die
+Lehrplanauswahl der Website.
