@@ -3,7 +3,13 @@
   'use strict'
 
   const COURSE_URL = new URL('./course-frame.html', window.location.href).href
-  const RUNTIME_RELEASE = '1.0.2'
+  const RUNTIME_RELEASE = '1.0.3'
+  const OFFICIAL_VIEWER_URL = 'https://liascript.github.io/course/?'
+  const DATA_COURSE_PREFIX = 'data:text/plain;charset=utf-8;Content-Encoding=gzip;base64,'
+  const GZIP_OPTIONS = Object.freeze({ level: 6, mem: 8, mtime: 0 })
+  // Keep the request target below the common 8 KiB request-line boundary.
+  // Larger courses retain the same-origin player as a compatibility fallback.
+  const MAX_OFFICIAL_VIEWER_URL_CHARS = 6000
   const COURSE_ORIGIN = new URL(COURSE_URL).origin
   const SOURCE_TIMEOUT_MS = 30000
   const FRAME_TIMEOUT_MS = 35000
@@ -106,6 +112,30 @@
     return 'schullia-' + (left >>> 0).toString(16) + '-' + (right >>> 0).toString(16) + '-' + text.length
   }
 
+  function bytesToBase64(bytes) {
+    let binary = ''
+    const chunk = 0x8000
+    for (let offset = 0; offset < bytes.length; offset += chunk) {
+      binary += String.fromCharCode.apply(null, bytes.subarray(offset, offset + chunk))
+    }
+    return window.btoa(binary)
+  }
+
+  async function officialCourseUrl(source) {
+    const codec = window.fflate
+    if (typeof source !== 'string' || !source.trim() ||
+        !codec || typeof codec.gzipSync !== 'function' ||
+        typeof window.TextEncoder !== 'function' ||
+        typeof window.btoa !== 'function') return null
+    try {
+      const compressed = codec.gzipSync(new window.TextEncoder().encode(source), GZIP_OPTIONS)
+      const url = OFFICIAL_VIEWER_URL + DATA_COURSE_PREFIX + bytesToBase64(compressed)
+      return url.length <= MAX_OFFICIAL_VIEWER_URL_CHARS ? url : null
+    } catch (_) {
+      return null
+    }
+  }
+
   const document = window.document
   let run = 0
   let controller = null
@@ -175,6 +205,20 @@
         sourceOptions: sourceOptions,
       })
       if (typeof source !== 'string' || !source.trim()) throw new Error('Die ausgewählten Aufgaben enthalten keinen Kurstext.')
+      if (manifest.kind === 'lernpfad') {
+        const officialUrl = await officialCourseUrl(source)
+        if (currentRun !== run) return
+        if (officialUrl) {
+          element('courseStatus').textContent = 'Dein Lernpfad wird im offiziellen LiaScript-Viewer geöffnet.'
+          try {
+            window.location.replace(officialUrl)
+            return
+          } catch (_) {
+            // Embedded browsers can reject a cross-origin navigation. In that
+            // case continue with the same-origin parent: player below.
+          }
+        }
+      }
       const identity = await courseIdentity(manifest, source)
       if (currentRun !== run) return
       const uri = 'parent:' + identity
@@ -220,6 +264,10 @@
     readManifest: readManifest,
     normalizeManifest: normalizeManifest,
     courseIdentity: courseIdentity,
+    officialCourseUrl: officialCourseUrl,
+    officialViewerUrl: OFFICIAL_VIEWER_URL,
+    gzipOptions: GZIP_OPTIONS,
+    maximumOfficialViewerUrlCharacters: MAX_OFFICIAL_VIEWER_URL_CHARS,
     start: start
   }
   window.addEventListener('message', handleMessage)

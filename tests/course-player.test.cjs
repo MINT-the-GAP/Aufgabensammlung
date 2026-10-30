@@ -3,8 +3,11 @@ const fs = require('node:fs')
 const path = require('node:path')
 const vm = require('node:vm')
 const { webcrypto } = require('node:crypto')
+const { createHash } = require('node:crypto')
+const { gunzipSync } = require('node:zlib')
 const assembler = require('../assets/course-source.js')
 const generator = require('../assets/course-generator.js')
+const fflate = require('../assets/vendor/fflate-0.8.2.min.js')
 
 const code = fs.readFileSync(path.join(__dirname, '../assets/course-player.js'), 'utf8')
 const origin = 'https://school.example'
@@ -13,12 +16,20 @@ const markdown = '<!--\nlanguage: de\nversion: 1.0.0\nedit: true\n-->\n\n# Brüc
 const manifest = { v: 1, urls: [sourceUrl], group: 'einsteiger', themes: ['Brüche 🧮'] }
 const hash = value => '#course=' + encodeURIComponent(JSON.stringify(value))
 const settle = () => new Promise(resolve => setImmediate(resolve))
+async function waitFor(predicate, label) {
+  for (let attempt = 0; attempt < 300; attempt++) {
+    if (predicate()) return
+    await new Promise(resolve => setTimeout(resolve, 10))
+  }
+  assert.fail('Zeitüberschreitung: ' + label)
+}
 
 function harness(options = {}) {
   const handlers = new Map()
   const timers = new Map()
   const posts = []
   const requests = []
+  const replacements = []
   const elements = new Map()
   let nextTimer = 0
   for (const id of ['courseFrame', 'courseLoading', 'courseHeading', 'courseStatus', 'courseRetry']) {
@@ -32,12 +43,19 @@ function harness(options = {}) {
   const frame = elements.get('courseFrame')
   frame.contentWindow = { postMessage: (data, target) => posts.push({ data, target }) }
   const location = { hash: options.hash === undefined ? hash(manifest) : options.hash }
-  location.href = origin + '/Aufgabensammlung/course.html' + location.hash
+  location.href = origin + '/Aufgabensammlung/course.html' + (options.search || '') + location.hash
+  location.replace = url => {
+    replacements.push(url)
+    if (options.replaceThrows) throw new Error('Navigation blocked')
+    location.href = url
+  }
   const window = {
     location,
     document: { title: '', getElementById: id => elements.get(id) },
     SchulLiaCourseSource: options.missingAssembler ? undefined : assembler,
     SchulLiaCourseGenerator: options.missingGenerator ? undefined : generator,
+    fflate: options.codec === false ? undefined : fflate,
+    TextEncoder, btoa,
     async fetch(url, request) {
       requests.push({ url, signal: request.signal })
       return options.fetch ? options.fetch(url, request) : { ok: true, text: async () => markdown }
@@ -56,7 +74,14 @@ function harness(options = {}) {
   const dispatch = (name, event = {}) => (handlers.get(name) || []).forEach(callback => callback(event))
   const uri = () => new URL(frame.src).search.slice(1)
   const message = (data, overrides = {}) => dispatch('message', { origin, source: frame.contentWindow, data, ...overrides })
-  return { window, elements, frame, timers, requests, posts, dispatch, uri, message, api: window.SchulLiaCoursePlayer }
+  return { window, elements, frame, timers, requests, posts, replacements, dispatch, uri, message, api: window.SchulLiaCoursePlayer }
+}
+
+function sourceFromOfficialUrl(url) {
+  const prefix = 'https://liascript.github.io/course/?data:text/plain;charset=utf-8;Content-Encoding=gzip;base64,'
+  assert.ok(url.startsWith(prefix), 'Der Redirect verwendet den offiziellen gzip-Data-URI-Viewer')
+  assert.ok(!url.includes('%3Atext%2Fplain'), 'Die Data-URI darf nicht als Ganzes percentkodiert werden')
+  return gunzipSync(Buffer.from(url.slice(prefix.length), 'base64')).toString('utf8')
 }
 
 async function main() {
@@ -138,15 +163,70 @@ async function main() {
     hash: hash(learningManifest),
     fetch: async () => ({ ok: true, text: async () => learningMarkdown }),
   })
-  await settle()
+  await waitFor(() => learning.replacements.length > 0, 'offizieller Lernpfad-Redirect')
   assert.equal(learning.requests.length, 4)
-  learning.message({ cmd: 'lia-course', param: { uri: learning.uri() } })
-  const learningSource = learning.posts[0].data.param.body
+  assert.equal(learning.replacements.length, 1, 'Lernpfad ersetzt den Launcher genau einmal im selben Fenster')
+  const learningSource = sourceFromOfficialUrl(learning.replacements[0])
+  assert.equal(await learning.api.officialCourseUrl(learningSource), learning.replacements[0], 'Gleicher Quelltext erzeugt eine stabile Data-URI')
+  assert.equal(await learning.api.officialCourseUrl(learningSource), learning.replacements[0], 'Auch der zweite Neuaufbau bleibt byteidentisch')
+  assert.deepEqual(
+    { ...learning.api.gzipOptions },
+    { level: 6, mem: 8, mtime: 0 },
+    'Kompressionsstufe, Speicherprofil und Zeitstempel sind vollständig gepinnt'
+  )
+  assert.equal(
+    await learning.api.officialCourseUrl('deterministic ä🧮'),
+    'https://liascript.github.io/course/?data:text/plain;charset=utf-8;Content-Encoding=gzip;base64,H4sIAAAAAAAAA0tJLUktys3MyywuyUxWOLzkw/zl6wDEnoOwFAAAAA==',
+    'fflate 0.8.2 erzeugt für die kanonische Probe exakt die festgelegten gzip-Bytes'
+  )
   assert.ok(!/lia-freeze|FreezeREADME/i.test(learningSource))
   assert.match(learningSource, /lia-mathpath/)
   assert.match(learningSource, /^lernpfad-level: Fortgeschritten$/m)
+  assert.match(learningSource, /^mode: Presentation$/m)
+  assert.ok(!/^mode: Textbook$/m.test(learningSource))
   assert.ok(learningSource.trim().endsWith('# Dein weiterer Lernpfad\n\n@Lernpfad'))
   learning.dispatch('pagehide')
+
+  const legacyLauncher = harness({
+    hash: hash(learningManifest),
+    search: '?v=1.0.2',
+    fetch: async () => ({ ok: true, text: async () => learningMarkdown }),
+  })
+  await waitFor(() => legacyLauncher.replacements.length > 0, 'Legacy-Launcher-Redirect')
+  assert.equal(legacyLauncher.replacements.length, 1, 'Alte 1.0.2-Launcherlinks bleiben kompatibel')
+  sourceFromOfficialUrl(legacyLauncher.replacements[0])
+  legacyLauncher.dispatch('pagehide')
+
+  const noCompression = harness({
+    hash: hash(learningManifest),
+    codec: false,
+    fetch: async () => ({ ok: true, text: async () => learningMarkdown }),
+  })
+  await waitFor(() => noCompression.frame.src.includes('?parent:'), 'Fallback ohne fflate')
+  assert.equal(noCompression.replacements.length, 0)
+  assert.ok(noCompression.frame.src.includes('?parent:'), 'Ohne fflate bleibt der parent:-Fallback erhalten')
+  noCompression.dispatch('pagehide')
+
+  const blockedNavigation = harness({
+    hash: hash(learningManifest),
+    replaceThrows: true,
+    fetch: async () => ({ ok: true, text: async () => learningMarkdown }),
+  })
+  await waitFor(() => blockedNavigation.frame.src.includes('?parent:'), 'Fallback bei blockierter Navigation')
+  assert.equal(blockedNavigation.replacements.length, 1, 'Der offizielle Redirect wird genau einmal versucht')
+  blockedNavigation.dispatch('pagehide')
+
+  const largeBody = Array.from({ length: 1800 }, (_, index) =>
+    createHash('sha256').update('large-learning-path-' + index).digest('hex')
+  ).join('\n')
+  const largeCourse = harness({
+    hash: hash(learningManifest),
+    fetch: async () => ({ ok: true, text: async () => '<!--\nlanguage: de\nmode: Presentation\n-->\n\n# Umfangreich\n\n' + largeBody }),
+  })
+  await waitFor(() => largeCourse.frame.src.includes('?parent:'), 'Fallback für zu lange Viewer-URL')
+  assert.equal(largeCourse.replacements.length, 0)
+  assert.ok(largeCourse.frame.src.includes('?parent:'), 'Zu lange Viewer-URLs verwenden den parent:-Fallback')
+  largeCourse.dispatch('pagehide')
   for (const malformed of ['', '#course=%7Bbroken', hash({ ...manifest, urls: ['https://other.example/Aufgabe.md'] })]) {
     const broken = harness({ hash: malformed })
     await settle()

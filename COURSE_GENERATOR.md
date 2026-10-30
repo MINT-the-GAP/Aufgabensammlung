@@ -12,6 +12,7 @@ Basis: `https://mint-the-gap.github.io/Aufgabensammlung/`
 - `assets/course-generator.js`: `window.SchulLiaCourseGenerator`
 - `assets/course-catalog.js`: `window.SchulLiaCourseCatalog`
 - `assets/course-catalog.json`: derselbe Katalog als JSON
+- `assets/vendor/fflate-0.8.2.min.js`: lokal vendorter, deterministischer gzip-Codec
 - `course.html`: direkter, aus einem Hash-Manifest erzeugter LiaScript-Kurs
 
 Die Pages-Assets werden mit JavaScript-/JSON-MIME-Typ und
@@ -27,11 +28,12 @@ Empfohlene Ladereihenfolge:
 
 Die Generator-Runtime trägt
 `schema: 'schullia-course-generator'`, `version: 1` und das gemeinsame
-Runtime-Release `release: '1.0.2'`. Der Katalog trägt
+Runtime-Release `release: '1.0.3'`. Der Katalog trägt
 `schema: 'schullia-course-catalog'` und `version: 1`.
 
-Alle von `index.html` und `course.html` geladenen Runtime-Scripts tragen
-denselben Cache-Parameter `?v=1.0.2`. Auch
+Alle eigenen, von `index.html` und `course.html` geladenen Runtime-Scripts tragen
+denselben Cache-Parameter `?v=1.0.3`; der gepinnte Codec trägt
+`?v=0.8.2`. Auch
 `buildDirectCourseUrl(...)` versieht `course.html` damit; das Kursmanifest
 bleibt ausschließlich im Hash.
 
@@ -89,18 +91,30 @@ Zulässige Angebote sind `schwaechen-ueben`, `weitere-uebungen` und
 verschiedene Aufgaben-URLs enthalten.
 
 `course.html` lädt die gemeinsamen Runtime-Scripts, entfernt Freeze-Importe,
-erzwingt den MathPath-Import, überschreibt geerbtes `mode: Presentation` mit
-`mode: Textbook`, ergänzt `lernpfad-level` und hängt eine Abschlussfolie mit
-`@Lernpfad` an. Die offizielle LiaScript-CSS wird im gleichursprünglichen Frame
-mit anonymem CORS geladen, damit auch Shadow-DOM-Formeln ihre vollständige
-KaTeX-Darstellung erhalten. Der vorhandene `parent:`-Handshake zum
-gleichursprünglichen LiaScript-Frame bleibt unverändert. Auswahl und
-Kursquellen werden an keinen neuen Server übertragen.
+erzwingt den MathPath-Import, setzt den Lernpfad ausdrücklich auf
+`mode: Presentation`, ergänzt `lernpfad-level` und hängt eine Abschlussfolie
+mit `@Lernpfad` an. Danach wird der Quelltext mit dem lokal ausgelieferten
+`fflate` 0.8.2 und dem vollständig festgelegten Optionssatz
+`{ level: 6, mem: 8, mtime: 0 }` gzip-komprimiert und
+als LiaScript-Data-URI direkt im offiziellen
+`https://liascript.github.io/course/?...`-Viewer geöffnet. Die Data-URI wird
+nicht als Ganzes URL-kodiert. Überschreitet die fertige Viewer-URL 6.000
+Zeichen oder fehlt der lokale Codec, bleibt der vorhandene
+gleichursprüngliche `parent:`-Player als Kompatibilitätsfallback erhalten.
+Auswahl und Kursquellen werden an keinen zusätzlichen Server übertragen. Der
+gefixte Codec erzeugt für denselben UTF-8-Quelltext in Chromium, Firefox und
+WebKit dieselben gzip-Bytes und damit dieselbe Viewer-URL.
+
+`fflate` ist unter der MIT-Lizenz von Arjun Barrett veröffentlicht. Die
+offizielle UMD-Distribution und der vollständige Lizenztext werden als
+`assets/vendor/fflate-0.8.2.min.js` beziehungsweise
+`assets/vendor/fflate-LICENSE.txt` mit ausgeliefert.
 
 ## Runtime-Veröffentlichung
 
-Der Pages-Workflow veröffentlicht `course.html`, `course-frame.html` und
-die benötigten `assets/course-*`-Dateien direkt nach den Kernprüfungen. Dieser
+Der Pages-Workflow veröffentlicht `course.html`, `course-frame.html`, die
+benötigten `assets/course-*`-Dateien und den gepinnten Codec samt Lizenz direkt
+nach den Kernprüfungen. Dieser
 kleine Publish verwendet `keep_files: true`, damit die bestehende Website
 erhalten bleibt, und läuft vor dem langsameren Liaex-Export. Dadurch wird das
 Zeitfenster zwischen Quelländerung und verfügbarer Runtime deutlich verkürzt.

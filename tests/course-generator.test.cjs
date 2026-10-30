@@ -33,7 +33,7 @@ const catalog = {
 async function main() {
   assert.equal(generator.schema, 'schullia-course-generator')
   assert.equal(generator.version, 1)
-  assert.equal(generator.release, '1.0.2')
+  assert.equal(generator.release, '1.0.3')
   assert.equal(generator.validateCatalog(catalog), catalog)
   assert.throws(
     () => generator.validateCatalog({ ...catalog, version: 2 }),
@@ -129,7 +129,7 @@ async function main() {
   }
   const options = generator.learningPathSourceOptions(manifest)
   assert.deepEqual(options.header, ['lernpfad-level: Experte'])
-  assert.equal(options.mode, 'Textbook')
+  assert.equal(options.mode, 'Presentation')
   assert.equal(options.resourceFilter('import', 'https://example.org/template.md'), true)
   assert.equal(
     options.resourceFilter('import', 'https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README.md'),
@@ -176,8 +176,8 @@ async function main() {
   assert.equal((sharedHeader.match(new RegExp('^import: ' + mathPathImport + '$', 'gm')) || []).length, 1)
   assert.ok(!/lia-freeze|FreezeREADME/i.test(sharedHeader))
   assert.equal((sharedHeader.match(/^lernpfad-level: Fortgeschritten$/gm) || []).length, 1)
-  assert.equal((sharedHeader.match(/^mode: Textbook$/gm) || []).length, 1)
-  assert.ok(!/^mode: Presentation$/m.test(sharedHeader))
+  assert.equal((sharedHeader.match(/^mode: Presentation$/gm) || []).length, 1)
+  assert.ok(!/^mode: Textbook$/m.test(sharedHeader))
   assert.ok(sharedSource.includes(firstBody), 'Backticks, Komma-Tags und BE=0 bytegetreu erhalten')
   assert.ok(sharedSource.includes(secondBody), 'Backticks, Komma-Tags und Teilpunkte bytegetreu erhalten')
   assert.equal((sharedSource.match(/\[\[\?\]\] @Explain/g) || []).length, 2)

@@ -59,6 +59,41 @@ function learningPathCourseUrl(paths) {
   return base + 'course.html?v=' + encodeURIComponent(runtimeRelease) +
     '#course=' + encodeURIComponent(JSON.stringify(manifest))
 }
+async function canonicalCodecUrls(engines) {
+  const probe = 'deterministic ä🧮'
+  const prefix = 'https://liascript.github.io/course/?data:text/plain;charset=utf-8;Content-Encoding=gzip;base64,'
+  const outcomes = []
+  for (const engine of engines) {
+    const browser = await pw[engine].launch({ headless: true })
+    try {
+      const page = await browser.newPage()
+      await page.goto(base + 'course.html?v=' + encodeURIComponent(runtimeRelease) + '#course=invalid', { waitUntil: 'load' })
+      await page.waitForFunction(() => !!window.SchulLiaCoursePlayer && !!window.fflate)
+      const result = await page.evaluate(async source => ({
+        url: await window.SchulLiaCoursePlayer.officialCourseUrl(source),
+        options: window.SchulLiaCoursePlayer.gzipOptions,
+      }), probe)
+      assert.deepEqual(result.options, { level: 6, mem: 8, mtime: 0 }, engine + ' verwendet die kanonischen fflate-Optionen')
+      assert.ok(result.url && result.url.startsWith(prefix), engine + ' erzeugt eine offizielle gzip-Data-URI')
+      outcomes.push({ engine, url: result.url })
+    } finally {
+      await browser.close()
+    }
+  }
+  assert.ok(outcomes.length > 0, 'Mindestens eine Browser-Engine muss den Codec prüfen')
+  for (const outcome of outcomes.slice(1)) {
+    assert.equal(outcome.url, outcomes[0].url, outcome.engine + ' erzeugt exakt dieselben gzip-Bytes und dieselbe URL wie ' + outcomes[0].engine)
+  }
+  const bytes = Buffer.from(outcomes[0].url.slice(prefix.length), 'base64')
+  assert.equal(gunzipSync(bytes).toString('utf8'), probe)
+  assert.deepEqual([...bytes.subarray(4, 8)], [0, 0, 0, 0], 'Der gzip-mtime-Header ist kanonisch null')
+  return {
+    engines: outcomes.map(item => item.engine),
+    gzipSha256: createHash('sha256').update(bytes).digest('hex'),
+    urlCharacters: outcomes[0].url.length,
+    byteIdentical: true,
+  }
+}
 async function test(name, action) {
   const began = Date.now()
   try { const data = await action(); results.push({ name, status: 'PASS', milliseconds: Date.now() - began, ...data }); console.log('PASS ' + name) }
@@ -338,25 +373,29 @@ async function learningPathFormula() {
     const page = await context.newPage()
     Object.assign(evidence, observe(page))
     await page.goto(learningPathCourseUrl(learningFractions), { waitUntil: 'domcontentloaded' })
-    await page.locator('#courseFrame').waitFor({ state: 'visible', timeout: 60000 })
-    const frame = await (await page.locator('#courseFrame').elementHandle()).contentFrame()
-    assert.ok(frame.url().startsWith(base + 'course-frame.html?parent:'))
-    await frame.locator('.lia-mode--textbook').waitFor({ state: 'visible', timeout: 90000 })
-    if (!(await frame.locator('.lia-quiz').first().isVisible())) {
-      await frame.locator('button[title="weiter"]').first().click()
+    await page.waitForURL(url => url.href.startsWith('https://liascript.github.io/course/?data:text/plain;charset=utf-8;Content-Encoding=gzip;base64,'), { timeout: 60000 })
+    assert.ok(!page.url().includes('%3Atext%2Fplain'), 'Die LiaScript-Data-URI bleibt wörtlich und wird nicht als relativer Pfad interpretiert')
+    await page.locator('.lia-mode--presentation').waitFor({ state: 'visible', timeout: 90000 })
+    const officialUrl = page.url()
+    await page.reload({ waitUntil: 'domcontentloaded' })
+    await page.locator('.lia-mode--presentation').waitFor({ state: 'visible', timeout: 90000 })
+    assert.equal(page.url(), officialUrl, 'Die stabile offizielle Data-URI funktioniert nach einem Reload unverändert')
+    if (!(await page.locator('.lia-quiz').first().isVisible())) {
+      await page.locator('button[title="weiter"]').first().click()
     }
-    await frame.locator('.lia-quiz').first().waitFor({ state: 'visible', timeout: 90000 })
-    const formula = await checkFormulaRendering(frame)
-    const mode = await frame.locator('.lia-canvas').first().getAttribute('class')
-    assert.match(mode, /\blia-mode--textbook\b/, 'Lernpfadkurs überschreibt geerbtes mode: Presentation')
-    assert.equal(await frame.getByText('Subtraktion oder Addition von Brüchen', { exact: true }).count() >= 4, true)
+    await page.locator('.lia-quiz').first().waitFor({ state: 'visible', timeout: 90000 })
+    const formula = await checkFormulaRendering(page)
+    const mode = await page.locator('.lia-canvas').first().getAttribute('class')
+    assert.match(mode, /\blia-mode--presentation\b/, 'Lernpfadkurs bewahrt mode: Presentation')
+    assert.ok(await page.locator('button[title="Inhaltsverzeichnis"]').first().isVisible(), 'Der normale LiaScript-Viewer zeigt seine Navigation')
+    assert.equal(await page.getByText('Subtraktion oder Addition von Brüchen', { exact: true }).count() >= 4, true)
     await page.screenshot({ path: path.join(output, 'chromium-learning-path-formula.png'), fullPage: false })
     assert.deepEqual(evidence.errors, [])
     assert.deepEqual(unexpectedNetworkFailures(evidence, 'chromium'), [])
     return {
       engine: 'chromium',
       sources: 'four real public fraction tasks',
-      checks: ['Textbook override', 'cross-origin CSSOM', 'KaTeX formatting', 'hidden MathML duplicate'],
+      checks: ['official LiaScript viewer', 'Presentation mode', 'KaTeX formatting', 'hidden MathML duplicate'],
       formula,
       evidence,
     }
@@ -475,11 +514,12 @@ async function main() {
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve))
   base = 'http://127.0.0.1:' + server.address().port + prefix
   const engines = (process.env.SCHULLIA_BROWSERS || 'chromium,firefox,webkit').split(',').filter(Boolean)
-  if (process.env.SCHULLIA_NATIVE_ONLY !== '1') for (const engine of engines) await test(engine + ' published UI/transport', () => boundary(engine))
-  if (process.env.SCHULLIA_BOUNDARY_ONLY !== '1') for (const engine of engines) await test(engine + ' real public course', () => process.env.SCHULLIA_NATIVE_SMOKE === '1' ? nativeSmoke(engine) : native(engine))
-  if (process.env.SCHULLIA_BOUNDARY_ONLY !== '1') await test('chromium generated learning path formula and textbook mode', learningPathFormula)
-  if (process.env.SCHULLIA_MOBILE === '1') await test('chromium mobile real public course', () => native('chromium', true))
-  if (process.env.SCHULLIA_EXTRA === '1') {
+  if (engines.length) await test('canonical gzip URL is byte-identical across browser engines', () => canonicalCodecUrls(engines))
+  if (process.env.SCHULLIA_CODEC_ONLY !== '1' && process.env.SCHULLIA_NATIVE_ONLY !== '1') for (const engine of engines) await test(engine + ' published UI/transport', () => boundary(engine))
+  if (process.env.SCHULLIA_CODEC_ONLY !== '1' && process.env.SCHULLIA_BOUNDARY_ONLY !== '1') for (const engine of engines) await test(engine + ' real public course', () => process.env.SCHULLIA_NATIVE_SMOKE === '1' ? nativeSmoke(engine) : native(engine))
+  if (process.env.SCHULLIA_CODEC_ONLY !== '1' && process.env.SCHULLIA_BOUNDARY_ONLY !== '1') await test('chromium generated learning path formula in official Presentation viewer', learningPathFormula)
+  if (process.env.SCHULLIA_CODEC_ONLY !== '1' && process.env.SCHULLIA_MOBILE === '1') await test('chromium mobile real public course', () => native('chromium', true))
+  if (process.env.SCHULLIA_CODEC_ONLY !== '1' && process.env.SCHULLIA_EXTRA === '1') {
     for (const kind of (process.env.SCHULLIA_EXTRA_CASES || 'random,coordinate-mix').split(',')) {
       assert.ok(['random', 'coordinate-mix'].includes(kind))
       await test('chromium real ' + kind, () => extraNative(kind))

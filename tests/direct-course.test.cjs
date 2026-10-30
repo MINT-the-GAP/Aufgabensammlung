@@ -82,8 +82,8 @@ function testCourseAssembly() {
   assert.ok(!/lia-freeze|FreezeREADME/i.test(learningHeader), 'Lernpfad importiert Freeze nicht')
   assert.match(learningHeader, /lia-mathpath/)
   assert.match(learningHeader, /^lernpfad-level: Fortgeschritten$/m)
-  assert.match(learningHeader, /^mode: Textbook$/m)
-  assert.ok(!/^mode: Presentation$/m.test(learningHeader), 'Lernpfadkurse öffnen nicht im geerbten Präsentationsmodus')
+  assert.match(learningHeader, /^mode: Presentation$/m)
+  assert.ok(!/^mode: Textbook$/m.test(learningHeader), 'Lernpfadkurse bleiben im Präsentationsmodus')
   assert.match(learningHeader, /^author: Anna$/m)
   assert.match(learningHeader, /^license: CC BY 4\.0$/m)
   assert.ok(learningSource.includes('@ADetails(BE=2;Bruchrechnung)') && learningSource.includes('@Explain'))
@@ -296,13 +296,19 @@ async function testDirectCourse(html) {
   assert.ok(source.indexOf('id="courseGeneratorSubmit"') < source.indexOf('id="courseGeneratorDirectSubmit"'), 'Direkt-Button steht unter dem LiveEditor-Button')
   const playerHtml = fs.readFileSync(path.join(root, 'course.html'), 'utf8')
   assert.match(playerHtml, /<meta[^>]*name="viewport"/)
-  assert.match(playerHtml, /course-source\.js\?v=1\.0\.2/)
-  assert.match(playerHtml, /course-generator\.js\?v=1\.0\.2/)
-  assert.match(playerHtml, /course-player\.js\?v=1\.0\.2/)
+  assert.match(playerHtml, /course-source\.js\?v=1\.0\.3/)
+  assert.match(playerHtml, /course-generator\.js\?v=1\.0\.3/)
+  assert.match(playerHtml, /course-player\.js\?v=1\.0\.3/)
+  assert.match(playerHtml, /vendor\/fflate-0\.8\.2\.min\.js\?v=0\.8\.2/)
+  assert.ok(
+    playerHtml.indexOf('vendor/fflate-0.8.2.min.js?v=0.8.2') < playerHtml.indexOf('course-player.js?v=1.0.3'),
+    'Der deterministische gzip-Codec wird vor dem Course-Player geladen'
+  )
   assert.match(playerHtml, /id="courseThemeSample"[^>]*class="lia-btn"[^>]*hidden[^>]*aria-hidden="true"/)
   for (const name of ['course-source.js', 'course-generator.js', 'course-player.js']) {
     new vm.Script(fs.readFileSync(productFile(name), 'utf8'), { filename: name })
   }
+  new vm.Script(fs.readFileSync(path.join(root, 'assets/vendor/fflate-0.8.2.min.js'), 'utf8'), { filename: 'fflate-0.8.2.min.js' })
   const frameHtml = fs.readFileSync(path.join(root, 'course-frame.html'), 'utf8')
   for (const script of frameHtml.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g)) {
     new vm.Script(script[1], { filename: 'course-frame.html' })

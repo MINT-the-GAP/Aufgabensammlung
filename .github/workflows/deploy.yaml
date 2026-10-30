@@ -44,12 +44,14 @@ jobs:
 
       - name: Prepare shared runtime deployment
         run: |
-          mkdir -p runtime-deploy/assets
+          mkdir -p runtime-deploy/assets/vendor
           cp course.html runtime-deploy/course.html
           cp course-frame.html runtime-deploy/course-frame.html
           cp assets/course-source.js runtime-deploy/assets/course-source.js
           cp assets/course-generator.js runtime-deploy/assets/course-generator.js
           cp assets/course-player.js runtime-deploy/assets/course-player.js
+          cp assets/vendor/fflate-0.8.2.min.js runtime-deploy/assets/vendor/fflate-0.8.2.min.js
+          cp assets/vendor/fflate-LICENSE.txt runtime-deploy/assets/vendor/fflate-LICENSE.txt
           cp assets/course-catalog.js runtime-deploy/assets/course-catalog.js
           cp assets/course-catalog.json runtime-deploy/assets/course-catalog.json
 
