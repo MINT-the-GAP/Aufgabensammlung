@@ -3,7 +3,7 @@ const fs = require('node:fs')
 const path = require('node:path')
 
 const repository = path.resolve(__dirname, '..')
-const expectedRelease = '1.0.3'
+const expectedRelease = '1.0.4'
 const required = [
   'course.html',
   'course-frame.html',
@@ -76,7 +76,7 @@ function testRuntimeDeployment(directory) {
   assert.match(frame, /link\[rel~="stylesheet"\]\[href\]/, 'Offizielle Stylesheets müssen vor dem Frame-Start markiert werden')
   assert.match(frame, /crossOrigin\s*=\s*'anonymous'/, 'Shadow-DOM-CSSOM benötigt einen anonymen CORS-Stylesheetabruf')
   assert.match(player, /const uri = 'parent:' \+ identity/, 'course-player.js muss den parent:-Handshake weiter verwenden')
-  assert.match(player, /const RUNTIME_RELEASE = '1\.0\.3'/, 'Die Frame-Identität muss die Runtime-Release cache-busten')
+  assert.match(player, /const RUNTIME_RELEASE = '1\.0\.4'/, 'Die Frame-Identität muss die Runtime-Release cache-busten')
   assert.match(player, /https:\/\/liascript\.github\.io\/course\/\?/, 'Lernpfade müssen den offiziellen LiaScript-Viewer verwenden')
   assert.match(player, /Content-Encoding=gzip;base64,/, 'Lernpfade müssen als komprimierte LiaScript-Data-URI übergeben werden')
   assert.match(player, /Object\.freeze\(\{ level: 6, mem: 8, mtime: 0 \}\)/, 'Die gzip-Ausgabe braucht vollständig gepinnte Optionen')

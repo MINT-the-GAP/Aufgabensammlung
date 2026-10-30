@@ -309,9 +309,10 @@
       .filter(Boolean)
       .forEach(function (line) { header.push(line) })
     const title = settings.title ? '# ' + String(settings.title).replace(/[\r\n]+/g, ' ').trim() + '\n\n' : ''
+    const prependBody = settings.prependBody ? String(settings.prependBody).trim() + '\n\n\n' : ''
     const appendBody = settings.appendBody ? '\n\n\n' + String(settings.appendBody).trim() : ''
     return (header.length ? '<!--\n\n' + header.join('\n\n') + '\n\n-->\n\n' : '') +
-      title + chunks.join('\n\n\n') + appendBody
+      title + prependBody + chunks.join('\n\n\n') + appendBody
   }
 
   return { build: build, split: split, rebase: rebaseMarkdown }

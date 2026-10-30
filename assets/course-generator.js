@@ -6,7 +6,7 @@
 })(typeof window === 'object' ? window : typeof globalThis === 'object' ? globalThis : this, function (root) {
   'use strict'
 
-  const RELEASE = '1.0.3'
+  const RELEASE = '1.0.4'
   const CATALOG_SCHEMA = 'schullia-course-catalog'
   const CATALOG_VERSION = 1
   const GROUPS = ['einsteiger', 'fortgeschrittene', 'experten']
@@ -512,10 +512,27 @@
       !/(?:\/lia-freeze(?:-v2)?\/|\/Freeze\/|FreezeREADME\.md)/i.test(String(url || ''))
   }
 
+  const LEARNING_PATH_TUTORIAL_URL = 'https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/00_00_00_Tutorial.md'
+  const LEARNING_PATH_SPACER = ['---', '---', '---', '---'].join('\n\n')
+  const LEARNING_PATH_COMMON_INTRO = 'Am besten nimmst du dir ein Blatt Papier oder nutzt die Schrifterkennung und arbeitest die Aufgaben Schritt für Schritt durch. Danach trägst du deine Lösungen ein und bekommst eine Musterlösung zum Vergleichen. Wenn du dich ein paar Mal vertan hast, kannst du dir auch die komplette Lösung anzeigen lassen. Versuche, ohne Hilfsmittel wie andere Apps zu arbeiten. Du kannst die Aufgaben auf deinem Handy, Tablet oder Laptop öffnen und jederzeit neu starten. Viel Erfolg – und wenn du Fragen oder Ideen hast, melde dich einfach bei mir!'
+
+  function learningPathIntro(offer) {
+    const introductions = {
+      'schwaechen-ueben': 'Hier findest du vier Aufgaben, mit denen du wichtige Grundlagen noch einmal wiederholen und festigen kannst. Die Aufgaben sind als Einstieg ausgewählt, damit du das Thema Schritt für Schritt sicherer bearbeiten kannst.',
+      'weitere-uebungen': 'Hier findest du vier weitere Aufgaben zum gleichen Thema auf deinem bisherigen Schwierigkeitsniveau. Damit kannst du weiterüben, dein Wissen festigen und bei ähnlichen Aufgaben sicherer werden.',
+      vertiefungen: 'Hier findest du vier Aufgaben zum gleichen Thema auf der nächsten Schwierigkeitsstufe. Damit kannst du dein Wissen vertiefen und dich Schritt für Schritt an anspruchsvollere Aufgaben heranwagen.',
+    }
+    const introduction = introductions[offer] || introductions['weitere-uebungen']
+    return '> ' + introduction + ' ' + LEARNING_PATH_COMMON_INTRO + '\n\n' +
+      LEARNING_PATH_SPACER + '\n\n' +
+      '> [!CAUTION]\n> <h2>[Tutorial öffnen](' + LEARNING_PATH_TUTORIAL_URL + ')</h2>\n\n' +
+      LEARNING_PATH_SPACER
+  }
+
   function learningPathSourceOptions(manifest, options) {
     const settings = options || {}
     const labels = {
-      'schwaechen-ueben': 'Schwächen üben',
+      'schwaechen-ueben': 'Grundlagen wiederholen',
       'weitere-uebungen': 'Weitere Übungen',
       vertiefungen: 'Vertiefungen',
     }
@@ -531,6 +548,7 @@
       imports: [settings.mathPathImport || MATHPATH_IMPORT],
       header: ['lernpfad-level: ' + (levelLabels[manifest.level] || manifest.level)],
       resourceFilter: isNotFreezeResource,
+      prependBody: learningPathIntro(manifest.offer),
       appendBody: '# Dein weiterer Lernpfad\n\n@Lernpfad',
     }
   }

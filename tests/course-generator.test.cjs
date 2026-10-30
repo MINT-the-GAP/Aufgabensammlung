@@ -33,7 +33,7 @@ const catalog = {
 async function main() {
   assert.equal(generator.schema, 'schullia-course-generator')
   assert.equal(generator.version, 1)
-  assert.equal(generator.release, '1.0.3')
+  assert.equal(generator.release, '1.0.4')
   assert.equal(generator.validateCatalog(catalog), catalog)
   assert.throws(
     () => generator.validateCatalog({ ...catalog, version: 2 }),
@@ -130,6 +130,25 @@ async function main() {
   const options = generator.learningPathSourceOptions(manifest)
   assert.deepEqual(options.header, ['lernpfad-level: Experte'])
   assert.equal(options.mode, 'Presentation')
+  const tutorialUrl = 'https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/00_00_00_Tutorial.md'
+  const fourSpacers = ['---', '---', '---', '---'].join('\n\n')
+  const weeklyTutorialBlock = fourSpacers + '\n\n> [!CAUTION]\n> <h2>[Tutorial öffnen](' + tutorialUrl + ')</h2>\n\n' + fourSpacers
+  const offerIntros = [
+    ['schwaechen-ueben', 'Grundlagen wiederholen', 'wichtige Grundlagen noch einmal wiederholen und festigen'],
+    ['weitere-uebungen', 'Weitere Übungen', 'auf deinem bisherigen Schwierigkeitsniveau'],
+    ['vertiefungen', 'Vertiefungen', 'auf der nächsten Schwierigkeitsstufe'],
+  ]
+  for (const [offer, label, excerpt] of offerIntros) {
+    const sourceOptions = generator.learningPathSourceOptions({ ...manifest, offer })
+    assert.equal(sourceOptions.title, label + ': Bruchrechnung')
+    assert.match(sourceOptions.prependBody, new RegExp(excerpt))
+    assert.equal((sourceOptions.prependBody.match(/^---$/gm) || []).length, 8)
+    assert.equal((sourceOptions.prependBody.match(/\[Tutorial öffnen\]\(/g) || []).length, 1)
+    assert.ok(sourceOptions.prependBody.includes('> [!CAUTION]\n> <h2>[Tutorial öffnen](' + tutorialUrl + ')</h2>'))
+    assert.ok(sourceOptions.prependBody.includes('nutzt die Schrifterkennung'))
+    assert.ok(sourceOptions.prependBody.includes('wenn du Fragen oder Ideen hast, melde dich einfach bei mir'))
+    assert.ok(sourceOptions.prependBody.endsWith(weeklyTutorialBlock))
+  }
   assert.equal(options.resourceFilter('import', 'https://example.org/template.md'), true)
   assert.equal(
     options.resourceFilter('import', 'https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README.md'),
@@ -182,6 +201,10 @@ async function main() {
   assert.ok(sharedSource.includes(secondBody), 'Backticks, Komma-Tags und Teilpunkte bytegetreu erhalten')
   assert.equal((sharedSource.match(/\[\[\?\]\] @Explain/g) || []).length, 2)
   assert.equal((sharedSource.match(/^@Lernpfad\s*$/gm) || []).length, 1)
+  const firstTaskOffset = sharedSource.indexOf(firstBody)
+  assert.ok(firstTaskOffset > sharedSource.indexOf('Hier findest du vier weitere Aufgaben'))
+  assert.ok(firstTaskOffset > sharedSource.indexOf('[Tutorial öffnen](' + tutorialUrl + ')'))
+  assert.equal((sharedSource.slice(0, firstTaskOffset).match(/^---$/gm) || []).length, 8)
   assert.ok(sharedSource.trim().endsWith('# Dein weiterer Lernpfad\n\n@Lernpfad'))
 
   await assert.rejects(

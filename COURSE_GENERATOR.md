@@ -28,11 +28,11 @@ Empfohlene Ladereihenfolge:
 
 Die Generator-Runtime trägt
 `schema: 'schullia-course-generator'`, `version: 1` und das gemeinsame
-Runtime-Release `release: '1.0.3'`. Der Katalog trägt
+Runtime-Release `release: '1.0.4'`. Der Katalog trägt
 `schema: 'schullia-course-catalog'` und `version: 1`.
 
 Alle eigenen, von `index.html` und `course.html` geladenen Runtime-Scripts tragen
-denselben Cache-Parameter `?v=1.0.3`; der gepinnte Codec trägt
+denselben Cache-Parameter `?v=1.0.4`; der gepinnte Codec trägt
 `?v=0.8.2`. Auch
 `buildDirectCourseUrl(...)` versieht `course.html` damit; das Kursmanifest
 bleibt ausschließlich im Hash.
@@ -89,6 +89,11 @@ Zulässige Angebote sind `schwaechen-ueben`, `weitere-uebungen` und
 `vertiefungen`; zulässige Niveaus sind `einsteiger`,
 `fortgeschrittene` und `experten`. Ein Lernpfad-Manifest muss genau vier
 verschiedene Aufgaben-URLs enthalten.
+
+Die sichtbaren Angebote heißen „Grundlagen wiederholen“, „Weitere Übungen“
+und „Vertiefungen“; die stabilen Manifestwerte ändern sich dadurch nicht. Die
+Startfolie erklärt das jeweilige Lernziel, übernimmt das Bedienmuster der
+Wochenaufgaben und verweist in einem CAUTION-Block auf den LiaScript-Tutorialkurs.
 
 `course.html` lädt die gemeinsamen Runtime-Scripts, entfernt Freeze-Importe,
 erzwingt den MathPath-Import, setzt den Lernpfad ausdrücklich auf

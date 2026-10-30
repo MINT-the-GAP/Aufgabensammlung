@@ -87,6 +87,10 @@ function testCourseAssembly() {
   assert.match(learningHeader, /^author: Anna$/m)
   assert.match(learningHeader, /^license: CC BY 4\.0$/m)
   assert.ok(learningSource.includes('@ADetails(BE=2;Bruchrechnung)') && learningSource.includes('@Explain'))
+  const learningTaskOffset = learningSource.indexOf('# Aufgabe')
+  assert.ok(learningSource.indexOf('Hier findest du vier weitere Aufgaben') < learningTaskOffset)
+  assert.ok(learningSource.indexOf('[Tutorial öffnen](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/00_00_00_Tutorial.md)') < learningTaskOffset)
+  assert.equal((learningSource.slice(0, learningTaskOffset).match(/^---$/gm) || []).length, 8)
   assert.ok(learningSource.trim().endsWith('# Dein weiterer Lernpfad\n\n@Lernpfad'))
 
   // Exercise a real complex source: this catches line-wise de-duplication of
@@ -296,12 +300,12 @@ async function testDirectCourse(html) {
   assert.ok(source.indexOf('id="courseGeneratorSubmit"') < source.indexOf('id="courseGeneratorDirectSubmit"'), 'Direkt-Button steht unter dem LiveEditor-Button')
   const playerHtml = fs.readFileSync(path.join(root, 'course.html'), 'utf8')
   assert.match(playerHtml, /<meta[^>]*name="viewport"/)
-  assert.match(playerHtml, /course-source\.js\?v=1\.0\.3/)
-  assert.match(playerHtml, /course-generator\.js\?v=1\.0\.3/)
-  assert.match(playerHtml, /course-player\.js\?v=1\.0\.3/)
+  assert.match(playerHtml, /course-source\.js\?v=1\.0\.4/)
+  assert.match(playerHtml, /course-generator\.js\?v=1\.0\.4/)
+  assert.match(playerHtml, /course-player\.js\?v=1\.0\.4/)
   assert.match(playerHtml, /vendor\/fflate-0\.8\.2\.min\.js\?v=0\.8\.2/)
   assert.ok(
-    playerHtml.indexOf('vendor/fflate-0.8.2.min.js?v=0.8.2') < playerHtml.indexOf('course-player.js?v=1.0.3'),
+    playerHtml.indexOf('vendor/fflate-0.8.2.min.js?v=0.8.2') < playerHtml.indexOf('course-player.js?v=1.0.4'),
     'Der deterministische gzip-Codec wird vor dem Course-Player geladen'
   )
   assert.match(playerHtml, /id="courseThemeSample"[^>]*class="lia-btn"[^>]*hidden[^>]*aria-hidden="true"/)

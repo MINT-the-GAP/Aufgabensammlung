@@ -376,11 +376,20 @@ async function learningPathFormula() {
     await page.waitForURL(url => url.href.startsWith('https://liascript.github.io/course/?data:text/plain;charset=utf-8;Content-Encoding=gzip;base64,'), { timeout: 60000 })
     assert.ok(!page.url().includes('%3Atext%2Fplain'), 'Die LiaScript-Data-URI bleibt wörtlich und wird nicht als relativer Pfad interpretiert')
     await page.locator('.lia-mode--presentation').waitFor({ state: 'visible', timeout: 90000 })
+    const intro = page.getByText(/Hier findest du vier weitere Aufgaben zum gleichen Thema/, { exact: false }).first()
+    await intro.waitFor({ state: 'visible', timeout: 90000 })
+    const tutorial = page.getByRole('link', { name: 'Tutorial öffnen', exact: true }).first()
+    await tutorial.waitFor({ state: 'visible', timeout: 30000 })
+    assert.equal(
+      await tutorial.getAttribute('href'),
+      'https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/00_00_00_Tutorial.md',
+      'Die Startfolie verweist auf den belegten LiaScript-Tutorialkurs'
+    )
     const officialUrl = page.url()
     await page.reload({ waitUntil: 'domcontentloaded' })
     await page.locator('.lia-mode--presentation').waitFor({ state: 'visible', timeout: 90000 })
     assert.equal(page.url(), officialUrl, 'Die stabile offizielle Data-URI funktioniert nach einem Reload unverändert')
-    if (!(await page.locator('.lia-quiz').first().isVisible())) {
+    for (let advance = 0; advance < 12 && !(await page.locator('.lia-quiz').first().isVisible()); advance++) {
       await page.locator('button[title="weiter"]').first().click()
     }
     await page.locator('.lia-quiz').first().waitFor({ state: 'visible', timeout: 90000 })
@@ -395,7 +404,7 @@ async function learningPathFormula() {
     return {
       engine: 'chromium',
       sources: 'four real public fraction tasks',
-      checks: ['official LiaScript viewer', 'Presentation mode', 'KaTeX formatting', 'hidden MathML duplicate'],
+      checks: ['official LiaScript viewer', 'offer-specific start slide', 'Tutorial link', 'Presentation mode', 'KaTeX formatting', 'hidden MathML duplicate'],
       formula,
       evidence,
     }

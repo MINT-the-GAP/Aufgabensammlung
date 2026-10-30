@@ -3,7 +3,7 @@
   'use strict'
 
   const COURSE_URL = new URL('./course-frame.html', window.location.href).href
-  const RUNTIME_RELEASE = '1.0.3'
+  const RUNTIME_RELEASE = '1.0.4'
   const OFFICIAL_VIEWER_URL = 'https://liascript.github.io/course/?'
   const DATA_COURSE_PREFIX = 'data:text/plain;charset=utf-8;Content-Encoding=gzip;base64,'
   const GZIP_OPTIONS = Object.freeze({ level: 6, mem: 8, mtime: 0 })

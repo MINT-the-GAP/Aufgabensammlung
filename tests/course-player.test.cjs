@@ -184,6 +184,10 @@ async function main() {
   assert.match(learningSource, /^lernpfad-level: Fortgeschritten$/m)
   assert.match(learningSource, /^mode: Presentation$/m)
   assert.ok(!/^mode: Textbook$/m.test(learningSource))
+  const learningTaskOffset = learningSource.indexOf('# Aufgabe')
+  assert.ok(learningSource.indexOf('Hier findest du vier weitere Aufgaben') < learningTaskOffset)
+  assert.ok(learningSource.indexOf('[Tutorial öffnen](https://liascript.github.io/course/?https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/Repetitorium/Erklaerungen/00_00_00_Tutorial.md)') < learningTaskOffset)
+  assert.equal((learningSource.slice(0, learningTaskOffset).match(/^---$/gm) || []).length, 8)
   assert.ok(learningSource.trim().endsWith('# Dein weiterer Lernpfad\n\n@Lernpfad'))
   learning.dispatch('pagehide')
 

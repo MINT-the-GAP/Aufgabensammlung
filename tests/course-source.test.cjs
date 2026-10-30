@@ -30,6 +30,19 @@ function existsWithExactCase(file) {
 }
 
 const documents = urls.map(url => ({ url, content: fs.readFileSync(localPath(url), 'utf8') }))
+const framed = assembler.build([{
+  url: 'https://example.org/task.md',
+  content: '<!--\nlanguage: de\n-->\n\n# Unveränderte Aufgabe\n\nAufgabentext',
+}], {
+  title: 'Starttitel',
+  prependBody: '> Startfolie',
+  appendBody: '# Abschlussfolie',
+})
+assert.ok(framed.indexOf('# Starttitel') < framed.indexOf('> Startfolie'))
+assert.ok(framed.indexOf('> Startfolie') < framed.indexOf('# Unveränderte Aufgabe'))
+assert.ok(framed.indexOf('# Unveränderte Aufgabe') < framed.indexOf('# Abschlussfolie'))
+assert.equal((framed.match(/> Startfolie/g) || []).length, 1)
+assert.ok(framed.includes('# Unveränderte Aufgabe\n\nAufgabentext'))
 let checkedResources = 0
 for (const document of documents) {
   const built = assembler.build([document], { edit: false })
