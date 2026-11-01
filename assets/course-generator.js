@@ -12,7 +12,7 @@
   const CURRICULUM_SCHEMA = 'schullia-sachsen-curriculum'
   const CURRICULUM_VERSION = 1
   const GROUPS = ['einsteiger', 'fortgeschrittene', 'experten']
-  const MATHPATH_RELEASE = '0.0.20'
+  const MATHPATH_RELEASE = '0.0.21'
   const MATHPATH_IMPORT = 'https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md?v=' + MATHPATH_RELEASE
   const profiles = {
     einsteiger: {

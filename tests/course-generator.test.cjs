@@ -34,10 +34,10 @@ async function main() {
   assert.equal(generator.schema, 'schullia-course-generator')
   assert.equal(generator.version, 1)
   assert.equal(generator.release, '1.0.7')
-  assert.equal(generator.mathPathRelease, '0.0.20')
+  assert.equal(generator.mathPathRelease, '0.0.21')
   assert.equal(
     generator.mathPathImport,
-    'https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md?v=0.0.20'
+    'https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md?v=0.0.21'
   )
   assert.equal(generator.validateCatalog(catalog), catalog)
   assert.throws(
