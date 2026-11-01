@@ -148,6 +148,7 @@ async function main() {
     kind: 'lernpfad',
     offer: 'weitere-uebungen',
     topic: 'Bruchrechnung',
+    secondaryTopics: ['Addition', 'Subtraktion'],
     level: 'fortgeschrittene',
     grade: 7,
     schoolType: 'gymnasium',
@@ -155,7 +156,8 @@ async function main() {
   }
   const normalizedLearning = h.api.normalizeManifest(learningManifest)
   assert.equal(normalizedLearning.group, 'fortgeschrittene')
-  assert.deepEqual(Array.from(normalizedLearning.themes), ['Bruchrechnung'])
+  assert.deepEqual(Array.from(normalizedLearning.themes), ['Bruchrechnung', 'Addition', 'Subtraktion'])
+  assert.deepEqual(Array.from(normalizedLearning.secondaryTopics), ['Addition', 'Subtraktion'])
   assert.equal(normalizedLearning.grade, 7)
   assert.equal(normalizedLearning.schoolType, 'gymnasium')
   assert.throws(() => h.api.normalizeManifest({ ...learningManifest, urls: learningUrls.slice(0, 3) }), /genau vier/)
@@ -165,6 +167,10 @@ async function main() {
   assert.throws(() => h.api.normalizeManifest({ ...learningManifest, grade: '7' }), /Klassenstufe/)
   assert.throws(() => h.api.normalizeManifest({ ...learningManifest, grade: 14 }), /Klassenstufe/)
   assert.throws(() => h.api.normalizeManifest({ ...learningManifest, schoolType: 'unknown' }), /Schulart/)
+  assert.throws(() => h.api.normalizeManifest({ ...learningManifest, secondaryTopics: 'Addition' }), /Nebenthemen/)
+  assert.throws(() => h.api.normalizeManifest({ ...learningManifest, secondaryTopics: ['Bruchrechnung'] }), /Nebenthemen/)
+  assert.throws(() => h.api.normalizeManifest({ ...learningManifest, secondaryTopics: ['Addition', 'addition'] }), /Nebenthemen/)
+  assert.throws(() => h.api.normalizeManifest({ ...learningManifest, secondaryTopics: ['A', 'B', 'C', 'D'] }), /Nebenthemen/)
   const learningMarkdown = '<!--\nlanguage: de\nimport: https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README.md\n-->\n# Aufgabe\n\n[[ 2 ]]\n\n@ADetails(BE=2;Bruchrechnung)\n\n[[?]] @Explain'
   const learning = harness({
     hash: hash(learningManifest),

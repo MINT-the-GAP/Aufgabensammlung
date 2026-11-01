@@ -27,13 +27,13 @@ function testDeployment(directory) {
   for (const file of required) exactFile(root, file)
   const index = fs.readFileSync(path.join(root, 'index.html'), 'utf8')
   const generator = require(path.join(root, 'assets/course-generator.js'))
-  assert.equal(generator.release, '1.0.7')
+  assert.equal(generator.release, '1.0.8')
   assert.match(index, /id="courseGeneratorSubmit"[^>]*>Kurs im LiveEditor generieren</)
   assert.match(index, /id="courseGeneratorDirectSubmit"[^>]*>Kurs direkt generieren</)
   assert.match(index, /function buildDirectCourseUrl\(/)
-  assert.match(index, /src=[\x22\x27]assets\/course-generator\.js\?v=1\.0\.7[\x22\x27]/)
-  assert.match(index, /src=[\x22\x27]assets\/course-catalog\.js\?v=1\.0\.7[\x22\x27]/)
-  assert.match(index, /src=[\x22\x27]assets\/course-source\.js\?v=1\.0\.7[\x22\x27]/)
+  assert.match(index, /src=[\x22\x27]assets\/course-generator\.js\?v=1\.0\.8[\x22\x27]/)
+  assert.match(index, /src=[\x22\x27]assets\/course-catalog\.js\?v=1\.0\.8[\x22\x27]/)
+  assert.match(index, /src=[\x22\x27]assets\/course-source\.js\?v=1\.0\.8[\x22\x27]/)
   let resources = 0
   let scripts = 0
   for (const file of required) {

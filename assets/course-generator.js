@@ -6,13 +6,13 @@
 })(typeof window === 'object' ? window : typeof globalThis === 'object' ? globalThis : this, function (root) {
   'use strict'
 
-  const RELEASE = '1.0.7'
+  const RELEASE = '1.0.8'
   const CATALOG_SCHEMA = 'schullia-course-catalog'
   const CATALOG_VERSION = 1
   const CURRICULUM_SCHEMA = 'schullia-sachsen-curriculum'
   const CURRICULUM_VERSION = 1
   const GROUPS = ['einsteiger', 'fortgeschrittene', 'experten']
-  const MATHPATH_RELEASE = '0.0.21'
+  const MATHPATH_RELEASE = '0.0.22'
   const MATHPATH_IMPORT = 'https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md?v=' + MATHPATH_RELEASE
   const profiles = {
     einsteiger: {
@@ -404,6 +404,7 @@
   function filterTasks(catalog, request) {
     const settings = request || {}
     const required = normalizedSet(settings.themes)
+    const distributedThemes = settings.themeMode === 'distributed'
     const blocked = normalizedSet(settings.blockedThemes)
     const allowed = normalizedSet(settings.allowedThemes)
     const useCurriculum = Array.isArray(settings.allowedThemes)
@@ -412,7 +413,9 @@
       if (!task || seen.has(task.url)) return false
       seen.add(task.url)
       const topics = new Set((task.topics || []).map(topicKey).filter(Boolean))
-      if (required.size && !Array.from(required).every(function (key) { return topics.has(key) })) return false
+      if (required.size && !(distributedThemes
+        ? Array.from(required).some(function (key) { return topics.has(key) })
+        : Array.from(required).every(function (key) { return topics.has(key) }))) return false
       if (Array.from(blocked).some(function (key) { return topics.has(key) })) return false
       if (useCurriculum) {
         if (!Array.from(topics).some(function (key) { return allowed.has(key) })) return false
@@ -524,6 +527,105 @@
     const requested = Number(settings.count)
     if (!Number.isInteger(requested) || requested < 1) {
       throw new CourseGeneratorError('INVALID_REQUEST', 'Die Aufgabenanzahl muss eine positive ganze Zahl sein.')
+    }
+    const requestedThemes = Array.from(normalizedSet(settings.themes))
+    if (settings.themeMode === 'distributed' && requestedThemes.length > 1) {
+      if (requestedThemes.length > requested) {
+        throw new CourseGeneratorError(
+          'INVALID_REQUEST',
+          'Es können nicht mehr Themen als Aufgaben verteilt werden.',
+          { themes: requestedThemes.length, required: requested }
+        )
+      }
+      const candidates = filterTasks(catalog, settings)
+      if (!candidates.length) {
+        throw new CourseGeneratorError('NO_TASKS', 'Keine Aufgaben für die gewählten Themen und das Niveau gefunden.')
+      }
+      if (settings.strictCount && candidates.length < requested) {
+        throw new CourseGeneratorError(
+          'INSUFFICIENT_TASKS',
+          'Für diese Auswahl sind nur ' + candidates.length + ' statt ' + requested + ' verschiedener Aufgaben verfügbar.',
+          { available: candidates.length, required: requested }
+        )
+      }
+      const random = typeof settings.random === 'function'
+        ? settings.random
+        : settings.seed !== undefined ? createSeededRandom(settings.seed) : Math.random
+      const topicCount = function (task) {
+        const topics = normalizedSet(task.topics)
+        return requestedThemes.reduce(function (count, key) { return count + (topics.has(key) ? 1 : 0) }, 0)
+      }
+      const pools = requestedThemes.map(function (key, index) {
+        return {
+          key: key,
+          index: index,
+          tasks: shuffle(candidates.filter(function (task) {
+            return normalizedSet(task.topics).has(key)
+          }), random).sort(function (left, right) {
+            return topicCount(left) - topicCount(right)
+          }),
+        }
+      }).sort(function (left, right) {
+        return left.tasks.length - right.tasks.length || right.index - left.index
+      })
+      const assigned = new Map()
+      const used = new Set()
+      function assign(position) {
+        if (position >= pools.length) return true
+        const entry = pools[position]
+        for (let index = 0; index < entry.tasks.length; index++) {
+          const task = entry.tasks[index]
+          if (used.has(task.url)) continue
+          used.add(task.url)
+          assigned.set(entry.key, task)
+          if (assign(position + 1)) return true
+          assigned.delete(entry.key)
+          used.delete(task.url)
+        }
+        return false
+      }
+      if (!assign(0)) {
+        const missingThemes = pools.filter(function (entry) { return !entry.tasks.length })
+          .map(function (entry) { return entry.key })
+        throw new CourseGeneratorError(
+          'INSUFFICIENT_TASKS',
+          'Nicht für jedes gewählte Thema ist eine eigene Aufgabe verfügbar.',
+          { available: candidates.length, required: requested, missingThemes: missingThemes }
+        )
+      }
+      const selected = requestedThemes.map(function (key) { return assigned.get(key) })
+      const remaining = Math.min(requested, candidates.length) - selected.length
+      if (remaining > 0) {
+        const available = candidates.filter(function (task) { return !used.has(task.url) })
+        const mainTopic = requestedThemes[0]
+        const mainCandidates = available.filter(function (task) {
+          return normalizedSet(task.topics).has(mainTopic)
+        })
+        const mainCount = Math.min(remaining, mainCandidates.length)
+        const additions = mainCount ? selectTasks(mainCandidates, {
+          count: mainCount,
+          group: settings.group,
+          strictCount: true,
+          random: random,
+        }) : []
+        additions.forEach(function (task) { selected.push(task) })
+        const rest = remaining - additions.length
+        if (rest > 0) {
+          const additionUrls = new Set(additions.map(function (task) { return task.url }))
+          selectTasks(available.filter(function (task) { return !additionUrls.has(task.url) }), {
+            count: rest,
+            group: settings.group,
+            strictCount: Boolean(settings.strictCount),
+            random: random,
+          }).forEach(function (task) { selected.push(task) })
+        }
+      }
+      return selected.sort(function (a, b) {
+        const difficulty = (Number.isInteger(a.difficulty) ? a.difficulty : 99) -
+          (Number.isInteger(b.difficulty) ? b.difficulty : 99)
+        return difficulty || (Number.isInteger(a.network) ? a.network : 99) -
+          (Number.isInteger(b.network) ? b.network : 99)
+      })
     }
     const candidates = filterTasks(catalog, settings)
     if (!candidates.length) {

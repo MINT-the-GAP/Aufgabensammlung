@@ -33,11 +33,11 @@ const catalog = {
 async function main() {
   assert.equal(generator.schema, 'schullia-course-generator')
   assert.equal(generator.version, 1)
-  assert.equal(generator.release, '1.0.7')
-  assert.equal(generator.mathPathRelease, '0.0.21')
+  assert.equal(generator.release, '1.0.8')
+  assert.equal(generator.mathPathRelease, '0.0.22')
   assert.equal(
     generator.mathPathImport,
-    'https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md?v=0.0.21'
+    'https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md?v=0.0.22'
   )
   assert.equal(generator.validateCatalog(catalog), catalog)
   assert.throws(
@@ -57,6 +57,13 @@ async function main() {
     themes: ['Bruchrechnung'],
     blockedThemes: ['Addition'],
   }).length, 6)
+  assert.equal(generator.filterTasks(catalog, {
+    themes: ['Addition', 'Subtraktion'],
+  }).length, 0)
+  assert.equal(generator.filterTasks(catalog, {
+    themes: ['Addition', 'Subtraktion'],
+    themeMode: 'distributed',
+  }).length, 12)
   assert.equal(generator.filterTasks(catalog, {
     allowedThemes: ['Addition', 'Bruchrechnung'],
     curriculumThemes: ['Addition', 'Subtraktion', 'Dreiecke'],
@@ -122,6 +129,32 @@ async function main() {
       selected.map(item => item.difficulty).slice().sort((a, b) => a - b)
     )
   }
+  const distributed = generator.selectTasks(catalog, {
+    themes: ['Addition', 'Subtraktion'],
+    themeMode: 'distributed',
+    count: 4,
+    group: 'einsteiger',
+    strictCount: true,
+    seed: 'distributed-topics',
+  })
+  assert.equal(distributed.length, 4)
+  assert.equal(new Set(distributed.map(item => item.url)).size, 4)
+  assert.ok(distributed.some(item => item.topics.includes('Addition')))
+  assert.ok(distributed.some(item => item.topics.includes('Subtraktion')))
+  assert.ok(distributed.filter(item => item.topics.includes('Addition')).length >= 3)
+  assert.deepEqual(
+    generator.selectTasks(catalog, {
+      themes: ['Addition', 'Subtraktion'], themeMode: 'distributed', count: 4,
+      group: 'einsteiger', strictCount: true, seed: 'distributed-topics',
+    }).map(item => item.id),
+    distributed.map(item => item.id)
+  )
+  assert.throws(
+    () => generator.selectTasks(catalog, {
+      themes: ['A', 'B', 'C', 'D', 'E'], themeMode: 'distributed', count: 4,
+    }),
+    error => error.code === 'INVALID_REQUEST'
+  )
   assert.throws(
     () => generator.selectTasks(catalog, {
       themes: ['Dreiecke'], count: 9, group: 'experten', strictCount: true,
@@ -166,6 +199,7 @@ async function main() {
     kind: 'lernpfad',
     offer: 'vertiefungen',
     topic: 'Bruchrechnung',
+    secondaryTopics: ['Addition', 'Subtraktion'],
     level: 'experten',
     grade: 7,
     schoolType: 'gymnasium',

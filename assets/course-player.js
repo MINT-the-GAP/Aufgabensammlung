@@ -3,7 +3,7 @@
   'use strict'
 
   const COURSE_URL = new URL('./course-frame.html', window.location.href).href
-  const RUNTIME_RELEASE = '1.0.7'
+  const RUNTIME_RELEASE = '1.0.8'
   const OFFICIAL_VIEWER_URL = 'https://liascript.github.io/course/?'
   const DATA_COURSE_PREFIX = 'data:text/plain;charset=utf-8;Content-Encoding=gzip;base64,'
   const GZIP_OPTIONS = Object.freeze({ level: 6, mem: 8, mtime: 0 })
@@ -17,6 +17,10 @@
   const GROUPS = ['einsteiger', 'fortgeschrittene', 'experten']
   const LEARNING_PATH_OFFERS = ['schwaechen-ueben', 'weitere-uebungen', 'vertiefungen']
   const LEARNING_PATH_SCHOOL_TYPES = ['oberschule', 'gymnasium', 'bgy']
+
+  function learningTopicKey(value) {
+    return String(value || '').trim().replace(/\s+/g, ' ').normalize('NFC').toLocaleLowerCase('de')
+  }
 
   function normalizeManifest(value) {
     if (!value || typeof value !== 'object' || value.v !== 1) {
@@ -56,6 +60,19 @@
         throw new Error('Dieser Kurslink enthält ein ungültiges Lernpfad-Thema.')
       }
       const topic = value.topic.trim()
+      if (value.secondaryTopics !== undefined && !Array.isArray(value.secondaryTopics)) {
+        throw new Error('Dieser Kurslink enthält eine ungültige Nebenthemen-Auswahl.')
+      }
+      const secondaryTopics = (value.secondaryTopics || []).map(function (entry) {
+        if (typeof entry !== 'string' || !entry.trim() || /[\r\n\u0000]/.test(entry) || entry.length > 200) {
+          throw new Error('Dieser Kurslink enthält ein ungültiges Nebenthema.')
+        }
+        return entry.trim()
+      })
+      if (secondaryTopics.length > 3 || new Set(secondaryTopics.map(learningTopicKey)).size !== secondaryTopics.length ||
+          secondaryTopics.some(function (entry) { return learningTopicKey(entry) === learningTopicKey(topic) })) {
+        throw new Error('Dieser Kurslink enthält eine ungültige Nebenthemen-Auswahl.')
+      }
       if (value.grade !== undefined &&
           (!Number.isInteger(value.grade) || value.grade < 1 || value.grade > 13)) {
         throw new Error('Dieser Kurslink enthaelt eine ungueltige Klassenstufe.')
@@ -71,8 +88,9 @@
         level: value.level,
         urls: urls,
         group: value.level,
-        themes: [topic],
+        themes: [topic].concat(secondaryTopics),
       }
+      if (secondaryTopics.length) normalized.secondaryTopics = secondaryTopics
       if (value.grade !== undefined) normalized.grade = value.grade
       if (value.schoolType !== undefined) normalized.schoolType = value.schoolType
       return normalized
