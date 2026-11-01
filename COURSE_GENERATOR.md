@@ -28,11 +28,11 @@ Empfohlene Ladereihenfolge:
 
 Die Generator-Runtime trägt
 `schema: 'schullia-course-generator'`, `version: 1` und das gemeinsame
-Runtime-Release `release: '1.0.8'`. Der Katalog trägt
+Runtime-Release `release: '1.0.9'`. Der Katalog trägt
 `schema: 'schullia-course-catalog'` und `version: 1`.
 
 Alle eigenen, von `index.html` und `course.html` geladenen Runtime-Scripts tragen
-denselben Cache-Parameter `?v=1.0.8`; der gepinnte Codec trägt
+denselben Cache-Parameter `?v=1.0.9`; der gepinnte Codec trägt
 `?v=0.8.2`. Auch
 `buildDirectCourseUrl(...)` versieht `course.html` damit; das Kursmanifest
 bleibt ausschließlich im Hash.
@@ -154,7 +154,7 @@ einen verständlichen Kurs-Infotext, der zum Angebot und gewählten Thema passt.
 
 `course.html` lädt die gemeinsamen Runtime-Scripts, entfernt Freeze-Importe
 und ersetzt alle aus Aufgaben geerbten MathPath-README-Importe durch genau den
-cache-stabilen Import `README.md?v=0.0.22`. Der Direktkurs setzt den Lernpfad ausdrücklich auf
+cache-stabilen Import `README.md?v=0.0.23`. Der Direktkurs setzt den Lernpfad ausdrücklich auf
 `mode: Presentation`, ergänzt `lernpfad-level` und hängt eine Abschlussfolie
 mit `@Lernpfad` an. Danach wird der Quelltext mit dem lokal ausgelieferten
 `fflate` 0.8.2 und dem vollständig festgelegten Optionssatz

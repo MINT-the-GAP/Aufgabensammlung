@@ -6,13 +6,13 @@
 })(typeof window === 'object' ? window : typeof globalThis === 'object' ? globalThis : this, function (root) {
   'use strict'
 
-  const RELEASE = '1.0.8'
+  const RELEASE = '1.0.9'
   const CATALOG_SCHEMA = 'schullia-course-catalog'
   const CATALOG_VERSION = 1
   const CURRICULUM_SCHEMA = 'schullia-sachsen-curriculum'
   const CURRICULUM_VERSION = 1
   const GROUPS = ['einsteiger', 'fortgeschrittene', 'experten']
-  const MATHPATH_RELEASE = '0.0.22'
+  const MATHPATH_RELEASE = '0.0.23'
   const MATHPATH_IMPORT = 'https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md?v=' + MATHPATH_RELEASE
   const profiles = {
     einsteiger: {
