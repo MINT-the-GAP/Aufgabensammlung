@@ -43,30 +43,6 @@ jobs:
           node tests/course-source.test.cjs
           node tests/runtime-deployment.test.cjs .
 
-      - name: Prepare shared runtime deployment
-        run: |
-          mkdir -p runtime-deploy/assets/vendor
-          cp course.html runtime-deploy/course.html
-          cp course-frame.html runtime-deploy/course-frame.html
-          cp assets/course-source.js runtime-deploy/assets/course-source.js
-          cp assets/course-generator.js runtime-deploy/assets/course-generator.js
-          cp assets/course-player.js runtime-deploy/assets/course-player.js
-          cp assets/vendor/fflate-0.8.2.min.js runtime-deploy/assets/vendor/fflate-0.8.2.min.js
-          cp assets/vendor/fflate-LICENSE.txt runtime-deploy/assets/vendor/fflate-LICENSE.txt
-          cp assets/course-catalog.js runtime-deploy/assets/course-catalog.js
-          cp assets/course-catalog.json runtime-deploy/assets/course-catalog.json
-
-      - name: Test shared runtime deployment
-        run: node tests/runtime-deployment.test.cjs runtime-deploy
-
-      - name: Deploy shared runtime to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: runtime-deploy
-          keep_files: true
-
       - name: Set up dependencies
         # 3.4.2--2.1.0 fails on existing courses (Regular expression too large).
         # Keep the tested parser version until that regression is resolved.

@@ -104,40 +104,33 @@ function testWorkflow() {
   assert.match(workflow, /concurrency:\s*\n\s+group: aufgabensammlung-pages\s*\n\s+cancel-in-progress: true/)
 
   const coreTests = workflowStep(workflow, 'Test course generation')
-  const prepareRuntime = workflowStep(workflow, 'Prepare shared runtime deployment')
-  const testRuntime = workflowStep(workflow, 'Test shared runtime deployment')
-  const deployRuntime = workflowStep(workflow, 'Deploy shared runtime to GitHub Pages')
   const setupExporter = workflowStep(workflow, 'Set up dependencies')
   const generateSite = workflowStep(workflow, 'Generate WebSite')
+  const prepareDeployment = workflowStep(workflow, 'Prepare Deployment Directory')
+  const testDeployment = workflowStep(workflow, 'Test deployment files')
   const deploySite = workflowStep(workflow, 'Deploy to GitHub Pages')
 
   assert.ok(
-    coreTests < prepareRuntime &&
-    prepareRuntime < testRuntime &&
-    testRuntime < deployRuntime &&
-    deployRuntime < setupExporter &&
+    coreTests < setupExporter &&
     setupExporter < generateSite &&
-    generateSite < deploySite,
-    'Die kleine Runtime muss nach den Coretests und vor Liaex veröffentlicht werden'
+    generateSite < prepareDeployment &&
+    prepareDeployment < testDeployment &&
+    testDeployment < deploySite,
+    'Die Website muss vollständig erzeugt und getestet werden, bevor sie veröffentlicht wird'
   )
 
-  const earlyBlock = workflow.slice(deployRuntime, setupExporter)
-  assert.match(earlyBlock, /uses: peaceiris\/actions-gh-pages@v4/)
-  assert.match(earlyBlock, /publish_dir: runtime-deploy/)
-  assert.match(earlyBlock, /keep_files: true/)
-
-  const prepareBlock = workflow.slice(prepareRuntime, testRuntime)
-  for (const file of required) {
-    assert.ok(
-      prepareBlock.includes('runtime-deploy/' + file),
-      'Runtime-Staging fehlt im Workflow: ' + file
-    )
-  }
+  const deployActions = workflow.match(/uses: peaceiris\/actions-gh-pages@v4/g) || []
+  assert.equal(
+    deployActions.length,
+    1,
+    'Der Workflow darf gh-pages nur einmal aktualisieren, damit Pages-Deployments nicht kollidieren'
+  )
+  assert.doesNotMatch(workflow, /publish_dir: runtime-deploy/)
 
   const fullBlock = workflow.slice(deploySite)
   assert.match(fullBlock, /uses: peaceiris\/actions-gh-pages@v4/)
   assert.match(fullBlock, /publish_dir: gh-pages-deploy/)
-  assert.match(fullBlock, /force_orphan: true/, 'Der vollständige spätere Pages-Deploy muss erhalten bleiben')
+  assert.match(fullBlock, /force_orphan: true/, 'Der vollständige Pages-Deploy muss erhalten bleiben')
 }
 
 module.exports = { testRuntimeDeployment, testWorkflow }
