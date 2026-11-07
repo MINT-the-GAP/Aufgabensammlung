@@ -2503,6 +2503,9 @@ const SECTION_META_SCRIPT = String.raw`${SECTION_META_SCRIPT_START}
 
     // Sections that should be excluded from the overall collection totals.
     var SUMMARY_EXCLUDED_IDS = { aufgabensets: true, erklaerungen: true }
+    const AUTO_EXPAND_THRESHOLD = 30
+    var filterSessionActive = false
+    var expandedForFilterThreshold = false
 
     function rawPathFromHref(href) {
       if (!href) return ''
@@ -2535,6 +2538,213 @@ const SECTION_META_SCRIPT = String.raw`${SECTION_META_SCRIPT_START}
         if (d && d > maxISO) maxISO = d
       })
       return maxISO
+    }
+
+    function filtersAreActive() {
+      return !!(
+        (window.selectedCategories && window.selectedCategories.length) ||
+        (window.blockedCategories && window.blockedCategories.length) ||
+        window.selectedDifficulty ||
+        window.selectedNetworking ||
+        window.selectedOperator
+      )
+    }
+
+    function mainAccordions() {
+      return document.querySelectorAll('.album .card:not(.shadow-sm)')
+    }
+
+    function subsectionAccordions() {
+      return document.querySelectorAll('.schullia-subsection')
+    }
+
+    function rememberAccordionState(accordion, collapsedClass) {
+      accordion.dataset.schulliaFilterDisplay = accordion.style.display || ''
+      accordion.dataset.schulliaFilterCollapsed = accordion.classList.contains(collapsedClass) ? '1' : '0'
+    }
+
+    function rememberMetaText(meta) {
+      if (meta) meta.dataset.schulliaFilterOriginalText = meta.textContent || ''
+    }
+
+    function rememberFilterState() {
+      Array.prototype.forEach.call(mainAccordions(), function (accordion) {
+        rememberAccordionState(accordion, 'schullia-section-collapsed')
+        rememberMetaText(accordion.querySelector(':scope > .card-header h4 .schullia-section-meta'))
+      })
+      Array.prototype.forEach.call(subsectionAccordions(), function (accordion) {
+        rememberAccordionState(accordion, 'schullia-subsection-collapsed')
+        rememberMetaText(accordion.querySelector(':scope > .schullia-subsection-header .schullia-section-meta'))
+      })
+    }
+
+    function setAccordionCollapsed(accordion, collapsedClass, collapsed, headerSelector) {
+      accordion.classList.toggle(collapsedClass, collapsed)
+      var header = accordion.querySelector(headerSelector)
+      if (header) header.setAttribute('aria-expanded', collapsed ? 'false' : 'true')
+    }
+
+    function restoreAccordionState(accordion, collapsedClass, headerSelector) {
+      var savedDisplay = accordion.dataset.schulliaFilterDisplay
+      if (savedDisplay !== undefined) accordion.style.display = savedDisplay
+
+      var savedCollapsed = accordion.dataset.schulliaFilterCollapsed
+      if (savedCollapsed !== undefined) {
+        setAccordionCollapsed(accordion, collapsedClass, savedCollapsed === '1', headerSelector)
+      }
+
+      delete accordion.dataset.schulliaFilterDisplay
+      delete accordion.dataset.schulliaFilterCollapsed
+    }
+
+    function restoreMetaText(meta) {
+      if (!meta || meta.dataset.schulliaFilterOriginalText === undefined) return
+      meta.textContent = meta.dataset.schulliaFilterOriginalText
+      delete meta.dataset.schulliaFilterOriginalText
+    }
+
+    function restoreFilterState() {
+      Array.prototype.forEach.call(mainAccordions(), function (accordion) {
+        restoreAccordionState(
+          accordion,
+          'schullia-section-collapsed',
+          ':scope > .card-header.schullia-collapsible-header'
+        )
+        restoreMetaText(accordion.querySelector(':scope > .card-header h4 .schullia-section-meta'))
+      })
+      Array.prototype.forEach.call(subsectionAccordions(), function (accordion) {
+        restoreAccordionState(
+          accordion,
+          'schullia-subsection-collapsed',
+          ':scope > .schullia-subsection-header'
+        )
+        restoreMetaText(accordion.querySelector(':scope > .schullia-subsection-header .schullia-section-meta'))
+      })
+      filterSessionActive = false
+      expandedForFilterThreshold = false
+    }
+
+    function cardIsFilterVisible(taskCard) {
+      var wrapper = taskCard.parentElement
+      return !wrapper || wrapper.style.display !== 'none'
+    }
+
+    function visibleCardsWithin(container) {
+      return Array.prototype.filter.call(
+        container.querySelectorAll('.card.shadow-sm[data-category]'),
+        cardIsFilterVisible
+      )
+    }
+
+    function updateMetaCount(meta, count, label) {
+      if (!meta) return
+      var original = meta.dataset.schulliaFilterOriginalText
+      if (original === undefined) {
+        original = meta.textContent || ''
+        meta.dataset.schulliaFilterOriginalText = original
+      }
+
+      var match = original.match(/^\(\d+\s+(?:Aufgabe(?:n)?|Set(?:s)?|Erkl\u00e4rung(?:en)?)(.*)\)$/)
+      var suffix = match ? match[1] : ''
+      meta.textContent = '(' + count + ' ' + label + suffix + ')'
+    }
+
+    function showAccordionForCount(accordion, count) {
+      var savedDisplay = accordion.dataset.schulliaFilterDisplay
+      accordion.style.display = count > 0 ? (savedDisplay || '') : 'none'
+    }
+
+    function restoreCollapsedStatesAfterAutoExpand() {
+      Array.prototype.forEach.call(mainAccordions(), function (accordion) {
+        var saved = accordion.dataset.schulliaFilterCollapsed
+        if (saved !== undefined) {
+          setAccordionCollapsed(
+            accordion,
+            'schullia-section-collapsed',
+            saved === '1',
+            ':scope > .card-header.schullia-collapsible-header'
+          )
+        }
+      })
+      Array.prototype.forEach.call(subsectionAccordions(), function (accordion) {
+        var saved = accordion.dataset.schulliaFilterCollapsed
+        if (saved !== undefined) {
+          setAccordionCollapsed(
+            accordion,
+            'schullia-subsection-collapsed',
+            saved === '1',
+            ':scope > .schullia-subsection-header'
+          )
+        }
+      })
+    }
+
+    function updateFilteredAccordions() {
+      if (!filtersAreActive()) {
+        if (filterSessionActive) restoreFilterState()
+        if (document.body) {
+          document.body.dataset.schulliaVisibleTaskCount = String(
+            document.querySelectorAll('.album .card.shadow-sm[data-category]').length
+          )
+        }
+        return
+      }
+
+      if (!filterSessionActive) {
+        rememberFilterState()
+        filterSessionActive = true
+      }
+
+      var allTaskCards = document.querySelectorAll('.album .card.shadow-sm[data-category]')
+      var visibleTotal = Array.prototype.filter.call(allTaskCards, cardIsFilterVisible).length
+      var shouldExpandAll = visibleTotal <= AUTO_EXPAND_THRESHOLD
+
+      Array.prototype.forEach.call(mainAccordions(), function (accordion) {
+        var header = accordion.querySelector(':scope > .card-header')
+        var h4 = header && header.querySelector('h4')
+        var body = accordion.querySelector(':scope > .card-body')
+        if (!h4 || !body) return
+
+        var count = visibleCardsWithin(body).length
+        var sectionId = (h4.getAttribute('id') || '').toLowerCase()
+        showAccordionForCount(accordion, count)
+        updateMetaCount(h4.querySelector('.schullia-section-meta'), count, sectionLabel(sectionId, count))
+
+        if (count && shouldExpandAll) {
+          setAccordionCollapsed(
+            accordion,
+            'schullia-section-collapsed',
+            false,
+            ':scope > .card-header.schullia-collapsible-header'
+          )
+        }
+      })
+
+      Array.prototype.forEach.call(subsectionAccordions(), function (accordion) {
+        var count = visibleCardsWithin(accordion).length
+        showAccordionForCount(accordion, count)
+        updateMetaCount(
+          accordion.querySelector(':scope > .schullia-subsection-header .schullia-section-meta'),
+          count,
+          sectionLabel('', count)
+        )
+
+        if (count && shouldExpandAll) {
+          setAccordionCollapsed(
+            accordion,
+            'schullia-subsection-collapsed',
+            false,
+            ':scope > .schullia-subsection-header'
+          )
+        }
+      })
+
+      if (!shouldExpandAll && expandedForFilterThreshold) {
+        restoreCollapsedStatesAfterAutoExpand()
+      }
+
+      expandedForFilterThreshold = shouldExpandAll
+      if (document.body) document.body.dataset.schulliaVisibleTaskCount = String(visibleTotal)
     }
 
     function buildSectionMeta() {
@@ -2781,6 +2991,7 @@ const SECTION_META_SCRIPT = String.raw`${SECTION_META_SCRIPT_START}
       buildSectionMeta()
       buildCollectionSummary()
       buildSubSections()
+      if (filtersAreActive()) updateFilteredAccordions()
     }
 
     function start() {
@@ -2797,6 +3008,7 @@ const SECTION_META_SCRIPT = String.raw`${SECTION_META_SCRIPT_START}
     }
 
     window.addEventListener('load', refresh)
+    document.addEventListener('schullia:cards-filtered', updateFilteredAccordions)
   })()
 </script>
 ${SECTION_META_SCRIPT_END}`
@@ -2988,6 +3200,13 @@ function enhanceOperatorDropdownScript(script) {
       'normalizedCardOperators.indexOf(normalizeOperatorTagKey(window.selectedOperator)) !== -1'
     )
 
+  if (!script.includes("new CustomEvent('schullia:cards-filtered')")) {
+    script = script.replace(
+      /([ \t]*\}\)\r?\n)([ \t]*\}\r?\n[ \t]*<\/script>\s*)$/,
+      "$1        document.dispatchEvent(new CustomEvent('schullia:cards-filtered'))\n$2"
+    )
+  }
+
   if (script.includes('normalizedCardOperators.indexOf') &&
       !script.includes('const normalizedCardOperators = cardCategories.map')) {
     throw new Error('Operatorfilter konnte nicht vollständig erweitert werden.')
@@ -2996,6 +3215,10 @@ function enhanceOperatorDropdownScript(script) {
   if (!script.includes('function syncCategoryDropdownFromCards()') ||
       !/syncCategoryDropdownFromCards\(\)\s*setupOperatorDropdown\(\)/.test(script)) {
     throw new Error('Themenliste konnte nicht aus den Karten-Tags ergänzt werden.')
+  }
+
+  if (!script.includes("new CustomEvent('schullia:cards-filtered')")) {
+    throw new Error('Filterereignis fuer die Akkordeon-Aktualisierung konnte nicht ergaenzt werden.')
   }
 
   return script
