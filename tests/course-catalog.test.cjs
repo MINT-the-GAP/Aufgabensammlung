@@ -29,6 +29,23 @@ assert.ok(catalog.tasks.length > 1200, 'Den vollständigen Aufgabenbestand verö
 assert.equal(new Set(catalog.tasks.map(task => task.id)).size, catalog.tasks.length)
 assert.equal(new Set(catalog.tasks.map(task => task.url)).size, catalog.tasks.length)
 
+function collectTaskFiles(directory) {
+  const files = []
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    const target = path.join(directory, entry.name)
+    if (entry.isDirectory()) files.push(...collectTaskFiles(target))
+    else if (/^Aufgabe_.*\.md$/i.test(entry.name)) {
+      files.push(path.relative(root, target).split(path.sep).join('/'))
+    }
+  }
+  return files
+}
+
+const catalogIds = new Set(catalog.tasks.map(task => task.id))
+for (const taskFile of collectTaskFiles(path.join(root, '04_Funktionen'))) {
+  assert.ok(catalogIds.has(taskFile), 'Funktionsaufgabe fehlt in project.yml: ' + taskFile)
+}
+
 let missingTopics = 0
 let missingDifficulty = 0
 let missingNetwork = 0

@@ -23498,6 +23498,936 @@
       "operator": "angeben"
     },
     {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0013.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0013.md",
+      "title": "Graphen linearer Funktionen zeichnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "sehr leicht",
+        "sehr niedrig",
+        "Zeichnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0014.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0014.md",
+      "title": "Graphen linearer Funktionen zeichnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "sehr leicht",
+        "sehr niedrig",
+        "Zeichnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0015.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0015.md",
+      "title": "Graphen linearer Funktionen zeichnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "sehr leicht",
+        "sehr niedrig",
+        "Zeichnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0016.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0016.md",
+      "title": "Graphen linearer Funktionen zeichnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "sehr leicht",
+        "sehr niedrig",
+        "Zeichnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0017.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0017.md",
+      "title": "Graphen linearer Funktionen mit Brüchen zeichnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Bruchrechnung",
+        "sehr leicht",
+        "niedrig",
+        "Zeichnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Bruchrechnung"
+      ],
+      "difficulty": 1,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0018.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0018.md",
+      "title": "Graphen linearer Funktionen mit Brüchen zeichnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Bruchrechnung",
+        "sehr leicht",
+        "niedrig",
+        "Zeichnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Bruchrechnung"
+      ],
+      "difficulty": 1,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0019.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0019.md",
+      "title": "Graphen linearer Funktionen mit Brüchen zeichnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Bruchrechnung",
+        "sehr leicht",
+        "niedrig",
+        "Zeichnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Bruchrechnung"
+      ],
+      "difficulty": 1,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0020.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0020.md",
+      "title": "Graphen linearer Funktionen mit Brüchen zeichnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Bruchrechnung",
+        "sehr leicht",
+        "niedrig",
+        "Zeichnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Bruchrechnung"
+      ],
+      "difficulty": 1,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0021.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0021.md",
+      "title": "Graphen linearer Funktionen mit größeren Bruchnennern zeichnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Bruchrechnung",
+        "leicht",
+        "niedrig",
+        "Zeichnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Bruchrechnung"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0022.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0022.md",
+      "title": "Graphen linearer Funktionen mit größeren Bruchnennern zeichnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Bruchrechnung",
+        "leicht",
+        "niedrig",
+        "Zeichnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Bruchrechnung"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0023.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0023.md",
+      "title": "Graphen linearer Funktionen mit größeren Bruchnennern zeichnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Bruchrechnung",
+        "leicht",
+        "niedrig",
+        "Zeichnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Bruchrechnung"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0024.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0024.md",
+      "title": "Graphen linearer Funktionen mit Dezimalzahlen zeichnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Dezimalzahlen",
+        "leicht",
+        "niedrig",
+        "Zeichnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0025.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0025.md",
+      "title": "Graphen linearer Funktionen mit Dezimalzahlen zeichnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Dezimalzahlen",
+        "leicht",
+        "niedrig",
+        "Zeichnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0026.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0026.md",
+      "title": "Graphen linearer Funktionen mit Dezimalzahlen zeichnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Dezimalzahlen",
+        "leicht",
+        "niedrig",
+        "Zeichnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0027.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0027.md",
+      "title": "Graphen linearer Funktionen mit Dezimalzahlen und Brüchen zeichnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "mittel",
+        "normal",
+        "Zeichnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Dezimalzahlen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0028.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0028.md",
+      "title": "Graphen linearer Funktionen mit Dezimalzahlen und Brüchen zeichnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "mittel",
+        "normal",
+        "Zeichnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Dezimalzahlen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0029.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0029.md",
+      "title": "Graphen linearer Funktionen mit Dezimalzahlen und Brüchen zeichnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "mittel",
+        "normal",
+        "Zeichnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Dezimalzahlen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0030.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0030.md",
+      "title": "Graphen linearer Funktionen mit Dezimalzahlen und Brüchen zeichnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "mittel",
+        "normal",
+        "Zeichnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Dezimalzahlen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0031.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0031.md",
+      "title": "Nullstellen linearer Funktionen mit natürlichen Zahlen berechnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Natürliche Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Natürliche Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0032.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0032.md",
+      "title": "Nullstellen linearer Funktionen mit natürlichen Zahlen berechnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Natürliche Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Natürliche Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0033.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0033.md",
+      "title": "Nullstellen linearer Funktionen mit ganzen Zahlen berechnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0034.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0034.md",
+      "title": "Nullstellen linearer Funktionen mit ganzen Zahlen berechnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0035.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0035.md",
+      "title": "Nullstellen linearer Funktionen mit Brüchen berechnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0036.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0036.md",
+      "title": "Nullstellen linearer Funktionen mit Brüchen berechnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0037.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0037.md",
+      "title": "Nullstellen linearer Funktionen mit Dezimalzahlen berechnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0038.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0038.md",
+      "title": "Nullstellen linearer Funktionen mit Dezimalzahlen berechnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0039.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0039.md",
+      "title": "Nullstellen linearer Funktionen mit gemischten Zahlenarten berechnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0040.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0040.md",
+      "title": "Nullstellen linearer Funktionen mit gemischten Zahlenarten berechnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0041.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0041.md",
+      "title": "Nullstellen linearer Funktionen mit gemischten Zahlenarten berechnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0042.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0042.md",
+      "title": "Nullstellen linearer Funktionen mit gemischten Zahlenarten berechnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0043.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0043.md",
+      "title": "Schnittpunkte linearer Funktionen mit natürlichen Zahlen berechnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Natürliche Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Natürliche Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0044.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0044.md",
+      "title": "Schnittpunkte linearer Funktionen mit natürlichen Zahlen berechnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Natürliche Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Natürliche Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0045.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0045.md",
+      "title": "Schnittpunkte linearer Funktionen mit ganzen Zahlen berechnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0046.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0046.md",
+      "title": "Schnittpunkte linearer Funktionen mit ganzen Zahlen berechnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0047.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0047.md",
+      "title": "Schnittpunkte linearer Funktionen mit Bruchrechnung berechnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0048.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0048.md",
+      "title": "Schnittpunkte linearer Funktionen mit Bruchrechnung berechnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0049.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0049.md",
+      "title": "Schnittpunkte linearer Funktionen mit Dezimalzahlen berechnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0050.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0050.md",
+      "title": "Schnittpunkte linearer Funktionen mit Dezimalzahlen berechnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0051.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0051.md",
+      "title": "Schnittpunkte linearer Funktionen mit gemischten Zahlenarten berechnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0052.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0052.md",
+      "title": "Schnittpunkte linearer Funktionen mit gemischten Zahlenarten berechnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0053.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0053.md",
+      "title": "Schnittpunkte linearer Funktionen mit gemischten Zahlenarten berechnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0054.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0054.md",
+      "title": "Schnittpunkte linearer Funktionen mit gemischten Zahlenarten berechnen",
+      "tags": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
       "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0001.md",
       "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0001.md",
       "title": "Scheitelpunktsformen zuordnen",
