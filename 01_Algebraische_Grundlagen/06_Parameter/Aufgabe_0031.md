@@ -43,7 +43,7 @@ input {
 
 
 
-tags: Tabelle, Parameter, Dezimalzahlen, Negative Zahlen, Vorrangsregeln, Periodizitäten, mittel, normal, Angeben
+tags: Tabelle, Parameter, Dezimalzahlen, Negative Zahlen, Vorrangsregeln, Periodizität, mittel, normal, Angeben
 
 comment: Setze für die Parameter Werte ein und fülle alle Felder der Tabelle aus.
 

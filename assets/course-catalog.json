@@ -28,6 +28,7 @@
             "kommutativgesetz",
             "messen",
             "multiplikation",
+            "natürliche zahlen",
             "potenzen",
             "quersumme",
             "runden",
@@ -111,6 +112,7 @@
             "parallelogramm",
             "raute",
             "schwerpunkt",
+            "sss",
             "symmetrisches trapez",
             "trapez",
             "umkreis",
@@ -135,6 +137,7 @@
           "3": [
             "algebra",
             "betrag",
+            "ganze zahlen",
             "intervalle",
             "negative zahlen"
           ],
@@ -209,6 +212,7 @@
             "algebra",
             "äquivalenzumformung",
             "betrag",
+            "ganze zahlen",
             "intervalle",
             "negative zahlen"
           ],
@@ -273,9 +277,11 @@
           ],
           "3": [
             "betragsfunktion",
+            "gemischte darstellungsformen",
             "graphspiegelung",
             "graphstreckung",
             "graphverschiebung",
+            "parameterform",
             "quadratische ergänzung",
             "quadratische funktionen",
             "scheitelpunktsform",
@@ -481,6 +487,7 @@
             "kommutativgesetz",
             "messen",
             "multiplikation",
+            "natürliche zahlen",
             "potenzen",
             "quersumme",
             "runden",
@@ -565,6 +572,7 @@
             "parallelogramm",
             "raute",
             "schwerpunkt",
+            "sss",
             "symmetrisches trapez",
             "trapez",
             "umkreis",
@@ -589,6 +597,7 @@
             "algebra",
             "äquivalenzumformung",
             "betrag",
+            "ganze zahlen",
             "intervalle",
             "negative zahlen",
             "prozentrechnung",
@@ -637,10 +646,12 @@
           "1": [
             "asymptote",
             "betragsfunktion",
+            "gemischte darstellungsformen",
             "graphspiegelung",
             "graphstreckung",
             "graphverschiebung",
             "hyperbel",
+            "parameterform",
             "polynomfunktion",
             "quadratische ergänzung",
             "quadratische funktionen",
@@ -1128,7 +1139,6 @@
         "Angeben"
       ],
       "topics": [
-        "Vokabeln",
         "Grundrechenarten"
       ],
       "difficulty": 1,
@@ -1147,7 +1157,6 @@
         "Angeben"
       ],
       "topics": [
-        "Vokabeln",
         "Grundrechenarten"
       ],
       "difficulty": 1,
@@ -1166,7 +1175,6 @@
         "Angeben"
       ],
       "topics": [
-        "Vokabeln",
         "Grundrechenarten"
       ],
       "difficulty": 2,
@@ -1185,7 +1193,6 @@
         "Angeben"
       ],
       "topics": [
-        "Vokabeln",
         "Grundrechenarten"
       ],
       "difficulty": 2,
@@ -1268,7 +1275,6 @@
         "Angeben"
       ],
       "topics": [
-        "Vokabeln",
         "Grundrechenarten",
         "Vorrangsregeln"
       ],
@@ -1310,7 +1316,6 @@
         "Angeben"
       ],
       "topics": [
-        "Vokabeln",
         "Grundrechenarten",
         "Vorrangsregeln"
       ],
@@ -1330,7 +1335,6 @@
         "Angeben"
       ],
       "topics": [
-        "Vokabeln",
         "Zahlenverständnis"
       ],
       "difficulty": 1,
@@ -1349,7 +1353,6 @@
         "Angeben"
       ],
       "topics": [
-        "Vokabeln",
         "Zahlenverständnis"
       ],
       "difficulty": 1,
@@ -1368,7 +1371,6 @@
         "Angeben"
       ],
       "topics": [
-        "Vokabeln",
         "Zahlenverständnis"
       ],
       "difficulty": 1,
@@ -1387,7 +1389,6 @@
         "Angeben"
       ],
       "topics": [
-        "Vokabeln",
         "Zahlenverständnis"
       ],
       "difficulty": 1,
@@ -1406,7 +1407,6 @@
         "Angeben"
       ],
       "topics": [
-        "Vokabeln",
         "Zahlenverständnis"
       ],
       "difficulty": 1,
@@ -1425,7 +1425,6 @@
         "Angeben"
       ],
       "topics": [
-        "Vokabeln",
         "Zahlenverständnis"
       ],
       "difficulty": 1,
@@ -1444,7 +1443,6 @@
         "Angeben"
       ],
       "topics": [
-        "Vokabeln",
         "Zahlenverständnis"
       ],
       "difficulty": 1,
@@ -1463,7 +1461,6 @@
         "Angeben"
       ],
       "topics": [
-        "Vokabeln",
         "Zahlenverständnis"
       ],
       "difficulty": 2,
@@ -1772,12 +1769,13 @@
       "title": "Vokabeln der Grundrechenarten",
       "tags": [
         "Vokabeln",
+        "Grundrechenarten",
         "sehr leicht",
         "sehr niedrig",
         "Angeben"
       ],
       "topics": [
-        "Vokabeln"
+        "Grundrechenarten"
       ],
       "difficulty": 1,
       "network": 1,
@@ -1789,12 +1787,13 @@
       "title": "Vokabeln der Grundrechenarten",
       "tags": [
         "Vokabeln",
+        "Grundrechenarten",
         "sehr leicht",
         "sehr niedrig",
         "Angeben"
       ],
       "topics": [
-        "Vokabeln"
+        "Grundrechenarten"
       ],
       "difficulty": 1,
       "network": 1,
@@ -1806,12 +1805,13 @@
       "title": "Vokabeln der Grundrechenarten",
       "tags": [
         "Vokabeln",
+        "Grundrechenarten",
         "sehr leicht",
         "sehr niedrig",
         "Angeben"
       ],
       "topics": [
-        "Vokabeln"
+        "Grundrechenarten"
       ],
       "difficulty": 1,
       "network": 1,
@@ -1823,12 +1823,13 @@
       "title": "Vokabeln der Grundrechenarten",
       "tags": [
         "Vokabeln",
+        "Grundrechenarten",
         "sehr leicht",
         "sehr niedrig",
         "Angeben"
       ],
       "topics": [
-        "Vokabeln"
+        "Grundrechenarten"
       ],
       "difficulty": 1,
       "network": 1,
@@ -1840,12 +1841,13 @@
       "title": "Vokabeln der Grundrechenarten",
       "tags": [
         "Vokabeln",
+        "Grundrechenarten",
         "sehr leicht",
         "sehr niedrig",
         "Angeben"
       ],
       "topics": [
-        "Vokabeln"
+        "Grundrechenarten"
       ],
       "difficulty": 1,
       "network": 1,
@@ -2811,7 +2813,7 @@
       "title": "Grundrechenarten",
       "tags": [
         "Addition",
-        "Subktration",
+        "Subtraktion",
         "Multiplikation",
         "Division",
         "Grundrechenarten",
@@ -2821,7 +2823,7 @@
       ],
       "topics": [
         "Addition",
-        "Subktration",
+        "Subtraktion",
         "Multiplikation",
         "Division",
         "Grundrechenarten"
@@ -2836,7 +2838,7 @@
       "title": "Grundrechenarten",
       "tags": [
         "Addition",
-        "Subktration",
+        "Subtraktion",
         "Multiplikation",
         "Division",
         "Grundrechenarten",
@@ -2846,7 +2848,7 @@
       ],
       "topics": [
         "Addition",
-        "Subktration",
+        "Subtraktion",
         "Multiplikation",
         "Division",
         "Grundrechenarten"
@@ -2861,7 +2863,7 @@
       "title": "Grundrechenarten",
       "tags": [
         "Addition",
-        "Subktration",
+        "Subtraktion",
         "Multiplikation",
         "Division",
         "Grundrechenarten",
@@ -2871,7 +2873,7 @@
       ],
       "topics": [
         "Addition",
-        "Subktration",
+        "Subtraktion",
         "Multiplikation",
         "Division",
         "Grundrechenarten"
@@ -2886,7 +2888,7 @@
       "title": "Grundrechenarten",
       "tags": [
         "Addition",
-        "Subktration",
+        "Subtraktion",
         "Multiplikation",
         "Division",
         "Grundrechenarten",
@@ -2896,7 +2898,7 @@
       ],
       "topics": [
         "Addition",
-        "Subktration",
+        "Subtraktion",
         "Multiplikation",
         "Division",
         "Grundrechenarten"
@@ -2911,7 +2913,7 @@
       "title": "Grundrechenarten",
       "tags": [
         "Addition",
-        "Subktration",
+        "Subtraktion",
         "Multiplikation",
         "Division",
         "Grundrechenarten",
@@ -2921,7 +2923,7 @@
       ],
       "topics": [
         "Addition",
-        "Subktration",
+        "Subtraktion",
         "Multiplikation",
         "Division",
         "Grundrechenarten"
@@ -4104,8 +4106,7 @@
       ],
       "topics": [
         "Addition",
-        "Subtraktion",
-        "Random"
+        "Subtraktion"
       ],
       "difficulty": 2,
       "network": 2,
@@ -4123,8 +4124,7 @@
         "Random"
       ],
       "topics": [
-        "Addition",
-        "Random"
+        "Addition"
       ],
       "difficulty": 2,
       "network": 2,
@@ -4144,8 +4144,7 @@
       ],
       "topics": [
         "Addition",
-        "Subtraktion",
-        "Random"
+        "Subtraktion"
       ],
       "difficulty": 2,
       "network": 2,
@@ -4165,8 +4164,7 @@
       ],
       "topics": [
         "Addition",
-        "Subtraktion",
-        "Random"
+        "Subtraktion"
       ],
       "difficulty": 2,
       "network": 2,
@@ -4184,8 +4182,7 @@
         "Random"
       ],
       "topics": [
-        "Subtraktion",
-        "Random"
+        "Subtraktion"
       ],
       "difficulty": 2,
       "network": 2,
@@ -4205,8 +4202,7 @@
       ],
       "topics": [
         "Addition",
-        "Subtraktion",
-        "Random"
+        "Subtraktion"
       ],
       "difficulty": 2,
       "network": 2,
@@ -4226,8 +4222,7 @@
       ],
       "topics": [
         "Addition",
-        "Subtraktion",
-        "Random"
+        "Subtraktion"
       ],
       "difficulty": 2,
       "network": 2,
@@ -4245,8 +4240,7 @@
         "Random"
       ],
       "topics": [
-        "Multiplikation",
-        "Random"
+        "Multiplikation"
       ],
       "difficulty": 2,
       "network": 2,
@@ -4264,8 +4258,7 @@
         "Random"
       ],
       "topics": [
-        "Multiplikation",
-        "Random"
+        "Multiplikation"
       ],
       "difficulty": 2,
       "network": 2,
@@ -4283,8 +4276,7 @@
         "Random"
       ],
       "topics": [
-        "Division",
-        "Random"
+        "Division"
       ],
       "difficulty": 2,
       "network": 2,
@@ -9100,7 +9092,6 @@
         "Angeben"
       ],
       "topics": [
-        "Vokabeln",
         "Dezimalzahlen",
         "Zahlenverständnis"
       ],
@@ -9121,7 +9112,6 @@
         "Angeben"
       ],
       "topics": [
-        "Vokabeln",
         "Dezimalzahlen",
         "Zahlenverständnis"
       ],
@@ -9142,7 +9132,6 @@
         "Angeben"
       ],
       "topics": [
-        "Vokabeln",
         "Dezimalzahlen",
         "Zahlenverständnis"
       ],
@@ -9163,7 +9152,6 @@
         "Angeben"
       ],
       "topics": [
-        "Vokabeln",
         "Dezimalzahlen",
         "Zahlenverständnis"
       ],
@@ -9184,7 +9172,6 @@
         "Angeben"
       ],
       "topics": [
-        "Vokabeln",
         "Dezimalzahlen",
         "Zahlenverständnis"
       ],
@@ -9205,7 +9192,6 @@
         "Angeben"
       ],
       "topics": [
-        "Vokabeln",
         "Dezimalzahlen",
         "Zahlenverständnis"
       ],
@@ -10377,7 +10363,7 @@
         "Tabelle",
         "Parameter",
         "Bruchrechnung",
-        "Negativen Zahlen",
+        "Negative Zahlen",
         "Vorrangsregeln",
         "leicht",
         "normal",
@@ -10387,7 +10373,7 @@
         "Tabelle",
         "Parameter",
         "Bruchrechnung",
-        "Negativen Zahlen",
+        "Negative Zahlen",
         "Vorrangsregeln"
       ],
       "difficulty": 2,
@@ -10402,7 +10388,7 @@
         "Tabelle",
         "Parameter",
         "Bruchrechnung",
-        "Negativen Zahlen",
+        "Negative Zahlen",
         "Vorrangsregeln",
         "leicht",
         "normal",
@@ -10412,7 +10398,7 @@
         "Tabelle",
         "Parameter",
         "Bruchrechnung",
-        "Negativen Zahlen",
+        "Negative Zahlen",
         "Vorrangsregeln"
       ],
       "difficulty": 2,
@@ -10427,7 +10413,7 @@
         "Tabelle",
         "Parameter",
         "Bruchrechnung",
-        "Negativen Zahlen",
+        "Negative Zahlen",
         "Vorrangsregeln",
         "leicht",
         "normal",
@@ -10437,7 +10423,7 @@
         "Tabelle",
         "Parameter",
         "Bruchrechnung",
-        "Negativen Zahlen",
+        "Negative Zahlen",
         "Vorrangsregeln"
       ],
       "difficulty": 2,
@@ -10755,7 +10741,7 @@
         "Negative Zahlen",
         "Bruchrechnung",
         "Vorrangsregeln",
-        "Periodizitäten",
+        "Periodizität",
         "mittel",
         "hoch",
         "Angeben"
@@ -10767,7 +10753,7 @@
         "Negative Zahlen",
         "Bruchrechnung",
         "Vorrangsregeln",
-        "Periodizitäten"
+        "Periodizität"
       ],
       "difficulty": 3,
       "network": 4,
@@ -10783,7 +10769,7 @@
         "Dezimalzahlen",
         "Bruchrechnung",
         "Vorrangsregeln",
-        "Periodizitäten",
+        "Periodizität",
         "mittel",
         "normal",
         "Angeben"
@@ -10794,7 +10780,7 @@
         "Dezimalzahlen",
         "Bruchrechnung",
         "Vorrangsregeln",
-        "Periodizitäten"
+        "Periodizität"
       ],
       "difficulty": 3,
       "network": 3,
@@ -10810,7 +10796,7 @@
         "Dezimalzahlen",
         "Negative Zahlen",
         "Vorrangsregeln",
-        "Periodizitäten",
+        "Periodizität",
         "mittel",
         "normal",
         "Angeben"
@@ -10821,7 +10807,7 @@
         "Dezimalzahlen",
         "Negative Zahlen",
         "Vorrangsregeln",
-        "Periodizitäten"
+        "Periodizität"
       ],
       "difficulty": 3,
       "network": 3,
@@ -10836,7 +10822,7 @@
         "Parameter",
         "Dezimalzahlen",
         "Vorrangsregeln",
-        "Periodizitäten",
+        "Periodizität",
         "leicht",
         "niedrig",
         "Angeben"
@@ -10846,7 +10832,7 @@
         "Parameter",
         "Dezimalzahlen",
         "Vorrangsregeln",
-        "Periodizitäten"
+        "Periodizität"
       ],
       "difficulty": 2,
       "network": 2,
@@ -11209,14 +11195,14 @@
       "title": "Streckenlängen als Term",
       "tags": [
         "Parameter",
-        "Term",
+        "Terme",
         "sehr leicht",
         "sehr niedrig",
         "Angeben"
       ],
       "topics": [
         "Parameter",
-        "Term"
+        "Terme"
       ],
       "difficulty": 1,
       "network": 1,
@@ -11228,14 +11214,14 @@
       "title": "Streckenlängen als Term",
       "tags": [
         "Parameter",
-        "Term",
+        "Terme",
         "sehr leicht",
         "sehr niedrig",
         "Angeben"
       ],
       "topics": [
         "Parameter",
-        "Term"
+        "Terme"
       ],
       "difficulty": 1,
       "network": 1,
@@ -11247,14 +11233,14 @@
       "title": "Streckenlängen als Term",
       "tags": [
         "Parameter",
-        "Term",
+        "Terme",
         "sehr leicht",
         "sehr niedrig",
         "Angeben"
       ],
       "topics": [
         "Parameter",
-        "Term"
+        "Terme"
       ],
       "difficulty": 1,
       "network": 1,
@@ -11266,7 +11252,7 @@
       "title": "Flächeninhalte von Polygonen als Summe",
       "tags": [
         "Parameter",
-        "Term",
+        "Terme",
         "sehr leicht",
         "niedrig",
         "Angeben",
@@ -11274,7 +11260,7 @@
       ],
       "topics": [
         "Parameter",
-        "Term",
+        "Terme",
         "Fläche"
       ],
       "difficulty": 1,
@@ -11287,7 +11273,7 @@
       "title": "Flächeninhalte von Polygonen als Summe",
       "tags": [
         "Parameter",
-        "Term",
+        "Terme",
         "sehr leicht",
         "niedrig",
         "Angeben",
@@ -11295,7 +11281,7 @@
       ],
       "topics": [
         "Parameter",
-        "Term",
+        "Terme",
         "Fläche"
       ],
       "difficulty": 1,
@@ -11308,7 +11294,7 @@
       "title": "Flächeninhalte von Polygonen als Summe",
       "tags": [
         "Parameter",
-        "Term",
+        "Terme",
         "leicht",
         "mittel",
         "Angeben",
@@ -11316,7 +11302,7 @@
       ],
       "topics": [
         "Parameter",
-        "Term",
+        "Terme",
         "Fläche"
       ],
       "difficulty": 2,
@@ -13277,8 +13263,7 @@
         "Random"
       ],
       "topics": [
-        "Prozent",
-        "Random"
+        "Prozent"
       ],
       "difficulty": 2,
       "network": 2,
@@ -13296,8 +13281,7 @@
         "Random"
       ],
       "topics": [
-        "Prozent",
-        "Random"
+        "Prozent"
       ],
       "difficulty": 3,
       "network": 2,
@@ -23740,6 +23724,3226 @@
       "difficulty": 1,
       "network": 2,
       "operator": "angeben"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0013.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0013.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "sehr leicht",
+        "sehr niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0014.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0014.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "sehr leicht",
+        "sehr niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0015.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0015.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Scheitelpunktsform",
+        "sehr leicht",
+        "sehr niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0016.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0016.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Scheitelpunktsform",
+        "sehr leicht",
+        "sehr niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0017.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0017.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "sehr leicht",
+        "sehr niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0018.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0018.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "sehr leicht",
+        "sehr niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0019.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0019.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "sehr leicht",
+        "niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform"
+      ],
+      "difficulty": 1,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0020.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0020.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "sehr leicht",
+        "niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform"
+      ],
+      "difficulty": 1,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0021.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0021.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Scheitelpunktsform",
+        "sehr leicht",
+        "niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform"
+      ],
+      "difficulty": 1,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0022.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0022.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Scheitelpunktsform",
+        "sehr leicht",
+        "niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform"
+      ],
+      "difficulty": 1,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0023.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0023.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "sehr leicht",
+        "niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen"
+      ],
+      "difficulty": 1,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0024.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0024.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "sehr leicht",
+        "niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen"
+      ],
+      "difficulty": 1,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0025.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0025.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "sehr leicht",
+        "normal"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform"
+      ],
+      "difficulty": 1,
+      "network": 3,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0026.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0026.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "sehr leicht",
+        "normal"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform"
+      ],
+      "difficulty": 1,
+      "network": 3,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0027.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0027.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Scheitelpunktsform",
+        "sehr leicht",
+        "normal"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform"
+      ],
+      "difficulty": 1,
+      "network": 3,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0028.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0028.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Scheitelpunktsform",
+        "sehr leicht",
+        "normal"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform"
+      ],
+      "difficulty": 1,
+      "network": 3,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0029.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0029.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "sehr leicht",
+        "normal"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen"
+      ],
+      "difficulty": 1,
+      "network": 3,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0030.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0030.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "sehr leicht",
+        "normal"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen"
+      ],
+      "difficulty": 1,
+      "network": 3,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0031.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0031.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Bruchrechnung",
+        "leicht",
+        "sehr niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Bruchrechnung"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0032.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0032.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Dezimalzahlen",
+        "leicht",
+        "sehr niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0033.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0033.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "leicht",
+        "sehr niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Bruchrechnung"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0034.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0034.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "leicht",
+        "sehr niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0035.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0035.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Bruchrechnung",
+        "leicht",
+        "sehr niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0036.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0036.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen",
+        "leicht",
+        "sehr niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0037.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0037.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Bruchrechnung",
+        "leicht",
+        "niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Bruchrechnung"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0038.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0038.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Dezimalzahlen",
+        "leicht",
+        "niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0039.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0039.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "leicht",
+        "niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Bruchrechnung"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0040.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0040.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "leicht",
+        "niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0041.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0041.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Bruchrechnung",
+        "leicht",
+        "niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0042.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0042.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen",
+        "leicht",
+        "niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0043.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0043.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Bruchrechnung",
+        "leicht",
+        "normal"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Bruchrechnung"
+      ],
+      "difficulty": 2,
+      "network": 3,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0044.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0044.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Dezimalzahlen",
+        "leicht",
+        "normal"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 3,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0045.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0045.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "leicht",
+        "normal"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Bruchrechnung"
+      ],
+      "difficulty": 2,
+      "network": 3,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0046.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0046.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "leicht",
+        "normal"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 3,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0047.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0047.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Bruchrechnung",
+        "leicht",
+        "normal"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 2,
+      "network": 3,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0048.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0048.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen",
+        "leicht",
+        "normal"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 3,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0049.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0049.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "mittel",
+        "sehr niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 1,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0050.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0050.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "mittel",
+        "sehr niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 1,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0051.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0051.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "mittel",
+        "sehr niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 1,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0052.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0052.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "mittel",
+        "sehr niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 1,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0053.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0053.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "mittel",
+        "sehr niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 1,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0054.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0054.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "mittel",
+        "sehr niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 1,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0055.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0055.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "mittel",
+        "niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0056.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0056.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "mittel",
+        "niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0057.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0057.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "mittel",
+        "niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0058.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0058.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "mittel",
+        "niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0059.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0059.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "mittel",
+        "niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0060.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0060.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "mittel",
+        "niedrig"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0061.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0061.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "mittel",
+        "normal"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0062.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0062.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "mittel",
+        "normal"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0063.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0063.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "mittel",
+        "normal"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0064.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0064.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "mittel",
+        "normal"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0065.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0065.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "mittel",
+        "normal"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0066.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0066.md",
+      "title": "Graphen quadratischer Funktionen zeichnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Zeichnen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "mittel",
+        "normal"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "zeichnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0067.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0067.md",
+      "title": "Nullstellen quadratischer Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Natürliche Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Natürliche Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0068.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0068.md",
+      "title": "Nullstellen quadratischer Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Natürliche Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Natürliche Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0069.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0069.md",
+      "title": "Nullstellen quadratischer Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0070.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0070.md",
+      "title": "Nullstellen quadratischer Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0071.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0071.md",
+      "title": "Nullstellen quadratischer Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0072.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0072.md",
+      "title": "Nullstellen quadratischer Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0073.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0073.md",
+      "title": "Nullstellen quadratischer Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0074.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0074.md",
+      "title": "Nullstellen quadratischer Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0075.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0075.md",
+      "title": "Nullstellen quadratischer Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0076.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0076.md",
+      "title": "Nullstellen quadratischer Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0077.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0077.md",
+      "title": "Nullstellen quadratischer Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Scheitelpunktsform",
+        "Natürliche Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Scheitelpunktsform",
+        "Natürliche Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0078.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0078.md",
+      "title": "Nullstellen quadratischer Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Scheitelpunktsform",
+        "Natürliche Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Scheitelpunktsform",
+        "Natürliche Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0079.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0079.md",
+      "title": "Nullstellen quadratischer Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Scheitelpunktsform",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Scheitelpunktsform",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0080.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0080.md",
+      "title": "Nullstellen quadratischer Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Scheitelpunktsform",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Scheitelpunktsform",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0081.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0081.md",
+      "title": "Nullstellen quadratischer Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0082.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0082.md",
+      "title": "Nullstellen quadratischer Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0083.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0083.md",
+      "title": "Nullstellen quadratischer Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0084.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0084.md",
+      "title": "Nullstellen quadratischer Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0085.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0085.md",
+      "title": "Nullstellen quadratischer Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0086.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0086.md",
+      "title": "Nullstellen quadratischer Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0087.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0087.md",
+      "title": "Nullstellen quadratischer Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0088.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0088.md",
+      "title": "Nullstellen quadratischer Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0089.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0089.md",
+      "title": "Nullstellen quadratischer Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0090.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0090.md",
+      "title": "Nullstellen quadratischer Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Nullstellen",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Gemischte Darstellungsformen",
+        "Dezimalzahlen",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0091.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0091.md",
+      "title": "Schnittpunkte von Parabeln in Parameterform mit linearen Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Natürliche Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Natürliche Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0092.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0092.md",
+      "title": "Schnittpunkte von Parabeln in Parameterform mit linearen Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Natürliche Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Natürliche Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0093.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0093.md",
+      "title": "Schnittpunkte von Parabeln in Parameterform mit linearen Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0094.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0094.md",
+      "title": "Schnittpunkte von Parabeln in Parameterform mit linearen Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0095.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0095.md",
+      "title": "Schnittpunkte von Parabeln in Parameterform mit linearen Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0096.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0096.md",
+      "title": "Schnittpunkte von Parabeln in Parameterform mit linearen Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0097.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0097.md",
+      "title": "Schnittpunkte von Parabeln in Parameterform mit linearen Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0098.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0098.md",
+      "title": "Schnittpunkte von Parabeln in Parameterform mit linearen Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0099.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0099.md",
+      "title": "Schnittpunkte von Parabeln in Parameterform mit linearen Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0100.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0100.md",
+      "title": "Schnittpunkte von Parabeln in Parameterform mit linearen Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0101.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0101.md",
+      "title": "Schnittpunkte von Parabeln in Scheitelpunktsform mit linearen Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Natürliche Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Natürliche Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0102.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0102.md",
+      "title": "Schnittpunkte von Parabeln in Scheitelpunktsform mit linearen Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Natürliche Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Natürliche Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0103.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0103.md",
+      "title": "Schnittpunkte von Parabeln in Scheitelpunktsform mit linearen Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0104.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0104.md",
+      "title": "Schnittpunkte von Parabeln in Scheitelpunktsform mit linearen Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0105.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0105.md",
+      "title": "Schnittpunkte von Parabeln in Scheitelpunktsform mit linearen Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0106.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0106.md",
+      "title": "Schnittpunkte von Parabeln in Scheitelpunktsform mit linearen Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0107.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0107.md",
+      "title": "Schnittpunkte von Parabeln in Scheitelpunktsform mit linearen Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0108.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0108.md",
+      "title": "Schnittpunkte von Parabeln in Scheitelpunktsform mit linearen Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0109.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0109.md",
+      "title": "Schnittpunkte von Parabeln in Scheitelpunktsform mit linearen Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0110.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0110.md",
+      "title": "Schnittpunkte von Parabeln in Scheitelpunktsform mit linearen Funktionen berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0111.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0111.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Parameterform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Natürliche Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Natürliche Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0112.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0112.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Parameterform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0113.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0113.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Parameterform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0114.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0114.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Parameterform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0115.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0115.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Parameterform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0116.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0116.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Parameterform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Natürliche Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Natürliche Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0117.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0117.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Parameterform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0118.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0118.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Parameterform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0119.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0119.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Parameterform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0120.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0120.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Parameterform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0121.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0121.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Scheitelpunktsform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Natürliche Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Natürliche Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0122.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0122.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Scheitelpunktsform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0123.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0123.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Scheitelpunktsform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0124.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0124.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Scheitelpunktsform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0125.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0125.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Scheitelpunktsform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0126.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0126.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Scheitelpunktsform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Natürliche Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Natürliche Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0127.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0127.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Scheitelpunktsform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0128.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0128.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Scheitelpunktsform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0129.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0129.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Scheitelpunktsform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0130.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0130.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Scheitelpunktsform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0131.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0131.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Parameter- und Scheitelpunktsform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Natürliche Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Natürliche Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0132.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0132.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Parameter- und Scheitelpunktsform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0133.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0133.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Parameter- und Scheitelpunktsform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0134.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0134.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Parameter- und Scheitelpunktsform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0135.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0135.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Parameter- und Scheitelpunktsform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0136.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0136.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Parameter- und Scheitelpunktsform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Natürliche Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Natürliche Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0137.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0137.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Parameter- und Scheitelpunktsform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0138.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0138.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Parameter- und Scheitelpunktsform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0139.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0139.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Parameter- und Scheitelpunktsform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0140.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0140.md",
+      "title": "Schnittpunkte quadratischer Funktionen in Parameter- und Scheitelpunktsform berechnen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "mittel",
+        "normal",
+        "Berechnen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Schnittpunkt",
+        "Parameterform",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "berechnen"
     },
     {
       "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0001.md",

@@ -43,7 +43,7 @@ input {
 
 
 
-tags: Tabelle, Parameter, Bruchrechnung, Negativen Zahlen, Vorrangsregeln, leicht, normal, Angeben
+tags: Tabelle, Parameter, Bruchrechnung, Negative Zahlen, Vorrangsregeln, leicht, normal, Angeben
 
 comment: Setze für die Parameter Werte ein und fülle alle Felder der Tabelle aus.
 

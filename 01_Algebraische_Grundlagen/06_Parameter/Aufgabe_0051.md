@@ -35,7 +35,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README
 
 
 
-tags: Parameter, Term, sehr leicht, niedrig, Angeben, Fläche
+tags: Parameter, Terme, sehr leicht, niedrig, Angeben, Fläche
 
 comment: Gib den Summenterm der dargestellten Flächeninhalte an.
 

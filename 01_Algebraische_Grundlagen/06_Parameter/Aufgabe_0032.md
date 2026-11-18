@@ -43,7 +43,7 @@ input {
 
 
 
-tags: Tabelle, Parameter, Dezimalzahlen, Vorrangsregeln, Periodizitäten, leicht, niedrig, Angeben
+tags: Tabelle, Parameter, Dezimalzahlen, Vorrangsregeln, Periodizität, leicht, niedrig, Angeben
 
 comment: Setze für die Parameter Werte ein und fülle alle Felder der Tabelle aus.
 

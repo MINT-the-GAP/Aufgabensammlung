@@ -34,7 +34,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README
 
 
 
-tags: Parameter, Term, sehr leicht, sehr niedrig, Angeben
+tags: Parameter, Terme, sehr leicht, sehr niedrig, Angeben
 
 comment: Setze für die Parameter Werte ein und fülle alle Felder der Tabelle aus.
 

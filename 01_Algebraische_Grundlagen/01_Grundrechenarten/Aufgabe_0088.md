@@ -27,7 +27,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README.md
 
 
-tags: Addition, Subktration, Multiplikation, Division, Grundrechenarten, leicht, niedrig, Berechnen
+tags: Addition, Subtraktion, Multiplikation, Division, Grundrechenarten, leicht, niedrig, Berechnen
 
 comment: Über die schriftlichen Grundrechenarten.
 

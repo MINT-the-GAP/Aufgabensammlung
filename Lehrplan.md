@@ -26,7 +26,7 @@ edit: true
 
 | Klassenstufe / Bildungsgang | Lernbereich | Themen-Tags, die hier frühestens eingeordnet werden |
 |---|---|---|
-| 5 | LB 1: Natürliche Zahlen | addition, assoziativgesetz, differenz, distributivgesetz, division, ggt, gleichung, grundrechenarten, kgv, kommutativgesetz, messen, multiplikation, potenzen, quersumme, runden, subtraktion, teilbarkeiten, teilermengen, überschlagen, ungleichungen, variable, vielfachmengen, vorrangsregeln, wurzeln, zahlenstrahl, zahlenverständnis, terme |
+| 5 | LB 1: Natürliche Zahlen | addition, assoziativgesetz, differenz, distributivgesetz, division, ggt, gleichung, grundrechenarten, kgv, kommutativgesetz, messen, multiplikation, natürliche zahlen, potenzen, quersumme, runden, subtraktion, teilbarkeiten, teilermengen, überschlagen, ungleichungen, variable, vielfachmengen, vorrangsregeln, wurzeln, zahlenstrahl, zahlenverständnis, terme |
 | 5 | LB 2: Gemeine Brüche, Dezimalzahlen und Größen | arithmetische mittelwert, arithmetisches mittel, bruchrechnung, dezimalzahlen, durchschnitt, einheiten, länge, masse, periodizität, prozent, sachaufgabe, zeit |
 | 5 | LB 3: Geometrische Grundformen | fläche, koordinatensystem, lagebeziehung, punkt, quadrat, rechteck, strecke, umfang, volumen, winkel, würfel |
 | 5 | LB 4: Symmetrie und deckungsgleiche Figuren | achsenspiegelung, drehung, punktspiegelung |
@@ -35,7 +35,7 @@ edit: true
 | 5 | Wahlbereich 3: Planen einer Klassenfahrt |  |
 | 6 | LB 1: Gebrochene Zahlen | kehrwert, mengen, verhältnisse |
 | 6 | LB 2: Zuordnungen in der Umwelt | antiproportional, beliebige zuordnung, proportional, wertepaar, wertetabelle, zuordnung |
-| 6 | LB 3: Geometrie in der Ebene | drachen, dreiecke, eindeutigkeit, eulersche gerade, inkreis, konstruktion, kongruenz, mittelsenkrechte, parallelogramm, raute, schwerpunkt, symmetrisches trapez, trapez, umkreis, vierecke, winkelbeziehungen, winkelhalbierende |
+| 6 | LB 3: Geometrie in der Ebene | drachen, dreiecke, eindeutigkeit, eulersche gerade, inkreis, konstruktion, kongruenz, mittelsenkrechte, parallelogramm, raute, schwerpunkt, sss, symmetrisches trapez, trapez, umkreis, vierecke, winkelbeziehungen, winkelhalbierende |
 | 6 | LB 4: Geometrische Körper | quader |
 | 6 | LB 5: Mathematik im Alltag | chance, wahrscheinlichkeit |
 | 6 | Wahlbereich 1: Dynamisieren geometrischer Objekte |  |
@@ -43,7 +43,7 @@ edit: true
 | 6 | Wahlbereich 3: Erfassen und Auswerten von Daten |  |
 | 7 HS | LB 1: Zusammengesetzte Flächen und Körper |  |
 | 7 HS | LB 2: Anteile und Prozente | kreisdiagramm, prozentrechnung, streifendiagramm |
-| 7 HS | LB 3: Rationale Zahlen | algebra, betrag, intervalle, negative zahlen |
+| 7 HS | LB 3: Rationale Zahlen | algebra, betrag, ganze zahlen, intervalle, negative zahlen |
 | 7 HS | LB 4: Vielecke und Prismen | prisma |
 | 7 HS | Wahlbereich 1: Bandornamente und Parkettierungen |  |
 | 7 HS | Wahlbereich 2: Optische Täuschungen |  |
@@ -65,7 +65,7 @@ edit: true
 | 9 HS | Wahlbereich 3: Technisches Zeichnen |  |
 | 7 RS | LB 1: Prozent- und Zinsrechnung | kreisdiagramm, prozentrechnung, streifendiagramm |
 | 7 RS | LB 2: Elemente der Stochastik | wahrscheinlichkeit |
-| 7 RS | LB 3: Rationale Zahlen und Gleichungen | algebra, äquivalenzumformung, betrag, intervalle, negative zahlen |
+| 7 RS | LB 3: Rationale Zahlen und Gleichungen | algebra, äquivalenzumformung, betrag, ganze zahlen, intervalle, negative zahlen |
 | 7 RS | LB 4: Vielecke und Prismen | prisma |
 | 7 RS | Wahlbereich 1: Technisches Zeichnen |  |
 | 7 RS | Wahlbereich 2: Unterhaltungsmathematik und Rechenverfahren |  |
@@ -81,7 +81,7 @@ edit: true
 | 8 RS | Wahlbereich 3: Polyeder |  |
 | 9 RS | LB 1: Rechtwinklige Dreiecke | höhensatz, kathetensatz, kosinus, kotangens, satz des pythagoras, sinus, tangens, trigonometrie |
 | 9 RS | LB 2: Pyramiden, Kreiskegel, Kugel | kegel, kugel, oktaeder, pyramide, tetraeder |
-| 9 RS | LB 3: Quadratische Funktionen und quadratische Gleichungen | betragsfunktion, graphspiegelung, graphstreckung, graphverschiebung, quadratische ergänzung, quadratische funktionen, scheitelpunktsform, stufenfunktion, verhalten |
+| 9 RS | LB 3: Quadratische Funktionen und quadratische Gleichungen | betragsfunktion, gemischte darstellungsformen, graphspiegelung, graphstreckung, graphverschiebung, parameterform, quadratische ergänzung, quadratische funktionen, scheitelpunktsform, stufenfunktion, verhalten |
 | 9 RS | LB 4: Beschreibende Statistik | median, spannweite |
 | 9 RS | Wahlbereich 1: Goldener Schnitt |  |
 | 9 RS | Wahlbereich 2: Wahre Größe und Gestalt |  |
@@ -140,7 +140,7 @@ edit: true
 
 | Klasse / Jahrgang | Lernbereich | Themen, die hier frühestens sinnvoll eingeordnet werden |
 | --- | --- | --- |
-| 5 | LB 1: Arbeiten mit natürlichen Zahlen | addition, assoziativgesetz, differenz, distributivgesetz, division, folgen, ggt, gleichung, grundrechenarten, kgv, kommutativgesetz, messen, multiplikation, potenzen, quersumme, runden, sachaufgabe, subtraktion, teilbarkeiten, teilermengen, terme, überschlagen, vielfachmengen, vorrangsregeln, zahlenstrahl, zahlenverständnis |
+| 5 | LB 1: Arbeiten mit natürlichen Zahlen | addition, assoziativgesetz, differenz, distributivgesetz, division, folgen, ggt, gleichung, grundrechenarten, kgv, kommutativgesetz, messen, multiplikation, natürliche zahlen, potenzen, quersumme, runden, sachaufgabe, subtraktion, teilbarkeiten, teilermengen, terme, überschlagen, vielfachmengen, vorrangsregeln, zahlenstrahl, zahlenverständnis |
 | 5 | LB 2: Gemeine Brüche und Dezimalzahlen | arithmetisches mittel, dezimalzahlen, durchschnitt, periodizität, prozent |
 | 5 | LB 3: Lagebeziehungen geometrischer Objekte | achsenspiegelung, drehung, koordinatensystem, lagebeziehung, punkt, punktspiegelung, strecke, winkel, winkelbeziehungen |
 | 5 | LB 4: Rechtecke und Quader | fläche, quader, quadrat, rechteck, umfang, volumen, würfel |
@@ -150,14 +150,14 @@ edit: true
 | 5 | Wahlbereich 3: Zählen und Rechnen - einst und jetzt | zahlensysteme |
 | 6 | LB 1: Arbeiten mit gebrochenen Zahlen | bruchrechnung, kehrwert, mengen, variable |
 | 6 | LB 2: Zuordnungen in der Umwelt | antiproportional, balkendiagramm, beliebige zuordnung, chance, eindeutigkeit, häufigkeit, proportional, säulendiagramm, tabelle, verhältnisse, wertepaar, wertetabelle, zuordnung |
-| 6 | LB 3: Dreiecke und Vierecke | drachen, dreiecke, eulersche gerade, inkreis, konstruktion, kongruenz, mittelsenkrechte, parallelogramm, raute, schwerpunkt, symmetrisches trapez, trapez, umkreis, vierecke, winkelhalbierende |
+| 6 | LB 3: Dreiecke und Vierecke | drachen, dreiecke, eulersche gerade, inkreis, konstruktion, kongruenz, mittelsenkrechte, parallelogramm, raute, schwerpunkt, sss, symmetrisches trapez, trapez, umkreis, vierecke, winkelhalbierende |
 | 6 | LB 4: Prismen | prisma |
 | 6 | LB 5: Vernetzung: Anteile | kreisdiagramm, streifendiagramm |
 | 6 | Wahlbereich 1: Finden von Vermutungen mit dynamischer Geometrie |  |
 | 6 | Wahlbereich 2: Unterhaltsame Geometrie |  |
 | 6 | Wahlbereich 3: Primzahlen |  |
 | 7 | LB 1: Geometrie in der Ebene | satz des thales, sekante, tangente |
-| 7 | LB 2: Arbeiten mit rationalen Zahlen | algebra, äquivalenzumformung, betrag, intervalle, negative zahlen, prozentrechnung, wurzeln |
+| 7 | LB 2: Arbeiten mit rationalen Zahlen | algebra, äquivalenzumformung, betrag, ganze zahlen, intervalle, negative zahlen, prozentrechnung, wurzeln |
 | 7 | LB 3: Darstellen und Berechnen von Prismen und Pyramiden |  |
 | 7 | LB 4: Vernetzung: Darstellen von Daten |  |
 | 7 | Wahlbereich 1: Tabellenkalkulation - ein mathematisches Werkzeug |  |
@@ -171,7 +171,7 @@ edit: true
 | 8 | Wahlbereich 1: Programmierung mathematischer Algorithmen |  |
 | 8 | Wahlbereich 2: Lineare Optimierung |  |
 | 8 | Wahlbereich 3: Simulation mit Zufallszahlen |  |
-| 9 | LB 1: Funktionen und Potenzen | asymptote, betragsfunktion, graphspiegelung, graphstreckung, graphverschiebung, hyperbel, polynomfunktion, quadratische ergänzung, quadratische funktionen, scheitelpunktsform, stufenfunktion |
+| 9 | LB 1: Funktionen und Potenzen | asymptote, betragsfunktion, gemischte darstellungsformen, graphspiegelung, graphstreckung, graphverschiebung, hyperbel, parameterform, polynomfunktion, quadratische ergänzung, quadratische funktionen, scheitelpunktsform, stufenfunktion |
 | 9 | LB 2: Kreise, Kreiszylinder und Kugeln | kreis, kreisabschnitt, kreisausschnitt, kugel, zylinder |
 | 9 | LB 3: Rechtwinklige Dreiecke | höhensatz, kathetensatz, kegel, kosinus, kotangens, oktaeder, pyramide, satz des pythagoras, sinus, tangens, tetraeder, trigonometrie |
 | 9 | LB 4: Auswerten von Daten | standardabweichung, varianz |

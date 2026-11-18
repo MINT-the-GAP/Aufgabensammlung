@@ -51,6 +51,11 @@ async function main() {
   assert.equal(classified.difficulty, 1)
   assert.equal(classified.network, 1)
   assert.equal(classified.operator, 'ermitteln_bestimmen')
+  assert.deepEqual(
+    generator.classifyTags(['Grundrechenarten', 'Vokabeln', 'Random', 'Sammlung']).topics,
+    ['Grundrechenarten'],
+    'Aufgabenmerkmale dürfen nicht als Lehrplanthemen klassifiziert werden'
+  )
 
   assert.equal(generator.filterTasks(catalog, { themes: ['Brüche'] }).length, 12)
   assert.equal(generator.filterTasks(catalog, {

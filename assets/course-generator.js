@@ -34,6 +34,9 @@
   const networkTags = new Map([
     ['sehr niedrig', 1], ['niedrig', 2], ['normal', 3], ['hoch', 4], ['sehr hoch', 5],
   ])
+  const nonTopicTags = new Set([
+    'erklaerung', 'erklaerungen', 'vokabeln', 'random', 'sammlung',
+  ])
   const operatorAliases = new Map()
   const operatorRules = [
     ['angeben', 0.05, 0.15], ['ordnen', 0, 0.05], ['skizzieren', 0, 0.2],
@@ -118,7 +121,7 @@
       if (difficultyTags.has(key)) { if (difficulty === null) difficulty = difficultyTags.get(key); return }
       if (networkTags.has(key)) { if (network === null) network = networkTags.get(key); return }
       if (operatorAliases.has(key)) { if (operator === null) operator = operatorAliases.get(key); return }
-      if (key === 'erklaerung' || key === 'erklaerungen') return
+      if (nonTopicTags.has(key)) return
       const topic = canonicalTopic(tag)
       const canonicalKey = topicKey(topic)
       if (canonicalKey && !seenTopics.has(canonicalKey)) {

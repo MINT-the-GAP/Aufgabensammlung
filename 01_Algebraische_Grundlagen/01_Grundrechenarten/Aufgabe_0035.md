@@ -39,7 +39,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README
 
 
 
-tags: Vokabeln, sehr leicht, sehr niedrig, Angeben
+tags: Vokabeln, Grundrechenarten, sehr leicht, sehr niedrig, Angeben
 
 comment: Kannst du in vorliegenden Gleichung den mit rot markierten Bereich mit der Fachsprache richtig benennen?
 

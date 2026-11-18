@@ -51,6 +51,24 @@ catalog.tasks.forEach(task => task.topics.forEach(topic => {
   const key = generator.normalizeTag(generator.canonicalTopic(topic))
   topics.set(key, Number(topics.get(key) || 0) + 1)
 }))
+const curriculumTopics = new Set()
+Object.values(catalog.curriculum.themes).forEach(school => {
+  Object.values(school).forEach(grade => {
+    Object.values(grade).forEach(area => {
+      area.forEach(topic => curriculumTopics.add(
+        generator.normalizeTag(generator.canonicalTopic(topic))
+      ))
+    })
+  })
+})
+for (const task of catalog.tasks) {
+  for (const topic of task.topics) {
+    assert.ok(
+      curriculumTopics.has(generator.normalizeTag(generator.canonicalTopic(topic))),
+      'Aufgabentag fehlt im Lehrplan: ' + topic + ' (' + task.id + ')'
+    )
+  }
+}
 for (const topic of ['Bruchrechnung', 'Grundrechenarten', 'Dreiecke']) {
   assert.ok(Number(topics.get(generator.normalizeTag(topic)) || 0) >= 4, topic + ' braucht mindestens vier Aufgaben')
 }

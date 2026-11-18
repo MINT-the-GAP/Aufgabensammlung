@@ -43,6 +43,20 @@ assert.equal(
 )
 assert.deepEqual(result.priorThemes, [], 'Andere Themen derselben Klassenstufe sind nicht automatisch bekannt')
 
+result = context(['Natürliche Zahlen'])
+assert.equal(result.grade, 5)
+
+result = context(['Ganze Zahlen'])
+assert.equal(result.grade, 7)
+
+result = context(['SSS'], { schoolType: 'Gymnasium' })
+assert.equal(result.grade, 6)
+
+for (const theme of ['Parameterform', 'Gemischte Darstellungsformen']) {
+  result = context([theme], { schoolType: 'Gymnasium' })
+  assert.equal(result.grade, 9, theme + ' gehört bei quadratischen Funktionen in Klasse 9')
+}
+
 result = context(['Negative Zahlen'])
 let prior = keys(result.priorThemes)
 assert.equal(result.grade, 7)
