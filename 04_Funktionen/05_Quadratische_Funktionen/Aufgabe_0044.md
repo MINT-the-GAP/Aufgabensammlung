@@ -26,7 +26,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
 
-tags: Quadratische Funktionen, Funktionsgraph, Zeichnen, Parameterform, Dezimalzahlen, leicht, normal
+tags: Quadratische Funktionen, Funktionsgraph, Zeichnen, Parameterform quadratischer Funktionen, Dezimalzahlen, leicht, normal
 
 comment: Zeichne drei Graphen quadratischer Funktionen mit Dezimalzahlen.
 

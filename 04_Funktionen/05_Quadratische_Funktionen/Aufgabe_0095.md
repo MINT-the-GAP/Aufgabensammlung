@@ -26,7 +26,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
 
-tags: Quadratische Funktionen, Lineare Funktionen, Schnittpunkt, Parameterform, Bruchrechnung, Ganze Zahlen, leicht, niedrig, Berechnen
+tags: Quadratische Funktionen, Lineare Funktionen, Schnittpunkt, Parameterform quadratischer Funktionen, Bruchrechnung, Ganze Zahlen, leicht, niedrig, Berechnen
 
 comment: Berechne die Schnittpunkte von vier Parabeln in Parameterform mit linearen Funktionen mit Bruchrechnung und ganzen Zahlen.
 

@@ -26,7 +26,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
 
-tags: Quadratische Funktionen, Funktionsgraph, Zeichnen, Parameterform, sehr leicht, sehr niedrig
+tags: Quadratische Funktionen, Funktionsgraph, Zeichnen, Parameterform quadratischer Funktionen, sehr leicht, sehr niedrig
 
 comment: Zeichne drei Graphen quadratischer Funktionen anhand ihrer Funktionsgleichungen.
 

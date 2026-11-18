@@ -81,7 +81,7 @@ edit: true
 | 8 RS | Wahlbereich 3: Polyeder |  |
 | 9 RS | LB 1: Rechtwinklige Dreiecke | höhensatz, kathetensatz, kosinus, kotangens, satz des pythagoras, sinus, tangens, trigonometrie |
 | 9 RS | LB 2: Pyramiden, Kreiskegel, Kugel | kegel, kugel, oktaeder, pyramide, tetraeder |
-| 9 RS | LB 3: Quadratische Funktionen und quadratische Gleichungen | betragsfunktion, gemischte darstellungsformen, graphspiegelung, graphstreckung, graphverschiebung, parameterform, quadratische ergänzung, quadratische funktionen, scheitelpunktsform, stufenfunktion, verhalten |
+| 9 RS | LB 3: Quadratische Funktionen und quadratische Gleichungen | betragsfunktion, gemischte darstellungsformen, graphspiegelung, graphstreckung, graphverschiebung, parameterform quadratischer funktionen, quadratische ergänzung, quadratische funktionen, scheitelpunktsform, stufenfunktion, verhalten |
 | 9 RS | LB 4: Beschreibende Statistik | median, spannweite |
 | 9 RS | Wahlbereich 1: Goldener Schnitt |  |
 | 9 RS | Wahlbereich 2: Wahre Größe und Gestalt |  |
@@ -171,7 +171,7 @@ edit: true
 | 8 | Wahlbereich 1: Programmierung mathematischer Algorithmen |  |
 | 8 | Wahlbereich 2: Lineare Optimierung |  |
 | 8 | Wahlbereich 3: Simulation mit Zufallszahlen |  |
-| 9 | LB 1: Funktionen und Potenzen | asymptote, betragsfunktion, gemischte darstellungsformen, graphspiegelung, graphstreckung, graphverschiebung, hyperbel, parameterform, polynomfunktion, quadratische ergänzung, quadratische funktionen, scheitelpunktsform, stufenfunktion |
+| 9 | LB 1: Funktionen und Potenzen | asymptote, betragsfunktion, gemischte darstellungsformen, graphspiegelung, graphstreckung, graphverschiebung, hyperbel, parameterform quadratischer funktionen, polynomfunktion, quadratische ergänzung, quadratische funktionen, scheitelpunktsform, stufenfunktion |
 | 9 | LB 2: Kreise, Kreiszylinder und Kugeln | kreis, kreisabschnitt, kreisausschnitt, kugel, zylinder |
 | 9 | LB 3: Rechtwinklige Dreiecke | höhensatz, kathetensatz, kegel, kosinus, kotangens, oktaeder, pyramide, satz des pythagoras, sinus, tangens, tetraeder, trigonometrie |
 | 9 | LB 4: Auswerten von Daten | standardabweichung, varianz |

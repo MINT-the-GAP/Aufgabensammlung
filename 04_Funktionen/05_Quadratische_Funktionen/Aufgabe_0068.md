@@ -26,7 +26,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
 
-tags: Quadratische Funktionen, Nullstellen, Parameterform, Natürliche Zahlen, sehr leicht, sehr niedrig, Berechnen
+tags: Quadratische Funktionen, Nullstellen, Parameterform quadratischer Funktionen, Natürliche Zahlen, sehr leicht, sehr niedrig, Berechnen
 
 comment: Berechne die Nullstellen von vier quadratischen Funktionen in Parameterform mit natürlichen Zahlen.
 

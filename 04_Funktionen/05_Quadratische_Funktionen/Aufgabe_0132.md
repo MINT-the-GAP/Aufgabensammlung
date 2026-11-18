@@ -26,7 +26,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
 
-tags: Quadratische Funktionen, Schnittpunkt, Parameterform, Scheitelpunktsform, Ganze Zahlen, sehr leicht, sehr niedrig, Berechnen
+tags: Quadratische Funktionen, Schnittpunkt, Parameterform quadratischer Funktionen, Scheitelpunktsform, Ganze Zahlen, sehr leicht, sehr niedrig, Berechnen
 
 comment: Berechne die Schnittpunkte von drei Paaren quadratischer Funktionen in Parameterform und Scheitelpunktsform mit ganzen Zahlen.
 

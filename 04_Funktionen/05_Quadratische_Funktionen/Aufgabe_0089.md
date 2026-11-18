@@ -26,7 +26,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
 
-tags: Quadratische Funktionen, Nullstellen, Parameterform, Scheitelpunktsform, Gemischte Darstellungsformen, Dezimalzahlen, Bruchrechnung, Ganze Zahlen, mittel, normal, Berechnen
+tags: Quadratische Funktionen, Nullstellen, Parameterform quadratischer Funktionen, Scheitelpunktsform, Gemischte Darstellungsformen, Dezimalzahlen, Bruchrechnung, Ganze Zahlen, mittel, normal, Berechnen
 
 comment: Berechne die Nullstellen von vier quadratischen Funktionen in Parameter- und Scheitelpunktsform mit ganzen Zahlen, Dezimalzahlen und Bruchrechnung.
 

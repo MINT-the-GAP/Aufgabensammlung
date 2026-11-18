@@ -52,10 +52,13 @@ assert.equal(result.grade, 7)
 result = context(['SSS'], { schoolType: 'Gymnasium' })
 assert.equal(result.grade, 6)
 
-for (const theme of ['Parameterform', 'Gemischte Darstellungsformen']) {
+for (const theme of ['Parameterform quadratischer Funktionen', 'Gemischte Darstellungsformen']) {
   result = context([theme], { schoolType: 'Gymnasium' })
   assert.equal(result.grade, 9, theme + ' gehört bei quadratischen Funktionen in Klasse 9')
 }
+
+result = context(['Parameterform'], { schoolType: 'Gymnasium' })
+assert.equal(result.grade, 11, 'Die Parameterform von Ebenen darf nicht mit der Parabelform kollidieren')
 
 result = context(['Negative Zahlen'])
 let prior = keys(result.priorThemes)

@@ -26,7 +26,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
 
-tags: Quadratische Funktionen, Nullstellen, Parameterform, Dezimalzahlen, Bruchrechnung, Ganze Zahlen, mittel, normal, Berechnen
+tags: Quadratische Funktionen, Nullstellen, Parameterform quadratischer Funktionen, Dezimalzahlen, Bruchrechnung, Ganze Zahlen, mittel, normal, Berechnen
 
 comment: Berechne die Nullstellen von vier quadratischen Funktionen in Parameterform mit Dezimalzahlen, Bruchrechnung und ganzen Zahlen.
 

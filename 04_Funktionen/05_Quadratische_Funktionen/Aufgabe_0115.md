@@ -26,7 +26,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
 
-tags: Quadratische Funktionen, Schnittpunkt, Parameterform, Bruchrechnung, Dezimalzahlen, Ganze Zahlen, mittel, normal, Berechnen
+tags: Quadratische Funktionen, Schnittpunkt, Parameterform quadratischer Funktionen, Bruchrechnung, Dezimalzahlen, Ganze Zahlen, mittel, normal, Berechnen
 
 comment: Berechne die Schnittpunkte von drei Paaren quadratischer Funktionen in Parameterform mit Bruchrechnung, Dezimalzahlen und ganzen Zahlen.
 
