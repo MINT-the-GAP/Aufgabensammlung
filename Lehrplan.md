@@ -163,7 +163,7 @@ edit: true
 | 7 | Wahlbereich 1: Tabellenkalkulation - ein mathematisches Werkzeug |  |
 | 7 | Wahlbereich 2: Maßstäbe und ihre Anwendungen |  |
 | 7 | Wahlbereich 3: Platonische Körper |  |
-| 8 | LB 1: Arbeiten mit Termen und Gleichungen | ungleichungen |
+| 8 | LB 1: Arbeiten mit Termen und Gleichungen | binomische formeln, ungleichungen |
 | 8 | LB 2: Zufallsversuche | baumdiagramm, kombinatorik, median, spannweite, unbedingte wahrscheinlichkeit, vereinigung, wahrscheinlichkeit |
 | 8 | LB 3: Funktionen und lineare Gleichungssysteme | additionsverfahren, definitionsbereich, einsetzungsverfahren, funktionsgraph, funktionssymmetrie, funktionswert, gleichungssysteme, lineare funktionen, nullstellen, ordinatenabschnitt, parameter, schnittpunkt, steigung, steigungsdreieck, stelle, verhalten, wertebereich |
 | 8 | LB 4: Ähnlichkeit | ähnlichkeit, strahlensatz, zentrische streckung |

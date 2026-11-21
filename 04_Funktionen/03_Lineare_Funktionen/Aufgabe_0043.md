@@ -26,7 +26,7 @@ import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.
 
 import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
 
-tags: Lineare Funktionen, Schnittpunkt, Natürliche Zahlen, sehr leicht, sehr niedrig, Berechnen
+tags: Lineare Funktionen, Schnittpunkt, sehr leicht, sehr niedrig, Berechnen
 
 comment: Berechne die Schnittpunkte der Graphen von vier Paaren linearer Funktionen mit natürlichen Zahlen.
 
@@ -35,7 +35,7 @@ author: Martin Lommatzsch
 
 # Schnittpunkte linearer Funktionen mit natürlichen Zahlen berechnen
 
-<img alt="Schwierigkeitsgrad 1" src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img alt="Vernetzungsgrad 1" src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
+<img alt="Vernetzungsgrad 1" src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/1.png" width="30" height="30"> <img alt="Schwierigkeitsgrad 1" src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/1.png" width="120" height="30">  \
 **Berechne** in jeder Teilaufgabe den Schnittpunkt der Graphen der beiden linearen Funktionen.
 
 <section class="dynFlex">

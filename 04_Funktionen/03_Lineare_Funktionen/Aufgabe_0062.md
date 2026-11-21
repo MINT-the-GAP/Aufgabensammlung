@@ -1,0 +1,140 @@
+<!--
+version: 1.0.0
+language: de
+narrator: Deutsch Female
+mode: Presentation
+edit: true
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-DynFlex/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-timer/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-board-mode/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-marker/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-annotation/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-canvas-ocr/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-orthography/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-Mathe/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-kachel/refs/heads/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-freeze-v2/main/README.md
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-mathpath/refs/heads/master/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-llm/refs/heads/main/README.md
+
+import: https://raw.githubusercontent.com/liaTemplates/JSXGraph/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-resetter/main/README.md
+
+import: https://raw.githubusercontent.com/MINT-the-GAP/lia-coordinate/refs/heads/main/README.md
+
+tags: Lineare Funktionen, Funktionsgraph, Dezimalzahlen, leicht, niedrig, Angeben
+
+comment: Gib die Funktionsterme von vier dargestellten Geraden durch Ablesen an. Steigung und Ordinatenachsenabschnitt sind rationale Zahlen.
+
+author: Martin Lommatzsch
+-->
+
+# Funktionsterme linearer Funktionen aus Graphen ablesen
+
+<img alt="Vernetzungsgrad 2" src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" width="30" height="30"> <img alt="Schwierigkeitsgrad 2" src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" width="120" height="30">
+
+**Gib** zu jedem Graphen den zugehörigen Funktionsterm durch Ablesen **an**.
+
+<section class="dynFlex" data-columns="2">
+
+<div class="flex-child">
+
+__$a)$__
+
+@CoordinateSystem(`xmin=-0.6;xmax=1.6;ymin=-1;ymax=1.2;width=400;id=LF0062A;axes=1;grid=1;border=0;static=1`)
+@AxisLabel(`id=LF0062A;xlabel=$x$;ylabel=$y$`)
+@PlotFunction(`LF0062A;f;-1.4*x+0.8;#FF00FF`)
+
+**Gib** den Funktionsterm von $f$ **an**.
+
+<!-- data-hint-button="1" data-solution-button="3" -->
+$f(x)=$ [[ -1,4*x+0,8 ]] @canvas
+@Algebrite.check(`-1.4*x+0.8`)
+[[?]] @Explain
+****************
+Die Gerade verläuft durch $P\left(0\mid 0{,}8\right)$ und $Q\left(1\mid -0{,}6\right)$. Die Steigung ist $m=-1{,}4$, der Ordinatenachsenabschnitt ist $b=0{,}8$. Daher gilt $f(x)=-1{,}4x+0{,}8$.
+****************
+
+@resetter
+
+@ADetails(1=BE; Lineare Funktionen, Gleichung, Dezimalzahlen)
+
+</div>
+
+<div class="flex-child">
+
+__$b)$__
+
+@CoordinateSystem(`xmin=-0.05;xmax=1.05;ymin=-0.9;ymax=0.2;width=400;id=LF0062B;axes=1;grid=1;border=0;static=1`)
+@AxisLabel(`id=LF0062B;xlabel=$x$;ylabel=$y$`)
+@PlotFunction(`LF0062B;g;0.3*x-0.7;#FF00FF`)
+
+**Gib** den Funktionsterm von $g$ **an**.
+
+<!-- data-hint-button="1" data-solution-button="3" -->
+$g(x)=$ [[ 0,3*x-0,7 ]] @canvas
+@Algebrite.check(`0.3*x-0.7`)
+[[?]] @Explain
+****************
+Die Gerade verläuft durch $P\left(0\mid -0{,}7\right)$ und $Q\left(1\mid -0{,}4\right)$. Die Steigung ist $m=0{,}3$, der Ordinatenachsenabschnitt ist $b=-0{,}7$. Daher gilt $g(x)=0{,}3x-0{,}7$.
+****************
+
+@resetter
+
+@ADetails(1=BE; Lineare Funktionen, Gleichung, Dezimalzahlen)
+
+</div>
+
+<div class="flex-child">
+
+__$c)$__
+
+@CoordinateSystem(`xmin=-0.6;xmax=1.6;ymin=-0.7;ymax=1.5;width=400;id=LF0062C;axes=1;grid=1;border=0;static=1`)
+@AxisLabel(`id=LF0062C;xlabel=$x$;ylabel=$y$`)
+@PlotFunction(`LF0062C;h;1.6*x-0.4;#FF00FF`)
+
+**Gib** den Funktionsterm von $h$ **an**.
+
+<!-- data-hint-button="1" data-solution-button="3" -->
+$h(x)=$ [[ 1,6*x-0,4 ]] @canvas
+@Algebrite.check(`1.6*x-0.4`)
+[[?]] @Explain
+****************
+Die Gerade verläuft durch $P\left(0\mid -0{,}4\right)$ und $Q\left(1\mid 1{,}2\right)$. Die Steigung ist $m=1{,}6$, der Ordinatenachsenabschnitt ist $b=-0{,}4$. Daher gilt $h(x)=1{,}6x-0{,}4$.
+****************
+
+@resetter
+
+@ADetails(1=BE; Lineare Funktionen, Gleichung, Dezimalzahlen)
+
+</div>
+
+<div class="flex-child">
+
+__$d)$__
+
+@CoordinateSystem(`xmin=-0.05;xmax=1.05;ymin=-0.1;ymax=1;width=400;id=LF0062D;axes=1;grid=1;border=0;static=1`)
+@AxisLabel(`id=LF0062D;xlabel=$x$;ylabel=$y$`)
+@PlotFunction(`LF0062D;k;-0.7*x+0.9;#FF00FF`)
+
+**Gib** den Funktionsterm von $k$ **an**.
+
+<!-- data-hint-button="1" data-solution-button="3" -->
+$k(x)=$ [[ -0,7*x+0,9 ]] @canvas
+@Algebrite.check(`-0.7*x+0.9`)
+[[?]] @Explain
+****************
+Die Gerade verläuft durch $P\left(0\mid 0{,}9\right)$ und $Q\left(1\mid 0{,}2\right)$. Die Steigung ist $m=-0{,}7$, der Ordinatenachsenabschnitt ist $b=0{,}9$. Daher gilt $k(x)=-0{,}7x+0{,}9$.
+****************
+
+@resetter
+
+@ADetails(1=BE; Lineare Funktionen, Gleichung, Dezimalzahlen)
+
+</div>
+
+</section>

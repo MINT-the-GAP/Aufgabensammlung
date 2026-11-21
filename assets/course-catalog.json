@@ -606,6 +606,7 @@
         },
         "8": {
           "1": [
+            "binomische formeln",
             "ungleichungen"
           ],
           "2": [
@@ -4992,6 +4993,234 @@
       ],
       "difficulty": 3,
       "network": 4,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/02_Terme/Aufgabe_0033.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/02_Terme/Aufgabe_0033.md",
+      "title": "Klammern auflösen und Terme zusammenfassen",
+      "tags": [
+        "Binomische Formeln",
+        "sehr leicht",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Binomische Formeln"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/02_Terme/Aufgabe_0034.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/02_Terme/Aufgabe_0034.md",
+      "title": "Klammern auflösen und Terme zusammenfassen",
+      "tags": [
+        "Binomische Formeln",
+        "sehr leicht",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Binomische Formeln"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/02_Terme/Aufgabe_0035.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/02_Terme/Aufgabe_0035.md",
+      "title": "Klammern auflösen und Terme zusammenfassen",
+      "tags": [
+        "Binomische Formeln",
+        "sehr leicht",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Binomische Formeln"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/02_Terme/Aufgabe_0036.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/02_Terme/Aufgabe_0036.md",
+      "title": "Klammern auflösen und Terme zusammenfassen",
+      "tags": [
+        "Binomische Formeln",
+        "Bruchrechnung",
+        "sehr leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Binomische Formeln",
+        "Bruchrechnung"
+      ],
+      "difficulty": 1,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/02_Terme/Aufgabe_0037.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/02_Terme/Aufgabe_0037.md",
+      "title": "Klammern auflösen und Terme zusammenfassen",
+      "tags": [
+        "Binomische Formeln",
+        "Bruchrechnung",
+        "sehr leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Binomische Formeln",
+        "Bruchrechnung"
+      ],
+      "difficulty": 1,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/02_Terme/Aufgabe_0038.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/02_Terme/Aufgabe_0038.md",
+      "title": "Klammern auflösen und Terme zusammenfassen",
+      "tags": [
+        "Binomische Formeln",
+        "Bruchrechnung",
+        "sehr leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Binomische Formeln",
+        "Bruchrechnung"
+      ],
+      "difficulty": 1,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/02_Terme/Aufgabe_0039.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/02_Terme/Aufgabe_0039.md",
+      "title": "Klammern auflösen und Terme zusammenfassen",
+      "tags": [
+        "Binomische Formeln",
+        "Dezimalzahlen",
+        "sehr leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Binomische Formeln",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 1,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/02_Terme/Aufgabe_0040.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/02_Terme/Aufgabe_0040.md",
+      "title": "Klammern auflösen und Terme zusammenfassen",
+      "tags": [
+        "Binomische Formeln",
+        "Dezimalzahlen",
+        "sehr leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Binomische Formeln",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 1,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/02_Terme/Aufgabe_0041.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/02_Terme/Aufgabe_0041.md",
+      "title": "Klammern auflösen und Terme zusammenfassen",
+      "tags": [
+        "Binomische Formeln",
+        "Dezimalzahlen",
+        "sehr leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Binomische Formeln",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 1,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/02_Terme/Aufgabe_0042.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/02_Terme/Aufgabe_0042.md",
+      "title": "Klammern auflösen und Terme zusammenfassen",
+      "tags": [
+        "Binomische Formeln",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "leicht",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Binomische Formeln",
+        "Bruchrechnung",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/02_Terme/Aufgabe_0043.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/02_Terme/Aufgabe_0043.md",
+      "title": "Klammern auflösen und Terme zusammenfassen",
+      "tags": [
+        "Binomische Formeln",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "leicht",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Binomische Formeln",
+        "Bruchrechnung",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/02_Terme/Aufgabe_0044.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/02_Terme/Aufgabe_0044.md",
+      "title": "Klammern auflösen und Terme zusammenfassen",
+      "tags": [
+        "Binomische Formeln",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "leicht",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Binomische Formeln",
+        "Bruchrechnung",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 3,
       "operator": "ermitteln_bestimmen"
     },
     {
@@ -11296,7 +11525,7 @@
         "Parameter",
         "Terme",
         "leicht",
-        "mittel",
+        "normal",
         "Angeben",
         "Fläche"
       ],
@@ -11306,7 +11535,7 @@
         "Fläche"
       ],
       "difficulty": 2,
-      "network": null,
+      "network": 3,
       "operator": "angeben"
     },
     {
@@ -16591,6 +16820,478 @@
       "difficulty": 1,
       "network": 1,
       "operator": "angeben"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0005.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0005.md",
+      "title": "Quadratische Terme ergänzen",
+      "tags": [
+        "Quadratische Ergänzung",
+        "Binomische Formeln",
+        "leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Ergänzung",
+        "Binomische Formeln"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0006.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0006.md",
+      "title": "Quadratische Terme ergänzen",
+      "tags": [
+        "Quadratische Ergänzung",
+        "Binomische Formeln",
+        "leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Ergänzung",
+        "Binomische Formeln"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0007.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0007.md",
+      "title": "Quadratische Terme ergänzen",
+      "tags": [
+        "Quadratische Ergänzung",
+        "Binomische Formeln",
+        "Bruchrechnung",
+        "leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Ergänzung",
+        "Binomische Formeln",
+        "Bruchrechnung"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0008.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0008.md",
+      "title": "Quadratische Terme ergänzen",
+      "tags": [
+        "Quadratische Ergänzung",
+        "Binomische Formeln",
+        "Bruchrechnung",
+        "leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Ergänzung",
+        "Binomische Formeln",
+        "Bruchrechnung"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0009.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0009.md",
+      "title": "Quadratische Terme ergänzen",
+      "tags": [
+        "Quadratische Ergänzung",
+        "Binomische Formeln",
+        "Dezimalzahlen",
+        "leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Ergänzung",
+        "Binomische Formeln",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0010.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0010.md",
+      "title": "Quadratische Terme ergänzen",
+      "tags": [
+        "Quadratische Ergänzung",
+        "Binomische Formeln",
+        "Dezimalzahlen",
+        "leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Ergänzung",
+        "Binomische Formeln",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0011.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0011.md",
+      "title": "Quadratische Terme ergänzen",
+      "tags": [
+        "Quadratische Ergänzung",
+        "Binomische Formeln",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Ergänzung",
+        "Binomische Formeln",
+        "Bruchrechnung",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0012.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0012.md",
+      "title": "Quadratische Terme ergänzen",
+      "tags": [
+        "Quadratische Ergänzung",
+        "Binomische Formeln",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Ergänzung",
+        "Binomische Formeln",
+        "Bruchrechnung",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0013.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0013.md",
+      "title": "Quadratische Ergänzung",
+      "tags": [
+        "Quadratische Ergänzung",
+        "leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Ergänzung"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0014.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0014.md",
+      "title": "Quadratische Ergänzung",
+      "tags": [
+        "Quadratische Ergänzung",
+        "leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Ergänzung"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0015.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0015.md",
+      "title": "Quadratische Ergänzung",
+      "tags": [
+        "Quadratische Ergänzung",
+        "Bruchrechnung",
+        "leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Ergänzung",
+        "Bruchrechnung"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0016.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0016.md",
+      "title": "Quadratische Ergänzung",
+      "tags": [
+        "Quadratische Ergänzung",
+        "Bruchrechnung",
+        "leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Ergänzung",
+        "Bruchrechnung"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0017.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0017.md",
+      "title": "Quadratische Ergänzung",
+      "tags": [
+        "Quadratische Ergänzung",
+        "Dezimalzahlen",
+        "leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Ergänzung",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0018.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0018.md",
+      "title": "Quadratische Ergänzung",
+      "tags": [
+        "Quadratische Ergänzung",
+        "Dezimalzahlen",
+        "leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Ergänzung",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0019.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0019.md",
+      "title": "Quadratische Ergänzung",
+      "tags": [
+        "Quadratische Ergänzung",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Ergänzung",
+        "Bruchrechnung",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0020.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0020.md",
+      "title": "Quadratische Ergänzung",
+      "tags": [
+        "Quadratische Ergänzung",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Ergänzung",
+        "Bruchrechnung",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0021.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0021.md",
+      "title": "Quadratische Ergänzung mit Vorfaktor",
+      "tags": [
+        "Quadratische Ergänzung",
+        "mittel",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Ergänzung"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0022.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0022.md",
+      "title": "Quadratische Ergänzung mit Vorfaktor",
+      "tags": [
+        "Quadratische Ergänzung",
+        "mittel",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Ergänzung"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0023.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0023.md",
+      "title": "Quadratische Ergänzung mit Vorfaktor",
+      "tags": [
+        "Quadratische Ergänzung",
+        "Bruchrechnung",
+        "mittel",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Ergänzung",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0024.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0024.md",
+      "title": "Quadratische Ergänzung mit Vorfaktor",
+      "tags": [
+        "Quadratische Ergänzung",
+        "Bruchrechnung",
+        "mittel",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Ergänzung",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0025.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0025.md",
+      "title": "Quadratische Ergänzung mit Vorfaktor",
+      "tags": [
+        "Quadratische Ergänzung",
+        "Dezimalzahlen",
+        "mittel",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Ergänzung",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0026.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0026.md",
+      "title": "Quadratische Ergänzung mit Vorfaktor",
+      "tags": [
+        "Quadratische Ergänzung",
+        "Dezimalzahlen",
+        "mittel",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Ergänzung",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0027.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0027.md",
+      "title": "Quadratische Ergänzung mit Vorfaktor",
+      "tags": [
+        "Quadratische Ergänzung",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "mittel",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Ergänzung",
+        "Bruchrechnung",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0028.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/13_Quadratische_Ergaenzung/Aufgabe_0028.md",
+      "title": "Quadratische Ergänzung mit Vorfaktor",
+      "tags": [
+        "Quadratische Ergänzung",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "mittel",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Ergänzung",
+        "Bruchrechnung",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
     },
     {
       "id": "01_Algebraische_Grundlagen/14_Gleichungssysteme/Aufgabe_0001.md",
@@ -23882,15 +24583,13 @@
       "tags": [
         "Lineare Funktionen",
         "Nullstellen",
-        "Natürliche Zahlen",
         "sehr leicht",
         "sehr niedrig",
         "Berechnen"
       ],
       "topics": [
         "Lineare Funktionen",
-        "Nullstellen",
-        "Natürliche Zahlen"
+        "Nullstellen"
       ],
       "difficulty": 1,
       "network": 1,
@@ -23903,15 +24602,13 @@
       "tags": [
         "Lineare Funktionen",
         "Nullstellen",
-        "Natürliche Zahlen",
         "sehr leicht",
         "sehr niedrig",
         "Berechnen"
       ],
       "topics": [
         "Lineare Funktionen",
-        "Nullstellen",
-        "Natürliche Zahlen"
+        "Nullstellen"
       ],
       "difficulty": 1,
       "network": 1,
@@ -24158,15 +24855,13 @@
       "tags": [
         "Lineare Funktionen",
         "Schnittpunkt",
-        "Natürliche Zahlen",
         "sehr leicht",
         "sehr niedrig",
         "Berechnen"
       ],
       "topics": [
         "Lineare Funktionen",
-        "Schnittpunkt",
-        "Natürliche Zahlen"
+        "Schnittpunkt"
       ],
       "difficulty": 1,
       "network": 1,
@@ -24179,15 +24874,13 @@
       "tags": [
         "Lineare Funktionen",
         "Schnittpunkt",
-        "Natürliche Zahlen",
         "sehr leicht",
         "sehr niedrig",
         "Berechnen"
       ],
       "topics": [
         "Lineare Funktionen",
-        "Schnittpunkt",
-        "Natürliche Zahlen"
+        "Schnittpunkt"
       ],
       "difficulty": 1,
       "network": 1,
@@ -24426,6 +25119,636 @@
       "difficulty": 3,
       "network": 3,
       "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0055.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0055.md",
+      "title": "Funktionsterme linearer Funktionen aus Graphen ablesen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "angeben"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0056.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0056.md",
+      "title": "Funktionsterme linearer Funktionen aus Graphen ablesen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "angeben"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0057.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0057.md",
+      "title": "Funktionsterme linearer Funktionen aus Graphen ablesen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "angeben"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0058.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0058.md",
+      "title": "Funktionsterme linearer Funktionen aus Graphen ablesen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "angeben"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0059.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0059.md",
+      "title": "Funktionsterme linearer Funktionen aus Graphen ablesen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Bruchrechnung",
+        "leicht",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Bruchrechnung"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0060.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0060.md",
+      "title": "Funktionsterme linearer Funktionen aus Graphen ablesen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Bruchrechnung",
+        "leicht",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Bruchrechnung"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0061.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0061.md",
+      "title": "Funktionsterme linearer Funktionen aus Graphen ablesen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Dezimalzahlen",
+        "leicht",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0062.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0062.md",
+      "title": "Funktionsterme linearer Funktionen aus Graphen ablesen",
+      "tags": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Dezimalzahlen",
+        "leicht",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Funktionsgraph",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0063.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0063.md",
+      "title": "Lineare Funktionen aus zwei Punkten bestimmen",
+      "tags": [
+        "Lineare Funktionen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Lineare Funktionen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0064.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0064.md",
+      "title": "Lineare Funktionen aus zwei Punkten bestimmen",
+      "tags": [
+        "Lineare Funktionen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Lineare Funktionen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0065.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0065.md",
+      "title": "Lineare Funktionen aus zwei Punkten bestimmen",
+      "tags": [
+        "Lineare Funktionen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Lineare Funktionen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0066.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0066.md",
+      "title": "Lineare Funktionen aus zwei Punkten bestimmen",
+      "tags": [
+        "Lineare Funktionen",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0067.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0067.md",
+      "title": "Lineare Funktionen aus zwei Punkten bestimmen",
+      "tags": [
+        "Lineare Funktionen",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0068.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0068.md",
+      "title": "Lineare Funktionen aus zwei Punkten bestimmen",
+      "tags": [
+        "Lineare Funktionen",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0069.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0069.md",
+      "title": "Lineare Funktionen aus zwei Punkten bestimmen",
+      "tags": [
+        "Lineare Funktionen",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0070.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0070.md",
+      "title": "Lineare Funktionen aus zwei Punkten bestimmen",
+      "tags": [
+        "Lineare Funktionen",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0071.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0071.md",
+      "title": "Lineare Funktionen aus zwei Punkten bestimmen",
+      "tags": [
+        "Lineare Funktionen",
+        "Bruchrechnung",
+        "Ganze Zahlen",
+        "leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Bruchrechnung",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0072.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0072.md",
+      "title": "Lineare Funktionen aus zwei Punkten bestimmen",
+      "tags": [
+        "Lineare Funktionen",
+        "Dezimalzahlen",
+        "Negative Zahlen",
+        "leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Dezimalzahlen",
+        "Negative Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0073.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0073.md",
+      "title": "Lineare Funktionen aus zwei Punkten bestimmen",
+      "tags": [
+        "Lineare Funktionen",
+        "Dezimalzahlen",
+        "Negative Zahlen",
+        "leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Dezimalzahlen",
+        "Negative Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0074.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0074.md",
+      "title": "Lineare Funktionen aus zwei Punkten bestimmen",
+      "tags": [
+        "Lineare Funktionen",
+        "Dezimalzahlen",
+        "Negative Zahlen",
+        "leicht",
+        "niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Dezimalzahlen",
+        "Negative Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0075.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0075.md",
+      "title": "Lineare Funktionen aus zwei Punkten bestimmen",
+      "tags": [
+        "Lineare Funktionen",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "leicht",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0076.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0076.md",
+      "title": "Lineare Funktionen aus zwei Punkten bestimmen",
+      "tags": [
+        "Lineare Funktionen",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "Ganze Zahlen",
+        "leicht",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0077.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0077.md",
+      "title": "Orthogonale Geraden an einer gegebenen Stelle bestimmen",
+      "tags": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Bruchrechnung",
+        "leicht",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Bruchrechnung"
+      ],
+      "difficulty": 2,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0078.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0078.md",
+      "title": "Orthogonale Geraden an einer gegebenen Stelle bestimmen",
+      "tags": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Bruchrechnung",
+        "leicht",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Bruchrechnung"
+      ],
+      "difficulty": 2,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0079.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0079.md",
+      "title": "Orthogonale Geraden an einer gegebenen Stelle bestimmen",
+      "tags": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Bruchrechnung",
+        "leicht",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Bruchrechnung"
+      ],
+      "difficulty": 2,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0080.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0080.md",
+      "title": "Orthogonale Geraden an einer gegebenen Stelle bestimmen",
+      "tags": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Bruchrechnung",
+        "mittel",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0081.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0081.md",
+      "title": "Orthogonale Geraden an einer gegebenen Stelle bestimmen",
+      "tags": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Bruchrechnung",
+        "mittel",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0082.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0082.md",
+      "title": "Orthogonale Geraden an einer gegebenen Stelle bestimmen",
+      "tags": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Bruchrechnung",
+        "mittel",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Schnittpunkt",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0083.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0083.md",
+      "title": "Lineare Funktionen, orthogonale Geraden und Dreiecksfläche",
+      "tags": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Schnittpunkt",
+        "Dreiecke",
+        "Fläche",
+        "Bruchrechnung",
+        "mittel",
+        "hoch",
+        "Bestimmen",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Schnittpunkt",
+        "Dreiecke",
+        "Fläche",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 4,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/03_Lineare_Funktionen/Aufgabe_0084.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/03_Lineare_Funktionen/Aufgabe_0084.md",
+      "title": "Lineare Funktionen, orthogonale Geraden und Dreiecksfläche",
+      "tags": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Schnittpunkt",
+        "Dreiecke",
+        "Fläche",
+        "Bruchrechnung",
+        "mittel",
+        "hoch",
+        "Bestimmen",
+        "Berechnen"
+      ],
+      "topics": [
+        "Lineare Funktionen",
+        "Nullstellen",
+        "Schnittpunkt",
+        "Dreiecke",
+        "Fläche",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 4,
+      "operator": "ermitteln_bestimmen"
     },
     {
       "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0001.md",
@@ -25977,7 +27300,6 @@
         "Quadratische Funktionen",
         "Nullstellen",
         "Parameterform quadratischer Funktionen",
-        "Natürliche Zahlen",
         "sehr leicht",
         "sehr niedrig",
         "Berechnen"
@@ -25985,8 +27307,7 @@
       "topics": [
         "Quadratische Funktionen",
         "Nullstellen",
-        "Parameterform quadratischer Funktionen",
-        "Natürliche Zahlen"
+        "Parameterform quadratischer Funktionen"
       ],
       "difficulty": 1,
       "network": 1,
@@ -26000,7 +27321,6 @@
         "Quadratische Funktionen",
         "Nullstellen",
         "Parameterform quadratischer Funktionen",
-        "Natürliche Zahlen",
         "sehr leicht",
         "sehr niedrig",
         "Berechnen"
@@ -26008,8 +27328,7 @@
       "topics": [
         "Quadratische Funktionen",
         "Nullstellen",
-        "Parameterform quadratischer Funktionen",
-        "Natürliche Zahlen"
+        "Parameterform quadratischer Funktionen"
       ],
       "difficulty": 1,
       "network": 1,
@@ -26223,7 +27542,6 @@
         "Quadratische Funktionen",
         "Nullstellen",
         "Scheitelpunktsform",
-        "Natürliche Zahlen",
         "sehr leicht",
         "sehr niedrig",
         "Berechnen"
@@ -26231,8 +27549,7 @@
       "topics": [
         "Quadratische Funktionen",
         "Nullstellen",
-        "Scheitelpunktsform",
-        "Natürliche Zahlen"
+        "Scheitelpunktsform"
       ],
       "difficulty": 1,
       "network": 1,
@@ -26246,7 +27563,6 @@
         "Quadratische Funktionen",
         "Nullstellen",
         "Scheitelpunktsform",
-        "Natürliche Zahlen",
         "sehr leicht",
         "sehr niedrig",
         "Berechnen"
@@ -26254,8 +27570,7 @@
       "topics": [
         "Quadratische Funktionen",
         "Nullstellen",
-        "Scheitelpunktsform",
-        "Natürliche Zahlen"
+        "Scheitelpunktsform"
       ],
       "difficulty": 1,
       "network": 1,
@@ -26594,7 +27909,6 @@
         "Lineare Funktionen",
         "Schnittpunkt",
         "Parameterform quadratischer Funktionen",
-        "Natürliche Zahlen",
         "sehr leicht",
         "sehr niedrig",
         "Berechnen"
@@ -26603,8 +27917,7 @@
         "Quadratische Funktionen",
         "Lineare Funktionen",
         "Schnittpunkt",
-        "Parameterform quadratischer Funktionen",
-        "Natürliche Zahlen"
+        "Parameterform quadratischer Funktionen"
       ],
       "difficulty": 1,
       "network": 1,
@@ -26619,7 +27932,6 @@
         "Lineare Funktionen",
         "Schnittpunkt",
         "Parameterform quadratischer Funktionen",
-        "Natürliche Zahlen",
         "sehr leicht",
         "sehr niedrig",
         "Berechnen"
@@ -26628,8 +27940,7 @@
         "Quadratische Funktionen",
         "Lineare Funktionen",
         "Schnittpunkt",
-        "Parameterform quadratischer Funktionen",
-        "Natürliche Zahlen"
+        "Parameterform quadratischer Funktionen"
       ],
       "difficulty": 1,
       "network": 1,
@@ -26860,7 +28171,6 @@
         "Lineare Funktionen",
         "Schnittpunkt",
         "Scheitelpunktsform",
-        "Natürliche Zahlen",
         "sehr leicht",
         "sehr niedrig",
         "Berechnen"
@@ -26869,8 +28179,7 @@
         "Quadratische Funktionen",
         "Lineare Funktionen",
         "Schnittpunkt",
-        "Scheitelpunktsform",
-        "Natürliche Zahlen"
+        "Scheitelpunktsform"
       ],
       "difficulty": 1,
       "network": 1,
@@ -26885,7 +28194,6 @@
         "Lineare Funktionen",
         "Schnittpunkt",
         "Scheitelpunktsform",
-        "Natürliche Zahlen",
         "sehr leicht",
         "sehr niedrig",
         "Berechnen"
@@ -26894,8 +28202,7 @@
         "Quadratische Funktionen",
         "Lineare Funktionen",
         "Schnittpunkt",
-        "Scheitelpunktsform",
-        "Natürliche Zahlen"
+        "Scheitelpunktsform"
       ],
       "difficulty": 1,
       "network": 1,
@@ -27125,7 +28432,6 @@
         "Quadratische Funktionen",
         "Schnittpunkt",
         "Parameterform quadratischer Funktionen",
-        "Natürliche Zahlen",
         "sehr leicht",
         "sehr niedrig",
         "Berechnen"
@@ -27133,8 +28439,7 @@
       "topics": [
         "Quadratische Funktionen",
         "Schnittpunkt",
-        "Parameterform quadratischer Funktionen",
-        "Natürliche Zahlen"
+        "Parameterform quadratischer Funktionen"
       ],
       "difficulty": 1,
       "network": 1,
@@ -27248,7 +28553,6 @@
         "Quadratische Funktionen",
         "Schnittpunkt",
         "Parameterform quadratischer Funktionen",
-        "Natürliche Zahlen",
         "sehr leicht",
         "sehr niedrig",
         "Berechnen"
@@ -27256,8 +28560,7 @@
       "topics": [
         "Quadratische Funktionen",
         "Schnittpunkt",
-        "Parameterform quadratischer Funktionen",
-        "Natürliche Zahlen"
+        "Parameterform quadratischer Funktionen"
       ],
       "difficulty": 1,
       "network": 1,
@@ -27371,7 +28674,6 @@
         "Quadratische Funktionen",
         "Schnittpunkt",
         "Scheitelpunktsform",
-        "Natürliche Zahlen",
         "sehr leicht",
         "sehr niedrig",
         "Berechnen"
@@ -27379,8 +28681,7 @@
       "topics": [
         "Quadratische Funktionen",
         "Schnittpunkt",
-        "Scheitelpunktsform",
-        "Natürliche Zahlen"
+        "Scheitelpunktsform"
       ],
       "difficulty": 1,
       "network": 1,
@@ -27494,7 +28795,6 @@
         "Quadratische Funktionen",
         "Schnittpunkt",
         "Scheitelpunktsform",
-        "Natürliche Zahlen",
         "sehr leicht",
         "sehr niedrig",
         "Berechnen"
@@ -27502,8 +28802,7 @@
       "topics": [
         "Quadratische Funktionen",
         "Schnittpunkt",
-        "Scheitelpunktsform",
-        "Natürliche Zahlen"
+        "Scheitelpunktsform"
       ],
       "difficulty": 1,
       "network": 1,
@@ -27618,7 +28917,6 @@
         "Schnittpunkt",
         "Parameterform quadratischer Funktionen",
         "Scheitelpunktsform",
-        "Natürliche Zahlen",
         "sehr leicht",
         "sehr niedrig",
         "Berechnen"
@@ -27627,8 +28925,7 @@
         "Quadratische Funktionen",
         "Schnittpunkt",
         "Parameterform quadratischer Funktionen",
-        "Scheitelpunktsform",
-        "Natürliche Zahlen"
+        "Scheitelpunktsform"
       ],
       "difficulty": 1,
       "network": 1,
@@ -27751,7 +29048,6 @@
         "Schnittpunkt",
         "Parameterform quadratischer Funktionen",
         "Scheitelpunktsform",
-        "Natürliche Zahlen",
         "sehr leicht",
         "sehr niedrig",
         "Berechnen"
@@ -27760,8 +29056,7 @@
         "Quadratische Funktionen",
         "Schnittpunkt",
         "Parameterform quadratischer Funktionen",
-        "Scheitelpunktsform",
-        "Natürliche Zahlen"
+        "Scheitelpunktsform"
       ],
       "difficulty": 1,
       "network": 1,
@@ -27874,6 +29169,510 @@
       "difficulty": 3,
       "network": 3,
       "operator": "berechnen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0141.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0141.md",
+      "title": "Funktionsterme quadratischer Funktionen aus Graphen ablesen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "angeben"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0142.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0142.md",
+      "title": "Funktionsterme quadratischer Funktionen aus Graphen ablesen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "angeben"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0143.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0143.md",
+      "title": "Funktionsterme quadratischer Funktionen aus Graphen ablesen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Ganze Zahlen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "angeben"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0144.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0144.md",
+      "title": "Funktionsterme quadratischer Funktionen aus Graphen ablesen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "leicht",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Bruchrechnung"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0145.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0145.md",
+      "title": "Funktionsterme quadratischer Funktionen aus Graphen ablesen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "leicht",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0146.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0146.md",
+      "title": "Funktionsterme quadratischer Funktionen aus Graphen ablesen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "leicht",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0147.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0147.md",
+      "title": "Funktionsterme quadratischer Funktionen aus Graphen ablesen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Ganze Zahlen",
+        "leicht",
+        "sehr niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "angeben"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0148.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0148.md",
+      "title": "Funktionsterme quadratischer Funktionen aus Graphen ablesen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Ganze Zahlen",
+        "leicht",
+        "sehr niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "angeben"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0149.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0149.md",
+      "title": "Funktionsterme quadratischer Funktionen aus Graphen ablesen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Ganze Zahlen",
+        "leicht",
+        "sehr niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Ganze Zahlen"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "angeben"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0150.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0150.md",
+      "title": "Funktionsterme quadratischer Funktionen aus Graphen ablesen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "mittel",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0151.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0151.md",
+      "title": "Funktionsterme quadratischer Funktionen aus Graphen ablesen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Dezimalzahlen",
+        "mittel",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0152.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0152.md",
+      "title": "Funktionsterme quadratischer Funktionen aus Graphen ablesen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Dezimalzahlen",
+        "mittel",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Funktionsgraph",
+        "Scheitelpunktsform",
+        "Bruchrechnung",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0153.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0153.md",
+      "title": "Quadratische Funktionen aus drei Punkten bestimmen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Gleichungssysteme",
+        "mittel",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Gleichungssysteme"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0154.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0154.md",
+      "title": "Quadratische Funktionen aus drei Punkten bestimmen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Gleichungssysteme",
+        "mittel",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Gleichungssysteme"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0155.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0155.md",
+      "title": "Quadratische Funktionen aus drei Punkten bestimmen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Gleichungssysteme",
+        "mittel",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Gleichungssysteme"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0156.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0156.md",
+      "title": "Quadratische Funktionen aus drei Punkten bestimmen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Gleichungssysteme",
+        "Bruchrechnung",
+        "mittel",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Gleichungssysteme",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0157.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0157.md",
+      "title": "Quadratische Funktionen aus drei Punkten bestimmen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Gleichungssysteme",
+        "Bruchrechnung",
+        "mittel",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Gleichungssysteme",
+        "Bruchrechnung"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0158.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0158.md",
+      "title": "Quadratische Funktionen aus drei Punkten bestimmen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Gleichungssysteme",
+        "Dezimalzahlen",
+        "mittel",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Gleichungssysteme",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 3,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0159.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0159.md",
+      "title": "Quadratische Funktionen aus drei Punkten bestimmen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Gleichungssysteme",
+        "Bruchrechnung",
+        "schwer",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Gleichungssysteme",
+        "Bruchrechnung"
+      ],
+      "difficulty": 4,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0160.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0160.md",
+      "title": "Quadratische Funktionen aus drei Punkten bestimmen",
+      "tags": [
+        "Quadratische Funktionen",
+        "Gleichungssysteme",
+        "Dezimalzahlen",
+        "schwer",
+        "normal",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Gleichungssysteme",
+        "Dezimalzahlen"
+      ],
+      "difficulty": 4,
+      "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0161.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0161.md",
+      "title": "Parabeln, Geraden und Scheitelpunktabstand",
+      "tags": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Gleichungssysteme",
+        "Nullstellen",
+        "Schnittpunkt",
+        "Quadratische Ergänzung",
+        "Satz des Pythagoras",
+        "schwer",
+        "hoch",
+        "Bestimmen",
+        "Berechnen",
+        "Interpretieren"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Gleichungssysteme",
+        "Nullstellen",
+        "Schnittpunkt",
+        "Quadratische Ergänzung",
+        "Satz des Pythagoras"
+      ],
+      "difficulty": 4,
+      "network": 4,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0162.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/04_Funktionen/05_Quadratische_Funktionen/Aufgabe_0162.md",
+      "title": "Parabeln, Geraden und Scheitelpunktabstand",
+      "tags": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Gleichungssysteme",
+        "Nullstellen",
+        "Schnittpunkt",
+        "Quadratische Ergänzung",
+        "Satz des Pythagoras",
+        "schwer",
+        "hoch",
+        "Bestimmen",
+        "Berechnen",
+        "Interpretieren"
+      ],
+      "topics": [
+        "Quadratische Funktionen",
+        "Lineare Funktionen",
+        "Gleichungssysteme",
+        "Nullstellen",
+        "Schnittpunkt",
+        "Quadratische Ergänzung",
+        "Satz des Pythagoras"
+      ],
+      "difficulty": 4,
+      "network": 4,
+      "operator": "ermitteln_bestimmen"
     },
     {
       "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0001.md",
