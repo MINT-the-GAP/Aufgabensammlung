@@ -187,7 +187,7 @@ edit: true
 | 10 | Wahlbereich 1: Komplexe Zahlen |  |
 | 10 | Wahlbereich 2: Logistisches Wachstum |  |
 | 10 | Wahlbereich 3: Kurven in Parameterdarstellung und in Polarkoordinaten |  |
-| 11/12 GK | LB 1: Differentialrechnung | ableitungen, differenzenquotient, differentialquotient, extrempunkte, extremwertaufgaben, funktionsschar, gebrochen rationale funktionen, grafisches ableiten, kettenregel, konkav, konvex, kurvendiskussion, monotonie, ortskurve, polynomdivision, produktregel, rekonstruktion, sattelpunkte, satz von l'hôpital, signum, tangentengleichung, taylorentwicklung, wendepunkte |
+| 11/12 GK | LB 1: Differentialrechnung | ableitungen, differenzenquotient, differentialquotient, extrempunkte, extremwertaufgaben, funktionsschar, gebrochen rationale funktionen, grafisches ableiten, kettenregel, konkav, konvex, kurvendiskussion, monotonie, ortskurve, polynomdivision, produktregel, quotientenregel, rekonstruktion, sattelpunkte, satz von l'hôpital, signum, tangentengleichung, taylorentwicklung, wendepunkte |
 | 11/12 GK | LB 2: Matrizen |  |
 | 11/12 GK | LB 3: Vektoren, Geraden und Ebenen | einheitsvektor, koordinatenform, linearkombination, parameterform, vektorebene, vektoren, vektorgerade, vektornorm |
 | 11/12 GK | LB 4: Binomialverteilte Zufallsgrößen | bedingte wahrscheinlichkeit, binomialkoeffizient, binomialverteilung, fakultät, hypergeometrische verteilung, kontingenztafel, kontingenztafeln, vierfeldertafel |
@@ -201,7 +201,7 @@ edit: true
 | 11/12 GK | Wahlbereich 4: Bedingte Wahrscheinlichkeiten |  |
 | 11/12 GK | Wahlbereich 5: Numerische Integrationsverfahren |  |
 | 11/12 GK | Wahlbereich 6: Differentialgleichungen |  |
-| 11/12 LK | LB 1: Differentialrechnung | ableitungen, differenzenquotient, differentialquotient, extrempunkte, extremwertaufgaben, funktionsschar, gebrochen rationale funktionen, grafisches ableiten, kettenregel, konkav, konvex, kurvendiskussion, monotonie, ortskurve, polynomdivision, produktregel, rekonstruktion, sattelpunkte, satz von l'hôpital, signum, tangentengleichung, taylorentwicklung, wendepunkte |
+| 11/12 LK | LB 1: Differentialrechnung | ableitungen, differenzenquotient, differentialquotient, extrempunkte, extremwertaufgaben, funktionsschar, gebrochen rationale funktionen, grafisches ableiten, kettenregel, konkav, konvex, kurvendiskussion, monotonie, ortskurve, polynomdivision, produktregel, quotientenregel, rekonstruktion, sattelpunkte, satz von l'hôpital, signum, tangentengleichung, taylorentwicklung, wendepunkte |
 | 11/12 LK | LB 2: Matrizen |  |
 | 11/12 LK | LB 3: Vektoren, Geraden und Ebenen | einheitsvektor, koordinatenform, linearkombination, parameterform, vektorebene, vektoren, vektorgerade, vektornorm |
 | 11/12 LK | LB 4: Binomialverteilte Zufallsgrößen | bedingte wahrscheinlichkeit, binomialkoeffizient, binomialverteilung, fakultät, hypergeometrische verteilung, kontingenztafel, kontingenztafeln, vierfeldertafel |
