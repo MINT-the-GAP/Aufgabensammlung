@@ -115,7 +115,7 @@ edit: true
 | 11 | Wahlbereich 4: Komplexe Zahlen |  |
 | 11 | Wahlbereich 5: Lineare Optimierung |  |
 | 12/13 GK | LB 1: Diskrete Zufallsgrößen | binomialkoeffizient, binomialverteilung, hypergeometrische verteilung, standardabweichung, varianz |
-| 12/13 GK | LB 2: Differenzialrechnung | ableitungen, differenzenquotient, differentialquotient, extrempunkte, extremwertaufgaben, funktionsschar, gebrochen rationale funktionen, grafisches ableiten, grenzwerte, konkav, konvex, kurvendiskussion, monotonie, ortskurve, polynomdivision, polynomfunktion, reihen, rekonstruktion, sattelpunkte, satz von l'hôpital, tangentengleichung, taylorentwicklung, wendepunkte |
+| 12/13 GK | LB 2: Differenzialrechnung | ableitungen, differenzenquotient, differentialquotient, extrempunkte, extremwertaufgaben, funktionsschar, gebrochen rationale funktionen, grafisches ableiten, grenzwerte, konkav, konvex, kurvendiskussion, monotonie, ortskurve, polynomdivision, polynomfunktion, produktregel, reihen, rekonstruktion, sattelpunkte, satz von l'hôpital, tangentengleichung, taylorentwicklung, wendepunkte |
 | 12/13 GK | LB 3: Integralrechnung | integralmittelwert, integration, obersumme, partielle integration, substitution, untersumme |
 | 12/13 GK | LB 4: Beurteilende Statistik |  |
 | 12/13 GK | LB 5: Vektorgeometrie | einheitsvektor, linearkombination, skalarprodukt, vektoren, vektornorm |
@@ -123,7 +123,7 @@ edit: true
 | 12/13 GK | Wahlpflicht 1: Analytische Geometrie der Geraden und Ebenen | koordinatenform, kugelgleichung, normalenform, parameterform, polarebene, schnittwinkel, spatprodukt, tangentialebene, vektorebene, vektorgerade, vektorprodukt |
 | 12/13 GK | Wahlpflicht 2: Anwendungen der Matrizenrechnung |  |
 | 12/13 LK | LB 1: Diskrete Zufallsgrößen | binomialverteilung, hypergeometrische verteilung, standardabweichung, varianz |
-| 12/13 LK | LB 2: Differenzialrechnung | differenzenquotient, differentialquotient, extrempunkte, extremwertaufgaben, funktionsschar, gebrochen rationale funktionen, grenzwerte, konkav, konvex, kurvendiskussion, monotonie, ortskurve, polynomdivision, polynomfunktion, reihen, rekonstruktion, sattelpunkte, satz von l'hôpital, tangentengleichung, taylorentwicklung, wendepunkte |
+| 12/13 LK | LB 2: Differenzialrechnung | differenzenquotient, differentialquotient, extrempunkte, extremwertaufgaben, funktionsschar, gebrochen rationale funktionen, grenzwerte, kettenregel, konkav, konvex, kurvendiskussion, monotonie, ortskurve, polynomdivision, polynomfunktion, produktregel, reihen, rekonstruktion, sattelpunkte, satz von l'hôpital, tangentengleichung, taylorentwicklung, wendepunkte |
 | 12/13 LK | LB 3: Integralrechnung | bogenlänge, integralmittelwert, integration, obersumme, partielle integration, rotationskörper, substitution, untersumme |
 | 12/13 LK | LB 4: Normalverteilte Zufallsgrößen | normalverteilung |
 | 12/13 LK | LB 5: Beurteilende Statistik | hypothesentest, konfidenzintervall |
@@ -187,7 +187,7 @@ edit: true
 | 10 | Wahlbereich 1: Komplexe Zahlen |  |
 | 10 | Wahlbereich 2: Logistisches Wachstum |  |
 | 10 | Wahlbereich 3: Kurven in Parameterdarstellung und in Polarkoordinaten |  |
-| 11/12 GK | LB 1: Differentialrechnung | ableitungen, differenzenquotient, differentialquotient, extrempunkte, extremwertaufgaben, funktionsschar, gebrochen rationale funktionen, grafisches ableiten, konkav, konvex, kurvendiskussion, monotonie, ortskurve, polynomdivision, rekonstruktion, sattelpunkte, satz von l'hôpital, signum, tangentengleichung, taylorentwicklung, wendepunkte |
+| 11/12 GK | LB 1: Differentialrechnung | ableitungen, differenzenquotient, differentialquotient, extrempunkte, extremwertaufgaben, funktionsschar, gebrochen rationale funktionen, grafisches ableiten, kettenregel, konkav, konvex, kurvendiskussion, monotonie, ortskurve, polynomdivision, produktregel, rekonstruktion, sattelpunkte, satz von l'hôpital, signum, tangentengleichung, taylorentwicklung, wendepunkte |
 | 11/12 GK | LB 2: Matrizen |  |
 | 11/12 GK | LB 3: Vektoren, Geraden und Ebenen | einheitsvektor, koordinatenform, linearkombination, parameterform, vektorebene, vektoren, vektorgerade, vektornorm |
 | 11/12 GK | LB 4: Binomialverteilte Zufallsgrößen | bedingte wahrscheinlichkeit, binomialkoeffizient, binomialverteilung, fakultät, hypergeometrische verteilung, kontingenztafel, kontingenztafeln, vierfeldertafel |
@@ -201,7 +201,7 @@ edit: true
 | 11/12 GK | Wahlbereich 4: Bedingte Wahrscheinlichkeiten |  |
 | 11/12 GK | Wahlbereich 5: Numerische Integrationsverfahren |  |
 | 11/12 GK | Wahlbereich 6: Differentialgleichungen |  |
-| 11/12 LK | LB 1: Differentialrechnung | ableitungen, differenzenquotient, differentialquotient, extrempunkte, extremwertaufgaben, funktionsschar, gebrochen rationale funktionen, grafisches ableiten, konkav, konvex, kurvendiskussion, monotonie, ortskurve, polynomdivision, rekonstruktion, sattelpunkte, satz von l'hôpital, signum, tangentengleichung, taylorentwicklung, wendepunkte |
+| 11/12 LK | LB 1: Differentialrechnung | ableitungen, differenzenquotient, differentialquotient, extrempunkte, extremwertaufgaben, funktionsschar, gebrochen rationale funktionen, grafisches ableiten, kettenregel, konkav, konvex, kurvendiskussion, monotonie, ortskurve, polynomdivision, produktregel, rekonstruktion, sattelpunkte, satz von l'hôpital, signum, tangentengleichung, taylorentwicklung, wendepunkte |
 | 11/12 LK | LB 2: Matrizen |  |
 | 11/12 LK | LB 3: Vektoren, Geraden und Ebenen | einheitsvektor, koordinatenform, linearkombination, parameterform, vektorebene, vektoren, vektorgerade, vektornorm |
 | 11/12 LK | LB 4: Binomialverteilte Zufallsgrößen | bedingte wahrscheinlichkeit, binomialkoeffizient, binomialverteilung, fakultät, hypergeometrische verteilung, kontingenztafel, kontingenztafeln, vierfeldertafel |

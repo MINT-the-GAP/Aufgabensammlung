@@ -359,6 +359,7 @@
             "ortskurve",
             "polynomdivision",
             "polynomfunktion",
+            "produktregel",
             "reihen",
             "rekonstruktion",
             "sattelpunkte",
@@ -414,6 +415,7 @@
             "funktionsschar",
             "gebrochen rationale funktionen",
             "grenzwerte",
+            "kettenregel",
             "konkav",
             "konvex",
             "kurvendiskussion",
@@ -421,6 +423,7 @@
             "ortskurve",
             "polynomdivision",
             "polynomfunktion",
+            "produktregel",
             "reihen",
             "rekonstruktion",
             "sattelpunkte",
@@ -722,12 +725,14 @@
             "funktionsschar",
             "gebrochen rationale funktionen",
             "grafisches ableiten",
+            "kettenregel",
             "konkav",
             "konvex",
             "kurvendiskussion",
             "monotonie",
             "ortskurve",
             "polynomdivision",
+            "produktregel",
             "rekonstruktion",
             "sattelpunkte",
             "satz von l'hôpital",
@@ -788,12 +793,14 @@
             "funktionsschar",
             "gebrochen rationale funktionen",
             "grafisches ableiten",
+            "kettenregel",
             "konkav",
             "konvex",
             "kurvendiskussion",
             "monotonie",
             "ortskurve",
             "polynomdivision",
+            "produktregel",
             "rekonstruktion",
             "sattelpunkte",
             "satz von l'hôpital",
@@ -29767,6 +29774,963 @@
       ],
       "difficulty": 3,
       "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0006.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0006.md",
+      "title": "Einfache Polynomfunktionen ableiten",
+      "tags": [
+        "Ableitungen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0007.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0007.md",
+      "title": "Einfache Polynomfunktionen ableiten",
+      "tags": [
+        "Ableitungen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0008.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0008.md",
+      "title": "Polynomfunktionen mit Bruchkoeffizienten ableiten",
+      "tags": [
+        "Ableitungen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0009.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0009.md",
+      "title": "Polynomfunktionen mit Bruchkoeffizienten ableiten",
+      "tags": [
+        "Ableitungen",
+        "sehr leicht",
+        "sehr niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0010.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0010.md",
+      "title": "Terme mit negativen Exponenten und Bruchkoeffizienten ableiten",
+      "tags": [
+        "Ableitungen",
+        "leicht",
+        "sehr niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0011.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0011.md",
+      "title": "Terme mit negativen Exponenten und Bruchkoeffizienten ableiten",
+      "tags": [
+        "Ableitungen",
+        "leicht",
+        "sehr niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0012.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0012.md",
+      "title": "Terme mit gebrochenen Exponenten ableiten",
+      "tags": [
+        "Ableitungen",
+        "leicht",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0013.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0013.md",
+      "title": "Wurzelterme als Potenzen schreiben und ableiten",
+      "tags": [
+        "Ableitungen",
+        "leicht",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0014.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0014.md",
+      "title": "Potenzgesetze vor dem Ableiten anwenden",
+      "tags": [
+        "Ableitungen",
+        "leicht",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0015.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0015.md",
+      "title": "Ableitungsgraphen skizzieren",
+      "tags": [
+        "Ableitungen",
+        "grafisches Ableiten",
+        "leicht",
+        "niedrig",
+        "Skizzieren"
+      ],
+      "topics": [
+        "Ableitungen",
+        "grafisches Ableiten"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "skizzieren"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0016.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0016.md",
+      "title": "Ableitungsgraphen skizzieren",
+      "tags": [
+        "Ableitungen",
+        "grafisches Ableiten",
+        "leicht",
+        "niedrig",
+        "Skizzieren"
+      ],
+      "topics": [
+        "Ableitungen",
+        "grafisches Ableiten"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "skizzieren"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0017.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0017.md",
+      "title": "Ableitungsgraphen skizzieren",
+      "tags": [
+        "Ableitungen",
+        "grafisches Ableiten",
+        "leicht",
+        "niedrig",
+        "Skizzieren"
+      ],
+      "topics": [
+        "Ableitungen",
+        "grafisches Ableiten"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "skizzieren"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0018.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0018.md",
+      "title": "Ableitungsgraphen skizzieren",
+      "tags": [
+        "Ableitungen",
+        "grafisches Ableiten",
+        "leicht",
+        "niedrig",
+        "Skizzieren"
+      ],
+      "topics": [
+        "Ableitungen",
+        "grafisches Ableiten"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "skizzieren"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0019.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0019.md",
+      "title": "Ableitungsgraphen skizzieren",
+      "tags": [
+        "Ableitungen",
+        "grafisches Ableiten",
+        "mittel",
+        "niedrig",
+        "Skizzieren"
+      ],
+      "topics": [
+        "Ableitungen",
+        "grafisches Ableiten"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "skizzieren"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0020.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0020.md",
+      "title": "Ableitungsgraphen skizzieren",
+      "tags": [
+        "Ableitungen",
+        "grafisches Ableiten",
+        "mittel",
+        "niedrig",
+        "Skizzieren"
+      ],
+      "topics": [
+        "Ableitungen",
+        "grafisches Ableiten"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "skizzieren"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0021.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0021.md",
+      "title": "Einfache Kettenregel",
+      "tags": [
+        "Ableitungen",
+        "Kettenregel",
+        "leicht",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Kettenregel"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0022.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0022.md",
+      "title": "Einfache Kettenregel",
+      "tags": [
+        "Ableitungen",
+        "Kettenregel",
+        "leicht",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Kettenregel"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0023.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0023.md",
+      "title": "Wurzelfunktionen ableiten",
+      "tags": [
+        "Ableitungen",
+        "Kettenregel",
+        "Wurzeln",
+        "leicht",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Kettenregel",
+        "Wurzeln"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0024.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0024.md",
+      "title": "Wurzelfunktionen ableiten",
+      "tags": [
+        "Ableitungen",
+        "Kettenregel",
+        "Wurzeln",
+        "leicht",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Kettenregel",
+        "Wurzeln"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0025.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0025.md",
+      "title": "Kettenregel bei trigonometrischen und Exponentialfunktionen",
+      "tags": [
+        "Ableitungen",
+        "Kettenregel",
+        "mittel",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Kettenregel"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0026.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0026.md",
+      "title": "Kettenregel bei trigonometrischen und Exponentialfunktionen",
+      "tags": [
+        "Ableitungen",
+        "Kettenregel",
+        "mittel",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Kettenregel"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0027.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0027.md",
+      "title": "Kettenregel bei Wurzelfunktionen",
+      "tags": [
+        "Ableitungen",
+        "Kettenregel",
+        "Wurzeln",
+        "mittel",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Kettenregel",
+        "Wurzeln"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0028.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0028.md",
+      "title": "Kettenregel bei Wurzelfunktionen",
+      "tags": [
+        "Ableitungen",
+        "Kettenregel",
+        "Wurzeln",
+        "mittel",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Kettenregel",
+        "Wurzeln"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0029.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0029.md",
+      "title": "Einfache Produktregel",
+      "tags": [
+        "Ableitungen",
+        "Produktregel",
+        "leicht",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Produktregel"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0030.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0030.md",
+      "title": "Einfache Produktregel",
+      "tags": [
+        "Ableitungen",
+        "Produktregel",
+        "leicht",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Produktregel"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0031.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0031.md",
+      "title": "Produktregel mit Polynomen",
+      "tags": [
+        "Ableitungen",
+        "Produktregel",
+        "mittel",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Produktregel"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0032.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0032.md",
+      "title": "Produktregel mit Polynomen",
+      "tags": [
+        "Ableitungen",
+        "Produktregel",
+        "mittel",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Produktregel"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0033.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0033.md",
+      "title": "Produktregel mit drei Faktoren",
+      "tags": [
+        "Ableitungen",
+        "Produktregel",
+        "schwer",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Produktregel"
+      ],
+      "difficulty": 4,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0034.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0034.md",
+      "title": "Produktregel mit drei Faktoren",
+      "tags": [
+        "Ableitungen",
+        "Produktregel",
+        "schwer",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Produktregel"
+      ],
+      "difficulty": 4,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0035.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0035.md",
+      "title": "Kettenregel mit drei Funktionen",
+      "tags": [
+        "Ableitungen",
+        "Kettenregel",
+        "schwer",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Kettenregel"
+      ],
+      "difficulty": 4,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0036.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0036.md",
+      "title": "Kettenregel mit drei Funktionen",
+      "tags": [
+        "Ableitungen",
+        "Kettenregel",
+        "schwer",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Kettenregel"
+      ],
+      "difficulty": 4,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0037.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0037.md",
+      "title": "Produktregel und Kettenregel",
+      "tags": [
+        "Ableitungen",
+        "Produktregel",
+        "Kettenregel",
+        "schwer",
+        "normal",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Produktregel",
+        "Kettenregel"
+      ],
+      "difficulty": 4,
+      "network": 3,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0038.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0038.md",
+      "title": "Produktregel und Kettenregel bei längeren Termen",
+      "tags": [
+        "Ableitungen",
+        "Produktregel",
+        "Kettenregel",
+        "schwer",
+        "normal",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Produktregel",
+        "Kettenregel"
+      ],
+      "difficulty": 4,
+      "network": 3,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0039.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0039.md",
+      "title": "Produktregel mit dem natürlichen Logarithmus",
+      "tags": [
+        "Ableitungen",
+        "Produktregel",
+        "Logarithmus",
+        "mittel",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Produktregel",
+        "Logarithmus"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0040.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0040.md",
+      "title": "Produktregel mit Logarithmus und verschiedenen Faktoren",
+      "tags": [
+        "Ableitungen",
+        "Produktregel",
+        "Logarithmus",
+        "mittel",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Produktregel",
+        "Logarithmus"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0041.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0041.md",
+      "title": "Kettenregel mit dem natürlichen Logarithmus",
+      "tags": [
+        "Ableitungen",
+        "Kettenregel",
+        "Logarithmus",
+        "mittel",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Kettenregel",
+        "Logarithmus"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0042.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0042.md",
+      "title": "Kettenregel mit verschiedenen Logarithmusargumenten",
+      "tags": [
+        "Ableitungen",
+        "Kettenregel",
+        "Logarithmus",
+        "mittel",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Kettenregel",
+        "Logarithmus"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0043.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0043.md",
+      "title": "Produkt- und Kettenregel mit dem natürlichen Logarithmus",
+      "tags": [
+        "Ableitungen",
+        "Produktregel",
+        "Kettenregel",
+        "Logarithmus",
+        "schwer",
+        "normal",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Produktregel",
+        "Kettenregel",
+        "Logarithmus"
+      ],
+      "difficulty": 4,
+      "network": 3,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0044.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0044.md",
+      "title": "Produkt- und Kettenregel mit verschachtelten Faktoren",
+      "tags": [
+        "Ableitungen",
+        "Produktregel",
+        "Kettenregel",
+        "Logarithmus",
+        "schwer",
+        "normal",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Produktregel",
+        "Kettenregel",
+        "Logarithmus"
+      ],
+      "difficulty": 4,
+      "network": 3,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0045.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0045.md",
+      "title": "Quotientenregel mit Polynomen",
+      "tags": [
+        "Ableitungen",
+        "Quotientenregel",
+        "leicht",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Quotientenregel"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0046.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0046.md",
+      "title": "Quotientenregel bei linearen und quadratischen Polynomen",
+      "tags": [
+        "Ableitungen",
+        "Quotientenregel",
+        "leicht",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Quotientenregel"
+      ],
+      "difficulty": 2,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0047.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0047.md",
+      "title": "Quotientenregel mit Polynomen und Sinus, Kosinus oder Exponentialfunktionen",
+      "tags": [
+        "Ableitungen",
+        "Quotientenregel",
+        "mittel",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Quotientenregel"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0048.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0048.md",
+      "title": "Quotientenregel mit Polynomen und veränderten Argumenten",
+      "tags": [
+        "Ableitungen",
+        "Quotientenregel",
+        "mittel",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Quotientenregel"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0049.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0049.md",
+      "title": "Quotientenregel mit Sinus, Kosinus und Exponentialfunktionen",
+      "tags": [
+        "Ableitungen",
+        "Quotientenregel",
+        "mittel",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Quotientenregel"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0050.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0050.md",
+      "title": "Quotientenregel mit verschiedenen Funktionsargumenten",
+      "tags": [
+        "Ableitungen",
+        "Quotientenregel",
+        "mittel",
+        "niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Quotientenregel"
+      ],
+      "difficulty": 3,
+      "network": 2,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0051.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0051.md",
+      "title": "Drei Ableitungsregeln mit einem Produkt im Zähler",
+      "tags": [
+        "Ableitungen",
+        "Produktregel",
+        "Kettenregel",
+        "Quotientenregel",
+        "schwer",
+        "hoch",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Produktregel",
+        "Kettenregel",
+        "Quotientenregel"
+      ],
+      "difficulty": 4,
+      "network": 4,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0052.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0052.md",
+      "title": "Drei Ableitungsregeln mit einem Produkt im Nenner",
+      "tags": [
+        "Ableitungen",
+        "Produktregel",
+        "Kettenregel",
+        "Quotientenregel",
+        "schwer",
+        "hoch",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Produktregel",
+        "Kettenregel",
+        "Quotientenregel"
+      ],
+      "difficulty": 4,
+      "network": 4,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0053.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0053.md",
+      "title": "Drei Ableitungsregeln mit mehrfachen Verkettungen",
+      "tags": [
+        "Ableitungen",
+        "Produktregel",
+        "Kettenregel",
+        "Quotientenregel",
+        "sehr schwer",
+        "hoch",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Produktregel",
+        "Kettenregel",
+        "Quotientenregel"
+      ],
+      "difficulty": 5,
+      "network": 4,
+      "operator": "angeben"
+    },
+    {
+      "id": "05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0054.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/05_Differentiation_und_Integration/01_Ableitungen/Aufgabe_0054.md",
+      "title": "Drei Ableitungsregeln mit Produkten in Zähler und Nenner",
+      "tags": [
+        "Ableitungen",
+        "Produktregel",
+        "Kettenregel",
+        "Quotientenregel",
+        "sehr schwer",
+        "hoch",
+        "Angeben"
+      ],
+      "topics": [
+        "Ableitungen",
+        "Produktregel",
+        "Kettenregel",
+        "Quotientenregel"
+      ],
+      "difficulty": 5,
+      "network": 4,
       "operator": "angeben"
     },
     {
