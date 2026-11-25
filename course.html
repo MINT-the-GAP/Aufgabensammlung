@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>SchulLia – Schülerkurs</title>
+  <style>
+    :root { font-family: system-ui, sans-serif; color: #173f43; background: #eff8f8; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: inherit; background: inherit; }
+    [hidden] { display: none !important; }
+    #courseFrame { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; background: white; }
+    #courseLoading { min-height: 100vh; min-height: 100dvh; display: grid; place-content: center; padding: 2rem; text-align: center; }
+    .course-panel { width: min(100%, 36rem); margin: auto; padding: 2rem; border: 1px solid #b8dcdc; border-radius: 1.25rem; color: #173f43; background: white; box-shadow: 0 1rem 3rem #164b4c12; }
+    h1 { margin: 0 0 1rem; font-size: clamp(1.4rem, 4vw, 2rem); }
+    #courseStatus { margin: 0 0 1.5rem; line-height: 1.6; overflow-wrap: anywhere; }
+    .course-spinner { width: 2.25rem; height: 2.25rem; margin: 0 auto 1.5rem; border: .25rem solid #c8eceb; border-top-color: #168e92; border-radius: 50%; animation: course-spin .9s linear infinite; }
+    .is-error .course-spinner { display: none; }
+    #courseRetry { display: block; width: 100%; margin: 0 0 1rem; padding: .8rem 1rem; border: 0; border-radius: .7rem; color: white; background: #168e92; font: inherit; font-weight: 700; cursor: pointer; }
+    #courseRetry:focus-visible, a:focus-visible { outline: 3px solid #168e92; outline-offset: 4px; }
+    a { color: #126d72; text-underline-offset: .2em; }
+    @keyframes course-spin { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) { .course-spinner { animation: none; } }
+    @media (prefers-color-scheme: dark) {
+      :root { color: #d6f0ef; background: #071819; }
+      .course-panel { color: #d6f0ef; background: #102b2d; border-color: #285557; }
+      a { color: #83dedb; }
+    }
+  </style>
+  <script src="./assets/vendor/fflate-0.8.2.min.js?v=0.8.2" defer></script>
+  <script src="./assets/course-generator.js?v=1.0.10" defer></script>
+  <script src="./assets/course-source.js?v=1.0.10" defer></script>
+  <script src="./assets/course-player.js?v=1.0.10" defer></script>
+</head>
+<body>
+  <span id="courseThemeSample" class="lia-btn" hidden aria-hidden="true"></span>
+  <main id="courseLoading">
+    <div class="course-panel">
+      <div class="course-spinner" aria-hidden="true"></div>
+      <h1 id="courseHeading">Dein Kurs wird vorbereitet</h1>
+      <p id="courseStatus" role="status" aria-live="polite">Die ausgewählten Aufgaben werden geladen.</p>
+      <button id="courseRetry" type="button" hidden>Erneut versuchen</button>
+      <a id="courseBack" href="./index.html">Zur Aufgabensammlung</a>
+      <noscript><p>Zum Bearbeiten dieses Kurses muss JavaScript im Browser aktiviert sein.</p></noscript>
+    </div>
+  </main>
+  <iframe id="courseFrame" title="SchulLia Schülerkurs" allow="fullscreen; autoplay; clipboard-write; microphone" allowfullscreen hidden></iframe>
+</body>
+</html>
