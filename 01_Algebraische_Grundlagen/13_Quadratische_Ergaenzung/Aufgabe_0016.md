@@ -36,15 +36,14 @@ author: Martin Lommatzsch
 # Quadratische Ergänzung
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" alt="Vernetzungsgrad 2" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" alt="Schwierigkeitsgrad 2" width="120" height="30">  \
-**Bestimme** die fehlenden Zahlen mithilfe der quadratischen Ergänzung.
+**Bestimme** die fehlenden Zahlen. Ergänze mit der ersten Lücke jeweils die beiden Terme davor zu einem binomischen Quadrat.
 
-<section class="dynFlex" data-columns="2" style="line-height: 3;">
+<section class="dynFlex" data-columns="1" style="line-height: 3;">
 
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$a)\;\;$__ $\left(\dfrac{1}{2}\cdot \dfrac{1}{2}\right)^2 =$ [[ 1/16 ]] @canvas  \
-$x^2+\dfrac{1}{2}x+\dfrac{5}{16}=x^2+\dfrac{1}{2}x+\dfrac{1}{16}-\dfrac{1}{16}+\dfrac{5}{16}=\left(x+$ [[ 1/4 ]] @canvas $\right)^2+$ [[ 1/4 ]] @canvas
+__$a)\;\;$__ $x^2+\dfrac{1}{2}x+$ [[ 1/16 ]] @canvas $-\dfrac{1}{16}+\dfrac{5}{16}=\bigl(x+$ [[ 1/4 ]] @canvas $\bigr)^2+$ [[ 1/4 ]] @canvas
 @Algebrite.check(`[ 1/16; 1/4; 1/4 ]`)
 [[?]] @Explain
 ****************
@@ -66,8 +65,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$b)\;\;$__ $\left(\dfrac{1}{2}\cdot \dfrac{3}{4}\right)^2 =$ [[ 9/64 ]] @canvas  \
-$x^2-\dfrac{3}{4}x+\dfrac{17}{64}=x^2-\dfrac{3}{4}x+\dfrac{9}{64}-\dfrac{9}{64}+\dfrac{17}{64}=\left(x-$ [[ 3/8 ]] @canvas $\right)^2+$ [[ 1/8 ]] @canvas
+__$b)\;\;$__ $x^2-\dfrac{3}{4}x+$ [[ 9/64 ]] @canvas $-\dfrac{9}{64}+\dfrac{17}{64}=\bigl(x-$ [[ 3/8 ]] @canvas $\bigr)^2+$ [[ 1/8 ]] @canvas
 @Algebrite.check(`[ 9/64; 3/8; 1/8 ]`)
 [[?]] @Explain
 ****************
@@ -89,8 +87,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$c)\;\;$__ $\left(\dfrac{1}{2}\cdot \dfrac{5}{3}\right)^2 =$ [[ 25/36 ]] @canvas  \
-$x^2+\dfrac{5}{3}x+\dfrac{31}{36}=x^2+\dfrac{5}{3}x+\dfrac{25}{36}-\dfrac{25}{36}+\dfrac{31}{36}=\left(x+$ [[ 5/6 ]] @canvas $\right)^2+$ [[ 1/6 ]] @canvas
+__$c)\;\;$__ $x^2+\dfrac{5}{3}x+$ [[ 25/36 ]] @canvas $-\dfrac{25}{36}+\dfrac{31}{36}=\bigl(x+$ [[ 5/6 ]] @canvas $\bigr)^2+$ [[ 1/6 ]] @canvas
 @Algebrite.check(`[ 25/36; 5/6; 1/6 ]`)
 [[?]] @Explain
 ****************
@@ -112,8 +109,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$d)\;\;$__ $\left(\dfrac{1}{2}\cdot \dfrac{5}{4}\right)^2 =$ [[ 25/64 ]] @canvas  \
-$x^2-\dfrac{5}{4}x+\dfrac{9}{64}=x^2-\dfrac{5}{4}x+\dfrac{25}{64}-\dfrac{25}{64}+\dfrac{9}{64}=\left(x-$ [[ 5/8 ]] @canvas $\right)^2-$ [[ 1/4 ]] @canvas
+__$d)\;\;$__ $x^2-\dfrac{5}{4}x+$ [[ 25/64 ]] @canvas $-\dfrac{25}{64}+\dfrac{9}{64}=\bigl(x-$ [[ 5/8 ]] @canvas $\bigr)^2-$ [[ 1/4 ]] @canvas
 @Algebrite.check(`[ 25/64; 5/8; 1/4 ]`)
 [[?]] @Explain
 ****************
@@ -135,8 +131,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$e)\;\;$__ $\left(\dfrac{1}{2}\cdot \dfrac{7}{5}\right)^2 =$ [[ 49/100 ]] @canvas  \
-$x^2+\dfrac{7}{5}x+\dfrac{69}{100}=x^2+\dfrac{7}{5}x+\dfrac{49}{100}-\dfrac{49}{100}+\dfrac{69}{100}=\left(x+$ [[ 7/10 ]] @canvas $\right)^2+$ [[ 1/5 ]] @canvas
+__$e)\;\;$__ $x^2+\dfrac{7}{5}x+$ [[ 49/100 ]] @canvas $-\dfrac{49}{100}+\dfrac{69}{100}=\bigl(x+$ [[ 7/10 ]] @canvas $\bigr)^2+$ [[ 1/5 ]] @canvas
 @Algebrite.check(`[ 49/100; 7/10; 1/5 ]`)
 [[?]] @Explain
 ****************
@@ -158,8 +153,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$f)\;\;$__ $\left(\dfrac{1}{2}\cdot \dfrac{7}{6}\right)^2 =$ [[ 49/144 ]] @canvas  \
-$x^2-\dfrac{7}{6}x+\dfrac{25}{144}=x^2-\dfrac{7}{6}x+\dfrac{49}{144}-\dfrac{49}{144}+\dfrac{25}{144}=\left(x-$ [[ 7/12 ]] @canvas $\right)^2-$ [[ 1/6 ]] @canvas
+__$f)\;\;$__ $x^2-\dfrac{7}{6}x+$ [[ 49/144 ]] @canvas $-\dfrac{49}{144}+\dfrac{25}{144}=\bigl(x-$ [[ 7/12 ]] @canvas $\bigr)^2-$ [[ 1/6 ]] @canvas
 @Algebrite.check(`[ 49/144; 7/12; 1/6 ]`)
 [[?]] @Explain
 ****************

@@ -36,15 +36,14 @@ author: Martin Lommatzsch
 # Quadratische Ergänzung
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" alt="Vernetzungsgrad 2" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" alt="Schwierigkeitsgrad 2" width="120" height="30">  \
-**Bestimme** die fehlenden Zahlen mithilfe der quadratischen Ergänzung.
+**Bestimme** die fehlenden Zahlen. Ergänze mit der ersten Lücke jeweils die beiden Terme davor zu einem binomischen Quadrat.
 
-<section class="dynFlex" data-columns="2" style="line-height: 3;">
+<section class="dynFlex" data-columns="1" style="line-height: 3;">
 
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$a)\;\;$__ $\left(\dfrac{1}{2}\cdot 0{,}5\right)^2 =$ [[ 0,0625 ]] @canvas  \
-$x^2+0{,}5x+0{,}3125=x^2+0{,}5x+0{,}0625-0{,}0625+0{,}3125=\left(x+$ [[ 0,25 ]] @canvas $\right)^2+$ [[ 0,25 ]] @canvas
+__$a)\;\;$__ $x^2+0{,}5x+$ [[ 0,0625 ]] @canvas $-0{,}0625+0{,}3125=\bigl(x+$ [[ 0,25 ]] @canvas $\bigr)^2+$ [[ 0,25 ]] @canvas
 @Algebrite.check(`[ 1/16; 1/4; 1/4 ]`)
 [[?]] @Explain
 ****************
@@ -66,8 +65,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$b)\;\;$__ $\left(\dfrac{1}{2}\cdot 0{,}7\right)^2 =$ [[ 0,1225 ]] @canvas  \
-$x^2-0{,}7x+0{,}2225=x^2-0{,}7x+0{,}1225-0{,}1225+0{,}2225=\left(x-$ [[ 0,35 ]] @canvas $\right)^2+$ [[ 0,1 ]] @canvas
+__$b)\;\;$__ $x^2-0{,}7x+$ [[ 0,1225 ]] @canvas $-0{,}1225+0{,}2225=\bigl(x-$ [[ 0,35 ]] @canvas $\bigr)^2+$ [[ 0,1 ]] @canvas
 @Algebrite.check(`[ 49/400; 7/20; 1/10 ]`)
 [[?]] @Explain
 ****************
@@ -89,8 +87,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$c)\;\;$__ $\left(\dfrac{1}{2}\cdot 1{,}6\right)^2 =$ [[ 0,64 ]] @canvas  \
-$x^2+1{,}6x+0{,}89=x^2+1{,}6x+0{,}64-0{,}64+0{,}89=\left(x+$ [[ 0,8 ]] @canvas $\right)^2+$ [[ 0,25 ]] @canvas
+__$c)\;\;$__ $x^2+1{,}6x+$ [[ 0,64 ]] @canvas $-0{,}64+0{,}89=\bigl(x+$ [[ 0,8 ]] @canvas $\bigr)^2+$ [[ 0,25 ]] @canvas
 @Algebrite.check(`[ 16/25; 4/5; 1/4 ]`)
 [[?]] @Explain
 ****************
@@ -112,8 +109,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$d)\;\;$__ $\left(\dfrac{1}{2}\cdot 2{,}2\right)^2 =$ [[ 1,21 ]] @canvas  \
-$x^2-2{,}2x+0{,}81=x^2-2{,}2x+1{,}21-1{,}21+0{,}81=\left(x-$ [[ 1,1 ]] @canvas $\right)^2-$ [[ 0,4 ]] @canvas
+__$d)\;\;$__ $x^2-2{,}2x+$ [[ 1,21 ]] @canvas $-1{,}21+0{,}81=\bigl(x-$ [[ 1,1 ]] @canvas $\bigr)^2-$ [[ 0,4 ]] @canvas
 @Algebrite.check(`[ 121/100; 11/10; 2/5 ]`)
 [[?]] @Explain
 ****************
@@ -135,8 +131,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$e)\;\;$__ $\left(\dfrac{1}{2}\cdot 2{,}5\right)^2 =$ [[ 1,5625 ]] @canvas  \
-$x^2+2{,}5x+2{,}0625=x^2+2{,}5x+1{,}5625-1{,}5625+2{,}0625=\left(x+$ [[ 1,25 ]] @canvas $\right)^2+$ [[ 0,5 ]] @canvas
+__$e)\;\;$__ $x^2+2{,}5x+$ [[ 1,5625 ]] @canvas $-1{,}5625+2{,}0625=\bigl(x+$ [[ 1,25 ]] @canvas $\bigr)^2+$ [[ 0,5 ]] @canvas
 @Algebrite.check(`[ 25/16; 5/4; 1/2 ]`)
 [[?]] @Explain
 ****************
@@ -158,8 +153,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$f)\;\;$__ $\left(\dfrac{1}{2}\cdot 3\right)^2 =$ [[ 2,25 ]] @canvas  \
-$x^2-3x+1{,}5=x^2-3x+2{,}25-2{,}25+1{,}5=\left(x-$ [[ 1,5 ]] @canvas $\right)^2-$ [[ 0,75 ]] @canvas
+__$f)\;\;$__ $x^2-3x+$ [[ 2,25 ]] @canvas $-2{,}25+1{,}5=\bigl(x-$ [[ 1,5 ]] @canvas $\bigr)^2-$ [[ 0,75 ]] @canvas
 @Algebrite.check(`[ 9/4; 3/2; 3/4 ]`)
 [[?]] @Explain
 ****************

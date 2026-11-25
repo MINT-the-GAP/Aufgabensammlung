@@ -36,15 +36,14 @@ author: Martin Lommatzsch
 # Quadratische Ergänzung
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" alt="Vernetzungsgrad 2" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" alt="Schwierigkeitsgrad 2" width="120" height="30">  \
-**Bestimme** die fehlenden Zahlen mithilfe der quadratischen Ergänzung.
+**Bestimme** die fehlenden Zahlen. Ergänze mit der ersten Lücke jeweils die beiden Terme davor zu einem binomischen Quadrat.
 
-<section class="dynFlex" data-columns="2" style="line-height: 3;">
+<section class="dynFlex" data-columns="1" style="line-height: 3;">
 
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$a)\;\;$__ $\left(\dfrac{1}{2}\cdot 2\right)^2 =$ [[ 1 ]] @canvas  \
-$x^2+2x+3=x^2+2x+1-1+3=\left(x+$ [[ 1 ]] @canvas $\right)^2+$ [[ 2 ]] @canvas
+__$a)\;\;$__ $x^2+2x+$ [[ 1 ]] @canvas $-1+3=\bigl(x+$ [[ 1 ]] @canvas $\bigr)^2+$ [[ 2 ]] @canvas
 @Algebrite.check(`[ 1; 1; 2 ]`)
 [[?]] @Explain
 ****************
@@ -66,8 +65,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$b)\;\;$__ $\left(\dfrac{1}{2}\cdot 4\right)^2 =$ [[ 4 ]] @canvas  \
-$x^2-4x+7=x^2-4x+4-4+7=\left(x-$ [[ 2 ]] @canvas $\right)^2+$ [[ 3 ]] @canvas
+__$b)\;\;$__ $x^2-4x+$ [[ 4 ]] @canvas $-4+7=\bigl(x-$ [[ 2 ]] @canvas $\bigr)^2+$ [[ 3 ]] @canvas
 @Algebrite.check(`[ 4; 2; 3 ]`)
 [[?]] @Explain
 ****************
@@ -89,8 +87,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$c)\;\;$__ $\left(\dfrac{1}{2}\cdot 6\right)^2 =$ [[ 9 ]] @canvas  \
-$x^2+6x+5=x^2+6x+9-9+5=\left(x+$ [[ 3 ]] @canvas $\right)^2-$ [[ 4 ]] @canvas
+__$c)\;\;$__ $x^2+6x+$ [[ 9 ]] @canvas $-9+5=\bigl(x+$ [[ 3 ]] @canvas $\bigr)^2-$ [[ 4 ]] @canvas
 @Algebrite.check(`[ 9; 3; 4 ]`)
 [[?]] @Explain
 ****************
@@ -112,8 +109,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$d)\;\;$__ $\left(\dfrac{1}{2}\cdot 8\right)^2 =$ [[ 16 ]] @canvas  \
-$x^2-8x+20=x^2-8x+16-16+20=\left(x-$ [[ 4 ]] @canvas $\right)^2+$ [[ 4 ]] @canvas
+__$d)\;\;$__ $x^2-8x+$ [[ 16 ]] @canvas $-16+20=\bigl(x-$ [[ 4 ]] @canvas $\bigr)^2+$ [[ 4 ]] @canvas
 @Algebrite.check(`[ 16; 4; 4 ]`)
 [[?]] @Explain
 ****************
@@ -135,8 +131,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$e)\;\;$__ $\left(\dfrac{1}{2}\cdot 10\right)^2 =$ [[ 25 ]] @canvas  \
-$x^2+10x+30=x^2+10x+25-25+30=\left(x+$ [[ 5 ]] @canvas $\right)^2+$ [[ 5 ]] @canvas
+__$e)\;\;$__ $x^2+10x+$ [[ 25 ]] @canvas $-25+30=\bigl(x+$ [[ 5 ]] @canvas $\bigr)^2+$ [[ 5 ]] @canvas
 @Algebrite.check(`[ 25; 5; 5 ]`)
 [[?]] @Explain
 ****************
@@ -158,8 +153,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$f)\;\;$__ $\left(\dfrac{1}{2}\cdot 12\right)^2 =$ [[ 36 ]] @canvas  \
-$x^2-12x+40=x^2-12x+36-36+40=\left(x-$ [[ 6 ]] @canvas $\right)^2+$ [[ 4 ]] @canvas
+__$f)\;\;$__ $x^2-12x+$ [[ 36 ]] @canvas $-36+40=\bigl(x-$ [[ 6 ]] @canvas $\bigr)^2+$ [[ 4 ]] @canvas
 @Algebrite.check(`[ 36; 6; 4 ]`)
 [[?]] @Explain
 ****************

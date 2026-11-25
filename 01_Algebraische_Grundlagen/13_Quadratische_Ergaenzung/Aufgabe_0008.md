@@ -127,7 +127,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$e)\;\;$__ $x^2+\dfrac{7}{5}x+$ [[ 49/100 ]] @canvas $=\left(x+$ [[ 7/10 ]] @canvas $\right)^2$
+__$e)\;\;$__ $x^2+\dfrac{7}{5}x+$ [[ 49/100 ]] @canvas $=\bigl(x+$ [[ 7/10 ]] @canvas $\bigr)^2$
 @Algebrite.check(`[ 49/100; 7/10 ]`)
 [[?]] @Explain
 ****************
@@ -148,7 +148,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$f)\;\;$__ $x^2-\dfrac{5}{6}x+\dfrac{25}{144}=\left(x-$ [[ 5/12 ]] @canvas $\right)^2$
+__$f)\;\;$__ $x^2-\dfrac{5}{6}x+\dfrac{25}{144}=\bigl(x-$ [[ 5/12 ]] @canvas $\bigr)^2$
 @Algebrite.check([ 5/12 ])
 [[?]] @Explain
 ****************

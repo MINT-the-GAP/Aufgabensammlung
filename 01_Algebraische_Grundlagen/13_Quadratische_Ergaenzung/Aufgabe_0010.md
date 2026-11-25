@@ -127,7 +127,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$e)\;\;$__ $x^2+2{,}2x+1{,}21=\left(x+$ [[ 1,1 ]] @canvas $\right)^2$
+__$e)\;\;$__ $x^2+2{,}2x+1{,}21=\bigl(x+$ [[ 1,1 ]] @canvas $\bigr)^2$
 @Algebrite.check([ 1.1 ])
 [[?]] @Explain
 ****************
@@ -148,7 +148,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$f)\;\;$__ $x^2-5x+6{,}25=\left(x-$ [[ 2,5 ]] @canvas $\right)^2$
+__$f)\;\;$__ $x^2-5x+6{,}25=\bigl(x-$ [[ 2,5 ]] @canvas $\bigr)^2$
 @Algebrite.check([ 2.5 ])
 [[?]] @Explain
 ****************

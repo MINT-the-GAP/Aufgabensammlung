@@ -36,15 +36,14 @@ author: Martin Lommatzsch
 # Quadratische Ergänzung
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" alt="Vernetzungsgrad 2" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" alt="Schwierigkeitsgrad 2" width="120" height="30">  \
-**Bestimme** die fehlenden Zahlen mithilfe der quadratischen Ergänzung.
+**Bestimme** die fehlenden Zahlen. Ergänze mit der ersten Lücke jeweils die beiden Terme davor zu einem binomischen Quadrat.
 
-<section class="dynFlex" data-columns="2" style="line-height: 3;">
+<section class="dynFlex" data-columns="1" style="line-height: 3;">
 
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$a)\;\;$__ $\left(\dfrac{1}{2}\cdot 1\right)^2 =$ [[ 1/4 ]] @canvas  \
-$x^2+x+\dfrac{3}{4}=x^2+x+\dfrac{1}{4}-\dfrac{1}{4}+\dfrac{3}{4}=\left(x+$ [[ 1/2 ]] @canvas $\right)^2+$ [[ 1/2 ]] @canvas
+__$a)\;\;$__ $x^2+x+$ [[ 1/4 ]] @canvas $-\dfrac{1}{4}+\dfrac{3}{4}=\bigl(x+$ [[ 1/2 ]] @canvas $\bigr)^2+$ [[ 1/2 ]] @canvas
 @Algebrite.check(`[ 1/4; 1/2; 1/2 ]`)
 [[?]] @Explain
 ****************
@@ -66,8 +65,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$b)\;\;$__ $\left(\dfrac{1}{2}\cdot \dfrac{2}{3}\right)^2 =$ [[ 1/9 ]] @canvas  \
-$x^2-\dfrac{2}{3}x+\dfrac{4}{9}=x^2-\dfrac{2}{3}x+\dfrac{1}{9}-\dfrac{1}{9}+\dfrac{4}{9}=\left(x-$ [[ 1/3 ]] @canvas $\right)^2+$ [[ 1/3 ]] @canvas
+__$b)\;\;$__ $x^2-\dfrac{2}{3}x+$ [[ 1/9 ]] @canvas $-\dfrac{1}{9}+\dfrac{4}{9}=\bigl(x-$ [[ 1/3 ]] @canvas $\bigr)^2+$ [[ 1/3 ]] @canvas
 @Algebrite.check(`[ 1/9; 1/3; 1/3 ]`)
 [[?]] @Explain
 ****************
@@ -89,8 +87,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$c)\;\;$__ $\left(\dfrac{1}{2}\cdot \dfrac{4}{3}\right)^2 =$ [[ 4/9 ]] @canvas  \
-$x^2+\dfrac{4}{3}x+\dfrac{1}{9}=x^2+\dfrac{4}{3}x+\dfrac{4}{9}-\dfrac{4}{9}+\dfrac{1}{9}=\left(x+$ [[ 2/3 ]] @canvas $\right)^2-$ [[ 1/3 ]] @canvas
+__$c)\;\;$__ $x^2+\dfrac{4}{3}x+$ [[ 4/9 ]] @canvas $-\dfrac{4}{9}+\dfrac{1}{9}=\bigl(x+$ [[ 2/3 ]] @canvas $\bigr)^2-$ [[ 1/3 ]] @canvas
 @Algebrite.check(`[ 4/9; 2/3; 1/3 ]`)
 [[?]] @Explain
 ****************
@@ -112,8 +109,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$d)\;\;$__ $\left(\dfrac{1}{2}\cdot \dfrac{3}{2}\right)^2 =$ [[ 9/16 ]] @canvas  \
-$x^2-\dfrac{3}{2}x+\dfrac{13}{16}=x^2-\dfrac{3}{2}x+\dfrac{9}{16}-\dfrac{9}{16}+\dfrac{13}{16}=\left(x-$ [[ 3/4 ]] @canvas $\right)^2+$ [[ 1/4 ]] @canvas
+__$d)\;\;$__ $x^2-\dfrac{3}{2}x+$ [[ 9/16 ]] @canvas $-\dfrac{9}{16}+\dfrac{13}{16}=\bigl(x-$ [[ 3/4 ]] @canvas $\bigr)^2+$ [[ 1/4 ]] @canvas
 @Algebrite.check(`[ 9/16; 3/4; 1/4 ]`)
 [[?]] @Explain
 ****************
@@ -135,8 +131,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$e)\;\;$__ $\left(\dfrac{1}{2}\cdot \dfrac{4}{5}\right)^2 =$ [[ 4/25 ]] @canvas  \
-$x^2+\dfrac{4}{5}x+\dfrac{9}{25}=x^2+\dfrac{4}{5}x+\dfrac{4}{25}-\dfrac{4}{25}+\dfrac{9}{25}=\left(x+$ [[ 2/5 ]] @canvas $\right)^2+$ [[ 1/5 ]] @canvas
+__$e)\;\;$__ $x^2+\dfrac{4}{5}x+$ [[ 4/25 ]] @canvas $-\dfrac{4}{25}+\dfrac{9}{25}=\bigl(x+$ [[ 2/5 ]] @canvas $\bigr)^2+$ [[ 1/5 ]] @canvas
 @Algebrite.check(`[ 4/25; 2/5; 1/5 ]`)
 [[?]] @Explain
 ****************
@@ -158,8 +153,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$f)\;\;$__ $\left(\dfrac{1}{2}\cdot \dfrac{6}{5}\right)^2 =$ [[ 9/25 ]] @canvas  \
-$x^2-\dfrac{6}{5}x+\dfrac{4}{25}=x^2-\dfrac{6}{5}x+\dfrac{9}{25}-\dfrac{9}{25}+\dfrac{4}{25}=\left(x-$ [[ 3/5 ]] @canvas $\right)^2-$ [[ 1/5 ]] @canvas
+__$f)\;\;$__ $x^2-\dfrac{6}{5}x+$ [[ 9/25 ]] @canvas $-\dfrac{9}{25}+\dfrac{4}{25}=\bigl(x-$ [[ 3/5 ]] @canvas $\bigr)^2-$ [[ 1/5 ]] @canvas
 @Algebrite.check(`[ 9/25; 3/5; 1/5 ]`)
 [[?]] @Explain
 ****************

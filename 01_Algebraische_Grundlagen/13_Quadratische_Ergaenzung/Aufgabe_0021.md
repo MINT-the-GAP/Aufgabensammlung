@@ -36,17 +36,15 @@ author: Martin Lommatzsch
 # Quadratische Ergänzung mit Vorfaktor
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" alt="Vernetzungsgrad 3" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" alt="Schwierigkeitsgrad 3" width="120" height="30">  \
-**Bestimme** die fehlenden Zahlen mithilfe der quadratischen Ergänzung.
+**Bestimme** die fehlenden Zahlen so, dass die Gleichungen für alle $x$ stimmen.
 
-<section class="dynFlex" data-columns="2" style="line-height: 3;">
+<section class="dynFlex" data-columns="1" style="line-height: 3;">
 
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$a)\;\;$__ $2x^2+8x+3=2\left(x^2+$ [[ 4 ]] @canvas $x\right)+3$  \
-$\dfrac{1}{2}\cdot 4 =$ [[ 2 ]] @canvas $,\qquad \left(2\right)^2 =$ [[ 4 ]] @canvas  \
-$2\left(x^2+4x+4-4\right)+3=2\left(x+2\right)^2-$ [[ 5 ]] @canvas
-@Algebrite.check(`[ 4; 2; 4; 5 ]`)
+__$a)\;\;$__ $2\left(x^2+4x+4-4\right)+3=2\bigl(x+$ [[ 2 ]] @canvas $\bigr)^2-$ [[ 5 ]] @canvas
+@Algebrite.check(`[ 2; 5 ]`)
 [[?]] @Explain
 ****************
 $$
@@ -68,10 +66,8 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$b)\;\;$__ $3x^2-6x+7=3\left(x^2-$ [[ 2 ]] @canvas $x\right)+7$  \
-$\dfrac{1}{2}\cdot 2 =$ [[ 1 ]] @canvas $,\qquad \left(1\right)^2 =$ [[ 1 ]] @canvas  \
-$3\left(x^2-2x+1-1\right)+7=3\left(x-1\right)^2+$ [[ 4 ]] @canvas
-@Algebrite.check(`[ 2; 1; 1; 4 ]`)
+__$b)\;\;$__ $3\left(x^2-2x+1-1\right)+7=3\bigl(x-$ [[ 1 ]] @canvas $\bigr)^2+$ [[ 4 ]] @canvas
+@Algebrite.check(`[ 1; 4 ]`)
 [[?]] @Explain
 ****************
 $$
@@ -93,10 +89,8 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$c)\;\;$__ $2x^2+12x+20=2\left(x^2+$ [[ 6 ]] @canvas $x\right)+20$  \
-$\dfrac{1}{2}\cdot 6 =$ [[ 3 ]] @canvas $,\qquad \left(3\right)^2 =$ [[ 9 ]] @canvas  \
-$2\left(x^2+6x+9-9\right)+20=2\left(x+3\right)^2+$ [[ 2 ]] @canvas
-@Algebrite.check(`[ 6; 3; 9; 2 ]`)
+__$c)\;\;$__ $2\left(x^2+6x+9-9\right)+20=2\bigl(x+$ [[ 3 ]] @canvas $\bigr)^2+$ [[ 2 ]] @canvas
+@Algebrite.check(`[ 3; 2 ]`)
 [[?]] @Explain
 ****************
 $$
@@ -118,10 +112,8 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$d)\;\;$__ $4x^2-16x+10=4\left(x^2-$ [[ 4 ]] @canvas $x\right)+10$  \
-$\dfrac{1}{2}\cdot 4 =$ [[ 2 ]] @canvas $,\qquad \left(2\right)^2 =$ [[ 4 ]] @canvas  \
-$4\left(x^2-4x+4-4\right)+10=4\left(x-2\right)^2-$ [[ 6 ]] @canvas
-@Algebrite.check(`[ 4; 2; 4; 6 ]`)
+__$d)\;\;$__ $4\left(x^2-4x+4-4\right)+10=4\bigl(x-$ [[ 2 ]] @canvas $\bigr)^2-$ [[ 6 ]] @canvas
+@Algebrite.check(`[ 2; 6 ]`)
 [[?]] @Explain
 ****************
 $$
@@ -143,10 +135,8 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$e)\;\;$__ $3x^2+24x+50=3\left(x^2+$ [[ 8 ]] @canvas $x\right)+50$  \
-$\dfrac{1}{2}\cdot 8 =$ [[ 4 ]] @canvas $,\qquad \left(4\right)^2 =$ [[ 16 ]] @canvas  \
-$3\left(x^2+8x+16-16\right)+50=3\left(x+4\right)^2+$ [[ 2 ]] @canvas
-@Algebrite.check(`[ 8; 4; 16; 2 ]`)
+__$e)\;\;$__ $3\left(x^2+8x+16-16\right)+50=3\bigl(x+$ [[ 4 ]] @canvas $\bigr)^2+$ [[ 2 ]] @canvas
+@Algebrite.check(`[ 4; 2 ]`)
 [[?]] @Explain
 ****************
 $$
@@ -168,10 +158,8 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$f)\;\;$__ $5x^2-20x+14=5\left(x^2-$ [[ 4 ]] @canvas $x\right)+14$  \
-$\dfrac{1}{2}\cdot 4 =$ [[ 2 ]] @canvas $,\qquad \left(2\right)^2 =$ [[ 4 ]] @canvas  \
-$5\left(x^2-4x+4-4\right)+14=5\left(x-2\right)^2-$ [[ 6 ]] @canvas
-@Algebrite.check(`[ 4; 2; 4; 6 ]`)
+__$f)\;\;$__ $5\left(x^2-4x+4-4\right)+14=5\bigl(x-$ [[ 2 ]] @canvas $\bigr)^2-$ [[ 6 ]] @canvas
+@Algebrite.check(`[ 2; 6 ]`)
 [[?]] @Explain
 ****************
 $$

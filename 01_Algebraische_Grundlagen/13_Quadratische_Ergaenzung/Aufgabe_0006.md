@@ -127,7 +127,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$e)\;\;$__ $x^2+20x+$ [[ 100 ]] @canvas $=\left(x+$ [[ 10 ]] @canvas $\right)^2$
+__$e)\;\;$__ $x^2+20x+$ [[ 100 ]] @canvas $=\bigl(x+$ [[ 10 ]] @canvas $\bigr)^2$
 @Algebrite.check(`[ 100; 10 ]`)
 [[?]] @Explain
 ****************
@@ -148,7 +148,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$f)\;\;$__ $x^2-22x+121=\left(x-$ [[ 11 ]] @canvas $\right)^2$
+__$f)\;\;$__ $x^2-22x+121=\bigl(x-$ [[ 11 ]] @canvas $\bigr)^2$
 @Algebrite.check([ 11 ])
 [[?]] @Explain
 ****************

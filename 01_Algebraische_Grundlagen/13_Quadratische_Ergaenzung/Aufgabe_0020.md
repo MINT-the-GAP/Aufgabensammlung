@@ -36,15 +36,14 @@ author: Martin Lommatzsch
 # Quadratische Ergänzung
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/2.png" alt="Vernetzungsgrad 2" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/2.png" alt="Schwierigkeitsgrad 2" width="120" height="30">  \
-**Bestimme** die fehlenden Zahlen mithilfe der quadratischen Ergänzung.
+**Bestimme** die fehlenden Zahlen. Ergänze mit der ersten Lücke jeweils die beiden Terme davor zu einem binomischen Quadrat.
 
-<section class="dynFlex" data-columns="2" style="line-height: 3;">
+<section class="dynFlex" data-columns="1" style="line-height: 3;">
 
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$a)\;\;$__ $\left(\dfrac{1}{2}\cdot 0{,}5\right)^2 =$ [[ 1/16 ]] @canvas  \
-$x^2+0{,}5x+0{,}3125=x^2+0{,}5x+\dfrac{1}{16}-\dfrac{1}{16}+0{,}3125=\left(x+$ [[ 0,25 ]] @canvas $\right)^2+$ [[ 1/4 ]] @canvas
+__$a)\;\;$__ $x^2+0{,}5x+$ [[ 1/16 ]] @canvas $-\dfrac{1}{16}+0{,}3125=\bigl(x+$ [[ 0,25 ]] @canvas $\bigr)^2+$ [[ 1/4 ]] @canvas
 @Algebrite.check(`[ 1/16; 1/4; 1/4 ]`)
 [[?]] @Explain
 ****************
@@ -66,8 +65,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$b)\;\;$__ $\left(\dfrac{1}{2}\cdot 0{,}75\right)^2 =$ [[ 9/64 ]] @canvas  \
-$x^2-0{,}75x+0{,}265625=x^2-0{,}75x+\dfrac{9}{64}-\dfrac{9}{64}+0{,}265625=\left(x-$ [[ 0,375 ]] @canvas $\right)^2+$ [[ 1/8 ]] @canvas
+__$b)\;\;$__ $x^2-0{,}75x+$ [[ 9/64 ]] @canvas $-\dfrac{9}{64}+0{,}265625=\bigl(x-$ [[ 0,375 ]] @canvas $\bigr)^2+$ [[ 1/8 ]] @canvas
 @Algebrite.check(`[ 9/64; 3/8; 1/8 ]`)
 [[?]] @Explain
 ****************
@@ -89,8 +87,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$c)\;\;$__ $\left(\dfrac{1}{2}\cdot 1{,}6\right)^2 =$ [[ 16/25 ]] @canvas  \
-$x^2+1{,}6x+0{,}84=x^2+1{,}6x+\dfrac{16}{25}-\dfrac{16}{25}+0{,}84=\left(x+$ [[ 0,8 ]] @canvas $\right)^2+$ [[ 1/5 ]] @canvas
+__$c)\;\;$__ $x^2+1{,}6x+$ [[ 16/25 ]] @canvas $-\dfrac{16}{25}+0{,}84=\bigl(x+$ [[ 0,8 ]] @canvas $\bigr)^2+$ [[ 1/5 ]] @canvas
 @Algebrite.check(`[ 16/25; 4/5; 1/5 ]`)
 [[?]] @Explain
 ****************
@@ -112,8 +109,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$d)\;\;$__ $\left(\dfrac{1}{2}\cdot 1{,}25\right)^2 =$ [[ 25/64 ]] @canvas  \
-$x^2-1{,}25x+0{,}140625=x^2-1{,}25x+\dfrac{25}{64}-\dfrac{25}{64}+0{,}140625=\left(x-$ [[ 0,625 ]] @canvas $\right)^2-$ [[ 1/4 ]] @canvas
+__$d)\;\;$__ $x^2-1{,}25x+$ [[ 25/64 ]] @canvas $-\dfrac{25}{64}+0{,}140625=\bigl(x-$ [[ 0,625 ]] @canvas $\bigr)^2-$ [[ 1/4 ]] @canvas
 @Algebrite.check(`[ 25/64; 5/8; 1/4 ]`)
 [[?]] @Explain
 ****************
@@ -135,8 +131,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$e)\;\;$__ $\left(\dfrac{1}{2}\cdot 2{,}4\right)^2 =$ [[ 36/25 ]] @canvas  \
-$x^2+2{,}4x+1{,}69=x^2+2{,}4x+\dfrac{36}{25}-\dfrac{36}{25}+1{,}69=\left(x+$ [[ 1,2 ]] @canvas $\right)^2+$ [[ 1/4 ]] @canvas
+__$e)\;\;$__ $x^2+2{,}4x+$ [[ 36/25 ]] @canvas $-\dfrac{36}{25}+1{,}69=\bigl(x+$ [[ 1,2 ]] @canvas $\bigr)^2+$ [[ 1/4 ]] @canvas
 @Algebrite.check(`[ 36/25; 6/5; 1/4 ]`)
 [[?]] @Explain
 ****************
@@ -158,8 +153,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$f)\;\;$__ $\left(\dfrac{1}{2}\cdot 1{,}8\right)^2 =$ [[ 81/100 ]] @canvas  \
-$x^2-1{,}8x+0{,}61=x^2-1{,}8x+\dfrac{81}{100}-\dfrac{81}{100}+0{,}61=\left(x-$ [[ 0,9 ]] @canvas $\right)^2-$ [[ 1/5 ]] @canvas
+__$f)\;\;$__ $x^2-1{,}8x+$ [[ 81/100 ]] @canvas $-\dfrac{81}{100}+0{,}61=\bigl(x-$ [[ 0,9 ]] @canvas $\bigr)^2-$ [[ 1/5 ]] @canvas
 @Algebrite.check(`[ 81/100; 9/10; 1/5 ]`)
 [[?]] @Explain
 ****************

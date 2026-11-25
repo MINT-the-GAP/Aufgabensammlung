@@ -85,7 +85,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$c)\;\;$__ $x^2+\dfrac{3}{2}x+\dfrac{9}{16}=\left(x+$ [[ 3/4 ]] @canvas $\right)^2$
+__$c)\;\;$__ $x^2+\dfrac{3}{2}x+\dfrac{9}{16}=\bigl(x+$ [[ 3/4 ]] @canvas $\bigr)^2$
 @Algebrite.check([ 3/4 ])
 [[?]] @Explain
 ****************
@@ -106,7 +106,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$d)\;\;$__ $x^2-\dfrac{4}{5}x+\dfrac{4}{25}=\left(x-$ [[ 2/5 ]] @canvas $\right)^2$
+__$d)\;\;$__ $x^2-\dfrac{4}{5}x+\dfrac{4}{25}=\bigl(x-$ [[ 2/5 ]] @canvas $\bigr)^2$
 @Algebrite.check([ 2/5 ])
 [[?]] @Explain
 ****************
@@ -127,7 +127,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$e)\;\;$__ $x^2+\dfrac{5}{3}x+$ [[ 25/36 ]] @canvas $=\left(x+$ [[ 5/6 ]] @canvas $\right)^2$
+__$e)\;\;$__ $x^2+\dfrac{5}{3}x+$ [[ 25/36 ]] @canvas $=\bigl(x+$ [[ 5/6 ]] @canvas $\bigr)^2$
 @Algebrite.check(`[ 25/36; 5/6 ]`)
 [[?]] @Explain
 ****************
@@ -148,7 +148,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$f)\;\;$__ $x^2-\dfrac{7}{4}x+$ [[ 49/64 ]] @canvas $=\left(x-$ [[ 7/8 ]] @canvas $\right)^2$
+__$f)\;\;$__ $x^2-\dfrac{7}{4}x+$ [[ 49/64 ]] @canvas $=\bigl(x-$ [[ 7/8 ]] @canvas $\bigr)^2$
 @Algebrite.check(`[ 49/64; 7/8 ]`)
 [[?]] @Explain
 ****************

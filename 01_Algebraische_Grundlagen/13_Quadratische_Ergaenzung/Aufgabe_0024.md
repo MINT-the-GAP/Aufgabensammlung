@@ -36,17 +36,15 @@ author: Martin Lommatzsch
 # Quadratische Ergänzung mit Vorfaktor
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" alt="Vernetzungsgrad 3" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" alt="Schwierigkeitsgrad 3" width="120" height="30">  \
-**Bestimme** die fehlenden Zahlen mithilfe der quadratischen Ergänzung.
+**Bestimme** die fehlenden Zahlen so, dass die Gleichungen für alle $x$ stimmen.
 
-<section class="dynFlex" data-columns="2" style="line-height: 3;">
+<section class="dynFlex" data-columns="1" style="line-height: 3;">
 
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$a)\;\;$__ $2x^2+x+\dfrac{3}{8}=2\left(x^2+$ [[ 1/2 ]] @canvas $x\right)+\dfrac{3}{8}$  \
-$\dfrac{1}{2}\cdot \dfrac{1}{2} =$ [[ 1/4 ]] @canvas $,\qquad \left(\dfrac{1}{4}\right)^2 =$ [[ 1/16 ]] @canvas  \
-$2\left(x^2+\dfrac{1}{2}x+\dfrac{1}{16}-\dfrac{1}{16}\right)+\dfrac{3}{8}=2\left(x+\dfrac{1}{4}\right)^2+$ [[ 1/4 ]] @canvas
-@Algebrite.check(`[ 1/2; 1/4; 1/16; 1/4 ]`)
+__$a)\;\;$__ $2\left(x^2+\dfrac{1}{2}x+\dfrac{1}{16}-\dfrac{1}{16}\right)+\dfrac{3}{8}=2\bigl(x+$ [[ 1/4 ]] @canvas $\bigr)^2+$ [[ 1/4 ]] @canvas
+@Algebrite.check(`[ 1/4; 1/4 ]`)
 [[?]] @Explain
 ****************
 $$
@@ -68,10 +66,8 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$b)\;\;$__ $3x^2-\dfrac{9}{4}x+\dfrac{35}{64}=3\left(x^2-$ [[ 3/4 ]] @canvas $x\right)+\dfrac{35}{64}$  \
-$\dfrac{1}{2}\cdot \dfrac{3}{4} =$ [[ 3/8 ]] @canvas $,\qquad \left(\dfrac{3}{8}\right)^2 =$ [[ 9/64 ]] @canvas  \
-$3\left(x^2-\dfrac{3}{4}x+\dfrac{9}{64}-\dfrac{9}{64}\right)+\dfrac{35}{64}=3\left(x-\dfrac{3}{8}\right)^2+$ [[ 1/8 ]] @canvas
-@Algebrite.check(`[ 3/4; 3/8; 9/64; 1/8 ]`)
+__$b)\;\;$__ $3\left(x^2-\dfrac{3}{4}x+\dfrac{9}{64}-\dfrac{9}{64}\right)+\dfrac{35}{64}=3\bigl(x-$ [[ 3/8 ]] @canvas $\bigr)^2+$ [[ 1/8 ]] @canvas
+@Algebrite.check(`[ 3/8; 1/8 ]`)
 [[?]] @Explain
 ****************
 $$
@@ -93,10 +89,8 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$c)\;\;$__ $4x^2+\dfrac{20}{3}x+\dfrac{53}{18}=4\left(x^2+$ [[ 5/3 ]] @canvas $x\right)+\dfrac{53}{18}$  \
-$\dfrac{1}{2}\cdot \dfrac{5}{3} =$ [[ 5/6 ]] @canvas $,\qquad \left(\dfrac{5}{6}\right)^2 =$ [[ 25/36 ]] @canvas  \
-$4\left(x^2+\dfrac{5}{3}x+\dfrac{25}{36}-\dfrac{25}{36}\right)+\dfrac{53}{18}=4\left(x+\dfrac{5}{6}\right)^2+$ [[ 1/6 ]] @canvas
-@Algebrite.check(`[ 5/3; 5/6; 25/36; 1/6 ]`)
+__$c)\;\;$__ $4\left(x^2+\dfrac{5}{3}x+\dfrac{25}{36}-\dfrac{25}{36}\right)+\dfrac{53}{18}=4\bigl(x+$ [[ 5/6 ]] @canvas $\bigr)^2+$ [[ 1/6 ]] @canvas
+@Algebrite.check(`[ 5/6; 1/6 ]`)
 [[?]] @Explain
 ****************
 $$
@@ -118,10 +112,8 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$d)\;\;$__ $2x^2-\dfrac{5}{2}x+\dfrac{17}{32}=2\left(x^2-$ [[ 5/4 ]] @canvas $x\right)+\dfrac{17}{32}$  \
-$\dfrac{1}{2}\cdot \dfrac{5}{4} =$ [[ 5/8 ]] @canvas $,\qquad \left(\dfrac{5}{8}\right)^2 =$ [[ 25/64 ]] @canvas  \
-$2\left(x^2-\dfrac{5}{4}x+\dfrac{25}{64}-\dfrac{25}{64}\right)+\dfrac{17}{32}=2\left(x-\dfrac{5}{8}\right)^2-$ [[ 1/4 ]] @canvas
-@Algebrite.check(`[ 5/4; 5/8; 25/64; 1/4 ]`)
+__$d)\;\;$__ $2\left(x^2-\dfrac{5}{4}x+\dfrac{25}{64}-\dfrac{25}{64}\right)+\dfrac{17}{32}=2\bigl(x-$ [[ 5/8 ]] @canvas $\bigr)^2-$ [[ 1/4 ]] @canvas
+@Algebrite.check(`[ 5/8; 1/4 ]`)
 [[?]] @Explain
 ****************
 $$
@@ -143,10 +135,8 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$e)\;\;$__ $5x^2+7x+\dfrac{53}{20}=5\left(x^2+$ [[ 7/5 ]] @canvas $x\right)+\dfrac{53}{20}$  \
-$\dfrac{1}{2}\cdot \dfrac{7}{5} =$ [[ 7/10 ]] @canvas $,\qquad \left(\dfrac{7}{10}\right)^2 =$ [[ 49/100 ]] @canvas  \
-$5\left(x^2+\dfrac{7}{5}x+\dfrac{49}{100}-\dfrac{49}{100}\right)+\dfrac{53}{20}=5\left(x+\dfrac{7}{10}\right)^2+$ [[ 1/5 ]] @canvas
-@Algebrite.check(`[ 7/5; 7/10; 49/100; 1/5 ]`)
+__$e)\;\;$__ $5\left(x^2+\dfrac{7}{5}x+\dfrac{49}{100}-\dfrac{49}{100}\right)+\dfrac{53}{20}=5\bigl(x+$ [[ 7/10 ]] @canvas $\bigr)^2+$ [[ 1/5 ]] @canvas
+@Algebrite.check(`[ 7/10; 1/5 ]`)
 [[?]] @Explain
 ****************
 $$
@@ -168,10 +158,8 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$f)\;\;$__ $3x^2-\dfrac{7}{2}x+\dfrac{41}{48}=3\left(x^2-$ [[ 7/6 ]] @canvas $x\right)+\dfrac{41}{48}$  \
-$\dfrac{1}{2}\cdot \dfrac{7}{6} =$ [[ 7/12 ]] @canvas $,\qquad \left(\dfrac{7}{12}\right)^2 =$ [[ 49/144 ]] @canvas  \
-$3\left(x^2-\dfrac{7}{6}x+\dfrac{49}{144}-\dfrac{49}{144}\right)+\dfrac{41}{48}=3\left(x-\dfrac{7}{12}\right)^2-$ [[ 1/6 ]] @canvas
-@Algebrite.check(`[ 7/6; 7/12; 49/144; 1/6 ]`)
+__$f)\;\;$__ $3\left(x^2-\dfrac{7}{6}x+\dfrac{49}{144}-\dfrac{49}{144}\right)+\dfrac{41}{48}=3\bigl(x-$ [[ 7/12 ]] @canvas $\bigr)^2-$ [[ 1/6 ]] @canvas
+@Algebrite.check(`[ 7/12; 1/6 ]`)
 [[?]] @Explain
 ****************
 $$

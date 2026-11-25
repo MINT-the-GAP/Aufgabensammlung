@@ -36,17 +36,15 @@ author: Martin Lommatzsch
 # Quadratische Ergänzung mit Vorfaktor
 
 <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/grad/3.png" alt="Vernetzungsgrad 3" width="30" height="30"> <img src="https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/pics/sgrad/3.png" alt="Schwierigkeitsgrad 3" width="120" height="30">  \
-**Bestimme** die fehlenden Zahlen mithilfe der quadratischen Ergänzung.
+**Bestimme** die fehlenden Zahlen so, dass die Gleichungen für alle $x$ stimmen.
 
-<section class="dynFlex" data-columns="2" style="line-height: 3;">
+<section class="dynFlex" data-columns="1" style="line-height: 3;">
 
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$a)\;\;$__ $1{,}5x^2+1{,}2x+0{,}5=1{,}5\left(x^2+$ [[ 0,8 ]] @canvas $x\right)+0{,}5$  \
-$\dfrac{1}{2}\cdot 0{,}8 =$ [[ 0,4 ]] @canvas $,\qquad \left(0{,}4\right)^2 =$ [[ 0,16 ]] @canvas  \
-$1{,}5\left(x^2+0{,}8x+0{,}16-0{,}16\right)+0{,}5=1{,}5\left(x+0{,}4\right)^2+$ [[ 0,26 ]] @canvas
-@Algebrite.check(`[ 4/5; 2/5; 4/25; 13/50 ]`)
+__$a)\;\;$__ $1{,}5\left(x^2+0{,}8x+0{,}16-0{,}16\right)+0{,}5=1{,}5\bigl(x+$ [[ 0,4 ]] @canvas $\bigr)^2+$ [[ 0,26 ]] @canvas
+@Algebrite.check(`[ 2/5; 13/50 ]`)
 [[?]] @Explain
 ****************
 $$
@@ -68,10 +66,8 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$b)\;\;$__ $2{,}5x^2-3x+1{,}4=2{,}5\left(x^2-$ [[ 1,2 ]] @canvas $x\right)+1{,}4$  \
-$\dfrac{1}{2}\cdot 1{,}2 =$ [[ 0,6 ]] @canvas $,\qquad \left(0{,}6\right)^2 =$ [[ 0,36 ]] @canvas  \
-$2{,}5\left(x^2-1{,}2x+0{,}36-0{,}36\right)+1{,}4=2{,}5\left(x-0{,}6\right)^2+$ [[ 0,5 ]] @canvas
-@Algebrite.check(`[ 6/5; 3/5; 9/25; 1/2 ]`)
+__$b)\;\;$__ $2{,}5\left(x^2-1{,}2x+0{,}36-0{,}36\right)+1{,}4=2{,}5\bigl(x-$ [[ 0,6 ]] @canvas $\bigr)^2+$ [[ 0,5 ]] @canvas
+@Algebrite.check(`[ 3/5; 1/2 ]`)
 [[?]] @Explain
 ****************
 $$
@@ -93,10 +89,8 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$c)\;\;$__ $0{,}5x^2+1{,}2x+0{,}32=0{,}5\left(x^2+$ [[ 2,4 ]] @canvas $x\right)+0{,}32$  \
-$\dfrac{1}{2}\cdot 2{,}4 =$ [[ 1,2 ]] @canvas $,\qquad \left(1{,}2\right)^2 =$ [[ 1,44 ]] @canvas  \
-$0{,}5\left(x^2+2{,}4x+1{,}44-1{,}44\right)+0{,}32=0{,}5\left(x+1{,}2\right)^2-$ [[ 0,4 ]] @canvas
-@Algebrite.check(`[ 12/5; 6/5; 36/25; 2/5 ]`)
+__$c)\;\;$__ $0{,}5\left(x^2+2{,}4x+1{,}44-1{,}44\right)+0{,}32=0{,}5\bigl(x+$ [[ 1,2 ]] @canvas $\bigr)^2-$ [[ 0,4 ]] @canvas
+@Algebrite.check(`[ 6/5; 2/5 ]`)
 [[?]] @Explain
 ****************
 $$
@@ -118,10 +112,8 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$d)\;\;$__ $1{,}2x^2-1{,}2x+0{,}8=1{,}2\left(x^2-$ [[ 1 ]] @canvas $x\right)+0{,}8$  \
-$\dfrac{1}{2}\cdot 1 =$ [[ 0,5 ]] @canvas $,\qquad \left(0{,}5\right)^2 =$ [[ 0,25 ]] @canvas  \
-$1{,}2\left(x^2-1x+0{,}25-0{,}25\right)+0{,}8=1{,}2\left(x-0{,}5\right)^2+$ [[ 0,5 ]] @canvas
-@Algebrite.check(`[ 1; 1/2; 1/4; 1/2 ]`)
+__$d)\;\;$__ $1{,}2\left(x^2-x+0{,}25-0{,}25\right)+0{,}8=1{,}2\bigl(x-$ [[ 0,5 ]] @canvas $\bigr)^2+$ [[ 0,5 ]] @canvas
+@Algebrite.check(`[ 1/2; 1/2 ]`)
 [[?]] @Explain
 ****************
 $$
@@ -143,10 +135,8 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$e)\;\;$__ $0{,}8x^2+2{,}4x+1{,}2=0{,}8\left(x^2+$ [[ 3 ]] @canvas $x\right)+1{,}2$  \
-$\dfrac{1}{2}\cdot 3 =$ [[ 1,5 ]] @canvas $,\qquad \left(1{,}5\right)^2 =$ [[ 2,25 ]] @canvas  \
-$0{,}8\left(x^2+3x+2{,}25-2{,}25\right)+1{,}2=0{,}8\left(x+1{,}5\right)^2-$ [[ 0,6 ]] @canvas
-@Algebrite.check(`[ 3; 3/2; 9/4; 3/5 ]`)
+__$e)\;\;$__ $0{,}8\left(x^2+3x+2{,}25-2{,}25\right)+1{,}2=0{,}8\bigl(x+$ [[ 1,5 ]] @canvas $\bigr)^2-$ [[ 0,6 ]] @canvas
+@Algebrite.check(`[ 3/2; 3/5 ]`)
 [[?]] @Explain
 ****************
 $$
@@ -168,10 +158,8 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$f)\;\;$__ $2{,}4x^2-1{,}2x+0{,}45=2{,}4\left(x^2-$ [[ 0,5 ]] @canvas $x\right)+0{,}45$  \
-$\dfrac{1}{2}\cdot 0{,}5 =$ [[ 0,25 ]] @canvas $,\qquad \left(0{,}25\right)^2 =$ [[ 0,0625 ]] @canvas  \
-$2{,}4\left(x^2-0{,}5x+0{,}0625-0{,}0625\right)+0{,}45=2{,}4\left(x-0{,}25\right)^2+$ [[ 0,3 ]] @canvas
-@Algebrite.check(`[ 1/2; 1/4; 1/16; 3/10 ]`)
+__$f)\;\;$__ $2{,}4\left(x^2-0{,}5x+0{,}0625-0{,}0625\right)+0{,}45=2{,}4\bigl(x-$ [[ 0,25 ]] @canvas $\bigr)^2+$ [[ 0,3 ]] @canvas
+@Algebrite.check(`[ 1/4; 3/10 ]`)
 [[?]] @Explain
 ****************
 $$

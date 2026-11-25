@@ -127,7 +127,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$e)\;\;$__ $x^2+0{,}5x+\dfrac{1}{16}=\left(x+$ [[ 0,25 ]] @canvas $\right)^2$
+__$e)\;\;$__ $x^2+0{,}5x+\dfrac{1}{16}=\bigl(x+$ [[ 0,25 ]] @canvas $\bigr)^2$
 @Algebrite.check([ 0.25 ])
 [[?]] @Explain
 ****************
@@ -148,7 +148,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$f)\;\;$__ $x^2-\dfrac{9}{5}x+0{,}81=\left(x-$ [[ 9/10 ]] @canvas $\right)^2$
+__$f)\;\;$__ $x^2-\dfrac{9}{5}x+0{,}81=\bigl(x-$ [[ 9/10 ]] @canvas $\bigr)^2$
 @Algebrite.check([ 9/10 ])
 [[?]] @Explain
 ****************

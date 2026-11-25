@@ -85,7 +85,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$c)\;\;$__ $x^2+3x+2{,}25=\left(x+$ [[ 1,5 ]] @canvas $\right)^2$
+__$c)\;\;$__ $x^2+3x+2{,}25=\bigl(x+$ [[ 1,5 ]] @canvas $\bigr)^2$
 @Algebrite.check([ 1.5 ])
 [[?]] @Explain
 ****************
@@ -106,7 +106,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$d)\;\;$__ $x^2-2{,}4x+1{,}44=\left(x-$ [[ 1,2 ]] @canvas $\right)^2$
+__$d)\;\;$__ $x^2-2{,}4x+1{,}44=\bigl(x-$ [[ 1,2 ]] @canvas $\bigr)^2$
 @Algebrite.check([ 1.2 ])
 [[?]] @Explain
 ****************
@@ -127,7 +127,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$e)\;\;$__ $x^2+1{,}4x+$ [[ 0,49 ]] @canvas $=\left(x+$ [[ 0,7 ]] @canvas $\right)^2$
+__$e)\;\;$__ $x^2+1{,}4x+$ [[ 0,49 ]] @canvas $=\bigl(x+$ [[ 0,7 ]] @canvas $\bigr)^2$
 @Algebrite.check(`[ 0.49; 0.7 ]`)
 [[?]] @Explain
 ****************
@@ -148,7 +148,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$f)\;\;$__ $x^2-3{,}6x+$ [[ 3,24 ]] @canvas $=\left(x-$ [[ 1,8 ]] @canvas $\right)^2$
+__$f)\;\;$__ $x^2-3{,}6x+$ [[ 3,24 ]] @canvas $=\bigl(x-$ [[ 1,8 ]] @canvas $\bigr)^2$
 @Algebrite.check(`[ 3.24; 1.8 ]`)
 [[?]] @Explain
 ****************

@@ -64,7 +64,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$b)\;\;$__ $x^2-\dfrac{3}{2}x+0{,}5625=\left(x-$ [[ 3/4 ]] @canvas $\right)^2$
+__$b)\;\;$__ $x^2-\dfrac{3}{2}x+0{,}5625=\bigl(x-$ [[ 3/4 ]] @canvas $\bigr)^2$
 @Algebrite.check([ 3/4 ])
 [[?]] @Explain
 ****************
@@ -85,7 +85,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$c)\;\;$__ $x^2+2{,}5x+\dfrac{25}{16}=\left(x+$ [[ 1,25 ]] @canvas $\right)^2$
+__$c)\;\;$__ $x^2+2{,}5x+\dfrac{25}{16}=\bigl(x+$ [[ 1,25 ]] @canvas $\bigr)^2$
 @Algebrite.check([ 1.25 ])
 [[?]] @Explain
 ****************
@@ -106,7 +106,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$d)\;\;$__ $x^2-\dfrac{4}{5}x+0{,}16=\left(x-$ [[ 2/5 ]] @canvas $\right)^2$
+__$d)\;\;$__ $x^2-\dfrac{4}{5}x+0{,}16=\bigl(x-$ [[ 2/5 ]] @canvas $\bigr)^2$
 @Algebrite.check([ 2/5 ])
 [[?]] @Explain
 ****************
@@ -127,7 +127,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$e)\;\;$__ $x^2+1{,}2x+$ [[ 9/25 ]] @canvas $=\left(x+$ [[ 0,6 ]] @canvas $\right)^2$
+__$e)\;\;$__ $x^2+1{,}2x+$ [[ 9/25 ]] @canvas $=\bigl(x+$ [[ 0,6 ]] @canvas $\bigr)^2$
 @Algebrite.check(`[ 9/25; 0.6 ]`)
 [[?]] @Explain
 ****************
@@ -148,7 +148,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$f)\;\;$__ $x^2-\dfrac{7}{5}x+0{,}49=\left(x-$ [[ 0,7 ]] @canvas $\right)^2$
+__$f)\;\;$__ $x^2-\dfrac{7}{5}x+0{,}49=\bigl(x-$ [[ 0,7 ]] @canvas $\bigr)^2$
 @Algebrite.check([ 0.7 ])
 [[?]] @Explain
 ****************

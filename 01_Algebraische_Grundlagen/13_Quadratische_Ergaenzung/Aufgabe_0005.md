@@ -85,7 +85,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$c)\;\;$__ $x^2+10x+25=\left(x+$ [[ 5 ]] @canvas $\right)^2$
+__$c)\;\;$__ $x^2+10x+25=\bigl(x+$ [[ 5 ]] @canvas $\bigr)^2$
 @Algebrite.check([ 5 ])
 [[?]] @Explain
 ****************
@@ -106,7 +106,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$d)\;\;$__ $x^2-12x+36=\left(x-$ [[ 6 ]] @canvas $\right)^2$
+__$d)\;\;$__ $x^2-12x+36=\bigl(x-$ [[ 6 ]] @canvas $\bigr)^2$
 @Algebrite.check([ 6 ])
 [[?]] @Explain
 ****************
@@ -127,7 +127,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$e)\;\;$__ $x^2+14x+$ [[ 49 ]] @canvas $=\left(x+$ [[ 7 ]] @canvas $\right)^2$
+__$e)\;\;$__ $x^2+14x+$ [[ 49 ]] @canvas $=\bigl(x+$ [[ 7 ]] @canvas $\bigr)^2$
 @Algebrite.check(`[ 49; 7 ]`)
 [[?]] @Explain
 ****************
@@ -148,7 +148,7 @@ $$
 <div class="flex-child">
 
 <!-- data-hint-button="1" data-solution-button="3" -->
-__$f)\;\;$__ $x^2-18x+$ [[ 81 ]] @canvas $=\left(x-$ [[ 9 ]] @canvas $\right)^2$
+__$f)\;\;$__ $x^2-18x+$ [[ 81 ]] @canvas $=\bigl(x-$ [[ 9 ]] @canvas $\bigr)^2$
 @Algebrite.check(`[ 81; 9 ]`)
 [[?]] @Explain
 ****************
