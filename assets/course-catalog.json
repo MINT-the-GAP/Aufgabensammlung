@@ -4103,6 +4103,272 @@
       "operator": "ermitteln_bestimmen"
     },
     {
+      "id": "01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0151.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0151.md",
+      "title": "Duominos auf dem Hunderterfeld I",
+      "tags": [
+        "Addition",
+        "Grundrechenarten",
+        "sehr leicht",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Addition",
+        "Grundrechenarten"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0152.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0152.md",
+      "title": "Duominos auf dem Hunderterfeld II",
+      "tags": [
+        "Addition",
+        "Grundrechenarten",
+        "leicht",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Addition",
+        "Grundrechenarten"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0153.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0153.md",
+      "title": "Triominos auf dem Hunderterfeld I",
+      "tags": [
+        "Addition",
+        "Grundrechenarten",
+        "leicht",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Addition",
+        "Grundrechenarten"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0154.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0154.md",
+      "title": "Triominos auf dem Hunderterfeld II",
+      "tags": [
+        "Addition",
+        "Grundrechenarten",
+        "leicht",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Addition",
+        "Grundrechenarten"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0155.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0155.md",
+      "title": "Tetrominos auf dem Hunderterfeld I",
+      "tags": [
+        "Addition",
+        "Grundrechenarten",
+        "leicht",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Addition",
+        "Grundrechenarten"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0156.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0156.md",
+      "title": "Tetrominos auf dem Hunderterfeld II",
+      "tags": [
+        "Addition",
+        "Grundrechenarten",
+        "leicht",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Addition",
+        "Grundrechenarten"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0157.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0157.md",
+      "title": "Pentominos auf dem Hunderterfeld I",
+      "tags": [
+        "Addition",
+        "Grundrechenarten",
+        "mittel",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Addition",
+        "Grundrechenarten"
+      ],
+      "difficulty": 3,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0158.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0158.md",
+      "title": "Pentominos auf dem Hunderterfeld II",
+      "tags": [
+        "Addition",
+        "Grundrechenarten",
+        "mittel",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Addition",
+        "Grundrechenarten"
+      ],
+      "difficulty": 3,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0159.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0159.md",
+      "title": "Passende Steine auf dem Hunderterfeld I",
+      "tags": [
+        "Addition",
+        "Grundrechenarten",
+        "mittel",
+        "sehr niedrig",
+        "Auswählen"
+      ],
+      "topics": [
+        "Addition",
+        "Grundrechenarten"
+      ],
+      "difficulty": 3,
+      "network": 1,
+      "operator": "angeben"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0160.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0160.md",
+      "title": "Passende Steine auf dem Hunderterfeld II",
+      "tags": [
+        "Addition",
+        "Grundrechenarten",
+        "schwer",
+        "sehr niedrig",
+        "Auswählen"
+      ],
+      "topics": [
+        "Addition",
+        "Grundrechenarten"
+      ],
+      "difficulty": 4,
+      "network": 1,
+      "operator": "angeben"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0161.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0161.md",
+      "title": "Summe nach Verschiebungen I",
+      "tags": [
+        "Addition",
+        "Grundrechenarten",
+        "mittel",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Addition",
+        "Grundrechenarten"
+      ],
+      "difficulty": 3,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0162.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0162.md",
+      "title": "Summe nach Verschiebungen II",
+      "tags": [
+        "Addition",
+        "Grundrechenarten",
+        "schwer",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Addition",
+        "Grundrechenarten"
+      ],
+      "difficulty": 4,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0163.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0163.md",
+      "title": "Gleiche Summe auf dem Hunderterfeld I",
+      "tags": [
+        "Addition",
+        "Grundrechenarten",
+        "mittel",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Addition",
+        "Grundrechenarten"
+      ],
+      "difficulty": 3,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0164.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_0164.md",
+      "title": "Gleiche Summe auf dem Hunderterfeld II",
+      "tags": [
+        "Addition",
+        "Grundrechenarten",
+        "mittel",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Addition",
+        "Grundrechenarten"
+      ],
+      "difficulty": 3,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
       "id": "01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_9900.md",
       "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/01_Grundrechenarten/Aufgabe_9900.md",
       "title": "Zufallsaufgaben - Addition mit dreistelligen Summanden",
@@ -5230,6 +5496,176 @@
       ],
       "difficulty": 2,
       "network": 3,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/02_Terme/Aufgabe_0045.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/02_Terme/Aufgabe_0045.md",
+      "title": "Vom Feld zum Summenterm",
+      "tags": [
+        "Terme",
+        "leicht",
+        "sehr niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Terme"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "angeben"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/02_Terme/Aufgabe_0046.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/02_Terme/Aufgabe_0046.md",
+      "title": "Terme für einzelne Felder",
+      "tags": [
+        "Terme",
+        "leicht",
+        "sehr niedrig",
+        "Angeben"
+      ],
+      "topics": [
+        "Terme"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "angeben"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/02_Terme/Aufgabe_0047.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/02_Terme/Aufgabe_0047.md",
+      "title": "Summenterme für gerade Steine I",
+      "tags": [
+        "Terme",
+        "leicht",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Terme"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/02_Terme/Aufgabe_0048.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/02_Terme/Aufgabe_0048.md",
+      "title": "Summenterme für gerade Steine II",
+      "tags": [
+        "Terme",
+        "leicht",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Terme"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/02_Terme/Aufgabe_0049.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/02_Terme/Aufgabe_0049.md",
+      "title": "Summenterme für zusammengesetzte Formen I",
+      "tags": [
+        "Terme",
+        "mittel",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Terme"
+      ],
+      "difficulty": 3,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/02_Terme/Aufgabe_0050.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/02_Terme/Aufgabe_0050.md",
+      "title": "Summenterme für zusammengesetzte Formen II",
+      "tags": [
+        "Terme",
+        "mittel",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Terme"
+      ],
+      "difficulty": 3,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/02_Terme/Aufgabe_0051.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/02_Terme/Aufgabe_0051.md",
+      "title": "Terme auf dem Hunderterfeld von 50 bis −49 I",
+      "tags": [
+        "Terme",
+        "mittel",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Terme"
+      ],
+      "difficulty": 3,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/02_Terme/Aufgabe_0052.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/02_Terme/Aufgabe_0052.md",
+      "title": "Terme auf dem Hunderterfeld von 50 bis −49 II",
+      "tags": [
+        "Terme",
+        "mittel",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Terme"
+      ],
+      "difficulty": 3,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/02_Terme/Aufgabe_0053.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/02_Terme/Aufgabe_0053.md",
+      "title": "Summenterme auf dem Hunderterfeld auswählen",
+      "tags": [
+        "Terme",
+        "leicht",
+        "sehr niedrig",
+        "Auswählen"
+      ],
+      "topics": [
+        "Terme"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "angeben"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/02_Terme/Aufgabe_0054.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/02_Terme/Aufgabe_0054.md",
+      "title": "Summenterme auf dem Hunderterfeld bestimmen",
+      "tags": [
+        "Terme",
+        "mittel",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Terme"
+      ],
+      "difficulty": 3,
+      "network": 1,
       "operator": "ermitteln_bestimmen"
     },
     {
@@ -15630,6 +16066,272 @@
       "difficulty": 2,
       "network": 2,
       "operator": "angeben"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0105.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0105.md",
+      "title": "Duominos auf dem Hunderterfeld mit negativen Zahlen I",
+      "tags": [
+        "Negative Zahlen",
+        "Addition",
+        "sehr leicht",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Negative Zahlen",
+        "Addition"
+      ],
+      "difficulty": 1,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0106.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0106.md",
+      "title": "Duominos auf dem Hunderterfeld mit negativen Zahlen II",
+      "tags": [
+        "Negative Zahlen",
+        "Addition",
+        "leicht",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Negative Zahlen",
+        "Addition"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0107.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0107.md",
+      "title": "Triominos auf dem Hunderterfeld mit negativen Zahlen I",
+      "tags": [
+        "Negative Zahlen",
+        "Addition",
+        "leicht",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Negative Zahlen",
+        "Addition"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0108.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0108.md",
+      "title": "Triominos auf dem Hunderterfeld mit negativen Zahlen II",
+      "tags": [
+        "Negative Zahlen",
+        "Addition",
+        "leicht",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Negative Zahlen",
+        "Addition"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0109.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0109.md",
+      "title": "Tetrominos auf dem Hunderterfeld mit negativen Zahlen I",
+      "tags": [
+        "Negative Zahlen",
+        "Addition",
+        "leicht",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Negative Zahlen",
+        "Addition"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0110.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0110.md",
+      "title": "Tetrominos auf dem Hunderterfeld mit negativen Zahlen II",
+      "tags": [
+        "Negative Zahlen",
+        "Addition",
+        "leicht",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Negative Zahlen",
+        "Addition"
+      ],
+      "difficulty": 2,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0111.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0111.md",
+      "title": "Pentominos auf dem Hunderterfeld mit negativen Zahlen I",
+      "tags": [
+        "Negative Zahlen",
+        "Addition",
+        "mittel",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Negative Zahlen",
+        "Addition"
+      ],
+      "difficulty": 3,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0112.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0112.md",
+      "title": "Pentominos auf dem Hunderterfeld mit negativen Zahlen II",
+      "tags": [
+        "Negative Zahlen",
+        "Addition",
+        "mittel",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Negative Zahlen",
+        "Addition"
+      ],
+      "difficulty": 3,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0113.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0113.md",
+      "title": "Passende Steine auf dem Hunderterfeld mit negativen Zahlen I",
+      "tags": [
+        "Negative Zahlen",
+        "Addition",
+        "mittel",
+        "sehr niedrig",
+        "Auswählen"
+      ],
+      "topics": [
+        "Negative Zahlen",
+        "Addition"
+      ],
+      "difficulty": 3,
+      "network": 1,
+      "operator": "angeben"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0114.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0114.md",
+      "title": "Passende Steine auf dem Hunderterfeld mit negativen Zahlen II",
+      "tags": [
+        "Negative Zahlen",
+        "Addition",
+        "schwer",
+        "sehr niedrig",
+        "Auswählen"
+      ],
+      "topics": [
+        "Negative Zahlen",
+        "Addition"
+      ],
+      "difficulty": 4,
+      "network": 1,
+      "operator": "angeben"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0115.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0115.md",
+      "title": "Summe nach Verschiebungen im Hunderterfeld mit negativen Zahlen I",
+      "tags": [
+        "Negative Zahlen",
+        "Addition",
+        "mittel",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Negative Zahlen",
+        "Addition"
+      ],
+      "difficulty": 3,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0116.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0116.md",
+      "title": "Summe nach Verschiebungen im Hunderterfeld mit negativen Zahlen II",
+      "tags": [
+        "Negative Zahlen",
+        "Addition",
+        "schwer",
+        "sehr niedrig",
+        "Berechnen"
+      ],
+      "topics": [
+        "Negative Zahlen",
+        "Addition"
+      ],
+      "difficulty": 4,
+      "network": 1,
+      "operator": "berechnen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0117.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0117.md",
+      "title": "Gleiche Summe auf dem Hunderterfeld mit negativen Zahlen I",
+      "tags": [
+        "Negative Zahlen",
+        "Addition",
+        "mittel",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Negative Zahlen",
+        "Addition"
+      ],
+      "difficulty": 3,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
+    },
+    {
+      "id": "01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0118.md",
+      "url": "https://raw.githubusercontent.com/MINT-the-GAP/Aufgabensammlung/refs/heads/main/01_Algebraische_Grundlagen/10_Negative_Zahlen/Aufgabe_0118.md",
+      "title": "Gleiche Summe auf dem Hunderterfeld mit negativen Zahlen II",
+      "tags": [
+        "Negative Zahlen",
+        "Addition",
+        "mittel",
+        "sehr niedrig",
+        "Bestimmen"
+      ],
+      "topics": [
+        "Negative Zahlen",
+        "Addition"
+      ],
+      "difficulty": 3,
+      "network": 1,
+      "operator": "ermitteln_bestimmen"
     },
     {
       "id": "01_Algebraische_Grundlagen/11_Logarithmen/Aufgabe_0001.md",
